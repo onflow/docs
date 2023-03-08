@@ -9,7 +9,7 @@ staticAssetLocation="./static"
 
 # cloneRepoToTemp $repo $tempRepoLocation
 cloneRepoToTemp () {
-  if [ -d $1 ] 
+  if [ -d $2 ] 
   then
     echo "Skipping $1 (already exists)"
   else
@@ -18,12 +18,7 @@ cloneRepoToTemp () {
 }
 
 fixLiCloseTag () {
-  searchString="(#ftype)\n<\/div>"
-  replaceString="(#ftype)\n\n<\/div>"
-  
-  cp $1 $1.original
-  tr $searchString $replaceString < $1.original > $1
-  rm $1.original
+  sed -i -z 's/(#ftype)/(#ftype)\n/' $1
 }
 
 cleanUp () {
@@ -50,7 +45,7 @@ cleanUp () {
 
 cloneDocReposToTemp () {
   echo Cloning repos...
-  for fileName in $docCollectionsLocation/*.json
+  for fileName in $(find $docCollectionsLocation -name "*.json")
   do
     repoSource=$(cat $fileName | jq .source)
     # repo=( ["owner"]=($repoSource | jq .owner))
@@ -69,14 +64,14 @@ cloneDocReposToTemp () {
 cloneDocFiles () {
 
   echo Copying files...
-  for dirName in $tempReposLocation/*/
+  for dirName in $(ls $tempReposLocation)
   do
     destination=$docsLocation/$(basename $dirName)
     if [ -d $destination ] 
     then
       echo "Skipping $destination (already exists)"
     else
-      cp -r $dirName/docs $docsLocation/$(basename $dirName)
+      cp -r $tempReposLocation/$dirName/docs $docsLocation/$(basename $dirName)
     fi
   done
 }
@@ -91,9 +86,6 @@ bootstrapDevPortal () {
 }
 
 bootstrapDevPortal
-
-cloneDocReposToTemp
-
+cloneDocReposToTemp 
 cloneDocFiles
-
 cleanUp
