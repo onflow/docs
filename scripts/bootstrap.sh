@@ -2,9 +2,10 @@
 
 echo Bootstrapping...
 
-docCollectionsLocation="../src/data/doc-collections"
-tempReposLocation="../temp"
-docsLocation="../docs"
+docCollectionsLocation="./src/data/doc-collections"
+tempReposLocation="./temp"
+docsLocation="./docs"
+staticAssetLocation="./static"
 
 # cloneRepoToTemp $repo $tempRepoLocation
 cloneRepoToTemp () {
@@ -44,7 +45,7 @@ cleanUp () {
   # escape tag symbols for <version>
   sed -i.original 's/<version>/<version\\>/' $docsLocation/flow/content/unity-sdk/samples/flow-words-tutorial.md
 
-  cp $docsLocation/flow/content/concepts/flowscan-fees.png ../static/
+  cp $docsLocation/flow/content/concepts/flowscan-fees.png $staticAssetLocation
 }
 
 cloneDocReposToTemp () {
