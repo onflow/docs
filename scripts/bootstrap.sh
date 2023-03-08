@@ -7,7 +7,7 @@ tempReposLocation="../temp"
 docsLocation="../docs"
 
 # cloneRepoToTemp $repo $tempRepoLocation
-function cloneRepoToTemp () {
+cloneRepoToTemp () {
   if [ -d $1 ] 
   then
     echo "Skipping $1 (already exists)"
@@ -16,7 +16,7 @@ function cloneRepoToTemp () {
   fi
 }
 
-function fixLiCloseTag () {
+fixLiCloseTag () {
   searchString="(#ftype)\n<\/div>"
   replaceString="(#ftype)\n\n<\/div>"
   
@@ -25,7 +25,7 @@ function fixLiCloseTag () {
   rm $1.original
 }
 
-function cleanUp () {
+cleanUp () {
   echo Clean up...
   rm $docsLocation/flow-cli/template.md
   rm $docsLocation/flow/content/status.mdx
@@ -47,7 +47,7 @@ function cleanUp () {
   cp $docsLocation/flow/content/concepts/flowscan-fees.png ../static/
 }
 
-function cloneDocReposToTemp () {
+cloneDocReposToTemp () {
   echo Cloning repos...
   for fileName in $docCollectionsLocation/*.json
   do
@@ -65,7 +65,7 @@ function cloneDocReposToTemp () {
   done
 }
 
-function cloneDocFiles () {
+cloneDocFiles () {
 
   echo Copying files...
   for dirName in $tempReposLocation/*/
@@ -80,7 +80,7 @@ function cloneDocFiles () {
   done
 }
 
-function bootstrapDevPortal () {
+bootstrapDevPortal () {
   echo Bootstrapping dev portal
   cloneRepoToTemp onflow/developer-portal $tempReposLocation/developer-portal
 
