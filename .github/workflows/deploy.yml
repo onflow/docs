@@ -20,6 +20,8 @@ jobs:
 
       - name: Install dependencies
         run: yarn install --frozen-lockfile
+      - name: Bootstrap environment
+        run: ./scripts/bootstrap.sh
       - name: Build website
         run: yarn build
 
