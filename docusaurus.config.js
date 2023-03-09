@@ -78,7 +78,6 @@ const editUrl = ({ docPath }) => {
   }
   const { owner, name, branch } = sourceRepo
   const sourceDockPath = docPathArray.slice(1).join('/');
-  console.log(sourceDockPath)
   return `https://github.com/${owner}/${name}/tree/${branch}/docs/${sourceDockPath}`;
 }
 
@@ -152,10 +151,11 @@ const config = {
       // Replace with your project's social card
       image: 'img/docusaurus-social-card.jpg',
       navbar: {
-        title: 'My Site',
+        title: 'Docs',
         logo: {
-          alt: 'My Site Logo',
-          src: 'img/logo.svg',
+          alt: 'Flow Developer Portal Logo',
+          src: 'img/flow-docs-logo-dark.png',
+          srcDark: 'img/flow-docs-logo-light.png',
         },
         items: [
           {
@@ -165,10 +165,15 @@ const config = {
             label: 'Tutorial',
           },
           {
-            href: 'https://github.com/facebook/docusaurus',
+            href: 'https://github.com/onflow',
             label: 'GitHub',
             position: 'right',
           },
+          {
+            href: 'https://onflow.org/discord',
+            label: 'Discord',
+            position: 'right',
+          }
         ],
       },
       footer: {
@@ -187,16 +192,36 @@ const config = {
             title: 'Community',
             items: [
               {
-                label: 'Stack Overflow',
-                href: 'https://stackoverflow.com/questions/tagged/docusaurus',
+                href: "/community",
+                label: "Ecosystem",
               },
               {
-                label: 'Discord',
-                href: 'https://discordapp.com/invite/docusaurus',
+                href: "https://port.onflow.org/",
+                label: "Flow Port",
               },
               {
-                label: 'Twitter',
-                href: 'https://twitter.com/docusaurus',
+                href: "https://github.com/onflow/developer-grants",
+                label: "Developer Grants",
+              },
+              {
+                href: "https://flow.com/flow-responsible-disclosure",
+                label: "Responsible Disclosure",
+              },
+              {
+                href: "https://forum.onflow.org/",
+                label: "Forum",
+              },
+              {
+                href: "https://www.flowverse.co/",
+                label: "Flowverse",
+              },
+              {
+                href: "https://academy.ecdao.org/",
+                label: "Emerald Academy",
+              },
+              {
+                href: "https://floats.city/",
+                label: "FLOATs (Attendance NFTs)",
               },
             ],
           },
@@ -204,13 +229,25 @@ const config = {
             title: 'More',
             items: [
               {
+                href: 'https://github.com/onflow',
                 label: 'GitHub',
-                href: 'https://github.com/facebook/docusaurus',
               },
+              {
+                href: 'https://onflow.org/discord',
+                label: 'Discord',
+              },
+              {
+                href: 'https://forum.onflow.org/',
+                label: 'Forum',
+              },
+              {
+                href: 'https://onflow.org/',
+                label: 'OnFlow',
+              }
             ],
           },
         ],
-        copyright: `Copyright © ${new Date().getFullYear()} My Project, Inc. Built with Docusaurus.`,
+        copyright: `Copyright © ${new Date().getFullYear()} Flow, Inc. Built with Docusaurus.`,
       },
       prism: {
         theme: lightCodeTheme,
