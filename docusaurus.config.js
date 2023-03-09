@@ -4,6 +4,84 @@
 const lightCodeTheme = require('prism-react-renderer/themes/github');
 const darkCodeTheme = require('prism-react-renderer/themes/dracula');
 
+const path = require('path');
+const fs = require('fs');
+
+const docCollectionsLocation = './src/data/doc-collections'
+let cachedSources;
+
+/**
+ * 
+ * @returns {string[]}
+ */
+const getDocFileNames = () => {
+  try {
+    const docCollectionPath = path.join(__dirname, docCollectionsLocation)
+    const files = fs.readdirSync(docCollectionPath)
+    return files.filter((filename) => filename.match(/\.json$/))
+  } catch (error) {
+    console.log('Unable to scan directory: ' + error);
+  }
+}
+/**
+ * 
+ * @param {string} filename 
+ * @returns {string}
+ */
+const getSource = (filename) => {
+  const filePath = path.join(__dirname, docCollectionsLocation, filename)
+  try {
+    const fileContent = JSON.parse(fs.readFileSync(filePath).toString())
+    return fileContent.source
+  } catch (error) {
+    console.log('Cannot parse: ' + error);
+  }
+  
+}
+
+/**
+ * @typedef {Object} Source
+ * @property {string} owner - The X Coordinate
+ * @property {string} name - The Y Coordinate
+ * @property {string} branch - The Y Coordinate
+ * @property {string} rootPath - The Y Coordinate
+ */
+
+/**
+ * @returns {Source[]}
+ */
+const getSources = () => {
+  if (!cachedSources) {
+    const docFilenames = getDocFileNames()
+    
+    cachedSources = docFilenames.reduce((acc, filename) => {
+      const source = getSource(filename)
+      if (!source) {
+        return acc
+      }
+      return [...acc, source]
+      
+    }, [])
+  }
+  return cachedSources
+}
+
+/** @type {import('@docusaurus/plugin-content-docs').MetadataOptions['editUrl']} */
+const editUrl = ({ docPath }) => {
+  const docPathArray = docPath.split('/')
+  const repoName = docPathArray[0]
+  const sources = getSources();
+
+  const sourceRepo = sources.find(({ name }) => name === repoName)
+  if (!sourceRepo) {
+    return
+  }
+  const { owner, name, branch } = sourceRepo
+  const sourceDockPath = docPathArray.slice(1).join('/');
+  console.log(sourceDockPath)
+  return `https://github.com/${owner}/${name}/tree/${branch}/docs/${sourceDockPath}`;
+}
+
 /** @type {import('@docusaurus/types').Config} */
 const config = {
   title: 'My Site',
@@ -41,10 +119,7 @@ const config = {
         docs: {
           sidebarPath: require.resolve('./sidebars.js'),
           routeBasePath: '/',
-          // Please change this to your repo.
-          // Remove this to remove the "edit this page" links.
-          // editUrl:
-            // 'https://github.com/facebook/docusaurus/tree/main/packages/create-docusaurus/templates/shared/',
+          editUrl,
         },
         blog: false,
         theme: {

@@ -21,4 +21,5 @@ yarn-error.log*
 
 temp
 docs
-src/data
+src/data 
+.vscode
