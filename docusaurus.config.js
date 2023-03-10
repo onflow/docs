@@ -1,6 +1,6 @@
 // @ts-check
 // Note: type annotations allow type checking and IDEs autocompletion
-
+require('dotenv').config()
 const lightCodeTheme = require('prism-react-renderer/themes/github');
 const darkCodeTheme = require('prism-react-renderer/themes/dracula');
 
@@ -16,11 +16,11 @@ let cachedSources;
  */
 const getDocFileNames = () => {
   try {
-    const docCollectionPath = path.join(__dirname, docCollectionsLocation)
+    const docCollectionPath = path.join(__dirname, docCollectionsLocation, '/')
     const files = fs.readdirSync(docCollectionPath)
     return files.filter((filename) => filename.match(/\.json$/))
   } catch (error) {
-    console.log('Unable to scan directory: ' + error);
+    console.error('Unable to scan directory: ' + error);
   }
 }
 /**
@@ -34,7 +34,7 @@ const getSource = (filename) => {
     const fileContent = JSON.parse(fs.readFileSync(filePath).toString())
     return fileContent.source
   } catch (error) {
-    console.log('Cannot parse: ' + error);
+    console.error('Cannot parse: ' + error);
   }
   
 }

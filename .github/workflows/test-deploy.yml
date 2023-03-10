@@ -7,6 +7,11 @@ on:
     # Review gh actions docs if you want to further define triggers, paths, etc
     # https://docs.github.com/en/actions/using-workflows/workflow-syntax-for-github-actions#on
 
+env:
+  ALGOLIA_APP_ID: ${{vars.ALGOLIA_APP_ID}}
+  ALGOLIA_API_KEY: ${{vars.ALGOLIA_API_KEY}}
+  ALGOLIA_INDEX_NAME: ${{vars.ALGOLIA_INDEX_NAME}}
+
 jobs:
   test-deploy:
     name: Test deployment
@@ -17,6 +22,9 @@ jobs:
         with:
           node-version: 18
           cache: yarn
+
+      - name: Install Yarn
+        run: npm install -g yarn
 
       - name: Install dependencies
         run: yarn install --frozen-lockfile
