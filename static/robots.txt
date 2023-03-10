@@ -1,4 +1,5 @@
 # Algolia-Crawler-Verif: 98E1096D4FD67E70
 
 User-agent: *
-Disallow:
+Allow:
+Sitemap: https://onflow.github.io/flow_docusaurus
