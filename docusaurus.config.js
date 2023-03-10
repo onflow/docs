@@ -16,7 +16,7 @@ let cachedSources;
  */
 const getDocFileNames = () => {
   try {
-    const docCollectionPath = path.join(__dirname, docCollectionsLocation)
+    const docCollectionPath = path.join(__dirname, docCollectionsLocation, '/')
     console.log({docCollectionPath})
     const files = fs.readdirSync(docCollectionPath)
     console.log({files})
