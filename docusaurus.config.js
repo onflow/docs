@@ -17,9 +17,7 @@ let cachedSources;
 const getDocFileNames = () => {
   try {
     const docCollectionPath = path.join(__dirname, docCollectionsLocation, '/')
-    console.log({docCollectionPath})
     const files = fs.readdirSync(docCollectionPath)
-    console.log({files})
     return files.filter((filename) => filename.match(/\.json$/))
   } catch (error) {
     console.error('Unable to scan directory: ' + error);
@@ -32,7 +30,6 @@ const getDocFileNames = () => {
  */
 const getSource = (filename) => {
   const filePath = path.join(__dirname, docCollectionsLocation, filename)
-  // console.log({filename, filePath})
   try {
     const fileContent = JSON.parse(fs.readFileSync(filePath).toString())
     return fileContent.source
