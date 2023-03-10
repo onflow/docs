@@ -20,7 +20,12 @@ npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 
-temp
-docs
-src/data 
-.vscode
+/.vscode
+/temp
+/src/data 
+/docs/*
+!/docs/learn
+!/docs/quickstarts
+!/docs/documentation
+
+versioned_docs

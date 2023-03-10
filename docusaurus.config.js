@@ -165,6 +165,12 @@ const config = {
             label: 'Tutorial',
           },
           {
+            type: 'docsVersionDropdown',
+            position: 'right',
+            dropdownItemsAfter: [{to: '/versions', label: 'All versions'}],
+            dropdownActiveClassDisabled: true,
+          },
+          {
             href: 'https://github.com/onflow',
             label: 'GitHub',
             position: 'right',
