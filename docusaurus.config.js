@@ -17,6 +17,7 @@ let cachedSources;
 const getDocFileNames = () => {
   try {
     const docCollectionPath = path.join(__dirname, docCollectionsLocation)
+    console.log({docCollectionPath})
     const files = fs.readdirSync(docCollectionPath)
     return files.filter((filename) => filename.match(/\.json$/))
   } catch (error) {
