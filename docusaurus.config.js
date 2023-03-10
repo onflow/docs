@@ -64,7 +64,6 @@ const getSources = () => {
       
     }, [])
   }
-  console.log(cachedSources)
   return cachedSources
 }
 
