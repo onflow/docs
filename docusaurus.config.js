@@ -20,7 +20,7 @@ const getDocFileNames = () => {
     const files = fs.readdirSync(docCollectionPath)
     return files.filter((filename) => filename.match(/\.json$/))
   } catch (error) {
-    console.log('Unable to scan directory: ' + error);
+    console.error('Unable to scan directory: ' + error);
   }
 }
 /**
@@ -34,7 +34,7 @@ const getSource = (filename) => {
     const fileContent = JSON.parse(fs.readFileSync(filePath).toString())
     return fileContent.source
   } catch (error) {
-    console.log('Cannot parse: ' + error);
+    console.error('Cannot parse: ' + error);
   }
   
 }
@@ -63,6 +63,7 @@ const getSources = () => {
       
     }, [])
   }
+  console.log(cachedSources)
   return cachedSources
 }
 
