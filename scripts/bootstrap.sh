@@ -71,7 +71,7 @@ cloneDocFiles () {
     then
       echo "Skipping $destination (already exists)"
     else
-      cp -r $tempReposLocation/$dirName/docs $docsLocation/$(basename $dirName)
+      cp -r $tempReposLocation/$dirName/docs $destination
     fi
   done
 }
@@ -82,7 +82,7 @@ bootstrapDevPortal () {
 
   rm -rf $docCollectionsLocation
   mkdir -p $docCollectionsLocation
-  cp -r $tempReposLocation/developer-portal/app/data/doc-collections/ $docCollectionsLocation
+  cp -r $tempReposLocation/developer-portal/app/data/doc-collections/. $docCollectionsLocation
 }
 
 bootstrapDevPortal
