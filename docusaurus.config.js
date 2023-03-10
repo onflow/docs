@@ -1,6 +1,6 @@
 // @ts-check
 // Note: type annotations allow type checking and IDEs autocompletion
-
+require('dotenv').config()
 const lightCodeTheme = require('prism-react-renderer/themes/github');
 const darkCodeTheme = require('prism-react-renderer/themes/dracula');
 
@@ -30,6 +30,7 @@ const getDocFileNames = () => {
  */
 const getSource = (filename) => {
   const filePath = path.join(__dirname, docCollectionsLocation, filename)
+  console.log({filename, filePath})
   try {
     const fileContent = JSON.parse(fs.readFileSync(filePath).toString())
     return fileContent.source
