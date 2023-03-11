@@ -152,8 +152,7 @@ bootstrapLegacy () {
   for filePath in $(find $docCollectionsLocation -name "*.json")
   do
     fileName=$(basename $filePath .json)
-    echo $fileName
-    destination="${fileName/__//}"
+    destination=$(echo "$fileName" | sed 's/__/\//g')
     fullDestination=$legacyDocsLocation/$destination
     if [ ! -d $fullDestination ] 
     then
