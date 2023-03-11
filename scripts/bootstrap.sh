@@ -151,9 +151,9 @@ cleanLegacy() {
 bootstrapLegacy () {
   for filePath in $(find $docCollectionsLocation -name "*.json")
   do
-    fileName=$(basename $filePath)
-    fileLabel="${fileName/.json/}"
-    destination="${fileLabel/__//}"
+    fileName=$(basename $filePath .json)
+    echo $fileName
+    destination="${fileName/__//}"
     fullDestination=$legacyDocsLocation/$destination
     if [ ! -d $fullDestination ] 
     then
