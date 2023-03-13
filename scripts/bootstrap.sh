@@ -75,6 +75,7 @@ cleanUp () {
   replaceInFiles $docsLocation "\](..\/index.md)" "\](..\/index)"
   replaceInFiles $docsLocation "\](.\/api.md#" "\](.\/api#"
 
+  find $docsLocation -type f -name "*.original" -delete
 }
 
 cloneDocReposToTemp () {
@@ -173,6 +174,8 @@ cleanLegacy () {
   replaceInFiles $legacyDocsLocation ".md#" ")"
   replaceInFiles $legacyDocsLocation ".mdx)" ")"
 
+  find $legacyDocsLocation -type f -name "*.original" -delete
+  touch $legacyDocsLocation/intro.md
 }
 
 bootstrapLegacy () {
