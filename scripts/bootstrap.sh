@@ -67,6 +67,16 @@ cleanUp () {
   mv $docsLocation/fcl-js/index.md $docsLocation/fcl-js/index.original.md.md
   mv $docsLocation/fcl-js/index.mdx $docsLocation/fcl-js/index.original.mdx.mdx
   mv $docsLocation/flow-js-testing/index.md $docsLocation/flow-js-testing/index.original.md
+  SEARCH_STRING="\](.\/index.md"
+  REPLACE_STRING="\](.\/index.original.md"
+  FILES=$(find $docsLocation -type f)
+  # Loop through each file and replace the search string with the replace string
+  for file in $FILES; do
+    sed -i.original "s/$SEARCH_STRING/$REPLACE_STRING/g" $file
+  done
+
+
+
 }
 
 cloneDocReposToTemp () {
@@ -145,6 +155,11 @@ cleanLegacy() {
 
   # fix missing community link
   sed -i.original 's/\[Flow\ community\]\((\))/[Flow community](https:\/\/developers.flow.com\/community)/' $legacyDocsLocation/nodes/index.mdx
+
+  # fix missing screenshots in composability-nft-guilde.mdx
+  sed -i.original 's/\!\[Screen Shot 2023-02-09 at 11.27.04 PM.png\](Composability%20Chronicles%20#1%20How%20to%20build%20your%20Flow%209bce963939a14a37954748cfa193a38b\/Screen_Shot_2023-02-09_at_11.27.04_PM.png)//' $legacyDocsLocation/tools/nft-catalog/composability-nft-guide.mdx
+  sed -i.original 's/\!\[Screen Shot 2023-02-09 at 11.28.34 PM.png\](Composability%20Chronicles%20#1%20How%20to%20build%20your%20Flow%209bce963939a14a37954748cfa193a38b\/Screen_Shot_2023-02-09_at_11.28.34_PM.png)//' $legacyDocsLocation/tools/nft-catalog/composability-nft-guide.mdx
+  sed -i.original 's/    \!\[Screen Shot 2023-02-09 at 11.29.01 PM.png\](Composability%20Chronicles%20#1%20How%20to%20build%20your%20Flow%209bce963939a14a37954748cfa193a38b\/Screen_Shot_2023-02-09_at_11.29.01_PM.png)//' $legacyDocsLocation/tools/nft-catalog/composability-nft-guide.mdx
 
 }
 
