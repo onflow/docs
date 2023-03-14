@@ -175,7 +175,12 @@ cleanLegacy () {
   replaceInFiles $legacyDocsLocation ".mdx)" ")"
 
   find $legacyDocsLocation -type f -name "*.original" -delete
+
+  # create index pages as placeholders
   touch $legacyDocsLocation/intro.md
+  touch $legacyDocsLocation/documentation.md
+  touch $legacyDocsLocation/quickstarts.md
+  touch $legacyDocsLocation/learn/welcome.md
 }
 
 bootstrapLegacy () {

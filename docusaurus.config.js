@@ -122,7 +122,7 @@ const config = {
         },
         blog: false,
         theme: {
-          customCss: require.resolve('./src/css/custom.css'),
+          customCss: [require.resolve('./src/css/custom.css'), require.resolve('./src/ui/design-system/styles/main.css')],
         },
       }),
     ],
@@ -133,7 +133,7 @@ const config = {
         specs: [
           {
             spec: 'https://raw.githubusercontent.com/onflow/flow/master/openapi/access.yaml',
-            route: '/api/',
+            route: '/http-api/',
           },
         ],
         // Theme Options for modifying how redoc renders them
@@ -160,9 +160,21 @@ const config = {
         items: [
           {
             type: 'doc',
-            docId: 'intro',
+            docId: 'learn/welcome',
             position: 'left',
-            label: 'Tutorial',
+            label: 'Learn',
+          },
+          {
+            type: 'doc',
+            docId: 'quickstarts',
+            position: 'left',
+            label: 'Quickstarts',
+          },
+          {
+            type: 'doc',
+            docId: 'documentation',
+            position: 'left',
+            label: 'Documentation',
           },
           {
             type: 'docsVersionDropdown',
@@ -289,6 +301,19 @@ const config = {
         //... other Algolia params
       },
     }),
+  plugins: [
+    function tailwindPlugin(context, options) {
+      return {
+        name: "docusaurus-tailwindcss",
+        configurePostCss(postcssOptions) {
+          // Appends TailwindCSS and AutoPrefixer.
+          postcssOptions.plugins.push(require("tailwindcss"));
+          postcssOptions.plugins.push(require("autoprefixer"));
+          return postcssOptions;
+        },
+      };
+    },
+  ]
 };
 
 module.exports = config;
