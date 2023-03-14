@@ -1,42 +1,43 @@
-import { ToolsAndConcepts, UpcomingEvents } from "../../Components"
-import { ButtonLink } from "../../Components/Button"
-import CommunityImage from "../../../../images/page/community.png"
-import { CommunityMembersProps } from "../../Components/CommunityMembers"
+import React from 'react'
+import { ToolsAndConcepts, UpcomingEvents } from '../../Components'
+import { ButtonLink } from '../../Components/Button'
+import CommunityImage from '../../../../images/page/community.png'
+import { type CommunityMembersProps } from '../../Components/CommunityMembers'
 import {
   ContentNavigationList,
-  ContentNavigationListProps,
-} from "../../Components/ContentNavigationList"
-import Flips, { FlipsProps } from "../../Components/Flips"
-import ForumCell, { ForumCellProps } from "../../Components/ForumCell"
-import { HeaderWithLink } from "../../Components/HeaderWithLink"
-import { LandingHeader } from "../../Components/LandingHeader"
+  type ContentNavigationListProps
+} from '../../Components/ContentNavigationList'
+import Flips, { type FlipsProps } from '../../Components/Flips'
+import ForumCell, { type ForumCellProps } from '../../Components/ForumCell'
+import { HeaderWithLink } from '../../Components/HeaderWithLink'
+import { LandingHeader } from '../../Components/LandingHeader'
 import {
   LandingPageSecondaryNav,
-  LandingPageSecondaryNavProps,
-} from "../../Components/LandingPageSecondaryNav"
-import ProjectCards, { ProjectCardsProps } from "../../Components/ProjectCards"
-import { ToolsAndConceptsProps } from "../../Components/ToolsAndConcepts"
-import { UpcomingEventsProps } from "../../Components/UpcomingEvents"
-import PageBackground from "../shared/PageBackground"
-import PageSection from "../shared/PageSection"
-import PageSections from "../shared/PageSections"
-import { Article } from "../../interfaces"
+  type LandingPageSecondaryNavProps
+} from '../../Components/LandingPageSecondaryNav'
+import ProjectCards, { type ProjectCardsProps } from '../../Components/ProjectCards'
+import { type ToolsAndConceptsProps } from '../../Components/ToolsAndConcepts'
+import { type UpcomingEventsProps } from '../../Components/UpcomingEvents'
+import PageBackground from '../shared/PageBackground'
+import PageSection from '../shared/PageSection'
+import PageSections from '../shared/PageSections'
+import { type Article } from '../../interfaces'
 
 export type CommunityPageProps = FlipsProps &
-  ProjectCardsProps &
-  ToolsAndConceptsProps & {
-    articles?: Article[]
-    communityMembers?: CommunityMembersProps
-    contentNavigationListItems: ContentNavigationListProps
-    discordUrl: string
-    discourseUrl: string
-    editPageUrl?: string
-    forumTopics: ForumCellProps[]
-    secondaryNavSections: LandingPageSecondaryNavProps["sections"]
-    upcomingEvents: UpcomingEventsProps
-  }
+ProjectCardsProps &
+ToolsAndConceptsProps & {
+  articles?: Article[]
+  communityMembers?: CommunityMembersProps
+  contentNavigationListItems: ContentNavigationListProps
+  discordUrl: string
+  discourseUrl: string
+  editPageUrl?: string
+  forumTopics: ForumCellProps[]
+  secondaryNavSections: LandingPageSecondaryNavProps['sections']
+  upcomingEvents: UpcomingEventsProps
+}
 
-export default function CommunityPage({
+export default function CommunityPage ({
   // articles,
   // communityMembers,
   contentNavigationListItems,
@@ -50,8 +51,8 @@ export default function CommunityPage({
   projects,
   secondaryNavSections,
   tools,
-  upcomingEvents,
-}: CommunityPageProps) {
+  upcomingEvents
+}: CommunityPageProps): JSX.Element {
   return (
     <PageBackground gradient="community">
       <LandingPageSecondaryNav sections={secondaryNavSections} />
@@ -74,30 +75,6 @@ export default function CommunityPage({
             <UpcomingEvents {...upcomingEvents} headerLink="upcoming-events" />
           </PageSection>
         )}
-        {/* <PageSection sectionId="community-members">
-          <div className="container mb-8">
-            <div className="flex items-center justify-between">
-              <HeaderWithLink
-                headerLink="community-members"
-                className="text-h2"
-              >
-                <div>Designed by experts</div>
-                <div>Refined by the community</div>
-              </HeaderWithLink>
-              <ButtonLink
-                rightIcon="right"
-                href={GITHUB_URL}
-                variant="secondary"
-                target="_blank"
-                rel="noreferrer"
-                className="hidden ml-4 md:flex"
-              >
-                Go to GitHub
-              </ButtonLink>
-            </div>
-          </div>
-          <CommunityMembers {...communityMembers} />
-        </PageSection> */}
         <PageSection sectionId="flips">
           <Flips
             githubUrl={githubUrl}

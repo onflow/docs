@@ -1,14 +1,14 @@
-import { ContentNavigationListProps } from "~/ui/design-system/src/lib/Components/ContentNavigationList"
-import { FeaturedArticleCardProps } from "~/ui/design-system/src/lib/Components/FeaturedArticleCard"
-import { LandingHeaderProps } from "~/ui/design-system/src/lib/Components/LandingHeader"
-import { LinkCard2ColumnProps } from "~/ui/design-system/src/lib/Components/LinkCard2Column"
-import { SDKCardProps } from "~/ui/design-system/src/lib/Components/SDKCard"
-import { ToolCardProps } from "~/ui/design-system/src/lib/Components/ToolCard"
+import { type ContentNavigationListProps } from '../../ui/design-system/src/lib/Components/ContentNavigationList'
+import { type FeaturedArticleCardProps } from '../../ui/design-system/src/lib/Components/FeaturedArticleCard'
+import { type LandingHeaderProps } from '../../ui/design-system/src/lib/Components/LandingHeader'
+import { type LinkCard2ColumnProps } from '../../ui/design-system/src/lib/Components/LinkCard2Column'
+import { type SDKCardProps } from '../../ui/design-system/src/lib/Components/SDKCard'
+import { type ToolCardProps } from '../../ui/design-system/src/lib/Components/ToolCard'
 import {
   getTheFlowDown,
   introToFlow,
   redSquirrelGetStartedArticle,
-} from "../../data/articles"
+} from '../../data/articles'
 import {
   eventIndexingTool,
   fclSDK,
@@ -20,20 +20,20 @@ import {
   pythonSDK,
   swiftSDK,
   unitySDK,
-} from "../../data/tools"
-import { externalLinks } from "../external-links"
-import { metadata } from "../metadata"
+} from '../../data/tools'
+import { externalLinks } from '../external-links'
+import { metadata } from '../metadata'
 
 export const landingHeaderItems: LandingHeaderProps = {
-  buttonText: "View Course",
-  buttonUrl: "https://academy.ecdao.org/",
-  callout: "Cadence Bootcamps",
+  buttonText: 'View Course',
+  buttonUrl: 'https://academy.ecdao.org/',
+  callout: 'Cadence Bootcamps',
   description: `Learn everything about the Flow Blockchain and the Cadence smart contract programming language with Emerald Academy -
   a Flow partner for open source educational content.`,
   discordUrl: externalLinks.discord,
   githubUrl: externalLinks.github,
-  imageSrc: "https://academy.ecdao.org/thumb-beginner-cadence.png",
-  title: "Getting Started",
+  imageSrc: 'https://academy.ecdao.org/thumb-beginner-cadence.png',
+  title: 'Getting Started',
 }
 
 // const linkCard3ColumnItems: LinkCard3ColumnProps = {
@@ -136,24 +136,24 @@ export const landingHeaderItems: LandingHeaderProps = {
 // }
 
 export const linkCard2ColumnItems: LinkCard2ColumnProps = {
-  buttonText: "View Concepts",
-  buttonUrl: "/learn/concepts",
-  description: `Learn the fundamental concepts that power the overall dapp experience on Flow.`,
-  title: "Core Concepts",
+  buttonText: 'View Concepts',
+  buttonUrl: '/learn/concepts',
+  description: 'Learn the fundamental concepts that power the overall dapp experience on Flow.',
+  title: 'Core Concepts',
   items: [
     {
-      title: "Cadence",
+      title: 'Cadence',
       description:
-        "Cadence is a resource-oriented programming language that introduces new features to smart contract programming.",
-      href: "/cadence",
-      iconType: "cadence",
+        'Cadence is a resource-oriented programming language that introduces new features to smart contract programming.',
+      href: '/cadence',
+      iconType: 'cadence',
     },
     {
-      title: "Flow Client Library",
+      title: 'Flow Client Library',
       description:
-        "The Flow Client Library (FCL) JS is a package used to interact with user wallets, dapps, and the blockchain.",
-      href: "/tools/fcl-js",
-      iconType: "fcl",
+        'The Flow Client Library (FCL) JS is a package used to interact with user wallets, dapps, and the blockchain.',
+      href: '/tools/fcl-js',
+      iconType: 'fcl',
     },
   ],
 }
@@ -169,25 +169,25 @@ export const sdkCardItems: [
 ] = [httpSDK, fclSDK, goSDK, unitySDK, pythonSDK, swiftSDK, jvmSDK]
 
 export const contentNavigationListItems: ContentNavigationListProps = {
-  header: "Explore More Content",
+  header: 'Explore More Content',
   contentNavigationItems: [
     {
-      title: "Learn",
-      text: "All the resources you need to learn and build.",
-      link: "/learn",
-      icon: "learn",
+      title: 'Learn',
+      text: 'All the resources you need to learn and build.',
+      link: '/learn',
+      icon: 'learn',
     },
     {
-      title: "Tools",
-      text: "Curated list of developer tools, services, SDKs.",
-      link: "/tools",
-      icon: "tools",
+      title: 'Tools',
+      text: 'Curated list of developer tools, services, SDKs.',
+      link: '/tools',
+      icon: 'tools',
     },
     {
-      title: "Community",
+      title: 'Community',
       text: "Learn more about Flow's ecosystem and get involved.",
-      link: "/community",
-      icon: "community",
+      link: '/community',
+      icon: 'community',
     },
   ],
 }

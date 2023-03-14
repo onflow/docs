@@ -1,18 +1,21 @@
 import React from 'react'
-import { LandingHeader } from "../../Components/LandingHeader"
-import { SDKCardProps } from "../../Components/SDKCard"
-import { SDKCards } from "../../Components/SDKCards"
-import PageBackground from "../shared/PageBackground"
-import PageSection from "../shared/PageSection"
-import PageSections from "../shared/PageSections"
+import { LandingHeader } from '../../Components/LandingHeader'
+import { type SDKCardProps } from '../../Components/SDKCard'
+import { SDKCards } from '../../Components/SDKCards'
+import PageBackground from '../shared/PageBackground'
+import PageSection from '../shared/PageSection'
+import PageSections from '../shared/PageSections'
 import {
   ContentNavigationList,
-  ContentNavigationListProps,
-} from "../../Components/ContentNavigationList"
-import ToolsImage from "../../../../images/page/tools.png"
+  type ContentNavigationListProps,
+} from '../../Components/ContentNavigationList'
+import ToolsImage from '../../../../images/page/tools.png'
+import {
+  LandingPageSecondaryNav,
+  type LandingPageSecondaryNavProps,
+} from '../../Components/LandingPageSecondaryNav'
 
-
-export type ToolsPageProps = {
+export interface ToolsPageProps {
   apisAndServices: SDKCardProps[]
   contentNavigationListItems: ContentNavigationListProps
   discordUrl: string
@@ -20,6 +23,7 @@ export type ToolsPageProps = {
   githubUrl: string
   explorers: SDKCardProps[]
   sdks: SDKCardProps[]
+  secondaryNavSections: LandingPageSecondaryNavProps['sections']
   tools: SDKCardProps[]
   wallets: SDKCardProps[]
 }
@@ -32,11 +36,13 @@ const ToolsPage = ({
   explorers,
   githubUrl,
   sdks,
+  secondaryNavSections,
   tools,
   wallets,
 }: ToolsPageProps) => {
   return (
     <PageBackground gradient="tools">
+      <LandingPageSecondaryNav sections={secondaryNavSections} />
       <PageSections>
         <PageSection className="pt-0 pb-0">
           <LandingHeader

@@ -1,13 +1,14 @@
-import { ButtonLink } from "../Button"
-import { HeaderWithLink } from "../HeaderWithLink"
-import ProjectCard, { ProjectCardProps } from "../ProjectCard"
+import React from 'react'
+import { ButtonLink } from '../Button'
+import { HeaderWithLink } from '../HeaderWithLink'
+import ProjectCard, { type ProjectCardProps } from '../ProjectCard'
 
-export type ProjectCardsProps = {
+export interface ProjectCardsProps {
   projects: ProjectCardProps[]
   headerLink?: string
 }
 
-const ProjectCards = ({ projects, headerLink = "" }: ProjectCardsProps) => {
+const ProjectCards = ({ projects, headerLink = '' }: ProjectCardsProps) => {
   return (
     <div className="container">
       <HeaderWithLink className="text-h2 mb-10" headerLink={headerLink}>

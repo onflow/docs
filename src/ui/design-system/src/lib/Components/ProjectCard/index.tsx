@@ -1,12 +1,13 @@
-import { Tag } from ".."
-import StarIcon from "../../../../images/action/star.svg"
-import ChevronRightIcon from "../../../../images/arrows/chevron-right.svg"
-import GithubIcon from "../../../../images/social/github.svg"
-import TwitterIcon from "../../../../images/social/twitter.svg"
-import { User } from "../../interfaces"
-import AppLink from "../AppLink"
+import React from 'react'
+import { Tag } from '..'
+import StarIcon from '../../../../images/action/star.svg'
+import ChevronRightIcon from '../../../../images/arrows/chevron-right.svg'
+import GithubIcon from '../../../../images/social/github.svg'
+import TwitterIcon from '../../../../images/social/twitter.svg'
+import { type User } from '../../interfaces'
+import AppLink from '../AppLink'
 
-export type ProjectCardProps = {
+export interface ProjectCardProps {
   projectImage: string
   heading: string
   description: string

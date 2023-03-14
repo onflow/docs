@@ -1,6 +1,6 @@
-import { ToolsPageProps } from "@site/src/ui/design-system/src/lib/Pages/ToolsPage"
-import { externalLinks } from "../external-links"
-import { metadata } from "../metadata"
+import { type ToolsPageProps } from '@site/src/ui/design-system/src/lib/Pages/ToolsPage'
+import { externalLinks } from '../external-links'
+import { metadata } from '../metadata'
 
 import {
   accountApiTool,
@@ -44,7 +44,7 @@ import {
   flowviewTool,
   dapperSelfCustodyWallet,
   unitySDK,
-} from "../tools"
+} from '../tools'
 
 export const data: ToolsPageProps = {
   githubUrl: externalLinks.github,
@@ -100,20 +100,30 @@ export const data: ToolsPageProps = {
   contentNavigationListItems: {
     contentNavigationItems: [
       {
-        title: "Learn",
-        text: "All the resources you need to learn and build.",
-        link: "/learn",
-        icon: "learn",
+        title: 'Learn',
+        text: 'All the resources you need to learn and build.',
+        link: '/learn',
+        icon: 'learn',
       },
       {
-        title: "Community",
+        title: 'Community',
         text: "Learn more about Flow's ecosystem and get involved.",
-        link: "/community",
-        icon: "community",
+        link: '/community',
+        icon: 'community',
       },
     ],
-    header: "Explore More Content",
+    header: 'Explore More Content',
   },
+  secondaryNavSections: [
+    { title: 'Development Tools', elementId: 'development-tools' },
+    { title: 'Wallets', elementId: 'wallets' },
+    { title: 'SDKs', elementId: 'sdks' },
+    { title: 'APIs and Services', elementId: 'apis-and-services' },
+    {
+      title: 'Flow Blockchain Explorers',
+      elementId: 'flow-blockchain-explorers',
+    },
+  ],
 }
 
 export const editPageUrl = `${metadata.githubRepoBaseUrl}/blob/main/app/data/pages/tools.ts`

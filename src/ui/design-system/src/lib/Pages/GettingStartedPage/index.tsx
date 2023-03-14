@@ -1,33 +1,34 @@
-import { SocialLinksSignup } from "../../Components"
-import { ButtonLink } from "../../Components/Button"
-import { Carousel } from "../../Components/Carousel"
+import React from 'react'
+import { SocialLinksSignup } from '../../Components'
+import { ButtonLink } from '../../Components/Button'
+import { Carousel } from '../../Components/Carousel'
 import {
   ContentNavigationList,
-  ContentNavigationListProps,
-} from "../../Components/ContentNavigationList"
+  type ContentNavigationListProps,
+} from '../../Components/ContentNavigationList'
 import FeaturedArticleCard, {
-  FeaturedArticleCardProps,
-} from "../../Components/FeaturedArticleCard"
-import { HeaderWithLink } from "../../Components/HeaderWithLink"
+  type FeaturedArticleCardProps,
+} from '../../Components/FeaturedArticleCard'
+import { HeaderWithLink } from '../../Components/HeaderWithLink'
 import {
   LandingHeader,
-  LandingHeaderProps,
-} from "../../Components/LandingHeader"
+  type LandingHeaderProps,
+} from '../../Components/LandingHeader'
 import {
   LinkCard2Column,
-  LinkCard2ColumnProps,
-} from "../../Components/LinkCard2Column"
+  type LinkCard2ColumnProps,
+} from '../../Components/LinkCard2Column'
 import {
   LinkCard3Column,
-  LinkCard3ColumnProps,
-} from "../../Components/LinkCard3Column"
-import { SDKCardProps } from "../../Components/SDKCard"
-import { SDKCards } from "../../Components/SDKCards"
-import { SocialLinksSignupProps } from "../../Components/SocialLinksSignup"
-import { ToolCard, ToolCardProps } from "../../Components/ToolCard"
-import PageBackground from "../shared/PageBackground"
-import PageSection from "../shared/PageSection"
-import PageSections from "../shared/PageSections"
+  type LinkCard3ColumnProps,
+} from '../../Components/LinkCard3Column'
+import { type SDKCardProps } from '../../Components/SDKCard'
+import { SDKCards } from '../../Components/SDKCards'
+import { type SocialLinksSignupProps } from '../../Components/SocialLinksSignup'
+import { ToolCard, type ToolCardProps } from '../../Components/ToolCard'
+import PageBackground from '../shared/PageBackground'
+import PageSection from '../shared/PageSection'
+import PageSections from '../shared/PageSections'
 
 export interface GettingStartedPageProps extends SocialLinksSignupProps {
   contentNavigationListItems: ContentNavigationListProps
@@ -48,7 +49,7 @@ export interface GettingStartedPageProps extends SocialLinksSignupProps {
   ]
 }
 
-export function GettingStartedPage({
+export function GettingStartedPage ({
   contentNavigationListItems,
   discordUrl,
   discourseUrl,

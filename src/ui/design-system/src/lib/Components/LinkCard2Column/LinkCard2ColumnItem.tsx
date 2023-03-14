@@ -1,11 +1,12 @@
-import ChevronRight from "../../../../images/arrows/chevron-right.svg"
-import ExternalLinkIcon from "../../../../images/content/external-link.svg"
-import AppLink from "../AppLink"
-import { isLinkExternal } from "../../utils/isLinkExternal"
-import { LinkCard2ColumnItemContainer } from "./LinkCard2ColumnItemContainer"
-import { LinkCardIconType, LINK_CARD_ICONS } from "./icons"
+import React from 'react'
+import ChevronRight from '../../../../images/arrows/chevron-right.svg'
+import ExternalLinkIcon from '../../../../images/content/external-link.svg'
+import AppLink from '../AppLink'
+import { isLinkExternal } from '../../utils/isLinkExternal'
+import { LinkCard2ColumnItemContainer } from './LinkCard2ColumnItemContainer'
+import { type LinkCardIconType, LINK_CARD_ICONS } from './icons'
 
-export type LinkCard2ColumnItemBaseProps = {
+export interface LinkCard2ColumnItemBaseProps {
   description: string
   iconType?: LinkCardIconType
   iconAltText?: string
@@ -13,12 +14,12 @@ export type LinkCard2ColumnItemBaseProps = {
   homePage?: boolean
 }
 
-export type LinkCard2ColumnItemSingleLinkProps = {
+export interface LinkCard2ColumnItemSingleLinkProps {
   href: string
   links?: never
 }
 
-export type LinkCard2ColumnItemMultipleLinksProps = {
+export interface LinkCard2ColumnItemMultipleLinksProps {
   href?: never
   links?: Array<{
     href: string
@@ -31,12 +32,12 @@ export type LinkCard2ColumnItemLinkProps =
   | LinkCard2ColumnItemMultipleLinksProps
 
 export type LinkCard2ColumnItemProps = LinkCard2ColumnItemBaseProps &
-  LinkCard2ColumnItemLinkProps
+LinkCard2ColumnItemLinkProps
 
-export function LinkCard2ColumnItem({
+export function LinkCard2ColumnItem ({
   description,
   href,
-  iconAltText = "",
+  iconAltText = '',
   links,
   title,
   homePage,
@@ -66,7 +67,7 @@ export function LinkCard2ColumnItem({
         <p className="mt-2 text-sm text-primary-gray-300 dark:text-primary-gray-200">
           {description}
         </p>
-        {links && (
+        {(links != null) && (
           <div className="mt-3">
             {links.map(({ title, href }) => (
               <AppLink
@@ -76,11 +77,13 @@ export function LinkCard2ColumnItem({
               >
                 <span>{title}</span>
                 <span>
-                  {isLinkExternal(href) ? (
+                  {isLinkExternal(href)
+                    ? (
                     <ExternalLinkIcon />
-                  ) : (
+                      )
+                    : (
                     <ChevronRight />
-                  )}
+                      )}
                 </span>
               </AppLink>
             ))}

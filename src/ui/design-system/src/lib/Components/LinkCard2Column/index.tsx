@@ -1,11 +1,12 @@
-import clsx from "clsx"
-import { Heading } from "../Heading"
+import React from 'react'
+import clsx from 'clsx'
+import { Heading } from '../Heading'
 import {
   LinkCard2ColumnItem,
-  LinkCard2ColumnItemProps,
-} from "./LinkCard2ColumnItem"
+  type LinkCard2ColumnItemProps,
+} from './LinkCard2ColumnItem'
 
-export type LinkCard2ColumnProps = {
+export interface LinkCard2ColumnProps {
   buttonText: string
   buttonUrl: string
   description: string
@@ -16,16 +17,16 @@ export type LinkCard2ColumnProps = {
   homePage?: boolean
 }
 
-export function LinkCard2Column({
+export function LinkCard2Column ({
   items,
   bottomRounded = true,
   homePage = false,
 }: LinkCard2ColumnProps) {
   const classes = clsx(
-    "flex flex-col items-start px-4 py-12 rounded-lg bg-primary-gray-100/30 md:flex-col md:px-20",
-    homePage ? "dark:bg-[#1F232A]" : "dark:bg-primary-gray-dark",
+    'flex flex-col items-start px-4 py-12 rounded-lg bg-primary-gray-100/30 md:flex-col md:px-20',
+    homePage ? 'dark:bg-[#1F232A]' : 'dark:bg-primary-gray-dark',
     {
-      "rounded-br-none rounded-bl-none": !bottomRounded,
+      'rounded-br-none rounded-bl-none': !bottomRounded,
     }
   )
 

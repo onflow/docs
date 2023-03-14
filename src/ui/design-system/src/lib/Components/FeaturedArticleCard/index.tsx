@@ -1,8 +1,9 @@
-import clsx from "clsx"
-import { ButtonLink } from "../Button"
-import Tag from "../Tag"
+import React from 'react'
+import clsx from 'clsx'
+import { ButtonLink } from '../Button'
+import Tag from '../Tag'
 
-export type FeaturedArticleCardProps = {
+export interface FeaturedArticleCardProps {
   bg?: string
   heading: string
   tags?: string[]
@@ -12,7 +13,7 @@ export type FeaturedArticleCardProps = {
 }
 
 const FeaturedArticleCard = ({
-  bg = "bg-white dark:bg-primary-gray-dark",
+  bg = 'bg-white dark:bg-primary-gray-dark',
   heading,
   tags,
   link,
@@ -21,7 +22,7 @@ const FeaturedArticleCard = ({
 }: FeaturedArticleCardProps) => {
   return (
     <div
-      className={clsx(bg, "rounded-lg px-8 py-12 md:py-[122px] md:px-[80px]")}
+      className={clsx(bg, 'rounded-lg px-8 py-12 md:py-[122px] md:px-[80px]')}
     >
       {tags?.map((tag) => (
         <Tag name={tag} key={tag} />
