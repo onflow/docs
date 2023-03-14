@@ -22,7 +22,7 @@ yarn-error.log*
 
 /.vscode
 /temp
-/src/data 
+/src/data/doc-collections
 /docs/*
 !/docs/learn
 !/docs/quickstarts
