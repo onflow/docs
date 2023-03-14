@@ -1,17 +1,17 @@
 // @ts-check
 // Note: type annotations allow type checking and IDEs autocompletion
 require('dotenv').config()
-const lightCodeTheme = require('prism-react-renderer/themes/github');
-const darkCodeTheme = require('prism-react-renderer/themes/dracula');
+const lightCodeTheme = require('prism-react-renderer/themes/github')
+const darkCodeTheme = require('prism-react-renderer/themes/dracula')
 
-const path = require('path');
-const fs = require('fs');
+const path = require('path')
+const fs = require('fs')
 
 const docCollectionsLocation = './src/data/doc-collections'
-let cachedSources;
+let cachedSources
 
 /**
- * 
+ *
  * @returns {string[]}
  */
 const getDocFileNames = () => {
@@ -20,12 +20,12 @@ const getDocFileNames = () => {
     const files = fs.readdirSync(docCollectionPath)
     return files.filter((filename) => filename.match(/\.json$/))
   } catch (error) {
-    console.error('Unable to scan directory: ' + error);
+    console.error('Unable to scan directory: ' + error)
   }
 }
 /**
- * 
- * @param {string} filename 
+ *
+ * @param {string} filename
  * @returns {string}
  */
 const getSource = (filename) => {
@@ -34,9 +34,8 @@ const getSource = (filename) => {
     const fileContent = JSON.parse(fs.readFileSync(filePath).toString())
     return fileContent.source
   } catch (error) {
-    console.error('Cannot parse: ' + error);
+    console.error('Cannot parse: ' + error)
   }
-  
 }
 
 /**
@@ -53,14 +52,13 @@ const getSource = (filename) => {
 const getSources = () => {
   if (!cachedSources) {
     const docFilenames = getDocFileNames()
-    
+
     cachedSources = docFilenames.reduce((acc, filename) => {
       const source = getSource(filename)
       if (!source) {
         return acc
       }
       return [...acc, source]
-      
     }, [])
   }
   return cachedSources
@@ -70,15 +68,15 @@ const getSources = () => {
 const editUrl = ({ docPath }) => {
   const docPathArray = docPath.split('/')
   const repoName = docPathArray[0]
-  const sources = getSources();
+  const sources = getSources()
 
   const sourceRepo = sources.find(({ name }) => name === repoName)
   if (!sourceRepo) {
     return
   }
   const { owner, name, branch } = sourceRepo
-  const sourceDockPath = docPathArray.slice(1).join('/');
-  return `https://github.com/${owner}/${name}/tree/${branch}/docs/${sourceDockPath}`;
+  const sourceDockPath = docPathArray.slice(1).join('/')
+  return `https://github.com/${owner}/${name}/tree/${branch}/docs/${sourceDockPath}`
 }
 
 /** @type {import('@docusaurus/types').Config} */
@@ -148,6 +146,10 @@ const config = {
   themeConfig:
     /** @type {import('@docusaurus/preset-classic').ThemeConfig} */
     ({
+
+      colorMode: {
+        defaultMode: 'dark',
+      },
       // Replace with your project's social card
       image: 'img/docusaurus-social-card.jpg',
       navbar: {
@@ -159,8 +161,7 @@ const config = {
         },
         items: [
           {
-            type: 'doc',
-            docId: 'learn/welcome',
+            to: 'learn',
             position: 'left',
             label: 'Learn',
           },
@@ -179,7 +180,7 @@ const config = {
           {
             type: 'docsVersionDropdown',
             position: 'right',
-            dropdownItemsAfter: [{to: '/versions', label: 'All versions'}],
+            dropdownItemsAfter: [{ to: '/versions', label: 'All versions' }],
             dropdownActiveClassDisabled: true,
           },
           {
@@ -210,36 +211,36 @@ const config = {
             title: 'Community',
             items: [
               {
-                href: "/community",
-                label: "Ecosystem",
+                href: '/community',
+                label: 'Ecosystem',
               },
               {
-                href: "https://port.onflow.org/",
-                label: "Flow Port",
+                href: 'https://port.onflow.org/',
+                label: 'Flow Port',
               },
               {
-                href: "https://github.com/onflow/developer-grants",
-                label: "Developer Grants",
+                href: 'https://github.com/onflow/developer-grants',
+                label: 'Developer Grants',
               },
               {
-                href: "https://flow.com/flow-responsible-disclosure",
-                label: "Responsible Disclosure",
+                href: 'https://flow.com/flow-responsible-disclosure',
+                label: 'Responsible Disclosure',
               },
               {
-                href: "https://forum.onflow.org/",
-                label: "Forum",
+                href: 'https://forum.onflow.org/',
+                label: 'Forum',
               },
               {
-                href: "https://www.flowverse.co/",
-                label: "Flowverse",
+                href: 'https://www.flowverse.co/',
+                label: 'Flowverse',
               },
               {
-                href: "https://academy.ecdao.org/",
-                label: "Emerald Academy",
+                href: 'https://academy.ecdao.org/',
+                label: 'Emerald Academy',
               },
               {
-                href: "https://floats.city/",
-                label: "FLOATs (Attendance NFTs)",
+                href: 'https://floats.city/',
+                label: 'FLOATs (Attendance NFTs)',
               },
             ],
           },
@@ -274,46 +275,46 @@ const config = {
       algolia: {
         // The application ID provided by Algolia
         appId: process.env.ALGOLIA_APP_ID,
-  
+
         // Public API key: it is safe to commit it
         apiKey: process.env.ALGOLIA_API_KEY,
-  
+
         indexName: process.env.ALGOLIA_INDEX_NAME,
-  
+
         // Optional: see doc section below
         contextualSearch: true,
-  
+
         // Optional: Specify domains where the navigation should occur through window.location instead on history.push. Useful when our Algolia config crawls multiple documentation sites and we want to navigate with window.location.href to them.
         // externalUrlRegex: 'external\\.com|domain\\.com',
-  
+
         // Optional: Replace parts of the item URLs from Algolia. Useful when using the same search index for multiple deployments using a different baseUrl. You can use regexp or string in the `from` param. For example: localhost:3000 vs myCompany.com/docs
         // replaceSearchResultPathname: {
         //   from: '/docs/', // or as RegExp: /\/docs\//
         //   to: '/',
         // },
-  
+
         // Optional: Algolia search parameters
         searchParameters: {},
-  
+
         // Optional: path for search page that enabled by default (`false` to disable it)
         searchPagePath: 'search',
-  
-        //... other Algolia params
+
+        // ... other Algolia params
       },
     }),
   plugins: [
-    function tailwindPlugin(context, options) {
+    function tailwindPlugin (context, options) {
       return {
-        name: "docusaurus-tailwindcss",
-        configurePostCss(postcssOptions) {
+        name: 'docusaurus-tailwindcss',
+        configurePostCss (postcssOptions) {
           // Appends TailwindCSS and AutoPrefixer.
-          postcssOptions.plugins.push(require("tailwindcss"));
-          postcssOptions.plugins.push(require("autoprefixer"));
-          return postcssOptions;
+          postcssOptions.plugins.push(require('tailwindcss'))
+          postcssOptions.plugins.push(require('autoprefixer'))
+          return postcssOptions
         },
-      };
+      }
     },
   ]
-};
+}
 
-module.exports = config;
+module.exports = config
