@@ -1,12 +1,13 @@
-import clsx from "clsx"
-import ChevronRight from "../../../../images/arrows/chevron-right.svg"
-import ExternalLinkIcon from "../../../../images/content/external-link.svg"
-import { isLinkExternal } from "../../utils/isLinkExternal"
-import AppLink from "../AppLink"
-import Tag from "../Tag"
-import { HeaderWithLink } from "../HeaderWithLink"
+import React from 'react'
+import clsx from 'clsx'
+import ChevronRight from '../../../../images/arrows/chevron-right.svg'
+import ExternalLinkIcon from '../../../../images/content/external-link.svg'
+import { isLinkExternal } from '../../utils/isLinkExternal'
+import AppLink from '../AppLink'
+import Tag from '../Tag'
+import { HeaderWithLink } from '../HeaderWithLink'
 
-export type HomepageBrowseItemProps = {
+export interface HomepageBrowseItemProps {
   description: string
   icon?: React.ReactNode
   title: string
@@ -17,26 +18,26 @@ export type HomepageBrowseItemProps = {
   }>
 }
 
-export type HomepageBrowseProps = {
+export interface HomepageBrowseProps {
   items: HomepageBrowseItemProps[]
   topRounded?: boolean
 }
 
-export function HomepageBrowse({
+export function HomepageBrowse ({
   items,
   topRounded = true,
 }: HomepageBrowseProps) {
   const classes = clsx(
-    "grid grid-cols-1 pb-8 bg-white rounded-lg gap-x-4 dark:bg-primary-gray-dark md:grid-cols-3 md:flex-row md:px-10",
+    'grid grid-cols-1 pb-8 bg-white rounded-lg gap-x-4 dark:bg-primary-gray-dark md:grid-cols-3 md:flex-row md:px-10',
     {
-      "rounded-tr-none rounded-tl-none": !topRounded,
+      'rounded-tr-none rounded-tl-none': !topRounded,
     }
   )
 
   return (
     <div className="container">
       <div className="mb-4">
-        <HeaderWithLink className="text-h2 mb-2" headerLink={"browse-by topic"}>
+        <HeaderWithLink className="text-h2 mb-2" headerLink={'browse-by topic'}>
           Browse By Topic
         </HeaderWithLink>
         <p>
@@ -47,13 +48,13 @@ export function HomepageBrowse({
         {items.map((item, index) => (
           <div
             key={`${item.title}-header`}
-            className={clsx("px-8 pt-12 md:row-start-1", {
-              "row-start-1": index === 0,
-              "row-start-3": index === 1,
-              "row-start-5": index === 2,
-              "grid-column-start-1": index === 0,
-              "grid-column-start-2": index === 1,
-              "grid-column-start-3": index === 2,
+            className={clsx('px-8 pt-12 md:row-start-1', {
+              'row-start-1': index === 0,
+              'row-start-3': index === 1,
+              'row-start-5': index === 2,
+              'grid-column-start-1': index === 0,
+              'grid-column-start-2': index === 1,
+              'grid-column-start-3': index === 2,
             })}
           >
             <h6 className="text-h6 mb-1 flex items-center">
@@ -70,11 +71,11 @@ export function HomepageBrowse({
           <div
             key={`${item.title}-content`}
             className={clsx(
-              "divide-y divide-primary-gray-100 px-4 dark:divide-primary-gray-400 md:row-start-2 md:pb-4",
+              'divide-y divide-primary-gray-100 px-4 dark:divide-primary-gray-400 md:row-start-2 md:pb-4',
               {
-                "row-start-2": index === 0,
-                "row-start-4": index === 1,
-                "row-start-6": index === 2,
+                'row-start-2': index === 0,
+                'row-start-4': index === 1,
+                'row-start-6': index === 2,
               }
             )}
           >

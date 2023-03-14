@@ -1,20 +1,21 @@
-import Learn from "../../../../images/page/flow-learn-icon.svg"
-import Quickstart from "../../../../images/page/flow-quickstart-icon.svg"
-import Documentation from "../../../../images/page/flow-documentation-icon.svg"
+import React from 'react'
+import Learn from '../../../../images/page/flow-learn-icon.svg'
+import Quickstart from '../../../../images/page/flow-quickstart-icon.svg'
+import Documentation from '../../../../images/page/flow-documentation-icon.svg'
 
-export type HomepageStartItemIconsProps = {
+export interface HomepageStartItemIconsProps {
   icon: string
 }
 
-export function HomepageStartItemIcons({ icon }: HomepageStartItemIconsProps) {
+export function HomepageStartItemIcons ({ icon }: HomepageStartItemIconsProps) {
   switch (icon) {
-    case "learn":
+    case 'learn':
       return <Learn />
-    case "quickstart":
+    case 'quickstart':
       return <Quickstart />
-    case "documentation":
+    case 'documentation':
       return <Documentation />
     default:
-      throw new Error("Icon type not recognized")
+      throw new Error('Icon type not recognized')
   }
 }

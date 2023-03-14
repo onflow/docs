@@ -1,5 +1,5 @@
-import React from 'react';
-import Layout from '@theme/Layout';
+import React from 'react'
+import Layout from '@theme/Layout'
 import {
   allTutorials,
   architectureTutorials,
@@ -11,12 +11,12 @@ import {
   secondaryNavSections,
   videos,
   youtubeHref,
-} from "../data/pages/learn"
+} from '../data/pages/learn'
 import {
   LearnPage,
-} from "../ui/design-system/src/lib/Pages/LearnPage"
-import { getMetaTitle } from "../utils/seo.server"
-import { externalLinks } from "../data/external-links"
+} from '../ui/design-system/src/lib/Pages/LearnPage'
+import { getMetaTitle } from '../utils/seo.server'
+import { externalLinks } from '../data/external-links'
 
 const data = {
   allTutorials,
@@ -35,10 +35,10 @@ const data = {
   youtubeHref,
 }
 
-export default function Learn() {
+export default function Learn () {
   return (
     <Layout
-      title={getMetaTitle("Tools")}
+      title={getMetaTitle('Tools')}
     >
       <main>
         <LearnPage

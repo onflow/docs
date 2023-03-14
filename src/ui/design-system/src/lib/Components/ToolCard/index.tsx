@@ -1,12 +1,13 @@
-import StarIcon from "../../../../images/action/star.svg"
+import React from 'react'
+import StarIcon from '../../../../images/action/star.svg'
 import {
   default as CodeIconLightSrc,
   default as CodeIconSrc,
-} from "../../../../images/tools/tool-default.svg"
-import AppLink from "../AppLink"
-import Tag from "../Tag"
+} from '../../../../images/tools/tool-default.svg'
+import AppLink from '../AppLink'
+import Tag from '../Tag'
 
-export type ToolCardProps = {
+export interface ToolCardProps {
   authorIcon?: string
   authorName?: string
   description?: string
@@ -18,7 +19,7 @@ export type ToolCardProps = {
   title: string
 }
 
-export function ToolCard({
+export function ToolCard ({
   authorIcon,
   authorName,
   description,

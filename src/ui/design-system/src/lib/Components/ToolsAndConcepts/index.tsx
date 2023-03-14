@@ -1,12 +1,12 @@
-import { useState } from "react"
-import { TabMenu } from ".."
-import { ButtonLink } from "../Button"
-import { HeaderWithLink } from "../HeaderWithLink"
-import { ToolCard, ToolCardProps } from "../ToolCard"
-import { TutorialCardProps } from "../TutorialCard"
-import { PaginatedTutorialCardList } from "../TutorialCard/PaginatedTutorialCardList"
+import React, { useState } from 'react'
+import { TabMenu } from '..'
+import { ButtonLink } from '../Button'
+import { HeaderWithLink } from '../HeaderWithLink'
+import { ToolCard, type ToolCardProps } from '../ToolCard'
+import { type TutorialCardProps } from '../TutorialCard'
+import { PaginatedTutorialCardList } from '../TutorialCard/PaginatedTutorialCardList'
 
-export type ToolsAndConceptsProps = {
+export interface ToolsAndConceptsProps {
   tools: ToolCardProps[]
   bottomButtons?: boolean
   headerButtontext?: string
@@ -17,9 +17,9 @@ export type ToolsAndConceptsProps = {
 const ToolsAndConcepts = ({
   tools,
   concepts = [],
-  headerButtontext = "",
+  headerButtontext = '',
   bottomButtons = true,
-  headerLink = "",
+  headerLink = '',
 }: ToolsAndConceptsProps) => {
   const [selectedTabIndex, setSelectedTabIndex] = useState(0)
 
@@ -28,7 +28,7 @@ const ToolsAndConcepts = ({
       <div className="flex items-center justify-between">
         <div>
           <HeaderWithLink className="text-h2 mb-2" headerLink={headerLink}>
-            {concepts.length > 0 ? "SDKs & Tools" : "Tools"}
+            {concepts.length > 0 ? 'SDKs & Tools' : 'Tools'}
           </HeaderWithLink>
           <p>Some of our new and popular tooling to build on Flow.</p>
         </div>
@@ -42,8 +42,8 @@ const ToolsAndConcepts = ({
       </div>
       {concepts.length > 0 && (
         <TabMenu
-          tabs={[{ name: "Tools" }, { name: "Concepts" }]}
-          onTabChange={(index: number) => setSelectedTabIndex(index)}
+          tabs={[{ name: 'Tools' }, { name: 'Concepts' }]}
+          onTabChange={(index: number) => { setSelectedTabIndex(index) }}
         />
       )}
       {selectedTabIndex === 0 && (

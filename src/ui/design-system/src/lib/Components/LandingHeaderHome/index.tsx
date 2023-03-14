@@ -1,9 +1,10 @@
-import LandingImage from "../../../../images/misc/landing-home.png"
-import LandingImage2x from "../../../../images/misc/landing-home@2x.png"
-import { ButtonLink } from "../Button"
-import { LandingPageLinks } from "../LandingPageLinks"
+import React from 'react'
+import LandingImage from '../../../../images/misc/landing-home.png'
+import LandingImage2x from '../../../../images/misc/landing-home@2x.png'
+import { ButtonLink } from '../Button'
+import { LandingPageLinks } from '../LandingPageLinks'
 
-export type LandingHeaderHomeProps = {
+export interface LandingHeaderHomeProps {
   description: string
   discordUrl: string
 
@@ -16,7 +17,7 @@ export type LandingHeaderHomeProps = {
   title: string
 }
 
-export function LandingHeaderHome({
+export function LandingHeaderHome ({
   description,
   discordUrl,
   editPageUrl,

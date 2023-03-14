@@ -1,3 +1,4 @@
+import React from 'react'
 import {
   Flips,
   LandingHeaderHome,
@@ -6,21 +7,21 @@ import {
   ToolsAndConcepts,
   UpcomingEvents,
   HomepageBrowse,
-} from "../../Components"
+} from '../../Components'
 import {
   ContentNavigationList,
-  ContentNavigationListProps,
-} from "../../Components/ContentNavigationList"
-import { FlipsProps } from "../../Components/Flips"
-import { SocialLinksSignupProps } from "../../Components/SocialLinksSignup"
-import { ToolCardProps } from "../../Components/ToolCard"
-import { TutorialCardProps } from "../../Components/TutorialCard"
-import { UpcomingEventsProps } from "../../Components/UpcomingEvents"
-import PageBackground from "../shared/PageBackground"
-import PageSection from "../shared/PageSection"
-import PageSections from "../shared/PageSections"
-import { HomepageStartItemProps } from "../../Components/HomepageStartItem"
-import { HomepageBrowseItemProps } from "../../Components/HomepageBrowse"
+  type ContentNavigationListProps,
+} from '../../Components/ContentNavigationList'
+import { type FlipsProps } from '../../Components/Flips'
+import { type SocialLinksSignupProps } from '../../Components/SocialLinksSignup'
+import { type ToolCardProps } from '../../Components/ToolCard'
+import { type TutorialCardProps } from '../../Components/TutorialCard'
+import { type UpcomingEventsProps } from '../../Components/UpcomingEvents'
+import PageBackground from '../shared/PageBackground'
+import PageSection from '../shared/PageSection'
+import PageSections from '../shared/PageSections'
+import { type HomepageStartItemProps } from '../../Components/HomepageStartItem'
+import { type HomepageBrowseItemProps } from '../../Components/HomepageBrowse'
 
 export type HomePageProps = SocialLinksSignupProps & {
   concepts?: TutorialCardProps[]
@@ -66,7 +67,7 @@ const HomePage = ({
           <ToolsAndConcepts
             tools={tools}
             concepts={concepts}
-            headerLink={"sdks-and-tools"}
+            headerLink={'sdks-and-tools'}
           />
         </PageSection>
         <PageSection sectionId="flips">

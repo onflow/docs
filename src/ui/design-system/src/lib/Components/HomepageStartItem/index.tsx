@@ -1,8 +1,9 @@
-import AppLink from "../AppLink"
+import React from 'react'
+import AppLink from '../AppLink'
 import {
   HomepageStartItemIcons,
-  HomepageStartItemIconsProps,
-} from "./HomepageStartIcons"
+  type HomepageStartItemIconsProps,
+} from './HomepageStartIcons'
 
 export type HomepageStartItemProps = {
   title: string
@@ -10,7 +11,7 @@ export type HomepageStartItemProps = {
   link: string
 } & HomepageStartItemIconsProps
 
-export function HomepageStartItem({
+export function HomepageStartItem ({
   title,
   text,
   link,
@@ -25,7 +26,7 @@ export function HomepageStartItem({
         <div className="mb-3 text-primary-gray-400 dark:text-primary-gray-100">
           <HomepageStartItemIcons icon={icon} />
         </div>
-        <div className="mb-2 truncate	text-ellipsis whitespace-nowrap font-display text-lg font-bold dark:text-white lg:text-2xl">
+        <div className="mb-2 truncate text-ellipsis whitespace-nowrap font-display text-lg font-bold dark:text-white lg:text-2xl">
           {title}
         </div>
         <div className="text-start dark:text-primary-gray-100">{text}</div>
