@@ -1,29 +1,33 @@
-import React, { useMemo, useState } from "react"
-import Filter from "../../../../images/action/filter2.svg"
-import { SocialLinksSignup } from "../../Components"
-import { ButtonLink } from "../../Components/Button"
-import { HeaderWithLink } from "../../Components/HeaderWithLink"
-import { LandingHeader } from "../../Components/LandingHeader"
-import { ToggleButton } from "../../Components/ToggleButton"
-import { TutorialCardProps } from "../../Components/TutorialCard"
-import { PaginatedTutorialCardList } from "../../Components/TutorialCard/PaginatedTutorialCardList"
+import React, { useMemo, useState } from 'react'
+import Filter from '../../../../images/action/filter2.svg'
+import { SocialLinksSignup } from '../../Components'
+import { ButtonLink } from '../../Components/Button'
+import { HeaderWithLink } from '../../Components/HeaderWithLink'
+import { LandingHeader } from '../../Components/LandingHeader'
+import {
+  LandingPageSecondaryNav,
+  type LandingPageSecondaryNavProps,
+} from '../../Components/LandingPageSecondaryNav'
+import { ToggleButton } from '../../Components/ToggleButton'
+import { type TutorialCardProps } from '../../Components/TutorialCard'
+import { PaginatedTutorialCardList } from '../../Components/TutorialCard/PaginatedTutorialCardList'
 import {
   LargeVideoCard,
-  LargeVideoCardProps,
-} from "../../Components/VideoCard/LargeVideoCard"
+  type LargeVideoCardProps,
+} from '../../Components/VideoCard/LargeVideoCard'
 import {
   SmallVideoCard,
-  SmallVideoCardProps,
-} from "../../Components/VideoCard/SmallVideoCard"
-import PageBackground from "../shared/PageBackground"
-import PageSection from "../shared/PageSection"
-import PageSections from "../shared/PageSections"
-import LearnImage from "../../../../images/page/learn.png"
+  type SmallVideoCardProps,
+} from '../../Components/VideoCard/SmallVideoCard'
+import PageBackground from '../shared/PageBackground'
+import PageSection from '../shared/PageSection'
+import PageSections from '../shared/PageSections'
+import LearnImage from '../../../../images/page/learn.png'
 import {
   ContentNavigationList,
-  ContentNavigationListProps,
-} from "../../Components/ContentNavigationList"
-import { SocialLinksSignupProps } from "../../Components/SocialLinksSignup"
+  type ContentNavigationListProps,
+} from '../../Components/ContentNavigationList'
+import { type SocialLinksSignupProps } from '../../Components/SocialLinksSignup'
 
 export type LearnPageProps = SocialLinksSignupProps & {
   allTutorials: TutorialCardProps[]
@@ -33,6 +37,7 @@ export type LearnPageProps = SocialLinksSignupProps & {
   contentNavigationListItems: ContentNavigationListProps
   editPageUrl?: string
   nftTutorials: TutorialCardProps[]
+  secondaryNavSections: LandingPageSecondaryNavProps['sections']
   videos: {
     primary: LargeVideoCardProps
     secondary: SmallVideoCardProps[]
@@ -40,7 +45,7 @@ export type LearnPageProps = SocialLinksSignupProps & {
   youtubeHref: string
 }
 
-export function LearnPage({
+export function LearnPage ({
   allTutorials = [],
   architectureTutorials,
   cadenceHref,
@@ -51,6 +56,7 @@ export function LearnPage({
   editPageUrl,
   githubUrl,
   nftTutorials,
+  secondaryNavSections,
   twitterUrl,
   videos,
   youtubeHref,
@@ -61,23 +67,24 @@ export function LearnPage({
     () =>
       filters.length > 0
         ? allTutorials.filter(({ tags }) =>
-            filters.some((filter) => tags.includes(filter))
-          )
+          filters.some((filter) => tags.includes(filter))
+        )
         : allTutorials,
     [allTutorials, filters]
   )
 
-  const tags: Array<string> = Array.from(
+  const tags: string[] = Array.from(
     new Set(
-      allTutorials.reduce(
+      allTutorials.reduce<string[]>(
         (acc, { tags }) => [...acc, ...tags],
-        [] as Array<string>
+        []
       )
     )
   ).sort()
 
   return (
     <PageBackground gradient="tools">
+      <LandingPageSecondaryNav sections={secondaryNavSections} />
       <PageSections>
         <PageSection className="pt-0 pb-0">
           <LandingHeader
@@ -202,7 +209,7 @@ export function LearnPage({
               {filters.length > 0 && (
                 <button
                   className="font-semibold text-primary-blue"
-                  onClick={() => setFilters([])}
+                  onClick={() => { setFilters([]) }}
                 >
                   Clear all
                 </button>

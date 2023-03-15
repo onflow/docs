@@ -1,7 +1,6 @@
 @import "./backgrounds.css";
 @import "./fonts.css";
 @import "./colors.css";
-@import "./mdx.css";
 
 @tailwind base;
 @tailwind components;

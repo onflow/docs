@@ -52,6 +52,7 @@ export default function Learn () {
           editPageUrl={data.editPageUrl}
           githubUrl={data.githubUrl}
           nftTutorials={data.nftTutorials}
+          secondaryNavSections={data.secondaryNavSections}
           twitterUrl={data.twitterUrl}
           videos={data.videos}
           youtubeHref={data.youtubeHref}
