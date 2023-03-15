@@ -1,8 +1,9 @@
 import React from 'react'
-import DiscordIcon from "../../../../images/social/discord.svg"
-import AppLink from "../AppLink"
+import DiscordIcon from '../../../../images/social/discord.svg'
+import AppLink from '../AppLink'
+import { GithubLinks, type GithubLinksProps } from './GithubLinks'
 
-export type LandingPageLinksProps = {
+export interface LandingPageLinksProps {
   discordUrl: string
   editPageUrl?: string
   githubUrl: string
@@ -13,14 +14,14 @@ export const LandingPageLinks = ({
   editPageUrl,
   githubUrl,
 }: LandingPageLinksProps) => {
-  const links: GithubLinksProps["links"] = [
-    { href: githubUrl, title: "All onflow repositories" },
+  const links: GithubLinksProps['links'] = [
+    { href: githubUrl, title: 'All onflow repositories' },
   ]
 
   if (editPageUrl) {
     links.push({
       href: editPageUrl,
-      title: "Edit this page",
+      title: 'Edit this page',
     })
   }
 
@@ -33,6 +34,7 @@ export const LandingPageLinks = ({
       >
         <DiscordIcon />
       </AppLink>
+      <GithubLinks links={links} />
     </div>
   )
 }

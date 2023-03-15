@@ -4,24 +4,24 @@ import {
   flip,
   offset,
   shift,
-  Side,
+  type Side,
   useFloating,
-} from "@floating-ui/react-dom"
-import {} from "@headlessui/react"
-import clsx from "clsx"
-import debounce from "lodash.debounce"
-import { useCallback, useEffect, useMemo, useRef, useState } from "react"
-import ExternalLinkIcon from "../../../../images/content/external-link.svg"
-import DropdownArrowIcon from "../../../../images/misc/dropdown-arrow.svg"
-import GithubIcon from "../../../../images/social/github.svg"
-import AppLink from "../AppLink"
+} from '@floating-ui/react-dom'
+import {} from '@headlessui/react'
+import clsx from 'clsx'
+import debounce from 'lodash.debounce'
+import React, { useCallback, useEffect, useMemo, useRef, useState } from 'react'
+import ExternalLinkIcon from '../../../../images/content/external-link.svg'
+import DropdownArrowIcon from '../../../../images/misc/dropdown-arrow.svg'
+import GithubIcon from '../../../../images/social/github.svg'
+import AppLink from '../AppLink'
 
-export type GithubLink = {
+export interface GithubLink {
   href: string
   title: string
 }
 
-export type GithubLinksProps = {
+export interface GithubLinksProps {
   links: [GithubLink, ...GithubLink[]]
 }
 
@@ -44,7 +44,7 @@ export const GithubLinks = ({ links }: GithubLinksProps) => {
         shift({ padding: 5 }),
         arrow({ element: arrowRef }),
       ],
-      placement: "bottom-start",
+      placement: 'bottom-start',
       whileElementsMounted: autoUpdate,
     })
 
@@ -69,12 +69,12 @@ export const GithubLinks = ({ links }: GithubLinksProps) => {
     }
   }, [onMouseLeaveHandler])
 
-  const placementSide = placement.split("-")[0]! as Side
+  const placementSide = placement.split('-')[0]! as Side
   const staticSide = {
-    top: "bottom",
-    right: "left",
-    bottom: "top",
-    left: "right",
+    top: 'bottom',
+    right: 'left',
+    bottom: 'top',
+    left: 'right',
   }[placementSide]! as Side
 
   return (
@@ -84,27 +84,27 @@ export const GithubLinks = ({ links }: GithubLinksProps) => {
         to={links[0].href}
         className="origin-left scale-150 hover:opacity-75"
         title={links[0].href}
-        onMouseEnter={() => onMouseEnterHandler()}
+        onMouseEnter={() => { onMouseEnterHandler() }}
         onMouseLeave={() => onMouseLeaveHandler()}
       >
         <GithubIcon />
       </AppLink>
       <div
         ref={floating}
-        className={clsx("z-40", { hidden: !isHovering || links.length < 2 })}
+        className={clsx('z-40', { hidden: !isHovering || links.length < 2 })}
         style={{
           top: y ?? 0,
           left: x ?? 0,
           position: strategy,
         }}
-        onMouseEnter={() => onMouseEnterHandler()}
+        onMouseEnter={() => { onMouseEnterHandler() }}
         onMouseLeave={() => onMouseLeaveHandler()}
       >
         <div
           ref={arrowRef}
           style={{
             top: arrowData?.y,
-            [flipData?.index === 1 ? "left" : "right"]: arrowData?.x
+            [flipData?.index === 1 ? 'left' : 'right']: arrowData?.x
               ? arrowData.x + ARROW_WIDTH / 2
               : undefined,
             [staticSide]: -1 * ARROW_HEIGHT,

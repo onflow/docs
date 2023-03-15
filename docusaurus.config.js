@@ -203,11 +203,51 @@ const config = {
         style: 'dark',
         links: [
           {
-            title: 'Docs',
+            title: 'Documentation',
             items: [
               {
-                label: 'Tutorial',
-                to: '/docs/intro',
+                label: 'Getting Started',
+                to: '/getting-started',
+              },
+              {
+                label: "SDK's & Tools",
+                to: '/tools',
+              },
+              {
+                to: '/learn',
+                label: 'Learning Resources',
+              },
+              {
+                to: '/cadence',
+                label: 'Cadence',
+              },
+              {
+                to: '/mobile',
+                label: 'Mobile',
+              },
+              {
+                to: '/tools/fcl-js/',
+                label: 'FCL',
+              },
+              {
+                to: '/tools/flow-js-testing/',
+                label: 'JS Testing Library',
+              },
+              {
+                to: '/tools/flow-cli/',
+                label: 'CLI',
+              },
+              {
+                to: '/tools/emulator/',
+                label: 'Emulator',
+              },
+              {
+                href: 'https://github.com/onflow/fcl-dev-wallet',
+                label: 'Dev Wallet',
+              },
+              {
+                to: '/tools/vscode-extension/',
+                label: 'VS Code Extension',
               },
             ],
           },
@@ -215,7 +255,7 @@ const config = {
             title: 'Community',
             items: [
               {
-                href: '/community',
+                to: '/community',
                 label: 'Ecosystem',
               },
               {
@@ -245,6 +285,68 @@ const config = {
               {
                 href: 'https://floats.city/',
                 label: 'FLOATs (Attendance NFTs)',
+              },
+            ],
+          },
+          {
+            title: 'Start Building',
+            items: [
+              {
+                href: 'https://play.onflow.org/local-project',
+                label: 'Flow Playground',
+              },
+              {
+                to: '/learn/kitty-items/',
+                label: 'Kitty Items',
+              },
+              {
+                to: '/cadence/tutorial/',
+                label: 'Cadence Tutorials',
+              },
+              {
+                href: 'https://open-cadence.onflow.org',
+                label: 'Cadence Cookbook',
+              },
+              {
+                to: '/flow/core-contracts/',
+                label: 'Core Contracts & Standards',
+              },
+              {
+                href: 'https://academy.ecdao.org/',
+                label: 'Emerald DAO Bootcamp',
+              },
+            ],
+          },
+          {
+            title: 'Network',
+            items: [
+              {
+                href: 'https://status.onflow.org/',
+                label: 'Network Status',
+              },
+              {
+                href: 'https://flowscan.org/',
+                label: 'Flowscan Mainnet',
+              },
+              {
+                href: 'https://testnet.flowscan.org/',
+                label: 'Flowscan Testnet',
+              },
+              {
+                to: '/nodes/node-operation/past-sporks/',
+                label: 'Past Sporks',
+              },
+              {
+                to: '/nodes/node-operation/upcoming-sporks',
+                label: 'Upcoming Sporks',
+              },
+              {
+                to: '/nodes/node-operation/',
+                label: 'Node Operation',
+              },
+              {
+                to: '/nodes/node-operation/spork/',
+                label: 'Spork Information',
               },
             ],
           },
