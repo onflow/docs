@@ -83,7 +83,7 @@ const editUrl = ({ docPath }) => {
 const config = {
   title: 'My Site',
   tagline: 'Dinosaurs are cool',
-  favicon: 'img/favicon.ico',
+  favicon: 'favicon.ico',
 
   // Set the production url of your site here
   url: 'https://onflow.github.io',
@@ -155,7 +155,7 @@ const config = {
         defaultMode: 'dark',
       },
       // Replace with your project's social card
-      image: 'img/docusaurus-social-card.jpg',
+      image: 'img/FlowDocs_Logo_FlowLogo_Horizontal_Green_BlackText.svg',
       navbar: {
         title: 'Docs',
         logo: {
