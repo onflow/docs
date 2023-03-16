@@ -126,6 +126,14 @@ const config = {
         theme: {
           customCss: [require.resolve('./src/css/custom.css'), require.resolve('./src/ui/design-system/styles/main.css')],
         },
+        ...(process.env.GA_TRACKING_ID
+          ? {
+              gtag: {
+                trackingID: process.env.GA_TRACKING_ID,
+                anonymizeIP: true,
+              }
+            }
+          : {}),
       }),
     ],
     [
