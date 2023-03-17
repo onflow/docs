@@ -40,10 +40,10 @@ const getSource = (filename) => {
 
 /**
  * @typedef {Object} Source
- * @property {string} owner - The X Coordinate
- * @property {string} name - The Y Coordinate
- * @property {string} branch - The Y Coordinate
- * @property {string} rootPath - The Y Coordinate
+ * @property {string} owner - Repo owner
+ * @property {string} name - Repo name
+ * @property {string} branch - Repo branch
+ * @property {string} rootPath - Subrepo root path
  */
 
 /**
@@ -428,6 +428,51 @@ const config = {
         },
       }
     },
+    /** this function needs doesn't pick up hot reload event, it needs a restart */
+    function (context, options) {
+      const { siteConfig } = context
+      return {
+        name: 'docusaurus-flow-networks-plugin',
+        async loadContent () {
+          const networks = JSON.parse(fs.readFileSync(path.join(__dirname, './src/data/networks.json')).toString())
+          const sporks = JSON.parse(fs.readFileSync(path.join(__dirname, './src/data/sporks.json')).toString())
+          return {
+            networks,
+            sporks,
+          }
+        },
+        async contentLoaded ({ content, actions }) {
+          const { networks, sporks } = content
+          const { addRoute, createData } = actions
+          const networksJsonPath = await createData('networks.json', JSON.stringify(networks))
+          const sporksJsonPath = await createData('sporks.json', JSON.stringify(sporks))
+          addRoute({
+            path: `${siteConfig.baseUrl}network`,
+            exact: true,
+            component: '@site/src/components/Networks',
+            modules: {
+              networks: networksJsonPath,
+              sporks: sporksJsonPath,
+            }
+          })
+
+          networks.forEach(async (network) => {
+            const { urlPath } = network
+
+            addRoute({
+              path: `${siteConfig.baseUrl}network/${urlPath}`,
+              exact: true,
+              component: '@site/src/components/Network',
+              modules: {
+                networks: networksJsonPath,
+                sporks: sporksJsonPath,
+              }
+            })
+          })
+        }
+      }
+    }
+    // require('./plugins/networks')
   ],
   stylesheets: [
     {

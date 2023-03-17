@@ -1,7 +1,8 @@
-import { Article } from "../../interfaces"
-import { ButtonLink } from "../Button"
-import { Carousel, CarouselProps } from "../Carousel"
-import { HeaderWithLink } from "../HeaderWithLink"
+import React from 'react'
+import { type Article } from '../../interfaces'
+import { ButtonLink } from '../Button'
+import { Carousel, type CarouselProps } from '../Carousel'
+import { HeaderWithLink } from '../HeaderWithLink'
 
 export type FeaturedArticleSliderProps = CarouselProps & {
   articles: Article[]
@@ -40,15 +41,15 @@ export const FeaturedArticle = ({
 
 const FeaturedArticleSlider = ({
   articles,
-  breakpoint = "none",
-  carouselItemWidth = "w-10/12 md:w-full",
-  headerLink = "",
+  breakpoint = 'none',
+  carouselItemWidth = 'w-10/12 md:w-full',
+  headerLink = '',
   ...carouselProps
 }: FeaturedArticleSliderProps) => {
   return (
     <div className="container">
       <HeaderWithLink className="text-h2 mb-10" headerLink={headerLink}>
-        Featured article{articles.length > 0 ? "s" : ""}
+        Featured article{articles.length > 0 ? 's' : ''}
       </HeaderWithLink>
 
       <Carousel

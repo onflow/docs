@@ -1,22 +1,23 @@
-import { endOfWeek } from "date-fns"
-import ChevronLeftIcon from "../../../../images/arrows/chevron-left.svg"
+import React from 'react'
+import { endOfWeek } from 'date-fns'
+import ChevronLeftIcon from '../../../../images/arrows/chevron-left.svg'
 import {
   NetworkDetailsCard,
   Pagination,
   SocialLinksSignup,
   SporksCard,
-  TabMenu,
-} from "../../Components"
-import AppLink from "../../Components/AppLink"
-import { FeaturedArticle } from "../../Components/FeaturedArticleSlider"
-import { HeaderWithLink } from "../../Components/HeaderWithLink"
-import { SporksCardProps } from "../../Components/SporksCard"
-import { Article, StatuspageApiResponse } from "../../interfaces"
-import PageBackground from "../shared/PageBackground"
-import PageSection from "../shared/PageSection"
-import PageSections from "../shared/PageSections"
-import { dateYYYYMMDD } from "../../utils/dates"
-import { SocialLinksSignupProps } from "../../Components/SocialLinksSignup"
+  // TabMenu,
+} from '../../Components'
+import AppLink from '../../Components/AppLink'
+import { FeaturedArticle } from '../../Components/FeaturedArticleSlider'
+import { HeaderWithLink } from '../../Components/HeaderWithLink'
+import { type SporksCardProps } from '../../Components/SporksCard'
+import { type Article, type StatuspageApiResponse } from '../../interfaces'
+import PageBackground from '../shared/PageBackground'
+import PageSection from '../shared/PageSection'
+import PageSections from '../shared/PageSections'
+import { dateYYYYMMDD } from '../../utils/dates'
+import { type SocialLinksSignupProps } from '../../Components/SocialLinksSignup'
 
 export type NetworkDetailPageProps = SocialLinksSignupProps & {
   featuredArticle: Article
@@ -39,7 +40,7 @@ const NetworkDetailPage = ({
   pastSporks,
   status,
   twitterUrl,
-}: NetworkDetailPageProps) => {
+}: NetworkDetailPageProps): JSX.Element => {
   return (
     <PageBackground>
       <PageSections divided={false}>
@@ -52,18 +53,18 @@ const NetworkDetailPage = ({
               <ChevronLeftIcon /> Network
             </AppLink>
           </div>
-          <TabMenu tabs={networks} centered />
+          {/* <TabMenu tabs={networks} centered /> */}
           <div className="text-h3 md:text-h1 mt-16 mb-14 pl-4 md:text-center md:text-5xl">
             {networkName}
           </div>
           <NetworkDetailsCard
             status={
-              status?.status === "operational" ? "Healthy" : "Under Maintenance"
+              status?.status === 'operational' ? 'Healthy' : 'Under Maintenance'
             }
             statusLink="https://status.onflow.org"
             version="33"
             lastSporkDate={
-              pastSporks[0] ? dateYYYYMMDD(pastSporks[0]!.timestamp) : "N/A"
+              pastSporks[0] ? dateYYYYMMDD(pastSporks[0]!.timestamp) : 'N/A'
             }
             nextSporkDate="TBD"
           />
@@ -80,14 +81,14 @@ const NetworkDetailPage = ({
               heading={networkName}
               timestamp={endOfWeek(new Date()).toString()}
               sporkMetadata={{
-                accessNode: "access-001.mainnet15.nodes.onflow.org:9000",
+                accessNode: 'access-001.mainnet15.nodes.onflow.org:9000',
                 date: new Date().toString(),
-                rootHeight: "19050753",
+                rootHeight: '19050753',
                 rootParentId:
-                  "ac4dbf344ce96e39e15081f1dc3fbbf6dc80532e402de9a57af847d3b35df596",
+                  'ac4dbf344ce96e39e15081f1dc3fbbf6dc80532e402de9a57af847d3b35df596',
                 rootStateCommit:
-                  "641eb088e3ce1a01ff56df2d3a14372c65a7fef44c08799eb92cd7759d1d1d2a",
-                gitCommit: "f019c1dbd778ce9f92dea61349ca36003678a9ad",
+                  '641eb088e3ce1a01ff56df2d3a14372c65a7fef44c08799eb92cd7759d1d1d2a',
+                gitCommit: 'f019c1dbd778ce9f92dea61349ca36003678a9ad',
               }}
               upcoming
             />

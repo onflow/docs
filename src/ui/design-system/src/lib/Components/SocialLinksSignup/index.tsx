@@ -1,13 +1,13 @@
 import React from 'react'
-import ContentExternalLinkIcon from "../../../../images/content/external-link.svg"
-import socialLinksGradientPath from "../../../../images/gradients/social-links.svg"
-import DiscordLogo from "../../../../images/social/discord.svg"
-import DiscourseLogo from "../../../../images/social/forum.svg"
-import GithubLogo from "../../../../images/social/github.svg"
-import TwitterLogo from "../../../../images/social/twitter.svg"
-import AppLink from "../AppLink"
+import ContentExternalLinkIcon from '../../../../images/content/external-link.svg'
+import socialLinksGradientPath from '../../../../images/gradients/social-links.svg'
+import DiscordLogo from '../../../../images/social/discord.svg'
+import DiscourseLogo from '../../../../images/social/forum.svg'
+import GithubLogo from '../../../../images/social/github.svg'
+import TwitterLogo from '../../../../images/social/twitter.svg'
+import AppLink from '../AppLink'
 
-type SocialLinkProps = {
+interface SocialLinkProps {
   header: string
   description: string
   logo: any
@@ -27,7 +27,7 @@ const SocialLink = ({
     <AppLink
       to={url}
       className={`flex items-center justify-between py-6 px-2 hover:cursor-pointer hover:opacity-70 md:px-10 ${className}`}
-      style={{ borderColor: "rgba(105, 113, 126, 0.2)" }}
+      style={{ borderColor: 'rgba(105, 113, 126, 0.2)' }}
     >
       <div className="flex items-center">
         <div className="md:scale-200 scale-150 fill-black dark:fill-white">
@@ -43,7 +43,7 @@ const SocialLink = ({
   )
 }
 
-export type SocialLinksSignupProps = {
+export interface SocialLinksSignupProps {
   discordUrl: string
   discourseUrl: string
   githubUrl: string
@@ -66,7 +66,7 @@ const SocialLinksSignup = ({
       <div className="container">
         <div
           className="grid grid-cols-1 rounded-lg px-4 md:grid-cols-2 md:px-0"
-          style={{ background: "rgba(213, 221, 233, 0.3)" }}
+          style={{ background: 'rgba(213, 221, 233, 0.3)' }}
         >
           <SocialLink
             header="Github"

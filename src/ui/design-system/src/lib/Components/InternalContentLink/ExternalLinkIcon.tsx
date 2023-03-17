@@ -1,6 +1,7 @@
-export type ExternalLinkIconProps = React.ComponentPropsWithoutRef<"svg">
+import React from 'react'
+export type ExternalLinkIconProps = React.ComponentPropsWithoutRef<'svg'>
 
-function ExternalLinkIcon(props: ExternalLinkIconProps) {
+function ExternalLinkIcon (props: ExternalLinkIconProps) {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"

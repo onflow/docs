@@ -1,19 +1,20 @@
-import { Disclosure } from "@headlessui/react"
-import clsx from "clsx"
-import CopyIcon from "../../../../images/action/copy.svg"
-import ChevronDownIcon from "../../../../images/arrows/chevron-down.svg"
-import ChevronUpIcon from "../../../../images/arrows/chevron-up.svg"
-import { SporkMetadata } from "../../interfaces"
-import { dateYYYYMMDD } from "../../utils/dates"
+import React from 'react'
+import { Disclosure } from '@headlessui/react'
+import clsx from 'clsx'
+import CopyIcon from '../../../../images/action/copy.svg'
+import ChevronDownIcon from '../../../../images/arrows/chevron-down.svg'
+import ChevronUpIcon from '../../../../images/arrows/chevron-up.svg'
+import { type SporkMetadata } from '../../interfaces'
+import { dateYYYYMMDD } from '../../utils/dates'
 
-export type SporksCardProps = {
+export interface SporksCardProps {
   heading: string
   timestamp: string
   sporkMetadata: SporkMetadata
   upcoming?: boolean
 }
 
-const CardItem = ({ label, data }: { label: string; data: any }) => (
+const CardItem = ({ label, data }: { label: string, data: any }) => (
   <div className="group flex items-center justify-between p-4">
     <div className="break-all">
       <span className="block uppercase text-primary-gray-300">{label}</span>
@@ -23,7 +24,7 @@ const CardItem = ({ label, data }: { label: string; data: any }) => (
       className="hidden cursor-pointer text-primary-blue hover:text-primary-gray-400 group-hover:hidden md:group-hover:block"
       role="button"
       title={`Copy ${data}`}
-      onClick={() => navigator.clipboard.writeText(data.toString())}
+      onClick={async () => { await navigator.clipboard.writeText(data.toString()) }}
     >
       <CopyIcon />
     </div>
@@ -44,10 +45,10 @@ const Spork = ({ heading, timestamp, sporkMetadata }: SporksCardProps) => {
     <Disclosure>
       {({ open }) => {
         const cardStyles = clsx(
-          "flex-col items-center justify-between px-4 rounded-2xl hover:shadow-2xl hover:bg-primary-gray-50 dark:hover:bg-primary-gray-400/50 dark:hover:shadow-2xl-dark md:px-8",
+          'flex-col items-center justify-between px-4 rounded-2xl hover:shadow-2xl hover:bg-primary-gray-50 dark:hover:bg-primary-gray-400/50 dark:hover:shadow-2xl-dark md:px-8',
           {
-            "bg-white dark:bg-primary-gray-dark": open,
-            "dark:bg-black": !open,
+            'bg-white dark:bg-primary-gray-dark': open,
+            'dark:bg-black': !open,
           }
         )
         return (
@@ -84,7 +85,7 @@ const Spork = ({ heading, timestamp, sporkMetadata }: SporksCardProps) => {
   )
 }
 
-const UpcomingSpork = ({ heading }: Pick<SporksCardProps, "heading">) => {
+const UpcomingSpork = ({ heading }: Pick<SporksCardProps, 'heading'>) => {
   return (
     <div className="flex-col items-center justify-between rounded-2xl bg-white px-4 py-6 dark:bg-primary-gray-dark md:px-8">
       <div className="flex flex-col items-center justify-start px-2 md:flex-row">
@@ -104,15 +105,17 @@ const SporksCard = ({
   sporkMetadata,
   upcoming = false,
 }: SporksCardProps) => {
-  return upcoming ? (
+  return upcoming
+    ? (
     <UpcomingSpork heading={heading} />
-  ) : (
+      )
+    : (
     <Spork
       heading={heading}
       timestamp={timestamp}
       sporkMetadata={sporkMetadata}
     />
-  )
+      )
 }
 
 export default SporksCard

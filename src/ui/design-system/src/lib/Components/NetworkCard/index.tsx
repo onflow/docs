@@ -1,11 +1,12 @@
-import clsx from "clsx"
+import React from 'react'
+import clsx from 'clsx'
 
-import ChevronRightIcon from "../../../../images/arrows/chevron-right.svg"
-import AppLink from "../AppLink"
+import ChevronRightIcon from '../../../../images/arrows/chevron-right.svg'
+import AppLink from '../AppLink'
 
-export type NetworkCardProps = {
+export interface NetworkCardProps {
   networkName: string
-  status: "Under Maintenance" | "Healthy"
+  status: 'Under Maintenance' | 'Healthy'
   version: string
   lastSporkDate: string
   nextSporkDate: string
@@ -20,9 +21,9 @@ const NetworkCard = ({
   nextSporkDate,
   link,
 }: NetworkCardProps) => {
-  const statusClasses = clsx("rounded-full w-11 h-11 md:mb-0 mb-4", {
-    "bg-primary-red": status === "Under Maintenance",
-    "bg-green-success": status === "Healthy",
+  const statusClasses = clsx('rounded-full w-11 h-11 md:mb-0 mb-4', {
+    'bg-primary-red': status === 'Under Maintenance',
+    'bg-green-success': status === 'Healthy',
   })
 
   return (

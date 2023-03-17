@@ -23,6 +23,7 @@ yarn-error.log*
 /.vscode
 /temp
 /src/data/doc-collections
+/src/data/sporks.json
 /docs/*
 !/docs/learn
 !/docs/quickstarts
