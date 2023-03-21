@@ -2,27 +2,11 @@ import Layout from '@theme/Layout'
 import React from 'react'
 import { useLocation } from '@docusaurus/router'
 import NetworkDetailPage from '../ui/design-system/src/lib/Pages/NetworkDetailPage'
-// import { fetchNetworkStatus } from '~/cms/utils/fetch-network-status'
-// import { fetchSporks } from '~/cms/utils/fetch-sporks'
 import { featuredArticle } from '../data/pages/network'
 import { getMetaTitle } from '../utils/seo.server'
 import { externalLinks } from '../data/external-links'
 import { type Network } from '../data/networks'
 import { normalizeSporks } from '../utils/normalizeSporks'
-
-// export const loader = async ({ params }: LoaderArgs) => {
-//   const { networkName } = params
-
-//   if (!networkName) throw new Error('Missing network name')
-
-//   const network = networks.find(({ urlPath }) => urlPath === networkName)
-
-//   if (!network) throw json({ status: 'noPage' }, { status: 404 })
-
-//   const networkStatuses = await fetchNetworkStatus()
-//   const sporks = await fetchSporks()
-//   const status = networkStatuses.find(({ id }) => id === network.componentId)
-//   const pastSporks = sporks.pastSporks[network.id] || []
 
 const staticData = {
   discordUrl: externalLinks.discord,
