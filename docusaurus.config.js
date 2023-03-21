@@ -449,7 +449,7 @@ const config = {
           addRoute({
             path: `${siteConfig.baseUrl}network`,
             exact: true,
-            component: '@site/src/components/Networks',
+            component: '@site/src/components/networks',
             modules: {
               networks: networksJsonPath,
               sporks: sporksJsonPath,
@@ -462,7 +462,7 @@ const config = {
             addRoute({
               path: `${siteConfig.baseUrl}network/${urlPath}`,
               exact: true,
-              component: '@site/src/components/Network',
+              component: '@site/src/components/network',
               modules: {
                 networks: networksJsonPath,
                 sporks: sporksJsonPath,
