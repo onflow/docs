@@ -1,24 +1,26 @@
+import React from 'react'
 import {
   NetworkCard,
   // NetworkDiscordCard,
   SocialLinksSignup,
-} from "../../Components"
-import { AnnouncementCardProps } from "../../Components/AnnouncementCard"
-import { FeaturedArticle } from "../../Components/FeaturedArticleSlider"
+} from '../../Components'
+import { type AnnouncementCardProps } from '../../Components/AnnouncementCard'
+import { FeaturedArticle } from '../../Components/FeaturedArticleSlider'
 // import { HeaderWithLink } from "../../Components/HeaderWithLink"
-import { NetworkDiscordCardProps } from "../../Components/NetworkDiscordCard"
-import { SocialLinksSignupProps } from "../../Components/SocialLinksSignup"
-import { Article } from "../../interfaces"
-import { dateYYYYMMDD } from "../../utils/dates"
-import PageBackground from "../shared/PageBackground"
-import PageSection from "../shared/PageSection"
-import PageSections from "../shared/PageSections"
+import { type NetworkDiscordCardProps } from '../../Components/NetworkDiscordCard'
+import { type SocialLinksSignupProps } from '../../Components/SocialLinksSignup'
+import { type Article } from '../../interfaces'
+import { dateYYYYMMDD } from '../../utils/dates'
+import PageBackground from '../shared/PageBackground'
+import PageSection from '../shared/PageSection'
+import PageSections from '../shared/PageSections'
 
 export type NetworkPageProps = SocialLinksSignupProps & {
   announcementCards?: AnnouncementCardProps[]
   discordNetworkCards?: NetworkDiscordCardProps[]
   featuredArticle: Article
   networks: Array<{
+    id: string
     lastSporkDate?: string
     link: string
     name: string
@@ -33,23 +35,23 @@ const NetworkPage = ({
   githubUrl,
   networks,
   twitterUrl,
-}: NetworkPageProps) => (
+}: NetworkPageProps): JSX.Element => (
   <PageBackground gradient="network">
     <PageSections divided={false}>
       <PageSection>
         <div className="container">
           <h1 className="text-h1 pt-28 md:pt-[212px]">Network status</h1>
           <div className="mt-20 flex flex-col gap-4 md:gap-6">
-            {networks.map(({ name, lastSporkDate, link, status }) => (
-              <div key={name}>
+            {networks.map(({id, name, lastSporkDate, link, status }) => (
+              <div key={id}>
                 <NetworkCard
                   networkName={name}
                   status={
-                    status === "operational" ? "Healthy" : "Under Maintenance"
+                    status === 'operational' ? 'Healthy' : 'Under Maintenance'
                   }
                   version="33"
                   lastSporkDate={
-                    lastSporkDate ? dateYYYYMMDD(lastSporkDate) : ""
+                    lastSporkDate != null && Boolean(lastSporkDate) ? dateYYYYMMDD(lastSporkDate) : ''
                   }
                   nextSporkDate="TBD"
                   link={link}

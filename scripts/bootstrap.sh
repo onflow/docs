@@ -214,6 +214,14 @@ bootstrapLegacy () {
       cp -r $tempReposLocation/$name/$rootPath/. $fullDestination
     fi
   done
+
+  # copy sporks.json to data
+  sporksSource=$tempReposLocation/flow/sporks.json
+  sporksDestination="./src/data"
+  if [ -d $sporksSourceLocation ] 
+  then
+    cp $sporksSource $sporksDestination
+  fi
 }
 
 bootstrapDevPortal
