@@ -55,7 +55,7 @@ export default function NetworkPage ({ networks, sporks }: { networks: Network[]
       name: title,
       link: `/network/${network.urlPath}`,
     })),
-    pastSporks,
+    pastSporks: pastSporks[network.id] ?? [],
   }
 
   return (
@@ -69,7 +69,7 @@ export default function NetworkPage ({ networks, sporks }: { networks: Network[]
           networkName={data.networkName}
           networks={data.networks}
           pastSporks={data.pastSporks}
-          status={data.status}
+          // status={data.status}
           twitterUrl={data.twitterUrl}
         />
       </main>

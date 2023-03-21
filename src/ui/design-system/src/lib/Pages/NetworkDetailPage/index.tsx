@@ -38,7 +38,7 @@ const NetworkDetailPage = ({
   networkName,
   networks,
   pastSporks,
-  status,
+  // status,
   twitterUrl,
 }: NetworkDetailPageProps): JSX.Element => {
   return (
@@ -58,13 +58,13 @@ const NetworkDetailPage = ({
             {networkName}
           </div>
           <NetworkDetailsCard
-            status={
-              status?.status === 'operational' ? 'Healthy' : 'Under Maintenance'
-            }
+            // status={
+            //   status?.status === 'operational' ? 'Healthy' : 'Under Maintenance'
+            // }
             statusLink="https://status.onflow.org"
             version="33"
             lastSporkDate={
-              pastSporks[0] ? dateYYYYMMDD(pastSporks[0]!.timestamp) : 'N/A'
+              Boolean(pastSporks[0]) && pastSporks[0] != null ? dateYYYYMMDD(pastSporks[0].timestamp) : 'N/A'
             }
             nextSporkDate="TBD"
           />

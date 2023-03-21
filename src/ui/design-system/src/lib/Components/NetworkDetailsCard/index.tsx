@@ -3,7 +3,7 @@ import RssIcon from '../../../../images/content/rss.svg'
 import { InternalContentLink } from '../InternalContentLink'
 
 export interface NetworkDetailsCardProps {
-  status: 'Under Maintenance' | 'Healthy'
+  // status: 'Under Maintenance' | 'Healthy'
   statusLink: string
   version: string
   lastSporkDate: string
@@ -12,12 +12,12 @@ export interface NetworkDetailsCardProps {
 }
 
 const NetworkDetailsCard = ({
-  status,
-  statusLink,
+  // status,
+  // statusLink,
   version,
   lastSporkDate,
   nextSporkDate,
-}: NetworkDetailsCardProps) => {
+}: NetworkDetailsCardProps): JSX.Element => {
   return (
     <div className="container">
       <div
@@ -30,7 +30,7 @@ const NetworkDetailsCard = ({
           </p>
           {version}
         </div>
-        <div className="flex flex-col px-8 py-4">
+        {/* <div className="flex flex-col px-8 py-4">
           <p
             className="mb-2 text-xs uppercase text-primary-gray-200"
             style={{ minWidth: '148px' }}
@@ -42,7 +42,7 @@ const NetworkDetailsCard = ({
               {status}
             </InternalContentLink>
           </span>
-        </div>
+        </div> */}
         <div className="flex flex-col px-8 py-4">
           <p className="mb-2 text-xs uppercase text-primary-gray-200">
             Last Spork Date

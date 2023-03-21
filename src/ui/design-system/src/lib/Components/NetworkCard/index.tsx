@@ -6,7 +6,7 @@ import AppLink from '../AppLink'
 
 export interface NetworkCardProps {
   networkName: string
-  status: 'Under Maintenance' | 'Healthy'
+  // status: 'Under Maintenance' | 'Healthy'
   version: string
   lastSporkDate: string
   nextSporkDate: string
@@ -15,16 +15,18 @@ export interface NetworkCardProps {
 
 const NetworkCard = ({
   networkName,
-  status,
+  // status,
   version,
   lastSporkDate,
   nextSporkDate,
   link,
-}: NetworkCardProps) => {
-  const statusClasses = clsx('rounded-full w-11 h-11 md:mb-0 mb-4', {
-    'bg-primary-red': status === 'Under Maintenance',
-    'bg-green-success': status === 'Healthy',
-  })
+}: NetworkCardProps): JSX.Element => {
+  // const statusClasses = clsx('rounded-full w-11 h-11 md:mb-0 mb-4', {
+  //   'bg-primary-red': status === 'Under Maintenance',
+  //   'bg-green-success': status === 'Healthy',
+  // })
+
+  const statusClasses = 'rounded-full w-11 h-11 md:mb-0 mb-4'
 
   return (
     <AppLink
@@ -38,10 +40,10 @@ const NetworkCard = ({
         </span>
       </div>
 
-      <div className="mb-4 md:mb-0">
+      {/* <div className="mb-4 md:mb-0">
         <p className="mb-2 text-sm uppercase text-primary-gray-300">Status</p>
         {status}
-      </div>
+      </div> */}
 
       <div className="mb-4 md:mb-0">
         <p className="mb-2 text-sm uppercase text-primary-gray-300">Version</p>
