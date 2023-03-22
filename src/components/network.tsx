@@ -13,7 +13,7 @@ const staticData = {
   discourseUrl: externalLinks.discourse,
   featuredArticle,
   githubUrl: externalLinks.github,
-  status,
+  // status,
   twitterUrl: externalLinks.twitter,
 }
 

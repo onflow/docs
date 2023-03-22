@@ -32,7 +32,6 @@ export default function Networks ({ networks, sporks }: { networks: Network[] })
     ...staticData,
     networks: networksWithNameStatusLinks,
   }
-  console.log(pastSporks)
   return (
     <Layout>
       <main>
