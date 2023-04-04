@@ -15,7 +15,8 @@
     "typecheck": "tsc"
   },
   "dependencies": {
-    "@docusaurus/core": "2.3.1",
+    "@docusaurus/core": "^2.4.0",
+    "@docusaurus/plugin-client-redirects": "^2.4.0",
     "@docusaurus/preset-classic": "2.3.1",
     "@floating-ui/react-dom": "1.3.0",
     "@headlessui/react": "1.7.13",
@@ -29,7 +30,10 @@
     "date-fns": "2.29.3",
     "discord.js": "14.8.0",
     "dotenv": "16.0.3",
+    "eslint-config-prettier": "^8.8.0",
+    "eslint-plugin-prettier": "^4.2.1",
     "postcss": "8.4.21",
+    "prettier": "^2.8.7",
     "prism-react-renderer": "^1.3.5",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
