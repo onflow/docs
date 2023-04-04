@@ -1400,7 +1400,6 @@
     fs-extra "^10.1.0"
     lodash "^4.17.21"
     tslib "^2.4.0"
-
 "@docusaurus/plugin-content-blog@2.4.0":
   version "2.4.0"
   resolved "https://registry.yarnpkg.com/@docusaurus/plugin-content-blog/-/plugin-content-blog-2.4.0.tgz#50dbfbc7b51f152ae660385fd8b34076713374c3"
