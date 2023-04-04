@@ -1,14 +1,14 @@
 // @ts-check
 // Note: type annotations allow type checking and IDEs autocompletion
-require('dotenv').config()
-const lightCodeTheme = require('prism-react-renderer/themes/github')
-const darkCodeTheme = require('prism-react-renderer/themes/dracula')
+require('dotenv').config();
+const lightCodeTheme = require('prism-react-renderer/themes/github');
+const darkCodeTheme = require('prism-react-renderer/themes/dracula');
 
-const path = require('path')
-const fs = require('fs')
+const path = require('path');
+const fs = require('fs');
 
-const docCollectionsLocation = './src/data/doc-collections'
-let cachedSources
+const docCollectionsLocation = './src/data/doc-collections';
+let cachedSources;
 
 /**
  *
@@ -16,27 +16,27 @@ let cachedSources
  */
 const getDocFileNames = () => {
   try {
-    const docCollectionPath = path.join(__dirname, docCollectionsLocation, '/')
-    const files = fs.readdirSync(docCollectionPath)
-    return files.filter((filename) => filename.match(/\.json$/))
+    const docCollectionPath = path.join(__dirname, docCollectionsLocation, '/');
+    const files = fs.readdirSync(docCollectionPath);
+    return files.filter((filename) => filename.match(/\.json$/));
   } catch (error) {
-    console.error('Unable to scan directory: ' + error)
+    console.error('Unable to scan directory: ' + error);
   }
-}
+};
 /**
  *
  * @param {string} filename
  * @returns {string}
  */
 const getSource = (filename) => {
-  const filePath = path.join(__dirname, docCollectionsLocation, filename)
+  const filePath = path.join(__dirname, docCollectionsLocation, filename);
   try {
-    const fileContent = JSON.parse(fs.readFileSync(filePath).toString())
-    return fileContent.source
+    const fileContent = JSON.parse(fs.readFileSync(filePath).toString());
+    return fileContent.source;
   } catch (error) {
-    console.error('Cannot parse: ' + error)
+    console.error('Cannot parse: ' + error);
   }
-}
+};
 
 /**
  * @typedef {Object} Source
@@ -51,33 +51,33 @@ const getSource = (filename) => {
  */
 const getSources = () => {
   if (!cachedSources) {
-    const docFilenames = getDocFileNames()
+    const docFilenames = getDocFileNames();
 
     cachedSources = docFilenames.reduce((acc, filename) => {
-      const source = getSource(filename)
+      const source = getSource(filename);
       if (!source) {
-        return acc
+        return acc;
       }
-      return [...acc, source]
-    }, [])
+      return [...acc, source];
+    }, []);
   }
-  return cachedSources
-}
+  return cachedSources;
+};
 
 /** @type {import('@docusaurus/plugin-content-docs').MetadataOptions['editUrl']} */
 const editUrl = ({ docPath }) => {
-  const docPathArray = docPath.split('/')
-  const repoName = docPathArray[0]
-  const sources = getSources()
+  const docPathArray = docPath.split('/');
+  const repoName = docPathArray[0];
+  const sources = getSources();
 
-  const sourceRepo = sources.find(({ name }) => name === repoName)
+  const sourceRepo = sources.find(({ name }) => name === repoName);
   if (!sourceRepo) {
-    return
+    return;
   }
-  const { owner, name, branch } = sourceRepo
-  const sourceDockPath = docPathArray.slice(1).join('/')
-  return `https://github.com/${owner}/${name}/tree/${branch}/docs/${sourceDockPath}`
-}
+  const { owner, name, branch } = sourceRepo;
+  const sourceDockPath = docPathArray.slice(1).join('/');
+  return `https://github.com/${owner}/${name}/tree/${branch}/docs/${sourceDockPath}`;
+};
 
 /** @type {import('@docusaurus/types').Config} */
 const config = {
@@ -124,14 +124,17 @@ const config = {
         },
         blog: false,
         theme: {
-          customCss: [require.resolve('./src/css/custom.css'), require.resolve('./src/ui/design-system/styles/main.css')],
+          customCss: [
+            require.resolve('./src/css/custom.css'),
+            require.resolve('./src/ui/design-system/styles/main.css'),
+          ],
         },
         ...(process.env.GA_TRACKING_ID
           ? {
               gtag: {
                 trackingID: process.env.GA_TRACKING_ID,
                 anonymizeIP: true,
-              }
+              },
             }
           : {}),
       }),
@@ -158,7 +161,6 @@ const config = {
   themeConfig:
     /** @type {import('@docusaurus/preset-classic').ThemeConfig} */
     ({
-
       colorMode: {
         defaultMode: 'dark',
       },
@@ -204,7 +206,7 @@ const config = {
             href: 'https://onflow.org/discord',
             label: 'Discord',
             position: 'right',
-          }
+          },
         ],
       },
       footer: {
@@ -376,7 +378,7 @@ const config = {
               {
                 href: 'https://onflow.org/',
                 label: 'OnFlow',
-              }
+              },
             ],
           },
         ],
@@ -417,35 +419,78 @@ const config = {
       },
     }),
   plugins: [
-    function tailwindPlugin (context, options) {
+    function redirectPlugin() {
+      return {
+        name: '@docusaurus/plugin-client-redirects',
+        fromExtensions: ['html', 'htm'], // /myPage.html -> /myPage
+        toExtensions: ['exe', 'zip'], // /myAsset -> /myAsset.zip (if latter exists)
+        redirects: [
+          // /docs/oldDoc -> /docs/newDoc
+          {
+            to: '/docs/newDoc',
+            from: '/docs/oldDoc',
+          },
+          // Redirect from multiple old paths to the new path
+          {
+            to: '/docs/newDoc2',
+            from: ['/docs/oldDocFrom2019', '/docs/legacyDocFrom2016'],
+          },
+        ],
+        createRedirects(existingPath) {
+          if (existingPath.includes('/community')) {
+            // Redirect from /docs/team/X to /community/X and /docs/support/X to /community/X
+            return [
+              existingPath.replace('/community', '/docs/team'),
+              existingPath.replace('/community', '/docs/support'),
+            ];
+          }
+          return undefined; // Return a falsy value: no redirect created
+        },
+      };
+    },
+    function tailwindPlugin() {
       return {
         name: 'docusaurus-tailwindcss',
-        configurePostCss (postcssOptions) {
+        configurePostCss(postcssOptions) {
           // Appends TailwindCSS and AutoPrefixer.
-          postcssOptions.plugins.push(require('tailwindcss'))
-          postcssOptions.plugins.push(require('autoprefixer'))
-          return postcssOptions
+          postcssOptions.plugins.push(require('tailwindcss'));
+          postcssOptions.plugins.push(require('autoprefixer'));
+          return postcssOptions;
         },
-      }
+      };
     },
     /** this function needs doesn't pick up hot reload event, it needs a restart */
     function (context, options) {
-      const { siteConfig } = context
+      const { siteConfig } = context;
       return {
         name: 'docusaurus-flow-networks-plugin',
-        async loadContent () {
-          const networks = JSON.parse(fs.readFileSync(path.join(__dirname, './src/data/networks.json')).toString())
-          const sporks = JSON.parse(fs.readFileSync(path.join(__dirname, './src/data/sporks.json')).toString())
+        async loadContent() {
+          const networks = JSON.parse(
+            fs
+              .readFileSync(path.join(__dirname, './src/data/networks.json'))
+              .toString(),
+          );
+          const sporks = JSON.parse(
+            fs
+              .readFileSync(path.join(__dirname, './src/data/sporks.json'))
+              .toString(),
+          );
           return {
             networks,
             sporks,
-          }
+          };
         },
-        async contentLoaded ({ content, actions }) {
-          const { networks, sporks } = content
-          const { addRoute, createData } = actions
-          const networksJsonPath = await createData('networks.json', JSON.stringify(networks))
-          const sporksJsonPath = await createData('sporks.json', JSON.stringify(sporks))
+        async contentLoaded({ content, actions }) {
+          const { networks, sporks } = content;
+          const { addRoute, createData } = actions;
+          const networksJsonPath = await createData(
+            'networks.json',
+            JSON.stringify(networks),
+          );
+          const sporksJsonPath = await createData(
+            'sporks.json',
+            JSON.stringify(sporks),
+          );
           addRoute({
             path: `${siteConfig.baseUrl}network`,
             exact: true,
@@ -453,11 +498,11 @@ const config = {
             modules: {
               networks: networksJsonPath,
               sporks: sporksJsonPath,
-            }
-          })
+            },
+          });
 
           networks.forEach(async (network) => {
-            const { urlPath } = network
+            const { urlPath } = network;
 
             addRoute({
               path: `${siteConfig.baseUrl}network/${urlPath}`,
@@ -466,12 +511,12 @@ const config = {
               modules: {
                 networks: networksJsonPath,
                 sporks: sporksJsonPath,
-              }
-            })
-          })
-        }
-      }
-    }
+              },
+            });
+          });
+        },
+      };
+    },
     // require('./plugins/networks')
   ],
   stylesheets: [
@@ -483,6 +528,6 @@ const config = {
       crossorigin: 'anonymous',
     },
   ],
-}
+};
 
-module.exports = config
+module.exports = config;
