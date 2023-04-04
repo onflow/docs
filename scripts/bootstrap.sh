@@ -115,10 +115,6 @@ copyRepoFiles () {
   mkdir -p $unsortedDestination
 
   rsync -av --exclude='next/' "$source/" "$unsortedDestination"
-  if [ -d $source/next ]
-  then
-    cp -r $source/next/. $docsLocation
-  fi
 }
 
 copyDocFiles () {
