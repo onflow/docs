@@ -1,0 +1,16 @@
+[
+  {
+    "from": "/community/bounties",
+    "to": "https://flow.com/flow-responsible-disclosure"
+  },
+  {
+    "from": "/flow-token/available-wallets/",
+    "to": "/flow/flow-token/available-wallets"
+  },
+  { "from": "/staking/", "to": "/nodes/staking" },
+  {
+    "from": "/cadence/tutorial/04-non-fungible-tokens/",
+    "to": "/cadence/tutorial/05-non-fungible-tokens-1"
+  },
+  { "from": "/fusd/", "to": "/flow/fusd" }
+]
