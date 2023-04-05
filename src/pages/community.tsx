@@ -1,5 +1,5 @@
-import React from 'react'
-// import { fetchLatestTopics } from "~/cms/utils/fetch-discourse-api"
+import React, { useEffect, useState } from 'react';
+import { fetchLatestTopics } from '../utils/fetch-discourse-api';
 // import { fetchFlips } from "~/cms/utils/fetch-flips"
 import {
   contentNavigationListItems,
@@ -8,11 +8,12 @@ import {
   secondaryNavSections,
   tools,
   upcomingEvents,
-} from '../data/pages/community'
-import CommunityPage from '../ui/design-system/src/lib/Pages/CommunityPage'
-import { getMetaTitle } from '../utils/seo.server'
-import { externalLinks } from '../data/external-links'
-import Layout from '@theme/Layout'
+} from '../data/pages/community';
+import CommunityPage from '../ui/design-system/src/lib/Pages/CommunityPage';
+import { getMetaTitle } from '../utils/seo.server';
+import { externalLinks } from '../data/external-links';
+import Layout from '@theme/Layout';
+import { type ForumCellProps } from '../ui/design-system/src/lib/Components/ForumCell';
 
 // const { openFlips, goodPlacesToStartFlips } = await fetchFlips()
 // const forumTopics = await fetchLatestTopics()
@@ -23,7 +24,6 @@ const data = {
   discordUrl: externalLinks.discord,
   discourseUrl: externalLinks.discourse,
   editPageUrl,
-  forumTopics: [],
   githubUrl: externalLinks.github,
   goodPlacesToStartFlips: [],
   meta: {
@@ -34,9 +34,19 @@ const data = {
   secondaryNavSections,
   tools,
   upcomingEvents,
-}
+};
 
-export default function Page () {
+export default function Page(): JSX.Element {
+  const [forumTopics, setForumTopics] = useState<ForumCellProps[] | null>(null);
+  useEffect(() => {
+    fetchLatestTopics()
+      .then((forumTopics) => {
+        setForumTopics(forumTopics);
+      })
+      .catch((error) => {
+        console.error(error);
+      });
+  }, []);
   return (
     <Layout>
       <main>
@@ -45,7 +55,7 @@ export default function Page () {
           discordUrl={data.discordUrl}
           discourseUrl={data.discourseUrl}
           editPageUrl={data.editPageUrl}
-          forumTopics={data.forumTopics}
+          forumTopics={forumTopics ?? []}
           githubUrl={data.githubUrl}
           goodPlacesToStartFlips={data.goodPlacesToStartFlips}
           openFlips={data.openFlips}
@@ -56,5 +66,5 @@ export default function Page () {
         />
       </main>
     </Layout>
-  )
+  );
 }

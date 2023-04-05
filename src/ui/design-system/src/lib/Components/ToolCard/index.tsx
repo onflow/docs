@@ -1,25 +1,22 @@
-import React from 'react'
-import StarIcon from '../../../../images/action/star.svg'
-import {
-  default as CodeIconLightSrc,
-  default as CodeIconSrc,
-} from '../../../../images/tools/tool-default.svg'
-import AppLink from '../AppLink'
-import Tag from '../Tag'
+import React from 'react';
+import StarIcon from '../../../../images/action/star.svg';
+import CodeIconSrc from '../../../../images/tools/tool-default.svg';
+import AppLink from '../AppLink';
+import Tag from '../Tag';
 
 export interface ToolCardProps {
-  authorIcon?: string
-  authorName?: string
-  description?: string
-  iconSrc?: string
-  iconDarkModeSrc?: string
-  link: string
-  stars?: number
-  tags?: string[]
-  title: string
+  authorIcon?: string;
+  authorName?: string;
+  description?: string;
+  iconSrc?: string;
+  iconDarkModeSrc?: string;
+  link: string;
+  stars?: number;
+  tags?: string[];
+  title: string;
 }
 
-export function ToolCard ({
+export function ToolCard({
   authorIcon,
   authorName,
   description,
@@ -29,7 +26,7 @@ export function ToolCard ({
   stars,
   tags,
   title,
-}: ToolCardProps) {
+}: ToolCardProps): JSX.Element {
   return (
     <AppLink
       className="flex gap-4 rounded-lg bg-white px-8 py-6 hover:shadow-2xl dark:bg-primary-gray-dark dark:text-white dark:hover:shadow-2xl-dark"
@@ -44,7 +41,7 @@ export function ToolCard ({
         />
         <img
           className="hidden dark:block"
-          src={iconDarkModeSrc || iconSrc || CodeIconLightSrc}
+          src={iconDarkModeSrc || iconSrc || CodeIconSrc}
           alt={title}
           width={64}
         />
@@ -53,12 +50,12 @@ export function ToolCard ({
         <h5 className="text-h5">{title}</h5>
         <div className="flex items-center">
           <div className="flex shrink-0 items-center gap-2 pr-3 md:pr-4">
-            {authorIcon && (
+            {Boolean(authorIcon) && (
               <div className="h-6 w-6">
                 <img src={authorIcon} alt={authorName} className="w-full" />
               </div>
             )}
-            {authorName && (
+            {Boolean(authorName) && (
               <div className="dark:gray-400 md:leading-1 whitespace-nowrap text-sm text-gray-600 dark:text-gray-400">
                 {authorName}
               </div>
@@ -87,5 +84,5 @@ export function ToolCard ({
         </div>
       </div>
     </AppLink>
-  )
+  );
 }
