@@ -1,17 +1,17 @@
-import React, { useState } from 'react'
-import { TabMenu } from '..'
-import { ButtonLink } from '../Button'
-import { HeaderWithLink } from '../HeaderWithLink'
-import { ToolCard, type ToolCardProps } from '../ToolCard'
-import { type TutorialCardProps } from '../TutorialCard'
-import { PaginatedTutorialCardList } from '../TutorialCard/PaginatedTutorialCardList'
+import React, { useState } from 'react';
+import { TabMenu } from '..';
+import { ButtonLink } from '../Button';
+import { HeaderWithLink } from '../HeaderWithLink';
+import { ToolCard, type ToolCardProps } from '../ToolCard';
+import { type TutorialCardProps } from '../TutorialCard';
+import { PaginatedTutorialCardList } from '../TutorialCard/PaginatedTutorialCardList';
 
 export interface ToolsAndConceptsProps {
-  tools: ToolCardProps[]
-  bottomButtons?: boolean
-  headerButtontext?: string
-  concepts?: TutorialCardProps[] // Not sure what this looks like yet.
-  headerLink?: string
+  tools: ToolCardProps[];
+  bottomButtons?: boolean;
+  headerButtontext?: string;
+  concepts?: TutorialCardProps[]; // Not sure what this looks like yet.
+  headerLink?: string;
 }
 
 const ToolsAndConcepts = ({
@@ -21,7 +21,7 @@ const ToolsAndConcepts = ({
   bottomButtons = true,
   headerLink = '',
 }: ToolsAndConceptsProps) => {
-  const [selectedTabIndex, setSelectedTabIndex] = useState(0)
+  const [selectedTabIndex, setSelectedTabIndex] = useState(0);
 
   return (
     <div className="container">
@@ -43,7 +43,9 @@ const ToolsAndConcepts = ({
       {concepts.length > 0 && (
         <TabMenu
           tabs={[{ name: 'Tools' }, { name: 'Concepts' }]}
-          onTabChange={(index: number) => { setSelectedTabIndex(index) }}
+          onTabChange={(index: number) => {
+            setSelectedTabIndex(index);
+          }}
         />
       )}
       {selectedTabIndex === 0 && (
@@ -78,7 +80,7 @@ const ToolsAndConcepts = ({
         </div>
       )}
     </div>
-  )
-}
+  );
+};
 
-export default ToolsAndConcepts
+export default ToolsAndConcepts;
