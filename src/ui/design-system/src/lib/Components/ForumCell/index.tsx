@@ -1,18 +1,19 @@
-import CommentIcon from "../../../../images/arrows/message-circle.svg"
-import AppLink from "../AppLink"
+import React from 'react';
+import CommentIcon from '../../../../images/arrows/message-circle.svg';
+import AppLink from '../AppLink';
 
-export type User = {
-  profileImage: string
-  name: string
+export interface User {
+  profileImage: string;
+  name: string;
 }
 
-export type ForumCellProps = {
-  numComments: number
-  heading: string
-  subheading: string
-  participants: User[]
-  lastUpdatedDate: string
-  forumLink: string
+export interface ForumCellProps {
+  numComments: number;
+  heading: string;
+  subheading: string;
+  participants: User[];
+  lastUpdatedDate: string;
+  forumLink: string;
 }
 
 const ForumCell = ({
@@ -54,7 +55,7 @@ const ForumCell = ({
         </div>
       </div>
     </AppLink>
-  )
-}
+  );
+};
 
-export default ForumCell
+export default ForumCell;
