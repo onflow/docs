@@ -1,12 +1,12 @@
 [
   {
     "from": "/flow-token/available-wallets/",
-    "to": "/flow/flow-token/available-wallets"
+    "to": "/learn"
   },
-  { "from": "/staking/", "to": "/nodes/staking" },
+  { "from": "/staking/", "to": "/learn" },
   {
     "from": "/cadence/tutorial/04-non-fungible-tokens/",
-    "to": "/cadence/tutorial/05-non-fungible-tokens-1"
+    "to": "/cadence"
   },
-  { "from": "/fusd/", "to": "/flow/fusd" }
+  { "from": "/fusd/", "to": "/flow" }
 ]
