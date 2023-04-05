@@ -23,6 +23,13 @@ const getDocFileNames = () => {
     console.error('Unable to scan directory: ' + error);
   }
 };
+const getRedirects = () => {
+  return JSON.parse(
+    fs
+      .readFileSync(path.join(__dirname, './src/data/redirects.json'))
+      .toString(),
+  );
+};
 /**
  *
  * @param {string} filename
@@ -419,29 +426,15 @@ const config = {
       },
     }),
   plugins: [
-    function redirectPlugin() {
-      // load redirects from file
-      const redirects = JSON.parse(
-        fs
-          .readFileSync(path.join(__dirname, './src/data/redirects.json'))
-          .toString(),
-      );
-      console.log('Redirects loaded:', redirects.length);
-      return {
-        name: '@docusaurus/plugin-client-redirects',
-        redirects,
+    [
+      '@docusaurus/plugin-client-redirects',
+      {
+        redirects: getRedirects(),
         createRedirects(existingPath) {
-          const found = redirects.find((r) => r.to === existingPath);
-          if (found) {
-            console.log('Create Redirect', found.to);
-            // Redirect from /docs/team/X to /community/X and /docs/support/X to /community/X
-            return found.from;
-          }
-          // If the path is not in the redirects file, return undefined
           return undefined; // Return a falsy value: no redirect created
         },
-      };
-    },
+      },
+    ],
     function tailwindPlugin() {
       return {
         name: 'docusaurus-tailwindcss',
