@@ -431,6 +431,12 @@ const config = {
         name: '@docusaurus/plugin-client-redirects',
         redirects,
         createRedirects(existingPath) {
+          const found = redirects.find((r) => r.to === existingPath);
+          if (found) {
+            console.log('Create Redirect', found.to);
+            // Redirect from /docs/team/X to /community/X and /docs/support/X to /community/X
+            return found.from;
+          }
           // If the path is not in the redirects file, return undefined
           return undefined; // Return a falsy value: no redirect created
         },
