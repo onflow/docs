@@ -419,29 +419,33 @@ const config = {
       },
     }),
   plugins: [
-    function redirectPlugin() {
-      // load redirects from file
-      const redirects = JSON.parse(
-        fs
-          .readFileSync(path.join(__dirname, './src/data/redirects.json'))
-          .toString(),
-      );
-      console.log('Redirects loaded:', redirects.length);
-      return {
-        name: '@docusaurus/plugin-client-redirects',
-        redirects,
+    [
+      '@docusaurus/plugin-client-redirects',
+      {
+        redirects: [
+          // /docs/oldDoc -> /docs/newDoc
+          {
+            to: '/docs/newDoc',
+            from: '/docs/oldDoc',
+          },
+          // Redirect from multiple old paths to the new path
+          {
+            to: '/docs/newDoc2',
+            from: ['/docs/oldDocFrom2019', '/docs/legacyDocFrom2016'],
+          },
+        ],
         createRedirects(existingPath) {
-          const found = redirects.find((r) => r.to === existingPath);
-          if (found) {
-            console.log('Create Redirect', found.to);
+          if (existingPath.includes('/community')) {
             // Redirect from /docs/team/X to /community/X and /docs/support/X to /community/X
-            return found.from;
+            return [
+              existingPath.replace('/community', '/docs/team'),
+              existingPath.replace('/community', '/docs/support'),
+            ];
           }
-          // If the path is not in the redirects file, return undefined
           return undefined; // Return a falsy value: no redirect created
         },
-      };
-    },
+      },
+    ],
     function tailwindPlugin() {
       return {
         name: 'docusaurus-tailwindcss',
