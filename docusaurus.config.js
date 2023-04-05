@@ -426,6 +426,7 @@ const config = {
           .readFileSync(path.join(__dirname, './src/data/redirects.json'))
           .toString(),
       );
+      console.log('Redirects loaded:', redirects.length);
       return {
         name: '@docusaurus/plugin-client-redirects',
         redirects,

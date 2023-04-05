@@ -1,9 +1,5 @@
 [
   {
-    "from": "/community/bounties",
-    "to": "https://flow.com/flow-responsible-disclosure"
-  },
-  {
     "from": "/flow-token/available-wallets/",
     "to": "/flow/flow-token/available-wallets"
   },
