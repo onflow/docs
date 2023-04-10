@@ -1,0 +1,238 @@
+[
+  {
+    "repository": {
+      "owner": "onflow",
+      "name": "flow",
+      "branch": "master",
+      "data": [
+        {
+          "source": "docs/content/flow",
+          "destination": "flow",
+          "ignore": ["status.md", "index.mdx", "http-api.mdx", "sdks.mdx"]
+        },
+        {
+          "source": "docs/content/hybrid-custody",
+          "destination": "hybrid-custody"
+        },
+        {
+          "source": "docs/content/core-contracts",
+          "destination": "flow/core-contracts"
+        },
+        {
+          "source": "docs/content/contributors/",
+          "destination": "flow/developer-portal"
+        },
+        {
+          "source": "docs/content/dapp-development/",
+          "destination": "flow/dapp-development"
+        },
+        {
+          "source": "docs/content/faq/",
+          "destination": "flow/faq"
+        },
+        {
+          "source": "docs/content/faq/",
+          "destination": "flow/faq"
+        },
+        {
+          "source": "docs/content/flow-token/",
+          "destination": "flow/flow-token"
+        },
+        {
+          "source": "docs/content/fusd/",
+          "destination": "flow/fusd"
+        },
+        {
+          "source": "docs/content/nft-marketplace/",
+          "destination": "flow/nft-marketplace"
+        },
+        {
+          "source": "docs/content/concepts/",
+          "destination": "learn/concepts"
+        },
+        {
+          "source": "docs/content/kitty-items/",
+          "destination": "learn/kitty-items"
+        },
+        {
+          "source": "docs/content/nodes/",
+          "destination": "nodes"
+        },
+        {
+          "source": "docs/content/flow-port/",
+          "destination": "nodes/flow-port"
+        },
+        {
+          "source": "docs/content/node-operation/",
+          "destination": "nodes/node-operation"
+        },
+        {
+          "source": "docs/content/staking/",
+          "destination": "nodes/staking"
+        },
+        {
+          "source": "docs/content/emulator/",
+          "destination": "tools/emulator"
+        },
+        {
+          "source": "docs/content/vscode-extension/",
+          "destination": "tools/vscode-extension"
+        },
+        {
+          "source": "docs/content/unity-sdk/",
+          "destination": "tools/unity-sdk"
+        },
+        {
+          "source": "docs/content/nft-catalog/",
+          "destination": "tools/nft-catalog",
+          "ignore": ["composability-nft-guide.mdx"]
+        }
+      ]
+    }
+  },
+  {
+    "repository": {
+      "owner": "onflow",
+      "name": "cadence",
+      "branch": "master",
+      "data": [
+        {
+          "source": "docs/",
+          "destination": "cadence"
+        }
+      ]
+    }
+  },
+  {
+    "repository": {
+      "owner": "onflow",
+      "name": "flow-ft",
+      "branch": "master",
+      "data": [
+        {
+          "source": "docs/",
+          "destination": "flow/flow-ft"
+        }
+      ]
+    }
+  },
+  {
+    "repository": {
+      "owner": "onflow",
+      "name": "flow-nft",
+      "branch": "master",
+      "data": [
+        {
+          "source": "docs/",
+          "destination": "flow/flow-nft"
+        }
+      ]
+    }
+  },
+  {
+    "repository": {
+      "owner": "onflow",
+      "name": "fcl-dev-wallet",
+      "branch": "main",
+      "data": [
+        {
+          "source": "docs/",
+          "destination": "tools/fcl-dev-wallet"
+        }
+      ]
+    }
+  },
+  {
+    "repository": {
+      "owner": "onflow",
+      "name": "fcl-js",
+      "branch": "master",
+      "data": [
+        {
+          "source": "docs/",
+          "destination": "tools/fcl-js"
+        }
+      ]
+    }
+  },
+  {
+    "repository": {
+      "owner": "onflow",
+      "name": "flow-cadut",
+      "branch": "master",
+      "data": [
+        {
+          "source": "docs/",
+          "destination": "tools/flow-cadut"
+        }
+      ]
+    }
+  },
+  {
+    "repository": {
+      "owner": "onflow",
+      "name": "flow-cli",
+      "branch": "master",
+      "data": [
+        {
+          "source": "docs/",
+          "destination": "tools/flow-cli",
+          "ignore": ["template.md"]
+        }
+      ]
+    }
+  },
+  {
+    "repository": {
+      "owner": "onflow",
+      "name": "flow-go-sdk",
+      "branch": "master",
+      "data": [
+        {
+          "source": "docs/",
+          "destination": "tools/flow-go-sdk"
+        }
+      ]
+    }
+  },
+  {
+    "repository": {
+      "owner": "onflow",
+      "name": "flow-js-testing",
+      "branch": "master",
+      "data": [
+        {
+          "source": "docs/",
+          "destination": "tools/flow-js-testing"
+        }
+      ]
+    }
+  },
+  {
+    "repository": {
+      "owner": "onflow",
+      "name": "cadence-style-guide",
+      "branch": "main",
+      "data": [
+        {
+          "source": "docs/",
+          "destination": "cadence/styleguide"
+        }
+      ]
+    }
+  },
+  {
+    "repository": {
+      "owner": "onflow",
+      "name": "mobile-docs",
+      "branch": "main",
+      "data": [
+        {
+          "source": "docs/",
+          "destination": "mobile",
+          "ignore": ["flow-docs.json"]
+        }
+      ]
+    }
+  }
+]
