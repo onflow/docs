@@ -7,7 +7,8 @@
       "data": [
         {
           "source": "docs/content/flow",
-          "destination": "flow"
+          "destination": "flow",
+          "ignore": ["status.md", "index.mdx", "http-api.mdx", "sdks.mdx"]
         },
         {
           "source": "docs/content/hybrid-custody",
@@ -83,20 +84,8 @@
         },
         {
           "source": "docs/content/nft-catalog/",
-          "destination": "tools/nft-catalog"
-        }
-      ]
-    }
-  },
-  {
-    "repository": {
-      "owner": "onflow",
-      "name": "mobile-docs",
-      "branch": "main",
-      "data": [
-        {
-          "source": "docs/",
-          "destination": "mobile"
+          "destination": "tools/nft-catalog",
+          "ignore": ["composability-nft-guide.mdx"]
         }
       ]
     }
@@ -187,7 +176,8 @@
       "data": [
         {
           "source": "docs/",
-          "destination": "tools/flow-cli"
+          "destination": "tools/flow-cli",
+          "ignore": ["template.md"]
         }
       ]
     }
@@ -227,6 +217,20 @@
         {
           "source": "docs/",
           "destination": "cadence/styleguide"
+        }
+      ]
+    }
+  },
+  {
+    "repository": {
+      "owner": "onflow",
+      "name": "mobile-docs",
+      "branch": "main",
+      "data": [
+        {
+          "source": "docs/",
+          "destination": "mobile",
+          "ignore": ["flow-docs.json"]
         }
       ]
     }
