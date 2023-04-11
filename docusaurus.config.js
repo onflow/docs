@@ -10,6 +10,13 @@ const fs = require('fs');
 const docCollectionsLocation = './src/data/doc-collections';
 let cachedSources;
 
+const mixpanelOnLoad = `
+window.mixpanel.init('${process.env.MIXPANEL_PROJECT_TOKEN}');
+window.mixpanel.track('Page Viewed', {
+  'Page Name': document.title,
+  'Page URL': window.location.pathname,
+});
+`;
 /**
  *
  * @returns {string[]}
@@ -88,7 +95,7 @@ const editUrl = ({ docPath }) => {
 
 /** @type {import('@docusaurus/types').Config} */
 const config = {
-  title: 'My Site',
+  title: 'Flow docs',
   tagline: 'Dinosaurs are cool',
   favicon: 'favicon.ico',
 
@@ -513,6 +520,13 @@ const config = {
       integrity:
         'sha384-odtC+0UGzzFL/6PNoE8rX/SPcQDXBJ+uRepguP4QkPCm2LBxH3FA3y+fKSiJ+AmM',
       crossorigin: 'anonymous',
+    },
+  ],
+  scripts: [
+    {
+      src: '/docs/mixpanel.js',
+      async: true,
+      onload: mixpanelOnLoad,
     },
   ],
 };
