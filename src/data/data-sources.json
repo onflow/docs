@@ -7,85 +7,100 @@
       "data": [
         {
           "source": "docs/content/flow",
-          "destination": "flow",
-          "ignore": ["status.md", "index.mdx", "http-api.mdx", "sdks.mdx"]
+          "destination": "Flow",
+          "ignore": ["status.md", "index.mdx", "http-api.mdx", "sdks.mdx"],
+          "doCopy": true
         },
         {
           "source": "docs/content/hybrid-custody",
-          "destination": "hybrid-custody"
+          "destination": "Hybrid-custody",
+          "doCopy": false
         },
         {
           "source": "docs/content/core-contracts",
-          "destination": "flow/core-contracts"
+          "destination": "Flow/core-contracts",
+          "doCopy": true
         },
         {
           "source": "docs/content/contributors/",
-          "destination": "flow/developer-portal"
+          "destination": "Flow/developer-portal",
+          "doCopy": false
         },
         {
           "source": "docs/content/dapp-development/",
-          "destination": "flow/dapp-development"
+          "destination": "Flow/dapp-development",
+          "doCopy": false
         },
         {
           "source": "docs/content/faq/",
-          "destination": "flow/faq"
-        },
-        {
-          "source": "docs/content/faq/",
-          "destination": "flow/faq"
+          "destination": "Flow/faq",
+          "doCopy": true
         },
         {
           "source": "docs/content/flow-token/",
-          "destination": "flow/flow-token"
+          "destination": "Flow/flow-token",
+          "doCopy": true
         },
         {
           "source": "docs/content/fusd/",
-          "destination": "flow/fusd"
+          "destination": "Flow/fusd",
+          "doCopy": true
         },
         {
           "source": "docs/content/nft-marketplace/",
-          "destination": "flow/nft-marketplace"
+          "destination": "Flow/nft-marketplace",
+          "doCopy": false
         },
         {
           "source": "docs/content/concepts/",
-          "destination": "learn/concepts"
+          "destination": "1.Learn/Concepts",
+          "doCopy": true
         },
         {
           "source": "docs/content/kitty-items/",
-          "destination": "learn/kitty-items"
+          "destination": "1.Learn/Kitty-items",
+          "doCopy": false
         },
         {
           "source": "docs/content/nodes/",
-          "destination": "nodes"
+          "destination": "Nodes",
+          "doCopy": false
         },
         {
           "source": "docs/content/flow-port/",
-          "destination": "nodes/flow-port"
+          "destination": "Nodes/flow-port",
+          "doCopy": false
         },
         {
           "source": "docs/content/node-operation/",
-          "destination": "nodes/node-operation"
+          "destination": "Nodes/node-operation",
+          "doCopy": false
         },
         {
           "source": "docs/content/staking/",
-          "destination": "nodes/staking"
+          "destination": "Nodes/staking",
+          "doCopy": false
         },
         {
           "source": "docs/content/emulator/",
-          "destination": "tools/emulator"
+          "destination": "Tools/emulator",
+          "doCopy": false
         },
         {
           "source": "docs/content/vscode-extension/",
-          "destination": "tools/vscode-extension"
+          "destination": "Tools/vscode-extension",
+          "doCopy": false
         },
         {
           "source": "docs/content/unity-sdk/",
-          "destination": "tools/unity-sdk"
+          "destination": "Tools/unity-sdk",
+          "doCopy": false
         },
         {
           "source": "docs/content/nft-catalog/",
-          "destination": "tools/nft-catalog",
-          "ignore": ["composability-nft-guide.mdx"]
+          "destination": "Tools/nft-catalog",
+          "ignore": ["composability-nft-guide.mdx"],
+          "doCopy": false
         }
       ]
     }
@@ -98,7 +113,8 @@
       "data": [
         {
           "source": "docs/",
-          "destination": "cadence"
+          "destination": "Cadence",
+          "doCopy": true
         }
       ]
     }
@@ -111,7 +127,8 @@
       "data": [
         {
           "source": "docs/",
-          "destination": "flow/flow-ft"
+          "destination": "Flow/flow-ft",
+          "doCopy": false
         }
       ]
     }
@@ -124,7 +141,8 @@
       "data": [
         {
           "source": "docs/",
-          "destination": "flow/flow-nft"
+          "destination": "Flow/flow-nft",
+          "doCopy": false
         }
       ]
     }
@@ -137,7 +155,8 @@
       "data": [
         {
           "source": "docs/",
-          "destination": "tools/fcl-dev-wallet"
+          "destination": "Tools/fcl-dev-wallet",
+          "doCopy": false
         }
       ]
     }
@@ -150,7 +169,8 @@
       "data": [
         {
           "source": "docs/",
-          "destination": "tools/fcl-js"
+          "destination": "Tools/fcl-js",
+          "doCopy": false
         }
       ]
     }
@@ -163,7 +183,8 @@
       "data": [
         {
           "source": "docs/",
-          "destination": "tools/flow-cadut"
+          "destination": "Tools/flow-cadut",
+          "doCopy": false
         }
       ]
     }
@@ -176,8 +197,9 @@
       "data": [
         {
           "source": "docs/",
-          "destination": "tools/flow-cli",
-          "ignore": ["template.md"]
+          "destination": "Tools/flow-cli",
+          "ignore": ["template.md"],
+          "doCopy": false
         }
       ]
     }
@@ -190,7 +212,8 @@
       "data": [
         {
           "source": "docs/",
-          "destination": "tools/flow-go-sdk"
+          "destination": "Tools/flow-go-sdk",
+          "doCopy": false
         }
       ]
     }
@@ -203,7 +226,8 @@
       "data": [
         {
           "source": "docs/",
-          "destination": "tools/flow-js-testing"
+          "destination": "Tools/flow-js-testing",
+          "doCopy": false
         }
       ]
     }
@@ -216,7 +240,8 @@
       "data": [
         {
           "source": "docs/",
-          "destination": "cadence/styleguide"
+          "destination": "Cadence/styleguide",
+          "doCopy": true
         }
       ]
     }
@@ -229,8 +254,8 @@
       "data": [
         {
           "source": "docs/",
-          "destination": "mobile",
-          "ignore": ["flow-docs.json"]
+          "destination": "Mobile",
+          "doCopy": false
         }
       ]
     }

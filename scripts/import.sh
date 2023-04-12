@@ -32,30 +32,7 @@ fixLiCloseTag() {
 
 cleanUp() {
     echo Clean up...
-    # remove broken unused pages
-    rm $unsortedDocsLocation/flow-cli/template.md
-    rm $unsortedDocsLocation/flow/content/status.mdx
-    rm $unsortedDocsLocation/flow/content/index.mdx
-    rm $unsortedDocsLocation/flow/content/http-api.mdx
-    rm $unsortedDocsLocation/flow/content/nft-catalog/composability-nft-guide.mdx
-    rm $unsortedDocsLocation/flow/content/sdks.mdx
-
-    # remove mock docs
-    rm -rf $unsortedDocsLocation/mock-developer-doc
-
-    # fix markdown list missing closing line for lists
-    fixLiCloseTag $unsortedDocsLocation/mock-developer-doc/api.mdx
-    fixLiCloseTag $unsortedDocsLocation/mock-developer-doc/fclapi.mdx
-    fixLiCloseTag $unsortedDocsLocation/fcl-js/reference/api.md
-
-    # fix missing community link
-    sed -i.original 's/\[Flow\ community\]\((\))/[Flow community](https:\/\/developers.flow.com\/community)/' $unsortedDocsLocation/flow/content/nodes/index.mdx
-
-    # escape tag symbols for <version>
-    sed -i.original 's/<version>/<version\\>/' $unsortedDocsLocation/flow/content/unity-sdk/samples/flow-words-tutorial.md
-
-    # copy a screenshot static file to a global asset location
-    cp $unsortedDocsLocation/flow/content/concepts/flowscan-fees.png $staticAssetLocation
+    # remove broken unused pages, add specific deletes here
 
     # fix links path from missing tools
     sed -i.original 's/(\/tools\/flow-cli\//(/g' $unsortedDocsLocation/flow-cli/index.md
@@ -106,19 +83,28 @@ cloneDocReposToDest() {
             sourceFolder=$(jq -r ".[$i].repository.data[$j].source" "$repoDataSources")
             destFolder=$(jq -r ".[$i].repository.data[$j].destination" "$repoDataSources")
             ignoreFiles=$(jq -r ".[$i].repository.data[$j].ignore" "$repoDataSources")
+            doCopy=$(jq -r ".[$i].repository.data[$j].doCopy" "$repoDataSources")
             echo "Data $((j + 1))"
             echo "Source: $sourceFolder"
             echo "Dest: $destFolder"
+            echo "Do copy: $doCopy"
             echo
-            copyRepoFilesToDest $tempRepoLocation/$sourceFolder $docsLocation/$destFolder
 
-            if [ ! -z "$ignoreFiles" ]; then
-                ignore_length=$(echo "$ignoreFiles" | jq '. | length')
-                echo "$name $ignore_length Ignore files:"
-                echo "$ignoreFiles" | jq -r '.[]' | while IFS= read -r file; do
-                    echo "Removing: $docsLocation/$destFolder/$file"
-                    rm "$docsLocation/$destFolder/$file"
-                done
+            if [ "$doCopy" = "true" ]; then
+                rm -r $docsLocation/$destFolder
+                copyRepoFilesToDest $tempRepoLocation/$sourceFolder $docsLocation/$destFolder
+
+                if [ "$ignoreFiles" != "null" ]; then
+                    ignore_length=$(echo "$ignoreFiles" | jq '. | length')
+                    echo "$name $ignore_length Ignore files:"
+                    echo "$ignoreFiles" | jq -r '.[]' | while IFS= read -r file; do
+                        echo "Removing: $docsLocation/$destFolder/$file"
+                        rm "$docsLocation/$destFolder/$file"
+                    done
+                fi
+
+            else
+                echo "Skipping copy"
             fi
 
             j=$((j + 1))
@@ -134,7 +120,7 @@ copyRepoFilesToDest() {
 
     mkdir -p $destFolderName
 
-    rsync -av --exclude='next/' "$sourceFolderName/" "$destFolderName"
+    rsync -av --include='*/' --include='*.mdx' --include='*.md' --include='*.pdf' --include='*.png' --include='*.gif' --include='*.jpg' --exclude='*' "${sourceFolderName}/" "${destFolderName}/"
 }
 
 copyRepoFiles() {
