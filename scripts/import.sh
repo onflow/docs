@@ -32,7 +32,6 @@ fixLiCloseTag() {
 
 cleanUp() {
     echo Clean up...
-    # remove broken unused pages, add specific deletes here
 
     # fix links path from missing tools
     sed -i.original 's/(\/tools\/flow-cli\//(/g' $unsortedDocsLocation/flow-cli/index.md
