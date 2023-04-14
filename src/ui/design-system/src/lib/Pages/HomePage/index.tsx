@@ -1,4 +1,4 @@
-import React from 'react'
+import React from 'react';
 import {
   Flips,
   LandingHeaderHome,
@@ -7,32 +7,32 @@ import {
   ToolsAndConcepts,
   UpcomingEvents,
   HomepageBrowse,
-} from '../../Components'
+} from '../../Components';
 import {
   ContentNavigationList,
   type ContentNavigationListProps,
-} from '../../Components/ContentNavigationList'
-import { type FlipsProps } from '../../Components/Flips'
-import { type SocialLinksSignupProps } from '../../Components/SocialLinksSignup'
-import { type ToolCardProps } from '../../Components/ToolCard'
-import { type TutorialCardProps } from '../../Components/TutorialCard'
-import { type UpcomingEventsProps } from '../../Components/UpcomingEvents'
-import PageBackground from '../shared/PageBackground'
-import PageSection from '../shared/PageSection'
-import PageSections from '../shared/PageSections'
-import { type HomepageStartItemProps } from '../../Components/HomepageStartItem'
-import { type HomepageBrowseItemProps } from '../../Components/HomepageBrowse'
+} from '../../Components/ContentNavigationList';
+import { type FlipsProps } from '../../Components/Flips';
+import { type SocialLinksSignupProps } from '../../Components/SocialLinksSignup';
+import { type ToolCardProps } from '../../Components/ToolCard';
+import { type TutorialCardProps } from '../../Components/TutorialCard';
+import { type UpcomingEventsProps } from '../../Components/UpcomingEvents';
+import PageBackground from '../shared/PageBackground';
+import PageSection from '../shared/PageSection';
+import PageSections from '../shared/PageSections';
+import { type HomepageStartItemProps } from '../../Components/HomepageStartItem';
+import { type HomepageBrowseItemProps } from '../../Components/HomepageBrowse';
 
 export type HomePageProps = SocialLinksSignupProps & {
-  concepts?: TutorialCardProps[]
-  homepageStartProjectData: HomepageStartItemProps[]
-  contentNavigationListItems: ContentNavigationListProps
-  editPageUrl?: string
-  flips: FlipsProps
-  threeColumnItems: HomepageBrowseItemProps[]
-  tools: ToolCardProps[]
-  upcomingEvents: UpcomingEventsProps
-}
+  concepts?: TutorialCardProps[];
+  homepageStartProjectData: HomepageStartItemProps[];
+  contentNavigationListItems: ContentNavigationListProps;
+  editPageUrl?: string;
+  flips: FlipsProps;
+  threeColumnItems: HomepageBrowseItemProps[];
+  tools: ToolCardProps[];
+  upcomingEvents: UpcomingEventsProps;
+};
 
 const HomePage = ({
   concepts,
@@ -47,7 +47,7 @@ const HomePage = ({
   tools,
   twitterUrl,
   upcomingEvents,
-}: HomePageProps) => {
+}: HomePageProps): JSX.Element => {
   return (
     <PageBackground gradient="home">
       <LandingHeaderHome
@@ -95,7 +95,7 @@ const HomePage = ({
         twitterUrl={twitterUrl}
       />
     </PageBackground>
-  )
-}
+  );
+};
 
-export default HomePage
+export default HomePage;

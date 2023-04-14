@@ -20,7 +20,7 @@ const ToolsAndConcepts = ({
   headerButtontext = '',
   bottomButtons = true,
   headerLink = '',
-}: ToolsAndConceptsProps) => {
+}: ToolsAndConceptsProps): JSX.Element => {
   const [selectedTabIndex, setSelectedTabIndex] = useState(0);
 
   return (

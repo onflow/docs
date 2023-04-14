@@ -38,12 +38,14 @@ export function ToolCard({
           src={iconSrc || CodeIconSrc}
           alt={title}
           width={64}
+          loading="lazy"
         />
         <img
           className="hidden dark:block"
           src={iconDarkModeSrc || iconSrc || CodeIconSrc}
           alt={title}
           width={64}
+          loading="lazy"
         />
       </div>
       <div className="grow">
