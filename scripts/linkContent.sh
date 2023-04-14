@@ -8,6 +8,7 @@ repoName=$(jq -r ".name" "package.json")
 repoDataSources="../../src/data/data-sources.json"
 
 destinationPrefix="https://onflow.github.io/docs/next/"
+editDestinationPrefix="https://github.com/onflow/docs/tree/main/docs/"
 
 array_length=$(jq 'length' "$repoDataSources")
 data=""
@@ -27,11 +28,15 @@ while [ "$i" -lt "$array_length" ]; do
         if echo "$file" | grep -qE "^./$sourceFolder"; then
           filePath=$file
           filePath=${filePath#./} # remove ./ in the beginning
-          filePath=${filePath%.*} # remove .md and .mdx at the end
           filePath=${filePath#$sourceFolder}
+          docPath=${filePath%.*} # remove .md and .mdx at the end
 
-          echo "# The documentation has been moved to a new location. Please check the link below." > $file
-          echo "$destinationPrefix$destFolder/$filePath" >> $file
+          echo "### The documentation has been moved to a new location. Please check the links below." > $file
+          echo "$destinationPrefix$destFolder/$docPath" >> $file
+          echo "" >> $file
+          echo "### To edit this document, go to " >> $file
+          echo "$editDestinationPrefix$destFolder/$filePath" >> $file
+          echo "" >> $file
         fi
       done
       j=$((j + 1))
