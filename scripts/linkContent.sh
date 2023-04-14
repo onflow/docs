@@ -30,7 +30,8 @@ while [ "$i" -lt "$array_length" ]; do
           filePath=${filePath%.*} # remove .md and .mdx at the end
           filePath=${filePath#$sourceFolder}
 
-          echo "$destinationPrefix$destFolder/$filePath" > $file
+          echo "# The documentation has been moved to a new location. Please check the link below." > $file
+          echo "$destinationPrefix$destFolder/$filePath" >> $file
         fi
       done
       j=$((j + 1))
