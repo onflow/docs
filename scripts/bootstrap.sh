@@ -214,5 +214,5 @@ bootstrapLegacy
 cleanLegacy
 copyDocFiles
 cleanUp
-./scripts/import.sh
+# ./scripts/import.sh (files are now checked in)
 # reset
