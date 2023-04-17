@@ -19,16 +19,18 @@ window.mixpanel.track('Page Viewed', {
 `;
 /**
  *
- * @returns {string[]}
+ * @returns string[]
  */
 const getDocFileNames = () => {
+  let files = [];
   try {
     const docCollectionPath = path.join(__dirname, docCollectionsLocation, '/');
-    const files = fs.readdirSync(docCollectionPath);
-    return files.filter((filename) => filename.match(/\.json$/));
+    const allFiles = fs.readdirSync(docCollectionPath);
+    files = allFiles.filter((filename) => filename.match(/\.json$/)) ?? [];
   } catch (error) {
     console.error('Unable to scan directory: ' + error);
   }
+  return files;
 };
 const getRedirects = () => {
   return JSON.parse(
@@ -37,10 +39,18 @@ const getRedirects = () => {
       .toString(),
   );
 };
+
+const getDataSources = () => {
+  return JSON.parse(
+    fs
+      .readFileSync(path.join(__dirname, './src/data/data-sources.json'))
+      .toString(),
+  );
+};
 /**
  *
  * @param {string} filename
- * @returns {string}
+ * @returns string
  */
 const getSource = (filename) => {
   const filePath = path.join(__dirname, docCollectionsLocation, filename);
@@ -93,6 +103,19 @@ const editUrl = ({ docPath }) => {
   return `https://github.com/${owner}/${name}/tree/${branch}/docs/${sourceDockPath}`;
 };
 
+const ignoreFiles = () => {
+  const sources = getDataSources();
+  const files =
+    sources?.flatMap((repo) =>
+      repo?.repository?.data.flatMap(
+        (data) =>
+          data?.ignore?.map((ignore) => `${data.destination}/${ignore}`) ?? [],
+      ),
+    ) ?? [];
+  console.log('Ignore these files', files);
+  return files;
+};
+
 /** @type {import('@docusaurus/types').Config} */
 const config = {
   title: 'Flow docs',
@@ -135,6 +158,7 @@ const config = {
           rehypePlugins: [require('rehype-katex')],
           showLastUpdateTime: true,
           showLastUpdateAuthor: true,
+          exclude: ignoreFiles(),
         },
         blog: false,
         theme: {
@@ -437,6 +461,7 @@ const config = {
       '@docusaurus/plugin-client-redirects',
       {
         redirects: getRedirects(),
+        // @ts-ignore
         createRedirects(existingPath) {
           return undefined; // Return a falsy value: no redirect created
         },
@@ -454,6 +479,7 @@ const config = {
       };
     },
     /** this function needs doesn't pick up hot reload event, it needs a restart */
+    // @ts-ignore
     function (context, options) {
       const { siteConfig } = context;
       return {
@@ -475,6 +501,7 @@ const config = {
           };
         },
         async contentLoaded({ content, actions }) {
+          // @ts-ignore
           const { networks, sporks } = content;
           const { addRoute, createData } = actions;
           const networksJsonPath = await createData(
