@@ -17,6 +17,7 @@ window.mixpanel.track('Page Viewed', {
   'Page URL': window.location.pathname,
 });
 `;
+
 /**
  *
  * @returns string[]
@@ -151,6 +152,7 @@ const config = {
       /** @type {import('@docusaurus/preset-classic').Options} */
       ({
         docs: {
+          disableVersioning: true,
           sidebarPath: require.resolve('./sidebars.js'),
           routeBasePath: '/',
           editUrl,
@@ -159,6 +161,7 @@ const config = {
           showLastUpdateTime: true,
           showLastUpdateAuthor: true,
           exclude: ignoreFiles(),
+          numberPrefixParser: false,
         },
         blog: false,
         theme: {
@@ -228,12 +231,6 @@ const config = {
             docId: 'documentation',
             position: 'left',
             label: 'Documentation',
-          },
-          {
-            type: 'docsVersionDropdown',
-            position: 'right',
-            dropdownItemsAfter: [{ to: '/versions', label: 'All versions' }],
-            dropdownActiveClassDisabled: true,
           },
           {
             href: 'https://github.com/onflow',
@@ -461,7 +458,6 @@ const config = {
       '@docusaurus/plugin-client-redirects',
       {
         redirects: getRedirects(),
-        // @ts-ignore
         createRedirects(existingPath) {
           return undefined; // Return a falsy value: no redirect created
         },

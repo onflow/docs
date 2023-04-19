@@ -1,7 +1,7 @@
 ---
-title: 
-sidebar_title: 
-description: 
+title: -title-
+sidebar_title:
+description: -description-
 ---
 
 {short description}
@@ -21,6 +21,7 @@ description:
 ## Arguments
 
 ### {Argument 1}
+
 - Name: `{argument}`
 - Valid Input: `{input}`
 
@@ -29,11 +30,11 @@ description:
 ## Arguments
 
 ### Address
+
 - Name: `address`
 - Valid Input: Flow account address
 
 Flow [account address](https://docs.onflow.org/concepts/accounts-and-keys/) (prefixed with `0x` or not).
-
 
 ## Flags
 
@@ -52,6 +53,7 @@ Flow [account address](https://docs.onflow.org/concepts/accounts-and-keys/) (pre
 Specify the name of the account that will be used to sign the transaction.
 
 ### Host
+
 - Flag: `--host`
 - Valid inputs: an IP address or hostname.
 - Default: `127.0.0.1:3569` (Flow Emulator)
@@ -115,7 +117,7 @@ Specify the log level. Control how much output you want to see while command exe
 - Short Flag: `-f`
 - Valid inputs: valid filename
 
-Specify a filename for the configuration files, you can provide multiple configuration 
+Specify a filename for the configuration files, you can provide multiple configuration
 files by using `-f` flag multiple times.
 
 ### Version Check
@@ -124,9 +126,3 @@ files by using `-f` flag multiple times.
 - Default: `false`
 
 Skip version check during start up to speed up process for slow connections.
-
-
-
-
-
-

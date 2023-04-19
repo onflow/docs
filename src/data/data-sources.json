@@ -7,7 +7,7 @@
       "data": [
         {
           "source": "docs/content/flow",
-          "destination": "Flow",
+          "destination": "flow",
           "doCopy": false
         },
         {
@@ -17,37 +17,37 @@
         },
         {
           "source": "docs/content/core-contracts",
-          "destination": "Flow/core-contracts",
+          "destination": "flow/core-contracts",
           "doCopy": false
         },
         {
           "source": "docs/content/contributors/",
-          "destination": "Flow/developer-portal",
+          "destination": "flow/developer-portal",
           "doCopy": false
         },
         {
           "source": "docs/content/dapp-development/",
-          "destination": "Flow/dapp-development",
+          "destination": "flow/dapp-development",
           "doCopy": false
         },
         {
           "source": "docs/content/faq/",
-          "destination": "Flow/faq",
+          "destination": "flow/faq",
           "doCopy": false
         },
         {
           "source": "docs/content/flow-token/",
-          "destination": "Flow/flow-token",
+          "destination": "flow/flow-token",
           "doCopy": false
         },
         {
           "source": "docs/content/fusd/",
-          "destination": "Flow/fusd",
+          "destination": "flow/fusd",
           "doCopy": false
         },
         {
           "source": "docs/content/nft-marketplace/",
-          "destination": "Flow/nft-marketplace",
+          "destination": "flow/nft-marketplace",
           "doCopy": false
         },
         {
@@ -62,42 +62,42 @@
         },
         {
           "source": "docs/content/nodes/",
-          "destination": "Nodes",
+          "destination": "nodes",
           "doCopy": false
         },
         {
           "source": "docs/content/flow-port/",
-          "destination": "Nodes/flow-port",
+          "destination": "nodes/flow-port",
           "doCopy": false
         },
         {
           "source": "docs/content/node-operation/",
-          "destination": "Nodes/node-operation",
+          "destination": "nodes/node-operation",
           "doCopy": false
         },
         {
           "source": "docs/content/staking/",
-          "destination": "Nodes/staking",
+          "destination": "nodes/staking",
           "doCopy": false
         },
         {
           "source": "docs/content/emulator/",
-          "destination": "Tools/emulator",
+          "destination": "tools/emulator",
           "doCopy": false
         },
         {
           "source": "docs/content/vscode-extension/",
-          "destination": "Tools/vscode-extension",
+          "destination": "tools/vscode-extension",
           "doCopy": false
         },
         {
           "source": "docs/content/unity-sdk/",
-          "destination": "Tools/unity-sdk",
+          "destination": "tools/unity-sdk",
           "doCopy": false
         },
         {
           "source": "docs/content/nft-catalog/",
-          "destination": "Tools/nft-catalog",
+          "destination": "tools/nft-catalog",
           "ignore": ["composability-nft-guide.mdx"],
           "doCopy": false
         }
@@ -126,7 +126,7 @@
       "data": [
         {
           "source": "docs/",
-          "destination": "Flow/flow-ft",
+          "destination": "flow/flow-ft",
           "doCopy": false
         }
       ]
@@ -140,7 +140,7 @@
       "data": [
         {
           "source": "docs/",
-          "destination": "Flow/flow-nft",
+          "destination": "flow/flow-nft",
           "doCopy": false
         }
       ]
@@ -154,7 +154,7 @@
       "data": [
         {
           "source": "docs/",
-          "destination": "Tools/fcl-dev-wallet",
+          "destination": "tools/fcl-dev-wallet",
           "doCopy": false
         }
       ]
@@ -168,7 +168,7 @@
       "data": [
         {
           "source": "docs/",
-          "destination": "Tools/fcl-js",
+          "destination": "tools/fcl-js",
           "doCopy": false
         }
       ]
@@ -182,7 +182,7 @@
       "data": [
         {
           "source": "docs/",
-          "destination": "Tools/flow-cadut",
+          "destination": "tools/flow-cadut",
           "doCopy": false
         }
       ]
@@ -196,7 +196,7 @@
       "data": [
         {
           "source": "docs/",
-          "destination": "Tools/flow-cli",
+          "destination": "tools/flow-cli",
           "ignore": ["template.md"],
           "doCopy": false
         }
@@ -211,7 +211,7 @@
       "data": [
         {
           "source": "docs/",
-          "destination": "Tools/flow-go-sdk",
+          "destination": "tools/flow-go-sdk",
           "doCopy": false
         }
       ]
@@ -225,7 +225,7 @@
       "data": [
         {
           "source": "docs/",
-          "destination": "Tools/flow-js-testing",
+          "destination": "tools/flow-js-testing",
           "doCopy": false
         }
       ]
