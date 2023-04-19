@@ -23,7 +23,6 @@ yarn-error.log*
 /.vscode
 /temp
 /src/data/doc-collections
-/src/data/sporks.json
 /docs/unsorted
 
 versioned_docs
