@@ -216,21 +216,39 @@ const config = {
         },
         items: [
           {
-            to: 'learn',
+            to: '1. Home/Introduction',
             position: 'left',
-            label: 'Learn',
+            label: 'Home',
           },
           {
-            type: 'doc',
-            docId: 'quickstarts',
+            to: '2. Concepts/Introduction',
             position: 'left',
-            label: 'Quickstarts',
+            label: 'Concepts',
           },
           {
-            type: 'doc',
-            docId: 'documentation',
+            to: '3. Guides & Tutorials/Introduction',
             position: 'left',
-            label: 'Documentation',
+            label: 'Guides & Tutorials',
+          },
+          {
+            to: '4. Cadence/Introduction',
+            position: 'left',
+            label: 'Cadence',
+          },
+          {
+            to: '5. APIs & Tooling/Introduction',
+            position: 'left',
+            label: 'APIs & Tooling',
+          },
+          {
+            to: '6. References/Introduction',
+            position: 'left',
+            label: 'References',
+          },
+          {
+            to: '7. Community Resources/Introduction',
+            position: 'left',
+            label: 'Community Resources',
           },
           {
             href: 'https://github.com/onflow',
