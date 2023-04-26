@@ -1,169 +1,169 @@
-import FlowDocsLogo from "../../../../images/logos/flow-docs-logo.svg"
-import OnFlowIcon from "../../../../images/logos/flow-icon-bw-light.svg"
-import DiscordIcon from "../../../../images/social/discord-light.svg"
-import ForumIcon from "../../../../images/social/forum-light.svg"
-import GithubIcon from "../../../../images/social/github-light.svg"
-import AppLink from "../AppLink"
+import FlowDocsLogo from '../../../../images/logos/flow-docs-logo.svg';
+import OnFlowIcon from '../../../../images/logos/flow-icon-bw-light.svg';
+import DiscordIcon from '../../../../images/social/discord-light.svg';
+import ForumIcon from '../../../../images/social/forum-light.svg';
+import GithubIcon from '../../../../images/social/github-light.svg';
+import AppLink from '../AppLink';
 
 // reduce repetition of the section layout in Footer component
 const footerSections = [
   {
-    header: "Documentation",
+    header: 'Documentation',
     links: [
       {
-        link: "/getting-started",
-        text: "Getting Started",
+        link: '/getting-started',
+        text: 'Getting Started',
       },
       {
-        link: "/tools",
+        link: '/tools',
         text: "SDK's & Tools",
       },
       {
-        link: "/learn",
-        text: "Learning Resources",
+        link: '/learn',
+        text: 'Learning Resources',
       },
       {
-        link: "/cadence",
-        text: "Cadence",
+        link: '/cadence',
+        text: 'Cadence',
       },
       {
-        link: "/mobile",
-        text: "Mobile",
+        link: '/mobile',
+        text: 'Mobile',
       },
       {
-        link: "/tools/fcl-js/",
-        text: "FCL",
+        link: '/tools/fcl-js/',
+        text: 'FCL',
       },
       {
-        link: "/tools/flow-js-testing/",
-        text: "JS Testing Library",
+        link: '/tools/flow-js-testing/',
+        text: 'JS Testing Library',
       },
       {
-        link: "/tools/flow-cli/",
-        text: "CLI",
+        link: '/tools/flow-cli/',
+        text: 'CLI',
       },
       {
-        link: "/tools/emulator/",
-        text: "Emulator",
+        link: '/tools/emulator/',
+        text: 'Emulator',
       },
       {
-        link: "https://github.com/onflow/fcl-dev-wallet",
-        text: "Dev Wallet",
+        link: 'https://github.com/onflow/fcl-dev-wallet',
+        text: 'Dev Wallet',
       },
       {
-        link: "/tools/vscode-extension/",
-        text: "VS Code Extension",
+        link: '/tools/vscode-extension/',
+        text: 'VS Code Extension',
       },
     ],
   },
   {
-    header: "Community",
+    header: 'Community',
     links: [
       {
-        link: "/community",
-        text: "Ecosystem",
+        link: '/community',
+        text: 'Ecosystem',
       },
       {
-        link: "https://port.onflow.org/",
-        text: "Flow Port",
+        link: 'https://port.onflow.org/',
+        text: 'Flow Port',
       },
       {
-        link: "https://github.com/onflow/developer-grants",
-        text: "Developer Grants",
+        link: 'https://github.com/onflow/developer-grants',
+        text: 'Developer Grants',
       },
       {
-        link: "https://flow.com/flow-responsible-disclosure",
-        text: "Responsible Disclosure",
+        link: 'https://flow.com/flow-responsible-disclosure',
+        text: 'Responsible Disclosure',
       },
       {
-        link: "https://forum.onflow.org/",
-        text: "Forum",
+        link: 'https://forum.onflow.org/',
+        text: 'Forum',
       },
       {
-        link: "https://www.flowverse.co/",
-        text: "Flowverse",
+        link: 'https://www.flowverse.co/',
+        text: 'Flowverse',
       },
       {
-        link: "https://academy.ecdao.org/",
-        text: "Emerald Academy",
+        link: 'https://academy.ecdao.org/',
+        text: 'Emerald Academy',
       },
       {
-        link: "https://floats.city/",
-        text: "FLOATs (Attendance NFTs)",
+        link: 'https://floats.city/',
+        text: 'FLOATs (Attendance NFTs)',
       },
     ],
   },
   {
-    header: "Start Building",
+    header: 'Start Building',
     links: [
       {
-        link: "https://play.onflow.org/local-project",
-        text: "Flow Playground",
+        link: 'https://play.onflow.org/',
+        text: 'Flow Playground',
       },
       {
-        link: "/learn/kitty-items/",
-        text: "Kitty Items",
+        link: '/learn/kitty-items/',
+        text: 'Kitty Items',
       },
       {
-        link: "/cadence/tutorial/",
-        text: "Cadence Tutorials",
+        link: '/cadence/tutorial/',
+        text: 'Cadence Tutorials',
       },
       {
-        link: "https://open-cadence.onflow.org",
-        text: "Cadence Cookbook",
+        link: 'https://open-cadence.onflow.org',
+        text: 'Cadence Cookbook',
       },
       {
-        link: "/flow/core-contracts/",
-        text: "Core Contracts & Standards",
+        link: '/flow/core-contracts/',
+        text: 'Core Contracts & Standards',
       },
       {
-        link: "https://academy.ecdao.org/",
-        text: "Emerald DAO Bootcamp",
+        link: 'https://academy.ecdao.org/',
+        text: 'Emerald DAO Bootcamp',
       },
     ],
   },
   {
-    header: "Network",
+    header: 'Network',
     links: [
       {
-        link: "https://status.onflow.org/",
-        text: "Network Status",
+        link: 'https://status.onflow.org/',
+        text: 'Network Status',
       },
       {
-        link: "https://flowscan.org/",
-        text: "Flowscan Mainnet",
+        link: 'https://flowscan.org/',
+        text: 'Flowscan Mainnet',
       },
       {
-        link: "https://testnet.flowscan.org/",
-        text: "Flowscan Testnet",
+        link: 'https://testnet.flowscan.org/',
+        text: 'Flowscan Testnet',
       },
       {
-        link: "/nodes/node-operation/past-sporks/",
-        text: "Past Sporks",
+        link: '/nodes/node-operation/past-sporks/',
+        text: 'Past Sporks',
       },
       {
-        link: "/nodes/node-operation/upcoming-sporks",
-        text: "Upcoming Sporks",
+        link: '/nodes/node-operation/upcoming-sporks',
+        text: 'Upcoming Sporks',
       },
       {
-        link: "/nodes/node-operation/",
-        text: "Node Operation",
+        link: '/nodes/node-operation/',
+        text: 'Node Operation',
       },
       {
-        link: "/nodes/node-operation/spork/",
-        text: "Spork Information",
+        link: '/nodes/node-operation/spork/',
+        text: 'Spork Information',
       },
     ],
   },
-]
+];
 
 export type FooterProps = {
-  discordUrl: string
-  discourseUrl: string
-  flowUrl: string
-  githubUrl: string
-  sections?: typeof footerSections
-}
+  discordUrl: string;
+  discourseUrl: string;
+  flowUrl: string;
+  githubUrl: string;
+  sections?: typeof footerSections;
+};
 
 export const Footer = ({
   discordUrl,
@@ -180,7 +180,7 @@ export const Footer = ({
             <FlowDocsLogo
               className="origin-top-left scale-75"
               style={{
-                transformOrigin: "center left",
+                transformOrigin: 'center left',
               }}
             />
           </AppLink>
@@ -225,5 +225,5 @@ export const Footer = ({
         <div className="px-2 pt-4 pb-16 lg:px-4">@2022 Flow</div>
       </div>
     </footer>
-  )
-}
+  );
+};
