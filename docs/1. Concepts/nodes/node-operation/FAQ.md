@@ -1,8 +1,8 @@
 ---
 title: Operator FAQ
-sidebar_title: Operator FAQs
-description: Frequently Asked Questions
 ---
+
+# Operator FAQ
 
 ### Can anybody run a node? What is the approval process?
 

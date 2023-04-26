@@ -1,7 +1,9 @@
 ---
-title: Hello Node Operator!
-sidebar_title: Introduction
+title: Node Operations
+sidebar_position: 1
 ---
+
+# Hello Node Operator!
 
 Flow nodes are vital components of the Flow blockchain. These nodes are responsible for a variety of network operations to maintain the distributed ledger.
 
