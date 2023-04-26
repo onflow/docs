@@ -208,7 +208,7 @@ const config = {
       // Replace with your project's social card
       image: 'img/FlowDocs_Logo_FlowLogo_Horizontal_Green_BlackText.svg',
       navbar: {
-        title: 'Docs',
+        title: '',
         logo: {
           alt: 'Flow Developer Portal Logo',
           src: 'img/flow-docs-logo-dark.png',
@@ -216,37 +216,32 @@ const config = {
         },
         items: [
           {
-            to: '1. Home/Introduction',
+            to: '1. Concepts/Introduction',
             position: 'left',
-            label: 'Home',
+            label: 'Flow Concepts',
           },
           {
-            to: '2. Concepts/Introduction',
-            position: 'left',
-            label: 'Concepts',
-          },
-          {
-            to: '3. Guides & Tutorials/Introduction',
+            to: '2. Guides & Tutorials/Introduction',
             position: 'left',
             label: 'Guides & Tutorials',
           },
           {
-            to: '4. Cadence/Introduction',
+            to: '3. Cadence/Introduction',
             position: 'left',
             label: 'Cadence',
           },
           {
-            to: '5. APIs & Tooling/Introduction',
+            to: '4. APIs & Tooling/Introduction',
             position: 'left',
             label: 'APIs & Tooling',
           },
           {
-            to: '6. References/Introduction',
+            to: '5. References/Introduction',
             position: 'left',
             label: 'References',
           },
           {
-            to: '7. Community Resources/Introduction',
+            to: '6. Community Resources/Introduction',
             position: 'left',
             label: 'Community Resources',
           },

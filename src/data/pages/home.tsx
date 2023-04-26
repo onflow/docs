@@ -14,15 +14,15 @@ const homepageStartProjectData: HomepageStartItemProps[] = [
     icon: 'learn',
   },
   {
-    title: 'Flow Quickstarts',
-    text: 'Run your frist Flow dApp in just a few clicks',
+    title: 'Guides & Tutorials',
+    text: 'Create your first Flow dApp in just a few minutes',
     link: '/tools/fcl-js/tutorials/flow-app-quickstart',
     icon: 'quickstart',
   },
   {
-    title: 'Documentation',
+    title: 'References',
     text: 'All the developer resources you need to build on Flow',
-    link: '/cadence',
+    link: '1. Concepts/Introduction',
     icon: 'documentation',
   },
 ]
