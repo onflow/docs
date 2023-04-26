@@ -1,5 +1,6 @@
 ---
-title: Flow Mobile Overview
+title: Flow Mobile
+sidebar_position: 5
 ---
 
 Building mobile native applications that interact with the blockchain enables a much richer end user experiences and provides access to OS capabilities. With Flow Mobile, developers can build native applications for iOS and Android leveraging SDKs and mobile wallets.
