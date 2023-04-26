@@ -562,7 +562,7 @@ const config = {
   ],
   scripts: [
     {
-      src: '/docs/mixpanel.js',
+      src: '/mixpanel.js',
       async: true,
       onload: mixpanelOnLoad,
     },
