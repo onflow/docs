@@ -44,12 +44,9 @@ jobs:
 
   algolia_recrawl:
     name: Algolia Recrawl
+    needs: [deploy]
     runs-on: ubuntu-latest
     steps:
-      # checkout this repo
-      - name: Checkout Repo
-        uses: actions/checkout@v2
-
       - name: Vercel-MAIN => Algolia crawler creation and recrawl on preview (Push on Main branch)
         uses: algolia/algoliasearch-crawler-github-actions@v1
         id: crawler_push
