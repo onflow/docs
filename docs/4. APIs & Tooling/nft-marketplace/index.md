@@ -1,5 +1,5 @@
 ---
-title: Overview
+title: NFT Marketplace
 description: An overview of the NFT marketplace guide
 sidebar_title: Overview
 ---

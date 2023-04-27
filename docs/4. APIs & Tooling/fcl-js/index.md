@@ -1,25 +1,8 @@
 ---
-title: Flow Client Library (FCL)
+sidebar_position: 3
 ---
-<br />
-<p align="center">
-  <h1 align="center"> FCL JS</h1>
-  <p align="center">
-    <i>Connect your dapp to users, their wallets and Flow.</i>
-    <br />
-    <a href="https://docs.onflow.org/fcl/"><strong>Read the docs»</strong></a>
-    <br />
-    <br />
-    <a href="https://docs.onflow.org/fcl/tutorials/flow-app-quickstart/">Quickstart</a>
-    ·
-    <a href="https://github.com/onflow/fcl-js/issues">Report Bug</a>
-    ·
-    <a href="https://github.com/onflow/fcl-js/blob/master/CONTRIBUTING.md">Contribute</a>
 
-  </p>
-</p>
-
-## What is FCL?
+# Flow Client Library (FCL)
 
 The Flow Client Library (FCL) JS is a package used to interact with user wallets and the Flow blockchain. When using FCL for authentication, dapps are able to support all FCL-compatible wallets on Flow and their users without any custom integrations or changes needed to the dapp code.
 

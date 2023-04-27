@@ -216,17 +216,17 @@ const config = {
         },
         items: [
           {
-            to: '1. Concepts/Introduction',
+            to: '1. Concepts/intro',
             position: 'left',
             label: 'Flow Concepts',
           },
           {
-            to: '2. Guides & Tutorials/Introduction',
+            to: '2. Tutorials/tutorials',
             position: 'left',
-            label: 'Guides & Tutorials',
+            label: 'Tutorials',
           },
           {
-            to: '3. Cadence/Introduction',
+            to: '3. Cadence/intro',
             position: 'left',
             label: 'Cadence',
           },
