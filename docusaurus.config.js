@@ -176,7 +176,7 @@ const config = {
           showLastUpdateTime: true,
           showLastUpdateAuthor: true,
           exclude: ignoreFiles(),
-          numberPrefixParser: false,
+          numberPrefixParser: true,
         },
         blog: false,
         theme: {
