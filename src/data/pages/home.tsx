@@ -1,10 +1,10 @@
-import React from 'react'
-import EcosystemIcon from '../../ui/design-system/images/content/ecosystem.svg'
-import SDKIcon from '../../ui/design-system/images/content/sdk.svg'
-import UseCaseIcon from '../../ui/design-system/images/content/use-cases.svg'
-import { type ContentNavigationListProps } from '../../ui/design-system/src/lib/Components/ContentNavigationList'
-import { type HomepageStartItemProps } from '../../ui/design-system/src/lib/Components/HomepageStartItem'
-import { metadata } from '../metadata'
+import React from 'react';
+import EcosystemIcon from '../../ui/design-system/images/content/ecosystem.svg';
+import SDKIcon from '../../ui/design-system/images/content/sdk.svg';
+import UseCaseIcon from '../../ui/design-system/images/content/use-cases.svg';
+import { type ContentNavigationListProps } from '../../ui/design-system/src/lib/Components/ContentNavigationList';
+import { type HomepageStartItemProps } from '../../ui/design-system/src/lib/Components/HomepageStartItem';
+import { metadata } from '../metadata';
 
 const homepageStartProjectData: HomepageStartItemProps[] = [
   {
@@ -25,7 +25,7 @@ const homepageStartProjectData: HomepageStartItemProps[] = [
     link: '1. Concepts/Introduction',
     icon: 'documentation',
   },
-]
+];
 
 const homepageThreeColumnData: any = [
   {
@@ -108,7 +108,7 @@ const homepageThreeColumnData: any = [
       },
     ],
   },
-]
+];
 
 const contentNavigationListItems: ContentNavigationListProps = {
   header: 'Explore More Content',
@@ -132,12 +132,12 @@ const contentNavigationListItems: ContentNavigationListProps = {
       icon: 'community',
     },
   ],
-}
+};
 
 export {
   homepageThreeColumnData,
   homepageStartProjectData,
   contentNavigationListItems,
-}
+};
 
-export const editPageUrl = `${metadata.githubRepoBaseUrl}/blob/main/app/data/pages/home.tsx`
+export const editPageUrl = `${metadata.githubRepoBaseUrl}/blob/main/app/data/pages/home.tsx`;

@@ -1,23 +1,23 @@
-import React from 'react'
-import LandingImage from '../../../../images/misc/landing-home.png'
-import LandingImage2x from '../../../../images/misc/landing-home@2x.png'
-import { ButtonLink } from '../Button'
-import { LandingPageLinks } from '../LandingPageLinks'
+import React from 'react';
+import LandingImage from '../../../../images/misc/landing-home.png';
+import LandingImage2x from '../../../../images/misc/landing-home@2x.png';
+import { ButtonLink } from '../Button';
+import { LandingPageLinks } from '../LandingPageLinks';
 
 export interface LandingHeaderHomeProps {
-  description: string
-  discordUrl: string
+  description: string;
+  discordUrl: string;
 
   /**
    * The URL to the page on github that allows editing this page's content
    */
-  editPageUrl?: string
-  githubUrl: string
-  tag: string
-  title: string
+  editPageUrl?: string;
+  githubUrl: string;
+  tag: string;
+  title: string;
 }
 
-export function LandingHeaderHome ({
+export function LandingHeaderHome({
   description,
   discordUrl,
   editPageUrl,
@@ -37,7 +37,7 @@ export function LandingHeaderHome ({
         <div className="mb-4 max-w-[400px] text-xl font-semibold text-primary-gray-400 dark:text-primary-gray-50">
           {description}
         </div>
-        <ButtonLink variant="primary" href="https://play.flow.com">
+        <ButtonLink variant="primary" href="https://play.onflow.org">
           Try Cadence
         </ButtonLink>
       </div>
@@ -57,5 +57,5 @@ export function LandingHeaderHome ({
         />
       </div>
     </div>
-  )
+  );
 }

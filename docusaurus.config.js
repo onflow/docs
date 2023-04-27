@@ -16,6 +16,21 @@ window.mixpanel.track('Page Viewed', {
   'Page Name': document.title,
   'Page URL': window.location.pathname,
 });
+
+window.document.addEventListener('click', function (event) {
+  var target = event.target;
+
+  // Check if the clicked element is a link with an href attribute
+  if (target.tagName === 'A' && target.hasAttribute('href')) {
+    if (window.mixpanel) {
+      window.mixpanel.track('Link clicked', {
+        href: target.getAttribute('href'),
+        id: target.id,
+        class: target.className,
+      });
+    }
+  }
+});
 `;
 
 /**
@@ -127,7 +142,7 @@ const config = {
   url: 'https://onflow.github.io',
   // Set the /<baseUrl>/ pathname under which your site is served
   // For GitHub pages deployment, it is often '/<projectName>/'
-  baseUrl: '/docs/',
+  baseUrl: '/',
 
   // GitHub pages deployment config.
   // If you aren't using GitHub pages, you don't need these.
@@ -161,7 +176,7 @@ const config = {
           showLastUpdateTime: true,
           showLastUpdateAuthor: true,
           exclude: ignoreFiles(),
-          numberPrefixParser: false,
+          numberPrefixParser: true,
         },
         blog: false,
         theme: {
@@ -350,7 +365,7 @@ const config = {
             title: 'Start Building',
             items: [
               {
-                href: 'https://play.onflow.org/local-project',
+                href: 'https://play.onflow.org/',
                 label: 'Flow Playground',
               },
               {
@@ -560,7 +575,7 @@ const config = {
   ],
   scripts: [
     {
-      src: '/docs/mixpanel.js',
+      src: '/mixpanel.js',
       async: true,
       onload: mixpanelOnLoad,
     },

@@ -1,4 +1,4 @@
-import React from 'react'
+import React from 'react';
 import {
   contentNavigationListItems,
   editPageUrl,
@@ -7,18 +7,16 @@ import {
   recentArticleItems,
   recentToolItems,
   sdkCardItems,
-} from '../data/pages/getting-started'
-import {
-  GettingStartedPage,
-} from '../ui/design-system/src/lib/Pages/GettingStartedPage'
+} from '../data/pages/getting-started';
+import { GettingStartedPage } from '../ui/design-system/src/lib/Pages/GettingStartedPage';
 import {
   Icon1,
   Icon2,
   Icon3,
-} from '../ui/design-system/src/lib/Pages/GettingStartedPage/GettingStartedPage.stories'
-import { getMetaTitle } from '../utils/seo.server'
-import { externalLinks } from '../data/external-links'
-import Layout from '@theme/Layout'
+} from '../ui/design-system/src/lib/Pages/GettingStartedPage/GettingStartedPage.stories';
+import { getMetaTitle } from '../utils/seo.server';
+import { externalLinks } from '../data/external-links';
+import Layout from '@theme/Layout';
 
 const data = {
   contentNavigationListItems,
@@ -35,9 +33,9 @@ const data = {
   recentToolItems,
   sdkCardItems,
   twitterUrl: externalLinks.twitter,
-}
+};
 
-export default function GettingStarted (): JSX.Element {
+export default function GettingStarted(): JSX.Element {
   return (
     <Layout>
       <main>
@@ -59,7 +57,7 @@ export default function GettingStarted (): JSX.Element {
                 links: [
                   {
                     title: 'Flow Playground Web IDE',
-                    href: 'https://play.flow.com',
+                    href: 'https://play.onflow.org',
                     tags: ['cadence', 'dev', 'all-levels'],
                   },
                   {
@@ -156,5 +154,5 @@ export default function GettingStarted (): JSX.Element {
         />
       </main>
     </Layout>
-  )
+  );
 }
