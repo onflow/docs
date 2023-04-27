@@ -60,4 +60,4 @@ jobs:
           algolia-api-key: ${{ vars.ALGOLIA_API_KEY }}
           crawler-name: ${{ secrets.CRAWLER_NAME }}
           site-url: ${{ vars.SITE_URL }}
-          override-config: true
+          override-config: false
