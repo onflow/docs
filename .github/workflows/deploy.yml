@@ -20,6 +20,8 @@ jobs:
     needs: [deploy]
     runs-on: ubuntu-latest
     steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
       # We don't know when the site will be deployed, we just wait a few seconds
       # Better solutions can be found
       - name: Sleep for 30s
@@ -35,4 +37,3 @@ jobs:
           algolia-api-key: ${{ vars.ALGOLIA_API_KEY }}
           crawler-name: ${{ secrets.CRAWLER_NAME }}
           site-url: ${{ vars.SITE_URL }}
-          override-config: false
