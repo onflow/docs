@@ -26,7 +26,7 @@ if (process.env.NODE_ENV === 'production') {
   }
   window.mixpanel.track('Page Viewed', viwedPayload);
 
-  isPlayPage = ${playPages}.includes(window.location.pathname)
+  const isPlayPage = ${playPages}.includes(window.location.pathname)
 
   if (isPlayPage) {
     window.mixpanel.track('Play Page Viewed', viwedPayload);
