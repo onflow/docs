@@ -11,26 +11,43 @@ const docCollectionsLocation = './src/data/doc-collections';
 let cachedSources;
 
 const mixpanelOnLoad = `
-window.mixpanel.init('${process.env.MIXPANEL_PROJECT_TOKEN}');
-window.mixpanel.track('Page Viewed', {
-  'Page Name': document.title,
-  'Page URL': window.location.pathname,
-});
+if ('${process.env.MIXPANEL_PROJECT_TOKEN}') {
+  window.mixpanel.init('${process.env.MIXPANEL_PROJECT_TOKEN}');
 
-window.document.addEventListener('click', function (event) {
-  var target = event.target;
-
-  // Check if the clicked element is a link with an href attribute
-  if (target.tagName === 'A' && target.hasAttribute('href')) {
-    if (window.mixpanel) {
-      window.mixpanel.track('Link clicked', {
-        href: target.getAttribute('href'),
-        id: target.id,
-        class: target.className,
-      });
-    }
+  const viwedPayload = {
+    'Page Name': document.title,
+    'Page URL': window.location.pathname,
   }
-});
+  window.mixpanel.track('Page Viewed', viwedPayload);
+
+  const playUrl = 'play.onflow.org';
+  const links = document.querySelectorAll('a') || [];
+  const isPlayPage = Array.from(links).some((link) => link.href.includes(playUrl));
+
+  if (isPlayPage) {
+    window.mixpanel.track('Play Page Viewed', viwedPayload);
+  }
+  
+  window.document.addEventListener('click', function (event) {
+    var target = event.target;
+  
+    // Check if the clicked element is a link with an href attribute
+    if (target.tagName === 'A' && target.hasAttribute('href')) {
+      if (window.mixpanel) {
+        const payload = {
+          href: target.getAttribute('href'),
+          id: target.id,
+          class: target.className,
+        }
+        window.mixpanel.track('Link clicked', payload);
+        const isPlay = payload.href.includes('play.onflow.org');
+        if (isPlay) {
+          window.mixpanel.track('Play Link clicked', payload);        
+        }
+      }
+    }
+  });
+}
 `;
 
 /**
@@ -139,10 +156,12 @@ const config = {
   favicon: 'favicon.ico',
 
   // Set the production url of your site here
-  url: 'https://docs-smoky-iota.vercel.app',
+  url: process.env.VERCEL_URL
+    ? `https://${process.env.VERCEL_URL}`
+    : 'https://onflow.github.io',
   // Set the /<baseUrl>/ pathname under which your site is served
   // For GitHub pages deployment, it is often '/<projectName>/'
-  baseUrl: '/',
+  baseUrl: process.env.BASE_URL || '/docs/',
 
   // GitHub pages deployment config.
   // If you aren't using GitHub pages, you don't need these.
