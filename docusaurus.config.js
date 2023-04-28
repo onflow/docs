@@ -11,7 +11,7 @@ const docCollectionsLocation = './src/data/doc-collections';
 let cachedSources;
 
 const mixpanelOnLoad = `
-if (${process.env.MIXPANEL_PROJECT_TOKEN}) {
+if ('${process.env.MIXPANEL_PROJECT_TOKEN}') {
   window.mixpanel.init('${process.env.MIXPANEL_PROJECT_TOKEN}');
 
   const viwedPayload = {
