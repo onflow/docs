@@ -10,6 +10,12 @@ const fs = require('fs');
 const docCollectionsLocation = './src/data/doc-collections';
 let cachedSources;
 
+const playPages = JSON.parse(
+  fs
+    .readFileSync(path.join(__dirname, './src/data/play-files.json'))
+    .toString(),
+);
+
 const mixpanelOnLoad = `
 if (process.env.NODE_ENV === 'production') {
   window.mixpanel.init('${process.env.MIXPANEL_PROJECT_TOKEN}');
@@ -20,23 +26,7 @@ if (process.env.NODE_ENV === 'production') {
   }
   window.mixpanel.track('Page Viewed', viwedPayload);
 
-  const playPages = [
-    '/cadence/tutorial/05-non-fungible-tokens-2',
-    '/cadence/tutorial/02-hello-world',
-    '/cadence/tutorial/05-non-fungible-tokens-1',
-    '/cadence/tutorial/06-fungible-tokens',
-    '/cadence/tutorial/09-voting',
-    '/cadence/tutorial/01-first-steps',
-    '/cadence/tutorial/08-marketplace-compose',
-    '/cadence/tutorial/10-resources-compose',
-    '/cadence/tutorial/03-resources',
-    '/cadence/tutorial/04-capabilities',
-    '/cadence/tutorial/07-marketplace-setup',
-    '/cadence/syntax-highlighting',
-    '/flow/dapp-development/smart-contracts',
-    '/flow/flow-nft/overview'
-  ]
-  isPlayPage = playPages.includes(window.location.pathname)
+  isPlayPage = ${playPages}.includes(window.location.pathname)
 
   if (isPlayPage) {
     window.mixpanel.track('Play Page Viewed', viwedPayload);
