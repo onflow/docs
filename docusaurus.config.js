@@ -177,6 +177,17 @@ const config = {
           showLastUpdateAuthor: true,
           exclude: ignoreFiles(),
           numberPrefixParser: true,
+          lastVersion: 'current',
+          versions: {
+            current: {
+              label: 'Current',
+              path: '/',
+            },
+            next: {
+              label: 'Next',
+              path: 'next',
+            },
+          },
         },
         blog: false,
         theme: {
@@ -259,6 +270,12 @@ const config = {
             to: 'Community Resources/Introduction',
             position: 'left',
             label: 'Community Resources',
+          },
+          {
+            type: 'docsVersionDropdown',
+            position: 'right',
+            dropdownItemsAfter: [{ to: '/versions', label: 'All versions' }],
+            dropdownActiveClassDisabled: true,
           },
           {
             href: 'https://github.com/onflow',
