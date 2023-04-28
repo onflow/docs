@@ -11,7 +11,7 @@ const docCollectionsLocation = './src/data/doc-collections';
 let cachedSources;
 
 const mixpanelOnLoad = `
-if (${process.env.VERCEL_ENV} === 'production') {
+if (${process.env.MIXPANEL_PROJECT_TOKEN}) {
   window.mixpanel.init('${process.env.MIXPANEL_PROJECT_TOKEN}');
 
   const viwedPayload = {
@@ -42,7 +42,7 @@ if (${process.env.VERCEL_ENV} === 'production') {
         window.mixpanel.track('Link clicked', payload);
         const isPlay = href.includes('play.onflow.org');
         if (isPlay) {
-          window.mixpanel.track('Play Link clicked', payload);
+          window.mixpanel.track('Play Link clicked', payload);        
         }
       }
     }
