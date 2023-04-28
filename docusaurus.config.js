@@ -21,8 +21,8 @@ if ('${process.env.MIXPANEL_PROJECT_TOKEN}') {
   window.mixpanel.track('Page Viewed', viwedPayload);
 
   const playUrl = 'play.onflow.org';
-  const links = document.querySelectorAll('a');
-  const isPlayPage = links.some((link) => link.href.includes(playUrl));
+  const links = document.querySelectorAll('a') || [];
+  const isPlayPage = Array.from(links).some((link) => link.href.includes(playUrl));
 
   if (isPlayPage) {
     window.mixpanel.track('Play Page Viewed', viwedPayload);
