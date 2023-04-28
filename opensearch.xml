@@ -4,8 +4,8 @@
   <ShortName>Flow docs</ShortName>
   <Description>Search Flow docs</Description>
   <InputEncoding>UTF-8</InputEncoding>
-  <Image width="16" height="16" type="image/x-icon">https://onflow.github.io/favicon.ico</Image>
-  <Url type="text/html" method="get" template="https://onflow.github.io/search?q={searchTerms}"/>
-  <Url type="application/opensearchdescription+xml" rel="self" template="https://onflow.github.io/opensearch.xml" />
-  <moz:SearchForm>https://onflow.github.io/</moz:SearchForm>
+  <Image width="16" height="16" type="image/x-icon">https://onflow.github.io/docs/favicon.ico</Image>
+  <Url type="text/html" method="get" template="https://onflow.github.io/docs/search?q={searchTerms}"/>
+  <Url type="application/opensearchdescription+xml" rel="self" template="https://onflow.github.io/docs/opensearch.xml" />
+  <moz:SearchForm>https://onflow.github.io/docs/</moz:SearchForm>
 </OpenSearchDescription>
