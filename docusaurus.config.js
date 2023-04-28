@@ -160,10 +160,10 @@ const config = {
   favicon: 'favicon.ico',
 
   // Set the production url of your site here
-  url: 'https://docs-smoky-iota.vercel.app',
+  url: process.env.VERCEL_URL || 'https://onflow.github.io',
   // Set the /<baseUrl>/ pathname under which your site is served
   // For GitHub pages deployment, it is often '/<projectName>/'
-  baseUrl: '/',
+  baseUrl: process.env.BASE_URL || '/docs',
 
   // GitHub pages deployment config.
   // If you aren't using GitHub pages, you don't need these.
