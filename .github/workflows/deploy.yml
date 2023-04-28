@@ -1,4 +1,4 @@
-name: Deploy to GitHub Pages
+name: Algolia Recrawl
 
 on:
   workflow_dispatch:
@@ -15,51 +15,17 @@ env:
   MIXPANEL_PROJECT_TOKEN: ${{vars.MIXPANEL_PROJECT_TOKEN}}
 
 jobs:
-  deploy:
-    name: Deploy to GitHub Pages
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v3
-      - uses: actions/setup-node@v3
-        with:
-          node-version: 18
-          cache: yarn
-
-      - name: Install Yarn
-        run: npm install -g yarn
-
-      - name: Install dependencies
-        run: yarn install --frozen-lockfile
-      - name: Build website
-        run: yarn build
-
-      # Popular action to deploy to GitHub Pages:
-      # Docs: https://github.com/peaceiris/actions-gh-pages#%EF%B8%8F-docusaurus
-      - name: Deploy to GitHub Pages
-        uses: peaceiris/actions-gh-pages@v3
-        with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          # Build output to publish to the `gh-pages` branch:
-          publish_dir: ./build
-
   algolia_recrawl:
     name: Algolia Recrawl
-    needs: [deploy]
     runs-on: ubuntu-latest
     steps:
-      # We don't know when the site will be deployed, we just wait a few seconds
-      # Better solutions can be found
-      - name: Sleep for 30s
-        run: sleep 30
-
-      - name: Github-pages-MAIN => Algolia crawler creation and recrawl (Push on Main branch)
+      - name: Vercel-MAIN => Algolia crawler creation and recrawl on preview (Push on Main branch)
         uses: algolia/algoliasearch-crawler-github-actions@v1
         id: crawler_push
         with:
           crawler-user-id: ${{ secrets.CRAWLER_USER_ID }}
           crawler-api-key: ${{ secrets.CRAWLER_API_KEY }}
-          crawler-name: ${{ secrets.CRAWLER_NAME }}
           algolia-app-id: ${{ vars.ALGOLIA_APP_ID }}
           algolia-api-key: ${{ vars.ALGOLIA_API_KEY }}
+          crawler-name: ${{ secrets.CRAWLER_NAME }}
           site-url: ${{ vars.SITE_URL }}
-          override-config: false
