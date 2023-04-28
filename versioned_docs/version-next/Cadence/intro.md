@@ -10,7 +10,7 @@ Programs that run on blockchains are commonly referred to as smart contracts bec
 without having to rely on a central authority (like a bank).
 
 ## A New Programming Language
-    
+
 ---
 
 Cadence is a resource-oriented programming language that introduces new features to smart contract programming
