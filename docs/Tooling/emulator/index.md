@@ -2,6 +2,7 @@
 title: Flow Emulator
 description: A development tool that looks, acts and talks like Flow
 sidebar_title: Introduction
+sidebar_position: 2
 ---
 
 The Flow Emulator is a lightweight tool that emulates the behaviour of the real Flow network.

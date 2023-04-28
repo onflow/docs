@@ -1,5 +1,4 @@
-# 3. Cadence
-
+# Cadence
 
 This directory contains the documentation for Cadence.
 

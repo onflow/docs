@@ -1,8 +1,9 @@
 ---
 sidebar_position: 1
+title: Introduction
 ------
 
-The Flow CLI includes several commands to interact with Flow networks, such as querying account information,
+Flow CLI includes several commands to interact with Flow networks, such as querying account information,
 or sending transactions. It also includes the [Flow Emulator](/tools/flow-cli/start-emulator).
 
 ## Installation

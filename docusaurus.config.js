@@ -152,6 +152,7 @@ const config = {
 
   onBrokenLinks: 'warn',
   onBrokenMarkdownLinks: 'warn',
+  onDuplicateRoutes: 'warn',
 
   // Even if you don't use internalization, you can use this field to set useful
   // metadata like html lang. For example, if your site is Chinese, you may want
@@ -231,32 +232,32 @@ const config = {
         },
         items: [
           {
-            to: '1. Concepts/intro',
+            to: 'Concepts/intro',
             position: 'left',
-            label: 'Flow Concepts',
+            label: 'Concepts',
           },
           {
-            to: '2. Tutorials/tutorials',
+            to: 'Tutorials/intro',
             position: 'left',
             label: 'Tutorials',
           },
           {
-            to: '3. Cadence/intro',
+            to: 'Cadence/intro',
             position: 'left',
             label: 'Cadence',
           },
           {
-            to: '4. APIs & Tooling/Introduction',
+            to: 'Tooling/intro',
             position: 'left',
-            label: 'APIs & Tooling',
+            label: 'Tooling',
           },
           {
-            to: '5. References/Introduction',
+            to: 'References/Introduction',
             position: 'left',
             label: 'References',
           },
           {
-            to: '6. Community Resources/Introduction',
+            to: 'Community Resources/Introduction',
             position: 'left',
             label: 'Community Resources',
           },
