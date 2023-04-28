@@ -10,12 +10,6 @@ const fs = require('fs');
 const docCollectionsLocation = './src/data/doc-collections';
 let cachedSources;
 
-const playPages = JSON.parse(
-  fs
-    .readFileSync(path.join(__dirname, './src/data/play-files.json'))
-    .toString(),
-);
-
 const mixpanelOnLoad = `
 if (process.env.NODE_ENV === 'production') {
   window.mixpanel.init('${process.env.MIXPANEL_PROJECT_TOKEN}');
@@ -26,7 +20,9 @@ if (process.env.NODE_ENV === 'production') {
   }
   window.mixpanel.track('Page Viewed', viwedPayload);
 
-  const isPlayPage = ${playPages}.includes(window.location.pathname)
+  const playUrl = 'play.onflow.org';
+  const links = document.querySelectorAll('a');
+  const isPlayPage = links.some((link) => link.href.includes(playUrl));
 
   if (isPlayPage) {
     window.mixpanel.track('Play Page Viewed', viwedPayload);
