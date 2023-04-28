@@ -42,7 +42,7 @@ if (process.env.NODE_ENV === 'production') {
         window.mixpanel.track('Link clicked', payload);
         const isPlay = href.includes('play.onflow.org');
         if (isPlay) {
-          window.mixpanel.track('Play Link clicked', payload););        
+          window.mixpanel.track('Play Link clicked', payload);        
         }
       }
     }
