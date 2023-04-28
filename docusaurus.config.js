@@ -11,26 +11,57 @@ const docCollectionsLocation = './src/data/doc-collections';
 let cachedSources;
 
 const mixpanelOnLoad = `
-window.mixpanel.init('${process.env.MIXPANEL_PROJECT_TOKEN}');
-window.mixpanel.track('Page Viewed', {
-  'Page Name': document.title,
-  'Page URL': window.location.pathname,
-});
+if (process.env.NODE_ENV === 'production') {
+  window.mixpanel.init('${process.env.MIXPANEL_PROJECT_TOKEN}');
 
-window.document.addEventListener('click', function (event) {
-  var target = event.target;
-
-  // Check if the clicked element is a link with an href attribute
-  if (target.tagName === 'A' && target.hasAttribute('href')) {
-    if (window.mixpanel) {
-      window.mixpanel.track('Link clicked', {
-        href: target.getAttribute('href'),
-        id: target.id,
-        class: target.className,
-      });
-    }
+  const viwedPayload = {
+    'Page Name': document.title,
+    'Page URL': window.location.pathname,
   }
-});
+  window.mixpanel.track('Page Viewed', viwedPayload);
+
+  const playPages = [
+    '/cadence/tutorial/05-non-fungible-tokens-2',
+    '/cadence/tutorial/02-hello-world',
+    '/cadence/tutorial/05-non-fungible-tokens-1',
+    '/cadence/tutorial/06-fungible-tokens',
+    '/cadence/tutorial/09-voting',
+    '/cadence/tutorial/01-first-steps',
+    '/cadence/tutorial/08-marketplace-compose',
+    '/cadence/tutorial/10-resources-compose',
+    '/cadence/tutorial/03-resources',
+    '/cadence/tutorial/04-capabilities',
+    '/cadence/tutorial/07-marketplace-setup',
+    '/cadence/syntax-highlighting',
+    '/flow/dapp-development/smart-contracts',
+    '/flow/flow-nft/overview'
+  ]
+  isPlayPage = playPages.includes(window.location.pathname)
+
+  if (isPlayPage) {
+    window.mixpanel.track('Play Page Viewed', viwedPayload);
+  }
+  
+  window.document.addEventListener('click', function (event) {
+    var target = event.target;
+  
+    // Check if the clicked element is a link with an href attribute
+    if (target.tagName === 'A' && target.hasAttribute('href')) {
+      if (window.mixpanel) {
+        const payload = {
+          href: target.getAttribute('href'),
+          id: target.id,
+          class: target.className,
+        }
+        window.mixpanel.track('Link clicked', payload);
+        const isPlay = href.includes('play.onflow.org');
+        if (isPlay) {
+          window.mixpanel.track('Play Link clicked', payload););        
+        }
+      }
+    }
+  });
+}
 `;
 
 /**
