@@ -168,7 +168,6 @@ const config = {
       /** @type {import('@docusaurus/preset-classic').Options} */
       ({
         docs: {
-          disableVersioning: true,
           sidebarPath: require.resolve('./sidebars.js'),
           routeBasePath: '/',
           editUrl,
