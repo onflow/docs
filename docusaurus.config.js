@@ -40,7 +40,7 @@ if ('${process.env.MIXPANEL_PROJECT_TOKEN}') {
           class: target.className,
         }
         window.mixpanel.track('Link clicked', payload);
-        const isPlay = href.includes('play.onflow.org');
+        const isPlay = payload.href.includes('play.onflow.org');
         if (isPlay) {
           window.mixpanel.track('Play Link clicked', payload);        
         }
