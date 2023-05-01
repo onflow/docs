@@ -1,4 +1,4 @@
-# Cadence
+# Documentation
 
 This directory contains the documentation for Cadence.
 

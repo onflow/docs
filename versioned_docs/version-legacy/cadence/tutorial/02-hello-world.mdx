@@ -58,7 +58,6 @@ This tutorial will walk you through an example of a smart contract that implemen
 including accounts, transactions, and signers.
 
 Our "Hello World" smart contract will:
-
 1. Create and initialize a smart contract with a single field of type `String`
 2. Initialize the field with the phrase "Hello, World!"
 3. Create a function in the contract that returns our greeting
@@ -67,23 +66,14 @@ We will deploy this contract in an account, then use a transaction to interact w
 and finally discuss the role of signers in the transaction.
 
 ## Follow Along!
-
 Before we get started if you'd prefer to learn from a video, feel free to join Kim
 as she walks you through the basics of accounts, smart contracts, Cadence, transactions & more!
 
-<iframe
-  width="560"
-  height="315"
-  src="https://www.youtube.com/embed/pRz7EzrWchs"
-  title="YouTube video player"
-  frameborder="0"
-  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-  allowfullscreen
-></iframe>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/pRz7EzrWchs" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
 ## How to Use Playground
 
-For this tutorial, you'll be using the [Flow Playground](https://play.onflow.org/),
+For this tutorial, you'll be using the [Flow Playground](https://play.onflow.org/local-project),
 an interactive web interface that lets you write and run smart contracts in a test environment.
 It also allows you to save and share your work with others so that you can test smart contracts collaboratively.
 
@@ -94,7 +84,6 @@ which will open up the contract that is saved for that account.
 For this tutorial, you'll be working with only the first account `0x01`
 
 ## Implementing Hello World
-
 ---
 
 You will start by writing a smart contract that contains a public function that returns `"Hello World!"`.
@@ -117,17 +106,18 @@ Now let's look at the `HelloWorld` contract that you'll be working through in th
 
 If you haven't already, you'll need to follow this link to open a playground session with the Hello World contracts, transactions, and scripts pre-loaded:
 
-{' '}
-<a
-  href="https://play.onflow.org/dbc06b40-d0b1-42da-9e0d-686bc9972e65"
-  target="_blank"
->
-  https://play.onflow.org/dbc06b40-d0b1-42da-9e0d-686bc9972e65
-</a>
+  <a
+    href="https://play.onflow.org/dbc06b40-d0b1-42da-9e0d-686bc9972e65"
+    target="_blank"
+  >
+    https://play.onflow.org/dbc06b40-d0b1-42da-9e0d-686bc9972e65
+  </a>
 
 </Callout>
 
+
 ![Accounts in sidebar](https://storage.googleapis.com/flow-resources/documentation-assets/cadence-tuts/playground-accounts.png)
+
 
 <Callout type="info">
 
@@ -183,7 +173,6 @@ Soon you'll deploy this contract to your account and run a transaction that call
 ### Accounts and Transactions
 
 ---
-
 #### What is an Account?
 
 Each user has an account controlled by one or more private keys with configurable weight.
@@ -232,7 +221,6 @@ You can always look at this tab to verify which contracts are in which accounts.
 In the Flow Playground environment there can only be one contract for each account.
 
 ### Creating a Transaction
-
 ---
 
 A [Transaction](../language/transactions) in Flow is defined as an arbitrary-sized block of Cadence code that is authorized by one or more accounts.
@@ -280,10 +268,10 @@ import {ContractName} from {Address}
 Transactions are divided into two main phases, `prepare` and `execute`.
 
 1. The `prepare` phase is required but we don't use it in this tutorial.
-   We'll cover this phase in a later tutorial.
+We'll cover this phase in a later tutorial.
 2. The `execute` phase is the main body of a transaction.
-   It can call functions on external contracts and objects and perform operations on data that was initialized in the transaction.
-   In this example, the `execute` phase calls `HelloWorld.hello()` which calls the `hello()` function in the `HelloWorld` contract and logs the result(`log(HelloWorld.hello())`) to the console.
+It can call functions on external contracts and objects and perform operations on data that was initialized in the transaction.
+In this example, the `execute` phase calls `HelloWorld.hello()` which calls the `hello()` function in the `HelloWorld` contract and logs the result(`log(HelloWorld.hello())`) to the console.
 
 <Callout type="info">
 
@@ -312,7 +300,6 @@ Next, we deployed this contract in an account and implemented a transaction to c
 Finally, we used the account `0x01` as the signer for this transaction.
 
 Now that you have completed the tutorial, you have the basic knowledge to write a simple Cadence program that can:
-
 - Deploy a basic smart contract in an account
 - Interact with the smart contract using a transaction
 - Sign the transaction with one or multiple signers
