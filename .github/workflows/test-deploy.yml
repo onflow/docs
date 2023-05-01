@@ -29,7 +29,5 @@ jobs:
 
       - name: Install dependencies
         run: yarn install --frozen-lockfile
-      - name: Bootstrap environment
-        run: ./scripts/bootstrap.sh
       - name: Test build website
         run: yarn build

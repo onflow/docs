@@ -171,6 +171,7 @@ const config = {
 
   onBrokenLinks: 'warn',
   onBrokenMarkdownLinks: 'warn',
+  onDuplicateRoutes: 'warn',
 
   // Even if you don't use internalization, you can use this field to set useful
   // metadata like html lang. For example, if your site is Chinese, you may want
@@ -186,7 +187,6 @@ const config = {
       /** @type {import('@docusaurus/preset-classic').Options} */
       ({
         docs: {
-          disableVersioning: true,
           sidebarPath: require.resolve('./sidebars.js'),
           routeBasePath: '/',
           editUrl,
@@ -195,7 +195,18 @@ const config = {
           showLastUpdateTime: true,
           showLastUpdateAuthor: true,
           exclude: ignoreFiles(),
-          numberPrefixParser: false,
+          numberPrefixParser: true,
+          lastVersion: 'legacy',
+          versions: {
+            legacy: {
+              label: 'Legacy',
+              path: '/',
+            },
+            current: {
+              label: 'Current',
+              path: 'next',
+            },
+          },
         },
         blog: false,
         theme: {
@@ -242,7 +253,7 @@ const config = {
       // Replace with your project's social card
       image: 'img/FlowDocs_Logo_FlowLogo_Horizontal_Green_BlackText.svg',
       navbar: {
-        title: 'Docs',
+        title: '',
         logo: {
           alt: 'Flow Developer Portal Logo',
           src: 'img/flow-docs-logo-dark.png',
@@ -250,21 +261,40 @@ const config = {
         },
         items: [
           {
-            to: 'learn',
+            to: 'next/Concepts/intro',
             position: 'left',
-            label: 'Learn',
+            label: 'Concepts',
           },
           {
-            type: 'doc',
-            docId: 'quickstarts',
+            to: 'next/Tutorials/intro',
             position: 'left',
-            label: 'Quickstarts',
+            label: 'Tutorials',
           },
           {
-            type: 'doc',
-            docId: 'documentation',
+            to: 'next/Cadence/intro',
             position: 'left',
-            label: 'Documentation',
+            label: 'Cadence',
+          },
+          {
+            to: 'next/Tooling/intro',
+            position: 'left',
+            label: 'Tooling',
+          },
+          {
+            to: 'next/References/Introduction',
+            position: 'left',
+            label: 'References',
+          },
+          {
+            to: 'next/Community Resources/Introduction',
+            position: 'left',
+            label: 'Community Resources',
+          },
+          {
+            type: 'docsVersionDropdown',
+            position: 'right',
+            dropdownItemsAfter: [{ to: '/versions', label: 'All versions' }],
+            dropdownActiveClassDisabled: true,
           },
           {
             href: 'https://github.com/onflow',
