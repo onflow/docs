@@ -243,32 +243,32 @@ const config = {
         },
         items: [
           {
-            to: 'next/Concepts/intro',
+            to: 'Concepts/intro',
             position: 'left',
             label: 'Concepts',
           },
           {
-            to: 'next/Tutorials/intro',
+            to: 'Tutorials/intro',
             position: 'left',
             label: 'Tutorials',
           },
           {
-            to: 'next/Cadence/intro',
+            to: 'Cadence/intro',
             position: 'left',
             label: 'Cadence',
           },
           {
-            to: 'next/Tooling/intro',
+            to: 'Tooling/intro',
             position: 'left',
             label: 'Tooling',
           },
           {
-            to: 'next/References/Introduction',
+            to: 'References/Introduction',
             position: 'left',
             label: 'References',
           },
           {
-            to: 'next/Community-Resources/Introduction',
+            to: 'Community-Resources/Introduction',
             position: 'left',
             label: 'Community Resources',
           },
