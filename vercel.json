@@ -7,10 +7,6 @@
       "destination": "/cadence/intro"
     },
     {
-      "source": "/cadence/anti-patterns",
-      "destination": "/cadence/_anti-patterns"
-    },
-    {
       "source": "/flow",
       "destination": "/Concepts/start-here"
     },

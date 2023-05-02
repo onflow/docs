@@ -939,7 +939,7 @@ In the execute phase, we simply use the reference to mint 30 tokens and deposit 
 Now, both account `0x02` and account `0x03` should have a `Vault` object in their storage that has a balance of 30 tokens.
 They both should also have a `Receiver` capability stored in their `/public/` domains that links to their stored `Vault`.
 
-<Img src="https://storage.googleapis.com/flow-resources/documentation-assets/cadence-tuts/account-balances.png" />
+<img src="https://storage.googleapis.com/flow-resources/documentation-assets/cadence-tuts/account-balances.png" />
 
 An account cannot receive any token type unless it is specifically configured to accept those tokens.
 As a result, it is difficult to send tokens to the wrong address accidentally.
