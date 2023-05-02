@@ -99,7 +99,7 @@ You can run the `1. CheckSetupScript.cdc` script to ensure that your accounts ar
 
 </Callout>
 
-```cadence:title=CheckSetupScript.cdc
+```cadence CheckSetupScript.cdc
 // CheckSetupScript.cdc
 
 import ExampleToken from 0x01
@@ -197,7 +197,7 @@ With `ExampleMarketplace.cdc` open, click the `Deploy` button that appears at th
 
 </Callout>
 
-```cadence:title=ExampleMarketplace.cdc
+```cadence ExampleMarketplace.cdc
 import ExampleToken from 0x01
 import ExampleNFT from 0x02
 
@@ -515,7 +515,7 @@ Select account `0x01` as the only signer and click the `Send` button to submit t
 
 </Callout>
 
-```cadence:title=Transaction4.cdc
+```cadence Transaction4.cdc
 // CreateSale.cdc
 
 import ExampleToken from 0x01
@@ -570,7 +570,7 @@ Click the `Execute` button to print the ID and price of the NFT that account `0x
 
 </Callout>
 
-```cadence:title=GetSaleIDs.cdc
+```cadence GetSaleIDs.cdc
 // GetSaleIDs.cdc
 
 import ExampleToken from 0x01
@@ -617,7 +617,7 @@ Select account `0x02` as the only signer and click the `Send` button.
 
 </Callout>
 
-```cadence:title=PurchaseSale.cdc
+```cadence PurchaseSale.cdc
 // PurchaseSale.cdc
 
 import ExampleToken from 0x01
@@ -693,7 +693,7 @@ To run a script that verifies the NFT was purchased correctly, follow these step
   Click `Execute` button `VerifyAfterPurchase.cdc` should contain the following code:
 </Callout>
 
-```cadence:title=Script3.cdc
+```cadence Script3.cdc
 // VerifyAfterPurchase.cdc
 
 import ExampleToken from 0x01
@@ -795,7 +795,7 @@ A user can hold a sale in their account with these resources and transactions.
 Support for a central marketplace where users can discover sales is relatively easy to implement and can build on what we already have.
 If we wanted to build a central marketplace on-chain, we could use a contract that looks something like this:
 
-```cadence:title=CentralMarketplace.cdc
+```cadence CentralMarketplace.cdc
 // Marketplace would be the central contract where people can post their sale
 // references so that anyone can access them
 pub contract Marketplace {

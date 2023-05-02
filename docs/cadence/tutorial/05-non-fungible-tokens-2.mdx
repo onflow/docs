@@ -123,7 +123,7 @@ It contains what was already in `BasicNFT.cdc` plus additional resource declarat
 
 </Callout>
 
-```cadence:title=ExampleNFT.cdc
+```cadence ExampleNFT.cdc
 // ExampleNFT.cdc
 //
 // This is a complete version of the ExampleNFT contract
@@ -457,7 +457,7 @@ This transaction deposits the minted NFT into the account owner's NFT collection
 
 </Callout>
 
-```cadence:title=Mint NFT.cdc
+```cadence Mint NFT.cdc
 import ExampleNFT from 0x01
 
 // This transaction allows the Minter account to mint an NFT
@@ -494,7 +494,7 @@ This prints a list of the NFTs that account `0x01` owns.
 
 </Callout>
 
-```cadence:title=Print 0x01 NFTs.cdc
+```cadence Print 0x01 NFTs.cdc
 import ExampleNFT from 0x01
 
 // Print the NFTs owned by account 0x01.
@@ -534,7 +534,7 @@ Open the file named `Setup Account` and submit the transaction, using account `0
 
 </Callout>
 
-```cadence:title=Setup Account.cdc
+```cadence Setup Account.cdc
 import ExampleNFT from 0x01
 
 // This transaction configures a user's account
@@ -569,7 +569,7 @@ This transaction transfers a token from account `0x01` to account `0x02`.
 
 </Callout>
 
-```cadence:title=Transfer.cdc
+```cadence Transfer.cdc
 import ExampleNFT from 0x01
 
 // This transaction transfers an NFT from one user's collection
@@ -617,7 +617,7 @@ Execute the script `Print all NFTs` to see the tokens in each account:
 
 </Callout>
 
-```cadence:title=Script2.cdc
+```cadence Script2.cdc
 import ExampleNFT from 0x01
 
 // Print the NFTs owned by accounts 0x01 and 0x02.
