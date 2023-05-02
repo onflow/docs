@@ -66,11 +66,27 @@ const getDocFileNames = () => {
   return files;
 };
 const getRedirects = () => {
-  return JSON.parse(
-    fs
-      .readFileSync(path.join(__dirname, './src/data/redirects.json'))
-      .toString(),
+  const routeMapping = require('./src/data/routeMapping');
+
+  const redirects = Object.entries(routeMapping).reduce((acc, [from, to]) => {
+    if (acc[to]) {
+      return { ...acc, [to]: [...acc[to], from] };
+    }
+    return { ...acc, [to]: [from] };
+  }, {});
+
+  const redirectsArray = Object.entries(redirects).reduce(
+    (acc, [to, from]) => [...acc, { to, from }],
+    [],
   );
+
+  return redirectsArray;
+
+  // return JSON.parse(
+  //   fs
+  //     .readFileSync(path.join(__dirname, './src/data/redirects.json'))
+  //     .toString(),
+  // );
 };
 
 const getDataSources = () => {
