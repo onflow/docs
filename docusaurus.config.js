@@ -65,29 +65,6 @@ const getDocFileNames = () => {
   }
   return files;
 };
-const getRedirects = () => {
-  const routeMapping = require('./src/data/routeMapping');
-
-  const redirects = Object.entries(routeMapping).reduce((acc, [from, to]) => {
-    if (acc[to]) {
-      return { ...acc, [to]: [...acc[to], from] };
-    }
-    return { ...acc, [to]: [from] };
-  }, {});
-
-  const redirectsArray = Object.entries(redirects).reduce(
-    (acc, [to, from]) => [...acc, { to, from }],
-    [],
-  );
-
-  return redirectsArray;
-
-  // return JSON.parse(
-  //   fs
-  //     .readFileSync(path.join(__dirname, './src/data/redirects.json'))
-  //     .toString(),
-  // );
-};
 
 const getDataSources = () => {
   return JSON.parse(
@@ -517,15 +494,6 @@ const config = {
       },
     }),
   plugins: [
-    [
-      '@docusaurus/plugin-client-redirects',
-      {
-        redirects: getRedirects(),
-        createRedirects(existingPath) {
-          return undefined; // Return a falsy value: no redirect created
-        },
-      },
-    ],
     function tailwindPlugin() {
       return {
         name: 'docusaurus-tailwindcss',
