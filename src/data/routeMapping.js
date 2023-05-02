@@ -1,5 +1,5 @@
 const routeMapping = {
-  "/docs/cadence": "/docs/next/cadence/intro",
+  "/cadence": "/next/cadence/intro",
   "/cadence/anti-patterns": "/next/cadence/_anti-patterns",
   "/cadence/contract-upgrades": "/next/cadence/contract-upgrades",
   "/cadence/design-patterns": "/next/cadence/design-patterns",
