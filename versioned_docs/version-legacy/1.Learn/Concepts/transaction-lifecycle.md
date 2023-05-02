@@ -2,8 +2,8 @@
 
 This document walks through each stage of a transaction's lifecycle as it moves through the Flow network.
 
-<!--- START doctoc generated TOC please keep comment here to allow auto update --->
-<!--- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE --->
+{/* START doctoc generated TOC please keep comment here to allow auto update */}
+{/* DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE */}
 **Table of Contents**
 
 - [Transaction Lifecycle](#transaction-lifecycle)
@@ -19,7 +19,7 @@ This document walks through each stage of a transaction's lifecycle as it moves 
 	- [Verification](#verification)
 	- [Sealing](#sealing)
 
-<!--- END doctoc generated TOC please keep comment here to allow auto update --->
+{/* END doctoc generated TOC please keep comment here to allow auto update */}
 
 ## Submission
 
@@ -27,7 +27,7 @@ Transactions are submitted to the Flow network via Access Nodes. The Access Node
 Transactions are received by the Access Node via the [SendTransaction API call](/nodes/access-api#sendtransaction).
 
 ### Validation
-<!-- add explanation of how txs are checked andd how assignment to Cluster is determined (explain "to which this transaction belongs" point below) -->
+{/* add explanation of how txs are checked andd how assignment to Cluster is determined (explain "to which this transaction belongs" point below) */}
 
 ### Clustering
 

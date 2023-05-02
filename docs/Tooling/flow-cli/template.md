@@ -4,13 +4,13 @@ sidebar_title:
 description: -description-
 ---
 
-{short description}
+\{short description\}
 
 ```shell
 {command}
 ```
 
-{optional warning}
+\{optional warning\}
 
 ## Example Usage
 
@@ -20,12 +20,12 @@ description: -description-
 
 ## Arguments
 
-### {Argument 1}
+### \{Argument 1\}
 
-- Name: `{argument}`
-- Valid Input: `{input}`
+- Name: `\{argument\}`
+- Valid Input: `\{input\}`
 
-{argument general description}
+\{argument general description\}
 
 ## Arguments
 
@@ -38,12 +38,12 @@ Flow [account address](https://docs.onflow.org/concepts/accounts-and-keys/) (pre
 
 ## Flags
 
-### {Option 1}
+### \{Option 1\}
 
-- Flag: `{flag value}`
-- Valid inputs: {input description}
+- Flag: `\{flag value\}`
+- Valid inputs: \{input description\}
 
-{flag general description}
+\{flag general description\}
 
 ### Signer
 

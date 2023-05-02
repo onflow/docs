@@ -7,7 +7,7 @@ description: More examples, which cover specific use cases
 ## Metadata
 
 You may want to pass dictionaries as arguments to your Cadence code. The most
-common is metadata with `{String:String}` type
+common is metadata with `\{String:String\}` type
 
 ```javascript
 import {executeScript} from "@onflow/flow-js-testing"
@@ -53,7 +53,7 @@ const args = [
 ]
 ```
 
-Or maybe you want to pass dictionary with type {String: [String]}:
+Or maybe you want to pass dictionary with type \{String: [String]\}:
 
 ```javascript
 const args = [

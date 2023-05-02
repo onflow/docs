@@ -129,7 +129,7 @@ order in the list of configuration files specified in the -f flag
 
 Let's look at an example of `deploy` commands with multiple configuration files below
 
-````cadence:title=flow.json
+```cadence:title=flow.json
 {
     "accounts": {
         "admin-account": {
@@ -142,8 +142,8 @@ Let's look at an example of `deploy` commands with multiple configuration files 
         }
     }
 }
-````
-````cadence:title=private.json
+```
+```cadence:title=private.json
 {
     "accounts":{
 		"admin-account":{
@@ -152,12 +152,12 @@ Let's look at an example of `deploy` commands with multiple configuration files 
 	    }
 	}
 }
-````
+```
 In the example above, when we try to use the `deploy` command with multiple configuration files and there is an overlap 
 in the `admin-account` account in `accounts` field of the configuration, the resulting configuration will be like this
 
 > flow project deploy -f flow.json -f private.json
-````
+```
 {
     "accounts":{
 	    "admin-account":{
@@ -170,7 +170,7 @@ in the `admin-account` account in `accounts` field of the configuration, the res
 	    }
 	}
 }
-````
+```
 
 ## Flags
 
