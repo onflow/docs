@@ -303,7 +303,7 @@ const config = {
             label: 'References',
           },
           {
-            to: 'next/Community Resources/Introduction',
+            to: 'next/Community_Resources/Introduction',
             position: 'left',
             label: 'Community Resources',
           },
