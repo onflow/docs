@@ -615,6 +615,15 @@ const config = {
       async: true,
       onload: mixpanelOnLoad,
     },
+    {
+      src: "https://widget.kapa.ai/kapa-widget.bundle.js",
+      "data-website-id": "0f0b3ed1-7761-4986-851e-09336ea6ef1c",
+      "data-project-name": "Flow",
+      "data-project-color": "#2E8555",
+      "data-project-logo":
+        "https://cryptologos.cc/logos/flow-flow-logo.png",
+      async: true,
+    }
   ],
 };
 
