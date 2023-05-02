@@ -65,13 +65,6 @@ const getDocFileNames = () => {
   }
   return files;
 };
-const getRedirects = () => {
-  return JSON.parse(
-    fs
-      .readFileSync(path.join(__dirname, './src/data/redirects.json'))
-      .toString(),
-  );
-};
 
 const getDataSources = () => {
   return JSON.parse(
@@ -196,18 +189,6 @@ const config = {
           showLastUpdateAuthor: true,
           exclude: ignoreFiles(),
           numberPrefixParser: true,
-          lastVersion: 'current',
-          versions: {
-            legacy: {
-              label: 'Legacy',
-              banner: 'unmaintained',
-              path: '/',
-            },
-            current: {
-              label: 'Current',
-              path: 'next',
-            },
-          },
         },
         blog: false,
         theme: {
@@ -262,40 +243,34 @@ const config = {
         },
         items: [
           {
-            to: 'next/Concepts/intro',
+            to: 'Concepts/intro',
             position: 'left',
             label: 'Concepts',
           },
           {
-            to: 'next/Tutorials/intro',
+            to: 'Tutorials/intro',
             position: 'left',
             label: 'Tutorials',
           },
           {
-            to: 'next/Cadence/intro',
+            to: 'Cadence/intro',
             position: 'left',
             label: 'Cadence',
           },
           {
-            to: 'next/Tooling/intro',
+            to: 'Tooling/intro',
             position: 'left',
             label: 'Tooling',
           },
           {
-            to: 'next/References/Introduction',
+            to: 'References/Introduction',
             position: 'left',
             label: 'References',
           },
           {
-            to: 'next/Community Resources/Introduction',
+            to: 'Community-Resources/Introduction',
             position: 'left',
             label: 'Community Resources',
-          },
-          {
-            type: 'docsVersionDropdown',
-            position: 'right',
-            dropdownItemsAfter: [{ to: '/versions', label: 'All versions' }],
-            dropdownActiveClassDisabled: true,
           },
           {
             href: 'https://github.com/onflow',
@@ -519,15 +494,6 @@ const config = {
       },
     }),
   plugins: [
-    [
-      '@docusaurus/plugin-client-redirects',
-      {
-        redirects: getRedirects(),
-        createRedirects(existingPath) {
-          return undefined; // Return a falsy value: no redirect created
-        },
-      },
-    ],
     function tailwindPlugin() {
       return {
         name: 'docusaurus-tailwindcss',
