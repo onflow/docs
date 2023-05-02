@@ -212,18 +212,6 @@ const config = {
           showLastUpdateAuthor: true,
           exclude: ignoreFiles(),
           numberPrefixParser: true,
-          lastVersion: 'current',
-          versions: {
-            legacy: {
-              label: 'Legacy',
-              banner: 'unmaintained',
-              path: '/',
-            },
-            current: {
-              label: 'Current',
-              path: 'next',
-            },
-          },
         },
         blog: false,
         theme: {
@@ -306,12 +294,6 @@ const config = {
             to: 'next/Community-Resources/Introduction',
             position: 'left',
             label: 'Community Resources',
-          },
-          {
-            type: 'docsVersionDropdown',
-            position: 'right',
-            dropdownItemsAfter: [{ to: '/versions', label: 'All versions' }],
-            dropdownActiveClassDisabled: true,
           },
           {
             href: 'https://github.com/onflow',
