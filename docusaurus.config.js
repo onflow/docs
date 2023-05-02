@@ -196,10 +196,11 @@ const config = {
           showLastUpdateAuthor: true,
           exclude: ignoreFiles(),
           numberPrefixParser: true,
-          lastVersion: 'legacy',
+          lastVersion: 'current',
           versions: {
             legacy: {
               label: 'Legacy',
+              banner: 'unmaintained',
               path: '/',
             },
             current: {
