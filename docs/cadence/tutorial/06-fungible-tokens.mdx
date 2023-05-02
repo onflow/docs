@@ -136,7 +136,7 @@ Instead of using a central ledger system, Flow ties ownership to each account vi
 The example below showcases how Solidity (the smart contract language for the Ethereum Blockchain, among others)
 implements fungible tokens, with only the code for storage and transferring tokens shown for brevity.
 
-```solidity:title=ERC20.sol
+```solidity ERC20.sol
 contract ERC20 {
     // Maps user addresses to balances, similar to a dictionary in Cadence
     mapping (address => uint256) private _balances;
