@@ -44,7 +44,7 @@ Having your playground in this state is necessary to follow the [Composable Smar
 6. Run the transaction in Transaction 1. This is the `SetupAccount1Transaction.cdc` file.
    Use account `0x01` as the only signer to set up account `0x01`'s storage.
 
-```cadence:title=SetupAccount1Transaction.cdc
+```cadence SetupAccount1Transaction.cdc
 // SetupAccount1Transaction.cdc
 
 import ExampleToken from 0x01
@@ -74,7 +74,7 @@ transaction {
 7. Run the transaction in Transaction 2. This is the `SetupAccount2Transaction.cdc` file.
 Use account `0x02` as the only signer to set up account `0x02`'s storage.
 
-```cadence:title=SetupAccount2Transaction.cdc
+```cadence SetupAccount2Transaction.cdc
 // SetupAccount2Transaction.cdc
 
 import ExampleToken from 0x01
@@ -125,7 +125,7 @@ transaction {
 8. Run the transaction in Transaction 3. This is the `SetupAccount1TransactionMinting.cdc` file.
    Use account `0x01` as the only signer to mint fungible tokens for account 1 and 2.
 
-```cadence:title=SetupAccount1TransactionMinting.cdc
+```cadence SetupAccount1TransactionMinting.cdc
 // SetupAccount1TransactionMinting.cdc
 
 import ExampleToken from 0x01
@@ -167,7 +167,7 @@ transaction {
 
 9. Run the script `CheckSetupScript.cdc` file in Script 1 to ensure everything is set up.
 
-```cadence:title=CheckSetupScript.cdc
+```cadence CheckSetupScript.cdc
 // CheckSetupScript.cdc
 
 import ExampleToken from 0x01

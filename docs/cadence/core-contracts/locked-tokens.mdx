@@ -182,7 +182,7 @@ The `LockedTokens` contract defines events that can be monitored for important a
 
 Emitted when a new shared (locked) account is registered.
 
-```cadence:title=SharedAccountRegistered
+```cadence SharedAccountRegistered
 pub event SharedAccountRegistered(address: Address)
 ```
 
@@ -191,7 +191,7 @@ pub event SharedAccountRegistered(address: Address)
 Emitted when a new user (unlocked) account is registered. This and `SharedAccountRegistered`
 are always emitted at the same time.
 
-```cadence:title=UnlockedAccountRegistered
+```cadence UnlockedAccountRegistered
 pub event UnlockedAccountRegistered(address: Address)
 ```
 
@@ -200,7 +200,7 @@ pub event UnlockedAccountRegistered(address: Address)
 Emitted when the token admin increases the unlock limit for a locked account.
 This will usually happen when a milestone is reached in the vesting of the locked tokens.
 
-```cadence:title=UnlockLimitIncreased
+```cadence UnlockLimitIncreased
 pub event UnlockLimitIncreased(address: Address, increaseAmount: UFix64, newLimit: UFix64)
 ```
 
@@ -208,7 +208,7 @@ pub event UnlockLimitIncreased(address: Address, increaseAmount: UFix64, newLimi
 
 Emitted when a user registers their locked account as a node operator.
 
-```cadence:title=LockedAccountRegisteredAsNode
+```cadence LockedAccountRegisteredAsNode
 pub event LockedAccountRegisteredAsNode(address: Address, nodeID: String)
 ```
 
@@ -216,7 +216,7 @@ pub event LockedAccountRegisteredAsNode(address: Address, nodeID: String)
 
 Emitted when a user registers their locked account as a delegator.
 
-```cadence:title=LockedAccountRegisteredAsDelegator
+```cadence LockedAccountRegisteredAsDelegator
 pub event LockedAccountRegisteredAsDelegator(address: Address, nodeID: String)
 ```
 
@@ -224,6 +224,6 @@ pub event LockedAccountRegisteredAsDelegator(address: Address, nodeID: String)
 
 Emitted when the token admin deposits locked tokens from the token sale.
 
-```cadence:title=LockedTokensDeposited
+```cadence LockedTokensDeposited
 pub event LockedTokensDeposited(address: Address, amount: UFix64)
 ```

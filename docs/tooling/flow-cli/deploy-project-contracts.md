@@ -47,13 +47,13 @@ In the example above, your `flow.json` file might look something like this:
 
 Here's a sketch of the contract source files:
 
-```cadence:title=NonFungibleToken.cdc
+```cadence NonFungibleToken.cdc
 pub contract NonFungibleToken { 
   // ...
 }
 ```
 
-```cadence:title=KittyItems.cdc
+```cadence KittyItems.cdc
 import NonFungibleToken from "./NonFungibleToken.cdc"
 
 pub contract KittyItems { 
@@ -112,7 +112,7 @@ leaving the original contract files unchanged.
 
 In the example above, the `KittyItems` contract would be rewritten like this:
 
-```cadence:title=KittyItems.cdc
+```cadence KittyItems.cdc
 import NonFungibleToken from 0xf8d6e0586b0a20c7
 
 pub contract KittyItems { 
@@ -129,7 +129,7 @@ order in the list of configuration files specified in the -f flag
 
 Let's look at an example of `deploy` commands with multiple configuration files below
 
-````cadence:title=flow.json
+```cadence flow.json
 {
     "accounts": {
         "admin-account": {
@@ -142,8 +142,8 @@ Let's look at an example of `deploy` commands with multiple configuration files 
         }
     }
 }
-````
-````cadence:title=private.json
+```
+```cadence private.json
 {
     "accounts":{
 		"admin-account":{
@@ -152,12 +152,12 @@ Let's look at an example of `deploy` commands with multiple configuration files 
 	    }
 	}
 }
-````
+```
 In the example above, when we try to use the `deploy` command with multiple configuration files and there is an overlap 
 in the `admin-account` account in `accounts` field of the configuration, the resulting configuration will be like this
 
 > flow project deploy -f flow.json -f private.json
-````
+```
 {
     "accounts":{
 	    "admin-account":{
@@ -170,7 +170,7 @@ in the `admin-account` account in `accounts` field of the configuration, the res
 	    }
 	}
 }
-````
+```
 
 ## Flags
 

@@ -7,12 +7,8 @@
       "destination": "/cadence/intro"
     },
     {
-      "source": "/cadence/anti-patterns",
-      "destination": "/cadence/_anti-patterns"
-    },
-    {
       "source": "/flow",
-      "destination": "/Concepts/start-here"
+      "destination": "/concepts/start-here"
     },
     {
       "source": "/flow/core-contracts",
@@ -68,1059 +64,1059 @@
     },
     {
       "source": "/flow/dapp-development",
-      "destination": "/Tutorials/intro"
+      "destination": "/tutorials/intro"
     },
     {
       "source": "/flow/dapp-development/contract-testing",
-      "destination": "/Tutorials/contract-testing"
+      "destination": "/tutorials/contract-testing"
     },
     {
       "source": "/flow/dapp-development/dapp-infrastructure",
-      "destination": "/Tutorials/dapp-infrastructure"
+      "destination": "/tutorials/dapp-infrastructure"
     },
     {
       "source": "/flow/dapp-development/DappArchitectures",
-      "destination": "/Tutorials/DappArchitectures"
+      "destination": "/tutorials/DappArchitectures"
     },
     {
       "source": "/flow/dapp-development/deployment",
-      "destination": "/Tutorials/deployment"
+      "destination": "/tutorials/deployment"
     },
     {
       "source": "/flow/dapp-development/flow-dapp-anatomy",
-      "destination": "/Tutorials/flow-dapp-anatomy"
+      "destination": "/tutorials/flow-dapp-anatomy"
     },
     {
       "source": "/flow/dapp-development/fungible-tokens",
-      "destination": "/Tutorials/fungible-tokens"
+      "destination": "/tutorials/fungible-tokens"
     },
     {
       "source": "/flow/dapp-development/mainnet-account-setup",
-      "destination": "/Tutorials/mainnet-account-setup"
+      "destination": "/tutorials/mainnet-account-setup"
     },
     {
       "source": "/flow/dapp-development/mainnet-deployment",
-      "destination": "/Tutorials/mainnet-deployment"
+      "destination": "/tutorials/mainnet-deployment"
     },
     {
       "source": "/flow/dapp-development/NFT-drop-styles",
-      "destination": "/Tutorials/NFT-drop-styles"
+      "destination": "/tutorials/NFT-drop-styles"
     },
     {
       "source": "/flow/dapp-development/smart-contracts",
-      "destination": "/Tutorials/smart-contracts"
+      "destination": "/tutorials/smart-contracts"
     },
     {
       "source": "/flow/dapp-development/testnet-deployment",
-      "destination": "/Tutorials/testnet-deployment"
+      "destination": "/tutorials/testnet-deployment"
     },
     {
       "source": "/flow/dapp-development/testnet-testing",
-      "destination": "/Tutorials/testnet-testing"
+      "destination": "/tutorials/testnet-testing"
     },
     {
       "source": "/flow/dapp-development/user-accounts-and-wallets",
-      "destination": "/Tutorials/user-accounts-and-wallets"
+      "destination": "/tutorials/user-accounts-and-wallets"
     },
     {
       "source": "/flow/developer-portal/contribution-guidelines",
-      "destination": "/Community-Resources/developer-portal/contribution-guidelines"
+      "destination": "/community-resources/developer-portal/contribution-guidelines"
     },
     {
       "source": "/flow/developer-portal/portal-overview",
-      "destination": "/Community-Resources/developer-portal/portal-overview"
+      "destination": "/community-resources/developer-portal/portal-overview"
     },
     {
       "source": "/flow/faq/backers",
-      "destination": "/Concepts/nodes/faq/backers"
+      "destination": "/concepts/nodes/faq/backers"
     },
     {
       "source": "/flow/faq/developers",
-      "destination": "/Concepts/nodes/faq/developers"
+      "destination": "/concepts/nodes/faq/developers"
     },
     {
       "source": "/flow/faq/operators",
-      "destination": "/Concepts/nodes/faq/operators"
+      "destination": "/concepts/nodes/faq/operators"
     },
     {
       "source": "/flow/flow-ft/ExampleToken",
-      "destination": "/Concepts/token-standards/flow-ft/ExampleToken"
+      "destination": "/concepts/token-standards/flow-ft/ExampleToken"
     },
     {
       "source": "/flow/flow-ft/ExampleToken/ExampleToken_Administrator",
-      "destination": "/Concepts/token-standards/flow-ft/ExampleToken/ExampleToken_Administrator"
+      "destination": "/concepts/token-standards/flow-ft/ExampleToken/ExampleToken_Administrator"
     },
     {
       "source": "/flow/flow-ft/ExampleToken/ExampleToken_Burner",
-      "destination": "/Concepts/token-standards/flow-ft/ExampleToken/ExampleToken_Burner"
+      "destination": "/concepts/token-standards/flow-ft/ExampleToken/ExampleToken_Burner"
     },
     {
       "source": "/flow/flow-ft/ExampleToken/ExampleToken_Minter",
-      "destination": "/Concepts/token-standards/flow-ft/ExampleToken/ExampleToken_Minter"
+      "destination": "/concepts/token-standards/flow-ft/ExampleToken/ExampleToken_Minter"
     },
     {
       "source": "/flow/flow-ft/ExampleToken/ExampleToken_Vault",
-      "destination": "/Concepts/token-standards/flow-ft/ExampleToken/ExampleToken_Vault"
+      "destination": "/concepts/token-standards/flow-ft/ExampleToken/ExampleToken_Vault"
     },
     {
       "source": "/flow/flow-ft/FungibleToken",
-      "destination": "/Concepts/token-standards/flow-ft/FungibleToken"
+      "destination": "/concepts/token-standards/flow-ft/FungibleToken"
     },
     {
       "source": "/flow/flow-ft/FungibleToken/FungibleToken_Balance",
-      "destination": "/Concepts/token-standards/flow-ft/FungibleToken/FungibleToken_Balance"
+      "destination": "/concepts/token-standards/flow-ft/FungibleToken/FungibleToken_Balance"
     },
     {
       "source": "/flow/flow-ft/FungibleToken/FungibleToken_Provider",
-      "destination": "/Concepts/token-standards/flow-ft/FungibleToken/FungibleToken_Provider"
+      "destination": "/concepts/token-standards/flow-ft/FungibleToken/FungibleToken_Provider"
     },
     {
       "source": "/flow/flow-ft/FungibleToken/FungibleToken_Receiver",
-      "destination": "/Concepts/token-standards/flow-ft/FungibleToken/FungibleToken_Receiver"
+      "destination": "/concepts/token-standards/flow-ft/FungibleToken/FungibleToken_Receiver"
     },
     {
       "source": "/flow/flow-ft/FungibleToken/FungibleToken_Vault",
-      "destination": "/Concepts/token-standards/flow-ft/FungibleToken/FungibleToken_Vault"
+      "destination": "/concepts/token-standards/flow-ft/FungibleToken/FungibleToken_Vault"
     },
     {
       "source": "/flow/flow-ft/FungibleTokenMetadataViews",
-      "destination": "/Concepts/token-standards/flow-ft/FungibleTokenMetadataViews"
+      "destination": "/concepts/token-standards/flow-ft/FungibleTokenMetadataViews"
     },
     {
       "source": "/flow/flow-ft/FungibleTokenMetadataViews/FungibleTokenMetadataViews_FTDisplay",
-      "destination": "/Concepts/token-standards/flow-ft/FungibleTokenMetadataViews/FungibleTokenMetadataViews_FTDisplay"
+      "destination": "/concepts/token-standards/flow-ft/FungibleTokenMetadataViews/FungibleTokenMetadataViews_FTDisplay"
     },
     {
       "source": "/flow/flow-ft/FungibleTokenMetadataViews/FungibleTokenMetadataViews_FTVaultData",
-      "destination": "/Concepts/token-standards/flow-ft/FungibleTokenMetadataViews/FungibleTokenMetadataViews_FTVaultData"
+      "destination": "/concepts/token-standards/flow-ft/FungibleTokenMetadataViews/FungibleTokenMetadataViews_FTVaultData"
     },
     {
       "source": "/flow/flow-ft/FungibleTokenMetadataViews/FungibleTokenMetadataViews_FTView",
-      "destination": "/Concepts/token-standards/flow-ft/FungibleTokenMetadataViews/FungibleTokenMetadataViews_FTView"
+      "destination": "/concepts/token-standards/flow-ft/FungibleTokenMetadataViews/FungibleTokenMetadataViews_FTView"
     },
     {
       "source": "/flow/flow-ft/FungibleTokenSwitchboard",
-      "destination": "/Concepts/token-standards/flow-ft/FungibleTokenSwitchboard"
+      "destination": "/concepts/token-standards/flow-ft/FungibleTokenSwitchboard"
     },
     {
       "source": "/flow/flow-ft/FungibleTokenSwitchboard/FungibleTokenSwitchboard_Switchboard",
-      "destination": "/Concepts/token-standards/flow-ft/FungibleTokenSwitchboard/FungibleTokenSwitchboard_Switchboard"
+      "destination": "/concepts/token-standards/flow-ft/FungibleTokenSwitchboard/FungibleTokenSwitchboard_Switchboard"
     },
     {
       "source": "/flow/flow-ft/FungibleTokenSwitchboard/FungibleTokenSwitchboard_SwitchboardPublic",
-      "destination": "/Concepts/token-standards/flow-ft/FungibleTokenSwitchboard/FungibleTokenSwitchboard_SwitchboardPublic"
+      "destination": "/concepts/token-standards/flow-ft/FungibleTokenSwitchboard/FungibleTokenSwitchboard_SwitchboardPublic"
     },
     {
       "source": "/flow/flow-ft/overview",
-      "destination": "/Concepts/token-standards/flow-ft"
+      "destination": "/concepts/token-standards/flow-ft"
     },
     {
       "source": "/flow/flow-nft/ExampleNFT",
-      "destination": "/Concepts/token-standards/flow-nft/ExampleNFT"
+      "destination": "/concepts/token-standards/flow-nft/ExampleNFT"
     },
     {
       "source": "/flow/flow-nft/ExampleNFT/ExampleNFT_Collection",
-      "destination": "/Concepts/token-standards/flow-nft/ExampleNFT/ExampleNFT_Collection"
+      "destination": "/concepts/token-standards/flow-nft/ExampleNFT/ExampleNFT_Collection"
     },
     {
       "source": "/flow/flow-nft/ExampleNFT/ExampleNFT_ExampleNFTCollectionPublic",
-      "destination": "/Concepts/token-standards/flow-nft/ExampleNFT/ExampleNFT_ExampleNFTCollectionPublic"
+      "destination": "/concepts/token-standards/flow-nft/ExampleNFT/ExampleNFT_ExampleNFTCollectionPublic"
     },
     {
       "source": "/flow/flow-nft/ExampleNFT/ExampleNFT_NFT",
-      "destination": "/Concepts/token-standards/flow-nft/ExampleNFT/ExampleNFT_NFT"
+      "destination": "/concepts/token-standards/flow-nft/ExampleNFT/ExampleNFT_NFT"
     },
     {
       "source": "/flow/flow-nft/ExampleNFT/ExampleNFT_NFTMinter",
-      "destination": "/Concepts/token-standards/flow-nft/ExampleNFT/ExampleNFT_NFTMinter"
+      "destination": "/concepts/token-standards/flow-nft/ExampleNFT/ExampleNFT_NFTMinter"
     },
     {
       "source": "/flow/flow-nft/MetdataViews/MetadataViews",
-      "destination": "/Concepts/token-standards/flow-nft/MetdataViews/MetadataViews"
+      "destination": "/concepts/token-standards/flow-nft/MetdataViews/MetadataViews"
     },
     {
       "source": "/flow/flow-nft/MetdataViews/MetadataViews_Display",
-      "destination": "/Concepts/token-standards/flow-nft/MetdataViews/MetadataViews_Display"
+      "destination": "/concepts/token-standards/flow-nft/MetdataViews/MetadataViews_Display"
     },
     {
       "source": "/flow/flow-nft/MetdataViews/MetadataViews_Edition",
-      "destination": "/Concepts/token-standards/flow-nft/MetdataViews/MetadataViews_Edition"
+      "destination": "/concepts/token-standards/flow-nft/MetdataViews/MetadataViews_Edition"
     },
     {
       "source": "/flow/flow-nft/MetdataViews/MetadataViews_Editions",
-      "destination": "/Concepts/token-standards/flow-nft/MetdataViews/MetadataViews_Editions"
+      "destination": "/concepts/token-standards/flow-nft/MetdataViews/MetadataViews_Editions"
     },
     {
       "source": "/flow/flow-nft/MetdataViews/MetadataViews_ExternalURL",
-      "destination": "/Concepts/token-standards/flow-nft/MetdataViews/MetadataViews_ExternalURL"
+      "destination": "/concepts/token-standards/flow-nft/MetdataViews/MetadataViews_ExternalURL"
     },
     {
       "source": "/flow/flow-nft/MetdataViews/MetadataViews_File",
-      "destination": "/Concepts/token-standards/flow-nft/MetdataViews/MetadataViews_File"
+      "destination": "/concepts/token-standards/flow-nft/MetdataViews/MetadataViews_File"
     },
     {
       "source": "/flow/flow-nft/MetdataViews/MetadataViews_HTTPFile",
-      "destination": "/Concepts/token-standards/flow-nft/MetdataViews/MetadataViews_HTTPFile"
+      "destination": "/concepts/token-standards/flow-nft/MetdataViews/MetadataViews_HTTPFile"
     },
     {
       "source": "/flow/flow-nft/MetdataViews/MetadataViews_IPFSFile",
-      "destination": "/Concepts/token-standards/flow-nft/MetdataViews/MetadataViews_IPFSFile"
+      "destination": "/concepts/token-standards/flow-nft/MetdataViews/MetadataViews_IPFSFile"
     },
     {
       "source": "/flow/flow-nft/MetdataViews/MetadataViews_License",
-      "destination": "/Concepts/token-standards/flow-nft/MetdataViews/MetadataViews_License"
+      "destination": "/concepts/token-standards/flow-nft/MetdataViews/MetadataViews_License"
     },
     {
       "source": "/flow/flow-nft/MetdataViews/MetadataViews_Media",
-      "destination": "/Concepts/token-standards/flow-nft/MetdataViews/MetadataViews_Media"
+      "destination": "/concepts/token-standards/flow-nft/MetdataViews/MetadataViews_Media"
     },
     {
       "source": "/flow/flow-nft/MetdataViews/MetadataViews_Medias",
-      "destination": "/Concepts/token-standards/flow-nft/MetdataViews/MetadataViews_Medias"
+      "destination": "/concepts/token-standards/flow-nft/MetdataViews/MetadataViews_Medias"
     },
     {
       "source": "/flow/flow-nft/MetdataViews/MetadataViews_NFTCollectionData",
-      "destination": "/Concepts/token-standards/flow-nft/MetdataViews/MetadataViews_NFTCollectionData"
+      "destination": "/concepts/token-standards/flow-nft/MetdataViews/MetadataViews_NFTCollectionData"
     },
     {
       "source": "/flow/flow-nft/MetdataViews/MetadataViews_NFTCollectionDisplay",
-      "destination": "/Concepts/token-standards/flow-nft/MetdataViews/MetadataViews_NFTCollectionDisplay"
+      "destination": "/concepts/token-standards/flow-nft/MetdataViews/MetadataViews_NFTCollectionDisplay"
     },
     {
       "source": "/flow/flow-nft/MetdataViews/MetadataViews_NFTView",
-      "destination": "/Concepts/token-standards/flow-nft/MetdataViews/MetadataViews_NFTView"
+      "destination": "/concepts/token-standards/flow-nft/MetdataViews/MetadataViews_NFTView"
     },
     {
       "source": "/flow/flow-nft/MetdataViews/MetadataViews_Rarity",
-      "destination": "/Concepts/token-standards/flow-nft/MetdataViews/MetadataViews_Rarity"
+      "destination": "/concepts/token-standards/flow-nft/MetdataViews/MetadataViews_Rarity"
     },
     {
       "source": "/flow/flow-nft/MetdataViews/MetadataViews_Resolver",
-      "destination": "/Concepts/token-standards/flow-nft/MetdataViews/MetadataViews_Resolver"
+      "destination": "/concepts/token-standards/flow-nft/MetdataViews/MetadataViews_Resolver"
     },
     {
       "source": "/flow/flow-nft/MetdataViews/MetadataViews_ResolverCollection",
-      "destination": "/Concepts/token-standards/flow-nft/MetdataViews/MetadataViews_ResolverCollection"
+      "destination": "/concepts/token-standards/flow-nft/MetdataViews/MetadataViews_ResolverCollection"
     },
     {
       "source": "/flow/flow-nft/MetdataViews/MetadataViews_Royalties",
-      "destination": "/Concepts/token-standards/flow-nft/MetdataViews/MetadataViews_Royalties"
+      "destination": "/concepts/token-standards/flow-nft/MetdataViews/MetadataViews_Royalties"
     },
     {
       "source": "/flow/flow-nft/MetdataViews/MetadataViews_Royalty",
-      "destination": "/Concepts/token-standards/flow-nft/MetdataViews/MetadataViews_Royalty"
+      "destination": "/concepts/token-standards/flow-nft/MetdataViews/MetadataViews_Royalty"
     },
     {
       "source": "/flow/flow-nft/MetdataViews/MetadataViews_Serial",
-      "destination": "/Concepts/token-standards/flow-nft/MetdataViews/MetadataViews_Serial"
+      "destination": "/concepts/token-standards/flow-nft/MetdataViews/MetadataViews_Serial"
     },
     {
       "source": "/flow/flow-nft/MetdataViews/MetadataViews_Trait",
-      "destination": "/Concepts/token-standards/flow-nft/MetdataViews/MetadataViews_Trait"
+      "destination": "/concepts/token-standards/flow-nft/MetdataViews/MetadataViews_Trait"
     },
     {
       "source": "/flow/flow-nft/MetdataViews/MetadataViews_Traits",
-      "destination": "/Concepts/token-standards/flow-nft/MetdataViews/MetadataViews_Traits"
+      "destination": "/concepts/token-standards/flow-nft/MetdataViews/MetadataViews_Traits"
     },
     {
       "source": "/flow/flow-nft/NonFungibleToken",
-      "destination": "/Concepts/token-standards/flow-nft/NonFungibleToken"
+      "destination": "/concepts/token-standards/flow-nft/NonFungibleToken"
     },
     {
       "source": "/flow/flow-nft/NonFungibleToken/NonFungibleToken_Collection",
-      "destination": "/Concepts/token-standards/flow-nft/NonFungibleToken/NonFungibleToken_Collection"
+      "destination": "/concepts/token-standards/flow-nft/NonFungibleToken/NonFungibleToken_Collection"
     },
     {
       "source": "/flow/flow-nft/NonFungibleToken/NonFungibleToken_CollectionPublic",
-      "destination": "/Concepts/token-standards/flow-nft/NonFungibleToken/NonFungibleToken_CollectionPublic"
+      "destination": "/concepts/token-standards/flow-nft/NonFungibleToken/NonFungibleToken_CollectionPublic"
     },
     {
       "source": "/flow/flow-nft/NonFungibleToken/NonFungibleToken_INFT",
-      "destination": "/Concepts/token-standards/flow-nft/NonFungibleToken/NonFungibleToken_INFT"
+      "destination": "/concepts/token-standards/flow-nft/NonFungibleToken/NonFungibleToken_INFT"
     },
     {
       "source": "/flow/flow-nft/NonFungibleToken/NonFungibleToken_NFT",
-      "destination": "/Concepts/token-standards/flow-nft/NonFungibleToken/NonFungibleToken_NFT"
+      "destination": "/concepts/token-standards/flow-nft/NonFungibleToken/NonFungibleToken_NFT"
     },
     {
       "source": "/flow/flow-nft/NonFungibleToken/NonFungibleToken_Provider",
-      "destination": "/Concepts/token-standards/flow-nft/NonFungibleToken/NonFungibleToken_Provider"
+      "destination": "/concepts/token-standards/flow-nft/NonFungibleToken/NonFungibleToken_Provider"
     },
     {
       "source": "/flow/flow-nft/NonFungibleToken/NonFungibleToken_Receiver",
-      "destination": "/Concepts/token-standards/flow-nft/NonFungibleToken/NonFungibleToken_Receiver"
+      "destination": "/concepts/token-standards/flow-nft/NonFungibleToken/NonFungibleToken_Receiver"
     },
     {
       "source": "/flow/flow-nft/overview",
-      "destination": "/Concepts/token-standards/flow-nft"
+      "destination": "/concepts/token-standards/flow-nft"
     },
     {
       "source": "/flow/flow-token",
-      "destination": "/Concepts/flow-token"
+      "destination": "/concepts/flow-token"
     },
     {
       "source": "/flow/flow-token/available-wallets",
-      "destination": "/Concepts/flow-token/available-wallets"
+      "destination": "/concepts/flow-token/available-wallets"
     },
     {
       "source": "/flow/flow-token/concepts",
-      "destination": "/Concepts/flow-token/concepts"
+      "destination": "/concepts/flow-token/concepts"
     },
     {
       "source": "/flow/flow-token/delivery",
-      "destination": "/Concepts/flow-token/delivery"
+      "destination": "/concepts/flow-token/delivery"
     },
     {
       "source": "/flow/flow-token/earn",
-      "destination": "/Concepts/flow-token/earn"
+      "destination": "/concepts/flow-token/earn"
     },
     {
       "source": "/flow/flow-token/faq",
-      "destination": "/Concepts/flow-token/faq"
+      "destination": "/concepts/flow-token/faq"
     },
     {
       "source": "/flow/flow-token/locked-account-setup",
-      "destination": "/Concepts/flow-token/locked-account-setup"
+      "destination": "/concepts/flow-token/locked-account-setup"
     },
     {
       "source": "/flow/flow-token/wallets",
-      "destination": "/Concepts/flow-token/wallets"
+      "destination": "/concepts/flow-token/wallets"
     },
     {
       "source": "/flow/fungible-tokens",
-      "destination": "/Concepts/token-standards/fungible-tokens"
+      "destination": "/concepts/token-standards/fungible-tokens"
     },
     {
       "source": "/flow/nft-marketplace",
-      "destination": "/Tooling/nft-marketplace"
+      "destination": "/tooling/nft-marketplace"
     },
     {
       "source": "/flow/nft-marketplace/best-practices",
-      "destination": "/Tooling/nft-marketplace/best-practices"
+      "destination": "/tooling/nft-marketplace/best-practices"
     },
     {
       "source": "/flow/nft-marketplace/building-blocks",
-      "destination": "/Tooling/nft-marketplace/building-blocks"
+      "destination": "/tooling/nft-marketplace/building-blocks"
     },
     {
       "source": "/flow/nft-marketplace/handling-accounts",
-      "destination": "/Tooling/nft-marketplace/handling-accounts"
+      "destination": "/tooling/nft-marketplace/handling-accounts"
     },
     {
       "source": "/flow/nft-marketplace/minting-nfts",
-      "destination": "/Tooling/nft-marketplace/minting-nfts"
+      "destination": "/tooling/nft-marketplace/minting-nfts"
     },
     {
       "source": "/flow/nft-marketplace/selling-nfts",
-      "destination": "/Tooling/nft-marketplace/selling-nfts"
+      "destination": "/tooling/nft-marketplace/selling-nfts"
     },
     {
       "source": "/hybrid-custody",
-      "destination": "/Concepts/hybrid-custody"
+      "destination": "/concepts/hybrid-custody"
     },
     {
       "source": "/hybrid-custody/get-started",
-      "destination": "/Concepts/hybrid-custody/get-started"
+      "destination": "/concepts/hybrid-custody/get-started"
     },
     {
       "source": "/hybrid-custody/guides/account-abstraction",
-      "destination": "/Concepts/hybrid-custody/guides/account-abstraction"
+      "destination": "/concepts/hybrid-custody/guides/account-abstraction"
     },
     {
       "source": "/hybrid-custody/guides/account-model",
-      "destination": "/Concepts/hybrid-custody/guides/account-model"
+      "destination": "/concepts/hybrid-custody/guides/account-model"
     },
     {
       "source": "/hybrid-custody/guides/linking-accounts",
-      "destination": "/Concepts/hybrid-custody/guides/linking-accounts"
+      "destination": "/concepts/hybrid-custody/guides/linking-accounts"
     },
     {
       "source": "/hybrid-custody/guides/walletless-onboarding",
-      "destination": "/Concepts/hybrid-custody/guides/walletless-onboarding"
+      "destination": "/concepts/hybrid-custody/guides/walletless-onboarding"
     },
     {
       "source": "/Learn/Concepts",
-      "destination": "/Concepts/intro"
+      "destination": "/concepts/intro"
     },
     {
-      "source": "/Learn/Concepts/accessing-mainnet",
-      "destination": "/Concepts/flow-networks/accessing-mainnet"
+      "source": "/Learn/concepts/accessing-mainnet",
+      "destination": "/concepts/flow-networks/accessing-mainnet"
     },
     {
-      "source": "/Learn/Concepts/accessing-sandboxnet",
-      "destination": "/Concepts/flow-networks/accessing-sandboxnet"
+      "source": "/Learn/concepts/accessing-sandboxnet",
+      "destination": "/concepts/flow-networks/accessing-sandboxnet"
     },
     {
-      "source": "/Learn/Concepts/accessing-testnet",
-      "destination": "/Concepts/flow-networks/accessing-testnet"
+      "source": "/Learn/concepts/accessing-testnet",
+      "destination": "/concepts/flow-networks/accessing-testnet"
     },
     {
-      "source": "/Learn/Concepts/accounts-and-keys",
-      "destination": "/Concepts/start-here/accounts-and-keys"
+      "source": "/Learn/concepts/accounts-and-keys",
+      "destination": "/concepts/start-here/accounts-and-keys"
     },
     {
-      "source": "/Learn/Concepts/delegation",
-      "destination": "/Concepts/nodes/delegation"
+      "source": "/Learn/concepts/delegation",
+      "destination": "/concepts/nodes/delegation"
     },
     {
-      "source": "/Learn/Concepts/governance",
-      "destination": "/Concepts/start-here/governance"
+      "source": "/Learn/concepts/governance",
+      "destination": "/concepts/start-here/governance"
     },
     {
-      "source": "/Learn/Concepts/networks",
-      "destination": "/Concepts/flow-networks"
+      "source": "/Learn/concepts/networks",
+      "destination": "/concepts/flow-networks"
     },
     {
-      "source": "/Learn/Concepts/slashing",
-      "destination": "/Concepts/nodes/slashing"
+      "source": "/Learn/concepts/slashing",
+      "destination": "/concepts/nodes/slashing"
     },
     {
-      "source": "/Learn/Concepts/storage",
-      "destination": "/Concepts/start-here/storage"
+      "source": "/Learn/concepts/storage",
+      "destination": "/concepts/start-here/storage"
     },
     {
-      "source": "/Learn/Concepts/token-staking",
-      "destination": "/Concepts/nodes/token-staking"
+      "source": "/Learn/concepts/token-staking",
+      "destination": "/concepts/nodes/token-staking"
     },
     {
-      "source": "/Learn/Concepts/transaction-lifecycle",
-      "destination": "/Concepts/start-here/transaction-lifecycle"
+      "source": "/Learn/concepts/transaction-lifecycle",
+      "destination": "/concepts/start-here/transaction-lifecycle"
     },
     {
-      "source": "/Learn/Concepts/transaction-signing",
-      "destination": "/Concepts/start-here/transaction-signing"
+      "source": "/Learn/concepts/transaction-signing",
+      "destination": "/concepts/start-here/transaction-signing"
     },
     {
-      "source": "/Learn/Concepts/variable-transaction-fees",
-      "destination": "/Concepts/start-here/variable-transaction-fees"
+      "source": "/Learn/concepts/variable-transaction-fees",
+      "destination": "/concepts/start-here/variable-transaction-fees"
     },
     {
       "source": "/mobile",
-      "destination": "/Concepts/mobile"
+      "destination": "/concepts/mobile"
     },
     {
       "source": "/mobile/get-started",
-      "destination": "/Concepts/mobile/get-started"
+      "destination": "/concepts/mobile/get-started"
     },
     {
       "source": "/mobile/guides/development-environment",
-      "destination": "/Concepts/mobile/guides/development-environment"
+      "destination": "/concepts/mobile/guides/development-environment"
     },
     {
       "source": "/mobile/guides/monster-maker",
-      "destination": "/Concepts/mobile/guides/monster-maker"
+      "destination": "/concepts/mobile/guides/monster-maker"
     },
     {
       "source": "/mobile/guides/onchain-interactions",
-      "destination": "/Concepts/mobile/guides/onchain-interactions"
+      "destination": "/concepts/mobile/guides/onchain-interactions"
     },
     {
       "source": "/mobile/guides/user-management",
-      "destination": "/Concepts/mobile/guides/user-management"
+      "destination": "/concepts/mobile/guides/user-management"
     },
     {
       "source": "/mobile/references/android",
-      "destination": "/Concepts/mobile/references/android"
+      "destination": "/concepts/mobile/references/android"
     },
     {
       "source": "/mobile/references/ios",
-      "destination": "/Concepts/mobile/references/ios"
+      "destination": "/concepts/mobile/references/ios"
     },
     {
       "source": "/nodes",
-      "destination": "/Concepts/nodes"
+      "destination": "/concepts/nodes"
     },
     {
       "source": "/nodes/access-api",
-      "destination": "/Concepts/nodes/access-api"
+      "destination": "/concepts/nodes/access-api"
     },
     {
       "source": "/nodes/access-api-rate-limits",
-      "destination": "/Concepts/nodes/access-api-rate-limits"
+      "destination": "/concepts/nodes/access-api-rate-limits"
     },
     {
       "source": "/nodes/archive-access-api",
-      "destination": "/Concepts/nodes/archive-access-api"
+      "destination": "/concepts/nodes/archive-access-api"
     },
     {
       "source": "/nodes/archive-api-rate-limits",
-      "destination": "/Concepts/nodes/archive-api-rate-limits"
+      "destination": "/concepts/nodes/archive-api-rate-limits"
     },
     {
       "source": "/nodes/flow-port",
-      "destination": "/Concepts/nodes/flow-port"
+      "destination": "/concepts/nodes/flow-port"
     },
     {
       "source": "/nodes/flow-port/staking-guide",
-      "destination": "/Concepts/nodes/flow-port/staking-guide"
+      "destination": "/concepts/nodes/flow-port/staking-guide"
     },
     {
       "source": "/nodes/node-operation",
-      "destination": "/Concepts/nodes/node-operation"
+      "destination": "/concepts/nodes/node-operation"
     },
     {
       "source": "/nodes/node-operation/access-node-setup",
-      "destination": "/Concepts/nodes/node-operation/access-node-setup"
+      "destination": "/concepts/nodes/node-operation/access-node-setup"
     },
     {
       "source": "/nodes/node-operation/byzantine-node-attack-response",
-      "destination": "/Concepts/nodes/node-operation/byzantine-node-attack-response"
+      "destination": "/concepts/nodes/node-operation/byzantine-node-attack-response"
     },
     {
       "source": "/nodes/node-operation/db-encryption-existing-operator",
-      "destination": "/Concepts/nodes/node-operation/db-encryption-existing-operator"
+      "destination": "/concepts/nodes/node-operation/db-encryption-existing-operator"
     },
     {
       "source": "/nodes/node-operation/faq",
-      "destination": "/Concepts/nodes/node-operation/FAQ"
+      "destination": "/concepts/nodes/node-operation/FAQ"
     },
     {
       "source": "/nodes/node-operation/guides/genesis-bootstrap",
-      "destination": "/Concepts/nodes/node-operation/guides/genesis-bootstrap"
+      "destination": "/concepts/nodes/node-operation/guides/genesis-bootstrap"
     },
     {
       "source": "/nodes/node-operation/guides/spork-practice",
-      "destination": "/Concepts/nodes/node-operation/guides/spork-practice"
+      "destination": "/concepts/nodes/node-operation/guides/spork-practice"
     },
     {
       "source": "/nodes/node-operation/guides/starting-nodes",
-      "destination": "/Concepts/nodes/node-operation/guides/starting-nodes"
+      "destination": "/concepts/nodes/node-operation/guides/starting-nodes"
     },
     {
       "source": "/nodes/node-operation/leased-account-setup",
-      "destination": "/Concepts/nodes/node-operation/leased-account-setup"
+      "destination": "/concepts/nodes/node-operation/leased-account-setup"
     },
     {
       "source": "/nodes/node-operation/machine-existing-operator",
-      "destination": "/Concepts/nodes/node-operation/machine-existing-operator"
+      "destination": "/concepts/nodes/node-operation/machine-existing-operator"
     },
     {
       "source": "/nodes/node-operation/monitoring-nodes",
-      "destination": "/Concepts/nodes/node-operation/monitoring-nodes"
+      "destination": "/concepts/nodes/node-operation/monitoring-nodes"
     },
     {
       "source": "/nodes/node-operation/node-bootstrap",
-      "destination": "/Concepts/nodes/node-operation/node-bootstrap"
+      "destination": "/concepts/nodes/node-operation/node-bootstrap"
     },
     {
       "source": "/nodes/node-operation/node-migration",
-      "destination": "/Concepts/nodes/node-operation/node-migration"
+      "destination": "/concepts/nodes/node-operation/node-migration"
     },
     {
       "source": "/nodes/node-operation/node-provisioning",
-      "destination": "/Concepts/nodes/node-operation/node-provisioning"
+      "destination": "/concepts/nodes/node-operation/node-provisioning"
     },
     {
       "source": "/nodes/node-operation/node-roles",
-      "destination": "/Concepts/nodes/node-operation/node-roles"
+      "destination": "/concepts/nodes/node-operation/node-roles"
     },
     {
       "source": "/nodes/node-operation/node-setup",
-      "destination": "/Concepts/nodes/node-operation/node-setup"
+      "destination": "/concepts/nodes/node-operation/node-setup"
     },
     {
       "source": "/nodes/node-operation/observer-node",
-      "destination": "/Concepts/nodes/node-operation/observer-node"
+      "destination": "/concepts/nodes/node-operation/observer-node"
     },
     {
       "source": "/nodes/node-operation/past-sporks",
-      "destination": "/Concepts/nodes/node-operation/past-sporks"
+      "destination": "/concepts/nodes/node-operation/past-sporks"
     },
     {
       "source": "/nodes/node-operation/spork",
-      "destination": "/Concepts/nodes/node-operation/spork"
+      "destination": "/concepts/nodes/node-operation/spork"
     },
     {
       "source": "/nodes/node-operation/upcoming-sporks",
-      "destination": "/Concepts/nodes/node-operation/upcoming-sporks"
+      "destination": "/concepts/nodes/node-operation/upcoming-sporks"
     },
     {
       "source": "/nodes/staking",
-      "destination": "/Concepts/nodes/staking"
+      "destination": "/concepts/nodes/staking"
     },
     {
       "source": "/nodes/staking/custody-providers",
-      "destination": "/Concepts/nodes/staking/custody-providers"
+      "destination": "/concepts/nodes/staking/custody-providers"
     },
     {
       "source": "/nodes/staking/epoch-preparation",
-      "destination": "/Concepts/nodes/staking/epoch-preparation"
+      "destination": "/concepts/nodes/staking/epoch-preparation"
     },
     {
       "source": "/nodes/staking/epoch-scripts-events",
-      "destination": "/Concepts/nodes/staking/epoch-scripts-events"
+      "destination": "/concepts/nodes/staking/epoch-scripts-events"
     },
     {
       "source": "/nodes/staking/epoch-terminology",
-      "destination": "/Concepts/nodes/staking/epoch-terminology"
+      "destination": "/concepts/nodes/staking/epoch-terminology"
     },
     {
       "source": "/nodes/staking/faq",
-      "destination": "/Concepts/nodes/staking/faq"
+      "destination": "/concepts/nodes/staking/faq"
     },
     {
       "source": "/nodes/staking/locked-staking-guide",
-      "destination": "/Concepts/nodes/staking/locked-staking-guide"
+      "destination": "/concepts/nodes/staking/locked-staking-guide"
     },
     {
       "source": "/nodes/staking/locked-third-party-operator",
-      "destination": "/Concepts/nodes/staking/locked-third-party-operator"
+      "destination": "/concepts/nodes/staking/locked-third-party-operator"
     },
     {
       "source": "/nodes/staking/machine-account",
-      "destination": "/Concepts/nodes/staking/machine-account"
+      "destination": "/concepts/nodes/staking/machine-account"
     },
     {
       "source": "/nodes/staking/qc-dkg",
-      "destination": "/Concepts/nodes/staking/qc-dkg"
+      "destination": "/concepts/nodes/staking/qc-dkg"
     },
     {
       "source": "/nodes/staking/qc-dkg-scripts-events",
-      "destination": "/Concepts/nodes/staking/qc-dkg-scripts-events"
+      "destination": "/concepts/nodes/staking/qc-dkg-scripts-events"
     },
     {
       "source": "/nodes/staking/schedule",
-      "destination": "/Concepts/nodes/staking/schedule"
+      "destination": "/concepts/nodes/staking/schedule"
     },
     {
       "source": "/nodes/staking/stake-slashing",
-      "destination": "/Concepts/nodes/staking/stake-slashing"
+      "destination": "/concepts/nodes/staking/stake-slashing"
     },
     {
       "source": "/nodes/staking/staking-collection",
-      "destination": "/Concepts/nodes/staking/staking-collection"
+      "destination": "/concepts/nodes/staking/staking-collection"
     },
     {
       "source": "/nodes/staking/staking-options",
-      "destination": "/Concepts/nodes/staking/staking-options"
+      "destination": "/concepts/nodes/staking/staking-options"
     },
     {
       "source": "/nodes/staking/staking-rewards",
-      "destination": "/Concepts/nodes/staking/staking-rewards"
+      "destination": "/concepts/nodes/staking/staking-rewards"
     },
     {
       "source": "/nodes/staking/staking-scripts-events",
-      "destination": "/Concepts/nodes/staking/staking-scripts-events"
+      "destination": "/concepts/nodes/staking/staking-scripts-events"
     },
     {
       "source": "/nodes/staking/technical-overview",
-      "destination": "/Concepts/nodes/staking/technical-overview"
+      "destination": "/concepts/nodes/staking/technical-overview"
     },
     {
       "source": "/nodes/staking/unlocked-staking-guide",
-      "destination": "/Concepts/nodes/staking/unlocked-staking-guide"
+      "destination": "/concepts/nodes/staking/unlocked-staking-guide"
     },
     {
       "source": "/tools/emulator",
-      "destination": "/Tooling/emulator"
+      "destination": "/tooling/emulator"
     },
     {
       "source": "/tools/fcl-dev-wallet/overview",
-      "destination": "/Tooling/fcl-dev-wallet/overview"
+      "destination": "/tooling/fcl-dev-wallet/overview"
     },
     {
       "source": "/tools/fcl-js",
-      "destination": "/Tooling/fcl-js"
+      "destination": "/tooling/fcl-js"
     },
     {
       "source": "/tools/fcl-js/reference/api",
-      "destination": "/Tooling/fcl-js/api"
+      "destination": "/tooling/fcl-js/api"
     },
     {
       "source": "/tools/fcl-js/reference/authentication",
-      "destination": "/Tooling/fcl-js/authentication"
+      "destination": "/tooling/fcl-js/authentication"
     },
     {
       "source": "/tools/fcl-js/reference/configure-fcl",
-      "destination": "/Tooling/fcl-js/configure-fcl"
+      "destination": "/tooling/fcl-js/configure-fcl"
     },
     {
       "source": "/tools/fcl-js/reference/discovery",
-      "destination": "/Tooling/fcl-js/discovery"
+      "destination": "/tooling/fcl-js/discovery"
     },
     {
       "source": "/tools/fcl-js/reference/installation",
-      "destination": "/Tooling/fcl-js/installation"
+      "destination": "/tooling/fcl-js/installation"
     },
     {
       "source": "/tools/fcl-js/reference/interaction-templates",
-      "destination": "/Tooling/fcl-js/interaction-templates"
+      "destination": "/tooling/fcl-js/interaction-templates"
     },
     {
       "source": "/tools/fcl-js/reference/proving-authentication",
-      "destination": "/Tooling/fcl-js/proving-authentication"
+      "destination": "/tooling/fcl-js/proving-authentication"
     },
     {
       "source": "/tools/fcl-js/reference/scripts",
-      "destination": "/Tooling/fcl-js/scripts"
+      "destination": "/tooling/fcl-js/scripts"
     },
     {
       "source": "/tools/fcl-js/reference/sdk-guidelines",
-      "destination": "/Tooling/fcl-js/sdk-guidelines"
+      "destination": "/tooling/fcl-js/sdk-guidelines"
     },
     {
       "source": "/tools/fcl-js/reference/transactions",
-      "destination": "/Tooling/fcl-js/transactions"
+      "destination": "/tooling/fcl-js/transactions"
     },
     {
       "source": "/tools/fcl-js/reference/user-signatures",
-      "destination": "/Tooling/fcl-js/user-signatures"
+      "destination": "/tooling/fcl-js/user-signatures"
     },
     {
       "source": "/tools/fcl-js/reference/wallet-connect",
-      "destination": "/Tooling/fcl-js/wallet-connect"
+      "destination": "/tooling/fcl-js/wallet-connect"
     },
     {
       "source": "/tools/fcl-js/tutorials/flow-app-quickstart",
-      "destination": "/Tutorials/flow-app-quickstart"
+      "destination": "/tutorials/flow-app-quickstart"
     },
     {
       "source": "/tools/flow-cadut/api",
-      "destination": "/Tooling/flow-cadut/api"
+      "destination": "/tooling/flow-cadut/api"
     },
     {
       "source": "/tools/flow-cadut/generator",
-      "destination": "/Tooling/flow-cadut/generator"
+      "destination": "/tooling/flow-cadut/generator"
     },
     {
       "source": "/tools/flow-cadut/plugins",
-      "destination": "/Tooling/flow-cadut/plugins"
+      "destination": "/tooling/flow-cadut/plugins"
     },
     {
       "source": "/tools/flow-cli",
-      "destination": "/Tooling/flow-cli"
+      "destination": "/tooling/flow-cli"
     },
     {
       "source": "/tools/flow-cli/account-add-contract",
-      "destination": "/Tooling/flow-cli/account-add-contract"
+      "destination": "/tooling/flow-cli/account-add-contract"
     },
     {
       "source": "/tools/flow-cli/account-remove-contract",
-      "destination": "/Tooling/flow-cli/account-remove-contract"
+      "destination": "/tooling/flow-cli/account-remove-contract"
     },
     {
       "source": "/tools/flow-cli/account-staking-info",
-      "destination": "/Tooling/flow-cli/account-staking-info"
+      "destination": "/tooling/flow-cli/account-staking-info"
     },
     {
       "source": "/tools/flow-cli/account-update-contract",
-      "destination": "/Tooling/flow-cli/account-update-contract"
+      "destination": "/tooling/flow-cli/account-update-contract"
     },
     {
       "source": "/tools/flow-cli/build-transactions",
-      "destination": "/Tooling/flow-cli/build-transactions"
+      "destination": "/tooling/flow-cli/build-transactions"
     },
     {
       "source": "/tools/flow-cli/complex-transactions",
-      "destination": "/Tooling/flow-cli/complex-transactions"
+      "destination": "/tooling/flow-cli/complex-transactions"
     },
     {
       "source": "/tools/flow-cli/configuration",
-      "destination": "/Tooling/flow-cli/configuration"
+      "destination": "/tooling/flow-cli/configuration"
     },
     {
       "source": "/tools/flow-cli/create-accounts",
-      "destination": "/Tooling/flow-cli/create-accounts"
+      "destination": "/tooling/flow-cli/create-accounts"
     },
     {
       "source": "/tools/flow-cli/data-collection",
-      "destination": "/Tooling/flow-cli/data-collection"
+      "destination": "/tooling/flow-cli/data-collection"
     },
     {
       "source": "/tools/flow-cli/decode-keys",
-      "destination": "/Tooling/flow-cli/decode-keys"
+      "destination": "/tooling/flow-cli/decode-keys"
     },
     {
       "source": "/tools/flow-cli/decode-transactions",
-      "destination": "/Tooling/flow-cli/decode-transactions"
+      "destination": "/tooling/flow-cli/decode-transactions"
     },
     {
       "source": "/tools/flow-cli/deploy-project-contracts",
-      "destination": "/Tooling/flow-cli/deploy-project-contracts"
+      "destination": "/tooling/flow-cli/deploy-project-contracts"
     },
     {
       "source": "/tools/flow-cli/derive-keys",
-      "destination": "/Tooling/flow-cli/derive-keys"
+      "destination": "/tooling/flow-cli/derive-keys"
     },
     {
       "source": "/tools/flow-cli/developer-updates/release-notes-v17",
-      "destination": "/Tooling/flow-cli/developer-updates/release-notes-v17"
+      "destination": "/tooling/flow-cli/developer-updates/release-notes-v17"
     },
     {
       "source": "/tools/flow-cli/developer-updates/release-notes-v18",
-      "destination": "/Tooling/flow-cli/developer-updates/release-notes-v18"
+      "destination": "/tooling/flow-cli/developer-updates/release-notes-v18"
     },
     {
       "source": "/tools/flow-cli/developer-updates/release-notes-v19",
-      "destination": "/Tooling/flow-cli/developer-updates/release-notes-v19"
+      "destination": "/tooling/flow-cli/developer-updates/release-notes-v19"
     },
     {
       "source": "/tools/flow-cli/developer-updates/release-notes-v21",
-      "destination": "/Tooling/flow-cli/developer-updates/release-notes-v21"
+      "destination": "/tooling/flow-cli/developer-updates/release-notes-v21"
     },
     {
       "source": "/tools/flow-cli/developer-updates/release-notes-v24",
-      "destination": "/Tooling/flow-cli/developer-updates/release-notes-v24"
+      "destination": "/tooling/flow-cli/developer-updates/release-notes-v24"
     },
     {
       "source": "/tools/flow-cli/developer-updates/release-notes-v26",
-      "destination": "/Tooling/flow-cli/developer-updates/release-notes-v26"
+      "destination": "/tooling/flow-cli/developer-updates/release-notes-v26"
     },
     {
       "source": "/tools/flow-cli/developer-updates/release-notes-v28",
-      "destination": "/Tooling/flow-cli/developer-updates/release-notes-v28"
+      "destination": "/tooling/flow-cli/developer-updates/release-notes-v28"
     },
     {
       "source": "/tools/flow-cli/emulator-snapshot",
-      "destination": "/Tooling/flow-cli/emulator-snapshot"
+      "destination": "/tooling/flow-cli/emulator-snapshot"
     },
     {
       "source": "/tools/flow-cli/execute-scripts",
-      "destination": "/Tooling/flow-cli/execute-scripts"
+      "destination": "/tooling/flow-cli/execute-scripts"
     },
     {
       "source": "/tools/flow-cli/generate-keys",
-      "destination": "/Tooling/flow-cli/generate-keys"
+      "destination": "/tooling/flow-cli/generate-keys"
     },
     {
       "source": "/tools/flow-cli/get-accounts",
-      "destination": "/Tooling/flow-cli/get-accounts"
+      "destination": "/tooling/flow-cli/get-accounts"
     },
     {
       "source": "/tools/flow-cli/get-blocks",
-      "destination": "/Tooling/flow-cli/get-blocks"
+      "destination": "/tooling/flow-cli/get-blocks"
     },
     {
       "source": "/tools/flow-cli/get-collections",
-      "destination": "/Tooling/flow-cli/get-collections"
+      "destination": "/tooling/flow-cli/get-collections"
     },
     {
       "source": "/tools/flow-cli/get-events",
-      "destination": "/Tooling/flow-cli/get-events"
+      "destination": "/tooling/flow-cli/get-events"
     },
     {
       "source": "/tools/flow-cli/get-status",
-      "destination": "/Tooling/flow-cli/get-status"
+      "destination": "/tooling/flow-cli/get-status"
     },
     {
       "source": "/tools/flow-cli/get-transactions",
-      "destination": "/Tooling/flow-cli/get-transactions"
+      "destination": "/tooling/flow-cli/get-transactions"
     },
     {
       "source": "/tools/flow-cli/initialize-configuration",
-      "destination": "/Tooling/flow-cli/initialize-configuration"
+      "destination": "/tooling/flow-cli/initialize-configuration"
     },
     {
       "source": "/tools/flow-cli/install",
-      "destination": "/Tooling/flow-cli/install"
+      "destination": "/tooling/flow-cli/install"
     },
     {
       "source": "/tools/flow-cli/manage-configuration",
-      "destination": "/Tooling/flow-cli/manage-configuration"
+      "destination": "/tooling/flow-cli/manage-configuration"
     },
     {
       "source": "/tools/flow-cli/project-app",
-      "destination": "/Tooling/flow-cli/project-app"
+      "destination": "/tooling/flow-cli/project-app"
     },
     {
       "source": "/tools/flow-cli/project-contracts",
-      "destination": "/Tooling/flow-cli/project-contracts"
+      "destination": "/tooling/flow-cli/project-contracts"
     },
     {
       "source": "/tools/flow-cli/run-tests",
-      "destination": "/Tooling/flow-cli/run-tests"
+      "destination": "/tooling/flow-cli/run-tests"
     },
     {
       "source": "/tools/flow-cli/security",
-      "destination": "/Tooling/flow-cli/security"
+      "destination": "/tooling/flow-cli/security"
     },
     {
       "source": "/tools/flow-cli/send-signed-transactions",
-      "destination": "/Tooling/flow-cli/send-signed-transactions"
+      "destination": "/tooling/flow-cli/send-signed-transactions"
     },
     {
       "source": "/tools/flow-cli/send-transactions",
-      "destination": "/Tooling/flow-cli/send-transactions"
+      "destination": "/tooling/flow-cli/send-transactions"
     },
     {
       "source": "/tools/flow-cli/sign-transaction",
-      "destination": "/Tooling/flow-cli/sign-transaction"
+      "destination": "/tooling/flow-cli/sign-transaction"
     },
     {
       "source": "/tools/flow-cli/signature-generate",
-      "destination": "/Tooling/flow-cli/signature-generate"
+      "destination": "/tooling/flow-cli/signature-generate"
     },
     {
       "source": "/tools/flow-cli/signature-verify",
-      "destination": "/Tooling/flow-cli/signature-verify"
+      "destination": "/tooling/flow-cli/signature-verify"
     },
     {
       "source": "/tools/flow-cli/snapshot-save",
-      "destination": "/Tooling/flow-cli/snapshot-save"
+      "destination": "/tooling/flow-cli/snapshot-save"
     },
     {
       "source": "/tools/flow-cli/start-emulator",
-      "destination": "/Tooling/flow-cli/start-emulator"
+      "destination": "/tooling/flow-cli/start-emulator"
     },
     {
       "source": "/tools/flow-cli/super-commands",
-      "destination": "/Tooling/flow-cli/super-commands"
+      "destination": "/tooling/flow-cli/super-commands"
     },
     {
       "source": "/tools/flow-cli/tools",
-      "destination": "/Tooling/flow-cli/tools"
+      "destination": "/tooling/flow-cli/tools"
     },
     {
       "source": "/tools/flow-go-sdk",
-      "destination": "/Tooling/flow-go-sdk"
+      "destination": "/tooling/flow-go-sdk"
     },
     {
       "source": "/tools/flow-go-sdk/error-codes",
-      "destination": "/Tooling/flow-go-sdk/error-codes"
+      "destination": "/tooling/flow-go-sdk/error-codes"
     },
     {
       "source": "/tools/flow-go-sdk/migration-v0.25.0",
-      "destination": "/Tooling/flow-go-sdk/migration-v0.25.0"
+      "destination": "/tooling/flow-go-sdk/migration-v0.25.0"
     },
     {
       "source": "/tools/flow-js-testing",
-      "destination": "/Tooling/flow-js-testing"
+      "destination": "/tooling/flow-js-testing"
     },
     {
       "source": "/tools/flow-js-testing/accounts",
-      "destination": "/Tooling/flow-js-testing/accounts"
+      "destination": "/tooling/flow-js-testing/accounts"
     },
     {
       "source": "/tools/flow-js-testing/api",
-      "destination": "/Tooling/flow-js-testing/api"
+      "destination": "/tooling/flow-js-testing/api"
     },
     {
       "source": "/tools/flow-js-testing/contracts",
-      "destination": "/Tooling/flow-js-testing/contracts"
+      "destination": "/tooling/flow-js-testing/contracts"
     },
     {
       "source": "/tools/flow-js-testing/emulator",
-      "destination": "/Tooling/flow-js-testing/emulator"
+      "destination": "/tooling/flow-js-testing/emulator"
     },
     {
       "source": "/tools/flow-js-testing/examples/basic",
-      "destination": "/Tooling/flow-js-testing/examples/basic"
+      "destination": "/tooling/flow-js-testing/examples/basic"
     },
     {
       "source": "/tools/flow-js-testing/examples/metadata",
-      "destination": "/Tooling/flow-js-testing/examples/metadata"
+      "destination": "/tooling/flow-js-testing/examples/metadata"
     },
     {
       "source": "/tools/flow-js-testing/execute-scripts",
-      "destination": "/Tooling/flow-js-testing/execute-scripts"
+      "destination": "/tooling/flow-js-testing/execute-scripts"
     },
     {
       "source": "/tools/flow-js-testing/flow-token",
-      "destination": "/Tooling/flow-js-testing/flow-token"
+      "destination": "/tooling/flow-js-testing/flow-token"
     },
     {
       "source": "/tools/flow-js-testing/generator",
-      "destination": "/Tooling/flow-js-testing/generator"
+      "destination": "/tooling/flow-js-testing/generator"
     },
     {
       "source": "/tools/flow-js-testing/init",
-      "destination": "/Tooling/flow-js-testing/init"
+      "destination": "/tooling/flow-js-testing/init"
     },
     {
       "source": "/tools/flow-js-testing/install",
-      "destination": "/Tooling/flow-js-testing/install"
+      "destination": "/tooling/flow-js-testing/install"
     },
     {
       "source": "/tools/flow-js-testing/jest-helpers",
-      "destination": "/Tooling/flow-js-testing/jest-helpers"
+      "destination": "/tooling/flow-js-testing/jest-helpers"
     },
     {
       "source": "/tools/flow-js-testing/send-transactions",
-      "destination": "/Tooling/flow-js-testing/send-transactions"
+      "destination": "/tooling/flow-js-testing/send-transactions"
     },
     {
       "source": "/tools/flow-js-testing/structure",
-      "destination": "/Tooling/flow-js-testing/structure"
+      "destination": "/tooling/flow-js-testing/structure"
     },
     {
       "source": "/tools/flow-js-testing/templates",
-      "destination": "/Tooling/flow-js-testing/templates"
+      "destination": "/tooling/flow-js-testing/templates"
     },
     {
       "source": "/tools/flow-js-testing/types",
-      "destination": "/Tooling/flow-js-testing/types"
+      "destination": "/tooling/flow-js-testing/types"
     },
     {
       "source": "/tools/nft-catalog/cadence-generation",
-      "destination": "/Tooling/nft-catalog/cadence-generation"
+      "destination": "/tooling/nft-catalog/cadence-generation"
     },
     {
       "source": "/tools/nft-catalog/composability-flowcase-guide",
-      "destination": "/Tooling/nft-catalog/composability-flowcase-guide"
+      "destination": "/tooling/nft-catalog/composability-flowcase-guide"
     },
     {
       "source": "/tools/nft-catalog/npm",
-      "destination": "/Tooling/nft-catalog/npm"
+      "destination": "/tooling/nft-catalog/npm"
     },
     {
       "source": "/tools/nft-catalog/overview",
-      "destination": "/Tooling/nft-catalog/overview"
+      "destination": "/tooling/nft-catalog/overview"
     },
     {
       "source": "/tools/unity-sdk",
-      "destination": "/Tooling/unity-sdk"
+      "destination": "/tooling/unity-sdk"
     },
     {
       "source": "/tools/unity-sdk/api-reference",
-      "destination": "/Tooling/unity-sdk/api-reference"
+      "destination": "/tooling/unity-sdk/api-reference"
     },
     {
       "source": "/tools/unity-sdk/changelog",
-      "destination": "/Tooling/unity-sdk/changelog"
+      "destination": "/tooling/unity-sdk/changelog"
     },
     {
       "source": "/tools/unity-sdk/guides/dev-wallet",
-      "destination": "/Tooling/unity-sdk/guides/dev-wallet"
+      "destination": "/tooling/unity-sdk/guides/dev-wallet"
     },
     {
       "source": "/tools/unity-sdk/guides/flow-control",
-      "destination": "/Tooling/unity-sdk/guides/flow-control"
+      "destination": "/tooling/unity-sdk/guides/flow-control"
     },
     {
       "source": "/tools/unity-sdk/license",
-      "destination": "/Tooling/unity-sdk/license"
+      "destination": "/tooling/unity-sdk/license"
     },
     {
       "source": "/tools/unity-sdk/samples/flow-words-tutorial",
-      "destination": "/Tooling/unity-sdk/samples/flow-words-tutorial"
+      "destination": "/tooling/unity-sdk/samples/flow-words-tutorial"
     },
     {
       "source": "/tools/unity-sdk/samples/quickstart",
-      "destination": "/Tooling/unity-sdk/samples/quickstart"
+      "destination": "/tooling/unity-sdk/samples/quickstart"
     },
     {
       "source": "/tools/unity-sdk/samples/ui-usage",
-      "destination": "/Tooling/unity-sdk/samples/ui-usage"
+      "destination": "/tooling/unity-sdk/samples/ui-usage"
     },
     {
       "source": "/tools/vscode-extension",
-      "destination": "/Tooling/vscode-extension"
+      "destination": "/tooling/vscode-extension"
     },
     {
       "source": "/account-linking",
-      "destination": "/Concepts/hybrid-custody"
+      "destination": "/concepts/hybrid-custody"
     },
     {
       "source": "/account-linking/guides/account-model",
-      "destination": "/Concepts/hybrid-custody/guides/account-model"
+      "destination": "/concepts/hybrid-custody/guides/account-model"
     },
     {
       "source": "/account-linking/guides/linking-accounts",
-      "destination": "/Concepts/hybrid-custody/guides/linking-accounts"
+      "destination": "/concepts/hybrid-custody/guides/linking-accounts"
     },
     {
       "source": "/account-linking/guides/walletless-onboarding",
-      "destination": "/Concepts/hybrid-custody/guides/walletless-onboarding"
+      "destination": "/concepts/hybrid-custody/guides/walletless-onboarding"
     },
     {
       "source": "/cadence/style-guide",
@@ -1132,11 +1128,11 @@
     },
     {
       "source": "/flow/faq",
-      "destination": "/Concepts/nodes/faq/backers"
+      "destination": "/concepts/nodes/faq/backers"
     },
     {
       "source": "/tools/nft-catalog",
-      "destination": "/Tooling/nft-catalog/overview"
+      "destination": "/tooling/nft-catalog/overview"
     },
     {
       "source": "/cadence/tutorial/01-first-steps",
