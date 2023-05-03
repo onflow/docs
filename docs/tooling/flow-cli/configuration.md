@@ -10,7 +10,7 @@ Flow configuration (`flow.json`) file will contain the following properties:
 
 - A `networks` list pre-populated with the Flow emulator, testnet and mainnet connection configuration.
 - An `accounts` list pre-populated with the Flow Emulator service account.
-- A `deployments` empty object where all [deployment targets](./project-contracts#define-contract-deployment-targets.md) can be defined. 
+- A `deployments` empty object where all [deployment targets](./project-contracts.md#define-contract-deployment-targets.md) can be defined. 
 - A `contracts` empty object where you [define contracts](./project-contracts.md#add-a-contract) you wish to deploy.
 
 ## Example Project Configuration
