@@ -18,7 +18,7 @@ https://github.com/onflow/flow-internal/issues/1131
 ## Creating an Account
 
 A user needs a Flow account in order to receive, hold and send FLOW tokens.
-The [accounts & keys documentation](/concepts/accounts-and-keys) provides a detailed
+The [accounts & keys documentation](../start-here/accounts-and-keys.md) provides a detailed
 overview of how accounts work on Flow.
 
 You can create an account using templates and helper code from one of the Flow SDKs:
@@ -246,5 +246,5 @@ This transaction template is available for use in our SDKs:
 
 ## Staking FLOW
 
-The [FLOW staking documentation](/staking) outlines the steps a custodian can take
+The [FLOW staking documentation](../nodes/staking/) outlines the steps a custodian can take
 to support staking through a trusted node operator.

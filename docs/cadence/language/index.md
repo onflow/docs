@@ -44,5 +44,5 @@ Resources are based on linear types which were popularized by Rust.
 Events are inspired by Solidity.
 
 **Disclaimer:** In real Cadence code, all type definitions and code
-must be declared and contained in [contracts](./contracts.mdx) or [transactions](./transactions.mdx),
+must be declared and contained in [contracts](./contracts.mdx) or [transactions](./transactions.md),
 but we omit these containers in examples for simplicity.

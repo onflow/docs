@@ -8,7 +8,7 @@ sidebar_title: Handling accounts
 
 On many blockchains, decentralized apps offer the Connect Wallet button to let users connect their wallets. Flow blockchain tries to make things even more friendlier for the end-users. It allows applications to offer users the opportunity to register for a wallet (aka create a wallet) if they do not have a Flow wallet already. If users already have a wallet, the Sign-in/up functionality authenticates the user.
 
-Sign-in/up functionality is implemented using [FCL](fcl/). The following documentation provides details on how to implement this functionality on the application frontend:
+Sign-in/up functionality is implemented using [FCL](../fcl-js/). The following documentation provides details on how to implement this functionality on the application frontend:
 
 - [FCL Authentication Functionality](https://developers.flow.com/tools/fcl-js/reference/authentication)
 - [Sign-in/up using FCL with Blocto Wallet](https://docs.blocto.app/blocto-sdk/flow/login-register)

@@ -65,7 +65,7 @@ In order to access Flow Port, you must have a valid Flow address. If you do not 
 
 ## Staking & Delegating
 
-For a detailed walkthrough on how to use Flow Port for staking and delegating, please read the [Flow Port staking walkthrough](./staking-guide.mdx)
+For a detailed walkthrough on how to use Flow Port for staking and delegating, please read the [Flow Port staking walkthrough](./staking-guide.md)
 ### How Do I Stake or Delegate?
 
 So you have decided you want to be a part of the Flow Network. Welcome! You are joining a group of people from all around the world that are a part of a movement centered around bringing decentralization, user empowerment, and transparency into the world. Below is a step-by-step guide that will assist you in the staking & delegation process.
@@ -75,7 +75,7 @@ So you have decided you want to be a part of the Flow Network. Welcome! You are 
 If you are using a custody provider who controls your account and private keys for you, such as Kraken, Finoa, or Coinlist, they all have different policies and processes for what you need to do to stake your tokens, the rewards you receive, and the fees that they take from your staking rewards. Please see [our guides](../staking/custody-providers.md) for more information about staking using supported custody providers.
 
 ### Starting a Manual Staking Transaction
- 1. You need to have FLOW in order to stake. Please see the [FLOW Token](/flow-token) reference for information on how to become a FLOW holder.
+ 1. You need to have FLOW in order to stake. Please see the [FLOW Token](../../../cadence/core-contracts/flow-token.mdx) reference for information on how to become a FLOW holder.
 
  2. Once you have FLOW tokens in your account, you can start staking through [Flow Port](https://port.onflow.org/) or, if applicable, with your [custody provider](#staking-via-a-custody-provider).
 

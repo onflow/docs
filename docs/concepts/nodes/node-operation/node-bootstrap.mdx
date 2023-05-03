@@ -4,7 +4,7 @@ sidebar_title: Node Bootstrapping
 description: How to get started running a node on Flow
 ---
 
-This guide is for getting a new node staked and running on Flow other than a permissionless Access node. For running a permissionless Access node see [Access node setup](access-node-setup.mdx). For sporking documentation for existing node operators, see [Spork Process](/nodes/node-operation/spork).
+This guide is for getting a new node staked and running on Flow other than a permissionless Access node. For running a permissionless Access node see [Access node setup](./access-node-setup.md). For sporking documentation for existing node operators, see [Spork Process](./spork.mdx).
 
 ## Timing
 
@@ -291,7 +291,7 @@ Once the node has bootstrapped, these flags may be removed.
 ### Manually Provisioned Root Snapshot
 
 You can also provision the root snapshot file manually, then start the node without configuring Dynamic Startup.
-A snapshot can be obtained from any Access Node using [Flow CLI](/flow-cli/).
+A snapshot can be obtained from any Access Node using [Flow CLI](../../../tooling/flow-cli/).
 ```shell RetrieveRootSnapshot
 flow snapshot save /path/to/root/snapshot --network mainnet
 ```

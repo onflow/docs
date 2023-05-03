@@ -73,6 +73,6 @@ Flow has a standard contract to facilitate both the direct sales and peer-to-pee
 
 ### Fungible Tokens
 
-Fungible tokens (i.e. coins, currencies) on the Flow blockchain, including the default cryptocurrency token FLOW, implement the [FungibleToken](/core-contracts/fungible-token/) interface.
+Fungible tokens (i.e. coins, currencies) on the Flow blockchain, including the default cryptocurrency token FLOW, implement the [FungibleToken](../cadence/core-contracts/fungible-token.mdx) interface.
 
-- [Fungible Token contract interface](/core-contracts/fungible-token/)
+- [Fungible Token contract interface](../cadence/core-contracts/fungible-token.mdx)

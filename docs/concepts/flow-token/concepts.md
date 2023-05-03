@@ -19,7 +19,7 @@ If there is no one to charge, the transaction never goes through.
 If a transaction fails for some other reason, you will still be charged. The fee covers the cost of the network looking at the transaction
 and thus must be paid even if no change to your account is made.
 
-Transaction fees are charged based upon how much work is done by the transaction during execution, including creating accounts, reading and updating state, and executing of cadence logic. For more information, see [Segmented Transaction Fees on Flow](/concepts/variable-transaction-fees).
+Transaction fees are charged based upon how much work is done by the transaction during execution, including creating accounts, reading and updating state, and executing of cadence logic. For more information, see [Segmented Transaction Fees on Flow](../start-here/variable-transaction-fees.md).
 
 ### Storage/Account Fees
 
@@ -27,7 +27,7 @@ The account creation fee is applied only when a new account is created.
 This fee covers the cost of storing up to 100kB of data in perpetuity.
 This fee is applied only once and can be "topped up" to add additional storage to an account.
 
-More information: [Storing Data on Flow](/concepts/storage)
+More information: [Storing Data on Flow](../start-here/storage.md)
 
 ## Accounts
 
@@ -39,7 +39,7 @@ An account on Flow is a record in the chain state that holds the following infor
 - **Code**: Cadence contracts deployed to the account
 - **Storage**: area of the account used to store resource assets
 
-More information: [Accounts & Keys](/concepts/accounts-and-keys)
+More information: [Accounts & Keys](../start-here/accounts-and-keys.md)
 
 ## Flow Service Account
 
