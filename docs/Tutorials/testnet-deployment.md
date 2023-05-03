@@ -79,7 +79,7 @@ First you need to initialize the configuration:
 
 Add the account created with the use of faucet above to the `accounts` property in configuration, like so:
 
-```js:title=flow.json
+```js flow.json
 {
 ...
   "accounts": {
@@ -121,7 +121,7 @@ Make sure flow project was initialized in the previous step and the `flow.json` 
 
 You can then specify your contracts you wish to deploy in the configuration like so:
 
-```js:title=flow.json
+```js flow.json
 {
   ...
   "contracts": {

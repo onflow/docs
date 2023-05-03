@@ -75,7 +75,7 @@ curl -sL -O storage.googleapis.com/flow-genesis-bootstrap/boot-tools.tar
 tar -xvf boot-tools.tar
 ```
 
-```shell:title=CheckSHA256
+```shell CheckSHA256
 sha256sum ./boot-tools/bootstrap
 0d2cb2d0edb659880ae729e9d849a98535414af33690dad545d9892268167bcf  ./boot-tools/bootstrap
 ```
@@ -92,7 +92,7 @@ $ mkdir ./bootstrap
 $ ./boot-tools/bootstrap key --address "<YOUR_NODE_ADDRESS_GOES_HERE>:3569" --role access -o ./bootstrap
 ```
 
-```shell:title=Example
+```shell Example
 $./boot-tools/bootstrap key --address "flowaccess.mycompany.com:3569" --role access  -o ./bootstrap
 <nil> DBG will generate networking key
 <nil> INF generated networking key
@@ -128,7 +128,7 @@ $tree ./bootstrap/
 
 Your node identity has now been generated. Your <b>node ID</b> can be found in the file `./bootstrap/public-root-information/node-id`.
 
-```shell:title=Example
+```shell Example
 $cat ./bootstrap/public-root-information/node-id
 e737ec6efbd26ef43bf676911cdc5a11ba15fc6562d05413e6589fccdd6c06d5
 ```
@@ -152,7 +152,7 @@ On the next screen, provide the node details of you node.
 
 Those node details (`Node ID`, `Network Address`, `Networking Key` and `Staking Key`) can be found in the file: `./bootstrap/public-root-information/node-info.pub.<node-id>.json`.
 
-```shell:title=Example
+```shell Example
 $cat ./bootstrap/public-root-information/node-info.pub. e737ec6efbd26ef43bf676911cdc5a11ba15fc6562d05413e6589fccdd6c06d5.json
 {
   "Role": "access",
@@ -207,11 +207,11 @@ Instead, if you see that your token balance is under the Unstaked Amount, then y
 You can also check these balance using [Flow Cli](https://github.com/onflow/flow-cli). Once you have downloaded and installed Flow Cli, you can query the account balance using the command,
 ```shell
 flow accounts staking-info <your account address> -n mainnet
-````
+```
 
 For Example, the following node was chosen as Tokens staked is 100.
 
-```shell:title=Example
+```shell Example
 $ flow accounts staking-info 0xefdfb20806315bfa -n testnet
 
 Account staking info:
@@ -228,7 +228,7 @@ Account staking info:
 	Tokens Unstaked: 				 0.00000000
 	Tokens Unstaking: 				 0.00000000
 	Node Total Stake (including delegators): 	 0.00000000
-````
+```
 
 ### Epoch setup event
 
@@ -266,7 +266,7 @@ docker run --rm \
 ```
 
 Example, for the Node ID `e737ec6efbd26ef43bf676911cdc5a11ba15fc6562d05413e6589fccdd6c06d5`, the docker command be the following,
-```shell:title=Example
+```shell Example
 docker run --rm \
   -v $PWD/bootstrap:/bootstrap:ro  \
   -v $PWD/data:/data:rw \
@@ -287,17 +287,17 @@ docker run --rm \
   --dynamic-startup-access-publickey=28a0d9edd0de3f15866dfe4aea1560c4504fe313fc6ca3f63a63e4f98d0e295144692a58ebe7f7894349198613f65b2d960abf99ec2625e247b1c78ba5bf2eae \
   --dynamic-startup-epoch-phase=EpochPhaseStaking \
   --loglevel=error
-````
+```
 
 For a more mature setup, it is recommended that you run the container using systemd as described [here](node-setup#systemd)
 
 > 🚀 The access node should now be up and running, and you should be able to query the node using Flow CLI or curl,
 
-```shell:title=Example
+```shell Example
 flow blocks get latest --host localhost:9000
 ```
 
-```shell:title=Example
+```shell Example
 curl http://localhost/v1/blocks?height=sealed
 ```
 

@@ -4,6 +4,9 @@ require('dotenv').config();
 const lightCodeTheme = require('prism-react-renderer/themes/github');
 const darkCodeTheme = require('prism-react-renderer/themes/dracula');
 
+const theme = require('shiki/themes/nord.json');
+const { remarkCodeHike } = require('@code-hike/mdx');
+
 const path = require('path');
 const fs = require('fs');
 
@@ -180,9 +183,15 @@ const config = {
       /** @type {import('@docusaurus/preset-classic').Options} */
       ({
         docs: {
+          beforeDefaultRemarkPlugins: [
+            [
+              remarkCodeHike,
+              { theme, lineNumbers: true, showCopyButton: true },
+            ],
+          ],
           sidebarPath: require.resolve('./sidebars.js'),
           routeBasePath: '/',
-          editUrl,
+          editUrl: 'https://github.com/onflow/docs/tree/main/',
           remarkPlugins: [require('remark-math')],
           rehypePlugins: [require('rehype-katex')],
           showLastUpdateTime: true,
@@ -194,6 +203,7 @@ const config = {
         theme: {
           customCss: [
             require.resolve('./src/css/custom.css'),
+            require.resolve('@code-hike/mdx/styles.css'),
             require.resolve('./src/ui/design-system/styles/main.css'),
           ],
         },
@@ -225,6 +235,8 @@ const config = {
       },
     ],
   ],
+
+  themes: ['mdx-v2'],
 
   themeConfig:
     /** @type {import('@docusaurus/preset-classic').ThemeConfig} */
@@ -583,14 +595,13 @@ const config = {
       onload: mixpanelOnLoad,
     },
     {
-      src: "https://widget.kapa.ai/kapa-widget.bundle.js",
-      "data-website-id": "0f0b3ed1-7761-4986-851e-09336ea6ef1c",
-      "data-project-name": "Flow",
-      "data-project-color": "#2E8555",
-      "data-project-logo":
-        "https://cryptologos.cc/logos/flow-flow-logo.png",
+      src: 'https://widget.kapa.ai/kapa-widget.bundle.js',
+      'data-website-id': '0f0b3ed1-7761-4986-851e-09336ea6ef1c',
+      'data-project-name': 'Flow',
+      'data-project-color': '#2E8555',
+      'data-project-logo': 'https://cryptologos.cc/logos/flow-flow-logo.png',
       async: true,
-    }
+    },
   ],
 };
 

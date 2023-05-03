@@ -15,7 +15,7 @@ sidebar_title: 5. Mainnet Deployment
 
 First, you need to configure the `flow.json` file to add your mainnet account details:
 
-```js:title=flow.json
+```js flow.json
 {
 ...
   "accounts": {
@@ -30,7 +30,7 @@ First, you need to configure the `flow.json` file to add your mainnet account de
 
 Next, you need to set the [deployment target configuration](https://docs.onflow.org/flow-cli/project-contracts/#define-contract-deployment-targets) for the mainnet:
 
-```js:title=flow.json
+```js flow.json
 {
 ...
 "deployments": {
