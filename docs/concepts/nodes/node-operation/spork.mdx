@@ -11,10 +11,10 @@ on the Flow Protocol and minimizes the impact of breaking changes.
 
 The Flow network sporks approximately once every two months. Upcoming sporks
 are announced in advance on the `#flow-validators-announcements` **Discord** channel
-and in [Upcoming Sporks](upcoming-sporks.mdx). The `#flow-validators-announcements` channel is
+and in [Upcoming Sporks](./upcoming-sporks.mdx). The `#flow-validators-announcements` channel is
 also used to coordinate during the spork process.
 
-This guide is for existing operators participating in a spork. See [Node Bootstrap](node-bootstrap.mdx)
+This guide is for existing operators participating in a spork. See [Node Bootstrap](./node-bootstrap.mdx)
 for a guide to joining the network for the first time.
 
 ## Step 1 - Cleaning Up Previous Spork State
@@ -76,7 +76,7 @@ $ tree ./bootstrap/
 4. Update the `FLOW_GO_NODE_ID` inside [runtime-conf.env](https://github.com/onflow/flow-go/blob/master/deploy/systemd-docker/runtime-conf.env) to the `node-id` that you got from the previous step
 5. Start your Flow node via `docker` or `systemd`
 
-See [Node Bootstrap](/nodes/node-operation/node-bootstrap) for detailed information on Docker/Systemd configuration.
+See [Node Bootstrap](./node-bootstrap) for detailed information on Docker/Systemd configuration.
 
 ## Common Issues
 

@@ -19,13 +19,13 @@ This guide only covers staking with **locked FLOW tokens**.
 
 ### Prerequisites
 
-The token holder must [configure their account to hold locked FLOW](/staking/locked-staking-guide/) 
+The token holder must [configure their account to hold locked FLOW](./locked-staking-guide.mdx) 
 before they are able to complete the steps below. After this is complete, 
 the `LockedTokens.TokenHolder` can be used to perform staking operations from the account.
 
 ### Register a New Staked Node
 
-To register as a node, the token holder can use the **Register Node** ([TH.06](/core-contracts/locked-tokens/#token-holder))
+To register as a node, the token holder can use the **Register Node** ([TH.06](../../../cadence/core-contracts/locked-tokens.mdx#token-holder))
 transaction with the following arguments:
 
 | Argument              | Type     | Description |
@@ -65,7 +65,7 @@ _Note: this transaction stakes additional tokens to the same node that was regis
 It is currently not possible to [stake to multiple nodes from the same account](#stake-multiple-nodes-from-the-same-account)._
 
 To stake new tokens via the `NodeStakerProxy`,
-the token holder can use the **Stake New Locked FLOW** ([TH.08](/core-contracts/locked-tokens/#token-holder)) 
+the token holder can use the **Stake New Locked FLOW** ([TH.08](../../../cadence/core-contracts/locked-tokens.mdx#token-holder)) 
 transaction with the following arguments:
 
 | Argument   | Type     | Description |
@@ -79,7 +79,7 @@ This transaction commits tokens to stake from the token holder's locked token ac
 After tokens become unstaked, the token holder can choose to re-stake the unstaked tokens to the same node.
 
 To staked unstaked tokens via the `NodeStakerProxy`, 
-the token holder can use the **Re-stake Unstaked FLOW** ([TH.09](/core-contracts/locked-tokens/#token-holder)) 
+the token holder can use the **Re-stake Unstaked FLOW** ([TH.09](../../../cadence/core-contracts/locked-tokens.mdx#token-holder)) 
 transaction with the following arguments:
 
 | Argument   | Type     | Description |
@@ -91,7 +91,7 @@ transaction with the following arguments:
 After earning rewards from staking, the token holder can choose to re-stake the rewarded tokens to the same node.
 
 To staked rewarded tokens via the `NodeStakerProxy`, 
-the token holder can use the **Re-stake Rewarded FLOW** ([TH.10](/core-contracts/locked-tokens/#token-holder)) 
+the token holder can use the **Re-stake Rewarded FLOW** ([TH.10](../../../cadence/core-contracts/locked-tokens.mdx#token-holder)) 
 transaction with the following arguments:
 
 | Argument   | Type     | Description |
@@ -108,7 +108,7 @@ The token holder can submit a request to unstake their tokens at any time.
 If the tokens aren't staked yet, they will be uncommitted and available to withdraw.
 
 To unstake staked tokens via the `NodeStakerProxy`, the token holder can use 
-the **Unstake FLOW** ([TH.11](/core-contracts/locked-tokens/#token-holder)) transaction.
+the **Unstake FLOW** ([TH.11](../../../cadence/core-contracts/locked-tokens.mdx#token-holder)) transaction.
 
 This transaction requires no arguments.
 
@@ -123,7 +123,7 @@ Once the tokens are released (unstaked), they can be claimed via the
 After tokens become unstaked, the token holder can withdraw them from the central staking contract.
 
 To withdraw unstaked tokens via the `NodeStakerProxy`, 
-the token holder can use the **Withdraw Unstaked FLOW** ([TH.13](/core-contracts/locked-tokens/#token-holder)) 
+the token holder can use the **Withdraw Unstaked FLOW** ([TH.13](../../../cadence/core-contracts/locked-tokens.mdx#token-holder)) 
 transaction with the following arguments:
 
 | Argument   | Type     | Description |
@@ -137,7 +137,7 @@ This transaction moves the unstaked tokens back into the `LockedTokens.TokenMana
 After earning rewards from staking, the token holder can withdraw them from the central staking contract.
 
 To withdraw rewarded tokens via the `NodeStakerProxy`, 
-the token holder can use the **Withdraw Rewarded FLOW** ([TH.14](/core-contracts/locked-tokens/#token-holder)) 
+the token holder can use the **Withdraw Rewarded FLOW** ([TH.14](../../../cadence/core-contracts/locked-tokens.mdx#token-holder)) 
 transaction with the following arguments:
 
 | Argument   | Type     | Description |
@@ -158,7 +158,7 @@ _what is stored in the protocol state for the node, the node will not be able to
 _Only update your networking address if you have already confirmed with the Flow team that you can._
 _This restriction will be removed once fully automated epochs are completely implemented_
 
-The owner of a Staking Collection can use the **Update Networking Address** ([TH.25](/core-contracts/locked-tokens))
+The owner of a Staking Collection can use the **Update Networking Address** ([TH.25](../../../cadence/core-contracts/locked-tokens))
 transaction with the following arguments:
 
 | Argument        | Type      | Description |
@@ -169,7 +169,7 @@ transaction with the following arguments:
 ## Query a Staker Record
 
 To return a struct with all the information associated with a node, anyone
-can use the **Get Node Info** ([TH.06](/core-contracts/locked-tokens/#token-holder)) script with the following arguments:
+can use the **Get Node Info** ([TH.06](../../../cadence/core-contracts/locked-tokens.mdx#token-holder)) script with the following arguments:
 
 | Argument   | Type     | Description |
 |------------|----------|-------------|
@@ -197,13 +197,13 @@ See the [Locked Delegation Guide](../locked-delegation-guide) for how to registe
 
 ### Prerequisites
 
-The token holder must [configure their account to hold locked FLOW](/staking/locked-staking-guide/) 
+The token holder must [configure their account to hold locked FLOW](../locked-staking-guide/) 
 before they are able to complete the steps below. After this is complete, 
 the `LockedTokens.TokenHolder` can be used to perform staking operations from the account.
 
 ## Register as a Delegator
 
-To register as a delegator, the token holder can use the **Register Delegator** ([TH.17](/core-contracts/locked-tokens/#token-holder))
+To register as a delegator, the token holder can use the **Register Delegator** ([TH.17](../../../cadence/core-contracts/locked-tokens.mdx#token-holder))
 transaction with the following arguments:
 
 | Argument   | Type     | Description |
@@ -233,7 +233,7 @@ _Note: this transaction delegates additional tokens to the same node that was re
 It is currently not possible to [delegate to multiple nodes from the same account](#delegate-to-multiple-nodes-from-the-same-account)._
 
 To delegate new tokens via the `NodeDelegatorProxy`, 
-the token holder can use the **Delegate New Locked FLOW** ([TH.19](/core-contracts/locked-tokens/#token-holder)) 
+the token holder can use the **Delegate New Locked FLOW** ([TH.19](../../../cadence/core-contracts/locked-tokens.mdx#token-holder)) 
 transaction with the following arguments:
 
 | Argument   | Type     | Description |
@@ -245,7 +245,7 @@ transaction with the following arguments:
 After delegated tokens become unstaked, the token holder can choose to re-delegate the unstaked tokens to the same node.
 
 To delegate unstaked tokens via the `NodeDelegatorProxy`, 
-the token holder can use the **Re-delegate Unstaked FLOW** ([TH.20](/core-contracts/locked-tokens/#token-holder))
+the token holder can use the **Re-delegate Unstaked FLOW** ([TH.20](../../../cadence/core-contracts/locked-tokens.mdx#token-holder))
 transaction with the following arguments:
 
 | Argument   | Type     | Description |
@@ -257,7 +257,7 @@ transaction with the following arguments:
 After earning rewards from delegation, the token holder can choose to re-delegate the rewarded tokens to the same node.
 
 To delegate rewarded tokens via the `NodeDelegatorProxy`, 
-the token holder can use the **Re-delegate Rewarded FLOW** ([TH.21](/core-contracts/locked-tokens/#token-holder))
+the token holder can use the **Re-delegate Rewarded FLOW** ([TH.21](../../../cadence/core-contracts/locked-tokens.mdx#token-holder))
 transaction with the following arguments:
 
 | Argument   | Type     | Description |
@@ -270,7 +270,7 @@ The token holder can submit a request to unstake their delegated tokens at any t
 If the tokens aren't staked yet, they will be uncommitted and available to withdraw.
 
 To unstake delegated tokens via the `NodeDelegatorProxy`, 
-the token holder can use the **Unstake Delegated FOW** ([TH.22](/core-contracts/locked-tokens/#token-holder))
+the token holder can use the **Unstake Delegated FOW** ([TH.22](../../../cadence/core-contracts/locked-tokens.mdx#token-holder))
 transaction with the following arguments:
 
 | Argument   | Type     | Description |
@@ -287,7 +287,7 @@ they can be claimed via the [Withdraw Unstaked Tokens](#withdraw-unstaked-tokens
 After delegated tokens become unstaked, the token holder can withdraw them from the central staking contract.
 
 To withdraw unstaked tokens via the `NodeDelegatorProxy`, 
-the token holder can use the **Withdraw Unstaked FLOW ** ([TH.23](/core-contracts/locked-tokens/#token-holder))
+the token holder can use the **Withdraw Unstaked FLOW ** ([TH.23](../../../cadence/core-contracts/locked-tokens.mdx#token-holder))
 transaction with the following arguments:
 
 | Argument   | Type     | Description |
@@ -301,7 +301,7 @@ This transaction moves the unstaked tokens back into the `LockedTokens.TokenMana
 After earning rewards from delegation, the token holder can withdraw them from the central staking contract.
 
 To withdraw rewarded tokens via the `NodeDelegatorProxy`, 
-the token holder can use the **Withdraw Rewarded FLOW** ([TH.24](/core-contracts/locked-tokens/#token-holder))
+the token holder can use the **Withdraw Rewarded FLOW** ([TH.24](../../../cadence/core-contracts/locked-tokens.mdx#token-holder))
 transaction with the following arguments:
 
 | Argument   | Type     | Description |
@@ -314,7 +314,7 @@ However, unlike unstaked tokens, rewards are _unlocked FLOW_ and can be immediat
 ## Query a Delegator Record
 
 To return a struct with all the information associated with a delegator, anyone
-can use the **Get Delegator Info** ([TH.21](/core-contracts/locked-tokens/#token-holder)) script with the following arguments:
+can use the **Get Delegator Info** ([TH.21](../../../cadence/core-contracts/locked-tokens.mdx#token-holder)) script with the following arguments:
 
 | Argument   | Type     | Description |
 |------------|----------|-------------|

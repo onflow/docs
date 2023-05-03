@@ -17,7 +17,7 @@ To get started with Cadence, we recommended covering the introductory tutorials 
 
 ### Learn Through Examples
 
-After learning the basics, check out the [Kitty Items sample dapp](/kitty-items/) to see Cadence contracts being used by a real web application. Inspired by CryptoKitties, Kitty Items demonstrates a simple NFT application that supports NFT minting, sales, and peer-to-peer trading.
+After learning the basics, check out the [Kitty Items sample dapp](./kitty-items) to see Cadence contracts being used by a real web application. Inspired by CryptoKitties, Kitty Items demonstrates a simple NFT application that supports NFT minting, sales, and peer-to-peer trading.
 
 ### Configure Your Local Environment
 
@@ -39,7 +39,7 @@ Permanence is a key property of blockchains; users trust that the data they stor
 
 ### Storage Limits & Fees
 
-However, there are practical constraints to storing data on a blockchain. Developer and user accounts must retain a small amount of FLOW tokens, known as the storage fee, for bytes of data stored in their accounts. The minimum storage fee will grant each account a minimum storage amount. If an account holds assets that demand more bytes of storage, the account will need to retain more FLOW tokens to increase the storage amount according to Flow's [fee schedule](/flow-token/concepts/#fees). A more compact data model can keep storage needs down. \
+However, there are practical constraints to storing data on a blockchain. Developer and user accounts must retain a small amount of FLOW tokens, known as the storage fee, for bytes of data stored in their accounts. The minimum storage fee will grant each account a minimum storage amount. If an account holds assets that demand more bytes of storage, the account will need to retain more FLOW tokens to increase the storage amount according to Flow's [fee schedule](../concepts/flow-token/concepts.mdx#fees). A more compact data model can keep storage needs down. \
  \
 Furthermore, a single Flow transaction has a size limit of 4MB, which limits the rate at which large amounts of data can be transferred to the blockchain.
 
@@ -61,9 +61,9 @@ The Flow blockchain has existing smart contract standards for both fungible and 
 
 ### Non-Fungible Tokens (NFTs)
 
-All NFTs on the Flow blockchain implement the [NonFungibleToken](/core-contracts/non-fungible-token/) interface, allowing them to be compatible with wallets, marketplaces and other cross-app experiences.
+All NFTs on the Flow blockchain implement the [NonFungibleToken](../cadence/core-contracts/non-fungible-token.mdx) interface, allowing them to be compatible with wallets, marketplaces and other cross-app experiences.
 
-- [Non-Fungible Token (NFT) contract interface](/core-contracts/non-fungible-token/)
+- [Non-Fungible Token (NFT) contract interface](../cadence/core-contracts/non-fungible-token.mdx)
 
 ### NFT Sales and Trading
 

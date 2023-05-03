@@ -144,7 +144,7 @@ As indicated, the transaction was sealed and you are ready to mint your new Kitt
 
 **🎉 Congratulations on completing this tutorial! Because you made it to the very end, we're rewarding you with a unique [FLOAT NFT](https://floats.city/andrea.find/event/198577460)!**
 
-> **Important**: To claim your NFT, open [this FLOAT event](https://floats.city/andrea.find/event/198577460). You will be asked to connect a wallet. Once done, you need to enter a **secret code**. Open the `add_nft_images_for_new_kind.cdc` file you created in [this previous step](/kitty-items/modify/#create-a-transaction-to-update-the-list-of-images-for-your-new-kind). Locate the comment before `execute{}`. Use this code to claim your NFT 🤫
+> **Important**: To claim your NFT, open [this FLOAT event](https://floats.city/andrea.find/event/198577460). You will be asked to connect a wallet. Once done, you need to enter a **secret code**. Open the `add_nft_images_for_new_kind.cdc` file you created in [this previous step](./modify.md#create-a-transaction-to-update-the-list-of-images-for-your-new-kind). Locate the comment before `execute{}`. Use this code to claim your NFT 🤫
 
 To summarize, you should now understand how to ...
 
@@ -157,4 +157,4 @@ To summarize, you should now understand how to ...
 
 To verify that everything works as expected, you can mint one of the new NFTs on the testnet.
 
-Open the Kitty Items web application: [`http://localhost:3001/`](http://localhost:3001/). This time, the **web application is wired up to interact with testnet smart contracts** you updated. Repeat [the instructions from the last step](/kitty-items/modify/#mint-new-sunglasses-nft).
+Open the Kitty Items web application: [`http://localhost:3001/`](http://localhost:3001/). This time, the **web application is wired up to interact with testnet smart contracts** you updated. Repeat [the instructions from the last step](./modify.md#mint-new-sunglasses-nft).

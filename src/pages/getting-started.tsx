@@ -99,7 +99,7 @@ export default function GettingStarted(): JSX.Element {
                   },
                   {
                     title: 'Dapp architecture',
-                    href: '/flow/dapp-development/DappArchitectures/',
+                    href: '/tutorials/dapp-development/DappArchitectures/',
                     tags: ['guide', 'overview'],
                   },
                   {

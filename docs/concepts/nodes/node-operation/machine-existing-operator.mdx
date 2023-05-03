@@ -4,8 +4,8 @@ sidebar_title: Machine Accounts for Existing Node Operators
 description: Instructions for existing Node Operators to follow to create a machine account for their collection or consensus nodes.
 ---
 
-The [Flow Epoch Preparation Protocol](/staking/epoch-preparation/) requires that 
-`collection` and `consensus` nodes use an automated [machine account](/staking/qc-dkg/#machine-accounts) 
+The [Flow Epoch Preparation Protocol](../staking/epoch-preparation.mdx) requires that 
+`collection` and `consensus` nodes use an automated [machine account](../staking/qc-dkg.mdx#machine-accounts) 
 to participate in important processes required to start the next epoch. (QC and DKG, respectively)
 
 Starting on Thursday, August 26th 2021, all collector and consensus nodes who register with Flow Port will 
@@ -31,7 +31,7 @@ This guide will walk you through creating a Machine Account and getting it set u
   have been significant changes to it.
 </Callout>
 
-Follow the instructions [here](/nodes/node-operation/node-bootstrap/#download-the-bootstrapping-kit)
+Follow the instructions [here](./node-bootstrap.mdx#download-the-bootstrapping-kit)
 to download the latest version of the bootstrapping kit, then return to this page.
 
 ## Generate Machine Account key
@@ -69,7 +69,7 @@ $tree ./bootstrap/
 ## Create Machine Account
 
 You will now need to copy the Machine account public key displayed in the terminal output and 
-head over to [Flow Port](/flow-port/staking-guide/#existing-node-operators) to submit a transaction to create a Machine Account. 
+head over to [Flow Port](../flow-port/staking-guide.mdx#existing-node-operators) to submit a transaction to create a Machine Account. 
 For example, from the example above, we would copy `f847...` from this line:
 
 ```shell Example

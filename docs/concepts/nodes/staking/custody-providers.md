@@ -5,7 +5,7 @@ sidebar_title: Staking using a Custody Provider
 
 This section provides information for users who have acquired locked FLOW from the community sale, and are holding them in one of the following wallets or custody providers.
 
-Before reading this section, make sure you read the [overview](/staking/) to understand the concept of staking, delegating and earning rewards
+Before reading this section, make sure you read the [overview](./) to understand the concept of staking, delegating and earning rewards
 on Flow.
 
 ## Blocto
@@ -26,7 +26,7 @@ The [Lilico wallet](https://lilico.app/) also supports Flow staking via Flow Por
 ## Ledger
 
 If you're storing your locked FLOW tokens using a Ledger device, you can use the Flow Port to **stake** or **delegate** them to earn rewards.
-For more details you can read [our guides](/flow-port) to familiarize yourself with the Flow Port app,
+For more details you can read [our guides](../flow-port) to familiarize yourself with the Flow Port app,
 and how to use it as a staking portal.
 
 #### Withdrawing Rewards
