@@ -25,13 +25,13 @@ provide an outline for one possible approach, but it is not the only approach.
 1. The token holder uses this node information to register the node with the central staking contract.
    This can be done in one of two ways:
 
-a) The token holder manually [submits a transaction to register a new node](./locked-staking-guide.mdx#setup).
+a) The token holder manually [submits a transaction to register a new node](./locked-staking-guide#setup).
 
 b) The token holder registers the node using the Flow Port.
 
 1. The node operator should then ensure that the node is live and running before the epoch starts.
 1. Once the epoch starts, the token holder is free to manage their stake through the Flow Port or
-   manually by following the [staking guide](./locked-staking-guide.mdx#staking-actions).
+   manually by following the [staking guide](./locked-staking-guide#staking-actions).
 
 ## Indirect Staking
 

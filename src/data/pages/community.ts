@@ -38,7 +38,7 @@ export const contentNavigationListItems: ContentNavigationListProps = {
     {
       title: 'Concepts',
       text: 'Important concepts about Cadence and FCL',
-      link: '/concepts',
+      link: '/concepts/intro',
       icon: 'concepts',
     },
   ],

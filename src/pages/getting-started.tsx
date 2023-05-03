@@ -99,7 +99,7 @@ export default function GettingStarted(): JSX.Element {
                   },
                   {
                     title: 'Dapp architecture',
-                    href: '/tutorials/dapp-development/DappArchitectures/',
+                    href: '/tutorials/DappArchitectures',
                     tags: ['guide', 'overview'],
                   },
                   {
@@ -121,7 +121,7 @@ export default function GettingStarted(): JSX.Element {
                 links: [
                   {
                     title: 'Get the Flow CLI',
-                    href: '/tools/flow-cli/install/',
+                    href: '/tooling/flow-cli/install/',
                     tags: ['install'],
                   },
                   {
@@ -131,7 +131,7 @@ export default function GettingStarted(): JSX.Element {
                   },
                   {
                     title: 'Core contracts & standards',
-                    href: '/flow/core-contracts',
+                    href: '/cadence/core-contracts',
                     tags: ['nft', 'ft', 'metadata'],
                   },
                   {
