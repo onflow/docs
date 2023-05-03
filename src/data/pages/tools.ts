@@ -1,6 +1,6 @@
-import { type ToolsPageProps } from '@site/src/ui/design-system/src/lib/Pages/ToolsPage'
-import { externalLinks } from '../external-links'
-import { metadata } from '../metadata'
+import { type ToolsPageProps } from '@site/src/ui/design-system/src/lib/Pages/ToolsPage';
+import { externalLinks } from '../external-links';
+import { metadata } from '../metadata';
 
 import {
   accountApiTool,
@@ -44,7 +44,7 @@ import {
   flowviewTool,
   dapperSelfCustodyWallet,
   unitySDK,
-} from '../tools'
+} from '../tools';
 
 export const data: ToolsPageProps = {
   githubUrl: externalLinks.github,
@@ -124,6 +124,6 @@ export const data: ToolsPageProps = {
       elementId: 'flow-blockchain-explorers',
     },
   ],
-}
+};
 
-export const editPageUrl = `${metadata.githubRepoBaseUrl}/blob/main/app/data/pages/tools.ts`
+export const editPageUrl = `${metadata.githubRepoBaseUrl}/blob/main/app/data/pages/tools.ts`;

@@ -101,10 +101,6 @@ const footerSections = [
         text: 'Flow Playground',
       },
       {
-        link: '/learn/kitty-items/',
-        text: 'Kitty Items',
-      },
-      {
         link: '/cadence/tutorial/',
         text: 'Cadence Tutorials',
       },

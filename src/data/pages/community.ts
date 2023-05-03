@@ -5,11 +5,11 @@ import {
   flowPortTool,
   jsTestingLibTool,
   vsCodeTool,
-} from '../../data/tools'
-import { type ContentNavigationListProps } from '../../ui/design-system/src/lib/Components/ContentNavigationList'
-import { type ProjectCardProps } from '../../ui/design-system/src/lib/Components/ProjectCard'
-import { allEvents } from '../events'
-import { metadata } from '../metadata'
+} from '../../data/tools';
+import { type ContentNavigationListProps } from '../../ui/design-system/src/lib/Components/ContentNavigationList';
+import { type ProjectCardProps } from '../../ui/design-system/src/lib/Components/ProjectCard';
+import { allEvents } from '../events';
+import { metadata } from '../metadata';
 
 export const tools = [
   flowPortTool,
@@ -18,7 +18,7 @@ export const tools = [
   vsCodeTool,
   fclSDK,
   jsTestingLibTool,
-]
+];
 
 export const contentNavigationListItems: ContentNavigationListProps = {
   header: 'Explore More Content',
@@ -35,16 +35,16 @@ export const contentNavigationListItems: ContentNavigationListProps = {
       link: '/tools',
       icon: 'tools',
     },
-    // {
-    //   title: "Concepts",
-    //   text: "Important concepts about Cadence and FCL",
-    //   link: "#",
-    //   icon: "concepts",
-    // },
+    {
+      title: 'Concepts',
+      text: 'Important concepts about Cadence and FCL',
+      link: '/concepts',
+      icon: 'concepts',
+    },
   ],
-}
+};
 
-export const upcomingEvents = allEvents
+export const upcomingEvents = allEvents;
 
 export const projects: ProjectCardProps[] = [
   {
@@ -149,7 +149,7 @@ export const projects: ProjectCardProps[] = [
     twitterLink: 'https://twitter.com/_buildspace',
     githubLink: 'https://github.com/buildspace',
   },
-]
+];
 
 export const secondaryNavSections = [
   { title: 'FLIPs', elementId: 'flips' },
@@ -163,13 +163,13 @@ export const secondaryNavSections = [
     title: 'Explore More Content',
     elementId: 'explore-more-content',
   },
-]
+];
 
 if (upcomingEvents.events.length > 0) {
   secondaryNavSections.unshift({
     title: 'Upcoming Events',
     elementId: 'upcoming-events',
-  })
+  });
 }
 
-export const editPageUrl = `${metadata.githubRepoBaseUrl}/blob/main/app/data/pages/community.ts`
+export const editPageUrl = `${metadata.githubRepoBaseUrl}/blob/main/app/data/pages/community.ts`;

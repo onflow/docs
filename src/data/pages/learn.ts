@@ -1,5 +1,5 @@
-import { ContentNavigationListProps } from "~/ui/design-system/src/lib/Components/ContentNavigationList"
-import { TutorialCardProps } from "~/ui/design-system/src/lib/Components/TutorialCard"
+import { type ContentNavigationListProps } from '~/ui/design-system/src/lib/Components/ContentNavigationList';
+import { type TutorialCardProps } from '~/ui/design-system/src/lib/Components/TutorialCard';
 import {
   accessControlCadence,
   cadenceAtAGlance,
@@ -20,10 +20,10 @@ import {
   redSquirrelGetStartedArticle,
   revolutionizeSmartContractProgramming,
   zeroToJacobFlow,
-} from "../../data/articles"
-import { LearnPageProps } from "../../ui/design-system/src/lib/Pages/LearnPage"
-import { externalLinks } from "../external-links"
-import { metadata } from "../metadata"
+} from '../../data/articles';
+import { type LearnPageProps } from '../../ui/design-system/src/lib/Pages/LearnPage';
+import { externalLinks } from '../external-links';
+import { metadata } from '../metadata';
 
 export const cadenceTutorials: TutorialCardProps[] = [
   cadenceAtAGlance,
@@ -35,14 +35,14 @@ export const cadenceTutorials: TutorialCardProps[] = [
   FCLQuickstartNextJs,
   FCLQuickstartNuxtJs,
   FCLQuickstartSvelteKit,
-]
+];
 
 export const nftTutorials: TutorialCardProps[] = [
   NBATopShotExample,
   redSquirrelGetStartedArticle,
   flowNFTPetStore,
   flowMetaDataStandard,
-]
+];
 
 export const architectureTutorials: TutorialCardProps[] = [
   introToFlow,
@@ -51,78 +51,78 @@ export const architectureTutorials: TutorialCardProps[] = [
   guideToFlowForEthereumUsers,
   revolutionizeSmartContractProgramming,
   accessControlCadence,
-]
+];
 
-export const videos: LearnPageProps["videos"] = {
+export const videos: LearnPageProps['videos'] = {
   primary: {
-    link: "https://www.youtube.com/watch?v=pRz7EzrWchs",
-    title: "Learn Cadence - Hello World on Flow",
+    link: 'https://www.youtube.com/watch?v=pRz7EzrWchs',
+    title: 'Learn Cadence - Hello World on Flow',
     length: 1396,
   },
   secondary: [
     {
-      link: "https://www.youtube.com/watch?v=DInibYmxUsc",
-      title: "Fungible Token Smart Contracts on Flow",
+      link: 'https://www.youtube.com/watch?v=DInibYmxUsc',
+      title: 'Fungible Token Smart Contracts on Flow',
       length: 1993,
-      tags: ["Guide"],
+      tags: ['Guide'],
     },
     {
-      link: "https://www.youtube.com/watch?v=uEoh9SnjqCk",
-      title: "How to build a basic web3 app on Flow",
+      link: 'https://www.youtube.com/watch?v=uEoh9SnjqCk',
+      title: 'How to build a basic web3 app on Flow',
       length: 1878,
-      tags: ["Guide"],
+      tags: ['Guide'],
     },
   ],
-}
+};
 
 export const allTutorials: TutorialCardProps[] = [
   ...nftTutorials,
   ...cadenceTutorials,
   ...architectureTutorials,
-]
+];
 
 export const contentNavigationListItems: ContentNavigationListProps = {
-  header: "Explore More Content",
+  header: 'Explore More Content',
   contentNavigationItems: [
     {
-      title: "Tools",
-      text: "Curated list of developer tools, services, SDKs.",
-      link: "/tools",
-      icon: "tools",
+      title: 'Tools',
+      text: 'Curated list of developer tools, services, SDKs.',
+      link: '/tools',
+      icon: 'tools',
     },
     {
-      title: "Community",
+      title: 'Community',
       text: "Learn more about Flow's ecosystem and get involved.",
-      link: "/community",
-      icon: "community",
+      link: '/community',
+      icon: 'community',
     },
   ],
-}
+};
 
 export const secondaryNavSections = [
   {
-    title: "Cadence",
-    elementId: "cadence",
+    title: 'Cadence',
+    elementId: 'cadence',
   },
   {
-    title: "NFTs",
-    elementId: "nfts",
+    title: 'NFTs',
+    elementId: 'nfts',
   },
   {
-    title: "Architecture",
-    elementId: "architecture",
+    title: 'Architecture',
+    elementId: 'architecture',
   },
   {
-    title: "Featured Videos",
-    elementId: "featured-videos",
+    title: 'Featured Videos',
+    elementId: 'featured-videos',
   },
   {
-    title: "All Content",
-    elementId: "all-content",
+    title: 'All Content',
+    elementId: 'all-content',
   },
-]
+];
 
-export const youtubeHref = externalLinks.youtube
-export const cadenceHref = "/cadence/"
+export const youtubeHref = externalLinks.youtube;
+export const cadenceHref = '/cadence/';
 
-export const editPageUrl = `${metadata.githubRepoBaseUrl}/blob/main/app/data/pages/learn.ts`
+export const editPageUrl = `${metadata.githubRepoBaseUrl}/blob/main/app/data/pages/learn.ts`;
