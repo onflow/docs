@@ -18,7 +18,7 @@ The following chapters summarize the content in this section. Read on more for d
 
 ## Dapp Development
 
-The [development guide](/dapp-development/) covers the Flow core concepts, including:
+The [development guide](../../tutorials/intro.md) covers the Flow core concepts, including:
 
 - **Dapp Client:** The dapp client is the interface through which users interact with your dapp. Web and mobile applications are typical examples of dapp clients.
 - **Smart Contract:** A smart contract is a collection of code deployed to a permanent location on the blockchain that defines the core logic for a dapp.

@@ -21,7 +21,7 @@ This will import the sample into a Samples folder under your Assets:
 
 To install the Flow emulator, please follow the instructions for your platform here:
 
-[https://developers.flow.com/tools/flow-cli/install](https://developers.flow.com/tools/flow-cli/install)
+[https://developers.flow.com/tooling/flow-cli/install](https://developers.flow.com/tooling/flow-cli/install)
 
 Note that the Flow CLI and Flow emulator are bundled into the same command-line executable.
 

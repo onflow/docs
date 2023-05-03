@@ -62,12 +62,12 @@ export default function GettingStarted(): JSX.Element {
                   },
                   {
                     title: 'Javascript Quickstart',
-                    href: '/tools/fcl-js/tutorials/flow-app-quickstart/',
+                    href: '/tutorials/flow-app-quickstart/',
                     tags: ['tutorial', 'beginner'],
                   },
                   {
                     title: 'NFT Storefront & Marketplace',
-                    href: '/learn/kitty-items/',
+                    href: '/tutorials/kitty-items/',
                     tags: ['example', 'intermediate'],
                   },
                   {

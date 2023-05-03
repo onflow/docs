@@ -5,7 +5,7 @@ sidebar_title: 2. Testnet Deployment
 
 The Flow test network, known as Flow Testnet, exists to help developers test their software and smart contracts against a live network. It's also used as a means of releasing and testing new protocol and smart contract features before they are integrated into Flow's main network (Mainnet).
 
-When the Flow protocol is updated or a new version of Cadence is released, those updates will always be made available on the [Flow Emulator](/emulator) _before_ they're integrated into Flow Testnet or Flow Mainnet.
+When the Flow protocol is updated or a new version of Cadence is released, those updates will always be made available on the [Flow Emulator](../tooling/emulator) _before_ they're integrated into Flow Testnet or Flow Mainnet.
 
 ## Getting Started on Testnet
 
@@ -15,9 +15,9 @@ Anybody can use the [Testnet Faucet](https://testnet-faucet-v2.onflow.org/) to c
 
 #### Generate a Key
 
-To start, you'll need to generate an asymmetric cryptographic key pair (see [Accounts & Keys](/concepts/accounts-and-keys) for a list of supported algorithms).
+To start, you'll need to generate an asymmetric cryptographic key pair (see [Accounts & Keys](../concepts/start-here/accounts-and-keys) for a list of supported algorithms).
 
-For Testnet, you can generate a new key pair with the [Flow CLI](/flow-cli):
+For Testnet, you can generate a new key pair with the [Flow CLI](../tooling/flow-cli):
 
 ```sh
 > flow keys generate
@@ -69,7 +69,7 @@ func main() {
 
 ### Creating Additional Accounts
 
-It may be necessary to create additional accounts for testing purposes and you can do so using [Flow CLI account create command](/flow-cli/create-accounts/).
+It may be necessary to create additional accounts for testing purposes and you can do so using [Flow CLI account create command](../tooling/flow-cli/create-accounts/).
 
 First you need to initialize the configuration:
 
@@ -93,7 +93,7 @@ Add the account created with the use of faucet above to the `accounts` property 
 ```
 
 After adding account to the configuration you can use that account to fund the creation of more accounts by using
-[CLI account create](/flow-cli/create-accounts) command.
+[CLI account create](../tooling/flow-cli/create-accounts) command.
 
 ```
 > flow accounts create \
@@ -115,7 +115,7 @@ Contracts Deployed: 0
 
 ### Deploying a Contract
 
-Using the account you created above, you can deploy additional contract accounts using the [Flow CLI deploy command](/flow-cli/deploy-project-contracts).
+Using the account you created above, you can deploy additional contract accounts using the [Flow CLI deploy command](../tooling/flow-cli/deploy-project-contracts).
 
 Make sure flow project was initialized in the previous step and the `flow.json` is present.
 
@@ -159,7 +159,7 @@ You can now deploy all the contracts by running deploy command:
 flow project deploy
 ```
 
-Please read more about deployment in [the Flow CLI project deployment guide](/flow-cli/deploy-project-contracts).
+Please read more about deployment in [the Flow CLI project deployment guide](../tooling/flow-cli/deploy-project-contracts).
 
 ### Making Use of Core Contracts
 
@@ -169,9 +169,9 @@ Once your accounts are set up and you're ready to develop, you can look over [so
 
 ### Redeploying Your Application
 
-If you discover your application is broken after an update, use the latest emulator to test changes to your application. Once you are satisfied that you've patched any breaking changes, you'll need to [redeploy your contracts to Testnet](/dapp-development/testnet-deployment/#deploying-a-contract).
+If you discover your application is broken after an update, use the latest emulator to test changes to your application. Once you are satisfied that you've patched any breaking changes, you'll need to [redeploy your contracts to Testnet](../tutorials/testnet-deployment/#deploying-a-contract).
 
-> **Note**: Make sure to follow the steps listed in the [Testnet Testing Guidelines](/dapp-development/testnet-testing)
+> **Note**: Make sure to follow the steps listed in the [Testnet Testing Guidelines](../tutorials/testnet-testing)
 
 ### Making Your NFT Discoverable
 

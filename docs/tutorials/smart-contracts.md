@@ -23,10 +23,10 @@ After learning the basics, check out the [Kitty Items sample dapp](/kitty-items/
 
 To build confidently, you will want to set up the appropriate local environment and have an adequate test suite to ensure your smart contracts operate as intended. To do this, familiarize yourself with the following tools:
 
-- [Flow CLI](/flow-cli/): A utility to directly interact with the chain and manage accounts and contracts.
-- [Flow Emulator](/emulator/): A lightweight server that simulates the Flow blockchain (strongly recommended during development).
+- [Flow CLI](../tooling/flow-cli/): A utility to directly interact with the chain and manage accounts and contracts.
+- [Flow Emulator](../tooling/emulator/): A lightweight server that simulates the Flow blockchain (strongly recommended during development).
 - [FCL Dev Wallet](https://github.com/onflow/fcl-dev-wallet/): A utility to simulate user wallets in development.
-- [Visual Studio Code Extension](/vscode-extension/): An IDE integration for developing smart contracts.
+- [Visual Studio Code Extension](../tooling/vscode-extension/): An IDE integration for developing smart contracts.
 - [JS Testing Framework](https://github.com/onflow/flow-js-testing): A framework to test your smart contracts.
 
 ## Storing Data on Flow
