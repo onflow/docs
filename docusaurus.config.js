@@ -255,32 +255,32 @@ const config = {
         },
         items: [
           {
-            to: 'Concepts/intro',
+            to: 'concepts/intro',
             position: 'left',
             label: 'Concepts',
           },
           {
-            to: 'Tutorials/intro',
+            to: 'tutorials/intro',
             position: 'left',
             label: 'Tutorials',
           },
           {
-            to: 'Cadence/intro',
+            to: 'cadence/intro',
             position: 'left',
             label: 'Cadence',
           },
           {
-            to: 'Tooling/intro',
+            to: 'tooling/intro',
             position: 'left',
             label: 'Tooling',
           },
           {
-            to: 'References/Introduction',
+            to: 'references/Introduction',
             position: 'left',
             label: 'References',
           },
           {
-            to: 'Community-Resources/Introduction',
+            to: 'community-resources/Introduction',
             position: 'left',
             label: 'Community Resources',
           },
