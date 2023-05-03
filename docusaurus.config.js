@@ -319,23 +319,23 @@ const config = {
                 label: 'Cadence',
               },
               {
-                to: '/mobile',
+                to: '/concepts/mobile',
                 label: 'Mobile',
               },
               {
-                to: '/tools/fcl-js/',
+                to: '/tooling/fcl-js/',
                 label: 'FCL',
               },
               {
-                to: '/tools/flow-js-testing/',
+                to: '/tooling/flow-js-testing/',
                 label: 'JS Testing Library',
               },
               {
-                to: '/tools/flow-cli/',
+                to: '/tooling/flow-cli/',
                 label: 'CLI',
               },
               {
-                to: '/tools/emulator/',
+                to: '/tooling/emulator/',
                 label: 'Emulator',
               },
               {
@@ -343,7 +343,7 @@ const config = {
                 label: 'Dev Wallet',
               },
               {
-                to: '/tools/vscode-extension/',
+                to: '/tooling/vscode-extension/',
                 label: 'VS Code Extension',
               },
             ],
@@ -393,10 +393,6 @@ const config = {
                 label: 'Flow Playground',
               },
               {
-                to: '/learn/kitty-items/',
-                label: 'Kitty Items',
-              },
-              {
                 to: '/cadence/tutorial/',
                 label: 'Cadence Tutorials',
               },
@@ -405,7 +401,7 @@ const config = {
                 label: 'Cadence Cookbook',
               },
               {
-                to: '/flow/core-contracts/',
+                to: '/cadence/core-contracts/',
                 label: 'Core Contracts & Standards',
               },
               {
@@ -430,19 +426,19 @@ const config = {
                 label: 'Flowscan Testnet',
               },
               {
-                to: '/nodes/node-operation/past-sporks/',
+                to: '/concepts/nodes/node-operation/past-sporks/',
                 label: 'Past Sporks',
               },
               {
-                to: '/nodes/node-operation/upcoming-sporks',
+                to: '/concepts/nodes/node-operation/upcoming-sporks',
                 label: 'Upcoming Sporks',
               },
               {
-                to: '/nodes/node-operation/',
+                to: '/concepts/nodes/node-operation/',
                 label: 'Node Operation',
               },
               {
-                to: '/nodes/node-operation/spork/',
+                to: '/concepts/nodes/node-operation/spork/',
                 label: 'Spork Information',
               },
             ],

@@ -1,5 +1,5 @@
-import DefaultImage from '../../ui/design-system/images/misc/Asset_8@3x.png'
-import { type Article } from '../../ui/design-system/src/lib/interfaces'
+import DefaultImage from '../../ui/design-system/images/misc/Asset_8@3x.png';
+import { type Article } from '../../ui/design-system/src/lib/interfaces';
 
 export const featuredArticle: Article = {
   heading: 'Node Operators',
@@ -8,4 +8,4 @@ export const featuredArticle: Article = {
   ctaText: 'Learn more',
   ctaLink: 'https://flow.com',
   imageUrl: DefaultImage,
-}
+};

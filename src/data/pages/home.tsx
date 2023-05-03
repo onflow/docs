@@ -10,19 +10,19 @@ const homepageStartProjectData: HomepageStartItemProps[] = [
   {
     title: 'Learn Flow',
     text: 'Dive into Flow key concepts through tutorials, guides, and examples',
-    link: '/learn/concepts',
+    link: '/concepts/intro',
     icon: 'learn',
   },
   {
     title: 'Guides & Tutorials',
     text: 'Create your first Flow dApp in just a few minutes',
-    link: '/tools/fcl-js/tutorials/flow-app-quickstart',
+    link: '/tutorials/intro',
     icon: 'quickstart',
   },
   {
     title: 'References',
     text: 'All the developer resources you need to build on Flow',
-    link: '1. Concepts/Introduction',
+    link: '/cadence/intro',
     icon: 'documentation',
   },
 ];
@@ -41,12 +41,12 @@ const homepageThreeColumnData: any = [
       },
       {
         title: 'Get started on testnet',
-        href: '/tools/fcl-js/tutorials/flow-app-quickstart/',
+        href: '/tutorials/flow-app-quickstart',
         tags: ['javascript'],
       },
       {
         title: 'Get started on the playground',
-        href: '/cadence/tutorial/02-hello-world/',
+        href: '/cadence/tutorial/hello-world',
         tags: ['playground'],
       },
       {
@@ -62,17 +62,17 @@ const homepageThreeColumnData: any = [
     links: [
       {
         title: 'Anatomy of a Flow dapp',
-        href: '/flow/dapp-development/flow-dapp-anatomy/',
+        href: '/tutorials/flow-dapp-anatomy/',
         tags: ['overview'],
       },
       {
         title: 'Flow key concepts',
-        href: '/learn/concepts/accounts-and-keys/',
+        href: '/concepts/start-here/accounts-and-keys/',
         tags: ['accounts', 'signing'],
       },
       {
         title: 'Launch a Fungible Token on Flow',
-        href: '/flow/fungible-tokens',
+        href: '/tutorials/fungible-tokens',
         tags: ['overview', 'guide'],
       },
       {
