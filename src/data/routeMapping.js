@@ -21,7 +21,7 @@ const routeMapping = {
   "/flow/dapp-development/deployment": "/tutorials/deployment",
   "/flow/dapp-development/flow-dapp-anatomy": "/tutorials/flow-dapp-anatomy",
   "/flow/dapp-development/fungible-tokens": "/tutorials/fungible-tokens",
-  // flow/dapp-development/in-dapp-payments
+  "/flow/dapp-development/in-dapp-payments": "/tutorials/in-dapp-payments",
   "/flow/dapp-development/mainnet-account-setup": "/tutorials/mainnet-account-setup",
   "/flow/dapp-development/mainnet-deployment": "/tutorials/mainnet-deployment",
   "/flow/dapp-development/NFT-drop-styles": "/tutorials/NFT-drop-styles",

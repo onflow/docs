@@ -87,6 +87,10 @@
       "destination": "/tutorials/flow-dapp-anatomy"
     },
     {
+      "source": "/flow/dapp-development/in-dapp-payments",
+      "destination": "/tutorials/in-dapp-payments"
+    },
+    {
       "source": "/flow/dapp-development/fungible-tokens",
       "destination": "/tutorials/fungible-tokens"
     },
