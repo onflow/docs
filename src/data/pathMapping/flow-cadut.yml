@@ -1,0 +1,3 @@
+./docs/api.md: docs/tooling/flow-cadut/api.md
+./docs/generator.md: docs/tooling/flow-cadut/generator.md
+./docs/plugins.md: docs/tooling/flow-cadut/plugins.md
