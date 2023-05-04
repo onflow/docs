@@ -103,12 +103,12 @@ In the case of unstaking requests, they also must wait an additional
 epoch before their unstaked tokens are available to withdraw.
 This allows the protocol to deal with any slashable offenses that may have happened in the previous epoch.
 
-See the [Epochs](./epoch-preparation) section of the documentation for in-depth explainations 
+See the [Epochs](./epoch-preparation.mdx) section of the documentation for in-depth explainations 
 of the identity table, epoch schedule, QC, and DKG.
 
 ## Rewards
 
-Please see the [schedule](./schedule) section of the documentation
+Please see the [schedule](./schedule.mdx) section of the documentation
 for information about reward calculations and schedule and
 what you can do with the rewards you earn by staking a node!
 
@@ -134,12 +134,12 @@ You are joining a group of people from all around the world that are a part of a
 
 [Flow Port](https://port.onflow.org/) is a simple browser-based app for the Flow blockchain
 that provides functionality for sending, receiving, and staking tokens.
-Any wallet that uses the [Flow Client Library](https://developers.flow.com/tools/fcl-js/index)
+Any wallet that uses the [Flow Client Library](../../../tooling/fcl-js/index.md)
 is compatible with Flow Port.
 
 If you created your account using [Flow Port](https://port.onflow.org/),
 you can also stake and earn rewards using the Flow Port.
-Follow this [step-by-step guide](/flow-port/staking-guide) to stake using Flow Port.
+Follow this [step-by-step guide](../flow-port/staking-guide.md) to stake using Flow Port.
 Flow Port currently supports staking as a node, delegating,
 and reward withdrawal using **Blocto**, **Ledger**, **Lilico**, and **NuFi** accounts / wallets.
 
@@ -149,7 +149,7 @@ If you are using a custody provider who controls your account and private keys f
 such as Kraken, Finoa, or Coinlist, they all have different policies and processes
 for what you need to do to stake your tokens, the rewards you receive,
 and the fees that they take from your staking rewards.
-Please see [our guides](/staking/custody-providers/) for more information about staking
+Please see [our guides](./custody-providers.md) for more information about staking
 using custody providers.
 
 ### Manual Staking or Building your own Staking Integration
@@ -157,6 +157,6 @@ using custody providers.
 If you are self-custodying your Flow account and keys, or you want to build a staking service for customers,
 you will need to learn more about how staking works,
 the various methods for staking, and how you can participate safely and reliably.
-See the [staking technical overview](/staking/technical-overview/) first,
-followed by the [staking technical guide](/staking/locked-staking-guide/) 
+See the [staking technical overview](./technical-overview.mdx) first,
+followed by the [staking technical guide](./locked-staking-guide.mdx) 
 for information about technical integration.

@@ -53,14 +53,14 @@ const emulatorTool: Tool = {
 
 const vsCodeTool: Tool = {
   repo: {
-    name: 'vscode-cadence',
+    name: 'vscode-extension',
     owner: 'onflow',
   },
   title: 'VS Code Extension',
   authorIcon: 'https://avatars.githubusercontent.com/u/62387156?s=64&v=4',
   authorName: 'onflow',
   tags: ['documentation', 'active', 'local-dev'],
-  link: '/tooling/vscode-cadence',
+  link: '/tooling/vscode-extension',
   stars: 33,
   iconSrc: ToolVsCodeIconSrc,
   description:

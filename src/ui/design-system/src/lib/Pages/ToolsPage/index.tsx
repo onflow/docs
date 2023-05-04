@@ -47,7 +47,7 @@ const ToolsPage = ({
         <PageSection className="pt-0 pb-0">
           <LandingHeader
             buttonText="View guide"
-            buttonUrl="/flow/dapp-development/DappArchitectures/"
+            buttonUrl="/tutorials/DappArchitectures/"
             callout="Flow Dapp Architecture Guide"
             description="Wondering what tools you need? See our dapp architectures guide to help you out."
             discordUrl={discordUrl}

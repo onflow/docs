@@ -4,7 +4,7 @@ title: Flow Port Staking Guide
 
 This guide provides step-by-step instructions for using the Flow Port to stake your FLOW tokens and start earning rewards.
 Currently, Flow Port only supports staking or delegating using tokens held in Blocto or Ledger wallets.
-If you're new to the concepts of staking and delegating you can [read this guide](/staking) to learn more.
+If you're new to the concepts of staking and delegating you can [read this guide](../staking) to learn more.
 
 ## First Step
 
@@ -68,11 +68,11 @@ If you are already a node operator with a staked node, you will first need to up
 
 ![Flow Port Staking](staking-collection.png)
 
-Once this is done, you can now create a [Machine Account](/nodes/node-operation/machine-existing-operator) by clicking the "Upgrade Node" button on the Stake & Delegate page.
+Once this is done, you can now create a [Machine Account](../node-operation/machine-existing-operator.mdx) by clicking the "Upgrade Node" button on the Stake & Delegate page.
 
 ![Flow Port Staking](machine-account.png)
 
-You can follow the guide [here](/nodes/node-operation/machine-existing-operator) to create your Machine Account.
+You can follow the guide [here](../node-operation/machine-existing-operator.mdx) to create your Machine Account.
 
 ## Delegating
 

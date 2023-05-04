@@ -14,7 +14,7 @@ If you staked using Flow Port, then you should be able to see your staking rewar
 You can also withdraw the rewards or manually re-stake them through Flow Port.
 
 If you staked using a staking provider such as Kraken, Blocto or Finoa,
-please read [our guides](/staking/custody-providers/) for more information.
+please read [our guides](../staking/custody-providers.md) for more information.
 
 ### Will staking rewards be automatically re-staked?
 
@@ -22,7 +22,7 @@ There will be _no_ automatic re-staking of staking rewards with Flow Port (i.e. 
 If you want to re-stake your rewards, you must manually do so yourself.
 
 If you staked using a staking provider such as Kraken, Blocto or Finoa,
-please read [our guides](/staking/custody-providers/) for more information.
+please read [our guides](../staking/custody-providers.md) for more information.
 
 DeFi liquid staking strategies such as offered by [incrementFi](https://app.increment.fi/staking)
 are not managed by the protocol or nodes, but are more sophisticated ways
@@ -41,7 +41,7 @@ offer using their own methods and are not enforced by the protocol.
 ### Can a token holder stake to multiple nodes? If yes, how is the stake split between them?
 
 A token holder can delegate to multiple nodes from a single account if they use the 
-[Staking Collection](/staking/staking-collection).
+[Staking Collection](../staking/staking-collection.mdx).
 
 The staking collection is enabled by default on Flow port, and many custody providers also support it.
 

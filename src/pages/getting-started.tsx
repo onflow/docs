@@ -62,12 +62,12 @@ export default function GettingStarted(): JSX.Element {
                   },
                   {
                     title: 'Javascript Quickstart',
-                    href: '/tools/fcl-js/tutorials/flow-app-quickstart/',
+                    href: '/tutorials/flow-app-quickstart/',
                     tags: ['tutorial', 'beginner'],
                   },
                   {
                     title: 'NFT Storefront & Marketplace',
-                    href: '/learn/kitty-items/',
+                    href: '/tutorials/kitty-items/',
                     tags: ['example', 'intermediate'],
                   },
                   {
@@ -99,7 +99,7 @@ export default function GettingStarted(): JSX.Element {
                   },
                   {
                     title: 'Dapp architecture',
-                    href: '/flow/dapp-development/DappArchitectures/',
+                    href: '/tutorials/DappArchitectures',
                     tags: ['guide', 'overview'],
                   },
                   {
@@ -121,7 +121,7 @@ export default function GettingStarted(): JSX.Element {
                 links: [
                   {
                     title: 'Get the Flow CLI',
-                    href: '/tools/flow-cli/install/',
+                    href: '/tooling/flow-cli/install/',
                     tags: ['install'],
                   },
                   {
@@ -131,7 +131,7 @@ export default function GettingStarted(): JSX.Element {
                   },
                   {
                     title: 'Core contracts & standards',
-                    href: '/flow/core-contracts',
+                    href: '/cadence/core-contracts',
                     tags: ['nft', 'ft', 'metadata'],
                   },
                   {

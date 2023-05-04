@@ -9,7 +9,7 @@ description: Configure an account to hold leased FLOW
   that can hold locked FLOW tokens from the Flow token sale.
 
   If you already have an account and wish to stake tokens, 
-  please see our guides on staking [here](/staking/).
+  please see our guides on staking [here](../staking/).
 
 </Callout>
 
@@ -51,7 +51,7 @@ As the custodian, you must configure a Flow account that you will use to
 create user accounts. This is called your **creator account**.
 
 You can convert an existing account into a **creator account** by running
-the **Set Up Creator Account** ([C.01](/core-contracts/locked-tokens/#custodian)) transaction.
+the **Set Up Creator Account** ([C.01](../../../cadence/core-contracts/locked-tokens.mdx#custodian)) transaction.
 
 This transaction creates an `AccountCreator` object and stores it in the custodian's account.
 It also publishes a capability that allows the token admin to grant the custodian 
@@ -65,7 +65,7 @@ After you have set up your creator account,
 the token admin needs to submit one more transaction
 to enable your account to register new user accounts to receive locked tokens.
 
-The **Deposit Account Creator** ([TA.06](/core-contracts/locked-tokens/#token-admin)) transaction 
+The **Deposit Account Creator** ([TA.06](../../../cadence/core-contracts/locked-tokens.mdx#token-admin)) transaction 
 must be signed and authorized by the token admin account. It requires the
 following arguments:
 
@@ -85,7 +85,7 @@ admin knows which accounts correspond to which lease recipient.
 ### 1. Create Both Accounts for the User
 
 If your user does not have a regular account created for them yet, you must 
-create both accounts using the **Create Shared Lease Accounts** ([C.02](/core-contracts/locked-tokens/#custodian))
+create both accounts using the **Create Shared Lease Accounts** ([C.02](../../../cadence/core-contracts/locked-tokens.mdx#custodian))
 transaction with the following arguments:
 
 {/* 
@@ -107,7 +107,7 @@ that creates the shared account.
 </Callout>
 
 To attach a shared account to an existing user account, 
-run the **Create Only Shared Account** ([C.03](/core-contracts/locked-tokens/#custodian))
+run the **Create Only Shared Account** ([C.03](../../../cadence/core-contracts/locked-tokens.mdx#custodian))
 transaction with the following arguments:
 
 {/*

@@ -210,9 +210,9 @@ bootstrapLegacy() {
 
 bootstrapDevPortal
 cloneDocReposToTemp
-bootstrapLegacy
-cleanLegacy
-copyDocFiles
-cleanUp
+# bootstrapLegacy
+# cleanLegacy
+# copyDocFiles
+# cleanUp
 # ./scripts/import.sh (files are now checked in)
 # reset

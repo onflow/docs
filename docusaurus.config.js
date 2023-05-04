@@ -393,6 +393,10 @@ const config = {
                 label: 'Flow Playground',
               },
               {
+                to: '/tutorials/kitty-items/',
+                label: 'Kitty Items',
+              },
+              {
                 to: '/cadence/tutorial/',
                 label: 'Cadence Tutorials',
               },

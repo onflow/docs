@@ -5,7 +5,7 @@ using the FlowControl and Flow SDK.
 
 ## Prerequisites
 Ensure you have flow-cli installed.  This will allow us to use an emulated flow environment.
-You can install it by following the instructions at https://developers.flow.com/tools/flow-cli/install
+You can install it by following the instructions at https://developers.flow.com/tooling/flow-cli/install
 
 ## Sample walk through
 You can follow along in FlowControlExample.cs

@@ -74,7 +74,7 @@ without any explicit handling needed.
 
 ## Capability-based access
 
-Remote access to stored objects can be managed via [Capabilities](language#capability-based-access-control). This
+Remote access to stored objects can be managed via [Capabilities](./language#capability-based-access-control). This
 means that if an account wants to be able to access another account's stored objects, it must have been provided
 with a valid Capability to that object. Capabilities can be either public or private. An account can share a public
 Capability if it wants to give all other accounts access. (For example, it’s common for an account to accept fungible
@@ -85,21 +85,21 @@ controls minting through an “administrator Capability” that grants specific 
 ## Contract standards
 
 There are numerous widely-used contract standards established to benefit the ecosystem, for example
-[Fungible Token](../flow#flow-token)(FT) and [Non-Fungible Token](../flow#flow-nft#overview)(NFT)
+[Fungible Token](../concepts/start-here#flow-token)(FT) and [Non-Fungible Token](../concepts/start-here#flow-nft#overview)(NFT)
 standards which are conceptually equivalent to Ethereum's ERC-20 and ERC-721 standards. Cadence's object-oriented
 design means standards apply through contract sub-types such as Resources, Resource interfaces, or other types
 declared in the contract standard. Standards can define and limit behaviour and/or set conditions which
 implementations of the standard cannot violate.
 
-Detailed information about available standards and other core contracts can be found in [Introduction to Flow](../flow).
+Detailed information about available standards and other core contracts can be found in [Introduction to Flow](../concepts/start-here).
 
 ### NFT standard and metadata
 
 Solidity must manage NFT metadata off-chain and NFTs typically link to IPFS JSON from on-chain.
 
-The Cadence NFT standard provides in-built support for metadata with specific types called [views](../flow#flow-nft#overview#nft-metadata).
+The Cadence NFT standard provides in-built support for metadata with specific types called [views](../concepts/start-here#flow-nft#overview#nft-metadata).
 Views can be added to NFTs when minted and will always be available as part of the NFT. While metadata is stored
-on-chain, graphics and video content are stored off-chain. Cadence provides [utility views](../flow#flow-nft#overview#list-of-common-views)
+on-chain, graphics and video content are stored off-chain. Cadence provides [utility views](../concepts/start-here#flow-nft#overview#list-of-common-views)
 for both HTTP and IPFS based media storage which remain linked to your NFT.
 
 Using NFT metadata views is a requirement to get listed in the [Flow NFT Catalog](https://www.flow-nft-catalog.com/).
@@ -152,10 +152,10 @@ the opposite direction than the [access-based security](https://en.wikipedia.org
 Solidity lacks specific types or other primitives to aid with permission management. Developers have to inline
 guards to `require` at every function entry-point, thus validating the `msg.sender` of the transaction.
 
-[Capabilities](language#capability-based-access-control) are defined by linking storage paths (namespaces for contract
+[Capabilities](./language#capability-based-access-control) are defined by linking storage paths (namespaces for contract
 storage) to protected objects and then making that linked capability available to other accounts. Public and private
 scopes defined for storage paths and Capabilities themselves align precisely with
-[PublicAccount](language#accounts#publicaccount)/[AuthAccount](language#accounts#authaccount) account scopes.
+[PublicAccount](./language#accounts#publicaccount)/[AuthAccount](./language#accounts#authaccount) account scopes.
 
 Any account can get access to an account's public Capabilities. Public capabilities are created using public paths,
 i.e. they have the domain `public`. For example, all accounts have a default public capability linked to the
