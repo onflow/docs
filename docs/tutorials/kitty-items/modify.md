@@ -78,7 +78,7 @@ To start making your changes, it is recommended to open the project in a code ed
 
 Open the file `/api/src/services/kitty-items.ts` and add new element (`Shades`) at the bottom of the `Kind` enum:
 
-```js:title=/api/src/services/kitty-items.ts
+```js /api/src/services/kitty-items.ts
 enum Kind {
   Fishbowl = 0,
   Fishhat,
@@ -93,7 +93,7 @@ enum Kind {
 
 Open the file `/web/src/global/constants.js` and add a new item (`Shades`) to the `ITEM_KIND_MAP` constant:
 
-```js:title=/web/src/global/constants.js
+```js /web/src/global/constants.js
 export const ITEM_KIND_MAP = {
   0: "Fishbowl",
   1: "Fish Hat",
@@ -114,7 +114,7 @@ Open the `/cadence/contracts/KittyItems.cdc` file and make the following changes
 
 Locate the `enum Kind` object and add a new case (`shades`) to the bottom of the list:
 
-```cadence:title=/cadence/contracts/KittyItems.cdc
+```cadence /cadence/contracts/KittyItems.cdc
 pub enum Kind: UInt8 {
     pub case fishbowl
     pub case fishhat
@@ -129,7 +129,7 @@ pub enum Kind: UInt8 {
 
 This method is used to set the name and description of a specified NFT. Locate the the `kindToString` method and add a new case (`Kind.shades`) to the bottom of the switch statement:
 
-```cadence:title=/cadence/contracts/KittyItems.cdc
+```cadence /cadence/contracts/KittyItems.cdc
 pub fun kindToString(_ kind: Kind): String {
     switch kind {
         case Kind.fishbowl:
@@ -164,7 +164,7 @@ touch cadence/transactions/kittyItems/add_nft_images_for_new_kind.cdc
 
 Navigate to the new file, open it, and paste the following code:
 
-```cadence:title=cadence/transactions/kittyItems/add_nft_images_for_new_kind.cdc
+```cadence cadence/transactions/kittyItems/add_nft_images_for_new_kind.cdc
 import KittyItems from "../../contracts/KittyItems.cdc"
 
 // This transction uses the NFTMinter resource to add new image URIs for a new Kind of KittyItems NFT.
