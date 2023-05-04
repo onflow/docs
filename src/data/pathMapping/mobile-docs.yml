@@ -1,0 +1,8 @@
+./docs/references/android.md: docs/concepts/mobile/references/android.md
+./docs/references/ios.md: docs/concepts/mobile/references/ios.md
+./docs/index.md: docs/concepts/mobile/index.md
+./docs/guides/user-management.md: docs/concepts/mobile/guides/user-management.md
+./docs/guides/onchain-interactions.md: docs/concepts/mobile/guides/onchain-interactions.md
+./docs/guides/monster-maker.md: docs/concepts/mobile/guides/monster-maker.md
+./docs/guides/development-environment.md: docs/concepts/mobile/guides/development-environment.md
+./docs/get-started.md: docs/concepts/mobile/get-started.md
