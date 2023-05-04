@@ -16,7 +16,7 @@ Flow's moving parts.
 ## Tokenomics
 
 - To understand more about Flow's Token Economics, and the **FLOW token**, you can read the [Flow Token Economics](https://www.onflow.org/flow-token-economics) guide.
-- FLOW tokens are Flow's native Fungible Token. To learn more about how to work with them in your applications, go [here](/flow-token)
+- FLOW tokens are Flow's native Fungible Token. To learn more about how to work with them in your applications, go [here](../cadence/core-contracts/flow-token.mdx)
 
 ## More Concepts
 

@@ -6,7 +6,7 @@ sidebar_title: Overview
 
 This guide provides the required information to the development teams looking to build NFT marketplaces on the Flow blockchain.
 
-Developers should read this guide in conjunction with the other materials for developers looking to build on the Flow blockchain, especially the [official developer onboarding guide](/dapp-development).
+Developers should read this guide in conjunction with the other materials for developers looking to build on the Flow blockchain, especially the [official developer onboarding guide](../../tutorials/intro.md).
 
 ## Custodial vs. non-Custodial model
 

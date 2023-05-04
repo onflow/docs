@@ -7,9 +7,9 @@ sidebar_title: 5. Mainnet Deployment
 
 ## Prerequisites
 
-- Testnet testing: Smart contracts include test coverage and follow any additional guidelines set out here: [Smart Contract Testing Guidelines](/dapp-development/contract-testing). Application live on testnet and handling real world traffic for an extended period of time as suggested here: [Testnet Testing Guidelines](/dapp-development/testnet-testing)
+- Testnet testing: Smart contracts include test coverage and follow any additional guidelines set out here: [Smart Contract Testing Guidelines](./contract-testing). Application live on testnet and handling real world traffic for an extended period of time as suggested here: [Testnet Testing Guidelines](./testnet-testing)
 - [Flow CLI](https://github.com/onflow/flow-cli): You have the CLI installed and ran `flow init` in your project folder, generating a `flow.json` file
-- Mainnet account: You completed the [mainnet account setup](/dapp-development/mainnet-account-setup) and have your key pair and mainnet address ready
+- Mainnet account: You completed the [mainnet account setup](./mainnet-account-setup) and have your key pair and mainnet address ready
 
 ## Configuration
 
@@ -61,13 +61,13 @@ Bar -> 0xab7... (6c243d09e...b878111098)
 
 > **Note**: This command automatically deploys your project's contracts based on the configuration defined in your `flow.json` file. If you encounter any errors, review the configuration first.
 
-> **Important**: If you see `Error Code: 1103`, your new account does not have enough funds to complete the transaction. Make sure you have enough FLOW (e.g. by [sending some from your Blocto account](/dapp-development/mainnet-account-setup/#step-3-send-flow-to-non-custodial-account)).
+> **Important**: If you see `Error Code: 1103`, your new account does not have enough funds to complete the transaction. Make sure you have enough FLOW (e.g. by [sending some from your Blocto account](./mainnet-account-setup#step-3-send-flow-to-non-custodial-account)).
 
-Once all your contracts are deployed, you can visit [flow-view-source](https://flow-view-source.com/) or run the [Flow CLI get account command](/flow-cli/get-accounts/) to confirm the deployment.
+Once all your contracts are deployed, you can visit [flow-view-source](https://flow-view-source.com/) or run the [Flow CLI get account command](../tooling/flow-cli/get-accounts) to confirm the deployment.
 
 ## Update/Re-deploy a contract on mainnet using the CLI
 
-You can use the [Flow CLI contract update command](/flow-cli/account-update-contract/) to re-deploy an updated version of your contract:
+You can use the [Flow CLI contract update command](../tooling/flow-cli/account-update-contract) to re-deploy an updated version of your contract:
 
 ```sh
 > flow accounts update-contract Foo ./Foo.cdc --signer=my-mainnet-account --network=mainnet

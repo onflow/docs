@@ -18,7 +18,7 @@ Flow multirole architecture makes it more scalable and provides several node typ
 
 ## Which node should you run?
 
-The different types of nodes are described [here](/nodes/node-operation/node-roles). As node operator, you can choose to run any of the different types of node that best fits your needs.
+The different types of nodes are described [here](./node-roles.mdx). As node operator, you can choose to run any of the different types of node that best fits your needs.
 
 ### Observer node
 The observer node is one of the easiest node to spin up and can be run by Dapp developers who need the latest block data available locally e.g. a wallet application that needs to track the latest block ID and height.
@@ -26,7 +26,7 @@ In addition to supporting dapps, an observer node can also be run by access node
 
 The observer node is not staked but still provides the same API as the access node.
 
-To run an observer node, follow this [guide](/nodes/node-operation/observer-node).
+To run an observer node, follow this [guide](./observer-node.mdx).
 
 ### Access node
 If you want local access to the protocol state data (blocks, collections, transactions) and do not want to use one of the community access nodes you can run an access node.
@@ -35,7 +35,7 @@ Dapp developers, chain explorers, chain analytics etc. who want exclusive access
 An access node is staked but since it does not participate in the core Flow protocol, it does not receive any staking rewards.
 To run an access node, see the [Running a staked node](#running-a-staked-node) section below.
 
-Alternately, instead of running an access node, you can use the [Flow community](/nodes/access-api) access nodes or the ones run by any of the other node operators.
+Alternately, instead of running an access node, you can use the [Flow community](../access-api.mdx) access nodes or the ones run by any of the other node operators.
 
 ### Collection, Consensus, Verification and Execution node
 If you want your node to participate in the nitty-gritty of Flow protocol and help in block or collection creation, transaction execution, result verification or block verification then you should run one of these four node roles.
@@ -52,8 +52,8 @@ Before proceeding, ensure you have the stake required for your new node and that
 
 To set up a new Flow node you will need to complete the following steps:
 
-1. [Provision](/nodes/node-operation/node-setup) the machine on which your node will run.
+1. [Provision](./node-setup.mdx) the machine on which your node will run.
 
-2. [Generate and register](/nodes/node-operation/node-bootstrap) your node identity.
+2. [Generate and register](./node-bootstrap.mdx) your node identity.
 
-3. [Start](/nodes/node-operation/node-bootstrap#step-3---start-your-flow-node) your node!
+3. [Start](./node-bootstrap.mdx#step-3---start-your-flow-node) your node!

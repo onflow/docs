@@ -20,18 +20,18 @@ or initiate any staking actions.
 This form of staking relationship can be implemented in several ways. The steps below
 provide an outline for one possible approach, but it is not the only approach.
 
-1. The node operator [bootstraps a new node record](/nodes/node-operation/node-bootstrap/)
+1. The node operator [bootstraps a new node record](../node-operation/node-bootstrap.mdx)
    and sends the node information to the token holder.
 1. The token holder uses this node information to register the node with the central staking contract.
    This can be done in one of two ways:
 
-a) The token holder manually [submits a transaction to register a new node](../locked-staking-guide/#setup).
+a) The token holder manually [submits a transaction to register a new node](./locked-staking-guide#setup).
 
 b) The token holder registers the node using the Flow Port.
 
 1. The node operator should then ensure that the node is live and running before the epoch starts.
 1. Once the epoch starts, the token holder is free to manage their stake through the Flow Port or
-   manually by following the [staking guide](../locked-staking-guide/#staking-actions).
+   manually by following the [staking guide](./locked-staking-guide#staking-actions).
 
 ## Indirect Staking
 
@@ -62,7 +62,7 @@ they must configure their account. This account is referred to as the operator a
 The operator account will hold the staking capabilities for all token holders.
 
 The node operator can configure their account with the **Set Up Operator Account**
-([NO.01](/core-contracts/locked-tokens/#node-operator)) transaction.
+([NO.01](../../../cadence/core-contracts/locked-tokens.mdx#node-operator)) transaction.
 This transaction must be authorized by an existing account that the token holder wishes
 to use as its operator account.
 
@@ -74,7 +74,7 @@ and create the staking and networking key-pairs.
 
 After this is done, the node operator creates a `NodeInfo` entry and adds it to the
 operator account with the **Add Node Info**
-([NO.02](/core-contracts/locked-tokens/#node-operator)) transaction.
+([NO.02](../../../cadence/core-contracts/locked-tokens.mdx#node-operator)) transaction.
 
 This transaction takes the following arguments:
 
@@ -117,7 +117,7 @@ they will create a `NodeInfo` object holding the IP address and public keys for 
 This `NodeInfo` object will be stored in an account owned by the node operator (operator account).
 
 The node operator should provide you with their operator account `address` and the `nodeID` for your new node.
-These values can be passed into the **Get Operator Node Info** ([TH.15](/core-contracts/locked-tokens/#token-holder))
+These values can be passed into the **Get Operator Node Info** ([TH.15](../../../cadence/core-contracts/locked-tokens.mdx#token-holder))
 script to confirm your node information:
 
 | Argument    | Type      | Description                                 |
@@ -133,7 +133,7 @@ If this node information is correct, continue to step 2.
 ### 2. Register node & grant staking access to the node operator
 
 After confirming that the node information is correct, the token holder can register the
-node with the central staking contract by using the using the **Register Node** ([TH.16](/core-contracts/locked-tokens/#token-holder)) transaction
+node with the central staking contract by using the using the **Register Node** ([TH.16](../../../cadence/core-contracts/locked-tokens.mdx#token-holder)) transaction
 with the following arguments:
 
 | Argument    | Type      | Description                                  |
@@ -159,7 +159,7 @@ _Note: This transaction stakes additional tokens to the same node that was regis
 It is currently not possible to stake to multiple nodes from the same account._
 
 To stake new tokens via the `NodeStakerProxy`,
-the node operator can use the **Stake New Locked FLOW** ([NO.05](/core-contracts/locked-tokens/#node-operator))
+the node operator can use the **Stake New Locked FLOW** ([NO.05](../../../cadence/core-contracts/locked-tokens.mdx#node-operator))
 transaction with the following arguments:
 
 | Argument   | Type     | Description                         |
@@ -172,7 +172,7 @@ transaction with the following arguments:
 After tokens become unstaked, the node operator can choose to re-stake the unstaked tokens to the same node.
 
 To staked unstaked tokens via the `NodeStakerProxy`,
-the node operator can use the **Re-stake Unstaked FLOW** ([NO.06](/core-contracts/locked-tokens/#node-operator))
+the node operator can use the **Re-stake Unstaked FLOW** ([NO.06](../../../cadence/core-contracts/locked-tokens.mdx#node-operator))
 transaction with the following arguments:
 
 | Argument   | Type     | Description                         |
@@ -185,7 +185,7 @@ transaction with the following arguments:
 The node operator can submit a request to unstake the token holder's staked tokens at any time.
 
 To unstake staked tokens via the `NodeStakerProxy`,
-the node operator can use the **Unstake FLOW** ([NO.07](/core-contracts/locked-tokens/#node-operator))
+the node operator can use the **Unstake FLOW** ([NO.07](../../../cadence/core-contracts/locked-tokens.mdx#node-operator))
 transaction with the following arguments:
 
 | Argument   | Type     | Description                         |
@@ -202,7 +202,7 @@ After tokens become unstaked, the node operator can withdraw them from the centr
 on behalf of the token holder.
 
 To withdraw unstaked tokens via the `NodeStakerProxy`,
-the node operator can use the **Withdraw Unstaked FLOW** ([NO.08](/core-contracts/locked-tokens/#node-operator))
+the node operator can use the **Withdraw Unstaked FLOW** ([NO.08](../../../cadence/core-contracts/locked-tokens.mdx#node-operator))
 transaction with the following arguments:
 
 | Argument   | Type     | Description                                     |
@@ -218,7 +218,7 @@ After earning rewards from staking, the node operator can withdraw them from the
 on behalf of the token holder.
 
 To withdraw rewarded tokens via the `NodeStakerProxy`,
-the node operator can use the **Withdraw Rewarded FLOW** ([NO.09](/core-contracts/locked-tokens/#node-operator))
+the node operator can use the **Withdraw Rewarded FLOW** ([NO.09](../../../cadence/core-contracts/locked-tokens.mdx#node-operator))
 transaction with the following arguments:
 
 | Argument   | Type     | Description                                     |
@@ -236,7 +236,7 @@ However, unlike unstaked tokens, rewards are unlocked FLOW and can be immediatel
 The node operator can destroy the `NodeInfo` entry after
 the staking relationship has concluded.
 
-This is done using the **Remove Node Info** ([NO.03](/core-contracts/locked-tokens/#node-operator))
+This is done using the **Remove Node Info** ([NO.03](../../../cadence/core-contracts/locked-tokens.mdx#node-operator))
 transaction with the following arguments:
 
 | Argument   | Type     | Description                         |
