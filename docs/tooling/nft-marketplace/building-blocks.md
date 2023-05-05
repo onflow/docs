@@ -13,7 +13,7 @@ Following are the basic building blocks for any NFT marketplace solution on the 
 - [Flow NFT Catalog](https://github.com/dapperlabs/nft-catalog): NFT marketplaces can use this on-chain registry of NFTs to obtain the list of NFTs owned by an account and obtain display metadata for those NFTs and their collections. Developers should use the [example scripts](https://github.com/dapperlabs/nft-catalog#using-the-catalog-for-marketplaces-and-other-nft-applications) in conjunction with the [NFT Metadata Standard](https://github.com/onflow/flow-nft/#nft-metadata).
 - [NFT Storefront Contract](https://github.com/onflow/nft-storefront): ​​Contract used by almost all Flow NFT marketplaces for creating NFT sale listings. Note that you can directly use the version of this contract already deployed on the Mainnet.
 - [FCL (Flow Client Library)](https://github.com/onflow/fcl-js): This library is like web3.js in Ethereum. Application frontend will use FCL to interact with user wallets and the blockchain. JS-based backends of applications can also use it to interact with the blockchain.
-- Flow SDKs: Multiple SDKs are available in different programming languages ([Go](https://docs.onflow.org/flow-go-sdk/), [Java](https://github.com/the-nft-company/flow-jvm-sdk)) for Flow application backends to interact with the blockchain.
+- Flow SDKs: Multiple SDKs are available in different programming languages ([Go](../flow-go-sdk/index.mdx), [Java](https://github.com/the-nft-company/flow-jvm-sdk)) for Flow application backends to interact with the blockchain.
 
 ## Coming from Ethereum
 

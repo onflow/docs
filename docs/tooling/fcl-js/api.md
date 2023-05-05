@@ -458,7 +458,7 @@ A **convenience method** that produces the needed authorization details for the 
 
 #### Usage
 
-**Note:** The default values for `proposer`, `payer`, and `authorizations` are already `fcl.authz` so there is no need to include these parameters, it is shown only for example purposes. See more on [signing roles](https://docs.onflow.org/concepts/accounts-and-keys/#signing-a-transaction).
+**Note:** The default values for `proposer`, `payer`, and `authorizations` are already `fcl.authz` so there is no need to include these parameters, it is shown only for example purposes. See more on [signing roles](../../concepts/start-here/accounts-and-keys.md#signing-a-transaction).
 
 ```javascript
 import * as fcl from "@onflow/fcl";
@@ -613,7 +613,7 @@ export const signMessage = async () => {
 
 Discovery abstracts away code so that developers don't have to deal with the discovery of Flow compatible wallets, integration, or authentication. Using `discovery` from FCL allows dapps to list and authenticate with wallets while having full control over the UI. Common use cases for this are login or registration pages.
 
-(Alternatively, if you don't need control over your UI you can continue to use the `discovery.wallet` config value documented in the [Quickstart](https://docs.onflow.org/fcl/tutorials/flow-app-quickstart/) for the simplest configuration.)
+(Alternatively, if you don't need control over your UI you can continue to use the `discovery.wallet` config value documented in the [Quickstart](../../tutorials/flow-app-quickstart.mdx) for the simplest configuration.)
 
 > ⚠️**The following methods can only be used in web browsers.**
 
@@ -719,7 +719,7 @@ _Pass in the following as a single object with the following keys.All keys are o
 | --------- | ------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | `cadence` | string **(required)**                 | A valid cadence script.                                                                                                                                                                                                |
 | `args`    | [ArgumentFunction](#argumentfunction) | Any arguments to the script if needed should be supplied via a function that returns an array of arguments.                                                                                                            |
-| `limit`   | number                                | Compute (Gas) limit for query. Read the [documentation about computation cost](https://docs.onflow.org/concepts/variable-transaction-fees/) for information about how computation cost is calculated on Flow. |
+| `limit`   | number                                | Compute (Gas) limit for query. Read the [documentation about computation cost](../../concepts/start-here/variable-transaction-fees.md) for information about how computation cost is calculated on Flow. |
 
 #### Returns
 
@@ -768,7 +768,7 @@ _Pass in the following as a single object with the following keys. All keys are 
 | ---------- | ----------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | `cadence`  | string **(required)**                           | A valid cadence transaction.                                                                                                                                                                                           |
 | `args`     | [ArgumentFunction](#argumentfunction)           | Any arguments to the script if needed should be supplied via a function that returns an array of arguments.                                                                                                            |
-| `limit`    | number                                          | Compute (Gas) limit for query. Read the [documentation about computation cost](https://docs.onflow.org/flow-go-sdk/building-transactions/#gas-limit) for information about how computation cost is calculated on Flow. |
+| `limit`    | number                                          | Compute (Gas) limit for query. Read the [documentation about computation cost](../flow-go-sdk/index.mdx#gas-limit) for information about how computation cost is calculated on Flow. |
 | `proposer` | [AuthorizationFunction](#authorization-function) | The authorization function that returns a valid [AuthorizationObject](#authorizationobject) for the [proposer role](#TransactionRoles).                                                                                |
 
 #### Returns
@@ -1922,11 +1922,11 @@ const signingFunction = ({
 | Key                  | Value Type                            | Description                                                                                                                                                                                   |
 | -------------------- | ------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | `args`               | object                                     | A list of encoded Cadence values passed into this transaction.  These have not been decoded by the JS-SDK.                                                       |
-| `authorizers`        | [\[Address\]](#address)               | A list of the accounts that are authorizing this transaction to mutate to their on-chain account state.  [See more here](https://docs.onflow.org/concepts/transaction-signing/#signer-roles). |
-| `envelopeSignatures` | [\[SignableObject\]](#signableobject) | A list of signatures generated by the payer role. [See more here](https://docs.onflow.org/concepts/transaction-signing/#anatomy-of-a-transaction).                                            |
-| `gasLimit`           | number                                | The maximum number of computational units that can be used to execute this transaction.  [See more here](https://docs.onflow.org/concepts/variable-transaction-fees/).                                  |
-| `payer`              | [Address](#address)                   | The account that pays the fee for this transaction.  [See more here](https://docs.onflow.org/concepts/transaction-signing/#signer-roles).                                                     |
-| `payloadSignatures`  | [\[SignableObject\]](#signableobject) | A list of signatures generated by the proposer and authorizer roles. [See more here](https://docs.onflow.org/concepts/transaction-signing/#anatomy-of-a-transaction).                         |
+| `authorizers`        | [\[Address\]](#address)               | A list of the accounts that are authorizing this transaction to mutate to their on-chain account state.  [See more here](../../concepts/start-here/transaction-signing.md#signer-roles). |
+| `envelopeSignatures` | [\[SignableObject\]](#signableobject) | A list of signatures generated by the payer role. [See more here](../../concepts/start-here/transaction-signing.md#anatomy-of-a-transaction).                                            |
+| `gasLimit`           | number                                | The maximum number of computational units that can be used to execute this transaction.  [See more here](../../concepts/start-here/variable-transaction-fees.md).                                  |
+| `payer`              | [Address](#address)                   | The account that pays the fee for this transaction.  [See more here](../../concepts/start-here/transaction-signing.md#signer-roles).                                                     |
+| `payloadSignatures`  | [\[SignableObject\]](#signableobject) | A list of signatures generated by the proposer and authorizer roles. [See more here](../../concepts/start-here/transaction-signing.md#anatomy-of-a-transaction).                         |
 | `proposalKey`        | [\[ProposalKey\]](#proposalkeyobject) | The account key used to propose this transaction                                                                                                                                              |
 | `referenceBlockId`   | string                                | A reference to the block used to calculate the expiry of this transaction.                                                                                                                    |
 | `script`             | string                                | The UTF-8 encoded Cadence source code that defines the execution logic for this transaction                                                                                                   |
@@ -1939,7 +1939,7 @@ const signingFunction = ({
 | authorizer | boolean    | A Boolean representing if this signature to be produced for an authorizer. |
 | payer      | boolean    | A Boolean representing if this signature to be produced for a payer.       |
 
-For more on what each transaction role means, see [singing roles](https://docs.onflow.org/concepts/transaction-signing/#signer-roles).
+For more on what each transaction role means, see [singing roles](../../concepts/start-here/transaction-signing.md#signer-roles).
 
 ### `TransactionStatusObject`
 
@@ -1984,7 +1984,7 @@ ProposalKey is the account key used to propose this transaction.
 
 A proposal key references a specific key on an account, along with an up-to-date sequence number for that key. This sequence number is used to prevent replay attacks.
 
-You can find more information about sequence numbers here: https://docs.onflow.org/concepts/transaction-signing/#sequence-numbers
+You can find more information about sequence numbers [here](../../concepts/start-here/transaction-signing.md#sequence-numbers)
 
  Key              | Value Type | Description                                                                              |
 | ---------------- | ---------- | ---------------------------------------------------------------------------------------- |

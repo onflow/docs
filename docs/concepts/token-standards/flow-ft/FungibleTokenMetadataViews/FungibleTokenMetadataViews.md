@@ -29,7 +29,7 @@ FTView wraps FTDisplay and FTVaultData, and is used to give a complete
 picture of a Fungible Token. Most Fungible Token contracts should
 implement this view.
 
-[More...](FungibleTokenMetadataViews_FTView.md)
+[More...](./FungibleTokenMetadataViews_FTView.md)
 
 ---
 
@@ -55,7 +55,7 @@ View to expose the information needed to showcase this FT.
 This can be used by applications to give an overview and
 graphics of the FT.
 
-[More...](FungibleTokenMetadataViews_FTDisplay.md)
+[More...](./FungibleTokenMetadataViews_FTDisplay.md)
 
 ---
 
@@ -85,7 +85,7 @@ View to expose the information needed store and interact with a FT vault.
 This can be used by applications to setup a FT vault with proper
 storage and public capabilities.
 
-[More...](FungibleTokenMetadataViews_FTVaultData.md)
+[More...](./FungibleTokenMetadataViews_FTVaultData.md)
 
 ---
 ## Functions

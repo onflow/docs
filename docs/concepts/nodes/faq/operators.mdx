@@ -41,7 +41,7 @@ You can query historical data and fetch contract code using the SDKs.
 
 Flow allows you to actively query the state of the blockchain using scripts written in the Cadence programming language. You can find out more about Cadence here:
 
-[https://docs.onflow.org/cadence](https://docs.onflow.org/cadence)
+[cadence](../../../cadence/intro.md)
 
 Running scripts and parsing their output is supported by the SDKs.
 
@@ -110,11 +110,11 @@ Events are implemented within Flow smart contracts using the Cadence programming
 
 You can find out more about events in Cadence here:
 
-[https://docs.onflow.org/cadence/language/events/](https://docs.onflow.org/cadence/language/events/)
+[cadence/language/events/](../../../cadence/language/events.md)
 
 As an example of the kinds of information events can contain, see the documentation of the events that the staking protocol emits:
 
-[https://docs.onflow.org/staking/events](https://docs.onflow.org/staking/events)
+[staking/events](../staking/staking-scripts-events.md)
 
 ### Consuming Events
 
@@ -163,15 +163,15 @@ No errors should be considered acceptable. If there are errors that are constant
 
 ## Is there a testnet/devnet?
 
-There is an access node for you to develop against on the testnet/devnet. You can learn more about it here [https://docs.onflow.org/dapp-development/testnet-deployment#accessing-flow-testnet](https://docs.onflow.org/dapp-development/testnet-deployment#accessing-flow-testnet)
+There is an access node for you to develop against on the testnet/devnet. You can learn more about it here [testnet-deployment#accessing-flow-testnet](../../../tutorials/testnet-deployment.md#accessing-flow-testnet)
 
 ## Is there a public node?
 
-Yes, an access node is publicly accessible to submit transactions and read data from the blockchain. If you’d like to access the devnet access node to build against, you can do so [here](https://docs.onflow.org/concepts/accessing-testnet)
+Yes, an access node is publicly accessible to submit transactions and read data from the blockchain. If you’d like to access the devnet access node to build against, you can do so [here](../../flow-networks/accessing-testnet.md)
 
 ## Is it possible to add multiple public keys to a given account/address so that it can be controlled by more than one private key?
 
-Yes, accounts support multiple, weighted keys, [here](https://docs.onflow.org/cadence/language/accounts)
+Yes, accounts support multiple, weighted keys, [here](../../../cadence/language/accounts.mdx)
 using `AuthAccount`’s `fun addPublicKey(_ publicKey: [UInt8])`and <br/>`fun removePublicKey(_ index: Int)` functions.
 
 ## How do keys and accounts work on Flow?
@@ -180,7 +180,7 @@ Accounts are created with associated keys. There can be multiple keys on an acco
 
 FLOW supports a variety of signature schemes for adding keys to an account.
 
-Details: [https://docs.onflow.org/concepts/accounts-and-keys](https://docs.onflow.org/concepts/accounts-and-keys)
+Details: [concepts/accounts-and-keys](../../start-here/accounts-and-keys.md)
 
 ## How do I create a Flow account if I do not have a service account?
 
@@ -195,4 +195,4 @@ You can query the access API to get events for a block range. See Access API spe
 You can follow Flow node software releases here: [https://github.com/onflow/flow-go/releases](https://github.com/onflow/flow-go/releases).
 
 ## How do I run a Flow node and become a node operator?
-See the dedicated section on node operation: [https://docs.onflow.org/nodes/node-operation/](https://docs.onflow.org/nodes/node-operation/)
+See the dedicated section on node operation: [nodes/node-operation/](../node-operation/index.md)

@@ -26,7 +26,7 @@ The rarity is currently represented as the background color. You could change th
 
 ### Update metadata
 
-NFTs on Flow should follow the [metadata standard](https://docs.onflow.org/core-contracts/nft-metadata/). The Kitty Items contract is compatible with the metadata standard as well.
+NFTs on Flow should follow the [metadata standard](../../cadence/core-contracts/nft-metadata.mdx). The Kitty Items contract is compatible with the metadata standard as well.
 
 > **Note**: You can review the following Cadence contract for more details: `cadence/contracts/MetadataViews.cdc`
 

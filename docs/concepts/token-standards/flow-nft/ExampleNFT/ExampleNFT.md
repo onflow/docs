@@ -27,7 +27,7 @@ resource interface ExampleNFTCollectionPublic {
 ```
 Defines the methods that are particular to this NFT contract collection
 
-[More...](ExampleNFT_ExampleNFTCollectionPublic.md)
+[More...](./ExampleNFT_ExampleNFTCollectionPublic.md)
 
 ---
 ## Structs & Resources
@@ -54,7 +54,7 @@ The core resource that represents a Non Fungible Token.
 New instances will be created using the NFTMinter resource
 and stored in the Collection resource
 
-[More...](ExampleNFT_NFT.md)
+[More...](./ExampleNFT_NFT.md)
 
 ---
 
@@ -70,7 +70,7 @@ The resource that will be holding the NFTs inside any account.
 In order to be able to manage NFTs any account will need to create
 an empty collection first
 
-[More...](ExampleNFT_Collection.md)
+[More...](./ExampleNFT_Collection.md)
 
 ---
 
@@ -83,7 +83,7 @@ resource NFTMinter {
 Resource that an admin or something similar would own to be
 able to mint new NFTs
 
-[More...](ExampleNFT_NFTMinter.md)
+[More...](./ExampleNFT_NFTMinter.md)
 
 ---
 ## Functions

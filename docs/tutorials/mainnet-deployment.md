@@ -28,7 +28,7 @@ First, you need to configure the `flow.json` file to add your mainnet account de
 }
 ```
 
-Next, you need to set the [deployment target configuration](https://docs.onflow.org/flow-cli/project-contracts/#define-contract-deployment-targets) for the mainnet:
+Next, you need to set the [deployment target configuration](../tooling/flow-cli/deploy-project-contracts.md#define-contract-deployment-targets) for the mainnet:
 
 ```js flow.json
 {
@@ -44,7 +44,7 @@ Next, you need to set the [deployment target configuration](https://docs.onflow.
 
 ## Deploy a contract on mainnet using the CLI
 
-With the configuration changes completed, run the [Flow CLI deployment command](https://docs.onflow.org/flow-cli/deploy-project-contracts):
+With the configuration changes completed, run the [Flow CLI deployment command](../tooling/flow-cli/deploy-project-contracts.md):
 
 ```sh
 > flow project deploy --network=mainnet
@@ -121,4 +121,4 @@ Currently, **historical event data is not migrated between sporks,** so you'll n
 
 Unlike Flow Testnet, once your application is launched on Flow Mainnet, your users will be exchanging real value in the form of FLOW tokens (The Flow blockchain's native token) or other resources which have been made available. You or your user will also be responsible for paying transaction fees using FLOW tokens.
 
-You can read about Transaction fees here: [https://docs.onflow.org/flow-token/concepts/#fees](https://docs.onflow.org/flow-token/concepts/#fees)
+You can read about Transaction fees here: [concepts/#fees](../concepts/flow-token/concepts.md#fees)

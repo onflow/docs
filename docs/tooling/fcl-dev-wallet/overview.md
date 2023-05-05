@@ -1,6 +1,6 @@
 ## Introduction
 
-The FCL dev wallet is a mock Flow wallet that simulates the protocols used by [FCL](https://docs.onflow.org/fcl/) to interact with the Flow blockchain on behalf of simulated user accounts.
+The FCL dev wallet is a mock Flow wallet that simulates the protocols used by [FCL](../fcl-js/index.md) to interact with the Flow blockchain on behalf of simulated user accounts.
 
 **IMPORTANT**
 
@@ -22,7 +22,7 @@ Before using the dev wallet, you'll need to start the Flow emulator.
 
 ### Install the `flow-cli`
 
-The Flow emulator is bundles with the Flow CLI. Instructions for installing the CLI can be found here: [https://docs.onflow.org/flow-cli/install/](https://docs.onflow.org/flow-cli/install/)
+The Flow emulator is bundles with the Flow CLI. Instructions for installing the CLI can be found here: [flow-cli/install/](../flow-cli/install.md)
 
 ### Create a `flow.json` file
 

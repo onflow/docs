@@ -9,5 +9,5 @@ or sending transactions. It also includes the [Flow Emulator](start-emulator).
 
 ## Installation
 
-Follow [these steps](install.md) to install the Flow CLI on 
+Follow [these steps](./install.md) to install the Flow CLI on 
 macOS, Linux, and Windows.

@@ -23,7 +23,7 @@ It does not enforce requirements on `balance` here,
 because it leaves open the possibility of creating custom providers
 that do not necessarily need their own balance.
 
-[More...](FungibleToken_Provider.md)
+[More...](./FungibleToken_Provider.md)
 
 ---
     
@@ -41,7 +41,7 @@ we want to give users the ability to make custom receivers that
 can do custom things with the tokens, like split them up and
 send them to different places.
 
-[More...](FungibleToken_Receiver.md)
+[More...](./FungibleToken_Receiver.md)
 
 ---
     
@@ -57,7 +57,7 @@ The interface that contains the `balance` field of the Vault
 and enforces that when new Vaults are created, the balance
 is initialized correctly.
 
-[More...](FungibleToken_Balance.md)
+[More...](./FungibleToken_Balance.md)
 
 ---
 ## Structs & Resources
@@ -76,7 +76,7 @@ every Fungible Token contract that implements the FungibleToken interface
 must define a concrete `Vault` resource that conforms to the `Provider`, `Receiver`,
 and `Balance` interfaces, and declares their required fields and functions
 
-[More...](FungibleToken_Vault.md)
+[More...](./FungibleToken_Vault.md)
 
 ---
 ## Functions

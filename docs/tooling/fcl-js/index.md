@@ -60,7 +60,7 @@ fcl.authenticate()
 - *Interact with smart contracts*: Authorize transactions via the user's chosen wallet 
 - *Prove ownership of a wallet address*: Signing and verifying user signed data
 
-[Learn more about wallet interactions >](https://docs.onflow.org/fcl/reference/api/#wallet-interactions)
+[Learn more about wallet interactions >](./api.md#wallet-interactions)
 
 #### Blockchain Interactions
 - *Query the chain*: Send arbitrary Cadence scripts to the chain and receive back decoded values
@@ -100,7 +100,7 @@ const txId = await fcl.mutate({
 });
 ```
 
-[Learn more about on-chain interactions >](https://docs.onflow.org/fcl/reference/api/#on-chain-interactions)
+[Learn more about on-chain interactions >](./api.md#on-chain-interactions)
 
 #### Utilities
 - Get account details from any Flow address
@@ -109,7 +109,7 @@ const txId = await fcl.mutate({
 - Event polling
 - Custom authorization functions
 
-[Learn more about utilities >](https://docs.onflow.org/fcl/reference/api/#pre-built-interactions)
+[Learn more about utilities >](./api.md#pre-built-interactions)
 
 
 ## Next Steps
@@ -118,9 +118,9 @@ See the [Flow App Quick Start](../../tutorials/flow-app-quickstart.mdx).
 
 See the full [API Reference](./api.md) for all FCL functionality.
 
-Learn Flow's smart contract language to build any script or transactions: [Cadence](https://docs.onflow.org/cadence/).
+Learn Flow's smart contract language to build any script or transactions: [Cadence](../../cadence/intro.md).
 
-Explore all of Flow [docs and tools](https://docs.onflow.org).
+Explore all of Flow [docs and tools](/).
 
 
 ---

@@ -825,9 +825,9 @@ Sends script to the network
 | Name         | Type                                                                            | Optional | Description                                                                                                                                                                 |
 | ------------ | ------------------------------------------------------------------------------- | -------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | `code`       | string                                                                          |          | Cadence code to execute                                                                                                                                                     |
-| `payer`      | [AuthorizationFunction](https://docs.onflow.org/fcl/api/#authorizationfunction) |          | The authorization function that returns a valid [AuthorizationObject](https://docs.onflow.org/fcl/api/#authorizationobject) for the payer role.                             |
-| `signers`    | [AuthorizationFunction]                                                         | ✅       | an array of [AuthorizationObject](https://docs.onflow.org/fcl/api/#authorizationobject) representing transaction authorizers. Default: same as `payer`                      |
-| `proposer`   | [AuthorizationFunction](https://docs.onflow.org/fcl/api/#authorizationfunction) | ✅       | The authorization function that returns a valid [AuthorizationObject](https://docs.onflow.org/fcl/api/#authorizationobject) for the proposer role. Default: same as `payer` |
+| `payer`      | [AuthorizationFunction](../fcl-js/api.md#authorizationfunction) |          | The authorization function that returns a valid [AuthorizationObject](../fcl-js/api.md#authorizationobject) for the payer role.                             |
+| `signers`    | [AuthorizationFunction]                                                         | ✅       | an array of [AuthorizationObject](../fcl-js/api.md#authorizationobject) representing transaction authorizers. Default: same as `payer`                      |
+| `proposer`   | [AuthorizationFunction](../fcl-js/api.md#authorizationfunction) | ✅       | The authorization function that returns a valid [AuthorizationObject](../fcl-js/api.md#authorizationobject) for the proposer role. Default: same as `payer` |
 | `args`       | [Any]                                                                           | ✅       | Optional if transactions does not expect arguments. Default: `[]`                                                                                                           |
 | `addressMap` | [AddressMap](#AddressMap)                                                       | ✅       | address map to use for import replacement. Default: `{}`                                                                                                                    |
 | `limit`      | number                                                                          | ✅       | gas limit. Default: `100`                                                                                                                                                   |
@@ -841,7 +841,7 @@ Transaction result is represented as a tuple `[result, error]`
 
 | Name                                                              | Type  | Description                                                                        |
 | ----------------------------------------------------------------- | ----- | ---------------------------------------------------------------------------------- |
-| [ResponseObject][https://docs.onflow.org/fcl/api/#responseobject] | any   | result of transaction execution. Type of this value depends on script return value |
+| [ResponseObject](../fcl-js/api.md#responseobject) | any   | result of transaction execution. Type of this value depends on script return value |
 | `error`                                                           | error | Caught error. This will be `null` if script executed successfully                  |
 
 #### Usage

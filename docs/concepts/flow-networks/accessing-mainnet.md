@@ -25,7 +25,7 @@ func main() {
 
 ## Account creation
 
-You can follow the [Flow Port account creation steps](https://docs.onflow.org/flow-port/#blocto) to create a new mainnet account.
+You can follow the [Flow Port account creation steps](../nodes/flow-port/index.md#blocto) to create a new mainnet account.
 
 If you prefer watching a video, check out this tutorial:
 
@@ -61,7 +61,7 @@ Take a note of the public key and go back to Flow Port. Open the ["Create a new 
 
 On the page, enter your public key from the CLI, ensure the hash algorithm is set to `SHA3_256` and the weight is set to `1000`. Finally, check the box confirming correctness and hit 'Submit'.
 
-> **Important**: Your account needs to have at least 0.002 FLOW for the account creation. More details can be found [in this guide](https://docs.onflow.org/flow-token/concepts/#storageaccount-fees).
+> **Important**: Your account needs to have at least 0.002 FLOW for the account creation. More details can be found [in this guide](../flow-token/concepts.md#storageaccount-fees).
 
 Once the transaction is sealed, you should scroll down to the events section and locate the `flow.AccountCreated` event with the newly generated address.
 

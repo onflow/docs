@@ -40,7 +40,7 @@ Resolves name alias to a Flow address (`0x` prefixed) under the following condit
 
 | Type                                                          | Description                              |
 | ------------------------------------------------------------- | ---------------------------------------- |
-| [Address](https://docs.onflow.org/fcl/reference/api/#address) | `0x` prefixed address of aliased account |
+| [Address](../fcl-js/api.md#address) | `0x` prefixed address of aliased account |
 
 #### Usage
 
@@ -74,4 +74,4 @@ _Pass in the following as a single object with the following keys._
 
 | Type                                                          | Description                              |
 | ------------------------------------------------------------- | ---------------------------------------- |
-| [Address](https://docs.onflow.org/fcl/reference/api/#address) | `0x` prefixed address of created account |
+| [Address](../fcl-js/api.md#address) | `0x` prefixed address of created account |
