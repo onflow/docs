@@ -41,7 +41,7 @@ The exact steps to complete this may vary between custody providers, but it will
 
 It should look like something like: `0x7e60df042a9c0868`
 
-You can read more about address generation in the [accounts & keys documentation](/concepts/accounts-and-keys#account-addresses).
+You can read more about address generation in the [accounts & keys documentation](../start-here/accounts-and-keys.md#account-addresses).
 
 ## Step 3: Claim Your Tokens
 
