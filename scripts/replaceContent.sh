@@ -10,12 +10,21 @@
 #
 
 repoPath="https://github.com/onflow/docs/tree/main/"
+docUrl="https://developers.flow.com"
 
 ymlFile=$1
 
 yq eval 'to_entries | .[] | .key + ":" + .value' $ymlFile | while read line; do
   filePath=$(echo $line | cut -d':' -f1)
   newLocation=$(echo $line | cut -d':' -f2)
-  echo "# This document has been moved to a new location:\n" > $filePath
+
+  # remove file .md/.mdx extension from the path
+  urlLocation=$(echo $newLocation | cut -d'.' -f1)
+  # remove `docs` prefix from the path
+  urlLocation=${urlLocation/docs/}
+
+  echo "# The documentation has been moved to a new location. Please check the links below:\n" > $filePath
+  echo "$docUrl$urlLocation" >> $filePath
+  echo "\n### To edit this document, go to:\n" >> $filePath
   echo "$repoPath$newLocation" >> $filePath
 done
