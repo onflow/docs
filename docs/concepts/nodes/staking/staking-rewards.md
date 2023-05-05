@@ -10,7 +10,7 @@ Every week, the Flow governance committee executes the reward payout transaction
 When the transaction executes, it generates events for the rewards paid to each node and delegator.
 To check the staking and delegation rewards, that transaction should be queried.
 
-Example using [Flow cli](https://developers.flow.com/tools/flow-cli)
+Example using [Flow cli](../../../tooling/flow-cli/)
 ```
 $ flow transactions get 84eca4ff612ef70047d60510710cca872c8a17c1bd9f63686e74852b6382cc84 -n mainnet
 
@@ -78,7 +78,7 @@ Events:
    <clipped for brevity>
 ```
 
-Example using [Flow Go SDK](https://developers.flow.com/tools/flow-go-sdk)
+Example using [Flow Go SDK](../../../tooling/flow-go-sdk)
 ```
 package main
 
@@ -198,7 +198,7 @@ Events Block #51753836:
 		- amount (UFix64): 17.31047712
 ```
 
-Example using [Flow Go SDK](https://developers.flow.com/tools/flow-go-sdk)
+Example using [Flow Go SDK](../../../tooling/flow-go-sdk)
 ```
 package main
 

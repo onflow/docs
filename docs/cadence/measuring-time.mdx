@@ -4,7 +4,7 @@ title: Measuring Time In Cadence
 
 ## Accessing Time From Cadence
 
-Both the [block height and the block timestamp](language/environment-information#block-information) are accessible from within Cadence code.
+Both the [block height and the block timestamp](./language/environment-information#block-information.md) are accessible from within Cadence code.
 
 This means that they can be used to calculate dates and durations by smart contracts on Flow
 that need to lock resources until a particular point in the future, calculate values between a range of dates,
@@ -25,7 +25,7 @@ and further optimizations are needed to achieve that.
 As of Feb 2021, the rate of block finalization on Mainnet is more than 0.5 blocks/s; with a standard deviation of ±0.1 blocks/s.
 Hence, a new block is finalized on average every 2 seconds.
 Note that block height only has a loose correlation with time,
-as [the block rate naturally fluctuates](https://developers.flow.com/flow/faq/operators#does-the-blockheight-go-up-1-every-second).
+as [the block rate naturally fluctuates](../concepts/nodes/faq/operators.mdx#does-the-blockheight-go-up-1-every-second).
 
 In addition to the natural variation described above,
 there are several theoretical block production attacks that could skew this relationship even further.

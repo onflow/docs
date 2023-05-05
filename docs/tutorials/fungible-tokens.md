@@ -323,7 +323,7 @@ While this guide does not cover the technicals of creating your fungible token, 
 
 - [Flow Token List](https://github.com/FlowFans/flow-token-list) - how to add a token to the Flow native token list
 - [Flowscan Request Form](https://docs.google.com/forms/d/e/1FAIpQLSdMiIkj2goF3Ib7wJHRb-YNvruwBghq1NP1IOfz4p2smIFp0w/viewform) | Token Metadata - please fill this out to update your token metadata on Flowscan
-- [Flow Developer Portal](https://developers.flow.com/?utm_source=Flowverse&utm_medium=Website&utm_campaign=Dapp) - documentation, guides, and resources for developers building on Flow
+- [Flow Developer Portal](../../) - documentation, guides, and resources for developers building on Flow
 
 ## Final Words
 

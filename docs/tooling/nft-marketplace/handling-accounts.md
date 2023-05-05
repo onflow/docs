@@ -10,7 +10,7 @@ On many blockchains, decentralized apps offer the Connect Wallet button to let u
 
 Sign-in/up functionality is implemented using [FCL](../fcl-js/). The following documentation provides details on how to implement this functionality on the application frontend:
 
-- [FCL Authentication Functionality](https://developers.flow.com/tools/fcl-js/reference/authentication)
+- [FCL Authentication Functionality](../../tooling/fcl-js/authentication.mdx)
 - [Sign-in/up using FCL with Blocto Wallet](https://docs.blocto.app/blocto-sdk/flow/login-register)
 
 Using FCL, you can get the authenticated account information for your users.
