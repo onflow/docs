@@ -94,7 +94,7 @@ to an optional-typed variable if the variable is nil.
 If the variable being assigned to is non-nil,
 the execution of the program aborts.
 
-The force-assignment operator is only used for [resource types](resources).
+The force-assignment operator is only used for [resource types](./resources.mdx).
 
 ## Swapping Operator (`<->`)
 
