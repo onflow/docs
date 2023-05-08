@@ -28,7 +28,7 @@ The interface that enforces the method to allow anyone to check on the
 available capabilities of a switchboard resource and also exposes the
 deposit methods to deposit funds on it.
 
-[More...](FungibleTokenSwitchboard_SwitchboardPublic.md)
+[More...](./FungibleTokenSwitchboard_SwitchboardPublic.md)
 
 ---
 ## Structs & Resources
@@ -45,7 +45,7 @@ The resource that stores the multiple fungible token receiver
 capabilities, allowing the owner to add and remove them and anyone to
 deposit any fungible token among the available types.
 
-[More...](FungibleTokenSwitchboard_Switchboard.md)
+[More...](./FungibleTokenSwitchboard_Switchboard.md)
 
 ---
 ## Functions

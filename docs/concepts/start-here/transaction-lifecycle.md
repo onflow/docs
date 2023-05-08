@@ -112,7 +112,7 @@ This step rolls back any changes made to the state by the transaction so far.
 
 ### Deduct transaction fees
 
-The last step in transaction execution is to deduct the transaction fees. During this step the relevant fees are deducted from the account identified as the `payer` in the transaction. Flow's flexible transaction structure allows accounts other than the user to pay transaction fees. For more info on [transaction structure](https://github.com/onflow/flow/blob/master/docs/content/concepts/accounts-and-keys.md#anatomy-of-a-transaction) and [transaction signing](https://developers.flow.com/learn/concepts/accounts-and-keys). 
+The last step in transaction execution is to deduct the transaction fees. During this step the relevant fees are deducted from the account identified as the `payer` in the transaction. Flow's flexible transaction structure allows accounts other than the user to pay transaction fees. For more info on [transaction structure](https://github.com/onflow/flow/blob/master/docs/content/concepts/accounts-and-keys.md#anatomy-of-a-transaction) and [transaction signing](./accounts-and-keys.md). 
 
 Transaction fees are calculated as described in [Segmented Transaction Fees](./variable-transaction-fees#segmented-transaction-fees) using the execution effort measured during execution and the inclusion effort of the transaction which was already known.
 

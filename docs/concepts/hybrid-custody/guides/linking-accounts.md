@@ -23,7 +23,7 @@ Before diving in, let's make a distinction between **"account linking"** and **"
 
 ## Account Linking
 
-Very simply, account linking is a [feature in Cadence](https://github.com/onflow/flips/pull/53) that let's an [AuthAccount](https://developers.flow.com/cadence/language/accounts#authaccount) create a [Capability](https://developers.flow.com/cadence/language/capability-based-access-control) on itself. You can do so in the following transaction:
+Very simply, account linking is a [feature in Cadence](https://github.com/onflow/flips/pull/53) that let's an [AuthAccount](../../../cadence/language/accounts.mdx#authaccount) create a [Capability](../../../cadence/language/capability-based-access-control.md) on itself. You can do so in the following transaction:
 
 ```js
 #allowAccountLinking

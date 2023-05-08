@@ -10,7 +10,7 @@ The Flow CLI provides a command to run Cadence tests.
 flow test /path/to/test_script.cdc
 ```
 
-⚠️ The `test` command expects configuration to be initialized. See [flow init](initialize-configuration.md) command.
+⚠️ The `test` command expects configuration to be initialized. See [flow init](./initialize-configuration.md) command.
 
 ## Example Usage
 
@@ -40,7 +40,7 @@ Test results: "test_script.cdc"
 
 ```
 
-To learn more about writing tests in Cadence, have a look at the [Cadence testing framework](https://developers.flow.com/cadence/testing-framework).
+To learn more about writing tests in Cadence, have a look at the [Cadence testing framework](../../cadence/testing-framework.mdx).
 
 ## Flags
 

@@ -21,7 +21,7 @@ Chain analytics, audit and exploration applications can run such an access node 
 New nodes are able to join the network each time a new epoch begins.
 An epoch is a period of time (approximately one week) when the node operators in the network are constant.
 At epoch boundaries, newly staked node operators are able to join the network and existing node operators which have unstaked may exit the network.
-You can read more about epochs [here](https://developers.flow.com/nodes/staking/schedule).
+You can read more about epochs [here](../staking/schedule.mdx).
 
 
 In order to join the network at epoch N+1, the access node **must** be registered with at least 100 FLOW staked prior to the end of epoch N's Staking Auction Phase.
@@ -139,7 +139,7 @@ e737ec6efbd26ef43bf676911cdc5a11ba15fc6562d05413e6589fccdd6c06d5
 
 You need to now register the node on chain by staking the node via [Flow Port](https://port.onflow.org/).
 
-[Here](https://developers.flow.com/nodes/flow-port/staking-guide) is a guide on how to use Flow port if you are not familiar with it.
+[Here](../flow-port/staking-guide.md) is a guide on how to use Flow port if you are not familiar with it.
 If you are staking via a custody provider or would like to directly submit a staking transaction instead follow this [guide](../staking#how-do-i-stake).
 
 Fund you Flow account with at least 100.01 FLOW tokens, which covers the required stake plus the storage deposit.

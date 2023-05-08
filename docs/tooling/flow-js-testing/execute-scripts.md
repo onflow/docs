@@ -33,7 +33,7 @@ Provides explicit control over how you pass values.
 
 | Type                                                                        | Description   |
 | --------------------------------------------------------------------------- | ------------- |
-| [ResponseObject](https://docs.onflow.org/fcl/reference/api/#responseobject) | Script result |
+| [ResponseObject](../fcl-js/api.md#responseobject) | Script result |
 
 #### Usage
 
@@ -85,7 +85,7 @@ Cadence files.
 
 | Type                                                                        | Description   |
 | --------------------------------------------------------------------------- | ------------- |
-| [ResponseObject](https://docs.onflow.org/fcl/reference/api/#responseobject) | Script result |
+| [ResponseObject](../fcl-js/api.md#responseobject) | Script result |
 
 #### Usage
 

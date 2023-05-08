@@ -30,15 +30,15 @@ We recommend maintaining a queuing infrastructure within the dapp’s backend to
 There are some third-party services available that make managing transactions from the dapp backend easier :
 - [Alchemy](https://www.alchemy.com/flow): To get a dedicated Flow blockchain access node, Alchemy provides a managed access node service for the Flow dapp developers.
 Alchemy can allow dapp devs to bypass the rate limits imposed by official Flow access nodes without the operational overhead of running an access node.
-- [Tatum](https://tatum.io/apidoc#tag/Blockchain-Flow): Tatum provides REST APIs to let dapps perform high-level blockchain operations like creating Flow accounts, sending NFTs, or FLOW tokens to an address.
+- [Tatum](https://apidoc.tatum.io/): Tatum provides REST APIs to let dapps perform high-level blockchain operations like creating Flow accounts, sending NFTs, or FLOW tokens to an address.
 In some cases, Tatum will totally obviate the need to use the Flow SDK, or implement your own smart contract.
 - [Wallet-API](https://github.com/flow-hydraulics/flow-wallet-api/): Wallet-API can be a convenient way to manage both the transactions and the keys for your admin accounts in the backend.
 - **Organizing/accessing blockchain data**: Dapps often have their business logic respond to the current and past events and transactions on the Flow blockchain.
 One option is to listen to the events, maintain them, and index them.
 Third-party services like [Graffle](https://graffle.io/) and Tatum also provide REST APIs, and programmatic notifications/webhooks to receive Flow blockchain data such as events and transactions.
 Specifically, Graffle can provide easy access to the past and real-time events on the Flow blockchain.
-These third-party services can insulate your application from the requirement of being aware of [sporks](https://docs.onflow.org/nodes/node-operation/spork/#past-and-upcoming-sporks).
-Otherwise, you will have to add logic in your application to navigate across [past sporks](https://docs.onflow.org/nodes/node-operation/spork/#past-and-upcoming-sporks) when looking up past blockchain data.
+These third-party services can insulate your application from the requirement of being aware of [sporks](../concepts/nodes/node-operation/spork.mdx#past-and-upcoming-sporks).
+Otherwise, you will have to add logic in your application to navigate across [past sporks](../concepts/nodes/node-operation/spork.mdx#past-and-upcoming-sporks) when looking up past blockchain data.
 
 <Callout type="info">
 With any of these payment rails choices, dapp developers should do their own legal/compliance due diligence.
