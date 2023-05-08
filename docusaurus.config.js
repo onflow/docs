@@ -14,7 +14,7 @@ const docCollectionsLocation = './src/data/doc-collections';
 let cachedSources;
 
 const mixpanelOnLoad = `
-if ('${process.env.MIXPANEL_PROJECT_TOKEN}') {
+if ('${process.env.MIXPANEL_PROJECT_TOKEN}' && '${process.env.MIXPANEL_PROJECT_TOKEN}' !== 'undefined') {
   window.mixpanel.init('${process.env.MIXPANEL_PROJECT_TOKEN}');
 
   const viwedPayload = {
@@ -117,34 +117,6 @@ const getSources = () => {
   return cachedSources;
 };
 
-/** @type {import('@docusaurus/plugin-content-docs').MetadataOptions['editUrl']} */
-const editUrl = ({ docPath }) => {
-  const docPathArray = docPath.split('/');
-  const repoName = docPathArray[0];
-  const sources = getSources();
-
-  const sourceRepo = sources.find(({ name }) => name === repoName);
-  if (!sourceRepo) {
-    return;
-  }
-  const { owner, name, branch } = sourceRepo;
-  const sourceDockPath = docPathArray.slice(1).join('/');
-  return `https://github.com/${owner}/${name}/tree/${branch}/docs/${sourceDockPath}`;
-};
-
-const ignoreFiles = () => {
-  const sources = getDataSources();
-  const files =
-    sources?.flatMap((repo) =>
-      repo?.repository?.data.flatMap(
-        (data) =>
-          data?.ignore?.map((ignore) => `${data.destination}/${ignore}`) ?? [],
-      ),
-    ) ?? [];
-  console.log('Ignore these files', files);
-  return files;
-};
-
 /** @type {import('@docusaurus/types').Config} */
 const config = {
   title: 'Flow docs',
@@ -196,7 +168,6 @@ const config = {
           rehypePlugins: [require('rehype-katex')],
           showLastUpdateTime: true,
           showLastUpdateAuthor: true,
-          exclude: ignoreFiles(),
           numberPrefixParser: true,
         },
         blog: false,
@@ -600,6 +571,10 @@ const config = {
       'data-project-name': 'Flow',
       'data-project-color': '#2E8555',
       'data-project-logo': 'https://cryptologos.cc/logos/flow-flow-logo.png',
+      async: true,
+    },
+    {
+      src: '/hotjar.js',
       async: true,
     },
   ],
