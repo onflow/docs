@@ -246,7 +246,6 @@ The access node can be run as a docker container with the following command by r
 docker run --rm \
   -v $PWD/bootstrap:/bootstrap:ro  \
   -v $PWD/data:/data:rw \
-  --rm \
   --name flow-go \
   --network host \
   gcr.io/flow-container-registry/access:v0.29.8 \
@@ -270,7 +269,6 @@ Example, for the Node ID `e737ec6efbd26ef43bf676911cdc5a11ba15fc6562d05413e6589f
 docker run --rm \
   -v $PWD/bootstrap:/bootstrap:ro  \
   -v $PWD/data:/data:rw \
-  --rm \
   --name flow-go \
   --network host \
   gcr.io/flow-container-registry/access:v0.29.8 \
@@ -354,4 +352,3 @@ Result: 118
 ```
 
 Currently, there are 113 access nodes already part of the network. Hence, the total number of new nodes that can join are 118 - 113 = 5.
-
