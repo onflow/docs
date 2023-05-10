@@ -9,7 +9,7 @@ The `&` (ampersand) symbol has several uses.
 
 ### Reference
 
-If an expression starts with the `&` (ampersand) symbol, it creates a [reference](references).
+If an expression starts with the `&` (ampersand) symbol, it creates a [reference](./references.md).
 
 ```cadence
 let a: String = "hello"
@@ -28,7 +28,7 @@ let refOfA: &String = &a as auth &String
 
 ### Logical Operator
 
-It can be also used as a [logical operator (AND)](operators#logical-operators),
+It can be also used as a [logical operator (AND)](./operators.md#logical-operators),
 by appearing twice in succession (i.e. `&&`):
 
 ```cadence
@@ -40,7 +40,7 @@ let c = a && b // false
 
 ## `@` (at)
 
-The `@` (at) symbol before a type is used to annotate whether the type is a [resource](resources).
+The `@` (at) symbol before a type is used to annotate whether the type is a [resource](./resources.mdx).
 
 The `@` symbol must appear at the beginning of the type, not inside.
 For example, an array of `NFT`s is `@[NFT]`, not `[@NFT]`.
@@ -85,7 +85,7 @@ fun addOne(x: Int): Int { // return type of Int
 
 ### Ternary Conditional Operator
 
-The `:` (colon) is also be used in [ternary operations](operators#ternary-conditional-operator) to represent the "otherwise" section,
+The `:` (colon) is also be used in [ternary operations](./operators.md#ternary-conditional-operator) to represent the "otherwise" section,
 such as the following:
 
 ```cadence
@@ -125,7 +125,7 @@ let b: Bool = !a
 // b is false
 ```
 
-When it immediately **succeeds** an *optional* variable, it [force-unwraps](operators#force-unwrap-operator-) it.
+When it immediately **succeeds** an *optional* variable, it [force-unwraps](./operators.md#force-unwrap-operator-) it.
 Force-unwrapping returns the value inside an optional if it contains a value,
 or panics and aborts the execution if the optional has no value, i.e. the optional value is nil.
 
@@ -143,7 +143,7 @@ The `/` (forward slash) symbol has several uses.
 
 ### Division Operator
 
-Inbetween two expressions, the forward slash acts as the [division operator](operators#arithmetic-operators).
+Inbetween two expressions, the forward slash acts as the [division operator](./operators.md#arithmetic-operators).
 
 ```cadence
 let result = 4 / 2
@@ -151,7 +151,7 @@ let result = 4 / 2
 
 ### Path separator
 
-In a [Path](accounts#paths), the forward slash separates the domain (e.g. `storage`, `private`, `public`) and the identifier.
+In a [Path](./accounts.mdx#paths), the forward slash separates the domain (e.g. `storage`, `private`, `public`) and the identifier.
 
 ```cadence
 let storagePath = /storage/path
@@ -160,8 +160,8 @@ storagePath.toString()  // is "/storage/path"
 
 ## `<-` (lower than, hyphen) (Move operator)
 
-The [move operator `<-`](resources#the-move-operator--) is like the assignment operator `=`,
-but must be used when the value is a [resource](resources).
+The [move operator `<-`](./resources.mdx#the-move-operator--) is like the assignment operator `=`,
+but must be used when the value is a [resource](./resources.mdx).
 To make assignment of resources explicit, the move operator `<-` must be used when:
 
 - The resource is the initial value of a constant or variable,
@@ -177,7 +177,7 @@ let a <- create R() // we instantiate a new resource and move it into a
 
 ## `<-!` (lower than, hyphen, exclamation mark) (Force-assignment move operator)
 
-The [force-assignment move operator `<-!`](operators#force-assignment-operator--) moves a resource value to an optional variable.
+The [force-assignment move operator `<-!`](./operators.md#force-assignment-operator--) moves a resource value to an optional variable.
 If the variable is `nil`, the move succeeds.
 If it is not nil, the program aborts.
 
@@ -190,12 +190,12 @@ a <-! create R()
 
 ## `<->` (lower than, hyphen, greater than) (Swap operator)
 
-The [swapping operator `<->`](operators#swapping-operator--) swaps two resource between the variables to the left and right of it.
+The [swapping operator `<->`](./operators.md#swapping-operator--) swaps two resource between the variables to the left and right of it.
 
 
 ## `+` (plus), `-` (minus), `*` (asterisk), `%` (percentage sign)
 
-These are all typical [arithmetic operators](operators#arithmetic-operators):
+These are all typical [arithmetic operators](./operators.md#arithmetic-operators):
 
 - Addition: `+`
 - Subtraction: `-`
@@ -219,7 +219,7 @@ let a: Int? = nil
 
 ### Ternary Conditional Operator
 
-The `?` (question mark) is also be used in [ternary operations](operators#ternary-conditional-operator) to represent the "then" section,
+The `?` (question mark) is also be used in [ternary operations](./operators.md#ternary-conditional-operator) to represent the "then" section,
 such as the following:
 
 ```cadence
@@ -232,7 +232,7 @@ let a = 1 > 2 ? 3 : 4
 
 ### Nil-Coalescing Operator
 
-The `?` (question mark) is also used in the [nil-coalescing operator `??`](operators#nil-coalescing-operator-).
+The `?` (question mark) is also used in the [nil-coalescing operator `??`](./operators.md#nil-coalescing-operator-).
 
 It returns the value inside the optional, if the optional contains a value,
 or returns an alternative value if the optional has no value, i.e., the optional value is nil.
@@ -278,7 +278,7 @@ let b = 100_000_000 // used to split up a number (supports all number types, e.g
 
 ### Argument Labels
 
-The `_` (underscore) can also be to indicate that a parameter in a [function](functions) has no argument label.
+The `_` (underscore) can also be to indicate that a parameter in a [function](./functions.mdx) has no argument label.
 
 ```cadence
 // The special argument label _ is specified for the parameter,
