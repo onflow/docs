@@ -1,5 +1,6 @@
 ---
 title: Contract Updatability
+sidebar_position: 23
 ---
 
 ## Introduction
@@ -378,7 +379,7 @@ it originally was (type confusion).
 
 ## Functions
 
-Adding, changing, and deleting a function definition is always valid, as function definitions are never stored as data 
+Adding, changing, and deleting a function definition is always valid, as function definitions are never stored as data
 (function definitions are part of the code, but not data).
 
 - Adding a function is valid.
@@ -388,7 +389,7 @@ Adding, changing, and deleting a function definition is always valid, as functio
 - Changing the access modifiers is valid.
 
 However, changing a *function type* may or may not be valid, depending on where it is used:
-If a function type is used in the type annotation of a composite type field (direct or indirect), 
+If a function type is used in the type annotation of a composite type field (direct or indirect),
 then changing the function type signature is the same as changing the type annotation of that field (which is invalid).
 
 ## Constructors

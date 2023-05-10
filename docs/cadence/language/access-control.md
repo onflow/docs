@@ -1,5 +1,6 @@
 ---
 title: Access control
+sidebar_position: 13
 ---
 
 Access control allows making certain parts of the program accessible/visible

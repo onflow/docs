@@ -1,5 +1,6 @@
 ---
 title: Built-in Functions
+sidebar_position: 28
 ---
 
 ## panic
@@ -37,16 +38,16 @@ fun unsafeRandom(): UInt64
 
   Returns a pseudo-random number.
 
-  NOTE: 
-  Smart contract developers should be mindful about the limitations of unsafeRandom. 
+  NOTE:
+  Smart contract developers should be mindful about the limitations of unsafeRandom.
   The stream of random numbers produced is potentially unsafe in the following two regards:
 
   1. The sequence of random numbers is potentially predictable by transactions within the same block
   and by other smart contracts calling into your smart contract.
   2. A transaction calling into your smart contract can potentially bias the sequence of random numbers which
-  your smart contract internally generates. 
-  
-  We are working towards removing these limitations incrementally. Once these points are addressed, 
+  your smart contract internally generates.
+
+  We are working towards removing these limitations incrementally. Once these points are addressed,
   Flow’s randomness is safe and we will remove the "unsafe" qualifier.
 
   Nevertheless, there is an additional safety-relevant aspect that developers need to be mindful about:
@@ -78,7 +79,7 @@ Cadence provides RLP decoding functions in the built-in `RLP` contract, which do
     If any error is encountered while decoding, the program aborts.
 
 
- 
+
     ```cadence
     fun decodeList(_ input: [UInt8]): [[UInt8]]`
     ```

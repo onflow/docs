@@ -1,5 +1,6 @@
 ---
 title: Core Events
+sidebar_position: 25
 ---
 
 Core events are events emitted directly from the FVM (Flow Virtual Machine).
@@ -129,7 +130,7 @@ Event that is emitted when a Capability is published from an account.
 Event name: `flow.InboxValuePublished`
 
 ```cadence
-pub event InboxValuePublished(provider: Address, recipient: Address, name: String, type: Type) 
+pub event InboxValuePublished(provider: Address, recipient: Address, name: String, type: Type)
 ```
 
 | Field             | Type      | Description                                  |
@@ -139,13 +140,13 @@ pub event InboxValuePublished(provider: Address, recipient: Address, name: Strin
 | `name`            | `String`  | The name associated with the published value |
 | `type`            | `Type`    | The type of the published value              |
 
-To reduce the potential for spam, 
-we recommend that user agents that display events do not display this event as-is to their users, 
-and allow users to restrict whom they see events from. 
+To reduce the potential for spam,
+we recommend that user agents that display events do not display this event as-is to their users,
+and allow users to restrict whom they see events from.
 
 ### Inbox Value Unpublished
 
-Event that is emitted when a Capability is unpublished from an account. 
+Event that is emitted when a Capability is unpublished from an account.
 
 Event name: `flow.InboxValueUnpublished`
 
@@ -158,13 +159,13 @@ pub event InboxValueUnpublished(provider: Address, name: String)
 | `provider`      | `Address` | The address of the publishing account        |
 | `name`          | `String`  | The name associated with the published value |
 
-To reduce the potential for spam, 
-we recommend that user agents that display events do not display this event as-is to their users, 
-and allow users to restrict whom they see events from. 
+To reduce the potential for spam,
+we recommend that user agents that display events do not display this event as-is to their users,
+and allow users to restrict whom they see events from.
 
 ### Inbox Value Claimed
 
-Event that is emitted when a Capability is claimed by an account. 
+Event that is emitted when a Capability is claimed by an account.
 
 Event name: `flow.InboxValueClaimed`
 
@@ -178,6 +179,6 @@ pub event InboxValueClaimed(provider: Address, recipient: Address, name: String)
 | `recipient`     | `Address` | The address of the claiming recipient        |
 | `name`          | `String`  | The name associated with the published value |
 
-To reduce the potential for spam, 
-we recommend that user agents that display events do not display this event as-is to their users, 
-and allow users to restrict whom they see events from. 
+To reduce the potential for spam,
+we recommend that user agents that display events do not display this event as-is to their users,
+and allow users to restrict whom they see events from.

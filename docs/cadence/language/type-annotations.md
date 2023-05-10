@@ -1,5 +1,6 @@
 ---
 title: Type Annotations
+sidebar_position: 3
 ---
 
 When declaring a constant or variable,

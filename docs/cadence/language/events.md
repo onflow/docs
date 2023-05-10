@@ -1,5 +1,6 @@
 ---
 title: Events
+sidebar_position: 24
 ---
 
 Events are special values that can be emitted during the execution of a program.
