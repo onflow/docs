@@ -49,7 +49,7 @@ but reading the rest is necessary to understand the language's design.
 
 ## Storing Multiple NFTs in a Collection
 
-In the [last tutorial](05-non-fungible-tokens-1),
+In the [last tutorial](./05-non-fungible-tokens-1.mdx),
 we created a simple `NFT` resource, stored in at a storage path,
 then used a multi-sig transaction to transfer it from one account to another.
 
@@ -123,14 +123,14 @@ It contains what was already in `BasicNFT.cdc` plus additional resource declarat
 
 </Callout>
 
-```cadence:title=ExampleNFT.cdc
+```cadence ExampleNFT.cdc
 // ExampleNFT.cdc
 //
 // This is a complete version of the ExampleNFT contract
 // that includes withdraw and deposit functionalities, as well as a
 // collection resource that can be used to bundle NFTs together.
 //
-// Learn more about non-fungible tokens in this tutorial: https://docs.onflow.org/docs/non-fungible-tokens
+// Learn more about non-fungible tokens in this tutorial: https://developers.flow.com/cadence/tutorial/non-fungible-tokens-1
 
 pub contract ExampleNFT {
 
@@ -447,7 +447,7 @@ For the purpose of learning, we are simply implementing minting as a public func
 Most would implement this by having an NFT Minter resource. This would restrict minting,
 because the owner of this resource is the only one that can mint tokens.
 
-You can see an example of this in the [Marketplace tutorial](08-marketplace-compose).
+You can see an example of this in the [Marketplace tutorial](./08-marketplace-compose.mdx).
 
 <Callout type="info">
 
@@ -457,7 +457,7 @@ This transaction deposits the minted NFT into the account owner's NFT collection
 
 </Callout>
 
-```cadence:title=Mint NFT.cdc
+```cadence MintNFT.cdc
 import ExampleNFT from 0x01
 
 // This transaction allows the Minter account to mint an NFT
@@ -494,7 +494,7 @@ This prints a list of the NFTs that account `0x01` owns.
 
 </Callout>
 
-```cadence:title=Print 0x01 NFTs.cdc
+```cadence Print0x01NFTs.cdc
 import ExampleNFT from 0x01
 
 // Print the NFTs owned by account 0x01.
@@ -534,7 +534,7 @@ Open the file named `Setup Account` and submit the transaction, using account `0
 
 </Callout>
 
-```cadence:title=Setup Account.cdc
+```cadence SetupAccount.cdc
 import ExampleNFT from 0x01
 
 // This transaction configures a user's account
@@ -569,7 +569,7 @@ This transaction transfers a token from account `0x01` to account `0x02`.
 
 </Callout>
 
-```cadence:title=Transfer.cdc
+```cadence Transfer.cdc
 import ExampleNFT from 0x01
 
 // This transaction transfers an NFT from one user's collection
@@ -617,7 +617,7 @@ Execute the script `Print all NFTs` to see the tokens in each account:
 
 </Callout>
 
-```cadence:title=Script2.cdc
+```cadence Script2.cdc
 import ExampleNFT from 0x01
 
 // Print the NFTs owned by accounts 0x01 and 0x02.
@@ -658,7 +658,7 @@ You should see something like this in the output:
 Account `0x02` has one NFT with ID=1 and account `0x01` has none.
 This shows that the NFT was transferred from account `0x01` to account `0x02`.
 
-<Img src="https://storage.googleapis.com/flow-resources/documentation-assets/cadence-tuts/accounts-nft-storage.png" />
+<img src="https://storage.googleapis.com/flow-resources/documentation-assets/cadence-tuts/accounts-nft-storage.png" />
 
 Congratulations, you now have a working NFT!
 

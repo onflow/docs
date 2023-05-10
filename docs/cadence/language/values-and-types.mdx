@@ -101,7 +101,7 @@ and can represent values in the following ranges:
 
 The types are independent types, i.e. not subtypes of each other.
 
-See the section about [arithmetic operators](operators#arithmetic-operators) for further
+See the section about [arithmetic operators](./operators.md#arithmetic-operators) for further
 information about the behavior of the different integer types.
 
 ```cadence
@@ -121,7 +121,7 @@ In addition, the arbitrary precision integer type `Int` is provided.
 let veryLargeNumber: Int = 10000000000000000000000000000000
 ```
 
-Integer literals are [inferred](type-inference) to have type `Int`,
+Integer literals are [inferred](./type-inference.md) to have type `Int`,
 or if the literal occurs in a position that expects an explicit type,
 e.g. in a variable declaration with an explicit type annotation.
 
@@ -405,7 +405,7 @@ let aNumber = 0x436164656E636521
 // `aNumber` has type `Int`
 ```
 
-Address can also be created using a byte array or string.
+Address can also be created using a byte array.
 
 ```cadence
 // Declare an address with hex representation as 0x436164656E636521.
@@ -413,18 +413,6 @@ let someAddress: Address = Address.fromBytes([67, 97, 100, 101, 110, 99, 101, 33
 
 // Invalid: Provided value is not compatible with type `Address`. The function panics.
 let invalidAddress: Address = Address.fromBytes([12, 34, 56, 11, 22, 33, 44, 55, 66, 77, 88, 99, 111])
-
-// Declare an address with the string representation as "0x436164656E636521".
-let addressFromString: Address? = Address.fromString("0x436164656E636521")
-
-// Invalid: Provided value does not have the "0x" prefix. Returns Nil
-let addressFromStringWithoutPrefix: Address? = Address.fromString("436164656E636521")
-
-// Invalid: Provided value is an invalid hex string. Return Nil.
-let invalidAddressForInvalidHex: Address? = Address.fromString("0xZZZ")
-
-// Invalid: Provided value is larger than 64 bits. Return Nil.
-let invalidAddressForOverflow: Address? = Address.fromString("0x436164656E63652146757265766572")
 ```
 
 ### Address Functions
@@ -552,7 +540,7 @@ let maybeInt: Int? = 1
 let anything: AnyStruct = maybeInt
 ```
 
-[Conditional downcasting](operators#conditional-downcasting-operator-as) allows coercing
+[Conditional downcasting](./operators.md#conditional-downcasting-operator-as) allows coercing
 a value which has the type `AnyStruct` or `AnyResource` back to its original type.
 
 ## Optionals
@@ -627,7 +615,7 @@ let xs: [Int?] = [1, nil, 2, nil]
 let doubleOptional: Int?? = nil
 ```
 
-See the [optional operators](operators#optional-operators) section for information
+See the [optional operators](./operators.md#optional-operators) section for information
 on how to work with optionals.
 
 ## Never
@@ -635,7 +623,7 @@ on how to work with optionals.
 `Never` is the bottom type, i.e., it is a subtype of all types.
 There is no value that has type `Never`.
 `Never` can be used as the return type for functions that never return normally.
-For example, it is the return type of the function [`panic`](built-in-functions#panic).
+For example, it is the return type of the function [`panic`](./built-in-functions.mdx#panic).
 
 ```cadence
 // Declare a function named `crashAndBurn` which will never return,
@@ -1162,7 +1150,7 @@ It is invalid to use one of these functions on a fixed-sized array.
 
     The new element must be the same type as all the other elements in the array.
 
-    This function [mutates](access-control) the array.
+    This function [mutates](./access-control.md) the array.
 
     ```cadence
     // Declare an array of integers.
@@ -1186,7 +1174,7 @@ It is invalid to use one of these functions on a fixed-sized array.
 
     Both arrays must be the same type `T`.
 
-    This function [mutates](access-control) the array.
+    This function [mutates](./access-control.md) the array.
 
     ```cadence
     // Declare an array of integers.
@@ -1218,7 +1206,7 @@ It is invalid to use one of these functions on a fixed-sized array.
     All the elements after the new inserted element
     are shifted to the right by one.
 
-    This function [mutates](access-control) the array.
+    This function [mutates](./access-control.md) the array.
 
     ```cadence
     // Declare an array of integers.
@@ -1241,7 +1229,7 @@ It is invalid to use one of these functions on a fixed-sized array.
     The `index` must be within the bounds of the array.
     If the index is outside the bounds, the program aborts.
 
-    This function [mutates](access-control) the array.
+    This function [mutates](./access-control.md) the array.
 
     ```cadence
     // Declare an array of integers.
@@ -1266,7 +1254,7 @@ It is invalid to use one of these functions on a fixed-sized array.
     The array must not be empty.
     If the array is empty, the program aborts.
 
-    This function [mutates](access-control) the array.
+    This function [mutates](./access-control.md) the array.
 
     ```cadence
     // Declare an array of integers.
@@ -1296,7 +1284,7 @@ It is invalid to use one of these functions on a fixed-sized array.
     The array must not be empty.
     If the array is empty, the program aborts.
 
-    This function [mutates](access-control) the array.
+    This function [mutates](./access-control.md) the array.
 
     ```cadence
     // Declare an array of integers.
@@ -1483,7 +1471,7 @@ booleans[0] = true
 
     Updates the value if the dictionary already contained the key.
 
-    This function [mutates](access-control) the dictionary.
+    This function [mutates](./access-control.md) the dictionary.
 
     ```cadence
     // Declare a dictionary mapping strings to integers.
@@ -1510,7 +1498,7 @@ booleans[0] = true
     if the dictionary contained the key,
     otherwise `nil`.
 
-    This function [mutates](access-control) the dictionary.
+    This function [mutates](./access-control.md) the dictionary.
 
     ```cadence
     // Declare a dictionary mapping strings to integers.

@@ -36,8 +36,8 @@ We'll take you through these steps to get comfortable with the Voting contract.
 4. Record and cast your vote in the central Voting contract
 5. Read the results of the vote
 
-Before proceeding with this tutorial, we highly recommend following the instructions in [Getting Started](01-first-steps)
-and [Hello, World!](02-hello-world) to learn how to use the Playground tools and to learn the fundamentals of Cadence.
+Before proceeding with this tutorial, we highly recommend following the instructions in [Getting Started](./01-first-steps.mdx)
+and [Hello, World!](./02-hello-world.mdx) to learn how to use the Playground tools and to learn the fundamentals of Cadence.
 
 ## A Voting Contract in Cadence
 
@@ -58,7 +58,7 @@ Click the Deploy button to deploy it to account `0x01`"
 
 </Callout>
 
-```cadence:title=ApprovalVoting.cdc
+```cadence ApprovalVoting.cdc
 /*
 *
 *   In this example, we want to create a simple approval voting contract
@@ -246,7 +246,7 @@ Submit the transaction with account `0x01` selected as the only signer.
 
 </Callout>
 
-```cadence:title=Transaction1.cdc
+```cadence Transaction1.cdc
 import ApprovalVoting from 0x01
 
 // This transaction allows the administrator of the Voting contract
@@ -299,7 +299,7 @@ Submit the transaction by clicking the `Send` button
 
 </Callout>
 
-```cadence:title=Transaction2.cdc
+```cadence Transaction2.cdc
 
 import ApprovalVoting from 0x01
 
@@ -343,7 +343,7 @@ Click the `send` button to submit the transaction.
 
 </Callout>
 
-```cadence:title=Transaction3.cdc
+```cadence Transaction3.cdc
 import ApprovalVoting from 0x01
 
 // This transaction allows a voter to select the votes they would like to make
@@ -380,7 +380,7 @@ Click the `execute` button to run the script.
 
 </Callout>
 
-```cadence:title=Script1.cdc
+```cadence Script1.cdc
 import ApprovalVoting from 0x01
 
 // This script allows anyone to read the tallied votes for each proposal

@@ -88,7 +88,7 @@ Open the Account `0x01` tab with file named `HelloWorldResource.cdc`. <br />
 
 </Callout>
 
-```cadence:title=HelloWorldResource.cdc
+```cadence HelloWorldResource.cdc
 pub contract HelloWorld {
 
     // Declare a resource that only includes one function.
@@ -236,7 +236,7 @@ Open the transaction named `Create Hello`.
 
 </Callout>
 
-```cadence:title=CreateHello.cdc
+```cadence CreateHello.cdc
 // Transaction1.cdc
 // This transaction calls the createHelloAsset() function from the contract
 // to create a resource, then saves the resource in account storage using the "save" method.
@@ -368,7 +368,7 @@ Open the transaction named `Load Hello`.
 
 </Callout>
 
-```cadence:title=LoadHello.cdc
+```cadence LoadHello.cdc
 import HelloWorld from 0x01
 
 // This transaction calls the "hello" method on the HelloAsset object
