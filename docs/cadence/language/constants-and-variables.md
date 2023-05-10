@@ -1,5 +1,6 @@
 ---
 title: Constants and Variable Declarations
+sidebar_position: 2
 ---
 
 Constants and variables are declarations that bind

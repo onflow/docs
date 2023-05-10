@@ -1,5 +1,6 @@
 ---
 title: Enumerations
+sidebar_position: 15
 ---
 
 Enumerations are sets of symbolic names bound to unique, constant values,

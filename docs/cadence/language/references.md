@@ -1,5 +1,6 @@
 ---
 title: References
+sidebar_position: 17
 ---
 
 It is possible to create references to objects, i.e. resources or structures.

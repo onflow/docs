@@ -1,5 +1,6 @@
 ---
 title: Restricted Types
+sidebar_position: 16
 ---
 
 Structure and resource types can be **restricted**. Restrictions are interfaces.
