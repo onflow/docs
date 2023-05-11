@@ -18,12 +18,6 @@ In this tutorial, we're going to walk through how resources can own other resour
   The tutorial will be asking you do take various actions to interact with this code.
 </Callout>
 
-<Callout type="info">
-Instructions that require you to take action are always included in a callout box like this one.
-These highlighted actions are all that you need to do to get your code running,
-but reading the rest is necessary to understand the language's design.
-</Callout>
-
 Resources owning other resources is a powerful feature in the world of blockchain and smart contracts.
 To showcase how this feature works on Flow, this tutorial will take you through these steps with a composable NFT:
 
@@ -64,11 +58,13 @@ Even though the original contract didn't include specific support for CryptoKitt
 
 Here is a basic example of how we can replicate this feature in Cadence:
 
-<Callout type="info">
+1. Open Contract 1, the `KittyVerse.cdc` contract
+1. In the bottom right deployment modal, press the arrow to expand and make sure account `0x01` is selected as the signer.
+1. Click the Deploy button to deploy the contract to account `0x01`
 
-Open the account `0x01` tab which has the contract named `KittyVerse.cdc`. Deploy the code to account `0x01`
+![Deploy KittyVerse to account 0x01](deploy_kittyverse.png)
 
-</Callout>
+The deployed contract should have the following contents:
 
 ```cadence KittyVerse.cdc
 // KittyVerse.cdc
@@ -169,14 +165,11 @@ A Kitty owner can take the hats off the Kitty and transfer them individually. Or
 
 Here is a transaction to create a `Kitty` and a `KittyHat`, store the hat in the Kitty, then store it in your account storage.
 
-<Callout type="info">
+1. Open `Transaction1.cdc`.
+1. Select account `0x01` as the only signer.
+1. Send the transaction by clicking the Send button.
 
-Open `Transaction1.cdc`. <br/>
-Select account `0x01` as the only signer<br/>
-Send the transaction by clicking the Send button. <br/>
-`Transaction1.cdc` should contain the following code:
-
-</Callout>
+The transaction you sent just executed the following code:
 
 ```cadence Transaction1.cdc
 import KittyVerse from 0x01
@@ -219,14 +212,11 @@ You should see an output that looks something like this:
 
 Now we can run a transaction to move the Kitty along with its hat, remove the cowboy hat from the Kitty, then make the Kitty tip its hat.
 
-<Callout type="info">
+1. Open `Transaction2.cdc`.
+1. Select account `0x01` as the only signer.
+1. Send the transaction.
 
-Open `Transaction2.cdc`<br/>
-Select account `0x01` as the only signer.<br/>
-Send the transaction.<br/>
-Transaction2.cdc` should contain the following code:
-
-</Callout>
+In this transaction, we executed the following code:
 
 ```cadence Transaction2.cdc
 import KittyVerse from 0x01
