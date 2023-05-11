@@ -24,4 +24,5 @@ yarn-error.log*
 /temp
 /src/data/doc-collections
 /docs/unsorted
+.idea/
 
