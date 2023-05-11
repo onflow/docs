@@ -82,8 +82,8 @@ We're going to take you through these steps to get comfortable with the fungible
 5. Transfer tokens from one account to another.
 6. Use a script to read the accounts' balances.
 
-**Before proceeding with this tutorial**, we recommend following the instructions in [Getting Started](./01-first-steps.mdx)
-and [Hello, World!](./02-hello-world.mdx) to learn the basics of the language and the playground.
+**Before proceeding with this tutorial**, we recommend following the instructions in [Getting Started](01-first-steps)
+and [Hello, World!](02-hello-world) to learn the basics of the language and the playground.
 
 # Fungible Tokens on the Flow Emulator
 
@@ -136,7 +136,7 @@ Instead of using a central ledger system, Flow ties ownership to each account vi
 The example below showcases how Solidity (the smart contract language for the Ethereum Blockchain, among others)
 implements fungible tokens, with only the code for storage and transferring tokens shown for brevity.
 
-```solidity ERC20.sol
+```solidity:title=ERC20.sol
 contract ERC20 {
     // Maps user addresses to balances, similar to a dictionary in Cadence
     mapping (address => uint256) private _balances;
@@ -191,7 +191,7 @@ Below is an example of a resource for a fungible token vault. Every user who own
 It is important to remember that each account stores only a copy of the `Vault` resource, and not a copy of the entire `ExampleToken` contract.
 The `ExampleToken` contract only needs to be stored in the initial account that manages the token definitions.
 
-```cadence Token.cdc
+```cadence:title=Token.cdc
 pub resource Vault: Provider, Receiver {
 
     // Balance of a user's Vault
@@ -292,7 +292,7 @@ If an address doesn’t have the correct resource type imported, the transaction
 
 **Important note: This protection is not in place for the Flow network currency,**
 **because every Flow account is initialized with a default Flow Token Vault**
-**in order to pay for [storage fees and transaction fees](../../concepts//flow-token/concepts.md#fees).**
+**in order to pay for [storage fees and transaction fees](https://developers.flow.com/flow-token/concepts#fees).**
 
 ### Function Parameters
 
@@ -415,10 +415,10 @@ Click the `Deploy` button at the top right of the editor to deploy the code.
 
 </Callout>
 
-<img src="https://storage.googleapis.com/flow-resources/documentation-assets/cadence-tuts/playground-deploy.png" />
+![Deploy BasicToken on 0x01](deploy_basic_token.png)
 
 This deployment stores the contract for the basic fungible token
-in your active account (account `0x01`) so that it can be imported into transactions.
+in the selected account (account `0x01`) so that it can be imported into transactions.
 
 A contract's `init` function runs at contract creation, and never again afterwards.
 In our example, this function stores an instance of the `Vault` object with an initial balance of 30.
@@ -464,7 +464,7 @@ Open the transaction named `Basic Transfer`. <br/>
 
 </Callout>
 
-```cadence BasicTransfer.cdc
+```cadence:title=Basic Transfer.cdc
 // Basic Transfer
 
 import BasicToken from 0x01
@@ -519,7 +519,7 @@ Capabilities allow us to accomplish this safely.
 
 ---
 
-Another important feature in Cadence is its utilization of [**Capability Security.**](../language/capability-based-access-control)
+Another important feature in Cadence is its utilization of [**Capability-Based Security.**](../language/capability-based-access-control)
 This feature ensures that while the withdraw function is declared public on the resource,
 no one except the intended user and those they approve of can withdraw tokens from their vault.
 
@@ -550,7 +550,7 @@ They can be stored on-chain in an immutable fashion so that certain pieces of co
 
 Here is an example of how interfaces for the `Vault` resource we defined above would look.
 
-```cadence Interfaces.cdc
+```cadence:title=Interfaces.cdc
 // Interface that enforces the requirements for withdrawing
 // tokens from the implementing type
 //
@@ -686,6 +686,15 @@ the `deposit` function will be there since it is in the `ExampleToken.Receiver` 
 
 Let's create capabilities to your `Vault` so that a separate account can send tokens to you.
 
+Before we submit a transaction interacting with ExampleToken resources, we'll need to deploy the contract to account `0x02`:
+1. Select Contract 2 in the playground sidebar (the ExampleToken contract)
+1. Make sure that signer `0x02` is selected as the deploying address
+1. Click "Deploy"
+
+![Deploy ExampleToken to 0x02](deploy_example_token.png)
+
+Now we can continue on to configure Capabilities on the ExampleToken Vault.
+
 <Callout type="info">
 
 Open the transaction named `Create Link`. <br/>
@@ -693,7 +702,7 @@ Open the transaction named `Create Link`. <br/>
 
 </Callout>
 
-```cadence CreateLink.cdc
+```cadence:title=Create Link.cdc
 // Create Link
 
 import ExampleToken from 0x02
@@ -773,13 +782,11 @@ The `post` phase is for ensuring that certain conditions are met after the trans
 Here, we are getting the capability from its public path and calling its `check` function to ensure
 that the capability contains a valid link to a valid object in storage that is the specified type.
 
-<Callout type="info">
+Now that we understand the transaction, time to submit it:
 
-Select account `0x02` as the only signer. <br/>
-Click the `Send` button to submit the transaction. <br/>
-This transaction creates a new public reference to your `Vault` and checks that it was created correctly.
-
-</Callout>
+1. Select account `0x02` as the only signer.
+1. Click the `Send` button to submit the transaction.
+1. This transaction creates a new public reference to your `Vault` and checks that it was created correctly.
 
 ## Transfer Tokens to Another User
 
@@ -796,15 +803,11 @@ This way, Cadence protects the user if they accidentally enter the account addre
 
 Account `0x03` has not been set up to receive tokens, so we will do that now:
 
-<Callout type="info">
+1. Open the transaction `Setup Account`.
+1. Select account `0x03` as the only signer.
+1. Click the `Send` button to set up account `0x03` so that it can receive tokens.
 
-Open the transaction `Setup Account`.<br/>
-Select account `0x03` as the only signer. <br/>
-Click the `Send` button to set up account `0x03` so that it can receive tokens.
-
-</Callout>
-
-```cadence SetupAccount.cdc
+```cadence:title=Setup Account.cdc
 // Setup Account
 
 import ExampleToken from 0x02
@@ -868,7 +871,7 @@ Select only account `0x02` as a signer and send `Mint Tokens` to mint 30 tokens 
 
 </Callout>
 
-```cadence MintTokens.cdc
+```cadence:title=Mint Tokens.cdc
 // Mint Tokens
 
 import ExampleToken from 0x02
@@ -939,7 +942,7 @@ In the execute phase, we simply use the reference to mint 30 tokens and deposit 
 Now, both account `0x02` and account `0x03` should have a `Vault` object in their storage that has a balance of 30 tokens.
 They both should also have a `Receiver` capability stored in their `/public/` domains that links to their stored `Vault`.
 
-<img src="https://storage.googleapis.com/flow-resources/documentation-assets/cadence-tuts/account-balances.png" />
+<Img src="https://storage.googleapis.com/flow-resources/documentation-assets/cadence-tuts/account-balances.png" />
 
 An account cannot receive any token type unless it is specifically configured to accept those tokens.
 As a result, it is difficult to send tokens to the wrong address accidentally.
@@ -958,7 +961,7 @@ Open the script named `Get Balances` in the scripts pane.<br/>
 
 </Callout>
 
-```cadence Script1.cdc
+```cadence:title=Script1.cdc
 // Get Balances
 
 import FungibleToken from 0x02
@@ -1023,7 +1026,7 @@ Select account `0x03` as a signer and send the transaction. <br/>
 
 </Callout>
 
-```cadence TransferTokens.cdc
+```cadence:title=Transfer Tokens.cdc
 // Transfer Tokens
 
 import ExampleToken from 0x02
