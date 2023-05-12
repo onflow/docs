@@ -1,5 +1,6 @@
 ---
 title: The Cadence Programming Language
+sidebar_label: Language Reference
 ---
 
 ## Introduction

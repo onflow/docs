@@ -21,7 +21,7 @@ Resolves name alias to a Flow address (`0x` prefixed) under the following condit
 
 | Type                                                          | Description                              |
 | ------------------------------------------------------------- | ---------------------------------------- |
-| [Address](https://docs.onflow.org/fcl/reference/api/#address) | `0x` prefixed address of aliased account |
+| [Address](../fcl-js/api.md#address) | `0x` prefixed address of aliased account |
 
 #### Usage
 
@@ -55,7 +55,7 @@ _Pass in the following as a single object with the following keys._
 
 | Type                                                          | Description                              |
 | ------------------------------------------------------------- | ---------------------------------------- |
-| [Address](https://docs.onflow.org/fcl/reference/api/#address) | `0x` prefixed address of created account |
+| [Address](../fcl-js/api.md#address) | `0x` prefixed address of created account |
 
 ## Contracts
 
@@ -70,7 +70,7 @@ Props object accepts the following fields:
 | Name           | Type                                                          | Optional | Description                                                                                                                                     |
 | -------------- | ------------------------------------------------------------- | -------- | ----------------------------------------------------------------------------------------------------------------------------------------------- |
 | `name`         | string                                                        |          | name of the file in `contracts` folder (with `.cdc` extension) and name of the contract (please note those should be the same)                  |
-| `to`           | [Address](https://docs.onflow.org/fcl/reference/api/#address) | ✅       | (optional) account address, where contract will be deployed. If this is not specified, framework will create new account with randomized alias. |
+| `to`           | [Address](../fcl-js/api.md#address) | ✅       | (optional) account address, where contract will be deployed. If this is not specified, framework will create new account with randomized alias. |
 | `addressMap`   | [AddressMap](./api.md#addressmap)                             | ✅       | (optional) object to use for address mapping of existing deployed contracts                                                                     |
 | `args`         | [Any]                                                         | ✅       | (optional) arguments, which will be passed to contract initializer. (optional) if template does not expect any arguments.                       |
 | `update`       | boolean                                                       | ✅       | (optional) whether to update deployed contract. Default: `false`                                                                                |
@@ -80,7 +80,7 @@ Props object accepts the following fields:
 
 | Type                                                                        | Description                          |
 | --------------------------------------------------------------------------- | ------------------------------------ |
-| [ResponseObject](https://docs.onflow.org/fcl/reference/api/#responseobject) | Result of the deploying transaction. |
+| [ResponseObject](../fcl-js/api.md#responseobject) | Result of the deploying transaction. |
 
 #### Usage
 
@@ -129,7 +129,7 @@ Props object accepts the following fields:
 | -------------- | ------------------------------------------------------------- | -------- | ------------------------------------------------------------------------------------------------------------------------------------ |
 | `contractCode` | string                                                        |          | string representation of contract                                                                                                    |
 | `name`         | string                                                        |          | name of the contract to be deployed. Should be the same as the name of the contract provided in `contractCode`                       |
-| `to`           | [Address](https://docs.onflow.org/fcl/reference/api/#address) | ✅       | account address, where contract will be deployed. If this is not specified, framework will create new account with randomized alias. |
+| `to`           | [Address](../fcl-js/api.md#address) | ✅       | account address, where contract will be deployed. If this is not specified, framework will create new account with randomized alias. |
 | `addressMap`   | [AddressMap](./api.md#addressmap)                             | ✅       | object to use for import resolver. Default: `{}`                                                                                     |
 | `args`         | [Any]                                                         | ✅       | arguments, which will be passed to contract initializer. Default: `[]`                                                               |
 | `update`       | boolean                                                       | ✅       | whether to update deployed contract. Default: `false`                                                                                |
@@ -139,7 +139,7 @@ Props object accepts the following fields:
 
 | Type                                                                        | Description                          |
 | --------------------------------------------------------------------------- | ------------------------------------ |
-| [ResponseObject](https://docs.onflow.org/fcl/reference/api/#responseobject) | Result of the deploying transaction. |
+| [ResponseObject](../fcl-js/api.md#responseobject) | Result of the deploying transaction. |
 
 #### Usage
 
@@ -205,7 +205,7 @@ Returns address of the account where the contract is currently deployed.
 
 | Type                                                          | Description           |
 | ------------------------------------------------------------- | --------------------- |
-| [Address](https://docs.onflow.org/fcl/reference/api/#address) | `0x` prefixed address |
+| [Address](../fcl-js/api.md#address) | `0x` prefixed address |
 
 #### Usage
 
@@ -275,8 +275,8 @@ The `signUserMessage` method will produce a user signature of some arbitrary dat
 | Name        | Type                                                                                                     | Optional | Description                                                                                                                                                                                                                              |
 | ----------- | -------------------------------------------------------------------------------------------------------- | -------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | `msgHex`    | string or Buffer                                                                                         |          | a hex-encoded string or Buffer which will be used to generate the signature                                                                                                                                                              |
-| `signer`    | [Address](https://docs.onflow.org/fcl/reference/api/#address) or [SignerInfo](./api.md#signerinfoobject) | ✅       | [Address](https://docs.onflow.org/fcl/reference/api/#address) or [SignerInfo](./api.md#signerinfoobject) object representing user to generate this signature for (default: [universal private key](./accounts.md#universal-private-key)) |
-| `domainTag` | string                                                                                                   | ✅       | Domain separation tag provided as a utf-8 encoded string (default: no domain separation tag). See more about [domain tags here](https://docs.onflow.org/cadence/language/crypto/#hashing-with-a-domain-tag).                             |
+| `signer`    | [Address](../fcl-js/api.md#address) or [SignerInfo](./api.md#signerinfoobject) | ✅       | [Address](../fcl-js/api.md#address) or [SignerInfo](./api.md#signerinfoobject) object representing user to generate this signature for (default: [universal private key](./accounts.md#universal-private-key)) |
+| `domainTag` | string                                                                                                   | ✅       | Domain separation tag provided as a utf-8 encoded string (default: no domain separation tag). See more about [domain tags here](../../cadence/language/crypto.mdx#hashing-with-a-domain-tag).                             |
 
 #### Returns
 
@@ -305,7 +305,7 @@ Used to verify signatures generated by [`signUserMessage`](./api.md#signusermess
 | ------------ | --------------------------------------------- | -------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
 | `msgHex`     | string                                        |          | the message which the provided signatures correspond to provided as a hex-encoded string or Buffer                                                                                                           |
 | `signatures` | [[SignatureObject](./api.md#signatureobject)] |          | An array of [SignatureObjects](./api.md#signatureobject) which will be verified against this message                                                                                                         |
-| `domainTag`  | string                                        | ✅       | Domain separation tag provided as a utf-8 encoded string (default: no domain separation tag). See more about [domain tags here](https://docs.onflow.org/cadence/language/crypto/#hashing-with-a-domain-tag). |
+| `domainTag`  | string                                        | ✅       | Domain separation tag provided as a utf-8 encoded string (default: no domain separation tag). See more about [domain tags here](../../cadence/language/crypto.mdx#hashing-with-a-domain-tag). |
 
 #### Returns
 
@@ -482,7 +482,7 @@ Fetch current FlowToken balance of account specified by address
 
 | Name      | Type                                                          | Description                     |
 | --------- | ------------------------------------------------------------- | ------------------------------- |
-| `address` | [Address](https://docs.onflow.org/fcl/reference/api/#address) | address of the account to check |
+| `address` | [Address](../fcl-js/api.md#address) | address of the account to check |
 
 #### Returns
 
@@ -527,14 +527,14 @@ Sends transaction to mint specified amount of FLOW token and send it to recipien
 
 | Name        | Type                                                          | Description                                                |
 | ----------- | ------------------------------------------------------------- | ---------------------------------------------------------- |
-| `recipient` | [Address](https://docs.onflow.org/fcl/reference/api/#address) | address of the account to check                            |
+| `recipient` | [Address](../fcl-js/api.md#address) | address of the account to check                            |
 | `amount`    | string                                                        | UFix64 amount of FLOW tokens to mint and send to recipient |
 
 #### Returns
 
 | Type                                                                        | Description        |
 | --------------------------------------------------------------------------- | ------------------ |
-| [ResponseObject](https://docs.onflow.org/fcl/reference/api/#responseobject) | Transaction result |
+| [ResponseObject](../fcl-js/api.md#responseobject) | Transaction result |
 
 #### Usage
 
@@ -811,7 +811,7 @@ Ensure transaction does not throw and sealed.
 
 | Type                                                                        | Description        |
 | --------------------------------------------------------------------------- | ------------------ |
-| [ResponseObject](https://docs.onflow.org/fcl/reference/api/#responseobject) | Transaction result |
+| [ResponseObject](../fcl-js/api.md#responseobject) | Transaction result |
 
 #### Usage
 
@@ -883,7 +883,7 @@ Returns Promise, which contains result, when resolved.
 
 | Type                                                                        | Description        |
 | --------------------------------------------------------------------------- | ------------------ |
-| [ResponseObject](https://docs.onflow.org/fcl/reference/api/#responseobject) | Transaction result |
+| [ResponseObject](../fcl-js/api.md#responseobject) | Transaction result |
 
 #### Usage
 
@@ -1038,7 +1038,7 @@ Provides explicit control over how you pass values.
 
 | Type                                                                        | Description   |
 | --------------------------------------------------------------------------- | ------------- |
-| [ResponseObject](https://docs.onflow.org/fcl/reference/api/#responseobject) | Script result |
+| [ResponseObject](../fcl-js/api.md#responseobject) | Script result |
 
 #### Usage
 
@@ -1090,7 +1090,7 @@ Cadence files.
 
 | Type                                                                        | Description   |
 | --------------------------------------------------------------------------- | ------------- |
-| [ResponseObject](https://docs.onflow.org/fcl/reference/api/#responseobject) | Script result |
+| [ResponseObject](../fcl-js/api.md#responseobject) | Script result |
 
 #### Usage
 
@@ -1139,7 +1139,7 @@ Provides explicit control over how you pass values.
 | `code`         | string                                                                                                     | ✅       | string representation of Cadence transaction                                                                                                                     |
 | `name`         | string                                                                                                     | ✅       | name of the file in `transaction` folder to use (sans `.cdc` extension)                                                                                          |
 | `args`         | [any]                                                                                                      | ✅       | an array of arguments to pass to transaction. Optional if transaction does not expect any arguments.                                                             |
-| `signers`      | [[Address](https://docs.onflow.org/fcl/reference/api/#address) or [SignerInfo](./api.md#signerinfoobject)] | ✅       | an array of [Address](https://docs.onflow.org/fcl/reference/api/#address) or [SignerInfo](./api.md#signerinfoobject) objects representing transaction autorizers |
+| `signers`      | [[Address](../fcl-js/api.md#address) or [SignerInfo](./api.md#signerinfoobject)] | ✅       | an array of [Address](../fcl-js/api.md#address) or [SignerInfo](./api.md#signerinfoobject) objects representing transaction autorizers |
 | `addressMap`   | [AddressMap](./api.md#addressmap)                                                                          | ✅       | name/address map to use as lookup table for addresses in import statements                                                                                       |
 | `transformers` | [[CadenceTransformer](./api.md#cadencetransformer)]                                                        | ✅       | an array of operators to modify the code, before submitting it to network                                                                                        |
 
@@ -1201,7 +1201,7 @@ Cadence files.
 | --------- | ---------------------------------------------------------------------------------------------------------------- | -------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | `name`    | string                                                                                                           | ✅       | name of the file in `transaction` folder to use (sans `.cdc` extension)                                                                                                 |
 | `args`    | [any]                                                                                                            | ✅       | an array of arguments to pass to transaction. Optional if transaction does not expect any arguments.                                                                    |
-| `signers` | [[Address](https://docs.onflow.org/fcl/reference/api/#address) or [SignerInfoObject](./api.md#signerinfoobject)] | ✅       | an array of [Address](https://docs.onflow.org/fcl/reference/api/#address) or array of [SignerInfoObject](./api.md#signerinfoobject) representing transaction autorizers |
+| `signers` | [[Address](../fcl-js/api.md#address) or [SignerInfoObject](./api.md#signerinfoobject)] | ✅       | an array of [Address](../fcl-js/api.md#address) or array of [SignerInfoObject](./api.md#signerinfoobject) representing transaction autorizers |
 
 #### Usage
 
@@ -1623,7 +1623,7 @@ main()
 
 ### `AddressMap`
 
-Object to use for address mapping of existing deployed contracts. Key shall be `string` and value shall be [Address](https://docs.onflow.org/fcl/reference/api/#address)
+Object to use for address mapping of existing deployed contracts. Key shall be `string` and value shall be [Address](../fcl-js/api.md#address)
 
 #### Example
 
@@ -1678,11 +1678,11 @@ Key objects are used to specify signer keys when [creating accounts](./accounts.
 | `hashAlgorithm`      | No       | [HashAlgorithm](./api.md#hashalgorithm)           | Hashing algorithm to use for generating signatures to be signed by this key (default: `HashAlgorithm.SHA3_256`)             |
 | `privateKey`         | Yes      | string                                            | Private key to use to generate the signature                                                                                |
 | `signatureAlgorithm` | No       | [SignatureAlgorithm](./api.md#signaturealgorithm) | Signing algorithm used to sign transactions with this key (default: `SignatureAlgorithm.ECDSA_P256`)                        |
-| `weight`             | No       | number                                            | Weight of the key - see [Flow Core Concepts](https://docs.onflow.org/concepts/accounts-and-keys/#keys) for more information |
+| `weight`             | No       | number                                            | Weight of the key - see [Flow Core Concepts](../../concepts/start-here/accounts-and-keys.md#keys) for more information |
 
 ### PublicKey
 
-Public keys are stored as `Buffer` objects which have been RLP encoded according to the [Flow spec](https://docs.onflow.org/concepts/accounts-and-keys/).
+Public keys are stored as `Buffer` objects which have been RLP encoded according to the [Flow spec](../../concepts/start-here/accounts-and-keys.md).
 
 In order to generate this object using the Flow JS Testing library, use the [`pubFlowKey` method](./api.md#pubflowkeykeyobject) exported by the library.
 
@@ -1703,8 +1703,8 @@ Signature objects are used to represent a signature for a particular message as 
 
 | Key         | Value Type                                                    | Description                                                                                                                                                      |
 | ----------- | ------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `addr`      | [Address](https://docs.onflow.org/fcl/reference/api/#address) | the address of the account which this signature has been generated for                                                                                           |
-| `keyId`     | number                                                        | [Address](https://docs.onflow.org/fcl/reference/api/#address) or [SignerInfo](./api.md#signerinfoobject) object representing user to generate this signature for |
+| `addr`      | [Address](../fcl-js/api.md#address) | the address of the account which this signature has been generated for                                                                                           |
+| `keyId`     | number                                                        | [Address](../fcl-js/api.md#address) or [SignerInfo](./api.md#signerinfoobject) object representing user to generate this signature for |
 | `signature` | string                                                        | a hexidecimal-encoded string representation of the generated signature                                                                                           |
 
 ### SignerInfoObject
@@ -1713,7 +1713,7 @@ Signer Info objects are used to specify information about which signer and which
 
 | Key                  | Required | Value Type                                                    | Description                                                                                                                                                                                        |
 | -------------------- | -------- | ------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `addr`               | Yes      | [Address](https://docs.onflow.org/fcl/reference/api/#address) | The address of the signer's account                                                                                                                                                                |
+| `addr`               | Yes      | [Address](../fcl-js/api.md#address) | The address of the signer's account                                                                                                                                                                |
 | `hashAlgorithm`      | No       | [HashAlgorithm](./api.md#hashalgorithm)                       | Hashing algorithm to use for generating the signature (default: `HashAlgorithm.SHA3_256`)                                                                                                          |
 | `keyId`              | No       | number                                                        | The index of the desired key to use from the signer's account (default: `0`)                                                                                                                       |
 | `privateKey`         | No       | string                                                        | Private key to use to generate the signature (default: service account private key - this is the default PK for all accounts generated by Flow JS Testing Library, see: [accounts](./accounts.md)) |
@@ -1741,7 +1741,7 @@ Signing algorithms may be provided as either an enum (accessible via the `Signat
 
 ### `isAddress(address)`
 
-Returns true if the given string is a validly formatted account [address](https://docs.onflow.org/fcl/reference/api/#address) (both "0x" prefixed and non-prefixed are valid)
+Returns true if the given string is a validly formatted account [address](../fcl-js/api.md#address) (both "0x" prefixed and non-prefixed are valid)
 
 #### Arguments
 
@@ -1753,7 +1753,7 @@ Returns true if the given string is a validly formatted account [address](https:
 
 | Type    | Description                                                                                                                |
 | ------- | -------------------------------------------------------------------------------------------------------------------------- |
-| boolean | Returns true if given string is a validly formatted account [address](https://docs.onflow.org/fcl/reference/api/#address). |
+| boolean | Returns true if given string is a validly formatted account [address](../fcl-js/api.md#address). |
 
 #### Usage
 

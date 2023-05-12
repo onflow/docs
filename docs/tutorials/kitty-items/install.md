@@ -28,7 +28,7 @@ v16.x.x
 
 ### Flow CLI
 
-Ensure you have the [Flow CLI](https://docs.onflow.org/flow-cli/install/). Version **0.32.3+** is required.
+Ensure you have the [Flow CLI](../../tooling/flow-cli/install.md). Version **0.32.3+** is required.
 
 ```
 > flow version

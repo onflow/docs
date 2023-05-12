@@ -5,7 +5,7 @@ using the FlowControl and Flow SDK.
 
 ## Prerequisites
 Ensure you have flow-cli installed.  This will allow us to use an emulated flow environment.
-You can install it by following the instructions at https://developers.flow.com/tooling/flow-cli/install
+You can install it by following the instructions at [Flow CLI](../../flow-cli/install.md)
 
 ## Sample walk through
 You can follow along in FlowControlExample.cs
@@ -60,7 +60,7 @@ to run scripts.
 ## Running scripts
 
 Next, we'll use this account to run a script on the emulator.  Scripts on Flow are written in Cadence.
-More information is available at https://developers.flow.com/cadence/language/index
+More information is available at [Developer Portal](../../../cadence/language/index.md)
 
 First we'll define the script that we want to run:
 

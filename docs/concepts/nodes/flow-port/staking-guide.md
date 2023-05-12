@@ -32,7 +32,7 @@ You'll also need the following information about your node:
 - Staking Key
 - Machine Account Public Key (for collection/consensus nodes only)
 
-If you don't have this information, go [here](https://docs.onflow.org/concepts/nodes/node-operation/quickstart/#step-1---run-genesis-bootstrap) for instructions on how to acquire it.
+If you don't have this information, go [here](../node-operation/node-bootstrap.mdx#step-1---run-genesis-bootstrap) for instructions on how to acquire it.
 
 ### Begin Staking
 
@@ -46,7 +46,7 @@ but you may stake as much as you like beyond that. Here's the screen you should 
 ![Flow Port Staking](port-stake-0-03.png)
 
 Clicking next will take you to the final screen, where you'll need to enter information about your node you previously obtained.
-If you don't have this information, go [here](https://docs.onflow.org/concepts/nodes/node-operation/quickstart/#step-1---run-genesis-bootstrap) for instructions on how to acquire it.
+If you don't have this information, go [here](../node-operation/node-bootstrap.mdx#step-1---run-genesis-bootstrap) for instructions on how to acquire it.
 Here's the screen you should see:
 
 ![Flow Port Staking](port-stake-0-04.png)

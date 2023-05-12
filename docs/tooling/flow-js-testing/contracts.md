@@ -17,7 +17,7 @@ Props object accepts the following fields:
 | Name           | Type                                                          | Optional | Description                                                                                                                                     |
 | -------------- | ------------------------------------------------------------- | -------- | ----------------------------------------------------------------------------------------------------------------------------------------------- |
 | `name`         | string                                                        |          | name of the file in `contracts` folder (with `.cdc` extension) and name of the contract (please note those should be the same)                  |
-| `to`           | [Address](https://docs.onflow.org/fcl/reference/api/#address) | ✅       | (optional) account address, where contract will be deployed. If this is not specified, framework will create new account with randomized alias. |
+| `to`           | [Address](../fcl-js/api.md#address) | ✅       | (optional) account address, where contract will be deployed. If this is not specified, framework will create new account with randomized alias. |
 | `addressMap`   | [AddressMap](./contracts.md#addressmap)                       | ✅       | (optional) object to use for address mapping of existing deployed contracts                                                                     |
 | `args`         | [Any]                                                         | ✅       | (optional) arguments, which will be passed to contract initializer. (optional) if template does not expect any arguments.                       |
 | `update`       | boolean                                                       | ✅       | (optional) whether to update deployed contract. Default: `false`                                                                                |
@@ -27,7 +27,7 @@ Props object accepts the following fields:
 
 | Type                                                                        | Description                          |
 | --------------------------------------------------------------------------- | ------------------------------------ |
-| [ResponseObject](https://docs.onflow.org/fcl/reference/api/#responseobject) | Result of the deploying transaction. |
+| [ResponseObject](../fcl-js/api.md#responseobject) | Result of the deploying transaction. |
 
 #### Usage
 
@@ -76,7 +76,7 @@ Props object accepts the following fields:
 | -------------- | ------------------------------------------------------------- | -------- | ------------------------------------------------------------------------------------------------------------------------------------ |
 | `contractCode` | string                                                        |          | string representation of contract                                                                                                    |
 | `name`         | string                                                        |          | name of the contract to be deployed. Should be the same as the name of the contract provided in `contractCode`                       |
-| `to`           | [Address](https://docs.onflow.org/fcl/reference/api/#address) | ✅       | account address, where contract will be deployed. If this is not specified, framework will create new account with randomized alias. |
+| `to`           | [Address](../fcl-js/api.md#address) | ✅       | account address, where contract will be deployed. If this is not specified, framework will create new account with randomized alias. |
 | `addressMap`   | [AddressMap](./contracts.md#addressmap)                       | ✅       | object to use for import resolver. Default: `{}`                                                                                     |
 | `args`         | [Any]                                                         | ✅       | arguments, which will be passed to contract initializer. Default: `[]`                                                               |
 | `update`       | boolean                                                       | ✅       | whether to update deployed contract. Default: `false`                                                                                |
@@ -86,7 +86,7 @@ Props object accepts the following fields:
 
 | Type                                                                        | Description                          |
 | --------------------------------------------------------------------------- | ------------------------------------ |
-| [ResponseObject](https://docs.onflow.org/fcl/reference/api/#responseobject) | Result of the deploying transaction. |
+| [ResponseObject](../fcl-js/api.md#responseobject) | Result of the deploying transaction. |
 
 #### Usage
 
@@ -152,7 +152,7 @@ Returns address of the account where the contract is currently deployed.
 
 | Type                                                          | Description           |
 | ------------------------------------------------------------- | --------------------- |
-| [Address](https://docs.onflow.org/fcl/reference/api/#address) | `0x` prefixed address |
+| [Address](../fcl-js/api.md#address) | `0x` prefixed address |
 
 #### Usage
 

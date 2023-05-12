@@ -1,8 +1,8 @@
 ---
+title: Introduction to Cadence
 sidebar_position: 1
+sidebar_label: Introduction
 ---
-
-# Introduction to Cadence
 
 In a blockchain environment like Flow, programs that are stored on-chain in accounts are commonly referred to as smart contracts.
 A smart contract is a program that verifies and executes the performance of a contract without the need for a trusted third party.
@@ -133,7 +133,7 @@ Developers using custom-made approaches such as the 'data separation' approach t
 may run into problems with the complexity of data structures,
 while developers using ‘delegatecall-based proxies` may run into problems with the consistency of memory layouts.
 Either way, these challenges compromise approachability and overall extensibility.
-Cadence has [contract upgradability built in by default](language/contract-updatability),
+Cadence has [contract upgradability built in by default](./language/contract-updatability.md),
 and contracts can be made immutable by removing all keys from an account.
 
 Cadence improves the clarity and extensibility of programs by utilizing interfaces to allow extensibility, code reuse, and interoperability between contracts.
@@ -187,4 +187,4 @@ but using an interpreter for the first version allows us to refine the language 
 ---
 
 Now that you've learned about the goals and design of Cadence and Flow, you're ready to get started with the Flow emulator and tools!
-Go to the [Getting Started](tutorial/first-steps) page to work through language fundamentals and tutorials.
+Go to the [Getting Started](./tutorial/01-first-steps.mdx) page to work through language fundamentals and tutorials.

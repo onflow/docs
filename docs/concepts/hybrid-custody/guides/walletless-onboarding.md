@@ -38,7 +38,7 @@ While developers will choose the best solution to onboard new users to their app
 
 In order to use a Web3 account built on Flow, a user will need to have a Flow account. In apps where users bring their own wallet, it can simplify things quite a bit for developers, as they don’t need to worry about account creation and custody of keys. But with a walletless onboarding flow, we’re enabling users to use the app without a wallet - so developers will need to handle account creation and custody on behalf of the user.
 
-For most apps, developers will create a Flow account for each user and associate this account with the user’s account in the app itself. [Account creation on Flow](https://developers.flow.com/cadence/language/accounts#account-creation) requires a payer, so developers will need to determine whether they subsidize creation of Flow accounts or if they’ll require users to pay to sign up for the app.
+For most apps, developers will create a Flow account for each user and associate this account with the user’s account in the app itself. [Account creation on Flow](../../../cadence/language/accounts.mdx#account-creation) requires a payer, so developers will need to determine whether they subsidize creation of Flow accounts or if they’ll require users to pay to sign up for the app.
 
 Additionally, since the user’s Flow account will be managed by the app, developers will need to consider their preferred approach for secure storage and management of the keys for each account.
 

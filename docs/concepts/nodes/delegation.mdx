@@ -16,7 +16,7 @@ title: Delegation
 
 Reliably operating a node on a decentralized network requires skill and commitment to the preservation of the integrity and security of that network. Providing the capital to pay for that security and earn a return for doing so requires a different set of skills but an equivalent responsibility and duty towards the maintenance of that network.
 
-In acknowledgment of these two critical and very different roles, it is important that Flow enables the participation of both groups in their own right. This separation of roles: capital from operation, is so clear and important that the protocol explicitly differentiates the key needed to operate the node (the Staking Key) from the key which manage the capital associated operating the node (Account Key). The account governed by the account key deposits the stake and receives the rewards. The staking key is used only for node operations and has no direct financial authority. You can learn more about Node Keys [here](doc:node-keys).
+In acknowledgment of these two critical and very different roles, it is important that Flow enables the participation of both groups in their own right. This separation of roles: capital from operation, is so clear and important that the protocol explicitly differentiates the key needed to operate the node (the Staking Key) from the key which manage the capital associated operating the node (Account Key). The account governed by the account key deposits the stake and receives the rewards. The staking key is used only for node operations and has no direct financial authority. You can learn more about Node Keys [here](./node-operation/node-bootstrap.mdx#generating-your-node-id).
 
 ### Account Key
 
@@ -26,7 +26,7 @@ Signs the staking transactions for a node (i.e. the transaction that affirms the
 
 Is used by the node operator to sign protocol message (such as voting for blocks as a consensus node). The staking key signature on a message authenticates the original sender of that message and guarantees message integrity. In other words, the Staking Key is only relevant for the Flow-internal protocol but it cannot sign any transactions.
 
-You can learn more about this division of identity [here](https://docs.onflow.org/docs/nodes-network-identity).
+You can learn more about this division of identity [here](./node-operation/node-bootstrap.mdx#generating-your-node-id).
 
 ## Managing Rewards & Stake
 
@@ -46,7 +46,7 @@ A template delegation contract will be provided by the Flow team initially to en
 
 ## Slashing
 
-So, who gets slashed? Severe slashing on Flow only takes place in the most nefarious of attacks. The protocol reserves slashing for maintaining the security of the protocol rather than its liveness. You can find more details on the conditions under which a node is slashed [here](doc:slashing-conditions).
+So, who gets slashed? Severe slashing on Flow only takes place in the most nefarious of attacks. The protocol reserves slashing for maintaining the security of the protocol rather than its liveness. You can find more details on the conditions under which a node is slashed [here](./staking/stake-slashing.md).
 
 While a node is in operation and during the unbonding period thereafter, the consensus nodes hold the staked tokens. Slashable protocol violations must be adjudicated by a supermajority of more than 2/3 of the staked consensus nodes in order to take effect. If a node is found guilty of committing a slashable protocol violation, the consensus nodes directly deduct a fine from the node's stake. Of course, only the remaining stake is deposited back into the Account governed by the Account Key at the end of the unbonding period.
 
@@ -56,7 +56,7 @@ If you are a node operator, who is trying to pool capital to meet the minimum st
 
 1. **Deploy the `Delegation Contract`** into your Account (in the Beta period, you'll need the Flow team to co-sign your smart-contract-deployment transaction).
 2. **Recruit folks who'd like to delegate** their stake to your services and submit the appropriate transactions to your contract to assign them their rights.
-3. **Run the node** (see [Node Operation Section](https://docs.onflow.org/docs/setting-up-a-node))
+3. **Run the node** (see [Node Operation Section](./node-operation/node-setup.mdx))
 4. **Receive Rewards** - you and your delegators will automatically receive rewards according to the payout schedule you defined in the contract.
 
 ## FAQ
@@ -66,5 +66,5 @@ If you are a node operator, who is trying to pool capital to meet the minimum st
 Unstaked tokens are indeed stored in an account held by the owner of those tokens. When those tokens are successfully staked, the staking amount is withdrawn from the account (which submitted the staking transaction and authorized the token withdrawal). The staked tokens are then:
 
 1.  entirely locked by the protocol (maintained by the Execution Nodes)
-2.  the stake is added to the Identity for the newly created node (the Identity Table is part of Flow's [_Protocol State_](doc:nodes-network-identity), which is maintained by the Consensus Nodes)
-3.  **At genesis, **Nodes are _initialized with the stake already accredited to their [Network Identity](doc:nodes-network-identity)_, which is external to the Node Operator's Account.
+2.  the stake is added to the Identity for the newly created node (the Identity Table is part of Flow's [_Protocol State_](./node-operation/node-bootstrap.mdx#generating-your-node-id), which is maintained by the Consensus Nodes)
+3.  **At genesis, **Nodes are _initialized with the stake already accredited to their [Network Identity](./node-operation/node-bootstrap.mdx#generating-your-node-id)_, which is external to the Node Operator's Account.

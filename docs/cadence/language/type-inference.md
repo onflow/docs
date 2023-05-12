@@ -1,5 +1,6 @@
 ---
 title: Type Inference
+sidebar_position: 10
 ---
 
 If a variable or constant declaration is not annotated explicitly with a type,

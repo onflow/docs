@@ -21,7 +21,7 @@ interact with FLOW.
 There are currently several ways to acquire FLOW tokens:
 
 1. [Claim FLOW as a Backer](./delivery.md): Existing Flow backers can claim their FLOW.
-1. [Earn FLOW as a Validator](https://developers.flow.com/nodes/staking/technical-overview): Receive newly-minted FLOW as a reward for running a node.
+1. [Earn FLOW as a Validator](../nodes/staking/technical-overview.mdx): Receive newly-minted FLOW as a reward for running a node.
 1. [Earn FLOW as a Platform Contributor](./earn.md): Receive newly-minted FLOW as a reward for building on Flow.
 
 ## How to Use FLOW
@@ -46,12 +46,12 @@ and then sign with the wallet of your choice only once you decide to make a purc
 
 ### Staking FLOW
 
-[You can use FLOW to operate a staked node.](https://developers.flow.com/nodes/staking/technical-overview) Node operators receive newly-minted FLOW
+[You can use FLOW to operate a staked node.](../nodes/staking/technical-overview.mdx) Node operators receive newly-minted FLOW
 as a reward for helping to secure the network.
 
 ### Delegating FLOW
 
-[You can use FLOW for stake delegation.](https://developers.flow.com/nodes/staking/technical-overview) Delegators receive newly-minted FLOW
+[You can use FLOW for stake delegation.](../nodes/staking/technical-overview.mdx) Delegators receive newly-minted FLOW
 as a reward for helping to secure the network.
 
 ### Holding FLOW
@@ -109,4 +109,4 @@ The Flow SDKs also allow polling for events using the Flow Access API,
 
 ## How to Build with FLOW
 
-To get started building on Flow, please read the [Flow Developer Onboarding guide](https://developers.flow.com/flow/dapp-development).
+To get started building on Flow, please read the [Flow Developer Onboarding guide](../../tutorials/intro.md).

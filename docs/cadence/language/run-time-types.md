@@ -1,5 +1,6 @@
 ---
 title: Run-time Types
+sidebar_position: 27
 ---
 
 Types can be represented at run-time.
@@ -85,7 +86,7 @@ let type: Type = something.getType()
 
 ### Constructing a Run-time Type
 
-Run-time types can also be constructed from type identifier strings using built-in constructor functions. 
+Run-time types can also be constructed from type identifier strings using built-in constructor functions.
 
 ```cadence
 fun CompositeType(_ identifier: String): Type?
@@ -96,7 +97,7 @@ fun RestrictedType(identifier: String?, restrictions: [String]): Type?
 Given a type identifier (as well as a list of identifiers for restricting interfaces
 in the case of `RestrictedType`), these functions will look up nominal types and
 produce their run-time equivalents. If the provided identifiers do not correspond
-to any types, or (in the case of `RestrictedType`) the provided combination of 
+to any types, or (in the case of `RestrictedType`) the provided combination of
 identifiers would not type-check statically, these functions will produce `nil`.
 
 ```cadence
@@ -106,7 +107,7 @@ let type: Type = CompositeType("A.0000000000000001.Test")
 // `type` is `Type<Test>`
 
 let type2: Type = RestrictedType(
-    identifier: type.identifier, 
+    identifier: type.identifier,
     restrictions: ["A.0000000000000001.I"]
 )
 // `type2` is `Type<Test{I}>`

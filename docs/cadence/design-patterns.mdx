@@ -1,5 +1,7 @@
 ---
 title: Cadence Design Patterns
+sidebar_position: 5
+sidebar_label: Design Patterns
 ---
 
 This is a selection of software design patterns developed by core Flow developers
@@ -119,7 +121,7 @@ See [Script-Accessible public field/function](#script-accessible-public-fieldfun
 pub contract AContract {
     pub let BResourceStoragePath: StoragePath
     pub let BResourcePublicPath: PublicPath
-    
+
     init() {
         self.BResourceStoragePath = /storage/BResource
         self.BResourcePublicPath = /public/BResource
@@ -391,7 +393,7 @@ transaction {
 
 ### Problem
 
-An account must be given a [capability](language/capability-based-access-control)
+An account must be given a [capability](./language/capability-based-access-control.md)
 to a resource or contract in another account. To create, i.e. link the capability,
 the transaction must be signed by a key which has access to the target account.
 
@@ -404,28 +406,28 @@ from one account and delivering it to the other.
 
 ### Solution
 
-The solution to the bootstrapping problem in Cadence is provided by the [Inbox API](language/accounts#account-inbox)
+The solution to the bootstrapping problem in Cadence is provided by the [Inbox API](./language/accounts.mdx#account-inbox)
 
 Account A (which we will call the provider) creates the capability they wish to send to B (which we will call the recipient),
-and stores this capability on their account in a place where the recipient can access it using the `Inbox.publish` function on their account. 
-They choose a name for the capability that the recipient can later use to identify it, and specify the recipient's address when calling `publish`. 
-This call to `publish` will emit an `InboxValuePublished` event that the recipient can listen for off-chain to know that the Capability is ready for them to claim. 
+and stores this capability on their account in a place where the recipient can access it using the `Inbox.publish` function on their account.
+They choose a name for the capability that the recipient can later use to identify it, and specify the recipient's address when calling `publish`.
+This call to `publish` will emit an `InboxValuePublished` event that the recipient can listen for off-chain to know that the Capability is ready for them to claim.
 
-The recipient then later can use the `Inbox.claim` function to securely grab the capability from the provider's account. 
-They must provide the name and type with which the capability was published, as well as the address of the provider's account 
-(all of this information is available in the `InboxValuePublished` event emitted on `publish`). 
-This will remove the capability from the provider's account and emit an `InboxValueClaimed` event that the provider can listen for off-chain. 
+The recipient then later can use the `Inbox.claim` function to securely grab the capability from the provider's account.
+They must provide the name and type with which the capability was published, as well as the address of the provider's account
+(all of this information is available in the `InboxValuePublished` event emitted on `publish`).
+This will remove the capability from the provider's account and emit an `InboxValueClaimed` event that the provider can listen for off-chain.
 
-One important caveat to this is that the published capability is stored on the provider's account until the recipient claims it, 
-so the provider can also use the `Inbox.unpublish` function to remove the capability from their account if they no longer wish to pay for storage for it. 
-This also requires the name and type which the capability was published, 
-and emits an `InboxValueUnpublished` event that the recipient can listen for off-chain. 
+One important caveat to this is that the published capability is stored on the provider's account until the recipient claims it,
+so the provider can also use the `Inbox.unpublish` function to remove the capability from their account if they no longer wish to pay for storage for it.
+This also requires the name and type which the capability was published,
+and emits an `InboxValueUnpublished` event that the recipient can listen for off-chain.
 
-It is also important to note that the recipient becomes the owner of the capability object once they have claimed it, 
-and can thus store it or copy it anywhere they have access to. 
-This means providers should only publish capabilities to recipients they trust to use them properly, 
+It is also important to note that the recipient becomes the owner of the capability object once they have claimed it,
+and can thus store it or copy it anywhere they have access to.
+This means providers should only publish capabilities to recipients they trust to use them properly,
 or limit the type with which the capability is restricted in order to only give recipients access to the functionality
-that the provider is willing to allow them to copy. 
+that the provider is willing to allow them to copy.
 
 ## Capability Revocation
 

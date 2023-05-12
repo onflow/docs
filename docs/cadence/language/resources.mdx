@@ -1,6 +1,7 @@
 ---
 title: Resources
 description: Enables resource-oriented programming on Flow
+sidebar_position: 12
 ---
 
 Resources are types that can only exist in **one** location at a time
@@ -599,7 +600,7 @@ Do not rely on or assume any particular behaviour in Cadence programs.
 ## Resource Owner
 
 Resources have the implicit field `let owner: PublicAccount?`.
-If the resource is currently [stored in an account](accounts#account-storage),
+If the resource is currently [stored in an account](./accounts.mdx#account-storage),
 then the field contains the publicly accessible portion of the account.
 Otherwise the field is `nil`.
 

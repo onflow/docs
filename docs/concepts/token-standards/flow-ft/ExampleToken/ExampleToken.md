@@ -39,7 +39,7 @@ are defined in, so there is no way for a malicious user to create Vaults
 out of thin air. A special Minter resource needs to be defined to mint
 new tokens.
 
-[More...](ExampleToken_Vault.md)
+[More...](./ExampleToken_Vault.md)
 
 ---
 
@@ -50,7 +50,7 @@ resource Administrator {
 }
 ```
 
-[More...](ExampleToken_Administrator.md)
+[More...](./ExampleToken_Administrator.md)
 
 ---
 
@@ -64,7 +64,7 @@ resource Minter {
 ```
 Resource object that token admin accounts can hold to mint new tokens.
 
-[More...](ExampleToken_Minter.md)
+[More...](./ExampleToken_Minter.md)
 
 ---
 
@@ -76,7 +76,7 @@ resource Burner {
 ```
 Resource object that token admin accounts can hold to burn tokens.
 
-[More...](ExampleToken_Burner.md)
+[More...](./ExampleToken_Burner.md)
 
 ---
 ## Functions

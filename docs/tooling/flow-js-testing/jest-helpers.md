@@ -21,7 +21,7 @@ Ensure transaction did not throw and was sealed.
 
 | Type                                                                        | Description        |
 | --------------------------------------------------------------------------- | ------------------ |
-| [ResponseObject](https://docs.onflow.org/fcl/reference/api/#responseobject) | Transaction result |
+| [ResponseObject](../fcl-js/api.md#responseobject) | Transaction result |
 
 #### Usage
 
@@ -93,7 +93,7 @@ Returns Promise, which contains result, when resolved.
 
 | Type                                                                        | Description        |
 | --------------------------------------------------------------------------- | ------------------ |
-| [ResponseObject](https://docs.onflow.org/fcl/reference/api/#responseobject) | Transaction result |
+| [ResponseObject](../fcl-js/api.md#responseobject) | Transaction result |
 
 #### Usage
 
@@ -163,7 +163,7 @@ Ensure interaction resolves without throwing errors.
 
 | Type                                                                        | Description        |
 | --------------------------------------------------------------------------- | ------------------ |
-| [ResponseObject](https://docs.onflow.org/fcl/reference/api/#responseobject) | Transaction result |
+| [ResponseObject](../fcl-js/api.md#responseobject) | Transaction result |
 
 #### Usage
 

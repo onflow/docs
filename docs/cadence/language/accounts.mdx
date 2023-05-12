@@ -1,5 +1,6 @@
 ---
 title: Accounts
+sidebar_position: 19
 ---
 
 Every account can be accessed through two types, `PublicAccount` and `AuthAccount`.
@@ -108,7 +109,7 @@ which represents the authorized portion of an account.
 Access to an `AuthAccount` means having full access to its [storage](#account-storage),
 public keys, and code.
 
-Only [signed transactions](transactions) can get the `AuthAccount` for an account.
+Only [signed transactions](./transactions.md) can get the `AuthAccount` for an account.
 For each signer of the transaction that signs as an authorizer, the corresponding `AuthAccount` object is passed
 to the `prepare` phase of the transaction.
 
@@ -453,7 +454,7 @@ struct AccountKey {
 }
 ```
 
-Refer to the [`PublicKey` section](crypto#publickey) for more details on the creation and validity of public keys.
+Refer to the [`PublicKey` section](./crypto.mdx#publickey) for more details on the creation and validity of public keys.
 
 ### Account Key API
 Account key API provides a set of functions to manage account keys.
@@ -561,7 +562,7 @@ However, this method is deprecated and is available only for the backward compat
 
 ## Account Inbox
 
-Accounts also possess an `Inbox` that can be used to make [Capabilities](capability-based-access-control) available to specific accounts.
+Accounts also possess an `Inbox` that can be used to make [Capabilities](./capability-based-access-control.md) available to specific accounts.
 The functions in this `Inbox` provide a convenient means to "bootstrap" Capabilities,
 setting up an initial connection between two accounts that will later allow them to transfer data or permissions through a Capability.
 
@@ -579,7 +580,7 @@ and contributes towards their Account Storage total.
 
 Calling this function emits an event, `InboxValuePublished`,
 that includes the address of both the provider and the recipient, as well as the name and the type of the published Capability.
-Refer to the [`Core Events` section](core-events#inbox-value-published) for more details on this event.
+Refer to the [`Core Events` section](./core-events.md#inbox-value-published) for more details on this event.
 
 ### Claiming a Capability
 
@@ -600,7 +601,7 @@ Note that this means a given Capability can only be claimed once.
 
 Calling this function emits an event, `InboxValueClaimed`,
 that includes the address of both the provider and the recipient, as well as the name of the claimed Capability.
-Refer to the [`Core Events` section](core-events#inbox-value-claimed) for more details on this event.
+Refer to the [`Core Events` section](./core-events.md#inbox-value-claimed) for more details on this event.
 
 ### Unpublishing a Capability
 
@@ -619,7 +620,7 @@ Upon successful completion of the `unpublish` function, the unpublished Capabili
 
 Calling this function emits an event, `InboxValueUnpublished`,
 that includes the address of the provider, and the name of the claimed Capability.
-Refer to the [`Core Events` section](core-events#inbox-value-unpublished) for more details on this event.
+Refer to the [`Core Events` section](./core-events.md#inbox-value-unpublished) for more details on this event.
 
 ## Account Storage
 
