@@ -52,9 +52,22 @@ Let's look at why you would want to use capabilities to expand access to resourc
 
 A real user's account will contain functions and fields that need varying levels of access scope and privacy.
 For example, if you're working on an app that allows users to exchange tokens.
-While you definitely need to sign write access for a feature like withdrawing tokens from an account, your app should allow anybody to deposit tokens.
-After your user authenticates your app for the first time, you can create a capability that allows your app to withdraw tokens, this makes it more
-convenient to write transactions that can withdraw an account's tokens to spend or trade them.
+While you definitely want to make a feature like withdrawing tokens
+from an account only accessible by the owner of the tokens,
+your app should allow anybody to deposit tokens.
+
+Capabilities are what allows for this detailed control of owned assets.
+They allow a user to indicate which of the functionality of their account
+should be accessible to themselves, their trusted friends, and the public.
+
+For example, a user might want to allow a friend of theirs to use some of their money to spend,
+in this case, they could create a capability that gives the friend access to only this part of their account,
+instead of having to give full control over.
+
+Or if a user authenticates a trading app for the first time,
+the can could ask the user for a capability object that allows
+the app to access the trading functionality of a user's account so that
+the app doesn't need to ask the user for a signature every time.
 
 In this tutorial, you will:
 1. Interact with the resource we created using transactions
@@ -198,13 +211,13 @@ without actually being directly in control of it!
 It is also stored in the `/storage/` domain of the account, which should be private.
 
 This is because we created a [**capability**](../language/capability-based-access-control) for the `HelloAsset` object.
-Capabilities are kind of like pointers in other languages.
+Capabilities are kind of like pointers in other languages, but which much more fine-grained control.
 
 ### Capability Based Access Control
 
 [Capabilities](../language/capability-based-access-control) allow the owners of objects
 to specify what functionality of their private objects is available to others.
-Think of it kind of like an account's public API, if you're familiar with the concept.
+Think of it kind of like an account's API, if you're familiar with the concept.
 The account owner has private objects stored in their storage, like their collectibles or their money,
 but they might still want others to be able to see what collectibles they have in their account,
 or they want to allow anyone to deposit more money of a certain currency in their account.
@@ -254,6 +267,7 @@ and the `target` argument is the path to the object in storage that is to be lin
 We always store links for capabilities in the `/private/` or `/public/` domains:
 - We choose `/private/` if we only want to allow one or a small number of users to access it
 - We choose `/public/` if we want any user in the network to be able to access it.
+
 Capabilities always link to objects in the `/storage/` domain.
 
 To borrow a reference to an object from the capability, we use the capability's `borrow` method.
@@ -302,7 +316,6 @@ In the next section, we look at how capabilities can expand the access a script 
 
 A script is a very simple transaction type in Cadence that cannot perform
 any writes to the blockchain and can only read the state of an account or contract.
-It runs without permission from any account, so scripts need capabilities to access account storage.
 
 To execute a script, write a function called `pub fun main()`.
 You can click the execute script button to run the script.
@@ -355,14 +368,6 @@ let helloAccount = getAccount(0x01)
 
 The `PublicAccount` object is available to anyone in the network for every account,
 but only has access to a small subset of functions that can be read from the `/public/` domain in an account.
-Most of the [account storage API](../language/accounts#account-storage-api)
-is not available on the `PublicAccount` object,
-and only signed transactions can make persistent changes to the `AuthAccount` object.
-`AuthAccount` can now be accessed publicly in scripts with the `getAuthAccount` function,
-but any changes are discarded after the script execution.
-With capabilities we can make resources saved to an account explicitly available in the `/public/` domain.
-
-See the [language reference](../language/accounts) for more information about accounts.
 
 Then, the script gets the capability that was created in `Create Link`.
 
@@ -404,6 +409,21 @@ You should see something like this print:
 
 Good work!
 Your script ran successfully.
+
+One other really cool feature of scripts is that since they can't actually change anything on chain,
+they can access any accounts' private storage and objects.
+This allows scripts even more power to understand the full state of the chain
+and it is safe because they can't actually make any changes.
+Also, everything on-chain is publicly readable anyway,
+so it is a logical feature for a blockchain programming language to have.
+
+A script can get the AuthAccount for an account address using the built-in getAuthAccount function:
+
+```
+fun getAuthAccount(_ address: Address): AuthAccount
+```
+
+See the [language reference](../language/accounts) for more information about accounts.
 
 ## Reviewing Capabilities
 
