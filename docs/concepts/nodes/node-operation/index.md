@@ -15,18 +15,37 @@ By running a node, you also directly contribute to the security and decentraliza
 
 Flow multirole architecture makes it more scalable and provides several node types that you as a node operator can pick and choose from.
 
-
 ## Which node should you run?
 
-The different types of nodes are described [here](./node-roles.mdx). As node operator, you can choose to run any of the different types of node that best fits your needs.
+There are different types of node that you can choose from based on your use case. The nodes differ in terms of the data that they sync and APIs that they provide.
+There are three main types of nodes:
+1. Full node
+2. Light node
+3. Archive node
+Apart from this, there is a staked node that you can run if you want to become a node validator.
 
-### Observer node
-The observer node is one of the easiest node to spin up and can be run by Dapp developers who need the latest block data available locally e.g. a wallet application that needs to track the latest block ID and height.
-In addition to supporting dapps, an observer node can also be run by access node operators who want to scale their access nodes' endpoints. Access node operators can spin up geographically dispersed observer nodes which can talk to their staked access nodes and to each other.
 
-The observer node is not staked but still provides the same API as the access node.
+### Full node
 
-To run an observer node, follow this [guide](./observer-node.mdx).
+### Light node (a.k.a observer node)
+
+The light node is one of the easiest node to spin up and can be run by Dapp developers who need the latest block data available locally e.g. a wallet application that needs to track the latest block ID and height.
+A light node downloads every block and locally verifies that the blocks that are received are the correct extension of the chain.
+Light node have very low hardware and bandwidth requirements and eventually might be able to run on mobile phones or embdedded devices as well.
+They do not participate in block production but provide access to chain data by serving the Access API.
+
+To run a light node, follow this [guide](./observer-node.mdx).
+
+### Archive node
+
+The archive node provides a scalable and efficient way to access historical states.
+It follows the chain and locally stores and indexes all the chain data - blocks, transaction, collections, state register values etc.
+It serves the chain data using an API interface.
+Additionally, it also allows read-only queries such as script execution that require the execution state register values.
+It can be used to answer any queries from past data e.g. “what was the Flow account balance at height X?” where X is several thousand blocks in the past.
+Since it stores all the historic data, it requires a large amount of disk space and is not suitable to be run on simple commodity hardware.
+
+To run an archive node, follow this [guide](./archive-node.mdx).
 
 ### Access node
 If you want local access to the protocol state data (blocks, collections, transactions) and do not want to use one of the community access nodes you can run an access node.
