@@ -42,14 +42,14 @@ Archive nodes operated by Dapper Labs are [rate limited](./archive-api-rate-limi
 
 The archive node queries an execution node for the account details, which are stored as part of the execution state.
 
-```protobuf
+```proto
 rpc GetAccountAtBlockHeight(GetAccountAtBlockHeightRequest) returns (AccountResponse)
 ```
 
 
 #### Request
 
-```protobuf
+```proto
 message GetAccountAtBlockHeightRequest {
   bytes address
   uint64 block_height
@@ -61,7 +61,7 @@ message GetAccountAtBlockHeightRequest {
 
 #### Response
 
-```protobuf
+```proto
 message AccountResponse {
   Account account
 }
@@ -76,14 +76,14 @@ message AccountResponse {
 
 This method can be used to read account state from the blockchain. The script is executed on an execution node and the return value is encoded using the [JSON-Cadence data interchange format](../../cadence/json-cadence-spec.md).
 
-```protobuf
+```proto
 rpc ExecuteScriptAtBlockID (ExecuteScriptAtBlockIDRequest) returns (ExecuteScriptResponse)
 ```
 
 
 #### Request
 
-```protobuf
+```proto
 message ExecuteScriptAtBlockIDRequest {
   bytes block_id
   bytes script
@@ -95,7 +95,7 @@ message ExecuteScriptAtBlockIDRequest {
 
 #### Response
 
-```protobuf
+```proto
 message ExecuteScriptResponse {
   bytes value
 }
@@ -109,14 +109,14 @@ message ExecuteScriptResponse {
 
 This method can be used to read account state from the blockchain. The script is executed on an execution node and the return value is encoded using the [JSON-Cadence data interchange format](../../cadence/json-cadence-spec.md).
 
-```protobuf
+```proto
 rpc ExecuteScriptAtBlockHeight (ExecuteScriptAtBlockHeightRequest) returns (ExecuteScriptResponse)
 ```
 
 
 #### Request
 
-```protobuf
+```proto
 message ExecuteScriptAtBlockHeightRequest {
   uint64 block_height
   bytes script
@@ -128,7 +128,7 @@ message ExecuteScriptAtBlockHeightRequest {
 
 #### Response
 
-```protobuf
+```proto
 message ExecuteScriptResponse {
   bytes value
 }
