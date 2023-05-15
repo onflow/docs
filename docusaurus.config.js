@@ -383,7 +383,7 @@ const config = {
                 label: 'Kitty Items',
               },
               {
-                to: '/tutorials/intro',
+                to: '/cadence/tutorial/first-steps',
                 label: 'Cadence Tutorials',
               },
               {
