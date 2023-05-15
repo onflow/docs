@@ -374,7 +374,7 @@ const config = {
                 label: 'Kitty Items',
               },
               {
-                to: '/cadence/tutorial/',
+                to: '/tutorials/intro',
                 label: 'Cadence Tutorials',
               },
               {
