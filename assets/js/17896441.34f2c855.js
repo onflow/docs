@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkdocusaurus=self.webpackChunkdocusaurus||[]).push([[7918],{31769:(u,s,a)=>{a.d(s,{Z:()=>e});var c=a(66063),o=a(23612);const e={...c.Z,Callout:o.Z,Admonition:o.Z}}}]);
