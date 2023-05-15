@@ -223,6 +223,11 @@ const config = {
       },
       // Replace with your project's social card
       image: 'img/FlowDocs_Logo_FlowLogo_Horizontal_Green_BlackText.svg',
+      docs: {
+        sidebar: {
+          autoCollapseCategories: true,
+        },
+      },
       navbar: {
         title: '',
         logo: {

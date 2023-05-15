@@ -1,5 +1,4 @@
 export { default as AnnouncementCard } from './AnnouncementCard';
-export { default as Callout } from './Callout';
 export { default as FeaturedArticleSlider } from './FeaturedArticleSlider';
 export { default as Flips } from './Flips';
 export { LandingHeaderHome } from './LandingHeaderHome';
