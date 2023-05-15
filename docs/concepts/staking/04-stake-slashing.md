@@ -1,5 +1,6 @@
 ---
 title: Stake Slashing
+sidebar_position: 4
 description: How Flow enforces honest node behaviour
 ---
 

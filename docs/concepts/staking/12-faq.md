@@ -45,11 +45,6 @@ A token holder can delegate to multiple nodes from a single account if they use 
 
 The staking collection is enabled by default on Flow port, and many custody providers also support it.
 
-### Is there a utility to generate the FLOW addresses?
-
-Staking of FLOW has to be done via Flow port which requires a login through Ledger or Blocto.
-Hence, a utility cannot be used to generate a Flow address since it cannot be used to stake via Flow port.
-
 ### Is the wallet key transferred to the staked node?
 
 No - The keys on the node are different from the wallet keys. The wallet keys always stay in the wallet.
@@ -69,8 +64,8 @@ adding a minimum of 250,000 more FLOW from the same entity.
 
 ### Is rewards payout another spork?
 
-No, rewards payout is not a spork but (currently) a separate transaction
-that the Flow governance committee initiates.
+No, rewards payout is not a spork but is an automatic transaction that happens
+at the beginning of every new epoch.
 
 ### Can I query an account address of a node ID or delegator ID?
 
