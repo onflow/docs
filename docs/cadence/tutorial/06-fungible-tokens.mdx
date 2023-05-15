@@ -18,6 +18,7 @@ In this tutorial, we're going to deploy, store, and transfer fungible tokens.
   <br />
   The tutorial will ask you to take various actions to interact with this code.
 </Callout>
+
 <Callout type="info">
   Instructions that require you to take action are always included in a callout
   box like this one. These highlighted actions are all that you need to do to
@@ -99,6 +100,7 @@ and [Hello, World!](./02-hello-world.mdx) to learn the basics of the language an
     https://play.onflow.org/e63bfce9-3324-4385-9542-626845ae0363
   </a>
 </Callout>
+
 <Callout type="info">
 
 Open the account `0x01` tab to see the file named
@@ -686,10 +688,14 @@ the `deposit` function will be there since it is in the `ExampleToken.Receiver` 
 
 Let's create capabilities to your `Vault` so that a separate account can send tokens to you.
 
-Before we submit a transaction interacting with ExampleToken resources, we'll need to deploy the contract to account `0x02`:
-1. Select Contract 2 in the playground sidebar (the ExampleToken contract)
-1. Make sure that signer `0x02` is selected as the deploying address
-1. Click "Deploy"
+<Callout type="info">
+
+Before we submit a transaction interacting with ExampleToken resources, we'll need to deploy the contract to account `0x02`:<br/>
+1. Select Contract 2 in the playground sidebar (the ExampleToken contract)<br/>
+2. Make sure that signer `0x02` is selected as the deploying address<br/>
+3. Click "Deploy"
+
+</Callout>
 
 ![Deploy ExampleToken to 0x02](./deploy_example_token.png)
 
@@ -784,11 +790,11 @@ that the capability contains a valid link to a valid object in storage that is t
 
 <Callout type="info">
 
-Now that we understand the transaction, time to submit it:
+Now that we understand the transaction, time to submit it:<br/>
 
-1. Select account `0x02` as the only signer.
-1. Click the `Send` button to submit the transaction.
-1. This transaction creates a new public reference to your `Vault` and checks that it was created correctly.
+1. Select account `0x02` as the only signer.<br/>
+2. Click the `Send` button to submit the transaction.<br/>
+3. This transaction creates a new public reference to your `Vault` and checks that it was created correctly.
 
 </Callout>
 
@@ -809,9 +815,11 @@ This way, Cadence protects the user if they accidentally enter the account addre
 
 Account `0x03` has not been set up to receive tokens, so we will do that now:
 
-1. Open the transaction `Setup Account`.
-1. Select account `0x03` as the only signer.
-1. Click the `Send` button to set up account `0x03` so that it can receive tokens.
+1. Open the transaction `Setup Account`.<br/>
+2. Select account `0x03` as the only signer.<br/>
+3. Click the `Send` button to set up account `0x03` so that it can receive tokens.
+
+</Callout>
 
 ```cadence SetupAccount.cdc
 // Setup Account
@@ -868,14 +876,12 @@ In the next transaction, account `0x02` will mint 30 new tokens and deposit them
 
 <Callout type="info">
 
-Open the `Mint Tokens` transaction.
-Select only account `0x02` as a signer and send `Mint Tokens` to mint 30 tokens for account `0x03`.
-
-<br />
-
-`Mint Tokens` should contain the code below.
+1. Open the `Mint Tokens` transaction.<br/>
+2. Select only account `0x02` as a signer and send `Mint Tokens` to mint 30 tokens for account `0x03`.
 
 </Callout>
+
+`Mint Tokens` should contain the code below.
 
 ```cadence MintTokens.cdc
 // Mint Tokens
@@ -913,8 +919,6 @@ transaction {
         log("30 tokens minted and deposited to account 0x03")
     }
 }
-
-
 ```
 
 This is the first example of a transaction where we utilize local transaction variables that span different stages in the transaction.
@@ -962,10 +966,11 @@ In this example, we will query the balance of each account's vault. The followin
 
 <Callout type="info">
 
-Open the script named `Get Balances` in the scripts pane.<br/>
-`Get Balances` should contain the following code:
+Open the script named `Get Balances` in the scripts pane.
 
 </Callout>
+
+`Get Balances` should contain the following code:
 
 ```cadence Script1.cdc
 // Get Balances
@@ -999,10 +1004,11 @@ pub fun main() {
 
 <Callout type="info">
 
-Execute `Get Balances` by clicking the Execute button.<br/>
-This should ensure the following:
+Execute `Get Balances` by clicking the Execute button.
 
 </Callout>
+
+This should ensure the following:
 
 - Account `0x02`'s balance is 30
 - Account `0x03`'s balance is 30
@@ -1026,9 +1032,9 @@ Now that we have two accounts, each with a `Vault`, we can see how they transfer
 
 <Callout type="info">
 
-Open the transaction named `Transfer Tokens`. <br/>
-Select account `0x03` as a signer and send the transaction. <br/>
-`Transfer Tokens` should contain the following code for sending tokens to another user:
+1. Open the transaction named `Transfer Tokens`. <br/>
+2. Select account `0x03` as a signer and send the transaction. <br/>
+3. `Transfer Tokens` should contain the following code for sending tokens to another user:
 
 </Callout>
 

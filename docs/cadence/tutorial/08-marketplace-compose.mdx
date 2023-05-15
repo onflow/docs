@@ -87,7 +87,7 @@ This way, the owner of the token keeps custody of their token while it is on sal
 
 Before we start, we need to confirm the state of your accounts. <br/>
 If you haven't already, please perform the steps in the [marketplace setup guide](./07-marketplace-setup.mdx)
-to ensure that the Fungible Token and Non-Fungible Token contracts are deployed to account 1 and 2 and own some tokens.
+to ensure that the Fungible Token and Non-Fungible Token contracts are deployed to account 1 and 2 and own some tokens.<br/>
 Your accounts should look like this:
 
 </Callout>
@@ -191,12 +191,14 @@ Every user who wants to sell an NFT will store an instance of a `SaleCollection`
 
 Time to deploy the marketplace contract:
 
-1. Switch to the ExampleMarketplace contract (Contract 3).
-1. With `ExampleMarketplace.cdc` open, select account `0x03` from the deployment modal in the bottom right and deploy.
+<Callout type="info">
 
-`ExampleMarketplace.cdc` should contain the following contract definition:
+1. Switch to the ExampleMarketplace contract (Contract 3).<br/>
+2. With `ExampleMarketplace.cdc` open, select account `0x03` from the deployment modal in the bottom right and deploy.
 
 </Callout>
+
+`ExampleMarketplace.cdc` should contain the following contract definition:
 
 ```cadence ExampleMarketplace.cdc
 import ExampleToken from 0x01
@@ -519,7 +521,7 @@ You can create a `SaleCollection` and list account `0x01`'s token for sale by fo
 <Callout type="info">
 
 1. Open Transaction 4, `CreateSale.cdc` <br/>
-1. Select account `0x01` as the only signer and click the `Send` button to submit the transaction.
+2. Select account `0x01` as the only signer and click the `Send` button to submit the transaction.
 
 </Callout>
 
@@ -617,8 +619,8 @@ The buyer can now purchase the seller's NFT by using the transaction in `Transac
 
 <Callout type="info">
 
-1. Open Transaction 5: `PurchaseSale.cdc` file
-1. Select account `0x02` as the only signer and click the `Send` button.
+1. Open Transaction 5: `PurchaseSale.cdc` file<br/>
+2. Select account `0x02` as the only signer and click the `Send` button
 
 </Callout>
 
@@ -692,8 +694,8 @@ To run a script that verifies the NFT was purchased correctly, follow these step
 
 <Callout type="info">
 
-1. Open Script 3: `VerifyAfterPurchase.cdc`.
-1. Click the `Execute` button
+1. Open Script 3: `VerifyAfterPurchase.cdc`<br/>
+2. Click the `Execute` button
 
 </Callout>
 
