@@ -1,9 +1,6 @@
 ./docs/anti-patterns.mdx: docs/cadence/anti-patterns.mdx
 ./docs/contract-upgrades.mdx: docs/cadence/contract-upgrades.mdx
 ./docs/design-patterns.mdx: docs/cadence/design-patterns.mdx
-./docs/development.md: docs/cadence/development.md
-./docs/FAQ.md: docs/cadence/FAQ.md
-./docs/goland.md: docs/cadence/goland.md
 ./docs/index.mdx: docs/cadence/intro.md
 ./docs/json-cadence-spec.md: docs/cadence/json-cadence-spec.md
 ./docs/language/access-control.md: docs/cadence/language/access-control.md
@@ -40,12 +37,8 @@
 ./docs/language/type-safety.md: docs/cadence/language/type-safety.md
 ./docs/language/values-and-types.mdx: docs/cadence/language/values-and-types.mdx
 ./docs/measuring-time.mdx: docs/cadence/measuring-time.mdx
-./docs/README.md: docs/cadence/README.md
-./docs/releasing.md: docs/cadence/releasing.md
 ./docs/security-best-practices.mdx: docs/cadence/security-best-practices.mdx
 ./docs/solidity-to-cadence.mdx: docs/cadence/solidity-to-cadence.mdx
-./docs/subtyping.md: docs/cadence/subtyping.md
-./docs/syntax-highlighting.md: docs/cadence/syntax-highlighting.md
 ./docs/testing-framework.mdx: docs/cadence/testing-framework.mdx
 ./docs/tutorial/01-first-steps.mdx: docs/cadence/tutorial/01-first-steps.mdx
 ./docs/tutorial/02-hello-world.mdx: docs/cadence/tutorial/02-hello-world.mdx

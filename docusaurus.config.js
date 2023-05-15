@@ -14,7 +14,11 @@ const docCollectionsLocation = './src/data/doc-collections';
 let cachedSources;
 
 const mixpanelOnLoad = `
+<<<<<<< HEAD
 if ('${process.env.MIXPANEL_PROJECT_TOKEN}' && '${process.env.MIXPANEL_PROJECT_TOKEN}' !== 'undefined') {
+=======
+if (${process.env.MIXPANEL_PROJECT_TOKEN}) {
+>>>>>>> 093b6c85a (add hotjar")
   window.mixpanel.init('${process.env.MIXPANEL_PROJECT_TOKEN}');
 
   const viwedPayload = {
@@ -223,6 +227,11 @@ const config = {
       },
       // Replace with your project's social card
       image: 'img/FlowDocs_Logo_FlowLogo_Horizontal_Green_BlackText.svg',
+      docs: {
+        sidebar: {
+          autoCollapseCategories: true,
+        },
+      },
       navbar: {
         title: '',
         logo: {
@@ -577,6 +586,14 @@ const config = {
     },
     {
       src: '/hotjar.js',
+      async: true,
+    },
+    {
+      src: 'https://widget.kapa.ai/kapa-widget.bundle.js',
+      'data-website-id': '0f0b3ed1-7761-4986-851e-09336ea6ef1c',
+      'data-project-name': 'Flow',
+      'data-project-color': '#2E8555',
+      'data-project-logo': 'https://cryptologos.cc/logos/flow-flow-logo.png',
       async: true,
     },
   ],
