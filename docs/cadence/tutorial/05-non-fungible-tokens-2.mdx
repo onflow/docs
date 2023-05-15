@@ -344,12 +344,15 @@ and the hat can be transferred separately or along with the CryptoKitty that own
 
 This also brings up an interesting wrinkle in Cadence in regards to ownership.
 In other ledger-based languages, ownership is indicated by account addresses.
-Cadence is a fully object-oriented language.
-Resources can own other resources, so does it always make sense to say
-that the account that owns the resource that owns other resources also owns the
-sub-resources? Or are they simply the property of the resource? Its hard to say,
-and you'll encounter more fascinating implications of ownership and interoperability
-as you get deeper into Cadence. 
+Cadence is a fully object-oriented language, so ownership is indicated by where
+an object is stored, not just an entry on a ledger.
+
+Resources can own other resources, which means that with some interesting logic,
+a resource can have more control over the resources it owns than the actual
+person whose account it is stored in!
+
+You'll encounter more fascinating implications of ownership and interoperability
+like this as you get deeper into Cadence. 
 
 Now, back to the tutorial!
 
