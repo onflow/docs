@@ -20,7 +20,7 @@ The Access Nodes hosted by DapperLabs are accessible at:
 | Testnet     | `access.devnet.nodes.onflow.org:9000`     | `testnet.onflow.org`              | `testnet.onflow.org`         |
 
 #### Mainnet
-##### We are still in the process of aggregating the past chain data but mainnet 5 to mainnet 1 spork data can be retrieved from the Access nodes mentioned [here](https://developers.flow.com/nodes/node-operation/spork#mainnet)
+##### We are still in the process of aggregating the past chain data but mainnet 5 to mainnet 1 spork data can be retrieved from the Access nodes mentioned [here](./node-operation/spork.mdx#mainnet)
 
 Production network where the Flow blockchain is running. Funds are at risk.
 
@@ -34,7 +34,7 @@ Our test environment. Funds can be fauceted freely. It is sporked 2 weeks prior 
 
 #### Rate limits for Dapper Labs access nodes
 
-Access nodes operated by Dapper Labs are [rate limited](https://developers.flow.com/nodes/access-api-rate-limits).
+Access nodes operated by Dapper Labs are [rate limited](./access-api-rate-limits).
 
 ---
 
@@ -42,7 +42,7 @@ Access nodes operated by Dapper Labs are [rate limited](https://developers.flow.
 
 `Ping` will return a successful response if the Access API is ready and available.
 
-```protobuf
+```proto
 rpc Ping(PingRequest) returns (PingResponse)
 ```
 
@@ -51,7 +51,7 @@ If a ping request returns an error or times out, it can be assumed that the Acce
 
 #### Request
 
-```protobuf
+```proto
 message PingRequest {}
 ```
 
@@ -60,7 +60,7 @@ message PingRequest {}
 
 #### Response
 
-```protobuf
+```proto
 message PingResponse {}
 ```
 
@@ -76,14 +76,14 @@ The following methods query information about [block headers](#block-header).
 
 `GetLatestBlockHeader` gets the latest sealed or unsealed [block header](#block-header).
 
-```protobuf
+```proto
 rpc GetLatestBlockHeader (GetLatestBlockHeaderRequest) returns (BlockHeaderResponse)
 ```
 
 
 #### Request
 
-```protobuf
+```proto
 message GetLatestBlockHeaderRequest {
   bool is_sealed
 }
@@ -94,7 +94,7 @@ message GetLatestBlockHeaderRequest {
 
 #### Response
 
-```protobuf
+```proto
 message BlockHeaderResponse {
   flow.BlockHeader block
   flow.BlockStatus block_status
@@ -107,14 +107,14 @@ message BlockHeaderResponse {
 
 `GetBlockHeaderByID` gets a [block header](#block-header) by ID.
 
-```protobuf
+```proto
 rpc GetBlockHeaderByID (GetBlockHeaderByIDRequest) returns (BlockHeaderResponse)
 ```
 
 
 #### Request
 
-```protobuf
+```proto
 message GetBlockHeaderByIDRequest {
   bytes id
 }
@@ -125,7 +125,7 @@ message GetBlockHeaderByIDRequest {
 
 #### Response
 
-```protobuf
+```proto
 message BlockHeaderResponse {
   flow.BlockHeader block
   flow.BlockStatus block_status
@@ -138,14 +138,14 @@ message BlockHeaderResponse {
 
 `GetBlockHeaderByHeight` gets a [block header](#block-header) by height.
 
-```protobuf
+```proto
 rpc GetBlockHeaderByHeight (GetBlockHeaderByHeightRequest) returns (BlockHeaderResponse)
 ```
 
 
 #### Request
 
-```protobuf
+```proto
 message GetBlockHeaderByHeightRequest {
   uint64 height
 }
@@ -156,7 +156,7 @@ message GetBlockHeaderByHeightRequest {
 
 #### Response
 
-```protobuf
+```proto
 message BlockHeaderResponse {
   flow.BlockHeader block
   flow.BlockStatus block_status
@@ -175,14 +175,14 @@ The following methods query information about [full blocks](#block).
 
 `GetLatestBlock` gets the full payload of the latest sealed or unsealed [block](#block).
 
-```protobuf
+```proto
 rpc GetLatestBlock (GetLatestBlockRequest) returns (BlockResponse)
 ```
 
 
 #### Request
 
-```protobuf
+```proto
 message GetLatestBlockRequest {
   bool is_sealed
 }
@@ -193,7 +193,7 @@ message GetLatestBlockRequest {
 
 #### Response
 
-```protobuf
+```proto
 message BlockResponse {
   flow.Block block
   flow.BlockStatus block_status
@@ -206,14 +206,14 @@ message BlockResponse {
 
 `GetBlockByID` gets a [full block](#block) by ID.
 
-```protobuf
+```proto
 rpc GetBlockByID (GetBlockByIDRequest) returns (BlockResponse)
 ```
 
 
 #### Request
 
-```protobuf
+```proto
 message GetBlockByIDRequest {
   bytes id
 }
@@ -224,7 +224,7 @@ message GetBlockByIDRequest {
 
 #### Response
 
-```protobuf
+```proto
 message BlockResponse {
   flow.Block block
   flow.BlockStatus block_status
@@ -237,14 +237,14 @@ message BlockResponse {
 
 `GetBlockByHeight` gets a [full block](#block) by height.
 
-```protobuf
+```proto
 rpc GetBlockByHeight (GetBlockByHeightRequest) returns (BlockResponse)
 ```
 
 
 #### Request
 
-```protobuf
+```proto
 message GetBlockByHeightRequest {
   uint64 height
 }
@@ -255,7 +255,7 @@ message GetBlockByHeightRequest {
 
 #### Response
 
-```protobuf
+```proto
 message BlockResponse {
   flow.Block block
   flow.BlockStatus block_status
@@ -274,14 +274,14 @@ The following methods query information about [collections](#collection).
 
 `GetCollectionByID` gets a [collection](#collection) by ID.
 
-```protobuf
+```proto
 rpc GetCollectionByID (GetCollectionByIDRequest) returns (CollectionResponse)
 ```
 
 
 #### Request
 
-```protobuf
+```proto
 message GetCollectionByIDRequest {
   bytes id
 }
@@ -292,7 +292,7 @@ message GetCollectionByIDRequest {
 
 #### Response
 
-```protobuf
+```proto
 message CollectionResponse {
   flow.Collection collection
 }
@@ -310,7 +310,7 @@ The following methods can be used to submit [transactions](#transaction) and fet
 
 `SendTransaction` submits a transaction to the network.
 
-```protobuf
+```proto
 rpc SendTransaction (SendTransactionRequest) returns (SendTransactionResponse)
 ```
 
@@ -321,7 +321,7 @@ rpc SendTransaction (SendTransactionRequest) returns (SendTransactionResponse)
 
 `SendTransactionRequest` message contains the transaction that is being request to be executed.
 
-```protobuf
+```proto
 message SendTransactionRequest {
   flow.Transaction transaction
 }
@@ -334,7 +334,7 @@ message SendTransactionRequest {
 
 `SendTransactionResponse` message contains the ID of the submitted transaction.
 
-```protobuf
+```proto
 message SendTransactionResponse {
   bytes id
 }
@@ -350,7 +350,7 @@ If the transaction is not found in the access node cache, the request is forward
 
 _Currently, only transactions within the current epoch can be queried._
 
-```protobuf
+```proto
 rpc GetTransaction (GetTransactionRequest) returns (TransactionResponse)
 ```
 
@@ -359,7 +359,7 @@ rpc GetTransaction (GetTransactionRequest) returns (TransactionResponse)
 
 `GetTransactionRequest` contains the ID of the transaction that is being queried.
 
-```protobuf
+```proto
 message GetTransactionRequest {
   bytes id
 }
@@ -372,7 +372,7 @@ message GetTransactionRequest {
 
 `TransactionResponse` contains the basic information about a transaction, but does not include post-execution results.
 
-```protobuf
+```proto
 message TransactionResponse {
   flow.Transaction transaction
 }
@@ -384,14 +384,14 @@ message TransactionResponse {
 
 `GetTransactionResult` gets the execution result of a transaction.
 
-```protobuf
+```proto
 rpc GetTransactionResult (GetTransactionRequest) returns (TransactionResultResponse)
 ```
 
 
 #### Request
 
-```protobuf
+```proto
 message GetTransactionRequest {
   bytes id
 }
@@ -402,7 +402,7 @@ message GetTransactionRequest {
 
 #### Response
 
-```protobuf
+```proto
 message TransactionResultResponse {
   flow.TransactionStatus status
   uint32 status_code
@@ -423,14 +423,14 @@ message TransactionResultResponse {
 
 ⚠️ Warning: this function is deprecated. It behaves identically to `GetAccountAtLatestBlock` and will be removed in a future version.
 
-```protobuf
+```proto
 rpc GetAccount(GetAccountRequest) returns (GetAccountResponse)
 ```
 
 
 #### Request
 
-```protobuf
+```proto
 message GetAccountRequest {
   bytes address
 }
@@ -441,7 +441,7 @@ message GetAccountRequest {
 
 #### Response
 
-```protobuf
+```proto
 message GetAccountResponse {
   Account account
 }
@@ -455,14 +455,14 @@ message GetAccountResponse {
 
 The access node queries an execution node for the account details, which are stored as part of the sealed execution state.
 
-```protobuf
+```proto
 rpc GetAccountAtLatestBlock(GetAccountAtLatestBlockRequest) returns (AccountResponse)
 ```
 
 
 #### Request
 
-```protobuf
+```proto
 message GetAccountAtLatestBlockRequest {
   bytes address
 }
@@ -473,7 +473,7 @@ message GetAccountAtLatestBlockRequest {
 
 #### Response
 
-```protobuf
+```proto
 message AccountResponse {
   Account account
 }
@@ -487,14 +487,14 @@ message AccountResponse {
 
 The access node queries an execution node for the account details, which are stored as part of the execution state.
 
-```protobuf
+```proto
 rpc GetAccountAtBlockHeight(GetAccountAtBlockHeightRequest) returns (AccountResponse)
 ```
 
 
 #### Request
 
-```protobuf
+```proto
 message GetAccountAtBlockHeightRequest {
   bytes address
   uint64 block_height
@@ -506,7 +506,7 @@ message GetAccountAtBlockHeightRequest {
 
 #### Response
 
-```protobuf
+```proto
 message AccountResponse {
   Account account
 }
@@ -520,9 +520,9 @@ message AccountResponse {
 
 `ExecuteScriptAtLatestBlock` executes a read-only Cadence script against the latest sealed execution state.
 
-This method can be used to read execution state from the blockchain. The script is executed on an execution node and the return value is encoded using the [JSON-Cadence data interchange format](https://developers.flow.com/cadence/json-cadence-spec).
+This method can be used to read execution state from the blockchain. The script is executed on an execution node and the return value is encoded using the [JSON-Cadence data interchange format](../../cadence/json-cadence-spec.md).
 
-```protobuf
+```proto
 rpc ExecuteScriptAtLatestBlock (ExecuteScriptAtLatestBlockRequest) returns (ExecuteScriptResponse)
 ```
 
@@ -536,7 +536,7 @@ value = ExecuteScriptAtBlockID(header.ID, script)
 
 #### Request
 
-```protobuf
+```proto
 message ExecuteScriptAtLatestBlockRequest {
   bytes script
 }
@@ -547,7 +547,7 @@ message ExecuteScriptAtLatestBlockRequest {
 
 #### Response
 
-```protobuf
+```proto
 message ExecuteScriptResponse {
   bytes value
 }
@@ -559,16 +559,16 @@ message ExecuteScriptResponse {
 
 `ExecuteScriptAtBlockID` executes a ready-only Cadence script against the execution state at the block with the given ID.
 
-This method can be used to read account state from the blockchain. The script is executed on an execution node and the return value is encoded using the [JSON-Cadence data interchange format](https://developers.flow.com/cadence/json-cadence-spec).
+This method can be used to read account state from the blockchain. The script is executed on an execution node and the return value is encoded using the [JSON-Cadence data interchange format](../../cadence/json-cadence-spec.md).
 
-```protobuf
+```proto
 rpc ExecuteScriptAtBlockID (ExecuteScriptAtBlockIDRequest) returns (ExecuteScriptResponse)
 ```
 
 
 #### Request
 
-```protobuf
+```proto
 message ExecuteScriptAtBlockIDRequest {
   bytes block_id
   bytes script
@@ -580,7 +580,7 @@ message ExecuteScriptAtBlockIDRequest {
 
 #### Response
 
-```protobuf
+```proto
 message ExecuteScriptResponse {
   bytes value
 }
@@ -592,16 +592,16 @@ message ExecuteScriptResponse {
 
 `ExecuteScriptAtBlockHeight` executes a ready-only Cadence script against the execution state at the given block height.
 
-This method can be used to read account state from the blockchain. The script is executed on an execution node and the return value is encoded using the [JSON-Cadence data interchange format](https://developers.flow.com/cadence/json-cadence-spec).
+This method can be used to read account state from the blockchain. The script is executed on an execution node and the return value is encoded using the [JSON-Cadence data interchange format](../../cadence/json-cadence-spec.md).
 
-```protobuf
+```proto
 rpc ExecuteScriptAtBlockHeight (ExecuteScriptAtBlockHeightRequest) returns (ExecuteScriptResponse)
 ```
 
 
 #### Request
 
-```protobuf
+```proto
 message ExecuteScriptAtBlockHeightRequest {
   uint64 block_height
   bytes script
@@ -613,7 +613,7 @@ message ExecuteScriptAtBlockHeightRequest {
 
 #### Response
 
-```protobuf
+```proto
 message ExecuteScriptResponse {
   bytes value
 }
@@ -631,7 +631,7 @@ The following methods can be used to query for on-chain [events](#event).
 
 `GetEventsForHeightRange` retrieves [events](#event) emitted within the specified block range.
 
-```protobuf
+```proto
 rpc GetEventsForHeightRange(GetEventsForHeightRangeRequest) returns (GetEventsForHeightRangeResponse)
 ```
 
@@ -648,7 +648,7 @@ Event types are name-spaced with the address of the account and contract in whic
 
 #### Request
 
-```protobuf
+```proto
 message GetEventsForHeightRangeRequest {
   string type
   uint64 start_height = 2;
@@ -661,7 +661,7 @@ message GetEventsForHeightRangeRequest {
 
 #### Response
 
-```protobuf
+```proto
 message EventsResponse {
   message Result {
     bytes block_id = 1;
@@ -679,7 +679,7 @@ message EventsResponse {
 
 `GetEventsForBlockIDs` retrieves [events](#event) for the specified block IDs and event type.
 
-```protobuf
+```proto
 rpc GetEventsForBlockIDs(GetEventsForBlockIDsRequest) returns (GetEventsForBlockIDsResponse)
 ```
 
@@ -690,7 +690,7 @@ The event results are grouped by block, with each group specifying a block ID, h
 
 #### Request
 
-```protobuf
+```proto
 message GetEventsForBlockIDsRequest {
   string type = 1;
   repeated bytes block_ids = 2;
@@ -702,7 +702,7 @@ message GetEventsForBlockIDsRequest {
 
 #### Response
 
-```protobuf
+```proto
 message EventsResponse {
   message Result {
     bytes block_id = 1;
@@ -727,14 +727,14 @@ The following method can be used to query for network parameters.
 
 `GetNetworkParameters` retrieves the network parameters.
 
-```protobuf
+```proto
 rpc GetNetworkParameters (GetNetworkParametersRequest) returns (GetNetworkParametersResponse)
 ```
 
 
 #### Request
 
-```protobuf
+```proto
 message GetNetworkParametersRequest {}
 ```
 
@@ -743,7 +743,7 @@ message GetNetworkParametersRequest {}
 
 #### Response
 
-```protobuf
+```proto
 message GetNetworkParametersResponse {
   string chain_id = 1;
 }
@@ -766,14 +766,14 @@ The following method can be used to query the latest protocol state [snapshot](h
 `GetLatestProtocolStateSnapshotRequest` retrieves the latest Protocol state snapshot serialized as a byte array.
 It is used by Flow nodes joining the network to bootstrap a space-efficient local state.
 
-```protobuf
+```proto
 rpc GetLatestProtocolStateSnapshot (GetLatestProtocolStateSnapshotRequest) returns (ProtocolStateSnapshotResponse);
 ```
 
 
 #### Request
 
-```protobuf
+```proto
 message GetLatestProtocolStateSnapshotRequest {}
 ```
 
@@ -782,7 +782,7 @@ message GetLatestProtocolStateSnapshotRequest {}
 
 #### Response
 
-```protobuf
+```proto
 message ProtocolStateSnapshotResponse {
   bytes serializedSnapshot = 1;
 }
@@ -799,14 +799,14 @@ The following method can be used to query the for [execution results](https://gi
 and contain data about chunks/collection level execution results rather than particular transactions.
 Particularly, it contains `EventsCollection` hash for every chunk which can be used to verify the events for a block.
 
-```protobuf
+```proto
 rpc GetExecutionResultForBlockID(GetExecutionResultForBlockIDRequest) returns (ExecutionResultForBlockIDResponse);
 ```
 
 
 #### Request
 
-```protobuf
+```proto
 message GetExecutionResultForBlockIDRequest {
   bytes block_id = 1;
 }
@@ -816,7 +816,7 @@ message GetExecutionResultForBlockIDRequest {
 
 #### Response
 
-```protobuf
+```proto
 message ExecutionResultForBlockIDResponse {
   flow.ExecutionResult execution_result = 1;
 }
@@ -831,7 +831,7 @@ Below are in-depth descriptions of each of the data entities returned or accepte
 
 ## Block
 
-```protobuf
+```proto
 message Block {
   bytes id
   bytes parent_id
@@ -853,13 +853,13 @@ message Block {
 | block_seals           | List of [block seals](#block-seal)                                                                                                                                                                                                                                                                                |
 | signatures            | BLS signatures of consensus nodes                                                                                                                                                                                                                                                                                 |
 
-The detailed semantics of block formation are covered in the [block formation guide](https://developers.flow.com/learn/concepts/transaction-lifecycle#block-formation).
+The detailed semantics of block formation are covered in the [block formation guide](../../concepts//start-here/transaction-lifecycle.md#block-formation).
 
 ## Block Header
 
 A block header is a summary of a [block](#block) and contains only the block ID, height, and parent block ID.
 
-```protobuf
+```proto
 message BlockHeader {
   bytes id
   bytes parent_id
@@ -877,7 +877,7 @@ message BlockHeader {
 
 A block seal is an attestation that the execution result of a specific [block](#block) has been verified and approved by a quorum of verification nodes.
 
-```protobuf
+```proto
 message BlockSeal {
   bytes block_id
   bytes execution_receipt_id
@@ -895,7 +895,7 @@ message BlockSeal {
 
 ## Block Status
 
-```protobuf
+```proto
 enum BlockStatus {
   UNKNOWN = 0;
   FINALIZED = 1;
@@ -913,7 +913,7 @@ enum BlockStatus {
 
 A collection is a batch of [transactions](#transaction) that have been included in a block. Collections are used to improve consensus throughput by increasing the number of transactions per block.
 
-```protobuf
+```proto
 message Collection {
   bytes id
   repeated bytes transaction_ids
@@ -929,7 +929,7 @@ message Collection {
 
 A collection guarantee is a signed attestation that specifies the collection nodes that have guaranteed to store and respond to queries about a collection.
 
-```protobuf
+```proto
 message CollectionGuarantee {
   bytes collection_id
   repeated bytes signatures
@@ -945,7 +945,7 @@ message CollectionGuarantee {
 
 A transaction represents a unit of computation that is submitted to the Flow network.
 
-```protobuf
+```proto
 message Transaction {
   bytes script
   repeated bytes arguments
@@ -974,24 +974,24 @@ message TransactionSignature {
 | Field                         | Description                                                                                          |
 | ----------------------------- | ---------------------------------------------------------------------------------------------------- |
 | script                        | Raw source code for a Cadence script, encoded as UTF-8 bytes                                         |
-| arguments                     | Arguments passed to the Cadence script, encoded as [JSON-Cadence](https://developers.flow.com/cadence/json-cadence-spec) bytes |
+| arguments                     | Arguments passed to the Cadence script, encoded as [JSON-Cadence](../../cadence/json-cadence-spec.md) bytes |
 | reference_block_id            | Block ID used to determine transaction expiry                                                        |
 | [proposal_key](#proposal-key) | Account key used to propose the transaction                                                          |
 | payer                         | Address of the payer account                                                                         |
 | authorizers                   | Addresses of the transaction authorizers                                                             |
 | signatures                    | [Signatures](#transaction-signatures) from all signer accounts                                       |
 
-The detailed semantics of transaction creation, signing and submission are covered in the [transaction submission guide](https://developers.flow.com/learn/concepts/transaction-signing).
+The detailed semantics of transaction creation, signing and submission are covered in the [transaction submission guide](../../concepts/start-here/transaction-signing.md).
 
 ### Proposal Key
 
-The proposal key is used to specify a sequence number for the transaction. Sequence numbers are covered in more detail [here](https://developers.flow.com/learn/concepts/accounts-and-keys#sequence-numbers).
+The proposal key is used to specify a sequence number for the transaction. Sequence numbers are covered in more detail [here](../../concepts/start-here/accounts-and-keys.md#sequence-numbers).
 
 | Field           | Description                                                                          |
 | --------------- | ------------------------------------------------------------------------------------ |
 | address         | Address of proposer account                                                          |
 | key_id          | ID of proposal key on the proposal account                                           |
-| sequence_number | [Sequence number](https://developers.flow.com/learn/concepts/accounts-and-keys#sequence-numbers) for the proposal key |
+| sequence_number | [Sequence number](../../concepts/start-here/accounts-and-keys.md#sequence-numbers) for the proposal key |
 
 ### Transaction Signature
 
@@ -1003,7 +1003,7 @@ The proposal key is used to specify a sequence number for the transaction. Seque
 
 ### Transaction Status
 
-```protobuf
+```proto
 enum TransactionStatus {
   UNKNOWN = 0;
   PENDING = 1;
@@ -1027,7 +1027,7 @@ enum TransactionStatus {
 
 An account is a user's identity on Flow. It contains a unique address, a balance, a list of public keys and the code that has been deployed to the account.
 
-```protobuf
+```proto
 message Account {
   bytes address
   uint64 balance
@@ -1047,13 +1047,13 @@ message Account {
 
 The `code` and `contracts` fields contain the raw Cadence source code, encoded as UTF-8 bytes.
 
-More information on accounts can be found [here](https://developers.flow.com/learn/concepts/accounts-and-keys/).
+More information on accounts can be found [here](../../concepts/start-here/accounts-and-keys.md).
 
 ### Account Key
 
 An account key is a reference to a public key associated with a Flow account. Accounts can be configured with zero or more public keys, each of which can be used for signature verification when authorizing a transaction.
 
-```protobuf
+```proto
 message AccountKey {
   uint32 id
   bytes public_key
@@ -1069,19 +1069,19 @@ message AccountKey {
 | --------------- | --------------------------------------------------------------------------------------- |
 | id              | Index of the key within the account, used as a unique identifier                        |
 | public_key      | Public key encoded as bytes                                                             |
-| sign_algo       | [Signature algorithm](https://developers.flow.com/learn/concepts/accounts-and-keys#supported-signature--hash-algorithms) |
-| hash_algo       | [Hash algorithm](https://developers.flow.com/learn/concepts/accounts-and-keys#supported-signature--hash-algorithms)      |
-| weight          | [Weight assigned to the key](https://developers.flow.com/learn/concepts/accounts-and-keys#weighted-keys)                 |
-| sequence_number | [Sequence number for the key](https://developers.flow.com/learn/concepts/accounts-and-keys#sequence-numbers)             |
+| sign_algo       | [Signature algorithm](../../concepts/start-here/accounts-and-keys.md#supported-signature--hash-algorithms) |
+| hash_algo       | [Hash algorithm](../../concepts/start-here/accounts-and-keys.md#supported-signature--hash-algorithms)      |
+| weight          | [Weight assigned to the key](../../concepts/start-here/accounts-and-keys.md#weighted-keys)                 |
+| sequence_number | [Sequence number for the key](../../concepts/start-here/accounts-and-keys.md#sequence-numbers)             |
 | revoked         | Flag indicating whether or not the key has been revoked                                 |
 
-More information on account keys, key weights and sequence numbers can be found [here](https://developers.flow.com/learn/concepts/accounts-and-keys/).
+More information on account keys, key weights and sequence numbers can be found [here](../../concepts/start-here/accounts-and-keys.md).
 
 ## Event
 
 An event is emitted as the result of a [transaction](#transaction) execution. Events are either user-defined events originating from a Cadence smart contract, or built-in Flow system events.
 
-```protobuf
+```proto
 message Event {
   string type
   bytes transaction_id
@@ -1097,13 +1097,13 @@ message Event {
 | transaction_id    | ID of the transaction the event was emitted from                           |
 | transaction_index | Zero-based index of the transaction within the block                       |
 | event_index       | Zero-based index of the event within the transaction                       |
-| payload           | Event fields encoded as [JSON-Cadence values](https://developers.flow.com/cadence/json-cadence-spec) |
+| payload           | Event fields encoded as [JSON-Cadence values](../../cadence/json-cadence-spec.md) |
 
 ## Execution Result
 
 Execution result for a particular block.
 
-```protobuf
+```proto
 message ExecutionResult {
   bytes previous_result_id
   bytes block_id
@@ -1124,7 +1124,7 @@ message ExecutionResult {
 
 Chunk described execution information for given collection in a block
 
-```protobuf
+```proto
 message Chunk {
   bytes start_state
   bytes event_collection
@@ -1150,7 +1150,7 @@ message Chunk {
 
 Special type of events emitted in system chunk used for controlling Flow system.
 
-```protobuf
+```proto
 message ServiceEvent {
   string type;
   bytes payload;

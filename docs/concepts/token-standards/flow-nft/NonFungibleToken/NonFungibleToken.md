@@ -25,7 +25,7 @@ because enforcing the metadata interfaces in the standard
 would break many contracts in an upgrade. Those breaking changes
 are being saved for the stable cadence milestone
 
-[More...](NonFungibleToken_INFT.md)
+[More...](./NonFungibleToken_INFT.md)
 
 ---
     
@@ -37,7 +37,7 @@ pub resource interface Provider {
 ```
 Interface to mediate withdraws from the Collection
 
-[More...](NonFungibleToken_Provider.md)
+[More...](./NonFungibleToken_Provider.md)
 
 ---
     
@@ -49,7 +49,7 @@ pub resource interface Receiver {
 ```
 Interface to mediate deposits to the Collection
 
-[More...](NonFungibleToken_Receiver.md)
+[More...](./NonFungibleToken_Receiver.md)
 
 ---
     
@@ -62,7 +62,7 @@ pub resource interface CollectionPublic {
 Interface that an account would commonly
 publish for their collection
 
-[More...](NonFungibleToken_CollectionPublic.md)
+[More...](./NonFungibleToken_CollectionPublic.md)
 
 ---
 ## Structs & Resources
@@ -78,7 +78,7 @@ pub resource NFT {
 Requirement that all conforming NFT smart contracts have
 to define a resource called NFT that conforms to INFT
 
-[More...](NonFungibleToken_NFT.md)
+[More...](./NonFungibleToken_NFT.md)
 
 ---
 
@@ -93,7 +93,7 @@ pub resource Collection {
 Requirement for the concrete resource type
 to be declared in the implementing contract
 
-[More...](NonFungibleToken_Collection.md)
+[More...](./NonFungibleToken_Collection.md)
 
 ---
 ## Functions

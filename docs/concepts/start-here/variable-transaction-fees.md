@@ -71,7 +71,7 @@ Right now, the inclusion effort is always 1.0 and the inclusion effort cost is f
 
 In the future, costs for inclusion will be impacted by the byte size of the transaction and the number of signatures required.
 
-> **Note**: The changes to variable inclusion costs will be updated in [one of the upcoming sporks](https://docs.onflow.org/nodes/node-operation/upcoming-sporks/).
+> **Note**: The changes to variable inclusion costs will be updated in [one of the upcoming sporks](../nodes/node-operation/upcoming-sporks.mdx).
 
 ### Network surge
 
@@ -79,7 +79,7 @@ In the future, a network surge will be applied when the network is busy due to a
 
 ### Storage fees
 
-Storage fees are implemented differently from transaction fees. Read the [Storing Data on Flow guide](https://docs.onflow.org/concepts/storage/#storage-capacity) for more details. In summary, storage fees are a cost associated with storing data on-chain.
+Storage fees are implemented differently from transaction fees. Read the [Storing Data on Flow guide](./storage.md#storage-capacity) for more details. In summary, storage fees are a cost associated with storing data on-chain.
 
 ## Estimating transaction costs
 
@@ -91,7 +91,7 @@ Execution effort is best determined by running a transaction and reviewing the e
 
 **Using Flow Emulator**
 
-You can [start the emulator using the Flow CLI](https://docs.onflow.org/emulator/#running-the-emulator-with-the-flow-cli). Run your transaction and take a look at the events emitted:
+You can [start the emulator using the Flow CLI](../../tooling/emulator/index.md#running-the-emulator-with-the-flow-cli). Run your transaction and take a look at the events emitted:
 
 ```shell
 0|emulator | time="2022-04-06T17:13:22-07:00" level=info msg="⭐  Transaction executed" computationUsed=3 txID=a782c2210c0c1f2a6637b20604d37353346bd5389005e4bff6ec7bcf507fac06
@@ -270,7 +270,7 @@ pub fun add(_ a: Int, _ b: Int): Int {
 
 **Avoid excessive load and save operations**
 
-Avoid costly loading and storage operations and [borrow references](https://docs.onflow.org/cadence/design-patterns/#avoid-excessive-load-and-save-storage-operations-prefer-in-place-mutations) where possible, for example:
+Avoid costly loading and storage operations and [borrow references](../../cadence/design-patterns.mdx#avoid-excessive-load-and-save-storage-operations-prefer-in-place-mutations) where possible, for example:
 
 ```cadence
 transaction {
@@ -331,7 +331,7 @@ There are several places to learn more about transaction fees:
 
 **When will the fee update go into effect?**
 
-The updates were rolled out with the [Spork on April 6, 2022](https://docs.onflow.org/nodes/node-operation/past-sporks/#mainnet-17), and were enabled on [June 1st](https://forum.onflow.org/t/permissionless-contract-deployment-progress/2981) during the [weekly epoch transition](https://github.com/onflow/service-account/tree/main/transactions/set-execution-effort-weights/2022/jun-1).
+The updates were rolled out with the [Spork on April 6, 2022](../nodes/node-operation/past-sporks.mdx#mainnet-17), and were enabled on [June 1st](https://forum.onflow.org/t/permissionless-contract-deployment-progress/2981) during the [weekly epoch transition](https://github.com/onflow/service-account/tree/main/transactions/set-execution-effort-weights/2022/jun-1).
 
 **Why are fees collected even when transactions fail?**
 

@@ -18,7 +18,7 @@ Cadence introduces new features to smart contract programming that help develope
 - The utilization of capability-based security, which enforces access control by requiring that access to objects
   is restricted to only the owner and those who have a valid reference to the object
 
-Please see the [Cadence introduction](https://developers.flow.com/cadence) for more information about the high level design of the language.
+Please see the [Cadence introduction](../../cadence/) for more information about the high level design of the language.
 
 ## What is the Flow Developer Playground?
 
@@ -48,21 +48,25 @@ and the contracts, transactions, and scripts will be loaded into the templates i
 
 ## Accounts and Contracts
 
-The Accounts section on the left side of the screen is where the active accounts are listed and selected.
-An account can have a smart contract deployed to it, which will be covered later.
-You can click on an account tab to view the contract that is associated with that account in the main editor.
+The Accounts section on the bottom left part of the screen is where the active accounts are listed and selected.
+An account can have multiple smart contracts deployed to it, which will be covered later.
+You can click on an account tab to view the contracts that are associated with that account in the main editor.
 
-<img src="https://storage.googleapis.com/flow-resources/documentation-assets/cadence-tuts/playground-accounts.png" />
+![Playground Intro](playground-intro.png)
 
 When you have Cadence code open in the account editor that contains a contract,
-you can click the deploy button in the top-right of the screen to deploy that contract to the currently selected account.
+you can click the deploy button in the bottom-right of the screen
+to deploy that contract to the currently selected account.
 
 ![Deploy Contract](deploybox.png)
 
-After a few seconds, you should see a message in the console confirming that the contract was deployed.
-You should also see the name of the contract show up in the tab for that account, indicating the account now has that contract deployed to it.
+After a few seconds, the contract should deploy. In the accounts section, you should 
+now see the name of the contract next to the selected account that you deployed too
+and if you click on "Log" in the bottom section of the scrren, you should 
+see a message in the console confirming that the contract was deployed and which account it was deployed to.
 
-You can also select transactions and scripts from the left selection menu and submit them to interact with your deployed smart contracts,
+You can also select transactions and scripts from the left selection menu
+and submit them to interact with your deployed smart contracts,
 which will be covered in the Hello World tutorial.
 
 This is just a small set of the things you can do with the Playground.
@@ -76,4 +80,5 @@ or you can use the pre-generated tutorial setups in the Playground.
 
 ## Say Hello, World!
 
-Now that you have the Flow Developer Playground running, you can create a smart contract for Flow!
+Now that you have the Flow Developer Playground running,
+you can [create a smart contract](./02-hello-world) for Flow!

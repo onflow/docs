@@ -104,9 +104,9 @@ Your Callout can be added to **Tools** sections on the following feature landing
 (in addition to `/tools`): 
 
 - **/getting-started:** [https://github.com/onflow/developer-portal/blob/main/app/data/pages/getting-started.ts](https://github.com/onflow/developer-portal/blob/main/app/data/pages/getting-started.ts)
-    - [https://developers.flow.com/getting-started](https://developers.flow.com/getting-started)
+    - [getting-started](/getting-started)
 - **/community:** [https://github.com/onflow/developer-portal/blob/main/app/data/pages/community.ts](https://github.com/onflow/developer-portal/blob/main/app/data/pages/community.ts)
-    - [https://developers.flow.com/community](https://developers.flow.com/community)
+    - [community](/community)
 
 ---
 

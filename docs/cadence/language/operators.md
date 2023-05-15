@@ -1,5 +1,6 @@
 ---
 title: Operators
+sidebar_position: 5
 ---
 
 Operators are special symbols that perform a computation
@@ -94,7 +95,7 @@ to an optional-typed variable if the variable is nil.
 If the variable being assigned to is non-nil,
 the execution of the program aborts.
 
-The force-assignment operator is only used for [resource types](resources).
+The force-assignment operator is only used for [resource types](./resources.mdx).
 
 ## Swapping Operator (`<->`)
 
@@ -360,7 +361,7 @@ Comparison operators work with boolean and integer values.
   d3 == d4 // is `true`
   ```
 
-- Inequality: `!=`, is supported for booleans, numbers, addresses, strings, characters, enums, paths, `Type` values, references, and `Void` values (`()`). 
+- Inequality: `!=`, is supported for booleans, numbers, addresses, strings, characters, enums, paths, `Type` values, references, and `Void` values (`()`).
   Variable-sized arrays, fixed-size arrays, dictionaries, and optionals also support inequality tests if their inner types do.
 
   Both sides of the inequality operator may be optional, even of different levels,

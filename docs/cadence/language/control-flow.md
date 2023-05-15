@@ -1,5 +1,6 @@
 ---
 title: Control Flow
+sidebar_position: 7
 ---
 
 Control flow statements control the flow of execution in a function.
@@ -352,7 +353,7 @@ dictionary.forEachKey(fun (key: String): Bool {
     let value = dictionary[key]
     log(key)
     log(value)
-    
+
     return key != "two" // stop iteration if this returns false
 })
 ```

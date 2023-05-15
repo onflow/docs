@@ -21,7 +21,7 @@ This will import the sample into a Samples folder under your Assets:
 
 To install the Flow emulator, please follow the instructions for your platform here:
 
-[https://developers.flow.com/tooling/flow-cli/install](https://developers.flow.com/tooling/flow-cli/install)
+[flow-cli/install](../../flow-cli/index.md)
 
 Note that the Flow CLI and Flow emulator are bundled into the same command-line executable.
 
@@ -199,7 +199,7 @@ flow.AccountContractRemoved
 
 ### Scripts
 
-Scripts are cadence code that you write and are executed on the blockchain. They can contain arguments and return values, and can interact with Smart Contracts. Scripts are read-only - they cannot mutate anything on the blockchain. Anything held in local memory is discarded when the script finishes execution. For more information on programming with Cadence, see [https://developers.flow.com/cadence](https://developers.flow.com/cadence).
+Scripts are cadence code that you write and are executed on the blockchain. They can contain arguments and return values, and can interact with Smart Contracts. Scripts are read-only - they cannot mutate anything on the blockchain. Anything held in local memory is discarded when the script finishes execution. For more information on programming see [Cadence](../../../cadence/intro.md).
 
 **Execute Simple Script At Latest Block**
 
@@ -253,15 +253,15 @@ The cadence script for this test is in the same location as the others, called *
 
 Like Scripts, Transactions are cadence code that you write and are executed on the blockchain, but that is where the similarities end. The purpose of Transactions is to mutate data on the blockchain. To do this, the Transaction must be signed by the account/s that are going to be affected. The Transaction code can contain arguments, but can't return a value. This is because there is a delay for the Transaction to execute, because it has to go through the collection/consensus/execution/verification cycle.
 
-For more information about Transactions, see [https://developers.flow.com/cadence/language/transactions](https://developers.flow.com/cadence/language/transactions).
+For more information about Transactions, see [cadence/language/transactions](../../../cadence/language/transactions.md).
 
-For more information about Transaction signing, see [https://developers.flow.com/learn/concepts/transaction-signing](https://developers.flow.com/learn/concepts/transaction-signing).
+For more information about Transaction signing, see [concepts/transaction-signing](../../../concepts/start-here/transaction-signing.md).
 
-For more information about Cadence programming, see [https://developers.flow.com/cadence](https://developers.flow.com/cadence).
+For more information about Cadence programming, see [cadence](../../../cadence/intro.md).
 
 **Signing In**
 
-To sign transactions, you must sign-in to a wallet provider. This sample uses DevWallet, an example wallet provider specifically made for development. For more information about DevWallet, see [https://developers.flow.com/tools/unity-sdk/guides/dev-wallet](https://developers.flow.com/tools/unity-sdk/guides/dev-wallet).
+To sign transactions, you must sign-in to a wallet provider. This sample uses DevWallet, an example wallet provider specifically made for development. For more information see [DevWallet](../guides/dev-wallet.md).
 
 Click the Sign In button. This will open a dialog asking to select an account to sign in with. The list of accounts is populated from the Accounts tab of the Flow Control Window. Select an account and click Ok. The address of the account you select will show underneath "Signed in as". You can now run the three transaction tests. 
 
@@ -361,4 +361,4 @@ Note that the Contract Name must match the name of the contract in the source fi
 
 The Contract Source File location is relative to the project's Assets directory.
 
-Only certain things in a Smart Contract can be modified. See this link about Contract Updatability: [https://developers.flow.com/cadence/language/contract-updatability](https://developers.flow.com/cadence/language/contract-updatability).
+Only certain things in a Smart Contract can be modified. See this link about [Contract Updatability](../../../cadence/language/contract-updatability.md).

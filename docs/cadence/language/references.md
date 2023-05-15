@@ -1,5 +1,6 @@
 ---
 title: References
+sidebar_position: 17
 ---
 
 It is possible to create references to objects, i.e. resources or structures.
@@ -134,5 +135,5 @@ counterRef3.increment()
 counterRef3.count  // is `44`
 ```
 
-References are ephemeral, i.e they cannot be [stored](accounts#account-storage).
-Instead, consider [storing a capability and borrowing it](capability-based-access-control) when needed.
+References are ephemeral, i.e they cannot be [stored](./accounts.mdx#account-storage).
+Instead, consider [storing a capability and borrowing it](./capability-based-access-control.md) when needed.

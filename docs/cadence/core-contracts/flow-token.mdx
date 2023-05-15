@@ -26,7 +26,7 @@ Source: [FlowToken.cdc](https://github.com/onflow/flow-core-contracts/blob/maste
 # Events
 
 Flow relies on a set of core contracts that define key portions of the Flow protocol. Those contracts are core contracts 
-and are made to emit the events documented below. You can read about the [core contracts here](https://docs.onflow.org/core-contracts) 
+and are made to emit the events documented below. You can read about the [core contracts here](./index.md) 
 and view their source code and event definitions.
 
 Events emitted from core contracts follow a standard format:
@@ -41,7 +41,7 @@ The components of the format are:
 - `event name` - the name of the event as declared in the source code
 
 ### Flow Token Contract
-Description of events emitted from the [FLOW Token contract](https://docs.onflow.org/core-contracts/flow-token/). 
+Description of events emitted from the [FLOW Token contract](./flow-token.mdx). 
 The contract defines the fungible FLOW token. Please note that events for the fungible token contracts are the same 
 if deployed to a different account but the `contract address` is 
 changed to the address of the account the contract has been deployed to.
@@ -160,5 +160,5 @@ pub event BurnerCreated()
 ```
 
 ### Staking Events
-To learn more about staking events, read [https://docs.onflow.org/staking/events/](https://docs.onflow.org/staking/events/)
+To learn more about staking events, read [staking/events/](../../concepts/nodes/staking/staking-scripts-events.md)
 

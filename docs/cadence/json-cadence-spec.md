@@ -1,5 +1,6 @@
 ---
 title: JSON-Cadence Data Interchange Format
+sidebar_label: JSON-Cadence format
 ---
 
 > Version 0.3.1
@@ -418,22 +419,22 @@ Function values can only be exported, they cannot be imported.
 
 ## Simple Types
 
-These are basic types like `Int`, `String`, or `StoragePath`. 
+These are basic types like `Int`, `String`, or `StoragePath`.
 
 ```json
 {
-  "kind": "Any" | "AnyStruct" | "AnyResource" | "AnyStructAttachment" | "AnyResourceAttachment" | "Type" | 
-    "Void" | "Never" | "Bool" | "String" | "Character" | 
-    "Bytes" | "Address" | "Number" | "SignedNumber" | 
-    "Integer" | "SignedInteger" | "FixedPoint" | 
-    "SignedFixedPoint" | "Int" | "Int8" | "Int16" | 
-    "Int32" | "Int64" | "Int128" | "Int256" | "UInt" | 
-    "UInt8" | "UInt16" | "UInt32" | "UInt64" | "UInt128" | 
-    "UInt256" | "Word8" | "Word16" | "Word32" | "Word64" | 
+  "kind": "Any" | "AnyStruct" | "AnyResource" | "AnyStructAttachment" | "AnyResourceAttachment" | "Type" |
+    "Void" | "Never" | "Bool" | "String" | "Character" |
+    "Bytes" | "Address" | "Number" | "SignedNumber" |
+    "Integer" | "SignedInteger" | "FixedPoint" |
+    "SignedFixedPoint" | "Int" | "Int8" | "Int16" |
+    "Int32" | "Int64" | "Int128" | "Int256" | "UInt" |
+    "UInt8" | "UInt16" | "UInt32" | "UInt64" | "UInt128" |
+    "UInt256" | "Word8" | "Word16" | "Word32" | "Word64" |
     "Fix64" | "UFix64" | "Path" | "CapabilityPath" | "StoragePath" |
-    "PublicPath" | "PrivatePath" | "AuthAccount" | "PublicAccount" | 
-    "AuthAccount.Keys" | "PublicAccount.Keys" | "AuthAccount.Contracts" | 
-    "PublicAccount.Contracts" | "DeployedContract" | "AccountKey" | "Block" 
+    "PublicPath" | "PrivatePath" | "AuthAccount" | "PublicAccount" |
+    "AuthAccount.Keys" | "PublicAccount.Keys" | "AuthAccount.Contracts" |
+    "PublicAccount.Contracts" | "DeployedContract" | "AccountKey" | "Block"
 }
 ```
 
@@ -456,7 +457,7 @@ These are basic types like `Int`, `String`, or `StoragePath`.
 }
 ```
 
-### Example 
+### Example
 
 ```json
 {
@@ -478,7 +479,7 @@ These are basic types like `Int`, `String`, or `StoragePath`.
 }
 ```
 
-### Example 
+### Example
 
 ```json
 {
@@ -501,7 +502,7 @@ These are basic types like `Int`, `String`, or `StoragePath`.
 }
 ```
 
-### Example 
+### Example
 
 ```json
 {
@@ -525,17 +526,17 @@ These are basic types like `Int`, `String`, or `StoragePath`.
 }
 ```
 
-### Example 
+### Example
 
 ```json
 {
   "kind": "Dictionary",
   "key": {
     "kind": "String"
-  }, 
+  },
   "value": {
     "kind": "UInt16"
-  }, 
+  },
 }
 ```
 
@@ -561,7 +562,7 @@ These are basic types like `Int`, `String`, or `StoragePath`.
 }
 ```
 
-### Example 
+### Example
 
 ```json
 {
@@ -601,7 +602,7 @@ These are basic types like `Int`, `String`, or `StoragePath`.
 }
 ```
 
-### Example 
+### Example
 
 ```json
 {
@@ -624,7 +625,7 @@ These are basic types like `Int`, `String`, or `StoragePath`.
 }
 ```
 
-### Example 
+### Example
 
 ```json
 {
@@ -640,17 +641,17 @@ These are basic types like `Int`, `String`, or `StoragePath`.
 
 ## Initializer Types
 
-Initializer types are encoded a list of parameters to the initializer. 
+Initializer types are encoded a list of parameters to the initializer.
 
 ```json
 [
-  <parameter at index 0>, 
+  <parameter at index 0>,
   <parameter at index 1>,
-  // ... 
+  // ...
 ]
 ```
 
-### Example 
+### Example
 
 ```json
 [
@@ -673,15 +674,15 @@ Initializer types are encoded a list of parameters to the initializer.
   "kind": "Function",
   "typeID": "<function name>",
   "parameters": [
-    <parameter at index 0>, 
+    <parameter at index 0>,
     <parameter at index 1>,
-    // ... 
-  ], 
+    // ...
+  ],
   "return": <type>
 }
 ```
 
-### Example 
+### Example
 
 ```json
 {
@@ -694,8 +695,8 @@ Initializer types are encoded a list of parameters to the initializer.
       "type": {
         "kind": "String"
       }
-    } 
-  ], 
+    }
+  ],
   "return": {
     "kind": "String"
   }
@@ -714,7 +715,7 @@ Initializer types are encoded a list of parameters to the initializer.
 }
 ```
 
-### Example 
+### Example
 
 ```json
 {
@@ -743,7 +744,7 @@ Initializer types are encoded a list of parameters to the initializer.
 }
 ```
 
-### Example 
+### Example
 
 ```json
 {
@@ -782,7 +783,7 @@ Initializer types are encoded a list of parameters to the initializer.
 }
 ```
 
-### Example 
+### Example
 
 ```json
 {
@@ -816,7 +817,7 @@ Initializer types are encoded a list of parameters to the initializer.
 }
 ```
 
-### Example 
+### Example
 
 ```json
 {
@@ -840,8 +841,8 @@ Initializer types are encoded a list of parameters to the initializer.
 ## Repeated Types
 
 When a composite type appears more than once within the same JSON type encoding, either because it is
-recursive or because it is repeated (e.g. in a composite field), the composite is instead 
-represented by its type ID. 
+recursive or because it is repeated (e.g. in a composite field), the composite is instead
+represented by its type ID.
 
 ### Example
 

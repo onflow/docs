@@ -1,5 +1,6 @@
 ---
 title: Capability-based Access Control
+sidebar_position: 20
 ---
 
 Users will often want to make it so that specific other users or even anyone else

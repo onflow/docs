@@ -88,7 +88,7 @@ used during the deployment. Example:
 
 
 ⚠️ Warning: before proceeding, 
-we recommend reading the [Flow CLI security guidelines](security.md) 
+we recommend reading the [Flow CLI security guidelines](./security.md) 
 to learn about the best practices for private key storage.
 
 ## Dependency Resolution

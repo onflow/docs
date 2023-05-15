@@ -10,8 +10,7 @@ Every week, the Flow governance committee executes the reward payout transaction
 When the transaction executes, it generates events for the rewards paid to each node and delegator.
 To check the staking and delegation rewards, that transaction should be queried.
 
-Example using [Flow cli](https://developers.flow.com/tools/flow-cli)
-
+Example using [Flow cli](../../../tooling/flow-cli/)
 ```
 $ flow transactions get 84eca4ff612ef70047d60510710cca872c8a17c1bd9f63686e74852b6382cc84 -n mainnet
 
@@ -79,8 +78,7 @@ Events:
    <clipped for brevity>
 ```
 
-Example using [Flow Go SDK](https://developers.flow.com/tools/flow-go-sdk)
-
+Example using [Flow Go SDK](../../../tooling/flow-go-sdk)
 ```
 package main
 
@@ -132,7 +130,6 @@ As part of the new method, rewards payout will happen automatically after the en
 Instead of a separate reward payout transaction, the reward payout events will be recorded in the system chunk in the block that is produced at the time of the epoch transition without creating a regular transaction ID.
 
 The rewards payout can be queried by querying the block which contains the system chunk that contains the reward payout events.
-
 ```
 flow events get A.8624b52f9ddcd04a.FlowIDTableStaking.RewardsPaid A.8624b52f9ddcd04a.FlowIDTableStaking.DelegatorRewardsPaid --start <block Height> --end <block height> -n mainnet
 
@@ -142,7 +139,7 @@ where block height is the height of the block containing the rewards payout even
 Example
 
 ```
-$ flow events get A.8624b52f9ddcd04a.FlowIDTableStaking.RewardsPaid --start 51753836 --end 51753836 -n mainnet
+$ flow events get A.8624b52f9ddcd04a.FlowIDTableStaking.RewardsPaid A.8624b52f9ddcd04a.FlowIDTableStaking.DelegatorRewardsPaid --start 51753836 --end 51753836 -n mainnet
 
 Events Block #51753836:
     Index	6
@@ -182,10 +179,26 @@ Events Block #51753836:
     ...
     ...
    <clipped for brevity>
+    ...
+    ...
+    Index	50115
+    Type	A.8624b52f9ddcd04a.FlowIDTableStaking.DelegatorRewardsPaid
+    Tx ID	f31815934bff124e332b3c8be5e1c7a949532707251a9f2f81def8cc9f3d1458
+    Values
+		- nodeID (String): "95ffacf0c05757cff71a4ee49e025d5a6d1103a3aa7d91253079e1bfb7c22458"
+		- delegatorID (UInt32): 23
+		- amount (UFix64): 0.10424555
+
+    Index	50118
+    Type	A.8624b52f9ddcd04a.FlowIDTableStaking.DelegatorRewardsPaid
+    Tx ID	f31815934bff124e332b3c8be5e1c7a949532707251a9f2f81def8cc9f3d1458
+    Values
+		- nodeID (String): "95ffacf0c05757cff71a4ee49e025d5a6d1103a3aa7d91253079e1bfb7c22458"
+		- delegatorID (UInt32): 18
+		- amount (UFix64): 17.31047712
 ```
 
-Example using [Flow Go SDK](https://developers.flow.com/tools/flow-go-sdk)
-
+Example using [Flow Go SDK](../../../tooling/flow-go-sdk)
 ```
 package main
 

@@ -1,5 +1,6 @@
 ---
 title: Syntax
+sidebar_position: 1
 ---
 
 ## Comments
@@ -52,7 +53,7 @@ let x = 1
 ```
 
 ```cadence
-/** 
+/**
   This is a documentation comment
   which also spans multiple lines.
 **/

@@ -80,11 +80,15 @@ account.save(<-myNFTs, to: /storage/basicNFTDictionary)
 This example uses a [**Dictionary**: a mutable, unordered collection of key-value associations](../language/values-and-types#dictionaries).
 
 ```cadence
+// Keys are `Int`
+// Values are `NFT`
 pub let myNFTs: @{Int: NFT}
 ```
 
 In a dictionary, all keys must have the same type, and all values must have the same type.
-In this case, we are mapping integer (`Int`) IDs to `NFT` resource objects.
+In this case, we are mapping integer (`Int`) IDs to `NFT` resource objects
+so that there is one `NFT` for each `Int` that exists in the dictionary.
+
 Dictionary definitions don't usually have the `@` symbol in the type specification,
 but because the `myNFTs` mapping stores resources, the whole field also has to become a resource type,
 which is why the field has the `@` symbol indicating that it is a resource type.
@@ -99,10 +103,11 @@ Instead, we can use a powerful feature of Cadence, resources owning other resour
 We'll define a new `Collection` resource as our NFT storage place
 to enable more-sophisticated ways to interact with our NFTs.
 
-The next contract we look at is called `ExampleNFT`, it's stored in account `0x02`.
+The next contract we look at is called `ExampleNFT`, it's stored in Contract 1 in account `0x01`.
+
 This contract expands on the `BasicNFT` we looked at by adding:
 1. An `idCount` contract field that tracks unique NFT ids.
-2. An `NFTReceiver` interface that exposes three functions for the collection
+2. An `NFTReceiver` interface that exposes three public functions for the collection.
 3. Declares a resource called `Collection` that implements the `NFTReceiver` interface
 4. The `Collection` will declare fields and functions to interact with it,
 including `ownedNFTs`, `init()`, `withdraw()`, `destroy()`, and other important functions
@@ -130,7 +135,7 @@ It contains what was already in `BasicNFT.cdc` plus additional resource declarat
 // that includes withdraw and deposit functionalities, as well as a
 // collection resource that can be used to bundle NFTs together.
 //
-// Learn more about non-fungible tokens in this tutorial: https://docs.onflow.org/docs/non-fungible-tokens
+// Learn more about non-fungible tokens in this tutorial: https://developers.flow.com/cadence/tutorial/non-fungible-tokens-1
 
 pub contract ExampleNFT {
 
@@ -279,6 +284,9 @@ This means that the collection has to
 have special rules for how to handle its own resource.
 You wouldn't want it getting lost by accident!
 
+As we learned in the resource tutorial, you can destroy any resource
+by explicity invoking the `destroy` command.
+
 If the NFT `Collection` resource is destroyed with the `destroy` command,
 it needs to know what to do with the resources it stores in the dictionary.
 This is why resources that store other resources have to include
@@ -333,6 +341,20 @@ like a CryptoKitty owning a hat accessory,
 the Kitty literally stores the hat in its own storage and effectively owns it.
 The hat belongs to the CryptoKitty that it is stored in,
 and the hat can be transferred separately or along with the CryptoKitty that owns it.
+
+This also brings up an interesting wrinkle in Cadence in regards to ownership.
+In other ledger-based languages, ownership is indicated by account addresses.
+Cadence is a fully object-oriented language, so ownership is indicated by where
+an object is stored, not just an entry on a ledger.
+
+Resources can own other resources, which means that with some interesting logic,
+a resource can have more control over the resources it owns than the actual
+person whose account it is stored in!
+
+You'll encounter more fascinating implications of ownership and interoperability
+like this as you get deeper into Cadence. 
+
+Now, back to the tutorial!
 
 ## Restricting Access to the NFT Collection
 
@@ -443,9 +465,8 @@ If you run into issues, make sure that you deployed the contract in account `0x0
 
 One way to create NFTs is by having an admin mint new tokens and send them to a user.
 For the purpose of learning, we are simply implementing minting as a public function here.
-
-Most would implement this by having an NFT Minter resource. This would restrict minting,
-because the owner of this resource is the only one that can mint tokens.
+Normally, most would implement restricted minting by having an NFT Minter resource.
+This would restrict minting, because the owner of this resource is the only one that can mint tokens.
 
 You can see an example of this in the [Marketplace tutorial](./08-marketplace-compose.mdx).
 

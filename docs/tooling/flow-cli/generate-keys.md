@@ -5,7 +5,7 @@ description: How to generate key pair from the command line
 ---
 
 The Flow CLI provides a command to generate ECDSA key pairs
-that can be [attached to new or existing Flow accounts](https://docs.onflow.org/concepts/accounts-and-keys).
+that can be [attached to new or existing Flow accounts](../../concepts/start-here/accounts-and-keys.md).
 
 ```shell
 flow keys generate

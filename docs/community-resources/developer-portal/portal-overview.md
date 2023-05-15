@@ -44,26 +44,6 @@ By default, the Developer Portal will display documents from the `docs` folder i
 
 User configured defaults are not currently supported.
 
-### flow-docs.json
-
-The `flow-docs.json` file is strongly reccomended but *not required*, to configure how your documentation displays on the Developer Portal.
-
-This file follows a schema defined here: [https://developers.flow.com/schemas/flow-docs.json](https://developers.flow.com/schemas/flow-docs.json)
-
-A full-featured example of this file *in use* with existing documentation can be found here: [https://github.com/onflow/cadence/blob/master/docs/flow-docs.json](https://github.com/onflow/cadence/blob/master/docs/flow-docs.json)
-
-Repository owners use `flow-docs.json` to control aspects of their documentation:
-
-- **Left-Hand navigation**: `sidebars`
-  - Left hand navigation is configured under the `sidebars` property.
-  - Individual sidebars can be created for any valid route (path to a document) in your documentation.
-- **Optional landing-page content:** `headings`
-  - Landing page layout similar to [https://developers.flow.com/cadence](https://developers.flow.com/cadence) can be enabled by adding valid objects under the `headings` property. Similar to left-hand navigation, a custom landing page header can be enabled for any valid route (path to a document) in your documentation.
-- **Content redirects:** `redirects`
-  - In specific cases, you may want to customize the URL for s given document. This can be done using a valid entry under the `redirects` property. Users must provide the desired URL, as well as the document name to be made available at that URL.
-
-`flow-docs.json` is recomended but not required to integrate your documentation with the Developer Portal. Please read additional documentation contained in the schema itself: [https://developers.flow.com/schemas/flow-docs.json](https://developers.flow.com/schemas/flow-docs.json)
-
 ---
 
 ## Content URLs
@@ -115,13 +95,6 @@ It is not required to supply this SEO metadata. Flow's in-house SEO experts will
 ---
 
 ## Page Content
-
-### Custom Page Header Hero
-
-A custom page header can be enable using `flow-docs.json`.
-eg: [https://developers.flow.com/cadence](https://developers.flow.com/cadence)
-
-See the `flow-docs.json` section above for more information.
 
 ### Left-Hand Menus
 
@@ -243,14 +216,3 @@ Content versioning is in progress here:
 [https://docs.google.com/document/d/1Au9A0eEGJE_VhVYBcAKVUdwkJn2SsGOVfj2u-ckcTHY/edit#heading=h.qvb387e4t234](https://docs.google.com/document/d/1Au9A0eEGJE_VhVYBcAKVUdwkJn2SsGOVfj2u-ckcTHY/edit#heading=h.qvb387e4t234)
 
 ---
-
-## onflow/flow special-case repo
-
-[https://github.com/onflow/flow/tree/master/docs/content](https://github.com/onflow/flow/tree/master/docs/content)
-
-The Developer Portal maintains a strict “one repo per docset” system. This means, each Repo represents a single set or URLs. FOr example, `onflow/cadence` contains docs relating only to Cadence, and all of this content is available under `/cadence` on the Developer Portal, eg: [https://developers.flow.com/cadence/design-patterns](https://developers.flow.com/cadence/design-patterns)
-
-However, there is a special-case repo: `onflow/flow` that contains legacy content, and content not related to a specific tool or repository contents. The documents in the repository can be found at different URLs on the Developer Portal.
-
-The content here is also located in a non-standard folder: `docs/content`
-

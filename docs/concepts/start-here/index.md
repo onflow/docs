@@ -30,7 +30,7 @@ The [development guide](../../tutorials/intro.md) covers the Flow core concepts,
 
 ## Core Contracts
 
-The Flow blockchain implements core functionality using its own smart contract language, Cadence. The core functionality is split into a set of contracts, so-called [core contracts](/cadence/core-contracts/):
+The Flow blockchain implements core functionality using its own smart contract language, Cadence. The core functionality is split into a set of contracts, so-called [core contracts](../../cadence/core-contracts/index.md):
 
 - **Fungible Token:** The FungibleToken contract implements the Fungible Token Standard. It is the second contract ever deployed on Flow.
 - **Flow Token:** The FlowToken contract defines the FLOW network token.
