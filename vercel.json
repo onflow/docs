@@ -1139,6 +1139,10 @@
       "destination": "/tooling/nft-catalog/overview"
     },
     {
+      "source": "/cadence/tutorial",
+      "destination": "/tutorial/intro"
+    },
+    {
       "source": "/cadence/tutorial/01-first-steps",
       "destination": "/cadence/tutorial/first-steps"
     },
