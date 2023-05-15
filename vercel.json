@@ -1140,7 +1140,7 @@
     },
     {
       "source": "/cadence/tutorial",
-      "destination": "/tutorial/intro"
+      "destination": "/cadence/tutorial/first-steps"
     },
     {
       "source": "/cadence/tutorial/01-first-steps",
