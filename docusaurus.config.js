@@ -179,9 +179,9 @@ const config = {
         blog: false,
         theme: {
           customCss: [
-            require.resolve('./src/css/custom.css'),
-            require.resolve('@code-hike/mdx/styles.css'),
             require.resolve('./src/ui/design-system/styles/main.css'),
+            require.resolve('@code-hike/mdx/styles.css'),
+            require.resolve('./src/css/custom.css'),
           ],
         },
         ...(process.env.GA_TRACKING_ID
@@ -264,17 +264,19 @@ const config = {
           {
             to: 'community-resources/Introduction',
             position: 'left',
-            label: 'Community Resources',
+            label: 'Resources',
           },
           {
             href: 'https://github.com/onflow',
             label: 'GitHub',
             position: 'right',
+            className: 'hidden xl:block',
           },
           {
             href: 'https://onflow.org/discord',
             label: 'Discord',
             position: 'right',
+            className: 'hidden lg:block',
           },
         ],
       },
