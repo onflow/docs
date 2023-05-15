@@ -69,12 +69,18 @@ const getDocFileNames = () => {
   return files;
 };
 
-const getDataSources = () => {
-  return JSON.parse(
-    fs
-      .readFileSync(path.join(__dirname, './src/data/data-sources.json'))
-      .toString(),
-  );
+const fetchSporkData = async () => {
+  const fetch = await import('node-fetch');
+  let data = {};
+  try {
+    const response = await fetch.default(
+      'https://raw.githubusercontent.com/onflow/flow/master/sporks.json',
+    );
+    data = (await response.json()) || {};
+  } catch (error) {
+    console.error('Error:', error);
+  }
+  return data;
 };
 /**
  *
@@ -500,11 +506,7 @@ const config = {
               .readFileSync(path.join(__dirname, './src/data/networks.json'))
               .toString(),
           );
-          const sporks = JSON.parse(
-            fs
-              .readFileSync(path.join(__dirname, './src/data/sporks.json'))
-              .toString(),
-          );
+          const sporks = await fetchSporkData();
           return {
             networks,
             sporks,
