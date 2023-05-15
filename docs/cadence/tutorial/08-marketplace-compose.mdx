@@ -422,6 +422,7 @@ where the Capability is linked.
 
 To create a capability, a user typically uses [the `AuthAccount.link`](../language/accounts.mdx#authaccount)
 method to create a link to a resource in their private storage, specifying a type to link the capability as:
+
 ```cadence
 // Create a public Receiver + Balance capability to the Vault
 // acct is an `AuthAccount`
@@ -515,8 +516,12 @@ Account `0x01` should have an NFT in their collection and the `ExampleMarketplac
 
 You can create a `SaleCollection` and list account `0x01`'s token for sale by following these steps:
 
+<Callout type="info">
+
 1. Open Transaction 4, `CreateSale.cdc` <br/>
 1. Select account `0x01` as the only signer and click the `Send` button to submit the transaction.
+
+</Callout>
 
 ```cadence Transaction4.cdc
 // CreateSale.cdc
@@ -610,8 +615,12 @@ This script should complete and print something like this:
 
 The buyer can now purchase the seller's NFT by using the transaction in `Transaction2.cdc`:
 
+<Callout type="info">
+
 1. Open Transaction 5: `PurchaseSale.cdc` file
 1. Select account `0x02` as the only signer and click the `Send` button.
+
+</Callout>
 
 ```cadence PurchaseSale.cdc
 // PurchaseSale.cdc
@@ -681,8 +690,12 @@ You can run now run a script to verify that the NFT was purchased correctly beca
 
 To run a script that verifies the NFT was purchased correctly, follow these steps:
 
+<Callout type="info">
+
 1. Open Script 3: `VerifyAfterPurchase.cdc`.
 1. Click the `Execute` button
+
+</Callout>
 
 `VerifyAfterPurchase.cdc` should contain the following code:
 
