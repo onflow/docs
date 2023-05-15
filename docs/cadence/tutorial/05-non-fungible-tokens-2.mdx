@@ -344,7 +344,8 @@ and the hat can be transferred separately or along with the CryptoKitty that own
 
 This also brings up an interesting wrinkle in Cadence in regards to ownership.
 In other ledger-based languages, ownership is indicated by account addresses.
-In cadence, since resources can own other resources, does it always make sense to say
+Cadence is a fully object-oriented language.
+Resources can own other resources, so does it always make sense to say
 that the account that owns the resource that owns other resources also owns the
 sub-resources? Or are they simply the property of the resource? Its hard to say,
 and you'll encounter more fascinating implications of ownership and interoperability
@@ -461,7 +462,7 @@ If you run into issues, make sure that you deployed the contract in account `0x0
 
 One way to create NFTs is by having an admin mint new tokens and send them to a user.
 For the purpose of learning, we are simply implementing minting as a public function here.
-Normally, most would implement restricte minting by having an NFT Minter resource.
+Normally, most would implement restricted minting by having an NFT Minter resource.
 This would restrict minting, because the owner of this resource is the only one that can mint tokens.
 
 You can see an example of this in the [Marketplace tutorial](./08-marketplace-compose.mdx).
