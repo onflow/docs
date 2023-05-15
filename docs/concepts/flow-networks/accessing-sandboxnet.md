@@ -1,5 +1,6 @@
 ---
 title: Flow Sandboxnet
+sidebar_position: 3
 description: Guide to sandboxnet access
 ---
 

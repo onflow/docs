@@ -1,5 +1,6 @@
 ---
 title: Flow Testnet
+sidebar_position: 2
 description: Guide to testnet access
 ---
 

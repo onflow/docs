@@ -42,7 +42,3 @@ The Flow blockchain implements core functionality using its own smart contract l
 ## FLOW Token
 
 The [FLOW](../../cadence/core-contracts/flow-token.mdx) token is the native currency for the Flow network. Developers and users can use FLOW to transact on the network. Developers can integrate FLOW directly into their apps for peer-to-peer payments, service charges, or consumer rewards. Flow can be held, transferred, or transacted peer-to-peer.
-
-## NFT marketplace
-
-A unique digital asset known as an NFT represents a real-world item, such as artwork, music, in-game items, or films. They can be purchased and sold online via an [NFT marketplace](../../tutorials/kitty-items/next-steps.md#learn-more-about-nft-marketplaces).
