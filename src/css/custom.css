@@ -19,6 +19,12 @@
   --ifm-color-primary-lightest: #3cad6e;
   --ifm-code-font-size: 95%;
   --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.1);
+  --ifm-navbar-item-padding-horizontal: 0.5rem;
+ 
+  /* xl breakpoint */
+  @media (min-width: 1280px) {
+    --ifm-navbar-item-padding-horizontal: 0.75rem;
+  } 
 }
 
 /* For readability concerns, you should choose a lighter palette in dark mode. */
@@ -31,4 +37,18 @@
   --ifm-color-primary-lighter: #32d8b4;
   --ifm-color-primary-lightest: #4fddbf;
   --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.3);
+}
+
+/* lg breakpoint */
+@media (min-width: 1024px) { 
+  .lg\:block {
+      display: block;
+  }
+}
+
+/* xl breakpoint */
+@media (min-width: 1280px) {
+  .xl\:block {
+      display: block;
+  }
 }
