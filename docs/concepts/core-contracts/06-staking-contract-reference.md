@@ -38,18 +38,18 @@ These scripts are read-only and get info about the current state of the staking 
 
 ## Node Staker Transactions
 
-Please see the [Locked Tokens contract](./locked-tokens.mdx#transactions) for information about staking with locked tokens.
+Please see the [Locked Tokens contract](./12-locked-tokens.md#transactions) for information about staking with locked tokens.
 Documentation for staking with unlocked tokens will be updated when unlocked tokens are available to stake with.
 
 ## Delegator Transactions
 
-Please see the [Locked Tokens contract](./locked-tokens.mdx#transactions) for information about delegating with locked tokens.
+Please see the [Locked Tokens contract](./12-locked-tokens.md#transactions) for information about delegating with locked tokens.
 Documentation for delegating with unlocked tokens will be updated when unlocked tokens are available to delegate with.
 
 # Events
 
 The `FlowIDTableStaking` contract emits an event whenever an important action occurs.
-See the [staking events Documentation](../../concepts/nodes/staking/staking-scripts-events.md) for more information about each event.
+See the [staking events Documentation](../staking/07-staking-scripts-events.md) for more information about each event.
 
 ```cadence
     pub event NewEpoch(totalStaked: UFix64, totalRewardPayout: UFix64)

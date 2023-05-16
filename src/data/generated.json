@@ -1,0 +1,28 @@
+[
+  {
+    "repository": {
+      "owner": "onflow",
+      "name": "flow-ft",
+      "branch": "master",
+      "data": [
+        {
+          "source": "docs/",
+          "destination": "concepts/token-standards/flow-ft",
+        }
+      ]
+    }
+  },
+  {
+    "repository": {
+      "owner": "onflow",
+      "name": "flow-nft",
+      "branch": "master",
+      "data": [
+        {
+          "source": "docs/",
+          "destination": "concepts/token-standards/flow-nft",
+        }
+      ]
+    }
+  }
+]

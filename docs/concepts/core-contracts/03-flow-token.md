@@ -41,7 +41,7 @@ The components of the format are:
 - `event name` - the name of the event as declared in the source code
 
 ### Flow Token Contract
-Description of events emitted from the [FLOW Token contract](./flow-token.mdx). 
+Description of events emitted from the [FLOW Token contract](./03-flow-token.md). 
 The contract defines the fungible FLOW token. Please note that events for the fungible token contracts are the same 
 if deployed to a different account but the `contract address` is 
 changed to the address of the account the contract has been deployed to.
@@ -160,5 +160,5 @@ pub event BurnerCreated()
 ```
 
 ### Staking Events
-To learn more about staking events, read [staking/events/](../../concepts/nodes/staking/staking-scripts-events.md)
+To learn more about staking events, read [staking/events/](../staking/07-staking-scripts-events.md)
 

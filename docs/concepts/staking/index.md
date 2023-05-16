@@ -1,7 +1,8 @@
 ---
 title: Epochs, Staking & Delegating on Flow
-sidebar_title: Introduction
+sidebar_title: Staking and Epochs
 description: Introduction to how staking works on Flow
+sidebar_position: 5
 ---
 
 This document provides an introduction to staking FLOW tokens on the Flow network
@@ -103,12 +104,12 @@ In the case of unstaking requests, they also must wait an additional
 epoch before their unstaked tokens are available to withdraw.
 This allows the protocol to deal with any slashable offenses that may have happened in the previous epoch.
 
-See the [Epochs](./epoch-preparation.mdx) section of the documentation for in-depth explainations 
+See the [Epochs](./04-epoch-preparation.mdx) section of the documentation for in-depth explainations 
 of the identity table, epoch schedule, QC, and DKG.
 
 ## Rewards
 
-Please see the [schedule](./schedule.mdx) section of the documentation
+Please see the [schedule](./03-schedule.mdx) section of the documentation
 for information about reward calculations and schedule and
 what you can do with the rewards you earn by staking a node!
 
@@ -134,12 +135,12 @@ You are joining a group of people from all around the world that are a part of a
 
 [Flow Port](https://port.onflow.org/) is a simple browser-based app for the Flow blockchain
 that provides functionality for sending, receiving, and staking tokens.
-Any wallet that uses the [Flow Client Library](../../../tooling/fcl-js/index.md)
+Any wallet that uses the [Flow Client Library](../../tooling/fcl-js/index.md)
 is compatible with Flow Port.
 
 If you created your account using [Flow Port](https://port.onflow.org/),
 you can also stake and earn rewards using the Flow Port.
-Follow this [step-by-step guide](../flow-port/staking-guide.md) to stake using Flow Port.
+Follow this [step-by-step guide](../nodes/flow-port/staking-guide.md) to stake using Flow Port.
 Flow Port currently supports staking as a node, delegating,
 and reward withdrawal using **Blocto**, **Ledger**, **Lilico**, and **NuFi** accounts / wallets.
 
@@ -157,6 +158,6 @@ using custody providers.
 If you are self-custodying your Flow account and keys, or you want to build a staking service for customers,
 you will need to learn more about how staking works,
 the various methods for staking, and how you can participate safely and reliably.
-See the [staking technical overview](./technical-overview.mdx) first,
+See the [staking technical overview](./06-technical-overview.mdx) first,
 followed by the [staking technical guide](./locked-staking-guide.mdx) 
 for information about technical integration.
