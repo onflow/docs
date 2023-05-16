@@ -14,11 +14,7 @@ const docCollectionsLocation = './src/data/doc-collections';
 let cachedSources;
 
 const mixpanelOnLoad = `
-<<<<<<< HEAD
 if ('${process.env.MIXPANEL_PROJECT_TOKEN}' && '${process.env.MIXPANEL_PROJECT_TOKEN}' !== 'undefined') {
-=======
-if (${process.env.MIXPANEL_PROJECT_TOKEN}) {
->>>>>>> 093b6c85a (add hotjar")
   window.mixpanel.init('${process.env.MIXPANEL_PROJECT_TOKEN}');
 
   const viwedPayload = {
