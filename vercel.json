@@ -775,6 +775,14 @@
       "destination": "/tutorials/flow-app-quickstart"
     },
     {
+      "source": "/fcl/reference/sdk-guidelines",
+      "destination": "/tooling/fcl-js/sdk-guidelines"
+    },
+    {
+      "source": "/fcl/reference",
+      "destination": "/tooling/fcl-js"
+    },
+    {
       "source": "/tools/flow-cadut/api",
       "destination": "/tooling/flow-cadut/api"
     },
