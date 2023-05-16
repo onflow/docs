@@ -1,7 +1,6 @@
 import React from 'react'
 import LandingImage from "../../../../images/misc/landing-home.png"
 import { ButtonLink } from "../Button"
-import { LandingPageLinks } from "../LandingPageLinks"
 
 export type LandingHeaderProps = {
   buttonText: string
@@ -24,9 +23,6 @@ export function LandingHeader({
   buttonUrl,
   callout,
   description,
-  discordUrl,
-  editPageUrl,
-  githubUrl,
   imageSrc = LandingImage,
   title,
 }: LandingHeaderProps) {
@@ -52,13 +48,6 @@ export function LandingHeader({
         <div className="hidden max-w-[554px] dark:bg-white/40 md:flex">
           <img src={imageSrc} alt={title} className="object-cover" />
         </div>
-      </div>
-      <div className="fixed right-14 top-1/4 hidden lg:block">
-        <LandingPageLinks
-          discordUrl={discordUrl}
-          editPageUrl={editPageUrl}
-          githubUrl={githubUrl}
-        />
       </div>
     </div>
   )
