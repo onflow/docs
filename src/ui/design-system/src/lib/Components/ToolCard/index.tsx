@@ -1,8 +1,9 @@
 import React from 'react';
 import StarIcon from '../../../../images/action/star.svg';
-import CodeIconSrc from '../../../../images/tools/tool-default.svg';
 import AppLink from '../AppLink';
 import Tag from '../Tag';
+
+const CodeIconSrc = '/images/tools/tool-default.svg';
 
 export interface ToolCardProps {
   authorIcon?: string;
@@ -35,14 +36,14 @@ export function ToolCard({
       <div className="shrink-0 grow-0 sm:basis-10 md:basis-16">
         <img
           className="dark:hidden"
-          src={iconSrc || CodeIconSrc}
+          src={iconSrc ?? CodeIconSrc}
           alt={title}
           width={64}
           loading="lazy"
         />
         <img
           className="hidden dark:block"
-          src={iconDarkModeSrc || iconSrc || CodeIconSrc}
+          src={iconDarkModeSrc ?? iconSrc ?? CodeIconSrc}
           alt={title}
           width={64}
           loading="lazy"

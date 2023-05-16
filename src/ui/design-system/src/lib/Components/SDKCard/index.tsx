@@ -1,58 +1,25 @@
-import React, { ComponentType, SVGProps } from "react"
-import CalendarIcon from "../../../../images/action/date-calendar.svg"
-import StarIcon from "../../../../images/action/star.svg"
-import CommitIcon from "../../../../images/content/commit.svg"
-import {
-  default as CodeIconLightSrc,
-  default as CodeIconSrc,
-} from "../../../../images/tools/tool-default.svg"
-import AppLink from "../AppLink"
-import Tag from "../Tag"
-import { Time } from "../Time"
+import React from 'react';
+import CalendarIcon from '../../../../images/action/date-calendar.svg';
+import StarIcon from '../../../../images/action/star.svg';
+import CommitIcon from '../../../../images/content/commit.svg';
+import AppLink from '../AppLink';
+import Tag from '../Tag';
+import { Time } from '../Time';
 
-export type SDKCardProps = {
-  title: string
-  authorIcon?: string
-  authorName?: string
-  tags?: string[]
-  link: string
-  stars?: number
-  lastCommit?: string
-  lastRelease?: string
-  iconSrc?: string | ComponentType<SVGProps<SVGSVGElement>>
-  iconDarkModeSrc?: string
-  description?: string
-}
+const CodeIconSrc = '/images/tools/tool-default.svg';
 
-const Icon = ({ iconSrc, iconDarkModeSrc, title }) => {
-  if (iconSrc) {
-    if (typeof iconSrc === 'string'){
-      return <img
-        className="dark:hidden"
-        src={iconSrc}
-        alt={title}
-        width={64}
-      /> 
-    }
-    if (typeof iconSrc === 'function') {
-      return iconSrc({title, className: 'dark:hidden'})
-    }
-    return <CodeIconSrc/>
-  }
-  if (iconDarkModeSrc) {
-    if (typeof iconDarkModeSrc === 'string'){
-      return <img
-        className="hidden dark:block"
-        src={iconDarkModeSrc}
-        alt={title}
-        width={64}
-      /> 
-    }
-    if (typeof iconDarkModeSrc === 'function') {
-      return iconSrc({title, className: 'hidden dark:block'})
-    }
-    return <CodeIconLightSrc/>
-  }
+export interface SDKCardProps {
+  title: string;
+  authorIcon?: string;
+  authorName?: string;
+  tags?: string[];
+  link: string;
+  stars?: number;
+  lastCommit?: string;
+  lastRelease?: string;
+  iconSrc?: string;
+  iconDarkModeSrc?: string;
+  description?: string;
 }
 
 export function SDKCard({
@@ -67,14 +34,27 @@ export function SDKCard({
   lastCommit,
   lastRelease,
   description,
-}: SDKCardProps) {
+}: SDKCardProps): JSX.Element {
   return (
     <AppLink
       className="flex gap-4 rounded-lg bg-white px-8 py-6 hover:shadow-2xl dark:bg-primary-gray-dark dark:text-white dark:hover:shadow-2xl-dark"
       to={link}
     >
       <div className="shrink-0 grow-0 sm:basis-10 md:basis-16">
-        <Icon iconSrc={iconSrc} iconDarkModeSrc={iconDarkModeSrc} title={title}/>
+        <img
+          className="dark:hidden"
+          src={iconSrc ?? CodeIconSrc ?? ''}
+          alt={title}
+          width={64}
+          loading="lazy"
+        />
+        <img
+          className="hidden dark:block"
+          src={iconDarkModeSrc ?? iconSrc ?? CodeIconSrc}
+          alt={title}
+          width={64}
+          loading="lazy"
+        />
       </div>
       <div className="grow">
         <h5 className="text-h5">{title}</h5>
@@ -139,5 +119,5 @@ export function SDKCard({
         )}
       </div>
     </AppLink>
-  )
+  );
 }
