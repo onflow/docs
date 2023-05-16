@@ -1,26 +1,27 @@
 const routeMapping = {
   '/cadence': '/cadence/intro',
   '/flow': '/concepts/start-here',
-  '/flow/core-contracts': '/concepts/core-contracts',
+  '/flow/core-contracts': '/cadence/core-contracts',
+  '/flow/core-contracts/account-creation':
+    '/cadence/core-contracts/account-creation',
   '/flow/core-contracts/epoch-contract-reference':
-    '/concepts/core-contracts/epoch-contract-reference',
-  '/flow/core-contracts/flow-fees': '/concepts/core-contracts/flow-fees',
-  '/flow/core-contracts/flow-token': '/concepts/core-contracts/flow-token',
+    '/cadence/core-contracts/epoch-contract-reference',
+  '/flow/core-contracts/flow-fees': '/cadence/core-contracts/flow-fees',
+  '/flow/core-contracts/flow-token': '/cadence/core-contracts/flow-token',
   '/flow/core-contracts/fungible-token':
-    '/concepts/core-contracts/fungible-token',
-  '/flow/core-contracts/locked-tokens':
-    '/concepts/core-contracts/locked-tokens',
-  '/flow/core-contracts/nft-metadata': '/concepts/core-contracts/nft-metadata',
+    '/cadence/core-contracts/fungible-token',
+  '/flow/core-contracts/locked-tokens': '/cadence/core-contracts/locked-tokens',
+  '/flow/core-contracts/nft-metadata': '/cadence/core-contracts/nft-metadata',
   '/flow/core-contracts/nft-storefront':
-    '/concepts/core-contracts/nft-storefront',
+    '/cadence/core-contracts/nft-storefront',
   '/flow/core-contracts/non-fungible-token':
-    '/concepts/core-contracts/non-fungible-token',
+    '/cadence/core-contracts/non-fungible-token',
   '/flow/core-contracts/service-account':
-    '/concepts/core-contracts/service-account',
+    '/cadence/core-contracts/service-account',
   '/flow/core-contracts/staking-collection':
-    '/concepts/core-contracts/staking-collection',
+    '/cadence/core-contracts/staking-collection',
   '/flow/core-contracts/staking-contract-reference':
-    '/concepts/core-contracts/staking-contract-reference',
+    '/cadence/core-contracts/staking-contract-reference',
   '/flow/dapp-development': '/tutorials/intro',
   '/flow/dapp-development/contract-testing': '/tutorials/contract-testing',
   '/flow/dapp-development/dapp-infrastructure':
