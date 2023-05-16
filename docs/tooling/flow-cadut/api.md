@@ -19,7 +19,7 @@
 #### Usage
 
 ```javascript
-import { extractImports } from "@onflow/flow-cadut";
+import { extractImports } from '@onflow/flow-cadut';
 
 const code = `
   import Message from 0x01
@@ -61,7 +61,7 @@ Given Cadence code template and addressMap, returns an array of missing contract
 #### Usage
 
 ```javascript
-import { missingImports } from "@onflow/flow-cadut";
+import { missingImports } from '@onflow/flow-cadut';
 
 const code = `
   import Message from 0x01
@@ -94,7 +94,7 @@ Reports missing imports via `console.error` with format:
 #### Usage
 
 ```javascript
-import { missingImports, report } from "@onflow/flow-cadut";
+import { missingImports, report } from '@onflow/flow-cadut';
 const code = `
       import Message from 0x01
       
@@ -123,7 +123,7 @@ Checks and reports missing contracts by matching code and addressMap in format:
 #### Usage
 
 ```javascript
-import { missingImports, report } from "@onflow/flow-cadut";
+import { missingImports, report } from '@onflow/flow-cadut';
 
 const code = `
   import Message from 0x01
@@ -154,7 +154,7 @@ Replaces import statements in provided Cadence templates with corresponding valu
 #### Usage
 
 ```javascript
-import { replaceImportAddresses } from "@onflow/flow-cadut";
+import { replaceImportAddresses } from '@onflow/flow-cadut';
 
 const code = `
   import Messages from 0x01
@@ -162,7 +162,7 @@ const code = `
   pub fun main(){}
 `;
 const addressMap = {
-  Message: "0xf8d6e0586b0a20c7",
+  Message: '0xf8d6e0586b0a20c7',
 };
 const replaced = replaceImportAddresses(code, addressMap);
 console.log({ replaced });
@@ -192,11 +192,11 @@ Converts provided value to `sdk` argument.
 #### Usage
 
 ```javascript
-import { query, config } from "@onflow/fcl";
-import { mapArgument } from "@onflow/flow-cadut";
+import { query, config } from '@onflow/fcl';
+import { mapArgument } from '@onflow/flow-cadut';
 
 (async () => {
-  config().put("accessNode.api", "https://rest-testnet.onflow.org");
+  config().put('accessNode.api', 'https://rest-testnet.onflow.org');
 
   const cadence = `
     pub fun main(message: String): String{
@@ -205,7 +205,7 @@ import { mapArgument } from "@onflow/flow-cadut";
 `;
 
   // Script expects a single argument of type "String"
-  const message = mapArgument("String", "Hello from Cadence!");
+  const message = mapArgument('String', 'Hello from Cadence!');
 
   // "args" shall return array of arguments.
   // We will pass "message" value into it
@@ -238,11 +238,11 @@ Converts provided values to `sdk` arguments.
 #### Usage
 
 ```javascript
-import { query, config } from "@onflow/fcl";
-import { mapArgument } from "@onflow/flow-cadut";
+import { query, config } from '@onflow/fcl';
+import { mapArgument } from '@onflow/flow-cadut';
 
 (async () => {
-  config().put("accessNode.api", "https://rest-testnet.onflow.org");
+  config().put('accessNode.api', 'https://rest-testnet.onflow.org');
 
   const cadence = `
     pub fun main(message: String, amount: Int): Int{
@@ -252,9 +252,9 @@ import { mapArgument } from "@onflow/flow-cadut";
 `;
 
   // Script expects multiple arguments - "String" and "Int"
-  const schema = ["String", "Int"];
+  const schema = ['String', 'Int'];
   // These are the values we will convert to arguments
-  const values = ["Hello from Cadence", 1337];
+  const values = ['Hello from Cadence', 1337];
   // mapArguments will return an array, no extra steps are required
   const args = () => mapArguments(schema, values);
 
@@ -288,11 +288,11 @@ values to corresponding types, preparing them to be passed into `sdk.send`
 This method will throw an error if user would fail to provide required amount of arguments
 
 ```javascript
-import { query, config } from "@onflow/fcl";
-import { mapValuesToCode } from "@onflow/flow-cadut";
+import { query, config } from '@onflow/fcl';
+import { mapValuesToCode } from '@onflow/flow-cadut';
 
 (async () => {
-  config().put("accessNode.api", "https://rest-testnet.onflow.org");
+  config().put('accessNode.api', 'https://rest-testnet.onflow.org');
 
   const cadence = `
     pub fun main(metadata: {String:String}, key: String):String {
@@ -304,8 +304,8 @@ import { mapValuesToCode } from "@onflow/flow-cadut";
     cadence,
     args: () =>
       mapValuesToCode(cadence, [
-        { language: "Cadence", languageRating: "Cadence is Awesome 🤟" },
-        "languageRating",
+        { language: 'Cadence', languageRating: 'Cadence is Awesome 🤟' },
+        'languageRating',
       ]),
   });
 
@@ -328,7 +328,7 @@ Parses the code and returns [TemplateInfo](#TemplateInfo)
 #### Usage
 
 ```javascript
-import { getTemplateInfo } from "@onflow/flow-cadut";
+import { getTemplateInfo } from '@onflow/flow-cadut';
 
 const script = `
   pub fun main(message:String):String{
@@ -366,7 +366,7 @@ Parses the code and returns array of [SignerPair](#SignerPair)
 #### Usage
 
 ```javascript
-import { extractSigners } from "@onflow/flow-cadut";
+import { extractSigners } from '@onflow/flow-cadut';
 
 const script = `
   pub fun main(){
@@ -396,7 +396,7 @@ Parses the code and returns array of [ArgumentPair](#ArgumentPair)
 #### Usage
 
 ```javascript
-import { extractScriptArguments } from "@onflow/flow-cadut";
+import { extractScriptArguments } from '@onflow/flow-cadut';
 
 const script = `
   pub fun main(message: String, metadata: {String:String}){
@@ -426,7 +426,7 @@ Parses the code and returns array of [ArgumentPair](#ArgumentPair)
 #### Usage
 
 ```javascript
-import { extractTransactionArguments } from "@onflow/flow-cadut";
+import { extractTransactionArguments } from '@onflow/flow-cadut';
 
 const tx = `
   transaction(message: String, metadata: {String:String}){
@@ -458,7 +458,7 @@ Parses the code and returns contract name
 #### Usage
 
 ```javascript
-import { extractContractName } from "@onflow/flow-cadut";
+import { extractContractName } from '@onflow/flow-cadut';
 
 const contract = `
   pub contract HelloWorld{
@@ -488,9 +488,9 @@ Splits [ArgumentPair](#ArgumentPair) into array of two items
 #### Usage
 
 ```javascript
-import { splitArgs } from "@onflow/flow-cadut";
-const simplePair = "message:String";
-const metaPair = "metadata: {String:String}";
+import { splitArgs } from '@onflow/flow-cadut';
+const simplePair = 'message:String';
+const metaPair = 'metadata: {String:String}';
 
 const simple = splitArgs(simplePair);
 const meta = splitArgs(metaPair);
@@ -517,10 +517,10 @@ Splits [ArgumentPair](#ArgumentPair) and returns type of the argument
 #### Usage
 
 ```javascript
-import { argType } from "@onflow/flow-cadut";
+import { argType } from '@onflow/flow-cadut';
 
-const simplePair = "message:String";
-const metaPair = "metadata: {String:String}";
+const simplePair = 'message:String';
+const metaPair = 'metadata: {String:String}';
 
 const simple = argType(simplePair);
 const meta = argType(metaPair);
@@ -547,10 +547,10 @@ Extracts item type from array type
 #### Usage
 
 ```javascript
-import { getArrayType } from "@onflow/flow-cadut";
+import { getArrayType } from '@onflow/flow-cadut';
 
-const simpleType = getArrayType("[String]");
-const complexType = getArrayType("[{String: String}]");
+const simpleType = getArrayType('[String]');
+const complexType = getArrayType('[{String: String}]');
 
 console.log({ simpleType, complexType });
 ```
@@ -574,9 +574,9 @@ Extracts key and value types from Dictionary type
 #### Usage
 
 ```javascript
-import { getDictionaryTypes } from "@onflow/flow-cadut";
+import { getDictionaryTypes } from '@onflow/flow-cadut';
 
-const type = "{String: UFix64}";
+const type = '{String: UFix64}';
 const types = getDictionaryTypes(type);
 const [keyType, valueType] = types;
 
@@ -607,15 +607,15 @@ Write files under `output` path.
 #### Usage
 
 ```javascript
-import path from "path";
-import { processFolder } from "@onflow/flow-cadut";
+import path from 'path';
+import { processFolder } from '@onflow/flow-cadut';
 
 (async () => {
-  const input = path.resolve("./cadence");
-  const output = path.resolve("./src/generated/localRegistry");
+  const input = path.resolve('./cadence');
+  const output = path.resolve('./src/generated/localRegistry');
 
   await processFolder(input, output);
-  console.log("✅ Done!");
+  console.log('✅ Done!');
 })();
 ```
 
@@ -642,15 +642,15 @@ Write files under `output` path.
 #### Usage
 
 ```javascript
-import path from "path";
-import { processGitRepo } from "@onflow/flow-cadut";
+import path from 'path';
+import { processGitRepo } from '@onflow/flow-cadut';
 
 (async () => {
-  const url = path.resolve("https://github.com/onflow/flow-core-contracts");
-  const output = path.resolve("./src/generated/localRegistry");
+  const url = path.resolve('https://github.com/onflow/flow-core-contracts');
+  const output = path.resolve('./src/generated/localRegistry');
 
   await processGitRepo(url, output);
-  console.log("✅ Done!");
+  console.log('✅ Done!');
 })();
 ```
 
@@ -669,11 +669,11 @@ Sets `flow.network` config value
 
 #### Network Variants
 
-| Variants   | Description                                                  |
-| ---------- | ------------------------------------------------------------ |
-| `emulator` | Emulator instance running locally at "http://localhost:8080" |
-| `testnet`  | Testnet access node at https://access-testnet.onflow.org     |
-| `mainnet`  | Mainnet access node at "https://access.mainnet.onflow.org"   |
+| Variants   | Description                                                |
+| ---------- | ---------------------------------------------------------- |
+| `emulator` | Emulator instance running locally at http://localhost:8080 |
+| `testnet`  | Testnet access node at https://access-testnet.onflow.org   |
+| `mainnet`  | Mainnet access node at https://access.mainnet.onflow.org   |
 
 #### Options
 
@@ -687,10 +687,10 @@ Sets `flow.network` config value
 #### Usage
 
 ```javascript
-import { setEnvironment } from "@onflow/flow-cadut";
+import { setEnvironment } from '@onflow/flow-cadut';
 
 (async () => {
-  await setEnvironment("testnet");
+  await setEnvironment('testnet');
 })();
 ```
 
@@ -707,10 +707,10 @@ Returns a set of deployed contracts for current environment
 #### Usage
 
 ```javascript
-import { setEnvironment, getEnvironment } from "@onflow/flow-cadut";
+import { setEnvironment, getEnvironment } from '@onflow/flow-cadut';
 
 (async () => {
-  await setEnvironment("mainnet");
+  await setEnvironment('mainnet');
   const addressMap = await getEnvironment();
   console.log({ addressMap });
 })();
@@ -736,7 +736,7 @@ Syntax sugar for `Buffer.from(code, "utf8").toString("hex");`
 #### Usage
 
 ```javascript
-import { hexContract } from "@onflow/flow-cadut";
+import { hexContract } from '@onflow/flow-cadut';
 
 const code = `
   pub contract HelloWorld{
@@ -783,7 +783,7 @@ Script result is represented as a tuple `[result, error]`
 #### Usage
 
 ```javascript
-import { executeScript } from "@onflow/flow-cadut";
+import { executeScript } from '@onflow/flow-cadut';
 
 (async () => {
   const code = `
@@ -822,15 +822,15 @@ Sends script to the network
 
 #### TransactionArguments
 
-| Name         | Type                                                                            | Optional | Description                                                                                                                                                                 |
-| ------------ | ------------------------------------------------------------------------------- | -------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `code`       | string                                                                          |          | Cadence code to execute                                                                                                                                                     |
+| Name         | Type                                                            | Optional | Description                                                                                                                                                 |
+| ------------ | --------------------------------------------------------------- | -------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `code`       | string                                                          |          | Cadence code to execute                                                                                                                                     |
 | `payer`      | [AuthorizationFunction](../fcl-js/api.md#authorizationfunction) |          | The authorization function that returns a valid [AuthorizationObject](../fcl-js/api.md#authorizationobject) for the payer role.                             |
-| `signers`    | [AuthorizationFunction]                                                         | ✅       | an array of [AuthorizationObject](../fcl-js/api.md#authorizationobject) representing transaction authorizers. Default: same as `payer`                      |
+| `signers`    | [AuthorizationFunction]                                         | ✅       | an array of [AuthorizationObject](../fcl-js/api.md#authorizationobject) representing transaction authorizers. Default: same as `payer`                      |
 | `proposer`   | [AuthorizationFunction](../fcl-js/api.md#authorizationfunction) | ✅       | The authorization function that returns a valid [AuthorizationObject](../fcl-js/api.md#authorizationobject) for the proposer role. Default: same as `payer` |
-| `args`       | [Any]                                                                           | ✅       | Optional if transactions does not expect arguments. Default: `[]`                                                                                                           |
-| `addressMap` | [AddressMap](#AddressMap)                                                       | ✅       | address map to use for import replacement. Default: `{}`                                                                                                                    |
-| `limit`      | number                                                                          | ✅       | gas limit. Default: `100`                                                                                                                                                   |
+| `args`       | [Any]                                                           | ✅       | Optional if transactions does not expect arguments. Default: `[]`                                                                                           |
+| `addressMap` | [AddressMap](#AddressMap)                                       | ✅       | address map to use for import replacement. Default: `{}`                                                                                                    |
+| `limit`      | number                                                          | ✅       | gas limit. Default: `100`                                                                                                                                   |
 
 > When being used in the browser, you can pass built-in `fcl.authz` function to produce the authorization (signatures) for the current user.
 > When calling this method from Node.js, you will need to supply your own custom authorization functions.
@@ -839,21 +839,21 @@ Sends script to the network
 
 Transaction result is represented as a tuple `[result, error]`
 
-| Name                                                              | Type  | Description                                                                        |
-| ----------------------------------------------------------------- | ----- | ---------------------------------------------------------------------------------- |
+| Name                                              | Type  | Description                                                                        |
+| ------------------------------------------------- | ----- | ---------------------------------------------------------------------------------- |
 | [ResponseObject](../fcl-js/api.md#responseobject) | any   | result of transaction execution. Type of this value depends on script return value |
-| `error`                                                           | error | Caught error. This will be `null` if script executed successfully                  |
+| `error`                                           | error | Caught error. This will be `null` if script executed successfully                  |
 
 #### Usage
 
 ```javascript
-import { authenticate, currentUser, authz, config } from "@onflow/fcl";
-import { sendTransaction } from "@onflow/flow-cadut";
+import { authenticate, currentUser, authz, config } from '@onflow/fcl';
+import { sendTransaction } from '@onflow/flow-cadut';
 
 config()
-  .put("accessNode.api", "https://rest-testnet.onflow.org") // Configure FCL's Access Node
-  .put("challenge.handshake", "https://fcl-discovery.onflow.org/testnet/authn") // Configure FCL's Wallet Discovery mechanism
-  .put("0xProfile", "0xba1132bc08f82fe2"); // Will let us use `0xProfile` in our Cadence
+  .put('accessNode.api', 'https://rest-testnet.onflow.org') // Configure FCL's Access Node
+  .put('challenge.handshake', 'https://fcl-discovery.onflow.org/testnet/authn') // Configure FCL's Wallet Discovery mechanism
+  .put('0xProfile', '0xba1132bc08f82fe2'); // Will let us use `0xProfile` in our Cadence
 
 (async () => {
   currentUser().subscribe(async (user) => {

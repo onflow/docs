@@ -574,8 +574,7 @@ const dapperSelfCustodyWallet: Tool = {
   title: 'Dapper Self Custody (BETA)',
   tags: ['wallet', 'non-custodial', 'mobile', 'ios', 'android'],
   link: 'https://www.meetdapper.com/dapper-self-custody',
-  iconSrc:
-    'https://raw.githubusercontent.com/onflow/developer-portal/6d1dd866e38b0d37ea54d5c66892dedc3664a3de/app/ui/design-system/images/tooling/tool-dapper-self-custody.svg',
+  iconSrc: '/images/tools/tool-dapper-self-custody.svg',
   description:
     'A mobile self custody wallet to help you explore the world of Flow',
 };
