@@ -783,6 +783,10 @@
       "destination": "/tooling/fcl-js"
     },
     {
+      "source": "/fcl/reference/:path(.*)",
+      "destination": "/tooling/fcl-js/:path"
+    },
+    {
       "source": "/tools/flow-cadut/api",
       "destination": "/tooling/flow-cadut/api"
     },
