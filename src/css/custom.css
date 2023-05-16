@@ -25,6 +25,9 @@
   @media (min-width: 1280px) {
     --ifm-navbar-item-padding-horizontal: 0.75rem;
   } 
+
+  --image-navbar-github: url('/images/social/github.svg');
+  --image-navbar-discord: url('/images/social/discord.svg');
 }
 
 /* For readability concerns, you should choose a lighter palette in dark mode. */
@@ -37,6 +40,9 @@
   --ifm-color-primary-lighter: #32d8b4;
   --ifm-color-primary-lightest: #4fddbf;
   --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.3);
+
+  --image-navbar-github: url('/images/social/github-light.svg');
+  --image-navbar-discord: url('/images/social/discord-light.svg');
 }
 
 /* lg breakpoint */
@@ -51,4 +57,15 @@
   .xl\:block {
       display: block;
   }
+}
+.p-1 {
+  padding: 0.25rem;
+}
+
+#navbar-github {
+  content: var(--image-navbar-github);
+}
+
+#navbar-discord {
+  content: var(--image-navbar-discord);
 }
