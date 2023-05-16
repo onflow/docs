@@ -1,6 +1,6 @@
 ---
 title: Token Standards
-sidebar_position: 5
+sidebar_position: 4
 ---
 
  This section is designed to provide you with comprehensive information and guidance on the various token standards available on the Flow blockchain. These standards establish a unified framework for developers, ensuring seamless interoperability and compatibility between tokens, applications, and wallets.
