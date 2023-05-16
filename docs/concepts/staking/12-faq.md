@@ -41,7 +41,7 @@ offer using their own methods and are not enforced by the protocol.
 ### Can a token holder stake to multiple nodes? If yes, how is the stake split between them?
 
 A token holder can delegate to multiple nodes from a single account if they use the 
-[Staking Collection](../staking/staking-collection.mdx).
+[Staking Collection](./14-staking-collection.mdx).
 
 The staking collection is enabled by default on Flow port, and many custody providers also support it.
 

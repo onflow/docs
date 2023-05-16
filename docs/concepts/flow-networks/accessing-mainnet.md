@@ -72,4 +72,4 @@ Make sure to take a note of the address. If you want to verify the public key fo
 
 ## Important Mainnet Smart Contract Addresses
 
-You can review [all available core contracts](../../cadence/core-contracts/) deployed to the mainnet to identify which ones you want to import.
+You can review [all available core contracts](../core-contracts/index.md) deployed to the mainnet to identify which ones you want to import.

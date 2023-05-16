@@ -12,55 +12,51 @@
     },
     {
       "source": "/flow/core-contracts",
-      "destination": "/cadence/core-contracts"
-    },
-    {
-      "source": "/flow/core-contracts/account-creation",
-      "destination": "/cadence/core-contracts/account-creation"
+      "destination": "/concepts/core-contracts"
     },
     {
       "source": "/flow/core-contracts/epoch-contract-reference",
-      "destination": "/cadence/core-contracts/epoch-contract-reference"
+      "destination": "/concepts/core-contracts/epoch-contract-reference"
     },
     {
       "source": "/flow/core-contracts/flow-fees",
-      "destination": "/cadence/core-contracts/flow-fees"
+      "destination": "/concepts/core-contracts/flow-fees"
     },
     {
       "source": "/flow/core-contracts/flow-token",
-      "destination": "/cadence/core-contracts/flow-token"
+      "destination": "/concepts/core-contracts/flow-token"
     },
     {
       "source": "/flow/core-contracts/fungible-token",
-      "destination": "/cadence/core-contracts/fungible-token"
+      "destination": "/concepts/core-contracts/fungible-token"
     },
     {
       "source": "/flow/core-contracts/locked-tokens",
-      "destination": "/cadence/core-contracts/locked-tokens"
+      "destination": "/concepts/core-contracts/locked-tokens"
     },
     {
       "source": "/flow/core-contracts/nft-metadata",
-      "destination": "/cadence/core-contracts/nft-metadata"
+      "destination": "/concepts/core-contracts/nft-metadata"
     },
     {
       "source": "/flow/core-contracts/nft-storefront",
-      "destination": "/cadence/core-contracts/nft-storefront"
+      "destination": "/concepts/core-contracts/nft-storefront"
     },
     {
       "source": "/flow/core-contracts/non-fungible-token",
-      "destination": "/cadence/core-contracts/non-fungible-token"
+      "destination": "/concepts/core-contracts/non-fungible-token"
     },
     {
       "source": "/flow/core-contracts/service-account",
-      "destination": "/cadence/core-contracts/service-account"
+      "destination": "/concepts/core-contracts/service-account"
     },
     {
       "source": "/flow/core-contracts/staking-collection",
-      "destination": "/cadence/core-contracts/staking-collection"
+      "destination": "/concepts/core-contracts/staking-collection"
     },
     {
       "source": "/flow/core-contracts/staking-contract-reference",
-      "destination": "/cadence/core-contracts/staking-contract-reference"
+      "destination": "/concepts/core-contracts/staking-contract-reference"
     },
     {
       "source": "/flow/dapp-development",

@@ -29,7 +29,7 @@ Each account that wants to list NFTs for sale creates a `Storefront` resource to
 
 Each listing can define one or more sale cuts taken out of the sale price to go to one or more addresses. Listing fees, royalties, or other considerations can be paid using sale cuts. Also, the listing can include a commission as one of these sale cuts is paid to whoever facilitates the purchase. 
 
-Listings can have an optional list of marketplace [receiver capabilities](../language/capability-based-access-control.md) used to receive the commission for fulfilling the listing. An NFT may be listed in one or more Listings, and the validity of each listing can easily be checked.
+Listings can have an optional list of marketplace [receiver capabilities](../../cadence/language/capability-based-access-control.md) used to receive the commission for fulfilling the listing. An NFT may be listed in one or more Listings, and the validity of each listing can easily be checked.
 
 Interested parties can globally track Listing events on-chain and filter by NFT types, IDs and other characteristics to determine which to make available for purchase within their own marketplace UIs."
 ## Selling NFTs

@@ -48,4 +48,4 @@ Accounts and tokens for testing can be obtained through the [sandboxnet faucet](
 
 ## Important smart contract addresses
 
-You can review [all available core contracts](../../cadence/core-contracts/) deployed to the sandboxnet to identify which ones you want to import.
+You can review [all available core contracts](../core-contracts/index.md) deployed to the sandboxnet to identify which ones you want to import.

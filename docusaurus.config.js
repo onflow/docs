@@ -392,7 +392,7 @@ const config = {
                 label: 'Cadence Cookbook',
               },
               {
-                to: '/cadence/core-contracts/',
+                to: '/concepts/core-contracts/',
                 label: 'Core Contracts & Standards',
               },
               {

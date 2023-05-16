@@ -131,7 +131,7 @@ export default function GettingStarted(): JSX.Element {
                   },
                   {
                     title: 'Core contracts & standards',
-                    href: '/cadence/core-contracts',
+                    href: '/concepts/core-contracts',
                     tags: ['nft', 'ft', 'metadata'],
                   },
                   {
