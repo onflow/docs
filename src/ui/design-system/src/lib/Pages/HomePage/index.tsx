@@ -3,7 +3,6 @@ import {
   Flips,
   LandingHeaderHome,
   HomepageStartList,
-  SocialLinksSignup,
   ToolsAndConcepts,
   UpcomingEvents,
   HomepageBrowse,
@@ -39,13 +38,11 @@ const HomePage = ({
   homepageStartProjectData,
   contentNavigationListItems,
   discordUrl,
-  discourseUrl,
   editPageUrl,
   flips,
   githubUrl,
   threeColumnItems,
   tools,
-  twitterUrl,
   upcomingEvents,
 }: HomePageProps): JSX.Element => {
   return (
@@ -88,12 +85,6 @@ const HomePage = ({
           />
         </PageSection>
       </PageSections>
-      <SocialLinksSignup
-        discordUrl={discordUrl}
-        discourseUrl={discourseUrl}
-        githubUrl={githubUrl}
-        twitterUrl={twitterUrl}
-      />
     </PageBackground>
   );
 };

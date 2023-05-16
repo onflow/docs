@@ -1,15 +1,15 @@
-const { join } = require('path')
-const defaultTheme = require('tailwindcss/defaultTheme')
+const { join } = require('path');
+const defaultTheme = require('tailwindcss/defaultTheme');
 /** @type {import('tailwindcss').Config} */
 module.exports = {
   corePlugins: {
-    preflight: false
+    preflight: false,
   },
   darkMode: ['class', '[data-theme="dark"]'],
   content: [
     join(
       __dirname,
-      'src/ui/design-system/src/**/!(*.stories|*.spec).{ts,tsx,html}'
+      'src/ui/design-system/src/**/!(*.stories|*.spec).{ts,tsx,html}',
     ),
     join(__dirname, 'src/**/!(*.stories|*.spec).{ts,tsx,html}'),
   ],
@@ -34,8 +34,8 @@ module.exports = {
       xs: '360px',
       sm: '375px',
       md: '768px',
-      lg: '1440px',
-      xl: '1536px',
+      lg: '1024px',
+      xl: '1280px',
     },
     container: {
       center: true,
@@ -147,4 +147,4 @@ module.exports = {
     require('@tailwindcss/aspect-ratio'),
     require('tailwind-scrollbar-hide'),
   ],
-}
+};

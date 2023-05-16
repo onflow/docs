@@ -19,7 +19,7 @@ export function HomepageStartItem ({
 }: HomepageStartItemProps) {
   return (
     <AppLink
-      className="flex cursor-pointer gap-6 rounded-lg bg-primary-gray-100/40 py-10 pl-10 pr-7 text-gray-700 hover:bg-primary-gray-100/75"
+      className="flex cursor-pointer gap-6 rounded-lg bg-primary-gray-100/40 py-10 pl-10 pr-7 text-gray-700 hover:no-underline"
       to={link}
     >
       <div className="flex min-w-0 grow flex-col items-start justify-start">

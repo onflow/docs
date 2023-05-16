@@ -14,7 +14,11 @@ const docCollectionsLocation = './src/data/doc-collections';
 let cachedSources;
 
 const mixpanelOnLoad = `
+<<<<<<< HEAD
 if ('${process.env.MIXPANEL_PROJECT_TOKEN}' && '${process.env.MIXPANEL_PROJECT_TOKEN}' !== 'undefined') {
+=======
+if (${process.env.MIXPANEL_PROJECT_TOKEN}) {
+>>>>>>> 093b6c85a (add hotjar")
   window.mixpanel.init('${process.env.MIXPANEL_PROJECT_TOKEN}');
 
   const viwedPayload = {
@@ -179,9 +183,9 @@ const config = {
         blog: false,
         theme: {
           customCss: [
-            require.resolve('./src/css/custom.css'),
-            require.resolve('@code-hike/mdx/styles.css'),
             require.resolve('./src/ui/design-system/styles/main.css'),
+            require.resolve('@code-hike/mdx/styles.css'),
+            require.resolve('./src/css/custom.css'),
           ],
         },
         ...(process.env.GA_TRACKING_ID
@@ -264,17 +268,19 @@ const config = {
           {
             to: 'community-resources/Introduction',
             position: 'left',
-            label: 'Community Resources',
+            label: 'Resources',
           },
           {
             href: 'https://github.com/onflow',
-            label: 'GitHub',
+            html: '<img src="" alt="GitHub" id="navbar-github" class="box-content h-32 w-32"/>',
             position: 'right',
+            className: 'h-8 p-1',
           },
           {
             href: 'https://onflow.org/discord',
-            label: 'Discord',
+            html: '<img src="" alt="Discord" id="navbar-discord" class="box-content h-32 w-32"/>',
             position: 'right',
+            className: 'h-8 p-1',
           },
         ],
       },

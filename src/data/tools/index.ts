@@ -1,11 +1,11 @@
 import { type SDKCardProps } from '../../ui/design-system/src/lib/Components/SDKCard';
-import ToolCliIconSrc from '../../ui/design-system/images/tools/tool-cli.svg';
-import ToolEmulatorIconSrc from '../../ui/design-system/images/tools/tool-emulator.svg';
-import ToolFclIconSrc from '../../ui/design-system/images/tools/tool-fcl.svg';
-import ToolTestingIconSrc from '../../ui/design-system/images/tools/tool-testing.svg';
-import ToolVsCodeIconSrc from '../../ui/design-system/images/tools/tool-vscode.svg';
-import ToolPortIconSrc from '../../ui/design-system/images/tools/tool-port.svg';
-import CodeIcon from '../../ui/design-system/images/tools/tool-default.svg';
+const ToolCliIconSrc = '/images/tools/tool-cli.svg';
+const ToolEmulatorIconSrc = '/images/tools/tool-emulator.svg';
+const ToolFclIconSrc = '/images/tools/tool-fcl.svg';
+const ToolTestingIconSrc = '/images/tools/tool-testing.svg';
+const ToolVsCodeIconSrc = '/images/tools/tool-vscode.svg';
+const ToolPortIconSrc = '/images/tools/tool-port.svg';
+const CodeIcon = '/images/tools/tool-default.svg';
 
 // TODO: Move somewhere else!
 export type Tool = SDKCardProps & {

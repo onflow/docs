@@ -2,7 +2,6 @@ import React from 'react';
 import LandingImage from '../../../../images/misc/landing-home.png';
 import LandingImage2x from '../../../../images/misc/landing-home@2x.png';
 import { ButtonLink } from '../Button';
-import { LandingPageLinks } from '../LandingPageLinks';
 
 export interface LandingHeaderHomeProps {
   description: string;
@@ -19,9 +18,6 @@ export interface LandingHeaderHomeProps {
 
 export function LandingHeaderHome({
   description,
-  discordUrl,
-  editPageUrl,
-  githubUrl,
   tag,
   title,
 }: LandingHeaderHomeProps) {
@@ -47,13 +43,6 @@ export function LandingHeaderHome({
           srcSet={`${LandingImage}, ${LandingImage2x} 2x`}
           alt=""
           className="max-h-[195px] object-cover md:max-h-[380px]"
-        />
-      </div>
-      <div className="fixed right-14 top-1/4 hidden lg:block">
-        <LandingPageLinks
-          discordUrl={discordUrl}
-          editPageUrl={editPageUrl}
-          githubUrl={githubUrl}
         />
       </div>
     </div>

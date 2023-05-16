@@ -21,7 +21,7 @@ In this tutorial, we're going to deploy a contract that allows users to vote on 
 <Callout type="info">
 Instructions that require you to take action are always included in a callout box like this one.
 These highlighted actions are all that you need to do to get your code running,
- but reading the rest is necessary to understand the language's design.
+but reading the rest is necessary to understand the language's design.
 </Callout>
 
 With the advent of blockchain technology and smart contracts,
@@ -30,7 +30,7 @@ This tutorial will provide a trivial example for how this might be achieved by u
 
 We'll take you through these steps to get comfortable with the Voting contract.
 
-1. Deploy the contract to account 1
+1. Deploy the contract to account `0x01`
 2. Create proposals for users to vote on
 3. Use a transaction with multiple signers to directly transfer the `Ballot` resource to another account.
 4. Record and cast your vote in the central Voting contract
@@ -42,21 +42,29 @@ and [Hello, World!](./02-hello-world.mdx) to learn how to use the Playground too
 ## A Voting Contract in Cadence
 
 In this contract, a Ballot is represented as a resource.
-An administrator can give Ballots to other accounts,
-then those account mark which proposals they vote for
+
+An administrator can give Ballots to other accounts, then those accounts mark which proposals they vote for
 and submit the Ballot to the central smart contract to have their votes recorded.
-Using a resource type is logical for this application,
-because if a user wants to delegate their vote,
-they can send that Ballot to another account.
+
+Using a [resource](../language/resources.mdx) type is logical for this application, because if a user wants to delegate their vote,
+they can send that Ballot to another account, and the use case of voting ballots benefits from the uniqueness and existence guarantees
+inherent to resources.
 
 ## Deploy the Contract
 
+Time to deploy the contract we'll be working with:
+
 <Callout type="info">
 
-Open Account `0x01` which has the `ApprovalVoting` contract.<br/>
-Click the Deploy button to deploy it to account `0x01`"
+1. Open Contract 1 - the `ApprovalVoting` contract.<br/>
+2. In the bottom right deployment modal, press the arrow to expand and make sure account `0x01` is selected as the signer.<br/>
+3. Click the Deploy button to deploy it to account `0x01`
 
 </Callout>
+
+![Deploy ApprovalVoting to account 0x01](deploy_approval_voting.png)
+
+The deployed contract should have the following contents:
 
 ```cadence ApprovalVoting.cdc
 /*
@@ -175,7 +183,7 @@ pub contract ApprovalVoting {
 
 ```
 
-This contract implements a simple voting mechanism where an administrator can initialize it with an array of proposals to vote on by using the `initializeProposals` function.
+This contract implements a simple voting mechanism where an `Administrator` can initialize a vote with an array of proposals to vote on by using the `initializeProposals` function.
 
 ```cadence
 // function to initialize all the proposals for the voting
@@ -236,13 +244,12 @@ Performing the common actions in this voting contract only takes three types of 
 2. Send `Ballot` to a voter
 3. Cast Vote
 
-We have a transaction for each step that we provide for you.
+We have a transaction for each step that we provide for you. With the `ApprovalVoting` contract to account `0x01`: 
 
 <Callout type="info">
 
-"You should have the ApprovalVoting already deployed to account `0x01`.<br/>
-Open Transaction 1 which should have `Transaction1.cdc`<br/>
-Submit the transaction with account `0x01` selected as the only signer.
+1. Open Transaction 1 which should have `Transaction1.cdc`<br/>
+2. Submit the transaction with account `0x01` selected as the only signer.
 
 </Callout>
 
@@ -274,10 +281,12 @@ transaction {
 }
 ```
 
-This transaction allows the administrator of the Voting contract to create new proposals for voting and save them to the smart contract. They do this by calling the `initializeProposals` function on their stored `Administrator` resource, giving it two new proposals to vote on.
+This transaction allows the `Administrator` of the contract to create new proposals for voting and save them to the smart contract. They do this by calling the `initializeProposals` function on their stored `Administrator` resource, giving it two new proposals to vote on.
 We use the `post` block to ensure that there were two proposals created, like we wished for.
 
-Next, the administrator needs to hand out Ballots to the voters. There isn't an easy `deposit` function this time for them to send a `Ballot` to another account, so how would they do it? This is where multiple-transaction signers can come in handy!
+Next, the `Administrator` needs to hand out `Ballot`s to the voters. There isn't an easy `deposit` function this time for them to send a `Ballot` to another account, so how would they do it?
+
+This is where multi-signed transactions can come in handy!
 
 ## Selecting multiple Accounts as Signers
 
@@ -293,9 +302,9 @@ The playground will give you an error if the number of selected signers is diffe
 
 <Callout type="info">
 
-Open Transaction 2 which should have `Transaction2.cdc`.<br/>
-Select account `0x01` as a signer first, then also select account `0x02`. <br/>
-Submit the transaction by clicking the `Send` button
+1. Open Transaction 2 which should have `Transaction2.cdc`.<br/>
+2. Select account `0x01` as a signer first, then also select account `0x02`.<br/>
+3. Submit the transaction by clicking the `Send` button
 
 </Callout>
 
@@ -327,9 +336,11 @@ transaction {
 
 ```
 
-This transaction has two signers as `prepare` parameters, so it is able to access both of their private `AuthAccount` objects, and therefore their private account storage. Because of this, we can perform a direct transfer of the `Ballot` by creating it with the admin's `issueBallot` function and then directly store it in the voter's storage by using the `save` function.
+This transaction has two signers as `prepare` parameters, so it is able to access both of their private `AuthAccount` objects, and therefore their private account storage.
 
-Account `0x02` should now have a `Ballot` resource object in its account storage. You can confirm this by opening the account 2 tab and seeing the `Ballot` resource shown in the Resources box.
+Because of this, we can perform a direct transfer of the `Ballot` by creating it with the admin's `issueBallot` function and then directly store it in the voter's storage by using the `save` function.
+
+Account `0x02` should now have a `Ballot` resource object in its account storage. You can confirm this by selecting `0x02` from the lower-left sidebar and seeing `Ballot` resource listed under the `Storage` field.
 
 ## Casting a Vote
 
@@ -337,9 +348,9 @@ Now that account `0x02` has a `Ballot` in their storage, they can cast their vot
 
 <Callout type="info">
 
-Open Transaction 3 which should contain `Transaction3.cdc`.<br/>
-Select account `0x02` as the only transaction signer<br/>
-Click the `send` button to submit the transaction.
+1. Open Transaction 3 which should contain `Transaction3.cdc`.<br/>
+2. Select account `0x02` as the only transaction signer.<br/>
+3. Click the `send` button to submit the transaction.
 
 </Callout>
 
@@ -367,7 +378,7 @@ transaction {
 }
 ```
 
-In this transaction, the user votes for one of the proposals, and then moves their Ballot back to the smart contract where the vote is tallied.
+In this transaction, the user votes for one of the proposals, and then moves their Ballot back to the smart contract via the `cast()` method where the vote is tallied.
 
 ## Reading the result of the vote
 
@@ -375,8 +386,8 @@ At any time, anyone could read the current tally of votes by directly reading th
 
 <Callout type="info">
 
-Open a Script 1 which should contain the code below.<br/>
-Click the `execute` button to run the script.
+1. Open a Script 1 which should contain the code below.<br/>
+2. Click the `execute` button to run the script.
 
 </Callout>
 

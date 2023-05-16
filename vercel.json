@@ -779,12 +779,12 @@
       "destination": "/tooling/fcl-js/:path"
     },
     {
-      "source": "/fcl/reference",
-      "destination": "/tooling/fcl-js"
+      "source": "/fcl/reference/sdk-guidelines",
+      "destination": "/tooling/fcl-js/sdk-guidelines"
     },
     {
-      "source": "/fcl/reference/:path(.*)",
-      "destination": "/tooling/fcl-js/:path"
+      "source": "/fcl/reference",
+      "destination": "/tooling/fcl-js"
     },
     {
       "source": "/tools/flow-cadut/api",
