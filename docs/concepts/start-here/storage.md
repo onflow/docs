@@ -73,4 +73,4 @@ pub fun main(address: Address) {
 
 Relevant Cadence changes can be found [here](../../cadence/language/accounts.mdx#account-storage)
 
-The **FLIP** (Flow Improvement Proposal) for storage fees can be found here: [20201310-storage-fees.md](https://github.com/onflow/flips/blob/main/flips/20201310-storage-fees.md).
+The **FLIP** (Flow Improvement Proposal) for storage fees can be found here: [20201310-storage-fees.md](https://github.com/onflow/flips/blob/main/protocol/20201310-storage-fees.md).
