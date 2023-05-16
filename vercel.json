@@ -775,8 +775,8 @@
       "destination": "/tutorials/flow-app-quickstart"
     },
     {
-      "source": "/fcl/reference/sdk-guidelines",
-      "destination": "/tooling/fcl-js/sdk-guidelines"
+      "source": "/fcl/reference/:path(.*)",
+      "destination": "/tooling/fcl-js/:path"
     },
     {
       "source": "/fcl/reference",
