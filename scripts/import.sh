@@ -4,6 +4,7 @@ echo Importing...
 repoDataSources="./src/data/data-sources.json"
 tempReposLocation="./temp"
 docsLocation="./docs"
+alias jq='./node_modules/node-jq/bin/jq'
 
 cloneRepoToTemp() {
     repo=$1
@@ -83,7 +84,10 @@ copyRepoFilesToDest() {
 
     mkdir -p $destFolderName
 
-    rsync -av --include='*/' --include='*.mdx' --include='*.md' --include='*.pdf' --include='*.png' --include='*.gif' --include='*.jpg' --exclude='*' --exclude='flow-docs.json' "${sourceFolderName}/" "${destFolderName}/"
+    cp -r $sourceFolderName* $destFolderName
+
+    # rsync is not available in vercel
+    # rsync -av --include='*/' --include='*.mdx' --include='*.md' --include='*.pdf' --include='*.png' --include='*.gif' --include='*.jpg' --exclude='*' --exclude='flow-docs.json' "${sourceFolderName}/" "${destFolderName}/"
 }
 
 cloneDocReposToDest
