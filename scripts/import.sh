@@ -84,7 +84,7 @@ copyRepoFilesToDest() {
 
     mkdir -p $destFolderName
 
-    cp -r $tempRepoLocation/$sourceFolder $docsLocation/$destFolder
+    cp -r $tempRepoLocation/$sourceFolder/ $docsLocation/$destFolder
 
     # rsync is not available in vercel
     # rsync -av --include='*/' --include='*.mdx' --include='*.md' --include='*.pdf' --include='*.png' --include='*.gif' --include='*.jpg' --exclude='*' --exclude='flow-docs.json' "${sourceFolderName}/" "${destFolderName}/"
