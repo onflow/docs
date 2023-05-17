@@ -150,14 +150,11 @@ If you are using a custody provider who controls your account and private keys f
 such as Kraken, Finoa, or Coinlist, they all have different policies and processes
 for what you need to do to stake your tokens, the rewards you receive,
 and the fees that they take from your staking rewards.
-Please see [our guides](./custody-providers.md) for more information about staking
-using custody providers.
 
 ### Manual Staking or Building your own Staking Integration
 
 If you are self-custodying your Flow account and keys, or you want to build a staking service for customers,
 you will need to learn more about how staking works,
 the various methods for staking, and how you can participate safely and reliably.
-See the [staking technical overview](./06-technical-overview.mdx) first,
-followed by the [staking technical guide](./locked-staking-guide.mdx) 
+See the [staking technical overview](./06-technical-overview.mdx) first
 for information about technical integration.
