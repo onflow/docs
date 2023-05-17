@@ -72,7 +72,8 @@ The same applies for all the other staking operation transactions.
 
 To setup the Staking Collection for an account, use the `SC.01` transaction.
 
-The setup process finds any node or delegator records already stored in the main account's storage.
+The setup process finds any node or delegator records already stored in the main account's storage,
+as well as any in the associated locked account if an associated locked account exists.
 It connects these node and delegator records with the new Staking Collection, allowing them
 to be interacted with using the Staking Collection API.
 
