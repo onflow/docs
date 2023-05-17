@@ -10,7 +10,6 @@ const { remarkCodeHike } = require('@code-hike/mdx');
 const path = require('path');
 const fs = require('fs');
 
-const docCollectionsLocation = './src/data/doc-collections';
 const externalDataSourceLocation = './src/data/data-sources.json';
 let cachedRepositories;
 
@@ -173,7 +172,7 @@ const config = {
           ],
           sidebarPath: require.resolve('./sidebars.js'),
           routeBasePath: '/',
-          editUrl, // : '',
+          editUrl,
           remarkPlugins: [require('remark-math')],
           rehypePlugins: [require('rehype-katex')],
           showLastUpdateTime: true,
