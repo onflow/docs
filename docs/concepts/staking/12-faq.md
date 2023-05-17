@@ -14,7 +14,7 @@ If you staked using Flow Port, then you should be able to see your staking rewar
 You can also withdraw the rewards or manually re-stake them through Flow Port.
 
 If you staked using a staking provider such as Kraken, Blocto or Finoa,
-please read [our guides](../staking/custody-providers.md) for more information.
+please ask them how they manage staking rewards.
 
 ### Will staking rewards be automatically re-staked?
 
@@ -22,7 +22,7 @@ There will be _no_ automatic re-staking of staking rewards with Flow Port (i.e. 
 If you want to re-stake your rewards, you must manually do so yourself.
 
 If you staked using a staking provider such as Kraken, Blocto or Finoa,
-please read [our guides](../staking/custody-providers.md) for more information.
+please ask them what their policies are.
 
 DeFi liquid staking strategies such as offered by [incrementFi](https://app.increment.fi/staking)
 are not managed by the protocol or nodes, but are more sophisticated ways
