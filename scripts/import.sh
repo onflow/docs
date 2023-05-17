@@ -4,6 +4,7 @@ echo Importing...
 repoDataSources="./src/data/data-sources.json"
 tempReposLocation="./temp"
 docsLocation="./docs"
+alias jq='./node_modules/node-jq/bin/jq'
 
 cloneRepoToTemp() {
     repo=$1
