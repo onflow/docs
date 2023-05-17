@@ -65,100 +65,12 @@ pub event TokensDeposited(amount: UFix64, to: Address?)
 
 You can query for this event to detect when tokens are deposited into a user's account.
 
+{/*
 TODO: Link to event querying docs
-
-## Receiving FLOW from an ICO
-
-A portion of the initial FLOW token supply will be distributed directly to new and
-existing backers who participate in the initial coin offering (ICO) of FLOW.
-Tokens distributed through an ICO are subject to a lockup period,
-meaning they can't be sold, transferred or traded until sufficient time has passed.
-
-Although locked tokens can't be liquidated, they can still be used for staking.
-Any staking rewards accrued from locked tokens are deposited into the rewardee's account
-as _unlocked tokens_.
-
-### FLOW.ICO vs FLOW
-
-It is the responsibility of the custodian to ensure that FLOW received from an ICO event (FLOW.ICO)
-is not liquidated before the legal lockup period has passed. In order to ensure that this does
-not happen, it is important to store FLOW.ICO tokens separately from unlocked FLOW tokens.
-
-To achieve this separation, a custodian should provision a new token vault that follows this standard:
-
-**FLOW.ICO Token Vault**
-
-- Type: `FlowToken.Vault`
-- Location: `/storage/lockedFlowTokenVault`
-
-### Creating the FLOW.ICO Vault
-
-The following Cadence transaction creates an empty FLOW token vault and stores it at the standard
-FLOW.ICO storage path. This transaction assumes that the account has already been created.
-
-```cadence
-import FungibleToken from 0xFUNGIBLE_TOKEN_ADDRESS
-import FlowToken from 0xFLOW_TOKEN_ADDRESS
-
-transaction {
-  prepare(signer: AuthAccount) {
-    // Create an empty FlowToken Vault and store it
-    signer.save(<-FlowToken.createEmptyVault(), to: /storage/lockedFlowTokenVault)
-
-    // Create a public capability to the Vault that only exposes
-    // the deposit function through the Receiver interface
-    signer.link<&FlowToken.Vault{FungibleToken.Receiver}>(
-        /public/lockedFlowTokenReceiver,
-        target: /storage/lockedFlowTokenVault
-    )
-
-    // Create a public capability to the Vault that only exposes
-    // the balance field through the Balance interface
-    signer.link<&FlowToken.Vault{FungibleToken.Balance}>(
-        /public/lockedFlowTokenBalance,
-        target: /storage/lockedFlowTokenVault
-    )
-  }
-}
-```
-
-Below is a variation of the above transaction that provisions the FLOW.ICO vault at
-the time of account creation.
-
-```cadence
-import FungibleToken from 0xFUNGIBLE_TOKEN_ADDRESS
-import FlowToken from 0xFLOW_TOKEN_ADDRESS
-
-transaction {
-  prepare(signer: AuthAccount) {
-    let newAccount = AuthAccount(payer: signer)
-
-    newAccount.save(<-FlowToken.createEmptyVault(), to: /storage/lockedFlowTokenVault)
-
-    newAccount.link<&FlowToken.Vault{FungibleToken.Receiver}>(
-        /public/lockedFlowTokenReceiver,
-        target: /storage/lockedFlowTokenVault
-    )
-
-    newAccount.link<&FlowToken.Vault{FungibleToken.Balance}>(
-        /public/lockedFlowTokenBalance,
-        target: /storage/lockedFlowTokenVault
-    )
-  }
-}
-```
-
-### Receiving a FLOW.ICO Deposit
-
-All FLOW tokens deposited from an ICO event will be automatically routed to the FLOW.ICO vault
-stored at the `/storage/lockedFlowTokenVault` storage path. If an account does not contain
-a vault at this path, it cannot receive ICO deposits.
-
-### Getting the FLOW.ICO Balance
-
-See the next section for an example of how to query the balance of a `FlowToken.Vault` instance.
+*/}
 
 ## Getting the Balance of an Account
+Detailed below is an example of how to query the balance of a `FlowToken.Vault` instance.
 
 ### From Cadence
 

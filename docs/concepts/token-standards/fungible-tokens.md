@@ -247,8 +247,6 @@ As mentioned in [Step 0: Prep Work](#step-0-prep-work), successful token launche
 
 How many tokens do you need circulating on the first day of launch to meet the forecasted demand? What about one week, one month, and one year post-launch? Figure out what circulating supply is actually needed by your dApp at these various dates, and from there, walk back the number of tokens that need to enter the circulating supply.
 
-On Flow, implementing a vesting or unlock schedule in a smart contract is easy as cake. You can use [this link](../flow-token/locked-account-setup.mdx#introduction) for more information on how to do this.
-
 ## Step 3: Token Launch
 
 ### Launching a Token: What Does It Mean?

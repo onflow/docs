@@ -36,7 +36,7 @@ If you don't have this information, go [here](../node-operation/node-bootstrap.m
 
 ### Begin Staking
 
-First, select the type of node you'll be running by choosing from the list. You must have the required amount of locked FLOW in your account.
+First, select the type of node you'll be running by choosing from the list. You must have the required amount of FLOW in your account.
 
 ![Flow Port Staking](port-stake-0-02.png)
 
@@ -76,7 +76,7 @@ You can follow the guide [here](../node-operation/machine-existing-operator.mdx)
 
 ## Delegating
 
-Delegating is the process of staking your locked FLOW to nodes which are being run by another party.
+Delegating is the process of staking your FLOW to nodes which are being run by another party. Delegated nodes collect a small fee for staking the FLOW on your behalf and can always be recovered.
 
 #### Pre-requisites
 
