@@ -7,8 +7,11 @@ sidebar_title: Staking Collection
 
 The `FlowStakingCollection` contract is a contract that manages a resource containing a user's stake and delegation objects.
 
-The `FlowStakingCollection` allows a user to manage multiple active nodes or delegators and interact with node or 
-delegator objects stored in the StakingCollection itself (stored in the main account). 
+The `FlowStakingCollection` allows a user to manage multiple active nodes or delegators 
+and interact with node or delegator objects stored in either their optional locked account
+or in the StakingCollection itself (stored in the main account).
+If a user has locked tokens, StakingCollection allows a user to interact with their locked tokens
+to perform staking actions for any of their nodes or delegators.
 
 The staking collection also manages creating a node's machine accounts if they have any collector or consensus nodes.
 It also allows them to deposit and withdraw tokens from any of their machine accounts through the staking collection.
@@ -60,6 +63,8 @@ The same applies for all the other staking operation transactions.
 |**`SCO.16`**| Get Delegator Ids                      | [stakingCollection/scripts/get_delegator_ids.cdc](https://github.com/onflow/flow-core-contracts/blob/master/transactions/stakingCollection/scripts/get_delegator_ids.cdc) |
 |**`SCO.17`**| Get Node Ids                           | [stakingCollection/scripts/get_node_ids.cdc](https://github.com/onflow/flow-core-contracts/blob/master/transactions/stakingCollection/scripts/get_node_ids.cdc) |
 |**`SCO.18`**| Get Does Stake Exist                   | [stakingCollection/scripts/get_does_stake_exist.cdc](https://github.com/onflow/flow-core-contracts/blob/master/transactions/stakingCollection/scripts/get_does_stake_exist.cdc) |
+|**`SCO.19`**| Get Locked Tokens Used                 | [stakingCollection/scripts/get_locked_tokens_used.cdc](https://github.com/onflow/flow-core-contracts/blob/master/transactions/stakingCollection/scripts/get_locked_tokens_used.cdc) |
+|**`SCO.20`**| Get Unlocked Tokens Used               | [stakingCollection/scripts/get_unlocked_tokens_used.cdc](https://github.com/onflow/flow-core-contracts/blob/master/transactions/stakingCollection/scripts/get_unlocked_tokens_used.cdc) |
 |**`SCO.21`**| Get Machine Accounts                   | [stakingCollection/scripts/get_machine_accounts.cdc](https://github.com/onflow/flow-core-contracts/blob/master/transactions/stakingCollection/scripts/get_machine_accounts.cdc) |
 
 
@@ -67,7 +72,8 @@ The same applies for all the other staking operation transactions.
 
 To setup the Staking Collection for an account, use the `SC.01` transaction.
 
-The setup process finds any node or delegator records already stored in the main account's storage.
+The setup process finds any node or delegator records already stored in the main account's storage, 
+as well as any in the associated locked account if an associated locked account exists. 
 It connects these node and delegator records with the new Staking Collection, allowing them
 to be interacted with using the Staking Collection API.
 

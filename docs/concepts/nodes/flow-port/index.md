@@ -116,7 +116,7 @@ Please see a list [here](https://github.com/onflow/flow/blob/master/nodeoperator
 ## What else can I do?
   - Add additional stake to your existing stake. Any added FLOW will again sit in a pending status and be processed at the next epoch.
   - Withdraw/re-stake your earned rewards. If you decide to withdraw your rewards, this action will happen instantly. If you decide to re-stake your rewards, the request will again sit in a pending status and will be processed at the next [Epoch](../../staking/index.md#epochs).
-  - Withdraw Rewards and send your earnings to other accounts. If you decide that you want to withdraw your rewards and send those earnings to other accounts via the 'Send FLOW' function, you should first withdraw your rewards. Once in your account, you can send these funds to any other account via the 'Send FLOW' option.
+  - Withdraw Rewards and send your earnings to other accounts. If you decide that you want to withdraw your rewards and send those earnings to other accounts via the 'Send FLOW' function, you will need to follow a multi-step process. First, you should withdraw your rewards. Once you successfully execute this transaction, you will now see the amount you withdrew in your wallet. That amount now needs to be transferred to your 'Unlocked Account'. You can do this by navigating to your Dashboard, clicking on 'Show Breakdown' next to your balance, and then clicking on the 'Move to Unlocked Account' link. Here you can input the amount that you want to transfer to your unlocked account. Once you execute this, you are free to send these funds to any other account via the 'Send FLOW' option.
   - Request to be unstaked from the network. The unstake request will sit in a pending status for two epochs. Once it is processed, the amount that has been unstaked will sit in your unstaked FLOW amount and can now be withdrawn or re-staked.
   - Change the node you are staked/delegated to. If your staked/delegated node has no FLOW actively staked and you have completely withdrawn all unstaked amounts and rewards associated with the node, then you can move your stake to a different node. Click on the `Change Node` button to initiate this process. Please note that this feature is only visible once you get your active stake/delegate into the appropriate status.
 
@@ -131,24 +131,29 @@ Please see a list [here](https://github.com/onflow/flow/blob/master/nodeoperator
 
      Normally if a user wants to send a Flow transaction, it requires signature from both the key on users' device and a key from Blocto service. Making it harder for hackers to steal your assets.
 
-  2. Where can I find a list of node operators to delegate to?
+  2. Locked vs. Unlocked FLOW: What is the difference and what can I do with each?
+
+     - a.) Locked FLOW: If you have locked FLOW, you can choose to either stake or delegate it and earn rewards based off of these actions. You cannot send locked FLOW to other accounts.
+     - b.) Unlocked FLOW: If you have unlocked FLOW, you can stake, delegate, and send this FLOW to other accounts. Rewards are considered 'unlocked FLOW'.
+
+  3. Where can I find a list of node operators to delegate to?
 
      - a.) Please see a list [here](https://github.com/onflow/flow/blob/master/nodeoperators/NodeOperatorList.md) for all node operators that you can delegate to. This list will be updated as new node operators are onboarded onto the network.
 
-  3. I am currently running a node on the network already and have already gone through the staking process once. Do I need to execute a new stake every time there is a new epoch?
+  4. I am currently running a node on the network already and have already gone through the staking process once. Do I need to execute a new stake every time there is a new epoch?
 
        - a.) Once you successfully stake your node and become part of the network, you do not need to submit a new staking request each and every epoch. Your node will be automatically staked from epoch to epoch. This also means that your Node ID will remain the same from epoch to epoch. If you want to unstake your node from the network, then you will follow the process of unstaking your node.
 
-  4. I have a Blocto account and I see that I can stake both in Flow Port and in Blocto's mobile app. What is the difference?
+  5. I have a Blocto account and I see that I can stake both in Flow Port and in Blocto's mobile app. What is the difference?
 
        - a.) If you go through Flow Port, you can choose any node operator within the Flow network to delegate any amount of your Flow Tokens to. If you go through Blocto's mobile site, you will only be able to stake to Blocto run nodes. You can read more about Blocto's staking process by referencing [here](https://guide.blocto.app/article/stake-flow-tokens-step-by-step-with-blocto).
 
-  5. Do I need to use my Ledger device to view information about my account (e.g. my balance and current staked or delegated FLOW)?
+  6. Do I need to use my Ledger device to view information about my account (e.g. my balance and current staked or delegated FLOW)?
 
        - a.) No you do not! You only need your Ledger device to sign transactions. If you want to view your account, you can do so without your Ledger. You can do this by navigating directly to the appropriate desired page URL, while inputting your address into the URL itself. For quick reference, below is a list of these URLs and where you would input your address:
        - Dashboard: https://port.onflow.org/account/[AccountAddress]
        - Stake & Delegate: https://port.onflow.org/stake-delegate/[AccountAddress]
 
-  6. I am clicking 'submit' to execute a transaction, but nothing is happening. How can I unblock myself?
+  7. I am clicking 'submit' to execute a transaction, but nothing is happening. How can I unblock myself?
 
        - a.) Please disable any pop-up blockers and ad blockers you have and refresh the page. If you are still experiencing issues, please reach out via [Discord](https://discord.gg/4yGnMzkZxr) in the appropriate channel.

@@ -5,7 +5,8 @@ sidebar_position: 4
 
 ## Introduction
 
-This section contains information about the FLOW token for individual backers, wallet providers, custodians and node operators.
+This section contains information about the FLOW token for individual backers,
+wallet providers, custodians and node operators.
 
 ### FLOW as a Native Token
 
@@ -17,10 +18,11 @@ interact with FLOW.
 
 ## How to Get FLOW
 
-There are two ways to acquire FLOW tokens as yield:
+There are currently several ways to acquire FLOW tokens:
 
+1. [Claim FLOW as a Backer](./delivery.md): Existing Flow backers can claim their FLOW.
 1. [Earn FLOW as a Validator](../staking/06-technical-overview.mdx): Receive newly-minted FLOW as a reward for running a node.
-1. [Earn FLOW as a Community Contributor](https://github.com/onflow/developer-grants): Flow offers grants for selected proposals as well as RFPs for teams to submit proposals for funded development
+1. [Earn FLOW as a Platform Contributor](./earn.md): Receive newly-minted FLOW as a reward for building on Flow.
 
 ## How to Use FLOW
 

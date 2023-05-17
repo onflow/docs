@@ -1,16 +1,18 @@
 ---
-title: Basic Staking with FLOW
+title: Basic Staking with Unlocked FLOW
 sidebar_title: Basic Staking Guide (Deprecated)
 ---
 
 This document outlines the steps a token holder can take to stake and manage 
-a Flow node with FLOW using only the types defined in the `FlowIDTableStaking` contract.
+a Flow node with normal, unlocked FLOW using only the types defined in the `FlowIDTableStaking` contract.
 It only supports having one node or delegator object per account and is not supported by ledger
 and will likely not be supported by other wallets, so it is recommended to use the staking collection
 instead.
 
 <Callout type="warning">
-This guide covers staking with **FLOW tokens**.
+
+This guide covers staking with **unlocked FLOW tokens**. 
+Staking with locked tokens is deprecated.
 </Callout>
 
 # Staking
@@ -19,7 +21,7 @@ This guide covers staking with **FLOW tokens**.
 
 ### Register a New Staked Node
 
-To register as a node operator with FLOW, the token holder can use the **Register Node** ([SC.11](../core-contracts/06-staking-contract-reference.md#staking))
+To register as a node operator with unlocked FLOW, the token holder can use the **Register Node** ([SC.11](../core-contracts/06-staking-contract-reference.md#staking))
 transaction with the following arguments:
 
 | Argument              | Type     | Description |
@@ -42,13 +44,13 @@ their tokens and node information are committed to the central staking contract 
 At this point, the token holder now has access to various staking operations that they can perform,
 assuming they have the correct number of tokens to perform the action.
 
-## Stake Tokens
+## Stake New Tokens
 
 The token holder can stake additional tokens at any time.
 
 _Note: this transaction stakes additional tokens to the same node that was registered in the setup phase._
 
-To stake tokens, the token holder can use the **Stake FLOW** ([SC.12](../core-contracts/06-staking-contract-reference.md#staking))
+To stake new tokens, the token holder can use the **Stake New Locked FLOW** ([SC.12](../core-contracts/06-staking-contract-reference.md#staking)) 
 transaction with the following arguments:
 
 | Argument   | Type     | Description |
