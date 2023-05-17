@@ -11,7 +11,8 @@ const path = require('path');
 const fs = require('fs');
 
 const docCollectionsLocation = './src/data/doc-collections';
-let cachedSources;
+const externalDataSourceLocation = './src/data/data-sources.json';
+let cachedRepositories;
 
 const mixpanelOnLoad = `
 if ('${process.env.MIXPANEL_PROJECT_TOKEN}' && '${process.env.MIXPANEL_PROJECT_TOKEN}' !== 'undefined') {
@@ -53,22 +54,6 @@ if ('${process.env.MIXPANEL_PROJECT_TOKEN}' && '${process.env.MIXPANEL_PROJECT_T
 }
 `;
 
-/**
- *
- * @returns string[]
- */
-const getDocFileNames = () => {
-  let files = [];
-  try {
-    const docCollectionPath = path.join(__dirname, docCollectionsLocation, '/');
-    const allFiles = fs.readdirSync(docCollectionPath);
-    files = allFiles.filter((filename) => filename.match(/\.json$/)) ?? [];
-  } catch (error) {
-    console.error('Unable to scan directory: ' + error);
-  }
-  return files;
-};
-
 const fetchSporkData = async () => {
   const fetch = await import('node-fetch');
   let data = {};
@@ -82,45 +67,64 @@ const fetchSporkData = async () => {
   }
   return data;
 };
-/**
- *
- * @param {string} filename
- * @returns string
- */
-const getSource = (filename) => {
-  const filePath = path.join(__dirname, docCollectionsLocation, filename);
-  try {
-    const fileContent = JSON.parse(fs.readFileSync(filePath).toString());
-    return fileContent.source;
-  } catch (error) {
-    console.error('Cannot parse: ' + error);
-  }
-};
 
 /**
- * @typedef {Object} Source
+ * @typedef {Object} SourceDestination
+ * @property {string} source - Source
+ * @property {string} destination - Destination
+ */
+
+/**
+ * @typedef {Object} Repository
  * @property {string} owner - Repo owner
  * @property {string} name - Repo name
  * @property {string} branch - Repo branch
- * @property {string} rootPath - Subrepo root path
+ * @property {SourceDestination[]} data - Source-Destination
  */
 
 /**
- * @returns {Source[]}
+ * @typedef {Object} Repo
+ * @property {Repository} repository - Repo owner
  */
-const getSources = () => {
-  if (!cachedSources) {
-    const docFilenames = getDocFileNames();
 
-    cachedSources = docFilenames.reduce((acc, filename) => {
-      const source = getSource(filename);
-      if (!source) {
-        return acc;
-      }
-      return [...acc, source];
-    }, []);
+/**
+ * @returns {Repo[]}
+ */
+const getRepositories = () => {
+  if (!cachedRepositories) {
+    const filePath = path.join(__dirname, externalDataSourceLocation);
+    try {
+      cachedRepositories = JSON.parse(fs.readFileSync(filePath).toString());
+    } catch (error) {
+      console.error('Cannot parse: ' + error);
+    }
   }
-  return cachedSources;
+  return cachedRepositories;
+};
+
+/** @type {import('@docusaurus/plugin-content-docs').MetadataOptions['editUrl']} */
+const editUrl = ({ docPath }) => {
+  console.log(docPath)
+  const repositories = getRepositories();
+
+  const sourceRepository = repositories.reduce((acc, { repository }) => {
+    const sourceData = repository.data.find(({ destination }) =>
+      docPath.includes(destination),
+    );
+    if (sourceData) {
+      return {
+        ...repository,
+        ...sourceData,
+      };
+    }
+    return acc;
+  }, null);
+  if (!sourceRepository) {
+    return `https://github.com/onflow/docs/tree/main/docs/${docPath}`;
+  }
+  const { owner, name, branch, source, destination } = sourceRepository;
+  const sourceDocPath = docPath.replace(destination, source);
+  return `https://github.com/${owner}/${name}/tree/${branch}/${sourceDocPath}`;
 };
 
 /** @type {import('@docusaurus/types').Config} */
@@ -169,7 +173,7 @@ const config = {
           ],
           sidebarPath: require.resolve('./sidebars.js'),
           routeBasePath: '/',
-          editUrl: 'https://github.com/onflow/docs/tree/main/',
+          editUrl, // : '',
           remarkPlugins: [require('remark-math')],
           rehypePlugins: [require('rehype-katex')],
           showLastUpdateTime: true,
