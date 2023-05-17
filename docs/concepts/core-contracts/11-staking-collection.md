@@ -7,8 +7,11 @@ sidebar_title: Staking Collection
 
 The `FlowStakingCollection` contract is a contract that manages a resource containing a user's stake and delegation objects.
 
-The `FlowStakingCollection` allows a user to manage multiple active nodes or delegators and interact with node or 
-delegator objects stored in the StakingCollection itself (stored in the main account). 
+he `FlowStakingCollection` allows a user to manage multiple active nodes or delegators
+and interact with node or delegator objects stored in either their optional locked account
+or in the StakingCollection itself (stored in the main account).
+If a user has locked tokens, StakingCollection allows a user to interact with their locked tokens
+to perform staking actions for any of their nodes or delegators.
 
 The staking collection also manages creating a node's machine accounts if they have any collector or consensus nodes.
 It also allows them to deposit and withdraw tokens from any of their machine accounts through the staking collection.
