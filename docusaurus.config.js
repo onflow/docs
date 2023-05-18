@@ -103,7 +103,6 @@ const getRepositories = () => {
 
 /** @type {import('@docusaurus/plugin-content-docs').MetadataOptions['editUrl']} */
 const editUrl = ({ docPath }) => {
-  console.log(docPath)
   const repositories = getRepositories();
 
   const sourceRepository = repositories.reduce((acc, { repository }) => {
