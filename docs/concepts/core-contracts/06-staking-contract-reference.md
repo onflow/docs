@@ -36,15 +36,10 @@ These scripts are read-only and get info about the current state of the staking 
 |**`SC.10`**| Get All Info about a single Delegator      | [idTableStaking/delegation/get_delegator_info.cdc](https://github.com/onflow/flow-core-contracts/blob/master/transactions/idTableStaking/delegation/get_delegator_info.cdc) |
 |**`SC.11`**| Get a node's total Commitment              | [idTableStaking/get_node_total_commitment_without_delegators.cdc](https://github.com/onflow/flow-core-contracts/blob/master/transactions/idTableStaking/scripts/get_node_total_commitment_without_delegators.cdc) |
 
-## Node Staker Transactions
-
-Please see the [Locked Tokens contract](./12-locked-tokens.md#transactions) for information about staking with locked tokens.
-Documentation for staking with unlocked tokens will be updated when unlocked tokens are available to stake with.
-
 ## Delegator Transactions
 
-Please see the [Locked Tokens contract](./12-locked-tokens.md#transactions) for information about delegating with locked tokens.
-Documentation for delegating with unlocked tokens will be updated when unlocked tokens are available to delegate with.
+Documentation for delegating with tokens is described in the staking documentation
+for [the staking collection](../staking/14-staking-collection.mdx)
 
 # Events
 
