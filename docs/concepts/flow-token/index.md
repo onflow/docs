@@ -19,7 +19,7 @@ interact with FLOW.
 
 There are two ways to acquire FLOW tokens as yield:
 
-1. [Earn FLOW as a Validator](../staking/06-technical-overview.mdx): Receive newly-minted FLOW as a reward for running a node.
+1. [Earn FLOW as a Validator or Delegator](../staking/06-technical-overview.mdx): Receive newly-minted FLOW as a reward for running a node.
 1. [Earn FLOW as a Community Contributor](https://github.com/onflow/developer-grants): Flow offers grants for selected proposals as well as RFPs for teams to submit proposals for funded development
 
 ## How to Use FLOW
