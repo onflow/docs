@@ -7,12 +7,17 @@ sidebar_position: 9
 
 The Hybrid Custody model on Flow enables developers to provide seamless onboarding and in-app experiences while simultaneously empowering users with real ownership and self-sovereignty.  With this [new custodial model](https://forum.onflow.org/t/hybrid-custody/4016), developers can deliver the benefits of both app and self-custody in a unified experience.
 
-The full Hybrid Custody model is enabled by three core components:
+The full Hybrid Custody experience is enabled by three core components:
 - Walletless Onboarding - App managed account creation, funding, and custody
 - Account Linking - App custodied accounts delegate access to wallet-authenticated users
-- LinkedAccounts contract - A standard contract enabling users to view and manage their linked accounts
+- HybridCustody contract - A standard contract enabling users to view and manage their linked accounts
 
-> :warning: Note that the documentation on Hybrid Custody covers the current state and will likely differ from the final implementation. Builders should be aware that breaking changes will deploy between current state and the stable version. Interested in shaping the conversation? [Join in!](https://github.com/onflow/flips/pull/72)
+
+<Callout type="info">
+
+Note that the documentation on Hybrid Custody covers the current state and will likely differ from the final implementation. Builders should be aware that breaking changes may follow before reaching a final consensus on implementation. Interested in shaping the conversation? [Join in!](https://github.com/onflow/flips/pull/72)
+
+</Callout>
 
 ### The Path to Hybrid Custody
 

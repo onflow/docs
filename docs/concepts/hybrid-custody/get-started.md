@@ -8,9 +8,14 @@ On the delegation side, we have the apps that leverage Hybrid Custody for enhanc
 
 From the usage perspective, apps would want to get information about a user's linked accounts to display accounts & assets, enable account & asset management, and even facilitate cross account interactions - think of this from the perspective of a wallet or NFT marketplace.
 
+<Callout type="info">
+
+Note that the documentation on Hybrid Custody covers the current state and will likely differ from the final implementation. Builders should be aware that breaking changes may follow before reaching a final consensus on implementation. Interested in shaping the conversation? [Join in!](https://github.com/onflow/flips/pull/72)
+
+</Callout>
+
 In either case, you'll want to do the following to get started implementing Hybrid Custody in your application:
 
-1. Set up your environment
-1. Copy the contents of [linked-accounts](https://github.com/onflow/linked-accounts) into your project
-1. ???
-1. Profit
+1. [Install Flow CLI](https://developers.flow.com/tooling/flow-cli/install)
+1. Copy the contents of [restricted-child-account](https://github.com/flowtyio/restricted-child-account) into your project (CLI scaffold follow shortly!)
+1. Start building!

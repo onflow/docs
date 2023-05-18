@@ -6,7 +6,11 @@ If you’ve built dApps on Flow, or any blockchain for that matter, you’re pai
 
 In this doc, we’ll dive into a progressive onboarding flow, including the Cadence scripts & transactions that go into its implementation in your dApp. These components will enable any implementing dApp to create a custodial account, intermediate the user’s on-chain actions on their behalf, and later delegate control of that dApp-created account to the user’s wallet-mediated account. We’ll refer to this custodial pattern as the Hybrid Account Model and the process of delegating control of the dApp account as Account Linking.
 
-> :warning: Note that the documentation on Hybrid Custody covers the current state and will likely differ from the final implementation. Builders should be aware that breaking changes will deploy between current state and the stable version. Interested in shaping the conversation? [Join in!](https://github.com/onflow/flips/pull/72)
+<!-- TODO <Callout type="info"> -->
+
+Note that the documentation on Hybrid Custody covers the current state and will likely differ from the final implementation. Builders should be aware that breaking changes may follow before reaching a final consensus on implementation. Interested in shaping the conversation? [Join in!](https://github.com/onflow/flips/pull/72)
+
+<!-- TODO </Callout> -->
 
 # Objectives
 
@@ -25,7 +29,7 @@ Before diving in, let's make a distinction between **"account linking"** and **"
 
 Very simply, account linking is a [feature in Cadence](https://github.com/onflow/flips/pull/53) that let's an [AuthAccount](../../../cadence/language/accounts.mdx#authaccount) create a [Capability](../../../cadence/language/capability-based-access-control.md) on itself. You can do so in the following transaction:
 
-```js
+```cadence
 #allowAccountLinking
 
 transaction(linkPathSuffix: String) {
@@ -75,7 +79,7 @@ Given the ability to establish an account and later delegate access to a user, d
 
 The following transaction creates an account, funding creation via the signer and adding the provided public key. You'll notice this transaction is pretty much your standard account creation. The magic for you will be how you custody the key for this account (locally, KMS, wallet service, etc.) in a manner that allows your dapp to mediate on-chain interactions on behalf of your user.
 
-```js
+```cadence
 import FlowToken from "../../contracts/utility/FlowToken.cdc"
 import FungibleToken from "../../contracts/utility/FungibleToken.cdc"
 
@@ -142,7 +146,7 @@ Compared to walletless onboarding where a user does not have a Flow account, blo
 After this transaction, both the custodial party (presumably the client/dApp) and the signing parent account will have access to the newly created account - the custodial party via key access and the parent account via their `LinkedAccounts.Collection` maintaining the new account's AuthAccount Capability.
 
 ### Account Creation & Linking
-```js
+```cadence
 #allowAccountLinking
 
 import FungibleToken from "../../contracts/utility/FungibleToken.cdc"
@@ -293,9 +297,13 @@ transaction(
 
 Linking an account is the process of delegating account access via AuthAccount Capability. Of course, we want to do this in a way that allows the receiving account to maintain that Capability and allows easy identification of the accounts on either end of the linkage - the user's main "parent" account and the linked "child" account. This is accomplished in the (still in flux) `LinkedAccounts` contract which we'll continue to use in this guidance.
 
-> :warning: Note that since account linking is a sensitive action, transactions where an account may be linked are designated by a topline pragma `#allowAccountLinking`. This lets wallet providers inform users that their account may be linked in the signing transaction.
+<!-- TODO <Callout type="info"> -->
 
-![resources/linked-accounts-diagram.jpg](resources/linked-accounts-diagram.jpg)
+Note that since account linking is a sensitive action, transactions where an account may be linked are designated by a topline pragma `#allowAccountLinking`. This lets wallet providers inform users that their account may be linked in the signing transaction.
+
+<!-- TODO </Callout> -->
+
+![resources/linked-accounts-diagram.jpg](resources/restricted_child_accounts_high_level.png)
 
 *In this scenario, a user custodies a key for their main account which has a `LinkedAccounts.Collection` within it. Their `LinkedAccounts.NFT` maintains an AuthAccount Capability to the child account, which the dApp maintains access to via the account’s key and within which a `LinkedAccounts.Handler`.*
 
@@ -305,7 +313,7 @@ Linking accounts can be done in one of two ways. Put simply, the child account n
 
 ### Multisig Transaction
 
-```js
+```cadence
 #allowAccountLinking
 
 import MetadataViews from "../../contracts/utility/MetadataViews.cdc"
@@ -425,7 +433,7 @@ transaction(
 
 Here, the account delegating access to itself links its AuthAccount Capability, and publishes it to be claimed by the account it will be linked to.
 
-```js
+```cadence
 #allowAccountLinking
 
 /// Signing account publishes a Capability to its AuthAccount for
@@ -456,7 +464,7 @@ transaction(parentAddress: Address, authAccountPathSuffix: String) {
 
 On the other side, the receiving account claims the published AuthAccount Capability, adding it to the signer's `LinkedAccounts.Collection`.
 
-```js
+```cadence
 import MetadataViews from "../../contracts/utility/MetadataViews.cdc"
 import NonFungibleToken from "../../contracts/utility/NonFungibleToken.cdc"
 import LinkedAccountMetadataViews from "../../contracts/LinkedAccountMetadataViews.cdc"
