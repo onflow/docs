@@ -84,7 +84,7 @@ To create a new user account;
     ![Flow Control Manager new account creation example](../media/aeda525491f7b1b329e57ac7d07fa997.png)
 
     1.  Select the paying account. This will usually be the emulator_service_account
-    2.  Enter a friendly name for the new account. This is just for your own reference and does not get written to the chain.
+    2.  Enter a friendly name for the new account. This name is just for your own reference and does not get written to the chain.
     3.  Click Create
 3.  If successful, the new account will appear under the Flow Control Manager Accounts tab.
 
@@ -156,45 +156,97 @@ FlowInterface.cs has a number of Serialized TextAsset fields, which can be popul
 ![GameFlowInterface script assignment final state example](../media/5569416d261ff8e9d05b53c082c8a1b1.png)
 
 ### Login
+Open FlowInterface.cs and find the Login function stub.
 
 The Login function’s role is to take the credentials entered by the user, create a FlowControl.Account object with which we can submit transactions to the chain, and run the login.cdc transaction.
 
-We first need to declare our FlowControl.Account object.  
 At the top of the file, add the following using statements to grant us easy access to the Flow SDK structures.
 
-```cs
-using DapperLabs.Flow.Sdk;
+```csharp
 using DapperLabs.Flow.Sdk.Cadence;
 using DapperLabs.Flow.Sdk.DataObjects;
 using DapperLabs.Flow.Sdk.DevWallet;
-using DapperLabs.Flow.Sdk.Unity;
-```
-
-Then declare our Flow account object on line 19. This will hold the credentials of the currently logged in player for use by all of our FlowInterface functons.
-
-```cs
-public FlowControl.Account FLOW_ACCOUNT = null;
+using Convert = DapperLabs.Flow.Sdk.Cadence.Convert;
 ```
 
 Your file should now look like this:
 
-![FlowInterface.cs FLOW_ACCOUNT definition example](../media/999cca57ee98b89bfe5f012ee445766c.png)
+```csharp
+using System;
+using System.Collections;
+using System.Collections.Generic;
+using System.Linq;
+using System.Numerics;
+using System.Threading.Tasks;
+using UnityEngine;
+using DapperLabs.Flow.Sdk;
+using DapperLabs.Flow.Sdk.Unity;
+using DapperLabs.Flow.Sdk.Cadence;
+using DapperLabs.Flow.Sdk.DataObjects;
+using DapperLabs.Flow.Sdk.DevWallet;
+using Convert = DapperLabs.Flow.Sdk.Cadence.Convert;
+```
+
+Uncomment the following at line 56:
+```csharp
+//private FlowControl.Account FLOW_ACCOUNT = null;
+```
 
 We now have to register a wallet provider with the Flow SDK. We are going to use DevWallet, which comes with the Flow SDK, and is only intended for development purposes on emulator and testnet. Add the following to the `Start` function:
 
 ```cs
-// Register DevWallet
-FlowSDK.RegisterWalletProvider(ScriptableObject.CreateInstance<DevWalletProvider>());
+// Set up SDK to access Emulator
+FlowConfig flowConfig = new FlowConfig()
+{
+    NetworkUrl = "http://127.0.0.1:8888/v1",  // emulator
+    Protocol = FlowConfig.NetworkProtocol.HTTP
+};
+FlowSDK.Init(flowConfig);
+
+// Register DevWallet wallet provider with SDK
+FlowSDK.RegisterWalletProvider(new DevWalletProvider());
 ```
 Your Start function should now look like this:
 
-![FlowInterface.cs Start function final state example](../media/999cca57ee98b89bfe5f012ee445766d.png)
+```csharp
+private void Start()
+{
+    if (Instance != this)
+    {
+        Destroy(this);
+    }
 
-> **NOTE:** Do not use DevWallet in production builds. It is only intended for development purposes and is NOT secure.  
+    // Set up SDK to access Emulator
+    FlowConfig flowConfig = new FlowConfig()
+    {
+        NetworkUrl = "http://127.0.0.1:8888/v1",  // emulator
+        Protocol = FlowConfig.NetworkProtocol.HTTP
+    };
+    FlowSDK.Init(flowConfig);
+
+    // Register DevWallet wallet provider with SDK
+    FlowSDK.RegisterWalletProvider(new DevWalletProvider());
+}
+```
+
+> **WARNING:** Do not use DevWallet in production builds. It is only intended for development purposes and does NOT securely store keys.\
+Having the Address and Private Keys to a blockchain account gives your application full access to all of that account’s funds and storage. They should be treated with extreme care.
 
 Next, we will fill out the body of the Login function.
 
-![Login function blank state example](../media/079fee6ed2cb0777c5ee99322d3d6039.png)
+```csharp
+/// <summary>
+/// Attempts to log in by executing a transaction using the provided credentials
+/// </summary>
+/// <param name="username">An arbitrary username the player would like to be known by on the leaderboards</param>
+/// <param name="onSuccessCallback">Function that should be called when login is successful</param>
+/// <param name="onFailureCallback">Function that should be called when login fails</param>
+public void Login(string username, System.Action<string, string> onSuccessCallback, System.Action onFailureCallback)
+{
+    // Authenticate an account with DevWallet
+
+}
+```
 
 First, we have to invoke the wallet provider to authenticate the user and get their flow address. Add the following code to the Login function;
 
@@ -202,7 +254,7 @@ First, we have to invoke the wallet provider to authenticate the user and get th
 // Authenticate an account with DevWallet
 FlowSDK.GetWalletProvider().Authenticate(
     "", // blank string will show list of accounts from Accounts tab of Flow Control Window
-    (string flowAddress) => StartCoroutine(OnAuthSuccess(username, flowAddress, onSuccessCallback, onFailureCallback)), 
+    (string address) => onSuccessCallback(address, username), 
     onFailureCallback);
 ```
 
@@ -214,40 +266,165 @@ The Authenticate function takes parameters as follows;
 
 Your completed Login function should look as follows; 
 
-![Login function completed state example](../media/079fee6ed2cb0777c5ee99322d3d6040.png)
-
-Now we need to implement the `OnAuthSuccess` function for when we successfully authenticate our user and get their flow address. 
-
-![OnAuthSuccess function blank state example](../media/079fee6ed2cb0777c5ee99322d3d6041.png)
-
-To sign transactions we need to assign a FlowControl.Account object, which we get from FlowControl using the flow address that the wallet provider's `Authenticate` gave us. 
-With this information, we can now easily sign any transaction we like for the account in question.
-
-```cs
-// get FLOW account from address
-FLOW_ACCOUNT = FlowControl.Data.Accounts.FirstOrDefault(x => x.AccountConfig["Address"] == flowAddress);
-```
-
-> **WARNING:** Having the Address and Private Keys to a blockchain account gives your application full access to all of that account’s funds and storage. They should be treated with extreme care.
-
-Now that we have an Account object, we can use it to Submit our login.cdc transaction.  
-Add the following code beneath the Flow Account object creation code;
-
-```cs
-// execute log in transaction on chain
-Task<FlowTransactionResult> task = FLOW_ACCOUNT.SubmitAndWaitUntilExecuted(loginTxn.text, new CadenceString(username));
-while (!task.IsCompleted)
+```csharp
+/// <summary>
+/// Attempts to log in by executing a transaction using the provided credentials
+/// </summary>
+/// <param name="username">An arbitrary username the player would like to be known by on the leaderboards</param>
+/// <param name="onSuccessCallback">Function that should be called when login is successful</param>
+/// <param name="onFailureCallback">Function that should be called when login fails</param>
+public void Login(string username, System.Action<string, string> onSuccessCallback, System.Action onFailureCallback)
 {
-    int dots = ((int)(Time.time * 2.0f) % 4);
-    UIManager.Instance.SetStatus("Connecting" + new string('.', dots));
+    // Authenticate an account with DevWallet
+    if (FlowSDK.GetWalletProvider().IsAuthenticated() == false)
+    {
+        FlowSDK.GetWalletProvider().Authenticate(
+            "", // blank string will show list of accounts from Accounts tab of Flow Control Window
+            (string address) => onSuccessCallback(address, username),
+            onFailureCallback);
+    }
+}
+
+```
+Now we need to implement the `GetGameDataFromChain` function for when we successfully authenticate our user and get their flow address.\
+At this point we have successfully authenticated our user, and all subsequent Scripts and Transactions will be submitted via the authenticated account.
+
+
+### GetGameDataFromChain
+
+This function executes the get-current-gamestate.cdc transaction on the chain, and then processes the emitted events to get the CurrentGameState for the logged in account, and current GameStartTime for the game of the day, which we use to show time remaining.
+
+```csharp
+/// <summary>
+/// Attempts to get the current game state for the user from chain.
+/// </summary>
+/// <param name="username">An arbitrary username the player would like to be known by on the leaderboards</param>
+/// <param name="onSuccessCallback">Callback on success</param>
+/// <param name="onFailureCallback">Callback on failure</param>
+public IEnumerator GetGameDataFromChain(string username, System.Action<Decimal, List<GuessResult>, Dictionary<string, string>> onSuccessCallback, System.Action onFailureCallback)
+{
+    // get FLOW_ACCOUNT object for text replacements
+
+    // execute getCurrentGameState transaction on chain
+
+    // check for error. if so, break.
+
+    // transaction success, get data from emitted events
+
+    // process currentGameState event
+
+    // process gameStartTime event
+
+    // call GameManager to set game state
+
     yield return null;
 }
 ```
 
-Because transactions can take quite some time on chain, we create an asynchronous Task by calling SubmitAndWaitUntilExecuted on our newly created Flow Account object, to prevent blocking the main game thread.
+As you will recall, we previously configured a number of text replacements.\
+These are useful, and allow us to easily change some hardcoded data from a contract or transaction, such as the deploy address of the contract, from one central location without having to edit every cadence script in our project.\
+Our transactions and scripts will need to access the text replacement function, which lives in the FlowControl.Account class, so we need to first create a FlowControl.Account object as follows;
 
-Into SubmitAndWaitUntilExecuted, we pass the script that we want to execute, and any parameters.  
+```cs
+// get FLOW_ACCOUNT object for text replacements
+FLOW_ACCOUNT = new FlowControl.Account
+{
+    GatewayName = "Emulator",   // the network to match
+    AccountConfig = new Dictionary<string, string> { { "Address", FlowSDK.GetWalletProvider().GetAuthenticatedAccount().Address } } // the account address to match
+};
+```
+
+We are about to pull down the user's saved game data. To make processing event data easier, we have declared three classes to hold the results of events emitted by transactions:
+
+```csharp
+public class StatePayload
+{
+    public List<GuessResult> currentState;
+}
+
+public class TimePayload
+{
+    public Decimal startTime;
+}
+
+public class GuessResultPayload
+{
+    public string result;
+}
+```
+
+Let's compare these to the payloads for each event in the contract:
+
+```cadence
+pub event CurrentState(currentState: [UserGuess])
+pub event LastGameStart(startTime: UFix64)
+pub event GuessResult(result: String)
+
+pub struct UserGuess
+{
+    pub let Guess: String
+    pub let Result: String
+    init(guess: String, result: String)
+    {
+        self.Guess = guess
+        self.Result = result
+    }
+}
+```
+
+When using Cadence.Convert, cadence arrays are converted into C# Lists, as shown in the StatePayload class and CurrentState event.
+
+In GameManager.cs, the GuessResult class is declared as:
+
+```csharp
+public class GuessResult
+{
+    /// <summary>
+    /// the guess that was submitted
+    /// </summary>
+    [Cadence(CadenceType = "String", Name = "Guess")]
+    public string word;
+    /// <summary>
+    /// A 5 letter code indicating the result and resulting color a cell should be. 
+    /// </summary>
+    /// <remarks>
+    /// "p" = the letter at this position was in the word and in the correct (p)osition, color the cell green.
+    /// "w" = the letter at this position was in the (w)ord, but in the incorrect position, color the cell yellow.
+    /// "n" = the letter at this position was (n)ot in the word.
+    /// </remarks>
+    [Cadence(CadenceType = "String", Name = "Result")]
+    public string colorMap;
+}
+```
+
+We want the Cadence fields ```Guess``` and ```Result``` to map to the C# fields ```word``` and ```colorMap```.  To do this, we add a Cadence attribute to each field with a ```Name```
+parameter that tells it which Cadence fields maps to that class field.
+
+We did not have to do that with the three payload classes we defined earlier because the C# field names exactly match the Cadence field names in the contract.
+
+Now that we have an Account object for text replacement, we can use it with the Transactions class to Submit our login.cdc transaction.  
+
+Add the following code to the GetGameDataFromChain function;
+
+```cs
+// execute getCurrentGameState transaction on chain
+Task<FlowTransactionResult> getStateTask = Transactions.SubmitAndWaitUntilExecuted(FLOW_ACCOUNT.DoTextReplacements(loginTxn.text), new CadenceString(username));
+
+while (!getStateTask.IsCompleted)
+{
+    int dots = ((int)(Time.time * 2.0f) % 4);
+
+    UIManager.Instance.SetStatus($"Retrieving data from chain" + new string('.', dots));
+
+    yield return null;
+}
+```
+Because transactions can take quite some time on chain, we create an asynchronous Task by calling SubmitAndWaitUntilExecuted from the Transactions class, to prevent blocking the main game thread.  
+Into SubmitAndWaitUntilExecuted, we pass the script that we want to execute, and any parameters.
+
 For our script, we refer to the serialized TextAsset field, loginTxn, to which we will assign login.cdc in the inspector.  
+We pass our script into SubmitAndWaitUntilExecuted via the DoTextReplacements function on our FLOW_ACCOUNT object, which will parse the cadence script and replace any of our defined text replacements.
+
 For parameters, the login.cdc script is expecting a single String parameter with the player’s display name in it. We pass in a new CadenceString object, which we create inline from the encapsulating function’s username string parameter.
 
 Next, we simply wait until our asynchronous task.IsCompleted.  
@@ -256,8 +433,8 @@ While we wait, we update the UI with a simple animated ‘Connecting…’ text 
 Once our transaction has completed, we want to check if it was successful on chain. Add the following code beneath the transaction submission code;
 
 ```cs
-// check for error. if there was an error, break.
-if (task.Result.Error != null || task.Result.ErrorMessage != string.Empty || task.Result.Status == FlowTransactionStatus.EXPIRED)
+// check for error. if so, break.
+if (getStateTask.Result.Error != null || getStateTask.Result.ErrorMessage != string.Empty || getStateTask.Result.Status == FlowTransactionStatus.EXPIRED)
 {
     onFailureCallback();
     yield break;
@@ -273,69 +450,6 @@ Here we must check the transaction Result for three conditions:
 Any error here, and we are simply going to fail the login, and call our onFailureCallback.
 
 Next, we process the result of our transaction.  
-In this case, if there was no error, then we have achieved our goals.  
-We have verified that the user owns the account, by virtue of them successfully signing a transaction, and we have, during the course of that transaction, created game related resources where required.
-
-Add the following code to the bottom of the login function to call the onSuccess callback.
-
-```cs
-// login successful!
-onSuccessCallback(username, flowAddress);
-```
-
-You may also remove the final `yield return null` if you wish.
-
-Your entire OnAuthSuccess function should now look as follows;
-
-![OnAuthSuccess final state code example](../media/b33bd58a6b1085948b1fbc9b40b2f2b3.png)
-
-### Logout
-
-The Logout function’s role is to clear the FlowControl.Account object, to prevent any more transactions from being executed with those account credentials.
-
-The Logout function is very simple. Simply add the following line;
-
-```cs
-FLOW_ACCOUNT = null;
-FlowSDK.GetWalletProvider().Unauthenticate();
-```
-
-This clears the FlowAccount object, preventing any more transactions from being submitted with it, and unauthenticates the user from the wallet provider. 
-
-Your completed Logout function should now look like this;
-
-![Logout final state code example](../media/894e40fa8ac7a3ebbc60e44c60be135a.png)
-
-### GetGameDataFromChain
-
-This function executes the get-current-gamestate.cdc transaction on the chain, and then processes the emitted events to get the CurrentGameState for the logged in account, and current GameStartTime for the game of the day, which we use to show time remaining.
-
-![GetGameDataFromChain blank state code example](../media/252129f67efc7d03357d9e5070d67ece.png)
-
-As per the Login function, we are going to submit our transaction to chain using SubmitAndWaitUntilExecuted, and wait until our async Task is complete.  
-Add the following code to the GetGameDataFromChain function;
-
-```cs
-// execute getCurrentGameState transaction on chain
-Task<FlowTransactionResult> getStateTask = FLOW_ACCOUNT.SubmitAndWaitUntilExecuted(getCurrentGameStateTxn.text);
-while (!getStateTask.IsCompleted)
-{
-    int dots = ((int)(Time.time * 2.0f) % 4);
-    UIManager.Instance.SetStatus("Loading" + new string('.', dots));
-    yield return null;
-}
-
-// check for error. if so, break.
-if (getStateTask.Result.Error != null || getStateTask.Result.ErrorMessage != string.Empty || getStateTask.Result.Status == FlowTransactionStatus.EXPIRED)
-{
-    onFailureCallback();
-    yield break;
-}
-```
-
-This time, we are passing in the transaction referenced in the serialized TextAsset field getCurrentGameStateTxn, which we populated in the inspector with get-current-gamestate.cdc.  
-This transaction requires no parameters, so we can simply exclude them.
-
 This transaction is designed to return the game state for the user, and the time remaining on the word of the day, via emitted events.  
 We can access these emitted events via the .Result.Events property on our task.  
 To do so, add the following code below our submission logic;
@@ -360,24 +474,12 @@ Next, we will parse the contents of each event. Add the following code to the fu
 
 ```cs
 // process current game state event
-// access event payload
-CadenceComposite statePayload = currentStateEvent.Payload as CadenceComposite;
-CadenceBase[] priorGuessResults = statePayload.CompositeFieldAs<CadenceArray>("currentState").Value;
-
-// iterate over prior guess results in payload, add to results list, and populate letter statuses
-List<GuessResult> results = new List<GuessResult>();
+Decimal gameStartTime = 0;
 Dictionary<string, string> letterStatuses = new Dictionary<string, string>();
-foreach (CadenceBase result in priorGuessResults)
+List<GuessResult> results = Convert.FromCadence<StatePayload>(currentStateEvent.Payload).currentState;
+foreach (GuessResult newResult in results)
 {
-    // add guess result to output
-    GuessResult newResult = new GuessResult
-    {
-        word = (result as CadenceComposite).CompositeFieldAs<CadenceString>("Guess").Value.ToUpper(),
-        colorMap = (result as CadenceComposite).CompositeFieldAs<CadenceString>("Result").Value
-    };
-    results.Add(newResult);
-
-    // add letters to lettermap
+    newResult.word = newResult.word.ToUpper();
     for (int i = 0; i < 5; i++)
     {
         bool letterAlreadyExists = letterStatuses.ContainsKey(newResult.word[i].ToString());
@@ -406,41 +508,27 @@ foreach (CadenceBase result in priorGuessResults)
 }
 
 // get game start time event
-double gameStartTime = 0;
-CadenceComposite timePayload = startTimeEvent.Payload as CadenceComposite;
-CadenceNumber startTime = timePayload.CompositeFieldAs<CadenceNumber>("startTime");
-gameStartTime = double.Parse(startTime.Value);
+gameStartTime = Convert.FromCadence<TimePayload>(startTimeEvent.Payload).startTime;
+```
+From the contract, we know that the CurrentState event returns a list of ```UserGuess``` structs.  We want to convert these to a C# ```List<GuessResult>```.
+
+```csharp
+List<GuessResult> results = Convert.FromCadence<StatePayload>(currentStateEvent.Payload).currentState;
 ```
 
-For the currentGameState event, we know that we are going to receive an Event object, containing an array of UserGuesses, which each contain two String objects.
+This converts the Payload of the currentStateEvent event into a ```StatePayload``` object, then sets results to the ```currentState``` field of that object.
 
-![CurrentState event and UserGuess struct contract code](../media/55bad7978ba3915550c8367b319a9944.png)
+Then, we iterate over the results list and update the letterStatuses that we display.
 
-Since Events are of the CadenceComposite type, we get the currentStateEvent.Payload, as CadenceComposite.
 
-Now that we have the event structure, we can get the UserGuesses array, by calling CompositeFieldAs\<CadenceArray\>(“currentState”) on our event structure object.
 
-![Payload extraction and cast example code](../media/184e8a2ee8440b6b700072a9212e92bb.png)
+The GameStartTime event is processed similarly:
 
-This function retrieves the field “currentState”, which we can see in the event declaration above, and casts it to the CadenceArray type for us.  
-We access the Value property of this, and assign it to CadenceBase[] priorGuessResults for easy iteration.
+```csharp
+gameStartTime = Convert.FromCadence<TimePayload>(startTimeEvent.Payload).startTime;
+```
 
-Next, we iterate over out priorGuessResults array.
-
-![Payload iteration code example code](../media/ecac86c8af7414ac22e95f64340acc44.png)
-
-Currently, the array elements are of type CadenceBase, but we know from our game contract that they are a struct, which is a CadenceComposite type, so for each iteration, we cast the element to CadenceComposite, and then once again use CompositeFieldAs\<CadenceString\> to access both the “Guess” and “Result” member strings from the struct, and store them in our own local result list.
-
-The GameStartTime event is simpler.
-
-![LastGameStart contract event code](../media/814d81d58a609d94bc2d7bc9a6e90afe.png)
-
-This event contains a single variable of type UFix64, an unsigned 64 bit fixed point number. This is the standard data format on the Flow blockchain to store timestamps.
-
-![process gameStartTime code block](../media/cc91513990fc19f6348a32ba3770c543.png)
-
-As with the guess results, we first cast our event payload to the CadenceComposite type, and then we simply get the startTime parameter using CompositeFieldAs\<CadenceNumber\>(“startTime”).  
-CadenceNumber encompasses all numerical data types on chain. The value is stored as a string, and so we use double.Parse to convert this back to a number for our own use. Double being the closest data type to UFix64 supported in C\# natively, and close enough for our use case.
+The startTimeEvent payload is converted into a TimePayload object and the startTime field is extracted from that.  Because the Cadence type is UFix64, we get back a C# Decimal struct.
 
 Finally, we call our onSuccess callback to return our results to our caller.  
 Add the following lines to the bottom of the function;
@@ -450,9 +538,125 @@ Add the following lines to the bottom of the function;
 onSuccessCallback(gameStartTime, results, letterStatuses);
 ```
 
+You can now remove the ```yield return null``` at the base of the function if you wish.
+
 Your completed function should now look like this;
 
-![Completed GetGameDataFromChain Code](../media/c680c8f205102d2dd4254e0a5a4664b0.png)
+```csharp
+/// <summary>
+/// Attempts to get the current game state for the user from chain.
+/// </summary>
+/// <param name="username">An arbitrary username the player would like to be known by on the leaderboards</param>
+/// <param name="onSuccessCallback">Callback on success</param>
+/// <param name="onFailureCallback">Callback on failure</param>
+public IEnumerator GetGameDataFromChain(string username, System.Action<Decimal, List<GuessResult>, Dictionary<string, string>> onSuccessCallback, System.Action onFailureCallback)
+{
+    // get FLOW_ACCOUNT object for text replacements
+    FLOW_ACCOUNT = new FlowControl.Account
+    {
+        GatewayName = "Emulator",   // the network to match
+        AccountConfig = new Dictionary<string, string> { { "Address", FlowSDK.GetWalletProvider().GetAuthenticatedAccount().Address } } // the account address to match
+    };
+
+    // execute getCurrentGameState transaction on chain
+    Task<FlowTransactionResult> getStateTask = Transactions.SubmitAndWaitUntilExecuted(FLOW_ACCOUNT.DoTextReplacements(loginTxn.text), new CadenceString(username));
+
+    while (!getStateTask.IsCompleted)
+    {
+        int dots = ((int)(Time.time * 2.0f) % 4);
+
+        UIManager.Instance.SetStatus($"Retrieving data from chain" + new string('.', dots));
+
+        yield return null;
+    }
+
+    // check for error. if so, break.
+    if (getStateTask.Result.Error != null || getStateTask.Result.ErrorMessage != string.Empty || getStateTask.Result.Status == FlowTransactionStatus.EXPIRED)
+    {
+        onFailureCallback();
+        yield break;
+    }
+
+    // transaction success, get data from emitted events
+    List<FlowEvent> events = getStateTask.Result.Events;
+    FlowEvent currentStateEvent = events.Find(x => x.Type.EndsWith(".CurrentState"));
+    FlowEvent startTimeEvent = events.Find(x => x.Type.EndsWith(".LastGameStart"));
+
+    if (currentStateEvent == null || startTimeEvent == null)
+    {
+        onFailureCallback();
+        yield break;
+    }
+
+    // process current game state event
+    Decimal gameStartTime = 0;
+    Dictionary<string, string> letterStatuses = new Dictionary<string, string>();
+    List<GuessResult> results = Convert.FromCadence<StatePayload>(currentStateEvent.Payload).currentState;
+    foreach (GuessResult newResult in results)
+    {
+        newResult.word = newResult.word.ToUpper();
+        for (int i = 0; i < 5; i++)
+        {
+            bool letterAlreadyExists = letterStatuses.ContainsKey(newResult.word[i].ToString());
+            string currentStatus = letterAlreadyExists ? letterStatuses[newResult.word[i].ToString()] : "";
+            switch (currentStatus)
+            {
+                case "":
+                    letterStatuses[newResult.word[i].ToString()] = newResult.colorMap[i].ToString();
+                    break;
+                case "p":
+                    break;
+                case "w":
+                    if (newResult.colorMap[i] == 'p')
+                    {
+                        letterStatuses[newResult.word[i].ToString()] = newResult.colorMap[i].ToString();
+                    }
+                    break;
+                case "n":
+                    if (newResult.colorMap[i] == 'p' || newResult.colorMap[i] == 'w')
+                    {
+                        letterStatuses[newResult.word[i].ToString()] = newResult.colorMap[i].ToString();
+                    }
+                    break;
+            }
+        }
+    }
+
+    // get game start time event
+    gameStartTime = Convert.FromCadence<TimePayload>(startTimeEvent.Payload).startTime;
+
+    // call GameManager to set game state
+    onSuccessCallback(gameStartTime, results, letterStatuses);
+}
+```
+
+
+### Logout
+
+The Logout function’s role is to disconnect the authenticated wallet from your app, and to clear the FlowControl.Account object, to prevent any more transactions from being executed with those account credentials.
+
+The Logout function is very simple. Simply add the following line;
+
+```cs
+FLOW_ACCOUNT = null;
+FlowSDK.GetWalletProvider().Unauthenticate();
+```
+
+This clears the FlowAccount object, preventing any more transactions from being submitted with it, and unauthenticates the user from the wallet provider. 
+
+Your completed Logout function should now look like this;
+
+```csharp
+/// <summary>
+/// Clear the FLOW account object
+/// </summary>
+public void Logout()
+{
+    FLOW_ACCOUNT = null;
+    FlowSDK.GetWalletProvider().Unauthenticate();
+}
+```
+
 
 ### SubmitGuess
 
@@ -464,7 +668,7 @@ For phase one, enter the following code at the top of the SubmitGuess function;
 
 ```cs
 // submit word via checkWord script to FLOW chain to check if word is valid
-Task<FlowScriptResponse> checkWordTask = FLOW_ACCOUNT.ExecuteScript(checkWordScript.text, new CadenceString(word.ToLower()));
+Task<FlowScriptResponse> checkWordTask = Scripts.ExecuteAtLatestBlock(FLOW_ACCOUNT.DoTextReplacements(checkWordScript.text), new CadenceString(word.ToLower()));
 
 while (!checkWordTask.IsCompleted)
 {
@@ -488,7 +692,7 @@ if (wordValid == false)
 }
 ```
 
-This code starts by calling ExecuteScript, passing in the checkWordScript and our guess word as a CadenceString object, to create an async Task using our Flow Account object.
+This code starts by calling ExecuteAtLatestBlock, passing in the checkWordScript and our guess word as a CadenceString object, to create an async Task using our Flow Account object.
 
 Scripts on Cadence can be thought of as read-only transactions, which are performed very quickly.  
 Since scripts are read only, they do not require signing, and are best to use when you need to quickly get publicly available data from chain.
@@ -503,9 +707,8 @@ If the word guess is deemed to be invalid we call the onFailure callback and bre
 For the second phase of the function, add the following code below phase one;
 
 ```cs
-// word is valid, submit guess via transaction to FLOW chain
-Task<FlowTransactionResult> submitGuessTask = FLOW_ACCOUNT.SubmitAndWaitUntilExecuted(submitGuessTxn.text, new CadenceString(word.ToLower()));
-
+// if word is valid, submit guess via transaction to FLOW chain
+Task<FlowTransactionResult> submitGuessTask = Transactions.SubmitAndWaitUntilExecuted(FLOW_ACCOUNT.DoTextReplacements(submitGuessTxn.text), new CadenceString(word.ToLower()));
 while (!submitGuessTask.IsCompleted)
 {
     int dots = ((int)(Time.time * 2.0f) % 4);
@@ -524,8 +727,7 @@ string wordScore = "";
 FlowEvent ourEvent = submitGuessTask.Result.Events.Find(x => x.Type.EndsWith(".GuessResult"));
 if (ourEvent != null)
 {
-    CadenceComposite payload = ourEvent.Payload as CadenceComposite;
-    wordScore = payload.CompositeFieldAs<CadenceString>("result").Value;
+    wordScore = Convert.FromCadence<GuessResultPayload>(ourEvent.Payload).result;
 
     // check if we are out of guesses
     if (wordScore == "OutOfGuesses")
@@ -549,20 +751,110 @@ As this is a transaction, we once again check the three possible failure modes, 
 
 Next we parse our transaction’s emitted events.
 
-![GuessResult contract event code](../media/35f927dd8c61a096c387264c358eba6a.png)
+```cadence
+pub event GuessResult(result: String)
+```
 
-We are expecting an event called GuessResult, with a single string parameter called result.
+We are expecting an event called GuessResult, with a single string parameter called result.  We created a C# version of that event: ```GuessResultPayload```.
 
-![get wordScore code block](../media/7e85df9713fbb484d0955d698ccd1668.png)
+```csharp
+// get wordscore
+string wordScore = "";
+FlowEvent ourEvent = submitGuessTask.Result.Events.Find(x => x.Type.EndsWith(".GuessResult"));
+if (ourEvent != null)
+{
+    wordScore = Convert.FromCadence<GuessResultPayload>(ourEvent.Payload).result;
 
-We first find our event in the Result.Events list on our task object.  
-If our event is found, we then cast the event.Payload to our CadenceComposite type, as Events are composite types, and then call CompositeFieldAs\<CadenceString\>(“result”) on our cast payload, to retrieve our string ‘result’ field. We then pass the guess word, and the result back to our caller via the onSuccess callback.
+    // check if we are out of guesses
+    if (wordScore == "OutOfGuesses")
+    {
+        onFailureCallback();
+        UIManager.Instance.SetStatus("Out Of Guesses. Try again tomorrow.");
+        yield break;
+    }
+
+    // process result
+    onSuccessCallback(word, wordScore);
+}
+else
+{
+    onFailureCallback();
+}
+```
+
+We first find our event in the Result.Events list on our task object.
+
+If our event is found, we then convert the payload to a ```GuessResultPayload``` and store the ```result``` field as ```wordScore```.  We then pass the guess word, and the result back to our caller via the onSuccess callback.
 
 If the GuessResult event cannot be found in the Result.Events list, we call the onFailure callback.
 
-Once complete, your SubmitGuess function should look like this;
+Once complete, your SubmitGuess function should look like this:
 
-![Completed SubmitGuess Code](../media/2e08cbac6f2ff6a2cde89e7cd6c6be62.png)
+```csharp
+public IEnumerator SubmitGuess(string word, System.Action<string, string> onSuccessCallback, System.Action onFailureCallback)
+{
+    // submit word via checkWord script to FLOW chain to check if word is valid
+    Task<FlowScriptResponse> checkWordTask = Scripts.ExecuteAtLatestBlock(FLOW_ACCOUNT.DoTextReplacements(checkWordScript.text), new CadenceString(word.ToLower()));
+    while (!checkWordTask.IsCompleted)
+    {
+        int dots = ((int)(Time.time * 2.0f) % 4);
+        UIManager.Instance.SetStatus("Waiting for server" + new string('.', dots));
+        yield return null;
+    }
+
+    if (checkWordTask.Result.Error != null)
+    {
+        onFailureCallback();
+        UIManager.Instance.SetStatus("Error checking word validity.");
+        yield break;
+    }
+
+    bool wordValid = ((checkWordTask.Result.Value as CadenceString).Value == "OK");
+    if (wordValid == false)
+    {
+        onFailureCallback();
+        yield break;
+    }
+    
+    // if word is valid, submit guess via transaction to FLOW chain
+    Task<FlowTransactionResult> submitGuessTask = Transactions.SubmitAndWaitUntilExecuted(FLOW_ACCOUNT.DoTextReplacements(submitGuessTxn.text), new CadenceString(word.ToLower()));
+    while (!submitGuessTask.IsCompleted)
+    {
+        int dots = ((int)(Time.time * 2.0f) % 4);
+        UIManager.Instance.SetStatus("Waiting for server" + new string('.', dots));
+        yield return null;
+    }
+
+    if (submitGuessTask.Result.Error != null || submitGuessTask.Result.ErrorMessage != string.Empty || submitGuessTask.Result.Status == FlowTransactionStatus.EXPIRED)
+    {
+        onFailureCallback();
+        yield break;
+    }
+
+    // get wordscore
+    string wordScore = "";
+    FlowEvent ourEvent = submitGuessTask.Result.Events.Find(x => x.Type.EndsWith(".GuessResult"));
+    if (ourEvent != null)
+    {
+        wordScore = Convert.FromCadence<GuessResultPayload>(ourEvent.Payload).result;
+
+        // check if we are out of guesses
+        if (wordScore == "OutOfGuesses")
+        {
+            onFailureCallback();
+            UIManager.Instance.SetStatus("Out Of Guesses. Try again tomorrow.");
+            yield break;
+        }
+
+        // process result
+        onSuccessCallback(word, wordScore);
+    }
+    else
+    {
+        onFailureCallback();
+    }
+}
+```
 
 ### LoadHighScoresFromChain
 
@@ -582,13 +874,16 @@ For this function, we are going to first fire off a number of simultaneous scrip
 To execute the scripts, add the following code to the top of the function;
 
 ```cs
+// get player's wallet public address
+string playerWalletAddress = FlowSDK.GetWalletProvider().GetAuthenticatedAccount().Address;
+
 // execute scripts to get highscore data
 Dictionary<string, Task<FlowScriptResponse>> tasks = new Dictionary<string, Task<FlowScriptResponse>>();
-tasks.Add("GetHighScores",              FLOW_ACCOUNT.ExecuteScript(GetHighScores.text));
-tasks.Add("GetPlayerCumulativeScore",   FLOW_ACCOUNT.ExecuteScript(GetPlayerCumulativeScore.text, new CadenceAddress(FLOW_ACCOUNT.AccountConfig["Address"])));
-tasks.Add("GetPlayerWinningStreak",     FLOW_ACCOUNT.ExecuteScript(GetPlayerWinningStreak.text, new CadenceAddress(FLOW_ACCOUNT.AccountConfig["Address"])));
-tasks.Add("GetPlayerMaxWinningStreak",  FLOW_ACCOUNT.ExecuteScript(GetPlayerMaxWinningStreak.text, new CadenceAddress(FLOW_ACCOUNT.AccountConfig["Address"])));
-tasks.Add("GetGuessDistribution",       FLOW_ACCOUNT.ExecuteScript(GetGuessDistribution.text, new CadenceAddress(FLOW_ACCOUNT.AccountConfig["Address"])));
+tasks.Add("GetHighScores", Scripts.ExecuteAtLatestBlock(FLOW_ACCOUNT.DoTextReplacements(GetHighScores.text)));
+tasks.Add("GetPlayerCumulativeScore", Scripts.ExecuteAtLatestBlock(FLOW_ACCOUNT.DoTextReplacements(GetPlayerCumulativeScore.text), new CadenceAddress(playerWalletAddress)));
+tasks.Add("GetPlayerWinningStreak", Scripts.ExecuteAtLatestBlock(FLOW_ACCOUNT.DoTextReplacements(GetPlayerWinningStreak.text), new CadenceAddress(playerWalletAddress)));
+tasks.Add("GetPlayerMaxWinningStreak", Scripts.ExecuteAtLatestBlock(FLOW_ACCOUNT.DoTextReplacements(GetPlayerMaxWinningStreak.text), new CadenceAddress(playerWalletAddress)));
+tasks.Add("GetGuessDistribution", Scripts.ExecuteAtLatestBlock(FLOW_ACCOUNT.DoTextReplacements(GetGuessDistribution.text), new CadenceAddress(playerWalletAddress)));
 
 // wait for completion
 bool complete = false;
@@ -613,8 +908,8 @@ foreach (KeyValuePair<string, Task<FlowScriptResponse>> task in tasks)
 }
 ```
 
-This block of code creates a Dictionary\<string, Task\> to store our concurrent script tasks.  
-We then sequentially create async Tasks for each script that we want to execute, using ExecuteScript, and add them to the Task dictionary.
+This block of code first obtains the public address of the current authenticated player and creates a ```Dictionary<string, Task>``` to store our concurrent script tasks.  
+We then sequentially create async Tasks for each script that we want to execute, using ExecuteAtLatestBlock, and add them to the Task dictionary.
 
 In our use case, we want all of the tasks to complete before we display any results, so our wait for completion code block iterates over every Task in the dictionary, and only moves on once every task.IsComplete.
 
@@ -624,55 +919,106 @@ Next we need to process the returned values. Add the following code beneath the 
 
 ```cs
 // load global highscores
-CadenceBase[] highscores = (tasks["GetHighScores"].Result.Value as CadenceArray).Value;
-List<ScoreStruct> GlobalScores = new List<ScoreStruct>();
-foreach (CadenceComposite score in highscores)
-{
-    ScoreStruct parsedScore = new ScoreStruct("", 0);
-    foreach (CadenceCompositeField field in score.Value.Fields)
-    {
-        switch (field.Name)
-        {
-            case "Name":
-                parsedScore.Name = (field.Value as CadenceString).Value;
-                break;
-            case "Score":
-                parsedScore.Score = int.Parse((field.Value as CadenceNumber).Value);
-                break;
-        }
-    }
-
-    GlobalScores.Add(parsedScore);
-}
+List<ScoreStruct> GlobalScores = Convert.FromCadence<List<ScoreStruct>>(tasks["GetHighScores"].Result.Value);
 GlobalScores = GlobalScores.OrderByDescending(score => score.Score).Take(10).ToList();
 
 // load player scores
-uint PlayerCumulativeScore = uint.Parse((tasks["GetPlayerCumulativeScore"].Result.Value as CadenceNumber).Value);
-uint PlayerWinningStreak = uint.Parse((tasks["GetPlayerWinningStreak"].Result.Value as CadenceNumber).Value);
-uint PlayerMaximumWinningStreak = uint.Parse((tasks["GetPlayerMaxWinningStreak"].Result.Value as CadenceNumber).Value);
-uint[] PlayerGuessDistribution = (tasks["GetGuessDistribution"].Result.Value as CadenceArray).Value.Select(value => uint.Parse((value as CadenceNumber).Value)).ToArray();
+BigInteger PlayerCumulativeScore = Convert.FromCadence<BigInteger>(tasks["GetPlayerCumulativeScore"].Result.Value);
+BigInteger PlayerWinningStreak = Convert.FromCadence<BigInteger>(tasks["GetPlayerWinningStreak"].Result.Value);
+BigInteger PlayerMaximumWinningStreak = Convert.FromCadence<BigInteger>(tasks["GetPlayerMaxWinningStreak"].Result.Value);
+List<BigInteger> PlayerGuessDistribution = Convert.FromCadence<List<BigInteger>>(tasks["GetGuessDistribution"].Result.Value);
 
 // callback
 onSuccessCallback(GlobalScores, PlayerCumulativeScore, PlayerWinningStreak, PlayerMaximumWinningStreak, PlayerGuessDistribution);
 ```
 
-Our global highscores are an array of Scores objects.
+Our global highscores are an array of Scores objects in the contract.
 
-![TopScores struct contract code](../media/e96f948858a786b5e26fa08cbcc2c260.png)
+```cadence
+access(contract) let TopScores : [Scores]
+pub struct Scores
+{
+    pub let AccId : Address
+    pub let Name : String
+    pub let Score : UInt
+}
+```
 
-As such, we cast the Result.Value (return value) of our GetHighScores task to a CadenceArray object, and store the .Value of this in CadenceBase[] highscores.
+We have a ScoreStruct defined HighScoresPanel.cs as:
 
-We iterate over this highscores array, and cast each Scores struct element to a CadenceComposite object. We then iterate over each field in the CadenceComposite object, and assign the .Value of each to our own local ScoreStruct object, which we then add to a GlobalScores list for later display.
+```csharp
+public struct ScoreStruct
+{
+    public string Name;
+    public BigInteger Score;
+}
+```
 
-Next, we parse the detailed statistics for the current player.  
-Each of these results are a simple cast of the Result.Value to a CadenceNumber, which we then parse to an unsigned integer. The final statistic follows the same idea, but uses some LINQ trickery to process all of the elements of a CadenceArray in a single line.
+```csharp
+List<ScoreStruct> GlobalScores = Convert.FromCadence<List<ScoreStruct>>(tasks["GetHighScores"].Result.Value);
+GlobalScores = GlobalScores.OrderByDescending(score => score.Score).Take(10).ToList();
+```
 
-Finally, we call the onSuccess callback, passing in all of our parsed results.  
-You may also remove the final `yield return null` statement at this point, if you wish.
+Here we get the result of the GetHighScores task and convert it into a ```List<ScoreStruct>```.  Then we reorder the list and keep only the highest ten values.
+
+Next, we parse the detailed statistics for the current player, using ```Convert.FromCadence``` to convert from the Cadence values into the C# types we want.
+
+Finally, we call the onSuccess callback, passing in all of our parsed results.
 
 Once complete, your function should look as follows;
 
-![Completed LoadHighScoresFromChain Code](../media/6d1ca6e13da7d1c65496fd803a3c5f78.png)
+```csharp
+public IEnumerator LoadHighScoresFromChain(System.Action<List<ScoreStruct>, BigInteger, BigInteger, BigInteger, List<BigInteger>> onSuccessCallback, System.Action onFailureCallback)
+{
+    // get player's wallet public address
+    string playerWalletAddress = FlowSDK.GetWalletProvider().GetAuthenticatedAccount().Address;
+
+    // execute scripts to get highscore data
+    Dictionary<string, Task<FlowScriptResponse>> tasks = new Dictionary<string, Task<FlowScriptResponse>>();
+    tasks.Add("GetHighScores", Scripts.ExecuteAtLatestBlock(FLOW_ACCOUNT.DoTextReplacements(GetHighScores.text)));
+    tasks.Add("GetPlayerCumulativeScore", Scripts.ExecuteAtLatestBlock(FLOW_ACCOUNT.DoTextReplacements(GetPlayerCumulativeScore.text), new CadenceAddress(playerWalletAddress)));
+    tasks.Add("GetPlayerWinningStreak", Scripts.ExecuteAtLatestBlock(FLOW_ACCOUNT.DoTextReplacements(GetPlayerWinningStreak.text), new CadenceAddress(playerWalletAddress)));
+    tasks.Add("GetPlayerMaxWinningStreak", Scripts.ExecuteAtLatestBlock(FLOW_ACCOUNT.DoTextReplacements(GetPlayerMaxWinningStreak.text), new CadenceAddress(playerWalletAddress)));
+    tasks.Add("GetGuessDistribution", Scripts.ExecuteAtLatestBlock(FLOW_ACCOUNT.DoTextReplacements(GetGuessDistribution.text), new CadenceAddress(playerWalletAddress)));
+
+    // wait for completion
+    bool complete = false;
+    while (!complete)
+    {
+        complete = true;
+        foreach (KeyValuePair<string, Task<FlowScriptResponse>> task in tasks)
+        {
+            complete = complete && task.Value.IsCompleted;
+        }
+        yield return null;
+    }
+
+    // check for errors
+    foreach (KeyValuePair<string, Task<FlowScriptResponse>> task in tasks)
+    {
+        if (task.Value.Result.Error != null)
+        {
+            onFailureCallback();
+            yield break;
+        }
+    }
+
+    // load global highscores
+    List<ScoreStruct> GlobalScores = Convert.FromCadence<List<ScoreStruct>>(tasks["GetHighScores"].Result.Value);
+    GlobalScores = GlobalScores.OrderByDescending(score => score.Score).Take(10).ToList();
+
+    // load player scores
+    BigInteger PlayerCumulativeScore = Convert.FromCadence<BigInteger>(tasks["GetPlayerCumulativeScore"].Result.Value);
+    BigInteger PlayerWinningStreak = Convert.FromCadence<BigInteger>(tasks["GetPlayerWinningStreak"].Result.Value);
+    BigInteger PlayerMaximumWinningStreak = Convert.FromCadence<BigInteger>(tasks["GetPlayerMaxWinningStreak"].Result.Value);
+    List<BigInteger> PlayerGuessDistribution = Convert.FromCadence<List<BigInteger>>(tasks["GetGuessDistribution"].Result.Value);
+
+    // callback
+    onSuccessCallback(GlobalScores, PlayerCumulativeScore, PlayerWinningStreak, PlayerMaximumWinningStreak, PlayerGuessDistribution);
+
+    yield return null;
+}
+```
 
 ## Step 5 – Play FlowWords!
 
@@ -702,8 +1048,145 @@ For an extra challenge, try some of the following;
 -   Add more accounts and play with some friends, hot seat style
 -   Modify the game-contract.cdc to make a new game every 5 minutes instead of every 24 hours.
 -   Try to remove and redeploy the contract  
-    (hint: once removed, a contract’s name can never be used again on the same account)  
+    (hint: on testnet and mainnet, once removed, a contract’s name can never be used again on the same account)  
     (extra hint: delete-game-resources.cdc)
 -   Poke about in the game contracts, scripts and transactions to see what they do!
 
 If you ever get the emulator into a messy state, you can always hit the Clear Persistent Data button, which will wipe the emulator back to its blank state. This will of course lose all deployed contracts and high score and game history.
+
+## Appendix – How to convert FlowWords to run on TestNet
+
+To modify the tutorial project to run on TestNet, only minor modifications are required.
+
+1. Change the network configuration to point to TestNet
+2. Replace the DevWallet provider with a more secure solution. e.g. WalletConnect
+3. Configure Account and update Text Replacements
+4. Deploy the contract to TestNet
+
+### Change the network configuration to TestNet
+
+To change the network configuration, simply modify the start function as follows;
+
+```cs
+private void Start()
+{
+    if (Instance != this)
+    {
+        Destroy(this);
+    }
+
+    // Set up SDK to access TestNet
+    FlowConfig flowConfig = new FlowConfig()
+    {
+        NetworkUrl = "https://rest-testnet.onflow.org/v1",  // testnet
+        Protocol = FlowConfig.NetworkProtocol.HTTP
+    };
+    FlowSDK.Init(flowConfig);
+
+    // Register DevWallet wallet provider with SDK
+    FlowSDK.RegisterWalletProvider(new DevWalletProvider());
+}
+```
+
+We have now replaced the emulator address with the address for the TestNet access point, and all subsequent transactions and scripts will be directed to TestNet.
+
+### Replace DevWallet with WalletConnect
+
+To now change the wallet provider, simply modify the start function as follows;
+
+```cs
+private void Start()
+{
+    if (Instance != this)
+    {
+        Destroy(this);
+    }
+
+    // Set up SDK to access TestNet
+    FlowConfig flowConfig = new FlowConfig()
+    {
+        NetworkUrl = "https://rest-testnet.onflow.org/v1",  // testnet
+        Protocol = FlowConfig.NetworkProtocol.HTTP
+    };
+    FlowSDK.Init(flowConfig);
+
+    // Create WalletConnect wallet provider
+    IWallet walletProvider = new WalletConnectProvider();
+    walletProvider.Init(new WalletConnectConfig
+    {
+        ProjectId = "<YOUR PROJECT ID>", // insert Project ID from Wallet Connect dashboard
+        ProjectDescription = "A simple word guessing game built on FLOW!",
+        ProjectIconUrl = "https://walletconnect.com/meta/favicon.ico",
+        ProjectName = "FlowWords",
+        ProjectUrl = "https://dapperlabs.com"
+    });
+
+    // Register WalletConnect wallet provider with SDK
+    FlowSDK.RegisterWalletProvider(walletProvider);
+}
+```
+
+You will also need to add the following using declarations to the top of the file;
+
+```cs
+using DapperLabs.Flow.Sdk.WalletConnect;
+using DapperLabs.Flow.Sdk.Crypto;
+```
+
+For this modification we have created a new WalletConnectProvider, and initialized it, and then registered our new WalletConnectProvider.
+
+The only thing missing is a Project Id.\
+Each WalletConnect application requires its own project id. You can get one by going to https://cloud.walletconnect.com and signing up for an account.\
+You can then create a new project on the website, give it a name (we suggest FlowWords), and enter the project id provided into your code.
+
+Finally, we need one more change to make sure our text replacement still functions correctly.
+
+At the beginning of the OnAuthSuccess function, change the FLOW_ACCOUNT GatewayName from "Emulator" to "Flow Testnet".
+
+```cs
+// get FLOW account - we are only going to use this for text replacements
+FLOW_ACCOUNT = new FlowControl.Account
+{
+    GatewayName = "Flow Testnet",
+    AccountConfig = new Dictionary<string, string> { { "Address", FlowSDK.GetWalletProvider().GetAuthenticatedAccount().Address } }
+};
+```
+
+### Configure Account and update Text Replacements
+
+To deploy the contract to TestNet, the only current way to do so via the FlowSDK, is to use a TestNet account to which you know the private key.
+
+First, in the Accounts tab of the Flow Control window, create a new account by clicking the plus '+' icon at the top of the window.\
+Create the new account as follows, replacing the Address and Private Key with your own valid TestNet address / private key pair.
+
+![New Account Example](../media/AppendixNewAccount.png)
+
+Switch to the Text Replacements tab of the Flow Control window now, and create a new text replacement definition as follows, replacing the given replacement text with the address to your TestNet account.
+
+![New Text Replacement Example](../media/AppendixTextReplacement.png)
+
+Now modify the existing CONTRACT_NAME text replacement, by changing the Apply to Gateways field from Emulator, to All. This will make sure this replacement also applies to TestNet transactions.
+
+### Deploy the Contract to TestNet
+
+Now that all of the configuration is done, you can deploy the contract.
+
+On the Tools tab of the Flow Control window, set up the Manage Contracts section as follows;
+
+![New Account Example](../media/AppendixDeployContract.png)
+
+Where;
+- Contract Name is the name of the contract on the blockchain. This should match the text replacement configured for CONTRACT_NAME
+- Contract is the game-contract.cdc asset included with the project sample in the Assets\\Samples\\Flow SDK\\<version>\\Flow Words Tutorial Assets\\Resources directory.
+- Account is the new Deploy Account that you created in the previous step.
+
+Once you have the Manage Contracts section filled in as per the example, click Deploy Contract.
+
+If all goes well, you will see the text 'Executing Transaction' appear below the Deploy Contract button, followed by a clickable link to the transaction result on flowscan.
+
+Congratulations! You can now run FlowWords, and play the game with a WalletConnect compatible wallet!
+
+> **NOTE:** TestNet requires that all contracts deployed to an account have a unique name, does not allow contract removal without authorisation, and only allows contract updates that do not break interfaces or data structures or introduce undefined data to existing resources.\
+\
+Due to these limitations, iterative development should always be done on Emulator before attempting to push anything to a live network.
+

@@ -47,9 +47,13 @@ It is completely up to you, the developer, to decide how much data\\logic you wa
 
 ## Adding the Flow SDK
 
-The Flow SDK for Unity is hosted on github here: [https://github.com/onflow/UnityFlowSDK](https://github.com/onflow/UnityFlowSDK)
+To add the Flow SDK for Unity, go to it in the Asset Store and add it to My Assets: [https://assetstore.unity.com/packages/decentralization/flow-sdk-237172](https://assetstore.unity.com/packages/decentralization/flow-sdk-237172)
 
-To add it to your Unity project:
+Once you've added it to your account, follow these instructions to import it into your project: [https://docs.unity3d.com/Manual/upm-ui-import.html](https://docs.unity3d.com/Manual/upm-ui-import.html)
+
+Alternatively, the Flow SDK for Unity is hosted on github here: [https://github.com/onflow/UnityFlowSDK](https://github.com/onflow/UnityFlowSDK)
+
+To add it to your Unity project directly from the github repo:
 
 1. In the Unity Editor, go to Window, Package Manager. 
 2. Click the + dropdown in the top left corner. 
