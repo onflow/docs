@@ -2,23 +2,23 @@
 title: Linking Accounts
 ---
 
-If you’ve built dApps on Flow, or any blockchain for that matter, you’re painfully aware of the user onboarding process and successive pain of prompting user signatures for on-chain interactions. As a developer, this leaves you with two options - custody the user’s private key and act on their behalf or go with the Web3 status quo, hope your new users are native to Flow and authenticate them via their existing wallet. Either choice will force significant compromise, fragmenting user experience and leaving much to be desired compared to the broader status quo of Web2 identity authentication and single-click onboarding flow.
+If you’ve built dApps on Flow, or any blockchain for that matter, you’re painfully aware of the user onboarding process and successive pain of prompting user signatures for on-chain interactions. As a developer, this leaves you with two options - handle custody and act on the user's behalf or go with the self-custodial status quo, hope your new users are Web3 native and authenticate them via their existing wallet. Either choice will force significant compromise, fragmenting user experience and leaving much to be desired compared to the broader status quo of Web2 identity authentication and single-click onboarding flow.
 
-In this doc, we’ll dive into a progressive onboarding flow, including the Cadence scripts & transactions that go into its implementation in your dApp. These components will enable any implementing dApp to create a custodial account, intermediate the user’s on-chain actions on their behalf, and later delegate control of that dApp-created account to the user’s wallet-mediated account. We’ll refer to this custodial pattern as the Hybrid Account Model and the process of delegating control of the dApp account as Account Linking.
+In this doc, we’ll dive into a progressive onboarding flow, including the Cadence scripts & transactions that go into its implementation in your dApp. These components will enable any implementing dApp to create a custodial account, mediate the user’s on-chain actions on their behalf, and later delegate access of that dApp-created account to the user’s wallet. We’ll refer to this custodial pattern as the Hybrid Account Model and the process of delegating control of the dApp account as Account Linking.
 
-<!-- TODO <Callout type="info"> -->
+<!-- <Callout type="info"> -->
 
 Note that the documentation on Hybrid Custody covers the current state and will likely differ from the final implementation. Builders should be aware that breaking changes may follow before reaching a final consensus on implementation. Interested in shaping the conversation? [Join in!](https://github.com/onflow/flips/pull/72)
 
-<!-- TODO </Callout> -->
+<!-- </Callout> -->
 
 # Objectives
 
-- Establish a [walletless onboarding flow](https://flow.com/post/flow-blockchain-mainstream-adoption-easy-onboarding-wallets)
-- Create a blockchain-native onboarding flow
+- Create a [walletless onboarding](https://flow.com/post/flow-blockchain-mainstream-adoption-easy-onboarding-wallets) transaction
+- Create a blockchain-native onboarding transaction
 - Link an existing app account as a child to a newly authenticated parent account
 - Get your dApp to recognize “parent” accounts along with any associated “child” accounts
-- View Fungible and NonFungible Token metadata relating to assets across all of a user’s associated accounts - their wallet-mediated “parent” account and any hybrid custody model “child” accounts
+- View fungible and non-fungible Token metadata relating to assets across all of a user’s associated accounts - their wallet-mediated “parent” account and any hybrid custody model “child” accounts
 - Facilitate transactions acting on assets in child accounts
 
 # Point of Clarity
@@ -29,19 +29,19 @@ Before diving in, let's make a distinction between **"account linking"** and **"
 
 Very simply, account linking is a [feature in Cadence](https://github.com/onflow/flips/pull/53) that let's an [AuthAccount](../../../cadence/language/accounts.mdx#authaccount) create a [Capability](../../../cadence/language/capability-based-access-control.md) on itself. You can do so in the following transaction:
 
-```cadence
+```cadence link_account.cdc
 #allowAccountLinking
 
 transaction(linkPathSuffix: String) {
-    prepare(signer: AuthAccount) {
+    prepare(account: AuthAccount) {
         // Create the PrivatePath where we'll create the link
         let linkPath = PrivatePath(identifier: linkPathSuffix)
             ?? panic("Could not construct PrivatePath from given identifier: ".concat(linkPathSuffix))
         // Check if an AuthAccount Capability already exists at the specified path
-        if !signer.getCapability<&AuthAccount>(linkPath).check() {
+        if !account.getCapability<&AuthAccount>(linkPath).check() {
             // If not, unlink anything that may be there and link the AuthAccount Capability
-            signer.unlink(linkpath)
-            signer.linkAccount(linkPath)
+            account.unlink(linkpath)
+            account.linkAccount(linkPath)
         }
     }
 }
@@ -49,11 +49,17 @@ transaction(linkPathSuffix: String) {
 
 From there, the signing account can retrieve the privately linked AuthAccount Capability and delegate it to another account, unlinking the Capability if they wish to revoke delegated access.
 
-Note that in order to link an account, a transaction must state the `#allowAccountLinking` as a pragme in the top line of the transaction. This is an interim safety measure so that wallet providers can notify users they're about to sign a transaction that may create and use a Capability on their AuthAccount.
+Note that in order to link an account, a transaction must state the `#allowAccountLinking` pragma in the top line of the transaction. This is an interim safety measure so that wallet providers can notify users they're about to sign a transaction that may create a Capability on their AuthAccount.
+
+<!-- <Callout type="info"> -->
+
+If you haven't yet, it may be helpful to checkout the [Account Model](./account-model.md) to get a mental model of the objects and account relationships discussed in this doc.
+
+<!-- </Callout> -->
 
 ## Linking Accounts
 
-Linking accounts uses an account link, otherwise known as an **AuthAccount Capability**, and encapsulates it in an object that is then kept in the a collection of linked account. The [components and actions](https://github.com/onflow/flips/pull/72) involved in this process - what the Capabity is encapsulated in, the collection that holds those encapsulations, etc. is what we'll dive into in this doc.
+Linking accounts leverages this account link, otherwise known as an **AuthAccount Capability**, and encapsulates it. The [components and actions](https://github.com/onflow/flips/pull/72) involved in this process - what the Capabity is encapsulated in, the collection that holds those encapsulations, etc. is what we'll dive into in this doc.
 
 # Terminology
 
@@ -65,243 +71,19 @@ Linking accounts uses an account link, otherwise known as an **AuthAccount Capab
 
 **Hybrid Custody Model** - A custodial pattern in which a dApp and a user maintain access to a dApp created account and user access to that account has been mediated by account linking.
 
-**Account Linking** - Technically speaking, account linking in our context consists of giving some other account an AuthAccount Capability from the granting account. This Capability is maintained in (soon to be standard) resource called a `LinkedAccounts.Collection`, providing its owning user access to any and all of their linked accounts.
+**Account Linking** - Technically speaking, account linking in our context consists of giving some other account an AuthAccount Capability from the granting account. This Capability is maintained in standardized resource called a `HybridCustody.Manager`, providing its owning user access to any and all of their linked accounts.
 
 **Progressive Onboarding** - An onboarding flow that walks a user up to self-custodial ownership, starting with walletless onboarding and later linking the dApp account with the user’s authenticated wallet once the user chooses to do so.
-
-# Onboarding Flows
-
-Given the ability to establish an account and later delegate access to a user, dApps are freed from the constraints of dichotomous custodial & self-custodial patterns. A developer can choose to onboard a user via traditional Web2 identity and later delegate access to the user’s wallet account. Alternatively, a dApp can enable wallet authentication at the outset, creating a dApp specific account & linking with the user’s wallet account. As specified above, these two flows are known as walletless and blockchain-native respectively. Developers can choose to implement one for simplicity or both for user flexibility. 
-
-## Walletless Onboarding
-
-### Account Creation
-
-The following transaction creates an account, funding creation via the signer and adding the provided public key. You'll notice this transaction is pretty much your standard account creation. The magic for you will be how you custody the key for this account (locally, KMS, wallet service, etc.) in a manner that allows your dapp to mediate on-chain interactions on behalf of your user.
-
-```cadence
-import FlowToken from "../../contracts/utility/FlowToken.cdc"
-import FungibleToken from "../../contracts/utility/FungibleToken.cdc"
-
-/// Taken from the onflow/linked-accounts repo
-/// https://github.com/onflow/linked-accounts
-///
-transaction(
-    pubKey: String,
-    initialFundingAmt: UFix64,
-  ) {
-	
-	prepare(signer: AuthAccount) {
-
-		/* --- Account Creation (your dApp may choose to separate creation depending on your custodial model) --- */
-		//
-		// Create the child account, funding via the signer
-		let newAccount = AuthAccount(payer: signer)
-		// Create a public key for the proxy account from string value in the provided arg
-		// **NOTE:** You may want to specify a different signature algo for your use case
-		let key = PublicKey(
-			publicKey: pubKey.decodeHex(),
-			signatureAlgorithm: SignatureAlgorithm.ECDSA_P256
-		)
-		// Add the key to the new account
-		// **NOTE:** You may want to specify a different hash algo & weight best for your use case
-		newAccount.keys.add(
-			publicKey: key,
-			hashAlgorithm: HashAlgorithm.SHA3_256,
-			weight: 1000.0
-		)
-
-		/* --- (Optional) Additional Account Funding --- */
-		//
-		// Fund the new account if specified
-		if initialFundingAmt > 0.0 {
-			// Get a vault to fund the new account
-			let fundingProvider = signer.borrow<&FlowToken.Vault{FungibleToken.Provider}>(
-					from: /storage/flowTokenVault
-				)!
-			// Fund the new account with the initialFundingAmount specified
-			newAccount.getCapability<&FlowToken.Vault{FungibleToken.Receiver}>(
-				/public/flowTokenReceiver
-			).borrow()!
-			.deposit(
-				from: <-fundingProvider.withdraw(
-					amount: initialFundingAmt
-				)
-			)
-		}
-
-		/* Continue with use case specific setup */
-		//
-		// At this point, the newAccount can further be configured as suitable for
-		// use in your dapp (e.g. Setup a Collection, Mint NFT, Configure Vault, etc.)
-		// ...
-	}
-}
-```
-
-## Blockchain-Native Onboarding
-
-Compared to walletless onboarding where a user does not have a Flow account, blockchain-native onboarding assumes a user already has a wallet configured and immediately links it with a newly created dApp account. This enables the dApp to sign transactions on the user's behalf via the new child account while immediately delegating control of that account to the onboarding user's main account.
-
-After this transaction, both the custodial party (presumably the client/dApp) and the signing parent account will have access to the newly created account - the custodial party via key access and the parent account via their `LinkedAccounts.Collection` maintaining the new account's AuthAccount Capability.
-
-### Account Creation & Linking
-```cadence
-#allowAccountLinking
-
-import FungibleToken from "../../contracts/utility/FungibleToken.cdc"
-import FlowToken from "../../contracts/utility/FlowToken.cdc"
-import MetadataViews from "../../contracts/utility/MetadataViews.cdc"
-import NonFungibleToken from "../../contracts/utility/NonFungibleToken.cdc"
-import LinkedAccountMetadataViews from "../../contracts/LinkedAccountMetadataViews.cdc"
-import LinkedAccounts from "../../contracts/LinkedAccounts.cdc"
-
-/// Taken from the onflow/linked-accounts repo
-/// https://github.com/onflow/linked-accounts
-///
-transaction(
-    pubKey: String,
-    fundingAmt: UFix64,
-    linkedAccountName: String,
-    linkedAccountDescription: String,
-    clientThumbnailURL: String,
-    clientExternalURL: String,
-    authAccountPathSuffix: String,
-    handlerPathSuffix: String
-  ) {
-
-	let collectionRef: &LinkedAccounts.Collection
-    let info: LinkedAccountMetadataViews.AccountInfo
-    let authAccountCap: Capability<&AuthAccount>
-	let newAccountAddress: Address
-	
-	prepare(parent: AuthAccount, client: AuthAccount) {
-		
-		/* --- Account Creation (your dApp may choose to handle creation differently depending on your custodial model) --- */
-		//
-		// Create the child account, funding via the signer
-		let newAccount = AuthAccount(payer: client)
-		// Create a public key for the proxy account from string value in the provided arg
-		// **NOTE:** You may want to specify a different signature algo for your use case
-		let key = PublicKey(
-			publicKey: pubKey.decodeHex(),
-			signatureAlgorithm: SignatureAlgorithm.ECDSA_P256
-		)
-		// Add the key to the new account
-		// **NOTE:** You may want to specify a different hash algo & weight best for your use case
-		newAccount.keys.add(
-			publicKey: key,
-			hashAlgorithm: HashAlgorithm.SHA3_256,
-			weight: 1000.0
-		)
-
-		/* (Optional) Additional Account Funding */
-		//
-		// Fund the new account if specified
-		if fundingAmt > 0.0 {
-			// Get a vault to fund the new account
-			let fundingProvider = client.borrow<&FlowToken.Vault{FungibleToken.Provider}>(
-					from: /storage/flowTokenVault
-				)!
-			// Fund the new account with the initialFundingAmount specified
-			newAccount.getCapability<&FlowToken.Vault{FungibleToken.Receiver}>(
-				/public/flowTokenReceiver
-			).borrow()!
-			.deposit(
-				from: <-fundingProvider.withdraw(
-					amount: fundingAmt
-				)
-			)
-		}
-		self.newAccountAddress = newAccount.address
-
-		// At this point, the newAccount can further be configured as suitable for
-		// use in your dapp (e.g. Setup a Collection, Mint NFT, Configure Vault, etc.)
-		// ...
-
-		/* --- Setup parent's LinkedAccounts.Collection --- */
-		//
-		// Check that Collection is saved in storage
-        if parent.type(at: LinkedAccounts.CollectionStoragePath) == nil {
-            parent.save(
-                <-LinkedAccounts.createEmptyCollection(),
-                to: LinkedAccounts.CollectionStoragePath
-            )
-        }
-        // Link the public Capability
-        if !parent.getCapability<
-                &LinkedAccounts.Collection{LinkedAccounts.CollectionPublic, MetadataViews.ResolverCollection}
-            >(LinkedAccounts.CollectionPublicPath).check() {
-            parent.unlink(LinkedAccounts.CollectionPublicPath)
-            parent.link<&LinkedAccounts.Collection{LinkedAccounts.CollectionPublic, MetadataViews.ResolverCollection}>(
-                LinkedAccounts.CollectionPublicPath,
-                target: LinkedAccounts.CollectionStoragePath
-            )
-        }
-        // Link the private Capability
-        if !parent.getCapability<
-                &LinkedAccounts.Collection{LinkedAccounts.CollectionPublic, NonFungibleToken.CollectionPublic, NonFungibleToken.Receiver, NonFungibleToken.Provider, MetadataViews.ResolverCollection}
-            >(LinkedAccounts.CollectionPrivatePath).check() {
-            parent.unlink(LinkedAccounts.CollectionPrivatePath)
-            parent.link<
-                &LinkedAccounts.Collection{LinkedAccounts.CollectionPublic, NonFungibleToken.CollectionPublic, NonFungibleToken.Receiver, NonFungibleToken.Provider, MetadataViews.ResolverCollection}
-            >(
-                LinkedAccounts.CollectionPrivatePath,
-                target: LinkedAccounts.CollectionStoragePath
-            )
-        }
-		// Assign a reference to the Collection we now know is correctly configured
-		self.collectionRef = parent.borrow<&LinkedAccounts.Collection>(from: LinkedAccounts.CollectionStoragePath)!
-
-		/* --- Link the child account's AuthAccount Capability & assign --- */
-        //
-		// Assign the PrivatePath where we'll link the AuthAccount Capability
-        let authAccountPath: PrivatePath = PrivatePath(identifier: authAccountPathSuffix)
-            ?? panic("Could not construct PrivatePath from given suffix: ".concat(authAccountPathSuffix))
-		// Link the new account's AuthAccount Capability
-		self.authAccountCap = newAccount.linkAccount(authAccountPath)
-		
-		/** --- Construct metadata --- */
-        //
-        // Construct linked account metadata from given arguments
-        self.info = LinkedAccountMetadataViews.AccountInfo(
-            name: linkedAccountName,
-            description: linkedAccountDescription,
-            thumbnail: MetadataViews.HTTPFile(url: clientThumbnailURL),
-            externalURL: MetadataViews.ExternalURL(clientExternalURL)
-        )
-	}
-
-	execute {
-		/* --- Link the parent & child accounts --- */
-		//
-		// Add the child account
-		self.collectionRef.addAsChildAccount(
-			linkedAccountCap: self.authAccountCap,
-			linkedAccountMetadata: self.info,
-			linkedAccountMetadataResolver: nil,
-			handlerPathSuffix: handlerPathSuffix
-		)
-	}
-
-	post {
-		// Make sure new account was linked to parent's successfully
-		self.collectionRef.getLinkedAccountAddresses().contains(self.newAccountAddress):
-			"Problem linking accounts!"
-	}
-}
-
-```
 
 # Account Linking
 
 Linking an account is the process of delegating account access via AuthAccount Capability. Of course, we want to do this in a way that allows the receiving account to maintain that Capability and allows easy identification of the accounts on either end of the linkage - the user's main "parent" account and the linked "child" account. This is accomplished in the (still in flux) `LinkedAccounts` contract which we'll continue to use in this guidance.
 
-<!-- TODO <Callout type="info"> -->
+<!-- <Callout type="info"> -->
 
 Note that since account linking is a sensitive action, transactions where an account may be linked are designated by a topline pragma `#allowAccountLinking`. This lets wallet providers inform users that their account may be linked in the signing transaction.
 
-<!-- TODO </Callout> -->
+<!-- </Callout> -->
 
 ![resources/linked-accounts-diagram.jpg](resources/restricted_child_accounts_high_level.png)
 
@@ -561,6 +343,260 @@ transaction(
     }
 }
  
+```
+
+# Onboarding Flows
+
+Given the ability to establish an account and later delegate access to a user, dApps are freed from the constraints of dichotomous custodial & self-custodial paradigms. A developer can choose to onboard a user via traditional Web2 identity and later delegate access to the user’s wallet account. Alternatively, a dApp can enable wallet authentication at the outset, creating a dApp-specific account & linking with the user’s wallet account. As specified above, these two flows are known as walletless and blockchain-native respectively. Developers can choose to implement one for simplicity or both for maximum flexibility.
+
+## Walletless Onboarding
+
+### Account Creation
+
+The following transaction creates an account, funding creation via the signer and adding the provided public key. You'll notice this transaction is pretty much your standard account creation. The magic for you will be how you custody the key for this account (locally, KMS, wallet service, etc.) in a manner that allows your dapp to mediate on-chain interactions on behalf of your user.
+
+```cadence walletless_onboarding
+import "FlowToken"
+import "FungibleToken"
+
+/// Taken from the onflow/linked-accounts repo
+/// https://github.com/onflow/linked-accounts
+///
+transaction(pubKey: String, initialFundingAmt: UFix64) {
+	
+	prepare(signer: AuthAccount) {
+
+		/* --- Account Creation --- */
+		//
+		// Create the child account, funding via the signer
+		let newAccount = AuthAccount(payer: signer)
+		// Create a public key for the proxy account from string value in the provided arg
+		// **NOTE:** You may want to specify a different signature algo for your use case
+		let key = PublicKey(
+			publicKey: pubKey.decodeHex(),
+			signatureAlgorithm: SignatureAlgorithm.ECDSA_P256
+		)
+		// Add the key to the new account
+		// **NOTE:** You may want to specify a different hash algo & weight best for your use case
+		newAccount.keys.add(
+			publicKey: key,
+			hashAlgorithm: HashAlgorithm.SHA3_256,
+			weight: 1000.0
+		)
+
+		/* --- (Optional) Additional Account Funding --- */
+		//
+		// Fund the new account if specified
+		if initialFundingAmt > 0.0 {
+			// Get a vault to fund the new account
+			let fundingProvider = signer.borrow<&FlowToken.Vault{FungibleToken.Provider}>(
+					from: /storage/flowTokenVault
+				)!
+			// Fund the new account with the initialFundingAmount specified
+			newAccount.getCapability<&FlowToken.Vault{FungibleToken.Receiver}>(/public/flowTokenReceiver)
+                .borrow()!
+			    .deposit(
+                    from: <-fundingProvider.withdraw(
+                        amount: initialFundingAmt
+                    )
+                )
+		}
+
+		/* Continue with use case specific setup */
+		//
+		// At this point, the newAccount can further be configured as suitable for
+		// use in your dapp (e.g. Setup a Collection, Mint NFT, Configure Vault, etc.)
+		// ...
+	}
+}
+```
+
+## Blockchain-Native Onboarding
+
+This onboarding flow is really a single-transaction composition of the steps covered above. This is a testament to the power of the complex transactions you can compose on Flow with Cadence!
+
+### Pre-requisites
+
+Since account delegation is mediated by developer-defined rules, you should make sure to first configure the resources that contain those rules. Those are [`CapabilityFilter`](https://github.com/Flowtyio/restricted-child-account/blob/main/contracts/CapabilityFilter.cdc) and [`CapabilityFactory`](https://github.com/Flowtyio/restricted-child-account/blob/main/contracts/CapabilityFactory.cdc). The former enumerates those types that are/aren't accessible from a child account while the latter enables the access of those allowable Capabilities such that the returned values can be properly typed - e.g. retrieving a Capability that can be cast to `Capability<&NonFungibleToken.Collection>` for example.
+
+Here's how you would configure an `AllowAllFilter`:
+
+```cadence setup_allow_all_filter.cdc
+import "CapabilityFilter"
+
+transaction {
+    prepare(acct: AuthAccount) {
+        if acct.borrow<&CapabilityFilter.AllowAllFilter>(from: CapabilityFilter.StoragePath) == nil {
+            acct.save(<- CapabilityFilter.create(Type<@CapabilityFilter.AllowAllFilter>()), to: CapabilityFilter.StoragePath)
+        }
+
+        acct.unlink(CapabilityFilter.PublicPath)
+        let linkRes = acct.link<&CapabilityFilter.AllowAllFilter{CapabilityFilter.Filter}>(CapabilityFilter.PublicPath, target: CapabilityFilter.StoragePath)
+            ?? panic("link failed")
+        assert(linkRes.check(), message: "failed to setup filter")
+    }
+}
+```
+
+And this transaction configures a `CapabilityFactory.Manager` and adds NFT related `Factory` objects:
+
+```cadence setup_factory.cdc
+import "CapabilityFactory"
+import "NFTCollectionPublicFactory"
+import "NFTProviderAndCollectionFactory"
+import "NFTProviderFactory"
+
+import "NonFungibleToken"
+
+transaction {
+    prepare(acct: AuthAccount) {
+        if acct.borrow<&AnyResource>(from: CapabilityFactory.StoragePath) == nil {
+            let f <- CapabilityFactory.createFactoryManager()
+            acct.save(<-f, to: CapabilityFactory.StoragePath)
+        }
+
+        if !acct.getCapability<&CapabilityFactory.Manager{CapabilityFactory.Getter}>(CapabilityFactory.PrivatePath).check() {
+            acct.unlink(CapabilityFactory.PublicPath)
+            acct.link<&CapabilityFactory.Manager{CapabilityFactory.Getter}>(CapabilityFactory.PublicPath, target: CapabilityFactory.StoragePath)
+        }
+
+        assert(
+            acct.getCapability<&CapabilityFactory.Manager{CapabilityFactory.Getter}>(CapabilityFactory.PublicPath).check(),
+            message: "CapabilityFactory is not setup properly"
+        )
+
+        let manager = acct.borrow<&CapabilityFactory.Manager>(from: CapabilityFactory.StoragePath)
+            ?? panic("manager not found")
+        
+        manager.addFactory(Type<&{NonFungibleToken.CollectionPublic}>(), NFTCollectionPublicFactory.Factory())
+        manager.addFactory(Type<&{NonFungibleToken.Provider, NonFungibleToken.CollectionPublic}>(), NFTProviderAndCollectionFactory.Factory())
+        manager.addFactory(Type<&{NonFungibleToken.Provider}>(), NFTProviderFactory.Factory())
+    }
+}
+```
+
+### Account Creation & Linking
+
+Compared to walletless onboarding where a user does not have a Flow account, blockchain-native onboarding assumes a user already has a wallet configured and immediately links it with a newly created dApp account. This enables the dApp to sign transactions on the user's behalf via the new child account while immediately delegating control of that account to the onboarding user's main account.
+
+After this transaction, both the custodial party (presumably the client/dApp) and the signing parent account will have access to the newly created account - the custodial party via key access and the parent account via their `HybridCustody.Manager` maintaining the new account's `ProxyAccount` Capability.
+
+```cadence blockchain_native_onboarding.cdc
+#allowAccountLinking
+
+import "HybridCustody"
+import "CapabilityFactory"
+import "CapabilityFilter"
+import "CapabilityProxy"
+
+transaction(parent: Address, factoryAddress: Address, filterAddress: Address) {
+    prepare(parent: AuthAccount, app: AuthAccount) {
+        /* --- Account Creation --- */
+		//
+		// Create the child account, funding via the signer
+		let newAccount = AuthAccount(payer: app)
+		// Create a public key for the proxy account from string value in the provided arg
+		// **NOTE:** You may want to specify a different signature algo for your use case
+		let key = PublicKey(
+			publicKey: pubKey.decodeHex(),
+			signatureAlgorithm: SignatureAlgorithm.ECDSA_P256
+		)
+		// Add the key to the new account
+		// **NOTE:** You may want to specify a different hash algo & weight best for your use case
+		newAccount.keys.add(
+			publicKey: key,
+			hashAlgorithm: HashAlgorithm.SHA3_256,
+			weight: 1000.0
+		)
+
+		/* --- (Optional) Additional Account Funding --- */
+		//
+		// Fund the new account if specified
+		if initialFundingAmt > 0.0 {
+			// Get a vault to fund the new account
+			let fundingProvider = signer.borrow<&FlowToken.Vault{FungibleToken.Provider}>(
+					from: /storage/flowTokenVault
+				)!
+			// Fund the new account with the initialFundingAmount specified
+			newAccount.getCapability<&FlowToken.Vault{FungibleToken.Receiver}>(/public/flowTokenReceiver)
+                .borrow()!
+			    .deposit(
+                    from: <-fundingProvider.withdraw(
+                        amount: initialFundingAmt
+                    )
+                )
+		}
+
+		/* Continue with use case specific setup */
+		//
+		// At this point, the newAccount can further be configured as suitable for
+		// use in your dapp (e.g. Setup a Collection, Mint NFT, Configure Vault, etc.)
+		// ...
+
+        /* --- Link the AuthAccount Capability --- */
+        //
+        var acctCap = newAccount.linkAccount(HybridCustody.LinkedAccountPrivatePath)
+
+        // Create a ChildAccount & link Capabilities
+        let ChildAccount <- HybridCustody.createChildAccount(acct: acctCap)
+        newAccount.save(<-ChildAccount, to: HybridCustody.ChildStoragePath)
+        newAccount.link<&HybridCustody.ChildAccount{HybridCustody.BorrowableAccount, HybridCustody.ChildAccountPublic, HybridCustody.ChildAccountPrivate}>(
+            HybridCustody.ChildPrivatePath,
+            target: HybridCustody.ChildStoragePath
+        )
+        newAccount.link<&HybridCustody.ChildAccount{HybridCustody.ChildAccountPublic}>(
+            HybridCustody.ChildPublicPath, 
+            target: HybridCustody.ChildStoragePath
+        )
+
+        // Get a reference to the ChildAccount resource
+        let child = acct.borrow<&HybridCustody.ChildAccount>(from: HybridCustody.ChildStoragePath)!
+
+        // Get the CapabilityFactory.Manager Capability
+        let factory = getAccount(factoryAddress).getCapability<&CapabilityFactory.Manager{CapabilityFactory.Getter}>(CapabilityFactory.PublicPath)
+        assert(factory.check(), message: "factory address is not configured properly")
+
+        // Get the CapabilityFilter.Filter Capability
+        let filter = getAccount(filterAddress).getCapability<&{CapabilityFilter.Filter}>(CapabilityFilter.PublicPath)
+        assert(filter.check(), message: "capability filter is not configured properly")
+
+        // Configure access for the delegatee parent account
+        child.publishToParent(parentAddress: parent, factory: factory, filter: filter)
+
+        /* --- Add delegation to parent account --- */
+        //
+        // Configure HybridCustody.Manager if needed
+        if parent.borrow<&HybridCustody.Manager>(from: HybridCustody.ManagerStoragePath) == nil {
+            let m <- HybridCustody.createManager(filter: filter)
+            acct.save(<- m, to: HybridCustody.ManagerStoragePath)
+        }
+
+        // Link Capabilities
+        parent.unlink(HybridCustody.ManagerPublicPath)
+        parent.unlink(HybridCustody.ManagerPrivatePath)
+        parent.link<&HybridCustody.Manager{HybridCustody.ManagerPrivate, HybridCustody.ManagerPublic}>(
+            HybridCustody.ManagerPrivatePath,
+            target: HybridCustody.ManagerStoragePath
+        )
+        parent.link<&HybridCustody.Manager{HybridCustody.ManagerPublic}>(
+            HybridCustody.ManagerPublicPath,
+            target: HybridCustody.ManagerStoragePath
+        )
+        
+        // Claim the ProxyAccount Capability
+        let inboxName = HybridCustody.getProxyAccountIdentifier(acct.address)
+        let cap = acct.inbox.claim<&HybridCustody.ProxyAccount{HybridCustody.AccountPrivate, HybridCustody.AccountPublic, MetadataViews.Resolver}>(
+                inboxName,
+                provider: childAddress
+            ) ?? panic("proxy account cap not found")
+        
+        // Get a reference to the Manager and add the account
+        let managerRef = parent.borrow<&HybridCustody.Manager>(from: HybridCustody.ManagerStoragePath)
+            ?? panic("manager no found")
+        managerRef.addAccount(cap)
+    }
+}
+
 ```
 
 # Funding & Custody Patterns

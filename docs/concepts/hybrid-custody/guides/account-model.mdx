@@ -10,11 +10,11 @@ A new user will no longer need a preconfigured wallet to interact with Flow. Whe
 
 In order to realize a multi-account world that makes sense to users - one where they don’t have to concern themselves with managing assets across their network of accounts - we’re relying on Flow builders to cast their abstractive magic. Consider this your grimoire, fellow builder, where we’ll continue from the perspective of a wallet or marketplace dapp seeking to facilitate a unified account experience, abstracting away the partitioned access between accounts into a single dashboard for user interactions on all their owned assets.
 
-<!-- TODO <Callout type="info"> -->
+<Callout type="info">
 
 Note that the documentation on Hybrid Custody covers the current state and will likely differ from the final implementation. Builders should be aware that breaking changes may follow before reaching a final consensus on implementation. Interested in shaping the conversation? [Join in!](https://github.com/onflow/flips/pull/72)
 
-<!-- TODO </Callout> -->
+</Callout>
 
 # Objectives
 
@@ -27,11 +27,11 @@ Note that the documentation on Hybrid Custody covers the current state and will 
 
 # Design Overview
 
-<!-- TODO <Callout type="info"> -->
+<Callout type="info">
 
 TL;DR: An account's `HybridCustody.Manager` is the entry point for all of a user's associated accounts.
 
-<!-- TODO </Callout> -->
+</Callout>
 
 The basic idea in the [(currently proposed) standard](https://forum.onflow.org/t/account-linking-authaccount-capabilities-management/4314) is relatively simple. A parent account is one that has received delegated (albeit restricted) access on another account. The account which has delegated authority over itself to the parent account is the child account.
 
