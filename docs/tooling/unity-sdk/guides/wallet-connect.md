@@ -8,13 +8,13 @@ Wallet Connect is a production ready wallet provider which implements the `IWall
 
 A wallet is a piece of software or hardware that stores the private key associated with a Flow account. The term *custodian* is used to refer to the party that stores the private key. Hardware Wallets (eg Ledger), typically USB devices, allow users to be their own custodian, whereas hosted software wallets (eg Dapper Wallet) act as the custodian on behalf of the user. 
 
-For more information about Wallets and Flow accounts, see [https://developers.flow.com/flow/dapp-development/user-accounts-and-wallets](https://developers.flow.com/flow/dapp-development/user-accounts-and-wallets). 
+For more information about Wallets and Flow accounts, see [user-accounts-and-wallets](../../../tutorials/user-accounts-and-wallets.md). 
 
 ## What is a Wallet Provider? 
 
 In terms of the Flow SDK for Unity, a Wallet Provider is a class which implements the `IWallet` interface and allows users to interact with specific hardware or software wallets. This includes authenticating with a wallet, retrieving the user's Flow account address from the wallet, and requesting the wallet to sign transactions on behalf of the user. 
 
-As of v2.0.0, the Flow SDK for Unity contains two wallet providers - [Dev Wallet](https://developers.flow.com/tools/unity-sdk/guides/dev-wallet) and Wallet Connect. Dev Wallet is a mock wallet provider to make development easier, while Wallet Connect connects to real wallets and is therefore used for production. You could also implement your own wallet provider by implementing the `IWallet` interface. 
+As of v2.0.0, the Flow SDK for Unity contains two wallet providers - [Dev Wallet](./dev-wallet) and Wallet Connect. Dev Wallet is a mock wallet provider to make development easier, while Wallet Connect connects to real wallets and is therefore used for production. You could also implement your own wallet provider by implementing the `IWallet` interface. 
 
 ## How to implement Wallet Connect
 
@@ -85,7 +85,7 @@ public Task<byte[]> SignTransactionPayload(FlowTransaction txn);
 public Task<byte[]> SignTransactionEnvelope(FlowTransaction txn);
 ```
 
-In Flow, there are two parts of a transaction that can be signed - the Payload and the Authorization Envelope. The envelope must always be signed, and is the last thing to be signed by the Payer of the transaction fees. The Payload is only signed by the Proposer and\or the Authorizers IF they are not also the Payer (i.e. nobody signs the transaction twice). For more information on transaction signing, see [https://developers.flow.com/learn/concepts/transaction-signing](https://developers.flow.com/learn/concepts/transaction-signing). 
+In Flow, there are two parts of a transaction that can be signed - the Payload and the Authorization Envelope. The envelope must always be signed, and is the last thing to be signed by the Payer of the transaction fees. The Payload is only signed by the Proposer and\or the Authorizers IF they are not also the Payer (i.e. nobody signs the transaction twice). For more information on transaction signing, see [transaction signing](../../../concepts/start-here/transaction-signing.md). 
 
 The following is an example of how to call `SignTransactionEnvelope`, but as mentioned, this is automatically done by the SDK's `Transactions.Submit` function. It is asynchronous so is therefore `await`ed, and returns the signature as a byte array. 
 

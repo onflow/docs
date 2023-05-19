@@ -23,8 +23,8 @@ Once installed, you will need to enable dev mode in the Lilico app, do so as fol
     3. Refresh your Lilico app on your device to see your new FLOW balance! (swipe down on the dashboard screen)
 
 We assume you have already added the SDK package to your Unity project, and Imported the FlowWords Sample using the Unity Package Manager.
-If you have not already done so, do this now. You can find instructions on how to do so [here.](https://developers.flow.com/tools/unity-sdk/index#adding-the-flow-sdk)
+If you have not already done so, do this now. You can find instructions on how to do so [here.](../index#adding-the-flow-sdk)
 
-1. Open Game.scene from the FlowWords sample folder. (Samples\Flow SDK\\\<version>\Flow Words\Scenes)
+1. Open Game.scene from the FlowWords sample folder. (Samples\Flow SDK\\&lt;version&gt;\Flow Words\Scenes)
 2. Press Play in Unity to run the game sample.
 3. Whenever the game presents you with a QR code, scan the code with your mobile Wallet App, and approve the transactions on your mobile device!
