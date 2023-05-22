@@ -635,6 +635,10 @@
       "destination": "/concepts/staking"
     },
     {
+      "source": "/nodes/staking/:path(.*)",
+      "destination": "/concepts/staking/:path"
+    },
+    {
       "source": "/nodes/staking/custody-providers",
       "destination": "/concepts/nodes/staking/custody-providers"
     },
