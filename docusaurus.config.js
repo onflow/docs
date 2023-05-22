@@ -14,7 +14,6 @@ const externalDataSourceLocation = './src/data/data-sources.json';
 let cachedRepositories;
 
 const mixpanelOnLoad = `
-
 if ('${process.env.MIXPANEL_PROJECT_TOKEN}' && '${process.env.MIXPANEL_PROJECT_TOKEN}' !== 'undefined') {
   window.mixpanel.init('${process.env.MIXPANEL_PROJECT_TOKEN}');
 
