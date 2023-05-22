@@ -759,6 +759,10 @@
       "destination": "/tooling/fcl-js/sdk-guidelines"
     },
     {
+      "source": "/fcl-js/sdk-guidelines",
+      "destination": "/tooling/fcl-js/sdk-guidelines"
+    },
+    {
       "source": "/tools/fcl-js/reference/transactions",
       "destination": "/tooling/fcl-js/transactions"
     },
