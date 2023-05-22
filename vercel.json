@@ -632,7 +632,7 @@
     },
     {
       "source": "/nodes/staking",
-      "destination": "/concepts/nodes/staking"
+      "destination": "/concepts/staking"
     },
     {
       "source": "/nodes/staking/custody-providers",
