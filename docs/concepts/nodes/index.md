@@ -1,6 +1,6 @@
 ---
 title: Flow Nodes
-sidebar_position: 4
+sidebar_position: 7
 ---
 
 Flow nodes are vital components of the Flow blockchain. These nodes are responsible for a variety of network operations to maintain the distributed ledger.

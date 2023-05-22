@@ -1,12 +1,11 @@
 ---
 title: FLOW Token
-sidebar_position: 3
+sidebar_position: 4
 ---
 
 ## Introduction
 
-This section contains information about the FLOW token for individual backers,
-wallet providers, custodians and node operators.
+This section contains information about the FLOW token for individual backers, wallet providers, custodians and node operators.
 
 ### FLOW as a Native Token
 
@@ -18,11 +17,10 @@ interact with FLOW.
 
 ## How to Get FLOW
 
-There are currently several ways to acquire FLOW tokens:
+There are two ways to acquire FLOW tokens as yield:
 
-1. [Claim FLOW as a Backer](./delivery.md): Existing Flow backers can claim their FLOW.
-1. [Earn FLOW as a Validator](../nodes/staking/technical-overview.mdx): Receive newly-minted FLOW as a reward for running a node.
-1. [Earn FLOW as a Platform Contributor](./earn.md): Receive newly-minted FLOW as a reward for building on Flow.
+1. [Earn FLOW as a Validator or Delegator](../staking/06-technical-overview.mdx): Receive newly-minted FLOW as a reward for running a node.
+1. [Earn FLOW as a Community Contributor](https://github.com/onflow/developer-grants): Flow offers grants for selected proposals as well as RFPs for teams to submit proposals for funded development
 
 ## How to Use FLOW
 
@@ -46,12 +44,12 @@ and then sign with the wallet of your choice only once you decide to make a purc
 
 ### Staking FLOW
 
-[You can use FLOW to operate a staked node.](../nodes/staking/technical-overview.mdx) Node operators receive newly-minted FLOW
+[You can use FLOW to operate a staked node.](../staking/06-technical-overview.mdx) Node operators receive newly-minted FLOW
 as a reward for helping to secure the network.
 
 ### Delegating FLOW
 
-[You can use FLOW for stake delegation.](../nodes/staking/technical-overview.mdx) Delegators receive newly-minted FLOW
+[You can use FLOW for stake delegation.](../staking/06-technical-overview.mdx) Delegators receive newly-minted FLOW
 as a reward for helping to secure the network.
 
 ### Holding FLOW

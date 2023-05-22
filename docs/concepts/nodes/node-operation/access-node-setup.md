@@ -21,7 +21,7 @@ Chain analytics, audit and exploration applications can run such an access node 
 New nodes are able to join the network each time a new epoch begins.
 An epoch is a period of time (approximately one week) when the node operators in the network are constant.
 At epoch boundaries, newly staked node operators are able to join the network and existing node operators which have unstaked may exit the network.
-You can read more about epochs [here](../staking/schedule.mdx).
+You can read more about epochs [here](../../staking/03-schedule.mdx).
 
 
 In order to join the network at epoch N+1, the access node **must** be registered with at least 100 FLOW staked prior to the end of epoch N's Staking Auction Phase.
@@ -29,7 +29,7 @@ In order to join the network at epoch N+1, the access node **must** be registere
 Currently on mainnet, the staking auction starts every Wednesday at around 20:00 UTC and ends on the next Wednesday at around 12:00 UTC. 
 Since this deadline may shift slightly from epoch to epoch, we recommend the node be staked by _Wednesday, 8:00 UTC_ to be able to join the network in the next epoch.
 
-Confirmation of a new node's inclusion in epoch N+1 is included in the [`EpochSetup` event](../staking/epoch-scripts-events.md#epochsetup).
+Confirmation of a new node's inclusion in epoch N+1 is included in the [`EpochSetup` event](../../staking/05-epoch-scripts-events.md#epochsetup).
 
 
 ![Flow Epoch Schedule](https://storage.googleapis.com/flow-resources/documentation-assets/epoch-startup-order.png)
@@ -232,7 +232,7 @@ Account staking info:
 
 ### Epoch setup event
 
-Alternatively, if you can monitor events, look for [the epoch setup event](../staking/epoch-scripts-events.md#epochsetup) that gets emitted by the epoch contract. That event is emitted at the end of epoch N's staking auction and contains a list of node IDs that are confirmed for the next epoch.
+Alternatively, if you can monitor events, look for [the epoch setup event](../../staking/05-epoch-scripts-events.md#epochsetup) that gets emitted by the epoch contract. That event is emitted at the end of epoch N's staking auction and contains a list of node IDs that are confirmed for the next epoch.
 
 ## Step 4 - Start your node
 

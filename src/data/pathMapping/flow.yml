@@ -27,7 +27,6 @@
 ./docs/content/core-contracts/flow-token.mdx: docs/cadence/core-contracts/flow-token.mdx
 ./docs/content/core-contracts/fungible-token.mdx: docs/cadence/core-contracts/fungible-token.mdx
 ./docs/content/core-contracts/index.md: docs/cadence/core-contracts/index.md
-./docs/content/core-contracts/locked-tokens.mdx: docs/cadence/core-contracts/locked-tokens.mdx
 ./docs/content/core-contracts/nft-metadata.mdx: docs/cadence/core-contracts/nft-metadata.mdx
 ./docs/content/core-contracts/nft-storefront.md: docs/cadence/core-contracts/nft-storefront.md
 ./docs/content/core-contracts/non-fungible-token.mdx: docs/cadence/core-contracts/non-fungible-token.mdx
@@ -56,13 +55,8 @@
 ./docs/content/flow-port/index.md: docs/concepts/nodes/flow-port/index.md
 ./docs/content/flow-port/staking-guide.mdx: docs/concepts/nodes/flow-port/staking-guide.md
 ./docs/content/flow-token/available-wallets.md: docs/concepts/flow-token/available-wallets.md
-./docs/content/flow-token/backers.mdx: docs/concepts/flow-token/backers.mdx.txt
 ./docs/content/flow-token/concepts.mdx: docs/concepts/flow-token/concepts.md
-./docs/content/flow-token/delivery.mdx: docs/concepts/flow-token/delivery.md
-./docs/content/flow-token/earn.mdx: docs/concepts/flow-token/earn.md
-./docs/content/flow-token/faq.mdx: docs/concepts/flow-token/faq.mdx
 ./docs/content/flow-token/index.mdx: docs/concepts/flow-token/index.md
-./docs/content/flow-token/locked-account-setup.mdx: docs/concepts/flow-token/locked-account-setup.mdx
 ./docs/content/flow-token/TODO.md: docs/concepts/flow-token/TODO.md.txt
 ./docs/content/flow-token/wallets.mdx: docs/concepts/flow-token/wallets.md
 ./docs/content/flow/fungible-tokens.md: docs/concepts/token-standards/fungible-tokens.md
@@ -97,7 +91,6 @@
 ./docs/content/node-operation/guides/spork-practice.mdx: docs/concepts/nodes/node-operation/guides/spork-practice.mdx
 ./docs/content/node-operation/guides/starting-nodes.mdx: docs/concepts/nodes/node-operation/guides/starting-nodes.mdx
 ./docs/content/node-operation/index.mdx: docs/concepts/nodes/node-operation/index.md
-./docs/content/node-operation/leased-account-setup.mdx: docs/concepts/nodes/node-operation/leased-account-setup.mdx
 ./docs/content/node-operation/machine-existing-operator.mdx: docs/concepts/nodes/node-operation/machine-existing-operator.mdx
 ./docs/content/node-operation/monitoring-nodes.mdx: docs/concepts/nodes/node-operation/monitoring-nodes.mdx
 ./docs/content/node-operation/node-bootstrap.mdx: docs/concepts/nodes/node-operation/node-bootstrap.mdx
@@ -120,7 +113,6 @@
 ./docs/content/staking/epoch-terminology.mdx: docs/concepts/nodes/staking/epoch-terminology.mdx
 ./docs/content/staking/faq.mdx: docs/concepts/nodes/staking/faq.md
 ./docs/content/staking/index.mdx: docs/concepts/nodes/staking/index.md
-./docs/content/staking/locked-staking-guide.mdx: docs/concepts/nodes/staking/locked-staking-guide.mdx
 ./docs/content/staking/locked-third-party-operator.mdx: docs/concepts/nodes/staking/locked-third-party-operator.md
 ./docs/content/staking/machine-account.mdx: docs/concepts/nodes/staking/machine-account.mdx
 ./docs/content/staking/qc-dkg-scripts-events.mdx: docs/concepts/nodes/staking/qc-dkg-scripts-events.md
@@ -132,7 +124,7 @@
 ./docs/content/staking/staking-rewards.mdx: docs/concepts/nodes/staking/staking-rewards.md
 ./docs/content/staking/staking-scripts-events.md: docs/concepts/nodes/staking/staking-scripts-events.md
 ./docs/content/staking/technical-overview.mdx: docs/concepts/nodes/staking/technical-overview.mdx
-./docs/content/staking/unlocked-staking-guide.mdx: docs/concepts/nodes/staking/unlocked-staking-guide.mdx
+./docs/content/staking/unlocked-staking-guide.mdx: docs/concepts/nodes/staking/staking-guide.mdx
 ./docs/content/unity-sdk/api-reference.md: docs/tooling/unity-sdk/api-reference.md
 ./docs/content/unity-sdk/changelog.md: docs/tooling/unity-sdk/changelog.md
 ./docs/content/unity-sdk/guides/dev-wallet.md: docs/tooling/unity-sdk/guides/dev-wallet.md
