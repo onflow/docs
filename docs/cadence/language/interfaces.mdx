@@ -548,9 +548,9 @@ resource ExampleToken: FungibleToken {
 
 ## Interface inheritance
 
-An interface can inherit (conform to) other interfaces of the same kind.
+An interface can inherit from (conform to) other interfaces of the same kind.
 For example, A resource interface can inherit from another resource interface, but cannot inherit from a struct interface.
-When an interface inherits from another, all the fields, functions, and types of the parent interface would be implicitly
+When an interface inherits from another, all the fields, functions, and types of the parent interface are implicitly
 available to the inheriting interface.
 
 ```cadence
@@ -639,7 +639,7 @@ pub resource interface Vault: Receiver {
 #### Functions with conditions
 
 If the two functions with identical names and signatures have pre/post conditions, then it will still be valid.
-However, the pre/post conditions are linearized (refer [linearizing conditions section](#linearizing-conditions))
+However, the pre/post conditions are linearized (refer to the [linearizing conditions section](#linearizing-conditions))
 to determine the order of the execution of the conditions.
 Given the pre/post conditions are `view` only, the order of execution would not have an impact on the conditions.
 
