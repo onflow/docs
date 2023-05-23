@@ -1129,6 +1129,10 @@
     {
       "source": "/flow-token/:path*",
       "destination": "/concepts/flow-token/:path*"
+    },
+    {
+      "source": "/cadence/core-contracts/:path*",
+      "destination": "/concepts/core-contracts/:path*"
     }
   ]
 }
