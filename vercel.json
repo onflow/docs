@@ -632,7 +632,11 @@
     },
     {
       "source": "/nodes/staking",
-      "destination": "/concepts/nodes/staking"
+      "destination": "/concepts/staking"
+    },
+    {
+      "source": "/nodes/staking/:path(.*)",
+      "destination": "/concepts/staking/:path"
     },
     {
       "source": "/nodes/staking/custody-providers",
@@ -752,6 +756,10 @@
     },
     {
       "source": "/tools/fcl-js/reference/sdk-guidelines",
+      "destination": "/tooling/fcl-js/sdk-guidelines"
+    },
+    {
+      "source": "/fcl-js/sdk-guidelines",
       "destination": "/tooling/fcl-js/sdk-guidelines"
     },
     {
