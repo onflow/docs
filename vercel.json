@@ -161,7 +161,6 @@
     {
       "source": "/concepts/nodes/staking/:path*",
       "destination": "/concepts/staking/:path*"
-    },
     {
       "source": "/tools/emulator",
       "destination": "/tooling/emulator"
