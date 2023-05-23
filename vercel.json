@@ -631,80 +631,8 @@
       "destination": "/concepts/nodes/node-operation/upcoming-sporks"
     },
     {
-      "source": "/nodes/staking/",
-      "destination": "/concepts/nodes/staking"
-    },
-    {
-      "source": "/nodes/staking/custody-providers",
-      "destination": "/concepts/staking/custody-providers"
-    },
-    {
-      "source": "/nodes/staking/epoch-preparation",
-      "destination": "/concepts/staking/epoch-preparation"
-    },
-    {
-      "source": "/nodes/staking/epoch-scripts-events",
-      "destination": "/concepts/staking/epoch-scripts-events"
-    },
-    {
-      "source": "/nodes/staking/epoch-terminology",
-      "destination": "/concepts/staking/epoch-terminology"
-    },
-    {
-      "source": "/nodes/staking/faq",
-      "destination": "/concepts/staking/faq"
-    },
-    {
-      "source": "/nodes/staking/locked-staking-guide",
-      "destination": "/concepts/staking/locked-staking-guide"
-    },
-    {
-      "source": "/nodes/staking/locked-third-party-operator",
-      "destination": "/concepts/staking/locked-third-party-operator"
-    },
-    {
-      "source": "/nodes/staking/machine-account",
-      "destination": "/concepts/staking/machine-account"
-    },
-    {
-      "source": "/nodes/staking/qc-dkg",
-      "destination": "/concepts/staking/qc-dkg"
-    },
-    {
-      "source": "/nodes/staking/qc-dkg-scripts-events",
-      "destination": "/concepts/staking/qc-dkg-scripts-events"
-    },
-    {
-      "source": "/nodes/staking/schedule",
-      "destination": "/concepts/staking/schedule"
-    },
-    {
-      "source": "/nodes/staking/stake-slashing",
-      "destination": "/concepts/staking/stake-slashing"
-    },
-    {
-      "source": "/nodes/staking/staking-collection",
-      "destination": "/concepts/staking/staking-collection"
-    },
-    {
-      "source": "/nodes/staking/staking-options",
-      "destination": "/concepts/staking/staking-options"
-    },
-    {
-      "source": "/nodes/staking/staking-rewards",
-      "destination": "/concepts/staking/staking-rewards"
-    },
-    {
-      "source": "/nodes/staking/staking-scripts-events",
-      "destination": "/concepts/staking/staking-scripts-events"
-    },
-    {
-      "source": "/nodes/staking/technical-overview",
-      "destination": "/concepts/staking/technical-overview"
-    },
-    {
-      "source": "/nodes/staking/unlocked-staking-guide",
-      "destination": "/concepts/staking/unlocked-staking-guide"
+      "source": "/nodes/staking/:path*",
+      "destination": "/concepts/staking/:path*"
     },
     {
       "source": "/concepts/nodes/staking/:path*",
@@ -1197,6 +1125,10 @@
     {
       "source": "/cadence/tutorial/10-resources-compose",
       "destination": "/cadence/tutorial/resources-compose"
+    },
+    {
+      "source": "/flow-token/:path*",
+      "destination": "/concepts/flow-token/:path*"
     }
   ]
 }
