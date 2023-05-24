@@ -45,6 +45,16 @@
   --image-navbar-discord: url('/images/social/discord-light.svg');
 }
 
+/* docusaurus desktop breakpoint https://docusaurus.io/docs/styling-layout#mobile-view */
+@media (min-width: 997px) { 
+  .desktop\:p-1 {
+    padding: 0.25rem;
+  }
+  .desktop\:hidden {
+    display: none;
+  }
+}
+
 /* lg breakpoint */
 @media (min-width: 1024px) { 
   .lg\:block {
@@ -58,10 +68,6 @@
       display: block;
   }
 }
-.p-1 {
-  padding: 0.25rem;
-}
-
 #navbar-github {
   content: var(--image-navbar-github);
 }

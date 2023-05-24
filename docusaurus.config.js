@@ -270,15 +270,15 @@ const config = {
           },
           {
             href: 'https://github.com/onflow',
-            html: '<img src="" alt="GitHub" id="navbar-github" class="box-content h-32 w-32"/>',
+            html: '<img src="" alt="GitHub" id="navbar-github" class="box-content h-32 w-32"/><span class="p-2 desktop:hidden">Github</span>',
             position: 'right',
-            className: 'h-8 p-1',
+            className: 'h-8 desktop:p-1',
           },
           {
             href: 'https://onflow.org/discord',
-            html: '<img src="" alt="Discord" id="navbar-discord" class="box-content h-32 w-32"/>',
+            html: '<img src="" alt="Discord" id="navbar-discord" class="box-content h-32 w-32"/><span class="p-2 desktop:hidden">Discord</span>',
             position: 'right',
-            className: 'h-8 p-1',
+            className: 'h-8 desktop:p-1',
           },
         ],
       },
@@ -451,6 +451,10 @@ const config = {
               {
                 href: 'https://onflow.org/',
                 label: 'OnFlow',
+              },
+              {
+                href: 'https://flow.com/blog',
+                label: 'Blog',
               },
             ],
           },

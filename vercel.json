@@ -127,6 +127,10 @@
       "destination": "/concepts/nodes"
     },
     {
+      "source": "/access-api",
+      "destination": "/concepts/nodes/access-api"
+    },
+    {
       "source": "/nodes/access-api",
       "destination": "/concepts/nodes/access-api"
     },
