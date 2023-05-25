@@ -496,6 +496,22 @@ const config = {
       },
     }),
   plugins: [
+    [
+      '@docusaurus/plugin-client-redirects',
+      {
+        createRedirects(existingPath) {
+          console.log('existingPath', existingPath);
+          // if (existingPath.includes('/community')) {
+          //   // Redirect from /docs/team/X to /community/X and /docs/support/X to /community/X
+          //   return [
+          //     existingPath.replace('/community', '/docs/team'),
+          //     existingPath.replace('/community', '/docs/support'),
+          //   ];
+          // }
+          return undefined; // Return a falsy value: no redirect created
+        },
+      },
+    ],
     function tailwindPlugin() {
       return {
         name: 'docusaurus-tailwindcss',
