@@ -18,11 +18,12 @@ A new user will no longer need a preconfigured wallet to interact with Flow. Whe
 link with a dapp; however, the associated accounts and assets within them will need to be accessible the same as if they
 were in a single account.
 
-In order to realize a multi-account world that makes sense to users - one where they don’t have to concern themselves
-with managing assets across their network of accounts - we’re relying on Flow builders to cast their abstractive magic.
-Consider this your grimoire, fellow builder, where we’ll continue from the perspective of a wallet or marketplace dapp
-seeking to facilitate a unified account experience, abstracting away the partitioned access between accounts into a
-single dashboard for user interactions on all their owned assets.
+In order to realize a multi-account world that makes sense to users - one where they don't have to concern themselves
+with managing assets across their network of accounts - we're relying on Flow builders to cast their abstractive magic.
+These docs will provide you with components and steps to create those abstractions for your users. In this doc, we'll
+continue from the perspective of a wallet or marketplace dapp seeking to facilitate a unified account experience,
+abstracting away the partitioned access between accounts into a single dashboard for user interactions on all their
+owned assets.
 
 <Callout type="info">
 
@@ -38,7 +39,7 @@ implementation. Interested in shaping the conversation? [Join in!](https://githu
 - Create a blockchain-native onboarding flow
 - Link an existing app account as a child to a newly authenticated parent account
 - Get your dapp to recognize “parent” accounts along with any associated “child” accounts
-- View Fungible and NonFungible Token metadata relating to assets across all of a user’s associated accounts - their
+- View Fungible and NonFungible Token metadata relating to assets across all of a user's associated accounts - their
   wallet-mediated “parent” account and any hybrid custody model “child” accounts
 - Facilitate transactions acting on assets in child accounts
 
@@ -56,56 +57,76 @@ parent account is one that has received delegated (albeit restricted) access on 
 delegated authority over itself to the parent account is the child account.
 
 In the [Hybrid Custody Model](https://forum.onflow.org/t/hybrid-custody/4016), this child account would have shared
-access between the dapp which created and presumably maintains custody of the account and the linked parent account.
+access between the dapp - the entity which created likely custodies the account - and the linked parent account.
 
 How does this delegation occur? Typically when we think of shared account access in crypto, we think keys. However,
-Cadence enables [accounts to link Capabilities on themselves](https://github.com/onflow/cadence/issues/2151) and issue
+Cadence enables [accounts to link Capabilities to themselves](https://github.com/onflow/cadence/issues/2151) and issue
 those Capabilities to other parties (more on [capability-based access
 here](https://developers.flow.com/cadence/language/capability-based-access-control)).
 
-We’ve leveraged this feature in a (proposed) standard so that dapps can implement a hybrid custody model whereby the
-dapp creates an account it controls, then later delegates access on that account to the user once they’ve authenticate
-with their wallet. All related constructs are used together in the [`HybridCustody`
-contract](https://testnet.contractbrowser.com/A.96b15ff6dfde11fe.HybridCustody) to define the standard. The delegated
-access on child accounts is stored and mediated by the parent account's `Manager` which maintains Capabilities on
-`ProxyAccount` and `ChildAccount` resources, themselves defining restricted and unrestricted access respectively.
+We've leveraged this feature in a (proposed) standard so that dapps can implement a hybrid custody model whereby the
+dapp creates an account it controls, then later delegates access on that account to the user once they've authenticated
+with their wallet.
+
+All related constructs are used together in the [`HybridCustody`
+contract](https://testnet.contractbrowser.com/A.96b15ff6dfde11fe.HybridCustody) to define the standard.
+
+Parent accounts own a `Manager` resource which stores Capabilities to `ProxyAccount` (restricted access) and
+`ChildAccount` (unrestricted access) resources, both of which are stored in any given child account.
 
 Therefore, the presence of a `Manager` in an account implies there are potentially associated accounts for which the
-owning account has delegated access. This resource is intended to be configured with a pubic Capability enabling
-querying of an account's child account addresses via `getAccountAddresses()` and `getOwnedAccountAddresses()`. As you
+owning account has delegated access. This resource is intended to be configured with a public Capability that enables
+querying of an account's child account addresses via `getAccountAddresses()` and `getOwnedAccountAddresses()`.As you
 can deduce from these two methods, there is a notion of "owned" accounts which we'll expand on in a bit.
 
-A wallet or marketplace wishing to discover all of a user’s accounts and assets within them can do so by first looking
-to the user’s `Manager`.
+A wallet or marketplace wishing to discover all of a user's accounts and assets within them can do so by first looking
+to the user's `Manager`.
 
 ## Identifying Account Hierarchy
 
 To clarify, insofar as the standard is concerned, an account is a parent account if it contains a `Manager` resource,
 and an account is a child account if it contains at minimum a `ChildAccount` or additionally a `ProxyAccount` resource.
 
-We can see that the user’s `Manager.accounts` point to the address of its child account in its index, with corresponding
-Capabilities giving the Manager access to those accounts. Likewise, the child account’s `ProxyAccount.parentAddress`
-points to the user’s account as its parent address. This makes it easy to both identify whether an account is a parent,
-child, or both, and its associated parent/child account(s). `ChildAccount` resources underly all account delegations, so
-can have multiple parents whereas `ProxyAccount`s are 1:1. This provides more granular revocation as each parent account
-has its own Capability path on which its access relies.
+We can see that the user's `Manager.accounts` points to the addresses of its child accounts in each index, with
+corresponding Capabilities giving the Manager access to those accounts.
+
+Likewise, the child account's `ProxyAccount.parentAddress` (which owns a `Manager`) points to the user's account as its
+parent address. This makes it easy to both identify whether an account is a parent, child, or both, and its associated
+parent/child account(s). `ChildAccount` resources underly all account delegations, so can have multiple parents whereas
+`ProxyAccount`s are 1:1. This provides more granular revocation as each parent account has its own Capability path on
+which its access relies.
 
 ### Restricted vs. Owned Accounts
 
 It's worth noting here that `ProxyAccount` Capabilities enable access to the underlying account according to rules
-configured by the delegator. The `ProxyAccount` maintains these rules along with a `ChildAccount` resource within which
-the AuthAccount Capability is stored. Anyone with access to the surface level `ProxyAccount` can then access the
-underlying AuthAccount, but only according the the pre-defined rule set. These rules are fundamentally a list of Types
-that can/cannot be retrieved from an account.
+configured by the child account who is delegating the authority. The `ProxyAccount` maintains these rules along with a
+`ChildAccount` Capability within which the `AuthAccount` Capability is stored. Anyone with access to the surface level
+`ProxyAccount` can then access the underlying `AuthAccount`, but only according the pre-defined rule set. These rules
+are fundamentally a list of Types that can/cannot be retrieved from an account.
 
 ![HybridCustody Conceptual Overview](resources/hybrid_custody_conceptual_overview.png)
 
+The app developer can codify these rule sets on allowable Capability types in a
+[`CapabilityFilter`](https://testnet.contractbrowser.com/A.96b15ff6dfde11fe.CapabilityFilter) along with a
+[`CapabilityFactory`](https://testnet.contractbrowser.com/A.96b15ff6dfde11fe.CapabilityFactory) defining retrieval
+patterns for those Capabilities. When delegation occurs, the developer would provide the `CapabilityFilter` and
+`CapabilityFactory` Capabilities to a `ChildAccount` resource which stores them in a `ProxyAccount` resource.  Then,
+capabilities are created for the `ChildAccount` and `ProxyAccount` resource and are given to the specified parent
+account.
+
 So, if an app developer wants to enable Hybrid Custody but doesn't want to allow parent accounts to access FungibleToken
-Vaults, for example, the app developer can codify rule sets on allowable Capability types in a `CapabilityFilter` along
-with a `CapabilityFactory` defining retrieval patterns for those Capabilities. When delegation occurs, they would
-provide the `CapabilityFilter` and `CapabilityFactory` Capabilities to a `ChildAccount` which wraps the given filter &
-factory Capabilities in a `ProxyAccount` along with a Capability to itself before publishing the new `ProxyAccount`
-Capability for the specified parent account.
+Vaults, for example, the app developer can codify rule sets enumerating allowable Capability types in a
+`CapabilityFilter` along with a `CapabilityFactory` defining retrieval patterns for those Capabilities. When delegation
+occurs, they would provide the `CapabilityFilter` and `CapabilityFactory` Capabilities to a `ChildAccount`. This
+`ChildAccount` then wraps the given filter & factory Capabilities in a `ProxyAccount` along with a Capability to itself
+before publishing the new `ProxyAccount` Capability for the specified parent account to claim.
+
+<Callout type="info">
+
+Note that by enumerating allowable Types in your `CapabilityFilter.Filter` implementation, you're by default excluding
+access to anything other than the Types you declare as allowable.
+
+</Callout>
 
 As mentioned earlier, `Manager`s also maintain access to "owned" accounts - accounts which define unrestricted access as
 they allow direct retrieval of encapsulated AuthAccount objects. These owned accounts, found in `Manager.ownedAccounts`,
@@ -120,18 +141,18 @@ being the parent to other accounts. While initial intuition might lead one to be
 tree with the user at the root, the graph of associated accounts among child accounts may lead to cycles of association. 
 
 We believe it would be unlikely for a use case to demand a user delegates authority over their main account (in fact
-we’d discourage such constructions), but delegating access between child accounts could be useful. As an example,
+we'd discourage such constructions), but delegating access between child accounts could be useful. As an example,
 consider a set of local game clients across mobile and web platforms, each with self-custodied app accounts having
-delegated authority to each other while both are child accounts of the user’s main account.
+delegated authority to each other while both are child accounts of the user's main account.
 
-Ultimately, it will be up to the implementing wallet/marketplace how far down the graph of account associations they’d
+Ultimately, it will be up to the implementing wallet/marketplace how far down the graph of account associations they'd
 want to traverse and display to the user.
 
 # Implementation
 
 From the perspective of a wallet or marketplace dapp, some relevant things to know about the user are:
 
-- Does this account have associated linked accounts?
+- Does this account have associated linked (child) accounts?
 - What are those associated linked accounts, if any?
 - What NFTs are owned by this user across all associated accounts?
 - What are the balances of all FungibleTokens across all associated accounts?
@@ -161,7 +182,7 @@ pub fun main(parent: Address): Bool {
 
 ### Query All Accounts Associated with Address
 
-The following script will return an array addresses associated with a given account’s address, inclusive of the provided
+The following script will return an array addresses associated with a given account's address, inclusive of the provided
 address.
 
 ```cadence get_child_addresses.cdc
@@ -183,7 +204,7 @@ utilizing several queries to iterate over accounts and the storage of each accou
 accounts may even be required based on the number of NFTs held.
 
 1. Get all associated account addresses (see above)
-2. Looping over each associated account address client-side, get each address’s owned NFT metadata
+2. Looping over each associated account address client-side, get each address's owned NFT metadata
 
 ```cadence get_nft_display_view_from_public.cdc
 import "NonFungibleToken"
@@ -248,7 +269,7 @@ NFT resolves the `MetadataViews.Display` view type.
 Similar to the previous example, we recommend breaking up this task due to memory limits.
 
 1. Get all linked account addresses (see above)
-2. Looping over each associated account address client-side, get each address’s owned FungibleToken Vault metadata
+2. Looping over each associated account address client-side, get each address's owned FungibleToken Vault metadata
 
 However, we'll condense both of these steps down into one script for simplicity:
 
@@ -321,7 +342,7 @@ pub fun main(address: Address): {Address: {Type: UFix64}} {
 The above script returns a dictionary of balances indexed on the type and further grouped by account Address.
 
 The returned data at the end of address iteration should be sufficient to achieve a unified balance of all Vaults of
-similar types across all of a user’s associated account as well as a more granular per account view.
+similar types across all of a user's associated account as well as a more granular per account view.
 
 You might consider resolving
 [`FungibleTokenMetadataViews`](https://github.com/onflow/flow-ft/blob/master/contracts/FungibleTokenMetadataViews.cdc)
@@ -329,8 +350,8 @@ to aggregate more information about the underlying Vaults.
 
 ### Access NFT in Child Account from Parent Account
 A user with tokens in one of their linked accounts will likely want to utilize said tokens. In this example, the user
-will sign a transaction a transaction with their authenticated account that retrieves a reference to a linked account’s
-Flow Provider, enabling withdrawal from the linked account having signed with the main account.
+will sign a transaction a transaction with their authenticated account that retrieves a reference to a linked account's
+`NonFungibleToken.Provider`, enabling withdrawal from the linked account having signed with the main account.
 
 ```cadence withdraw_nft_from_child.cdc
 import "NonFungibleToken"
@@ -373,7 +394,7 @@ transaction(childAddress: Address, providerPath: PrivatePath, withdrawID: UInt64
 ```
 
 At the end of this transaction, you withdrew an NFT from the specified account using a Provider Capability. A similar
-approach could get you reference to the linked account’s 
+approach could get you reference to the linked account's 
 
 ### Revoking Secondary Access on a Linked Account
 
@@ -385,7 +406,7 @@ There are two ways a party can have delegated access to an account - keys and Au
 unrestricted access via `ChildAccount`, one could remove parents (`ChildAccount.removeParent(parent: Address)`) thereby
 unlinking relevant Capabilities and further destroying their `ProxyAccount` and `CapabilityProxy` resources.
 
-Ultimately, things are not entirely straightforward with respect to AuthAccount Capabilities, at least not until
+Ultimately, things are not entirely straightforward with respect to `AuthAccount` Capabilities, at least not until
 Capability Controllers enter the picture. This is discussed in more detail in [the
 Flip](https://forum.onflow.org/t/account-linking-authaccount-capabilities-management/4314). For now, we recommend that
 if users want to revoke secondary access, they transfer any assets from the relevant child account and remove it from
@@ -393,9 +414,9 @@ their `Manager` altogether.
 
 ### Remove a Child Account
 
-As mentioned above, if a user no longer wishes to share access with another party, it’s recommended that desired assets
+As mentioned above, if a user no longer wishes to share access with another party, it's recommended that desired assets
 be transferred from that account to either their main account or other linked accounts and the linked account be removed
-from their `HybridCustody.Manager`. Let’s see how to complete that removal.
+from their `HybridCustody.Manager`. Let's see how to complete that removal.
 
 ```cadence remove_child_account.cdc
 import "HybridCustody"
