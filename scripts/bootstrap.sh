@@ -95,11 +95,6 @@ cloneDocReposToTemp() {
       cloneRepoToTemp $repo $tempRepoLocation
     fi
   done
-
-  # use testing repo for onflow/flow
-  cd $tempReposLocation/flow
-  git checkout nialexsan/docs-202303
-  cd ../..
 }
 
 copyRepoFiles() {
