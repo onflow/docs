@@ -167,8 +167,8 @@
       "destination": "/concepts/staking/:path*"
     },
     {
-      "source": "/tools/emulator",
-      "destination": "/tooling/emulator"
+      "source": "/tools/emulator/:path*",
+      "destination": "/tooling/emulator/:path*"
     },
     {
       "source": "/tools/fcl-dev-wallet/overview",
@@ -191,40 +191,16 @@
       "destination": "/tooling/fcl-js/:path"
     },
     {
-      "source": "/fcl/reference/sdk-guidelines",
-      "destination": "/tooling/fcl-js/sdk-guidelines"
-    },
-    {
-      "source": "/fcl/reference",
-      "destination": "/tooling/fcl-js"
-    },
-    {
-      "source": "/tools/flow-cadut/api",
-      "destination": "/tooling/flow-cadut/api"
-    },
-    {
-      "source": "/tools/flow-cadut/generator",
-      "destination": "/tooling/flow-cadut/generator"
-    },
-    {
-      "source": "/tools/flow-cadut/plugins",
-      "destination": "/tooling/flow-cadut/plugins"
+      "source": "/tools/flow-cadut/:path*",
+      "destination": "/tooling/flow-cadut/:path*"
     },
     {
       "source": "/tools/flow-cli/:path*",
       "destination": "/tooling/flow-cli/:path*"
     },
     {
-      "source": "/tools/flow-go-sdk",
+      "source": "/tools/flow-go-sdk/:path*",
       "destination": "/tooling/flow-go-sdk"
-    },
-    {
-      "source": "/tools/flow-go-sdk/error-codes",
-      "destination": "/tooling/flow-go-sdk/error-codes"
-    },
-    {
-      "source": "/tools/flow-go-sdk/migration-v0.25.0",
-      "destination": "/tooling/flow-go-sdk/migration-v0.25.0"
     },
     {
       "source": "/tools/flow-js-testing/:path*",
@@ -311,6 +287,18 @@
       "destination": "/cadence/tutorial/resources-compose"
     },
     {
+      "source": "/fcl/:path*",
+      "destination": "/tooling/fcl-js/:path*"
+    },
+    {
+      "source": "/flow-token/backers",
+      "destination": "/concepts/nodes/faq/backers"
+    },
+    {
+      "source": "/flow-token/staking/:path*",
+      "destination": "/concepts/staking/:path*"
+    },
+    {
       "source": "/flow-token/:path*",
       "destination": "/concepts/flow-token/:path*"
     },
@@ -321,6 +309,74 @@
     {
       "source": "/flow-cli/:path*",
       "destination": "/tooling/flow-cli/:path*"
+    },
+    {
+      "source": "/fcl-js/:path*",
+      "destination": "/tooling/fcl-js/:path*"
+    },
+    {
+      "source": "/flow-port/:path*",
+      "destination": "/concepts/nodes/flow-port/:path*"
+    },
+    {
+      "source": "/fcl/tutorials/:path*",
+      "destination": "/tutorials/:path*"
+    },
+    {
+      "source": "/nft-marketplace/:path*",
+      "destination": "/tooling/nft-marketplace/:path*"
+    },
+    {
+      "source": "/kitty-items/:path*",
+      "destination": "/tutorials/kitty-items/:path*"
+    },
+    {
+      "source": "/flow-js-testing/:path*",
+      "destination": "/tooling/flow-js-testing/:path*"
+    },
+    {
+      "source": "/concepts/accounts-and-keys",
+      "destination": "/concepts/start-here/accounts-and-keys"
+    },
+    {
+      "source": "/concepts/transaction-signing",
+      "destination": "/concepts/start-here/transaction-signing"
+    },
+    {
+      "source": "/concepts/variable-transaction-fees",
+      "destination": "/concepts/start-here/variable-transaction-fees"
+    },
+    {
+      "source": "/core-contracts/:path*",
+      "destination": "/concepts/core-contracts/:path*"
+    },
+    {
+      "source": "/devtools/:path*",
+      "destination": "/tooling/:path*"
+    },
+    {
+      "source": "/dapp-development/:path*",
+      "destination": "/tutorials/:path*"
+    },
+    {
+      "source": "/flow-go-sdk/:path*",
+      "destination": "/tooling/flow-go-sdk/:path*"
+    },
+    {
+      "source": "/emulator/:path*",
+      "destination": "/tooling/emulator/:path*"
+    },
+    {
+      "source": "/docs",
+      "destination": "/"
+    },
+    {
+      "source": "/docs/cadence",
+      "destination": "/cadence"
+    },
+    {
+      "source": "/docs/getting-started-1",
+      "destination": "/getting-started"
     }
   ]
 }
