@@ -216,6 +216,32 @@ All integer types support the following functions:
     let negTwenty: Int? = Int.fromString("-20") // ok
     ```
 
+-
+    ```cadence
+    fun T.fromBigEndianBytes(_ bytes: [UInt8]): T?
+    ```
+    Attempts to parse an integer value from a byte array representation (`[UInt8]`) in big-endian order, returning `nil` if the input bytes are invalid.
+
+    For a given integer `n` of type `T`, `T.fromBigEndianBytes(n.toBigEndianBytes())` is equivalent to wrapping `n` up in an [optional](#optionals).
+
+    The bytes are invalid if:
+      - length of the bytes array exceeds the number of bytes needed for the target type
+      - they don't fit in the target type
+
+    Examples:
+
+    ```cadence
+    let fortyTwo: UInt32? = UInt32.fromBigEndianBytes([42]) // ok
+
+    let twenty: UInt? = UInt.fromBigEndianBytes([0, 0, 20]) // ok
+
+    let nilWord: Word8? = Word8.fromBigEndianBytes("[0, 22, 0, 0, 0, 0, 0, 0, 0]") // nil, out of bounds
+
+    let nilWord2: Word8? = Word8.fromBigEndianBytes("[0, 0]") // nil, size (2) exceeds number of bytes needed for Word8 (1)
+
+    let negativeNumber: Int64? = Int64.fromBigEndianBytes([128, 0, 0, 0, 0, 0, 0, 1]) // ok -9223372036854775807
+    ```
+
 ## Fixed-Point Numbers
 
 <Callout type="info">
@@ -309,6 +335,30 @@ All fixed-point types support the following functions:
     let nil3: UFix64? = UFix64.fromString(smolString) // nil, unsigned types don't allow a sign prefix
 
     let smolFix64: Fix64? = Fix64.fromString(smolString) // ok
+    ```
+
+-
+    ```cadence
+    fun T.fromBigEndianBytes(_ bytes: [UInt8]): T?
+    ```
+    Attempts to parse an integer value from a byte array representation (`[UInt8]`) in big-endian order, returning `nil` if the input bytes are invalid.
+
+    For a given integer `n` of type `T`, `T.fromBigEndianBytes(n.toBigEndianBytes())` is equivalent to wrapping `n` up in an [optional](#optionals).
+
+    The bytes are invalid if:
+      - length of the bytes array exceeds the number of bytes needed for the target type
+      - they don't fit in the target type
+
+    Examples:
+
+    ```cadence
+    let fortyTwo: UFix64? = UFix64.fromBigEndianBytes([0, 0, 0, 0, 250, 86, 234, 0]) // ok, 42.0
+
+    let nilWord: UFix64? = UFix64.fromBigEndianBytes("[100, 22, 0, 0, 0, 0, 0, 0, 0]") // nil, out of bounds
+
+    let nilWord2: Fix64? = Fix64.fromBigEndianBytes("[0, 22, 0, 0, 0, 0, 0, 0, 0]") // // nil, size (9) exceeds number of bytes needed for Fix64 (8)
+
+    let negativeNumber: Fix64? = Fix64.fromBigEndianBytes([255, 255, 255, 255, 250, 10, 31, 0]) // ok, -1
     ```
 
 ## Minimum and maximum values
