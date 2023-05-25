@@ -1,13 +1,18 @@
-./bootstrap.sh
+# ./scripts/bootstrap.sh
 
-grep -r --include='*.md' --include='*.mdx' "developers.flow" ./ > links.txt 
-grep -r --include='*.md' --include='*.mdx' "developers.onflow" ./ >> links.txt
-grep -r --include='*.md' --include='*.mdx' "docs.flow" ./ >> links.txt
-grep -r --include='*.md' --include='*.mdx' "docs.onflow" ./ >> links.txt
+link_file="links.txt"
+s404_file="404.txt"
 
-# regex to remove non-url content (https://[0-9a-z.x/x\-]+).+
-# HTTP/2 [23]0[0-9] (\n.+){1,20}
+# grep -r --include='*.md' --include='*.mdx' "developers.flow" ./ > "$link_file" 
+# grep -r --include='*.md' --include='*.mdx' "developers.onflow" ./ >> "$link_file"
+# grep -r --include='*.md' --include='*.mdx' "docs.flow" ./ >> "$link_file"
+# grep -r --include='*.md' --include='*.mdx' "docs.onflow" ./ >> "$link_file"
 
-while IFS= read -r line; do
-  echo $line && curl -L --max-redirs 5 -I $line
-done < links.txt > 404.txt
+touch "$s404_file"
+
+while IFS= read -r url; do
+    response=$(curl -s -o /dev/null -w "%{http_code}" -L "$url")
+    if [[ $response -eq 404 ]]; then
+        echo $url >> "$s404_file"
+    fi
+done < "$link_file"
