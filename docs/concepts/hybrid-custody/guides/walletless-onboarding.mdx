@@ -63,7 +63,7 @@ out of the app controlled account.
 
 Hybrid custody is enabled on Flow through Account Linking & Delegation. With Account Linking & Delegation, your app
 establishes a parent-child relationship by allowing the app custody account (child) to opt into being accessed by the
-self-custody account (parent). Read [Account Linking & Delegation](./linking-accounts.md) for more details on how hybrid
+self-custody account (parent). Read [Account Linking & Delegation](./linking-accounts.mdx) for more details on how hybrid
 custody is established on Flow.
 
 ## Design Considerations
@@ -92,8 +92,8 @@ approach for secure storage and management of the keys for each account.
 #### Example account creation transaction
 
 ```cadence walletless_onboarding.cdc
-import FlowToken from "../../contracts/utility/FlowToken.cdc"
-import FungibleToken from "../../contracts/utility/FungibleToken.cdc"
+import "FlowToken"
+import "FungibleToken"
 
 /// This transaction creates an account, funding creation via the signer and
 /// adding the provided public key. You'll notice this transaction is pretty
@@ -190,7 +190,7 @@ creating a product, but a platform upon which other developers can build.
 
 </Callout>
 
-Read [Account Linking & Delegation](./linking-accounts.md) for more details on how hybrid custody is established on
+Read [Account Linking & Delegation](./linking-accounts.mdx) for more details on how hybrid custody is established on
 Flow.
 
 ### **General Considerations**
