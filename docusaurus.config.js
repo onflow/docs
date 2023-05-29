@@ -163,6 +163,11 @@ const config = {
       /** @type {import('@docusaurus/preset-classic').Options} */
       ({
         docs: {
+          versions: {
+            stable: {
+              label: 'Current',
+            },
+          },
           beforeDefaultRemarkPlugins: [
             [
               remarkCodeHike,
