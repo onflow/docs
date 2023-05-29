@@ -439,4 +439,5 @@ export const redirects = {
   "/flow/dapp-development/fungible-tokens": "/flow/fungible-tokens",
   "/core-contracts/epoch-contract-reference":
     "/flow/core-contracts/epoch-contract-reference",
+  "/cadence/msg-sender": "/cadence/solidity-to-cadence#msgsender-considered-harmful",
 } as Record<string, string>
