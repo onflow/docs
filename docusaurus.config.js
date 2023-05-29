@@ -163,6 +163,11 @@ const config = {
       /** @type {import('@docusaurus/preset-classic').Options} */
       ({
         docs: {
+          versions: {
+            stable: {
+              label: 'Current',
+            },
+          },
           beforeDefaultRemarkPlugins: [
             [
               remarkCodeHike,
@@ -267,6 +272,13 @@ const config = {
             to: 'community-resources/Introduction',
             position: 'left',
             label: 'Resources',
+          },
+          // Remove after cadence is updated to a stable version
+          // https://github.com/onflow/docs/issues/105
+          {
+            type: 'docsVersionDropdown',
+            position: 'right',
+            dropdownActiveClassDisabled: true,
           },
           {
             href: 'https://github.com/onflow',

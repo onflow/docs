@@ -30,3 +30,11 @@ docs/concepts/token-standards/flow-ft
 !docs/concepts/token-standards/flow-ft/index.md
 docs/concepts/token-standards/flow-nft
 !docs/concepts/token-standards/flow-nft/index.md
+
+# Remove after cadence is updated to a stable version
+# https://github.com/onflow/docs/issues/105
+versioned_docs/version-stable/community-resources
+versioned_docs/version-stable/concepts
+versioned_docs/version-stable/references
+versioned_docs/version-stable/tooling
+versioned_docs/version-stable/tutorials
