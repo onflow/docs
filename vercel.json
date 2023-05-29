@@ -11,6 +11,14 @@
       "destination": "/concepts/start-here"
     },
     {
+      "source": "/cadence/msg-sender",
+      "destination": "/cadence/solidity-to-cadence#msgsender-considered-harmful"
+    },
+    {
+      "source": "/concepts/core-contracts/nft-standard",
+      "destination": "/concepts/core-contracts"
+    },
+    {
       "source": "/flow/core-contracts/:path*",
       "destination": "/concepts/core-contracts/:path*"
     },
@@ -287,6 +295,10 @@
       "destination": "/cadence/tutorial/resources-compose"
     },
     {
+      "source": "/tooling/fcl-js/tutorials/:path*",
+      "destination": "/tutorials/:path*"
+    },
+    {
       "source": "/fcl/:path*",
       "destination": "/tooling/fcl-js/:path*"
     },
@@ -377,6 +389,18 @@
     {
       "source": "/docs/getting-started-1",
       "destination": "/getting-started"
+    },
+    {
+      "source": "/docs/setting-up-a-node",
+      "destination": "/concepts/nodes/node-operation" 
+    },
+    {
+      "source": "/staking/:path*",
+      "destination": "/concepts/staking/:path*"
+    },
+    {
+      "source": "/status",
+      "destination": "https://status.onflow.org/"
     }
   ]
 }
