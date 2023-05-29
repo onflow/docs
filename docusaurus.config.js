@@ -268,6 +268,13 @@ const config = {
             position: 'left',
             label: 'Resources',
           },
+          // Remove after cadence is updated to a stable version
+          // https://github.com/onflow/docs/issues/105
+          {
+            type: 'docsVersionDropdown',
+            position: 'right',
+            dropdownActiveClassDisabled: true,
+          },
           {
             href: 'https://github.com/onflow',
             html: '<img src="" alt="GitHub" id="navbar-github" class="box-content h-32 w-32"/><span class="p-2 desktop:hidden">Github</span>',
