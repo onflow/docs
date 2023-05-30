@@ -52,7 +52,7 @@ const data = {
 const Index = (): JSX.Element => {
   const { siteConfig } = useDocusaurusContext();
   return (
-    <Layout title={`Hello from ${siteConfig.title}`}>
+    <Layout title={siteConfig.title}>
       <main>
         <HomePage
           contentNavigationListItems={data.contentNavigationListItems}

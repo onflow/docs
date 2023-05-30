@@ -127,8 +127,8 @@ const editUrl = ({ docPath }) => {
 
 /** @type {import('@docusaurus/types').Config} */
 const config = {
-  title: 'Flow docs',
-  tagline: 'Dinosaurs are cool',
+  title: 'Flow Developer Portal',
+  tagline: '',
   favicon: 'favicon.ico',
 
   // Set the production url of your site here
