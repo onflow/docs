@@ -401,6 +401,138 @@
     {
       "source": "/status",
       "destination": "https://status.onflow.org/"
+    },
+    {
+      "source": "/tooling/flow/cli/account-add-contract",
+      "destination": "/tooling/flow/cli/accounts/account-add-contract"
+    },
+    {
+      "source": "/tooling/flow/cli/account-remove-contract",
+      "destination": "/tooling/flow/cli/accounts/account-remove-contract"
+    },
+    {
+      "source": "/tooling/flow/cli/account-staking-info",
+      "destination": "/tooling/flow/cli/accounts/account-staking-info"
+    },
+    {
+      "source": "/tooling/flow/cli/account-update-contract",
+      "destination": "/tooling/flow/cli/accounts/account-update-contract"
+    },
+    {
+      "source": "/tooling/flow/cli/build-transactions",
+      "destination": "/tooling/flow/cli/transactions/build-transactions"
+    },
+    {
+      "source": "/tooling/flow/cli/complex-transactions",
+      "destination": "/tooling/flow/cli/transactions/complex-transactions"
+    },
+    {
+      "source": "/tooling/flow/cli/configuration",
+      "destination": "/tooling/flow/cli/flow.json/configuration"
+    },
+    {
+      "source": "/tooling/flow/cli/create-accounts",
+      "destination": "/tooling/flow/cli/accounts/create-accounts"
+    },
+    {
+      "source": "/tooling/flow/cli/decode-keys",
+      "destination": "/tooling/flow/cli/keys/decode-keys"
+    },
+    {
+      "source": "/tooling/flow/cli/decode-transactions",
+      "destination": "/tooling/flow/cli/transactions/decode-transactions"
+    },
+    {
+      "source": "/tooling/flow/cli/deploy-project-contracts",
+      "destination": "/tooling/flow/cli/deployment/deploy-project-contracts"
+    },
+    {
+      "source": "/tooling/flow/cli/derive-keys",
+      "destination": "/tooling/flow/cli/keys/derive-keys"
+    },
+    {
+      "source": "/tooling/flow/cli/emulator-snapshot",
+      "destination": "/tooling/flow/cli/deployments/emulator-snapshot"
+    },
+    {
+      "source": "/tooling/flow/cli/generate-keys",
+      "destination": "/tooling/flow/cli/keys/generate-keys"
+    },
+    {
+      "source": "/tooling/flow/cli/get-accounts",
+      "destination": "/tooling/flow/cli/accounts/get-accounts"
+    },
+    {
+      "source": "/tooling/flow/cli/get-blocks",
+      "destination": "/tooling/flow/cli/get-flow-data/get-blocks"
+    },
+    {
+      "source": "/tooling/flow/cli/get-collections",
+      "destination": "/tooling/flow/cli/get-flow-data/get-collections"
+    },
+    {
+      "source": "/tooling/flow/cli/get-events",
+      "destination": "/tooling/flow/cli/get-flow-data/get-events"
+    },
+    {
+      "source": "/tooling/flow/cli/get-status",
+      "destination": "/tooling/flow/cli/get-flow-data/get-status"
+    },
+    {
+      "source": "/tooling/flow/cli/get-transactions",
+      "destination": "/tooling/flow/cli/transactions/get-transactions"
+    },
+    {
+      "source": "/tooling/flow/cli/initialize-configuration",
+      "destination": "/tooling/flow/cli/flow.json/initialize-configuration"
+    },
+    {
+      "source": "/tooling/flow/cli/manage-configuration",
+      "destination": "/tooling/flow/cli/flow.json/manage-configuration"
+    },
+    {
+      "source": "/tooling/flow/cli/project-app",
+      "destination": "/tooling/flow/cli/utils/project-app"
+    },
+    {
+      "source": "/tooling/flow/cli/project-contracts",
+      "destination": "/tooling/flow/cli/deployment/project-contracts"
+    },
+    {
+      "source": "/tooling/flow/cli/security",
+      "destination": "/tooling/flow/cli/flow.json/security"
+    },
+    {
+      "source": "/tooling/flow/cli/send-signed-transactions",
+      "destination": "/tooling/flow/cli/transactions/send-signed-transactions"
+    },
+    {
+      "source": "/tooling/flow/cli/send-transactions",
+      "destination": "/tooling/flow/cli/transactions/send-transactions"
+    },
+    {
+      "source": "/tooling/flow/cli/sign-transaction",
+      "destination": "/tooling/flow/cli/transactions/sign-transaction"
+    },
+    {
+      "source": "/tooling/flow/cli/signature-generate",
+      "destination": "/tooling/flow/cli/utils/signature-generate"
+    },
+    {
+      "source": "/tooling/flow/cli/signature-verify",
+      "destination": "/tooling/flow/cli/utils/signature-verify"
+    },
+    {
+      "source": "/tooling/flow/cli/snapshot-save",
+      "destination": "/tooling/flow/cli/utils/snapshot-save"
+    },
+    {
+      "source": "/tooling/flow/cli/start-emulator",
+      "destination": "/tooling/flow/cli/deployments/start-emulator"
+    },
+    {
+      "source": "/tooling/flow/cli/tools",
+      "destination": "/tooling/flow/cli/utils/tools"
     }
   ]
 }
