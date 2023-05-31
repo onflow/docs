@@ -532,6 +532,7 @@ resource interface FungibleToken {
         pub balance: Int
     }
 }
+
 // Declare a resource named `ExampleToken` that implements the `FungibleToken` interface.
 //
 // The nested type `Vault` must be provided to conform to the interface.
@@ -557,6 +558,7 @@ available to the inheriting interface.
 pub resource interface Receiver {
     pub fun deposit(_ something: @AnyResource)
 }
+
 // `Vault` interface inherits from `Receiver` interface.
 pub resource interface Vault: Receiver {
     pub fun withdraw(_ amount: Int): @Vault
@@ -589,6 +591,7 @@ If two fields with identical names have identical types, then it will be valid.
 pub resource interface Receiver {
     pub var id: UInt64
 }
+
 pub resource interface Vault: Receiver {
     // `id` field has the same type as the `Receiver.id`. Hence this is valid.
     pub var id: UInt64
@@ -601,6 +604,7 @@ Otherwise, interface conformance is not valid.
 pub resource interface Receiver {
     pub var id: Int
 }
+
 pub resource interface Vault: Receiver {
     // `id` field has a different type than the `Receiver.id`. Hence this is invalid.
     pub var id: UInt64
@@ -615,6 +619,7 @@ If two functions with identical names also have identical signatures, then it wi
 pub resource interface Receiver {
     pub fun deposit(_ something: @AnyResource)
 }
+
 pub resource interface Vault: Receiver {
     // `deposit` function has the same signature as the `Receiver.deposit`.
     // Also none of them have any default implementations.
@@ -629,6 +634,7 @@ If the signatures of the two functions are different, then the interface conform
 pub resource interface Receiver {
     pub fun deposit(_ something: @AnyResource)
 }
+
 pub resource interface Vault: Receiver {
     // Error: `deposit` function has a different signature compared to the `Receiver.deposit`.
     // So these two cannot co-exist.
@@ -649,6 +655,7 @@ pub resource interface Receiver {
         pre{ self.balance > 100 }
     }
 }
+
 pub resource interface Vault: Receiver {
     // `deposit` function has the same signature as the `Receiver.deposit`.
     // Having pre/post condition is valid.
@@ -667,6 +674,7 @@ An interface can provide a default implementation to an inherited function.
 pub resource interface Receiver {
     pub fun log(_ message: String)
 }
+
 pub resource interface Vault: Receiver {
     // Valid: Provides the implementation for `Receiver.log` method.
     pub fun log(_ message: String) {
@@ -683,6 +691,7 @@ pub resource interface Receiver {
         log(message.append("from Receiver"))
     }
 }
+
 pub resource interface Vault: Receiver {
     // Invalid: Cannot override the `Receiver.log` method.
     pub fun log(_ message: String) {
@@ -699,11 +708,13 @@ pub resource interface Receiver {
         log(message.append("from Receiver"))
     }
 }
+
 pub resource interface Provider {
     pub fun log(_ message: String) {
         log(message.append("from Provider"))
     }
 }
+
 // Invalid: Two default functions from two interfaces.
 pub resource interface Vault: Receiver, Provider {}
 ```
@@ -717,8 +728,11 @@ pub resource interface Logger {
         log(message.append("from Logger"))
     }
 }
+
 pub resource interface Receiver: Logger {}
+
 pub resource interface Provider: Logger {}
+
 // Valid: `Logger.log()` default function is visible to the `Vault` interface
 // via both `Receiver` and `Provider`.
 pub resource interface Vault: Receiver, Provider {}
@@ -739,11 +753,13 @@ pub resource interface Receiver {
         log(message.append("from Receiver"))
     }
 }
+
 pub resource interface Provider {
     pub fun log(_ message: String) {
         pre{ message != "" }
     }
 }
+
 // Valid: Both the default function and the condition would be available.
 pub resource interface Vault: Receiver, Provider {}
 ```
@@ -762,9 +778,11 @@ Inherited interfaces can override type definitions and event definitions.
 pub contract interface Token {
     pub struct Foo {}
 }
+
 pub contract interface NonFungibleToken: Token {
     pub struct Foo {}
 }
+
 pub contract MyToken: NonFungibleToken {
     pub fun test() {
         let foo: Foo  // This will refer to the `NonFungibleToken.Foo`
@@ -781,9 +799,11 @@ However, it is not allowed to have two or more inherited type/events definitions
 pub contract interface Token {
     pub struct Foo {}
 }
+
 pub contract interface Collectible {
     pub struct Foo {}
 }
+
 // Invalid: Two type definitions with the same name from two interfaces.
 pub contract NonFungibleToken: Token, Collectible {
 }
@@ -795,8 +815,11 @@ via different inheritance paths.
 pub contract interface Logger {
     pub struct Foo {}
 }
+
 pub contract interface Token: Logger {}
+
 pub contract interface Collectible: Logger {}
+
 // Valid: `Logger.Foo` struct is visible to the `NonFungibleToken` interface via both `Token` and `Collectible`.
 pub contract interface NonFungibleToken: Token, Collectible {}
 ```
@@ -812,10 +835,13 @@ then the code becomes invalid, as there are multiple implementations present now
 pub contract interface Logger {
     pub struct Foo {}
 }
+
 pub contract interface Token: Logger {
     pub struct Foo {}
 }
+
 pub contract interface Collectible: Logger {}
+
 // Invalid: The default implementation of the `Foo` struct by the `Logger`
 // interface is visible to the `NonFungibleToken` via the `Collectible` interface.
 // Another implementation of `Foo` struct is visible to the `NonFungibleToken` via the `Token` interface.
@@ -848,21 +874,25 @@ struct interface A: B, C {
         pre { print("A") }
     }
 }
+
 struct interface B: D, E {
     pub fun test() {
         pre { print("B") }
     }
 }
+
 struct interface C: E {
     pub fun test() {
         pre { print("C") }
     }
 }
+
 struct interface D {
     pub fun test() {
         pre { print("D") }
     }
 }
+
 struct interface E {
     pub fun test() {
         pre { print("E") }
