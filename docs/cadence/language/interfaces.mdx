@@ -549,9 +549,9 @@ resource ExampleToken: FungibleToken {
 
 ## Interface inheritance
 
-An interface can inherit (conform to) other interfaces of the same kind.
-For example, A resource interface can inherit from another resource interface, but cannot inherit from a struct interface.
-When an interface inherits from another, all the fields, functions, and types of the parent interface would be implicitly
+An interface can inherit from (conform to) other interfaces of the same kind.
+For example, a resource interface can inherit from another resource interface, but cannot inherit from a struct interface.
+When an interface inherits from another, all the fields, functions, and types of the parent interface are implicitly
 available to the inheriting interface.
 
 ```cadence
@@ -565,7 +565,7 @@ pub resource interface Vault: Receiver {
 }
 ```
 
-In the above example, `Vault` inherits `Receiver`. Anyone implementing the `Vault` interface would also have to
+In the example above, `Vault` inherits `Receiver`. Anyone implementing the `Vault` interface would also have to
 implement the `Receiver` interface.
 
 ```cadence
@@ -613,7 +613,7 @@ pub resource interface Vault: Receiver {
 
 #### Functions
 
-If two functions with identical names also have identical signatures, then it will be valid.
+If two functions with identical names also have identical signatures, that is valid.
 
 ```cadence
 pub resource interface Receiver {
@@ -645,7 +645,7 @@ pub resource interface Vault: Receiver {
 #### Functions with conditions
 
 If the two functions with identical names and signatures have pre/post conditions, then it will still be valid.
-However, the pre/post conditions are linearized (refer [linearizing conditions section](#linearizing-conditions))
+However, the pre/post conditions are linearized (refer to the [linearizing conditions section](#linearizing-conditions))
 to determine the order of the execution of the conditions.
 Given the pre/post conditions are `view` only, the order of execution would not have an impact on the conditions.
 
@@ -738,9 +738,10 @@ pub resource interface Provider: Logger {}
 pub resource interface Vault: Receiver, Provider {}
 ```
 
-In the above example, `Logger.log()` default function is visible to the `Vault` interface via both `Receiver`
-and `Provider`. Even though it is available from two different interfaces, they are both referring to the same
-default implementation. Therefore, the above code is valid.
+In the above example, `Logger.log()` default function is visible to the `Vault` interface via both `Receiver` and `Provider`. 
+Even though it is available from two different interfaces, they are both referring to the same
+default implementation. 
+Therefore, the above code is valid.
 
 #### Conditions with Default functions
 
@@ -825,8 +826,10 @@ pub contract interface NonFungibleToken: Token, Collectible {}
 ```
 
 In the above example, `Logger.Foo` type definition is visible to the `NonFungibleToken` interface via both `Token`
-and `Collectible`. Even though it is available from two different interfaces, they are both referring to the same
-type definition. Therefore, the above code is valid.
+and `Collectible`. 
+Even though it is available from two different interfaces, they are both referring to the same
+type definition. 
+Therefore, the above code is valid.
 
 However, if at least one of the interfaces in the middle of the chain also overrides the type definition `Foo`,
 then the code becomes invalid, as there are multiple implementations present now, which leads to ambiguity.
@@ -942,7 +945,7 @@ Foo
 
 Similarly, for post-conditions, the same linearization of interfaces would be used, and the post-conditions are executed
 in the reverse order.
-i.e: Replacing the `pre` conditions in the above example with `post` conditions with the exact same content would
+For example, replacing the `pre` conditions in the above example with `post` conditions with the exact same content would
 result in an output similar to:
 
 ```
