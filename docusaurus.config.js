@@ -477,7 +477,7 @@ const config = {
         theme: lightCodeTheme,
         darkTheme: darkCodeTheme,
       },
-      algolia: {
+      algolia: process.env.ALGOLIA_APP_ID && {
         // The application ID provided by Algolia
         appId: process.env.ALGOLIA_APP_ID,
 
