@@ -32,7 +32,7 @@ export const landingHeaderItems: LandingHeaderProps = {
   a Flow partner for open source educational content.`,
   discordUrl: externalLinks.discord,
   githubUrl: externalLinks.github,
-  imageSrc: 'https://academy.ecdao.org/EA_Iso.svg',
+  imageSrc: 'https://academy.ecdao.org/ea-logo.png',
   title: 'Getting Started',
 };
 

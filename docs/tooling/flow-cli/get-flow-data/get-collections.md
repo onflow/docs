@@ -1,63 +1,43 @@
 ---
-title: Execute a Script with the Flow CLI
-sidebar_title: Execute a Script
-description: How to execute a Cadence script on Flow from the command line
-sidebar_position: 6
+title: Get Collection with the Flow CLI
+sidebar_title: Get Collection
+description: How to get a collection from the command line
+sidebar_position: 3
 ---
 
-The Flow CLI provides a command to execute a Cadence script on
-the Flow execution state with any Flow Access API.
+The Flow CLI provides a command to fetch any collection from the Flow network.
 
 ```shell
-flow scripts execute <filename> [<argument> <argument>...] [flags]
+flow collections get <collection_id>
 ```
 
 ## Example Usage
 
 ```shell
-# Execute a script on Flow Testnet
-> flow scripts execute script.cdc "Hello" "World"
-
-"Hello World"
+flow collections get 3e694588e789a72489667a36dd73104dea4579bcd400959d47aedccd7f930eeb \
+--host access.mainnet.nodes.onflow.org:9000
 ```
 
-Script source code:
-```
-pub fun main(greeting: String, who: String): String {
-	return greeting.concat(" ").concat(who)
-}
+### Example response
+
+```shell
+Collection ID 3e694588e789a72489667a36dd73104dea4579bcd400959d47aedccd7f930eeb:
+acc2ae1ff6deb2f4d7663d24af6ab1baf797ec264fd76a745a30792f6882093b
+ae8bfbc85ce994899a3f942072bfd3455823b1f7652106ac102d161c17fcb55c
+70c4d39d34e654173c5c2746e7bb3a6cdf1f5e6963538d62bad2156fc02ea1b2
+2466237b5eafb469c01e2e5f929a05866de459df3bd768cde748e068c81c57bf
+
 ```
 
 ## Arguments
 
-### Filename
+### Collection ID
+- Name: `collection_id`
+- Valid Input: SHA3-256 hash of the collection contents
 
-- Name: `filename`
-- Valid inputs: a path in the current filesystem.
-
-The first argument is a path to a Cadence file containing the 
-script to be executed.
-
-### Arguments
-- Name: `argument`
-- Valid inputs: valid [cadence values](../../cadence/json-cadence-spec.md)
-  matching argument type in script code.
-
-Input arguments values matching corresponding types in the source code and passed in the same order.
-You can pass a `nil` value to optional arguments by executing the flow script like this: `flow scripts execute script.cdc nil`.
-
+## Arguments
 
 ## Flags
-
-### Arguments JSON
-
-- Flag: `--args-json`
-- Valid inputs: arguments in JSON-Cadence form.
-- Example: `flow scripts execute script.cdc '[{"type": "String", "value": "Hello World"}]'`
-
-Arguments passed to the Cadence script in the Cadence JSON format.
-Cadence JSON format contains `type` and `value` keys and is 
-[documented here](../../cadence/json-cadence-spec.md).
 
 ### Host
 
