@@ -1,5 +1,5 @@
 ---
-title: Get Started with Account Linking
+title: Get Started with Hybrid Custody
 ---
 
 There are two sides to Hybrid Custody support - delegation and usage. 
@@ -12,7 +12,7 @@ From the usage perspective, apps would want to get information about a user's li
 assets, enable account & asset management, and even facilitate cross account interactions - think of this from the
 perspective of a wallet or NFT marketplace.
 
-<Callout type="info">
+<Callout type="warning">
 
 Note that the documentation on Hybrid Custody covers the current state and will likely differ from the final
 implementation. Builders should be aware that breaking changes may follow before reaching a final consensus on
@@ -23,6 +23,21 @@ implementation. Interested in shaping the conversation? [Join in!](https://githu
 In either case, you'll want to do the following to get started implementing Hybrid Custody in your application:
 
 1. [Install Flow CLI](https://developers.flow.com/tooling/flow-cli/install)
-1. Copy the contents of [restricted-child-account](https://github.com/flowtyio/restricted-child-account) into your
-   project (CLI scaffold to follow shortly!)
-1. Start building!
+1. Run the following commands:
+   
+   ```sh
+   flow setup learn-hybrid-custody --scaffold
+   ```
+
+   You'll be asked to select the [scaffold](https://github.com/onflow/hybrid-custody-scaffold) number for this scaffold,
+   enter `4` for Hybrid Custody Project
+
+   ```sh
+   ✔ Enter the scaffold number: 4
+   ```
+
+1. Change to your project directory and start building!
+
+   ```sh
+   cd learn-hybrid-custody
+   ```
