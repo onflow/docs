@@ -55,7 +55,7 @@ transaction {
 ```
 
 ### Single payer and proposer, multiple authorizers
-A transaction that declares same payer and proposer but multiple authorizers each required to sign the transaction. Please note that the order of signing is important, and [the payer must sign last](../../concepts/start-here/transaction-signing.md#payer-signs-last).
+A transaction that declares same payer and proposer but multiple authorizers each required to sign the transaction. Please note that the order of signing is important, and [the payer must sign last](../../../concepts/start-here/transaction-signing.md#payer-signs-last).
 
 Build the transaction:
 ```shell
@@ -94,7 +94,7 @@ transaction {
 
 ### Different payer, proposer and authorizer
 A transaction that declares different payer, proposer and authorizer each signing separately. 
-Please note that the order of signing is important, and [the payer must sign last](../../concepts/start-here/transaction-signing.md#payer-signs-last).  
+Please note that the order of signing is important, and [the payer must sign last](../../../concepts/start-here/transaction-signing.md#payer-signs-last).  
 
 Build the transaction:
 ```shell

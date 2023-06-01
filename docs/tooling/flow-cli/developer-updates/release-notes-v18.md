@@ -13,7 +13,7 @@ For example:
 
 Example script: `get_supply.cdc`
 ```
-import Kibble from "../../contracts/Kibble.cdc"
+import Kibble from "../../../contracts/Kibble.cdc"
 
 pub fun main(): UFix64 {
     let supply = Kibble.totalSupply

@@ -11,8 +11,8 @@ Flow configuration (`flow.json`) file will contain the following properties:
 
 - A `networks` list pre-populated with the Flow emulator, testnet and mainnet connection configuration.
 - An `accounts` list pre-populated with the Flow Emulator service account.
-- A `deployments` empty object where all [deployment targets](./project-contracts.md#define-contract-deployment-targets) can be defined. 
-- A `contracts` empty object where you [define contracts](./project-contracts.md#add-a-contract) you wish to deploy.
+- A `deployments` empty object where all [deployment targets](../deployment/project-contracts.md#define-contract-deployment-targets) can be defined. 
+- A `contracts` empty object where you [define contracts](../deployment/project-contracts.md#add-a-contract) you wish to deploy.
 
 ## Example Project Configuration
 
@@ -121,7 +121,7 @@ The advanced format allows us to specify aliases for each network.
 Using advanced format we can define `aliases`. Aliases define an address where the contract is already deployed for that specific network. 
 In the example scenario below the contract `FungibleToken` would be imported from the address `9a0766d93b6608b7` when deploying to testnet network 
 and address `ee82856bf20e2aa6` when deploying to the Flow emulator. 
-We can specify aliases for each network we have defined. When deploying to testnet it is always a good idea to specify aliases for all the [common contracts](../../concepts/core-contracts/index.md) that have already been deployed to the testnet. 
+We can specify aliases for each network we have defined. When deploying to testnet it is always a good idea to specify aliases for all the [common contracts](../../../concepts/core-contracts/index.md) that have already been deployed to the testnet. 
 
 ⚠️ If we use an alias for the contract we should not specify it in the `deployment` section for that network. 
 
