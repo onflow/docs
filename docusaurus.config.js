@@ -67,6 +67,17 @@ const fetchSporkData = async () => {
   return data;
 };
 
+const getUrl = () => {
+  if (process.env.VERCEL_ENV === 'production') {
+    return 'https://developers.flow.com';
+  }
+  if (process.env.VERCEL_URL) {
+    return `https://${process.env.VERCEL_URL}`;
+  }
+
+  return 'https://onflow.github.io';
+};
+
 /**
  * @typedef {Object} SourceDestination
  * @property {string} source - Source
@@ -132,9 +143,7 @@ const config = {
   favicon: 'favicon.ico',
 
   // Set the production url of your site here
-  url: process.env.VERCEL_URL
-    ? `https://${process.env.VERCEL_URL}`
-    : 'https://onflow.github.io',
+  url: getUrl(),
   // Set the /<baseUrl>/ pathname under which your site is served
   // For GitHub pages deployment, it is often '/<projectName>/'
   baseUrl: process.env.BASE_URL || '/docs/',
