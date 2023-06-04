@@ -1177,7 +1177,7 @@ On the Tools tab of the Flow Control window, set up the Manage Contracts section
 
 Where;
 - Contract Name is the name of the contract on the blockchain. This should match the text replacement configured for CONTRACT_NAME
-- Contract is the game-contract.cdc asset included with the project sample in the Assets\\Samples\\Flow SDK\\<version>\\Flow Words Tutorial Assets\\Resources directory.
+- Contract is the game-contract.cdc asset included with the project sample in the Assets\\Samples\\Flow SDK\\&lt;version&gt;\\Flow Words Tutorial Assets\\Resources directory.
 - Account is the new Deploy Account that you created in the previous step.
 
 Once you have the Manage Contracts section filled in as per the example, click Deploy Contract.

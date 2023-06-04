@@ -142,7 +142,6 @@ public IEnumerator DeployContracts()
     authenticateButton.interactable = true;
     statusText.text = "";
 }
-}
 ```
 
 We start by waiting one second.  This ensures that the emulator has finished initializing and
@@ -275,7 +274,7 @@ up.
 
 First we construct a list of arguments we are going to pass to the transaction in MintAndSave.cdc.  This
 list consists of a single Dictionary containing the "Text" and "URL" keys and String values from the Mint
-panel.  We use Cadence.Convert to convert from a Dictionary<string, string> into a Cadence {String:String}
+panel.  We use Cadence.Convert to convert from a `Dictionary<string, string>` into a Cadence `{String:String}`
 for the argument.
 
 The MintAndSave.cdc file contains the transaction that will be executed.

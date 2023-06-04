@@ -31,8 +31,8 @@ String|String
 Bool|Boolean
 Path|CadencePathValue
 Capability|CadenceCapabilityValue
-Array ([T])|List&lt;T&gt;
-Dictionary ({T:R})|Dictionary&lt;T,R&gt;
+`Array ([T])`|List&lt;T&gt;
+`Dictionary ({T:R})`|Dictionary&lt;T,R&gt;
 Struct|Class or Struct
 
 
@@ -141,7 +141,7 @@ annotated, it will be skipped when converting from C# to Cadence.
 You can also use the Name parameter to account for differences in field naming.  In the above example we mapped the Cadence "i32" field to the C# "i" field.  The Name property is optional and
 it will use the field name if no Name property is given.
 
-***Note:  The CadenceType annotation on C# classes/structs ([Cadence(CadenceType="A.XXX.CCC.TestStruct")] in the above example) is ignored when converting from Cadence to C#.
+***Note:  The CadenceType annotation on C# classes/structs (`[Cadence(CadenceType="A.XXX.CCC.TestStruct")]` in the above example) is ignored when converting from Cadence to C#.
 Convert.FromCadence will populate all fields that have matching names/types regardless of the type of Cadence struct that is being converted.  This allows you to convert a Cadence struct defined
 int a Cadence script into C# even if you do not know what the Cadence type is.***
 
@@ -214,7 +214,7 @@ CadenceBase cb = Convert.ToCadence(ts, "Struct");
 ## Optionals
 
 Cadence optionals are indicated by appending a ?.  For instance the Cadence type Int16? can contain either an Int16 value or nil.  If the C# type is a reference type, no additional work is required.
-For instance a Cadence String? will have the C# equivalent type of String.  This is because the C# String is a reference type, which can natively be set to null.  On the other hand, the Cadence Int16? requires the C# type Int16? which wraps type the value type Int16 in a Nullable<>.
+For instance a Cadence String? will have the C# equivalent type of String.  This is because the C# String is a reference type, which can natively be set to null.  On the other hand, the Cadence Int16? requires the C# type Int16? which wraps type the value type Int16 in a `Nullable<>`.
 
 ```csharp
 //c is a Cadence Int16? type
