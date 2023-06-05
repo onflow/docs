@@ -124,8 +124,8 @@ Linking an account is the process of delegating account access via AuthAccount C
 
 Since account delegation is mediated by developer-defined rules, you should make sure to first configure the resources
 that contain those rules. Contracts involved in defining and enforcing this ruleset are
-[`CapabilityFilter`](https://github.com/Flowtyio/restricted-child-account/blob/main/contracts/CapabilityFilter.cdc) and
-[`CapabilityFactory`](https://github.com/Flowtyio/restricted-child-account/blob/main/contracts/CapabilityFactory.cdc).
+[`CapabilityFilter`](https://github.com/onflow/hybrid-custody/blob/main/contracts/CapabilityFilter.cdc) and
+[`CapabilityFactory`](https://github.com/onflow/hybrid-custody/blob/main/contracts/CapabilityFactory.cdc).
 The former enumerates those types that are/aren't accessible from a child account while the latter enables the access of
 those allowable Capabilities such that the returned values can be properly typed - e.g. retrieving a Capability that can
 be cast to `Capability<&NonFungibleToken.Collection>` for example.
