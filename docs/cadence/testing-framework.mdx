@@ -196,7 +196,7 @@ pub struct Blockchain {
         self.backend.commitBlock()
     }
 
-    /// Executes a given transaction and commit the current block.
+    /// Executes a given transaction and commits the current block.
     ///
     pub fun executeTransaction(_ tx: Transaction): TransactionResult {
         self.addTransaction(tx)
@@ -205,7 +205,7 @@ pub struct Blockchain {
         return txResult
     }
 
-    /// Executes a given set of transactions and commit the current block.
+    /// Executes a given set of transactions and commits the current block.
     ///
     pub fun executeTransactions(_ transactions: [Transaction]): [TransactionResult] {
         for tx in transactions {
@@ -222,7 +222,7 @@ pub struct Blockchain {
         return results
     }
 
-    /// Deploys a given contract, and initilizes it with the arguments.
+    /// Deploys a given contract, and initializes it with the arguments.
     ///
     pub fun deployContract(
         name: String,
@@ -284,7 +284,7 @@ An account can be created using the `createAccount` function.
 let acct = blockchain.createAccount()
 ```
 
-The returned account consist of the `address` of the account, and a `publicKey` associated with it.
+The returned account consists of the `address` of the account, and a `publicKey` associated with it.
 
 ```cadence
 /// Account represents info about the account created on the blockchain.
@@ -424,7 +424,7 @@ An `Error` is returned if the contract deployment fails. Otherwise, a `nil` is r
 
 A common pattern in Cadence projects is to define the imports as file locations and specify the addresses
 corresponding to each network in the [Flow CLI configuration file](../tooling/flow-cli/configuration#contracts).
-When writing tests for a such project, it may also require to specify the addresses to be used during the tests as well.
+When writing tests for such a project, it may also require to specify the addresses to be used during the tests as well.
 However, during tests, since accounts are created dynamically and the addresses are also generated dynamically,
 specifying the addresses statically in a configuration file is not an option.
 
@@ -455,7 +455,7 @@ The configurations can be specified during the test setup as a best-practice.
 
 e.g: Assume running a script that imports `FooContract` and `BarContract`.
 The import locations for the two contracts can be specified using the two placeholders `"FooContract"` and
-`"BarContract"`. These placeholders can be any unique strings.
+`"BarContract"`. These placeholders can be any unique string.
 
 ```cadence
 import FooContract from "FooContract"
@@ -535,4 +535,4 @@ let contractCode = Test.readFile("./sample/contracts/FooContract.cdc")
 
 This [repository](https://github.com/Build-Squad/flow-code-coverage) contains many functional examples
 that demonstrate most of the above features, both for contrived and real-world smart contracts.
-It also contains detailed explanation on using code coverage for Cadence.
+It also contains a detailed explanation on using code coverage for Cadence.
