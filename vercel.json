@@ -431,7 +431,7 @@
       "destination": "/tooling/flow-cli/flow.json/configuration"
     },
     {
-      "source": "/tooling/flow-cli/create-accounts(*.md?$)",
+      "source": "/tooling/flow-cli/create-accounts(.md?$)",
       "destination": "/tooling/flow-cli/accounts/create-accounts"
     },
     {
@@ -483,7 +483,7 @@
       "destination": "/tooling/flow-cli/transactions/get-transactions"
     },
     {
-      "source": "/tooling/flow-cli/initialize-configuration(*.md?$)",
+      "source": "/tooling/flow-cli/initialize-configuration(.md?$)",
       "destination": "/tooling/flow-cli/flow.json/initialize-configuration"
     },
     {
