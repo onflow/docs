@@ -16,7 +16,7 @@ The full Hybrid Custody experience is enabled by three core components:
 - HybridCustody contract - A standard contract enabling users to view and manage their linked accounts
 
 
-<Callout type="info">
+<Callout type="warning">
 
 Note that the documentation on Hybrid Custody covers the current state and will likely differ from the final
 implementation. Builders should be aware that breaking changes may follow before reaching a final consensus on
@@ -30,15 +30,16 @@ implementation. Interested in shaping the conversation? [Join in!](https://githu
    abstract away the complexities of interacting with smart contract powered applications, and focus on creating slick
    user experiences behind familiar Web2 authentication and fiat denominated payments.
 1. Once a user returns to the app with a self-custodial wallet, they can authenticate their wallet-managed account in
-   the app, allowing the app to give the user's main account delegated access to the app managed account.
+   the app, allowing the app to give the user's main account delegated access to the app managed account (albeit with
+   some developer-defined restrictions).
 1. Upon linking, the user's main account - now the "parent" account - adds the app created account - now the "child"
-   account - to a collection of all linked child accounts. At this point, Hybrid Custody is reached
+   account - to a collection of all linked child accounts. At this point, Hybrid Custody is reached!
 
 ### Why Care?
 
-Hybrid Custody grants users full access to their linked child accounts without needing to interface with the child
-account's custodial app, **and** the custodial app can interact with the relevant assets in the child account on behalf
-of the user in a frictionless UX free from transaction prompts.
+Hybrid Custody grants users access to their linked child accounts without needing to interface with the child account's
+custodial app, **and** the custodial app can interact with the relevant assets in the child account on behalf of the
+user in a frictionless UX free from transaction prompts.
 
 > All assets in the app account can now jump the walled garden to play in the rest of the Flow ecosystem.
 

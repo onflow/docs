@@ -71,59 +71,59 @@
       "destination": "/concepts/hybrid-custody/:path*"
     },
     {
-      "source": "/Learn/Concepts",
+      "source": "/learn/Concepts",
       "destination": "/concepts/intro"
     },
     {
-      "source": "/Learn/concepts/accessing-mainnet",
+      "source": "/learn/concepts/accessing-mainnet",
       "destination": "/concepts/flow-networks/accessing-mainnet"
     },
     {
-      "source": "/Learn/concepts/accessing-sandboxnet",
+      "source": "/learn/concepts/accessing-sandboxnet",
       "destination": "/concepts/flow-networks/accessing-sandboxnet"
     },
     {
-      "source": "/Learn/concepts/accessing-testnet",
+      "source": "/learn/concepts/accessing-testnet",
       "destination": "/concepts/flow-networks/accessing-testnet"
     },
     {
-      "source": "/Learn/concepts/accounts-and-keys",
+      "source": "/learn/concepts/accounts-and-keys",
       "destination": "/concepts/start-here/accounts-and-keys"
     },
     {
-      "source": "/Learn/concepts/delegation",
+      "source": "/learn/concepts/delegation",
       "destination": "/concepts/nodes/delegation"
     },
     {
-      "source": "/Learn/concepts/governance",
+      "source": "/learn/concepts/governance",
       "destination": "/concepts/start-here/governance"
     },
     {
-      "source": "/Learn/concepts/networks",
+      "source": "/learn/concepts/networks",
       "destination": "/concepts/flow-networks"
     },
     {
-      "source": "/Learn/concepts/slashing",
+      "source": "/learn/concepts/slashing",
       "destination": "/concepts/nodes/slashing"
     },
     {
-      "source": "/Learn/concepts/storage",
+      "source": "/learn/concepts/storage",
       "destination": "/concepts/start-here/storage"
     },
     {
-      "source": "/Learn/concepts/token-staking",
+      "source": "/learn/concepts/token-staking",
       "destination": "/concepts/nodes/token-staking"
     },
     {
-      "source": "/Learn/concepts/transaction-lifecycle",
+      "source": "/learn/concepts/transaction-lifecycle",
       "destination": "/concepts/start-here/transaction-lifecycle"
     },
     {
-      "source": "/Learn/concepts/transaction-signing",
+      "source": "/learn/concepts/transaction-signing",
       "destination": "/concepts/start-here/transaction-signing"
     },
     {
-      "source": "/Learn/concepts/variable-transaction-fees",
+      "source": "/learn/concepts/variable-transaction-fees",
       "destination": "/concepts/start-here/variable-transaction-fees"
     },
     {
@@ -533,6 +533,10 @@
     {
       "source": "/tooling/flow-cli/tools",
       "destination": "/tooling/flow-cli/utils/tools"
+    },
+    {
+      "source": "/node-operation/:path*",
+      "destination": "/concepts/nodes/node-operation/:path*"
     }
   ]
 }
