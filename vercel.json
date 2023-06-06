@@ -411,7 +411,7 @@
       "destination": "/tooling/flow-cli/accounts/account-remove-contract"
     },
     {
-      "source": "/tooling/flow-cli/account-staking-info",
+      "source": "/tooling/flow-cli/account-staking-info(.*)",
       "destination": "/tooling/flow-cli/accounts/account-staking-info"
     },
     {
