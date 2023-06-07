@@ -7,6 +7,10 @@
       "destination": "/:path*"
     },
     {
+      "source": "/:path+.mdx",
+      "destination": "/:path*"
+    },
+    {
       "source": "/cadence",
       "destination": "/cadence/intro"
     },
