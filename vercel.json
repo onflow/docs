@@ -3,7 +3,7 @@
   "trailingSlash": false,
   "redirects": [
     {
-      "source": "/:path*.mdx?$",
+      "source": "/:path+.mdx?",
       "destination": "/:path*"
     },
     {
