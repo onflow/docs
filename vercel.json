@@ -3,8 +3,8 @@
   "trailingSlash": false,
   "redirects": [
     {
-      "source": ":path*.mdx?$",
-      "destination": ":path*"
+      "source": "/:path*.mdx?$",
+      "destination": "/:path*"
     },
     {
       "source": "/cadence",
