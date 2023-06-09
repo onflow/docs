@@ -12,8 +12,7 @@
     - [Setting Configuration Values](#setting-configuration-values)
     - [Getting Configuration Values](#getting-configuration-values)
     - [Common Configuration Keys](#common-configuration-keys)
-    - [Address replacement in scripts and transactions](#address-replacement-in-scripts-and-transactions)
-    - [Example](#example)
+    - [Address replacement in scripts and transactions](#address-replacement)
 - [Wallet Interactions](#wallet-interactions)
     - [Methods](#methods)
   - [`authenticate`](#authenticate)
@@ -285,47 +284,88 @@ addStuff().then((d) => console.log(d)); // 13 (5 + 7 + 1)
 | `discovery.wallet.method`     | `IFRAME/RPC`, `POP/RPC`, `TAB/RPC`, `HTTP/POST`, or `EXT/RPC`     | Describes which service strategy a wallet should use.                                                                                                                                      |
 | `fcl.limit`                         | `100`                                            | Specifies fallback compute limit if not provided in transaction.  Provided as integer.                                                                                      |
 | `flow.network` **(recommended)**                      | `testnet`                                            | Used in conjunction with stored interactions and provides FCLCryptoContract address for `testnet` and `mainnet`. Possible values: `local`, `canarynet`, `testnet`, `mainnet`.                                                                            |
+## Using Contracts in Scripts and Transactions
 
-### Address replacement in scripts and transactions
+### Address Replacement
 
-Configuration keys that start with `0x` will be used to find-and-replace their values in Cadence scripts and transactions input to FCL. Typically this is used to represent account addresses. Account addresses for the same contract will be different depending on the Flow network you're interacting with (eg. Testnet, Mainnet).
-This allows you to write your script or transaction once and not have to update code when you point your application at a different Flow network.
+Configuration keys that start with `0x` will be replaced in FCL scripts and transactions, this allows you to write your script or transaction Cadence code once and not have to change it when you point your application at a difference instance of the Flow Blockchain.
 
 ```javascript
-import * as fcl from "@onflow/fcl";
+import * as fcl from "@onflow/fcl"
 
-fcl
-  .config()
-  .put("accessNode.api", "https://rest-testnet.onflow.org")
-  .put("0xFlowToken", "0x7e60df042a9c0868");
+fcl.config()
+  .put("0xFungibleToken", "0xf233dcee88fe0abe")
 
-async function myScript() {
-  return fcl.query({
-    cadence: `
-        import FlowToken from 0xFlowToken // will be replaced with 0xf233dcee88fe0abe because of the configuration
+async function myScript () {
+  return fcl.send([
+    fcl.script`
+      import FungibleToken from 0xFungibleToken // will be replaced with 0xf233dcee88fe0abe because of the configuration
 
-        pub fun main(): UFix64 { 
-          return FlowToken.totalSupply  // arbitrary script that can access FlowToken interface
-        }
-      `,
-  });
+      pub fun main() { /* Rest of the script goes here */ }
+    `
+  ]).then(fcl.decode)
+}
+
+async function myTransaction () {
+  return fcl.send([
+    fcl.transaction`
+      import FungibleToken from 0xFungibleToken // will be replaced with 0xf233dcee88fe0abe because of the configuration
+
+      transaction { /* Rest of the transaction goes here */ }
+    `
+  ]).then(fcl.decode)
 }
 ```
 
-### Example
+#### Example
 
 ```javascript
-import * as fcl from "@onflow/fcl";
+import * as fcl from "@onflow/fcl"
 
-fcl
-  .config()
+fcl.config()
   .put("flow.network", "testnet")
   .put("accessNode.api", "https://rest-testnet.onflow.org")
-  .put("discovery.wallet", "https://fcl-discovery.onflow.org/testnet/authn")
+  .put("discovery.wallet", "http://localhost:3000/fcl/authn")
   .put("app.detail.title", "Test Harness")
   .put("app.detail.icon", "https://i.imgur.com/r23Zhvu.png")
-  .put("0xFlowToken", "0x7e60df042a9c0868");
+  .put("service.OpenID.scopes", "email email_verified name zoneinfo")
+  .put("0xFlowToken", "0x7e60df042a9c0868")
 ```
+
+### Using Flow.json
+
+A simpler way to import contracts in scripts and transactions is to use the `config.load` method to ingest your contracts from your `flow.json` file. This keeps the import syntax unified across tools and lets FCL figure out which address to use for what network based on the network provided in config. To use `config.load` you must first import your `flow.json` file and then pass it to `config.load` as a parameter.
+
+```javascript
+import { config } from '@onflow/fcl'
+import flowJSON from '../flow.json'
+
+config({
+  'flow.network': 'testnet',
+  'accessNode.api': 'https://rest-testnet.onflow.org',
+  'discovery.wallet': `https://fcl-discovery.onflow.org/testnet/authn`,
+}).load({ flowJSON })
+```
+
+Let's say your `flow.json` file looks like this:
+
+```
+{
+  "contracts": {
+		"HelloWorld": "cadence/contracts/HelloWorld.cdc"
+	}
+}
+```
+
+Then in your scripts and transactions, all you have to do is:
+
+```
+import "HelloWorld"
+```
+
+FCL will automatically replace the contract name with the address for the network you are using.
+
+> Note: never put private keys in your `flow.json`. You should use the [key/location syntax](../tooling/flow-cli/flow.json/security.md) to separate your keys into a separate git ignored file.
 
 ---
 
