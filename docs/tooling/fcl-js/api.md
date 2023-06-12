@@ -325,7 +325,7 @@ import * as fcl from "@onflow/fcl"
 fcl.config()
   .put("flow.network", "testnet")
   .put("accessNode.api", "https://rest-testnet.onflow.org")
-  .put("discovery.wallet", "http://localhost:3000/fcl/authn")
+  .put("discovery.wallet", "https://fcl-discovery.onflow.org/testnet/authn")
   .put("app.detail.title", "Test Harness")
   .put("app.detail.icon", "https://i.imgur.com/r23Zhvu.png")
   .put("service.OpenID.scopes", "email email_verified name zoneinfo")
