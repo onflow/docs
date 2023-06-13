@@ -69,7 +69,7 @@ func main() {
 
 ### Creating Additional Accounts
 
-It may be necessary to create additional accounts for testing purposes and you can do so using [Flow CLI account create command](../tooling/flow-cli/create-accounts/).
+It may be necessary to create additional accounts for testing purposes and you can do so using [Flow CLI account create command](../tooling/flow-cli/accounts/create-accounts.md).
 
 First you need to initialize the configuration:
 
@@ -93,7 +93,7 @@ Add the account created with the use of faucet above to the `accounts` property 
 ```
 
 After adding account to the configuration you can use that account to fund the creation of more accounts by using
-[CLI account create](../tooling/flow-cli/create-accounts) command.
+[CLI account create](../tooling/flow-cli/accounts/create-accounts.md) command.
 
 ```
 > flow accounts create \
@@ -115,7 +115,7 @@ Contracts Deployed: 0
 
 ### Deploying a Contract
 
-Using the account you created above, you can deploy additional contract accounts using the [Flow CLI deploy command](../tooling/flow-cli/deploy-project-contracts).
+Using the account you created above, you can deploy additional contract accounts using the [Flow CLI deploy command](../tooling/flow-cli/deployment/deploy-project-contracts.md).
 
 Make sure flow project was initialized in the previous step and the `flow.json` is present.
 
@@ -159,7 +159,7 @@ You can now deploy all the contracts by running deploy command:
 flow project deploy
 ```
 
-Please read more about deployment in [the Flow CLI project deployment guide](../tooling/flow-cli/deploy-project-contracts).
+Please read more about deployment in [the Flow CLI project deployment guide](../tooling/flow-cli/deployment/deploy-project-contracts.md).
 
 ### Making Use of Core Contracts
 
