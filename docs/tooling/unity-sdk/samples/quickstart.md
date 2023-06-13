@@ -17,7 +17,7 @@ and you don't want to lock up your game while they are processed.
 ```csharp
 private IEnumerator Start()
 {
-...
+    // Your start code
 }
 ```
 
@@ -30,14 +30,14 @@ int waited = 0;
 
 while (!FlowControl.IsEmulatorRunning && waited < 5)
 {
-waited++;
-yield return new WaitForSeconds(.5f);
+    waited++;
+    yield return new WaitForSeconds(.5f);
 }
 
 if (!FlowControl.IsEmulatorRunning)
 {
-//Stop execution if the emulator is not running by now.
-yield break;
+    //Stop execution if the emulator is not running by now.
+    yield break;
 }
 ```
 
@@ -77,7 +77,7 @@ string to the emulator log.
 Now we execute this script:
 
 ```csharp
-Task<FlowScriptResponse> task = scriptOnlyAccount.ExecuteScript(code, new CadenceString("Test"));
+Task<FlowScriptResponse> task = scriptOnlyAccount.ExecuteScript(code, Convert.ToCadence("Test", "String"));
 ```
 
 FlowControl uses an Account oriented approach.  Everything is done using an Account object.  In this
@@ -118,17 +118,14 @@ if (task.Result.Error != null)
 If there is no error, the script should have returned a Cadence Int value.  We can access it as follows:
 
 ```csharp
-Debug.Log($"Script result: {task.Result.Value.As<CadenceNumber>().Value}");
+Debug.Log($"Script result: {Convert.FromCadence<BigInteger>(task.Result.Value)}");
 ```
 
 This might be a bit confusing.  The Task will have a Result.  The result could contain an error,
 but we checked for that earlier.  If it doesn't contain an error, then it will contain a Value.
 
 That Value will be of type CadenceBase, which is the base type for all Cadence data types.  We
-know that the script returns a number, so we can cast it as a CadenceNumber using
-`As<CadenceNumber>()`.  All Cadence types contain `Value` and `Type` members that are strings.
-In this case, we're interested in the `Value`.  If we wanted to use it as a number, we'd need to
-parse it, but in this case we just want to output it, so leaving it as a string is fine.
+know that the script returns a number, so we can convert it to an appropriate data type using Convert.FromCadence.
 
 ## Creating an SdkAccount
 
@@ -363,12 +360,19 @@ FlowEvent txEvent = transactionTask.Result.Events.Find(x => x.Type.Contains("Tes
 //Show that the transaction finished and display the value of the event that was emitted during execution.
 //The Payload of the returned FlowEvent will be a CadenceComposite.  We want the value associated with the
 //"field" field as a string
-Debug.Log($"Executed transaction.  Event type: {txEvent.Type}.  Event payload: {txEvent.Payload.As<CadenceComposite>().CompositeFieldAs<CadenceString>("field").Value}");
+Debug.Log($"Executed transaction.  Event type: {txEvent.Type}.  Event payload: {Convert.FromCadence<TestEvent>(txEvent.Payload).field}");
 ```
 
 We end up a with a list of Events that were emitted by a transaction in the `Result.Events` object.  We
 use LINQ to find the event we're interested in.  It will contain "TestEvent" in it.
 
-Then we have to get the payload from the event to display.  The payload will always be a `CadenceComposite`,
-which can contain many fields.  We'll get the field named "field" from it, and cast that to a `CadenceString`
-using `CompositeFieldAs<CadenceString>("field")`, and finally get the `Value` of that field to display.
+We need something to convert the Cadence TestEvent into, so we declared a C# class earlier:
+
+```csharp
+public class TestEvent
+{
+    public String field;
+}
+```
+
+Then we have to get the payload from the event to display.  We'll convert it into our TestEvent class and access the ```field``` field.

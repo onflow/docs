@@ -1,3 +1,32 @@
+## Version 2.0.0
+
+- Added new wallet provider Wallet Connect
+- Added iOS as a supported platform
+- Added Cadence Convert feature for simple de/serialization
+- Changed how wallet providers are instantiated (see Breaking Changes)
+
+### Breaking Changes in 2.0.0
+
+Previously, wallet providers (ie DevWallet) were instantiated as follows: 
+
+```csharp
+FlowSDK.RegisterWalletProvider(ScriptableObject.CreateInstance<DevWalletProvider>());
+```
+
+From 2.0.0, this should now be: 
+
+```csharp
+FlowSDK.RegisterWalletProvider(new DevWalletProvider());
+```
+
+## Version 1.0.3
+
+- Add Example NFT sample
+
+## Version 1.0.2
+
+- Fixed an issue where the latest Flow emulator would cause the editor to freeze
+
 ## Version 1.0.1
 
 - Added wallet authentication to contract and account creation tools
