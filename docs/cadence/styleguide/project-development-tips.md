@@ -58,7 +58,7 @@ As with all best practices, teams will choose which applies to them and their wo
 however, we recommend that teams explicitly define a minimum acceptable set of standards
 for themselves along with the mechanisms to ensure they are being observed.
 
-Some teams may also have their own set of development standards that acheive a similar goal
+Some teams may also have their own set of development standards that achieve a similar goal
 to these. These recommendations are not meant to be the only paths to success,
 so if a team disagrees with some of these and wants to do things their own way,
 they are welcome to pursue that. This document just shows some generic suggestions
@@ -73,7 +73,7 @@ can set themselves up for success.
 
 Here are some recommendations for how projects can organize the foundations of their projects.
 
-### Projects should ensure that there is strong technical leadership for ther smart contracts
+### Projects should ensure that there is strong technical leadership for their smart contracts
 
 Developing a dapp requires a clear vision for the role of the smart contract and how it's integrated.
 Security vulnerabilities may arise from bugs directly in smart contract code (and elsewhere in the system).
@@ -224,7 +224,7 @@ Here are a few suggestions for how to manage a deployment or upgrade.
     - Share the proposal with the community at least a week in advance (unless it is a critical bug fix)
         - Examples of places to share are your project's chat, forum, blog, email list, etc.
         - This will allow the community and other stakeholders to have plenty of time
-        to view the upcoming changes and provide feedback if neccessary.
+        to view the upcoming changes and provide feedback if necessary.
     - Share the time of the deployment and the deployment transaction with branch/commit hash information to ensure the transaction itself is correct.
     - Coordinate deployment with stakeholders to make sure it is done correctly and on time.
 
