@@ -8,12 +8,12 @@ This tutorial will mostly ignore the C# code that actually displays the NFTs and
 ## Overview
 
 When querying the blockchain we utilize four scripts:
-
+```
 * [GetCollections.cdc](Cadence/GetCollections.cdc) - Gets a list of Collections that conform to NFT.Collection for a given address
 * [GetNftIdsForCollection.cdc](Cadence/GetNftIdsForCollection.cdc) - Gets a list of all NFT IDs that are contained in a given collection
 * [GetDisplayDataForIDs.cdc](Cadence/GetDisplayDataForIDs.cdc) - Gets just the display data for a given NFT
 * [GetFullDataForID.cdc](Cadence/GetFullDataForID.cdc) - Gets a more comprehensive set of data for a single NFT.
-
+```
 While we could use a single script to query for all the data, larger collections will cause the script to time out.  Instead
 we query for just the data we need to reduce the chances of a timeout occurring.
 
