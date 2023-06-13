@@ -43,7 +43,7 @@ or address. Example:
 flow transactions build ./transaction.cdc --proposer alice --payer bob --authorizer bob --filter payload --save payload1.rlp
 ```
 
-Check more about [this functionality in docs](../build-transactions.md).
+Check more about [this functionality in docs](../transactions/build-transactions.md).
 
 #### Sign Transaction
 After using build command and saving payload to a file you should sign the transaction 

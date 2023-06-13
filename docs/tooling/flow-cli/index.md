@@ -4,7 +4,7 @@ title: Introduction
 ------
 
 Flow CLI includes several commands to interact with Flow networks, such as querying account information,
-or sending transactions. It also includes the [Flow Emulator](../flow-cli/start-emulator.md).
+or sending transactions. It also includes the [Flow Emulator](../flow-cli/deployment/start-emulator.md).
 
 ## Installation
 

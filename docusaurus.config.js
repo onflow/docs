@@ -322,7 +322,7 @@ const config = {
                 label: 'Learning Resources',
               },
               {
-                to: '/cadence',
+                to: '/cadence/intro',
                 label: 'Cadence',
               },
               {

@@ -365,7 +365,7 @@ import "HelloWorld"
 
 FCL will automatically replace the contract name with the address for the network you are using.
 
-> Note: never put private keys in your `flow.json`. You should use the [key/location syntax](../tooling/flow-cli/flow.json/security.md) to separate your keys into a separate git ignored file.
+> Note: never put private keys in your `flow.json`. You should use the [key/location syntax](../flow-cli/flow.json/security.md) to separate your keys into a separate git ignored file.
 
 ---
 
