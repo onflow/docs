@@ -146,7 +146,7 @@ export const linkCard2ColumnItems: LinkCard2ColumnProps = {
       title: 'Cadence',
       description:
         'Cadence is a resource-oriented programming language that introduces new features to smart contract programming.',
-      href: '/cadence',
+      href: '/cadence/intro',
       iconType: 'cadence',
     },
     {

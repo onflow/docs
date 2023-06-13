@@ -94,7 +94,7 @@ const homepageThreeColumnData: any = [
       },
       {
         title: 'Resource oriented programming',
-        href: '/cadence#intuiting-ownership-with-resources',
+        href: '/cadence/intro#intuiting-ownership-with-resources',
         tags: ['overview'],
       },
       {
@@ -104,7 +104,7 @@ const homepageThreeColumnData: any = [
       },
       {
         title: 'View all Cadence content',
-        href: '/cadence/',
+        href: '/cadence/intro',
       },
     ],
   },

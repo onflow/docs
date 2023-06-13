@@ -541,6 +541,10 @@
     {
       "source": "/node-operation/:path*",
       "destination": "/concepts/nodes/node-operation/:path*"
+    },
+    {
+      "source": "/concepts/storage",
+      "destination": "/concepts/start-here/storage"
     }
   ]
 }

@@ -423,7 +423,7 @@ An `Error` is returned if the contract deployment fails. Otherwise, a `nil` is r
 ### Configuring import addresses
 
 A common pattern in Cadence projects is to define the imports as file locations and specify the addresses
-corresponding to each network in the [Flow CLI configuration file](../tooling/flow-cli/configuration#contracts).
+corresponding to each network in the [Flow CLI configuration file](../tooling/flow-cli/flow.json/configuration.md#contracts).
 When writing tests for such a project, it may also require to specify the addresses to be used during the tests as well.
 However, during tests, since accounts are created dynamically and the addresses are also generated dynamically,
 specifying the addresses statically in a configuration file is not an option.
@@ -448,7 +448,7 @@ pub struct Configuration {
 
 <Callout type="info">
 The `Blockchain.useConfiguration` is a run-time alternative for
-[statically defining contract addresses in the flow.json config file](../tooling/flow-cli/configuration#advanced-format).
+[statically defining contract addresses in the flow.json config file](../tooling/flow-cli/flow.json/configuration.md#advanced-format).
 </Callout>
 
 The configurations can be specified during the test setup as a best-practice.

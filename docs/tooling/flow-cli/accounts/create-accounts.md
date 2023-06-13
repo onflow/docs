@@ -14,7 +14,7 @@ the manual process which requires a pre-existing account on the network you chos
 Creating the account in interactive mode prompts you for an account name and network selection. 
 After you enter the required information the account will be created for you and saved to `flow.json`. 
 If account creation is done on testnet or mainnet the account key will be saved to a separate key file, 
-which will also be put in `.gitignore`. You can [read more about key security here](./security).
+which will also be put in `.gitignore`. You can [read more about key security here](../flow.json/security.md).
 
 💡 _Please note that the account creation process can take up to a minute so please be patient._
 
@@ -35,7 +35,7 @@ Here’s a summary of all the actions that were taken:
 ## Manual Mode
 Manual mode requires you to have a pre-existing account on the network which you will have to provide as a signer. 
 That account must be added to `flow.json` for the command to work. You also have to generate a key pair, we 
-suggest using the `flow keys generate` command, [which you can read more about here](./generate-keys).
+suggest using the `flow keys generate` command, [which you can read more about here](../keys/generate-keys.md).
 
 ```shell
 # Create an account on Flow Testnet
