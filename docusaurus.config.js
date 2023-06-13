@@ -154,8 +154,8 @@ const config = {
   projectName: 'docs', // Usually your repo name.
   trailingSlash: false,
 
-  onBrokenLinks: 'warn',
-  onBrokenMarkdownLinks: 'warn',
+  onBrokenLinks: 'throw',
+  onBrokenMarkdownLinks: 'throw',
   onDuplicateRoutes: 'warn',
 
   // Even if you don't use internalization, you can use this field to set useful
