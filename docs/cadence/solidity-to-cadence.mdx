@@ -12,7 +12,7 @@ up while transitioning.
 
 # Conceptual foundations for Cadence
 
-A fundamental difference to get used to when adjusting to Cadence from Solidity is of mindset. Security and
+A fundamental difference to get used to when adjusting to Cadence from Solidity is mindset. Security and
 interoperability on Ethereum are designed around addresses (or more specifically the account associated with an
 address), resulting in all contracts having to carefully track and evaluate access and authorizations.
 
@@ -258,8 +258,7 @@ Cadence provides an `assert` operator which mirrors `assert` in Solidity.
 Modifiers are extensively used in Solidity when enforcing pre-checks within a function. This is a powerful language
 feature. However, modifiers can also mutate state which introduces risks to program control flow.
 
-Cadence uses `pre` and `post` blocks to validate input values or the function execution outputs. Notably, `pre` and
-`post` block prohibit changing of state and may only enforce conditions.
+Cadence uses `pre` and `post` blocks to validate input values or the function execution outputs. Notably, `pre` and `post` block prohibit changing of state and may only enforce conditions.
 
 Another difference is that modifiers in Solidity can be re-used within the contract multiple times. Cadence
 `pre` & `post` blocks are associated to individual functions only, reducing the likelihood of errors but which
@@ -374,7 +373,7 @@ Cadence offers a wide range of options to implement various multi-signature sche
 
 - Inherent support for multi-sign transactions.
 - Resource transfer scheme.
-- Inherent support of BLS signature scheme.
+- Inherent support of the BLS signature scheme.
 
 Flow account keys have assigned weights, where a 1000 unit weight is the cumulative weight needed from signing
 keys to execute a transaction successfully. One can divide weights across multiple keys and distribute those partial
@@ -461,7 +460,7 @@ program flow similar to `if nil; else; end;`.
 ## Iterable Dictionaries
 
 Solidity offers the mapping type, however, it is not iterable. Because of that dApp developers have to maintain
-off-chain tracking to be have access to keys. This also pushes builders to create custom datatypes like `EnumerableMap`
+off-chain tracking to have access to keys. This also pushes builders to create custom datatypes like `EnumerableMap`
 which adds to gas costs.
 
 Cadence offers the [Dictionary](./language/control-flow.md) type, an unordered collection of key-value associations
@@ -481,7 +480,7 @@ provides:
 
 ## Argument labelling
 
-Argument labels in Cadence help to disambiguate input values. They makes code more readable and explicit. They
+Argument labels in Cadence help to disambiguate input values. They make code more readable and explicit. They
 also eliminate confusion around the order of arguments when working with the same type. They must be included in the function call. This restriction can be skipped if the label is preceded by `_ ` on its declaration.
 
 Eg:
