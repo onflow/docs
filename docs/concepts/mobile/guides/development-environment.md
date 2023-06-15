@@ -9,4 +9,4 @@ title: Local Development Environment for Mobile
   - IDE & extension
 - React Native
   - [CLI: Emulator, Dev wallet](../../../tooling/fcl-dev-wallet/overview.md)
-  - [React Native Quickstart](../../../tutorials/react-native-quickstart.mdx)
+  - [React Native Quickstart](../react-native-quickstart.mdx)
