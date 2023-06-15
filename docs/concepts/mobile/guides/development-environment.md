@@ -1,10 +1,12 @@
 ---
 title: Local Development Environment for Mobile
 ---
-
-    - Android
-        - CLI: Emulator, Dev wallet
-        - IDE & extension
-    - iOS
-        - CLI: Emulator, Dev wallet
-        - IDE & extension
+- Android
+  - [CLI: Emulator, Dev wallet](../../../tooling/fcl-dev-wallet/overview.md)
+  - IDE & extension
+- iOS
+  - [CLI: Emulator, Dev wallet](../../../tooling/fcl-dev-wallet/overview.md)
+  - IDE & extension
+- React Native
+  - [CLI: Emulator, Dev wallet](../../../tooling/fcl-dev-wallet/overview.md)
+  - [React Native Quickstart](../react-native-quickstart.mdx)
