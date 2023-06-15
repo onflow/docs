@@ -70,6 +70,21 @@ config({
 
 > Learn more about [configuring Discovery](../tooling/fcl-js/discovery.mdx) or [setting configuration values](../tooling/fcl-js/api.md#setting-configuration-values).
 
+> If you are running a Wallet Discovery locally and want to use it in the React Native app, change `https://fcl-discovery.onflow.org/` to `http://<LOCAL_IP_ADDRESS>:<PORT>/`
+> For Example:
+> using local [Wallet Discovery](../tooling/fcl-js/discovery.mdx) and local [Dev Wallet](../tooling/fcl-dev-wallet/overview.md):
+>
+> ```javascript ./flow/config.js
+> import { config } from "@onflow/fcl";
+>
+> config({
+>   ...
+>   "discovery.wallet": "http://10.0.0.1:3002/local/authn",
+>   "discovery.authn.endpoint": "http://10.0.0.1:3002/api/local/authn",
+>   ...
+> })
+> ```
+
 The main screen for React Native apps is located in `./App.js` or in `./App.tsx`. So let's finish configuring our dapp by going in the root directory and importing the config file into the top of our `App.js` file. We'll then swap out the default component in `App.js` to look like this:
 
 > **Replace file:** `./App.js`
