@@ -77,7 +77,7 @@ tar -xvf boot-tools.tar
 
 ```shell CheckSHA256
 sha256sum ./boot-tools/bootstrap
-0d2cb2d0edb659880ae729e9d849a98535414af33690dad545d9892268167bcf  ./boot-tools/bootstrap
+9673e2c29c7f350caea8ff20dbc1e2ab24853416c2d2078c1a21790773315972  ./boot-tools/bootstrap
 ```
 
 > If you have downloaded the bootstrapping kit previously, ensure the SHA256 hash for it still matches. If not, re-download to ensure you are using the most up-to-date version.
