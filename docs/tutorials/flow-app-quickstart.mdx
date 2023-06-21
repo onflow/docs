@@ -14,7 +14,7 @@ Below is a video walkthrough covering the contents of this tutorial. You are wel
 
 ## Before You Start
 
-Make sure you have Flow CLI installed. If you don't, follow the [installation instructions](https://developers.flow.com/tooling/flow-cli/install).
+Make sure you have Flow CLI installed. If you don't, follow the [installation instructions](../tooling/flow-cli/install.md).
 
 ## Introduction
 
@@ -52,7 +52,7 @@ Then, using the Flow CLI, create a new `flow.json` file in the root of your app.
 flow init
 ```
 
-We don't recommend keeping private keys in your `flow.json`, so for good practice let's move our private key to a `emulator.key` file in the root of our project and point to it using the [key/location pattern](https://developers.flow.com/tooling/flow-cli/flow.json/security#private-account-configuration-file) used by Flow CLI. This file will be ignored by git, so it won't be committed to your repository. 
+We don't recommend keeping private keys in your `flow.json`, so for good practice let's move our private key to a `emulator.key` file in the root of our project and point to it using the [key/location pattern](../tooling/flow-cli/flow.json/security.md#private-account-configuration-file) used by Flow CLI. This file will be ignored by git, so it won't be committed to your repository. 
 
 We won't be using emulator and running contracts locally in this quickstart, but FCL will complain if it finds private keys in your `flow.json` file.
 
@@ -207,7 +207,7 @@ You should now be able to log in or sign up a user and unauthenticate them. Upon
 
 One of the main things you'll often need to do when building a dapp is query the Flow blockchain and the smart contracts deployed on it for data. Since smart contracts will live on both Testnet and Mainnet, let's put the account address where the smart contract lives into the `flow.json` so FCL can pick it up. We are going to also use an alias for testnet.
 
-If you want to see how to use local files for emulator and learn more about aliases, check out the [flow.json documentation](https://developers.flow.com/tooling/flow-cli/flow.json/configuration). For now, know that an alias lets us specify a contract address based on a specific network (e.g. testnet/mainnet).
+If you want to see how to use local files for emulator and learn more about aliases, check out the [flow.json documentation](../tooling/flow-cli/flow.json/configuration). For now, know that an alias lets us specify a contract address based on a specific network (e.g. testnet/mainnet).
 
 > **Replace file:** `flow.json`
 
