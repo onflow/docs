@@ -4,13 +4,17 @@
 
 **Last Updated:** January 11th 2022
 
-> **Note**: This page will walk you through a very bare bones project to get started building a web3 dapp using the Flow Client Library (FCL). If you are looking for a clonable repo, Flow community members have created quickstart templates for different JavaScript frameworks (e.g. [Next.js](https://github.com/muttoni/fcl-nextjs-quickstart), [SvelteKit](https://github.com/muttoni/fcl-sveltekit-quickstart), [Nuxt](https://github.com/bluesign/nuxt3-fcl)). You can consult the complete list [here](https://github.com/ph0ph0/Get-The-Flow-Down#fcl).
+> **Note**: This page will walk you through a very bare bones project to get started building a web3 dapp using the Flow Client Library (FCL). If you are looking for a clonable repo, check out the [scaffolds availabe in the Flow CLI](https://developers.flow.com/tooling/flow-cli/super-commands#using-scaffolds).
 
 ## Video Walkthrough
 
 Below is a video walkthrough covering the contents of this tutorial. You are welcome to watch or skip the video walkthrough depending on your style of learning.
 
 <iframe width="560" height="315" src="https://www.youtube.com/embed/uEoh9SnjqCk" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+## Before You Start
+
+Make sure you have Flow CLI installed. If you don't, follow the [installation instructions](https://developers.flow.com/tooling/flow-cli/install).
 
 ## Introduction
 
@@ -38,6 +42,44 @@ npx create-next-app@latest flow-app
 cd flow-app
 ```
 
+## Configuration
+
+### Setting up Flow
+
+Then, using the Flow CLI, create a new `flow.json` file in the root of your app. This file will contain the Flow configuration for your project.
+
+```sh
+flow init
+```
+
+We don't recommend keeping private keys in your `flow.json`, so for good practice let's move our private key to a `emulator.key` file in the root of our project and point to it using the [key/location pattern](https://developers.flow.com/tooling/flow-cli/flow.json/security#private-account-configuration-file) used by Flow CLI. This file will be ignored by git, so it won't be committed to your repository. 
+
+We won't be using emulator and running contracts locally in this quickstart, but FCL will complain if it finds private keys in your `flow.json` file.
+
+Your `flow.json` file should look like this:
+
+```
+{
+	"networks": {
+		"emulator": "127.0.0.1:3569",
+		"mainnet": "access.mainnet.nodes.onflow.org:9000",
+		"sandboxnet": "access.sandboxnet.nodes.onflow.org:9000",
+		"testnet": "access.devnet.nodes.onflow.org:9000"
+	},
+	"accounts": {
+		"emulator-account": {
+			"address": "f8d6e0586b0a20c7",
+			"key": {
+				"type": "file",
+				"location": "./emulator.key"
+			}
+		}
+	}
+}
+```
+
+### Configuring FCL
+
 Next, install FCL so we can use it in our app.
 
 ```sh
@@ -49,10 +91,6 @@ Now run the app using the following command in your terminal.
 ```sh
 npm run dev
 ```
-
-You should now see your app running.
-
-## Configuration
 
 Now that your app is running, you can configure FCL. Within the main project directory, create a folder called `flow` and create a file called `config.js`. This file will contain configuration information for FCL, such as what Access Node and wallet discovery endpoint to use (e.g. testnet or a local emulator). Add the following contents to the file:
 
@@ -167,21 +205,40 @@ You should now be able to log in or sign up a user and unauthenticate them. Upon
 
 ## Querying the Blockchain
 
-One of the main things you'll often need to do when building a dapp is query the Flow blockchain and the smart contracts deployed on it for data. Since smart contracts will live on both Testnet and Mainnet, let's put the account address where the smart contract lives into the configuration (remember, it's recommended that you change this later to use environment variables). Let's also give it a key of `Profile` and prefix it with `0x` so that the final key is `0xProfile`. The prefix is important because it tells FCL to pull the corresponding addresses needed from the configuration value.
+One of the main things you'll often need to do when building a dapp is query the Flow blockchain and the smart contracts deployed on it for data. Since smart contracts will live on both Testnet and Mainnet, let's put the account address where the smart contract lives into the `flow.json` so FCL can pick it up. We are going to also use an alias for testnet.
 
-> **Replace file:** `./flow/config.js`
+If you want to see how to use local files for emulator and learn more about aliases, check out the [flow.json documentation](https://developers.flow.com/tooling/flow-cli/flow.json/configuration). For now, know that an alias lets us specify a contract address based on a specific network (e.g. testnet/mainnet).
 
-```javascript
-import { config } from "@onflow/fcl";
+> **Replace file:** `flow.json`
 
-config({
- "accessNode.api": "https://rest-testnet.onflow.org", // Mainnet: "https://rest-mainnet.onflow.org"
-  "discovery.wallet": "https://fcl-discovery.onflow.org/testnet/authn", // Mainnet: "https://fcl-discovery.onflow.org/authn"
-  "0xProfile": "0xba1132bc08f82fe2" // The account address where the Profile smart contract lives on Testnet
-})
+```
+{
+	"contracts": {
+		"Profile": {
+			"aliases": {
+				"testnet": "0xba1132bc08f82fe2"
+			}
+		}
+	},
+	"networks": {
+		"emulator": "127.0.0.1:3569",
+		"mainnet": "access.mainnet.nodes.onflow.org:9000",
+		"sandboxnet": "access.sandboxnet.nodes.onflow.org:9000",
+		"testnet": "access.devnet.nodes.onflow.org:9000"
+	},
+	"accounts": {
+		"emulator-account": {
+			"address": "f8d6e0586b0a20c7",
+			"key": {
+				"type": "file",
+				"location": "./emulator.key"
+			}
+		}
+	}
+}
 ```
 
-If you want to see the on chain smart contract we'll be speaking with next, you can view the [Profile Contract](https://testnet.flowscan.org/contract/A.ba1132bc08f82fe2.Profile) source code but again for this tutorial it's not necessary you understand it.
+If you want to see the on chain smart contract we'll be speaking with next, you can view the [Profile Contract](https://f.dnz.dev/0xba1132bc08f82fe2/Profile) source code but again for this tutorial it's not necessary you understand it.
 
 **First, lets query the contract to see what the user's profile name is.** 
 
@@ -603,6 +660,10 @@ That's it! You now have a shippable Flow dapp that can auth, query, init account
 - [Cadence Playground Tutorials](../cadence/tutorial/01-first-steps.mdx)
 - [Cadence Hello World Video](https://www.youtube.com/watch?v=pRz7EzrWchs)
 - [Why Cadence?](https://www.onflow.org/post/flow-blockchain-cadence-programming-language-resources-assets)
+
+**FCL Scaffolds**
+- [FCL Next TypeScript Scaffold](https://github.com/chasefleming/fcl-next-scaffold)
+- [FCL React Native Scaffold](https://github.com/jribbink/fcl-react-native-scaffold)
 
 **Full Stack NFT Marketplace Example**
 - [Beginner Example: CryptoDappy](https://github.com/bebner/crypto-dappy)
