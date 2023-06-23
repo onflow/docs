@@ -105,7 +105,7 @@ $./boot-tools/bootstrap key --address "flowaccess.mycompany.com:3569" --role acc
 <nil> INF wrote file bootstrap/public-root-information/node-id
 <nil> INF wrote file bootstrap/private-root-information/private-node-info_e737ec6efbd26ef43bf676911cdc5a11ba15fc6562d05413e6589fccdd6c06d5/node-info.priv.json
 <nil> INF wrote file bootstrap/private-root-information/private-node-info_e737ec6efbd26ef43bf676911cdc5a11ba15fc6562d05413e6589fccdd6c06d5/secretsdb-key
-<nil> INF wrote file bootstrap/public-root-information/node-info.access(all).e737ec6efbd26ef43bf676911cdc5a11ba15fc6562d05413e6589fccdd6c06d5.json
+<nil> INF wrote file bootstrap/public-root-information/node-info.pub.e737ec6efbd26ef43bf676911cdc5a11ba15fc6562d05413e6589fccdd6c06d5.json
 
 $tree ./bootstrap/
 ./bootstrap/
@@ -115,7 +115,7 @@ $tree ./bootstrap/
 │        └── secretsdb-key
 └── public-root-information
     ├── node-id
-    └── node-info.access(all).e737ec6efbd26ef43bf676911cdc5a11ba15fc6562d05413e6589fccdd6c06d5.json
+    └── node-info.pub.e737ec6efbd26ef43bf676911cdc5a11ba15fc6562d05413e6589fccdd6c06d5.json
 
 3 directories, 4 files
 ```
@@ -150,10 +150,10 @@ On Flow port, choose `Stake and Delegate` -> `Start Staking` or `Stake Again` an
 
 On the next screen, provide the node details of you node.
 
-Those node details (`Node ID`, `Network Address`, `Networking Key` and `Staking Key`) can be found in the file: `./bootstrap/public-root-information/node-info.access(all).<node-id>.json`.
+Those node details (`Node ID`, `Network Address`, `Networking Key` and `Staking Key`) can be found in the file: `./bootstrap/public-root-information/node-info.pub.<node-id>.json`.
 
 ```shell Example
-$cat ./bootstrap/public-root-information/node-info.access(all). e737ec6efbd26ef43bf676911cdc5a11ba15fc6562d05413e6589fccdd6c06d5.json
+$cat ./bootstrap/public-root-information/node-info.pub. e737ec6efbd26ef43bf676911cdc5a11ba15fc6562d05413e6589fccdd6c06d5.json
 {
   "Role": "access",
   "Address": "flowaccess.mycompany.com:3569",
