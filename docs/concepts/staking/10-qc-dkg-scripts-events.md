@@ -88,11 +88,11 @@ can use the **Get Node Has Submitted** ([DKG.08](../core-contracts/07-epoch-cont
 
 ```cadence
 /// Emitted when the admin enables the DKG
-pub event StartDKG()
+access(all) event StartDKG()
 
 /// Emitted when the admin ends the DKG after enough submissions have been recorded
-pub event EndDKG(finalSubmission: [String?]?)
+access(all) event EndDKG(finalSubmission: [String?]?)
 
 /// Emitted when a consensus node has posted a message to the DKG whiteboard
-pub event BroadcastMessage(nodeID: String, content: String)
+access(all) event BroadcastMessage(nodeID: String, content: String)
 ```

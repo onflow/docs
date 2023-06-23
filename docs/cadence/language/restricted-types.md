@@ -25,20 +25,20 @@ this is prevented by the static checker.
 // which has a read-only `count` field
 //
 resource interface HasCount {
-    pub let count: Int
+    access(all) let count: Int
 }
 
 // Declare a resource named `Counter`, which has a writeable `count` field,
 // and conforms to the resource interface `HasCount`
 //
-pub resource Counter: HasCount {
-    pub var count: Int
+access(all) resource Counter: HasCount {
+    access(all) var count: Int
 
     init(count: Int) {
         self.count = count
     }
 
-    pub fun increment() {
+    access(all) fun increment() {
         self.count = self.count + 1
     }
 }
@@ -77,8 +77,8 @@ unrestrictedCounter.increment()
 // Declare another resource type named `Strings`
 // which implements the resource interface `HasCount`
 //
-pub resource Strings: HasCount {
-    pub var count: Int
+access(all) resource Strings: HasCount {
+    access(all) var count: Int
     access(self) var strings: [String]
 
     init() {
@@ -86,7 +86,7 @@ pub resource Strings: HasCount {
         self.strings = []
     }
 
-    pub fun append(_ string: String) {
+    access(all) fun append(_ string: String) {
         self.strings.append(string)
         self.count = self.count + 1
     }
@@ -111,20 +111,20 @@ For example, the type `{HasCount}` is any resource that implements
 the resource interface `HasCount`.
 
 ```cadence
-pub struct interface HasID {
-    pub let id: String
+access(all) struct interface HasID {
+    access(all) let id: String
 }
 
-pub struct A: HasID {
-    pub let id: String
+access(all) struct A: HasID {
+    access(all) let id: String
 
     init(id: String) {
         self.id = id
     }
 }
 
-pub struct B: HasID {
-    pub let id: String
+access(all) struct B: HasID {
+    access(all) let id: String
 
     init(id: String) {
         self.id = id
@@ -143,7 +143,7 @@ let hasID2: {HasID} = B(id: "2")
 // The type `{HasID}` is a short-hand for `AnyStruct{HasID}`:
 // Some structure which only allows access to the functionality of interface `HasID`.
 //
-pub fun getID(_ value: {HasID}): String {
+access(all) fun getID(_ value: {HasID}): String {
     return value.id
 }
 

@@ -24,7 +24,7 @@ First we need to get a list of all collections on an account that are a subtype 
 ```cadence
 import NonFungibleToken from 0x1d7e57aa55817448
 
-pub fun main(addr: Address) : [StoragePath] {
+access(all) fun main(addr: Address) : [StoragePath] {
     //Get the AuthAccount for the given address.
     //The AuthAccount is needed because we're going to be looking into the Storage of the user
     var acct = getAuthAccount(addr)
@@ -60,7 +60,7 @@ list of IDs contained in that collection:
 ```cadence
 import NonFungibleToken from 0x1d7e57aa55817448
 
-pub fun main(addr: Address, path: StoragePath) : [UInt64] {
+access(all) fun main(addr: Address, path: StoragePath) : [UInt64] {
     //Get the AuthAccount for the given address.
     //The AuthAccount is needed because we're going to be looking into the Storage of the user
     var acct = getAuthAccount(addr)
@@ -81,7 +81,7 @@ After we get a list of the available NFT IDs, we need to get some basic data abo
 import NonFungibleToken from 0x1d7e57aa55817448
 import MetadataViews from 0x1d7e57aa55817448
 
-pub fun main(addr: Address, path: StoragePath, ids: [UInt64]) : {UInt64:AnyStruct?} {
+access(all) fun main(addr: Address, path: StoragePath, ids: [UInt64]) : {UInt64:AnyStruct?} {
     //Array to hold the NFT display data that we will return
     //We use AnyStruct? because that is the type that is returned by resolveView.
     var returnData: {UInt64:AnyStruct?} = {}
@@ -151,7 +151,7 @@ import NonFungibleToken from 0x1d7e57aa55817448
 import MetadataViews from 0x1d7e57aa55817448
 
 //Structure that will hold all the data we want for an NFT
-pub struct NFTData {
+access(all) struct NFTData {
     pub(set) var NFTView: AnyStruct?
     pub(set) var Display : AnyStruct?
     pub(set) var HTTPFile: AnyStruct?
@@ -191,7 +191,7 @@ pub struct NFTData {
     }
 }
 
-pub fun main(addr: Address, path: StoragePath, id: UInt64) : NFTData? {
+access(all) fun main(addr: Address, path: StoragePath, id: UInt64) : NFTData? {
     //Get account for address
     var acct = getAuthAccount(addr)
     
@@ -275,8 +275,8 @@ public class File
 Compare this to the File interface in the MetadataViews contract:
 
 ```cadence
-    pub struct interface File {
-        pub fun uri(): String
+    access(all) struct interface File {
+        access(all) fun uri(): String
     }
 ```
 
@@ -284,13 +284,13 @@ The MetadataViews.File interface doesn't actually contain any fields, only a sin
 File interface (HTTPFile and IPFSFile), we chose to combine the possible fields into our File class.
 
 ```cadence
-pub struct HTTPFile: File {
-        pub let url: String
+access(all) struct HTTPFile: File {
+        access(all) let url: String
 }
 
-pub struct IPFSFile: File {
-    pub let cid: String
-    pub let path: String?
+access(all) struct IPFSFile: File {
+    access(all) let cid: String
+    access(all) let path: String?
 }
 ```
 

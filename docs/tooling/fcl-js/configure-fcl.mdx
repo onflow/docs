@@ -75,7 +75,7 @@ async function myScript () {
     fcl.script`
       import FungibleToken from 0xFungibleToken // will be replaced with 0xf233dcee88fe0abe because of the configuration
 
-      pub fun main() { /* Rest of the script goes here */ }
+      access(all) fun main() { /* Rest of the script goes here */ }
     `
   ]).then(fcl.decode)
 }

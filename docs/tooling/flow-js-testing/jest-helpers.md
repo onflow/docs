@@ -189,7 +189,7 @@ describe("interactions - sendTransaction", () => {
 
   test("basic script", async () => {
     const code = `
-      pub fun main():Int{
+      access(all) fun main():Int{
         return 42
       }
     `

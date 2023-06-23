@@ -19,10 +19,10 @@ A simple Cadence script `test_script.cdc`, which has a test case for running a c
 ```cadence
 import Test
 
-pub fun testSimpleScript() {
+access(all) fun testSimpleScript() {
     var blockchain = Test.newEmulatorBlockchain()
     var result = blockchain.executeScript(
-        "pub fun main(a: Int, b: Int): Int { return a + b }",
+        "access(all) fun main(a: Int, b: Int): Int { return a + b }",
         [2, 3]
     )
     

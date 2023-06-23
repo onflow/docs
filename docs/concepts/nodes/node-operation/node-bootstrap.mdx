@@ -104,7 +104,7 @@ $./boot-tools/bootstrap key --address "consensus-001.nodes.flow.com:3569" --role
 <nil> INF wrote file bootstrap/public-root-information/node-id
 <nil> INF wrote file bootstrap/private-root-information/private-node-info_ab6e0b15837de7e5261777cb65665b318cf3f94492dde27c1ea13830e989bbf9/node-info.priv.json
 <nil> INF wrote file bootstrap/private-root-information/private-node-info_5e44ad5598bb0acb44784f629e84000ffea34d5552427247d9008ccf147fb87f/secretsdb-key
-<nil> INF wrote file bootstrap/public-root-information/node-info.pub.ab6e0b15837de7e5261777cb65665b318cf3f94492dde27c1ea13830e989bbf9.json
+<nil> INF wrote file bootstrap/public-root-information/node-info.access(all).ab6e0b15837de7e5261777cb65665b318cf3f94492dde27c1ea13830e989bbf9.json
 <nil> DBG will generate machine account key
 <nil> INF generated machine account key
 <nil> DBG assembling machine account information address=consensus-001.nodes.flow.com:3569
@@ -120,7 +120,7 @@ $tree ./bootstrap/
 │       └── secretsdb-key
 └── public-root-information
     ├── node-id
-    └── node-info.pub.ab6e0b15837de7e5261777cb65665b318cf3f94492dde27c1ea13830e989bbf9.json
+    └── node-info.access(all).ab6e0b15837de7e5261777cb65665b318cf3f94492dde27c1ea13830e989bbf9.json
 
 3 directories, 4 files
 ```
@@ -158,10 +158,10 @@ Copy the machine account public key somewhere safe. You will need it in a later 
 
 Stake your node via [Flow Port](https://port.onflow.org/)
 
-The `node details` (`Node ID`, `Network Address`, `Networking Key` and `Staking Key`) that need to be submitted when staking the node on Flow Port, can be found in the file: `./bootstrap/public-root-information/node-info.pub.<node-id>.json`.
+The `node details` (`Node ID`, `Network Address`, `Networking Key` and `Staking Key`) that need to be submitted when staking the node on Flow Port, can be found in the file: `./bootstrap/public-root-information/node-info.access(all).<node-id>.json`.
 
 ```shell Example
-$cat ./bootstrap/public-root-information/node-info.pub.39fa54984b8eaa463e129919464f61c8cec3a4389478df79c44eb9bfbf30799a.json
+$cat ./bootstrap/public-root-information/node-info.access(all).39fa54984b8eaa463e129919464f61c8cec3a4389478df79c44eb9bfbf30799a.json
 {
   "Role": "consensus",
   "Address": "consensus-001.nodes.flow.com:3569",
@@ -211,7 +211,7 @@ $tree ./bootstrap/
 │       └── secretsdb-key
 └── public-root-information
     ├── node-id
-    └── node-info.pub.d60bd55ee616c5c297cae1d5cfb7f65e7e04014d9c4abe595af2fd83f3cfe160.json
+    └── node-info.access(all).d60bd55ee616c5c297cae1d5cfb7f65e7e04014d9c4abe595af2fd83f3cfe160.json
 
 3 directories, 5 files
 ```

@@ -115,13 +115,13 @@ Open the `/cadence/contracts/KittyItems.cdc` file and make the following changes
 Locate the `enum Kind` object and add a new case (`shades`) to the bottom of the list:
 
 ```cadence /cadence/contracts/KittyItems.cdc
-pub enum Kind: UInt8 {
-    pub case fishbowl
-    pub case fishhat
-    pub case milkshake
-    pub case tuktuk
-    pub case skateboard
-    pub case shades
+access(all) enum Kind: UInt8 {
+    access(all) case fishbowl
+    access(all) case fishhat
+    access(all) case milkshake
+    access(all) case tuktuk
+    access(all) case skateboard
+    access(all) case shades
 }
 ```
 
@@ -130,7 +130,7 @@ pub enum Kind: UInt8 {
 This method is used to set the name and description of a specified NFT. Locate the the `kindToString` method and add a new case (`Kind.shades`) to the bottom of the switch statement:
 
 ```cadence /cadence/contracts/KittyItems.cdc
-pub fun kindToString(_ kind: Kind): String {
+access(all) fun kindToString(_ kind: Kind): String {
     switch kind {
         case Kind.fishbowl:
             return "Fishbowl"

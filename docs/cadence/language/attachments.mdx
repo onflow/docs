@@ -14,11 +14,11 @@ without requiring the original author of the type to plan or account for the int
 ## Declaring Attachments
 
 Attachments are declared with the `attachment` keyword, which would be declared using a new form of composite declaration:
-`pub attachment <Name> for <Type>: <Conformances> { ... }`, where the attachment functions and fields are declared in the body.
+`access(all) attachment <Name> for <Type>: <Conformances> { ... }`, where the attachment functions and fields are declared in the body.
 As such, the following would be examples of legal declarations of attachments:
 
 ```cadence
-pub attachment Foo for MyStruct {
+access(all) attachment Foo for MyStruct {
     // ...
 }
 
@@ -36,7 +36,7 @@ Note that the base type may be either a concrete composite type or an interface.
 In the former case, the attachment is only usable on values specifically of that base type,
 while in the case of an interface the attachment is usable on any type that conforms to that interface.
 
-As with other type declarations, attachments may only have a `pub` access modifier (if one is present).
+As with other type declarations, attachments may only have a `access(all)` access modifier (if one is present).
 
 The body of the attachment follows the same declaration rules as composites.
 In particular, they may have both field and function members,
@@ -55,29 +55,29 @@ Within the body of an attachment, there is also a `base` keyword available,
 which contains a reference to the attachment's base value;
 that is, the composite to which the attachment is attached.
 Its type, therefore, is a reference to the attachment's declared base type.
-So, for an attachment declared `pub attachment Foo for Bar`, the `base` field of `Foo` would have type `&Bar`.
+So, for an attachment declared `access(all) attachment Foo for Bar`, the `base` field of `Foo` would have type `&Bar`.
 
 So, for example, this would be a valid declaration of an attachment:
 
 ```
-pub resource R {
-    pub let x: Int
+access(all) resource R {
+    access(all) let x: Int
 
     init (_ x: Int) {
         self.x = x
     }
 
-    pub fun foo() { ... }
+    access(all) fun foo() { ... }
 }
 
-pub attachment A for R {
-    pub let derivedX: Int
+access(all) attachment A for R {
+    access(all) let derivedX: Int
 
     init (_ scalar: Int) {
         self.derivedX = base.x * scalar
     }
 
-    pub fun foo() {
+    access(all) fun foo() {
         base.foo()
     }
 }
@@ -86,18 +86,18 @@ pub attachment A for R {
 
 For the purposes of external mutation checks or [access control](./access-control.md),
 the attachment is considered a separate declaration from its base type.
-A developer cannot, therefore, access any `priv` fields
+A developer cannot, therefore, access any `access(self)` fields
 (or `access(contract)` fields if the base was defined in a different contract to the attachment)
 on the `base` value, nor can they mutate any array or dictionary typed fields.
 
 ```cadence
-pub resource interface SomeInterface {
-    pub let b: Bool
-    priv let i: Int
-    pub let a: [String]
+access(all) resource interface SomeInterface {
+    access(all) let b: Bool
+    access(self) let i: Int
+    access(all) let a: [String]
 }
-pub attachment SomeAttachment for SomeContract.SomeStruct {
-    pub let i: Int
+access(all) attachment SomeAttachment for SomeContract.SomeStruct {
+    access(all) let i: Int
     init(i: Int) {
         if base.b {
             self.i = base.i // cannot access `i` on the `base` value
@@ -105,7 +105,7 @@ pub attachment SomeAttachment for SomeContract.SomeStruct {
             self.i = i
         }
     }
-    pub fun foo() {
+    access(all) fun foo() {
         base.a.append("hello") // cannot mutate `a` outside of the composite where it was defined
     }
 }
@@ -113,7 +113,7 @@ pub attachment SomeAttachment for SomeContract.SomeStruct {
 
 ### Attachment Types
 
-An attachment declared with `pub attachment A for C { ... }` will have a nominal type `A`.
+An attachment declared with `access(all) attachment A for C { ... }` will have a nominal type `A`.
 
 It is important to note that attachments are not first class values in Cadence, and as such their usage is limited in certain ways.
 In particular, their types cannot appear outside of a reference type.
@@ -135,8 +135,8 @@ the `to` keyword, and an expression that evaluates to the base value for that at
 Any arguments required by the attachment's `init` function are provided in its constructor call.
 
 ```cadence
-pub resource R {}
-pub attachment A for R {
+access(all) resource R {}
+access(all) attachment A for R {
     init(x: Int) {
         //...
     }
@@ -155,9 +155,9 @@ but it is important to note that the attachment being created will not be access
 
 
 ```cadence
-pub resource interface I {}
-pub resource R: I {}
-pub attachment A for I {}
+access(all) resource interface I {}
+access(all) resource R: I {}
+access(all) attachment A for I {}
 
 // ...
 let r <- create R() // has type @R

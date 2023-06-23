@@ -82,11 +82,11 @@ to be interacted with using the Staking Collection API.
 The `StakingCollection` contract emits an event whenever an important action occurs.
 
 ```cadence
-    pub event NodeAddedToStakingCollection(nodeID: String, role: UInt8, amountCommitted: UFix64, address: Address?)
-    pub event DelegatorAddedToStakingCollection(nodeID: String, delegatorID: UInt32, amountCommitted: UFix64, address: Address?)
+    access(all) event NodeAddedToStakingCollection(nodeID: String, role: UInt8, amountCommitted: UFix64, address: Address?)
+    access(all) event DelegatorAddedToStakingCollection(nodeID: String, delegatorID: UInt32, amountCommitted: UFix64, address: Address?)
 
-    pub event NodeRemovedFromStakingCollection(nodeID: String, role: UInt8, address: Address?)
-    pub event DelegatorRemovedFromStakingCollection(nodeID: String, delegatorID: UInt32, address: Address?)
+    access(all) event NodeRemovedFromStakingCollection(nodeID: String, role: UInt8, address: Address?)
+    access(all) event DelegatorRemovedFromStakingCollection(nodeID: String, delegatorID: UInt32, address: Address?)
 
-    pub event MachineAccountCreated(nodeID: String, role: UInt8, address: Address)
+    access(all) event MachineAccountCreated(nodeID: String, role: UInt8, address: Address)
 ```

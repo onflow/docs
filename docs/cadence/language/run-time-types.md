@@ -181,21 +181,21 @@ something.isInstance(Type<String>())  // is `false`
 For example, this allows implementing a marketplace sale resource:
 
 ```cadence
-pub resource SimpleSale {
+access(all) resource SimpleSale {
 
     /// The resource for sale.
     /// Once the resource is sold, the field becomes `nil`.
     ///
-    pub var resourceForSale: @AnyResource?
+    access(all) var resourceForSale: @AnyResource?
 
     /// The price that is wanted for the purchase of the resource.
     ///
-    pub let priceForResource: UFix64
+    access(all) let priceForResource: UFix64
 
     /// The type of currency that is required for the purchase.
     ///
-    pub let requiredCurrency: Type
-    pub let paymentReceiver: Capability<&{FungibleToken.Receiver}>
+    access(all) let requiredCurrency: Type
+    access(all) let paymentReceiver: Capability<&{FungibleToken.Receiver}>
 
     /// `paymentReceiver` is the capability that will be borrowed
     /// once a valid purchase is made.
@@ -226,7 +226,7 @@ pub resource SimpleSale {
     /// If the purchase succeeds, the resource for sale is returned.
     /// If the purchase fails, the program aborts.
     ///
-    pub fun buyObject(with funds: @FungibleToken.Vault): @AnyResource {
+    access(all) fun buyObject(with funds: @FungibleToken.Vault): @AnyResource {
         pre {
             // Ensure the resource is still up for sale
             self.resourceForSale != nil: "The resource has already been sold"

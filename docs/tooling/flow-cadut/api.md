@@ -25,7 +25,7 @@ const code = `
   import Message from 0x01
   import Utilities from 0x02
   
-  pub fun main(){
+  access(all) fun main(){
     Utilities.log(Message.hello)
   }
 `;
@@ -67,7 +67,7 @@ const code = `
   import Message from 0x01
   import Utilities from 0x02
   
-  pub fun main(){
+  access(all) fun main(){
     Utilities.log(Message.hello)
   }
 `;
@@ -98,7 +98,7 @@ import { missingImports, report } from '@onflow/flow-cadut';
 const code = `
       import Message from 0x01
       
-      pub fun main(){}
+      access(all) fun main(){}
     `;
 const list = missingImports(code, {});
 report(list);
@@ -128,7 +128,7 @@ import { missingImports, report } from '@onflow/flow-cadut';
 const code = `
   import Message from 0x01
   
-  pub fun main(){}
+  access(all) fun main(){}
 `;
 
 reportMissingImports(code);
@@ -159,7 +159,7 @@ import { replaceImportAddresses } from '@onflow/flow-cadut';
 const code = `
   import Messages from 0x01
   
-  pub fun main(){}
+  access(all) fun main(){}
 `;
 const addressMap = {
   Message: '0xf8d6e0586b0a20c7',
@@ -199,7 +199,7 @@ import { mapArgument } from '@onflow/flow-cadut';
   config().put('accessNode.api', 'https://rest-testnet.onflow.org');
 
   const cadence = `
-    pub fun main(message: String): String{
+    access(all) fun main(message: String): String{
       return message
     }
 `;
@@ -245,7 +245,7 @@ import { mapArgument } from '@onflow/flow-cadut';
   config().put('accessNode.api', 'https://rest-testnet.onflow.org');
 
   const cadence = `
-    pub fun main(message: String, amount: Int): Int{
+    access(all) fun main(message: String, amount: Int): Int{
       log(message)
       return amount
     }
@@ -295,7 +295,7 @@ import { mapValuesToCode } from '@onflow/flow-cadut';
   config().put('accessNode.api', 'https://rest-testnet.onflow.org');
 
   const cadence = `
-    pub fun main(metadata: {String:String}, key: String):String {
+    access(all) fun main(metadata: {String:String}, key: String):String {
       return metadata[key]!
     }
 `;
@@ -331,7 +331,7 @@ Parses the code and returns [TemplateInfo](#TemplateInfo)
 import { getTemplateInfo } from '@onflow/flow-cadut';
 
 const script = `
-  pub fun main(message:String):String{
+  access(all) fun main(message:String):String{
     return 42
   }
 `;
@@ -369,7 +369,7 @@ Parses the code and returns array of [SignerPair](#SignerPair)
 import { extractSigners } from '@onflow/flow-cadut';
 
 const script = `
-  pub fun main(){
+  access(all) fun main(){
     log("nothing to see here :)")
   }
 `;
@@ -399,7 +399,7 @@ Parses the code and returns array of [ArgumentPair](#ArgumentPair)
 import { extractScriptArguments } from '@onflow/flow-cadut';
 
 const script = `
-  pub fun main(message: String, metadata: {String:String}){
+  access(all) fun main(message: String, metadata: {String:String}){
     log(message)
   }
 `;
@@ -461,7 +461,7 @@ Parses the code and returns contract name
 import { extractContractName } from '@onflow/flow-cadut';
 
 const contract = `
-  pub contract HelloWorld{
+  access(all) contract HelloWorld{
     init(){}
   }
 `;
@@ -739,7 +739,7 @@ Syntax sugar for `Buffer.from(code, "utf8").toString("hex");`
 import { hexContract } from '@onflow/flow-cadut';
 
 const code = `
-  pub contract HelloWorld{
+  access(all) contract HelloWorld{
     init(){}
   }
 `;
@@ -787,7 +787,7 @@ import { executeScript } from '@onflow/flow-cadut';
 
 (async () => {
   const code = `
-    pub fun main():Int{
+    access(all) fun main():Int{
       return 42
     }
   `;

@@ -59,9 +59,9 @@ Our showcase will serve as a read-only grouping of NFTs stored in a user’s Flo
 Below the comment that says `Structs and Resources`, we can implement our `Showcase` and `NFTPointer` like the following:
 
 ```go
-pub struct NFTPointer {
-    pub let id: UInt64
-    pub let collection: Capability<&{NonFungibleToken.CollectionPublic}>
+access(all) struct NFTPointer {
+    access(all) let id: UInt64
+    access(all) let collection: Capability<&{NonFungibleToken.CollectionPublic}>
 
     init(id: UInt64, collection: Capability<&{NonFungibleToken.CollectionPublic}>) {
         self.id = id
@@ -69,16 +69,16 @@ pub struct NFTPointer {
     }
 }
 
-pub struct Showcase {
-    pub let name: String
-    priv let nfts: [NFTPointer]
+access(all) struct Showcase {
+    access(all) let name: String
+    access(self) let nfts: [NFTPointer]
 
     init(name: String, nfts: [NFTPointer]) {
         self.name = name
         self.nfts = nfts
     }
 
-    pub fun getNFTs(): [NFTPointer] {
+    access(all) fun getNFTs(): [NFTPointer] {
         return self.nfts
     }
 }
@@ -101,40 +101,40 @@ The `ShowcaseCollection` resource has a similar implementation to an NFT collect
 Here is the code for the `ShowcaseCollection` resource:
 
 ```go
-pub event ShowcaseAdded(name: String, to: Address?)
-pub event ShowcaseRemoved(name: String)
+access(all) event ShowcaseAdded(name: String, to: Address?)
+access(all) event ShowcaseRemoved(name: String)
 
-pub resource interface ShowcaseCollectionPublic {
-    pub fun getShowcases(): {String: Showcase}
-    pub fun getShowcase(name: String): Showcase?
+access(all) resource interface ShowcaseCollectionPublic {
+    access(all) fun getShowcases(): {String: Showcase}
+    access(all) fun getShowcase(name: String): Showcase?
 }
 
-pub resource ShowcaseCollection: ShowcaseCollectionPublic {
-    pub let showcases: {String: Showcase}
+access(all) resource ShowcaseCollection: ShowcaseCollectionPublic {
+    access(all) let showcases: {String: Showcase}
 
     init() {
         self.showcases = {}
     }
 
-    pub fun addShowcase(name: String, nfts: [NFTPointer]) {
+    access(all) fun addShowcase(name: String, nfts: [NFTPointer]) {
         emit ShowcaseAdded(name: name, to: self.owner?.address)
         self.showcases[name] = Showcase(name: name, nfts: nfts)
     }
 
-    pub fun removeShowcase(name: String) {
+    access(all) fun removeShowcase(name: String) {
         self.showcases.remove(key: name)
     }
 
-    pub fun getShowcases(): {String: Showcase} {
+    access(all) fun getShowcases(): {String: Showcase} {
         return self.showcases
     }
 
-    pub fun getShowcase(name: String): Showcase? {
+    access(all) fun getShowcase(name: String): Showcase? {
         return self.showcases[name]
     }
 }
 
-pub fun createShowcaseCollection(): @ShowcaseCollection {
+access(all) fun createShowcaseCollection(): @ShowcaseCollection {
     return <-create ShowcaseCollection()
 }
 ```
@@ -268,7 +268,7 @@ import NonFungibleToken from 0xNONFUNGIBLETOKENADDRESS
 import MetadataViews from 0xMETADATAVIEWSADDRESS
 import Flowcase from 0xFLOWCASEADDRESS
 
-pub fun main(address: Address): {String: [AnyStruct]}? {
+access(all) fun main(address: Address): {String: [AnyStruct]}? {
     let account = getAccount(address)
     var nfts: [AnyStruct] = []
     let flowcaseCap = account.getCapability<&{Flowcase.ShowcaseCollectionPublic}>(/public/flowcaseCollection)

@@ -150,14 +150,14 @@ To view the NFT from an wallet address, first and foremost, we highly recommend 
         import MonsterMaker from 0xMonsterMaker
         import MetadataViews from 0xMetadataViews
         
-        pub struct Monster {
-            pub let name: String
-            pub let description: String
-            pub let thumbnail: String
-            pub let itemID: UInt64
-            pub let resourceID: UInt64
-            pub let owner: Address
-            pub let component: MonsterMaker.MonsterComponent
+        access(all) struct Monster {
+            access(all) let name: String
+            access(all) let description: String
+            access(all) let thumbnail: String
+            access(all) let itemID: UInt64
+            access(all) let resourceID: UInt64
+            access(all) let owner: Address
+            access(all) let component: MonsterMaker.MonsterComponent
     
             init(
                 name: String,
@@ -178,7 +178,7 @@ To view the NFT from an wallet address, first and foremost, we highly recommend 
             }
         }
     
-        pub fun getMonsterById(address: Address, itemID: UInt64): Monster? {
+        access(all) fun getMonsterById(address: Address, itemID: UInt64): Monster? {
     
             if let collection = getAccount(address).getCapability<&MonsterMaker.Collection{NonFungibleToken.CollectionPublic, MonsterMaker.MonsterMakerCollectionPublic}>(MonsterMaker.CollectionPublicPath).borrow() {
                 
@@ -204,7 +204,7 @@ To view the NFT from an wallet address, first and foremost, we highly recommend 
             return nil
         }
     
-        pub fun main(address: Address): [Monster] {
+        access(all) fun main(address: Address): [Monster] {
             let account = getAccount(address)
             let collectionRef = account.getCapability(MonsterMaker.CollectionPublicPath)!.borrow<&{NonFungibleToken.CollectionPublic}>()
                 ?? panic("Could not borrow capability from public collection")

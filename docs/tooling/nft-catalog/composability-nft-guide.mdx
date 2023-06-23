@@ -44,25 +44,25 @@ Let’s start with a basic NFT
 ```go
 import NonFungibleToken from "./NonFungibleToken.cdc"
 
-pub contract MyFunNFT: NonFungibleToken {
+access(all) contract MyFunNFT: NonFungibleToken {
 
-    pub event ContractInitialized()
-    pub event Withdraw(id: UInt64, from: Address?)
-    pub event Deposit(id: UInt64, to: Address?)
-    pub event Minted(id: UInt64, editionID: UInt64, serialNumber: UInt64)
-    pub event Burned(id: UInt64)
+    access(all) event ContractInitialized()
+    access(all) event Withdraw(id: UInt64, from: Address?)
+    access(all) event Deposit(id: UInt64, to: Address?)
+    access(all) event Minted(id: UInt64, editionID: UInt64, serialNumber: UInt64)
+    access(all) event Burned(id: UInt64)
 
-    pub let CollectionStoragePath: StoragePath
-    pub let CollectionPublicPath: PublicPath
-    pub let CollectionPrivatePath: PrivatePath
+    access(all) let CollectionStoragePath: StoragePath
+    access(all) let CollectionPublicPath: PublicPath
+    access(all) let CollectionPrivatePath: PrivatePath
 
     /// The total number of NFTs that have been minted.
     ///
-    pub var totalSupply: UInt64
+    access(all) var totalSupply: UInt64
 
-    pub resource NFT: NonFungibleToken.INFT {
+    access(all) resource NFT: NonFungibleToken.INFT {
 
-        pub let id: UInt64
+        access(all) let id: UInt64
 
         init(
         ) {
@@ -77,11 +77,11 @@ pub contract MyFunNFT: NonFungibleToken {
     }
 
 
-     pub resource interface MyFunNFTCollectionPublic {
-        pub fun deposit(token: @NonFungibleToken.NFT)
-        pub fun getIDs(): [UInt64]
-        pub fun borrowNFT(id: UInt64): &NonFungibleToken.NFT
-        pub fun borrowMyFunNFT(id: UInt64): &MyFunNFT.NFT? {
+     access(all) resource interface MyFunNFTCollectionPublic {
+        access(all) fun deposit(token: @NonFungibleToken.NFT)
+        access(all) fun getIDs(): [UInt64]
+        access(all) fun borrowNFT(id: UInt64): &NonFungibleToken.NFT
+        access(all) fun borrowMyFunNFT(id: UInt64): &MyFunNFT.NFT? {
             post {
                 (result == nil) || (result?.id == id):
                     "Cannot borrow MyFunNFT reference: The ID of the returned reference is incorrect"
@@ -89,11 +89,11 @@ pub contract MyFunNFT: NonFungibleToken {
         }
     }
 
-    pub resource Collection: MyFunNFTCollectionPublic, NonFungibleToken.Provider, NonFungibleToken.Receiver, NonFungibleToken.CollectionPublic {
+    access(all) resource Collection: MyFunNFTCollectionPublic, NonFungibleToken.Provider, NonFungibleToken.Receiver, NonFungibleToken.CollectionPublic {
 
         /// A dictionary of all NFTs in this collection indexed by ID.
         ///
-        pub var ownedNFTs: @{UInt64: NonFungibleToken.NFT}
+        access(all) var ownedNFTs: @{UInt64: NonFungibleToken.NFT}
 
         init () {
             self.ownedNFTs <- {}
@@ -101,7 +101,7 @@ pub contract MyFunNFT: NonFungibleToken {
 
         /// Remove an NFT from the collection and move it to the caller.
         ///
-        pub fun withdraw(withdrawID: UInt64): @NonFungibleToken.NFT {
+        access(all) fun withdraw(withdrawID: UInt64): @NonFungibleToken.NFT {
             let token <- self.ownedNFTs.remove(key: withdrawID)
                 ?? panic("Requested NFT to withdraw does not exist in this collection")
 
@@ -112,7 +112,7 @@ pub contract MyFunNFT: NonFungibleToken {
 
         /// Deposit an NFT into this collection.
         ///
-        pub fun deposit(token: @NonFungibleToken.NFT) {
+        access(all) fun deposit(token: @NonFungibleToken.NFT) {
             let token <- token as! @MyFunNFT.NFT
 
             let id: UInt64 = token.id
@@ -127,7 +127,7 @@ pub contract MyFunNFT: NonFungibleToken {
 
         /// Return an array of the NFT IDs in this collection.
         ///
-        pub fun getIDs(): [UInt64] {
+        access(all) fun getIDs(): [UInt64] {
             return self.ownedNFTs.keys
         }
 
@@ -135,7 +135,7 @@ pub contract MyFunNFT: NonFungibleToken {
         ///
         /// This function panics if the NFT does not exist in this collection.
         ///
-        pub fun borrowNFT(id: UInt64): &NonFungibleToken.NFT {
+        access(all) fun borrowNFT(id: UInt64): &NonFungibleToken.NFT {
             return (&self.ownedNFTs[id] as &NonFungibleToken.NFT?)!
         }
 
@@ -144,7 +144,7 @@ pub contract MyFunNFT: NonFungibleToken {
         ///
         /// This function returns nil if the NFT does not exist in this collection.
         ///
-        pub fun borrowMyFunNFT(id: UInt64): &MyFunNFT.NFT? {
+        access(all) fun borrowMyFunNFT(id: UInt64): &MyFunNFT.NFT? {
             if self.ownedNFTs[id] != nil {
                 let ref = (&self.ownedNFTs[id] as auth &NonFungibleToken.NFT?)!
                 return ref as! &MyFunNFT.NFT
@@ -158,7 +158,7 @@ pub contract MyFunNFT: NonFungibleToken {
         }
     }
 
-    pub fun mintNFT(): @MyFunNFT.NFT {
+    access(all) fun mintNFT(): @MyFunNFT.NFT {
             let nft <- create MyFunNFT.NFT()
 
             MyFunNFT.totalSupply = MyFunNFT.totalSupply + (1 as UInt64)
@@ -166,7 +166,7 @@ pub contract MyFunNFT: NonFungibleToken {
             return <- nft
     }
 
-    pub fun createEmptyCollection(): @NonFungibleToken.Collection {
+    access(all) fun createEmptyCollection(): @NonFungibleToken.Collection {
         return <- create Collection()
     }
 
@@ -189,7 +189,7 @@ Although this is commendable progress, the current NFT implementation lacks data
 Firstly, we will introduce two global variables at the top of the code, alongside `totalSupply`:
 
 ```go
-pub var totalEditions: UInt64
+access(all) var totalEditions: UInt64
 
 access(self) let editions: {UInt64: Edition}
 ```
@@ -221,28 +221,28 @@ init() {
 These variables will facilitate monitoring the overall count of editions and accessing a specific edition through its assigned identifier. The `editions`dictionary will provide a means to extract particular information for each edition. Consequently, we will proceed to construct the `Edition`struct that we refer to within our `editions`object.
 
 ```go
-pub struct Edition {
+access(all) struct Edition {
 
-        pub let id: UInt64
+        access(all) let id: UInt64
 
         /// The number of NFTs minted in this edition.
         ///
         /// This field is incremented each time a new NFT is minted.
         ///
-        pub var size: UInt64
+        access(all) var size: UInt64
 
         /// The number of NFTs in this edition that have been burned.
         ///
         /// This field is incremented each time an NFT is burned.
         ///
-        pub var burned: UInt64
+        access(all) var burned: UInt64
 
-        pub fun supply(): UInt64 {
+        access(all) fun supply(): UInt64 {
             return self.size - self.burned
         }
 
         /// The metadata for this edition.
-        pub let metadata: Metadata
+        access(all) let metadata: Metadata
 
         init(
             id: UInt64,
@@ -273,10 +273,10 @@ pub struct Edition {
 This is a fundamental struct that we will employ to represent "Editions" within this NFT. It retains an `id`, the `size`, the `burned` count, and a bespoke `Metadata`object defined below. Please include this struct in your code as well.
 
 ```go
-pub struct Metadata {
+access(all) struct Metadata {
 
-        pub let name: String
-        pub let description: String
+        access(all) let name: String
+        access(all) let description: String
 
         init(
             name: String,
@@ -295,8 +295,8 @@ We will now proceed to modify the NFT resource to include additional fields that
 Add the following fields below `id` in the NFT resource:
 
 ```go
-pub let editionID: UInt64
-pub let serialNumber: UInt64
+access(all) let editionID: UInt64
+access(all) let serialNumber: UInt64
 ```
 
 Update the `init()` function in the NFT resource:
@@ -315,7 +315,7 @@ init(
 Update the `mintNFT()` function to adhere to the new `init()` and the `Edition` struct:
 
 ```go
-pub fun mintNFT(editionID: UInt64): @MyFunNFT.NFT {
+access(all) fun mintNFT(editionID: UInt64): @MyFunNFT.NFT {
             let edition = MyFunNFT.editions[editionID]
                 ?? panic("edition does not exist")
 
@@ -341,7 +341,7 @@ Excellent progress! We can now mint new NFTs for a specific edition. However, we
 
 ```go
 
-pub fun createEdition(
+access(all) fun createEdition(
             name: String,
             description: String,
         ): UInt64 {
@@ -365,7 +365,7 @@ pub fun createEdition(
             return edition.id
 }
 
-pub fun getEdition(id: UInt64): Edition? {
+access(all) fun getEdition(id: UInt64): Edition? {
         return MyFunNFT.editions[id]
 }
 
@@ -376,12 +376,12 @@ followed by adding the getEdition helper method.
 Let’s also add the new event:
 
 ```
-pub event ContractInitialized()
-pub event Withdraw(id: UInt64, from: Address?)
-pub event Deposit(id: UInt64, to: Address?)
-pub event Minted(id: UInt64, editionID: UInt64, serialNumber: UInt64)
-pub event Burned(id: UInt64)
-pub event EditionCreated(edition: Edition)
+access(all) event ContractInitialized()
+access(all) event Withdraw(id: UInt64, from: Address?)
+access(all) event Deposit(id: UInt64, to: Address?)
+access(all) event Minted(id: UInt64, editionID: UInt64, serialNumber: UInt64)
+access(all) event Burned(id: UInt64)
+access(all) event EditionCreated(edition: Edition)
 ```
 
 Your NFT should look something like this:
@@ -389,31 +389,31 @@ Your NFT should look something like this:
 ```go
 import NonFungibleToken from "./NonFungibleToken.cdc"
 
-pub contract MyFunNFT: NonFungibleToken {
+access(all) contract MyFunNFT: NonFungibleToken {
 
-    pub event ContractInitialized()
-    pub event Withdraw(id: UInt64, from: Address?)
-    pub event Deposit(id: UInt64, to: Address?)
-    pub event Minted(id: UInt64, editionID: UInt64, serialNumber: UInt64)
-    pub event Burned(id: UInt64)
-    pub event EditionCreated(edition: Edition)
+    access(all) event ContractInitialized()
+    access(all) event Withdraw(id: UInt64, from: Address?)
+    access(all) event Deposit(id: UInt64, to: Address?)
+    access(all) event Minted(id: UInt64, editionID: UInt64, serialNumber: UInt64)
+    access(all) event Burned(id: UInt64)
+    access(all) event EditionCreated(edition: Edition)
 
-    pub let CollectionStoragePath: StoragePath
-    pub let CollectionPublicPath: PublicPath
-    pub let CollectionPrivatePath: PrivatePath
+    access(all) let CollectionStoragePath: StoragePath
+    access(all) let CollectionPublicPath: PublicPath
+    access(all) let CollectionPrivatePath: PrivatePath
 
     /// The total number of NFTs that have been minted.
     ///
-    pub var totalSupply: UInt64
+    access(all) var totalSupply: UInt64
 
-    pub var totalEditions: UInt64
+    access(all) var totalEditions: UInt64
 
     access(self) let editions: {UInt64: Edition}
 
-    pub struct Metadata {
+    access(all) struct Metadata {
 
-        pub let name: String
-        pub let description: String
+        access(all) let name: String
+        access(all) let description: String
 
         init(
             name: String,
@@ -424,28 +424,28 @@ pub contract MyFunNFT: NonFungibleToken {
         }
     }
 
-    pub struct Edition {
+    access(all) struct Edition {
 
-        pub let id: UInt64
+        access(all) let id: UInt64
 
         /// The number of NFTs minted in this edition.
         ///
         /// This field is incremented each time a new NFT is minted.
         ///
-        pub var size: UInt64
+        access(all) var size: UInt64
 
         /// The number of NFTs in this edition that have been burned.
         ///
         /// This field is incremented each time an NFT is burned.
         ///
-        pub var burned: UInt64
+        access(all) var burned: UInt64
 
-        pub fun supply(): UInt64 {
+        access(all) fun supply(): UInt64 {
             return self.size - self.burned
         }
 
         /// The metadata for this edition.
-        pub let metadata: Metadata
+        access(all) let metadata: Metadata
 
         init(
             id: UInt64,
@@ -472,12 +472,12 @@ pub contract MyFunNFT: NonFungibleToken {
         }
     }
 
-    pub resource NFT: NonFungibleToken.INFT {
+    access(all) resource NFT: NonFungibleToken.INFT {
 
-        pub let id: UInt64
+        access(all) let id: UInt64
 
-        pub let editionID: UInt64
-        pub let serialNumber: UInt64
+        access(all) let editionID: UInt64
+        access(all) let serialNumber: UInt64
 
         init(
             editionID: UInt64,
@@ -496,11 +496,11 @@ pub contract MyFunNFT: NonFungibleToken {
     }
 
 
-     pub resource interface MyFunNFTCollectionPublic {
-        pub fun deposit(token: @NonFungibleToken.NFT)
-        pub fun getIDs(): [UInt64]
-        pub fun borrowNFT(id: UInt64): &NonFungibleToken.NFT
-        pub fun borrowMyFunNFT(id: UInt64): &MyFunNFT.NFT? {
+     access(all) resource interface MyFunNFTCollectionPublic {
+        access(all) fun deposit(token: @NonFungibleToken.NFT)
+        access(all) fun getIDs(): [UInt64]
+        access(all) fun borrowNFT(id: UInt64): &NonFungibleToken.NFT
+        access(all) fun borrowMyFunNFT(id: UInt64): &MyFunNFT.NFT? {
             post {
                 (result == nil) || (result?.id == id):
                     "Cannot borrow MyFunNFT reference: The ID of the returned reference is incorrect"
@@ -508,11 +508,11 @@ pub contract MyFunNFT: NonFungibleToken {
         }
     }
 
-    pub resource Collection: MyFunNFTCollectionPublic, NonFungibleToken.Provider, NonFungibleToken.Receiver, NonFungibleToken.CollectionPublic {
+    access(all) resource Collection: MyFunNFTCollectionPublic, NonFungibleToken.Provider, NonFungibleToken.Receiver, NonFungibleToken.CollectionPublic {
 
         /// A dictionary of all NFTs in this collection indexed by ID.
         ///
-        pub var ownedNFTs: @{UInt64: NonFungibleToken.NFT}
+        access(all) var ownedNFTs: @{UInt64: NonFungibleToken.NFT}
 
         init () {
             self.ownedNFTs <- {}
@@ -520,7 +520,7 @@ pub contract MyFunNFT: NonFungibleToken {
 
         /// Remove an NFT from the collection and move it to the caller.
         ///
-        pub fun withdraw(withdrawID: UInt64): @NonFungibleToken.NFT {
+        access(all) fun withdraw(withdrawID: UInt64): @NonFungibleToken.NFT {
             let token <- self.ownedNFTs.remove(key: withdrawID)
                 ?? panic("Requested NFT to withdraw does not exist in this collection")
 
@@ -531,7 +531,7 @@ pub contract MyFunNFT: NonFungibleToken {
 
         /// Deposit an NFT into this collection.
         ///
-        pub fun deposit(token: @NonFungibleToken.NFT) {
+        access(all) fun deposit(token: @NonFungibleToken.NFT) {
             let token <- token as! @MyFunNFT.NFT
 
             let id: UInt64 = token.id
@@ -546,7 +546,7 @@ pub contract MyFunNFT: NonFungibleToken {
 
         /// Return an array of the NFT IDs in this collection.
         ///
-        pub fun getIDs(): [UInt64] {
+        access(all) fun getIDs(): [UInt64] {
             return self.ownedNFTs.keys
         }
 
@@ -554,7 +554,7 @@ pub contract MyFunNFT: NonFungibleToken {
         ///
         /// This function panics if the NFT does not exist in this collection.
         ///
-        pub fun borrowNFT(id: UInt64): &NonFungibleToken.NFT {
+        access(all) fun borrowNFT(id: UInt64): &NonFungibleToken.NFT {
             return (&self.ownedNFTs[id] as &NonFungibleToken.NFT?)!
         }
 
@@ -563,7 +563,7 @@ pub contract MyFunNFT: NonFungibleToken {
         ///
         /// This function returns nil if the NFT does not exist in this collection.
         ///
-        pub fun borrowMyFunNFT(id: UInt64): &MyFunNFT.NFT? {
+        access(all) fun borrowMyFunNFT(id: UInt64): &MyFunNFT.NFT? {
             if self.ownedNFTs[id] != nil {
                 let ref = (&self.ownedNFTs[id] as auth &NonFungibleToken.NFT?)!
                 return ref as! &MyFunNFT.NFT
@@ -577,7 +577,7 @@ pub contract MyFunNFT: NonFungibleToken {
         }
     }
 
-    pub fun createEdition(
+    access(all) fun createEdition(
             name: String,
             description: String,
         ): UInt64 {
@@ -601,7 +601,7 @@ pub contract MyFunNFT: NonFungibleToken {
             return edition.id
     }
 
-    pub fun mintNFT(editionID: UInt64): @MyFunNFT.NFT {
+    access(all) fun mintNFT(editionID: UInt64): @MyFunNFT.NFT {
             let edition = MyFunNFT.editions[editionID]
                 ?? panic("edition does not exist")
 
@@ -620,7 +620,7 @@ pub contract MyFunNFT: NonFungibleToken {
             return <- nft
     }
 
-    pub fun createEmptyCollection(): @NonFungibleToken.Collection {
+    access(all) fun createEmptyCollection(): @NonFungibleToken.Collection {
         return <- create Collection()
     }
 
@@ -720,7 +720,7 @@ Let’s start off by importing the MetadataViews contract to the top
 
 Now we need to have our NFT resource extend the `MetadataViews.Resolver` interface.
 
-`pub resource NFT: NonFungibleToken.INFT, MetadataViews.Resolver`
+`access(all) resource NFT: NonFungibleToken.INFT, MetadataViews.Resolver`
 
 Now we must implement `getViews` and `resolveView`. The function `getViews` tells anyone which views this NFT supports and `resolveView` takes in a view type and returns the view itself. Some common views are:
 
@@ -737,7 +737,7 @@ _NFT Collection Display View_ - How to display the NFT collection on a website
 Let’s add the following `getViews` implementation to our `NFT` resource.
 
 ```go
-pub fun getViews(): [Type] {
+access(all) fun getViews(): [Type] {
             let views = [
                 Type<MetadataViews.Display>(),
                 Type<MetadataViews.ExternalURL>(),
@@ -755,7 +755,7 @@ pub fun getViews(): [Type] {
 These function helps inform what specific views this NFT supports. In the same NFT resource add the following method:
 
 ```go
-pub fun resolveView(_ view: Type): AnyStruct? {
+access(all) fun resolveView(_ view: Type): AnyStruct? {
             let edition = self.getEdition()
 
             switch view {
@@ -782,7 +782,7 @@ pub fun resolveView(_ view: Type): AnyStruct? {
 Now lets go over each individual helper function that you should add to your NFT resource
 
 ```go
-pub fun resolveDisplay(_ metadata: Metadata): MetadataViews.Display {
+access(all) fun resolveDisplay(_ metadata: Metadata): MetadataViews.Display {
             return MetadataViews.Display(
                 name: metadata.name,
                 description: metadata.description,
@@ -794,7 +794,7 @@ pub fun resolveDisplay(_ metadata: Metadata): MetadataViews.Display {
 1\. This creates a display view and takes in the edition data to populate the name and description. I included a dummy image but you would want to include a unique thumbnail
 
 ```go
-pub fun resolveExternalURL(): MetadataViews.ExternalURL {
+access(all) fun resolveExternalURL(): MetadataViews.ExternalURL {
             let collectionURL = "www.flow-nft-catalog.com"
             return MetadataViews.ExternalURL(collectionURL)
 }
@@ -803,7 +803,7 @@ pub fun resolveExternalURL(): MetadataViews.ExternalURL {
 2\. This is a link for the NFT. I’m putting in a placeholder site for now but this would be something for a specific NFT not an entire collection. So something like www.collection_site/nft_id
 
 ```go
-pub fun resolveNFTCollectionDisplay(): MetadataViews.NFTCollectionDisplay {
+access(all) fun resolveNFTCollectionDisplay(): MetadataViews.NFTCollectionDisplay {
             let media = MetadataViews.Media(
                 file: MetadataViews.HTTPFile(url: "https://assets-global.website-files.com/5f734f4dbd95382f4fdfa0ea/63ce603ae36f46f6bb67e51e_flow-logo.svg"),
                 mediaType: "image"
@@ -823,7 +823,7 @@ pub fun resolveNFTCollectionDisplay(): MetadataViews.NFTCollectionDisplay {
 3\. This is a view that indicates to apps on how to display information about the collection. The externalURL here would be the website for the entire collection. I have linked a temporary flow image but you could many image you want here.
 
 ```go
-pub fun resolveNFTCollectionData(): MetadataViews.NFTCollectionData {
+access(all) fun resolveNFTCollectionData(): MetadataViews.NFTCollectionData {
             return MetadataViews.NFTCollectionData(
                 storagePath: MyFunNFT.CollectionStoragePath,
                 publicPath: MyFunNFT.CollectionPublicPath,
@@ -841,7 +841,7 @@ pub fun resolveNFTCollectionData(): MetadataViews.NFTCollectionData {
 4\. This is a view that allows any Flow Dapps to have the information needed to setup a collection in any users account to support this NFT.
 
 ```go
-pub fun resolveRoyalties(): MetadataViews.Royalties {
+access(all) fun resolveRoyalties(): MetadataViews.Royalties {
             return MetadataViews.Royalties([])
 }
 ```
@@ -849,7 +849,7 @@ pub fun resolveRoyalties(): MetadataViews.Royalties {
 5\. For now we will skip Royalties but here you can specify which addresses should receive royalties and how much.
 
 ```go
-pub fun resolveEditionView(serialNumber: UInt64, size: UInt64): MetadataViews.Edition {
+access(all) fun resolveEditionView(serialNumber: UInt64, size: UInt64): MetadataViews.Edition {
             return MetadataViews.Edition(
                 name: "Edition",
                 number: serialNumber,
@@ -857,7 +857,7 @@ pub fun resolveEditionView(serialNumber: UInt64, size: UInt64): MetadataViews.Ed
             )
 }
 
-pub fun resolveSerialView(serialNumber: UInt64): MetadataViews.Serial {
+access(all) fun resolveSerialView(serialNumber: UInt64): MetadataViews.Serial {
     return MetadataViews.Serial(serialNumber)
 }
 ```
@@ -867,13 +867,13 @@ pub fun resolveSerialView(serialNumber: UInt64): MetadataViews.Serial {
 Lastly we need our `Collection` resource to support `MetadataViews.ResolverCollection`
 
 ```go
-pub resource Collection: MyFunNFTCollectionPublic, NonFungibleToken.Provider, NonFungibleToken.Receiver, NonFungibleToken.CollectionPublic, MetadataViews.ResolverCollection
+access(all) resource Collection: MyFunNFTCollectionPublic, NonFungibleToken.Provider, NonFungibleToken.Receiver, NonFungibleToken.CollectionPublic, MetadataViews.ResolverCollection
 ```
 
 You should see an error that you need to implement `borrowViewResolver`. This is a method a Dapp can use on the collection to borrow an NFT that inherits to the `MetadataViews.Resolver` interface so that `resolveView` that we implemented earlier can be called.
 
 ```go
-pub fun borrowViewResolver(id: UInt64): &AnyResource{MetadataViews.Resolver} {
+access(all) fun borrowViewResolver(id: UInt64): &AnyResource{MetadataViews.Resolver} {
             let nft = (&self.ownedNFTs[id] as auth &NonFungibleToken.NFT?)!
             let nftRef = nft as! &MyFunNFT.NFT
             return nftRef as &AnyResource{MetadataViews.Resolver}
