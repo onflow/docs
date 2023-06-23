@@ -74,7 +74,7 @@ To mint the Genesis Block, the Flow team will need the public Staking and Networ
 
 **If you have previously joined our networks, and you are generating your keys again. Ensure that you take a backup of your keys before generating it again**
 
-To facilitate this, the boot-tools directory comes with a script `push-keys` that will bundle your `*.access(all).json` files and send it to the flow team. You can inspect this script to make sure no private key material is being bundled or uploaded. The data not encrypted before being sent as the public keys involved are not sensitive.
+To facilitate this, the boot-tools directory comes with a script `push-keys` that will bundle your `*.pub.json` files and send it to the flow team. You can inspect this script to make sure no private key material is being bundled or uploaded. The data not encrypted before being sent as the public keys involved are not sensitive.
 
 In phase 2 of the bootstrapping process, the Flow team will need to securely issue each node a Random Beacon key. This key is again sensitive and unique to your node. To enable this, the `push-keys` script also generates another key pair called the Transit Key. The public key of this pair will be uploaded along with the Staking and Network keys, and your Random Beacon key will be encrypted with it before being sent to you. You must keep your Transit Key until you have received and decrypted your Random Beacon key from the Flow team.
 
@@ -137,7 +137,7 @@ bootstrap/
 │ ├── node-info.priv.json
 │ └── random-beacon.priv.json
 ├── public-genesis-information
-│ ├── dkg-data.access(all).json
+│ ├── dkg-data.pub.json
 │ ├── genesis-block.json
 │ ├── genesis-cluster-block.{cid}.json
 │ ├── genesis-cluster-block.{cid}.json
@@ -147,7 +147,7 @@ bootstrap/
 │ ├── genesis-qc.json
 │ ├── node-id
 │ ├── node-info.pub.{node id}.json
-│ └── node-infos.access(all).json
+│ └── node-infos.pub.json
 ├── <additional files...>
 ```
 
