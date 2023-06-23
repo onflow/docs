@@ -21,7 +21,7 @@ const main = async () => {
   await emulator.start()
 
   const code = `
-    access(all) fun main(metadata: {String: String}): String{
+    pub fun main(metadata: {String: String}): String{
       return metadata["name"]!
     }  
   `

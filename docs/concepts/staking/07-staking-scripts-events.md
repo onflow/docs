@@ -146,7 +146,7 @@ state of the staking process.
 ### NewEpoch
 
 ```cadence
-access(all) event NewEpoch(totalStaked: UFix64, totalRewardPayout: UFix64)
+pub event NewEpoch(totalStaked: UFix64, totalRewardPayout: UFix64)
 ```
 
 | Field             | Type   | Description                                                            |
@@ -159,7 +159,7 @@ Emitted by `FlowIDTableStaking.Admin.moveTokens()` when the tokens are moved bet
 ### NewWeeklyPayout
 
 ```cadence
-access(all) event NewWeeklyPayout(newPayout: UFix64)
+pub event NewWeeklyPayout(newPayout: UFix64)
 ```
 
 | Field     | Type   | Description                                                        |
@@ -173,7 +173,7 @@ After this event the `epochTokenPayout` is equal to the new value.
 ### NewStakingMinimums
 
 
-`access(all) event NewStakingMinimums(newMinimums: {UInt8: UFix64})`
+`pub event NewStakingMinimums(newMinimums: {UInt8: UFix64})`
 
 
 | Field           | Type            | Description                                                  |
@@ -185,7 +185,7 @@ Emitted by `FlowIDTableStaking.Admin.setMinimumStakeRequirements()` when the Adm
 ### NewDelegatorCutPercentage
 
 
-`access(all) event NewDelegatorCutPercentage(newCutPercentage: UFix64)`
+`pub event NewDelegatorCutPercentage(newCutPercentage: UFix64)`
 
 
 | Field            | Type   | Description                                                         |
@@ -207,7 +207,7 @@ These are events that concern the operation of a node.
 ### NewNodeCreated
 
 ```cadence
-access(all) event NewNodeCreated(nodeID: String, role: UInt8, amountCommitted: UFix64)
+pub event NewNodeCreated(nodeID: String, role: UInt8, amountCommitted: UFix64)
 ```
 
 | Field           | Type   | Description                                                                                                                                                                                         |
@@ -223,7 +223,7 @@ After this event is emitted for your node, you can begin to perform staking tran
 ### NodeRemovedAndRefunded
 
 ```cadence
-access(all) event NodeRemovedAndRefunded(nodeID: String, amount: UFix64)
+pub event NodeRemovedAndRefunded(nodeID: String, amount: UFix64)
 ```
 
 | Field  | Type   | Description                                                                                                     |
@@ -245,7 +245,7 @@ Events emitted when using delegation are described in the next section.
 ### TokensCommitted
 
 ```cadence
-access(all) event TokensCommitted(nodeID: String, amount: UFix64)
+pub event TokensCommitted(nodeID: String, amount: UFix64)
 ```
 
 | Field  | Type   | Description                                                                                                     |
@@ -267,7 +267,7 @@ After this event, the FLOW tokens will be part of the node's `tokensCommitted` b
 ### TokensStaked
 
 ```cadence
-access(all) event TokensStaked(nodeID: String, amount: UFix64)
+pub event TokensStaked(nodeID: String, amount: UFix64)
 ```
 
 | Field  | Type   | Description                                                                                                     |
@@ -282,7 +282,7 @@ After this event, the tokens will be part of the node's staked balance.
 ### TokensUnstaking
 
 ```cadence
-access(all) event TokensUnstaking(nodeID: String, amount: UFix64)
+pub event TokensUnstaking(nodeID: String, amount: UFix64)
 ```
 
 | Field  | Type   | Description                                                                                                     |
@@ -297,7 +297,7 @@ After this event, the tokens will be a part of the node operator's `tokensUnstak
 ### TokensUnstaked
 
 ```cadence
-access(all) event TokensUnstaked(nodeID: String, amount: UFix64)
+pub event TokensUnstaked(nodeID: String, amount: UFix64)
 ```
 
 | Field  | Type   | Description                                                                                                     |
@@ -311,7 +311,7 @@ when tokens are deposited into the `tokensUnstaked` pool:
 ### RewardsPaid
 
 ```cadence
-access(all) event RewardsPaid(nodeID: String, amount: UFix64)
+pub event RewardsPaid(nodeID: String, amount: UFix64)
 ```
 
 | Field  | Type   | Description                                                                                                     |
@@ -328,7 +328,7 @@ The Delegator rewards are paid at the same time, see `DelegatorRewardsPaid` belo
 ### UnstakedTokensWithdrawn
 
 ```cadence
-access(all) event UnstakedTokensWithdrawn(nodeID: String, amount: UFix64)
+pub event UnstakedTokensWithdrawn(nodeID: String, amount: UFix64)
 ```
 
 | Field  | Type   | Description                                                                                                     |
@@ -344,7 +344,7 @@ After this event, the FLOW tokens will be withdrawn to a newly created `Fungible
 ### RewardTokensWithdrawn
 
 ```cadence
-access(all) event RewardTokensWithdrawn(nodeID: String, amount: UFix64)
+pub event RewardTokensWithdrawn(nodeID: String, amount: UFix64)
 ```
 
 | Field  | Type   | Description                                                                                                     |
@@ -364,7 +364,7 @@ These are events that concern FLOW token delegation.
 ### NewDelegatorCreated
 
 ```cadence
-access(all) event NewDelegatorCreated(nodeID: String, delegatorID: UInt32)
+pub event NewDelegatorCreated(nodeID: String, delegatorID: UInt32)
 ```
 
 | Field       | Type   | Description                                                                                                     |
@@ -381,7 +381,7 @@ After this event, the new delegator is registered with the node.
 ### DelegatorTokensCommitted
 
 ```cadence
-access(all) event DelegatorTokensCommitted(nodeID: String, delegatorID: UInt32, amount: UFix64)
+pub event DelegatorTokensCommitted(nodeID: String, delegatorID: UInt32, amount: UFix64)
 ```
 
 | Field       | Type   | Description                                                                                                     |
@@ -404,7 +404,7 @@ After this event, the FLOW tokens will be part of the delegator's `tokensCommitt
 ### DelegatorTokensStaked
 
 ```cadence
-access(all) event DelegatorTokensStaked(nodeID: String, delegatorID: UInt32, amount: UFix64)
+pub event DelegatorTokensStaked(nodeID: String, delegatorID: UInt32, amount: UFix64)
 ```
 
 | Field       | Type   | Description                                                                                                     |
@@ -420,7 +420,7 @@ After this event, the tokens will be part of the delegator's staked balance.
 ### DelegatorTokensUnstaking
 
 ```cadence
-access(all) event DelegatorTokensUnstaking(nodeID: String, delegatorID: UInt32, amount: UFix64)
+pub event DelegatorTokensUnstaking(nodeID: String, delegatorID: UInt32, amount: UFix64)
 ```
 
 | Field       | Type   | Description                                                                                                     |
@@ -436,7 +436,7 @@ After this event, the tokens will be a part of the delegator's `tokensUnstaking`
 ### DelegatorTokensUnstaked
 
 ```cadence
-access(all) event DelegatorTokensUnstaked(nodeID: String, delegatorID: UInt32, amount: UFix64)
+pub event DelegatorTokensUnstaked(nodeID: String, delegatorID: UInt32, amount: UFix64)
 ```
 
 | Field       | Type   | Description                                                                                                     |
@@ -451,7 +451,7 @@ when tokens are deposited into the delegator's `tokensUnstaked` pool:
 ### DelegatorRewardsPaid
 
 ```cadence
-access(all) event DelegatorRewardsPaid(nodeID: String, delegatorID: UInt32, amount: UFix64)
+pub event DelegatorRewardsPaid(nodeID: String, delegatorID: UInt32, amount: UFix64)
 ```
 
 | Field       | Type   | Description                                                                                                     |
@@ -469,7 +469,7 @@ The Node rewards are paid at the same time, see `RewardsPaid` above.
 ### DelegatorUnstakedTokensWithdrawn
 
 ```cadence
-access(all) event DelegatorUnstakedTokensWithdrawn(nodeID: String, delegatorID: UInt32, amount: UFix64)
+pub event DelegatorUnstakedTokensWithdrawn(nodeID: String, delegatorID: UInt32, amount: UFix64)
 ```
 
 | Field       | Type   | Description                                                                                                     |
@@ -486,7 +486,7 @@ After this event, the FLOW tokens will be withdrawn to a newly created `Fungible
 ### DelegatorRewardTokensWithdrawn
 
 ```cadence
-access(all) event DelegatorRewardTokensWithdrawn(nodeID: String, delegatorID: UInt32, amount: UFix64)
+pub event DelegatorRewardTokensWithdrawn(nodeID: String, delegatorID: UInt32, amount: UFix64)
 ```
 
 | Field       | Type   | Description                                                                                                     |

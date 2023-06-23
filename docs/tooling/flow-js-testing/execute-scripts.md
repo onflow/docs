@@ -51,7 +51,7 @@ const main = async () => {
 
   // Define code and arguments we want to pass
   const code = `
-    access(all) fun main(message: String): Int{
+    pub fun main(message: String): Int{
       log(message)
 
       return 42

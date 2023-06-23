@@ -66,7 +66,7 @@ const content = readFile("./log.cdc");
 import { writeFile } from "@onflow/flow-cadut";
 
 const script = `
-  access(all) fun main(){
+  pub fun main(){
     log("Hello, Cadence")
   }
 `;

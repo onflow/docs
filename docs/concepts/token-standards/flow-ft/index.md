@@ -62,21 +62,21 @@ Right now we are using unsigned 64-bit fixed point numbers `UFix64` as the type 
 
 1- Getting metadata for the token smart contract via the fields of the contract:
 
-- `access(all) var totalSupply: UFix64`
+- `pub var totalSupply: UFix64`
     - The only required field of the contract.  It would be incremented when new tokens are minted and decremented when they are destroyed.
 - Event that gets emitted when the contract is initialized
-    - `access(all) event TokensInitialized(initialSupply: UFix64)`
+    - `pub event TokensInitialized(initialSupply: UFix64)`
 
 2- Retrieving the token fields of a `Vault` in an account that owns tokens.
 
 - Balance interface
-    - `access(all) var balance: UFix64`
+    - `pub var balance: UFix64`
         - The only required field of the `Vault` type
 
 3- Withdrawing a specific amount of tokens *amount* using the *withdraw* function of the owner's `Vault`
 
 - Provider interface
-    - `access(all) fun withdraw(amount: UFix64): @FungibleToken.Vault`
+    - `pub fun withdraw(amount: UFix64): @FungibleToken.Vault`
         - Conditions
             - the returned Vault's balance must equal the amount withdrawn
             - The amount withdrawn must be less than or equal to the balance
@@ -86,12 +86,12 @@ Right now we are using unsigned 64-bit fixed point numbers `UFix64` as the type 
     - Indicates how much was withdrawn and from what account the `Vault` is stored in.
       If the `Vault` is not in account storage when the event is emitted,
       `from` will be `nil`.
-    - `access(all) event TokensWithdrawn(amount: UFix64, from: Address?)`
+    - `pub event TokensWithdrawn(amount: UFix64, from: Address?)`
 
 4 - Depositing a specific amount of tokens *from* using the *deposit* function of the recipient's `Vault`
 
 - `Receiver` interface
-    - `access(all) fun deposit(from: @FungibleToken.Vault)`
+    - `pub fun deposit(from: @FungibleToken.Vault)`
     - Conditions
         - `from` balance must be non-zero
         - The resulting balance must be equal to the initial balance + the balance of `from`
@@ -99,7 +99,7 @@ Right now we are using unsigned 64-bit fixed point numbers `UFix64` as the type 
     - Indicates how much was deposited and to what account the `Vault` is stored in.
       If the `Vault` is not in account storage when the event is emitted,
       `to` will be `nil`.
-    - `access(all) event TokensDeposited(amount: UFix64, to: Address?)`
+    - `pub event TokensDeposited(amount: UFix64, to: Address?)`
 - Users could create custom `Receiver`s to trigger special code when transfers to them happen, like forwarding the tokens
   to another account, splitting them up, and much more.
 
@@ -110,7 +110,7 @@ Right now we are using unsigned 64-bit fixed point numbers `UFix64` as the type 
 
 5 - Creating an empty Vault resource
 
-- `access(all) fun createEmptyVault(): @FungibleToken.Vault`
+- `pub fun createEmptyVault(): @FungibleToken.Vault`
 - Defined in the contract 
   To create an empty `Vault`, the caller calls the function in the contract and stores the Vault in their storage.
 - Conditions:

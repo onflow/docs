@@ -60,7 +60,7 @@ It contains the finalized identity table for the upcoming epoch,
 as well as timing information for phase changes.
 
 ```cadence
-access(all) event EpochSetup (
+pub event EpochSetup (
 
     /// The counter for the upcoming epoch. Must be one greater than the
     /// counter for the current epoch.
@@ -104,7 +104,7 @@ from the Epoch Setup phase to the Epoch Commit phase.
 It is emitted only when all preparation for the upcoming epoch (QC and DKG) has been completed.
 
 ```cadence
-access(all) event EpochCommit (
+pub event EpochCommit (
 
     /// The counter for the upcoming epoch. Must be equal to the counter in the
     /// previous EpochSetup event.
@@ -130,43 +130,43 @@ and previous epochs. Metadata for all historical epochs is stored permenantely
 in the Epoch Smart Contract's storage.
 
 ```cadence
-access(all) struct EpochMetadata {
+pub struct EpochMetadata {
 
     /// The identifier for the epoch
-    access(all) let counter: UInt64
+    pub let counter: UInt64
 
     /// The seed used for generating the epoch setup
-    access(all) let seed: String
+    pub let seed: String
 
     /// The first view of this epoch
-    access(all) let startView: UInt64
+    pub let startView: UInt64
 
     /// The last view of this epoch
-    access(all) let endView: UInt64
+    pub let endView: UInt64
 
     /// The last view of the staking auction
-    access(all) let stakingEndView: UInt64
+    pub let stakingEndView: UInt64
 
     /// The total rewards that are paid out for the epoch
-    access(all) var totalRewards: UFix64
+    pub var totalRewards: UFix64
 
     /// The reward amounts that are paid to each individual node and its delegators
-    access(all) var rewardAmounts: [FlowIDTableStaking.RewardsBreakdown]
+    pub var rewardAmounts: [FlowIDTableStaking.RewardsBreakdown]
 
     /// Tracks if rewards have been paid for this epoch
-    access(all) var rewardsPaid: Bool
+    pub var rewardsPaid: Bool
 
     /// The organization of collector node IDs into clusters
     /// determined by a round robin sorting algorithm
-    access(all) let collectorClusters: [FlowClusterQC.Cluster]
+    pub let collectorClusters: [FlowClusterQC.Cluster]
 
     /// The Quorum Certificates from the ClusterQC contract
-    access(all) var clusterQCs: [FlowClusterQC.ClusterQC]
+    pub var clusterQCs: [FlowClusterQC.ClusterQC]
 
     /// The public keys associated with the Distributed Key Generation
     /// process that consensus nodes participate in
     /// Group key is the last element at index: length - 1
-    access(all) var dkgKeys: [String]
+    pub var dkgKeys: [String]
 }
 ```
 
@@ -188,7 +188,7 @@ The `FlowEpoch` smart contract also has a set of metadata that is configurable b
 for phase lengths, number of collector clusters, and inflation percentage.
 
 ```cadence
-access(all) struct Config {
+pub struct Config {
     /// The number of views in an entire epoch
     pub(set) var numViewsInEpoch: UInt64
 
@@ -226,10 +226,10 @@ This script does not require any arguments.
 The `FlowEpoch` smart contract always tracks the active phase of the current epoch.
 
 ```cadence
-access(all) enum EpochPhase: UInt8 {
-    access(all) case STAKINGAUCTION
-    access(all) case EPOCHSETUP
-    access(all) case EPOCHCOMMIT
+pub enum EpochPhase: UInt8 {
+    pub case STAKINGAUCTION
+    pub case EPOCHSETUP
+    pub case EPOCHCOMMIT
 }
 ```
 

@@ -116,8 +116,8 @@ Key 0   Public Key               c8a2a318b9099cc6...a0fe320dba7
         Hash Algorithm           SHA3_256
 
 Code             
-         access(all) contract Foo {
-                access(all) var bar: String
+         pub contract Foo {
+                pub var bar: String
          
                 init() {
                         self.bar = "Hello, World!"

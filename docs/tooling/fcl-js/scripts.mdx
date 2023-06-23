@@ -2,7 +2,7 @@
 
 Scripts let you run non-permanent Cadence scripts on the Flow blockchain. They can return data.
 
-They always need to contain a `access(all) fun main()` function as an entry point to the script.
+They always need to contain a `pub fun main()` function as an entry point to the script.
 
 `fcl.query` is a function that sends Cadence scripts to the chain and receives back decoded responses.
 
@@ -18,7 +18,7 @@ import * as fcl from "@onflow/fcl"
 
 const response = await fcl.query({
   cadence: `
-    access(all) fun main(): Int {
+    pub fun main(): Int {
       return 1 + 2
     }
   `
@@ -40,9 +40,9 @@ import * as fcl from "@onflow/fcl"
 
 const response = await fcl.query({
   cadence: `
-    access(all) struct Point {
-      access(all) var x: Int
-      access(all) var y: Int
+    pub struct Point {
+      pub var x: Int
+      pub var y: Int
 
       init(x: Int, y: Int) {
         self.x = x
@@ -50,7 +50,7 @@ const response = await fcl.query({
       }
     }
 
-    access(all) fun main(): [Point] {
+    pub fun main(): [Point] {
       return [Point(x: 1, y: 1), Point(x: 2, y: 2)]
     }
   `
@@ -85,9 +85,9 @@ fcl.config()
 
 const response = await fcl.query({
   cadence: `
-    access(all) struct Point {
-      access(all) var x: Int
-      access(all) var y: Int
+    pub struct Point {
+      pub var x: Int
+      pub var y: Int
 
       init(x: Int, y: Int) {
         self.x = x
@@ -95,7 +95,7 @@ const response = await fcl.query({
       }
     }
 
-    access(all) fun main(): [Point] {
+    pub fun main(): [Point] {
       return [Point(x: 1, y: 1), Point(x: 2, y: 2)]
     }
   `

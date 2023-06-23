@@ -69,7 +69,7 @@ import * as fcl from "@onflow/fcl";
 
 const result = await fcl.query({
   cadence: `
-    access(all) fun main(a: Int, b: Int, addr: Address): Int {
+    pub fun main(a: Int, b: Int, addr: Address): Int {
       log(addr)
       return a + b
     }
