@@ -34,10 +34,10 @@ and fields (in structures, and resources) are always only able to be written
 to and mutated (modified, such as by indexed assignment or methods like `append`)
 in the scope where it is defined (self).
 
-There are four levels of access control defined in the code that specify where
+There are five levels of access control defined in the code that specify where
 a declaration can be accessed or called.
 
-- **Public** or **access(all)** means the declaration
+- Public or **access(all)** means the declaration
   is accessible/visible in all scopes.
 
   This includes the current scope, inner scopes, and the outer scopes.
@@ -47,7 +47,16 @@ a declaration can be accessed or called.
   This does not allow the declaration to be publicly writable though.
 
   An element is made publicly accessible / by any code
-  by using the `access(all)` or `access(all)` keywords.
+  by using the `access(all)` keyword.
+
+- Entitled access means the declaration is only accessible/visible
+  to owned values, or to references that are authorized to the required entitlements.
+
+  For example, an `access(E, F)` field can only be accessed by an owned value, 
+  or a reference to a value that is authorized to the `E` and `F` entitlements. 
+
+  An element is made accessible by code in the same containing type
+  by using the `access(E)` syntax, described in more detail in the entitlements section below.
 
 - **access(account)** means the declaration is only accessible/visible in the
   scope of the entire account where it is defined. This means that
@@ -84,10 +93,12 @@ To summarize the behavior for variable declarations, constant declarations, and 
 | `let`            | `access(contract)` | Current, inner, and containing contract              | *None*            | Current and inner |
 | `let`            | `access(account)`  | Current, inner, and other contracts in same account  | *None*            | Current and inner |
 | `let`            | `access(all)`      | **All**                                              | *None*            | Current and inner |
+| `let`            | `access(E)`        | **All** with required entitlements                   | *None*            | Current and inner |
 | `var`            | `access(self)`     | Current and inner                                    | Current and inner | Current and inner |
 | `var`            | `access(contract)` | Current, inner, and containing contract              | Current and inner | Current and inner |
 | `var`            | `access(account)`  | Current, inner, and other contracts in same account  | Current and inner | Current and inner |
 | `var`            | `access(all)`      | **All**                                              | Current and inner | Current and inner |
+| `var`            | `access(E)`        | **All** with required entitlements                   | Current and inner | Current and inner |
 
 To summarize the behavior for functions:
 
@@ -96,7 +107,8 @@ To summarize the behavior for functions:
 | `access(self)`     | Current and inner                                   |
 | `access(contract)` | Current, inner, and containing contract             |
 | `access(account)`  | Current, inner, and other contracts in same account |
-| ``access(all)`     | **All**                                             |
+| `access(all)`      | **All**                                             |
+| `access(E)`        | **All** with required entitlements                  |
 
 Declarations of structures, resources, events, and [contracts](./contracts.mdx) can only be public.
 However, even though the declarations/types are publicly visible,
@@ -205,3 +217,86 @@ some.f[3] = 1
 // Valid: can call non-mutating methods on a public field in outer scope
 some.f.contains(0)
 ```
+
+** Entitlements **
+
+Entitlements are a unique feature to Cadence that provide granular access control to each member of a struct or resource. 
+Entitlements can be declared in like other types in a program using special syntax:
+
+```cadence
+entitlement E
+entitlement F
+```
+
+creates two entitlements called `E` and `F`. 
+If using entitlements defined in another contract, the same qualified name syntax as regular is used:
+
+```cadence
+contract C {
+  entitlement E
+}
+```
+
+Outside of `C`, `E` is used with `C.E` syntax. 
+
+Entitlements can be used in access modifiers on struct and resource members to specify which references to those composites
+are allowed to access those members. 
+An access modifier can include more than one entitlement, joined with either an `|`, to indicate disjunction or "or", 
+or a `,`, to indicate conjunction or "and". So, for example:
+
+```cadenc
+access(all) resource SomeResource {
+  
+  // requires an `E` entitlement to read this field
+  access(E) let a: Int
+
+  // requires either an `E` or an `F` entitlement to read this field
+  access(E | F) let b: Int
+
+   // requires both an `E` and an `F` entitlement to read this field
+  access(E, F) let b: Int
+
+  // intializers omitted for brevity
+  // ...
+}
+```
+
+Given some values with the annotated types:
+
+```cadence
+
+let r: @SomeResource = // ...
+let refE: auth(E) &SomeResource = // ...
+let refF: auth(F) &SomeResource = // ...
+let refEF: auth(E, F) &SomeResource = // ...
+
+// valid, because `r` is owned and thus is "fully entitled"
+r.a
+// valid, because `r` is owned and thus is "fully entitled"
+r.b
+// valid, because `r` is owned and thus is "fully entitled"
+r.c
+
+// valid, because `refE` has an `E` entitlement as required
+refE.a
+// valid, because `refE` has one of the two required entitlements
+refE.b
+// invalid, because `refE` only has one of the two required entitlements
+refE.c
+
+// invalid, because `refF` has an `E` entitlement, not an `F`
+refF.a
+// valid, because `refF` has one of the two required entitlements
+refF.b
+// invalid, because `refF` only has one of the two required entitlements
+refF.c
+
+// valid, because `refEF` has an `E` entitlement
+refEF.a
+// valid, because `refEF` has both of the two required entitlements
+refEF.b
+// valid, because `refEF` has both of the two required entitlements
+refEF.c
+```
+
+More detail about authorized references can be found in the [reference documentation](./references.mdx). 
