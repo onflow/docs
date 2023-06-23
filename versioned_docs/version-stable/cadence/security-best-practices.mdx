@@ -57,8 +57,8 @@ If given a less-specific type, cast to the more specific type that is expected. 
 
 ## Access Control
 
-Declaring a field as [`pub/access(all)`](./language/access-control.md) only protects from replacing the field’s value, but the value itself can still be mutated if it is mutable. Remember that containers, like dictionaries, and arrays, are mutable.
+Declaring a field as [`access(all)/access(all)`](./language/access-control.md) only protects from replacing the field’s value, but the value itself can still be mutated if it is mutable. Remember that containers, like dictionaries, and arrays, are mutable.
 
 Prefer non-public access to a mutable state. That state may also be nested. For example, a child may still be mutated even if its parent exposes it through a field with non-settable access.
 
-Do not use the `pub/access(all)` modifier on fields and functions unless necessary. Prefer `priv/access(self)`, or `access(contract)` and `access(account)` when other types in the contract or account need to have access.
+Do not use the `access(all)/access(all)` modifier on fields and functions unless necessary. Prefer `access(self)/access(self)`, or `access(contract)` and `access(account)` when other types in the contract or account need to have access.

@@ -149,13 +149,13 @@ resource interface HasCount {
 // Declare a resource named `Counter` that conforms to `HasCount`
 //
 resource Counter: HasCount {
-    pub var count: Int
+    access(all) var count: Int
 
-    pub init(count: Int) {
+    access(all) init(count: Int) {
         self.count = count
     }
 
-    pub fun increment(by amount: Int) {
+    access(all) fun increment(by amount: Int) {
         self.count = self.count + amount
     }
 }

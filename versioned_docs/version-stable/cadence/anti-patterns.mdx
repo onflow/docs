@@ -31,7 +31,7 @@ which provides the opportunity for bad actors to take advantage of.
 
 // They could deploy the contract with an Ethereum-style access control list functionality
 
-pub fun transferNFT(id: UInt64, owner: AuthAccount) {
+access(all) fun transferNFT(id: UInt64, owner: AuthAccount) {
     assert(owner(id) == owner.address)
 
     transfer(id)
@@ -43,7 +43,7 @@ pub fun transferNFT(id: UInt64, owner: AuthAccount) {
 // should not be accessible in this function
 // BAD
 
-pub fun transferNFT(id: UInt64, owner: AuthAccount) {
+access(all) fun transferNFT(id: UInt64, owner: AuthAccount) {
     assert(owner(id) == owner.address)
 
     transfer(id)
@@ -201,9 +201,9 @@ if these fields are mistakenly made public.
 Ex:
 
 ```cadence
-pub contract Array {
+access(all) contract Array {
     // array is intended to be initialized to something constant
-    pub let shouldBeConstantArray: [Int]
+    access(all) let shouldBeConstantArray: [Int]
 }
 ```
 
@@ -225,7 +225,7 @@ Make sure that any array or dictionary fields in contracts, structs, or resource
 are `access(contract)` or `access(self)` unless they need to be intentionally made public.
 
 ```cadence
-pub contract Array {
+access(all) contract Array {
     // array is inteded to be initialized to something constant
     access(self) let shouldBeConstantArray: [Int]
 }
@@ -252,14 +252,14 @@ The admin resource can then be `link()`ed to a private path in an admin's accoun
 // Pseudo-code
 
 // BAD
-pub contract Currency {
-    pub resource Admin {
-        pub fun mintTokens()
+access(all) contract Currency {
+    access(all) resource Admin {
+        access(all) fun mintTokens()
     }
 
     // Anyone in the network can call this function
     // And use the Admin resource to mint tokens
-    pub fun createAdmin(): @Admin {
+    access(all) fun createAdmin(): @Admin {
         return <-create Admin()
     }
 }
@@ -267,12 +267,12 @@ pub contract Currency {
 // This contract makes the admin creation private and in the initializer
 // so that only the one who controls the account can mint tokens
 // GOOD
-pub contract Currency {
-    pub resource Admin {
-        pub fun mintTokens()
+access(all) contract Currency {
+    access(all) resource Admin {
+        access(all) fun mintTokens()
 
         // Only an admin can create new Admins
-        pub fun createAdmin(): @Admin {
+        access(all) fun createAdmin(): @Admin {
             return <-create Admin()
         }
     }
@@ -313,14 +313,14 @@ which increments the number that tracks the play IDs and emits an event:
 // Simplified Code
 // BAD
 //
-pub contract TopShot {
+access(all) contract TopShot {
 
     // The Record that is used to track every unique play ID
-    pub var nextPlayID: UInt32
+    access(all) var nextPlayID: UInt32
 
-    pub struct Play {
+    access(all) struct Play {
 
-        pub let playID: UInt32
+        access(all) let playID: UInt32
 
         init() {
 
@@ -348,24 +348,24 @@ that creates the plays.
 // Update contract state in admin resource functions
 // GOOD
 //
-pub contract TopShot {
+access(all) contract TopShot {
 
     // The Record that is used to track every unique play ID
-    pub var nextPlayID: UInt32
+    access(all) var nextPlayID: UInt32
 
-    pub struct Play {
+    access(all) struct Play {
 
-        pub let playID: UInt32
+        access(all) let playID: UInt32
 
         init() {
             self.playID = TopShot.nextPlayID
         }
     }
 
-    pub resource Admin {
+    access(all) resource Admin {
 
         // Protected within the private admin resource
-        pub fun createPlay() {
+        access(all) fun createPlay() {
             // Create the new Play
             var newPlay = Play()
 

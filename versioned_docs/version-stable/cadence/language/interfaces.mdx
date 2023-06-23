@@ -60,9 +60,7 @@ or the field requirement may specify nothing,
 in which case the implementation may either be a variable or a constant field.
 
 Field requirements and function requirements must specify the required level of access.
-The access must be at least be public, so the `pub` keyword must be provided.
-Variable field requirements can be specified to also be publicly settable
-by using the `pub(set)` keyword.
+The access must be at least be public, so the `access(all)` keyword must be provided.
 
 Interfaces can be used in types.
 This is explained in detail in the section [Interfaces in Types](#interfaces-in-types).
@@ -72,16 +70,16 @@ For now, the syntax `{I}` can be read as the type of any value that implements t
 // Declare a resource interface for a fungible token.
 // Only resources can implement this resource interface.
 //
-pub resource interface FungibleToken {
+access(all) resource interface FungibleToken {
 
     // Require the implementing type to provide a field for the balance
-    // that is readable in all scopes (`pub`).
+    // that is readable in all scopes (`access(all)`).
     //
     // Neither the `var` keyword, nor the `let` keyword is used,
     // so the field may be implemented as either a variable
     // or as a constant field.
     //
-    pub balance: Int
+    access(all) balance: Int
 
     // Require the implementing type to provide an initializer that
     // given the initial balance, must initialize the balance field.
@@ -111,7 +109,7 @@ pub resource interface FungibleToken {
     // The type `{FungibleToken}` is the type of any resource
     // that implements the resource interface `FungibleToken`.
     //
-    pub fun withdraw(amount: Int): @{FungibleToken} {
+    access(all) fun withdraw(amount: Int): @{FungibleToken} {
         pre {
             amount > 0:
                 "the amount must be positive"
@@ -137,7 +135,7 @@ pub resource interface FungibleToken {
     // The parameter type `{FungibleToken}` is the type of any resource
     // that implements the resource interface `FungibleToken`.
     //
-    pub fun deposit(_ token: @{FungibleToken}) {
+    access(all) fun deposit(_ token: @{FungibleToken}) {
         post {
             self.balance == before(self.balance) + token.balance:
                 "the amount must be added to the balance"
@@ -184,7 +182,7 @@ in terms of name, parameter argument labels, parameter types, and the return typ
 // It has a variable field named `balance`, that can be written
 // by functions of the type, but outer scopes can only read it.
 //
-pub resource ExampleToken: FungibleToken {
+access(all) resource ExampleToken: FungibleToken {
 
     // Implement the required field `balance` for the `FungibleToken` interface.
     // The interface does not specify if the field must be variable, constant,
@@ -192,7 +190,7 @@ pub resource ExampleToken: FungibleToken {
     // but limit outer scopes to only read from the field, it is declared variable,
     // and only has public access (non-settable).
     //
-    pub var balance: Int
+    access(all) var balance: Int
 
     // Implement the required initializer for the `FungibleToken` interface:
     // accept an initial balance and initialize the `balance` field.
@@ -216,7 +214,7 @@ pub resource ExampleToken: FungibleToken {
     // NOTE: neither the precondition nor the postcondition declared
     // in the interface have to be repeated here in the implementation.
     //
-    pub fun withdraw(amount: Int): @ExampleToken {
+    access(all) fun withdraw(amount: Int): @ExampleToken {
         self.balance = self.balance - amount
         return create ExampleToken(balance: amount)
     }
@@ -237,7 +235,7 @@ pub resource ExampleToken: FungibleToken {
     // NOTE: neither the precondition nor the postcondition declared
     // in the interface have to be repeated here in the implementation.
     //
-    pub fun deposit(_ token: @{FungibleToken}) {
+    access(all) fun deposit(_ token: @{FungibleToken}) {
         if let exampleToken <- token as? ExampleToken {
             self.balance = self.balance + exampleToken.balance
             destroy exampleToken
@@ -287,26 +285,25 @@ token.withdraw(amount: 90)
 The access level for variable fields in an implementation
 may be less restrictive than the interface requires.
 For example, an interface may require a field to be
-at least public (i.e. the `pub` keyword is specified),
+at least accessible in the defining contract 
+(i.e. the `access(contract)` modifier is used),
 and an implementation may provide a variable field which is public,
-but also publicly settable (the `pub(set)` keyword is specified).
+(the `access(all)` modifier is used).
 
 ```cadence
-pub struct interface AnInterface {
-    // Require the implementing type to provide a publicly readable
+access(all) struct interface AnInterface {
+    // Require the implementing type to provide a contract-readable
     // field named `a` that has type `Int`. It may be a variable
     // or a constant field.
     //
-    pub a: Int
+    acccess(contract) a: Int
 }
 
-pub struct AnImplementation: AnInterface {
-    // Declare a publicly settable variable field named `a` that has type `Int`.
+access(all) struct AnImplementation: AnInterface {
+    // Declare a public variable field named `a` that has type `Int`.
     // This implementation satisfies the requirement for interface `AnInterface`:
-    // The field is at least publicly readable, but this implementation also
-    // allows the field to be written to in all scopes.
     //
-    pub(set) var a: Int
+    access(all) var a: Int
 
     init(a: Int) {
         self.a = a
@@ -329,18 +326,18 @@ when accessing a value of such a type.
 // Require implementing types to provide a field which returns the area,
 // and a function which scales the shape by a given factor.
 //
-pub struct interface Shape {
-    pub fun getArea(): Int
-    pub fun scale(factor: Int)
+access(all) struct interface Shape {
+    access(all) fun getArea(): Int
+    access(all) fun scale(factor: Int)
 }
 
 // Declare a structure named `Square` the implements the `Shape` interface.
 //
-pub struct Square: Shape {
+access(all) struct Square: Shape {
     // In addition to the required fields from the interface,
     // the type can also declare additional fields.
     //
-    pub var length: Int
+    access(all) var length: Int
 
     // Provided the field `area`  which is required to conform
     // to the interface `Shape`.
@@ -348,36 +345,36 @@ pub struct Square: Shape {
     // Since `area` was not declared as a constant, variable,
     // field in the interface, it can be declared.
     //
-    pub fun getArea(): Int {
+    access(all) fun getArea(): Int {
         return self.length * self.length
     }
 
-    pub init(length: Int) {
+    access(all) init(length: Int) {
         self.length = length
     }
 
     // Provided the implementation of the function `scale`
     // which is required to conform to the interface `Shape`.
     //
-    pub fun scale(factor: Int) {
+    access(all) fun scale(factor: Int) {
         self.length = self.length * factor
     }
 }
 
 // Declare a structure named `Rectangle` that also implements the `Shape` interface.
 //
-pub struct Rectangle: Shape {
-    pub var width: Int
-    pub var height: Int
+access(all) struct Rectangle: Shape {
+    access(all) var width: Int
+    access(all) var height: Int
 
     // Provided the field `area  which is required to conform
     // to the interface `Shape`.
     //
-    pub fun getArea(): Int {
+    access(all) fun getArea(): Int {
         return self.width * self.height
     }
 
-    pub init(width: Int, height: Int) {
+    access(all) init(width: Int, height: Int) {
         self.width = width
         self.height = height
     }
@@ -385,7 +382,7 @@ pub struct Rectangle: Shape {
     // Provided the implementation of the function `scale`
     // which is required to conform to the interface `Shape`.
     //
-    pub fun scale(factor: Int) {
+    access(all) fun scale(factor: Int) {
         self.width = self.width * factor
         self.height = self.height * factor
     }
@@ -528,8 +525,8 @@ For example, a resource interface may require an implementing type to provide a 
 // which must have a field named `balance`.
 //
 resource interface FungibleToken {
-    pub resource Vault {
-        pub balance: Int
+    access(all) resource Vault {
+        access(all) balance: Int
     }
 }
 // Declare a resource named `ExampleToken` that implements the `FungibleToken` interface.
@@ -537,8 +534,8 @@ resource interface FungibleToken {
 // The nested type `Vault` must be provided to conform to the interface.
 //
 resource ExampleToken: FungibleToken {
-    pub resource Vault {
-        pub var balance: Int
+    access(all) resource Vault {
+        access(all) var balance: Int
         init(balance: Int) {
             self.balance = balance
         }

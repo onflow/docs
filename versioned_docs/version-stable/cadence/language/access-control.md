@@ -18,7 +18,7 @@ In Flow and Cadence, there are two types of access control:
     by providing references to the objects.
 
 2. Access control within contracts and objects
-   using `pub` and `access` keywords.
+   using `access` keywords.
 
    For the explanations of the following keywords, we assume that
    the defining type is either a contract, where capability security
@@ -47,7 +47,7 @@ a declaration can be accessed or called.
   This does not allow the declaration to be publicly writable though.
 
   An element is made publicly accessible / by any code
-  by using the `pub` or `access(all)` keywords.
+  by using the `access(all)` or `access(all)` keywords.
 
 - **access(account)** means the declaration is only accessible/visible in the
   scope of the entire account where it is defined. This means that
@@ -76,30 +76,27 @@ a declaration can be accessed or called.
 
 **Access level must be specified for each declaration**
 
-The `(set)` suffix can be used to make variables also publicly writable and mutable.
-
 To summarize the behavior for variable declarations, constant declarations, and fields:
 
-| Declaration kind | Access modifier          | Read scope                                           | Write scope       | Mutate scope      |
-|:-----------------|:-------------------------|:-----------------------------------------------------|:------------------|:------------------|
-| `let`            | `priv` / `access(self)`  | Current and inner                                    | *None*            | Current and inner |
-| `let`            | `access(contract)`       | Current, inner, and containing contract              | *None*            | Current and inner |
-| `let`            | `access(account)`        | Current, inner, and other contracts in same account  | *None*            | Current and inner |
-| `let`            | `pub`,`access(all)`      | **All**                                              | *None*            | Current and inner |
-| `var`            | `access(self)`           | Current and inner                                    | Current and inner | Current and inner |
-| `var`            | `access(contract)`       | Current, inner, and containing contract              | Current and inner | Current and inner |
-| `var`            | `access(account)`        | Current, inner, and other contracts in same account  | Current and inner | Current and inner |
-| `var`            | `pub` / `access(all)`    | **All**                                              | Current and inner | Current and inner |
-| `var`            | `pub(set)`               | **All**                                              | **All**           | **All**           |
+| Declaration kind | Access modifier    | Read scope                                           | Write scope       | Mutate scope      |
+|:-----------------|:-------------------|:-----------------------------------------------------|:------------------|:------------------|
+| `let`            | `access(self)`     | Current and inner                                    | *None*            | Current and inner |
+| `let`            | `access(contract)` | Current, inner, and containing contract              | *None*            | Current and inner |
+| `let`            | `access(account)`  | Current, inner, and other contracts in same account  | *None*            | Current and inner |
+| `let`            | `access(all)`      | **All**                                              | *None*            | Current and inner |
+| `var`            | `access(self)`     | Current and inner                                    | Current and inner | Current and inner |
+| `var`            | `access(contract)` | Current, inner, and containing contract              | Current and inner | Current and inner |
+| `var`            | `access(account)`  | Current, inner, and other contracts in same account  | Current and inner | Current and inner |
+| `var`            | `access(all)`      | **All**                                              | Current and inner | Current and inner |
 
 To summarize the behavior for functions:
 
-| Access modifier          | Access scope                                        |
-|:-------------------------|:----------------------------------------------------|
-| `priv` / `access(self)`  | Current and inner                                   |
-| `access(contract)`       | Current, inner, and containing contract             |
-| `access(account)`        | Current, inner, and other contracts in same account |
-| `pub` / `access(all)`    | **All**                                             |
+| Access modifier    | Access scope                                        |
+|:-------------------|:----------------------------------------------------|
+| `access(self)`     | Current and inner                                   |
+| `access(contract)` | Current, inner, and containing contract             |
+| `access(account)`  | Current, inner, and other contracts in same account |
+| `access(all)`      | **All**                                             |
 
 Declarations of structures, resources, events, and [contracts](./contracts.mdx) can only be public.
 However, even though the declarations/types are publicly visible,
@@ -112,13 +109,13 @@ access(self) let a = 1
 
 // Declare a public constant, accessible/visible in all scopes.
 //
-pub let b = 2
+access(all) let b = 2
 ```
 
 ```cadence
 // Declare a public struct, accessible/visible in all scopes.
 //
-pub struct SomeStruct {
+access(all) struct SomeStruct {
 
     // Declare a private constant field which is only readable
     // in the current and inner scopes.
@@ -127,7 +124,7 @@ pub struct SomeStruct {
 
     // Declare a public constant field which is readable in all scopes.
     //
-    pub let b: Int
+    access(all) let b: Int
 
     // Declare a private variable field which is only readable
     // and writable in the current and inner scopes.
@@ -138,16 +135,11 @@ pub struct SomeStruct {
     // so it is only writable in the current and inner scopes,
     // and readable in all scopes.
     //
-    pub var d: Int
-
-    // Declare a public variable field which is settable,
-    // so it is readable and writable in all scopes.
-    //
-    pub(set) var e: Int
+    access(all) var d: Int
 
     // Arrays and dictionaries declared without (set) cannot be
     // mutated in external scopes
-    pub let arr: [Int]
+    access(all) let arr: [Int]
 
     // The initializer is omitted for brevity.
 
@@ -160,7 +152,7 @@ pub struct SomeStruct {
 
     // Declare a public function which is callable in all scopes.
     //
-    pub fun privateTest() {
+    access(all) fun publicTest() {
         // ...
     }
 
@@ -201,14 +193,6 @@ some.d
 // Invalid: cannot set public variable field in outer scope.
 //
 some.d = 4
-
-// Valid: can read publicly settable variable field in outer scope.
-//
-some.e
-
-// Valid: can set publicly settable variable field in outer scope.
-//
-some.e = 5
 
 // Invalid: cannot mutate a public field in outer scope.
 //

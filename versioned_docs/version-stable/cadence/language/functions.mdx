@@ -490,7 +490,7 @@ or passed to functions as arguments.
 // Declare a function named `transform` which applies a function to each element
 // of an array of integers and returns a new array of the results.
 //
-pub fun transform(function: ((Int): Int), integers: [Int]): [Int] {
+access(all) fun transform(function: ((Int): Int), integers: [Int]): [Int] {
     var newIntegers: [Int] = []
     for integer in integers {
         newIntegers.append(function(integer))
@@ -498,7 +498,7 @@ pub fun transform(function: ((Int): Int), integers: [Int]): [Int] {
     return newIntegers
 }
 
-pub fun double(_ integer: Int): Int {
+access(all) fun double(_ integer: Int): Int {
     return integer * 2
 }
 
