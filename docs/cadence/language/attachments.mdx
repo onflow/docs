@@ -14,7 +14,7 @@ without requiring the original author of the type to plan or account for the int
 ## Declaring Attachments
 
 Attachments are declared with the `attachment` keyword, which would be declared using a new form of composite declaration:
-`access(all) attachment <Name> for <Type>: <Conformances> { ... }`, where the attachment functions and fields are declared in the body.
+`attachment <Name> for <Type>: <Conformances> { ... }`, where the attachment functions and fields are declared in the body.
 As such, the following would be examples of legal declarations of attachments:
 
 ```cadence
@@ -36,7 +36,7 @@ Note that the base type may be either a concrete composite type or an interface.
 In the former case, the attachment is only usable on values specifically of that base type,
 while in the case of an interface the attachment is usable on any type that conforms to that interface.
 
-As with other type declarations, attachments may only have a `access(all)` access modifier (if one is present).
+Unlike other type declarations, attachments may use an `access(all)` access modifier (if one is present).
 
 The body of the attachment follows the same declaration rules as composites.
 In particular, they may have both field and function members,
