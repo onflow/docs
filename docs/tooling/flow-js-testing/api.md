@@ -163,8 +163,8 @@ import {
 
   const name = "Wallet"
   const code = `
-        access(all) contract Wallet{
-            access(all) let balance: UInt
+        pub contract Wallet{
+            pub let balance: UInt
             init(balance: UInt){
               self.balance = balance
             }
@@ -177,7 +177,7 @@ import {
   const [balance, err] = await executeScript({
     code: `
       import Wallet from 0x01
-      access(all) fun main(): UInt{
+      pub fun main(): UInt{
         return Wallet.balance
       }
     `,
@@ -692,7 +692,7 @@ const main = async () => {
 
   // "getCurrentBlock().height" in your Cadence code will be replaced by Manager to a mocked value
   const code = `
-    access(all) fun main(): UInt64 {
+    pub fun main(): UInt64 {
       return getCurrentBlock().height
     }
   `
@@ -779,7 +779,7 @@ const main = async () => {
 
   // "getCurrentBlock().timestamp" in your Cadence code will be replaced by Manager to a mocked value
   const code = `
-    access(all) fun main(): UInt64 {
+    pub fun main(): UInt64 {
       return getCurrentBlock().timestamp
     }
   `
@@ -991,7 +991,7 @@ describe("interactions - sendTransaction", () => {
 
   test("basic script", async () => {
     const code = `
-      access(all) fun main():Int{
+      pub fun main():Int{
         return 42
       }
     `
@@ -1057,7 +1057,7 @@ const main = async () => {
 
   // Define code and arguments we want to pass
   const code = `
-    access(all) fun main(message: String): Int{
+    pub fun main(message: String): Int{
       log(message)
 
       return 42

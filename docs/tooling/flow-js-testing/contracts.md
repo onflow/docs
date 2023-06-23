@@ -110,8 +110,8 @@ import {
 
   const name = "Wallet"
   const code = `
-        access(all) contract Wallet{
-            access(all) let balance: UInt
+        pub contract Wallet{
+            pub let balance: UInt
             init(balance: UInt){
               self.balance = balance
             }
@@ -124,7 +124,7 @@ import {
   const [balance, err] = await executeScript({
     code: `
       import Wallet from 0x01
-      access(all) fun main(): UInt{
+      pub fun main(): UInt{
         return Wallet.balance
       }
     `,

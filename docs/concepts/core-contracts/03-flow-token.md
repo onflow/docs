@@ -55,7 +55,7 @@ Event that is emitted when the contract gets created.
 - Testnet event: `A.7e60df042a9c0868.FlowToken.TokensInitialized`
 
 ```cadence
-access(all) event TokensInitialized(initialSupply: UFix64)
+pub event TokensInitialized(initialSupply: UFix64)
 ```
 
 | Field             | Type   | Description                                                            |
@@ -72,7 +72,7 @@ Event that is emitted when tokens get withdrawn from a Vault.
 - Testnet event: `A.7e60df042a9c0868.FlowToken.TokensWithdrawn`
 
 ```cadence
-access(all) event TokensWithdrawn(amount: UFix64, from: Address?)
+pub event TokensWithdrawn(amount: UFix64, from: Address?)
 ```
 
 | Field             | Type   | Description                                                            |
@@ -90,7 +90,7 @@ Event that is emitted when tokens get deposited to a Vault.
 - Testnet event: `A.7e60df042a9c0868.FlowToken.TokensDeposited`
 
 ```cadence
-access(all) event TokensDeposited(amount: UFix64, to: Address?)
+pub event TokensDeposited(amount: UFix64, to: Address?)
 ```
 
 | Field             | Type   | Description                                                            |
@@ -107,7 +107,7 @@ Event that is emitted when new tokens gets minted.
 - Testnet event: `A.7e60df042a9c0868.FlowToken.TokensMinted`
 
 ```cadence
-access(all) event TokensMinted(amount: UFix64)
+pub event TokensMinted(amount: UFix64)
 ```
 
 | Field             | Type   | Description                                                            |
@@ -123,7 +123,7 @@ Event that is emitted when tokens get destroyed.
 - Testnet event: `A.7e60df042a9c0868.FlowToken.TokensBurned`
 
 ```cadence
-access(all) event TokensBurned(amount: UFix64)
+pub event TokensBurned(amount: UFix64)
 ```
 
 | Field             | Type   | Description                                                            |
@@ -140,7 +140,7 @@ Event that is emitted when a new minter resource gets created.
 - Testnet event: `A.7e60df042a9c0868.FlowToken.MinterCreated`
 
 ```cadence
-access(all) event MinterCreated(allowedAmount: UFix64)
+pub event MinterCreated(allowedAmount: UFix64)
 ```
 
 | Field             | Type   | Description                                                            |
@@ -156,7 +156,7 @@ Event that is emitted when a new burner Resource gets created.
 - Testnet event: `A.7e60df042a9c0868.FlowToken.BurnerCreated`
 
 ```cadence
-access(all) event BurnerCreated()
+pub event BurnerCreated()
 ```
 
 ### Staking Events

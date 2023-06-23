@@ -142,13 +142,13 @@ For NFT listings in marketplaces which don't require commission, commission rece
 
 ```cadence
 resource interface ListingPublic {
-    access(all) fun borrowNFT(): &NonFungibleToken.NFT?
-    access(all) fun purchase(
+    pub fun borrowNFT(): &NonFungibleToken.NFT?
+    pub fun purchase(
           payment: @FungibleToken.Vault, 
           commissionRecipient: Capability<&{FungibleToken.Receiver}>?,
       ): @NonFungibleToken.NFT
-    access(all) fun getDetails(): ListingDetail
-    access(all) fun getAllowedCommissionReceivers(): [Capability<&{FungibleToken.Receiver}>]?
+    pub fun getDetails(): ListingDetail
+    pub fun getAllowedCommissionReceivers(): [Capability<&{FungibleToken.Receiver}>]?
 }
 ```
 An interface providing a useful public interface to a Listing.
@@ -199,7 +199,7 @@ If it returns `nil` then commission is up to grab by anyone.
 
 ```cadence
 resource Storefront {
-    access(all) fun createListing(
+    pub fun createListing(
             nftProviderCapability: Capability<&{NonFungibleToken.Provider, NonFungibleToken.CollectionPublic}>,
             nftType: Type,
             nftID: UInt64,
@@ -210,11 +210,11 @@ resource Storefront {
             commissionAmount: UFix64,
             expiry: UInt64
          ): UInt64
-    access(all) fun removeListing(listingResourceID: UInt64)
-    access(all) fun getListingIDs(): [UInt64]
-    access(all) fun getDuplicateListingIDs(nftType: Type, nftID: UInt64, listingID: UInt64): [UInt64]
-    access(all) fun cleanupExpiredListings(fromIndex: UInt64, toIndex: UInt64)
-    access(all) fun borrowListing(listingResourceID: UInt64): &Listing{ListingPublic}?
+    pub fun removeListing(listingResourceID: UInt64)
+    pub fun getListingIDs(): [UInt64]
+    pub fun getDuplicateListingIDs(nftType: Type, nftID: UInt64, listingID: UInt64): [UInt64]
+    pub fun cleanupExpiredListings(fromIndex: UInt64, toIndex: UInt64)
+    pub fun borrowListing(listingResourceID: UInt64): &Listing{ListingPublic}?
 }
 ```
 A resource that allows its owner to manage a list of Listings, and anyone to interact with them
@@ -297,12 +297,12 @@ Returns a read-only view of the listing for the given listingID if it is contain
 
 ```cadence
 resource interface StorefrontPublic {
-    access(all) fun getListingIDs(): [UInt64]
-    access(all) fun getDuplicateListingIDs(nftType: Type, nftID: UInt64, listingID: UInt64): [UInt64]
-    access(all) fun cleanupExpiredListings(fromIndex: UInt64, toIndex: UInt64)
-    access(all) fun borrowListing(listingResourceID: UInt64): &Listing{ListingPublic}?
-    access(all) fun cleanupPurchasedListings(listingResourceID: UInt64)
-    access(all) fun getExistingListingIDs(nftType: Type, nftID: UInt64): [UInt64]
+    pub fun getListingIDs(): [UInt64]
+    pub fun getDuplicateListingIDs(nftType: Type, nftID: UInt64, listingID: UInt64): [UInt64]
+    pub fun cleanupExpiredListings(fromIndex: UInt64, toIndex: UInt64)
+    pub fun borrowListing(listingResourceID: UInt64): &Listing{ListingPublic}?
+    pub fun cleanupPurchasedListings(listingResourceID: UInt64)
+    pub fun getExistingListingIDs(nftType: Type, nftID: UInt64): [UInt64]
 }
 ```
 

@@ -60,7 +60,7 @@ The `FlowToken` contract emits a `FlowToken.TokensDeposited` event whenever toke
 move between accounts.
 
 ```cadence
-access(all) event TokensDeposited(amount: UFix64, to: Address?)
+pub event TokensDeposited(amount: UFix64, to: Address?)
 ```
 
 You can query for this event to detect when tokens are deposited into a user's account.

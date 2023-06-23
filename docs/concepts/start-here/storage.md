@@ -62,7 +62,7 @@ Storage fees were put in place to regulate the growth of data stored on the Flow
 The values of storage used and storage capacity are available as fields both on `AuthAccount` and `PublicAccount` Cadence types.
 
 ```cadence
-access(all) fun main(address: Address) {
+pub fun main(address: Address) {
     let account = getAccount(address)
     log(account.storageUsed)
     log(account.storageCapacity)

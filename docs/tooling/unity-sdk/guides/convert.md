@@ -110,9 +110,9 @@ public class TestStruct
 and the following Cadence struct:
 
 ```cadence
-access(all) struct TestStruct {
-    access(all) let i32: Int32
-    access(all) let s: String
+pub struct TestStruct {
+    pub let i32: Int32
+    pub let s: String
 }
 ```
 
@@ -166,18 +166,18 @@ public class Play
 If a Cadence struct contains another struct, the field should be annotated as a "Struct".  Given the following Cadence:
 
 ```cadence
-access(all) struct Other {
-    access(all) let i: Int16
+pub struct Other {
+    pub let i: Int16
 
-    access(all) init(i:Int16) {
+    pub init(i:Int16) {
         self.i=i
     }
 }
 
-access(all) struct Test {
-    access(all) let o : Other
+pub struct Test {
+    pub let o : Other
     
-    access(all) init(i: Int16) {
+    pub init(i: Int16) {
         self.o = Other(i:i)
     }
 }

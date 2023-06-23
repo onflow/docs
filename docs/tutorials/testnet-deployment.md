@@ -140,7 +140,7 @@ You can then specify your contracts you wish to deploy in the configuration like
 Here's a sketch of the contract source files:
 
 ```
-access(all) contract NonFungibleToken {
+pub contract NonFungibleToken {
   // ...
 }
 ```
@@ -148,7 +148,7 @@ access(all) contract NonFungibleToken {
 ```
 import NonFungibleToken from "./NonFungibleToken.cdc"
 
-access(all) contract KittyItems {
+pub contract KittyItems {
   // ...
 }
 ```
