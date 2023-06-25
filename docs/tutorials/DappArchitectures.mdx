@@ -47,8 +47,8 @@ With any of these payment rails choices, dapp developers should do their own leg
 - **Payment rails**: 
 - **Dapp-User payments**: If a dapp is selling an item directly to the user, it can use either of these two approaches:
 - **Credit Card/ACH**: Dapps can process payments using traditional Web2.0 methods and transfer NFTs if the payment completes successfully. Some payment processors, like [Moonpay](https://www.moonpay.com/buy/flow), offer turnkey solutions to enable simple NFT purchases using credit cards.
-- **Crypto/Stablecoin**: Users can pay dapps using FLOW token or stablecoins like FUSD from their wallets.
-- **User-User (P2P) payments**: P2P payments (most commonly seen on the marketplace dapps) will involve users paying each other using FLOW tokens or stablecoins like FUSD held in their wallets.
+- **Crypto/Stablecoin**: Users can pay dapps using FLOW token or stablecoins like USDC from their wallets.
+- **User-User (P2P) payments**: P2P payments (most commonly seen on the marketplace dapps) will involve users paying each other using FLOW tokens or stablecoins like USDC held in their wallets.
 
 ### Custodial Flow Dapp Architecture
 Custodial dapps will store keys for the Flow accounts of their users in their backend, which insulates users from managing wallet accounts. 
@@ -76,7 +76,7 @@ Load Crypto/Stablecoin in the Flow account: Dapps will have to expose the Flow a
 **Credit Card/ACH**: With this approach, sellers are on-boarded onto the payment processor’s system, potentially as sub-merchants, and the buyers pay using a credit card or ACH through the payment processor.
 All the money settlement happens in FIAT.
 Only NFT gets transferred on the blockchain upon successful transaction completion. 
-- **Crypto/Stablecoin** With this approach, buyers will directly send FUSD or FLOW to the sellers.
+- **Crypto/Stablecoin** With this approach, buyers will directly send USDC or FLOW to the sellers.
 Dapps will have to expose the flow account details to the user and the users will load up crypto/stablecoin in their account using on-ramps like [MoonPay](https://www.moonpay.com/buy/flow).
 ### Backend-less Flow Dapp Architecture
 For some use-cases, developers can create a backend-less dapp.
