@@ -218,7 +218,7 @@ some.f[3] = 1
 some.f.contains(0)
 ```
 
-** Entitlements **
+## Entitlements
 
 Entitlements are a unique feature of Cadence that provide granular access control to each member of a struct or resource. 
 Entitlements can be declared in like other types in a program using special syntax:
@@ -301,7 +301,7 @@ refEF.c
 
 More detail about authorized references can be found in the [reference documentation](./references.mdx). 
 
-*** Entitlement Mappings ***
+### Entitlement Mappings
 
 When objects have fields that are child objects, 
 it can often be valuable to have different views of that reference depending on the entitlements one has on the reference to the parent object. 
