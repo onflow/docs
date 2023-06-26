@@ -52,7 +52,7 @@ The Service Account has administrator access to the FLOW token smart contract, s
 
 ### Network Management
 
-The Service Account administrates other smart contracts that manage various aspects of the Flow network, such as epochs and (in the future) validator staking auctions.
+The Service Account administers other smart contracts that manage various aspects of the Flow network, such as epochs and (in the future) validator staking auctions.
 
 ### Governance
 
