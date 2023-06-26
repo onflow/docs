@@ -70,29 +70,6 @@ rather than inside contract utility functions.
 There are some scenarios where using an `AuthAccount` object is necessary, such as a cold storage multi-sig,
 but those cases are extremely rare and `AuthAccount` usage should still be avoided unless absolutely necessary.
 
-## Auth references and capabilities should be avoided
-
-### Problem
-
-[Authorized references](./language/references.mdx) allow downcasting restricted
-types to their unrestricted type and should be avoided unless necessary.
-The type that is being restricted could expose functionality that was not intended to be exposed.
-If the `auth` keyword is used on local variables they will be references.
-References are ephemeral and cannot be stored.
-This prevents any reference casting to be stored under account storage.
-Additionally, if the `auth` keyword is used to store a public capability, serious harm
-could happen since the value could be downcasted to a type
-that has functionality and values altered.
-
-### Example
-
-A commonly seen pattern in NFT smart contracts is including a public borrow function
-that borrows an auth reference to an NFT (eg. [NBA Top Shot](https://github.com/dapperlabs/nba-smart-contracts/blob/95fe72b7e94f43c9eff28412ce3642b69dcd8cd5/contracts/TopShot.cdc#L889-L906)).
-This allows anyone to access the stored metadata or extra fields that weren't part
-of the NFT standard. While generally safe in most scenarios, not all NFTs are built the same.
-Some NFTs may have privileged functions that shouldn't be exposed by this method,
-so please be cautious and mindful when imitating NFT projects that use this pattern.
-
 ### Another Example
 
 When we create a public capability for our `FungibleToken.Vault` we do not use an auth capability:
