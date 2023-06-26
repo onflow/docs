@@ -124,7 +124,7 @@ fun FunctionType(parameters: [Type], return: Type): Type
 fun DictionaryType(key: Type, value: Type): Type?
 // returns `nil` if `type` is not a reference type
 fun CapabilityType(_ type: Type): Type?
-fun ReferenceType(authorized: bool, type: Type): Type
+fun ReferenceType(entitlements: [String], type: Type): Type?
 ```
 
 ### Asserting the Type of a Value
