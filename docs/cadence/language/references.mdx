@@ -163,7 +163,7 @@ authCountRef.resetCount()
 It is important to note that while references are covariant (and downcastable) with respect to their reference type, 
 the authorization portion of the reference can never be downcast. 
 In fact, the only way to "add" entitlements to a reference is to do so at the time of its creation, like in the example above. 
-An reference will never have any more entitlements than the set with which it was created, 
+A reference will never have any more entitlements than the set with which it was created, 
 and the set of entitlements on a reference at runtime will always match the set expressed in its static type. 
 One implication of this is that upcasting an authorized reference actually changes its runtime type:
 

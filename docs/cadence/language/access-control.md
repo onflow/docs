@@ -393,7 +393,7 @@ usage will necessarily make the type of the composite non-storage, since it will
 <!--- TODO: once the Account type refactor is complete and the documentation updated, let's link here to the Account type page as an example of more complex entitlement mappings --->
 Entitlement mappings need not be 1:1; it is valid to define a mapping where multiple inputs map to the same output, or where one input maps to multiple outputs. 
 
-Entitlement mappigns preserve the "kind" of the set they are mapping; i.e. mapping an "and" set produces an "and" set, and mapping an "or" set produces an "or" set. 
+Entitlement mappings preserve the "kind" of the set they are mapping; i.e. mapping an "and" set produces an "and" set, and mapping an "or" set produces an "or" set. 
 Because "and" and "or" separators cannot be combined in the same set, attempting to map "or"-separated sets through certain complex mappings may result in a type error. For example:
 
 ```
