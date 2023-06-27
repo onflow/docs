@@ -41,6 +41,14 @@ Before diving in, let's make a distinction between **"account linking"** and **"
 
 ## Account Linking
 
+<Callout type=" ">
+
+Note that since account linking is a sensitive action, transactions where an account may be linked are designated by a
+topline pragma `#allowAccountLinking`. This lets wallet providers inform users that their account may be linked in the
+signed transaction.
+
+</Callout>
+
 Very simply, account linking is a [feature in Cadence](https://github.com/onflow/flips/pull/53) that let's an
 [AuthAccount](../../../cadence/language/accounts.mdx#authaccount) create a
 [Capability](../../../cadence/language/capability-based-access-control.md) on itself. You can do so in the following
@@ -81,7 +89,7 @@ objects and account relationships discussed in this doc.
 ## Linking Accounts
 
 Linking accounts leverages this account link, otherwise known as an **AuthAccount Capability**, and encapsulates it. The
-[components and actions](https://github.com/onflow/flips/pull/72) involved in this process - what the Capabity is
+[components and actions](https://github.com/onflow/flips/pull/72) involved in this process - what the Capability is
 encapsulated in, the collection that holds those encapsulations, etc. is what we'll dive into in this doc.
 
 # Terminology
@@ -89,8 +97,7 @@ encapsulated in, the collection that holds those encapsulations, etc. is what we
 **Parent-Child accounts** - For the moment, we’ll call the account created by the dApp the “child” account and the
 account receiving its AuthAccount Capability the “parent” account. Existing methods of account access & delegation (i.e.
 keys) still imply ownership over the account, but insofar as linked accounts are concerned, the account to which both
-the user and the dApp share access via AuthAccount Capability will be considered the “child” account. This naming is a
-topic of community discussion and may be subject to change.
+the user and the dApp share access via AuthAccount Capability will be considered the “child” account.
 
 **Walletless onboarding** - An onboarding flow whereby a dApp creates an account for a user, onboarding them to the
 dApp, obviating the need for user wallet authentication.
@@ -119,7 +126,10 @@ thereby giving the delegatee presiding authority superseding any other "restrict
 
 # Account Linking
 
-Linking an account is the process of delegating account access via AuthAccount Capability. Of course, we want to do this in a way that allows the receiving account to maintain that Capability and allows easy identification of the accounts on either end of the linkage - the user's main "parent" account and the linked "child" account. This is accomplished in the (still in flux) `HybridCustody` contract which we'll continue to use in this guidance.
+Linking an account is the process of delegating account access via AuthAccount Capability. Of course, we want to do this
+in a way that allows the receiving account to maintain that Capability and allows easy identification of the accounts on
+either end of the linkage - the user's main "parent" account and the linked "child" account. This is accomplished in the
+(still in flux) `HybridCustody` contract which we'll continue to use in this guidance.
 
 ## Pre-requisites
 
@@ -131,23 +141,32 @@ The former enumerates those types that are/aren't accessible from a child accoun
 those allowable Capabilities such that the returned values can be properly typed - e.g. retrieving a Capability that can
 be cast to `Capability<&NonFungibleToken.Collection>` for example.
 
-Here's how you would configure an `AllowAllFilter`:
+Here's how you would configure an `AllowlistFilter` and add allowed types to it:
 
 ```cadence setup_allow_all_filter.cdc
 import "CapabilityFilter"
 
-transaction {
-
+transaction(identifiers: [String]) {
     prepare(acct: AuthAccount) {
-        // Check for a stored AllowAllFilter, saving if not found
-        if acct.borrow<&CapabilityFilter.AllowAllFilter>(from: CapabilityFilter.StoragePath) == nil {
-            acct.save(<- CapabilityFilter.create(Type<@CapabilityFilter.AllowAllFilter>()), to: CapabilityFilter.StoragePath)
+        // Setup the AllowlistFilter
+        if acct.borrow<&CapabilityFilter.AllowlistFilter>(from: CapabilityFilter.StoragePath) == nil {
+            acct.save(<-CapabilityFilter.create(Type<@CapabilityFilter.AllowlistFilter>()), to: CapabilityFilter.StoragePath)
         }
-        // Link a Capability to the AllowAllFilter
+        
+        // Ensure the AllowlistFilter is linked to the expected PublicPath
         acct.unlink(CapabilityFilter.PublicPath)
-        let linkRes = acct.link<&CapabilityFilter.AllowAllFilter{CapabilityFilter.Filter}>(CapabilityFilter.PublicPath, target: CapabilityFilter.StoragePath)
-            ?? panic("link failed")
-        assert(linkRes.check(), message: "failed to setup filter")
+        acct.link<&CapabilityFilter.AllowlistFilter{CapabilityFilter.Filter}>(CapabilityFilter.PublicPath, target: CapabilityFilter.StoragePath)
+
+        // Get a reference to the filter
+        let filter = acct.borrow<&CapabilityFilter.AllowlistFilter>(from: CapabilityFilter.StoragePath)
+            ?? panic("filter does not exist")
+        
+        // Add the given type identifiers to the AllowlistFilter
+        // **Note:** the whole transaction fails if any of the given identifiers are malformed
+        for identifier in identifiers {
+            let c = CompositeType(identifier)!
+            filter.addType(c)
+        }
     }
 }
 ```
@@ -200,14 +219,6 @@ transaction {
 }
 ```
 
-<Callout type="info">
-
-Note that since account linking is a sensitive action, transactions where an account may be linked are designated by a
-topline pragma `#allowAccountLinking`. This lets wallet providers inform users that their account may be linked in the
-signed transaction.
-
-</Callout>
-
 ![resources/hybrid_custody_high_level](resources/hybrid_custody_high_level.png)
 
 *In this scenario, a user custodies a key for their main account which maintains access to a wrapped AuthAccount
@@ -215,15 +226,15 @@ Capability, providing the user restricted access on the app account. The dApp ma
 and regulates the access restrictions to delegatee "parent" accounts.*
 
 Linking accounts can be done in one of two ways. Put simply, the child account needs to get the parent account an
-AuthAccount Capability, and the parent needs to save that Capability so they can retain access in a manner that also
+`AuthAccount` Capability, and the parent needs to save that Capability so they can retain access in a manner that also
 represents each side of the link and safeguards the integrity of any access restrictions an application puts in place on
 delegated access.
 
 We can achieve issuance from the child account and claim from the parent account pattern in either:
 
-1. Multisig transaction signed by both the the accounts on either side of the link
-2. We can leverage [Cadence’s `AuthAccount.Inbox`](../../../cadence/language/accounts.mdx#account-inbox) to publish the
+1. We can leverage [Cadence’s `AuthAccount.Inbox`](../../../cadence/language/accounts.mdx#account-inbox) to publish the
    Capability from the child account & have the parent claim the Capability in a separate transaction.
+1. Multi-party signed transaction, signed by both the the accounts on either side of the link
 
 Let’s take a look at both.
 
@@ -291,13 +302,21 @@ transaction(childAddress: Address, filterAddress: Address?, filterPath: PublicPa
             acct.unlink(HybridCustody.ManagerPublicPath)
             acct.unlink(HybridCustody.ManagerPrivatePath)
 
-            acct.link<&HybridCustody.Manager{HybridCustody.ManagerPrivate, HybridCustody.ManagerPublic}>(HybridCustody.ManagerPrivatePath, target: HybridCustody.ManagerStoragePath)
-            acct.link<&HybridCustody.Manager{HybridCustody.ManagerPublic}>(HybridCustody.ManagerPublicPath, target: HybridCustody.ManagerStoragePath)
+            acct.link<&HybridCustody.Manager{HybridCustody.ManagerPrivate, HybridCustody.ManagerPublic}>(
+                HybridCustody.ManagerPrivatePath,
+                target: HybridCustody.ManagerStoragePath
+            )
+            acct.link<&HybridCustody.Manager{HybridCustody.ManagerPublic}>(
+                HybridCustody.ManagerPublicPath,
+                target: HybridCustody.ManagerStoragePath
+            )
         }
 
         let inboxName = HybridCustody.getChildAccountIdentifier(acct.address)
-        let cap = acct.inbox.claim<&HybridCustody.ChildAccount{HybridCustody.AccountPrivate, HybridCustody.AccountPublic, MetadataViews.Resolver}>(inboxName, provider: childAddress)
-            ?? panic("child account cap not found")
+        let cap = acct.inbox.claim<&HybridCustody.ChildAccount{HybridCustody.AccountPrivate, HybridCustody.AccountPublic, MetadataViews.Resolver}>(
+                inboxName, 
+                provider: childAddress
+            ) ?? panic("child account cap not found")
 
         let manager = acct.borrow<&HybridCustody.Manager>(from: HybridCustody.ManagerStoragePath)
             ?? panic("manager no found")
@@ -307,10 +326,17 @@ transaction(childAddress: Address, filterAddress: Address?, filterPath: PublicPa
 }
 ```
 
-### Multisig Transaction
+### Multi-Signed Transaction
 
 We can combine the two transactions in [Publish](#publish) and [Claim](#claim) into a single multi-signed transaction to
 achieve Hybrid Custody in a single step.
+
+<Callout type="info">
+
+Note that while the following code links both accounts in a single transaction, in practicality you may find it easier
+to execute publish and claim transactions separately depending on your custodial infrastructure.
+
+</Callout>
 
 ```cadence setup_multi_sig.cdc
 #allowAccountLinking
@@ -325,7 +351,7 @@ import "MetadataViews"
 
 transaction(parentFilterAddress: Address?, childAccountFactoryAddress: Address, childAccountFilterAddress: Address) {
     prepare(childAcct: AuthAccount, parentAcct: AuthAccount) {
-        // --------------------- End setup of child account ---------------------
+        // --------------------- Begin setup of child account ---------------------
         var acctCap = childAcct.getCapability<&AuthAccount>(HybridCustody.LinkedAccountPrivatePath)
         if !acctCap.check() {
             acctCap = childAcct.linkAccount(HybridCustody.LinkedAccountPrivatePath)!
@@ -338,12 +364,17 @@ transaction(parentFilterAddress: Address?, childAccountFactoryAddress: Address, 
 
         // check that paths are all configured properly
         childAcct.unlink(HybridCustody.OwnedAccountPrivatePath)
-        childAcct.link<&HybridCustody.OwnedAccount{HybridCustody.BorrowableAccount, HybridCustody.OwnedAccountPublic, MetadataViews.Resolver}>(HybridCustody.OwnedAccountPrivatePath, target: HybridCustody.OwnedAccountStoragePath)
+        childAcct.link<&HybridCustody.OwnedAccount{HybridCustody.BorrowableAccount, HybridCustody.OwnedAccountPublic, MetadataViews.Resolver}>(
+            HybridCustody.OwnedAccountPrivatePath,
+            target: HybridCustody.OwnedAccountStoragePath
+        )
 
         childAcct.unlink(HybridCustody.OwnedAccountPublicPath)
-        childAcct.link<&HybridCustody.OwnedAccount{HybridCustody.OwnedAccountPublic, MetadataViews.Resolver}>(HybridCustody.OwnedAccountPublicPath, target: HybridCustody.OwnedAccountStoragePath)
-
-        // --------------------- Begin setup of child account ---------------------
+        childAcct.link<&HybridCustody.OwnedAccount{HybridCustody.OwnedAccountPublic, MetadataViews.Resolver}>(
+            HybridCustody.OwnedAccountPublicPath,
+            target: HybridCustody.OwnedAccountStoragePath
+        )
+        // --------------------- End setup of child account ---------------------
 
         // --------------------- Begin setup of parent account ---------------------
         var filter: Capability<&{CapabilityFilter.Filter}>? = nil
@@ -359,15 +390,22 @@ transaction(parentFilterAddress: Address?, childAccountFactoryAddress: Address, 
         parentAcct.unlink(HybridCustody.ManagerPublicPath)
         parentAcct.unlink(HybridCustody.ManagerPrivatePath)
 
-        parentAcct.link<&HybridCustody.Manager{HybridCustody.ManagerPrivate, HybridCustody.ManagerPublic}>(HybridCustody.OwnedAccountPrivatePath, target: HybridCustody.ManagerStoragePath)
-        parentAcct.link<&HybridCustody.Manager{HybridCustody.ManagerPublic}>(HybridCustody.OwnedAccountPublicPath, target: HybridCustody.ManagerStoragePath)
+        parentAcct.link<&HybridCustody.Manager{HybridCustody.ManagerPrivate, HybridCustody.ManagerPublic}>(
+            HybridCustody.OwnedAccountPrivatePath,
+            target: HybridCustody.ManagerStoragePath
+        )
+        parentAcct.link<&HybridCustody.Manager{HybridCustody.ManagerPublic}>(
+            HybridCustody.OwnedAccountPublicPath,
+            target: HybridCustody.ManagerStoragePath
+        )
         // --------------------- End setup of parent account ---------------------
 
         // Publish account to parent
         let owned = childAcct.borrow<&HybridCustody.OwnedAccount>(from: HybridCustody.OwnedAccountStoragePath)
             ?? panic("owned account not found")
 
-        let factory = getAccount(childAccountFactoryAddress).getCapability<&CapabilityFactory.Manager{CapabilityFactory.Getter}>(CapabilityFactory.PublicPath)
+        let factory = getAccount(childAccountFactoryAddress)
+            .getCapability<&CapabilityFactory.Manager{CapabilityFactory.Getter}>(CapabilityFactory.PublicPath)
         assert(factory.check(), message: "factory address is not configured properly")
 
         let filterForChild = getAccount(childAccountFilterAddress).getCapability<&{CapabilityFilter.Filter}>(CapabilityFilter.PublicPath)
@@ -377,8 +415,10 @@ transaction(parentFilterAddress: Address?, childAccountFactoryAddress: Address, 
 
         // claim the account on the parent
         let inboxName = HybridCustody.getChildAccountIdentifier(parentAcct.address)
-        let cap = parentAcct.inbox.claim<&HybridCustody.ChildAccount{HybridCustody.AccountPrivate, HybridCustody.AccountPublic, MetadataViews.Resolver}>(inboxName, provider: childAcct.address)
-            ?? panic("child account cap not found")
+        let cap = parentAcct.inbox.claim<&HybridCustody.ChildAccount{HybridCustody.AccountPrivate, HybridCustody.AccountPublic, MetadataViews.Resolver}>(
+                inboxName,
+                provider: childAcct.address
+            ) ?? panic("child account cap not found")
 
         let manager = parentAcct.borrow<&HybridCustody.Manager>(from: HybridCustody.ManagerStoragePath)
             ?? panic("manager no found")
