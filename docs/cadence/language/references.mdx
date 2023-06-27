@@ -137,6 +137,10 @@ along with the set of entitlements to which they are authorized. The full syntax
 or `auth(E | F | G) &T` for a refernece authorized to `E`, `F`, **or** `G`. 
 Authorized references are subtypes of unauthorized references.
 
+Entitlements can only be given to references when they are created, 
+and references to a value can only be created by the owner of the value. 
+When creating a reference, that reference can be given any set of entitlements the value owner wishes to add. 
+
 Possessing an entitlement allows a reference to have access to any functions on its referenced type
 that require that entitlement. E.g, if we extended the `HasCount` interface with a function:
 

@@ -50,10 +50,12 @@ a declaration can be accessed or called.
   by using the `access(all)` keyword.
 
 - Entitled access means the declaration is only accessible/visible
-  to owned values, or to references that are authorized to the required entitlements.
+  to the owner of the object, or to references that are authorized to the required entitlements.
+  
+  A reference is considered authorized to an entitlement if that entitlement appears in the `auth` portion of the reference type.
 
-  For example, an `access(E, F)` field can only be accessed by an owned value, 
-  or a reference to a value that is authorized to the `E` and `F` entitlements. 
+  For example, an `access(E, F)` field on a resource `R` can only be accessed by an owned (`@R`-typed) value, 
+  or a reference to `R` that is authorized to the `E` and `F` entitlements (`auth(E, F) &R`). 
 
   An element is made accessible by code in the same containing type
   by using the `access(E)` syntax, described in more detail in the entitlements section below.
@@ -221,7 +223,7 @@ some.f.contains(0)
 ## Entitlements
 
 Entitlements are a unique feature of Cadence that provide granular access control to each member of a struct or resource. 
-Entitlements can be declared in like other types in a program using special syntax:
+Entitlements can be declared using the following syntax:
 
 ```cadence
 entitlement E
@@ -229,7 +231,8 @@ entitlement F
 ```
 
 creates two entitlements called `E` and `F`. 
-If using entitlements defined in another contract, the same qualified name syntax as regular is used:
+Entitlements can be imported from other contracts and used the same way as other types. 
+If using entitlements defined in another contract, the same qualified name syntax is used as for other types:
 
 ```cadence
 contract C {
@@ -238,13 +241,15 @@ contract C {
 ```
 
 Outside of `C`, `E` is used with `C.E` syntax. 
+Entitlements exist in the same namespace as types, so if your contract defines a resource called `R`,
+it will not be possible to define an entitlement that is also called `R`. 
 
 Entitlements can be used in access modifiers on struct and resource members to specify which references to those composites
 are allowed to access those members. 
 An access modifier can include more than one entitlement, joined with either an `|`, to indicate disjunction or "or", 
 or a `,`, to indicate conjunction or "and". So, for example:
 
-```cadenc
+```cadence
 access(all) resource SomeResource {
   
   // requires an `E` entitlement to read this field
@@ -261,7 +266,7 @@ access(all) resource SomeResource {
 }
 ```
 
-Given some values with the annotated types:
+Given some values with the annotated types (details on how to create entitled references can be found [here](./references.mdx)):
 
 ```cadence
 
@@ -298,8 +303,6 @@ refEF.b
 // valid, because `refEF` has both of the two required entitlements
 refEF.c
 ```
-
-More detail about authorized references can be found in the [reference documentation](./references.mdx). 
 
 ### Entitlement Mappings
 
