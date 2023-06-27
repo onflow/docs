@@ -389,11 +389,12 @@ Entitlement
 let alsoEntitledSubRef = r.getRef() 
 ```
 
-<!---- TODO: Update once mappings can be used on regular composite fields ---->
+{/* TODO: Update once mappings can be used on regular composite fields */}
+
 Entitlement mappings may be used either in accessor functions (as in the example above), or in fields whose types are references. Note that this latter
 usage will necessarily make the type of the composite non-storage, since it will have a reference field. 
 
-<!--- TODO: once the Account type refactor is complete and the documentation updated, let's link here to the Account type page as an example of more complex entitlement mappings --->
+{/* TODO: once the Account type refactor is complete and the documentation updated, let's link here to the Account type page as an example of more complex entitlement mappings */}
 Entitlement mappings need not be 1:1; it is valid to define a mapping where multiple inputs map to the same output, or where one input maps to multiple outputs. 
 
 Entitlement mappings preserve the "kind" of the set they are mapping; i.e. mapping an "and" set produces an "and" set, and mapping an "or" set produces an "or" set. 
