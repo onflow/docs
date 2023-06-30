@@ -30,38 +30,57 @@ fun assert(_ condition: Bool, message: String)
 
   The message argument is optional.
 
-## unsafeRandom
+```markdown
+## secureRandom
 
 ```cadence
-fun unsafeRandom(): UInt64
+fun secureRandom(): UInt64
 ```
 
-  Returns a pseudo-random number.
+  Returns a pseudo-random number. The sequence of generated randoms is of high statistical quality and cryptographically secure.
+  We highlight that the random number generation process is unpredictable (for miners unpredictable at block construction time
+  and for cadence logic unpredictable at time of call), verifiable, uniform, as well as unbiasable by miners and previously-running
+  Cadence code. For more details, please see <Link to Flow Randomness blog post — still pending publication>
 
-  NOTE:
-  Smart contract developers should be mindful about the limitations of unsafeRandom.
-  The stream of random numbers produced is potentially unsafe in the following two regards:
-
-  1. The sequence of random numbers is potentially predictable by transactions within the same block
-  and by other smart contracts calling into your smart contract.
-  2. A transaction calling into your smart contract can potentially bias the sequence of random numbers which
-  your smart contract internally generates.
-
-  We are working towards removing these limitations incrementally. Once these points are addressed,
-  Flow’s randomness is safe and we will remove the "unsafe" qualifier.
-
-  Nevertheless, there is an additional safety-relevant aspect that developers need to be mindful about:
-
-  * A transaction can atomically revert all its action at any time. Therefore, it is possible for a transaction calling into
-  your smart contract to post-select favourable results and revert the transaction for unfavourable results.
-  ([example](https://consensys.github.io/smart-contract-best-practices/development-recommendations/general/public-data/))
-
+  Nevertheless, developers need to be mindful to use `secureRandom()` correctly to not undermine unbiasability and unpredictability.
+  **A transaction can atomically revert all its action at any time. Therefore, it is possible for a transaction calling into your
+  smart contract to post-select favourable results and revert the transaction for unfavourable results**
+  ([Ethereum example](https://consensys.github.io/smart-contract-best-practices/development-recommendations/general/public-data/)).
   This limitation is inherent to any smart contract platform that allows transactions to roll back atomically and cannot be
-  solved through safe randomness alone.  Providing additional Cadence language primitives to simplify this challenge for
-  developers is on our roadmap as well. Nevertheless, with safe randomness (points 1 and 2 above resolved), developers can prevent
-  clients from post-select favourable outcomes using approaches such as described in the
-  [example](https://consensys.github.io/smart-contract-best-practices/development-recommendations/general/public-data/).
+  solved through secure randomness alone. 
 
+  ### Guidelines for safe usage: 
+  
+  The central aspect that you as a developer have to think about is the following scenario:
+
+  - Imagine an adversarial user that is sending a transaction that calls your smart contract.
+  - The transaction includes code that runs *after* your smart contract returns and inspects the outcome.
+    If the outcome is unfavorable (based on some criteria codified in the transaction), the transaction aborts itself.
+
+  While `secureRandom()` prevents *pre*-selection attacks (i.e. biasing by minders or transaction logic before getting the
+  random number), the scenario we just described is essentially a *post*-selection attack. The ability to post-select outputs
+  can only be mitigated by restricting the client to revert computation.
+
+  You as a developer need to decide whether your use-case is sensitive to transactions aborting. 
+
+  1. For some use cases it might be irrelevant or event disadvantageous for transactions to abort. If the transactions that are
+    authorized to trigger the random number generation are coming from an honest source (such as the smart contract developer),
+    transaction aborting themselves might not be a challenge.
+    
+    In this case, you can simply use `secureRandom()` without security concerns.
+    
+  2. However, if an adversarial client has an incentive to post-select depending on the values of the generated random(s),
+    you need to need to implement a commit-reveal-recover scheme. An intuitive example could be a rock-paper-scissors game.
+    We generally don’t want that clients can inspect the result of a game and abort if they lost only to repeat the game
+    later again until they eventually win. 
+    
+    We recommend the following as a best-practise example for implementing a commit-reveal-recover scheme in cadence.
+    Conceptually, our example implements the same approach as this
+    [Ethereum example](https://consensys.github.io/smart-contract-best-practices/development-recommendations/general/public-data/). 
+    
+    While the commit-and-reveal scheme mitigates post-selection of results by adversarial clients,
+    Flow’s secure randomness additionally mitigates any pre-selection vulnerabilities (like biasing attacks by byzantine miners).
+```
 
 ## RLP
 
