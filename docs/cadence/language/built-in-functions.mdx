@@ -30,7 +30,6 @@ fun assert(_ condition: Bool, message: String)
 
   The message argument is optional.
 
-```markdown
 ## secureRandom
 
 ```cadence
@@ -80,7 +79,15 @@ fun secureRandom(): UInt64
     
     While the commit-and-reveal scheme mitigates post-selection of results by adversarial clients,
     Flow’s secure randomness additionally mitigates any pre-selection vulnerabilities (like biasing attacks by byzantine miners).
+
+
+## unsafeRandom
+
+```cadence
+fun unsafeRandom(): UInt64
 ```
+
+deprecated. Please use `secureRandom`
 
 ## RLP
 
