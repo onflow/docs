@@ -9,7 +9,7 @@ Most NFT marketplaces performing on-chain sales use the [NFT Storefront Contract
 A few important points to note regarding listing NFTs for sale through the [NFT Storefront Contract](https://github.com/onflow/nft-storefront):
 
 - Same NFT can have multiple sale listings created. The NFT owner can create multiple listings on the same marketplace or different marketplaces.
-- NFT owners can create different sale listings for the same NFT with different fungible tokens as payment methods. For example, the NFT owner can list the same NFT for sale in both FLOW and FUSD tokens.
+- NFT owners can create different sale listings for the same NFT with different fungible tokens as payment methods. For example, the NFT owner can list the same NFT for sale in both FLOW and USDC tokens.
 - NFT listed for sale using the [NFT Storefront Contract](https://github.com/onflow/nft-storefront) is not locked. It remains in complete control of the NFT owner before the sale, and the NFT owner can transfer it before the sale.
 - Any sale listing created allows for multiple sale cuts. That can enable royalty payments to multiple entities for sale.
 - For an NFT, the NFT owner can create different listings with different sale cuts. That allows each listing to have unique royalty payment schemes.
@@ -22,7 +22,7 @@ A few important points to note regarding listing NFTs for sale through the [NFT 
 
 [Here](https://github.com/onflow/nft-storefront/blob/main/transactions/sell_item.cdc) is an example of a transaction creating an NFT sale listing. The listing creator provides sale cuts (royalties, platform fees). The [NFT Storefront Contract](https://github.com/onflow/nft-storefront) does not determine the sale cuts by itself. The listing creator (NFT marketplace) should figure out the royalties to be paid and populate the sale cuts fields of the transaction.
 
-The sale listing specifies the fungible token the NFT is sold in. Typical fungible tokens used are FLOW and FUSD.
+The sale listing specifies the fungible token the NFT is sold in. Typical fungible tokens used are FLOW and USDC.
 
 ## Purchasing NFTs
 
@@ -38,11 +38,9 @@ After the NFT purchase operation is complete on the blockchain, the NFT marketpl
 
 ## Payment options
 
-Currently, for the on-chain sale of NFTs, the most common option is to let sellers list NFTs for sale in fungible tokens like FUSD or FLOW.
+Currently, for the on-chain sale of NFTs, the most common option is to let sellers list NFTs for sale in fungible tokens like USDC or FLOW.
 
 The marketplace will have the NFT owner sign a transaction like [this](https://github.com/onflow/nft-storefront/blob/main/transactions/sell_item.cdc) to create the sale listing. The transaction [specifies](https://github.com/onflow/nft-storefront/blob/main/transactions/sell_item.cdc#L35) the type of fungible token the NFT seller will accept.
-
-If accepting any fungible token other than FLOW like FUSD, the seller needs to set up their account to accept that token. Here is a [setup transaction](https://github.com/onflow/fusd/blob/main/transactions/setup_fusd_vault.cdc) for FUSD that the marketplace needs the seller to sign.
 
 ### Fiat payments
 

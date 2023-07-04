@@ -2,12 +2,12 @@
 title: Account Model & Implementation
 ---
 
-This doc serves as developer guidance to support Hybrid Custody apps by leveraging Account Linking. While account 
-linking as a feature is a language level API, supporting linked accounts such that users achieve Hybrid Custody 
-has a bit more nuance, namely that apps should build on the HybridCustody standard proposed in 
-[FLIP #72](https://github.com/onflow/flips/pull/72). Implementing this standard will allow dapps to facilitate 
-a user experience based not on a single authenticated account, but on the global context of all accounts linked 
-to the authenticated parent account.
+This doc serves as developer guidance to support Hybrid Custody apps leveraging Account Linking. While account linking
+as a feature is a language level API, supporting linked accounts such that users achieve Hybrid Custody has a bit more
+nuance, namely that apps should build on the HybridCustody standard proposed in [FLIP
+#72](https://github.com/onflow/flips/pull/72) for ecosystem-wide support. Implementing this standard will allow dapps to
+facilitate a user experience based not on a single authenticated account, but on the global context of all accounts
+linked to the authenticated parent account.
 
 We believe multi-account linking and management, technical initiatives in support of 
 [Walletless Onboarding](https://flow.com/post/flow-blockchain-mainstream-adoption-easy-onboarding-wallets), 
@@ -28,16 +28,15 @@ owned assets.
 <Callout type="warning">
 
 Note that the documentation on Hybrid Custody covers the current state and will likely differ from the final
-implementation. Builders should be aware that breaking changes may follow before reaching a final consensus on
-implementation. Interested in shaping the conversation? [Join in!](https://github.com/onflow/flips/pull/72)
+implementation. Builders should be aware that breaking changes may follow before reaching a final community consensus
+on implementation. Interested in shaping the conversation? [Join in!](https://github.com/onflow/flips/pull/72).
 
 </Callout>
 
 # Objectives
 
 - Understand the Hybrid Custody account model
-- Create a blockchain-native onboarding flow
-- Link an existing app account as a child to a newly authenticated parent account
+- Differentiate between restricted child accounts and unrestricted owned accounts
 - Get your dapp to recognize “parent” accounts along with any associated “child” accounts
 - View Fungible and NonFungible Token metadata relating to assets across all of a user's associated accounts - their
   wallet-mediated “parent” account and any hybrid custody model “child” accounts
@@ -71,8 +70,8 @@ with their wallet.
 All related constructs are used together in the [`HybridCustody`
 contract](https://testnet.contractbrowser.com/A.96b15ff6dfde11fe.HybridCustody) to define the standard.
 
-Parent accounts own a `Manager` resource which stores Capabilities to `ProxyAccount` (restricted access) and
-`ChildAccount` (unrestricted access) resources, both of which are stored in any given child account.
+Parent accounts own a `Manager` resource which stores Capabilities to `ChildAccount` (restricted access) and
+`OwnedAccount` (unrestricted access) resources, both of which are stored in any given child account.
 
 Therefore, the presence of a `Manager` in an account implies there are potentially associated accounts for which the
 owning account has delegated access. This resource is intended to be configured with a public Capability that enables
@@ -85,41 +84,43 @@ to the user's `Manager`.
 ## Identifying Account Hierarchy
 
 To clarify, insofar as the standard is concerned, an account is a parent account if it contains a `Manager` resource,
-and an account is a child account if it contains at minimum a `ChildAccount` or additionally a `ProxyAccount` resource.
+and an account is a child account if it contains at minimum an `OwnedAccount` or additionally a `ChildAccount` resource.
 
-We can see that the user's `Manager.accounts` points to the addresses of its child accounts in each index, with
-corresponding Capabilities giving the Manager access to those accounts.
+Within a user's `Manager`, its mapping of `childAccounts` points to the addresses of its child accounts in each index,
+with corresponding values giving the Manager access to those accounts via corresponding`ChildAccount` Capability.
 
-Likewise, the child account's `ProxyAccount.parentAddress` (which owns a `Manager`) points to the user's account as its
+![HybridCustody Conceptual Overview](resources/hybrid_custody_conceptual_overview.png)
+
+Likewise, the child account's `ChildAccount.parentAddress` (which owns a `Manager`) points to the user's account as its
 parent address. This makes it easy to both identify whether an account is a parent, child, or both, and its associated
-parent/child account(s). `ChildAccount` resources underly all account delegations, so can have multiple parents whereas
-`ProxyAccount`s are 1:1. This provides more granular revocation as each parent account has its own Capability path on
-which its access relies.
+parent/child account(s).
+
+`OwnedAccount` resources underly all account delegations, so can have multiple parents whereas `ChildAccount`s are 1:1.
+This provides more granular revocation as each parent account has its own Capability path on which its access relies.
 
 ### Restricted vs. Owned Accounts
 
-It's worth noting here that `ProxyAccount` Capabilities enable access to the underlying account according to rules
-configured by the child account who is delegating the authority. The `ProxyAccount` maintains these rules along with a
-`ChildAccount` Capability within which the `AuthAccount` Capability is stored. Anyone with access to the surface level
-`ProxyAccount` can then access the underlying `AuthAccount`, but only according the pre-defined rule set. These rules
-are fundamentally a list of Types that can/cannot be retrieved from an account.
-
-![HybridCustody Conceptual Overview](resources/hybrid_custody_conceptual_overview.png)
+It's worth noting here that `ChildAccount` Capabilities enable access to the underlying account according to rules
+configured by the child account delegating access. The `ChildAccount` maintains these rules along with an `OwnedAccount`
+Capability within which the `AuthAccount` Capability is stored. Anyone with access to the surface level `ChildAccount`
+can then access the underlying `AuthAccount`, but only according the pre-defined rule set. These rules are fundamentally
+a list of Types that can/cannot be retrieved from an account.
 
 The app developer can codify these rule sets on allowable Capability types in a
 [`CapabilityFilter`](https://testnet.contractbrowser.com/A.96b15ff6dfde11fe.CapabilityFilter) along with a
 [`CapabilityFactory`](https://testnet.contractbrowser.com/A.96b15ff6dfde11fe.CapabilityFactory) defining retrieval
 patterns for those Capabilities. When delegation occurs, the developer would provide the `CapabilityFilter` and
-`CapabilityFactory` Capabilities to a `ChildAccount` resource which stores them in a `ProxyAccount` resource.  Then,
-capabilities are created for the `ChildAccount` and `ProxyAccount` resource and are given to the specified parent
+`CapabilityFactory` Capabilities to an `OwnedAccount` resource which stores them in a `ChildAccount` resource.  Then,
+capabilities are created for the `OwnedAccount` and `ChildAccount` resource and are given to the specified parent
 account.
 
 So, if an app developer wants to enable Hybrid Custody but doesn't want to allow parent accounts to access FungibleToken
 Vaults, for example, the app developer can codify rule sets enumerating allowable Capability types in a
-`CapabilityFilter` along with a `CapabilityFactory` defining retrieval patterns for those Capabilities. When delegation
-occurs, they would provide the `CapabilityFilter` and `CapabilityFactory` Capabilities to a `ChildAccount`. This
-`ChildAccount` then wraps the given filter & factory Capabilities in a `ProxyAccount` along with a Capability to itself
-before publishing the new `ProxyAccount` Capability for the specified parent account to claim.
+`CapabilityFilter` along with a `CapabilityFactory` defining retrieval patterns for those Capabilities.
+
+When delegation occurs, they would provide the `CapabilityFilter` and `CapabilityFactory` Capabilities to an
+`OwnedAccount`. This `OwnedAccount` then wraps the given filter & factory Capabilities in a `ChildAccount` along with a
+Capability to itself before publishing the new `ChildAccount` Capability for the specified parent account to claim.
 
 <Callout type="info">
 
@@ -130,9 +131,10 @@ access to anything other than the Types you declare as allowable.
 
 As mentioned earlier, `Manager`s also maintain access to "owned" accounts - accounts which define unrestricted access as
 they allow direct retrieval of encapsulated AuthAccount objects. These owned accounts, found in `Manager.ownedAccounts`,
-are simply `ChildAccount` Capabilities instead of `ProxyAccount` Capabilities.
+are simply `OwnedAccount` Capabilities instead of `ChildAccount` Capabilities.
 
 ![HybridCustody Total Overview](./resources/hybrid_custody_low_level.png)
+
 
 ## Considerations
 
@@ -174,7 +176,7 @@ import "HybridCustody"
 pub fun main(parent: Address): Bool {
     let acct = getAuthAccount(parent)
     if let manager = acct.borrow<&HybridCustody.Manager>(from: HybridCustody.ManagerStoragePath) {
-        return manager.getAddresses().length > 0
+        return manager.getChildAddresses().length > 0
     }
     return false
 }
@@ -182,8 +184,8 @@ pub fun main(parent: Address): Bool {
 
 ### Query All Accounts Associated with Address
 
-The following script will return an array addresses associated with a given account's address, inclusive of the provided
-address.
+The following script will return an array of addresses associated with a given account's address, inclusive of the
+provided address.
 
 ```cadence get_child_addresses.cdc
 import "HybridCustody"
@@ -192,19 +194,24 @@ pub fun main(parent: Address): [Address] {
     let acct = getAuthAccount(parent)
     let manager = acct.borrow<&HybridCustody.Manager>(from: HybridCustody.ManagerStoragePath)
         ?? panic("manager not found")
-    return manager.getAddresses() // Could also call getOwnedAddresses() for owned account addresses
+    return manager.getChildAddresses() // Could also call getOwnedAddresses() for owned account addresses
 }
 ```
 
 ### Query All Owned NFT Metadata
 
 While it is possible to iterate over the storage of all associated accounts in a single script, memory limits prevent
-this approach from scaling well. Since some accounts hold thousands of NFTs, we recommend breaking up iteration,
-utilizing several queries to iterate over accounts and the storage of each account. Batching queries on individual
-accounts may even be required based on the number of NFTs held.
+this approach from scaling well.
+
+Since some accounts hold thousands of NFTs, we recommend breaking up iteration, utilizing several queries to iterate
+over accounts and the storage of each account. Batching queries on individual accounts may even be required based on the
+number of NFTs held.
 
 1. Get all associated account addresses (see above)
 2. Looping over each associated account address client-side, get each address's owned NFT metadata
+
+For simplicity, we'll show a condensed query, returning NFT display views from all accounts associated with a given
+address for a specified NFT Collection path.
 
 ```cadence get_nft_display_view_from_public.cdc
 import "NonFungibleToken"
@@ -214,7 +221,7 @@ import "HybridCustody"
 /// Returns resolved Display from given address at specified path for each ID or nil if ResolverCollection is not found
 ///
 pub fun getViews(_ address: Address, _ resolverCollectionPath: PublicPath): {UInt64: MetadataViews.Display} {
-
+    
     let account: PublicAccount = getAccount(address)
     let views: {UInt64: MetadataViews.Display} = {}
 
@@ -223,26 +230,27 @@ pub fun getViews(_ address: Address, _ resolverCollectionPath: PublicPath): {UIn
         .getCapability<&{NonFungibleToken.CollectionPublic, MetadataViews.ResolverCollection}>(resolverCollectionPath).borrow() {
         // Iterate over IDs & resolve the view
         for id in collection.getIDs() {
-            let display = collection.borrowViewResolver(id: id).resolveView(Type<MetadataViews.Display>()) as! MetadataViews.Display
-            views.insert(key: id, display)
+            if let display = collection.borrowViewResolver(id: id).resolveView(Type<MetadataViews.Display>()) as? MetadataViews.Display {
+                views.insert(key: id, display)
+            }
         }
     }
 
     return views
 }
 
-/// Queries MetadataViews.Display for each NFT across all associated accounts from Collections at the provided
+/// Queries for MetadataViews.Display each NFT across all associated accounts from Collections at the provided
 /// PublicPath
 ///
 pub fun main(address: Address, resolverCollectionPath: PublicPath): {Address: {UInt64: MetadataViews.Display}} {
 
     let allViews: {Address: {UInt64: MetadataViews.Display}} = {address: getViews(address, resolverCollectionPath)}
     let seen: [Address] = [address]
-
+    
     /* Iterate over any associated accounts */ 
     //
     if let managerRef = getAuthAccount(address).borrow<&HybridCustody.Manager>(from: HybridCustody.ManagerStoragePath) {
-
+        
         for childAccount in managerRef.getChildAddresses() {
             allViews.insert(key: childAccount, getViews(address, resolverCollectionPath))
             seen.append(childAccount)
@@ -260,9 +268,9 @@ pub fun main(address: Address, resolverCollectionPath: PublicPath): {Address: {U
 }
 ```
 
-After iterating over all associated accounts, the client will have a mapping of `Display` views indexed on the NFT ID
-and grouped by account Address. Note that this script does not take batching into consideration and assumes that each
-NFT resolves the `MetadataViews.Display` view type. 
+At the end of this query, the caller will have a mapping of `Display` views indexed on the NFT ID and grouped by account
+Address. Note that this script does not take batching into consideration and assumes that each NFT resolves the
+`MetadataViews.Display` view type. 
 
 ### Query All Account FungibleToken Balances
 
@@ -349,9 +357,10 @@ You might consider resolving
 to aggregate more information about the underlying Vaults.
 
 ### Access NFT in Child Account from Parent Account
-A user with tokens in one of their linked accounts will likely want to utilize said tokens. In this example, the user
-will sign a transaction a transaction with their authenticated account that retrieves a reference to a linked account's
-`NonFungibleToken.Provider`, enabling withdrawal from the linked account having signed with the main account.
+
+A user with NFTs in their child accounts will likely want to utilize said NFTs. In this example, the user will sign a
+transaction a transaction with their authenticated account that retrieves a reference to a child account's
+`NonFungibleToken.Provider`, enabling withdrawal from the child account having signed with the parent account.
 
 ```cadence withdraw_nft_from_child.cdc
 import "NonFungibleToken"
@@ -368,9 +377,10 @@ transaction(childAddress: Address, providerPath: PrivatePath, withdrawID: UInt64
                 from: HybridCustody.ManagerStoragePath
             ) ?? panic("Could not borrow reference to HybridCustody.Manager in signer's account at expected path!")
         
-        // Borrow a reference to the signer's specified child (proxy) account
-        let account: &{AccountPublic, MetadataViews.Resolver} = managerRef.borrowAccount(addr: childAddress)
-            ?? panic("Signer does not have access to specified account")
+        // Borrow a reference to the signer's specified child account
+        let account: &{AccountPrivate, AccountPublic, MetadataViews.Resolver}? = managerRef
+            .borrowAccount(addr: childAddress)
+            ?? panic("Signer does not have access to specified child account")
         
         // Get a reference to the child NFT Provider and assign to the transaction scope variable
         let cap: Capability = account.getCapability(
@@ -393,8 +403,8 @@ transaction(childAddress: Address, providerPath: PrivatePath, withdrawID: UInt64
 
 ```
 
-At the end of this transaction, you withdrew an NFT from the specified account using a `Provider` Capability. A similar
-approach could get you any allowable Capabilities from a signer's child account.
+At the end of this transaction, you withdrew an NFT from the specified account using an NFT `Provider` Capability. A
+similar approach could get you any allowable Capabilities from a signer's child account.
 
 ### Revoking Secondary Access on a Linked Account
 
@@ -402,9 +412,9 @@ The expected uses of child accounts for progressive onboarding implies that they
 user may decide that they no longer want secondary parties to have access to the child account. 
 
 There are two ways a party can have delegated access to an account - keys and AuthAccount Capability. With
-`ProxyAccount` mediated access, a user wouldn't be able to revoke anyone's access except for their own. With
-unrestricted access via `ChildAccount`, one could remove parents (`ChildAccount.removeParent(parent: Address)`) thereby
-unlinking relevant Capabilities and further destroying their `ProxyAccount` and `CapabilityProxy` resources.
+`ChildAccount` mediated access, a user wouldn't be able to revoke anyone's access except for their own. With
+unrestricted access via `OwnedAccount`, one could remove parents (`OwnedAccount.removeParent(parent: Address)`) thereby
+unlinking relevant Capabilities and further destroying their `ChildAccount` and `CapabilityDelegator` resources.
 
 Ultimately, things are not entirely straightforward with respect to `AuthAccount` Capabilities, at least not until
 Capability Controllers enter the picture. This is discussed in more detail in [the
@@ -430,4 +440,8 @@ transaction(child: Address) {
 }
 ```
 
-After removal, the signer no longer has delegated access to the removed account via their `Manager`.
+After removal, the signer no longer has delegated access to the removed account via their `Manager` and the caller is
+removed as a parent of the removed child.
+
+Note also that it's possible for a child account to remove a parent. This is necessary to give application developers
+and ultimately the owners of these child accounts the ability to revoke secondary access on owned accounts.
