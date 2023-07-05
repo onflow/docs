@@ -1990,7 +1990,7 @@ For more on what each transaction role means, see [singing roles](../../concepts
 | `status`                 | [TransactionStatus](#transaction-statuses) | The status of the transaction on the blockchain.                |
 | `statusString` | [TransactionStatus](#transaction-statuses) | The `status` as as descriptive text (e.g. "FINALIZED").         |
 | `errorMessage`           | string                                     | An error message if it exists. Default is an empty string `''`. |
-| `statusCode`             | [GRPCStatus](#grpc-statuses)               | The status from the GRPC response.                              |
+| `statusCode`             | number                                     | The pass/fail status. 0 indicates the transaction succeeded, 1 indicates it failed. |
 
 ### `EventName`
 
