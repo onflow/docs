@@ -111,6 +111,7 @@ const AdmonitionConfigs = {
       </Translate>
     ),
   },
+  // custom backcompatible type
   warning: {
     infimaClassName: 'warning',
     iconComponent: CautionIcon,
@@ -128,6 +129,7 @@ const aliases = {
   secondary: 'note',
   important: 'info',
   success: 'tip',
+  // warning: 'danger', // use custom type instead
 };
 function getAdmonitionConfig(unsafeType) {
   const type = aliases[unsafeType] ?? unsafeType;
