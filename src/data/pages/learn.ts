@@ -123,6 +123,6 @@ export const secondaryNavSections = [
 ];
 
 export const youtubeHref = externalLinks.youtube;
-export const cadenceHref = '/cadence/';
+export const cadenceHref = '/cadence/intro';
 
 export const editPageUrl = `${metadata.githubRepoBaseUrl}/blob/main/app/data/pages/learn.ts`;

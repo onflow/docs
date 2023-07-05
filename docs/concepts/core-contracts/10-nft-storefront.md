@@ -44,11 +44,11 @@ As recommended above, the first step is to create and store the [Storefront reso
 
 The next step is to create a listing under the newly created storefront resource. If the user (repetitive) already holds the storefront resource, then use the existing resource. The seller can come with multiple requirements for listing their NFTs, and We try our best to cover most of them below.
 
-### **Scenario 1:** Selling NFTs corresponds to more than one cryptocurrency, i.e. FLOW, FUSD etc.
+### **Scenario 1:** Selling NFTs corresponds to more than one cryptocurrency, i.e. FLOW, USDC etc.
 
 The `NFTStorefrontV2` contract doesn’t support selling an NFT for multiple different currencies with a single listing. However, this can be achieved by creating multiple listings for the same NFT for each different currency.
 
-**Example -** Alice wants to sell a kitty and is open to receiving FLOW and FUSD
+**Example -** Alice wants to sell a kitty and is open to receiving FLOW and USDC
 
 ![scenario_1](https://user-images.githubusercontent.com/14581509/190966672-e1793fa3-112c-4273-b2a3-e81b8c94fd70.png)
 

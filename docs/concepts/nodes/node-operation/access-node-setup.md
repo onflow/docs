@@ -77,7 +77,7 @@ tar -xvf boot-tools.tar
 
 ```shell CheckSHA256
 sha256sum ./boot-tools/bootstrap
-0d2cb2d0edb659880ae729e9d849a98535414af33690dad545d9892268167bcf  ./boot-tools/bootstrap
+9673e2c29c7f350caea8ff20dbc1e2ab24853416c2d2078c1a21790773315972  ./boot-tools/bootstrap
 ```
 
 > If you have downloaded the bootstrapping kit previously, ensure the SHA256 hash for it still matches. If not, re-download to ensure you are using the most up-to-date version.
@@ -140,7 +140,7 @@ e737ec6efbd26ef43bf676911cdc5a11ba15fc6562d05413e6589fccdd6c06d5
 You need to now register the node on chain by staking the node via [Flow Port](https://port.onflow.org/).
 
 [Here](../flow-port/staking-guide.md) is a guide on how to use Flow port if you are not familiar with it.
-If you are staking via a custody provider or would like to directly submit a staking transaction instead follow this [guide](../staking#how-do-i-stake).
+If you are staking via a custody provider or would like to directly submit a staking transaction instead follow this [guide](../../staking/index.md#how-do-i-stake).
 
 Fund you Flow account with at least 100.01 FLOW tokens, which covers the required stake plus the storage deposit.
 

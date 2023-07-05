@@ -116,11 +116,17 @@ The same rule applies to all other external media.
 
 ### Links
 
-Linking to documents within the `docs` folder of your repo can be done in the standard way that is acceptable to GitHub, eg. `[link](./doc-two.md#hash-link)`
+Linking to documents within the `docs` folder of your repo can be done in the standard way that is acceptable to GitHub, eg.
+```
+[link](./doc-two.md#hash-link)
+```
 
 Writing links in your documents is easy if you follow this rule-of-thumb: If it works in GitHub it should work on the developer Portal, with one notable exception.
 
-**Links to content outside the `docs` folder** in your repository, or elsewhere on the web must be in the form of a fully-qualified URL, eg: `[link](https://www.google.com)`
+**Links to content outside the `docs` folder** in your repository, or elsewhere on the web must be in the form of a fully-qualified URL, eg:
+```
+[link](https://www.google.com)
+```
 
 ### **Callouts & Special Sections**
 

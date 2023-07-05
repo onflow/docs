@@ -365,7 +365,7 @@ import "HelloWorld"
 
 FCL will automatically replace the contract name with the address for the network you are using.
 
-> Note: never put private keys in your `flow.json`. You should use the [key/location syntax](../tooling/flow-cli/flow.json/security.md) to separate your keys into a separate git ignored file.
+> Note: never put private keys in your `flow.json`. You should use the [key/location syntax](../flow-cli/flow.json/security.md) to separate your keys into a separate git ignored file.
 
 ---
 
@@ -1990,7 +1990,7 @@ For more on what each transaction role means, see [singing roles](../../concepts
 | `status`                 | [TransactionStatus](#transaction-statuses) | The status of the transaction on the blockchain.                |
 | `statusString` | [TransactionStatus](#transaction-statuses) | The `status` as as descriptive text (e.g. "FINALIZED").         |
 | `errorMessage`           | string                                     | An error message if it exists. Default is an empty string `''`. |
-| `statusCode`             | [GRPCStatus](#grpc-statuses)               | The status from the GRPC response.                              |
+| `statusCode`             | number                                     | The pass/fail status. 0 indicates the transaction succeeded, 1 indicates it failed. |
 
 ### `EventName`
 

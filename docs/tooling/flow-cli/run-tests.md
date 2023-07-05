@@ -11,7 +11,7 @@ The Flow CLI provides a command to run Cadence tests.
 flow test /path/to/test_script.cdc
 ```
 
-⚠️ The `test` command expects configuration to be initialized. See [flow init](./initialize-configuration.md) command.
+⚠️ The `test` command expects configuration to be initialized. See [flow init](./flow.json/initialize-configuration.md) command.
 
 ## Example Usage
 
