@@ -32,6 +32,8 @@ export const redirects = {
   "/emulator": "/tools/emulator",
   "/node-operation/spork/": "/nodes/node-operation/spork",
   "/node-operation/spork": "/nodes/node-operation/spork",
+  "/node-operation/hcu": "/nodes/node-operation/hcu",
+  "/node-operation/hcu/": "/nodes/node-operation/hcu",
   "/concepts/accessing-testnet/": "/concepts/accessing-testnet",
   "/flow-token/faq/": "/flow/flow-token/faq",
   "/node-operation/node-roles/": "/node-operation/node-roles",

@@ -101,6 +101,7 @@
 ./docs/content/node-operation/observer-node.mdx: docs/concepts/nodes/node-operation/observer-node.mdx
 ./docs/content/node-operation/past-sporks.mdx: docs/concepts/nodes/node-operation/past-sporks.mdx
 ./docs/content/node-operation/spork.mdx: docs/concepts/nodes/node-operation/spork.mdx
+./docs/content/node-operation/hcu.mdx: docs/concepts/nodes/node-operation/hcu.mdx
 ./docs/content/node-operation/upcoming-sporks.mdx: docs/concepts/nodes/node-operation/upcoming-sporks.mdx
 ./docs/content/nodes/access-api-rate-limits.mdx: docs/concepts/nodes/access-api-rate-limits.mdx
 ./docs/content/nodes/access-api.mdx: docs/concepts/nodes/access-api.mdx
