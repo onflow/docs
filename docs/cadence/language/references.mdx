@@ -129,7 +129,7 @@ Instead, consider [storing a capability and borrowing it](capability-based-acces
 ## Authorized References
 
 By default, references are **unauthorized**. 
-However, they may also be **authorized** to a set of [entitlements](./access-control.mdx#entitlements)
+However, they may also be **authorized** to a set of [entitlements](./access-control.md#entitlements)
 
 Authorized references have the `auth` modifier, 
 along with the set of entitlements to which they are authorized. The full syntax is:
@@ -234,7 +234,7 @@ eOrFRef as auth(E, F) &T
 
 ### References and Entitlement Mappings
 
-In most situations, an [entitlement mapping](./access-control.mdx#entitlement-mappings) is valid in the `auth` portion of a reference type.
+In most situations, an [entitlement mapping](./access-control.md#entitlement-mappings) is valid in the `auth` portion of a reference type.
 However, in certain specific circumstances in the definition of a field or function on a composite type, an entitlement mapping may be used in an `auth` modifier. 
 
 When a field is defined with an entitlement mapping:
