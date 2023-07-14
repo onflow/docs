@@ -253,7 +253,7 @@ The `HelloAsset` object is stored in `/storage/HelloAssetTutorial`, which only t
 They want any user in the network to be able to call the `hello()` method. So they make a public capability in `/public/HelloAssetTutorial`.
 
 To create a capability, we use the `AuthAccount.link` method to link a new capability to an object in storage.
-The type contained in `<>` is the restricted reference type that the capability represents.
+The type contained in `<>` is the reference type that the capability represents.
 The capability says that whoever borrows a reference from this capability can only have access to the fields and methods
 that are specified by the type in `<>`.
 The specified type has to be a subtype of the type of the object being linked to,

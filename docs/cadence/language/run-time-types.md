@@ -91,26 +91,25 @@ Run-time types can also be constructed from type identifier strings using built-
 ```cadence
 fun CompositeType(_ identifier: String): Type?
 fun InterfaceType(_ identifier: String): Type?
-fun RestrictedType(identifier: String?, restrictions: [String]): Type?
+fun IntersectionType(types: [String]): Type?
 ```
 
-Given a type identifier (as well as a list of identifiers for restricting interfaces
-in the case of `RestrictedType`), these functions will look up nominal types and
+Given a type identifier (or a list of identifiers for interfaces
+in the case of `IntersectionType`), these functions will look up nominal types and
 produce their run-time equivalents. If the provided identifiers do not correspond
-to any types, or (in the case of `RestrictedType`) the provided combination of
+to any types, or (in the case of `IntersectionType`) the provided combination of
 identifiers would not type-check statically, these functions will produce `nil`.
 
 ```cadence
-struct Test {}
+struct Test: I {}
 struct interface I {}
 let type: Type = CompositeType("A.0000000000000001.Test")
 // `type` is `Type<Test>`
 
-let type2: Type = RestrictedType(
-    identifier: type.identifier,
+let type2: Type = IntersectionType(
     restrictions: ["A.0000000000000001.I"]
 )
-// `type2` is `Type<Test{I}>`
+// `type2` is `Type<{I}>`
 ```
 
 Other built-in functions will construct compound types from other run-types.

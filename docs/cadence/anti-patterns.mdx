@@ -70,47 +70,6 @@ rather than inside contract utility functions.
 There are some scenarios where using an `AuthAccount` object is necessary, such as a cold storage multi-sig,
 but those cases are extremely rare and `AuthAccount` usage should still be avoided unless absolutely necessary.
 
-### Another Example
-
-When we create a public capability for our `FungibleToken.Vault` we do not use an auth capability:
-
-```cadence
-// GOOD: Create a public capability to the Vault that only exposes
-// the balance field through the Balance interface
-signer.link<&FlowToken.Vault{FungibleToken.Balance}>(
-    /public/flowTokenBalance,
-    target: /storage/flowTokenVault
-)
-```
-
-If we were to use an authorized type for the capability, like so:
-
-```cadence
-// BAD: Create an Authorized public capability to the Vault that only exposes
-// the balance field through the Balance interface
-// Authorized referenced can be downcasted to their unrestricted types, which is dangerous
-signer.link<auth &FlowToken.Vault{FungibleToken.Balance}>(
-    /public/flowTokenBalance,
-    target: /storage/flowTokenVault
-)
-```
-
-Then anyone in the network could take that restricted reference
-that is only supposed to expose the balance field and downcast it to expose the withdraw field
-and steal all our money!
-
-```cadence
-// Exploit of the auth capability to expose withdraw
-let balanceRef = getAccount(account)
-    .getCapability<auth &FlowToken.Vault{FungibleToken.Balance}>(/public/flowTokenBalance)
-    .borrow()!
-
-let fullVaultRef = balanceRef as! &FlowToken.Vault
-
-// Withdraw the newly exposed funds
-let stolenFunds <- fullVaultRef.withdraw(amount: 1000000)
-```
-
 ## Events from resources may not be unique
 
 ### Problem
@@ -277,7 +236,7 @@ which means that anyone can create a new instance of a struct without going thro
 ### Solution
 
 Any contract state-modifying operations related to the creation of structs
-should be contained in restricted resources instead of the initializers of structs.
+should be contained in resources instead of the initializers of structs.
 
 ### Example
 
