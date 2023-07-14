@@ -163,9 +163,6 @@ const routeMapping = {
   // flow/flow-token/TODO
   '/flow/flow-token/wallets': '/concepts/flow-token/wallets',
   '/flow/fungible-tokens': '/concepts/token-standards/fungible-tokens',
-  // flow/fusd
-  // flow/fusd/providers
-  // flow/fusd/transactions
   '/flow/nft-marketplace': '/tooling/nft-marketplace',
   '/flow/nft-marketplace/best-practices':
     '/tooling/nft-marketplace/best-practices',
