@@ -4,7 +4,6 @@ export const redirects = {
   "/staking/": "/nodes/staking",
   "/cadence/tutorial/04-non-fungible-tokens/":
     "/cadence/tutorial/05-non-fungible-tokens-1",
-  "/fusd/": "/flow/fusd",
   "/status/": "https://status.onflow.org/",
   "/fcl/tutorials/flow-app-quickstart/":
     "/tools/fcl-js/tutorials/flow-app-quickstart",
@@ -22,7 +21,6 @@ export const redirects = {
   "/flow-cli/": "/tools/flow-cli",
   "/cadence/tutorial/06-marketplace-compose/":
     "/cadence/tutorial/08-marketplace-compose",
-  "/fusd/providers/": "/flow/fusd/providers",
   "/flow-token/": "/flow/flow-token",
   "/flow-cli/generate-keys/": "/tools/flow-cli/generate-keys",
   "/core-contracts/flow-token/": "/flow/core-contracts/flow-token",
@@ -82,8 +80,6 @@ export const redirects = {
     "/tools/flow-cli/deploy-project-contracts",
   "/flow-cli/deploy-project-contracts":
     "/tools/flow-cli/deploy-project-contracts",
-  "/fusd/transactions/": "/flow/fusd/transactions",
-  "/fusd/transactions": "/flow/fusd/transactions",
   "/core-contracts/": "/flow/core-contracts",
   "/fcl/reference/transactions/": "/tools/fcl-js/reference/transactions",
   "/fcl-js/reference/transactions/": "/tools/fcl-js/reference/transactions",
@@ -269,7 +265,6 @@ export const redirects = {
   "/nft-marketplace/": "/flow/nft-marketplace",
   "/dapp-development/DappArchitectures/":
     "/flow/dapp-development/DappArchitectures",
-  "/fusd/testnet/": "/fusd/transactions",
   "/nft-marketplace/building-blocks/": "/flow/nft-marketplace/building-blocks",
   "/flow-js-sdk/packages/types/": "/tools/fcl-js",
   "/staking/scripts/": "/nodes/staking/epoch-scripts-events",
