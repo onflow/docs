@@ -104,7 +104,7 @@ So, for example, for some struct `S`, `&S` is a subtype of `&AnyStruct`, but not
 
 ```cadence
 // Create an reference to the counter,
-// typed with the restricted type `&{HasCount}`,
+// typed with the intersection type `&{HasCount}`,
 // i.e. some resource that conforms to the `HasCount` interface
 //
 let countRef = &counter as &{HasCount}

@@ -18,7 +18,7 @@ In Flow and Cadence, there are two types of access control:
     by providing references to the objects.
 
 2. Access control within contracts and objects
-   using `access(all)` and `access` keywords.
+   using `access` keywords.
 
    For the explanations of the following keywords, we assume that
    the defining type is either a contract, where capability security

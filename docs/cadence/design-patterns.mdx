@@ -267,14 +267,10 @@ Therefore, it is important to be explicit when getting objects or references to 
 
 ### Solution
 
-A good example of when the code should specify the type being restricted is checking the FLOW balance:
-The code must borrow `&FlowToken.Vault{FungibleToken.Balance}`, in order to ensure that it gets a FLOW token balance,
+A good example of when the code should specify the type is checking the FLOW balance:
+The code must borrow `&FlowToken.Vault`, in order to ensure that it gets a FLOW token balance,
 and not just `&{FungibleToken.Balance}`, any balance – the user could store another object
 that conforms to the balance interface and return whatever value as the amount.
-
-When the developer does not care what the concrete type is, they should explicitly indicate that
-by using `&AnyResource{Receiver}` instead of `&{Receiver}`.
-In the latter case, `AnyResource` is implicit, but not as clear as the former case.
 
 ## Plural names for arrays and maps are preferable
 
@@ -426,7 +422,7 @@ and emits an `InboxValueUnpublished` event that the recipient can listen for off
 It is also important to note that the recipient becomes the owner of the capability object once they have claimed it,
 and can thus store it or copy it anywhere they have access to.
 This means providers should only publish capabilities to recipients they trust to use them properly,
-or limit the type with which the capability is restricted in order to only give recipients access to the functionality
+or limit the type with which the capability is authorized in order to only give recipients access to the functionality
 that the provider is willing to allow them to copy.
 
 ## Capability Revocation
@@ -483,7 +479,7 @@ transaction {
             signer.unlink(/public/exampleTokenReceiver)
         }
 
-        signer.link<&ExampleToken.Vault{FungibleToken.Receiver}>(
+        signer.link<&ExampleToken.Vault>(
             /public/exampleTokenReceiver,
             target: /storage/exampleTokenVault
         )

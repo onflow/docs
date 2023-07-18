@@ -230,7 +230,7 @@ so this indexing returns a reference to the attachment on `v`, rather than the a
 If the attachment with the given type does not exist on `v`, this expression returns `nil`.
 
 Because the indexed value must be a subtype of the indexing attachment's base type,
-the owner of a resource can restrict which attachments can be accessed on references to their resource using restricted types,
+the owner of a resource can restrict which attachments can be accessed on references to their resource using interface types,
 much like they would do with any other field or function. E.g.
 
 ```cadence

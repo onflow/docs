@@ -472,7 +472,7 @@ access(all) struct AuthAccount {
         pub fun forEachController(_ function: (&AccountCapabilityController): Bool)
 
         /// Issue/create a new account capability.
-        pub fun issue<T: &AuthAccount{}>(): Capability<T>
+        pub fun issue<T: &AuthAccount>(): Capability<T>
     }
 }
 ```
@@ -958,7 +958,7 @@ counterRef?.count // is `42`
 //
 // `hasCountRef` is non-`nil`, as there is an object stored under path `/storage/counter`,
 // and the stored value of type `Counter` conforms to the requested type `{HasCount}`:
-// the type `Counter` implements the restricted type's restriction `HasCount`
+// the type `Counter` implements the intersection type's interface `HasCount`
 
 let hasCountRef = authAccount.borrow<&{HasCount}>(from: /storage/counter)
 
@@ -967,7 +967,7 @@ let hasCountRef = authAccount.borrow<&{HasCount}>(from: /storage/counter)
 //
 // `otherRef` is `nil`, as there is an object stored under path `/storage/counter`,
 // but the stored value of type `Counter` does not conform to the requested type `{Other}`:
-// the type `Counter` does not implement the restricted type's restriction `Other`
+// the type `Counter` does not implement the intersection type's interface `Other`
 
 let otherRef = authAccount.borrow<&{Other}>(from: /storage/counter)
 
