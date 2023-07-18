@@ -14,7 +14,7 @@ without requiring the original author of the type to plan or account for the int
 ## Declaring Attachments
 
 Attachments are declared with the `attachment` keyword, which would be declared using a new form of composite declaration:
-`access(all) attachment <Name> for <Type>: <Conformances> { ... }`, where the attachment functions and fields are declared in the body.
+`attachment <Name> for <Type>: <Conformances> { ... }`, where the attachment functions and fields are declared in the body.
 As such, the following would be examples of legal declarations of attachments:
 
 ```cadence
@@ -36,7 +36,14 @@ Note that the base type may be either a concrete composite type or an interface.
 In the former case, the attachment is only usable on values specifically of that base type,
 while in the case of an interface the attachment is usable on any type that conforms to that interface.
 
-As with other type declarations, attachments may only have a `access(all)` access modifier (if one is present).
+Unlike other type declarations, attachments may use either an `access(all)` access modifier, or an `access(M)` modifier, 
+where `M` is the name of an entitlement mapping. 
+When attachments are defined with an `access(all)` modifier, 
+members on the attachment may not use any entitlements in their access modifiers, 
+and any references to that attachment are always unauthorized. 
+When attachments are defined with an an [entitlement mapping](./access-control.md), 
+members on the attachments may use any entitlements in the range of that mapping, 
+and any references to that attachments will have their authorization depend on the entitlements present on the base type on which they are accessed. 
 
 The body of the attachment follows the same declaration rules as composites.
 In particular, they may have both field and function members,
@@ -46,6 +53,8 @@ and such members must be explicitly handled in the `destroy` function.
 The `self` keyword is available in attachment bodies, but unlike in a composite,
 `self` is a **reference** type, rather than a composite type:
 In an attachment declaration for `A`, the type of `self` would be `&A`, rather than `A` like in other composite declarations.
+If the attachment declaration uses an `access(all)` access modifier, the `self` reference is always unauthorized,
+whereas if it uses an `access(M)` access modifier, the `self` reference is fully-entitled to the range of `M`. 
 
 If a resource with attachments on it is `destroy`ed, the `destroy` functions of all its attachments are all run in an unspecified order;
 `destroy` should not rely on the presence of other attachments on the base type in its implementation.
@@ -111,6 +120,33 @@ access(all) attachment SomeAttachment for SomeContract.SomeStruct {
 }
 ```
 
+By default, the `base` reference is unauthorized, and thus entitled-access members on the base type are inaccessible in the attachment. 
+If the author of the attachment wishes to have access to entitled-access members on the base type, 
+they must declare that their attachment requires certain entitlements to the base, using `require entitlement E` syntax.
+Required entitlements must be valid entitlements for the base type,
+and requiring entitlements in the attachment declaration will impose additional requirements when the attachment is attached, 
+as described below. So, for example:
+
+```cadence
+entitlement mapping M {
+    E -> F
+}
+
+resource R {
+    access(E) fun foo() { 
+        //...
+    }
+}
+
+access(M) attachment A for R {
+    require entitlement E
+
+    access(all) fun bar() {
+        base.foo() // available because `E` is required above, and thus `base` is type `auth(E) &R`. 
+    }
+}
+```
+
 ### Attachment Types
 
 An attachment declared with `access(all) attachment A for C { ... }` will have a nominal type `A`.
@@ -169,6 +205,14 @@ Cadence will raise a runtime error if a user attempts to add an attachment to a 
 The type returned by the `attach` expression is the same type as the expression on the right-hand side of the `to`;
 attaching an attachment to a value does not change its type.
 
+If an attachment has required entitlements to its base, those entitlements must be explicitly provided in the `attach` expression
+using an additional `with` syntax. So, for example, if an attachment `A` declared for `R` requires entitlements `E` and `F`, it can
+be attached to an `r` of type `@R` like so:
+
+```cadence
+let rWithA <- attach A() to <-r with (E, F)
+```
+
 ## Accessing Attachments
 
 Attachments are accessed on composites via type-indexing:
@@ -200,6 +244,31 @@ fun foo(r: &{I}) {
 
 Hence, if the owner of a resource wishes to allow others to use a subset of its attachments,
 they can create a capability to that resource with a borrow type that only allows certain attachments to be accessed.
+
+If an attachment is declared with an `access(all)` modifier, 
+accessing one this way will always produce an unauthorized reference to the attachment. 
+However, if the attachment is declared with an `access(M)` modifier, where `M` is some entitlement mapping, 
+then the authorization of the resulting reference will depend on the authorization of the accessed value. 
+
+So, for example, given a declaration 
+
+```cadence
+entitlement E
+entitlement F
+entitlement G 
+entitlement H
+entitlement mapping M {
+    E -> F 
+    G -> H
+}
+resource R {}
+access(M) attachment A for R {}
+```
+
+when `A` is accessed on an owned value of type `@R`, it will be fully-authorized to the domain of `M`, 
+having a type of `auth(F, H) &A`. 
+However, if `A` is accessed on an `auth(E) &R` reference, then it will only have a `auth(F) &A` type.
+If `A` is accessed on an unauthorized `&R` reference, then it will yield an unauthorized `&A` type.
 
 ## Removing Attachments
 

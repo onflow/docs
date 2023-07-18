@@ -23,12 +23,12 @@ let refOfA: &String = &a as &String
 
 References may also be authorized if the `&` symbol is preceded by `auth` (otherwise the reference is unauthorized).
 
-Authorized references have the `auth` modifier, i.e. the full syntax is `auth &T`,
-whereas unauthorized references do not have a modifier.
+Authorized references have the `auth` modifier, along with the set of entitlements to which the reference is authorized,
+i.e. the full syntax is `auth(E, F) &T`, whereas unauthorized references do not have a modifier.
 
 ```cadence
 let a: String = "hello"
-let refOfA: &String = &a as auth &String
+let refOfA: auth(X) &String = &a as auth(X) &String
 ```
 
 ### Logical Operator

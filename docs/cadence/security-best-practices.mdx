@@ -11,11 +11,8 @@ Some practices listed below might overlap with advice in the [Cadence Anti-Patte
 
 [References](./language/references.mdx) are ephemeral values and cannot be stored. If persistence is required, store a capability and borrow it when needed.
 
-Authorized references (references with the `auth` keyword) allow downcasting, e.g. a restricted type to its unrestricted type and should only be used in some specific cases.
-
-When exposing functionality, provide the least access necessary. Do not use authorized references, as they can be downcasted, potentially allowing a user to gain access to supposedly restricted functionality. For example, the fungible token standard provides an interface to get the balance of a vault, without exposing the withdrawal functionality.
-
-Be aware that the subtype or unrestricted type could expose functionality that was not intended to be exposed. Do not use authorized references when exposing functionality. For example, the fungible token standard provides an interface to get the balance of a vault, without exposing the withdrawal functionality.
+When exposing functionality, provide the least access necessary. When creating an authorized reference, 
+create it with only the minimal set of entitlements required to achieve the desired functionality. 
 
 ## Account Storage
 
@@ -61,4 +58,6 @@ Declaring a field as [`access(all)`](./language/access-control.md) only protects
 
 Prefer non-public access to a mutable state. That state may also be nested. For example, a child may still be mutated even if its parent exposes it through a field with non-settable access.
 
-Do not use the `access(all)` modifier on fields and functions unless necessary. Prefer `access(self)`, or `access(contract)` and `access(account)` when other types in the contract or account need to have access.
+Do not use the `access(all)` modifier on fields unless necessary. 
+Prefer `access(self)`, or `access(contract)` and `access(account)` when other types in the contract or account need to have access, 
+and entitlement-based access for other cases. 

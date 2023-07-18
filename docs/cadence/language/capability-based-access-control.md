@@ -140,10 +140,14 @@ This can be done using the `borrow` function of the capability:
     execution will abort with an error.
 
 ```cadence
+entitlement Reset
+
 // Declare a resource interface named `HasCount`, that has a field `count`
+// and a `resetCount` function requiring a `Reset` entitlement
 //
 resource interface HasCount {
     count: Int
+    access(Reset) fun resetCount() 
 }
 
 // Declare a resource named `Counter` that conforms to `HasCount`
@@ -157,6 +161,10 @@ resource Counter: HasCount {
 
     access(all) fun increment(by amount: Int) {
         self.count = self.count + amount
+    }
+
+    access(Reset) fun resetCount() {
+        self.count = 0
     }
 }
 
@@ -221,22 +229,19 @@ countRef.count  // is `42`
 //
 countRef.increment(by: 5)
 
-// Again, attempt to get a get a capability for the counter, but use the type `&Counter`.
+// Again, attempt to get a get a capability for the counter, but use the type `auth(Reset) &{HasCount}`.
 //
 // Getting the capability succeeds, because it is latent, but borrowing fails
 // (the result s `nil`), because the capability was created/linked using the type `&{HasCount}`:
 //
-// The resource type `Counter` implements the resource interface `HasCount`,
-// so `Counter` is a subtype of `{HasCount}`, but the capability only allows
-// borrowing using unauthorized references of `{HasCount}` (`&{HasCount}`)
-// instead of authorized references (`auth &{HasCount}`),
-// so users of the capability are not allowed to borrow using subtypes,
-// and they can't escalate the type by casting the reference either.
+// Because the stored capability is not authorized to the `Reset` entitlement, it cannot
+// be borrowed with that type, and thus only the functions on `HasCount` that do not require
+// an entitlement are available to this capability. 
 //
 // This shows how parts of the functionality of stored objects
 // can be safely exposed to other code
 //
-let countCapNew = publicAccount.getCapability<&Counter>(/public/hasCount)
+let countCapNew = publicAccount.getCapability<auth(Reset) &{HasCount}>(/public/hasCount)
 let counterRefNew = countCapNew.borrow()
 
 // `counterRefNew` is `nil`, the borrow failed
