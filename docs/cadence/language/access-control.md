@@ -304,6 +304,9 @@ refEF.b
 refEF.c
 ```
 
+Note particularly in this example how the owned value `r` can access all entitled members on `SomeResource`; 
+owned values are not affected by entitled declarations. 
+
 ### Entitlement Mappings
 
 When objects have fields that are child objects, 
@@ -321,9 +324,11 @@ resource SubResource {
 
 resource OuterResource {
     access(self) let childResource: @SubResource
+
     access(all) fun getPubRef(): &SubResource {
         return &self.childResource as &SubResource
     }
+
     access(OuterEntitlement) fun getEntitledRef(): auth(SubEntitlement) &SubResource {
         return &self.childResource as auth(SubEntitlement) &SubResource
     }
@@ -365,6 +370,7 @@ resource SubResource {
 
 resource OuterResource {
     access(self) let childResource: @SubResource
+
     // by referering to `Map` here, we declare that the entitlements we receive when accessing the `getRef` function on this resource
     // will depend on the entitlements we possess to the resource during the access. 
     access(Map) fun getRef(): auth(Map) &SubResource {
