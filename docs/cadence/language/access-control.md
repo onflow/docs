@@ -304,6 +304,9 @@ refEF.b
 refEF.c
 ```
 
+Note particularly in this example how the owned value `r` can access all entitled members on `SomeResource`; 
+owned values are not affected by entitled declarations. 
+
 ### Entitlement Mappings
 
 When objects have fields that are child objects, 
