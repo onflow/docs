@@ -131,11 +131,13 @@ as described below. So, for example:
 entitlement mapping M {
     E -> F
 }
+
 resource R {
     access(E) fun foo() { 
         //...
     }
 }
+
 access(M) attachment A for R {
     require entitlement E
 

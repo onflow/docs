@@ -321,9 +321,11 @@ resource SubResource {
 
 resource OuterResource {
     access(self) let childResource: @SubResource
+
     access(all) fun getPubRef(): &SubResource {
         return &self.childResource as &SubResource
     }
+
     access(OuterEntitlement) fun getEntitledRef(): auth(SubEntitlement) &SubResource {
         return &self.childResource as auth(SubEntitlement) &SubResource
     }
@@ -365,6 +367,7 @@ resource SubResource {
 
 resource OuterResource {
     access(self) let childResource: @SubResource
+
     // by referering to `Map` here, we declare that the entitlements we receive when accessing the `getRef` function on this resource
     // will depend on the entitlements we possess to the resource during the access. 
     access(Map) fun getRef(): auth(Map) &SubResource {
@@ -389,7 +392,7 @@ Entitlement
 let alsoEntitledSubRef = r.getRef() 
 ```
 
-{/* TODO: Update once mappings can be used on regular composite fields */}
+<!-- TODO: Update once mappings can be used on regular composite fields -->
 
 Entitlement mappings may be used either in accessor functions (as in the example above), or in fields whose types are references. Note that this latter
 usage will necessarily make the type of the composite non-storage, since it will have a reference field. 
