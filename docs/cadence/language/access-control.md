@@ -395,7 +395,7 @@ Entitlement
 let alsoEntitledSubRef = r.getRef() 
 ```
 
-<!-- TODO: Update once mappings can be used on regular composite fields -->
+{/* TODO: Update once mappings can be used on regular composite fields */}
 
 Entitlement mappings may be used either in accessor functions (as in the example above), or in fields whose types are references. Note that this latter
 usage will necessarily make the type of the composite non-storage, since it will have a reference field. 
