@@ -1201,6 +1201,36 @@ are available for both variable-sized and fixed-sized or variable-sized arrays.
     let invalidIndices = example.slice(from: 2, upTo: 1)
     ```
 
+-
+    ```cadence
+    fun reverse(): [T]
+    ```
+
+    Returns a new array with contents in the reversed order.
+    Available if `T` is not resource-kinded.
+
+    ```cadence
+    let example = [1, 2, 3, 4]
+
+    // Create a new array which is the reverse of the original array.
+    let reversedExample = example.reverse()
+    // `reversedExample` is now `[4, 3, 2, 1]`
+    ```
+
+    ```cadence
+    fun reverse(): [T; N]
+    ```
+
+    Returns a new fixed-sized array of same size with contents in the reversed order.
+    
+    ```cadence
+    let fixedSizedExample: [String; 3] = ["ABC", "XYZ", "PQR"]
+
+    // Create a new array which is the reverse of the original array.
+    let fixedArrayReversedExample = fixedSizedExample.reverse()
+    // `fixedArrayReversedExample` is now `["PQR", "XYZ", "ABC"]`
+    ```
+
 #### Variable-size Array Functions
 
 The following functions can only be used on variable-sized arrays.
