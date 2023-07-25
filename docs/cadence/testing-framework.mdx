@@ -20,22 +20,22 @@ Both `setup` and `tearDown` functions are optional.
 // A `setup` function that will always run before the rest of the methods.
 // Can be used to initialize things that would be used across the test cases.
 // e.g: initialling a blockchain backend, initializing a contract, etc.
-pub fun setup() {
+access(all) fun setup() {
 }
 
 // Test functions start with the 'test' prefix.
-pub fun testSomething() {
+access(all) fun testSomething() {
 }
 
-pub fun testAnotherThing() {
+access(all) fun testAnotherThing() {
 }
 
-pub fun testMoreThings() {
+access(all) fun testMoreThings() {
 }
 
 // A `tearDown` function that will always run at the end of all test cases.
 // e.g: Can be used to stop the blockchain back-end used for tests, etc. or any cleanup.
-pub fun tearDown() {
+access(all) fun tearDown() {
 }
 ```
 ## Test Standard Library
@@ -80,18 +80,18 @@ fun expect(_ value: AnyStruct, _ matcher: Matcher)
 A matcher is an object that consists of a test function and associated utility functionality.
 
 ```cadence
-pub struct Matcher {
+access(all) struct Matcher {
 
-    pub let test: fun(AnyStruct): Bool
+    access(all) let test: fun(AnyStruct): Bool
 
-    pub init(test: fun(AnyStruct): Bool) {
+    access(all) init(test: fun(AnyStruct): Bool) {
         self.test = test
     }
 
     /// Combine this matcher with the given matcher.
     /// Returns a new matcher that succeeds if this and the given matcher succeed.
     ///
-    pub fun and(_ other: Matcher): Matcher {
+    access(all) fun and(_ other: Matcher): Matcher {
         return Matcher(test: fun (value: AnyStruct): Bool {
             return self.test(value) && other.test(value)
         })
@@ -100,7 +100,7 @@ pub struct Matcher {
     /// Combine this matcher with the given matcher.
     /// Returns a new matcher that succeeds if this or the given matcher succeeds.
     ///
-    pub fun or(_ other: Matcher): Matcher {
+    access(all) fun or(_ other: Matcher): Matcher {
         return Matcher(test: fun (value: AnyStruct): Bool {
             return self.test(value) || other.test(value)
         })
@@ -153,9 +153,9 @@ It imitates the behavior of a real network, for testing.
 ```cadence
 /// Blockchain emulates a real network.
 ///
-pub struct Blockchain {
+access(all) struct Blockchain {
 
-    pub let backend: AnyStruct{BlockchainBackend}
+    access(all) let backend: AnyStruct{BlockchainBackend}
 
     init(backend: AnyStruct{BlockchainBackend}) {
         self.backend = backend
@@ -164,7 +164,7 @@ pub struct Blockchain {
     /// Executes a script and returns the script return value and the status.
     /// `returnValue` field of the result will be `nil` if the script failed.
     ///
-    pub fun executeScript(_ script: String, _ arguments: [AnyStruct]): ScriptResult {
+    access(all) fun executeScript(_ script: String, _ arguments: [AnyStruct]): ScriptResult {
         return self.backend.executeScript(script, arguments)
     }
 
@@ -172,33 +172,33 @@ pub struct Blockchain {
     /// The transaction is paid by the service account.
     /// The returned account can be used to sign and authorize transactions.
     ///
-    pub fun createAccount(): Account {
+    access(all) fun createAccount(): Account {
         return self.backend.createAccount()
     }
 
     /// Add a transaction to the current block.
     ///
-    pub fun addTransaction(_ tx: Transaction) {
+    access(all) fun addTransaction(_ tx: Transaction) {
         self.backend.addTransaction(tx)
     }
 
     /// Executes the next transaction in the block, if any.
     /// Returns the result of the transaction, or nil if no transaction was scheduled.
     ///
-    pub fun executeNextTransaction(): TransactionResult? {
+    access(all) fun executeNextTransaction(): TransactionResult? {
         return self.backend.executeNextTransaction()
     }
 
     /// Commit the current block.
     /// Committing will fail if there are un-executed transactions in the block.
     ///
-    pub fun commitBlock() {
+    access(all) fun commitBlock() {
         self.backend.commitBlock()
     }
 
     /// Executes a given transaction and commits the current block.
     ///
-    pub fun executeTransaction(_ tx: Transaction): TransactionResult {
+    access(all) fun executeTransaction(_ tx: Transaction): TransactionResult {
         self.addTransaction(tx)
         let txResult = self.executeNextTransaction()!
         self.commitBlock()
@@ -207,7 +207,7 @@ pub struct Blockchain {
 
     /// Executes a given set of transactions and commits the current block.
     ///
-    pub fun executeTransactions(_ transactions: [Transaction]): [TransactionResult] {
+    access(all) fun executeTransactions(_ transactions: [Transaction]): [TransactionResult] {
         for tx in transactions {
             self.addTransaction(tx)
         }
@@ -224,7 +224,7 @@ pub struct Blockchain {
 
     /// Deploys a given contract, and initializes it with the arguments.
     ///
-    pub fun deployContract(
+    access(all) fun deployContract(
         name: String,
         code: String,
         account: Account,
@@ -245,19 +245,19 @@ The `BlockchainBackend` provides the actual functionality of the blockchain.
 ```cadence
 /// BlockchainBackend is the interface to be implemented by the backend providers.
 ///
-pub struct interface BlockchainBackend {
+access(all) struct interface BlockchainBackend {
 
-    pub fun executeScript(_ script: String, _ arguments: [AnyStruct]): ScriptResult
+    access(all) fun executeScript(_ script: String, _ arguments: [AnyStruct]): ScriptResult
 
-    pub fun createAccount(): Account
+    access(all) fun createAccount(): Account
 
-    pub fun addTransaction(_ tx: Transaction)
+    access(all) fun addTransaction(_ tx: Transaction)
 
-    pub fun executeNextTransaction(): TransactionResult?
+    access(all) fun executeNextTransaction(): TransactionResult?
 
-    pub fun commitBlock()
+    access(all) fun commitBlock()
 
-    pub fun deployContract(
+    access(all) fun deployContract(
         name: String,
         code: String,
         account: Account,
@@ -289,9 +289,9 @@ The returned account consists of the `address` of the account, and a `publicKey`
 ```cadence
 /// Account represents info about the account created on the blockchain.
 ///
-pub struct Account {
-    pub let address: Address
-    pub let publicKey: PublicKey
+access(all) struct Account {
+    access(all) let address: Address
+    access(all) let publicKey: PublicKey
 
     init(address: Address, publicKey: PublicKey) {
         self.address = address
@@ -306,7 +306,7 @@ Scripts can be run with the `executeScript` function, which returns a `ScriptRes
 The function takes script-code as the first argument, and the script-arguments as an array as the second argument.
 
 ```cadence
-let result = blockchain.executeScript("pub fun main(a: String) {}", ["hello"])
+let result = blockchain.executeScript("access(all) fun main(a: String) {}", ["hello"])
 ```
 
 The script result consists of the `status` of the script execution, and a `returnValue` if the script execution was
@@ -315,10 +315,10 @@ successful, or an `error` otherwise (see [errors](#errors) section for more deta
 ```cadence
 /// The result of a script execution.
 ///
-pub struct ScriptResult {
-    pub let status: ResultStatus
-    pub let returnValue: AnyStruct?
-    pub let error: Error?
+access(all) struct ScriptResult {
+    access(all) let status: ResultStatus
+    access(all) let returnValue: AnyStruct?
+    access(all) let error: Error?
 
     init(status: ResultStatus, returnValue: AnyStruct?, error: Error?) {
         self.status = status
@@ -336,11 +336,11 @@ a list of signers that would sign the transaction, and the transaction arguments
 ```cadence
 /// Transaction that can be submitted and executed on the blockchain.
 ///
-pub struct Transaction {
-    pub let code: String
-    pub let authorizers: [Address]
-    pub let signers: [Account]
-    pub let arguments: [AnyStruct]
+access(all) struct Transaction {
+    access(all) let code: String
+    access(all) let authorizers: [Address]
+    access(all) let signers: [Account]
+    access(all) let arguments: [AnyStruct]
 
     init(code: String, authorizers: [Address], signers: [Account], arguments: [AnyStruct]) {
         self.code = code
@@ -384,9 +384,9 @@ The result of a transaction consists of the status of the execution, and an `Err
 ```cadence
 /// The result of a transaction execution.
 ///
-pub struct TransactionResult {
-    pub let status: ResultStatus
-    pub let error: Error?
+access(all) struct TransactionResult {
+    access(all) let status: ResultStatus
+    access(all) let error: Error?
 
     init(status: ResultStatus, error: Error) {
         self.status = status
@@ -408,7 +408,7 @@ blockchain.commitBlock()
 A contract can be deployed using the `deployContract` function of the `Blockchain`.
 
 ```cadence
-let contractCode = "pub contract Foo{ pub let msg: String;   init(_ msg: String){ self.msg = msg }   pub fun sayHello(): String { return self.msg } }"
+let contractCode = "access(all) contract Foo{ access(all) let msg: String;   init(_ msg: String){ self.msg = msg }   access(all) fun sayHello(): String { return self.msg } }"
 
 let err = blockchain.deployContract(
     name: "Foo",
@@ -437,8 +437,8 @@ The `Configuration` struct consists of a mapping of import locations to their ad
 /// Configuration to be used by the blockchain.
 /// Can be used to set the address mapping.
 ///
-pub struct Configuration {
-    pub let addresses: {String: Address}
+access(all) struct Configuration {
+    access(all) let addresses: {String: Address}
 
     init(addresses: {String: Address}) {
         self.addresses = addresses
@@ -461,16 +461,16 @@ The import locations for the two contracts can be specified using the two placeh
 import FooContract from "FooContract"
 import BarContract from "BarContract"
 
-pub fun main() {
+access(all) fun main() {
     // do something
 }
 ```
 Then, before executing the script, the address mapping can be specified as follows:
 ```cadence
-pub var blockchain = Test.newEmulatorBlockchain()
-pub var accounts: [Test.Account] = []
+access(all) var blockchain = Test.newEmulatorBlockchain()
+access(all) var accounts: [Test.Account] = []
 
-pub fun setup() {
+access(all) fun setup() {
     // Create accounts in the blockchain.
 
     let acct1 = blockchain.createAccount()
@@ -500,8 +500,8 @@ Contains a message indicating why the operation failed.
 ```cadence
 // Error is returned if something has gone wrong.
 //
-pub struct Error {
-    pub let message: String
+access(all) struct Error {
+    access(all) let message: String
 
     init(_ message: String) {
         self.message = message

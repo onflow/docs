@@ -16,7 +16,7 @@ Event name: `flow.AccountCreated`
 
 
 ```cadence
-pub event AccountCreated(address: Address)
+access(all) event AccountCreated(address: Address)
 ```
 
 | Field             | Type      | Description                              |
@@ -31,7 +31,7 @@ Event that is emitted when a key gets added to an account.
 Event name: `flow.AccountKeyAdded`
 
 ```cadence
-pub event AccountKeyAdded(
+access(all) event AccountKeyAdded(
     address: Address,
     publicKey: PublicKey
 )
@@ -50,7 +50,7 @@ Event that is emitted when a key gets removed from an account.
 Event name: `flow.AccountKeyRemoved`
 
 ```cadence
-pub event AccountKeyRemoved(
+access(all) event AccountKeyRemoved(
     address: Address,
     publicKey: PublicKey
 )
@@ -69,7 +69,7 @@ Event that is emitted when a contract gets deployed to an account.
 Event name: `flow.AccountContractAdded`
 
 ```cadence
-pub event AccountContractAdded(
+access(all) event AccountContractAdded(
     address: Address,
     codeHash: [UInt8],
     contract: String
@@ -89,7 +89,7 @@ Event that is emitted when a contract gets updated on an account.
 Event name: `flow.AccountContractUpdated`
 
 ```cadence
-pub event AccountContractUpdated(
+access(all) event AccountContractUpdated(
     address: Address,
     codeHash: [UInt8],
     contract: String
@@ -110,7 +110,7 @@ Event that is emitted when a contract gets removed from an account.
 Event name: `flow.AccountContractRemoved`
 
 ```cadence
-pub event AccountContractRemoved(
+access(all) event AccountContractRemoved(
     address: Address,
     codeHash: [UInt8],
     contract: String
@@ -130,7 +130,7 @@ Event that is emitted when a Capability is published from an account.
 Event name: `flow.InboxValuePublished`
 
 ```cadence
-pub event InboxValuePublished(provider: Address, recipient: Address, name: String, type: Type)
+access(all) event InboxValuePublished(provider: Address, recipient: Address, name: String, type: Type)
 ```
 
 | Field             | Type      | Description                                  |
@@ -151,7 +151,7 @@ Event that is emitted when a Capability is unpublished from an account.
 Event name: `flow.InboxValueUnpublished`
 
 ```cadence
-pub event InboxValueUnpublished(provider: Address, name: String)
+access(all) event InboxValueUnpublished(provider: Address, name: String)
 ```
 
 | Field           | Type      | Description                                  |
@@ -170,7 +170,7 @@ Event that is emitted when a Capability is claimed by an account.
 Event name: `flow.InboxValueClaimed`
 
 ```cadence
-pub event InboxValueClaimed(provider: Address, recipient: Address, name: String)
+access(all) event InboxValueClaimed(provider: Address, recipient: Address, name: String)
 ```
 
 | Field           | Type      | Description                                  |
