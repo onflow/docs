@@ -28,7 +28,7 @@ Contracts are declared using the `contract` keyword. The keyword is followed
 by the name of the contract.
 
 ```cadence
-pub contract SomeContract {
+access(all) contract SomeContract {
     // ...
 }
 ```
@@ -36,11 +36,11 @@ pub contract SomeContract {
 Contracts cannot be nested in each other.
 
 ```cadence
-pub contract Invalid {
+access(all) contract Invalid {
 
     // Invalid: Contracts cannot be nested in any other type.
     //
-    pub contract Nested {
+    access(all) contract Nested {
         // ...
     }
 }
@@ -50,16 +50,16 @@ One of the simplest forms of a contract would just be one with a state field,
 a function, and an `init` function that initializes the field:
 
 ```cadence
-pub contract HelloWorld {
+access(all) contract HelloWorld {
 
     // Declare a stored state field in HelloWorld
     //
-    pub let greeting: String
+    access(all) let greeting: String
 
     // Declare a function that can be called by anyone
     // who imports the contract
     //
-    pub fun hello(): String {
+    access(all) fun hello(): String {
         return self.greeting
     }
 
@@ -110,9 +110,9 @@ but they have to be in the contract and not another top-level definition.
 //          if they were deployed to the account contract storage and
 //          the deployment would be rejected.
 //
-pub resource Vault {}
-pub struct Hat {}
-pub fun helloWorld(): String {}
+access(all) resource Vault {}
+access(all) struct Hat {}
+access(all) fun helloWorld(): String {}
 let num: Int
 ```
 
@@ -128,13 +128,13 @@ there is no way to create this resource, so it would not be usable.
 
 ```cadence
 // Valid
-pub contract FungibleToken {
+access(all) contract FungibleToken {
 
-    pub resource interface Receiver {
+    access(all) resource interface Receiver {
 
-        pub balance: Int
+        access(all) balance: Int
 
-        pub fun deposit(from: @{Receiver}) {
+        access(all) fun deposit(from: @{Receiver}) {
             pre {
                 from.balance > 0:
                     "Deposit balance needs to be positive!"
@@ -146,10 +146,10 @@ pub contract FungibleToken {
         }
     }
 
-    pub resource Vault: Receiver {
+    access(all) resource Vault: Receiver {
 
         // keeps track of the total balance of the accounts tokens
-        pub var balance: Int
+        access(all) var balance: Int
 
         init(balance: Int) {
             self.balance = balance
@@ -157,7 +157,7 @@ pub contract FungibleToken {
 
         // withdraw subtracts amount from the vaults balance and
         // returns a vault object with the subtracted balance
-        pub fun withdraw(amount: Int): @Vault {
+        access(all) fun withdraw(amount: Int): @Vault {
             self.balance = self.balance - amount
             return <-create Vault(balance: amount)
         }
@@ -165,7 +165,7 @@ pub contract FungibleToken {
         // deposit takes a vault object as a parameter and adds
         // its balance to the balance of the Account's vault, then
         // destroys the sent vault because its balance has been consumed
-        pub fun deposit(from: @{Receiver}) {
+        access(all) fun deposit(from: @{Receiver}) {
             self.balance = self.balance + from.balance
             destroy from
         }
@@ -199,7 +199,7 @@ Imagine that these were declared in the above `FungibleToken` contract.
 
 ```cadence
 
-    pub fun createVault(initialBalance: Int): @Vault {
+    access(all) fun createVault(initialBalance: Int): @Vault {
         return <-create Vault(balance: initialBalance)
     }
 
@@ -238,15 +238,15 @@ The deployed contracts of an account can be accessed through the `contracts` obj
 Accounts store "deployed contracts", that is, the code of the contract:
 
 ```cadence
-pub struct DeployedContract {
+access(all) struct DeployedContract {
     /// The address of the account where the contract is deployed at.
-    pub let address: Address
+    access(all) let address: Address
 
     /// The name of the contract.
-    pub let name: String
+    access(all) let name: String
 
     /// The code of the contract.
-    pub let code: [UInt8]
+    access(all) let code: [UInt8]
 
     /// Returns an array of `Type` objects representing all the public type declarations in this contract
     /// (e.g. structs, resources, enums).
@@ -254,12 +254,12 @@ pub struct DeployedContract {
     /// For example, given a contract
     /// ```
     /// contract Foo {
-    ///       pub struct Bar {...}
-    ///       pub resource Qux {...}
+    ///       access(all) struct Bar {...}
+    ///       access(all) resource Qux {...}
     /// }
     /// ```
     /// then `.publicTypes()` will return an array equivalent to the expression `[Type<Bar>(), Type<Qux>()]`
-    pub fun publicTypes(): [Type]
+    access(all) fun publicTypes(): [Type]
 }
 ```
 
@@ -295,8 +295,8 @@ A new contract can be deployed to an account using the `add` function:
 For example, assuming the following contract code should be deployed:
 
 ```cadence
-pub contract Test {
-    pub let message: String
+access(all) contract Test {
+    access(all) let message: String
 
     init(message: String) {
         self.message = message
@@ -360,8 +360,8 @@ For example, assuming that a contract named `Test` is already deployed to the ac
 and it should be updated with the following contract code:
 
 ```cadence
-pub contract Test {
-    pub let message: String
+access(all) contract Test {
+    access(all) let message: String
 
     init(message: String) {
         self.message = message
@@ -470,19 +470,19 @@ interface by saying `{ContractInterfaceName}.{NestedInterfaceName}`
 // Declare a contract interface that declares an interface and a resource
 // that needs to implement that interface in the contract implementation.
 //
-pub contract interface InterfaceExample {
+access(all) contract interface InterfaceExample {
 
     // Implementations do not need to declare this
     // They refer to it as InterfaceExample.NestedInterface
     //
-    pub resource interface NestedInterface {}
+    access(all) resource interface NestedInterface {}
 
     // Implementations must declare this type
     //
-    pub resource Composite: NestedInterface {}
+    access(all) resource Composite: NestedInterface {}
 }
 
-pub contract ExampleContract: InterfaceExample {
+access(all) contract ExampleContract: InterfaceExample {
 
     // The contract doesn't need to redeclare the `NestedInterface` interface
     // because it is already declared in the contract interface
@@ -490,7 +490,7 @@ pub contract ExampleContract: InterfaceExample {
     // The resource has to refer to the resource interface using the name
     // of the contract interface to access it
     //
-    pub resource Composite: InterfaceExample.NestedInterface {
+    access(all) resource Composite: InterfaceExample.NestedInterface {
     }
 }
 ```

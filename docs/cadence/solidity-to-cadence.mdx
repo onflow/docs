@@ -288,10 +288,10 @@ Scripts are read-only in nature, requiring only a `main` function declaration an
 import FungibleToken from "../../contracts/FungibleToken.cdc"
 import ExampleToken from "../../contracts/ExampleToken.cdc"
 
-pub fun main(account: Address): UFix64 {
+access(all) fun main(account: Address): UFix64 {
     let acct = getAccount(account)
     let vaultRef = acct.getCapability(ExampleToken.VaultPublicPath)
-        .borrow<&ExampleToken.Vault{FungibleToken.Balance}>()
+        .borrow<&ExampleToken.Vault>()
         ?? panic("Could not borrow Balance reference to the Vault")
 
     return vaultRef.balance

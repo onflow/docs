@@ -158,15 +158,15 @@ Open Account `0x01` to see `BasicNFT.cdc`.
 </Callout>
 
 ```cadence BasicNFT.cdc
-pub contract BasicNFT {
+access(all) contract BasicNFT {
 
     // Declare the NFT resource type
-    pub resource NFT {
+    access(all) resource NFT {
         // The unique ID that differentiates each NFT
-        pub let id: UInt64
+        access(all) let id: UInt64
 
         // String mapping to hold metadata
-        pub var metadata: {String: String}
+        access(all) var metadata: {String: String}
 
         // Initialize both fields in the init function
         init(initID: UInt64) {
@@ -176,7 +176,7 @@ pub contract BasicNFT {
     }
 
     // Function to create a new NFT
-    pub fun createNFT(id: UInt64): @NFT {
+    access(all) fun createNFT(id: UInt64): @NFT {
         return <-create NFT(initID: id)
     }
 

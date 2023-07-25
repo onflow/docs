@@ -19,29 +19,30 @@ A simple Cadence script `test_script.cdc`, which has a test case for running a c
 ```cadence
 import Test
 
-pub fun testSimpleScript() {
-    var blockchain = Test.newEmulatorBlockchain()
-    var result = blockchain.executeScript(
+pub let blockchain = Test.newEmulatorBlockchain()
+
+pub fun testSumOfTwo() {
+    let scriptResult = blockchain.executeScript(
         "pub fun main(a: Int, b: Int): Int { return a + b }",
         [2, 3]
     )
-    
-    assert(result.status == Test.ResultStatus.succeeded)
-    assert((result.returnValue! as! Int) == 5)
+
+    Test.expect(scriptResult, Test.beSucceeded())
+
+    let sum = scriptResult.returnValue! as! Int
+    Test.assertEqual(5, sum)
 }
 ```
-Above test-script can be run with the CLI as follows, and the test results will be printed on the console.
+The above test-script can be run with the CLI as follows, and the test results will be printed on the console.
 ```shell
-> flow test test_script.cdc
-
-Running tests...
+$ flow test test_script.cdc
 
 Test results: "test_script.cdc"
-- PASS: testSimpleScript
+- PASS: testSumOfTwo
 
 ```
 
-To learn more about writing tests in Cadence, have a look at the [Cadence testing framework](../../cadence/testing-framework.mdx).
+To learn more about writing tests in Cadence, take a look at the [Cadence testing framework](../../cadence/testing-framework.mdx).
 
 ## Flags
 
@@ -52,21 +53,45 @@ To learn more about writing tests in Cadence, have a look at the [Cadence testin
 
 Use the `cover` flag to calculate coverage report for the code being tested.
 ```shell
-> flow test --cover test_script.cdc
-
-Running tests...
+$ flow test --cover test_script.cdc
 
 Test results: "test_script.cdc"
-- PASS: testSimpleScript
-Coverage: 100.0% of statements
+- PASS: testSumOfTwo
+Coverage: 96.5% of statements
 
 ```
 
 ### Coverage Report File
 
 - Flag: `--coverprofile`
-- Valid inputs: valid filename
-- Default: `coverage.json`
+- Valid inputs: valid filename and extension
+- Default: `"coverage.json"`
 
-Use the `coverprofile` to specify the filename where the calculated coverage report is to be written.
+Use the `coverprofile` to specify the filename where the calculated coverage report is to be written. Supported filename extensions are `.json` and `.lcov`.
+```shell
+$ flow test --cover test_script.cdc
+
+$ cat coverage.json
+
+$ flow test --cover --coverprofile="coverage.lcov" test_script.cdc
+
+$ cat coverage.lcov
+```
+
+### Coverage Code Type
+
+- Flag: `--covercode`
+- Valid inputs: `"all"`, `"contracts"`
+- Default: `"all"`
+
+Use the `covercode` flag to calculate coverage report only for certain types of code. A value of `"contracts"` will exclude scripts and transactions from the coverage report.
+```shell
+$ flow test --cover --covercode="contracts" test_script.cdc
+
+Test results: "tests/test_script.cdc"
+- PASS: testSumOfTwo
+There are no statements to cover
+```
+
+Since we did not use any contracts in our sample test script, there is no coverage percentage to be reported.
 
