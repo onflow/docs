@@ -414,4 +414,21 @@ entitlement mapping M {
 }
 ```
 
-attempting to map `(A | D)` through `M` will fail, since `A` should map to `(B, C)` and `D` should map to `E`, but these two outputs cannot be combined into a disjunctive set. 
+attempting to map `(A | D)` through `M` will fail, since `A` should map to `(B, C)` and `D` should map to `E`, but these two outputs cannot be combined into a disjunctive set.
+
+### Built-in Mutability Entitlements
+
+A prominent use-case of entitlements is to control access to object based on mutability.
+For example, in a struct/resource/contract, the author would want to control the access to certain fields to be read-only,
+and while some fields to be mutable, etc.
+
+In order to support this, Cadence hase built-in set of entitlements that can be used to access control base on mutability.
+- `Insert`
+- `Remove`
+- `Mutate`
+
+These are primarily used by built-in array and dictionary functions, but are also usable by any user to control access
+in their own composite type definitions.
+
+While there is no such a thing as entitlement composition/inheritance, the `Mutate` entitlement is intended to be used
+as an equivalent form to the conjunction of `{Insert, Remove}` entitlements.

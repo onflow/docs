@@ -1116,7 +1116,7 @@ are available for both variable-sized and fixed-sized or variable-sized arrays.
 
 -
     ```cadence
-    fun concat(_ array: T): T
+    access(all) fun concat(_ array: T): T
     ```
 
     Concatenates the parameter `array` to the end
@@ -1145,7 +1145,7 @@ are available for both variable-sized and fixed-sized or variable-sized arrays.
 
 -
     ```cadence
-    fun contains(_ element: T): Bool
+    access(all) fun contains(_ element: T): Bool
     ```
 
     Returns true if the given element of type `T` is in the array.
@@ -1170,7 +1170,7 @@ are available for both variable-sized and fixed-sized or variable-sized arrays.
 
 -
     ```cadence
-    fun firstIndex(of: T): Int?
+    access(all) fun firstIndex(of: T): Int?
     ```
 
     Returns the index of the first element matching the given object in the array, nil if no match.
@@ -1191,7 +1191,7 @@ are available for both variable-sized and fixed-sized or variable-sized arrays.
 
 -
     ```cadence
-    fun slice(from: Int, upTo: Int): [T]
+    access(all) fun slice(from: Int, upTo: Int): [T]
     ```
 
     Returns an array slice of the elements
@@ -1218,7 +1218,7 @@ are available for both variable-sized and fixed-sized or variable-sized arrays.
 
 -
     ```cadence
-    fun reverse(): [T]
+    access(all) fun reverse(): [T]
     ```
 
     Returns a new array with contents in the reversed order.
@@ -1233,7 +1233,7 @@ are available for both variable-sized and fixed-sized or variable-sized arrays.
     ```
 
     ```cadence
-    fun reverse(): [T; N]
+    access(all) fun reverse(): [T; N]
     ```
 
     Returns a new fixed-sized array of same size with contents in the reversed order.
@@ -1253,7 +1253,7 @@ It is invalid to use one of these functions on a fixed-sized array.
 
 -
     ```cadence
-    fun append(_ element: T): Void
+    access(Mutate | Insert) fun append(_ element: T): Void
     ```
 
     Adds the new element `element` of type `T` to the end of the array.
@@ -1276,7 +1276,7 @@ It is invalid to use one of these functions on a fixed-sized array.
 
 -
     ```cadence
-    fun appendAll(_ array: T): Void
+    access(Mutate | Insert) fun appendAll(_ array: T): Void
     ```
 
     Adds all the elements from `array` to the end of the array
@@ -1300,7 +1300,7 @@ It is invalid to use one of these functions on a fixed-sized array.
 
 -
     ```cadence
-    fun insert(at: Int, _ element: T): Void
+    access(Mutate | Insert) fun insert(at: Int, _ element: T): Void
     ```
 
     Inserts the new element `element` of type `T`
@@ -1331,7 +1331,7 @@ It is invalid to use one of these functions on a fixed-sized array.
     ```
 -
     ```cadence
-    fun remove(at: Int): T
+    access(Mutate | Remove) fun remove(at: Int): T
     ```
 
     Removes the element at the given `index` from the array and returns it.
@@ -1356,7 +1356,7 @@ It is invalid to use one of these functions on a fixed-sized array.
 
 -
     ```cadence
-    fun removeFirst(): T
+    access(Mutate | Remove) fun removeFirst(): T
     ```
 
     Removes the first element from the array and returns it.
@@ -1386,7 +1386,7 @@ It is invalid to use one of these functions on a fixed-sized array.
 
 -
     ```cadence
-    fun removeLast(): T
+    access(Mutate | Remove) fun removeLast(): T
     ```
 
     Removes the last element from the array and returns it.
@@ -1568,7 +1568,7 @@ booleans[0] = true
 
 -
     ```cadence
-    fun insert(key: K, _ value: V): V?
+    access(Mutate | Insert) fun insert(key: K, _ value: V): V?
     ```
 
     Inserts the given value of type `V` into the dictionary under the given `key` of type `K`.
@@ -1634,7 +1634,7 @@ booleans[0] = true
 
 -
     ```cadence
-    let keys: [K]
+    access(Mutate | Remove) let keys: [K]
     ```
 
     Returns an array of the keys of type `K` in the dictionary. This does not
@@ -1674,7 +1674,7 @@ booleans[0] = true
 
 -
     ```cadence
-    fun containsKey(key: K): Bool
+    access(all) fun containsKey(key: K): Bool
     ```
 
     Returns true if the given key of type `K` is in the dictionary.
@@ -1699,7 +1699,7 @@ booleans[0] = true
 
 -
     ```cadence
-    fun forEachKey(_ function: fun(K): Bool): Void
+    access(all) fun forEachKey(_ function: fun(K): Bool): Void
     ```
 
     Iterate through all the keys in the dictionary, exiting early if the passed function returns false.

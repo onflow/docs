@@ -332,8 +332,37 @@ var value: Int? = intDictionaryRef["two"]
 It is also important to note that, in the above examples, the returned references have no entitlements. 
 i.e: they are non-auth references.
 
-To get entitled references for struct/resource fields, they must be defined with [entitlement mappings.](./access-control.md#entitlement-mappings).
+To get entitled references for struct/resource fields, they must be defined with [entitlement mappings](./access-control.md#entitlement-mappings).
 However, accessing a value at an index/key of an array/dictionary reference would always return a non-auth reference.
+
+### Index Assignment
+
+Assigning to an index of an array or a dictionary reference is an entitled-operation.
+In other words, the assignment operator for arrays/dictionaries would also have the `Mutate` and `Insert`
+[built-in entitlements](./access-control.md#built-in-mutability-entitlements).
+
+Think of assignment as a built-in function with `Mutate` and `Insert` entitlements. e.g:
+
+```cadence
+access(Mutate | Insert) set(keyOrIndex, value) { ... }
+```
+
+Thus,
+
+```cadence
+var arrayRef = &array as &[String]
+arrayRef[2] = "John"               // Static Error: updating via a read-only reference
+
+var mutableArrayRef = &array as auth(Mutate) &[String]
+mutableArrayRef[2] = "John"        // OK
+
+var insertableArrayRef = &array as auth(Insert) &[String]
+insertableArrayRef[2] = "John"     // OK
+
+var removableArrayRef = &array as auth(Remove) &[String]
+removableArrayRef[2] = "John"     // Static Error: doesn't have the required entitlement
+```
+
 
 ## Reference Validity
 
