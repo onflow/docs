@@ -369,13 +369,7 @@ resource SubResource {
 }
 
 resource OuterResource {
-    access(self) let childResource: @SubResource
-
-    // by referering to `Map` here, we declare that the entitlements we receive when accessing the `getRef` function on this resource
-    // will depend on the entitlements we possess to the resource during the access. 
-    access(Map) fun getRef(): auth(Map) &SubResource {
-        return &self.childResource as auth(Map) &SubResource
-    }
+    access(Map) let childResource: @SubResource
 
     init(r: @SubResource) {
         self.childResource = r
@@ -384,18 +378,16 @@ resource OuterResource {
 
 // given some value `r` of type `@OuterResource`
 let pubRef = &r as &OuterResource
-let pubSubRef = pubRef.getRef() // has type `&SubResource`
+let pubSubRef = pubRef.childResource // has type `&SubResource`
 
 let entitledRef = &r as auth(OuterEntitlement) &OuterResource
-let entitledSubRef = entitledRef.getRef() // `OuterEntitlement` is defined to map to `SubEntitlement`, so this access yields a value of type `auth(SubEntitlement) &SubResource`
+let entitledSubRef = entitledRef.childResource // `OuterEntitlement` is defined to map to `SubEntitlement`, so this access yields a value of type `auth(SubEntitlement) &SubResource`
 Entitlement
 
 // `r` is an owned value, and is thus considered "fully-entitled" to `OuterResource`,
 // so this access yields a value authorized to the entire image of `Map`, in this case `SubEntitlement`
-let alsoEntitledSubRef = r.getRef() 
+let alsoEntitledSubRef = r.childResource
 ```
-
-{/* TODO: Update once mappings can be used on regular composite fields */}
 
 Entitlement mappings may be used either in accessor functions (as in the example above), or in fields whose types are references. Note that this latter
 usage will necessarily make the type of the composite non-storage, since it will have a reference field. 
