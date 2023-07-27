@@ -341,9 +341,9 @@ resource OuterResource {
 
 With this pattern, we can store a `SubResource` on an `OuterResource` value, 
 and create different ways to access that nested resource depending on the entitlement one posseses. 
-Somoneone with only an unauthorized reference to `OuterResource` can only call the `getPubRef` function, 
+Someone with only an unauthorized reference to `OuterResource` can only call the `getPubRef` function, 
 and thus can only get an unauthorized reference to `SubResource` that lets them call `foo`. 
-However, someone with a `OuterEntitlement`-authorized refererence to the `OuterResource` can call the `getEntitledRef` function, 
+However, someone with a `OuterEntitlement`-authorized reference to the `OuterResource` can call the `getEntitledRef` function, 
 giving them a `SubEntitlement`-authorized reference to `SubResource` that allows them to call `bar`.
 
 This pattern is functional, but it is unfortunate that we are forced to "duplicate" the accessors to `SubResource`, 

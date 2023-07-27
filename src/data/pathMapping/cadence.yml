@@ -24,7 +24,7 @@
 ./docs/language/index.md: docs/cadence/language/index.md
 ./docs/language/interfaces.mdx: docs/cadence/language/interfaces.mdx
 ./docs/language/operators.md: docs/cadence/language/operators.md
-./docs/language/references.md: docs/cadence/language/references.md
+./docs/language/references.mdx: docs/cadence/language/references.mdx
 ./docs/language/resources.mdx: docs/cadence/language/resources.mdx
 ./docs/language/restricted-types.md: docs/cadence/language/restricted-types.md
 ./docs/language/run-time-types.md: docs/cadence/language/run-time-types.md
