@@ -277,7 +277,7 @@ the name of the entitlement mapping may be used as a stand-in for the output ent
 References to container types (structs/resources, dictionaries and arrays) can be used to access (read/write) fields
 or elements of the container.
 
-When a field/index is read through a reference, it wil return:
+When a field/index is read through a reference, it will return:
 - A reference, if the field / value at index is also container-typed.
 - Or, the concrete value, if the value is a primitive type.
 
@@ -314,17 +314,17 @@ Similarly, accessing an element of an array/dictionary will return a reference.
 var resourceArrayRef: &[AnyResource] = ...
 var elementRef: &AnyResource = collectionArrayRef[2]
 
-// Whereas, if the array is of primitive type, it will return the concrete value.
+// Whereas, if the array is of a primitive type, it will return the concrete value.
 var intArrayRef: &[Int] = ...
 var element: Int = intArrayRef[2]
 ```
 
 ```cadence
-// Index-access to a dictionary reference would return a refe rence to the value.
+// Index-access to a dictionary reference would return a reference to the value.
 var resourceDictionaryRef: &{String: AnyResource} = ...
 var valueRef: &AnyResource? = resourceDictionaryRef["two"]
 
-// Whereas, if the dictionary values are of primitive type, it will return the concrete value.
+// Whereas, if the dictionary values are of a primitive type, it will return the concrete value.
 var intDictionaryRef: &{String: Int} = ...
 var value: Int? = intDictionaryRef["two"]
 ```

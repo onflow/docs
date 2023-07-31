@@ -422,5 +422,5 @@ In order to support this, Cadence hase built-in set of entitlements that can be 
 These are primarily used by built-in array and dictionary functions, but are also usable by any user to control access
 in their own composite type definitions.
 
-While there is no such a thing as entitlement composition/inheritance, the `Mutate` entitlement is intended to be used
+While Cadence does not support entitlement composition or inheritance, the `Mutate` entitlement is intended to be used
 as an equivalent form to the conjunction of `{Insert, Remove}` entitlements.
