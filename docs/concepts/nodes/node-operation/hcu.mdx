@@ -29,7 +29,7 @@ The first part is executed by the service committee. In this, the version bounda
 The version boundary includes the block height at which the two node types should stop and the new node software version that the nodes should compare after a restart.
 
 
-The second part is executed by the node operator. In this the node operator, monitors the execution and verification node that they are running. When the nodes reach the height set on chain, they stop.
+The second part is executed by the node operator. In this the node operator, monitors the execution and verification node that they are running. When the nodes reach the height set on chain, they stop if their version is lower then the version specified in the version boundary.
 At this point, the operator should update the node version to the new node software version and start the node again. The node will continue from where it left off.
 
 The block height and the node version will be announced by the Flow team on Discord as well as the [forum page](https://forum.onflow.org/c/mainnet-sporks/36).
