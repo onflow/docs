@@ -11,11 +11,8 @@ Some practices listed below might overlap with advice in the [Cadence Anti-Patte
 
 [References](./language/references.mdx) are ephemeral values and cannot be stored. If persistence is required, store a capability and borrow it when needed.
 
-Authorized references (references with the `auth` keyword) allow downcasting, e.g. a restricted type to its unrestricted type and should only be used in some specific cases.
-
-When exposing functionality, provide the least access necessary. Do not use authorized references, as they can be downcasted, potentially allowing a user to gain access to supposedly restricted functionality. For example, the fungible token standard provides an interface to get the balance of a vault, without exposing the withdrawal functionality.
-
-Be aware that the subtype or unrestricted type could expose functionality that was not intended to be exposed. Do not use authorized references when exposing functionality. For example, the fungible token standard provides an interface to get the balance of a vault, without exposing the withdrawal functionality.
+When exposing functionality, provide the least access necessary. When creating an authorized reference, 
+create it with only the minimal set of entitlements required to achieve the desired functionality. 
 
 ## Account Storage
 
@@ -51,14 +48,16 @@ Do not blindly sign a transaction. The transaction could for example change depl
 
 ## Types
 
-Use [restricted types and interfaces](./language/restricted-types.md). Always use the most specific type possible, following the principle of least privilege. Types should always be as restrictive as possible, especially for resource types.
+Use [intersection types and interfaces](./language/intersection-types.md). Always use the most specific type possible, following the principle of least privilege. Types should always be as restrictive as possible, especially for resource types.
 
 If given a less-specific type, cast to the more specific type that is expected. For example, when implementing the fungible token standard, a user may deposit any fungible token, so the implementation should cast to the expected concrete fungible token type.
 
 ## Access Control
 
-Declaring a field as [`pub/access(all)`](./language/access-control.md) only protects from replacing the field’s value, but the value itself can still be mutated if it is mutable. Remember that containers, like dictionaries, and arrays, are mutable.
+Declaring a field as [`access(all)`](./language/access-control.md) only protects from replacing the field’s value, but the value itself can still be mutated if it is mutable. Remember that containers, like dictionaries, and arrays, are mutable.
 
 Prefer non-public access to a mutable state. That state may also be nested. For example, a child may still be mutated even if its parent exposes it through a field with non-settable access.
 
-Do not use the `pub/access(all)` modifier on fields and functions unless necessary. Prefer `priv/access(self)`, or `access(contract)` and `access(account)` when other types in the contract or account need to have access.
+Do not use the `access(all)` modifier on fields unless necessary. 
+Prefer `access(self)`, or `access(contract)` and `access(account)` when other types in the contract or account need to have access, 
+and entitlement-based access for other cases. 
