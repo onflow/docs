@@ -29,6 +29,8 @@ jobs:
 
       - name: Install dependencies
         run: yarn install --frozen-lockfile
+      - name: BS fix from https://github.com/typesense/docusaurus-theme-search-typesense/issues/23
+        run: sed -i '/process.env.DEBUG = namespaces;/c\// process.env.DEBUG = namespaces;' ./node_modules/debug/src/node.js
       - name: Build website
         run: yarn build
 
