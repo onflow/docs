@@ -3,7 +3,7 @@ title: Intersection Types
 sidebar_position: 16
 ---
 
-Interface types cannot be referenced directly; 
+Interface types cannot be used in type annotations directly; 
 instead they must be used as part of intersection types. 
 An intersection type represents a value that conforms to all of the interfaces listed in the intersection. 
 
