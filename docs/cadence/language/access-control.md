@@ -350,7 +350,8 @@ This pattern is functional, but it is unfortunate that we are forced to "duplica
 duplicating the code and storing two functions on the object, 
 essentially creating two different views to the same object that are stored as different functions. 
 To avoid necessitating this duplication, we add support to the language for "entitlement mappings", 
-a way to declare statically how entitlements are propagated from parents to child objects in a nesting hierarchy. 
+a way to declare statically how entitlements are propagated from parents to child objects in a nesting hierarchy.
+
 So, the above example could be equivalently written as:
 
 ```cadence
@@ -369,6 +370,8 @@ resource SubResource {
 }
 
 resource OuterResource {
+    // by referering to `Map` here, we declare that the entitlements we receive when accessing the `childResource` field
+    // on this resource will depend on the entitlements we possess to the resource during the access. 
     access(Map) let childResource: @SubResource
 
     init(r: @SubResource) {
@@ -389,8 +392,9 @@ Entitlement
 let alsoEntitledSubRef = r.childResource
 ```
 
-Entitlement mappings may be used either in accessor functions (as in the example above), or in fields whose types are references. Note that this latter
-usage will necessarily make the type of the composite non-storage, since it will have a reference field. 
+Entitlement mappings may be used either in accessor functions (as in the example above), or in fields whose types are
+either references, or containers (structs/resources, dictionaries and arrays).
+Note that having a reference field will necessarily make the type of the composite non-storage.
 
 {/* TODO: once the Account type refactor is complete and the documentation updated, let's link here to the Account type page as an example of more complex entitlement mappings */}
 Entitlement mappings need not be 1:1; it is valid to define a mapping where multiple inputs map to the same output, or where one input maps to multiple outputs. 

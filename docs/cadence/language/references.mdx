@@ -341,10 +341,10 @@ Assigning to an index of an array or a dictionary reference is an entitled-opera
 In other words, the assignment operator for arrays/dictionaries would also have the `Mutate` and `Insert`
 [built-in entitlements](./access-control.md#built-in-mutability-entitlements).
 
-Think of assignment as a built-in function with `Mutate` and `Insert` entitlements. e.g:
+Think of assignment as a built-in function with `Mutate` or `(Insert, Remove)` entitlements. e.g:
 
 ```cadence
-access(Mutate | Insert) set(keyOrIndex, value) { ... }
+access(Mutate | (Insert, Remove)) set(keyOrIndex, value) { ... }
 ```
 
 Thus,
@@ -357,12 +357,14 @@ var mutableArrayRef = &array as auth(Mutate) &[String]
 mutableArrayRef[2] = "John"        // OK
 
 var insertableArrayRef = &array as auth(Insert) &[String]
-insertableArrayRef[2] = "John"     // OK
+insertableArrayRef[2] = "John"     // Static Error: doesn't have the required entitlement
 
 var removableArrayRef = &array as auth(Remove) &[String]
 removableArrayRef[2] = "John"     // Static Error: doesn't have the required entitlement
-```
 
+var insertableAndRemovableArrayRef = &array as auth(Insert, Remove) &[String]
+insertableAndRemovableArrayRef[2] = "John"        // OK
+```
 
 ## Reference Validity
 
