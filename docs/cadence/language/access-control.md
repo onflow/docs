@@ -222,7 +222,7 @@ some.f.contains(0)
 
 ## Entitlements
 
-Entitlements are a unique feature of Cadence that provide granular access control to each member of a struct or resource. 
+Entitlements provide granular access control to each member of a composite.
 Entitlements can be declared using the following syntax:
 
 ```cadence
@@ -231,6 +231,7 @@ entitlement F
 ```
 
 creates two entitlements called `E` and `F`. 
+
 Entitlements can be imported from other contracts and used the same way as other types. 
 If using entitlements defined in another contract, the same qualified name syntax is used as for other types:
 
@@ -406,7 +407,7 @@ Entitlement mappings need not be 1:1; it is valid to define a mapping where mult
 Entitlement mappings preserve the "kind" of the set they are mapping; i.e. mapping an "and" set produces an "and" set, and mapping an "or" set produces an "or" set. 
 Because "and" and "or" separators cannot be combined in the same set, attempting to map "or"-separated sets through certain complex mappings may result in a type error. For example:
 
-```
+```cadence
 entitlement mapping M {
   A -> B 
   A -> C
