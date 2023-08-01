@@ -429,6 +429,7 @@ For example, assuming that a contract named `Test` which conforms to the `TestIn
 ```cadence
 let signer: AuthAccount = ...
 let contract: &TestInterface = signer.contracts.borrow<&TestInterface>(name: "Test")
+```
 
 ### Removing a Deployed Contract
 
