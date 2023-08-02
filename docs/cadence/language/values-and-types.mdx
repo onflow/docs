@@ -1116,6 +1116,7 @@ are available for both variable-sized and fixed-sized or variable-sized arrays.
 
 -
     ```cadence
+    access(all)
     fun concat(_ array: T): T
     ```
 
@@ -1145,6 +1146,7 @@ are available for both variable-sized and fixed-sized or variable-sized arrays.
 
 -
     ```cadence
+    access(all)
     fun contains(_ element: T): Bool
     ```
 
@@ -1170,6 +1172,7 @@ are available for both variable-sized and fixed-sized or variable-sized arrays.
 
 -
     ```cadence
+    access(all)
     fun firstIndex(of: T): Int?
     ```
 
@@ -1191,6 +1194,7 @@ are available for both variable-sized and fixed-sized or variable-sized arrays.
 
 -
     ```cadence
+    access(all)
     fun slice(from: Int, upTo: Int): [T]
     ```
 
@@ -1218,6 +1222,7 @@ are available for both variable-sized and fixed-sized or variable-sized arrays.
 
 -
     ```cadence
+    access(all)
     fun reverse(): [T]
     ```
 
@@ -1233,6 +1238,7 @@ are available for both variable-sized and fixed-sized or variable-sized arrays.
     ```
 
     ```cadence
+    access(all)
     fun reverse(): [T; N]
     ```
 
@@ -1253,6 +1259,7 @@ It is invalid to use one of these functions on a fixed-sized array.
 
 -
     ```cadence
+    access(Mutate | Insert)
     fun append(_ element: T): Void
     ```
 
@@ -1276,6 +1283,7 @@ It is invalid to use one of these functions on a fixed-sized array.
 
 -
     ```cadence
+    access(Mutate | Insert)
     fun appendAll(_ array: T): Void
     ```
 
@@ -1300,6 +1308,7 @@ It is invalid to use one of these functions on a fixed-sized array.
 
 -
     ```cadence
+    access(Mutate | Insert)
     fun insert(at: Int, _ element: T): Void
     ```
 
@@ -1331,6 +1340,7 @@ It is invalid to use one of these functions on a fixed-sized array.
     ```
 -
     ```cadence
+    access(Mutate | Remove)
     fun remove(at: Int): T
     ```
 
@@ -1356,6 +1366,7 @@ It is invalid to use one of these functions on a fixed-sized array.
 
 -
     ```cadence
+    access(Mutate | Remove)
     fun removeFirst(): T
     ```
 
@@ -1386,6 +1397,7 @@ It is invalid to use one of these functions on a fixed-sized array.
 
 -
     ```cadence
+    access(Mutate | Remove)
     fun removeLast(): T
     ```
 
@@ -1568,6 +1580,7 @@ booleans[0] = true
 
 -
     ```cadence
+    access(Mutate | Insert)
     fun insert(key: K, _ value: V): V?
     ```
 
@@ -1634,6 +1647,7 @@ booleans[0] = true
 
 -
     ```cadence
+    access(Mutate | Remove)
     let keys: [K]
     ```
 
@@ -1674,6 +1688,7 @@ booleans[0] = true
 
 -
     ```cadence
+    access(all)
     fun containsKey(key: K): Bool
     ```
 
@@ -1699,6 +1714,7 @@ booleans[0] = true
 
 -
     ```cadence
+    access(all)
     fun forEachKey(_ function: fun(K): Bool): Void
     ```
 
