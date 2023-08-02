@@ -13,6 +13,9 @@ const fs = require('fs');
 const externalDataSourceLocation = './src/data/data-sources.json';
 let cachedRepositories;
 
+const hasTypesense =
+  process.env.TYPESENSE_NODE && process.env.TYPESENSE_SEARCH_ONLY_API_KEY;
+
 const mixpanelOnLoad = `
 if ('${process.env.MIXPANEL_PROJECT_TOKEN}' && '${process.env.MIXPANEL_PROJECT_TOKEN}' !== 'undefined') {
   window.mixpanel.init('${process.env.MIXPANEL_PROJECT_TOKEN}');
@@ -229,7 +232,10 @@ const config = {
     ],
   ],
 
-  themes: ['mdx-v2', 'docusaurus-theme-search-typesense'],
+  themes: [
+    'mdx-v2',
+    hasTypesense && 'docusaurus-theme-search-typesense',
+  ].filter(Boolean),
 
   themeConfig:
     /** @type {import('@docusaurus/preset-classic').ThemeConfig} */
@@ -486,7 +492,7 @@ const config = {
         theme: lightCodeTheme,
         darkTheme: darkCodeTheme,
       },
-      typesense: {
+      typesense: hasTypesense && {
         // Replace this with the name of your index/collection.
         // It should match the "index_name" entry in the scraper's "config.json" file.
         typesenseCollectionName: 'flow_docs',
