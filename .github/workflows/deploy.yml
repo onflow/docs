@@ -53,10 +53,10 @@ jobs:
           host: ${{vars.TYPESENSE_NODE}}
           
           # The port on which your Typesense server is listening. Optional. Default: 8108.
-          port: 8108
+          port: 443
           
           # The protocol to use when connecting to your Typesense server. Optional. Default: http.
-          protocol: http
+          protocol: https
           
           # The path to your DocSearch config file. Optional. Default: docsearch.config.json.
           config: docsearch.config.json
