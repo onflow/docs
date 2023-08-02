@@ -56,7 +56,7 @@ jobs:
           port: 8108
           
           # The protocol to use when connecting to your Typesense server. Optional. Default: http.
-          protocol: http
+          protocol: https
           
           # The path to your DocSearch config file. Optional. Default: docsearch.config.json.
           config: docsearch.config.json
