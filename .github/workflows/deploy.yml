@@ -9,7 +9,7 @@ on:
     # https://docs.github.com/en/actions/using-workflows/workflow-syntax-for-github-actions#on
 
 env:
-  ALGOLIA_APP_ID: ${{vars.ALGOLIA_APP_ID}}
+  MIXPANEL_PROJECT_TOKEN: ${{vars.MIXPANEL_PROJECT_TOKEN}}
   TYPESENSE_NODE: ${{vars.TYPESENSE_NODE}}
   TYPESENSE_SEARCH_ONLY_API_KEY: ${{secrets.TYPESENSE_SEARCH_ONLY_API_KEY}}
 
