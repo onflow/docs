@@ -13,6 +13,9 @@ const fs = require('fs');
 const externalDataSourceLocation = './src/data/data-sources.json';
 let cachedRepositories;
 
+const hasTypesense =
+  process.env.TYPESENSE_NODE && process.env.TYPESENSE_SEARCH_ONLY_API_KEY;
+
 const mixpanelOnLoad = `
 if ('${process.env.MIXPANEL_PROJECT_TOKEN}' && '${process.env.MIXPANEL_PROJECT_TOKEN}' !== 'undefined') {
   window.mixpanel.init('${process.env.MIXPANEL_PROJECT_TOKEN}');
@@ -229,7 +232,10 @@ const config = {
     ],
   ],
 
-  themes: ['mdx-v2'],
+  themes: [
+    'mdx-v2',
+    hasTypesense && 'docusaurus-theme-search-typesense',
+  ].filter(Boolean),
 
   themeConfig:
     /** @type {import('@docusaurus/preset-classic').ThemeConfig} */
@@ -486,35 +492,28 @@ const config = {
         theme: lightCodeTheme,
         darkTheme: darkCodeTheme,
       },
-      // algolia: process.env.ALGOLIA_APP_ID && {
-      //   // The application ID provided by Algolia
-      //   appId: process.env.ALGOLIA_APP_ID,
+      typesense: hasTypesense && {
+        // Replace this with the name of your index/collection.
+        // It should match the "index_name" entry in the scraper's "config.json" file.
+        typesenseCollectionName: 'flow_docs',
 
-      //   // Public API key: it is safe to commit it
-      //   apiKey: process.env.ALGOLIA_API_KEY,
+        typesenseServerConfig: {
+          nodes: [
+            {
+              host: process.env.TYPESENSE_NODE,
+              port: 443,
+              protocol: 'https',
+            },
+          ],
+          apiKey: process.env.TYPESENSE_SEARCH_ONLY_API_KEY,
+        },
 
-      //   indexName: process.env.ALGOLIA_INDEX_NAME,
+        // Optional: Typesense search parameters: https://typesense.org/docs/0.24.0/api/search.html#search-parameters
+        typesenseSearchParameters: {},
 
-      //   // Optional: see doc section below
-      //   contextualSearch: true,
-
-      //   // Optional: Specify domains where the navigation should occur through window.location instead on history.push. Useful when our Algolia config crawls multiple documentation sites and we want to navigate with window.location.href to them.
-      //   // externalUrlRegex: 'external\\.com|domain\\.com',
-
-      //   // Optional: Replace parts of the item URLs from Algolia. Useful when using the same search index for multiple deployments using a different baseUrl. You can use regexp or string in the `from` param. For example: localhost:3000 vs myCompany.com/docs
-      //   // replaceSearchResultPathname: {
-      //   //   from: '/docs/', // or as RegExp: /\/docs\//
-      //   //   to: '/',
-      //   // },
-
-      //   // Optional: Algolia search parameters
-      //   searchParameters: {},
-
-      //   // Optional: path for search page that enabled by default (`false` to disable it)
-      //   searchPagePath: 'search',
-
-      //   // ... other Algolia params
-      // },
+        // Optional
+        contextualSearch: true,
+      },
     }),
   plugins: [
     function tailwindPlugin() {
