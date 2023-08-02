@@ -9,8 +9,8 @@ env:
   TYPESENSE_SEARCH_ONLY_API_KEY: ${{secrets.TYPESENSE_SEARCH_ONLY_API_KEY}}
 
 jobs:
-  deploy:
-    name: Deploy to GitHub Pages
+  crawl:
+    name: Crawl Pages
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
