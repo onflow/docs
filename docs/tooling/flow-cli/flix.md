@@ -27,7 +27,7 @@ flix flow transfer-flow 5.0 "0x123" --network testnet --signer "testnet-account"
 
 ```shell
 # Execute a local FLIX script by path on Testnet
-flow flix path ./multiply.template.json 2 3 --network testnet`
+flow flix ./multiply.template.json 2 3 --network testnet`
 ```
 
 ## Resources
