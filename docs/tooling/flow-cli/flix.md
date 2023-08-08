@@ -5,7 +5,7 @@ description: How to execute Flow Interaction Templates (FLIX) on Flow from the c
 sidebar_position: 12
 ---
 
-The Flow CLI provides a command to execute Flow Interaction Templates (FLIX).
+The Flow CLI provides a command to execute Flow Interaction Templates (FLIX). FLIX are an easy way to interact with Flow. They are a standard for distributing Cadence scripts and transactions, and metadata about them, in a way that is consumable by tooling and wallets. FLIX are audited for correctness and safety by an ecosystem of auditors.
 
 ```shell
 flow flix <query> [<argument> <argument>...] [flags]
@@ -16,13 +16,13 @@ Queries can be a FLIX id, name, or path to a local FLIX file.
 ## Example Usage
 
 ```shell
-# Execute a FLIX script by id on Testnet
-flow flix 123 --network testnet
+# Execute a FLIX transaction by name on Testnet
+flix flow transfer-flow 5.0 "0x123" --network testnet --signer "testnet-account"
 ```
 
 ```shell
-# Execute a FLIX transaction by name on Testnet
-flix flow transfer-flow 5.0 "0x123" --network testnet --signer "testnet-account"
+# Execute a FLIX script by id on Testnet
+flow flix bd10ab0bf472e6b58ecc0398e9b3d1bd58a4205f14a7099c52c0640d9589295f --network testnet
 ```
 
 ```shell
