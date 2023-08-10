@@ -1,6 +1,5 @@
 ---
-title: Start Emulator with the Flow CLI
-sidebar_title: Start Emulator
+title: Start Emulator
 description: How to start Flow emulator from the command line
 sidebar_position: 1
 ---

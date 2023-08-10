@@ -1,6 +1,5 @@
 ---
-title: Get Network Status 
-sidebar_title: Network Status 
+title: Network Status 
 description: How to get access node status from the command line
 sidebar_position: 4
 ---

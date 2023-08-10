@@ -1,6 +1,5 @@
 ---
-title: Send a Transaction with the Flow CLI
-sidebar_title: Send a Transaction
+title: Send a Transaction
 description: How to send a Flow transaction from the command line
 sidebar_position: 1
 ---

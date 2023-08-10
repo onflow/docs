@@ -1,6 +1,5 @@
 ---
-title: Manage Flow Configuration
-sidebar_title: Manage Configuration
+title: Manage Configuration
 description: How to configure the Flow CLI
 sidebar_position: 3
 ---

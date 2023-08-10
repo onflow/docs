@@ -1,6 +1,5 @@
 ---
-title: Using Super Commands with the Flow CLI
-sidebar_title: Super Commands
+title: Super Commands
 description: How Flow super commands work
 sidebar_position: 6
 ---

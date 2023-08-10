@@ -1,6 +1,5 @@
 ---
-title: Derive Public Key with the Flow CLI
-sidebar_title: Derive Public Key
+title: Derive Public Key
 description: How to derive Flow public key from a private key from the command line
 sidebar_position: 3
 ---

@@ -1,6 +1,5 @@
 ---
-title: Create Flow app from scaffold
-sidebar_title: Create App
+title: Create App
 description: How to create a Flow app with recommended structure
 ---
 

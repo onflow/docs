@@ -1,6 +1,5 @@
 ---
-title: Send Complex Transaction with the Flow CLI
-sidebar_title: Build a Complex Transaction
+title: Build a Complex Transaction
 description: How to build and send a complex Flow transaction from the command line
 sidebar_position: 4
 ---

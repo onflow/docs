@@ -1,6 +1,5 @@
 ---
-title: Generate Key Pair with the Flow CLI
-sidebar_title: Generate Keys
+title: Generate Keys
 description: How to generate key pair from the command line
 sidebar_position: 1
 ---
