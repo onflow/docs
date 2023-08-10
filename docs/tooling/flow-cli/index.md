@@ -56,4 +56,6 @@ And then the flow dev:
 > flow dev
 ```
 
-Read more about [flow dev command here](./super-commands/super-commands.md). 
+### Next steps
+
+As part of the next steps you can read more about [flow dev command](./super-commands/super-commands.md).
