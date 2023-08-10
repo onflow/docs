@@ -1,6 +1,5 @@
 ---
-title: Update a Contract with the Flow CLI
-sidebar_title: Update a Contract
+title: Update a Contract
 sidebar_position: 4
 ---
 

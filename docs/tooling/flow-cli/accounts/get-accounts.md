@@ -1,6 +1,5 @@
 ---
-title: Get an Account with the Flow CLI
-sidebar_title: Get an Account
+title: Get an Account
 description: How to get a Flow account from the command line
 sidebar_position: 1
 ---
