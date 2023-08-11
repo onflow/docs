@@ -1,6 +1,6 @@
 ---
 title: Testnet Testing Guidelines
-sidebar_label: 3. Testnet Testing
+sidebar_label: Testnet Testing
 sidebar_position: 4
 ---
 
