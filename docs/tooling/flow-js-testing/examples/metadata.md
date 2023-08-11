@@ -1,6 +1,6 @@
 ---
 title: Additional Examples
-sidebar_title: Additional Examples
+sidebar_label: Additional Examples
 description: More examples, which cover specific use cases
 ---
 

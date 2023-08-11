@@ -1,6 +1,5 @@
 ---
-title: Create an Account with the Flow CLI
-sidebar_title: Create an Account
+title: Create an Account
 description: How to create a Flow account from the command line
 sidebar_position: 2
 ---

@@ -1,6 +1,5 @@
 ---
-title: Generate a Signature with the Flow CLI
-sidebar_title: Generate a Signature
+title: Generate a Signature
 description: How to generate a new signature from the command line
 ---
 

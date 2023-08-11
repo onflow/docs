@@ -1,6 +1,5 @@
 ---
-title: Flow CLI security
-sidebar_title: Security
+title: Security
 description: How to securely use CLI
 sidebar_position: 4
 ---

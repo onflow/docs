@@ -1,6 +1,6 @@
 ---
 title: Emulator
-sidebar_title: Emulator
+sidebar_label: Emulator
 description: How to start a new instance of emulator
 ---
 

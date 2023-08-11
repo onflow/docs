@@ -1,6 +1,5 @@
 ---
-title: Save a protocol snapshot with the FLOW CLI
-sidebar_title: Snapshot Save
+title: Snapshot Save
 description: How to save a protocol snapshot from the command line
 ---
 

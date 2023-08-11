@@ -1,6 +1,5 @@
 ---
-title: Verify a Signature with the Flow CLI
-sidebar_title: Verify Signature
+title: Verify Signature
 description: How to verify a signature from the command line 
 ---
 

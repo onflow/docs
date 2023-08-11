@@ -1,6 +1,6 @@
 ---
 title: Folder Structure
-sidebar_title: Folder Structure
+sidebar_label: Folder Structure
 description: How to structure your Cadence files
 ---
 

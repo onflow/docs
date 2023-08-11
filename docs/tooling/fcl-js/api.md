@@ -1,3 +1,8 @@
+---
+sidebar_label: FCL Reference
+sidebar_position: 2
+---
+
 # Flow Client Library (FCL) API Reference
 
 <div class="docs-site-omit">

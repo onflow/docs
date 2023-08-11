@@ -1,6 +1,6 @@
 ---
 title: Template Code
-sidebar_title: Templates
+sidebar_label: Templates
 description: How to manage load Cadence template code
 ---
 

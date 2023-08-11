@@ -1,7 +1,7 @@
 ---
 title: Modify
 description: Add an exclusive NFT collection
-sidebar_title: Modify
+sidebar_label: Modify
 ---
 
 The following steps will guide you through a modification of the Kitty Items project. You will add a new NFT kind, representing an exclusive collection of rare NFTs of sunglasses:
