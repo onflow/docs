@@ -1,7 +1,6 @@
 # Simple NFT Viewer
 
-This example project will show you how to build a simple viewer that will allow you to view NFTs that conform
-to the [NFT](https://github.com/onflow/flow-nft) and [MetadataViews](https://github.com/onflow/flow-nft#nft-metadata) standards.
+This example project will show you how to build a simple viewer that will allow you to view NFTs that conform to the [NFT](https://github.com/onflow/flow-nft) and [MetadataViews](https://github.com/onflow/flow-nft#nft-metadata) standards.
 
 This tutorial will mostly ignore the C# code that actually displays the NFTs and focus on a high level summary of the steps used.
 
@@ -14,8 +13,7 @@ When querying the blockchain we utilize four scripts:
 * [GetDisplayDataForIDs.cdc](Cadence/GetDisplayDataForIDs.cdc) - Gets just the display data for a given NFT
 * [GetFullDataForID.cdc](Cadence/GetFullDataForID.cdc) - Gets a more comprehensive set of data for a single NFT.
 ```
-While we could use a single script to query for all the data, larger collections will cause the script to time out.  Instead
-we query for just the data we need to reduce the chances of a timeout occurring.
+While we could use a single script to query for all the data, larger collections will cause the script to time out. Instead we query for just the data we need to reduce the chances of a timeout occurring.
 
 ## Finding Collections
 
@@ -49,13 +47,11 @@ pub fun main(addr: Address) : [StoragePath] {
 }
 ```
 
-We use the [Storage Iteration API](../../../cadence/language/accounts#storage-iteration) to look at 
-everything the account has in it's storage and see if it is an NFT Collection.  We return a list of all found NFT Collections.
+We use the [Storage Iteration API](../../../../cadence/language/accounts.mdx#storage-iteration) to look at everything the account has in it's storage and see if it is an NFT Collection.  We return a list of all found NFT Collections.
 
 ## Getting NFT IDs Contained in a Collection
 
-We use this to create a list of collection paths a user can pick from.  When the user selects a path to view, we fetch a
-list of IDs contained in that collection:
+We use this to create a list of collection paths a user can pick from.  When the user selects a path to view, we fetch a list of IDs contained in that collection:
 
 ```cadence
 import NonFungibleToken from 0x1d7e57aa55817448
@@ -109,8 +105,7 @@ pub fun main(addr: Address, path: StoragePath, ids: [UInt64]) : {UInt64:AnyStruc
     return returnData
 }
 ```
-This gives us a dictionary that maps NFT IDs to Display structs (```{UInt64:MetadataViews.Display}```).  Because accessing this
-information can be tedious in C#, we can define some C# classes to make our lives easier:
+This gives us a dictionary that maps NFT IDs to Display structs (```{UInt64:MetadataViews.Display}```).  Because accessing this information can be tedious in C#, we can define some C# classes to make our lives easier:
 
 ```csharp
 public class File
@@ -136,9 +131,7 @@ This line in NFTViewer.cs is an example of converting using Cadence.Convert:
 Dictionary<UInt64, Display> displayData = Convert.FromCadence<Dictionary<UInt64, Display>>(scriptResponseTask.Result.Value);
 ```
 
-You might ask whey we don't combine GetNftIdsForCollection.cdc and GetDisplayDataForIDs.cdc to get the Display data at the
-same time we get the list of IDs.  This approach would work in many cases, but when an account contains large numbers of NFTs,
-this could cause a script timeout.  Getting the list of IDs is a cheap call because the NFT contains this list in an array already.
+You might ask whey we don't combine GetNftIdsForCollection.cdc and GetDisplayDataForIDs.cdc to get the Display data at the same time we get the list of IDs.  This approach would work in many cases, but when an account contains large numbers of NFTs, this could cause a script timeout.  Getting the list of IDs is a cheap call because the NFT contains this list in an array already.
 By getting just the NFT IDs, we could implement paging and use multiple script calls to each fetch a portion of the display data.
 This example doesn't currently do this type of paging, but could do so without modifying the cadence scripts.
 
@@ -230,13 +223,11 @@ pub fun main(addr: Address, path: StoragePath, id: UInt64) : NFTData? {
     return nftData
 }
 ```
-Here we define a struct NFTData that will contain all the different information we want and fill the struct via multiple
-resolveView calls.
+Here we define a struct NFTData that will contain all the different information we want and fill the struct via multiple resolveView calls.
 
 ## C# Classes for Easy Converting
 
-The end of NFTViewer.cs contains classes that we use to more easily convert from Cadence into C#.  One thing to note is that
-the Cadence structs contain Optionals, like:
+The end of NFTViewer.cs contains classes that we use to more easily convert from Cadence into C#.  One thing to note is that the Cadence structs contain Optionals, like:
 
 ```var IPFSFile: AnyStruct?```
 
@@ -244,8 +235,7 @@ while the C# versions do not, such as
 
 ```public IPFSFile IPFSFile;```
 
-This is because we are declaring them as Classes, not Structs.  Classes in C# are reference types, which can automatically be
-null.  We could have used Structs, in which case we'd have to use:
+This is because we are declaring them as Classes, not Structs.  Classes in C# are reference types, which can automatically be null.  We could have used Structs, in which case we'd have to use:
 
 ```public IPFSFile? IPFSFile```
 
@@ -294,8 +284,6 @@ pub struct IPFSFile: File {
 }
 ```
 
-This allows Cadence.Convert to convert either an HTTPFile or an IPFSFile into a File object.  We can then check which fields
-are populated to determine which it was initially.
+This allows Cadence.Convert to convert either an HTTPFile or an IPFSFile into a File object.  We can then check which fields are populated to determine which it was initially.
 
-This works fine for this simple viewer, but a more robust approach might be to create a ResolvedFile struct in the cadence script which
-has a single uri field and populates it by calling the uri() function on whatever File type was retrieved.
+This works fine for this simple viewer, but a more robust approach might be to create a ResolvedFile struct in the cadence script which has a single uri field and populates it by calling the uri() function on whatever File type was retrieved.
