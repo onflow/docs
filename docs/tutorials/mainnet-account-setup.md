@@ -1,6 +1,6 @@
 ---
 title: Mainnet Account Setup Guidelines
-sidebar_label: 4. Mainnet Account Setup
+sidebar_label: Mainnet Account Setup
 sidebar_position: 5
 ---
 
