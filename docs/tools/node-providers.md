@@ -13,4 +13,11 @@ sidebar_position: 1
 - testnet
 - mainnet
 
-{/* ## Tatium */}
+## Tatum
+
+[Tatum](https://tatum.io/) is a platform that provides infrastructure, SDK, and unified API to build, test, and run blockchain apps. You don't need to worry about blockchain node configuration or maintenance, and you don't need to learn to code for individual blockchains. 
+
+### Supported Networks
+
+- testnet
+- mainnet
