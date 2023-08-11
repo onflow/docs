@@ -1,7 +1,7 @@
 ---
 title: Next steps
 description: Where to go from here
-sidebar_title: Next steps
+sidebar_label: Next steps
 ---
 
 By now, you have a fully-functioning NFT marketplace with your own, new exclusive NFT collection. You might ask yourself where to go from here. Here are some ideas to get you inspired!

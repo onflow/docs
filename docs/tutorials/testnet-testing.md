@@ -1,6 +1,7 @@
 ---
 title: Testnet Testing Guidelines
-sidebar_title: 3. Testnet Testing
+sidebar_label: Testnet Testing
+sidebar_position: 4
 ---
 
 It is critical to test your applications and contracts thoroughly on the testnet as part of your road to the mainnet. Testing will help you understand how to create stable and robust applications using the Flow development stack.

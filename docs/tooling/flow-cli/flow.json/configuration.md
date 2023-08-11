@@ -1,6 +1,5 @@
 ---
-title: Flow CLI Configuration
-sidebar_title: Configuration
+title: Configuration
 description: What is Flow CLI Configuration
 sidebar_position: 2
 ---

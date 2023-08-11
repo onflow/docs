@@ -1,6 +1,5 @@
 ---
-title: Decode a Transaction with the Flow CLI
-sidebar_title: Decode a Transaction
+title: Build a Complex Transaction
 description: How to decode a Flow transaction from the command line
 sidebar_position: 7
 ---

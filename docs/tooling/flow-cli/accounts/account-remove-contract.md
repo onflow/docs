@@ -1,6 +1,5 @@
 ---
-title: Remove a Contract with the Flow CLI
-sidebar_title: Remove a Contract
+title: Remove a Contract
 sidebar_position: 5
 ---
 _This feature is only found in the Emulator. You **cannot** remove a contract on Testnet or Mainnet._

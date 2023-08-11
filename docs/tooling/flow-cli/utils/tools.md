@@ -1,6 +1,5 @@
 ---
-title: Start Development Tools with the Flow CLI
-sidebar_title: Development Tools
+title: Development Tools
 description: How to start development tools using the Flow CLI
 ---
 

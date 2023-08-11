@@ -1,6 +1,6 @@
 ---
 title: Init Framework
-sidebar_title: Init
+sidebar_label: Init
 description: How to init framework
 ---
 

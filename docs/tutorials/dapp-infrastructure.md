@@ -1,6 +1,6 @@
 ---
 title: Off-chain Dapp Infrastructure
-sidebar_title: Off-chain Infrastructure
+sidebar_label: Off-chain Infrastructure
 ---
 
 In addition to on-chain smart contracts, dapps also rely on off-chain infrastructure. For example, users often interact with a dapp through a web interface. In addition to this, some dapps rely on backend servers to query and index data from the blockchain. This section covers best practices for off-chain infrastructure on Flow.

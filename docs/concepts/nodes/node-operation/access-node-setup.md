@@ -1,6 +1,6 @@
 ---
 title: Setting Up a Flow Access Node
-sidebar_title: Access Node Setup
+sidebar_label: Access Node Setup
 ---
 
 This guide is for running a permissonless Access node on Flow. If you are planning to run a different type of staked node then see [node bootstrap](./node-bootstrap.mdx).

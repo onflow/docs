@@ -1,6 +1,5 @@
 ---
-title: Create Emulator Snapshot with the Flow CLI
-sidebar_title: Create Emulator Snapshot
+title: Create Emulator Snapshot
 description: How to start create emulator snapshot from the command line
 sidebar_position: 4
 ---

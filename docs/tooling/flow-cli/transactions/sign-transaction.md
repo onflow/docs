@@ -1,6 +1,5 @@
 ---
-title: Sign a Transaction with the Flow CLI
-sidebar_title: Sign a Transaction
+title: Sign a Transaction
 description: How to sign a Flow transaction from the command line
 sidebar_position: 5
 ---

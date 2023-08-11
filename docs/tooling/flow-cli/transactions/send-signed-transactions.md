@@ -1,6 +1,5 @@
 ---
-title: Send Signed Transaction with the Flow CLI
-sidebar_title: Send Signed Transaction
+title: Send Signed Transaction
 description: How to send a signed Flow transaction from the command line
 sidebar_position: 6
 ---

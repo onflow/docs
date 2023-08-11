@@ -1,6 +1,6 @@
 ---
 title: Flow Javascript Testing
-sidebar_title: Introduction
+sidebar_label: Introduction
 description: A Javascript Framework allowing you to test your Cadence code in a simple way
 ---
 
