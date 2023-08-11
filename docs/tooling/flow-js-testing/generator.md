@@ -1,6 +1,6 @@
 ---
 title: Bootstrap Framework
-sidebar_title: Bootstrap Framework
+sidebar_label: Bootstrap Framework
 description: How to quickly init testing environment
 ---
 

@@ -1,6 +1,6 @@
 ---
 title: Fungible Token Contract
-sidebar_title: Fungible Token
+sidebar_label: Fungible Token
 ---
 
 The `FungibleToken` contract implements the Fungible Token Standard. It is the second contract ever deployed on Flow.

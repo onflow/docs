@@ -1,6 +1,6 @@
 ---
 title: Smart Contract Testing Guidelines
-sidebar_title: 1. Smart Contract Testing
+sidebar_label: 1. Smart Contract Testing
 ---
 
 Achieving good test coverage is vital for assuring the quality of code written to be deployed on the Flow blockchain.

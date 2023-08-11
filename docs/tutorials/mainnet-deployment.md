@@ -1,6 +1,6 @@
 ---
 title: Mainnet Deployment Guidelines
-sidebar_title: 5. Mainnet Deployment
+sidebar_label: 5. Mainnet Deployment
 ---
 
 > **Note**: Anyone can deploy and update contracts on mainnet. [Smart contract reviews](https://flowsolutionseng.zendesk.com/hc/en-us/requests/new?ticket_form_id=360001936012&tc_360045236671=b5ba92954c2f2692b56099fe653ac92d35c1e6e6) (to discover any issues that may affect your users) are still provided upon request. However, they are not mandatory.
