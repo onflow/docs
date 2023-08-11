@@ -1,6 +1,6 @@
 ---
 title: Smart Contract Testing Guidelines
-sidebar_label: 1. Smart Contract Testing
+sidebar_label: Smart Contract Testing
 sidebar_position: 2
 ---
 
