@@ -1,6 +1,6 @@
 ---
 title: Testnet Deployment Guidelines
-sidebar_label: 2. Testnet Deployment
+sidebar_label: Testnet Deployment
 sidebar_position: 3
 ---
 
