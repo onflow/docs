@@ -1,6 +1,7 @@
 ---
 title: Testnet Deployment Guidelines
-sidebar_title: 2. Testnet Deployment
+sidebar_label: Testnet Deployment
+sidebar_position: 3
 ---
 
 The Flow test network, known as Flow Testnet, exists to help developers test their software and smart contracts against a live network. It's also used as a means of releasing and testing new protocol and smart contract features before they are integrated into Flow's main network (Mainnet).

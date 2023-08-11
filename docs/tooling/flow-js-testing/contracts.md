@@ -1,6 +1,6 @@
 ---
 title: Contracts Management
-sidebar_title: Contracts
+sidebar_label: Contracts
 description: How to manage contracts
 ---
 

@@ -1,6 +1,6 @@
 ---
 title: Flow Staking Contract Reference
-sidebar_title: Staking Table
+sidebar_label: Staking Table
 ---
 
 # Contract

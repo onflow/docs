@@ -1,6 +1,6 @@
 ---
 title: -title-
-sidebar_title:
+sidebar_label:
 description: -description-
 ---
 

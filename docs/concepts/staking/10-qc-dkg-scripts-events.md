@@ -1,6 +1,6 @@
 ---
 title: Query QC/DKG Info with Scripts or Events
-sidebar_title: QC/DKG Scripts and Events
+sidebar_label: QC/DKG Scripts and Events
 ---
 
 # Introduction

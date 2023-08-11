@@ -1,6 +1,6 @@
 ---
 title: Flow User Accounts & Wallets
-sidebar_title: User Accounts & Wallets
+sidebar_label: User Accounts & Wallets
 ---
 
 Each Flow blockchain user owns an account that holds their digital assets (e.g. currencies or NFTs). A Flow account is identified by an 8-byte address and is controlled by one or more public/private key pairs. Whoever has access to the private key can sign a transaction to access the assets inside the account.
