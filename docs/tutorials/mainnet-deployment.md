@@ -1,6 +1,6 @@
 ---
 title: Mainnet Deployment Guidelines
-sidebar_label: 5. Mainnet Deployment
+sidebar_label: Mainnet Deployment
 sidebar_position: 6
 ---
 
