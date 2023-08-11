@@ -1,6 +1,5 @@
 ---
-title: Build a Transaction with the Flow CLI
-sidebar_title: Build a Transaction
+title: Build a Transaction
 description: How to build a Flow transaction from the command line
 sidebar_position: 3
 ---

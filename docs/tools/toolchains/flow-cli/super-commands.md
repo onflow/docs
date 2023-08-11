@@ -1,8 +1,7 @@
 ---
-title: Using Super Commands with the Flow CLI
-sidebar_title: Super Commands
-description: How Flow super commands work
-sidebar_position: 6
+title: Super Commands
+description: How Flow Super Commands Work
+sidebar_position: 2
 ---
 
 Flow CLI Super commands are set of commands that can be used during development 

@@ -1,6 +1,5 @@
 ---
-title: Decode Public Keys with the Flow CLI
-sidebar_title: Decode Public Keys
+title: Decode Public Keys
 description: How to decode Flow public keys from the command line
 sidebar_position: 2
 ---

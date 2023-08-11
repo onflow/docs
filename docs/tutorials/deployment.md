@@ -1,7 +1,8 @@
 ---
 title: Dapp Deployment Guide
-sidebar_title: The Road to Mainnet
+sidebar_label: The Road to Mainnet
 description: How to deploy an application on Flow
+sidebar_position: -2
 ---
 
 ## The Road to Mainnet

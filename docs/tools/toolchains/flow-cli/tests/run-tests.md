@@ -1,6 +1,5 @@
 ---
-title: Run Cadence tests with the Flow CLI
-sidebar_title: Run Cadence tests
+title: Run Cadence tests
 description: How to run Cadence tests from the command line
 sidebar_position: 11
 ---
@@ -11,7 +10,7 @@ The Flow CLI provides a command to run Cadence tests.
 flow test /path/to/test_script.cdc
 ```
 
-⚠️ The `test` command expects configuration to be initialized. See [flow init](./flow.json/initialize-configuration.md) command.
+⚠️ The `test` command expects configuration to be initialized. See [flow init](../flow.json/initialize-configuration.md) command.
 
 ## Example Usage
 

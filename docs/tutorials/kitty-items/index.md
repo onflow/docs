@@ -1,7 +1,7 @@
 ---
 title: Kitty Items
 description: A CryptoKitties Sample App
-sidebar_title: Introduction
+sidebar_label: Introduction
 ---
 
 Kitty Items is a complete NFT marketplace inspired by [CryptoKitties](https://www.cryptokitties.co/), a web3 game that put NFTs on the map. You can use it as a blueprint for your own marketplace and to learn how to develop on Flow.

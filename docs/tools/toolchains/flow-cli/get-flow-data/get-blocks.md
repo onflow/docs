@@ -1,6 +1,5 @@
 ---
-title: Get Block with the Flow CLI
-sidebar_title: Get Block
+title: Get Block
 description: How to get a block from the command line
 sidebar_position: 1
 ---

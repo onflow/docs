@@ -1,6 +1,6 @@
 ---
 title: Jest Helpers
-sidebar_title: Jest Helpers
+sidebar_label: Jest Helpers
 description: Helper methods for Jest
 ---
 

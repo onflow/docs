@@ -1,6 +1,5 @@
 ---
-title: Get Collection with the Flow CLI
-sidebar_title: Get Collection
+title: Get Collection
 description: How to get a collection from the command line
 sidebar_position: 3
 ---

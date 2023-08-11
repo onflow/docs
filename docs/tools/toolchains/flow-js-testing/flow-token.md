@@ -1,6 +1,6 @@
 ---
 title: FLOW Token Management
-sidebar_title: FLOW Token
+sidebar_label: FLOW Token
 description: How to mint FLOW Token
 ---
 

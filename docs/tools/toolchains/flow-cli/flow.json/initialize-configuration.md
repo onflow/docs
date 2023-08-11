@@ -1,6 +1,5 @@
 ---
-title: Initialize Flow Configuration
-sidebar_title: Initialize Configuration
+title: Initialize Configuration
 description: How to initialize Flow configuration using CLI
 sidebar_position: 1
 ---

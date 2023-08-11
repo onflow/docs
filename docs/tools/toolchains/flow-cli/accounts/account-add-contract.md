@@ -1,6 +1,5 @@
 ---
-title: Deploy a Contract with the Flow CLI
-sidebar_title: Deploy a Contract
+title: Deploy a Contract
 sidebar_position: 3
 ---
 

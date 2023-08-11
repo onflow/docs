@@ -1,6 +1,5 @@
 ---
-title: Deploy a Flow Project
-sidebar_title: Deploy a Project
+title: Deploy a Project
 description: How to deploy Flow project contracts with the CLI
 sidebar_position: 3
 ---

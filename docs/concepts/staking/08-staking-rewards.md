@@ -1,6 +1,6 @@
 ---
 title: Staking and Delegation rewards
-sidebar_title: How to Query Staking rewards
+sidebar_label: How to Query Staking rewards
 description: How to check the staking and delegation rewards
 ---
 

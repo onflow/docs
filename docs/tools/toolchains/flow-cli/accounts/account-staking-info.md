@@ -1,6 +1,5 @@
 ---
-title: Get Account Staking Info with the Flow CLI
-sidebar_title: Staking Info
+title: Account Staking Info
 description: How to get staking info
 sidebar_position: 6
 ---

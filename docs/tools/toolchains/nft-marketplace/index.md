@@ -1,7 +1,7 @@
 ---
 title: NFT Marketplace
 description: An overview of the NFT marketplace guide
-sidebar_title: Overview
+sidebar_label: Overview
 ---
 
 This guide provides the required information to the development teams looking to build NFT marketplaces on the Flow blockchain.

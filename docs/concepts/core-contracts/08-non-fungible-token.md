@@ -1,6 +1,6 @@
 ---
 title: Non-Fungible Token Contract
-sidebar_title: Non-Fungible Token
+sidebar_label: Non-Fungible Token
 ---
 
 The `NonFungibleToken` contract interface implements the Fungible Token Standard.

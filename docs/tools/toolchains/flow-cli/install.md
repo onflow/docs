@@ -1,5 +1,5 @@
 ---
-title: Install the Flow CLI
+title: Install Instructions
 description: How to install the Flow command-line interface (CLI)
 sidebar_position: 2
 ---

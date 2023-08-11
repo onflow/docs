@@ -1,6 +1,6 @@
 ---
 title: Smart Contracts for Flow Dapps
-sidebar_title: Smart Contracts
+sidebar_label: Smart Contracts
 ---
 
 At its core, a decentralized application is defined by the [smart contracts](https://en.wikipedia.org/wiki/Smart_contract) it uses on the blockchain. Rather than relying on centralized application servers and databases, dapps model their core application logic using smart contracts, often referred to as the “on-chain” code.

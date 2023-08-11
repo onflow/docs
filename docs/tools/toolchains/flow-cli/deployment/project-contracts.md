@@ -1,6 +1,5 @@
 ---
-title: Add Contracts to a Flow Project
-sidebar_title: Add Project Contracts
+title: Add Project Contracts
 description: How to define the Cadence contracts for Flow project
 sidebar_position: 2
 ---

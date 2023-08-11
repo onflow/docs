@@ -1,6 +1,6 @@
 ---
 title: Send Transactions
-sidebar_title: Send Transactions
+sidebar_label: Send Transactions
 description: How to send transactions
 ---
 

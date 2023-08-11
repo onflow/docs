@@ -1,7 +1,7 @@
 ---
 title: Data Collection
 description: Data collected from Flow CLI usage
-sidebar_position: 3
+sidebar_position: 14
 ---
 
 Flow CLI tracks flow command usage count using Mixpanel.

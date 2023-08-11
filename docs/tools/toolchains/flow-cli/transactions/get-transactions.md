@@ -1,6 +1,5 @@
 ---
-title: Get a Transaction with the Flow CLI
-sidebar_title: Get a Transaction
+title: Get a Transaction
 description: How to get a Flow transaction from the command line
 sidebar_position: 2
 ---

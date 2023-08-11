@@ -1,6 +1,6 @@
 ---
 title: Account Management
-sidebar_title: Accounts
+sidebar_label: Accounts
 description: How to manage accounts addresses
 ---
 

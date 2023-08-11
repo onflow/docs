@@ -1,7 +1,7 @@
 ---
 title: Handling accounts
 description: Learn how to handle accounts
-sidebar_title: Handling accounts
+sidebar_label: Handling accounts
 ---
 
 ## Sign-in/up functionality for Users

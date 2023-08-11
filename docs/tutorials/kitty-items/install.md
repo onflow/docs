@@ -1,7 +1,7 @@
 ---
 title: Install
 description: Set up the project locally
-sidebar_title: Install
+sidebar_label: Install
 ---
 
 Follow the steps below to start your own version of Kitty Items. 

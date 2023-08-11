@@ -1,7 +1,7 @@
 ---
 title: Start
 description: Start services and deploy to the testnet
-sidebar_title: Start
+sidebar_label: Start
 ---
 
 The steps below will help you deploy Cadence smart contracts to the testnet - a hosted Flow blockchain environment for testing. Once deployed, you will spin up local services that interact with your deployed contracts to the testnet.

@@ -1,6 +1,5 @@
 ---
-title: Get Events with the Flow CLI
-sidebar_title: Get Event
+title: Get Events
 description: How to get an event from the command line
 sidebar_position: 2
 ---
