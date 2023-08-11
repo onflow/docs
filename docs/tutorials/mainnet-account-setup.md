@@ -1,6 +1,7 @@
 ---
 title: Mainnet Account Setup Guidelines
 sidebar_label: 4. Mainnet Account Setup
+sidebar_position: 5
 ---
 
 In order to deploy your smart contracts to the mainnet, you need to register, fund, and setup a new account.
