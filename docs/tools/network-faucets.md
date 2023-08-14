@@ -9,4 +9,3 @@ sidebar_position: 5
 
 ### Supported networks
 - testnet - https://testnet-faucet.onflow.org/
-- sandboxnet - https://sandboxnet-faucet.flow.com/
