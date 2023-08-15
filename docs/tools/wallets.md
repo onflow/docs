@@ -1,5 +1,6 @@
 ---
 sidebar_position: 6
+description: Wallets that work with Flow Blockchain
 ---
 
 # Wallets

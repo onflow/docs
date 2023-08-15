@@ -1,9 +1,12 @@
 // swizzled component from a standard Admonition
-import React from 'react';
+import React, { type ReactNode } from 'react';
 import clsx from 'clsx';
-import {ThemeClassNames} from '@docusaurus/theme-common';
+import { ThemeClassNames } from '@docusaurus/theme-common';
 import Translate from '@docusaurus/Translate';
+import type { Props } from '@theme/Admonition';
+
 import styles from './styles.module.css';
+
 function NoteIcon() {
   return (
     <svg viewBox="0 0 14 16">
@@ -14,6 +17,7 @@ function NoteIcon() {
     </svg>
   );
 }
+
 function TipIcon() {
   return (
     <svg viewBox="0 0 12 16">
@@ -24,6 +28,7 @@ function TipIcon() {
     </svg>
   );
 }
+
 function DangerIcon() {
   return (
     <svg viewBox="0 0 12 16">
@@ -34,6 +39,7 @@ function DangerIcon() {
     </svg>
   );
 }
+
 function InfoIcon() {
   return (
     <svg viewBox="0 0 14 16">
@@ -44,6 +50,7 @@ function InfoIcon() {
     </svg>
   );
 }
+
 function CautionIcon() {
   return (
     <svg viewBox="0 0 16 16">
@@ -54,15 +61,23 @@ function CautionIcon() {
     </svg>
   );
 }
+
+interface AdmonitionConfig {
+  iconComponent: React.ComponentType;
+  infimaClassName: string;
+  label: ReactNode;
+}
+
 // eslint-disable-next-line @typescript-eslint/consistent-indexed-object-style
-const AdmonitionConfigs = {
+const AdmonitionConfigs: Record<Props['type'] | 'warning', AdmonitionConfig> = {
   note: {
     infimaClassName: 'secondary',
     iconComponent: NoteIcon,
     label: (
       <Translate
         id="theme.admonition.note"
-        description="The default label used for the Note admonition (:::note)">
+        description="The default label used for the Note admonition (:::note)"
+      >
         note
       </Translate>
     ),
@@ -73,7 +88,8 @@ const AdmonitionConfigs = {
     label: (
       <Translate
         id="theme.admonition.tip"
-        description="The default label used for the Tip admonition (:::tip)">
+        description="The default label used for the Tip admonition (:::tip)"
+      >
         tip
       </Translate>
     ),
@@ -84,7 +100,8 @@ const AdmonitionConfigs = {
     label: (
       <Translate
         id="theme.admonition.danger"
-        description="The default label used for the Danger admonition (:::danger)">
+        description="The default label used for the Danger admonition (:::danger)"
+      >
         danger
       </Translate>
     ),
@@ -95,7 +112,8 @@ const AdmonitionConfigs = {
     label: (
       <Translate
         id="theme.admonition.info"
-        description="The default label used for the Info admonition (:::info)">
+        description="The default label used for the Info admonition (:::info)"
+      >
         info
       </Translate>
     ),
@@ -106,7 +124,8 @@ const AdmonitionConfigs = {
     label: (
       <Translate
         id="theme.admonition.caution"
-        description="The default label used for the Caution admonition (:::caution)">
+        description="The default label used for the Caution admonition (:::caution)"
+      >
         caution
       </Translate>
     ),
@@ -118,12 +137,14 @@ const AdmonitionConfigs = {
     label: (
       <Translate
         id="theme.admonition.caution"
-        description="The default label used for the Caution admonition (:::caution)">
+        description="The default label used for the Caution admonition (:::caution)"
+      >
         warning
       </Translate>
     ),
   },
 };
+
 // Legacy aliases, undocumented but kept for retro-compatibility
 const aliases = {
   secondary: 'note',
@@ -131,9 +152,11 @@ const aliases = {
   success: 'tip',
   // warning: 'danger', // use custom type instead
 };
-function getAdmonitionConfig(unsafeType) {
-  const type = aliases[unsafeType] ?? unsafeType;
-  const config = AdmonitionConfigs[type];
+
+function getAdmonitionConfig(unsafeType: string): AdmonitionConfig {
+  const type =
+    (aliases as Record<string, Props['type']>)[unsafeType] ?? unsafeType;
+  const config = (AdmonitionConfigs as Record<string, AdmonitionConfig>)[type];
   if (config) {
     return config;
   }
@@ -142,14 +165,19 @@ function getAdmonitionConfig(unsafeType) {
   );
   return AdmonitionConfigs.info;
 }
+
 // Workaround because it's difficult in MDX v1 to provide a MDX title as props
 // See https://github.com/facebook/docusaurus/pull/7152#issuecomment-1145779682
-function extractMDXAdmonitionTitle(children) {
+function extractMDXAdmonitionTitle(children: ReactNode): {
+  mdxAdmonitionTitle: ReactNode | undefined;
+  rest: ReactNode;
+} {
   const items = React.Children.toArray(children);
   const mdxAdmonitionTitle = items.find(
     (item) =>
       React.isValidElement(item) &&
-      item.props?.mdxType === 'mdxAdmonitionTitle',
+      (item.props as { mdxType: string } | null)?.mdxType ===
+        'mdxAdmonitionTitle',
   );
   const rest = <>{items.filter((item) => item !== mdxAdmonitionTitle)}</>;
   return {
@@ -157,19 +185,29 @@ function extractMDXAdmonitionTitle(children) {
     rest,
   };
 }
-function processAdmonitionProps(props) {
-  const {mdxAdmonitionTitle, rest} = extractMDXAdmonitionTitle(props.children);
+
+function processAdmonitionProps(props: Props): Props {
+  const { mdxAdmonitionTitle, rest } = extractMDXAdmonitionTitle(
+    props.children,
+  );
   return {
     ...props,
     title: props.title ?? mdxAdmonitionTitle,
     children: rest,
   };
 }
-export default function Admonition(props) {
-  const {children, type, title, icon: iconProp} = processAdmonitionProps(props);
+
+export default function Admonition(props: Props): JSX.Element {
+  const {
+    children,
+    type,
+    title,
+    icon: iconProp,
+  } = processAdmonitionProps(props);
+
   const typeConfig = getAdmonitionConfig(type);
   const titleLabel = title ?? typeConfig.label;
-  const {iconComponent: IconComponent} = typeConfig;
+  const { iconComponent: IconComponent } = typeConfig;
   const icon = iconProp ?? <IconComponent />;
   return (
     <div
@@ -179,7 +217,8 @@ export default function Admonition(props) {
         'alert',
         `alert--${typeConfig.infimaClassName}`,
         styles.admonition,
-      )}>
+      )}
+    >
       <div className={styles.admonitionHeading}>
         <span className={styles.admonitionIcon}>{icon}</span>
         {titleLabel}
