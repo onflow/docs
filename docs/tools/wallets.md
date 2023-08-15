@@ -1,6 +1,6 @@
 ---
 sidebar_position: 6
-description: Wallets that work with Flow Blockchain
+description: Store, send, and receive Flow tokens and digital assets securily on the Flow blockchain network. A convenient and safe way to manage and interact with cryptocurrency holdings.
 ---
 
 # Wallets

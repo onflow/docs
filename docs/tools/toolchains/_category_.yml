@@ -1,7 +1,4 @@
 position: 7
 label: Toolchains
 customProps:
-  description: |
-    Toolchains to develop on Flow
-    other dev tools
-    more things
+  description: Curated sets of interconnected software tools that collaboratively enhance the development process for the Flow blockchain ecosystem, optimizing tasks and workflows for efficiency and consistency.

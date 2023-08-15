@@ -1,6 +1,7 @@
 ---
 sidebar_position: 4
 description: |
+  User-friendly online tools that visually present blockchain data, allowing users to easily navigate transactions, blocks, addresses, and smart contracts while providing real-time insights and transparency.
   - Flow Diver
   - FLow View
   - ContractBrowser
