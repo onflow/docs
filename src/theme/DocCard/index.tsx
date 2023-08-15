@@ -1,5 +1,5 @@
 // swizzled component from a standard DocCard
-import React, {type ReactNode} from 'react';
+import React, { type ReactNode } from 'react';
 import clsx from 'clsx';
 import Link from '@docusaurus/Link';
 import {
@@ -7,8 +7,8 @@ import {
   useDocById,
 } from '@docusaurus/theme-common/internal';
 import isInternalUrl from '@docusaurus/isInternalUrl';
-import {translate} from '@docusaurus/Translate';
-import type {Props} from '@theme/DocCard';
+import { translate } from '@docusaurus/Translate';
+import type { Props } from '@theme/DocCard';
 
 import styles from './styles.module.css';
 import type {
@@ -26,7 +26,8 @@ function CardContainer({
   return (
     <Link
       href={href}
-      className={clsx('card padding--lg', styles.cardContainer)}>
+      className={clsx('card padding--lg', styles.cardContainer)}
+    >
       {children}
     </Link>
   );
@@ -51,7 +52,8 @@ function CardLayout({
       {description && (
         <p
           className={clsx(styles.preWrap, styles.cardDescription)}
-          title={description}>
+          title={description}
+        >
           {description}
         </p>
       )}
@@ -86,14 +88,14 @@ function CardCategory({
             description:
               'The default description for a category card in the generated index about how many items this category includes',
           },
-          {count: item.items.length},
+          { count: item.items.length },
         )
       }
     />
   );
 }
 
-function CardLink({item}: {item: PropSidebarItemLink}): JSX.Element {
+function CardLink({ item }: { item: PropSidebarItemLink }): JSX.Element {
   const icon = isInternalUrl(item.href) ? '📄️' : '🔗';
   const doc = useDocById(item.docId ?? undefined);
   return (
@@ -106,7 +108,7 @@ function CardLink({item}: {item: PropSidebarItemLink}): JSX.Element {
   );
 }
 
-export default function DocCard({item}: Props): JSX.Element {
+export default function DocCard({ item }: Props): JSX.Element {
   switch (item.type) {
     case 'link':
       return <CardLink item={item} />;
