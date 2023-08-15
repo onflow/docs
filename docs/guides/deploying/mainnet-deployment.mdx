@@ -39,7 +39,7 @@ Now you are ready to deploy your contracts to mainnet. You can use the [Flow CLI
 
 ## Prerequisites
 
-- Testnet testing: Smart contracts include test coverage and follow any additional guidelines set out here: [Smart Contract Testing Guidelines](./contract-testing). Application live on testnet and handling real world traffic for an extended period of time as suggested here: [Testnet Testing Guidelines](./testnet-testing)
+- Testnet testing: Smart contracts include test coverage and follow any additional guidelines set out here: [Smart Contract Testing Guidelines](./contract-testing). Application live on testnet and handling real world traffic for an extended period of time as suggested here: [Testnet Testing Guidelines](./contract-testing)
 - [Flow CLI](https://github.com/onflow/flow-cli): You have the CLI installed and ran `flow init` in your project folder, generating a `flow.json` file
 - Mainnet account: You completed the mainnet account setup, (see above) and have your key pair and mainnet address ready
 
@@ -93,7 +93,7 @@ Bar -> 0xab7... (6c243d09e...b878111098)
 
 > **Note**: This command automatically deploys your project's contracts based on the configuration defined in your `flow.json` file. If you encounter any errors, review the configuration first.
 
-> **Important**: If you see `Error Code: 1103`, your new account does not have enough funds to complete the transaction. Make sure you have enough FLOW (e.g. by [sending some from your Blocto account](./mainnet-account-setup#step-3-send-flow-to-non-custodial-account)).
+> **Important**: If you see `Error Code: 1103`, your new account does not have enough funds to complete the transaction. Make sure you have enough FLOW and your account is set up correctly, check account explorer to verify [Getting Started](/getting-started).
 
 Once all your contracts are deployed, you can visit [flow-view-source](https://flow-view-source.com/) or run the [Flow CLI get account command](/tooling/flow-cli/accounts/get-accounts.md) to confirm the deployment.
 
