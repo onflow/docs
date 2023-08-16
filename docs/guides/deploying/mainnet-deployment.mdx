@@ -10,7 +10,7 @@ In order to deploy your smart contracts to the mainnet, you need to register, fu
 > **Note**: This account will be used for production purposes. Make sure you handle keys appropriately. Using a Key Management Service is the best practice. By default, this command generates an ECDSA key pair on the P-256 curve. Keep in mind the CLI is intended for development purposes only and is not recommended for production use. Handling keys using a Key Management Service is the best practice.
 
 ## Create an account
-You can easily create a new funded account on mainnet using the Flow CLI. You only need to run a single command `flow accounts create` and select a name for the account and the network, which in this case is `mainnet`. After that the account private key is saved into a seperate file called `{name}.pkey`. We advice switching to KMS system for production use which you [can read more about here](/tooling/flow-cli/flow.json/configuration.md#advanced-format-1).
+You can easily create a new funded account on mainnet using the Flow CLI. You only need to run a single command `flow accounts create` and select a name for the account and the network, which in this case is `mainnet`. After that the account private key is saved into a seperate file called `{name}.pkey`. We advice switching to KMS system for production use which you [can read more about here](../../tooling/flow-cli/flow.json/configuration.md#advanced-format-1).
 
 ```
 flow accounts create
@@ -27,7 +27,7 @@ Here’s a summary of all the actions that were taken:
 ```
 
 
-Read more about the command in the [CLI account creation documentation](/tooling/flow-cli/accounts/create-accounts.md#interactive-mode).
+Read more about the command in the [CLI account creation documentation](../../tooling/flow-cli/accounts/create-accounts.md#interactive-mode).
 
 
 > **Note**: Anyone can deploy and update contracts on mainnet. [Smart contract reviews](https://flowsolutionseng.zendesk.com/hc/en-us/requests/new?ticket_form_id=360001936012&tc_360045236671=b5ba92954c2f2692b56099fe653ac92d35c1e6e6) (to discover any issues that may affect your users) are still provided upon request. However, they are not mandatory.
@@ -35,7 +35,7 @@ Read more about the command in the [CLI account creation documentation](/tooling
 
 # Deployment
 
-Now you are ready to deploy your contracts to mainnet. You can use the [Flow CLI deployment command](/tooling/flow-cli/deployment/deploy-project-contracts.md) to deploy your contracts to mainnet.
+Now you are ready to deploy your contracts to mainnet. You can use the [Flow CLI deployment command](../../tooling/flow-cli/deployment/deploy-project-contracts.md) to deploy your contracts to mainnet.
 
 ## Prerequisites
 
@@ -60,7 +60,7 @@ First, you need to configure the `flow.json` file to add your mainnet account de
 }
 ```
 
-Next, you need to set the [deployment target configuration](/tooling/flow-cli/deployment/deploy-project-contracts.md#define-contract-deployment-targets) for the mainnet:
+Next, you need to set the [deployment target configuration](../../tooling/flow-cli/deployment/deploy-project-contracts.md#define-contract-deployment-targets) for the mainnet:
 
 ```js flow.json
 {
@@ -76,7 +76,7 @@ Next, you need to set the [deployment target configuration](/tooling/flow-cli/de
 
 ## Deploy a contract on mainnet using the CLI
 
-With the configuration changes completed, run the [Flow CLI deployment command](/tooling/flow-cli/deployment/deploy-project-contracts.md):
+With the configuration changes completed, run the [Flow CLI deployment command](../../tooling/flow-cli/deployment/deploy-project-contracts.md):
 
 ```sh
 > flow project deploy --network=mainnet
@@ -95,11 +95,11 @@ Bar -> 0xab7... (6c243d09e...b878111098)
 
 > **Important**: If you see `Error Code: 1103`, your new account does not have enough funds to complete the transaction. Make sure you have enough FLOW and your account is set up correctly, check account explorer to verify [Getting Started](/getting-started).
 
-Once all your contracts are deployed, you can visit [flow-view-source](https://flow-view-source.com/) or run the [Flow CLI get account command](/tooling/flow-cli/accounts/get-accounts.md) to confirm the deployment.
+Once all your contracts are deployed, you can visit [flow-view-source](https://flow-view-source.com/) or run the [Flow CLI get account command](../../tooling/flow-cli/accounts/get-accounts.md) to confirm the deployment.
 
 ## Update/Re-deploy a contract on mainnet using the CLI
 
-You can use the [Flow CLI contract update command](/tooling/flow-cli/accounts/account-update-contract.md) to re-deploy an updated version of your contract:
+You can use the [Flow CLI contract update command](../../tooling/flow-cli/accounts/account-update-contract.md) to re-deploy an updated version of your contract:
 
 ```sh
 > flow accounts update-contract Foo ./Foo.cdc --signer=my-mainnet-account --network=mainnet
