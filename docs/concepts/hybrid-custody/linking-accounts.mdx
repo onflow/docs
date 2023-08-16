@@ -51,8 +51,8 @@ signed transaction.
 </Callout>
 
 Very simply, account linking is a [feature in Cadence](https://github.com/onflow/flips/pull/53) that let's an
-[AuthAccount](../../../cadence/language/accounts.mdx#authaccount) create a
-[Capability](../../../cadence/language/capability-based-access-control.md) on itself. You can do so in the following
+[AuthAccount](../../cadence/language/accounts.mdx#authaccount) create a
+[Capability](../../cadence/language/capability-based-access-control.md) on itself. You can do so in the following
 transaction:
 
 ```cadence link_account.cdc
@@ -153,7 +153,7 @@ transaction(identifiers: [String]) {
         if acct.borrow<&CapabilityFilter.AllowlistFilter>(from: CapabilityFilter.StoragePath) == nil {
             acct.save(<-CapabilityFilter.create(Type<@CapabilityFilter.AllowlistFilter>()), to: CapabilityFilter.StoragePath)
         }
-        
+
         // Ensure the AllowlistFilter is linked to the expected PublicPath
         acct.unlink(CapabilityFilter.PublicPath)
         acct.link<&CapabilityFilter.AllowlistFilter{CapabilityFilter.Filter}>(CapabilityFilter.PublicPath, target: CapabilityFilter.StoragePath)
@@ -161,7 +161,7 @@ transaction(identifiers: [String]) {
         // Get a reference to the filter
         let filter = acct.borrow<&CapabilityFilter.AllowlistFilter>(from: CapabilityFilter.StoragePath)
             ?? panic("filter does not exist")
-        
+
         // Add the given type identifiers to the AllowlistFilter
         // **Note:** the whole transaction fails if any of the given identifiers are malformed
         for identifier in identifiers {
@@ -211,7 +211,7 @@ transaction {
 
         let manager = acct.borrow<&CapabilityFactory.Manager>(from: CapabilityFactory.StoragePath)
             ?? panic("manager not found")
-        
+
         /// Add generic NFT-related Factory implementations to enable castable Capabilities from this Manager
         manager.addFactory(Type<&{NonFungibleToken.CollectionPublic}>(), NFTCollectionPublicFactory.Factory())
         manager.addFactory(Type<&{NonFungibleToken.Provider, NonFungibleToken.CollectionPublic}>(), NFTProviderAndCollectionFactory.Factory())
@@ -233,7 +233,7 @@ delegated access.
 
 We can achieve issuance from the child account and claim from the parent account pattern in either:
 
-1. We can leverage [Cadence’s `AuthAccount.Inbox`](../../../cadence/language/accounts.mdx#account-inbox) to publish the
+1. We can leverage [Cadence’s `AuthAccount.Inbox`](../../cadence/language/accounts.mdx#account-inbox) to publish the
    Capability from the child account & have the parent claim the Capability in a separate transaction.
 1. Multi-party signed transaction, signed by both the the accounts on either side of the link
 
@@ -315,7 +315,7 @@ transaction(childAddress: Address, filterAddress: Address?, filterPath: PublicPa
 
         let inboxName = HybridCustody.getChildAccountIdentifier(acct.address)
         let cap = acct.inbox.claim<&HybridCustody.ChildAccount{HybridCustody.AccountPrivate, HybridCustody.AccountPublic, MetadataViews.Resolver}>(
-                inboxName, 
+                inboxName,
                 provider: childAddress
             ) ?? panic("child account cap not found")
 
@@ -452,7 +452,7 @@ import "FungibleToken"
 import "FlowToken"
 
 transaction(pubKey: String, initialFundingAmt: UFix64) {
-	
+
 	prepare(signer: AuthAccount) {
 
 		/* --- Account Creation --- */
@@ -605,7 +605,7 @@ transaction(
             )
         newAccount
             .link<&HybridCustody.OwnedAccount{HybridCustody.OwnedAccountPublic}>(
-                HybridCustody.OwnedAccountPublicPath, 
+                HybridCustody.OwnedAccountPublicPath,
                 target: HybridCustody.OwnedAccountStoragePath
             )
 
@@ -645,7 +645,7 @@ transaction(
             HybridCustody.ManagerPublicPath,
             target: HybridCustody.ManagerStoragePath
         )
-        
+
         // Claim the ChildAccount Capability
         let inboxName = HybridCustody.getChildAccountIdentifier(parent.address)
         let cap = parent
@@ -654,7 +654,7 @@ transaction(
                 inboxName,
                 provider: newAccount.address
             ) ?? panic("child account cap not found")
-        
+
         // Get a reference to the Manager and add the account
         let managerRef = parent.borrow<&HybridCustody.Manager>(from: HybridCustody.ManagerStoragePath)
             ?? panic("manager no found")
@@ -710,4 +710,3 @@ custodied key on the user's behalf using the newly created account.
 While perhaps not useful for most dApps, this pattern may be desirable for advanced users who wish to create a shared
 access account themselves. The user funds account creation, adding keys they custody, and delegates secondary access to
 some other account.
-

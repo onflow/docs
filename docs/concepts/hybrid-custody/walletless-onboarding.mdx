@@ -83,7 +83,7 @@ But with a walletless onboarding flow, we’re enabling users to use the app wit
 handle account creation and custody on behalf of the user.
 
 For most apps, developers will create a Flow account for each user and associate this new account with the user.
-[Account creation on Flow](../../../cadence/language/accounts.mdx#account-creation) requires a payer, so developers will
+[Account creation on Flow](../../cadence/language/accounts.mdx#account-creation) requires a payer, so developers will
 need to determine whether they subsidize creation of Flow accounts or if they’ll require users to pay to sign up for the
 app.
 
@@ -101,7 +101,7 @@ import "FungibleToken"
 /// much your standard account creation. The magic for you will be how you custody
 /// the key for this account (locally, KMS, wallet service, etc.) in a manner that
 /// allows your dapp to mediate on-chain interactions on behalf of your user.
-/// **NOTE:** Custodial patterns have regulatory implications you'll want to consult a 
+/// **NOTE:** Custodial patterns have regulatory implications you'll want to consult a
 /// legal professional about.
 ///
 /// In your dapp's walletless transaction, you'll likely also want to configure
@@ -115,7 +115,7 @@ transaction(
     pubKey: String,
     initialFundingAmt: UFix64,
   ) {
-	
+
 	prepare(signer: AuthAccount) {
 
 		/* --- Account Creation --- */
