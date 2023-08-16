@@ -396,7 +396,7 @@
     },
     {
       "source": "/docs/setting-up-a-node",
-      "destination": "/concepts/nodes/node-operation" 
+      "destination": "/concepts/nodes/node-operation"
     },
     {
       "source": "/staking/:path*",
@@ -545,6 +545,10 @@
     {
       "source": "/concepts/storage",
       "destination": "/concepts/start-here/storage"
+    },
+    {
+      "source": "/bounties/responsible-disclosure",
+      "destination": "https://flow.com/flow-responsible-disclosure"
     }
   ]
 }
