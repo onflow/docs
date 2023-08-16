@@ -135,7 +135,7 @@ You are joining a group of people from all around the world that are a part of a
 
 [Flow Port](https://port.onflow.org/) is a simple browser-based app for the Flow blockchain
 that provides functionality for sending, receiving, and staking tokens.
-Any wallet that uses the [Flow Client Library](../../tooling/fcl-js/index.md)
+Any wallet that uses the [Flow Client Library](../../tools/clients/fcl-js/index.md)
 is compatible with Flow Port.
 
 If you created your account using [Flow Port](https://port.onflow.org/),

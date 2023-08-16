@@ -33,13 +33,13 @@ The project consists of 3 key components:
 
 ### 1. Front End
 
-This is a complete web application built with NextJS and React that demonstrates how to build a website that connects directly to the Flow blockchain using [FCL](../../tooling/fcl-js/index.md). FCL handles authentication and authorization of [Flow accounts](../../concepts/start-here/accounts-and-keys.md), [signing transactions](../../concepts/start-here/transaction-signing.md), and querying data using using Cadence scripts.
+This is a complete web application built with NextJS and React that demonstrates how to build a website that connects directly to the Flow blockchain using [FCL](../../tools/clients/fcl-js/index.md). FCL handles authentication and authorization of [Flow accounts](../../concepts/start-here/accounts-and-keys.md), [signing transactions](../../concepts/start-here/transaction-signing.md), and querying data using using Cadence scripts.
 
 ### 2. Back End
 
 We love decentralization, but servers are still very useful, and this one's no exception. The backend API helps preserve the separation of concerns, so that your process and business logic doesn't have to implemented on the front-end. Backend operations are necessary to ensure secure handling of accounts and associated keys and to streamline blockchain interactions.
 
-The code in this project demonstrates how to connect to Flow using [FCL](../../tooling/fcl-js/index.md) from a Node JS backend. It's also chock-full of handy patterns you'll probably want to use for more complex and feature-rich blockchain applications, like storing and querying events using a SQL database (SQLite). The API demonstrates how to send transactions to the Flow blockchain, specifically for minting [Kitty Items](https://github.com/onflow/kitty-items/blob/master/cadence/contracts/KittyItems.cdc) (non-fungible tokens).
+The code in this project demonstrates how to connect to Flow using [FCL](../../tools/clients/fcl-js/index.md) from a Node JS backend. It's also chock-full of handy patterns you'll probably want to use for more complex and feature-rich blockchain applications, like storing and querying events using a SQL database (SQLite). The API demonstrates how to send transactions to the Flow blockchain, specifically for minting [Kitty Items](https://github.com/onflow/kitty-items/blob/master/cadence/contracts/KittyItems.cdc) (non-fungible tokens).
 
 ### 3. Flow Network (Smart Contracts)
 
