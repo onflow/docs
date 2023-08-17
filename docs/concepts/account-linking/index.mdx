@@ -1,24 +1,24 @@
 ---
-title: Hybrid Custody 
+title: Account Linking
 sidebar_position: 9
 ---
 
-# Hybrid Custody Overview
+# Account Linking Overview
 
-The Hybrid Custody model on Flow enables developers to provide seamless onboarding and in-app experiences while
+The Account Linking feature on Flow enables developers to provide seamless onboarding and in-app experiences while
 simultaneously empowering users with real ownership and self-sovereignty. With this [new custodial
 model](https://forum.onflow.org/t/hybrid-custody/4016), developers can deliver the benefits of both app and self-custody
 in a unified experience.
 
-The full Hybrid Custody experience is enabled by three core components:
+The full Account Linking experience is enabled by three core components:
 - Walletless Onboarding - App managed account creation, funding, and custody
-- Account Linking - App custodied accounts delegate access to wallet-authenticated users
-- HybridCustody contract - A standard contract enabling users to view and manage their linked accounts
+- Account Linking - App custodied accounts may delegate access to users wallet
+- Core `HybridCustody` contract - A standard contract enabling users to view and manage their linked accounts from the parent account
 
 
 <Callout type="warning">
 
-Note that the documentation on Hybrid Custody covers the current state and will likely differ from the final
+Note that the documentation on Account Linking covers the current state and will likely differ from the final
 implementation. **Testnet is currently out of sync with docs and will be updated shortly.** Builders should be aware
 that breaking changes may follow before reaching a final community consensus on implementation. Interested in
 contributing? [Check out the source!](https://github.com/onflow/hybrid-custody).
@@ -42,19 +42,19 @@ contributing? [Check out the source!](https://github.com/onflow/hybrid-custody).
 
 <Callout type="info">
 
-Experience the magic of Hybrid Custody in the arcade demo yourself [here](https://walletless-arcade-game.vercel.app/)!
+Experience the magic of Account Linking in the arcade demo yourself [here](https://walletless-arcade-game.vercel.app/)!
 
 </Callout>
 
 ### Why Care?
 
-Hybrid Custody grants users access to their linked child accounts without needing to interface with the child account's
+Account Linking grants users access to their linked child accounts without needing to interface with the child account's
 custodial app, **and** the custodial app can interact with the relevant assets in the child account on behalf of the
 user in a frictionless UX free from transaction prompts.
 
 <Callout type="success">
 
-All assets in the app account can now jump the walled garden to play in the rest of the Flow ecosystem.
+All assets in the app account can now jump the walled garden to play in the rest of the Flow ecosystem. No transactions are needed to move assets from the child account to the parent, as the parent account already has full access to the assets in the child account.
 
 </Callout>
 
@@ -66,5 +66,5 @@ Most importantly, users are able to do this without the need to transfer the dig
 making it seamless to continue using the original app while also using other apps.
 
 With account linking, developers can build walletless onboarding experiences for new users that provide a clear path to
-self-custody. Continue on to read our Walletless Onboarding guide for more details on how you can use Account Linking to
+self-custody. Continue on to read our guides for more details on how you can use Account Linking to
 build spectacular experiences on Flow.

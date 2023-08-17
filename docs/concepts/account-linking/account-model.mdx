@@ -1,5 +1,6 @@
 ---
 title: Account Model & Implementation
+sidebar_position: 3
 ---
 
 This doc serves as developer guidance to support Hybrid Custody apps leveraging Account Linking. While account linking
@@ -9,9 +10,9 @@ nuance, namely that apps should build on the HybridCustody standard proposed in 
 facilitate a user experience based not on a single authenticated account, but on the global context of all accounts
 linked to the authenticated parent account.
 
-We believe multi-account linking and management, technical initiatives in support of 
-[Walletless Onboarding](https://flow.com/post/flow-blockchain-mainstream-adoption-easy-onboarding-wallets), 
-will enable in-dapp experiences far superior to the current Web3 status quo and allow for industry UX to finally 
+We believe multi-account linking and management, technical initiatives in support of
+[Walletless Onboarding](https://flow.com/post/flow-blockchain-mainstream-adoption-easy-onboarding-wallets),
+will enable in-dapp experiences far superior to the current Web3 status quo and allow for industry UX to finally
 reach parity with traditional Web2 authentication and onboarding flows, most notably on mobile.
 
 A new user will no longer need a preconfigured wallet to interact with Flow. When they do decide to create a wallet and
@@ -141,7 +142,7 @@ are simply `OwnedAccount` Capabilities instead of `ChildAccount` Capabilities.
 
 Do note that this construction does not prevent an account from having multiple parent accounts or a child account from
 being the parent to other accounts. While initial intuition might lead one to believe that account associations are a
-tree with the user at the root, the graph of associated accounts among child accounts may lead to cycles of association. 
+tree with the user at the root, the graph of associated accounts among child accounts may lead to cycles of association.
 
 We believe it would be unlikely for a use case to demand a user delegates authority over their main account (in fact
 we'd discourage such constructions), but delegating access between child accounts could be useful. As an example,
@@ -222,7 +223,7 @@ import "HybridCustody"
 /// Returns resolved Display from given address at specified path for each ID or nil if ResolverCollection is not found
 ///
 pub fun getViews(_ address: Address, _ resolverCollectionPath: PublicPath): {UInt64: MetadataViews.Display} {
-    
+
     let account: PublicAccount = getAccount(address)
     let views: {UInt64: MetadataViews.Display} = {}
 
@@ -247,11 +248,11 @@ pub fun main(address: Address, resolverCollectionPath: PublicPath): {Address: {U
 
     let allViews: {Address: {UInt64: MetadataViews.Display}} = {address: getViews(address, resolverCollectionPath)}
     let seen: [Address] = [address]
-    
-    /* Iterate over any associated accounts */ 
+
+    /* Iterate over any associated accounts */
     //
     if let managerRef = getAuthAccount(address).borrow<&HybridCustody.Manager>(from: HybridCustody.ManagerStoragePath) {
-        
+
         for childAccount in managerRef.getChildAddresses() {
             allViews.insert(key: childAccount, getViews(address, resolverCollectionPath))
             seen.append(childAccount)
@@ -265,13 +266,13 @@ pub fun main(address: Address, resolverCollectionPath: PublicPath): {Address: {U
         }
     }
 
-    return allViews 
+    return allViews
 }
 ```
 
 At the end of this query, the caller will have a mapping of `Display` views indexed on the NFT ID and grouped by account
 Address. Note that this script does not take batching into consideration and assumes that each NFT resolves the
-`MetadataViews.Display` view type. 
+`MetadataViews.Display` view type.
 
 ### Query All Account FungibleToken Balances
 
@@ -325,12 +326,12 @@ pub fun main(address: Address): {Address: {Type: UFix64}} {
     let balances: {Address: {Type: UFix64}} = { address: getAllBalancesInStorage(address) }
     // Tracking Addresses we've come across to prevent overwriting balances (more efficient than checking dict entries (?))
     let seen: [Address] = [address]
-    
-    /* Iterate over any associated accounts */ 
+
+    /* Iterate over any associated accounts */
     //
     if let managerRef = getAuthAccount(address)
         .borrow<&HybridCustody.Manager>(from: HybridCustody.ManagerStoragePath) {
-        
+
         for childAccount in managerRef.getChildAddresses() {
             balances.insert(key: childAccount, getAllBalancesInStorage(address))
             seen.append(childAccount)
@@ -344,7 +345,7 @@ pub fun main(address: Address): {Address: {Type: UFix64}} {
         }
     }
 
-    return balances 
+    return balances
 }
 ```
 
@@ -377,18 +378,18 @@ transaction(childAddress: Address, providerPath: PrivatePath, withdrawID: UInt64
         let managerRef: &HybridCustody.Manager = signer.borrow<&HybridCustody.Manager>(
                 from: HybridCustody.ManagerStoragePath
             ) ?? panic("Could not borrow reference to HybridCustody.Manager in signer's account at expected path!")
-        
+
         // Borrow a reference to the signer's specified child account
         let account: &{AccountPrivate, AccountPublic, MetadataViews.Resolver}? = managerRef
             .borrowAccount(addr: childAddress)
             ?? panic("Signer does not have access to specified child account")
-        
+
         // Get a reference to the child NFT Provider and assign to the transaction scope variable
         let cap: Capability = account.getCapability(
                 path: providerPath,
                 type: Type<&{NonFungibleToken.Provider}>()
             ) ?? panic("Cannot access NonFungibleToken.Provider from this child account")
-        
+
         // We'll need to cast the Capability - this is possible thanks to CapabilityFactory, though we'll rely on the relevant
         // Factory having been configured for this Type or it won't be castable
         self.providerRef = cap as! Capability<&{NonFungibleToken.Provider}>
@@ -410,7 +411,7 @@ similar approach could get you any allowable Capabilities from a signer's child 
 ### Revoking Secondary Access on a Linked Account
 
 The expected uses of child accounts for progressive onboarding implies that they will be accounts with shared access. A
-user may decide that they no longer want secondary parties to have access to the child account. 
+user may decide that they no longer want secondary parties to have access to the child account.
 
 There are two ways a party can have delegated access to an account - keys and AuthAccount Capability. With
 `ChildAccount` mediated access, a user wouldn't be able to revoke anyone's access except for their own. With
