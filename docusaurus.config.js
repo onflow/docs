@@ -274,9 +274,9 @@ const config = {
             label: 'Cadence',
           },
           {
-            to: 'next/tools',
+            to: 'tooling/intro',
             position: 'left',
-            label: 'Tools',
+            label: 'Tooling',
           },
           {
             to: 'references/Introduction',
