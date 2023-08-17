@@ -158,5 +158,5 @@ This transaction template is available for use in our SDKs:
 
 ## Staking FLOW
 
-The [FLOW staking documentation](../staking/index.md) outlines the steps a custodian can take
+The [FLOW staking documentation](../../run-and-secure/staking/index.md) outlines the steps a custodian can take
 to support staking through a trusted node operator.
