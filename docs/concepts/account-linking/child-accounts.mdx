@@ -14,10 +14,10 @@ broader status quo of Web2 identity authentication and single-click onboarding f
 In this doc, we’ll dive into a progressive onboarding flow, including the Cadence scripts & transactions that go into
 its implementation in your dApp. These components will enable any implementing dApp to create a custodial account,
 mediate the user’s on-chain actions on their behalf, and later delegate access of that dApp-created account to the
-user’s wallet. We’ll refer to this custodial pattern as the Hybrid Account Model and the process of delegating control
+user’s wallet. We’ll refer to this custodial pattern as the Hybrid Custody Model and the process of delegating control
 of the dApp account as Account Linking.
 
-# Objectives
+In this guide we'll cover:
 
 - Create a [walletless onboarding](https://flow.com/post/flow-blockchain-mainstream-adoption-easy-onboarding-wallets)
   transaction
@@ -28,7 +28,7 @@ of the dApp account as Account Linking.
   wallet-mediated “parent” account and any hybrid custody model “child” accounts
 - Facilitate transactions acting on assets in child accounts
 
-## Walletless Onboarding
+## Step 1 : Walletless Onboarding
 
 Walletless onboarding is an approach through which developers can meet new users where they are in their Web3 journey,
 delivering a familiar experience while progressively exposing new users to the benefits of Web3. On Flow, developers can

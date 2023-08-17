@@ -3,17 +3,17 @@ title: Account Linking
 sidebar_position: 9
 ---
 
-# Account Linking Overview
+# Overview
 
 The Account Linking feature on Flow enables developers to provide seamless onboarding and in-app experiences while
 simultaneously empowering users with real ownership and self-sovereignty. With this [new custodial
 model](https://forum.onflow.org/t/hybrid-custody/4016), developers can deliver the benefits of both app and self-custody
 in a unified experience.
 
-The full Account Linking experience is enabled by three core components:
+The full user experience is enabled by three core components:
 - Walletless Onboarding - App managed account creation, funding, and custody
 - Account Linking - App custodied accounts may delegate access to users wallet
-- Core `HybridCustody` contract - A standard contract enabling users to view and manage their linked accounts from the parent account
+- Core `HybridCustody` contract - A standard contract enabling users to view and manage their linked accounts
 
 
 <Callout type="warning">
@@ -25,7 +25,7 @@ contributing? [Check out the source!](https://github.com/onflow/hybrid-custody).
 
 </Callout>
 
-### The Path to Hybrid Custody with Account Linking
+### User Journey
 
 1. The app creates, funds, and manages access to a Flow account initialized on user onboarding. This enables the app to
    abstract away the complexities of interacting with smart contract powered applications, and focus on creating slick
@@ -54,7 +54,7 @@ user in a frictionless UX free from transaction prompts.
 
 <Callout type="success">
 
-All assets in the app account can now jump the walled garden to play in the rest of the Flow ecosystem. No transactions are needed to move assets from the child account to the parent, as the parent account already has full access to the assets in the child account.
+All assets in the app account can now jump the walled garden to play in the rest of the Flow ecosystem. No transactions are needed to move assets from the child account to the parent account, as the parent account already has full access to the assets in the child account.
 
 </Callout>
 
@@ -68,3 +68,11 @@ making it seamless to continue using the original app while also using other app
 With account linking, developers can build walletless onboarding experiences for new users that provide a clear path to
 self-custody. Continue on to read our guides for more details on how you can use Account Linking to
 build spectacular experiences on Flow.
+
+### Guides
+
+- [Managing Child Accounts](./child-accounts.mdx) covers how dapps can leverage Account Linking to create a seamless user
+experience and enable future self-custody.
+- [Working With Parent Accounts](./child-accounts.mdx) covers features enabled by the core `HybridCustody` contract to
+access child account assets from parent accounts. This is useful for apps like marketplaces or wallets that are working with
+accounts that have potential child accounts.
