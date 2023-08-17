@@ -3,21 +3,13 @@ title: Managing Child Accounts
 sidebar_position: 1
 ---
 
-If you’ve built dApps on Flow, or any blockchain for that matter, you’re painfully aware of the user onboarding process
-and successive pain of prompting user signatures for on-chain interactions.
-
-As a developer, this leaves you with two options - handle custody and act on the user's behalf or go with the
-self-custodial status quo, hope your new users are Web3 native and authenticate them via their existing wallet. Either
-choice will force significant compromise, fragmenting user experience and leaving much to be desired compared to the
-broader status quo of Web2 identity authentication and single-click onboarding flow.
-
 In this doc, we’ll dive into a progressive onboarding flow, including the Cadence scripts & transactions that go into
 its implementation in your dApp. These components will enable any implementing dApp to create a custodial account,
 mediate the user’s on-chain actions on their behalf, and later delegate access of that dApp-created account to the
 user’s wallet. We’ll refer to this custodial pattern as the Hybrid Custody Model and the process of delegating control
 of the dApp account as Account Linking.
 
-In this guide we'll cover:
+We'll cover:
 
 - Create a [walletless onboarding](https://flow.com/post/flow-blockchain-mainstream-adoption-easy-onboarding-wallets)
   transaction
