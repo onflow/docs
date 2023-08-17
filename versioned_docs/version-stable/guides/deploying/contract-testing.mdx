@@ -5,9 +5,11 @@ description: Testing smart contract Guidelines
 sidebar_position: 3
 ---
 
-Achieving good test coverage is vital for assuring the quality of code written to be deployed on the Flow blockchain.
+Good test coverage is vital for assuring code quality.
 
-Automated tests can be run locally in the Flow emulator, and on the Flow testnet. These tests should include both unit tests; to exercise each feature of a contract, and integration tests; to exercise the behavior of different parts of the project as a whole.
+<Callout type="success">
+Leverage [Flow emulator](../../tooling/emulator) to automate test runs. Test on Flow testnet. Include unit tests; to exercise each feature, and integration tests; to exercise the behavior of different parts of the project as a whole.
+</Callout>
 
 Human-driven tests, in which individual testers work manually through user stories via the project's user interface or custom transactions, can also be performed locally. Tests with groups of testers can be performed similarly on testnet in a similar manner.
 
@@ -36,7 +38,9 @@ Tests in Go can be written using [flow-go-sdk](https://github.com/onflow/flow-go
 
 You can find examples of Go tests in the following projects: [flow-core-contracts](https://github.com/onflow/flow-core-contracts/tree/master/lib/go/test), [flow-nft](https://github.com/onflow/flow-nft/tree/master/lib/go/test), [flow-ft](https://github.com/onflow/flow-ft/tree/master/lib/go/test).
 
-> **Note**: These tests are tied to the emulator but can be refactored to run on testnet
+<Callout type="info">
+These tests are tied to the emulator but can be refactored to run on testnet
+</Callout>
 
 ### JavaScript Tests
 
@@ -56,4 +60,6 @@ Tests should also be runnable in automated environments (CI). You can use the [J
 
 Once you deployed your application to the testnet, you should record how your application handles non-trivial amounts of traffic to ensure there are no issues.
 
-You should also get familiar with the [Cadence anti-patterns](../../cadence/anti-patterns.mdx) to avoid avoid problematic or unintended behavior.
+<Callout type="success">
+Get familiar with the [Cadence anti-patterns](../../cadence/anti-patterns.mdx) to avoid avoid problematic or unintended behavior.
+</Callout>
