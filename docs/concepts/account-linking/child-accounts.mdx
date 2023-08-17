@@ -90,8 +90,7 @@ out of the app controlled account.
 
 Hybrid custody is enabled on Flow through Account Linking & Delegation. With Account Linking & Delegation, your app
 establishes a parent-child relationship by allowing the app custody account (child) to opt into being accessed by the
-self-custody account (parent). Read [Account Linking & Delegation](./linking-accounts.mdx) for more details on how hybrid
-custody is established on Flow.
+self-custody account (parent).
 
 ### Design Considerations
 
@@ -217,9 +216,6 @@ creating a product, but a platform upon which other developers can build.
 
 </Callout>
 
-Read [Account Linking & Delegation](./linking-accounts.mdx) for more details on how hybrid custody is established on
-Flow.
-
 #### **General Considerations**
 
 The following questions might be helpful to ask yourself as you think through your walletless onboarding solution:
@@ -291,13 +287,6 @@ account, unlinking the Capability if they wish to revoke delegated access.
 Note that in order to link an account, a transaction must state the `#allowAccountLinking` pragma in the top line of the
 transaction. This is an interim safety measure so that wallet providers can notify users they're about to sign a
 transaction that may create a Capability on their AuthAccount.
-
-<Callout type="info">
-
-If you haven't yet, it may be helpful to checkout the [Account Model](./account-model.mdx) to get a mental model of the
-objects and account relationships discussed in this doc.
-
-</Callout>
 
 ## Linking Accounts
 
