@@ -199,7 +199,7 @@ flow.AccountContractRemoved
 
 ### Scripts
 
-Scripts are cadence code that you write and are executed on the blockchain. They can contain arguments and return values, and can interact with Smart Contracts. Scripts are read-only - they cannot mutate anything on the blockchain. Anything held in local memory is discarded when the script finishes execution. For more information on programming see [Cadence](../../../../cadence/intro.md).
+Scripts are cadence code that you write and are executed on the blockchain. They can contain arguments and return values, and can interact with Smart Contracts. Scripts are read-only - they cannot mutate anything on the blockchain. Anything held in local memory is discarded when the script finishes execution. For more information on programming see [Cadence](../../../../building-on-flow/cadence/intro.md).
 
 **Execute Simple Script At Latest Block**
 
@@ -253,11 +253,11 @@ The cadence script for this test is in the same location as the others, called *
 
 Like Scripts, Transactions are cadence code that you write and are executed on the blockchain, but that is where the similarities end. The purpose of Transactions is to mutate data on the blockchain. To do this, the Transaction must be signed by the account/s that are going to be affected. The Transaction code can contain arguments, but can't return a value. This is because there is a delay for the Transaction to execute, because it has to go through the collection/consensus/execution/verification cycle.
 
-For more information about Transactions, see [cadence/language/transactions](../../../../cadence/language/transactions.md).
+For more information about Transactions, see [cadence/language/transactions](../../../../building-on-flow/cadence/language/transactions.md).
 
-For more information about Transaction signing, see [concepts/transaction-signing](../../../../concepts/start-here/transaction-signing.md).
+For more information about Transaction signing, see [concepts/transaction-signing](../../../../building-on-flow/concepts/start-here/transaction-signing.md).
 
-For more information about Cadence programming, see [cadence](../../../../cadence/intro.md).
+For more information about Cadence programming, see [cadence](../../../../building-on-flow/cadence/intro.md).
 
 **Signing In**
 
@@ -361,4 +361,4 @@ Note that the Contract Name must match the name of the contract in the source fi
 
 The Contract Source File location is relative to the project's Assets directory.
 
-Only certain things in a Smart Contract can be modified. See this link about [Contract Updatability](../../../../cadence/language/contract-updatability.md).
+Only certain things in a Smart Contract can be modified. See this link about [Contract Updatability](../../../../building-on-flow/cadence/language/contract-updatability.md).

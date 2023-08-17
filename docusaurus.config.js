@@ -259,19 +259,14 @@ const config = {
         },
         items: [
           {
-            to: 'concepts/intro',
+            to: 'next/building-on-flow',
             position: 'left',
-            label: 'Concepts',
+            label: 'Building on Flow',
           },
           {
             to: 'tutorials/intro',
             position: 'left',
             label: 'Tutorials',
-          },
-          {
-            to: 'cadence/intro',
-            position: 'left',
-            label: 'Cadence',
           },
           {
             to: 'next/tools',
@@ -327,14 +322,14 @@ const config = {
                 to: '/learn',
                 label: 'Learning Resources',
               },
-              {
-                to: '/cadence/intro',
-                label: 'Cadence',
-              },
-              {
-                to: '/concepts/mobile',
-                label: 'Mobile',
-              },
+              // {
+              //   to: '/cadence/intro',
+              //   label: 'Cadence',
+              // },
+              // {
+              //   to: '/concepts/mobile',
+              //   label: 'Mobile',
+              // },
               {
                 to: '/next/tools/clients/fcl-js/',
                 label: 'FCL',

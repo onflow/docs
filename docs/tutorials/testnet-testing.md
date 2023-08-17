@@ -18,4 +18,4 @@ Tests should also be runnable in automated environments (CI). You can use the [J
 
 Once you deployed your application to the testnet, you should record how your application handles non-trivial amounts of traffic to ensure there are no issues.
 
-You should also get familiar with the [Cadence anti-patterns](../cadence/anti-patterns.mdx) to avoid avoid problematic or unintended behavior.
+You should also get familiar with the [Cadence anti-patterns](../building-on-flow/cadence/anti-patterns.mdx) to avoid avoid problematic or unintended behavior.

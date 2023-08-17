@@ -154,7 +154,7 @@ pub fun kindToString(_ kind: Kind): String {
 
 Next, you need to create a transaction to update the contract with new links to the images for the new NFT kind.
 
-> **Note**: You can't modify the list of images in the `init()` function directly because this function only runs _the first time your contract is deployed_ - not on subsequent updates. You can [read more about here](../../cadence/language/contract-updatability.md).
+> **Note**: You can't modify the list of images in the `init()` function directly because this function only runs _the first time your contract is deployed_ - not on subsequent updates. You can [read more about here](../../building-on-flow/cadence/language/contract-updatability.md).
 
 In the root directory of the project, run the following commands to create a new file for the transaction:
 

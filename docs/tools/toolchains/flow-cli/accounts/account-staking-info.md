@@ -49,7 +49,7 @@ Account Delegation Info:
 - Name: `address`
 - Valid Input: Flow account address.
 
-Flow [account address](../../../../concepts/start-here/accounts-and-keys.md) (prefixed with `0x` or not).
+Flow [account address](../../../../building-on-flow/concepts/start-here/accounts-and-keys.md) (prefixed with `0x` or not).
 
 ## Flags
 

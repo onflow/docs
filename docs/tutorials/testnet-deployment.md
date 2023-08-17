@@ -16,7 +16,7 @@ Anybody can use the [Testnet Faucet](https://testnet-faucet-v2.onflow.org/) to c
 
 #### Generate a Key
 
-To start, you'll need to generate an asymmetric cryptographic key pair (see [Accounts & Keys](../concepts/start-here/accounts-and-keys) for a list of supported algorithms).
+To start, you'll need to generate an asymmetric cryptographic key pair (see [Accounts & Keys](../building-on-flow/concepts/start-here/accounts-and-keys) for a list of supported algorithms).
 
 For Testnet, you can generate a new key pair with the [Flow CLI](../tools/toolchains/flow-cli):
 
@@ -164,7 +164,7 @@ Please read more about deployment in [the Flow CLI project deployment guide](../
 
 ### Making Use of Core Contracts
 
-Flow Testnet comes with some useful contracts already deployed, called **core contracts.** There are [reference pages with import addresses for the core contracts](../concepts/core-contracts/index.md).
+Flow Testnet comes with some useful contracts already deployed, called **core contracts.** There are [reference pages with import addresses for the core contracts](../building-on-flow/concepts/core-contracts/index.md).
 
 Once your accounts are set up and you're ready to develop, you can look over [some code examples from the Flow Go SDK](https://github.com/onflow/flow-go-sdk/tree/master/examples).
 

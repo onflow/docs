@@ -91,7 +91,7 @@ Account is the account that should deploy the contract.  The contract will be de
 
 The Deploy Contract button will attempt to deploy the contract.  Check the emulator logs or flowscan.org to monitor the progress of deployment and check for errors.
 
-The Update Contract button will attempt to update an existing contract.  There are rules as to what can change in a contract for an update to be accepted.  See [cadence/language/contract-updatability](../../../../cadence/language/contract-updatability.md) for more information.
+The Update Contract button will attempt to update an existing contract.  There are rules as to what can change in a contract for an update to be accepted.  See [cadence/language/contract-updatability](../../../../building-on-flow/cadence/language/contract-updatability.md) for more information.
 
 The Remove Contract button will attempt to delete the contract with the given name from the specified account.  Once a contract is deleted, a new contract with the same name can not be created on the same account.  When using the emulator, clearing the database will allow you to recreate the contract.  When using testnet or mainnet, that contract name will become unavailable for the account.  This is done to prevent bypassing the contract update rules by deleting and recreating a contract with incompatible changes.
 
