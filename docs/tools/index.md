@@ -6,225 +6,374 @@ description: Essential tools for the Flow blockchain ecosystem
 
 # Tools
 
-## Node Providers
+<div className="tools-cards">
 
-### Quick Node
+<div>
 
-[QuickNode](https://www.quicknode.com/chains/flow) is a service that provides access to blockchain infrastructure for developers, businesses, and anyone who needs reliable and fast access to blockchain networks. QuickNode allows users to connect to these networks without having to run their own full nodes, which can be resource-intensive.
+  ## Node Providers
 
-#### Supported Networks
+  Easy access to Flow's blockchain. Providers handle the technical work, letting you use Flow's features without managing nodes yourself.
+  <div>
 
-- testnet
-- mainnet
+  ### Quick Node
 
-### Tatum
+  [QuickNode](https://www.quicknode.com/chains/flow) is a service that provides access to blockchain infrastructure for developers, businesses, and anyone who needs reliable and fast access to blockchain networks. QuickNode allows users to connect to these networks without having to run their own full nodes, which can be resource-intensive.
 
-[Tatum](https://tatum.io/) is a platform that provides infrastructure, SDK, and unified API to build, test, and run blockchain apps. You don't need to worry about blockchain node configuration or maintenance, and you don't need to learn to code for individual blockchains. 
+  #### Supported Networks
 
-#### Supported Networks
+  - testnet
+  - mainnet
 
-- testnet
-- mainnet
+  </div>
+  <div>
+
+  ### Tatum
+
+  [Tatum](https://tatum.io/) is a platform that provides infrastructure, SDK, and unified API to build, test, and run blockchain apps. You don't need to worry about blockchain node configuration or maintenance, and you don't need to learn to code for individual blockchains. 
+
+  #### Supported Networks
+
+  - testnet
+  - mainnet
 
 
-## Block Explorers
+  </div>
+</div>
 
-### Flow Diver
+<div>
 
-[Flow Diver](https://www.flowdiver.io/) provides tools to explore the blockchain:
-- blocks
-- transactions
-- contracts
+  ## Block Explorers
 
-it also provides network(mainnet) analytics:
-- network activity (transactions number)
-- transaction cost (gas fee)
-- validators information
+  User-friendly online tools that visually present blockchain data, allowing users to easily navigate transactions, blocks, addresses, and smart contracts while providing real-time insights and transparency.
 
-## Account Explorer
+  <div>
 
-### Flow View
+  ### Flow Diver
 
-Flow View provides tools to view accounts information.
+  [Flow Diver](https://www.flowdiver.io/) provides tools to explore the blockchain:
+  - blocks
+  - transactions
+  - contracts
 
-- address, balance, storage
-- public keys and their weight
-- staking info
-- tokens, collections, and listings
-- deployed smart contracts
+  it also provides network(mainnet) analytics:
+  - network activity (transactions number)
+  - transaction cost (gas fee)
+  - validators information
 
-#### Supported networks:
-- mainnet https://www.flowview.app/
-- testnet https://testnet.flowview.app/
-- emulator (local) https://emulator.flowview.app/
+  </div>
+</div>
+<div>
+
+  ## Account Explorer
+  <div>
+  ### Flow View
+
+  Flow View provides tools to view accounts information.
+
+  - address, balance, storage
+  - public keys and their weight
+  - staking info
+  - tokens, collections, and listings
+  - deployed smart contracts
+
+  #### Supported networks:
+  - mainnet https://www.flowview.app/
+  - testnet https://testnet.flowview.app/
+  - emulator (local) https://emulator.flowview.app/
+  </div>
+</div>
+<div>
 
 ## Contract Explorer
 
-### ContractBrowser
+  <div>
+  ### ContractBrowser
 
-A ContractBrowser is available for [Flow](https://contractbrowser.com/).
+  A ContractBrowser is available for [Flow](https://contractbrowser.com/).
 
-ContractBrowser provides tools to view deployed smart contracts and their dependencies and dependents.
+  ContractBrowser provides tools to view deployed smart contracts and their dependencies and dependents.
 
-- Search, view and verify smart contract source code.
-- View detailed smart contract information
+  - Search, view and verify smart contract source code.
+  - View detailed smart contract information
 
-A testnet ContractBrowser for [Testnet Flow](https://testnet.contractbrowser.com/) is also available.
+  A testnet ContractBrowser for [Testnet Flow](https://testnet.contractbrowser.com/) is also available.
+  </div>
+</div>
+<div>
 
-## Bridges
+  ## Bridges
 
-### Celler
+  Mechanisms that connect different blockchain networks, allowing secure and decentralized transfer of assets and data across platforms.
 
-[Celer cBridge](https://cbridge.celer.network/) is a decentralized and non-custodial asset bridge that supports 150+ tokens across 40+ blockchains and layer-2 rollups. Built on top of the [Celer](https://celer.network/) Inter-chain Message Framework, cBridge has processed ~$13B cross-chain asset transfer volume on 40+ blockchains for more than 350K unique users, and is quickly growing and expanding into more blockchains and layer-2s.
+  <div>
+  ### Celler
 
-## Network Faucets
+  [Celer cBridge](https://cbridge.celer.network/) is a decentralized and non-custodial asset bridge that supports 150+ tokens across 40+ blockchains and layer-2 rollups. Built on top of the [Celer](https://celer.network/) Inter-chain Message Framework, cBridge has processed ~$13B cross-chain asset transfer volume on 40+ blockchains for more than 350K unique users, and is quickly growing and expanding into more blockchains and layer-2s.
 
-### Flow Faucet
-[Flow Faucet](https://testnet-faucet.onflow.org/) is a tool that allows to distribute small amounts of a token to its users for testing and development purposes. This faucet allows you to create an account on the specified network as well as fund small amounts of crypto to any account on these networks.
+  </div>
+</div>
+<div>
+  ## Network Faucets
 
-#### Supported networks
-- testnet - https://testnet-faucet.onflow.org/
+  Get free Flow tokens for testing. Faucets are like taps for tokens, useful for trying Flow without buying tokens.
 
-## Wallets
+  <div>
 
-### Magic.link
+  ### Flow Faucet
+  [Flow Faucet](https://testnet-faucet.onflow.org/) is a tool that allows to distribute small amounts of a token to its users for testing and development purposes. This faucet allows you to create an account on the specified network as well as fund small amounts of crypto to any account on these networks.
 
-[Magic](https://magic.link/) is a developer SDK that integrates with your application to enable passwordless Web3 onboarding (no seed phrases) and authentication using magic links (similar to Slack and Medium).
+  #### Supported networks
+  - testnet - https://testnet-faucet.onflow.org/
 
-https://magic.link/
+  </div>
+</div>
+<div>
 
-### Niftory
+  ## Wallets
 
-[Niftory](https://niftory.com/) is a platform to create, mint, and transfer NFTs
+  Store, send, and receive Flow tokens and digital assets securily on the Flow blockchain network. A convenient and safe way to manage and interact with cryptocurrency holdings.
+  <div>
 
-https://niftory.com/
+  ### Magic.link
 
-### Blocto
+  [Magic](https://magic.link/) is a developer SDK that integrates with your application to enable passwordless Web3 onboarding (no seed phrases) and authentication using magic links (similar to Slack and Medium).
 
-Manage your crypto, dApps, and NFT all-in-once through [Blocto](https://www.blocto.io/), the cross-chain crypto wallet
+  https://magic.link/
 
-https://www.blocto.io/
+  </div>
+  <div>
+  ### Niftory
 
-### Dapper Wallet
+  [Niftory](https://niftory.com/) is a platform to create, mint, and transfer NFTs
 
-[Dapper Wallet](https://www.meetdapper.com/) is an easy and securely buy and store digital assets from groundbreaking Flow apps and games
+  https://niftory.com/
 
-https://www.meetdapper.com/
 
-### Ledger
+  </div>
+  <div>
 
-[Ledger](https://www.ledger.com/) is a hardware wallet to secure, buy, exchange, and grow your crypto assets
+  ### Blocto
 
-https://www.ledger.com/
+  Manage your crypto, dApps, and NFT all-in-once through [Blocto](https://www.blocto.io/), the cross-chain crypto wallet
 
-### NuFi
+  https://www.blocto.io/
 
-[NuFi](https://nu.fi/) Flow's only non-custodial wallet with staking, NFT gallery, dApp connector and Ledger HW support.
+  </div>
+  <div>
 
-https://nu.fi/
+  ### Dapper Wallet
 
-### Lilico
+  [Dapper Wallet](https://www.meetdapper.com/) is an easy and securely buy and store digital assets from groundbreaking Flow apps and games
 
-[Lilico](https://lilico.app/) is the First Extension Wallet on Flow
+  https://www.meetdapper.com/
 
-https://lilico.app/
+  </div>
+  <div>
 
-### Finoa
+  ### Ledger
 
-Safely store and stake your Flow tokens with [Finoa](https://www.finoa.io/)
+  [Ledger](https://www.ledger.com/) is a hardware wallet to secure, buy, exchange, and grow your crypto assets
 
-https://www.finoa.io/flow/
+  https://www.ledger.com/
 
-### Dapper Self Custody (Beta)
+  </div>
+  <div>
 
-A mobile [self custody wallet](https://www.meetdapper.com/dapper-self-custody) to help you explore the world of Flow
+  ### NuFi
 
-https://www.meetdapper.com/dapper-self-custody
+  [NuFi](https://nu.fi/) Flow's only non-custodial wallet with staking, NFT gallery, dApp connector and Ledger HW support.
 
+  https://nu.fi/
 
-## Toolchains
+  </div>
+  <div>
 
-### Emulator
+  ### Lilico
 
-[The Flow Emulator](./toolchains/emulator/index.md) is a lightweight tool that emulates the behavior of the real Flow network. Packaged via CLI.
+  [Lilico](https://lilico.app/) is the First Extension Wallet on Flow
 
-### FCL Dev Wallet
+  https://lilico.app/
 
-The [FCL dev wallet](./toolchains/fcl-dev-wallet/index.md) is a mock Flow wallet that simulates the protocols used by FCL to interact with the Flow blockchain on behalf of simulated user accounts.
+  </div>
+  <div>
 
-### Flow CLI
+  ### Finoa
 
-[Flow CLI](./toolchains/flow-cli/index.md) brings Flow to your terminal. Easily interact with the network and build your dapps.
+  Safely store and stake your Flow tokens with [Finoa](https://www.finoa.io/)
 
-### VS Code extension
+  https://www.finoa.io/flow/
 
-The [Visual Studio Code](./toolchains/vscode-extension/index.mdx) extension for Cadence. Extensive features such as code generation, deploying contracts, and a lot more.
+  </div>
+  <div>
 
-### Flowser
+  ### Dapper Self Custody (Beta)
 
-[Flowser](https://flowser.dev/) lets you inspect the current state of any flow blockchain network emulator, testnet, and mainnet.
+  A mobile [self custody wallet](https://www.meetdapper.com/dapper-self-custody) to help you explore the world of Flow
 
-### Flow Cadut
+  https://www.meetdapper.com/dapper-self-custody
 
-[Flow Cadut](./toolchains/flow-cadut/api.md) is Node based template generator to simplify interaction with Cadence files.
+  </div>
+</div>
 
-### NFT Catalog
+<div>
 
-The [NFT Catalog](./toolchains/nft-catalog/overview.mdx) is an on chain registry listing NFT collections that exists on Flow which adhere to the NFT metadata standard. This empowers dApp developers to easily build on top of and discover interoperable NFT collections on Flow.
+  ## Toolchains
 
-### NFT Marketplace
+  Curated sets of interconnected software tools that collaboratively enhance the development process for the Flow blockchain ecosystem, optimizing tasks and workflows for efficiency and consistency.
 
-The [NFT Marketplace](./toolchains/nft-marketplace/index.md) is a guide thet provides required information to the development teams looking to build NFT marketplaces on the Flow blockchain.
+  <div>
 
-### Flow JS testing (deprecated)
+  ### Emulator
 
-[Flow JS testing](./toolchains/flow-js-testing/index.md) is a Jest based framework to enable Cadence testing via a set of JavaScript methods and tools
+  [The Flow Emulator](./toolchains/emulator/index.md) is a lightweight tool that emulates the behavior of the real Flow network. Packaged via CLI.
 
-## Clients
+  </div>
+  <div>
 
-### Go SDK
+  ### FCL Dev Wallet
 
-The [Flow Go SDK](./clients/flow-go-sdk/index.mdx) provides a set of packages for Go developers to build applications that interact with the Flow network.
+  The [FCL dev wallet](./toolchains/fcl-dev-wallet/index.md) is a mock Flow wallet that simulates the protocols used by FCL to interact with the Flow blockchain on behalf of simulated user accounts.
 
-### Python SDK
+  </div>
+  <div>
 
-The [Flow Python SDK](https://github.com/janezpodhostnik/flow-py-sdk) provides a set of packages for Python developers to build applications that interact with the Flow network.
+  ### Flow CLI
 
-### Ruby
+  [Flow CLI](./toolchains/flow-cli/index.md) brings Flow to your terminal. Easily interact with the network and build your dapps.
 
-[FlowClient](https://github.com/glucode/flow_client) is a Ruby gRPC client for Flow (onflow.org)
+  </div>
+  <div>
 
-### Kotlin
+  ### VS Code extension
 
-The [Flow JVM SDK](https://github.com/onflow/flow-jvm-sdk) is a library for JVM languages (e.g. Java, Kotlin) that provides utilities to interact with the Flow blockchain.
+  The [Visual Studio Code](./toolchains/vscode-extension/index.mdx) extension for Cadence. Extensive features such as code generation, deploying contracts, and a lot more.
 
-### Unity
+  </div>
+  <div>
 
-The [Flow SDK for Unity](./clients/unity-sdk/index.md) allows Unity developers to integrate their games and applications with the Flow blockchain.
+  ### Flowser
 
-### JavaScript (FCL)
+  [Flowser](https://flowser.dev/) lets you inspect the current state of any flow blockchain network emulator, testnet, and mainnet.
 
-The [Flow Client Library (FCL)](./clients/fcl-js/index.md) JS is a package used to interact with user wallets and the Flow blockchain
+  </div>
+  <div>
 
-### Swift
-[flow-swift] is a tool to build iOS application in Flow mobile realm 🌊
+  ### Flow Cadut
 
-### .Net
+  [Flow Cadut](./toolchains/flow-cadut/api.md) is Node based template generator to simplify interaction with Cadence files.
 
-[flow.net](https://github.com/tyronbrand/flow.net) is a tool for building .Net applications on Flow
+  </div>
+  <div>
 
-### Rust
+  ### NFT Catalog
 
-[Rust SDK](https://github.com/fee1-dead/flow.rs) for the Flow blockchain network
+  The [NFT Catalog](./toolchains/nft-catalog/overview.mdx) is an on chain registry listing NFT collections that exists on Flow which adhere to the NFT metadata standard. This empowers dApp developers to easily build on top of and discover interoperable NFT collections on Flow.
 
-### PHP
+  </div>
+  <div>
 
-[PHP SDK](https://github.com/mayvenstudios/flow-php-sdk) for the Flow blockchain
+  ### NFT Marketplace
 
-### Elixir
+  The [NFT Marketplace](./toolchains/nft-marketplace/index.md) is a guide thet provides required information to the development teams looking to build NFT marketplaces on the Flow blockchain.
 
-[OnFlow](https://github.com/nkezhaya/on_flow) is an Elixir client for interacting with the Flow blockchain. Documentation here: https://hexdocs.pm/on_flow.
+  </div>
+  <div>
 
-### HTTP API
+  ### Flow JS testing (deprecated)
 
-[Flow OpenAPI](/http-api) specification
+  [Flow JS testing](./toolchains/flow-js-testing/index.md) is a Jest based framework to enable Cadence testing via a set of JavaScript methods and tools
+
+  </div>
+</div>
+
+<div>
+
+  ## Clients
+
+  Diverse programming tools to facilitate seamless interaction with the Flow blockchain network across multiple languages and platforms.
+
+  <div>
+
+  ### Go SDK
+
+  The [Flow Go SDK](./clients/flow-go-sdk/index.mdx) provides a set of packages for Go developers to build applications that interact with the Flow network.
+
+  </div>
+  <div>
+
+  ### Python SDK
+
+  The [Flow Python SDK](https://github.com/janezpodhostnik/flow-py-sdk) provides a set of packages for Python developers to build applications that interact with the Flow network.
+
+  </div>
+  <div>
+
+  ### Ruby
+
+  [FlowClient](https://github.com/glucode/flow_client) is a Ruby gRPC client for Flow (onflow.org)
+
+  </div>
+  <div>
+
+  ### Kotlin
+
+  The [Flow JVM SDK](https://github.com/onflow/flow-jvm-sdk) is a library for JVM languages (e.g. Java, Kotlin) that provides utilities to interact with the Flow blockchain.
+
+  </div>
+  <div>
+
+  ### Unity
+
+  The [Flow SDK for Unity](./clients/unity-sdk/index.md) allows Unity developers to integrate their games and applications with the Flow blockchain.
+
+  </div>
+  <div>
+
+  ### JavaScript (FCL)
+
+  The [Flow Client Library (FCL)](./clients/fcl-js/index.md) JS is a package used to interact with user wallets and the Flow blockchain
+
+  </div>
+  <div>
+
+  ### Swift
+  [flow-swift](https://github.com/Outblock/flow-swift) is a tool to build iOS application in Flow mobile realm 🌊
+
+  </div>
+  <div>
+
+  ### .Net
+
+  [flow.net](https://github.com/tyronbrand/flow.net) is a tool for building .Net applications on Flow
+
+  </div>
+  <div>
+
+  ### Rust
+
+  [Rust SDK](https://github.com/fee1-dead/flow.rs) for the Flow blockchain network
+
+  </div>
+  <div>
+
+  ### PHP
+
+  [PHP SDK](https://github.com/mayvenstudios/flow-php-sdk) for the Flow blockchain
+
+  </div>
+  <div>
+
+  ### Elixir
+
+  [OnFlow](https://github.com/nkezhaya/on_flow) is an Elixir client for interacting with the Flow blockchain. Documentation here: https://hexdocs.pm/on_flow.
+
+  </div>
+  <div>
+
+  ### HTTP API
+
+  [Flow OpenAPI](/http-api) specification
+  </div>
+
+</div>
+</div>

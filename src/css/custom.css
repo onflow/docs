@@ -75,3 +75,26 @@
 #navbar-discord {
   content: var(--image-navbar-discord);
 }
+
+.tools-cards > div {
+  display: grid;
+  gap: 8px;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-areas: "header header" "description description";
+  margin-bottom: 2rem;
+}
+
+.tools-cards > div > h2 {
+  grid-area: header;
+}
+
+.tools-cards > div > p {
+  grid-area: description;
+}
+
+.tools-cards > div > div {
+  padding: 1rem;
+  background-color: var(--ifm-card-background-color);
+  border-radius: var(--ifm-card-border-radius);
+  border: 1px solid var(--ifm-color-emphasis-200);
+}
