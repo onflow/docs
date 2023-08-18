@@ -304,7 +304,7 @@ transaction(childAddress: Address, filterAddress: Address?, filterPath: PublicPa
 }
 ```
 
-#### Multi-Signed Transaction
+### Multi-Signed Transaction
 
 We can combine the two transactions in [Publish](#publish) and [Claim](#claim) into a single multi-signed transaction to
 achieve Hybrid Custody in a single step.
@@ -416,8 +416,6 @@ are known as walletless and blockchain-native onboarding respectively. Developer
 simplicity or both for maximum flexibility.
 
 ### Walletless Onboarding
-
-#### Account Creation
 
 The following transaction creates an account, funding creation via the signer and adding the provided public key. You'll
 notice this transaction is pretty much your standard account creation. The magic for you will be how you custody the key

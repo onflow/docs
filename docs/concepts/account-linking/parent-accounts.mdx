@@ -147,9 +147,9 @@ And with respect to acting on the assets of child accounts and managing child ac
 - Accessing an NFT from a linked account's Collection
 - Removing a linked account
 
-### Examples
+## Examples
 
-#### Query Whether an Address Has Associated Accounts
+### Query Whether an Address Has Associated Accounts
 
 This script will return `true` if a `HybridCustody.Manager` is stored and `false` otherwise
 
@@ -165,7 +165,7 @@ pub fun main(parent: Address): Bool {
 }
 ```
 
-#### Query All Accounts Associated with Address
+### Query All Accounts Associated with Address
 
 The following script will return an array of addresses associated with a given account's address, inclusive of the
 provided address.
@@ -181,7 +181,7 @@ pub fun main(parent: Address): [Address] {
 }
 ```
 
-#### Query All Owned NFT Metadata
+### Query All Owned NFT Metadata
 
 While it is possible to iterate over the storage of all associated accounts in a single script, memory limits prevent
 this approach from scaling well.
@@ -255,7 +255,7 @@ At the end of this query, the caller will have a mapping of `Display` views inde
 Address. Note that this script does not take batching into consideration and assumes that each NFT resolves the
 `MetadataViews.Display` view type.
 
-#### Query All Account FungibleToken Balances
+### Query All Account FungibleToken Balances
 
 Similar to the previous example, we recommend breaking up this task due to memory limits.
 
@@ -389,7 +389,7 @@ transaction(childAddress: Address, providerPath: PrivatePath, withdrawID: UInt64
 At the end of this transaction, you withdrew an NFT from the specified account using an NFT `Provider` Capability. A
 similar approach could get you any allowable Capabilities from a signer's child account.
 
-#### Revoking Secondary Access on a Linked Account
+### Revoking Secondary Access on a Linked Account
 
 The expected uses of child accounts for progressive onboarding implies that they will be accounts with shared access. A
 user may decide that they no longer want secondary parties to have access to the child account.
@@ -405,7 +405,7 @@ Flip](https://forum.onflow.org/t/account-linking-authaccount-capabilities-manage
 if users want to revoke secondary access, they transfer any assets from the relevant child account and remove it from
 their `Manager` altogether.
 
-#### Remove a Child Account
+### Remove a Child Account
 
 As mentioned above, if a user no longer wishes to share access with another party, it's recommended that desired assets
 be transferred from that account to either their main account or other linked accounts and the linked account be removed
