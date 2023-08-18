@@ -2,7 +2,7 @@
 
 Transactions are cryptographically signed data messages that contain a set of instructions that update the Flow state. They are a basic unit of computation that gets executed by execution nodes. In order for a transaction to be included in the Flow blockchain a fee is required from the payer. 
 
-![Screenshot 2023-08-17 at 13.57.36.png](Transactions 2a4228c2f7404a268843e03c465554eb/Screenshot_2023-08-17_at_13.57.36.png)
+![Screenshot 2023-08-17 at 13.57.36.png](_transactions_images/Screenshot_2023-08-17_at_13.57.36.png)
 
 <aside>
 💡 Transactions on Flow are fundamentally different from those on Ethereum. The main purpose of a transaction is not to send funds but to contain code that gets executed. This makes transactions very flexible and powerful. Transactions on Flow also feature different roles, such as defining third-party payer accounts, proposer accounts, and authorizers, which we will talk about in detail soon.
@@ -11,7 +11,7 @@ Transactions are cryptographically signed data messages that contain a set of in
 
 In order for a transaction to be valid and executed it must contain signatures from accounts involved as well as some other information, let’s take a look at all the required fields.
 
-![Screenshot 2023-08-17 at 14.52.56.png](Transactions 2a4228c2f7404a268843e03c465554eb/Screenshot_2023-08-17_at_14.52.56.png)
+![Screenshot 2023-08-17 at 14.52.56.png](_transactions_images/Screenshot_2023-08-17_at_14.52.56.png)
 
 ************Script************
 
@@ -54,7 +54,7 @@ Proposer is a role in a transaction that defines who is proposing the transactio
 
 A proposal key definition declares the address, key ID, and up-to-date sequence number for the account key.
 
-![Screenshot 2023-08-17 at 15.10.33.png](Transactions 2a4228c2f7404a268843e03c465554eb/Screenshot_2023-08-17_at_15.10.33.png)
+![Screenshot 2023-08-17 at 15.10.33.png](_transactions_images/Screenshot_2023-08-17_at_15.10.33.png)
 
 - Address identifies the account that will act as a proposer of this transaction.
 - Key ID is an index number (starting at 0) that identifies the key on the account provided in the address.
@@ -94,7 +94,7 @@ A transaction ID is a hash of the encoded transaction payload and can be calcula
 
 The transaction status represents the state of a transaction on the Flow blockchain. Some statuses are mutable and some are immutable, they usually follow a timeline like so:
 
-![Screenshot 2023-08-17 at 16.08.18.png](Transactions 2a4228c2f7404a268843e03c465554eb/Screenshot_2023-08-17_at_16.08.18.png)
+![Screenshot 2023-08-17 at 16.08.18.png](_transactions_images/Screenshot_2023-08-17_at_16.08.18.png)
 
 - Unknown - The transaction has not yet been seen by the network.
 - Pending - The transaction has not yet been included in a block.
@@ -112,7 +112,7 @@ The transaction status represents the state of a transaction on the Flow blockch
 
 A transaction result will be available once a transaction is executed and it will provide information about the success of a transaction execution, that means whether the transaction encountered any errors while executing. It also includes events the transaction may have emitted. 
 
-![Screenshot 2023-08-17 at 16.29.30.png](Transactions 2a4228c2f7404a268843e03c465554eb/Screenshot_2023-08-17_at_16.29.30.png)
+![Screenshot 2023-08-17 at 16.29.30.png](_transactions_images/Screenshot_2023-08-17_at_16.29.30.png)
 
 <aside>
 ❗ From a developer perspective, a transaction is only successful if:
@@ -127,7 +127,7 @@ Due to the existence of **weighted keys** and **split signing roles**, Flow tran
 
 A transaction can contain two types of signatures: **payload signatures** and **envelope signatures**.
 
-![Screenshot 2023-08-17 at 14.52.51.png](Transactions 2a4228c2f7404a268843e03c465554eb/Screenshot_2023-08-17_at_14.52.51.png)
+![Screenshot 2023-08-17 at 14.52.51.png](_transactions_images/Screenshot_2023-08-17_at_14.52.51.png)
 
 ### Payload[](https://developers.flow.com/concepts/start-here/transaction-signing#payload)
 

@@ -6,7 +6,7 @@ Events are defined as Cadence code and you should [read Cadence documentation](h
 
 Since transactions don’t have return values you can leverage events to broadcast certain changes the transaction caused. Clients listening on Flow networks (dApps) can listen to these events being emitted and react. 
 
-![Screenshot 2023-08-18 at 14.09.33.png](Events%201266591639544dbdb4056c8e30c58dc1/Screenshot_2023-08-18_at_14.09.33.png)
+![Screenshot 2023-08-18 at 14.09.33.png](_events_images/Screenshot_2023-08-18_at_14.09.33.png)
 
 There are two types of events emitted on the Flow network:
 
@@ -15,7 +15,7 @@ There are two types of events emitted on the Flow network:
 
 Events consist of the **event name** and an optional **payload**.
 
-![Screenshot 2023-08-18 at 13.59.01.png](Events%201266591639544dbdb4056c8e30c58dc1/Screenshot_2023-08-18_at_13.59.01.png)
+![Screenshot 2023-08-18 at 13.59.01.png](_events_images/Screenshot_2023-08-18_at_13.59.01.png)
 
 ## Core Events
 
@@ -47,7 +47,7 @@ A.{contract address}.{contract name}.{event type}
 
 An example event would look like:
 
-![Screenshot 2023-08-18 at 14.30.36.png](Events%201266591639544dbdb4056c8e30c58dc1/Screenshot_2023-08-18_at_14.30.36.png)
+![Screenshot 2023-08-18 at 14.30.36.png](_events_images/Screenshot_2023-08-18_at_14.30.36.png)
 
 The first `A` means the event is originating from a contract, which will always be the case for user-defined events. The contract address as the name implies is the location of a contract deployed on the Flow network. Next is the name of the contracted event originates from, and last is the event type defined in the contract.
 

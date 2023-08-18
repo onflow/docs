@@ -4,7 +4,7 @@ An account is a record in the Flow blockchain state that holds the address, bala
 
 A simple representation of an account:
 
-![Screenshot 2023-08-16 at 16.43.07.png](Accounts%2002b0bc829c934a7a9b9f89bb70440612/Screenshot_2023-08-16_at_16.43.07.png)
+![Screenshot 2023-08-16 at 16.43.07.png](_accounts_images/Screenshot_2023-08-16_at_16.43.07.png)
 
 **************Address**************
 
@@ -46,7 +46,7 @@ Each account key has a weight that determines the signing power it holds.
 
 For example, an account might contain 3 keys, each with 500 weight:
 
-![Screenshot 2023-08-16 at 16.28.58.png](Accounts%2002b0bc829c934a7a9b9f89bb70440612/Screenshot_2023-08-16_at_16.28.58.png)
+![Screenshot 2023-08-16 at 16.28.58.png](_accounts_images/Screenshot_2023-08-16_at_16.28.58.png)
 
 This represents a 2-of-3 multi-sig quorum, in which a transaction is authorized to access the account if it receives signatures from *at least* 2 out of 3 keys.
 
@@ -84,7 +84,7 @@ Both hashing and signature algorithms are compatible with each other, so you can
 
 An account on Flow doesn’t require keys in order to exist, but this makes the account immutable since no transaction can be signed that would change the account. This can be useful if we want to freeze an account contract code and it elegantly solves the problem of having multiple account types (as that is the case for Ethereum).
 
-![Screenshot 2023-08-16 at 18.59.10.png](Accounts%2002b0bc829c934a7a9b9f89bb70440612/Screenshot_2023-08-16_at_18.59.10.png)
+![Screenshot 2023-08-16 at 18.59.10.png](_accounts_images/Screenshot_2023-08-16_at_18.59.10.png)
 
 You can achieve keyless accounts by either removing an existing public key from an account signing with that same key and repeating that action until an account has no keys left, or you can create a new account that has no keys assigned.
 
@@ -99,15 +99,15 @@ Creating a multi-signature account is easily done by managing the account keys a
 
 2-of-3 multi-sig quorum
 
-![Screenshot 2023-08-16 at 19.34.44.png](Accounts%2002b0bc829c934a7a9b9f89bb70440612/Screenshot_2023-08-16_at_19.34.44.png)
+![Screenshot 2023-08-16 at 19.34.44.png](_accounts_images/Screenshot_2023-08-16_at_19.34.44.png)
 
 3-of-3 multi-sig quorum
 
-![Screenshot 2023-08-16 at 19.34.55.png](Accounts%2002b0bc829c934a7a9b9f89bb70440612/Screenshot_2023-08-16_at_19.34.55.png)
+![Screenshot 2023-08-16 at 19.34.55.png](_accounts_images/Screenshot_2023-08-16_at_19.34.55.png)
 
 1-of-2 signature
 
-![Screenshot 2023-08-16 at 19.34.51.png](Accounts%2002b0bc829c934a7a9b9f89bb70440612/Screenshot_2023-08-16_at_19.34.51.png)
+![Screenshot 2023-08-16 at 19.34.51.png](_accounts_images/Screenshot_2023-08-16_at_19.34.51.png)
 
 ## Account Creation
 

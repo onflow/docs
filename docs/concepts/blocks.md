@@ -8,13 +8,13 @@ The unique block ID serves as proof of the block contents which can be independe
 
 A very basic representation of blocks is:
 
-![Screenshot 2023-08-16 at 15.16.38.png](Blocks 96d908a0ec784af9ab3c96e94aa07ebb/Screenshot_2023-08-16_at_15.16.38.png)
+![Screenshot 2023-08-16 at 15.16.38.png](_blocks_images/Screenshot_2023-08-16_at_15.16.38.png)
 
 Blocks are ordered starting from the genesis block 0 up to the latest block. Each block contains an ordered list of transactions. This is how Flow blockchain preserves the complete history of all the changes made to the state from the beginning to the current state. 
 
 Each block contains more data which is divided into **block header** and **block payload**. There are many representations of the block within the Flow protocol, the perspective changes between node types and even components within the node. For the purpose of this documentation, we will talk about block data we expose through APIs to the clients.
 
-![Screenshot 2023-08-16 at 10.50.53.png](Blocks 96d908a0ec784af9ab3c96e94aa07ebb/Screenshot_2023-08-16_at_10.50.53.png)
+![Screenshot 2023-08-16 at 10.50.53.png](_blocks_images/Screenshot_2023-08-16_at_10.50.53.png)
 
 ### Block Header
 
@@ -45,7 +45,7 @@ A block that is agreed upon by the consensus nodes to be the next block is **fin
 
 In summary, a block can be either **finalized** which guarantees transactions included in the block will stay the same and will be executed, and **************sealed************** which means the block execution was verified. 
 
-![Screenshot 2023-08-16 at 10.48.26.png](Blocks 96d908a0ec784af9ab3c96e94aa07ebb/Screenshot_2023-08-16_at_10.48.26.png)
+![Screenshot 2023-08-16 at 10.48.26.png](_blocks_images/Screenshot_2023-08-16_at_10.48.26.png)
 
 ## Block Retrieval
 

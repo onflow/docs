@@ -2,7 +2,7 @@
 
 Collections are a connecting link between blocks and transactions. They make an ordered list of one or more hashes of signed transactions. These are formed by collection node clusters. Why blocks don’t directly include transactions (as they do on Ethereum) is due to the optimization of data that needs to be transferred on the network. Consensus nodes need to only agree on the order of transactions to be executed, they don’t need to know the transaction payload, thus making blocks and collections lightweight. Collection nodes hold transaction payloads for anyone that requests them (e.g. execution nodes). 
 
-![Screenshot 2023-08-17 at 19.50.39.png](Collections 9276ddfb85f64fc6a0d093dd95aed17e/Screenshot_2023-08-17_at_19.50.39.png)
+![Screenshot 2023-08-17 at 19.50.39.png](_collection_images/Screenshot_2023-08-17_at_19.50.39.png)
 
 ## Collection Retrieval
 
