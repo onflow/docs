@@ -3,26 +3,7 @@ title: Working With Parent Accounts
 sidebar_position: 2
 ---
 
-This doc serves as developer guidance to support Hybrid Custody apps leveraging Account Linking. While account linking
-as a feature is a language level API, supporting linked accounts such that users achieve Hybrid Custody has a bit more
-nuance, namely that apps should build on the HybridCustody standard proposed in [FLIP
-#72](https://github.com/onflow/flips/pull/72) for ecosystem-wide support. Implementing this standard will allow dapps to
-facilitate a user experience based not on a single authenticated account, but on the global context of all accounts
-linked to the authenticated parent account.
-
-We believe multi-account linking and management, technical initiatives in support of
-[Walletless Onboarding](https://flow.com/post/flow-blockchain-mainstream-adoption-easy-onboarding-wallets),
-will enable in-dapp experiences far superior to the current Web3 status quo and allow for industry UX to finally
-reach parity with traditional Web2 authentication and onboarding flows, most notably on mobile.
-
-A new user will no longer need a preconfigured wallet to interact with Flow. When they do decide to create a wallet and
-link with a dapp; however, the associated accounts and assets within them will need to be accessible the same as if they
-were in a single account.
-
-In order to realize a multi-account world that makes sense to users - one where they don't have to concern themselves
-with managing assets across their network of accounts - we're relying on Flow builders to cast their abstractive magic.
-These docs will provide you with components and steps to create those abstractions for your users. In this doc, we'll
-continue from the perspective of a wallet or marketplace dapp seeking to facilitate a unified account experience,
+In this doc, we'll continue from the perspective of a wallet or marketplace dapp seeking to facilitate a unified account experience,
 abstracting away the partitioned access between accounts into a single dashboard for user interactions on all their
 owned assets.
 
@@ -35,7 +16,7 @@ contributing? [Check out the source!](https://github.com/onflow/hybrid-custody).
 
 </Callout>
 
-# Objectives
+We'll cover:
 
 - Understand the Hybrid Custody account model
 - Differentiate between restricted child accounts and unrestricted owned accounts
