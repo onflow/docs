@@ -16,7 +16,7 @@ contributing? [Check out the source!](https://github.com/onflow/hybrid-custody).
 
 </Callout>
 
-We'll cover:
+## Objectives
 
 - Understand the Hybrid Custody account model
 - Differentiate between restricted child accounts and unrestricted owned accounts
@@ -25,7 +25,7 @@ We'll cover:
   wallet-mediated “parent” account and any hybrid custody model “child” accounts
 - Facilitate transactions acting on assets in child accounts
 
-# Design Overview
+## Design Overview
 
 <Callout type="info">
 
@@ -64,7 +64,7 @@ can deduce from these two methods, there is a notion of "owned" accounts which w
 A wallet or marketplace wishing to discover all of a user's accounts and assets within them can do so by first looking
 to the user's `Manager`.
 
-## Identifying Account Hierarchy
+### Identifying Account Hierarchy
 
 To clarify, insofar as the standard is concerned, an account is a parent account if it contains a `Manager` resource,
 and an account is a child account if it contains at minimum an `OwnedAccount` or additionally a `ChildAccount` resource.
@@ -81,7 +81,7 @@ parent/child account(s).
 `OwnedAccount` resources underly all account delegations, so can have multiple parents whereas `ChildAccount`s are 1:1.
 This provides more granular revocation as each parent account has its own Capability path on which its access relies.
 
-### Restricted vs. Owned Accounts
+#### Restricted vs. Owned Accounts
 
 It's worth noting here that `ChildAccount` Capabilities enable access to the underlying account according to rules
 configured by the child account delegating access. The `ChildAccount` maintains these rules along with an `OwnedAccount`
@@ -119,7 +119,7 @@ are simply `OwnedAccount` Capabilities instead of `ChildAccount` Capabilities.
 ![HybridCustody Total Overview](./resources/hybrid_custody_low_level.png)
 
 
-## Considerations
+### Considerations
 
 Do note that this construction does not prevent an account from having multiple parent accounts or a child account from
 being the parent to other accounts. While initial intuition might lead one to believe that account associations are a
@@ -133,7 +133,7 @@ delegated authority to each other while both are child accounts of the user's ma
 Ultimately, it will be up to the implementing wallet/marketplace how far down the graph of account associations they'd
 want to traverse and display to the user.
 
-# Implementation
+## Implementation
 
 From the perspective of a wallet or marketplace dapp, some relevant things to know about the user are:
 
@@ -147,9 +147,9 @@ And with respect to acting on the assets of child accounts and managing child ac
 - Accessing an NFT from a linked account's Collection
 - Removing a linked account
 
-## Examples
+### Examples
 
-### Query Whether an Address Has Associated Accounts
+#### Query Whether an Address Has Associated Accounts
 
 This script will return `true` if a `HybridCustody.Manager` is stored and `false` otherwise
 
@@ -165,7 +165,7 @@ pub fun main(parent: Address): Bool {
 }
 ```
 
-### Query All Accounts Associated with Address
+#### Query All Accounts Associated with Address
 
 The following script will return an array of addresses associated with a given account's address, inclusive of the
 provided address.
@@ -181,7 +181,7 @@ pub fun main(parent: Address): [Address] {
 }
 ```
 
-### Query All Owned NFT Metadata
+#### Query All Owned NFT Metadata
 
 While it is possible to iterate over the storage of all associated accounts in a single script, memory limits prevent
 this approach from scaling well.
@@ -255,7 +255,7 @@ At the end of this query, the caller will have a mapping of `Display` views inde
 Address. Note that this script does not take batching into consideration and assumes that each NFT resolves the
 `MetadataViews.Display` view type.
 
-### Query All Account FungibleToken Balances
+#### Query All Account FungibleToken Balances
 
 Similar to the previous example, we recommend breaking up this task due to memory limits.
 
@@ -389,7 +389,7 @@ transaction(childAddress: Address, providerPath: PrivatePath, withdrawID: UInt64
 At the end of this transaction, you withdrew an NFT from the specified account using an NFT `Provider` Capability. A
 similar approach could get you any allowable Capabilities from a signer's child account.
 
-### Revoking Secondary Access on a Linked Account
+#### Revoking Secondary Access on a Linked Account
 
 The expected uses of child accounts for progressive onboarding implies that they will be accounts with shared access. A
 user may decide that they no longer want secondary parties to have access to the child account.
@@ -405,7 +405,7 @@ Flip](https://forum.onflow.org/t/account-linking-authaccount-capabilities-manage
 if users want to revoke secondary access, they transfer any assets from the relevant child account and remove it from
 their `Manager` altogether.
 
-### Remove a Child Account
+#### Remove a Child Account
 
 As mentioned above, if a user no longer wishes to share access with another party, it's recommended that desired assets
 be transferred from that account to either their main account or other linked accounts and the linked account be removed
