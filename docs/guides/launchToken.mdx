@@ -345,55 +345,6 @@ While listing on a DEX is very fast and easy, it is ultimately more beneficial t
 
 Being available on a variety of CEXs is very beneficial to increase the reach of your token, CEX makes price discovery more efficient, they also tends to increase trading volumes as CEX and DEX are constantly arbitraged against one another, finally many users look to the list of CEXs a token list on to get a sense of its legitimacy.
 
-## DEX launches
-
-Launching on a DEX simply means creating a liquidity pool that will hold a certain quantity of your token, as well as a certain quantity of another token of your choosing. On Flow, the most logical choice is to take advantage of FLOW’s pre-existing liquidity on BloctoSwap or IncrementFi.
-
-The quantity of your token vs. the quantity of FLOW that you deposit will determine the initial price for your token. This is because liquidity pools assume equal USD value of each token. Thus, if you deposit $50,000 worth of FLOW in the pool and 10,000 of your own token, the initial price will start at $5 per token.
-
-Of course, the price will not stay static! As users buy and sell your token, the inventory of both tokens will change, thereby changing the price of your token. For more details, you can read about AMMs here.
-
-### Liquidity requirements
-
-As described above, the price at which your token will trade will be determined by the quantity available in the pool vs. FLOW. Thus, the lower the quantity of the FLOW used to pair with your token, the more volatility your token will experience.
-
-Let’s go through an example to clarify this, using an imaginary liquidity pool made of FLOW and a new token named TKN:
-**FLOW/USD** = $2
-**TKN/USD** = $1 
-
-Liquidity pool **FLOW/TKN** is made of 5,000 **FLOW** and 10,000 **TKN**, for a Total Value Locked = 5,000 x $2 + 10,000 x $1 = $20,000
-
-In the case of a constant product AMM, we have **x * y = k**, where **x** and **y** are the quantity of respectively **FLOW** and **TKN** in the liquidity pool.
-
-k = 5,000 x 10,000 = 50,000,000 (k is a constant here).
-
-Alice comes in to buy **TKN** with 2,500 **FLOW** tokens, the new **FLOW** inventory becomes 7,500 **FLOW** (2,500 new **FLOW** tokens + 5,000 original **FLOW** tokens). 
-
-Now, let’s figure out the **TKN** inventory: 
-
-**TKN** inventory = 50,000,000 / 7,500 **FLOW** = 6,666 **TKN** - or 3,334 **TKN** received by Alice in exchange for her 2,500 **FLOW**
-
-This means that the user has paid 2,500 **FLOW** (equivalent to $5,000) to receive 3,334 **TKN**, which means that Alice bought **TKN** at $5,000 / 3,334 = $1.5 per **TKN**. This is 50% higher than the price Alice saw when browsing **TKN** on the DEX!
-
-This price difference is called slippage, and is directly proportional to the size of the TVL in the pool.
-
-As a result, we recommend dApps to launch a liquidity pool with at least $100,000 worth of tokens per side (i.e. a Total Value Locked of $200,000 at minimum). This means that the dApp should come up with $100,000 worth of FLOW prior to listing, which is not a trivial amount. Thankfully, a dApp can easily borrow FLOW while paying an interest rate in their own token using [boolean.xyz](https://docs.google.com/forms/d/e/1FAIpQLSeyMnRWSTtQv0YiK1-Qwc0xoKdBHFhVX3hQZk8s9BsT7-5LCQ/viewform).
-
-### Do you need a Market Maker to be listed on a DEX?
-While you do not necessarily need a Market Maker to create a liquidity pool (LP), remember that any liquidity deposited in an LP will have exposure to impermanent loss. And the greater the exposure, the greater the risk of impermanent loss. 
-
-_Ask yourself_: are you okay with taking this risk, and what are the tradeoffs if you do decide to take it? This is a complex topic that will be the subject of a future post.
-
-## CEX launches
-
-### The role of Market-Makers
-If you choose to list on a centralized exchange, then you will be required to hire a market maker, whose job will be to populate the order book of the various trading pairs supported on each CEX. Hiring a market-maker typically takes up to 6 weeks. 
-
-### Exchange listing negotiations
-Listing on a centralized exchange can take anywhere between 1 to 2 months between initial conversation and full due diligence. Typically exchanges will be interested in seeing your whitepaper, your effective token allocation, the vesting and unlock schedule for each category of holders of your token as well as any metric that captures the vibrancy and engagement of your community.
-
-Some exchanges require payment of listing fees, but many do not. As a result, make sure that before agreeing to a listing fee you have a good understanding of the benefits you will gain from listing on a given exchange.
-
 ## Getting your Flow token created
 
 While this guide does not cover the technicals of creating your fungible token, please find a couple of resources that may be helpful as you get ready to launch your token: 

@@ -264,7 +264,7 @@ const config = {
             label: 'Concepts',
           },
           {
-            to: 'guides',
+            to: 'next/guides',
             position: 'left',
             label: 'Guides',
           },

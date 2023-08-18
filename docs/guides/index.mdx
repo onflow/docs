@@ -1,6 +1,6 @@
 import DocCardList from '@theme/DocCardList';
-import Tabs from '@theme/Tabs';
-import TabItem from '@theme/TabItem';
+import { useDocsSidebar, isSamePath } from '@docusaurus/theme-common/internal';
+import { useLocation } from '@docusaurus/router';
 
 # Deployments
 
@@ -11,14 +11,14 @@ This section contains guides to deploying and testing smart contracts. Also cont
 <DocCardList items={[
   {
     type: 'link',
-    href: '/guides/deploying',
+    href: 'guides/deploying',
     label: 'Deploying Contracts',
     autoAddBaseUrl: true,
     description: 'How to deploy smart contracts to mainnet and testnet',
   },
   {
     type: 'link',
-    href: '/guides/flow-app-quickstart',
+    href: 'guides/flow-app-quickstart',
     label: 'Buiding a dapp',
     description: 'What is and How to build a dapp',
   },
