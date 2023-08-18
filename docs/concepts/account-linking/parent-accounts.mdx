@@ -72,7 +72,7 @@ and an account is a child account if it contains at minimum an `OwnedAccount` or
 Within a user's `Manager`, its mapping of `childAccounts` points to the addresses of its child accounts in each index,
 with corresponding values giving the Manager access to those accounts via corresponding`ChildAccount` Capability.
 
-![HybridCustody Conceptual Overview](resources/hybrid_custody_conceptual_overview.png)
+![HybridCustody Conceptual Overview](./resources/hybrid_custody_conceptual_overview.png)
 
 Likewise, the child account's `ChildAccount.parentAddress` (which owns a `Manager`) points to the user's account as its
 parent address. This makes it easy to both identify whether an account is a parent, child, or both, and its associated
