@@ -1,3 +1,7 @@
+---
+sidebar_position: 2
+---
+
 # Accounts
 
 An account is a record in the Flow blockchain state that holds the address, balance, public key, code, and other storage. Accounts and their keys are needed to sign transactions that change the Flow blockchain state. To execute a transaction, a small amount of Flow, called a “Fee” must be paid by the account or subsidized by a wallet or service. An account can contain contract code that transactions and scripts can interact with as well as it can store different resources in its storage.

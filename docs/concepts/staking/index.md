@@ -2,7 +2,7 @@
 title: Epochs, Staking & Delegating on Flow
 sidebar_title: Staking and Epochs
 description: Introduction to how staking works on Flow
-sidebar_position: 5
+sidebar_position: 15
 ---
 
 This document provides an introduction to staking FLOW tokens on the Flow network

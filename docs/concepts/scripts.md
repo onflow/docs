@@ -1,3 +1,7 @@
+---
+sidebar_position: 4
+---
+
 # Scripts
 
 A script is an executable Cadence code that queries the Flow network but does not modify it. Unlike Flow transactions, they don’t need signing and they can return a value. You can think of executing scripts as a read-only operation. 

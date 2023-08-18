@@ -1,6 +1,6 @@
 ---
 title: Getting Started
-sidebar_position: 2
+sidebar_position: 10
 ---
 
 # Introduction to Flow

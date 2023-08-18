@@ -1,3 +1,7 @@
+---
+sidebar_position: 6
+---
+
 # Events
 
 Flow events are special values that can be emitted during the execution of a Cadence program. 

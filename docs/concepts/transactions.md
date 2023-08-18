@@ -1,3 +1,7 @@
+---
+sidebar_position: 3
+---
+
 # Transactions
 
 Transactions are cryptographically signed data messages that contain a set of instructions that update the Flow state. They are a basic unit of computation that gets executed by execution nodes. In order for a transaction to be included in the Flow blockchain a fee is required from the payer. 
