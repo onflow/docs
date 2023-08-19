@@ -139,6 +139,8 @@ const editUrl = ({ docPath }) => {
   return `https://github.com/${owner}/${name}/tree/${branch}/${sourceDocPath}`;
 };
 
+const baseUrl = process.env.BASE_URL || '/docs/';
+
 /** @type {import('@docusaurus/types').Config} */
 const config = {
   title: 'Flow Developer Portal',
@@ -149,7 +151,7 @@ const config = {
   url: getUrl(),
   // Set the /<baseUrl>/ pathname under which your site is served
   // For GitHub pages deployment, it is often '/<projectName>/'
-  baseUrl: process.env.BASE_URL || '/docs/',
+  baseUrl,
 
   // GitHub pages deployment config.
   // If you aren't using GitHub pages, you don't need these.
@@ -596,7 +598,7 @@ const config = {
   ],
   scripts: [
     {
-      src: '/mixpanel.js',
+      src: `${baseUrl}mixpanel.js`,
       async: true,
       onload: mixpanelOnLoad,
     },
@@ -609,7 +611,7 @@ const config = {
       async: true,
     },
     {
-      src: '/hotjar.js',
+      src: `${baseUrl}hotjar.js`,
       async: true,
     },
     {
@@ -621,6 +623,7 @@ const config = {
       async: true,
     },
   ],
+  clientModules: [require.resolve('./src//modules/toolscards.ts')],
 };
 
 module.exports = config;

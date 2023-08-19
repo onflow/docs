@@ -6,6 +6,8 @@ description: Essential tools for the Flow blockchain ecosystem
 
 # Tools
 
+<div id="tools" className="tools-cards">
+
 ## Node Providers
 
 ### Quick Node
@@ -228,3 +230,5 @@ The [Flow Client Library (FCL)](./clients/fcl-js/index.md) JS is a package used 
 ### HTTP API
 
 [Flow OpenAPI](/http-api) specification
+
+</div>
