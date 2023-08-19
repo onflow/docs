@@ -3,7 +3,7 @@ title: Working With Parent Accounts
 sidebar_position: 2
 ---
 
-In this doc, we'll continue from the perspective of a wallet or marketplace dapp seeking to facilitate a unified account experience,
+In this doc, we'll continue from the perspective of a wallet or marketplace app seeking to facilitate a unified account experience,
 abstracting away the partitioned access between accounts into a single dashboard for user interactions on all their
 owned assets.
 
@@ -11,7 +11,7 @@ owned assets.
 
 - Understand the Hybrid Custody account model
 - Differentiate between restricted child accounts and unrestricted owned accounts
-- Get your dapp to recognize “parent” accounts along with any associated “child” accounts
+- Get your app to recognize “parent” accounts along with any associated “child” accounts
 - View Fungible and NonFungible Token metadata relating to assets across all of a user's associated accounts - their
   wallet-mediated “parent” account and any hybrid custody model “child” accounts
 - Facilitate transactions acting on assets in child accounts
@@ -20,7 +20,8 @@ owned assets.
 
 <Callout type="info">
 
-TL;DR: An account's `HybridCustody.Manager` is the entry point for all of a user's associated accounts.
+TL;DR: An account's [`HybridCustody.Manager`](https://github.com/onflow/hybrid-custody/blob/main/contracts/HybridCustody.cdc)
+is the entry point for all of a user's associated accounts.
 
 </Callout>
 
@@ -30,15 +31,15 @@ parent account is one that has received delegated (albeit restricted) access on 
 delegated authority over itself to the parent account is the child account.
 
 In the [Hybrid Custody Model](https://forum.onflow.org/t/hybrid-custody/4016), this child account would have shared
-access between the dapp - the entity which created likely custodies the account - and the linked parent account.
+access between the app - the entity which created likely custodies the account - and the linked parent account.
 
 How does this delegation occur? Typically when we think of shared account access in crypto, we think keys. However,
 Cadence enables [accounts to link Capabilities to themselves](https://github.com/onflow/cadence/issues/2151) and issue
 those Capabilities to other parties (more on [capability-based access
 here](https://developers.flow.com/cadence/language/capability-based-access-control)).
 
-We've leveraged this feature in a (proposed) standard so that dapps can implement a hybrid custody model whereby the
-dapp creates an account it controls, then later delegates access on that account to the user once they've authenticated
+We've leveraged this feature in a (proposed) standard so that apps can implement a hybrid custody model whereby the
+app creates an account it controls, then later delegates access on that account to the user once they've authenticated
 with their wallet.
 
 All related constructs are used together in the [`HybridCustody`
@@ -126,7 +127,7 @@ want to traverse and display to the user.
 
 ## Implementation
 
-From the perspective of a wallet or marketplace dapp, some relevant things to know about the user are:
+From the perspective of a wallet or marketplace app, some relevant things to know about the user are:
 
 - Does this account have associated linked (child) accounts?
 - What are those associated linked accounts, if any?
