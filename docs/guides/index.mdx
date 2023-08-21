@@ -1,3 +1,9 @@
+---
+sidebar_position: 1
+title: Guides
+description: Guides on building on flow
+---
+
 import DocCardList from '@theme/DocCardList';
 import { useDocsSidebar, isSamePath } from '@docusaurus/theme-common/internal';
 import { useLocation } from '@docusaurus/router';
@@ -25,4 +31,4 @@ This section contains guides to deploying and testing smart contracts. Also cont
 ]}/>
 
 ## All sections
-<DocCardList />
+<DocCardList items={useDocsSidebar().items.filter(item => !isSamePath(item.href, useLocation().pathname))}/>
