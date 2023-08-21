@@ -8,28 +8,46 @@ description: Essential tools for the Flow blockchain ecosystem
 
 <div id="tools" className="tools-cards">
 
-## Node Providers
+## Toolchains
 
-### Quick Node
+### Emulator
 
-[QuickNode](https://www.quicknode.com/chains/flow) is a service that provides access to blockchain infrastructure for developers, businesses, and anyone who needs reliable and fast access to blockchain networks. QuickNode allows users to connect to these networks without having to run their own full nodes, which can be resource-intensive.
+[The Flow Emulator](./toolchains/emulator/index.md) is a lightweight tool that emulates the behavior of the real Flow network. Packaged via CLI.
 
-#### Supported Networks
+### FCL Dev Wallet
 
-- testnet
-- mainnet
+The [FCL dev wallet](./toolchains/fcl-dev-wallet/index.md) is a mock Flow wallet that simulates the protocols used by FCL to interact with the Flow blockchain on behalf of simulated user accounts.
 
-### Tatum
+### Flow CLI
 
-[Tatum](https://tatum.io/) is a platform that provides infrastructure, SDK, and unified API to build, test, and run blockchain apps. You don't need to worry about blockchain node configuration or maintenance, and you don't need to learn to code for individual blockchains. 
+[Flow CLI](./toolchains/flow-cli/index.md) brings Flow to your terminal. Easily interact with the network and build your dapps.
 
-#### Supported Networks
+### VS Code extension
 
-- testnet
-- mainnet
+The [Visual Studio Code](./toolchains/vscode-extension/index.mdx) extension for Cadence. Extensive features such as code generation, deploying contracts, and a lot more.
+
+### Flowser
+
+[Flowser](https://flowser.dev/) lets you inspect the current state of any flow blockchain network emulator, testnet, and mainnet.
+
+### Flow Cadut
+
+[Flow Cadut](./toolchains/flow-cadut/api.md) is Node based template generator to simplify interaction with Cadence files.
+
+### NFT Catalog
+
+The [NFT Catalog](./toolchains/nft-catalog/overview.mdx) is an on chain registry listing NFT collections that exists on Flow which adhere to the NFT metadata standard. This empowers dApp developers to easily build on top of and discover interoperable NFT collections on Flow.
+
+### NFT Marketplace
+
+The [NFT Marketplace](./toolchains/nft-marketplace/index.md) is a guide thet provides required information to the development teams looking to build NFT marketplaces on the Flow blockchain.
+
+### Flow JS testing (deprecated)
+
+[Flow JS testing](./toolchains/flow-js-testing/index.md) is a Jest based framework to enable Cadence testing via a set of JavaScript methods and tools
 
 
-## Block Explorers
+## Flow Explorers
 
 ### Flow Diver
 
@@ -42,8 +60,6 @@ it also provides network(mainnet) analytics:
 - network activity (transactions number)
 - transaction cost (gas fee)
 - validators information
-
-## Account Explorer
 
 ### Flow View
 
@@ -60,8 +76,6 @@ Flow View provides tools to view accounts information.
 - testnet https://testnet.flowview.app/
 - emulator (local) https://emulator.flowview.app/
 
-## Contract Explorer
-
 ### ContractBrowser
 
 A ContractBrowser is available for [Flow](https://contractbrowser.com/).
@@ -72,6 +86,7 @@ ContractBrowser provides tools to view deployed smart contracts and their depend
 - View detailed smart contract information
 
 A testnet ContractBrowser for [Testnet Flow](https://testnet.contractbrowser.com/) is also available.
+
 
 ## Bridges
 
@@ -86,6 +101,7 @@ A testnet ContractBrowser for [Testnet Flow](https://testnet.contractbrowser.com
 
 #### Supported networks
 - testnet - https://testnet-faucet.onflow.org/
+
 
 ## Wallets
 
@@ -144,44 +160,6 @@ A mobile [self custody wallet](https://www.meetdapper.com/dapper-self-custody) t
 https://www.meetdapper.com/dapper-self-custody
 
 
-## Toolchains
-
-### Emulator
-
-[The Flow Emulator](./toolchains/emulator/index.md) is a lightweight tool that emulates the behavior of the real Flow network. Packaged via CLI.
-
-### FCL Dev Wallet
-
-The [FCL dev wallet](./toolchains/fcl-dev-wallet/index.md) is a mock Flow wallet that simulates the protocols used by FCL to interact with the Flow blockchain on behalf of simulated user accounts.
-
-### Flow CLI
-
-[Flow CLI](./toolchains/flow-cli/index.md) brings Flow to your terminal. Easily interact with the network and build your dapps.
-
-### VS Code extension
-
-The [Visual Studio Code](./toolchains/vscode-extension/index.mdx) extension for Cadence. Extensive features such as code generation, deploying contracts, and a lot more.
-
-### Flowser
-
-[Flowser](https://flowser.dev/) lets you inspect the current state of any flow blockchain network emulator, testnet, and mainnet.
-
-### Flow Cadut
-
-[Flow Cadut](./toolchains/flow-cadut/api.md) is Node based template generator to simplify interaction with Cadence files.
-
-### NFT Catalog
-
-The [NFT Catalog](./toolchains/nft-catalog/overview.mdx) is an on chain registry listing NFT collections that exists on Flow which adhere to the NFT metadata standard. This empowers dApp developers to easily build on top of and discover interoperable NFT collections on Flow.
-
-### NFT Marketplace
-
-The [NFT Marketplace](./toolchains/nft-marketplace/index.md) is a guide thet provides required information to the development teams looking to build NFT marketplaces on the Flow blockchain.
-
-### Flow JS testing (deprecated)
-
-[Flow JS testing](./toolchains/flow-js-testing/index.md) is a Jest based framework to enable Cadence testing via a set of JavaScript methods and tools
-
 ## Clients
 
 ### Go SDK
@@ -230,5 +208,26 @@ The [Flow Client Library (FCL)](./clients/fcl-js/index.md) JS is a package used 
 ### HTTP API
 
 [Flow OpenAPI](/http-api) specification
+
+
+## Node Providers
+
+### Quick Node
+
+[QuickNode](https://www.quicknode.com/chains/flow) is a service that provides access to blockchain infrastructure for developers, businesses, and anyone who needs reliable and fast access to blockchain networks. QuickNode allows users to connect to these networks without having to run their own full nodes, which can be resource-intensive.
+
+#### Supported Networks
+
+- testnet
+- mainnet
+
+### Tatum
+
+[Tatum](https://tatum.io/) is a platform that provides infrastructure, SDK, and unified API to build, test, and run blockchain apps. You don't need to worry about blockchain node configuration or maintenance, and you don't need to learn to code for individual blockchains. 
+
+#### Supported Networks
+
+- testnet
+- mainnet
 
 </div>

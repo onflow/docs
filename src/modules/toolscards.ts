@@ -74,6 +74,7 @@ export function onRouteDidUpdate({ location, previousLocation }): void {
         }
       }
     }
+    appendCard();
     appendSection();
   }
 }
