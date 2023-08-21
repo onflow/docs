@@ -3,7 +3,7 @@ sidebar_position: 2
 description: |
   User-friendly online tools that visually present blockchain data, allowing users to easily navigate transactions, blocks, addresses, and smart contracts while providing real-time insights and transparency.
   - Flow Diver
-  - FLow View
+  - Flow View
   - ContractBrowser
 ---
 
@@ -16,7 +16,7 @@ description: |
 - transactions
 - contracts
 
-it also provides network(mainnet) analytics:
+It also provides network(mainnet) analytics:
 - network activity (transactions number)
 - transaction cost (gas fee)
 - validators information
@@ -25,7 +25,7 @@ it also provides network(mainnet) analytics:
 
 ## Flow View
 
-Flow View provides tools to view accounts information.
+[Flow View](https://www.flowview.app/) provides tools to view accounts information.
 
 - address, balance, storage
 - public keys and their weight
@@ -42,11 +42,11 @@ Flow View provides tools to view accounts information.
 
 ## ContractBrowser
 
-A ContractBrowser is available for [Flow](https://contractbrowser.com/).
+[ContractBrowser](https://contractbrowser.com/) is available for Flow.
 
 ContractBrowser provides tools to view deployed smart contracts and their dependencies and dependents.
 
-- Search, view and verify smart contract source code.
-- View detailed smart contract information
+- search, view and verify smart contract source code
+- view detailed smart contract information
 
-A testnet ContractBrowser for [Testnet Flow](https://testnet.contractbrowser.com/) is also available.
+[Testnet ContractBrowser](https://testnet.contractbrowser.com/) for `Testnet Flow` is also available.
