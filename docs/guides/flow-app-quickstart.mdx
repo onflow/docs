@@ -65,6 +65,9 @@ Using the Flow CLI scaffold, create a basic hello world web project. This will c
 
 ```sh
  flow setup hello-world --scaffold
+ # select scaffold 5
+ cd hello-world
+ npm install
 ```
 
 We don't recommend keeping private keys in your `flow.json`, notice that flow cli already moved the emulator private key to a `emulator.key` file and point to it using the [key/location pattern](/tooling/flow-cli/flow.json/security.md#private-account-configuration-file). This file should be added to your .gitignore file, so it won't be committed to your repository. 
@@ -107,30 +110,31 @@ There are a lot of benefits to getting familiar with existing Flow CLI scaffolds
 </Callout>
 
 
-Before running the app the emulator needs to be run. This is a local blockchain [More Information](../tooling/emulator). In a console run this commmand:
+The `hello-world` web application comes with convenience npm commands to facilitate a quick start. The following command will preform: 
+ 1. Start emulator
+ 2. Start dev wallet
+ 3. Start web app
+
+<Callout type="info">
+Emulator is a local blockchain [More Information](../tooling/emulator). Emulator has all the features as testnet and mainnet blockchains 
+</Callout>
 
 ```sh
-flow emulator
+npm run dev:local
 ```
 
-Now run the app using the following command in another terminal, aka console.
-
-```sh
-npm run dev
-```
-
-Now that your app is running. FYI, there is a configuration file name `config/fcl.ts` This file contains configuration information for FCL, such as what Access Node and wallet discovery endpoint and which network to use (e.g. testnet or a local emulator). 
+Now that your app is running. FYI, fcl loads the configuration in `config/fcl.ts` This file contains configuration information for FCL, such as what Access Node and wallet discovery endpoint and which network to use (e.g. testnet or a local emulator). 
 
 The `accessNode.api` key specifies the address of a Flow access node. There are publically available access nodes, but have to rate limit. Alternatively, applications might want to run an Observer node [Run a Node](./runningNode.mdx).
 `discovery.wallet` is an address that points to a service that lists FCL compatible wallets. Flow's FCL Discovery service is a service that FCL wallet providers can be added to, and be made 'discoverable' to any application that uses the `discovery.wallet` endpoint.
 
+Also, notice that package.json uses `NEXT_PUBLIC_FLOW_NETWORK=local` for `dev` command, this is used to set the network in `config/fcl.ts`.
 <Callout type="info">
 Learn more about [configuring Discovery](/tooling/fcl-js/discovery.mdx) or [setting configuration values](/tooling/fcl-js/api.md#setting-configuration-values).
 </Callout>
 
 
 The main page for Next.js apps is located in `pages/index.js`. So let's finish configuring our dapp by going in the `pages/` directory and importing the config file into the top of our `index.js` file. We'll then swap out the default component in `index.js` to look like this:
-
 
 ```jsx
 import Head from 'next/head'
@@ -179,6 +183,8 @@ The web app will run but there are no contracts deployed to local emulator. This
 
 ## Authentication
 
+![User Login](./user-login-hello-world.gif)
+
 Note: in above code `useCurrentUser` is used to determine if there is a user logged in. 
 
 There are two methods to allow the user to login. `fcl.logIn()` or `fcl.authenticate()` [More Information on, authenticate](../tooling/fcl-js/api#authenticate)
@@ -223,11 +229,15 @@ export default function Navbar() {
 
 ```
 
-You should now be able to log in or sign up a user and unauthenticate them. Upon logging in or signing up your users will see a popup where they can choose between wallet providers. Let's select the [Lilico wallet](https://lilico.app/) for this example to create an account. Upon completing authentication, you'll see the component change and the user's wallet address appear on the screen if you've completed this properly.
+You should now be able to log in or sign up a user and unauthenticate them. Upon logging in or signing up your users will see a popup where they can choose between wallet providers. Choose the `dev wallet` to use the same account that deployed the `HelloWorld` contract, this is needed for mutation. Upon completing authentication, you'll see the component change and the user's wallet address appear on the screen if you've completed this properly.
+
+<Callout type="info">
+More on wallets, [Lilico wallet](https://lilico.app/) is a flow wallet. [Flow Wallets](../tooling/wallets)
+</Callout>
 
 ## Deploying project contracts
 
-You will notice no contracts have not been deployed. So the UI has nothing to communicate with. Hello World scaffold does come with a Cadence contract. 
+Hello World scaffold does come with a Cadence contract. You will notice `HelloWorld.cdc` has been deployed when running `npm run dev:local`. Look at hello-world package.json to see the commands that get run, `flow dev` deploys contracts.
 In the `flow.json` make sure the emulator endpoint is correct. Look at the terminal the emulator is running, 
 
 ![Emulator Output](./emulator-output.png)
@@ -242,19 +252,15 @@ In the `flow.json` make sure the emulator endpoint is correct. Look at the termi
   },
 	"deployments": {
 		"emulator": {
-		  "emulator-account": ["HelloWorld"]
-		}
+			"default": [
+				"HelloWorld"
+			]
+		}	
 }	
 
 ```
 
-Deploy contracts, In a console in root of Hello world app, run the following command.
-
-```sh
-flow project deploy
-```
-
-Verify that `flow.json` updates with HelloWorld contract information
+Verify that `flow.json` updates with HelloWorld contract information, `contracts` has the `HelloWorld` contract and `deployments` shows that `HelloWorld` has been deployed.
 
 
 ```json
@@ -268,6 +274,10 @@ Verify that `flow.json` updates with HelloWorld contract information
 		"testnet": "access.devnet.nodes.onflow.org:9000"
 	},
 	"accounts": {
+		"default": {
+			"address": "01cf0e2f2f715450",
+			"key": "..."
+		},
 		"emulator-account": {
 			"address": "f8d6e0586b0a20c7",
 			"key": {
@@ -278,15 +288,17 @@ Verify that `flow.json` updates with HelloWorld contract information
 	},
 	"deployments": {
 		"emulator": {
-		  "emulator-account": ["HelloWorld"]
+			"default": [
+				"HelloWorld"
+			]
 		}
-  }
+	}
 }
 ```
 
 ## Query Flow Contract
 
-Now that all project contracts have been deployed, the UI can query them.
+Now that all pieces are in place. UI can query `HelloWorld` contract.
 
 
 ![Query HelloWorld Contract](./query-helloWorld-contract.gif)
@@ -319,8 +331,32 @@ It is that simple!
 
 ## Mutating the Blockchain
 
+Update the `HelloWorld` contract greeting. Notice that Greeting gets changed when the transaction gets processed.
+
+![Update contract](./hello-world-update-contract.gif)
 
 
+In `components/Container.tsx` file, the `mutateGreeting` method `fcl.mutate` sends UpdateHelloWorld cadence which triggers a transaction that the user signs.
+
+```javascript
+ const mutateGreeting = async (event) => {
+    event.preventDefault()
+
+    if (!userGreetingInput.length) {
+      throw new Error('Please add a new greeting string.')
+    }
+
+    const transactionId = await fcl.mutate({
+      cadence: UpdateHelloWorld,
+      args: (arg, t) => [arg(userGreetingInput, t.String)],
+    })
+
+    setLastTransactionId(transactionId)
+  }
+
+```
+
+This guide covers flow-cli commands that make deploying contracts simple and using `fcl` to querying and mutating a contract. 
 
 ## More information
 
