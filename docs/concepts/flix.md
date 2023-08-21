@@ -22,4 +22,4 @@ Flow provides an implementation of the Flow interaction template service as an o
 There are currently two clients integrating FLIX APIs you can use in your code. 
 **Go client** [https://github.com/onflow/flixkit-go](https://github.com/onflow/flixkit-go)
 
-**FCL client you** read how to get started [https://developers.flow.com/tooling/fcl-js/interaction-templates](https://developers.flow.com/tooling/fcl-js/interaction-templates)
+**FCL client you** read how to get started [tools/clients/fcl-js/interaction-templates](../tools/clients/fcl-js/interaction-templates.mdx)

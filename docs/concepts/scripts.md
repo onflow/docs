@@ -10,13 +10,13 @@ Scrips are executed on Access Nodes, Archive Nodes, or Execution Nodes.
 
 Scripts are defined by following the Cadence code and we can only execute one at a time.
 
-```json
+```cadence
 pub fun main() {}
 ```
 
 Scripts can return a typed value like so:
 
-```json
+```cadence
 pub fun main(): Int {
 	return 1 + 2
 }
@@ -24,7 +24,7 @@ pub fun main(): Int {
 
 The most useful things we can do with scripts are call contract functions and query the state of a contract. It can do so by importing the contract and calling a function on it:
 
-```json
+```cadence
 import World from 0x01
 
 pub fun main(): String {
@@ -46,14 +46,14 @@ Scripts can be run against previous blocks, which makes it possible to query his
 
 Scripts are executed by being submitted to the Access Node APIs. Currently, there’s support for two APIs:
 
-**gRPC Block API** [https://developers.flow.com/concepts/nodes/access-api#scripts](https://developers.flow.com/concepts/nodes/access-api#scripts)
+[**gRPC Script API**](../concepts/nodes/access-api.mdx#blocks)
 
-****************REST Block API**************** [https://developers.flow.com/http-api#tag/Scripts](https://developers.flow.com/http-api#tag/Scripts)
+[**REST Script API**](/http-api#tag/Scripts)
 
 There are multiple SDKs implementing the above APIs for different languages:
 
-******************************Javascript SDK****************************** [https://developers.flow.com/tooling/fcl-js](https://developers.flow.com/tooling/fcl-js)
+[**Javascript SDK**](../tools/clients/fcl-js/index.md)
 
-**************Go SDK************** [https://developers.flow.com/tooling/flow-go-sdk](https://developers.flow.com/tooling/flow-go-sdk)
+[**Go SDK**](../tools/clients/flow-go-sdk/index.mdx)
 
-Find a list of all SDKs here: [https://developers.flow.com/tools#sdks](https://developers.flow.com/tools#sdks)
+Find a list of all SDKs [here](../tools/clients/index.md)
