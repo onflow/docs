@@ -1,46 +1,30 @@
 ---
-title: Linking Accounts
+title: Building Walletless Applications Using Child Accounts
+sidebar_position: 1
 ---
 
-If you’ve built dApps on Flow, or any blockchain for that matter, you’re painfully aware of the user onboarding process
-and successive pain of prompting user signatures for on-chain interactions.
-
-As a developer, this leaves you with two options - handle custody and act on the user's behalf or go with the
-self-custodial status quo, hope your new users are Web3 native and authenticate them via their existing wallet. Either
-choice will force significant compromise, fragmenting user experience and leaving much to be desired compared to the
-broader status quo of Web2 identity authentication and single-click onboarding flow.
-
 In this doc, we’ll dive into a progressive onboarding flow, including the Cadence scripts & transactions that go into
-its implementation in your dApp. These components will enable any implementing dApp to create a custodial account,
-mediate the user’s on-chain actions on their behalf, and later delegate access of that dApp-created account to the
-user’s wallet. We’ll refer to this custodial pattern as the Hybrid Account Model and the process of delegating control
-of the dApp account as Account Linking.
+its implementation in your app. These components will enable any implementing app to create a custodial account,
+mediate the user’s onchain actions on their behalf, and later delegate access of that app-created account to the
+user’s wallet. We’ll refer to this custodial pattern as the Hybrid Custody Model and the process of delegating control
+of the app account as Account Linking.
 
-<Callout type="warning">
-
-Note that the documentation on Hybrid Custody covers the current state and will likely differ from the final
-implementation. **Testnet is currently out of sync with docs and will be updated shortly.** Builders should be aware
-that breaking changes may follow before reaching a final community consensus on implementation. Interested in
-contributing? [Check out the source!](https://github.com/onflow/hybrid-custody).
-
-</Callout>
-
-# Objectives
+## Objectives
 
 - Create a [walletless onboarding](https://flow.com/post/flow-blockchain-mainstream-adoption-easy-onboarding-wallets)
   transaction
 - Link an existing app account as a child to a newly authenticated parent account
-- Get your dApp to recognize “parent” accounts along with any associated “child” accounts
+- Get your app to recognize “parent” accounts along with any associated “child” accounts
 - Put it all together to create a blockchain-native onboarding transaction
 - View fungible and non-fungible Token metadata relating to assets across all of a user’s associated accounts - their
-  wallet-mediated “parent” account and any hybrid custody model “child” accounts
+  wallet-mediated “parent” account and any “child” accounts
 - Facilitate transactions acting on assets in child accounts
 
-# Point of Clarity
+## Point of Clarity
 
 Before diving in, let's make a distinction between **"account linking"** and **"linking accounts"**.
 
-## Account Linking
+### Account Linking
 
 <Callout type=" ">
 
@@ -51,8 +35,8 @@ signed transaction.
 </Callout>
 
 Very simply, account linking is a [feature in Cadence](https://github.com/onflow/flips/pull/53) that let's an
-[AuthAccount](../../../cadence/language/accounts.mdx#authaccount) create a
-[Capability](../../../cadence/language/capability-based-access-control.md) on itself. You can do so in the following
+[AuthAccount](../../cadence/language/accounts.mdx#authaccount) create a
+[Capability](../../cadence/language/capability-based-access-control.md) on itself. You can do so in the following
 transaction:
 
 ```cadence link_account.cdc
@@ -80,34 +64,27 @@ Note that in order to link an account, a transaction must state the `#allowAccou
 transaction. This is an interim safety measure so that wallet providers can notify users they're about to sign a
 transaction that may create a Capability on their AuthAccount.
 
-<Callout type="info">
-
-If you haven't yet, it may be helpful to checkout the [Account Model](./account-model.mdx) to get a mental model of the
-objects and account relationships discussed in this doc.
-
-</Callout>
-
-## Linking Accounts
+### Linking Accounts
 
 Linking accounts leverages this account link, otherwise known as an **AuthAccount Capability**, and encapsulates it. The
 [components and actions](https://github.com/onflow/flips/pull/72) involved in this process - what the Capability is
 encapsulated in, the collection that holds those encapsulations, etc. is what we'll dive into in this doc.
 
-# Terminology
+## Terminology
 
-**Parent-Child accounts** - For the moment, we’ll call the account created by the dApp the “child” account and the
+**Parent-Child accounts** - For the moment, we’ll call the account created by the app the “child” account and the
 account receiving its AuthAccount Capability the “parent” account. Existing methods of account access & delegation (i.e.
 keys) still imply ownership over the account, but insofar as linked accounts are concerned, the account to which both
-the user and the dApp share access via AuthAccount Capability will be considered the “child” account.
+the user and the app share access via AuthAccount Capability will be considered the “child” account.
 
-**Walletless onboarding** - An onboarding flow whereby a dApp creates an account for a user, onboarding them to the
-dApp, obviating the need for user wallet authentication.
+**Walletless onboarding** - An onboarding flow whereby an app creates an account for a user, onboarding them to the
+app, obviating the need for user wallet authentication.
 
 **Blockchain-native onboarding** - Similar to the already familiar Web3 onboarding flow where a user authenticates with
-their existing wallet, a dApp onboards a user via wallet authentication while additionally creating a dApp account and
+their existing wallet, an app onboards a user via wallet authentication while additionally creating an app account and
 linking it with the authenticated account, resulting in a hybrid custody model.
 
-**Hybrid Custody Model** - A custodial pattern in which a dApp and a user maintain access to a dApp created account and
+**Hybrid Custody Model** - A custodial pattern in which an app and a user maintain access to an app created account and
 user access to that account has been mediated by account linking.
 
 **Account Linking** - Technically speaking, account linking in our context consists of giving some other account an
@@ -115,7 +92,7 @@ AuthAccount Capability from the granting account. This Capability is maintained 
 `HybridCustody.Manager`, providing its owning user access to any and all of their linked accounts.
 
 **Progressive Onboarding** - An onboarding flow that walks a user up to self-custodial ownership, starting with
-walletless onboarding and later linking the dApp account with the user’s authenticated wallet once the user chooses to
+walletless onboarding and later linking the app account with the user’s authenticated wallet once the user chooses to
 do so.
 
 **Restricted Child Account** - An account delegation where the access on the delegating account is restricted according
@@ -125,14 +102,14 @@ be expanding on later.
 **Owned Account** - An account delegation where the delegatee has unrestricted access on the delegating child account,
 thereby giving the delegatee presiding authority superseding any other "restricted" parent accounts.
 
-# Account Linking
+## Account Linking
 
 Linking an account is the process of delegating account access via AuthAccount Capability. Of course, we want to do this
 in a way that allows the receiving account to maintain that Capability and allows easy identification of the accounts on
 either end of the linkage - the user's main "parent" account and the linked "child" account. This is accomplished in the
 (still in flux) `HybridCustody` contract which we'll continue to use in this guidance.
 
-## Pre-requisites
+### Pre-requisites
 
 Since account delegation is mediated by developer-defined rules, you should make sure to first configure the resources
 that contain those rules. Contracts involved in defining and enforcing this ruleset are
@@ -153,7 +130,7 @@ transaction(identifiers: [String]) {
         if acct.borrow<&CapabilityFilter.AllowlistFilter>(from: CapabilityFilter.StoragePath) == nil {
             acct.save(<-CapabilityFilter.create(Type<@CapabilityFilter.AllowlistFilter>()), to: CapabilityFilter.StoragePath)
         }
-        
+
         // Ensure the AllowlistFilter is linked to the expected PublicPath
         acct.unlink(CapabilityFilter.PublicPath)
         acct.link<&CapabilityFilter.AllowlistFilter{CapabilityFilter.Filter}>(CapabilityFilter.PublicPath, target: CapabilityFilter.StoragePath)
@@ -161,7 +138,7 @@ transaction(identifiers: [String]) {
         // Get a reference to the filter
         let filter = acct.borrow<&CapabilityFilter.AllowlistFilter>(from: CapabilityFilter.StoragePath)
             ?? panic("filter does not exist")
-        
+
         // Add the given type identifiers to the AllowlistFilter
         // **Note:** the whole transaction fails if any of the given identifiers are malformed
         for identifier in identifiers {
@@ -211,7 +188,7 @@ transaction {
 
         let manager = acct.borrow<&CapabilityFactory.Manager>(from: CapabilityFactory.StoragePath)
             ?? panic("manager not found")
-        
+
         /// Add generic NFT-related Factory implementations to enable castable Capabilities from this Manager
         manager.addFactory(Type<&{NonFungibleToken.CollectionPublic}>(), NFTCollectionPublicFactory.Factory())
         manager.addFactory(Type<&{NonFungibleToken.Provider, NonFungibleToken.CollectionPublic}>(), NFTProviderAndCollectionFactory.Factory())
@@ -220,10 +197,10 @@ transaction {
 }
 ```
 
-![resources/hybrid_custody_high_level](resources/hybrid_custody_high_level.png)
+![resources/hybrid_custody_high_level](./resources/hybrid_custody_high_level.png)
 
 *In this scenario, a user custodies a key for their main account which maintains access to a wrapped AuthAccount
-Capability, providing the user restricted access on the app account. The dApp maintains custodial access to the account
+Capability, providing the user restricted access on the app account. The app maintains custodial access to the account
 and regulates the access restrictions to delegatee "parent" accounts.*
 
 Linking accounts can be done in one of two ways. Put simply, the child account needs to get the parent account an
@@ -233,7 +210,7 @@ delegated access.
 
 We can achieve issuance from the child account and claim from the parent account pattern in either:
 
-1. We can leverage [Cadence’s `AuthAccount.Inbox`](../../../cadence/language/accounts.mdx#account-inbox) to publish the
+1. We can leverage [Cadence’s `AuthAccount.Inbox`](../../cadence/language/accounts.mdx#account-inbox) to publish the
    Capability from the child account & have the parent claim the Capability in a separate transaction.
 1. Multi-party signed transaction, signed by both the the accounts on either side of the link
 
@@ -244,14 +221,14 @@ Let’s take a look at both.
 You'll want to consider whether you would like the parent account to be configured with some app-specific resources or
 Capabilities and compose you multisig or claim transactions to include such configurations. <br/>
 
-For example, if your dApp deals with specific NFTs, you may want to configure the parent account with Collections for
+For example, if your app deals with specific NFTs, you may want to configure the parent account with Collections for
 those NFTs so the user can easily transfer them between their linked accounts.
 
 </Callout>
 
-## Publish & Claim
+### Publish & Claim
 
-### Publish
+#### Publish
 
 Here, the account delegating access to itself links its AuthAccount Capability, and publishes it to be claimed by the
 account it will be linked to.
@@ -278,7 +255,7 @@ transaction(parent: Address, factoryAddress: Address, filterAddress: Address) {
 }
 ```
 
-### Claim
+#### Claim
 
 On the other side, the receiving account claims the published `ChildAccount` Capability, adding it to the signer's
 `HybridCustody.Manager.childAccounts` indexed on the child account's Address.
@@ -315,7 +292,7 @@ transaction(childAddress: Address, filterAddress: Address?, filterPath: PublicPa
 
         let inboxName = HybridCustody.getChildAccountIdentifier(acct.address)
         let cap = acct.inbox.claim<&HybridCustody.ChildAccount{HybridCustody.AccountPrivate, HybridCustody.AccountPublic, MetadataViews.Resolver}>(
-                inboxName, 
+                inboxName,
                 provider: childAddress
             ) ?? panic("child account cap not found")
 
@@ -429,22 +406,20 @@ transaction(parentFilterAddress: Address?, childAccountFactoryAddress: Address, 
 }
 ```
 
-# Onboarding Flows
+## Onboarding Flows
 
-Given the ability to establish an account and later delegate access to a user, dApps are freed from the constraints of
+Given the ability to establish an account and later delegate access to a user, apps are freed from the constraints of
 dichotomous custodial & self-custodial paradigms. A developer can choose to onboard a user via traditional Web2 identity
-and later delegate access to the user’s wallet account. Alternatively, a dApp can enable wallet authentication at the
-outset, creating a dApp-specific account & linking with the user’s wallet account. As specified above, these two flows
+and later delegate access to the user’s wallet account. Alternatively, an app can enable wallet authentication at the
+outset, creating an app-specific account & linking with the user’s wallet account. As specified above, these two flows
 are known as walletless and blockchain-native onboarding respectively. Developers can choose to implement one for
 simplicity or both for maximum flexibility.
 
-## Walletless Onboarding
-
-### Account Creation
+### Walletless Onboarding
 
 The following transaction creates an account, funding creation via the signer and adding the provided public key. You'll
 notice this transaction is pretty much your standard account creation. The magic for you will be how you custody the key
-for this account (locally, KMS, wallet service, etc.) in a manner that allows your dapp to mediate on-chain interactions
+for this account (locally, KMS, wallet service, etc.) in a manner that allows your app to mediate onchain interactions
 on behalf of your user.
 
 ```cadence walletless_onboarding
@@ -452,11 +427,11 @@ import "FungibleToken"
 import "FlowToken"
 
 transaction(pubKey: String, initialFundingAmt: UFix64) {
-	
+
 	prepare(signer: AuthAccount) {
 
 		/* --- Account Creation --- */
-		// **NOTE:** your dApp may choose to separate creation depending on your custodial model)
+		// **NOTE:** your app may choose to separate creation depending on your custodial model)
 		//
 		// Create the child account, funding via the signer
 		let newAccount = AuthAccount(payer: signer)
@@ -496,13 +471,13 @@ transaction(pubKey: String, initialFundingAmt: UFix64) {
 		/* --- Continue with use case specific setup --- */
 		//
 		// At this point, the newAccount can further be configured as suitable for
-		// use in your dapp (e.g. Setup a Collection, Mint NFT, Configure Vault, etc.)
+		// use in your app (e.g. Setup a Collection, Mint NFT, Configure Vault, etc.)
 		// ...
 	}
 }
 ```
 
-## Blockchain-Native Onboarding
+### Blockchain-Native Onboarding
 
 This onboarding flow is really a single-transaction composition of the steps covered above. This is a testament to the
 power of the complex transactions you can compose on Flow with Cadence!
@@ -517,14 +492,14 @@ Recall the [pre-requisites](#pre-requisites) needed to be satisfied before linki
 
 </Callout>
 
-### Account Creation & Linking
+#### Account Creation & Linking
 
 Compared to walletless onboarding where a user does not have a Flow account, blockchain-native onboarding assumes a user
-already has a wallet configured and immediately links it with a newly created dApp account. This enables the dApp to
+already has a wallet configured and immediately links it with a newly created app account. This enables the app to
 sign transactions on the user's behalf via the new child account while immediately delegating control of that account to
 the onboarding user's main account.
 
-After this transaction, both the custodial party (presumably the client/dApp) and the signing parent account will have
+After this transaction, both the custodial party (presumably the client/app) and the signing parent account will have
 access to the newly created account - the custodial party via key access and the parent account via their
 `HybridCustody.Manager` maintaining the new account's `ChildAccount` Capability.
 
@@ -587,7 +562,7 @@ transaction(
         /* Continue with use case specific setup */
         //
         // At this point, the newAccount can further be configured as suitable for
-        // use in your dapp (e.g. Setup a Collection, Mint NFT, Configure Vault, etc.)
+        // use in your app (e.g. Setup a Collection, Mint NFT, Configure Vault, etc.)
         // ...
 
         /* --- Link the AuthAccount Capability --- */
@@ -605,7 +580,7 @@ transaction(
             )
         newAccount
             .link<&HybridCustody.OwnedAccount{HybridCustody.OwnedAccountPublic}>(
-                HybridCustody.OwnedAccountPublicPath, 
+                HybridCustody.OwnedAccountPublicPath,
                 target: HybridCustody.OwnedAccountStoragePath
             )
 
@@ -645,7 +620,7 @@ transaction(
             HybridCustody.ManagerPublicPath,
             target: HybridCustody.ManagerStoragePath
         )
-        
+
         // Claim the ChildAccount Capability
         let inboxName = HybridCustody.getChildAccountIdentifier(parent.address)
         let cap = parent
@@ -654,7 +629,7 @@ transaction(
                 inboxName,
                 provider: newAccount.address
             ) ?? panic("child account cap not found")
-        
+
         // Get a reference to the Manager and add the account
         let managerRef = parent.borrow<&HybridCustody.Manager>(from: HybridCustody.ManagerStoragePath)
             ?? panic("manager no found")
@@ -663,18 +638,18 @@ transaction(
 }
 ```
 
-# Funding & Custody Patterns
+## Funding & Custody Patterns
 
 Aside from implementing onboarding flows & account linking, you'll want to also consider the account funding & custodial
-pattern appropriate for the dApp you're building. The only pattern compatible with walletless onboarding (and therefore
-the only one showcased above) is one in which the dApp custodies the child account's key and funds account creation.
+pattern appropriate for the app you're building. The only pattern compatible with walletless onboarding (and therefore
+the only one showcased above) is one in which the app custodies the child account's key and funds account creation.
 
 In general, the funding pattern for account creation will determine to some extent the backend infrastructure needed to
-support your dApp and the onboarding flow your dApp can support. For example, if you want to to create a service-less
-client (a totally local dApp without backend infrastructure), you could forego walletless onboarding in favor of a
-user-funded blockchain-native onboarding to achieve a hybrid custody model. Your dApp maintains the keys to the dApp
+support your app and the onboarding flow your app can support. For example, if you want to to create a service-less
+client (a totally local app without backend infrastructure), you could forego walletless onboarding in favor of a
+user-funded blockchain-native onboarding to achieve a hybrid custody model. Your app maintains the keys to the app
 account locally to sign on behalf of the user, and the user funds the creation of the the account, linking to their main
-account on account creation. This would be a **user-funded, dApp custodied** pattern.
+account on account creation. This would be a **user-funded, app custodied** pattern.
 
 Again, custody may deserve some regulatory insight depending on your jurisdiction. If building for production, you'll
 likely want to consider these non-technical implications in your technical decision-making. Such is the nature of
@@ -682,32 +657,31 @@ building in crypto.
 
 Here are the patterns you might consider:
 
-## DApp-Funded, DApp-Custodied
+### App-Funded, App-Custodied
 
 If you want to implement walletless onboarding, you can stop here as this is the only compatible pattern. In this
-scenario, a backend dApp account funds the creation of a new account and the dApp custodies the key for said account
+scenario, a backend app account funds the creation of a new account and the app custodies the key for said account
 either on the user's device or some backend KMS.
 
-## DApp-Funded, User-Custodied
+### App-Funded, User-Custodied
 
-In this case, the backend dApp account funds account creation, but adds a key to the account which the user custodies.
-In order for the dApp to act on the user's behalf, it has to be delegated access via AuthAccount Capability which the
-backend dApp account would maintain in a `HybridCustody.Manager`. This means that the new account would have two parent
-accounts - the user's and the dApp. While this pattern provides the user maximum ownership and authority over the child
+In this case, the backend app account funds account creation, but adds a key to the account which the user custodies.
+In order for the app to act on the user's behalf, it has to be delegated access via AuthAccount Capability which the
+backend app account would maintain in a `HybridCustody.Manager`. This means that the new account would have two parent
+accounts - the user's and the app. While this pattern provides the user maximum ownership and authority over the child
 account, this pattern may present unique considerations and edge cases for you as a builder depending on access to the
 child account. Also note that this and the following patterns are incompatible with walletless onboarding in that the
 user must have a wallet.
 
-## User-Funded, DApp-Custodied
+### User-Funded, App-Custodied
 
 As mentioned above, this pattern unlocks totally service-less architectures - just a local client & smart contracts. An
 authenticated user signs a transaction creating an account, adding the key provided by the client, and linking the
-account as a child account. At the end of the transaction, hybrid custody is achieved and the dApp can sign with the
+account as a child account. At the end of the transaction, hybrid custody is achieved and the app can sign with the
 custodied key on the user's behalf using the newly created account.
 
-## User-Funded, User-Custodied
+### User-Funded, User-Custodied
 
-While perhaps not useful for most dApps, this pattern may be desirable for advanced users who wish to create a shared
+While perhaps not useful for most apps, this pattern may be desirable for advanced users who wish to create a shared
 access account themselves. The user funds account creation, adding keys they custody, and delegates secondary access to
 some other account.
-
