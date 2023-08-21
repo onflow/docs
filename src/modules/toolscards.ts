@@ -20,6 +20,9 @@ export function onRouteDidUpdate({ location, previousLocation }): void {
     let currentCard = document.createElement('div');
 
     const appendCard = (): void => {
+      if (currentCard.children.length === 0) {
+        return;
+      }
       const anchor: HTMLAnchorElement | null = currentCard.querySelector(
         'a[href]:not([href^="#"])',
       );
@@ -36,6 +39,12 @@ export function onRouteDidUpdate({ location, previousLocation }): void {
       currentSection.appendChild(currentCard);
     };
 
+    const appendSection = (): void => {
+      if (currentSection.children.length > 0) {
+        page.appendChild(currentSection);
+      }
+    };
+
     // Initialize an array to store the parsed divs
     document.createElement('div');
 
@@ -43,22 +52,15 @@ export function onRouteDidUpdate({ location, previousLocation }): void {
     for (const element of Array.from(htmlElements)) {
       switch (element.tagName) {
         case 'H2': {
-          if (currentCard.children.length > 0) {
-            appendCard();
-          }
-          if (currentSection.children.length > 0) {
-            page.appendChild(currentSection);
-          }
-
+          appendCard();
+          appendSection();
           currentSection = document.createElement('div');
           currentSection.appendChild(element);
           currentCard = document.createElement('div');
           break;
         }
         case 'H3': {
-          if (currentCard.children.length > 0) {
-            appendCard();
-          }
+          appendCard();
           currentCard = document.createElement('div');
           currentCard.appendChild(element);
           break;
@@ -72,5 +74,6 @@ export function onRouteDidUpdate({ location, previousLocation }): void {
         }
       }
     }
+    appendSection();
   }
 }
