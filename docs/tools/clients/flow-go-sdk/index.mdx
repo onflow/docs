@@ -625,7 +625,7 @@ func main() {
 
   tx := flow.NewTransaction().
     SetScript(greeting).
-    SetGasLimit(100).
+    SetComputeLimit(100).
     SetReferenceBlockID(latestBlock.ID).
     SetProposalKey(proposerAddress, proposerKeyIndex, sequenceNumber).
     SetPayer(payerAddress).
@@ -669,7 +669,7 @@ var (
 
 tx := flow.NewTransaction().
     SetScript([]byte("transaction { execute { log(\"Hello, World!\") } }")).
-    SetGasLimit(100).
+    SetComputeLimit(100).
     SetProposalKey(myAddress, myAccountKey.Index, myAccountKey.SequenceNumber).
     SetPayer(myAddress)
 ```
@@ -722,7 +722,7 @@ tx := flow.NewTransaction().
             prepare(signer: AuthAccount) { log(signer.address) }
         }
     `)).
-    SetGasLimit(100).
+    SetComputeLimit(100).
     SetProposalKey(account1.Address, key1.Index, key1.SequenceNumber).
     SetReferenceBlockID(referenceBlock.ID).
     SetPayer(account1.Address).
@@ -762,7 +762,7 @@ tx := flow.NewTransaction().
             prepare(signer: AuthAccount) { log(signer.address) }
         }
     `)).
-    SetGasLimit(100).
+    SetComputeLimit(100).
     SetProposalKey(account1.Address, key1.Index, key1.SequenceNumber).
     SetReferenceBlockID(referenceBlock.ID).
     SetPayer(account1.Address).
@@ -808,7 +808,7 @@ tx := flow.NewTransaction().
             prepare(signer: AuthAccount) { log(signer.address) }
         }
     `)).
-    SetGasLimit(100).
+    SetComputeLimit(100).
     SetProposalKey(account1.Address, key1.Index, key1.SequenceNumber).
     SetReferenceBlockID(referenceBlock.ID).
     SetPayer(account2.Address).
@@ -859,7 +859,7 @@ tx := flow.NewTransaction().
           }
         }
     `)).
-    SetGasLimit(100).
+    SetComputeLimit(100).
     SetProposalKey(account1.Address, key1.Index, key1.SequenceNumber).
     SetReferenceBlockID(referenceBlock.ID).
     SetPayer(account2.Address).
@@ -914,7 +914,7 @@ tx := flow.NewTransaction().
             prepare(signer: AuthAccount) { log(signer.address) }
         }
     `)).
-    SetGasLimit(100).
+    SetComputeLimit(100).
     SetProposalKey(account1.Address, key1.Index, key1.SequenceNumber).
     SetReferenceBlockID(referenceBlock.ID).
     SetPayer(account2.Address).
@@ -1130,7 +1130,7 @@ var (
 func main() {
     tx := flow.NewTransaction().
         SetScript([]byte(transferScript)).
-        SetGasLimit(100).
+        SetComputeLimit(100).
         SetPayer(senderAddress).
         SetAuthorizer(senderAddress).
         SetProposalKey(senderAddress, senderAccountKey.Index, senderAccountKey.SequenceNumber)
