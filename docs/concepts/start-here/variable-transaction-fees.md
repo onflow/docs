@@ -175,7 +175,7 @@ console.log(transaction;)
 
 **Using FCL Go SDK**
 
-You need to call the `SetGasLimit` method to set the fee limit, for example:
+You need to call the `SetComputeLimit` method to set the fee limit, for example:
 
 ```go
 import (
@@ -191,7 +191,7 @@ var (
 
 tx := flow.NewTransaction().
     SetScript([]byte("transaction { execute { log(\"Hello, World!\") } }")).
-    SetGasLimit(100).
+    SetComputeLimit(100).
     SetProposalKey(myAddress, myAccountKey.Index, myAccountKey.SequenceNumber).
     SetPayer(myAddress)
 ```
