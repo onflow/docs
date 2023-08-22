@@ -4,7 +4,7 @@ sidebar_position: 6
 
 # Events
 
-Flow events are special values that can be emitted during the execution of a Cadence program. 
+Flow events are special values that are emitted to off-chain chain observers during the execution of a Cadence program.
 
 Events are defined as Cadence code and you should [read Cadence documentation](../cadence/language/events.md) to understand how to define them. 
 
@@ -55,7 +55,7 @@ An example event would look like:
 
 The first `A` means the event is originating from a contract, which will always be the case for user-defined events. The contract address as the name implies is the location of a contract deployed on the Flow network. Next is the name of the contracted event originates from, and last is the event type defined in the contract.
 
-There are an unlimited amount of events that can be defined on Flow, but you should know about the most common ones. 
+There is an unlimited amount of events that can be defined on Flow, but you should know about the most common ones. 
 
 ### Flow Token Events
 
@@ -93,27 +93,27 @@ These events are very common since they accommodate all transactions on Flow. Ea
 
 An example of fee events:
 
-```json
-Events:		
-    Index	0
-    Type	A.1654653399040a61.FlowToken.TokensWithdrawn
-    Tx ID	1ec90051e3bc74fc36cbd16fc83df08e463dda8f92e8e2193e061f9d41b2ad92
-    Values
-		- amount (UFix64): 0.00000100
-		- from (Address?): 0xb30eb2755dca4572
+```yml
+Events:
+  - Index: 0
+    Type:  A.1654653399040a61.FlowToken.TokensWithdrawn
+    Tx ID: 1ec90051e3bc74fc36cbd16fc83df08e463dda8f92e8e2193e061f9d41b2ad92
+    Values:
+      - amount (UFix64): 0.00000100
+      - from (Address?): 0xb30eb2755dca4572
 
-    Index	1
-    Type	A.1654653399040a61.FlowToken.TokensDeposited
-    Tx ID	1ec90051e3bc74fc36cbd16fc83df08e463dda8f92e8e2193e061f9d41b2ad92
-    Values
-		- amount (UFix64): 0.00000100
-		- to (Address?): 0xf919ee77447b7497
+  - Index: 1
+    Type:  A.1654653399040a61.FlowToken.TokensDeposited
+    Tx ID: 1ec90051e3bc74fc36cbd16fc83df08e463dda8f92e8e2193e061f9d41b2ad92
+    Values:
+      - amount (UFix64): 0.00000100
+      - to (Address?): 0xf919ee77447b7497
 
-    Index	2
-    Type	A.f919ee77447b7497.FlowFees.FeesDeducted
-    Tx ID	1ec90051e3bc74fc36cbd16fc83df08e463dda8f92e8e2193e061f9d41b2ad92
-    Values
-		- amount (UFix64): 0.00000100
-		- inclusionEffort (UFix64): 1.00000000
-		- executionEffort (UFix64): 0.00000000
+  - Index: 2
+    Type:  A.f919ee77447b7497.FlowFees.FeesDeducted
+    Tx ID: 1ec90051e3bc74fc36cbd16fc83df08e463dda8f92e8e2193e061f9d41b2ad92
+    Values:
+      - amount (UFix64): 0.00000100
+      - inclusionEffort (UFix64): 1.00000000
+      - executionEffort (UFix64): 0.00000000
 ```

@@ -12,15 +12,15 @@ Collections are a connecting link between blocks and transactions. They make an 
 
 You can use the Flow CLI to get the collection data by running:
 
-```
+```sh
 flow collections get caff1a7f4a85534e69badcda59b73428a6824ef8103f09cb9eaeaa216c7d7d3f -n mainnet
 ```
 
 Find [more about the command in the CLI docs](../tools/toolchains/flow-cli/get-flow-data/get-collections.md).
 
-Blocks can be obtained from the access node APIs, currently, there are two gRPC and REST APIs. You can find more information about them here:
+Collections can be obtained from the access node APIs, currently, there are two gRPC and REST APIs. You can find more information about them here:
 
-[**gRPC Collection API**](../concepts/nodes/access-api.mdx#blocks)
+[**gRPC Collection API**](../concepts/nodes/access-api.mdx#collections)
 
 [**REST Collection API**](/http-api#tag/Collections)
 

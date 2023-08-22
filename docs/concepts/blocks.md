@@ -55,7 +55,7 @@ In summary, a block can be either **finalized** which guarantees transactions in
 
 You can use the Flow CLI to get the block data by running:
 
-```
+```sh
 flow blocks get latest -network mainnet
 ```
 
