@@ -264,11 +264,6 @@ const config = {
             label: 'Concepts',
           },
           {
-            to: 'next/guides',
-            position: 'left',
-            label: 'Guides',
-          },
-          {
             to: 'cadence/intro',
             position: 'left',
             label: 'Cadence',
