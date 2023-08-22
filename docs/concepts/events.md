@@ -57,9 +57,9 @@ The first `A` means the event is originating from a contract, which will always 
 
 There is an unlimited amount of events that can be defined on Flow, but you should know about the most common ones. 
 
-### Flow Token Events
+### FLOW Token Events
 
-The Flow Token contract is the contract that issues a core Flow token. As with any contract, it can emit events when interacted with. When we transfer the Flow token, events are emitted. You can find a lot of details on the events emitted in the [Flow Token documentation](../concepts/core-contracts/03-flow-token.md). 
+The FLOW Token contract is the contract that issues a core FLOW token. As with any contract, it can emit events when interacted with. When we transfer the FLOW token, events are emitted. You can find a lot of details on the events emitted in the [FLOW Token documentation](../concepts/core-contracts/03-flow-token.md). 
 
 The most popular events are when tokens are transferred which is accomplished with two actions: withdrawing tokens from the payer and depositing tokens in the receiver. Each of those action has a corresponding event:
 

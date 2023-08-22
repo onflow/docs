@@ -95,4 +95,4 @@ All data that is in an account's storage counts towards storage used. Even when 
 
 Adding additional keys, smart contracts, capabilities, resources, etc. to the account counts towards storage used.
 
-Data stored on the Flow blockchain is stored in a key-value ledger. Each item’s key contains the address that owns the item and the path to the item. Just as the shipping cost of a box of things you send to a friend includes the weight of the carton box itself, storing items on flow takes into account the key it is stored with. This means that the storage used by each item is the byte length of the item plus the byte length of the item’s key.
+Data stored on the Flow blockchain is stored in a key-value ledger. Each item’s key contains the address that owns the item and the path to the item. An account can have many keys, therefore flow considers the account key items are stored with. This means that the storage used by each item is the byte length of the item plus the byte length of the item’s key.
