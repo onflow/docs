@@ -16,18 +16,18 @@ You can use the Flow CLI to get the collection data by running:
 flow collections get caff1a7f4a85534e69badcda59b73428a6824ef8103f09cb9eaeaa216c7d7d3f -n mainnet
 ```
 
-Find [more about the command in the CLI docs](https://developers.flow.com/next/tools/toolchains/flow-cli/get-flow-data/get-collections).
+Find [more about the command in the CLI docs](../tools/toolchains/flow-cli/get-flow-data/get-collections.md).
 
 Blocks can be obtained from the access node APIs, currently, there are two gRPC and REST APIs. You can find more information about them here:
 
-**gRPC Block API** [https://developers.flow.com/concepts/nodes/access-api#collection](https://developers.flow.com/concepts/nodes/access-api#collection)
+[**gRPC Collection API**](../concepts/nodes/access-api.mdx#blocks)
 
-****************REST Block API**************** [https://developers.flow.com/http-api#tag/Collections](https://developers.flow.com/http-api#tag/Collections)
+[**REST Collection API**](/http-api#tag/Collections)
 
 There are multiple SDKs implementing the above APIs for different languages:
 
-******************************Javascript SDK****************************** [https://developers.flow.com/tooling/fcl-js](https://developers.flow.com/tooling/fcl-js)
+[**Javascript SDK**](../tools/clients/fcl-js/index.md)
 
-**************Go SDK************** [https://developers.flow.com/tooling/flow-go-sdk](https://developers.flow.com/tooling/flow-go-sdk)
+[**Go SDK**](../tools/clients/flow-go-sdk/index.mdx)
 
-Find a list of all SDKs here: [https://developers.flow.com/tools#sdks](https://developers.flow.com/tools#sdks)
+Find a list of all SDKs [here](../tools/clients/index.md)

@@ -6,7 +6,7 @@ sidebar_position: 6
 
 Flow events are special values that can be emitted during the execution of a Cadence program. 
 
-Events are defined as Cadence code and you should [read Cadence documentation](https://developers.flow.com/cadence/language/events) to understand how to define them. 
+Events are defined as Cadence code and you should [read Cadence documentation](../cadence/language/events.md) to understand how to define them. 
 
 Since transactions don’t have return values you can leverage events to broadcast certain changes the transaction caused. Clients listening on Flow networks (dApps) can listen to these events being emitted and react. 
 
@@ -27,25 +27,25 @@ Core events are events emitted directly from the FVM (Flow Virtual Machine). The
 
 A list of events that are emitted by the Flow network is:
 
-| Event Name | Description |
-| --- | --- |
-| flow.AccountCreated | Event that is emitted when a new account gets created. |
-| flow.AccountKeyAdded  | Event that is emitted when a key gets added to an account. |
-| flow.AccountKeyRemoved  | Event that is emitted when a key gets removed from an account. |
-| flow.AccountContractAdded  | Event that is emitted when a contract gets deployed to an account. |
-| flow.AccountContractUpdated | Event that is emitted when a contract gets updated on an account. |
-| flow.AccountContractRemoved  | Event that is emitted when a contract gets removed from an account. |
-| flow.InboxValuePublished | Event that is emitted when a Capability is published from an account. |
-| flow.InboxValueUnpublished | Event that is emitted when a Capability is unpublished from an account. |
-| flow.InboxValueClaimed1 | Event that is emitted when a Capability is claimed by an account. |
+| Event Name                   | Description                                                             |
+| ---------------------------- | ------------------------------------------------------------------------|
+| flow.AccountCreated          | Event that is emitted when a new account gets created.                  |
+| flow.AccountKeyAdded         | Event that is emitted when a key gets added to an account.              |
+| flow.AccountKeyRemoved       | Event that is emitted when a key gets removed from an account.          |
+| flow.AccountContractAdded    | Event that is emitted when a contract gets deployed to an account.      |
+| flow.AccountContractUpdated  | Event that is emitted when a contract gets updated on an account.       |
+| flow.AccountContractRemoved  | Event that is emitted when a contract gets removed from an account.     |
+| flow.InboxValuePublished     | Event that is emitted when a Capability is published from an account.   |
+| flow.InboxValueUnpublished   | Event that is emitted when a Capability is unpublished from an account. |
+| flow.InboxValueClaimed1      | Event that is emitted when a Capability is claimed by an account.       |
 
-For more details [on the core events, you can read Cadence reference documentation](https://developers.flow.com/cadence/language/core-events).
+For more details [on the core events, you can read Cadence reference documentation](../cadence/language/core-events.md).
 
 ## User-defined events
 
 Events that are defined inside contracts and when emitted follow a common naming schema. The schema consists of 4 parts: 
 
-```json
+```cadence
 A.{contract address}.{contract name}.{event type}
 ```
 
@@ -59,7 +59,7 @@ There are an unlimited amount of events that can be defined on Flow, but you sho
 
 ### Flow Token Events
 
-The Flow Token contract is the contract that issues a core Flow token. As with any contract, it can emit events when interacted with. When we transfer the Flow token, events are emitted. You can find a lot of details on the events emitted in the [Flow Token documentation](https://developers.flow.com/concepts/core-contracts/flow-token). 
+The Flow Token contract is the contract that issues a core Flow token. As with any contract, it can emit events when interacted with. When we transfer the Flow token, events are emitted. You can find a lot of details on the events emitted in the [Flow Token documentation](../concepts/core-contracts/03-flow-token.md). 
 
 The most popular events are when tokens are transferred which is accomplished with two actions: withdrawing tokens from the payer and depositing tokens in the receiver. Each of those action has a corresponding event:
 
@@ -71,7 +71,7 @@ Mainnet event: `A.1654653399040a61.FlowToken.TokensWithdrawn`
 
 Testnet event: `A.7e60df042a9c0868.FlowToken.TokensWithdrawn`
 
-****************************Deposit Tokens****************************
+**Deposit Tokens**
 
 Event name: `TokensDeposited`
 
@@ -79,7 +79,7 @@ Mainnet event: `A.1654653399040a61.FlowToken.TokensDeposited`
 
 Testnet event: `A.7e60df042a9c0868.FlowToken.TokensDeposited`
 
-### ********************Fee Events********************
+### **Fee Events**
 
 Since fees are governed by a contract deployed on the Flow network, that contract also emits events when fees are deducted. 
 

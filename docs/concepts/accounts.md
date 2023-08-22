@@ -10,32 +10,32 @@ A simple representation of an account:
 
 ![Screenshot 2023-08-16 at 16.43.07.png](_accounts_images/Screenshot_2023-08-16_at_16.43.07.png)
 
-**************Address**************
+**Address**
 
 The flow address is represented as 16 hex-encoded characters with a `0x` prefix. Unlike Bitcoin and Ethereum, Flow addresses are not derived from cryptographic public keys. Instead, each Flow address is assigned by the on-chain function that follows a deterministic addressing sequence.
 
 This decoupling allows for multiple public keys to be associated with one account, or for a single public key to be used across several accounts, and is a great strength of Flow.
 
-**************Balance**************
+**Balance**
 
 Each account contains a Flow balance. This balance is used to pay for transaction fees and storage fees. More on that in the fees document.
 
-<aside>
-⚠️ The minimum amount of FLOW an account can have is **0.001**.
+<Callout type="warning">
+The minimum amount of FLOW an account can have is **0.001**.
 
-</aside>
+</Callout>
 
 This minimum is provided by the account creator at account creation. The minimum account reservation ensures that most accounts won't run out of storage capacity if anyone deposits anything (like an NFT) to the account. More on storage fees in the fees document.
 
-**********Contracts**********
+**Contracts**
 
 An account can optionally store multiple Cadence contracts. The code is stored as a human-readable UTF-8 encoded string which makes it easy for anyone to inspect the contents.
 
-**************Storage**************
+**Storage**
 
 Contains all the stored resources in the account. These resources can be accessed by others in a secure and controlled manner by leveraging Cadence capabilities.
 
-## Account **********************Keys**********************
+## Account **Keys**
 
 Flow accounts can be configured with multiple public keys that are used to control access. Owners of the associated private keys can sign transactions to mutate the account's state.
 
@@ -43,10 +43,10 @@ During account creation, we can provide public keys which will be used when inte
 
 Each account key has a weight that determines the signing power it holds.
 
-<aside>
-⚠️ A transaction is not authorized to access an account unless it has a total signature weight greater than or equal to **1000**, the weight threshold.
+<Callout type="warning">
+A transaction is not authorized to access an account unless it has a total signature weight greater than or equal to **1000**, the weight threshold.
 
-</aside>
+</Callout>
 
 For example, an account might contain 3 keys, each with 500 weight:
 
@@ -57,11 +57,11 @@ This represents a 2-of-3 multi-sig quorum, in which a transaction is authorized 
 An account key contains the following attributes:
 
 - **ID** used to identify keys within an account
-- ********************Public Key******************** raw public key (encoded as bytes)
-- ************************Signature algorithm************************ (see below)
-- ****************************Hash algorithm**************************** (see below)
+- **Public Key** raw public key (encoded as bytes)
+- **Signature algorithm** (see below)
+- **Hash algorithm** (see below)
 - **Weight** integer between 1-1000
-- ****************Revoked**************** whether the key has been revoked or it’s active
+- **Revoked** whether the key has been revoked or it’s active
 - **Sequence Number** is a number that increases with each submitted transaction signed by this key
 
 ### Signature and Hash Algorithms
@@ -70,21 +70,21 @@ The signature and hashing algorithms are used during the transaction signing pro
 
 There are two curves commonly used with the ECDSA algorithm, secp256r1 ([OID 1.2.840.10045.3.1.7](http://oid-info.com/get/1.2.840.10045.3.1.7), also called the "NIST P-256." curve), and secp256k1 ([OID 1.3.132.0.10](http://oid-info.com/get/1.3.132.0.10), the curve used by "Bitcoin"). Please be sure to double-check which parameters you are using before registering a key, as presenting a key using one of the curves under the code and format of the other will generate an error.
 
-| Algorithm | Curve | ID | Code |
-| --- | --- | --- | --- |
-| ECDSA | P-256 | ECDSA_P256 | 2 |
-| ECDSA | secp256k1 | ECDSA_secp256k1 | 3 |
+| Algorithm | Curve     | ID              | Code |
+| --------- | --------- | --------------- | ---- |
+| ECDSA     | P-256     | ECDSA_P256      | 2    |
+| ECDSA     | secp256k1 | ECDSA_secp256k1 | 3    |
 
-*Please note that the codes listed here are for the signature algorithms as used by the node API, and they are different from the ones [defined in Cadence](https://developers.flow.com/cadence/language/crypto#signing-algorithms)*
+*Please note that the codes listed here are for the signature algorithms as used by the node API, and they are different from the ones [defined in Cadence](../cadence/language/crypto.mdx#signing-algorithms)*
 
-| Algorithm | Output Size | ID | Code |
-| --- | --- | --- | --- |
-| SHA-2 | 256 | SHA2_256 | 1 |
-| SHA-3 | 256 | SHA3_256 | 3 |
+| Algorithm | Output Size | ID       | Code |
+| --------- | ----------- | -------- | ---- |
+| SHA-2     | 256         | SHA2_256 | 1    |
+| SHA-3     | 256         | SHA3_256 | 3    |
 
 Both hashing and signature algorithms are compatible with each other, so you can freely choose from the set.
 
-### ******************Locked / Keyless Accounts******************
+### **Locked / Keyless Accounts**
 
 An account on Flow doesn’t require keys in order to exist, but this makes the account immutable since no transaction can be signed that would change the account. This can be useful if we want to freeze an account contract code and it elegantly solves the problem of having multiple account types (as that is the case for Ethereum).
 
@@ -92,12 +92,12 @@ An account on Flow doesn’t require keys in order to exist, but this makes the 
 
 You can achieve keyless accounts by either removing an existing public key from an account signing with that same key and repeating that action until an account has no keys left, or you can create a new account that has no keys assigned.
 
-<aside>
-❗ Be careful when removing keys from an existing account, because once an account doesn’t have sufficient keys (keys with weights sum less than 1000), it can no longer be modified.
+<Callout type="danger">
+Be careful when removing keys from an existing account, because once an account doesn’t have sufficient keys (keys with weights sum less than 1000), it can no longer be modified.
 
-</aside>
+</Callout>
 
-### ************Multi-Sig Accounts************
+### **Multi-Sig Accounts**
 
 Creating a multi-signature account is easily done by managing the account keys and their corresponding weight. To repeat, in order to sign a transaction the keys used to sign it must have weights that sum up to at least 1000. Using this information we can easily see how we can achieve the following cases:
 
@@ -115,20 +115,20 @@ Creating a multi-signature account is easily done by managing the account keys a
 
 ## Account Creation
 
-Accounts are created on the Flow blockchain by calling a special [create account Cadence function](https://developers.flow.com/cadence/language/accounts#account-creation). After an account was created we can associate a new key with that account. Of course, all that can be done within a single transaction. At that point, we have connected our key pair which we have to securely manage locally with an on-chain account. Keep in mind that there is an account creation fee that needs to be paid by the transaction payer. Account creation fees are relatively low, and we expect that wallet providers and exchanges will cover the cost when a user converts fiat to crypto for the first time.
+Accounts are created on the Flow blockchain by calling a special [create account Cadence function](../cadence/language/accounts.mdx#account-creation). After an account was created we can associate a new key with that account. Of course, all that can be done within a single transaction. At that point, we have connected our key pair which we have to securely manage locally with an on-chain account. Keep in mind that there is an account creation fee that needs to be paid by the transaction payer. Account creation fees are relatively low, and we expect that wallet providers and exchanges will cover the cost when a user converts fiat to crypto for the first time.
 
-For development purposes, [you can use Flow CLI to easily create emulator, testnet and mainnet accounts.](https://developers.flow.com/tooling/flow-cli/accounts/create-accounts) The account creation fee is paid by a funding wallet so you don’t need a pre-existing account to create it.
+For development purposes, [you can use Flow CLI to easily create emulator, testnet and mainnet accounts.](../tools/toolchains/flow-cli/accounts/create-accounts.md) The account creation fee is paid by a funding wallet so you don’t need a pre-existing account to create it.
 
-### ************************************************Key Generation************************************************
+### **Key Generation**
 
 Keys should be generated in a secure manner, depending on the purpose of the keys different levels of caution need to be taken.
 
-<aside>
-❗ Anyone obtaining access to a private key can modify the account the key is associated with (assuming it has enough weight). Be very careful how you store the keys.
+<Callout>
+Anyone obtaining access to a private key can modify the account the key is associated with (assuming it has enough weight). Be very careful how you store the keys.
 
-</aside>
+</Callout>
 
-For secure production keys, we suggest using key management services such as [Google key management](https://cloud.google.com/security-key-management) or [Amazon KMS](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Overview.Encryption.Keys.html), which are also supported by our CLI and SDKs. Those services are mostly great when integrated into your application. However, for personal use, you can securely use any [existing wallets](https://developers.flow.com/tools#wallets) as well as a [hardware Ledger wallet](https://developers.flow.com/concepts/flow-token/available-wallets#how-to-use-ledger).
+For secure production keys, we suggest using key management services such as [Google key management](https://cloud.google.com/security-key-management) or [Amazon KMS](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Overview.Encryption.Keys.html), which are also supported by our CLI and SDKs. Those services are mostly great when integrated into your application. However, for personal use, you can securely use any [existing wallets](../tools/wallets.md) as well as a [hardware Ledger wallet](./flow-token/available-wallets.md#how-to-use-ledger).
 
 ## Service Accounts
 
@@ -142,18 +142,18 @@ You can use the Flow CLI to get account data by running:
 flow accounts get 0xf919ee77447b7497 -n mainnet
 ```
 
-Find [more about the command in the CLI docs](https://developers.flow.com/next/tools/toolchains/flow-cli/accounts/get-accounts).
+Find [more about the command in the CLI docs](../tools/toolchains/flow-cli/accounts/get-accounts.md).
 
 Accounts can be obtained from the access node APIs, currently, there are two gRPC and REST APIs. You can find more information about them here:
 
-**gRPC API** [https://developers.flow.com/concepts/nodes/access-api#accounts](https://developers.flow.com/concepts/nodes/access-api#accounts) ****
+**gRPC API** [concepts/nodes/access-api#accounts](./nodes/access-api.mdx#accounts)
 
-******************REST API****************** [https://developers.flow.com/http-api#tag/Accounts](https://developers.flow.com/http-api#tag/Accounts)
+**REST API** [http-api#tag/Accounts](/http-api#tag/Accounts)
 
 There are multiple SDKs implementing the above APIs for different languages:
 
-******************************Javascript SDK****************************** [https://developers.flow.com/tooling/fcl-js](https://developers.flow.com/tooling/fcl-js)
+**Javascript SDK** [tooling/fcl-js](../tools/clients/fcl-js/index.md)
 
-**************Go SDK************** [https://developers.flow.com/tooling/flow-go-sdk](https://developers.flow.com/tooling/flow-go-sdk)
+**Go SDK** [tooling/flow-go-sdk](../tools/clients/flow-go-sdk/index.mdx)
 
-Find a list of all SDKs here: [https://developers.flow.com/tools#sdks](https://developers.flow.com/tools#sdks)
+Find a list of all SDKs here: [tools#sdks](../tools/clients/index.md)
