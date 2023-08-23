@@ -89,7 +89,12 @@
     },
     {
       "source": "/hybrid-custody/:path*",
-      "destination": "/concepts/hybrid-custody/:path*",
+      "destination": "/concepts/account-linking/:path*",
+      "permanent": true
+    },
+    {
+      "source": "/concepts/hybrid-custody/:path*",
+      "destination": "/concepts/account-linking/:path*",
       "permanent": true
     },
     {
@@ -289,7 +294,7 @@
     },
     {
       "source": "/account-linking/:path*",
-      "destination": "/concepts/hybrid-custody/:path*",
+      "destination": "/concepts/account-linking/:path*",
       "permanent": true
     },
     {
