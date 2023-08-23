@@ -495,9 +495,11 @@ access(all) fun testExample() {
 ## Matcher combinators
 
 The built-in matchers, as well as custom matchers, can be combined with the three available combinators:
+
 - `not`,
 - `or`,
 - `and`
+
 in order to create more elaborate matchers and increase re-usability.
 
 ### not
@@ -625,7 +627,7 @@ access(all) struct Blockchain {
         self.backend.commitBlock()
     }
 
-    /// Executes a given transaction and commit the current block.
+    /// Executes a given transaction and commits the current block.
     ///
     access(all) fun executeTransaction(_ tx: Transaction): TransactionResult {
         self.addTransaction(tx)
@@ -634,7 +636,7 @@ access(all) struct Blockchain {
         return txResult
     }
 
-    /// Executes a given set of transactions and commit the current block.
+    /// Executes a given set of transactions and commits the current block.
     ///
     access(all) fun executeTransactions(_ transactions: [Transaction]): [TransactionResult] {
         for tx in transactions {
@@ -1276,9 +1278,6 @@ access(all) fun testExample() {
         arguments: [],
     )
 
-    // Executing the transaction immediately
-    // This may fail if the current block contains
-    // transactions that have not being executed yet.
     let txResult = blockchain.executeTransaction(tx)
 
     Test.expect(txResult, Test.beSucceeded())
