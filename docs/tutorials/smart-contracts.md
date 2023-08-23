@@ -1,6 +1,6 @@
 ---
 title: Smart Contracts for Flow Dapps
-sidebar_title: Smart Contracts
+sidebar_label: Smart Contracts
 ---
 
 At its core, a decentralized application is defined by the [smart contracts](https://en.wikipedia.org/wiki/Smart_contract) it uses on the blockchain. Rather than relying on centralized application servers and databases, dapps model their core application logic using smart contracts, often referred to as the “on-chain” code.
@@ -23,10 +23,10 @@ After learning the basics, check out the [Kitty Items sample dapp](./kitty-items
 
 To build confidently, you will want to set up the appropriate local environment and have an adequate test suite to ensure your smart contracts operate as intended. To do this, familiarize yourself with the following tools:
 
-- [Flow CLI](../tooling/flow-cli/): A utility to directly interact with the chain and manage accounts and contracts.
-- [Flow Emulator](../tooling/emulator/): A lightweight server that simulates the Flow blockchain (strongly recommended during development).
+- [Flow CLI](../tools/toolchains/flow-cli/): A utility to directly interact with the chain and manage accounts and contracts.
+- [Flow Emulator](../tools/toolchains/emulator/): A lightweight server that simulates the Flow blockchain (strongly recommended during development).
 - [FCL Dev Wallet](https://github.com/onflow/fcl-dev-wallet/): A utility to simulate user wallets in development.
-- [Visual Studio Code Extension](../tooling/vscode-extension/): An IDE integration for developing smart contracts.
+- [Visual Studio Code Extension](../tools/toolchains/vscode-extension/): An IDE integration for developing smart contracts.
 - [JS Testing Framework](https://github.com/onflow/flow-js-testing): A framework to test your smart contracts.
 
 ## Storing Data on Flow

@@ -1,6 +1,6 @@
 ---
 title: FLOW for Wallets & Custodians
-sidebar_title: For Wallets & Custodians
+sidebar_label: For Wallets & Custodians
 description: How to integrate your wallet software with FLOW
 ---
 

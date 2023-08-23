@@ -264,9 +264,9 @@ const config = {
             label: 'Concepts',
           },
           {
-            to: 'tutorials/intro',
+            to: 'next/guides',
             position: 'left',
-            label: 'Tutorials',
+            label: 'Guides',
           },
           {
             to: 'cadence/intro',
@@ -274,9 +274,9 @@ const config = {
             label: 'Cadence',
           },
           {
-            to: 'tooling/intro',
+            to: 'next/tools',
             position: 'left',
-            label: 'Tooling',
+            label: 'Tools',
           },
           {
             to: 'references/Introduction',
@@ -321,7 +321,7 @@ const config = {
               },
               {
                 label: "SDK's & Tools",
-                to: '/tools',
+                to: '/next/tools',
               },
               {
                 to: '/learn',
@@ -336,19 +336,19 @@ const config = {
                 label: 'Mobile',
               },
               {
-                to: '/tooling/fcl-js/',
+                to: '/next/tools/clients/fcl-js/',
                 label: 'FCL',
               },
               {
-                to: '/tooling/flow-js-testing/',
+                to: '/next/tools/toolchains/flow-js-testing/',
                 label: 'JS Testing Library',
               },
               {
-                to: '/tooling/flow-cli/',
+                to: '/next/tools/toolchains/flow-cli/',
                 label: 'CLI',
               },
               {
-                to: '/tooling/emulator/',
+                to: '/next/tools/toolchains/emulator/',
                 label: 'Emulator',
               },
               {
@@ -356,7 +356,7 @@ const config = {
                 label: 'Dev Wallet',
               },
               {
-                to: '/tooling/vscode-extension/',
+                to: '/next/tools/toolchains/vscode-extension/',
                 label: 'VS Code Extension',
               },
             ],

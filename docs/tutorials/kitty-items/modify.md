@@ -1,7 +1,7 @@
 ---
 title: Modify
 description: Add an exclusive NFT collection
-sidebar_title: Modify
+sidebar_label: Modify
 ---
 
 The following steps will guide you through a modification of the Kitty Items project. You will add a new NFT kind, representing an exclusive collection of rare NFTs of sunglasses:
@@ -14,7 +14,7 @@ The following steps will guide you through a modification of the Kitty Items pro
 
 ## Start in emulator
 
-In the last step, you started the project on the testnet. For local development, however, it is recommended to emulate the blockchain network locally using the [Flow Emulator](../../tooling/emulator/). Once changes are implemented and tested locally, you will deploy the updates to the testnet.
+In the last step, you started the project on the testnet. For local development, however, it is recommended to emulate the blockchain network locally using the [Flow Emulator](../../tools/toolchains/emulator/). Once changes are implemented and tested locally, you will deploy the updates to the testnet.
 
 Let's start the project in the emulator by running the command below in the root project folder.
 

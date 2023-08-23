@@ -1,7 +1,7 @@
 ---
 title: Next steps
 description: Where to go from here
-sidebar_title: Next steps
+sidebar_label: Next steps
 ---
 
 By now, you have a fully-functioning NFT marketplace with your own, new exclusive NFT collection. You might ask yourself where to go from here. Here are some ideas to get you inspired!
@@ -12,7 +12,7 @@ By now, you have a fully-functioning NFT marketplace with your own, new exclusiv
 
 ## Learn more about NFT marketplaces
 
-Dive deeper by reading the **[NFT Marketplace Guide](../../tooling/nft-marketplace/)**. It covers topics like the building blocks of marketplaces, how to handle accounts, how to mint and sell NFTs, and best practices for production-readiness.
+Dive deeper by reading the **[NFT Marketplace Guide](../../tools/toolchains/nft-marketplace/)**. It covers topics like the building blocks of marketplaces, how to handle accounts, how to mint and sell NFTs, and best practices for production-readiness.
 
 ## Improve your Kitty Items project
 

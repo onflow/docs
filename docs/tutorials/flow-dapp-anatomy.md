@@ -1,6 +1,7 @@
 ---
 title: The Anatomy of a Flow Dapp
-sidebar_title: Anatomy of a Flow Dapp
+sidebar_label: Anatomy of a Flow Dapp
+sidebar_position: 1
 ---
 
 The diagram below outlines the components of a typical dapp built on the Flow blockchain. While many dapps are structured differently, this architecture introduces fundamental concepts that will be discussed throughout this guide.

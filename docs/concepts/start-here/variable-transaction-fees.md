@@ -91,7 +91,7 @@ Execution effort is best determined by running a transaction and reviewing the e
 
 **Using Flow Emulator**
 
-You can [start the emulator using the Flow CLI](../../tooling/emulator/index.md#running-the-emulator-with-the-flow-cli). Run your transaction and take a look at the events emitted:
+You can [start the emulator using the Flow CLI](../../tools/toolchains/emulator/index.md#running-the-emulator-with-the-flow-cli). Run your transaction and take a look at the events emitted:
 
 ```shell
 0|emulator | time="2022-04-06T17:13:22-07:00" level=info msg="⭐  Transaction executed" computationUsed=3 txID=a782c2210c0c1f2a6637b20604d37353346bd5389005e4bff6ec7bcf507fac06
@@ -175,7 +175,7 @@ console.log(transaction;)
 
 **Using FCL Go SDK**
 
-You need to call the `SetGasLimit` method to set the fee limit, for example:
+You need to call the `SetComputeLimit` method to set the fee limit, for example:
 
 ```go
 import (
@@ -191,7 +191,7 @@ var (
 
 tx := flow.NewTransaction().
     SetScript([]byte("transaction { execute { log(\"Hello, World!\") } }")).
-    SetGasLimit(100).
+    SetComputeLimit(100).
     SetProposalKey(myAddress, myAccountKey.Index, myAccountKey.SequenceNumber).
     SetPayer(myAddress)
 ```

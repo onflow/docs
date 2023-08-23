@@ -1,6 +1,6 @@
 ---
 title: Flow Staking Collection Contract Reference
-sidebar_title: Staking Collection
+sidebar_label: Staking Collection
 ---
 
 # Contract
@@ -23,7 +23,6 @@ Source: [FlowStakingCollection.cdc](https://github.com/onflow/flow-core-contract
 | Network    | Contract Address     |
 |------------|----------------------|
 | Testnet    | `0x95e019a17d0e23d7` |
-| Sandboxnet | `0xf4527793ee68aede` |
 | Mainnet    | `0x8d0e87b65159ae63` | 
 
 ## Transactions
