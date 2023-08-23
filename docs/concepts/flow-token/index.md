@@ -107,4 +107,4 @@ The Flow SDKs also allow polling for events using the Flow Access API,
 
 ## How to Build with FLOW
 
-To get started building on Flow, please read the [Flow Developer Onboarding guide](../../../tutorials/intro.md).
+To get started building on Flow, please read the [Flow Developer Onboarding guide](../../tutorials/intro.md).
