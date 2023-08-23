@@ -122,4 +122,4 @@ Currently, **historical event data is not migrated between sporks,** so you'll n
 
 Unlike Flow Testnet, once your application is launched on Flow Mainnet, your users will be exchanging real value in the form of FLOW tokens (The Flow blockchain's native token) or other resources which have been made available. You or your user will also be responsible for paying transaction fees using FLOW tokens.
 
-You can read about Transaction fees here: [concepts/#fees](../building-on-flow/concepts/flow-token/concepts.md#fees)
+You can read about Transaction fees here: [concepts/#fees](../concepts/flow-token/concepts.md#fees)

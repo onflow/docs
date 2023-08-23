@@ -47,7 +47,7 @@ pub fun main(addr: Address) : [StoragePath] {
 }
 ```
 
-We use the [Storage Iteration API](../../../../building-on-flow/cadence/language/accounts.mdx#storage-iteration) to look at everything the account has in it's storage and see if it is an NFT Collection.  We return a list of all found NFT Collections.
+We use the [Storage Iteration API](../../../../cadence/language/accounts.mdx#storage-iteration) to look at everything the account has in it's storage and see if it is an NFT Collection.  We return a list of all found NFT Collections.
 
 ## Getting NFT IDs Contained in a Collection
 
