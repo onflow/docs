@@ -112,7 +112,6 @@ function CardLink({ item }: { item: PropSidebarItemLink }): JSX.Element {
 }
 
 export default function DocCard({ item }: Props): JSX.Element {
-  console.log(item);
   switch (item.type) {
     case 'link':
       return <CardLink item={item} />;
