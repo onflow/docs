@@ -44,7 +44,7 @@
 ./docs/content/dapp-development/mainnet-deployment.md: docs/guides/mainnet-deployment.md
 ./docs/content/dapp-development/NFT-drop-styles.md: docs/tutorials/NFT-drop-styles.md
 ./docs/content/dapp-development/smart-contracts.md: docs/tutorials/smart-contracts.md
-./docs/content/dapp-development/testnet-deployment.md: docs/guilde/deploying/testnet-deployment.md
+./docs/content/dapp-development/testnet-deployment.md: docs/guilde/deploying/testnet-deployment.mdx
 ./docs/content/dapp-development/testnet-testing.md: docs/guides/deploying/testnet-testing.md
 ./docs/content/dapp-development/user-accounts-and-wallets.md: docs/tutorials/user-accounts-and-wallets.md
 ./docs/content/emulator/index.md: docs/tooling/emulator/index.md
