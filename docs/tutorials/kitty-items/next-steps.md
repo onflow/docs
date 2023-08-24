@@ -54,7 +54,7 @@ The Flow community is [currently working on the royalty standard](https://github
 
 ## Deploy your Kitty Items project to the mainnet
 
-You successfully deployed your project to the testnet, which is helpful to test against a live network of the Flow blockchain. However, once you've improved your project and are ready to transfer it to a production environment, you need to deploy your contracts to the mainnet. [Follow the Mainnet Deployment guide](../mainnet-deployment) to accomplish that.
+You successfully deployed your project to the testnet, which is helpful to test against a live network of the Flow blockchain. However, once you've improved your project and are ready to transfer it to a production environment, you need to deploy your contracts to the mainnet. [Follow the Mainnet Deployment guide](../../guides/deploying/mainnet-deployment) to accomplish that.
 
 ## Get inspired by other projects
 
