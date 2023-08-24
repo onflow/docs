@@ -1,5 +1,5 @@
 
-type SporkNetwork = 'mainnet' | 'sandboxnet' | 'testnet'
+type SporkNetwork = 'mainnet' | 'testnet'
 interface ISpork {
   id: number
   name: string

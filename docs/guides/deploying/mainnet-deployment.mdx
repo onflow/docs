@@ -1,0 +1,49 @@
+---
+title: Mainnet Deployment Guidelines
+sidebar_label: Mainnet Deployment
+description: Guidelines for deploying your project's contracts on Flow Mainnet
+sidebar_position: 1
+---
+
+In order to deploy your smart contracts to the mainnet, you need to register, fund, and setup a new account.
+
+<Callout type="info">
+This account will be used for production purposes. Make sure you handle keys appropriately. Using a Key Management Service is the best practice. 
+</Callout>
+
+### Creating an Account
+
+There are two simple methods of creating an account on testnet. **Interactive** and **Manual**, both use the flow CLI. On mainnet you will have to fund your newly created account, there is no faucet.
+Make sure to install the Flow CLI. [Flow CLI](../../tools/toolchains/flow-cli/accounts/create-accounts) has a interactive mode for generating keys.
+
+<Callout type="success">
+Anyone can deploy and update contracts on mainnet. Audits are encouraged but not mandatory to deploying contracts to mainnet. Take every precauction to reduce issues and protect users. 
+</Callout>
+
+### Create and deploy a mainnet project
+
+- Highly encouraged to test on Testnet, have strong smart contract test coverage and follow any additional guidelines set out here: [Smart Contract Testing Guidelines](./contract-testing). 
+- Follow the Flow CLI instructions to [Create a Project](../../tools/toolchains/flow-cli). You have the Flow CLI installed and ran `flow init` or `flow setup` in your project folder and generating a `flow.json` file
+- Mainnet account: You completed the mainnet account setup, (see above) and have your key pair and mainnet address ready.
+- [Deploy your project](../../tools/toolchains/flow-cli/deployment/deploy-project-contracts.md), notice that your account now has contracts deployed on mainnet.
+- [Deploy a contract](../../tools/toolchains/flow-cli/accounts/account-add-contract.md) to mainnet. You can deploy contracts individually using the `account-add-contract` command.
+
+<Callout type="info">
+All your contract deployment addresses are stored in `flow.json`. Mainnet, Testnet and local (emulator) are stored as well.
+</Callout>
+
+### Deploy updated contracts on mainnet
+
+Contracts can be updated and retain the contract address. You can use the [Flow CLI contract update command](../../tools/toolchains/flow-cli/accounts/account-update-contract.md) to re-deploy an updated version of your contract:
+
+<Callout type="warning">
+If you see `Error Code: 1103`, your new account does not have enough funds to complete the transaction. Make sure you have enough FLOW and your account is set up correctly, check account explorer to verify [Getting Started](/getting-started).
+</Callout>
+
+Once all your contracts are deployed, you can visit [flow-view-source](https://flow-view-source.com/) or run the [Flow CLI get account command](../../tools/toolchains/flow-cli/accounts/get-accounts.md) to confirm the deployment.
+
+### Sporks
+
+Currently, **historical event data is not migrated between sporks,** so you'll need to design your application with this in mind. We recognize the usefulness of historical event data and plan on adding a means of accessing it in the near future. Past spork transactional data is available, [See Previous Spork Access Node Info](../../concepts/nodes/node-operation/past-sporks)
+
+More Information on [Sporks](../../concepts/nodes/node-operation/spork)

@@ -1,0 +1,5 @@
+label: Deploying Contracts
+position: 2
+customProps:
+    icon: 🧱
+    description: How to deploy smart contracts to mainnet and testnet
