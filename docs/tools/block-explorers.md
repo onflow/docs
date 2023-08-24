@@ -5,6 +5,8 @@ description: |
   - Flow Diver
   - FLow View
   - ContractBrowser
+sidebar_custom_props:
+  icon: 🔍
 ---
 
 # Block Explorers

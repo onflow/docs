@@ -76,7 +76,7 @@ function CardCategory({
   return (
     <CardLayout
       href={href}
-      icon="🗃️"
+      icon={item.customProps?.icon || '🗃️'}
       title={item.label}
       description={
         item.description ??
@@ -96,7 +96,10 @@ function CardCategory({
 }
 
 function CardLink({ item }: { item: PropSidebarItemLink }): JSX.Element {
-  const icon = isInternalUrl(item.href) ? '📄️' : '🔗';
+  const customIcon =
+    Boolean(item?.customProps?.icon) && (item?.customProps?.icon as string);
+  // eslint-disable-next-line @typescript-eslint/strict-boolean-expressions
+  const icon = customIcon || (isInternalUrl(item.href) ? '📄️' : '🔗');
   const doc = useDocById(item.docId ?? undefined);
   return (
     <CardLayout
