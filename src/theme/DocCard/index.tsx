@@ -95,13 +95,8 @@ function CardCategory({
   );
 }
 
-const iconList = ['🚀', '😎', '🔥', '⭐', '🛠️', '💡', '📚', '🔍'];
-function getIcon(title: string): string {
-  return iconList[title.length % iconList.length];
-}
-
 function CardLink({ item }: { item: PropSidebarItemLink }): JSX.Element {
-  const icon = isInternalUrl(item.href) ? getIcon(item.label) : '🔗';
+  const icon = isInternalUrl(item.href) ? '📄️' : '🔗';
   const doc = useDocById(item.docId ?? undefined);
   return (
     <CardLayout
