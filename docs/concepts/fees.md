@@ -6,13 +6,13 @@ sidebar_position: 5
 
 ## Transaction Fees
 
-A transaction fee is a cost paid in Flow by the payer account required for a transaction to be included in the Flow blockchain. Fees are necessary for protecting the network against spam, and infinite running transactions and to provide monetary incentives for participants that make up the Flow network.
+A transaction fee is a cost paid in Flow by the payer account and is required for a transaction to be included in the Flow blockchain. Fees are necessary for protecting the network against spam, and infinite running transactions and to provide monetary incentives for participants that make up the Flow network.
 
 A transaction fee is paid regardless of whether a transaction succeeds or fails. If the payer account doesn’t have sufficient Flow balance to pay for the transaction fee, the transaction will fail. We can limit the transaction fee to some extent by providing the gas limit value when submitting the transaction.
 
 ### **Fee Structure**
 
-Each transaction fee is a sum of three components: execution fee, inclusion fee, and network surge factor.
+Each transaction fee consits of three components: execution fee, inclusion fee, and network surge factor.
 
 ![Screenshot 2023-08-17 at 17.16.32.png](_fees_images/Screenshot_2023-08-17_at_17.16.32.png)
 
@@ -49,7 +49,7 @@ Right now, the inclusion effort is always 1.0 and the inclusion effort cost is f
 
 In the future, a network surge will be applied when the network is busy due to an increased influx of transactions required to be processed or a decrease in the ability to process transactions. Right now, the network surge is fixed to `1.0`.
 
-Currently, both the inclusion fee and surge factor don’t represent any significant Flow fees, however, keep in mind this can change in the future.
+Currently, both the inclusion fee and surge factor don’t represent any significant Flow fees. Keep in mind this can change in the future.
 
 ## Storage
 
