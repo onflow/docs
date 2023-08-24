@@ -10,10 +10,6 @@ By now, you have a fully-functioning NFT marketplace with your own, new exclusiv
 
 <iframe width="100%" height="450" src="https://www.youtube.com/embed/v-r1Ucg8hHk?start=503" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
-## Learn more about NFT marketplaces
-
-Dive deeper by reading the **[NFT Marketplace Guide](../../tooling/nft-marketplace/)**. It covers topics like the building blocks of marketplaces, how to handle accounts, how to mint and sell NFTs, and best practices for production-readiness.
-
 ## Improve your Kitty Items project
 
 Below is a list of features and updates you could make to your NFT marketplace.

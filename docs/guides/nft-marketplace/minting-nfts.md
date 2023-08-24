@@ -1,7 +1,8 @@
 ---
 title: Minting NFTs
 description: Learn about the NFT minting process
-sidebar_title: Minting NFTs
+sidebar_label: Minting NFTs
+sidebar_position: 4
 ---
 
 Most NFT marketplaces give their users the ability to mint NFTs from user-provided digital media. Users can, later on, post the minted NFTs for sale.

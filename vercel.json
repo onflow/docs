@@ -84,7 +84,7 @@
     },
     {
       "source": "/flow/nft-marketplace/:path*",
-      "destination": "/tooling/nft-marketplace/:path*",
+      "destination": "/guides/nft-marketplace/:path*",
       "permanent": true
     },
     {
@@ -434,7 +434,37 @@
     },
     {
       "source": "/nft-marketplace/:path*",
-      "destination": "/tooling/nft-marketplace/:path*",
+      "destination": "/guides/nft-marketplace/:path*",
+      "permanent": true
+    },
+    {
+      "source": "/tooling/nft-marketplace/:path*",
+      "destination": "/guides/nft-marketplace/:path*",
+      "permanent": true
+    },
+    {
+      "source": "/tutorials/flow-app-quickstart",
+      "destination": "/guides/flow-app-quickstart",
+      "permanent": true
+    },
+    {
+      "source": "/tutorials/deployment",
+      "destination": "/guides/deploying",
+      "permanent": true
+    },
+    {
+      "source": "/tutorials/smart-contracts",
+      "destination": "/guides/deploying/overview",
+      "permanent": true
+    },
+    {
+      "source": "/tutorials/mainnet-deployment",
+      "destination": "/guides/deploying/mainnet-deployment",
+      "permanent": true
+    },
+    {
+      "source": "/tutorials/testnet-deployment",
+      "destination": "/guides/deploying/testnet-deployment",
       "permanent": true
     },
     {

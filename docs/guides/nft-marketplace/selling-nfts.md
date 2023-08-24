@@ -1,7 +1,8 @@
 ---
 title: Selling NFTs
 description: Learn about the selling process
-sidebar_title: Selling NFTs
+sidebar_label: Selling NFTs
+sidebar_position: 5
 ---
 
 Most NFT marketplaces performing on-chain sales use the [NFT Storefront Contract](https://github.com/onflow/nft-storefront). The contract allows NFT sellers to list their NFT for sale in any fungible token. NFT buyers send the fungible token amount equal to the listed price and receive the listed NFT in return.
@@ -40,7 +41,7 @@ After the NFT purchase operation is complete on the blockchain, the NFT marketpl
 
 Currently, for the on-chain sale of NFTs, the most common option is to let sellers list NFTs for sale in fungible tokens like USDC or FLOW.
 
-The marketplace will have the NFT owner sign a transaction like [this](https://github.com/onflow/nft-storefront/blob/main/transactions/sell_item.cdc) to create the sale listing. The transaction [specifies](https://github.com/onflow/nft-storefront/blob/main/transactions/sell_item.cdc#L35) the type of fungible token the NFT seller will accept.
+The marketplace will have the NFT owner sign a sell item transaction like this [Transaction](https://github.com/onflow/nft-storefront/blob/main/transactions/sell_item.cdc) to create the sale listing. The sell item transaction [Specifies](https://github.com/onflow/nft-storefront/blob/main/transactions/sell_item.cdc#L35) the type of fungible token the NFT seller will accept.
 
 ### Fiat payments
 
@@ -54,7 +55,7 @@ Following are typical ways NFT marketplaces can enable fiat payments for P2P sal
 - Using crypto on-ramps like Moonpay: With this approach, the NFT marketplace facilitates NFT sales on-chain but leverages crypto on-ramps such as Moonpay/Wyre to help NFT buyers obtain crypto to make the purchase. The downside is that the crypto on-ramps charge hefty fees, and NFT sellers still need to find off-ramps for the proceeds of the crypto sale.
 - Using a payment gateway to maintain user fund balances: This is the approach that NBA Topshot/Dapper wallet follows. The marketplace uses a payment gateway like Circle where users use fiat payment methods to maintain fund balances. The marketplace also maintains a custodial wallet for each user. It makes the on-chain NFT purchase on behalf of users if sufficient fund balance is maintained with the payment gateway. Fund balances with the payment gateway are updated based on sale/purchase activity on the blockchain. The downside of this approach is that it requires the marketplace to maintain a custodial wallet service. Additionally, the marketplace must incorporate multiple operational checks and balances to comply with the payment/AML regulations and protect against chargeback/fraud risks.
 
-See this [section](../../tutorials/in-dapp-payments.mdx) in the developer onboarding guide as well.
+See this [In app payment](./in-dapp-payments) section to get more information.
 
 ## Royalty payments
 
