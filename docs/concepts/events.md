@@ -4,7 +4,7 @@ sidebar_position: 6
 
 # Events
 
-Flow events are special values that are emitted to off-chain chain observers during the execution of a Cadence program.
+Flow events are special values that are emitted on the network during the execution of a Cadence program and can be observed by off-chain observers.
 
 Events are defined as Cadence code and you should [read Cadence documentation](../cadence/language/events.md) to understand how to define them. 
 
