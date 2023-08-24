@@ -26,8 +26,8 @@ This document walks through each stage of a transaction's lifecycle as it moves 
 
 ## Submission
 
-Transactions are submitted to the Flow network via Access Nodes. The Access Node provides a single point of contact to interact with the Flow network, accessible [here](../nodes/access-api.mdx#current-mainnet). It implements the [Access API](../nodes/access-api.mdx).
-Transactions are received by the Access Node via the [SendTransaction API call](../nodes/access-api.mdx#sendtransaction).
+Transactions are submitted to the Flow network via Access Nodes. The Access Node provides a single point of contact to interact with the Flow network, accessible [here](../../building-on-flow/nodes/access-api.mdx#current-mainnet). It implements the [Access API](../../building-on-flow/nodes/access-api.mdx).
+Transactions are received by the Access Node via the [SendTransaction API call](../../building-on-flow/nodes/access-api.mdx#sendtransaction).
 
 ### Validation
 {/* add explanation of how txs are checked andd how assignment to Cluster is determined (explain "to which this transaction belongs" point below) */}
@@ -127,7 +127,7 @@ _Documentation coming soon..._
 ## Transaction Results
 From the [Access API](https://github.com/onflow/flow-go/blob/master/cmd/access/README.md)
 
-[GetTransactionResult](../nodes/access-api.mdx#gettransaction): an execution node is requested for events for the transaction and the transaction status is derived as follows:
+[GetTransactionResult](../../building-on-flow/nodes/access-api.mdx#gettransaction): an execution node is requested for events for the transaction and the transaction status is derived as follows:
 * If the collection containing the transaction and the block containing that collection is found locally, but the transaction has expired then its status is returned as `expired`.
 * If either the collection or the block is not found locally, but the transaction has not expired, then its status is returned as `pending`
 If the transaction has neither expired nor is it pending, but the execution node has not yet executed the transaction, then the status of the transaction is returned as `finalized`.

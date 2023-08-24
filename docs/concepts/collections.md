@@ -20,7 +20,7 @@ Find [more about the command in the CLI docs](../tools/toolchains/flow-cli/get-f
 
 Collections can be obtained from the access node APIs, currently, there are two gRPC and REST APIs. You can find more information about them here:
 
-[**gRPC Collection API**](../concepts/nodes/access-api.mdx#collections)
+[**gRPC Collection API**](../building-on-flow/nodes/access-api.mdx#collections)
 
 [**REST Collection API**](/http-api#tag/Collections)
 

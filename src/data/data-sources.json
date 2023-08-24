@@ -7,7 +7,7 @@
       "data": [
         {
           "source": "docs/",
-          "destination": "concepts/token-standards/flow-ft/",
+          "destination": "building-on-flow/token-standards/flow-ft/",
           "doCopy": true
         }
       ]
@@ -21,7 +21,7 @@
       "data": [
         {
           "source": "docs/",
-          "destination": "concepts/token-standards/flow-nft/",
+          "destination": "building-on-flow/token-standards/flow-nft/",
           "doCopy": true
         }
       ]
