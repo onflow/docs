@@ -35,7 +35,7 @@
 ./docs/content/dapp-development/contract-testing.md: docs/tutorials/contract-testing.md
 ./docs/content/dapp-development/dapp-infrastructure.md: docs/tutorials/dapp-infrastructure.md
 ./docs/content/dapp-development/DappArchitectures.mdx: docs/tutorials/DappArchitectures.mdx
-./docs/content/dapp-development/deployment.md: docs/tutorials/deployment.md
+./docs/content/dapp-development/deployment.md: docs/guides/deploying/deployment.md
 ./docs/content/dapp-development/flow-dapp-anatomy.md: docs/tutorials/flow-dapp-anatomy.md
 ./docs/content/dapp-development/fungible-tokens.md: docs/tutorials/fungible-tokens.md
 ./docs/content/dapp-development/in-dapp-payments.mdx: docs/guides/nft-marketplace/in-dapp-payments.mdx
