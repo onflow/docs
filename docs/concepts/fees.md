@@ -79,7 +79,7 @@ Please note that storing data in an account on Flow doesn’t charge tokens from
 
 ### Storage Capacity of the Payer[](../concepts/start-here/storage.md#storage-capacity-of-the-payer)
 
-The storage capacity of the Payer of a transaction is generally computed the same way as the capacity of any other account, however, the system needs to account for the transaction fees the payer will incur at the end of the transaction. The final amount of transaction fees is not yet fully known at the step when accounts are being checked for storage compliance (if their storage used is below their storage capacity). 
+The storage capacity of the Payer of a transaction is generally computed the same way as the capacity of any other account, however, the system needs to account for the transaction fees the payer will incur at the end of the transaction. The final transaction fee amount is not fully known at this step, only when accounts are checked for storage compliance. If their storage used is more than their storage capacity, the transaction will fail.
 
 Because of this, the payer's balance is conservatively considered to be lower by the maximum possible transaction fees, when checking for storage compliance. The maximum transaction fee of a specific transaction is the transaction fee as if the transaction would have used up all of its execution effort limit.
 
@@ -95,4 +95,4 @@ All data that is in an account's storage counts towards storage used. Even when 
 
 Adding additional keys, smart contracts, capabilities, resources, etc. to the account counts towards storage used.
 
-Data stored on the Flow blockchain is stored in a key-value ledger. Each item’s key contains the address that owns the item and the path to the item. Just as the shipping cost of a box of things you send to a friend includes the weight of the carton box itself, storing items on flow takes into account the key it is stored with. This means that the storage used by each item is the byte length of the item plus the byte length of the item’s key.
+Data stored on the Flow blockchain is stored in a key-value ledger. Each item’s key contains the address that owns the item and the path to the item. An account can have many keys, therefore flow considers the account key items are stored with. This means that the storage used by each item is the byte length of the item plus the byte length of the item’s key.

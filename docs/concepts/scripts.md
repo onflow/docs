@@ -36,17 +36,17 @@ pub fun main(): String {
 
 The easiest way to execute a script is by using the Flow CLI:
 
-```json
+```sh
 flow scripts execute ./helloWorld.cdc
 ```
 
 A user can define their own scripts or it can use already defined scripts by the contract authors that can be found by using the FLIX service.
 
-Scripts can be run against previous blocks, which makes it possible to query historic data from the Flow network.
+Scripts can be run against previous blocks, allowing you to query historic data from the Flow network. This is particularly useful for retrieving historical states of contracts or tracking changes over time.
 
 Scripts are executed by being submitted to the Access Node APIs. Currently, there’s support for two APIs:
 
-[**gRPC Script API**](../concepts/nodes/access-api.mdx#blocks)
+[**gRPC Script API**](../concepts/nodes/access-api.mdx#scripts)
 
 [**REST Script API**](/http-api#tag/Scripts)
 

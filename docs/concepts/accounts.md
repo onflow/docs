@@ -93,7 +93,7 @@ An account on Flow doesn’t require keys in order to exist, but this makes the 
 You can achieve keyless accounts by either removing an existing public key from an account signing with that same key and repeating that action until an account has no keys left, or you can create a new account that has no keys assigned.
 
 <Callout type="danger">
-Be careful when removing keys from an existing account, because once an account doesn’t have sufficient keys (keys with weights sum less than 1000), it can no longer be modified.
+Be careful when removing keys from an existing account, because 1000 weight is necessary for any transactions on the account. If the account doesn’t have sufficient keys, it can no longer be modified.
 
 </Callout>
 
@@ -101,15 +101,15 @@ Be careful when removing keys from an existing account, because once an account 
 
 Creating a multi-signature account is easily done by managing the account keys and their corresponding weight. To repeat, in order to sign a transaction the keys used to sign it must have weights that sum up to at least 1000. Using this information we can easily see how we can achieve the following cases:
 
-2-of-3 multi-sig quorum
+#### 2-of-3 multi-sig quorum
 
 ![Screenshot 2023-08-16 at 19.34.44.png](_accounts_images/Screenshot_2023-08-16_at_19.34.44.png)
 
-3-of-3 multi-sig quorum
+#### 3-of-3 multi-sig quorum
 
 ![Screenshot 2023-08-16 at 19.34.55.png](_accounts_images/Screenshot_2023-08-16_at_19.34.55.png)
 
-1-of-2 signature
+#### 1-of-2 signature
 
 ![Screenshot 2023-08-16 at 19.34.51.png](_accounts_images/Screenshot_2023-08-16_at_19.34.51.png)
 
@@ -123,7 +123,7 @@ For development purposes, [you can use Flow CLI to easily create emulator, testn
 
 Keys should be generated in a secure manner, depending on the purpose of the keys different levels of caution need to be taken.
 
-<Callout>
+<Callout type="warning">
 Anyone obtaining access to a private key can modify the account the key is associated with (assuming it has enough weight). Be very careful how you store the keys.
 
 </Callout>
@@ -138,7 +138,7 @@ TODO
 
 You can use the Flow CLI to get account data by running:
 
-```
+```sh
 flow accounts get 0xf919ee77447b7497 -n mainnet
 ```
 

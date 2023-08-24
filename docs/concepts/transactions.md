@@ -21,10 +21,10 @@ In order for a transaction to be valid and executed it must contain signatures f
 
 The script section contains instructions for transaction execution. This is a transaction script as UTF-8 encoded Cadence source code (human-readable) which is defined with a `transaction` keyword. 
 
-A transaction includes multiple optional phases `prepare` `pre` `execute` and `post` phase. We will not go into too much detail as you can read more about it in the [Cadence reference document on transactions](../cadence/language/transactions.md). All you need to understand now is that each phase has a purpose, the two most important phases are prepare and execute. 
+A transaction includes multiple optional phases `prepare`, `pre`, `execute`, and `post` phase. We will not go into too much detail as you can read more about it in the [Cadence reference document on transactions](../cadence/language/transactions.md). All you need to understand now is that each phase has a purpose, the two most important phases are prepare and execute. 
 
-In the prepare phase, we have access to `AuthAccount` objects, which gives us the power to interact with those accounts. The accounts are called authorizers of transactions, so each account we want to interact with in the prepare phase must sign the transaction as an authorizer. 
-The execute phase does exactly what it says, it executes the main logic of the transaction. This phase is optional, but it is a best practice to add your main transaction logic in the section, so it is explicit. 
+In the `prepare` phase, we have access to `AuthAccount` objects, which gives us the power to interact with those accounts. The accounts are called authorizers of transactions, so each account we want to interact with in the `prepare` phase must sign the transaction as an authorizer. 
+The `execute` phase does exactly what it says, it executes the main logic of the transaction. This phase is optional, but it is a best practice to add your main transaction logic in the section, so it is explicit. 
 
 Again make sure to read Cadence [documentation on transactions](../cadence/language/transactions.md)
 
@@ -361,7 +361,7 @@ A transaction that declares different accounts for each signing role may require
 
 You can use the Flow CLI to get an existing transaction by ID:
 
-```
+```sh
 flow transactions get 1ec90051e3bc74fc36cbd16fc83df08e463dda8f92e8e2193e061f9d41b2ad92 -n mainnet
 ```
 
