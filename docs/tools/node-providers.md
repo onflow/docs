@@ -2,8 +2,6 @@
 sidebar_position: 1
 description: |
   Easy access to Flow's blockchain. Providers handle the technical work, letting you use Flow's features without managing nodes yourself.
-  - Quick node
-  - Tatum
 sidebar_custom_props:
   icon: 📚
 ---
