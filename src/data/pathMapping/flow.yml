@@ -41,11 +41,11 @@
 ./docs/content/dapp-development/in-dapp-payments.mdx: docs/guides/nft-marketplace/in-dapp-payments.mdx
 ./docs/content/dapp-development/index.md: docs/tutorials/intro.md
 ./docs/content/dapp-development/mainnet-account-setup.md: docs/tutorials/mainnet-account-setup.md
-./docs/content/dapp-development/mainnet-deployment.md: docs/tutorials/mainnet-deployment.md
+./docs/content/dapp-development/mainnet-deployment.md: docs/guides/mainnet-deployment.md
 ./docs/content/dapp-development/NFT-drop-styles.md: docs/tutorials/NFT-drop-styles.md
 ./docs/content/dapp-development/smart-contracts.md: docs/tutorials/smart-contracts.md
 ./docs/content/dapp-development/testnet-deployment.md: docs/tutorials/testnet-deployment.md
-./docs/content/dapp-development/testnet-testing.md: docs/tutorials/testnet-testing.md
+./docs/content/dapp-development/testnet-testing.md: docs/guides/deploying/testnet-testing.md
 ./docs/content/dapp-development/user-accounts-and-wallets.md: docs/tutorials/user-accounts-and-wallets.md
 ./docs/content/emulator/index.md: docs/tooling/emulator/index.md
 ./docs/content/faq/backers.mdx: docs/concepts/nodes/faq/backers.mdx
