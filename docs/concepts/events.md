@@ -8,7 +8,7 @@ Flow events are special values that are emitted on the network during the execut
 
 Events are defined as Cadence code and you should [read Cadence documentation](../cadence/language/events.md) to understand how to define them. 
 
-Since transactions don’t have return values you can leverage events to broadcast certain changes the transaction caused. Clients listening on Flow networks (dApps) can listen to these events being emitted and react. 
+Since transactions don’t have return values you can leverage events to broadcast certain changes the transaction caused. Clients listening on Flow networks (apps) can listen to these events being emitted and react. 
 
 ![Screenshot 2023-08-18 at 14.09.33.png](_events_images/Screenshot_2023-08-18_at_14.09.33.png)
 
@@ -53,15 +53,15 @@ An example event would look like:
 
 ![Screenshot 2023-08-18 at 14.30.36.png](_events_images/Screenshot_2023-08-18_at_14.30.36.png)
 
-The first `A` means the event is originating from a contract, which will always be the case for user-defined events. The contract address as the name implies is the location of a contract deployed on the Flow network. Next is the name of the contracted event originates from, and last is the event type defined in the contract.
+The first `A` means the event is originating from a contract, which will always be the case for user-defined events. The contract address as the name implies is the location of a contract deployed on the Flow network. Next, is the name of the contracted event originates from, and last is the event type defined in the contract.
 
 There is an unlimited amount of events that can be defined on Flow, but you should know about the most common ones. 
 
 ### FLOW Token Events
 
-The FLOW Token contract is the contract that issues a core FLOW token. As with any contract, it can emit events when interacted with. When we transfer the FLOW token, events are emitted. You can find a lot of details on the events emitted in the [FLOW Token documentation](../concepts/core-contracts/03-flow-token.md). 
+The FLOW Token contract uses the fungible token standard on Flow and is the contract that issues a core FLOW token. As with any contract, it can emit events when interacted with. When we transfer the FLOW token, events are emitted. You can find a lot of details on the events emitted in the [FLOW Token documentation](../concepts/core-contracts/03-flow-token.md). 
 
-The most popular events are when tokens are transferred which is accomplished with two actions: withdrawing tokens from the payer and depositing tokens in the receiver. Each of those action has a corresponding event:
+The most common events are when tokens are transferred which is accomplished with two actions: withdrawing tokens from the payer and depositing tokens in the receiver. Each of those action has a corresponding event:
 
 **Withdraw Tokens**
 
@@ -89,7 +89,7 @@ Charging fees consists of a couple of steps:
 - Withdraw Flow tokens from the payer account
 - Deposit Flow tokens to the fees contract
 
-These events are very common since they accommodate all transactions on Flow. Each fee deduction will be reflected in 3 events, two withdraw and deposit Flow token events and one fee deduction event. 
+These events are very common since they accommodate all transactions on Flow. Each fee deduction will result in three events: the withdrawal of Flow tokens, the deposit of Flow tokens, and the fee deduction. 
 
 An example of fee events:
 
