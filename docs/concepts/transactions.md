@@ -9,7 +9,7 @@ Transactions are cryptographically signed data messages that contain a set of in
 ![Screenshot 2023-08-17 at 13.57.36.png](_transactions_images/Screenshot_2023-08-17_at_13.57.36.png)
 
 <Callout type="tip">
-Transactions on Flow are fundamentally different from those on Ethereum. The main purpose of a transaction is not to send funds but to contain code that gets executed. This makes transactions very flexible and powerful. Transactions on Flow also feature different roles, such as defining third-party payer accounts, proposer accounts, and authorizers, which we will talk about in detail soon.
+Transactions on Flow are fundamentally different from those on Ethereum. The main purpose of a transaction is not to send funds but to contain code that gets executed. This makes transactions very flexible and powerful. In addition to being able to access the authorizing accounts private assets, transactions can also read and call functions in public contracts, and access public domains in other users' accounts Transactions on Flow also feature different roles, such as defining third-party payer accounts, proposer accounts, and authorizers, which we will talk about in detail soon.
 
 </Callout>
 
@@ -19,9 +19,9 @@ In order for a transaction to be valid and executed it must contain signatures f
 
 **Script**
 
-The script section contains instructions for transaction execution. This is a transaction script as UTF-8 encoded Cadence source code (human-readable) which is defined with a `transaction` keyword. 
+The script section contains instructions for transaction execution. This is a Cadence program in source code form (human-readable), and encoded as UTF-8. The transaction program must contain a `transaction` declaration. 
 
-A transaction includes multiple optional phases `prepare`, `pre`, `execute`, and `post` phase. We will not go into too much detail as you can read more about it in the [Cadence reference document on transactions](../cadence/language/transactions.md). All you need to understand now is that each phase has a purpose, the two most important phases are prepare and execute. 
+A transaction includes multiple optional phases `prepare`, `pre`, `execute`, and `post` phase. You can read more about it in the [Cadence reference document on transactions](../cadence/language/transactions.md). Each phase has a purpose, the two most important phases are `prepare` and `execute`. 
 
 In the `prepare` phase, we have access to `AuthAccount` objects, which gives us the power to interact with those accounts. The accounts are called authorizers of transactions, so each account we want to interact with in the `prepare` phase must sign the transaction as an authorizer. 
 The `execute` phase does exactly what it says, it executes the main logic of the transaction. This phase is optional, but it is a best practice to add your main transaction logic in the section, so it is explicit. 
@@ -44,25 +44,25 @@ Transactions may declare parameters it needs during execution, these must be pro
 
 **Reference Block**
 
-A reference to a (latest) block used for expiry. A transaction is considered expired if it is submitted to Flow after reference block height + N, where N is a constant defined by the network. On mainnet current setting for N is 600 which amounts to approximately 10 minutes for expiry (please note this is subject to change).
+A reference to a recent block used for expiry. A transaction is considered expired if it is submitted to Flow after reference block height + N, where N is a constant defined by the network. On mainnet current setting for N is 600 which amounts to approximately 10 minutes for expiry (please note this is subject to change).
 
 **Gas Limit**
 
-When a transaction is executed each operation consumes a predefined amount of computational units (we define more about that in the Fees documentation). This defines the maximum amount of computation that is allowed to be done during this transaction. If a transaction finishes execution with fewer computational units spent then this limit has no effect, if a transaction reaches this limit while executing, it will fail at that point and changes will be reverted, however, the fees will still be charged. The maximum computational limit for Flow mainnet is currently at 9999, but this might change. The maximum network limit is defined to protect the network from transactions that would run forever. 
+When a transaction is executed each operation consumes a predefined amount of computational units (we define more about that in the Fees documentation). This defines the maximum amount of computation that is allowed to be done during this transaction. If a transaction completes execution using fewer computational units than the limit, it remains unaffected. However, if it hits this limit during execution, the transaction will fail, its changes will be reverted, but fees will still be applied. The maximum computational limit for Flow mainnet is currently at 9999, but this might change. The maximum network limit is defined to protect the network from transactions that would run forever. 
 
 **Proposal Key**
 
-Each transaction must declare a proposal key, which can be an account key from any Flow account. The account that owns the proposal key is referred to as the *proposer*. 
+Each transaction must declare a proposal key, which can be an account key from any Flow account (App, User or Wallet). The account that owns the proposal key is referred to as the *proposer*. 
 
-Proposer is a role in a transaction that defines who is proposing the transaction, the effect of the transaction being submitted on the proposer is that it will increment the sequence number for the provided proposer key. 
+Proposer is a role in a transaction that defines who is proposing the transaction, the effect of the transaction being submitted on the proposer is that it will increment the sequence number for the provided proposer key. This is done to ensure transactions are not resubmitted (replay attack) and thus sequencing actions. 
 
-A proposal key definition declares the address, key ID, and up-to-date sequence number for the account key.
+A proposal key definition declares the address, key ID, and up-to-date sequence number for the account key. A single proposer can have many transactions executed in parallel only limited by the key they use to propose the transaction.
 
 ![Screenshot 2023-08-17 at 15.10.33.png](_transactions_images/Screenshot_2023-08-17_at_15.10.33.png)
 
 - Address identifies the account that will act as a proposer of this transaction.
 - Key ID is an index number (starting at 0) that identifies the key on the account provided in the address.
-- Sequence Number is a number on each key that increments by 1 with each transaction. This ensures that each transaction executes at most once. This prevents many unwanted situations such as [transaction replay attacks](https://en.wikipedia.org/wiki/Replay_attack). Each key in an account has a dedicated sequence number associated with it. Unlike Ethereum, there is no sequence number for the entire account.
+- Sequence Number is a number on each key that increments by 1 with each transaction. This ensures that each transaction executes at most once and prevents many unwanted situations, such as [transaction replay attacks](https://en.wikipedia.org/wiki/Replay_attack). Each key in an account has a dedicated sequence number associated with it. Unlike Ethereum, there is no sequence number for the entire account.
 
 **Authorizers**
 
@@ -82,9 +82,9 @@ Each account defined as an authorizer must sign the transaction with its own key
 
 **Payer**
 
-is the account that pays the fees for the transaction. A transaction must specify exactly one payer. The payer is only responsible for paying the network and gas fees; the transaction is not authorized to access resources or code stored in the payer account. 
+A payer is the account that pays the fees for the transaction. A transaction must specify exactly one payer. The payer is only responsible for paying the network and gas fees; the transaction is not authorized to access resources or code stored in the payer account. 
 
-Unlike Ethereum we can specify different payer and proposer, it can even be a third-party account. This is another great strength of Flow which will allow for wallet providers to cover fees of transactions and allow global scaling. 
+By explicitly specifying a payer a transaction can be paid by third-party services such as wallet providers.
 
 ## Transaction Lifecycle
 
@@ -100,21 +100,21 @@ The transaction status represents the state of a transaction on the Flow blockch
 
 ![Screenshot 2023-08-17 at 16.08.18.png](_transactions_images/Screenshot_2023-08-17_at_16.08.18.png)
 
-- Unknown - The transaction has not yet been seen by the network.
-- Pending - The transaction has not yet been included in a block.
-- Finalized - The transaction has been included in a block, but not yet executed.
-- Executed - The transaction has been executed but the result has not yet been verified and the block has not yet been sealed.
-- Sealed - The transaction execution has been verified and the result is sealed in a block.
-- Expired - The transaction expired before being executed.
+- Unknown - The transaction has not yet been seen by the section of the network you communicate with.
+- Pending - The transaction has been received by a collection node but has not yet been finalized in a block.
+- Finalized - The consensus nodes have included the transaction in a block, but it has not been executed by execution nodes.
+- Executed - Execution nodes have produced a result for the transaction. 
+- Sealed - The verification nodes have verified and agreed on the result of the transaction and the consensus node has included the seal in the latest block.
+- Expired - The transaction was submitted past its expiration block height.
 
 <Callout type="danger">
-It is super **important to differentiate the transaction status and transaction result**. Transaction status will only provide you with information about the inclusion of the transaction in the blockchain, not whether the transaction was executed the way you intended. **A transaction can still fail to execute the way you intended and be sealed.**
+It is **important to differentiate the transaction status and transaction result**. Transaction status will only provide you with information about the inclusion of the transaction in the blockchain, not whether the transaction was executed the way you intended. **A transaction can still fail to execute the way you intended and be sealed.**
 
 </Callout>
 
 ### Transaction Result
 
-A transaction result will be available once a transaction is executed and it will provide information about the success of a transaction execution, that means whether the transaction encountered any errors while executing. It also includes events the transaction may have emitted. 
+Once a transaction is executed, its result will be available, providing details on its success or any errors encountered during execution. It also includes events the transaction may have emitted. 
 
 ![Screenshot 2023-08-17 at 16.29.30.png](_transactions_images/Screenshot_2023-08-17_at_16.29.30.png)
 
@@ -164,7 +164,7 @@ Special case: if an account is both the payer and either a proposer or auth
 
 ### Payer Signs Last[](../concepts/start-here/transaction-signing.md#payer-signs-last)
 
-The payer must sign the portion of the transaction that contains the payload signatures, which means that the payer must always sign last. This allows the payer to ensure that they are signing a valid transaction with all of the required payload signatures.
+The payer must sign the portion of the transaction that contains the payload signatures, which means that the payer must always sign last. This ensures the payer that they are signing a valid transaction with all of the required payload signatures.
 
 <Callout type="danger">
 Special case: if an account is both the payer and either a proposer or authorizer, it is required only to sign the envelope.
