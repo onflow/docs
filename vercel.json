@@ -696,6 +696,225 @@
       "source": "/bounties/responsible-disclosure",
       "destination": "https://flow.com/flow-responsible-disclosure",
       "permanent": true
+    },
+
+
+    {
+      "source": "/next/tooling/flow-cli/account-add-contract",
+      "destination": "/next/tools/toolchains/flow-cli/accounts/account-add-contract",
+      "permanent": true
+    },
+    {
+      "source": "/next/tooling/flow-cli/account-remove-contract",
+      "destination": "/next/tools/toolchains/flow-cli/accounts/account-remove-contract",
+      "permanent": true
+    },
+    {
+      "source": "/next/tooling/flow-cli/account-staking-info(.*)",
+      "destination": "/next/tools/toolchains/flow-cli/accounts/account-staking-info",
+      "permanent": true
+    },
+    {
+      "source": "/next/tooling/flow-cli/account-update-contract",
+      "destination": "/next/tools/toolchains/flow-cli/accounts/account-update-contract",
+      "permanent": true
+    },
+    {
+      "source": "/next/tooling/flow-cli/build-transactions",
+      "destination": "/next/tools/toolchains/flow-cli/transactions/build-transactions",
+      "permanent": true
+    },
+    {
+      "source": "/next/tooling/flow-cli/complex-transactions",
+      "destination": "/next/tools/toolchains/flow-cli/transactions/complex-transactions",
+      "permanent": true
+    },
+    {
+      "source": "/next/tooling/flow-cli/configuration",
+      "destination": "/next/tools/toolchains/flow-cli/flow.json/configuration",
+      "permanent": true
+    },
+    {
+      "source": "/next/tooling/flow-cli/create-accounts",
+      "destination": "/next/tools/toolchains/flow-cli/accounts/create-accounts",
+      "permanent": true
+    },
+    {
+      "source": "/next/tooling/flow-cli/decode-keys",
+      "destination": "/next/tools/toolchains/flow-cli/keys/decode-keys",
+      "permanent": true
+    },
+    {
+      "source": "/next/tooling/flow-cli/decode-transactions",
+      "destination": "/next/tools/toolchains/flow-cli/transactions/decode-transactions",
+      "permanent": true
+    },
+    {
+      "source": "/next/tooling/flow-cli/deploy-project-contracts",
+      "destination": "/next/tools/toolchains/flow-cli/deployment/deploy-project-contracts",
+      "permanent": true
+    },
+    {
+      "source": "/next/tooling/flow-cli/derive-keys",
+      "destination": "/next/tools/toolchains/flow-cli/keys/derive-keys",
+      "permanent": true
+    },
+    {
+      "source": "/next/tooling/flow-cli/emulator-snapshot",
+      "destination": "/next/tools/toolchains/flow-cli/deployments/emulator-snapshot",
+      "permanent": true
+    },
+    {
+      "source": "/next/tooling/flow-cli/generate-keys",
+      "destination": "/next/tools/toolchains/flow-cli/keys/generate-keys",
+      "permanent": true
+    },
+    {
+      "source": "/next/tooling/flow-cli/get-accounts",
+      "destination": "/next/tools/toolchains/flow-cli/accounts/get-accounts",
+      "permanent": true
+    },
+    {
+      "source": "/next/tooling/flow-cli/get-blocks",
+      "destination": "/next/tools/toolchains/flow-cli/get-flow-data/get-blocks",
+      "permanent": true
+    },
+    {
+      "source": "/next/tooling/flow-cli/get-collections",
+      "destination": "/next/tools/toolchains/flow-cli/get-flow-data/get-collections",
+      "permanent": true
+    },
+    {
+      "source": "/next/tooling/flow-cli/get-events",
+      "destination": "/next/tools/toolchains/flow-cli/get-flow-data/get-events",
+      "permanent": true
+    },
+    {
+      "source": "/next/tooling/flow-cli/get-status",
+      "destination": "/next/tools/toolchains/flow-cli/get-flow-data/get-status",
+      "permanent": true
+    },
+    {
+      "source": "/next/tooling/flow-cli/get-transactions",
+      "destination": "/next/tools/toolchains/flow-cli/transactions/get-transactions",
+      "permanent": true
+    },
+    {
+      "source": "/next/tooling/flow-cli/initialize-configuration",
+      "destination": "/next/tools/toolchains/flow-cli/flow.json/initialize-configuration",
+      "permanent": true
+    },
+    {
+      "source": "/next/tooling/flow-cli/manage-configuration",
+      "destination": "/next/tools/toolchains/flow-cli/flow.json/manage-configuration",
+      "permanent": true
+    },
+    {
+      "source": "/next/tooling/flow-cli/project-app",
+      "destination": "/next/tools/toolchains/flow-cli/utils/project-app",
+      "permanent": true
+    },
+    {
+      "source": "/next/tooling/flow-cli/project-contracts",
+      "destination": "/next/tools/toolchains/flow-cli/deployment/project-contracts",
+      "permanent": true
+    },
+    {
+      "source": "/next/tooling/flow-cli/security",
+      "destination": "/next/tools/toolchains/flow-cli/flow.json/security",
+      "permanent": true
+    },
+    {
+      "source": "/next/tooling/flow-cli/send-signed-transactions",
+      "destination": "/next/tools/toolchains/flow-cli/transactions/send-signed-transactions",
+      "permanent": true
+    },
+    {
+      "source": "/next/tooling/flow-cli/send-transactions",
+      "destination": "/next/tools/toolchains/flow-cli/transactions/send-transactions",
+      "permanent": true
+    },
+    {
+      "source": "/next/tooling/flow-cli/sign-transaction",
+      "destination": "/next/tools/toolchains/flow-cli/transactions/sign-transaction",
+      "permanent": true
+    },
+    {
+      "source": "/next/tooling/flow-cli/signature-generate",
+      "destination": "/next/tools/toolchains/flow-cli/utils/signature-generate",
+      "permanent": true
+    },
+    {
+      "source": "/next/tooling/flow-cli/signature-verify",
+      "destination": "/next/tools/toolchains/flow-cli/utils/signature-verify",
+      "permanent": true
+    },
+    {
+      "source": "/next/tooling/flow-cli/snapshot-save",
+      "destination": "/next/tools/toolchains/flow-cli/utils/snapshot-save",
+      "permanent": true
+    },
+    {
+      "source": "/next/tooling/flow-cli/start-emulator",
+      "destination": "/next/tools/toolchains/flow-cli/deployments/start-emulator",
+      "permanent": true
+    },
+    {
+      "source": "/next/tooling/flow-cli/tools",
+      "destination": "/next/tools/toolchains/flow-cli/utils/tools",
+      "permanent": true
+    },
+    {
+      "source": "/next/tooling/emulator/:path*",
+      "destination": "/next/tools/toolchains/emulator/:path*",
+      "permanent": true
+    },
+
+    {
+      "source": "/next/tooling/fcl-dev-wallet/:path*",
+      "destination": "/next/tools/toolchains/fcl-dev-wallet/:path*",
+      "permanent": true
+    },
+
+    {
+      "source": "/next/tooling/flow-cadut/:path*",
+      "destination": "/next/tools/toolchains/flow-cadut/:path*",
+      "permanent": true
+    },
+    {
+      "source": "/next/tooling/flow-js-testing/:path*",
+      "destination": "/next/tools/toolchains/flow-js-testing/:path*",
+      "permanent": true
+    },
+    {
+      "source": "/next/tooling/nft-catalog/:path*",
+      "destination": "/next/tools/toolchains/nft-catalog/:path*",
+      "permanent": true
+    },
+    {
+      "source": "/next/tooling/nft-marketplace/:path*",
+      "destination": "/next/tools/toolchains/nft-marketplace/:path*",
+      "permanent": true
+    },
+    {
+      "source": "/next/tooling/vscode-extension/:path*",
+      "destination": "/next/tools/toolchains/vscode-extension/:path*",
+      "permanent": true
+    },
+    {
+      "source": "/next/tooling/fcl-js/:path*",
+      "destination": "/next/tools/clients/fcl-js/:path*",
+      "permanent": true
+    },
+    {
+      "source": "/next/tooling/flow-go-sdk/:path*",
+      "destination": "/next/tools/clients/flow-go-sdk/:path*",
+      "permanent": true
+    },
+    {
+      "source": "/next/tooling/unity-sdk/:path*",
+      "destination": "/next/tools/clients/unity-sdk/:path*",
+      "permanent": true
     }
   ]
 }
