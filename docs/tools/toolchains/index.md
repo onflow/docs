@@ -6,7 +6,7 @@ sidebar_position: 7
 
 ## Emulator
 
-[The Flow Emulator](./emulator/index.md) is a lightweight tool that emulates the behavior of the real Flow network, packaged via CLI.
+[The Flow Emulator](./emulator/index.md) is a lightweight tool that emulates the behavior of the real Flow network, packaged via Flow CLI.
 
 ## FCL Dev Wallet
 
