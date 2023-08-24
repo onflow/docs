@@ -98,6 +98,11 @@
       "permanent": true
     },
     {
+      "source": "/concepts/account-linking/guides/:path*",
+      "destination": "/concepts/account-linking/child-accounts",
+      "permanent": true
+    },
+    {
       "source": "/learn/Concepts",
       "destination": "/concepts/intro",
       "permanent": true
