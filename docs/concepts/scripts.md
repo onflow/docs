@@ -4,7 +4,7 @@ sidebar_position: 4
 
 # Scripts
 
-A script is an executable Cadence code that queries the Flow network but does not modify it. Unlike Flow transactions, they don’t need signing and they can return a value. You can think of executing scripts as a read-only operation. 
+A script is executable Cadence code that queries the Flow network but does not modify it. Unlike Flow transactions, they don’t need signing and they can return a value. You can think of executing scripts as a read-only operation. 
 
 Scrips are executed on Access Nodes, Archive Nodes, or Execution Nodes. 
 
@@ -14,7 +14,7 @@ Scripts are defined by following the Cadence code and we can only execute one at
 pub fun main() {}
 ```
 
-Scripts can return a typed value like so:
+Scripts can return a typed value:
 
 ```cadence
 pub fun main(): Int {
@@ -22,7 +22,7 @@ pub fun main(): Int {
 }
 ```
 
-The most useful things we can do with scripts are call contract functions and query the state of a contract. It can do so by importing the contract and calling a function on it:
+Scripts can call contract functions and query the state of a contract. To call a function on another contract, import it from its address and invoke the function:
 
 ```cadence
 import World from 0x01
@@ -34,13 +34,13 @@ pub fun main(): String {
 
 ## Executing Scripts
 
-The easiest way to execute a script is by using the Flow CLI:
+You can execute a script by using the Flow CLI:
 
 ```sh
 flow scripts execute ./helloWorld.cdc
 ```
 
-A user can define their own scripts or it can use already defined scripts by the contract authors that can be found by using the FLIX service.
+A user can define their own scripts or can use already defined scripts by the contract authors that can be found by using the FLIX service.
 
 Scripts can be run against previous blocks, allowing you to query historic data from the Flow network. This is particularly useful for retrieving historical states of contracts or tracking changes over time.
 
