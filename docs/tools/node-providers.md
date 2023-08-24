@@ -2,26 +2,26 @@
 sidebar_position: 1
 description: |
   Easy access to Flow's blockchain. Providers handle the technical work, letting you use Flow's features without managing nodes yourself.
-  - Quick node
-  - Tatum
+sidebar_custom_props:
+  icon: 📚
 ---
 
 # Node Providers
 
 ## Quick Node
 
-[QuickNode](https://www.quicknode.com/chains/flow) is a service that provides access to blockchain infrastructure for developers, businesses, and anyone who needs reliable and fast access to blockchain networks. QuickNode allows users to connect to these networks without having to run their own full nodes, which can be resource-intensive.
+[QuickNode](https://www.quicknode.com/chains/flow) offers convenient access to Flow's blockchain infrastructure, allowing developers and businesses to utilize Flow's capabilities without the complexities of managing nodes themselves. It offers reliable and fast connectivity to blockchain networks, sparing users from the resource-intensive task of running their own full nodes.
 
 ### Supported Networks
 
-- testnet
-- mainnet
+- Testnet
+- Mainnet
 
 ## Tatum
 
-[Tatum](https://tatum.io/) is a platform that provides infrastructure, SDK, and unified API to build, test, and run blockchain apps. You don't need to worry about blockchain node configuration or maintenance, and you don't need to learn to code for individual blockchains. 
+[Tatum](https://tatum.io/) provides a comprehensive platform that simplifies the process of building, testing, and deploying blockchain applications. With Tatum, users can access infrastructure, an SDK, and a unified API to develop blockchain apps without the need to handle individual blockchain node configuration or maintenance.
 
 ### Supported Networks
 
-- testnet
-- mainnet
+- Testnet
+- Mainnet
