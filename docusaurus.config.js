@@ -264,9 +264,9 @@ const config = {
             label: 'Concepts',
           },
           {
-            to: 'tutorials/intro',
+            to: 'next/guides',
             position: 'left',
-            label: 'Tutorials',
+            label: 'Guides',
           },
           {
             to: 'cadence/intro',
