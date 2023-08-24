@@ -142,7 +142,7 @@ The Flow Service Account is an account like any other on Flow except it is res
 
 The service account is the account that manages the core protocol requirements of Flow. 
 FlowServiceAccount deployed on the service account tracks transaction fees, and deployment permissions, and provides some convenience methods for Flow Token operations.
-Source: [FlowServiceAccount.cdc](./core-contracts/service-account#docusaurus_skipToContent_fallback)
+Source: [FlowServiceAccount.cdc](../building-on-flow/core-contracts/service-account#docusaurus_skipToContent_fallback)
 
 ## Accounts Retrieval
 
@@ -156,7 +156,7 @@ Find [more about the command in the CLI docs](../tools/toolchains/flow-cli/accou
 
 Accounts can be obtained from the access node APIs, currently, there are two gRPC and REST APIs. You can find more information about them here:
 
-**gRPC API** [concepts/nodes/access-api#accounts](./nodes/access-api.mdx#accounts)
+**gRPC API** [concepts/nodes/access-api#accounts](../building-on-flow/nodes/access-api.mdx#accounts)
 
 **REST API** [http-api#tag/Accounts](/http-api#tag/Accounts)
 

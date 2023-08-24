@@ -9,20 +9,20 @@ sidebar_custom_props:
 
 ## Token Standards
 
-It is important that Flow has [Token Standards](../concepts/token-standards) for Fungible and Non-fungible tokens. This allows applications and other smart contracts to interact with your token in a predictable way.
+It is important that Flow has [Token Standards](../building-on-flow/token-standards/index.md) for Fungible and Non-fungible tokens. This allows applications and other smart contracts to interact with your token in a predictable way.
 
 
 ### Non-Fungible Tokens (NFTs)
 
-All NFTs on the Flow blockchain implement the [NonFungibleToken](../concepts/core-contracts/08-non-fungible-token.md) interface, allowing them to be compatible with wallets, marketplaces and other cross-app experiences.
+All NFTs on the Flow blockchain implement the [NonFungibleToken](../building-on-flow/core-contracts/08-non-fungible-token.md) interface, allowing them to be compatible with wallets, marketplaces and other cross-app experiences.
 
-- [Non-Fungible Token (NFT) contract interface](../concepts/core-contracts/08-non-fungible-token.md)
+- [Non-Fungible Token (NFT) contract interface](../building-on-flow/core-contracts/08-non-fungible-token.md)
 
 ### Fungible Tokens
 
-The FLOW token is a fungible token, [More Information](../concepts/core-contracts/flow-token).  Fungible tokens can be used for various reasons on the Flow blockchain.
+The FLOW token is a fungible token, [More Information](../building-on-flow/core-contracts/flow-token).  Fungible tokens can be used for various reasons on the Flow blockchain.
 
-- In order to create a fungible token, the [Fungible tokens](../concepts/core-contracts/fungible-token), interface has to be implemented.
+- In order to create a fungible token, the [Fungible tokens](../building-on-flow/core-contracts/fungible-token), interface has to be implemented.
 
 
 ## How to Launch a Fungible Token
@@ -31,7 +31,7 @@ There is a lot to consider when creating a token, strong tokenomics, private or 
 
 - [Flow Token Standard](https://github.com/onflow/flow-ft) - minimum requirements to implement a safe, secure, easy to understand and easy to use fungible token contract
 
-Example of a Fungible Token Contract [ExampleToken](https://github.com/onflow/flow-ft/blob/master/contracts/ExampleToken.cdc). See how to deploy contracts [here](./deploying/mainnet-deployment).
+Example of a Fungible Token Contract [ExampleToken](https://github.com/onflow/flow-ft/blob/master/contracts/ExampleToken.cdc). See how to deploy contracts [here](./deploying/mainnet-deployment.mdx).
 
 
 # How to Launch a Non-Fungible Token (NFT)
@@ -43,7 +43,7 @@ A few resources to help start your NFT collection:
 - [Touchstone](https://www.touchstone.city/guide/en/welcome)
 - [Emeralkd Academy: Quickstart](https://academy.ecdao.org/en/quickstarts/1-non-fungible-token)
 
-After getting your NFT collection created, look into your collection registered on the [NFT catalog](../tools/toolchains/nft-catalog/overview) 
+After getting your NFT collection created, look into your collection registered on the [NFT catalog](../tools/toolchains/nft-catalog/overview.mdx) 
 
 ## Final Words
 
