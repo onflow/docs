@@ -30,14 +30,16 @@ const routeMapping = {
   '/flow/dapp-development/deployment': '/tutorials/deployment',
   '/flow/dapp-development/flow-dapp-anatomy': '/tutorials/flow-dapp-anatomy',
   '/flow/dapp-development/fungible-tokens': '/tutorials/fungible-tokens',
-  '/flow/dapp-development/in-dapp-payments': '/tutorials/in-dapp-payments',
+  '/flow/dapp-development/in-dapp-payments':
+    '/guides/nft-marketplace/in-dapp-payments',
   '/flow/dapp-development/mainnet-account-setup':
     '/tutorials/mainnet-account-setup',
-  '/flow/dapp-development/mainnet-deployment': '/tutorials/mainnet-deployment',
+  '/flow/dapp-development/mainnet-deployment':
+    '/guides/deploying/mainnet-deployment',
   '/flow/dapp-development/NFT-drop-styles': '/tutorials/NFT-drop-styles',
   '/flow/dapp-development/smart-contracts': '/tutorials/smart-contracts',
   '/flow/dapp-development/testnet-deployment': '/tutorials/testnet-deployment',
-  '/flow/dapp-development/testnet-testing': '/tutorials/testnet-testing',
+  '/flow/dapp-development/testnet-testing': '/guides/deploying/testnet-testing',
   '/flow/dapp-development/user-accounts-and-wallets':
     '/tutorials/user-accounts-and-wallets',
   '/flow/developer-portal/contribution-guidelines':
@@ -163,15 +165,15 @@ const routeMapping = {
   // flow/flow-token/TODO
   '/flow/flow-token/wallets': '/concepts/flow-token/wallets',
   '/flow/fungible-tokens': '/concepts/token-standards/fungible-tokens',
-  '/flow/nft-marketplace': '/tooling/nft-marketplace',
+  '/flow/nft-marketplace': '/guides/nft-marketplace',
   '/flow/nft-marketplace/best-practices':
-    '/tooling/nft-marketplace/best-practices',
+    '/guides/nft-marketplace/best-practices',
   '/flow/nft-marketplace/building-blocks':
-    '/tooling/nft-marketplace/building-blocks',
+    '/guides/nft-marketplace/building-blocks',
   '/flow/nft-marketplace/handling-accounts':
-    '/tooling/nft-marketplace/handling-accounts',
-  '/flow/nft-marketplace/minting-nfts': '/tooling/nft-marketplace/minting-nfts',
-  '/flow/nft-marketplace/selling-nfts': '/tooling/nft-marketplace/selling-nfts',
+    '/guides/nft-marketplace/handling-accounts',
+  '/flow/nft-marketplace/minting-nfts': '/guides/nft-marketplace/minting-nfts',
+  '/flow/nft-marketplace/selling-nfts': '/guides/nft-marketplace/selling-nfts',
   '/hybrid-custody': '/concepts/hybrid-custody',
   '/hybrid-custody/get-started': '/concepts/hybrid-custody/get-started',
   '/hybrid-custody/guides/account-abstraction':

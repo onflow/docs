@@ -1,7 +1,11 @@
 ---
-title: In-dapp Payments on Flow
-sidebar_label: In-dapp Payments
+title: In App Payments on Flow
+description: Learn about the different payment options available for applications on Flow.
+sidebar_label: In App Payments
+sidebar_position: 6
 ---
+
+## Introduction
 
 User payments are an important part of many blockchain dapps. In order to create a stellar user experience, your dapp should make it as easy as possible for users to purchase digital assets. For most users, this means being able to pay for digital assets (e.g. NFTs) using their local fiat currency (e.g. via credit card).
 
@@ -18,7 +22,7 @@ This section will highlight the considerations you should make when implementing
 
 ### FLOW
 
-FLOW is the default cryptocurrency that powers the Flow blockchain network, and is primarily used for staking and for paying [network fees](../concepts/flow-token/concepts.md#fees).
+FLOW is the default cryptocurrency that powers the Flow blockchain network, and is primarily used for staking and for paying [network fees](../../concepts/flow-token/concepts.md#fees).
 
 Many of the payment providers support FLOW, including well-trusted cryptocurrency exchanges.
 
