@@ -1,4 +1,9 @@
 {
     "label": "NFT Marketplace",
-    "position": 3
-}
+    "position": 3,
+    "customProps": {
+      "icon": "📚",
+      "description": "Guides to NFT Marketplace"
+    }
+  }
+  
