@@ -32,10 +32,6 @@ The [Visual Studio Code](./vscode-extension/index.mdx) extension for Cadence. Ex
 
 The [NFT Catalog](./nft-catalog/overview.mdx) is an on chain registry listing NFT collections that exists on Flow which adhere to the NFT metadata standard. This empowers dApp developers to easily build on top of and discover interoperable NFT collections on Flow.
 
-## NFT Marketplace
-
-The [NFT Marketplace](./nft-marketplace/index.md) is a guide thet provides required information to the development teams looking to build NFT marketplaces on the Flow blockchain.
-
 ## Flow JS testing (deprecated)
 
 [Flow JS testing](./flow-js-testing/index.md) is a Jest based framework to enable Cadence testing via a set of JavaScript methods and tools

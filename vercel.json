@@ -84,7 +84,7 @@
     },
     {
       "source": "/flow/nft-marketplace/:path*",
-      "destination": "/tooling/nft-marketplace/:path*",
+      "destination": "/guides/nft-marketplace/:path*",
       "permanent": true
     },
     {
@@ -429,7 +429,12 @@
     },
     {
       "source": "/nft-marketplace/:path*",
-      "destination": "/tooling/nft-marketplace/:path*",
+      "destination": "/guides/nft-marketplace/:path*",
+      "permanent": true
+    },
+    {
+      "source": "/tooling/nft-marketplace/:path*",
+      "destination": "/guides/nft-marketplace/:path*",
       "permanent": true
     },
     {

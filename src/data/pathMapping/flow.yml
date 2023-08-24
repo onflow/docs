@@ -38,7 +38,7 @@
 ./docs/content/dapp-development/deployment.md: docs/tutorials/deployment.md
 ./docs/content/dapp-development/flow-dapp-anatomy.md: docs/tutorials/flow-dapp-anatomy.md
 ./docs/content/dapp-development/fungible-tokens.md: docs/tutorials/fungible-tokens.md
-./docs/content/dapp-development/in-dapp-payments.mdx: docs/tutorials/in-dapp-payments.mdx
+./docs/content/dapp-development/in-dapp-payments.mdx: docs/guides/nft-marketplace/in-dapp-payments.mdx
 ./docs/content/dapp-development/index.md: docs/tutorials/intro.md
 ./docs/content/dapp-development/mainnet-account-setup.md: docs/tutorials/mainnet-account-setup.md
 ./docs/content/dapp-development/mainnet-deployment.md: docs/tutorials/mainnet-deployment.md
@@ -76,12 +76,12 @@
 ./docs/content/nft-catalog/composability-nft-guide.mdx: docs/tooling/nft-catalog/composability-nft-guide.mdx
 ./docs/content/nft-catalog/npm.mdx: docs/tooling/nft-catalog/npm.mdx
 ./docs/content/nft-catalog/overview.mdx: docs/tooling/nft-catalog/overview.mdx
-./docs/content/nft-marketplace/best-practices.md: docs/tooling/nft-marketplace/best-practices.md
-./docs/content/nft-marketplace/building-blocks.md: docs/tooling/nft-marketplace/building-blocks.md
-./docs/content/nft-marketplace/handling-accounts.md: docs/tooling/nft-marketplace/handling-accounts.md
-./docs/content/nft-marketplace/index.md: docs/tooling/nft-marketplace/index.md
-./docs/content/nft-marketplace/minting-nfts.md: docs/tooling/nft-marketplace/minting-nfts.md
-./docs/content/nft-marketplace/selling-nfts.md: docs/tooling/nft-marketplace/selling-nfts.md
+./docs/content/nft-marketplace/best-practices.md: docs/guides/nft-marketplace/best-practices.md
+./docs/content/nft-marketplace/building-blocks.md: docs/guides/nft-marketplace/building-blocks.md
+./docs/content/nft-marketplace/handling-accounts.md: docs/guides/nft-marketplace/handling-accounts.md
+./docs/content/nft-marketplace/index.md: docs/guides/nft-marketplace/index.md
+./docs/content/nft-marketplace/minting-nfts.md: docs/guides/nft-marketplace/minting-nfts.md
+./docs/content/nft-marketplace/selling-nfts.md: docs/guides/nft-marketplace/selling-nfts.md
 ./docs/content/node-operation/access-node-setup.mdx: docs/concepts/nodes/node-operation/access-node-setup.md
 ./docs/content/node-operation/byzantine-node-attack-response.mdx: docs/concepts/nodes/node-operation/byzantine-node-attack-response.mdx
 ./docs/content/node-operation/db-encryption-existing-operator.mdx: docs/concepts/nodes/node-operation/db-encryption-existing-operator.mdx
