@@ -2,7 +2,7 @@
 sidebar_position: 3
 description: Mechanisms that connect different blockchain networks, allowing secure and decentralized transfer of assets and data across platforms.
 sidebar_custom_props:
-  icon: ⛩️
+  icon: ⛓️
 ---
 
 # Bridges

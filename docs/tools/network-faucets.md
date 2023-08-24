@@ -2,7 +2,7 @@
 sidebar_position: 5
 description: Get free Flow tokens for testing. Faucets are like taps for tokens, useful for trying Flow without buying tokens.
 sidebar_custom_props:
-  icon: 🚰
+  icon: 💧
 ---
 
 # Network Faucets

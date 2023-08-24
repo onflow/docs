@@ -76,7 +76,7 @@ function CardCategory({
   return (
     <CardLayout
       href={href}
-      icon="🗃️"
+      icon={item.customProps?.icon || '🗃️'}
       title={item.label}
       description={
         item.description ??

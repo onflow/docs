@@ -5,7 +5,7 @@ description: |
   - Quick node
   - Tatum
 sidebar_custom_props:
-  icon: 🖥️
+  icon: 📚
 ---
 
 # Node Providers
