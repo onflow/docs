@@ -3,48 +3,104 @@ title: Fungible Token (FT) Standard
 sidebar_position: 5
 ---
 
-This is a description of the Flow standard for fungible token contracts.  It is meant to contain the minimum requirements to implement a safe, secure, easy to understand, and easy to use fungible token contract. It also includes an example implementation to show how a concrete smart contract would actually implement the interface.
+## FLOW as a Native Token
 
-## What is Flow?
+FLOW is the default token for the Flow protocol, meaning it is used for all protocol-level fee payments,
+rewards and staking transactions. FLOW implements the standard [Flow Fungible Token interface](https://github.com/onflow/flow-ft),
+which all other on-chain fungible tokens also conform to. This interface is defined in Cadence,
+Flow's native smart-contract programming language, which makes it easy to write applications that
+interact with FLOW.
 
-Flow is a new blockchain for open worlds. Read more about it [here](https://flow.com/).
+## How to Get FLOW
 
-## What is Cadence?
+There are two ways to acquire FLOW tokens as yield:
 
-Cadence is a new Resource-oriented programming language 
-for developing smart contracts for the Flow Blockchain.
-Read more about it [here](../../../cadence/intro.md) and see its implementation [here](https://github.com/onflow/cadence)
+1. [Earn FLOW as a Validator or Delegator](../../building-on-flow/run-and-secure/staking/06-technical-overview.mdx): Receive newly-minted FLOW as a reward for running a node.
+1. [Earn FLOW as a Community Contributor](https://github.com/onflow/developer-grants): Flow offers grants for selected proposals as well as RFPs for teams to submit proposals for funded development
 
-We recommend that anyone who is reading this should have already
-completed the [Cadence Tutorials](../../../cadence/tutorial/01-first-steps.mdx) 
-so they can build a basic understanding of the programming language.
+## How to Use FLOW
 
-Resource-oriented programming, and by extension Cadence, 
-is the perfect programming environment for currencies, because users are able
-to store their tokens directly in their accounts and transact
-peer-to-peer. Please see the [blog post about resources](https://medium.com/dapperlabs/resource-oriented-programming-bee4d69c8f8e)
-to understand why they are perfect for digital assets.
+With FLOW, you can:
 
-## Feedback
+- Spend
+- Stake
+- Delegate
+- Hold
+- Vote
+- Send and share
+- Create, develop, and grow your dapp
 
-Flow and Cadence are both still in development, so this standard will still 
-be going through a lot of changes as the protocol and language evolves, 
-and as we receive feedback from the community about the standard.
+### Spending FLOW
 
-We'd love to hear from anyone who has feedback. 
-Main feedback we are looking for is:
+All you need to spend Flow is an account and a tool for signing transactions
+(a wallet, custodian, or other signing service).
+The FCL (Flow Client Library) makes it super duper easy to go to any dapp,
+login with your account, have a great time,
+and then sign with the wallet of your choice only once you decide to make a purchase.
 
-The feedback we are looking for is:
+### Staking FLOW
 
-- Are there any features that are missing from the standard?
-- Are the features that we have included defined in the best way possible?
-- Are there any pre and post conditions for functions that are missing?
-- Are the pre and post conditions defined well enough? Error messages?
-- Are there any other actions that need an event defined for them?
-- Are the current event definitions clear enough and do they provide enough information for apps and other actors a clear look into what is happening?
-- Are the variable, function, and parameter names descriptive enough?
-- Are there any openings for bugs or vulnerabilities that we are not noticing?
-- Is the documentation/comments clear and concise and organized in a coherent manner?
+[You can use FLOW to operate a staked node.](../../building-on-flow/run-and-secure/staking/06-technical-overview.mdx) Node operators receive newly-minted FLOW
+as a reward for helping to secure the network.
+
+### Delegating FLOW
+
+[You can use FLOW for stake delegation.](../../building-on-flow/run-and-secure/staking/06-technical-overview.mdx) Delegators receive newly-minted FLOW
+as a reward for helping to secure the network.
+
+### Holding FLOW
+
+If you have already purchased FLOW and wish to hold it, you have a couple of options:
+
+- For relatively small, short term holdings - most people use a wallet.
+  Wallets are used to help you sign transactions (verify your actions) when using your FLOW tokens.
+
+- For larger, long term holdings - you may want to use a custody provider to keep your funds safe.
+
+You can find wallets and custodians supporting Flow in the [Flow Port](https://port.onflow.org/)
+
+### Voting with FLOW
+
+Participating in the Flow community is more than just running a node or building a dapp.
+It's also about engaging in discussion, debate, and decision making about the protocol,
+the content on it, and the people impacted by it.
+You can use your Flow account to submit votes to community polls and other governance related activities.
+
+### Sending and Sharing FLOW
+
+If you simply want to share the love and bring your friends to Flow, it's easier than an edible arrangement.
+
+It is possible to use the Flow blockchain without holding any FLOW tokens yourself.
+Free to play games, trials, community polls,
+and other community activities can all take place with only an account
+(which may be created on a person's behalf)
+and a small fixed fee which may be paid by a user agent.
+
+The protocol requires some FLOW tokens to process these transactions,
+but (and this is the cool part!) a product can support users who do not themselves hold FLOW
+while still providing that user with all the underlying security guarantees the Flow protocol provides.
+
+Transferring FLOW, creating accounts, and updating keys are all actions made easy on [Flow Port](https://port.onflow.org/)
+
+### Submitting Transactions and Updating Users
+
+Transactions are submitted using a Flow SDK via the Access API.
+
+On Flow, a transaction is identified by its hash - the hash that exists as soon as that transaction is signed and submitted to an Access or Collection node.
+Results of transactions can be queried by transaction hash through the Access API.
+A user can check the status of a transaction at any time via the [Flow Block Explorer](https://flow.bigdipper.live/).
+
+To expose these results natively in your app, you can use a Flow SDK to fetch transaction results,
+[for example using the Flow Go SDK](https://github.com/onflow/flow-go-sdk#querying-transaction-results).
+
+Using a Flow SDK you can also fetch account state by address from a Flow Access API,
+[for example using the Flow Go SDK](https://github.com/onflow/flow-go-sdk#querying-accounts).
+
+Once the transaction is sealed, an event is emitted and you will be able to read transaction events and update the user.
+
+The Flow SDKs also allow polling for events using the Flow Access API,
+[for example using the Flow Go SDK](https://github.com/onflow/flow-go-sdk#querying-events).
+
 
 ## Basics of the Standard:
 
