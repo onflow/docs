@@ -649,9 +649,9 @@ After you have successfully [built a transaction](#build-the-transaction) the ne
 [<img src="https://raw.githubusercontent.com/onflow/sdks/main/templates/documentation/ref.svg" width="130" />](https://pkg.go.dev/github.com/onflow/flow-go-sdk#Transaction.SignEnvelope)
 
 Flow introduces new concepts that allow for more flexibility when creating and signing transactions.
-Before trying the examples below, we recommend that you read through the [transaction signature documentation](../../../concepts/start-here/accounts-and-keys.md).
+Before trying the examples below, we recommend that you read through the [transaction signature documentation](../../../concepts/transactions.md).
 
-After you have successfully [built a transaction](#build-the-transaction) the next step in the process is to sign it. Flow transactions have envelope and payload signatures, and you should learn about each in the [signature documentation](../../../concepts/start-here/accounts-and-keys.md#anatomy-of-a-transaction).
+After you have successfully [built a transaction](#build-the-transaction) the next step in the process is to sign it. Flow transactions have envelope and payload signatures, and you should learn about each in the [signature documentation](../../../concepts/transactions.md#anatomy-of-a-transaction).
 
 Quick example of building a transaction:
 
@@ -961,7 +961,7 @@ func demo(tx *flow.Transaction) {
 
 On Flow, account creation happens inside a transaction. Because the network allows for a many-to-many relationship between public keys and accounts, it's not possible to derive a new account address from a public key offline.
 
-The Flow VM uses a deterministic address generation algorithm to assign account addresses on chain. You can find more details about address generation in the [accounts & keys documentation](../../../concepts/start-here/accounts-and-keys.md).
+The Flow VM uses a deterministic address generation algorithm to assign account addresses on chain. You can find more details about address generation in the [accounts & keys documentation](../../../concepts/accounts.md).
 
 #### Public Key
 
@@ -971,7 +971,7 @@ Flow uses ECDSA key pairs to control access to user accounts. Each key pair can 
 
 Flow represents ECDSA public keys in raw form without additional metadata. Each key is a single byte slice containing a concatenation of its X and Y components in big-endian byte form.
 
-A Flow account can contain zero (not possible to control) or more public keys, referred to as account keys. Read more about [accounts in the documentation](../../../concepts/start-here/accounts-and-keys.md#accounts).
+A Flow account can contain zero (not possible to control) or more public keys, referred to as account keys. Read more about [accounts in the documentation](../../../concepts/accounts.md#accounts).
 
 An account key contains the following data:
 
@@ -1072,7 +1072,7 @@ encPrivateKey := privateKey.Encode()
 publicKey := privateKey.PublicKey()
 ```
 
-The example above uses an ECDSA key pair on the P-256 (secp256r1) elliptic curve. Flow also supports the secp256k1 curve used by Bitcoin and Ethereum. Read more about [supported algorithms here](../../../concepts/start-here/accounts-and-keys.md#supported-signature--hash-algorithms).
+The example above uses an ECDSA key pair on the P-256 (secp256r1) elliptic curve. Flow also supports the secp256k1 curve used by Bitcoin and Ethereum. Read more about [supported algorithms here](../../../concepts/accounts.md#supported-signature--hash-algorithms).
 
 ### Transfering Flow
 

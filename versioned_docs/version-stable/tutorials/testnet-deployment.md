@@ -15,7 +15,7 @@ Anybody can use the [Testnet Faucet](https://testnet-faucet-v2.onflow.org/) to c
 
 #### Generate a Key
 
-To start, you'll need to generate an asymmetric cryptographic key pair (see [Accounts & Keys](../concepts/start-here/accounts-and-keys) for a list of supported algorithms).
+To start, you'll need to generate an asymmetric cryptographic key pair (see [Accounts & Keys](..) for a list of supported algorithms).
 
 For Testnet, you can generate a new key pair with the [Flow CLI](../tooling/flow-cli):
 
