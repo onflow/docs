@@ -65,7 +65,7 @@ Specify the block to retrieve by block ID or block height.
 - Name: `address`
 - Valid Input: Flow account address
 
-Flow [account address](../../../concepts/start-here/accounts-and-keys.md) (prefixed with `0x` or not).
+Flow [account address](../../../concepts/accounts.md) (prefixed with `0x` or not).
 
 
 ## Flags

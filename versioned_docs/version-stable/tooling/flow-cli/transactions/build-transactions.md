@@ -98,7 +98,7 @@ For passing complex argument values see [send transaction](./send-transactions.m
 - Default: service account
 
 Specify account address that will be paying for the transaction.
-Read more about payers [here](../../../concepts/start-here/accounts-and-keys.md).
+Read more about payers [here](../../../concepts/accounts.md).
 
 ### Proposer
 
