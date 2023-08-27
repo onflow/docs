@@ -1252,6 +1252,67 @@ are available for both variable-sized and fixed-sized or variable-sized arrays.
     // `fixedArrayReversedExample` is now `["PQR", "XYZ", "ABC"]`
     ```
 
+-
+    ```cadence
+    access(all)
+    fun map(_ f: (T: U)): [U]
+    ```
+
+    Returns a new array whose elements are produced by applying the mapper function on each element
+    of the original array.
+    Available if `T` is not resource-kinded.
+
+    ```cadence
+    let example = [1, 2, 3]
+    let trueForEven =
+        fun (_ x: Int): Bool {
+            return x % 2 == 0
+        }
+
+    let mappedExample: [Bool] = example.map(trueForEven)
+    // `mappedExample` is `[False, True, False]`
+    // `example` still remains as `[1, 2, 3]`
+
+    // Invalid: Map using a function which accepts a different type.
+    // This results in a type error, as the array contains `Int` values while function accepts 
+    // `Int64`.
+    let functionAcceptingInt64 =
+        fun (_ x: Int64): Bool {
+            return x % 2 == 0
+        }
+    let invalidMapFunctionExample = example.map(functionAcceptingInt64)
+    ```
+
+    ```cadence
+    access(all)
+    fun map(_ f: (T: U)): [U; N]
+    ```
+
+    Returns a new fixed-sized array whose elements are produced by applying the mapper function on
+    each element of the original array.
+    Available if `T` is not resource-kinded.
+
+    ```cadence
+    let fixedSizedExample: [String; 3] = ["ABC", "XYZYX", "PQR"]
+    let lengthOfString =
+        fun (_ x: String): Int {
+            return x.length
+        }
+
+    let fixedArrayMappedExample = fixedSizedExample.map(lengthOfString)
+    // `fixedArrayMappedExample` is now `[3, 5, 3]`
+    // `fixedSizedExample` still remains as ["ABC", "XYZYX", "PQR"]
+
+    // Invalid: Map using a function which accepts a different type.
+    // This results in a type error, as the array contains `String` values while function accepts 
+    // `Bool`.
+    let functionAcceptingBool =
+        fun (_ x: Bool): Int {
+            return 0
+        }
+    let invalidMapFunctionExample = fixedSizedExample.map(functionAcceptingBool)
+    ```
+
 #### Variable-size Array Functions
 
 The following functions can only be used on variable-sized arrays.
