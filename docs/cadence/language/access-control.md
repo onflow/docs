@@ -413,6 +413,79 @@ entitlement mapping M {
 
 attempting to map `(A | D)` through `M` will fail, since `A` should map to `(B, C)` and `D` should map to `E`, but these two outputs cannot be combined into a disjunctive set.
 
+### The `Identity` Mapping
+
+There is a `Identity` mapping built-in to Cadence that maps every input to itself as the output. 
+I.e., any entitlement set passed through the `Identity` map will come out unchanged in the output. 
+So, for example, for some resource defined like so:
+
+```cadence
+entitlement X
+
+resource SubResource {
+  // ...
+}
+
+resource OuterResource {
+    access(Identity) let childResource: @SubResource
+
+    access(Identity) getChildResource(): auth(Identity) &SubResource {
+      return &self.childResource
+    }
+
+    init(r: @SubResource) {
+        self.childResource = r
+    }
+}
+```
+
+Given some reference `ref` to `OuterResource` of type `auth(X) &OuterResource`, 
+accessing `ref.childResource` will yield a reference to `SubResource` of type `auth(X) &SubResource`. 
+
+One important point to note about the `Identity` mapping, however, is that because its full output range is unknown (and theoretically infinite),
+accessing an `Identity`-mapped field or function with an owned value will yield an empty output set. I.e. calling `getChildResource()` on an owned
+`OuterResource` value, for example, will produce an unauthorized `&SubResource` reference. 
+
+### Mapping Composition
+
+In the definition of an entitlement mapping, it is possible to `include` the definition of one or more other mappings, to "inherit" their mapping relations. 
+For example:
+
+```cadence
+entitlement mapping M {
+  X -> Y 
+  Y -> Z
+}
+
+entitlement mapping N {
+  E -> F
+}
+
+entitlement mapping P {
+  include M
+  include N
+  F -> G
+}
+```
+
+The entitlement mapping `P` includes all of the relations defined in `M` and `N`, along with the additional relations defined in its own definition.
+In general, an `include M` statement in the definition of an entitlement mapping `N` is equivalent to simply copy-pasting all the relations
+defined in `M` into `N`'s definition; support for `include` is provided primarily to reduce code-reuse and promote composition. 
+
+The `Identity` mapping can also be included; any mapping `M` that `include`s the `Identity` mapping will map its input set to itself, 
+along with any additional relations defined in the mapping, or in other included mappings. So, for example:
+
+```cadence
+entitlement mapping M {
+  include Identity
+  X -> Y 
+}
+```
+
+The mapping `M` would map the entitlement set `(X)` to `(X, Y)`.
+
+Any `include` statement that would produce a cyclical mapping will be rejected by the type-checker. 
+
 ### Built-in Mutability Entitlements
 
 A prominent use-case of entitlements is to control access to object based on mutability.
