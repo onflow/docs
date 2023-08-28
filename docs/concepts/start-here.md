@@ -16,11 +16,11 @@ Flow is a fast, decentralized, and developer-friendly blockchain designed to be 
 
 The following chapters summarize the content in this section. Read on more for details.
 
-## DApp Development
+## App Development
 
 The [development guide](../tutorials/intro.md) covers the Flow core concepts, including:
 
-- **DApp Client:** The dApp client is the interface through which users interact with your dApp. Web and mobile applications are typical examples of dApp clients.
+- **App Client:** The app client is the interface through which users interact with your app. Web and mobile applications are typical examples of app clients.
 - **Smart Contract:** A smart contract is a collection of code deployed to a permanent location on the blockchain that defines the core logic for a dApp.
 - **User Account:** A user account is a record on the blockchain that stores the digital assets owned by a single user.
 - **Transaction:** A transaction is a code submitted to the blockchain that mutates the state of one or more user accounts and smart contracts.
