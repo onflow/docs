@@ -133,6 +133,11 @@ A transaction can contain two types of signatures: **payload signatures** and **
 
 ![Screenshot 2023-08-17 at 14.52.51.png](_transactions_images/Screenshot_2023-08-17_at_14.52.51.png)
 
+### Signer Roles
+- **Proposer**: the account that specifies a proposal key.
+- **Payer**: the account paying for the transaction fees.
+- **Authorizers**: zero or more accounts authorizing the transaction to mutate their state.
+
 ### Payload[](../concepts/start-here/transaction-signing.md#payload)
 
 The transaction payload is the innermost portion of a transaction and contains the data that uniquely identifies the operations applied by the transaction as we have defined them above. In Flow, two transactions with the same payload will never be executed more than once.
