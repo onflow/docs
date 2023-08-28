@@ -138,11 +138,18 @@ For secure production keys, we suggest using key management services such as [Go
 
 ## Service Accounts
 
-The Flow Service Account is an account like any other on Flow except it is responsible for managing core network operations. You can think of the Service Account as the keeper of core network parameters which will be managed algorithmically over time but are currently set by a group of core contributors to ensure ease of updates to the network in this early stage of its development.
+### Flow Service Account
+The Service Account is a special account in Flow that has special permissions to manage system contracts. It is able to mint tokens, set fees, and update network-level contracts.
 
-The service account is the account that manages the core protocol requirements of Flow. 
-FlowServiceAccount deployed on the service account tracks transaction fees, and deployment permissions, and provides some convenience methods for Flow Token operations.
-Source: [FlowServiceAccount.cdc](../building-on-flow/core-contracts/service-account#docusaurus_skipToContent_fallback)
+### Tokens & Fees
+The Service Account has administrator access to the FLOW token smart contract, so it has authorization to mint and burn tokens. It also has access to the transaction fee smart contract and can adjust the fees charged for transactions execution on Flow.
+
+### Network Management
+The Service Account administers other smart contracts that manage various aspects of the Flow network, such as epochs and (in the future) validator staking auctions.
+
+### Governance
+Besides its special permissions, the Service Account is an account like any other in Flow. During the early phases of Flow's development, the account will be controlled by keys held by Dapper Labs. As Flow matures, the service account will transition to being controlled by a smart contract governed by the Flow community.
+
 
 ## Accounts Retrieval
 
