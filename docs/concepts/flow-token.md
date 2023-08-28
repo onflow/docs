@@ -19,7 +19,7 @@ interact with FLOW.
 
 There are two ways to acquire FLOW tokens as yield:
 
-1. [Earn FLOW as a Validator or Delegator](../../building-on-flow/run-and-secure/staking/06-technical-overview.mdx): Receive newly-minted FLOW as a reward for running a node.
+1. [Earn FLOW as a Validator or Delegator](../building-on-flow/run-and-secure/staking/06-technical-overview.mdx): Receive newly-minted FLOW as a reward for running a node.
 1. [Earn FLOW as a Community Contributor](https://github.com/onflow/developer-grants): Flow offers grants for selected proposals as well as RFPs for teams to submit proposals for funded development
 
 ## How to Use FLOW
@@ -44,12 +44,12 @@ and then sign with the wallet of your choice only once you decide to make a purc
 
 ### Staking FLOW
 
-[You can use FLOW to operate a staked node.](../../building-on-flow/run-and-secure/staking/06-technical-overview.mdx) Node operators receive newly-minted FLOW
+[You can use FLOW to operate a staked node.](../building-on-flow/run-and-secure/staking/06-technical-overview.mdx) Node operators receive newly-minted FLOW
 as a reward for helping to secure the network.
 
 ### Delegating FLOW
 
-[You can use FLOW for stake delegation.](../../building-on-flow/run-and-secure/staking/06-technical-overview.mdx) Delegators receive newly-minted FLOW
+[You can use FLOW for stake delegation.](../building-on-flow/run-and-secure/staking/06-technical-overview.mdx) Delegators receive newly-minted FLOW
 as a reward for helping to secure the network.
 
 ### Holding FLOW
@@ -107,4 +107,4 @@ The Flow SDKs also allow polling for events using the Flow Access API,
 
 ## How to Build with FLOW
 
-To get started building on Flow, please read the [Flow Developer Onboarding guide](../../tutorials/intro.md).
+To get started building on Flow, please read the [Flow Developer Onboarding guide](../tutorials/intro.md).
