@@ -172,7 +172,7 @@ docker run --rm \
 	-v /path/to/data:/data:rw \
 	--name flow-go \
 	--network host \
-	--ulimit nofile=8192 \
+	--ulimit nofile=500000 \
 	gcr.io/flow-container-registry/execution:<applicable docker tag> \
 	--nodeid=${FLOW_GO_NODE_ID} \
 	--bootstrapdir=/bootstrap \
@@ -184,6 +184,21 @@ docker run --rm \
 	--admin-addr=0.0.0.0:9002 \
 	--bind 0.0.0.0:3569 \
 	--loglevel=error
+```
+
+For execution nodes, it is recommend to increase the open files limit in your operating system. To do that, add the following to your `/etc/security/limits.conf` or the equivalent `limits.conf` for your distribution:
+
+```
+* hard nofile 500000
+* soft nofile 500000
+root hard nofile 500000
+root soft nofile 500000
+```
+
+Restart your machine to apply these changes. To verify that the new limits have been applied, run:
+
+```
+ulimit -n
 ```
 
 ### Verification
