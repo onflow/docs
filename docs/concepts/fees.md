@@ -77,13 +77,13 @@ Currently, the amount required to store 100 MB in account storage is 1 Flow.
 
 Please note that storing data in an account on Flow doesn’t charge tokens from the account, it just makes sure you will keep the tokens as a reserve. Once the storage is freed up you can transfer the Flow tokens. 
 
-### Storage Capacity of the Payer[](../concepts/start-here/storage.md#storage-capacity-of-the-payer)
+### Storage Capacity of the Payer[](../concepts/fees.md#storage-capacity-of-the-payer)
 
 The storage capacity of the Payer of a transaction is generally computed the same way as the capacity of any other account, however, the system needs to account for the transaction fees the payer will incur at the end of the transaction. The final transaction fee amount is not fully known at this step, only when accounts are checked for storage compliance. If their storage used is more than their storage capacity, the transaction will fail.
 
 Because of this, the payer's balance is conservatively considered to be lower by the maximum possible transaction fees, when checking for storage compliance. The maximum transaction fee of a specific transaction is the transaction fee as if the transaction would have used up all of its execution effort limit.
 
-### Storage Used[](../concepts/start-here/storage.md#storage-used)
+### Storage Used[](../concepts/fees.md#storage)
 
 All data that is in an account's storage counts towards storage used. Even when an account is newly created it is not empty. There are already some items in its storage:
 

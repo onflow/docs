@@ -339,7 +339,7 @@ const initAccount = async () => {
 }
 ```
 
-You can see the new fields we talked about. You'll also notice `fcl.authz`. That's shorthand for "use the current user to authorize this transaction", (you could also write it as `fcl.currentUser.authorization`). If you want to learn more about transactions and signing transactions, you can [view the docs here](../../concepts/start-here/accounts-and-keys.md#signing-a-transaction). For this example, we'll keep it simple with the user being each of these roles.
+You can see the new fields we talked about. You'll also notice `fcl.authz`. That's shorthand for "use the current user to authorize this transaction", (you could also write it as `fcl.currentUser.authorization`). If you want to learn more about transactions and signing transactions, you can [view the docs here](../start-here/accounts-and-keys.md). For this example, we'll keep it simple with the user being each of these roles.
 
 You'll also notice we are awaiting a response with our transaction data by using the syntax `fcl.tx(transactionId).onceSealed()`. This will return when the blockchain has sealed the transaction and it's complete in processing it and verifying it.
 
@@ -621,7 +621,7 @@ That's it! You now have a shippable Flow dapp that can auth, query, init account
 **More FCL**
 - [FCL API Quick Reference](../../tooling/fcl-js/api)
 - [More on Scripts](../../tooling/fcl-js/scripts.mdx)
-- [More on Transactions](../../tooling/fcl-js/transactions.mdx)
+- [More on Transactions](../start-here/accounts-and-keys.md)
 - [User Signatures](../../tooling/fcl-js/user-signatures.mdx)
 - [Proving Account Ownership](../../tooling/fcl-js/proving-authentication.mdx)
 
