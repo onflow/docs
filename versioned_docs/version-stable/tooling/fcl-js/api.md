@@ -498,7 +498,7 @@ A **convenience method** that produces the needed authorization details for the 
 
 #### Usage
 
-**Note:** The default values for `proposer`, `payer`, and `authorizations` are already `fcl.authz` so there is no need to include these parameters, it is shown only for example purposes. See more on [signing roles](../../concepts/transactions.md).
+**Note:** The default values for `proposer`, `payer`, and `authorizations` are already `fcl.authz` so there is no need to include these parameters, it is shown only for example purposes. See more on [signing roles](../../concepts/start-here/accounts-and-keys.md).
 
 ```javascript
 import * as fcl from "@onflow/fcl";

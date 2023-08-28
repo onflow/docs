@@ -18,7 +18,7 @@ https://github.com/onflow/flow-internal/issues/1131
 ## Creating an Account
 
 A user needs a Flow account in order to receive, hold and send FLOW tokens.
-The [accounts & keys documentation](../accounts.md) provides a detailed
+The [accounts & keys documentation](../start-here/accounts-and-keys.md) provides a detailed
 overview of how accounts work on Flow.
 
 You can create an account using templates and helper code from one of the Flow SDKs:
