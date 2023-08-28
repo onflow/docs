@@ -26,7 +26,7 @@ If you are coming from Ethereum, the following list shows corresponding modules 
 | Fungible Token Standard             | ERC-20                  | [Flow Fungible Token Standard](https://github.com/onflow/flow-ft)                                     |
 | NFT Standard                        | ERC-721/ERC-1155        | [Flow NFT Token Standard](https://github.com/onflow/flow-nft)                                         |
 | NFT Metadata Standard               | ERC-721                 | [Flow NFT Metadata Standard](https://github.com/onflow/flow-nft/#nft-metadata)                        |
-| Native Crypto Currency              | ETH                     | [FLOW](../../concepts/flow-token)                                                                                   |
+| Native Crypto Currency              | ETH                     | [FLOW](../../concepts/flow-token.md)                                                                                   |
 | Wallet Interaction Library          | web3.js                 | [Flow Client Library (FCL)](https://github.com/onflow/fcl-js)                                                                     |
 | Blockchain Interaction SDK          | web3.js                 | [Flow Client Library (FCL)](https://github.com/onflow/fcl-js), [Flow Go SDK](https://github.com/onflow/flow-go-sdk), and [many others](https://github.com/onflow/flip-fest/blob/main/winners.md) |
 | Block Explorer                      | Etherscan               | Flowscan                                                                                              |
