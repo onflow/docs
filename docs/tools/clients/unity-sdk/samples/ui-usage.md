@@ -255,7 +255,7 @@ Like Scripts, Transactions are cadence code that you write and are executed on t
 
 For more information about Transactions, see [cadence/language/transactions](../../../../cadence/language/transactions.md).
 
-For more information about Transaction signing, see [concepts/transaction-signing](../../../../concepts/start-here/transaction-signing.md).
+For more information about Transaction signing, see [concepts/transaction-signing](../../../../concepts/transactions.md#signing-a-transaction).
 
 For more information about Cadence programming, see [cadence](../../../../cadence/intro.md).
 

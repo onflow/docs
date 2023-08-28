@@ -33,7 +33,7 @@ The project consists of 3 key components:
 
 ### 1. Front End
 
-This is a complete web application built with NextJS and React that demonstrates how to build a website that connects directly to the Flow blockchain using [FCL](../../tools/clients/fcl-js/index.md). FCL handles authentication and authorization of [Flow accounts](../../concepts/start-here/accounts-and-keys.md), [signing transactions](../../concepts/start-here/transaction-signing.md), and querying data using using Cadence scripts.
+This is a complete web application built with NextJS and React that demonstrates how to build a website that connects directly to the Flow blockchain using [FCL](../../tools/clients/fcl-js/index.md). FCL handles authentication and authorization of [Flow accounts](../../concepts/accounts.md), [signing transactions](../../concepts/transactions.md#signing-a-transaction), and querying data using using Cadence scripts.
 
 ### 2. Back End
 

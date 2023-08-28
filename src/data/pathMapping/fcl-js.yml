@@ -1,6 +1,6 @@
 ./docs/index.mdx: docs/tooling/fcl-js/index.mdx.txt
 ./docs/index.md: docs/tooling/fcl-js/index.md
-./docs/tutorials/flow-app-quickstart.mdx: docs/tutorials/flow-app-quickstart.mdx
+./docs/tutorials/flow-app-quickstart.mdx: docs/guides/flow-app-quickstart.mdx
 ./docs/reference/api.md: docs/tooling/fcl-js/api.md
 ./docs/reference/interaction-templates.mdx: docs/tooling/fcl-js/interaction-templates.mdx
 ./docs/reference/proving-authentication.mdx: docs/tooling/fcl-js/proving-authentication.mdx

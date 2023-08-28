@@ -12,7 +12,7 @@ By now, you have a fully-functioning NFT marketplace with your own, new exclusiv
 
 ## Learn more about NFT marketplaces
 
-Dive deeper by reading the **[NFT Marketplace Guide](../../tools/toolchains/nft-marketplace/)**. It covers topics like the building blocks of marketplaces, how to handle accounts, how to mint and sell NFTs, and best practices for production-readiness.
+Dive deeper by reading the **[NFT Marketplace Guide](../../guides/nft-marketplace/)**. It covers topics like the building blocks of marketplaces, how to handle accounts, how to mint and sell NFTs, and best practices for production-readiness.
 
 ## Improve your Kitty Items project
 
@@ -26,7 +26,7 @@ The rarity is currently represented as the background color. You could change th
 
 ### Update metadata
 
-NFTs on Flow should follow the [metadata standard](../../concepts/core-contracts/09-nft-metadata.md). The Kitty Items contract is compatible with the metadata standard as well.
+NFTs on Flow should follow the [metadata standard](../../building-on-flow/core-contracts/09-nft-metadata.md). The Kitty Items contract is compatible with the metadata standard as well.
 
 > **Note**: You can review the following Cadence contract for more details: `cadence/contracts/MetadataViews.cdc`
 
@@ -54,7 +54,7 @@ The Flow community is [currently working on the royalty standard](https://github
 
 ## Deploy your Kitty Items project to the mainnet
 
-You successfully deployed your project to the testnet, which is helpful to test against a live network of the Flow blockchain. However, once you've improved your project and are ready to transfer it to a production environment, you need to deploy your contracts to the mainnet. [Follow the Mainnet Deployment guide](../mainnet-deployment) to accomplish that.
+You successfully deployed your project to the testnet, which is helpful to test against a live network of the Flow blockchain. However, once you've improved your project and are ready to transfer it to a production environment, you need to deploy your contracts to the mainnet. [Follow the Mainnet Deployment guide](../../guides/deploying/mainnet-deployment) to accomplish that.
 
 ## Get inspired by other projects
 

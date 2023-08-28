@@ -498,7 +498,7 @@ A **convenience method** that produces the needed authorization details for the 
 
 #### Usage
 
-**Note:** The default values for `proposer`, `payer`, and `authorizations` are already `fcl.authz` so there is no need to include these parameters, it is shown only for example purposes. See more on [signing roles](../../concepts/start-here/accounts-and-keys.md#signing-a-transaction).
+**Note:** The default values for `proposer`, `payer`, and `authorizations` are already `fcl.authz` so there is no need to include these parameters, it is shown only for example purposes. See more on [signing roles](../../concepts/start-here/accounts-and-keys.md).
 
 ```javascript
 import * as fcl from "@onflow/fcl";
@@ -653,7 +653,7 @@ export const signMessage = async () => {
 
 Discovery abstracts away code so that developers don't have to deal with the discovery of Flow compatible wallets, integration, or authentication. Using `discovery` from FCL allows dapps to list and authenticate with wallets while having full control over the UI. Common use cases for this are login or registration pages.
 
-(Alternatively, if you don't need control over your UI you can continue to use the `discovery.wallet` config value documented in the [Quickstart](../../tutorials/flow-app-quickstart.mdx) for the simplest configuration.)
+(Alternatively, if you don't need control over your UI you can continue to use the `discovery.wallet` config value documented in the [Quickstart](../../tutorials/flow-app-quickstart) for the simplest configuration.)
 
 > ⚠️**The following methods can only be used in web browsers.**
 
