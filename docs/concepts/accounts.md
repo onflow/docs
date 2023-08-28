@@ -119,6 +119,14 @@ Creating a multi-signature account is easily done by managing the account keys a
 
 ![Screenshot 2023-08-16 at 19.34.51.png](_accounts_images/Screenshot_2023-08-16_at_19.34.51.png)
 
+### Key Format
+
+We are supporting ECDSA with the curves `P-256` and `secp256k1`. For these curves, the public key is encoded into 64 bytes as `X||Y` where `||` is the concatenation operator.
+
+- `X` is 32 bytes and is the big endian byte encoding of the `x`-coordinate of the public key padded to 32, i.e. `X=x_31||x_30||...||x_0` or `X = x_31*256^31 + ... + x_i*256^i + ... + x_0`.
+- `Y` is 32 bytes and is the big endian byte encoding of the `y`-coordinate of the public key padded to 32, i.e. `Y=y_31||y_30||...||y_0` or `Y = y_31*256^31 + ... + y_i*256^i + ... + y_0`
+
+
 ## Account Creation
 
 Accounts are created on the Flow blockchain by calling a special [create account Cadence function](../cadence/language/accounts.mdx#account-creation). Once an account is created we can associate a new key with that account. Of course, all that can be done within a single transaction. Keep in mind that there is an account creation fee that needs to be paid. Account creation fees are relatively low, and we expect that wallet providers and exchanges will cover the cost when a user converts fiat to crypto for the first time.
