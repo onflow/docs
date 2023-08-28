@@ -522,7 +522,7 @@ transaction(greeting: String) {
 
 📖 **Arguments**. A transaction can accept zero or more arguments that are passed into the Cadence script. The arguments on the transaction must match the number and order declared in the Cadence script. Sample script from above accepts a single `String` argument.
 
-📖 **[Proposal key](../../../concepts/start-here/transaction-signing.md#proposal-key)** must be provided to act as a sequence number and prevent reply and other potential attacks.
+📖 **[Proposal key](../../../concepts/transactions.md#proposal-key)** must be provided to act as a sequence number and prevent reply and other potential attacks.
 
 Each account key maintains a separate transaction sequence counter; the key that lends its sequence number to a transaction is called the proposal key.
 
@@ -534,9 +534,9 @@ A proposal key contains three fields:
 
 A transaction is only valid if its declared sequence number matches the current on-chain sequence number for that key. The sequence number increments by one after the transaction is executed.
 
-📖 **[Payer](../../../concepts/start-here/transaction-signing.md#signer-roles)** is the account that pays the fees for the transaction. A transaction must specify exactly one payer. The payer is only responsible for paying the network and gas fees; the transaction is not authorized to access resources or code stored in the payer account.
+📖 **[Payer](../../../concepts/transactions.md#signer-roles)** is the account that pays the fees for the transaction. A transaction must specify exactly one payer. The payer is only responsible for paying the network and gas fees; the transaction is not authorized to access resources or code stored in the payer account.
 
-📖 **[Authorizers](../../../concepts/start-here/transaction-signing.md#signer-roles)** are accounts that authorize a transaction to read and mutate their resources. A transaction can specify zero or more authorizers, depending on how many accounts the transaction needs to access.
+📖 **[Authorizers](../../../concepts/transactions.md#signer-roles)** are accounts that authorize a transaction to read and mutate their resources. A transaction can specify zero or more authorizers, depending on how many accounts the transaction needs to access.
 
 The number of authorizers on the transaction must match the number of AuthAccount parameters declared in the prepare statement of the Cadence script.
 
@@ -649,9 +649,9 @@ After you have successfully [built a transaction](#build-the-transaction) the ne
 [<img src="https://raw.githubusercontent.com/onflow/sdks/main/templates/documentation/ref.svg" width="130" />](https://pkg.go.dev/github.com/onflow/flow-go-sdk#Transaction.SignEnvelope)
 
 Flow introduces new concepts that allow for more flexibility when creating and signing transactions.
-Before trying the examples below, we recommend that you read through the [transaction signature documentation](../../../concepts/start-here/accounts-and-keys.md).
+Before trying the examples below, we recommend that you read through the [transaction signature documentation](../../../concepts/transactions.md.
 
-After you have successfully [built a transaction](#build-the-transaction) the next step in the process is to sign it. Flow transactions have envelope and payload signatures, and you should learn about each in the [signature documentation](../../../concepts/start-here/accounts-and-keys.md#anatomy-of-a-transaction).
+After you have successfully [built a transaction](#build-the-transaction) the next step in the process is to sign it. Flow transactions have envelope and payload signatures, and you should learn about each in the [signature documentation](../../../concepts/transactions.md).
 
 Quick example of building a transaction:
 
@@ -695,7 +695,7 @@ if err != nil {
 
 Flow supports great flexibility when it comes to transaction signing, we can define multiple authorizers (multi-sig transactions) and have different payer account than proposer. We will explore advanced signing scenarios bellow.
 
-### [Single party, single signature](../../../concepts/start-here/transaction-signing.md#single-party-single-signature)
+### [Single party, single signature](../../../concepts/transactions.md#single-party-single-signature)
 
 - Proposer, payer and authorizer are the same account (`0x01`).
 - Only the envelope must be signed.
@@ -732,7 +732,7 @@ tx := flow.NewTransaction().
 err := tx.SignEnvelope(account1.Address, key1.Index, key1Signer)
 ```
 
-### [Single party, multiple signatures](../../../concepts/start-here/transaction-signing.md#single-party-multiple-signatures)
+### [Single party, multiple signatures](../../../concepts/transactions.md#single-party-multiple-signatures)
 
 - Proposer, payer and authorizer are the same account (`0x01`).
 - Only the envelope must be signed.
@@ -775,7 +775,7 @@ err := tx.SignEnvelope(account1.Address, key1.Index, key1Signer)
 err = tx.SignEnvelope(account1.Address, key2.Index, key2Signer)
 ```
 
-### [Multiple parties](../../../concepts/start-here/transaction-signing.md#multiple-parties)
+### [Multiple parties](../../../concepts/transactions.md#multiple-parties)
 
 - Proposer and authorizer are the same account (`0x01`).
 - Payer is a separate account (`0x02`).
@@ -822,7 +822,7 @@ err := tx.SignPayload(account1.Address, key1.Index, key1Signer)
 err = tx.SignEnvelope(account2.Address, key3.Index, key3Signer)
 ```
 
-### [Multiple parties, two authorizers](../../../concepts/start-here/transaction-signing.md#multiple-parties)
+### [Multiple parties, two authorizers](../../../concepts/transactions.md#multiple-parties)
 
 - Proposer and authorizer are the same account (`0x01`).
 - Payer is a separate account (`0x02`).
@@ -874,7 +874,7 @@ err := tx.SignPayload(account1.Address, key1.Index, key1Signer)
 err = tx.SignEnvelope(account2.Address, key3.Index, key3Signer)
 ```
 
-### [Multiple parties, multiple signatures](../../../concepts/start-here/transaction-signing.md#multiple-parties)
+### [Multiple parties, multiple signatures](../../../concepts/transactions.md#multiple-parties)
 
 - Proposer and authorizer are the same account (`0x01`).
 - Payer is a separate account (`0x02`).
@@ -961,7 +961,7 @@ func demo(tx *flow.Transaction) {
 
 On Flow, account creation happens inside a transaction. Because the network allows for a many-to-many relationship between public keys and accounts, it's not possible to derive a new account address from a public key offline.
 
-The Flow VM uses a deterministic address generation algorithm to assign account addresses on chain. You can find more details about address generation in the [accounts & keys documentation](../../../concepts/start-here/accounts-and-keys.md).
+The Flow VM uses a deterministic address generation algorithm to assign account addresses on chain. You can find more details about address generation in the [accounts & keys documentation](../../../concepts/accounts.md).
 
 #### Public Key
 
@@ -971,7 +971,7 @@ Flow uses ECDSA key pairs to control access to user accounts. Each key pair can 
 
 Flow represents ECDSA public keys in raw form without additional metadata. Each key is a single byte slice containing a concatenation of its X and Y components in big-endian byte form.
 
-A Flow account can contain zero (not possible to control) or more public keys, referred to as account keys. Read more about [accounts in the documentation](../../../concepts/start-here/accounts-and-keys.md#accounts).
+A Flow account can contain zero (not possible to control) or more public keys, referred to as account keys. Read more about [accounts in the documentation](../../../concepts/accounts.md).
 
 An account key contains the following data:
 
@@ -1051,7 +1051,7 @@ for _, event := range result.Events {
 
 ### Generate Keys
 
-[<img src="https://raw.githubusercontent.com/onflow/sdks/main/templates/documentation/ref.svg" width="130" />](../../../concepts/start-here/accounts-and-keys.md#supported-signature--hash-algorithms)
+[<img src="https://raw.githubusercontent.com/onflow/sdks/main/templates/documentation/ref.svg" width="130" />](../../../concepts/accounts.md#signature-and-hash-algorithms)
 
 Flow uses [ECDSA](https://en.wikipedia.org/wiki/Elliptic_Curve_Digital_Signature_Algorithm) signatures to control access to user accounts. Each key pair can be used in combination with the `SHA2-256` or `SHA3-256` hashing algorithms.
 
@@ -1072,7 +1072,7 @@ encPrivateKey := privateKey.Encode()
 publicKey := privateKey.PublicKey()
 ```
 
-The example above uses an ECDSA key pair on the P-256 (secp256r1) elliptic curve. Flow also supports the secp256k1 curve used by Bitcoin and Ethereum. Read more about [supported algorithms here](../../../concepts/start-here/accounts-and-keys.md#supported-signature--hash-algorithms).
+The example above uses an ECDSA key pair on the P-256 (secp256r1) elliptic curve. Flow also supports the secp256k1 curve used by Bitcoin and Ethereum. Read more about [supported algorithms here](../../../concepts/accounts.md#signature-and-hash-algorithms).
 
 ### Transfering Flow
 
