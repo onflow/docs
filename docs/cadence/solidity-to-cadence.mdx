@@ -87,21 +87,21 @@ controls minting through an “administrator Capability” that grants specific 
 ## Contract standards
 
 There are numerous widely-used contract standards established to benefit the ecosystem, for example
-[Fungible Token](../concepts/start-here#flow-token)(FT) and [Non-Fungible Token](../concepts/start-here#flow-nft#overview)(NFT)
+[Fungible Token](../concepts/start-here.md#flow-token)(FT) and [Non-Fungible Token](../concepts/start-here.md#flow-nft#overview)(NFT)
 standards which are conceptually equivalent to Ethereum's ERC-20 and ERC-721 standards. Cadence's object-oriented
 design means standards apply through contract sub-types such as Resources, Resource interfaces, or other types
 declared in the contract standard. Standards can define and limit behaviour and/or set conditions which
 implementations of the standard cannot violate.
 
-Detailed information about available standards and other core contracts can be found in [Introduction to Flow](../concepts/start-here).
+Detailed information about available standards and other core contracts can be found in [Introduction to Flow](../concepts/start-here.md.
 
 ### NFT standard and metadata
 
 Solidity must manage NFT metadata off-chain and NFTs typically link to IPFS JSON from on-chain.
 
-The Cadence NFT standard provides in-built support for metadata with specific types called [views](../concepts/start-here#flow-nft#overview#nft-metadata).
+The Cadence NFT standard provides in-built support for metadata with specific types called [views](../concepts/start-here.md#flow-nft#overview#nft-metadata).
 Views can be added to NFTs when minted and will always be available as part of the NFT. While metadata is stored
-on-chain, graphics and video content are stored off-chain. Cadence provides [utility views](../concepts/start-here#flow-nft#overview#list-of-common-views)
+on-chain, graphics and video content are stored off-chain. Cadence provides [utility views](../concepts/start-here.md#flow-nft#overview#list-of-common-views)
 for both HTTP and IPFS based media storage which remain linked to your NFT.
 
 Using NFT metadata views is a requirement to get listed in the [Flow NFT Catalog](https://www.flow-nft-catalog.com/).
