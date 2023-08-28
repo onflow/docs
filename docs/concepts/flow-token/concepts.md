@@ -19,7 +19,7 @@ If there is no one to charge, the transaction never goes through.
 If a transaction fails for some other reason, you will still be charged. The fee covers the cost of the network looking at the transaction
 and thus must be paid even if no change to your account is made.
 
-Transaction fees are charged based upon how much work is done by the transaction during execution, including creating accounts, reading and updating state, and executing of cadence logic. For more information, see [Segmented Transaction Fees on Flow](../start-here/variable-transaction-fees.md).
+Transaction fees are charged based upon how much work is done by the transaction during execution, including creating accounts, reading and updating state, and executing of cadence logic. For more information, see [Segmented Transaction Fees on Flow](../fees.md).
 
 ### Storage/Account Fees
 
