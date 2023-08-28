@@ -62,7 +62,7 @@ Take a note of the public key and go back to Flow Port. Open the ["Create a new 
 
 On the page, enter your public key from the CLI, ensure the hash algorithm is set to `SHA3_256` and the weight is set to `1000`. Finally, check the box confirming correctness and hit 'Submit'.
 
-> **Important**: Your account needs to have at least 0.002 FLOW for the account creation. More details can be found [in this guide](../../concepts/fees.md#storage#storageaccount-fees).
+> **Important**: Your account needs to have at least 0.002 FLOW for the account creation. More details can be found [in this guide](../../concepts/fees.md#storage).
 
 Once the transaction is sealed, you should scroll down to the events section and locate the `flow.AccountCreated` event with the newly generated address.
 
