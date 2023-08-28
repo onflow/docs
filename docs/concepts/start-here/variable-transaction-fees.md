@@ -79,7 +79,7 @@ In the future, a network surge will be applied when the network is busy due to a
 
 ### Storage fees
 
-Storage fees are implemented differently from transaction fees. Read the [Storing Data on Flow guide](./storage.md#storage-capacity) for more details. In summary, storage fees are a cost associated with storing data on-chain.
+Storage fees are implemented differently from transaction fees. Read the [Storing Data on Flow guide](../fees.md#storage-capacity) for more details. In summary, storage fees are a cost associated with storing data on-chain.
 
 ## Estimating transaction costs
 

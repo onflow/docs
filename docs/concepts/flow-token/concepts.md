@@ -27,7 +27,7 @@ The account creation fee is applied only when a new account is created.
 This fee covers the cost of storing up to 100kB of data in perpetuity.
 This fee is applied only once and can be "topped up" to add additional storage to an account.
 
-More information: [Storing Data on Flow](../start-here/storage.md)
+More information: [Storing Data on Flow](../fees.md)
 
 ## Accounts
 
