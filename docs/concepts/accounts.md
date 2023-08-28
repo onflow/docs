@@ -119,6 +119,14 @@ Creating a multi-signature account is easily done by managing the account keys a
 
 ![Screenshot 2023-08-16 at 19.34.51.png](_accounts_images/Screenshot_2023-08-16_at_19.34.51.png)
 
+### Key Format
+
+We are supporting ECDSA with the curves `P-256` and `secp256k1`. For these curves, the public key is encoded into 64 bytes as `X||Y` where `||` is the concatenation operator.
+
+- `X` is 32 bytes and is the big endian byte encoding of the `x`-coordinate of the public key padded to 32, i.e. `X=x_31||x_30||...||x_0` or `X = x_31*256^31 + ... + x_i*256^i + ... + x_0`.
+- `Y` is 32 bytes and is the big endian byte encoding of the `y`-coordinate of the public key padded to 32, i.e. `Y=y_31||y_30||...||y_0` or `Y = y_31*256^31 + ... + y_i*256^i + ... + y_0`
+
+
 ## Account Creation
 
 Accounts are created on the Flow blockchain by calling a special [create account Cadence function](../cadence/language/accounts.mdx#account-creation). Once an account is created we can associate a new key with that account. Of course, all that can be done within a single transaction. Keep in mind that there is an account creation fee that needs to be paid. Account creation fees are relatively low, and we expect that wallet providers and exchanges will cover the cost when a user converts fiat to crypto for the first time.
@@ -134,15 +142,22 @@ Anyone obtaining access to a private key can modify the account the key is assoc
 
 </Callout>
 
-For secure production keys, we suggest using key management services such as [Google key management](https://cloud.google.com/security-key-management) or [Amazon KMS](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Overview.Encryption.Keys.html), which are also supported by our CLI and SDKs. Those services are mostly great when integrated into your application. However, for personal use, you can securely use any [existing wallets](../tools/wallets.md) as well as a [hardware Ledger wallet](./flow-token/available-wallets.md#how-to-use-ledger).
+For secure production keys, we suggest using key management services such as [Google key management](https://cloud.google.com/security-key-management) or [Amazon KMS](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Overview.Encryption.Keys.html), which are also supported by our CLI and SDKs. Those services are mostly great when integrated into your application. However, for personal use, you can securely use any [existing wallets](../tools/wallets.md) as well as a [hardware Ledger wallet](../tools/wallets.md).
 
 ## Service Accounts
 
-The Flow Service Account is an account like any other on Flow except it is responsible for managing core network operations. You can think of the Service Account as the keeper of core network parameters which will be managed algorithmically over time but are currently set by a group of core contributors to ensure ease of updates to the network in this early stage of its development.
+### Flow Service Account
+The Service Account is a special account in Flow that has special permissions to manage system contracts. It is able to mint tokens, set fees, and update network-level contracts.
 
-The service account is the account that manages the core protocol requirements of Flow. 
-FlowServiceAccount deployed on the service account tracks transaction fees, and deployment permissions, and provides some convenience methods for Flow Token operations.
-Source: [FlowServiceAccount.cdc](../building-on-flow/core-contracts/service-account#docusaurus_skipToContent_fallback)
+### Tokens & Fees
+The Service Account has administrator access to the FLOW token smart contract, so it has authorization to mint and burn tokens. It also has access to the transaction fee smart contract and can adjust the fees charged for transactions execution on Flow.
+
+### Network Management
+The Service Account administers other smart contracts that manage various aspects of the Flow network, such as epochs and (in the future) validator staking auctions.
+
+### Governance
+Besides its special permissions, the Service Account is an account like any other in Flow. During the early phases of Flow's development, the account will be controlled by keys held by Dapper Labs. As Flow matures, the service account will transition to being controlled by a smart contract governed by the Flow community.
+
 
 ## Accounts Retrieval
 
