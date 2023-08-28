@@ -1683,7 +1683,7 @@ Key objects are used to specify signer keys when [creating accounts](./accounts.
 
 ### PublicKey
 
-Public keys are stored as `Buffer` objects which have been RLP encoded according to the [Flow spec](../../../concepts/start-here/accounts-and-keys.md).
+Public keys are stored as `Buffer` objects which have been RLP encoded according to the [Flow spec](../../../concepts/accounts.md).
 
 In order to generate this object using the Flow JS Testing library, use the [`pubFlowKey` method](./api.md#pubflowkeykeyobject) exported by the library.
 

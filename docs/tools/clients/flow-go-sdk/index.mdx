@@ -649,7 +649,7 @@ After you have successfully [built a transaction](#build-the-transaction) the ne
 [<img src="https://raw.githubusercontent.com/onflow/sdks/main/templates/documentation/ref.svg" width="130" />](https://pkg.go.dev/github.com/onflow/flow-go-sdk#Transaction.SignEnvelope)
 
 Flow introduces new concepts that allow for more flexibility when creating and signing transactions.
-Before trying the examples below, we recommend that you read through the [transaction signature documentation](../../../concepts/start-here/accounts-and-keys.md).
+Before trying the examples below, we recommend that you read through the [transaction signature documentation](../../../concepts/transactions.md.
 
 After you have successfully [built a transaction](#build-the-transaction) the next step in the process is to sign it. Flow transactions have envelope and payload signatures, and you should learn about each in the [signature documentation](../../../concepts/start-here/accounts-and-keys.md#anatomy-of-a-transaction).
 
@@ -961,7 +961,7 @@ func demo(tx *flow.Transaction) {
 
 On Flow, account creation happens inside a transaction. Because the network allows for a many-to-many relationship between public keys and accounts, it's not possible to derive a new account address from a public key offline.
 
-The Flow VM uses a deterministic address generation algorithm to assign account addresses on chain. You can find more details about address generation in the [accounts & keys documentation](../../../concepts/start-here/accounts-and-keys.md).
+The Flow VM uses a deterministic address generation algorithm to assign account addresses on chain. You can find more details about address generation in the [accounts & keys documentation](../../../concepts/accounts.md).
 
 #### Public Key
 
