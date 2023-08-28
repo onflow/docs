@@ -39,7 +39,7 @@ An account on Flow is a record in the chain state that holds the following infor
 - **Code**: Cadence contracts deployed to the account
 - **Storage**: area of the account used to store resource assets
 
-More information: [Accounts & Keys](../start-here/accounts-and-keys.md)
+More information: [Accounts & Keys](../accounts.md)
 
 ## Flow Service Account
 

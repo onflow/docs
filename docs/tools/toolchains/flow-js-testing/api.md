@@ -1679,7 +1679,7 @@ Key objects are used to specify signer keys when [creating accounts](./accounts.
 | `hashAlgorithm`      | No       | [HashAlgorithm](./api.md#hashalgorithm)           | Hashing algorithm to use for generating signatures to be signed by this key (default: `HashAlgorithm.SHA3_256`)             |
 | `privateKey`         | Yes      | string                                            | Private key to use to generate the signature                                                                                |
 | `signatureAlgorithm` | No       | [SignatureAlgorithm](./api.md#signaturealgorithm) | Signing algorithm used to sign transactions with this key (default: `SignatureAlgorithm.ECDSA_P256`)                        |
-| `weight`             | No       | number                                            | Weight of the key - see [Flow Core Concepts](../../../concepts/start-here/accounts-and-keys.md#keys) for more information |
+| `weight`             | No       | number                                            | Weight of the key - see [Flow Core Concepts](../../../concepts/accounts.md#account-keys) for more information |
 
 ### PublicKey
 
