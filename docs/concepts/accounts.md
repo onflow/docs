@@ -142,7 +142,7 @@ Anyone obtaining access to a private key can modify the account the key is assoc
 
 </Callout>
 
-For secure production keys, we suggest using key management services such as [Google key management](https://cloud.google.com/security-key-management) or [Amazon KMS](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Overview.Encryption.Keys.html), which are also supported by our CLI and SDKs. Those services are mostly great when integrated into your application. However, for personal use, you can securely use any [existing wallets](../tools/wallets.md) as well as a [hardware Ledger wallet](./flow-token/available-wallets.md#how-to-use-ledger).
+For secure production keys, we suggest using key management services such as [Google key management](https://cloud.google.com/security-key-management) or [Amazon KMS](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Overview.Encryption.Keys.html), which are also supported by our CLI and SDKs. Those services are mostly great when integrated into your application. However, for personal use, you can securely use any [existing wallets](../tools/wallets.md) as well as a [hardware Ledger wallet](../tools/wallets.md).
 
 ## Service Accounts
 
