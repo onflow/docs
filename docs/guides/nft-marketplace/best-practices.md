@@ -3,6 +3,8 @@ title: Best practices
 description: Learn about best practices and patterns for NFT marketplaces
 sidebar_label: Best practices
 sidebar_position: 2
+sidebar_custom_props:
+  icon: 🥇 
 ---
 
 Besides following the best practices of building a scalable web application that can handle unexpected user traffic surge, NFT marketplaces should also follow the best practices listed below but often ignored.

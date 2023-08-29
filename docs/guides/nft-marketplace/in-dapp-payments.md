@@ -3,6 +3,8 @@ title: In App Payments on Flow
 description: Learn about the different payment options available for applications on Flow.
 sidebar_label: In App Payments
 sidebar_position: 6
+sidebar_custom_props:
+  icon: 🏦
 ---
 
 ## Introduction

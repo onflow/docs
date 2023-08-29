@@ -3,6 +3,8 @@ title: NFT Marketplace Overview
 sidebar_label: Overview
 description: An overview of the NFT marketplace guide
 sidebar_position: 1
+sidebar_custom_props:
+  icon: 🔍
 ---
 
 This guide provides the required information to the development teams looking to build NFT marketplaces on the Flow blockchain.

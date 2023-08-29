@@ -3,6 +3,8 @@ title: Handling accounts
 description: Learn how to handle accounts
 sidebar_label: Handling accounts
 sidebar_position: 7
+sidebar_custom_props:
+  icon: 🤝
 ---
 
 ## Sign-in/up functionality for Users

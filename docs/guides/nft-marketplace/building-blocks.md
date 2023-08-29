@@ -3,6 +3,8 @@ title: Building blocks
 description: Learn about the key components of NFT marketplaces
 sidebar_label: Building blocks
 sidebar_position: 3
+sidebar_custom_props:
+  icon: 🧱
 ---
 
 Following are the basic building blocks for any NFT marketplace solution on the Flow blockchain. Throughout the guide, these will be referred to.
