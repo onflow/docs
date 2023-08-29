@@ -3,6 +3,8 @@ title: Selling NFTs
 description: Learn about the selling process
 sidebar_label: Selling NFTs
 sidebar_position: 5
+sidebar_custom_props:
+  icon: 🛒 
 ---
 
 Most NFT marketplaces performing on-chain sales use the [NFT Storefront Contract](https://github.com/onflow/nft-storefront). The contract allows NFT sellers to list their NFT for sale in any fungible token. NFT buyers send the fungible token amount equal to the listed price and receive the listed NFT in return.
