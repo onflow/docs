@@ -30,7 +30,7 @@ However, FLOW isn’t always well-suited for day-to-day user payments due to its
 
 <Callout type="warning">
 
-**Dapp Custody Gotcha:**  custodial dapps that allow their users to hold FLOW will need to comply with any necessary regulations regarding cryptocurrency asset custody. Consult your legal counsel.
+**Dapp Custody Gotcha:**  app-custody dapps that allow their users to hold FLOW will need to comply with any necessary regulations regarding cryptocurrency asset custody. Consult your legal counsel.
 
 </Callout>
 

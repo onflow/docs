@@ -9,13 +9,13 @@ This guide provides the required information to the development teams looking to
 
 Developers should read this guide in conjunction with the other materials for developers looking to build on the Flow blockchain, especially the [Flow concepts](../../concepts/intro.md).
 
-## Custodial vs. non-Custodial model
+## App-Custody vs. Self-Custody model
 
-The custodial model for an NFT marketplace is where the platform controls all the user accounts, the associated private keys, and, therefore, the assets in those accounts. The non-custodial model for an NFT marketplace is where users control their assets and use their wallets to perform activities in the marketplace.
+The app-custody model for an NFT marketplace is where the platform controls all the user accounts, the associated private keys, and, therefore, the assets in those accounts. The self-custody model for an NFT marketplace is where users control their assets and use their wallets to perform activities in the marketplace.
 
-If you are building a general-purpose NFT marketplace, the preferred approach is non-custodial, allowing users to interact with their third-party NFTs, and list them for sale.
+If you are building a general-purpose NFT marketplace, the preferred approach is self-custody, allowing users to interact with their third-party NFTs, and list them for sale.
 
-**This guide will primarily focus on the general-purpose non-custodial NFT marketplace platforms that enable users to utilize third-party NFTs on the marketplace platform for secondary sales.**
+**This guide will primarily focus on the general-purpose self-custody NFT marketplace platforms that enable users to utilize third-party NFTs on the marketplace platform for secondary sales.**
 
 ## Key capabilities
 
