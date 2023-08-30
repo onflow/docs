@@ -1,4 +1,8 @@
-# Contributing Content to the Developer Portal
+---
+sidebar_custom_props:
+    icon: 🥇
+---
+# Contributing to the Developer Portal
 
 Reading this document carefully will help you understand how to contribute your own content to the Developer Portal, and avoid problems along the way.
 
@@ -179,7 +183,7 @@ If you use `<DocCardList/>` on the top level category index page (e.g. `./docs/t
 
 ## SEO
 
-Basic SEO metadata can be included in markdown `frontmatter`. The developer Portal supports `title` and `description` metadata. If none is provided, a default will be applied.
+Basic SEO metadata can be included in markdown `frontmatter`. The Developer Portal supports `title` and `description` metadata. If none is provided, a default will be applied.
 
 Example `frontmatter`:
 
@@ -229,6 +233,14 @@ Use relative links directly to .md/.mdx files
 ### Callouts
 
 Many pages have callouts/admonitions. It is a slightly customized version of [standard admonitions](https://docusaurus.io/docs/markdown-features/admonitions)
+
+Available types:
+- `note` (also `secondary`)
+- `tip` (also `success`)
+- `info` (also `important`)
+- `caution`
+- `warning`
+- `danger`
 
 Example:
 ```markdown
