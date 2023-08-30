@@ -20,15 +20,16 @@ Flow multirole architecture makes it more scalable and provides several node typ
 
 The different types of nodes are described [here](./node-roles.mdx). As node operator, you can choose to run any of the different types of node that best fits your needs.
 
-### Light client a.k.a. Observer node
-The light client (a.k.a observer node) is one of the easiest node to spin up and can be run by Dapp developers who need the latest block data available locally e.g. a wallet application that needs to track the latest block ID and height.
+## Light client a.k.a. Observer node
+
+The light client is one of the easiest node to spin up and can be run by Dapp developers who need the latest block data available locally e.g. a wallet application that needs to track the latest block ID and height.
 In addition to supporting dapps, an observer node can also be run by access node operators who want to scale their access nodes' endpoints. Access node operators can spin up geographically dispersed observer nodes which can talk to their staked access nodes and to each other.
 
 The observer node is not staked but still provides the same API as the access node.
 
 To run a light client, follow this [guide](./observer-node.mdx).
 
-### Archive node
+## Archive node
 
 The Archive node provides a scalable and efficient way to access the history of Flow protocol and the execution state for the current spork. Like the observer node, it too can be run by anyone without being staked or added to the approved list of nodes.
 The Archive node follows the chain, stores and indexes both protocol and execution state, and allows retrieval of blocks, collections, transactions and events from the genesis of the current spork.
@@ -37,9 +38,14 @@ It also allows script execution and other read-only queries that require the exe
 
 The archive node is currently in beta and will be available as a GA release in H2 2023 (see [here](https://flow.com/post/flow-blockchain-node-operation-archive-node) for more)
 
-### Full node
+## Full node
 
-#### Access node
+A Full node is staked node that serves the network by providing data on request (i.e. gets and shares data on the p2p network).
+- The Access node is a full node that serves as an RPC node and acts as a gateway node for the network.
+- The Validator node (Collection, Consesnus, Verification and Execution) is a full node that plays a role in block generation.
+
+
+## Access node
 If you want local access to the protocol state data (blocks, collections, transactions) and do not want to use one of the community access nodes you can run an access node.
 Dapp developers, chain explorers, chain analytics etc. who want exclusive access to chain data and not be subject to the rate-limits on the community access node can choose to run an access node.
 
@@ -48,13 +54,13 @@ To run an access node, see the [Running a staked node](#running-a-staked-node) s
 
 Alternately, instead of running an access node, you can use the [Flow community](../access-api.mdx) access nodes or the ones run by any of the other node operators.
 
-#### Validator node
+## Validator node
 
 If you want your node to participate in the nitty-gritty of Flow protocol and help in block or collection creation, transaction execution, result verification or block verification then you should run one of these four node roles -
 - Collection
 - Consensus
 - Verification
-- Execution node
+- Execution
 
 Nodes with these roles are staked and also receive staking rewards.
 
