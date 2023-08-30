@@ -415,7 +415,7 @@ attempting to map `(A | D)` through `M` will fail, since `A` should map to `(B, 
 
 ### The `Identity` Mapping
 
-There is a `Identity` mapping built-in to Cadence that maps every input to itself as the output. 
+There is an `Identity` mapping built-in to Cadence that maps every input to itself as the output. 
 I.e., any entitlement set passed through the `Identity` map will come out unchanged in the output. 
 So, for example, for some resource defined like so:
 
