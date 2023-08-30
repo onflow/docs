@@ -12,10 +12,13 @@ The testing framework can only be used off-chain, e.g. by using the [Flow CLI](.
 
 Tests must be written in the form of a Cadence script.
 A test script may contain testing functions that starts with the `test` prefix,
-a `setup` function that always runs before the tests,
-a `tearDown` function that always runs at the end of all test cases,
-a `beforeEach` function that runs before each test case,
-and an `afterEach` function that runs after each test case.
+
+Additionally, it can have below special functions:
+- A `setup` function that always runs before the tests.
+- A `tearDown` function that always runs at the end of all test cases.
+- A `beforeEach` function that runs before each test case.
+- An `afterEach` function that runs after each test case.
+
 All the above four functions are optional.
 
 ```cadence
