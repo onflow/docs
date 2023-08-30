@@ -284,7 +284,7 @@ const config = {
             label: 'References',
           },
           {
-            to: 'community-resources/Introduction',
+            to: 'next/community-resources/Introduction',
             position: 'left',
             label: 'Resources',
           },
