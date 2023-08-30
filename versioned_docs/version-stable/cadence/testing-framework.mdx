@@ -270,6 +270,7 @@ access(all) fun testExample() {
     })
 
     Test.expect(-15, isNegative)
+
     // Alternatively, we can use `Test.assert` and the matcher's `test` function.
     Test.assert(isNegative.test(-15), message: "number is not negative")
 }
