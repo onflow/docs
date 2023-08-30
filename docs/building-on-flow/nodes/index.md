@@ -1,6 +1,6 @@
 ---
-title: Node Operations
-sidebar_position: 1
+title: Flow Nodes
+sidebar_position: 7
 ---
 
 # Hello Node Operator!
