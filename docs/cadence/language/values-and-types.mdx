@@ -1283,6 +1283,8 @@ are available for both variable-sized and fixed-sized or variable-sized arrays.
     let invalidMapFunctionExample = example.map(functionAcceptingInt64)
     ```
 
+`map` function is also available for fixed-sized arrays:
+
     ```cadence
     access(all)
     fun map(_ f: (T: U)): [U; N]
