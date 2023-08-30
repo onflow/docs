@@ -302,7 +302,7 @@ You should ensure that the user’s balance has enough balance to cover the high
 
 Wallets will handle the presentation of the final transaction costs but you can still facilitate the user experience by educating them within your application.
 
-If your user is using non-custodial wallets, they may have to pay the transaction and want to understand the fees. Here are some suggestions.
+If your user is using self-custody wallets, they may have to pay the transaction and want to understand the fees. Here are some suggestions.
 
 **Explain that costs can vary depending on the network usage**
 
@@ -358,4 +358,4 @@ Final fees are determined by the surge factor on the network. The surge factor f
 
 **I use Blocto and I haven't paid any fees yet. Why is that?**
 
-That is because Blocto is acting as the payer for transactions. Non-custodial wallets may have the user pay the transaction. Additionally, apps can sponsor the transaction if they choose.
+That is because Blocto is acting as the payer for transactions. self-custody wallets may have the user pay the transaction. Additionally, apps can sponsor the transaction if they choose.
