@@ -448,7 +448,7 @@ accessing an `Identity`-mapped field or function with an owned value will yield 
 
 ### Mapping Composition
 
-In the definition of an entitlement mapping, it is possible to `include` the definition of one or more other mappings, to "inherit" their mapping relations. 
+In the definition of an entitlement mapping, it is possible to `include` the definition of one or more other mappings, to copy over their mapping relations. 
 For example:
 
 ```cadence
