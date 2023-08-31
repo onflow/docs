@@ -9,7 +9,7 @@ sidebar_custom_props:
 
 This guide provides the required information to the development teams looking to build NFT marketplaces on the Flow blockchain.
 
-Developers should read this guide in conjunction with the other materials for developers looking to build on the Flow blockchain, especially the [Flow concepts](../../concepts/intro.md).
+Developers should read this guide in conjunction with the other materials for developers looking to build on the Flow blockchain, especially the [Flow concepts](../../concepts/start-here.md).
 
 ## App-Custody vs. Self-Custody model
 
