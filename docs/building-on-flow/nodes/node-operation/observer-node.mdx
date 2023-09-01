@@ -54,7 +54,7 @@ mkdir flow_observer/data
 #### Step 2 - Generate the network key
 
 Like any other Flow node, the light node also needs a networking [ECDSA key](https://github.com/onflow/flow-go/blob/master/cmd/bootstrap/utils/key_generation.go#L52-L54) to talk to the network.
-Download the Bootstrapping kit, and generate the observer networking key.
+Download the Bootstrapping kit, and generate the networking key.
 
 ```shell
 curl -sL -O storage.googleapis.com/flow-genesis-bootstrap/boot-tools.tar
@@ -226,7 +226,7 @@ An access node can support a light node by passing in the following two paramete
 
 ### Are light nodes subject to rate limits?
 
-The observer serves all the [Block related queries](https://github.com/onflow/flow/blob/master/protobuf/flow/access/access.proto#L24-L42) from is local database. These are not subjected to any rate limits.
+The light node serves all the [Block related queries](https://github.com/onflow/flow/blob/master/protobuf/flow/access/access.proto#L24-L42) from is local database. These are not subjected to any rate limits.
 
 However, it proxies all the other requests to the access node and those will be rate limited as per the rate limits defined on that access node.
 
