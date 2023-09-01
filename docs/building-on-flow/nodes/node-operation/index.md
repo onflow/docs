@@ -22,7 +22,7 @@ The different types of nodes are described [here](./node-roles.mdx). As node ope
 
 ## Light client a.k.a. Observer node
 
-The light client is one of the easiest node to spin up and can be run by Dapp developers who need the latest block data available locally e.g. a wallet application that needs to track the latest block ID and height.
+The light client is one of the easiest nodes to spin up and can be run by Dapp developers who need the latest block data available locally, e.g. a wallet application that needs to track the latest block ID and height.
 In addition to supporting dapps, an observer node can also be run by access node operators who want to scale their access nodes' endpoints. Access node operators can spin up geographically dispersed observer nodes which can talk to their staked access nodes and to each other.
 
 The observer node is not staked but still provides the same API as the access node.
