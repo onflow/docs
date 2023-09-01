@@ -42,7 +42,7 @@ The archive node is currently in beta and will be available as a GA release in H
 
 In a nutshell, Full Nodes are staked network participants that drive network progress, e.g. by creating and executing new blocks. They are the primary contributors to network safety (all of them validate the correctness of the consensus process and secure the network additionally through their role-specific tasks). In comparison, Light Nodes don't contribute to the networks progress. Though, they help to secure the network by also validating the integrity of the consensus process. 
 - The Access node is a full node that serves as an RPC node and acts as a gateway node for the network.
-- The Validator node (Collection, Consesnus, Verification and Execution) is a full node that plays a role in block generation.
+- The Validator node (Collection, Consensus, Verification and Execution) is a full node that plays a role in block generation.
 
 
 ## Access node
