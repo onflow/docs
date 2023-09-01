@@ -56,11 +56,11 @@ Alternately, instead of running an access node, you can use the [Flow community]
 
 ## Validator node
 
-If you want your node to participate in the nitty-gritty of Flow protocol and help in block or collection creation, transaction execution, result verification or block verification then you should run one of these four node roles -
-- Collection
-- Consensus
-- Verification
-- Execution
+You can also be a core participant in running the Flow network and contribute to securing it. Depending on your preference, you could run one or any combination of the following node roles:
+- Collection Nodes collaboratively create batches of transactions (in Flow terminology collections).
+- Consensus Nodes create blocks, schedule them for asynchronous execution, and commit execution results once they are verified (so called sealing). In addition, they orchestrate the Flow protocol and enforce protocol compliance. 
+- Execution Nodes asynchronously execute blocks. They are the power-houses in the protocol, providing the vast computational resources available to Flow transactions. 
+- Verification Nodes check the execution results in a distributed manner.
 
 Nodes with these roles are staked and also receive staking rewards.
 
