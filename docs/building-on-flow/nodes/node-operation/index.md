@@ -20,14 +20,14 @@ Flow multirole architecture makes it more scalable and provides several node typ
 
 The different types of nodes are described [here](./node-roles.mdx). As node operator, you can choose to run any of the different types of node that best fits your needs.
 
-## Light client a.k.a. Observer node
+## Light node a.k.a. Observer node
 
-The light client is one of the easiest nodes to spin up and can be run by Dapp developers who need the latest block data available locally, e.g. a wallet application that needs to track the latest block ID and height.
+The light node is one of the easiest nodes to spin up and can be run by Dapp developers who need the latest block data available locally, e.g. a wallet application that needs to track the latest block ID and height.
 In addition to supporting dapps, an observer node can also be run by access node operators who want to scale their access nodes' endpoints. Access node operators can spin up geographically dispersed observer nodes which can talk to their staked access nodes and to each other.
 
 The observer node is not staked but still provides the same API as the access node.
 
-To run a light client, follow this [guide](./observer-node.mdx).
+To run a light node, follow this [guide](./observer-node.mdx).
 
 ## Archive node
 
@@ -49,7 +49,10 @@ In a nutshell, Full Nodes are staked network participants that drive network pro
 If you want local access to the protocol state data (blocks, collections, transactions) and do not want to use one of the community access nodes you can run an access node.
 Dapp developers, chain explorers, chain analytics etc. who want exclusive access to chain data and not be subject to the rate-limits on the community access node can choose to run an access node.
 
-An access node is staked but since it does not participate in the core Flow protocol, it does not receive any staking rewards.
+An access node is minimally staked for network security.
+The central goal for Access Nodes is to provide RPC functionality to its node operator.
+In comparison, contributing to protocol progress (e.g. routing transactions to collector clusters, relaying blocks to the unstaked peer-to-peer network, etc.) should only take up a marginal fraction an Access Node's computational resources.
+Furthermore, Access Node operators can freely rate-limit the amount of resources their Access Node dedicates to supporting the broader ecosystem. Therefore, Access Nodes do not receive staking rewards.
 To run an access node, see the [Running a staked node](#running-a-staked-node) section below.
 
 Alternately, instead of running an access node, you can use the [Flow community](../access-api.mdx) access nodes or the ones run by any of the other node operators.
