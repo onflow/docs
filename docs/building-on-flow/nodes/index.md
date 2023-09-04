@@ -18,11 +18,11 @@ Flow multirole architecture makes it more scalable and provides several node typ
 
 ## Which node should you run?
 
-The different types of nodes are described [here](./node-roles.mdx). As node operator, you can choose to run any of the different types of node that best fits your needs.
+The different types of nodes are described [here](./node-operation/node-roles.mdx). As node operator, you can choose to run any of the different types of node that best fits your needs.
 
 The nodes are classified as follows
 
-![Flownodesdiagram.jpg](Flownodesdiagram.jpg)
+![Flownodesdiagram.jpg](./node-operation/Flownodesdiagram.jpg)
 
 ## Light node a.k.a. Observer node
 
@@ -31,7 +31,7 @@ In addition to supporting dapps, an observer node can also be run by access node
 
 The observer node is not staked but still provides the same API as the access node.
 
-To run a light node, follow this [guide](./observer-node.mdx).
+To run a light node, follow this [guide](./node-operation/observer-node.mdx).
 
 ## Archive node
 
@@ -59,7 +59,7 @@ In comparison, contributing to protocol progress (e.g. routing transactions to c
 Furthermore, Access Node operators can freely rate-limit the amount of resources their Access Node dedicates to supporting the broader ecosystem. Therefore, Access Nodes do not receive staking rewards.
 To run an access node, see the [Running a staked node](#running-a-staked-node) section below.
 
-Alternately, instead of running an access node, you can use the [Flow community](../access-api.mdx) access nodes or the ones run by any of the other node operators.
+Alternately, instead of running an access node, you can use the [Flow community](./access-api.mdx) access nodes or the ones run by any of the other node operators.
 
 ## Validator node
 
@@ -81,8 +81,8 @@ Before proceeding, ensure you have the stake required for your new node and that
 
 To set up a new Flow node you will need to complete the following steps:
 
-1. [Provision](./node-setup.mdx) the machine on which your node will run.
+1. [Provision](./node-operation/node-setup.mdx) the machine on which your node will run.
 
-2. [Generate and register](./node-bootstrap.mdx) your node identity.
+2. [Generate and register](./node-operation/node-bootstrap.mdx) your node identity.
 
-3. [Start](./node-bootstrap.mdx#step-3---start-your-flow-node) your node!
+3. [Start](./node-operation/node-bootstrap.mdx#step-3---start-your-flow-node) your node!
