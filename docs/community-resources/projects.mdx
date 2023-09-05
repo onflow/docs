@@ -1,0 +1,19 @@
+---
+title: Community Projects
+description: Explore the diverse projects and contributions within the Flow Blockchain community.
+sidebar_position: 3
+sidebar_custom_props:
+  icon: 🏟️
+---
+
+import {projects} from '/src/data/pages/community'
+import ProjectCards from '/src/ui/design-system/src/lib/Components/ProjectCards/index.tsx'
+import ProjectCard from '/src/ui/design-system/src/lib/Components/ProjectCard/index.tsx'
+
+{/* <ProjectCards projects={projects} /> */}
+
+Explore an array of exciting, grassroots initiatives, and projects that thrive within the Flow Blockchain community, each contributing to the platform's growth and innovation.
+
+{projects.map((project, index) => (
+  <ProjectCard key={index} {...project} />
+))}

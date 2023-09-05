@@ -65,16 +65,15 @@ export const projects: ProjectCardProps[] = [
     githubLink: 'https://github.com/onflow',
   },
   {
-    projectImage:
-      'https://www.ecdao.org/wp-content/uploads/2022/08/EC-Education.svg',
+    projectImage: 'https://academy.ecdao.org/ea-logo.png',
     heading: 'Emerald City',
     description: 'The first DAO built on the Flow Blockchain',
     tags: ['DAO'],
     projectLink: 'https://www.ecdao.org/',
     author: {
-      name: '',
+      name: 'Emerald City DAO',
       profileImage:
-        'https://pbs.twimg.com/profile_images/1474074643866832897/zwutjUPS_400x400.jpg',
+        'https://pbs.twimg.com/profile_images/1687225095557632005/tUCmv8_P_400x400.jpg',
     },
     numStars: 0,
     twitterLink:
@@ -91,7 +90,7 @@ export const projects: ProjectCardProps[] = [
     author: {
       name: 'Emerald City DAO',
       profileImage:
-        'https://pbs.twimg.com/profile_images/1474074643866832897/zwutjUPS_400x400.jpg',
+        'https://pbs.twimg.com/profile_images/1687225095557632005/tUCmv8_P_400x400.jpg',
     },
     numStars: 0,
     twitterLink:
@@ -148,6 +147,58 @@ export const projects: ProjectCardProps[] = [
     numStars: 0,
     twitterLink: 'https://twitter.com/_buildspace',
     githubLink: 'https://github.com/buildspace',
+  },
+  {
+    projectImage:
+      'https://substackcdn.com/image/fetch/w_170,c_limit,f_auto,q_auto:best,fl_progressive:steep/https%3A%2F%2Fbucketeer-e05bbc84-baa3-437e-9518-adb32be77984.s3.amazonaws.com%2Fpublic%2Fimages%2F9c14b8ac-0937-4fe7-9893-46d907c108b7_899x899.png',
+    heading: 'Flowverse',
+    description:
+      'Flowverse is the central hub to discover everything on Flow Blockchain',
+    tags: ['NFT', 'Project'],
+    projectLink: 'https://www.flowverse.co/',
+    author: {
+      name: 'Flowverse',
+      profileImage:
+        'https://pbs.twimg.com/profile_images/1480354080123867138/66piiWGx_400x400.jpg',
+    },
+    numStars: 0,
+    twitterLink: 'https://twitter.com/flowverse_',
+    githubLink: 'https://twitter.com/flowverse_',
+  },
+
+  {
+    projectImage:
+      'https://pbs.twimg.com/profile_images/1689380364718850049/rCElOZT2_400x400.jpg',
+    heading: 'Flovatar',
+    description:
+      'Flovatar is a next generation NFT creativity platform where people can become creator and make their characters with any combination they like.',
+    tags: ['NFT', 'Project'],
+    projectLink: 'https://flovatar.com/',
+    author: {
+      name: 'crash13override',
+      profileImage: 'https://avatars.githubusercontent.com/u/1100260?v=4',
+    },
+    numStars: 0,
+    twitterLink: 'https://twitter.com/flovatar',
+    githubLink: 'https://github.com/crash13override/flovatar',
+  },
+
+  {
+    projectImage:
+      'https://pbs.twimg.com/profile_images/1685696696993341440/Qfh_-K41_400x400.jpg',
+    heading: 'Flowty',
+    description:
+      'Flowty is a one-stop shop for all of your NFT needs on the Flow blockchain. From buying and selling to NFT-backed loans to NFT rentals, we have you covered.',
+    tags: ['NFT', 'Project'],
+    projectLink: 'https://www.flowty.io/',
+    author: {
+      name: 'Flowty',
+      profileImage:
+        'https://pbs.twimg.com/profile_images/1685696696993341440/Qfh_-K41_400x400.jpg',
+    },
+    numStars: 0,
+    twitterLink: 'https://twitter.com/flowty_io',
+    githubLink: 'https://twitter.com/flowty_io',
   },
 ];
 
