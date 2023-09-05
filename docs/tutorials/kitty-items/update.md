@@ -1,7 +1,7 @@
 ---
 title: Update
 description: Update modified contracts on the testnet
-sidebar_title: Update
+sidebar_label: Update
 ---
 
 In the [first step](./start) of this tutorial, you started the project on the testnet. The script uploaded the initial contracts on the network for you.

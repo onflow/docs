@@ -429,6 +429,7 @@ For example, assuming that a contract named `Test` which conforms to the `TestIn
 ```cadence
 let signer: AuthAccount = ...
 let contract: &TestInterface = signer.contracts.borrow<&TestInterface>(name: "Test")
+```
 
 ### Removing a Deployed Contract
 
@@ -459,9 +460,7 @@ about their behavior, their types, and the behavior of their types.
 Contract interfaces have to be declared globally.  Declarations
 cannot be nested in other types.
 
-If a contract interface declares a concrete type, implementations of it
-must also declare the same concrete type conforming to the type requirement.
-
+Contract interfaces may not declare concrete types (other than events), but they can declare interfaces.
 If a contract interface declares an interface type, the implementing contract
 does not have to also define that interface.  They can refer to that nested
 interface by saying `{ContractInterfaceName}.{NestedInterfaceName}`

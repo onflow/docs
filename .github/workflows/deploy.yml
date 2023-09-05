@@ -9,10 +9,9 @@ on:
     # https://docs.github.com/en/actions/using-workflows/workflow-syntax-for-github-actions#on
 
 env:
-  ALGOLIA_APP_ID: ${{vars.ALGOLIA_APP_ID}}
-  ALGOLIA_API_KEY: ${{vars.ALGOLIA_API_KEY}}
-  ALGOLIA_INDEX_NAME: ${{vars.ALGOLIA_INDEX_NAME}}
   MIXPANEL_PROJECT_TOKEN: ${{vars.MIXPANEL_PROJECT_TOKEN}}
+  TYPESENSE_NODE: ${{vars.TYPESENSE_NODE}}
+  TYPESENSE_SEARCH_ONLY_API_KEY: ${{secrets.TYPESENSE_SEARCH_ONLY_API_KEY}}
 
 jobs:
   deploy:
@@ -30,6 +29,8 @@ jobs:
 
       - name: Install dependencies
         run: yarn install --frozen-lockfile
+      - name: BS fix from https://github.com/typesense/docusaurus-theme-search-typesense/issues/23
+        run: sed -i '/process.env.DEBUG = namespaces;/c\// process.env.DEBUG = namespaces;' ./node_modules/debug/src/node.js
       - name: Build website
         run: yarn build
 
@@ -42,17 +43,20 @@ jobs:
           # Build output to publish to the `gh-pages` branch:
           publish_dir: ./build
 
-  algolia_recrawl:
-    name: Algolia Recrawl
-    runs-on: ubuntu-latest
-    steps:
-      - name: Vercel-MAIN => Algolia crawler creation and recrawl on preview (Push on Main branch)
-        uses: algolia/algoliasearch-crawler-github-actions@v1
-        id: crawler_push
+      - name: Run DocSearch Scraper
+        uses: celsiusnarhwal/typesense-scraper@v2
         with:
-          crawler-user-id: ${{ secrets.CRAWLER_USER_ID }}
-          crawler-api-key: ${{ secrets.CRAWLER_API_KEY }}
-          algolia-app-id: ${{ vars.ALGOLIA_APP_ID }}
-          algolia-api-key: ${{ vars.ALGOLIA_API_KEY }}
-          crawler-name: ${{ secrets.CRAWLER_NAME }}
-          site-url: ${{ vars.SITE_URL }}
+          # The secret containing your Typesense API key. Required.
+          api-key: ${{ secrets.TYPESENSE_ADMIN_API_KEY }}
+          
+          # The hostname or IP address of your Typesense server. Required.
+          host: ${{vars.TYPESENSE_NODE}}
+          
+          # The port on which your Typesense server is listening. Optional. Default: 8108.
+          port: 443
+          
+          # The protocol to use when connecting to your Typesense server. Optional. Default: http.
+          protocol: https
+          
+          # The path to your DocSearch config file. Optional. Default: docsearch.config.json.
+          config: docsearch.config.json

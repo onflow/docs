@@ -1,6 +1,6 @@
 ---
 title: Off-chain Dapp Infrastructure
-sidebar_title: Off-chain Infrastructure
+sidebar_label: Off-chain Infrastructure
 ---
 
 In addition to on-chain smart contracts, dapps also rely on off-chain infrastructure. For example, users often interact with a dapp through a web interface. In addition to this, some dapps rely on backend servers to query and index data from the blockchain. This section covers best practices for off-chain infrastructure on Flow.
@@ -22,7 +22,7 @@ Admin transactions are transactions that originate from the backend of your dapp
 
 For example, you may send an admin transaction that mints a batch of NFTs for purchase, or a transaction that adds an additional gameplay level to your game.
 
-For one-off administrative actions that do not require automation, such as contract deployment, you can use the [Flow CLI](../tooling/flow-cli/).
+For one-off administrative actions that do not require automation, such as contract deployment, you can use the [Flow CLI](../tools/toolchains/flow-cli/).
 
 ## Reading Data From Flow
 

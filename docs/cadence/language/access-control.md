@@ -222,7 +222,7 @@ some.f.contains(0)
 
 ## Entitlements
 
-Entitlements are a unique feature of Cadence that provide granular access control to each member of a struct or resource. 
+Entitlements provide granular access control to each member of a composite.
 Entitlements can be declared using the following syntax:
 
 ```cadence
@@ -231,6 +231,7 @@ entitlement F
 ```
 
 creates two entitlements called `E` and `F`. 
+
 Entitlements can be imported from other contracts and used the same way as other types. 
 If using entitlements defined in another contract, the same qualified name syntax is used as for other types:
 
@@ -341,16 +342,17 @@ resource OuterResource {
 
 With this pattern, we can store a `SubResource` on an `OuterResource` value, 
 and create different ways to access that nested resource depending on the entitlement one posseses. 
-Somoneone with only an unauthorized reference to `OuterResource` can only call the `getPubRef` function, 
+Someone with only an unauthorized reference to `OuterResource` can only call the `getPubRef` function, 
 and thus can only get an unauthorized reference to `SubResource` that lets them call `foo`. 
-However, someone with a `OuterEntitlement`-authorized refererence to the `OuterResource` can call the `getEntitledRef` function, 
+However, someone with a `OuterEntitlement`-authorized reference to the `OuterResource` can call the `getEntitledRef` function, 
 giving them a `SubEntitlement`-authorized reference to `SubResource` that allows them to call `bar`.
 
 This pattern is functional, but it is unfortunate that we are forced to "duplicate" the accessors to `SubResource`, 
 duplicating the code and storing two functions on the object, 
 essentially creating two different views to the same object that are stored as different functions. 
 To avoid necessitating this duplication, we add support to the language for "entitlement mappings", 
-a way to declare statically how entitlements are propagated from parents to child objects in a nesting hierarchy. 
+a way to declare statically how entitlements are propagated from parents to child objects in a nesting hierarchy.
+
 So, the above example could be equivalently written as:
 
 ```cadence
@@ -369,13 +371,9 @@ resource SubResource {
 }
 
 resource OuterResource {
-    access(self) let childResource: @SubResource
-
-    // by referering to `Map` here, we declare that the entitlements we receive when accessing the `getRef` function on this resource
-    // will depend on the entitlements we possess to the resource during the access. 
-    access(Map) fun getRef(): auth(Map) &SubResource {
-        return &self.childResource as auth(Map) &SubResource
-    }
+    // by referering to `Map` here, we declare that the entitlements we receive when accessing the `childResource` field
+    // on this resource will depend on the entitlements we possess to the resource during the access. 
+    access(Map) let childResource: @SubResource
 
     init(r: @SubResource) {
         self.childResource = r
@@ -384,21 +382,20 @@ resource OuterResource {
 
 // given some value `r` of type `@OuterResource`
 let pubRef = &r as &OuterResource
-let pubSubRef = pubRef.getRef() // has type `&SubResource`
+let pubSubRef = pubRef.childResource // has type `&SubResource`
 
 let entitledRef = &r as auth(OuterEntitlement) &OuterResource
-let entitledSubRef = entitledRef.getRef() // `OuterEntitlement` is defined to map to `SubEntitlement`, so this access yields a value of type `auth(SubEntitlement) &SubResource`
+let entitledSubRef = entitledRef.childResource // `OuterEntitlement` is defined to map to `SubEntitlement`, so this access yields a value of type `auth(SubEntitlement) &SubResource`
 Entitlement
 
 // `r` is an owned value, and is thus considered "fully-entitled" to `OuterResource`,
 // so this access yields a value authorized to the entire image of `Map`, in this case `SubEntitlement`
-let alsoEntitledSubRef = r.getRef() 
+let alsoEntitledSubRef = r.childResource
 ```
 
-{/* TODO: Update once mappings can be used on regular composite fields */}
-
-Entitlement mappings may be used either in accessor functions (as in the example above), or in fields whose types are references. Note that this latter
-usage will necessarily make the type of the composite non-storage, since it will have a reference field. 
+Entitlement mappings may be used either in accessor functions (as in the example above), or in fields whose types are
+either references, or containers (structs/resources, dictionaries and arrays).
+Note that having a reference field will necessarily make the type of the composite non-storage.
 
 {/* TODO: once the Account type refactor is complete and the documentation updated, let's link here to the Account type page as an example of more complex entitlement mappings */}
 Entitlement mappings need not be 1:1; it is valid to define a mapping where multiple inputs map to the same output, or where one input maps to multiple outputs. 
@@ -406,7 +403,7 @@ Entitlement mappings need not be 1:1; it is valid to define a mapping where mult
 Entitlement mappings preserve the "kind" of the set they are mapping; i.e. mapping an "and" set produces an "and" set, and mapping an "or" set produces an "or" set. 
 Because "and" and "or" separators cannot be combined in the same set, attempting to map "or"-separated sets through certain complex mappings may result in a type error. For example:
 
-```
+```cadence
 entitlement mapping M {
   A -> B 
   A -> C
@@ -414,4 +411,94 @@ entitlement mapping M {
 }
 ```
 
-attempting to map `(A | D)` through `M` will fail, since `A` should map to `(B, C)` and `D` should map to `E`, but these two outputs cannot be combined into a disjunctive set. 
+attempting to map `(A | D)` through `M` will fail, since `A` should map to `(B, C)` and `D` should map to `E`, but these two outputs cannot be combined into a disjunctive set.
+
+### The `Identity` Mapping
+
+There is an `Identity` mapping built-in to Cadence that maps every input to itself as the output. 
+I.e., any entitlement set passed through the `Identity` map will come out unchanged in the output. 
+So, for example, for some resource defined like so:
+
+```cadence
+entitlement X
+
+resource SubResource {
+  // ...
+}
+
+resource OuterResource {
+    access(Identity) let childResource: @SubResource
+
+    access(Identity) getChildResource(): auth(Identity) &SubResource {
+      return &self.childResource
+    }
+
+    init(r: @SubResource) {
+        self.childResource = r
+    }
+}
+```
+
+Given some reference `ref` to `OuterResource` of type `auth(X) &OuterResource`, 
+accessing `ref.childResource` will yield a reference to `SubResource` of type `auth(X) &SubResource`. 
+
+One important point to note about the `Identity` mapping, however, is that because its full output range is unknown (and theoretically infinite),
+accessing an `Identity`-mapped field or function with an owned value will yield an empty output set. I.e. calling `getChildResource()` on an owned
+`OuterResource` value, for example, will produce an unauthorized `&SubResource` reference. 
+
+### Mapping Composition
+
+In the definition of an entitlement mapping, it is possible to `include` the definition of one or more other mappings, to copy over their mapping relations. 
+For example:
+
+```cadence
+entitlement mapping M {
+  X -> Y 
+  Y -> Z
+}
+
+entitlement mapping N {
+  E -> F
+}
+
+entitlement mapping P {
+  include M
+  include N
+  F -> G
+}
+```
+
+The entitlement mapping `P` includes all of the relations defined in `M` and `N`, along with the additional relations defined in its own definition.
+In general, an `include M` statement in the definition of an entitlement mapping `N` is equivalent to simply copy-pasting all the relations
+defined in `M` into `N`'s definition; support for `include` is provided primarily to reduce code-reuse and promote composition. 
+
+The `Identity` mapping can also be included; any mapping `M` that `include`s the `Identity` mapping will map its input set to itself, 
+along with any additional relations defined in the mapping, or in other included mappings. So, for example:
+
+```cadence
+entitlement mapping M {
+  include Identity
+  X -> Y 
+}
+```
+
+The mapping `M` would map the entitlement set `(X)` to `(X, Y)`.
+
+Any `include` statement that would produce a cyclical mapping will be rejected by the type-checker. 
+
+### Built-in Mutability Entitlements
+
+A prominent use-case of entitlements is to control access to object based on mutability.
+For example, in a struct/resource/contract, the author would want to control the access to certain fields to be read-only,
+and while some fields to be mutable, etc.
+
+In order to support this, Cadence hase built-in set of entitlements that can be used to access control base on mutability.
+- `Insert`
+- `Remove`
+- `Mutate`
+
+These are primarily used by built-in array and dictionary functions, but are also usable by any user to control access
+in their own composite type definitions.
+
+While Cadence does not support entitlement composition or inheritance, the `Mutate` entitlement is intended to be used
+as an equivalent form to the conjunction of `{Insert, Remove}` entitlements.

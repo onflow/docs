@@ -1,6 +1,6 @@
 ---
 title: NFT Drop Strategies
-sidebar_title: NFT Drop Strategies
+sidebar_label: NFT Drop Strategies
 ---
 
 ## Exploring Different Strategies for NFT Drops
