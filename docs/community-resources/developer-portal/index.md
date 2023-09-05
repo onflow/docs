@@ -1,12 +1,13 @@
 ---
+sidebar_position: 2
 sidebar_custom_props:
     icon: 🥇
 ---
-# Contributing to the Developer Portal
+# Contributing to Flow Docs
 
-Reading this document carefully will help you understand how to contribute your own content to the Developer Portal, and avoid problems along the way.
+Reading this document carefully will help you understand how to contribute your own content to the Flow Docs, and avoid problems along the way.
 
-In most cases you should be able to iterate and deploy changes to your documentation with no to little involvement the engineering team that is maintaining the Developer Portal.
+In most cases you should be able to iterate and deploy changes to your documentation with no to little involvement the engineering team that is maintaining the Flow Docs.
 
 ## Getting Prepared
 
@@ -46,9 +47,9 @@ Updating existing content is a seamless process:
 
 ## Adding New Content
 
-Expanding the Developer Portal with new content is straightforward:
+Expanding the Flow Docs with new content is straightforward:
 
-1. Markdown Mastery: To display content on the Developer Portal, use Markdown format. Markdown syntax resources are available for learning and reference:
+1. Markdown Mastery: To display content on the Flow Docs, use Markdown format. Markdown syntax resources are available for learning and reference:
     - [https://www.markdowntutorial.com/](https://www.markdowntutorial.com/)
     - [https://www.markdownguide.org/](https://www.markdownguide.org/)
 
@@ -183,7 +184,7 @@ If you use `<DocCardList/>` on the top level category index page (e.g. `./docs/t
 
 ## SEO
 
-Basic SEO metadata can be included in markdown `frontmatter`. The Developer Portal supports `title` and `description` metadata. If none is provided, a default will be applied.
+Basic SEO metadata can be included in markdown `frontmatter`. The Flow Docs supports `title` and `description` metadata. If none is provided, a default will be applied.
 
 Example `frontmatter`:
 
@@ -202,7 +203,7 @@ It is not required to supply this SEO metadata. Flow's in-house SEO experts will
 
 ### Images and Other Media
 
-Include images and media using relative URLs within the `docs` folder. If your media is viewable in GitHub, then it should display on the Developer Portal.
+Include images and media using relative URLs within the `docs` folder. If your media is viewable in GitHub, then it should display on the Flow Docs.
 
 For external media or URLs, use fully qualified URLs, eg:
 
@@ -218,7 +219,7 @@ Linking to documents within the `docs` folder of your repo can be done in the st
 [link](./doc-two.md#hash-link)
 ```
 
-Writing links in your documents is easy if you follow this rule-of-thumb: If it works in GitHub it should work on the Developer Portal, with one notable exception.
+Writing links in your documents is easy if you follow this rule-of-thumb: If it works in GitHub it should work on the Flow Docs, with one notable exception.
 
 **Links to content outside the `docs` folder** in your repository, or elsewhere on the web must be in the form of a fully-qualified URL, eg:
 
@@ -256,7 +257,7 @@ Content is validated each time a PR is submitted to the `docs` repository.
 
 Validation status is available in the **check run output** for your PR on GitHub.
 
-Currently, the Developer Portal validates content using the following conditions:
+Currently, the Flow Docs validates content using the following conditions:
 
 - Do pages render without errors? This check accounts for errors in your markdown syntax.
 - Are all links URLs valid? Broken links make for bad user experience.
@@ -267,13 +268,13 @@ Here is an example of check run output with successful validation.
 
 ### Dead Links Checks
 
-The Developer Portal automatically scans relative links in *all your documents* when you submit changes to your docs. This is done to ensure that cross-links are valid, within your set of documentation.
+The Flow Docs automatically scans relative links in *all your documents* when you submit changes to your docs. This is done to ensure that cross-links are valid, within your set of documentation.
 
 ## Content Previews
 
 A special preview link is provided for content PRs as part of the GitHub PR check run.
 
-Previews are generated against the **PR branch of the Developer Portal**, to ensure your content can be integrated with the latest updates to the Developer Portal itself.
+Previews are generated against the **PR branch of the Flow Docs**, to ensure your content can be integrated with the latest updates to the Flow Docs itself.
 
 Here is an example of preview output for changed documents in a PR
 
