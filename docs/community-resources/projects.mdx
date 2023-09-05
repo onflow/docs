@@ -15,5 +15,7 @@ import ProjectCard from '/src/ui/design-system/src/lib/Components/ProjectCard/in
 Explore an array of exciting, grassroots initiatives, and projects that thrive within the Flow Blockchain community, each contributing to the platform's growth and innovation.
 
 {projects.map((project, index) => (
-  <ProjectCard key={index} {...project} />
+  <div className="mx-4 my-4">
+    <ProjectCard key={index} {...project} />
+  </div>
 ))}
