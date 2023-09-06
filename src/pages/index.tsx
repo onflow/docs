@@ -11,7 +11,6 @@ import {
   contentNavigationListItems,
   editPageUrl,
   homepageStartProjectData,
-  homepageThreeColumnData,
 } from '../data/pages/home';
 import {
   eventIndexingTool,
@@ -62,7 +61,6 @@ const Index = (): JSX.Element => {
           flips={data.flips}
           githubUrl={externalLinks.github}
           homepageStartProjectData={data.homepageStartProjectData}
-          threeColumnItems={homepageThreeColumnData}
           tools={data.tools}
           twitterUrl={externalLinks.twitter}
           upcomingEvents={data.upcomingEvents}

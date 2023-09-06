@@ -109,7 +109,7 @@ export default function GettingStarted(): JSX.Element {
                   },
                   {
                     title: 'View more learning resources',
-                    href: '/learn',
+                    href: 'https://academy.ecdao.org/en',
                   },
                 ],
               },
@@ -141,7 +141,7 @@ export default function GettingStarted(): JSX.Element {
                   },
                   {
                     title: 'View all tools and services',
-                    href: '/tools',
+                    href: '/next/tools',
                   },
                 ],
               },

@@ -20,30 +20,6 @@ export const tools = [
   jsTestingLibTool,
 ];
 
-export const contentNavigationListItems: ContentNavigationListProps = {
-  header: 'Explore More Content',
-  contentNavigationItems: [
-    {
-      title: 'Learn',
-      text: 'Learn more about the Flow blockchain, Cadence, and NFTs',
-      link: '/learn',
-      icon: 'learn',
-    },
-    {
-      title: 'Tools',
-      text: 'Tools that can help your development experience on Flow',
-      link: '/tools',
-      icon: 'tools',
-    },
-    {
-      title: 'Concepts',
-      text: 'Important concepts about Cadence and FCL',
-      link: '/concepts/intro',
-      icon: 'concepts',
-    },
-  ],
-};
-
 export const upcomingEvents = allEvents;
 
 export const projects: ProjectCardProps[] = [
