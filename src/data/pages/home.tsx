@@ -10,19 +10,19 @@ const homepageStartProjectData: HomepageStartItemProps[] = [
   {
     title: 'Learn Flow',
     text: 'Dive into Flow key concepts through tutorials, guides, and examples',
-    link: '/concepts/intro',
+    link: '/next/concepts/start-here',
     icon: 'learn',
   },
   {
     title: 'Guides & Tutorials',
     text: 'Create your first Flow dApp in just a few minutes',
-    link: '/tutorials/intro',
+    link: '/next/guides',
     icon: 'quickstart',
   },
   {
-    title: 'References',
+    title: 'Resources',
     text: 'All the developer resources you need to build on Flow',
-    link: '/cadence/intro',
+    link: '/next/community-resources',
     icon: 'documentation',
   },
 ];
@@ -116,20 +116,14 @@ const contentNavigationListItems: ContentNavigationListProps = {
     {
       title: 'Learn',
       text: 'All the resources you need to learn and build.',
-      link: '/learn',
+      link: 'https://academy.ecdao.org/en',
       icon: 'learn',
     },
     {
       title: 'Tools',
       text: 'Curated list of developer tools, services, SDKs.',
-      link: '/tools',
+      link: '/next/tools',
       icon: 'tools',
-    },
-    {
-      title: 'Community',
-      text: "Learn more about Flow's ecosystem and get involved.",
-      link: '/community',
-      icon: 'community',
     },
   ],
 };
