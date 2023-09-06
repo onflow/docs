@@ -1,13 +1,13 @@
 ---
-title: Building blocks
+title: Core Components
 description: Learn about the key components of NFT marketplaces
-sidebar_label: Building blocks
+sidebar_label: Core Components
 sidebar_position: 3
 sidebar_custom_props:
   icon: 🧱
 ---
 
-Following are the basic building blocks for any NFT marketplace solution on the Flow blockchain. Throughout the guide, these will be referred to.
+Following are the core components for any NFT marketplace solution on the Flow blockchain. Throughout the guide, these will be referred to.
 
 - [NFT Standard](https://github.com/onflow/flow-nft): Every NFT minted on Flow should follow this standard.
 - [Fungible Token Standard](https://github.com/onflow/flow-ft): All fungible tokens on Flow follow this standard. NFTs purchased on an NFT marketplace will be paid for using a fungible token in many scenarios.
@@ -34,3 +34,4 @@ If you are coming from Ethereum, the following list shows corresponding modules 
 | Block Explorer                      | Etherscan               | [Block Explorers](../../tools/toolchains/)                                                            |
 | Node Service Providers              | Infura                  | [Official Flow Access Nodes](https://flowscan.org/staking/nodes)                                      |
 | Wallets                             | Metamask, WalletConnect | [Blocto](https://portto.com/), [Dapper Wallet](https://www.meetdapper.com/)                           |
+
