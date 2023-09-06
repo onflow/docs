@@ -81,24 +81,6 @@ export const allTutorials: TutorialCardProps[] = [
   ...architectureTutorials,
 ];
 
-export const contentNavigationListItems: ContentNavigationListProps = {
-  header: 'Explore More Content',
-  contentNavigationItems: [
-    {
-      title: 'Tools',
-      text: 'Curated list of developer tools, services, SDKs.',
-      link: '/tools',
-      icon: 'tools',
-    },
-    {
-      title: 'Community',
-      text: "Learn more about Flow's ecosystem and get involved.",
-      link: '/community',
-      icon: 'community',
-    },
-  ],
-};
-
 export const secondaryNavSections = [
   {
     title: 'Cadence',
