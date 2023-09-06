@@ -11,8 +11,8 @@ This contract is already deployed to testnet and mainnet and can be used by anyo
 ---
 
 <Callout type="success">
-  Open the starter code for this tutorial in the Flow Playground: 
-  <a 
+  Open the starter code for this tutorial in the Flow Playground:
+  <a
     href="https://play.onflow.org/49ec2856-1258-4675-bac3-850b4bae1929"
     target="_blank"
   >
@@ -422,7 +422,7 @@ As you hopefully understand, [capabilites](../language/capability-based-access-c
 are links to private objects in account storage that specify and expose a subset in the public or private namespace of public or private paths
 where the Capability is linked.
 
-To create a capability, a user typically uses [the `AuthAccount.link`](../language/accounts.mdx#authaccount)
+To create a capability, a user typically uses [the `AuthAccount.link`](../language/accounts/index.mdx)
 method to create a link to a resource in their private storage, specifying a type to link the capability as:
 
 ```cadence
@@ -434,7 +434,7 @@ acct.link<&ExampleToken.Vault{ExampleToken.Receiver, ExampleToken.Balance}>
     (/public/CadenceFungibleTokenTutorialReceiver, target: /storage/CadenceFungibleTokenTutorialVault)
 ```
 
-Then, users can get that capability if it was created [in a public path](../language/accounts.mdx#paths),
+Then, users can get that capability if it was created [in a public path](../language/accounts/paths),
 borrow it, and access the functionality that the owner specified.
 
 ```cadence
@@ -506,7 +506,7 @@ then those NFTs are not available to be shown to any app or smart contract that 
 so it is as if the owner doesn't actually own the NFT!
 
 In cases like this, we usually recommend using a capability to the main collection so that the main collection can remain unchanged and fully usable by
-other smart contracts and apps. This also means that if a for-sale NFT gets transferred by some means other than a purchase, then you need a way to get 
+other smart contracts and apps. This also means that if a for-sale NFT gets transferred by some means other than a purchase, then you need a way to get
 rid of the stale listing. That is out of the scope of this tutorial though.
 
 Enough explaining! Lets execute some code!

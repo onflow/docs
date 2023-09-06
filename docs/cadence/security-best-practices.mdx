@@ -12,12 +12,12 @@ Some practices listed below might overlap with advice in the [Cadence Anti-Patte
 
 [References](./language/references.mdx) are ephemeral values and cannot be stored. If persistence is required, store a capability and borrow it when needed.
 
-When exposing functionality, provide the least access necessary. When creating an authorized reference, 
-create it with only the minimal set of entitlements required to achieve the desired functionality. 
+When exposing functionality, provide the least access necessary. When creating an authorized reference,
+create it with only the minimal set of entitlements required to achieve the desired functionality.
 
 ## Account Storage
 
-Don't trust a users’ [account storage](./language/accounts.mdx#account-storage). Users have full control over their data and may reorganize it as they see fit. Users may store values in any path, so paths may store values of “unexpected” types. These values may be instances of types in contracts that the user deployed.
+Don't trust a users’ [account storage](./language/accounts/storage.mdx). Users have full control over their data and may reorganize it as they see fit. Users may store values in any path, so paths may store values of “unexpected” types. These values may be instances of types in contracts that the user deployed.
 
 Always [borrow](./language/capability-based-access-control.md) with the specific type that is expected. Or, check if the value is an instance of the expected type.
 
@@ -59,6 +59,6 @@ Declaring a field as [`access(all)`](./language/access-control.md) only protects
 
 Prefer non-public access to a mutable state. That state may also be nested. For example, a child may still be mutated even if its parent exposes it through a field with non-settable access.
 
-Do not use the `access(all)` modifier on fields unless necessary. 
-Prefer `access(self)`, or `access(contract)` and `access(account)` when other types in the contract or account need to have access, 
-and entitlement-based access for other cases. 
+Do not use the `access(all)` modifier on fields unless necessary.
+Prefer `access(self)`, or `access(contract)` and `access(account)` when other types in the contract or account need to have access,
+and entitlement-based access for other cases.
