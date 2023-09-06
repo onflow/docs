@@ -361,7 +361,7 @@ const config = {
             title: 'Community',
             items: [
               {
-                to: '/community',
+                to: '/next/community-resources',
                 label: 'Ecosystem',
               },
               {
