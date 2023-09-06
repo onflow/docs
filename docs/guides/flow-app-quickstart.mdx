@@ -32,7 +32,7 @@ Make sure you have Flow CLI installed. [installation instructions](../tools/tool
 ![Flow app anatomy](flow-dapp-anatomy.png)
 
 <Callout type="info">
-FCL (aka Flow Client Library) wraps the logic needed to communicate with the flow blockchain. It's a npm package, [More Information](../tools/clients/fcl-js)
+FCL (aka Flow Client Library) wraps the logic needed to communicate with the Flow blockchain. It's a npm package, [More Information](../tools/clients/fcl-js)
 </Callout>
 
 This guide assumes a good understanding of React. The concepts are easy to understand and apply to other libraries and framework. A strong understanding of Cadence (Flow's smart contract language) is not required. More information on Cadence, [learning the Cadence language](../cadence/intro.md).
@@ -73,7 +73,7 @@ Using the Flow CLI scaffold, create a basic hello world web project. This will c
  # run the app in a later step
 ```
 
-We don't recommend keeping private keys in your `flow.json`, notice that flow cli already moved the emulator private key to a `emulator.key` file and point to it using the [key/location pattern](../tools/toolchains/flow-cli/flow.json/security.md#private-account-configuration-file). This file should be added to your .gitignore file, so it won't be committed to your repository. 
+We don't recommend keeping private keys in your `flow.json`, notice that Flow CLI already moved the emulator private key to a `emulator.key` file and point to it using the [key/location pattern](../tools/toolchains/flow-cli/flow.json/security.md#private-account-configuration-file). This file should be added to your .gitignore file, so it won't be committed to your repository. 
 
 We won't be using emulator and running contracts locally in this quickstart, but FCL will complain if it finds private keys in your `flow.json` file.
 
@@ -235,7 +235,7 @@ export default function Navbar() {
 You should now be able to log in or sign up a user and unauthenticate them. Upon logging in or signing up your users will see a popup where they can choose between wallet providers. Choose the `dev wallet` to use the same account that deployed the `HelloWorld` contract, this is needed for mutation. Upon completing authentication, you'll see the component change and the user's wallet address appear on the screen if you've completed this properly.
 
 <Callout type="info">
-More on wallets, [Lilico wallet](https://lilico.app/) is a flow wallet. 
+More on wallets, [Lilico wallet](https://lilico.app/) is a Flow wallet. 
 </Callout>
 
 ## Deploying project contracts

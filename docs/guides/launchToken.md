@@ -43,7 +43,9 @@ A few resources to help start your NFT collection:
 - [Touchstone](https://www.touchstone.city/guide/en/welcome)
 - [Emeralkd Academy: Quickstart](https://academy.ecdao.org/en/quickstarts/1-non-fungible-token)
 
-After getting your NFT collection created, look into your collection registered on the [NFT catalog](../tools/toolchains/nft-catalog/overview.mdx) 
+**NFT Catalog**
+
+After getting your NFT collection created, look into your collection registered on the [NFT catalog](../tools/toolchains/nft-catalog/overview.mdx). The NFT Catalog will allow developers to easily discover your NFT collection. This will give them the opportunity to integrate your collection into their applications.
 
 ## Final Words
 

@@ -10,6 +10,15 @@ A transaction fee is a cost paid in Flow by the payer account and is required fo
 
 A transaction fee is paid regardless of whether a transaction succeeds or fails. If the payer account doesn’t have sufficient Flow balance to pay for the transaction fee, the transaction will fail. We can limit the transaction fee to some extent by providing the gas limit value when submitting the transaction.
 
+### Understanding the need for transaction fees
+
+Segmented transaction fees are essential to ensure fair pricing based on the impact on the network. For instance, more heavy operations will require more resources to process and propagate transactions. Common operations, however, will stay reasonably priced.
+
+Fees will improve the overall security of the network by making malicious actions (eg spam) on the network less viable.
+
+The unique Flow architecture is targeted at high throughput. It makes it easier to have slack in the system, so short spikes can be handled more gracefully.
+
+
 ### **Fee Structure**
 
 Each transaction fee consits of three components: execution fee, inclusion fee, and network surge factor.
@@ -50,6 +59,10 @@ Right now, the inclusion effort is always 1.0 and the inclusion effort cost is f
 In the future, a network surge will be applied when the network is busy due to an increased influx of transactions required to be processed or a decrease in the ability to process transactions. Right now, the network surge is fixed to `1.0`.
 
 Currently, both the inclusion fee and surge factor don’t represent any significant Flow fees. Keep in mind this can change in the future.
+
+**Estimating transaction costs**
+
+Cost estimation is a two-step process. First, you need to gather the execution effort with either the emulator, on testnet, or on mainnet. Second, you use the execution effort for a transaction to calculate the final fees using one of the JavaScript or Go FCL SDKs.
 
 ## Storage
 
