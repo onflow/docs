@@ -3,80 +3,120 @@ title: Account Linking (FLIP 72)
 sidebar_position: 15
 ---
 
-# Overview
+# Account Linking
 
-The Account Linking feature on Flow enables developers to provide seamless onboarding and in-app experiences while
-simultaneously empowering users with real ownership and self-sovereignty. With this [new custodial
-model](https://forum.onflow.org/t/hybrid-custody/4016), developers can deliver the benefits of both app and self-custody
-in a unified experience.
+Account linking is a unique Flow concept that enables sharing ownership over accounts. In order to understand how we can achieve that we must first understand how accounts on Flow are accessed.
 
-The full user experience is enabled by three core components:
-- Walletless Onboarding - App managed account creation, funding, and custody
-- Account Linking - App custodied accounts may delegate access to users wallet
-- Core `HybridCustody` contract - A standard contract enabling users to view and manage their linked accounts
+Each account on flow can be accessed in Cadence through two types, `PublicAccount` and `AuthAccount`. As the name implies the public account type gives access to all public account information such as address, balance, storage capacity, etc., but doesn’t allow changing the account, whereas the auth account type allows the same access the public account has but also allows changing the account, which includes changing the account keys, managing the deployed contracts, and managing account capabilities.
 
-### User Journey
+![Flow account structure](resources/account.png)
 
-1. The app creates, funds, and manages access to a Flow account initialized on user onboarding. This enables the app to
-   abstract away the complexities of interacting with smart contract powered applications, and focus on creating slick
-   user experiences behind familiar Web2 authentication and fiat denominated payments.
-1. Once a user returns to the app with a self-custodial wallet, they can authenticate their wallet-managed account in
-   the app, allowing the app to give the user's main account delegated access to the app managed account (albeit with
-   some developer-defined restrictions).
-1. Upon linking, the user's main account - now the "parent" account - adds the app created account - now the "child"
-   account - to a collection of all linked child accounts. At this point, Hybrid Custody is reached!
+## Accessing AuthAccount
 
-### See it in Action
+Accessing the auth account allows for account modification, so it's essential to safeguard this access by mandating that transactions are signed by the account being accessed. A transaction can list multiple auth accounts it wants to access as part of the `pre` section of the transaction. Read more about transaction signing in the transaction documentation.
 
-<iframe width="560" height="315" src="https://www.youtube.com/embed/0eYX_S4jUYM?start=846" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+The idea of account ownership actually translates to the ability to access the auth account.
 
-<Callout type="info">
+## AuthAccount Capabilities
 
-Experience the magic of Account Linking in the arcade demo yourself [here](https://walletless-arcade-game.vercel.app/)!
+Understanding [Cadence capabilities](../../cadence/language/capability-based-access-control) is required to follow this section.
 
-</Callout>
+Cadence allows the creation of capabilities to delegate access to account storage, meaning any account that has a valid capability to another account object in the storage can access it. This is a powerful feature on its own. The access to the object can be limited when creating a capability so only intended functions or fields can be accessed.
 
-### Why Care?
+What makes account linking possible is an extension of the capabilities. Similar to how storage capabilities allow gaining access to a value stored in an account's storage, AuthAccount capabilities allow gaining access to an AuthAccount.
 
-Account Linking grants users access to their linked child accounts without needing to interface with the child account's
-custodial app, **and** the custodial app can interact with the relevant assets in the child account on behalf of the
-user in a frictionless UX free from transaction prompts.
+### Creating Account Links
 
-<Callout type="success">
+Creating an AuthAccount capability and publishing that capability to another account is what we define as account linking. An account owning the `AuthAccount` capability of another account is called a parent account, and the account sharing the capability with the other account becomes its child account.
+
+![Account linking on Flow](resources/linking.png)
+
+A link between two existing accounts on Flow can be created in two steps:
+
+1. a child account creates an `AuthAccount` capability and publishes it to the parent account.
+2. The parent account, claims that capability and can access the child's account through it.
+
+![Account linking steps on Flow](resources/linking-steps.png)
+
+These two steps are implemented in Cadence as two transactions:
+
+************************************Create capability************************************
+
+The account B creates and publishes the `AuthAccount` capability to the account A at the address `0x01`
+
+```json
+#allowAccountLinking
+
+transaction {
+    prepare(signer: AuthAccount) {
+        let capability = signer.linkAccount(/private/accountCapA)!
+        signer.inbox.publish(capability, name: "accountCapA", recipient: 0x1)
+    }
+}
+```
+
+****************************Claim capability****************************
+
+The account A claims the capability published by account B.
+
+```json
+transaction {
+    prepare(signer: AuthAccount) {
+        let capability = signer.inbox.claim<&AuthAccount>("accountCapB", provider: 0x2)!
+        let accountRef = capability.borrow()!
+    }
+}
+```
+
+## How is account linking useful?
+
+Account linking is very useful in the case of onboarding non-existing Flow users to your Flow application. Because participating on Flow network requires having a Flow account, which a non-web3-native user will struggle to achieve a lot of applications create the account for the user.
+
+The problem with this approach becomes when a user wants to use that account with another application, or move the items stored in that account out of the application. With account linking it’s possible for the application to create the account instead of the user, but still allow for the user to later link that account to any other accounts he will own.
+
+Account linking allows having multiple Flow accounts and abstracts them as a single account.
 
 All assets in the app account can now jump the walled garden to play in the rest of the Flow ecosystem. No transactions are needed to move assets from the child account to the parent account, as the parent account already has full access to the assets in the child account.
 
-</Callout>
+![Multiple parent-child accounts on Flow](resources/multiple-accounts.png)
 
-This shared control over the digital items in the in-app account enables users to establish real ownership of the items
-beyond the context of the app, where they can use their self-custody wallet to view inventory, take the items to other
-apps in the ecosystem, such as a marketplace or a game.
+This shared control over the digital items in the in-app account enables users to establish real ownership of the items beyond the context of the app, where they can use their parent account to view inventory, take the items to other apps in the ecosystem, such as a marketplace or a game.
 
-Most importantly, users are able to do this without the need to transfer the digital items between accounts,
-making it seamless to continue using the original app while also using other apps.
+Most importantly, users are able to do this without the need to transfer the digital items between accounts, making it seamless to continue using the original app while also using other apps.
 
-With account linking, developers can build walletless onboarding experiences for new users that provide a clear path to
-self-custody. Continue on to read our guides for more details on how you can use Account Linking to
-build spectacular experiences on Flow.
+## Security Consideration with Account Linking
 
-### Guides
+Account linking is a very powerful feature of Cadence and thus it must be treated with care. In this document, we’ve always talked about account linking between two accounts we own, even if the child account is managed by a third-party application, that we access through an authentication mechanism, it’s still treated as our account.
 
-- [Building Walletless Applications Using Child Accounts](./child-accounts.mdx) covers how apps can leverage Account Linking to create a seamless user
-experience and enable future self-custody.
-- [Working With Parent Accounts](./parent-accounts.mdx) covers features enabled by the core `HybridCustody` contract to
-access child account assets from parent accounts. This is useful for apps like marketplaces or wallets that are working with
-accounts that have potential child accounts.
+Creating an `AuthAccount` capability and publishing it to an account we don’t own means we are giving that account full access to our account. This should be seen as an anti-pattern.
 
-### Resources
+<aside>
+❗ Creating an `AuthAccount` capability and sharing it with another person account is in concept the same as giving that person your accounts private keys.
+
+</aside>
+
+Because pure account linking can be dangerous Flow introduces a Hybrid Custody contract that helps manage child accounts and access.
+
+## Hybrid Custody and Account Linking
+
+Apps need assurances that their own resources are safe from malicious actors, so giving out full access might not be the form they want. Using hybrid custody contracts, the app still maintains control of their managed accounts, but they can:
+
+1. Share capabilities freely, with a few built-in controls over the types of capabilities that can be returned with some helper contracts (the `CapabilityFactory`, and `CapabilityFilter`)
+2. Share additional capabilities (public or private) with a parent account via a `CapabilityDelegator` resource
+
+Learn more about it in the Hybrid Custody documentation.
+
+### Guides[](https://developers.flow.com/concepts/account-linking#guides)
+
+- [Building Walletless Applications Using Child Accounts](https://developers.flow.com/concepts/account-linking/child-accounts) covers how apps can leverage Account Linking to create a seamless user experience and enable future self-custody.
+- [Working With Parent Accounts](https://developers.flow.com/concepts/account-linking/parent-accounts) covers features enabled by the core `HybridCustody` contract to access child account assets from parent accounts. This is useful for apps like marketplaces or wallets that are working with accounts that have potential child accounts.
+
+### Resources[](https://developers.flow.com/concepts/account-linking#resources)
 
 - [Forum Post](https://forum.onflow.org/t/hybrid-custody/4016) where core concepts were introduced and discussed.
-- [GitHub repository](https://github.com/onflow/hybrid-custody) where `HybridCustody` core contract is maintained.
-Check out the repository for more advanced script or transaction examples.
+- [GitHub repository](https://github.com/onflow/hybrid-custody) where `HybridCustody` core contract is maintained. Check out the repository for more advanced script or transaction examples.
 - [Example](https://github.com/jribbink/magic-link-hc-sample/) Account Linking project with [Magic](https://magic.link/).
-- [Starter template](https://github.com/Niftory/niftory-samples/tree/main/walletless-onboarding) for [Niftory](https://niftory.com/) Account
-Linking API.
-- [Scaffold](https://github.com/onflow/hybrid-custody-scaffold) to start a new Account Linking project. Check out Flow CLI
- [Scaffolds](../../tools/toolchains/flow-cli/super-commands.md#using-scaffolds) to get started.
-- [Wallet API](https://github.com/flow-hydraulics/flow-wallet-api/) is a microservice that enables apps to custody accounts. This is useful if you
- don't want to use a third-party service to manage user accounts.
+- [Starter template](https://github.com/Niftory/niftory-samples/tree/main/walletless-onboarding) for [Niftory](https://niftory.com/) Account Linking API.
+- [Scaffold](https://github.com/onflow/hybrid-custody-scaffold) to start a new Account Linking project. Check out Flow CLI [Scaffolds](https://developers.flow.com/tooling/flow-cli/super-commands#using-scaffolds) to get started.
+- [Wallet API](https://github.com/flow-hydraulics/flow-wallet-api/) is a microservice that enables apps to custody accounts. This is useful if you don't want to use a third-party service to manage user accounts.
 - [Walletless Arcade](https://github.com/onflow/walletless-arcade-example) example demonstrates Account Linking with a local key management solution.
