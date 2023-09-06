@@ -147,7 +147,7 @@ entitlement Reset
 //
 resource interface HasCount {
     count: Int
-    access(Reset) fun resetCount() 
+    access(Reset) fun resetCount()
 }
 
 // Declare a resource named `Counter` that conforms to `HasCount`
@@ -176,7 +176,7 @@ resource Counter: HasCount {
 // The path `/storage/counter` is used to refer to the stored value.
 // Its identifier `counter` was chosen freely and could be something else.
 //
-authAccount.save(<-create Counter(count: 42), to: /storage/counter)
+account.storage.save(<-create Counter(count: 42), to: /storage/counter)
 
 // Create a public capability that allows access to the stored counter object
 // as the type `{HasCount}`, i.e. only the functionality of reading the field
@@ -236,7 +236,7 @@ countRef.increment(by: 5)
 //
 // Because the stored capability is not authorized to the `Reset` entitlement, it cannot
 // be borrowed with that type, and thus only the functions on `HasCount` that do not require
-// an entitlement are available to this capability. 
+// an entitlement are available to this capability.
 //
 // This shows how parts of the functionality of stored objects
 // can be safely exposed to other code

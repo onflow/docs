@@ -383,7 +383,7 @@ let ref = &r as &R
 
 // Then transfer the resource into an account.
 // This will invalidate all the references taken to the resource `r`.
-account.save(<-r, to: /storage/r)
+account.storage.save(<-r, to: /storage/r)
 
 // Static error, since the referenced resource has been moved.
 ref.id = 2

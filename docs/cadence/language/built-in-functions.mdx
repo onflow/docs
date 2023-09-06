@@ -14,8 +14,7 @@ Terminates the program unconditionally
 and reports a message which explains why the unrecoverable error occurred.
 
 ```cadence
-let optionalAccount: AuthAccount? = // ...
-let account = optionalAccount ?? panic("missing account")
+panic("something went wrong: ...")
 ```
 
 ## `assert`

@@ -206,7 +206,7 @@ Imagine that these were declared in the above `FungibleToken` contract.
 
     init(balance: Int) {
         let vault <- create Vault(balance: 1000)
-        self.account.save(<-vault, to: /storage/initialVault)
+        self.account.storage.save(<-vault, to: /storage/initialVault)
     }
 ```
 
@@ -234,8 +234,8 @@ This gives the contract the ability to e.g. read and write to the account's stor
 Like composite types, contracts can have interfaces that specify rules
 about their behavior, their types, and the behavior of their types.
 
-Contract interfaces have to be declared globally.  Declarations
-cannot be nested in other types.
+Contract interfaces have to be declared globally.
+Declarations cannot be nested in other types.
 
 Contract interfaces may not declare concrete types (other than events), but they can declare interfaces.
 If a contract interface declares an interface type, the implementing contract
