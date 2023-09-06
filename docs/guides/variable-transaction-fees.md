@@ -2,95 +2,15 @@
 title: Transaction Fee Guide
 ---
 
-This guide will explain why transaction fees are important, how they are calculated, and how you can handle fees within your implementation. Specifically, it lays out how you can estimate the costs of a transaction, how you can set the limit for costs, and how you can optimize your Cadence code to reduce transaction costs where possible.
+This guide will explain how to see transaction fees, how they are calculated, and how you can handle fees within your implementation. It will cover estimating and limit fees on emulator, testnet and mainnet and how to optimize Cadence code to reduce transaction costs where possible.
 
-The guide will conclude with information on how to educate your users about fees and how to learn more about the implementation of transaction fees.
+Also, this guide provide information on how to educate your users about fees and how to learn more about the implementation of transaction fees.
 
-> **Note**: Transaction cost implementation is based on a community-involved FLIP process. The work is currently ongoing. Jump to the “Learn More” section to participate in the process.
-
-## Understanding the need for transaction fees
-
-Segmented transaction fees are essential to ensure fair pricing based on the impact on the network. For instance, more heavy operations will require more resources to process and propagate transactions. Common operations, however, will stay reasonably priced.
-
-Fees will improve the overall security of the network by making malicious actions (eg spam) on the network less viable.
-
-The unique Flow architecture is targeted at high throughput. It makes it easier to have slack in the system, so short spikes can be handled more gracefully.
-
-## Understanding fee structure
-
-Fees are calculated based on three components: execution fee, inclusion fee, and network surge factor.
-
-Inclusion and execution fees can be expressed as inclusion or execution effort and an associated multiplier to reflect the costs of the inclusion and execution effort. The final transaction fee calculation looks like this:
-
-```
-inclusionFee = inclusionEffort * inclusionEffortCost;
-
-executionFee = executionEffort * executionEffortCost;
-
-totalFee = (inclusionFee + executionFee) * surgeFactor;
-```
-
-> **Note**: If you want to learn more about the cost function, [take a look at FLIP 753](https://github.com/onflow/flow/blob/c05d847adf2f6fb509e42c17020484d7dd3e89bd/flips/20220111-execution-effort.md#final-execution-effort-feature-weights-and-maximum-execution-effort-limit).
-
-### Execution costs
-
-The execution effort for a transaction is determined by the code path the transaction takes and the actions it does. The actions that have an associated execution effort cost can be separated into four broad buckets:
-
-- Normal lines of cadence, loops, or function calls
-- Reading data from storage, charged per byte read
-- Writing data to storage, charged per byte written
-- Account creation
-
-**Cost overview**
-
-To provide you a better understanding of the cost ranges, here are some common transaction types and their associated execution costs, given the current `executionEffortCost` and `inclusionEffortCost` parameters:
-
-| Transaction Type | Estimated cost (FLOW) | Relative cost to FT transfer |
-| ---------------- | :--------------------- | :---------------------------- |
-| FT transfer      | 0.00000185            | 1 (baseline)               |
-| Mint a small NFT (heavily depends on the NFT size) | 0.0000019    | 1 |
-| Empty Transaction| 0.000001 | 0.5 |
-| Add key to an account | 0.000001 | 0.5 |
-| Create 1 Account | 0.00000315 | 1.7 | 
-| Create 10 accounts | 0.00002261 | 12.2 |
-| Deploying a contract that is ~50kb | 0.00002965 | 16 |
-
-
-### Inclusion costs
-
-The inclusion effort of a transaction represents the work needed for:
-
-- Including the transaction in a block
-- Transporting the transaction information from node to node
-- Verifying transaction signatures
-
-Right now, the inclusion effort is always 1.0 and the inclusion effort cost is fixed to `0.000001`.
-
-> **Note**: Inclusion effort will always be calculable without executing the transaction code.
-
-In the future, costs for inclusion will be impacted by the byte size of the transaction and the number of signatures required.
-
-> **Note**: The changes to variable inclusion costs will be updated in [one of the upcoming sporks](../building-on-flow/nodes/node-operation/upcoming-sporks.mdx).
-
-### Network surge
-
-In the future, a network surge will be applied when the network is busy due to an increased influx of transactions required to be processed or a decrease in the ability to process transactions. Right now, the network surge is fixed to `1.0`.
-
-### Storage fees
-
-Storage fees are implemented differently from transaction fees. Read the [Storing Data on Flow guide](../concepts/fees.md#storage-capacity) for more details. In summary, storage fees are a cost associated with storing data on-chain.
-
-## Estimating transaction costs
-
-Cost estimation is a two-step process. First, you need to gather the execution effort with either the emulator, on testnet, or on mainnet. Second, you use the execution effort for a transaction to calculate the final fees using one of the JavaScript or Go FCL SDKs.
-
-### Understanding execution effort
-
-Execution effort is best determined by running a transaction and reviewing the emitted event details.
+Important to understand the concepts behind [Transaction Fees](../concepts/fees) on Flow
 
 **Using Flow Emulator**
 
-You can [start the emulator using the Flow CLI](../tools/toolchains/emulator/index.md#running-the-emulator-with-the-flow-cli). Run your transaction and take a look at the events emitted:
+You can start the [emulator using the Flow CLI](../tools/toolchains/emulator/index.md#running-the-emulator-with-the-flow-cli). Run your transaction and take a look at the events emitted:
 
 ```shell
 0|emulator | time="2022-04-06T17:13:22-07:00" level=info msg="⭐  Transaction executed" computationUsed=3 txID=a782c2210c0c1f2a6637b20604d37353346bd5389005e4bff6ec7bcf507fac06

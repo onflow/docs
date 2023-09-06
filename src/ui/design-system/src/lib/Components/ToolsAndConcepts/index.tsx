@@ -71,7 +71,7 @@ const ToolsAndConcepts = ({
           </ButtonLink>
           <ButtonLink
             className="mb-4 w-full md:w-1/2"
-            href="/tools"
+            href="/next/tools"
             variant="secondary"
             rightIcon="right"
           >

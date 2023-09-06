@@ -178,8 +178,8 @@ Accounts can be obtained from the access node APIs, currently, there are two gRP
 
 There are multiple SDKs implementing the above APIs for different languages:
 
-**Javascript SDK** [tooling/fcl-js](../tools/clients/fcl-js/index.md)
+**Javascript SDK** [tools/clients/fcl-js](../tools/clients/fcl-js/index.md)
 
-**Go SDK** [tooling/flow-go-sdk](../tools/clients/flow-go-sdk/index.mdx)
+**Go SDK** [tools/clients/flow-go-sdk](../tools/clients/flow-go-sdk/index.mdx)
 
-Find a list of all SDKs here: [tools#sdks](../tools/clients/index.md)
+Find a list of all SDKs here: [tools/clients](../tools/clients/index.md)

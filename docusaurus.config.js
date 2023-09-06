@@ -324,10 +324,6 @@ const config = {
                 to: '/next/tools',
               },
               {
-                to: '/learn',
-                label: 'Learning Resources',
-              },
-              {
                 to: '/cadence/intro',
                 label: 'Cadence',
               },
@@ -365,7 +361,7 @@ const config = {
             title: 'Community',
             items: [
               {
-                to: '/community',
+                to: '/next/community-resources',
                 label: 'Ecosystem',
               },
               {
