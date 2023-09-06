@@ -3,7 +3,7 @@ title: Transactions
 sidebar_position: 26
 ---
 
-Transactions are objects that are signed by one or more [accounts](./accounts.mdx)
+Transactions are objects that are signed by one or more [accounts](./accounts/index.mdx)
 and are sent to the chain to interact with it.
 
 Transactions are structured as such:
