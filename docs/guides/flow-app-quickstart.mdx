@@ -18,10 +18,7 @@ This guide is a simple walkthrough to get started building a web3 app using the 
  If you are looking for a scalfolds, check out [scaffolds availabe in the Flow CLI](../tools/toolchains/flow-cli/super-commands.md#using-scaffolds).
 </Callout>
 
-## Video Walkthrough
-
 This simple guide uses the "Hello World" scaffold, it is meant to provide all the code needed to get a web application up and running.
-
 
 ## Before You Start
 
@@ -184,7 +181,7 @@ Now we're ready to start talking to Flow!
 The web app will run but there are no contracts deployed to local emulator. This is a step in `Querying the Blockchain` section. 
 </Callout>
 
-## Authentication
+## Authenticating a User
 
 ![User Login](./user-login-hello-world.gif)
 
@@ -238,7 +235,7 @@ You should now be able to log in or sign up a user and unauthenticate them. Upon
 More on wallets, [Lilico wallet](https://lilico.app/) is a Flow wallet. 
 </Callout>
 
-## Deploying project contracts
+## Deploying contracts
 
 Hello World scaffold does come with a Cadence contract. You will notice `HelloWorld.cdc` has been deployed when running `npm run dev:local`. Look at hello-world package.json to see the commands that get run, `flow dev` deploys contracts.
 In the `flow.json` make sure the emulator endpoint is correct. Look at the terminal the emulator is running, 
@@ -299,7 +296,7 @@ Verify that `flow.json` updates with HelloWorld contract information, `contracts
 }
 ```
 
-## Query Flow Contract
+## Query the Blockchain
 
 Now that all pieces are in place. UI can query `HelloWorld` contract.
 

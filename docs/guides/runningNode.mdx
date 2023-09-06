@@ -7,6 +7,16 @@ sidebar_custom_props:
   icon: 💻
 ---
 
+## Node Types
+Flow network is made up of many node types. Here is more information on the different [Node Types](../../concepts/nodes/node-operation/node-roles#collection). For a quick reference here are the types:
+ - **Observer**: No stake required, Easist node to spin up. This node is used to observe the network and get the latest blockchain data.
+ - **Access**: Staked node, Provides access to the Flow network. This node is used to send transactions to the network.
+ - **Collection**: Staked node, Bandwidth-optimized nodes divided by the protocol into several cooperating Clusters. 
+ - **Consensus**: Staked node, Form and propose blocks in a manner similar to traditionally-structured proof-of-stake blockchains.
+ - **Verification**: Staked node, Verify the correctness of blocks proposed by the Consensus nodes.
+ - **Execution**: Staked node,most resource-intensive nodes on the Flow network, responsible for executing transactions and maintaining the Execution State.
+ - **Archive**: No Stake required, Scalable and efficient way to access the history of Flow protocol.
+
 ## Why run a node?
 
 You do not have to run your own node to get started with Flow. You can use the [Flow Emulator](../tools/toolchains/emulator) locally to test your smart contracts and web apps. There are public access nodes available, here is the information to get started, [Access Nodes](../../concepts/nodes/access-api).
@@ -14,7 +24,7 @@ You do not have to run your own node to get started with Flow. You can use the [
 
 # Running an Observer Node
 
-There are community access nodes available to use, but they are rate limited. Alternative to an Access node, anyone can run their own observer node. This is a good option if you want to have untrottled access to current Flow blockchain data.
+There are community access nodes available to use, but they are rate limited. Alternative to an Access node, anyone can run their own observer node. This is a good option if you want to have untrottled access to current Flow blockchain data. [More information](../../concepts/nodes#which-node-should-you-run)
 
 ![Observer nodes](observer-node-arch.png)
 
