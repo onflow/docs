@@ -31,6 +31,8 @@ docs/building-on-flow/token-standards/flow-ft/*
 docs/building-on-flow/token-standards/flow-nft/*
 !docs/building-on-flow/token-standards/flow-nft/index.md
 
+docs/.obsidian
+
 # Remove after cadence is updated to a stable version
 # https://github.com/onflow/docs/issues/105
 # versioned_docs/version-stable/community-resources

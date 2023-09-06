@@ -5,10 +5,10 @@ sidebar_position: 2
 # Accounts
 
 An account on Flow is a record in the chain state that holds the following information:
-• Address: unique identifier for the account
-• Public Keys: public keys authorized on the account
-• Code: Cadence contracts deployed to the account
-• Storage: area of the account used to store resource assets.
+- Address: unique identifier for the account
+- Public Keys: public keys authorized on the account
+- Code: Cadence contracts deployed to the account
+- Storage: area of the account used to store resource assets.
 
 Accounts and their keys are needed to sign transactions that change the Flow blockchain state. To execute a transaction, a small amount of Flow, called a “Fee” must be paid by the account or subsidized by a wallet or service. Flow allocates a fixed amount of storage to each account for saving data structures and Resources. Flow allocates a fixed amount of storage to each account for saving data structures and Resources.
 An account may also contain contract code which transactions and scripts can interact with to query or mutate the state of the blockchain.
@@ -39,6 +39,7 @@ This minimum storage fee is provided by the account creator and covers the cost 
 An account can optionally store multiple Cadence contracts. The code is stored as a human-readable UTF-8 encoded string which makes it easy for anyone to inspect the contents.
 
 **Storage**
+
 Each Flow account has an associated storage and capacity. The account's storage used is the byte size of all the data stored in the account's storage. An account's storage capacity is directly tied to the balance of Flow tokens an account has. An account can, without any additional cost, use any amount of storage up to its storage capacity. If a transaction puts an account over storage capacity or drops an account's balance below the minimum 0.001 Flow tokens, that transaction fails and is reverted.
 
 ## Account **Keys**

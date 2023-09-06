@@ -279,12 +279,12 @@ const config = {
             label: 'Tools',
           },
           {
-            to: 'references/Introduction',
+            to: 'next/references',
             position: 'left',
             label: 'References',
           },
           {
-            to: 'community-resources/Introduction',
+            to: 'next/community-resources',
             position: 'left',
             label: 'Resources',
           },

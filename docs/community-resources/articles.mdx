@@ -1,0 +1,32 @@
+---
+title: Articles
+description: Dive into a wealth of insightful articles that provide in-depth knowledge, updates, and analysis on the Flow Blockchain, covering various topics to keep you informed and engaged.
+sidebar_position: 4
+sidebar_custom_props:
+  icon: 📰
+---
+
+import { allTutorials, nftTutorials, cadenceTutorials, architectureTutorials, videos } from '/src/data/pages/learn'
+
+import { LargeVideoCard } from '/src/ui/design-system/src/lib/Components/VideoCard/LargeVideoCard'
+import { PaginatedTutorialCardList } from "/src/ui/design-system/src/lib/Components/TutorialCard/PaginatedTutorialCardList"
+import {
+  SmallVideoCard,
+} from '/src/ui/design-system/src/lib/Components/VideoCard/SmallVideoCard'
+
+## Cadence
+<PaginatedTutorialCardList tutorials={cadenceTutorials} />
+
+## NFTs
+<PaginatedTutorialCardList tutorials={nftTutorials} />
+
+## Architecture
+<PaginatedTutorialCardList tutorials={architectureTutorials} />
+
+## Videos
+<LargeVideoCard {...videos.primary} />
+{videos.secondary.map((videoProps) => (
+  <SmallVideoCard key={videoProps.link} {...videoProps} />
+))}
+
+### [Flow Youtube Channel](https://www.youtube.com/c/FlowBlockchain)
