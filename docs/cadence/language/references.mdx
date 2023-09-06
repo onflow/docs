@@ -123,8 +123,8 @@ let counterRef2: &Counter = countRef as? &Counter
 counterRef2.increment()
 ```
 
-References are ephemeral, i.e. they cannot be [stored](accounts#account-storage).
-Instead, consider [storing a capability and borrowing it](capability-based-access-control) when needed.
+References are ephemeral, i.e. they cannot be [stored](./accounts/storage.mdx).
+Instead, consider [storing a capability and borrowing it](./capability-based-access-control.md) when needed.
 
 ## Authorized References
 
@@ -281,7 +281,7 @@ When a field/index is read through a reference, it will return:
 - A reference, if the field / value at index is also container-typed.
 - Or, the concrete value, if the value is a primitive type.
 
-For example, consider the below `Collection` resource which has two fields: one (id) is String-typed, 
+For example, consider the below `Collection` resource which has two fields: one (id) is String-typed,
 and the other (ownedNFTs) is dictionary-typed.
 
 ```cadence
@@ -329,7 +329,7 @@ var intDictionaryRef: &{String: Int} = ...
 var value: Int? = intDictionaryRef["two"]
 ```
 
-It is also important to note that, in the above examples, the returned references have no entitlements. 
+It is also important to note that, in the above examples, the returned references have no entitlements.
 i.e: they are non-auth references.
 
 To get entitled references for struct/resource fields, they must be defined with [entitlement mappings](./access-control.md#entitlement-mappings).
