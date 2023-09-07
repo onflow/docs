@@ -222,7 +222,7 @@ tx := flow.NewTransaction().
 
 ### Maximum transaction fees of a transaction
 
-The maximum possible fees the payer could pay for a transaction can be calculated as the inclusion cost plus the execution cost as if the transaction was executed with execution effort equal to the transactions specified execution effort limit.
+The maximum possible fee imposed on the payer for a transaction can be calculated as the **inclusion cost plus the execution cost**. The execution cost is the fee calculated for running the transaction based on the [execution effort limit maximum specified](#configuring-execution-limits). 
 
 The payer will never pay more than this amount for the transaction.
 
