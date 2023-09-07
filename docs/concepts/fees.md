@@ -383,4 +383,4 @@ Final fees are determined by the surge factor on the network. The surge factor f
 
 **I use Blocto and I haven't paid any fees yet. Why is that?**
 
-That is because Blocto is acting as the payer for transactions. self-custody wallets may have the user pay the transaction. Additionally, apps can sponsor the transaction if they choose.
+That is because Blocto is acting as the payer for transactions. Self-custody wallets may have the user pay the transaction. Additionally, apps can sponsor the transaction if they choose.
