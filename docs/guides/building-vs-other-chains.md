@@ -50,6 +50,7 @@ Check out the [Cadence website](https://cadencelang.dev/) to learn more about Ca
 If you’re already familiar with smart contracts, here are some resources that can help you get started with Cadence:
 
 - [The Cadence tutorial](../cadence/tutorial/01-first-steps.mdx)
+- [Guide for Solidity Developers](../cadence/solidity-to-cadence.mdx)
 - ERC-20 equivalent on Flow is the Flow Fungible Token Standard
     - [Repository](https://github.com/onflow/flow-ft)
     - [Tutorial](../cadence/tutorial/06-fungible-tokens.mdx)
@@ -118,6 +119,8 @@ Authorizing transactions is also more complex on Flow involving multiple roles:
 - Accounts can have multiple keys with varying weights
 - Multiple accounts can sign a single transaction (`prepare` takes any number of arguments)
 - Transaction computation fees can be paid by a different account, called the `Payer` account.
+- The transaction [nonce](https://ethereum.org/en/developers/docs/accounts/#an-account-examined) is provided by the `Proposer` account. This enables rate control and order to be dictated by a different party if needed.
+- All of the above roles can be the same account.
 
 The same powerful concept also exists for querying the blockchain state using Scripts. Here is a sample script that fetches the `ExampleNFT` IDs owned by a given account on Testnet:
 
