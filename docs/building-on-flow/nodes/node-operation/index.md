@@ -37,7 +37,7 @@ In addition to supporting dapps, an observer node can also be run by access node
 
 The observer node is not staked but still provides the same API as the access node.
 
-<Callout type="success">
+<Callout type="info">
   <br />
   To run a light node, follow this [guide](./observer-node.mdx)
   <br />
@@ -52,7 +52,7 @@ The Archive node follows the chain, stores and indexes both protocol and executi
 
 It also allows script execution and other read-only queries that require the execution state to be read. It can answer any queries from past data e.g. “what was the Flow account balance at height X?”, where X is several thousand blocks in the past.
 
-The archive node is currently in beta and will be available as a GA release in H2 2023 (see [here](https://flow.com/post/flow-blockchain-node-operation-archive-node) for more)
+_The archive node is currently in beta and will be available as a GA release in H2 2023 (see [here](https://flow.com/post/flow-blockchain-node-operation-archive-node) for more)_
 
 ## Full node
 
@@ -74,9 +74,31 @@ An access node is minimally staked for network security.
 The central goal for Access Nodes is to provide RPC functionality to its node operator.
 In comparison, contributing to protocol progress (e.g. routing transactions to collector clusters, relaying blocks to the unstaked peer-to-peer network, etc.) should only take up a marginal fraction an Access Node's computational resources.
 Furthermore, Access Node operators can freely rate-limit the amount of resources their Access Node dedicates to supporting the broader ecosystem. Therefore, Access Nodes do not receive staking rewards.
-To run an access node, see the [Running a staked node](#running-a-staked-node) section below.
 
+<Callout type="info">
+  <br />
+  Launch an access node using QuickNode
+  <a
+    href="https://www.quicknode.com/chains/flow"
+    target="_blank"
+  >
+    https://www.quicknode.com/chains/flow
+  </a>
+  <br/>
+</Callout>
+
+
+<Callout type="info">
+  <br />
+  To run a self-hosted access node, follow this [guide](./access-node-setup.md)
+  <br />
+</Callout>
+
+<Callout type="tip">
+  <br />
 Alternately, instead of running an access node, you can use the [Flow community](../access-api.mdx) access nodes or the ones run by any of the other node operators.
+  <br />
+</Callout>
 
 ### Validator node
 
