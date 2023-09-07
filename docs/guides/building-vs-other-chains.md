@@ -2,42 +2,42 @@
 title: Building on Flow vs. Other Blockchains
 ---
 
-This document summarizes the differences you might encounter between building on Flow vs. other blockchains, especially Ethereum. This will be most useful to developers who are already familiar with building on a blockchain system. Check out (HOW FLOW WORKS) for a more beginner-friendly overview of the Flow blockchain.
+This document summarizes the differences you might encounter between building on Flow vs. other blockchains, especially Ethereum. This will be most useful to developers who are already familiar with building on a blockchain system. Check out [Introduction to Flow](../concepts/start-here.md) for a more beginner-friendly overview of the Flow blockchain.
 
 Summary of key differences covered:
 
 - The Flow account model
 - Smart contracts
-    - Cadence language
+    - The Cadence language
     - Transactions and Scripts
     - Events
-- Accessing the blockchain using Access Nodes
+- Nodes
 - SDKs and Tools
 
-# The Flow Account Model
+## The Flow Account Model
 
-Key pairs establish ownership on blockchains. In other blockchains (e.g. Bitcoin), the user’s address is also calculated based on their public key, making a unique one-to-one relationship between accounts (addresses) and public keys. This also means there is no concrete “account creation” process other than generating a valid key pair. With the advent of smart contracts, Ethereum introduced a new account type for deploying contracts that can use storage space (i.e., contract bytecode). You can learn more about the distinction between EOA and Contract accounts on Ethereum [here](https://ethereum.org/en/developers/docs/accounts/).
+Key pairs establish ownership on blockchains. In other blockchains (e.g. Bitcoin), the user’s address is also calculated based on their public key, making a unique one-to-one relationship between accounts (addresses) and public keys. This also means there is no concrete “account creation” process other than generating a valid key pair. With the advent of smart contracts, Ethereum introduced a new account type for deploying contracts that can use storage space (i.e., to store contract bytecode). You can learn more about the distinction between EOA and Contract accounts on Ethereum [here](https://ethereum.org/en/developers/docs/accounts/).
 
 Flow combines the concepts of EOAs and Contract Accounts into a single account model and decouples accounts and public keys. Flow accounts are associated with one or more public keys of varying weights that specify interested parties that need to produce valid cryptographic signatures for each transaction authorized by that account.
 
-IMAGE OF ACCOUNT WITH KEYS
+![Screenshot 2023-08-16 at 16.43.07.png](../concepts/_accounts_images/Screenshot_2023-08-16_at_16.43.07.png)
 
-This natively enables interesting use cases, like key revocation, rotation, and multi-signature transactions. All Flow accounts can use network storage (e.g., deploying contracts and storing resources like NFTs) based on the number of FLOW tokens they hold.
+This natively enables interesting use cases, like key revocation, rotation, and multi-signature transactions. All Flow accounts can use network storage (e.g., for deploying contracts and storing resources like NFTs) based on the number of FLOW tokens they hold.
 
 <Callout type="info">
 
-You must run an explicit account creation transaction on Flow to create a new account. To create an account on testnet, use the Flow Faucet through the web or CLI. Flow Port can create an account on Mainnet.
+You must run an explicit account creation transaction on Flow to create a new account. [Flow CLI](../tools/toolchains/flow-cli/accounts/create-accounts.md) can create an account on any network with a given public key.
 
 </Callout>
 
-Check out the Flow Accounts document to learn more about Flow accounts.
+Check out the [Accounts](../concepts/accounts.md) concept document to learn more about Flow accounts.
 
-# Smart Contracts
+## Smart Contracts
 
 On Flow, smart contracts are written in Cadence. Cadence syntax is user-friendly and inspired by modern languages like Swift. Notable features of Cadence that make it unique and the key power of the Flow blockchain are:
 
-- Resource-oriented: Cadence introduces a new type called Resources. Resources enable onchain representation of digital assets natively and securely. Resources can only exist in one location at a time and are strictly controlled by the execution environment to avoid common mishandling mistakes. Each resource has a unique `uuid` associated with it on the blockchain. Examples of usage are fungible tokens, NFTs, or any custom data structure representing a real-world asset. Check out HERE to learn more about Resources.
-- Capability-based: Cadence offers a [Capability-based Security](https://en.wikipedia.org/wiki/Capability-based_security) model. This also enables the use of Resources as structures to build access control. Capabilities can provide fine-grained access to the underlying objects for better security. For example, when users list an NFT on a Flow marketplace, they create a new Capability to the stored NFT in their account so the buyer can withdraw the asset when they provide the tokens. Check out HERE to learn more about Capabilities.
+- **Resource-oriented**: Cadence introduces a new type called Resources. Resources enable onchain representation of digital assets natively and securely. Resources can only exist in one location at a time and are strictly controlled by the execution environment to avoid common mishandling mistakes. Each resource has a unique `uuid` associated with it on the blockchain. Examples of usage are fungible tokens, NFTs, or any custom data structure representing a real-world asset. Check out [Resources](../cadence/language/resources.mdx) to learn more.
+- **Capability-based**: Cadence offers a [Capability-based Security](https://en.wikipedia.org/wiki/Capability-based_security) model. This also enables the use of Resources as structures to build access control. Capabilities can provide fine-grained access to the underlying objects for better security. For example, when users list an NFT on a Flow marketplace, they create a new Capability to the stored NFT in their account so the buyer can withdraw the asset when they provide the tokens. Check out [Capability-based Access Control](../cadence/language/capability-based-access-control.md) to learn more about Capabilities on Cadence.
 
 <Callout type="info">
 
@@ -45,20 +45,22 @@ Cadence is not compiled. All contracts are open source on Flow.
 
 </Callout>
 
-Check out HERE to learn more about Cadence.
+Check out the [Cadence website](https://cadencelang.dev/) to learn more about Cadence.
 
-If you’re already familiar with smart contracts, you can get started with Cadence by checking the equivalent of common standards:
+If you’re already familiar with smart contracts, here are some resources that can help you get started with Cadence:
 
-- ERC-20 (Fungible Tokens)
-    - LINK
-    - Tutorial
-- ERC-721 (Non-Fungible Tokens)
-    - LINK
-    - Tutorial
+- [The Cadence tutorial](../cadence/tutorial/01-first-steps.mdx)
+- ERC-20 equivalent on Flow is the Flow Fungible Token Standard
+    - [Repository](https://github.com/onflow/flow-ft)
+    - [Tutorial](../cadence/tutorial/06-fungible-tokens.mdx)
+- ERC-721 equivalent on Flow is the Flow Non-Fungible Token Standard
+    - [Repository](https://github.com/onflow/flow-nft)
+    - [Tutorial](../cadence/tutorial/05-non-fungible-tokens-1.mdx)
 - Asset marketplaces with Cadence
-    - Tutorial
+    - [Tutorial](../cadence/tutorial/07-marketplace-setup.mdx)
+    - [NFT Storefront](https://github.com/onflow/nft-storefront/) is an example marketplace standard
 
-## Transactions and Scripts
+### Transactions and Scripts
 
 You can interact with the state on most other blockchains by cryptographically authorizing smart contract function calls. On Flow, transactions are more complex and are pieces of Cadence code. This means that any number of contracts and function calls can be composed together atomically to mutate the blockchain state.
 
@@ -139,15 +141,13 @@ pub fun main(address: Address, collectionPublicPath: PublicPath): [UInt64] {
 }
 ```
 
-Check out Transactions (CONCEPTS) and Scripts (CONCEPTS) to learn more. You can also read Transactions (LINK) or Scripts (LINK) on Cadence docs.
+Check out [Transactions](../concepts/transactions.md) and [Scripts](../concepts/scripts.md) to learn more about the concepts. You can also read the Cadence language reference on [Transactions](../cadence/language/transactions.md) to dive deeper.
 
-## Events
-
-REWRITE
+### Events
 
 Events are custom structures emitted from the smart contracts when something important happens. Developers should rely on emitted events from transactions to verify something went right vs. waiting on the execution success state. The equivalent on Ethereum is logs, and contracts are limited to emitting 3 indexed logs. Learn more about events HERE.
 
-# Flow Nodes
+## Flow Nodes
 
 EXPAND
 
