@@ -22,7 +22,7 @@ The different types of nodes are described [here](./node-roles.mdx). As node ope
 
 The nodes are classified as follows
 
-![Flownodesdiagram.jpg](Flownodesdiagram.jpg)
+![Flownodesdiagram.png](Flownodesdiagram.png)
 
 ## Light node a.k.a. Observer node
 
