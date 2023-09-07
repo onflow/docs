@@ -22,7 +22,7 @@ The different types of nodes are described [here](./node-operation/node-roles.md
 
 The nodes are classified as follows
 
-![Flownodesdiagram.jpg](./node-operation/Flownodesdiagram.jpg)
+![Flownodesdiagram.jpg](./node-operation/Flownodesdiagram.png)
 
 ## Light node a.k.a. Observer node
 
