@@ -26,10 +26,10 @@ yarn-error.log*
 /docs/unsorted
 .idea/
 
-docs/building-on-flow/token-standards/flow-ft/*
-!docs/building-on-flow/token-standards/flow-ft/index.md
-docs/building-on-flow/token-standards/flow-nft/*
-!docs/building-on-flow/token-standards/flow-nft/index.md
+docs/building-on-flow/core-contracts/flow-ft/*
+!docs/building-on-flow/core-contracts/flow-ft/index.md
+docs/building-on-flow/core-contracts/flow-nft/*
+!docs/building-on-flow/core-contracts/flow-nft/index.md
 
 docs/.obsidian
 
