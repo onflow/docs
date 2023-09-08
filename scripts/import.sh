@@ -80,13 +80,13 @@ cloneDocReposToDest() {
 
 # Remove after cadence is updated to a stable version
 # https://github.com/onflow/docs/issues/105
-# copyVersionedDocs() {
-#     for folderName in $(ls $docsLocation); do
-#         if [ $folderName != 'cadence' ]; then
-#             cp -r $docsLocation/$folderName $versionedDocsLocation
-#         fi
-#     done
-# }
+copyVersionedDocs() {
+    for folderName in $(ls $docsLocation); do
+        if [ $folderName != 'cadence' && $folderName != 'building-on-flow' && $folderName != 'tutorials']; then
+            cp -r $docsLocation/$folderName $versionedDocsLocation
+        fi
+    done
+}
 
 copyRepoFilesToDest() {
     sourceFolderName=$1
@@ -102,4 +102,4 @@ copyRepoFilesToDest() {
 }
 
 cloneDocReposToDest
-# copyVersionedDocs
+copyVersionedDocs
