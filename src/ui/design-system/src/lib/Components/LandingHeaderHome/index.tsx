@@ -33,7 +33,7 @@ export function LandingHeaderHome({
           {description}
         </div>
         <ButtonLink variant="primary" href="https://play.onflow.org">
-          Try Cadence
+          Flow Playground’
         </ButtonLink>
       </div>
       <div className="pr-0 md:ml-auto md:mr-14 md:pl-4">

@@ -37,7 +37,7 @@ const HomePage = ({
   return (
     <PageBackground gradient="home">
       <LandingHeaderHome
-        description="Discover the developer ecosystem and master the Flow blockchain"
+        description="Get started right away with the Flow Playground or discover guides, resources and references to build with Flow"
         discordUrl={discordUrl}
         githubUrl={githubUrl}
         tag="onflow"
