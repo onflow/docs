@@ -50,7 +50,7 @@ The `NFTStorefrontV2` contract doesn’t support selling an NFT for multiple dif
 
 **Example -** Alice wants to sell a kitty and is open to receiving FLOW and USDC
 
-![scenario_1](https://user-images.githubusercontent.com/14581509/190966672-e1793fa3-112c-4273-b2a3-e81b8c94fd70.png)
+![scenario_1](./scenario_1.png)
 
 Putting an NFT on sell called listing, seller can create a listing using [sell_item](https://github.com/onflow/nft-storefront/blob/main/transactions/sell_item.cdc) transaction by providing some required details to list an NFT, i.e. Receiving currency type, [Capability](../../cadence/language/capability-based-access-control.md) from where NFT will be deducted etc. If interested look [here](#fun-createListing()) for more details. 
 
