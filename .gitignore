@@ -35,8 +35,10 @@ docs/.obsidian
 
 # Remove after cadence is updated to a stable version
 # https://github.com/onflow/docs/issues/105
-# versioned_docs/version-stable/community-resources
-# versioned_docs/version-stable/concepts
-# versioned_docs/version-stable/references
-# versioned_docs/version-stable/tooling
+versioned_docs/version-stable/building-on-flow
+versioned_docs/version-stable/community-resources
+versioned_docs/version-stable/concepts
+versioned_docs/version-stable/references
+versioned_docs/version-stable/tools
+versioned_docs/version-stable/guides
 # versioned_docs/version-stable/tutorials

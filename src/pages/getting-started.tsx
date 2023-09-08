@@ -121,7 +121,7 @@ export default function GettingStarted(): JSX.Element {
                 links: [
                   {
                     title: 'Get the Flow CLI',
-                    href: '/tooling/flow-cli/install/',
+                    href: '/tools/toolchains/flow-cli/install/',
                     tags: ['install'],
                   },
                   {
@@ -131,7 +131,7 @@ export default function GettingStarted(): JSX.Element {
                   },
                   {
                     title: 'Core contracts & standards',
-                    href: '/concepts/core-contracts',
+                    href: '/building-on-flow/core-contracts',
                     tags: ['nft', 'ft', 'metadata'],
                   },
                   {
