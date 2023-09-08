@@ -713,6 +713,11 @@
       "permanent": true
     },
     {
+      "source": "/tooling/flow-cli/:path*",
+      "destination": "/tools/toolchains/flow-cli/:path*",
+      "permanent": true
+    },
+    {
       "source": "/node-operation/:path*",
       "destination": "/concepts/nodes/node-operation/:path*",
       "permanent": true
