@@ -1,3 +1,6 @@
+---
+sidebar_position: 1
+---
 # Flow Non-Fungible Token (NFT) Standard
 
 This standard defines the minimum functionality required to

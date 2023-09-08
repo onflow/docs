@@ -1,6 +1,8 @@
 ---
 sidebar_position: 3
 title: Differences vs. Other Blockchains
+sidebar_custom_props:
+  icon: ↔️
 ---
 
 This document summarizes the differences you might encounter between building on Flow vs. other blockchains, especially Ethereum. This will be most useful to developers who are already familiar with building on a blockchain system. Check out [Introduction to Flow](../concepts/start-here.md) for a more beginner-friendly overview of the Flow blockchain.
@@ -157,13 +159,13 @@ Access Nodes are the node type that are most useful for developers, as they prov
 - gRPC
     - Mainnet: `access.mainnet.nodes.onflow.org:9000`
     - Testnet: `access.devnet.nodes.onflow.org:9000`
-    - [Specification](./nodes/access-api.mdx)
+    - [Specification](./run-and-secure/nodes/access-api.mdx)
 
 ### Running Your Own Node
 
 If you’re getting started you don’t need to run your own node and you can use the above public nodes. The public access nodes are rate-limited, so as your product matures you might want to run your own node. There are multiple options available:
 
-- Start with a [Light (Observer) Node](./nodes/node-operation/observer-node.mdx).
+- Start with a [Light (Observer) Node](./run-and-secure/nodes/node-operation/observer-node.mdx).
 - You can also use a third-party provider like [Quicknode](https://www.quicknode.com/docs/flow).
 
 Check out [Running a Node](../guides/runningNode.mdx) for more information.
