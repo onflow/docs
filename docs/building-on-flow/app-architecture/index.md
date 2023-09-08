@@ -1,7 +1,9 @@
 ---
-sidebar_position: 1
+sidebar_position: 3
 title: App Architecture
 description: Describes building self-custody and app custody applications on Flow Blockchain.
+sidebar_custom_props:
+  icon: 🏗️
 ---
 
 # App Architecture on Flow Blockchain

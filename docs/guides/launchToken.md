@@ -9,7 +9,7 @@ sidebar_custom_props:
 
 ## Token Standards
 
-It is important that Flow has [Token Standards](../building-on-flow/token-standards/index.md) for Fungible and Non-fungible tokens. This allows applications and other smart contracts to interact with your token in a predictable way.
+It is important that Flow has Token Standards for [Fungible tokens](../building-on-flow/core-contracts/flow-ft/index.md) and [Non-fungible](../building-on-flow/core-contracts/flow-nft/index.md) tokens. This allows applications and other smart contracts to interact with your token in a predictable way.
 
 
 ### Non-Fungible Tokens (NFTs)
