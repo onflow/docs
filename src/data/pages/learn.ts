@@ -1,5 +1,4 @@
-import { type ContentNavigationListProps } from '~/ui/design-system/src/lib/Components/ContentNavigationList';
-import { type TutorialCardProps } from '~/ui/design-system/src/lib/Components/TutorialCard';
+import { type TutorialCardProps } from '../../ui/design-system/src/lib/Components/TutorialCard';
 import {
   accessControlCadence,
   cadenceAtAGlance,
@@ -21,9 +20,17 @@ import {
   revolutionizeSmartContractProgramming,
   zeroToJacobFlow,
 } from '../../data/articles';
-import { type LearnPageProps } from '../../ui/design-system/src/lib/Pages/LearnPage';
-import { externalLinks } from '../external-links';
-import { metadata } from '../metadata';
+import { type VideoCardErrorProps } from '@site/src/ui/design-system/src/lib/Components/VideoCard/VideoCardError';
+export interface LargeVideoCardProps {
+  link: string; // NOTE: link should be in the format that youtubes site uses ie: https://www.youtube.com/watch?v=...
+  title: string;
+  length: number; // seconds
+  className?: string;
+  errorBehavior?: VideoCardErrorProps['behavior'];
+}
+export interface SmallVideoCardProps extends LargeVideoCardProps {
+  tags: string[];
+}
 
 export const cadenceTutorials: TutorialCardProps[] = [
   cadenceAtAGlance,
@@ -53,7 +60,10 @@ export const architectureTutorials: TutorialCardProps[] = [
   accessControlCadence,
 ];
 
-export const videos: LearnPageProps['videos'] = {
+export const videos: {
+  primary: LargeVideoCardProps;
+  secondary: SmallVideoCardProps[];
+} = {
   primary: {
     link: 'https://www.youtube.com/watch?v=pRz7EzrWchs',
     title: 'Learn Cadence - Hello World on Flow',
@@ -80,31 +90,3 @@ export const allTutorials: TutorialCardProps[] = [
   ...cadenceTutorials,
   ...architectureTutorials,
 ];
-
-export const secondaryNavSections = [
-  {
-    title: 'Cadence',
-    elementId: 'cadence',
-  },
-  {
-    title: 'NFTs',
-    elementId: 'nfts',
-  },
-  {
-    title: 'Architecture',
-    elementId: 'architecture',
-  },
-  {
-    title: 'Featured Videos',
-    elementId: 'featured-videos',
-  },
-  {
-    title: 'All Content',
-    elementId: 'all-content',
-  },
-];
-
-export const youtubeHref = externalLinks.youtube;
-export const cadenceHref = '/cadence/intro';
-
-export const editPageUrl = `${metadata.githubRepoBaseUrl}/blob/main/app/data/pages/learn.ts`;

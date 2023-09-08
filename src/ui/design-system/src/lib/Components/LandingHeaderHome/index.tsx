@@ -10,7 +10,6 @@ export interface LandingHeaderHomeProps {
   /**
    * The URL to the page on github that allows editing this page's content
    */
-  editPageUrl?: string;
   githubUrl: string;
   tag: string;
   title: string;
@@ -20,7 +19,7 @@ export function LandingHeaderHome({
   description,
   tag,
   title,
-}: LandingHeaderHomeProps) {
+}: LandingHeaderHomeProps): JSX.Element {
   return (
     <div className="container flex flex-col-reverse items-center pt-4 pb-10 md:flex-row">
       <div className="mt-8 flex max-w-full flex-1 basis-1/2 flex-col items-start pb-4 pr-4">

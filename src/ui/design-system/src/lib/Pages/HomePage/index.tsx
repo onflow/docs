@@ -3,7 +3,6 @@ import {
   Flips,
   LandingHeaderHome,
   HomepageStartList,
-  ToolsAndConcepts,
   UpcomingEvents,
 } from '../../Components';
 import {
@@ -12,7 +11,6 @@ import {
 } from '../../Components/ContentNavigationList';
 import { type FlipsProps } from '../../Components/Flips';
 import { type SocialLinksSignupProps } from '../../Components/SocialLinksSignup';
-import { type ToolCardProps } from '../../Components/ToolCard';
 import { type TutorialCardProps } from '../../Components/TutorialCard';
 import { type UpcomingEventsProps } from '../../Components/UpcomingEvents';
 import PageBackground from '../shared/PageBackground';
@@ -24,21 +22,16 @@ export type HomePageProps = SocialLinksSignupProps & {
   concepts?: TutorialCardProps[];
   homepageStartProjectData: HomepageStartItemProps[];
   contentNavigationListItems: ContentNavigationListProps;
-  editPageUrl?: string;
   flips: FlipsProps;
-  tools: ToolCardProps[];
   upcomingEvents: UpcomingEventsProps;
 };
 
 const HomePage = ({
-  concepts,
   homepageStartProjectData,
   contentNavigationListItems,
   discordUrl,
-  editPageUrl,
   flips,
   githubUrl,
-  tools,
   upcomingEvents,
 }: HomePageProps): JSX.Element => {
   return (
@@ -46,20 +39,12 @@ const HomePage = ({
       <LandingHeaderHome
         description="Discover the developer ecosystem and master the Flow blockchain"
         discordUrl={discordUrl}
-        editPageUrl={editPageUrl}
         githubUrl={githubUrl}
         tag="onflow"
-        title="Developer Portal"
+        title="Developer Documentation"
       />
       <HomepageStartList items={homepageStartProjectData} />
       <PageSections>
-        <PageSection sectionId="sdks-and-tools">
-          <ToolsAndConcepts
-            tools={tools}
-            concepts={concepts}
-            headerLink={'sdks-and-tools'}
-          />
-        </PageSection>
         <PageSection sectionId="flips">
           <Flips {...flips} headerLink="flips" />
         </PageSection>
