@@ -952,8 +952,9 @@
       "permanent": true
     },
     {
-      "source": "/tools",
-      "destination": "/next/tools"
+      "source": "/tooling/:path*",
+      "destination": "/tools/:path*",
+      "permanent": true
     },
     {
       "source": "/learn",
@@ -962,7 +963,7 @@
     },
     {
       "source": "/community",
-      "destination": "/next/community-resources"
+      "destination": "/community-resources"
     }
   ]
 }
