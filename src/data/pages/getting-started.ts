@@ -153,7 +153,7 @@ export const linkCard2ColumnItems: LinkCard2ColumnProps = {
       title: 'Flow Client Library',
       description:
         'The Flow Client Library (FCL) JS is a package used to interact with user wallets, dapps, and the blockchain.',
-      href: '/tooling/fcl-js',
+      href: '/tools/clients/fcl-js',
       iconType: 'fcl',
     },
   ],
