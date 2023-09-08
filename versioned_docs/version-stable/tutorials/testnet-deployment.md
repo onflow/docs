@@ -5,7 +5,7 @@ sidebar_title: 2. Testnet Deployment
 
 The Flow test network, known as Flow Testnet, exists to help developers test their software and smart contracts against a live network. It's also used as a means of releasing and testing new protocol and smart contract features before they are integrated into Flow's main network (Mainnet).
 
-When the Flow protocol is updated or a new version of Cadence is released, those updates will always be made available on the [Flow Emulator](../tooling/emulator) _before_ they're integrated into Flow Testnet or Flow Mainnet.
+When the Flow protocol is updated or a new version of Cadence is released, those updates will always be made available on the [Flow Emulator](../tools/toolchains/emulator/index.md) _before_ they're integrated into Flow Testnet or Flow Mainnet.
 
 ## Getting Started on Testnet
 
@@ -15,9 +15,9 @@ Anybody can use the [Testnet Faucet](https://testnet-faucet-v2.onflow.org/) to c
 
 #### Generate a Key
 
-To start, you'll need to generate an asymmetric cryptographic key pair (see [Accounts & Keys](../concepts/start-here/accounts-and-keys) for a list of supported algorithms).
+To start, you'll need to generate an asymmetric cryptographic key pair (see [Accounts & Keys](../concepts/accounts.md) for a list of supported algorithms).
 
-For Testnet, you can generate a new key pair with the [Flow CLI](../tooling/flow-cli):
+For Testnet, you can generate a new key pair with the [Flow CLI](../tools/toolchains/flow-cli/index.md):
 
 ```sh
 > flow keys generate
@@ -69,7 +69,7 @@ func main() {
 
 ### Creating Additional Accounts
 
-It may be necessary to create additional accounts for testing purposes and you can do so using [Flow CLI account create command](../tooling/flow-cli/accounts/create-accounts.md).
+It may be necessary to create additional accounts for testing purposes and you can do so using [Flow CLI account create command](../tools/toolchains/flow-cli/accounts/create-accounts.md).
 
 First you need to initialize the configuration:
 
@@ -93,7 +93,7 @@ Add the account created with the use of faucet above to the `accounts` property 
 ```
 
 After adding account to the configuration you can use that account to fund the creation of more accounts by using
-[CLI account create](../tooling/flow-cli/accounts/create-accounts.md) command.
+[CLI account create](../tools/toolchains/flow-cli/accounts/create-accounts.md) command.
 
 ```
 > flow accounts create \
@@ -115,7 +115,7 @@ Contracts Deployed: 0
 
 ### Deploying a Contract
 
-Using the account you created above, you can deploy additional contract accounts using the [Flow CLI deploy command](../tooling/flow-cli/deployment/deploy-project-contracts.md).
+Using the account you created above, you can deploy additional contract accounts using the [Flow CLI deploy command](../tools/toolchains/flow-cli/deployment/deploy-project-contracts.md).
 
 Make sure flow project was initialized in the previous step and the `flow.json` is present.
 
@@ -159,11 +159,11 @@ You can now deploy all the contracts by running deploy command:
 flow project deploy
 ```
 
-Please read more about deployment in [the Flow CLI project deployment guide](../tooling/flow-cli/deployment/deploy-project-contracts.md).
+Please read more about deployment in [the Flow CLI project deployment guide](../tools/toolchains/flow-cli/deployment/deploy-project-contracts.md).
 
 ### Making Use of Core Contracts
 
-Flow Testnet comes with some useful contracts already deployed, called **core contracts.** There are [reference pages with import addresses for the core contracts](../concepts/core-contracts/index.md).
+Flow Testnet comes with some useful contracts already deployed, called **core contracts.** There are [reference pages with import addresses for the core contracts](../building-on-flow/core-contracts/index.md).
 
 Once your accounts are set up and you're ready to develop, you can look over [some code examples from the Flow Go SDK](https://github.com/onflow/flow-go-sdk/tree/master/examples).
 
