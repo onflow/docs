@@ -30,8 +30,8 @@ a full implementation for **Non-Fungible Tokens (NFTs)**.
 
 <Callout type="success">
   Open the starter code for this tutorial in the Flow Playground:
-  <a 
-    href="https://play.onflow.org/f08e8e0d-d28e-4cbe-8d72-3afe2349c629" 
+  <a
+    href="https://play.onflow.org/f08e8e0d-d28e-4cbe-8d72-3afe2349c629"
     target="_blank"
   >
     https://play.onflow.org/f08e8e0d-d28e-4cbe-8d72-3afe2349c629
@@ -352,7 +352,7 @@ a resource can have more control over the resources it owns than the actual
 person whose account it is stored in!
 
 You'll encounter more fascinating implications of ownership and interoperability
-like this as you get deeper into Cadence. 
+like this as you get deeper into Cadence.
 
 Now, back to the tutorial!
 
@@ -361,7 +361,7 @@ Now, back to the tutorial!
 In the NFT Collection, all the functions and fields are public,
 but we do not want everyone in the network to be able to call our `withdraw` function.
 This is where Cadence's second layer of access control comes in.
-Cadence utilizes [capability security](../language/capability-based-access-control),
+Cadence utilizes [capability security](../language/capabilities.mdx),
 which means that for any given object, a user is allowed to access a field or method of that object if they either:
 
 - Are the owner of the object

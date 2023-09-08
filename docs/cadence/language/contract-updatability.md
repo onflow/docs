@@ -4,7 +4,7 @@ sidebar_position: 23
 ---
 
 ## Introduction
-A [contract](./contracts.mdx) in Cadence is a collection of data (its state) and
+A [contract](./contracts.mdx) is a collection of data (its state) and
 code (its functions) that lives in the contract storage area of an account.
 When a contract is updated, it is important to make sure that the changes introduced do not lead to runtime
 inconsistencies for already stored data.

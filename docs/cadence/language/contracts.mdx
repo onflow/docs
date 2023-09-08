@@ -3,12 +3,11 @@ title: Contracts
 sidebar_position: 22
 ---
 
-A contract in Cadence is a collection of type definitions
-of interfaces, structs, resources, data (its state), and code (its functions)
-that lives in the contract storage area of an account in Flow.
+A contract is a collection of type definitions,
+data (its state), and code (its functions),
+that is stored in the contract storage area of an account.
 
-Contracts are where all composite types like structs, resources,
-events, and interfaces for these types in Cadence have to be defined.
+Contracts are where all composite types interfaces for these types have to be defined.
 Therefore, an object of one of these types cannot exist
 without having been defined in a deployed Cadence contract.
 
@@ -25,11 +24,12 @@ like resources or structs.
 Contracts stay in an account's contract storage area
 and can only be added, updated, or removed by the account owner with special commands.
 
-Contracts are declared using the `contract` keyword. The keyword is followed
-by the name of the contract.
+Contracts are declared using the `contract` keyword.
+The keyword is followed by the name of the contract.
 
 ```cadence
-access(all) contract SomeContract {
+access(all)
+contract SomeContract {
     // ...
 }
 ```
@@ -37,11 +37,13 @@ access(all) contract SomeContract {
 Contracts cannot be nested in each other.
 
 ```cadence
-access(all) contract Invalid {
+access(all)
+contract Invalid {
 
     // Invalid: Contracts cannot be nested in any other type.
     //
-    access(all) contract Nested {
+    access(all)
+    contract Nested {
         // ...
     }
 }
@@ -51,16 +53,19 @@ One of the simplest forms of a contract would just be one with a state field,
 a function, and an `init` function that initializes the field:
 
 ```cadence
-access(all) contract HelloWorld {
+access(all)
+contract HelloWorld {
 
     // Declare a stored state field in HelloWorld
     //
-    access(all) let greeting: String
+    access(all)
+    let greeting: String
 
     // Declare a function that can be called by anyone
     // who imports the contract
     //
-    access(all) fun hello(): String {
+    access(all)
+    fun hello(): String {
         return self.greeting
     }
 
@@ -70,10 +75,8 @@ access(all) contract HelloWorld {
 }
 ```
 
-This contract could be deployed to an account and live permanently
-in the contract storage.  Transactions and other contracts
-can interact with contracts by importing them at the beginning
-of a transaction or contract definition.
+Transactions and other contracts can interact with contracts
+by importing them at the beginning of a transaction or contract definition.
 
 Anyone could call the above contract's `hello` function by importing
 the contract from the account it was deployed to and using the imported
@@ -187,49 +190,32 @@ import FungibleToken from 0x42
 let newVault <- create FungibleToken.Vault(balance: 10)
 ```
 
-The contract would have to either define a function that creates new
-`Vault` instances or use its `init` function to create an instance and
-store it in the owner's account storage.
-
-This brings up another key feature of contracts in Cadence.  Contracts
-can interact with its account's `storage` and `published` objects to store
-resources, structs, and references.
-They do so by using the special `self.account` object that is only accessible within the contract.
-
-Imagine that these were declared in the above `FungibleToken` contract.
-
-```cadence
-
-    access(all) fun createVault(initialBalance: Int): @Vault {
-        return <-create Vault(balance: initialBalance)
-    }
-
-    init(balance: Int) {
-        let vault <- create Vault(balance: 1000)
-        self.account.storage.save(<-vault, to: /storage/initialVault)
-    }
-```
-
-Now, any account could call the `createVault` function declared in the contract
-to create a `Vault` object.
-Or the owner could call the `withdraw` function on their own `Vault` to send new vaults to others.
-
-```cadence
-import FungibleToken from 0x42
-
-// Valid: Create an instance of the `Vault` type by calling the contract's
-// `createVault` function.
-//
-let newVault <- create FungibleToken.createVault(initialBalance: 10)
-```
-
 ## Account access
 
-Contracts have the implicit field `let account: AuthAccount`,
-which is the account in which the contract is deployed too.
-This gives the contract the ability to e.g. read and write to the account's storage.
+Contracts can access the account they are deployed to:
+contracts have the implicit field named `account`
+which is only accessible within the contract.
 
-## Contract Interfaces
+```cadence
+let account: auth(Storage, Keys, Contracts, Inbox, Capabilities) &Account`,
+```
+
+The account reference is fully entitled,
+so grants access to the account's storage, keys, contracts, etc.
+
+For example, this gives the contract the ability to write to the account's storage
+when the contract is initialized.
+
+```cadence
+init(balance: Int) {
+    self.account.storage.save(
+        <-create Vault(balance: 1000),
+        to: /storage/initialVault
+    )
+}
+```
+
+## Contract interfaces
 
 Like composite types, contracts can have interfaces that specify rules
 about their behavior, their types, and the behavior of their types.
@@ -239,8 +225,8 @@ Declarations cannot be nested in other types.
 
 Contract interfaces may not declare concrete types (other than events), but they can declare interfaces.
 If a contract interface declares an interface type, the implementing contract
-does not have to also define that interface.  They can refer to that nested
-interface by saying `{ContractInterfaceName}.{NestedInterfaceName}`
+does not have to also define that interface.
+They can refer to that nested interface by saying `{ContractInterfaceName}.{NestedInterfaceName}`
 
 ```cadence
 // Declare a contract interface that declares an interface and a resource

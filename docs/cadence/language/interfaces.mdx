@@ -1,6 +1,6 @@
 ---
 title: Interfaces
-sidebar_position: 14
+sidebar_position: 15
 ---
 
 An interface is an abstract type that specifies the behavior of types
@@ -466,18 +466,18 @@ struct SomeInner: OuterInterface.InnerInterface {}
 ```
 
 Contract interfaces may also declare [events](./events.md),
-which also do not require implementing types of the outer interface to "implement" the event. 
-The event can be emitted in the declaring interface, in a condition or in a default implementation of a function. E.g. 
+which also do not require implementing types of the outer interface to "implement" the event.
+The event can be emitted in the declaring interface, in a condition or in a default implementation of a function. E.g.
 
 ```cadence
-// Declare a contract interface 
-// 
+// Declare a contract interface
+//
 contract interface ContractInterface {
     // some event declaration
     //
     event SomeEvent()
 
-    // some function that emits `SomeEvent` when called 
+    // some function that emits `SomeEvent` when called
     //
     fun eventEmittingFunction() {
         pre {
@@ -490,10 +490,10 @@ contract interface ContractInterface {
 // Note that no declaration of `SomeEvent` is required
 //
 contract ImplementingContract: ContractInterface {
-    // implementation of `eventEmittingFunction`; 
+    // implementation of `eventEmittingFunction`;
     // this will emit `SomeEvent` when called
-    // 
-    fun eventEmittingFunction() { 
+    //
+    fun eventEmittingFunction() {
         // ...
     }
 }
@@ -730,9 +730,9 @@ access(all) resource interface Provider: Logger {}
 access(all) resource interface Vault: Receiver, Provider {}
 ```
 
-In the above example, `Logger.log()` default function is visible to the `Vault` interface via both `Receiver` and `Provider`. 
+In the above example, `Logger.log()` default function is visible to the `Vault` interface via both `Receiver` and `Provider`.
 Even though it is available from two different interfaces, they are both referring to the same
-default implementation. 
+default implementation.
 Therefore, the above code is valid.
 
 #### Conditions with Default functions
@@ -818,9 +818,9 @@ access(all) contract interface NonFungibleToken: Token, Collectible {}
 ```
 
 In the above example, `Logger.Foo` type definition is visible to the `NonFungibleToken` interface via both `Token`
-and `Collectible`. 
+and `Collectible`.
 Even though it is available from two different interfaces, they are both referring to the same
-type definition. 
+type definition.
 Therefore, the above code is valid.
 
 However, if at least one of the interfaces in the middle of the chain also overrides the type definition `Foo`,

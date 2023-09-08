@@ -19,7 +19,7 @@ create it with only the minimal set of entitlements required to achieve the desi
 
 Don't trust a users’ [account storage](./language/accounts/storage.mdx). Users have full control over their data and may reorganize it as they see fit. Users may store values in any path, so paths may store values of “unexpected” types. These values may be instances of types in contracts that the user deployed.
 
-Always [borrow](./language/capability-based-access-control.md) with the specific type that is expected. Or, check if the value is an instance of the expected type.
+Always [borrow](./language/accounts/capabilities.mdx) with the specific type that is expected. Or, check if the value is an instance of the expected type.
 
 ## Auth Accounts
 
@@ -29,7 +29,16 @@ It is preferable to use capabilities over direct `AuthAccount` storage when expo
 
 ## Capabilities
 
-Don’t store anything under the [public capability storage](./language/capability-based-access-control.md) unless strictly required. Anyone can access your public capability using `AuthAccount.getCapability`. If something needs to be stored under `/public/`, make sure only read functionality is provided by restricting its type using either a resource interface or struct interface.
+Don't issue and publish capabilities unless really required.
+Anyone can access capabilities which are published.
+If public access is needed, follow the [principle of least privilege/authority](https://en.wikipedia.org/wiki/Principle_of_least_privilege):
+Make sure that the capability type only grants access to the fields and functions that should be exposed, and nothing else.
+Ideally, create a capability with a reference type that is unauthorized.
+
+If an entitlement is necessary to access the field or function,
+ensure it is only used for the particular field or function,
+and not also by other fields and functions.
+If needed, introduce a new, fine-grained entitlement.
 
 When linking a capability, the link might already be present. In that case, Cadence will not panic with a runtime error but the link function will return `nil`.
 
