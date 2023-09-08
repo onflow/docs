@@ -1,7 +1,7 @@
 ---
 title: Install
 description: Set up the project locally
-sidebar_title: Install
+sidebar_label: Install
 ---
 
 Follow the steps below to start your own version of Kitty Items. 
@@ -28,7 +28,7 @@ v16.x.x
 
 ### Flow CLI
 
-Ensure you have the [Flow CLI](../../tooling/flow-cli/install.md). Version **0.32.3+** is required.
+Ensure you have the [Flow CLI](../../tools/toolchains/flow-cli/install.md). Version **0.32.3+** is required.
 
 ```
 > flow version

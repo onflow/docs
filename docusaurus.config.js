@@ -259,12 +259,12 @@ const config = {
         },
         items: [
           {
-            to: 'concepts/intro',
+            to: 'concepts/start-here',
             position: 'left',
             label: 'Concepts',
           },
           {
-            to: 'next/guides',
+            to: 'guides',
             position: 'left',
             label: 'Guides',
           },
@@ -274,17 +274,17 @@ const config = {
             label: 'Cadence',
           },
           {
-            to: 'next/tools',
+            to: 'tools',
             position: 'left',
             label: 'Tools',
           },
           {
-            to: 'next/references',
+            to: 'references',
             position: 'left',
             label: 'References',
           },
           {
-            to: 'next/community-resources',
+            to: 'community-resources',
             position: 'left',
             label: 'Resources',
           },
@@ -328,7 +328,7 @@ const config = {
                 label: 'Cadence',
               },
               {
-                to: '/concepts/mobile',
+                to: '/building-on-flow/mobile',
                 label: 'Mobile',
               },
               {
@@ -414,7 +414,7 @@ const config = {
                 label: 'Cadence Cookbook',
               },
               {
-                to: '/concepts/core-contracts/',
+                to: '/next/building-on-flow/core-contracts/',
                 label: 'Core Contracts & Standards',
               },
               {
@@ -439,19 +439,19 @@ const config = {
                 label: 'Flowscan Testnet',
               },
               {
-                to: '/concepts/nodes/node-operation/past-sporks/',
+                to: '/building-on-flow/nodes/node-operation/past-sporks/',
                 label: 'Past Sporks',
               },
               {
-                to: '/concepts/nodes/node-operation/upcoming-sporks',
+                to: '/building-on-flow/nodes/node-operation/upcoming-sporks',
                 label: 'Upcoming Sporks',
               },
               {
-                to: '/concepts/nodes/node-operation/',
+                to: '/building-on-flow/nodes/node-operation/',
                 label: 'Node Operation',
               },
               {
-                to: '/concepts/nodes/node-operation/spork/',
+                to: '/building-on-flow/nodes/node-operation/spork/',
                 label: 'Spork Information',
               },
             ],

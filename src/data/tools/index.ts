@@ -28,7 +28,7 @@ const cliTool: Tool = {
   authorIcon: 'https://avatars.githubusercontent.com/u/62387156?s=64&v=4',
   authorName: 'onflow',
   tags: ['documentation', 'active', 'required'],
-  link: '/tooling/flow-cli/',
+  link: '/tools/toolchains/flow-cli/',
   stars: 171,
   iconSrc: ToolCliIconSrc,
   description:
@@ -44,7 +44,7 @@ const emulatorTool: Tool = {
   authorIcon: 'https://avatars.githubusercontent.com/u/62387156?s=64&v=4',
   authorName: 'onflow',
   tags: ['documentation', 'active', 'local-dev'],
-  link: '/tooling/emulator/',
+  link: '/tools/toolchains/emulator/',
   stars: 62,
   iconSrc: ToolEmulatorIconSrc,
   description:
@@ -60,7 +60,7 @@ const vsCodeTool: Tool = {
   authorIcon: 'https://avatars.githubusercontent.com/u/62387156?s=64&v=4',
   authorName: 'onflow',
   tags: ['documentation', 'active', 'local-dev'],
-  link: '/tooling/vscode-extension',
+  link: '/tools/toolchains/vscode-extension',
   stars: 33,
   iconSrc: ToolVsCodeIconSrc,
   description:
@@ -123,7 +123,7 @@ const jsTestingLibTool: Tool = {
   authorIcon: 'https://avatars.githubusercontent.com/u/62387156?s=64&v=4',
   authorName: 'onflow',
   tags: ['documentation', 'active', 'local-dev'],
-  link: '/tooling/flow-js-testing/',
+  link: '/tools/toolchains/flow-js-testing/',
   stars: 38,
   iconSrc: ToolTestingIconSrc,
   description:
@@ -171,7 +171,7 @@ const fclSDK: Tool = {
   authorIcon: 'https://avatars.githubusercontent.com/u/62387156?s=64&v=4',
   authorName: 'onflow',
   tags: ['documentation', 'active'],
-  link: '/tooling/fcl-js',
+  link: '/tools/clients/fcl-js',
   stars: 268,
   iconSrc: ToolFclIconSrc,
 };
@@ -185,7 +185,7 @@ const goSDK: Tool = {
   authorIcon: 'https://avatars.githubusercontent.com/u/62387156?s=64&v=4',
   authorName: 'onflow',
   tags: ['documentation', 'active'],
-  link: '/tooling/flow-go-sdk',
+  link: '/tools/clients/flow-go-sdk',
   stars: 186,
   iconSrc:
     'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/go/go-original.svg',
@@ -604,7 +604,7 @@ const unitySDK: Tool = {
   authorIcon: 'https://avatars.githubusercontent.com/u/62387156?s=64&v=4',
   authorName: 'onflow',
   tags: ['documentation'],
-  link: '/tooling/unity-sdk',
+  link: '/tools/clients/unity-sdk',
   stars: 4,
   iconSrc:
     'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/unity/unity-original.svg',
