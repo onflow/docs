@@ -3,6 +3,8 @@ title: Testnet Deployment Guidelines
 sidebar_label: Testnet Deployment
 description: Guidelines for deploying your application to Flow Testnet
 sidebar_position: 2
+sidebar_custom_props:
+  icon: 🧪
 ---
 
 The Flow test network, known as Flow Testnet, exists to help developers test their software and smart contracts against a live network. It's also used as a means of releasing and testing new protocol and smart contract features before they are integrated into Flow's main network (Mainnet).
@@ -18,7 +20,7 @@ To create accounts and generate keys, make sure to install [Flow CLI](../../tool
 
 ### Creating an Account
 
-There are two simple methods of creating an account on testnet. **Interactive** and **Manual**, both use the flow CLI and the [Testnet Faucet](https://testnet-faucet-v2.onflow.org/).
+There are two simple methods of creating an account on testnet. **Interactive** and **Manual**, both use the Flow CLI and the [Testnet Faucet](https://testnet-faucet-v2.onflow.org/).
 
 Make sure to install the Flow CLI. [Flow CLI](../../tools/toolchains/flow-cli/accounts/create-accounts) has a interactive mode for generating keys, using the testnet faucet to create and fund the new account.
 
@@ -28,7 +30,7 @@ Flow CLI can be used to create a Cadence project and stay organized, [Flow CLI: 
 
 After you have a project created and want to deploy your Cadence; contracts, transactions and scripts.[Flow CLI: deploy](../../tools/toolchains/flow-cli/deployment/deploy-project-contracts.md).
 
-Make sure flow project was initialized in the previous step and the `flow.json` is present.
+Make sure Flow project was initialized in the previous step and the `flow.json` is present.
 
 
 ### Making Use of Core Contracts

@@ -945,6 +945,19 @@
       "source": "/next/tooling/unity-sdk/:path*",
       "destination": "/next/tools/clients/unity-sdk/:path*",
       "permanent": true
+    },
+    {
+      "source": "/tools",
+      "destination": "/next/tools"
+    },
+    {
+      "source": "/learn",
+      "destination": "https://academy.ecdao.org/en",
+      "permanent": true
+    },
+    {
+      "source": "/community",
+      "destination": "/next/community-resources"
     }
   ]
 }

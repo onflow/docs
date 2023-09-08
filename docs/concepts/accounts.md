@@ -172,14 +172,14 @@ Find [more about the command in the CLI docs](../tools/toolchains/flow-cli/accou
 
 Accounts can be obtained from the access node APIs, currently, there are two gRPC and REST APIs. You can find more information about them here:
 
-**gRPC API** [concepts/nodes/access-api#accounts](../building-on-flow/nodes/access-api.mdx#accounts)
+**gRPC API** [building-on-flow/nodes/access-api#accounts](../building-on-flow/nodes/access-api.mdx#accounts)
 
 **REST API** [http-api#tag/Accounts](/http-api#tag/Accounts)
 
 There are multiple SDKs implementing the above APIs for different languages:
 
-**Javascript SDK** [tooling/fcl-js](../tools/clients/fcl-js/index.md)
+**Javascript SDK** [tools/clients/fcl-js](../tools/clients/fcl-js/index.md)
 
-**Go SDK** [tooling/flow-go-sdk](../tools/clients/flow-go-sdk/index.mdx)
+**Go SDK** [tools/clients/flow-go-sdk](../tools/clients/flow-go-sdk/index.mdx)
 
-Find a list of all SDKs here: [tools#sdks](../tools/clients/index.md)
+Find a list of all SDKs here: [tools/clients](../tools/clients/index.md)
