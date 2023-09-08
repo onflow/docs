@@ -3,6 +3,7 @@ title: Flow Mobile
 sidebar_position: 20
 sidebar_custom_props:
   icon: 📱
+  description: Discover Flow Mobile, your gateway to a seamless blockchain experience on mobile devices.
 ---
 
 Building mobile native applications that interact with the blockchain enables a much richer end user experiences and provides access to OS capabilities. With Flow Mobile, developers can build native applications for iOS and Android leveraging SDKs and mobile wallets.

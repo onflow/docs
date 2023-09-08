@@ -2,3 +2,4 @@ label: Running and Securing Flow
 position: 6
 customProps:
   icon: 🔐
+  description: Running and securing your Flow blockchain infrastructure, ensuring robust and secure operation
