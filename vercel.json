@@ -974,6 +974,11 @@
       "source": "/concepts/nodes/:path*",
       "destination": "/building-on-flow/run-and-secure/nodes/:path*",
       "permanent": true
+    },
+    {
+      "source": "/concepts/flow-token/available-wallets",
+      "destination": "/tools/wallets",
+      "permanent": true
     }
   ]
 }
