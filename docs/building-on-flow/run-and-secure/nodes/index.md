@@ -90,7 +90,7 @@ Furthermore, Access Node operators can freely rate-limit the amount of resources
 
 <Callout type="info">
   <br />
-  To run a self-hosted access node, follow this [guide](./access-node-setup.md)
+  To run a self-hosted access node, follow this [guide](./node-operation/access-node-setup.md)
   <br />
 </Callout>
 
