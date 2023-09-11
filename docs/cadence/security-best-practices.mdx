@@ -17,19 +17,29 @@ create it with only the minimal set of entitlements required to achieve the desi
 
 ## Account Storage
 
-Don't trust a users’ [account storage](./language/accounts/storage.mdx). Users have full control over their data and may reorganize it as they see fit. Users may store values in any path, so paths may store values of “unexpected” types. These values may be instances of types in contracts that the user deployed.
+Don't trust a users' [account storage](./language/accounts/storage.mdx).
+Users have full control over their data and may reorganize it as they see fit.
+Users may store values in any path, so paths may store values of "unexpected" types.
+These values may be instances of types in contracts that the user deployed.
 
-Always [borrow](./language/accounts/capabilities.mdx) with the specific type that is expected. Or, check if the value is an instance of the expected type.
+Always [borrow](./language/accounts/capabilities.mdx) with the specific type that is expected.
+Or, check if the value is an instance of the expected type.
 
-## Auth Accounts
+## Authorized account references
 
-Access to an `AuthAccount` gives full access to the account's storage, keys, and contracts. Therefore, [avoid using AuthAccount](./anti-patterns.mdx#avoid-using-authaccount-as-a-function-parameter) as a function parameter unless absolutely necessary.
+Access to an authorized account reference (`auth(...) &Account`) gives access to entitled operations,
+for example the account's storage, keys, and contracts.
 
-It is preferable to use capabilities over direct `AuthAccount` storage when exposing account data. Using capabilities allows the revocation of access by unlinking and limits the access to a single value with a certain set of functionality – access to an `AuthAccount` gives full access to the whole storage, as well as key and contract management.
+Therefore, avoid passing an entitled account reference to a function,
+and when defining a function,
+only specify an account reference parameter with the fine-grained entitlements required to perform the necessary operations.
+
+It is preferable to use capabilities over direct account storage access when exposing account data.
+Using capabilities allows the revocation of access and limits the access to a single value with a certain set of functionality.
 
 ## Capabilities
 
-Don't issue and publish capabilities unless really required.
+Don't issue and publish capabilities unless really necessary.
 Anyone can access capabilities which are published.
 If public access is needed, follow the [principle of least privilege/authority](https://en.wikipedia.org/wiki/Principle_of_least_privilege):
 Make sure that the capability type only grants access to the fields and functions that should be exposed, and nothing else.
@@ -40,9 +50,9 @@ ensure it is only used for the particular field or function,
 and not also by other fields and functions.
 If needed, introduce a new, fine-grained entitlement.
 
-When linking a capability, the link might already be present. In that case, Cadence will not panic with a runtime error but the link function will return `nil`.
-
-It is a good practice to check if the link already exists with `getLinkTarget` before creating it. This function will return `nil` if the link does not exist.
+When publishing a capability, a capability might already be present.
+It is a good practice to check if a capability already exists with `get` before creating it.
+This function will return `nil` if the capability does not exist.
 
 If it is necessary to handle the case where borrowing a capability might fail, the `account.check` function can be used to verify that the target exists and has a valid type.
 
@@ -52,9 +62,15 @@ Ensure capabilities cannot be accessed by unauthorized parties. For example, cap
 
 Audits of Cadence code should also include [transactions](./language/transactions.md), as they may contain arbitrary code, just, like in contracts. In addition, they are given full access to the accounts of the transaction’s signers, i.e. the transaction is allowed to manipulate the signers’ account storage, contracts, and keys.
 
-Signing a transaction gives access to the `AuthAccount`, i.e. full access to the account’s storage, keys, and contracts.
+Signing a transaction gives access to the operations accessible by the entitlements specified in the parameter types of the `prepare` block.
 
-Do not blindly sign a transaction. The transaction could for example change deployed contracts by upgrading them with malicious statements, revoking or adding keys, transferring resources from storage, etc.
+For example, the account reference type `auth(Storage) &Auth` is authorized is perform any storage operation.
+
+When signing a transaction, audit which entitlements are requested.
+
+When authoring a transaction,
+follow the [principle of least privilege/authority](https://en.wikipedia.org/wiki/Principle_of_least_privilege),
+and only request the least and most fine-grained account entitlements necessary to perform the operations of the transactions.
 
 ## Types
 
