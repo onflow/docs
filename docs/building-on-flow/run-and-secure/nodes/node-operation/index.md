@@ -118,11 +118,11 @@ Nodes with these roles are staked and also receive staking rewards.
 
 To run a staked node (node type access, collection, consensus, verification or execution) the node must:
 * be registered with sufficient stake
-* be authorized by the service account
+* be authorized by the governance working group
 
-Before proceeding, ensure you have the stake required for your new node and that your node will be authorized by the service account (apply [here](https://www.onflow.org/node-validators)).
+Before proceeding, ensure you have the stake required for your new node and that your node will be authorized by the governance working group (apply [here](https://github.com/onflow/flow-validator)).
 
-To set up a new Flow node you will need to complete the following steps:
+To set up a new staked node after it has been authorized by the Flow governance working group, you will need to complete the following steps:
 
 1. [Provision](./node-setup.mdx) the machine on which your node will run.
 
