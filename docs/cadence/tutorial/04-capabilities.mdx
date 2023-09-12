@@ -340,11 +340,9 @@ access(all) fun main() {
     // by using the getAccount() built-in function.
     let helloAccount = getAccount(0x01)
 
-    // Get the public capability from the public path of the owner's account
-    let helloCapability = helloAccount.getCapability<&HelloWorld.HelloAsset>(/public/HelloAssetTutorial)
-
-    // borrow a reference for the capability
-    let helloReference = helloCapability.borrow()
+    // Borrow the public capability from the public path of the owner's account
+    let helloReference = helloAccount.capabilities
+        .borrow<&HelloWorld.HelloAsset>(/public/HelloAssetTutorial)
         ?? panic("Could not borrow a reference to the hello capability")
 
     // The log built-in function logs its argument to stdout.
@@ -357,36 +355,31 @@ access(all) fun main() {
 ```
 
 Here's what this script does:
-1. It fetches the `PublicAccount` object with `getAccount` and assigns it to the variable `helloAccount`
-2. Uses the `getCapability` method to get the capability from the `Create Link` transaction
-3. Borrows a reference for the capability using the `borrow` method and assigns it to `helloReference`
-4. Logs the result of the `hello()` function from `helloReference` to the console.
+1. It gets an `Account` reference with `getAccount` and assigns it to the variable `helloAccount`
+2. Borrows a reference using the `borrow` method for the capability from the `Create Link` transaction and assigns it to `helloReference`
+3. Logs the result of the `hello()` function from `helloReference` to the console.
 
 ```cadence
 let helloAccount = getAccount(0x01)
 ```
 
-The `PublicAccount` object is available to anyone in the network for every account,
+The `Account` reference is available to anyone in the network for every account,
 but only has access to a small subset of functions that can be read from the `/public/` domain in an account.
 
-Then, the script gets the capability that was created in `Create Link`.
+Then, the script borrows the capability that was created in `Create Link`.
 
 ```cadence
-// Get the public capability from the public path of the owner's account
-let helloCapability = helloAccount.getCapability(/public/HelloAssetTutorial)
+// Borrow the public capability from the public path of the owner's account
+let helloReference = helloAccount.capabilities
+    .borrow<&HelloWorld.HelloAsset>(/public/HelloAssetTutorial)
+    ?? panic("Could not borrow a reference to the hello capability")
 ```
 
-To get a capability that is stored in an account, use the `account.getCapability()` function.
-This function is available on `AuthAccount`s and on `PublicAccount`s.
-`getCapability()` returns a capability for the link at the path that is specified,
-also with the type that is specified.
-It does not check if the target exists, so the borrow will fail if the capability is invalid.
-
-After that, the script borrows a reference from the capability.
-
-```cadence
-let helloReference = helloCapability.borrow()
-```
+To borrow a capability that is stored in an account, use the `account.capabilities.borrow()` function.
+`borrow()` returns a reference to the storage object that the capability targets.
+The borrow will fail if the capability does not exist,
+the capabilities target storage path does not store a value,
+or the value cannot be borrowed with the given type.
 
 Then, the script uses the reference to call the `hello()` function and prints the result.
 

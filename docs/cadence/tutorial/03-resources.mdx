@@ -179,18 +179,18 @@ init() {
 ```
 
 All composite types like contracts, resources,
-and structs can have an optional `init()` function that only runs when the object is initially created.
+and structs can have an optional initializer that only runs when the object is initially created.
 Cadence requires that all fields must be explicitly initialized,
 so if the object has any fields,
 this function has to be used to initialize them.
 
-Contracts also have read and write access to the storage of the account that they are deployed to by using the built-in
-[`self.account`](../language/contracts) object.
-This is an [`AuthAccount` object](../language/accounts/index.mdx)
-that gives them access to many different functions to interact with the private storage of the account.
+Contracts also have read and write access to the storage of the account that they are deployed to
+by using the built-in [`self.account`](../language/contracts) field.
+This is an [account reference](../language/accounts/index.mdx) (`&Account`),
+authorized to access and manage all aspects of the account,
+such as account storage, keys, and contracts.
 
-This contract's `init` function is simple, it logs the phrase `"Hello Asset"` to the console.
-
+This contract's initializer is simple, it logs the phrase `"Hello Asset"` to the console.
 
 **A resource can only be created in the scope that it is defined in.**
 
@@ -260,12 +260,12 @@ import HelloWorld from 0x01
 
 transaction {
 
-	prepare(acct: AuthAccount) {
+	prepare(acct: auth(SaveValue) &Account) {
         // Here we create a resource and move it to the variable newHello,
         // then we save it in the account storage
         let newHello <- HelloWorld.createHelloAsset()
 
-        acct.save(<-newHello, to: /storage/HelloAssetTutorial)
+        acct.storage.save(<-newHello, to: /storage/HelloAssetTutorial)
     }
 
     // In execute, we log a string to confirm that the transaction executed successfully.
@@ -283,13 +283,11 @@ Here's what this transaction does:
 4. `log` the text `HelloAsset created and stored` to the console.
 
 This is our first transaction using the `prepare` phase!
-The `prepare` phase is the only place that has access to the signing accounts'
-[private `AuthAccount` object](../language/accounts/index.mdx).
-`AuthAccount` objects have many different methods that are used to interact with account storage.
+The `prepare` phase is the only place that has access to the signing accounts,
+via [account references (`&Account`)](../language/accounts/index.mdx).
+Account references have access to many different methods that are used to interact with account, e.g. the account's storage.
 You can see the documentation for all of these in the [account section of the language reference](../language/accounts/index.mdx).
-In this tutorial, we'll be using `AuthAccount` methods to save and load from `/storage/`.
-The `prepare` phase can also create `/private/` and `/public/` links to the objects in `/storage/`,
-called [capabilities](../language//capabilities.mdx) (more on these later).
+In this tutorial, we'll be using account functions to save to and load from account storage (`/storage/`).
 
 By not allowing the execute phase to access account storage,
 we can statically verify which assets and areas of the signers' storage a given transaction can modify.
@@ -312,7 +310,7 @@ To save the resource, we'll be using the
 method from the account storage API to store the resource in the account at the path `/storage/HelloAssetTutorial`.
 
 ```cadence
-acct.save(<-newHello, to: /storage/HelloAssetTutorial)
+acct.storage.save(<-newHello, to: /storage/HelloAssetTutorial)
 ```
 The first parameter to `save` is the object that is being stored,
 and the `to` parameter is the path that the object is being stored at.
@@ -433,11 +431,11 @@ import HelloWorld from 0x01
 
 transaction {
 
-    prepare(acct: AuthAccount) {
+    prepare(acct: auth(LoadValue, SaveValue) &Account) {
 
         // Load the resource from storage, specifying the type to load it as
         // and the path where it is stored
-        let helloResource <- acct.load<@HelloWorld.HelloAsset>(from: /storage/HelloAssetTutorial)
+        let helloResource <- acct.storage.load<@HelloWorld.HelloAsset>(from: /storage/HelloAssetTutorial)
 
         // We use optional chaining (?) because the value in storage
         // may or may not exist, and thus is considered optional.
@@ -446,7 +444,7 @@ transaction {
         // Put the resource back in storage at the same spot
         // We use the force-unwrap operator `!` to get the value
         // out of the optional. It aborts if the optional is nil
-        acct.save(<-helloResource!, to: /storage/HelloAssetTutorial)
+        acct.storage.save(<-helloResource!, to: /storage/HelloAssetTutorial)
     }
 }
 ```
@@ -459,14 +457,14 @@ Here's what this transaction does:
 3. Calls the `hello()` function of the `HelloAsset` resource stored in `helloResource` and logs the result
 4. Saves the resource in the account that we originally moved it from at the path `/storage/HelloAssetTutorial`
 
-We're going to be using the `prepare` phase again to load the resource because it
-has access to the signing accounts' [private `AuthAccount` object](../language/accounts/index.mdx).
+We're going to be using the `prepare` phase again to load the resource
+using the [reference to the account](../language/accounts/index.mdx) that is passed in.
 
 Let's go over the transaction in more detail.
 To remove an object from storage, we use the `load` method from the [account storage API](../language/accounts/storage.mdx)
 
 ```cadence
-let helloResource <- acct.load<@HelloWorld.HelloAsset>(from: /storage/HelloAssetTutorial)
+let helloResource <- acct.storage.load<@HelloWorld.HelloAsset>(from: /storage/HelloAssetTutorial)
 ```
 
 If no object of the specified type is stored under the given path, the function returns nothing, or `nil`.
@@ -515,7 +513,7 @@ However, if the stored value was `nil`, the function call would not occur and th
 Next, we use `save` again to put the object back in storage in the same spot:
 
 ```cadence
-acct.save(<-helloResource!, to: /storage/HelloAssetTutorial)
+acct.storage.save(<-helloResource!, to: /storage/HelloAssetTutorial)
 ```
 
 Remember, `helloResource` is still an optional, so we have to handle the possibility that it is `nil`.

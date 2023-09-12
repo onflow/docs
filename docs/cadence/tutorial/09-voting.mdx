@@ -7,9 +7,9 @@ In this tutorial, we're going to deploy a contract that allows users to vote on 
 ---
 
 <Callout type="success">
-  Open the starter code for this tutorial in the Flow Playground: 
-  <a 
-    href="https://play.onflow.org/d120f0a7-d411-4243-bc59-5125a84f99b3" 
+  Open the starter code for this tutorial in the Flow Playground:
+  <a
+    href="https://play.onflow.org/d120f0a7-d411-4243-bc59-5125a84f99b3"
     target="_blank"
   >
     https://play.onflow.org/d120f0a7-d411-4243-bc59-5125a84f99b3
@@ -177,7 +177,10 @@ access(all) contract ApprovalVoting {
         self.proposals = []
         self.votes = {}
 
-        self.account.save<@Administrator>(<-create Administrator(), to: /storage/VotingAdmin)
+        self.account.storage.save(
+            <-create Administrator(),
+            to: /storage/VotingAdmin
+        )
     }
 }
 
@@ -244,7 +247,7 @@ Performing the common actions in this voting contract only takes three types of 
 2. Send `Ballot` to a voter
 3. Cast Vote
 
-We have a transaction for each step that we provide for you. With the `ApprovalVoting` contract to account `0x01`: 
+We have a transaction for each step that we provide for you. With the `ApprovalVoting` contract to account `0x01`:
 
 <Callout type="info">
 
@@ -263,7 +266,7 @@ transaction {
     prepare(admin: AuthAccount) {
 
         // borrow a reference to the admin Resource
-        let adminRef = admin.borrow<&ApprovalVoting.Administrator>(from: /storage/VotingAdmin)!
+        let adminRef = admin.storage.borrow<&ApprovalVoting.Administrator>(from: /storage/VotingAdmin)!
 
         // Call the initializeProposals function
         // to create the proposals array as an array of strings
@@ -321,14 +324,14 @@ transaction {
     prepare(admin: AuthAccount, voter: AuthAccount) {
 
         // borrow a reference to the admin Resource
-        let adminRef = admin.borrow<&ApprovalVoting.Administrator>(from: /storage/VotingAdmin)!
+        let adminRef = admin.storage.borrow<&ApprovalVoting.Administrator>(from: /storage/VotingAdmin)!
 
         // create a new Ballot by calling the issueBallot
         // function of the admin Reference
         let ballot <- adminRef.issueBallot()
 
         // store that ballot in the voter's account storage
-        voter.save<@ApprovalVoting.Ballot>(<-ballot, to: /storage/Ballot)
+        voter.storage.save(<-ballot, to: /storage/Ballot)
 
         log("Ballot transferred to voter")
     }
@@ -365,7 +368,7 @@ transaction {
     prepare(voter: AuthAccount) {
 
         // take the voter's ballot our of storage
-        let ballot <- voter.load<@ApprovalVoting.Ballot>(from: /storage/Ballot)!
+        let ballot <- voter.storage.load<@ApprovalVoting.Ballot>(from: /storage/Ballot)!
 
         // Vote on the proposal
         ballot.vote(proposal: 1)

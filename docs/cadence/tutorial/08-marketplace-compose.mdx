@@ -554,7 +554,7 @@ transaction {
         sale.listForSale(tokenID: 1, price: 10.0)
 
         // Store the sale object in the account storage
-        acct.save(<-sale, to: /storage/NFTSale)
+        acct.storage.save(<-sale, to: /storage/NFTSale)
 
         // Create a public capability to the sale so that others can call its methods
         acct.link<&ExampleMarketplace.SaleCollection{ExampleMarketplace.SalePublic}>(/public/NFTSale, target: /storage/NFTSale)
@@ -721,13 +721,13 @@ access(all) fun main() {
     // Get references to the account's receivers
     // by getting their public capability
     // and borrowing a reference from the capability
-    let acct1ReceiverRef = acct1.getCapability(/public/CadenceFungibleTokenTutorialReceiver)
-                           .borrow<&ExampleToken.Vault{ExampleToken.Balance}>()
-                           ?? panic("Could not borrow acct1 vault reference")
+    let acct1ReceiverRef = acct1.capabilities
+        .borrow<&ExampleToken.Vault{ExampleToken.Balance}>(/public/CadenceFungibleTokenTutorialReceiver)
+        ?? panic("Could not borrow acct1 vault reference")
 
-    let acct2ReceiverRef = acct2.getCapability(/public/CadenceFungibleTokenTutorialReceiver)
-                            .borrow<&ExampleToken.Vault{ExampleToken.Balance}>()
-                            ?? panic("Could not borrow acct2 vault reference")
+    let acct2ReceiverRef = acct2.capabilities
+        .borrow<&ExampleToken.Vault{ExampleToken.Balance}>(/public/CadenceFungibleTokenTutorialReceiver)
+        ?? panic("Could not borrow acct2 vault reference")
 
     // Log the Vault balance of both accounts and ensure they are
     // the correct numbers.
