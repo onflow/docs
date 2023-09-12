@@ -7,7 +7,7 @@ Accounts are only accessed through [references](../references.mdx),
 which might be [authorized](../references.mdx#authorized-references).
 
 Account objects provide information about and allow the management of
-the accounts associated objects, like the [account storage](./storage.mdx),
+different aspects of the account, such as [account storage](./storage.mdx),
 [keys](./keys.mdx), [contracts](./contracts.mdx),
 and [capabilities](../capability-based-access-control.md).
 
@@ -212,7 +212,7 @@ so are always accessible, which is safe because this information is public,
 and the fields are read-only.
 
 Any code can get a "read-only" reference to an account (`&Account`)
-for an account address by using the built-in `getAccount` function:
+at a given address by using the built-in `getAccount` function:
 
 ```cadence
 fun getAccount(_ address: Address): &Account

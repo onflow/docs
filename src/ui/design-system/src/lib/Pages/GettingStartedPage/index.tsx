@@ -124,7 +124,7 @@ export function GettingStartedPage ({
                 rightIcon="right"
                 variant="secondary"
                 className="hidden md:inline-flex"
-                href="/tools"
+                href="/next/tools"
               >
                 View All Tools
               </ButtonLink>
@@ -152,7 +152,7 @@ export function GettingStartedPage ({
                 variant="secondary"
                 rightIcon="right"
                 className="inline-flex md:hidden"
-                href="/tools"
+                href="/next/tools"
               >
                 View All Tools
               </ButtonLink>

@@ -153,7 +153,7 @@ export const linkCard2ColumnItems: LinkCard2ColumnProps = {
       title: 'Flow Client Library',
       description:
         'The Flow Client Library (FCL) JS is a package used to interact with user wallets, dapps, and the blockchain.',
-      href: '/tooling/fcl-js',
+      href: '/tools/clients/fcl-js',
       iconType: 'fcl',
     },
   ],
@@ -175,20 +175,14 @@ export const contentNavigationListItems: ContentNavigationListProps = {
     {
       title: 'Learn',
       text: 'All the resources you need to learn and build.',
-      link: '/learn',
+      link: 'https://academy.ecdao.org/en',
       icon: 'learn',
     },
     {
       title: 'Tools',
       text: 'Curated list of developer tools, services, SDKs.',
-      link: '/tools',
+      link: '/next/tools',
       icon: 'tools',
-    },
-    {
-      title: 'Community',
-      text: "Learn more about Flow's ecosystem and get involved.",
-      link: '/community',
-      icon: 'community',
     },
   ],
 };

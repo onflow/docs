@@ -123,7 +123,7 @@ Specify key index for the proposer account.
 - Default: service account
 
 Additional authorizer addresses to add to the transaction.
-Read more about authorizers [here](../../../../concepts//transactions.md).
+Read more about authorizers [here](../../../../concepts/transactions.md).
 
 ### Arguments JSON
 
