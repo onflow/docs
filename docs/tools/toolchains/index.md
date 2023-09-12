@@ -35,3 +35,6 @@ sidebar_position: 7
 ## Flow JS Testing (Deprecated)
 
 [Flow JS Testing](./flow-js-testing/index.md) is a Jest-based framework that enables Cadence testing via a set of JavaScript methods and tools.
+
+# Easinteraction
+[Easinteraction](https://github.com/LemonNekoGH/easinteraction-for-cadence) is a golang code generator for easier interaction with Cadence contract
