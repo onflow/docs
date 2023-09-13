@@ -3,10 +3,10 @@ title: Crypto
 sidebar_position: 30
 ---
 
-## Hashing
+## Hash algorithms
 
-The built-in enum `HashAlgorithm` provides the set of hashing algorithms that
-are supported by the language natively.
+The built-in [enumeration](./enumerations.md) `HashAlgorithm`
+provides the set of supported hashing algorithms.
 
 ```cadence
 access(all) enum HashAlgorithm: UInt8 {
@@ -89,10 +89,10 @@ To define the MAC instance, `KMAC128(customizer, key, data, length)` is instanci
   - `data` is the input data to hash.
   - `length` is 1024 bytes.
 
-## Signing Algorithms
+## Signature algorithms
 
-The built-in enum `SignatureAlgorithm` provides the set of signing algorithms that
-are supported by the language natively.
+The built-in [enumeration](./enumerations.md) `SignatureAlgorithm`
+provides the set of supported signature algorithms.
 
 ```cadence
 access(all) enum SignatureAlgorithm: UInt8 {
@@ -109,18 +109,23 @@ access(all) enum SignatureAlgorithm: UInt8 {
 }
 ```
 
-## PublicKey
+## Public keys
 
 `PublicKey` is a built-in structure that represents a cryptographic public key of a signature scheme.
 
 ```cadence
+access(all)
 struct PublicKey {
+    access(all)
     let publicKey: [UInt8]
+
+    access(all)
     let signatureAlgorithm: SignatureAlgorithm
 
     /// Verifies a signature under the given tag, data and public key.
     /// It uses the given hash algorithm to hash the tag and data.
-    access(all) fun verify(
+    access(all)
+    view fun verify(
         signature: [UInt8],
         signedData: [UInt8],
         domainSeparationTag: String,
@@ -131,7 +136,8 @@ struct PublicKey {
     /// This function is only implemented if the signature algorithm
     /// of the public key is BLS (BLS_BLS12_381).
     /// If called with any other signature algorithm, the program aborts
-    access(all) fun verifyPoP(_ proof: [UInt8]): Bool
+    access(all)
+    view fun verifyPoP(_ proof: [UInt8]): Bool
 }
 ```
 
@@ -271,7 +277,7 @@ available to protect BLS verification. Cadence provides the proof of possession 
 The proof of possession of private key is a BLS signature over the public key itself.
 The PoP signature follows the same requirements of a BLS signature (detailed in [Signature verification](#Signature-verification)),
 except it uses a special domain separation tag. The key expected to be used in KMAC128 is the UTF-8 encoding of `"BLS_POP_BLS12381G1_XOF:KMAC128_SSWU_RO_POP_"`.
-The expected message to be signed by the PoP is the serialization of the BLS public key corresponding to the signing private key ([serialization details](#PublicKey)).
+The expected message to be signed by the PoP is the serialization of the BLS public key corresponding to the signing private key ([serialization details](#public-keys)).
 The PoP can only be verified using the `PublicKey` method `verifyPoP`.
 
 ### BLS signature aggregation

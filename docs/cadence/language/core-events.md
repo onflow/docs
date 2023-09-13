@@ -6,7 +6,7 @@ sidebar_position: 25
 Core events are events emitted directly from the FVM (Flow Virtual Machine).
 The events have the same name on all networks and do not follow the standard naming (they have no address).
 
-Refer to the [`PublicKey` section](./crypto.mdx#publickey) for more details on the information provided for account key events.
+Refer to the [public key section](./crypto.mdx#public-keys) for more details on the information provided for account key events.
 
 ### Account Created
 

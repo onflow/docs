@@ -1,0 +1,303 @@
+---
+title: Accounts
+---
+
+The type `Account` provides access to accounts,
+Accounts are only accessed through [references](../references.mdx),
+which might be [authorized](../references.mdx#authorized-references).
+
+Account objects provide information about and allow the management of
+different aspects of the account, such as [account storage](./storage.mdx),
+[keys](./keys.mdx), [contracts](./contracts.mdx),
+and [capabilities](../capability-based-access-control.md).
+
+```cadence
+access(all)
+struct Account {
+
+    /// The address of the account.
+    access(all)
+    let address: Address
+
+    /// The FLOW balance of the default vault of this account.
+    access(all)
+    let balance: UFix64
+
+    /// The FLOW balance of the default vault of this account that is available to be moved.
+    access(all)
+    let availableBalance: UFix64
+
+    /// The storage of the account.
+    access(AccountMapping)
+    let storage: Account.Storage
+
+    /// The contracts deployed to the account.
+    access(AccountMapping)
+    let contracts: Account.Contracts
+
+    /// The keys assigned to the account.
+    access(AccountMapping)
+    let keys: Account.Keys
+
+    /// The inbox allows bootstrapping (sending and receiving) capabilities.
+    access(AccountMapping)
+    let inbox: Account.Inbox
+
+    /// The capabilities of the account.
+    access(AccountMapping)
+    let capabilities: Account.Capabilities
+
+    access(all)
+    struct Capabilities {
+
+        /// The storage capabilities of the account.
+        access(CapabilitiesMapping)
+        let storage: Account.StorageCapabilities
+
+        /// The account capabilities of the account.
+        access(CapabilitiesMapping)
+        let account: Account.AccountCapabilities
+
+        /// Returns the capability at the given public path.
+        /// Returns nil if the capability does not exist,
+        /// or if the given type is not a supertype of the capability's borrow type.
+        access(all)
+        view fun get<T: &Any>(_ path: PublicPath): Capability<T>?
+
+        /// Borrows the capability at the given public path.
+        /// Returns nil if the capability does not exist, or cannot be borrowed using the given type.
+        /// The function is equivalent to `get(path)?.borrow()`.
+        access(all)
+        view fun borrow<T: &Any>(_ path: PublicPath): T?
+
+        /// Publish the capability at the given public path.
+        ///
+        /// If there is already a capability published under the given path, the program aborts.
+        ///
+        /// The path must be a public path, i.e., only the domain `public` is allowed.
+        access(Capabilities | PublishCapability)
+        fun publish(_ capability: Capability, at: PublicPath)
+
+        /// Unpublish the capability published at the given path.
+        ///
+        /// Returns the capability if one was published at the path.
+        /// Returns nil if no capability was published at the path.
+        access(Capabilities | UnpublishCapability)
+        fun unpublish(_ path: PublicPath): Capability?
+    }
+
+    access(all)
+    struct StorageCapabilities {
+
+        /// Get the storage capability controller for the capability with the specified ID.
+        ///
+        /// Returns nil if the ID does not reference an existing storage capability.
+        access(Capabilities | StorageCapabilities | GetStorageCapabilityController)
+        view fun getController(byCapabilityID: UInt64): &StorageCapabilityController?
+
+        /// Get all storage capability controllers for capabilities that target this storage path
+        access(Capabilities | StorageCapabilities | GetStorageCapabilityController)
+        view fun getControllers(forPath: StoragePath): [&StorageCapabilityController]
+
+        /// Iterate over all storage capability controllers for capabilities that target this storage path,
+        /// passing a reference to each controller to the provided callback function.
+        ///
+        /// Iteration is stopped early if the callback function returns `false`.
+        ///
+        /// If a new storage capability controller is issued for the path,
+        /// an existing storage capability controller for the path is deleted,
+        /// or a storage capability controller is retargeted from or to the path,
+        /// then the callback must stop iteration by returning false.
+        /// Otherwise, iteration aborts.
+        access(Capabilities | StorageCapabilities | GetStorageCapabilityController)
+        fun forEachController(
+            forPath: StoragePath,
+            _ function: fun(&StorageCapabilityController): Bool
+        )
+
+        /// Issue/create a new storage capability.
+        access(Capabilities | StorageCapabilities | IssueStorageCapabilityController)
+        fun issue<T: &Any>(_ path: StoragePath): Capability<T>
+    }
+
+    access(all)
+    struct AccountCapabilities {
+        /// Get capability controller for capability with the specified ID.
+        ///
+        /// Returns nil if the ID does not reference an existing account capability.
+        access(Capabilities | AccountCapabilities | GetAccountCapabilityController)
+        view fun getController(byCapabilityID: UInt64): &AccountCapabilityController?
+
+        /// Get all capability controllers for all account capabilities.
+        access(Capabilities | AccountCapabilities | GetAccountCapabilityController)
+        view fun getControllers(): [&AccountCapabilityController]
+
+        /// Iterate over all account capability controllers for all account capabilities,
+        /// passing a reference to each controller to the provided callback function.
+        ///
+        /// Iteration is stopped early if the callback function returns `false`.
+        ///
+        /// If a new account capability controller is issued for the account,
+        /// or an existing account capability controller for the account is deleted,
+        /// then the callback must stop iteration by returning false.
+        /// Otherwise, iteration aborts.
+        access(Capabilities | AccountCapabilities | GetAccountCapabilityController)
+        fun forEachController(_ function: fun(&AccountCapabilityController): Bool)
+
+        /// Issue/create a new account capability.
+        access(Capabilities | AccountCapabilities | IssueAccountCapabilityController)
+        fun issue<T: &Account>(): Capability<T>
+    }
+}
+
+/* Capability entitlements */
+
+entitlement Capabilities
+
+entitlement StorageCapabilities
+entitlement AccountCapabilities
+
+entitlement PublishCapability
+entitlement UnpublishCapability
+
+entitlement GetStorageCapabilityController
+entitlement IssueStorageCapabilityController
+
+entitlement GetAccountCapabilityController
+entitlement IssueAccountCapabilityController
+
+/* Entitlement mappings */
+
+entitlement mapping AccountMapping {
+    include Identity
+
+    Storage -> SaveValue
+    Storage -> LoadValue
+    Storage -> CopyValue
+    Storage -> BorrowValue
+
+    Contracts -> AddContract
+    Contracts -> UpdateContract
+    Contracts -> RemoveContract
+
+    Keys -> AddKey
+    Keys -> RevokeKey
+
+    Inbox -> PublishInboxCapability
+    Inbox -> UnpublishInboxCapability
+    Inbox -> ClaimInboxCapability
+
+    Capabilities -> StorageCapabilities
+    Capabilities -> AccountCapabilities
+}
+
+entitlement mapping CapabilitiesMapping {
+    include Identity
+
+    StorageCapabilities -> GetStorageCapabilityController
+    StorageCapabilities -> IssueStorageCapabilityController
+
+    AccountCapabilities -> GetAccountCapabilityController
+    AccountCapabilities -> IssueAccountCapabilityController
+}
+```
+
+## Account access
+
+### Performing read operations
+
+Access to an `&Account` means having "read access" to it.
+For example, the `address` and `balance` fields have the `access(all)` modifier,
+so are always accessible, which is safe because this information is public,
+and the fields are read-only.
+
+Any code can get a "read-only" reference to an account (`&Account`)
+at a given address by using the built-in `getAccount` function:
+
+```cadence
+fun getAccount(_ address: Address): &Account
+```
+
+### Performing write operation
+
+Access to an authorized account reference (`auth(...) &Account`)
+means having certain "write access" to it.
+
+[Entitlements](../access-control.md#entitlements) authorize access to accounts.
+Cadence provides both coarse-grained and fine-grained entitlements,
+which decide what management functions are accessible on the account.
+
+For example, the coarse-grained entitlement `Storage` grants access to all
+storage related functions, such as `save` and `load`, which save a value to storage,
+and load a value from storage respectively.
+
+The fine-grained entitlement `AddKey` for instance,
+grants access to only the `add` function of the `Account.Keys` value,
+that is, it grants access to adding a key to the account.
+
+An authorized account reference like `auth(Storage, AddKey) &Account`
+therefore provides read access, as well as write access to storage,
+and the ability to add a new key to that account.
+
+[Signed transactions](../transactions.md) can get authorized account references
+for each signer of the transaction that signs as an authorizer.
+The `prepare` phase of the transaction can specify exactly which entitlements
+it needs to perform its work.
+
+For example, a transaction that deploys a contract to an account can be written as follows:
+
+```cadence
+transaction {
+    prepare(signer: auth(AddContract) &Account) {
+        signer.contracts.add(name: "MyContract", code: [/* code */])
+    }
+}
+```
+
+Here, the transaction requests an authorized reference with the `AddContract` entitlement.
+That means that the transaction is entitled to add a contract to the account,
+but is not able to add another key to the account, for example.
+
+Script can get any kind of access to any account, using the built-in `getAuthAccount` function:
+
+```cadence
+fun getAuthAccount<T: &Account>(_ address: Address): T
+```
+
+This function is only available in scripts.
+Though scripts can perform write operations,
+they discard their changes upon completion.
+Attempting to use this function outside of a script,
+for example in a transaction,
+causes a type error.
+
+## Creating an account
+
+The `Account` constructor allows creating new accounts.
+The function requires a reference to a _payer_ account,
+which should pay for the account creation.
+
+The payer account must have enough funds to be able to create an account.
+If the account does not have the required funds, the program aborts.
+
+The constructor returns a reference to the new account
+which has all coarse-grained account entitlements
+(it has the type `auth(Storage, Contracts, Keys, Inbox, Capabilities) &Account`).
+This provides write access to all parts fo the new account,
+for example, storage, contracts, and keys.
+
+```cadence
+fun Account(payer: auth(BorrowValue | Storage) &Account):
+	auth(Storage, Contracts, Keys, Inbox, Capabilities) &Account
+```
+
+For example, the following transaction creates a new account
+and has the signer of the transaction pay for it:
+
+```cadence
+transaction {
+    prepare(signer: auth(BorrowValue) &Account) {
+        let account = Account(payer: signer)
+    }
+}
+```
