@@ -26,6 +26,15 @@ export type HomePageProps = SocialLinksSignupProps & {
   upcomingEvents: UpcomingEventsProps;
 };
 
+const Description = (): JSX.Element => (
+  <>
+    Start your Flow journey now with the{' '}
+    <a href="https://play.flow.com/">Flow Playground</a>, or explore our
+    comprehensive guides, resources, and references to kickstart your Flow
+    development.
+  </>
+);
+
 const HomePage = ({
   homepageStartProjectData,
   contentNavigationListItems,
@@ -37,7 +46,7 @@ const HomePage = ({
   return (
     <PageBackground gradient="home">
       <LandingHeaderHome
-        description="Start your Flow journey now with the Flow Playground, or explore our comprehensive guides, resources, and references to kickstart your Flow development."
+        description={<Description />}
         discordUrl={discordUrl}
         githubUrl={githubUrl}
         tag="onflow"

@@ -1,9 +1,9 @@
-import React from 'react';
+import React, { type ReactNode } from 'react';
 import LandingImage from '../../../../images/misc/landing-home.png';
 import LandingImage2x from '../../../../images/misc/landing-home@2x.png';
 
 export interface LandingHeaderHomeProps {
-  description: string;
+  description: string | ReactNode;
   discordUrl: string;
 
   /**
