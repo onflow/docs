@@ -264,6 +264,11 @@ const config = {
             label: 'Concepts',
           },
           {
+            to: 'building-on-flow',
+            position: 'left',
+            label: 'Build',
+          },
+          {
             to: 'guides',
             position: 'left',
             label: 'Guides',

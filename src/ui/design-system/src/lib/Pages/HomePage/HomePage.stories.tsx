@@ -2,8 +2,6 @@ import { Meta, Story } from "@storybook/react"
 import HomePage, { HomePageProps } from "."
 import { LinkCard2ColumnProps } from "../../.."
 import { Default as DefaultFlips } from "../../Components/Flips/Flips.stories"
-import { Default as DefaultLinkCard3Column } from "../../Components/LinkCard3Column/LinkCard3Column.stories"
-import { Default as DefaultToolsAndConcepts } from "../../Components/ToolsAndConcepts/ToolsAndConcepts.stories"
 import { Default as DefaultUpcomingEvents } from "../../Components/UpcomingEvents/UpcomingEvents.stories"
 
 const startProjectItems: LinkCard2ColumnProps = {
@@ -42,14 +40,10 @@ export default {
 const Template: Story<HomePageProps> = (args) => <HomePage {...args} />
 
 const args: HomePageProps = {
-  startProjectItems,
   flips: {
     openFlips: DefaultFlips.args.openFlips,
     goodPlacesToStartFlips: DefaultFlips.args.goodPlacesToStartFlips,
   },
-  tools: DefaultToolsAndConcepts.args.tools,
-  concepts: DefaultToolsAndConcepts.args.concepts,
-  threeColumnItems: DefaultLinkCard3Column.args.items,
   upcomingEvents: DefaultUpcomingEvents.args,
 }
 

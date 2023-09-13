@@ -1,11 +1,10 @@
 import { type ContentNavigationListProps } from '../../ui/design-system/src/lib/Components/ContentNavigationList';
 import { type HomepageStartItemProps } from '../../ui/design-system/src/lib/Components/HomepageStartItem';
-import { metadata } from '../metadata';
 
 const homepageStartProjectData: HomepageStartItemProps[] = [
   {
-    title: 'Learn Flow',
-    text: 'Dive into Flow key concepts through tutorials, guides, and examples',
+    title: 'Start Here',
+    text: 'Dive into key concepts and learn what makes Flow unique.',
     link: '/next/concepts/start-here',
     icon: 'learn',
   },
@@ -42,5 +41,3 @@ const contentNavigationListItems: ContentNavigationListProps = {
 };
 
 export { homepageStartProjectData, contentNavigationListItems };
-
-export const editPageUrl = `${metadata.githubRepoBaseUrl}/blob/main/app/data/pages/home.tsx`;
