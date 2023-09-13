@@ -28,7 +28,7 @@ First, you need to configure the `flow.json` file to add your mainnet account de
 }
 ```
 
-Next, you need to set the [deployment target configuration](../tooling/flow-cli/deployment/deploy-project-contracts.md#define-contract-deployment-targets) for the mainnet:
+Next, you need to set the [deployment target configuration](../tools/toolchains/flow-cli/deployment/deploy-project-contracts.md#define-contract-deployment-targets) for the mainnet:
 
 ```js flow.json
 {
@@ -44,7 +44,7 @@ Next, you need to set the [deployment target configuration](../tooling/flow-cli/
 
 ## Deploy a contract on mainnet using the CLI
 
-With the configuration changes completed, run the [Flow CLI deployment command](../tooling/flow-cli/deployment/deploy-project-contracts.md):
+With the configuration changes completed, run the [Flow CLI deployment command](../tools/toolchains/flow-cli/deployment/deploy-project-contracts.md):
 
 ```sh
 > flow project deploy --network=mainnet
@@ -63,11 +63,11 @@ Bar -> 0xab7... (6c243d09e...b878111098)
 
 > **Important**: If you see `Error Code: 1103`, your new account does not have enough funds to complete the transaction. Make sure you have enough FLOW (e.g. by [sending some from your Blocto account](./mainnet-account-setup#step-3-send-flow-to-non-custodial-account)).
 
-Once all your contracts are deployed, you can visit [flow-view-source](https://flow-view-source.com/) or run the [Flow CLI get account command](../tooling/flow-cli/accounts/get-accounts.md) to confirm the deployment.
+Once all your contracts are deployed, you can visit [flow-view-source](https://flow-view-source.com/) or run the [Flow CLI get account command](../tools/toolchains/flow-cli/accounts/get-accounts.md) to confirm the deployment.
 
 ## Update/Re-deploy a contract on mainnet using the CLI
 
-You can use the [Flow CLI contract update command](../tooling/flow-cli/accounts/account-update-contract.md) to re-deploy an updated version of your contract:
+You can use the [Flow CLI contract update command](../tools/toolchains/flow-cli/accounts/account-update-contract.md) to re-deploy an updated version of your contract:
 
 ```sh
 > flow accounts update-contract Foo ./Foo.cdc --signer=my-mainnet-account --network=mainnet
@@ -121,4 +121,4 @@ Currently, **historical event data is not migrated between sporks,** so you'll n
 
 Unlike Flow Testnet, once your application is launched on Flow Mainnet, your users will be exchanging real value in the form of FLOW tokens (The Flow blockchain's native token) or other resources which have been made available. You or your user will also be responsible for paying transaction fees using FLOW tokens.
 
-You can read about Transaction fees here: [concepts/#fees](../concepts/flow-token/concepts.md#fees)
+You can read about Transaction fees here: [concepts/#fees](../concepts/fees.md)

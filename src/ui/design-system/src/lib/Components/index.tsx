@@ -14,7 +14,5 @@ export { default as SocialLinksSignup } from './SocialLinksSignup';
 export { default as SporksCard } from './SporksCard';
 export { default as TabMenu } from './TabMenu';
 export { default as Tag } from './Tag';
-export { default as ToolsAndConcepts } from './ToolsAndConcepts';
 export { UpcomingEvents } from './UpcomingEvents';
 export { HomepageStartList } from './HomepageStartList';
-export { HomepageBrowse } from './HomepageBrowse';

@@ -7,18 +7,15 @@ The Cadence testing framework provides a convenient way to write tests for Caden
 This functionality is provided by the built-in `Test` contract.
 
 <Callout type="info">
-The testing framework can only be used off-chain, e.g. by using the [Flow CLI](../tooling/flow-cli).
+The testing framework can only be used off-chain, e.g. by using the [Flow CLI](../tools/toolchains/flow-cli).
 </Callout>
 
 Tests must be written in the form of a Cadence script.
 A test script may contain testing functions that starts with the `test` prefix,
-
-Additionally, it can have below special functions:
-- A `setup` function that always runs before the tests.
-- A `tearDown` function that always runs at the end of all test cases.
-- A `beforeEach` function that runs before each test case.
-- An `afterEach` function that runs after each test case.
-
+a `setup` function that always runs before the tests,
+a `tearDown` function that always runs at the end of all test cases,
+a `beforeEach` function that runs before each test case,
+and an `afterEach` function that runs after each test case.
 All the above four functions are optional.
 
 ```cadence
@@ -48,7 +45,7 @@ access(all) fun testAnotherThing() {
 access(all) fun testMoreThings() {
 }
 
-// Invalid: Test functions cannot have any arguments or return values.
+// Test functions cannot have any arguments or return values.
 access(all) fun testInvalidSignature(message: String): Bool {
 }
 
@@ -217,9 +214,9 @@ A matcher is an object that consists of a test function and associated utility f
 ```cadence
 access(all) struct Matcher {
 
-    access(all) let test: ((AnyStruct): Bool)
+    access(all) let test: fun(AnyStruct): Bool
 
-    access(all) init(test: ((AnyStruct): Bool)) {
+    access(all) init(test: fun(AnyStruct): Bool) {
         self.test = test
     }
 
@@ -254,7 +251,7 @@ The `or` method returns a new matcher that succeeds if at-least this or the give
 A matcher that accepts a generic-typed test function can be constructed using the `newMatcher` function.
 
 ```cadence
-fun newMatcher<T: AnyStruct>(_ test: ((T): Bool)): Test.Matcher
+fun newMatcher<T: AnyStruct>(_ test: fun(T): Bool): Test.Matcher
 ```
 
 The type parameter `T` is bound to `AnyStruct` type. It is also optional.
@@ -270,7 +267,6 @@ access(all) fun testExample() {
     })
 
     Test.expect(-15, isNegative)
-
     // Alternatively, we can use `Test.assert` and the matcher's `test` function.
     Test.assert(isNegative.test(-15), message: "number is not negative")
 }
@@ -448,7 +444,7 @@ fun beSucceeded(): Matcher
 ```
 
 The `beSucceeded` function returns a new matcher that checks if the given test value is either
-a `ScriptResult` or `TransactionResult`, and the `ResultStatus` is succeeded.
+a ScriptResult or TransactionResult and the ResultStatus is succeeded.
 Returns false in any other case.
 
 ```cadence
@@ -473,7 +469,7 @@ fun beFailed(): Matcher
 ```
 
 The `beFailed` function returns a new matcher that checks if the given test value is either
-a `ScriptResult` or `TransactionResult`, and the `ResultStatus` is failed.
+a ScriptResult or TransactionResult and the ResultStatus is failed.
 Returns false in any other case.
 
 ```cadence
@@ -763,7 +759,7 @@ access(all) struct interface BlockchainBackend {
 ### Creating a blockchain
 
 A new blockchain instance can be created using the `Test.newEmulatorBlockchain` method.
-It returns a `Blockchain` which is backed by a new [Flow Emulator](../tooling/emulator) instance.
+It returns a `Blockchain` which is backed by a new [Flow Emulator](../tools/toolchains/emulator) instance.
 
 ```cadence
 import Test
@@ -1013,7 +1009,7 @@ An `Error` is returned if the contract deployment fails. Otherwise, a `nil` is r
 ### Configuring import addresses
 
 A common pattern in Cadence projects is to define the imports as file locations and specify the addresses
-corresponding to each network in the [Flow CLI configuration file](../tooling/flow-cli/flow.json/configuration.md#contracts).
+corresponding to each network in the [Flow CLI configuration file](../tools/toolchains/flow-cli/flow.json/configuration.md#contracts).
 When writing tests for such a project, it may also require to specify the addresses to be used during the tests as well.
 However, during tests, since accounts are created dynamically and the addresses are also generated dynamically,
 specifying the addresses statically in a configuration file is not an option.
@@ -1038,7 +1034,7 @@ access(all) struct Configuration {
 
 <Callout type="info">
 The `Blockchain.useConfiguration` is a run-time alternative for
-[statically defining contract addresses in the flow.json config file](../tooling/flow-cli/flow.json/configuration.md#advanced-format).
+[statically defining contract addresses in the flow.json config file](../tools/toolchains/flow-cli/flow.json/configuration.md#advanced-format).
 </Callout>
 
 The configurations can be specified during the test setup as a best-practice.
