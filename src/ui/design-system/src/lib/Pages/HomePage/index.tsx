@@ -5,7 +5,6 @@ import {
   HomepageStartList,
   ToolsAndConcepts,
   UpcomingEvents,
-  HomepageBrowse,
 } from '../../Components';
 import {
   ContentNavigationList,
@@ -20,7 +19,6 @@ import PageBackground from '../shared/PageBackground';
 import PageSection from '../shared/PageSection';
 import PageSections from '../shared/PageSections';
 import { type HomepageStartItemProps } from '../../Components/HomepageStartItem';
-import { type HomepageBrowseItemProps } from '../../Components/HomepageBrowse';
 
 export type HomePageProps = SocialLinksSignupProps & {
   concepts?: TutorialCardProps[];
@@ -28,7 +26,6 @@ export type HomePageProps = SocialLinksSignupProps & {
   contentNavigationListItems: ContentNavigationListProps;
   editPageUrl?: string;
   flips: FlipsProps;
-  threeColumnItems: HomepageBrowseItemProps[];
   tools: ToolCardProps[];
   upcomingEvents: UpcomingEventsProps;
 };
@@ -41,7 +38,6 @@ const HomePage = ({
   editPageUrl,
   flips,
   githubUrl,
-  threeColumnItems,
   tools,
   upcomingEvents,
 }: HomePageProps): JSX.Element => {
@@ -57,9 +53,6 @@ const HomePage = ({
       />
       <HomepageStartList items={homepageStartProjectData} />
       <PageSections>
-        <PageSection sectionId="browse-by-topic">
-          <HomepageBrowse items={threeColumnItems} topRounded={true} />
-        </PageSection>
         <PageSection sectionId="sdks-and-tools">
           <ToolsAndConcepts
             tools={tools}

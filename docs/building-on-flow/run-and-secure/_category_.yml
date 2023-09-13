@@ -1,2 +1,4 @@
 label: Running and Securing Flow
 position: 6
+customProps:
+  icon: 🔐

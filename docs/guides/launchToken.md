@@ -9,7 +9,7 @@ sidebar_custom_props:
 
 ## Token Standards
 
-It is important that Flow has [Token Standards](../building-on-flow/token-standards/index.md) for Fungible and Non-fungible tokens. This allows applications and other smart contracts to interact with your token in a predictable way.
+It is important that Flow has Token Standards for [Fungible tokens](../building-on-flow/core-contracts/flow-ft/index.md) and [Non-fungible](../building-on-flow/core-contracts/flow-nft/index.md) tokens. This allows applications and other smart contracts to interact with your token in a predictable way.
 
 
 ### Non-Fungible Tokens (NFTs)
@@ -43,7 +43,9 @@ A few resources to help start your NFT collection:
 - [Touchstone](https://www.touchstone.city/guide/en/welcome)
 - [Emeralkd Academy: Quickstart](https://academy.ecdao.org/en/quickstarts/1-non-fungible-token)
 
-After getting your NFT collection created, look into your collection registered on the [NFT catalog](../tools/toolchains/nft-catalog/overview.mdx) 
+**NFT Catalog**
+
+After getting your NFT collection created, look into your collection registered on the [NFT catalog](../tools/toolchains/nft-catalog/overview.mdx). The NFT Catalog will allow developers to easily discover your NFT collection. This will give them the opportunity to integrate your collection into their applications.
 
 ## Final Words
 

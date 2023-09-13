@@ -1,4 +1,0 @@
-# Flow CLI
-
-This directory contains the source files for the Flow CLI documentation.
-Read the full version on the [Flow documentation website](./index.md).
