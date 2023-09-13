@@ -153,8 +153,8 @@ An attachment declared with `access(all) attachment A for C { ... }` will have a
 
 It is important to note that attachments are not first class values in Cadence, and as such their usage is limited in certain ways.
 In particular, their types cannot appear outside of a reference type.
-So, for example, given an  attachment declaration `attachment A for X {}`, the types `A`, `A?`, `[A]` and `((): A)` are not valid type annotations,
-while `&A`, `&A?`, `[&A]` and `((): &A)` are valid.
+So, for example, given an  attachment declaration `attachment A for X {}`, the types `A`, `A?`, `[A]` and `fun(): A` are not valid type annotations,
+while `&A`, `&A?`, `[&A]` and `fun(): &A` are valid.
 
 ## Creating Attachments
 
