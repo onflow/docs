@@ -2,7 +2,7 @@
 title: Flow Networks
 sidebar_position: 2
 sidebar_custom_props:
-  description: Mainnet and Testnet overview
+  description: Develop on Flow Testnet and deploy to Mainnet when production ready.
   icon: 🌐
 ---
 

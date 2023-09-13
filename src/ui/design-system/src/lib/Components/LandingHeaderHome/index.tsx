@@ -1,7 +1,6 @@
 import React from 'react';
 import LandingImage from '../../../../images/misc/landing-home.png';
 import LandingImage2x from '../../../../images/misc/landing-home@2x.png';
-import { ButtonLink } from '../Button';
 
 export interface LandingHeaderHomeProps {
   description: string;
@@ -32,9 +31,6 @@ export function LandingHeaderHome({
         <div className="mb-4 max-w-[400px] text-xl font-semibold text-primary-gray-400 dark:text-primary-gray-50">
           {description}
         </div>
-        <ButtonLink variant="primary" href="https://play.onflow.org">
-          Flow Playground’
-        </ButtonLink>
       </div>
       <div className="pr-0 md:ml-auto md:mr-14 md:pl-4">
         <img
