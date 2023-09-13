@@ -4,7 +4,7 @@ import { type HomepageStartItemProps } from '../../ui/design-system/src/lib/Comp
 const homepageStartProjectData: HomepageStartItemProps[] = [
   {
     title: 'Start Here',
-    text: 'Dive into Flow key concepts',
+    text: 'Dive into key concepts and learn what makes Flow unique.',
     link: '/next/concepts/start-here',
     icon: 'learn',
   },

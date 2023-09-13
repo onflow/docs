@@ -5,7 +5,7 @@ sidebar_title: Core Protocol Smart Contracts
 sidebar_position: 13
 sidebar_custom_props:
   icon: 📝
-  description: Explore the core contracts that power the Flow blockchain, essential components for smart contract development and execution.
+  description: Explore the foundational contracts driving the Flow blockchain and learn how to utilize these vital building blocks for your own smart contract development.
 ---
 
 Flow relies on a set of core contracts that define key portions of the
