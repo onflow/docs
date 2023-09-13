@@ -1,10 +1,13 @@
 ---
-title: Account keys
-sidebar_position: 3
+title: Keys
+sidebar_position: 4
 ---
 
-An account has keys associated with it,
-which allow them to access the account.
+Accounts have keys associated with them.
+When a key is added to an account,
+the key can be used to sign a [transaction](../transactions.md),
+which in turn gets access the account
+and can [perform write operations](./index.mdx#performing-write-operations) on it.
 
 An account exposes its keys through the `keys` field,
 which has the type `Account.Keys`.

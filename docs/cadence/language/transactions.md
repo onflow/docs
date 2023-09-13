@@ -1,6 +1,6 @@
 ---
 title: Transactions
-sidebar_position: 26
+sidebar_position: 24
 ---
 
 Transactions are objects that are signed with keys of one or more [accounts](./accounts/index.mdx)

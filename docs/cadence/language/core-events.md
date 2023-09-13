@@ -1,6 +1,6 @@
 ---
 title: Core Events
-sidebar_position: 25
+sidebar_position: 26
 ---
 
 Core events are events emitted directly from the FVM (Flow Virtual Machine).
@@ -13,7 +13,6 @@ Refer to the [public key section](./crypto.mdx#public-keys) for more details on 
 Event that is emitted when a new account gets created.
 
 Event name: `flow.AccountCreated`
-
 
 ```cadence
 access(all) event AccountCreated(address: Address)
