@@ -979,6 +979,11 @@
       "source": "/concepts/flow-token/available-wallets",
       "destination": "/tools/wallets",
       "permanent": true
+    },
+    {
+      "source": "/next/concepts/start-here",
+      "destination": "/next/overview/about/flow",
+      "permanent": true
     }
   ]
 }
