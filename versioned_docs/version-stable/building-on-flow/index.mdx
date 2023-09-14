@@ -1,0 +1,11 @@
+---
+sidebar_position: 1
+title: Build on Flow
+description: <TODO>
+---
+
+import DocCardList from '@theme/DocCardList';
+import { useDocsSidebar, isSamePath } from '@docusaurus/theme-common/internal';
+import { useLocation } from '@docusaurus/router';
+
+<DocCardList items={useDocsSidebar().items.filter(item => !isSamePath(item.href, useLocation().pathname))}/>
