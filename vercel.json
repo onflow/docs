@@ -1079,6 +1079,11 @@
       "source": "/next/concepts/:path*",
       "destination": "/next/build/key-concepts/:path*",
       "permanent": true
+    },
+    {
+      "source": "/next/guides/runningNode",
+      "destination": "/next/node-ops/running-node",
+      "permanent": true
     }
   ]
 }

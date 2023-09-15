@@ -82,7 +82,7 @@ There are two curves commonly used with the ECDSA algorithm, secp256r1 ([OID 1.2
 | ECDSA     | P-256     | ECDSA_P256      | 2    |
 | ECDSA     | secp256k1 | ECDSA_secp256k1 | 3    |
 
-*Please note that the codes listed here are for the signature algorithms as used by the node API, and they are different from the ones [defined in Cadence](../cadence/language/crypto.mdx#signing-algorithms)*
+*Please note that the codes listed here are for the signature algorithms as used by the node API, and they are different from the ones [defined in Cadence](../../cadence/language/crypto.mdx#signing-algorithms)*
 
 | Algorithm | Output Size | ID       | Code |
 | --------- | ----------- | -------- | ---- |
@@ -130,9 +130,9 @@ We are supporting ECDSA with the curves `P-256` and `secp256k1`. For these curve
 
 ## Account Creation
 
-Accounts are created on the Flow blockchain by calling a special [create account Cadence function](../cadence/language/accounts#account-creation). Once an account is created we can associate a new key with that account. Of course, all that can be done within a single transaction. Keep in mind that there is an account creation fee that needs to be paid. Account creation fees are relatively low, and we expect that wallet providers and exchanges will cover the cost when a user converts fiat to crypto for the first time.
+Accounts are created on the Flow blockchain by calling a special [create account Cadence function](../../cadence/language/accounts#account-creation). Once an account is created we can associate a new key with that account. Of course, all that can be done within a single transaction. Keep in mind that there is an account creation fee that needs to be paid. Account creation fees are relatively low, and we expect that wallet providers and exchanges will cover the cost when a user converts fiat to crypto for the first time.
 
-For development purposes, [you can use Flow CLI to easily create emulator, testnet and mainnet accounts.](../tools/toolchains/flow-cli/accounts/create-accounts.md) The account creation fee is paid by a funding wallet so you don’t need a pre-existing account to create it.
+For development purposes, [you can use Flow CLI to easily create emulator, testnet and mainnet accounts.](../../tools/toolchains/flow-cli/accounts/create-accounts.md) The account creation fee is paid by a funding wallet so you don’t need a pre-existing account to create it.
 
 ### **Key Generation**
 
@@ -143,7 +143,7 @@ Anyone obtaining access to a private key can modify the account the key is assoc
 
 </Callout>
 
-For secure production keys, we suggest using key management services such as [Google key management](https://cloud.google.com/security-key-management) or [Amazon KMS](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Overview.Encryption.Keys.html), which are also supported by our CLI and SDKs. Those services are mostly great when integrated into your application. However, for personal use, you can securely use any [existing wallets](../overview/getting-started/wallets.md) as well as a [hardware Ledger wallet](../overview/getting-started/wallets.md).
+For secure production keys, we suggest using key management services such as [Google key management](https://cloud.google.com/security-key-management) or [Amazon KMS](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Overview.Encryption.Keys.html), which are also supported by our CLI and SDKs. Those services are mostly great when integrated into your application. However, for personal use, you can securely use any [existing wallets](../../overview/getting-started/wallets.md) as well as a [hardware Ledger wallet](../../overview/getting-started/wallets.md).
 
 ## Service Accounts
 
@@ -168,18 +168,18 @@ You can use the Flow CLI to get account data by running:
 flow accounts get 0xf919ee77447b7497 -n mainnet
 ```
 
-Find [more about the command in the CLI docs](../tools/toolchains/flow-cli/accounts/get-accounts.md).
+Find [more about the command in the CLI docs](../../tools/toolchains/flow-cli/accounts/get-accounts.md).
 
 Accounts can be obtained from the access node APIs, currently, there are two gRPC and REST APIs. You can find more information about them here:
 
-**gRPC API** [building-on-flow/nodes/access-api#accounts](../building-on-flow/run-and-secure/nodes/access-api.mdx#accounts)
+**gRPC API** [building-on-flow/nodes/access-api#accounts](../../building-on-flow/run-and-secure/nodes/access-api.mdx#accounts)
 
 **REST API** [http-api#tag/Accounts](/http-api#tag/Accounts)
 
 There are multiple SDKs implementing the above APIs for different languages:
 
-**Javascript SDK** [tools/clients/fcl-js](../tools/clients/fcl-js/index.md)
+**Javascript SDK** [tools/clients/fcl-js](../../tools/clients/fcl-js/index.md)
 
-**Go SDK** [tools/clients/flow-go-sdk](../tools/clients/flow-go-sdk/index.mdx)
+**Go SDK** [tools/clients/flow-go-sdk](../../tools/clients/flow-go-sdk/index.mdx)
 
-Find a list of all SDKs here: [tools/clients](../tools/clients/index.md)
+Find a list of all SDKs here: [tools/clients](../../tools/clients/index.md)

@@ -90,13 +90,13 @@ Currently, the amount required to store 100 MB in account storage is 1 Flow.
 
 Please note that storing data in an account on Flow doesn’t charge tokens from the account, it just makes sure you will keep the tokens as a reserve. Once the storage is freed up you can transfer the Flow tokens. 
 
-### Storage Capacity of the Payer[](../concepts/fees.md#storage-capacity-of-the-payer)
+### Storage Capacity of the Payer
 
 The storage capacity of the Payer of a transaction is generally computed the same way as the capacity of any other account, however, the system needs to account for the transaction fees the payer will incur at the end of the transaction. The final transaction fee amount is not fully known at this step, only when accounts are checked for storage compliance. If their storage used is more than their storage capacity, the transaction will fail.
 
 Because of this, the payer's balance is conservatively considered to be lower by the maximum possible transaction fees, when checking for storage compliance. The maximum transaction fee of a specific transaction is the transaction fee as if the transaction would have used up all of its execution effort limit.
 
-### Storage Used[](../concepts/fees.md#storage)
+### Storage Used
 
 All data that is in an account's storage counts towards storage used. Even when an account is newly created it is not empty. There are already some items in its storage:
 
@@ -115,7 +115,7 @@ Data stored on the Flow blockchain is stored in a key-value ledger. Each item’
 
 **Using Flow Emulator**
 
-You can start the [emulator using the Flow CLI](../tools/toolchains/emulator/index.md#running-the-emulator-with-the-flow-cli). Run your transaction and take a look at the events emitted:
+You can start the [emulator using the Flow CLI](../../tools/toolchains/emulator/index.md#running-the-emulator-with-the-flow-cli). Run your transaction and take a look at the events emitted:
 
 ```shell
 0|emulator | time="2022-04-06T17:13:22-07:00" level=info msg="⭐  Transaction executed" computationUsed=3 txID=a782c2210c0c1f2a6637b20604d37353346bd5389005e4bff6ec7bcf507fac06
@@ -294,7 +294,7 @@ pub fun add(_ a: Int, _ b: Int): Int {
 
 **Avoid excessive load and save operations**
 
-Avoid costly loading and storage operations and [borrow references](../cadence/design-patterns.mdx#avoid-excessive-load-and-save-storage-operations-prefer-in-place-mutations) where possible, for example:
+Avoid costly loading and storage operations and [borrow references](../best-practices/design-patterns.md#avoid-excessive-load-and-save-storage-operations-prefer-in-place-mutations) where possible, for example:
 
 ```cadence
 transaction {
@@ -355,7 +355,7 @@ There are several places to learn more about transaction fees:
 
 **When will the fee update go into effect?**
 
-The updates were rolled out with the [Spork on April 6, 2022](../building-on-flow/run-and-secure/nodes/node-operation/past-sporks.mdx#mainnet-17), and were enabled on [June 1st](https://forum.onflow.org/t/permissionless-contract-deployment-progress/2981) during the [weekly epoch transition](https://github.com/onflow/service-account/tree/main/transactions/set-execution-effort-weights/2022/jun-1).
+The updates were rolled out with the [Spork on April 6, 2022](../../building-on-flow/run-and-secure/nodes/node-operation/past-sporks.mdx#mainnet-17), and were enabled on [June 1st](https://forum.onflow.org/t/permissionless-contract-deployment-progress/2981) during the [weekly epoch transition](https://github.com/onflow/service-account/tree/main/transactions/set-execution-effort-weights/2022/jun-1).
 
 **Why are fees collected even when transactions fail?**
 

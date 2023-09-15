@@ -23,7 +23,7 @@ Key pairs establish ownership on blockchains. In other blockchains (e.g. Bitcoin
 
 Flow combines the concepts of EOAs and Contract Accounts into a single account model and decouples accounts and public keys. Flow accounts are associated with one or more public keys of varying weights that specify interested parties that need to produce valid cryptographic signatures for each transaction authorized by that account.
 
-![Screenshot 2023-08-16 at 16.43.07.png](../concepts/_accounts_images/Screenshot_2023-08-16_at_16.43.07.png)
+![Screenshot 2023-08-16 at 16.43.07.png](../build/key-concepts/_accounts_images/Screenshot_2023-08-16_at_16.43.07.png)
 
 This natively enables interesting use cases, like key revocation, rotation, and multi-signature transactions. All Flow accounts can use network storage (e.g., for deploying contracts and storing resources like NFTs) based on the number of FLOW tokens they hold.
 
@@ -33,7 +33,7 @@ You must run an explicit account creation transaction on Flow to create a new ac
 
 </Callout>
 
-Check out the [Accounts](../concepts/accounts.md) concept document to learn more about Flow accounts.
+Check out the [Accounts](../build/key-concepts/accounts.md) concept document to learn more about Flow accounts.
 
 ## Smart Contracts
 
@@ -147,7 +147,7 @@ pub fun main(address: Address, collectionPublicPath: PublicPath): [UInt64] {
 }
 ```
 
-Check out [Transactions](../concepts/transactions.md) and [Scripts](../concepts/scripts.md) to learn more about the concepts. You can also read the Cadence language reference on [Transactions](../cadence/language/transactions.md) to dive deeper.
+Check out [Transactions](../build/key-concepts/transactions.md) and [Scripts](../build/key-concepts/scripts.md) to learn more about the concepts. You can also read the Cadence language reference on [Transactions](../cadence/language/transactions.md) to dive deeper.
 
 ## Flow Nodes
 
@@ -168,7 +168,7 @@ If you’re getting started you don’t need to run your own node and you can us
 - Start with a [Light (Observer) Node](./run-and-secure/nodes/node-operation/observer-node.mdx).
 - You can also use a third-party provider like [Quicknode](https://www.quicknode.com/docs/flow).
 
-Check out [Running a Node](../guides/runningNode.mdx) for more information.
+Check out [Running a Node](../node-ops/running-node.md) for more information.
 
 ## SDKs and Tools
 

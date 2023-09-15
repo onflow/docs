@@ -9,20 +9,20 @@ sidebar_custom_props:
 
 ## Token Standards
 
-It is important that Flow has Token Standards for [Fungible tokens](../building-on-flow/core-contracts/flow-ft/index.md) and [Non-fungible](../building-on-flow/core-contracts/flow-nft/index.md) tokens. This allows applications and other smart contracts to interact with your token in a predictable way.
+It is important that Flow has Token Standards for [Fungible tokens](../build/core-contracts/flow-ft/index.md) and [Non-fungible](../build/core-contracts/flow-nft/index.md) tokens. This allows applications and other smart contracts to interact with your token in a predictable way.
 
 
 ### Non-Fungible Tokens (NFTs)
 
-All NFTs on the Flow blockchain implement the [NonFungibleToken](../building-on-flow/core-contracts/08-non-fungible-token.md) interface, allowing them to be compatible with wallets, marketplaces and other cross-app experiences.
+All NFTs on the Flow blockchain implement the [NonFungibleToken](../build/core-contracts/08-non-fungible-token.md) interface, allowing them to be compatible with wallets, marketplaces and other cross-app experiences.
 
-- [Non-Fungible Token (NFT) contract interface](../building-on-flow/core-contracts/08-non-fungible-token.md)
+- [Non-Fungible Token (NFT) contract interface](../build/core-contracts/08-non-fungible-token.md)
 
 ### Fungible Tokens
 
-The FLOW token is a fungible token, [More Information](../building-on-flow/core-contracts/flow-token).  Fungible tokens can be used for various reasons on the Flow blockchain.
+The FLOW token is a fungible token, [More Information](../build/core-contracts/flow-token).  Fungible tokens can be used for various reasons on the Flow blockchain.
 
-- In order to create a fungible token, the [Fungible tokens](../building-on-flow/core-contracts/fungible-token), interface has to be implemented.
+- In order to create a fungible token, the [Fungible tokens](../build/core-contracts/fungible-token), interface has to be implemented.
 
 
 ## How to Launch a Fungible Token

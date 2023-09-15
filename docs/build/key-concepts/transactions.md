@@ -21,12 +21,12 @@ In order for a transaction to be valid and executed it must contain signatures f
 
 The script section contains instructions for transaction execution. This is a Cadence program in source code form (human-readable), and encoded as UTF-8. The transaction program must contain a `transaction` declaration. 
 
-A transaction includes multiple optional phases `prepare`, `pre`, `execute`, and `post` phase. You can read more about it in the [Cadence reference document on transactions](../cadence/language/transactions.md). Each phase has a purpose, the two most important phases are `prepare` and `execute`. 
+A transaction includes multiple optional phases `prepare`, `pre`, `execute`, and `post` phase. You can read more about it in the [Cadence reference document on transactions](../../cadence/language/transactions.md). Each phase has a purpose, the two most important phases are `prepare` and `execute`. 
 
 In the `prepare` phase, we have access to `AuthAccount` objects, which gives us the power to interact with those accounts. The accounts are called authorizers of transactions, so each account we want to interact with in the `prepare` phase must sign the transaction as an authorizer. 
 The `execute` phase does exactly what it says, it executes the main logic of the transaction. This phase is optional, but it is a best practice to add your main transaction logic in the section, so it is explicit. 
 
-Again make sure to read Cadence [documentation on transactions](../cadence/language/transactions.md)
+Again make sure to read Cadence [documentation on transactions](../../cadence/language/transactions.md)
 
 This is an example of a transaction script:
 
@@ -40,7 +40,7 @@ transaction(greeting: String) {
 
 **Arguments**
 
-Transactions may declare parameters it needs during execution, these must be provided as input arguments when sending a transaction. You can think of them as function arguments. Currently, we provide [arguments in the JSON-Cadence Data Interchange Format](../cadence/json-cadence-spec.md#docusaurus_skipToContent_fallback). Which is a human-readable JSON format. The sample script from above accepts a single `String` argument.
+Transactions may declare parameters it needs during execution, these must be provided as input arguments when sending a transaction. You can think of them as function arguments. Currently, we provide [arguments in the JSON-Cadence Data Interchange Format](../../cadence/json-cadence-spec.md#docusaurus_skipToContent_fallback). Which is a human-readable JSON format. The sample script from above accepts a single `String` argument.
 
 **Reference Block**
 
@@ -370,20 +370,20 @@ You can use the Flow CLI to get an existing transaction by ID:
 flow transactions get 1ec90051e3bc74fc36cbd16fc83df08e463dda8f92e8e2193e061f9d41b2ad92 -n mainnet
 ```
 
-Find [more about the command in the CLI docs](../tools/toolchains/flow-cli/get-flow-data/get-blocks.md).
+Find [more about the command in the CLI docs](../../tools/toolchains/flow-cli/get-flow-data/get-blocks.md).
 
 A user can define their own transactions or it can use already defined transactions by the contract authors that can be found by using the FLIX service.
 
 Transactions can be submitted and obtained from the access node APIs, currently, there are two gRPC and REST APIs. You can find more information about them here:
 
-[**gRPC Transaction API**](../building-on-flow/run-and-secure/nodes/access-api.mdx#transactions)
+[**gRPC Transaction API**](../../building-on-flow/run-and-secure/nodes/access-api.mdx#transactions)
 
 [**REST Transaction API**](/http-api#tag/Transactions)
 
 There are multiple SDKs implementing the above APIs for different languages:
 
-[**Javascript SDK**](../tools/clients/fcl-js/index.md)
+[**Javascript SDK**](../../tools/clients/fcl-js/index.md)
 
-[**Go SDK**](../tools/clients/flow-go-sdk/index.mdx)
+[**Go SDK**](../../tools/clients/flow-go-sdk/index.mdx)
 
-Find a list of all SDKs [here](../tools/clients/index.md)
+Find a list of all SDKs [here](../../tools/clients/index.md)
