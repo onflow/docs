@@ -994,6 +994,31 @@
       "source": "/next/cadence/why",
       "destination": "/next/overview/about/cadence",
       "permanent": true
+    },
+    {
+      "source": "/next/tools/wallets",
+      "destination": "/next/overview/getting-started/wallets",
+      "permanent": true
+    },
+    {
+      "source": "/next/tools/bridges",
+      "destination": "/next/overview/getting-started/bridges",
+      "permanent": true
+    },
+    {
+      "source": "/next/tools/network-faucets",
+      "destination": "/next/overview/getting-started/network-faucets",
+      "permanent": true
+    },
+    {
+      "source": "/next/tools/block-explorers",
+      "destination": "/next/overview/getting-started/block-explorers",
+      "permanent": true
+    },
+    {
+      "source": "/next/community-resources/projects",
+      "destination": "/next/overview/getting-started/projects",
+      "permanent": true
     }
   ]
 }
