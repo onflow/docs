@@ -211,7 +211,7 @@ import ExampleNFT from 0x02
 // This contract allows users to put their NFTs up for sale. Other users
 // can purchase these NFTs with fungible tokens.
 //
-// Learn more about marketplaces in this tutorial: https://developers.flow.com/cadence/tutorial/marketplace-compose
+// Learn more about marketplaces in this tutorial: https://developers.flow.com/build/getting-started/hello-world/tutorial/marketplace-compose
 //
 // This contract is a learning tool and is not meant to be used in production.
 // See the NFTStorefront contract for a generic marketplace smart contract that

@@ -370,7 +370,7 @@ You can use the Flow CLI to get an existing transaction by ID:
 flow transactions get 1ec90051e3bc74fc36cbd16fc83df08e463dda8f92e8e2193e061f9d41b2ad92 -n mainnet
 ```
 
-Find [more about the command in the CLI docs](../../tools/toolchains/flow-cli/get-flow-data/get-blocks.md).
+Find [more about the command in the CLI docs](../../build/getting-started/local-development/flow-cli/get-flow-data/get-blocks.md).
 
 A user can define their own transactions or it can use already defined transactions by the contract authors that can be found by using the FLIX service.
 

@@ -13,7 +13,7 @@ contract on the [Flow blockchain](https://www.onflow.org/).
 for developing smart contracts on Flow.
 
 Before reading this standard,
-we recommend completing the [Cadence tutorials](../../../cadence/tutorial/01-first-steps.mdx)
+we recommend completing the [Cadence tutorials](../../../build/getting-started/hello-world/tutorial/01-first-steps.md)
 to build a basic understanding of the programming language.
 
 Resource-oriented programming, and by extension Cadence,

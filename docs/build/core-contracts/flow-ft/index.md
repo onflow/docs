@@ -16,7 +16,7 @@ for developing smart contracts for the Flow Blockchain.
 Read more about it [here](../../../overview/about/cadence.md) and see its implementation [here](https://github.com/onflow/cadence)
 
 We recommend that anyone who is reading this should have already
-completed the [Cadence Tutorials](../../../cadence/tutorial/01-first-steps.mdx) 
+completed the [Cadence Tutorials](../../../build/getting-started/hello-world/tutorial/01-first-steps.md) 
 so they can build a basic understanding of the programming language.
 
 Resource-oriented programming, and by extension Cadence, 

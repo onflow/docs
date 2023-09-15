@@ -135,7 +135,7 @@ It contains what was already in `BasicNFT.cdc` plus additional resource declarat
 // that includes withdraw and deposit functionalities, as well as a
 // collection resource that can be used to bundle NFTs together.
 //
-// Learn more about non-fungible tokens in this tutorial: https://developers.flow.com/cadence/tutorial/non-fungible-tokens-1
+// Learn more about non-fungible tokens in this tutorial: https://developers.flow.com/build/getting-started/hello-world/tutorial/non-fungible-tokens-1
 
 access(all) contract ExampleNFT {
 

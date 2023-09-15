@@ -24,7 +24,7 @@ This section will highlight the considerations you should make when implementing
 
 ### FLOW
 
-FLOW is the default cryptocurrency that powers the Flow blockchain network, and is primarily used for staking and for paying [network fees](../../concepts/fees.md#fees).
+FLOW is the default cryptocurrency that powers the Flow blockchain network, and is primarily used for staking and for paying [network fees](../../build/key-concepts/fees.md#fees).
 
 Many of the payment providers support FLOW, including well-trusted cryptocurrency exchanges.
 

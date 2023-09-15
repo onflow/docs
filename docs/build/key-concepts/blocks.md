@@ -59,7 +59,7 @@ You can use the Flow CLI to get the block data by running:
 flow blocks get latest -network mainnet
 ```
 
-Find [more about the command in the CLI docs](../../tools/toolchains/flow-cli/get-flow-data/get-blocks.md).
+Find [more about the command in the CLI docs](../../build/getting-started/local-development/flow-cli/get-flow-data/get-blocks.md).
 
 Blocks can be obtained from the access node APIs, currently, there are two gRPC and REST APIs. You can find more information about them here:
 

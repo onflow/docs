@@ -29,7 +29,7 @@ This natively enables interesting use cases, like key revocation, rotation, and 
 
 <Callout type="info">
 
-You must run an explicit account creation transaction on Flow to create a new account. [Flow CLI](../tools/toolchains/flow-cli/accounts/create-accounts.md) can create an account on any network with a given public key.
+You must run an explicit account creation transaction on Flow to create a new account. [Flow CLI](../build/getting-started/local-development/flow-cli/accounts/create-accounts.md) can create an account on any network with a given public key.
 
 </Callout>
 
@@ -52,16 +52,16 @@ Check out the [Cadence website](https://cadencelang.dev/) to learn more about Ca
 
 If you’re already familiar with smart contracts, here are some resources that can help you get started with Cadence:
 
-- [The Cadence tutorial](../cadence/tutorial/01-first-steps.mdx)
+- [The Cadence tutorial](../build/getting-started/hello-world/tutorial/01-first-steps.md)
 - [Guide for Solidity Developers](../cadence/solidity-to-cadence.mdx)
 - ERC-20 equivalent on Flow is the Flow Fungible Token Standard
     - [Repository](https://github.com/onflow/flow-ft)
-    - [Tutorial](../cadence/tutorial/06-fungible-tokens.mdx)
+    - [Tutorial](../build/getting-started/hello-world/tutorial/06-fungible-tokens.md)
 - ERC-721 equivalent on Flow is the Flow Non-Fungible Token Standard
     - [Repository](https://github.com/onflow/flow-nft)
-    - [Tutorial](../cadence/tutorial/05-non-fungible-tokens-1.mdx)
+    - [Tutorial](../build/getting-started/hello-world/tutorial/05-non-fungible-tokens-1.md)
 - Asset marketplaces with Cadence
-    - [Tutorial](../cadence/tutorial/07-marketplace-setup.mdx)
+    - [Tutorial](../build/getting-started/hello-world/tutorial/07-marketplace-setup.md)
     - [NFT Storefront](https://github.com/onflow/nft-storefront/) is an example marketplace standard
 
 ### Transactions and Scripts
