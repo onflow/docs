@@ -23,17 +23,17 @@ Key pairs establish ownership on blockchains. In other blockchains (e.g. Bitcoin
 
 Flow combines the concepts of EOAs and Contract Accounts into a single account model and decouples accounts and public keys. Flow accounts are associated with one or more public keys of varying weights that specify interested parties that need to produce valid cryptographic signatures for each transaction authorized by that account.
 
-![Screenshot 2023-08-16 at 16.43.07.png](../concepts/_accounts_images/Screenshot_2023-08-16_at_16.43.07.png)
+![Screenshot 2023-08-16 at 16.43.07.png](../build/key-concepts/_accounts_images/Screenshot_2023-08-16_at_16.43.07.png)
 
 This natively enables interesting use cases, like key revocation, rotation, and multi-signature transactions. All Flow accounts can use network storage (e.g., for deploying contracts and storing resources like NFTs) based on the number of FLOW tokens they hold.
 
 <Callout type="info">
 
-You must run an explicit account creation transaction on Flow to create a new account. [Flow CLI](../tools/toolchains/flow-cli/accounts/create-accounts.md) can create an account on any network with a given public key.
+You must run an explicit account creation transaction on Flow to create a new account. [Flow CLI](../build/getting-started/local-development/flow-cli/accounts/create-accounts.md) can create an account on any network with a given public key.
 
 </Callout>
 
-Check out the [Accounts](../concepts/accounts.md) concept document to learn more about Flow accounts.
+Check out the [Accounts](../build/key-concepts/accounts.md) concept document to learn more about Flow accounts.
 
 ## Smart Contracts
 
@@ -52,16 +52,16 @@ Check out the [Cadence website](https://cadencelang.dev/) to learn more about Ca
 
 If you’re already familiar with smart contracts, here are some resources that can help you get started with Cadence:
 
-- [The Cadence tutorial](../cadence/tutorial/01-first-steps.mdx)
+- [The Cadence tutorial](../build/getting-started/hello-world/tutorial/01-first-steps.md)
 - [Guide for Solidity Developers](../cadence/solidity-to-cadence.mdx)
 - ERC-20 equivalent on Flow is the Flow Fungible Token Standard
     - [Repository](https://github.com/onflow/flow-ft)
-    - [Tutorial](../cadence/tutorial/06-fungible-tokens.mdx)
+    - [Tutorial](../build/getting-started/hello-world/tutorial/06-fungible-tokens.md)
 - ERC-721 equivalent on Flow is the Flow Non-Fungible Token Standard
     - [Repository](https://github.com/onflow/flow-nft)
-    - [Tutorial](../cadence/tutorial/05-non-fungible-tokens-1.mdx)
+    - [Tutorial](../build/getting-started/hello-world/tutorial/05-non-fungible-tokens-1.md)
 - Asset marketplaces with Cadence
-    - [Tutorial](../cadence/tutorial/07-marketplace-setup.mdx)
+    - [Tutorial](../build/getting-started/hello-world/tutorial/07-marketplace-setup.md)
     - [NFT Storefront](https://github.com/onflow/nft-storefront/) is an example marketplace standard
 
 ### Transactions and Scripts
@@ -147,7 +147,7 @@ pub fun main(address: Address, collectionPublicPath: PublicPath): [UInt64] {
 }
 ```
 
-Check out [Transactions](../concepts/transactions.md) and [Scripts](../concepts/scripts.md) to learn more about the concepts. You can also read the Cadence language reference on [Transactions](../cadence/language/transactions.md) to dive deeper.
+Check out [Transactions](../build/key-concepts/transactions.md) and [Scripts](../build/key-concepts/scripts.md) to learn more about the concepts. You can also read the Cadence language reference on [Transactions](../cadence/language/transactions.md) to dive deeper.
 
 ## Flow Nodes
 
@@ -168,7 +168,7 @@ If you’re getting started you don’t need to run your own node and you can us
 - Start with a [Light (Observer) Node](./run-and-secure/nodes/node-operation/observer-node.mdx).
 - You can also use a third-party provider like [Quicknode](https://www.quicknode.com/docs/flow).
 
-Check out [Running a Node](../guides/runningNode.mdx) for more information.
+Check out [Running a Node](../node-ops/running-node.md) for more information.
 
 ## SDKs and Tools
 

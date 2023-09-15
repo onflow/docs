@@ -141,7 +141,7 @@ export default function GettingStarted(): JSX.Element {
                   },
                   {
                     title: 'View all tools and services',
-                    href: '/next/tools',
+                    href: '/tools',
                   },
                 ],
               },

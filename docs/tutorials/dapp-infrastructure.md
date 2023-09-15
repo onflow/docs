@@ -22,7 +22,7 @@ Admin transactions are transactions that originate from the backend of your dapp
 
 For example, you may send an admin transaction that mints a batch of NFTs for purchase, or a transaction that adds an additional gameplay level to your game.
 
-For one-off administrative actions that do not require automation, such as contract deployment, you can use the [Flow CLI](../tools/toolchains/flow-cli/).
+For one-off administrative actions that do not require automation, such as contract deployment, you can use the [Flow CLI](../build/getting-started/local-development/flow-cli/).
 
 ## Reading Data From Flow
 

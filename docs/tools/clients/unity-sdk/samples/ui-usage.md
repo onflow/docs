@@ -21,7 +21,7 @@ This will import the sample into a Samples folder under your Assets:
 
 To install the Flow emulator, please follow the instructions for your platform here:
 
-[flow-cli/install](../../../toolchains/flow-cli/index.md)
+[flow-cli/install](../../../../build/getting-started/local-development/flow-cli/index.md)
 
 Note that the Flow CLI and Flow emulator are bundled into the same command-line executable.
 
@@ -255,7 +255,7 @@ Like Scripts, Transactions are cadence code that you write and are executed on t
 
 For more information about Transactions, see [cadence/language/transactions](../../../../cadence/language/transactions.md).
 
-For more information about Transaction signing, see [concepts/transaction-signing](../../../../concepts/transactions.md#signing-a-transaction).
+For more information about Transaction signing, see [concepts/transaction-signing](../../../../build/key-concepts/transactions.md#signing-a-transaction).
 
 For more information about Cadence programming, see [cadence](../../../../overview/about/cadence.md).
 

@@ -22,7 +22,7 @@ Before using the dev wallet, you'll need to start the Flow emulator.
 
 ### Install the `flow-cli`
 
-The Flow emulator is bundles with the Flow CLI. Instructions for installing the CLI can be found here: [flow-cli/install/](../flow-cli/install.md)
+The Flow emulator is bundles with the Flow CLI. Instructions for installing the CLI can be found here: [flow-cli/install/](../../../build/getting-started/local-development/flow-cli/install.md)
 
 ### Create a `flow.json` file
 
