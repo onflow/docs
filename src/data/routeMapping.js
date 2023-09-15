@@ -207,12 +207,6 @@ const routeMapping = {
   // Learn/concepts/transactions
   '/Learn/concepts/variable-transaction-fees':
     '/concepts/start-here/variable-transaction-fees',
-  // Learn/Kitty-items
-  // Learn/Kitty-items/install
-  // Learn/Kitty-items/modify
-  // Learn/Kitty-items/next-steps
-  // Learn/Kitty-items/start
-  // Learn/Kitty-items/update
   '/mobile': '/concepts/mobile',
   '/mobile/get-started': '/concepts/mobile/get-started',
   '/mobile/guides/development-environment':

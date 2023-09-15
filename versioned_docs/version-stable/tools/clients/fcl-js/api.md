@@ -437,10 +437,6 @@ fcl.unauthenticate();
 // fcl.currentUser.loggedIn === null
 ```
 
-#### Examples
-
-- [React Hook to manage FCL authentication: Kitty-items](https://github.com/onflow/kitty-items/blob/master/web/src/contexts/AppContext.jsx#L45)
-
 ---
 
 ## `reauthenticate`
@@ -464,9 +460,6 @@ fcl.reauthenticate();
 // logs out user and opens up login/sign-up flow
 ```
 
-#### Examples
-
-- [React Hook to manage FCL authentication: Kitty-items](https://github.com/onflow/kitty-items/blob/master/web/src/contexts/AppContext.jsx#L45)
 
 ---
 
@@ -990,11 +983,6 @@ const response = await fcl.send([
 // note: response contains several values (Cad)
 ```
 
-#### Examples
-
-- [Getting a user account](https://github.com/onflow/kitty-items/blob/master/web/src/contexts/AppContext.jsx#L47)
-- [Getting the latest block](https://github.com/onflow/kitty-items/blob/master/api/src/services/flow.ts#L92)
-- [Sending a transaction](https://github.com/onflow/kitty-items/blob/master/web/src/flow/util/tx.js)
 
 ---
 
@@ -1041,12 +1029,6 @@ const decoded = await fcl.decode(response);
 assert(3 === decoded);
 assert(typeof decoded === "number");
 ```
-
-#### Examples
-
-- [Getting a user account](https://github.com/onflow/kitty-items/blob/master/web/src/contexts/AppContext.jsx#L47)
-- [Getting the latest block](https://github.com/onflow/kitty-items/blob/master/api/src/services/flow.ts#L92)
-- [Sending a transaction](https://github.com/onflow/kitty-items/blob/master/web/src/flow/util/tx.js)
 
 ---
 
@@ -1687,9 +1669,6 @@ const [txStatus, setTxStatus] = useState(null);
 useEffect(() => fcl.tx(txId).subscribe(setTxStatus));
 ```
 
-#### Examples
-
-- [React Effect to get the transaction status on submit](https://github.com/onflow/kitty-items/blob/master/web/src/components/Transactions/TransactionsContext.jsx#L15)
 
 ---
 
@@ -1884,7 +1863,6 @@ const authorizationFunction = async (account) => {
 
 #### Examples:
 
-- [Node.js Service using the service account to authorize a minter](https://github.com/onflow/kitty-items/blob/master/api/src/services/flow.ts)
 - [Detailed explanation](https://github.com/onflow/flow-js-sdk/blob/master/packages/fcl/src/wallet-provider-spec/authorization-function.md)
 
 ---
@@ -1953,7 +1931,6 @@ const signingFunction = ({
 
 #### Examples:
 
-- [Node.js Service using the service account to authorize a minter](https://github.com/onflow/kitty-items/blob/master/api/src/services/flow.ts)
 - [Detailed explanation](https://github.com/onflow/flow-js-sdk/blob/master/packages/fcl/src/wallet-provider-spec/authorization-function.md)
 
 ---
