@@ -7,7 +7,7 @@ sidebar_position: 15
 
 Account linking is a unique Flow concept that enables sharing ownership over accounts. In order to understand how we can achieve that we must first understand how accounts on Flow are accessed.
 
-Each account on flow can be accessed in Cadence through two types, `PublicAccount` and `AuthAccount`. As the name implies the public account type gives access to all public account information such as address, balance, storage capacity, etc., but doesn’t allow changing the account, whereas the auth account type allows the same access the public account has but also allows changing the account, which includes changing the account keys, managing the deployed contracts, and managing account capabilities.
+Accounts on flow can be accessed in Cadence through two types, `PublicAccount` and `AuthAccount`. As the name implies the `PublicAccount` type gives access to all public account information such as address, balance, storage capacity, etc., but doesn’t allow changes to the account. The `AuthAccount` type allows the same access as `PublicAccount` but also allows changing the account, including adding/revoking account keys, managing the deployed contracts, as well as linking and publishing Capabilities.
 
 ![Flow account structure](resources/account.png)
 
