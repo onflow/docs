@@ -326,7 +326,7 @@ const config = {
               },
               {
                 label: "SDK's & Tools",
-                to: '/next/tools',
+                to: '/tools',
               },
               {
                 to: '/cadence/intro',
@@ -337,19 +337,19 @@ const config = {
                 label: 'Mobile',
               },
               {
-                to: '/next/tools/clients/fcl-js/',
+                to: '/tools/clients/fcl-js/',
                 label: 'FCL',
               },
               {
-                to: '/next/tools/toolchains/flow-js-testing/',
+                to: '/tools/toolchains/flow-js-testing/',
                 label: 'JS Testing Library',
               },
               {
-                to: '/next/tools/toolchains/flow-cli/',
+                to: '/tools/toolchains/flow-cli/',
                 label: 'CLI',
               },
               {
-                to: '/next/tools/toolchains/emulator/',
+                to: '/tools/toolchains/emulator/',
                 label: 'Emulator',
               },
               {
@@ -357,7 +357,7 @@ const config = {
                 label: 'Dev Wallet',
               },
               {
-                to: '/next/tools/toolchains/vscode-extension/',
+                to: '/tools/toolchains/vscode-extension/',
                 label: 'VS Code Extension',
               },
             ],
@@ -366,7 +366,7 @@ const config = {
             title: 'Community',
             items: [
               {
-                to: '/next/community-resources',
+                to: '/community-resources',
                 label: 'Ecosystem',
               },
               {
@@ -419,7 +419,7 @@ const config = {
                 label: 'Cadence Cookbook',
               },
               {
-                to: '/next/building-on-flow/core-contracts/',
+                to: '/building-on-flow/core-contracts/',
                 label: 'Core Contracts & Standards',
               },
               {

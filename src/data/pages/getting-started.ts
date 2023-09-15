@@ -82,7 +82,7 @@ export const contentNavigationListItems: ContentNavigationListProps = {
     {
       title: 'Tools',
       text: 'Curated list of developer tools, services, SDKs.',
-      link: '/next/tools',
+      link: '/tools',
       icon: 'tools',
     },
   ],
