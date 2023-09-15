@@ -469,7 +469,7 @@
     },
     {
       "source": "/kitty-items/:path*",
-      "destination": "/tutorials/kitty-items/:path*",
+      "destination": "/tutorials/",
       "permanent": true
     },
     {

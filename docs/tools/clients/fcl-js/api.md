@@ -412,9 +412,6 @@ fcl.authenticate();
 
 ⚠️ `authenticate` can also take a service returned from [discovery](#discovery) with `fcl.authenticate({ service })`.
 
-#### Examples
-
-- [Press Login: Explore Kitty Items](https://github.com/onflow/kitty-items)
 
 ---
 
@@ -1693,7 +1690,6 @@ useEffect(() => fcl.tx(txId).subscribe(setTxStatus));
 #### Examples
 
 - [React Effect to get the transaction status on submit](https://github.com/onflow/kitty-items/blob/master/web/src/components/Transactions/TransactionsContext.jsx#L15)
-- [Example usage in Kitty Items app](https://github.com/onflow/kitty-items/blob/master/web/src/flow/util/tx.js#L21-L22)
 
 ---
 
