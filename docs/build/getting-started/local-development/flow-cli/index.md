@@ -1,6 +1,7 @@
 ---
 sidebar_position: 1
-title: Getting Started
+title: Flow CLI
+sidebar_label: Getting Started
 ------
 
 ## Installation
