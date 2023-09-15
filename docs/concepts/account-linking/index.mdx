@@ -101,7 +101,7 @@ Because pure account linking can be dangerous, Flow introduces the `HybridCustod
 
 Apps need assurances that their own resources are safe from malicious actors, so giving out full access might not be the form they want. Using hybrid custody contracts, the app still maintains control of their managed accounts, but they can:
 
-1. Share capabilities freely, with a few built-in controls over the types of capabilities that can be returned with some helper contracts (the `CapabilityFactory`, and `CapabilityFilter`)
+1. Share capabilities freely, with a few built-in controls over the types of capabilities that can be retrieved by parent accounts via helper contracts (the `CapabilityFactory`, and `CapabilityFilter`)
 2. Share additional capabilities (public or private) with a parent account via a `CapabilityDelegator` resource
 
 Learn more about it in the Hybrid Custody documentation.
