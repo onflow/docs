@@ -1034,6 +1034,31 @@
       "source": "/next/building-on-flow/governance",
       "destination": "/next/overview/dive-in/governance",
       "permanent": true
+    },
+    {
+      "source": "/next/cadence/anti-patterns",
+      "destination": "/next/build/best-practices/anti-patterns",
+      "permanent": true
+    },
+    {
+      "source": "/next/cadence/contract-upgrades",
+      "destination": "/next/build/best-practices/contract-upgrades",
+      "permanent": true
+    },
+    {
+      "source": "/next/cadence/design-patterns",
+      "destination": "/next/build/best-practices/design-patterns",
+      "permanent": true
+    },
+    {
+      "source": "/next/cadence/project-development-tips",
+      "destination": "/next/build/best-practices/project-development-tips",
+      "permanent": true
+    },
+    {
+      "source": "/next/cadence/security-best-practices",
+      "destination": "/next/build/best-practices/security-best-practices",
+      "permanent": true
     }
   ]
 }

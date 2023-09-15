@@ -1,6 +1,6 @@
 ---
 title: Cadence Design Patterns
-sidebar_position: 5
+sidebar_position: 1
 sidebar_label: Design Patterns
 ---
 
@@ -389,7 +389,7 @@ transaction {
 
 ### Problem
 
-An account must be given a [capability](./language/capabilities.mdx)
+An account must be given a [capability](../../cadence/language/capabilities.mdx)
 to a resource or contract in another account. To create, i.e. link the capability,
 the transaction must be signed by a key which has access to the target account.
 
@@ -402,7 +402,7 @@ from one account and delivering it to the other.
 
 ### Solution
 
-The solution to the bootstrapping problem in Cadence is provided by the [Inbox API](./language/accounts/inbox.mdx)
+The solution to the bootstrapping problem in Cadence is provided by the [Inbox API](../../cadence/language/accounts/inbox.mdx)
 
 Account A (which we will call the provider) creates the capability they wish to send to B (which we will call the recipient),
 and stores this capability on their account in a place where the recipient can access it using the `Inbox.publish` function on their account.

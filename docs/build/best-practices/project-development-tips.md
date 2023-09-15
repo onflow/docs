@@ -1,6 +1,7 @@
 ---
 title: Flow Smart Contract Project Development Standards
 sidebar_label: Development Standards
+sidebar_position: 5
 description: "Learn how to effectively organize and manage a Cadence project"
 ---
 
@@ -84,7 +85,7 @@ DOS etc in a contract triggering explosive gas costs for the developer or other 
 We recommend that engineers leading a project and deploying to mainnet have an understanding
 of software and security engineering fundamentals and have been thorough
 in their Cadence skills development. More in-depth resources for learning Cadence
-are available [here](../overview/about/cadence.md).
+are available [here](../../overview/about/cadence.md).
 
 The technical leader should be someone who understands Cadence well and has written Cadence smart contracts
 before. Production-level smart contracts are not the place for beginners to get their start.
@@ -171,7 +172,7 @@ Summarized below is a list of testing related recommendations
 which are noteworthy to mention for a typical smart contract project.
 
 Popular testing frameworks to use for cadence are listed here:
-Javascript: [Flow JS Testing](../tools/toolchains/flow-js-testing/index.md)
+Javascript: [Flow JS Testing](../../tools/toolchains/flow-js-testing/index.md)
 Go: [Overflow](https://github.com/bjartek/overflow)
 Cadence: [Cadence Testing Framework](https://github.com/onflow/cadence/blob/ac05b6a0d6005cde468573f0a7a2e3a67f49bd90/docs/testing-framework.mdx)
 Tests written in Cadence!
@@ -289,9 +290,9 @@ It also helps the owner to promote the project and themselves.
 
 Resources for Best Practices:
 
-- [cadence/design-pattern](design-patterns.mdx)
-- [cadence/anti-patterns](anti-patterns.mdx)
-- [cadence/security-best-practices](security-best-practices.mdx)
+- [cadence/design-pattern](./design-patterns.md)
+- [cadence/anti-patterns](./anti-patterns.md)
+- [cadence/security-best-practices](./security-best-practices.md)
 
 Composability and extensibility should also be priorities while designing, developing,
 and documenting their projects. (Documentation for these topics coming soon)
