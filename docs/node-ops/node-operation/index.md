@@ -96,7 +96,7 @@ Furthermore, Access Node operators can freely rate-limit the amount of resources
 
 <Callout type="tip">
   <br />
-Alternately, instead of running an access node, you can use the [Flow community](../access-api.mdx) access nodes or the ones run by any of the other node operators.
+Alternately, instead of running an access node, you can use the [Flow community](../../building-on-flow/run-and-secure/nodes/access-api.mdx) access nodes or the ones run by any of the other node operators.
   <br />
 </Callout>
 
