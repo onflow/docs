@@ -6,7 +6,7 @@ sidebar_label: Introduction
 
 Kitty Items is a complete NFT marketplace inspired by [CryptoKitties](https://www.cryptokitties.co/), a web3 game that put NFTs on the map. You can use it as a blueprint for your own marketplace and to learn how to develop on Flow.
 
-The following chapters use the project to explain the components and concepts of the Flow blockchain and its programming language [Cadence](../../cadence/intro.md). At the end, you will be able to:
+The following chapters use the project to explain the components and concepts of the Flow blockchain and its programming language [Cadence](../../overview/about/cadence.md). At the end, you will be able to:
 
 - deploy and update smart contracts
 - mint and transfer NFTs
@@ -43,5 +43,5 @@ The code in this project demonstrates how to connect to Flow using [FCL](../../t
 
 ### 3. Flow Network (Smart Contracts)
 
-[Cadence](../../cadence/intro.md) smart contracts, scripts & transactions for your viewing pleasure. This is where all of the blockchain logic for the marketplace application lives. Here you will find examples of [fungible token](https://github.com/onflow/flow-ft) and [non-fungible token (NFT)](https://github.com/onflow/flow-nft) smart contract implementations, as well as the scripts and transactions that interact with them. It also contains examples of how to _test_ your Cadence code.
+[Cadence](../../overview/about/cadence.md) smart contracts, scripts & transactions for your viewing pleasure. This is where all of the blockchain logic for the marketplace application lives. Here you will find examples of [fungible token](https://github.com/onflow/flow-ft) and [non-fungible token (NFT)](https://github.com/onflow/flow-nft) smart contract implementations, as well as the scripts and transactions that interact with them. It also contains examples of how to _test_ your Cadence code.
 

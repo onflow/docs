@@ -984,6 +984,16 @@
       "source": "/next/concepts/start-here",
       "destination": "/next/overview/about/flow",
       "permanent": true
+    },
+    {
+      "source": "/next/cadence/intro",
+      "destination": "/next/overview/about/cadence",
+      "permanent": true
+    },
+    {
+      "source": "/next/cadence/why",
+      "destination": "/next/overview/about/cadence",
+      "permanent": true
     }
   ]
 }
