@@ -1069,6 +1069,16 @@
       "source": "/next/building-on-flow/core-contracts/:path*",
       "destination": "/next/build/core-contracts/:path*",
       "permanent": true
+    },
+    {
+      "source": "/next/concepts/account-linking/:path*",
+      "destination": "/next/build/advanced-concepts/account-linking/:path*",
+      "permanent": true
+    },
+    {
+      "source": "/next/concepts/:path*",
+      "destination": "/next/build/key-concepts/:path*",
+      "permanent": true
     }
   ]
 }
