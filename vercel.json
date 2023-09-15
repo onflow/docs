@@ -1059,6 +1059,11 @@
       "source": "/next/cadence/security-best-practices",
       "destination": "/next/build/best-practices/security-best-practices",
       "permanent": true
+    },
+    {
+      "source": "/next/building-on-flow/core-contracts/:path*",
+      "destination": "/next/build/core-contracts/:path*",
+      "permanent": true
     }
   ]
 }
