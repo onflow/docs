@@ -604,7 +604,7 @@ fields private unless it is explicitly needed to be public.
   This is one of THE MOST COMMON security mistakes that Cadence developers make,
   so it is vitally important to be aware of this.
 
-  See the [Cadence Best Practices document](../anti-patterns#array-or-dictionary-fields-should-be-private) for more details.
+  See the [Cadence Best Practices document](../../../best-practices/anti-patterns.md#array-or-dictionary-fields-should-be-private) for more details.
 </Callout>
 
 ## Adding Interfaces to Our Fungible Token
