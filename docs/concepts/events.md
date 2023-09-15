@@ -59,25 +59,25 @@ There is an unlimited amount of events that can be defined on Flow, but you shou
 
 ### FLOW Token Events
 
-The FLOW Token contract uses the fungible token standard on Flow and is the contract that issues a core FLOW token. As with any contract, it can emit events when interacted with. When we transfer the FLOW token, events are emitted. You can find a lot of details on the events emitted in the [FLOW Token documentation](../building-on-flow/core-contracts/03-flow-token.md). 
+The FLOW Token contract uses the [fungible token standard on Flow](../building-on-flow/core-contracts/03-flow-token.md) and is the contract that issues a core FLOW token. As with any contract, it can emit events when interacted with. When we transfer the FLOW token, events are emitted. You can find a lot of details on the events emitted in the [FLOW Token documentation](../building-on-flow/core-contracts/03-flow-token.md). 
 
 The most common events are when tokens are transferred which is accomplished with two actions: withdrawing tokens from the payer and depositing tokens in the receiver. Each of those action has a corresponding event:
 
 **Withdraw Tokens**
 
-Event name: `TokensWithdrawn`
+Event name: `TokensWithdrawn`
 
-Mainnet event: `A.1654653399040a61.FlowToken.TokensWithdrawn`
+Mainnet event: `A.1654653399040a61.FlowToken.TokensWithdrawn`
 
-Testnet event: `A.7e60df042a9c0868.FlowToken.TokensWithdrawn`
+Testnet event: `A.7e60df042a9c0868.FlowToken.TokensWithdrawn`
 
 **Deposit Tokens**
 
-Event name: `TokensDeposited`
+Event name: `TokensDeposited`
 
-Mainnet event: `A.1654653399040a61.FlowToken.TokensDeposited`
+Mainnet event: `A.1654653399040a61.FlowToken.TokensDeposited`
 
-Testnet event: `A.7e60df042a9c0868.FlowToken.TokensDeposited`
+Testnet event: `A.7e60df042a9c0868.FlowToken.TokensDeposited`
 
 ### **Fee Events**
 

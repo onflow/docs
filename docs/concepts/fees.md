@@ -8,7 +8,7 @@ sidebar_position: 5
 
 A transaction fee is a cost paid in Flow by the payer account and is required for a transaction to be included in the Flow blockchain. Fees are necessary for protecting the network against spam, and infinite running transactions and to provide monetary incentives for participants that make up the Flow network.
 
-A transaction fee is paid regardless of whether a transaction succeeds or fails. If the payer account doesn’t have sufficient Flow balance to pay for the transaction fee, the transaction will fail. We can limit the transaction fee to some extent by providing the gas limit value when submitting the transaction.
+A transaction fee is paid regardless of whether a transaction succeeds or fails. If the payer account doesn't have sufficient Flow balance to pay for the transaction fee, the transaction will fail. We can limit the transaction fee to some extent by providing the gas limit value when submitting the transaction.
 
 ### Understanding the need for transaction fees
 
@@ -21,7 +21,7 @@ The unique Flow architecture is targeted at high throughput. It makes it easier 
 
 ### **Fee Structure**
 
-Each transaction fee consits of three components: execution fee, inclusion fee, and network surge factor.
+Each transaction fee consists of three components: execution fee, inclusion fee, and network surge factor.
 
 ![Screenshot 2023-08-17 at 17.16.32.png](_fees_images/Screenshot_2023-08-17_at_17.16.32.png)
 
@@ -90,13 +90,13 @@ Currently, the amount required to store 100 MB in account storage is 1 Flow.
 
 Please note that storing data in an account on Flow doesn’t charge tokens from the account, it just makes sure you will keep the tokens as a reserve. Once the storage is freed up you can transfer the Flow tokens. 
 
-### Storage Capacity of the Payer[](../concepts/fees.md#storage-capacity-of-the-payer)
+### Storage Capacity of the Payer
 
 The storage capacity of the Payer of a transaction is generally computed the same way as the capacity of any other account, however, the system needs to account for the transaction fees the payer will incur at the end of the transaction. The final transaction fee amount is not fully known at this step, only when accounts are checked for storage compliance. If their storage used is more than their storage capacity, the transaction will fail.
 
 Because of this, the payer's balance is conservatively considered to be lower by the maximum possible transaction fees, when checking for storage compliance. The maximum transaction fee of a specific transaction is the transaction fee as if the transaction would have used up all of its execution effort limit.
 
-### Storage Used[](../concepts/fees.md#storage)
+### Storage Used
 
 All data that is in an account's storage counts towards storage used. Even when an account is newly created it is not empty. There are already some items in its storage:
 
