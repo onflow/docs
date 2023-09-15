@@ -1,3 +1,7 @@
+---
+title: Tokens 101
+sidebar_position: 1
+---
 
 # How to Launch a Fungible Token on Flow
 
@@ -42,7 +46,7 @@ For example, your users could be categorized in any of the following, non-exhaus
 
 You can also draw inspiration from this map of the Flow ecosystem. 
 
-![flow ecosystem](flow-ecosystem.png)
+![flow ecosystem](./flow-ecosystem.png)
 
 Write down the list that is most relevant to your dApp and for each type of user, outline succinctly what behavior is expected of them, and what will incentivize them to display this behavior. A good way to summarize the way users interact with your dApp (and with one another) is to draw up a flowchart showing the flow of incentives and behaviors for each user type. For now, ignore the token and only focus on the high-level behaviors/incentives.
 
@@ -165,11 +169,11 @@ While there are a number of ways you can split your token allocation. We have re
 - **Team**: 5-20%
 - **Advisors**: 0-5%
 
-![token allocation](token-allocation.png)
+![token allocation](./token-allocation.png)
 
 Importantly, this type of pie chart only captures **half** of the allocation picture. The other half consists of showing how each slice of the pie receives that allocation **over time**. This is where vesting/unlock comes in. Typically we see, an allocation over time that looks something like this:
 
-![token distribution](token-distribution.png)
+![token distribution](./token-distribution.png)
 
 In the example above, we’re using a 100 million fixed token supply model, and distributing the tokens on a 6-year timeline. The x-axis represents the years since launch, and the y-axis represents the token supply in circulation. As you can see, the number of tokens in circulating supply increases gradually over time and starts to taper off as we get closer to the 6-year mark. Token allocations for team members, investors, and advisors start vesting a year after launch at the cliff date, while airdrop, public sale, and community allocations unlock right at launch, at year zero.
 

@@ -1,6 +1,7 @@
 ---
 title: Governance
 description: Learn about Flow's governance model and how it's empowering our community of users and builders.
+sidebar_position: 4
 sidebar_custom_props:
   icon: 🏛️
 ---

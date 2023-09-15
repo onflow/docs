@@ -984,6 +984,61 @@
       "source": "/concepts/flow-token/available-wallets",
       "destination": "/tools/wallets",
       "permanent": true
+    },
+    {
+      "source": "/next/concepts/start-here",
+      "destination": "/next/overview/about/flow",
+      "permanent": true
+    },
+    {
+      "source": "/next/cadence/intro",
+      "destination": "/next/overview/about/cadence",
+      "permanent": true
+    },
+    {
+      "source": "/next/cadence/why",
+      "destination": "/next/overview/about/cadence",
+      "permanent": true
+    },
+    {
+      "source": "/next/tools/wallets",
+      "destination": "/next/overview/getting-started/wallets",
+      "permanent": true
+    },
+    {
+      "source": "/next/tools/bridges",
+      "destination": "/next/overview/getting-started/bridges",
+      "permanent": true
+    },
+    {
+      "source": "/next/tools/network-faucets",
+      "destination": "/next/overview/getting-started/network-faucets",
+      "permanent": true
+    },
+    {
+      "source": "/next/tools/block-explorers",
+      "destination": "/next/overview/getting-started/block-explorers",
+      "permanent": true
+    },
+    {
+      "source": "/next/community-resources/projects",
+      "destination": "/next/overview/getting-started/projects",
+      "permanent": true
+    },
+    {
+      "source": "/next/building-on-flow/core-contracts/fungible-tokens",
+      "destination": "/next/overview/dive-in/fungible-tokens",
+      "permanent": true
+    },
+    {
+      "source": "/next/concepts/flix",
+      "destination": "/next/overview/dive-in/flix",
+      "permanent": true
+    },
+    {
+      "source": "/next/building-on-flow/governance",
+      "destination": "/next/overview/dive-in/governance",
+      "permanent": true
     }
   ]
 }
