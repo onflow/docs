@@ -72,7 +72,7 @@ transaction {
 
 Account linking was specifically designed to enable smooth and seamless onboarding of users to your Flow based application without them first requiring a wallet to do so. This pattern overcomes both the technical hurdle, as well as user's reluctance to install a wallet, and opens access to apps on Flow to every user. Users can experience an app without any delay while still offering a path to self-sovreign ownership. 
 
-The problem with this approach becomes when a user wants to use that account with another application, or move the items stored in that account out of the application. With account linking it’s possible for the application to create the account instead of the user, but still allow for the user to later link that account to any other accounts he will own.
+Naturally, users may expect to use their account with another application, or otherwise move assets stored in that account elsewhere. When an app initially leverages account linking it creates the account instead of the user and is where that user's specific state is stored. At a later point, users can take ownership of the app account providing they possess a full Flow account, typically by installing a wallet app.
 
 Account linking allows having multiple Flow accounts and abstracts them as a single account.
 
