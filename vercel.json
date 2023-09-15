@@ -1019,6 +1019,21 @@
       "source": "/next/community-resources/projects",
       "destination": "/next/overview/getting-started/projects",
       "permanent": true
-    }
+    },
+    {
+      "source": "/next/building-on-flow/core-contracts/fungible-tokens",
+      "destination": "/next/overview/dive-in/fungible-tokens",
+      "permanent": true
+    },
+    {
+      "source": "/next/concepts/flix",
+      "destination": "/next/overview/dive-in/flix",
+      "permanent": true
+    },
+    {
+      "source": "/next/building-on-flow/governance",
+      "destination": "/next/overview/dive-in/governance",
+      "permanent": true
+    },
   ]
 }
