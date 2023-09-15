@@ -4,7 +4,7 @@ title: Flow Port Staking Guide
 
 This guide provides step-by-step instructions for using the Flow Port to stake your FLOW tokens and start earning rewards.
 Currently, Flow Port only supports staking or delegating using tokens held in Blocto or Ledger wallets.
-If you're new to the concepts of staking and delegating you can [read this guide](../../staking/index.md) to learn more.
+If you're new to the concepts of staking and delegating you can [read this guide](../../../../architecture/staking/index.md) to learn more.
 
 ## First Step
 

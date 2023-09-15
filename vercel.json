@@ -1094,6 +1094,11 @@
       "source": "/next/tools/toolchains/flow-cli/:path*",
       "destination": "/next/build/getting-started/local-development/flow-cli/:path*",
       "permanent": true
+    },
+    {
+      "source": "/next/building-on-flow/run-and-secure/staking/:path*",
+      "destination": "/next/architecture/staking/:path*",
+      "permanent": true
     }
   ]
 }
