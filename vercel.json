@@ -1099,6 +1099,11 @@
       "source": "/next/building-on-flow/run-and-secure/staking/:path*",
       "destination": "/next/architecture/staking/:path*",
       "permanent": true
+    },
+    {
+      "source": "/next/building-on-flow/run-and-secure/node/node-operation/:path*",
+      "destination": "/next/node-ops/node-operation/:path*",
+      "permanent": true
     }
   ]
 }
