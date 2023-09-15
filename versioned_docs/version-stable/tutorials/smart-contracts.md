@@ -15,9 +15,6 @@ Smart contracts on the Flow blockchain are implemented in [Cadence](https://gith
 
 To get started with Cadence, we recommended covering the introductory tutorials available in the [Flow Playground](https://play.onflow.org/), a simple web IDE designed for learning Cadence.
 
-### Learn Through Examples
-
-After learning the basics, check out the [Kitty Items sample dapp](./kitty-items) to see Cadence contracts being used by a real web application. Inspired by CryptoKitties, Kitty Items demonstrates a simple NFT application that supports NFT minting, sales, and peer-to-peer trading.
 
 ### Configure Your Local Environment
 

@@ -66,11 +66,6 @@ export default function GettingStarted(): JSX.Element {
                     tags: ['tutorial', 'beginner'],
                   },
                   {
-                    title: 'NFT Storefront & Marketplace',
-                    href: '/tutorials/kitty-items/',
-                    tags: ['example', 'intermediate'],
-                  },
-                  {
                     title: 'Cadence Cookbook',
                     href: 'https://open-cadence.onflow.org/',
                     tags: ['samples', 'playground'],

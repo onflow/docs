@@ -65,12 +65,6 @@
 ./docs/content/hybrid-custody/guides/linking-accounts.md: docs/concepts/hybrid-custody/guides/linking-accounts.md
 ./docs/content/hybrid-custody/guides/walletless-onboarding.md: docs/concepts/hybrid-custody/guides/walletless-onboarding.md
 ./docs/content/hybrid-custody/index.md: docs/concepts/hybrid-custody/index.md
-./docs/content/kitty-items/index.md: docs/tutorials/kitty-items/index.md
-./docs/content/kitty-items/install.md: docs/tutorials/kitty-items/install.md
-./docs/content/kitty-items/modify.md: docs/tutorials/kitty-items/modify.md
-./docs/content/kitty-items/next-steps.md: docs/tutorials/kitty-items/next-steps.md
-./docs/content/kitty-items/start.md: docs/tutorials/kitty-items/start.md
-./docs/content/kitty-items/update.md: docs/tutorials/kitty-items/update.md
 ./docs/content/nft-catalog/cadence-generation.mdx: docs/tooling/nft-catalog/cadence-generation.mdx
 ./docs/content/nft-catalog/composability-flowcase-guide.mdx: docs/tooling/nft-catalog/composability-flowcase-guide.mdx
 ./docs/content/nft-catalog/composability-nft-guide.mdx: docs/tooling/nft-catalog/composability-nft-guide.mdx
