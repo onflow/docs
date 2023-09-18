@@ -1,4 +1,6 @@
 ---
+title: Flow CLI Quickstart
+sidebar_label: Flow CLI Quickstart
 sidebar_position: 2
 ---
 
