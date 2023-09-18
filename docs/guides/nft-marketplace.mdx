@@ -117,7 +117,7 @@ Some blockchains have super high gas fees. That compels NFT platforms, especiall
 
 Flow blockchain's mission is to make blockchain accessible for the masses. We will never expect to see high transaction fees on the Flow blockchain.
 
-> **Note**: You can check the details on Flow fees [here](../../build/key-concepts/fees.md#fees).
+> **Note**: You can check the details on Flow fees [here](../build/key-concepts/fees.md#fees).
 
 Based on current and future low fees on the Flow blockchain, NFT marketplaces do not need to implement lazy minting.
 
@@ -153,7 +153,7 @@ The sale listing specifies the fungible token the NFT is sold in. Typical fungib
 
 Flow blockchain has a feature that unless an account is setup to receive a particular NFT type, they can not receive NFTs of that type. That is why users need to authorize a transaction through their account to receive a specific NFT type. 
 
-An NFT marketplace should enable users to set up their accounts to receive an NFT before purchasing that NFT. [Flow NFT Catalog](../../tools/toolchains/nft-catalog/overview.mdx) can provide the storage path information to let platforms craft such account set up transactions.
+An NFT marketplace should enable users to set up their accounts to receive an NFT before purchasing that NFT. [Flow NFT Catalog](../tools/nft-catalog/overview.mdx) can provide the storage path information to let platforms craft such account set up transactions.
 
 After the NFT purchase operation is complete on the blockchain, the NFT marketplace platform should explicitly clean up the sale listings. Leaving dangling sale listings is not a good practice.
 
@@ -205,7 +205,7 @@ This section will highlight the considerations you should make when implementing
 
 ### FLOW
 
-FLOW is the default cryptocurrency that powers the Flow blockchain network, and is primarily used for staking and for paying [network fees](../../build/key-concepts/fees.md#fees).
+FLOW is the default cryptocurrency that powers the Flow blockchain network, and is primarily used for staking and for paying [network fees](../build/key-concepts/fees.md#fees).
 
 Many of the payment providers support FLOW, including well-trusted cryptocurrency exchanges.
 
@@ -236,7 +236,7 @@ USDC and FLOW are the recommended payment methods for FCL-powered apps, due to t
 
 On many blockchains, decentralized apps offer the Connect Wallet button to let users connect their wallets. Flow blockchain tries to make things even more friendlier for the end-users. It allows applications to offer users the opportunity to register for a wallet (aka create a wallet) if they do not have a Flow wallet already. If users already have a wallet, the Sign-in/up functionality authenticates the user.
 
-Sign-in/up functionality is implemented using [FCL](../../tools/clients/fcl-js/index.md). The following documentation provides details on how to implement this functionality on the application frontend:
+Sign-in/up functionality is implemented using [FCL](../tools/clients/fcl-js/index.md). The following documentation provides details on how to implement this functionality on the application frontend:
 
 - [FCL Authentication Functionality](../../tools/clients/fcl-js/authentication.mdx)
 - [Sign-in/up using FCL with Blocto Wallet](https://docs.blocto.app/blocto-sdk/flow/login-register)
