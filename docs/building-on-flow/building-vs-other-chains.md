@@ -29,7 +29,7 @@ This natively enables interesting use cases, like key revocation, rotation, and 
 
 <Callout type="info">
 
-You must run an explicit account creation transaction on Flow to create a new account. [Flow CLI](../build/getting-started/local-development/flow-cli/accounts/create-accounts.md) can create an account on any network with a given public key.
+You must run an explicit account creation transaction on Flow to create a new account. [Flow CLI](../tools/flow-cli/accounts/create-accounts.md) can create an account on any network with a given public key.
 
 </Callout>
 
@@ -40,7 +40,7 @@ Check out the [Accounts](../build/key-concepts/accounts.md) concept document to 
 On Flow, smart contracts are written in Cadence. Cadence syntax is user-friendly and inspired by modern languages like Swift. Notable features of Cadence that make it unique and the key power of the Flow blockchain are:
 
 - **Resource-oriented**: Cadence introduces a new type called Resources. Resources enable onchain representation of digital assets natively and securely. Resources can only exist in one location at a time and are strictly controlled by the execution environment to avoid common mishandling mistakes. Each resource has a unique `uuid` associated with it on the blockchain. Examples of usage are fungible tokens, NFTs, or any custom data structure representing a real-world asset. Check out [Resources](../cadence/language/resources.mdx) to learn more.
-- **Capability-based**: Cadence offers a [Capability-based Security](https://en.wikipedia.org/wiki/Capability-based_security) model. This also enables the use of Resources as structures to build access control. Capabilities can provide fine-grained access to the underlying objects for better security. For example, when users list an NFT on a Flow marketplace, they create a new Capability to the stored NFT in their account so the buyer can withdraw the asset when they provide the tokens. Check out [Capability-based Access Control](https://developers.flow.com/cadence/language/capability-based-access-control.md) to learn more about Capabilities on Cadence.
+- **Capability-based**: Cadence offers a [Capability-based Security](https://en.wikipedia.org/wiki/Capability-based_security) model. This also enables the use of Resources as structures to build access control. Capabilities can provide fine-grained access to the underlying objects for better security. For example, when users list an NFT on a Flow marketplace, they create a new Capability to the stored NFT in their account so the buyer can withdraw the asset when they provide the tokens. Check out [Capability-based Access Control](../cadence/language/capabilities.md) to learn more about Capabilities on Cadence.
 
 <Callout type="info">
 
@@ -53,7 +53,7 @@ Check out the [Cadence website](https://cadencelang.dev/) to learn more about Ca
 If you’re already familiar with smart contracts, here are some resources that can help you get started with Cadence:
 
 - [The Cadence tutorial](../build/getting-started/hello-world/tutorial/01-first-steps.md)
-- [Guide for Solidity Developers](../cadence/solidity-to-cadence.mdx)
+- [Guide for Solidity Developers](../cadence/solidity-to-cadence.md)
 - ERC-20 equivalent on Flow is the Flow Fungible Token Standard
     - [Repository](https://github.com/onflow/flow-ft)
     - [Tutorial](../build/getting-started/hello-world/tutorial/06-fungible-tokens.md)

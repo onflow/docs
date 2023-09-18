@@ -444,7 +444,7 @@ Account storage is indexed with paths, which consist of a domain and identifier.
 
 Contracts have access to the private `AuthAccount` object of the account it is deployed to, using `self.account`.
 This object has methods that can modify storage in many ways.
-See the [account](../../../../cadence/language/accounts/index.mdx) documentation for a list of all the methods it can call.
+See the [account](../../../../cadence/language/accounts) documentation for a list of all the methods it can call.
 
 In this line, we call the `save` method to store an object in storage.
 The first argument is the value to store, and the second argument is the path where the value is being stored.
@@ -521,7 +521,7 @@ Capabilities allow us to accomplish this safely.
 
 ---
 
-Another important feature in Cadence is its utilization of [**Capability-Based Security.**](../../../../cadence/language/capabilities.mdx)
+Another important feature in Cadence is its utilization of [**Capability-Based Security.**](../../../../cadence/language/capabilities.md)
 This feature ensures that while the withdraw function is declared public on the resource,
 no one except the intended user and those they approve of can withdraw tokens from their vault.
 

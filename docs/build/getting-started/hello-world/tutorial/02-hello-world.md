@@ -103,7 +103,7 @@ For this tutorial, you'll be working with only the first account `0x01`
 You will start by using a smart contract that contains a public function that returns `"Hello World!"`.
 
 Like most other blockchains, the programming model in Flow is centered around accounts and transactions.
-All state that persists permanently is stored in [accounts](../../../../cadence/language/accounts/index.mdx)
+All state that persists permanently is stored in [accounts](../../../../cadence/language/accounts)
 and all accounts have the same core functionality. (users, smart contracts, data storage)
 
 The interfaces to this state (the ways to interact with it, otherwise known as methods or functions) are also stored in accounts.
@@ -196,7 +196,7 @@ is built into the protocol by default.
 
 An account is divided into two main areas:
 
-1. The first area is the [contract area](../../../../cadence/language/accounts/index.mdx).
+1. The first area is the [contract area](../../../../cadence/language/accounts).
    This is the area that stores smart contracts containing type definitions, fields, and functions that relate to common functionality.
    There is no limit to the number of smart contracts an account can store.
    This area cannot be directly accessed in a transaction unless the transaction is just returning (reading) a copy of the code deployed to an account.

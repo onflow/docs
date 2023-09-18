@@ -15,7 +15,7 @@ sidebar_custom_props:
 This guide is a simple walkthrough to get started building a web3 app using the Flow Client Library (FCL).
 
 <Callout type="info">
- If you are looking for a scalfolds, check out [scaffolds availabe in the Flow CLI](../build/getting-started/local-development/flow-cli/super-commands.md#using-scaffolds).
+ If you are looking for a scalfolds, check out [scaffolds availabe in the Flow CLI](../tools/flow-cli/super-commands.md#using-scaffolds).
 </Callout>
 
 This simple guide uses the "Hello World" scaffold, it is meant to provide all the code needed to get a web application up and running.
@@ -45,7 +45,7 @@ For more help, [Discord](https://discord.gg/flow). See links at the end of this 
 
 ## Installation
 
-Make sure you have Flow CLI installed. [installation instructions](../build/getting-started/local-development/flow-cli/install.md).
+Make sure you have Flow CLI installed. [installation instructions](../tools/flow-cli/install.md).
 
 The first step is to generate a React app using Next.js and [create-next-app](https://nextjs.org/docs/api-reference/create-next-app). From your terminal, run the following:
 
@@ -68,7 +68,7 @@ Using the Flow CLI scaffold, create a basic hello world web project. This will c
  # run the app in a later step
 ```
 
-We don't recommend keeping private keys in your `flow.json`, notice that Flow CLI already moved the emulator private key to a `emulator.key` file and point to it using the [key/location pattern](../build/getting-started/local-development/flow-cli/flow.json/security.md#private-account-configuration-file). This file should be added to your .gitignore file, so it won't be committed to your repository. 
+We don't recommend keeping private keys in your `flow.json`, notice that Flow CLI already moved the emulator private key to a `emulator.key` file and point to it using the [key/location pattern](../tools/flow-cli/flow.json/security.md#private-account-configuration-file). This file should be added to your .gitignore file, so it won't be committed to your repository. 
 
 We won't be using emulator and running contracts locally in this quickstart, but FCL will complain if it finds private keys in your `flow.json` file.
 

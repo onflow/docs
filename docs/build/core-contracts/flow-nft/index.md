@@ -305,7 +305,7 @@ but without most of the downsides.
 
 If you want to test out these contracts, we recommend either testing them
 with the [Flow Playground](https://play.onflow.org)
-or with the [Visual Studio Code Extension](../../../tools/toolchains/vscode-extension/index.mdx).
+or with the [Visual Studio Code Extension](../../../tools/vscode-extension/index.mdx).
 
 The steps to follow are:
 

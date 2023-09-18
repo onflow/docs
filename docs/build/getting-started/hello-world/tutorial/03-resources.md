@@ -42,7 +42,7 @@ socialImageDescription: Resource smart contract image.
 This tutorial builds on the previous `Hello World` tutorial.
 Before beginning this tutorial, you should understand :
 
-- [Accounts](../../../../cadence/language/accounts/index.mdx)
+- [Accounts](../../../../cadence/language/accounts)
 - [Transactions](../../../../cadence/language/transactions)
 - Signers
 - [Field types](../../../../cadence/language/composite-types)
@@ -186,7 +186,7 @@ this function has to be used to initialize them.
 
 Contracts also have read and write access to the storage of the account that they are deployed to by using the built-in
 [`self.account`](../../../../cadence/language/contracts) object.
-This is an [`AuthAccount` object](../../../../cadence/language/accounts/index.mdx)
+This is an [`AuthAccount` object](../../../../cadence/language/accounts)
 that gives them access to many different functions to interact with the private storage of the account.
 
 This contract's `init` function is simple, it logs the phrase `"Hello Asset"` to the console.
@@ -284,12 +284,12 @@ Here's what this transaction does:
 
 This is our first transaction using the `prepare` phase!
 The `prepare` phase is the only place that has access to the signing accounts'
-[private `AuthAccount` object](../../../../cadence/language/accounts/index.mdx).
+[private `AuthAccount` object](../../../../cadence/language/accounts).
 `AuthAccount` objects have many different methods that are used to interact with account storage.
-You can see the documentation for all of these in the [account section of the language reference](../../../../cadence/language/accounts/index.mdx).
+You can see the documentation for all of these in the [account section of the language reference](../../../../cadence/language/accounts).
 In this tutorial, we'll be using `AuthAccount` methods to save and load from `/storage/`.
 The `prepare` phase can also create `/private/` and `/public/` links to the objects in `/storage/`,
-called [capabilities](../../../../cadence/language//capabilities.mdx) (more on these later).
+called [capabilities](../../../../cadence/language/capabilities.md) (more on these later).
 
 By not allowing the execute phase to access account storage,
 we can statically verify which assets and areas of the signers' storage a given transaction can modify.
@@ -460,7 +460,7 @@ Here's what this transaction does:
 4. Saves the resource in the account that we originally moved it from at the path `/storage/HelloAssetTutorial`
 
 We're going to be using the `prepare` phase again to load the resource because it
-has access to the signing accounts' [private `AuthAccount` object](../../../../cadence/language/accounts/index.mdx).
+has access to the signing accounts' [private `AuthAccount` object](../../../../cadence/language/accounts).
 
 Let's go over the transaction in more detail.
 To remove an object from storage, we use the `load` method from the [account storage API](../../../../cadence/language/accounts/storage.mdx)

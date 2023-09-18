@@ -5,7 +5,7 @@ const homepageStartProjectData: HomepageStartItemProps[] = [
   {
     title: 'Start Here',
     text: 'Dive into key concepts and learn what makes Flow unique.',
-    link: '/concepts/start-here',
+    link: '/getting-started/hello-world',
     icon: 'learn',
   },
   {

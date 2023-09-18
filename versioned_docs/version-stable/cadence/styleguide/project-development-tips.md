@@ -170,7 +170,7 @@ Summarized below is a list of testing related recommendations
 which are noteworthy to mention for a typical smart contract project.
 
 Popular testing frameworks to use for cadence are listed here:
-Javascript: [Flow JS Testing](../../tools/toolchains/flow-js-testing/)
+Javascript: [Flow JS Testing](../../tools/flow-js-testing/)
 Go: [Overflow](https://github.com/bjartek/overflow)
 Cadence: [Cadence Testing Framework](https://github.com/onflow/cadence/blob/ac05b6a0d6005cde468573f0a7a2e3a67f49bd90/docs/testing-framework.mdx)
 Tests written in Cadence!
@@ -288,9 +288,9 @@ It also helps the owner to promote the project and themselves.
 
 Resources for Best Practices:
 
-- [cadence/design-pattern](../../cadence/design-patterns.mdx)
+- [cadence/design-pattern](../../cadence/design-patterns.md)
 - [cadence/anti-patterns](../../cadence/anti-patterns.mdx)
-- [cadence/security-best-practices](../../cadence/security-best-practices.mdx)
+- [cadence/security-best-practices](../../cadence/security-best-practices.md)
 
 Composability and extensibility should also be priorities while designing, developing,
 and documenting their projects. (Documentation for these topics coming soon)

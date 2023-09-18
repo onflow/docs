@@ -389,7 +389,7 @@ transaction {
 
 ### Problem
 
-An account must be given a [capability](../../cadence/language/capabilities.mdx)
+An account must be given a [capability](../../cadence/language/capabilities.md)
 to a resource or contract in another account. To create, i.e. link the capability,
 the transaction must be signed by a key which has access to the target account.
 
