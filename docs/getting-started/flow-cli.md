@@ -10,7 +10,7 @@ The Flow CLI (Command Line Interface) is a set of tools that developers can use 
 
 ## Installation
 
-The first thing you'll need to do is install the Flow CLI. If you have homebrew installed you can run:
+The first thing you'll need to do is install the Flow CLI. If you have [homebrew](https://brew.sh/) installed you can run:
 
 ```
 brew install flow-cli
