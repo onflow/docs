@@ -12,9 +12,5 @@ sidebar_position: 7
 
 [Flowser](https://flowser.dev/) lets you inspect the current state of any Flow blockchain network emulator, testnet, and mainnet.
 
-## Flow Cadut
-
-[Flow Cadut](./flow-cadut/api.md) is a Node-based template generator designed to simplify interaction with Cadence files.
-
 # Easinteraction
 [Easinteraction](https://github.com/LemonNekoGH/easinteraction-for-cadence) is a golang code generator for easier interaction with Cadence contract
