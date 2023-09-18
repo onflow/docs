@@ -29,7 +29,7 @@ This natively enables interesting use cases, like key revocation, rotation, and 
 
 <Callout type="info">
 
-You must run an explicit account creation transaction on Flow to create a new account. [Flow CLI](../build/getting-started/local-development/flow-cli/accounts/create-accounts.md) can create an account on any network with a given public key.
+You must run an explicit account creation transaction on Flow to create a new account. [Flow CLI](../tools/flow-cli/accounts/create-accounts.md) can create an account on any network with a given public key.
 
 </Callout>
 

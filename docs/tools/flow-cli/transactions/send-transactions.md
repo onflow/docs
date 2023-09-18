@@ -1,72 +1,117 @@
 ---
-title: Execute Flow Interaction Templates (FLIX) with the Flow CLI
-sidebar_title: Execute FLIX
-description: How to execute Flow Interaction Templates (FLIX) on Flow from the command line
-sidebar_position: 12
+title: Send a Transaction
+description: How to send a Flow transaction from the command line
+sidebar_position: 1
 ---
 
-The Flow CLI provides a command to execute Flow Interaction Templates (FLIX). FLIX are an easy way to interact with Flow. They are a standard for distributing Cadence scripts and transactions, and metadata about them, in a way that is consumable by tooling and wallets. FLIX are audited for correctness and safety by an ecosystem of auditors.
+The Flow CLI provides a command to sign and send transactions to
+any Flow Access API.
 
 ```shell
-flow flix <query> [<argument> <argument>...] [flags]
+flow transactions send <code filename> [<argument> <argument>...] [flags]
 ```
-
-Queries can be a FLIX id, name, or path to a local FLIX file.
 
 ## Example Usage
 
 ```shell
-# Execute a FLIX transaction by name on Testnet
-flix flow transfer-flow 5.0 "0x123" --network testnet --signer "testnet-account"
+> flow transactions send ./tx.cdc "Hello"
+    
+Status		✅ SEALED
+ID		b04b6bcc3164f5ee6b77fa502c3a682e0db57fc47e5b8a8ef3b56aae50ad49c8
+Payer		f8d6e0586b0a20c7
+Authorizers	[f8d6e0586b0a20c7]
+
+Proposal Key:	
+    Address	f8d6e0586b0a20c7
+    Index	0
+    Sequence	0
+
+No Payload Signatures
+
+Envelope Signature 0: f8d6e0586b0a20c7
+Signatures (minimized, use --include signatures)
+
+Events:	 None
+
+Code (hidden, use --include code)
+
+Payload (hidden, use --include payload)
+
 ```
 
+Multiple arguments example:
 ```shell
-# Execute a FLIX script by id on Testnet
-flow flix bd10ab0bf472e6b58ecc0398e9b3d1bd58a4205f14a7099c52c0640d9589295f --network testnet
+> flow transactions send tx1.cdc Foo 1 2 10.9 0x1 '[123,222]' '["a","b"]'
+```
+Transaction code:
+```
+transaction(a: String, b: Int, c: UInt16, d: UFix64, e: Address, f: [Int], g: [String]) {
+	prepare(authorizer: AuthAccount) {}
+}
 ```
 
+In the above example, the `flow.json` file would look something like this:
+
+```json
+{
+  "accounts": {
+    "my-testnet-account": {
+      "address": "a2c4941b5f3c7151",
+      "key": "12c5dfde...bb2e542f1af710bd1d40b2"
+    }
+  }
+}
+```
+
+JSON arguments from a file example:
 ```shell
-# Execute a local FLIX script by path on Testnet
-flow flix ./multiply.template.json 2 3 --network testnet`
+> flow transactions send tx1.cdc --args-json "$(cat args.json)"
 ```
-
-## Resources
-
-To find out more about FLIX, see the [read the FLIP](https://github.com/onflow/flips/blob/main/application/20220503-interaction-templates.md).
-
-For a list of all templates, check out the [FLIX template repository](https://github.com/onflow/flow-interaction-template-service/tree/master/templates).
-
-To generate a FLIX, see the [FLIX CLI readme](https://github.com/onflow/flow-interaction-template-tools/tree/master/cli).
 
 ## Arguments
+
+### Code Filename
+- Name: `code filename`
+- Valid inputs: Any filename and path valid on the system.
+
+The first argument is a path to a Cadence file containing the
+transaction to be executed.
+
+### Arguments
 - Name: `argument`
-- Valid inputs: valid [cadence values](../../../../cadence/json-cadence-spec.md)
-  matching argument type in script code.
+- Valid inputs: valid [cadence values](../../../cadence/json-cadence-spec.md) 
+  matching argument type in transaction code.
 
 Input arguments values matching corresponding types in the source code and passed in the same order.
-You can pass a `nil` value to optional arguments by executing the flow script like this: `flow scripts execute script.cdc nil`.
+You can pass a `nil` value to optional arguments by sending the transaction like this: `flow transactions send tx.cdc nil`.
 
 ## Flags
 
-### Arguments JSON
+### Include Fields
 
-- Flag: `--args-json`
-- Valid inputs: arguments in JSON-Cadence form.
-- Example: `flow scripts execute script.cdc '[{"type": "String", "value": "Hello World"}]'`
+- Flag: `--include`
+- Valid inputs: `code`, `payload`
 
-Arguments passed to the Cadence script in the Cadence JSON format.
-Cadence JSON format contains `type` and `value` keys and is 
-[documented here](../../../../cadence/json-cadence-spec.md).
+Specify fields to include in the result output. Applies only to the text output.
 
-## Block Height
+### Code
 
-- Flag: `--block-height`
-- Valid inputs: a block height number
+- Flag: `--code`
 
-## Block ID
+⚠️  No longer supported: use filename argument.
 
-- Flag: `--block-id`
-- Valid inputs: a block ID
+### Results
+
+- Flag: `--results`
+
+⚠️  No longer supported: all transactions will provide result.
+
+### Exclude Fields
+
+- Flag: `--exclude`
+- Valid inputs: `events`
+
+Specify fields to exclude from the result output. Applies only to the text output.
 
 ### Signer
 
@@ -104,7 +149,7 @@ Specify the name of the account(s) that will be used as authorizer(s) in the tra
 
 Arguments passed to the Cadence transaction in Cadence JSON format.
 Cadence JSON format contains `type` and `value` keys and is 
-[documented here](../../../../cadence/json-cadence-spec.md).
+[documented here](../../../cadence/json-cadence-spec.md).
 
 ### Gas Limit
 
@@ -191,4 +236,3 @@ several configuration files.
 - Default: `false`
 
 Skip version check during start up to speed up process for slow connections.
-

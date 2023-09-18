@@ -14,7 +14,7 @@ sidebar_position: 7
 
 ## Flow CLI
 
-[Flow CLI](../../build/getting-started/local-development/flow-cli/index.md) brings Flow to your terminal, allowing you to easily interact with the network and build your dapps.
+[Flow CLI](../../tools/flow-cli/index.md) brings Flow to your terminal, allowing you to easily interact with the network and build your dapps.
 
 ## VS Code Extension
 

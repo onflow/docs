@@ -1,60 +1,62 @@
 ---
-title: Get an Account
-description: How to get a Flow account from the command line
-sidebar_position: 1
+title: Execute a Script
+description: How to execute a Cadence script on Flow from the command line
+sidebar_position: 6
 ---
 
-The Flow CLI provides a command to fetch any account by its address from the Flow network.
+The Flow CLI provides a command to execute a Cadence script on
+the Flow execution state with any Flow Access API.
 
 ```shell
-flow accounts get <address>
+flow scripts execute <filename> [<argument> <argument>...] [flags]
 ```
 
 ## Example Usage
 
 ```shell
-flow accounts get 0xf8d6e0586b0a20c7
+# Execute a script on Flow Testnet
+> flow scripts execute script.cdc "Hello" "World"
+
+"Hello World"
 ```
 
-### Example response
-```shell
-Address	 0xf8d6e0586b0a20c7
-Balance	 99999999999.70000000
-Keys	 1
-
-Key 0	Public Key		 640a5a359bf3536d15192f18d872d57c98a96cb871b92b70cecb0739c2d5c37b4be12548d3526933c2cda9b0b9c69412f45ffb6b85b6840d8569d969fe84e5b7
-	Weight			 1000
-	Signature Algorithm	 ECDSA_P256
-	Hash Algorithm		 SHA3_256
-	Revoked 		 false
-	Sequence Number 	 6
-	Index 			 0
-
-Contracts Deployed: 2
-Contract: 'FlowServiceAccount'
-Contract: 'FlowStorageFees'
-
-
+Script source code:
+```
+pub fun main(greeting: String, who: String): String {
+	return greeting.concat(" ").concat(who)
+}
 ```
 
 ## Arguments
 
-### Address
+### Filename
 
-- Name: `address`
-- Valid Input: Flow account address
+- Name: `filename`
+- Valid inputs: a path in the current filesystem.
 
-Flow [account address](../../../../key-concepts/accounts.md) (prefixed with `0x` or not).
+The first argument is a path to a Cadence file containing the 
+script to be executed.
+
+### Arguments
+- Name: `argument`
+- Valid inputs: valid [cadence values](../../../cadence/json-cadence-spec.md)
+  matching argument type in script code.
+
+Input arguments values matching corresponding types in the source code and passed in the same order.
+You can pass a `nil` value to optional arguments by executing the flow script like this: `flow scripts execute script.cdc nil`.
 
 
 ## Flags
 
-### Include Fields
+### Arguments JSON
 
-- Flag: `--include`
-- Valid inputs: `contracts`
+- Flag: `--args-json`
+- Valid inputs: arguments in JSON-Cadence form.
+- Example: `flow scripts execute script.cdc '[{"type": "String", "value": "Hello World"}]'`
 
-Specify fields to include in the result output. Applies only to the text output.
+Arguments passed to the Cadence script in the Cadence JSON format.
+Cadence JSON format contains `type` and `value` keys and is 
+[documented here](../../../cadence/json-cadence-spec.md).
 
 ### Host
 

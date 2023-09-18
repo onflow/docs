@@ -10,7 +10,7 @@ Every week, the Flow governance committee executes the reward payout transaction
 When the transaction executes, it generates events for the rewards paid to each node and delegator.
 To check the staking and delegation rewards, that transaction should be queried.
 
-Example using [Flow cli](../../build/getting-started/local-development/flow-cli/index.md)
+Example using [Flow cli](../../tools/flow-cli/index.md)
 ```
 $ flow transactions get 84eca4ff612ef70047d60510710cca872c8a17c1bd9f63686e74852b6382cc84 -n mainnet
 

@@ -82,7 +82,7 @@ transaction to be executed.
 
 ### Arguments
 - Name: `argument`
-- Valid inputs: valid [cadence values](../../../../../cadence/json-cadence-spec.md)
+- Valid inputs: valid [cadence values](../../../cadence/json-cadence-spec.md)
   matching argument type in transaction code.
 
 Input arguments values matching corresponding types in the source code and passed in the same order.
@@ -97,7 +97,7 @@ For passing complex argument values see [send transaction](./send-transactions.m
 - Default: service account
 
 Specify account address that will be paying for the transaction.
-Read more about payers [here](../../../../key-concepts/transactions.md).
+Read more about payers [here](../../../build/key-concepts/transactions.md).
 
 ### Proposer
 
@@ -123,7 +123,7 @@ Specify key index for the proposer account.
 - Default: service account
 
 Additional authorizer addresses to add to the transaction.
-Read more about authorizers [here](../../../../key-concepts/transactions.md).
+Read more about authorizers [here](../../../build/key-concepts/transactions.md).
 
 ### Arguments JSON
 
@@ -133,7 +133,7 @@ Read more about authorizers [here](../../../../key-concepts/transactions.md).
 
 Arguments passed to the Cadence transaction in Cadence JSON format.
 Cadence JSON format contains `type` and `value` keys and is
-[documented here](../../../../../cadence/json-cadence-spec.md).
+[documented here](../../../cadence/json-cadence-spec.md).
 
 ### Gas Limit
 

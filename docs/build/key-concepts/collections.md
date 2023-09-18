@@ -16,7 +16,7 @@ You can use the Flow CLI to get the collection data by running:
 flow collections get caff1a7f4a85534e69badcda59b73428a6824ef8103f09cb9eaeaa216c7d7d3f -n mainnet
 ```
 
-Find [more about the command in the CLI docs](../../build/getting-started/local-development/flow-cli/get-flow-data/get-collections.md).
+Find [more about the command in the CLI docs](../../tools/flow-cli/get-flow-data/get-collections.md).
 
 Collections can be obtained from the access node APIs, currently, there are two gRPC and REST APIs. You can find more information about them here:
 

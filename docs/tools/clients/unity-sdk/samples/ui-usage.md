@@ -21,7 +21,7 @@ This will import the sample into a Samples folder under your Assets:
 
 To install the Flow emulator, please follow the instructions for your platform here:
 
-[flow-cli/install](../../../../build/getting-started/local-development/flow-cli/index.md)
+[flow-cli/install](../../../../tools/flow-cli/index.md)
 
 Note that the Flow CLI and Flow emulator are bundled into the same command-line executable.
 
