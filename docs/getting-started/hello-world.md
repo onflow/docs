@@ -16,7 +16,7 @@ pub fun main(): String {
   return HelloWorld.greeting
 }
 ```
-Copy the script above into Flow Runner and click "Execute Script" Then scroll down to see the output.
+`Copy` the script above into Flow Runner and click "Execute Script" Then scroll down to see the output.
 
 
 <iframe className="flow-runner-iframe" src="https://runflow.pratikpatel.io/" width="100%" height="400px"></iframe>
