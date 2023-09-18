@@ -19,7 +19,7 @@ pub fun main(): String {
 Copy the script above into Flow Runner and click "Execute Script" Then scroll down to see the output.
 
 
-<iframe class="flow-runner-iframe" src="https://runflow.pratikpatel.io/" width="100%" height="400px"></iframe>
+<iframe className="flow-runner-iframe" src="https://runflow.pratikpatel.io/" width="100%" height="400px"></iframe>
 
 ## Contract on Testnet
 
