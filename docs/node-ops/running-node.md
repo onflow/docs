@@ -27,7 +27,7 @@ The goal is to make all node types permissionless, currently there are three nod
 
 ## Why run a Flow node?
 
-On Flow there is no requirement to run a node to develop applications. For many use cases, an [emulator](../tools/toolchains/emulator) for local development and a public access node will fulfill your needs. For those with higher throughput requirements running your own light node or access is simple.
+On Flow there is no requirement to run a node to develop applications. For many use cases, an [emulator](../tools/emulator) for local development and a public access node will fulfill your needs. For those with higher throughput requirements running your own light node or access is simple.
 
 # Running a Light Node
 

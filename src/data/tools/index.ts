@@ -44,7 +44,7 @@ const emulatorTool: Tool = {
   authorIcon: 'https://avatars.githubusercontent.com/u/62387156?s=64&v=4',
   authorName: 'onflow',
   tags: ['documentation', 'active', 'local-dev'],
-  link: '/tools/toolchains/emulator/',
+  link: '/tools/emulator/',
   stars: 62,
   iconSrc: ToolEmulatorIconSrc,
   description:
