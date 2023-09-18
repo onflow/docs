@@ -76,7 +76,7 @@ without any explicit handling needed.
 
 ## Capability-based access
 
-Remote access to stored objects can be managed via [Capabilities](./language/capabilities.mdx). This
+Remote access to stored objects can be managed via [Capabilities](./language/capabilities.md). This
 means that if an account wants to be able to access another account's stored objects, it must have been provided
 with a valid Capability to that object. Capabilities can be either public or private. An account can share a public
 Capability if it wants to give all other accounts access. (For example, it’s common for an account to accept fungible
@@ -154,10 +154,10 @@ the opposite direction than the [access-based security](https://en.wikipedia.org
 Solidity lacks specific types or other primitives to aid with permission management. Developers have to inline
 guards to `require` at every function entry-point, thus validating the `msg.sender` of the transaction.
 
-[Capabilities](./language/capabilities.mdx) are defined by linking storage paths (namespaces for contract
+[Capabilities](./language/capabilities.md) are defined by linking storage paths (namespaces for contract
 storage) to protected objects and then making that linked capability available to other accounts. Public and private
 scopes defined for storage paths and Capabilities themselves align precisely with
-[PublicAccount](./language/accounts/index.mdx)/[AuthAccount](./language/accounts/index.mdx) account scopes.
+[PublicAccount](./language/accounts)/[AuthAccount](./language/accounts) account scopes.
 
 Any account can get access to an account's public Capabilities. Public capabilities are created using public paths,
 i.e. they have the domain `public`. For example, all accounts have a default public capability linked to the
@@ -179,7 +179,7 @@ account.
 
 To aid automation, events are emitted for `publish`, `claim` and `unpublish` actions completed for a Capability.
 
-Detailed information can be found in [Capabilities](./language/capabilities.mdx).
+Detailed information can be found in [Capabilities](./language/capabilities.md).
 
 ## Hygiene factors for protecting value
 

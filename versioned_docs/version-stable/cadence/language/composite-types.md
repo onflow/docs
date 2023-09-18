@@ -141,10 +141,10 @@ that is to be initialized.
 If a composite type is to be stored, all its field types must be storable. Non-storable types are:
 
 - Functions
-- [Accounts (`AuthAccount` / `PublicAccount`)](./accounts.mdx)
+- [Accounts (`AuthAccount` / `PublicAccount`)](./accounts/index.mdx)
 - [Transactions](./transactions.md)
 - [References](./references.md): References are ephemeral.
-  Consider [storing a capability and borrowing it](./capability-based-access-control.md) when needed instead.
+  Consider [storing a capability and borrowing it](./capabilities.md) when needed instead.
 
 Fields can be read (if they are constant or variable) and set (if they are variable),
 using the access syntax: the composite value is followed by a dot (`.`)

@@ -5,7 +5,7 @@ sidebar_position: 7
 
 This is an opinionated list of best practices Cadence developers should follow to write more secure Cadence code.
 
-Some practices listed below might overlap with advice in the [Cadence Anti-Patterns](./design-patterns.mdx) section, which is a recommended read as well.
+Some practices listed below might overlap with advice in the [Cadence Anti-Patterns](./design-patterns.md) section, which is a recommended read as well.
 
 ## References
 
@@ -19,9 +19,9 @@ Be aware that the subtype or unrestricted type could expose functionality that w
 
 ## Account Storage
 
-Don't trust a users’ [account storage](./language/accounts.mdx#account-storage). Users have full control over their data and may reorganize it as they see fit. Users may store values in any path, so paths may store values of “unexpected” types. These values may be instances of types in contracts that the user deployed.
+Don't trust a users’ [account storage](./language/accounts/storage.mdx). Users have full control over their data and may reorganize it as they see fit. Users may store values in any path, so paths may store values of “unexpected” types. These values may be instances of types in contracts that the user deployed.
 
-Always [borrow](./language/capability-based-access-control.md) with the specific type that is expected. Or, check if the value is an instance of the expected type.
+Always [borrow](./language/capabilities.md) with the specific type that is expected. Or, check if the value is an instance of the expected type.
 
 ## Auth Accounts
 
@@ -31,7 +31,7 @@ It is preferable to use capabilities over direct `AuthAccount` storage when expo
 
 ## Capabilities
 
-Don’t store anything under the [public capability storage](./language/capability-based-access-control.md) unless strictly required. Anyone can access your public capability using `AuthAccount.getCapability`. If something needs to be stored under `/public/`, make sure only read functionality is provided by restricting its type using either a resource interface or struct interface.
+Don’t store anything under the [public capability storage](./language/capabilities.md) unless strictly required. Anyone can access your public capability using `AuthAccount.getCapability`. If something needs to be stored under `/public/`, make sure only read functionality is provided by restricting its type using either a resource interface or struct interface.
 
 When linking a capability, the link might already be present. In that case, Cadence will not panic with a runtime error but the link function will return `nil`.
 

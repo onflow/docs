@@ -36,7 +36,7 @@ Newcomers to Cadence should ensure they understand the following major concepts 
 
 ## Flow account model
 
-The [Flow account model](../concepts/accounts.md) in Cadence combines storage for the keys and code
+The [Flow account model](../build/key-concepts/accounts.md) in Cadence combines storage for the keys and code
 (”smart contracts”) associated with an account with storage for the assets owned by that account. That’s right:
 In Cadence, your tokens are stored in your account, and not in a smart contract. Of course, smart contracts still
 define these assets and how they behave, but those assets can be securely stored in a user’s account through the
@@ -153,10 +153,10 @@ the opposite direction than the [access-based security](https://en.wikipedia.org
 Solidity lacks specific types or other primitives to aid with permission management. Developers have to inline
 guards to `require` at every function entry-point, thus validating the `msg.sender` of the transaction.
 
-[Capabilities](./language/capability-based-access-control.md) are defined by linking storage paths (namespaces for contract
+[Capabilities](./language/capabilities.md) are defined by linking storage paths (namespaces for contract
 storage) to protected objects and then making that linked capability available to other accounts. Public and private
 scopes defined for storage paths and Capabilities themselves align precisely with
-[PublicAccount](./language/accounts.mdx#publicaccount)/[AuthAccount](./language/accounts.mdx#authaccount) account scopes.
+[PublicAccount](./language/accounts/index.mdx#publicaccount)/[AuthAccount](./language/accounts/index.mdx#authaccount) account scopes.
 
 Any account can get access to an account's public Capabilities. Public capabilities are created using public paths,
 i.e. they have the domain `public`. For example, all accounts have a default public capability linked to the
@@ -170,15 +170,15 @@ interface. Public capabilities can be obtained from both authorized accounts (`A
 Private capabilities are specifically granted to accounts. They are created using private paths, i.e. they have the
 domain `private`. After creation, they can be obtained from authorised account objects (`AuthAccount`) but not public
 accounts (`PublicAccount`). To share a private Capability with another account, the owning account must `publish` it
-to another account which places in the [account inbox](./language/accounts.mdx#account-inbox). The recipient can later
+to another account which places in the [account inbox](./language/accounts/index.mdx#account-inbox). The recipient can later
 claim the Capability from the account inbox using then `claim` function.
 
-Capabilities can be `unpublished` and can also be [revoked](./design-patterns.mdx#capability-revocation) by the creating
+Capabilities can be `unpublished` and can also be [revoked](./design-patterns.md#capability-revocation) by the creating
 account.
 
 To aid automation, events are emitted for `publish`, `claim` and `unpublish` actions completed for a Capability.
 
-Detailed information can be found in [Capabilities](./language/capability-based-access-control.md).
+Detailed information can be found in [Capabilities](./language/capabilities.md).
 
 ## Hygiene factors for protecting value
 
@@ -217,10 +217,10 @@ roles may vary, for example, larger organizations may require more complex role-
 Resource in this context is key - the instance can't be copied and the account with the first edition mint of the admin
 serves as the root-admin. The admin can be implemented to mint additional admin Resource instances, which only the
 root-admin can grant to selected user accounts via a Capability. Conveniently, because the admin role is only
-accessible via a Capability it's easy to manage with [Capability Revocation](./design-patterns.mdx#capability-revocation).
+accessible via a Capability it's easy to manage with [Capability Revocation](./design-patterns.md#capability-revocation).
 
-The admin role originates from the [init singleton pattern](./design-patterns.mdx#init-singleton) and uses the
-[Capability Bootstrapping](./design-patterns.mdx#capability-bootstrapping) pattern for making the Capability available to
+The admin role originates from the [init singleton pattern](./design-patterns.md#init-singleton) and uses the
+[Capability Bootstrapping](./design-patterns.md#capability-bootstrapping) pattern for making the Capability available to
 other accounts.
 
 An example admin role implementation is available in [Cadence cookbook](https://cookbook.onflow.org/?preview=13).

@@ -41,7 +41,7 @@ Flow is designed to enable composability because of the way that interfaces, res
 
 - [Interfaces](../../../../cadence/language/interfaces) allow projects to support any generic type as long as it supports a standard set of functionality specified by an interface.
 - [Resources](../../../../cadence/language/resources) can be passed around and owned by accounts, contracts or even other resources, unlocking different use cases depending on where the resource is stored.
-- [Capabilities](../../../../cadence/language/capabilities.mdx) allow exposing user-defined sets of functionality through special objects that enforce strict security with Cadence's type system.
+- [Capabilities](../../../../cadence/language/capabilities.md) allow exposing user-defined sets of functionality through special objects that enforce strict security with Cadence's type system.
 
 The combination of these allows developers to do more with less, re-using known safe code and design patterns
 to create new, powerful, and unique interactions!
@@ -418,11 +418,11 @@ External applications can monitor the blockchain to take action when certain eve
 We have covered capabilities in previous [tutorials](./04-capabilities.md),
 but only the basics. Capabilities can be used for so much more!
 
-As you hopefully understand, [capabilites](../../../../cadence/language/capabilities.mdx)
+As you hopefully understand, [capabilites](../../../../cadence/language/capabilities.md)
 are links to private objects in account storage that specify and expose a subset in the public or private namespace of public or private paths
 where the Capability is linked.
 
-To create a capability, a user typically uses [the `AuthAccount.link`](../../../../cadence/language/accounts/index.mdx)
+To create a capability, a user typically uses [the `AuthAccount.link`](../../../../cadence/language/accounts)
 method to create a link to a resource in their private storage, specifying a type to link the capability as:
 
 ```cadence

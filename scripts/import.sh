@@ -82,15 +82,7 @@ cloneDocReposToDest() {
 # https://github.com/onflow/docs/issues/105
 copyVersionedDocs() {
     for folderName in $(ls $docsLocation); do
-        if [ $folderName != 'cadence' ] && [ $folderName != 'tutorials' ]; then
-            cp -r $docsLocation/$folderName $versionedDocsLocation
-        fi
-    done
-}
-
-copyVersionedDocsV0() {
-    for folderName in $(ls $docsLocation); do
-        if [ $folderName = 'getting-started' ]; then
+        if [ $folderName != 'cadence' ]; then
             cp -r $docsLocation/$folderName $versionedDocsLocation
         fi
     done
@@ -110,5 +102,4 @@ copyRepoFilesToDest() {
 }
 
 cloneDocReposToDest
-# copyVersionedDocs
-copyVersionedDocsV0
+copyVersionedDocs

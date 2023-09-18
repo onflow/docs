@@ -418,11 +418,11 @@ External applications can monitor the blockchain to take action when certain eve
 We have covered capabilities in previous [tutorials](./04-capabilities.mdx),
 but only the basics. Capabilities can be used for so much more!
 
-As you hopefully understand, [capabilites](../language/capability-based-access-control.md)
+As you hopefully understand, [capabilites](../../cadence/language/capabilities.md)
 are links to private objects in account storage that specify and expose a subset in the public or private namespace of public or private paths
 where the Capability is linked.
 
-To create a capability, a user typically uses [the `AuthAccount.link`](../language/accounts.mdx#authaccount)
+To create a capability, a user typically uses [the `AuthAccount.link`](../language/accounts/index.mdx#authaccount)
 method to create a link to a resource in their private storage, specifying a type to link the capability as:
 
 ```cadence
@@ -434,7 +434,7 @@ acct.link<&ExampleToken.Vault{ExampleToken.Receiver, ExampleToken.Balance}>
     (/public/CadenceFungibleTokenTutorialReceiver, target: /storage/CadenceFungibleTokenTutorialVault)
 ```
 
-Then, users can get that capability if it was created [in a public path](../language/accounts.mdx#paths),
+Then, users can get that capability if it was created [in a public path](../language/accounts/index.mdx#paths),
 borrow it, and access the functionality that the owner specified.
 
 ```cadence
