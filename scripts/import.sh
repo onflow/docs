@@ -88,6 +88,14 @@ copyVersionedDocs() {
     done
 }
 
+copyVersionedDocsV0() {
+    for folderName in $(ls $docsLocation); do
+        if [ $folderName = 'getting-started' ]; then
+            cp -r $docsLocation/$folderName $versionedDocsLocation
+        fi
+    done
+}
+
 copyRepoFilesToDest() {
     sourceFolderName=$1
     destFolderName=$2
@@ -103,3 +111,4 @@ copyRepoFilesToDest() {
 
 cloneDocReposToDest
 # copyVersionedDocs
+copyVersionedDocsV0
