@@ -474,7 +474,7 @@
     },
     {
       "source": "/emulator/:path*",
-      "destination": "/tools/toolchains/emulator/:path*",
+      "destination": "/tools/emulator/:path*",
       "permanent": true
     },
     {

@@ -24,14 +24,14 @@ If you are coming from Ethereum, the following list shows corresponding modules 
 
 | Resource                            | Ethereum                | Flow                                                                                                  |
 | ----------------------------------- | ----------------------- | ----------------------------------------------------------------------------------------------------- |
-| Smart Contract Programming Language | Solidity                | [Cadence](../../overview/about/cadence.md)                                                                     |
+| Smart Contract Programming Language | Solidity                | [Cadence](../../overview/about/cadence.md)                                                            |
 | Fungible Token Standard             | ERC-20                  | [Flow Fungible Token Standard](https://github.com/onflow/flow-ft)                                     |
 | NFT Standard                        | ERC-721/ERC-1155        | [Flow NFT Token Standard](https://github.com/onflow/flow-nft)                                         |
 | NFT Metadata Standard               | ERC-721                 | [Flow NFT Metadata Standard](https://github.com/onflow/flow-nft/#nft-metadata)                        |
-| Native Crypto Currency              | ETH                     | [FLOW](../../build/key-concepts/flow-token.md)                                                                  |
+| Native Crypto Currency              | ETH                     | [FLOW](../../build/key-concepts/flow-token.md)                                                        |
 | Wallet Interaction Library          | web3.js                 | [Flow Client Library (FCL)](../../tools/clients/)                                                     |
 | Blockchain Interaction SDK          | web3.js                 | [Language Clients](../../tools/clients/)                                                              |
-| Block Explorer                      | Etherscan               | [Block Explorers](../../tools/toolchains/)                                                            |
+| Block Explorer                      | Etherscan               | [Block Explorers](../../overview/getting-started/block-explorers.md)                                  |
 | Node Service Providers              | Infura                  | [Official Flow Access Nodes](https://flowscan.org/staking/nodes)                                      |
 | Wallets                             | Metamask, WalletConnect | [Blocto](https://portto.com/), [Dapper Wallet](https://www.meetdapper.com/)                           |
 

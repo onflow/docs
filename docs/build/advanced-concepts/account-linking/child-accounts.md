@@ -26,7 +26,7 @@ Before diving in, let's make a distinction between **"account linking"** and **"
 
 ### Account Linking
 
-<Callout type=" ">
+<Callout type="info">
 
 Note that since account linking is a sensitive action, transactions where an account may be linked are designated by a
 topline pragma `#allowAccountLinking`. This lets wallet providers inform users that their account may be linked in the
