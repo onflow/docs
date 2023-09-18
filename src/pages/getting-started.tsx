@@ -62,7 +62,7 @@ export default function GettingStarted(): JSX.Element {
                   },
                   {
                     title: 'Javascript Quickstart',
-                    href: '/tutorials/flow-app-quickstart/',
+                    href: '/getting-started/fcl-quickstart/',
                     tags: ['tutorial', 'beginner'],
                   },
                   {
@@ -116,7 +116,7 @@ export default function GettingStarted(): JSX.Element {
                 links: [
                   {
                     title: 'Get the Flow CLI',
-                    href: '/tools/toolchains/flow-cli/install/',
+                    href: '/tools/flow-cli/install/',
                     tags: ['install'],
                   },
                   {
@@ -126,7 +126,7 @@ export default function GettingStarted(): JSX.Element {
                   },
                   {
                     title: 'Core contracts & standards',
-                    href: '/building-on-flow/core-contracts',
+                    href: '/build/core-contracts',
                     tags: ['nft', 'ft', 'metadata'],
                   },
                   {

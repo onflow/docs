@@ -41,7 +41,7 @@ Flow is designed to enable composability because of the way that interfaces, res
 
 - [Interfaces](../language/interfaces) allow projects to support any generic type as long as it supports a standard set of functionality specified by an interface.
 - [Resources](../language/resources) can be passed around and owned by accounts, contracts or even other resources, unlocking different use cases depending on where the resource is stored.
-- [Capabilities](../language/capability-based-access-control) allow exposing user-defined sets of functionality through special objects that enforce strict security with Cadence's type system.
+- [Capabilities](../language/capabilities.md) allow exposing user-defined sets of functionality through special objects that enforce strict security with Cadence's type system.
 
 The combination of these allows developers to do more with less, re-using known safe code and design patterns
 to create new, powerful, and unique interactions!
