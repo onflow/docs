@@ -45,7 +45,7 @@ A few resources to help start your NFT collection:
 
 **NFT Catalog**
 
-After getting your NFT collection created, look into your collection registered on the [NFT catalog](../tools/toolchains/nft-catalog/overview.mdx). The NFT Catalog will allow developers to easily discover your NFT collection. This will give them the opportunity to integrate your collection into their applications.
+After getting your NFT collection created, look into your collection registered on the [NFT catalog](../tools/nft-catalog/overview.mdx). The NFT Catalog will allow developers to easily discover your NFT collection. This will give them the opportunity to integrate your collection into their applications.
 
 ## Final Words
 

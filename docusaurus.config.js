@@ -341,15 +341,15 @@ const config = {
                 label: 'FCL',
               },
               {
-                to: '/tools/toolchains/flow-js-testing/',
+                to: '/tools/flow-js-testing/',
                 label: 'JS Testing Library',
               },
               {
-                to: '/tools/toolchains/flow-cli/',
+                to: '/tools/flow-cli/',
                 label: 'CLI',
               },
               {
-                to: '/tools/toolchains/emulator/',
+                to: '/tools/emulator/',
                 label: 'Emulator',
               },
               {
@@ -357,7 +357,7 @@ const config = {
                 label: 'Dev Wallet',
               },
               {
-                to: '/tools/toolchains/vscode-extension/',
+                to: '/tools/vscode-extension/',
                 label: 'VS Code Extension',
               },
             ],
