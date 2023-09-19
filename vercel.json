@@ -879,6 +879,10 @@
     {
       "source": "/tools/toolchains/:path*",
       "destination": "/tools/:path*"
+    },
+    {
+      "source": "/tools/fcl-dev-wallet/:path*",
+      "destination": "/tools/flow-dev-wallet/:path*"
     }
   ]
 }
