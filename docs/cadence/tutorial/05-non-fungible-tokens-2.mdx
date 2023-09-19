@@ -601,7 +601,7 @@ transaction {
     // transferred to the other account
     let transferToken: @ExampleNFT.NFT
 
-    prepare(acct: AuthAccount) {
+    prepare(acct: auth(BorrowValue) &Account) {
 
         // Borrow a reference from the stored collection
         let collectionRef = acct.storage

@@ -475,10 +475,10 @@ import BasicToken from 0x01
 
 transaction {
 
-  prepare(acct: AuthAccount) {
+  prepare(acct: auth(BorrowValue) &Account) {
     // withdraw tokens from your vault by borrowing a reference to it
     // and calling the withdraw function with that reference
-    let vaultRef = acct.storage.borrow<&BasicToken.Vault>(from: /storage/CadenceFungibleTokenTutorialVault)
+    let vaultRef = acct.storage.borrow<auth(FungibleToken.Withdrawable) &BasicToken.Vault>(from: /storage/CadenceFungibleTokenTutorialVault)
         ?? panic("Could not borrow a reference to the owner's vault")
 
     let temporaryVault <- vaultRef.withdraw(amount: 10.0)
