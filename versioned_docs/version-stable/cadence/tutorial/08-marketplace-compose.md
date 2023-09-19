@@ -20,7 +20,7 @@ This contract is already deployed to testnet and mainnet and can be used by anyo
   </a>
   <br/>
   The tutorial will be asking you to take various actions to interact with this code.
-  [The marketplace setup guide](./07-marketplace-setup.mdx) shows you how to get the playground set up to do this tutorial.
+  [The marketplace setup guide](./07-marketplace-setup.md) shows you how to get the playground set up to do this tutorial.
 </Callout>
 
 <Callout type="info">
@@ -64,7 +64,7 @@ To accomplish this, we're going to take you through these steps to create a comp
 4. Use a different account to purchase the NFT from the sale.
 5. Run a script to verify that the NFT was purchased.
 
-**Before proceeding with this tutorial**, you need to complete the [Fungible Tokens](./06-fungible-tokens.mdx)
+**Before proceeding with this tutorial**, you need to complete the [Fungible Tokens](./06-fungible-tokens.md)
 and [Non-Fungible Token](./05-non-fungible-tokens-1.md) tutorials
 to understand the building blocks of this smart contract.
 
@@ -86,7 +86,7 @@ This way, the owner of the token keeps custody of their token while it is on sal
 <Callout type="info">
 
 Before we start, we need to confirm the state of your accounts. <br/>
-If you haven't already, please perform the steps in the [marketplace setup guide](./07-marketplace-setup.mdx)
+If you haven't already, please perform the steps in the [marketplace setup guide](./07-marketplace-setup.md)
 to ensure that the Fungible Token and Non-Fungible Token contracts are deployed to account 1 and 2 and own some tokens.<br/>
 Your accounts should look like this:
 
@@ -167,7 +167,7 @@ pub fun main() {
 
 You should see something similar to this output if your accounts are set up correctly.
 They are in the same state that they would have been in if you followed
-the [Fungible Tokens](./06-fungible-tokens.mdx)
+the [Fungible Tokens](./06-fungible-tokens.md)
 and [Non-Fungible Tokens](./05-non-fungible-tokens-1.md) tutorials in succession:
 
 ```
@@ -415,7 +415,7 @@ External applications can monitor the blockchain to take action when certain eve
 
 ### Resource-Owned Capabilities
 
-We have covered capabilities in previous [tutorials](./04-capabilities.mdx),
+We have covered capabilities in previous [tutorials](./04-capabilities.md),
 but only the basics. Capabilities can be used for so much more!
 
 As you hopefully understand, [capabilites](../language/capabilities.md)
@@ -499,7 +499,7 @@ pub resource SaleCollection: SalePublic {
 ```
 
 This is a logical way to do it, and illustrates another important concept in Cadence, that resources can own other resources!
-Check out the [Kitty Hats tutorial](./10-resources-compose.mdx) for a little more exploration of this concept.
+Check out the [Kitty Hats tutorial](./10-resources-compose.md) for a little more exploration of this concept.
 
 In this case however, nesting resources doesn't make sense. If a user decides to store their for-sale NFTs in a separate place from their main collection,
 then those NFTs are not available to be shown to any app or smart contract that queries the main collection,
@@ -860,4 +860,4 @@ There are a few good examples of generic marketplaces on Flow right now.
 ---
 
 Now that you have an understanding of how composable smart contracts and the marketplace work on Flow, you're ready to play with composable resources!
-Check out the [Kitty Hats tutorial!](./10-resources-compose.mdx)
+Check out the [Kitty Hats tutorial!](./10-resources-compose.md)

@@ -37,7 +37,7 @@ socialImageDescription: Capability smart contract image.
   language's design.
 </Callout>
 
-This tutorial builds on the [previous `Resource` tutorial](./03-resources.mdx).
+This tutorial builds on the [previous `Resource` tutorial](./03-resources.md).
 Before beginning this tutorial, you should have an idea of how accounts,transactions,resources, and signers work with basic field types.
 This tutorial will build on your understanding of accounts and resources.
 You'll learn how to interact with resources using [capabilities](../language/capability-based-access-control)
@@ -78,7 +78,7 @@ In this tutorial, you will:
 
 ---
 Before following this tutorial, you should have the `HelloWorld` contract deployed in account `0x01`,
-just like in the [previous `Resource` contract tutorial](./03-resources.mdx).
+just like in the [previous `Resource` contract tutorial](./03-resources.md).
 
 <Callout type="info">
 
@@ -125,7 +125,7 @@ Click on the `Create Hello` transaction and send it with `0x01` as the signer.
 </Callout>
 
 The contract and transaction above creates and stores the resource we'll be using in this tutorial.
-For a more detailed breakdown of the contract, have a look at the [previous tutorial](./03-resources.mdx).
+For a more detailed breakdown of the contract, have a look at the [previous tutorial](./03-resources.md).
 
 ### Creating Capabilities and References to Stored Resources
 

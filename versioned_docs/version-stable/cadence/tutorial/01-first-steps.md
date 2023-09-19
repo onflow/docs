@@ -81,4 +81,4 @@ or you can use the pre-generated tutorial setups in the Playground.
 ## Say Hello, World!
 
 Now that you have the Flow Developer Playground running,
-you can [create a smart contract](./02-hello-world.mdx) for Flow!
+you can [create a smart contract](./02-hello-world.md) for Flow!

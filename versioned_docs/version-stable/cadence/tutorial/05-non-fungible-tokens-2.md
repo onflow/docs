@@ -468,7 +468,7 @@ For the purpose of learning, we are simply implementing minting as a public func
 Normally, most would implement restricted minting by having an NFT Minter resource.
 This would restrict minting, because the owner of this resource is the only one that can mint tokens.
 
-You can see an example of this in the [Marketplace tutorial](./08-marketplace-compose.mdx).
+You can see an example of this in the [Marketplace tutorial](./08-marketplace-compose.md).
 
 <Callout type="info">
 

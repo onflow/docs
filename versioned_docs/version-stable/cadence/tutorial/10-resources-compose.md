@@ -32,7 +32,7 @@ To showcase how this feature works on Flow, this tutorial will take you through 
 3. Move the Kitties and Hats around to see how composable NFTs function on Flow
 
 **Before proceeding with this tutorial**, we recommend following the instructions in [Getting Started](./01-first-steps.md)
-and [Hello, World!](./02-hello-world.mdx) to learn about the Playground and Cadence.
+and [Hello, World!](./02-hello-world.md) to learn about the Playground and Cadence.
 
 
 ## Resources Owning Resources

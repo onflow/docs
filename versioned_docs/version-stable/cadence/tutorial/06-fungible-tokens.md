@@ -84,7 +84,7 @@ We're going to take you through these steps to get comfortable with the fungible
 6. Use a script to read the accounts' balances.
 
 **Before proceeding with this tutorial**, we recommend following the instructions in [Getting Started](./01-first-steps.md)
-and [Hello, World!](./02-hello-world.mdx) to learn the basics of the language and the playground.
+and [Hello, World!](./02-hello-world.md) to learn the basics of the language and the playground.
 
 # Fungible Tokens on the Flow Emulator
 
