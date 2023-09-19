@@ -1,6 +1,8 @@
 ---
-sidebar_position: 2
 title: Flow CLI
+sidebar_label: Flow CLI
+description: Guide to installing and user Flow CLI
+sidebar_position: 2
 ------
 
 ## Installation
@@ -91,18 +93,10 @@ command and make a selection from a variety of accessible scaffolds:
    [10] Mobile Unity Game - Example words game built on Flow using the Unity SDK.
 ```
 
-After you have created your new project you can proceed writing contracts and by running `dev` 
-command the CLI will make sure they are deployed to the Flow emulator for you. Flow emulator is 
-a simplified version of Flow network you can use locally to develop. 
+After you have created your new project, you can proceed to writing contracts. Once your contracts have been written, run the `flow dev` command the CLI will deploy them to the Flow emulator. Flow emulator is 
+a simplified version of Flow network that runs locally. It makes writing, deploying and testing contracts easier.
 
 So proceed by starting the emulator: 
-
-Once you've established your new project, you can begin writing your own Cadence contracts. 
-By utilizing the `flow dev` command, the CLI will take care of deploying them to 
-the Flow emulator on your behalf. The Flow emulator serves as a simple version of the Flow network, 
-enabling you to carry out local development.
-
-Start the emulator by running:
 
 ```
 > flow emulator
