@@ -361,7 +361,7 @@ Now, back to the tutorial!
 In the NFT Collection, all the functions and fields are public,
 but we do not want everyone in the network to be able to call our `withdraw` function.
 This is where Cadence's second layer of access control comes in.
-Cadence utilizes [capability security](../language/capability-based-access-control),
+Cadence utilizes [capability security](../language/capabilities),
 which means that for any given object, a user is allowed to access a field or method of that object if they either:
 
 - Are the owner of the object
