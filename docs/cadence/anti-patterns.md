@@ -25,12 +25,12 @@ which provides the opportunity for bad actors to take advantage of.
 // BAD CODE
 // DO NOT COPY
 
-// Imagine this code is in a contract that uses AuthAccount to authenticate users
-// To transfer NFTs
+// Imagine this code is in a contract that uses a `auth(Storage) &Account` parameter
+// to authenticate users to transfer NFTs
 
 // They could deploy the contract with an Ethereum-style access control list functionality
 
-access(all) fun transferNFT(id: UInt64, owner: AuthAccount) {
+access(all) fun transferNFT(id: UInt64, owner: auth(Storage) &Account) {
     assert(owner(id) == owner.address)
 
     transfer(id)
@@ -42,7 +42,7 @@ access(all) fun transferNFT(id: UInt64, owner: AuthAccount) {
 // should not be accessible in this function
 // BAD
 
-access(all) fun transferNFT(id: UInt64, owner: AuthAccount) {
+access(all) fun transferNFT(id: UInt64, owner: auth(Storage) &Account) {
     assert(owner(id) == owner.address)
 
     transfer(id)
@@ -66,8 +66,9 @@ Projects should find other ways to authenticate users, such as using resources a
 They should also expect to perform most storage and linking operations within transaction bodies
 rather than inside contract utility functions.
 
-There are some scenarios where using an `AuthAccount` object is necessary, such as a cold storage multi-sig,
-but those cases are extremely rare and `AuthAccount` usage should still be avoided unless absolutely necessary.
+There are some scenarios where using an authorized account reference (`auth(...) &Account`) is necessary,
+such as a cold storage multi-sig,
+but those cases are rare and such usage should still be avoided unless absolutely necessary.
 
 ## Public functions and fields should be avoided
 
