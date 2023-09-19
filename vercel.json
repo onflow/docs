@@ -899,9 +899,12 @@
       "destination": "/tools/nft-catalog"
     },
     {
-      "source": "/tools/intro",
-      "destination": "/tools/flow-cli",
-      "permanent": true
+      "source": "/build/mobile/monster-maker",
+      "destination": "/build/mobile/ios-quickstart"
+    },
+    {
+      "source": "/build/mobile",
+      "destination": "/build/mobile/overview"
     }
   ]
 }
