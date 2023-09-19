@@ -1,12 +1,14 @@
 ---
+title: Why Flow
+sidebar_label: Why Flow
 sidebar_position: 1
 ---
 
-# Introduction to Flow
+# Why Flow
 
 Flow is a fast, decentralized, and developer-friendly blockchain designed to be the foundation for a new generation of games, apps, and the [digital assets](https://www.onflow.org/post/flow-blockchain-cadence-programming-language-resources-assets) that power them. It is based on a unique, [multi-role architecture](https://www.onflow.org/primer), and designed to [scale without sharding](https://www.onflow.org/post/flow-blockchain-multi-node-architecture-advantages), allowing for massive improvements in speed and throughput while preserving a developer-friendly, ACID-compliant environment.
 
-## What makes Flow unique
+## What Makes Flow Unique
 
 - **Multi-role architecture:** Flow's node architecture allows the network to scale to serve billions of users without sharding or reducing the decentralization of consensus.
 - **Resource-oriented programming:** Smart contracts on Flow are written in Cadence, an easier and safer programming language for crypto assets and apps.

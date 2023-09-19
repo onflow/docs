@@ -938,7 +938,28 @@
     },
     {
       "source": "/building-on-flow/mobile",
-      "destination": "/build/mobile/overview"
+      "destination": "/build/mobile/overview",
+      "permanent": true
+    },
+    {
+      "source": "/getting-started/hello-world",
+      "destination": "/build/getting-started/quickstarts/hello-world",
+      "permanent": true
+    },
+    {
+      "source": "/getting-started/flow-cli",
+      "destination": "/build/getting-started/quickstarts/flow-cli",
+      "permanent": true
+    },
+    {
+      "source": "/getting-started/fcl-quickstart",
+      "destination": "/build/getting-started/quickstarts/fcl-quickstart",
+      "permanent": true
+    },
+    {
+      "source": "/build/getting-started/local-development/app-architecture",
+      "destination": "/build/getting-started/app-architecture",
+      "permanent": true
     }
   ]
 }

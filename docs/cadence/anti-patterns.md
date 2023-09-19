@@ -6,17 +6,16 @@ sidebar_label: Anti-Patterns
 
 This is an opinionated list of issues that can be improved if they are found in Cadence code intended for production.
 
-# Security and Robustness
-
-## Avoid using `AuthAccount` as a function parameter
+## Avoid using authorized account references as a function parameter
 
 ### Problem
 
-Some may choose to authenticate or perform operations for their users by using the users' account addresses.
-In order to do this, a commonly seen case would be to pass the user's `AuthAccount` object
-as a parameter to a contract function to use for querying the account or storing objects directly.
-This is problematic, as the `AuthAccount` object allows access to ALL private areas of the account,
-for example, all of the user's storage, authorized keys, etc.,
+A developer may choose to authenticate or perform operations for their users by using the users' account addresses.
+In order to do this, they might add a parameter to a function which has an authorized account reference type (`auth(...) &Account`),
+as an authorized account reference can only be obtained by signing a transaction.
+
+This is problematic, as the authorized account reference allows access to some sensitive operations on the account,
+for example, to write to storage,
 which provides the opportunity for bad actors to take advantage of.
 
 ### Example:
@@ -26,12 +25,12 @@ which provides the opportunity for bad actors to take advantage of.
 // BAD CODE
 // DO NOT COPY
 
-// Imagine this code is in a contract that uses AuthAccount to authenticate users
-// To transfer NFTs
+// Imagine this code is in a contract that uses a `auth(Storage) &Account` parameter
+// to authenticate users to transfer NFTs
 
 // They could deploy the contract with an Ethereum-style access control list functionality
 
-access(all) fun transferNFT(id: UInt64, owner: AuthAccount) {
+access(all) fun transferNFT(id: UInt64, owner: auth(Storage) &Account) {
     assert(owner(id) == owner.address)
 
     transfer(id)
@@ -43,7 +42,7 @@ access(all) fun transferNFT(id: UInt64, owner: AuthAccount) {
 // should not be accessible in this function
 // BAD
 
-access(all) fun transferNFT(id: UInt64, owner: AuthAccount) {
+access(all) fun transferNFT(id: UInt64, owner: auth(Storage) &Account) {
     assert(owner(id) == owner.address)
 
     transfer(id)
@@ -67,28 +66,9 @@ Projects should find other ways to authenticate users, such as using resources a
 They should also expect to perform most storage and linking operations within transaction bodies
 rather than inside contract utility functions.
 
-There are some scenarios where using an `AuthAccount` object is necessary, such as a cold storage multi-sig,
-but those cases are extremely rare and `AuthAccount` usage should still be avoided unless absolutely necessary.
-
-## Events from resources may not be unique
-
-### Problem
-
-Public functions in a contract can be called by anyone, e.g. any other contract or any transaction.
-If that function creates a resource, and that resource has functions that emit events,
-that means any account can create an instance of that resource and emit those events.
-If those events are meant to indicate actions taken using a single instance of that resource
-(eg. admin object, registry), or instances created through a particular workflow,
-it's possible that events from other instances may be mixed in with the ones you're querying for -
-making the event log search and management more cumbersome.
-
-### Solution
-
-To fix this, if there should be only a single instance of the resource,
-it should be created and `link()`ed to a public path in an admin account's storage
-during the contracts's initializer.
-
-# Access Control
+There are some scenarios where using an authorized account reference (`auth(...) &Account`) is necessary,
+such as a cold storage multi-sig,
+but those cases are rare and such usage should still be avoided unless absolutely necessary.
 
 ## Public functions and fields should be avoided
 
@@ -100,7 +80,9 @@ Accidentally exposed fields can be a security hole.
 ### Solution
 
 When writing your smart contract, look at every field and function and make sure
-that they are all `access(self)`, `access(contract)`, or `access(account)`, unless otherwise needed.
+that require access through an [entitlement](./language/access-control.md#entitlements) (`access(E)`),
+or use a non-public [access modifier](./language/access-control.md) like `access(self)`, `access(contract)`, or `access(account)`,
+unless otherwise needed.
 
 ## Capability-Typed public fields are a security hole
 
@@ -118,55 +100,6 @@ has been stored as a field on a contract or resource in this way.
 
 For public access to a capability, place it in an accounts public area so this expectation is explicit.
 
-## Array or dictionary fields should be private
-
-<Callout type="info">
-
-This anti-pattern has been addressed with [FLIP #703](https://github.com/onflow/flips/blob/main/cadence/20211129-cadence-mutability-restrictions.md)
-
-</Callout>
-
-### Problem
-
-This is a specific case of "Public Functions And Fields Should Be Avoided", above.
-Public array or dictionary fields are not directly over-writable,
-but their members can be accessed and overwritten if the field is public.
-This could potentially result in security vulnerabilities for the contract
-if these fields are mistakenly made public.
-
-Ex:
-
-```cadence
-access(all) contract Array {
-    // array is intended to be initialized to something constant
-    access(all) let shouldBeConstantArray: [Int]
-}
-```
-
-Anyone could use a transaction like this to modify it:
-
-```cadence
-import Array from 0x01
-
-transaction {
-    execute {
-        Array.shouldbeConstantArray[0] = 1000
-    }
-}
-```
-
-### Solution
-
-Make sure that any array or dictionary fields in contracts, structs, or resources
-are `access(contract)` or `access(self)` unless they need to be intentionally made public.
-
-```cadence
-access(all) contract Array {
-    // array is inteded to be initialized to something constant
-    access(self) let shouldBeConstantArray: [Int]
-}
-```
-
 ## Public admin resource creation functions are unsafe
 
 This is a specific case of "Public Functions And Fields Should Be Avoided", above.
@@ -178,9 +111,8 @@ If that resource provides access to admin functions then the creation function s
 
 ### Solution
 
-To fix this, a single instance of that resource should be created in the contract's `init()` method,
+To fix this, a single instance of that resource should be created in the contract's initializer,
 and then a new creation function can be potentially included within the admin resource, if necessary.
-The admin resource can then be `link()`ed to a private path in an admin's account storage during the contract's initializer.
 
 ### Example
 
@@ -217,8 +149,8 @@ access(all) contract Currency {
         // Create a single admin resource
         let firstAdmin <- create Admin()
 
-        // Store it in private account storage in `init` so only the admin can use it
-        self.account.save(<-firstAdmin, to: /storage/currencyAdmin)
+        // Store it in private account storage, so only the admin can use it
+        self.account.storage.save(<-firstAdmin, to: /storage/currencyAdmin)
     }
 }
 ```

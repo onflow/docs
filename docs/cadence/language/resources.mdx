@@ -599,7 +599,7 @@ Do not rely on or assume any particular behaviour in Cadence programs.
 
 ## Resource Owner
 
-Resources have the implicit field `let owner: PublicAccount?`.
+Resources have the implicit field `let owner: &Account?`.
 If the resource is currently [stored in an account](./accounts/storage.mdx),
 then the field contains the publicly accessible portion of the account.
 Otherwise the field is `nil`.
