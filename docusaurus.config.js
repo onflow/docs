@@ -259,7 +259,7 @@ const config = {
         },
         items: [
           {
-            to: 'building-on-flow',
+            to: 'build',
             position: 'left',
             label: 'Build',
           },
@@ -274,7 +274,7 @@ const config = {
             label: 'Cadence',
           },
           {
-            to: 'tools',
+            to: 'tools/flow-cli',
             position: 'left',
             label: 'Tools',
           },
@@ -328,7 +328,7 @@ const config = {
                 label: 'Cadence',
               },
               {
-                to: '/building-on-flow/mobile',
+                to: '/build/mobile',
                 label: 'Mobile',
               },
               {
