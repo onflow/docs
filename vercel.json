@@ -797,6 +797,11 @@
       "permanent": true
     },
     {
+      "source": "/tools/wallets",
+      "destination": "/overview/getting-started/wallets",
+      "permanent": true
+    },
+    {
       "source": "/next/tools/wallets",
       "destination": "/next/overview/getting-started/wallets",
       "permanent": true
@@ -906,6 +911,26 @@
     {
       "source": "/tools/intro",
       "destination": "/tools/flow-cli",
+      "permanent": true
+    },
+    {
+      "source": "/building-on-flow/run-and-secure/node-operation/:path",
+      "destination": "/node-ops/node-operation/:path*",
+      "permanent": true
+    },
+    {
+      "source": "/concepts/start-here",
+      "destination": "/overview/about/flow",
+      "permanent": true
+    },
+    {
+      "source": "/concepts/account-linking/child-accounts",
+      "destination": "/build/advanced-concepts/account-linking",
+      "permanent": true
+    },
+    {
+      "source": "/docs/node-roles",
+      "destination": "/node-ops/node-operation/node-roles",
       "permanent": true
     }
   ]
