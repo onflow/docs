@@ -1,7 +1,6 @@
 // Import the original mapper
 import MDXComponents from '@theme-original/MDXComponents';
 import Admonition from '@theme/Admonition';
-import IframeHelloWorld from './IframeHelloWorld';
 
 export default {
   // Re-use the default mapping
@@ -10,5 +9,4 @@ export default {
   // `Highlight` will receive all props that were passed to `<Highlight>` in MDX
   Callout: Admonition,
   Admonition,
-  IframeHelloWorld,
 };

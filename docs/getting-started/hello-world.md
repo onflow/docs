@@ -1,10 +1,13 @@
 ---
+title: Hello World Quickstart
+sidebar_label: Hello World Quickstart
 sidebar_position: 1
 ---
 
 # Hello, World
 
-Welcome to Flow blockchain, Let's call a contract on Testnet.
+Welcome to Flow blockchain, Let's call a contract on Testnet blockchain. Testnet is a public blockchain, you can call contracts without any cost. The Flow blockchain is decentralized data store that allows for custom contracts to be deployed and called. 
+
 ## Calling a contract
 On Testnet, `HelloWorld` Contract has a public variable named `greeting`, we'll use a Script to get it's value. For the purposes of this quick start, we are embedding Flow Runner website to run a script against Testnet. For reference [Flow Runner](https://runflow.pratikpatel.io/) website
 
@@ -18,7 +21,6 @@ pub fun main(): String {
 ```
 `Copy` the script above into Flow Runner and click "Execute Script" Then scroll down to see the output. Ignore the `red underline` of HelloWorld. Fixing this will be in future learnings. 
 
-<IframeHelloWorld />
 <iframe className="flow-runner-iframe" src="https://runflow.pratikpatel.io/" width="100%" height="400px"></iframe>
 
 ## Contract on Testnet
