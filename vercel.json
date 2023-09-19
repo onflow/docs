@@ -950,6 +950,11 @@
       "source": "/getting-started/fcl-quickstart",
       "destination": "/build/getting-started/fcl-quickstart",
       "permanent": true
+    },
+    {
+      "source": "/build/getting-started/local-development/app-architecture",
+      "destination": "/build/getting-started/app-architecture",
+      "permanent": true
     }
   ]
 }
