@@ -748,11 +748,6 @@
       "permanent": true
     },
     {
-      "source": "/tools/intro",
-      "destination": "tools",
-      "permanent": true
-    },
-    {
       "source": "/learn",
       "destination": "https://academy.ecdao.org/en",
       "permanent": true
@@ -783,17 +778,17 @@
     },
     {
       "source": "/next/concepts/start-here",
-      "destination": "/next/overview/about/flow",
+      "destination": "/next/build/flow",
       "permanent": true
     },
     {
       "source": "/next/cadence/intro",
-      "destination": "/next/overview/about/cadence",
+      "destination": "/next/build/cadence",
       "permanent": true
     },
     {
       "source": "/next/cadence/why",
-      "destination": "/next/overview/about/cadence",
+      "destination": "/next/build/cadence",
       "permanent": true
     },
     {
@@ -920,7 +915,7 @@
     },
     {
       "source": "/concepts/start-here",
-      "destination": "/overview/about/flow",
+      "destination": "/build/flow",
       "permanent": true
     },
     {

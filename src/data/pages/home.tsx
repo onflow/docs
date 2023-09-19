@@ -28,7 +28,7 @@ const contentNavigationListItems: ContentNavigationListProps = {
     {
       title: 'Intro to Flow',
       text: 'All the resources you need to learn and build',
-      link: '/overview/about/flow',
+      link: '/build/flow',
       icon: 'learn',
     },
     {

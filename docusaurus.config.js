@@ -259,7 +259,7 @@ const config = {
         },
         items: [
           {
-            to: 'build',
+            to: 'build/flow',
             position: 'left',
             label: 'Build',
           },
