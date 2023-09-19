@@ -40,7 +40,7 @@ The Flow blockchain implements core functionality using its own smart contract l
 
 ## FLOW Token
 
-The [FLOW](../references/03-flow-token.md) token is the native currency for the Flow network. Developers and users can use FLOW to transact on the network. Developers can integrate FLOW directly into their apps for peer-to-peer payments, service charges, or consumer rewards. FLOW can be held, transferred, or transacted peer-to-peer.
+The [FLOW](../references/core-contracts/03-flow-token.md) token is the native currency for the Flow network. Developers and users can use FLOW to transact on the network. Developers can integrate FLOW directly into their apps for peer-to-peer payments, service charges, or consumer rewards. FLOW can be held, transferred, or transacted peer-to-peer.
 
 
 ## Technical Background
