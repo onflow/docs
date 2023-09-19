@@ -920,7 +920,7 @@
     },
     {
       "source": "/concepts/start-here",
-      "destination": "/overview/about/flow",
+      "destination": "/build/flow",
       "permanent": true
     },
     {
