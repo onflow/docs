@@ -61,7 +61,7 @@ pub fun main(): String {
 
 ```
 
-In the above example, `0x9dca641e9a4b691b` is the address of the account on `testnet` that the `HelloWorld` contract has been deployed to. (Note: if you'll like to learn more about writing scripts, please [read here](../build/key-concepts/scripts.md)).
+In the above example, `0x9dca641e9a4b691b` is the address of the account on `testnet` that the `HelloWorld` contract has been deployed to. (Note: if you'll like to learn more about writing scripts, please [read here](../../../build/key-concepts/scripts.md)).
 
 To run the script, we'll run this from the CLI:
 
