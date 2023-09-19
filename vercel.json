@@ -49,7 +49,7 @@
     },
     {
       "source": "/flow/faq/:path*",
-      "destination": "/building-on-flow/run-and-secure/faq/:path*",
+      "destination": "/build/run-and-secure/faq/:path*",
       "permanent": true
     },
     {
@@ -134,7 +134,7 @@
     },
     {
       "source": "/learn/concepts/delegation",
-      "destination": "/building-on-flow/run-and-secure/delegation",
+      "destination": "/build/run-and-secure/delegation",
       "permanent": true
     },
     {
@@ -149,7 +149,7 @@
     },
     {
       "source": "/learn/concepts/slashing",
-      "destination": "/building-on-flow/run-and-secure/slashing",
+      "destination": "/build/run-and-secure/slashing",
       "permanent": true
     },
     {
@@ -159,7 +159,7 @@
     },
     {
       "source": "/learn/concepts/token-staking",
-      "destination": "/building-on-flow/run-and-secure/token-staking",
+      "destination": "/build/run-and-secure/token-staking",
       "permanent": true
     },
     {
@@ -184,57 +184,57 @@
     },
     {
       "source": "/nodes",
-      "destination": "/building-on-flow/run-and-secure",
+      "destination": "/build/run-and-secure",
       "permanent": true
     },
     {
       "source": "/access-api",
-      "destination": "/building-on-flow/run-and-secure/access-api",
+      "destination": "/build/run-and-secure/access-api",
       "permanent": true
     },
     {
       "source": "/nodes/access-api",
-      "destination": "/building-on-flow/run-and-secure/access-api",
+      "destination": "/build/run-and-secure/access-api",
       "permanent": true
     },
     {
       "source": "/nodes/access-api-rate-limits",
-      "destination": "/building-on-flow/run-and-secure/access-api-rate-limits",
+      "destination": "/build/run-and-secure/access-api-rate-limits",
       "permanent": true
     },
     {
       "source": "/nodes/archive-access-api",
-      "destination": "/building-on-flow/run-and-secure/archive-access-api",
+      "destination": "/build/run-and-secure/archive-access-api",
       "permanent": true
     },
     {
       "source": "/nodes/archive-api-rate-limits",
-      "destination": "/building-on-flow/run-and-secure/archive-api-rate-limits",
+      "destination": "/build/run-and-secure/archive-api-rate-limits",
       "permanent": true
     },
     {
       "source": "/nodes/flow-port",
-      "destination": "/building-on-flow/run-and-secure/flow-port",
+      "destination": "/build/run-and-secure/flow-port",
       "permanent": true
     },
     {
       "source": "/nodes/flow-port/staking-guide",
-      "destination": "/building-on-flow/run-and-secure/flow-port/staking-guide",
+      "destination": "/build/run-and-secure/flow-port/staking-guide",
       "permanent": true
     },
     {
       "source": "/nodes/node-operation/:path*",
-      "destination": "/building-on-flow/run-and-secure/node-operation/:path*",
+      "destination": "/build/run-and-secure/node-operation/:path*",
       "permanent": true
     },
     {
       "source": "/nodes/staking/:path*",
-      "destination": "/building-on-flow/run-and-secure/staking/:path*",
+      "destination": "/build/run-and-secure/staking/:path*",
       "permanent": true
     },
     {
       "source": "/concepts/nodes/staking/:path*",
-      "destination": "/building-on-flow/run-and-secure/staking/:path*",
+      "destination": "/build/run-and-secure/staking/:path*",
       "permanent": true
     },
     {
@@ -284,7 +284,7 @@
     },
     {
       "source": "/flow/faq",
-      "destination": "/building-on-flow/run-and-secure/faq/backers",
+      "destination": "/build/run-and-secure/faq/backers",
       "permanent": true
     },
     {
@@ -359,12 +359,12 @@
     },
     {
       "source": "/flow-token/backers",
-      "destination": "/building-on-flow/run-and-secure/faq/backers",
+      "destination": "/build/run-and-secure/faq/backers",
       "permanent": true
     },
     {
       "source": "/flow-token/staking/:path*",
-      "destination": "/building-on-flow/run-and-secure/staking/:path*",
+      "destination": "/build/run-and-secure/staking/:path*",
       "permanent": true
     },
     {
@@ -389,7 +389,7 @@
     },
     {
       "source": "/flow-port/:path*",
-      "destination": "/building-on-flow/run-and-secure/flow-port/:path*",
+      "destination": "/build/run-and-secure/flow-port/:path*",
       "permanent": true
     },
     {
@@ -504,12 +504,12 @@
     },
     {
       "source": "/docs/setting-up-a-node",
-      "destination": "/building-on-flow/run-and-secure/node-operation",
+      "destination": "/build/run-and-secure/node-operation",
       "permanent": true
     },
     {
       "source": "/staking/:path*",
-      "destination": "/building-on-flow/run-and-secure/staking/:path*",
+      "destination": "/build/run-and-secure/staking/:path*",
       "permanent": true
     },
     {
@@ -689,7 +689,7 @@
     },
     {
       "source": "/node-operation/:path*",
-      "destination": "/building-on-flow/run-and-secure/node-operation/:path*",
+      "destination": "/build/run-and-secure/node-operation/:path*",
       "permanent": true
     },
     {
@@ -763,12 +763,12 @@
     },
     {
       "source": "/concepts/staking/:path*",
-      "destination": "/building-on-flow/run-and-secure/staking/:path*",
+      "destination": "/build/run-and-secure/staking/:path*",
       "permanent": true
     },
     {
       "source": "/concepts/nodes/:path*",
-      "destination": "/building-on-flow/run-and-secure/nodes/:path*",
+      "destination": "/build/run-and-secure/nodes/:path*",
       "permanent": true
     },
     {
