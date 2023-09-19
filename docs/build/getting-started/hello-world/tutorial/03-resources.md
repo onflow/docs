@@ -568,6 +568,6 @@ Have a look at the [resource reference page](../../../../cadence/language/resour
 to find out more about what you can do with resources.
 
 You're on the right track to building more complex applications with Cadence,
-now is a great time to check out the [Cadence Best Practices document](../../../best-practices/design-patterns.md)
-and [Anti-patterns document](../../../best-practices/anti-patterns.md)
+now is a great time to check out the [Cadence Best Practices document](../../../../cadence/design-patterns.md)
+and [Anti-patterns document](../../../../cadence/anti-patterns.md)
 as your applications become more complex.

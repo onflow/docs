@@ -25,7 +25,7 @@ Always [borrow](./language/capabilities.md) with the specific type that is expec
 
 ## Auth Accounts
 
-Access to an `AuthAccount` gives full access to the account's storage, keys, and contracts. Therefore, [avoid using AuthAccount](./anti-patterns.mdx#avoid-using-authaccount-as-a-function-parameter) as a function parameter unless absolutely necessary.
+Access to an `AuthAccount` gives full access to the account's storage, keys, and contracts. Therefore, [avoid using AuthAccount](./anti-patterns.md#avoid-using-authaccount-as-a-function-parameter) as a function parameter unless absolutely necessary.
 
 It is preferable to use capabilities over direct `AuthAccount` storage when exposing account data. Using capabilities allows the revocation of access by unlinking and limits the access to a single value with a certain set of functionality – access to an `AuthAccount` gives full access to the whole storage, as well as key and contract management.
 
