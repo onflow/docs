@@ -777,6 +777,11 @@
       "permanent": true
     },
     {
+      "source": "/concepts/account-linking",
+      "destination": "/build/advanced-concepts/account-linking",
+      "permanent": true
+    },
+    {
       "source": "/next/concepts/start-here",
       "destination": "/next/overview/about/flow",
       "permanent": true
