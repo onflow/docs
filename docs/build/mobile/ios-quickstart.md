@@ -1,4 +1,8 @@
-# How to Build for Mobile
+---
+title: IOS Quickstart
+sidebar_label: IOS Quickstart
+sidebar_position: 2
+---
 
 # Overview
 
