@@ -62,7 +62,7 @@ export default function GettingStarted(): JSX.Element {
                   },
                   {
                     title: 'Javascript Quickstart',
-                    href: '/getting-started/fcl-quickstart/',
+                    href: '/build/getting-started/quickstarts/fcl-quickstart',
                     tags: ['tutorial', 'beginner'],
                   },
                   {

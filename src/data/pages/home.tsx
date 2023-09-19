@@ -5,7 +5,7 @@ const homepageStartProjectData: HomepageStartItemProps[] = [
   {
     title: 'Getting Started',
     text: 'Dive into key concepts and learn what makes Flow unique.',
-    link: '/getting-started/hello-world',
+    link: '/build/getting-started/quickstarts/hello-world',
     icon: 'learn',
   },
   {
@@ -15,7 +15,7 @@ const homepageStartProjectData: HomepageStartItemProps[] = [
     icon: 'quickstart',
   },
   {
-    title: 'Tools & Resources',
+    title: 'Resources',
     text: 'All the developer tools you need to build on Flow',
     link: '/tools/flow-cli',
     icon: 'documentation',
@@ -26,7 +26,7 @@ const contentNavigationListItems: ContentNavigationListProps = {
   header: 'Explore Key Concepts and Features',
   contentNavigationItems: [
     {
-      title: 'Intro to Flow',
+      title: 'Why Flow',
       text: 'All the resources you need to learn and build',
       link: '/build/flow',
       icon: 'learn',

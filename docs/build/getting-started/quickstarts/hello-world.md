@@ -26,13 +26,13 @@ Ignore the `red underline` of HelloWorld. Fixing this will be in future learning
 
 ## Contract on Testnet
 
-Here is the `HelloWorld` contract, Continue to other getting started examples to learn how to call `changeGreeting` to change the greeting value. 
+Here is the `HelloWorld` contract, Continue to other getting started examples to learn how to call `changeGreeting` to change the greeting value. Notice that only owner or owner contracts can change the greeting.
 ```
 pub contract HelloWorld {
 
   pub var greeting: String
 
-  pub fun changeGreeting(newGreeting: String) {
+  access(account) fun changeGreeting(newGreeting: String) {
     self.greeting = newGreeting
   }
 
@@ -40,6 +40,7 @@ pub contract HelloWorld {
     self.greeting = "Hello, World!"
   }
 }
+
 ```
 <Callout type="info">
 There are no costs associated with calling contracts. 

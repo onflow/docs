@@ -47,7 +47,7 @@ and any references to that attachments will have their authorization depend on t
 
 The body of the attachment follows the same declaration rules as composites.
 In particular, they may have both field and function members,
-and any field members must be initialized in an `init` function.
+and any field members must be initialized in an initializer.
 Only resource-kinded attachments may have resource members,
 and such members must be explicitly handled in the `destroy` function.
 The `self` keyword is available in attachment bodies, but unlike in a composite,
@@ -164,11 +164,11 @@ Attachments are not first-class values; they cannot exist independently of a bas
 nor can they be moved around on their own.
 This means that an `attach` expression is the only place in which an attachment constructor can be called.
 Tightly coupling the creation and attaching of attachment values helps to make reasoning about attachments simpler for the user.
-Also for this reason, resource attachments do not need an expliict `<-` move operator when they appear in an `attach` expression.
+Also for this reason, resource attachments do not need an explicit `<-` move operator when they appear in an `attach` expression.
 
 An attach expression consists of the `attach` keyword, a constructor call for the attachment value,
 the `to` keyword, and an expression that evaluates to the base value for that attachment.
-Any arguments required by the attachment's `init` function are provided in its constructor call.
+Any arguments required by the attachment's initializer are provided in its constructor call.
 
 ```cadence
 access(all) resource R {}
@@ -185,7 +185,7 @@ let r2 <- attach A(x: 3) to <-r
 
 The expression on the right-hand side of the `to` keyword must evaluate to a composite value whose type is a subtype of the attachment's base,
 and is evaluated before the call to the constructor on the left side of `to`.
-This means that the `base` value is available inside of the attachment's `init` function,
+This means that the `base` value is available inside of the attachment's initializer,
 but it is important to note that the attachment being created will not be accessible on the `base`
 (see the accessing attachments section below) until after the constructor finishes executing.
 
