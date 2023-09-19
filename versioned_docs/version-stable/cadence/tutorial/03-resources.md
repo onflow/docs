@@ -289,7 +289,7 @@ The `prepare` phase is the only place that has access to the signing accounts'
 You can see the documentation for all of these in the [account section of the language reference](../language/accounts#authaccount).
 In this tutorial, we'll be using `AuthAccount` methods to save and load from `/storage/`.
 The `prepare` phase can also create `/private/` and `/public/` links to the objects in `/storage/`,
-called [capabilities](../language/capabilities.md) (more on these later).
+called [capabilities](../language/capabilities) (more on these later).
 
 By not allowing the execute phase to access account storage,
 we can statically verify which assets and areas of the signers' storage a given transaction can modify.

@@ -83,8 +83,8 @@ We're going to take you through these steps to get comfortable with the fungible
 5. Transfer tokens from one account to another.
 6. Use a script to read the accounts' balances.
 
-**Before proceeding with this tutorial**, we recommend following the instructions in [Getting Started](./01-first-steps.mdx)
-and [Hello, World!](./02-hello-world.mdx) to learn the basics of the language and the playground.
+**Before proceeding with this tutorial**, we recommend following the instructions in [Getting Started](./01-first-steps.md)
+and [Hello, World!](./02-hello-world.md) to learn the basics of the language and the playground.
 
 # Fungible Tokens on the Flow Emulator
 
@@ -604,7 +604,7 @@ fields private unless it is explicitly needed to be public.
   This is one of THE MOST COMMON security mistakes that Cadence developers make,
   so it is vitally important to be aware of this.
 
-  See the [Cadence Best Practices document](../anti-patterns#array-or-dictionary-fields-should-be-private) for more details.
+  See the [Cadence Best Practices document](../anti-patterns.md#array-or-dictionary-fields-should-be-private) for more details.
 </Callout>
 
 ## Adding Interfaces to Our Fungible Token
@@ -1126,5 +1126,5 @@ From here, you could try to extend the functionality of fungible tokens by makin
 ## Create a Flow Marketplace
 
 ---
-Now that you have an understanding of how fungible tokens work on Flow and have a working NFT, you can learn how to create 
+Now that you have an understanding of how fungible tokens work on Flow and have a working NFT, you can learn how to create
 a marketplace that uses both fungible tokens and NFTs. Move on to the next tutorial to learn about Marketplaces in Cadence!

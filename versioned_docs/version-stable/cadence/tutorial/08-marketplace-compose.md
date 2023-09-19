@@ -20,7 +20,7 @@ This contract is already deployed to testnet and mainnet and can be used by anyo
   </a>
   <br/>
   The tutorial will be asking you to take various actions to interact with this code.
-  [The marketplace setup guide](./07-marketplace-setup.mdx) shows you how to get the playground set up to do this tutorial.
+  [The marketplace setup guide](./07-marketplace-setup.md) shows you how to get the playground set up to do this tutorial.
 </Callout>
 
 <Callout type="info">
@@ -41,7 +41,7 @@ Flow is designed to enable composability because of the way that interfaces, res
 
 - [Interfaces](../language/interfaces) allow projects to support any generic type as long as it supports a standard set of functionality specified by an interface.
 - [Resources](../language/resources) can be passed around and owned by accounts, contracts or even other resources, unlocking different use cases depending on where the resource is stored.
-- [Capabilities](../language/capabilities.md) allow exposing user-defined sets of functionality through special objects that enforce strict security with Cadence's type system.
+- [Capabilities](../language/capabilities) allow exposing user-defined sets of functionality through special objects that enforce strict security with Cadence's type system.
 
 The combination of these allows developers to do more with less, re-using known safe code and design patterns
 to create new, powerful, and unique interactions!
@@ -64,8 +64,8 @@ To accomplish this, we're going to take you through these steps to create a comp
 4. Use a different account to purchase the NFT from the sale.
 5. Run a script to verify that the NFT was purchased.
 
-**Before proceeding with this tutorial**, you need to complete the [Fungible Tokens](./06-fungible-tokens.mdx)
-and [Non-Fungible Token](./05-non-fungible-tokens-1.mdx) tutorials
+**Before proceeding with this tutorial**, you need to complete the [Fungible Tokens](./06-fungible-tokens.md)
+and [Non-Fungible Token](./05-non-fungible-tokens-1.md) tutorials
 to understand the building blocks of this smart contract.
 
 ## Marketplace Design
@@ -86,7 +86,7 @@ This way, the owner of the token keeps custody of their token while it is on sal
 <Callout type="info">
 
 Before we start, we need to confirm the state of your accounts. <br/>
-If you haven't already, please perform the steps in the [marketplace setup guide](./07-marketplace-setup.mdx)
+If you haven't already, please perform the steps in the [marketplace setup guide](./07-marketplace-setup.md)
 to ensure that the Fungible Token and Non-Fungible Token contracts are deployed to account 1 and 2 and own some tokens.<br/>
 Your accounts should look like this:
 
@@ -167,8 +167,8 @@ pub fun main() {
 
 You should see something similar to this output if your accounts are set up correctly.
 They are in the same state that they would have been in if you followed
-the [Fungible Tokens](./06-fungible-tokens.mdx)
-and [Non-Fungible Tokens](./05-non-fungible-tokens-1.mdx) tutorials in succession:
+the [Fungible Tokens](./06-fungible-tokens.md)
+and [Non-Fungible Tokens](./05-non-fungible-tokens-1.md) tutorials in succession:
 
 ```
 "Account 1 Balance"
@@ -357,7 +357,7 @@ pub contract ExampleMarketplace {
 ```
 
 This marketplace contract has resources that function similarly to the NFT `Collection`
-that was explained in [Non-Fungible Tokens](./05-non-fungible-tokens-1.mdx), with a few differences and additions:
+that was explained in [Non-Fungible Tokens](./05-non-fungible-tokens-1.md), with a few differences and additions:
 
 - This marketplace contract has methods to add and remove NFTs, but instead of storing the NFT resource object in the sale collection,
   the user provides a capability to their main collection that allows the listed NFT to be withdrawn and transferred when it is purchased.
@@ -415,14 +415,14 @@ External applications can monitor the blockchain to take action when certain eve
 
 ### Resource-Owned Capabilities
 
-We have covered capabilities in previous [tutorials](./04-capabilities.mdx),
+We have covered capabilities in previous [tutorials](./04-capabilities.md),
 but only the basics. Capabilities can be used for so much more!
 
-As you hopefully understand, [capabilites](../../cadence/language/capabilities.md)
+As you hopefully understand, [capabilites](../language/capabilities.md)
 are links to private objects in account storage that specify and expose a subset in the public or private namespace of public or private paths
 where the Capability is linked.
 
-To create a capability, a user typically uses [the `AuthAccount.link`](../language/accounts/index.mdx#authaccount)
+To create a capability, a user typically uses [the `AuthAccount.link`](../language/accounts.mdx#authaccount)
 method to create a link to a resource in their private storage, specifying a type to link the capability as:
 
 ```cadence
@@ -434,7 +434,7 @@ acct.link<&ExampleToken.Vault{ExampleToken.Receiver, ExampleToken.Balance}>
     (/public/CadenceFungibleTokenTutorialReceiver, target: /storage/CadenceFungibleTokenTutorialVault)
 ```
 
-Then, users can get that capability if it was created [in a public path](../language/accounts/index.mdx#paths),
+Then, users can get that capability if it was created [in a public path](../language/accounts.mdx#paths),
 borrow it, and access the functionality that the owner specified.
 
 ```cadence
@@ -499,7 +499,7 @@ pub resource SaleCollection: SalePublic {
 ```
 
 This is a logical way to do it, and illustrates another important concept in Cadence, that resources can own other resources!
-Check out the [Kitty Hats tutorial](./10-resources-compose.mdx) for a little more exploration of this concept.
+Check out the [Kitty Hats tutorial](./10-resources-compose.md) for a little more exploration of this concept.
 
 In this case however, nesting resources doesn't make sense. If a user decides to store their for-sale NFTs in a separate place from their main collection,
 then those NFTs are not available to be shown to any app or smart contract that queries the main collection,
@@ -860,4 +860,4 @@ There are a few good examples of generic marketplaces on Flow right now.
 ---
 
 Now that you have an understanding of how composable smart contracts and the marketplace work on Flow, you're ready to play with composable resources!
-Check out the [Kitty Hats tutorial!](./10-resources-compose.mdx)
+Check out the [Kitty Hats tutorial!](./10-resources-compose.md)

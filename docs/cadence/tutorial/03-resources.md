@@ -42,10 +42,10 @@ socialImageDescription: Resource smart contract image.
 This tutorial builds on the previous `Hello World` tutorial.
 Before beginning this tutorial, you should understand :
 
-- [Accounts](../../../../cadence/language/accounts)
-- [Transactions](../../../../cadence/language/transactions)
+- [Accounts](../language/accounts)
+- [Transactions](../language/transactions)
 - Signers
-- [Field types](../../../../cadence/language/composite-types)
+- [Field types](../language/composite-types)
 
 This tutorial will build on your understanding of accounts and how to interact with them by introducing resources.
 Resources are one of Cadence's defining features.
@@ -84,7 +84,7 @@ To interact with resources, you'll learn a few important concepts:
 
 - Using the create keyword
 - The move operator `<-`
-- The [Account Storage API](../../../../cadence/language/accounts/storage.mdx)
+- The [Account Storage API](../language/accounts/storage.mdx)
 
 Let's start by looking at how to create a resource with the `create` keyword and the move operator `<-`.
 
@@ -185,8 +185,8 @@ so if the object has any fields,
 this function has to be used to initialize them.
 
 Contracts also have read and write access to the storage of the account that they are deployed to by using the built-in
-[`self.account`](../../../../cadence/language/contracts) object.
-This is an [`AuthAccount` object](../../../../cadence/language/accounts)
+[`self.account`](../language/contracts) object.
+This is an [`AuthAccount` object](../language/accounts)
 that gives them access to many different functions to interact with the private storage of the account.
 
 This contract's `init` function is simple, it logs the phrase `"Hello Asset"` to the console.
@@ -208,7 +208,7 @@ The `@` symbol specifies that it is a resource of the type `HelloAsset`, which w
 This function uses the move operator to create a resource of type `HelloAsset` and return it.
 To create a new resource object, we use the `create` keyword
 
-Here we use the `<-` symbol. [This is the move operator](../../../../cadence/language/resources#the-move-operator--).
+Here we use the `<-` symbol. [This is the move operator](../language/resources#the-move-operator--).
 The move operator `<-` replaces the assignment operator `=` in assignments that involve resources.
 To make the assignment of resources explicit, the move operator `<-` must be used when:
 
@@ -284,12 +284,12 @@ Here's what this transaction does:
 
 This is our first transaction using the `prepare` phase!
 The `prepare` phase is the only place that has access to the signing accounts'
-[private `AuthAccount` object](../../../../cadence/language/accounts).
+[private `AuthAccount` object](../language/accounts).
 `AuthAccount` objects have many different methods that are used to interact with account storage.
-You can see the documentation for all of these in the [account section of the language reference](../../../../cadence/language/accounts).
+You can see the documentation for all of these in the [account section of the language reference](../language/accounts).
 In this tutorial, we'll be using `AuthAccount` methods to save and load from `/storage/`.
 The `prepare` phase can also create `/private/` and `/public/` links to the objects in `/storage/`,
-called [capabilities](../../../../cadence/language/capabilities.md) (more on these later).
+called [capabilities](../language/capabilities.md) (more on these later).
 
 By not allowing the execute phase to access account storage,
 we can statically verify which assets and areas of the signers' storage a given transaction can modify.
@@ -306,9 +306,9 @@ let newHello <- HelloWorld.createHelloAsset()
 ```
 
 Next, we save the resource to the account storage.
-We use the [account storage API](../../../../cadence/language/accounts/storage.mdx) to interact with the account storage in Flow.
+We use the [account storage API](../language/accounts/storage.mdx) to interact with the account storage in Flow.
 To save the resource, we'll be using the
-[`save()`](../../../../cadence/language/accounts/storage.mdx)
+[`save()`](../language/accounts/storage.mdx)
 method from the account storage API to store the resource in the account at the path `/storage/HelloAssetTutorial`.
 
 ```cadence
@@ -455,22 +455,22 @@ Here's what this transaction does:
 
 1. Import the `HelloWorld` definitions from account `0x01`
 2. Moves the `HelloAsset` object from storage to `helloResource` with the move operator
-  and the `load` function from the [account storage API](../../../../cadence/language/accounts/storage.mdx)
+  and the `load` function from the [account storage API](../language/accounts/storage.mdx)
 3. Calls the `hello()` function of the `HelloAsset` resource stored in `helloResource` and logs the result
 4. Saves the resource in the account that we originally moved it from at the path `/storage/HelloAssetTutorial`
 
 We're going to be using the `prepare` phase again to load the resource because it
-has access to the signing accounts' [private `AuthAccount` object](../../../../cadence/language/accounts).
+has access to the signing accounts' [private `AuthAccount` object](../language/accounts).
 
 Let's go over the transaction in more detail.
-To remove an object from storage, we use the `load` method from the [account storage API](../../../../cadence/language/accounts/storage.mdx)
+To remove an object from storage, we use the `load` method from the [account storage API](../language/accounts/storage.mdx)
 
 ```cadence
 let helloResource <- acct.load<@HelloWorld.HelloAsset>(from: /storage/HelloAssetTutorial)
 ```
 
 If no object of the specified type is stored under the given path, the function returns nothing, or `nil`.
-(This is an [Optional](../../../../cadence/language/values-and-types#optionals),
+(This is an [Optional](../language/values-and-types#optionals),
 a special type of data that we will cover later)
 
 If the object at the given path is not of the specified type, Cadence will throw an error and the transaction will fail.
@@ -491,7 +491,7 @@ Next, we call the `hello()` function and log the output.
 log(helloResource?.hello())
 ```
 
-We use `?` because the values in the storage are returned as [optionals](../../../../cadence/language/values-and-types#optionals).
+We use `?` because the values in the storage are returned as [optionals](../language/values-and-types#optionals).
 Optionals are values that are able to represent either the presence or the absence of a value.
 Optionals have two cases: either there is a value of the specified type, or there is nothing (`nil`).
 An optional type is declared using the `?` suffix.
@@ -524,7 +524,7 @@ and aborts the entire transaction if the object is `nil`.
 It is a more risky way of dealing with optionals, but if your program is ever in a state where a value being `nil`
 would defeat the purpose of the whole transaction, then the force-unwrap operator might be a good choice to deal with that.
 
-Refer to [Optionals In Cadence](../../../../cadence/language/values-and-types#optionals) to learn more about optionals and how they are used.
+Refer to [Optionals In Cadence](../language/values-and-types#optionals) to learn more about optionals and how they are used.
 
 <Callout type="info">
 
@@ -562,12 +562,12 @@ Now that you have completed the tutorial, you have the basic knowledge to write 
 - Use the `prepare` phase of a transaction to load resources from account storage
 
 Feel free to modify the smart contract to create different resources,
-experiment with the available [account storage API](../../../../cadence/language/accounts/storage.mdx),
+experiment with the available [account storage API](../language/accounts/storage.mdx),
 and write new transactions and scripts that execute different functions from your smart contract.
-Have a look at the [resource reference page](../../../../cadence/language/resources)
+Have a look at the [resource reference page](../language/resources)
 to find out more about what you can do with resources.
 
 You're on the right track to building more complex applications with Cadence,
-now is a great time to check out the [Cadence Best Practices document](../../../../cadence/design-patterns.md)
-and [Anti-patterns document](../../../../cadence/anti-patterns.md)
+now is a great time to check out the [Cadence Best Practices document](../design-patterns.md)
+and [Anti-patterns document](../anti-patterns.md)
 as your applications become more complex.
