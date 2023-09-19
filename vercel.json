@@ -778,17 +778,17 @@
     },
     {
       "source": "/next/concepts/start-here",
-      "destination": "/next/overview/about/flow",
+      "destination": "/next/build/flow",
       "permanent": true
     },
     {
       "source": "/next/cadence/intro",
-      "destination": "/next/overview/about/cadence",
+      "destination": "/next/build/cadence",
       "permanent": true
     },
     {
       "source": "/next/cadence/why",
-      "destination": "/next/overview/about/cadence",
+      "destination": "/next/build/cadence",
       "permanent": true
     },
     {
