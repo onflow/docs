@@ -883,6 +883,10 @@
     {
       "source": "/tools/fcl-dev-wallet/:path*",
       "destination": "/tools/flow-dev-wallet/:path*"
+    },
+    {
+      "source": "/tools/nft-catalog/:path*",
+      "destination": "/tools/nft-catalog"
     }
   ]
 }
