@@ -40,7 +40,7 @@ socialImageDescription: Capability smart contract image.
 This tutorial builds on the [previous `Resource` tutorial](./03-resources.md).
 Before beginning this tutorial, you should have an idea of how accounts,transactions,resources, and signers work with basic field types.
 This tutorial will build on your understanding of accounts and resources.
-You'll learn how to interact with resources using [capabilities](../../../../cadence/language/capabilities.md)
+You'll learn how to interact with resources using [capabilities](../language/capabilities.md)
 In Cadence, resources are a composite type like a struct or a class, but with some special rules:
 - Each instance of a resource can only exist in exactly one location and cannot be copied.
 - Resources must be explicitly moved from one location to another when accessed.
@@ -136,7 +136,7 @@ stored in their accounts. (Explained more below)
 
 In this transaction, you create a new capability,
 then use the `link` function to create a public link to your `HelloAsset` resource object.
-Next you use that link to borrow a [reference](../../../../cadence/language/references)
+Next you use that link to borrow a [reference](../language/references)
 to the underlying object and call the `hello()` function.
 A detailed explanation of what is happening in this transaction
 is below the transaction code so, if you feel lost, keep reading!
@@ -210,12 +210,12 @@ You might be confused that we were able to call a method on the `HelloAsset` obj
 without actually being directly in control of it!
 It is also stored in the `/storage/` domain of the account, which should be private.
 
-This is because we created a [**capability**](../../../../cadence/language/capabilities.md) for the `HelloAsset` object.
+This is because we created a [**capability**](../language/capabilities.md) for the `HelloAsset` object.
 Capabilities are kind of like pointers in other languages, but which much more fine-grained control.
 
 ### Capability Based Access Control
 
-[Capabilities](../../../../cadence/language/capabilities.md) allow the owners of objects
+[Capabilities](../language/capabilities.md) allow the owners of objects
 to specify what functionality of their private objects is available to others.
 Think of it kind of like an account's API, if you're familiar with the concept.
 The account owner has private objects stored in their storage, like their collectibles or their money,
@@ -279,7 +279,7 @@ let helloReference = capability.borrow()
 
 This method creates the reference as the type we specified in `<>` in the `link` function.
 While borrowing the reference, we use
-[optional chaining](../../../../cadence/language/composite-types#accessing-fields-and-functions-of-composite-types-using-optional-chaining)
+[optional chaining](../language/composite-types#accessing-fields-and-functions-of-composite-types-using-optional-chaining)
 because the borrowing of the reference could fail.
 The reference could be `nil` if the targeted storage slot is empty, is already borrowed,
 or if the requested type exceeds what is allowed by the capability.
@@ -293,7 +293,7 @@ Only one reference to an object can exist at a time, so this type of vulnerabili
 Additionally, the owner of an object can effectively revoke capabilities they have created by moving the underlying object or destroying the link with the `unlink` method.
 If the referenced object is moved or the link is destroyed, capabilities that have been created from that link are invalidated.
 
-You can find more [detailed documentation about capabilities in the language reference.](../../../../cadence/language/capabilities.md)
+You can find more [detailed documentation about capabilities in the language reference.](../language/capabilities.md)
 
 Now, anyone can call the `hello()` method on your `HelloAsset` object by borrowing a reference with your public capability in `/public/Hello`!
 (Covered in the next section)
@@ -423,7 +423,7 @@ A script can get the AuthAccount for an account address using the built-in getAu
 fun getAuthAccount(_ address: Address): AuthAccount
 ```
 
-See the [language reference](../../../../cadence/language/accounts) for more information about accounts.
+See the [language reference](../language/accounts) for more information about accounts.
 
 ## Reviewing Capabilities
 
@@ -443,11 +443,11 @@ Now that you have completed the tutorial, you have the basic knowledge to write 
 - Interact with resources using both signed transactions and scripts
 
 Feel free to modify the smart contract to create different resources,
-experiment with the available [account storage API](../../../../cadence/language/accounts/storage.mdx),
+experiment with the available [account storage API](../language/accounts/storage.mdx),
 and write new transactions and scripts that execute different functions from your smart contract.
-Have a look at the [capability-based access control page](../../../../cadence/language/capabilities.md)
+Have a look at the [capability-based access control page](../language/capabilities.md)
 to find out more about what you can do with capabilities.
 
 You're on the right track to building more complex applications with Cadence,
-now is a great time to check out the [Cadence Best Practices document](../../../../cadence/design-patterns.md)
-and [Anti-patterns document](../../../../cadence/anti-patterns.md) as your applications become more complex.
+now is a great time to check out the [Cadence Best Practices document](../design-patterns.md)
+and [Anti-patterns document](../anti-patterns.md) as your applications become more complex.

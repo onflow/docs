@@ -361,7 +361,7 @@ Now, back to the tutorial!
 In the NFT Collection, all the functions and fields are public,
 but we do not want everyone in the network to be able to call our `withdraw` function.
 This is where Cadence's second layer of access control comes in.
-Cadence utilizes [capability security](../language/capabilities.md),
+Cadence utilizes [capability security](../language/capability-based-access-control),
 which means that for any given object, a user is allowed to access a field or method of that object if they either:
 
 - Are the owner of the object
@@ -468,7 +468,7 @@ For the purpose of learning, we are simply implementing minting as a public func
 Normally, most would implement restricted minting by having an NFT Minter resource.
 This would restrict minting, because the owner of this resource is the only one that can mint tokens.
 
-You can see an example of this in the [Marketplace tutorial](./08-marketplace-compose.md).
+You can see an example of this in the [Marketplace tutorial](./08-marketplace-compose.mdx).
 
 <Callout type="info">
 

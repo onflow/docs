@@ -77,7 +77,7 @@ account.save(<-myNFTs, to: /storage/basicNFTDictionary)
 
 ## Dictionaries
 
-This example uses a [**Dictionary**: a mutable, unordered collection of key-value associations](../../../../cadence/language/values-and-types#dictionaries).
+This example uses a [**Dictionary**: a mutable, unordered collection of key-value associations](../language/values-and-types#dictionaries).
 
 ```cadence
 // Keys are `Int`
@@ -323,7 +323,7 @@ access(all) fun getIDs(): [UInt64] {
 ```
 
 This can be used to iterate through the dictionary or just to see a list of what is stored.
-As you can see, [a variable length array type](../../../../cadence/language/values-and-types#arrays)
+As you can see, [a variable length array type](../language/values-and-types#arrays)
 is declared by enclosing the member type within square brackets (`[UInt64]`).
 
 ## Resources Owning Resources
@@ -361,7 +361,7 @@ Now, back to the tutorial!
 In the NFT Collection, all the functions and fields are public,
 but we do not want everyone in the network to be able to call our `withdraw` function.
 This is where Cadence's second layer of access control comes in.
-Cadence utilizes [capability security](../../../../cadence/language/capabilities.md),
+Cadence utilizes [capability security](../language/capabilities.md),
 which means that for any given object, a user is allowed to access a field or method of that object if they either:
 
 - Are the owner of the object
