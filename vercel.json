@@ -867,11 +867,6 @@
       "permanent": true
     },
     {
-      "source": "/next/cadence/tutorial/:path*",
-      "destination": "/next/build/getting-started/hello-world/tutorial/:path*",
-      "permanent": true
-    },
-    {
       "source": "/next/building-on-flow/run-and-secure/staking/:path*",
       "destination": "/next/architecture/staking/:path*",
       "permanent": true

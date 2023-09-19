@@ -65,7 +65,7 @@ To accomplish this, we're going to take you through these steps to create a comp
 5. Run a script to verify that the NFT was purchased.
 
 **Before proceeding with this tutorial**, you need to complete the [Fungible Tokens](./06-fungible-tokens.mdx)
-and [Non-Fungible Token](./05-non-fungible-tokens-1.mdx) tutorials
+and [Non-Fungible Token](./05-non-fungible-tokens-1.md) tutorials
 to understand the building blocks of this smart contract.
 
 ## Marketplace Design
@@ -168,7 +168,7 @@ pub fun main() {
 You should see something similar to this output if your accounts are set up correctly.
 They are in the same state that they would have been in if you followed
 the [Fungible Tokens](./06-fungible-tokens.mdx)
-and [Non-Fungible Tokens](./05-non-fungible-tokens-1.mdx) tutorials in succession:
+and [Non-Fungible Tokens](./05-non-fungible-tokens-1.md) tutorials in succession:
 
 ```
 "Account 1 Balance"
@@ -357,7 +357,7 @@ pub contract ExampleMarketplace {
 ```
 
 This marketplace contract has resources that function similarly to the NFT `Collection`
-that was explained in [Non-Fungible Tokens](./05-non-fungible-tokens-1.mdx), with a few differences and additions:
+that was explained in [Non-Fungible Tokens](./05-non-fungible-tokens-1.md), with a few differences and additions:
 
 - This marketplace contract has methods to add and remove NFTs, but instead of storing the NFT resource object in the sale collection,
   the user provides a capability to their main collection that allows the listed NFT to be withdrawn and transferred when it is purchased.

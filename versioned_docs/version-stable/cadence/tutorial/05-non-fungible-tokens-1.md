@@ -92,7 +92,7 @@ To get you comfortable using NFTs, this tutorial will teach you to:
 </Callout>
 
 **Before proceeding with this tutorial**, we highly recommend
-following the instructions in [Getting Started](./01-first-steps.mdx),
+following the instructions in [Getting Started](./01-first-steps.md),
 [Hello, World!](./02-hello-world.mdx),
 [Resources](./03-resources.mdx),
 and [Capabilities](./04-capabilities.mdx)

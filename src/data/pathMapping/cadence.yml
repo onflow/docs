@@ -40,11 +40,11 @@
 ./docs/security-best-practices.mdx: docs/cadence/security-best-practices.mdx
 ./docs/solidity-to-cadence.mdx: docs/cadence/solidity-to-cadence.mdx
 ./docs/testing-framework.mdx: docs/cadence/testing-framework.mdx
-./docs/tutorial/01-first-steps.mdx: docs/cadence/tutorial/01-first-steps.mdx
+./docs/tutorial/01-first-steps.md: docs/cadence/tutorial/01-first-steps.md
 ./docs/tutorial/02-hello-world.mdx: docs/cadence/tutorial/02-hello-world.mdx
 ./docs/tutorial/03-resources.mdx: docs/cadence/tutorial/03-resources.mdx
 ./docs/tutorial/04-capabilities.mdx: docs/cadence/tutorial/04-capabilities.mdx
-./docs/tutorial/05-non-fungible-tokens-1.mdx: docs/cadence/tutorial/05-non-fungible-tokens-1.mdx
+./docs/tutorial/05-non-fungible-tokens-1.md: docs/cadence/tutorial/05-non-fungible-tokens-1.md
 ./docs/tutorial/05-non-fungible-tokens-2.mdx: docs/cadence/tutorial/05-non-fungible-tokens-2.mdx
 ./docs/tutorial/06-fungible-tokens.mdx: docs/cadence/tutorial/06-fungible-tokens.mdx
 ./docs/tutorial/07-marketplace-setup.mdx: docs/cadence/tutorial/07-marketplace-setup.mdx

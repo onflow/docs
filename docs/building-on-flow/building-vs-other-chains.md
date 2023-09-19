@@ -52,16 +52,16 @@ Check out the [Cadence website](https://cadencelang.dev/) to learn more about Ca
 
 If you’re already familiar with smart contracts, here are some resources that can help you get started with Cadence:
 
-- [The Cadence tutorial](../build/getting-started/hello-world/tutorial/01-first-steps.md)
+- [The Cadence tutorial](../cadence/tutorial/01-first-steps.md)
 - [Guide for Solidity Developers](../cadence/solidity-to-cadence.md)
 - ERC-20 equivalent on Flow is the Flow Fungible Token Standard
     - [Repository](https://github.com/onflow/flow-ft)
-    - [Tutorial](../build/getting-started/hello-world/tutorial/06-fungible-tokens.md)
+    - [Tutorial](../cadence/tutorial/06-fungible-tokens.md)
 - ERC-721 equivalent on Flow is the Flow Non-Fungible Token Standard
     - [Repository](https://github.com/onflow/flow-nft)
-    - [Tutorial](../build/getting-started/hello-world/tutorial/05-non-fungible-tokens-1.md)
+    - [Tutorial](../cadence/tutorial/05-non-fungible-tokens-1.md)
 - Asset marketplaces with Cadence
-    - [Tutorial](../build/getting-started/hello-world/tutorial/07-marketplace-setup.md)
+    - [Tutorial](../cadence/tutorial/07-marketplace-setup.md)
     - [NFT Storefront](https://github.com/onflow/nft-storefront/) is an example marketplace standard
 
 ### Transactions and Scripts
