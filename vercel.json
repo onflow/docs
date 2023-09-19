@@ -901,8 +901,9 @@
     {
       "source": "/build/mobile/monster-maker",
       "destination": "/build/mobile/ios-quickstart"
-    },    {
-      "source": "/build/mobile/",
+    },
+    {
+      "source": "/build/mobile",
       "destination": "/build/mobile/overview"
     }
   ]
