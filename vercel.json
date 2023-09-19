@@ -748,11 +748,6 @@
       "permanent": true
     },
     {
-      "source": "/tools/intro",
-      "destination": "tools",
-      "permanent": true
-    },
-    {
       "source": "/learn",
       "destination": "https://academy.ecdao.org/en",
       "permanent": true
