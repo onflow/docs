@@ -430,11 +430,14 @@
     {
       "source": "/tutorials/testnet-deployment",
       "destination": "/guides/smart-contracts/deploying",
+<<<<<<< HEAD
       "permanent": true
     },
     {
       "source": "/guides",
       "destination": "/guides/flow-app-quickstart",
+=======
+>>>>>>> 99bd9fab3 (resolve merge conflict)
       "permanent": true
     },
     {
