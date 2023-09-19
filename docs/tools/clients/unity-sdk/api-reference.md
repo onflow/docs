@@ -1,4 +1,8 @@
-# API Reference
+---
+title: API Reference
+sidebar_position: 1
+sidebar_label: API Reference
+---
 
 Click on the following link to view the API Reference for the Flow SDK for Unity. 
 

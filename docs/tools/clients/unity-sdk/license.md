@@ -1,3 +1,8 @@
+---
+title: License
+sidebar_position: 4
+---
+
 MIT License
 
 Copyright 2023 Dapper Labs
