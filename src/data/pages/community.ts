@@ -6,10 +6,8 @@ import {
   jsTestingLibTool,
   vsCodeTool,
 } from '../../data/tools';
-import { type ContentNavigationListProps } from '../../ui/design-system/src/lib/Components/ContentNavigationList';
 import { type ProjectCardProps } from '../../ui/design-system/src/lib/Components/ProjectCard';
 import { allEvents } from '../events';
-import { metadata } from '../metadata';
 
 export const tools = [
   flowPortTool,
@@ -19,30 +17,6 @@ export const tools = [
   fclSDK,
   jsTestingLibTool,
 ];
-
-export const contentNavigationListItems: ContentNavigationListProps = {
-  header: 'Explore More Content',
-  contentNavigationItems: [
-    {
-      title: 'Learn',
-      text: 'Learn more about the Flow blockchain, Cadence, and NFTs',
-      link: '/learn',
-      icon: 'learn',
-    },
-    {
-      title: 'Tools',
-      text: 'Tools that can help your development experience on Flow',
-      link: '/tools',
-      icon: 'tools',
-    },
-    {
-      title: 'Concepts',
-      text: 'Important concepts about Cadence and FCL',
-      link: '/concepts/intro',
-      icon: 'concepts',
-    },
-  ],
-};
 
 export const upcomingEvents = allEvents;
 
@@ -201,26 +175,3 @@ export const projects: ProjectCardProps[] = [
     githubLink: 'https://twitter.com/flowty_io',
   },
 ];
-
-export const secondaryNavSections = [
-  { title: 'FLIPs', elementId: 'flips' },
-  { title: 'Featured Initiatives', elementId: 'featured-initiatives' },
-  {
-    title: 'Tools',
-    elementId: 'tools',
-  },
-  { title: 'From the Forum', elementId: 'from-the-forum' },
-  {
-    title: 'Explore More Content',
-    elementId: 'explore-more-content',
-  },
-];
-
-if (upcomingEvents.events.length > 0) {
-  secondaryNavSections.unshift({
-    title: 'Upcoming Events',
-    elementId: 'upcoming-events',
-  });
-}
-
-export const editPageUrl = `${metadata.githubRepoBaseUrl}/blob/main/app/data/pages/community.ts`;

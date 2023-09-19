@@ -259,12 +259,12 @@ const config = {
         },
         items: [
           {
-            to: 'concepts/intro',
+            to: 'build/flow',
             position: 'left',
-            label: 'Concepts',
+            label: 'Build',
           },
           {
-            to: 'next/guides',
+            to: 'guides/flow-app-quickstart',
             position: 'left',
             label: 'Guides',
           },
@@ -274,17 +274,17 @@ const config = {
             label: 'Cadence',
           },
           {
-            to: 'next/tools',
+            to: 'tools/flow-cli',
             position: 'left',
             label: 'Tools',
           },
           {
-            to: 'next/references',
+            to: 'references',
             position: 'left',
             label: 'References',
           },
           {
-            to: 'next/community-resources',
+            to: 'community-resources',
             position: 'left',
             label: 'Resources',
           },
@@ -317,38 +317,34 @@ const config = {
             items: [
               {
                 label: 'Getting Started',
-                to: '/getting-started',
+                to: '/build/getting-started/quickstarts/hello-world',
               },
               {
                 label: "SDK's & Tools",
-                to: '/next/tools',
-              },
-              {
-                to: '/learn',
-                label: 'Learning Resources',
+                to: '/tools',
               },
               {
                 to: '/cadence/intro',
                 label: 'Cadence',
               },
               {
-                to: '/concepts/mobile',
+                to: '/build/mobile/overview',
                 label: 'Mobile',
               },
               {
-                to: '/next/tools/clients/fcl-js/',
+                to: '/tools/clients/fcl-js/',
                 label: 'FCL',
               },
               {
-                to: '/next/tools/toolchains/flow-js-testing/',
+                to: '/tools/flow-js-testing/',
                 label: 'JS Testing Library',
               },
               {
-                to: '/next/tools/toolchains/flow-cli/',
+                to: '/tools/flow-cli/',
                 label: 'CLI',
               },
               {
-                to: '/next/tools/toolchains/emulator/',
+                to: '/tools/emulator/',
                 label: 'Emulator',
               },
               {
@@ -356,7 +352,7 @@ const config = {
                 label: 'Dev Wallet',
               },
               {
-                to: '/next/tools/toolchains/vscode-extension/',
+                to: '/tools/vscode-extension/',
                 label: 'VS Code Extension',
               },
             ],
@@ -365,7 +361,7 @@ const config = {
             title: 'Community',
             items: [
               {
-                to: '/community',
+                to: '/community-resources',
                 label: 'Ecosystem',
               },
               {
@@ -406,10 +402,6 @@ const config = {
                 label: 'Flow Playground',
               },
               {
-                to: '/tutorials/kitty-items/',
-                label: 'Kitty Items',
-              },
-              {
                 to: '/cadence/tutorial/first-steps',
                 label: 'Cadence Tutorials',
               },
@@ -418,7 +410,7 @@ const config = {
                 label: 'Cadence Cookbook',
               },
               {
-                to: '/concepts/core-contracts/',
+                to: '/build/core-contracts/',
                 label: 'Core Contracts & Standards',
               },
               {
@@ -443,19 +435,19 @@ const config = {
                 label: 'Flowscan Testnet',
               },
               {
-                to: '/concepts/nodes/node-operation/past-sporks/',
+                to: '/node-ops/node-operation/past-sporks/',
                 label: 'Past Sporks',
               },
               {
-                to: '/concepts/nodes/node-operation/upcoming-sporks',
+                to: '/node-ops/node-operation/upcoming-sporks',
                 label: 'Upcoming Sporks',
               },
               {
-                to: '/concepts/nodes/node-operation/',
+                to: '/node-ops/node-operation/',
                 label: 'Node Operation',
               },
               {
-                to: '/concepts/nodes/node-operation/spork/',
+                to: '/node-ops/node-operation/spork/',
                 label: 'Spork Information',
               },
             ],

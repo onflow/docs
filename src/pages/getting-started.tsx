@@ -62,13 +62,8 @@ export default function GettingStarted(): JSX.Element {
                   },
                   {
                     title: 'Javascript Quickstart',
-                    href: '/tutorials/flow-app-quickstart/',
+                    href: '/build/getting-started/quickstarts/fcl-quickstart',
                     tags: ['tutorial', 'beginner'],
-                  },
-                  {
-                    title: 'NFT Storefront & Marketplace',
-                    href: '/tutorials/kitty-items/',
-                    tags: ['example', 'intermediate'],
                   },
                   {
                     title: 'Cadence Cookbook',
@@ -109,7 +104,7 @@ export default function GettingStarted(): JSX.Element {
                   },
                   {
                     title: 'View more learning resources',
-                    href: '/learn',
+                    href: 'https://academy.ecdao.org/en',
                   },
                 ],
               },
@@ -121,7 +116,7 @@ export default function GettingStarted(): JSX.Element {
                 links: [
                   {
                     title: 'Get the Flow CLI',
-                    href: '/tooling/flow-cli/install/',
+                    href: '/tools/flow-cli/install/',
                     tags: ['install'],
                   },
                   {
@@ -131,7 +126,7 @@ export default function GettingStarted(): JSX.Element {
                   },
                   {
                     title: 'Core contracts & standards',
-                    href: '/concepts/core-contracts',
+                    href: '/build/core-contracts',
                     tags: ['nft', 'ft', 'metadata'],
                   },
                   {

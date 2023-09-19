@@ -38,7 +38,7 @@ export function SDKCards({
             rightIcon="right"
             variant="secondary"
             className="hidden md:inline-flex"
-            href="/tools#sdks"
+            href="/tools/clients"
           >
             View All SDKs
           </ButtonLink>
