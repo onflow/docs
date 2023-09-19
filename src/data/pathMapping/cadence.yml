@@ -7,7 +7,7 @@
 ./docs/language/accounts.mdx: docs/cadence/language/accounts.mdx
 ./docs/language/attachments.md: docs/cadence/language/attachments.mdx
 ./docs/language/built-in-functions.mdx: docs/cadence/language/built-in-functions.mdx
-./docs/language/capability-based-access-control.md: docs/cadence/language/capability-based-access-control.md
+./docs/language/capabilities.md: docs/cadence/language/capabilities.md
 ./docs/language/composite-types.mdx: docs/cadence/language/composite-types.mdx
 ./docs/language/constants-and-variables.md: docs/cadence/language/constants-and-variables.md
 ./docs/language/contract-updatability.md: docs/cadence/language/contract-updatability.md

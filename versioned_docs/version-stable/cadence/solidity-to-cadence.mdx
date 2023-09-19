@@ -153,7 +153,7 @@ the opposite direction than the [access-based security](https://en.wikipedia.org
 Solidity lacks specific types or other primitives to aid with permission management. Developers have to inline
 guards to `require` at every function entry-point, thus validating the `msg.sender` of the transaction.
 
-[Capabilities](./language/capability-based-access-control.md) are defined by linking storage paths (namespaces for contract
+[Capabilities](./language/capabilities.md) are defined by linking storage paths (namespaces for contract
 storage) to protected objects and then making that linked capability available to other accounts. Public and private
 scopes defined for storage paths and Capabilities themselves align precisely with
 [PublicAccount](./language/accounts.mdx#publicaccount)/[AuthAccount](./language/accounts.mdx#authaccount) account scopes.
@@ -178,7 +178,7 @@ account.
 
 To aid automation, events are emitted for `publish`, `claim` and `unpublish` actions completed for a Capability.
 
-Detailed information can be found in [Capabilities](./language/capability-based-access-control.md).
+Detailed information can be found in [Capabilities](./language/capabilities.md).
 
 ## Hygiene factors for protecting value
 
