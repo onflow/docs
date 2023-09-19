@@ -71,7 +71,7 @@ let newNFT <- BasicNFT.createNFT(id: 1)
 myNFTs[newNFT.id] <- newNFT
 
 // Save the NFT to a new storage path
-account.save(<-myNFTs, to: /storage/basicNFTDictionary)
+account.storage.save(<-myNFTs, to: /storage/basicNFTDictionary)
 
 ```
 
@@ -112,7 +112,7 @@ This contract expands on the `BasicNFT` we looked at by adding:
 4. The `Collection` will declare fields and functions to interact with it,
 including `ownedNFTs`, `init()`, `withdraw()`, `destroy()`, and other important functions
 5. Next, the contract declares functions that create a new NFT (`mintNFT()`) and an empty collection (`createEmptyCollection()`)
-7. Finally, the contract declares an `init()` function that initializes the path fields,
+7. Finally, the contract declares an initializer that initializes the path fields,
 creates an empty collection as well as a reference to it,
 and saves a minter resource to account storage.
 
@@ -154,7 +154,7 @@ access(all) contract ExampleNFT {
         // The unique ID that differentiates each NFT
         access(all) let id: UInt64
 
-        // Initialize both fields in the init function
+        // Initialize both fields in the initializer
         init(initID: UInt64) {
             self.id = initID
         }
@@ -251,10 +251,11 @@ access(all) contract ExampleNFT {
         self.idCount = 1
 
         // store an empty NFT Collection in account storage
-        self.account.save(<-self.createEmptyCollection(), to: self.CollectionStoragePath)
+        self.account.storage.save(<-self.createEmptyCollection(), to: self.CollectionStoragePath)
 
-        // publish a reference to the Collection in storage
-        self.account.link<&{NFTReceiver}>(self.CollectionPublicPath, target: self.CollectionStoragePath)
+        // publish a capability to the Collection in storage
+        let cap = self.account.capabilities.storage.issue<&{NFTReceiver}>(self.CollectionStoragePath)
+        self.account.capabilities.publish(cap, at: self.CollectionPublicPath)
 	}
 }
 ```
@@ -300,10 +301,10 @@ destroy() {
 }
 ```
 
-When the `Collection` resource is created, the `init` function is run
+When the `Collection` resource is created, the initializer is run
 and must explicitly initialize all member variables.
 This helps prevent issues in some smart contracts where uninitialized fields can cause bugs.
-The init function can never run again after this.
+The initializer can never run again after this.
 Here, we initialize the dictionary as a resource type with an empty dictionary.
 
 ```cadence
@@ -391,7 +392,7 @@ or they could put in the `/public/` domain of their account so that anyone can a
 If a user tried to use this capability to call the `withdraw` function,
 it wouldn't work because it doesn't exist in the interface that was used to create the capability.
 
-The creation of the link and capability is seen in the `ExampleNFT.cdc` contract `init()` function
+The creation of the link and capability is seen in the `ExampleNFT.cdc` contract initializer
 
 ```cadence
 // publish a reference to the Collection in storage
@@ -428,12 +429,10 @@ access(all) fun main() {
     // Get the public account object for account 0x01
     let nftOwner = getAccount(0x01)
 
-    // Find the public Receiver capability for their Collection
-    let capability = nftOwner.getCapability<&{ExampleNFT.NFTReceiver}>(ExampleNFT.CollectionPublicPath)
-
-    // borrow a reference from the capability
-    let receiverRef = capability.borrow()
-            ?? panic("Could not borrow receiver reference")
+    // Find the public Receiver capability for their Collection and borrow it
+    let receiverRef = nftOwner.capabilities
+        .borrow<&{ExampleNFT.NFTReceiver}>(ExampleNFT.CollectionPublicPath)
+        ?? panic("Could not borrow receiver reference")
 
     // Log the NFTs that they own as an array of IDs
     log("Account 1 NFTs")
@@ -491,8 +490,8 @@ transaction {
 
     prepare(acct: AuthAccount) {
         // Get the owner's collection capability and borrow a reference
-        self.receiverRef = acct.getCapability<&{ExampleNFT.NFTReceiver}>(ExampleNFT.CollectionPublicPath)
-            .borrow()
+        self.receiverRef = acct.capabilities
+            .borrow<&{ExampleNFT.NFTReceiver}>(ExampleNFT.CollectionPublicPath)
             ?? panic("Could not borrow receiver reference")
     }
 
@@ -562,18 +561,19 @@ import ExampleNFT from 0x01
 // to use the NFT contract by creating a new empty collection,
 // storing it in their account storage, and publishing a capability
 transaction {
-    prepare(acct: AuthAccount) {
+    prepare(acct: auth(SaveValue, StorageCapabilities) &Account) {
 
         // Create a new empty collection
         let collection <- ExampleNFT.createEmptyCollection()
 
         // store the empty NFT Collection in account storage
-        acct.save<@ExampleNFT.Collection>(<-collection, to: ExampleNFT.CollectionStoragePath)
+        acct.storage.save(<-collection, to: ExampleNFT.CollectionStoragePath)
 
         log("Collection created for account 2")
 
         // create a public capability for the Collection
-        acct.link<&{ExampleNFT.NFTReceiver}>(ExampleNFT.CollectionPublicPath, target: ExampleNFT.CollectionStoragePath)
+        let cap = acct.capabilities.storage.issue<&{ExampleNFT.NFTReceiver}>(ExampleNFT.CollectionStoragePath)
+        acct.capabilities.publish(cap, at: ExampleNFT.CollectionPublicPath)
 
         log("Capability created")
     }
@@ -601,10 +601,11 @@ transaction {
     // transferred to the other account
     let transferToken: @ExampleNFT.NFT
 
-    prepare(acct: AuthAccount) {
+    prepare(acct: auth(BorrowValue) &Account) {
 
         // Borrow a reference from the stored collection
-        let collectionRef = acct.borrow<&ExampleNFT.Collection>(from: ExampleNFT.CollectionStoragePath)
+        let collectionRef = acct.storage
+            .borrow<&ExampleNFT.Collection>(from: ExampleNFT.CollectionStoragePath)
             ?? panic("Could not borrow a reference to the owner's collection")
 
         // Call the withdraw function on the sender's Collection
@@ -618,8 +619,8 @@ transaction {
 
         // Get the Collection reference for the receiver
         // getting the public capability and borrowing a reference from it
-        let receiverRef = recipient.getCapability<&{ExampleNFT.NFTReceiver}>(ExampleNFT.CollectionPublicPath)
-            .borrow()
+        let receiverRef = recipient.capabilities
+            .borrow<&{ExampleNFT.NFTReceiver}>(ExampleNFT.CollectionPublicPath)
             ?? panic("Could not borrow receiver reference")
 
         // Deposit the NFT in the receivers collection

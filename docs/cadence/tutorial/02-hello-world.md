@@ -147,10 +147,10 @@ access(all) contract HelloWorld {
 
     // Declare a public field of type String.
     //
-    // All fields must be initialized in the init() function.
+    // All fields must be initialized in the initializer.
     access(all) let greeting: String
 
-    // The init() function is required if the contract contains any fields.
+    // The initializer is required if the contract contains any fields.
     init() {
         self.greeting = "Hello, World!"
     }
@@ -174,7 +174,7 @@ For more information about the different levels of access control permitted in C
 
 The `init()` section is called the initializer. It is a special function that only runs when the contract is first created.
 Objects similar to contracts, such as other [composite types like structs or resources](../language/composite-types),
-require that the `init()` function initialize any fields that are declared in a composite type.
+require that the initializer initializes all fields that are declared in a composite type.
 In the above example, the initializer sets the `greeting` field to `"Hello, World!"` when the contract is initialized.
 
 The last part of our `HelloWorld` contract is a public function called `hello()`.
@@ -266,7 +266,7 @@ import HelloWorld from 0x01
 
 transaction {
 
-  prepare(acct: AuthAccount) {}
+  prepare(acct: &Account) {}
 
   execute {
     log(HelloWorld.hello())

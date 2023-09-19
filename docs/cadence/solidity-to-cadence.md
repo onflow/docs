@@ -51,14 +51,17 @@ There is only one account type in Cadence also with an account address, similar 
 Accounts realize ownership on Flow in being the container where keys, Resources, and contracts are stored on-chain.
 
 
-### PublicAccount and AuthAccount
+## Account
 
-`PublicAccount` is the publicly available part of an account through which public functions or objects can be
-accessed by any account using the `getAccount` function.
+`Account` is the type that provides access to an account.
 
-`AuthAccount` is available only to the signer of the transaction. An `AuthAccount` reference provides full access
-to that account's storage, keys configuration, and contract code. Capabilities ensure that resources held in an account can be
-safely shared/accessed; access to `AuthAccount` should never be given to other accounts.
+The `getAccount` function allows getting access to the publicly available functions and fields of an account.
+For example, this allows querying an accounts balance.
+
+An authorized `Account` reference provides access and allows the management of,
+for instance, the account's storage, keys configuration, and contract code.
+An authorized `Account` reference can only be acquired by signing a transaction.
+Capabilities ensure that resources held in an account can be safely shared/accessed.
 
 ## Resources
 
@@ -151,13 +154,12 @@ the opposite direction than the [access-based security](https://en.wikipedia.org
 
 ## Access control using Capabilities
 
-Solidity lacks specific types or other primitives to aid with permission management. Developers have to inline
-guards to `require` at every function entry-point, thus validating the `msg.sender` of the transaction.
+Solidity lacks specific types or other primitives to aid with permission management.
+Developers have to inline guards to `require` at every function entry-point,
+thus validating the `msg.sender` of the transaction.
 
 [Capabilities](./language/capabilities.md) are defined by linking storage paths (namespaces for contract
-storage) to protected objects and then making that linked capability available to other accounts. Public and private
-scopes defined for storage paths and Capabilities themselves align precisely with
-[PublicAccount](./language/accounts)/[AuthAccount](./language/accounts) account scopes.
+storage) to protected objects and then making that linked capability available to other accounts.
 
 Any account can get access to an account's public Capabilities. Public capabilities are created using public paths,
 i.e. they have the domain `public`. For example, all accounts have a default public capability linked to the
@@ -165,8 +167,7 @@ i.e. they have the domain `public`. For example, all accounts have a default pub
 interface, to allow any account to `borrow()` a reference to the Vault to make a `deposit()`. Since only the functions
 defined under the `[FungibleToken.Receiver](https://github.com/onflow/flow-ft/blob/master/contracts/FungibleToken.cdc#L105)`
 interface are exposed, the borrower of the vault reference cannot call `withdraw()` since it is scoped in the `provider`
-interface. Public capabilities can be obtained from both authorized accounts (`AuthAccount`) and public accounts
-(`PublicAccount`).
+interface.
 
 Private capabilities are specifically granted to accounts. They are created using private paths, i.e. they have the
 domain `private`. After creation, they can be obtained from authorised account objects (`AuthAccount`) but not public
@@ -291,8 +292,8 @@ import ExampleToken from "../../contracts/ExampleToken.cdc"
 
 access(all) fun main(account: Address): UFix64 {
     let acct = getAccount(account)
-    let vaultRef = acct.getCapability(ExampleToken.VaultPublicPath)
-        .borrow<&ExampleToken.Vault>()
+    let vaultRef = acct.capabilities
+        .borrow<&ExampleToken.Vault>(ExampleToken.VaultPublicPath)
         ?? panic("Could not borrow Balance reference to the Vault")
 
     return vaultRef.balance
@@ -318,7 +319,7 @@ transaction(addressAmountMap: {Address: UFix64}) {
     prepare(signer: AuthAccount) {
 
         // Get a reference to the signer's stored vault
-        self.vaultRef = signer.borrow<&ExampleToken.Vault>(from: ExampleToken.VaultStoragePath)
+        self.vaultRef = signer.storage.borrow<&ExampleToken.Vault>(from: ExampleToken.VaultStoragePath)
 			?? panic("Could not borrow reference to the owner's Vault!")
     }
 
@@ -333,8 +334,8 @@ transaction(addressAmountMap: {Address: UFix64}) {
             let recipient = getAccount(address)
 
             // Get a reference to the recipient's Receiver
-            let receiverRef = recipient.getCapability(ExampleToken.ReceiverPublicPath)
-                .borrow<&{FungibleToken.Receiver}>()
+            let receiverRef = recipient.capabilities
+                .borrow<&{FungibleToken.Receiver}>(ExampleToken.ReceiverPublicPath)
                 ?? panic("Could not borrow receiver reference to the recipient's Vault")
 
             // Deposit the withdrawn tokens in the recipient's receiver

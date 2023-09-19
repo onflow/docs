@@ -8,7 +8,7 @@ In this tutorial, we're going to walk through how resources can own other resour
 
 <Callout type="success">
   Open the starter code for this tutorial in the Flow Playground:
-  <a 
+  <a
     href="https://play.onflow.org/01f812d7-799a-42fd-b9cb-9ffe556e02ad"
     target="_blank"
   >
@@ -210,7 +210,7 @@ transaction {
         log("The cat has the hats")
 
         // Store the Kitty in storage
-        acct.save(<-kitty, to: /storage/kitty)
+        acct.storage.save(<-kitty, to: /storage/kitty)
     }
 }
 ```
@@ -243,7 +243,7 @@ transaction {
     prepare(acct: AuthAccount) {
 
         // Move the Kitty out of storage, which also moves its hat along with it
-        let kitty <- acct.load<@KittyVerse.Kitty>(from: /storage/kitty)
+        let kitty <- acct.storage.load<@KittyVerse.Kitty>(from: /storage/kitty)
             ?? panic("Kitty doesn't exist!")
 
         // Take the cowboy hat off the Kitty
@@ -259,7 +259,7 @@ transaction {
 
         // Move the Kitty to storage, which
         // also moves its hat along with it.
-        acct.save(<-kitty, to: /storage/kitty)
+        acct.storage.save(<-kitty, to: /storage/kitty)
     }
 }
 ```
