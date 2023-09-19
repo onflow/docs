@@ -328,7 +328,7 @@ const config = {
                 label: 'Cadence',
               },
               {
-                to: '/build/mobile',
+                to: '/build/mobile/overview',
                 label: 'Mobile',
               },
               {

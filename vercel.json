@@ -897,6 +897,13 @@
     {
       "source": "/tools/nft-catalog/:path*",
       "destination": "/tools/nft-catalog"
+    },
+    {
+      "source": "/build/mobile/monster-maker",
+      "destination": "/build/mobile/ios-quickstart"
+    },    {
+      "source": "/build/mobile/",
+      "destination": "/build/mobile/overview"
     }
   ]
 }

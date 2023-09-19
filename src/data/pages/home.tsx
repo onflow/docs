@@ -46,7 +46,7 @@ const contentNavigationListItems: ContentNavigationListProps = {
     {
       title: 'Mobile',
       text: 'Develop on Flow for mobile platforms',
-      link: '/build/mobile',
+      link: '/build/mobile/overview',
       icon: 'tools',
     },
   ],
