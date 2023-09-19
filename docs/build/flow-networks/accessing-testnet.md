@@ -1,12 +1,19 @@
 ---
 title: Flow Testnet
 sidebar_position: 2
-description: Guide to testnet access
+description: Guide to Testnet access
 ---
 
-## Accessing Flow testnet
+## About Flow Testnet
+Flow Testnet is Flow's official testing and development network. It is intended to provide a staging and testing environment for dApp developers. 
+It aims to balance similarity with Mainnet with being a productive development environment, resulting in the following key differences:
+- Testnet has significantly fewer validator nodes, resulting in a faster block rate compared to Mainnet
+- Testnet is configured with shorter epochs (about 12 hours, compared to 7 days on Mainnet)
+- Testnet receives software upgrades up to 2 weeks before Mainnet
 
-The Flow testnet is available for access at this URL:
+## Accessing Flow Testnet
+
+Flow Testnet is available for access at this URL:
 
 ```
 access.devnet.nodes.onflow.org:9000
@@ -24,14 +31,14 @@ func main() {
 }
 ```
 
-### Generating testnet key pair
+### Generating Testnet key pair
 
 You can generate a new key pair with the [Flow CLI](https://github.com/onflow/flow-cli) as follows:
 
 ```sh
 > flow keys generate
 
-🙏 If you want to create an account on testnet with the generated keys use this link:
+🙏 If you want to create an account on Testnet with the generated keys use this link:
 https://testnet-faucet.onflow.org/?key= cc1c3d72...
 
 
@@ -48,4 +55,4 @@ Accounts and tokens for testing can be obtained through the [testnet faucet](htt
 
 ## Important smart contract addresses
 
-You can review [all available core contracts](../../build/core-contracts/index.md) deployed to the testnet to identify which ones you want to import.
+You can review [all available core contracts](../../build/core-contracts/index.md) deployed to the Testnet to identify which ones you want to import.

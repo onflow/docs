@@ -777,6 +777,11 @@
       "permanent": true
     },
     {
+      "source": "/concepts/account-linking",
+      "destination": "/build/advanced-concepts/account-linking",
+      "permanent": true
+    },
+    {
       "source": "/next/concepts/start-here",
       "destination": "/next/build/flow",
       "permanent": true
@@ -789,6 +794,11 @@
     {
       "source": "/next/cadence/why",
       "destination": "/next/build/cadence",
+      "permanent": true
+    },
+    {
+      "source": "/tools/wallets",
+      "destination": "/overview/getting-started/wallets",
       "permanent": true
     },
     {
@@ -897,6 +907,31 @@
     {
       "source": "/tools/nft-catalog/:path*",
       "destination": "/tools/nft-catalog"
+    },
+    {
+      "source": "/tools/intro",
+      "destination": "/tools/flow-cli",
+      "permanent": true
+    },
+    {
+      "source": "/building-on-flow/run-and-secure/node-operation/:path",
+      "destination": "/node-ops/node-operation/:path*",
+      "permanent": true
+    },
+    {
+      "source": "/concepts/start-here",
+      "destination": "/overview/about/flow",
+      "permanent": true
+    },
+    {
+      "source": "/concepts/account-linking/child-accounts",
+      "destination": "/build/advanced-concepts/account-linking",
+      "permanent": true
+    },
+    {
+      "source": "/docs/node-roles",
+      "destination": "/node-ops/node-operation/node-roles",
+      "permanent": true
     },
     {
       "source": "/build/mobile/monster-maker",
