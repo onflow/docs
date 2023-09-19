@@ -885,6 +885,18 @@
       "source": "/next/building-on-flow/run-and-secure/node/node-operation/:path*",
       "destination": "/next/node-ops/node-operation/:path*",
       "permanent": true
+    },
+    {
+      "source": "/tools/toolchains/:path*",
+      "destination": "/tools/:path*"
+    },
+    {
+      "source": "/tools/fcl-dev-wallet/:path*",
+      "destination": "/tools/flow-dev-wallet/:path*"
+    },
+    {
+      "source": "/tools/nft-catalog/:path*",
+      "destination": "/tools/nft-catalog"
     }
   ]
 }

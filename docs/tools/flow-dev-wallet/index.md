@@ -1,6 +1,9 @@
-## Introduction
+---
+title: Flow Dev Wallet
+sidebar_label: Flow Dev Wallet
+---
 
-The FCL dev wallet is a mock Flow wallet that simulates the protocols used by [FCL](../clients/fcl-js/index.md) to interact with the Flow blockchain on behalf of simulated user accounts.
+The Flow Dev Wallet is a mock Flow wallet that simulates the protocols used by [FCL](../clients/fcl-js/index.md) to interact with the Flow blockchain on behalf of simulated user accounts.
 
 **IMPORTANT**
 
@@ -43,7 +46,7 @@ flow project deploy --network emulator
 
 ## Configuring your JavaScript application
 
-The FCL dev wallet is designed to be used with [`@onflow/fcl`](https://github.com/onflow/flow-js-sdk) version `1.0.0` or higher. The FCL package can be installed with: `npm install @onflow/fcl` or `yarn add @onflow/fcl`.
+The Flow Dev Wallet is designed to be used with [`@onflow/fcl`](https://github.com/onflow/flow-js-sdk) version `1.0.0` or higher. The FCL package can be installed with: `npm install @onflow/fcl` or `yarn add @onflow/fcl`.
 
 To use the dev wallet, configure FCL to point to the address of a locally running [Flow emulator](#start-the-emulator) and the dev wallet endpoint.
 

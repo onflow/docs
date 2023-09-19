@@ -1,3 +1,8 @@
+---
+title: Changelog
+sidebar_position: 4
+sidebar_label: Changelog
+---
 ## Version 2.0.0
 
 - Added new wallet provider Wallet Connect
