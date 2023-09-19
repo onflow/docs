@@ -943,12 +943,12 @@
     },
     {
       "source": "/getting-started/flow-cli",
-      "destination": "/build/getting-started/flow-cli",
+      "destination": "/build/getting-started/quickstarts/flow-cli",
       "permanent": true
     },
     {
       "source": "/getting-started/fcl-quickstart",
-      "destination": "/build/getting-started/fcl-quickstart",
+      "destination": "/build/getting-started/quickstarts/fcl-quickstart",
       "permanent": true
     },
     {
