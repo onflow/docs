@@ -23,18 +23,30 @@ const homepageStartProjectData: HomepageStartItemProps[] = [
 ];
 
 const contentNavigationListItems: ContentNavigationListProps = {
-  header: 'Explore More Content',
+  header: 'Explore Key Concepts and Features',
   contentNavigationItems: [
     {
-      title: 'Learn',
+      title: 'Intro to FLow',
       text: 'All the resources you need to learn and build.',
-      link: 'https://academy.ecdao.org/en',
+      link: '/overview/about-flow',
       icon: 'learn',
     },
     {
-      title: 'Tools',
-      text: 'Curated list of developer tools, services, SDKs.',
-      link: '/tools',
+      title: 'Account Abstraction',
+      text: 'Flow blockchain Account structure, key management',
+      link: '/build/key-concepts/accounts',
+      icon: 'learn',
+    },
+    {
+      title: 'Account Linking',
+      text: 'Seamless onboarding and secure resources ownership sharing',
+      link: '/build/advanced-concepts/account-linking',
+      icon: 'learn',
+    },
+    {
+      title: 'Mobile',
+      text: 'Develop on Flow for mobile platforms',
+      link: '/build/mobile',
       icon: 'tools',
     },
   ],
