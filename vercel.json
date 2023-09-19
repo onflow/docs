@@ -938,7 +938,7 @@
     },
     {
       "source": "/getting-started/hello-world",
-      "destination": "/build/getting-started/hello-world",
+      "destination": "/build/getting-started/quickstarts/hello-world",
       "permanent": true
     },
     {
