@@ -937,6 +937,11 @@
       "destination": "/build/mobile/overview"
     },
     {
+      "source": "/building-on-flow/mobile",
+      "destination": "/build/mobile/overview",
+      "permanent": true
+    },
+    {
       "source": "/getting-started/hello-world",
       "destination": "/build/getting-started/quickstarts/hello-world",
       "permanent": true
