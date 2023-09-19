@@ -960,6 +960,31 @@
       "source": "/build/getting-started/local-development/app-architecture",
       "destination": "/build/getting-started/app-architecture",
       "permanent": true
+    },
+    {
+      "source": "/concepts/blocks",
+      "destination": "/build/key-concepts/blocks",
+      "permanent": true
+    },
+    {
+      "source": "/guides/deploying/overview",
+      "destination": "/guides/smart-contracts/deploying",
+      "permanent": true
+    },
+    {
+      "source": "/concepts/flow-networks",
+      "destination": "/references/flow-networks",
+      "permanent": true
+    },
+    {
+      "source": "/guides/deploying/mainnet-deployment",
+      "destination": "/guides/smart-contracts/deploying",
+      "permanent": true
+    },
+    {
+      "source": "/concepts/intro",
+      "destination": "/build/flow",
+      "permanent": true
     }
   ]
 }
