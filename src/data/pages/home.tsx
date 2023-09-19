@@ -3,21 +3,21 @@ import { type HomepageStartItemProps } from '../../ui/design-system/src/lib/Comp
 
 const homepageStartProjectData: HomepageStartItemProps[] = [
   {
-    title: 'Start Here',
+    title: 'Getting Started',
     text: 'Dive into key concepts and learn what makes Flow unique.',
     link: '/getting-started/hello-world',
     icon: 'learn',
   },
   {
-    title: 'Guides & Tutorials',
+    title: 'Developer Guides',
     text: 'Create your first Flow dApp in just a few minutes',
-    link: '/guides',
+    link: '/guides/flow-app-quickstart',
     icon: 'quickstart',
   },
   {
-    title: 'Resources',
-    text: 'All the developer resources you need to build on Flow',
-    link: '/community-resources',
+    title: 'Tools & Resources',
+    text: 'All the developer tools you need to build on Flow',
+    link: '/tools/flow-cli',
     icon: 'documentation',
   },
 ];
