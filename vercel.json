@@ -433,6 +433,11 @@
       "permanent": true
     },
     {
+      "source": "/guides",
+      "destination": "/guides/flow-app-quickstart",
+      "permanent": true
+    },
+    {
       "source": "/kitty-items/:path*",
       "destination": "/tutorials/",
       "permanent": true

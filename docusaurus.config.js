@@ -264,7 +264,7 @@ const config = {
             label: 'Build',
           },
           {
-            to: 'guides/flow-app-quickstart',
+            to: 'guides',
             position: 'left',
             label: 'Guides',
           },
