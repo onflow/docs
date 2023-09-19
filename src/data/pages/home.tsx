@@ -34,7 +34,7 @@ const contentNavigationListItems: ContentNavigationListProps = {
     {
       title: 'Account Abstraction',
       text: 'Flow blockchain Account structure, key management',
-      link: '/build/key-concepts/accounts',
+      link: '/build/advanced-concepts/account-abstraction',
       icon: 'learn',
     },
     {
@@ -46,7 +46,7 @@ const contentNavigationListItems: ContentNavigationListProps = {
     {
       title: 'Mobile',
       text: 'Develop on Flow for mobile platforms',
-      link: '/build/mobile',
+      link: '/build/mobile/overview',
       icon: 'tools',
     },
   ],
