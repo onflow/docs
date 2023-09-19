@@ -863,7 +863,7 @@
     },
     {
       "source": "/next/building-on-flow/core-contracts/:path*",
-      "destination": "/next/reference/core-contracts/:path*",
+      "destination": "/next/references/core-contracts/:path*",
       "permanent": true
     },
     {

@@ -175,7 +175,7 @@ pub struct EpochMetadata {
 The `FlowEpoch` smart contract provides a public function, `FlowEpoch.getEpochMetadata()`
 to query the metadata for a particular epoch.
 
-You can use the **Get Epoch Metadata**([EP.01](../../reference/core-contracts/07-epoch-contract-reference.md#getting-epoch-info)) script
+You can use the **Get Epoch Metadata**([EP.01](../../references/core-contracts/07-epoch-contract-reference.md#getting-epoch-info)) script
 with the following arguments:
 
 | Argument         | Type     | Description                                   |
@@ -207,7 +207,7 @@ pub struct Config {
 }
 ```
 
-You can use the **Get Configurable Metadata**([EP.02](../../reference/core-contracts/07-epoch-contract-reference.md#getting-epoch-info)) script
+You can use the **Get Configurable Metadata**([EP.02](../../references/core-contracts/07-epoch-contract-reference.md#getting-epoch-info)) script
 to get the list of configurable metadata:
 
 This script does not require any arguments.
@@ -216,7 +216,7 @@ This script does not require any arguments.
 
 The `FlowEpoch` smart contract always tracks the counter of the current epoch.
 
-You can use the **Get Epoch Counter**([EP.03](../../reference/core-contracts/07-epoch-contract-reference.md#getting-epoch-info)) script
+You can use the **Get Epoch Counter**([EP.03](../../references/core-contracts/07-epoch-contract-reference.md#getting-epoch-info)) script
 to get the current epoch counter.
 
 This script does not require any arguments.
@@ -233,7 +233,7 @@ pub enum EpochPhase: UInt8 {
 }
 ```
 
-You can use the **Get Epoch Phase**([EP.04](../../reference/core-contracts/07-epoch-contract-reference.md#getting-epoch-info)) script
+You can use the **Get Epoch Phase**([EP.04](../../references/core-contracts/07-epoch-contract-reference.md#getting-epoch-info)) script
 to get the current epoch phase.
 
 This script does not require any arguments.
