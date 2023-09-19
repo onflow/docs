@@ -897,6 +897,11 @@
     {
       "source": "/tools/nft-catalog/:path*",
       "destination": "/tools/nft-catalog"
+    },
+    {
+      "source": "/tools/intro",
+      "destination": "/tools/flow-cli",
+      "permanent": true
     }
   ]
 }
