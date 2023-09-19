@@ -2,7 +2,7 @@
 title: Launch a Token
 sidebar_label: Launch a Token
 description: Launch a Fungible or Non-Fungible Token on the Flow Network.
-sidebar_position: 5
+sidebar_position: 4
 sidebar_custom_props:
   icon: 📓
 ---
@@ -31,7 +31,7 @@ There is a lot to consider when creating a token, strong tokenomics, private or 
 
 - [Flow Token Standard](https://github.com/onflow/flow-ft) - minimum requirements to implement a safe, secure, easy to understand and easy to use fungible token contract
 
-Example of a Fungible Token Contract [ExampleToken](https://github.com/onflow/flow-ft/blob/master/contracts/ExampleToken.cdc). See how to deploy contracts [here](./deploying/mainnet-deployment.mdx).
+Example of a Fungible Token Contract [ExampleToken](https://github.com/onflow/flow-ft/blob/master/contracts/ExampleToken.cdc). See how to deploy contracts [here](./smart-contracts/deploying.mdx).
 
 
 # How to Launch a Non-Fungible Token (NFT)
