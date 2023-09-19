@@ -935,6 +935,10 @@
     {
       "source": "/build/mobile",
       "destination": "/build/mobile/overview"
+    },
+    {
+      "source": "/building-on-flow/mobile",
+      "destination": "/build/mobile/overview"
     }
   ]
 }
