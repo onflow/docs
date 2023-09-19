@@ -2,7 +2,7 @@
 sidebar_position: 1
 ---
 
-# Account Abstraction on Flow
+# Account Abstraction
 
 Flow provides native support for key use cases that are enabled by Account Abstraction, empowering developers to deliver mainstream-ready user experiences. With Cadence, Flow was designed with these use cases in mind through the separation of the contract and transaction layers. This guide demonstrates how Flow supports key use cases that are made possible with Account Abstraction.
 
