@@ -2,7 +2,7 @@
 sidebar_position: 1
 ---
 
-# Introduction to Flow
+# Why Flow?
 
 Flow is a fast, decentralized, and developer-friendly blockchain designed to be the foundation for a new generation of games, apps, and the [digital assets](https://www.onflow.org/post/flow-blockchain-cadence-programming-language-resources-assets) that power them. It is based on a unique, [multi-role architecture](https://www.onflow.org/primer), and designed to [scale without sharding](https://www.onflow.org/post/flow-blockchain-multi-node-architecture-advantages), allowing for massive improvements in speed and throughput while preserving a developer-friendly, ACID-compliant environment.
 
@@ -29,7 +29,7 @@ The [development guide](../tutorials/intro.md) covers the Flow core concepts, in
 
 ## Core Contracts
 
-The Flow blockchain implements core functionality using its own smart contract language, Cadence. The core functionality is split into a set of contracts, so-called [core contracts](../build/core-contracts/index.md):
+The Flow blockchain implements core functionality using its own smart contract language, Cadence. The core functionality is split into a set of contracts, so-called [core contracts](./core-contracts/index.md):
 
 - **Fungible Token:** The FungibleToken contract implements the Fungible Token Standard. It is the second contract ever deployed on Flow.
 - **Flow Token:** The FlowToken contract defines the FLOW network token.
@@ -40,7 +40,7 @@ The Flow blockchain implements core functionality using its own smart contract l
 
 ## FLOW Token
 
-The [FLOW](../build/core-contracts/03-flow-token.md) token is the native currency for the Flow network. Developers and users can use FLOW to transact on the network. Developers can integrate FLOW directly into their apps for peer-to-peer payments, service charges, or consumer rewards. FLOW can be held, transferred, or transacted peer-to-peer.
+The [FLOW](./core-contracts/03-flow-token.md) token is the native currency for the Flow network. Developers and users can use FLOW to transact on the network. Developers can integrate FLOW directly into their apps for peer-to-peer payments, service charges, or consumer rewards. FLOW can be held, transferred, or transacted peer-to-peer.
 
 
 ## Technical Background
@@ -51,7 +51,7 @@ The [FLOW](../build/core-contracts/03-flow-token.md) token is the native currenc
 ## Tokenomics
 
 - To understand more about Flow's Token Economics, and the **FLOW token**, you can read the [Flow Token Economics](https://www.onflow.org/flow-token-economics) guide.
-- FLOW tokens are Flow's native Fungible Token. To learn more about how to work with them in your applications, go [here](../build/core-contracts/03-flow-token.md)
+- FLOW tokens are Flow's native Fungible Token. To learn more about how to work with them in your applications, go [here](./core-contracts/03-flow-token.md)
 
 ## More Concepts
 
