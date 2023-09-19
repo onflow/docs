@@ -1,4 +1,4 @@
-## Migration Guide v0.25.0
+# Migration Guide v0.25.0
 
 The Go SDK version 0.25.0 introduced breaking changes in the API and package naming. 
 Changes were required to make the implementation of the new HTTP access node API available. 

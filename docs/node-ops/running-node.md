@@ -27,11 +27,11 @@ The goal is to make all node types permissionless, currently there are three nod
 
 ## Why run a Flow node?
 
-On Flow there is no requirement to run a node to develop applications. For many use cases, an [emulator](../tools/toolchains/emulator) for local development and a public access node will fulfill your needs. For those with higher throughput requirements running your own light node or access is simple.
+On Flow there is no requirement to run a node to develop applications. For many use cases, an [emulator](../tools/emulator) for local development and a public access node will fulfill your needs. For those with higher throughput requirements running your own light node or access is simple.
 
 # Running a Light Node
 
-There are community access nodes available to use, but they are rate limited. Alternative to an Access node, anyone can run their own Light node. This is a good option if you want to have untrottled access to current Flow blockchain data. [More information](../building-on-flow/run-and-secure/nodes/index.md#which-node-should-you-run)
+There are community access nodes available to use, but they are rate limited. Alternative to an Access node, anyone can run their own Light node. This is a good option if you want to have untrottled access to current Flow blockchain data. [More information](../build/run-and-secure/nodes/index.md#which-node-should-you-run)
 
 ![Light nodes](observer-node-arch.png)
 

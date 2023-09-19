@@ -1,17 +1,17 @@
-import React from 'react'
-import AppLink from '../AppLink'
+import React from 'react';
+import AppLink from '../AppLink';
 import {
   HomepageStartItemIcons,
   type HomepageStartItemIconsProps,
-} from './HomepageStartIcons'
+} from './HomepageStartIcons';
 
 export type HomepageStartItemProps = {
-  title: string
-  text: string
-  link: string
-} & HomepageStartItemIconsProps
+  title: string;
+  text: string;
+  link: string;
+} & HomepageStartItemIconsProps;
 
-export function HomepageStartItem ({
+export function HomepageStartItem({
   title,
   text,
   link,
@@ -19,7 +19,7 @@ export function HomepageStartItem ({
 }: HomepageStartItemProps) {
   return (
     <AppLink
-      className="flex cursor-pointer gap-6 rounded-lg bg-primary-gray-100/40 py-10 pl-10 pr-7 text-gray-700 hover:no-underline"
+      className="flex cursor-pointer gap-6 rounded-lg bg-primary-gray-100/40 py-8 pl-8 pr-4 text-gray-700 hover:no-underline"
       to={link}
     >
       <div className="flex min-w-0 grow flex-col items-start justify-start">
@@ -32,5 +32,5 @@ export function HomepageStartItem ({
         <div className="text-start dark:text-primary-gray-100">{text}</div>
       </div>
     </AppLink>
-  )
+  );
 }

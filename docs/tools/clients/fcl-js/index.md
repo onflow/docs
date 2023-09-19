@@ -152,7 +152,7 @@ The discovery feature can be used via API, allowing you to customize your own UI
 ### Building a FCL compatible wallet
 
 - Read the [wallet guide](https://github.com/onflow/fcl-js/blob/master/packages/fcl/src/wallet-provider-spec/draft-v3.md) to understand the implementation details.
-- Review the architecture of the [FCL dev wallet](https://github.com/onflow/fcl-dev-wallet) for an overview.
+- Review the architecture of the [Flow Dev Wallet](https://github.com/onflow/fcl-dev-wallet) for an overview.
 - If building a non-custodial wallet, see the [Account API](https://github.com/onflow/flow-account-api) and the [FLIP](https://github.com/onflow/flow/pull/727) on derivation paths and key generation.
 
 ---

@@ -406,7 +406,7 @@ from one account and delivering it to the other.
 
 ### Solution
 
-The solution to the bootstrapping problem in Cadence is provided by the [Inbox API](./language/accounts/inbox.mdx)
+The solution to the bootstrapping problem in Cadence is provided by the [Inbox API](./language/accounts.mdx#account-inbox)
 
 Account A (which we will call the provider) creates the capability they wish to send to B (which we will call the recipient),
 and stores this capability on their account in a place where the recipient can access it using the `Inbox.publish` function on their account.

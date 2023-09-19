@@ -289,8 +289,8 @@ It also helps the owner to promote the project and themselves.
 Resources for Best Practices:
 
 - [cadence/design-pattern](../../cadence/design-patterns.md)
-- [cadence/anti-patterns](../../cadence/anti-patterns.mdx)
-- [cadence/security-best-practices](../../cadence/security-best-practices.md)
+- [cadence/anti-patterns](../../cadence/anti-patterns.md)
+- [cadence/security-best-practices](../../cadence/security-best-practices.mdx)
 
 Composability and extensibility should also be priorities while designing, developing,
 and documenting their projects. (Documentation for these topics coming soon)
