@@ -935,6 +935,21 @@
     {
       "source": "/build/mobile",
       "destination": "/build/mobile/overview"
+    },
+    {
+      "source": "/getting-started/hello-world",
+      "destination": "/build/getting-started/hello-world",
+      "permanent": true
+    },
+    {
+      "source": "/getting-started/flow-cli",
+      "destination": "/build/getting-started/flow-cli",
+      "permanent": true
+    },
+    {
+      "source": "/getting-started/fcl-quickstart",
+      "destination": "/build/getting-started/fcl-quickstart",
+      "permanent": true
     }
   ]
 }
