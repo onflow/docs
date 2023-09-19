@@ -132,7 +132,7 @@ See the [Flow App Quick Start](../../guides/flow-app-quickstart.mdx).
 
 See the full [API Reference](./api.md) for all FCL functionality.
 
-Learn Flow's smart contract language to build any script or transactions: [Cadence](../../../cadence/intro.md).
+Learn Flow's smart contract language to build any script or transactions: [Cadence](../../../build/cadence.md).
 
 Explore all of Flow [docs and tools](/).
 
@@ -162,7 +162,7 @@ The discovery feature can be used via API allowing you to customize your own UI 
 ### Building a FCL compatible wallet
 
 - Read the [wallet guide](https://github.com/onflow/fcl-js/blob/master/packages/fcl/src/wallet-provider-spec/draft-v3.md) to understand the implementation details.
-- Review the architecture of the [FCL dev wallet](https://github.com/onflow/fcl-dev-wallet) for an overview.
+- Review the architecture of the [Flow Dev Wallet](https://github.com/onflow/fcl-dev-wallet) for an overview.
 - If building a non-custodial wallet, see the [Account API](https://github.com/onflow/flow-account-api) and the [FLIP](https://github.com/onflow/flow/pull/727) on derivation paths and key generation.
 
 ---

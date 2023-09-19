@@ -21,7 +21,7 @@ This will import the sample into a Samples folder under your Assets:
 
 To install the Flow emulator, please follow the instructions for your platform here:
 
-[flow-cli/install](../../../toolchains/flow-cli/index.md)
+[flow-cli/install](../../../../tools/flow-cli/index.md)
 
 Note that the Flow CLI and Flow emulator are bundled into the same command-line executable.
 
@@ -199,7 +199,7 @@ flow.AccountContractRemoved
 
 ### Scripts
 
-Scripts are cadence code that you write and are executed on the blockchain. They can contain arguments and return values, and can interact with Smart Contracts. Scripts are read-only - they cannot mutate anything on the blockchain. Anything held in local memory is discarded when the script finishes execution. For more information on programming see [Cadence](../../../../cadence/intro.md).
+Scripts are cadence code that you write and are executed on the blockchain. They can contain arguments and return values, and can interact with Smart Contracts. Scripts are read-only - they cannot mutate anything on the blockchain. Anything held in local memory is discarded when the script finishes execution. For more information on programming see [Cadence](../../../../build/cadence.md).
 
 **Execute Simple Script At Latest Block**
 
@@ -255,9 +255,9 @@ Like Scripts, Transactions are cadence code that you write and are executed on t
 
 For more information about Transactions, see [cadence/language/transactions](../../../../cadence/language/transactions.md).
 
-For more information about Transaction signing, see [concepts/transaction-signing](../../../../concepts/transactions.md#signing-a-transaction).
+For more information about Transaction signing, see [concepts/transaction-signing](../../../../build/key-concepts/transactions.md#signing-a-transaction).
 
-For more information about Cadence programming, see [cadence](../../../../cadence/intro.md).
+For more information about Cadence programming, see [cadence](../../../../build/cadence.md).
 
 **Signing In**
 

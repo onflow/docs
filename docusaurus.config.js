@@ -259,17 +259,12 @@ const config = {
         },
         items: [
           {
-            to: 'concepts/start-here',
-            position: 'left',
-            label: 'Concepts',
-          },
-          {
-            to: 'building-on-flow',
+            to: 'build/flow',
             position: 'left',
             label: 'Build',
           },
           {
-            to: 'guides',
+            to: 'guides/flow-app-quickstart',
             position: 'left',
             label: 'Guides',
           },
@@ -279,7 +274,7 @@ const config = {
             label: 'Cadence',
           },
           {
-            to: 'tools',
+            to: 'tools/flow-cli',
             position: 'left',
             label: 'Tools',
           },
@@ -326,30 +321,30 @@ const config = {
               },
               {
                 label: "SDK's & Tools",
-                to: '/next/tools',
+                to: '/tools',
               },
               {
                 to: '/cadence/intro',
                 label: 'Cadence',
               },
               {
-                to: '/building-on-flow/mobile',
+                to: '/build/mobile/overview',
                 label: 'Mobile',
               },
               {
-                to: '/next/tools/clients/fcl-js/',
+                to: '/tools/clients/fcl-js/',
                 label: 'FCL',
               },
               {
-                to: '/next/tools/toolchains/flow-js-testing/',
+                to: '/tools/flow-js-testing/',
                 label: 'JS Testing Library',
               },
               {
-                to: '/next/tools/toolchains/flow-cli/',
+                to: '/tools/flow-cli/',
                 label: 'CLI',
               },
               {
-                to: '/next/tools/toolchains/emulator/',
+                to: '/tools/emulator/',
                 label: 'Emulator',
               },
               {
@@ -357,7 +352,7 @@ const config = {
                 label: 'Dev Wallet',
               },
               {
-                to: '/next/tools/toolchains/vscode-extension/',
+                to: '/tools/vscode-extension/',
                 label: 'VS Code Extension',
               },
             ],
@@ -366,7 +361,7 @@ const config = {
             title: 'Community',
             items: [
               {
-                to: '/next/community-resources',
+                to: '/community-resources',
                 label: 'Ecosystem',
               },
               {
@@ -407,10 +402,6 @@ const config = {
                 label: 'Flow Playground',
               },
               {
-                to: '/tutorials/kitty-items/',
-                label: 'Kitty Items',
-              },
-              {
                 to: '/cadence/tutorial/first-steps',
                 label: 'Cadence Tutorials',
               },
@@ -419,7 +410,7 @@ const config = {
                 label: 'Cadence Cookbook',
               },
               {
-                to: '/next/building-on-flow/core-contracts/',
+                to: '/build/core-contracts/',
                 label: 'Core Contracts & Standards',
               },
               {
@@ -444,19 +435,19 @@ const config = {
                 label: 'Flowscan Testnet',
               },
               {
-                to: '/building-on-flow/run-and-secure/nodes/node-operation/past-sporks/',
+                to: '/node-ops/node-operation/past-sporks/',
                 label: 'Past Sporks',
               },
               {
-                to: '/building-on-flow/run-and-secure/nodes/node-operation/upcoming-sporks',
+                to: '/node-ops/node-operation/upcoming-sporks',
                 label: 'Upcoming Sporks',
               },
               {
-                to: '/building-on-flow/run-and-secure/nodes/node-operation/',
+                to: '/node-ops/node-operation/',
                 label: 'Node Operation',
               },
               {
-                to: '/building-on-flow/run-and-secure/nodes/node-operation/spork/',
+                to: '/node-ops/node-operation/spork/',
                 label: 'Spork Information',
               },
             ],
