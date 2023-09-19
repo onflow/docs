@@ -317,7 +317,7 @@ const config = {
             items: [
               {
                 label: 'Getting Started',
-                to: '/getting-started',
+                to: '/build/getting-started/quickstarts/hello-world',
               },
               {
                 label: "SDK's & Tools",
