@@ -174,7 +174,7 @@ accounts (`PublicAccount`). To share a private Capability with another account, 
 to another account which places in the [account inbox](./language/accounts/inbox.mdx). The recipient can later
 claim the Capability from the account inbox using then `claim` function.
 
-Capabilities can be `unpublished` and can also be [revoked](../build/best-practices/design-patterns.md#capability-revocation) by the creating
+Capabilities can be `unpublished` and can also be [revoked](./design-patterns.md#capability-revocation) by the creating
 account.
 
 To aid automation, events are emitted for `publish`, `claim` and `unpublish` actions completed for a Capability.
@@ -218,10 +218,10 @@ roles may vary, for example, larger organizations may require more complex role-
 Resource in this context is key - the instance can't be copied and the account with the first edition mint of the admin
 serves as the root-admin. The admin can be implemented to mint additional admin Resource instances, which only the
 root-admin can grant to selected user accounts via a Capability. Conveniently, because the admin role is only
-accessible via a Capability it's easy to manage with [Capability Revocation](../build/best-practices/design-patterns.md#capability-revocation).
+accessible via a Capability it's easy to manage with [Capability Revocation](./design-patterns.md#capability-revocation).
 
-The admin role originates from the [init singleton pattern](../build/best-practices/design-patterns.md#init-singleton) and uses the
-[Capability Bootstrapping](../build/best-practices/design-patterns.md#capability-bootstrapping) pattern for making the Capability available to
+The admin role originates from the [init singleton pattern](./design-patterns.md#init-singleton) and uses the
+[Capability Bootstrapping](./design-patterns.md#capability-bootstrapping) pattern for making the Capability available to
 other accounts.
 
 An example admin role implementation is available in [Cadence cookbook](https://cookbook.onflow.org/?preview=13).

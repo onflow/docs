@@ -10,16 +10,16 @@ Some practices listed below might overlap with advice in the [Cadence Anti-Patte
 
 ## References
 
-[References](../../cadence/language/references) are ephemeral values and cannot be stored. If persistence is required, store a capability and borrow it when needed.
+[References](./language/references) are ephemeral values and cannot be stored. If persistence is required, store a capability and borrow it when needed.
 
 When exposing functionality, provide the least access necessary. When creating an authorized reference,
 create it with only the minimal set of entitlements required to achieve the desired functionality.
 
 ## Account Storage
 
-Don't trust a users’ [account storage](../../cadence/language/accounts/storage.mdx). Users have full control over their data and may reorganize it as they see fit. Users may store values in any path, so paths may store values of “unexpected” types. These values may be instances of types in contracts that the user deployed.
+Don't trust a users’ [account storage](./language/accounts/storage.mdx). Users have full control over their data and may reorganize it as they see fit. Users may store values in any path, so paths may store values of “unexpected” types. These values may be instances of types in contracts that the user deployed.
 
-Always [borrow](../../cadence/language/accounts/capabilities.mdx) with the specific type that is expected. Or, check if the value is an instance of the expected type.
+Always [borrow](./language/accounts/capabilities.mdx) with the specific type that is expected. Or, check if the value is an instance of the expected type.
 
 ## Auth Accounts
 
@@ -50,7 +50,7 @@ Ensure capabilities cannot be accessed by unauthorized parties. For example, cap
 
 ## Transactions
 
-Audits of Cadence code should also include [transactions](../../cadence/language/transactions.md), as they may contain arbitrary code, just, like in contracts. In addition, they are given full access to the accounts of the transaction’s signers, i.e. the transaction is allowed to manipulate the signers’ account storage, contracts, and keys.
+Audits of Cadence code should also include [transactions](./language/transactions.md), as they may contain arbitrary code, just, like in contracts. In addition, they are given full access to the accounts of the transaction’s signers, i.e. the transaction is allowed to manipulate the signers’ account storage, contracts, and keys.
 
 Signing a transaction gives access to the `AuthAccount`, i.e. full access to the account’s storage, keys, and contracts.
 
@@ -58,13 +58,13 @@ Do not blindly sign a transaction. The transaction could for example change depl
 
 ## Types
 
-Use [intersection types and interfaces](../../cadence/language/intersection-types.md). Always use the most specific type possible, following the principle of least privilege. Types should always be as restrictive as possible, especially for resource types.
+Use [intersection types and interfaces](./language/intersection-types.md). Always use the most specific type possible, following the principle of least privilege. Types should always be as restrictive as possible, especially for resource types.
 
 If given a less-specific type, cast to the more specific type that is expected. For example, when implementing the fungible token standard, a user may deposit any fungible token, so the implementation should cast to the expected concrete fungible token type.
 
 ## Access Control
 
-Declaring a field as [`access(all)`](../../cadence/language/access-control.md) only protects from replacing the field’s value, but the value itself can still be mutated if it is mutable. Remember that containers, like dictionaries, and arrays, are mutable.
+Declaring a field as [`access(all)`](./language/access-control.md) only protects from replacing the field’s value, but the value itself can still be mutated if it is mutable. Remember that containers, like dictionaries, and arrays, are mutable.
 
 Prefer non-public access to a mutable state. That state may also be nested. For example, a child may still be mutated even if its parent exposes it through a field with non-settable access.
 
