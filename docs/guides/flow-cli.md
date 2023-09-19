@@ -1,7 +1,7 @@
 ---
 title: Flow CLI
 sidebar_label: Flow CLI
-description: Guide to installing and user Flow CLI
+description: Guide to installing and using Flow CLI
 sidebar_position: 2
 ------
 
