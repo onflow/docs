@@ -35,11 +35,12 @@ const routeMapping = {
   '/flow/dapp-development/mainnet-account-setup':
     '/tutorials/mainnet-account-setup',
   '/flow/dapp-development/mainnet-deployment':
-    '/guides/deploying/mainnet-deployment',
+    '/guides/smart-contracts/deploying',
   '/flow/dapp-development/NFT-drop-styles': '/tutorials/NFT-drop-styles',
   '/flow/dapp-development/smart-contracts': '/tutorials/smart-contracts',
   '/flow/dapp-development/testnet-deployment': '/tutorials/testnet-deployment',
-  '/flow/dapp-development/testnet-testing': '/guides/deploying/testnet-testing',
+  '/flow/dapp-development/testnet-testing':
+    '/guides/smart-contracts/testnet-testing',
   '/flow/dapp-development/user-accounts-and-wallets':
     '/tutorials/user-accounts-and-wallets',
   '/flow/developer-portal/contribution-guidelines':
