@@ -114,17 +114,17 @@
     },
     {
       "source": "/learn/concepts/accessing-mainnet",
-      "destination": "/concepts/flow-networks/accessing-mainnet",
+      "destination": "/references/flow-networks/accessing-mainnet",
       "permanent": true
     },
     {
       "source": "/learn/concepts/accessing-sandboxnet",
-      "destination": "/concepts/flow-networks/accessing-sandboxnet",
+      "destination": "/references/flow-networks/accessing-sandboxnet",
       "permanent": true
     },
     {
       "source": "/learn/concepts/accessing-testnet",
-      "destination": "/concepts/flow-networks/accessing-testnet",
+      "destination": "/references/flow-networks/accessing-testnet",
       "permanent": true
     },
     {
@@ -144,7 +144,7 @@
     },
     {
       "source": "/learn/concepts/networks",
-      "destination": "/concepts/flow-networks",
+      "destination": "/references/flow-networks",
       "permanent": true
     },
     {
