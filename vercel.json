@@ -29,12 +29,12 @@
     },
     {
       "source": "/concepts/core-contracts/nft-standard",
-      "destination": "/concepts/core-contracts",
+      "destination": "/references/core-contracts/flow-nft",
       "permanent": true
     },
     {
       "source": "/flow/core-contracts/:path*",
-      "destination": "/concepts/core-contracts/:path*",
+      "destination": "/references/core-contracts/:path*",
       "permanent": true
     },
     {
@@ -184,7 +184,12 @@
     },
     {
       "source": "/mobile/:path*",
-      "destination": "/concepts/mobile/:path*",
+      "destination": "/build/mobile/:path*",
+      "permanent": true
+    },
+    {
+      "source": "/concepts/mobile/:path*",
+      "destination": "/build/mobile/:path*",
       "permanent": true
     },
     {
@@ -494,7 +499,7 @@
     },
     {
       "source": "/core-contracts/:path*",
-      "destination": "/concepts/core-contracts/:path*",
+      "destination": "/references/core-contracts/:path*",
       "permanent": true
     },
     {
@@ -548,173 +553,173 @@
       "permanent": true
     },
     {
-      "source": "/tooling/flow-cli/account-add-contract",
+      "source": "/tooling/flow-cli/:path*",
+      "destination": "/tools/flow-cli/:path*",
+      "permanent": true
+    },
+    {
+      "source": "/tools/flow-cli/account-add-contract",
       "destination": "/tools/flow-cli/accounts/account-add-contract",
       "permanent": true
     },
     {
-      "source": "/tooling/flow-cli/account-remove-contract",
+      "source": "/tools/flow-cli/account-remove-contract",
       "destination": "/tools/flow-cli/accounts/account-remove-contract",
       "permanent": true
     },
     {
-      "source": "/tooling/flow-cli/account-staking-info(.*)",
+      "source": "/tools/flow-cli/account-staking-info(.*)",
       "destination": "/tools/flow-cli/accounts/account-staking-info",
       "permanent": true
     },
     {
-      "source": "/tooling/flow-cli/account-update-contract",
+      "source": "/tools/flow-cli/account-update-contract",
       "destination": "/tools/flow-cli/accounts/account-update-contract",
       "permanent": true
     },
     {
-      "source": "/tooling/flow-cli/build-transactions",
+      "source": "/tools/flow-cli/build-transactions",
       "destination": "/tools/flow-cli/transactions/build-transactions",
       "permanent": true
     },
     {
-      "source": "/tooling/flow-cli/complex-transactions",
+      "source": "/tools/flow-cli/complex-transactions",
       "destination": "/tools/flow-cli/transactions/complex-transactions",
       "permanent": true
     },
     {
-      "source": "/tooling/flow-cli/configuration",
+      "source": "/tools/flow-cli/configuration",
       "destination": "/tools/flow-cli/flow.json/configuration",
       "permanent": true
     },
     {
-      "source": "/tooling/flow-cli/create-accounts",
+      "source": "/tools/flow-cli/create-accounts",
       "destination": "/tools/flow-cli/accounts/create-accounts",
       "permanent": true
     },
     {
-      "source": "/tooling/flow-cli/decode-keys",
+      "source": "/tools/flow-cli/decode-keys",
       "destination": "/tools/flow-cli/keys/decode-keys",
       "permanent": true
     },
     {
-      "source": "/tooling/flow-cli/decode-transactions",
+      "source": "/tools/flow-cli/decode-transactions",
       "destination": "/tools/flow-cli/transactions/decode-transactions",
       "permanent": true
     },
     {
-      "source": "/tooling/flow-cli/deploy-project-contracts",
+      "source": "/tools/flow-cli/deploy-project-contracts",
       "destination": "/tools/flow-cli/deployment/deploy-project-contracts",
       "permanent": true
     },
     {
-      "source": "/tooling/flow-cli/derive-keys",
+      "source": "/tools/flow-cli/derive-keys",
       "destination": "/tools/flow-cli/keys/derive-keys",
       "permanent": true
     },
     {
-      "source": "/tooling/flow-cli/emulator-snapshot",
+      "source": "/tools/flow-cli/emulator-snapshot",
       "destination": "/tools/flow-cli/deployments/emulator-snapshot",
       "permanent": true
     },
     {
-      "source": "/tooling/flow-cli/generate-keys",
+      "source": "/tools/flow-cli/generate-keys",
       "destination": "/tools/flow-cli/keys/generate-keys",
       "permanent": true
     },
     {
-      "source": "/tooling/flow-cli/get-accounts",
+      "source": "/tools/flow-cli/get-accounts",
       "destination": "/tools/flow-cli/accounts/get-accounts",
       "permanent": true
     },
     {
-      "source": "/tooling/flow-cli/get-blocks",
+      "source": "/tools/flow-cli/get-blocks",
       "destination": "/tools/flow-cli/get-flow-data/get-blocks",
       "permanent": true
     },
     {
-      "source": "/tooling/flow-cli/get-collections",
+      "source": "/tools/flow-cli/get-collections",
       "destination": "/tools/flow-cli/get-flow-data/get-collections",
       "permanent": true
     },
     {
-      "source": "/tooling/flow-cli/get-events",
+      "source": "/tools/flow-cli/get-events",
       "destination": "/tools/flow-cli/get-flow-data/get-events",
       "permanent": true
     },
     {
-      "source": "/tooling/flow-cli/get-status",
+      "source": "/tools/flow-cli/get-status",
       "destination": "/tools/flow-cli/get-flow-data/get-status",
       "permanent": true
     },
     {
-      "source": "/tooling/flow-cli/get-transactions",
+      "source": "/tools/flow-cli/get-transactions",
       "destination": "/tools/flow-cli/transactions/get-transactions",
       "permanent": true
     },
     {
-      "source": "/tooling/flow-cli/initialize-configuration",
+      "source": "/tools/flow-cli/initialize-configuration",
       "destination": "/tools/flow-cli/flow.json/initialize-configuration",
       "permanent": true
     },
     {
-      "source": "/tooling/flow-cli/manage-configuration",
+      "source": "/tools/flow-cli/manage-configuration",
       "destination": "/tools/flow-cli/flow.json/manage-configuration",
       "permanent": true
     },
     {
-      "source": "/tooling/flow-cli/project-app",
+      "source": "/tools/flow-cli/project-app",
       "destination": "/tools/flow-cli/utils/project-app",
       "permanent": true
     },
     {
-      "source": "/tooling/flow-cli/project-contracts",
+      "source": "/tools/flow-cli/project-contracts",
       "destination": "/tools/flow-cli/deployment/project-contracts",
       "permanent": true
     },
     {
-      "source": "/tooling/flow-cli/security",
+      "source": "/tools/flow-cli/security",
       "destination": "/tools/flow-cli/flow.json/security",
       "permanent": true
     },
     {
-      "source": "/tooling/flow-cli/send-signed-transactions",
+      "source": "/tools/flow-cli/send-signed-transactions",
       "destination": "/tools/flow-cli/transactions/send-signed-transactions",
       "permanent": true
     },
     {
-      "source": "/tooling/flow-cli/send-transactions",
+      "source": "/tools/flow-cli/send-transactions",
       "destination": "/tools/flow-cli/transactions/send-transactions",
       "permanent": true
     },
     {
-      "source": "/tooling/flow-cli/sign-transaction",
+      "source": "/tools/flow-cli/sign-transaction",
       "destination": "/tools/flow-cli/transactions/sign-transaction",
       "permanent": true
     },
     {
-      "source": "/tooling/flow-cli/signature-generate",
+      "source": "/tools/flow-cli/signature-generate",
       "destination": "/tools/flow-cli/utils/signature-generate",
       "permanent": true
     },
     {
-      "source": "/tooling/flow-cli/signature-verify",
+      "source": "/tools/flow-cli/signature-verify",
       "destination": "/tools/flow-cli/utils/signature-verify",
       "permanent": true
     },
     {
-      "source": "/tooling/flow-cli/snapshot-save",
+      "source": "/tools/flow-cli/snapshot-save",
       "destination": "/tools/flow-cli/utils/snapshot-save",
       "permanent": true
     },
     {
-      "source": "/tooling/flow-cli/start-emulator",
+      "source": "/tools/flow-cli/start-emulator",
       "destination": "/tools/flow-cli/deployments/start-emulator",
       "permanent": true
     },
     {
-      "source": "/tooling/flow-cli/tools",
+      "source": "/tools/flow-cli/tools",
       "destination": "/tools/flow-cli/utils/tools",
-      "permanent": true
-    },
-    {
-      "source": "/tooling/flow-cli/:path*",
-      "destination": "/tools/flow-cli/:path*",
       "permanent": true
     },
     {
@@ -1034,6 +1039,16 @@
     {
       "source": "/build/run-and-secure/:path*",
       "destination": "/references/run-and-secure/:path*",
+      "permanent": true
+    },
+    {
+      "source": "/cadence/language/capability-based-access-control",
+      "destination": "/cadence/language/capabilities",
+      "permanent": true
+    },
+    {
+      "source": "/architecture/staking/:path*",
+      "destination": "/references/run-and-secure/staking/:path*",
       "permanent": true
     }
   ]
