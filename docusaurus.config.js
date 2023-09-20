@@ -410,7 +410,7 @@ const config = {
                 label: 'Cadence Cookbook',
               },
               {
-                to: '/build/core-contracts/',
+                to: '/references/core-contracts/',
                 label: 'Core Contracts & Standards',
               },
               {

@@ -2,7 +2,7 @@
 sidebar_position: 2
 ---
 
-# Introduction to Cadence
+# Intro to Cadence
 
 In a blockchain environment like Flow, programs that are stored on-chain in accounts are commonly referred to as smart contracts.
 A smart contract is a program that verifies and executes the performance of a contract without the need for a trusted third party.

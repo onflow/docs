@@ -59,7 +59,7 @@ There is an unlimited amount of events that can be defined on Flow, but you shou
 
 ### FLOW Token Events
 
-The FLOW Token contract uses the fungible token standard on Flow and is the contract that issues a core FLOW token. As with any contract, it can emit events when interacted with. When we transfer the FLOW token, events are emitted. You can find a lot of details on the events emitted in the [FLOW Token documentation](../../build/core-contracts/03-flow-token.md). 
+The FLOW Token contract uses the fungible token standard on Flow and is the contract that issues a core FLOW token. As with any contract, it can emit events when interacted with. When we transfer the FLOW token, events are emitted. You can find a lot of details on the events emitted in the [FLOW Token documentation](../../references/core-contracts/03-flow-token.md). 
 
 The most common events are when tokens are transferred which is accomplished with two actions: withdrawing tokens from the payer and depositing tokens in the receiver. Each of those action has a corresponding event:
 

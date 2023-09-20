@@ -126,7 +126,7 @@ export default function GettingStarted(): JSX.Element {
                   },
                   {
                     title: 'Core contracts & standards',
-                    href: '/build/core-contracts',
+                    href: '/references/core-contracts',
                     tags: ['nft', 'ft', 'metadata'],
                   },
                   {

@@ -114,17 +114,17 @@
     },
     {
       "source": "/learn/concepts/accessing-mainnet",
-      "destination": "/concepts/flow-networks/accessing-mainnet",
+      "destination": "/references/flow-networks/accessing-mainnet",
       "permanent": true
     },
     {
       "source": "/learn/concepts/accessing-sandboxnet",
-      "destination": "/concepts/flow-networks/accessing-sandboxnet",
+      "destination": "/references/flow-networks/accessing-sandboxnet",
       "permanent": true
     },
     {
       "source": "/learn/concepts/accessing-testnet",
-      "destination": "/concepts/flow-networks/accessing-testnet",
+      "destination": "/references/flow-networks/accessing-testnet",
       "permanent": true
     },
     {
@@ -144,7 +144,7 @@
     },
     {
       "source": "/learn/concepts/networks",
-      "destination": "/concepts/flow-networks",
+      "destination": "/references/flow-networks",
       "permanent": true
     },
     {
@@ -713,8 +713,8 @@
       "permanent": true
     },
     {
-      "source": "/tooling/nft-catalog/:path*",
-      "destination": "/tools/nft-catalog/:path*",
+      "source": "/tooling/nft-catalog/(.*)",
+      "destination": "/tools/nft-catalog/",
       "permanent": true
     },
     {
@@ -863,7 +863,7 @@
     },
     {
       "source": "/next/building-on-flow/core-contracts/:path*",
-      "destination": "/next/build/core-contracts/:path*",
+      "destination": "/next/references/core-contracts/:path*",
       "permanent": true
     },
     {
@@ -900,7 +900,7 @@
       "destination": "/tools/flow-dev-wallet/:path*"
     },
     {
-      "source": "/tools/nft-catalog/:path*",
+      "source": "/tools/nft-catalog/(.+)",
       "destination": "/tools/nft-catalog"
     },
     {
@@ -984,6 +984,16 @@
     {
       "source": "/concepts/intro",
       "destination": "/build/flow",
+      "permanent": true
+    },
+    {
+      "source": "/build/core-contracts/:path*",
+      "destination": "/references/core-contracts/:path*",
+      "permanent": true
+    },
+    {
+      "source": "/build/flow-networks/:path*",
+      "destination": "/references/flow-networks/:path*",
       "permanent": true
     },
     {
