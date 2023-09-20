@@ -26,7 +26,7 @@ func main() {
 
 ## Account creation
 
-You can follow the [Flow Port account creation steps](../run-and-secure/nodes/flow-port/index.md#blocto) to create a new mainnet account.
+You can follow the [Flow Port account creation steps](../../references/run-and-secure/nodes/flow-port/index.md#blocto) to create a new mainnet account.
 
 If you prefer watching a video, check out this tutorial:
 

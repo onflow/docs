@@ -1,16 +1,12 @@
 ---
-title: Flow Operators
+title: Builders / Developers
 description: FAQ
 ---
 
 ## What is the expected TPS (transactions per second) for the forseeable future?
 
 Not all transactions are equal, so throughput numbers alone doesn't tell the whole story.
-Flow’s transaction throughput depends on a variety of factors, such as networking bandwidth available to the nodes and optimizations in Flow's implementation. The dominant factor is transaction complexity, impacted by the number of instructions your transaction executes, the number of ledger reads and writes your transaction performs and how many signatures have to be checked to confirm that your transaction has the required privileges. For benchmark loads of simple token balance transfers (essentially an addition and subtraction plus two signature verifications), Flow's current implementation easily sustained a throughput of significantly more than 100 tps. However, we observed that transactions on Mainnet are generally considerably more complex (requiring several signature verifications; many ledger reads and writes; and running relatively complex computations). For the near-term future, 100tps seems like a realistic magnitude. We are working hard towards sustaining 100tps of the kind which are currently run on Mainnet. If your transactions are much simpler than the average Mainnet transaction, Flow potentially already satisfies your desired throughput. The best way to find out would be to test a benchmark set of your specific transactions on TestNet.
-
-## Does the blockheight go up 1 every second?
-
-Flow targets 1 second block times but the protocol is still early in its development and further optimizations are needed to achieve that. As of Feb 2021, the rate of block finalization on Mainnet is 0.4 blocks/s; with a standard deviation of ±0.1 blocks/s. Hence, a new block is finalized on average every 2.5 seconds. Note that block height only has a loose correlation with time, as the block rate naturally fluctuates.
+Flow’s transaction throughput depends on a variety of factors, such as networking bandwidth available to the nodes and optimizations in our implementation. The dominant factor is transaction complexity, impacted by the number of instructions your transaction executes, the number of ledger reads and writes your transaction performs and how many signatures have to be checked to confirm that your transaction has the required privileges. For benchmark loads of simple token balance transfers (essentially an addition and subtraction plus two signature verifications), our current implementation easily sustained a throughput of significantly more than 100 tps. However, we observed that transactions on Mainnet are generally considerably more complex (requiring several signature verifications; many ledger reads and writes; and running relatively complex computations). For the near-term future, 100tps seems like a realistic magnitude. We are working hard towards sustaining 100tps of the kind which are currently run on Mainnet. If your transactions are much simpler than the average Mainnet transaction, Flow potentially already satisfies your desired throughput. The best way to find out would be to test a benchmark set of your specific transactions on TestNet.
 
 ## Does Flow have a block explorer?
 
@@ -51,12 +47,12 @@ Scripts can access multiple contracts and accounts, calculate values, and ensure
 
 #### JavaScript
 
-You can download the FCL (Flow Client Library) here:
+You can download FCL (Flow Client Library) here:
 
 [https://github.com/onflow/fcl-js](https://github.com/onflow/fcl-js)
 
 To connect to an access node you will need to provide a URL to the SDK.
-[access node urls](../access-api.mdx)
+[testnet and mainnet](../access-api.mdx)
 
 Here are examples of querying an access node at the bottom of this page:
 
@@ -68,7 +64,7 @@ Here are examples of creating a script and Cadence data types:
 
 And here are examples of parsing script output:
 
-[https://github.com/onflow/fcl-js/tree/master/packages/decode](https://github.com/onflow/fcl-js/tree/master/packages/sdk/src/decode)
+[https://github.com/onflow/fcl-js/tree/master/packages/sdk/src/decode](https://github.com/onflow/fcl-js/tree/master/packages/sdk/src/decode)
 
 #### Go
 
@@ -128,17 +124,16 @@ This is documented here:
 [https://github.com/onflow/flow-go-sdk#querying-events](https://github.com/onflow/flow-go-sdk#querying-events)
 
 And there is an example of usage here:
-
-[https://github.com/onflow/flow-go-sdk/blob/master/examples/get_events)](https://github.com/onflow/flow-go-sdk/blob/master/examples/get_events)
+https://github.com/onflow/flow-go-sdk/blob/master/examples/get_events/main.go
+[https://github.com/onflow/flow-go-sdk/blob/master/examples/get_events](https://github.com/onflow/flow-go-sdk/blob/master/examples/get_events)
 
 ### Using JavaScript
 
-Once you connect to an Access Node using the FCL (Flow Client Library) you can query for events.
+Once you connect to an Access Node using FCL (Flow Client Library) you can query for events.
 
 This is documented here:
 
 [https://github.com/onflow/fcl-js/tree/master/packages/sdk#getevents-usage](https://github.com/onflow/fcl-js/tree/master/packages/sdk#getevents-usage)
-And there is an example of usage here:
 
 ### Using Other Programming Languages
 
@@ -146,25 +141,53 @@ Currently, we only provide Go and FCL-JS (Flow Client Library) for Flow. For an 
 
 [https://www.onflow.org/post/interact-with-flow-using-ruby](https://www.onflow.org/post/interact-with-flow-using-ruby)
 
-## I staked and now I can't see my FLOW - what happened?
+## What is FCL?
 
-Once you complete a successful staking or delegation request, your tokens are sent to the staking contract. Your tokens are not lost - they are staked! To view your active stake or delegation, navigate to the Stake & Delegate page on Flow Port (left side bar, or this URL + your address after the last slash ([https://port.onflow.org/stake-delegate/](https://port.onflow.org/stake-delegate/))
+FCL (Flow Client Library) enables applications to easily integrate with all FCL-compatible wallets and other services (e.g. profiles, private information, notifications). This offers developers a strong foundation to compose their apps with existing building blocks. FCL is currently supported for browser applications, and will be extended to other platforms.
 
-## What do I do when I get this error: Node start up issue - could not process block proposal: invalid extension of protocol state?
+With FCL, you can:
 
-It sounds like you didn't wipe your `data` folder? Turn off your node, remove the `data` folder and restart the node.
+- Integrate all compatible wallets without any custom code or code injection
+- Authenticate users
+- Query users' Flow accounts
+- Send transactions (e.g. initializing resources, sending assets, purchasing, etc.)
+- Sign transactions through wallet integration to avoid key management (especially helpful for non-custodial apps)
 
-## What errors are acceptable to see when my node is running?
+## How do I access mainnet?
 
-No errors should be considered acceptable. If there are errors that are constantly recurring, please bring it to attention so logging can be adjusted accordingly, if required.
+You can find details about accessing Flow mainnet here [/http-api](/http-api).
+
+The access is via a GRPC interface. Transactions can also be submitted using the GRPC [SendTransaction call](/http-api#tag/Transactions/paths/~1transactions/post). A GRPC client written in any language should be able to talk via the Access API. We have a [Go SDK](https://github.com/onflow/flow-go-sdk) and [FCL-JS (Flow Client Library)](https://github.com/onflow/fcl-js) that can be used if you are using a Go based or a JS based client respectively.
+
+## What's the difference between a mainnet spork and testnet spork? How do sporks affect TopShot?
+
+The Mainnet and Testnet are two separate networks. The difference is which network will be undergoing the down time. Since the main application for NBA TopShot exists on Mainnet, only Mainnet sporks will affect the main applications uptime.
+
+Currently NBA Top Shot runs on Mainnet and NBA Top Shot test app runs on Flow Testnet.
+
+## How much will Gas cost on Flow?
+
+Starting on October 16, 2021 at 7:30am PT (2:30pm UTC), there will be a flat fee of 0.00001 FLOW applied to every transaction submitted to the network. Transaction Fees are subject to change. In the event that a change does occur, the community will be informed ahead of implementation. These fees are for spam prevention and will be low and fixed for all transactions.
+
+## How can I deploy a contract?
+
+To deploy a contract, please follow the steps outlined in the [Dapp Deployment guide](../../../../tools/flow-cli/accounts/account-add-contract.md).
+
+## How can I create my first account for mainnet?
+
+New accounts can be created using Flow Port. You can [follow these guidelines to get a new mainnet account](../flow-port/index.md#creating-an-account).
+
+## How can I deploy a contract to mainnet?
+
+Please review the [Dapp Deployment guide](../../../../tools/flow-cli/accounts/account-add-contract.md) for all details.
 
 ## Is there a testnet/devnet?
 
-There is an access node for you to develop against on the testnet/devnet. You can learn more about it here [testnet-deployment#accessing-flow-testnet](../../../../guides/smart-contracts/deploying.mdx#accessing-flow-testnet)
+There is an access node for you to develop against on the testnet/devnet. You can learn more about it [here](../../../../build/flow-networks)
 
 ## Is there a public node?
 
-Yes, an access node is publicly accessible to submit transactions and read data from the blockchain. If you’d like to access the devnet access node to build against, you can do so [here](../../../flow-networks/accessing-testnet.md)
+Yes, an access node is publicly accessible to submit transactions and read data from the blockchain. If you’d like to access the devnet access node to build against, you can do so [here](../../../../build/flow-networks/accessing-testnet.md#accessing-flow-testnet)
 
 ## Is it possible to add multiple public keys to a given account/address so that it can be controlled by more than one private key?
 
@@ -179,17 +202,30 @@ FLOW supports a variety of signature schemes for adding keys to an account.
 
 Details: [concepts/accounts-and-keys](../../../../build/key-concepts/accounts.md)
 
+## How can I see what Fungible-Tokens an account has?
+
+If you know the /public/ storage path to the FungibleToken.Balance capability for a particular FT vault type, you can borrow that and check its balance. If you wish to know which vaults an account has, you will currently have to check a list of well-known paths. There is an issue that may help with this in future - [https://github.com/onflow/cadence/issues/208](https://github.com/onflow/cadence/issues/208)
+
+## How can I see what NFTs an account has?
+
+If you know the /public/ storage path to the NonFungibleToken.CollectionPublic capability for a particular NFT type, you can borrow that and call getIDs() on it. If you wish to know which token collections an account has, you will currently have to check a list of well-known paths. There is an issue that may help with this in future - [https://github.com/onflow/cadence/issues/208](https://github.com/onflow/cadence/issues/208)
+
+## How can I see what resources an account has?
+
+Flow doesn't yet provide functionality to inspect all of the resources on an account, but it is possible to execute a Cadence script that checks for resources at known storage paths.
+
 ## How do I create a Flow account if I do not have a service account?
 
 Instructions to generate an address are here: [flow-go-sdk#create-accounts](../../../../tools/clients/flow-go-sdk/index.mdx#create-accounts). You don't need a service account.
 
+## Is there a tutorial about how to access flow testnet? From scratch, getting testnet, Flow token etc..?
+
+Yes: [testnet-deployment](../../../../guides/smart-contracts/deploying.mdx)
+
 ## Can you query events between a block range?
 
-You can query the access API to get events for a block range. See Access API spec here: [http-api](/http-api).
+You can query the access API to get events for a block range. See Access API spec here: [/http-api](/http-api).
 
 ## Where can I follow feature releases on Flow?
 
 You can follow Flow node software releases here: [https://github.com/onflow/flow-go/releases](https://github.com/onflow/flow-go/releases).
-
-## How do I run a Flow node and become a node operator?
-See the dedicated section on node operation: [nodes/node-operation/](../../../../node-ops/node-operation/index.md)
