@@ -988,7 +988,12 @@
     },
     {
       "source": "/build/run-and-secure/staking/stake-slashing",
-      "destination": "/build/run-and-secure/nodes/slashing",
+      "destination": "/references/run-and-secure/nodes/slashing",
+      "permanent": true
+    },
+    {
+      "source": "/build/run-and-secure/:path*",
+      "destination": "/references/run-and-secure/:path*",
       "permanent": true
     }
   ]
