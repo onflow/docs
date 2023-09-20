@@ -918,7 +918,7 @@
     },
     {
       "source": "/next/building-on-flow/run-and-secure/node/node-operation/:path*",
-      "destination": "/next/node-ops/node-operation/:path*",
+      "destination": "/next/references/node-operation/:path*",
       "permanent": true
     },
     {
@@ -940,7 +940,7 @@
     },
     {
       "source": "/building-on-flow/run-and-secure/node-operation/:path",
-      "destination": "/node-ops/node-operation/:path*",
+      "destination": "/references/node-operation/:path*",
       "permanent": true
     },
     {
@@ -955,7 +955,7 @@
     },
     {
       "source": "/docs/node-roles",
-      "destination": "/node-ops/node-operation/node-roles",
+      "destination": "/references/node-operation/node-roles",
       "permanent": true
     },
     {

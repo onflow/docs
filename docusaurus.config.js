@@ -435,19 +435,19 @@ const config = {
                 label: 'Flowscan Testnet',
               },
               {
-                to: '/node-ops/node-operation/past-sporks/',
+                to: '/references/node-operation/past-sporks/',
                 label: 'Past Sporks',
               },
               {
-                to: '/node-ops/node-operation/upcoming-sporks',
+                to: '/references/node-operation/upcoming-sporks',
                 label: 'Upcoming Sporks',
               },
               {
-                to: '/node-ops/node-operation/',
+                to: '/references/node-operation/',
                 label: 'Node Operation',
               },
               {
-                to: '/node-ops/node-operation/spork/',
+                to: '/references/node-operation/spork/',
                 label: 'Spork Information',
               },
             ],
