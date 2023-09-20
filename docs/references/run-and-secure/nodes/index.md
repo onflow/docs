@@ -1,6 +1,6 @@
 ---
-title: Node Operations
-sidebar_position: 1
+title: Flow Nodes
+sidebar_position: 7
 ---
 
 # Hello Node Operator!
@@ -22,11 +22,11 @@ Flow multirole architecture makes it more scalable and provides several node typ
 
 ---
 
-The different types of nodes are described [here](./node-roles.mdx). As node operator, you can choose to run any of the different types of node that best fits your needs.
+The different types of nodes are described [here](../../../node-ops/node-operation/node-roles.mdx). As node operator, you can choose to run any of the different types of node that best fits your needs.
 
 The nodes are classified as follows,
 
-![Flownodesdiagram.png](Flownodesdiagram.png)
+![Flownodesdiagram.png](../../../node-ops/node-operation/Flownodesdiagram.png)
 
 ## Light node a.k.a. Observer node
 
@@ -38,9 +38,9 @@ In addition to supporting dapps, an observer node can also be run by access node
 The observer node is not staked but still provides the same API as the access node.
 
 <Callout type="info">
-  <br />
-  To run a light node, follow this [guide](./observer-node.mdx)
-  <br />
+<br />
+To run a light node, follow this [guide](../../../node-ops/node-operation/observer-node.mdx)
+<br />
 </Callout>
 
 ## Archive node
@@ -58,12 +58,12 @@ _The archive node is currently in beta and will be available as a GA release in 
 
 ---
 
-In a nutshell, Full Nodes are staked network participants that drive network progress, e.g. by creating and executing new blocks. They are the primary contributors to network safety (all of them validate the correctness of the consensus process and secure the network additionally through their role-specific tasks). In comparison, Light Nodes don't contribute to the networks progress. Though, they help to secure the network by also validating the integrity of the consensus process. 
+In a nutshell, Full Nodes are staked network participants that drive network progress, e.g. by creating and executing new blocks. They are the primary contributors to network safety (all of them validate the correctness of the consensus process and secure the network additionally through their role-specific tasks). In comparison, Light Nodes don't contribute to the networks progress. Though, they help to secure the network by also validating the integrity of the consensus process.
 - The Access node is a full node that serves as an RPC node and acts as a gateway node for the network.
 - The Validator node (Collection, Consensus, Verification and Execution) is a full node that plays a role in block generation.
 
 
-### Access node
+## Access node
 
 ---
 
@@ -90,24 +90,24 @@ Furthermore, Access Node operators can freely rate-limit the amount of resources
 
 <Callout type="info">
   <br />
-  To run a self-hosted access node, follow this [guide](./access-node-setup.md)
+  To run a self-hosted access node, follow this [guide](../../../node-ops/node-operation/access-node-setup.md)
   <br />
 </Callout>
 
 <Callout type="tip">
   <br />
-Alternately, instead of running an access node, you can use the [Flow community](../../references/run-and-secure/nodes/access-api.mdx) access nodes or the ones run by any of the other node operators.
+Alternately, instead of running an access node, you can use the [Flow community](./access-api.mdx) access nodes or the ones run by any of the other node operators.
   <br />
 </Callout>
 
-### Validator node
+## Validator node
 
 ---
 
 You can also be a core participant in running the Flow network and contribute to securing it. Depending on your preference, you could run one or any combination of the following node roles:
 - Collection Nodes collaboratively create batches of transactions (in Flow terminology collections).
-- Consensus Nodes create blocks, schedule them for asynchronous execution, and commit execution results once they are verified (so called sealing). In addition, they orchestrate the Flow protocol and enforce protocol compliance. 
-- Execution Nodes asynchronously execute blocks. They are the power-houses in the protocol, providing the vast computational resources available to Flow transactions. 
+- Consensus Nodes create blocks, schedule them for asynchronous execution, and commit execution results once they are verified (so called sealing). In addition, they orchestrate the Flow protocol and enforce protocol compliance.
+- Execution Nodes asynchronously execute blocks. They are the power-houses in the protocol, providing the vast computational resources available to Flow transactions.
 - Verification Nodes check the execution results in a distributed manner.
 
 Nodes with these roles are staked and also receive staking rewards.
@@ -124,8 +124,8 @@ Before proceeding, ensure you have the stake required for your new node and that
 
 To set up a new staked node after it has been authorized by the Flow governance working group, you will need to complete the following steps:
 
-1. [Provision](./node-setup.mdx) the machine on which your node will run.
+1. [Provision](../../../node-ops/node-operation/node-setup.mdx) the machine on which your node will run.
 
-2. [Generate and register](./node-bootstrap.mdx) your node identity.
+2. [Generate and register](../../../node-ops/node-operation/node-bootstrap.mdx) your node identity.
 
-3. [Start](./node-bootstrap.mdx#step-3---start-your-flow-node) your node!
+3. [Start](../../../node-ops/node-operation/node-bootstrap.mdx#step-3---start-your-flow-node) your node!
