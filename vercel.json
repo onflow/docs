@@ -13,6 +13,11 @@
       "permanent": true
     },
     {
+      "source": "/build",
+      "destination": "/build/flow",
+      "permanent": true
+    },
+    {
       "source": "/flow",
       "destination": "/concepts/start-here",
       "permanent": true
