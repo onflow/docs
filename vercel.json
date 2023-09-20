@@ -908,7 +908,7 @@
     },
     {
       "source": "/next/guides/runningNode",
-      "destination": "/next/node-ops/running-node",
+      "destination": "/next/references/run-and-secure/running-node",
       "permanent": true
     },
     {
@@ -918,7 +918,7 @@
     },
     {
       "source": "/next/building-on-flow/run-and-secure/node/node-operation/:path*",
-      "destination": "/next/references/node-operation/:path*",
+      "destination": "/next/references/run-and-secure/node-operation/:path*",
       "permanent": true
     },
     {
@@ -940,7 +940,7 @@
     },
     {
       "source": "/building-on-flow/run-and-secure/node-operation/:path",
-      "destination": "/references/node-operation/:path*",
+      "destination": "/references/run-and-secure/node-operation/:path*",
       "permanent": true
     },
     {
@@ -955,7 +955,7 @@
     },
     {
       "source": "/docs/node-roles",
-      "destination": "/references/node-operation/node-roles",
+      "destination": "/references/run-and-secure/node-operation/node-roles",
       "permanent": true
     },
     {

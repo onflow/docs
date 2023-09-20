@@ -27,7 +27,7 @@ Please follow the instructions provided here: [Monitoring nodes](./monitoring-no
 ### Can I bootstrap and run a node at any time?
 
 Flow allows nodes to join/leave the network each time a new epoch begins (roughly once per week). 
-See [Staking & Epochs](../../architecture/staking/index.md#epochs) for general information and [Node Setup](./node-bootstrap.mdx#timing) for a guide to running a new node.
+See [Staking & Epochs](../../../architecture/staking/index.md#epochs) for general information and [Node Setup](./node-bootstrap.mdx#timing) for a guide to running a new node.
 
 ### Would it hurt the network to have a node that constantly spins up and down?
 
@@ -54,7 +54,7 @@ More on this [here](./node-migration.mdx)
 
 ### Where can I find how many nodes are currently running Flow?
 
-If you are running a node, then you most definitely have this information on your node in the file `<your bootstrap dir>/public-root-information/node-infos.pub.json`. If you are not running a node, you can find this information by using a Cadence script to query the [Staking Smart Contract](../../references/core-contracts/06-staking-contract-reference.md) (or check [Flowscan](https://flowscan.org/staking/overview))
+If you are running a node, then you most definitely have this information on your node in the file `<your bootstrap dir>/public-root-information/node-infos.pub.json`. If you are not running a node, you can find this information by using a Cadence script to query the [Staking Smart Contract](../../../references/core-contracts/06-staking-contract-reference.md) (or check [Flowscan](https://flowscan.org/staking/overview))
 
 ### Why do I need to update my node's ulimit?
 
