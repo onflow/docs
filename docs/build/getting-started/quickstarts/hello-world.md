@@ -6,11 +6,14 @@ sidebar_position: 1
 
 # Hello, World
 
-Welcome to Flow blockchain, Let's call a contract on Testnet blockchain. Testnet is a public blockchain, you can call contracts without any cost. The Flow blockchain is decentralized data store that allows for custom executable code known as contracts to be deployed and called. Contracts are flexible and live on the Flow blockchain forever. 
+Welcome to the Flow blockchain! In this quickstart guide, you'll interact with your first smart contract on our `Testnet`. For those unfamiliar, the Testnet is a public instance of the Flow blockchain designed for experimentation. Here, you can deploy and invoke smart contracts without incurring any real-world costs. 
+
+Smart contracts on Flow are permanent and flexible code that live on the blockchain, allowing you to encode business logic, define digital assets, and much more.
+
 
 ## Calling a contract
-On Testnet, `HelloWorld` Contract has a public variable named `greeting`, we'll use a Script to get it's value. For the purposes of this quick start, we are embedding Flow Runner website to run a script against Testnet. For reference [Flow Runner](https://runflow.pratikpatel.io/) website
 
+The `HelloWorld` contract exposes a public variable named `greeting`. We can retrieve its value using a simple script written in the Cadence programming language.
 
 ```
 import HelloWorld from 0x9dca641e9a4b691b
@@ -19,14 +22,13 @@ pub fun main(): String {
   return HelloWorld.greeting
 }
 ```
-`Copy` the script above into Flow Runner and click "Execute Script" Then scroll down to see the output. 
-Ignore the `red underline` of HelloWorld. Fixing this will be in future learnings. 
+`Copy` and `paste` the script into the editor then hit "Execute Script". Scroll to view the result. For now you can ignore the `red underline`.
 
 <iframe className="flow-runner-iframe" src="https://runflow.pratikpatel.io/" width="100%" height="400px"></iframe>
 
 ## Contract on Testnet
 
-Here is the `HelloWorld` contract, Continue to other getting started examples to learn how to call `changeGreeting` to change the greeting value. Notice that only owner or owner contracts can change the greeting.
+Below is the source code for the HelloWorld contract. As you continue through the next few tutorials, you'll discover how to invoke the changeGreeting function to modify the greeting value. Do take note, however, that only the contract's `owner` or permitted accounts can modify the greeting.
 ```
 pub contract HelloWorld {
 
@@ -43,7 +45,7 @@ pub contract HelloWorld {
 
 ```
 <Callout type="info">
-There are no costs associated with calling contracts. 
+There are no `read` costs associated with calling contracts. 
 </Callout>
 
-Continue to learn to create your own contracts and deploying with Flow CLI
+Continue to create your own contracts and get them deployed live with Flow CLI!
