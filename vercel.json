@@ -713,8 +713,8 @@
       "permanent": true
     },
     {
-      "source": "/tooling/nft-catalog/:path*",
-      "destination": "/tools/nft-catalog/:path*",
+      "source": "/tooling/nft-catalog/(.*)",
+      "destination": "/tools/nft-catalog/",
       "permanent": true
     },
     {
@@ -900,7 +900,7 @@
       "destination": "/tools/flow-dev-wallet/:path*"
     },
     {
-      "source": "/tools/nft-catalog/:path*",
+      "source": "/tools/nft-catalog/(.+)",
       "destination": "/tools/nft-catalog"
     },
     {
