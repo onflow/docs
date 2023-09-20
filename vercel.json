@@ -828,47 +828,47 @@
     },
     {
       "source": "/tools/wallets",
-      "destination": "/overview/getting-started/wallets",
+      "destination": "/community-resources/getting-started/wallets",
       "permanent": true
     },
     {
       "source": "/next/tools/wallets",
-      "destination": "/next/overview/getting-started/wallets",
+      "destination": "/next/community-resources/getting-started/wallets",
       "permanent": true
     },
     {
       "source": "/next/tools/bridges",
-      "destination": "/next/overview/getting-started/bridges",
+      "destination": "/next/community-resources/getting-started/bridges",
       "permanent": true
     },
     {
       "source": "/next/tools/network-faucets",
-      "destination": "/next/overview/getting-started/network-faucets",
+      "destination": "/next/community-resources/getting-started/network-faucets",
       "permanent": true
     },
     {
       "source": "/next/tools/block-explorers",
-      "destination": "/next/overview/getting-started/block-explorers",
+      "destination": "/next/community-resources/getting-started/block-explorers",
       "permanent": true
     },
     {
       "source": "/next/community-resources/projects",
-      "destination": "/next/overview/getting-started/projects",
+      "destination": "/next/community-resources/getting-started/projects",
       "permanent": true
     },
     {
       "source": "/next/building-on-flow/core-contracts/fungible-tokens",
-      "destination": "/next/overview/dive-in/fungible-tokens",
+      "destination": "/next/references/dive-in/fungible-tokens",
       "permanent": true
     },
     {
       "source": "/next/concepts/flix",
-      "destination": "/next/overview/dive-in/flix",
+      "destination": "/next/references/dive-in/flix",
       "permanent": true
     },
     {
       "source": "/next/building-on-flow/governance",
-      "destination": "/next/overview/dive-in/governance",
+      "destination": "/next/references/dive-in/governance",
       "permanent": true
     },
     {
@@ -1064,6 +1064,16 @@
     {
       "source": "/references/run-and-secure/nodes/node-operation/:path*",
       "destination": "/references/run-and-secure/node-operation/:path*",
+      "permanent": true
+    },
+    {
+      "source": "/overview/getting-started/:path*",
+      "destination": "/community-resources/getting-started/:path*",
+      "permanent": true
+    },
+    {
+      "source": "/overview/dive-in/:path*",
+      "destination": "/references/dive-in/:path*",
       "permanent": true
     }
   ]
