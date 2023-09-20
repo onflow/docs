@@ -34,12 +34,12 @@
     },
     {
       "source": "/flow/dapp-development",
-      "destination": "/tutorials/intro",
+      "destination": "/guides/flow-app-quickstart",
       "permanent": true
     },
     {
       "source": "/flow/dapp-development/:path*",
-      "destination": "/tutorials/:path*",
+      "destination": "/guides/flow-app-quickstart",
       "permanent": true
     },
     {
@@ -249,7 +249,7 @@
     },
     {
       "source": "/tools/fcl-js/tutorials/flow-app-quickstart",
-      "destination": "/tutorials/flow-app-quickstart",
+      "destination": "/guides/flow-app-quickstart",
       "permanent": true
     },
     {
@@ -349,7 +349,7 @@
     },
     {
       "source": "/tooling/fcl-js/tutorials/:path*",
-      "destination": "/tutorials/:path*",
+      "destination": "/build/getting-started/quickstarts/fcl-quickstart",
       "permanent": true
     },
     {
@@ -394,7 +394,7 @@
     },
     {
       "source": "/fcl/tutorials/:path*",
-      "destination": "/tutorials/:path*",
+      "destination": "/build/getting-started/quickstarts/fcl-quickstart",
       "permanent": true
     },
     {
@@ -408,6 +408,16 @@
       "permanent": true
     },
     {
+      "source": "/tutorials/flow-dapp-anatomy",
+      "destination": "/build/getting-started/app-architecture",
+      "permanent": true
+    },
+    {
+      "source": "/tutorials/fungible-tokens",
+      "destination": "/guides/launch-token",
+      "permanent": true
+    },
+    {
       "source": "/tutorials/flow-app-quickstart",
       "destination": "/guides/flow-app-quickstart",
       "permanent": true
@@ -415,6 +425,11 @@
     {
       "source": "/tutorials/deployment",
       "destination": "/guides/smart-contracts/deploying",
+      "permanent": true
+    },
+    {
+      "source": "/tutorials/testnet-testing",
+      "destination": "/guides/smart-contracts/testing",
       "permanent": true
     },
     {
@@ -433,13 +448,23 @@
       "permanent": true
     },
     {
+      "source": "/tutorials/user-accounts-and-wallets",
+      "destination": "/guides/smart-contracts/overview",
+      "permanent": true
+    },
+    {
+      "source": "/tutorials/user-accounts-and-wallets",
+      "destination": "/guides/smart-contracts/overview",
+      "permanent": true
+    },
+    {
       "source": "/guides",
       "destination": "/guides/flow-app-quickstart",
       "permanent": true
     },
     {
       "source": "/kitty-items/:path*",
-      "destination": "/tutorials/",
+      "destination": "/guides/flow-app-quickstart",
       "permanent": true
     },
     {
@@ -474,7 +499,7 @@
     },
     {
       "source": "/dapp-development/:path*",
-      "destination": "/tutorials/:path*",
+      "destination": "/guides/flow-app-quickstart",
       "permanent": true
     },
     {
