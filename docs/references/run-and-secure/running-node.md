@@ -8,7 +8,7 @@ sidebar_custom_props:
 ---
 
 ## Node Types
-Flow network is made up of many node types. Here is more information on the different [Node Types](../node-roles.mdx#collection). For a quick reference here are the types:
+Flow network is made up of many node types. Here is more information on the different [Node Types](./node-operation/node-roles.mdx#collection). For a quick reference here are the types:
 
 | Node Type | Stake Required in FLOW | Permissionless| Description | Running a Node |
 | --- | --- | --- | --- | -- |
