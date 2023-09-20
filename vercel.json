@@ -985,6 +985,21 @@
       "source": "/concepts/intro",
       "destination": "/build/flow",
       "permanent": true
+    },
+    {
+      "source": "/build/run-and-secure/:path*",
+      "destination": "/references/run-and-secure/:path*",
+      "permanent": true
+    },
+    {
+      "source": "/build/core-contracts/:path*",
+      "destination": "/references/core-contracts/:path*",
+      "permanent": true
+    },
+    {
+      "source": "/build/flow-networks/:path*",
+      "destination": "/references/flow-networks/:path*",
+      "permanent": true
     }
   ]
 }
