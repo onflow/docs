@@ -1052,6 +1052,16 @@
       "permanent": true
     },
     {
+      "source": "/node-ops/node-operation/:path*",
+      "destination": "/references/run-and-secure/node-operation/:path*",
+      "permanent": true
+    },
+    {
+      "source": "/node-ops/running-node",
+      "destination": "/references/run-and-secure/running-node",
+      "permanent": true
+    },
+    {
       "source": "/references/run-and-secure/nodes/node-operation/:path*",
       "destination": "/references/run-and-secure/node-operation/:path*",
       "permanent": true
