@@ -1045,6 +1045,11 @@
       "source": "/cadence/language/capability-based-access-control",
       "destination": "/cadence/language/capabilities",
       "permanent": true
+    },
+    {
+      "source": "/architecture/staking/:path*",
+      "destination": "/references/run-and-secure/staking/:path*",
+      "permanent": true
     }
   ]
 }

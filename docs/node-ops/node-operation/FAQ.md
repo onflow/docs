@@ -27,7 +27,7 @@ Please follow the instructions provided here: [Monitoring nodes](./monitoring-no
 ### Can I bootstrap and run a node at any time?
 
 Flow allows nodes to join/leave the network each time a new epoch begins (roughly once per week). 
-See [Staking & Epochs](../../architecture/staking/index.md#epochs) for general information and [Node Setup](./node-bootstrap.mdx#timing) for a guide to running a new node.
+See [Staking & Epochs](../../references/run-and-secure/staking/index.md#epochs) for general information and [Node Setup](./node-bootstrap.mdx#timing) for a guide to running a new node.
 
 ### Would it hurt the network to have a node that constantly spins up and down?
 
