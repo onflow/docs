@@ -149,7 +149,7 @@
     },
     {
       "source": "/learn/concepts/slashing",
-      "destination": "/build/run-and-secure/slashing",
+      "destination": "/build/run-and-secure/nodes/slashing",
       "permanent": true
     },
     {
@@ -984,6 +984,11 @@
     {
       "source": "/concepts/intro",
       "destination": "/build/flow",
+      "permanent": true
+    },
+    {
+      "source": "/build/run-and-secure/staking/stake-slashing",
+      "destination": "/build/run-and-secure/nodes/slashing",
       "permanent": true
     }
   ]
