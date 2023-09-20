@@ -55,4 +55,4 @@ Accounts and tokens for testing can be obtained through the [testnet faucet](htt
 
 ## Important smart contract addresses
 
-You can review [all available core contracts](../../build/core-contracts/index.md) deployed to the Testnet to identify which ones you want to import.
+You can review [all available core contracts](../../references/core-contracts/index.md) deployed to the Testnet to identify which ones you want to import.

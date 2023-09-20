@@ -1,11 +1,11 @@
 ---
-sidebar_position: 3
+sidebar_position: 4
 title: Differences vs. Other Blockchains
 sidebar_custom_props:
   icon: ↔️
 ---
 
-This document summarizes the differences you might encounter between building on Flow vs. other blockchains, especially Ethereum. This will be most useful to developers who are already familiar with building on a blockchain system. Check out [Introduction to Flow](../build/flow.md) for a more beginner-friendly overview of the Flow blockchain.
+This document summarizes the differences you might encounter between building on Flow vs. other blockchains, especially Ethereum. This will be most useful to developers who are already familiar with building on a blockchain system. Check out [Introduction to Flow](./flow.md) for a more beginner-friendly overview of the Flow blockchain.
 
 Summary of key differences covered:
 

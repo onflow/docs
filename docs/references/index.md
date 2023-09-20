@@ -1,5 +1,6 @@
 ---
 title: References
+sidebar_position: 1
 ---
 
 # References
@@ -18,7 +19,7 @@ Quick references to very helpful parts of developer documentation. Languages to 
 Get Flow blockchain data from Access Nodes, both REST and gRPC endpoints are available. Get the current status of mainnet and testnet networks.
 
 - [Flow Access API](../build/run-and-secure/nodes/access-api.mdx)
-  - [Mainnet](../build/flow-networks/accessing-mainnet.md): `access.mainnet.nodes.onflow.org:9000`
-  - [Testnet](../build/flow-networks/accessing-testnet.md): `access.devnet.nodes.onflow.org:9000`
+  - [Mainnet](./flow-networks/accessing-mainnet.md): `access.mainnet.nodes.onflow.org:9000`
+  - [Testnet](./flow-networks/accessing-testnet.md): `access.devnet.nodes.onflow.org:9000`
 - [Status Page](https://status.onflow.org/) - Network status page
 
