@@ -184,7 +184,7 @@
     },
     {
       "source": "/mobile/:path*",
-      "destination": "/concepts/mobile/:path*",
+      "destination": "/build/mobile/:path*",
       "permanent": true
     },
     {
@@ -1034,6 +1034,21 @@
     {
       "source": "/build/run-and-secure/:path*",
       "destination": "/references/run-and-secure/:path*",
+      "permanent": true
+    },
+    {
+      "source": "/cadence/language/capability-based-access-control",
+      "destination": "/cadence/language/capabilities",
+      "permanent": true
+    },
+    {
+      "source": "/nodes/:path*",
+      "destination": "/references/run-and-secure/nodes/:path*",
+      "permanent": true
+    },
+    {
+      "source": "/flow",
+      "destination": "",
       "permanent": true
     }
   ]
