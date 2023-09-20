@@ -139,7 +139,7 @@ e737ec6efbd26ef43bf676911cdc5a11ba15fc6562d05413e6589fccdd6c06d5
 
 You need to now register the node on chain by staking the node via [Flow Port](https://port.onflow.org/).
 
-[Here](../../references/run-and-secure/nodes/flow-port/staking-guide.md) is a guide on how to use Flow port if you are not familiar with it.
+[Here](../../build/run-and-secure/nodes/flow-port/staking-guide.md) is a guide on how to use Flow port if you are not familiar with it.
 If you are staking via a custody provider or would like to directly submit a staking transaction instead follow this [guide](../../architecture/staking/index.md#how-do-i-stake).
 
 Fund you Flow account with at least 100.01 FLOW tokens, which covers the required stake plus the storage deposit.

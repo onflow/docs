@@ -376,7 +376,7 @@ A user can define their own transactions or it can use already defined transacti
 
 Transactions can be submitted and obtained from the access node APIs, currently, there are two gRPC and REST APIs. You can find more information about them here:
 
-[**gRPC Transaction API**](../../references/run-and-secure/nodes/access-api.mdx#transactions)
+[**gRPC Transaction API**](../../build/run-and-secure/nodes/access-api.mdx#transactions)
 
 [**REST Transaction API**](/http-api#tag/Transactions)
 

@@ -31,7 +31,7 @@ On Flow there is no requirement to run a node to develop applications. For many 
 
 # Running a Light Node
 
-There are community access nodes available to use, but they are rate limited. Alternative to an Access node, anyone can run their own Light node. This is a good option if you want to have untrottled access to current Flow blockchain data. [More information](../references/run-and-secure/nodes/index.md#which-node-should-you-run)
+There are community access nodes available to use, but they are rate limited. Alternative to an Access node, anyone can run their own Light node. This is a good option if you want to have untrottled access to current Flow blockchain data. [More information](../build/run-and-secure/nodes/index.md#which-node-should-you-run)
 
 ![Light nodes](observer-node-arch.png)
 
