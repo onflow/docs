@@ -28,7 +28,7 @@ pub fun main(): String {
 
 ## Contract on Testnet
 
-Below is the source code for the HelloWorld contract. As you continue through the next few tutorials, you'll discover how to invoke the changeGreeting function to modify the greeting value. Do take note, however, that only the contract's `owner` or permitted accounts can modify the greeting.
+Below is the source code for the HelloWorld contract. As you continue through the next few tutorials, you'll discover how to invoke the `changeGreeting` function to modify the greeting value. Do take note, however, that only the contract's `owner` or permitted accounts can modify the greeting.
 ```
 pub contract HelloWorld {
 
