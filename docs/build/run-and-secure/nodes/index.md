@@ -22,11 +22,11 @@ Flow multirole architecture makes it more scalable and provides several node typ
 
 ---
 
-The different types of nodes are described [here](../../../node-ops/node-operation/node-roles.mdx). As node operator, you can choose to run any of the different types of node that best fits your needs.
+The different types of nodes are described [here](../../../references/run-and-secure/node-operation/node-roles.mdx). As node operator, you can choose to run any of the different types of node that best fits your needs.
 
 The nodes are classified as follows,
 
-![Flownodesdiagram.png](../../../node-ops/node-operation/Flownodesdiagram.png)
+![Flownodesdiagram.png](../../../references/run-and-secure/node-operation/Flownodesdiagram.png)
 
 ## Light node a.k.a. Observer node
 
@@ -39,7 +39,7 @@ The observer node is not staked but still provides the same API as the access no
 
 <Callout type="info">
 <br />
-To run a light node, follow this [guide](../../../node-ops/node-operation/observer-node.mdx)
+To run a light node, follow this [guide](../../../references/run-and-secure/node-operation/observer-node.mdx)
 <br />
 </Callout>
 
@@ -90,7 +90,7 @@ Furthermore, Access Node operators can freely rate-limit the amount of resources
 
 <Callout type="info">
   <br />
-  To run a self-hosted access node, follow this [guide](../../../node-ops/node-operation/access-node-setup.md)
+  To run a self-hosted access node, follow this [guide](../../../references/run-and-secure/node-operation/access-node-setup.md)
   <br />
 </Callout>
 
@@ -124,8 +124,8 @@ Before proceeding, ensure you have the stake required for your new node and that
 
 To set up a new staked node after it has been authorized by the Flow governance working group, you will need to complete the following steps:
 
-1. [Provision](../../../node-ops/node-operation/node-setup.mdx) the machine on which your node will run.
+1. [Provision](../../../references/run-and-secure/node-operation/node-setup.mdx) the machine on which your node will run.
 
-2. [Generate and register](../../../node-ops/node-operation/node-bootstrap.mdx) your node identity.
+2. [Generate and register](../../../references/run-and-secure/node-operation/node-bootstrap.mdx) your node identity.
 
-3. [Start](../../../node-ops/node-operation/node-bootstrap.mdx#step-3---start-your-flow-node) your node!
+3. [Start](../../../references/run-and-secure/node-operation/node-bootstrap.mdx#step-3---start-your-flow-node) your node!

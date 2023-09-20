@@ -913,7 +913,7 @@
     },
     {
       "source": "/next/guides/runningNode",
-      "destination": "/next/node-ops/running-node",
+      "destination": "/next/references/run-and-secure/running-node",
       "permanent": true
     },
     {
@@ -923,7 +923,7 @@
     },
     {
       "source": "/next/building-on-flow/run-and-secure/node/node-operation/:path*",
-      "destination": "/next/node-ops/node-operation/:path*",
+      "destination": "/next/references/run-and-secure/node-operation/:path*",
       "permanent": true
     },
     {
@@ -945,7 +945,7 @@
     },
     {
       "source": "/building-on-flow/run-and-secure/node-operation/:path",
-      "destination": "/node-ops/node-operation/:path*",
+      "destination": "/references/run-and-secure/node-operation/:path*",
       "permanent": true
     },
     {
@@ -960,7 +960,7 @@
     },
     {
       "source": "/docs/node-roles",
-      "destination": "/node-ops/node-operation/node-roles",
+      "destination": "/references/run-and-secure/node-operation/node-roles",
       "permanent": true
     },
     {
@@ -1049,6 +1049,21 @@
     {
       "source": "/architecture/staking/:path*",
       "destination": "/references/run-and-secure/staking/:path*",
+      "permanent": true
+    },
+    {
+      "source": "/node-ops/node-operation/:path*",
+      "destination": "/references/run-and-secure/node-operation/:path*",
+      "permanent": true
+    },
+    {
+      "source": "/node-ops/running-node",
+      "destination": "/references/run-and-secure/running-node",
+      "permanent": true
+    },
+    {
+      "source": "/references/run-and-secure/nodes/node-operation/:path*",
+      "destination": "/references/run-and-secure/node-operation/:path*",
       "permanent": true
     }
   ]
