@@ -29,12 +29,12 @@
     },
     {
       "source": "/concepts/core-contracts/nft-standard",
-      "destination": "/concepts/core-contracts",
+      "destination": "/references/core-contracts/flow-nft",
       "permanent": true
     },
     {
       "source": "/flow/core-contracts/:path*",
-      "destination": "/concepts/core-contracts/:path*",
+      "destination": "/references/core-contracts/:path*",
       "permanent": true
     },
     {
@@ -494,7 +494,7 @@
     },
     {
       "source": "/core-contracts/:path*",
-      "destination": "/concepts/core-contracts/:path*",
+      "destination": "/references/core-contracts/:path*",
       "permanent": true
     },
     {
@@ -1039,16 +1039,6 @@
     {
       "source": "/cadence/language/capability-based-access-control",
       "destination": "/cadence/language/capabilities",
-      "permanent": true
-    },
-    {
-      "source": "/nodes/:path*",
-      "destination": "/references/run-and-secure/nodes/:path*",
-      "permanent": true
-    },
-    {
-      "source": "/flow",
-      "destination": "",
       "permanent": true
     }
   ]
