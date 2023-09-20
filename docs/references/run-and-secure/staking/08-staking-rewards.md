@@ -78,7 +78,7 @@ Events:
    <clipped for brevity>
 ```
 
-Example using [Flow Go SDK](../../tools/clients/flow-go-sdk/index.mdx)
+Example using [Flow Go SDK](../../../tools/clients/flow-go-sdk/index.mdx)
 ```
 package main
 
