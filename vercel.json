@@ -1050,6 +1050,11 @@
       "source": "/architecture/staking/:path*",
       "destination": "/references/run-and-secure/staking/:path*",
       "permanent": true
+    },
+    {
+      "source": "/references/run-and-secure/nodes/node-operation/:path*",
+      "destination": "/references/run-and-secure/node-operation/:path*",
+      "permanent": true
     }
   ]
 }
