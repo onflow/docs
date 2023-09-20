@@ -159,7 +159,7 @@ Access Nodes are the node type that are most useful for developers, as they prov
 - gRPC
     - Mainnet: `access.mainnet.nodes.onflow.org:9000`
     - Testnet: `access.devnet.nodes.onflow.org:9000`
-    - [Specification](../references/run-and-secure/nodes/access-api.mdx)
+    - [Specification](./run-and-secure/nodes/access-api.mdx)
 
 ### Running Your Own Node
 
