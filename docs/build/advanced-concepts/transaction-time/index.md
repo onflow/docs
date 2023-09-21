@@ -41,6 +41,6 @@ Flow bypasses preliminary results entirely. It reaches soft finality ("Executed"
 
 ![transaction-time.png](./resources/chain-comparison.png)
 
-## Efficiency + Speed + Assurance/Finality
+## Efficiency + Speed + Finality
 
 Many blockchains offer quick preliminary results before achieving hard finality. Flow's unique multi-node architecture ensures it can process and finalize transactions more efficiently than many other blockchains. By separating tasks among specialized nodes, Flow can achieve faster transaction times, reaching soft finality in mere seconds and hard finality shortly thereafter.
