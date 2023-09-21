@@ -473,6 +473,11 @@
       "permanent": true
     },
     {
+      "source": "/tutorials/kitty-items/:path*",
+      "destination": "/kitty-items/:path*",
+      "permanent": true
+    },
+    {
       "source": "/kitty-items/:path*",
       "destination": "/guides/flow-app-quickstart",
       "permanent": true
@@ -1018,6 +1023,11 @@
     },
     {
       "source": "/guides/deploying/mainnet-deployment",
+      "destination": "/guides/smart-contracts/deploying",
+      "permanent": true
+    },
+    {
+      "source": "/guides/deploying/testnet-deployment",
       "destination": "/guides/smart-contracts/deploying",
       "permanent": true
     },
