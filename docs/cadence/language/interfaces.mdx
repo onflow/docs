@@ -1,6 +1,6 @@
 ---
 title: Interfaces
-sidebar_position: 14
+sidebar_position: 15
 ---
 
 An interface is an abstract type that specifies the behavior of types
@@ -465,6 +465,40 @@ struct SomeInner: OuterInterface.InnerInterface {}
 
 ```
 
+Contract interfaces may also declare [events](./events.md),
+which also do not require implementing types of the outer interface to "implement" the event.
+The event can be emitted in the declaring interface, in a condition or in a default implementation of a function. E.g.
+
+```cadence
+// Declare a contract interface
+//
+contract interface ContractInterface {
+    // some event declaration
+    //
+    event SomeEvent()
+
+    // some function that emits `SomeEvent` when called
+    //
+    fun eventEmittingFunction() {
+        pre {
+            emit SomeEvent()
+        }
+    }
+}
+
+// A contract implementing `ContractInterface`
+// Note that no declaration of `SomeEvent` is required
+//
+contract ImplementingContract: ContractInterface {
+    // implementation of `eventEmittingFunction`;
+    // this will emit `SomeEvent` when called
+    //
+    fun eventEmittingFunction() {
+        // ...
+    }
+}
+```
+
 ## Interface Default Functions
 
 Interfaces can provide default functions:
@@ -506,43 +540,6 @@ Interfaces cannot provide default initializers or default destructors.
 
 Only one conformance may provide a default function.
 
-## Nested Type Requirements
-
-<Callout type="info">
-
-🚧 Status: Currently only contracts and contract interfaces support nested type requirements.
-
-</Callout>
-
-Interfaces can require implementing types to provide concrete nested types.
-For example, a resource interface may require an implementing type to provide a resource type.
-
-```cadence
-// Declare a resource interface named `FungibleToken`.
-//
-// Require implementing types to provide a resource type named `Vault`
-// which must have a field named `balance`.
-//
-resource interface FungibleToken {
-    access(all) resource Vault {
-        access(all) balance: Int
-    }
-}
-
-// Declare a resource named `ExampleToken` that implements the `FungibleToken` interface.
-//
-// The nested type `Vault` must be provided to conform to the interface.
-//
-resource ExampleToken: FungibleToken {
-    access(all) resource Vault {
-        access(all) var balance: Int
-        init(balance: Int) {
-            self.balance = balance
-        }
-    }
-}
-```
-
 ## Interface inheritance
 
 An interface can inherit from (conform to) other interfaces of the same kind.
@@ -575,8 +572,7 @@ access(all) resource MyVault: Vault {
 
 ### Duplicate interface members
 
-When an interface implements another interface, it is possible for the two interfaces to have members
-(functions, fields, and type requirements) with the same name.
+When an interface implements another interface, it is possible for the two interfaces to have members with the same name.
 The following sections explain how these ambiguities are resolved for different scenarios.
 
 #### Fields
@@ -734,9 +730,9 @@ access(all) resource interface Provider: Logger {}
 access(all) resource interface Vault: Receiver, Provider {}
 ```
 
-In the above example, `Logger.log()` default function is visible to the `Vault` interface via both `Receiver` and `Provider`. 
+In the above example, `Logger.log()` default function is visible to the `Vault` interface via both `Receiver` and `Provider`.
 Even though it is available from two different interfaces, they are both referring to the same
-default implementation. 
+default implementation.
 Therefore, the above code is valid.
 
 #### Conditions with Default functions
@@ -822,9 +818,9 @@ access(all) contract interface NonFungibleToken: Token, Collectible {}
 ```
 
 In the above example, `Logger.Foo` type definition is visible to the `NonFungibleToken` interface via both `Token`
-and `Collectible`. 
+and `Collectible`.
 Even though it is available from two different interfaces, they are both referring to the same
-type definition. 
+type definition.
 Therefore, the above code is valid.
 
 However, if at least one of the interfaces in the middle of the chain also overrides the type definition `Foo`,

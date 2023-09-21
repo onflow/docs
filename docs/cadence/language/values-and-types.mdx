@@ -1116,6 +1116,7 @@ are available for both variable-sized and fixed-sized or variable-sized arrays.
 
 -
     ```cadence
+    access(all)
     fun concat(_ array: T): T
     ```
 
@@ -1145,6 +1146,7 @@ are available for both variable-sized and fixed-sized or variable-sized arrays.
 
 -
     ```cadence
+    access(all)
     fun contains(_ element: T): Bool
     ```
 
@@ -1170,6 +1172,7 @@ are available for both variable-sized and fixed-sized or variable-sized arrays.
 
 -
     ```cadence
+    access(all)
     fun firstIndex(of: T): Int?
     ```
 
@@ -1191,6 +1194,7 @@ are available for both variable-sized and fixed-sized or variable-sized arrays.
 
 -
     ```cadence
+    access(all)
     fun slice(from: Int, upTo: Int): [T]
     ```
 
@@ -1216,6 +1220,101 @@ are available for both variable-sized and fixed-sized or variable-sized arrays.
     let invalidIndices = example.slice(from: 2, upTo: 1)
     ```
 
+-
+    ```cadence
+    access(all)
+    fun reverse(): [T]
+    ```
+
+    Returns a new array with contents in the reversed order.
+    Available if `T` is not resource-kinded.
+
+    ```cadence
+    let example = [1, 2, 3, 4]
+
+    // Create a new array which is the reverse of the original array.
+    let reversedExample = example.reverse()
+    // `reversedExample` is now `[4, 3, 2, 1]`
+    ```
+
+    ```cadence
+    access(all)
+    fun reverse(): [T; N]
+    ```
+
+    Returns a new fixed-sized array of same size with contents in the reversed order.
+    
+    ```cadence
+    let fixedSizedExample: [String; 3] = ["ABC", "XYZ", "PQR"]
+
+    // Create a new array which is the reverse of the original array.
+    let fixedArrayReversedExample = fixedSizedExample.reverse()
+    // `fixedArrayReversedExample` is now `["PQR", "XYZ", "ABC"]`
+    ```
+
+-
+    ```cadence
+    access(all)
+    fun map(_ f: (T: U)): [U]
+    ```
+
+    Returns a new array whose elements are produced by applying the mapper function on each element
+    of the original array.
+    Available if `T` is not resource-kinded.
+
+    ```cadence
+    let example = [1, 2, 3]
+    let trueForEven =
+        fun (_ x: Int): Bool {
+            return x % 2 == 0
+        }
+
+    let mappedExample: [Bool] = example.map(trueForEven)
+    // `mappedExample` is `[False, True, False]`
+    // `example` still remains as `[1, 2, 3]`
+
+    // Invalid: Map using a function which accepts a different type.
+    // This results in a type error, as the array contains `Int` values while function accepts 
+    // `Int64`.
+    let functionAcceptingInt64 =
+        fun (_ x: Int64): Bool {
+            return x % 2 == 0
+        }
+    let invalidMapFunctionExample = example.map(functionAcceptingInt64)
+    ```
+
+    `map` function is also available for fixed-sized arrays:
+
+    ```cadence
+    access(all)
+    fun map(_ f: (T: U)): [U; N]
+    ```
+
+    Returns a new fixed-sized array whose elements are produced by applying the mapper function on
+    each element of the original array.
+    Available if `T` is not resource-kinded.
+
+    ```cadence
+    let fixedSizedExample: [String; 3] = ["ABC", "XYZYX", "PQR"]
+    let lengthOfString =
+        fun (_ x: String): Int {
+            return x.length
+        }
+
+    let fixedArrayMappedExample = fixedSizedExample.map(lengthOfString)
+    // `fixedArrayMappedExample` is now `[3, 5, 3]`
+    // `fixedSizedExample` still remains as ["ABC", "XYZYX", "PQR"]
+
+    // Invalid: Map using a function which accepts a different type.
+    // This results in a type error, as the array contains `String` values while function accepts 
+    // `Bool`.
+    let functionAcceptingBool =
+        fun (_ x: Bool): Int {
+            return 0
+        }
+    let invalidMapFunctionExample = fixedSizedExample.map(functionAcceptingBool)
+    ```
+
 #### Variable-size Array Functions
 
 The following functions can only be used on variable-sized arrays.
@@ -1223,6 +1322,7 @@ It is invalid to use one of these functions on a fixed-sized array.
 
 -
     ```cadence
+    access(Mutate | Insert)
     fun append(_ element: T): Void
     ```
 
@@ -1246,6 +1346,7 @@ It is invalid to use one of these functions on a fixed-sized array.
 
 -
     ```cadence
+    access(Mutate | Insert)
     fun appendAll(_ array: T): Void
     ```
 
@@ -1270,6 +1371,7 @@ It is invalid to use one of these functions on a fixed-sized array.
 
 -
     ```cadence
+    access(Mutate | Insert)
     fun insert(at: Int, _ element: T): Void
     ```
 
@@ -1301,6 +1403,7 @@ It is invalid to use one of these functions on a fixed-sized array.
     ```
 -
     ```cadence
+    access(Mutate | Remove)
     fun remove(at: Int): T
     ```
 
@@ -1326,6 +1429,7 @@ It is invalid to use one of these functions on a fixed-sized array.
 
 -
     ```cadence
+    access(Mutate | Remove)
     fun removeFirst(): T
     ```
 
@@ -1356,6 +1460,7 @@ It is invalid to use one of these functions on a fixed-sized array.
 
 -
     ```cadence
+    access(Mutate | Remove)
     fun removeLast(): T
     ```
 
@@ -1538,6 +1643,7 @@ booleans[0] = true
 
 -
     ```cadence
+    access(Mutate | Insert)
     fun insert(key: K, _ value: V): V?
     ```
 
@@ -1604,6 +1710,7 @@ booleans[0] = true
 
 -
     ```cadence
+    access(Mutate | Remove)
     let keys: [K]
     ```
 
@@ -1644,6 +1751,7 @@ booleans[0] = true
 
 -
     ```cadence
+    access(all)
     fun containsKey(key: K): Bool
     ```
 
@@ -1669,6 +1777,7 @@ booleans[0] = true
 
 -
     ```cadence
+    access(all)
     fun forEachKey(_ function: fun(K): Bool): Void
     ```
 

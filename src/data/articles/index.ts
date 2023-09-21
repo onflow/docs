@@ -1,5 +1,5 @@
-import { FeaturedArticleCardProps } from '~/ui/design-system/src/lib/Components/FeaturedArticleCard';
-import { TutorialCardProps } from '~/ui/design-system/src/lib/Components/TutorialCard';
+import { type FeaturedArticleCardProps } from '../../ui/design-system/src/lib/Components/FeaturedArticleCard';
+import { type TutorialCardProps } from '../../ui/design-system/src/lib/Components/TutorialCard';
 
 export const redSquirrelGetStartedArticle: TutorialCardProps = {
   heading: 'Getting started on Flow with a RedSquirrel NFT',

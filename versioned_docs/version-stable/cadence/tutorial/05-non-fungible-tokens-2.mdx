@@ -691,8 +691,6 @@ This was only a basic example how a NFT might work on Flow.
 Please refer to the [Flow NFT Standard repo](https://github.com/onflow/flow-nft)
 for information about the official Flow NFT standard and an example implementation of it.
 
-Also check out the [Kitty Items Repo](https://github.com/onflow/kitty-items) for a production ready version!
-
 ## Fungible Tokens
 
 ---

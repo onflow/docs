@@ -20,7 +20,6 @@ export { default as NetworkDetailsCard } from './lib/Components/NetworkDetailsCa
 export { default as SporksCard } from './lib/Components/SporksCard'
 export { StaticCheckbox } from './lib/Components/StaticCheckbox'
 export type { InputProps } from './lib/Components/StaticCheckbox'
-export { default as ToolsAndConcepts } from './lib/Components/ToolsAndConcepts'
 export { UpcomingEvents } from './lib/Components/UpcomingEvents'
 export { LargeVideoCard } from './lib/Components/VideoCard/LargeVideoCard'
 export { default as HomePage } from './lib/Pages/HomePage'

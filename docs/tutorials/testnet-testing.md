@@ -1,6 +1,7 @@
 ---
 title: Testnet Testing Guidelines
-sidebar_title: 3. Testnet Testing
+sidebar_label: Testnet Testing
+sidebar_position: 4
 ---
 
 It is critical to test your applications and contracts thoroughly on the testnet as part of your road to the mainnet. Testing will help you understand how to create stable and robust applications using the Flow development stack.
@@ -17,4 +18,4 @@ Tests should also be runnable in automated environments (CI). You can use the [J
 
 Once you deployed your application to the testnet, you should record how your application handles non-trivial amounts of traffic to ensure there are no issues.
 
-You should also get familiar with the [Cadence anti-patterns](../cadence/anti-patterns.mdx) to avoid avoid problematic or unintended behavior.
+You should also get familiar with the [Cadence anti-patterns](../build/best-practices/anti-patterns.md) to avoid avoid problematic or unintended behavior.

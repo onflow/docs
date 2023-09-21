@@ -26,15 +26,19 @@ yarn-error.log*
 /docs/unsorted
 .idea/
 
-docs/concepts/token-standards/flow-ft
-!docs/concepts/token-standards/flow-ft/index.md
-docs/concepts/token-standards/flow-nft
-!docs/concepts/token-standards/flow-nft/index.md
+docs/build/core-contracts/flow-ft/*
+!docs/build/core-contracts/flow-ft/index.md
+docs/build/core-contracts/flow-nft/*
+!docs/build/core-contracts/flow-nft/index.md
+
+docs/.obsidian
 
 # Remove after cadence is updated to a stable version
 # https://github.com/onflow/docs/issues/105
-versioned_docs/version-stable/community-resources
-versioned_docs/version-stable/concepts
-versioned_docs/version-stable/references
-versioned_docs/version-stable/tooling
-versioned_docs/version-stable/tutorials
+# versioned_docs/version-stable/building-on-flow
+# versioned_docs/version-stable/community-resources
+# versioned_docs/version-stable/concepts
+# versioned_docs/version-stable/references
+# versioned_docs/version-stable/tools
+# versioned_docs/version-stable/guides
+# versioned_docs/version-stable/tutorials

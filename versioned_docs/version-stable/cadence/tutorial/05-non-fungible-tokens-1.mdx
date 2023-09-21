@@ -89,9 +89,6 @@ To get you comfortable using NFTs, this tutorial will teach you to:
   what any project should use in production. See the
   <a href="https://github.com/onflow/flow-nft" target="_blank">Flow Fungible Token standard</a>
   for the standard interface and example implementation.
-  Additionally, check out the
-  <a href="https://github.com/onflow/kitty-items" target="_blank">Kitty Items Repo</a>
-  for a production ready version!
 </Callout>
 
 **Before proceeding with this tutorial**, we highly recommend
