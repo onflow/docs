@@ -1092,7 +1092,7 @@
       "permanent": true
     },
     {
-      "source": "/concepts/token-standards/fungible-token",
+      "source": "/concepts/token-standards/fungible-tokens",
       "destination": "/overview/dive-in/fungible-tokens",
       "permanent": true
     }
