@@ -837,6 +837,21 @@
       "permanent": true
     },
     {
+      "source": "/tools/bridges",
+      "destination": "/overview/getting-started/bridges",
+      "permanent": true
+    },
+    {
+      "source": "/tools/network-faucets",
+      "destination": "/overview/getting-started/network-faucets",
+      "permanent": true
+    },
+    {
+      "source": "/tools/block-explorers",
+      "destination": "/overview/getting-started/block-explorers",
+      "permanent": true
+    },
+    {
       "source": "/next/tools/wallets",
       "destination": "/next/overview/getting-started/wallets",
       "permanent": true
