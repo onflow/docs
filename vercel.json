@@ -473,6 +473,11 @@
       "permanent": true
     },
     {
+      "source": "/tutorials/kitty-items/:path*",
+      "destination": "/kitty-items/:path*",
+      "permanent": true
+    },
+    {
       "source": "/kitty-items/:path*",
       "destination": "/guides/flow-app-quickstart",
       "permanent": true
@@ -832,6 +837,21 @@
       "permanent": true
     },
     {
+      "source": "/tools/bridges",
+      "destination": "/overview/getting-started/bridges",
+      "permanent": true
+    },
+    {
+      "source": "/tools/network-faucets",
+      "destination": "/overview/getting-started/network-faucets",
+      "permanent": true
+    },
+    {
+      "source": "/tools/block-explorers",
+      "destination": "/overview/getting-started/block-explorers",
+      "permanent": true
+    },
+    {
       "source": "/next/tools/wallets",
       "destination": "/next/overview/getting-started/wallets",
       "permanent": true
@@ -1018,6 +1038,11 @@
     },
     {
       "source": "/guides/deploying/mainnet-deployment",
+      "destination": "/guides/smart-contracts/deploying",
+      "permanent": true
+    },
+    {
+      "source": "/guides/deploying/testnet-deployment",
       "destination": "/guides/smart-contracts/deploying",
       "permanent": true
     },
