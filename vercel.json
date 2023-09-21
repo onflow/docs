@@ -113,7 +113,7 @@
       "permanent": true
     },
     {
-      "source": "/learn/Concepts",
+      "source": "/learn/concepts",
       "destination": "/concepts/intro",
       "permanent": true
     },
@@ -194,32 +194,32 @@
     },
     {
       "source": "/nodes",
-      "destination": "/references/run-and-secure",
+      "destination": "/references/run-and-secure/nodes",
       "permanent": true
     },
     {
       "source": "/access-api",
-      "destination": "/references/run-and-secure/access-api",
+      "destination": "/references/run-and-secure/nodes/access-api",
       "permanent": true
     },
     {
       "source": "/nodes/access-api",
-      "destination": "/references/run-and-secure/access-api",
+      "destination": "/references/run-and-secure/nodes/access-api",
       "permanent": true
     },
     {
       "source": "/nodes/access-api-rate-limits",
-      "destination": "/references/run-and-secure/access-api-rate-limits",
+      "destination": "/references/run-and-secure/nodes/access-api-rate-limits",
       "permanent": true
     },
     {
       "source": "/nodes/archive-access-api",
-      "destination": "/references/run-and-secure/archive-access-api",
+      "destination": "/references/run-and-secure/nodes/archive-access-api",
       "permanent": true
     },
     {
       "source": "/nodes/archive-api-rate-limits",
-      "destination": "/references/run-and-secure/archive-api-rate-limits",
+      "destination": "/references/run-and-secure/nodes/archive-api-rate-limits",
       "permanent": true
     },
     {
@@ -1089,6 +1089,11 @@
     {
       "source": "/concepts/start-here/accounts-and-keys",
       "destination": "/build/key-concepts/accounts",
+      "permanent": true
+    },
+    {
+      "source": "/concepts/token-standards/fungible-tokens",
+      "destination": "/overview/dive-in/fungible-tokens",
       "permanent": true
     }
   ]
