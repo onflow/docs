@@ -1067,8 +1067,28 @@
       "permanent": true
     },
     {
-      "source": "/overview/getting-started/:path*",
-      "destination": "/community-resources/getting-started/:path*",
+      "source": "/overview/getting-started/block-explorers",
+      "destination": "/community-resources/block-explorers",
+      "permanent": true
+    },
+    {
+      "source": "/overview/getting-started/bridges",
+      "destination": "/community-resources/bridges",
+      "permanent": true
+    },
+    {
+      "source": "/overview/getting-started/network-faucets",
+      "destination": "/community-resources/faucets",
+      "permanent": true
+    },
+    {
+      "source": "/overview/getting-started/projects",
+      "destination": "/community-resources/projects",
+      "permanent": true
+    },
+    {
+      "source": "/overview/getting-started/wallets",
+      "destination": "/community-resources/wallets",
       "permanent": true
     },
     {
