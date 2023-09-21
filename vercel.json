@@ -928,15 +928,18 @@
     },
     {
       "source": "/tools/toolchains/:path*",
-      "destination": "/tools/:path*"
+      "destination": "/tools/:path*",
+      "permanent": true
     },
     {
       "source": "/tools/fcl-dev-wallet/:path*",
-      "destination": "/tools/flow-dev-wallet/:path*"
+      "destination": "/tools/flow-dev-wallet/:path*",
+      "permanent": true
     },
     {
       "source": "/tools/nft-catalog/(.+)",
-      "destination": "/tools/nft-catalog"
+      "destination": "/tools/nft-catalog",
+      "permanent": true
     },
     {
       "source": "/tools/intro",
@@ -965,11 +968,13 @@
     },
     {
       "source": "/build/mobile/monster-maker",
-      "destination": "/build/mobile/ios-quickstart"
+      "destination": "/build/mobile/ios-quickstart",
+      "permanent": true
     },
     {
       "source": "/build/mobile",
-      "destination": "/build/mobile/overview"
+      "destination": "/build/mobile/overview",
+      "permanent": true
     },
     {
       "source": "/building-on-flow/mobile",
@@ -1064,6 +1069,26 @@
     {
       "source": "/references/run-and-secure/nodes/node-operation/:path*",
       "destination": "/references/run-and-secure/node-operation/:path*",
+      "permanent": true
+    },
+    {
+      "source": "/concepts/start-here/storage",
+      "destination": "/build/key-concepts/fees#storage",
+      "permanent": true
+    },
+    {
+      "source": "/concepts/flow-token",
+      "destination": "/build/key-concepts/flow-token",
+      "permanent": true
+    },
+    {
+      "source": "/concepts/start-here/variable-transaction-fees",
+      "destination": "/build/key-concepts/fees",
+      "permanent": true
+    },
+    {
+      "source": "/concepts/start-here/accounts-and-keys",
+      "destination": "/build/key-concepts/accounts",
       "permanent": true
     }
   ]
