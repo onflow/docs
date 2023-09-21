@@ -1077,7 +1077,7 @@
       "permanent": true
     },
     {
-      "source": "/concepts/flow-token/(.*)",
+      "source": "/concepts/flow-token",
       "destination": "/build/key-concepts/flow-token",
       "permanent": true
     },
