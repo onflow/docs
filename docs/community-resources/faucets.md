@@ -5,7 +5,7 @@ sidebar_custom_props:
   icon: 💧
 ---
 
-# Network Faucets
+# Faucets
 
 Network Faucets provide free Flow tokens for testing purposes, functioning like taps that dispense tokens. They are valuable tools for experimenting with Flow without the need to purchase tokens.
 

@@ -833,7 +833,7 @@
     },
     {
       "source": "/tools/wallets",
-      "destination": "/overview/getting-started/wallets",
+      "destination": "/community-resources/wallets",
       "permanent": true
     },
     {
@@ -843,7 +843,7 @@
     },
     {
       "source": "/tools/network-faucets",
-      "destination": "/overview/getting-started/network-faucets",
+      "destination": "/overview/getting-started/faucets",
       "permanent": true
     },
     {
@@ -853,27 +853,27 @@
     },
     {
       "source": "/next/tools/wallets",
-      "destination": "/next/overview/getting-started/wallets",
+      "destination": "/next/community-resources/wallets",
       "permanent": true
     },
     {
       "source": "/next/tools/bridges",
-      "destination": "/next/overview/getting-started/bridges",
+      "destination": "/next/community-resources/bridges",
       "permanent": true
     },
     {
       "source": "/next/tools/network-faucets",
-      "destination": "/next/overview/getting-started/network-faucets",
+      "destination": "/next/community-resources/faucets",
       "permanent": true
     },
     {
       "source": "/next/tools/block-explorers",
-      "destination": "/next/overview/getting-started/block-explorers",
+      "destination": "/next/community-resources/block-explorers",
       "permanent": true
     },
     {
       "source": "/next/community-resources/projects",
-      "destination": "/next/overview/getting-started/projects",
+      "destination": "/next/community-resources/projects",
       "permanent": true
     },
     {
@@ -883,12 +883,12 @@
     },
     {
       "source": "/next/concepts/flix",
-      "destination": "/next/overview/dive-in/flix",
+      "destination": "/next/build/advanced-concepts/flix",
       "permanent": true
     },
     {
       "source": "/next/building-on-flow/governance",
-      "destination": "/next/overview/dive-in/governance",
+      "destination": "/next/references/governance",
       "permanent": true
     },
     {
@@ -1094,6 +1094,41 @@
     {
       "source": "/references/run-and-secure/nodes/node-operation/:path*",
       "destination": "/references/run-and-secure/node-operation/:path*",
+      "permanent": true
+    },
+    {
+      "source": "/overview/getting-started/block-explorers",
+      "destination": "/community-resources/block-explorers",
+      "permanent": true
+    },
+    {
+      "source": "/overview/getting-started/bridges",
+      "destination": "/community-resources/bridges",
+      "permanent": true
+    },
+    {
+      "source": "/overview/getting-started/network-faucets",
+      "destination": "/community-resources/faucets",
+      "permanent": true
+    },
+    {
+      "source": "/overview/getting-started/projects",
+      "destination": "/community-resources/projects",
+      "permanent": true
+    },
+    {
+      "source": "/overview/getting-started/wallets",
+      "destination": "/community-resources/wallets",
+      "permanent": true
+    },
+    {
+      "source": "/overview/dive-in/flix",
+      "destination": "/build/advanced-concepts/flix",
+      "permanent": true
+    },
+    {
+      "source": "/overview/dive-in/governance",
+      "destination": "/references/governance",
       "permanent": true
     },
     {
