@@ -113,7 +113,7 @@
       "permanent": true
     },
     {
-      "source": "/learn/Concepts",
+      "source": "/learn/concepts",
       "destination": "/concepts/intro",
       "permanent": true
     },
@@ -194,32 +194,32 @@
     },
     {
       "source": "/nodes",
-      "destination": "/references/run-and-secure",
+      "destination": "/references/run-and-secure/nodes",
       "permanent": true
     },
     {
       "source": "/access-api",
-      "destination": "/references/run-and-secure/access-api",
+      "destination": "/references/run-and-secure/nodes/access-api",
       "permanent": true
     },
     {
       "source": "/nodes/access-api",
-      "destination": "/references/run-and-secure/access-api",
+      "destination": "/references/run-and-secure/nodes/access-api",
       "permanent": true
     },
     {
       "source": "/nodes/access-api-rate-limits",
-      "destination": "/references/run-and-secure/access-api-rate-limits",
+      "destination": "/references/run-and-secure/nodes/access-api-rate-limits",
       "permanent": true
     },
     {
       "source": "/nodes/archive-access-api",
-      "destination": "/references/run-and-secure/archive-access-api",
+      "destination": "/references/run-and-secure/nodes/archive-access-api",
       "permanent": true
     },
     {
       "source": "/nodes/archive-api-rate-limits",
-      "destination": "/references/run-and-secure/archive-api-rate-limits",
+      "destination": "/references/run-and-secure/nodes/archive-api-rate-limits",
       "permanent": true
     },
     {
@@ -470,6 +470,11 @@
     {
       "source": "/guides",
       "destination": "/guides/flow-app-quickstart",
+      "permanent": true
+    },
+    {
+      "source": "/tutorials/kitty-items/:path*",
+      "destination": "/kitty-items/:path*",
       "permanent": true
     },
     {
@@ -832,6 +837,21 @@
       "permanent": true
     },
     {
+      "source": "/tools/bridges",
+      "destination": "/overview/getting-started/bridges",
+      "permanent": true
+    },
+    {
+      "source": "/tools/network-faucets",
+      "destination": "/overview/getting-started/network-faucets",
+      "permanent": true
+    },
+    {
+      "source": "/tools/block-explorers",
+      "destination": "/overview/getting-started/block-explorers",
+      "permanent": true
+    },
+    {
       "source": "/next/tools/wallets",
       "destination": "/next/community-resources/getting-started/wallets",
       "permanent": true
@@ -928,15 +948,18 @@
     },
     {
       "source": "/tools/toolchains/:path*",
-      "destination": "/tools/:path*"
+      "destination": "/tools/:path*",
+      "permanent": true
     },
     {
       "source": "/tools/fcl-dev-wallet/:path*",
-      "destination": "/tools/flow-dev-wallet/:path*"
+      "destination": "/tools/flow-dev-wallet/:path*",
+      "permanent": true
     },
     {
       "source": "/tools/nft-catalog/(.+)",
-      "destination": "/tools/nft-catalog"
+      "destination": "/tools/nft-catalog",
+      "permanent": true
     },
     {
       "source": "/tools/intro",
@@ -965,11 +988,13 @@
     },
     {
       "source": "/build/mobile/monster-maker",
-      "destination": "/build/mobile/ios-quickstart"
+      "destination": "/build/mobile/ios-quickstart",
+      "permanent": true
     },
     {
       "source": "/build/mobile",
-      "destination": "/build/mobile/overview"
+      "destination": "/build/mobile/overview",
+      "permanent": true
     },
     {
       "source": "/building-on-flow/mobile",
@@ -1013,6 +1038,11 @@
     },
     {
       "source": "/guides/deploying/mainnet-deployment",
+      "destination": "/guides/smart-contracts/deploying",
+      "permanent": true
+    },
+    {
+      "source": "/guides/deploying/testnet-deployment",
       "destination": "/guides/smart-contracts/deploying",
       "permanent": true
     },
@@ -1104,6 +1134,31 @@
     {
       "source": "/overview/dive-in/governance",
       "destination": "/references/governance",
+      "permanent": true
+    },
+    {
+      "source": "/concepts/start-here/storage",
+      "destination": "/build/key-concepts/fees#storage",
+      "permanent": true
+    },
+    {
+      "source": "/concepts/flow-token",
+      "destination": "/build/key-concepts/flow-token",
+      "permanent": true
+    },
+    {
+      "source": "/concepts/start-here/variable-transaction-fees",
+      "destination": "/build/key-concepts/fees",
+      "permanent": true
+    },
+    {
+      "source": "/concepts/start-here/accounts-and-keys",
+      "destination": "/build/key-concepts/accounts",
+      "permanent": true
+    },
+    {
+      "source": "/concepts/token-standards/fungible-tokens",
+      "destination": "/overview/dive-in/fungible-tokens",
       "permanent": true
     }
   ]
