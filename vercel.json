@@ -833,7 +833,7 @@
     },
     {
       "source": "/tools/wallets",
-      "destination": "/community-resources/getting-started/wallets",
+      "destination": "/community-resources/wallets",
       "permanent": true
     },
     {
@@ -853,27 +853,27 @@
     },
     {
       "source": "/next/tools/wallets",
-      "destination": "/next/community-resources/getting-started/wallets",
+      "destination": "/next/community-resources/wallets",
       "permanent": true
     },
     {
       "source": "/next/tools/bridges",
-      "destination": "/next/community-resources/getting-started/bridges",
+      "destination": "/next/community-resources/bridges",
       "permanent": true
     },
     {
       "source": "/next/tools/network-faucets",
-      "destination": "/next/community-resources/getting-started/network-faucets",
+      "destination": "/next/community-resources/network-faucets",
       "permanent": true
     },
     {
       "source": "/next/tools/block-explorers",
-      "destination": "/next/community-resources/getting-started/block-explorers",
+      "destination": "/next/community-resources/block-explorers",
       "permanent": true
     },
     {
       "source": "/next/community-resources/projects",
-      "destination": "/next/community-resources/getting-started/projects",
+      "destination": "/next/community-resources/projects",
       "permanent": true
     },
     {
