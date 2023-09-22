@@ -1,6 +1,6 @@
 ---
-title: Flow CLI Quickstart
-sidebar_label: Flow CLI Quickstart
+title: Hello World Pt. 2 - Local Development
+sidebar_label: Hello World Pt. 1 - Local Development
 sidebar_position: 2
 ---
 

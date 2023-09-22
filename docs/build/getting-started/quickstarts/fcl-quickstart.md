@@ -1,6 +1,6 @@
 ---
-title: FCL App Quickstart
-sidebar_label: FCL App Quickstart
+title: Hello World Pt 3 - Interacting with the Blockchain
+sidebar_label: Hello World Pt 3 - Interacting with the Blockchain
 sidebar_position: 3
 ---
 

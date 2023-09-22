@@ -1,6 +1,6 @@
 ---
-title: Hello World Quickstart
-sidebar_label: Hello World Quickstart
+title: Hello World Pt. 1 - Basics
+sidebar_label: Hello World Pt. 1 - Basics
 sidebar_position: 1
 ---
 
