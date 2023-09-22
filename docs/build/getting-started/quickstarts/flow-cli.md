@@ -1,10 +1,10 @@
 ---
 title: Hello World Pt. 2 - Local Development
-sidebar_label: Hello World Pt. 1 - Local Development
+sidebar_label: Hello World Pt. 2 - Local Development
 sidebar_position: 2
 ---
 
-# Flow CLI Quickstart
+# Hello World Pt. 2 - Local Development
 
 The Flow CLI (Command Line Interface) is a set of tools that developers can use to interact with the Flow blockchain by managing accounts, sending transactions, deploying smart contracts, running the emulator, and more. This quickstart will get you familiar with its main concepts and functionality.
 
