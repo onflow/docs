@@ -1,10 +1,10 @@
 ---
-title: Hello World Quickstart
-sidebar_label: Hello World Quickstart
+title: Hello World Pt. 1 - Basics
+sidebar_label: Hello World Pt. 1 - Basics
 sidebar_position: 1
 ---
 
-# Hello, World
+# Hello World Pt. 1 - Basics
 
 Welcome to Flow blockchain, Let's call a contract on Testnet blockchain. Testnet is a public blockchain, you can call contracts without any cost. The Flow blockchain is decentralized data store that allows for custom executable code known as contracts to be deployed and called. Contracts are flexible and live on the Flow blockchain forever. 
 
