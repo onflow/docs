@@ -843,7 +843,7 @@
     },
     {
       "source": "/tools/network-faucets",
-      "destination": "/overview/getting-started/network-faucets",
+      "destination": "/overview/getting-started/faucets",
       "permanent": true
     },
     {
@@ -863,7 +863,7 @@
     },
     {
       "source": "/next/tools/network-faucets",
-      "destination": "/next/community-resources/network-faucets",
+      "destination": "/next/community-resources/faucets",
       "permanent": true
     },
     {
@@ -883,12 +883,12 @@
     },
     {
       "source": "/next/concepts/flix",
-      "destination": "/next/references/dive-in/flix",
+      "destination": "/next/build/advanced-concepts/flix",
       "permanent": true
     },
     {
       "source": "/next/building-on-flow/governance",
-      "destination": "/next/references/dive-in/governance",
+      "destination": "/next/references/governance",
       "permanent": true
     },
     {
