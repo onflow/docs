@@ -1127,11 +1127,6 @@
       "permanent": true
     },
     {
-      "source": "/overview/dive-in/fungible-tokens",
-      "destination": "/build/advanced-concepts/fungible-tokens",
-      "permanent": true
-    },
-    {
       "source": "/overview/dive-in/governance",
       "destination": "/references/governance",
       "permanent": true
