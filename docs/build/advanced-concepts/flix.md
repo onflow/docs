@@ -1,5 +1,4 @@
 ---
-sidebar_label: FLIX
 sidebar_position: 3
 ---
 
