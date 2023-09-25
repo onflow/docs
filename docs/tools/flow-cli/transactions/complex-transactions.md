@@ -7,7 +7,7 @@ sidebar_position: 4
 **Simple Transactions**
 
 Sending a transaction using the Flow CLI can simply be 
-achieved by using the [send command documented here](./send-transactions).
+achieved by using the [send command documented here](./send-transactions.md).
 
 **Complex Transactions**
 
@@ -16,14 +16,14 @@ commands to build, sign and send transactions allowing you to specify different
 authorizers, signers and proposers.  
 
 The process of sending a complex transactions includes three steps:
-1. [build a transaction](./build-transactions)
-2. [sign the built transaction](./sign-transaction)
-3. [send signed transaction](./send-signed-transactions)
+1. [build a transaction](./build-transactions.md)
+2. [sign the built transaction](./sign-transaction.md)
+3. [send signed transaction](./send-signed-transactions.md)
 
 Read more about each command flags and arguments in the above links.
 
 ## Examples
-We will describe common examples for complex transactions. All examples are using an [example configuration](./complex-transactions#configuration).
+We will describe common examples for complex transactions. All examples are using an [example configuration](./complex-transactions.md#configuration).
 
 ### Single payer, proposer and authorizer
 The simplest Flow transaction declares a single account as the proposer, payer and authorizer.

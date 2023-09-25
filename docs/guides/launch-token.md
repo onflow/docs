@@ -20,9 +20,9 @@ All NFTs on the Flow blockchain implement the [NonFungibleToken](../references/c
 
 ### Fungible Tokens
 
-The FLOW token is a fungible token, [More Information](../references/core-contracts/flow-token).  Fungible tokens can be used for various reasons on the Flow blockchain.
+The FLOW token is a fungible token, [More Information](../references/core-contracts/03-flow-token.md).  Fungible tokens can be used for various reasons on the Flow blockchain.
 
-- In order to create a fungible token, the [Fungible tokens](../references/core-contracts/fungible-token), interface has to be implemented.
+- In order to create a fungible token, the [Fungible tokens](../references/core-contracts/02-fungible-token.md), interface has to be implemented.
 
 
 ## How to Launch a Fungible Token

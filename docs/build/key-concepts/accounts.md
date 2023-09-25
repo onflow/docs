@@ -25,7 +25,7 @@ This decoupling is a unique advantage of Flow, allowing for multiple public keys
 
 **Balance**
 
-Each Flow account created on Mainnet will by default [hold a Flow vault that holds a balance and is part of the FungibleToken standard](./flow-token). This balance is used to pay for transaction fees and storage fees. More on that in the fees document.
+Each Flow account created on Mainnet will by default [hold a Flow vault that holds a balance and is part of the FungibleToken standard](./flow-token.md). This balance is used to pay for transaction fees and storage fees. More on that in the fees document.
 
 <Callout type="warning">
 The minimum amount of FLOW an account can have is **0.001**.
