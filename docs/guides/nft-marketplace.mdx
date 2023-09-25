@@ -124,11 +124,11 @@ Based on current and future low fees on the Flow blockchain, NFT marketplaces do
 
 Most NFT marketplaces performing on-chain sales use the [NFT Storefront Smart Contract](https://github.com/onflow/nft-storefront). The contract allows NFT sellers to list their NFT for sale in any fungible token. NFT buyers send the fungible token amount equal to the listed price and receive the listed NFT in return.
 
-A few important points to note regarding listing NFTs for sale through the [NFT Storefront docs](../build/core-contracts/nft-storefront):
+A few important points to note regarding listing NFTs for sale through the [NFT Storefront docs](../references/core-contracts/nft-storefront):
 
 - Same NFT can have multiple sale listings created. The NFT owner can create multiple listings on the same marketplace or different marketplaces.
 - NFT owners can create different sale listings for the same NFT with different fungible tokens as payment methods. For example, the NFT owner can list the same NFT for sale in both FLOW and USDC tokens.
-- NFT listed for sale using the [NFT Storefront docs](../build/core-contracts/nft-storefront) is not locked. It remains in complete control of the NFT owner before the sale, and the NFT owner can transfer it before the sale.
+- NFT listed for sale using the [NFT Storefront docs](../references/core-contracts/nft-storefront) is not locked. It remains in complete control of the NFT owner before the sale, and the NFT owner can transfer it before the sale.
 - Any sale listing created allows for multiple sale cuts. That can enable royalty payments to multiple entities for sale.
 - For an NFT, the NFT owner can create different listings with different sale cuts. That allows each listing to have unique royalty payment schemes.
 - An NFT marketplace platform can create sale listings for NFTs minted by it and NFTs minted by third-party projects.
@@ -138,13 +138,13 @@ A few important points to note regarding listing NFTs for sale through the [NFT 
 
 ## Listing NFTs for sales
 
-[Sell Item](../build/core-contracts/nft-storefront#selling-nfts) is an example of a transaction creating an NFT sale listing. The listing creator provides sale cuts (royalties, platform fees). The NFT Storefront docs does not determine the sale cuts by itself. The listing creator (NFT marketplace) should figure out the royalties to be paid and populate the sale cuts fields of the transaction.
+[Sell Item](../references/core-contracts/nft-storefront#selling-nfts) is an example of a transaction creating an NFT sale listing. The listing creator provides sale cuts (royalties, platform fees). The NFT Storefront docs does not determine the sale cuts by itself. The listing creator (NFT marketplace) should figure out the royalties to be paid and populate the sale cuts fields of the transaction.
 
 The sale listing specifies the fungible token the NFT is sold in. Typical fungible tokens used are FLOW and USDC.
 
 ## Purchasing NFTs
 
-[Buy Item](../build/core-contracts/nft-storefront#purchasing-nfts) is an example of a transaction purchasing an NFT from an NFT Storefront Contract listing. The buyer needs to use the same fungible token specified in the listing.
+[Buy Item](../references/core-contracts/nft-storefront#purchasing-nfts) is an example of a transaction purchasing an NFT from an NFT Storefront Contract listing. The buyer needs to use the same fungible token specified in the listing.
 
 ### Setting up accounts to receive NFTs
 
@@ -180,7 +180,7 @@ A marketplace can gather the royalty information for an NFT listed for sale thro
 
 - Offline methods: The project behind the NFT can inform the marketplace of the royalty percentage it expects from the NFT sale.
 
-- NFT metadata: NFT projects can specify the “Royalty” view per the [NFT Metadata Standard](../build/core-contracts/nft-storefront#enabling-creator-royalties-for-nfts) . Marketplaces can use that information to enforce royalty payments when creating the NFT sale listings. [_Currently, “Royalty” view specification is unspecified. Proposals from NFT Marketplace projects are welcome._]
+- NFT metadata: NFT projects can specify the “Royalty” view per the [NFT Metadata Standard](../references/core-contracts/nft-storefront#enabling-creator-royalties-for-nfts) . Marketplaces can use that information to enforce royalty payments when creating the NFT sale listings. [_Currently, “Royalty” view specification is unspecified. Proposals from NFT Marketplace projects are welcome._]
 
 
 # In App payments

@@ -410,7 +410,7 @@ const config = {
                 label: 'Cadence Cookbook',
               },
               {
-                to: '/build/core-contracts/',
+                to: '/references/core-contracts/',
                 label: 'Core Contracts & Standards',
               },
               {
@@ -435,19 +435,19 @@ const config = {
                 label: 'Flowscan Testnet',
               },
               {
-                to: '/node-ops/node-operation/past-sporks/',
+                to: '/references/run-and-secure/node-operation/past-sporks/',
                 label: 'Past Sporks',
               },
               {
-                to: '/node-ops/node-operation/upcoming-sporks',
+                to: '/references/run-and-secure/node-operation/upcoming-sporks',
                 label: 'Upcoming Sporks',
               },
               {
-                to: '/node-ops/node-operation/',
+                to: '/references/run-and-secure/node-operation/',
                 label: 'Node Operation',
               },
               {
-                to: '/node-ops/node-operation/spork/',
+                to: '/references/run-and-secure/node-operation/spork/',
                 label: 'Spork Information',
               },
             ],

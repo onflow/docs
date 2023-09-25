@@ -1,5 +1,5 @@
-label: Flow Mobile
-position: 20
+label: Mobile Development
+position: 7
 customProps:
   icon: 📱
   description: Learn to build applications for iOS and Android by leveraging native SDKs, React Native plugins, and supported mobile wallets.

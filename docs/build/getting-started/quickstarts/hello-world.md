@@ -1,10 +1,10 @@
 ---
-title: Hello World Quickstart
-sidebar_label: Hello World Quickstart
+title: Hello World Pt. 1 - Basics
+sidebar_label: Hello World Pt. 1 - Basics
 sidebar_position: 1
 ---
 
-# Hello, World
+# Hello World Pt. 1 - Basics
 
 Welcome to the Flow blockchain! In this quickstart guide, you'll interact with your first smart contract on our `Testnet`. For those unfamiliar, the Testnet is a public instance of the Flow blockchain designed for experimentation. Here, you can deploy and invoke smart contracts without incurring any real-world costs. 
 
@@ -12,6 +12,7 @@ Smart contracts on Flow are permanent and flexible code that live on the blockch
 
 
 ## Calling a contract
+On Testnet, `HelloWorld` Contract has a public variable named `greeting`, we'll use a Script to get it's value. For the purposes of this quick start, we are embedding Flow Runner website to run a script against Testnet. For reference [Flow Runner](https://run.dnz.dev/) website
 
 The `HelloWorld` contract exposes a public variable named `greeting`. We can retrieve its value using a simple script written in the Cadence programming language.
 
@@ -22,9 +23,9 @@ pub fun main(): String {
   return HelloWorld.greeting
 }
 ```
-`Copy` and `paste` the script into the editor then hit "Execute Script". Scroll to view the result. For now you can ignore the `red underline`.
+`Copy` the script above into Flow Runner input area and click "Run". See the output returned by the script. 
 
-<iframe className="flow-runner-iframe" src="https://runflow.pratikpatel.io/" width="100%" height="400px"></iframe>
+<iframe className="flow-runner-iframe" src="https://run.dnz.dev/" width="100%" height="400px"></iframe>
 
 ## Contract on Testnet
 
