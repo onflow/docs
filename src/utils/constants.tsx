@@ -54,4 +54,3 @@ export const HIGHLIGHT_LANGUAGES = [
 export const DISCORD_URL = 'https://discord.gg/flow';
 export const DISCORD_ANNOUNCEMENTS_CHANNEL_ID = '621529603718119424';
 export const DISCORD_DEV_UPDATES_CHANNEL_ID = '811693600403357706';
-export const EXCLUDE_CONTENT_CLASS_NAME = 'docs-site-omit';
