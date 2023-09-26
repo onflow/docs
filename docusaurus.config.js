@@ -262,31 +262,37 @@ const config = {
             to: 'build/flow',
             position: 'left',
             label: 'Build',
+            activeBasePath: '/build',
           },
           {
             to: 'guides/flow-app-quickstart',
             position: 'left',
             label: 'Guides',
+            activeBasePath: '/guides',
           },
           {
             to: 'cadence/intro',
             position: 'left',
             label: 'Cadence',
+            activeBasePath: '/cadence',
           },
           {
             to: 'tools/flow-cli',
             position: 'left',
             label: 'Tools',
+            activeBasePath: '/tools',
           },
           {
             to: 'references',
             position: 'left',
             label: 'References',
+            activeBasePath: '/references',
           },
           {
             to: 'community-resources',
             position: 'left',
             label: 'Resources',
+            activeBasePath: '/community-resources',
           },
           // Remove after cadence is updated to a stable version
           // https://github.com/onflow/docs/issues/105
