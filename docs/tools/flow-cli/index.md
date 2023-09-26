@@ -41,16 +41,14 @@ a simplified version of Flow network you can use locally to develop.
 
 So proceed by starting the emulator: 
 
+```
+> flow emulator
+``
+
 Once you've established your new project, you can begin writing your own Cadence contracts. 
 By utilizing the `flow dev` command, the CLI will take care of deploying them to 
 the Flow emulator on your behalf. The Flow emulator serves as a simple version of the Flow network, 
 enabling you to carry out local development.
-
-Start the emulator by running:
-
-```
-> flow emulator
-```
 
 And then the flow dev:
 ```
