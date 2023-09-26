@@ -1,6 +1,4 @@
 ---
-title: Hello World Pt. 2 - Local Development
-sidebar_label: Hello World Pt. 2 - Local Development
 sidebar_position: 2
 ---
 
