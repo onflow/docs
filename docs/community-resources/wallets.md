@@ -49,7 +49,7 @@ https://nu.fi/
 
 ## Flow Reference wallet 
 
-[Flow Reference](https://lilico.app/) is the first extension wallet on Flow.
+[Flow Reference Wallet](https://lilico.app/) is the first extension wallet on Flow.
 
 https://lilico.app/
 
