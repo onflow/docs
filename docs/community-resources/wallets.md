@@ -47,9 +47,9 @@ https://www.ledger.com/
 
 https://nu.fi/
 
-## Lilico
+## Flow Reference wallet 
 
-[Lilico](https://lilico.app/) is the first extension wallet on Flow.
+[Flow Reference](https://lilico.app/) is the first extension wallet on Flow.
 
 https://lilico.app/
 
