@@ -11,7 +11,7 @@ macOS, Linux, and Windows.
 
 
 ## Create your first project
-With the Flow CLI super commands, initiating your new project becomes effortless. Execute the flow setup 
+With the Flow CLI super commands, initiating your new project becomes effortless. Execute the `flow setup` 
 command and make a selection from a variety of accessible scaffolds:
 ```
 > flow setup hello-world --scaffold
