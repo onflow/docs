@@ -112,6 +112,10 @@ docker run --rm \
 	--loglevel=error
 ```
 
+### Additional Falgs
+#### Networking Layer
+All networking layer settings are initialized to default values from the `config/default-config.yml` file when the Flow node starts up. Each attribute in this YAML file matches a flag name, allowing you to override the default setting by specifying the corresponding flag in the `docker run` command. For instance, to change the `networking-connection-pruning` setting, use its matching flag name (`networking-connection-pruning`) and desired value in the `docker run` command.
+
 ### Archive
 
 ```shell
