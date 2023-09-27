@@ -1155,6 +1155,11 @@
       "source": "/concepts/token-standards/fungible-tokens",
       "destination": "/overview/dive-in/fungible-tokens",
       "permanent": true
+    },
+    {
+      "source": "/build/key-concepts/:path*",
+      "destination": "/build/basics/:path*",
+      "permanent": true
     }
   ]
 }
