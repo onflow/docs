@@ -59,7 +59,7 @@ pub fun main(): String {
 
 ```
 
-In the above example, `0x9dca641e9a4b691b` is the address of the account on `testnet` that the `HelloWorld` contract has been deployed to. (Note: if you'll like to learn more about writing scripts, please [read here](../../../build/key-concepts/scripts.md)).
+In the above example, `0x9dca641e9a4b691b` is the address of the account on `testnet` that the `HelloWorld` contract has been deployed to. (Note: if you'll like to learn more about writing scripts, please [read here](../../basics/scripts.md)).
 
 To run the script, we'll run this from the CLI:
 
@@ -191,7 +191,7 @@ transaction(greeting: String) {
 }
 ```
 
-This will log the account signing the transaction and call the `changeGreeting` method of the `HelloWorld` contract, and pass in the new greeting we want to set. (If you want to learn more about writing transactions, please [read here](../../../build/key-concepts/transactions.md)).
+This will log the account signing the transaction and call the `changeGreeting` method of the `HelloWorld` contract, and pass in the new greeting we want to set. (If you want to learn more about writing transactions, please [read here](../../basics/transactions.md)).
 
 But in order to run a transaction, an account needs to pay for it. And while we could run a transaction on emulator using the `emulator-account`, let's learn one more command for creating accounts.
 
