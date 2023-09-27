@@ -16,7 +16,7 @@ Flow network is made up of many node types. Here is more information on the diff
 | Archive | Zero | Yes | Scalable and efficient way to access the history of Flow protocol. | [Setup](../run-and-secure/node-operation/node-setup.mdx) |
 | Access | 100 | Yes | Provides access to the Flow network. Public nodes, that rate limits, is used to send transactions to the network and provide Flow blockchain data. | [Setup](../run-and-secure/node-operation/access-node-setup.md) |
 | Verification | 135,000 | No | Verify the correctness of blocks proposed by the Consensus nodes. | [Setup](../run-and-secure/node-operation/node-setup.mdx) |
-| Collection | 250,000 | No | Bandwidth-optimized nodes grouped in cooperating clusters that manage and propose valid transactions to Consensus nodes, ensuring transaction integrity and storage commitment until Execution nodes process them. | [Setup](../run-and-secure/node-operation/node-setup.mdx) |
+| Collection | 250,000 | No | Nodes designed for efficient bandwidth usage and grouped by the protocol into several cooperating clusters. | [Setup](../run-and-secure/node-operation/node-setup.mdx) |
 | Consensus | 500,000 | No | Form and propose blocks in a manner similar to traditionally-structured proof-of-stake blockchains. | [Setup](../run-and-secure/node-operation/node-setup.mdx) |
 | Execution | 1,250,000 | No | Most resource-intensive nodes on the Flow network, responsible for executing transactions and maintaining the Execution State. | [Setup](../run-and-secure/node-operation/node-setup.mdx) |
 
