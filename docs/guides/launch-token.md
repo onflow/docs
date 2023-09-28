@@ -11,7 +11,6 @@ sidebar_custom_props:
 
 It is important that Flow has Token Standards for [Fungible tokens](../references/core-contracts/flow-ft/index.md) and [Non-fungible](../references/core-contracts/flow-nft/index.md) tokens. This allows applications and other smart contracts to interact with your token in a predictable way.
 
-
 ### Non-Fungible Tokens (NFTs)
 
 All NFTs on the Flow blockchain implement the [NonFungibleToken](../references/core-contracts/08-non-fungible-token.md) interface, allowing them to be compatible with wallets, marketplaces and other cross-app experiences.
@@ -20,10 +19,9 @@ All NFTs on the Flow blockchain implement the [NonFungibleToken](../references/c
 
 ### Fungible Tokens
 
-The FLOW token is a fungible token, [More Information](../references/core-contracts/flow-token).  Fungible tokens can be used for various reasons on the Flow blockchain.
+The FLOW token is a fungible token, [More Information](../references/core-contracts/flow-token). Fungible tokens can be used for various reasons on the Flow blockchain.
 
 - In order to create a fungible token, the [Fungible tokens](../references/core-contracts/fungible-token), interface has to be implemented.
-
 
 ## How to Launch a Fungible Token
 
@@ -33,15 +31,14 @@ There is a lot to consider when creating a token, strong tokenomics, private or 
 
 Example of a Fungible Token Contract [ExampleToken](https://github.com/onflow/flow-ft/blob/master/contracts/ExampleToken.cdc). See how to deploy contracts [here](./smart-contracts/deploying.mdx).
 
-
 # How to Launch a Non-Fungible Token (NFT)
 
-A NFT collection is very flexible and can be used for many different use cases. The most common use case is for digital art, but it can also be used for collectibles, game items, and more. Keeping this in mind, a tool will help build the NFT collection metadata. 
+A NFT collection is very flexible and can be used for many different use cases. The most common use case is for digital art, but it can also be used for collectibles, game items, and more. Keeping this in mind, a tool will help build the NFT collection metadata.
 
 A few resources to help start your NFT collection:
 
 - [Touchstone](https://www.touchstone.city/guide/en/welcome)
-- [Emeralkd Academy: Quickstart](https://academy.ecdao.org/en/quickstarts/1-non-fungible-token)
+- [Emerald Academy: Quickstart](https://academy.ecdao.org/en/quickstarts/1-non-fungible-token)
 
 **NFT Catalog**
 
@@ -49,8 +46,9 @@ After getting your NFT collection created, look into your collection registered 
 
 ## Final Words
 
-We have given in this guide a number of guidelines and templates to help you get around the cold start problem. 
+We have given in this guide a number of guidelines and templates to help you get around the cold start problem.
 
 More Resources:
+
 - [Flow Token List](https://github.com/FlowFans/flow-token-list) - how to add a token to the Flow native token list
 - [Flowscan Request Form](https://docs.google.com/forms/d/e/1FAIpQLSdMiIkj2goF3Ib7wJHRb-YNvruwBghq1NP1IOfz4p2smIFp0w/viewform) | Token Metadata - please fill this out to update your token metadata on Flowscan
