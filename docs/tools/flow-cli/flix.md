@@ -27,7 +27,7 @@ flow flix bd10ab0bf472e6b58ecc0398e9b3d1bd58a4205f14a7099c52c0640d9589295f --net
 
 ```shell
 # Execute a local FLIX script by path on Testnet
-flow flix ./multiply.template.json 2 3 --network testnet`
+flow flix ./multiply.template.json 2 3 --network testnet
 ```
 
 ## Resources
