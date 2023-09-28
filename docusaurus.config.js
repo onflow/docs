@@ -383,10 +383,6 @@ const config = {
                 label: 'Responsible Disclosure',
               },
               {
-                href: 'https://forum.onflow.org/',
-                label: 'Forum',
-              },
-              {
                 href: 'https://www.flowverse.co/',
                 label: 'Flowverse',
               },

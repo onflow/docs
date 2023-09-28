@@ -7,39 +7,6 @@ It provides features like syntax highlighting, type checking, code completion, e
 
 Note that most editing features (type checking, code completion, etc.) are implemented in the [Cadence Language Server](https://github.com/onflow/cadence/tree/master/languageserver).
 
-## Developing the Extension
-
-### Pre-requisites
-
-- Must have Typescript installed globally: `npm i -g typescript`
-
-### Getting Started
-
-- Run the Typescript watcher: `tsc -watch -p ./`
-- Launch the extension by pressing `F5` in VSCode
-- Manually reload the extension host when you make changes to TypeScript code
-
-### Configuration for Extension Host if Missing (`launch.json`):
-
-```
-{
-  "version": "0.2.0",
-  "configurations": [
-    {
-      "type": "extensionHost",
-      "request": "launch",
-      "name": "Launch Extension",
-      "runtimeExecutable": "${execPath}",
-      "args": ["--extensionDevelopmentPath=${workspaceFolder}"],
-      "outFiles": ["${workspaceFolder}/out/**/*.js"]
-    }
-  ]
-}
-
-```
-
----
-
 ## Features
 
 - Syntax highlighting (including in Markdown code fences)
@@ -72,14 +39,43 @@ flow cadence install-vscode-extension
 
 Restart VS Code and the extension should be installed!
 
+## Developing the Extension
+
+### Pre-requisites
+
+- Must have Typescript installed globally: `npm i -g typescript`
+
+### Getting Started
+
+- Run the Typescript watcher: `tsc -watch -p ./`
+- Launch the extension by pressing `F5` in VSCode
+- Manually reload the extension host when you make changes to TypeScript code
+
+### Configuration for Extension Host if Missing (`launch.json`):
+
+```
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "type": "extensionHost",
+      "request": "launch",
+      "name": "Launch Extension",
+      "runtimeExecutable": "${execPath}",
+      "args": ["--extensionDevelopmentPath=${workspaceFolder}"],
+      "outFiles": ["${workspaceFolder}/out/**/*.js"]
+    }
+  ]
+}
+
+```
+
 ### Building
 
 If you are building the extension from source, you need to build both the
 extension itself and the Flow CLI (if you don't already have a version installed).
 Unless you're developing the extension or need access to unreleased features,
 you should use the Flow CLI install option (above). It's much easier!
-
-#### VS Code Extension
 
 If you haven't already, install dependencies.
 

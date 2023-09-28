@@ -10,7 +10,7 @@ Follow [these steps](../flow-cli/install.md) to install the Flow CLI on
 macOS, Linux, and Windows.
 
 ## Create your first project
-The Flow CLI is Flow’s primary development and testing environment, similar to Hardhat and Foundry for developers familiar with writing in Solidity. With the Flow CLI super commands, initiating your new project becomes effortless. Execute the flow setup command and make a selection from a variety of accessible scaffolds.
+The Flow CLI is Flow’s primary development and testing environment, similar to Hardhat and Foundry for developers familiar with writing in Solidity. With the Flow CLI super commands, initiating your new project becomes effortless. Execute the `flow setup` command and make a selection from a variety of accessible scaffolds.
 
 ```
 > flow setup hello-world --scaffold
