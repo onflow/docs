@@ -53,7 +53,7 @@ function CardLayout({
       <h2 className={clsx('text--truncate', styles.cardTitle)} title={title}>
         <div className="flex gap-2">
           <div className="flex-none">{icon}</div>
-          <div className="flex-col">
+          <div className="flex flex-col gap-1">
             <span>{title}</span>
             {Boolean(subtitle) && subtitle}
           </div>
