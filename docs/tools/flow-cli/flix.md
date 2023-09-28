@@ -17,7 +17,7 @@ Queries can be a FLIX id, name, or path to a local FLIX file.
 
 ```shell
 # Execute a FLIX transaction by name on Testnet
-flix flow transfer-flow 5.0 "0x123" --network testnet --signer "testnet-account"
+flow flix transfer-flow 5.0 "0x123" --network testnet --signer "testnet-account"
 ```
 
 ```shell
