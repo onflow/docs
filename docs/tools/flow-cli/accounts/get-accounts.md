@@ -44,7 +44,7 @@ Contract: 'FlowStorageFees'
 - Name: `address`
 - Valid Input: Flow account address
 
-Flow [account address](../../../build/key-concepts/accounts.md) (prefixed with `0x` or not).
+Flow [account address](../../../build/basics/accounts.md) (prefixed with `0x` or not).
 
 
 ## Flags

@@ -6,7 +6,7 @@ sidebar_position: 4
 
 A script is executable Cadence code that queries the Flow network but does not modify it. Unlike Flow transactions, they don’t need signing and they can return a value. You can think of executing scripts as a read-only operation. 
 
-Scrips are executed on Access Nodes, Archive Nodes, or Execution Nodes. 
+Scripts are executed on Access Nodes, Archive Nodes, or Execution Nodes. 
 
 Scripts are defined by following the Cadence code and we can only execute one at a time.
 

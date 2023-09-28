@@ -9,8 +9,6 @@ sidebar_custom_props:
 
 Store, manage, and interact securely with Flow tokens and digital assets on the Flow blockchain network. Discover a range of wallets that offer convenient ways to handle and safeguard your cryptocurrency holdings, ensuring easy access and enhanced security for your transactions and assets.
 
-# Wallets
-
 ## Magic.link
 
 [Magic](https://magic.link/) is a developer SDK that integrates with your application to enable passwordless Web3 onboarding (no seed phrases) and authentication using magic links (similar to Slack and Medium).

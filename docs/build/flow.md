@@ -26,7 +26,7 @@ The [development guide](../tutorials/intro.md) covers the Flow core concepts, in
 - **User Account:** A user account is a record on the blockchain that stores the digital assets owned by a single user.
 - **Transaction:** A transaction is a code submitted to the blockchain that mutates the state of one or more user accounts and smart contracts.
 - **User Wallet:** A user wallet is software or hardware that controls access to a user's account on the blockchain.
-- **State Query:** A state query is a request made to the blockchain that returns information about the state of your dApp's smart contracts.
+- **Script:** A script is a request made to the blockchain that returns information about the state of your dApp's smart contracts.
 - **Flow Client Library (FCL):** The Flow Client Library is a framework that provides a standard interface to connect client applications and user wallets.
 
 ## Core Contracts
