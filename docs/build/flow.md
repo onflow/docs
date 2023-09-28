@@ -31,7 +31,7 @@ The [development guide](../tutorials/intro.md) covers the Flow core concepts, in
 
 ## Core Contracts
 
-The Flow blockchain implements core functionality using its own smart contract language, Cadence. The core functionality is split into a set of contracts, so-called [core contracts](../references/core-contracts/index.md):
+The Flow blockchain implements core functionality using its own smart contract language, [Cadence](../cadence/language/). The core functionality is split into a set of contracts, so-called [core contracts](../references/core-contracts/index.md):
 
 - **Fungible Token:** The FungibleToken contract implements the Fungible Token Standard. It is the second contract ever deployed on Flow.
 - **Flow Token:** The FlowToken contract defines the FLOW network token.
@@ -47,13 +47,13 @@ The [FLOW](../references/core-contracts/03-flow-token.md) token is the native cu
 
 ## Technical Background
 
-- The Flow [Technical Primer](https://www.onflow.org/primer) is a great place to start to understand how Flow works.
-- The [3 technical whitepapers](https://www.onflow.org/technical-paper) are covering the unique innovation behind the Flow blockchain network in-depth.
+- The [Flow Technical Primer](https://www.onflow.org/primer) is a great place to start to understand how Flow works.
+- The [Three technical whitepapers](https://www.onflow.org/technical-paper) are covering the unique innovation behind the Flow blockchain network in-depth.
 
 ## Tokenomics
 
 - To understand more about Flow's Token Economics, and the **FLOW token**, you can read the [Flow Token Economics](https://www.onflow.org/flow-token-economics) guide.
-- FLOW tokens are Flow's native Fungible Token. To learn more about how to work with them in your applications, go [here](../references/core-contracts/03-flow-token.md)
+- FLOW tokens are Flow's native Fungible Token. To learn more about how to work with them in your applications, go [here](../references/core-contracts/03-flow-token.md).
 
 ## More Concepts
 

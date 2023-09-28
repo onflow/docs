@@ -9,10 +9,9 @@ sidebar_label: Flow CLI
 Follow [these steps](../flow-cli/install.md) to install the Flow CLI on 
 macOS, Linux, and Windows.
 
-
 ## Create your first project
-With the Flow CLI super commands, initiating your new project becomes effortless. Execute the `flow setup` 
-command and make a selection from a variety of accessible scaffolds:
+The Flow CLI is Flow’s primary development and testing environment, similar to Hardhat and Foundry for developers familiar with writing in Solidity. With the Flow CLI super commands, initiating your new project becomes effortless. Execute the `flow setup` command and make a selection from a variety of accessible scaffolds.
+
 ```
 > flow setup hello-world --scaffold
 
@@ -41,16 +40,11 @@ a simplified version of Flow network you can use locally to develop.
 
 So proceed by starting the emulator: 
 
-Once you've established your new project, you can begin writing your own Cadence contracts. 
-By utilizing the `flow dev` command, the CLI will take care of deploying them to 
-the Flow emulator on your behalf. The Flow emulator serves as a simple version of the Flow network, 
-enabling you to carry out local development.
-
-Start the emulator by running:
-
 ```
 > flow emulator
-```
+``
+
+After creating your new project you are ready to start writing contracts. The Flow emulator is a simplified local simulation of the Flow network. Running the dev command in the CLI ensures that the contracts are deployed to the Flow emulator for you.
 
 And then the flow dev:
 ```

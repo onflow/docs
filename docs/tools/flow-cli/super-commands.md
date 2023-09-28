@@ -97,8 +97,7 @@ deployed to account called `Bob` my folder structure inside contracts folder wil
 ```
 
 ## Import Schema
-In order to simplify your workflow we have introduced a new way to import your contracts during development. 
-You can simply import them by their name.
+You can simply import your contracts by name. We have introducted a new way to import your contracts. This will simply your workflow. 
 
 The new import schema format looks like:
 ```
@@ -109,7 +108,7 @@ Example:
 import "HelloWorld"
 ```
 This will automatically import the contract you have created in your project with the same name and 
-save the configuration in flow.json. It doesn't matter if the contract is deployed on a non-default account.
+save the configuration in flow.json. It doesn't matter if the contract has been deployed on a non-default account.
 
 
 
