@@ -1,4 +1,3 @@
-import useBaseUrl from '@docusaurus/useBaseUrl';
 import React from 'react';
 
 export const CustomIcon = ({
@@ -11,11 +10,7 @@ export const CustomIcon = ({
   if (!customIcon) {
     return null;
   }
-  if (customIcon.match(/^\//) != null) {
-    return <img src={useBaseUrl(customIcon)} className="h-16" />;
-  }
-
-  if (customIcon.match(/^https?/) != null) {
+  if (customIcon.match(/^https?/) != null || customIcon.match(/^\//) != null) {
     return <img src={customIcon} className="h-16" />;
   }
 
