@@ -31,3 +31,7 @@
 .preWrap {
   white-space: pre-wrap;
 }
+
+.cardContainer a:hover {
+  --ifm-link-hover-color: var(--ifm-color-emphasis-400);
+}
