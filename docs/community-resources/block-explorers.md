@@ -9,6 +9,8 @@ sidebar_custom_props:
 # Block Explorers
 Block explorers are user-friendly online tools that visually present blockchain data, allowing users to easily navigate transactions, blocks, addresses, and smart contracts while providing real-time insights and transparency.
 
+<div id="cards" className="cards">
+
 ## Flow Diver
 
 [Flow Diver](https://www.flowdiver.io/) provides various tools to explore the blockchain, including:
@@ -22,8 +24,6 @@ It also offers analytics for the mainnet:
 - Network activity (transaction count)
 - Transaction cost (gas fee)
 - Validators information
-
-# Account Explorer
 
 ## Flow View
 
@@ -41,8 +41,6 @@ Supported networks:
 - Testnet: [https://testnet.flowview.app/](https://testnet.flowview.app/)
 - Emulator (local): [https://emulator.flowview.app/](https://emulator.flowview.app/)
 
-# Contract Explorer
-
 ## ContractBrowser
 
 [ContractBrowser](https://contractbrowser.com/) provides tools for viewing deployed smart contracts, their dependencies, and dependents. Features include:
@@ -51,3 +49,5 @@ Supported networks:
 - Detailed smart contract information
 
 [Testnet ContractBrowser](https://testnet.contractbrowser.com/) is also available for `Testnet Flow`.
+
+</div>

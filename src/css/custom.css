@@ -80,3 +80,26 @@
 [data-theme='dark'] img[src$='#gh-light-mode-only'] {
   display: none;
 }
+
+.cards > div {
+  display: grid;
+  gap: 16px;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-areas: "header header" "description description";
+  margin-bottom: 2rem;
+}
+
+.cards > div > h2 {
+  grid-area: header;
+}
+
+.cards > div > p {
+  grid-area: description;
+}
+
+.cards > div > div {
+  padding: 1rem;
+  background-color: var(--ifm-card-background-color);
+  border-radius: var(--ifm-card-border-radius);
+  border: 1px solid var(--ifm-color-emphasis-200);
+}
