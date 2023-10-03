@@ -18,7 +18,7 @@ pub fun main(): String {
   return HelloWorld.greeting
 }
 ```
- - `Click` <VerticalSplit /> To vertically split Flow Runner editor. 
+ - `Click` <VerticalSplit /> To vertically orient Flow Runner editor. 
  - `Copy` the script above into Flow Runner input area and click "Run". 
  - See the output returned by the script. 
 

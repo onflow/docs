@@ -18,19 +18,19 @@ For other ways of installing, please [refer to the installation guide](../../../
 
 ## Configuration
 
-Let's first create a directory to setup a project we can work from.
+Let's first create a directory, then setup a project.
 
 ```
 mkdir cli-quickstart
 ```
 
-And then let's navigate to it:
+And then let's navigate to our new directory:
 
 ```
 cd cli-quickstart
 ```
 
-Let's first create a `flow.json` file for our project (we won't use it till a later step, but this is a good spot to learn it). The `flow.json` file is a configuration file used by the Flow CLI when interacting with the Flow blockchain. It helps manage various project-specific settings, such as network configurations, account details, contract names and source files, and deployment targets. To create one, run:
+Let's first create a `flow.json` file for our project (we'll use this in a later step, but this is a good spot to bring it up). The `flow.json` file is a configuration file used by the Flow CLI when interacting with the Flow blockchain. It helps manage various project-specific settings, such as network configurations, account details, contract names and source files, and deployment targets. To create one, run:
 
 ```
 flow init
@@ -40,7 +40,7 @@ If you look at `flow.json` now you'll see it's listed access nodes for networks 
 
 ## Running Scripts
 
-On Flow, scripts are used to read from the chain. There is no state modification. In our case, we are going to read a greeting from a contract deployed to `testnet` called `HelloWorld`. (You can [view the contract here](https://f.dnz.dev/0x9dca641e9a4b691b/HelloWorld))
+On Flow, scripts are used to read data from the Flow blockchain. There is no state modification. In our case, we are going to read a greeting from a contract deployed to `testnet` called `HelloWorld`. (You can [view the contract here](https://f.dnz.dev/0x9dca641e9a4b691b/HelloWorld))
 
 Let's create a script file:
 
@@ -59,7 +59,7 @@ pub fun main(): String {
 
 ```
 
-In the above example, `0x9dca641e9a4b691b` is the address of the account on `testnet` that the `HelloWorld` contract has been deployed to. (Note: if you'll like to learn more about writing scripts, please [read here](../../basics/scripts.md)).
+In the above example, `0x9dca641e9a4b691b` is the address where the `HelloWorld` contract has been deployed to on `testnet`. (Note: if you'll like to learn more about writing scripts, please [read here](../../basics/scripts.md)).
 
 To run the script, we'll run this from the CLI:
 
@@ -67,21 +67,21 @@ To run the script, we'll run this from the CLI:
 flow scripts execute script.cdc --network testnet
 ```
 
-You should see the result of the greeting.
+You should see the result of the greeting. `Result: "Hello, world!"`
 
 ## Running the Contract Locally on Emulator
 
-The Flow Emulator is a local, lightweight, and standalone version of the Flow blockchain. It's designed to provide developers with a local environment for testing and development purposes without having to interact with the `mainnet` or `testnet`. This makes it easier and faster to develop, test, and debug smart contracts and dApps.
+The Flow Emulator is a local, lightweight, and standalone version of the Flow blockchain. It's designed to provide developers with a local environment for testing and development purposes without having to interact with the `mainnet` or `testnet`. This makes it easier and faster to develop, test, and debug smart contracts and apps.
 
-In order to use it, let's catch our project configuration up with where we are at so far.
+In order to use it, let's update our project configuration. 
 
-Let's create a local version of this contract for the emulator. Run:
+Let's create a local version of the HelloWorld contract. We'll deploy it to the emulator, Run:
 
 ```
 touch HelloWorld.cdc
 ```
 
-Then let's put the contract into our project. Copy this to `HelloWorld.cdc`:
+Copy the contract to `HelloWorld.cdc`. Then let's add the contract into our project by updating `flow.json`. 
 
 ```
 pub contract HelloWorld {
@@ -99,7 +99,7 @@ pub contract HelloWorld {
 
 ```
 
-The next thing we'll do is add a contracts section to our `flow.json` configuration that will describe our setup. We'll state where the file for the contract lives with `source` and then define `aliases` for the addresses of the deployed contracts.
+Next we'll add a contracts section to our `flow.json` configuration that will describe our project setup. We'll state the contract file location lives with `source` and then define `aliases` for the addresses of the deployed contracts.
 
 ```
 // flow.json
@@ -118,7 +118,7 @@ The next thing we'll do is add a contracts section to our `flow.json` configurat
 }
 ```
 
-We're also going to change the imports of our script so that there are no hardcoded addresses. We'll let CLI figure out how to interact with what network based on our configuration.
+We're also going to change the imports of our script so that there are no hardcoded network specific addresses. The CLI can figure out how to interact with the network (ie. emulator, testnet or mainnet) based on our configuration.
 
 ```
 // script.cdc
@@ -166,7 +166,7 @@ flow scripts execute script.cdc --network emulator
 
 ## Creating an Account and Running a Transaction
 
-To change state on the Flow Blockchain, you need to run a transaction. Let's create a simple transaction file we can use to modify the greeting on the `HelloWorld` contract.
+To change state on the Flow Blockchain, you need to run a transaction. Let's create a simple transaction file, we can use to modify the `greeting` on the `HelloWorld` contract.
 
 First, create file called `transaction.cdc` from the root of your project:
 
@@ -191,9 +191,9 @@ transaction(greeting: String) {
 }
 ```
 
-This will log the account signing the transaction and call the `changeGreeting` method of the `HelloWorld` contract, and pass in the new greeting we want to set. (If you want to learn more about writing transactions, please [read here](../../basics/transactions.md)).
+This will log the account signing the transaction and call the `changeGreeting` method of the `HelloWorld` contract, and pass in the new greeting. (If you want to learn more about writing transactions, please [read here](../../basics/transactions.md)).
 
-But in order to run a transaction, an account needs to pay for it. And while we could run a transaction on emulator using the `emulator-account`, let's learn one more command for creating accounts.
+In order to run a transaction, the signing account needs to pay for it. We could run a transaction on emulator using the default `emulator-account` account, let's learn one more command for creating accounts.
 
 The easiest way to create an account using CLI is by running (remember, your emulator should still be running at this point in another terminal):
 
@@ -213,4 +213,4 @@ You've just modified the state of the Flow Blockchain!
 
 ## Next Steps
 
-A great way to dive in deeper is to check out the scaffolds generated by the Flow CLI. They can serve as a great starting point for any project you're trying to create. See how to [create a scaffold here](../../../tools/flow-cli/index.md).
+Dive deeper by checking out the scaffolds generated by the Flow CLI. They can serve as a great starting point for any project you're trying to create. See how to [create a scaffold here](../../../tools/flow-cli/index.md).

@@ -41,7 +41,7 @@ npm start
 
 ## Setting Up FCL
 
-The first thing we'll need to do to use FCL is install it. Let's run the following which will download the library and set it as a dependency in our project:
+In order to use FCL, we need to install it. Let's run the following to download the library and set it as a dependency in our project:
 
 ```
 npm install @onflow/fcl --save
