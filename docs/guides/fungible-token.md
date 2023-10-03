@@ -568,7 +568,7 @@ Don't forget the new account will need a vault added, so let's run the following
 flow transactions send ./cadence/transactions/CreateVault.cdc --signer test-acct-2 --network emulator
 ```
 
-Now, let's send one token from our earlier account to the new account. Remember to replace `123` with account address of `test-acct-2`.
+Now, let's send 1 token from our earlier account to the new account. Remember to replace `123` with account address of `test-acct-2`.
 
 ```
 flow transactions send ./cadence/transactions/Transfer.cdc 123 "1.0" --signer test-acct --network emulator
