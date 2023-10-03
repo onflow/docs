@@ -15,7 +15,7 @@ sidebar_custom_props:
 This guide is a simple walkthrough to get started building a web3 app using the Flow Client Library (FCL).
 
 <Callout type="info">
- If you are looking for a scalfolds, check out [scaffolds availabe in the Flow CLI](../tools/flow-cli/super-commands.md#using-scaffolds).
+ If you are looking for a scalfolds, check out [scaffolds available in the Flow CLI](../tools/flow-cli/super-commands.md#using-scaffolds).
 </Callout>
 
 This simple guide uses the "Hello World" scaffold, it is meant to provide all the code needed to get a web application up and running.
@@ -190,7 +190,8 @@ In `components/Navbar.tsx` a button wires up the authentication method `fcl.auth
 Once authenticated, FCL has a hook  `const user = useCurrentUser()` to get the user data, when user is signed in `loggedIn` is true. For more information on the `currentUser`, read more [here](../tools/clients/fcl-js/api.md#current-user).
 
 ```jsx
-import Head from 'next/head'import * as fcl from '@onflow/fcl'
+import Head from 'next/head'
+import * as fcl from '@onflow/fcl'
 import useCurrentUser from '../hooks/useCurrentUser'
 import navbarStyles from '../styles/Navbar.module.css'
 import elementStyles from '../styles/Elements.module.css'
