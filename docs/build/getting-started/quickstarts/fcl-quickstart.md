@@ -47,7 +47,7 @@ In order to use FCL, we need to install it. Let's run the following to download 
 npm install @onflow/fcl --save
 ```
 
-Next we'll want to add to our FCL configuration. There's a lot you can do here, but for this example, let's just set the Flow Access Node we want to talk to in our application. An Access Node serves as the primary point of interaction for clients, such as wallets, dapps, and other services, to communicate with the Flow network. It provides a gateway for these clients to submit transactions, query data, and retrieve information without having to connect to the entire network or maintain a full copy of the blockchain.
+Next we'll want to add to our FCL configuration. There's a lot you can do here, but for this simple example, let's configure `accessNode.api` to talk to the Testnet Flow Access Node. An Access Node serves as the primary point of interaction for clients, such as wallets, dapps, and other services, to communicate with the Flow network. It provides a gateway for these clients to submit transactions, query data, and retrieve information without having to connect to the entire network or maintain a full copy of the blockchain.
 
 For our example, we are going to point at a free Access Node provided by Flow. Add the following config code to your `src/App.js`
 
