@@ -378,7 +378,7 @@ To run this using the CLI, enter this in your terminal:
 flow scripts execute cadence/scripts/TotalSupply.cdc
 ```
 
-In the terminal where you started the emulator, you should see 1,000.
+In the terminal where you started the emulator, you should see `1000.0`
 
 To learn more about running scripts using Flow CLI, [see the docs](https://developers.flow.com/tools/flow-cli/scripts/execute-scripts).
 
