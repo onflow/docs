@@ -102,4 +102,11 @@
   background-color: var(--ifm-card-background-color);
   border-radius: var(--ifm-card-border-radius);
   border: 1px solid var(--ifm-color-emphasis-200);
+  transition: all var(--ifm-transition-fast) ease;
+  transition-property: border, box-shadow;
+}
+
+.cards > div > div:hover {
+  border-color: var(--ifm-color-primary);
+  box-shadow: 0 3px 6px 0 #0003;
 }
