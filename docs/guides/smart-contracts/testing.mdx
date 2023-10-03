@@ -7,10 +7,12 @@ sidebar_custom_props:
   icon: 📝 
 ---
 
+Testing is an essential part of the development workflow and code coverage is an important metric that can help developers view what percentage of all the possible code paths have been exercised during testing.
 Good test coverage is vital for assuring code quality.
 
 <Callout type="success">
 Leverage [Flow emulator](../../tools/emulator/index.md) to automate test runs. Test on Flow testnet. Include unit tests; to exercise each feature, and integration tests; to exercise the behavior of different parts of the project as a whole.
+The emulator can also provide [code coverage](https://github.com/m-Peter/flow-code-coverage#for-emulator) insights.
 </Callout>
 
 Human-driven tests, in which individual testers work manually through user stories via the project's user interface or custom transactions, can also be performed locally. Tests with groups of testers can be performed similarly on testnet in a similar manner.
@@ -30,9 +32,31 @@ You should aim to replicate all conditions as closely as possible to the usage p
 
 ## Writing Tests
 
-There are official SDKs for Flow in both Go and JavaScript.
+There are official SDKs/frameworks for Flow in Cadence, Go and JavaScript.
 
-In both cases, the code will need to deploy the contracts, configure accounts to interact with them and send transactions to them. It will then have to wait for the transactions to be sealed and check the results by catching exceptions, checking for events, and querying state using scripts.
+In all three cases, the test code will need to deploy the contracts, configure accounts to interact with them and send transactions to them. It will then have to wait for the transactions to be sealed and check the results by catching exceptions, checking for events, and querying state using scripts.
+
+### Cadence tests
+
+Cadence comes with built-in support for code coverage, as well as a native testing framework which allows developers to write their tests using Cadence.
+This framework is bundled with the [Flow CLI](../../tools/flow-cli/index.md) tool, which includes a dedicated command for running tests (`flow test`).
+
+You can find examples of Cadence tests in the following projects: [hybrid-custody](https://github.com/onflow/hybrid-custody/tree/main/test), [flow-nft](https://github.com/onflow/flow-nft/tree/master/tests), [flow-ft](https://github.com/onflow/flow-ft/tree/master/tests).
+Visit the [documentation](../../cadence/testing-framework.mdx) to view all the available features.
+
+The [Hybrid Custody](https://github.com/onflow/hybrid-custody#readme) project is a prime example which utilizes both the Cadence testing framework and code coverage in its CI.
+
+![Hybrid Custody CI](hybrid-custody-ci.png)
+
+There is also a [repository](https://github.com/m-Peter/flow-code-coverage#readme) which contains some sample contracts and their tests.
+
+![Automated CI Coverage Report](codecov-in-pr.png)
+
+![Coverage Report Visualization](codecov-insights.png)
+
+<Callout type="info">
+The Cadence testing framework utilizes the emulator under the hood.
+</Callout>
 
 ### Go Tests
 
