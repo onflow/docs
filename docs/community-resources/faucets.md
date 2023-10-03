@@ -9,6 +9,8 @@ sidebar_custom_props:
 
 Network Faucets provide free Flow tokens for testing purposes, functioning like taps that dispense tokens. They are valuable tools for experimenting with Flow without the need to purchase tokens.
 
+<div class="cards">
+
 ## Flow Faucet
 
 [Flow Faucet](https://testnet-faucet.onflow.org/) is a dedicated tool that provides a seamless way to acquire small amounts of Flow tokens for testing and development purposes on the Flow blockchain's testnet environment.
@@ -16,3 +18,5 @@ Network Faucets provide free Flow tokens for testing purposes, functioning like 
 ### Supported Networks
 
 - Testnet: [https://testnet-faucet.onflow.org/](https://testnet-faucet.onflow.org/)
+
+</div>
