@@ -411,7 +411,7 @@ transaction {
 }
 ```
 
-Let's next create a new emulator account using the CLI. We'll use this account to create a new vault and mint tokens into it. Run:
+Next let's create a new emulator account using the CLI. We'll use this account to create a new vault and mint tokens into it. Run:
 
 ```
 flow accounts create
