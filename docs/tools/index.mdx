@@ -8,4 +8,23 @@ import DocCardList from '@theme/DocCardList';
 import { useDocsSidebar, isSamePath } from '@docusaurus/theme-common/internal';
 import { useLocation } from '@docusaurus/router';
 
-<DocCardList items={useDocsSidebar().items.filter(item => !isSamePath(item.href, useLocation().pathname))}/>
+<DocCardList items={[
+  ...useDocsSidebar().items.filter(item => !isSamePath(item.href, useLocation().pathname)),
+  {
+      type: 'link',
+      label: 'Flowser',
+      href: 'https://flowser.dev/',
+      description: 'Flowser lets you inspect the current state of any flow blockchain network emulator, testnet, and mainnet.',
+      customProps: {
+        icon: 'https://raw.githubusercontent.com/onflowser/flowser/main/frontend/public/logo.svg',
+        author: {
+          name: 'Flowser',
+          profileImage:
+            'https://raw.githubusercontent.com/onflowser/flowser/main/frontend/public/logo.svg',
+        },
+        numStars: 0,
+        twitterLink: 'https://twitter.com/onflowser',
+        githubLink: 'https://github.com/onflowser/flowser'
+      }
+    },
+]}/>
