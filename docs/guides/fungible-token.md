@@ -196,7 +196,7 @@ pub contract FooToken: FungibleToken {
 }
 ```
 
-The destroy is an important thing to handle though since if anyone ever does destroy their vault, we'll want to change the total supply of the token. You can add this inside of your `Vault` resource as well.
+The destroy call is an important thing to handle though since if anyone ever does destroy their vault, we'll want to change the total supply of the token. You can add this inside of your `Vault` resource as well.
 
 ```
 import "FungibleToken"
