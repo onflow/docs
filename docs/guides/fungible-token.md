@@ -221,7 +221,7 @@ pub contract FooToken: FungibleToken {
 
 ### Creating a Minter
 
-Let's create a minter which is to mint vaults that have tokens in it. Need to keep track of tokens we are making with totalSupply
+Let's create a minter resource which is used to mint vaults that have tokens in them. We can keep track of tokens we are minting with totalSupply
 
 If we want the ability to create new tokens, we'll need a way to mint them. To do that, let's create another resource on the `FooToken` contract.  This will have a `mintToken`function which can increase the total supply of the token.
 
