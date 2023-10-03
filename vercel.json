@@ -1157,6 +1157,11 @@
       "permanent": true
     },
     {
+      "source": "/guides/launch-token",
+      "destination": "/guides/fungible-token",
+      "permanent": true
+    },
+    {
       "source": "/build/key-concepts/:path*",
       "destination": "/build/basics/:path*",
       "permanent": true
