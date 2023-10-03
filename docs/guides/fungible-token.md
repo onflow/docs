@@ -245,7 +245,7 @@ pub contract FooToken: FungibleToken {
 }
 ```
 
-We also want to decide which account we want to give this ability to. In our example, let's give it to the contract account. We can set this in the contract init function below the setting of total supply so that on the contracts creation the minter is stored on the contract account.
+We also want to decide which account/s we want to give this ability to. In our example, we'll give it to the account where the contract is deployed. We can set this in the contract init function below the setting of total supply so that when the contract is created the minter is stored on the same account.
 
 ```
 import "FungibleToken"
