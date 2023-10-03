@@ -580,7 +580,7 @@ After that, read the balance of `test-acct-2` (replace the address `123`).
 flow scripts execute cadence/scripts/ReadVaultBalance.cdc 123
 ```
 
-You should now see one token in `test-acct-2` account!
+You should now see 1 token in `test-acct-2` account!
 
 ## More
 
