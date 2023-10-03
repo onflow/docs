@@ -190,7 +190,8 @@ In `components/Navbar.tsx` a button wires up the authentication method `fcl.auth
 Once authenticated, FCL has a hook  `const user = useCurrentUser()` to get the user data, when user is signed in `loggedIn` is true. For more information on the `currentUser`, read more [here](../tools/clients/fcl-js/api.md#current-user).
 
 ```jsx
-import Head from 'next/head'import * as fcl from '@onflow/fcl'
+import Head from 'next/head'
+import * as fcl from '@onflow/fcl'
 import useCurrentUser from '../hooks/useCurrentUser'
 import navbarStyles from '../styles/Navbar.module.css'
 import elementStyles from '../styles/Elements.module.css'
