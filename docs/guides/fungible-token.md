@@ -512,7 +512,7 @@ Let's go ahead and read the vault again. Remember to replace `123` with the corr
 flow scripts execute cadence/scripts/ReadVaultBalance.cdc 123
 ```
 
-It should now say 20 are in the vault.
+It should now say 20 tokens are in the vault.
 
 ## Transferring Tokens Between Accounts
 
