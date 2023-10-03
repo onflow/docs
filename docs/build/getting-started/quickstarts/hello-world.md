@@ -8,7 +8,7 @@ sidebar_position: 1
 
 Welcome to the Flow blockchain! In this quickstart guide, you'll interact with your first smart contract on our `Testnet`. For those unfamiliar, the Testnet is a public instance of the Flow blockchain designed for experimentation. Here, you can deploy and invoke smart contracts without incurring any real-world costs. 
 
-Smart contracts on Flow are permanent and flexible code that live on the blockchain, allowing you to encode business logic, define digital assets, and much more.
+Smart contracts on Flow are permanent code that live on the blockchain, allowing you to encode business logic, define digital assets, and much more.
 
 
 ## Calling a contract
