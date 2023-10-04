@@ -34,6 +34,7 @@ This guide assumes a good understanding of React. The concepts are easy to under
 - [Installation](#installation)
 - [Configuration](#configuration)
 - [Authenticate a user](#authenticate-a-user)
+- [Deploy contracts](#deploy-contracts)
 - [Query the Blockchain](#query-the-blockchain)
 - [Mutate the Blockchain](#mutate-the-blockchain)
 
@@ -250,7 +251,7 @@ In the `flow.json` make sure the emulator endpoint is correct. Look at the termi
 ![Emulator Output](./emulator-output.png)
 
 1. Make sure the emulator is using the same port as `gRPC` and 
-2. Configure `deployment` to add mapping of contract to account. 
+2. The `deployment` section of `flow.json` should look something like this: 
 ```json
   ...
 	"networks": {
@@ -302,6 +303,8 @@ Verify that `flow.json` updates with HelloWorld contract information, `contracts
 	}
 }
 ```
+
+For more information on deployments check [Flow CLI](../tools/flow-cli/flow.json/manage-configuration.md) documentation
 
 ## Query the Blockchain
 
