@@ -1,6 +1,7 @@
 ---
 sidebar_position: 1
 ---
+import VerticalSplit from "./vertical-split.svg"
 
 # Hello World Pt. 1 - Basics
 
@@ -21,9 +22,11 @@ pub fun main(): String {
   return HelloWorld.greeting
 }
 ```
-`Copy` the script above into Flow Runner input area and click "Run". See the output returned by the script. 
+ - `Click` <VerticalSplit /> To vertically orient Flow Runner editor. 
+ - `Copy` the script above into Flow Runner input area and click "Run". 
+ - See the output returned by the script. 
 
-<iframe className="flow-runner-iframe" src="https://run.dnz.dev/" width="100%" height="400px"></iframe>
+<iframe sandbox className="flow-runner-iframe" src="https://run.dnz.dev/" width="100%" height="400px"></iframe>
 
 ## Contract on Testnet
 
@@ -48,3 +51,4 @@ There are no `read` costs associated with calling contracts.
 </Callout>
 
 Continue to create your own contracts and get them deployed live with Flow CLI!
+
