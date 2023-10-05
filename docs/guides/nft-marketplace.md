@@ -71,8 +71,7 @@ Following are the core components for any NFT marketplace solution on the Flow b
 - [NFT Metadata Standard](https://github.com/onflow/flow-nft/#nft-metadata): A generalized framework for NFTs on Flow to expose their metadata. The framework described already has [a mechanism specified to render the basic representation](https://github.com/onflow/flow-nft/#list-of-common-views) of an NFT.
 - [Flow NFT Catalog](https://github.com/dapperlabs/nft-catalog): NFT marketplaces can use this on-chain registry of NFTs to obtain the list of NFTs owned by an account and obtain display metadata for those NFTs and their collections. Developers should use the [example scripts](https://github.com/dapperlabs/nft-catalog#using-the-catalog-for-marketplaces-and-other-nft-applications) in conjunction with the [NFT Metadata Standard](https://github.com/onflow/flow-nft/#nft-metadata).
 - [NFT Storefront Contract](https://github.com/onflow/nft-storefront): ​​Contract used by almost all Flow NFT marketplaces for creating NFT sale listings. Note that you can directly use the version of this contract already deployed on the Mainnet.
-- [FCL (Flow Client Library)](../tools/clients/fcl-js/): This library is like web3.js in Ethereum. Application frontend will use FCL to interact with user wallets and the blockchain. JS-based backends of applications can also use it to interact with the blockchain.
->>>>>>> 99bd9fab3 (resolve merge conflict)
+- [FCL (Flow Client Library)](../tools/clients/fcl-js): This library is like web3.js in Ethereum. Application frontend will use FCL to interact with user wallets and the blockchain. JS-based backends of applications can also use it to interact with the blockchain.
 - Flow SDKs: Multiple SDKs are available in different programming languages ([Go](../tools/clients/flow-go-sdk/index.mdx), [Java](https://github.com/the-nft-company/flow-jvm-sdk)) for Flow application backends to interact with the blockchain.
 
 ## Coming from Ethereum
@@ -86,9 +85,9 @@ If you are coming from Ethereum, the following list shows corresponding modules 
 | NFT Standard                        | ERC-721/ERC-1155        | [Flow NFT Token Standard](https://github.com/onflow/flow-nft)                                         |
 | NFT Metadata Standard               | ERC-721                 | [Flow NFT Metadata Standard](https://github.com/onflow/flow-nft/#nft-metadata)                        |
 | Native Crypto Currency              | ETH                     | [FLOW](../build/basics/flow-token.md)                                                                  |
-| Wallet Interaction Library          | web3.js                 | [Flow Client Library (FCL)](../tools/clients/)                                                     |
-| Blockchain Interaction SDK          | web3.js                 | [Language Clients](../tools/clients/)                                                              |
-| Block Explorer                      | Etherscan               | [Block Explorers](../tools/)                                                            |
+| Wallet Interaction Library          | web3.js                 | [Flow Client Library (FCL)](../tools/clients)                                                     |
+| Blockchain Interaction SDK          | web3.js                 | [Language Clients](../tools/clients)                                                              |
+| Block Explorer                      | Etherscan               | [Block Explorers](../tools)                                                            |
 | Node Service Providers              | Infura                  | [Official Flow Access Nodes](https://flowscan.org/staking/nodes)                                      |
 | Wallets                             | Metamask, WalletConnect | [Blocto](https://portto.com/), [Dapper Wallet](https://www.meetdapper.com/)                           |
 
@@ -236,7 +235,7 @@ On many blockchains, decentralized apps offer the Connect Wallet button to let u
 
 Sign-in/up functionality is implemented using [FCL](../tools/clients/fcl-js/index.md). The following documentation provides details on how to implement this functionality on the application frontend:
 
-- [FCL Authentication Functionality](../tools/clients/fcl-js/authentication.mdx)
+- [FCL Authentication Functionality](../tools/clients/fcl-js/authentication.md)
 - [Sign-in/up using FCL with Blocto Wallet](https://docs.blocto.app/blocto-sdk/flow/login-register)
 
 Using FCL, you can get the authenticated account information for your users.

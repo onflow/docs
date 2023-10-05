@@ -933,7 +933,7 @@
     },
     {
       "source": "/next/guides/runningNode",
-      "destination": "/next/references/run-and-secure/running-node",
+      "destination": "/next/references/run-and-secure/node-operation",
       "permanent": true
     },
     {
@@ -1088,7 +1088,7 @@
     },
     {
       "source": "/node-ops/running-node",
-      "destination": "/references/run-and-secure/running-node",
+      "destination": "/references/run-and-secure/node-operation",
       "permanent": true
     },
     {

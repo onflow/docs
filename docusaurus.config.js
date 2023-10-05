@@ -617,7 +617,7 @@ const config = {
       async: true,
     },
   ],
-  clientModules: [require.resolve('./src//modules/toolscards.ts')],
+  clientModules: [require.resolve('./src/modules/toolscards.ts')],
 };
 
 module.exports = config;
