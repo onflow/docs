@@ -11,12 +11,15 @@ export const CustomIcon = ({
   if (!customIcon) {
     return null;
   }
-  if (customIcon.match(/^\//) != null) {
-    return <img src={useBaseUrl(customIcon)} className="h-16" />;
-  }
 
-  if (customIcon.match(/^https?/) != null) {
-    return <img src={customIcon} className="h-16" />;
+  if (typeof customIcon === 'string') {
+    if (customIcon.match(/^\//) != null) {
+      return <img src={useBaseUrl(customIcon)} className="h-16" />;
+    }
+
+    if (customIcon.match(/^https?/) != null) {
+      return <img src={customIcon} className="h-16" />;
+    }
   }
 
   return customIcon;

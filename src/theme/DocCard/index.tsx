@@ -51,7 +51,7 @@ function CardLayout({
   return (
     <CardContainer href={href}>
       <h2 className={clsx('text--truncate', styles.cardTitle)} title={title}>
-        <div className="flex gap-2">
+        <div className="flex gap-3">
           <div className="flex-none">{icon}</div>
           <div className="flex flex-col gap-1">
             <span>{title}</span>
