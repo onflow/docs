@@ -139,6 +139,8 @@ const editUrl = ({ docPath }) => {
   return `https://github.com/${owner}/${name}/tree/${branch}/${sourceDocPath}`;
 };
 
+const baseUrl = process.env.BASE_URL || '/docs/';
+
 /** @type {import('@docusaurus/types').Config} */
 const config = {
   title: 'Flow Developer Portal',
@@ -149,7 +151,7 @@ const config = {
   url: getUrl(),
   // Set the /<baseUrl>/ pathname under which your site is served
   // For GitHub pages deployment, it is often '/<projectName>/'
-  baseUrl: process.env.BASE_URL || '/docs/',
+  baseUrl,
 
   // GitHub pages deployment config.
   // If you aren't using GitHub pages, you don't need these.
@@ -259,39 +261,40 @@ const config = {
         },
         items: [
           {
-            to: 'concepts/start-here',
-            position: 'left',
-            label: 'Concepts',
-          },
-          {
-            to: 'building-on-flow',
+            to: 'build/flow',
             position: 'left',
             label: 'Build',
+            activeBasePath: '/build',
           },
           {
-            to: 'guides',
+            to: 'guides/flow-app-quickstart',
             position: 'left',
             label: 'Guides',
+            activeBasePath: '/guides',
           },
           {
             to: 'cadence/intro',
             position: 'left',
             label: 'Cadence',
+            activeBasePath: '/cadence',
           },
           {
-            to: 'tools',
+            to: 'tools/flow-cli',
             position: 'left',
             label: 'Tools',
+            activeBasePath: '/tools',
           },
           {
             to: 'references',
             position: 'left',
             label: 'References',
+            activeBasePath: '/references',
           },
           {
             to: 'community-resources',
             position: 'left',
             label: 'Resources',
+            activeBasePath: '/community-resources',
           },
           // Remove after cadence is updated to a stable version
           // https://github.com/onflow/docs/issues/105
@@ -322,34 +325,34 @@ const config = {
             items: [
               {
                 label: 'Getting Started',
-                to: '/getting-started',
+                to: '/build/getting-started/quickstarts/hello-world',
               },
               {
                 label: "SDK's & Tools",
-                to: '/next/tools',
+                to: '/tools',
               },
               {
                 to: '/cadence/intro',
                 label: 'Cadence',
               },
               {
-                to: '/building-on-flow/mobile',
+                to: '/build/mobile/overview',
                 label: 'Mobile',
               },
               {
-                to: '/next/tools/clients/fcl-js/',
+                to: '/tools/clients/fcl-js/',
                 label: 'FCL',
               },
               {
-                to: '/next/tools/toolchains/flow-js-testing/',
+                to: '/tools/flow-js-testing/',
                 label: 'JS Testing Library',
               },
               {
-                to: '/next/tools/toolchains/flow-cli/',
+                to: '/tools/flow-cli/',
                 label: 'CLI',
               },
               {
-                to: '/next/tools/toolchains/emulator/',
+                to: '/tools/emulator/',
                 label: 'Emulator',
               },
               {
@@ -357,7 +360,7 @@ const config = {
                 label: 'Dev Wallet',
               },
               {
-                to: '/next/tools/toolchains/vscode-extension/',
+                to: '/tools/vscode-extension/',
                 label: 'VS Code Extension',
               },
             ],
@@ -366,7 +369,7 @@ const config = {
             title: 'Community',
             items: [
               {
-                to: '/next/community-resources',
+                to: '/community-resources',
                 label: 'Ecosystem',
               },
               {
@@ -380,10 +383,6 @@ const config = {
               {
                 href: 'https://flow.com/flow-responsible-disclosure',
                 label: 'Responsible Disclosure',
-              },
-              {
-                href: 'https://forum.onflow.org/',
-                label: 'Forum',
               },
               {
                 href: 'https://www.flowverse.co/',
@@ -407,10 +406,6 @@ const config = {
                 label: 'Flow Playground',
               },
               {
-                to: '/tutorials/kitty-items/',
-                label: 'Kitty Items',
-              },
-              {
                 to: '/cadence/tutorial/first-steps',
                 label: 'Cadence Tutorials',
               },
@@ -419,7 +414,7 @@ const config = {
                 label: 'Cadence Cookbook',
               },
               {
-                to: '/next/building-on-flow/core-contracts/',
+                to: '/references/core-contracts/',
                 label: 'Core Contracts & Standards',
               },
               {
@@ -444,19 +439,19 @@ const config = {
                 label: 'Flowscan Testnet',
               },
               {
-                to: '/building-on-flow/run-and-secure/nodes/node-operation/past-sporks/',
+                to: '/references/run-and-secure/node-operation/past-sporks/',
                 label: 'Past Sporks',
               },
               {
-                to: '/building-on-flow/run-and-secure/nodes/node-operation/upcoming-sporks',
+                to: '/references/run-and-secure/node-operation/upcoming-sporks',
                 label: 'Upcoming Sporks',
               },
               {
-                to: '/building-on-flow/run-and-secure/nodes/node-operation/',
+                to: '/references/run-and-secure/node-operation/',
                 label: 'Node Operation',
               },
               {
-                to: '/building-on-flow/run-and-secure/nodes/node-operation/spork/',
+                to: '/references/run-and-secure/node-operation/spork/',
                 label: 'Spork Information',
               },
             ],
@@ -597,7 +592,7 @@ const config = {
   ],
   scripts: [
     {
-      src: '/mixpanel.js',
+      src: `${baseUrl}mixpanel.js`,
       async: true,
       onload: mixpanelOnLoad,
     },
@@ -610,7 +605,7 @@ const config = {
       async: true,
     },
     {
-      src: '/hotjar.js',
+      src: `${baseUrl}hotjar.js`,
       async: true,
     },
     {
@@ -622,6 +617,7 @@ const config = {
       async: true,
     },
   ],
+  clientModules: [require.resolve('./src/modules/toolscards.ts')],
 };
 
 module.exports = config;

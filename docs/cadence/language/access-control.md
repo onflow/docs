@@ -9,7 +9,7 @@ and making other parts inaccessible/invisible.
 In Cadence, access control consists of:
 
 1. Access control on objects in account storage,
-  using [capability security](./capabilities.mdx).
+  using [capability security](./capabilities.md).
 
   A user is not able to access an object
   unless they own the object or have a reference to that object.
@@ -20,7 +20,7 @@ In Cadence, access control consists of:
   by providing references to the objects.
 
   This kind of access control is covered in the pages
-  on [capabilities](./capabilities.mdx)
+  on [capabilities](./capabilities.md)
   and [capability management](./accounts/capabilities.mdx).
 
 2. Access control within contracts and objects,

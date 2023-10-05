@@ -125,11 +125,6 @@ const gettingStartedPageData = {
             tags: ['tutorial'],
           },
           {
-            title: 'Kitty Items Tutorial',
-            href: '#tutorial2',
-            tags: ['tutorial'],
-          },
-          {
             title: 'Crypto Dappy',
             href: '#tutorial3',
             tags: ['tutorial'],

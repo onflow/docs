@@ -370,7 +370,7 @@ import "HelloWorld"
 
 FCL will automatically replace the contract name with the address for the network you are using.
 
-> Note: never put private keys in your `flow.json`. You should use the [key/location syntax](../../toolchains/flow-cli/flow.json/security.md) to separate your keys into a separate git ignored file.
+> Note: never put private keys in your `flow.json`. You should use the [key/location syntax](../../../tools/flow-cli/flow.json/security.md) to separate your keys into a separate git ignored file.
 
 ---
 
@@ -412,9 +412,6 @@ fcl.authenticate();
 
 ⚠️ `authenticate` can also take a service returned from [discovery](#discovery) with `fcl.authenticate({ service })`.
 
-#### Examples
-
-- [Press Login: Explore Kitty Items](https://github.com/onflow/kitty-items)
 
 ---
 
@@ -440,10 +437,6 @@ fcl.unauthenticate();
 // fcl.currentUser.loggedIn === null
 ```
 
-#### Examples
-
-- [React Hook to manage FCL authentication: Kitty-items](https://github.com/onflow/kitty-items/blob/master/web/src/contexts/AppContext.jsx#L45)
-
 ---
 
 ## `reauthenticate`
@@ -466,10 +459,6 @@ fcl.authenticate();
 fcl.reauthenticate();
 // logs out user and opens up login/sign-up flow
 ```
-
-#### Examples
-
-- [React Hook to manage FCL authentication: Kitty-items](https://github.com/onflow/kitty-items/blob/master/web/src/contexts/AppContext.jsx#L45)
 
 ---
 
@@ -503,7 +492,7 @@ A **convenience method** that produces the needed authorization details for the 
 
 #### Usage
 
-**Note:** The default values for `proposer`, `payer`, and `authorizations` are already `fcl.authz` so there is no need to include these parameters, it is shown only for example purposes. See more on [signing roles](../../../concepts/transactions.md).
+**Note:** The default values for `proposer`, `payer`, and `authorizations` are already `fcl.authz` so there is no need to include these parameters, it is shown only for example purposes. See more on [signing roles](../../../build/basics/transactions.md).
 
 ```javascript
 import * as fcl from "@onflow/fcl";
@@ -658,7 +647,7 @@ export const signMessage = async () => {
 
 Discovery abstracts away code so that developers don't have to deal with the discovery of Flow compatible wallets, integration, or authentication. Using `discovery` from FCL allows dapps to list and authenticate with wallets while having full control over the UI. Common use cases for this are login or registration pages.
 
-(Alternatively, if you don't need control over your UI you can continue to use the `discovery.wallet` config value documented in the [Quickstart](../../../guides/flow-app-quickstart.mdx) for the simplest configuration.)
+(Alternatively, if you don't need control over your UI you can continue to use the `discovery.wallet` config value documented in the [Quickstart](../../../guides/flow-app-quickstart.md) for the simplest configuration.)
 
 > ⚠️**The following methods can only be used in web browsers.**
 
@@ -742,7 +731,7 @@ The callback sent to `subscribe` will be called with a list of `authn` services.
 
 > 📣 **These methods can be used in browsers and NodeJS.**
 
-These methods allows dapps to interact directly with the Flow blockchain via a set of functions that currently use the [Access Node API](../../../building-on-flow/run-and-secure/nodes/access-api.mdx).
+These methods allows dapps to interact directly with the Flow blockchain via a set of functions that currently use the [Access Node API](../../../references/run-and-secure/nodes/access-api.mdx).
 
 ### Methods
 
@@ -764,7 +753,7 @@ _Pass in the following as a single object with the following keys.All keys are o
 | --------- | ------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | `cadence` | string **(required)**                 | A valid cadence script.                                                                                                                                                                                                |
 | `args`    | [ArgumentFunction](#argumentfunction) | Any arguments to the script if needed should be supplied via a function that returns an array of arguments.                                                                                                            |
-| `limit`   | number                                | Compute (Gas) limit for query. Read the [documentation about computation cost](../../../concepts/fees.md) for information about how computation cost is calculated on Flow. |
+| `limit`   | number                                | Compute (Gas) limit for query. Read the [documentation about computation cost](../../../build/basics/fees.md) for information about how computation cost is calculated on Flow. |
 
 #### Returns
 
@@ -993,12 +982,6 @@ const response = await fcl.send([
 // note: response contains several values (Cad)
 ```
 
-#### Examples
-
-- [Getting a user account](https://github.com/onflow/kitty-items/blob/master/web/src/contexts/AppContext.jsx#L47)
-- [Getting the latest block](https://github.com/onflow/kitty-items/blob/master/api/src/services/flow.ts#L92)
-- [Sending a transaction](https://github.com/onflow/kitty-items/blob/master/web/src/flow/util/tx.js)
-
 ---
 
 ## `decode`
@@ -1044,12 +1027,6 @@ const decoded = await fcl.decode(response);
 assert(3 === decoded);
 assert(typeof decoded === "number");
 ```
-
-#### Examples
-
-- [Getting a user account](https://github.com/onflow/kitty-items/blob/master/web/src/contexts/AppContext.jsx#L47)
-- [Getting the latest block](https://github.com/onflow/kitty-items/blob/master/api/src/services/flow.ts#L92)
-- [Sending a transaction](https://github.com/onflow/kitty-items/blob/master/web/src/flow/util/tx.js)
 
 ---
 
@@ -1690,11 +1667,6 @@ const [txStatus, setTxStatus] = useState(null);
 useEffect(() => fcl.tx(txId).subscribe(setTxStatus));
 ```
 
-#### Examples
-
-- [React Effect to get the transaction status on submit](https://github.com/onflow/kitty-items/blob/master/web/src/components/Transactions/TransactionsContext.jsx#L15)
-- [Example usage in Kitty Items app](https://github.com/onflow/kitty-items/blob/master/web/src/flow/util/tx.js#L21-L22)
-
 ---
 
 ### Event Polling Utility
@@ -1886,9 +1858,6 @@ const authorizationFunction = async (account) => {
   }
 ```
 
-#### Examples:
-
-- [Node.js Service using the service account to authorize a minter](https://github.com/onflow/kitty-items/blob/master/api/src/services/flow.ts)
 - [Detailed explanation](https://github.com/onflow/flow-js-sdk/blob/master/packages/fcl/src/wallet-provider-spec/authorization-function.md)
 
 ---
@@ -1957,7 +1926,6 @@ const signingFunction = ({
 
 #### Examples:
 
-- [Node.js Service using the service account to authorize a minter](https://github.com/onflow/kitty-items/blob/master/api/src/services/flow.ts)
 - [Detailed explanation](https://github.com/onflow/flow-js-sdk/blob/master/packages/fcl/src/wallet-provider-spec/authorization-function.md)
 
 ---
@@ -1967,11 +1935,11 @@ const signingFunction = ({
 | Key                  | Value Type                            | Description                                                                                                                                                                                   |
 | -------------------- | ------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | `args`               | object                                     | A list of encoded Cadence values passed into this transaction.  These have not been decoded by the JS-SDK.                                                       |
-| `authorizers`        | [\[Address\]](#address)               | A list of the accounts that are authorizing this transaction to mutate to their on-chain account state.  [See more here](../../../concepts/transactions.md#signer-roles). |
-| `envelopeSignatures` | [\[SignableObject\]](#signableobject) | A list of signatures generated by the payer role. [See more here](../../../concepts/transactions.md#anatomy-of-a-transaction).                                            |
-| `gasLimit`           | number                                | The maximum number of computational units that can be used to execute this transaction.  [See more here](../../../concepts/fees.md).                                  |
-| `payer`              | [Address](#address)                   | The account that pays the fee for this transaction.  [See more here](../../../concepts/transactions.md#signer-roles).                                                     |
-| `payloadSignatures`  | [\[SignableObject\]](#signableobject) | A list of signatures generated by the proposer and authorizer roles. [See more here](../../../concepts/transactions.md#anatomy-of-a-transaction).                         |
+| `authorizers`        | [\[Address\]](#address)               | A list of the accounts that are authorizing this transaction to mutate to their on-chain account state.  [See more here](../../../build/basics/transactions.md#signer-roles). |
+| `envelopeSignatures` | [\[SignableObject\]](#signableobject) | A list of signatures generated by the payer role. [See more here](../../../build/basics/transactions.md#anatomy-of-a-transaction).                                            |
+| `gasLimit`           | number                                | The maximum number of computational units that can be used to execute this transaction.  [See more here](../../../build/basics/fees.md).                                  |
+| `payer`              | [Address](#address)                   | The account that pays the fee for this transaction.  [See more here](../../../build/basics/transactions.md#signer-roles).                                                     |
+| `payloadSignatures`  | [\[SignableObject\]](#signableobject) | A list of signatures generated by the proposer and authorizer roles. [See more here](../../../build/basics/transactions.md#anatomy-of-a-transaction).                         |
 | `proposalKey`        | [\[ProposalKey\]](#proposalkeyobject) | The account key used to propose this transaction                                                                                                                                              |
 | `referenceBlockId`   | string                                | A reference to the block used to calculate the expiry of this transaction.                                                                                                                    |
 | `script`             | string                                | The UTF-8 encoded Cadence source code that defines the execution logic for this transaction                                                                                                   |
@@ -1984,7 +1952,7 @@ const signingFunction = ({
 | authorizer | boolean    | A Boolean representing if this signature to be produced for an authorizer. |
 | payer      | boolean    | A Boolean representing if this signature to be produced for a payer.       |
 
-For more on what each transaction role means, see [singing roles](../../../concepts/transactions.md#signer-roles).
+For more on what each transaction role means, see [singing roles](../../../build/basics/transactions.md#signer-roles).
 
 ### `TransactionStatusObject`
 
@@ -2029,7 +1997,7 @@ ProposalKey is the account key used to propose this transaction.
 
 A proposal key references a specific key on an account, along with an up-to-date sequence number for that key. This sequence number is used to prevent replay attacks.
 
-You can find more information about sequence numbers [here](../../../concepts/transactions.md#sequence-numbers)
+You can find more information about sequence numbers [here](../../../build/basics/transactions.md#sequence-numbers)
 
  Key              | Value Type | Description                                                                              |
 | ---------------- | ---------- | ---------------------------------------------------------------------------------------- |

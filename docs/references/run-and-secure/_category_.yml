@@ -1,0 +1,5 @@
+label: Running and Securing Flow
+position: 4
+customProps:
+  icon: 🔐
+  description: Learn about the four Flow node types, and how you can help secure and maintain the Flow blockchain.

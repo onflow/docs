@@ -85,7 +85,7 @@ public Task<byte[]> SignTransactionPayload(FlowTransaction txn);
 public Task<byte[]> SignTransactionEnvelope(FlowTransaction txn);
 ```
 
-In Flow, there are two parts of a transaction that can be signed - the Payload and the Authorization Envelope. The envelope must always be signed, and is the last thing to be signed by the Payer of the transaction fees. The Payload is only signed by the Proposer and\or the Authorizers IF they are not also the Payer (i.e. nobody signs the transaction twice). For more information on transaction signing, see [transaction signing](../../../../concepts/transactions.md#signing-a-transaction). 
+In Flow, there are two parts of a transaction that can be signed - the Payload and the Authorization Envelope. The envelope must always be signed, and is the last thing to be signed by the Payer of the transaction fees. The Payload is only signed by the Proposer and\or the Authorizers IF they are not also the Payer (i.e. nobody signs the transaction twice). For more information on transaction signing, see [transaction signing](../../../../build/basics/transactions.md#signing-a-transaction). 
 
 The following is an example of how to call `SignTransactionEnvelope`, but as mentioned, this is automatically done by the SDK's `Transactions.Submit` function. It is asynchronous so is therefore `await`ed, and returns the signature as a byte array. 
 

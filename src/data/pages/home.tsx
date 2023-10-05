@@ -3,38 +3,50 @@ import { type HomepageStartItemProps } from '../../ui/design-system/src/lib/Comp
 
 const homepageStartProjectData: HomepageStartItemProps[] = [
   {
-    title: 'Start Here',
-    text: 'Dive into key concepts and learn what makes Flow unique.',
-    link: '/next/concepts/start-here',
+    title: 'Getting Started',
+    text: 'Dive into key concepts with a Hello World quickstart',
+    link: '/build/getting-started/quickstarts/hello-world',
     icon: 'learn',
   },
   {
-    title: 'Guides & Tutorials',
-    text: 'Create your first Flow dApp in just a few minutes',
-    link: '/next/guides',
+    title: 'Developer Guides',
+    text: 'Create your first dApp in just a few minutes',
+    link: '/guides/flow-app-quickstart',
     icon: 'quickstart',
   },
   {
     title: 'Resources',
-    text: 'All the developer resources you need to build on Flow',
-    link: '/next/community-resources',
+    text: 'All the developer tools you need',
+    link: '/tools/flow-cli',
     icon: 'documentation',
   },
 ];
 
 const contentNavigationListItems: ContentNavigationListProps = {
-  header: 'Explore More Content',
+  header: 'Explore Key Concepts and Features',
   contentNavigationItems: [
     {
-      title: 'Learn',
-      text: 'All the resources you need to learn and build.',
-      link: 'https://academy.ecdao.org/en',
+      title: 'Why Flow',
+      text: 'Introduction to the Network',
+      link: '/build/flow',
       icon: 'learn',
     },
     {
-      title: 'Tools',
-      text: 'Curated list of developer tools, services, SDKs.',
-      link: '/next/tools',
+      title: 'Account Abstraction',
+      text: 'Enhance UX with a flexible Account structure and key management',
+      link: '/build/advanced-concepts/account-abstraction',
+      icon: 'learn',
+    },
+    {
+      title: 'Account Linking',
+      text: 'Seamless onboarding and secure resource ownership',
+      link: '/build/advanced-concepts/account-linking',
+      icon: 'learn',
+    },
+    {
+      title: 'Mobile',
+      text: 'Build truly mobile first experiences',
+      link: '/build/mobile/overview',
       icon: 'tools',
     },
   ],

@@ -136,4 +136,4 @@ counterRef3.count  // is `44`
 ```
 
 References are ephemeral, i.e they cannot be [stored](./accounts.mdx#account-storage).
-Instead, consider [storing a capability and borrowing it](./capability-based-access-control.md) when needed.
+Instead, consider [storing a capability and borrowing it](./capabilities.md) when needed.
