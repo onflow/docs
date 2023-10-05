@@ -168,7 +168,7 @@ If you’re getting started you don’t need to run your own node and you can us
 - Start with a [Light (Observer) Node](../references/run-and-secure/node-operation/observer-node.mdx).
 - You can also use a third-party provider like [Quicknode](https://www.quicknode.com/docs/flow).
 
-Check out [Running a Node](../references/run-and-secure/running-node.md) for more information.
+Check out [Running a Node](../references/run-and-secure/node-operation/observer-node.mdx) for more information.
 
 ## SDKs and Tools
 
