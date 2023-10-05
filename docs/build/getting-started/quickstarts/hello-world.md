@@ -11,7 +11,6 @@ Smart contracts on Flow are permanent code that live on the blockchain, allowing
 
 
 ## Calling a contract
-On Testnet, `HelloWorld` Contract has a public variable named `greeting`, we'll use a Script to get it's value. For the purposes of this quick start, we are embedding Flow Runner website to run a script against Testnet. For reference [Flow Runner](https://run.dnz.dev/) website
 
 The `HelloWorld` contract exposes a public variable named `greeting`. We can retrieve its value using a simple script written in the Cadence programming language.
 
