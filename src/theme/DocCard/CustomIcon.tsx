@@ -13,7 +13,7 @@ export const CustomIcon = ({
   }
 
   if (typeof customIcon === 'string') {
-    if (customIcon.match(/^.?\//) != null) {
+    if (customIcon.match(/^\//) != null) {
       return <img src={useBaseUrl(customIcon)} className="h-16" />;
     }
 
