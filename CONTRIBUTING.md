@@ -34,7 +34,7 @@ Updating existing content is a seamless process:
 
     <Callout type="note" title="Here is what it looks like.">
     ![edit page](./static/images/contributing/edit-light.png#gh-light-mode-only)
-    ![edit page](./static/images/contributing//edit-dark.png#gh-dark-mode-only)
+    ![edit page](./static/images/contributing/edit-dark.png#gh-dark-mode-only)
     </Callout>
 
 1. Clicking the link will take you directly to the source code of the page you're viewing.
@@ -142,8 +142,8 @@ The `index` page should only include information that is available elsewhere wit
 Using `DocCardList` improves the layout of the index page:
 
 <Callout type="note" title="Example">
-![edit page](./static/images/contributing//doc-card-list-light.png#gh-light-mode-only)
-![edit page](./static/images/contributing//doc-card-list-dark.png#gh-dark-mode-only)
+![edit page](./static/images/contributing/doc-card-list-light.png#gh-light-mode-only)
+![edit page](./static/images/contributing/doc-card-list-dark.png#gh-dark-mode-only)
 </Callout>
 
 On the most pages you can use just `<DocCardList />` component imported from `'@theme/DocCardList'`
@@ -259,7 +259,7 @@ Currently, the Flow Docs validates content using the following conditions:
 
 Here is an example of check run output with successful validation.
 
-![successful-checks](./static/images/contributing//successful-checks.png)
+![successful-checks](./static/images/contributing/successful-checks.png)
 
 ### Dead Links Checks
 
@@ -273,6 +273,6 @@ Previews are generated against the **PR branch of the Flow Docs**, to ensure you
 
 Here is an example of preview output for changed documents in a PR
 
-![preview-link](./static/images/contributing//preview-link.png)
+![preview-link](./static/images/contributing/preview-link.png)
 
 When you merge updates to documents in your PR, previews will deployed with a few minutes delay.

@@ -138,4 +138,4 @@ You just built an app on Flow!
 
 ## Mutating Chain State and More
 
-For a deeper dive into writing an FCL app, such as how to change the chain state with FCL, check out [this guide](../../../guides/flow-app-quickstart.mdx) or the [FCL documentation](../../../tools/clients/fcl-js/index.md).
+For a deeper dive into writing an FCL app, such as how to change the chain state with FCL, check out [this guide](../../../guides/flow-app-quickstart.md) or the [FCL documentation](../../../tools/clients/fcl-js/index.md).
