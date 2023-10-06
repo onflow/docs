@@ -35,7 +35,7 @@ This minimum storage fee is provided by the account creator and covers the cost 
 
 **Contracts**
 
-An account can optionally store multiple [Cadence contracts](../cadence/language/contracts.mdx). The code is stored as a human-readable UTF-8 encoded string which makes it easy for anyone to inspect the contents.
+An account can optionally store multiple [Cadence contracts](../../cadence/language/contracts.mdx). The code is stored as a human-readable UTF-8 encoded string which makes it easy for anyone to inspect the contents.
 
 **Storage**
 

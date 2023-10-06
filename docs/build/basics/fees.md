@@ -88,7 +88,7 @@ Currently, the amount required to store 100 MB in account storage is 1 Flow.
 
 ![Screenshot 2023-08-17 at 17.27.50.png](_fees_images/Screenshot_2023-08-17_at_17.27.50.png)
 
-Please note that storing data in an account on Flow doesn’t charge tokens from the account, it just makes sure you will keep the tokens as a reserve. Once the storage is freed up you can transfer the Flow tokens. 
+Please note that storing data in an account on Flow doesn't charge tokens from the account, it just makes sure you will keep the tokens as a reserve. Once the storage is freed up you can transfer the Flow tokens. 
 
 ### Storage Capacity of the Payer
 
