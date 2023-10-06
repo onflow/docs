@@ -90,7 +90,7 @@ Account linking is a _very_ powerful Cadence feature, and thus it must be treate
 
 Creating an `AuthAccount` capability and publishing it to an account we don’t own means we are giving that account full access to our account. This should be seen as an anti-pattern.
 
-<Callout type="Danger">
+<Callout type="warning">
 ❗ Creating an `AuthAccount` capability and sharing it with third-party account is in concept the same as giving that person your account's private keys.
 
 </Callout>
