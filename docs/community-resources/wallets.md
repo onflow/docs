@@ -49,9 +49,9 @@ https://nu.fi/
 
 ## Flow Reference wallet 
 
-[Flow Reference Wallet](https://lilico.app/) is the first extension wallet on Flow.
+[Flow Reference Wallet](https://frw.gitbook.io/) is the first extension wallet on Flow.
 
-https://lilico.app/
+https://frw.gitbook.io/
 
 ## Finoa
 
