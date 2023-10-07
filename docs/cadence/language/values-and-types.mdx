@@ -1255,7 +1255,7 @@ are available for both variable-sized and fixed-sized or variable-sized arrays.
 -
     ```cadence
     access(all)
-    fun map(_ f: (T: U)): [U]
+    fun map(_ f: fun(T): U): [U]
     ```
 
     Returns a new array whose elements are produced by applying the mapper function on each element
@@ -1287,7 +1287,7 @@ are available for both variable-sized and fixed-sized or variable-sized arrays.
 
     ```cadence
     access(all)
-    fun map(_ f: (T: U)): [U; N]
+    fun map(_ f: fun(T): U): [U; N]
     ```
 
     Returns a new fixed-sized array whose elements are produced by applying the mapper function on
