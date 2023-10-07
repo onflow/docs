@@ -1350,7 +1350,7 @@ are available for both variable-sized and fixed-sized or variable-sized arrays.
 
     ```cadence
     access(all)
-    fun filter(_ f: (T: Bool)): [T]
+    fun filter(_ f: fun(T): Bool): [T]
     ```
 
     Returns a new **variable-sized** array whose elements are filtered by applying the filter function on each element 
