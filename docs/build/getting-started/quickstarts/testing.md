@@ -99,4 +99,4 @@ By leveraging these advanced testing techniques, you can write more robust and r
 
 ## References
 
-- https://github.com/onflow/developer-grants/issues/216#issuecomment-1750673975
+- [Reference documentation for Cadence testing](../../../cadence/testing-framework.mdx)
