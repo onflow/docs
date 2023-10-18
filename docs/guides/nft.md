@@ -286,7 +286,7 @@ pub contract FooBar: NonFungibleToken {
 
 To ensure interoperability, the Flow NFT standard requires certain events to be emitted during specific operations.
 
-### Adding ContractInitializedEvent
+### Adding ContractInitialized Event
 
 For instance, when the contract is initialized, a `ContractInitialized` event should be emitted:
 
