@@ -36,10 +36,10 @@ Upon execution, the command will generate the following directory structure:
 
 ```
 /cadence
-	/contracts
-	/scripts
-	/transactions
-	/tests
+    /contracts
+    /scripts
+    /transactions
+    /tests
 flow.json
 ```
 
