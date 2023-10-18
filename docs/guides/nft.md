@@ -508,7 +508,7 @@ flow scripts execute cadence/scripts/GetNFTs.cdc 0x123
 
 Since you haven't added any NFTs to the collection yet, the result will be an empty array.
 
-## Depositing an NFT to a Collection
+## Minting and Depositing an NFT to a Collection
 
 To deposit an NFT into a collection, create a new transaction file:
 
