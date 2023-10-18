@@ -316,7 +316,7 @@ import "NonFungibleToken"
 
 pub contract FooBar: NonFungibleToken {
 
-		pub event ContractInitialized()
+     pub event ContractInitialized()
     pub event Withdraw(id: UInt64, from: Address?)
     pub event Deposit(id: UInt64, to: Address?)
 
