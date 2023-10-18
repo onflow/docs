@@ -676,7 +676,7 @@ pub fun borrowFooBarNFT(id: UInt64): &FooBar.NFT? {
 
 For a deeper dive into `MetadataViews`, consult the [API documentation](https://developers.flow.com/references/core-contracts/flow-nft/MetdataViews/MetadataViews#docusaurus_skipToContent_fallback) or [the FLIP that introduced this feature](https://github.com/onflow/flips/blob/main/application/20210916-nft-metadata.md).
 
-Congrats, you did it! You’re now ready to launch the next hot NFT project on Flow.
+Congrats, you did it! You’re now ready to launch the next fun NFT project on Flow.
 
 ## More
 
