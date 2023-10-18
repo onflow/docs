@@ -510,7 +510,7 @@ Since you haven't added any NFTs to the collection yet, the result will be an em
 
 ## Minting and Depositing an NFT to a Collection
 
-To deposit an NFT into a collection, create a new transaction file:
+To mint and deposit an NFT into a collection, create a new transaction file:
 
 ```
 touch cadence/transactions/DepositNFT.cdc
