@@ -616,19 +616,10 @@ import "MetadataViews"
 
 Because this is already deployed to Emulator and our `flow setup` command added it to our `flow.json`, there is no more configuration we need to do.
 
-Next, create a `ViewResolver` interface, which the `NFT` resource will implement:
+Update the `NFT` resource to implement the `[ViewResolver` interface](https://github.com/onflow/flow-nft/blob/master/contracts/MetadataViews.cdc#L20) provided by the MetadataViews contract. This interface specifies that a `getViews` function and a `resolveView` function should exist. Then, add fields for `name`, `thumbnail`, and `description`:
 
 ```
-pub resource interface ViewResolver {
-    pub fun getViews() : [Type]
-    pub fun resolveView(_ view:Type): AnyStruct?
-}
-```
-
-Update the `NFT` resource to implement the `ViewResolver` interface and add fields for `name`, `thumbnail`, and `description`:
-
-```
-pub resource NFT: NonFungibleToken.INFT, ViewResolver {
+pub resource NFT: NonFungibleToken.INFT, MetadataViews.ViewResolver {
     pub let id: UInt64
     pub let name: String
     pub let description: String
