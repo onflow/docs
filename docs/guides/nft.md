@@ -606,7 +606,11 @@ flow scripts execute cadence/scripts/GetNFTs.cdc 0x123
 
 Many NFT projects include metadata associated with the NFT, such as a name, description, or image. However, different projects might store this metadata in various formats. To ensure compatibility across the Flow ecosystem, Flow uses `MetadataViews` to standardize the representation of this metadata.
 
-For this tutorial, you'll add a simple `MetadataView` called `Display`, which includes a `name`, `description`, and `thumbnail`. This format is common for many NFT projects. (For more details, refer to the [Display documentation](https://developers.flow.com/references/core-contracts/flow-nft/MetdataViews/MetadataViews#display)).
+There are two types of Metadata Views: NFT level and contract level. In this guide, we’ll show you how to implement the most basic display, but for a deeper dive into what is possible, check out the [MetadataViews API doc](https://developers.flow.com/references/core-contracts/flow-nft/MetdataViews/MetadataViews).
+
+### NFT Metadata
+
+For the NFT metadata, you'll add a simple `MetadataView` called `Display`, which includes a `name`, `description`, and `thumbnail`. This format is common for many NFT projects. (For more details, refer to the [Display documentation](https://developers.flow.com/references/core-contracts/flow-nft/MetdataViews/MetadataViews#display)).
 
 Start by importing the `MetadataViews` contract into your `FooBar` contract:
 
@@ -665,13 +669,118 @@ pub fun borrowFooBarNFT(id: UInt64): &FooBar.NFT? {
 }
 ```
 
-For a deeper dive into `MetadataViews`, consult the [API documentation](https://developers.flow.com/references/core-contracts/flow-nft/MetdataViews/MetadataViews#docusaurus_skipToContent_fallback) or [the FLIP that introduced this feature](https://github.com/onflow/flips/blob/main/application/20210916-nft-metadata.md).
+### Contract Metadata
 
-Congrats, you did it! You’re now ready to launch the next fun NFT project on Flow.
+For the contract level metadata, we need to create an interface that defines the required methods for the contract. First, let’s create it by adding a new file. In your terminal, run:
+
+```
+touch cadence/contracts/ViewResolver.cdc
+```
+
+In it let’s add the following code, which says we need a `getViews` function and a `resolveView` function on our contract (just like we required on our NFT, but this time it’s for our contract):
+
+```
+pub contract interface ViewResolver {
+
+    pub fun getViews(): [Type] {
+        return []
+    }
+
+    pub fun resolveView(_ view: Type): AnyStruct? {
+        return nil
+    }
+}
+```
+
+Next, we need do also add this to our `flow.json` config. Run:
+
+```
+flow config add contract
+```
+
+When prompted, enter the following name and location (press `Enter` to skip alias questions):
+
+```
+Enter name: ViewResolver
+Enter contract file location: cadence/contracts/ViewResolver.cdc
+```
+
+Next, configure the deployment settings by running the following command:
+
+```
+flow config add deployment
+```
+
+Like earlier in the guide, choose the `emulator` for the network and `emulator-account` for the account to deploy to. This time, select the `ViewResolver` contract (you may need to scroll down). After that, you can select `No` when asked to deploy another contract.
+
+Now, go back to your `FooBar` contract, import this new contract, and state that `FooBar` should implement it:
+
+```
+import "NonFungibleToken"
+import "MetadataViews"
+import "ViewResolver"
+
+pub contract FooBar: NonFungibleToken, ViewResolver {
+    //...[contract code]...
+}
+```
+
+Just like the NFT (except at a contract level), we’ll add functions for `getView` which returns the `Display` and `resolveViews` which tells it how to get the `Display` values:
+
+```
+pub contract FooBar: NonFungibleToken, ViewResolver {
+
+//...[all code above contract init]...
+
+pub fun getViews(): [Type] {
+        return [Type<MetadataViews.Display>()]
+    }
+
+    pub fun resolveView(_ view: Type): AnyStruct? {
+        switch view {
+            case Type<MetadataViews.NFTCollectionData>():
+                return MetadataViews.NFTCollectionData(
+                    storagePath: /storage/FooBarCollection,
+                    publicPath: /public/FooBarCollection,
+                    providerPath: /private/FooBarCollection,
+                    publicCollection: Type<&FooBar.Collection{NonFungibleToken.CollectionPublic}>(),
+                    publicLinkedType: Type<&FooBar.Collection{NonFungibleToken.CollectionPublic,NonFungibleToken.Receiver,MetadataViews.ResolverCollection}>(),
+                    providerLinkedType: Type<&FooBar.Collection{NonFungibleToken.CollectionPublic,NonFungibleToken.Provider,MetadataViews.ResolverCollection}>(),
+                    createEmptyCollectionFunction: (fun (): @NonFungibleToken.Collection {
+                        return <-FooBar.createEmptyCollection()
+                    })
+                )
+        }
+        return nil
+    }
+
+//...[contract init code]...
+
+}
+```
+
+Finally, we need a way to get read this data like we did with the NFT. Let’s also make a `borrowViewResolver` function that we add below the `borrowFooBarNFT` method inside of the `Collection`:
+
+```
+pub resource Collection: NonFungibleToken.Provider, NonFungibleToken.Receiver, NonFungibleToken.CollectionPublic, MetadataViews.ResolverCollection {
+
+    // ...[borrowFooBarNFT]...
+
+    pub fun borrowViewResolver(id: UInt64): &AnyResource{MetadataViews.Resolver} {
+        let ref = (&self.ownedNFTs[id] as auth &NonFungibleToken.NFT?)!
+        return ref as! &FooBar.NFT
+    }
+
+    // ...[Collection init]...
+}
+```
+
+Congrats, you did it! You’re now ready to launch the next hot NFT project on Flow.
 
 ## More
 
 - Explore [an example NFT repository](https://github.com/nvdtf/flow-nft-scaffold/blob/main/cadence/contracts/exampleNFT/ExampleNFT.cdc)
 - Watch a [video tutorial on creating an NFT project in the Flow Playground](https://www.youtube.com/watch?v=bQVXSpg6GE8)
 - Dive into the details of [the NFT Standard](https://github.com/onflow/flow-nft)
+- For a deeper dive into `MetadataViews`, consult the [API documentation](https://developers.flow.com/references/core-contracts/flow-nft/MetdataViews/MetadataViews#docusaurus_skipToContent_fallback) or [the FLIP that introduced this feature](https://github.com/onflow/flips/blob/main/application/20210916-nft-metadata.md).
 - Use a [no code tool for creating NFT projects on Flow](https://www.touchstone.city/)
