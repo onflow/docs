@@ -775,7 +775,7 @@ pub resource Collection: NonFungibleToken.Provider, NonFungibleToken.Receiver, N
 }
 ```
 
-Congrats, you did it! You’re now ready to launch the next hot NFT project on Flow.
+Congrats, you did it! You’re now ready to launch the next fun NFT project on Flow.
 
 ## More
 
