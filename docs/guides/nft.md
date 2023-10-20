@@ -28,7 +28,7 @@ If you haven't installed the Flow CLI yet and have [Homebrew](https://brew.sh/) 
 
 Once you have the Flow CLI installed, you can set up a new project using the `flow setup` command. This command initializes the necessary directory structure and a `flow.json` configuration file (a way to configure your project for contract sources, deployments, accounts, and more):
 
-```
+```bash
 flow setup foobar-nft
 ```
 
@@ -45,19 +45,19 @@ flow.json
 
 Now, navigate into the project directory:
 
-```
+```bash
 cd foobar-nft
 ```
 
 To begin, let's create a contract file named `FooBar` for the `FooBar` token, which will be the focus of this tutorial:
 
-```
+```bash
 touch cadence/contracts/FooBar.cdc
 ```
 
 With the contract file in place, you can now set up the basic contract structure:
 
-```
+```cadence
 pub contract FooBar {
     init() {}
 }
@@ -71,7 +71,7 @@ On the Flow blockchain, "[Resources](https://developers.flow.com/cadence/tutoria
 
 To begin, let's define a basic `NFT` resource. This resource requires an `init` method, which is invoked when the resource is instantiated:
 
-```
+```cadence
 pub contract FooBar {
 
     pub resource NFT {
@@ -84,7 +84,7 @@ pub contract FooBar {
 
 Every resource in Cadence has a unique identifier assigned to it. We can use it to set an ID for our NFT. Here's how you can do that:
 
-```
+```cadence
 pub contract FooBar {
 
     pub resource NFT {
@@ -101,7 +101,7 @@ pub contract FooBar {
 
 We also need to keep track of the total supply of NFTs in existance. To do this let’s create a `totalSupply` variable on our contract and increase it by one whenever a new NFT is created. We can set this on the initialization of the NFT using the resource `init` function:
 
-```
+```cadence
 pub contract FooBar {
     pub var totalSupply: UInt64
 
@@ -122,7 +122,7 @@ pub contract FooBar {
 
 To control the creation of NFTs, it's essential to have a mechanism that restricts their minting. This ensures that not just anyone can create an NFT and inflate its supply. To achieve this, you can introduce an `NFTMinter` resource that contains a `createNFT` function:
 
-```
+```cadence
 pub contract FooBar {
 
     // ...[previous code]...
@@ -143,7 +143,7 @@ pub contract FooBar {
 
 In this example, the `NFTMinter` resource will be stored on the contract account's storage. This means that only the contract account will have the ability to mint new NFTs. To set this up, add the following line to the contract's `init` function:
 
-```
+```cadence
 pub contract FooBar {
 
     // ...[previous code]...
@@ -161,7 +161,7 @@ Storing individual NFTs directly in an account's storage can cause issues, espec
 
 Start by creating a new resource named `Collection`. This resource will act as a container for your NFTs, storing them in a dictionary indexed by their IDs. Additionally, to ensure that all NFTs within a collection are destroyed when the collection itself is destroyed, you can add a `destroy` function:
 
-```
+```cadence
 pub contract FooBar {
 
     // ...[NFT resource code]...
@@ -184,7 +184,7 @@ pub contract FooBar {
 
 To allow accounts to create their own collections, add a function in the main contract that creates a new `Collection` and returns it:
 
-```
+```cadence
 pub contract FooBar {
 
     pub var ownedNFTs: @{UInt64: NFT}
@@ -199,7 +199,7 @@ pub contract FooBar {
 
 To manage the NFTs within a collection, you'll need functions to deposit and withdraw NFTs. Here's how you can add a `deposit` function:
 
-```
+```cadence
 pub resource Collection {
 
     pub var ownedNFTs: @{UInt64: NFT}
@@ -215,7 +215,7 @@ pub resource Collection {
 
 Similarly, you can add a `withdraw` function to remove an NFT from the collection:
 
-```
+```cadence
 pub resource Collection {
     // ...[deposit code]...
 
@@ -230,7 +230,7 @@ pub resource Collection {
 
 To facilitate querying, you'll also want a function to retrieve all the NFT IDs within a collection:
 
-```
+```cadence
 pub resource Collection {
     // ...[withdraw code]...
 
@@ -244,7 +244,7 @@ pub resource Collection {
 
 For security reasons, you might not want to expose all the functions of the Collection to everyone. Instead, you can create an [interface](https://developers.flow.com/cadence/language/interfaces) that exposes only the methods you want to make public. In Cadence, interfaces act as a blueprint for resources and structures, ensuring that certain methods or properties exist. By leveraging these interfaces, you establish clear boundaries and standardized interactions. In this case, you might want to expose only the `deposit` and `getIDs` methods. This interface can then be used to create capabilities, ensuring that only the allowed methods are accessible.
 
-```
+```cadence
 pub contract FooBar {
 
     // ...[previous code]...
@@ -272,7 +272,7 @@ To start, you need to inform the Flow blockchain that your contract will impleme
 
 Begin by importing the token standard into your contract:
 
-```
+```cadence
 import "NonFungibleToken"
 
 pub contract FooBar: NonFungibleToken {
@@ -290,7 +290,7 @@ To ensure interoperability, the Flow NFT standard requires certain events to be 
 
 For instance, when the contract is initialized, a `ContractInitialized` event should be emitted:
 
-```
+```cadence
 import "NonFungibleToken"
 
 pub contract FooBar: NonFungibleToken {
@@ -311,7 +311,7 @@ pub contract FooBar: NonFungibleToken {
 
 Additionally, when NFTs are withdrawn or deposited, corresponding events should be emitted:
 
-```
+```cadence
 import "NonFungibleToken"
 
 pub contract FooBar: NonFungibleToken {
@@ -326,7 +326,7 @@ pub contract FooBar: NonFungibleToken {
 
 You can then update your `deposit` and `withdraw` functions to emit these events:
 
-```
+```cadence
 pub fun deposit(token: @NFT) {
     let tokenID = token.id
     self.ownedNFTs[token.id] <-! token
@@ -344,7 +344,7 @@ pub fun withdraw(withdrawID: UInt64): @NFT {
 
 The `NFT` resource should also be updated to implement the `NonFungibleToken.INFT` interface:
 
-```
+```cadence
 pub resource NFT: NonFungibleToken.INFT {
     pub let id: UInt64
 
@@ -359,7 +359,7 @@ pub resource NFT: NonFungibleToken.INFT {
 
 Your `Collection` resource should also implement the `Provider`, `Receiver`, and `CollectionPublic` interfaces from the standard:
 
-```
+```cadence
 pub resource Collection: NonFungibleToken.Provider, NonFungibleToken.Receiver, NonFungibleToken.CollectionPublic {
     // ...[rest of code]...
 }
@@ -369,7 +369,7 @@ With these implementations, you can now remove your custom `CollectionPublic` in
 
 To ensure users can access a read-only reference to an NFT in the collection without actually removing it, introduce the **`borrowNFT`** function.
 
-```
+```cadence
 pub resource Collection: NonFungibleToken.Provider, NonFungibleToken.Receiver, NonFungibleToken.CollectionPublic {
 
     // ...[getIDs code]...
@@ -384,7 +384,7 @@ pub resource Collection: NonFungibleToken.Provider, NonFungibleToken.Receiver, N
 
 Lastly, update the `ownedNFTs`, `deposit`, and `withdraw` variables/methods to use the `NonFungibleToken.NFT` type:
 
-```
+```cadence
 pub var ownedNFTs: @{UInt64: NonFungibleToken.NFT}
 
 pub fun deposit(token: @NonFungibleToken.NFT) {
@@ -400,7 +400,7 @@ pub fun withdraw(withdrawID: UInt64): @NonFungibleToken.NFT {
 
 With your contract ready, it's time to deploy it. First, add the `FooBar` contract to the `flow.json` configuration file:
 
-```
+```bash
 flow config add contract
 ```
 
@@ -413,7 +413,7 @@ Enter contract file location: cadence/contracts/FooBar.cdc
 
 Next, configure the deployment settings by running the following command:
 
-```
+```bash
 flow config add deployment
 ```
 
@@ -421,13 +421,13 @@ Choose the `emulator` for the network and `emulator-account` for the account to 
 
 To start the Flow emulator, run (you may need to approve a prompt to allow connection the first time):
 
-```
+```bash
 flow emulator start
 ```
 
 In a separate terminal or command prompt, deploy the contract:
 
-```
+```bash
 flow project deploy
 ```
 
@@ -437,7 +437,7 @@ You’ll then see a message that says `All contracts deployed successfully`.
 
 To manage multiple NFTs, you'll need an NFT collection. Start by creating a transaction file for this purpose:
 
-```
+```bash
 touch cadence/transactions/CreateCollection.cdc
 ```
 
@@ -445,7 +445,7 @@ Transactions, on the other hand, are pieces of Cadence code that can mutate the 
 
 In this file, import the necessary contracts and define a transaction to create a new collection, storing it in the account's storage. Additionally, for the **`CollectionPublic`** interface, create a capability that allows others to read from its methods. This capability ensures secure, restricted access to specific functionalities or information within a resource.
 
-```
+```cadence
 import "FooBar"
 import "NonFungibleToken"
 
@@ -463,13 +463,13 @@ transaction {
 
 To store this new NFT collection, create a new account:
 
-```
+```bash
 flow accounts create
 ```
 
 Name it `test-acct` and select `emulator` as the network. Then, using the Flow CLI, run the transaction:
 
-```
+```bash
 flow transactions send cadence/transactions/CreateCollection.cdc --signer test-acct --network emulator
 ```
 
@@ -481,13 +481,13 @@ To retrieve the NFTs associated with an account, you'll need a script. Scripts a
 
 Start by creating a script file:
 
-```
+```bash
 touch cadence/scripts/GetNFTs.cdc
 ```
 
 In this script, import the necessary contracts and define a function that retrieves the NFT IDs associated with a given account:
 
-```
+```cadence
 import "FooBar"
 import "NonFungibleToken"
 
@@ -502,7 +502,7 @@ pub fun main(account: Address): [UInt64] {
 
 To check the NFTs associated with the `test-acct`, run the script (note: replace `0x123` with the address for `test-acct` from `flow.json`):
 
-```
+```bash
 flow scripts execute cadence/scripts/GetNFTs.cdc 0x123
 ```
 
@@ -512,13 +512,13 @@ Since you haven't added any NFTs to the collection yet, the result will be an em
 
 To mint and deposit an NFT into a collection, create a new transaction file:
 
-```
+```bash
 touch cadence/transactions/DepositNFT.cdc
 ```
 
 In this file, define a transaction that takes a recipient's address as an argument. This transaction will borrow the minting capability from the contract account, borrow the recipient's collection capability, create a new NFT using the minter, and deposit it into the recipient's collection:
 
-```
+```cadence
 import "FooBar"
 import "NonFungibleToken"
 transaction(recipient: Address) {
@@ -538,13 +538,13 @@ transaction(recipient: Address) {
 
 To run this transaction, use the Flow CLI. Remember, the contract account (which has the minting resource) should be the one signing the transaction. Pass the test account's address (from the `flow.json` file) as the recipient argument (note: replace `0x123` with the address for `test-acct` from `flow.json`):
 
-```
+```bash
 flow transactions send cadence/transactions/DepositNFT.cdc 0x123 --signer emulator-account --network emulator
 ```
 
 After executing the transaction, you can run the earlier script to verify that the NFT was added to the `test-acct`'s collection (remember to replace `0x123`):
 
-```
+```bash
 flow scripts execute cadence/scripts/GetNFTs.cdc 0x123
 ```
 
@@ -554,13 +554,13 @@ You should now see a value in the `test-acct`'s collection array!
 
 To transfer an NFT to another account, create a new transaction file:
 
-```
+```bash
 touch cadence/transactions/TransferNFT.cdc
 ```
 
 In this file, define a transaction that takes a recipient's address and the ID of the NFT you want to transfer as arguments. This transaction will borrow the sender's collection, get the recipient's capability, withdraw the NFT from the sender's collection, and deposit it into the recipient's collection:
 
-```
+```cadence
 import "FooBar"
 
 transaction(recipient: Address, id: UInt64) {
@@ -580,25 +580,25 @@ transaction(recipient: Address, id: UInt64) {
 
 To transfer the NFT, first create a new account:
 
-```
+```bash
 flow accounts create
 ```
 
 Name it `test-acct-2` and select `Emulator` as the network. Next, create a collection for this new account:
 
-```
+```bash
 flow transactions send cadence/transactions/CreateCollection.cdc --signer test-acct-2 --network emulator
 ```
 
 Now, run the transaction to transfer the NFT from `test-acct` to `test-acct-2` using the addresses from the `flow.json` file (replace `0x124` with `test-acct-2`'s address. Also note that `0` is the `id` of the `NFT` we'll be transferring):
 
-```
+```bash
 flow transactions send cadence/transactions/TransferNFT.cdc 0x124 0 --signer test-acct --network emulator
 ```
 
 To verify the transfer, you can run the earlier script for `test-acct-2` (replace `0x124`):
 
-```
+```bash
 flow scripts execute cadence/scripts/GetNFTs.cdc 0x123
 ```
 
@@ -614,7 +614,7 @@ For the NFT metadata, you'll add a simple `MetadataView` called `Display`, which
 
 Start by importing the `MetadataViews` contract into your `FooBar` contract:
 
-```
+```cadence
 import "MetadataViews"
 ```
 
@@ -622,7 +622,7 @@ Because this is already deployed to Emulator and our `flow setup` command added 
 
 Update the `NFT` resource to implement the `[ViewResolver` interface](https://github.com/onflow/flow-nft/blob/master/contracts/MetadataViews.cdc#L20) provided by the MetadataViews contract. This interface specifies that a `getViews` function and a `resolveView` function should exist. Then, add fields for `name`, `thumbnail`, and `description`:
 
-```
+```cadence
 pub resource NFT: NonFungibleToken.INFT, MetadataViews.ViewResolver {
     pub let id: UInt64
     pub let name: String
@@ -635,7 +635,7 @@ pub resource NFT: NonFungibleToken.INFT, MetadataViews.ViewResolver {
 
 Now, add the methods from the `ViewResolver` interface to the `NFT` resource. These methods will return the metadata in the standardized `Display` format:
 
-```
+```cadence
 pub resource NFT: NonFungibleToken.INFT, ViewResolver {
     // ...[NFT code]...
 
@@ -658,7 +658,7 @@ pub resource NFT: NonFungibleToken.INFT, ViewResolver {
 
 Finally, to retrieve our NFT along with its metadata, we currently have a `borrowNFT` function. However, this function only returns a `NonFungibleToken.NFT` with an `id` field. To address this, let's introduce a new function in our collection that borrows the NFT and returns it as a `FooBar` NFT. We'll utilize the `auth` [syntax to downcast](https://developers.flow.com/cadence/language/operators#conditional-downcasting-operator-as) the `NonFungibleToken.NFT` to our specific type.
 
-```
+```cadence
 pub fun borrowFooBarNFT(id: UInt64): &FooBar.NFT? {
     if self.ownedNFTs[id] != nil {
         let ref = (&self.ownedNFTs[id] as auth &NonFungibleToken.NFT?)!
@@ -673,13 +673,13 @@ pub fun borrowFooBarNFT(id: UInt64): &FooBar.NFT? {
 
 For the contract level metadata, we need to create an interface that defines the required methods for the contract. First, let’s create it by adding a new file. In your terminal, run:
 
-```
+```bash
 touch cadence/contracts/ViewResolver.cdc
 ```
 
 In it let’s add the following code, which says we need a `getViews` function and a `resolveView` function on our contract (just like we required on our NFT, but this time it’s for our contract):
 
-```
+```cadence
 pub contract interface ViewResolver {
 
     pub fun getViews(): [Type] {
@@ -694,7 +694,7 @@ pub contract interface ViewResolver {
 
 Next, we need do also add this to our `flow.json` config. Run:
 
-```
+```bash
 flow config add contract
 ```
 
@@ -707,7 +707,7 @@ Enter contract file location: cadence/contracts/ViewResolver.cdc
 
 Next, configure the deployment settings by running the following command:
 
-```
+```bash
 flow config add deployment
 ```
 
@@ -715,7 +715,7 @@ Like earlier in the guide, choose the `emulator` for the network and `emulator-a
 
 Now, go back to your `FooBar` contract, import this new contract, and state that `FooBar` should implement it:
 
-```
+```cadence
 import "NonFungibleToken"
 import "MetadataViews"
 import "ViewResolver"
@@ -727,7 +727,7 @@ pub contract FooBar: NonFungibleToken, ViewResolver {
 
 Just like the NFT (except at a contract level), we’ll add functions for `getView` which returns the `Display` and `resolveViews` which tells it how to get the `Display` values:
 
-```
+```cadence
 pub contract FooBar: NonFungibleToken, ViewResolver {
 
 //...[all code above contract init]...
@@ -761,7 +761,7 @@ pub fun getViews(): [Type] {
 
 Finally, we need a way to get read this data like we did with the NFT. Let’s also make a `borrowViewResolver` function that we add below the `borrowFooBarNFT` method inside of the `Collection`:
 
-```
+```cadence
 pub resource Collection: NonFungibleToken.Provider, NonFungibleToken.Receiver, NonFungibleToken.CollectionPublic, MetadataViews.ResolverCollection {
 
     // ...[borrowFooBarNFT]...
