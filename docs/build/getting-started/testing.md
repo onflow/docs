@@ -1,16 +1,19 @@
 
 # Introduction to Testing in Cadence
 
-Testing is an essential part of smart contract development to ensure the correctness and reliability of your code. In Cadence, the testing framework provides a convenient way to write tests for Cadence programs, allowing you to verify the functionality of your smart contracts.
+Testing is an essential part of smart contract development to ensure the correctness and reliability of your code. Cadence Testing Framework provides a convenient way to write tests for your programs, allowing you to verify the functionality and correctness of your smart contracts.
 
 ## Install Flow CLI
 
-The [Flow CLI](../../../tools/flow-cli/index.md) is the primary tool for developing, testing, and deploying smart contracts written in Cadence to the Flow network. You can install the Flow CLI by following the [installation instructions](../../../tools/flow-cli/install.md) provided by the Flow documentation.
+The [Flow CLI](../../tools/flow-cli/index.md) is the primary tool for developing, testing, and deploying smart contracts to the Flow network.
+
+If you haven't installed the Flow CLI yet and have [homebrew](https://brew.sh/) installed, simply run `brew install flow-cli`. Alternatively, refer to the Flow CLI [installation instructions](../../tools/flow-cli/install.md).
 
 ## Create a new project
 
 In your preferred code editor, create a new directory for your project and navigate to it in the terminal. Then 
-initialize a new Flow project by running the command `flow init`. This will create a `flow.json` file that contains the project configuration.
+initialize a new Flow project by running the command `flow init`. This will create a `flow.json` file that contains the [project configuration](../../tools/flow-cli/flow.json/configuration.md).
+
 ```bash
 mkdir test-cadence
 cd test-cadence
@@ -35,7 +38,7 @@ access(all) contract Calculator {
 
 ## Add the smart contract to the config
 
-Run `flow config add contract` and add the created `calculator.cdc` contract to the config with the name as `Calculator`:
+Run `flow config add contract` and add the created `calculator.cdc` contract to the config with the name as `Calculator`. This command adds your contract name and location under the `contracts` key in `flow.json`.
 
 ```
 Enter name: Calculate
@@ -92,11 +95,14 @@ The Cadence testing framework provides various features and techniques for writi
 
 - [**Code Coverage**](https://github.com/m-Peter/flow-code-coverage): You can use the `-cover` flag with the `flow test` command to view code coverage results when running your tests. This allows you to identify areas of your code that are not adequately covered by your test inputs;
 - **Test Fixtures**: Test fixtures are reusable components that help you set up the initial state for your test cases. You can create test fixtures in Cadence by defining resource types and using them in your test functions;
-- [**Assertions**](../../../cadence/testing-framework.mdx#assertions): The testing framework provides built-in assertion functions, such as `assertEqual`, `assertTrue`, and `assertFalse`, to help you verify the expected behavior of your smart contracts;
+- [**Assertions**](../../cadence/testing-framework.mdx#assertions): The testing framework provides built-in assertion functions, such as `assertEqual`, `assertTrue`, and `assertFalse`, to help you verify the expected behavior of your smart contracts;
 - **Test Suites**: You can organize your test cases into test suites to improve the readability and maintainability of your test code. Test suites allow you to group related test cases and set up common test fixtures for all the tests in the suite.
 
-By leveraging these advanced testing techniques, you can write more robust and reliable smart contracts in Cadence.In this example, we set up a basic testing environment, wrote a simple smart contract in Cadence, and created a test case to verify its functionality. We then used the Flow CLI to run the test case and confirm that the smart contract is working correctly. This is a basic example, and there are many more advanced features and techniques you can explore when working with the Cadence testing framework. For more in-depth tutorials and documentation, refer to the official Flow Developer Portal and the Flow CLI documentation.
+By leveraging these advanced testing techniques, you can write more robust and reliable smart contracts in Cadence. In this example, we set up a basic testing environment, wrote a simple smart contract in Cadence, and created a test case to verify its functionality. We then used the Flow CLI to run the test case and confirm that the smart contract is working correctly. 
 
+This is a basic example, and there are many more advanced features and techniques you can explore when working with the Cadence Testing Framework. 
+
+For more in-depth tutorials and documentation, refer to the official [Cadence language documentation](https://cadencelang.org/) and the [Flow CLI documentation](../../tools/flow-cli/index.md).
 ## References
 
-- [Reference documentation for Cadence testing](../../../cadence/testing-framework.mdx)
+- [Reference documentation for Cadence testing](../../cadence/testing-framework.mdx)
