@@ -52,7 +52,7 @@ The Archive node follows the chain, stores and indexes both protocol and executi
 
 It also allows script execution and other read-only queries that require the execution state to be read. It can answer any queries from past data e.g. “what was the Flow account balance at height X?”, where X is several thousand blocks in the past.
 
-_The archive node is currently in beta and will be available as a GA release in H2 2023 (see [here](https://flow.com/post/flow-blockchain-node-operation-archive-node) for more)_
+_The archive node is currently in beta and will be available as a GA release in H2 2023 (see [here](https://flow.com/post/flow-blockchain-node-operation-archive-node) for more)._
 
 ## Full node
 
