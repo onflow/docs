@@ -72,7 +72,7 @@ export default function GettingStarted(): JSX.Element {
                   },
                   {
                     title: 'Flow Block Explorer',
-                    href: 'https://flowscan.org/',
+                    href: 'https://flowdiver.io/',
                   },
                 ],
               },
