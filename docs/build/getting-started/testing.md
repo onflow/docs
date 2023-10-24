@@ -45,7 +45,7 @@ Enter name: Calculate
 Enter contract file location: ./calculator.cdc
 ```
 
-## Write test cases
+## Write unit test cases
 
 In the same directory, create a new file called `calculator_test.cdc` and add the following code:
 
@@ -56,11 +56,11 @@ import "Calculator" // contract name from the previous step
 access(all) let calculator = Calculator()
 
 access(all) fun testAdd() {
-  Test.assertEqual(calculator.add(a: 2, b: 3), 5)
+  Test.assertEqual(5, calculator.add(a: 2, b: 3))
 }
 
 access(all) fun testSubtract() {
-  Test.assertEqual(calculator.subtract(a: 5, b: 3), 2)
+  Test.assertEqual(2, calculator.subtract(a: 5, b: 3))
 }
 
 ```
@@ -93,16 +93,19 @@ This output indicates that both test cases ran successfully, and the smart contr
 
 The Cadence testing framework provides various features and techniques for writing comprehensive test cases. Some of these include:
 
-- [**Code Coverage**](https://github.com/m-Peter/flow-code-coverage): You can use the `-cover` flag with the `flow test` command to view code coverage results when running your tests. This allows you to identify areas of your code that are not adequately covered by your test inputs;
+- [**Code Coverage**](https://github.com/m-Peter/flow-code-coverage): You can use the `--cover` flag with the `flow test` command to view code coverage results when running your tests. This allows you to identify areas of your code that are not adequately covered by your test inputs;
 - **Test Fixtures**: Test fixtures are reusable components that help you set up the initial state for your test cases. You can create test fixtures in Cadence by defining resource types and using them in your test functions;
-- [**Assertions**](../../cadence/testing-framework.mdx#assertions): The testing framework provides built-in assertion functions, such as `assertEqual`, `assertTrue`, and `assertFalse`, to help you verify the expected behavior of your smart contracts;
+- [**Assertions**](../../cadence/testing-framework.mdx#assertions): The testing framework provides built-in assertion functions, such as `assertEqual`, `beNil`, `beEmpty`, `contain`, to help you verify the expected behavior of your smart contracts;
 - **Test Suites**: You can organize your test cases into test suites to improve the readability and maintainability of your test code. Test suites allow you to group related test cases and set up common test fixtures for all the tests in the suite.
+- [**Integration tests**](https://github.com/bjartek/overflow): You can use [Overflow tool](https://github.com/bjartek/overflow) to run integration tests against either an local emulator, testnet, mainnet or an in memory instance of the flow-emulator.
 
 By leveraging these advanced testing techniques, you can write more robust and reliable smart contracts in Cadence. In this example, we set up a basic testing environment, wrote a simple smart contract in Cadence, and created a test case to verify its functionality. We then used the Flow CLI to run the test case and confirm that the smart contract is working correctly. 
 
 This is a basic example, and there are many more advanced features and techniques you can explore when working with the Cadence Testing Framework. 
 
 For more in-depth tutorials and documentation, refer to the official [Cadence language documentation](https://cadencelang.org/) and the [Flow CLI documentation](../../tools/flow-cli/index.md).
+
 ## References
 
 - [Reference documentation for Cadence testing](../../cadence/testing-framework.mdx)
+- https://github.com/bjartek/overflow
