@@ -1,6 +1,7 @@
 import React from 'react';
 import GithubIcon from '../../ui/design-system/images/social/github.svg';
 import TwitterIcon from '../../ui/design-system/images/social/twitter.svg';
+import DiscordIcon from '../../ui/design-system/images/social/discord.svg';
 import type { PropSidebarItemLink } from '@docusaurus/plugin-content-docs';
 
 export const CardSubtitle = ({
@@ -9,7 +10,7 @@ export const CardSubtitle = ({
   if (customProps == null || customProps === undefined) {
     return null;
   }
-  const { author, twitterLink, githubLink } = customProps;
+  const { author, twitterLink, githubLink, discordLink } = customProps;
   const { name, profileImage } = author ?? {};
 
   return (
@@ -24,6 +25,12 @@ export const CardSubtitle = ({
       {githubLink ? (
         <a href={githubLink}>
           <GithubIcon />
+        </a>
+      ) : null}
+
+      {discordLink ? (
+        <a href={discordLink}>
+          <DiscordIcon />
         </a>
       ) : null}
     </div>
