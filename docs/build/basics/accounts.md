@@ -10,7 +10,7 @@ An account on Flow is a record in the chain state that holds the following infor
 - Code: Cadence contracts deployed to the account
 - Storage: area of the account used to store resource assets.
 
-Accounts and their keys are needed to sign transactions that change the Flow blockchain state. To execute a transaction, a small amount of Flow, called a “Fee” must be paid by the account or subsidized by a wallet or service. Flow allocates a fixed amount of storage to each account for saving data structures and Resources. Flow allocates a fixed amount of storage to each account for saving data structures and Resources.
+Accounts and their keys are needed to sign transactions that change the Flow blockchain state. To execute a transaction, a small amount of Flow, called a [“Fee”](./fees.md) must be paid by the account or subsidized by a wallet or service. Flow allocates a fixed amount of storage to each account for saving data structures and Resources. Flow allocates a [fixed amount of storage](./fees.md#storage) to each account for saving data structures and Resources.
 An account may also contain contract code which transactions and scripts can interact with to query or mutate the state of the blockchain.
 
 A simple representation of an account:
@@ -25,22 +25,21 @@ This decoupling is a unique advantage of Flow, allowing for multiple public keys
 
 **Balance**
 
-Each Flow account created on Mainnet will by default [hold a Flow vault that holds a balance and is part of the FungibleToken standard](./flow-token). This balance is used to pay for transaction fees and storage fees. More on that in the fees document.
+Each Flow account created on Mainnet will by default [hold a Flow vault that holds a balance and is part of the FungibleToken standard](./flow-token). This balance is used to pay for [transaction fees and storage fees](./fees.md). More on that in the fees document.
 
 <Callout type="warning">
 The minimum amount of FLOW an account can have is **0.001**.
-
 </Callout>
 
 This minimum storage fee is provided by the account creator and covers the cost of storing up to 100kB of data in perpetuity. This fee is applied only once and can be "topped up" to add additional storage to an account. The minimum account reservation ensures that most accounts won't run out of storage capacity if anyone deposits anything (like an NFT) to the account. 
 
 **Contracts**
 
-An account can optionally store multiple Cadence contracts. The code is stored as a human-readable UTF-8 encoded string which makes it easy for anyone to inspect the contents.
+An account can optionally store multiple [Cadence contracts](../../cadence/language/contracts.mdx). The code is stored as a human-readable UTF-8 encoded string which makes it easy for anyone to inspect the contents.
 
 **Storage**
 
-Each Flow account has an associated storage and capacity. The account's storage used is the byte size of all the data stored in the account's storage. An account's storage capacity is directly tied to the balance of Flow tokens an account has. An account can, without any additional cost, use any amount of storage up to its storage capacity. If a transaction puts an account over storage capacity or drops an account's balance below the minimum 0.001 Flow tokens, that transaction fails and is reverted.
+Each Flow account has an associated storage and capacity. The account's storage used is the byte size of all the data stored in the account's storage. An account's [storage capacity is directly tied to the balance of Flow tokens](./fees.md#storage) an account has. An account can, without any additional cost, use any amount of storage up to its storage capacity. If a transaction puts an account over storage capacity or drops an account's balance below the minimum 0.001 Flow tokens, that transaction fails and is reverted.
 
 ## Account **Keys**
 
@@ -51,15 +50,14 @@ During account creation, public keys can be provided which will be used when int
 Each account key has a weight that determines the signing power it holds.
 
 <Callout type="warning">
-A transaction is not authorized to access an account unless it has a total signature weight greater than or equal to **1000**, the weight threshold.
-
+A transaction is not authorized to access an account unless it has a total signature weight greater than or equal to **1000**, the weight threshold.
 </Callout>
 
 For example, an account might contain 3 keys, each with 500 weight:
 
 ![Screenshot 2023-08-16 at 16.28.58.png](_accounts_images/Screenshot_2023-08-16_at_16.28.58.png)
 
-This represents a 2-of-3 multi-sig quorum, in which a transaction is authorized to access the account if it receives signatures from *at least* 2 out of 3 keys.
+This represents a 2-of-3 multi-sig quorum, in which a transaction is authorized to access the account if it receives signatures from *at least* 2 out of 3 keys.
 
 An account key contains the following attributes:
 

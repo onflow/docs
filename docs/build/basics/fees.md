@@ -8,7 +8,7 @@ sidebar_position: 5
 
 A transaction fee is a cost paid in Flow by the payer account and is required for a transaction to be included in the Flow blockchain. Fees are necessary for protecting the network against spam, and infinite running transactions and to provide monetary incentives for participants that make up the Flow network.
 
-A transaction fee is paid regardless of whether a transaction succeeds or fails. If the payer account doesn’t have sufficient Flow balance to pay for the transaction fee, the transaction will fail. We can limit the transaction fee to some extent by providing the gas limit value when submitting the transaction.
+A transaction fee is paid regardless of whether a transaction succeeds or fails. If the payer account doesn't have sufficient Flow balance to pay for the transaction fee, the transaction will fail. We can limit the transaction fee to some extent by providing the gas limit value when submitting the transaction.
 
 ### Understanding the need for transaction fees
 
@@ -21,7 +21,7 @@ The unique Flow architecture is targeted at high throughput. It makes it easier 
 
 ### **Fee Structure**
 
-Each transaction fee consits of three components: execution fee, inclusion fee, and network surge factor.
+Each transaction fee consists of three components: execution fee, inclusion fee, and network surge factor.
 
 ![Screenshot 2023-08-17 at 17.16.32.png](_fees_images/Screenshot_2023-08-17_at_17.16.32.png)
 
@@ -88,7 +88,7 @@ Currently, the amount required to store 100 MB in account storage is 1 Flow.
 
 ![Screenshot 2023-08-17 at 17.27.50.png](_fees_images/Screenshot_2023-08-17_at_17.27.50.png)
 
-Please note that storing data in an account on Flow doesn’t charge tokens from the account, it just makes sure you will keep the tokens as a reserve. Once the storage is freed up you can transfer the Flow tokens. 
+Please note that storing data in an account on Flow doesn't charge tokens from the account, it just makes sure you will keep the tokens as a reserve. Once the storage is freed up you can transfer the Flow tokens. 
 
 ### Storage Capacity of the Payer
 
