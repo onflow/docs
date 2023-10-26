@@ -1165,6 +1165,10 @@
       "source": "/build/key-concepts/:path*",
       "destination": "/build/basics/:path*",
       "permanent": true
+    },
+    {
+      "source": "/cadence/:path*",
+      "destination": "https://cadence-lang.org/:path*"
     }
   ]
 }
