@@ -29,39 +29,43 @@ Use this function for internal sanity checks.
 
 The message argument is optional.
 
-## `unsafeRandom`
+## `revertibleRandom`
 
 ```cadence
-fun unsafeRandom(): UInt64
+fun revertibleRandom(): UInt64
 ```
+
+<Callout type="info">
+`unsafeRandom()` function currently behaves the same way as `revertibleRandom()`.
+`unsafeRandom` will be deprecated in the next release of Cadence. 
+</Callout>
 
 Returns a pseudo-random number.
 
+The random number returned is safe as it is backed by a distributed source of randomness,
+that is unbiased, unpredictable and verifiable.
+
+The random number cannot be biased or predicted by miners or by other transactions or code
+running before a call to `revertibleRandom`.
+
+Moreover, the sequence of returned random numbers is different per block, and per transaction
+within the same block.
+
 <Callout type="warning">
-Smart contract developers should be mindful about the limitations of unsafeRandom.
-The stream of random numbers produced is potentially unsafe in the following two regards:
+There is an additional safety-relevant aspect that developers need to be mindful about.
 
-1. The sequence of random numbers is potentially predictable by transactions within the same block
-and by other smart contracts calling into your smart contract.
-2. A transaction calling into your smart contract can potentially bias the sequence of random numbers which
-your smart contract internally generates.
+The function is not immune to post-selection manipulation by a non-trusted party where
+a random number is sampled and then rejected.
 
-The Flow project is working towards removing these limitations incrementally.
-Once Flow addressed these points and randomness is safe,
-the "unsafe" qualifier is going to get removed.
-
-Nevertheless, there is an additional safety-relevant aspect that developers need to be mindful about:
-
-A transaction can atomically revert all its actions at any time.
+A transaction can atomically revert all its actions.
 Therefore, it is possible for a transaction calling into a smart contract
 to post-select favorable results and revert the transaction for unfavorable results.
 
+The function remains totally safe when called by a trusted party.
+
 This limitation is inherent to any smart contract platform that allows transactions to roll back atomically
-and cannot be solved through safe randomness alone.
-Providing additional Cadence language primitives to simplify this challenge for developers is on the roadmap.
-Nevertheless, with safe randomness, points 1 and 2 above resolved,
-developers can prevent clients from post-select favorable outcomes using approaches such as described in the
-[Smart Contract Security Best Practices](https://consensys.github.io/smart-contract-best-practices/development-recommendations/general/public-data/).
+and cannot be solved through safe randomness alone. Flow protocol has suggested a [solution to implement safe
+commit-reveal schemes](https://github.com/onflow/flips/pull/123) and address this limitation.
 </Callout>
 
 ## `RLP`
