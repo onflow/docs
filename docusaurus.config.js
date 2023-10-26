@@ -207,11 +207,11 @@ const config = {
         },
         ...(process.env.GA_TRACKING_ID
           ? {
-              gtag: {
-                trackingID: process.env.GA_TRACKING_ID,
-                anonymizeIP: true,
-              },
-            }
+            gtag: {
+              trackingID: process.env.GA_TRACKING_ID,
+              anonymizeIP: true,
+            },
+          }
           : {}),
       }),
     ],
@@ -580,6 +580,24 @@ const config = {
       };
     },
     // require('./plugins/networks')
+    [
+      '@docusaurus/plugin-client-redirects',
+      {
+        createRedirects(existingPath) {
+          console.log({ existingPath });
+          if (existingPath.includes('/cadence')) {
+            // Redirect from /docs/team/X to /community/X and /docs/support/X to /community/X
+            return [
+              existingPath.replace(
+                'https://cadence-lang-docs-git-fix-links-versions-onflow.vercel.app/docs/0.42/',
+                '/cadence',
+              ),
+            ];
+          }
+          return undefined; // Return a falsy value: no redirect created
+        },
+      },
+    ],
   ],
   stylesheets: [
     {

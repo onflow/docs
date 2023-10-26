@@ -1168,7 +1168,7 @@
     },
     {
       "source": "/cadence/:path*",
-      "destination": "https://cadence-lang.org/:path*",
+      "destination": "https://cadence-lang-docs-git-fix-links-versions-onflow.vercel.app/docs/0.42/:path*",
       "permanent": true
     }
   ]
