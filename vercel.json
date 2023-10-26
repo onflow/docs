@@ -1168,7 +1168,8 @@
     },
     {
       "source": "/cadence/:path*",
-      "destination": "https://cadence-lang.org/:path*"
+      "destination": "https://cadence-lang.org/:path*",
+      "permanent": true
     }
   ]
 }
