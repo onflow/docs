@@ -5,9 +5,9 @@ sidebar_position: 4
 
 # Account Linking
 
-Account linking is a unique Flow concept that enables sharing ownership over accounts. In order to understand how we can achieve that we must first understand how accounts on Flow are accessed.
+Account linking is a unique Flow concept that enables sharing ownership over [accounts](../../basics/accounts.md). In order to understand how we can achieve that we must first understand how accounts on Flow are accessed.
 
-Accounts on flow can be accessed in Cadence through two types, `PublicAccount` and `AuthAccount`. As the name implies the `PublicAccount` type gives access to all public account information such as address, balance, storage capacity, etc., but doesn’t allow changes to the account. The `AuthAccount` type allows the same access as `PublicAccount` but also allows changing the account, including adding/revoking account keys, managing the deployed contracts, as well as linking and publishing Capabilities.
+Accounts on flow can be accessed in Cadence through two types, `PublicAccount` and `AuthAccount`. As the name implies the `PublicAccount` type gives access to all public account information such as address, balance, storage capacity, etc., but doesn't allow changes to the account. The `AuthAccount` type allows the same access as `PublicAccount` but also allows changing the account, including adding/revoking account keys, managing the deployed contracts, as well as linking and publishing Capabilities.
 
 ![Flow account structure](resources/account.png)
 
@@ -15,7 +15,7 @@ Accounts on flow can be accessed in Cadence through two types, `PublicAccount` a
 
 Accessing the auth account allows for account modification, so it's essential to safeguard this access by mandating that transactions are signed by the account being accessed. A transaction can list multiple auth accounts it wants to access as part of the `pre` section of the transaction. Read more about transaction signing in the transaction documentation.
 
-Since access to the `AuthAccount` object enables state change, the idea of account ownership actually translates to the ability to access the auth account. Traditionally, you might consider this the same as having key access on an account, but we'll see in just a minute how programmatic, ownership-level access is unlocked with Capabilities on Flow.
+Since access to the `AuthAccount` object enables state change, the idea of account ownership actually translates to the ability to access the auth account. Traditionally, you might consider this the same as having key access on an account, but we'll see in just a minute how programmatic, ownership-level access is unlocked with [Capabilities on Flow](../../../cadence/language/capabilities.md).
 
 ## AuthAccount Capabilities
 
@@ -72,7 +72,7 @@ transaction {
 
 Account linking was specifically designed to enable smooth and seamless onboarding of users to your Flow based application without them first requiring a wallet to do so. This pattern overcomes both the technical hurdle, as well as user's reluctance to install a wallet, and opens access to apps on Flow to every user. Users can experience an app without any delay while still offering a path to self-sovreign ownership. 
 
-Naturally, users may expect to use their account with another application, or otherwise move assets stored in that account elsewhere. When an app initially leverages account linking it creates the account instead of the user and is where that user's specific state is stored. At a later point, users can take ownership of the app account providing they possess a full Flow account, typically by installing a wallet app.
+Naturally, users may expect to use their account with another application, or otherwise move assets stored in that account elsewhere. When an app initially leverages account linking it creates the account instead of the user and is where that user's specific state is stored. At a later point, users can take ownership of the app account providing they possess a full [Flow account](../../basics/accounts.md), typically by installing a wallet app.
 
 Account linking enables users to possess multiple linked child accounts from different apps. Complexities associated with accessing those child accounts are eliminated by abstracting access to them through the user's parent account. Simply put, child accounts are accessed and treated as a seamless part of the parent account.
 
@@ -90,12 +90,12 @@ Account linking is a _very_ powerful Cadence feature, and thus it must be treate
 
 Creating an `AuthAccount` capability and publishing it to an account we don’t own means we are giving that account full access to our account. This should be seen as an anti-pattern.
 
-<aside>
+<Callout type="warning">
 ❗ Creating an `AuthAccount` capability and sharing it with third-party account is in concept the same as giving that person your account's private keys.
 
-</aside>
+</Callout>
 
-Because pure account linking can be dangerous, Flow introduces the `HybridCustody` contract that helps custodial applications regulate access and parent account manage their many child accounts.
+Because pure account linking can be dangerous, Flow introduces the [`HybridCustody` contract](./parent-accounts.md) that helps custodial applications regulate access and parent account manage their many child accounts.
 
 ## Hybrid Custody and Account Linking
 
@@ -104,7 +104,7 @@ Apps need assurances that their own resources are safe from malicious actors, so
 1. Share capabilities freely, with a few built-in controls over the types of capabilities that can be retrieved by parent accounts via helper contracts (the `CapabilityFactory`, and `CapabilityFilter`)
 2. Share additional capabilities (public or private) with a parent account via a `CapabilityDelegator` resource
 
-Learn more about it in the Hybrid Custody documentation.
+Learn more about it in the [Hybrid Custody documentation](./parent-accounts.md).
 
 ### Guides[](https://developers.flow.com/concepts/account-linking#guides)
 
