@@ -344,8 +344,8 @@ const config = {
                 label: 'FCL',
               },
               {
-                to: '/tools/flow-js-testing/',
-                label: 'JS Testing Library',
+                to: '/build/getting-started/testing',
+                label: 'Testing in Cadence',
               },
               {
                 to: '/tools/flow-cli/',
