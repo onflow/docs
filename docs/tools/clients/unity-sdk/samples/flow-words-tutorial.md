@@ -1182,7 +1182,7 @@ Where;
 
 Once you have the Manage Contracts section filled in as per the example, click Deploy Contract.
 
-If all goes well, you will see the text 'Executing Transaction' appear below the Deploy Contract button, followed by a clickable link to the transaction result on flowscan.
+If all goes well, you will see the text 'Executing Transaction' appear below the Deploy Contract button, followed by a clickable link to the transaction result on [Flowdiver](https://testnet.flowdiver.io/).
 
 Congratulations! You can now run FlowWords, and play the game with a WalletConnect compatible wallet!
 

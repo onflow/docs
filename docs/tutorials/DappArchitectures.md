@@ -126,7 +126,7 @@ Ethereum is one of the major general-purpose smart contract blockchain platforms
 Common themes among dapps built on Ethereum:
 - **Interaction with wallets**: Most Ethereum dapps integrate with the web3js library in the frontend to abstract out interaction with wallets. Due to web3js, the dapps do not have to be aware of the intricacies of individual wallets. On the Flow blockchain, the equivalent of web3js is FCL. 
 - **Managing blockchain transactions**: There is no official Ethereum node offering access APIs for submitting transactions. Ethereum dapp projects generally do not run their own full node. Instead, they rely on a service like that from Infura (or Alchemy) to reliably submit and manage their transactions. Alchemy provides services for the Flow blockchain as well. Tatum and Graffle provide equivalent services on the Flow blockchain as Infura on Ethereum.
-- **Organizing/accessing blockchain data**: There are many mature Ethereum ecosystem projects like Etherscan that collect, maintain, and index blockchain data, and provide blockchain access services through APIs. Most Ethereum dapps use these services for querying the blockchain. Graffle and Flowscan are the equivalents of Etherscan on the Flow blockchain.
+- **Organizing/accessing blockchain data**: There are many mature Ethereum ecosystem projects like Etherscan that collect, maintain, and index blockchain data, and provide blockchain access services through APIs. Most Ethereum dapps use these services for querying the blockchain. Graffle and Flowdiver are the equivalents of Etherscan on the Flow blockchain.
 - **Payment rails**: Due to the focus on decentralization Ethereum dapps mostly rely on tokens including stablecoins for payment on-ramp/off-ramp. 
 
 
