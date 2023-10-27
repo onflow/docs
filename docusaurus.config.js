@@ -345,7 +345,7 @@ const config = {
               },
               {
                 to: '/build/getting-started/testing',
-                label: 'Testing in Cadence',
+                label: 'Testing',
               },
               {
                 to: '/tools/flow-cli/',
@@ -431,12 +431,12 @@ const config = {
                 label: 'Network Status',
               },
               {
-                href: 'https://flowscan.org/',
-                label: 'Flowscan Mainnet',
+                href: 'https://flowdiver.io/',
+                label: 'Flowdiver Mainnet',
               },
               {
-                href: 'https://testnet.flowscan.org/',
-                label: 'Flowscan Testnet',
+                href: 'https://testnet.flowdiver.io/',
+                label: 'Flowdiver Testnet',
               },
               {
                 to: '/references/run-and-secure/node-operation/past-sporks/',

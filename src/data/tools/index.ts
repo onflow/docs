@@ -419,11 +419,12 @@ const flowRunnerTool: Tool = {
 
 // Explorers
 const flowScanTool: Tool = {
-  title: 'Flowscan',
+  title: 'Flowdiver',
   tags: ['metrics', 'lookup', 'mainnet'],
-  link: 'https://flowscan.org/',
-  iconSrc: 'https://flowscan.org/images/flowscan-logo-only.svg',
-  description: `Flowscan is a blockchain explorer that lets you browse all on-chain events, transactions, contracts, and accounts.`,
+  link: 'https://flowdiver.io/',
+  iconSrc:
+    'https://pbs.twimg.com/profile_images/1693654862536331264/ViqtN5qj_400x400.jpg',
+  description: `Flowdiver is a blockchain explorer that lets you browse all on-chain events, transactions, contracts, and accounts.`,
 };
 
 const flowViewSourceTool: Tool = {
