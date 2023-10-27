@@ -35,7 +35,7 @@ This minimum storage fee is provided by the account creator and covers the cost 
 
 **Contracts**
 
-An account can optionally store multiple [Cadence contracts](../../cadence/language/contracts.mdx). The code is stored as a human-readable UTF-8 encoded string which makes it easy for anyone to inspect the contents.
+An account can optionally store multiple [Cadence contracts](https://cadence-lang-docs-git-fix-links-versions-onflow.vercel.app/docs/0.42/language/contracts). The code is stored as a human-readable UTF-8 encoded string which makes it easy for anyone to inspect the contents.
 
 **Storage**
 
@@ -80,7 +80,7 @@ There are two curves commonly used with the ECDSA algorithm, secp256r1 ([OID 1.2
 | ECDSA     | P-256     | ECDSA_P256      | 2    |
 | ECDSA     | secp256k1 | ECDSA_secp256k1 | 3    |
 
-*Please note that the codes listed here are for the signature algorithms as used by the node API, and they are different from the ones [defined in Cadence](../../cadence/language/crypto.mdx#signing-algorithms)*
+*Please note that the codes listed here are for the signature algorithms as used by the node API, and they are different from the ones [defined in Cadence](https://cadence-lang-docs-git-fix-links-versions-onflow.vercel.app/docs/0.42/language/crypto#signing-algorithms)*
 
 | Algorithm | Output Size | ID       | Code |
 | --------- | ----------- | -------- | ---- |
@@ -128,7 +128,7 @@ We are supporting ECDSA with the curves `P-256` and `secp256k1`. For these curve
 
 ## Account Creation
 
-Accounts are created on the Flow blockchain by calling a special [create account Cadence function](../../cadence/language/accounts#account-creation). Once an account is created we can associate a new key with that account. Of course, all that can be done within a single transaction. Keep in mind that there is an account creation fee that needs to be paid. Account creation fees are relatively low, and we expect that wallet providers and exchanges will cover the cost when a user converts fiat to crypto for the first time.
+Accounts are created on the Flow blockchain by calling a special [create account Cadence function](https://cadence-lang-docs-git-fix-links-versions-onflow.vercel.app/docs/0.42/language/accounts#account-creation). Once an account is created we can associate a new key with that account. Of course, all that can be done within a single transaction. Keep in mind that there is an account creation fee that needs to be paid. Account creation fees are relatively low, and we expect that wallet providers and exchanges will cover the cost when a user converts fiat to crypto for the first time.
 
 For development purposes, [you can use Flow CLI to easily create emulator, testnet and mainnet accounts.](../../tools/flow-cli/accounts/create-accounts.md) The account creation fee is paid by a funding wallet so you don’t need a pre-existing account to create it.
 
