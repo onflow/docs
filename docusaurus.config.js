@@ -273,7 +273,7 @@ const config = {
             activeBasePath: '/guides',
           },
           {
-            to: 'cadence/intro',
+            to: 'https://cadence-lang-docs-git-fix-links-versions-onflow.vercel.app/docs/0.42/',
             position: 'left',
             label: 'Cadence',
             activeBasePath: '/cadence',
@@ -332,7 +332,7 @@ const config = {
                 to: '/tools',
               },
               {
-                to: '/cadence/intro',
+                to: 'https://cadence-lang-docs-git-fix-links-versions-onflow.vercel.app/docs/0.42/',
                 label: 'Cadence',
               },
               {
@@ -406,7 +406,7 @@ const config = {
                 label: 'Flow Playground',
               },
               {
-                to: '/cadence/tutorial/first-steps',
+                to: 'https://cadence-lang-docs-git-fix-links-versions-onflow.vercel.app/docs/0.42/tutorial/first-steps',
                 label: 'Cadence Tutorials',
               },
               {
