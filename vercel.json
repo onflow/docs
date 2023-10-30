@@ -1165,6 +1165,11 @@
       "source": "/build/key-concepts/:path*",
       "destination": "/build/basics/:path*",
       "permanent": true
+    },
+    {
+      "source": "/getting-started",
+      "destination": "/build/getting-started/app-architecture",
+      "permanent": true
     }
   ]
 }

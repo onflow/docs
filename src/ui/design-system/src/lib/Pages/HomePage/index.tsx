@@ -9,7 +9,6 @@ import {
   ContentNavigationList,
   type ContentNavigationListProps,
 } from "../../Components/ContentNavigationList"
-import {type FlipsProps} from "../../Components/Flips"
 import {type SocialLinksSignupProps} from "../../Components/SocialLinksSignup"
 import {type TutorialCardProps} from "../../Components/TutorialCard"
 import {type UpcomingEventsProps} from "../../Components/UpcomingEvents"
@@ -22,7 +21,6 @@ export type HomePageProps = SocialLinksSignupProps & {
   concepts?: TutorialCardProps[]
   homepageStartProjectData: HomepageStartItemProps[]
   contentNavigationListItems: ContentNavigationListProps
-  flips: FlipsProps
   upcomingEvents: UpcomingEventsProps
 }
 
@@ -39,7 +37,6 @@ const HomePage = ({
   homepageStartProjectData,
   contentNavigationListItems,
   discordUrl,
-  flips,
   githubUrl,
   upcomingEvents,
 }: HomePageProps): JSX.Element => {

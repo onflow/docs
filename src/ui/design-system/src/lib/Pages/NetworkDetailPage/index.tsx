@@ -3,7 +3,6 @@ import { endOfWeek } from 'date-fns'
 import ChevronLeftIcon from '../../../../images/arrows/chevron-left.svg'
 import {
   NetworkDetailsCard,
-  Pagination,
   SocialLinksSignup,
   SporksCard,
 } from '../../Components'
@@ -107,12 +106,6 @@ const NetworkDetailPage = ({
                 </div>
               ))}
             </div>
-            <Pagination
-              itemCount={40}
-              pageSize={4}
-              page={1}
-              setPage={() => null}
-            />
           </div>
         </PageSection>
         <PageSection>
