@@ -2,7 +2,6 @@ export { default as AnnouncementCard } from './AnnouncementCard';
 export { default as FeaturedArticleSlider } from './FeaturedArticleSlider';
 export { default as Flips } from './Flips';
 export { LandingHeaderHome } from './LandingHeaderHome';
-export { LargeVideoCard } from './VideoCard/LargeVideoCard';
 export { LinkCard2Column } from './LinkCard2Column';
 export { LinkCard3Column } from './LinkCard3Column';
 export { default as NetworkCard } from './NetworkCard';
