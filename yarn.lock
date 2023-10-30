@@ -11156,9 +11156,9 @@ typescript@*:
   integrity sha512-1FXk9E2Hm+QzZQ7z+McJiHL4NW1F2EzMu9Nq9i3zAaGqibafqYwCVU6WyWAuyQRRzOlxou8xZSyXLEN8oKj24g==
 
 typesense-docsearch-css@^0.4.0:
-  version "0.3.0"
-  resolved "https://registry.yarnpkg.com/typesense-docsearch-css/-/typesense-docsearch-css-0.4.0.tgz#3a91d379848c63f87e5d68a5855d09e35ff8996c"
-  integrity sha512-hVTJC1Rg2BnNB4kl2Qi4GcgjFmPZY8YGu0aJ5V6iM6vK62yvtE7jObnAc1maYOp33NWFVLPgl/9PlBfWBlN0Dw==
+  version "0.4.1"
+  resolved "https://registry.yarnpkg.com/typesense-docsearch-css/-/typesense-docsearch-css-0.4.1.tgz#457d4ad2d63021c7cc6e12081c378c0367a891c0"
+  integrity sha512-mN8K18pfIpCrhzsMAJBzoS7l/YDcC4P3f9vsScenUceXmC8n3FCPldmF10dKDJmK3Lr7aAScQt70jCA5126y2w==
 
 typesense-docsearch-react@^3.4.0:
   version "3.4.0"
