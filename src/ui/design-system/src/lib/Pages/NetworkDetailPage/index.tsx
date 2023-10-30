@@ -6,7 +6,6 @@ import {
   Pagination,
   SocialLinksSignup,
   SporksCard,
-  // TabMenu,
 } from '../../Components'
 import AppLink from '../../Components/AppLink'
 import { FeaturedArticle } from '../../Components/FeaturedArticleSlider'
@@ -53,7 +52,6 @@ const NetworkDetailPage = ({
               <ChevronLeftIcon /> Network
             </AppLink>
           </div>
-          {/* <TabMenu tabs={networks} centered /> */}
           <div className="text-h3 md:text-h1 mt-16 mb-14 pl-4 md:text-center md:text-5xl">
             {networkName}
           </div>

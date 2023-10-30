@@ -43,6 +43,8 @@ const HomePage = ({
   githubUrl,
   upcomingEvents,
 }: HomePageProps): JSX.Element => {
+
+  console.log({homepageStartProjectData})
   return (
     <PageBackground gradient='home'>
       <LandingHeaderHome
