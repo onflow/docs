@@ -671,49 +671,8 @@ pub fun borrowFooBarNFT(id: UInt64): &FooBar.NFT? {
 
 ### Contract Metadata
 
-For the contract level metadata, we need to create an interface that defines the required methods for the contract. First, let’s create it by adding a new file. In your terminal, run:
+For the contract level metadata, we need to create an interface that defines the required methods for the contract. Luckily, there is already a commonly used contract interface called `ViewResolver` deployed both to the Emulator and other networks. This interface requires a `getViews` and a `resolveViews` method. It is also deployed on [Testnet](https://testnet.contractbrowser.com/A.631e88ae7f1d7c20.ViewResolver) and [Mainnet](https://contractbrowser.com/A.1d7e57aa55817448.ViewResolver). You can find its address in the `flow.json` we generated with the `setup` command. To use it, return to your `FooBar` contract, import this new contract, and specify that `FooBar` should implement it.
 
-```bash
-touch cadence/contracts/ViewResolver.cdc
-```
-
-In it let’s add the following code, which says we need a `getViews` function and a `resolveView` function on our contract (just like we required on our NFT, but this time it’s for our contract):
-
-```cadence
-pub contract interface ViewResolver {
-
-    pub fun getViews(): [Type] {
-        return []
-    }
-
-    pub fun resolveView(_ view: Type): AnyStruct? {
-        return nil
-    }
-}
-```
-
-Next, we need do also add this to our `flow.json` config. Run:
-
-```bash
-flow config add contract
-```
-
-When prompted, enter the following name and location (press `Enter` to skip alias questions):
-
-```
-Enter name: ViewResolver
-Enter contract file location: cadence/contracts/ViewResolver.cdc
-```
-
-Next, configure the deployment settings by running the following command:
-
-```bash
-flow config add deployment
-```
-
-Like earlier in the guide, choose the `emulator` for the network and `emulator-account` for the account to deploy to. This time, select the `ViewResolver` contract (you may need to scroll down). After that, you can select `No` when asked to deploy another contract.
-
-Now, go back to your `FooBar` contract, import this new contract, and state that `FooBar` should implement it:
 
 ```cadence
 import "NonFungibleToken"
