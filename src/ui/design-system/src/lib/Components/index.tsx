@@ -9,6 +9,7 @@ export { default as NetworkDetailsCard } from './NetworkDetailsCard';
 export { default as NetworkDiscordCard } from './NetworkDiscordCard';
 export { default as Pagination } from './Pagination';
 export { default as RoundImage } from './RoundImage';
+export { default as SocialLinksSignup } from './SocialLinksSignup';
 export { default as SporksCard } from './SporksCard';
 export { default as Tag } from './Tag';
 export { UpcomingEvents } from './UpcomingEvents';
