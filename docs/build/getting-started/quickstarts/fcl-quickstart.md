@@ -4,7 +4,7 @@ sidebar_position: 3
 
 # Hello World Pt. 3 - Interacting with the Blockchain
 
-FCL, or Flow Client Library, is a JavaScript library developed to facilitate interactions with the Flow blockchain. It provides developers with tools to build, integrate, and interact with Flow directly from web applications. This web app quickstart will get you interacting with a contract already deployed to Flow.
+Flow Client Library (FCL), is a JavaScript library developed to facilitate interactions with the Flow blockchain. It provides developers with tools to build, integrate, and interact with Flow directly from web applications. This web app quickstart will get you interacting with a contract already deployed to Flow.
 
 For this tutorial, we're going to be making a [React](https://react.dev/learn) app with [Create React App](https://create-react-app.dev/). We'll try and keep the code as simple as possible in case you're coming from another framework.
 

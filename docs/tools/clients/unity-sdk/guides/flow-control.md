@@ -55,7 +55,7 @@ The "+" button at the top will add a blank account entry for you to fill in.  Th
 
 The emulator_service_account account will be created/updated each time you start the emulator so that it will always be valid.
 
-If it is a Testnet account, a link to the Testnet Flowscan page for that account will be provided.  Clicking on it will open the page in your default browser.
+If it is a Testnet account, a link to the Testnet Flowdiver page for that account will be provided.  Clicking on it will open the page in your default browser.
 
 ## FlowControl Text Replacement
 
@@ -89,7 +89,7 @@ Contract is the cadence contract file that you want to deploy.
 
 Account is the account that should deploy the contract.  The contract will be deployed to the same network that the account gateway uses.
 
-The Deploy Contract button will attempt to deploy the contract.  Check the emulator logs or flowscan.org to monitor the progress of deployment and check for errors.
+The Deploy Contract button will attempt to deploy the contract.  Check the emulator logs or flowdiver.io to monitor the progress of deployment and check for errors.
 
 The Update Contract button will attempt to update an existing contract.  There are rules as to what can change in a contract for an update to be accepted.  See [cadence/language/contract-updatability](https://cadence-lang-docs-git-fix-links-versions-onflow.vercel.app/docs/0.42/language/contract-updatability) for more information.
 

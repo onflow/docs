@@ -177,7 +177,7 @@ If you’re already familiar with blockchain development, here's a comparison be
 - [hardhat](https://hardhat.org/) / [Truffle](https://trufflesuite.com/) / [Foundry](https://github.com/foundry-rs/foundry)
     - [Flow CLI](https://github.com/onflow/flow-cli/) provides local development tools and the [Flow Emulator](https://github.com/onflow/flow-emulator)
 - [OpenZeppelin](https://www.openzeppelin.com/)
-    - No equivalent, you can pick contracts from any core Flow contract repository
+    - [Emerald OZ](https://oz.ecdao.org/overview)
 - [go-ethereum](https://geth.ethereum.org/)
     - [Flow Go SDK](https://github.com/onflow/flow-go-sdk/)
     - [FCL](https://github.com/onflow/fcl-js/) also provides Backend API for Flow in JS

@@ -4,7 +4,7 @@ sidebar_position: 2
 
 # Hello World Pt. 2 - Local Development
 
-The Flow CLI (Command Line Interface) is a set of tools that developers can use to interact with the Flow blockchain by managing accounts, sending transactions, deploying smart contracts, running the emulator, and more. This quickstart will get you familiar with its main concepts and functionality.
+The Flow Command Line Interface (CLI) is a set of tools that developers can use to interact with the Flow blockchain by managing accounts, sending transactions, deploying smart contracts, running the emulator, and more. This quickstart will get you familiar with its main concepts and functionality.
 
 ## Installation
 
@@ -18,7 +18,7 @@ For other ways of installing, please [refer to the installation guide](../../../
 
 ## Configuration
 
-Let's first create a directory, then setup a project.
+Let's first create a directory, then set up a project.
 
 ```
 mkdir cli-quickstart
@@ -30,13 +30,13 @@ And then let's navigate to our new directory:
 cd cli-quickstart
 ```
 
-Let's first create a `flow.json` file for our project (we'll use this in a later step, but this is a good spot to bring it up). The `flow.json` file is a configuration file used by the Flow CLI when interacting with the Flow blockchain. It helps manage various project-specific settings, such as network configurations, account details, contract names and source files, and deployment targets. To create one, run:
+Let's first create a `flow.json` file for our project. We'll use this in a later step, but this is a good spot to bring it up. The `flow.json` file is a configuration file used by the Flow CLI when interacting with the Flow blockchain. It helps manage various project-specific settings, such as network configurations, account details, contract names and source files, and deployment targets. To create one, run:
 
 ```
 flow init
 ```
 
-If you look at `flow.json` now you'll see it's listed access nodes for networks and accounts. The default `emulator-account` create will come in handy when we want to run the emulator.
+If you look at `flow.json` now, you'll see its listed access nodes for networks and accounts. The default `emulator-account` create will come in handy when we want to run the emulator.
 
 ## Running Scripts
 
@@ -118,7 +118,7 @@ Next we'll add a contracts section to our `flow.json` configuration that will de
 }
 ```
 
-We're also going to change the imports of our script so that there are no hardcoded network specific addresses. The CLI can figure out how to interact with the network (ie. emulator, testnet or mainnet) based on our configuration.
+We're also going to change the imports of our script so that there are no hardcoded network specific addresses. The CLI can figure out how to interact with the network (i.e. emulator, testnet or mainnet) based on our configuration.
 
 ```
 // script.cdc
@@ -166,9 +166,9 @@ flow scripts execute script.cdc --network emulator
 
 ## Creating an Account and Running a Transaction
 
-To change state on the Flow Blockchain, you need to run a transaction. Let's create a simple transaction file, we can use to modify the `greeting` on the `HelloWorld` contract.
+To change state on the Flow Blockchain, you need to run a transaction. Let's create a simple transaction file. We can use to modify the `greeting` on the `HelloWorld` contract.
 
-First, create file called `transaction.cdc` from the root of your project:
+First, create a file called `transaction.cdc` from the root of your project:
 
 ```
 touch transaction.cdc
@@ -191,9 +191,9 @@ transaction(greeting: String) {
 }
 ```
 
-This will log the account signing the transaction and call the `changeGreeting` method of the `HelloWorld` contract, and pass in the new greeting. (If you want to learn more about writing transactions, please [read here](../../basics/transactions.md)).
+This will log the account signing the transaction, call the `changeGreeting` method of the `HelloWorld` contract, and pass in the new greeting. (If you want to learn more about writing transactions, please [read here](../../basics/transactions.md)).
 
-In order to run a transaction, the signing account needs to pay for it. We could run a transaction on emulator using the default `emulator-account` account, let's learn one more command for creating accounts.
+In order to run a transaction, the signing account needs to pay for it. We could run a transaction on emulator using the default `emulator-account` account. Let's learn one more command for creating accounts.
 
 The easiest way to create an account using CLI is by running (remember, your emulator should still be running at this point in another terminal):
 

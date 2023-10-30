@@ -344,8 +344,8 @@ const config = {
                 label: 'FCL',
               },
               {
-                to: '/tools/flow-js-testing/',
-                label: 'JS Testing Library',
+                to: '/build/getting-started/testing',
+                label: 'Testing',
               },
               {
                 to: '/tools/flow-cli/',
@@ -431,12 +431,12 @@ const config = {
                 label: 'Network Status',
               },
               {
-                href: 'https://flowscan.org/',
-                label: 'Flowscan Mainnet',
+                href: 'https://flowdiver.io/',
+                label: 'Flowdiver Mainnet',
               },
               {
-                href: 'https://testnet.flowscan.org/',
-                label: 'Flowscan Testnet',
+                href: 'https://testnet.flowdiver.io/',
+                label: 'Flowdiver Testnet',
               },
               {
                 to: '/references/run-and-secure/node-operation/past-sporks/',

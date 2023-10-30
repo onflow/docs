@@ -324,7 +324,7 @@ Some exchanges require payment of listing fees, but many do not. As a result, ma
 While this guide does not cover the technicals of creating your fungible token, please find a couple of resources that may be helpful as you get ready to launch your token: 
 
 - [Flow Token List](https://github.com/FlowFans/flow-token-list) - How to add a token to the Flow native token list
-- [Flowscan Request Form](https://docs.google.com/forms/d/e/1FAIpQLSdMiIkj2goF3Ib7wJHRb-YNvruwBghq1NP1IOfz4p2smIFp0w/viewform) - Please fill this out to update your token metadata on Flowscan
+- [Flowdiver Request Form](https://docs.google.com/forms/d/e/1FAIpQLSdMiIkj2goF3Ib7wJHRb-YNvruwBghq1NP1IOfz4p2smIFp0w/viewform) - Please fill this out to update your token metadata on Flowdiver
 - [Flow Developer Portal](/) - Documentation, guides, and resources for developers building on Flow
 
 ## Final Words
