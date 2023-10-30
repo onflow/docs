@@ -718,7 +718,7 @@ pub fun getViews(): [Type] {
 }
 ```
 
-Finally, we need a way to get read this data like we did with the NFT. Let’s also make a `borrowViewResolver` function that we add below the `borrowFooBarNFT` method inside of the `Collection`:
+Finally, we need a way to read this data like we did with the NFT. Let’s also make a `borrowViewResolver` function that we add below the `borrowFooBarNFT` method inside of the `Collection`:
 
 ```cadence
 pub resource Collection: NonFungibleToken.Provider, NonFungibleToken.Receiver, NonFungibleToken.CollectionPublic, MetadataViews.ResolverCollection {
