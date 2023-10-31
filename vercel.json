@@ -53,11 +53,6 @@
       "permanent": true
     },
     {
-      "source": "/flow/faq/:path*",
-      "destination": "/references/run-and-secure/faq/:path*",
-      "permanent": true
-    },
-    {
       "source": "/flow/flow-ft/:path*",
       "destination": "/concepts/token-standards/flow-ft/:path*",
       "permanent": true
@@ -139,7 +134,7 @@
     },
     {
       "source": "/learn/concepts/delegation",
-      "destination": "/references/run-and-secure/delegation",
+      "destination": "/references/run-and-secure/staking",
       "permanent": true
     },
     {
@@ -164,7 +159,7 @@
     },
     {
       "source": "/learn/concepts/token-staking",
-      "destination": "/references/run-and-secure/token-staking",
+      "destination": "/references/run-and-secure/staking",
       "permanent": true
     },
     {
@@ -224,12 +219,12 @@
     },
     {
       "source": "/nodes/flow-port",
-      "destination": "/references/run-and-secure/flow-port",
+      "destination": "/references/run-and-secure/nodes/flow-port",
       "permanent": true
     },
     {
       "source": "/nodes/flow-port/staking-guide",
-      "destination": "/references/run-and-secure/flow-port/staking-guide",
+      "destination": "/references/run-and-secure/nodes/flow-port/staking-guide",
       "permanent": true
     },
     {
@@ -294,7 +289,7 @@
     },
     {
       "source": "/flow/faq",
-      "destination": "/references/run-and-secure/faq/backers",
+      "destination": "/references/run-and-secure/nodes/faq/backers",
       "permanent": true
     },
     {
@@ -369,7 +364,7 @@
     },
     {
       "source": "/flow-token/backers",
-      "destination": "/references/run-and-secure/faq/backers",
+      "destination": "/references/run-and-secure/nodes/faq/backers",
       "permanent": true
     },
     {
@@ -399,7 +394,7 @@
     },
     {
       "source": "/flow-port/:path*",
-      "destination": "/references/run-and-secure/flow-port/:path*",
+      "destination": "/references/run-and-secure/nodes/flow-port/:path*",
       "permanent": true
     },
     {
@@ -1164,6 +1159,16 @@
     {
       "source": "/build/key-concepts/:path*",
       "destination": "/build/basics/:path*",
+      "permanent": true
+    },
+    {
+      "source": "/references/run-and-secure/flow-port/:path*",
+      "destination": "/references/run-and-secure/nodes/flow-port/:path*",
+      "permanent": true
+    },
+    {
+      "source": "/flow/faq/:path*",
+      "destination": "/references/run-and-secure/nodes/faq/:path*",
       "permanent": true
     }
   ]
