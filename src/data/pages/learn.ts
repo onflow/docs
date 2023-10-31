@@ -19,6 +19,9 @@ import {
   redSquirrelGetStartedArticle,
   revolutionizeSmartContractProgramming,
   zeroToJacobFlow,
+  quicknodeCreateNFTCollection,
+  quicknodeAccountAbstraction,
+  quicknodeDeploySmartContract,
 } from '../../data/articles';
 import { type VideoCardErrorProps } from '@site/src/ui/design-system/src/lib/Components/VideoCard/VideoCardError';
 export interface LargeVideoCardProps {
@@ -33,6 +36,7 @@ export interface SmallVideoCardProps extends LargeVideoCardProps {
 }
 
 export const cadenceTutorials: TutorialCardProps[] = [
+  quicknodeDeploySmartContract,
   cadenceAtAGlance,
   playgroundTutorials,
   organizingCadenceTutorial,
@@ -45,6 +49,7 @@ export const cadenceTutorials: TutorialCardProps[] = [
 ];
 
 export const nftTutorials: TutorialCardProps[] = [
+  quicknodeCreateNFTCollection,
   NBATopShotExample,
   redSquirrelGetStartedArticle,
   flowNFTPetStore,
@@ -52,6 +57,7 @@ export const nftTutorials: TutorialCardProps[] = [
 ];
 
 export const architectureTutorials: TutorialCardProps[] = [
+  quicknodeAccountAbstraction,
   introToFlow,
   flowMultiNodeArchitecture,
   getTheFlowDown,
