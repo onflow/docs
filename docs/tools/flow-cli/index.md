@@ -2,7 +2,7 @@
 sidebar_position: 2
 title: Flow CLI
 sidebar_label: Flow CLI
-------
+---
 
 ## Installation
 
@@ -42,7 +42,7 @@ So proceed by starting the emulator:
 
 ```
 > flow emulator
-``
+```
 
 After creating your new project you are ready to start writing contracts. The Flow emulator is a simplified local simulation of the Flow network. Running the dev command in the CLI ensures that the contracts are deployed to the Flow emulator for you.
 
