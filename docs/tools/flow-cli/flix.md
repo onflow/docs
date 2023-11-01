@@ -1,7 +1,7 @@
 ---
-title: Flow Interaction Templates (FLIX) via the CLI
+title: Flow Interaction Templates (FLIX)
 sidebar_label: Flow Interaction Templates (FLIX)
-description: Flow Interaction Templates (FLIX) on Flow from the command line
+description: Flow Interaction Templates (FLIX) via the CLI
 sidebar_position: 12
 ---
 ## Introduction
@@ -52,7 +52,7 @@ flow flix execute ./multiply.template.json 2 3 --network testnet
 The Flow CLI provides a `flix` command to `package` up generated plain and simple JavaScript. This JavaScript uses FCL (Flow Client Library) to call the cadence the Flow Interaction Templates (FLIX) is based on. 
 
 <Callout type="info">
-Currently, flix `package` command only supports generating FCL (Flow Client Library) specific JavaScript, there are plans to support other languages like golang.
+Currently, `flix package` command only supports generating FCL (Flow Client Library) specific JavaScript, there are plans to support other languages like golang.
 </Callout>
 
 
@@ -62,7 +62,7 @@ flow flix package <query> [flags]
 
 ## Package
 
-Queries can be a FLIX `id`, `name`, or `path` to a local FLIX file. This command leverages [@onflow/fcl](https://www.npmjs.com/package/@onflow/fcl) to ingest a template that has Cadence code. 
+Queries can be a FLIX `id`, `name`, or `path` to a local FLIX file. This command leverages [FCL](../clients/fcl-js/) which will execute FLIX cadence code. 
 
 ### Package Usage
 
