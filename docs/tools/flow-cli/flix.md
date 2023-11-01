@@ -4,16 +4,33 @@ sidebar_title: Execute, Package FLIX
 description: Flow Interaction Templates (FLIX) on Flow from the command line
 sidebar_position: 12
 ---
+## Introduction
+
+The Flow CLI provides a `flix` command with a few sub commands `execute` and `package`. Get familiar with Flow Interaction Templates [(FLIX)](https://github.com/onflow/flips/blob/main/application/20220503-interaction-templates.md). FLIX are a standard for distributing Cadence scripts and transactions, and metadata in a way that is consumable by tooling and wallets. FLIX can be audited for correctness and safety by auditors in the ecosystem.
+
+```shell
+>flow flix
+execute, package
+
+Usage:
+  flow flix [command]
+
+Available Commands:
+  execute     execute FLIX template with a given id, name, or local filename
+  package     package file for FLIX template fcl-js is default
+
+
+```
 
 ### Execute
 
-The Flow CLI provides a `flix` command to `execute` Flow Interaction Templates (FLIX). FLIX are a standard for distributing Cadence scripts and transactions, and metadata in a way that is consumable by tooling and wallets. FLIX can be audited for correctness and safety by auditors in the ecosystem.
+The Flow CLI provides a `flix` command to `execute` FLIX. The Cadence being execute in the FLIX can be a transaciton or script.
 
 ```shell
 flow flix execute <query> [<argument> <argument>...] [flags]
 ```
 
-Queries can be a FLIX id, name, or path to a local FLIX file.
+Queries can be a FLIX `id`, `name`, or `path` to a local FLIX file.
 
 ### Execute Usage
 
@@ -32,10 +49,10 @@ flow flix execute bd10ab0bf472e6b58ecc0398e9b3d1bd58a4205f14a7099c52c0640d958929
 flow flix execute ./multiply.template.json 2 3 --network testnet
 ```
 
-The Flow CLI provides a `flix` command to `package` up generated plain and simple javascript. This javascript uses fcl-js to call the cadence the Flow Interaction Templates (FLIX) is based on. 
+The Flow CLI provides a `flix` command to `package` up generated plain and simple JavaScript. This JavaScript uses FCL (Flow Client Library) to call the cadence the Flow Interaction Templates (FLIX) is based on. 
 
 <Callout type="info">
-Currently flix package command only supports generating fcl-js specific javascript, there are plans to support other languages like golang.
+Currently, flix `package` command only supports generating FCL (Flow Client Library) specific JavaScript, there are plans to support other languages like golang.
 </Callout>
 
 
@@ -45,12 +62,12 @@ flow flix package <query> [flags]
 
 ## Package
 
-Queries can be a FLIX id, name, or path to a local FLIX file.
+Queries can be a FLIX `id`, `name`, or `path` to a local FLIX file. This command leverages [@onflow/fcl](https://www.npmjs.com/package/@onflow/fcl) to ingest a template that has Cadence code. 
 
 ### Package Usage
 
 ```shell
-# Generate fcl-js package code that will call the FLIX transaction cadence, save the output to a specific file
+# Generate packaged code that leverages FCL to call the Cadence transaction code, `--save` flag will save the output to a specific file
 flow flix package transfer-flow --save ./package/transfer-flow.js
 ```
 
@@ -62,6 +79,39 @@ flow flix package bd10ab0bf472e6b58ecc0398e9b3d1bd58a4205f14a7099c52c0640d958929
 ```shell
 # Generate package code using local template file to save in a local file 
 flow flix package ./multiply.template.json --save ./multiply.js
+```
+
+### Example package output
+```shell
+flow flix package transfer-flow
+```
+
+```javascript
+
+/**
+    This binding file was auto generated based on FLIX template v1.0.0. 
+    Changes to this file might get overwritten.
+    Note fcl version 1.3.0 or higher is required to use templates. 
+**/
+
+import * as fcl from "@onflow/fcl"
+const flixTemplate = "transfer-flow"
+
+/**
+* Transfer tokens from one account to another
+* @param {Object} Parameters - parameters for the cadence
+* @param {string} Parameters.amount - The amount of FLOW tokens to send: UFix64
+* @param {string} Parameters.to - The Flow account the tokens will go to: Address
+* @returns {Promise<string>} - returns a promise which resolves to the transaction id
+*/
+export async function transferTokens({amount, to}) {
+  const transactionId = await fcl.mutate({
+    template: flixTemplate,
+    args: (arg, t) => [arg(amount, t.UFix64), arg(to, t.Address)]
+  });
+
+  return transactionId
+}
 ```
 
 <Callout type="info">
@@ -77,14 +127,14 @@ For a list of all templates, check out the [FLIX template repository](https://gi
 
 To generate a FLIX, see the [FLIX CLI readme](https://github.com/onflow/flow-interaction-template-tools/tree/master/cli).
 
-## Arguments for both execute and package
+## Arguments
 - Name: `argument`
 - Valid input: valid [FLIX](https://github.com/onflow/flips/blob/main/application/20220503-interaction-templates.md)  
 
 Input argument value matching corresponding types in the source code and passed in the same order.
 You can pass a `nil` value to optional arguments by executing the flow flix execute script like this: `flow flix execute template.json nil`.
 
-## Flags for executing transactions and scripts
+## Flags
 
 ### Arguments JSON
 
