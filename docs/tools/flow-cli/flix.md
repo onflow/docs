@@ -1,6 +1,6 @@
 ---
-title: Flow Interaction Templates (FLIX)
-sidebar_title: Execute, Package FLIX
+title: Flow Interaction Templates (FLIX) via the CLI
+sidebar_label: Flow Interaction Templates (FLIX)
 description: Flow Interaction Templates (FLIX) on Flow from the command line
 sidebar_position: 12
 ---
@@ -115,7 +115,7 @@ export async function transferTokens({amount, to}) {
 ```
 
 <Callout type="info">
-SOON: flix `generate` will generate FLIX json files using flix properties in comment blocks directly in Cadence code, [FLIP - Interaction Template Cadence Doc](https://github.com/onflow/flips/pull/80)
+SOON: `flix generate` will generate FLIX json files using FLIX specific properties in comment blocks directly in Cadence code, [FLIP - Interaction Template Cadence Doc](https://github.com/onflow/flips/pull/80)
 </Callout>
 
 
@@ -132,7 +132,7 @@ To generate a FLIX, see the [FLIX CLI readme](https://github.com/onflow/flow-int
 - Valid input: valid [FLIX](https://github.com/onflow/flips/blob/main/application/20220503-interaction-templates.md)  
 
 Input argument value matching corresponding types in the source code and passed in the same order.
-You can pass a `nil` value to optional arguments by executing the flow flix execute script like this: `flow flix execute template.json nil`.
+You can pass a `nil` value to optional arguments by executing the flow FLIX execute script like this: `flow flix execute template.json nil`.
 
 ## Flags
 
