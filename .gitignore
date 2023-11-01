@@ -47,3 +47,7 @@ versioned_docs/version-stable/guides
 versioned_docs/version-stable/node-ops
 versioned_docs/version-stable/tutorials
 versioned_docs/version-stable/getting-started
+/test-results/
+/playwright-report/
+/blob-report/
+/playwright/.cache/
