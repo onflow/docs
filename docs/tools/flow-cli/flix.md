@@ -81,7 +81,7 @@ flow flix package bd10ab0bf472e6b58ecc0398e9b3d1bd58a4205f14a7099c52c0640d958929
 flow flix package ./multiply.template.json --save ./multiply.js
 ```
 
-### Example package output
+### Example Package Output
 ```shell
 flow flix package transfer-flow
 ```
