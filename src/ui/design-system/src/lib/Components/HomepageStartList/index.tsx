@@ -13,7 +13,7 @@ export function HomepageStartList ({ items }: HomepageStartListProps) {
         Start Building Today
       </HeaderWithLink>
       <div
-        className={`grid grid-cols-1 gap-4 md:grid-cols-${items.length} md:gap-8`}
+        className={`grid grid-cols-1 gap-4 md:grid-cols-3 md:gap-8`}
       >
         {items.map((itemData: HomepageStartItemProps, index: number) => (
           <HomepageStartItem key={index} {...itemData} />

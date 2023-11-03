@@ -1,34 +1,123 @@
 ---
-title: Execute Flow Interaction Templates (FLIX) with the Flow CLI
-sidebar_title: Execute FLIX
-description: How to execute Flow Interaction Templates (FLIX) on Flow from the command line
+title: Flow Interaction Templates (FLIX)
+sidebar_label: Flow Interaction Templates (FLIX)
+description: Flow Interaction Templates (FLIX) via the CLI
 sidebar_position: 12
 ---
+## Introduction
 
-The Flow CLI provides a command to execute Flow Interaction Templates (FLIX). FLIX are an easy way to interact with Flow. They are a standard for distributing Cadence scripts and transactions, and metadata about them, in a way that is consumable by tooling and wallets. FLIX are audited for correctness and safety by an ecosystem of auditors.
+The Flow CLI provides a `flix` command with a few sub commands `execute` and `package`. Get familiar with Flow Interaction Templates [(FLIX)](https://github.com/onflow/flips/blob/main/application/20220503-interaction-templates.md). FLIX are a standard for distributing Cadence scripts and transactions, and metadata in a way that is consumable by tooling and wallets. FLIX can be audited for correctness and safety by auditors in the ecosystem.
 
 ```shell
-flow flix <query> [<argument> <argument>...] [flags]
+>flow flix
+execute, package
+
+Usage:
+  flow flix [command]
+
+Available Commands:
+  execute     execute FLIX template with a given id, name, or local filename
+  package     package file for FLIX template fcl-js is default
+
+
 ```
 
-Queries can be a FLIX id, name, or path to a local FLIX file.
+### Execute
 
-## Example Usage
+The Flow CLI provides a `flix` command to `execute` FLIX. The Cadence being execute in the FLIX can be a transaciton or script.
+
+```shell
+flow flix execute <query> [<argument> <argument>...] [flags]
+```
+
+Queries can be a FLIX `id`, `name`, or `path` to a local FLIX file.
+
+### Execute Usage
 
 ```shell
 # Execute a FLIX transaction by name on Testnet
-flow flix transfer-flow 5.0 "0x123" --network testnet --signer "testnet-account"
+flow flix execute transfer-flow 5.0 "0x123" --network testnet --signer "testnet-account"
 ```
 
 ```shell
 # Execute a FLIX script by id on Testnet
-flow flix bd10ab0bf472e6b58ecc0398e9b3d1bd58a4205f14a7099c52c0640d9589295f --network testnet
+flow flix execute bd10ab0bf472e6b58ecc0398e9b3d1bd58a4205f14a7099c52c0640d9589295f --network testnet
 ```
 
 ```shell
 # Execute a local FLIX script by path on Testnet
-flow flix ./multiply.template.json 2 3 --network testnet
+flow flix execute ./multiply.template.json 2 3 --network testnet
 ```
+
+The Flow CLI provides a `flix` command to `package` up generated plain and simple JavaScript. This JavaScript uses FCL (Flow Client Library) to call the cadence the Flow Interaction Templates (FLIX) is based on. 
+
+<Callout type="info">
+Currently, `flix package` command only supports generating FCL (Flow Client Library) specific JavaScript, there are plans to support other languages like golang.
+</Callout>
+
+
+```shell
+flow flix package <query> [flags]
+```
+
+## Package
+
+Queries can be a FLIX `id`, `name`, or `path` to a local FLIX file. This command leverages [FCL](../clients/fcl-js/) which will execute FLIX cadence code. 
+
+### Package Usage
+
+```shell
+# Generate packaged code that leverages FCL to call the Cadence transaction code, `--save` flag will save the output to a specific file
+flow flix package transfer-flow --save ./package/transfer-flow.js
+```
+
+```shell
+# Geneate package code for a FLIX script using id, since there is no saving file, the result will display in terminal
+flow flix package bd10ab0bf472e6b58ecc0398e9b3d1bd58a4205f14a7099c52c0640d9589295f 
+```
+
+```shell
+# Generate package code using local template file to save in a local file 
+flow flix package ./multiply.template.json --save ./multiply.js
+```
+
+### Example Package Output
+```shell
+flow flix package transfer-flow
+```
+
+```javascript
+
+/**
+    This binding file was auto generated based on FLIX template v1.0.0. 
+    Changes to this file might get overwritten.
+    Note fcl version 1.3.0 or higher is required to use templates. 
+**/
+
+import * as fcl from "@onflow/fcl"
+const flixTemplate = "transfer-flow"
+
+/**
+* Transfer tokens from one account to another
+* @param {Object} Parameters - parameters for the cadence
+* @param {string} Parameters.amount - The amount of FLOW tokens to send: UFix64
+* @param {string} Parameters.to - The Flow account the tokens will go to: Address
+* @returns {Promise<string>} - returns a promise which resolves to the transaction id
+*/
+export async function transferTokens({amount, to}) {
+  const transactionId = await fcl.mutate({
+    template: flixTemplate,
+    args: (arg, t) => [arg(amount, t.UFix64), arg(to, t.Address)]
+  });
+
+  return transactionId
+}
+```
+
+<Callout type="info">
+SOON: `flix generate` will generate FLIX json files using FLIX specific properties in comment blocks directly in Cadence code, [FLIP - Interaction Template Cadence Doc](https://github.com/onflow/flips/pull/80)
+</Callout>
+
 
 ## Resources
 
@@ -40,11 +129,10 @@ To generate a FLIX, see the [FLIX CLI readme](https://github.com/onflow/flow-int
 
 ## Arguments
 - Name: `argument`
-- Valid inputs: valid [cadence values](https://cadence-lang-docs-git-fix-links-versions-onflow.vercel.app/docs/0.42/json-cadence-spec)
-  matching argument type in script code.
+- Valid input: valid [FLIX](https://github.com/onflow/flips/blob/main/application/20220503-interaction-templates.md)  
 
-Input arguments values matching corresponding types in the source code and passed in the same order.
-You can pass a `nil` value to optional arguments by executing the flow script like this: `flow scripts execute script.cdc nil`.
+Input argument value matching corresponding types in the source code and passed in the same order.
+You can pass a `nil` value to optional arguments by executing the flow FLIX execute script like this: `flow flix execute template.json nil`.
 
 ## Flags
 
@@ -52,7 +140,7 @@ You can pass a `nil` value to optional arguments by executing the flow script li
 
 - Flag: `--args-json`
 - Valid inputs: arguments in JSON-Cadence form.
-- Example: `flow scripts execute script.cdc '[{"type": "String", "value": "Hello World"}]'`
+- Example: `flow flix execute template.script.json '[{"type": "String", "value": "Hello World"}]'`
 
 Arguments passed to the Cadence script in the Cadence JSON format.
 Cadence JSON format contains `type` and `value` keys and is 
@@ -95,16 +183,6 @@ Specify the name of the account that will be used as payer in the transaction.
 - Valid inputs: the name of a single or multiple comma-separated accounts defined in the configuration (`flow.json`)
 
 Specify the name of the account(s) that will be used as authorizer(s) in the transaction. If you want to provide multiple authorizers separate them using commas (e.g. `alice,bob`)
-
-### Arguments JSON
-
-- Flag: `--args-json`
-- Valid inputs: arguments in JSON-Cadence form.
-- Example: `flow transactions send ./tx.cdc '[{"type": "String", "value": "Hello World"}]'`
-
-Arguments passed to the Cadence transaction in Cadence JSON format.
-Cadence JSON format contains `type` and `value` keys and is 
-[documented here](https://cadence-lang-docs-git-fix-links-versions-onflow.vercel.app/docs/0.42/json-cadence-spec).
 
 ### Gas Limit
 
