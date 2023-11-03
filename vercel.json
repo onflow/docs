@@ -1170,6 +1170,11 @@
       "source": "/flow/faq/:path*",
       "destination": "/references/run-and-secure/nodes/faq/:path*",
       "permanent": true
+    },
+    {
+      "source": "/getting-started",
+      "destination": "/build/getting-started/app-architecture",
+      "permanent": true
     }
   ]
 }
