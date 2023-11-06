@@ -23,10 +23,10 @@ To get started with Cadence, we recommended covering the introductory tutorials 
 
 To build confidently, you will want to set up the appropriate local environment and have an adequate test suite to ensure your smart contracts operate as intended. To do this, familiarize yourself with the following tools:
 
-- [Flow CLI](../../tools/flow-cli/): A utility to directly interact with the chain and manage accounts and contracts.
-- [Flow Emulator](../../tools/emulator/): A lightweight server that simulates the Flow blockchain (strongly recommended during development).
+- [Flow CLI](../../tools/flow-cli/index.md): A utility to directly interact with the chain and manage accounts and contracts.
+- [Flow Emulator](../../tools/emulator/index.md): A lightweight server that simulates the Flow blockchain (strongly recommended during development).
 - [Flow Dev Wallet](https://github.com/onflow/fcl-dev-wallet/): A utility to simulate user wallets in development.
-- [Visual Studio Code Extension](../../tools/vscode-extension/): An IDE integration for developing smart contracts.
+- [Visual Studio Code Extension](../../tools/vscode-extension/index.mdx): An IDE integration for developing smart contracts.
 - [JS Testing Framework](https://github.com/onflow/flow-js-testing): A framework to test your smart contracts.
 
 ## Storing Data on Flow
