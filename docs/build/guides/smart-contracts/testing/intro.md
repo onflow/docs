@@ -5,14 +5,14 @@ Testing is an essential part of smart contract development to ensure the correct
 
 ## Install Flow CLI
 
-The [Flow CLI](../../tools/flow-cli/index.md) is the primary tool for developing, testing, and deploying smart contracts to the Flow network.
+The [Flow CLI](../../../../tools/flow-cli/index.md) is the primary tool for developing, testing, and deploying smart contracts to the Flow network.
 
-If you haven't installed the Flow CLI yet and have [homebrew](https://brew.sh/) installed, simply run `brew install flow-cli`. Alternatively, refer to the Flow CLI [installation instructions](../../tools/flow-cli/install.md).
+If you haven't installed the Flow CLI yet and have [homebrew](https://brew.sh/) installed, simply run `brew install flow-cli`. Alternatively, refer to the Flow CLI [installation instructions](../../../../tools/flow-cli/install.md).
 
 ## Create a new project
 
 In your preferred code editor, create a new directory for your project and navigate to it in the terminal. Then 
-initialize a new Flow project by running the command `flow init`. This will create a `flow.json` file that contains the [project configuration](../../tools/flow-cli/flow.json/configuration.md).
+initialize a new Flow project by running the command `flow init`. This will create a `flow.json` file that contains the [project configuration](../../../../tools/flow-cli/flow.json/configuration.md).
 
 ```bash
 mkdir test-cadence
@@ -95,7 +95,7 @@ The Cadence testing framework provides various features and techniques for writi
 
 - [**Code Coverage**](https://github.com/m-Peter/flow-code-coverage): You can use the `--cover` flag with the `flow test` command to view code coverage results when running your tests. This allows you to identify areas of your code that are not adequately covered by your test inputs;
 - **Test Fixtures**: Test fixtures are reusable components that help you set up the initial state for your test cases. You can create test fixtures in Cadence by defining resource types and using them in your test functions;
-- [**Assertions**](../../cadence/testing-framework.mdx#assertions): The testing framework provides built-in assertion functions, such as `assertEqual`, `beNil`, `beEmpty`, `contain`, to help you verify the expected behavior of your smart contracts;
+- [**Assertions**](./testing-framework.md#assertions): The testing framework provides built-in assertion functions, such as `assertEqual`, `beNil`, `beEmpty`, `contain`, to help you verify the expected behavior of your smart contracts;
 - **Test Suites**: You can organize your test cases into test suites to improve the readability and maintainability of your test code. Test suites allow you to group related test cases and set up common test fixtures for all the tests in the suite.
 - [**Integration tests**](https://github.com/bjartek/overflow): You can use [Overflow tool](https://github.com/bjartek/overflow) to run integration tests against either an local emulator, testnet, mainnet or an in memory instance of the flow-emulator.
 
@@ -103,9 +103,9 @@ By leveraging these advanced testing techniques, you can write more robust and r
 
 This is a basic example, and there are many more advanced features and techniques you can explore when working with the Cadence Testing Framework. 
 
-For more in-depth tutorials and documentation, refer to the official [Cadence language documentation](https://cadencelang.org/) and the [Flow CLI documentation](../../tools/flow-cli/index.md).
+For more in-depth tutorials and documentation, refer to the official [Cadence language documentation](https://cadencelang.org/) and the [Flow CLI documentation](../../../../tools/flow-cli/index.md).
 
 ## References
 
-- [Reference documentation for Cadence testing](../../cadence/testing-framework.mdx)
+- [Reference documentation for Cadence testing](./testing-framework.md)
 - https://github.com/bjartek/overflow
