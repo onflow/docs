@@ -267,12 +267,6 @@ const config = {
             activeBasePath: '/build',
           },
           {
-            to: 'guides/flow-app-quickstart',
-            position: 'left',
-            label: 'Guides',
-            activeBasePath: '/guides',
-          },
-          {
             to: 'cadence/intro',
             position: 'left',
             label: 'Cadence',

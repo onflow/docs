@@ -11,7 +11,7 @@ Testing is an essential part of the development workflow and code coverage is an
 Good test coverage is vital for assuring code quality.
 
 <Callout type="success">
-Leverage [Flow emulator](../../tools/emulator/index.md) to automate test runs. Test on Flow testnet. Include unit tests; to exercise each feature, and integration tests; to exercise the behavior of different parts of the project as a whole.
+Leverage [Flow emulator](../../../tools/emulator/index.md) to automate test runs. Test on Flow testnet. Include unit tests; to exercise each feature, and integration tests; to exercise the behavior of different parts of the project as a whole.
 The emulator can also provide [code coverage](https://github.com/m-Peter/flow-code-coverage#for-emulator) insights.
 </Callout>
 
@@ -39,10 +39,10 @@ In all three cases, the test code will need to deploy the contracts, configure a
 ### Cadence tests
 
 Cadence comes with built-in support for code coverage, as well as a native testing framework which allows developers to write their tests using Cadence.
-This framework is bundled with the [Flow CLI](../../tools/flow-cli/index.md) tool, which includes a dedicated command for running tests (`flow test`).
+This framework is bundled with the [Flow CLI](../../../tools/flow-cli/index.md) tool, which includes a dedicated command for running tests (`flow test`).
 
 You can find examples of Cadence tests in the following projects: [hybrid-custody](https://github.com/onflow/hybrid-custody/tree/main/test), [flow-nft](https://github.com/onflow/flow-nft/tree/master/tests), [flow-ft](https://github.com/onflow/flow-ft/tree/master/tests).
-Visit the [documentation](../../cadence/testing-framework.mdx) to view all the available features.
+Visit the [documentation](../../../cadence/testing-framework.mdx) to view all the available features.
 
 The [Hybrid Custody](https://github.com/onflow/hybrid-custody#readme) project is a prime example which utilizes both the Cadence testing framework and code coverage in its CI.
 
@@ -87,5 +87,5 @@ Tests should also be runnable in automated environments (CI). You can use the [J
 Once you deployed your application to the testnet, you should record how your application handles non-trivial amounts of traffic to ensure there are no issues.
 
 <Callout type="success">
-Get familiar with the [Cadence anti-patterns](../../cadence/anti-patterns.md) to avoid avoid problematic or unintended behavior.
+Get familiar with the [Cadence anti-patterns](../../../cadence/anti-patterns.md) to avoid avoid problematic or unintended behavior.
 </Callout>

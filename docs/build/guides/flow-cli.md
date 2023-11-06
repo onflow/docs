@@ -109,4 +109,4 @@ And then the flow dev:
 
 ### Next steps
 
-As part of the next steps you can read more about [flow dev command](../tools/flow-cli/super-commands.md).
+As part of the next steps you can read more about [flow dev command](../../tools/flow-cli/super-commands.md).

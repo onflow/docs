@@ -114,7 +114,7 @@ const txId = await fcl.mutate({
 
 ## Next Steps
 
-See the [Flow App Quick Start](../../../guides/flow-app-quickstart.md).
+See the [Flow App Quick Start](../../../build/guides/flow-app-quickstart.md).
 
 See the full [API Reference](./api.md) for all FCL functionality.
 

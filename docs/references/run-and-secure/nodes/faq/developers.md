@@ -220,7 +220,7 @@ Instructions to generate an address are here: [flow-go-sdk#create-accounts](../.
 
 ## Is there a tutorial about how to access flow testnet? From scratch, getting testnet, Flow token etc..?
 
-Yes: [testnet-deployment](../../../../guides/smart-contracts/deploying.md)
+Yes: [testnet-deployment](../../../../build/guides/smart-contracts/deploying.md)
 
 ## Can you query events between a block range?
 
