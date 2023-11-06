@@ -35,11 +35,6 @@ The message argument is optional.
 fun revertibleRandom(): UInt64
 ```
 
-<Callout type="info">
-`unsafeRandom()` function currently behaves the same way as `revertibleRandom()`,
-and will be deprecated in the next Cadence release. 
-</Callout>
-
 Returns a pseudo-random number.
 
 The sequence of returned random numbers is independent for
@@ -50,7 +45,7 @@ generator (CSPRG) for each transaction independently, where the seeds of any two
 are different with near certainty.
 
 The random numbers returned are unpredictable
-(unpredictable for miners at block construction time, 
+(unpredictable for miners at block construction time,
 and unpredictable for cadence logic at time of call),
 verifiable, as well as unbiasable by miners and previously-running Cadence code.
 See [Secure random number generator for Flow’s smart contracts](https://forum.flow.com/t/secure-random-number-generator-for-flow-s-smart-contracts/5110)
@@ -77,17 +72,6 @@ commit-reveal schemes](https://github.com/onflow/flips/pull/123) and address thi
 In cases where a non-trusted party can interact with smart contracts generating
 random numbers through their own transactions, please **use a commit-reveal scheme**
 as described in ~[this tutorial]()~ this [rudimentary example](https://github.com/onflow/flips/blob/main/protocol/20230728-commit-reveal.md#tutorials-and-examples)
-
-
-## `unsafeRandom`
-
-This function is superseded by `revertibleRandom()`.
-`unsafeRandom` has the same interface and implementation as `revertibleRandom()` although
-it is called unsafe.
-	
-<Callout type="info">
-`unsafeRandom` will be deprecated in the next Cadence release. Use `revertibleRandom()` instead.
-</Callout>
 
 ## `RLP`
 
