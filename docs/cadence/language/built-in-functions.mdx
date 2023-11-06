@@ -36,36 +36,51 @@ fun revertibleRandom(): UInt64
 ```
 
 <Callout type="info">
-`unsafeRandom()` function currently behaves the same way as `revertibleRandom()`.
-`unsafeRandom` will be deprecated in the next release of Cadence. 
+`unsafeRandom()` function currently behaves the same way as `revertibleRandom()`,
+and will be deprecated in the next Cadence release. 
 </Callout>
 
 Returns a pseudo-random number.
 
-The random number returned is safe as it is backed by a distributed source of randomness,
-that is unbiased, unpredictable and verifiable.
+The sequence of returned random numbers is independent for
+every transaction in each block.
 
-The random number cannot be biased or predicted by miners or by other transactions or code
-running before a call to `revertibleRandom`.
+Under the hood, Cadence instantiates a cryptographically-secure pseudo-random number
+generator (CSPRG) for each transaction independently, where the seeds of any two transactions
+are different with near certainty.
 
-Moreover, the sequence of returned random numbers is different per block, and per transaction
-within the same block.
+The random numbers returned are unpredictable
+(unpredictable for miners at block construction time, 
+and unpredictable for cadence logic at time of call),
+verifiable, as well as unbiasable by miners and previously-running Cadence code.
+
+Nevertheless, developers need to be mindful to use `revertibleRandom()` correctly.
 
 <Callout type="warning">
-There is an additional safety-relevant aspect that developers need to be mindful about.
 
-The function is not immune to post-selection manipulation by a non-trusted party where
-a random number is sampled and then rejected.
-
-A transaction can atomically revert all its actions.
-Therefore, it is possible for a transaction calling into a smart contract
+A transaction can atomically revert all its action.
+It is possible for a transaction submitted by an untrusted party
 to post-select favorable results and revert the transaction for unfavorable results.
 
-The function remains totally safe when called by a trusted party.
+</Callout>
+
+The function usage remains safe when called by a trusted party that does not
+perform post-selection on the returned random numbers.
 
 This limitation is inherent to any smart contract platform that allows transactions to roll back atomically
-and cannot be solved through safe randomness alone. Flow protocol has suggested a [solution to implement safe
+and cannot be solved through safe randomness alone.
+Flow protocol has suggested a [solution to implement safe
 commit-reveal schemes](https://github.com/onflow/flips/pull/123) and address this limitation.
+
+
+## `unsafeRandom`
+
+This function is superseded by `revertibleRandom()`.
+`unsafeRandom` has the same interface and implementation as `revertibleRandom()` although
+it is called unsafe.
+	
+<Callout type="info">
+`unsafeRandom` will be deprecated in the next Cadence release. Use `revertibleRandom()` instead.
 </Callout>
 
 ## `RLP`
