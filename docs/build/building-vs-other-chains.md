@@ -188,6 +188,6 @@ If you’re already familiar with blockchain development, here's a comparison be
     - [Flow Playground](https://play.flow.com/) provides basic experimentation on the web
     - [Cadence VSCode Extension](https://marketplace.visualstudio.com/items?itemName=onflow.cadence) is strongly suggested to install for local development
 - [Testing Smart Contracts](https://ethereum.org/en/developers/docs/smart-contracts/testing/)
-    - [Cadence testing framework](./guides/smart-contracts/testing/testing-framework.md) enables native tests in Cadence.
+    - [Cadence testing framework](../cadence/testing-framework.mdx) enables native tests in Cadence.
     - [overflow](https://github.com/bjartek/overflow) for testing in Go.
     - [js-testing](https://github.com/onflow/flow-js-testing) for testing in JS.
