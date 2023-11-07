@@ -4,7 +4,6 @@ echo Importing...
 repoDataSources="./src/data/data-sources.json"
 tempReposLocation="./temp"
 docsLocation="./docs"
-versionedDocsLocation="./versioned_docs/version-stable"
 alias jq='./node_modules/node-jq/bin/jq'
 
 cloneRepoToTemp() {
@@ -78,21 +77,6 @@ cloneDocReposToDest() {
     done
 }
 
-# Remove after cadence is updated to a stable version
-# https://github.com/onflow/docs/issues/105
-copyVersionedDocs() {
-    for folderName in $(ls $versionedDocsLocation); do
-        if [ $folderName != 'cadence' ]; then
-            rm -rf $versionedDocsLocation/$folderName
-        fi
-    done
-    for folderName in $(ls $docsLocation); do
-        if [ $folderName != 'cadence' ]; then
-            cp -r $docsLocation/$folderName $versionedDocsLocation
-        fi
-    done
-}
-
 copyRepoFilesToDest() {
     sourceFolderName=$1
     destFolderName=$2
@@ -107,4 +91,3 @@ copyRepoFilesToDest() {
 }
 
 cloneDocReposToDest
-copyVersionedDocs

@@ -177,11 +177,6 @@ const config = {
       /** @type {import('@docusaurus/preset-classic').Options} */
       ({
         docs: {
-          versions: {
-            stable: {
-              label: 'Current',
-            },
-          },
           beforeDefaultRemarkPlugins: [
             [
               remarkCodeHike,
@@ -270,10 +265,9 @@ const config = {
             activeBasePath: '/guides',
           },
           {
-            to: 'https://cadence-lang.org/docs/0.42/',
+            href: 'https://cadence-lang.org/docs/0.42/',
             position: 'left',
             label: 'Cadence',
-            activeBasePath: '/cadence',
           },
           {
             to: 'tools/flow-cli',
@@ -292,13 +286,6 @@ const config = {
             position: 'left',
             label: 'Resources',
             activeBasePath: '/community-resources',
-          },
-          // Remove after cadence is updated to a stable version
-          // https://github.com/onflow/docs/issues/105
-          {
-            type: 'docsVersionDropdown',
-            position: 'right',
-            dropdownActiveClassDisabled: true,
           },
           {
             href: 'https://github.com/onflow',
