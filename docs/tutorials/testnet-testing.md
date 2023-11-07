@@ -18,4 +18,4 @@ Tests should also be runnable in automated environments (CI). You can use the [J
 
 Once you deployed your application to the testnet, you should record how your application handles non-trivial amounts of traffic to ensure there are no issues.
 
-You should also get familiar with the [Cadence anti-patterns](https://cadence-lang-docs-git-fix-links-versions-onflow.vercel.app/docs/0.42/anti-patterns) to avoid avoid problematic or unintended behavior.
+You should also get familiar with the [Cadence anti-patterns](https://cadence-lang.org/docs/0.42/anti-patterns) to avoid avoid problematic or unintended behavior.

@@ -144,7 +144,7 @@ You can pass a `nil` value to optional arguments by executing the flow FLIX exec
 
 Arguments passed to the Cadence script in the Cadence JSON format.
 Cadence JSON format contains `type` and `value` keys and is 
-[documented here](https://cadence-lang-docs-git-fix-links-versions-onflow.vercel.app/docs/0.42/json-cadence-spec).
+[documented here](https://cadence-lang.org/docs/0.42/json-cadence-spec).
 
 ## Block Height
 

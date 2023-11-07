@@ -29,7 +29,7 @@ Each account that wants to list NFTs for sale creates a `Storefront` resource to
 
 Each listing can define one or more sale cuts taken out of the sale price to go to one or more addresses. Listing fees, royalties, or other considerations can be paid using sale cuts. Also, the listing can include a commission as one of these sale cuts is paid to whoever facilitates the purchase. 
 
-Listings can have an optional list of marketplace [receiver capabilities](https://cadence-lang-docs-git-fix-links-versions-onflow.vercel.app/docs/0.42/language/capabilities) used to receive the commission for fulfilling the listing. An NFT may be listed in one or more Listings, and the validity of each listing can easily be checked.
+Listings can have an optional list of marketplace [receiver capabilities](https://cadence-lang.org/docs/0.42/language/capabilities) used to receive the commission for fulfilling the listing. An NFT may be listed in one or more Listings, and the validity of each listing can easily be checked.
 
 Interested parties can globally track Listing events on-chain and filter by NFT types, IDs and other characteristics to determine which to make available for purchase within their own marketplace UIs."
 ## Selling NFTs
@@ -52,7 +52,7 @@ The `NFTStorefrontV2` contract doesn’t support selling an NFT for multiple dif
 
 ![scenario_1](./scenario_1.png)
 
-Putting an NFT on sell called listing, seller can create a listing using [sell_item](https://github.com/onflow/nft-storefront/blob/main/transactions/sell_item.cdc) transaction by providing some required details to list an NFT, i.e. Receiving currency type, [Capability](https://cadence-lang-docs-git-fix-links-versions-onflow.vercel.app/docs/0.42/language/capabilities) from where NFT will be deducted etc. If interested look [here](#fun-createListing()) for more details. 
+Putting an NFT on sell called listing, seller can create a listing using [sell_item](https://github.com/onflow/nft-storefront/blob/main/transactions/sell_item.cdc) transaction by providing some required details to list an NFT, i.e. Receiving currency type, [Capability](https://cadence-lang.org/docs/0.42/language/capabilities) from where NFT will be deducted etc. If interested look [here](#fun-createListing()) for more details. 
 
 To receive a different currency seller has to provide a different __Receiver currency type__ , i.e. `salePaymentVaultType` As depicted in the above diagram, There are two listing formations with almost the same inputs. The only differentiator is the `salePaymentVaultType` parameter that needs to be different when creating duplicate NFT listings with different sale currency types.  
 

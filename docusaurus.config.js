@@ -270,7 +270,7 @@ const config = {
             activeBasePath: '/guides',
           },
           {
-            to: 'https://cadence-lang-docs-git-fix-links-versions-onflow.vercel.app/docs/0.42/',
+            to: 'https://cadence-lang.org/docs/0.42/',
             position: 'left',
             label: 'Cadence',
             activeBasePath: '/cadence',
@@ -329,7 +329,7 @@ const config = {
                 to: '/tools',
               },
               {
-                to: 'https://cadence-lang-docs-git-fix-links-versions-onflow.vercel.app/docs/0.42/',
+                to: 'https://cadence-lang.org/docs/0.42/',
                 label: 'Cadence',
               },
               {
@@ -403,7 +403,7 @@ const config = {
                 label: 'Flow Playground',
               },
               {
-                to: 'https://cadence-lang-docs-git-fix-links-versions-onflow.vercel.app/docs/0.42/tutorial/first-steps',
+                to: 'https://cadence-lang.org/docs/0.42/tutorial/first-steps',
                 label: 'Cadence Tutorials',
               },
               {
@@ -586,7 +586,7 @@ const config = {
             // Redirect from /docs/team/X to /community/X and /docs/support/X to /community/X
             return [
               existingPath.replace(
-                'https://cadence-lang-docs-git-fix-links-versions-onflow.vercel.app/docs/0.42/',
+                'https://cadence-lang.org/docs/0.42/',
                 '/cadence',
               ),
             ];

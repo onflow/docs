@@ -60,7 +60,7 @@ to run scripts.
 ## Running scripts
 
 Next, we'll use this account to run a script on the emulator.  Scripts on Flow are written in Cadence.
-More information is available at [Developer Portal](https://cadence-lang-docs-git-fix-links-versions-onflow.vercel.app/docs/0.42/language/)
+More information is available at [Developer Portal](https://cadence-lang.org/docs/0.42/language/)
 
 First we'll define the script that we want to run:
 

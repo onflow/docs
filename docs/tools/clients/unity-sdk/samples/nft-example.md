@@ -31,7 +31,7 @@ interface.  We will be doing so in this case.
 At its simplest, an NFT on Flow is a resource with a unique id.  A Collection is a resource
 that will allow you to store, list, deposit, and withdraw NFTs of a specific type.
 
-We recommend reading through the [NFT tutorial](https://cadence-lang-docs-git-fix-links-versions-onflow.vercel.app/docs/0.42/tutorial/non-fungible-tokens-1)
+We recommend reading through the [NFT tutorial](https://cadence-lang.org/docs/0.42/tutorial/non-fungible-tokens-1)
 to understand what is happening, as well as reviewing the contents of Cadence/Contracts/SDKExampleNFT.cdc
 
 The SDKExampleNFT minter allows for anyone to mint an SDKExampleNFT.  Typically you would restrict
