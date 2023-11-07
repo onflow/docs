@@ -39,7 +39,6 @@ Returns a pseudo-random number.
 
 The sequence of returned random numbers is independent for
 every transaction in each block.
-
 Under the hood, Cadence instantiates a cryptographically-secure pseudo-random number
 generator (CSPRG) for each transaction independently, where the seeds of any two transactions
 are different with near certainty.
@@ -51,7 +50,7 @@ verifiable, as well as unbiasable by miners and previously-running Cadence code.
 See [Secure random number generator for Flow’s smart contracts](https://forum.flow.com/t/secure-random-number-generator-for-flow-s-smart-contracts/5110)
 and [FLIP120](https://github.com/onflow/flips/pull/120) for more details.
 
-Nevertheless, developers need to be mindful to use `revertibleRandom()` correctly.
+Nevertheless, developers need to be mindful to use `revertibleRandom()` correctly:
 
 <Callout type="warning">
 
@@ -66,12 +65,10 @@ perform post-selection on the returned random numbers.
 
 This limitation is inherent to any smart contract platform that allows transactions to roll back atomically
 and cannot be solved through safe randomness alone.
-
-Flow protocol has suggested a [solution to implement safe
-commit-reveal schemes](https://github.com/onflow/flips/pull/123) and address this limitation.
-In cases where a non-trusted party can interact with smart contracts generating
-random numbers through their own transactions, **use a commit-reveal scheme**
-as described in this [rudimentary example](https://github.com/onflow/flips/blob/main/protocol/20230728-commit-reveal.md#tutorials-and-examples)
+In cases where a non-trusted party can interact through their own transactions
+with smart contracts generating random numbers,
+it is recommended to use [commit-reveal schemes](https://github.com/onflow/flips/pull/123)
+as outlined in this [tentative example](https://github.com/onflow/flips/blob/main/protocol/20230728-commit-reveal.md#tutorials-and-examples) (full tutorial coming soon).
 
 ## `RLP`
 
