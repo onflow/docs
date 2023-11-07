@@ -234,10 +234,7 @@ const config = {
     ],
   ],
 
-  themes: [
-    'mdx-v2',
-    hasTypesense && 'docusaurus-theme-search-typesense',
-  ].filter(Boolean),
+  themes: [hasTypesense && 'docusaurus-theme-search-typesense'].filter(Boolean),
 
   themeConfig:
     /** @type {import('@docusaurus/preset-classic').ThemeConfig} */
