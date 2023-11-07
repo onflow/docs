@@ -40,7 +40,7 @@ Cadence, a new high-level programming language, observes the following requireme
 Security is the prevention of attacks on the network or smart contracts (i.e., unauthorized actions by malicious actors).
 Safety and security are critical in smart contracts because of the immutable nature of blockchains,
 and because they often deal with high-value assets. While auditing and reviewing code will be a crucial part of smart contract development,
-Cadence maximizes efficiency while maintaining the highest levels of safety and security at its foundation.
+Cadence maximizes efficiency while maintaining the highest levels of safety and security.
 It accomplishes this via a strong static type system, design by contract, and ownership primitives inspired by linear types (which are useful when dealing with assets).
 - **Clarity:** Code needs to be easy to read, and its meaning should be as unambiguous as possible.
 It should also be suited for verification so that tooling can help with ensuring safety and security guarantees.
