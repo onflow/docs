@@ -14,7 +14,7 @@ For more information about Wallets and Flow accounts, see [user-accounts-and-wal
 
 In terms of the Flow SDK for Unity, a Wallet Provider is a class which implements the `IWallet` interface and allows users to interact with specific hardware or software wallets. This includes authenticating with a wallet, retrieving the user's Flow account address from the wallet, and requesting the wallet to sign transactions on behalf of the user. 
 
-As of v2.0.0, the Flow SDK for Unity contains two wallet providers - [Dev Wallet](./dev-wallet) and Wallet Connect. Dev Wallet is a mock wallet provider to make development easier, while Wallet Connect connects to real wallets and is therefore used for production. You could also implement your own wallet provider by implementing the `IWallet` interface. 
+As of v2.0.0, the Flow SDK for Unity contains two wallet providers - [Dev Wallet](./dev-wallet.md) and Wallet Connect. Dev Wallet is a mock wallet provider to make development easier, while Wallet Connect connects to real wallets and is therefore used for production. You could also implement your own wallet provider by implementing the `IWallet` interface. 
 
 ## How to implement Wallet Connect
 

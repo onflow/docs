@@ -50,7 +50,7 @@ To install a specific version of Flow CLI newer than v0.42.0, append the version
 sh -ci "$(curl -fsSL https://raw.githubusercontent.com/onflow/flow-cli/master/install.sh)" -- v0.44.0
 ```
 
-To install a version older than v0.42.0, refer to [Installing versions before 0.42.0](#installing-versions-before-0420) below.
+To install a version older than v0.42.0, refer to [Installing versions before 0.42.0](../tools/flow-cli/install.md#installing-versions-before-0420) below.
 
 ## Windows
 
