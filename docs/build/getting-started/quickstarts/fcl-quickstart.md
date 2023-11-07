@@ -1,12 +1,10 @@
 ---
-title: Hello World Pt 3 - Interacting with the Blockchain
-sidebar_label: Hello World Pt 3 - Interacting with the Blockchain
 sidebar_position: 3
 ---
 
-# Hello World Pt 3 - Interacting with the Blockchain
+# Hello World Pt. 3 - Interacting with the Blockchain
 
-FCL, or Flow Client Library, is a JavaScript library developed to facilitate interactions with the Flow blockchain. It provides developers with tools to build, integrate, and interact with Flow directly from web applications. This web app quickstart will get you interacting with a contract already deployed to Flow.
+Flow Client Library (FCL), is a JavaScript library developed to facilitate interactions with the Flow blockchain. It provides developers with tools to build, integrate, and interact with Flow directly from web applications. This web app quickstart will get you interacting with a contract already deployed to Flow.
 
 For this tutorial, we're going to be making a [React](https://react.dev/learn) app with [Create React App](https://create-react-app.dev/). We'll try and keep the code as simple as possible in case you're coming from another framework.
 
@@ -43,13 +41,13 @@ npm start
 
 ## Setting Up FCL
 
-The first thing we'll need to do to use FCL is install it. Let's run the following which will download the library and set it as a dependency in our project:
+In order to use FCL, we need to install it. Let's run the following to download the library and set it as a dependency in our project:
 
 ```
 npm install @onflow/fcl --save
 ```
 
-Next we'll want to add to our FCL configuration. There's a lot you can do here, but for this example, let's just set the Flow Access Node we want to talk to in our application. An Access Node serves as the primary point of interaction for clients, such as wallets, dapps, and other services, to communicate with the Flow network. It provides a gateway for these clients to submit transactions, query data, and retrieve information without having to connect to the entire network or maintain a full copy of the blockchain.
+Next we'll want to add to our FCL configuration. There's a lot you can do here, but for this simple example, let's configure `accessNode.api` to talk to the Testnet Flow Access Node. An Access Node serves as the primary point of interaction for clients, such as wallets, dapps, and other services, to communicate with the Flow network. It provides a gateway for these clients to submit transactions, query data, and retrieve information without having to connect to the entire network or maintain a full copy of the blockchain.
 
 For our example, we are going to point at a free Access Node provided by Flow. Add the following config code to your `src/App.js`
 
@@ -140,4 +138,4 @@ You just built an app on Flow!
 
 ## Mutating Chain State and More
 
-For a deeper dive into writing an FCL app, such as how to change the chain state with FCL, check out [this guide](../../../guides/flow-app-quickstart.mdx) or the [FCL documentation](../../../tools/clients/fcl-js/index.md).
+For a deeper dive into writing an FCL app, such as how to change the chain state with FCL, check out [this guide](../../../guides/flow-app-quickstart.md) or the [FCL documentation](../../../tools/clients/fcl-js/index.md).

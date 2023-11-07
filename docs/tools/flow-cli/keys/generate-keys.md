@@ -5,7 +5,7 @@ sidebar_position: 1
 ---
 
 The Flow CLI provides a command to generate ECDSA key pairs
-that can be [attached to new or existing Flow accounts](../../../build/key-concepts/accounts.md).
+that can be [attached to new or existing Flow accounts](../../../build/basics/accounts.md).
 
 ```shell
 flow keys generate

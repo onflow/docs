@@ -3,7 +3,7 @@ import React, { type ReactNode } from 'react';
 import clsx from 'clsx';
 import Link from '@docusaurus/Link';
 import {
-  findFirstCategoryLink,
+  findFirstSidebarItemLink,
   useDocById,
 } from '@docusaurus/theme-common/internal';
 import isInternalUrl from '@docusaurus/isInternalUrl';
@@ -15,6 +15,8 @@ import type {
   PropSidebarItemCategory,
   PropSidebarItemLink,
 } from '@docusaurus/plugin-content-docs';
+import { CardSubtitle } from './CardSubtitle';
+import { CustomIcon } from './CustomIcon';
 
 function CardContainer({
   href,
@@ -38,16 +40,24 @@ function CardLayout({
   icon,
   title,
   description,
+  subtitle,
 }: {
   href: string;
   icon: ReactNode;
   title: string;
   description?: string;
+  subtitle?: ReactNode;
 }): JSX.Element {
   return (
     <CardContainer href={href}>
       <h2 className={clsx('text--truncate', styles.cardTitle)} title={title}>
-        {icon} {title}
+        <div className="flex gap-3">
+          <div className="flex-none">{icon}</div>
+          <div className="flex flex-col gap-1">
+            <span>{title}</span>
+            {Boolean(subtitle) && subtitle}
+          </div>
+        </div>
       </h2>
       {description && (
         <p
@@ -66,7 +76,7 @@ function CardCategory({
 }: {
   item: PropSidebarItemCategory;
 }): JSX.Element | null {
-  const href = findFirstCategoryLink(item);
+  const href = findFirstSidebarItemLink(item);
 
   // Unexpected: categories that don't have a link have been filtered upfront
   if (!href) {
@@ -96,8 +106,8 @@ function CardCategory({
 }
 
 function CardLink({ item }: { item: PropSidebarItemLink }): JSX.Element {
-  const customIcon =
-    Boolean(item?.customProps?.icon) && (item?.customProps?.icon as string);
+  const { customProps } = item;
+  const customIcon = <CustomIcon customProps={customProps} />;
   // eslint-disable-next-line @typescript-eslint/strict-boolean-expressions
   const icon = customIcon || (isInternalUrl(item.href) ? '📄️' : '🔗');
   const doc = useDocById(item.docId ?? undefined);
@@ -107,6 +117,7 @@ function CardLink({ item }: { item: PropSidebarItemLink }): JSX.Element {
       icon={icon}
       title={item.label}
       description={item.description ?? doc?.description}
+      subtitle={<CardSubtitle customProps={item?.customProps}/>}
     />
   );
 }

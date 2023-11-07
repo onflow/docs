@@ -23,7 +23,7 @@ Key pairs establish ownership on blockchains. In other blockchains (e.g. Bitcoin
 
 Flow combines the concepts of EOAs and Contract Accounts into a single account model and decouples accounts and public keys. Flow accounts are associated with one or more public keys of varying weights that specify interested parties that need to produce valid cryptographic signatures for each transaction authorized by that account.
 
-![Screenshot 2023-08-16 at 16.43.07.png](../build/key-concepts/_accounts_images/Screenshot_2023-08-16_at_16.43.07.png)
+![Screenshot 2023-08-16 at 16.43.07.png](./basics/_accounts_images/Screenshot_2023-08-16_at_16.43.07.png)
 
 This natively enables interesting use cases, like key revocation, rotation, and multi-signature transactions. All Flow accounts can use network storage (e.g., for deploying contracts and storing resources like NFTs) based on the number of FLOW tokens they hold.
 
@@ -33,7 +33,7 @@ You must run an explicit account creation transaction on Flow to create a new ac
 
 </Callout>
 
-Check out the [Accounts](../build/key-concepts/accounts.md) concept document to learn more about Flow accounts.
+Check out the [Accounts](./basics/accounts.md) concept document to learn more about Flow accounts.
 
 ## Smart Contracts
 
@@ -147,7 +147,7 @@ pub fun main(address: Address, collectionPublicPath: PublicPath): [UInt64] {
 }
 ```
 
-Check out [Transactions](../build/key-concepts/transactions.md) and [Scripts](../build/key-concepts/scripts.md) to learn more about the concepts. You can also read the Cadence language reference on [Transactions](../cadence/language/transactions.md) to dive deeper.
+Check out [Transactions](./basics/transactions.md) and [Scripts](./basics/scripts.md) to learn more about the concepts. You can also read the Cadence language reference on [Transactions](../cadence/language/transactions.md) to dive deeper.
 
 ## Flow Nodes
 
@@ -168,7 +168,7 @@ If you’re getting started you don’t need to run your own node and you can us
 - Start with a [Light (Observer) Node](../references/run-and-secure/node-operation/observer-node.mdx).
 - You can also use a third-party provider like [Quicknode](https://www.quicknode.com/docs/flow).
 
-Check out [Running a Node](../references/run-and-secure/running-node.md) for more information.
+Check out [Running a Node](../references/run-and-secure/node-operation/observer-node.mdx) for more information.
 
 ## SDKs and Tools
 
@@ -177,7 +177,7 @@ If you’re already familiar with blockchain development, here's a comparison be
 - [hardhat](https://hardhat.org/) / [Truffle](https://trufflesuite.com/) / [Foundry](https://github.com/foundry-rs/foundry)
     - [Flow CLI](https://github.com/onflow/flow-cli/) provides local development tools and the [Flow Emulator](https://github.com/onflow/flow-emulator)
 - [OpenZeppelin](https://www.openzeppelin.com/)
-    - No equivalent, you can pick contracts from any core Flow contract repository
+    - [Emerald OZ](https://oz.ecdao.org/overview)
 - [go-ethereum](https://geth.ethereum.org/)
     - [Flow Go SDK](https://github.com/onflow/flow-go-sdk/)
     - [FCL](https://github.com/onflow/fcl-js/) also provides Backend API for Flow in JS

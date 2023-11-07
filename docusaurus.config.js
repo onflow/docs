@@ -139,6 +139,8 @@ const editUrl = ({ docPath }) => {
   return `https://github.com/${owner}/${name}/tree/${branch}/${sourceDocPath}`;
 };
 
+const baseUrl = process.env.BASE_URL || '/docs/';
+
 /** @type {import('@docusaurus/types').Config} */
 const config = {
   title: 'Flow Developer Portal',
@@ -149,7 +151,7 @@ const config = {
   url: getUrl(),
   // Set the /<baseUrl>/ pathname under which your site is served
   // For GitHub pages deployment, it is often '/<projectName>/'
-  baseUrl: process.env.BASE_URL || '/docs/',
+  baseUrl,
 
   // GitHub pages deployment config.
   // If you aren't using GitHub pages, you don't need these.
@@ -232,10 +234,7 @@ const config = {
     ],
   ],
 
-  themes: [
-    'mdx-v2',
-    hasTypesense && 'docusaurus-theme-search-typesense',
-  ].filter(Boolean),
+  themes: [hasTypesense && 'docusaurus-theme-search-typesense'].filter(Boolean),
 
   themeConfig:
     /** @type {import('@docusaurus/preset-classic').ThemeConfig} */
@@ -262,31 +261,37 @@ const config = {
             to: 'build/flow',
             position: 'left',
             label: 'Build',
+            activeBasePath: '/build',
           },
           {
             to: 'guides/flow-app-quickstart',
             position: 'left',
             label: 'Guides',
+            activeBasePath: '/guides',
           },
           {
             to: 'cadence/intro',
             position: 'left',
             label: 'Cadence',
+            activeBasePath: '/cadence',
           },
           {
             to: 'tools/flow-cli',
             position: 'left',
             label: 'Tools',
+            activeBasePath: '/tools',
           },
           {
             to: 'references',
             position: 'left',
             label: 'References',
+            activeBasePath: '/references',
           },
           {
             to: 'community-resources',
             position: 'left',
             label: 'Resources',
+            activeBasePath: '/community-resources',
           },
           // Remove after cadence is updated to a stable version
           // https://github.com/onflow/docs/issues/105
@@ -336,8 +341,8 @@ const config = {
                 label: 'FCL',
               },
               {
-                to: '/tools/flow-js-testing/',
-                label: 'JS Testing Library',
+                to: '/build/getting-started/testing',
+                label: 'Testing',
               },
               {
                 to: '/tools/flow-cli/',
@@ -375,10 +380,6 @@ const config = {
               {
                 href: 'https://flow.com/flow-responsible-disclosure',
                 label: 'Responsible Disclosure',
-              },
-              {
-                href: 'https://forum.onflow.org/',
-                label: 'Forum',
               },
               {
                 href: 'https://www.flowverse.co/',
@@ -427,12 +428,12 @@ const config = {
                 label: 'Network Status',
               },
               {
-                href: 'https://flowscan.org/',
-                label: 'Flowscan Mainnet',
+                href: 'https://flowdiver.io/',
+                label: 'Flowdiver Mainnet',
               },
               {
-                href: 'https://testnet.flowscan.org/',
-                label: 'Flowscan Testnet',
+                href: 'https://testnet.flowdiver.io/',
+                label: 'Flowdiver Testnet',
               },
               {
                 to: '/references/run-and-secure/node-operation/past-sporks/',
@@ -588,7 +589,7 @@ const config = {
   ],
   scripts: [
     {
-      src: '/mixpanel.js',
+      src: `${baseUrl}mixpanel.js`,
       async: true,
       onload: mixpanelOnLoad,
     },
@@ -601,7 +602,7 @@ const config = {
       async: true,
     },
     {
-      src: '/hotjar.js',
+      src: `${baseUrl}hotjar.js`,
       async: true,
     },
     {
@@ -613,6 +614,7 @@ const config = {
       async: true,
     },
   ],
+  clientModules: [require.resolve('./src/modules/toolscards.ts')],
 };
 
 module.exports = config;

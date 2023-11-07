@@ -30,7 +30,7 @@ Your dapp will also need to read data from Flow, and in particular, the state of
 
 ### Events
 
-Events are data objects emitted at the end of a transaction that describe the state changes that occurred in the transaction. For example, a transaction that transfers FLOW tokens between accounts [will emit events](https://flowscan.org/transaction/2f50695c3c506b8214d18f49220c986d24d19d8762a2805b3609aee3d529de88) that describe the sender, recipient and amount of FLOW transferred. Event types are [defined inside your Cadence contracts](https://github.com/onflow/flow-core-contracts/blob/master/contracts/FlowToken.cdc#L8-L27). 
+Events are data objects emitted at the end of a transaction that describe the state changes that occurred in the transaction. For example, a transaction that transfers FLOW tokens between accounts [will emit events](https://flowdiver.io/transaction/2f50695c3c506b8214d18f49220c986d24d19d8762a2805b3609aee3d529de88) that describe the sender, recipient and amount of FLOW transferred. Event types are [defined inside your Cadence contracts](https://github.com/onflow/flow-core-contracts/blob/master/contracts/FlowToken.cdc#L8-L27). 
 
 Events can be used to notify your off-chain infrastructure of important state changes in your smart contracts. For example, if a user purchases an NFT from your storefront smart contract, an event will be emitted that describes this purchase. Your web application, which displays the NFTs for sale, can then capture that event and remove the NFT from the sale list.
 
