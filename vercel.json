@@ -1175,6 +1175,26 @@
       "source": "/getting-started",
       "destination": "/build/getting-started/app-architecture",
       "permanent": true
+    },
+    {
+      "source": "/guides/:path*",
+      "destination": "/build/guides/:path*",
+      "permanent": true
+    },
+    {
+      "source": "/next/guides/:path*",
+      "destination": "/next/build/guides/:path*",
+      "permanent": true
+    },
+    {
+      "source": "/build/getting-started/testing",
+      "destination": "/build/guides/smart-contracts/testing",
+      "permanent": true
+    },
+    {
+      "source": "/next/build/getting-started/testing",
+      "destination": "/next/build/guides/smart-contracts/testing",
+      "permanent": true
     }
   ]
 }
