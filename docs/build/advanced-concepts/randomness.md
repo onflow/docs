@@ -50,7 +50,9 @@ The `revertibleRandom` function can be used safely in some applications where th
 2. A transaction calling into your smart contract can potentially bias the sequence of random numbers which your smart contract internally generates. Currently, the block hash seeds `revertibleRandom`. Consensus nodes can *easily* bias the block hash and **influence the seed for** `revertibleRandom`.
 
 <Callout type="warning">
-🚨 A transaction can atomically revert all its action during its runtime and abort. Therefore, it is possible for a transaction calling into your smart contract to post-select favorable results and revert the transaction for unfavorable results.
+🚨 A transaction can atomically revert all its action during its runtime and abort.
+Therefore, it is possible for a transaction calling into your smart contract to post-select
+favorable results and revert the transaction for unfavorable results.
 </Callout>
 
 In other words, transactions submitted by a non-trusted party are able to reject their results after the random is revealed.
