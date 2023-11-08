@@ -109,6 +109,9 @@ The following lines of code illustrate a random coin toss, that cannot be gamed 
 It proceeds with two phases: first commit using the hash of the values and in a later phase revealing the values.
 
 ```cadence
+// The code below is taken from the example CoinToss contract found in this project repo
+// Source: https://github.com/onflow/random-coin-toss 
+
 /// --- Commit ---
 /// In this method, the caller commits a bet. The contract takes note of the
 /// block height and bet amount, returning a Receipt resource which is used
