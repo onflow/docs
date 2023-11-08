@@ -33,6 +33,7 @@ For usage of randomness where result abortion is not an issue, it is recommended
 ```cadence
 // Language reference:
 // https://developers.flow.com/cadence/language/built-in-functions#revertiblerandom
+// Run the snippet here: https://academy.ecdao.org/en/snippets/cadence-random
 access(all) fun main(): UInt64 {
 	// Simple assignment using revertibleRandom - keep reading docs for safe usage!	
 	let rand: UInt64 = revertibleRandom()
