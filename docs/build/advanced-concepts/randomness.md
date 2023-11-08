@@ -33,7 +33,9 @@ Cadence has historically provided the `unsafeRandom` function to return a pseudo
 1. The sequence of random numbers is potentially predictable by transactions within the same block and by other smart contracts calling into your smart contract.
 2. A transaction calling into your smart contract can potentially bias the sequence of random numbers which your smart contract internally generates. Currently, the block hash seeds `unsafeRandom`. Consensus nodes can *easily* bias the block hash and **influence the seed for `unsafeRandom`**.
 
+<Callout type="warning">
 ⚠️ Note `unsafeRandom` will be deprecated in the next Cadence release. **Developers are advised to refrain from using `unsafeRandom.`**
+</Callout>
 
 ## Guidelines for Safe Usage
 
