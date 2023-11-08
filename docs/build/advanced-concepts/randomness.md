@@ -26,7 +26,7 @@ The output from the randomness beacon is a sequence of random bytes that are unp
 
 For over three years, the beacon has ensured protocol security by selecting which consensus node gets to propose the next block and assigning verification nodes to oversee block computations. For those interested in a more detailed exploration of the randomness beacon and its inner workings, you can read [the technical deep dive on the Flow forum](https://forum.flow.com/t/secure-random-number-generator-for-flow-s-smart-contracts/5110).
 
-### The History and Limitations of `unsafeRandom` (now deprecated)
+### The History and Limitations of `unsafeRandom` (Now Deprecated)
 
 Cadence has historically provided the `unsafeRandom` function to return a pseudo-random number. The stream of random numbers produced was potentially unsafe in the following two regards:
 
