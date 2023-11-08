@@ -105,9 +105,7 @@ A commit-reveal scheme can be implemented as follows. The coin toss example desc
 - The coin toss contract uses a PRG seeded with the queried `SoR_A` and diversified using a specific information to the use-case (a user ID or resource ID for instance). Diversification does not add new entropy, but it avoids generating the same outcome for different use-cases. If a diversifier (or salt) isn't used, all users that committed a bid on the same block would either win or lose.
 - The PRG is used to generate the random result and resolve the bid. Note that the user can make the transaction abort after inspecting a losing result. However, the bid amount would be lost anyway when the allocated window expires.
 
-The following lines of code illustrate a random coin toss, that cannot be gamed or biased. The reveal-and-commit scheme prevent clients from post-selecting favorable outcomes. 
-
-It proceeds with two phases: first commit using the hash of the values and in a later phase revealing the values.
+The following lines of code illustrate a random coin toss that cannot be gamed or biased. The reveal-and-commit scheme prevent clients from post-selecting favorable outcomes.
 
 ```cadence
 // The code below is taken from the example CoinToss contract found in this project repo
