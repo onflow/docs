@@ -61,15 +61,17 @@ Currently, `flix package` command only supports generating FCL (Flow Client Libr
 flow flix package <query> [flags]
 ```
 
-## Generate
+### Generate
 
 Generate FLIX json file. This command will take in a Cadence file and produce a FLIX json file. There are two ways to provide metadata to populate the FLIX json structure. 
  - Use `--pre-fill` flag to pass in a pre populated FLIX json structure
- - Cadence comment block properties [Cadence Comment Block](https://github.com/onflow/flips/pull/80)
+ - Cadence comment block properties [FLIP - Interaction Template Cadence Doc](https://github.com/onflow/flips/pull/80)
+
+### Generate Usage
 
 ```shell
 # Generate FLIX json file using cadence transaction or script where the cadence uses Cadence Comment block properties
-flow flix generate cadence/transactions/update-helloworld.cdc
+flow flix generate cadence/transactions/update-helloworld.cdc --save cadence/templates/update-helloworld.template.json
 ```
 
 Example of Cadence Comment block properties 
@@ -100,7 +102,7 @@ transaction(greeting: String) {
 
 ```shell
 # Generate FLIX json file using cadence transaction or script passing in a pre filled FLIX json file. The json file will get filled out by the `flow flix generate` command
-flow flix generate cadence/scripts/read-helloworld.cdc --pre-fill cadence/templates/read-helloworld.prefill.json
+flow flix generate cadence/scripts/read-helloworld.cdc --pre-fill cadence/templates/read-helloworld.prefill.json --save cadence/templates/read-helloworld.template.json
 ```
 Example of prefilled FLIX json file
 ```json
@@ -131,7 +133,49 @@ Example of prefilled FLIX json file
 
 ```
 
-## Package
+### Example Generate Output
+
+```json
+{
+    "f_type": "InteractionTemplate",
+    "f_version": "1.0.0",
+    "id": "ae9c0b156742eeb6bb1ae0b7b8ea94cfc21498d613e933171aa1e4f4a9ae6ea3",
+    "data": {
+        "type": "script",
+        "interface": "",
+        "messages": {
+            "title": {
+                "i18n": {
+                    "en-US": "Read Greeting"
+                }
+            },
+            "description": {
+                "i18n": {
+                    "en-US": "Read the greeting from the HelloWorld class"
+                }
+            }
+        },
+        "cadence": "import HelloWorld from 0xHelloWorld\n/*\n@f_version 1.0.0\n@lang en-US\n@message title: Read Greeting\n@message description: Read the greeting from the HelloWorld class\n\n@return String\n */\npub fun main(): String {\n  return HelloWorld.greeting\n}\n",
+        "dependencies": {
+            "0xHelloWorld": {
+                "HelloWorld": {
+                    "testnet": {
+                        "address": "0xa58395c2f736c46e",
+                        "fq_address": "A.a58395c2f736c46e.HelloWorld",
+                        "contract": "HelloWorld",
+                        "pin": "82d8fb62ec356884316c28388630b9acb6ba5027d566efe0d2adff2c6e74b4dc",
+                        "pin_block_height": 131038531
+                    }
+                }
+            }
+        },
+        "arguments": {}
+    }
+}
+
+```
+
+### Package
 
 Queries can be a FLIX `id`, `name`, or `path` to a local FLIX file. This command leverages [FCL](../clients/fcl-js/) which will execute FLIX cadence code. 
 
@@ -185,10 +229,6 @@ export async function transferTokens({amount, to}) {
 }
 ```
 
-<Callout type="info">
-SOON: `flix generate` will generate FLIX json files using FLIX specific properties in comment blocks directly in Cadence code, [FLIP - Interaction Template Cadence Doc](https://github.com/onflow/flips/pull/80)
-</Callout>
-
 
 ## Resources
 
@@ -216,6 +256,12 @@ You can pass a `nil` value to optional arguments by executing the flow FLIX exec
 Arguments passed to the Cadence script in the Cadence JSON format.
 Cadence JSON format contains `type` and `value` keys and is 
 [documented here](../../cadence/json-cadence-spec.md).
+
+## Pre Fill
+
+- Flag: `--pre-fill`
+- Valid inputs: a json file in the FLIX json structure [FLIX json format](https://github.com/onflow/flips/blob/main/application/20220503-interaction-templates.md)
+
 
 ## Block Height
 
