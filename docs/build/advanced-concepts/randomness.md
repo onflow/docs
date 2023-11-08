@@ -99,9 +99,7 @@ seeding their own PRNG utilizing the `RandomBeaconHistory` smart contract:
   which is revealed after the commit transaction concluded.
   For each block, the `RandomBeaconHistory` automatically stores the subsequently generated source of randomness.
 
-Adding a safe pattern to reveal randomness without the possibility of conditional transaction reversion unlocks applications relying on randomness.
-By providing examples of commit-reveal implementations we hope to foster a more secure ecosystem of decentralized applications
-and encourage developers to build with best practices.
+Adding a safe pattern to reveal randomness without the possibility of conditional transaction reversion unlocks applications relying on randomness. By providing examples of commit-reveal implementations we hope to foster a more secure ecosystem of decentralized applications and encourage developers to build with best practices.
 
 In simpler terms, the native secure randomness provided by the protocol can now be safely utilized within Cadence smart contracts
 and is available to all developers on Flow and the FVM.
