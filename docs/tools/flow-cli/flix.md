@@ -31,7 +31,7 @@ The Flow CLI provides a `flix` command to `execute` FLIX. The Cadence being exec
 flow flix execute <query> [<argument> <argument>...] [flags]
 ```
 
-Queries can be a FLIX `id`, `name`, or `path` to a local FLIX file.
+Queries can be a FLIX `id`, `name`, `url` or `path` to a local FLIX file.
 
 ### Execute Usage
 
@@ -177,7 +177,7 @@ Example of prefilled FLIX json file
 
 ### Package
 
-Queries can be a FLIX `id`, `name`, or `path` to a local FLIX file. This command leverages [FCL](../clients/fcl-js/) which will execute FLIX cadence code. 
+Queries can be a FLIX `id`, `name`, `url` or `path` to a local FLIX file. This command leverages [FCL](../clients/fcl-js/) which will execute FLIX cadence code. 
 
 ### Package Usage
 
