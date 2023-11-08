@@ -79,20 +79,9 @@ Although the user (or the honest coin toss contract) cannot predict or bias the 
 
 ## Commit-Reveal Scheme
 
-The recommended way to mitigate the problems above is via a commit-reveal scheme.
-The scheme involves two steps: commit and reveal. During the commit phase, the user
-transaction commits to accepting the future output of a smart contract where the last
-remaining input is an unknown stream of random numbers. The smart contract stores this
-commitment on the blockchain. At the current level of optimization, the reveal phase can
-start as early as the next block, when the beacon's source of randomness becomes available.
-With a second transaction, the smart contract can be executed to explicitly generate the
-output now that the stream of random numbers can be seeded (plus suitable salt).
+The recommended way to mitigate the problems above is via a commit-reveal scheme. The scheme involves two steps: commit and reveal. During the commit phase, the user transaction commits to accepting the future output of a smart contract where the last remaining input is an unknown stream of random numbers. The smart contract stores this commitment on the blockchain. At the current level of optimization, the reveal phase can start as early as the next block, when the beacon's source of randomness becomes available. With a second transaction, the smart contract can be executed to explicitly generate the output now that the stream of random numbers can be seeded (plus suitable salt).
 
-There are ideas how to optimize the developer experience further in the future.
-For example, a transaction could delegate part of its gas to an independent transaction
-it spawns. Such solution would conceptually also be a commit-and-reveal scheme, just immediately
-happening within the same block. Until we eventually get to this next level, developers may need
-to implement their own commit-reveal. In Cadence, it is clean and short.
+There are ideas how to optimize the developer experience further in the future. For example, a transaction could delegate part of its gas to an independent transaction it spawns. Such solution would conceptually also be a commit-and-reveal scheme, just immediately happening within the same block. Until we eventually get to this next level, developers may need to implement their own commit-reveal. In Cadence, it is clean and short.
 
 Protocol improvements (documented in [FLIP 120](https://github.com/onflow/flips/blob/main/cadence/20230713-random-function.md))
 expose the random beacon to the FVM and Cadence where it can be used to seed pseudo-random number generators [PRNGs] for smart contracts.
