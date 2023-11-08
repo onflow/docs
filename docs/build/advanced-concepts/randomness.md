@@ -34,6 +34,7 @@ Cadence has historically provided the `unsafeRandom` function to return a pseudo
 2. A transaction calling into your smart contract can potentially bias the sequence of random numbers which your smart contract internally generates. Currently, the block hash seeds `unsafeRandom`. Consensus nodes can *easily* bias the block hash and **influence the seed for `unsafeRandom`**.
 
 ⚠️ Note `unsafeRandom` will be deprecated in the next Cadence release. **Developers are advised to refrain from using `unsafeRandom.`**
+
 ## Guidelines for Safe Usage
 
 For usage of randomness where result abortion is not an issue, it is recommended to use the Cadence built-in function `revertibleRandom.` `revertibleRandom` returns a pseudo-random number and is also based on the safe Random Beacon.
@@ -57,9 +58,7 @@ The `revertibleRandom` function can be used safely in some applications where th
 However, if applications require a non-trusted party (for instance app users) to submit a transaction calling a randomized (non-deterministic) contract, the developer must explicitly protect the stream of random numbers to not break the security guarantees:
 
 <Callout type="warning">
-🚨 A transaction can atomically revert all its action during its runtime and abort.
-Therefore, it is possible for a transaction calling into your smart contract to post-select
-favorable results and revert the transaction for unfavorable results.
+🚨 A transaction can atomically revert all its action during its runtime and abort. Therefore, it is possible for a transaction calling into your smart contract to post-select favorable results and revert the transaction for unfavorable results.
 </Callout>
 
 In other words, transactions submitted by a non-trusted party are able to reject their results after the random is revealed.
