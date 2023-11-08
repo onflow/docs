@@ -26,6 +26,14 @@ The output from the randomness beacon is a sequence of random bytes that are unp
 
 For over three years, the beacon has ensured protocol security by selecting which consensus node gets to propose the next block and assigning verification nodes to oversee block computations. For those interested in a more detailed exploration of the randomness beacon and its inner workings, you can read [the technical deep dive on the Flow forum](https://forum.flow.com/t/secure-random-number-generator-for-flow-s-smart-contracts/5110).
 
+### The History and Limitations of `unsafeRandom` (now deprecated)
+
+Cadence has historically provided the `unsafeRandom` function to return a pseudo-random number. The stream of random numbers produced was potentially unsafe in the following two regards:
+
+1. The sequence of random numbers is potentially predictable by transactions within the same block and by other smart contracts calling into your smart contract.
+2. A transaction calling into your smart contract can potentially bias the sequence of random numbers which your smart contract internally generates. Currently, the block hash seeds `unsafeRandom`. Consensus nodes can *easily* bias the block hash and **influence the seed for `unsafeRandom`**.
+
+⚠️ Note `unsafeRandom` will be deprecated in the next Cadence release. **Developers are advised to refrain from using `unsafeRandom.`**
 ## Guidelines for Safe Usage
 
 For usage of randomness where result abortion is not an issue, it is recommended to use the Cadence built-in function `revertibleRandom.` `revertibleRandom` returns a pseudo-random number and is also based on the safe Random Beacon.
