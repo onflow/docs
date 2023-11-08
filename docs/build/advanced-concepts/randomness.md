@@ -59,7 +59,7 @@ In other words, transactions submitted by a non-trusted party are able to reject
 💡 **Post-selection** - the ability for transactions to reject results they don't like - is inherent to any smart contract platform that allows transactions to roll back atomically. See this very similar [Ethereum example](https://consensys.github.io/smart-contract-best-practices/development-recommendations/general/public-data/).
 </Callout>
 
-The central aspect that you as a developer have to think about is the following scenario:
+The central aspect that a contract developer needs to think about is the following scenario:
 
 - Imagine an adversarial user that is sending a transaction that calls your smart contract.
 - The transaction includes code that runs after your smart contract returns and inspects the outcome.
