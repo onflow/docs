@@ -20,7 +20,7 @@ Flow’s onchain randomness delivers immediate random values within smart contra
 
 ## History of the Distributed Random Beacon
 
-Within the Flow protocol, the heart of randomness generation lies in the "distributed random beacon." 
+Within the Flow protocol, the heart of randomness generation lies in the "Distributed Random Beacon." 
 This module generates randomness that is distributed across the network while adhering to established cryptographic and security standards. 
 The output from the randomness beacon is a sequence of random bytes that are unpredictable and impartial.
 
@@ -37,7 +37,7 @@ Cadence has historically provided the `unsafeRandom` function to return a pseudo
 
 ## Guidelines for Safe Usage
 
-For usage of randomness where result abortion is not an issue, it is recommended to use the Cadence built-in function `revertibleRandom.` `revertibleRandom` returns a pseudo-random number and is also based on the distributed Random Beacon.
+For usage of randomness where result abortion is not an issue, it is recommended to use the Cadence built-in function `revertibleRandom.` `revertibleRandom` returns a pseudo-random number and is also based on the Distributed Random Beacon.
 
 ```cadence
 // Language reference:
