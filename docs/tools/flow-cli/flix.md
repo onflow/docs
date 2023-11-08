@@ -10,14 +10,15 @@ The Flow CLI provides a `flix` command with a few sub commands `execute` and `pa
 
 ```shell
 >flow flix
-execute, package
+execute, generate, package
 
 Usage:
   flow flix [command]
 
 Available Commands:
-  execute     execute FLIX template with a given id, name, or local filename
-  package     package file for FLIX template fcl-js is default
+  execute     execute FLIX template with a given id, name, local filename, or url
+  generate    generate FLIX json template given local Cadence filename
+  package     package file for FLIX template fcl-js is default  
 
 
 ```
@@ -58,6 +59,76 @@ Currently, `flix package` command only supports generating FCL (Flow Client Libr
 
 ```shell
 flow flix package <query> [flags]
+```
+
+## Generate
+
+Generate FLIX json file. This command will take in a Cadence file and produce a FLIX json file. There are two ways to provide metadata to populate the FLIX json structure. 
+ - Use `--pre-fill` flag to pass in a pre populated FLIX json structure
+ - Cadence comment block properties [Cadence Comment Block](https://github.com/onflow/flips/pull/80)
+
+```shell
+# Generate FLIX json file using cadence transaction or script where the cadence uses Cadence Comment block properties
+flow flix generate cadence/transactions/update-helloworld.cdc
+```
+
+Example of Cadence Comment block properties 
+```cadence
+import "HelloWorld"
+/*
+@f_version 1.0.0
+@lang en-US
+
+@message title: Update Greeting
+@message description: Update the greeting message
+
+@parameter title greeting: Greeting Message
+@parameter description greeting: The new greeting message
+*/
+transaction(greeting: String) {
+
+  prepare(acct: AuthAccount) {
+    log(acct.address)
+  }
+
+  execute {
+    HelloWorld.updateGreeting(newGreeting: greeting)
+  }
+}
+```
+
+
+```shell
+# Generate FLIX json file using cadence transaction or script passing in a pre filled FLIX json file. The json file will get filled out by the `flow flix generate` command
+flow flix generate cadence/scripts/read-helloworld.cdc --pre-fill cadence/templates/read-helloworld.prefill.json
+```
+Example of prefilled FLIX json file
+```json
+{
+    "f_type": "InteractionTemplate",
+    "f_version": "1.0.0",
+    "id": "",
+    "data": {
+        "type": "script",
+        "interface": "",
+        "messages": {
+            "title": {
+                "i18n": {
+                    "en-US": "Get Greeting"
+                }
+            },
+            "description": {
+                "i18n": {
+                    "en-US": "Get the greeting from the HelloWorld class"
+                }
+            }
+        },
+        "cadence": "",
+        "dependencies": {},
+        "arguments": {}
+    }
+}
+
 ```
 
 ## Package
