@@ -19,4 +19,12 @@ Network Faucets provide free Flow tokens for testing purposes, functioning like 
 
 - Testnet: [https://testnet-faucet.onflow.org/](https://testnet-faucet.onflow.org/)
 
+## LearnWeb3 Flow Faucet
+
+[LearnWeb3 Flow Faucet](https://learnweb3.io/faucets/flow) is a community faucet tool that provides a seamless way to acquire small amounts of Flow tokens for testing and development purposes on the Flow blockchain's testnet environment.
+
+### Supported Networks
+
+- Testnet: [https://learnweb3.io/faucets/flow](https://learnweb3.io/faucets/flow)
+
 </div>
