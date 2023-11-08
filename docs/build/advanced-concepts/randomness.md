@@ -1,9 +1,9 @@
 ---
-title: Flow's Native Onchain Randomness
-sidebar_label: Native Randomness
+title: Flow's Verified Random Function (VRF)
+sidebar_label: Verified Random Function (VRF)
 ---
 
-# Native Onchain Randomness on Flow
+# Native Verified Random Function
 
 Flow enhances blockchain functionality by providing native onchain randomness, eliminating reliance on external oracles in Web3. This secure, decentralized feature empowers developers to build a variety of applications with truly unpredictable, transparent, and fair outcomes, achieved with greater efficiency.
 
