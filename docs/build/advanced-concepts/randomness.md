@@ -24,7 +24,7 @@ Within the Flow protocol, the heart of randomness generation lies in the "distri
 This module generates randomness that is distributed across the network while adhering to established cryptographic and security standards. 
 The output from the randomness beacon is a sequence of random bytes that are unpredictable and impartial.
 
-For over three years, the beacon has ensured protocol security by assigning verification nodes to oversee block computations. For those interested in a more detailed exploration of the randomness beacon and its inner workings, you can read [the technical deep dive on the Flow forum](https://forum.flow.com/t/secure-random-number-generator-for-flow-s-smart-contracts/5110).
+For over three years, the beacon has ensured protocol security by selecting which consensus node gets to propose the next block and assigning verification nodes to oversee block computations. For those interested in a more detailed exploration of the randomness beacon and its inner workings, you can read [the technical deep dive on the Flow forum](https://forum.flow.com/t/secure-random-number-generator-for-flow-s-smart-contracts/5110).
 
 ## Guidelines for Safe Usage
 
