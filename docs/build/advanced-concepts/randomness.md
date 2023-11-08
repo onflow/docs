@@ -87,7 +87,7 @@ Adding a safe pattern to reveal randomness without the possibility of conditiona
 
 On Flow, we have absorbed all security complexity into the platform.
 
-[FLIP 123: On-chain Random beacon history for commit-reveal schemes](https://github.com/onflow/flips/blob/main/protocol/20230728-commit-reveal.md#flip-123-on-chain-random-beacon-history-for-commit-reveal-schemes) was introduced to provide a safe pattern to use randomness in transactions so that it's not possible to revert non-favorable randomized transaction results.
+[FLIP 123: On-chain Random beacon history for commit-reveal schemes](https://github.com/onflow/flips/blob/main/protocol/20230728-commit-reveal.md#flip-123-on-chain-random-beacon-history-for-commit-reveal-schemes) was introduced to provide a safe pattern to use randomness in transactions so that it's not possible to revert unfavorable randomized transaction results.
 We recommend this approach as a best-practice example for implementing a commit-reveal-recover scheme in Cadence. The `RandomBeaconHistory` contract provides a convenient archive, where for each past block height (starting Nov 2023) the respective “source of randomness” can be retrieved. The `RandomBeaconHistory` contract is automatically executed by the system at each block to store the next source of randomness value.
 
 <Callout type="info">
