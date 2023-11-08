@@ -197,4 +197,3 @@ If you’d like to dive deeper into Flow’s onchain randomness, here’s a list
     - **[FLIP 120: Update unsafeRandom function](https://github.com/onflow/flips/blob/main/cadence/20230713-random-function.md#flip-120-update-unsaferandom-function)**
     - **[FLIP 123: On-chain Random beacon history for commit-reveal schemes](https://github.com/onflow/flips/blob/main/protocol/20230728-commit-reveal.md#flip-123-on-chain-random-beacon-history-for-commit-reveal-schemes)**
 - To see working Cadence code, explore the [coin toss example on GitHub](https://github.com/onflow/random-coin-toss/tree/update-prg-impl).
-- Read the blog post announcing Flow’s native randomness.
