@@ -37,7 +37,7 @@ Cadence has historically provided the `unsafeRandom` function to return a pseudo
 
 ## Guidelines for Safe Usage
 
-For usage of randomness where result abortion is not an issue, it is recommended to use the Cadence built-in function `revertibleRandom.` `revertibleRandom` returns a pseudo-random number and is also based on the safe Random Beacon.
+For usage of randomness where result abortion is not an issue, it is recommended to use the Cadence built-in function `revertibleRandom.` `revertibleRandom` returns a pseudo-random number and is also based on the distributed Random Beacon.
 
 ```cadence
 // Language reference:
