@@ -18,7 +18,7 @@ Flow’s onchain randomness delivers immediate random values within smart contra
 - **DAOs:** Assists in unbiased voting and task assignments through immediate randomness.
 - **Broad Applications:** Extends to any domain requiring impartial randomization, from asset distribution to security mechanisms, all with the added benefit of on-demand availability.
 
-## History - Distributed Random Beacon
+## History of the Distributed Random Beacon
 
 Within the Flow protocol, the heart of randomness generation lies in the "distributed random beacon." 
 This module generates randomness that is distributed across the network while adhering to established cryptographic and security standards. 
