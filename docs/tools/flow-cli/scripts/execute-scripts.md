@@ -39,7 +39,7 @@ script to be executed.
 
 ### Arguments
 - Name: `argument`
-- Valid inputs: valid [cadence values](https://cadence-lang.org/docs/0.42/json-cadence-spec)
+- Valid inputs: valid [cadence values](https://cadence-lang.org/docs/json-cadence-spec)
   matching argument type in script code.
 
 Input arguments values matching corresponding types in the source code and passed in the same order.
@@ -56,7 +56,7 @@ You can pass a `nil` value to optional arguments by executing the flow script li
 
 Arguments passed to the Cadence script in the Cadence JSON format.
 Cadence JSON format contains `type` and `value` keys and is 
-[documented here](https://cadence-lang.org/docs/0.42/json-cadence-spec).
+[documented here](https://cadence-lang.org/docs/json-cadence-spec).
 
 ### Host
 

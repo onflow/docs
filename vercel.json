@@ -978,7 +978,7 @@
     },
     {
       "source": "/cadence/:path*",
-      "destination": "https://cadence-lang.org/docs/0.42/:path*",
+      "destination": "https://cadence-lang.org/docs/:path*",
       "permanent": true
     },
     {

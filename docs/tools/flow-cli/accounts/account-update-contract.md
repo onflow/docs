@@ -77,7 +77,7 @@ Filename of the file containing contract source code.
 
 ### Arguments
 - Name: `argument`
-- Valid inputs: valid [cadence values](https://cadence-lang.org/docs/0.42/json-cadence-spec)
+- Valid inputs: valid [cadence values](https://cadence-lang.org/docs/json-cadence-spec)
   matching argument type in transaction code.
 
 Input arguments values matching corresponding types in the source code and passed in the same order.
@@ -118,7 +118,7 @@ Shows a diff to approve before updating between deployed contract and new contra
 
 Arguments passed to the Cadence transaction in Cadence JSON format.
 Cadence JSON format contains `type` and `value` keys and is
-[documented here](https://cadence-lang.org/docs/0.42/json-cadence-spec).
+[documented here](https://cadence-lang.org/docs/json-cadence-spec).
 
 ### Include Fields
 

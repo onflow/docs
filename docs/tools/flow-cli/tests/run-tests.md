@@ -41,7 +41,7 @@ Test results: "test_script.cdc"
 
 ```
 
-To learn more about writing tests in Cadence, take a look at the [Cadence testing framework](https://cadence-lang.org/docs/0.42/testing-framework).
+To learn more about writing tests in Cadence, take a look at the [Cadence testing framework](https://cadence-lang.org/docs/testing-framework).
 
 ## Flags
 

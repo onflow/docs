@@ -13,7 +13,7 @@ Quick references to very helpful parts of developer documentation. Languages to 
   - [FCL SDK](../tools/clients/fcl-js/sdk-guidelines.mdx) - Flow Client Library SDK
   - [Flow Go SDK](../tools/clients/flow-go-sdk/index.mdx) - Golang Flow Client SDK
   - [Flow Unity SDK](https://unity-flow-sdk-api-docs.vercel.app/) - For gaming use the Unity SDK
-- [Cadence](https://cadence-lang.org/docs/0.42/language/functions) - Flow blockchain Smart Contract language, Cadence
+- [Cadence](https://cadence-lang.org/docs/language/functions) - Flow blockchain Smart Contract language, Cadence
 
 ## Network
 Get Flow blockchain data from Access Nodes, both REST and gRPC endpoints are available. Get the current status of mainnet and testnet networks.

@@ -15,7 +15,7 @@ Accounts on flow can be accessed in Cadence through two types, `PublicAccount` a
 
 Accessing the auth account allows for account modification, so it's essential to safeguard this access by mandating that transactions are signed by the account being accessed. A transaction can list multiple auth accounts it wants to access as part of the `pre` section of the transaction. Read more about transaction signing in the transaction documentation.
 
-Since access to the `AuthAccount` object enables state change, the idea of account ownership actually translates to the ability to access the auth account. Traditionally, you might consider this the same as having key access on an account, but we'll see in just a minute how programmatic, ownership-level access is unlocked with [Capabilities on Flow](https://cadence-lang.org/docs/0.42/language/capabilities).
+Since access to the `AuthAccount` object enables state change, the idea of account ownership actually translates to the ability to access the auth account. Traditionally, you might consider this the same as having key access on an account, but we'll see in just a minute how programmatic, ownership-level access is unlocked with [Capabilities on Flow](https://cadence-lang.org/docs/language/capabilities).
 
 ## AuthAccount Capabilities
 

@@ -34,7 +34,7 @@ Events are data objects emitted at the end of a transaction that describe the st
 
 Events can be used to notify your off-chain infrastructure of important state changes in your smart contracts. For example, if a user purchases an NFT from your storefront smart contract, an event will be emitted that describes this purchase. Your web application, which displays the NFTs for sale, can then capture that event and remove the NFT from the sale list.
 
-You can query events through the Flow Access API using the available [Flow SDKs](../tools/clients/index.md). Event data is returned in [JSON-Cadence format](https://cadence-lang.org/docs/0.42/json-cadence-spec).
+You can query events through the Flow Access API using the available [Flow SDKs](../tools/clients/index.md). Event data is returned in [JSON-Cadence format](https://cadence-lang.org/docs/json-cadence-spec).
 
 #### Event Reflection Database
 
@@ -53,4 +53,4 @@ At any point, your dapp can execute a query to read the state of your contracts.
 
 Events follow a push model, whereas script queries follow a pull model. Your dapp may need to check the state of your contracts without waiting for an event to be emitted. 
 
-You can execute scripts through the Flow Access API using the available [Flow SDKs](../tools/clients/index.md). Like events, script results are returned in [JSON-Cadence format](https://cadence-lang.org/docs/0.42/json-cadence-spec).
+You can execute scripts through the Flow Access API using the available [Flow SDKs](../tools/clients/index.md). Like events, script results are returned in [JSON-Cadence format](https://cadence-lang.org/docs/json-cadence-spec).
