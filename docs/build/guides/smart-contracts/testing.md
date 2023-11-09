@@ -199,7 +199,18 @@ By leveraging these advanced testing techniques, you can write more robust and r
 
 This is a basic example, and there are many more advanced features and techniques you can explore when working with the Cadence Testing Framework. 
 
-For more in-depth tutorials and documentation, refer to the official [Cadence language documentation](https://cadencelang.org/) and the [Flow CLI documentation](../../../tools/flow-cli/index.md).
+For more in-depth tutorials and documentation, refer to the official [Cadence language documentation](https://cadence-lang.org/) and the [Flow CLI documentation](../../../tools/flow-cli/index.md).
+
+## Testing Requirements
+
+It is suggested to follow the following best practices:
+
+- Every publicly exposed feature of a contract and its resources should have unit tests that check both for success with correct input _and_ for failure with incorrect input.
+  These tests should be capable of being run locally with the Flow emulator, with no or minimal extra resources or configuration, and with a single command.
+- Each user story or workflow that uses the smart contracts should have an integration test that ensures that the series of steps required to complete it does so successfully with test data.
+
+Make sure you test all contracts - and the integration into your application extensively before proceeding to the mainnet.
+You should aim to replicate all conditions as closely as possible to the usage patterns on mainnet.
 
 ## Writing Tests
 
