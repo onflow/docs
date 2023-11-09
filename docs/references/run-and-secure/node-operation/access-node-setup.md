@@ -76,8 +76,8 @@ tar -xvf boot-tools.tar
 ```
 
 ```shell CheckSHA256
-sha256sum ./boot-tools/bootstrap
-9673e2c29c7f350caea8ff20dbc1e2ab24853416c2d2078c1a21790773315972  ./boot-tools/bootstrap
+sha256sum ./boot-tools/bootstrapcmd
+a06e3e9b2443c6755214150e9e101b70dd48ae30ffcfcbbcc471ba430cb104bf  ./boot-tools/bootstrapcmd
 ```
 
 > If you have downloaded the bootstrapping kit previously, ensure the SHA256 hash for it still matches. If not, re-download to ensure you are using the most up-to-date version.
@@ -89,11 +89,11 @@ sha256sum ./boot-tools/bootstrap
 # Generate Keys
 $ mkdir ./bootstrap
 # YOUR_NODE_ADDRESS: FQDN associated to your instance
-$ ./boot-tools/bootstrap key --address "<YOUR_NODE_ADDRESS_GOES_HERE>:3569" --role access -o ./bootstrap
+$ ./boot-tools/bootstrapcmd key --address "<YOUR_NODE_ADDRESS_GOES_HERE>:3569" --role access -o ./bootstrap
 ```
 
 ```shell Example
-$./boot-tools/bootstrap key --address "flowaccess.mycompany.com:3569" --role access  -o ./bootstrap
+$./boot-tools/bootstrapcmd key --address "flowaccess.mycompany.com:3569" --role access  -o ./bootstrap
 <nil> DBG will generate networking key
 <nil> INF generated networking key
 <nil> DBG will generate staking key

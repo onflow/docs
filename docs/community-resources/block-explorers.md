@@ -41,13 +41,13 @@ Supported networks:
 - Testnet: [https://testnet.flowview.app/](https://testnet.flowview.app/)
 - Emulator (local): [https://emulator.flowview.app/](https://emulator.flowview.app/)
 
-## ContractBrowser
+## Contract Browser
 
-[ContractBrowser](https://contractbrowser.com/) provides tools for viewing deployed smart contracts, their dependencies, and dependents. Features include:
+[Contract Browser](https://contractbrowser.com/) provides tools for viewing deployed smart contracts, their dependencies, and dependents. Features include:
 
 - Search, view, and verify smart contract source code
 - Detailed smart contract information
 
-[Testnet ContractBrowser](https://testnet.contractbrowser.com/) is also available for `Testnet Flow`.
+[Testnet Contract Browser](https://testnet.contractbrowser.com/) is also available for `Testnet Flow`.
 
 </div>

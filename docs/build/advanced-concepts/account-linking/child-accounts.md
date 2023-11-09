@@ -35,8 +35,8 @@ signed transaction.
 </Callout>
 
 Very simply, account linking is a [feature in Cadence](https://github.com/onflow/flips/pull/53) that let's an
-[AuthAccount](../../../cadence/language/accounts#authaccount) create a
-[Capability](../../../cadence/language/capabilities.md) on itself. You can do so in the following
+[AuthAccount](https://cadence-lang.org/docs/language/accounts#authaccount) create a
+[Capability](https://cadence-lang.org/docs/language/capabilities) on itself. You can do so in the following
 transaction:
 
 ```cadence link_account.cdc
@@ -210,7 +210,7 @@ delegated access.
 
 We can achieve issuance from the child account and claim from the parent account pattern in either:
 
-1. We can leverage [Cadence’s `AuthAccount.Inbox`](../../../cadence/language/accounts#account-inbox) to publish the
+1. We can leverage [Cadence’s `AuthAccount.Inbox`](https://cadence-lang.org/docs/language/accounts#account-inbox) to publish the
    Capability from the child account & have the parent claim the Capability in a separate transaction.
 1. Multi-party signed transaction, signed by both the the accounts on either side of the link
 

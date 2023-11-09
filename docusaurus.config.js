@@ -177,11 +177,6 @@ const config = {
       /** @type {import('@docusaurus/preset-classic').Options} */
       ({
         docs: {
-          versions: {
-            stable: {
-              label: 'Current',
-            },
-          },
           beforeDefaultRemarkPlugins: [
             [
               remarkCodeHike,
@@ -264,10 +259,9 @@ const config = {
             activeBasePath: '/build',
           },
           {
-            to: 'cadence/intro',
+            href: 'https://cadence-lang.org/docs/',
             position: 'left',
             label: 'Cadence',
-            activeBasePath: '/cadence',
           },
           {
             to: 'tools/flow-cli',
@@ -286,13 +280,6 @@ const config = {
             position: 'left',
             label: 'Resources',
             activeBasePath: '/community-resources',
-          },
-          // Remove after cadence is updated to a stable version
-          // https://github.com/onflow/docs/issues/105
-          {
-            type: 'docsVersionDropdown',
-            position: 'right',
-            dropdownActiveClassDisabled: true,
           },
           {
             href: 'https://github.com/onflow',
@@ -323,7 +310,7 @@ const config = {
                 to: '/tools',
               },
               {
-                to: '/cadence/intro',
+                to: 'https://cadence-lang.org/docs/',
                 label: 'Cadence',
               },
               {
@@ -397,7 +384,7 @@ const config = {
                 label: 'Flow Playground',
               },
               {
-                to: '/cadence/tutorial/first-steps',
+                to: 'https://cadence-lang.org/docs/tutorial/first-steps',
                 label: 'Cadence Tutorials',
               },
               {
@@ -571,6 +558,24 @@ const config = {
       };
     },
     // require('./plugins/networks')
+    [
+      '@docusaurus/plugin-client-redirects',
+      {
+        createRedirects(existingPath) {
+          console.log({ existingPath });
+          if (existingPath.includes('/cadence')) {
+            // Redirect from /docs/team/X to /community/X and /docs/support/X to /community/X
+            return [
+              existingPath.replace(
+                'https://cadence-lang.org/docs/',
+                '/cadence',
+              ),
+            ];
+          }
+          return undefined; // Return a falsy value: no redirect created
+        },
+      },
+    ],
   ],
   stylesheets: [
     {

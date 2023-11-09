@@ -371,7 +371,7 @@ In `components/Container.tsx` file, the `mutateGreeting` method `fcl.mutate` sen
 That's it! You now have Flow app that uses auth, query and mutate the chain. This is just the beginning. There is so much more to know. Next steps:
 
 **Cadence**
-- [Cadence Playground Tutorials](../../cadence/tutorial/01-first-steps.md)
+- [Cadence Playground Tutorials](https://cadence-lang.org/docs/tutorial/first-steps)
 - [Cadence Hello World Video](https://www.youtube.com/watch?v=pRz7EzrWchs)
 - [Why Cadence?](https://www.onflow.org/post/flow-blockchain-cadence-programming-language-resources-assets)
 
