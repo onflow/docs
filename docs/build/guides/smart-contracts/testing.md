@@ -11,13 +11,13 @@ Testing is an essential part of smart contract development to ensure the correct
 
 ## Install Flow CLI
 
-The [Flow CLI](../../tools/flow-cli/index.md) is the primary tool for developing, testing, and deploying smart contracts to the Flow network.
+The [Flow CLI](../../../tools/flow-cli/index.md) is the primary tool for developing, testing, and deploying smart contracts to the Flow network.
 
-If you haven't installed the Flow CLI yet and have [homebrew](https://brew.sh/) installed, simply run `brew install flow-cli`. Alternatively, refer to the Flow CLI [installation instructions](../../tools/flow-cli/install.md).
+If you haven't installed the Flow CLI yet and have [homebrew](https://brew.sh/) installed, simply run `brew install flow-cli`. Alternatively, refer to the Flow CLI [installation instructions](../../../tools/flow-cli/install.md).
 
 ## Create a new project
 
-In your preferred code editor, create a new directory for your project and navigate to it in the terminal. Then initialize a new Flow project by running the command `flow init`. This will create a `flow.json` config file that contains the [project's configuration](../../tools/flow-cli/flow.json/configuration.md).
+In your preferred code editor, create a new directory for your project and navigate to it in the terminal. Then initialize a new Flow project by running the command `flow init`. This will create a `flow.json` config file that contains the [project's configuration](../../../tools/flow-cli/flow.json/configuration.md).
 
 ```bash
 mkdir test-cadence
@@ -213,7 +213,7 @@ Cadence comes with built-in support for code coverage, as well as a native testi
 This framework is bundled with the [Flow CLI](../../../tools/flow-cli/index.md) tool, which includes a dedicated command for running tests (`flow test`).
 
 You can find examples of Cadence tests in the following projects: [hybrid-custody](https://github.com/onflow/hybrid-custody/tree/main/test), [flow-nft](https://github.com/onflow/flow-nft/tree/master/tests), [flow-ft](https://github.com/onflow/flow-ft/tree/master/tests).
-Visit the [documentation](../../../cadence/testing-framework.mdx) to view all the available features.
+Visit the [documentation](https://cadence-lang.org/docs/testing-framework) to view all the available features.
 
 The [Hybrid Custody](https://github.com/onflow/hybrid-custody#readme) project is a prime example which utilizes both the Cadence testing framework and code coverage in its CI.
 
@@ -258,7 +258,7 @@ Tests should also be runnable in automated environments (CI). You can use the [J
 Once you deployed your application to the testnet, you should record how your application handles non-trivial amounts of traffic to ensure there are no issues.
 
 <Callout type="success">
-Get familiar with the [Cadence anti-patterns](../../../cadence/anti-patterns.md) to avoid avoid problematic or unintended behavior.
+Get familiar with the [Cadence anti-patterns](https://cadence-lang.org/docs/anti-patterns) to avoid avoid problematic or unintended behavior.
 </Callout>
 
 
