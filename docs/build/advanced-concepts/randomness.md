@@ -1,9 +1,9 @@
 ---
-title: Flow's Verified Random Function (VRF)
-sidebar_label: Verified Random Function (VRF)
+title: Flow Verifiable Random Function (VRF)
+sidebar_label: Flow VRF
 ---
 
-# Native Verified Random Function
+# Flow Verifiable Random Function (VRF)
 
 Flow enhances blockchain functionality and eliminates reliance on external oracles by providing native onchain randomness at the protocol level. This secure, decentralized feature empowers developers to build a variety of applications with truly unpredictable, transparent, and fair outcomes, achieved with greater efficiency.
 
