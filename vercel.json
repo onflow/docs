@@ -8,11 +8,6 @@
       "permanent": true
     },
     {
-      "source": "/cadence",
-      "destination": "/cadence/intro",
-      "permanent": true
-    },
-    {
       "source": "/build",
       "destination": "/build/flow",
       "permanent": true
@@ -20,11 +15,6 @@
     {
       "source": "/flow",
       "destination": "/concepts/start-here",
-      "permanent": true
-    },
-    {
-      "source": "/cadence/msg-sender",
-      "destination": "/cadence/solidity-to-cadence#msgsender-considered-harmful",
       "permanent": true
     },
     {
@@ -278,78 +268,8 @@
       "permanent": true
     },
     {
-      "source": "/cadence/style-guide",
-      "destination": "/cadence/styleguide/project-development-tips",
-      "permanent": true
-    },
-    {
-      "source": "/cadence/style-guide/project-development-tips",
-      "destination": "/cadence/styleguide/project-development-tips",
-      "permanent": true
-    },
-    {
       "source": "/flow/faq",
       "destination": "/references/run-and-secure/nodes/faq/backers",
-      "permanent": true
-    },
-    {
-      "source": "/cadence/tutorial",
-      "destination": "/cadence/tutorial/first-steps",
-      "permanent": true
-    },
-    {
-      "source": "/cadence/tutorial/01-first-steps",
-      "destination": "/cadence/tutorial/first-steps",
-      "permanent": true
-    },
-    {
-      "source": "/cadence/tutorial/02-hello-world",
-      "destination": "/cadence/tutorial/hello-world",
-      "permanent": true
-    },
-    {
-      "source": "/cadence/tutorial/03-resources",
-      "destination": "/cadence/tutorial/resources",
-      "permanent": true
-    },
-    {
-      "source": "/cadence/tutorial/04-capabilities",
-      "destination": "/cadence/tutorial/capabilities",
-      "permanent": true
-    },
-    {
-      "source": "/cadence/tutorial/05-non-fungible-tokens-1",
-      "destination": "/cadence/tutorial/non-fungible-tokens-1",
-      "permanent": true
-    },
-    {
-      "source": "/cadence/tutorial/05-non-fungible-tokens-2",
-      "destination": "/cadence/tutorial/non-fungible-tokens-2",
-      "permanent": true
-    },
-    {
-      "source": "/cadence/tutorial/06-fungible-tokens",
-      "destination": "/cadence/tutorial/fungible-tokens",
-      "permanent": true
-    },
-    {
-      "source": "/cadence/tutorial/07-marketplace-setup",
-      "destination": "/cadence/tutorial/marketplace-setup",
-      "permanent": true
-    },
-    {
-      "source": "/cadence/tutorial/08-marketplace-compose",
-      "destination": "/cadence/tutorial/marketplace-compose",
-      "permanent": true
-    },
-    {
-      "source": "/cadence/tutorial/09-voting",
-      "destination": "/cadence/tutorial/voting",
-      "permanent": true
-    },
-    {
-      "source": "/cadence/tutorial/10-resources-compose",
-      "destination": "/cadence/tutorial/resources-compose",
       "permanent": true
     },
     {
@@ -525,11 +445,6 @@
     {
       "source": "/docs",
       "destination": "/",
-      "permanent": true
-    },
-    {
-      "source": "/docs/cadence",
-      "destination": "/cadence",
       "permanent": true
     },
     {
@@ -812,21 +727,6 @@
       "permanent": true
     },
     {
-      "source": "/next/concepts/start-here",
-      "destination": "/next/build/flow",
-      "permanent": true
-    },
-    {
-      "source": "/next/cadence/intro",
-      "destination": "/next/build/cadence",
-      "permanent": true
-    },
-    {
-      "source": "/next/cadence/why",
-      "destination": "/next/build/cadence",
-      "permanent": true
-    },
-    {
       "source": "/tools/wallets",
       "destination": "/community-resources/wallets",
       "permanent": true
@@ -844,101 +744,6 @@
     {
       "source": "/tools/block-explorers",
       "destination": "/overview/getting-started/block-explorers",
-      "permanent": true
-    },
-    {
-      "source": "/next/tools/wallets",
-      "destination": "/next/community-resources/wallets",
-      "permanent": true
-    },
-    {
-      "source": "/next/tools/bridges",
-      "destination": "/next/community-resources/bridges",
-      "permanent": true
-    },
-    {
-      "source": "/next/tools/network-faucets",
-      "destination": "/next/community-resources/faucets",
-      "permanent": true
-    },
-    {
-      "source": "/next/tools/block-explorers",
-      "destination": "/next/community-resources/block-explorers",
-      "permanent": true
-    },
-    {
-      "source": "/next/community-resources/projects",
-      "destination": "/next/community-resources/projects",
-      "permanent": true
-    },
-    {
-      "source": "/next/building-on-flow/core-contracts/fungible-tokens",
-      "destination": "/next/overview/dive-in/fungible-tokens",
-      "permanent": true
-    },
-    {
-      "source": "/next/concepts/flix",
-      "destination": "/next/build/advanced-concepts/flix",
-      "permanent": true
-    },
-    {
-      "source": "/next/building-on-flow/governance",
-      "destination": "/next/references/governance",
-      "permanent": true
-    },
-    {
-      "source": "/next/cadence/anti-patterns",
-      "destination": "/next/build/best-practices/anti-patterns",
-      "permanent": true
-    },
-    {
-      "source": "/next/cadence/contract-upgrades",
-      "destination": "/next/build/best-practices/contract-upgrades",
-      "permanent": true
-    },
-    {
-      "source": "/next/cadence/design-patterns",
-      "destination": "/next/build/best-practices/design-patterns",
-      "permanent": true
-    },
-    {
-      "source": "/next/cadence/project-development-tips",
-      "destination": "/next/build/best-practices/project-development-tips",
-      "permanent": true
-    },
-    {
-      "source": "/next/cadence/security-best-practices",
-      "destination": "/next/build/best-practices/security-best-practices",
-      "permanent": true
-    },
-    {
-      "source": "/next/building-on-flow/core-contracts/:path*",
-      "destination": "/next/references/core-contracts/:path*",
-      "permanent": true
-    },
-    {
-      "source": "/next/concepts/account-linking/:path*",
-      "destination": "/next/build/advanced-concepts/account-linking/:path*",
-      "permanent": true
-    },
-    {
-      "source": "/next/concepts/:path*",
-      "destination": "/next/build/key-concepts/:path*",
-      "permanent": true
-    },
-    {
-      "source": "/next/guides/runningNode",
-      "destination": "/next/references/run-and-secure/node-operation",
-      "permanent": true
-    },
-    {
-      "source": "/next/building-on-flow/run-and-secure/staking/:path*",
-      "destination": "/next/architecture/staking/:path*",
-      "permanent": true
-    },
-    {
-      "source": "/next/building-on-flow/run-and-secure/node/node-operation/:path*",
-      "destination": "/next/references/run-and-secure/node-operation/:path*",
       "permanent": true
     },
     {
@@ -1067,11 +872,6 @@
       "permanent": true
     },
     {
-      "source": "/cadence/language/capability-based-access-control",
-      "destination": "/cadence/language/capabilities",
-      "permanent": true
-    },
-    {
       "source": "/architecture/staking/:path*",
       "destination": "/references/run-and-secure/staking/:path*",
       "permanent": true
@@ -1174,6 +974,21 @@
     {
       "source": "/getting-started",
       "destination": "/build/getting-started/app-architecture",
+      "permanent": true
+    },
+    {
+      "source": "/cadence/:path*",
+      "destination": "https://cadence-lang.org/docs/:path*",
+      "permanent": true
+    },
+    {
+      "source": "/next/cadence/:path*",
+      "destination": "https://cadence-lang.org/docs/next/:path*",
+      "permanent": true
+    },
+    {
+      "source": "/next/:path*",
+      "destination": "/:path*",
       "permanent": true
     }
   ]

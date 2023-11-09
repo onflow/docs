@@ -294,7 +294,7 @@ pub fun add(_ a: Int, _ b: Int): Int {
 
 **Avoid excessive load and save operations**
 
-Avoid costly loading and storage operations and [borrow references](../../cadence/design-patterns.md#avoid-excessive-load-and-save-storage-operations-prefer-in-place-mutations) where possible, for example:
+Avoid costly loading and storage operations and [borrow references](https://cadence-lang.org/docs/design-patterns#avoid-excessive-load-and-save-storage-operations-prefer-in-place-mutations) where possible, for example:
 
 ```cadence
 transaction {

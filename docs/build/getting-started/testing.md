@@ -184,7 +184,7 @@ The Cadence testing framework provides various features and techniques for writi
 
 - [**Code Coverage**](https://github.com/m-Peter/flow-code-coverage): You can use the `--cover` flag with the `flow test` command to view code coverage results when running your tests. This allows you to identify areas of your code that are not adequately covered by your test inputs.
 - **Test Helpers**: Test helpers are reusable functions that help you set up the initial state for your test files. You can define test helpers in a Cadence program and use them in your test files by importing it whenever needed.
-- [**Assertions**](../../cadence/testing-framework.mdx#assertions): The testing framework provides built-in assertion functions, such as `assertEqual`, `beNil`, `beEmpty`, `contain`, to help you verify the expected behavior of your smart contracts.
+- [**Assertions**](https://cadence-lang.org/docs/testing-framework.mdx#assertions): The testing framework provides built-in assertion functions, such as `assertEqual`, `beNil`, `beEmpty`, `contain`, to help you verify the expected behavior of your smart contracts.
 - **Test Suites**: You can organize your test files into test suites to improve the readability and maintainability of your test code. Test suites allow you to group related test cases and set up common test helpers for all the tests in the suite.
 - [**Integration tests**](https://github.com/bjartek/overflow): In our previous example, we would directly call the available methods on the contract under test. This is generally categorized as unit testing. You can also write integration tests, by executing scripts & transactions to interact with the contracts under testing. If you would like to write your tests in Go, instead of Cadence, you can use [Overflow tool](https://github.com/bjartek/overflow) to run integration tests against either an local emulator, testnet, mainnet or an in memory instance of the flow-emulator.
 
@@ -196,5 +196,5 @@ For more in-depth tutorials and documentation, refer to the official [Cadence la
 
 ## References
 
-- [Reference documentation for Cadence testing](../../cadence/testing-framework.mdx)
+- [Reference documentation for Cadence testing](https://cadence-lang.org/docs/testing-framework)
 - https://github.com/bjartek/overflow

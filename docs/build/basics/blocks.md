@@ -27,7 +27,7 @@ The Block header contains the following fields:
 - **ID** represents the block's unique identifier, which is derived from the hashing block header including the payload hash. The algorithm used on Flow to hash the content and get an identifier is SHA3 256. This ID is a commitment to all the values in the block staying the same.
 - **Parent ID** is a link to the previous block ID in the list making up the blockchain.
 - **Height** is the block sequence number, where block 0 was the first block produced, and each next block increments the value by 1.
-- **Timestamp** is the timestamp at which this block was proposed by the consensus node. Depending on your use case this time might not be accurate enough, [read more about measuring time on the Flow blockchain](../../cadence/measuring-time.mdx#time-on-the-flow-blockchain).
+- **Timestamp** is the timestamp at which this block was proposed by the consensus node. Depending on your use case this time might not be accurate enough, [read more about measuring time on the Flow blockchain](https://cadence-lang.org/docs/measuring-time#time-on-the-flow-blockchain).
 - **Payload Hash** represents the payload hash that is included when producing the ID of the block. Payload hash is calculated by taking Merkle root hashes of collection guarantees, seals, execution receipts, and execution results and hashing them together. More on each of the values in the block payload section.
 
 ### Block Payload

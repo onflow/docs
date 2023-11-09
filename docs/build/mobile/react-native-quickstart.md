@@ -293,7 +293,7 @@ await fcl.query({
 });
 ```
 
-Inside the query you'll see we set two things: `cadence` and `args`. Cadence is Flow's smart contract language we mentioned. For this tutorial, when you look at it you just need to notice that it's importing the `Profile` contract from the account we named `0xProfile` earlier in our config file, then also taking an account address, and reading it. That's it until you're ready to [learn more Cadence](../../cadence/tutorial/01-first-steps.md).
+Inside the query you'll see we set two things: `cadence` and `args`. Cadence is Flow's smart contract language we mentioned. For this tutorial, when you look at it you just need to notice that it's importing the `Profile` contract from the account we named `0xProfile` earlier in our config file, then also taking an account address, and reading it. That's it until you're ready to [learn more Cadence](https://cadence-lang.org/docs/tutorial/first-steps).
 
 In the `args` section, we are simply passing it our user's account address from the user we set in state after authentication and giving it a type of `Address`.  For more possible types, [see this reference](../../tools/clients/fcl-js/api.md#ftype).
 
@@ -612,7 +612,7 @@ If you query the account profile again, "Profile Name:" should now display "Flow
 That's it! You now have a shippable Flow dapp that can auth, query, init accounts, and mutate the chain. This is just the beginning. There is so much more to know. We have a lot more resources to help you build. To dive deeper, here are a few good places for taking the next steps:
 
 **Cadence**
-- [Cadence Playground Tutorials](../../cadence/tutorial/01-first-steps.md)
+- [Cadence Playground Tutorials](https://cadence-lang.org/docs/tutorial/first-steps)
 - [Cadence Hello World Video](https://www.youtube.com/watch?v=pRz7EzrWchs)
 - [Why Cadence?](https://www.onflow.org/post/flow-blockchain-cadence-programming-language-resources-assets)
 
