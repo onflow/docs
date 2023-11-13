@@ -27,7 +27,7 @@ The Archive Nodes hosted by DapperLabs are accessible at:
 
 #### Rate limits for Dapper Labs archive nodes
 
-Archive nodes operated by Dapper Labs are [rate limited](./archive-api-rate-limits.mdx).
+Archive nodes operated by Dapper Labs are [rate limited](./archive-api-rate-limits.md).
 
 ---
 
