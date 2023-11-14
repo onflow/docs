@@ -3,7 +3,7 @@ title: NFT Metadata Views
 sidebar_label: NFT Metadata Views
 ---
 
-# About NFT MetadataViews on Flow
+# NFT MetadataViews on Flow
 
 `MetadataViews` on Flow offers a standardized way to represent metadata across different NFTs. With its integration, developers can ensure that different platforms and marketplaces can interpret the NFT metadata in a unified manner. This means that when you go to a marketplace, it looks and reads the same on this marketplace as it does on another, providing a consistent user experience across different platforms.
 
