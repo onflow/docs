@@ -215,7 +215,7 @@ case Type<MetadataViews.NFTCollectionDisplay>():
     )
 ```
 
-In this case, the `NFTCollectionDisplay` provides not just the basic metadata like the name and description of the collection, but also URLs to visual representations of the collection (`squareImage` and `bannerImage`) and external URLs including social media links.
+In the example above, the `NFTCollectionDisplay` not only offers fundamental metadata like the collection's name and description but also provides image URLs for visual representations of the collection (`squareImage` and `bannerImage`) and external links, including social media profiles.
 
 ## More
 
