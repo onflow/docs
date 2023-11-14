@@ -14,7 +14,7 @@ sidebar_label: NFT Metadata Views
 Metadata in Cadence is structured at two distinct levels:
 
 1. **Contract-Level Metadata**: This provides an overarching description of the entire NFT collection.
-2. **NFT-Level Metadata**: Diving deeper, this metadata relates to individual NFTs. It provides context, describes rarity, and other unique characteristics that differentiate one NFT from another within the same collection.
+2. **NFT-Level Metadata**: Diving deeper, this metadata relates to individual NFTs. It provides context, describes rarity, and highlights other distinctive attributes that distinguish one NFT from another within the same collection.
 
 ## Understanding `ViewResolver` and `MetadataViews.Resolver`
 
