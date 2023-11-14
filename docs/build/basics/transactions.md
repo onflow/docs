@@ -40,7 +40,7 @@ transaction(greeting: String) {
 
 **Arguments**
 
-Transactions may declare parameters it needs during execution, these must be provided as input arguments when sending a transaction. You can think of them as function arguments. Currently, we provide [arguments in the JSON-Cadence Data Interchange Format](../cadence-reference/json-cadence-spec.md#docusaurus_skipToContent_fallback). Which is a human-readable JSON format. The sample script from above accepts a single `String` argument.
+Transactions may declare parameters it needs during execution, these must be provided as input arguments when sending a transaction. You can think of them as function arguments. Currently, we provide [arguments in the JSON-Cadence Data Interchange Format](../cadence-reference/json-cadence-spec.md). Which is a human-readable JSON format. The sample script from above accepts a single `String` argument.
 
 **Reference Block**
 

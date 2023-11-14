@@ -144,7 +144,7 @@ export const playgroundTutorials: TutorialCardProps = {
   heading: 'Flow Playground Tutorials',
   tags: ['tutorial', 'beginner', 'cadence'],
   description: `Learn to use Cadence using the Flow Playgound Web IDE`,
-  link: 'https://developers.flow.com/cadence/tutorial/01-first-steps',
+  link: 'https://cadence-lang.org/docs/tutorial/first-steps',
   imageUri: 'https://miro.medium.com/max/1400/1*WGxn8AZj-gZXd_vipdBxSg.png',
   lastUpdated: '17/10/2022',
 };
