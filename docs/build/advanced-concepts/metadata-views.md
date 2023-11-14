@@ -5,16 +5,16 @@ sidebar_label: NFT Metadata Views
 
 # NFT MetadataViews on Flow
 
-`MetadataViews` on Flow offers a standardized way to represent metadata across different NFTs. With its integration, developers can ensure that different platforms and marketplaces can interpret the NFT metadata in a unified manner. This means that when you go to a marketplace, it looks and reads the same on this marketplace as it does on another, providing a consistent user experience across different platforms.
+`MetadataViews` on Flow offer a standardized way to represent metadata across different NFTs. Through its integration, developers can ensure that different platforms and marketplaces can interpret the NFT metadata in a unified manner. This means that when users visit different websites, wallets, and marketplaces, the NFT metadata will be presented in a consistent manner, ensuring a uniform experience across various platforms.
 
-> If you want to follow along on a real contract as we talk through the below concepts you can do so on this [ExampleNFT contract](https://github.com/onflow/flow-nft/blob/master/contracts/ExampleNFT.cdc) and also here is the source for the [MetadataViews contract](https://github.com/onflow/flow-nft/blob/master/contracts/MetadataViews.cdc).
+> If you'd like to follow along while we discuss the concepts below, you can do so by referring to the [ExampleNFT contract](https://github.com/onflow/flow-nft/blob/master/contracts/ExampleNFT.cdc). Additionally, here is the source code for the [MetadataViews contract](https://github.com/onflow/flow-nft/blob/master/contracts/MetadataViews.cdc).
 
 ## Two Levels of Metadata: An Overview
 
 Metadata in Cadence is structured at two distinct levels:
 
 1. **Contract-Level Metadata**: This provides an overarching description of the entire NFT collection.
-2. **NFT-Level Metadata**: Diving deeper, this metadata relates to individual NFTs. It provides context, describes rarity, and other unique characteristics that differentiate one NFT from another within the same collection.
+2. **NFT-Level Metadata**: Diving deeper, this metadata relates to individual NFTs. It provides context, describes rarity, and highlights other distinctive attributes that distinguish one NFT from another within the same collection.
 
 ## Understanding `ViewResolver` and `MetadataViews.Resolver`
 
@@ -149,9 +149,9 @@ case Type<MetadataViews.ExternalURL>():
 
 ### Traits Metadata
 
-Traits in NFT metadata encapsulate the unique attributes of an NFT, like its visual aspects or any other category-defining properties. These can be essential for marketplaces that need to sort or filter NFTs based on these characteristics.
+Traits view type encapsulates the unique attributes of an NFT, like any visual aspects or category-defining properties. These can be essential for marketplaces that need to sort or filter NFTs based on these characteristics.
 
-The `dictToTraits` function in Cadence is designed to convert a dictionary of metadata into a standard array of `Trait` structures. This function helps in preparing the traits data for the `MetadataViews.Traits` view, which can be understood by platforms within the Flow ecosystem.
+The `dictToTraits` helper function in Cadence is designed to convert a dictionary of metadata into a standard array of `Trait` structures. This function helps in preparing the traits data for the `MetadataViews.Traits` view, which can be understood by platforms within the Flow ecosystem.
 
 Here's a more detailed look at how you might implement the `dictToTraits` function and the `Traits` view:
 
@@ -215,11 +215,11 @@ case Type<MetadataViews.NFTCollectionDisplay>():
     )
 ```
 
-In this case, the `NFTCollectionDisplay` provides not just the basic metadata like the name and description of the collection, but also URLs to visual representations of the collection (`squareImage` and `bannerImage`) and external URLs including social media links.
+In the example above, the `NFTCollectionDisplay` not only offers fundamental metadata like the collection's name and description but also provides image URLs for visual representations of the collection (`squareImage` and `bannerImage`) and external links, including social media profiles.
 
 ## More
 
-Understanding `MetadataViews` and the core functions associated with it is crucial for developers aiming to deploy NFTs on Flow. With these views and functions, NFTs can maintain a consistent presentation across various platforms and marketplaces in the Flow ecosystem. If you want to learn more about implementing them read the NFT guide to get an introduction to adding them to your NFT contracts.
+Understanding `MetadataViews` and the core functions associated with it is crucial for developers aiming to deploy NFTs on Flow. With these views and functions, NFTs can maintain a consistent presentation across various platforms and marketplaces and foster interoperability between contracts and applications in the Flow ecosystem. To gain a deeper understanding of implementing the MetadataView standard, Check out our documentation on "How to Create an NFT Project on Flow". It provides an introduction to integrating these standards into your NFT contracts.
 
 - See the [API reference for a complete list of Metadata functions](https://developers.flow.com/references/core-contracts/flow-nft/MetdataViews/MetadataViews)
 - Check out [an Example NFT project](https://github.com/onflow/flow-nft/blob/master/contracts/ExampleNFT.cdc) implementing `MetadataViews`
