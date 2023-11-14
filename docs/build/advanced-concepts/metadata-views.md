@@ -151,7 +151,7 @@ case Type<MetadataViews.ExternalURL>():
 
 Traits view type encapsulates the unique attributes of an NFT, like any visual aspects or category-defining properties. These can be essential for marketplaces that need to sort or filter NFTs based on these characteristics.
 
-The `dictToTraits` function in Cadence is designed to convert a dictionary of metadata into a standard array of `Trait` structures. This function helps in preparing the traits data for the `MetadataViews.Traits` view, which can be understood by platforms within the Flow ecosystem.
+The `dictToTraits` helper function in Cadence is designed to convert a dictionary of metadata into a standard array of `Trait` structures. This function helps in preparing the traits data for the `MetadataViews.Traits` view, which can be understood by platforms within the Flow ecosystem.
 
 Here's a more detailed look at how you might implement the `dictToTraits` function and the `Traits` view:
 
