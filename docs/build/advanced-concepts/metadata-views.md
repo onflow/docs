@@ -7,7 +7,7 @@ sidebar_label: NFT Metadata Views
 
 `MetadataViews` on Flow offer a standardized way to represent metadata across different NFTs. Through its integration, developers can ensure that different platforms and marketplaces can interpret the NFT metadata in a unified manner. This means that when users visit different websites, wallets, and marketplaces, the NFT metadata will be presented in a consistent manner, ensuring a uniform experience across various platforms.
 
-> If you want to follow along on a real contract as we talk through the below concepts you can do so on this [ExampleNFT contract](https://github.com/onflow/flow-nft/blob/master/contracts/ExampleNFT.cdc) and also here is the source for the [MetadataViews contract](https://github.com/onflow/flow-nft/blob/master/contracts/MetadataViews.cdc).
+> If you'd like to follow along while we discuss the concepts below, you can do so by referring to the [ExampleNFT contract](https://github.com/onflow/flow-nft/blob/master/contracts/ExampleNFT.cdc). Additionally, here is the source code for the [MetadataViews contract](https://github.com/onflow/flow-nft/blob/master/contracts/MetadataViews.cdc).
 
 ## Two Levels of Metadata: An Overview
 
