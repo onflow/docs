@@ -33,7 +33,7 @@ In the dominant Proof-of-Stake (PoS) environment, which includes most chains exc
 Solana offers a preliminary result within approximately 100ms but takes around 30 seconds to achieve hard finality.
 
 ### Ethereum
-Ethereum takes about 15 seconds to provide a preliminary result, reaching hard finality in approximately 45 seconds.
+Ethereum takes about 15 seconds to provide a preliminary result, reaching hard finality in approximately 15 minutes.
 
 ### Flow
 
