@@ -9,9 +9,8 @@ on:
     # https://docs.github.com/en/actions/using-workflows/workflow-syntax-for-github-actions#on
 
 env:
-  MIXPANEL_PROJECT_TOKEN: ${{vars.MIXPANEL_PROJECT_TOKEN}}
-  TYPESENSE_NODE: ${{vars.TYPESENSE_NODE}}
-  TYPESENSE_SEARCH_ONLY_API_KEY: ${{secrets.TYPESENSE_SEARCH_ONLY_API_KEY}}
+  TYPESENSE_NODE: ${{ vars.TYPESENSE_NODE }}
+  TYPESENSE_ADMIN_API_KEY: ${{ secrets.TYPESENSE_ADMIN_API_KEY }}
 
 jobs:
   deploy:
@@ -47,10 +46,10 @@ jobs:
         uses: celsiusnarhwal/typesense-scraper@v2
         with:
           # The secret containing your Typesense API key. Required.
-          api-key: ${{ secrets.TYPESENSE_ADMIN_API_KEY }}
+          api-key: ${{ env.TYPESENSE_ADMIN_API_KEY }}
           
           # The hostname or IP address of your Typesense server. Required.
-          host: ${{vars.TYPESENSE_NODE}}
+          host: ${{ env.TYPESENSE_NODE }}
           
           # The port on which your Typesense server is listening. Optional. Default: 8108.
           port: 443
