@@ -172,9 +172,9 @@ Summarized below is a list of testing related recommendations
 which are noteworthy to mention for a typical smart contract project.
 
 Popular testing frameworks to use for cadence are listed here:
-Javascript: [Flow JS Testing](../../tools/flow-js-testing/index.md)
-Go: [Overflow](https://github.com/bjartek/overflow)
-Cadence: [Cadence Testing Framework](https://github.com/onflow/cadence/blob/ac05b6a0d6005cde468573f0a7a2e3a67f49bd90/docs/testing-framework.mdx)
+- Javascript: [Flow JS Testing](../../tools/flow-js-testing/index.md)
+- Go: [Overflow](https://github.com/bjartek/overflow)
+- Cadence: [Cadence Testing Framework](../guides/smart-contracts/testing.md)
 Tests written in Cadence!
 
 The same person who writes the code should also write the tests.
