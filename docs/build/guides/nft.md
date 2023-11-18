@@ -2,7 +2,7 @@
 title: How to Create an NFT Project on Flow
 sidebar_label: Create an NFT Project
 description: Guide to creating an NFT Project with the Flow CLI and Cadence.
-sidebar_position: 5
+sidebar_position: 3
 ---
 
 This tutorial dives into the technical steps required to craft an NFT on the Flow blockchain, providing developers with a clear roadmap from setup to deployment.

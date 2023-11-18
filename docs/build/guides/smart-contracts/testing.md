@@ -2,7 +2,7 @@
 title: Testing Your Contracts 
 sidebar_label: Testing Your Contracts 
 description: Testing smart contract Guidelines
-sidebar_position: 3
+sidebar_position: 4
 sidebar_custom_props:
   icon: 📝 
 ---

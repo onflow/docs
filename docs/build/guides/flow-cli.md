@@ -2,12 +2,10 @@
 title: Flow CLI
 sidebar_label: Install Flow CLI
 description: Guide to installing and using Flow CLI
-sidebar_position: 2
+sidebar_position: 5
 ---
 
-## Installation
-
-## macOS
+## MacOS
 
 ### Homebrew
 
@@ -28,6 +26,7 @@ sh -ci "$(curl -fsSL https://raw.githubusercontent.com/onflow/flow-cli/master/in
 To update, simply re-run the installation command above.
 
 It is currently not possible to install earlier versions of the Flow CLI with Homebrew.
+
 ## Linux
 
 ### From a pre-built binary
