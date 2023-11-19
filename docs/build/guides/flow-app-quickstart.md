@@ -2,7 +2,7 @@
 title: Flow App Quickstart
 sidebar_label: Flow App Quickstart
 description: Building an application on Flow
-sidebar_position: 2
+sidebar_position: 4
 sidebar_custom_props:
   icon: 🏗️
 ---
@@ -14,7 +14,7 @@ sidebar_custom_props:
 This guide is a simple walkthrough to get started building a web3 app using the Flow Client Library (FCL).
 
 <Callout type="info">
- If you are looking for a scalfolds, check out [scaffolds available in the Flow CLI](../tools/flow-cli/super-commands.md#using-scaffolds).
+If you are looking for a scalfolds, check out [scaffolds available in the Flow CLI](../../tools/flow-cli/super-commands.md#using-scaffolds).
 </Callout>
 
 This simple guide uses the "Hello World" scaffold, it is meant to provide all the code needed to get a web application up and running.
@@ -24,10 +24,10 @@ This simple guide uses the "Hello World" scaffold, it is meant to provide all th
 ![Flow app anatomy](flow-dapp-anatomy.png)
 
 <Callout type="info">
-FCL (aka Flow Client Library) wraps the logic needed to communicate with the Flow blockchain. It's a npm package, [More Information](../tools/clients/fcl-js)
+FCL (aka Flow Client Library) wraps the logic needed to communicate with the Flow blockchain. It's a npm package, [More Information](../../tools/clients/fcl-js)
 </Callout>
 
-This guide assumes a good understanding of React. The concepts are easy to understand and apply to other libraries and framework. A strong understanding of Cadence (Flow's smart contract language) is not required. More information on Cadence, [learning the Cadence language](../build/cadence.md).
+This guide assumes a good understanding of React. The concepts are easy to understand and apply to other libraries and framework. A strong understanding of Cadence (Flow's smart contract language) is not required. More information on Cadence, [learning the Cadence language](./smart-contracts/cadence.md).
 
 ### FCL concepts covered:
 
@@ -42,7 +42,7 @@ For more help, [Discord](https://discord.gg/flow). See links at the end of this 
 
 ## Installation
 
-Make sure you have Flow CLI installed. [installation instructions](../tools/flow-cli/install.md).
+Make sure you have Flow CLI installed. [installation instructions](../../tools/flow-cli/install.md).
 
 ## Configuration
 
@@ -58,7 +58,7 @@ npm install
 # run the app in a later step
 ```
 
-We don't recommend keeping private keys in your `flow.json`, notice that Flow CLI already moved the emulator private key to a `emulator.key` file and point to it using the [key/location pattern](../tools/flow-cli/flow.json/security.md#private-account-configuration-file). This file should be added to your `.gitignore` file, so it won't be committed to your repository. 
+We don't recommend keeping private keys in your `flow.json`, notice that Flow CLI already moved the emulator private key to a `emulator.key` file and point to it using the [key/location pattern](../../tools/flow-cli/flow.json/security.md#private-account-configuration-file). This file should be added to your `.gitignore` file, so it won't be committed to your repository. 
 
 We won't be using emulator and running contracts locally in this quickstart, but FCL will complain if it finds private keys in your `flow.json` file.
 
@@ -85,7 +85,7 @@ Your `flow.json` file should look like this:
 ```
 
 <Callout type="info">
-The `flow.json` file is used to keep track of deployed contracts and accounts. [More Information](../tools/clients/fcl-js/api#using-flowjson)
+The `flow.json` file is used to keep track of deployed contracts and accounts. [More Information](../../tools/clients/fcl-js/api#using-flowjson)
 </Callout>
 
 
@@ -104,7 +104,7 @@ The `hello-world` web application comes with convenience npm commands to facilit
   3. Start web app
 
 <Callout type="info">
-Emulator is a local blockchain [More Information](../tools/emulator/index.md). Emulator has all the features as testnet and mainnet blockchains 
+Emulator is a local blockchain [More Information](../../tools/emulator/index.md). Emulator has all the features as testnet and mainnet blockchains 
 </Callout>
 
 ```sh
@@ -113,12 +113,12 @@ npm run dev:local
 
 Now that your app is running. FCL loads the configuration in `config/fcl.ts` This file contains configuration information for FCL, such as what Access Node and wallet discovery endpoint and which network to use (e.g. testnet or a local emulator). 
 
-- `accessNode.api` key specifies the address of a Flow access node. There are publically available access nodes, but have to rate limit. Alternatively, applications might want to run an Observer node [Run a Node](../references/run-and-secure/node-operation/observer-node.mdx).
+- `accessNode.api` key specifies the address of a Flow access node. There are publically available access nodes, but have to rate limit. Alternatively, applications might want to run an Observer node [Run a Node](../../references/run-and-secure/node-operation/observer-node.mdx).
 - `discovery.wallet` is an address that points to a service that lists FCL compatible wallets. Flow's FCL Discovery service is a service that FCL wallet providers can be added to, and be made 'discoverable' to any application that uses the `discovery.wallet` endpoint.
 
 Also, notice that `package.json` uses `NEXT_PUBLIC_FLOW_NETWORK=local` for `dev` command, this is used to set the network in `config/fcl.ts`.
 <Callout type="info">
-Learn more about [configuring Discovery](../tools/clients/fcl-js/discovery.mdx) or [setting configuration values](../tools/clients/fcl-js/api.md#setting-configuration-values).
+Learn more about [configuring Discovery](../../tools/clients/fcl-js/discovery.mdx) or [setting configuration values](../../tools/clients/fcl-js/api.md#setting-configuration-values).
 </Callout>
 
 The main Next.js app component is located in `pages/_app.tsx`. It should import the config file `config/fcl.ts` already and should look like this:
@@ -194,11 +194,11 @@ The web app will run, but there are no contracts deployed to local emulator. Thi
 
 Note: in the code above `useCurrentUser` is used to determine if there is a logged in user. 
 
-There are two methods to allow the user to login. `fcl.logIn()` or `fcl.authenticate()` [More Information on, authenticate](../tools/clients/fcl-js/api#authenticate)
+There are two methods to allow the user to login. `fcl.logIn()` or `fcl.authenticate()` [More Information on, authenticate](../../tools/clients/fcl-js/api#authenticate)
 
 In `components/Navbar.tsx` a button wires up the authentication method `fcl.authenticate()`. It is used to bring up the list of supported wallets. See below
 
-Once authenticated, FCL uses a hook `const user = useCurrentUser()` to get the user data, when user is signed in `user.loggedIn` flag is `true`. For more information on the `currentUser`, read more [here](../tools/clients/fcl-js/api.md#current-user).
+Once authenticated, FCL uses a hook `const user = useCurrentUser()` to get the user data, when user is signed in `user.loggedIn` flag is `true`. For more information on the `currentUser`, read more [here](../../tools/clients/fcl-js/api.md#current-user).
 
 ```jsx
 import Head from 'next/head'
@@ -304,7 +304,7 @@ Verify that `flow.json` updates with HelloWorld contract information, `contracts
 }
 ```
 
-For more information on deployments check [Flow CLI](../tools/flow-cli/flow.json/manage-configuration.md) documentation
+For more information on deployments check [Flow CLI](../../tools/flow-cli/flow.json/manage-configuration.md) documentation
 
 ## Query the Blockchain
 
@@ -383,11 +383,11 @@ That's it! You now have Flow app that uses auth, query and mutate the chain. Thi
 - [Beginner Example: CryptoDappy](https://github.com/bebner/crypto-dappy)
 
 **More FCL**
-- [FCL API Quick Reference](../tools/clients/fcl-js/api)
-- [More on Scripts](../tools/clients/fcl-js/scripts.mdx)
-- [More on Transactions](../tools/clients/fcl-js/transactions.mdx)
-- [User Signatures](../tools/clients/fcl-js/user-signatures.mdx)
-- [Proving Account Ownership](../tools/clients/fcl-js/proving-authentication.mdx)
+- [FCL API Quick Reference](../../tools/clients/fcl-js/api)
+- [More on Scripts](../../tools/clients/fcl-js/scripts.mdx)
+- [More on Transactions](../../tools/clients/fcl-js/transactions.mdx)
+- [User Signatures](../../tools/clients/fcl-js/user-signatures.mdx)
+- [Proving Account Ownership](../../tools/clients/fcl-js/proving-authentication.mdx)
 
 **Other**
-- [Flow Developer Onboarding Guide](/tutorials/intro.md)
+- [Flow Developer Onboarding Guide](../../tutorials/intro.md)

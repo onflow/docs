@@ -11,7 +11,7 @@ const homepageStartProjectData: HomepageStartItemProps[] = [
   {
     title: 'Developer Guides',
     text: 'Create your first dApp in just a few minutes',
-    link: '/guides/flow-app-quickstart',
+    link: '/build/guides/flow-app-quickstart',
     icon: 'quickstart',
   },
   {
