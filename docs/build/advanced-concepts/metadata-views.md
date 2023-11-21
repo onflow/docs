@@ -18,7 +18,7 @@ Metadata in Cadence is structured at two distinct levels:
 
 ## Understanding `ViewResolver` and `MetadataViews.Resolver`
 
-In the context of Flow and its treatment of metadata for NFTs, there are two essential interfaces to grasp: `ViewResolver` and `MetadataViews.Resolver`. Interfaces are like blueprints that outline the necessary variables and methods your contract needs to implement for the interface to be considered implemented. This ensures that any contract claiming to adhere to these interfaces will have a consistent set of functionalities that other applications or contracts can rely on.
+When considering Flow and how it handles metadata for NFTs, it's crucial to understand two essential interfaces: `ViewResolver` and `MetadataViews.Resolver`. Interfaces serve as blueprints that specify the required variables and methods that your contract must adhere to for the interface to be deemed properly implemented. This guarantees that any contract asserting adherence to these interfaces will possess a consistent set of functionalities that other applications or contracts can rely on.
 
 1. **`ViewResolver` for Contract-Level Metadata**:
     - This interface ensures that contracts, particularly those encapsulating NFT collections, conform to the Metadata Views standard.
