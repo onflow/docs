@@ -81,7 +81,7 @@ pub resource NFT: NonFungibleToken.INFT, MetadataViews.Resolver {
 
 ### Metadata Views for NFTs
 
-`MetadataViews` types define how the NFT presents its data. When called upon, the system knows precisely which view to render, ensuring that the relevant information is presented consistently across various platforms:
+`MetadataViews` types define how the NFT presents its data. When invoked, the system knows precisely which view to return, ensuring that the relevant information is presented consistently across various platforms:
 
 ### Display
 
