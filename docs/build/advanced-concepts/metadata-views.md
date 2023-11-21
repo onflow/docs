@@ -24,7 +24,7 @@ When considering Flow and how it handles metadata for NFTs, it's crucial to unde
     - This interface ensures that contracts, particularly those encapsulating NFT collections, conform to the Metadata Views standard.
     - Through the adoption of this interface, contracts can provide dynamic metadata that represents the entirety of the collection.
 2. **`MetadataViews.Resolver` for NFT-Level Metadata**:
-    - Used within individual NFT resources, this interface ensures each token adheres to a standardized metadata format.
+    - Used within individual NFT resources, this interface ensures each token adheres to the Metadata standard format.
     - It focuses on the distinct attributes of an individual NFT, such as its unique ID, name, description, and other defining characteristics.
 
 ### Core Functions
