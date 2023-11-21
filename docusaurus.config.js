@@ -202,11 +202,11 @@ const config = {
         },
         ...(process.env.GA_TRACKING_ID
           ? {
-            gtag: {
-              trackingID: process.env.GA_TRACKING_ID,
-              anonymizeIP: true,
-            },
-          }
+              gtag: {
+                trackingID: process.env.GA_TRACKING_ID,
+                anonymizeIP: true,
+              },
+            }
           : {}),
       }),
     ],
@@ -257,12 +257,6 @@ const config = {
             position: 'left',
             label: 'Build',
             activeBasePath: '/build',
-          },
-          {
-            to: 'guides/flow-app-quickstart',
-            position: 'left',
-            label: 'Guides',
-            activeBasePath: '/guides',
           },
           {
             href: 'https://cadence-lang.org/docs/',
@@ -328,7 +322,7 @@ const config = {
                 label: 'FCL',
               },
               {
-                to: '/build/getting-started/testing',
+                to: '/build/guides/smart-contracts/testing',
                 label: 'Testing',
               },
               {
@@ -568,14 +562,10 @@ const config = {
       '@docusaurus/plugin-client-redirects',
       {
         createRedirects(existingPath) {
-          console.log({ existingPath });
           if (existingPath.includes('/cadence')) {
             // Redirect from /docs/team/X to /community/X and /docs/support/X to /community/X
             return [
-              existingPath.replace(
-                'https://cadence-lang.org/docs/',
-                '/cadence',
-              ),
+              existingPath.replace('https://cadence-lang.org/docs', '/cadence'),
             ];
           }
           return undefined; // Return a falsy value: no redirect created

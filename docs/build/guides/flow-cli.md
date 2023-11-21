@@ -2,12 +2,10 @@
 title: Flow CLI
 sidebar_label: Install Flow CLI
 description: Guide to installing and using Flow CLI
-sidebar_position: 2
+sidebar_position: 5
 ---
 
-## Installation
-
-## macOS
+## MacOS
 
 ### Homebrew
 
@@ -28,6 +26,7 @@ sh -ci "$(curl -fsSL https://raw.githubusercontent.com/onflow/flow-cli/master/in
 To update, simply re-run the installation command above.
 
 It is currently not possible to install earlier versions of the Flow CLI with Homebrew.
+
 ## Linux
 
 ### From a pre-built binary
@@ -50,7 +49,7 @@ To install a specific version of Flow CLI newer than v0.42.0, append the version
 sh -ci "$(curl -fsSL https://raw.githubusercontent.com/onflow/flow-cli/master/install.sh)" -- v0.44.0
 ```
 
-To install a version older than v0.42.0, refer to [Installing versions before 0.42.0](../tools/flow-cli/install.md#installing-versions-before-0420) below.
+To install a version older than v0.42.0, refer to [Installing versions before 0.42.0](../../tools/flow-cli/install.md#installing-versions-before-0420) below.
 
 ## Windows
 
@@ -109,4 +108,4 @@ And then the flow dev:
 
 ### Next steps
 
-As part of the next steps you can read more about [flow dev command](../tools/flow-cli/super-commands.md).
+As part of the next steps you can read more about [flow dev command](../../tools/flow-cli/super-commands.md).
