@@ -33,7 +33,7 @@ Both the `ViewResolver` and `MetadataViews.Resolver` utilize the following core 
 
 ### `getViews` Function
 
-This function offers a list of metadata view types supported either by the contract (for `ViewResolver`) or by an individual NFT (for `MetadataViews.Resolver`).
+This function provides a list of supported metadata view types, which can be applied either by the contract (in the case of `ViewResolver`) or by an individual NFT (in the case of `MetadataViews.Resolver`).
 
 ```cadence
 pub fun getViews(): [Type] {
