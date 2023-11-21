@@ -100,7 +100,7 @@ case Type<MetadataViews.Display>():
 
 ### Editions
 
-The `Editions` view provides intricate details regarding the particular release of an NFT. This can include information about the number of copies in an edition, the sequence number of the specific NFT within that edition, or if it is part of a limited series. When the `Editions` view is queried, it retrieves this data, essential for collectors to understand the rarity and exclusivity of the NFT they are interested in.
+The `Editions` view provides intricate details regarding the particular release of an NFT. This can include information about the number of copies in an edition, the specific NFT's sequence number within that edition, or its inclusion in a limited series. When the `Editions` view is queried, it retrieves this data, providing collectors with the information they need to comprehend the rarity and exclusivity of the NFT they are interested in.
 
 ```cadence
 case Type<MetadataViews.Editions>():
