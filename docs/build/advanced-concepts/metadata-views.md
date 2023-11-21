@@ -140,7 +140,7 @@ case Type<MetadataViews.Royalties>():
 
 ### External URL Metadata
 
-The ExternalURL view directs to an associated webpage, providing additional content or information about the NFT.
+The ExternalURL view returns to an associated webpage URL, providing additional content or information about the NFT.
 
 ```cadence
 case Type<MetadataViews.ExternalURL>():
