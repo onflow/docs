@@ -61,7 +61,7 @@ pub fun resolveView(_ view: Type): AnyStruct? {
 
 ## NFT-Level Metadata Implementation
 
-NFT-level metadata addresses the unique attributes of individual tokens within a collection. It provides structured information for each NFT, including its identifier, descriptive elements, royalties, and other associated metadata. Implementing this level of detail ensures consistency and standardization across individual NFTs, making them interoperable and recognizable across various platforms and marketplaces.
+NFT-level metadata addresses the unique attributes of individual tokens within a collection. It provides structured information for each NFT, including its identifier, descriptive elements, royalties, and other associated metadata. Incorporating this level of detail ensures consistency and standardization among individual NFTs, making them interoperable and recognizable across various platforms and marketplaces.
 
 ### Core Properties
 
