@@ -65,7 +65,7 @@ NFT-level metadata addresses the unique attributes of individual tokens within a
 
 ### Core Properties
 
-Every NFT has core properties that define its basic attributes. For example, in the provided code, an NFT has properties like its unique ID, name, description, and more. When we add the `MetadataViews.Resolver` to our NFT resource, we are indicating that these variables will align with the specifications defined in the `MetadataViews` contract for each of these properties. This ensures interoperability within the Flow ecosystem and guarantees that the metadata of our NFT can be consistently accessed and understood by various platforms and services that interact with NFTs.
+For instance, in the code below, an NFT has properties such as its unique ID, name, description, and others. When we add the `MetadataViews.Resolver` to our NFT resource, we are indicating that these variables will adhere to the specifications outlined in the MetadataViews contract for each of these properties. This facilitates interoperability within the Flow ecosystem and assures that the metadata of our NFT can be consistently accessed and understood by various platforms and services that interact with NFTs.
 
 ```cadence
 pub resource NFT: NonFungibleToken.INFT, MetadataViews.Resolver {
