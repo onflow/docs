@@ -130,8 +130,8 @@ case Type<MetadataViews.Royalties>():
     // Assuming each 'Royalty' in the 'royalties' array has 'cut' and 'description' fields
     let detailedRoyalties = self.royalties.map { royalty ->
         MetadataViews.Royalty(
-            receiver: royalty.receiver, // The beneficiary of the royalty
-            cut: royalty.cut,          // The percentage cut of each sale
+            receiver: royalty.receiver,      // The beneficiary of the royalty
+            cut: royalty.cut,                // The percentage cut of each sale
             description: royalty.description // A description of the royalty terms
         )
     }
