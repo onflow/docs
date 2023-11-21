@@ -46,7 +46,7 @@ pub fun getViews(): [Type] {
 
 ### `resolveView` Function
 
-Regardless of whether it's used at the contract or NFT level, this function's role is to deliver the actual metadata associated with a given view type.
+Whether utilized at the contract or NFT level, this function's role is to deliver the actual metadata associated with a given view type.
 
 ```cadence
 pub fun resolveView(_ view: Type): AnyStruct? {
