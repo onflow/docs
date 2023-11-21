@@ -223,4 +223,4 @@ Understanding `MetadataViews` and the core functions associated with it is cruci
 
 - See the [API reference for a complete list of Metadata functions](https://developers.flow.com/references/core-contracts/flow-nft/MetdataViews/MetadataViews)
 - Check out [an Example NFT project](https://github.com/onflow/flow-nft/blob/master/contracts/ExampleNFT.cdc) implementing `MetadataViews`
-- Read [the NFT Guide](../../guides/nft.md) for an introduction to implementation
+- Read [the NFT Guide](../guides/nft.md) for an introduction to implementation
