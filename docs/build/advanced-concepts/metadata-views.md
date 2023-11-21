@@ -123,7 +123,7 @@ case Type<MetadataViews.Serial>():
 
 ### Royalties Metadata
 
-Royalty information is vital for the sustainable economics of the creators in the NFT space. The `Royalties` metadata view spells out the specifics of any royalty agreements in place, detailing the percentage of sales revenue that will go to the original creator or other stakeholders on secondary sales.
+Royalty information is vital for the sustainable economics of the creators in the NFT space. The `Royalties` metadata view defines the specifics of any royalty agreements in place, including the percentage of sales revenue that will go to the original creator or other stakeholders on secondary sales.
 
 ```cadence
 case Type<MetadataViews.Royalties>():
