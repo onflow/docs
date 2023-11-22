@@ -24,7 +24,7 @@ NFT buyers like this strategy because they don't have to trust the dapp to compl
 This strategy doesn't need a backend, which lowers the costs and complexity for developers.
 However, while the lack of Know Your Customer (KYC) makes this strategy frictionless for buyers and developers, it also leaves the dapp susceptible to bot attacks because the developer can't verify that the customers are real people.
 
-Real-world examples of dapps using this strategy include: [Viv3](https://viv3.com/), [BloctoBay](https://bay.blocto.app/), [Chainmonsters](https://chainmonsters.com/), and [NBA Topshot](https://nbatopshot.com/).
+Real-world examples of dapps using this strategy include: [Viv3](https://viv3.com/), [BloctoBay](https://bay.blocto.app/), [NBA Topshot](https://nbatopshot.com/).
 ![On-chain pre-minted NFT diagram](NFTimages/image1.png)
 
 ## Off-chain Sale of Pre-Minted NFTs

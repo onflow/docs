@@ -84,17 +84,17 @@
     },
     {
       "source": "/hybrid-custody/:path*",
-      "destination": "/concepts/account-linking/:path*",
+      "destination": "/build/advanced-concepts/account-linking/:path*",
       "permanent": true
     },
     {
       "source": "/concepts/hybrid-custody/:path*",
-      "destination": "/concepts/account-linking/:path*",
+      "destination": "/build/advanced-concepts/account-linking/:path*",
       "permanent": true
     },
     {
       "source": "/concepts/account-linking/guides/:path*",
-      "destination": "/concepts/account-linking/child-accounts",
+      "destination": "/build/advanced-concepts/account-linking/:path*",
       "permanent": true
     },
     {
@@ -238,6 +238,11 @@
       "permanent": true
     },
     {
+      "source": "/tools/fcl-js/sdk-guidelines",
+      "destination": "/tools/clients/fcl-js/sdk-guidelines",
+      "permanent": true
+    }, 
+    {
       "source": "/tools/fcl-js/reference/:path*",
       "destination": "/tools/clients/fcl-js/:path*",
       "permanent": true
@@ -264,7 +269,7 @@
     },
     {
       "source": "/account-linking/:path*",
-      "destination": "/concepts/account-linking/:path*",
+      "destination": "/build/advanced-concepts/account-linking/:path*",
       "permanent": true
     },
     {
@@ -722,8 +727,8 @@
       "permanent": true
     },
     {
-      "source": "/concepts/account-linking",
-      "destination": "/build/advanced-concepts/account-linking",
+      "source": "/concepts/account-linking/:path*",
+      "destination": "/build/advanced-concepts/account-linking/:path*",
       "permanent": true
     },
     {
@@ -774,11 +779,6 @@
     {
       "source": "/concepts/start-here",
       "destination": "/build/flow",
-      "permanent": true
-    },
-    {
-      "source": "/concepts/account-linking/child-accounts",
-      "destination": "/build/advanced-concepts/account-linking",
       "permanent": true
     },
     {
