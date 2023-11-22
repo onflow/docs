@@ -38,12 +38,11 @@ Cadence is not compiled. All contracts are open source on Flow.
 
 </Callout>
 
-Check out the [Cadence website](https://cadencelang.dev/) to learn more about Cadence. If you are a Solidity developer, it's recommended to read Cadence's [Guide for Solidity Developers](https://cadence-lang.org/docs/solidity-to-cadence) to dive deeper into the differences between the two languages.
+Check out the [Cadence website](https://cadence-lang.org/) to learn more about Cadence.
 
-If you’re already familiar with smart contracts, here are some resources that can help you get started with Cadence:
+If you are a Solidity developer, it's recommended to read Cadence's [Guide for Solidity Developers](https://cadence-lang.org/docs/solidity-to-cadence) to dive deeper into the differences between the two languages. Here are some additional resources that can help you get started with Cadence:
 
 - [The Cadence tutorial](https://cadence-lang.org/docs/tutorial/first-steps)
-- [Guide for Solidity Developers](https://cadence-lang.org/docs/solidity-to-cadence)
 - ERC-20 equivalent on Flow is the Flow Fungible Token Standard
     - [Repository](https://github.com/onflow/flow-ft)
     - [Tutorial](https://cadence-lang.org/docs/tutorial/fungible-tokens)
