@@ -5,17 +5,7 @@ sidebar_custom_props:
   icon: ↔️
 ---
 
-This document summarizes the differences you might encounter between building on Flow vs. other blockchains, especially Ethereum. This will be most useful to developers who are already familiar with building on a blockchain system. Check out [Introduction to Flow](./flow.md) for a more beginner-friendly overview of the Flow blockchain.
-
-Summary of key differences covered:
-
-- The Flow account model
-- Smart contracts
-    - The Cadence language
-    - Transactions and Scripts
-    - Events
-- Nodes
-- SDKs and Tools
+This document summarizes the differences you might encounter between building on Flow vs. other blockchains, especially Ethereum. This will be most useful to developers who are already familiar with building on a blockchain system. Check out [Why Flow](./flow.md) for a more beginner-friendly overview of the Flow blockchain.
 
 ## The Flow Account Model
 
@@ -48,7 +38,7 @@ Cadence is not compiled. All contracts are open source on Flow.
 
 </Callout>
 
-Check out the [Cadence website](https://cadencelang.dev/) to learn more about Cadence.
+Check out the [Cadence website](https://cadencelang.dev/) to learn more about Cadence. If you are a Solidity developer, it's recommended to read Cadence's [Guide for Solidity Developers](https://cadence-lang.org/docs/solidity-to-cadence) to dive deeper into the differences between the two languages.
 
 If you’re already familiar with smart contracts, here are some resources that can help you get started with Cadence:
 
