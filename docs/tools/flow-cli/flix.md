@@ -10,14 +10,15 @@ The Flow CLI provides a `flix` command with a few sub commands `execute` and `pa
 
 ```shell
 >flow flix
-execute, package
+execute, generate, package
 
 Usage:
   flow flix [command]
 
 Available Commands:
-  execute     execute FLIX template with a given id, name, or local filename
-  package     package file for FLIX template fcl-js is default
+  execute     execute FLIX template with a given id, name, local filename, or url
+  generate    generate FLIX json template given local Cadence filename
+  package     package file for FLIX template fcl-js is default  
 
 
 ```
@@ -30,7 +31,7 @@ The Flow CLI provides a `flix` command to `execute` FLIX. The Cadence being exec
 flow flix execute <query> [<argument> <argument>...] [flags]
 ```
 
-Queries can be a FLIX `id`, `name`, or `path` to a local FLIX file.
+Queries can be a FLIX `id`, `name`, `url` or `path` to a local FLIX file.
 
 ### Execute Usage
 
@@ -60,9 +61,180 @@ Currently, `flix package` command only supports generating FCL (Flow Client Libr
 flow flix package <query> [flags]
 ```
 
-## Package
+### Generate
 
-Queries can be a FLIX `id`, `name`, or `path` to a local FLIX file. This command leverages [FCL](../clients/fcl-js/) which will execute FLIX cadence code. 
+Generate FLIX json file. This command will take in a Cadence file and produce a FLIX json file. There are two ways to provide metadata to populate the FLIX json structure. 
+ - Use `--pre-fill` flag to pass in a pre populated FLIX json structure
+
+### Generate Usage
+
+```shell
+# Generate FLIX json file using cadence transaction or script, this example is not using a prefilled json file so will not have associated message metadata 
+flow flix generate cadence/transactions/update-helloworld.cdc --save cadence/templates/update-helloworld.template.json
+```
+
+Example of Cadence simple, no metadata associated
+```cadence
+import "HelloWorld"
+transaction(greeting: String) {
+
+  prepare(acct: AuthAccount) {
+    log(acct.address)
+  }
+
+  execute {
+    HelloWorld.updateGreeting(newGreeting: greeting)
+  }
+}
+
+```
+Resulting json when no prefill json is used
+```json
+{
+    "f_type": "InteractionTemplate",
+    "f_version": "1.0.0",
+    "id": "f5873ad5c845458619f2781e085a71d03ed9e8685ca6e1cfff8e139645227360",
+    "data": {
+        "type": "transaction",
+        "interface": "",
+        "messages": {},
+        "cadence": "import HelloWorld from 0xHelloWorld\ntransaction(greeting: String) {\n\n  prepare(acct: AuthAccount) {\n    log(acct.address)\n  }\n\n  execute {\n    HelloWorld.updateGreeting(newGreeting: greeting)\n  }\n}\n",
+        "dependencies": {
+            "0xHelloWorld": {
+                "HelloWorld": {
+                    "testnet": {
+                        "address": "0xa58395c2f736c46e",
+                        "fq_address": "A.a58395c2f736c46e.HelloWorld",
+                        "contract": "HelloWorld",
+                        "pin": "82d8fb62ec356884316c28388630b9acb6ba5027d566efe0d2adff2c6e74b4dc",
+                        "pin_block_height": 132414699
+                    }
+                }
+            }
+        },
+        "arguments": {
+            "greeting": {
+                "index": 0,
+                "type": "String",
+                "messages": {},
+                "balance": ""
+            }
+        }
+    }
+}
+```
+
+```shell
+# Generate FLIX json file using cadence transaction or script passing in a pre filled FLIX json file. The json file will get filled out by the `flow flix generate` command
+flow flix generate cadence/scripts/read-helloworld.cdc --pre-fill cadence/templates/read-helloworld.prefill.json --save cadence/templates/read-helloworld.template.json
+```
+Example of json prefill file with message metadata
+```json
+{
+    "f_type": "InteractionTemplate",
+    "f_version": "1.0.0",
+    "id": "",
+    "data": {
+        "type": "transaction",
+        "interface": "",
+        "messages": {
+            "title": {
+                "i18n": {
+                    "en-US": "Update Greeting"
+                }
+            },
+            "description": {
+                "i18n": {
+                    "en-US": "Update greeting of the HelloWorld smart contract"
+                }
+            }
+        },
+        "cadence": "",
+        "dependencies": {},
+        "arguments": {
+            "greeting": {
+                "messages": {
+                    "title": {
+                        "i18n": {
+                            "en-US": "Greeting"
+                        }
+                    },
+                    "description": {
+                        "i18n": {
+                            "en-US": "HelloWorld contract greeting"
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+```
+
+Example of generated output using prefilled json
+
+```json
+{
+    "f_type": "InteractionTemplate",
+    "f_version": "1.0.0",
+    "id": "7238aed3ce8588ba3603d7a0ad79bf3aa1f7848618a61ae93d6865aff15387b2",
+    "data": {
+        "type": "transaction",
+        "interface": "",
+        "messages": {
+            "title": {
+                "i18n": {
+                    "en-US": "Update Greeting"
+                }
+            },
+            "description": {
+                "i18n": {
+                    "en-US": "Update greeting of the HelloWorld smart contract"
+                }
+            }
+        },
+        "cadence": "import HelloWorld from 0xHelloWorld\ntransaction(greeting: String) {\n\n  prepare(acct: AuthAccount) {\n    log(acct.address)\n  }\n\n  execute {\n    HelloWorld.updateGreeting(newGreeting: greeting)\n  }\n}\n",
+        "dependencies": {
+            "0xHelloWorld": {
+                "HelloWorld": {
+                    "testnet": {
+                        "address": "0xa58395c2f736c46e",
+                        "fq_address": "A.a58395c2f736c46e.HelloWorld",
+                        "contract": "HelloWorld",
+                        "pin": "82d8fb62ec356884316c28388630b9acb6ba5027d566efe0d2adff2c6e74b4dc",
+                        "pin_block_height": 132414700
+                    }
+                }
+            }
+        },
+        "arguments": {
+            "greeting": {
+                "index": 0,
+                "type": "String",
+                "messages": {
+                    "title": {
+                        "i18n": {
+                            "en-US": "Greeting"
+                        }
+                    },
+                    "description": {
+                        "i18n": {
+                            "en-US": "HelloWorld contract greeting"
+                        }
+                    }
+                },
+                "balance": ""
+            }
+        }
+    }
+}
+
+```
+
+### Package
+
+Queries can be a FLIX `id`, `name`, `url` or `path` to a local FLIX file. This command leverages [FCL](../clients/fcl-js/) which will execute FLIX cadence code. 
 
 ### Package Usage
 
@@ -114,10 +286,6 @@ export async function transferTokens({amount, to}) {
 }
 ```
 
-<Callout type="info">
-SOON: `flix generate` will generate FLIX json files using FLIX specific properties in comment blocks directly in Cadence code, [FLIP - Interaction Template Cadence Doc](https://github.com/onflow/flips/pull/80)
-</Callout>
-
 
 ## Resources
 
@@ -145,6 +313,12 @@ You can pass a `nil` value to optional arguments by executing the flow FLIX exec
 Arguments passed to the Cadence script in the Cadence JSON format.
 Cadence JSON format contains `type` and `value` keys and is 
 [documented here](https://cadence-lang.org/docs/json-cadence-spec).
+
+## Pre Fill
+
+- Flag: `--pre-fill`
+- Valid inputs: a json file in the FLIX json structure [FLIX json format](https://github.com/onflow/flips/blob/main/application/20220503-interaction-templates.md)
+
 
 ## Block Height
 
