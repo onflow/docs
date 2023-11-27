@@ -23,7 +23,6 @@ If you haven't installed the Flow CLI yet and have [Homebrew](https://brew.sh/) 
 
 ### Initializing a New Project
 
-
 > 💡 Note: Here is [a link to the completed code](https://github.com/chasefleming/foobar-nft) if you want to skip ahead or reference as you follow along.
 
 Once you have the Flow CLI installed, you can set up a new project using the `flow setup` command. This command initializes the necessary directory structure and a `flow.json` configuration file (a way to configure your project for contract sources, deployments, accounts, and more):
