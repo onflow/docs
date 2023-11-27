@@ -4,7 +4,7 @@ sidebar_label: Access API Rate Limits
 sidebar_position: 2
 ---
 
-Following are the current rate limits for the [Access Node gRPC API](./access-api.mdx) in total across all public access nodes.
+Following are the current rate limits for the [Access Node gRPC API](./access-api.md) in total across all public access nodes.
 Once the limit has reached, the client will receive an RPC error `ResourceExhausted` in the gRPC response.
 
 Please note, these limits only apply to the public (community) access nodes.

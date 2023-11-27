@@ -312,7 +312,7 @@ You can pass a `nil` value to optional arguments by executing the flow FLIX exec
 
 Arguments passed to the Cadence script in the Cadence JSON format.
 Cadence JSON format contains `type` and `value` keys and is 
-[documented here](https://cadence-lang.org/docs/json-cadence-spec).
+[documented here](../../build/cadence-reference/json-cadence-spec.md).
 
 ## Pre Fill
 

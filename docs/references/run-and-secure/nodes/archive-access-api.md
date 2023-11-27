@@ -27,7 +27,7 @@ The Archive Nodes hosted by DapperLabs are accessible at:
 
 #### Rate limits for Dapper Labs archive nodes
 
-Archive nodes operated by Dapper Labs are [rate limited](./archive-api-rate-limits.mdx).
+Archive nodes operated by Dapper Labs are [rate limited](./archive-api-rate-limits.md).
 
 ---
 
@@ -71,7 +71,7 @@ message AccountResponse {
 
 `ExecuteScriptAtBlockID` executes a ready-only Cadence script against the execution state at the block with the given ID.
 
-This method can be used to read account state from the blockchain. The script is executed on an execution node and the return value is encoded using the [JSON-Cadence data interchange format](https://cadence-lang.org/docs/json-cadence-spec).
+This method can be used to read account state from the blockchain. The script is executed on an execution node and the return value is encoded using the [JSON-Cadence data interchange format](../../../build/cadence-reference/json-cadence-spec.md).
 
 ```proto
 rpc ExecuteScriptAtBlockID (ExecuteScriptAtBlockIDRequest) returns (ExecuteScriptResponse)
@@ -104,7 +104,7 @@ message ExecuteScriptResponse {
 
 `ExecuteScriptAtBlockHeight` executes a ready-only Cadence script against the execution state at the given block height.
 
-This method can be used to read account state from the blockchain. The script is executed on an execution node and the return value is encoded using the [JSON-Cadence data interchange format](https://cadence-lang.org/docs/json-cadence-spec).
+This method can be used to read account state from the blockchain. The script is executed on an execution node and the return value is encoded using the [JSON-Cadence data interchange format](../../../build/cadence-reference/json-cadence-spec.md).
 
 ```proto
 rpc ExecuteScriptAtBlockHeight (ExecuteScriptAtBlockHeightRequest) returns (ExecuteScriptResponse)

@@ -19,7 +19,7 @@ Since access to the `AuthAccount` object enables state change, the idea of accou
 
 ## AuthAccount Capabilities
 
-Before proceeding the reader will need a clear understanding of [Cadence capabilities](https://developers.flow.com/cadence/language/capabilities.md) to follow this section. Advanced features such as AuthAccount Capabilities are powerful but if used incorrectly can put your app or users at risk.
+Before proceeding the reader will need a clear understanding of [Cadence capabilities](https://cadence-lang.org/docs/language/capabilities) to follow this section. Advanced features such as AuthAccount Capabilities are powerful but if used incorrectly can put your app or users at risk.
 
 Cadence allows the creation of capabilities to delegate access to account storage, meaning any account that has a valid capability to another account object in the storage can access it. This is a powerful feature on its own. The access to the object can be limited when creating a capability so only intended functions or fields can be accessed.
 
@@ -106,17 +106,17 @@ Apps need assurances that their own resources are safe from malicious actors, so
 
 Learn more about it in the [Hybrid Custody documentation](./parent-accounts.md).
 
-### Guides[](https://developers.flow.com/concepts/account-linking#guides)
+### Guides
 
-- [Building Walletless Applications Using Child Accounts](https://developers.flow.com/concepts/account-linking/child-accounts) covers how apps can leverage Account Linking to create a seamless user experience and enable future self-custody.
-- [Working With Parent Accounts](https://developers.flow.com/concepts/account-linking/parent-accounts) covers features enabled by the core `HybridCustody` contract to access child account assets from parent accounts. This is useful for apps like marketplaces or wallets that are working with accounts that have potential child accounts.
+- [Building Walletless Applications Using Child Accounts](./child-accounts.md) covers how apps can leverage Account Linking to create a seamless user experience and enable future self-custody.
+- [Working With Parent Accounts](./parent-accounts.md) covers features enabled by the core `HybridCustody` contract to access child account assets from parent accounts. This is useful for apps like marketplaces or wallets that are working with accounts that have potential child accounts.
 
-### Resources[](https://developers.flow.com/concepts/account-linking#resources)
+### Resources
 
 - [Forum Post](https://forum.onflow.org/t/hybrid-custody/4016) where core concepts were introduced and discussed.
 - [GitHub repository](https://github.com/onflow/hybrid-custody) where `HybridCustody` core contract is maintained. Check out the repository for more advanced script or transaction examples.
 - [Example](https://github.com/jribbink/magic-link-hc-sample/) Account Linking project with [Magic](https://magic.link/).
 - [Starter template](https://github.com/Niftory/niftory-samples/tree/main/walletless-onboarding) for [Niftory](https://niftory.com/) Account Linking API.
-- [Scaffold](https://github.com/onflow/hybrid-custody-scaffold) to start a new Account Linking project. Check out Flow CLI [Scaffolds](https://developers.flow.com/tooling/flow-cli/super-commands#using-scaffolds) to get started.
+- [Scaffold](https://github.com/onflow/hybrid-custody-scaffold) to start a new Account Linking project. Check out Flow CLI [Scaffolds](../../../tools/flow-cli/super-commands.md#using-scaffolds) to get started.
 - [Wallet API](https://github.com/flow-hydraulics/flow-wallet-api/) is a microservice that enables apps to custody accounts. This is useful if you don't want to use a third-party service to manage user accounts.
 - [Walletless Arcade](https://github.com/onflow/walletless-arcade-example) example demonstrates Account Linking with a local key management solution.
