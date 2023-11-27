@@ -28,7 +28,7 @@ The [Fungible Token Standard](https://github.com/onflow/flow-ft) defines what a 
 
 ## Creating Our Project
 
-To get started making our fungible token, let's first create a project directory in our terminal and go to it. We'll call it FooToken.
+To get started making our fungible token, let's first create a project directory in our terminal and go to it. We'll call it `FooToken`.
 
 ```bash
 mkdir FooToken
