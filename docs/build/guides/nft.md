@@ -2,7 +2,7 @@
 title: How to Create an NFT Project on Flow
 sidebar_label: Create an NFT Project
 description: Guide to creating an NFT Project with the Flow CLI and Cadence.
-sidebar_position: 5
+sidebar_position: 3
 ---
 
 This tutorial dives into the technical steps required to craft an NFT on the Flow blockchain, providing developers with a clear roadmap from setup to deployment.
@@ -741,5 +741,5 @@ Congrats, you did it! You’re now ready to launch the next fun NFT project on F
 - Explore [an example NFT repository](https://github.com/nvdtf/flow-nft-scaffold/blob/main/cadence/contracts/exampleNFT/ExampleNFT.cdc)
 - Watch a [video tutorial on creating an NFT project in the Flow Playground](https://www.youtube.com/watch?v=bQVXSpg6GE8)
 - Dive into the details of [the NFT Standard](https://github.com/onflow/flow-nft)
-- For a deeper dive into `MetadataViews`, consult the [API documentation](../../references/core-contracts/flow-nft/MetdataViews/MetadataViews.md) or [the FLIP that introduced this feature](https://github.com/onflow/flips/blob/main/application/20210916-nft-metadata.md).
+- For a deeper dive into `MetadataViews`, consult the [introduction guide](../advanced-concepts/metadata-views.md), [API documentation](https://developers.flow.com/references/core-contracts/flow-nft/MetdataViews/MetadataViews#docusaurus_skipToContent_fallback) or [the FLIP that introduced this feature](https://github.com/onflow/flips/blob/main/application/20210916-nft-metadata.md).
 - Use a [no code tool for creating NFT projects on Flow](https://www.touchstone.city/)

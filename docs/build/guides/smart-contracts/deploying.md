@@ -2,7 +2,7 @@
 title: Deploying Contracts
 sidebar_label: Deploying Contracts
 description: Guidelines for deploying your project's contracts on Flow Mainnet
-sidebar_position: 2
+sidebar_position: 3
 sidebar_custom_props:
   icon: 🥇  
 ---

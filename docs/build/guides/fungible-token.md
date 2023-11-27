@@ -2,7 +2,7 @@
 title: How to Create a Fungible Token on Flow
 sidebar_label: Create a Fungible Token
 description: Guide to creating a fungible token on Flow with the Flow CLI and Cadence.
-sidebar_position: 4
+sidebar_position: 2
 ---
 
 This article will guide you through the steps to create, deploy, mint, and transfer fungible tokens on Flow.
