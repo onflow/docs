@@ -139,7 +139,7 @@ const editUrl = ({ docPath }) => {
   return `https://github.com/${owner}/${name}/tree/${branch}/${sourceDocPath}`;
 };
 
-const baseUrl = process.env.BASE_URL || '/docs/';
+const baseUrl = process.env.BASE_URL || '/';
 
 /** @type {import('@docusaurus/types').Config} */
 const config = {
