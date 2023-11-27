@@ -51,7 +51,7 @@ cd foobar-nft
 To begin, let's create a contract file named `FooBar` for the `FooBar` token, which will be the focus of this tutorial. To do this, we can use the boilerplate `generate` command from the Flow CLI:
 
 ```bash
-flow cadence contracts generate FooBar
+flow generate contract FooBar
 ```
 
 This will create a new file at `cadence/contracts/FooBar.cdc` with the following contents:
@@ -437,7 +437,7 @@ You’ll then see a message that says `All contracts deployed successfully`.
 To manage multiple NFTs, you'll need an NFT collection. Start by creating a transaction file for this purpose (we can use the `generate` command again):
 
 ```bash
-flow cadence transactions generate CreateCollection
+flow generate transaction CreateCollection
 ```
 
 This creates a transaction file at `cadence/transactions/CreateCollection.cdc`.
@@ -483,7 +483,7 @@ To retrieve the NFTs associated with an account, you'll need a script. Scripts a
 Start by creating a script file using the `generate` command again:
 
 ```bash
-flow cadence scripts generate GetNFTs
+flow generate script GetNFTs
 ```
 
 In this script, import the necessary contracts and define a function that retrieves the NFT IDs associated with a given account:
@@ -514,7 +514,7 @@ Since you haven't added any NFTs to the collection yet, the result will be an em
 To mint and deposit an NFT into a collection, create a new transaction file:
 
 ```bash
-flow cadence transactions generate DepositNFT
+flow generate transaction DepositNFT
 ```
 
 In this file, define a transaction that takes a recipient's address as an argument. This transaction will borrow the minting capability from the contract account, borrow the recipient's collection capability, create a new NFT using the minter, and deposit it into the recipient's collection:
@@ -556,7 +556,7 @@ You should now see a value in the `test-acct`'s collection array!
 To transfer an NFT to another account, create a new transaction file using `generate`:
 
 ```bash
-flow cadence transactions generate TransferNFT
+flow generate transaction TransferNFT
 ```
 
 In this file, define a transaction that takes a recipient's address and the ID of the NFT you want to transfer as arguments. This transaction will borrow the sender's collection, get the recipient's capability, withdraw the NFT from the sender's collection, and deposit it into the recipient's collection:
