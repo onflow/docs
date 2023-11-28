@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
-import NotFound from '@theme-original/NotFound';
+import Content from '@theme-original/NotFound/Content';
 
-export default function NotFoundWrapper(props) {
+export default function ContentWrapper(props) {
   useEffect(() => {
     if (typeof window !== 'undefined' && window?.mixpanel) {
       window.mixpanel.track('Page Not Found', {
@@ -11,7 +11,7 @@ export default function NotFoundWrapper(props) {
   }, []);
   return (
     <>
-      <NotFound {...props} />
+      <Content {...props} />
     </>
   );
 }
