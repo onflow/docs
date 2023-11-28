@@ -52,7 +52,7 @@ You can download FCL (Flow Client Library) here:
 [https://github.com/onflow/fcl-js](https://github.com/onflow/fcl-js)
 
 To connect to an access node you will need to provide a URL to the SDK.
-[testnet and mainnet](../access-api.md)
+[testnet and mainnet](../../../../architecture/node-ops/nodes/access-api.md)
 
 Here are examples of querying an access node at the bottom of this page:
 

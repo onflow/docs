@@ -75,7 +75,7 @@ So you have decided you want to be a part of the Flow Network. Welcome! You are 
 If you are using a custody provider who controls your account and private keys for you, such as Kraken, Finoa, or Coinlist, they all have different policies and processes for what you need to do to stake your tokens, the rewards you receive, and the fees that they take from your staking rewards.
 
 ### Starting a Manual Staking Transaction
- 1. You need to have FLOW in order to stake. Please see the [FLOW Token](../../../../references/core-contracts/03-flow-token.md) reference for information on how to become a FLOW holder.
+ 1. You need to have FLOW in order to stake. Please see the [FLOW Token](../../../core-contracts/03-flow-token.md) reference for information on how to become a FLOW holder.
 
  2. Once you have FLOW tokens in your account, you can start staking through [Flow Port](https://port.onflow.org/) or, if applicable, with your [custody provider](#staking-via-a-custody-provider).
 
@@ -97,7 +97,7 @@ Please see a list [here](https://github.com/onflow/flow/blob/master/nodeoperator
 
   3. Input the amount of Flow you wish to stake with that node. You must stake at least the minimum in order for your stake request to be successfully processed. You are able to provide the minimum stake across multiple transactions. Meaning, you could execute your stake transaction with half of the minumum required. Then, before the next epoch, you can choose to 'Add Flow' to that pending stake to get it to the minimum stake required.
 
-  4. Run the [bootstrapping instructions](../../../../references/run-and-secure/node-operation/node-bootstrap.md) and provide the remaining technical details needed to stake a node.
+  4. Run the [bootstrapping instructions](../../../../architecture/node-ops/nodes/node-operation/node-bootstrap.md) and provide the remaining technical details needed to stake a node.
 
 ### Delegating
   1. Once you have navigated to the staking/delegating page in Flow Port, click on the Delegate option.

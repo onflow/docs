@@ -73,7 +73,7 @@ and democratically by all the stakers in the network.
 For a node to stake, node operators first need to generate their staking key,
 staking key proof-of-possesion, networking address, and networking key.
 
-The [node operation guide](../../references/run-and-secure/node-operation/index.md)
+The [node operation guide](../node-ops/nodes/node-operation/index.md)
 describes how to run a node and generate node information.
 
 To generate a node ID, simply hash the staking key.

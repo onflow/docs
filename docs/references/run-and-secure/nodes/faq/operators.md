@@ -56,7 +56,7 @@ You can download the FCL (Flow Client Library) here:
 [https://github.com/onflow/fcl-js](https://github.com/onflow/fcl-js)
 
 To connect to an access node you will need to provide a URL to the SDK.
-[access node urls](../access-api.md)
+[access node urls](../../../../architecture/node-ops/nodes/access-api.md)
 
 Here are examples of querying an access node at the bottom of this page:
 
@@ -192,4 +192,4 @@ You can query the access API to get events for a block range. See Access API spe
 You can follow Flow node software releases here: [https://github.com/onflow/flow-go/releases](https://github.com/onflow/flow-go/releases).
 
 ## How do I run a Flow node and become a node operator?
-See the dedicated section on node operation: [nodes/node-operation/](../../node-operation/index.md)
+See the dedicated section on node operation: [nodes/node-operation/](../../../../architecture/node-ops/nodes/node-operation/index.md)
