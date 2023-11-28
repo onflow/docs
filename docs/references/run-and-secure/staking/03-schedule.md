@@ -136,7 +136,7 @@ of the epoch in which you are participating in staking or delegation.
 For the first two years of its existence, the staking rewards payments
 were handled with manual transactions. You can find the history of those transactions
 including their arguments and IDs in the
-[Pay Rewards Section](https://github.com/onflow/service-account/tree/main/transactions/pay-rewards
+[Pay Rewards Section](https://github.com/onflow/service-account/tree/main/transactions/pay-rewards)
 of the Flow Service Account Repo. The dates correspond to the date when the
 rewards were paid at the end of an epoch and the network transitioned to a new epoch.
 

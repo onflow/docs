@@ -106,7 +106,7 @@ Flow nodes treat them differently because they are being emitted by the service 
 **Delegation Rewards Cut:** The percentage of a delegator's rewards that the node operators take. Initially set to 8%.
 
 **Epoch Payout:** The total amount of tokens paid in rewards at the end of an epoch.
-This value will change as the supply of FLOW changes. See the [rewards page](./schedule) for more details.
+This value will change as the supply of FLOW changes. See the [rewards page](./03-schedule.md) for more details.
 
 **Minimum Stake Requirement:** Each node type has a requirement for the minimum number of FLOW
 they have to commit to stake to be considered a valid node and receive rewards. If a node operator

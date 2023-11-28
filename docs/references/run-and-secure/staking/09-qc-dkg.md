@@ -36,7 +36,7 @@ that only stores the `FlowClusterQC.Voter` or `FlowDKG.Participant` resource obj
 in addition to FLOW to pay for transaction fees. You can connect your node to this account
 to participate in the Epoch Setup Phase without having to do the actions manually.
 
-If you are using the [Staking Collection](./staking-collection) for your node,
+If you are using the [Staking Collection](./14-staking-collection.md) for your node,
 this functionality is built-in. When you register a node with the staking collection,
 you also have to provide a public key or keys for your machine account for the node.
 
@@ -140,5 +140,5 @@ transaction with the following arguments.
 
 # Monitor Events and Query State from the QC and DKG Contracts
 
-See the [QC and DKG events and scripts document](./qc-dkg-scripts-events) for information
+See the [QC and DKG events and scripts document](./10-qc-dkg-scripts-events.md) for information
 about the events that can be emitted by these contracts and scripts you can use to query information.

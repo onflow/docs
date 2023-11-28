@@ -9,7 +9,7 @@ description: Usage and Purpose of the Machine Account
 A Machine Account is a Flow account which is used autonomously by a node to interact with
 system smart contracts. Machine Accounts contain Cadence resources granted to network 
 participants which are used to participate in smart-contract-mediated protocols. Currently,
-Machine Accounts are used in the [Epoch Preparation Protocol](./04-epoch-preparation.mdx), 
+Machine Accounts are used in the [Epoch Preparation Protocol](./04-epoch-preparation.md), 
 which prepares the network for the next epoch.
 
 Your Machine Account is distinct from the account you use for staking your node (your Staking Account).

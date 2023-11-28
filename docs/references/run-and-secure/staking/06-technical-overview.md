@@ -21,7 +21,7 @@ This document describes the functionality of the
 It gives an overview of the process of epochs, staking as a node, and delegation. It is an important prerequisite
 to understand before proceeding with any other technical integration or interaction with the Flow Protocol,
 but does not provide step-by-step instructions for how to perform specific actions. See the
-[Staking Collection Docs for instructions](./staking-collection)
+[Staking Collection Docs for instructions](./14-staking-collection.md)
 
 This document also describes how to read public staking data from the contract.
 Anyone can read public data from the staking smart contract with these instructions.
@@ -36,7 +36,7 @@ The Flow staking smart contract manages a record of stakers who have staked toke
 Users who want to stake can register with the staking contract at any time during the staking auction,
 and their tokens will be locked for staking until they request to unstake them.
 
-You should already understand from reading the [epoch documentation](./epoch-preparation)
+You should already understand from reading the [epoch documentation](./04-epoch-preparation.md)
 that an epoch lasts roughly a week. The `FlowIDTableStaking` contract focuses on the identity table
 and staking part of the epoch schedule.
 
@@ -189,7 +189,7 @@ and the delegator's rewards are deposited in the delegator's reward pool.
 
 Regardless of whether they are a node operator or delegator, a staker has access
 to all the same staking operations, outlined below.
-Specific implementations of these transactions are detailed in the [Staking Collection Docs](./staking-collection)
+Specific implementations of these transactions are detailed in the [Staking Collection Docs](./14-staking-collection.md)
 
 ### Stake More Tokens
 
