@@ -13,7 +13,7 @@ Smart contracts on the Flow blockchain are implemented in [Cadence](https://gith
 
 ### Onboard to Cadence
 
-To get started with Cadence, we recommended covering the introductory tutorials available in the [Flow Playground](https://play.onflow.org/), a simple web IDE designed for learning Cadence.
+To get started with Cadence, we recommended covering the introductory tutorials available in the [Flow Playground](https://play.flow.com/), a simple web IDE designed for learning Cadence.
 
 ### Configure Your Local Environment
 
