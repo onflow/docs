@@ -26,7 +26,7 @@ if ('${process.env.MIXPANEL_PROJECT_TOKEN}' && '${process.env.MIXPANEL_PROJECT_T
   }
   window.mixpanel.track('Page Viewed', viwedPayload);
 
-  const playUrl = 'play.onflow.org';
+  const playUrl = 'play.flow.com';
   const links = document.querySelectorAll('a') || [];
   const isPlayPage = Array.from(links).some((link) => link.href.includes(playUrl));
 
@@ -46,7 +46,7 @@ if ('${process.env.MIXPANEL_PROJECT_TOKEN}' && '${process.env.MIXPANEL_PROJECT_T
           class: target.className,
         }
         window.mixpanel.track('Link clicked', payload);
-        const isPlay = payload.href.includes('play.onflow.org');
+        const isPlay = payload.href.includes('play.flow.com');
         if (isPlay) {
           window.mixpanel.track('Play Link clicked', payload);        
         }
@@ -380,7 +380,7 @@ const config = {
             title: 'Start Building',
             items: [
               {
-                href: 'https://play.onflow.org/',
+                href: 'https://play.flow.com/',
                 label: 'Flow Playground',
               },
               {
