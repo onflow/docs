@@ -37,11 +37,11 @@ In addition to supporting dapps, an observer node can also be run by access node
 
 The observer node is not staked but still provides the same API as the access node.
 
-<Callout type="info">
-  <br />
+:::info
+
   To run a light node, follow this [guide](./observer-node.md)
-  <br />
-</Callout>
+
+:::
 
 ## Archive node
 
@@ -75,8 +75,8 @@ The central goal for Access Nodes is to provide RPC functionality to its node op
 In comparison, contributing to protocol progress (e.g. routing transactions to collector clusters, relaying blocks to the unstaked peer-to-peer network, etc.) should only take up a marginal fraction an Access Node's computational resources.
 Furthermore, Access Node operators can freely rate-limit the amount of resources their Access Node dedicates to supporting the broader ecosystem. Therefore, Access Nodes do not receive staking rewards.
 
-<Callout type="info">
-  <br />
+:::info
+
   Launch an access node using QuickNode
   <a
     href="https://www.quicknode.com/chains/flow"
@@ -84,21 +84,21 @@ Furthermore, Access Node operators can freely rate-limit the amount of resources
   >
     https://www.quicknode.com/chains/flow
   </a>
-  <br/>
-</Callout>
+
+:::
 
 
-<Callout type="info">
-  <br />
+:::info
+
   To run a self-hosted access node, follow this [guide](./access-node-setup.md)
-  <br />
-</Callout>
 
-<Callout type="tip">
-  <br />
-Alternately, instead of running an access node, you can use the [Flow community](../../../references/run-and-secure/nodes/access-api.md) access nodes or the ones run by any of the other node operators.
-  <br />
-</Callout>
+:::
+
+:::tip
+
+Alternately, instead of running an access node, you can use the [Flow community](../../../node-ops/nodes/access-api.md) access nodes or the ones run by any of the other node operators.
+
+:::
 
 ### Validator node
 

@@ -11,7 +11,7 @@ This guide is for getting a new node staked and running on Flow other than a per
 New nodes are able to join the network each time a new epoch begins.
 In order to join the network at epoch N+1, the node must be registered with sufficient stake and
 authorized by the service account prior to the end of epoch N's Staking Auction Phase.
-Confirmation of a new node's inclusion in epoch N+1 is included in the [`EpochSetup` event](../../../architecture/staking/05-epoch-scripts-events.md#epochsetup).
+Confirmation of a new node's inclusion in epoch N+1 is included in the [`EpochSetup` event](../../../staking/05-epoch-scripts-events.md#epochsetup).
 
 Nodes registered for epoch N+1 are able to participate in network communication on a limited basis starting in the `Epoch Setup Phase` of epoch N.
 
@@ -20,7 +20,7 @@ Nodes registered for epoch N+1 are able to participate in network communication 
 Once registered and confirmed to join the network at epoch N+1, the node must start up **before** epoch N+1 begins.
 * Verification & Access nodes may start up any time during the `Epoch Setup Phase`.
 * Consensus & Collection nodes must start up within the first **1000 views (~30mins)**
-of the `Epoch Setup Phase` to participate in the [Epoch Preparation Protocol](../../../architecture/staking/04-epoch-preparation.md#phase-1-epoch-setup).
+of the `Epoch Setup Phase` to participate in the [Epoch Preparation Protocol](../../../staking/04-epoch-preparation.md#phase-1-epoch-setup).
 
 ## Step 1 - Run Genesis Bootstrap
 
@@ -136,7 +136,7 @@ For all other node types this will not be needed.
 
 If you are running a collection and consensus node, you will have an additional private key file (`node-machine-account-key.priv.json`)
 which contains the private key for your node's machine account. You can learn more about machine
-accounts [here](../../../architecture/staking/11-machine-account.md).
+accounts [here](../../../staking/11-machine-account.md).
 
 In Step 2 of this guide, when you submit a transaction to stake your node, you will need to provide the
 machine account public key, which can be found in the output of the previous `bootstrap key` command.
@@ -250,7 +250,7 @@ Ensure you have configured your node using the [Node Setup guide](./node-setup.m
 
 ### Confirming authorization
 
-You can confirm your node's successful registration and authorization by executing a Cadence script to query the [Staking Contract](../../core-contracts/06-staking-contract-reference.md#contract).
+You can confirm your node's successful registration and authorization by executing a Cadence script to query the [Staking Contract](../../../../references/core-contracts/06-staking-contract-reference.md#contract).
 At the end of the `Staking Auction Phase`, the members of the Proposed Identity Table are confirmed as authorized participants in the next epoch.
 Therefore, if your node ID appears in the Proposed Identity Table during the `Staking Auction Phase`, your node will be a participant in the next epoch.
 
@@ -291,7 +291,7 @@ Once the node has bootstrapped, these flags may be removed.
 ### Manually Provisioned Root Snapshot
 
 You can also provision the root snapshot file manually, then start the node without configuring Dynamic Startup.
-A snapshot can be obtained from any Access Node using [Flow CLI](../../../tools/flow-cli/index.md).
+A snapshot can be obtained from any Access Node using [Flow CLI](../../../../tools/flow-cli/index.md).
 ```shell RetrieveRootSnapshot
 flow snapshot save /path/to/root/snapshot --network mainnet
 ```

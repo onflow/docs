@@ -15,7 +15,7 @@ Please note, these limits only apply to the public (community) access nodes.
 
 The public access nodes are hosted by [QuickNode](https://www.quicknode.com/chains/flow).
 
-> If you require higher limits, you can either run your own Access node (see this [guide](../node-operation/access-node-setup.md)) or use [QuickNode](https://www.quicknode.com/chains/flow) to run a fully-managed access node.
+> If you require higher limits, you can either run your own Access node (see this [guide](./node-operation/access-node-setup.md)) or use [QuickNode](https://www.quicknode.com/chains/flow) to run a fully-managed access node.
 
 
 |                 gRPC API                             | Total requests per second per client IP        |

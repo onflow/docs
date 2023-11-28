@@ -22,11 +22,11 @@ Flow multirole architecture makes it more scalable and provides several node typ
 
 ---
 
-The different types of nodes are described [here](../node-operation/node-roles.md). As node operator, you can choose to run any of the different types of node that best fits your needs.
+The different types of nodes are described [here](../../node-ops/nodes/node-operation/node-roles.md). As node operator, you can choose to run any of the different types of node that best fits your needs.
 
 The nodes are classified as follows,
 
-![Flownodesdiagram.png](../../../references/run-and-secure/node-operation/Flownodesdiagram.png)
+![Flownodesdiagram.png](../../node-ops/nodes/node-operation/Flownodesdiagram.png)
 
 ## Light node a.k.a. Observer node
 
@@ -37,11 +37,11 @@ In addition to supporting dapps, an observer node can also be run by access node
 
 The observer node is not staked but still provides the same API as the access node.
 
-<Callout type="info">
-<br />
-To run a light node, follow this [guide](../../../references/run-and-secure/node-operation/observer-node.md)
-<br />
-</Callout>
+:::info
+
+To run a light node, follow this [guide](../../node-ops/nodes/node-operation/observer-node.md)
+
+:::
 
 ## Archive node
 
@@ -75,8 +75,8 @@ The central goal for Access Nodes is to provide RPC functionality to its node op
 In comparison, contributing to protocol progress (e.g. routing transactions to collector clusters, relaying blocks to the unstaked peer-to-peer network, etc.) should only take up a marginal fraction an Access Node's computational resources.
 Furthermore, Access Node operators can freely rate-limit the amount of resources their Access Node dedicates to supporting the broader ecosystem. Therefore, Access Nodes do not receive staking rewards.
 
-<Callout type="info">
-  <br />
+:::info
+
   Launch an access node using QuickNode
   <a
     href="https://www.quicknode.com/chains/flow"
@@ -84,21 +84,21 @@ Furthermore, Access Node operators can freely rate-limit the amount of resources
   >
     https://www.quicknode.com/chains/flow
   </a>
-  <br/>
-</Callout>
+
+:::
 
 
-<Callout type="info">
-  <br />
-  To run a self-hosted access node, follow this [guide](../../../references/run-and-secure/node-operation/access-node-setup.md)
-  <br />
-</Callout>
+:::info
 
-<Callout type="tip">
-  <br />
+  To run a self-hosted access node, follow this [guide](./node-operation/access-node-setup.md)
+
+:::
+
+:::tip
+
 Alternately, instead of running an access node, you can use the [Flow community](./access-api.md) access nodes or the ones run by any of the other node operators.
-  <br />
-</Callout>
+
+:::
 
 ## Validator node
 
@@ -124,8 +124,8 @@ Before proceeding, ensure you have the stake required for your new node and that
 
 To set up a new staked node after it has been authorized by the Flow governance working group, you will need to complete the following steps:
 
-1. [Provision](../../../references/run-and-secure/node-operation/node-setup.md) the machine on which your node will run.
+1. [Provision](./node-operation/node-setup.md) the machine on which your node will run.
 
-2. [Generate and register](../../../references/run-and-secure/node-operation/node-bootstrap.md) your node identity.
+2. [Generate and register](./node-operation/node-bootstrap.md) your node identity.
 
-3. [Start](../../../references/run-and-secure/node-operation/node-bootstrap.md#step-3---start-your-flow-node) your node!
+3. [Start](./node-operation/node-bootstrap.md#step-3---start-your-flow-node) your node!
