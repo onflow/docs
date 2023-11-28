@@ -3,7 +3,7 @@ title: Light Node a.k.a Observer Node
 sidebar_label: Light Node
 ---
 
-A light node also known as the observer node is similar to an access node and provides a locally accessible, continuously updated, verified copy of the block data. It serves the [gRPC Access API](../../../references/run-and-secure/nodes/access-api.md) but unlike an access node, an light node does not need to be staked, and **anyone** can run it without being added to the approved list of nodes.
+A light node also known as the observer node is similar to an access node and provides a locally accessible, continuously updated, verified copy of the block data. It serves the [gRPC Access API](../nodes/access-api.md) but unlike an access node, an light node does not need to be staked, and **anyone** can run it without being added to the approved list of nodes.
 
 The light node bootstraps by connecting to an access node and becoming part of the public network comprised of access nodes and other light nodes. It then continuously receives blocks, which the consensus nodes are adding to the chain, either directly from access nodes or from other light nodes that are part of the public network. However, it makes no trust assumption of the upstream access node or the light node which is providing the block and locally verifies that the blocks that are received are the correct extension of the chain e.g. after receiving valid blocks A, B and C when it receives block D, it verifies that block D is indeed signed by the consensus nodes and is a valid next block. The received block data is indexed and made available via the Access API. For Collection, Transactions and Account queries, it delegates those requests to the upstream access node. Similarly, transactions and scripts sent to a light node are also forwarded to the upstream access node. Future versions of the light node will be able to serve this data locally as well.
 
@@ -72,7 +72,7 @@ curl -sL -O storage.googleapis.com/flow-genesis-bootstrap/boot-tools-intel-mac.t
 
 #### Step 3 - Download the root-protocol-state-snapshot.json file for the current spork
 
-The `root-protocol-state-snapshot.json` is generated for each [spork](./spork.mdx) and contains the genesis data for that spork.
+The `root-protocol-state-snapshot.json` is generated for each [spork](./spork.md) and contains the genesis data for that spork.
 It is published and made available after each spork. The download location is specified [here](https://github.com/onflow/flow/blob/master/sporks.json) under [rootProtocolStateSnapshot](https://github.com/onflow/flow/blob/master/sporks.json#L16) and can be downloaded as follows,
 
 For mainnet find  the latest spork version from [sporks.json](https://github.com/onflow/flow/blob/master/sporks.json) and then download the `root-protocol-state-snapshot.json` and the signature file for it.
@@ -206,7 +206,7 @@ e.g. querying the REST API endpoint using curl
 curl "http://localhost/v1/blocks?height=sealed"
 ```
 
-The light node, like the other type of Flow nodes, also produces Prometheus metrics that can be used to monitor node health. More on that [here](./node-setup.mdx#monitoring-and-metrics)
+The light node, like the other type of Flow nodes, also produces Prometheus metrics that can be used to monitor node health. More on that [here](./node-setup.md#monitoring-and-metrics)
 
 
 ## FAQs
@@ -259,4 +259,4 @@ Access-004:
 * Public Key: `0d1523612be854638b985fc658740fa55f009f3cd49b739961ab082dc91b178ed781ef5f66878613b4d34672039150abfd9c8cfdfe48c565bca053fa4db30bec`
 
 While the public keys remain the same, the hostnames change each spork to include the spork name. Substitute `[current mainnet spork]` and `[current devnet spork]` with the appropriate spork name (e.g. `mainnet20`).
-See [Past Sporks](./past-sporks.mdx) for the current spork for each network.
+See [Past Sporks](./past-sporks.md) for the current spork for each network.

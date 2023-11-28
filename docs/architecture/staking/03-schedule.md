@@ -15,7 +15,7 @@ If any changes are proposed, the Flow community will be notified in advance.
 
 # Schedule
 
-![Flow Epoch Schedule](epoch-phase-diagram.png)
+![Flow Epoch Schedule](../../architecture/staking/epoch-phase-diagram.png)
 
 An Epoch is a period of time when the node operators in the network are constant. At epoch 
 boundaries, newly staked node operators are able to join the network and existing node operators
@@ -30,13 +30,13 @@ The exact timing of each epoch end is influenced by the number of blocks propose
 Therefore, epoch phase timing can very and will likely drift over time.
 
 **All quoted epoch end times are estimates and subject to some variance (up to several hours)**.
-See [Epoch Preparation Protocol](./04-epoch-preparation.md#epoch-length) for details. 
+See [Epoch Preparation Protocol](../../architecture/staking/04-epoch-preparation.md#epoch-length) for details. 
 
 </Callout>
 
 **Staking Operations are disabled for approximately the last day of an epoch**,
 typically around 12:00pm (7:00pm UTC) on Tuesday every week until the next day around the same time.
-See [Epoch Setup](./04-epoch-preparation.md#phase-1-epoch-setup) for more information on this phase.
+See [Epoch Setup](../../architecture/staking/04-epoch-preparation.md#phase-1-epoch-setup) for more information on this phase.
 
 **Epoch Switchovers will happen around 12:00 pm PT on Wednesday (7:00 pm UTC)** every week. 
 Please note exact epoch ending time vary based on the performance of the network
@@ -52,7 +52,7 @@ for more information about rewards calculation and schedule.
 
 ## Staking Auction
 
-The first, and longest phase of an epoch is the [staking auction](./04-epoch-preparation.md#phase-0-staking-auction).
+The first, and longest phase of an epoch is the [staking auction](../../architecture/staking/04-epoch-preparation.md#phase-0-staking-auction).
 This phase is when nodes and delegators can register to stake and perform other staking operations
 such as staking more tokens or unstaking their existing tokens.
 None of these operations are fully executed until the **Epoch Switchover** though.
@@ -61,8 +61,8 @@ None of these operations are fully executed until the **Epoch Switchover** thoug
 
 ## Epoch Setup and Epoch Commit
 
-The [Epoch Setup](./04-epoch-preparation.md#phase-1-epoch-setup)
-and [Epoch Commit](./04-epoch-preparation.md#phase-2-epoch-committed)
+The [Epoch Setup](../../architecture/staking/04-epoch-preparation.md#phase-1-epoch-setup)
+and [Epoch Commit](../../architecture/staking/04-epoch-preparation.md#phase-2-epoch-committed)
 phases are the final phases of the epoch, when node operators who have been included
 in the next epoch perform important setup functionailty to prepare for the next epoch.
 

@@ -51,7 +51,7 @@ Access nodes are required to stake 100 FLOW to be a confirmed node operator. How
 
 An observer node provides locally accessible, continuously updated, verified copy of the block data. It serves the Access API but unlike an access node, an observer node does not need to be staked, and **anyone** can run it without being added to the approved list of nodes.
 
-[Get started running an observer node](./observer-node.mdx)
+[Get started running an observer node](./observer-node.md)
 
 ## Archive
 

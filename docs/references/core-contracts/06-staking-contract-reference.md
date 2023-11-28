@@ -38,12 +38,12 @@ These scripts are read-only and get info about the current state of the staking 
 ## Delegator Transactions
 
 Documentation for delegating with tokens is described in the staking documentation
-for [the staking collection](../run-and-secure/staking/14-staking-collection.md)
+for [the staking collection](../../architecture/staking/14-staking-collection.md)
 
 # Events
 
 The `FlowIDTableStaking` contract emits an event whenever an important action occurs.
-See the [staking events Documentation](../../references/run-and-secure/staking/07-staking-scripts-events.md) for more information about each event.
+See the [staking events Documentation](../../architecture/staking/07-staking-scripts-events.md) for more information about each event.
 
 ```cadence
     pub event NewEpoch(totalStaked: UFix64, totalRewardPayout: UFix64)

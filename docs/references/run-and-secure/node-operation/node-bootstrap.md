@@ -4,14 +4,14 @@ sidebar_label: Node Bootstrapping
 description: How to get started running a node on Flow
 ---
 
-This guide is for getting a new node staked and running on Flow other than a permissionless Access node. For running a permissionless Access node see [Access node setup](./access-node-setup.md). For sporking documentation for existing node operators, see [Spork Process](./spork.mdx).
+This guide is for getting a new node staked and running on Flow other than a permissionless Access node. For running a permissionless Access node see [Access node setup](./access-node-setup.md). For sporking documentation for existing node operators, see [Spork Process](./spork.md).
 
 ## Timing
 
 New nodes are able to join the network each time a new epoch begins.
 In order to join the network at epoch N+1, the node must be registered with sufficient stake and
 authorized by the service account prior to the end of epoch N's Staking Auction Phase.
-Confirmation of a new node's inclusion in epoch N+1 is included in the [`EpochSetup` event](../staking/05-epoch-scripts-events.md#epochsetup).
+Confirmation of a new node's inclusion in epoch N+1 is included in the [`EpochSetup` event](../../../architecture/staking/05-epoch-scripts-events.md#epochsetup).
 
 Nodes registered for epoch N+1 are able to participate in network communication on a limited basis starting in the `Epoch Setup Phase` of epoch N.
 
@@ -20,7 +20,7 @@ Nodes registered for epoch N+1 are able to participate in network communication 
 Once registered and confirmed to join the network at epoch N+1, the node must start up **before** epoch N+1 begins.
 * Verification & Access nodes may start up any time during the `Epoch Setup Phase`.
 * Consensus & Collection nodes must start up within the first **1000 views (~30mins)**
-of the `Epoch Setup Phase` to participate in the [Epoch Preparation Protocol](../staking/04-epoch-preparation.mdx#phase-1-epoch-setup).
+of the `Epoch Setup Phase` to participate in the [Epoch Preparation Protocol](../../../architecture/staking/04-epoch-preparation.md#phase-1-epoch-setup).
 
 ## Step 1 - Run Genesis Bootstrap
 
@@ -136,7 +136,7 @@ For all other node types this will not be needed.
 
 If you are running a collection and consensus node, you will have an additional private key file (`node-machine-account-key.priv.json`)
 which contains the private key for your node's machine account. You can learn more about machine
-accounts [here](../staking/machine-account).
+accounts [here](../../../architecture/staking/11-machine-account.md).
 
 In Step 2 of this guide, when you submit a transaction to stake your node, you will need to provide the
 machine account public key, which can be found in the output of the previous `bootstrap key` command.
@@ -246,11 +246,11 @@ $ ./boot-tools/transit push-transit-key -b ./bootstrap -t mainnet-x-organization
 
 ## Step 3 - Start Your Flow Node
 
-Ensure you have configured your node using the [Node Setup guide](./node-setup.mdx).
+Ensure you have configured your node using the [Node Setup guide](./node-setup.md).
 
 ### Confirming authorization
 
-You can confirm your node's successful registration and authorization by executing a Cadence script to query the [Staking Contract](../../../references/core-contracts/06-staking-contract-reference.md#contract).
+You can confirm your node's successful registration and authorization by executing a Cadence script to query the [Staking Contract](../../core-contracts/06-staking-contract-reference.md#contract).
 At the end of the `Staking Auction Phase`, the members of the Proposed Identity Table are confirmed as authorized participants in the next epoch.
 Therefore, if your node ID appears in the Proposed Identity Table during the `Staking Auction Phase`, your node will be a participant in the next epoch.
 
@@ -304,9 +304,9 @@ The snapshot must be within the `Epoch Setup Phase`.
 
 <Callout type="warning">
 
-Since Collection and Consensus Nodes must start up in the first ~30mins of the `Epoch Setup Phase` (see [Timing](./node-bootstrap.mdx#timing)),
+Since Collection and Consensus Nodes must start up in the first ~30mins of the `Epoch Setup Phase` (see [Timing](./node-bootstrap.md#timing)),
 the snapshot must be provisioned within this time window.
 
 </Callout>
 
-Once a valid root snapshot file is downloaded to the node's bootstrap folder, it can be started (see [guide](./node-setup.mdx#start-the-node))
+Once a valid root snapshot file is downloaded to the node's bootstrap folder, it can be started (see [guide](./node-setup.md#start-the-node))

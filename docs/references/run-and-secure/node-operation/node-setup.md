@@ -7,7 +7,7 @@ description: How to run a Collection, Consensus, Verification and Execution node
 This guide is for running a Collection, Consensus, Verification and Execution node.
 If you are planning to run an Access node then refer to [access node setup](./access-node-setup.md).
 
-First you'll need to provision a machine or virtual machine to run your node software. Please see follow the [node-provisioning](./node-provisioning.mdx) guide for it.
+First you'll need to provision a machine or virtual machine to run your node software. Please see follow the [node-provisioning](./node-provisioning.md) guide for it.
 
 ## Pull the Flow Images
 
@@ -71,14 +71,18 @@ git pull origin master
 If you are not using Systemd, sample commands for running each Docker container are below.
 Be sure to replace `/path/to/data` and `/path/to/bootstrap` with the appropriate paths you are using.
 
-<Callout type="warning">
+:::warning
+
 Do not run your node using `docker run` command directly without a mechanism for the node
 to automatically restart following a crash.
-</Callout>
 
-<Callout type="info">
-    The actual Docker image tag can be found [here](./past-sporks.mdx) for appropriate spork.
-</Callout>
+:::
+
+:::info
+
+The actual Docker image tag can be found [here](./past-sporks.md) for appropriate spork.
+
+:::
 
 ### System Configuration
 
@@ -249,13 +253,13 @@ Now that your node is provisioned and configured, it can be started.
 
 <Callout type="warning">
 
-Before starting your node, ensure it is [registered](./node-bootstrap.mdx#step-2---stake-your-node) and [authorized](./node-bootstrap.mdx#confirming-authorization).
+Before starting your node, ensure it is [registered](./node-bootstrap.md#step-2---stake-your-node) and [authorized](./node-bootstrap.md#confirming-authorization).
 
 </Callout>
 
 Ensure you start your node at the appropriate time.
-See [Spork Process](./spork.mdx) for when to start up a node following a spork.
-See [Node Bootstrap](./node-bootstrap.mdx#timing) for when to start up a newly registered node.
+See [Spork Process](./spork.md) for when to start up a node following a spork.
+See [Node Bootstrap](./node-bootstrap.md#timing) for when to start up a newly registered node.
 
 ### Systemd
 
@@ -298,7 +302,7 @@ CONTAINER ID IMAGE COMMAND CREATED STATUS PORTS NAMES
 
 ## Monitoring and Metrics
 
-This is intended for operators who would like to see what their Flow nodes are currently doing. Head over to [Monitoring Node Health](./monitoring-nodes.mdx) to get setup.
+This is intended for operators who would like to see what their Flow nodes are currently doing. Head over to [Monitoring Node Health](./monitoring-nodes.md) to get setup.
 
 ### Node Status
 

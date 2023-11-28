@@ -5,6 +5,7 @@ sidebar_label: Design Patterns
 ---
 
 :::info
+
 This is a selection of software design patterns developed by core Flow developers
 while writing Cadence code for deployment to Flow Mainnet.
 
@@ -14,6 +15,7 @@ Many of these design patters apply to most other programming languages, but some
 They may provide a solution to a problem that you encounter when writing smart contracts in Cadence.
 If they do not clearly fit, these patterns may not be the right solution for a given situation or problem.
 They are not meant to be rules to be followed strictly, especially where a better solution presents itself.
+
 :::
 
 # General

@@ -15,21 +15,25 @@ If there is no change to the network address or the staking and networking keys 
 3. Copy over the data folder (typically under `/var/flow/data`) which contains the state data.
 4. Start the new node on the same network address as the old one.
 
-<Callout type="warning">
-Please ensure that there is minimal downtime during this migration.
-</Callout>
+:::warning
 
-<Callout type="warning">
+Please ensure that there is minimal downtime during this migration.
+
+:::
+
+:::warning
+
 The network address is currently part of the staking data that was submitted for the node. It is how other nodes in the network discover this node.
 Hence, the network address of the node must stay the same between epochs otherwise the node will become unreachable for the other nodes and stop functioning.
-</Callout>
+
+:::
 
 ### Method 2 - Network address change
 
 A change to the node network address (IP or a hostname) can only be done during the spork process.
 
 To change the networking address:
-1. A day before the [upcoming mainnet spork](./upcoming-sporks), change the network address for the nodes in Flow Port (using the update network address feature).
+1. A day before the [upcoming mainnet spork](./upcoming-sporks.md), change the network address for the nodes in Flow Port (using the update network address feature).
 The change will not take effect till an epoch transition happens.
 2. Change the addresses in the `/var/flow/bootstrap/private-root-information/private-node-info_<nodeid>/node-info.priv.json` json file on the node.
 3. A spork also causes an epoch transition, and the new addresses will take effect after the spork immediately.
@@ -40,9 +44,11 @@ If the node after migration will be using new staking or networking keys then it
 
 1. Unstake the node via Flow Port.
 2. Register the new node via Flow Port with the new staking information.
-3. Run the new node with the new keys and network address. It should be able to join the network at the next epoch (see [timing](./node-bootstrap.mdx#timing))
+3. Run the new node with the new keys and network address. It should be able to join the network at the next epoch (see [timing](./node-bootstrap.md#timing))
 
-<Callout type="warning">
-Unstaking a node will result in the node [not earning rewards](../staking/06-technical-overview.mdx#staking-operations-available-to-all-stakers) for the next epoch.
+:::warning
+
+Unstaking a node will result in the node [not earning rewards](../../../architecture/staking/06-technical-overview.md#staking-operations-available-to-all-stakers) for the next epoch.
 Delegators to the old node will have their tokens unstaked automatically. They will also stop earning rewards unless they withdraw their unstaked tokens and delegate them to a different node.
-</Callout>
+
+:::

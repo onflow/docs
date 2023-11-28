@@ -22,7 +22,7 @@ Flow multirole architecture makes it more scalable and provides several node typ
 
 ---
 
-The different types of nodes are described [here](./node-roles.mdx). As node operator, you can choose to run any of the different types of node that best fits your needs.
+The different types of nodes are described [here](./node-roles.md). As node operator, you can choose to run any of the different types of node that best fits your needs.
 
 The nodes are classified as follows,
 
@@ -39,7 +39,7 @@ The observer node is not staked but still provides the same API as the access no
 
 <Callout type="info">
   <br />
-  To run a light node, follow this [guide](./observer-node.mdx)
+  To run a light node, follow this [guide](./observer-node.md)
   <br />
 </Callout>
 
@@ -124,8 +124,8 @@ Before proceeding, ensure you have the stake required for your new node and that
 
 To set up a new staked node after it has been authorized by the Flow governance working group, you will need to complete the following steps:
 
-1. [Provision](./node-setup.mdx) the machine on which your node will run.
+1. [Provision](./node-setup.md) the machine on which your node will run.
 
-2. [Generate and register](./node-bootstrap.mdx) your node identity.
+2. [Generate and register](./node-bootstrap.md) your node identity.
 
-3. [Start](./node-bootstrap.mdx#step-3---start-your-flow-node) your node!
+3. [Start](./node-bootstrap.md#step-3---start-your-flow-node) your node!

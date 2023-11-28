@@ -10,7 +10,7 @@ feature implementations and security fixes.
 
 ## HCU versus Spork
 
-A [spork](./spork.mdx) requires a coordinated network upgrade process where node operators upgrade their node software and
+A [spork](./spork.md) requires a coordinated network upgrade process where node operators upgrade their node software and
 re-initialize with a consolidated representation of the previous spork's state.
 It is used to roll out changes which may be non-backward compatible with respect to the protocol and the execution state.
 Spork entails a network downtime as all nodes in the system are upgraded and brought back online.

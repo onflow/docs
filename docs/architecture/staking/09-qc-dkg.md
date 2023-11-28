@@ -72,14 +72,14 @@ It also creates a machine account for the QC object.
 If a user already has a registered node with the staking collection, but hasn't created their QC Voter object yet,
 they can use the [`create_machine_account.cdc` transaction.](./14-staking-collection.md#create-a-machine-account-for-an-existing-node)
 
-If a user is not using the staking collection, they can use the **Create QC Voter** ([QC.01](../../core-contracts/07-epoch-contract-reference.md#quorum-certificate-transactions-and-scripts))
+If a user is not using the staking collection, they can use the **Create QC Voter** ([QC.01](../../references/core-contracts/07-epoch-contract-reference.md#quorum-certificate-transactions-and-scripts))
 transaction. This will only store the QC Voter object in the account that stores the `NodeStaker` object.
 It does not create a machine account or store it elsewhere, so it is not recommended to use. We encourage to use the staking collection instead.
 
 ### Submit Vote
 
 During the Epoch Setup Phase, the node software should submit the votes for the QC generation
-automatically using the **Submit QC Vote** ([QC.02](../../core-contracts/07-epoch-contract-reference.md#quorum-certificate-transactions-and-scripts))
+automatically using the **Submit QC Vote** ([QC.02](../../references/core-contracts/07-epoch-contract-reference.md#quorum-certificate-transactions-and-scripts))
 transaction with the following arguments.
 
 | Argument                | Type     | Description |
@@ -113,7 +113,7 @@ It also creates a machine account for the DKG Object.
 If a user already has a registered node with the staking collection, but hasn't created their DKG Participant object yet,
 they can use the [`create_machine_account.cdc` transaction.](./14-staking-collection.md#create-a-machine-account-for-an-existing-node)
 
-If a user is not using the staking collection, they can use the **Create DKG Participant** ([DKG.01](../../core-contracts/07-epoch-contract-reference.md#dkg-transactions-and-scripts))
+If a user is not using the staking collection, they can use the **Create DKG Participant** ([DKG.01](../../references/core-contracts/07-epoch-contract-reference.md#dkg-transactions-and-scripts))
 transaction. This will only store the DKG Participant object in the account that stores the `NodeStaker` object.
 It does not create a machine account or store it elsewhere, so it is not recommended to use. 
 The staking collection is the recommended method.
@@ -121,7 +121,7 @@ The staking collection is the recommended method.
 ### Post Whiteboard Message
 
 During the Epoch Setup Phase, the node software should post whiteboard messages to the DKG
-automatically using the **Post Whiteboard Message** ([DKG.02](../../core-contracts/07-epoch-contract-reference.md#dkg-transactions-and-scripts))
+automatically using the **Post Whiteboard Message** ([DKG.02](../../references/core-contracts/07-epoch-contract-reference.md#dkg-transactions-and-scripts))
 transaction with the following arguments.
 
 | Argument          | Type     | Description |
@@ -131,7 +131,7 @@ transaction with the following arguments.
 ### Send Final Submission
 
 During the Epoch Setup Phase, the node software should send its final submission for the DKG
-automatically using the **Send Final Submission** ([DKG.03](../../core-contracts/07-epoch-contract-reference.md#dkg-transactions-and-scripts))
+automatically using the **Send Final Submission** ([DKG.03](../../references/core-contracts/07-epoch-contract-reference.md#dkg-transactions-and-scripts))
 transaction with the following arguments.
 
 | Argument           | Type        | Description |

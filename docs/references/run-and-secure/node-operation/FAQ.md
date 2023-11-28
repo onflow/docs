@@ -6,7 +6,7 @@ title: Operator FAQ
 
 ### Can anybody run a node? What is the approval process?
 
-Anyone can run an [observer node](./observer-node.mdx).
+Anyone can run an [observer node](./observer-node.md).
 
 Very soon, Access nodes too will be permissionless and anyone will be able to run one.
 
@@ -18,29 +18,29 @@ In the long-term, anyone can run a node validator on Flow.
 
 ### How do I generate keys?
 
-Please follow the instructions provided here: [Generate Your Node Keys](./node-bootstrap.mdx#generating-your-node-id)
+Please follow the instructions provided here: [Generate Your Node Keys](./node-bootstrap.md#generating-your-node-id)
 
 ### How do I check on the status of my node?
 
-Please follow the instructions provided here: [Monitoring nodes](./monitoring-nodes.mdx)
+Please follow the instructions provided here: [Monitoring nodes](./monitoring-nodes.md)
 
 ### Can I bootstrap and run a node at any time?
 
 Flow allows nodes to join/leave the network each time a new epoch begins (roughly once per week). 
-See [Staking & Epochs](../staking/index.md#epochs) for general information and [Node Setup](./node-bootstrap.mdx#timing) for a guide to running a new node.
+See [Staking & Epochs](../../../architecture/staking/index.md#epochs) for general information and [Node Setup](./node-bootstrap.md#timing) for a guide to running a new node.
 
 ### Would it hurt the network to have a node that constantly spins up and down?
 
 All staked nodes except access nodes, have to be online at all time. A staked node, other than an access node, which is not online can cause severe degradation of network performance and will be subjected to slashing of rewards.
-A way to prevent this is to check your equipment meets Flow's [recommended requirements](./node-setup.mdx#hardware-requirements), periodically checking for updates and announcements in Discord but also using a node monitoring system for when your node does go offline.
+A way to prevent this is to check your equipment meets Flow's [recommended requirements](./node-setup.md#hardware-requirements), periodically checking for updates and announcements in Discord but also using a node monitoring system for when your node does go offline.
 
 ### Does Flow has a regular schedule for Sporks?
 
-Yes, see [Upcoming Sporks](./upcoming-sporks.mdx) for the latest schedule. Currently, Flow has a Mainnet Spork and a Testnet Spork roughly every two months.
+Yes, see [Upcoming Sporks](./upcoming-sporks.md) for the latest schedule. Currently, Flow has a Mainnet Spork and a Testnet Spork roughly every two months.
 
 ### How do I update the Node Software?
 
-One of the reasons for a [spork](./spork.mdx) is to make sure all nodes update to the latest software version. Hence, you should have the latest software update as long as you are participating in each spork.
+One of the reasons for a [spork](./spork.md) is to make sure all nodes update to the latest software version. Hence, you should have the latest software update as long as you are participating in each spork.
 However, if we do release any software update in between a Spork (e.g. an emergency patch) we will announce it on Discord.
 
 ### Is there any way to know if a node is currently online?
@@ -50,7 +50,7 @@ To verify if a node is online, please [setup metrics](./FAQ.md#how-do-i-check-on
 ### Can I migrate a node to a new machine?
 
 Yes, as long as you retain the `boostrap` information which includes the node staking key, networking key, IP address and port from the old node to the new.
-More on this [here](./node-migration.mdx)
+More on this [here](./node-migration.md)
 
 ### Where can I find how many nodes are currently running Flow?
 

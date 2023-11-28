@@ -6,7 +6,7 @@ description: Hardware, networking and Operating system setup for a Flow node
 
 ## Hardware Requirements
 
-The hardware your Node will need varies depending on the role your Node will play in the Flow network. For an overview of the differences see the [Node Roles Overview](./node-roles.mdx).
+The hardware your Node will need varies depending on the role your Node will play in the Flow network. For an overview of the differences see the [Node Roles Overview](./node-roles.md).
 
 | Node Type | CPU | Memory | Disk | Example GCP Instance | Example AWS Instance |
 |:----------------:| ---------:| ------:| ------:|:--------------:|:--------------:|
@@ -99,7 +99,7 @@ As a rough benchmark for planning storage capacity, each Flow block will grow th
 ### Confidential Data & Files
 
 Flow stores dynamically generated confidential data in a separate database. We strongly recommend enabling encryption
-for this database - see [this guide](./db-encryption-existing-operator.mdx) for instructions.
+for this database - see [this guide](./db-encryption-existing-operator.md) for instructions.
 
 Confidential information used by Flow is stored in the `private-root-information` subtree of the `bootstrap` folder.
 In particular:
