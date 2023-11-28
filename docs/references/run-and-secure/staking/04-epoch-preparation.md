@@ -52,7 +52,7 @@ where the set of authorized nodes is constant (or can only shrink due to ejectio
 At an Epoch switchover, which is the time when the network transitions from one epoch to the next,
 the set of authorized nodes can change. For each of Flow's node roles, the Flow protocol admits a protocol-determined number of nodes. 
 
-For each Epoch, there is a [Staking Auction](./06-technical-overview.mdx) in which new potential node operators may submit Staking Commitments.
+For each Epoch, there is a [Staking Auction](./06-technical-overview.md) in which new potential node operators may submit Staking Commitments.
 All this is completely smart-contract based and handled through conventional transactions.
 
 After the Staking Auction is over, the protocol determines which commitments to accept and which to reject.

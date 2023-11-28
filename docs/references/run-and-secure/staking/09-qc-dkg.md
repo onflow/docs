@@ -44,7 +44,7 @@ If you have a node without a machine account (if you were operating a node from 
 before epochs and staking collection were enabled, for example) the staking collection
 also provides a method to create a machine account for an existing node.
 
-See the [Staking Collection Docs](./14-staking-collection.mdx#machine-account-support)
+See the [Staking Collection Docs](./14-staking-collection.md#machine-account-support)
 for more information.
 
 # Collector Cluster Quorum Certificate Generation Protocol
@@ -66,11 +66,11 @@ function in the `FlowEpoch` contract to create their Voter object and needs to p
 a reference to their `FlowIDTableStaking.NodeStaker` object to prove they are the node owner.
 
 When registering a node with the staking collection, this process is handled by
-[the transaction to register.](./14-staking-collection.mdx#register-a-new-staked-node)
+[the transaction to register.](./14-staking-collection.md#register-a-new-staked-node)
 It also creates a machine account for the QC object.
 
 If a user already has a registered node with the staking collection, but hasn't created their QC Voter object yet,
-they can use the [`create_machine_account.cdc` transaction.](./14-staking-collection.mdx#create-a-machine-account-for-an-existing-node)
+they can use the [`create_machine_account.cdc` transaction.](./14-staking-collection.md#create-a-machine-account-for-an-existing-node)
 
 If a user is not using the staking collection, they can use the **Create QC Voter** ([QC.01](../../core-contracts/07-epoch-contract-reference.md#quorum-certificate-transactions-and-scripts))
 transaction. This will only store the QC Voter object in the account that stores the `NodeStaker` object.
@@ -107,11 +107,11 @@ function in the `FlowEpoch` contract to create their Voter object and needs to p
 a reference to their `FlowIDTableStaking.NodeStaker` object to prove they are the node owner.
 
 When registering a node with the staking collection, this process is handled by
-[the transaction to register.](./14-staking-collection.mdx#register-a-new-staked-node)
+[the transaction to register.](./14-staking-collection.md#register-a-new-staked-node)
 It also creates a machine account for the DKG Object.
 
 If a user already has a registered node with the staking collection, but hasn't created their DKG Participant object yet,
-they can use the [`create_machine_account.cdc` transaction.](./14-staking-collection.mdx#create-a-machine-account-for-an-existing-node)
+they can use the [`create_machine_account.cdc` transaction.](./14-staking-collection.md#create-a-machine-account-for-an-existing-node)
 
 If a user is not using the staking collection, they can use the **Create DKG Participant** ([DKG.01](../../core-contracts/07-epoch-contract-reference.md#dkg-transactions-and-scripts))
 transaction. This will only store the DKG Participant object in the account that stores the `NodeStaker` object.

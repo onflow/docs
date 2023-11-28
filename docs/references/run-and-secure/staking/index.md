@@ -103,12 +103,12 @@ In the case of unstaking requests, they also must wait an additional
 epoch before their unstaked tokens are available to withdraw.
 This allows the protocol to deal with any slashable offenses that may have happened in the previous epoch.
 
-See the [Epochs](./04-epoch-preparation.mdx) section of the documentation for in-depth explainations 
+See the [Epochs](./04-epoch-preparation.md) section of the documentation for in-depth explainations 
 of the identity table, epoch schedule, QC, and DKG.
 
 ## Rewards
 
-Please see the [schedule](./03-schedule.mdx) section of the documentation
+Please see the [schedule](./03-schedule.md) section of the documentation
 for information about reward calculations and schedule and
 what you can do with the rewards you earn by staking a node!
 
@@ -155,5 +155,5 @@ and the fees that they take from your staking rewards.
 If you are self-custodying your Flow account and keys, or you want to build a staking service for customers,
 you will need to learn more about how staking works,
 the various methods for staking, and how you can participate safely and reliably.
-See the [staking technical overview](./06-technical-overview.mdx) first
+See the [staking technical overview](./06-technical-overview.md) first
 for information about technical integration.

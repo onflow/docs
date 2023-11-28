@@ -21,7 +21,7 @@ using Flow. It also supports machine accounts, a necessary feature for Flow epoc
 The staking collection paradigm is the most flexible of the three choices
 and will receive the most support in the future. It is the set-up that Flow Port and many other staking providers use.
 
-The staking collection setup and guide is detailed in the [staking collection guide.](./14-staking-collection.mdx)
+The staking collection setup and guide is detailed in the [staking collection guide.](./14-staking-collection.md)
 
 # Staking
 
@@ -32,4 +32,4 @@ contract and storing the staking objects directly in account storage.
 This is probably the simplest way to implement this, but it is not very flexible
 and not recommended.
 
-The basic staking guide is detailed [here](./15-staking-guide.mdx)
+The basic staking guide is detailed [here](./15-staking-guide.md)

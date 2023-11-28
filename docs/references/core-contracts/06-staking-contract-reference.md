@@ -38,7 +38,7 @@ These scripts are read-only and get info about the current state of the staking 
 ## Delegator Transactions
 
 Documentation for delegating with tokens is described in the staking documentation
-for [the staking collection](../../references/run-and-secure/staking/14-staking-collection.mdx)
+for [the staking collection](../run-and-secure/staking/14-staking-collection.md)
 
 # Events
 

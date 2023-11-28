@@ -17,7 +17,7 @@ objects in a single account via a single storage path, and perform staking actio
 using both locked and unlocked Flow.
 
 Before the staking collection, accounts could use the instructions in 
-[the unlocked staking guide](./15-staking-guide.mdx)
+[the unlocked staking guide](./15-staking-guide.md)
 to stake with tokens. This was a bit restrictive, because that guide (and the corresponding transactions) 
 only supports one node and one delegator object
 per account. If a user wanted to have more than one per account,

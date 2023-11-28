@@ -21,7 +21,7 @@ Chain analytics, audit and exploration applications can run such an access node 
 New nodes are able to join the network each time a new epoch begins.
 An epoch is a period of time (approximately one week) when the node operators in the network are constant.
 At epoch boundaries, newly staked node operators are able to join the network and existing node operators which have unstaked may exit the network.
-You can read more about epochs [here](../staking/03-schedule.mdx).
+You can read more about epochs [here](../staking/03-schedule.md).
 
 
 In order to join the network at epoch N+1, the access node **must** be registered with at least 100 FLOW staked prior to the end of epoch N's Staking Auction Phase.

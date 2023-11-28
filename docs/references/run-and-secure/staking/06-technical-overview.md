@@ -21,7 +21,7 @@ This document describes the functionality of the
 It gives an overview of the process of epochs, staking as a node, and delegation. It is an important prerequisite
 to understand before proceeding with any other technical integration or interaction with the Flow Protocol,
 but does not provide step-by-step instructions for how to perform specific actions. See the
-[Staking Collection Docs for instructions](./staking-collection/)
+[Staking Collection Docs for instructions](./staking-collection)
 
 This document also describes how to read public staking data from the contract.
 Anyone can read public data from the staking smart contract with these instructions.
@@ -117,7 +117,7 @@ This object is used for staking, unstaking, and withdrawing rewards.
 Consensus and Collection nodes also need to create a separate machine account
 for use in the DKG and QC proccesses, respectively. This machine account creation
 is handled automatically by the staking collection smart contract.
-More information is in the [machine account documentation](./11-machine-account.mdx#creation).
+More information is in the [machine account documentation](./11-machine-account.md#creation).
 
 Every node operator will run the same transaction to register their node at any time throughout the staking auction.
 
@@ -189,7 +189,7 @@ and the delegator's rewards are deposited in the delegator's reward pool.
 
 Regardless of whether they are a node operator or delegator, a staker has access
 to all the same staking operations, outlined below.
-Specific implementations of these transactions are detailed in the [Staking Collection Docs](./staking-collection/)
+Specific implementations of these transactions are detailed in the [Staking Collection Docs](./staking-collection)
 
 ### Stake More Tokens
 
