@@ -1,5 +1,6 @@
 ---
 title: Operator FAQ
+sidebar_position: 1
 ---
 
 # Operator FAQ

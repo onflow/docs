@@ -2,6 +2,7 @@
 title: Database Encryption for Existing Node Operators
 sidebar_label: Database Encryption for Existing Node Operators
 description: Instructions for existing Node Operators to follow to create a machine account for their collection or consensus nodes.
+sidebar_position: 4
 ---
 
 In Mainnet14, the DKG (distributed key generation) is turned on, requiring storage of 

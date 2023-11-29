@@ -2,6 +2,7 @@
 title: Setting Up a Flow Node
 sidebar_label: Node Setup
 description: How to run a Collection, Consensus, Verification and Execution node
+sidebar_position: 12
 ---
 
 This guide is for running a Collection, Consensus, Verification and Execution node.

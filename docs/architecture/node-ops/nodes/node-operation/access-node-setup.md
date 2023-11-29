@@ -1,6 +1,7 @@
 ---
 title: Setting Up a Flow Access Node
 sidebar_label: Access Node Setup
+sidebar_position: 2
 ---
 
 This guide is for running a permissonless Access node on Flow. If you are planning to run a different type of staked node then see [node bootstrap](./node-bootstrap.md).
@@ -14,7 +15,6 @@ dApp developers can choose to run their own private permissionless access node a
 Node operators can also run their own permissionless access node and provide access to that node as a service.
 
 Chain analytics, audit and exploration applications can run such an access node and do not have to rely on third parties for the state of the network.
-
 
 ## Timing
 
@@ -31,31 +31,16 @@ Since this deadline may shift slightly from epoch to epoch, we recommend the nod
 
 Confirmation of a new node's inclusion in epoch N+1 is included in the [`EpochSetup` event](../../../staking/05-epoch-scripts-events.md#epochsetup).
 
-
-![Flow Epoch Schedule](https://storage.googleapis.com/flow-resources/documentation-assets/epoch-startup-order.png)
-
-## Limitations
-This is a preliminary implementation of the full permissionless node operation feature and there will be exactly **five** slots in total that will be opened for access nodes.
-If there are more than five staked candidate access nodes at the end of the staking phase of the current epoch which ends on Wednesday, 15th Feb, five of those will be selected by an on-chain random selection process and no other permissionless ANs can join until others unstake in a future epoch.
-
-More slots will be opened in the future.
-
-Support for unlimited access nodes requires staking auctions to be implemented, which is still an upgrade planned for the future.
-
-To summarize,
-
-|  **Date**  |  **Time** | **Epoch** |     **Epoch Phase**    |                                                     |
-|:----------:|:---------:|:---------:|:----------------------:|:---------------------------------------------------:|
-| 02/08/2023 | 20:00 UTC | 63         | Staking auction starts | Stake your access nodes                             |
-| 02/15/2023 | 08:00 UTC | 63         | Staking auction ends   | No more access nodes can be staked for epoch 64    |
-| 02/15/2023 | 20:00 UTC | 64       | Epoch n+1 starts       | 5 randomly chosen access nodes can join the network |
-
-> Please ensure that you have staked the access node by **15th Feb, 2023 Wednesday 08:00 UTC** if you wish to run the node in the next epoch.
+![Flow Epoch Schedule](./epoch-startup-order.png)
 
 ## How to run a Permissionless Access node?
 
-> Note: To run an access node you will need to provision a machine or virtual machine to run your node software. Please follow the [node-provisioning](./node-provisioning.md) guide for it.
+:::note
+
+To run an access node you will need to provision a machine or virtual machine to run your node software. Please follow the [node-provisioning](./node-provisioning.md) guide for it.
 You can provision the machine before or after your node has been chosen.
+
+:::
 
 At a high level, to run a permissionless Access node, you will have to do the following steps:
 1. Generate the node identity (private and public keys, node ID etc.).
@@ -120,11 +105,23 @@ $tree ./bootstrap/
 3 directories, 4 files
 ```
 
-> ⚠️ _Use a fully qualified domain name for the network address. Please also include the port number in the network address e.g. `flowaccess.mycompany.com:3569`_
+:::warning
 
-> ⚠️ _Do not include in `http://` in the network address._
+_Use a fully qualified domain name for the network address. Please also include the port number in the network address e.g. `flowaccess.mycompany.com:3569`_
 
-> If you would like to stake multiple access nodes, please ensure you generate a unique identity for each node.
+:::
+
+:::warning
+
+_Do not include in `http://` in the network address._
+
+:::
+
+:::tip
+
+If you would like to stake multiple access nodes, please ensure you generate a unique identity for each node.
+
+:::
 
 Your node identity has now been generated. Your <b>node ID</b> can be found in the file `./bootstrap/public-root-information/node-id`.
 
@@ -133,7 +130,11 @@ $cat ./bootstrap/public-root-information/node-id
 e737ec6efbd26ef43bf676911cdc5a11ba15fc6562d05413e6589fccdd6c06d5
 ```
 
-> All your private keys should be in the `bootstrap` folder created earlier. Please take a back up of the entire folder.
+:::info
+
+All your private keys should be in the `bootstrap` folder created earlier. Please take a back up of the entire folder.
+
+:::
 
 ## Step  2 - Stake the node
 
@@ -180,7 +181,11 @@ Submit the Transaction.
 
 On Wednesday at around 12:00 UTC, the staking auction for the current epoch will end and five nodes from candidate list of nodes will be chosen at random by the staking contract to be part of the next epoch.
 
->Note: If all 5 slots have been taken from the previous epoch, then no new access nodes will be chosen (see #limitations)
+:::note
+
+If all 5 slots have been taken from the previous epoch, then no new access nodes will be chosen (see #limitations)
+
+:::
 
 There are several ways to verify whether your node was chosen as explained below.
 
@@ -338,17 +343,3 @@ The list can be retrieved from the chain by executing the [get_candidate_nodes](
 ```shell
 $ flow scripts execute  ./transactions/idTableStaking/scripts/get_candidate_nodes.cdc -n mainnet
 ```
-
-### How to check the availability of open access nodes slots for the next epoch?
-
-The limits for the open slots are defined in the staking contract and can be queried from the chain by executing the [get_slot_limits](https://github.com/onflow/flow-core-contracts/blob/master/transactions/idTableStaking/scripts/get_slot_limits.cdc) script.
-
-Node types are defined [here](https://github.com/onflow/flow-core-contracts/blob/5696ec5e3e6aa5fc10762cbfeb42b9c5c0b8ddbe/contracts/FlowIDTableStaking.cdc#L114-L119)
-
-```shell
-
-$ flow scripts execute  ./transactions/idTableStaking/scripts/get_slot_limits.cdc --args-json  '[{ "type":"UInt8", "value":"5"}]'  -n mainnet
-Result: 118
-```
-
-Currently, there are 113 access nodes already part of the network. Hence, the total number of new nodes that can join are 118 - 113 = 5.

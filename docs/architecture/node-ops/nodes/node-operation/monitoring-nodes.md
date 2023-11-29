@@ -1,6 +1,7 @@
 ---
 title: Monitoring Node Health
 sidebar_label: Node Monitoring
+sidebar_position: 7
 ---
 
 A Flow node generates logs and publishes metrics as it runs. These logs and metrics can be used to gain insights into the health of the node.

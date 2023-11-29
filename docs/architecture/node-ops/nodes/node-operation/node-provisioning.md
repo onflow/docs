@@ -2,6 +2,7 @@
 title: Provisioning a Flow node
 sidebar_label: Node Provisioning
 description: Hardware, networking and Operating system setup for a Flow node
+sidebar_position: 10
 ---
 
 ## Hardware Requirements

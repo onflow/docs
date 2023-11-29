@@ -1,6 +1,7 @@
 ---
 title: Node Migration
 description: How to migrate a Flow node from one machine to another
+sidebar_position: 9
 ---
 
 There are a few different methods to migrate a running Flow node from one machine to the other.

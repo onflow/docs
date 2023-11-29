@@ -2,6 +2,7 @@
 title: Byzantine node attack response
 sidebar_label: Byzantine attack response
 description: How to respond to a byzantine node attack on the network
+sidebar_position: 3
 ---
 
 Flow, like most blockchains, forms an open decentralized peer-to-peer network between all of the nodes

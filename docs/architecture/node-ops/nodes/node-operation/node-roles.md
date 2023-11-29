@@ -1,5 +1,6 @@
 ---
 title: Node Roles
+sidebar_position: 11
 ---
 
 Unlike most blockchains, not all Flow nodes are equal. Flow nodes all specialize and fulfill a specific role in the operation of the network.

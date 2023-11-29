@@ -1,6 +1,7 @@
 ---
 title: Upcoming Sporks
 description: Information about upcoming Mainnet & Testnet sporks
+sidebar_position: 16
 ---
 
 The following are the upcoming Spork dates. These dates indicate the intention to Spork. Announcements will be made regarding any delays or changes to these dates in our developer [Discord server](http://discord.gg/flow).

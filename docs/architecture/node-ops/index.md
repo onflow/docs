@@ -39,7 +39,7 @@ The observer node is not staked but still provides the same API as the access no
 
 :::info
 
-  To run a light node, follow this [guide](./nodes/node-operation/observer-node.md)
+To run a light node, follow this [guide](./nodes/node-operation/observer-node.md)
 
 :::
 
@@ -68,7 +68,7 @@ In a nutshell, Full Nodes are staked network participants that drive network pro
 ---
 
 If you want local access to the protocol state data (blocks, collections, transactions) and do not want to use one of the community access nodes you can run an access node.
-Dapp developers, chain explorers, chain analytics etc. who want exclusive access to chain data and not be subject to the rate-limits on the community access node can choose to run an access node.
+Dapp developers, chain explorers, chain analytics and others who want exclusive access to chain data and not be subject to the rate-limits on the community access node can choose to run an access node.
 
 An access node is minimally staked for network security.
 The central goal for Access Nodes is to provide RPC functionality to its node operator.
@@ -77,20 +77,16 @@ Furthermore, Access Node operators can freely rate-limit the amount of resources
 
 :::info
 
-  Launch an access node using QuickNode
-  <a
-    href="https://www.quicknode.com/chains/flow"
-    target="_blank"
-  >
-    https://www.quicknode.com/chains/flow
-  </a>
+Launch an access node using QuickNode
+
+[https://www.quicknode.com/chains/flow](https://www.quicknode.com/chains/flow)
 
 :::
 
 
 :::info
 
-  To run a self-hosted access node, follow this [guide](./nodes/node-operation/access-node-setup.md)
+To run a self-hosted access node, follow this [guide](./nodes/node-operation/access-node-setup.md)
 
 :::
 

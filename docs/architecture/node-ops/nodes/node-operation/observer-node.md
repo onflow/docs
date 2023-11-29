@@ -1,6 +1,7 @@
 ---
 title: Light Node a.k.a Observer Node
 sidebar_label: Light Node
+sidebar_position: 13
 ---
 
 A light node also known as the observer node is similar to an access node and provides a locally accessible, continuously updated, verified copy of the block data. It serves the [gRPC Access API](../../nodes/access-api.md) but unlike an access node, an light node does not need to be staked, and **anyone** can run it without being added to the approved list of nodes.

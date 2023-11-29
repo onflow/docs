@@ -2,6 +2,7 @@
 title: Machine Accounts for Existing Node Operators
 sidebar_label: Machine Accounts for Existing Node Operators
 description: Instructions for existing Node Operators to follow to create a machine account for their collection or consensus nodes.
+sidebar_position: 6
 ---
 
 The [Flow Epoch Preparation Protocol](../../../staking/04-epoch-preparation.md) requires that 

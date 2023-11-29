@@ -1,5 +1,6 @@
 ---
 title: Slashing Conditions
+sidebar_position: 17
 ---
 
 ## Introduction
