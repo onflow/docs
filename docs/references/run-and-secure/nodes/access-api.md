@@ -764,7 +764,7 @@ The following method can be used to query the latest protocol state [snapshot](h
 It is used by Flow nodes joining the network to bootstrap a space-efficient local state.
 
 ```proto
-rpc GetLatestProtocolStateSnapshot (GetLatestProtocolStateSnapshotRequest) returns (ProtocolStateSnapshotResponse)
+rpc GetLatestProtocolStateSnapshot (GetLatestProtocolStateSnapshotRequest) returns (ProtocolStateSnapshotResponse);
 ```
 
 
