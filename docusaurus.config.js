@@ -270,6 +270,12 @@ const config = {
             activeBasePath: '/tools',
           },
           {
+            to: 'architecture',
+            position: 'left',
+            label: 'Architecture',
+            activeBasePath: '/architecture',
+          },
+          {
             to: 'references',
             position: 'left',
             label: 'References',
