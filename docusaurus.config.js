@@ -423,7 +423,7 @@ const config = {
                 label: 'Flowdiver Testnet',
               },
               {
-                to: '/architecture/node-ops/nodes/node-operation/past-sporks/',
+                to: '/architecture/node-ops/nodes/node-operation/past-sporks',
                 label: 'Past Sporks',
               },
               {
@@ -431,11 +431,11 @@ const config = {
                 label: 'Upcoming Sporks',
               },
               {
-                to: '/architecture/node-ops/nodes/node-operation/',
+                to: '/architecture/node-ops',
                 label: 'Node Operation',
               },
               {
-                to: '/architecture/node-ops/nodes/node-operation/spork/',
+                to: '/architecture/node-ops/nodes/node-operation/spork',
                 label: 'Spork Information',
               },
             ],
