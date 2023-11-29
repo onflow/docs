@@ -31,7 +31,8 @@ The Flow CLI provides a `flix` command to `execute` FLIX. The Cadence being exec
 flow flix execute <query> [<argument> <argument>...] [flags]
 ```
 
-<Callout type="warning">
+:::warning
+
 A FLIX template might only support testnet and/or mainnet. Generally, emulator is not supported. This can be the case if the FLIX template relies on contract dependencies.  
 </Callout>
 
