@@ -73,7 +73,8 @@ flow flix package <query> [flags]
 Generate FLIX json file. This command will take in a Cadence file and produce a FLIX json file. There are two ways to provide metadata to populate the FLIX json structure. 
  - Use `--pre-fill` flag to pass in a pre populated FLIX json structure
 
-<Callout type="warning">
+:::warning
+
 When generating a FLIX template, make sure all contract dependencies have been deployed to the supported networks. Add any aliases to your flow.json that will be needed to populate dependencies. Verify all depenencies have been populated after generating.
 </Callout>
 
