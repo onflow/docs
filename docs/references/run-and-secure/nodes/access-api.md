@@ -764,7 +764,7 @@ The following method can be used to query the latest protocol state [snapshot](h
 It is used by Flow nodes joining the network to bootstrap a space-efficient local state.
 
 ```proto
-rpc GetLatestProtocolStateSnapshot (GetLatestProtocolStateSnapshotRequest) returns (ProtocolStateSnapshotResponse);
+rpc GetLatestProtocolStateSnapshot (GetLatestProtocolStateSnapshotRequest) returns (ProtocolStateSnapshotResponse)
 ```
 
 
@@ -826,7 +826,7 @@ message ExecutionResultForBlockIDResponse {
 
 Below are in-depth descriptions of each of the data entities returned or accepted by the Access API.
 
-## Block
+### Block
 
 ```proto
 message Block {
@@ -852,7 +852,7 @@ message Block {
 
 The detailed semantics of block formation are covered in the [block formation guide](../../../build/basics/blocks.md).
 
-## Block Header
+### Block Header
 
 A block header is a summary of a [block](#block) and contains only the block ID, height, and parent block ID.
 
@@ -870,7 +870,7 @@ message BlockHeader {
 | parent_id | ID of the previous block in the chain     |
 | height    | Height of the block in the chain          |
 
-## Block Seal
+### Block Seal
 
 A block seal is an attestation that the execution result of a specific [block](#block) has been verified and approved by a quorum of verification nodes.
 
@@ -890,7 +890,7 @@ message BlockSeal {
 | execution_receipt_signatures | BLS signatures of verification nodes on the execution receipt contents |
 | result_approval_signatures   | BLS signatures of verification nodes on the result approval contents   |
 
-## Block Status
+### Block Status
 
 ```proto
 enum BlockStatus {
@@ -906,7 +906,7 @@ enum BlockStatus {
 | FINALIZED | The consensus nodes have finalized the block             |
 | SEALED    | The verification nodes have verified the block           |
 
-## Collection
+### Collection
 
 A collection is a batch of [transactions](#transaction) that have been included in a block. Collections are used to improve consensus throughput by increasing the number of transactions per block.
 
@@ -922,7 +922,7 @@ message Collection {
 | id              | SHA3-256 hash of the collection contents          |
 | transaction_ids | Ordered list of transaction IDs in the collection |
 
-## Collection Guarantee
+### Collection Guarantee
 
 A collection guarantee is a signed attestation that specifies the collection nodes that have guaranteed to store and respond to queries about a collection.
 
@@ -938,7 +938,7 @@ message CollectionGuarantee {
 | collection_id | SHA3-256 hash of the collection contents                           |
 | signatures    | BLS signatures of the collection nodes guaranteeing the collection |
 
-## Transaction
+### Transaction
 
 A transaction represents a unit of computation that is submitted to the Flow network.
 
@@ -980,7 +980,7 @@ message TransactionSignature {
 
 The detailed semantics of transaction creation, signing and submission are covered in the [transaction submission guide](../../../build/basics/transactions.md#signing-a-transaction).
 
-### Proposal Key
+#### Proposal Key
 
 The proposal key is used to specify a sequence number for the transaction. Sequence numbers are covered in more detail [here](../../../build/basics/transactions.md#sequence-numbers).
 
@@ -990,7 +990,7 @@ The proposal key is used to specify a sequence number for the transaction. Seque
 | key_id          | ID of proposal key on the proposal account                                           |
 | sequence_number | [Sequence number](../../../build/basics/transactions.md#sequence-numbers) for the proposal key |
 
-### Transaction Signature
+#### Transaction Signature
 
 | Field     | Description                               |
 | --------- | ----------------------------------------- |
@@ -998,7 +998,7 @@ The proposal key is used to specify a sequence number for the transaction. Seque
 | key_id    | ID of the account key                     |
 | signature | Raw signature byte data                   |
 
-### Transaction Status
+#### Transaction Status
 
 ```proto
 enum TransactionStatus {
@@ -1020,7 +1020,7 @@ enum TransactionStatus {
 | SEALED    | The verification nodes have verified the transaction (the block in which the transaction is) and the seal is included in the latest block |
 | EXPIRED   | The transaction was submitted past its expiration block height.                                                                           |
 
-## Account
+### Account
 
 An account is a user's identity on Flow. It contains a unique address, a balance, a list of public keys and the code that has been deployed to the account.
 
@@ -1046,7 +1046,7 @@ The `code` and `contracts` fields contain the raw Cadence source code, encoded a
 
 More information on accounts can be found [here](../../../build/basics/accounts.md).
 
-### Account Key
+#### Account Key
 
 An account key is a reference to a public key associated with a Flow account. Accounts can be configured with zero or more public keys, each of which can be used for signature verification when authorizing a transaction.
 
@@ -1074,7 +1074,7 @@ message AccountKey {
 
 More information on account keys, key weights and sequence numbers can be found [here](../../../build/basics/accounts.md).
 
-## Event
+### Event
 
 An event is emitted as the result of a [transaction](#transaction) execution. Events are either user-defined events originating from a Cadence smart contract, or built-in Flow system events.
 
@@ -1096,7 +1096,7 @@ message Event {
 | event_index       | Zero-based index of the event within the transaction                       |
 | payload           | Event fields encoded as [JSON-Cadence values](../../../build/cadence-reference/json-cadence-spec.md) |
 
-## Execution Result
+### Execution Result
 
 Execution result for a particular block.
 
@@ -1117,7 +1117,7 @@ message ExecutionResult {
 | service_events     | Zero or more service events                          |
 
 
-### Chunk
+#### Chunk
 
 Chunk described execution information for given collection in a block
 
@@ -1143,7 +1143,7 @@ message Chunk {
 | index                  | Index of chunk inside a block (zero-based)           |
 | end_state              | State commitment after executing chunk               |
 
-### Service Event
+#### Service Event
 
 Special type of events emitted in system chunk used for controlling Flow system.
 
@@ -1159,3 +1159,118 @@ message ServiceEvent {
 | type    | Type of an event                    |
 | payload | JSON-serialized content of an event |
 
+
+
+## Subscriptions
+
+
+### SubscribeEvents
+
+`SubscribeEvents` streams events for all blocks starting at the requested start block, up until the latest available block. Once the latest is
+reached, the stream will remain open and responses are sent for each new block as it becomes available.
+
+Events within each block are filtered by the provided [EventFilter](#eventfilter), and only those events that match the filter are returned. If no filter is provided,
+all events are returned.
+
+Responses are returned for each block containing at least one event that matches the filter. Additionally, heatbeat responses (SubscribeEventsResponse
+with no events) are returned periodically to allow clients to track which blocks were searched. Clients can use this information to determine
+which block to start from when reconnecting.
+
+```proto
+ rpc SubscribeEvents(SubscribeEventsRequest) returns (stream SubscribeEventsResponse)
+```
+
+
+#### Request
+
+```proto
+message SubscribeEventsRequest {
+  bytes start_block_id
+  uint64 start_block_height
+  EventFilter filter
+  uint64 heartbeat_interval
+  entities.EventEncodingVersion event_encoding_version
+}
+```
+
+| Field                  | Description                                                                                                                                                                                                                       |
+| ---------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| start_block_id         | The first block to search for events. Only one of start_block_id and start_block_height may be provided, otherwise an InvalidArgument error is returned. If neither are provided, the latest sealed block is used                 |
+| start_block_height     | Block height of the first block to search for events. Only one of start_block_id and start_block_height may be provided, otherwise an InvalidArgument error is returned. If neither are provided, the latest sealed block is used |
+| filter                 | Filter to apply to events for each block searched. If no filter is provided, all events are returned                                                                                                                              |
+| heartbeat_interval     | Interval in block heights at which the server should return a heartbeat message to the client                                                                                                                                     |
+| event_encoding_version | Preferred event encoding version of the block events payload. Possible variants: CCF, JSON-CDC                                                                                                                                    |
+
+
+
+
+#### Response
+
+```proto
+message SubscribeEventsResponse {
+  bytes block_id
+  uint64 block_height
+  repeated entities.Event events
+  google.protobuf.Timestamp block_timestamp
+}
+```
+
+### SubscribeExecutionData
+
+`SubscribeExecutionData` retrieves execution result for given block. It is different from Transaction Results,
+and contain data about chunks/collection level execution results rather than particular transactions.
+Particularly, it contains `EventsCollection` hash for every chunk which can be used to verify the events for a block.
+
+```proto
+  rpc SubscribeExecutionData(SubscribeExecutionDataRequest) returns (stream SubscribeExecutionDataResponse)
+```
+
+
+#### Request
+
+```proto
+message SubscribeExecutionDataRequest {
+  bytes start_block_id
+  uint64 start_block_height
+  entities.EventEncodingVersion event_encoding_version
+}
+```
+
+| Field                  | Description                                                                                                                                                                                                                            |
+| ---------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| start_block_id         | The first block to get execution data for. Only one of start_block_id and start_block_height may be provided, otherwise an InvalidArgument error is returned. If neither are provided, the latest sealed block is used                 |
+| start_block_height     | Block height of the first block to get execution data for. Only one of start_block_id and start_block_height may be provided, otherwise an InvalidArgument error is returned. If neither are provided, the latest sealed block is used |
+| event_encoding_version | Preferred event encoding version of the block events payload. Possible variants: CCF, JSON-CDC                                                                                                                                         |
+
+
+#### Response
+
+```proto
+message SubscribeExecutionDataResponse {
+  uint64 block_height
+  entities.BlockExecutionData block_execution_data
+  google.protobuf.Timestamp block_timestamp
+}
+```
+
+
+## Execution data
+
+### EventFilter
+
+`EventFilter` defines the filter to apply to block events. Filters are applied as an OR operation, i.e. any event matching any of the filters is returned.
+If no filters are provided, all events are returned. If there are any invalid filters, the API will return an InvalidArgument error.
+
+```proto
+message EventFilter {
+  repeated string event_type
+  repeated string contract
+  repeated string address
+}
+```
+
+| Field        | Description                                                                                                                                                                                                                                                                                             |
+| ------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| event_type   | A list of full event types to include. <br/> Event types have 2 formats:<br/>  * Protocol events: `flow.[event name]`<br/>  * Smart contract events: `A.[contract address].[contract name].[event name]`                                                                                                |
+| contract     | A list of contracts who's events should be included. Contracts have the following name formats:<br/>  * Protocol events: `flow`<br/>  * Smart contract events: `A.[contract address].[contract name]`<br/> This filter matches on the full contract including its address, not just the contract's name |
+| address      | A list of addresses who's events should be included. Addresses must be Flow account addresses in hex format and valid for the network the node is connected to. i.e. only a mainnet address is valid for a mainnet node. Addresses may optionally include the 0x prefix                                 |                                                                                                                                     |
