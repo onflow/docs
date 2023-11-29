@@ -1159,10 +1159,7 @@ message ServiceEvent {
 | type    | Type of an event                    |
 | payload | JSON-serialized content of an event |
 
-
-
 ## Subscriptions
-
 
 ### SubscribeEvents
 
@@ -1179,7 +1176,6 @@ which block to start from when reconnecting.
 ```proto
  rpc SubscribeEvents(SubscribeEventsRequest) returns (stream SubscribeEventsResponse)
 ```
-
 
 #### Request
 
@@ -1201,9 +1197,6 @@ message SubscribeEventsRequest {
 | heartbeat_interval     | Interval in block heights at which the server should return a heartbeat message to the client                                                                                                                                     |
 | event_encoding_version | Preferred event encoding version of the block events payload. Possible variants: CCF, JSON-CDC                                                                                                                                    |
 
-
-
-
 #### Response
 
 ```proto
@@ -1217,14 +1210,11 @@ message SubscribeEventsResponse {
 
 ### SubscribeExecutionData
 
-`SubscribeExecutionData` retrieves execution result for given block. It is different from Transaction Results,
-and contain data about chunks/collection level execution results rather than particular transactions.
-Particularly, it contains `EventsCollection` hash for every chunk which can be used to verify the events for a block.
+`SubscribeExecutionData` streams execution data for all blocks starting at the requested start block, up until the latest available block. Once the latest is reached, the stream will remain open and responses are sent for each new execution data as it becomes available.
 
 ```proto
   rpc SubscribeExecutionData(SubscribeExecutionDataRequest) returns (stream SubscribeExecutionDataResponse)
 ```
-
 
 #### Request
 
@@ -1242,7 +1232,6 @@ message SubscribeExecutionDataRequest {
 | start_block_height     | Block height of the first block to get execution data for. Only one of start_block_id and start_block_height may be provided, otherwise an InvalidArgument error is returned. If neither are provided, the latest sealed block is used |
 | event_encoding_version | Preferred event encoding version of the block events payload. Possible variants: CCF, JSON-CDC                                                                                                                                         |
 
-
 #### Response
 
 ```proto
@@ -1252,7 +1241,6 @@ message SubscribeExecutionDataResponse {
   google.protobuf.Timestamp block_timestamp
 }
 ```
-
 
 ## Execution data
 
@@ -1273,4 +1261,4 @@ message EventFilter {
 | ------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | event_type   | A list of full event types to include. <br/> Event types have 2 formats:<br/>  * Protocol events: `flow.[event name]`<br/>  * Smart contract events: `A.[contract address].[contract name].[event name]`                                                                                                |
 | contract     | A list of contracts who's events should be included. Contracts have the following name formats:<br/>  * Protocol events: `flow`<br/>  * Smart contract events: `A.[contract address].[contract name]`<br/> This filter matches on the full contract including its address, not just the contract's name |
-| address      | A list of addresses who's events should be included. Addresses must be Flow account addresses in hex format and valid for the network the node is connected to. i.e. only a mainnet address is valid for a mainnet node. Addresses may optionally include the 0x prefix                                 |                                                                                                                                     |
+| address      | A list of addresses who's events should be included. Addresses must be Flow account addresses in hex format and valid for the network the node is connected to. i.e. only a mainnet address is valid for a mainnet node. Addresses may optionally include the `0x` prefix                                 |                                                                                                                                     |
