@@ -20,7 +20,7 @@ Find [more about the command in the CLI docs](../../tools/flow-cli/get-flow-data
 
 Collections can be obtained from the access node APIs, currently, there are two gRPC and REST APIs. You can find more information about them here:
 
-[**gRPC Collection API**](../../references/run-and-secure/nodes/access-api.md#collections)
+[**gRPC Collection API**](../../architecture/node-ops/nodes/access-api.md#collections)
 
 [**REST Collection API**](/http-api#tag/Collections)
 
