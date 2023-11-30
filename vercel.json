@@ -169,12 +169,12 @@
     },
     {
       "source": "/mobile/:path*",
-      "destination": "/build/guides/mobile/:path*",
+      "destination": "/build/mobile/:path*",
       "permanent": true
     },
     {
       "source": "/concepts/mobile/:path*",
-      "destination": "/build/guides/mobile/:path*",
+      "destination": "/build/mobile/:path*",
       "permanent": true
     },
     {
@@ -788,22 +788,17 @@
     },
     {
       "source": "/build/mobile/monster-maker",
-      "destination": "/build/guides/mobile/ios-quickstart",
-      "permanent": true
-    },
-    {
-      "source": "/build/mobile/:path*",
-      "destination": "/build/guides/mobile/:path*",
+      "destination": "/build/mobile/ios-quickstart",
       "permanent": true
     },
     {
       "source": "/build/mobile",
-      "destination": "/build/guides/mobile/overview",
+      "destination": "/build/mobile/overview",
       "permanent": true
     },
     {
       "source": "/building-on-flow/mobile",
-      "destination": "/build/guides/mobile/overview",
+      "destination": "/build/mobile/overview",
       "permanent": true
     },
     {

@@ -5,9 +5,7 @@ sidebar_label: Anti-Patterns
 ---
 
 :::info
-
 This is an opinionated list of issues that can be improved if they are found in Cadence code intended for production.
-
 :::
 
 # Security and Robustness

@@ -148,16 +148,16 @@ Access Nodes are the node type that are most useful for developers, as they prov
 - gRPC
     - Mainnet: `access.mainnet.nodes.onflow.org:9000`
     - Testnet: `access.devnet.nodes.onflow.org:9000`
-    - [Specification](../architecture/node-ops/nodes/access-api.md)
+    - [Specification](../references/run-and-secure/nodes/access-api.md)
 
 ### Running Your Own Node
 
 If you’re getting started you don’t need to run your own node and you can use the above public nodes. The public access nodes are rate-limited, so as your product matures you might want to run your own node. There are multiple options available:
 
-- Start with a [Light (Observer) Node](../architecture/node-ops/nodes/node-operation/observer-node.md).
+- Start with a [Light (Observer) Node](../references/run-and-secure/node-operation/observer-node.mdx).
 - You can also use a third-party provider like [Quicknode](https://www.quicknode.com/docs/flow).
 
-Check out [Running a Node](../architecture/node-ops/nodes/node-operation/observer-node.md) for more information.
+Check out [Running a Node](../references/run-and-secure/node-operation/observer-node.mdx) for more information.
 
 ## SDKs and Tools
 

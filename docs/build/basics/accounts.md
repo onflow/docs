@@ -170,7 +170,7 @@ Find [more about the command in the CLI docs](../../tools/flow-cli/accounts/get-
 
 Accounts can be obtained from the access node APIs, currently, there are two gRPC and REST APIs. You can find more information about them here:
 
-**gRPC API** [building-on-flow/nodes/access-api#accounts](../../architecture/node-ops/nodes/access-api.md#accounts)
+**gRPC API** [building-on-flow/nodes/access-api#accounts](../../references/run-and-secure/nodes/access-api.md#accounts)
 
 **REST API** [http-api#tag/Accounts](/http-api#tag/Accounts)
 
