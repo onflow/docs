@@ -52,7 +52,7 @@ You can download FCL (Flow Client Library) here:
 [https://github.com/onflow/fcl-js](https://github.com/onflow/fcl-js)
 
 To connect to an access node you will need to provide a URL to the SDK.
-[testnet and mainnet](../access-api.md)
+[testnet and mainnet](../../../../architecture/node-ops/nodes/access-api.md)
 
 Here are examples of querying an access node at the bottom of this page:
 
@@ -109,7 +109,7 @@ You can find out more about events in Cadence here:
 
 As an example of the kinds of information events can contain, see the documentation of the events that the staking protocol emits:
 
-[staking/events](../../../../references/run-and-secure/staking/07-staking-scripts-events.md)
+[staking/events](../../../../architecture/staking/07-staking-scripts-events.md)
 
 ### Consuming Events
 
