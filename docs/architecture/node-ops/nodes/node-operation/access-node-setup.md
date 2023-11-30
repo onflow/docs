@@ -33,6 +33,18 @@ Confirmation of a new node's inclusion in epoch N+1 is included in the [`EpochSe
 
 ![Flow Epoch Schedule](./epoch-startup-order.png)
 
+## Limitations
+
+There are three open slots for access nodes every epoch.
+
+To summarize,
+
+|  **Date**  |  **Time** | **Epoch** |     **Epoch Phase**    |                                                     |
+|:----------:|:---------:|:---------:|:----------------------:|:---------------------------------------------------:|
+| 02/08/2023 | 20:00 UTC | 63         | Staking auction starts | Stake your access nodes                             |
+| 02/15/2023 | 08:00 UTC | 63         | Staking auction ends   | No more access nodes can be staked for epoch 64    |
+| 02/15/2023 | 20:00 UTC | 64         | Epoch n+1 starts       | 3 randomly chosen access nodes can join the network |
+
 ## How to run a Permissionless Access node?
 
 :::note
@@ -343,3 +355,17 @@ The list can be retrieved from the chain by executing the [get_candidate_nodes](
 ```shell
 $ flow scripts execute  ./transactions/idTableStaking/scripts/get_candidate_nodes.cdc -n mainnet
 ```
+
+### How to check the availability of open access nodes slots for the next epoch?
+
+The limits for the open slots are defined in the staking contract and can be queried from the chain by executing the [get_slot_limits](https://github.com/onflow/flow-core-contracts/blob/master/transactions/idTableStaking/scripts/get_slot_limits.cdc) script.
+
+Node types are defined [here](https://github.com/onflow/flow-core-contracts/blob/5696ec5e3e6aa5fc10762cbfeb42b9c5c0b8ddbe/contracts/FlowIDTableStaking.cdc#L114-L119)
+
+```shell
+
+$ flow scripts execute  ./transactions/idTableStaking/scripts/get_slot_limits.cdc --args-json  '[{ "type":"UInt8", "value":"5"}]' -n mainnet
+Result: 118
+```
+
+Example: there are 115 access nodes already part of the network. Hence, the total number of new nodes that can join are 118 - 115 = 3.
