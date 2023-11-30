@@ -270,12 +270,6 @@ const config = {
             activeBasePath: '/tools',
           },
           {
-            to: 'architecture',
-            position: 'left',
-            label: 'Architecture',
-            activeBasePath: '/architecture',
-          },
-          {
             to: 'references',
             position: 'left',
             label: 'References',
@@ -320,7 +314,7 @@ const config = {
                 label: 'Cadence',
               },
               {
-                to: '/build/guides/mobile/overview',
+                to: '/build/mobile/overview',
                 label: 'Mobile',
               },
               {
@@ -423,19 +417,19 @@ const config = {
                 label: 'Flowdiver Testnet',
               },
               {
-                to: '/architecture/node-ops/nodes/node-operation/past-sporks',
+                to: '/references/run-and-secure/node-operation/past-sporks/',
                 label: 'Past Sporks',
               },
               {
-                to: '/architecture/node-ops/nodes/node-operation/upcoming-sporks',
+                to: '/references/run-and-secure/node-operation/upcoming-sporks',
                 label: 'Upcoming Sporks',
               },
               {
-                to: '/architecture/node-ops',
+                to: '/references/run-and-secure/node-operation/',
                 label: 'Node Operation',
               },
               {
-                to: '/architecture/node-ops/nodes/node-operation/spork',
+                to: '/references/run-and-secure/node-operation/spork/',
                 label: 'Spork Information',
               },
             ],

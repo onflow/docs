@@ -46,7 +46,7 @@ const contentNavigationListItems: ContentNavigationListProps = {
     {
       title: 'Mobile',
       text: 'Build truly mobile first experiences',
-      link: '/build/guides/mobile/overview',
+      link: '/build/mobile/overview',
       icon: 'tools',
     },
   ],
