@@ -46,7 +46,7 @@ Scripts can be run against previous blocks, allowing you to query historic data 
 
 Scripts are executed by being submitted to the Access Node APIs. Currently, there’s support for two APIs:
 
-[**gRPC Script API**](../../references/run-and-secure/nodes/access-api.md#scripts)
+[**gRPC Script API**](../../architecture/node-ops/nodes/access-api.md#scripts)
 
 [**REST Script API**](/http-api#tag/Scripts)
 

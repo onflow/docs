@@ -159,5 +159,5 @@ pub event BurnerCreated()
 ```
 
 ### Staking Events
-To learn more about staking events, read [staking/events/](../../references/run-and-secure/staking/07-staking-scripts-events.md)
+To learn more about staking events, read [staking/events/](../../architecture/staking/07-staking-scripts-events.md)
 
