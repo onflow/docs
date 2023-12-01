@@ -42,7 +42,7 @@ To summarize,
 |  **Date**  |  **Time** | **Epoch** |     **Epoch Phase**    |                                                     |
 |:----------:|:---------:|:---------:|:----------------------:|:---------------------------------------------------:|
 | 02/08/2023 | 20:00 UTC | 63         | Staking auction starts | Three new access node slots are opened. Anyone can register their access nodes                             |
-| 02/15/2023 | 08:00 UTC | 63         | Staking auction ends   |  Three of the nodes registered during this epoch are randomly selected to be a part of the network in the next epoch. No more nodes can register until the next epoch starts.   |
+| 02/15/2023 | 08:00 UTC | 63         | Staking auction ends   | Three of the nodes registered during this epoch are randomly selected to be a part of the network in the next epoch. No more nodes can register until the next epoch starts.   |
 | 02/15/2023 | 20:00 UTC | 64         | Epoch n+1 starts       | The newly selected nodes can now participate in the network. Three new slots are opened. |
 
 ## How to run a Permissionless Access node?
