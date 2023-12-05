@@ -988,12 +988,12 @@
     },
     {
       "source": "/build/getting-started/testing",
-      "destination": "/build/guides/smart-contracts/testing",
+      "destination": "/build/smart-contracts/testing",
       "permanent": true
     },
     {
       "source": "/next/build/getting-started/testing",
-      "destination": "/next/build/guides/smart-contracts/testing",
+      "destination": "/next/build/smart-contracts/testing",
       "permanent": true
     },
     {

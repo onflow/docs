@@ -41,7 +41,7 @@ You can query historical data and fetch contract code using the SDKs.
 
 Flow allows you to actively query the state of the blockchain using scripts written in the Cadence programming language. You can find out more about Cadence here:
 
-[cadence](../../../../build/guides/smart-contracts/cadence.md)
+[cadence](../../../../build/smart-contracts/cadence.md)
 
 Running scripts and parsing their output is supported by the SDKs.
 
@@ -160,7 +160,7 @@ No errors should be considered acceptable. If there are errors that are constant
 
 ## Is there a testnet/devnet?
 
-There is an access node for you to develop against on the testnet/devnet. You can learn more about it here [testnet-deployment#accessing-flow-testnet](../../../../build/guides/smart-contracts/deploying.md#accessing-flow-testnet)
+There is an access node for you to develop against on the testnet/devnet. You can learn more about it here [testnet-deployment#accessing-flow-testnet](../../../../build/smart-contracts/deploying.md#accessing-flow-testnet)
 
 ## Is there a public node?
 

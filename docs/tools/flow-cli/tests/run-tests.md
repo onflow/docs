@@ -41,7 +41,7 @@ Test results: "test_script.cdc"
 
 ```
 
-To learn more about writing tests in Cadence, take a look at the [Cadence testing framework](../../../build/guides/smart-contracts/testing.md).
+To learn more about writing tests in Cadence, take a look at the [Cadence testing framework](../../../build/smart-contracts/testing.md).
 
 ## Flags
 

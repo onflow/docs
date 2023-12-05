@@ -16,7 +16,7 @@ Make sure you handle your mainnet account keys appropriately. Using a Key Manage
 ### Creating an Account
 
 There are two simple methods of creating an account on testnet. **Interactive** and **Manual**, both use the Flow CLI. On mainnet you will have to fund your newly created account, there is no faucet.
-Make sure to install the Flow CLI. [Flow CLI](../tools/flow-cli/accounts/create-accounts) has a interactive mode for generating keys.
+Make sure to install the Flow CLI. [Flow CLI](../../tools/flow-cli/accounts/create-accounts.md) has a interactive mode for generating keys.
 
 <Callout type="success">
 Anyone can deploy and update contracts on mainnet. Audits are encouraged but not mandatory to deploying contracts to mainnet. Take every precauction to reduce issues and protect users. 
