@@ -139,7 +139,7 @@
     },
     {
       "source": "/learn/concepts/slashing",
-      "destination": "/architecture/nodes/node-operation/slashing",
+      "destination": "/architecture/node-ops/nodes/node-operation/slashing",
       "permanent": true
     },
     {
@@ -184,32 +184,32 @@
     },
     {
       "source": "/access-api",
-      "destination": "/architecture/nodes/access-api",
+      "destination": "/architecture/node-ops/nodes/access-api",
       "permanent": true
     },
     {
       "source": "/nodes/access-api",
-      "destination": "/architecture/nodes/access-api",
+      "destination": "/architecture/node-ops/nodes/access-api",
       "permanent": true
     },
     {
       "source": "/nodes/access-api-rate-limits",
-      "destination": "/architecture/nodes/access-api-rate-limits",
+      "destination": "/architecture/node-ops/nodes/access-api-rate-limits",
       "permanent": true
     },
     {
       "source": "/nodes/archive-access-api",
-      "destination": "/architecture/nodes/archive-access-api",
+      "destination": "/architecture/node-ops/nodes/archive-access-api",
       "permanent": true
     },
     {
       "source": "/nodes/archive-api-rate-limits",
-      "destination": "/architecture/nodes/archive-api-rate-limits",
+      "destination": "/architecture/node-ops/nodes/archive-api-rate-limits",
       "permanent": true
     },
     {
       "source": "/nodes/flow-port",
-      "destination": "/architecture/nodes/flow-port",
+      "destination": "/architecture/node-ops/nodes/flow-port",
       "permanent": true
     },
     {
@@ -219,7 +219,7 @@
     },
     {
       "source": "/nodes/node-operation/:path*",
-      "destination": "/architecture/nodes/node-operation/:path*",
+      "destination": "/architecture/node-ops/nodes/node-operation/:path*",
       "permanent": true
     },
     {
@@ -294,7 +294,7 @@
     },
     {
       "source": "/flow-token/staking/:path*",
-      "destination": "/architecture/nodes/staking/:path*",
+      "destination": "/architecture/node-ops/nodes/staking/:path*",
       "permanent": true
     },
     {
@@ -459,7 +459,7 @@
     },
     {
       "source": "/docs/setting-up-a-node",
-      "destination": "/architecture/nodes/node-operation",
+      "destination": "/architecture/node-ops/nodes/node-operation",
       "permanent": true
     },
     {
@@ -644,7 +644,7 @@
     },
     {
       "source": "/node-operation/:path*",
-      "destination": "/architecture/nodes/node-operation/:path*",
+      "destination": "/architecture/node-ops/nodes/node-operation/:path*",
       "permanent": true
     },
     {
@@ -718,7 +718,7 @@
     },
     {
       "source": "/concepts/nodes/:path*",
-      "destination": "/architecture/nodes/:path*",
+      "destination": "/architecture/node-ops/nodes/:path*",
       "permanent": true
     },
     {
@@ -773,7 +773,7 @@
     },
     {
       "source": "/building-on-flow/run-and-secure/node-operation/:path",
-      "destination": "/architecture/nodes/node-operation/:path*",
+      "destination": "/architecture/node-ops/nodes/node-operation/:path*",
       "permanent": true
     },
     {
@@ -783,7 +783,7 @@
     },
     {
       "source": "/docs/node-roles",
-      "destination": "/architecture/nodes/node-operation/node-roles",
+      "destination": "/architecture/node-ops/nodes/node-operation/node-roles",
       "permanent": true
     },
     {
@@ -868,7 +868,7 @@
     },
     {
       "source": "/build/run-and-secure/staking/stake-slashing",
-      "destination": "/architecture/nodes/slashing",
+      "destination": "/architecture/node-ops/nodes/slashing",
       "permanent": true
     },
     {
@@ -878,17 +878,17 @@
     },
     {
       "source": "/node-ops/node-operation/:path*",
-      "destination": "/architecture/nodes/node-operation/:path*",
+      "destination": "/architecture/node-ops/nodes/node-operation/:path*",
       "permanent": true
     },
     {
       "source": "/node-ops/running-node",
-      "destination": "/architecture/nodes/node-operation",
+      "destination": "/architecture/node-ops/nodes/node-operation",
       "permanent": true
     },
     {
       "source": "/references/run-and-secure/nodes/node-operation/:path*",
-      "destination": "/architecture/nodes/node-operation/:path*",
+      "destination": "/architecture/node-ops/nodes/node-operation/:path*",
       "permanent": true
     },
     {
@@ -1013,12 +1013,12 @@
     },
     {
       "source": "/references/run-and-secure/nodes/:path*",
-      "destination": "/architecture/nodes/:path*",
+      "destination": "/architecture/node-ops/nodes/:path*",
       "permanent": true
     },
     {
       "source": "/references/run-and-secure/node-operation/:path*",
-      "destination": "/architecture/nodes/node-operation/:path*",
+      "destination": "/architecture/node-ops/nodes/node-operation/:path*",
       "permanent": true
     }
   ]
