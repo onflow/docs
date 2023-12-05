@@ -124,7 +124,7 @@
     },
     {
       "source": "/learn/concepts/delegation",
-      "destination": "/references/run-and-secure/staking",
+      "destination": "/architecture/staking",
       "permanent": true
     },
     {
@@ -139,7 +139,7 @@
     },
     {
       "source": "/learn/concepts/slashing",
-      "destination": "/references/run-and-secure/nodes/slashing",
+      "destination": "/architecture/nodes/node-operation/slashing",
       "permanent": true
     },
     {
@@ -149,7 +149,7 @@
     },
     {
       "source": "/learn/concepts/token-staking",
-      "destination": "/references/run-and-secure/staking",
+      "destination": "/architecture/staking",
       "permanent": true
     },
     {
@@ -179,37 +179,37 @@
     },
     {
       "source": "/nodes",
-      "destination": "/references/run-and-secure/nodes",
+      "destination": "/architecture/nodes",
       "permanent": true
     },
     {
       "source": "/access-api",
-      "destination": "/references/run-and-secure/nodes/access-api",
+      "destination": "/architecture/nodes/access-api",
       "permanent": true
     },
     {
       "source": "/nodes/access-api",
-      "destination": "/references/run-and-secure/nodes/access-api",
+      "destination": "/architecture/nodes/access-api",
       "permanent": true
     },
     {
       "source": "/nodes/access-api-rate-limits",
-      "destination": "/references/run-and-secure/nodes/access-api-rate-limits",
+      "destination": "/architecture/nodes/access-api-rate-limits",
       "permanent": true
     },
     {
       "source": "/nodes/archive-access-api",
-      "destination": "/references/run-and-secure/nodes/archive-access-api",
+      "destination": "/architecture/nodes/archive-access-api",
       "permanent": true
     },
     {
       "source": "/nodes/archive-api-rate-limits",
-      "destination": "/references/run-and-secure/nodes/archive-api-rate-limits",
+      "destination": "/architecture/nodes/archive-api-rate-limits",
       "permanent": true
     },
     {
       "source": "/nodes/flow-port",
-      "destination": "/references/run-and-secure/nodes/flow-port",
+      "destination": "/architecture/nodes/flow-port",
       "permanent": true
     },
     {
@@ -219,17 +219,17 @@
     },
     {
       "source": "/nodes/node-operation/:path*",
-      "destination": "/references/run-and-secure/node-operation/:path*",
+      "destination": "/architecture/nodes/node-operation/:path*",
       "permanent": true
     },
     {
       "source": "/nodes/staking/:path*",
-      "destination": "/references/run-and-secure/staking/:path*",
+      "destination": "/architecture/staking/:path*",
       "permanent": true
     },
     {
       "source": "/concepts/nodes/staking/:path*",
-      "destination": "/references/run-and-secure/staking/:path*",
+      "destination": "/architecture/staking/:path*",
       "permanent": true
     },
     {
@@ -294,7 +294,7 @@
     },
     {
       "source": "/flow-token/staking/:path*",
-      "destination": "/references/run-and-secure/staking/:path*",
+      "destination": "/architecture/nodes/staking/:path*",
       "permanent": true
     },
     {
@@ -459,12 +459,12 @@
     },
     {
       "source": "/docs/setting-up-a-node",
-      "destination": "/references/run-and-secure/node-operation",
+      "destination": "/architecture/nodes/node-operation",
       "permanent": true
     },
     {
       "source": "/staking/:path*",
-      "destination": "/references/run-and-secure/staking/:path*",
+      "destination": "/architecture/staking/:path*",
       "permanent": true
     },
     {
@@ -644,7 +644,7 @@
     },
     {
       "source": "/node-operation/:path*",
-      "destination": "/references/run-and-secure/node-operation/:path*",
+      "destination": "/architecture/nodes/node-operation/:path*",
       "permanent": true
     },
     {
@@ -713,12 +713,12 @@
     },
     {
       "source": "/concepts/staking/:path*",
-      "destination": "/references/run-and-secure/staking/:path*",
+      "destination": "/architecture/staking/:path*",
       "permanent": true
     },
     {
       "source": "/concepts/nodes/:path*",
-      "destination": "/references/run-and-secure/nodes/:path*",
+      "destination": "/architecture/nodes/:path*",
       "permanent": true
     },
     {
@@ -773,7 +773,7 @@
     },
     {
       "source": "/building-on-flow/run-and-secure/node-operation/:path",
-      "destination": "/references/run-and-secure/node-operation/:path*",
+      "destination": "/architecture/nodes/node-operation/:path*",
       "permanent": true
     },
     {
@@ -783,7 +783,7 @@
     },
     {
       "source": "/docs/node-roles",
-      "destination": "/references/run-and-secure/node-operation/node-roles",
+      "destination": "/architecture/nodes/node-operation/node-roles",
       "permanent": true
     },
     {
@@ -868,7 +868,7 @@
     },
     {
       "source": "/build/run-and-secure/staking/stake-slashing",
-      "destination": "/references/run-and-secure/nodes/slashing",
+      "destination": "/architecture/run-and-secure/nodes/slashing",
       "permanent": true
     },
     {
@@ -877,23 +877,18 @@
       "permanent": true
     },
     {
-      "source": "/architecture/staking/:path*",
-      "destination": "/references/run-and-secure/staking/:path*",
-      "permanent": true
-    },
-    {
       "source": "/node-ops/node-operation/:path*",
-      "destination": "/references/run-and-secure/node-operation/:path*",
+      "destination": "/architecture/nodes/node-operation/:path*",
       "permanent": true
     },
     {
       "source": "/node-ops/running-node",
-      "destination": "/references/run-and-secure/node-operation",
+      "destination": "/architecture/nodes/node-operation",
       "permanent": true
     },
     {
       "source": "/references/run-and-secure/nodes/node-operation/:path*",
-      "destination": "/references/run-and-secure/node-operation/:path*",
+      "destination": "/architecture/nodes/node-operation/:path*",
       "permanent": true
     },
     {
