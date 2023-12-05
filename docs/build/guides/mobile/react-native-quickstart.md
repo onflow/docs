@@ -1,7 +1,7 @@
 ---
 title: React Native Quickstart
 sidebar_label: React Native Quickstart
-sidebar_position: 3
+sidebar_position: 4
 ---
 
 **Last Updated:** January 11th 2022
