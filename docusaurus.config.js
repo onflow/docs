@@ -26,7 +26,7 @@ if ('${process.env.MIXPANEL_PROJECT_TOKEN}' && '${process.env.MIXPANEL_PROJECT_T
   }
   window.mixpanel.track('Page Viewed', viwedPayload);
 
-  const playUrl = 'play.onflow.org';
+  const playUrl = 'play.flow.com';
   const links = document.querySelectorAll('a') || [];
   const isPlayPage = Array.from(links).some((link) => link.href.includes(playUrl));
 
@@ -46,7 +46,7 @@ if ('${process.env.MIXPANEL_PROJECT_TOKEN}' && '${process.env.MIXPANEL_PROJECT_T
           class: target.className,
         }
         window.mixpanel.track('Link clicked', payload);
-        const isPlay = payload.href.includes('play.onflow.org');
+        const isPlay = payload.href.includes('play.flow.com');
         if (isPlay) {
           window.mixpanel.track('Play Link clicked', payload);        
         }
@@ -216,7 +216,10 @@ const config = {
         // Plugin Options for loading OpenAPI files
         specs: [
           {
-            spec: 'https://raw.githubusercontent.com/onflow/flow/master/openapi/access.yaml',
+            // restore after event streaming api is deployed to mainnet
+            // https://github.com/onflow/docs/issues/464
+            // spec: 'https://raw.githubusercontent.com/onflow/flow/master/openapi/access.yaml',
+            spec: 'https://raw.githubusercontent.com/onflow/flow/ec44c6891f5deea1811d3be42bb00181f30d0860/openapi/access.yaml',
             route: '/http-api/',
           },
         ],
@@ -270,6 +273,12 @@ const config = {
             activeBasePath: '/tools',
           },
           {
+            to: 'architecture',
+            position: 'left',
+            label: 'Architecture',
+            activeBasePath: '/architecture',
+          },
+          {
             to: 'references',
             position: 'left',
             label: 'References',
@@ -314,7 +323,7 @@ const config = {
                 label: 'Cadence',
               },
               {
-                to: '/build/mobile/overview',
+                to: '/build/guides/mobile/overview',
                 label: 'Mobile',
               },
               {
@@ -380,7 +389,7 @@ const config = {
             title: 'Start Building',
             items: [
               {
-                href: 'https://play.onflow.org/',
+                href: 'https://play.flow.com/',
                 label: 'Flow Playground',
               },
               {
@@ -417,19 +426,19 @@ const config = {
                 label: 'Flowdiver Testnet',
               },
               {
-                to: '/references/run-and-secure/node-operation/past-sporks/',
+                to: '/architecture/node-ops/nodes/node-operation/past-sporks',
                 label: 'Past Sporks',
               },
               {
-                to: '/references/run-and-secure/node-operation/upcoming-sporks',
+                to: '/architecture/node-ops/nodes/node-operation/upcoming-sporks',
                 label: 'Upcoming Sporks',
               },
               {
-                to: '/references/run-and-secure/node-operation/',
+                to: '/architecture/node-ops',
                 label: 'Node Operation',
               },
               {
-                to: '/references/run-and-secure/node-operation/spork/',
+                to: '/architecture/node-ops/nodes/node-operation/spork',
                 label: 'Spork Information',
               },
             ],

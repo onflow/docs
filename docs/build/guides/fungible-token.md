@@ -24,7 +24,7 @@ This process ensures secure and accurate token transfers on the Flow blockchain.
 
 ## Fungible Token Standard
 
-The [Fungible Token Standard](https://github.com/onflow/flow-ft) defines what a fungible token should look like on Flow. Wallets and other platforms need to recognize these tokens, so they adhere to a specific interface, which defines fields like balance, totalSupply, withdraw functionality, and more. This interface ensures that all fungible tokens on Flow have a consistent structure and behavior. [Learn more about interfaces here](https://developers.flow.com/cadence/language/interfaces).
+The [Fungible Token Standard](https://github.com/onflow/flow-ft) defines what a fungible token should look like on Flow. Wallets and other platforms need to recognize these tokens, so they adhere to a specific interface, which defines fields like balance, totalSupply, withdraw functionality, and more. This interface ensures that all fungible tokens on Flow have a consistent structure and behavior. [Learn more about interfaces here](https://cadence-lang.org/docs/language/interfaces).
 
 ## Creating Our Project
 
@@ -37,7 +37,7 @@ cd FooToken
 
 Next, we'll initialize a project using the Flow CLI, which will create a configuration file named **`flow.json`**. This file configures the Flow CLI for the Flow blockchain, handling settings such as network details, accounts, and contracts. 
 
-If you haven't installed the Flow CLI yet and have [homebrew](https://brew.sh/) installed you can run `brew install flow-cli`. If you don’t have homebrew, please follow [the installation guide here](https://developers.flow.com/tools/flow-cli/install).
+If you haven't installed the Flow CLI yet and have [homebrew](https://brew.sh/) installed you can run `brew install flow-cli`. If you don’t have homebrew, please follow [the installation guide here](../../tools/flow-cli/install.md).
 
 ```bash
 flow init
@@ -165,7 +165,7 @@ pub contract FooToken: FungibleToken {
 }
 ```
 
-In addition to withdrawing, the vault also needs a way to deposit. We'll again emit the appropriate event, as well as [typecast](https://developers.flow.com/cadence/language/operators#casting-operators) to make sure we are dealing with the correct token, update the vault balance, and destroy the vault. We also need to set the balance to 0 in the current vault so that the destroy method is not triggered. Add this code to your resource:
+In addition to withdrawing, the vault also needs a way to deposit. We'll again emit the appropriate event, as well as [typecast](https://cadence-lang.org/docs/language/operators#casting-operators) to make sure we are dealing with the correct token, update the vault balance, and destroy the vault. We also need to set the balance to 0 in the current vault so that the destroy method is not triggered. Add this code to your resource:
 
 ```cadence
 import "FungibleToken"
@@ -351,7 +351,7 @@ Open a new terminal and run the following to deploy your project:
 flow project deploy
 ```
 
-Congrats, you've deployed your contract to the Flow Blockchain emulator. To read more about deploying your project to other environments, see the [CLI docs](https://developers.flow.com/tools/flow-cli/deployment/deploy-project-contracts).
+Congrats, you've deployed your contract to the Flow Blockchain emulator. To read more about deploying your project to other environments, see the [CLI docs](../../tools/flow-cli/deployment/deploy-project-contracts.md).
 
 ## Reading the Token’s Total Supply
 
@@ -380,7 +380,7 @@ flow scripts execute cadence/scripts/TotalSupply.cdc
 
 In the terminal where you started the emulator, you should see `1000.0`
 
-To learn more about running scripts using Flow CLI, [see the docs](https://developers.flow.com/tools/flow-cli/scripts/execute-scripts).
+To learn more about running scripts using Flow CLI, [see the docs](../../tools/flow-cli/scripts/execute-scripts.md).
 
 ## Giving Accounts the Ability to Receive Tokens
 
@@ -393,7 +393,7 @@ mkdir cadence/transactions
 touch cadence/transactions/CreateVault.cdc
 ```
 
-Then add this code to it. This will call the `createEmptyVault` function, save it in storage, and create a capability for the vault which will later allow us to read from it (To learn more about capabilities, see [the Cadence docs here](https://developers.flow.com/cadence/language/capabilities)).
+Then add this code to it. This will call the `createEmptyVault` function, save it in storage, and create a capability for the vault which will later allow us to read from it (To learn more about capabilities, see [the Cadence docs here](https://cadence-lang.org/docs/language/capabilities)).
 
 ```cadence
 import "FooToken"
@@ -431,7 +431,7 @@ To call our create vault transaction from the CLI, we'll run the following:
 flow transactions send ./cadence/transactions/CreateVault.cdc --signer test-acct --network emulator
 ```
 
-To learn more about running transactions using CLI, [see the docs](https://developers.flow.com/tools/flow-cli/transactions/send-transactions).
+To learn more about running transactions using CLI, [see the docs](../../tools/flow-cli/transactions/send-transactions.md).
 
 ## Reading a Vault’s Balance
 

@@ -31,6 +31,13 @@ The Flow CLI provides a `flix` command to `execute` FLIX. The Cadence being exec
 flow flix execute <query> [<argument> <argument>...] [flags]
 ```
 
+:::warning
+
+A FLIX template might only support testnet and/or mainnet. Generally, emulator is not supported. This can be the case if the FLIX template relies on contract dependencies.  
+
+:::
+
+
 Queries can be a FLIX `id`, `name`, `url` or `path` to a local FLIX file.
 
 ### Execute Usage
@@ -65,6 +72,13 @@ flow flix package <query> [flags]
 
 Generate FLIX json file. This command will take in a Cadence file and produce a FLIX json file. There are two ways to provide metadata to populate the FLIX json structure. 
  - Use `--pre-fill` flag to pass in a pre populated FLIX json structure
+
+:::warning
+
+When generating a FLIX template, make sure all contract dependencies have been deployed to the supported networks. Add any aliases to your flow.json that will be needed to populate dependencies. Verify all depenencies have been populated after generating.
+
+:::
+
 
 ### Generate Usage
 
@@ -312,7 +326,7 @@ You can pass a `nil` value to optional arguments by executing the flow FLIX exec
 
 Arguments passed to the Cadence script in the Cadence JSON format.
 Cadence JSON format contains `type` and `value` keys and is 
-[documented here](https://cadence-lang.org/docs/json-cadence-spec).
+[documented here](../../build/cadence-reference/json-cadence-spec.md).
 
 ## Pre Fill
 

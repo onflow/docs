@@ -19,7 +19,7 @@ To start creating an NFT on the Flow blockchain, you'll first need some tools an
 
 The **Flow CLI** (Command Line Interface) provides a suite of tools that allow developers to interact seamlessly with the Flow blockchain.
 
-If you haven't installed the Flow CLI yet and have [Homebrew](https://brew.sh/) installed, you can run `brew install flow-cli`. If you don’t have Homebrew, please follow [the installation guide here](https://developers.flow.com/tools/flow-cli/install).
+If you haven't installed the Flow CLI yet and have [Homebrew](https://brew.sh/) installed, you can run `brew install flow-cli`. If you don’t have Homebrew, please follow [the installation guide here](../../tools/flow-cli/install.md).
 
 ### Initializing a New Project
 
@@ -67,7 +67,7 @@ pub contract FooBar {
 
 ### Understanding Resources
 
-On the Flow blockchain, "[Resources](https://developers.flow.com/cadence/tutorial/resources-compose)" are a key feature of the Cadence programming language. They represent unique, non-duplicable assets, ensuring that they can only exist in one place at a time. This concept is crucial for representing NFTs on Flow, as it guarantees their uniqueness.
+On the Flow blockchain, "[Resources](https://cadence-lang.org/docs/tutorial/resources-compose)" are a key feature of the Cadence programming language. They represent unique, non-duplicable assets, ensuring that they can only exist in one place at a time. This concept is crucial for representing NFTs on Flow, as it guarantees their uniqueness.
 
 To begin, let's define a basic `NFT` resource. This resource requires an `init` method, which is invoked when the resource is instantiated:
 
@@ -242,7 +242,7 @@ pub resource Collection {
 }
 ```
 
-For security reasons, you might not want to expose all the functions of the Collection to everyone. Instead, you can create an [interface](https://developers.flow.com/cadence/language/interfaces) that exposes only the methods you want to make public. In Cadence, interfaces act as a blueprint for resources and structures, ensuring that certain methods or properties exist. By leveraging these interfaces, you establish clear boundaries and standardized interactions. In this case, you might want to expose only the `deposit` and `getIDs` methods. This interface can then be used to create capabilities, ensuring that only the allowed methods are accessible.
+For security reasons, you might not want to expose all the functions of the Collection to everyone. Instead, you can create an [interface](https://cadence-lang.org/docs/language/interfaces) that exposes only the methods you want to make public. In Cadence, interfaces act as a blueprint for resources and structures, ensuring that certain methods or properties exist. By leveraging these interfaces, you establish clear boundaries and standardized interactions. In this case, you might want to expose only the `deposit` and `getIDs` methods. This interface can then be used to create capabilities, ensuring that only the allowed methods are accessible.
 
 ```cadence
 pub contract FooBar {
@@ -606,11 +606,11 @@ flow scripts execute cadence/scripts/GetNFTs.cdc 0x123
 
 Many NFT projects include metadata associated with the NFT, such as a name, description, or image. However, different projects might store this metadata in various formats. To ensure compatibility across the Flow ecosystem, Flow uses `MetadataViews` to standardize the representation of this metadata.
 
-There are two types of Metadata Views: NFT level and contract level. In this guide, we’ll show you how to implement the most basic display, but for a deeper dive into what is possible, check out the [MetadataViews API doc](https://developers.flow.com/references/core-contracts/flow-nft/MetdataViews/MetadataViews).
+There are two types of Metadata Views: NFT level and contract level. In this guide, we’ll show you how to implement the most basic display, but for a deeper dive into what is possible, check out the [MetadataViews API doc](../../references/core-contracts/flow-nft/MetdataViews/MetadataViews.md).
 
 ### NFT Metadata
 
-For the NFT metadata, you'll add a simple `MetadataView` called `Display`, which includes a `name`, `description`, and `thumbnail`. This format is common for many NFT projects. (For more details, refer to the [Display documentation](https://developers.flow.com/references/core-contracts/flow-nft/MetdataViews/MetadataViews#display)).
+For the NFT metadata, you'll add a simple `MetadataView` called `Display`, which includes a `name`, `description`, and `thumbnail`. This format is common for many NFT projects. (For more details, refer to the [Display documentation](../../references/core-contracts/flow-nft/MetdataViews/MetadataViews.md#display)).
 
 Start by importing the `MetadataViews` contract into your `FooBar` contract:
 
@@ -656,7 +656,7 @@ pub resource NFT: NonFungibleToken.INFT, ViewResolver {
 }
 ```
 
-Finally, to retrieve our NFT along with its metadata, we currently have a `borrowNFT` function. However, this function only returns a `NonFungibleToken.NFT` with an `id` field. To address this, let's introduce a new function in our collection that borrows the NFT and returns it as a `FooBar` NFT. We'll utilize the `auth` [syntax to downcast](https://developers.flow.com/cadence/language/operators#conditional-downcasting-operator-as) the `NonFungibleToken.NFT` to our specific type.
+Finally, to retrieve our NFT along with its metadata, we currently have a `borrowNFT` function. However, this function only returns a `NonFungibleToken.NFT` with an `id` field. To address this, let's introduce a new function in our collection that borrows the NFT and returns it as a `FooBar` NFT. We'll utilize the `auth` [syntax to downcast](https://cadence-lang.org/docs/language/operators#conditional-downcasting-operator-as) the `NonFungibleToken.NFT` to our specific type.
 
 ```cadence
 pub fun borrowFooBarNFT(id: UInt64): &FooBar.NFT? {

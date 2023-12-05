@@ -304,7 +304,7 @@ but without most of the downsides.
 ## How to test the standard
 
 If you want to test out these contracts, we recommend either testing them
-with the [Flow Playground](https://play.onflow.org)
+with the [Flow Playground](https://play.flow.com)
 or with the [Visual Studio Code Extension](../../../tools/vscode-extension/index.mdx).
 
 The steps to follow are:

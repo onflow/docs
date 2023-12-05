@@ -1,0 +1,132 @@
+---
+title: Flow Archive Node Access API Specification
+sidebar_label: Archive API
+sidebar_position: 3
+---
+
+The Archive Access API is implemented as a [gRPC service](https://grpc.io/).
+
+A language-agnostic specification for this API is defined using [Protocol Buffers](https://developers.google.com/protocol-buffers), which can be used to generate client libraries in a variety of programming languages.
+
+- [Flow Archive Access API protobuf source files](https://github.com/onflow/flow/tree/master/protobuf)
+
+## Flow archive node access endpoints
+
+The Archive Nodes hosted by DapperLabs are accessible at:
+
+#### Current Mainnet
+`archive.mainnet.nodes.onflow.org:9000`
+
+#### Testnet
+
+`archive.devnet.nodes.onflow.org:9000`
+
+#### Canarynet
+
+`archive.canary.nodes.onflow.org:9000`
+
+#### Rate limits for Dapper Labs archive nodes
+
+Archive nodes operated by Dapper Labs are [rate limited](./archive-api-rate-limits.md).
+
+---
+
+## Accounts
+
+### GetAccountAtBlockHeight
+
+`GetAccountAtBlockHeight` gets an [account](#accounts) by address at the given block height.
+
+The archive node queries an execution node for the account details, which are stored as part of the execution state.
+
+```proto
+rpc GetAccountAtBlockHeight(GetAccountAtBlockHeightRequest) returns (AccountResponse)
+```
+
+
+#### Request
+
+```proto
+message GetAccountAtBlockHeightRequest {
+  bytes address
+  uint64 block_height
+}
+```
+
+
+
+
+#### Response
+
+```proto
+message AccountResponse {
+  Account account
+}
+```
+
+
+## Scripts
+
+### ExecuteScriptAtBlockID
+
+`ExecuteScriptAtBlockID` executes a ready-only Cadence script against the execution state at the block with the given ID.
+
+This method can be used to read account state from the blockchain. The script is executed on an execution node and the return value is encoded using the [JSON-Cadence data interchange format](../../../build/cadence-reference/json-cadence-spec.md).
+
+```proto
+rpc ExecuteScriptAtBlockID (ExecuteScriptAtBlockIDRequest) returns (ExecuteScriptResponse)
+```
+
+
+#### Request
+
+```proto
+message ExecuteScriptAtBlockIDRequest {
+  bytes block_id
+  bytes script
+}
+```
+
+
+
+
+#### Response
+
+```proto
+message ExecuteScriptResponse {
+  bytes value
+}
+```
+
+
+
+### ExecuteScriptAtBlockHeight
+
+`ExecuteScriptAtBlockHeight` executes a ready-only Cadence script against the execution state at the given block height.
+
+This method can be used to read account state from the blockchain. The script is executed on an execution node and the return value is encoded using the [JSON-Cadence data interchange format](../../../build/cadence-reference/json-cadence-spec.md).
+
+```proto
+rpc ExecuteScriptAtBlockHeight (ExecuteScriptAtBlockHeightRequest) returns (ExecuteScriptResponse)
+```
+
+
+#### Request
+
+```proto
+message ExecuteScriptAtBlockHeightRequest {
+  uint64 block_height
+  bytes script
+}
+```
+
+
+
+
+#### Response
+
+```proto
+message ExecuteScriptResponse {
+  bytes value
+}
+```
