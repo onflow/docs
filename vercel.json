@@ -868,7 +868,7 @@
     },
     {
       "source": "/build/run-and-secure/staking/stake-slashing",
-      "destination": "/architecture/run-and-secure/nodes/slashing",
+      "destination": "/architecture/nodes/slashing",
       "permanent": true
     },
     {
