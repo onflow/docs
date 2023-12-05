@@ -1010,6 +1010,16 @@
       "source": "/next/:path*",
       "destination": "/:path*",
       "permanent": true
+    },
+    {
+      "source": "/references/run-and-secure/nodes/:path*",
+      "destination": "/architecture/nodes/:path*",
+      "permanent": true
+    },
+    {
+      "source": "/references/run-and-secure/node-operation/:path*",
+      "destination": "/architecture/nodes/node-operation/:path*",
+      "permanent": true
     }
   ]
 }
