@@ -88,3 +88,17 @@ This command creates a file `cadence/scripts/ReadHello.cdc` with the following c
 ```cadence
 access(all) fun main() {}
 ```
+
+## Optional `--dir` Flag
+
+The `--dir` flag is an optional feature in the Flow CLI `generate` commands, allowing you to specify a custom directory for the generated contract, transaction, or script files. If this flag is not provided, the CLI adheres to the recommended project setup:
+
+- Contracts are generated in the `cadence/contracts` directory.
+- Transactions are generated in the `cadence/transactions` directory.
+- Scripts are generated in the `cadence/scripts` directory.
+
+- **Usage**: `--dir=<directory_name>`
+- **Example**: `flow generate contract HelloWorld --dir=custom_contracts`
+
+Use the `--dir` flag only if your project requires a different organizational structure than the default.
+
