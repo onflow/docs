@@ -331,7 +331,7 @@ const config = {
                 label: 'FCL',
               },
               {
-                to: '/build/guides/smart-contracts/testing',
+                to: '/build/smart-contracts/testing',
                 label: 'Testing',
               },
               {

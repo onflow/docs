@@ -23,10 +23,10 @@ To get started with Cadence, we recommended covering the introductory tutorials 
 
 To build confidently, you will want to set up the appropriate local environment and have an adequate test suite to ensure your smart contracts operate as intended. To do this, familiarize yourself with the following tools:
 
-- [Flow CLI](../../../tools/flow-cli/index.md): A utility to directly interact with the chain and manage accounts and contracts.
-- [Flow Emulator](../../../tools/emulator/index.md): A lightweight server that simulates the Flow blockchain (strongly recommended during development).
+- [Flow CLI](../../tools/flow-cli/index.md): A utility to directly interact with the chain and manage accounts and contracts.
+- [Flow Emulator](../../tools/emulator/index.md): A lightweight server that simulates the Flow blockchain (strongly recommended during development).
 - [Flow Dev Wallet](https://github.com/onflow/fcl-dev-wallet/): A utility to simulate user wallets in development.
-- [Visual Studio Code Extension](../../../tools/vscode-extension/index.mdx): An IDE integration for developing smart contracts.
+- [Visual Studio Code Extension](../../tools/vscode-extension/index.mdx): An IDE integration for developing smart contracts.
 - [JS Testing Framework](https://github.com/onflow/flow-js-testing): A framework to test your smart contracts.
 
 ## Storing Data on Flow
@@ -39,7 +39,7 @@ Permanence is a key property of blockchains; users trust that the data they stor
 
 ### Storage Limits & Fees
 
-However, there are practical constraints to storing data on a blockchain. Developer and user accounts must retain a small amount of FLOW tokens, known as the storage fee, for bytes of data stored in their accounts. The minimum storage fee will grant each account a minimum storage amount. If an account holds assets that demand more bytes of storage, the account will need to retain more FLOW tokens to increase the storage amount according to Flow's [fee schedule](../../basics/fees.md#fees). A more compact data model can keep storage needs down. \
+However, there are practical constraints to storing data on a blockchain. Developer and user accounts must retain a small amount of FLOW tokens, known as the storage fee, for bytes of data stored in their accounts. The minimum storage fee will grant each account a minimum storage amount. If an account holds assets that demand more bytes of storage, the account will need to retain more FLOW tokens to increase the storage amount according to Flow's [fee schedule](../basics/fees.md#fees). A more compact data model can keep storage needs down. \
  \
 Furthermore, a single Flow transaction has a size limit of 4MB, which limits the rate at which large amounts of data can be transferred to the blockchain.
 
@@ -61,9 +61,9 @@ The Flow blockchain has existing smart contract standards for both fungible and 
 
 ### Non-Fungible Tokens (NFTs)
 
-All NFTs on the Flow blockchain implement the [NonFungibleToken](../../../references/core-contracts/08-non-fungible-token.md) interface, allowing them to be compatible with wallets, marketplaces and other cross-app experiences.
+All NFTs on the Flow blockchain implement the [NonFungibleToken](../../references/core-contracts/08-non-fungible-token.md) interface, allowing them to be compatible with wallets, marketplaces and other cross-app experiences.
 
-- [Non-Fungible Token (NFT) contract interface](../../../references/core-contracts/08-non-fungible-token.md)
+- [Non-Fungible Token (NFT) contract interface](../../references/core-contracts/08-non-fungible-token.md)
 
 ### NFT Sales and Trading
 
@@ -73,6 +73,6 @@ Flow has a standard contract to facilitate both the direct sales and peer-to-pee
 
 ### Fungible Tokens
 
-Fungible tokens (i.e. coins, currencies) on the Flow blockchain, including the default cryptocurrency token FLOW, implement the [FungibleToken](../../../references/core-contracts/02-fungible-token.md) interface.
+Fungible tokens (i.e. coins, currencies) on the Flow blockchain, including the default cryptocurrency token FLOW, implement the [FungibleToken](../../references/core-contracts/02-fungible-token.md) interface.
 
-- [Fungible Token contract interface](../../../references/core-contracts/02-fungible-token.md)
+- [Fungible Token contract interface](../../references/core-contracts/02-fungible-token.md)

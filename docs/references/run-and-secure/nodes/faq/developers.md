@@ -37,7 +37,7 @@ You can query historical data and fetch contract code using the SDKs.
 
 Flow allows you to actively query the state of the blockchain using scripts written in the Cadence programming language. You can find out more about Cadence here:
 
-[cadence](../../../../build/guides/smart-contracts/cadence.md)
+[cadence](../../../../build/smart-contracts/cadence.md)
 
 Running scripts and parsing their output is supported by the SDKs.
 
@@ -220,7 +220,7 @@ Instructions to generate an address are here: [flow-go-sdk#create-accounts](../.
 
 ## Is there a tutorial about how to access flow testnet? From scratch, getting testnet, Flow token etc..?
 
-Yes: [testnet-deployment](../../../../build/guides/smart-contracts/deploying.md)
+Yes: [testnet-deployment](../../../../build/smart-contracts/deploying.md)
 
 ## Can you query events between a block range?
 
