@@ -1017,11 +1017,6 @@
       "permanent": true
     },
     {
-      "source": "/references/run-and-secure/nodes/:path*",
-      "destination": "/architecture/node-ops/nodes/:path*",
-      "permanent": true
-    },
-    {
       "source": "/references/run-and-secure/node-operation/:path*",
       "destination": "/architecture/node-ops/nodes/node-operation/:path*",
       "permanent": true
