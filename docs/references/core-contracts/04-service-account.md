@@ -1,6 +1,6 @@
 ---
 title: Service Account Contracts
-sidebar_title: Service Account
+sidebar_label: Service Account
 ---
 
 The service account is the account that manages the core protocol requirements of Flow.

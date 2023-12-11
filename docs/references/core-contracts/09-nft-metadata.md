@@ -1,6 +1,6 @@
 ---
 title: NFT Metadata Contract
-sidebar_title: NFT Metadata
+sidebar_label: NFT Metadata
 ---
 
 The `MetadataViews` contract implements a standard to attach on-chain metadata

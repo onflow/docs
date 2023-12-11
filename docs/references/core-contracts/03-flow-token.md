@@ -1,6 +1,6 @@
 ---
 title: Flow Token Contract
-sidebar_title: Flow Token
+sidebar_label: Flow Token
 ---
 
 The `FlowToken` contract defines the FLOW network token.

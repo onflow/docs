@@ -1,6 +1,6 @@
 ---
 title: Query Staking Info with Scripts or Events
-sidebar_title: Staking Scripts and Events
+sidebar_label: Staking Scripts and Events
 ---
 
 # Introduction

@@ -1,6 +1,6 @@
 ---
 title: Staking FAQ
-sidebar_title: FAQs
+sidebar_label: FAQs
 description: Frequently Asked Questions
 ---
 

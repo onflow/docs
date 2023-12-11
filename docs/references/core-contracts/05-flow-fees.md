@@ -1,6 +1,6 @@
 ---
 title: Flow Fees Contract
-sidebar_title: Flow Fees
+sidebar_label: Flow Fees
 ---
 
 The `FlowFees` contract is where all the collected flow fees are gathered.
