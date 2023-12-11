@@ -97,7 +97,7 @@ a regular FLOW transfer to the machine account's address
 
 The staking collection also defines many getter methods to query information
 about an account's staking collection. You can simply call one of these methods on the contract,
-providing the account address, and the contract will retreive
+providing the account address, and the contract will retrieve
 the relevant info for you, like so:
 ```cadence
 import FlowStakingCollection from 0xSTAKINGCOLLECTIONADDRESS
