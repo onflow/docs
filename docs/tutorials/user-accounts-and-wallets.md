@@ -57,5 +57,6 @@ If you do need to build your own wallet, we recommend using the [open-source Wal
 
 Unless you have a specific use case requiring you to manage your users’ private keys, we recommend building an FCL-powered Dapp that connects with existing wallet providers:
 
-* [Blocto](https://blocto.portto.io/en/) is a web, iOS, and Android wallet empowering FCL-enabled applications like [Vault by CNN](https://vault.cnn.com/), [MotoGP Ignition](https://motogp-ignition.com/), and [Versus](https://www.versus-flow.art/).
+* [Flow Reference Wallet](https://frw.gitbook.io/doc/) Flow self-custodial wallet enables account specific features only available on Flow. Available as a Chrome extension or iOS, and Android app empowering FCL-enabled applications
+* [Blocto](https://blocto.portto.io/en/) is a web, iOS, and Android app empowering FCL-enabled applications
 * [Dapper Wallet](https://www.meetdapper.com/) (utilized by [NBA Top Shot](https://nbatopshot.com/)) is an FCL-compatible wallet soon to be available to more Flow developers.
