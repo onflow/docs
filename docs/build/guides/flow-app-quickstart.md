@@ -69,7 +69,6 @@ Your `flow.json` file should look like this:
 	"networks": {
 		"emulator": "127.0.0.1:3569",
 		"mainnet": "access.mainnet.nodes.onflow.org:9000",
-		"sandboxnet": "access.sandboxnet.nodes.onflow.org:9000",
 		"testnet": "access.devnet.nodes.onflow.org:9000"
 	},
 	"accounts": {

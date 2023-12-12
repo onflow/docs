@@ -18,10 +18,10 @@ For other ways of installing, please [refer to the installation guide](../../../
 
 ## Configuration
 
-Let's first create a directory, then set up a project.
+Lets first create the skaffolded project:
 
 ```
-mkdir cli-quickstart
+flow setup cli-quickstart
 ```
 
 And then let's navigate to our new directory:
@@ -30,13 +30,87 @@ And then let's navigate to our new directory:
 cd cli-quickstart
 ```
 
-Let's first create a `flow.json` file for our project. We'll use this in a later step, but this is a good spot to bring it up. The `flow.json` file is a configuration file used by the Flow CLI when interacting with the Flow blockchain. It helps manage various project-specific settings, such as network configurations, account details, contract names and source files, and deployment targets. To create one, run:
-
-```
-flow init
-```
-
 If you look at `flow.json` now, you'll see its listed access nodes for networks and accounts. The default `emulator-account` create will come in handy when we want to run the emulator.
+
+```json
+{
+  "contracts": {
+    "FlowToken": {
+      "source": "cadence/contracts/utility/FlowToken.cdc",
+      "aliases": {
+        "emulator": "0ae53cb6e3f42a79",
+        "testnet": "7e60df042a9c0868",
+        "mainnet": "1654653399040a61"
+      }
+    },
+    "FungibleToken": {
+      "source": "cadence/contracts/utility/FungibleToken.cdc",
+      "aliases": {
+        "emulator": "ee82856bf20e2aa6",
+        "testnet": "9a0766d93b6608b7",
+        "mainnet": "f233dcee88fe0abe"
+      }
+    },
+    "FungibleTokenMetadataViews": {
+      "source": "cadence/contracts/utility/FungibleTokenMetadataViews.cdc",
+      "aliases": {
+        "emulator": "ee82856bf20e2aa6",
+        "testnet": "9a0766d93b6608b7",
+        "mainnet": "f233dcee88fe0abe"
+      }
+    },
+    "MetadataViews": {
+      "source": "cadence/contracts/utility/MetadataViews.cdc",
+      "aliases": {
+        "emulator": "f8d6e0586b0a20c7",
+        "testnet": "631e88ae7f1d7c20",
+        "mainnet": "1d7e57aa55817448"
+      }
+    },
+    "RandomBeaconHistory": {
+      "source": "cadence/contracts/utility/RandomBeaconHistory.cdc",
+      "aliases": {
+        "emulator": "f8d6e0586b0a20c7",
+        "testnet": "8c5303eaa26202d6",
+        "mainnet": "e467b9dd11fa00df"
+      }
+    },
+    "ViewResolver": {
+      "source": "cadence/contracts/utility/ViewResolver.cdc",
+      "aliases": {
+        "emulator": "f8d6e0586b0a20c7",
+        "testnet": "631e88ae7f1d7c20",
+        "mainnet": "1d7e57aa55817448"
+      }
+    },
+    "NonFungibleToken": {
+      "source": "cadence/contracts/kitty-items/NonFungibleToken.cdc",
+      "aliases": {
+        "emulator": "f8d6e0586b0a20c7",
+        "testnet": "631e88ae7f1d7c20",
+        "mainnet": "1d7e57aa55817448"
+      }
+    }
+  },
+  "networks": {
+    "emulator": "127.0.0.1:3569",
+    "mainnet": "access.mainnet.nodes.onflow.org:9000",
+    "testnet": "access.devnet.nodes.onflow.org:9000"
+  },
+  "accounts": {
+    "emulator-account": {
+      "address": "f8d6e0586b0a20c7",
+      "key": "6d12eebfef9866c9b6fa92b97c6e705c26a1785b1e7944da701fc545a51d4673"
+    }
+  }
+}
+
+```
+
+
+<Callout type="info">
+For additional details on how `flow.json` is configured, [read here.](../../../tools/flow-cli/flow.json/configuration.md)
+</Callout>
 
 ## Running Scripts
 
@@ -81,7 +155,7 @@ Let's create a local version of the HelloWorld contract. We'll deploy it to the 
 touch HelloWorld.cdc
 ```
 
-Copy the contract to `HelloWorld.cdc`. Then let's add the contract into our project by updating `flow.json`. 
+Copy the contract to `HelloWorld.cdc`.
 
 ```
 pub contract HelloWorld {
