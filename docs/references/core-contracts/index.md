@@ -1,7 +1,7 @@
 ---
 title: Flow Core Contracts
 description: The smart contracts that power the Flow protocol
-sidebar_title: Core Protocol Smart Contracts
+sidebar_label: Core Protocol Smart Contracts
 sidebar_position: 3
 sidebar_custom_props:
   icon: 📝

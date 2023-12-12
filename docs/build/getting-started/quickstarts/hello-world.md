@@ -1,5 +1,6 @@
 ---
 sidebar_position: 1
+sidebar_label: Pt. 1 - Basics
 ---
 import VerticalSplit from "./vertical-split.svg"
 

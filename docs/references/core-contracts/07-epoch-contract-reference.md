@@ -1,6 +1,6 @@
 ---
 title: Flow Epoch Contracts Reference
-sidebar_title: Epoch Contracts
+sidebar_label: Epoch Contracts
 ---
 
 # Contract

@@ -1,6 +1,5 @@
 ---
 title: Smart Contracts on Flow
-sidebar_title: Smart Contracts on Flow
 sidebar_position: 2
 sidebar_label: Smart Contracts on Flow
 sidebar_custom_props:

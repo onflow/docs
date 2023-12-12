@@ -1,6 +1,6 @@
 ---
 title: Height coordinated upgrade (HCU)
-sidebar_title: Height coordinated upgrade
+sidebar_label: Height coordinated upgrade
 ---
 
 ## Overview
