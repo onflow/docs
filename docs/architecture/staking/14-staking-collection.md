@@ -239,7 +239,7 @@ transaction with the following arguments:
 | **amount**              | `UFix64`           | The number of FLOW tokens to stake. |
 
 <Callout type="info">
-To stake new tokens for an active node, leave the <b>delegatorID</b> arguement as <b>nil</b>.
+To stake new tokens for an active node, leave the <b>delegatorID</b> argument as <b>nil</b>.
 
 
 If staking for a delegator, <b>delegatorID</b> should be the delegator ID you are staking for.
@@ -363,7 +363,7 @@ to the account for which the Staking Collection is stored in.
 It then destroys the NodeStaker or NodeDelegator object from within the Staking Collection.
 
 _Note: Once a Node or Delegator has been closed, it cannot be accessed again,_
-_and no staking or delegation actions can be futher preformed on it._
+_and no staking or delegation actions can be further preformed on it._
 
 The owner of a Staking Collection can use the **Close Stake** ([SCO.12](../../references/core-contracts/11-staking-collection.md))
 transaction with the following arguments:
