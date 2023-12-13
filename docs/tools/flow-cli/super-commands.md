@@ -15,7 +15,7 @@ basic folder structure and a flow.json configuration.
 
 Running the command:
 ```
-> flow setup
+> flow setup $PROJECT_NAME
 ```
 
 Will create the following folders and files:
@@ -29,12 +29,19 @@ Will create the following folders and files:
 Based on the purpose of your project you can select from a list of available scaffolds. 
 You can access the scaffolds by simply using the `--scaffold` flag like so:
 ```
-> flow setup --scaffold
+> flow setup $PROJECT_NAME --scaffold
+```
+
+If you'd like to skip the interactive mode of selecting a scaffold, use the `--scaffold-id` flag with a known ID:
+
+```
+> flow setup $PROJECT_NAME --scaffold-id=1
 ```
 
 The list of scaffolds will continuously grow, and you are welcome to contribute to that. 
 You can contribute by creating your own scaffold repository which can then be added to the scaffold 
 list by [following instructions here](https://github.com/onflow/flow-cli/blob/master/CONTRIBUTING.md#adding-a-scaffold).
+
 
 
 ## Develop
