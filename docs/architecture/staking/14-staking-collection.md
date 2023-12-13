@@ -529,7 +529,7 @@ This script returns a `UFix64` representing the number of Unlocked FLOW tokens s
 Note: This number does not include Unlocked FLOW tokens staked not through an accounts Staking Collection.
 </Callout>
 
-### Get Does Stake Exist 
+### Get Does Node Exist
 
 To query if a Node or Delegator is managed by an accounts Staking Collection, anyone
 can use the **Get Does Node Exist** ([SCO.21](../../references/core-contracts/11-staking-collection.md)) script with the following arguments:
