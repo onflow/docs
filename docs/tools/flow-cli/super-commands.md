@@ -43,7 +43,6 @@ You can contribute by creating your own scaffold repository which can then be ad
 list by [following instructions here](https://github.com/onflow/flow-cli/blob/master/CONTRIBUTING.md#adding-a-scaffold).
 
 
-
 ## Develop
 After creating the project using the flow setup command you can start the emulator in 
 the project directory by running `flow emulator`. After emulator is started up you can continue by 
