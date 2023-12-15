@@ -7,7 +7,7 @@
       "data": [
         {
           "source": "docs/",
-          "destination": "references/core-contracts/flow-ft/",
+          "destination": "reference/core-contracts/flow-ft/",
           "doCopy": true
         }
       ]
@@ -21,7 +21,7 @@
       "data": [
         {
           "source": "docs/",
-          "destination": "references/core-contracts/flow-nft/",
+          "destination": "reference/core-contracts/flow-nft/",
           "doCopy": true
         }
       ]

@@ -19,12 +19,12 @@
     },
     {
       "source": "/concepts/core-contracts/nft-standard",
-      "destination": "/references/core-contracts/flow-nft",
+      "destination": "/reference/core-contracts/flow-nft",
       "permanent": true
     },
     {
       "source": "/flow/core-contracts/:path*",
-      "destination": "/references/core-contracts/:path*",
+      "destination": "/reference/core-contracts/:path*",
       "permanent": true
     },
     {
@@ -104,17 +104,17 @@
     },
     {
       "source": "/learn/concepts/accessing-mainnet",
-      "destination": "/references/flow-networks/accessing-mainnet",
+      "destination": "/reference/flow-networks/accessing-mainnet",
       "permanent": true
     },
     {
       "source": "/learn/concepts/accessing-sandboxnet",
-      "destination": "/references/flow-networks/accessing-sandboxnet",
+      "destination": "/reference/flow-networks/accessing-sandboxnet",
       "permanent": true
     },
     {
       "source": "/learn/concepts/accessing-testnet",
-      "destination": "/references/flow-networks/accessing-testnet",
+      "destination": "/reference/flow-networks/accessing-testnet",
       "permanent": true
     },
     {
@@ -134,7 +134,7 @@
     },
     {
       "source": "/learn/concepts/networks",
-      "destination": "/references/flow-networks",
+      "destination": "/reference/flow-networks",
       "permanent": true
     },
     {
@@ -214,7 +214,7 @@
     },
     {
       "source": "/nodes/flow-port/staking-guide",
-      "destination": "/references/run-and-secure/nodes/flow-port/staking-guide",
+      "destination": "/reference/flow-port/staking-guide",
       "permanent": true
     },
     {
@@ -274,7 +274,7 @@
     },
     {
       "source": "/flow/faq",
-      "destination": "/references/run-and-secure/nodes/faq/backers",
+      "destination": "/reference/faq/backers",
       "permanent": true
     },
     {
@@ -289,7 +289,7 @@
     },
     {
       "source": "/flow-token/backers",
-      "destination": "/references/run-and-secure/nodes/faq/backers",
+      "destination": "/reference/faq/backers",
       "permanent": true
     },
     {
@@ -319,7 +319,7 @@
     },
     {
       "source": "/flow-port/:path*",
-      "destination": "/references/run-and-secure/nodes/flow-port/:path*",
+      "destination": "/reference/flow-port/:path*",
       "permanent": true
     },
     {
@@ -424,7 +424,7 @@
     },
     {
       "source": "/core-contracts/:path*",
-      "destination": "/references/core-contracts/:path*",
+      "destination": "/reference/core-contracts/:path*",
       "permanent": true
     },
     {
@@ -838,7 +838,7 @@
     },
     {
       "source": "/concepts/flow-networks",
-      "destination": "/references/flow-networks",
+      "destination": "/reference/flow-networks",
       "permanent": true
     },
     {
@@ -858,22 +858,17 @@
     },
     {
       "source": "/build/core-contracts/:path*",
-      "destination": "/references/core-contracts/:path*",
+      "destination": "/reference/core-contracts/:path*",
       "permanent": true
     },
     {
       "source": "/build/flow-networks/:path*",
-      "destination": "/references/flow-networks/:path*",
+      "destination": "/reference/flow-networks/:path*",
       "permanent": true
     },
     {
       "source": "/build/run-and-secure/staking/stake-slashing",
       "destination": "/architecture/node-ops/nodes/slashing",
-      "permanent": true
-    },
-    {
-      "source": "/build/run-and-secure/:path*",
-      "destination": "/references/run-and-secure/:path*",
       "permanent": true
     },
     {
@@ -884,11 +879,6 @@
     {
       "source": "/node-ops/running-node",
       "destination": "/architecture/node-ops/nodes/node-operation",
-      "permanent": true
-    },
-    {
-      "source": "/references/run-and-secure/nodes/node-operation/:path*",
-      "destination": "/architecture/node-ops/nodes/node-operation/:path*",
       "permanent": true
     },
     {
@@ -923,7 +913,7 @@
     },
     {
       "source": "/overview/dive-in/governance",
-      "destination": "/references/governance",
+      "destination": "/reference/governance",
       "permanent": true
     },
     {
@@ -962,13 +952,13 @@
       "permanent": true
     },
     {
-      "source": "/references/run-and-secure/flow-port/:path*",
-      "destination": "/references/run-and-secure/nodes/flow-port/:path*",
+      "source": "/reference/flow-port/:path*",
+      "destination": "/reference/flow-port/:path*",
       "permanent": true
     },
     {
       "source": "/flow/faq/:path*",
-      "destination": "/references/run-and-secure/nodes/faq/:path*",
+      "destination": "/reference/faq/:path*",
       "permanent": true
     },
     {
@@ -1009,16 +999,6 @@
     {
       "source": "/next/:path*",
       "destination": "/:path*",
-      "permanent": true
-    },
-    {
-      "source": "/references/run-and-secure/nodes",
-      "destination": "/architecture/node-ops",
-      "permanent": true
-    },
-    {
-      "source": "/references/run-and-secure/node-operation/:path*",
-      "destination": "/architecture/node-ops/nodes/node-operation/:path*",
       "permanent": true
     }
   ]

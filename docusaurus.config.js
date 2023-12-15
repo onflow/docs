@@ -279,10 +279,10 @@ const config = {
             activeBasePath: '/architecture',
           },
           {
-            to: 'references',
+            to: 'reference/flow-networks',
             position: 'left',
-            label: 'References',
-            activeBasePath: '/references',
+            label: 'Reference',
+            activeBasePath: '/reference',
           },
           {
             to: 'community-resources',
@@ -401,7 +401,7 @@ const config = {
                 label: 'Cadence Cookbook',
               },
               {
-                to: '/references/core-contracts/',
+                to: '/reference/core-contracts/',
                 label: 'Core Contracts & Standards',
               },
               {
