@@ -18,7 +18,7 @@ For other ways of installing, please [refer to the installation guide](../../../
 
 ## Configuration
 
-Lets first create the skaffolded project:
+Lets first create the scaffolded project:
 
 ```
 flow setup cli-quickstart
