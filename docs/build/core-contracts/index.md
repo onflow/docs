@@ -27,3 +27,4 @@ but are nevertheless important to developers on Flow:
 - NFT Metadata Standard. ([MetadataViews](./09-nft-metadata.md))
 - Staking Collection. ([StakingCollection](./11-staking-collection.md))
 - NFT Storefronts. ([NFTStorefront](./10-nft-storefront.md))
+- Account linking and Hybrid Custody. ([AccountLinking](./12-hybrid-custody.md))
