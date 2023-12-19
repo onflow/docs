@@ -251,7 +251,7 @@ Ensure you have configured your node using the [Node Setup guide](./node-setup.m
 
 ### Confirming authorization
 
-You can confirm your node's successful registration and authorization by executing a Cadence script to query the [Staking Contract](../../../../reference/core-contracts/06-staking-contract-reference.md#contract).
+You can confirm your node's successful registration and authorization by executing a Cadence script to query the [Staking Contract](../../../../references/core-contracts/06-staking-contract-reference.md#contract).
 At the end of the `Staking Auction Phase`, the members of the Proposed Identity Table are confirmed as authorized participants in the next epoch.
 Therefore, if your node ID appears in the Proposed Identity Table during the `Staking Auction Phase`, your node will be a participant in the next epoch.
 

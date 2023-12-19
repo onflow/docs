@@ -139,7 +139,7 @@ is compatible with Flow Port.
 
 If you created your account using [Flow Port](https://port.onflow.org/),
 you can also stake and earn rewards using the Flow Port.
-Follow this [step-by-step guide](../../reference/flow-port/staking-guide.md) to stake using Flow Port.
+Follow this [step-by-step guide](../../references/run-and-secure/nodes/flow-port/staking-guide.md) to stake using Flow Port.
 Flow Port currently supports staking as a node, delegating,
 and reward withdrawal using **Blocto**, **Ledger**, **Lilico**, and **NuFi** accounts / wallets.
 

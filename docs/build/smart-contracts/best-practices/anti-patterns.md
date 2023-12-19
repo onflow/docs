@@ -74,15 +74,15 @@ rather than inside contract utility functions.
 There are some scenarios where using an `AuthAccount` object is necessary, such as a cold storage multi-sig,
 but those cases are extremely rare and `AuthAccount` usage should still be avoided unless absolutely necessary.
 
-## Auth reference and capabilities should be avoided
+## Auth references and capabilities should be avoided
 
 ### Problem
 
-[Authorized reference](https://cadence-lang.org/docs/language/reference) allow downcasting restricted
+[Authorized references](https://cadence-lang.org/docs/language/references) allow downcasting restricted
 types to their unrestricted type and should be avoided unless necessary.
 The type that is being restricted could expose functionality that was not intended to be exposed.
-If the `auth` keyword is used on local variables they will be reference.
-Reference are ephemeral and cannot be stored.
+If the `auth` keyword is used on local variables they will be references.
+References are ephemeral and cannot be stored.
 This prevents any reference casting to be stored under account storage.
 Additionally, if the `auth` keyword is used to store a public capability, serious harm
 could happen since the value could be downcasted to a type

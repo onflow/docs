@@ -221,6 +221,6 @@ In the example above, the `NFTCollectionDisplay` not only offers fundamental met
 
 Understanding `MetadataViews` and the core functions associated with it is crucial for developers aiming to deploy NFTs on Flow. With these views and functions, NFTs can maintain a consistent presentation across various platforms and marketplaces and foster interoperability between contracts and applications in the Flow ecosystem. To gain a deeper understanding of implementing the MetadataView standard, Check out our documentation on "How to Create an NFT Project on Flow". It provides an introduction to integrating these standards into your NFT contracts.
 
-- See the [API reference for a complete list of Metadata functions](https://developers.flow.com/reference/core-contracts/flow-nft/MetdataViews/MetadataViews)
+- See the [API reference for a complete list of Metadata functions](https://developers.flow.com/references/core-contracts/flow-nft/MetdataViews/MetadataViews)
 - Check out [an Example NFT project](https://github.com/onflow/flow-nft/blob/master/contracts/ExampleNFT.cdc) implementing `MetadataViews`
 - Read [the NFT Guide](../guides/nft.md) for an introduction to implementation

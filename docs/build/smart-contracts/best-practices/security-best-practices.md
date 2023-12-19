@@ -8,15 +8,15 @@ This is an opinionated list of best practices Cadence developers should follow t
 
 Some practices listed below might overlap with advice in the [Cadence Anti-Patterns](./design-patterns.md) section, which is a recommended read as well.
 
-## Reference
+## References
 
-[Reference](https://cadence-lang.org/docs/language/reference) are ephemeral values and cannot be stored. If persistence is required, store a capability and borrow it when needed.
+[References](https://cadence-lang.org/docs/language/references) are ephemeral values and cannot be stored. If persistence is required, store a capability and borrow it when needed.
 
-Authorized reference (reference with the `auth` keyword) allow downcasting, e.g. a restricted type to its unrestricted type and should only be used in some specific cases.
+Authorized references (references with the `auth` keyword) allow downcasting, e.g. a restricted type to its unrestricted type and should only be used in some specific cases.
 
-When exposing functionality, provide the least access necessary. Do not use authorized reference, as they can be downcasted, potentially allowing a user to gain access to supposedly restricted functionality. For example, the fungible token standard provides an interface to get the balance of a vault, without exposing the withdrawal functionality.
+When exposing functionality, provide the least access necessary. Do not use authorized references, as they can be downcasted, potentially allowing a user to gain access to supposedly restricted functionality. For example, the fungible token standard provides an interface to get the balance of a vault, without exposing the withdrawal functionality.
 
-Be aware that the subtype or unrestricted type could expose functionality that was not intended to be exposed. Do not use authorized reference when exposing functionality. For example, the fungible token standard provides an interface to get the balance of a vault, without exposing the withdrawal functionality.
+Be aware that the subtype or unrestricted type could expose functionality that was not intended to be exposed. Do not use authorized references when exposing functionality. For example, the fungible token standard provides an interface to get the balance of a vault, without exposing the withdrawal functionality.
 
 ## Account Storage
 

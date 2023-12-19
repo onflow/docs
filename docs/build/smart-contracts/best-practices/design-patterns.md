@@ -266,7 +266,7 @@ When specifying type constraints for capabilities or borrows, concrete types oft
 making it unclear if the developer actually intended it to be unspecified or not.
 Paths also use a shared namespace between contracts, so an account may have stored a different object
 in a path that you would expect to be used for something else.
-Therefore, it is important to be explicit when getting objects or reference to resources.
+Therefore, it is important to be explicit when getting objects or references to resources.
 
 
 ### Solution
