@@ -294,7 +294,7 @@ pub fun add(_ a: Int, _ b: Int): Int {
 
 **Avoid excessive load and save operations**
 
-Avoid costly loading and storage operations and [borrow reference](../smart-contracts/best-practices/design-patterns.md#avoid-excessive-load-and-save-storage-operations-prefer-in-place-mutations) where possible, for example:
+Avoid costly loading and storage operations and [borrow references](../smart-contracts/best-practices/design-patterns.md#avoid-excessive-load-and-save-storage-operations-prefer-in-place-mutations) where possible, for example:
 
 ```cadence
 transaction {

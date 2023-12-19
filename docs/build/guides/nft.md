@@ -606,11 +606,11 @@ flow scripts execute cadence/scripts/GetNFTs.cdc 0x123
 
 Many NFT projects include metadata associated with the NFT, such as a name, description, or image. However, different projects might store this metadata in various formats. To ensure compatibility across the Flow ecosystem, Flow uses `MetadataViews` to standardize the representation of this metadata.
 
-There are two types of Metadata Views: NFT level and contract level. In this guide, we’ll show you how to implement the most basic display, but for a deeper dive into what is possible, check out the [MetadataViews API doc](../../reference/core-contracts/flow-nft/MetdataViews/MetadataViews.md).
+There are two types of Metadata Views: NFT level and contract level. In this guide, we’ll show you how to implement the most basic display, but for a deeper dive into what is possible, check out the [MetadataViews API doc](../../references/core-contracts/flow-nft/MetdataViews/MetadataViews.md).
 
 ### NFT Metadata
 
-For the NFT metadata, you'll add a simple `MetadataView` called `Display`, which includes a `name`, `description`, and `thumbnail`. This format is common for many NFT projects. (For more details, refer to the [Display documentation](../../reference/core-contracts/flow-nft/MetdataViews/MetadataViews.md#display)).
+For the NFT metadata, you'll add a simple `MetadataView` called `Display`, which includes a `name`, `description`, and `thumbnail`. This format is common for many NFT projects. (For more details, refer to the [Display documentation](../../references/core-contracts/flow-nft/MetdataViews/MetadataViews.md#display)).
 
 Start by importing the `MetadataViews` contract into your `FooBar` contract:
 
@@ -741,5 +741,5 @@ Congrats, you did it! You’re now ready to launch the next fun NFT project on F
 - Explore [an example NFT repository](https://github.com/nvdtf/flow-nft-scaffold/blob/main/cadence/contracts/exampleNFT/ExampleNFT.cdc)
 - Watch a [video tutorial on creating an NFT project in the Flow Playground](https://www.youtube.com/watch?v=bQVXSpg6GE8)
 - Dive into the details of [the NFT Standard](https://github.com/onflow/flow-nft)
-- For a deeper dive into `MetadataViews`, consult the [introduction guide](../advanced-concepts/metadata-views.md), [API documentation](https://developers.flow.com/reference/core-contracts/flow-nft/MetdataViews/MetadataViews#docusaurus_skipToContent_fallback) or [the FLIP that introduced this feature](https://github.com/onflow/flips/blob/main/application/20210916-nft-metadata.md).
+- For a deeper dive into `MetadataViews`, consult the [introduction guide](../advanced-concepts/metadata-views.md), [API documentation](https://developers.flow.com/references/core-contracts/flow-nft/MetdataViews/MetadataViews#docusaurus_skipToContent_fallback) or [the FLIP that introduced this feature](https://github.com/onflow/flips/blob/main/application/20210916-nft-metadata.md).
 - Use a [no code tool for creating NFT projects on Flow](https://www.touchstone.city/)

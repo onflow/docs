@@ -152,7 +152,7 @@ All your private keys should be in the `bootstrap` folder created earlier. Pleas
 
 You need to now register the node on chain by staking the node via [Flow Port](https://port.onflow.org/).
 
-[Here](../../../../reference/flow-port/staking-guide.md) is a guide on how to use Flow port if you are not familiar with it.
+[Here](../../../../references/run-and-secure/nodes/flow-port/staking-guide.md) is a guide on how to use Flow port if you are not familiar with it.
 If you are staking via a custody provider or would like to directly submit a staking transaction instead follow this [guide](../../../staking/index.md#how-do-i-stake).
 
 Fund you Flow account with at least 100.01 FLOW tokens, which covers the required stake plus the storage deposit.
