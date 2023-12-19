@@ -4,8 +4,8 @@ sidebar_label: Staking Collection Guide
 ---
 
 This document outlines the steps a token holder can take to stake
-using [the `FlowIDTableStaking` contract](../../references/core-contracts/06-staking-contract-reference.md)
-and [the `FlowStakingCollection` contract.](../../references/core-contracts/11-staking-collection.md)
+using [the `FlowIDTableStaking` contract](../../reference/core-contracts/06-staking-contract-reference.md)
+and [the `FlowStakingCollection` contract.](../../reference/core-contracts/11-staking-collection.md)
 This is the recommended and most supported way to stake FLOW.
 It supports any number of nodes and delegators per account, supports locked and unlocked FLOW,
 and supports easily interaction with a node's machine account for collector and consensus nodes.
@@ -131,7 +131,7 @@ There is a standard set of transactions provided with the staking collection.
 
 ### Setup a Staking Collection
 
-To set up a Staking Collection, you must run the **Setup Staking Collection** ([SCO.01](../../references/core-contracts/11-staking-collection.md)) transaction.
+To set up a Staking Collection, you must run the **Setup Staking Collection** ([SCO.01](../../reference/core-contracts/11-staking-collection.md)) transaction.
 
 This transaction requires no arguments and will perform the following actions:
 1. Create private capabilities for the unlocked vault and locked vault (if applicable).
@@ -153,7 +153,7 @@ meaning that they don't already have an associated machine account.
 These nodes need a new transaction to create the machine account for the node and save it to the staking collection.
 
 To create a machine account for a node that doesn't already have one,
-you must submit the **Create Machine Account** ([SCO.03](../../references/core-contracts/11-staking-collection.md))
+you must submit the **Create Machine Account** ([SCO.03](../../reference/core-contracts/11-staking-collection.md))
 transaction with the following arguments:
 
 | Argument       | Type        | Description |
@@ -170,7 +170,7 @@ If no public keys are provided, the transaction will fail.
 
 ### Register a New Staked Node
 
-To register a new staked node, you must submit the **Register Node** ([SCO.03](../../references/core-contracts/11-staking-collection.md))
+To register a new staked node, you must submit the **Register Node** ([SCO.03](../../reference/core-contracts/11-staking-collection.md))
 transaction with the following arguments:
 
 | Argument              | Type        | Description |
@@ -201,7 +201,7 @@ assuming they have the correct number of tokens to perform the action.
 
 ### Register a New Staked Delegator
 
-To register a new delegator, you must submit the **Register Delegator** ([SCO.02](../../references/core-contracts/11-staking-collection.md))
+To register a new delegator, you must submit the **Register Delegator** ([SCO.02](../../reference/core-contracts/11-staking-collection.md))
 transaction with the following arguments:
 
 | Argument   | Type     | Description |
@@ -229,7 +229,7 @@ Most of them will only succeed during the Staking Auction phase of the epoch.
 
 The Staking Collection can stake additional tokens for any Node or Delegator managed by it at any time.
 
-The owner of a Staking Collection can use the **Stake New Tokens** ([SCO.06](../../references/core-contracts/11-staking-collection.md))
+The owner of a Staking Collection can use the **Stake New Tokens** ([SCO.06](../../reference/core-contracts/11-staking-collection.md))
 transaction with the following arguments:
 
 | Argument                | Type               | Description |
@@ -252,7 +252,7 @@ The amount may be any number of tokens up to the sum of an accounts locked and u
 After tokens become unstaked, the owner of a Staking Collection can choose
 to re-stake the unstaked tokens to the same Node or Delegator.
 
-The owner of a Staking Collection can use the **Stake Unstaked Tokens** ([SCO.08](../../references/core-contracts/11-staking-collection.md))
+The owner of a Staking Collection can use the **Stake Unstaked Tokens** ([SCO.08](../../reference/core-contracts/11-staking-collection.md))
 transaction with the following arguments:
 
 | Argument                | Type               | Description |
@@ -272,7 +272,7 @@ If staking for a delegator, <b>delegatorID</b> should be the delegator ID you ar
 After earning rewards from staking, the owner of a Staking Collection
 can choose to re-stake the rewarded tokens to the same node or delegator.
 
-The owner of a Staking Collection can use the **Stake Unstaked Tokens** ([SCO.07](../../references/core-contracts/11-staking-collection.md))
+The owner of a Staking Collection can use the **Stake Unstaked Tokens** ([SCO.07](../../reference/core-contracts/11-staking-collection.md))
 transaction with the following arguments:
 
 | Argument                | Type               | Description |
@@ -294,7 +294,7 @@ If the tokens aren't staked yet, they will be uncommitted and available to withd
 _Note: unstaked tokens will be held by the central staking contract until the end of the following epoch._
 _Once the tokens are released (unstaked), they can be claimed via the [Withdraw Unstaked Tokens](#withdraw-unstaked-tokens) action below._
 
-The owner of a Staking Collection can use the **Unstake Tokens** ([SCO.05](../../references/core-contracts/11-staking-collection.md))
+The owner of a Staking Collection can use the **Unstake Tokens** ([SCO.05](../../reference/core-contracts/11-staking-collection.md))
 transaction with the following arguments:
 
 | Argument                | Type               | Description |
@@ -309,7 +309,7 @@ To unstake tokens from an active node, leave the <b>delegatorID</b> arguement as
 
 ### Unstake All Tokens
 
-The owner of a Staking Collection can use the **Unstake All** ([SCO.09](../../references/core-contracts/11-staking-collection.md))
+The owner of a Staking Collection can use the **Unstake All** ([SCO.09](../../reference/core-contracts/11-staking-collection.md))
 transaction with the following arguments:
 
 | Argument                | Type               | Description |
@@ -322,7 +322,7 @@ transaction with the following arguments:
 After tokens for an active Node or Delegator become unstaked,
 the ownder of Staking Collection can withdraw them from the central staking contract.
 
-The owner of a Staking Collection can use the **Withdraw Unstaked Tokens** ([SCO.11](../../references/core-contracts/11-staking-collection.md))
+The owner of a Staking Collection can use the **Withdraw Unstaked Tokens** ([SCO.11](../../reference/core-contracts/11-staking-collection.md))
 transaction with the following arguments:
 
 | Argument                | Type               | Description |
@@ -339,7 +339,7 @@ To withdraw unstaked tokens from an active node, leave the <b>delegatorID</b> ar
 
 After earning rewards from staking, the token holder can withdraw them from the central staking contract.
 
-The owner of a Staking Collection can use the **Withdraw Rewarded Tokens** ([SCO.10](../../references/core-contracts/11-staking-collection.md))
+The owner of a Staking Collection can use the **Withdraw Rewarded Tokens** ([SCO.10](../../reference/core-contracts/11-staking-collection.md))
 transaction with the following arguments:
 
 | Argument                | Type               | Description |
@@ -365,7 +365,7 @@ It then destroys the NodeStaker or NodeDelegator object from within the Staking 
 _Note: Once a Node or Delegator has been closed, it cannot be accessed again,_
 _and no staking or delegation actions can be further preformed on it._
 
-The owner of a Staking Collection can use the **Close Stake** ([SCO.12](../../references/core-contracts/11-staking-collection.md))
+The owner of a Staking Collection can use the **Close Stake** ([SCO.12](../../reference/core-contracts/11-staking-collection.md))
 transaction with the following arguments:
 
 | Argument                | Type               | Description |
@@ -393,7 +393,7 @@ _As well, all staked tokens will be considered staked by the receiver's Staking 
 Transferring a Node will result in loss of custody of any Staked tokens for the sender.
 </Callout>
 
-The owner of a Staking Collection can use the **Transfer Node** ([SCO.13](../../references/core-contracts/11-staking-collection.md))
+The owner of a Staking Collection can use the **Transfer Node** ([SCO.13](../../reference/core-contracts/11-staking-collection.md))
 transaction with the following arguments:
 
 | Argument                | Type               | Description |
@@ -417,7 +417,7 @@ _As well, all staked tokens will be considered staked by the receiver's Staking 
 Transferring a Delegator will result in loss of custody of any Staked tokens for the sender.
 </Callout>
 
-The owner of a Staking Collection can use the **Transfer Delegator** ([SCO.14](../../references/core-contracts/11-staking-collection.md))
+The owner of a Staking Collection can use the **Transfer Delegator** ([SCO.14](../../reference/core-contracts/11-staking-collection.md))
 transaction with the following arguments:
 
 | Argument                | Type               | Description |
@@ -438,7 +438,7 @@ _what is stored in the protocol state for the node, the node will not be able to
 _Only update your networking address if you have already confirmed with the Flow team that you can._
 _This restriction will be removed once fully automated epochs are completely implemented_
 
-The owner of a Staking Collection can use the **Update Networking Address** ([SCO.22](../../references/core-contracts/11-staking-collection.md))
+The owner of a Staking Collection can use the **Update Networking Address** ([SCO.22](../../reference/core-contracts/11-staking-collection.md))
 transaction with the following arguments:
 
 | Argument        | Type      | Description |
@@ -454,7 +454,7 @@ These scripts allow anyone to query information about an account's staking colle
 ### Get All Node Info
 
 To return an array of structs representing the information associated with each node managed by an account's Staking Collection, anyone
-can use the **Get All Node Info** ([SCO.15](../../references/core-contracts/11-staking-collection.md)) script with the following arguments:
+can use the **Get All Node Info** ([SCO.15](../../reference/core-contracts/11-staking-collection.md)) script with the following arguments:
 
 | Argument    | Type       | Description |
 |-------------|------------|-------------|
@@ -466,7 +466,7 @@ representing the nodes managed by an accounts Staking Collection.
 ### Get All Delegator Info
 
 To return an array of structs representing the information associated with each delegator managed by an account's Staking Collection, anyone
-can use the **Get All Delegator Info** ([SCO.16](../../references/core-contracts/11-staking-collection.md)) script with the following arguments:
+can use the **Get All Delegator Info** ([SCO.16](../../reference/core-contracts/11-staking-collection.md)) script with the following arguments:
 
 | Argument    | Type       | Description |
 |-------------|------------|-------------|
@@ -478,7 +478,7 @@ representing the delegators managed by an accounts Staking Collection.
 ### Get All Node Ids
 
 To return an array of Strings representing the ids associated with each node managed by an account's Staking Collection, anyone
-can use the **Get All Node Ids** ([SCO.17](../../references/core-contracts/11-staking-collection.md)) script with the following arguments:
+can use the **Get All Node Ids** ([SCO.17](../../reference/core-contracts/11-staking-collection.md)) script with the following arguments:
 
 | Argument    | Type       | Description |
 |-------------|------------|-------------|
@@ -490,7 +490,7 @@ representing each id of each node managed by an accounts Staking Collection.
 ### Get All Delegator Ids
 
 To return an array of structs representing the delegator ids associated with each delegation managed by an account's Staking Collection, anyone
-can use the **Get All Delegator Ids** ([SCO.16](../../references/core-contracts/11-staking-collection.md)) script with the following arguments:
+can use the **Get All Delegator Ids** ([SCO.16](../../reference/core-contracts/11-staking-collection.md)) script with the following arguments:
 
 | Argument    | Type       | Description |
 |-------------|------------|-------------|
@@ -502,7 +502,7 @@ representing the delegator Ids of each delegator managed by an accounts Staking 
 ### Get Locked Tokens Used
 
 To query how many Locked FLOW tokens an account has staked using their Staking Collection, anyone
-can use the **Get Locked Tokens Used** ([SCO.19](../../references/core-contracts/11-staking-collection.md)) script with the following arguments:
+can use the **Get Locked Tokens Used** ([SCO.19](../../reference/core-contracts/11-staking-collection.md)) script with the following arguments:
 
 | Argument    | Type       | Description |
 |-------------|------------|-------------|
@@ -517,7 +517,7 @@ Note: This number does not include Locked FLOW tokens staked not through an acco
 ### Get Unlocked Tokens Used
 
 To query how many Unlocked FLOW tokens an account has staked using their Staking Collection, anyone
-can use the **Get Unlocked Tokens Used** ([SCO.20](../../references/core-contracts/11-staking-collection.md)) script with the following arguments:
+can use the **Get Unlocked Tokens Used** ([SCO.20](../../reference/core-contracts/11-staking-collection.md)) script with the following arguments:
 
 | Argument    | Type       | Description |
 |-------------|------------|-------------|
@@ -532,7 +532,7 @@ Note: This number does not include Unlocked FLOW tokens staked not through an ac
 ### Get Does Stake Exist 
 
 To query if a Node or Delegator is managed by an accounts Staking Collection, anyone
-can use the **Get Does Node Exist** ([SCO.21](../../references/core-contracts/11-staking-collection.md)) script with the following arguments:
+can use the **Get Does Node Exist** ([SCO.21](../../reference/core-contracts/11-staking-collection.md)) script with the following arguments:
 
 | Argument                | Type               | Description |
 |-------------------------|--------------------|-------------|
@@ -550,7 +550,7 @@ Otherwise, fill it in with the <b>delegatorID</b> of the Delegator.
 ### Get Machine Account Info
 
 To query the machine account information for an account's staking collection, anyone
-can use the **Get Machine Account Info** ([SCO.21](../../references/core-contracts/11-staking-collection.md)) script with the following arguments:
+can use the **Get Machine Account Info** ([SCO.21](../../reference/core-contracts/11-staking-collection.md)) script with the following arguments:
 
 | Argument                | Type               | Description |
 |-------------------------|--------------------|-------------|

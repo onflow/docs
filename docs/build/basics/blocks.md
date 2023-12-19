@@ -35,7 +35,7 @@ The Block header contains the following fields:
 The block payload contains the following fields:
 
 - **Collection Guarantees** is a list of collection IDs with the signatures from the collection nodes that produced the collections. This acts as a guarantee by collection nodes that [transaction data](./transactions.md) in the collection will be available on the collection node if requested by other nodes at a later time. Flow purposely skips including transaction data in a block, making blocks as small as possible, and the production of new blocks by consensus nodes fast, that is because consensus nodes have to sync the proposed block between nodes, and that data should be the smallest possible. The consensus nodes don’t really care what will a transaction do as long as it’s valid, they only need to define an order of those transactions in a block.
-- **Block Seals** is the attestation by verification nodes that the transactions in a previously executed block have been verified. This seals a previous block referenced by the block ID. It also references the result ID and execution root hash. It contains signatures of the verification nodes that produced the seal.
+- **Block Seals** is the attestation by verification nodes that the transactions in a previously executed block have been verified. This seals a previous block referenced by the block ID. It also reference the result ID and execution root hash. It contains signatures of the verification nodes that produced the seal.
 
 ## Lifecycle and Status
 

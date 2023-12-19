@@ -85,7 +85,7 @@ Make sure Flow project was initialized in the previous step and the `flow.json` 
 
 ### Making Use of Core Contracts
 
-Flow Testnet comes with some useful contracts already deployed, called **core contracts.** More information and import addresses for the [core contracts](../../references/core-contracts/index.md).
+Flow Testnet comes with some useful contracts already deployed, called **core contracts.** More information and import addresses for the [core contracts](../../reference/core-contracts/index.md).
 
 Once your accounts are set up and you're ready to develop, you can look over [some code examples from the Flow Go SDK](https://github.com/onflow/flow-go-sdk/tree/master/examples).
 

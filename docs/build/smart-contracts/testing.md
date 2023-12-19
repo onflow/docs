@@ -273,7 +273,7 @@ Get familiar with the [Cadence anti-patterns](./best-practices/anti-patterns.md)
 </Callout>
 
 
-## References
+## Reference
 
 - [Reference documentation for Cadence testing](https://cadence-lang.org/docs/testing-framework)
 - [Overflow](https://github.com/bjartek/overflow) is a powerful Golang-based DSL for efficient testing and execution of blockchain interactions
