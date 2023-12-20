@@ -19,7 +19,7 @@ conjunction with Flow Mainnet, Testnet, Canarynet or any
 other instances of Flow.
 ```
 
-## Getting started
+## Getting Started
 
 Before using the dev wallet, you'll need to start the Flow emulator.
 
