@@ -273,16 +273,10 @@ const config = {
             activeBasePath: '/tools',
           },
           {
-            to: 'architecture',
+            to: 'networks/flow-networks',
             position: 'left',
-            label: 'Architecture',
-            activeBasePath: '/architecture',
-          },
-          {
-            to: 'references',
-            position: 'left',
-            label: 'References',
-            activeBasePath: '/references',
+            label: 'Networks',
+            activeBasePath: '/networks',
           },
           {
             to: 'community-resources',
@@ -401,7 +395,7 @@ const config = {
                 label: 'Cadence Cookbook',
               },
               {
-                to: '/references/core-contracts/',
+                to: '/build/core-contracts/',
                 label: 'Core Contracts & Standards',
               },
               {
@@ -426,19 +420,19 @@ const config = {
                 label: 'Flowdiver Testnet',
               },
               {
-                to: '/architecture/node-ops/nodes/node-operation/past-sporks',
+                to: '/networks/node-ops/nodes/node-operation/past-sporks',
                 label: 'Past Sporks',
               },
               {
-                to: '/architecture/node-ops/nodes/node-operation/upcoming-sporks',
+                to: '/networks/node-ops/nodes/node-operation/upcoming-sporks',
                 label: 'Upcoming Sporks',
               },
               {
-                to: '/architecture/node-ops',
+                to: '/networks/node-ops',
                 label: 'Node Operation',
               },
               {
-                to: '/architecture/node-ops/nodes/node-operation/spork',
+                to: '/networks/node-ops/nodes/node-operation/spork',
                 label: 'Spork Information',
               },
             ],
