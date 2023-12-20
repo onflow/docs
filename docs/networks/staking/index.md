@@ -1,6 +1,7 @@
 ---
 title: Epochs, Staking & Delegating on Flow
 sidebar_label: Staking and Epochs
+sidebar_position: 1
 description: Introduction to how staking works on Flow
 ---
 

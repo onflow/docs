@@ -1,6 +1,6 @@
 ---
 title: Fungible Token (FT) Standard
-sidebar_position: 1
+sidebar_position: 2
 ---
 
 This is a description of the Flow standard for fungible token contracts.  It is meant to contain the minimum requirements to implement a safe, secure, easy to understand, and easy to use fungible token contract. It also includes an example implementation to show how a concrete smart contract would actually implement the interface.
