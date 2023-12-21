@@ -517,7 +517,7 @@ message AccountResponse {
 
 `ExecuteScriptAtLatestBlock` executes a read-only Cadence script against the latest sealed execution state.
 
-This method can be used to read execution state from the blockchain. The script is executed on an execution node and the return value is encoded using the [JSON-Cadence data interchange format](../../../build/cadence-reference/json-cadence-spec.md).
+This method can be used to read execution state from the blockchain. The script is executed on an execution node and the return value is encoded using the [JSON-Cadence data interchange format](../../../build/smart-contracts/cadence-reference/json-cadence-spec.md).
 
 ```proto
 rpc ExecuteScriptAtLatestBlock (ExecuteScriptAtLatestBlockRequest) returns (ExecuteScriptResponse)
@@ -556,7 +556,7 @@ message ExecuteScriptResponse {
 
 `ExecuteScriptAtBlockID` executes a ready-only Cadence script against the execution state at the block with the given ID.
 
-This method can be used to read account state from the blockchain. The script is executed on an execution node and the return value is encoded using the [JSON-Cadence data interchange format](../../../build/cadence-reference/json-cadence-spec.md).
+This method can be used to read account state from the blockchain. The script is executed on an execution node and the return value is encoded using the [JSON-Cadence data interchange format](../../../build/smart-contracts/cadence-reference/json-cadence-spec.md).
 
 ```proto
 rpc ExecuteScriptAtBlockID (ExecuteScriptAtBlockIDRequest) returns (ExecuteScriptResponse)
@@ -589,7 +589,7 @@ message ExecuteScriptResponse {
 
 `ExecuteScriptAtBlockHeight` executes a ready-only Cadence script against the execution state at the given block height.
 
-This method can be used to read account state from the blockchain. The script is executed on an execution node and the return value is encoded using the [JSON-Cadence data interchange format](../../../build/cadence-reference/json-cadence-spec.md).
+This method can be used to read account state from the blockchain. The script is executed on an execution node and the return value is encoded using the [JSON-Cadence data interchange format](../../../build/smart-contracts/cadence-reference/json-cadence-spec.md).
 
 ```proto
 rpc ExecuteScriptAtBlockHeight (ExecuteScriptAtBlockHeightRequest) returns (ExecuteScriptResponse)
@@ -971,7 +971,7 @@ message TransactionSignature {
 | Field                         | Description                                                                                          |
 | ----------------------------- | ---------------------------------------------------------------------------------------------------- |
 | script                        | Raw source code for a Cadence script, encoded as UTF-8 bytes                                         |
-| arguments                     | Arguments passed to the Cadence script, encoded as [JSON-Cadence](../../../build/cadence-reference/json-cadence-spec.md) bytes |
+| arguments                     | Arguments passed to the Cadence script, encoded as [JSON-Cadence](../../../build/smart-contracts/cadence-reference/json-cadence-spec.md) bytes |
 | reference_block_id            | Block ID used to determine transaction expiry                                                        |
 | [proposal_key](#proposal-key) | Account key used to propose the transaction                                                          |
 | payer                         | Address of the payer account                                                                         |
@@ -1094,7 +1094,7 @@ message Event {
 | transaction_id    | ID of the transaction the event was emitted from                           |
 | transaction_index | Zero-based index of the transaction within the block                       |
 | event_index       | Zero-based index of the event within the transaction                       |
-| payload           | Event fields encoded as [JSON-Cadence values](../../../build/cadence-reference/json-cadence-spec.md) |
+| payload           | Event fields encoded as [JSON-Cadence values](../../../build/smart-contracts/cadence-reference/json-cadence-spec.md) |
 
 ### Execution Result
 
