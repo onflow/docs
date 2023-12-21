@@ -40,7 +40,7 @@ transaction(greeting: String) {
 
 **Arguments**
 
-Transactions may declare parameters it needs during execution, these must be provided as input arguments when sending a transaction. You can think of them as function arguments. Currently, we provide [arguments in the JSON-Cadence Data Interchange Format](../cadence-reference/json-cadence-spec.md). Which is a human-readable JSON format. The sample script from above accepts a single `String` argument.
+Transactions may declare parameters it needs during execution, these must be provided as input arguments when sending a transaction. You can think of them as function arguments. Currently, we provide [arguments in the JSON-Cadence Data Interchange Format](../smart-contracts/cadence-reference/json-cadence-spec.md). Which is a human-readable JSON format. The sample script from above accepts a single `String` argument.
 
 **Reference Block**
 
@@ -376,7 +376,7 @@ A user can define their own transactions or it can use already defined transacti
 
 Transactions can be submitted and obtained from the access node APIs, currently, there are two gRPC and REST APIs. You can find more information about them here:
 
-[**gRPC Transaction API**](../../architecture/node-ops/nodes/access-api.md#transactions)
+[**gRPC Transaction API**](../../networks/node-ops/nodes/access-api.md#transactions)
 
 [**REST Transaction API**](/http-api#tag/Transactions)
 

@@ -79,7 +79,7 @@ Path to the file containing the contract source code.
 
 ### Arguments
 - Name: `argument`
-- Valid inputs: valid [cadence values](../../../build/cadence-reference/json-cadence-spec.md)
+- Valid inputs: valid [cadence values](../../../build/smart-contracts/cadence-reference/json-cadence-spec.md)
   matching argument type in transaction code.
 
 Input arguments values matching corresponding types in the source code and passed in the same order.
@@ -113,7 +113,7 @@ Specify the name of the account that will be used to sign the transaction.
 
 Arguments passed to the Cadence transaction in Cadence JSON format.
 Cadence JSON format contains `type` and `value` keys and is
-[documented here](../../../build/cadence-reference/json-cadence-spec.md).
+[documented here](../../../build/smart-contracts/cadence-reference/json-cadence-spec.md).
 
 ### Include Fields
 
