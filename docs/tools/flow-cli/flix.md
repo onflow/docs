@@ -31,6 +31,13 @@ The Flow CLI provides a `flix` command to `execute` FLIX. The Cadence being exec
 flow flix execute <query> [<argument> <argument>...] [flags]
 ```
 
+:::warning
+
+A FLIX template might only support testnet and/or mainnet. Generally, emulator is not supported. This can be the case if the FLIX template relies on contract dependencies.  
+
+:::
+
+
 Queries can be a FLIX `id`, `name`, `url` or `path` to a local FLIX file.
 
 ### Execute Usage
@@ -66,6 +73,13 @@ flow flix package <query> [flags]
 Generate FLIX json file. This command will take in a Cadence file and produce a FLIX json file. There are two ways to provide metadata to populate the FLIX json structure. 
  - Use `--pre-fill` flag to pass in a pre populated FLIX json structure
 
+:::warning
+
+When generating a FLIX template, make sure all contract dependencies have been deployed to the supported networks. Add any aliases to your flow.json that will be needed to populate dependencies. Verify all depenencies have been populated after generating.
+
+:::
+
+
 ### Generate Usage
 
 ```shell
@@ -75,7 +89,39 @@ flow flix generate cadence/transactions/update-helloworld.cdc --save cadence/tem
 
 Example of Cadence simple, no metadata associated
 ```cadence
+#interaction(
+    version: "1.1.0",
+    title: "Get Gretting",
+    description: "Call HelloWorld contract to get greeting",
+    language: "en-US",    
+)
+
 import "HelloWorld"
+pub fun main(): String {
+  return HelloWorld.greeting
+}
+```
+
+### Cadence Doc Pragma
+It's recommended to use pragma to set the metadata for the script or transaction. Here is an example where a parameter is described. `parameters` is an array of `Parameter` in the order of the parameters passed into the transaction or script.
+
+```cadence
+
+import "HelloWorld"
+
+#interaction (
+  version: "1.1.0",
+	title: "Update Greeting",
+	description: "Update the greeting on the HelloWorld contract",
+	language: "en-US",
+	parameters: [
+		Parameter(
+			name: "greeting", 
+			title: "Greeting", 
+			description: "The greeting to set on the HelloWorld contract"
+		)
+	],
+)
 transaction(greeting: String) {
 
   prepare(acct: AuthAccount) {
@@ -87,39 +133,73 @@ transaction(greeting: String) {
   }
 }
 
+
+
 ```
+
+
 Resulting json when no prefill json is used
 ```json
 {
     "f_type": "InteractionTemplate",
-    "f_version": "1.0.0",
-    "id": "f5873ad5c845458619f2781e085a71d03ed9e8685ca6e1cfff8e139645227360",
+    "f_version": "1.1.0",
+    "id": "fd9abd34f51741401473eb1cf676b105fed28b50b86220a1619e50d4f80b0be1",
     "data": {
-        "type": "transaction",
+        "type": "script",
         "interface": "",
-        "messages": {},
-        "cadence": "import HelloWorld from 0xHelloWorld\ntransaction(greeting: String) {\n\n  prepare(acct: AuthAccount) {\n    log(acct.address)\n  }\n\n  execute {\n    HelloWorld.updateGreeting(newGreeting: greeting)\n  }\n}\n",
-        "dependencies": {
-            "0xHelloWorld": {
-                "HelloWorld": {
-                    "testnet": {
-                        "address": "0xa58395c2f736c46e",
-                        "fq_address": "A.a58395c2f736c46e.HelloWorld",
-                        "contract": "HelloWorld",
-                        "pin": "82d8fb62ec356884316c28388630b9acb6ba5027d566efe0d2adff2c6e74b4dc",
-                        "pin_block_height": 132414699
+        "messages": [
+            {
+                "key": "title",
+                "i18n": [
+                    {
+                        "tag": "en-US",
+                        "translation": "Get Gretting"
                     }
+                ]
+            },
+            {
+                "key": "description",
+                "i18n": [
+                    {
+                        "tag": "en-US",
+                        "translation": "Call HelloWorld contract to get greeting"
+                    }
+                ]
+            }
+        ],
+        "cadence": {
+            "body": "#interaction(\n    version: \"1.1.0\",\n    title: \"Get Gretting\",\n    description: \"Call HelloWorld contract to get greeting\",\n    language: \"en-US\",    \n)\n\nimport \"HelloWorld\"\npub fun main(): String {\n  return HelloWorld.greeting\n}\n",
+            "network_pins": [
+                {
+                    "network": "testnet",
+                    "pin_self": "41c4c25562d467c534dc92baba92e0c9ab207628731ee4eb4e883425abda692c"
                 }
-            }
+            ]
         },
-        "arguments": {
-            "greeting": {
-                "index": 0,
-                "type": "String",
-                "messages": {},
-                "balance": ""
+        "dependencies": [
+            {
+                "contracts": [
+                    {
+                        "contract": "HelloWorld",
+                        "networks": [
+                            {
+                                "network": "testnet",
+                                "address": "0xe15193734357cf5c",
+                                "dependency_pin_block_height": 137864533,
+                                "dependency_pin": {
+                                    "pin": "aad46badcab3caaeb4f0435625f43e15bb4c15b1d55c74a89e6f04850c745858",
+                                    "pin_self": "a06b3cd29330a3c22df3ac2383653e89c249c5e773fd4bbee73c45ea10294b97",
+                                    "pin_contract_name": "HelloWorld",
+                                    "pin_contract_address": "0xe15193734357cf5c",
+                                    "imports": []
+                                }
+                            }
+                        ]
+                    }
+                ]
             }
-        }
+        ],
+        "parameters": null
     }
 }
 ```
@@ -132,41 +212,60 @@ Example of json prefill file with message metadata
 ```json
 {
     "f_type": "InteractionTemplate",
-    "f_version": "1.0.0",
+    "f_version": "1.1.0",
     "id": "",
     "data": {
         "type": "transaction",
         "interface": "",
-        "messages": {
-            "title": {
-                "i18n": {
-                    "en-US": "Update Greeting"
-                }
-            },
-            "description": {
-                "i18n": {
-                    "en-US": "Update greeting of the HelloWorld smart contract"
-                }
-            }
-        },
-        "cadence": "",
-        "dependencies": {},
-        "arguments": {
-            "greeting": {
-                "messages": {
-                    "title": {
-                        "i18n": {
-                            "en-US": "Greeting"
-                        }
-                    },
-                    "description": {
-                        "i18n": {
-                            "en-US": "HelloWorld contract greeting"
-                        }
+        "messages": [
+            {
+                "key": "title",
+                "i18n": [
+                    {
+                        "tag": "en-US",
+                        "translation": "Update Greeting"
                     }
-                }
+                ]
+            },
+            {
+                "key": "description",
+                "i18n": [
+                    {
+                        "tag": "en-US",
+                        "translation": "Update the greeting on the HelloWorld contract"
+                    }
+                ]
             }
-        }
+        ],
+        "cadence": {},
+        "dependencies": [],
+         "parameters": [
+            {
+                "label": "greeting",
+                "index": 0,
+                "type": "String",
+                "messages": [
+                    {
+                        "key": "title",
+                        "i18n": [
+                            {
+                                "tag": "en-US",
+                                "translation": "Greeting"
+                            }
+                        ]
+                    },
+                    {
+                        "key": "description",
+                        "i18n": [
+                            {
+                                "tag": "en-US",
+                                "translation": "The greeting to set on the HelloWorld contract"
+                            }
+                        ]
+                    }
+                ]
+            }
+        ]
     }
 }
 
@@ -177,56 +276,90 @@ Example of generated output using prefilled json
 ```json
 {
     "f_type": "InteractionTemplate",
-    "f_version": "1.0.0",
-    "id": "7238aed3ce8588ba3603d7a0ad79bf3aa1f7848618a61ae93d6865aff15387b2",
+    "f_version": "1.1.0",
+    "id": "a641017b01f75e1d7b5c53414fbef824ed7410312667b9dd2bea3a9c4fa67a32",
     "data": {
         "type": "transaction",
         "interface": "",
-        "messages": {
-            "title": {
-                "i18n": {
-                    "en-US": "Update Greeting"
-                }
-            },
-            "description": {
-                "i18n": {
-                    "en-US": "Update greeting of the HelloWorld smart contract"
-                }
-            }
-        },
-        "cadence": "import HelloWorld from 0xHelloWorld\ntransaction(greeting: String) {\n\n  prepare(acct: AuthAccount) {\n    log(acct.address)\n  }\n\n  execute {\n    HelloWorld.updateGreeting(newGreeting: greeting)\n  }\n}\n",
-        "dependencies": {
-            "0xHelloWorld": {
-                "HelloWorld": {
-                    "testnet": {
-                        "address": "0xa58395c2f736c46e",
-                        "fq_address": "A.a58395c2f736c46e.HelloWorld",
-                        "contract": "HelloWorld",
-                        "pin": "82d8fb62ec356884316c28388630b9acb6ba5027d566efe0d2adff2c6e74b4dc",
-                        "pin_block_height": 132414700
+        "messages": [
+            {
+                "key": "title",
+                "i18n": [
+                    {
+                        "tag": "en-US",
+                        "translation": "Update Greeting"
                     }
-                }
+                ]
+            },
+            {
+                "key": "description",
+                "i18n": [
+                    {
+                        "tag": "en-US",
+                        "translation": "Update the greeting on the HelloWorld contract"
+                    }
+                ]
             }
+        ],
+        "cadence": {
+            "body": "import \"HelloWorld\"\n\n)\ntransaction(greeting: String) {\n\n  prepare(acct: AuthAccount) {\n    log(acct.address)\n  }\n\n  execute {\n    HelloWorld.updateGreeting(newGreeting: greeting)\n  }\n}\n",
+            "network_pins": [
+                {
+                    "network": "testnet",
+                    "pin_self": "f61e68b5ba6987aaee393401889d5410b01ffa603a66952307319ea09fd505e7"
+                }
+            ]
         },
-        "arguments": {
-            "greeting": {
+        "dependencies": [
+            {
+                "contracts": [
+                    {
+                        "contract": "HelloWorld",
+                        "networks": [
+                            {
+                                "network": "testnet",
+                                "address": "0xe15193734357cf5c",
+                                "dependency_pin_block_height": 139542222,
+                                "dependency_pin": {
+                                    "pin": "85d9d00534d0de99a8dea3ac9dfb4852fcde236ceef0c32fdcec805b71c74796",
+                                    "pin_self": "a06b3cd29330a3c22df3ac2383653e89c249c5e773fd4bbee73c45ea10294b97",
+                                    "pin_contract_name": "HelloWorld",
+                                    "pin_contract_address": "0xe15193734357cf5c",
+                                    "imports": []
+                                }
+                            }
+                        ]
+                    }
+                ]
+            }
+        ],
+        "parameters": [
+            {
+                "label": "greeting",
                 "index": 0,
                 "type": "String",
-                "messages": {
-                    "title": {
-                        "i18n": {
-                            "en-US": "Greeting"
-                        }
+                "messages": [
+                    {
+                        "key": "title",
+                        "i18n": [
+                            {
+                                "tag": "en-US",
+                                "translation": "Greeting"
+                            }
+                        ]
                     },
-                    "description": {
-                        "i18n": {
-                            "en-US": "HelloWorld contract greeting"
-                        }
+                    {
+                        "key": "description",
+                        "i18n": [
+                            {
+                                "tag": "en-US",
+                                "translation": "The greeting to set on the HelloWorld contract"
+                            }
+                        ]
                     }
-                },
-                "balance": ""
+                ]
             }
-        }
+        ]
     }
 }
 
@@ -234,7 +367,11 @@ Example of generated output using prefilled json
 
 ### Package
 
-Queries can be a FLIX `id`, `name`, `url` or `path` to a local FLIX file. This command leverages [FCL](../clients/fcl-js/) which will execute FLIX cadence code. 
+Queries can be a FLIX `url` or `path` to a local FLIX file. This command leverages [FCL](../clients/fcl-js/) which will execute FLIX cadence code. Package files can be generated in JavaScript or TypeScript. 
+
+:::warning
+Currently package doesn't support `id`, `name` flix query.
+:::
 
 ### Package Usage
 
@@ -252,6 +389,12 @@ flow flix package bd10ab0bf472e6b58ecc0398e9b3d1bd58a4205f14a7099c52c0640d958929
 # Generate package code using local template file to save in a local file 
 flow flix package ./multiply.template.json --save ./multiply.js
 ```
+
+```shell
+# Generate package code using local template file to save in a local typescript file 
+flow flix package ./multiply.template.json --lang ts --save ./multiply.ts 
+```
+
 
 ### Example Package Output
 ```shell
@@ -286,6 +429,46 @@ export async function transferTokens({amount, to}) {
 }
 ```
 
+```shell
+# Generate TypeScript version of package file 
+flow flix package https://flix.flow.com/v1/templates?name=transfer-flow --lang ts
+```
+
+```typescript
+
+/**
+    This binding file was auto generated based on FLIX template v1.1.0. 
+    Changes to this file might get overwritten.
+    Note fcl version 1.9.0 or higher is required to use templates. 
+**/
+
+import * as fcl from "@onflow/fcl"
+const flixTemplate = "https://flix.flow.com/v1/templates?name=transfer-flow"
+
+interface TransferTokensParams {
+  amount: string; // The amount of FLOW tokens to send
+  to: string; // The Flow account the tokens will go to
+}
+
+/**
+* transferTokens: Transfer tokens from one account to another
+* @param string amount - The amount of FLOW tokens to send
+* @param string to - The Flow account the tokens will go to
+* @returns {Promise<string>} - Returns a promise that resolves to the transaction ID
+*/
+export async function transferTokens({amount, to}: TransferTokensParams): Promise<string> {
+  const transactionId = await fcl.mutate({
+    template: flixTemplate,
+    args: (arg, t) => [arg(amount, t.UFix64), arg(to, t.Address)]
+  });
+
+  return transactionId
+}
+
+```
+:::Warning
+Notice that fcl v1.9.0 is needed to use FLIX v1.1 templates
+:::
 
 ## Resources
 
@@ -312,7 +495,7 @@ You can pass a `nil` value to optional arguments by executing the flow FLIX exec
 
 Arguments passed to the Cadence script in the Cadence JSON format.
 Cadence JSON format contains `type` and `value` keys and is 
-[documented here](https://cadence-lang.org/docs/json-cadence-spec).
+[documented here](../../build/smart-contracts/cadence-reference/json-cadence-spec.md).
 
 ## Pre Fill
 

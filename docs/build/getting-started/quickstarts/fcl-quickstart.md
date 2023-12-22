@@ -1,5 +1,6 @@
 ---
 sidebar_position: 3
+sidebar_label: Pt. 3 - Interacting with the Blockchain
 ---
 
 # Hello World Pt. 3 - Interacting with the Blockchain

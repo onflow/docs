@@ -27,7 +27,7 @@ This simple guide uses the "Hello World" scaffold, it is meant to provide all th
 FCL (aka Flow Client Library) wraps the logic needed to communicate with the Flow blockchain. It's a npm package, [More Information](../../tools/clients/fcl-js)
 </Callout>
 
-This guide assumes a good understanding of React. The concepts are easy to understand and apply to other libraries and framework. A strong understanding of Cadence (Flow's smart contract language) is not required. More information on Cadence, [learning the Cadence language](./smart-contracts/cadence.md).
+This guide assumes a good understanding of React. The concepts are easy to understand and apply to other libraries and framework. A strong understanding of Cadence (Flow's smart contract language) is not required. More information on Cadence, [learning the Cadence language](../smart-contracts/cadence.md).
 
 ### FCL concepts covered:
 
@@ -113,7 +113,7 @@ npm run dev:local
 
 Now that your app is running. FCL loads the configuration in `config/fcl.ts` This file contains configuration information for FCL, such as what Access Node and wallet discovery endpoint and which network to use (e.g. testnet or a local emulator). 
 
-- `accessNode.api` key specifies the address of a Flow access node. There are publically available access nodes, but have to rate limit. Alternatively, applications might want to run an Observer node [Run a Node](../../references/run-and-secure/node-operation/observer-node.mdx).
+- `accessNode.api` key specifies the address of a Flow access node. There are publically available access nodes, but have to rate limit. Alternatively, applications might want to run an Observer node [Run a Node](../../networks/node-ops/nodes/node-operation/observer-node.md).
 - `discovery.wallet` is an address that points to a service that lists FCL compatible wallets. Flow's FCL Discovery service is a service that FCL wallet providers can be added to, and be made 'discoverable' to any application that uses the `discovery.wallet` endpoint.
 
 Also, notice that `package.json` uses `NEXT_PUBLIC_FLOW_NETWORK=local` for `dev` command, this is used to set the network in `config/fcl.ts`.

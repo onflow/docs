@@ -294,7 +294,7 @@ pub fun add(_ a: Int, _ b: Int): Int {
 
 **Avoid excessive load and save operations**
 
-Avoid costly loading and storage operations and [borrow references](https://cadence-lang.org/docs/design-patterns#avoid-excessive-load-and-save-storage-operations-prefer-in-place-mutations) where possible, for example:
+Avoid costly loading and storage operations and [borrow references](../smart-contracts/best-practices/design-patterns.md#avoid-excessive-load-and-save-storage-operations-prefer-in-place-mutations) where possible, for example:
 
 ```cadence
 transaction {
@@ -355,7 +355,7 @@ There are several places to learn more about transaction fees:
 
 **When will the fee update go into effect?**
 
-The updates were rolled out with the [Spork on April 6, 2022](../../references/run-and-secure/node-operation/past-sporks.mdx#mainnet-17), and were enabled on [June 1st](https://forum.onflow.org/t/permissionless-contract-deployment-progress/2981) during the [weekly epoch transition](https://github.com/onflow/service-account/tree/main/transactions/set-execution-effort-weights/2022/jun-1).
+The updates were rolled out with the [Spork on April 6, 2022](../../networks/node-ops/nodes/node-operation/past-sporks.md#mainnet-17), and were enabled on [June 1st](https://forum.onflow.org/t/permissionless-contract-deployment-progress/2981) during the [weekly epoch transition](https://github.com/onflow/service-account/tree/main/transactions/set-execution-effort-weights/2022/jun-1).
 
 **Why are fees collected even when transactions fail?**
 

@@ -1,5 +1,6 @@
 ---
 sidebar_position: 2
+sidebar_label: Pt. 2 - Local Development
 ---
 
 # Hello World Pt. 2 - Local Development

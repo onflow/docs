@@ -35,8 +35,7 @@ access between the app - the entity which created likely custodies the account -
 
 How does this delegation occur? Typically when we think of shared account access in crypto, we think keys. However,
 Cadence enables [accounts to link Capabilities to themselves](https://github.com/onflow/cadence/issues/2151) and issue
-those Capabilities to other parties (more on [capability-based access
-here](https://developers.flow.com/cadence/language/capabilities.md)).
+those Capabilities to other parties (more on [capability-based access here](https://cadence-lang.org/docs/language/capabilities)).
 
 We've leveraged this feature in a (proposed) standard so that apps can implement a hybrid custody model whereby the
 app creates an account it controls, then later delegates access on that account to the user once they've authenticated
