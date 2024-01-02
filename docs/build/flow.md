@@ -6,7 +6,7 @@ sidebar_position: 1
 
 # Why Flow
 
-Flow is a fast, decentralized, and developer-friendly blockchain designed to be the foundation for a new generation of games, apps, and the [digital assets](https://www.onflow.org/post/flow-blockchain-cadence-programming-language-resources-assets) that power them. It is based on a unique, [multi-role architecture](https://www.onflow.org/primer), and designed to [scale without sharding](https://www.onflow.org/post/flow-blockchain-multi-node-architecture-advantages), allowing for massive improvements in speed and throughput while preserving a developer-friendly, ACID-compliant environment.
+Flow is a fast, decentralized, and developer-friendly blockchain designed to be the foundation for a new generation of games, apps, and [digital assets](https://www.onflow.org/post/flow-blockchain-cadence-programming-language-resources-assets) that power them. It is based on a unique, [multi-role architecture](https://www.onflow.org/primer), and designed to [scale without sharding](https://www.onflow.org/post/flow-blockchain-multi-node-architecture-advantages), allowing for massive improvements in speed and throughput while preserving a developer-friendly, ACID-compliant environment.
 
 ## What Makes Flow Unique
 
@@ -44,11 +44,10 @@ The Flow blockchain implements core functionality using its own smart contract l
 
 The [FLOW](../build/core-contracts/03-flow-token.md) token is the native currency for the Flow network. Developers and users can use FLOW to transact on the network. Developers can integrate FLOW directly into their apps for peer-to-peer payments, service charges, or consumer rewards. FLOW can be held, transferred, or transacted peer-to-peer.
 
-
 ## Technical Background
 
 - The [Flow Technical Primer](https://www.onflow.org/primer) is a great place to start to understand how Flow works.
-- The [Three technical whitepapers](https://www.onflow.org/technical-paper) are covering the unique innovation behind the Flow blockchain network in-depth.
+- The [Three technical whitepapers](https://www.onflow.org/technical-paper) cover the unique innovation behind the Flow blockchain network in-depth.
 
 ## Tokenomics
 
@@ -57,5 +56,4 @@ The [FLOW](../build/core-contracts/03-flow-token.md) token is the native currenc
 
 ## More Concepts
 
-If you're a developer, looking to get a better understanding of working with Flow in your applications,
-use the 👈 left-hand navigation to explore the concepts pages.
+If you're a developer, looking to get a better understanding of working with Flow in your applications, use the 👈 left-hand navigation to explore the concepts pages.
