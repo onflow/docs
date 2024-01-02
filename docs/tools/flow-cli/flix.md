@@ -59,9 +59,9 @@ flow flix execute ./multiply.template.json 2 3 --network testnet
 
 The Flow CLI provides a `flix` command to `package` up generated plain and simple JavaScript. This JavaScript uses FCL (Flow Client Library) to call the cadence the Flow Interaction Templates (FLIX) is based on. 
 
-<Callout type="info">
-Currently, `flix package` command only supports generating FCL (Flow Client Library) specific JavaScript, there are plans to support other languages like golang.
-</Callout>
+:::info
+Currently, `flix package` command only supports generating FCL (Flow Client Library) specific JavaScript and TypeScirpt, there are plans to support other languages like golang.
+:::
 
 
 ```shell
@@ -89,12 +89,6 @@ flow flix generate cadence/transactions/update-helloworld.cdc --save cadence/tem
 
 Example of Cadence simple, no metadata associated
 ```cadence
-#interaction(
-    version: "1.1.0",
-    title: "Get Gretting",
-    description: "Call HelloWorld contract to get greeting",
-    language: "en-US",    
-)
 
 import "HelloWorld"
 pub fun main(): String {
@@ -103,24 +97,23 @@ pub fun main(): String {
 ```
 
 ### Cadence Doc Pragma
-It's recommended to use pragma to set the metadata for the script or transaction. Here is an example where a parameter is described. `parameters` is an array of `Parameter` in the order of the parameters passed into the transaction or script.
+It's recommended to use pragma to set the metadata for the script or transaction. More information on [Cadence Doc Pragma FLIP](https://github.com/onflow/flips/blob/main/application/20230406-interaction-template-cadence-doc.md) Below is an example of metadata to describe the FLIX that includes a parameter. `parameters` is an array of `Parameter` in the order of the parameters passed into the transaction or script.
 
 ```cadence
-
 import "HelloWorld"
 
 #interaction (
-  version: "1.1.0",
-	title: "Update Greeting",
-	description: "Update the greeting on the HelloWorld contract",
-	language: "en-US",
-	parameters: [
-		Parameter(
-			name: "greeting", 
-			title: "Greeting", 
-			description: "The greeting to set on the HelloWorld contract"
-		)
-	],
+    version: "1.1.0",
+    title: "Update Greeting",
+    description: "Update the greeting on the HelloWorld contract",
+    language: "en-US",
+    parameters: [
+        Parameter(
+            name: "greeting", 
+            title: "Greeting", 
+            description: "The greeting to set on the HelloWorld contract"
+        )
+    ],
 )
 transaction(greeting: String) {
 
@@ -137,78 +130,7 @@ transaction(greeting: String) {
 
 ```
 
-
-Resulting json when no prefill json is used
-```json
-{
-    "f_type": "InteractionTemplate",
-    "f_version": "1.1.0",
-    "id": "fd9abd34f51741401473eb1cf676b105fed28b50b86220a1619e50d4f80b0be1",
-    "data": {
-        "type": "script",
-        "interface": "",
-        "messages": [
-            {
-                "key": "title",
-                "i18n": [
-                    {
-                        "tag": "en-US",
-                        "translation": "Get Gretting"
-                    }
-                ]
-            },
-            {
-                "key": "description",
-                "i18n": [
-                    {
-                        "tag": "en-US",
-                        "translation": "Call HelloWorld contract to get greeting"
-                    }
-                ]
-            }
-        ],
-        "cadence": {
-            "body": "#interaction(\n    version: \"1.1.0\",\n    title: \"Get Gretting\",\n    description: \"Call HelloWorld contract to get greeting\",\n    language: \"en-US\",    \n)\n\nimport \"HelloWorld\"\npub fun main(): String {\n  return HelloWorld.greeting\n}\n",
-            "network_pins": [
-                {
-                    "network": "testnet",
-                    "pin_self": "41c4c25562d467c534dc92baba92e0c9ab207628731ee4eb4e883425abda692c"
-                }
-            ]
-        },
-        "dependencies": [
-            {
-                "contracts": [
-                    {
-                        "contract": "HelloWorld",
-                        "networks": [
-                            {
-                                "network": "testnet",
-                                "address": "0xe15193734357cf5c",
-                                "dependency_pin_block_height": 137864533,
-                                "dependency_pin": {
-                                    "pin": "aad46badcab3caaeb4f0435625f43e15bb4c15b1d55c74a89e6f04850c745858",
-                                    "pin_self": "a06b3cd29330a3c22df3ac2383653e89c249c5e773fd4bbee73c45ea10294b97",
-                                    "pin_contract_name": "HelloWorld",
-                                    "pin_contract_address": "0xe15193734357cf5c",
-                                    "imports": []
-                                }
-                            }
-                        ]
-                    }
-                ]
-            }
-        ],
-        "parameters": null
-    }
-}
-```
-
-```shell
-# Generate FLIX json file using cadence transaction or script passing in a pre filled FLIX json file. The json file will get filled out by the `flow flix generate` command
-flow flix generate cadence/scripts/read-helloworld.cdc --pre-fill cadence/templates/read-helloworld.prefill.json --save cadence/templates/read-helloworld.template.json
-```
-Example of json prefill file with message metadata
+Resulting json when metadata is extracted from Cadence Doc Pragma
 ```json
 {
     "f_type": "InteractionTemplate",
@@ -268,18 +190,30 @@ Example of json prefill file with message metadata
         ]
     }
 }
-
 ```
 
-Example of generated output using prefilled json
+```shell
+# Generate FLIX json file using cadence transaction or script passing in a pre filled FLIX json file. The json file will get filled out by the `flow flix generate` command
+flow flix generate cadence/scripts/read-helloworld.cdc --pre-fill cadence/templates/read-helloworld.prefill.json --save cadence/templates/read-helloworld.template.json
+```
 
+Using a pre-filled FLIX template, the cadence can be simple but no metadata accompanies it. 
+
+```cadence
+import "HelloWorld"
+pub fun main(): String {
+  return HelloWorld.greeting
+}
+```
+
+Example of json prefill file with message metadata
 ```json
 {
     "f_type": "InteractionTemplate",
     "f_version": "1.1.0",
-    "id": "a641017b01f75e1d7b5c53414fbef824ed7410312667b9dd2bea3a9c4fa67a32",
+    "id": "fd9abd34f51741401473eb1cf676b105fed28b50b86220a1619e50d4f80b0be1",
     "data": {
-        "type": "transaction",
+        "type": "script",
         "interface": "",
         "messages": [
             {
@@ -287,7 +221,7 @@ Example of generated output using prefilled json
                 "i18n": [
                     {
                         "tag": "en-US",
-                        "translation": "Update Greeting"
+                        "translation": "Get Gretting"
                     }
                 ]
             },
@@ -296,17 +230,17 @@ Example of generated output using prefilled json
                 "i18n": [
                     {
                         "tag": "en-US",
-                        "translation": "Update the greeting on the HelloWorld contract"
+                        "translation": "Call HelloWorld contract to get greeting"
                     }
                 ]
             }
         ],
         "cadence": {
-            "body": "import \"HelloWorld\"\n\n)\ntransaction(greeting: String) {\n\n  prepare(acct: AuthAccount) {\n    log(acct.address)\n  }\n\n  execute {\n    HelloWorld.updateGreeting(newGreeting: greeting)\n  }\n}\n",
+            "body": "import \"HelloWorld\"\npub fun main(): String {\n  return HelloWorld.greeting\n}\n",
             "network_pins": [
                 {
                     "network": "testnet",
-                    "pin_self": "f61e68b5ba6987aaee393401889d5410b01ffa603a66952307319ea09fd505e7"
+                    "pin_self": "41c4c25562d467c534dc92baba92e0c9ab207628731ee4eb4e883425abda692c"
                 }
             ]
         },
@@ -319,9 +253,9 @@ Example of generated output using prefilled json
                             {
                                 "network": "testnet",
                                 "address": "0xe15193734357cf5c",
-                                "dependency_pin_block_height": 139542222,
+                                "dependency_pin_block_height": 137864533,
                                 "dependency_pin": {
-                                    "pin": "85d9d00534d0de99a8dea3ac9dfb4852fcde236ceef0c32fdcec805b71c74796",
+                                    "pin": "aad46badcab3caaeb4f0435625f43e15bb4c15b1d55c74a89e6f04850c745858",
                                     "pin_self": "a06b3cd29330a3c22df3ac2383653e89c249c5e773fd4bbee73c45ea10294b97",
                                     "pin_contract_name": "HelloWorld",
                                     "pin_contract_address": "0xe15193734357cf5c",
@@ -333,37 +267,12 @@ Example of generated output using prefilled json
                 ]
             }
         ],
-        "parameters": [
-            {
-                "label": "greeting",
-                "index": 0,
-                "type": "String",
-                "messages": [
-                    {
-                        "key": "title",
-                        "i18n": [
-                            {
-                                "tag": "en-US",
-                                "translation": "Greeting"
-                            }
-                        ]
-                    },
-                    {
-                        "key": "description",
-                        "i18n": [
-                            {
-                                "tag": "en-US",
-                                "translation": "The greeting to set on the HelloWorld contract"
-                            }
-                        ]
-                    }
-                ]
-            }
-        ]
+        "parameters": null
     }
 }
 
 ```
+
 
 ### Package
 
@@ -398,7 +307,7 @@ flow flix package ./multiply.template.json --lang ts --save ./multiply.ts
 
 ### Example Package Output
 ```shell
-flow flix package transfer-flow
+flow flix package https://flix.flow.com/v1/templates\?name\=transfer-flow
 ```
 
 ```javascript
@@ -410,7 +319,7 @@ flow flix package transfer-flow
 **/
 
 import * as fcl from "@onflow/fcl"
-const flixTemplate = "transfer-flow"
+const flixTemplate = "https://flix.flow.com/v1/templates?name=transfer-flow"
 
 /**
 * Transfer tokens from one account to another
@@ -427,6 +336,8 @@ export async function transferTokens({amount, to}) {
 
   return transactionId
 }
+
+
 ```
 
 ```shell
