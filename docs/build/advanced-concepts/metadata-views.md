@@ -3,22 +3,37 @@ title: NFT Metadata Views
 sidebar_label: NFT Metadata Views
 ---
 
-# NFT MetadataViews on Flow
+# NFT Metadata Views on Flow
 
-`MetadataViews` on Flow offer a standardized way to represent metadata across different NFTs. Through its integration, developers can ensure that different platforms and marketplaces can interpret the NFT metadata in a unified manner. This means that when users visit different websites, wallets, and marketplaces, the NFT metadata will be presented in a consistent manner, ensuring a uniform experience across various platforms.
+`MetadataViews` on Flow offer a standardized way to represent metadata 
+across different NFTs. Through its integration, developers can ensure
+that different platforms and marketplaces can interpret the NFT metadata
+in a unified manner. This means that when users visit different websites,
+wallets, and marketplaces, 
+the NFT metadata will be presented in a consistent manner,
+ensuring a uniform experience across various platforms.
 
-> If you'd like to follow along while we discuss the concepts below, you can do so by referring to the [ExampleNFT contract](https://github.com/onflow/flow-nft/blob/master/contracts/ExampleNFT.cdc). Additionally, here is the source code for the [MetadataViews contract](https://github.com/onflow/flow-nft/blob/master/contracts/MetadataViews.cdc).
+This guide also acts as a specification for the correct ways to use each metadata view.
+Many of the standard metadata views do not have built-in requirements
+for how they are meant to be used, so it is important for developers to understand
+the content of this document so third party apps can integrate with their
+smart contracts as easily and effectively as possible.
+
+> If you'd like to follow along while we discuss the concepts below,
+you can do so by referring to the [ExampleNFT contract](https://github.com/onflow/flow-nft/blob/master/contracts/ExampleNFT.cdc).
+Additionally, here is the source code for the
+[`ViewResolver` contract](https://github.com/onflow/flow-nft/blob/master/contracts/ViewResolver.cdc) and the [`MetadataViews` contract](https://github.com/onflow/flow-nft/blob/master/contracts/MetadataViews.cdc).
 
 ## Two Levels of Metadata: An Overview
 
 Metadata in Cadence is structured at two distinct levels:
 
-1. **Contract-Level Metadata**: This provides an overarching description of the entire NFT collection.
+1. **Contract-Level Metadata**: This provides an overarching description of the entire NFT collection/project. Any metadata about individual NFTs is not included here.
 2. **NFT-Level Metadata**: Diving deeper, this metadata relates to individual NFTs. It provides context, describes rarity, and highlights other distinctive attributes that distinguish one NFT from another within the same collection.
 
 ## Understanding `ViewResolver` and `MetadataViews.Resolver`
 
-When considering Flow and how it handles metadata for NFTs, it's crucial to understand two essential interfaces: `ViewResolver` and `MetadataViews.Resolver`. Interfaces serve as blueprints that specify the required variables and methods that your contract must adhere to for the interface to be deemed properly implemented. This guarantees that any contract asserting adherence to these interfaces will possess a consistent set of functionalities that other applications or contracts can rely on.
+When considering Flow and how it handles metadata for NFTs, it's crucial to understand two essential interfaces: `ViewResolver` and `MetadataViews.Resolver`. [Interfaces](https://cadence-lang.org/docs/language/interfaces) serve as blueprints for types that specify the required fields and methods that your contract or composite type must adhere to to be considered a subtype of that interface. This guarantees that any contract asserting adherence to these interfaces will possess a consistent set of functionalities that other applications or contracts can rely on.
 
 1. **`ViewResolver` for Contract-Level Metadata**:
     - This interface ensures that contracts, particularly those encapsulating NFT collections, conform to the Metadata Views standard.
