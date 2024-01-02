@@ -11,5 +11,5 @@ You can see the docs for account linking [here](https://developers.flow.com/buil
 
 | Network    | Contract Address     |
 |------------|----------------------|
-| Testnet    | [`0x294e44e1ec6993c6`](https://testnet.contractbrowser.com/account/0x294e44e1ec6993c6) |
+| Testnet    | [`0x294e44e1ec6993c6`](https://contractbrowser.com/account/0x294e44e1ec6993c6) |
 | Mainnet    | [`0xd8a7e05a7ac670c0`](https://contractbrowser.com/account/0xd8a7e05a7ac670c0) | 
