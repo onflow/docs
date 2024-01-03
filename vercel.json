@@ -857,7 +857,7 @@
       "permanent": true
     },
     {
-      "source": "/build/core-contracts/:path*",
+      "source": "/references/core-contracts/:path*",
       "destination": "/build/core-contracts/:path*",
       "permanent": true
     },
