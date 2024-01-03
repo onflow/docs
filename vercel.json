@@ -459,11 +459,16 @@
     },
     {
       "source": "/docs/setting-up-a-node",
-      "destination": "/networks/node-ops/nodes/node-operation",
+      "destination": "/networks/node-ops",
       "permanent": true
     },
     {
-      "source": "/staking/:path*",
+      "source": "/networks/node-ops/nodes/node-operation",
+      "destination": "/networks/node-ops",
+      "permanent": true
+    },
+    {
+      "source": "/staking/:path*",/
       "destination": "/networks/staking/:path*",
       "permanent": true
     },
@@ -888,7 +893,7 @@
     },
     {
       "source": "/node-ops/running-node",
-      "destination": "/networks/node-ops/nodes/node-operation",
+      "destination": "/networks/node-ops",
       "permanent": true
     },
     {
