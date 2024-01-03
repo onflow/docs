@@ -468,7 +468,7 @@
       "permanent": true
     },
     {
-      "source": "/staking/:path*",/
+      "source": "/staking/:path*",
       "destination": "/networks/staking/:path*",
       "permanent": true
     },
