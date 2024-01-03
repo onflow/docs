@@ -967,11 +967,6 @@
       "permanent": true
     },
     {
-      "source": "/networks/flow-port/:path*",
-      "destination": "/networks/flow-port/:path*",
-      "permanent": true
-    },
-    {
       "source": "/flow/faq/:path*",
       "destination": "/networks/faq/:path*",
       "permanent": true
