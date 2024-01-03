@@ -1,6 +1,6 @@
 {
-  "cleanurls": true,
-  "trailingslash": false,
+  "cleanUrls": true,
+  "trailingSlash": false,
   "redirects": [
     {
       "source": "/:path*(.mdx?$)",
