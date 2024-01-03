@@ -1,6 +1,6 @@
 {
-  "cleanUrls": true,
-  "trailingSlash": false,
+  "cleanurls": true,
+  "trailingslash": false,
   "redirects": [
     {
       "source": "/:path*(.mdx?$)",
@@ -874,6 +874,11 @@
     {
       "source": "/build/run-and-secure/:path*",
       "destination": "/references/run-and-secure/:path*",
+      "permanent": true
+    },
+    {
+      "source": "/references/run-and-secure/nodes/:path*",
+      "destination": "/networks/:path*",
       "permanent": true
     },
     {
