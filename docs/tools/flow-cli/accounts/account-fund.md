@@ -12,7 +12,7 @@ flow accounts fund <address>
 
 ## Example Usage
 
-```shell
+```
 > flow accounts fund 8e94eaa81771313a
 
 Opening the faucet to fund 0x8e94eaa81771313a on your native browser.
