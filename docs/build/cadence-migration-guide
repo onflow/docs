@@ -6,7 +6,7 @@ sidebar_position: 9
 
 # Cadence 1.0 Migration Guide
 
-Coming this year, the network will be upgrading to the Cadence 1.0 smart contract programming language. This means that all applications will need to prepare and migrate their existing Cadence smart contracts, scripts, and transactions for the update. If you do not update your contracts, your applications will become non-functional after the network upgrade. The specific upgrade date will be announced later.
+Coming this year, the network will be upgrading to the Cadence 1.0. This means that all applications will need to prepare and migrate their existing Cadence smart contracts, scripts, and transactions for the update. If you do not update your contracts, your applications will become non-functional after the network upgrade. The specific upgrade date will be announced later.
 
 We have created several resources to help developers update their applications. Use the following links to start upgrading your contracts and to understand how the network upgrade will affect your application:
 
