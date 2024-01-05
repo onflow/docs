@@ -62,6 +62,12 @@ Additionally, here is the source code for the
 [`ViewResolver` contract](https://github.com/onflow/flow-nft/blob/master/contracts/ViewResolver.cdc)
 and the [`MetadataViews` contract](https://github.com/onflow/flow-nft/blob/master/contracts/MetadataViews.cdc).
 
+Flowty has also provided [a useful guide](https://issuu.com/flowtyio/docs/flowty_newsletter_metadata_standards?fr=sOWI0ODYyNzYzOTE)
+for how to manage metadata views properly
+in order to be compatible with their marketplace. This guide is very useful
+because all of their advice is generally good advice for any NFT contract,
+regardless of what marketplace it is using.
+
 ## Two Levels of Metadata: An Overview
 
 Metadata in Cadence is structured at two distinct levels:
@@ -388,22 +394,39 @@ case Type<MetadataViews.ExternalURL>():
 
 ### Traits Metadata
 
-Traits view type encapsulates the unique attributes of an NFT, like any visual aspects or category-defining properties. These can be essential for marketplaces that need to sort or filter NFTs based on these characteristics.
-
-The `dictToTraits` helper function in Cadence is designed to convert a dictionary of metadata into a standard array of `Trait` structures. This function helps in preparing the traits data for the `MetadataViews.Traits` view, which can be understood by platforms within the Flow ecosystem.
-
-Here's a more detailed look at how you might implement the `dictToTraits` function and the `Traits` view:
-
+The [`Trait`](https://github.com/onflow/flow-nft/blob/master/contracts/MetadataViews.cdc#L655) view type encapsulates the unique attributes of an NFT, like any visual aspects or category-defining properties. These can be essential for marketplaces that need to sort or filter NFTs based on these characteristics.
+By returning trait views as recommended, you can fit the data in the places you want.
 ```cadence
-case Type<MetadataViews.Traits>():
-    // Exclude certain traits from being displayed
-    let excludedTraits = ["mintedTime", "foo"]
+pub struct Trait {
+        // The name of the trait. Like Background, Eyes, Hair, etc.
+        pub let name: String
 
-    // Convert the remaining metadata into an array of `Trait` objects
-    let traitsArray = MetadataViews.dictToTraits(dict: self.metadata, excludedNames: excludedTraits)
+        // The underlying value of the trait
+        pub let value: AnyStruct
 
-    return traitsArray
+        // displayType is used to show some context about what this name and value represent
+        // for instance, you could set value to a unix timestamp, and specify displayType as "Date" to tell
+        // platforms to consume this trait as a date and not a number
+        pub let displayType: String?
+
+        // Rarity can also be used directly on an attribute.
+        // This is optional because not all attributes need to contribute to the NFT's rarity.
+        pub let rarity: Rarity?
 ```
+
+The traits view is extremely important to get right, because many third-party apps
+and marketplaces are heavily reliant on it to properly display the entirety of your NFTs.
+For example, the names and values of the traits are likely going to be displayed
+on a user-facing website, so it is important to return them in a presentable form, such as `First Name`, instead of `first_name` or `firstName`.
+
+Additionally, limit your `value` field to primitive types like `String`, `Int`, or `Bool`.
+
+Additionally, the `displayType` is important as well, because it tells websites
+how to display the trait properly. Developers should not just default
+to `String` or `Integer` for all their display types.
+When applicable, the display types to accurately reflect the data that needs to be displayed.
+
+![MetadataViews.Traits](traits_String.png "traits_String")
 
 ## Contract-Level Metadata Implementation
 
@@ -416,17 +439,24 @@ case Type<MetadataViews.NFTCollectionDisplay>():
 
 ### NFTCollectionData
 
-This view provides paths and types related to the NFT collection's storage and access within the smart contract.
+This view provides paths and types related to the NFT collection's storage
+and access within the smart contract. The information in this view
+is critical for understanding how to interact with a collection.
 
 ```cadence
 case Type<MetadataViews.NFTCollectionData>():
     return MetadataViews.NFTCollectionData(
+        // where should the collection be saved?
         storagePath: ExampleNFT.CollectionStoragePath,
+        // where to borrow public capabilities from?
         publicPath: ExampleNFT.CollectionPublicPath,
+        // where to borrow private capabilities from? (important for hybrid custody)
         providerPath: /private/exampleNFTCollection,
+        // Important types for how the collection should be linked
         publicCollection: Type<&ExampleNFT.Collection{ExampleNFT.ExampleNFTCollectionPublic}>(),
         publicLinkedType: Type<&ExampleNFT.Collection{ExampleNFT.ExampleNFTCollectionPublic,NonFungibleToken.CollectionPublic,NonFungibleToken.Receiver,MetadataViews.ResolverCollection}>(),
         providerLinkedType: Type<&ExampleNFT.Collection{ExampleNFT.ExampleNFTCollectionPublic,NonFungibleToken.CollectionPublic,NonFungibleToken.Provider,MetadataViews.ResolverCollection}>(),
+        // function that can be accessed to create an empty collection for the project
         createEmptyCollectionFunction: (fun (): @NonFungibleToken.Collection {
             return <-ExampleNFT.createEmptyCollection()
         })
@@ -437,7 +467,10 @@ Here, `NFTCollectionData` is specifying several important elements related to ho
 
 ### NFTCollectionDisplay
 
-This view describes the collection with visual elements and metadata that are useful for display purposes, such as in a marketplace or gallery.
+This view describes the collection with visual elements and metadata
+that are useful for display purposes, such as in a marketplace or gallery.
+Many third party apps need this in order to display high-level information
+about an NFT project properly.
 
 ```cadence
 case Type<MetadataViews.NFTCollectionDisplay>():
@@ -461,9 +494,11 @@ case Type<MetadataViews.NFTCollectionDisplay>():
 
 In the example above, the `NFTCollectionDisplay` not only offers fundamental metadata like the collection's name and description but also provides image URLs for visual representations of the collection (`squareImage` and `bannerImage`) and external links, including social media profiles.
 
+![MetadataViews.CollectionDisplay](collectionDisplay.png "CollectionDisplay")
+
 ### Contract-borrowing Metadata
 
-With the contract borrowing feature, the [ViewResolver](./contracts/ViewResolver.cdc) 
+With the contract borrowing feature, the [ViewResolver](https://github.com/onflow/flow-nft/blob/master/contracts/ViewResolver.cdc) 
 interface on contracts can be borrowed directly without needing to import the contract first.
 Views can be resolved directly from there.
 As an example, you might want to allow your contract
