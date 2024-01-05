@@ -254,7 +254,7 @@ thumbnail : MetadataViews.IPFSFile(
 )
 ```
 
-![MetadataViews.Display](/display.png "Display")
+![MetadataViews.Display](display.png "Display")
 
 ### Editions
 
