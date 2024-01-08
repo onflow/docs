@@ -4,13 +4,13 @@ description: How to fund a Testnet Flow account from the command line
 sidebar_position: 7
 ---
 
-Fund a valid Testnet Flow Account using the Flow CLI.
-
 :::info
 
 The [Flow Testnet Faucet](https://testnet-faucet.onflow.org/) allows users to create accounts and receive 1,000 Testnet FLOW tokens for testing and development purposes. You can also fund an existing Testnet accounts without needing to create one through the site, or through the CLI.
 
 :::
+
+Fund a valid Testnet Flow Account using the Flow CLI.
 
 ```shell
 flow accounts fund <address>
