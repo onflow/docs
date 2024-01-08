@@ -5,7 +5,7 @@ sidebar_label: NFT Metadata Views
 
 # NFT Metadata Views on Flow
 
-`MetadataViews` on Flow offer a standardized way to represent metadata 
+`MetadataViews` on Flow offer a standardized way to represent onchain metadata 
 across different NFTs. Through its integration, developers can ensure
 that different platforms and marketplaces can interpret the NFT metadata
 in a unified manner. This means that when users visit different websites,
@@ -13,12 +13,12 @@ wallets, and marketplaces,
 the NFT metadata will be presented in a consistent manner,
 ensuring a uniform experience across various platforms.
 
-It is important for developers to know that support for metadata views 
-does not happen by default.
-Each project has unique metadata and therefore will have
-to define how they expose it in unique ways.
-It is important to understand this document so you can
-make meaningful decisions about how to manage your project's metadata.
+<Callout type="information">
+It is important to understand this document so you can make meaningful decisions 
+about how to manage your project's metadata as support for metadata views does
+not happen by default. Each project has unique metadata and therefore will have to
+define how they expose it in unique ways.
+</Callout>
 
 A view is a standard Cadence struct that represents a specific type of metadata, 
 such as a [Royalty specification](https://github.com/onflow/flow-nft?tab=readme-ov-file#royalty-view):
@@ -62,7 +62,7 @@ Additionally, here is the source code for the
 [`ViewResolver` contract](https://github.com/onflow/flow-nft/blob/master/contracts/ViewResolver.cdc)
 and the [`MetadataViews` contract](https://github.com/onflow/flow-nft/blob/master/contracts/MetadataViews.cdc).
 
-Flowty has also provided [a useful guide](https://issuu.com/flowtyio/docs/flowty_newsletter_metadata_standards?fr=sOWI0ODYyNzYzOTE)
+Flowty has also provided [a useful guide](https://docs.flowty.io/developer-docs/)
 for how to manage metadata views properly
 in order to be compatible with their marketplace. This guide is very useful
 because all of their advice is generally good advice for any NFT contract,
@@ -80,7 +80,7 @@ Any metadata about individual NFTs is not included here.
 It provides context, describes rarity, and highlights other distinctive attributes
 that distinguish one NFT from another within the same collection.
 
-While these different levels describe different aspects of a project,
+While these distinct levels describe different aspects of a project,
 they both use the same view system for representing the metadata
 and the same basic function calls to query the information,
 just from different places.
@@ -92,7 +92,7 @@ it is crucial to understand two essential interfaces:
 `ViewResolver` and `MetadataViews.Resolver`. 
 [Interfaces](https://cadence-lang.org/docs/language/interfaces) 
 serve as blueprints for types that specify the required fields and methods
-that your contract or composite type must adhere to 
+that your contract or [composite type](https://cadence-lang.org/docs/language/composite-types) must adhere to 
 to be considered a subtype of that interface.
 This guarantees that any contract asserting adherence to these interfaces
 will possess a consistent set of functionalities
@@ -101,7 +101,7 @@ that other applications or contracts can rely on.
 1. **`ViewResolver` for Contract-Level Metadata**:
     - This interface ensures that **contracts**, particularly those encapsulating NFT collections, conform to the Metadata Views standard.
     - Through the adoption of this interface, contracts can provide dynamic metadata that represents the entirety of the collection.
-2. **`MetadataViews.Resolver` for NFT-Level Metadata**:
+2. **`MetadataViews.Resolver` (`ViewResolver.Resolver` in Cadence 1.0) for NFT-Level Metadata**:
     - Used within **individual NFT resources**, this interface ensures each token adheres to the Metadata standard format.
     - It focuses on the distinct attributes of an individual NFT, such as its unique ID, name, description, and other defining characteristics.
 
@@ -201,7 +201,7 @@ The name of the trait should be formatted in a way so that it is easy to display
 on a user-facing website. Many projects will use something like CamelCase for
 the value, so it looks like "HairColor", which is not pretty on a website.
 The correct format for this example would be "Hair Color".
-This is just one of many common view uses that projects need to be aware
+This is just one of many common view uses that projects need to be aware of
 to maximize the chance of success for their project.
 
 ## Metadata Views for NFTs
@@ -212,29 +212,12 @@ ensuring that the relevant information is presented consistently across various 
 In this section of the document, we will explore each metadata view and describe
 how projects should properly use them.
 
-#### Note: Always prefer wrappers over single views
-
-When exposing a view that could have multiple occurrences on a single NFT, such as `Edition`, `Royalty`, `Media` or `Trait` the wrapper view should always be used (such as `Editions`, `Royalties`, etc), even if there is only a single occurrence. The wrapper view is always the plural version of the single view name and can be found below the main view definition in the `MetadataViews` contract.
-
-When resolving the view, the wrapper view should be the returned value, instead of returning the single view or just an array of several occurrences of the view.
-
-```cadence
-pub fun resolveView(_ view: Type): AnyStruct? {
-    switch view {
-        case Type<MetadataViews.Editions>():
-            let editionInfo = MetadataViews.Edition(name: "Example NFT Edition", number: self.id, max: nil)
-            let editionList: [MetadataViews.Edition] = [editionInfo]
-            // return the wrapped view
-            return MetadataViews.Editions(
-                editionList
-            )
-    }
-}
-```
-
 ### Display
 
-This view provides the bare minimum information about the NFT suitable for listing or display purposes. When the `Display` type is invoked, it dynamically assembles the visual and descriptive information that is typically needed for showcasing the NFT in marketplaces or collections.
+This view provides the bare minimum information about the NFT
+suitable for listing or display purposes. When the `Display` type is invoked,
+it dynamically assembles the visual and descriptive information
+that is typically needed for showcasing the NFT in marketplaces or collections.
 
 ```cadence
 case Type<MetadataViews.Display>():
@@ -261,6 +244,14 @@ thumbnail : MetadataViews.IPFSFile(
 ```
 
 ![MetadataViews.Display](display.png "Display")
+
+<Callout type="information">
+Note about SVG files on-chain: SVG field should be sent as `thumbnailURL`,
+should be base64 encoded, and should have a dataURI prefix, like so:
+```
+data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMSIgaGVpZ2h0PSIxIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPjxyZWN0IHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiIGZpbGw9InJlZCIvPjwvc3ZnPg==
+```
+</Callout>
 
 ### Editions
 
@@ -295,8 +286,9 @@ akin to a serial number on a currency note or a VIN on a car.
 This serial number is a fundamental attribute that certifies the individuality
 of each NFT and is critical for identification and verification processes.
 Serial numbers are expected to be unique among other NFTs from the same project.
-Many projects are already using the NFT resource's globally unique UUID as the ID already,
-so they will typically also use that as the serial number.
+Many projects are already using the NFT resource's
+[globally unique UUID]([resource's globally unique UUID](https://cadence-lang.org/docs/language/resources#resource-identifier))
+as the ID already, so they will typically also use that as the serial number.
 
 ```cadence
 case Type<MetadataViews.Serial>():
@@ -340,11 +332,13 @@ case Type<MetadataViews.Royalties>():
 
 If someone wants to make a listing for their NFT on a marketplace,
 the marketplace can check to see if the royalty receiver
-accepts the seller's desired fungible token by calling the `isSupportedVaultType()`
+accepts the seller's desired fungible token by calling
+the `receiver.getSupportedVaultTypes(): {Type: Bool}`
 function via the `receiver` reference:
 ```cadence
 let royaltyReceiverRef = royalty.receiver.borrow() ?? panic("Could not borrow a reference to the receiver")
-if receiverRef.isSupportedVaultType(**desired type**) {
+let supportedTypes = receiverRef.getSupportedVaultTypes() 
+if supportedTypes[**royalty.getType()**] {
     // The type is supported, so you can deposit
     recieverRef.deposit(<-royalty)
 } else {
@@ -428,9 +422,40 @@ When applicable, the display types to accurately reflect the data that needs to 
 
 ![MetadataViews.Traits](traits_String.png "traits_String")
 
+#### Note: Always prefer wrappers over single views
+
+When exposing a view that could have multiple occurrences on a single NFT,
+such as `Edition`, `Royalty`, `Media` or `Trait` the wrapper view should always be used
+(such as `Editions`, `Royalties`, etc), even if there is only a single occurrence.
+The wrapper view is always the plural version of the single view name
+and can be found below the main view definition in the `MetadataViews` contract.
+
+When resolving the view, the wrapper view should be the returned value,
+instead of returning the single view or just an array of several occurrences of the view.
+
+```cadence
+pub fun resolveView(_ view: Type): AnyStruct? {
+    switch view {
+        case Type<MetadataViews.Editions>():
+            let editionInfo = MetadataViews.Edition(name: "Example NFT Edition", number: self.id, max: nil)
+            let editionList: [MetadataViews.Edition] = [editionInfo]
+            // return the wrapped view
+            return MetadataViews.Editions(
+                editionList
+            )
+    }
+}
+```
+
 ## Contract-Level Metadata Implementation
 
-Contract-level metadata provides a holistic view of an NFT collection, capturing overarching attributes and contextual information about the entire set, rather than specifics of individual tokens. These views describe attributes at the collection or series level rather than individual NFTs. These views should still should be queryable via individual NFTs though. One can accomplish this by just forwarding the call from the NFT's `resolveView()` method to the contract's `resolveView()` method, like so:
+Contract-level metadata provides a holistic view of an NFT collection,
+capturing overarching attributes and contextual information about the entire set,
+rather than specifics of individual tokens. These views describe attributes
+at the collection or series level rather than individual NFTs.
+These views should still should be queryable via individual NFTs though.
+One can accomplish this by just forwarding the call
+from the NFT's `resolveView()` method to the contract's `resolveView()` method, like so:
 ```cadence
 /// this line is in `ExampleNFT.NFT.resolveView()`
 case Type<MetadataViews.NFTCollectionDisplay>():
@@ -463,7 +488,12 @@ case Type<MetadataViews.NFTCollectionData>():
     )
 ```
 
-Here, `NFTCollectionData` is specifying several important elements related to how the collection is stored and accessed on the Flow blockchain. It provides information on storage paths and access control paths for both public and private data, as well as linked types that specify what capabilities are publicly available (like collection, receiver, or provider interfaces).
+Here, `NFTCollectionData` is specifying several important elements
+related to how the collection is stored and accessed on the Flow blockchain.
+It provides information on storage paths and access control paths
+for both public and private data, as well as linked types
+that specify what capabilities are publicly available
+(like collection, receiver, or provider interfaces).
 
 ### NFTCollectionDisplay
 
@@ -492,7 +522,10 @@ case Type<MetadataViews.NFTCollectionDisplay>():
     )
 ```
 
-In the example above, the `NFTCollectionDisplay` not only offers fundamental metadata like the collection's name and description but also provides image URLs for visual representations of the collection (`squareImage` and `bannerImage`) and external links, including social media profiles.
+In the example above, the `NFTCollectionDisplay` not only offers fundamental metadata
+like the collection's name and description but also provides image URLs
+for visual representations of the collection (`squareImage` and `bannerImage`)
+and external links, including social media profiles.
 
 ![MetadataViews.CollectionDisplay](collectionDisplay.png "CollectionDisplay")
 
@@ -531,7 +564,14 @@ Will Return
 
 ## More
 
-Understanding `MetadataViews` and the core functions associated with it is crucial for developers aiming to deploy NFTs on Flow. With these views and functions, NFTs can maintain a consistent presentation across various platforms and marketplaces and foster interoperability between contracts and applications in the Flow ecosystem. To gain a deeper understanding of implementing the MetadataView standard, Check out our documentation on "How to Create an NFT Project on Flow". It provides an introduction to integrating these standards into your NFT contracts.
+Understanding `MetadataViews` and the core functions associated with it
+is crucial for developers aiming to deploy NFTs on Flow.
+With these views and functions, NFTs can maintain a consistent presentation
+across various platforms and marketplaces and foster interoperability
+between contracts and applications in the Flow ecosystem.
+To gain a deeper understanding of implementing the MetadataView standard, 
+check out our documentation on "How to Create an NFT Project on Flow".
+It provides an introduction to integrating these standards into your NFT contracts.
 
 - See the [API reference for a complete list of Metadata functions](https://developers.flow.com/build/core-contracts/flow-nft/MetdataViews/MetadataViews)
 - Check out [an Example NFT project](https://github.com/onflow/flow-nft/blob/master/contracts/ExampleNFT.cdc) implementing `MetadataViews`
