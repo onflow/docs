@@ -9,7 +9,6 @@ Flow Crescendo is Flow's official testing and development network. It is intende
 It aims to balance similarity with Mainnet with being a productive development environment, resulting in the following key differences:
 - Crescendo has significantly fewer validator nodes, resulting in a faster block rate compared to Mainnet
 - Crescendo is configured with shorter epochs (about 12 hours, compared to 7 days on Mainnet)
-- Crescendo receives software upgrades up to 2 weeks before Mainnet
 
 ## Accessing Flow Crescendo
 
