@@ -10,7 +10,7 @@ A language-agnostic specification for this API is defined using [Protocol Buffer
 
 - [Flow Access API protobuf source files](https://github.com/onflow/flow/tree/master/protobuf)
 
-## Flow access node endpoints
+## Flow Access Node Endpoints
 
 The Access Nodes hosted by DapperLabs are accessible at:
 

@@ -7,7 +7,7 @@ sidebar_position: 1
 
 Flow nodes are vital components of the Flow blockchain. These nodes are responsible for a variety of network operations to maintain the distributed ledger.
 
-## Why run a node?
+## Why Run a Node?
 
 ---
 
@@ -18,7 +18,7 @@ By running a node, you also directly contribute to the security and decentraliza
 Flow multirole architecture makes it more scalable and provides several node types that you as a node operator can pick and choose from.
 
 
-## Which node should you run?
+## Which Node Should You Run?
 
 ---
 
@@ -28,7 +28,7 @@ The nodes are classified as follows,
 
 ![Flownodesdiagram.png](nodes/node-operation/Flownodesdiagram.png)
 
-## Light node a.k.a. Observer node
+## Light Node A.K.A. Observer Node
 
 ---
 
@@ -43,7 +43,7 @@ To run a light node, follow this [guide](./nodes/node-operation/observer-node.md
 
 :::
 
-## Archive node
+## Archive Node
 
 ---
 
@@ -54,7 +54,7 @@ It also allows script execution and other read-only queries that require the exe
 
 _The archive node is currently in beta and will be available as a GA release in H2 2023 (see [here](https://flow.com/post/flow-blockchain-node-operation-archive-node) for more)._
 
-## Full node
+## Full Node
 
 ---
 
@@ -63,7 +63,7 @@ In a nutshell, Full Nodes are staked network participants that drive network pro
 - The Validator node (Collection, Consensus, Verification and Execution) is a full node that plays a role in block generation.
 
 
-### Access node
+### Access Node
 
 ---
 
@@ -96,7 +96,7 @@ Alternately, instead of running an access node, you can use the [Flow community]
 
 :::
 
-### Validator node
+### Validator Node
 
 ---
 
@@ -108,7 +108,7 @@ You can also be a core participant in running the Flow network and contribute to
 
 Nodes with these roles are staked and also receive staking rewards.
 
-### Running a staked node
+### Running a Staked Node
 
 ---
 

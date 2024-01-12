@@ -1,5 +1,5 @@
 ---
-title: Flow Access API rate limits
+title: Flow Access API Rate Limits
 sidebar_label: Access API Rate Limits
 sidebar_position: 2
 ---

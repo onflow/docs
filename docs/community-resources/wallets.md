@@ -11,7 +11,7 @@ Store, manage, and interact securely with Flow tokens and digital assets on the 
 
 <div id="cards" className="cards">
 
-## Flow Reference wallet
+## Flow Reference Wallet
 
 [Flow Reference Wallet](https://frw.gitbook.io/) is the first extension wallet on Flow.
 

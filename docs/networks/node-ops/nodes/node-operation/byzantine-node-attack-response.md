@@ -1,6 +1,6 @@
 ---
-title: Byzantine node attack response
-sidebar_label: Byzantine attack response
+title: Byzantine Node Attack Response
+sidebar_label: Byzantine Attack Response
 description: How to respond to a byzantine node attack on the network
 sidebar_position: 3
 ---
@@ -25,13 +25,13 @@ Responding to an attack from a byzantine node requires the following:
 
 This guide focuses on the first action.
 
-## Admin server
+## Admin Server
 
 Flow nodes have an admin server which exposes a simple REST API for interacting with the node.
 See the [README](https://github.com/onflow/flow-go/blob/master/admin/README.md) for some useful examples.
 It is disabled by default.
 
-### Enable the admin server
+### Enable the Admin Server
 
 To enable to admin server,
 
@@ -58,7 +58,7 @@ This should return a json response message as below.
 
 If you instead get a connection rejected message then it’s not configured correctly.
 
-## Detecting a byzantine node
+## Detecting a Byzantine Node
 
 There are 2 general categories of byzantine attacks:
 1. Safety attacks - are attacks where a node attempts to corrupt or modify the state of the
@@ -120,7 +120,7 @@ is not authorized to send:
 }
 ```
 
-### Identifying the source of malicious traffic
+### Identifying the Source of Malicious Traffic
 
 Most log messages include either the node ID or peer ID. Peer ID is the ID used to identify nodes on
 by the libp2p library. Peer IDs are derived from the node's networking public key, so there is a 1:1
@@ -140,7 +140,7 @@ If you cannot find any log messages at the current log level, you may need to en
 See the admin server's [README](https://github.com/onflow/flow-go/blob/master/admin/README.md) for
 an example.
 
-## Reporting the byzantine node
+## Reporting the Byzantine Node
 
 Report the suspicious node on Discord in the `#flow-validators-alerts` channel along with all the
 evidence you have collected (log messages, other networking related metrics, etc).
@@ -148,7 +148,7 @@ This will alert other node operators who can review their nodes to corroborate t
 evidence from multiple operators, a consensus can be reached about the suspicious node, and
 appropriate action can be taken.
 
-## Blocking a byzantine node
+## Blocking a Byzantine Node
 
 Once a consensus is reached about the suspicious node on Discord among the node operators, the
 suspicious node can be blocked using the admin command.
@@ -162,7 +162,7 @@ curl localhost: 9002/admin/run_command \
 After blocking the node, all traffic coming from the node will be rejected and you should only see
 logs about reject messages and connections for that node ID.
 
-## Unblocking a node
+## Unblocking a Node
 
 If you need to unblock a node, you can use the same command to remove the node ID from the blocklist.
 Simply run it again with an empty list to remove all blocked nodes, or an existing list with the

@@ -9,7 +9,7 @@ Other than the Flow mainnet network, Flow testnet can be used to test applicatio
 
 During a round of network upgrade, Flow testnet is updated first. Hence, testnet can be used to test against the latest node software, Cadence and core contract changes which will eventually be available to mainnet.
 
-### How to access these networks?
+### How To Access These Networks?
 
 - [Flow Testnet](./accessing-testnet.md)
 - [Flow Mainnet](./accessing-mainnet.md)

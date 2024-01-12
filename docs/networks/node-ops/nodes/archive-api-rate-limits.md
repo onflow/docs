@@ -1,5 +1,5 @@
 ---
-title: Archive Access API rate limits on Dapper Labs Archive nodes
+title: Archive Access API Rate Limits on Dapper Labs Archive Nodes
 sidebar_label: Archive API Rate Limits
 sidebar_position: 4
 ---

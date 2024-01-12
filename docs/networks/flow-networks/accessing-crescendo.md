@@ -30,7 +30,7 @@ func main() {
 }
 ```
 
-### Generating Crescendo key pair
+### Generating Crescendo Key Pair
 
 You can generate a new key pair with the [Flow CLI](https://github.com/onflow/flow-cli) as follows:
 
@@ -48,10 +48,10 @@ Public Key       cc1c3d72...
 
 **Note: By default, this command generates an ECDSA key pair on the P-256 curve. Keep in mind, the CLI is intended for development purposes only and is not recommended for production use. Handling keys using a Key Management Service is the best practice.**
 
-## Account creation and token funding requests
+## Account Creation and Token Funding Requests
 
 Accounts and tokens for testing can be obtained through the [crescendo faucet](https://crescendo-faucet.onflow.org/). If you generated the keypair through the CLI, you can click on the URL provided to create an account and request crescendo FLOW tokens.
 
-## Important smart contract addresses
+## Important Smart Contract Addresses
 
 You can review [all available core contracts](../../build/core-contracts/index.md) deployed to the Crescendo to identify which ones you want to import.
