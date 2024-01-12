@@ -169,11 +169,12 @@ Resulting json when metadata is extracted from Cadence Doc Pragma
         ]
     }
 }
-
+```
 
 
 ```shell
 # Generate FLIX json file using cadence transaction or script passing in a pre filled FLIX json file. The json file will get filled out by the `flow flix generate` command
+
 flow flix generate cadence/scripts/read-helloworld.cdc --pre-fill cadence/templates/read-helloworld.prefill.json --save cadence/templates/read-helloworld.template.json
 ```
 
