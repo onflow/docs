@@ -267,6 +267,11 @@ const config = {
             label: 'Cadence',
           },
           {
+            href: 'build/evm',
+            position: 'left',
+            label: 'Flow EVM',
+          },
+          {
             to: 'tools/flow-cli',
             position: 'left',
             label: 'Tools',
