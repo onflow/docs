@@ -14,7 +14,7 @@ In order to access Flow Port, you must have a valid Flow address. If you do not 
 
  2. If you do not have an existing Blocto Account, you have 2 different ways to create one: a) Through Flow Port and b) Through Blocto's mobile application. Below are instructions of how to do this in Flow Port.
 
-#### Creating Account through Flow Port: Navigate to Flow Port
+#### Creating Account Through Flow Port: Navigate To Flow Port
 
  1. Using Google Chrome, Navigate to [Flow Port](https://port.onflow.org/).
 
@@ -90,7 +90,7 @@ Below are the various options you can choose. Please be aware, that at this time
 
 Please see a list [here](https://github.com/onflow/flow/blob/master/nodeoperators/NodeOperatorList.md) for all node operators that you can delegate to. This list will be updated as new node operators are onboarded onto the network.'
 
-### Staking your own Node
+### Staking Your Own Node
   1. Once you have navigated to the staking/delegating page in Flow Port, click on the 'Stake a Node' option.
 
   2. Next, select the type of node you will be running.
@@ -108,12 +108,12 @@ Please see a list [here](https://github.com/onflow/flow/blob/master/nodeoperator
 
   4. At this point, you can also cancel the pending delegation. On the pending delegation, you will see an `X` that you can click to initiate the cancelation transaction.
 
-## I have successfully executed a Stake Transaction, now what?
+## I Have Successfully Executed a Stake Transaction, Now What?
   - Now that you have executed a stake transaction in either Flow Port or your custody provider’s portal, that transaction will sit in a pending status until it is processed, which will be at the next [Epoch](../../networks/staking/index.md#epochs) Date (which is currently weekly).
   - During the next [Epoch](../../networks/staking/index.md#epochs), the transaction will be processed. If successful, the provided FLOW will be staked and the associated Node would be either **a)** included in the network protocol if it is a new node or **b)** continue to operate as is in the network protocol.
   - You are now a part of Flow, and will begin to earn rewards for being a valued member of the network!
 
-## What else can I do?
+## What Else Can I Do?
   - Add additional stake to your existing stake. Any added FLOW will again sit in a pending status and be processed at the next epoch.
   - Withdraw/re-stake your earned rewards. If you decide to withdraw your rewards, this action will happen instantly. If you decide to re-stake your rewards, the request will again sit in a pending status and will be processed at the next [Epoch](../../networks/staking/index.md#epochs).
   - Withdraw Rewards and send your earnings to other accounts. If you decide that you want to withdraw your rewards and send those earnings to other accounts via the 'Send FLOW' function, you should first withdraw your rewards. Once in your account, you can send these funds to any other account via the 'Send FLOW' option.

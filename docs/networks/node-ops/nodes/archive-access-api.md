@@ -10,7 +10,7 @@ A language-agnostic specification for this API is defined using [Protocol Buffer
 
 - [Flow Archive Access API protobuf source files](https://github.com/onflow/flow/tree/master/protobuf)
 
-## Flow archive node access endpoints
+## Flow Archive Node Access Endpoints
 
 The Archive Nodes hosted by DapperLabs are accessible at:
 
@@ -25,7 +25,7 @@ The Archive Nodes hosted by DapperLabs are accessible at:
 
 `archive.canary.nodes.onflow.org:9000`
 
-#### Rate limits for Dapper Labs archive nodes
+#### Rate Limits for Dapper Labs Archive Nodes
 
 Archive nodes operated by Dapper Labs are [rate limited](./archive-api-rate-limits.md).
 
