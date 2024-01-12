@@ -96,6 +96,82 @@ pub fun main(): String {
 }
 ```
 
+
+### Cadence Doc Pragma
+It's recommended to use pragma to set the metadata for the script or transaction. More information on [Cadence Doc Pragma FLIP](https://github.com/onflow/flips/blob/main/application/20230406-interaction-template-cadence-doc.md) 
+
+```cadence
+import "HelloWorld"
+
+#interaction (
+    version: "1.1.0",
+    title: "Update Greeting",
+    description: "Update the greeting on the HelloWorld contract",
+    language: "en-US",
+)
+transaction(greeting: String) {
+
+  prepare(acct: AuthAccount) {
+    log(acct.address)
+  }
+
+  execute {
+    HelloWorld.updateGreeting(newGreeting: greeting)
+  }
+}
+
+```
+
+:::info
+Cadence v0.42.7 supports more Cadence docs provides more funcationality. Parameters descriptions will populate human readable title and description. Look forward to `parameters` property which is an array of `Parameter`.
+:::
+
+
+
+Resulting json when metadata is extracted from Cadence Doc Pragma
+```json
+{
+    "f_type": "InteractionTemplate",
+    "f_version": "1.1.0",
+    "id": "",
+    "data": {
+        "type": "transaction",
+        "interface": "",
+        "messages": [
+            {
+                "key": "title",
+                "i18n": [
+                    {
+                        "tag": "en-US",
+                        "translation": "Update Greeting"
+                    }
+                ]
+            },
+            {
+                "key": "description",
+                "i18n": [
+                    {
+                        "tag": "en-US",
+                        "translation": "Update the greeting on the HelloWorld contract"
+                    }
+                ]
+            }
+        ],
+        "cadence": {},
+        "dependencies": [],
+         "parameters": [
+            {
+                "label": "greeting",
+                "index": 0,
+                "type": "String",
+                "messages": []
+            }
+        ]
+    }
+}
+
+
+
 ```shell
 # Generate FLIX json file using cadence transaction or script passing in a pre filled FLIX json file. The json file will get filled out by the `flow flix generate` command
 flow flix generate cadence/scripts/read-helloworld.cdc --pre-fill cadence/templates/read-helloworld.prefill.json --save cadence/templates/read-helloworld.template.json
