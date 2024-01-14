@@ -1,4 +1,4 @@
----
+/---
 title: Flow Interaction Templates (FLIX)
 sidebar_label: Flow Interaction Templates (FLIX)
 description: Flow Interaction Templates (FLIX) via the CLI
@@ -100,6 +100,7 @@ pub fun main(): String {
 ### Cadence Doc Pragma
 It's recommended to use pragma to set the metadata for the script or transaction. More information on [Cadence Doc Pragma FLIP](https://github.com/onflow/flips/blob/main/application/20230406-interaction-template-cadence-doc.md) 
 
+A pragma is short for "pragmatic information", it's special instructions to convey informaiton to a processor in this case the utility that generates FLIX.
 ```cadence
 import "HelloWorld"
 
@@ -109,6 +110,7 @@ import "HelloWorld"
     description: "Update the greeting on the HelloWorld contract",
     language: "en-US",
 )
+
 transaction(greeting: String) {
 
   prepare(acct: AuthAccount) {
@@ -123,12 +125,11 @@ transaction(greeting: String) {
 ```
 
 :::info
-Cadence v0.42.7 supports more Cadence docs provides more funcationality. Parameters descriptions will populate human readable title and description. Look forward to `parameters` property which is an array of `Parameter`.
+Cadence v0.42.7 supports additional Cadence pragma funcationality that FlIX utility can use to generate FLIX. It will support parameters "title" and "description".
 :::
 
 
-
-Resulting json when metadata is extracted from Cadence Doc Pragma
+The resulting json metadata is extracted from Cadence Doc Pragma
 ```json
 {
     "f_type": "InteractionTemplate",
@@ -171,10 +172,9 @@ Resulting json when metadata is extracted from Cadence Doc Pragma
 }
 ```
 
+Example of using a prefilled FLIX json file. No need to use Cadence pragma when using a prefilled FLIX json file. This method separates FLIX specific information from the transaction or script Cadence. Use the `flow flix generate` command
 
 ```shell
-# Generate FLIX json file using cadence transaction or script passing in a pre filled FLIX json file. The json file will get filled out by the `flow flix generate` command
-
 flow flix generate cadence/scripts/read-helloworld.cdc --pre-fill cadence/templates/read-helloworld.prefill.json --save cadence/templates/read-helloworld.template.json
 ```
 
@@ -188,6 +188,41 @@ pub fun main(): String {
 ```
 
 Example of json prefill file with message metadata
+```json
+{
+    "f_type": "InteractionTemplate",
+    "f_version": "1.1.0",
+    "id": "",
+    "data": {
+        "type": "script",
+        "interface": "",
+        "messages": [
+            {
+                "key": "title",
+                "i18n": [
+                    {
+                        "tag": "en-US",
+                        "translation": "Get Gretting"
+                    }
+                ]
+            },
+            {
+                "key": "description",
+                "i18n": [
+                    {
+                        "tag": "en-US",
+                        "translation": "Call HelloWorld contract to get greeting"
+                    }
+                ]
+            }
+        ]
+    }
+}
+
+```
+
+The resulting FLIX json file after generation 
+
 ```json
 {
     "f_type": "InteractionTemplate",
