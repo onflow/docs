@@ -257,7 +257,9 @@ If your node was selected as part of Step 3, you can now start your node.
 
 First you'll need to provision a machine or virtual machine to run your node software. Please see follow the [node-provisioning](./node-provisioning.md) guide for it.
 
-The access node can be run as a docker container with the following command by replacing `nodeid` with your node ID and adjusting the other parameters as per your setup.
+The access node can be run as a docker container with the following command by replacing `nodeid` with your node ID and adjusting the other parameters as per your setup. 
+
+Be sure to use the version tag corresponding to the current network version (see [here](https://github.com/onflow/flow-go/releases) for version releases).
 
 ```shell
 docker run --rm \
@@ -265,7 +267,7 @@ docker run --rm \
   -v $PWD/data:/data:rw \
   --name flow-go \
   --network host \
-  gcr.io/flow-container-registry/access:v0.29.8 \
+  gcr.io/flow-container-registry/access:$VERSION \ # Use the version for the current spork, from https://github.com/onflow/flow-go/releases
   --nodeid=[Insert you NODE ID here] \
   --bootstrapdir=/bootstrap \
   --datadir=/data/protocol \
@@ -288,7 +290,7 @@ docker run --rm \
   -v $PWD/data:/data:rw \
   --name flow-go \
   --network host \
-  gcr.io/flow-container-registry/access:v0.29.8 \
+  gcr.io/flow-container-registry/access:$VERSION \ # Use the version for the current spork, from https://github.com/onflow/flow-go/releases
   --nodeid=e737ec6efbd26ef43bf676911cdc5a11ba15fc6562d05413e6589fccdd6c06d5 \
   --bootstrapdir=/bootstrap \
   --datadir=/data/protocol \
