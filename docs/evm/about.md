@@ -5,7 +5,7 @@ sidebar_label: About EVM on Flow
 
 # About EVM on Flow
 
-Flow is a secure Layer 1 blockchain committed to driving Web3 adoption into the mainstream. The team behind the blockchain not only coined the term NFT but made strides in opening up web3 to the world through Disney Pinnacle, NBA Topshot and Doodles. A significant milestone in this journey is the introduction of Ethereum Virtual Machine (EVM) equivalency i 2024. 
+Flow is a secure Layer 1 blockchain committed to driving Web3 adoption into the mainstream. The team behind the blockchain not only coined the term NFT but made strides in opening up web3 to the world through Disney Pinnacle, NBA Topshot and Doodles. A significant milestone in this journey is the introduction of Ethereum Virtual Machine (EVM) equivalency in 2024. 
 
 ### **Seamless Integration for Ethereum Developers**
 
@@ -15,7 +15,7 @@ With EVM equivalency, Solidity developers from the Ethereum ecosystem can effort
 
 - **Access New Markets**: Easily tap into Flow's user base and unique IPs without any implementation risk.
 - **Simplified Multi-Chain Experience**: Ideal for applications without a multi-chain approach or those wanting to ensure cross-chain compatibility.
-- **Leverage Flow’s Protocol**: Expand EVM capabilities and transcend EVM limitations using Cadence, which offers a powerful new account model, programmable resources and hybrid ownership.
+- **Leverage Flow’s Protocol**: Expand EVM capabilities and transcend EVM limitations using Cadence, which offers a powerful new account model, programmable resources, and hybrid ownership.
 - **No Miner Extractable Value (MEV)**: Leading to a more fair and secure environment for all participants and minimizing the risk of front running transactions.
 - **Enhanced Functionality**:
     - Compose assets and functionality using a shared world state and [Cadence contracts](https://cadence-lang.org/).
