@@ -262,9 +262,10 @@ const config = {
             activeBasePath: '/build',
           },
           {
-            to: 'build/evm',
+            to: 'evm/about',
             position: 'left',
             label: 'EVM',
+            activeBasePath: '/evm',
           },
           {
             to: 'tools/flow-cli',
