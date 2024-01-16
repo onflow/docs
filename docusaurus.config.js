@@ -264,7 +264,7 @@ const config = {
           {
             href: 'build/evm',
             position: 'left',
-            label: 'Flow EVM',
+            label: 'EVM',
           },
           {
             to: 'tools/flow-cli',
