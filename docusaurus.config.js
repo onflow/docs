@@ -244,9 +244,9 @@ const config = {
           You may need to update your existing contracts to support this change.<br />
           Please visit our migration guide here:
           <a href="https://developers.flow.com/build/cadence-migration-guide">https://developers.flow.com/build/cadence-migration-guide</a>`,
-        backgroundColor: '#fafbfc',
-        textColor: '#091E42',
-        isCloseable: false,
+        backgroundColor: '#F27360',
+        textColor: '#585F71',
+        isCloseable: true,
       },
       colorMode: {
         defaultMode: 'dark',
