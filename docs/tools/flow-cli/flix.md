@@ -1,4 +1,4 @@
-/---
+---
 title: Flow Interaction Templates (FLIX)
 sidebar_label: Flow Interaction Templates (FLIX)
 description: Flow Interaction Templates (FLIX) via the CLI
@@ -25,7 +25,7 @@ Available Commands:
 
 ### Execute
 
-The Flow CLI provides a `flix` command to `execute` FLIX. The Cadence being execute in the FLIX can be a transaciton or script.
+The Flow CLI provides a `flix` command to `execute` FLIX. The Cadence being execute in the FLIX can be a transaction or script.
 
 ```shell
 flow flix execute <query> [<argument> <argument>...] [flags]
@@ -60,7 +60,7 @@ flow flix execute ./multiply.template.json 2 3 --network testnet
 The Flow CLI provides a `flix` command to `package` up generated plain and simple JavaScript. This JavaScript uses FCL (Flow Client Library) to call the cadence the Flow Interaction Templates (FLIX) is based on. 
 
 :::info
-Currently, `flix package` command only supports generating FCL (Flow Client Library) specific JavaScript and TypeScirpt, there are plans to support other languages like golang.
+Currently, `flix package` command only supports generating FCL (Flow Client Library) specific JavaScript and TypeScript, there are plans to support other languages like golang.
 :::
 
 
@@ -75,7 +75,7 @@ Generate FLIX json file. This command will take in a Cadence file and produce a 
 
 :::warning
 
-When generating a FLIX template, make sure all contract dependencies have been deployed to the supported networks. Add any aliases to your flow.json that will be needed to populate dependencies. Verify all depenencies have been populated after generating.
+When generating a FLIX template, make sure all contract dependencies have been deployed to the supported networks. Add any aliases to your flow.json that will be needed to populate dependencies. Verify all dependencies have been populated after generating.
 
 :::
 
@@ -97,10 +97,10 @@ pub fun main(): String {
 ```
 
 
-### Cadence Doc Pragma
+### Cadence Doc Pragma:
 It's recommended to use pragma to set the metadata for the script or transaction. More information on [Cadence Doc Pragma FLIP](https://github.com/onflow/flips/blob/main/application/20230406-interaction-template-cadence-doc.md) 
 
-A pragma is short for "pragmatic information", it's special instructions to convey informaiton to a processor in this case the utility that generates FLIX.
+A pragma is short for "pragmatic information", it's special instructions to convey information to a processor in this case the utility that generates FLIX.
 ```cadence
 import "HelloWorld"
 
@@ -125,7 +125,7 @@ transaction(greeting: String) {
 ```
 
 :::info
-Cadence v0.42.7 supports additional Cadence pragma funcationality that FlIX utility can use to generate FLIX. It will support parameters "title" and "description".
+Cadence v0.42.7 supports additional Cadence pragma functionality that FlIX utility can use to generate FLIX. It will support parameters "title" and "description".
 :::
 
 
@@ -172,7 +172,7 @@ The resulting json metadata is extracted from Cadence Doc Pragma
 }
 ```
 
-Example of using a prefilled FLIX json file. No need to use Cadence pragma when using a prefilled FLIX json file. This method separates FLIX specific information from the transaction or script Cadence. Use the `flow flix generate` command
+Example of using a prefilled FLIX json file. No need to use Cadence pragma when using a prefilled FLIX json file. This method separates FLIX specific information from the transaction or script Cadence. Use the `flow flix generate` command:
 
 ```shell
 flow flix generate cadence/scripts/read-helloworld.cdc --pre-fill cadence/templates/read-helloworld.prefill.json --save cadence/templates/read-helloworld.template.json
@@ -202,7 +202,7 @@ Example of json prefill file with message metadata
                 "i18n": [
                     {
                         "tag": "en-US",
-                        "translation": "Get Gretting"
+                        "translation": "Get Greeting"
                     }
                 ]
             },
@@ -221,7 +221,7 @@ Example of json prefill file with message metadata
 
 ```
 
-The resulting FLIX json file after generation 
+The resulting FLIX json file after generation:
 
 ```json
 {
@@ -237,7 +237,7 @@ The resulting FLIX json file after generation
                 "i18n": [
                     {
                         "tag": "en-US",
-                        "translation": "Get Gretting"
+                        "translation": "Get Greeting"
                     }
                 ]
             },
@@ -306,7 +306,7 @@ flow flix package transfer-flow --save ./package/transfer-flow.js
 ```
 
 ```shell
-# Geneate package code for a FLIX script using id, since there is no saving file, the result will display in terminal
+# Generate package code for a FLIX script using id, since there is no saving file, the result will display in terminal
 flow flix package bd10ab0bf472e6b58ecc0398e9b3d1bd58a4205f14a7099c52c0640d9589295f 
 ```
 
