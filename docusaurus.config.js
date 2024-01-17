@@ -262,9 +262,10 @@ const config = {
             activeBasePath: '/build',
           },
           {
-            href: 'https://cadence-lang.org/docs/',
+            to: 'evm/about',
             position: 'left',
-            label: 'Cadence',
+            label: 'EVM',
+            activeBasePath: '/evm',
           },
           {
             to: 'tools/flow-cli',
