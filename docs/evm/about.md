@@ -1,6 +1,7 @@
 ---
 title: About EVM on Flow
 sidebar_label: About EVM on Flow
+sidebar_position: 1
 ---
 
 # About EVM on Flow
