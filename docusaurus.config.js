@@ -237,6 +237,17 @@ const config = {
   themeConfig:
     /** @type {import('@docusaurus/preset-classic').ThemeConfig} */
     ({
+      announcementBar: {
+        id: 'support_us',
+        content: `⚠ Upgrade to Cadence 1.0<br />
+          The Crescendo network upgrade, including Cadence 1.0, is coming soon.
+          You most likely need to update all your contracts/transactions/scripts to support this change.<br />
+          Please visit our migration guide here:
+          <a href="https://developers.flow.com/build/cadence-migration-guide">https://developers.flow.com/build/cadence-migration-guide</a>`,
+        backgroundColor: '#F27360',
+        textColor: '#FFFFFF',
+        isCloseable: true,
+      },
       colorMode: {
         defaultMode: 'dark',
       },
