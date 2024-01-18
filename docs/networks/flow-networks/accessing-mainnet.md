@@ -4,7 +4,7 @@ sidebar_position: 2
 description: Guide to mainnet access
 ---
 
-## Accessing Flow mainnet
+## Accessing Flow Mainnet
 
 The Flow Mainnet is available for access at this URL:
 
@@ -24,7 +24,7 @@ func main() {
 }
 ```
 
-## Account creation
+## Account Creation
 
 You can follow the [Flow Port account creation steps](../../networks/flow-port/index.md#blocto) to create a new mainnet account.
 
@@ -40,7 +40,7 @@ If you prefer watching a video, check out this tutorial:
   allowfullscreen
 ></iframe>
 
-## Generating a non-custodial account
+## Generating a Non-Custodial Account
 
 A non-custodial account will make sure you are the only one holding the keys to your account.
 

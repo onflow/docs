@@ -9,7 +9,7 @@ This guide is for running a permissonless Access node on Flow. If you are planni
 Permissionless Access nodes allow any operator to run a Flow Access node.
 Unlike the other staked nodes, a permissionless access node does not have to be approved by the service account before it can join the network, hence the term "permissionless". The goal is to make all node types permissionless and this is the first step towards achieving that goal.
 
-## Who should run a Permissionless Access node?
+## Who Should Run a Permissionless Access Node?
 dApp developers can choose to run their own private permissionless access node and move away from using the community access nodes. This will also allow them to not be subjected to the API rate limits of the public access nodes.
 
 Node operators can also run their own permissionless access node and provide access to that node as a service.
@@ -45,7 +45,7 @@ To summarize,
 | 02/15/2023 | 08:00 UTC | 63         | Staking auction ends   | Three of the nodes registered during this epoch are randomly selected to be a part of the network in the next epoch. No more nodes can register until the next epoch starts.   |
 | 02/15/2023 | 20:00 UTC | 64         | Epoch n+1 starts       | The newly selected nodes can now participate in the network. Three new slots are opened. |
 
-## How to run a Permissionless Access node?
+## How To Run a Permissionless Access Node?
 
 :::note
 
@@ -63,7 +63,7 @@ At a high level, to run a permissionless Access node, you will have to do the fo
 Following is a detail explanation of these four steps.
 If you want to run multiple access nodes, you will have to run through these steps for each node.
 
-## Step  1 - Generate node information
+## Step  1 - Generate Node Information
 
 ### Download the Bootstrapping Kit
 
@@ -148,7 +148,7 @@ All your private keys should be in the `bootstrap` folder created earlier. Pleas
 
 :::
 
-## Step  2 - Stake the node
+## Step  2 - Stake the Node
 
 You need to now register the node on chain by staking the node via [Flow Port](https://port.onflow.org/).
 
@@ -189,7 +189,7 @@ On the next screen, ensure that you stake 100 FLOW token.
 
 Submit the Transaction.
 
-## Step 3 - Verify that your node ID was selected
+## Step 3 - Verify That Your Node ID Was Selected
 
 On Wednesday at around 12:00 UTC, the staking auction for the current epoch will end and five nodes from candidate list of nodes will be chosen at random by the staking contract to be part of the next epoch.
 
@@ -204,7 +204,7 @@ There are several ways to verify whether your node was chosen as explained below
 When you stake the node, the tokens will show up under the `tokensCommitted` bucket. After the staking auction ends, if the node is selected, the tokens remain in the `tokensCommitted` bucket and are moved to the `tokensStaked` bucket at the end of the epoch.
 If the node is not selected, the tokens are moved to the `tokensUnstaked` bucket.
 
-### Check using Flow Port
+### Check Using Flow Port
 You can check these balances on Flow Port before and after the epoch transition that will occur on Wednesday (see [timing](#Timing)).
 
 When you stake the node, you should see the following on Flow Port under `Stake & Delegate`
@@ -219,7 +219,7 @@ Instead, if you see that your token balance is under the Unstaked Amount, then y
 
 ![Unstaked_node](Unstaked_FlowPort.png)
 
-### Check using FlowCli
+### Check Using Flow CLI
 
 You can also check these balance using [Flow Cli](https://github.com/onflow/flow-cli). Once you have downloaded and installed Flow Cli, you can query the account balance using the command,
 ```shell
@@ -247,11 +247,11 @@ Account staking info:
 	Node Total Stake (including delegators): 	 0.00000000
 ```
 
-### Epoch setup event
+### Epoch Setup Event
 
 Alternatively, if you can monitor events, look for [the epoch setup event](../../../staking/05-epoch-scripts-events.md#epochsetup) that gets emitted by the epoch contract. That event is emitted at the end of epoch N's staking auction and contains a list of node IDs that are confirmed for the next epoch.
 
-## Step 4 - Start your node
+## Step 4 - Start Your Node
 
 If your node was selected as part of Step 3, you can now start your node.
 

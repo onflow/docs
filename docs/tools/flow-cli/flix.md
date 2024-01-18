@@ -60,7 +60,9 @@ flow flix execute ./multiply.template.json 2 3 --network testnet
 The Flow CLI provides a `flix` command to `package` up generated plain and simple JavaScript. This JavaScript uses FCL (Flow Client Library) to call the cadence the Flow Interaction Templates (FLIX) is based on. 
 
 :::info
-Currently, `flix package` command only supports generating FCL (Flow Client Library) specific JavaScript and TypeScript, there are plans to support other languages like golang.
+
+Currently, `flix package` command only supports generating FCL (Flow Client Library) specific JavaScript and TypeScirpt, there are plans to support other languages like golang.
+
 :::
 
 
@@ -295,7 +297,9 @@ The resulting FLIX json file after generation:
 Queries can be a FLIX `url` or `path` to a local FLIX file. This command leverages [FCL](../clients/fcl-js/) which will execute FLIX cadence code. Package files can be generated in JavaScript or TypeScript. 
 
 :::warning
+
 Currently package doesn't support `id`, `name` flix query.
+
 :::
 
 ### Package Usage
@@ -393,8 +397,10 @@ export async function transferTokens({amount, to}: TransferTokensParams): Promis
 }
 
 ```
-:::Warning
+:::warning
+
 Notice that fcl v1.9.0 is needed to use FLIX v1.1 templates
+
 :::
 
 ## Resources
@@ -422,7 +428,7 @@ You can pass a `nil` value to optional arguments by executing the flow FLIX exec
 
 Arguments passed to the Cadence script in the Cadence JSON format.
 Cadence JSON format contains `type` and `value` keys and is 
-[documented here](../../build/smart-contracts/cadence-reference/json-cadence-spec.md).
+[documented here](https://cadencelang.dev/docs/1.0/json-cadence-spec).
 
 ## Pre Fill
 

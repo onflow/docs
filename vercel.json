@@ -1025,6 +1025,11 @@
       "source": "/references/run-and-secure/node-operation/:path*",
       "destination": "/architecture/node-ops/nodes/node-operation/:path*",
       "permanent": true
+    },
+    {
+      "source": "/build/smart-contracts/cadence-reference/json-cadence-spec",
+      "destination": "https://cadencelang.dev/docs/1.0/json-cadence-spec",
+      "permanent": true
     }
   ]
 }

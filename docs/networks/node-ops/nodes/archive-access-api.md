@@ -10,7 +10,7 @@ A language-agnostic specification for this API is defined using [Protocol Buffer
 
 - [Flow Archive Access API protobuf source files](https://github.com/onflow/flow/tree/master/protobuf)
 
-## Flow archive node access endpoints
+## Flow Archive Node Access Endpoints
 
 The Archive Nodes hosted by DapperLabs are accessible at:
 
@@ -25,7 +25,7 @@ The Archive Nodes hosted by DapperLabs are accessible at:
 
 `archive.canary.nodes.onflow.org:9000`
 
-#### Rate limits for Dapper Labs archive nodes
+#### Rate Limits for Dapper Labs Archive Nodes
 
 Archive nodes operated by Dapper Labs are [rate limited](./archive-api-rate-limits.md).
 
@@ -71,7 +71,7 @@ message AccountResponse {
 
 `ExecuteScriptAtBlockID` executes a ready-only Cadence script against the execution state at the block with the given ID.
 
-This method can be used to read account state from the blockchain. The script is executed on an execution node and the return value is encoded using the [JSON-Cadence data interchange format](../../../build/smart-contracts/cadence-reference/json-cadence-spec.md).
+This method can be used to read account state from the blockchain. The script is executed on an execution node and the return value is encoded using the [JSON-Cadence data interchange format](https://cadencelang.dev/docs/1.0/json-cadence-spec).
 
 ```proto
 rpc ExecuteScriptAtBlockID (ExecuteScriptAtBlockIDRequest) returns (ExecuteScriptResponse)
@@ -104,7 +104,7 @@ message ExecuteScriptResponse {
 
 `ExecuteScriptAtBlockHeight` executes a ready-only Cadence script against the execution state at the given block height.
 
-This method can be used to read account state from the blockchain. The script is executed on an execution node and the return value is encoded using the [JSON-Cadence data interchange format](../../../build/smart-contracts/cadence-reference/json-cadence-spec.md).
+This method can be used to read account state from the blockchain. The script is executed on an execution node and the return value is encoded using the [JSON-Cadence data interchange format](https://cadencelang.dev/docs/1.0/json-cadence-spec).
 
 ```proto
 rpc ExecuteScriptAtBlockHeight (ExecuteScriptAtBlockHeightRequest) returns (ExecuteScriptResponse)
