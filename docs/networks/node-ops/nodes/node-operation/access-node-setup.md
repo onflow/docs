@@ -259,7 +259,7 @@ First you'll need to provision a machine or virtual machine to run your node sof
 
 The access node can be run as a docker container with the following command by replacing `nodeid` with your node ID and adjusting the other parameters as per your setup. 
 
-Be sure to use the version tag corresponding to the current network version (see [here](https://github.com/onflow/flow-go/releases) for version releases).
+Be sure to set `$VERSION` below to the version tag (eg. `v1.2.3`) corresponding to the current network version (see [here](https://github.com/onflow/flow-go/releases) for version releases). Set `$NODEID` to your node's ID (see [Generate Your Node Identity](#generate-your-node-identity) section above).
 
 ```shell
 docker run --rm \
@@ -267,8 +267,8 @@ docker run --rm \
   -v $PWD/data:/data:rw \
   --name flow-go \
   --network host \
-  gcr.io/flow-container-registry/access:$VERSION \ # Use the version for the current spork, from https://github.com/onflow/flow-go/releases
-  --nodeid=[Insert you NODE ID here] \
+  gcr.io/flow-container-registry/access:$VERSION \
+  --nodeid=$NODEID \
   --bootstrapdir=/bootstrap \
   --datadir=/data/protocol \
   --secretsdir=/data/secrets  \
@@ -283,14 +283,14 @@ docker run --rm \
   --loglevel=error
 ```
 
-Example, for the Node ID `e737ec6efbd26ef43bf676911cdc5a11ba15fc6562d05413e6589fccdd6c06d5`, the docker command be the following,
+For example, if your Node ID is `e737ec6efbd26ef43bf676911cdc5a11ba15fc6562d05413e6589fccdd6c06d5` and the software version is `v1.2.3`, the Docker command would be the following:
 ```shell Example
 docker run --rm \
   -v $PWD/bootstrap:/bootstrap:ro  \
   -v $PWD/data:/data:rw \
   --name flow-go \
   --network host \
-  gcr.io/flow-container-registry/access:$VERSION \ # Use the version for the current spork, from https://github.com/onflow/flow-go/releases
+  gcr.io/flow-container-registry/access:v0.32.4 \
   --nodeid=e737ec6efbd26ef43bf676911cdc5a11ba15fc6562d05413e6589fccdd6c06d5 \
   --bootstrapdir=/bootstrap \
   --datadir=/data/protocol \
