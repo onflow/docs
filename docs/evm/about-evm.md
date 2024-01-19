@@ -17,8 +17,8 @@ state, distinct from the Cadence environment which is authenticated and verified
 
 Flow EVM and Flow environments both use $FLOW token as the gas currency for transactions, drawing from a singular token 
 supply shared across both. A single line of Cadence can transfer $FLOW tokens in the Flow environment to Flow EVM, or 
-vice versa. Other types of fungible and non-fungible tokens can also be native cross-VM token bridge to transfer 
-arbitrary tokens between environments, instantly in a single atomic transaction
+vice versa. Other fungible and non-fungible tokens can also be natively transferred between environments using the 
+native cross-VM token bridge, instantly in a single atomic transaction
 
 Flow EVM introduces a unique and powerful EVM+ builder paradigm unlike any other blockchain. EVM apps can resolve 
 UX and onboarding obstacles by using Flow's mainstream ready features. For their part, Flow apps can integrate well 
