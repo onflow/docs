@@ -44,7 +44,7 @@ TypeScript code generated from templates:
 
 :::warning
 
-manually added @ts-ignore, fixes to fcl types will correct these linting issue
+manually added "@ts-ignore" in generated file because of linting error. 'template' property is typed as "object" when it should also allow strings (url to flix template file). There is current a dev effort that will fix this linting issue.
 
 :::
 
