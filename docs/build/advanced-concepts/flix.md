@@ -42,7 +42,7 @@ TypeScript code generated from templates:
 - https://github.com/onflow/hello-world-web/blob/main/app/cadence/readHelloWorld.ts
 - https://github.com/onflow/hello-world-web/blob/main/app/cadence/updateHelloWorld.ts
 
-::: warning
+:::warning
 
 manually added @ts-ignore, fixes to fcl types will correct these linting issue
 
