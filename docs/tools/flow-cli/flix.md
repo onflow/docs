@@ -189,7 +189,7 @@ pub fun main(): String {
 }
 ```
 
-Example of json prefill file with message metadata
+Example of json prefill file with message metadata:
 ```json
 {
     "f_type": "InteractionTemplate",
