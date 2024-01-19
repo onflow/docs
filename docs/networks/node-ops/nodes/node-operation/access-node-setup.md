@@ -290,7 +290,7 @@ docker run --rm \
   -v $PWD/data:/data:rw \
   --name flow-go \
   --network host \
-  gcr.io/flow-container-registry/access:v0.32.4 \
+  gcr.io/flow-container-registry/access:v1.2.3 \
   --nodeid=e737ec6efbd26ef43bf676911cdc5a11ba15fc6562d05413e6589fccdd6c06d5 \
   --bootstrapdir=/bootstrap \
   --datadir=/data/protocol \
