@@ -48,7 +48,7 @@ manually added @ts-ignore, fixes to fcl types will correct these linting issue
 
 :::
 
-See the `hello-world-web` [README](https://github.com/onflow/hello-world-web/tree/main) for more information on how to generate and execute FLIX templates here [flow-cli flix](../../tools/flow-cli/flix) commands 
+See the `hello-world-web` [README](https://github.com/onflow/hello-world-web/tree/main) for more information on how to generate and execute FLIX templates here [flow-cli flix](../../tools/flow-cli/flix.md) commands 
 
 
 ### Clients
