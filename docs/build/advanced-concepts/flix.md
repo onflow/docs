@@ -20,7 +20,7 @@ You can query a FLIX API to get an Interaction Template. An example query looks 
 
 You can read more about how to query a FLIX API in the documentation available here: [https://github.com/onflow/flow-interaction-template-service](https://github.com/onflow/flow-interaction-template-service)
 
-::: info
+:::info
 
 The FLIX working group is currently working on a protocol to publish FLIX templates on-chain.
 
