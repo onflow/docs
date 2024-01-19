@@ -257,7 +257,7 @@ If your node was selected as part of Step 3, you can now start your node.
 
 First you'll need to provision a machine or virtual machine to run your node software. Please see follow the [node-provisioning](./node-provisioning.md) guide for it.
 
-The access node can be run as a docker container with the following command by replacing `nodeid` with your node ID and adjusting the other parameters as per your setup. 
+The access node can be run as a Docker container with the following command.
 
 Be sure to set `$VERSION` below to the version tag (eg. `v1.2.3`) corresponding to the current network version (see [here](https://github.com/onflow/flow-go/releases) for version releases). Set `$NODEID` to your node's ID (see [Generate Your Node Identity](#generate-your-node-identity) section above).
 
