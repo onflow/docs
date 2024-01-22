@@ -12,7 +12,7 @@ All data written to the blockchain happens in a transaction. For user-facing dap
 ### User Transactions
 
 User transactions are transactions that are authorized by the users of your dapp. These transactions originate from the user’s wallet, as mentioned in the 
-[User Accounts & Wallets](./user-accounts-and-wallets) section. For example, a user may sign a transaction to purchase an NFT from your dapp.
+[User Accounts & Wallets](./user-accounts-and-wallets.md) section. For example, a user may sign a transaction to purchase an NFT from your dapp.
 
 A user transaction is initialized by your dapp (e.g. by a button click) through FCL, which then passes the transaction to the user’s wallet, which in turn signs the transaction and submits it to Flow. This all happens from the dapp client, typically a browser app. By using FCL, your dapp does not need to be involved in the transaction signing -- it constructs the transaction, passes it to the wallet, and then waits for the final result.
 
@@ -34,7 +34,7 @@ Events are data objects emitted at the end of a transaction that describe the st
 
 Events can be used to notify your off-chain infrastructure of important state changes in your smart contracts. For example, if a user purchases an NFT from your storefront smart contract, an event will be emitted that describes this purchase. Your web application, which displays the NFTs for sale, can then capture that event and remove the NFT from the sale list.
 
-You can query events through the Flow Access API using the available [Flow SDKs](../tools/clients/index.md). Event data is returned in [JSON-Cadence format](../cadence/json-cadence-spec).
+You can query events through the Flow Access API using the available [Flow SDKs](../tools/clients/index.md). Event data is returned in [JSON-Cadence format](https://cadencelang.dev/docs/1.0/json-cadence-spec).
 
 #### Event Reflection Database
 
@@ -53,4 +53,4 @@ At any point, your dapp can execute a query to read the state of your contracts.
 
 Events follow a push model, whereas script queries follow a pull model. Your dapp may need to check the state of your contracts without waiting for an event to be emitted. 
 
-You can execute scripts through the Flow Access API using the available [Flow SDKs](../tools/clients/index.md). Like events, script results are returned in [JSON-Cadence format](../cadence/json-cadence-spec).
+You can execute scripts through the Flow Access API using the available [Flow SDKs](../tools/clients/index.md). Like events, script results are returned in [JSON-Cadence format](https://cadencelang.dev/docs/1.0/json-cadence-spec).

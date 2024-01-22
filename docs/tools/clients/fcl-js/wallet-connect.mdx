@@ -137,7 +137,7 @@ fcl.pluginRegistry.add(FclWcServicePlugin)
 
 Knowing all the wallets available to users on a blockchain can be challenging. FCL's Discovery mechanism relieves much of the burden of integrating with Flow compatible wallets and let's developers focus on building their dApp and providing as many options as possible to their users.
 
-There are two ways an app can use [Wallet Discovery](https://github.com/onflow/fcl-js/blob/master/docs/reference/discovery.mdx):
+There are two ways an app can use [Wallet Discovery](https://github.com/onflow/fcl-js/blob/master/docs/networks/discovery.mdx):
 
 1. The UI version which can be configured for display via iFrame, Popup, or Tab.
 
@@ -153,7 +153,7 @@ Once a valid `discovery-service` plugin is registered, FCL shares client support
 
 To connect a Flow supported wallet using WalletConnect 2.0, users of your dApp will go through the authentication process and have the option to select their preferred wallet.
 
-:exclamation: Once a WalletConnect session is established and a `currentUser` is authenticated, FCL will handle client pairings and sessions during FCL `authn`, and initiate signing requests as part of `authz` using `fcl.mutate` and [`user-sign`](https://github.com/onflow/fcl-js/blob/master/docs/reference/user-signatures.mdx) using `fcl.signUserMessage`.
+:exclamation: Once a WalletConnect session is established and a `currentUser` is authenticated, FCL will handle client pairings and sessions during FCL `authn`, and initiate signing requests as part of `authz` using `fcl.mutate` and [`user-sign`](https://github.com/onflow/fcl-js/blob/master/docs/networks/user-signatures.mdx) using `fcl.signUserMessage`.
 
 ### How to add your FCL compatible WalletConnect wallet to Discovery (UI/API)
 

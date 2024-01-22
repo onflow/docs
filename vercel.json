@@ -8,11 +8,6 @@
       "permanent": true
     },
     {
-      "source": "/cadence",
-      "destination": "/cadence/intro",
-      "permanent": true
-    },
-    {
       "source": "/build",
       "destination": "/build/flow",
       "permanent": true
@@ -23,18 +18,13 @@
       "permanent": true
     },
     {
-      "source": "/cadence/msg-sender",
-      "destination": "/cadence/solidity-to-cadence#msgsender-considered-harmful",
-      "permanent": true
-    },
-    {
       "source": "/concepts/core-contracts/nft-standard",
-      "destination": "/references/core-contracts/flow-nft",
+      "destination": "/build/core-contracts/flow-nft",
       "permanent": true
     },
     {
       "source": "/flow/core-contracts/:path*",
-      "destination": "/references/core-contracts/:path*",
+      "destination": "/build/core-contracts/:path*",
       "permanent": true
     },
     {
@@ -94,17 +84,17 @@
     },
     {
       "source": "/hybrid-custody/:path*",
-      "destination": "/concepts/account-linking/:path*",
+      "destination": "/build/advanced-concepts/account-linking/:path*",
       "permanent": true
     },
     {
       "source": "/concepts/hybrid-custody/:path*",
-      "destination": "/concepts/account-linking/:path*",
+      "destination": "/build/advanced-concepts/account-linking/:path*",
       "permanent": true
     },
     {
       "source": "/concepts/account-linking/guides/:path*",
-      "destination": "/concepts/account-linking/child-accounts",
+      "destination": "/build/advanced-concepts/account-linking/:path*",
       "permanent": true
     },
     {
@@ -114,17 +104,17 @@
     },
     {
       "source": "/learn/concepts/accessing-mainnet",
-      "destination": "/references/flow-networks/accessing-mainnet",
+      "destination": "/networks/flow-networks/accessing-mainnet",
       "permanent": true
     },
     {
       "source": "/learn/concepts/accessing-sandboxnet",
-      "destination": "/references/flow-networks/accessing-sandboxnet",
+      "destination": "/networks/flow-networks/accessing-sandboxnet",
       "permanent": true
     },
     {
       "source": "/learn/concepts/accessing-testnet",
-      "destination": "/references/flow-networks/accessing-testnet",
+      "destination": "/networks/flow-networks/accessing-testnet",
       "permanent": true
     },
     {
@@ -134,7 +124,7 @@
     },
     {
       "source": "/learn/concepts/delegation",
-      "destination": "/references/run-and-secure/staking",
+      "destination": "/networks/staking",
       "permanent": true
     },
     {
@@ -144,12 +134,12 @@
     },
     {
       "source": "/learn/concepts/networks",
-      "destination": "/references/flow-networks",
+      "destination": "/networks/flow-networks",
       "permanent": true
     },
     {
       "source": "/learn/concepts/slashing",
-      "destination": "/references/run-and-secure/nodes/slashing",
+      "destination": "/networks/node-ops/nodes/node-operation/slashing",
       "permanent": true
     },
     {
@@ -159,7 +149,7 @@
     },
     {
       "source": "/learn/concepts/token-staking",
-      "destination": "/references/run-and-secure/staking",
+      "destination": "/networks/staking",
       "permanent": true
     },
     {
@@ -179,67 +169,67 @@
     },
     {
       "source": "/mobile/:path*",
-      "destination": "/build/mobile/:path*",
+      "destination": "/build/guides/mobile/:path*",
       "permanent": true
     },
     {
       "source": "/concepts/mobile/:path*",
-      "destination": "/build/mobile/:path*",
+      "destination": "/build/guides/mobile/:path*",
       "permanent": true
     },
     {
       "source": "/nodes",
-      "destination": "/references/run-and-secure/nodes",
+      "destination": "/networks/nodes",
       "permanent": true
     },
     {
       "source": "/access-api",
-      "destination": "/references/run-and-secure/nodes/access-api",
+      "destination": "/networks/node-ops/nodes/access-api",
       "permanent": true
     },
     {
       "source": "/nodes/access-api",
-      "destination": "/references/run-and-secure/nodes/access-api",
+      "destination": "/networks/node-ops/nodes/access-api",
       "permanent": true
     },
     {
       "source": "/nodes/access-api-rate-limits",
-      "destination": "/references/run-and-secure/nodes/access-api-rate-limits",
+      "destination": "/networks/node-ops/nodes/access-api-rate-limits",
       "permanent": true
     },
     {
       "source": "/nodes/archive-access-api",
-      "destination": "/references/run-and-secure/nodes/archive-access-api",
+      "destination": "/networks/node-ops/nodes/archive-access-api",
       "permanent": true
     },
     {
       "source": "/nodes/archive-api-rate-limits",
-      "destination": "/references/run-and-secure/nodes/archive-api-rate-limits",
+      "destination": "/networks/node-ops/nodes/archive-api-rate-limits",
       "permanent": true
     },
     {
       "source": "/nodes/flow-port",
-      "destination": "/references/run-and-secure/nodes/flow-port",
+      "destination": "/networks/node-ops/nodes/flow-port",
       "permanent": true
     },
     {
       "source": "/nodes/flow-port/staking-guide",
-      "destination": "/references/run-and-secure/nodes/flow-port/staking-guide",
+      "destination": "/networks/flow-port/staking-guide",
       "permanent": true
     },
     {
       "source": "/nodes/node-operation/:path*",
-      "destination": "/references/run-and-secure/node-operation/:path*",
+      "destination": "/networks/node-ops/nodes/node-operation/:path*",
       "permanent": true
     },
     {
       "source": "/nodes/staking/:path*",
-      "destination": "/references/run-and-secure/staking/:path*",
+      "destination": "/networks/staking/:path*",
       "permanent": true
     },
     {
       "source": "/concepts/nodes/staking/:path*",
-      "destination": "/references/run-and-secure/staking/:path*",
+      "destination": "/networks/staking/:path*",
       "permanent": true
     },
     {
@@ -248,7 +238,12 @@
       "permanent": true
     },
     {
-      "source": "/tools/fcl-js/reference/:path*",
+      "source": "/tools/fcl-js/sdk-guidelines",
+      "destination": "/tools/clients/fcl-js/sdk-guidelines",
+      "permanent": true
+    }, 
+    {
+      "source": "/tools/fcl-js/networks/:path*",
       "destination": "/tools/clients/fcl-js/:path*",
       "permanent": true
     },
@@ -258,7 +253,7 @@
       "permanent": true
     },
     {
-      "source": "/fcl/reference/:path(.*)",
+      "source": "/fcl/networks/:path(.*)",
       "destination": "/tools/clients/fcl-js/:path",
       "permanent": true
     },
@@ -274,82 +269,12 @@
     },
     {
       "source": "/account-linking/:path*",
-      "destination": "/concepts/account-linking/:path*",
-      "permanent": true
-    },
-    {
-      "source": "/cadence/style-guide",
-      "destination": "/cadence/styleguide/project-development-tips",
-      "permanent": true
-    },
-    {
-      "source": "/cadence/style-guide/project-development-tips",
-      "destination": "/cadence/styleguide/project-development-tips",
+      "destination": "/build/advanced-concepts/account-linking/:path*",
       "permanent": true
     },
     {
       "source": "/flow/faq",
-      "destination": "/references/run-and-secure/nodes/faq/backers",
-      "permanent": true
-    },
-    {
-      "source": "/cadence/tutorial",
-      "destination": "/cadence/tutorial/first-steps",
-      "permanent": true
-    },
-    {
-      "source": "/cadence/tutorial/01-first-steps",
-      "destination": "/cadence/tutorial/first-steps",
-      "permanent": true
-    },
-    {
-      "source": "/cadence/tutorial/02-hello-world",
-      "destination": "/cadence/tutorial/hello-world",
-      "permanent": true
-    },
-    {
-      "source": "/cadence/tutorial/03-resources",
-      "destination": "/cadence/tutorial/resources",
-      "permanent": true
-    },
-    {
-      "source": "/cadence/tutorial/04-capabilities",
-      "destination": "/cadence/tutorial/capabilities",
-      "permanent": true
-    },
-    {
-      "source": "/cadence/tutorial/05-non-fungible-tokens-1",
-      "destination": "/cadence/tutorial/non-fungible-tokens-1",
-      "permanent": true
-    },
-    {
-      "source": "/cadence/tutorial/05-non-fungible-tokens-2",
-      "destination": "/cadence/tutorial/non-fungible-tokens-2",
-      "permanent": true
-    },
-    {
-      "source": "/cadence/tutorial/06-fungible-tokens",
-      "destination": "/cadence/tutorial/fungible-tokens",
-      "permanent": true
-    },
-    {
-      "source": "/cadence/tutorial/07-marketplace-setup",
-      "destination": "/cadence/tutorial/marketplace-setup",
-      "permanent": true
-    },
-    {
-      "source": "/cadence/tutorial/08-marketplace-compose",
-      "destination": "/cadence/tutorial/marketplace-compose",
-      "permanent": true
-    },
-    {
-      "source": "/cadence/tutorial/09-voting",
-      "destination": "/cadence/tutorial/voting",
-      "permanent": true
-    },
-    {
-      "source": "/cadence/tutorial/10-resources-compose",
-      "destination": "/cadence/tutorial/resources-compose",
+      "destination": "/networks/faq/backers",
       "permanent": true
     },
     {
@@ -364,12 +289,12 @@
     },
     {
       "source": "/flow-token/backers",
-      "destination": "/references/run-and-secure/nodes/faq/backers",
+      "destination": "/networks/faq/backers",
       "permanent": true
     },
     {
       "source": "/flow-token/staking/:path*",
-      "destination": "/references/run-and-secure/staking/:path*",
+      "destination": "/networks/node-ops/nodes/staking/:path*",
       "permanent": true
     },
     {
@@ -394,7 +319,7 @@
     },
     {
       "source": "/flow-port/:path*",
-      "destination": "/references/run-and-secure/nodes/flow-port/:path*",
+      "destination": "/networks/flow-port/:path*",
       "permanent": true
     },
     {
@@ -499,7 +424,7 @@
     },
     {
       "source": "/core-contracts/:path*",
-      "destination": "/references/core-contracts/:path*",
+      "destination": "/build/core-contracts/:path*",
       "permanent": true
     },
     {
@@ -528,23 +453,23 @@
       "permanent": true
     },
     {
-      "source": "/docs/cadence",
-      "destination": "/cadence",
-      "permanent": true
-    },
-    {
       "source": "/docs/getting-started-1",
       "destination": "/getting-started",
       "permanent": true
     },
     {
       "source": "/docs/setting-up-a-node",
-      "destination": "/references/run-and-secure/node-operation",
+      "destination": "/networks/node-ops",
+      "permanent": true
+    },
+    {
+      "source": "/networks/node-ops/nodes/node-operation",
+      "destination": "/networks/node-ops",
       "permanent": true
     },
     {
       "source": "/staking/:path*",
-      "destination": "/references/run-and-secure/staking/:path*",
+      "destination": "/networks/staking/:path*",
       "permanent": true
     },
     {
@@ -724,7 +649,7 @@
     },
     {
       "source": "/node-operation/:path*",
-      "destination": "/references/run-and-secure/node-operation/:path*",
+      "destination": "/networks/node-ops/nodes/node-operation/:path*",
       "permanent": true
     },
     {
@@ -793,12 +718,12 @@
     },
     {
       "source": "/concepts/staking/:path*",
-      "destination": "/references/run-and-secure/staking/:path*",
+      "destination": "/networks/staking/:path*",
       "permanent": true
     },
     {
       "source": "/concepts/nodes/:path*",
-      "destination": "/references/run-and-secure/nodes/:path*",
+      "destination": "/networks/node-ops/nodes/:path*",
       "permanent": true
     },
     {
@@ -807,23 +732,8 @@
       "permanent": true
     },
     {
-      "source": "/concepts/account-linking",
-      "destination": "/build/advanced-concepts/account-linking",
-      "permanent": true
-    },
-    {
-      "source": "/next/concepts/start-here",
-      "destination": "/next/build/flow",
-      "permanent": true
-    },
-    {
-      "source": "/next/cadence/intro",
-      "destination": "/next/build/cadence",
-      "permanent": true
-    },
-    {
-      "source": "/next/cadence/why",
-      "destination": "/next/build/cadence",
+      "source": "/concepts/account-linking/:path*",
+      "destination": "/build/advanced-concepts/account-linking/:path*",
       "permanent": true
     },
     {
@@ -844,101 +754,6 @@
     {
       "source": "/tools/block-explorers",
       "destination": "/overview/getting-started/block-explorers",
-      "permanent": true
-    },
-    {
-      "source": "/next/tools/wallets",
-      "destination": "/next/community-resources/wallets",
-      "permanent": true
-    },
-    {
-      "source": "/next/tools/bridges",
-      "destination": "/next/community-resources/bridges",
-      "permanent": true
-    },
-    {
-      "source": "/next/tools/network-faucets",
-      "destination": "/next/community-resources/faucets",
-      "permanent": true
-    },
-    {
-      "source": "/next/tools/block-explorers",
-      "destination": "/next/community-resources/block-explorers",
-      "permanent": true
-    },
-    {
-      "source": "/next/community-resources/projects",
-      "destination": "/next/community-resources/projects",
-      "permanent": true
-    },
-    {
-      "source": "/next/building-on-flow/core-contracts/fungible-tokens",
-      "destination": "/next/overview/dive-in/fungible-tokens",
-      "permanent": true
-    },
-    {
-      "source": "/next/concepts/flix",
-      "destination": "/next/build/advanced-concepts/flix",
-      "permanent": true
-    },
-    {
-      "source": "/next/building-on-flow/governance",
-      "destination": "/next/references/governance",
-      "permanent": true
-    },
-    {
-      "source": "/next/cadence/anti-patterns",
-      "destination": "/next/build/best-practices/anti-patterns",
-      "permanent": true
-    },
-    {
-      "source": "/next/cadence/contract-upgrades",
-      "destination": "/next/build/best-practices/contract-upgrades",
-      "permanent": true
-    },
-    {
-      "source": "/next/cadence/design-patterns",
-      "destination": "/next/build/best-practices/design-patterns",
-      "permanent": true
-    },
-    {
-      "source": "/next/cadence/project-development-tips",
-      "destination": "/next/build/best-practices/project-development-tips",
-      "permanent": true
-    },
-    {
-      "source": "/next/cadence/security-best-practices",
-      "destination": "/next/build/best-practices/security-best-practices",
-      "permanent": true
-    },
-    {
-      "source": "/next/building-on-flow/core-contracts/:path*",
-      "destination": "/next/references/core-contracts/:path*",
-      "permanent": true
-    },
-    {
-      "source": "/next/concepts/account-linking/:path*",
-      "destination": "/next/build/advanced-concepts/account-linking/:path*",
-      "permanent": true
-    },
-    {
-      "source": "/next/concepts/:path*",
-      "destination": "/next/build/key-concepts/:path*",
-      "permanent": true
-    },
-    {
-      "source": "/next/guides/runningNode",
-      "destination": "/next/references/run-and-secure/node-operation",
-      "permanent": true
-    },
-    {
-      "source": "/next/building-on-flow/run-and-secure/staking/:path*",
-      "destination": "/next/architecture/staking/:path*",
-      "permanent": true
-    },
-    {
-      "source": "/next/building-on-flow/run-and-secure/node/node-operation/:path*",
-      "destination": "/next/references/run-and-secure/node-operation/:path*",
       "permanent": true
     },
     {
@@ -963,7 +778,7 @@
     },
     {
       "source": "/building-on-flow/run-and-secure/node-operation/:path",
-      "destination": "/references/run-and-secure/node-operation/:path*",
+      "destination": "/networks/node-ops/nodes/node-operation/:path*",
       "permanent": true
     },
     {
@@ -972,28 +787,28 @@
       "permanent": true
     },
     {
-      "source": "/concepts/account-linking/child-accounts",
-      "destination": "/build/advanced-concepts/account-linking",
-      "permanent": true
-    },
-    {
       "source": "/docs/node-roles",
-      "destination": "/references/run-and-secure/node-operation/node-roles",
+      "destination": "/networks/node-ops/nodes/node-operation/node-roles",
       "permanent": true
     },
     {
       "source": "/build/mobile/monster-maker",
-      "destination": "/build/mobile/ios-quickstart",
+      "destination": "/build/guides/mobile/ios-quickstart",
+      "permanent": true
+    },
+    {
+      "source": "/build/mobile/:path*",
+      "destination": "/build/guides/mobile/:path*",
       "permanent": true
     },
     {
       "source": "/build/mobile",
-      "destination": "/build/mobile/overview",
+      "destination": "/build/guides/mobile/overview",
       "permanent": true
     },
     {
       "source": "/building-on-flow/mobile",
-      "destination": "/build/mobile/overview",
+      "destination": "/build/guides/mobile/overview",
       "permanent": true
     },
     {
@@ -1028,7 +843,7 @@
     },
     {
       "source": "/concepts/flow-networks",
-      "destination": "/references/flow-networks",
+      "destination": "/networks/flow-networks",
       "permanent": true
     },
     {
@@ -1047,18 +862,18 @@
       "permanent": true
     },
     {
-      "source": "/build/core-contracts/:path*",
-      "destination": "/references/core-contracts/:path*",
+      "source": "/references/core-contracts/:path*",
+      "destination": "/build/core-contracts/:path*",
       "permanent": true
     },
     {
       "source": "/build/flow-networks/:path*",
-      "destination": "/references/flow-networks/:path*",
+      "destination": "/networks/flow-networks/:path*",
       "permanent": true
     },
     {
       "source": "/build/run-and-secure/staking/stake-slashing",
-      "destination": "/references/run-and-secure/nodes/slashing",
+      "destination": "/networks/node-ops/nodes/slashing",
       "permanent": true
     },
     {
@@ -1067,28 +882,23 @@
       "permanent": true
     },
     {
-      "source": "/cadence/language/capability-based-access-control",
-      "destination": "/cadence/language/capabilities",
-      "permanent": true
-    },
-    {
-      "source": "/architecture/staking/:path*",
-      "destination": "/references/run-and-secure/staking/:path*",
+      "source": "/references/run-and-secure/nodes/:path*",
+      "destination": "/networks/:path*",
       "permanent": true
     },
     {
       "source": "/node-ops/node-operation/:path*",
-      "destination": "/references/run-and-secure/node-operation/:path*",
+      "destination": "/networks/node-ops/nodes/node-operation/:path*",
       "permanent": true
     },
     {
       "source": "/node-ops/running-node",
-      "destination": "/references/run-and-secure/node-operation",
+      "destination": "/networks/node-ops",
       "permanent": true
     },
     {
       "source": "/references/run-and-secure/nodes/node-operation/:path*",
-      "destination": "/references/run-and-secure/node-operation/:path*",
+      "destination": "/architecture/node-ops/nodes/node-operation/:path*",
       "permanent": true
     },
     {
@@ -1123,7 +933,7 @@
     },
     {
       "source": "/overview/dive-in/governance",
-      "destination": "/references/governance",
+      "destination": "/networks/governance",
       "permanent": true
     },
     {
@@ -1162,13 +972,68 @@
       "permanent": true
     },
     {
-      "source": "/references/run-and-secure/flow-port/:path*",
-      "destination": "/references/run-and-secure/nodes/flow-port/:path*",
+      "source": "/flow/faq/:path*",
+      "destination": "/networks/faq/:path*",
       "permanent": true
     },
     {
-      "source": "/flow/faq/:path*",
-      "destination": "/references/run-and-secure/nodes/faq/:path*",
+      "source": "/getting-started",
+      "destination": "/build/getting-started/app-architecture",
+      "permanent": true
+    },
+    {
+      "source": "/guides/:path*",
+      "destination": "/build/guides/:path*",
+      "permanent": true
+    },
+    {
+      "source": "/next/guides/:path*",
+      "destination": "/next/build/guides/:path*",
+      "permanent": true
+    },
+    {
+      "source": "/build/getting-started/testing",
+      "destination": "/build/smart-contracts/testing",
+      "permanent": true
+    },
+    {
+      "source": "/next/build/getting-started/testing",
+      "destination": "/next/build/smart-contracts/testing",
+      "permanent": true
+    },
+    {
+      "source": "/cadence/:path*",
+      "destination": "https://cadence-lang.org/docs/:path*",
+      "permanent": true
+    },
+    {
+      "source": "/next/cadence/:path*",
+      "destination": "https://cadence-lang.org/docs/next/:path*",
+      "permanent": true
+    },
+    {
+      "source": "/next/:path*",
+      "destination": "/:path*",
+      "permanent": true
+    },
+    {
+      "source": "/references/run-and-secure/nodes",
+      "destination": "/architecture/node-ops",
+      "permanent": true
+    },
+    {
+      "source": "/references/run-and-secure/node-operation/:path*",
+      "destination": "/architecture/node-ops/nodes/node-operation/:path*",
+      "permanent": true
+    },
+    {
+      "source": "/build/smart-contracts/cadence-reference/json-cadence-spec",
+      "destination": "https://cadencelang.dev/docs/1.0/json-cadence-spec",
+      "permanent": true
+    },
+    {
+      "source": "/build/cadence-migration-guide",
+      "destination": "https://cadence-lang.org/docs/cadence-migration-guide",
       "permanent": true
     }
   ]

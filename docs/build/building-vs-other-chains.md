@@ -1,21 +1,11 @@
 ---
-sidebar_position: 4
+sidebar_position: 3
 title: Differences vs. Other Blockchains
 sidebar_custom_props:
   icon: ↔️
 ---
 
-This document summarizes the differences you might encounter between building on Flow vs. other blockchains, especially Ethereum. This will be most useful to developers who are already familiar with building on a blockchain system. Check out [Introduction to Flow](./flow.md) for a more beginner-friendly overview of the Flow blockchain.
-
-Summary of key differences covered:
-
-- The Flow account model
-- Smart contracts
-    - The Cadence language
-    - Transactions and Scripts
-    - Events
-- Nodes
-- SDKs and Tools
+This document summarizes the differences you might encounter between building on Flow vs. other blockchains, especially Ethereum. This will be most useful to developers who are already familiar with building on a blockchain system. Check out [Why Flow](./flow.md) for a more beginner-friendly overview of the Flow blockchain.
 
 ## The Flow Account Model
 
@@ -39,8 +29,8 @@ Check out the [Accounts](./basics/accounts.md) concept document to learn more ab
 
 On Flow, smart contracts are written in Cadence. Cadence syntax is user-friendly and inspired by modern languages like Swift. Notable features of Cadence that make it unique and the key power of the Flow blockchain are:
 
-- **Resource-oriented**: Cadence introduces a new type called Resources. Resources enable onchain representation of digital assets natively and securely. Resources can only exist in one location at a time and are strictly controlled by the execution environment to avoid common mishandling mistakes. Each resource has a unique `uuid` associated with it on the blockchain. Examples of usage are fungible tokens, NFTs, or any custom data structure representing a real-world asset. Check out [Resources](../cadence/language/resources.mdx) to learn more.
-- **Capability-based**: Cadence offers a [Capability-based Security](https://en.wikipedia.org/wiki/Capability-based_security) model. This also enables the use of Resources as structures to build access control. Capabilities can provide fine-grained access to the underlying objects for better security. For example, when users list an NFT on a Flow marketplace, they create a new Capability to the stored NFT in their account so the buyer can withdraw the asset when they provide the tokens. Check out [Capability-based Access Control](../cadence/language/capabilities.md) to learn more about Capabilities on Cadence.
+- **Resource-oriented**: Cadence introduces a new type called Resources. Resources enable onchain representation of digital assets natively and securely. Resources can only exist in one location at a time and are strictly controlled by the execution environment to avoid common mishandling mistakes. Each resource has a unique `uuid` associated with it on the blockchain. Examples of usage are fungible tokens, NFTs, or any custom data structure representing a real-world asset. Check out [Resources](https://cadence-lang.org/docs/language/resources) to learn more.
+- **Capability-based**: Cadence offers a [Capability-based Security](https://en.wikipedia.org/wiki/Capability-based_security) model. This also enables the use of Resources as structures to build access control. Capabilities can provide fine-grained access to the underlying objects for better security. For example, when users list an NFT on a Flow marketplace, they create a new Capability to the stored NFT in their account so the buyer can withdraw the asset when they provide the tokens. Check out [Capability-based Access Control](https://cadence-lang.org/docs/language/capabilities) to learn more about Capabilities on Cadence.
 
 <Callout type="info">
 
@@ -48,20 +38,19 @@ Cadence is not compiled. All contracts are open source on Flow.
 
 </Callout>
 
-Check out the [Cadence website](https://cadencelang.dev/) to learn more about Cadence.
+Check out the [Cadence website](https://cadence-lang.org/) to learn more about Cadence.
 
-If you’re already familiar with smart contracts, here are some resources that can help you get started with Cadence:
+If you are a Solidity developer, it's recommended to read Cadence's [Guide for Solidity Developers](https://cadence-lang.org/docs/solidity-to-cadence) to dive deeper into the differences between the two languages. Here are some additional resources that can help you get started with Cadence:
 
-- [The Cadence tutorial](../cadence/tutorial/01-first-steps.md)
-- [Guide for Solidity Developers](../cadence/solidity-to-cadence.md)
+- [The Cadence tutorial](https://cadence-lang.org/docs/tutorial/first-steps)
 - ERC-20 equivalent on Flow is the Flow Fungible Token Standard
     - [Repository](https://github.com/onflow/flow-ft)
-    - [Tutorial](../cadence/tutorial/06-fungible-tokens.md)
+    - [Tutorial](https://cadence-lang.org/docs/tutorial/fungible-tokens)
 - ERC-721 equivalent on Flow is the Flow Non-Fungible Token Standard
     - [Repository](https://github.com/onflow/flow-nft)
-    - [Tutorial](../cadence/tutorial/05-non-fungible-tokens-1.md)
+    - [Tutorial](https://cadence-lang.org/docs/tutorial/non-fungible-tokens-1)
 - Asset marketplaces with Cadence
-    - [Tutorial](../cadence/tutorial/07-marketplace-setup.md)
+    - [Tutorial](https://cadence-lang.org/docs/tutorial/marketplace-setup)
     - [NFT Storefront](https://github.com/onflow/nft-storefront/) is an example marketplace standard
 
 ### Transactions and Scripts
@@ -147,7 +136,7 @@ pub fun main(address: Address, collectionPublicPath: PublicPath): [UInt64] {
 }
 ```
 
-Check out [Transactions](./basics/transactions.md) and [Scripts](./basics/scripts.md) to learn more about the concepts. You can also read the Cadence language reference on [Transactions](../cadence/language/transactions.md) to dive deeper.
+Check out [Transactions](./basics/transactions.md) and [Scripts](./basics/scripts.md) to learn more about the concepts. You can also read the Cadence language reference on [Transactions](https://cadence-lang.org/docs/language/transactions) to dive deeper.
 
 ## Flow Nodes
 
@@ -159,16 +148,16 @@ Access Nodes are the node type that are most useful for developers, as they prov
 - gRPC
     - Mainnet: `access.mainnet.nodes.onflow.org:9000`
     - Testnet: `access.devnet.nodes.onflow.org:9000`
-    - [Specification](../references/run-and-secure/nodes/access-api.mdx)
+    - [Specification](../networks/node-ops/nodes/access-api.md)
 
 ### Running Your Own Node
 
 If you’re getting started you don’t need to run your own node and you can use the above public nodes. The public access nodes are rate-limited, so as your product matures you might want to run your own node. There are multiple options available:
 
-- Start with a [Light (Observer) Node](../references/run-and-secure/node-operation/observer-node.mdx).
+- Start with a [Light (Observer) Node](../networks/node-ops/nodes/node-operation/observer-node.md).
 - You can also use a third-party provider like [Quicknode](https://www.quicknode.com/docs/flow).
 
-Check out [Running a Node](../references/run-and-secure/node-operation/observer-node.mdx) for more information.
+Check out [Running a Node](../networks/node-ops/nodes/node-operation/observer-node.md) for more information.
 
 ## SDKs and Tools
 
@@ -188,6 +177,6 @@ If you’re already familiar with blockchain development, here's a comparison be
     - [Flow Playground](https://play.flow.com/) provides basic experimentation on the web
     - [Cadence VSCode Extension](https://marketplace.visualstudio.com/items?itemName=onflow.cadence) is strongly suggested to install for local development
 - [Testing Smart Contracts](https://ethereum.org/en/developers/docs/smart-contracts/testing/)
-    - [Cadence testing framework](../cadence/testing-framework.mdx) enables native tests in Cadence.
+    - [Cadence testing framework](https://cadence-lang.org/docs/testing-framework) enables native tests in Cadence.
     - [overflow](https://github.com/bjartek/overflow) for testing in Go.
     - [js-testing](https://github.com/onflow/flow-js-testing) for testing in JS.

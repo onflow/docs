@@ -26,7 +26,7 @@ if ('${process.env.MIXPANEL_PROJECT_TOKEN}' && '${process.env.MIXPANEL_PROJECT_T
   }
   window.mixpanel.track('Page Viewed', viwedPayload);
 
-  const playUrl = 'play.onflow.org';
+  const playUrl = 'play.flow.com';
   const links = document.querySelectorAll('a') || [];
   const isPlayPage = Array.from(links).some((link) => link.href.includes(playUrl));
 
@@ -46,7 +46,7 @@ if ('${process.env.MIXPANEL_PROJECT_TOKEN}' && '${process.env.MIXPANEL_PROJECT_T
           class: target.className,
         }
         window.mixpanel.track('Link clicked', payload);
-        const isPlay = payload.href.includes('play.onflow.org');
+        const isPlay = payload.href.includes('play.flow.com');
         if (isPlay) {
           window.mixpanel.track('Play Link clicked', payload);        
         }
@@ -139,7 +139,7 @@ const editUrl = ({ docPath }) => {
   return `https://github.com/${owner}/${name}/tree/${branch}/${sourceDocPath}`;
 };
 
-const baseUrl = process.env.BASE_URL || '/docs/';
+const baseUrl = process.env.BASE_URL || '/';
 
 /** @type {import('@docusaurus/types').Config} */
 const config = {
@@ -177,11 +177,6 @@ const config = {
       /** @type {import('@docusaurus/preset-classic').Options} */
       ({
         docs: {
-          versions: {
-            stable: {
-              label: 'Current',
-            },
-          },
           beforeDefaultRemarkPlugins: [
             [
               remarkCodeHike,
@@ -221,7 +216,10 @@ const config = {
         // Plugin Options for loading OpenAPI files
         specs: [
           {
-            spec: 'https://raw.githubusercontent.com/onflow/flow/master/openapi/access.yaml',
+            // restore after event streaming api is deployed to mainnet
+            // https://github.com/onflow/docs/issues/464
+            // spec: 'https://raw.githubusercontent.com/onflow/flow/master/openapi/access.yaml',
+            spec: 'https://raw.githubusercontent.com/onflow/flow/ec44c6891f5deea1811d3be42bb00181f30d0860/openapi/access.yaml',
             route: '/http-api/',
           },
         ],
@@ -239,6 +237,17 @@ const config = {
   themeConfig:
     /** @type {import('@docusaurus/preset-classic').ThemeConfig} */
     ({
+      announcementBar: {
+        id: 'support_us',
+        content: `⚠ Upgrade to Cadence 1.0<br />
+          The Crescendo network upgrade, including Cadence 1.0, is coming soon.
+          You most likely need to update all your contracts/transactions/scripts to support this change.<br />
+          Please visit our migration guide here:
+          <a href="https://cadence-lang.org/docs/cadence-migration-guide">https://cadence-lang.org/docs/cadence-migration-guide</a>`,
+        backgroundColor: '#F27360',
+        textColor: '#FFFFFF',
+        isCloseable: true,
+      },
       colorMode: {
         defaultMode: 'dark',
       },
@@ -264,16 +273,10 @@ const config = {
             activeBasePath: '/build',
           },
           {
-            to: 'guides/flow-app-quickstart',
+            to: 'evm/about',
             position: 'left',
-            label: 'Guides',
-            activeBasePath: '/guides',
-          },
-          {
-            to: 'cadence/intro',
-            position: 'left',
-            label: 'Cadence',
-            activeBasePath: '/cadence',
+            label: 'EVM',
+            activeBasePath: '/evm',
           },
           {
             to: 'tools/flow-cli',
@@ -282,23 +285,16 @@ const config = {
             activeBasePath: '/tools',
           },
           {
-            to: 'references',
+            to: 'networks/flow-networks',
             position: 'left',
-            label: 'References',
-            activeBasePath: '/references',
+            label: 'Networks',
+            activeBasePath: '/networks',
           },
           {
             to: 'community-resources',
             position: 'left',
             label: 'Resources',
             activeBasePath: '/community-resources',
-          },
-          // Remove after cadence is updated to a stable version
-          // https://github.com/onflow/docs/issues/105
-          {
-            type: 'docsVersionDropdown',
-            position: 'right',
-            dropdownActiveClassDisabled: true,
           },
           {
             href: 'https://github.com/onflow',
@@ -329,11 +325,11 @@ const config = {
                 to: '/tools',
               },
               {
-                to: '/cadence/intro',
+                to: 'https://cadence-lang.org/docs/',
                 label: 'Cadence',
               },
               {
-                to: '/build/mobile/overview',
+                to: '/build/guides/mobile/overview',
                 label: 'Mobile',
               },
               {
@@ -341,7 +337,7 @@ const config = {
                 label: 'FCL',
               },
               {
-                to: '/build/getting-started/testing',
+                to: '/build/smart-contracts/testing',
                 label: 'Testing',
               },
               {
@@ -399,11 +395,11 @@ const config = {
             title: 'Start Building',
             items: [
               {
-                href: 'https://play.onflow.org/',
+                href: 'https://play.flow.com/',
                 label: 'Flow Playground',
               },
               {
-                to: '/cadence/tutorial/first-steps',
+                to: 'https://cadence-lang.org/docs/tutorial/first-steps',
                 label: 'Cadence Tutorials',
               },
               {
@@ -411,7 +407,7 @@ const config = {
                 label: 'Cadence Cookbook',
               },
               {
-                to: '/references/core-contracts/',
+                to: '/build/core-contracts/',
                 label: 'Core Contracts & Standards',
               },
               {
@@ -436,19 +432,19 @@ const config = {
                 label: 'Flowdiver Testnet',
               },
               {
-                to: '/references/run-and-secure/node-operation/past-sporks/',
+                to: '/networks/node-ops/nodes/node-operation/past-sporks',
                 label: 'Past Sporks',
               },
               {
-                to: '/references/run-and-secure/node-operation/upcoming-sporks',
+                to: '/networks/node-ops/nodes/node-operation/upcoming-sporks',
                 label: 'Upcoming Sporks',
               },
               {
-                to: '/references/run-and-secure/node-operation/',
+                to: '/networks/node-ops',
                 label: 'Node Operation',
               },
               {
-                to: '/references/run-and-secure/node-operation/spork/',
+                to: '/networks/node-ops/nodes/node-operation/spork',
                 label: 'Spork Information',
               },
             ],
@@ -577,6 +573,20 @@ const config = {
       };
     },
     // require('./plugins/networks')
+    [
+      '@docusaurus/plugin-client-redirects',
+      {
+        createRedirects(existingPath) {
+          if (existingPath.includes('/cadence')) {
+            // Redirect from /docs/team/X to /community/X and /docs/support/X to /community/X
+            return [
+              existingPath.replace('https://cadence-lang.org/docs', '/cadence'),
+            ];
+          }
+          return undefined; // Return a falsy value: no redirect created
+        },
+      },
+    ],
   ],
   stylesheets: [
     {

@@ -19,6 +19,8 @@
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
+.yarn
+.yarnrc.yml
 
 /.vscode
 /temp
@@ -33,20 +35,6 @@ docs/references/core-contracts/flow-nft/*
 
 docs/.obsidian
 
-# Remove after cadence is updated to a stable version
-# https://github.com/onflow/docs/issues/105
-versioned_docs/version-stable/architecture
-versioned_docs/version-stable/building-on-flow
-versioned_docs/version-stable/build
-versioned_docs/version-stable/overview
-versioned_docs/version-stable/community-resources
-versioned_docs/version-stable/concepts
-versioned_docs/version-stable/references
-versioned_docs/version-stable/tools
-versioned_docs/version-stable/guides
-versioned_docs/version-stable/node-ops
-versioned_docs/version-stable/tutorials
-versioned_docs/version-stable/getting-started
 /test-results/
 /playwright-report/
 /blob-report/

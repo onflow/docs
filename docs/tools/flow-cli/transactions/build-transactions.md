@@ -82,7 +82,7 @@ transaction to be executed.
 
 ### Arguments
 - Name: `argument`
-- Valid inputs: valid [cadence values](../../../cadence/json-cadence-spec.md)
+- Valid inputs: valid [cadence values](https://cadencelang.dev/docs/1.0/json-cadence-spec)
   matching argument type in transaction code.
 
 Input arguments values matching corresponding types in the source code and passed in the same order.
@@ -133,7 +133,7 @@ Read more about authorizers [here](../../../build/basics/transactions.md).
 
 Arguments passed to the Cadence transaction in Cadence JSON format.
 Cadence JSON format contains `type` and `value` keys and is
-[documented here](../../../cadence/json-cadence-spec.md).
+[documented here](https://cadencelang.dev/docs/1.0/json-cadence-spec).
 
 ### Gas Limit
 

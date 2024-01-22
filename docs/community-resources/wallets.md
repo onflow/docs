@@ -11,17 +11,11 @@ Store, manage, and interact securely with Flow tokens and digital assets on the 
 
 <div id="cards" className="cards">
 
-## Magic.link
+## Flow Reference Wallet
 
-[Magic](https://magic.link/) is a developer SDK that integrates with your application to enable passwordless Web3 onboarding (no seed phrases) and authentication using magic links (similar to Slack and Medium).
+[Flow Reference Wallet](https://frw.gitbook.io/) is the first extension wallet on Flow.
 
-https://magic.link/
-
-## Niftory
-
-[Niftory](https://niftory.com/) is a platform to create, mint, and transfer NFTs.
-
-https://niftory.com/
+https://frw.gitbook.io/
 
 ## Blocto
 
@@ -47,11 +41,17 @@ https://www.ledger.com/
 
 https://nu.fi/
 
-## Flow Reference wallet 
+## Magic.link
 
-[Flow Reference Wallet](https://frw.gitbook.io/) is the first extension wallet on Flow.
+[Magic](https://magic.link/) is a developer SDK that integrates with your application to enable passwordless Web3 onboarding (no seed phrases) and authentication using magic links (similar to Slack and Medium).
 
-https://frw.gitbook.io/
+https://magic.link/
+
+## Niftory
+
+[Niftory](https://niftory.com/) is a platform to create, mint, and transfer NFTs.
+
+https://niftory.com/
 
 ## Finoa
 

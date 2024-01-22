@@ -21,12 +21,12 @@ In order for a transaction to be valid and executed it must contain signatures f
 
 The script section contains instructions for transaction execution. This is a Cadence program in source code form (human-readable), and encoded as UTF-8. The transaction program must contain a `transaction` declaration. 
 
-A transaction includes multiple optional phases `prepare`, `pre`, `execute`, and `post` phase. You can read more about it in the [Cadence reference document on transactions](../../cadence/language/transactions.md). Each phase has a purpose, the two most important phases are `prepare` and `execute`. 
+A transaction includes multiple optional phases `prepare`, `pre`, `execute`, and `post` phase. You can read more about it in the [Cadence reference document on transactions](https://cadence-lang.org/docs/language/transactions). Each phase has a purpose, the two most important phases are `prepare` and `execute`. 
 
 In the `prepare` phase, we have access to `AuthAccount` objects, which gives us the power to interact with those accounts. The accounts are called authorizers of transactions, so each account we want to interact with in the `prepare` phase must sign the transaction as an authorizer. 
 The `execute` phase does exactly what it says, it executes the main logic of the transaction. This phase is optional, but it is a best practice to add your main transaction logic in the section, so it is explicit. 
 
-Again make sure to read Cadence [documentation on transactions](../../cadence/language/transactions.md)
+Again make sure to read Cadence [documentation on transactions](https://cadence-lang.org/docs/language/transactions)
 
 This is an example of a transaction script:
 
@@ -40,7 +40,7 @@ transaction(greeting: String) {
 
 **Arguments**
 
-Transactions may declare parameters it needs during execution, these must be provided as input arguments when sending a transaction. You can think of them as function arguments. Currently, we provide [arguments in the JSON-Cadence Data Interchange Format](../../cadence/json-cadence-spec.md#docusaurus_skipToContent_fallback). Which is a human-readable JSON format. The sample script from above accepts a single `String` argument.
+Transactions may declare parameters it needs during execution, these must be provided as input arguments when sending a transaction. You can think of them as function arguments. Currently, we provide [arguments in the JSON-Cadence Data Interchange Format](https://cadencelang.dev/docs/1.0/json-cadence-spec). Which is a human-readable JSON format. The sample script from above accepts a single `String` argument.
 
 **Reference Block**
 
@@ -376,7 +376,7 @@ A user can define their own transactions or it can use already defined transacti
 
 Transactions can be submitted and obtained from the access node APIs, currently, there are two gRPC and REST APIs. You can find more information about them here:
 
-[**gRPC Transaction API**](../../references/run-and-secure/nodes/access-api.mdx#transactions)
+[**gRPC Transaction API**](../../networks/node-ops/nodes/access-api.md#transactions)
 
 [**REST Transaction API**](/http-api#tag/Transactions)
 

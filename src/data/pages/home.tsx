@@ -11,7 +11,7 @@ const homepageStartProjectData: HomepageStartItemProps[] = [
   {
     title: 'Developer Guides',
     text: 'Create your first dApp in just a few minutes',
-    link: '/guides/flow-app-quickstart',
+    link: '/build/guides/flow-app-quickstart',
     icon: 'quickstart',
   },
   {
@@ -46,7 +46,7 @@ const contentNavigationListItems: ContentNavigationListProps = {
     {
       title: 'Mobile',
       text: 'Build truly mobile first experiences',
-      link: '/build/mobile/overview',
+      link: '/build/guides/mobile/overview',
       icon: 'tools',
     },
   ],

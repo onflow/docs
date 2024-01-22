@@ -4,18 +4,16 @@ sidebar_label: Testnet Testing
 sidebar_position: 4
 ---
 
-It is critical to test your applications and contracts thoroughly on the testnet as part of your road to the mainnet. Testing will help you understand how to create stable and robust applications using the Flow development stack.
+Testing your applications and contracts thoroughly on the testnet is a critical step on the road to the mainnet. This process helps you create stable and robust applications using the Flow development stack.
 
 ## Testing Your Application
 
 ### Automated Testing of Contract Code
 
-All contracts should include test coverage for _all contract functions_. Make sure you've accounted for success and failure cases appropriately.
-
-Tests should also be runnable in automated environments (CI). You can use the [JavaScript testing framework](https://github.com/onflow/flow-js-testing) to create tests for your smart contract code.
+Ensure that all contracts have comprehensive test coverage for every contract function, accounting for both success and failure cases. These tests should be runnable in automated environments, such as Continuous Integration (CI). Utilize the [JavaScript testing framework](https://github.com/onflow/flow-js-testing) to create tests for your smart contract code.
 
 ### Stress Testing Live Applications Before Mainnet
 
-Once you deployed your application to the testnet, you should record how your application handles non-trivial amounts of traffic to ensure there are no issues.
+After deploying your application to the testnet, it's essential to observe how it handles non-trivial amounts of traffic. This step ensures there are no issues when your application experiences real-world usage.
 
-You should also get familiar with the [Cadence anti-patterns](../cadence/anti-patterns.md) to avoid avoid problematic or unintended behavior.
+Familiarize yourself with the [Cadence anti-patterns](../build/smart-contracts//best-practices/anti-patterns.md) to prevent problematic or unintended behavior.

@@ -110,3 +110,8 @@
   border-color: var(--ifm-color-primary);
   box-shadow: 0 3px 6px 0 #0003;
 }
+
+.markdown h1 {
+  --ifm-h1-font-size: 3rem;
+  margin-bottom: calc(var(--ifm-h1-vertical-rhythm-bottom)*var(--ifm-leading));
+}

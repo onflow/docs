@@ -6,7 +6,7 @@ sidebar_position: 6
 
 Flow events are special values that are emitted on the network during the execution of a Cadence program and can be observed by off-chain observers.
 
-Events are defined as Cadence code and you should [read Cadence documentation](../../cadence/language/events.md) to understand how to define them. 
+Events are defined as Cadence code and you should [read Cadence documentation](https://cadence-lang.org/docs/language/events) to understand how to define them. 
 
 Since transactions don’t have return values you can leverage events to broadcast certain changes the transaction caused. Clients listening on Flow networks (apps) can listen to these events being emitted and react. 
 
@@ -39,7 +39,7 @@ A list of events that are emitted by the Flow network is:
 | flow.InboxValueUnpublished   | Event that is emitted when a Capability is unpublished from an account. |
 | flow.InboxValueClaimed1      | Event that is emitted when a Capability is claimed by an account.       |
 
-For more details [on the core events, you can read Cadence reference documentation](../../cadence/language/core-events.md).
+For more details [on the core events, you can read Cadence reference documentation](https://cadence-lang.org/docs/language/core-events).
 
 ## User-defined events
 
@@ -59,7 +59,7 @@ There is an unlimited amount of events that can be defined on Flow, but you shou
 
 ### FLOW Token Events
 
-The FLOW Token contract uses the [fungible token standard on Flow](../../references/core-contracts/03-flow-token.md) and is the contract that issues a core FLOW token. As with any contract, it can emit events when interacted with. When we transfer the FLOW token, events are emitted. You can find a lot of details on the events emitted in the [FLOW Token documentation](../../references/core-contracts/03-flow-token.md). 
+The FLOW Token contract uses the [fungible token standard on Flow](../../build/core-contracts/03-flow-token.md) and is the contract that issues a core FLOW token. As with any contract, it can emit events when interacted with. When we transfer the FLOW token, events are emitted. You can find a lot of details on the events emitted in the [FLOW Token documentation](../../build/core-contracts/03-flow-token.md). 
 
 The most common events are when tokens are transferred which is accomplished with two actions: withdrawing tokens from the payer and depositing tokens in the receiver. Each of those action has a corresponding event:
 

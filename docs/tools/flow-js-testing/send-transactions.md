@@ -24,7 +24,7 @@ Provides explicit control over how you pass values.
 | `args`         | [any]                                                                                                      | ✅       | an array of arguments to pass to transaction. Optional if transaction does not expect any arguments.                                                             |
 | `signers`      | [[Address](../clients/fcl-js/api.md#address) or [SignerInfo](./api.md#signerinfoobject)] | ✅       | an array of [Address](../clients/fcl-js/api.md#address) or [SignerInfo](./api.md#signerinfoobject) objects representing transaction autorizers |
 | `addressMap`   | [AddressMap](./api.md#addressmap)                                                                          | ✅       | name/address map to use as lookup table for addresses in import statements                                                                                       |
-| `transformers` | [[CadenceTransformer](./#cadencetransformer)]                                                              | ✅       | an array of operators to modify the code, before submitting it to network                                                                                        |
+| `transformers` | [[CadenceTransformer](./api.md#cadencetransformer)]                                                        | ✅       | an array of operators to modify the code, before submitting it to network                                                                                        |
 
 > ⚠️ **Required:** Either `code` or `name` field shall be specified. Method will throw an error if both of them are empty.
 > If `name` field provided, framework will source code from file and override value passed via `code` field.
