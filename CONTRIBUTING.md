@@ -32,10 +32,12 @@ Updating existing content is a seamless process:
 
 1. Look for the "Edit this page" link at the bottom of each page, just before the footer.
 
-    <Callout type="note" title="Here is what it looks like.">
+:::note[Here is what it looks like.]
+
     ![edit page](./static/images/contributing/edit-light.png#gh-light-mode-only)
     ![edit page](./static/images/contributing/edit-dark.png#gh-dark-mode-only)
-    </Callout>
+
+:::
 
 1. Clicking the link will take you directly to the source code of the page you're viewing.
 
@@ -133,18 +135,22 @@ import { useLocation } from '@docusaurus/router';
 
 ```
 
-<Callout type="warning">
+:::warning
+
 The `index` page should only include information that is available elsewhere within the category's other pages.
-</Callout>
+
+:::
 
 ### Using DocCardList
 
 Using `DocCardList` improves the layout of the index page:
 
-<Callout type="note" title="Example">
+:::note[Example]
+
 ![edit page](./static/images/contributing/doc-card-list-light.png#gh-light-mode-only)
 ![edit page](./static/images/contributing/doc-card-list-dark.png#gh-dark-mode-only)
-</Callout>
+
+:::
 
 On the most pages you can use just `<DocCardList />` component imported from `'@theme/DocCardList'`
 
@@ -170,12 +176,13 @@ import { useLocation } from '@docusaurus/router';
 <DocCardList items={useDocsSidebar().items.filter(item => !isSamePath(item.href, useLocation().pathname))}/>
 ```
 
-<Callout type="warning">
+:::warning
+
 If you use `<DocCardList/>` on the top level category index page (e.g. `./docs/tools/index.mdx`), Docusaurus will throw an error:
 
 > useCurrentSidebarCategory() should only be used on category index pages.
 
-</Callout>
+:::
 
 ## SEO
 
@@ -222,9 +229,11 @@ Writing links in your documents is easy if you follow this rule-of-thumb: If it 
 [link](https://www.google.com)
 ```
 
-<Callout type="tip">
+:::tip
+
 Use relative links directly to .md/.mdx files
-</Callout>
+
+:::
 
 ### Callouts
 
@@ -240,9 +249,11 @@ Available types:
 
 Example:
 ```markdown
-<Callout type="tip">
+:::tip
+
     Use relative links directly to .md/.mdx files
-</Callout>
+
+:::
 
 ```
 

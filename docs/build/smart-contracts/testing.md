@@ -236,9 +236,11 @@ There is also a [repository](https://github.com/m-Peter/flow-code-coverage#readm
 
 ![Coverage Report Visualization](./codecov-insights.png)
 
-<Callout type="info">
+:::info
+
 The Cadence testing framework utilizes the emulator under the hood.
-</Callout>
+
+:::
 
 ### Go Tests
 
@@ -246,9 +248,11 @@ Tests in Go can be written using [flow-go-sdk](https://github.com/onflow/flow-go
 
 You can find examples of Go tests in the following projects: [flow-core-contracts](https://github.com/onflow/flow-core-contracts/tree/master/lib/go/test), [flow-nft](https://github.com/onflow/flow-nft/tree/master/lib/go/test), [flow-ft](https://github.com/onflow/flow-ft/tree/master/lib/go/test).
 
-<Callout type="info">
+:::info
+
 These tests are tied to the emulator but can be refactored to run on testnet
-</Callout>
+
+:::
 
 ### JavaScript Tests
 
@@ -268,9 +272,11 @@ Tests should also be runnable in automated environments (CI). You can use the [J
 
 Once you deployed your application to the testnet, you should record how your application handles non-trivial amounts of traffic to ensure there are no issues.
 
-<Callout type="success">
+:::success
+
 Get familiar with the [Cadence anti-patterns](./best-practices/anti-patterns.md) to avoid avoid problematic or unintended behavior.
-</Callout>
+
+:::
 
 
 ## References

@@ -4,15 +4,20 @@ sidebar_label: QC and DKG
 description: How the Flow protocol manages the Epoch Setup Phase
 ---
 
-<Callout type="warning">
+:::warning
+
   If you haven't read the Intro to Flow Staking document and the Epoch protocol document,
   please read that first. Those documents provide an overview of epochs on Flow for
   all users and are necessary prerequisites to this document.
-</Callout>
-<Callout type="warning">
+
+:::
+
+:::warning
+
   This document assumes you have some technical knowledge about the Flow
   blockchain and programming environment.
-</Callout>
+
+:::
 
 
 # Epoch Setup Phase

@@ -4,14 +4,15 @@ sidebar_label: Epoch and Reward Schedule
 description: How the Flow protocol manages the schedule of an epoch and rewards payments
 ---
 
-<Callout type="warning">
+:::warning
 
 This information covers the current state of how epoch phases are ran and how
 rewards are calculated and distributed to node operators and delegators. 
 All of the information in the document is still being designed and is subject to change
 based on research and discussion by the Flow core team and community.
 If any changes are proposed, the Flow community will be notified in advance.
-</Callout>
+
+:::
 
 # Schedule
 
@@ -24,7 +25,7 @@ which have unstaked may exit the network.
 Each epoch lasts approximately a week, and the **Epoch Switchover** is defined as the point in time
 when one epoch ends and the next epoch begins, marking a possible change in the list of valid nodes.
 
-<Callout type="info">
+:::info
 
 The exact timing of each epoch end is influenced by the number of blocks proposed during the epoch.
 Therefore, epoch phase timing can very and will likely drift over time.
@@ -32,7 +33,7 @@ Therefore, epoch phase timing can very and will likely drift over time.
 **All quoted epoch end times are estimates and subject to some variance (up to several hours)**.
 See [Epoch Preparation Protocol](./04-epoch-preparation.md#epoch-length) for details. 
 
-</Callout>
+:::
 
 **Staking Operations are disabled for approximately the last day of an epoch**,
 typically around 12:00pm (7:00pm UTC) on Tuesday every week until the next day around the same time.

@@ -115,12 +115,14 @@ However, if an account does have an associated locked account, when the Staking 
 it will connect to that locked account's node and delegator objects
 as well as it's locked token vault allowing it to perform staking actions with locked and unlocked FLOW.
 
-<Callout type="info">
+:::info
+
 Staking Collection is backwards compatible with other methods of staking on Flow.
 Existing accounts with associated locked accounts
 will still be able to stake in the same way as before,
 but they will also be able to use the staking collection, if desired.
-</Callout>
+
+:::
 
 
 # How to use the Staking Collection
@@ -238,12 +240,13 @@ transaction with the following arguments:
 | **delegatorID**         | `Optional(UInt32)` | `nil` if staking for a node. If staking for a delegator, the delegator ID. |
 | **amount**              | `UFix64`           | The number of FLOW tokens to stake. |
 
-<Callout type="info">
+:::info
+
 To stake new tokens for an active node, leave the <b>delegatorID</b> argument as <b>nil</b>.
 
-
 If staking for a delegator, <b>delegatorID</b> should be the delegator ID you are staking for.
-</Callout>
+
+:::
 
 The amount may be any number of tokens up to the sum of an accounts locked and unlocked FLOW.
 
@@ -261,11 +264,13 @@ transaction with the following arguments:
 | **delegatorID**         | `Optional(UInt32)` | `nil` if staking for a node. If staking for a delegator, the delegator ID. |
 | **amount**              | `UFix64`           | The number of FLOW tokens to restake. |
 
-<Callout type="info">
+:::info
+
 To stake unstaked tokens for an active node, leave the <b>delegatorID</b> arguement as <b>nil</b>.
 
 If staking for a delegator, <b>delegatorID</b> should be the delegator ID you are staking for.
-</Callout>
+
+:::
 
 ### Re-stake Rewarded Tokens
 
@@ -281,9 +286,11 @@ transaction with the following arguments:
 | **delegatorID**         | `Optional(UInt32)` | `nil` if staking for a node. If staking for a delegator, the delegator ID. |
 | **amount**              | `UFix64`           | The number of FLOW tokens to restake. |
 
-<Callout type="info">
+:::info
+
 To stake rewarded tokens for an active node, leave the <b>delegatorID</b> arguement as <b>nil</b>.
-</Callout>
+
+:::
 
 ### Request to Unstake Tokens at the end of the Epoch
 
@@ -303,9 +310,11 @@ transaction with the following arguments:
 | **delegatorID**         | `Optional(UInt32)` | `nil` if staking for a node. If staking for a delegator, the delegator ID. |
 | **amount**              | `UFix64`           | The number of FLOW tokens to restake. |
 
-<Callout type="info">
+:::info
+
 To unstake tokens from an active node, leave the <b>delegatorID</b> arguement as <b>nil</b>.
-</Callout>
+
+:::
 
 ### Unstake All Tokens
 
@@ -331,9 +340,11 @@ transaction with the following arguments:
 | **delegatorID**         | `Optional(UInt32)` | `nil` if staking for a node. If staking for a delegator, the delegator ID. |
 | **amount**              | `UFix64`           | The number of FLOW tokens to withdraw. |
 
-<Callout type="info">
+:::info
+
 To withdraw unstaked tokens from an active node, leave the <b>delegatorID</b> arguement as <b>nil</b>.
-</Callout>
+
+:::
 
 ### Withdraw Rewarded Tokens
 
@@ -348,9 +359,11 @@ transaction with the following arguments:
 | **delegatorID**         | `Optional(UInt32)` | `nil` if staking for a node. If staking for a delegator, the delegator ID. |
 | **amount**              | `UFix64`           | The number of FLOW tokens to withdraw. |
 
-<Callout type="info">
+:::info
+
 To withdraw rewarded tokens from an active node, leave the <b>delegatorID</b> arguement as <b>nil</b>.
-</Callout>
+
+:::
 
 ## Staking Collection Modification
 
@@ -373,9 +386,11 @@ transaction with the following arguments:
 | **nodeID**              | `String`           | The nodeID of the node to close. |
 | **delegatorID**         | `Optional(UInt32)` | `nil` if staking for a node. If staking for a delegator, the delegator ID. |
 
-<Callout type="info">
+:::info
+
 To close an active node, leave the <b>delegatorID</b> arguement as <b>nil</b>.
-</Callout>
+
+:::
 
 ### Transfer a Node
 
@@ -389,9 +404,11 @@ and deposit it to the receiver's Staking Collection.
 _Note: Once a Node or Delegator has been transferred, it cannot be accessed again by the sender._
 _As well, all staked tokens will be considered staked by the receiver's Staking Collection._
 
-<Callout type="warning">
+:::warning
+
 Transferring a Node will result in loss of custody of any Staked tokens for the sender.
-</Callout>
+
+:::
 
 The owner of a Staking Collection can use the **Transfer Node** ([SCO.13](../../build/core-contracts/11-staking-collection.md))
 transaction with the following arguments:
@@ -413,9 +430,11 @@ and deposit it to the receiver's Staking Collection.
 _Note: Once a Node or Delegator has been transferred, it cannot be accessed again by the sender._
 _As well, all staked tokens will be considered staked by the receiver's Staking Collection._
 
-<Callout type="warning">
+:::warning
+
 Transferring a Delegator will result in loss of custody of any Staked tokens for the sender.
-</Callout>
+
+:::
 
 The owner of a Staking Collection can use the **Transfer Delegator** ([SCO.14](../../build/core-contracts/11-staking-collection.md))
 transaction with the following arguments:
@@ -510,9 +529,11 @@ can use the **Get Locked Tokens Used** ([SCO.19](../../build/core-contracts/11-s
 
 This script returns a `UFix64` representing the number of Locked FLOW tokens staked using an accounts Staking Collection.
 
-<Callout type="info">
+:::info
+
 Note: This number does not include Locked FLOW tokens staked not through an accounts Staking Collection.
-</Callout>
+
+:::
 
 ### Get Unlocked Tokens Used
 
@@ -525,9 +546,11 @@ can use the **Get Unlocked Tokens Used** ([SCO.20](../../build/core-contracts/11
 
 This script returns a `UFix64` representing the number of Unlocked FLOW tokens staked using an accounts Staking Collection.
 
-<Callout type="info">
+:::info
+
 Note: This number does not include Unlocked FLOW tokens staked not through an accounts Staking Collection.
-</Callout>
+
+:::
 
 ### Get Does Stake Exist 
 
@@ -542,10 +565,12 @@ can use the **Get Does Node Exist** ([SCO.21](../../build/core-contracts/11-stak
 
 This script returns a `Bool`.
 
-<Callout type="info">
+:::info
+
 To query if a Node is managed by an accounts Staking Collection, leave the <b>delegatorID</b> arguement as <b>nil</b>. 
 Otherwise, fill it in with the <b>delegatorID</b> of the Delegator.
-</Callout>
+
+:::
 
 ### Get Machine Account Info
 

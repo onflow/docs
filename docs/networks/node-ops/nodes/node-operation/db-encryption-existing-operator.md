@@ -16,11 +16,13 @@ guide demonstrates how to enable encryption for this database for existing opera
 
 ## Downloading Bootstrap Utility
 
-<Callout type="warning">
+:::warning
+
   If you have downloaded the bootstrapping kit previously, ensure that you do
   this step again to get the latest copy of the bootstrapping kit since there
   have been significant changes to it.
-</Callout>
+
+:::
 
 Follow the instructions [here](./node-bootstrap.md#download-the-bootstrapping-kit)
 to download the latest version of the bootstrapping kit, then return to this page.
@@ -29,13 +31,13 @@ to download the latest version of the bootstrapping kit, then return to this pag
 
 You will need to generate an encryption key for the database using the `bootstrap` utility.
 
-<Callout type="warning">
+:::warning
 
   Ensure you run the following commands on the machine you use to run your node software.
   The bootstrap directory passed to the `-o` flag must be the same bootstrap directory used by your node.
   The default location is `/var/flow/bootstrap`, but double-check your setup before continuing.
 
-</Callout>
+:::
 
 ```shell GenerateEncryptionKey
 $./boot-tools/bootstrap db-encryption-key -o ./bootstrap

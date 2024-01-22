@@ -4,15 +4,20 @@ sidebar_label: Epoch Preparation Protocol
 description: Technical Overview of the Flow Epoch Protocol
 ---
 
-<Callout type="warning">
+:::warning
+
   If you haven't read the staking introduction, please read that
   first. That document provides a non-technical overview of staking on Flow for
   all users and is a necessary prerequisite to this document.
-</Callout>
-<Callout type="warning">
+
+:::
+
+:::warning
+
   This document assumes you have some technical knowledge about the Flow
   blockchain and programming environment.
-</Callout>
+
+:::
 
 # Epochs
 
@@ -71,11 +76,13 @@ The smart contract then emits a service event with this information.
 When processing the block with seat assignment, all network nodes (including future ones which are supposed to monitor the chain in anticipation)
 are thereby informed about the upcoming change.
 
-<Callout type="warning">
+:::warning
+
 Note: At this point in the epoch (end of the staking auction), 
 there is no change in participating nodes.
 The change in participating nodes happens at the end of the epoch.
-</Callout>
+
+:::
 
 After the staking auction, there is an interim period of time until the new Epoch starts for the following tasks to be completed:
 - The epoch smart contract runs the cluster assignment algorithm for all the collector nodes

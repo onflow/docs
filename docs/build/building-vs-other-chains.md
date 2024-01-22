@@ -17,11 +17,11 @@ Flow combines the concepts of EOAs and Contract Accounts into a single account m
 
 This natively enables interesting use cases, like key revocation, rotation, and multi-signature transactions. All Flow accounts can use network storage (e.g., for deploying contracts and storing resources like NFTs) based on the number of FLOW tokens they hold.
 
-<Callout type="info">
+:::info
 
 You must run an explicit account creation transaction on Flow to create a new account. [Flow CLI](../tools/flow-cli/accounts/create-accounts.md) can create an account on any network with a given public key.
 
-</Callout>
+:::
 
 Check out the [Accounts](./basics/accounts.md) concept document to learn more about Flow accounts.
 
@@ -32,11 +32,11 @@ On Flow, smart contracts are written in Cadence. Cadence syntax is user-friendly
 - **Resource-oriented**: Cadence introduces a new type called Resources. Resources enable onchain representation of digital assets natively and securely. Resources can only exist in one location at a time and are strictly controlled by the execution environment to avoid common mishandling mistakes. Each resource has a unique `uuid` associated with it on the blockchain. Examples of usage are fungible tokens, NFTs, or any custom data structure representing a real-world asset. Check out [Resources](https://cadence-lang.org/docs/language/resources) to learn more.
 - **Capability-based**: Cadence offers a [Capability-based Security](https://en.wikipedia.org/wiki/Capability-based_security) model. This also enables the use of Resources as structures to build access control. Capabilities can provide fine-grained access to the underlying objects for better security. For example, when users list an NFT on a Flow marketplace, they create a new Capability to the stored NFT in their account so the buyer can withdraw the asset when they provide the tokens. Check out [Capability-based Access Control](https://cadence-lang.org/docs/language/capabilities) to learn more about Capabilities on Cadence.
 
-<Callout type="info">
+:::info
 
 Cadence is not compiled. All contracts are open source on Flow.
 
-</Callout>
+:::
 
 Check out the [Cadence website](https://cadence-lang.org/) to learn more about Cadence.
 

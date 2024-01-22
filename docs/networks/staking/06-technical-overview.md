@@ -4,15 +4,20 @@ sidebar_label: Staking Technical Overview
 description: Technical Overview of the Flow Staking Auction Phase
 ---
 
-<Callout type="warning">
+:::warning
+
   If you haven't read the Introduction, please read that first. That document
   provides a non-technical overview of staking on Flow for all users and is a
   necessary prerequisite to this document.
-</Callout>
-<Callout type="warning">
+
+:::
+
+:::warning
+
   This document assumes you have some technical knowledge about the Flow
   blockchain and programming environment.
-</Callout>
+
+:::
 
 # Staking
 
@@ -81,11 +86,13 @@ To generate a node ID, simply hash the staking key.
 Node operators need to determine the role of node they will be running
 (Collection, Consensus, Execution, Verification, or Access).
 
-<Callout type="warning">
+:::warning
+
   NOTE: Access Nodes are eligible to stake but will not receive rewards for
   their stake. Please register as a different node type if you would like to
   receive rewards.
-</Callout>
+
+:::
 
 Once the info has been determined:
 
@@ -98,12 +105,14 @@ Once the info has been determined:
 
 The node operator is ready to register their node.
 
-<Callout type="warning">
+:::warning
+
   NOTE: The staking smart contract validates that the strings for the keys are
   valid public keys. The staking admin and node software also checks the keys
   and networking address to make sure they are valid and if they are not, the
   registered node will not be eligible to stake.
-</Callout>
+
+:::
 
 To register a node, the node operator calls the
 [`addNodeRecord` function](https://github.com/onflow/flow-core-contracts/blob/master/contracts/FlowIDTableStaking.cdc#L870)
@@ -121,20 +130,24 @@ More information is in the [machine account documentation](./11-machine-account.
 
 Every node operator will run the same transaction to register their node at any time throughout the staking auction.
 
-<Callout type="warning">
+:::warning
+
   The register node transaction only needs to be submitted once per node. A node
   does not need to register every epoch. A registration cannot be used to manage
   multiple nodes. Multiple nodes need to be registered separately (with the
   Staking Collection).
-</Callout>
 
-<Callout type="warning">
+:::
+
+:::warning
+
   Once a node operator has registered their node and its metadata, the metadata
   cannot be modified. The only exception is the networking address, which can me
   modified with the Update Networking Address transaction. If a node operator
   wants to update any of their other metadata such as ID, keys, or role, they
   need to unstake, withdraw their tokens, and register a completely new node.
-</Callout>
+
+:::
 
 Once node operators have registered and have the special node object, they will be able
 to perform any of the valid staking options with it, assuming that they have

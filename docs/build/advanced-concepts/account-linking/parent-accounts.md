@@ -18,12 +18,12 @@ owned assets.
 
 ## Design Overview
 
-<Callout type="info">
+:::info
 
 TL;DR: An account's [`HybridCustody.Manager`](https://github.com/onflow/hybrid-custody/blob/main/contracts/HybridCustody.cdc)
 is the entry point for all of a user's associated accounts.
 
-</Callout>
+:::
 
 The basic idea in the [(currently proposed)
 standard](https://forum.onflow.org/t/account-linking-authaccount-capabilities-management/4314) is relatively simple. A
@@ -96,12 +96,12 @@ When delegation occurs, they would provide the `CapabilityFilter` and `Capabilit
 `OwnedAccount`. This `OwnedAccount` then wraps the given filter & factory Capabilities in a `ChildAccount` along with a
 Capability to itself before publishing the new `ChildAccount` Capability for the specified parent account to claim.
 
-<Callout type="info">
+:::info
 
 Note that by enumerating allowable Types in your `CapabilityFilter.Filter` implementation, you're by default excluding
 access to anything other than the Types you declare as allowable.
 
-</Callout>
+:::
 
 As mentioned earlier, `Manager`s also maintain access to "owned" accounts - accounts which define unrestricted access as
 they allow direct retrieval of encapsulated AuthAccount objects. These owned accounts, found in `Manager.ownedAccounts`,

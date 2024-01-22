@@ -27,9 +27,11 @@ This decoupling is a unique advantage of Flow, allowing for multiple public keys
 
 Each Flow account created on Mainnet will by default [hold a Flow vault that holds a balance and is part of the FungibleToken standard](./flow-token.md). This balance is used to pay for [transaction fees and storage fees](./fees.md). More on that in the fees document.
 
-<Callout type="warning">
+:::warning
+
 The minimum amount of FLOW an account can have is **0.001**.
-</Callout>
+
+:::
 
 This minimum storage fee is provided by the account creator and covers the cost of storing up to 100kB of data in perpetuity. This fee is applied only once and can be "topped up" to add additional storage to an account. The minimum account reservation ensures that most accounts won't run out of storage capacity if anyone deposits anything (like an NFT) to the account. 
 
@@ -49,9 +51,11 @@ During account creation, public keys can be provided which will be used when int
 
 Each account key has a weight that determines the signing power it holds.
 
-<Callout type="warning">
+:::warning
+
 A transaction is not authorized to access an account unless it has a total signature weight greater than or equal to **1000**, the weight threshold.
-</Callout>
+
+:::
 
 For example, an account might contain 3 keys, each with 500 weight:
 
@@ -97,10 +101,11 @@ An account on Flow doesn’t require keys in order to exist, but this makes the 
 
 You can achieve keyless accounts by either removing an existing public key from an account signing with that same key and repeating that action until an account has no keys left, or you can create a new account that has no keys assigned. With account linking you can also have a child account that has no keys but is controlled by the parent.
 
-<Callout type="danger">
+:::danger
+
 Be careful when removing keys from an existing account, because once an account’s total key weights sum to less than 1000, it can no longer be modified.
 
-</Callout>
+:::
 
 ### **Multi-Sig Accounts**
 
@@ -136,10 +141,11 @@ For development purposes, [you can use Flow CLI to easily create emulator, testn
 
 Keys should be generated in a secure manner. Depending on the purpose of the keys different levels of caution need to be taken.
 
-<Callout type="warning">
+:::warning
+
 Anyone obtaining access to a private key can modify the account the key is associated with (assuming it has enough weight). Be very careful how you store the keys.
 
-</Callout>
+:::
 
 For secure production keys, we suggest using key management services such as [Google key management](https://cloud.google.com/security-key-management) or [Amazon KMS](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Overview.Encryption.Keys.html), which are also supported by our CLI and SDKs. Those services are mostly great when integrated into your application. However, for personal use, you can securely use any [existing wallets](../../community-resources/wallets.md) as well as a [hardware Ledger wallet](../../community-resources/wallets.md).
 

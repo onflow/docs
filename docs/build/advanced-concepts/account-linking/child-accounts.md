@@ -26,13 +26,13 @@ Before diving in, let's make a distinction between **"account linking"** and **"
 
 ### Account Linking
 
-<Callout type="info">
+:::info
 
 Note that since account linking is a sensitive action, transactions where an account may be linked are designated by a
 topline pragma `#allowAccountLinking`. This lets wallet providers inform users that their account may be linked in the
 signed transaction.
 
-</Callout>
+:::
 
 Very simply, account linking is a [feature in Cadence](https://github.com/onflow/flips/pull/53) that let's an
 [AuthAccount](https://cadence-lang.org/docs/language/accounts#authaccount) create a
@@ -151,13 +151,13 @@ transaction(identifiers: [String]) {
 
 And the following transaction configures a `CapabilityFactory.Manager`, adding NFT-related `Factory` objects:
 
-<Callout type="info">
+:::info
 
 Note that the Manager configured here enables retrieval of castable Capabilities. It's recommended that you implement
 Factory resource definitions to support any NFT Collections related with the use of your application so that users can
 retrieve Typed Capabilities from accounts linked from your app.
 
-</Callout>
+:::
 
 ```cadence setup_factory.cdc
 import "CapabilityFactory"
@@ -216,7 +216,7 @@ We can achieve issuance from the child account and claim from the parent account
 
 Let’s take a look at both.
 
-<Callout type="info">
+:::info
 
 You'll want to consider whether you would like the parent account to be configured with some app-specific resources or
 Capabilities and compose you multisig or claim transactions to include such configurations. <br/>
@@ -224,7 +224,7 @@ Capabilities and compose you multisig or claim transactions to include such conf
 For example, if your app deals with specific NFTs, you may want to configure the parent account with Collections for
 those NFTs so the user can easily transfer them between their linked accounts.
 
-</Callout>
+:::
 
 ### Publish & Claim
 
@@ -309,12 +309,12 @@ transaction(childAddress: Address, filterAddress: Address?, filterPath: PublicPa
 We can combine the two transactions in [Publish](#publish) and [Claim](#claim) into a single multi-signed transaction to
 achieve Hybrid Custody in a single step.
 
-<Callout type="info">
+:::info
 
 Note that while the following code links both accounts in a single transaction, in practicality you may find it easier
 to execute publish and claim transactions separately depending on your custodial infrastructure.
 
-</Callout>
+:::
 
 ```cadence setup_multi_sig.cdc
 #allowAccountLinking
@@ -482,7 +482,7 @@ transaction(pubKey: String, initialFundingAmt: UFix64) {
 This onboarding flow is really a single-transaction composition of the steps covered above. This is a testament to the
 power of the complex transactions you can compose on Flow with Cadence!
 
-<Callout type="info">
+:::info
 
 Recall the [pre-requisites](#pre-requisites) needed to be satisfied before linking an account: <br/>
 
@@ -490,7 +490,7 @@ Recall the [pre-requisites](#pre-requisites) needed to be satisfied before linki
 1. CapabilityFactory Manager saved and linked as well as Factory implementations supporting the Capability Types you'll
    want accessible from linked child accounts as Typed Capabilities.
 
-</Callout>
+:::
 
 #### Account Creation & Linking
 

@@ -5,12 +5,12 @@ sidebar_label: Technical Staking Options
 
 This document describes two different methods for staking at a high level.
 
-<Callout type="warning">
+:::warning
 
 We highly recommended you use the Staking Collection paradigm,
 as this will be the most supported method for staking with any set up.
 
-</Callout>
+:::
 
 # Staking Collection
 

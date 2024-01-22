@@ -90,10 +90,11 @@ Account linking is a _very_ powerful Cadence feature, and thus it must be treate
 
 Creating an `AuthAccount` capability and publishing it to an account we don’t own means we are giving that account full access to our account. This should be seen as an anti-pattern.
 
-<Callout type="warning">
+:::warning
+
 ❗ Creating an `AuthAccount` capability and sharing it with third-party account is in concept the same as giving that person your account's private keys.
 
-</Callout>
+:::
 
 Because pure account linking can be dangerous, Flow introduces the [`HybridCustody` contract](./parent-accounts.md) that helps custodial applications regulate access and parent account manage their many child accounts.
 

@@ -9,18 +9,22 @@ sidebar_custom_props:
 
 In order to deploy your smart contracts to the mainnet, you need a funded account. If you want to get started on Testnet, look below for information on how to get started.
 
-<Callout type="info">
+:::info
+
 Make sure you handle your mainnet account keys appropriately. Using a Key Management Service is the best practice. 
-</Callout>
+
+:::
 
 ### Creating an Account
 
 There are two simple methods of creating an account on testnet. **Interactive** and **Manual**, both use the Flow CLI. On mainnet you will have to fund your newly created account, there is no faucet.
 Make sure to install the Flow CLI. [Flow CLI](../../tools/flow-cli/accounts/create-accounts.md) has a interactive mode for generating keys.
 
-<Callout type="success">
+:::success
+
 Anyone can deploy and update contracts on mainnet. Audits are encouraged but not mandatory to deploying contracts to mainnet. Take every precauction to reduce issues and protect users. 
-</Callout>
+
+:::
 
 ### Create and deploy a mainnet project
 The tool of choice is Flow CLI, there are quickstarts and guides that use Flow CLI, [Getting Started](../getting-started/quickstarts/flow-cli)
@@ -30,25 +34,29 @@ The tool of choice is Flow CLI, there are quickstarts and guides that use Flow C
 - [Deploy your project](../../tools/flow-cli/deployment/deploy-project-contracts.md), notice that your account now has contracts deployed on mainnet.
 - [Deploy a contract](../../tools/flow-cli/accounts/account-add-contract.md) to mainnet. You can deploy contracts individually using the `account-add-contract` command.
 
-<Callout type="info">
+:::info
+
 All your contract deployment addresses are stored in `flow.json`. Mainnet, Testnet and local (emulator) are stored as well.
-</Callout>
+
+:::
 
 ### Deploy updated contracts on mainnet
 
 Contracts can be updated and retain the contract address. You can use the [Flow CLI contract update command](../../tools/flow-cli/accounts/account-update-contract.md) to re-deploy an updated version of your contract:
 
-<Callout type="warning">
+:::warning
+
 If you see `Error Code: 1103`, your new account does not have enough funds to complete the transaction. Make sure you have enough FLOW and your account is set up correctly, check [Flowdiver](https://flowdiver.io/) to verify.
-</Callout>
+
+:::
 
 Once all your contracts are deployed, you can visit [flow-view-source](https://flow-view-source.com/) or run the [Flow CLI get account command](../../tools/flow-cli/accounts/get-accounts.md) to confirm the deployment.
 
 ### Sporks
 
-Currently, **historical event data is not migrated between sporks,** so you'll need to design your application with this in mind. We recognize the usefulness of historical event data and plan on adding a means of accessing it in the near future. Past spork transactional data is available, [See Previous Spork Access Node Info](../../networks/node-ops/nodes/node-operation/past-sporks)
+Currently, **historical event data is not migrated between sporks,** so you'll need to design your application with this in mind. We recognize the usefulness of historical event data and plan on adding a means of accessing it in the near future. Past spork transactional data is available, [See Previous Spork Access Node Info](../../networks/node-ops/nodes/node-operation/past-sporks.md)
 
-More Information on [Sporks](../../networks/node-ops/nodes/node-operation/spork)
+More Information on [Sporks](../../networks/node-ops/nodes/node-operation/spork.md)
 
 
 ### Testnet
@@ -56,15 +64,17 @@ More Information on [Sporks](../../networks/node-ops/nodes/node-operation/spork)
 
 The Flow test network, known as Flow Testnet, exists to help developers test their software and smart contracts against a live network. It's also used as a means of releasing and testing new protocol and smart contract features before they are integrated into Flow's main network (Mainnet).
 
-When the Flow protocol is updated or a new version of Cadence is released, those updates will always be made available on the [Flow Emulator](../../tools/emulator) _before_ they're integrated into Flow Testnet or Flow Mainnet. 
+When the Flow protocol is updated or a new version of Cadence is released, those updates will always be made available on the [Flow Emulator](../../tools/emulator/index.md) _before_ they're integrated into Flow Testnet or Flow Mainnet. 
 
 ## Getting Started on Testnet
 
 If you need to create a flow.json file to store information about accounts and contracts use the `flow init` command to create a project
-<Callout type="info">
-To create accounts and generate keys, make sure to install [Flow CLI](../../tools/flow-cli/install). Flow CLI provides convenient functions to simplifies interacting with the blockchain.
-</Callout>
 
+:::info
+
+To create accounts and generate keys, make sure to install [Flow CLI](../../tools/flow-cli/install.md). Flow CLI provides convenient functions to simplifies interacting with the blockchain.
+
+:::
 
 ### Creating an Account
 
@@ -104,9 +114,8 @@ You should anticipate future updates and join the community ([Forum](https://for
 Currently, **historical event data is not migrated between sporks.** You'll need to design your application with this in mind. We recognize the usefulness of historical event data and plan on adding a means of accessing it in the near future. Only one previous spork data is available through old Access Node.
 
 
-<Callout type="warning">
+:::warning
+
 Flow Testnet is explicitly for experimentation and testing and should not be used to exchange "real value" (e.g. developing a fiat money on/off-ramp for your testnet application).
-</Callout>
 
-
-
+:::

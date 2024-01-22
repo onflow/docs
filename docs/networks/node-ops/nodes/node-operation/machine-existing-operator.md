@@ -18,19 +18,23 @@ You will need to create one Machine Account for each `consensus` or `collection`
 
 This guide will walk you through creating a Machine Account and getting it set up.
 
-<Callout type="warning">
+:::warning
+
   During this process you will generate a new private key which will have sole control over your machine account.
   This private key will be stored on the machine you use to run your node, alongside your staking and networking keys.
   Loss of any of these keys (staking, networking, or machine account) will require you to un-stake your tokens, start a completely new node, and register the new node to continue participating in the Flow network, which takes multiple weeks.
-</Callout>
+
+:::
 
 ## Downloading Bootstrap Utility
 
-<Callout type="warning">
+:::warning
+
   If you have downloaded the bootstrapping kit previously, ensure that you do
   this step again to get the latest copy of the bootstrapping kit since there
   have been significant changes to it.
-</Callout>
+
+:::
 
 Follow the instructions [here](./node-bootstrap.md#download-the-bootstrapping-kit)
 to download the latest version of the bootstrapping kit, then return to this page.
@@ -39,13 +43,13 @@ to download the latest version of the bootstrapping kit, then return to this pag
 
 You will need to generate a Machine account private key using the `bootstrap` utility.
 
-<Callout type="warning">
+:::warning
 
   Ensure you run the following commands on the machine you use to run your node software.
   The bootstrap directory passed to the `-o` flag must be the same bootstrap directory used by your node.
   The default location is `/var/flow/bootstrap`, but double-check your setup before continuing.
 
-</Callout>
+:::
 
 ```shell GenerateMachineAccountKey
 $./boot-tools/bootstrap machine-account-key -o ./bootstrap

@@ -15,11 +15,11 @@ which prepares the network for the next epoch.
 Your Machine Account is distinct from the account you use for staking your node (your Staking Account).
 The Machine Account is intended for use by node software and does not have access to your staked tokens or staking rewards.
 
-<Callout type="info">
+:::info
 
 Currently Machine Accounts are required only for `collection` and `consensus` nodes.
 
-</Callout>
+:::
 
 #### Creation
 
@@ -33,12 +33,12 @@ Machine Accounts must maintain a balance of liquid FLOW tokens to pay fees on tr
 submit to system smart contracts. Typically very few transactions will be sent (about 1-5 per week)
 however more may be required under certain circumstances and network conditions.
 
-<Callout type="info">
+:::info
 
 Because some transactions sent by the Machine Account are system critical, we recommend maintaining
 a balance sufficient to accomodate worst-case transaction submission numbers at all times.
 
-</Callout>
+:::
 
 When creating a new machine account, we recommend initially funding with 0.005 FLOW for collection nodes and
 0.25 FLOW for consensus nodes.

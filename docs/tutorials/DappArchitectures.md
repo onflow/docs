@@ -10,9 +10,11 @@ The audience for this document is someone who is at the beginning of the Flow da
 
 Read this document as a companion guide to the [Flow Developer Onboarding Guide](https://docs.google.com/document/d/14eQE0wq60IRgD3N5jtwpW8RxexFt_hB3EHnDg_uBl8k/edit).
 
-<Callout type="info">
+:::info
+
 We mention various third-party services and software products in this document.That is not an endorsement. Developers should evaluate these products independently according to their needs. 
-</Callout>
+
+:::
 
 ## Dapp Architectures
 ### Non-Custodial Flow Dapp Architecture
@@ -41,9 +43,11 @@ Specifically, Graffle can provide easy access to the past and real-time events o
 These third-party services can insulate your application from the requirement of being aware of [sporks](../networks/node-ops/nodes/node-operation/spork.md#past-and-upcoming-sporks).
 Otherwise, you will have to add logic in your application to navigate across [past sporks](../networks/node-ops/nodes/node-operation/spork.md#past-and-upcoming-sporks) when looking up past blockchain data.
 
-<Callout type="info">
+:::info
+
 With any of these payment rails choices, dapp developers should do their own legal/compliance due diligence.
-</Callout>
+
+:::
 
 - **Payment rails**: 
 - **Dapp-User payments**: If a dapp is selling an item directly to the user, it can use either of these two approaches:
@@ -104,9 +108,11 @@ You can find the diagram [source here](https://sequencediagram.org/index.html#in
 
 You can find the diagram [source here](https://sequencediagram.org/index.html#initialData=C4S2BsFMAIDFwPYHdoDkEDsC0BhArgM7AIAmIAhuNACLkAOdasAKtAAp4BOAxgBbkEYSML2g5OkMsBzlOJAFzQA8nVCZoAYgBMAKD2QMoYAE9oAWQSY65Y3vLdinaAEFwIbpD3XOobiGuG0ABEAEKIDggAOhgAFPDI0ADqlFDA0ADKkJwAbu6QAJRB0ALQSCmQwHo63r7+5IFBtAzRMYmQAEYuDIXFBDT0dF6ytQFpQagsGY6QAGacmMDR6QC2w2ILnPaLsfEoYQjcANZ85CAYPSUTzFUA5vN4jOKQ5MAw9STQADII5B+7LtwHDpXHkADxYAB8ZXAqUU1GQGEQv2g7XCxGKDGBbg84Kh5WAiieLxgqIO6Ps3AQeEM0UIZxu0EgqxAVF+JAkBAIegwCFe0AQ2Sy5ksGGsxgANKV8YoQnhTLAAKrpajQOkYBlPKQyOQ6AwkPR3KmMWWmK5VLF5SHQ2Hsea5AggdT-CnbGYIJzAXgwEx0GAIGZMZgEaIEBDgD7tUyemDUZyYkEeSFNOiKTJQByB6Do9py7m8v2CpzWiqSq6KACM+WgzE2GAIMyFiuV0BikAAjnhKFmEFmvdA6Jw8vyA1cq3MEMsXNjIAByPrF7ZaKs1+r1oVXbtTvJzpL46IAZirTZVID6wFra84Eg+6Oj-QYO4X0XQr0Urio-t7b3aApgREgdB9Nw9QojAJCYDAZzFNADrqlAxTEMs7gouExz8FBwAAB4YFUepAA)
 
-<Callout type="info">
+:::info
+
 NFT buyers may also use on-ramp providers like Moonpay, Wyre, or Ramp to purchase crypto using their credit cards.  
-</Callout>
+
+:::
 
 The sequence diagrams above show interactions with the mobile app version of the Blocto wallet.
 You can use the Blocto wallet purely from the web as well, inside of the dapp, giving a compelling user experience (see [Vault by CNN](https://vault.cnn.com/)).

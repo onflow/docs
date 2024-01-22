@@ -47,9 +47,11 @@ You will need to modify the runtime config file later.
 
 ### Systemd
 
-<Callout type="info">
+:::info
+
 If you are not using Systemd, you can skip this step
-</Callout>
+
+:::
 
 1. Ensure that you pulled the latest changes from [flow-go repository](https://github.com/onflow/flow-go) via `git`
 
@@ -252,11 +254,11 @@ docker run --rm \
 
 Now that your node is provisioned and configured, it can be started.
 
-<Callout type="warning">
+:::warning
 
 Before starting your node, ensure it is [registered](./node-bootstrap.md#step-2---stake-your-node) and [authorized](./node-bootstrap.md#confirming-authorization).
 
-</Callout>
+:::
 
 Ensure you start your node at the appropriate time.
 See [Spork Process](./spork.md) for when to start up a node following a spork.

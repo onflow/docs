@@ -9,9 +9,11 @@ It only supports having one node or delegator object per account and is not supp
 and will likely not be supported by other wallets, so it is recommended to use the staking collection
 instead.
 
-<Callout type="warning">
+:::warning
+
 This guide covers staking with **FLOW tokens**.
-</Callout>
+
+:::
 
 # Staking
 

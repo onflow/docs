@@ -22,30 +22,32 @@ for a guide to joining the network for the first time.
 
 Once the spork start has been announced on, stop your node and clear your database. The node should stay stopped for the duration of the spork.
 
-<Callout type="warning">
+:::warning
+
   You can skip this step if it is your first time running a node on Flow.
-</Callout>
+
+:::
 
 1. Stop your Flow node
 2. Clear the contents of your `data` directory that you have previously created. The default location is `/var/flow/data`. The `data` directory contains the Flow chain state.
 
-<Callout type="warning">
+:::warning
 
 If you had a previous node running on **mainnet 16**, you'll need to turn it
 off just before joining the updated network and re-start your node with the
 updated configuration. Refer to Discord communications for guidance during the spork.
 
-</Callout>
+:::
 
 ## Step 2 - Start Your Node
 
 Once you receive an announcement that the spork process is complete (via Discord), you will need to fetch the genesis info, update your runtime configuration and then boot your Flow node up!
 
-<Callout type="warning">
+:::warning
 
 The Flow team will provide you a new token `PULL_TOKEN` to pull the genesis info from. (Please do NOT use the original Token that you used in Step 1) The `YOUR_NODE_TYPE` must be the same ones that you used when initially [setting up your node](./node-bootstrap.md#generate-your-node-keys)
 
-</Callout>
+:::
 
 1. Run the transit script to fetch the new genesis info:
    `./boot-tools/transit pull -b ./bootstrap -t ${PULL_TOKEN} -r ${YOUR_NODE_TYPE}`

@@ -46,9 +46,11 @@ pub contract HelloWorld {
 }
 
 ```
-<Callout type="info">
+:::info
+
 There are no `read` costs associated with calling contracts. 
-</Callout>
+
+:::
 
 Continue to create your own contracts and get them deployed live with Flow CLI!
 

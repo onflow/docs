@@ -4,15 +4,20 @@ sidebar_label: Epoch and Staking Terminology
 description: Important Definitions for Epochs
 ---
 
-<Callout type="warning">
+:::warning
+
   If you haven't read the staking introduction, please read that
   first. That document provides a non-technical overview of staking on Flow for
   all users and is a necessary prerequisite to this document.
-</Callout>
-<Callout type="warning">
+
+:::
+
+:::warning
+
   This document assumes you have some technical knowledge about the Flow
   blockchain and programming environment.
-</Callout>
+
+:::
 
 ## Terminology
 
@@ -46,13 +51,15 @@ that allows them to perform staking operations.
 **Node Identity Table:** The record of all the nodes in the network, and their delegators.
 The identity table keeps separate lists for the info about node operators and delegators.
 
-<Callout type="warning">
+:::warning
+
   NOTE: The staking smart contract does not associate a node or delegator with
   an account address. It associates it with the assigned resource object that
   corresponds to that entry in the contract. There can be any number of these
   objects stored in the same account, and they can be moved to different
   accounts if the owner chooses.
-</Callout>
+
+:::
 
 **Epoch:** The period of time between changes in the identity table and reward payments. 
 (Initially a week, measured in consensus views)

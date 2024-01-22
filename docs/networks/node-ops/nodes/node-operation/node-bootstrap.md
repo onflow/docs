@@ -25,15 +25,19 @@ of the `Epoch Setup Phase` to participate in the [Epoch Preparation Protocol](..
 
 ## Step 1 - Run Genesis Bootstrap
 
-<Callout type="info">
+:::info
+
   You will need to run this process for each node that you are operating
-</Callout>
+
+:::
 
 ### Download the Bootstrapping Kit
 
-<Callout type="warning">
+:::warning
+
 If you have downloaded the bootstrapping kit previously, ensure you check the hash below still matches. If not, re-download to ensure you are using the most up-to-date version.
-</Callout>
+
+:::
 
 ```shell
 curl -sL -O storage.googleapis.com/flow-genesis-bootstrap/boot-tools.tar
@@ -52,31 +56,31 @@ a06e3e9b2443c6755214150e9e101b70dd48ae30ffcfcbbcc471ba430cb104bf  ./boot-tools/t
 
 #### Network Address
 
-<Callout type="info">
+:::info
 
 Use a fully qualified domain name for the network address. Please also include the port number in the network address e.g. `example.com:3569`
 
-</Callout>
+:::
 
-<Callout type="warning">
+:::warning
 
 Do not include in `http://` format.
 
-</Callout>
+:::
 
-<Callout type="info">
+:::info
 
 If you are running multiple nodes, please
 ensure you have different addresses for each node.
 
-</Callout>
+:::
 
-<Callout type="warning">
+:::warning
 
 All your current keys and Flow genesis files should be in the `bootstrap`
 folder created earlier. Please take a back up of the entire folder.
 
-</Callout>
+:::
 
 
 ```shell
@@ -126,12 +130,12 @@ $tree ./bootstrap/
 3 directories, 4 files
 ```
 
-<Callout type="info">
+:::info
 
 For `consensus` and `collection` node types an additional key will be created for the Machine Account.
 For all other node types this will not be needed.
 
-</Callout>
+:::
 
 #### Machine Account Creation
 
@@ -149,11 +153,11 @@ $./boot-tools/bootstrap key --address ${YOUR_NODE_ADDRESS} --role ${YOUR_NODE_RO
 <nil> INF wrote file bootstrap/private-root-information/private-node-info_ab6e0b15837de7e5261777cb65665b318cf3f94492dde27c1ea13830e989bbf9/node-machine-account-key.priv.json
 ```
 
-<Callout type="warning">
+:::warning
 
 Copy the machine account public key somewhere safe. You will need it in a later step.
 
-</Callout>
+:::
 
 ## Step 2 - Stake Your Node
 
@@ -176,19 +180,19 @@ $cat ./bootstrap/public-root-information/node-info.pub.39fa54984b8eaa463e1299194
 If you are running a collection or consensus node, you will need to provide an additional field `Machine Account Public Key`.
 This value is found in the output of the `bootstrap key` command from Step 1.
 
-<Callout type="info">
+:::info
 
 Please let us know your node id via discord or email.
 
-</Callout>
+:::
 
 ### Finalize Machine Account Setup
 
-<Callout type="warning">
+:::warning
 
 If you are not running a collection or consensus node, you can skip this step.
 
-</Callout>
+:::
 
 You will now need to use the `bootstrap` utility to run `machine-account` with the created address to finalize the set up of your Machine account.
 
@@ -285,9 +289,11 @@ This is the recommended way to start your node for the first time.
 ```
 4. Start your node (see [guide](./node-setup#start-the-node))
 
-<Callout type="info">
+:::info
+
 Once the node has bootstrapped, these flags may be removed.
-</Callout>
+
+:::
 
 ### Manually Provisioned Root Snapshot
 
@@ -297,17 +303,17 @@ A snapshot can be obtained from any Access Node using [Flow CLI](../../../../too
 flow snapshot save /path/to/root/snapshot --network mainnet
 ```
 
-<Callout type="warning">
+:::warning
 
 The snapshot must be within the `Epoch Setup Phase`.
 
-</Callout>
+:::
 
-<Callout type="warning">
+:::warning
 
 Since Collection and Consensus Nodes must start up in the first ~30mins of the `Epoch Setup Phase` (see [Timing](./node-bootstrap.md#timing)),
 the snapshot must be provisioned within this time window.
 
-</Callout>
+:::
 
 Once a valid root snapshot file is downloaded to the node's bootstrap folder, it can be started (see [guide](./node-setup.md#start-the-node))

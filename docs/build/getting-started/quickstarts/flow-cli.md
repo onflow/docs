@@ -109,9 +109,11 @@ If you look at `flow.json` now, you'll see its listed access nodes for networks 
 ```
 
 
-<Callout type="info">
+:::info
+
 For additional details on how `flow.json` is configured, [read here.](../../../tools/flow-cli/flow.json/configuration.md)
-</Callout>
+
+:::
 
 ## Running Scripts
 
