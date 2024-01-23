@@ -29,24 +29,30 @@ smooth onboarding UX.
 ## Instant cross-VM token transfers
 
 Flow EVM and Flow environments both use $FLOW token as the gas currency for transactions, drawing from a singular token 
-supply shared across both. A single line of Cadence can transfer $FLOW tokens in the Flow environment to Flow EVM, or 
+supply shared across both. A single line of Cadence can transfer FLOW tokens in the Flow environment to Flow EVM, or 
 vice versa. Other fungible and non-fungible tokens can also be seamlessly transferred between environments using the 
 native cross-VM token bridge, instantly in a single atomic transaction
 
-## Scalability and low gas fees
+## Scalability, performance and low gas fees
+
+Flow’s state space is extensible to the petabyte scale and is the reason why Cadence contracts have standardized on
+storing application data on-chain. This benefit translates directly to Flow EVM allowing contracts to maintain a full 
+working dataset - including metadata - together with contract logic, all at low gas rates. Furthermore, Flow EVM removes
+the 24kb limit on Solidity contracts.
+
+Flow's transaction throughput peaked to 2M daily transactions during 2023 - [TODO] figure framing and focus for performance
 
 ## MEV resilience
 
+[TODO]
 
-## 
+## Composability, innovation and experimentation
 Experimentation and prototyping cross-chain use-cases has never been easier.
 
 Flow EVM introduces a unique and powerful EVM+ builder paradigm unlike any other blockchain.
 
 However, a high degree of composability between Flow EVM and Cadence environments has been facilitated through several 
-means. 
-
-
+means.
 
 
 ## FAQs
@@ -54,8 +60,9 @@ means.
 The genesis state of the "Flow EVM" is empty, thus there are no
 accounts with non-zero balances.
 
-
 with its own dedicated EVM chain-id for Testnet and Mainnet respectively
 
 (reference implementation: Geth v1.13),
 and Flow EVM will continue to integrate future software updates
+
+Point to technical docs
