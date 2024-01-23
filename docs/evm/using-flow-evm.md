@@ -1,7 +1,9 @@
 # Using Flow EVM
 
 Flow EVM has two modes by which it can be used: natively with EVM tooling and/or other standard clients, or otherwise 
-through Cadence. Flow enables the use of advanced features on EVM to augment applications by integrating EVM with Flow. 
+through Cadence. Flow enables the use of advanced features on EVM to augment applications by integrating EVM with Flow
+using Cadence. Developers who wish to use Flow features will need to implement scripts or transactions (but not 
+contracts) to integrate Flow features with Flow EVM. 
 
 ## Connecting Flow Reference Wallet
 
@@ -17,9 +19,30 @@ All versions provide support for both Flow and Flow EVM environments by default.
 Complete the wallet setup once downloaded to get connected to Flow. Using your newly created Flow account you can now 
 setup an EVM account using the following steps: 
 
-1. This [transaction](https://github.com/onflow/flow-evm-bridge/blob/proof-of-concept/cadence/transactions/evm/create_account.cdc) will create a CadenceOwnedAccount which represents the Flow EVM address
+### 1. Create a new [CadenceOwnedAccount](https://github.com/onflow/flow-evm-bridge/blob/proof-of-concept/cadence/transactions/evm/create_account.cdc) which represents a Flow EVM address
+### 2. Fund the new EVM address some FLOW with this simple transaction
+```
+// Example of balance query 
+import EVM from <ServiceAddress>
 
+access(all)
+fun main(bytes: [UInt8; 20]) {
+let addr = EVM.EVMAddress(bytes: bytes)
+let bal = addr.balance()
+}
+```
 
+### 3. Check balance of the EVM address
+```
+// Example of balance query 
+import EVM from <ServiceAddress>
+
+access(all)
+fun main(bytes: [UInt8; 20]) {
+let addr = EVM.EVMAddress(bytes: bytes)
+let bal = addr.balance()
+}
+```
 ## Connecting other Flow-compatible wallets
 
 All Flow-compatible wallets support the running of Flow EVM transactions, when used through Cadence, without any changes. 
@@ -51,4 +74,3 @@ You should now be able to connect to Flow EVM by selecting it from the network l
 Note: while EVM-compatible wallet usage is supported and remains unchanged, users cannot access Flow features using this
 mode due to their lack of Flow-native support. Cross-VM bridging is also not supported for the same reason. When using 
 this mode only Flow EVM tokens for the address represented by the wallet will be available to view.
-
