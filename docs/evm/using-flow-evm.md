@@ -29,7 +29,23 @@ environments within the same UI. They will be limited to Flow assets only.
 ## Connecting an EVM-compatible wallet (eg. Metamask)
 
 Flow EVM supports Metamask and other EVM-compatible wallets out-of-the-box. Flow EVM can be added as a custom network 
-to any EVm-compatible wallet
+to any EVM-compatible wallet.
+
+1. Open the EVM-compatible wallet and locate the Network configuration
+2. Click to add a network
+3. Save network settings
+4. Switch to Flow EVM network
+
+| Name            |        Value         |
+|-----------------|:--------------------:|
+| Network Name    |   Flow EVM Mainnet   |
+| Description     | Flow public mainnet  |
+| RPC Endpoint    | https://evm.flow.com |
+| Chain ID        |         9999         |
+| Currency symbol |         FLOW         |
+| Block Explorer  | https://basescan.org |
+
+You should now be able to connect to Flow EVM by selecting it from the network list. 
 
 Note: while EVM-native usage is supported and remains unchanged, users cannot access Flow features using this mode
 because of lack of Flow-native support on Metamask or other EVM wallets.
