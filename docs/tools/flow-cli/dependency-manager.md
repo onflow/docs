@@ -68,5 +68,5 @@ This will look at all the dependencies you have in your `flow.json`, install the
 
 - After installation, you will have a local folder named `imports` that you should add to `.gitignore`. This folder is where your dependencies will be stored locally.
 - If your contracts change on the network, the Dependency Manager will ask if you want to update the local dependencies in your `imports` folder. The hash saved in the dependency object is used for this check, so don't remove it.
-- Dependencies will function just like contracts. For instance, you can add them to deployments and run `flow project deploy`, as well as import them in your scripts, transactions, and contracts just as you would with a contract you added yourself (e.g., `import "FlowToken"`).
+- Dependencies will function just like contracts. For instance, you can add them to [`deployments` in your `flow.json`](./deployment/deploy-project-contracts.md) and run `flow project deploy`, as well as import them in your scripts, transactions, and contracts just as you would with a contract you added yourself (e.g., `import "FlowToken"`).
 - Core contract aliases will be automatically added for you across all networks.
