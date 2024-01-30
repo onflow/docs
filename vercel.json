@@ -1035,6 +1035,21 @@
       "source": "/build/cadence-migration-guide",
       "destination": "https://cadence-lang.org/docs/cadence-migration-guide",
       "permanent": true
+    },
+    {
+      "source": "/build/building-vs-other-chains",
+      "destination": "/build/differences-vs-evm/flow-primer-for-solidity-devs",
+      "permanent": true
+    },
+    {
+      "source": "/build/advanced-concepts/account-abstraction",
+      "destination": "build/differences-vs-evm/account-abstraction",
+      "permanent": true
+    },
+    {
+      "source": "/build/advanced-concepts/transaction-time/:path*",
+      "destination": "/build/differences-vs-evm/transaction-time/:path*",
+      "permanent": true
     }
   ]
 }

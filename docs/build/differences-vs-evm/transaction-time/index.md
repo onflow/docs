@@ -1,7 +1,7 @@
 ---
 title: Understanding Transaction Time
 sidebar_label: Understanding Transaction Time
-sidebar_position: 2
+sidebar_position: 3
 ---
 
 # Understanding Transaction Time

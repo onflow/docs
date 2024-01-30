@@ -1,11 +1,11 @@
 ---
-sidebar_position: 3
-title: Differences vs. Other Blockchains
+sidebar_position: 1
+title: Differences vs EVM
 sidebar_custom_props:
   icon: ↔️
 ---
 
-This document summarizes the differences you might encounter between building on Flow vs. other blockchains, especially Ethereum. This will be most useful to developers who are already familiar with building on a blockchain system. Check out [Why Flow](./flow.md) for a more beginner-friendly overview of the Flow blockchain.
+This document summarizes the differences you might encounter between building on Flow vs. other blockchains, especially Ethereum. This will be most useful to developers who are already familiar with building on a blockchain system. Check out [Why Flow](../flow.md) for a more beginner-friendly overview of the Flow blockchain.
 
 ## The Flow Account Model
 
@@ -13,17 +13,17 @@ Key pairs establish ownership on blockchains. In other blockchains (e.g. Bitcoin
 
 Flow combines the concepts of EOAs and Contract Accounts into a single account model and decouples accounts and public keys. Flow accounts are associated with one or more public keys of varying weights that specify interested parties that need to produce valid cryptographic signatures for each transaction authorized by that account.
 
-![Screenshot 2023-08-16 at 16.43.07.png](./basics/_accounts_images/Screenshot_2023-08-16_at_16.43.07.png)
+![Screenshot 2023-08-16 at 16.43.07.png](../basics/_accounts_images/Screenshot_2023-08-16_at_16.43.07.png)
 
 This natively enables interesting use cases, like key revocation, rotation, and multi-signature transactions. All Flow accounts can use network storage (e.g., for deploying contracts and storing resources like NFTs) based on the number of FLOW tokens they hold.
 
 <Callout type="info">
 
-You must run an explicit account creation transaction on Flow to create a new account. [Flow CLI](../tools/flow-cli/accounts/create-accounts.md) can create an account on any network with a given public key.
+You must run an explicit account creation transaction on Flow to create a new account. [Flow CLI](../../tools/flow-cli/accounts/create-accounts.md) can create an account on any network with a given public key.
 
 </Callout>
 
-Check out the [Accounts](./basics/accounts.md) concept document to learn more about Flow accounts.
+Check out the [Accounts](../basics/accounts.md) concept document to learn more about Flow accounts.
 
 ## Smart Contracts
 
@@ -136,7 +136,7 @@ pub fun main(address: Address, collectionPublicPath: PublicPath): [UInt64] {
 }
 ```
 
-Check out [Transactions](./basics/transactions.md) and [Scripts](./basics/scripts.md) to learn more about the concepts. You can also read the Cadence language reference on [Transactions](https://cadence-lang.org/docs/language/transactions) to dive deeper.
+Check out [Transactions](../basics/transactions.md) and [Scripts](../basics/scripts.md) to learn more about the concepts. You can also read the Cadence language reference on [Transactions](https://cadence-lang.org/docs/language/transactions) to dive deeper.
 
 ## Flow Nodes
 
@@ -148,16 +148,16 @@ Access Nodes are the node type that are most useful for developers, as they prov
 - gRPC
     - Mainnet: `access.mainnet.nodes.onflow.org:9000`
     - Testnet: `access.devnet.nodes.onflow.org:9000`
-    - [Specification](../networks/node-ops/nodes/access-api.md)
+    - [Specification](../../networks/node-ops/nodes/access-api.md)
 
 ### Running Your Own Node
 
 If you’re getting started you don’t need to run your own node and you can use the above public nodes. The public access nodes are rate-limited, so as your product matures you might want to run your own node. There are multiple options available:
 
-- Start with a [Light (Observer) Node](../networks/node-ops/nodes/node-operation/observer-node.md).
+- Start with a [Light (Observer) Node](../../networks/node-ops/nodes/node-operation/observer-node.md).
 - You can also use a third-party provider like [Quicknode](https://www.quicknode.com/docs/flow).
 
-Check out [Running a Node](../networks/node-ops/nodes/node-operation/observer-node.md) for more information.
+Check out [Running a Node](../../networks/node-ops/nodes/node-operation/observer-node.md) for more information.
 
 ## SDKs and Tools
 
