@@ -4,7 +4,7 @@ sidebar_label: Accounts
 sidebar_position: 3
 ---
 
-# FlowEVM accounts.
+# Accounts
 
 There are three types of accounts on FlowEVM.
 
