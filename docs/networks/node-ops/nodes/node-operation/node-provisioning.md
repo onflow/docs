@@ -17,7 +17,6 @@ The hardware your Node will need varies depending on the role your Node will pla
 | **Verification** |  2 cores  | 16 GB  | 200 GB | n2-highmem-2   | r6a.large      |
 | **Access**       |  4 cores | 16 GB  | 750 GB | n2-standard-4   | m6i.xlarge     |
 | **Observer**     |  2 cores  | 4 GB   | 300 GB | n2-standard-4  | m6i.xlarge     |
-| **Archive**      | 32 cores  | 800 GB |  2 TB  | m3-ultramem-32 | x2idn.16xlarge |
 
 _Note: The above numbers represent our current best estimate for the state of the network. These will be actively updated as we continue benchmarking the network's performance._
 

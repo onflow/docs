@@ -198,16 +198,6 @@
       "permanent": true
     },
     {
-      "source": "/nodes/archive-access-api",
-      "destination": "/networks/node-ops/nodes/archive-access-api",
-      "permanent": true
-    },
-    {
-      "source": "/nodes/archive-api-rate-limits",
-      "destination": "/networks/node-ops/nodes/archive-api-rate-limits",
-      "permanent": true
-    },
-    {
       "source": "/nodes/flow-port",
       "destination": "/networks/node-ops/nodes/flow-port",
       "permanent": true
@@ -1055,6 +1045,9 @@
       "source": "/build/advanced-concepts/account-linking/:path*",
       "destination": "/build/guildes/account-linking/:path*",
       "permanent": true
+    },
+    {
+      "source": ""
     }
   ]
 }

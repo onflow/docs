@@ -115,26 +115,3 @@ docker run --rm \
 ### Additional Flags
 #### Networking Layer
 All networking layer settings are initialized to default values from the [config/default-config.yml](https://github.com/onflow/flow-go/blob/master/config/default-config.yml) file when the Flow node starts up. Each attribute in this YAML file matches a flag name, allowing you to override the default setting by specifying the corresponding flag in the `docker run` command. For instance, to change the `networking-connection-pruning` setting, use its matching flag name (`networking-connection-pruning`) and desired value in the `docker run` command.
-
-### Archive
-
-```shell
- docker run --rm \
-	-v /path/to/data:/data:rw \
-	--network host \
-	--label=project=flow \
-	--label=network=mainnet
-	--label=app=dps
-	--label=version=v0.26
-	--name flow-dps gcr.io/flow-container-registry/flow-dps-live:v0.26.1
-	--address 0.0.0.0:5005
-	--index /data/index
-	--bootstrap /data/bootstrap
-	--checkpoint /data/bootstrap/root.checkpoint
-	--data /data/protocol
-	--level debug
-	--metrics 0.0.0.0:8080
-	--bucket bucket_name
-	--seed-address=access_node_address
-	--seed-key=seed_key
-```

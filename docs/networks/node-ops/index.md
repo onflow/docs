@@ -43,17 +43,6 @@ To run a light node, follow this [guide](./nodes/node-operation/observer-node.md
 
 :::
 
-## Archive Node
-
----
-
-The Archive node provides a scalable and efficient way to access the history of Flow protocol and the execution state for the current spork. Like the observer node, it too can be run by anyone without being staked or added to the approved list of nodes.
-The Archive node follows the chain, stores and indexes both protocol and execution state, and allows retrieval of blocks, collections, transactions and events from the genesis of the current spork.
-
-It also allows script execution and other read-only queries that require the execution state to be read. It can answer any queries from past data e.g. “what was the Flow account balance at height X?”, where X is several thousand blocks in the past.
-
-_The archive node is currently in beta and will be available as a GA release in H2 2023 (see [here](https://flow.com/post/flow-blockchain-node-operation-archive-node) for more)._
-
 ## Full Node
 
 ---

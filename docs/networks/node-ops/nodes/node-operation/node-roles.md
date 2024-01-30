@@ -54,14 +54,6 @@ An observer node provides locally accessible, continuously updated, verified cop
 
 [Get started running an observer node](./observer-node.md)
 
-## Archive
-
-The Archive node provides a scalable and efficient way to access the history of Flow protocol and the execution state for the current spork.
-
-This node can be run by anyone without being staked or added to the approved list of nodes. The Archive node follows the chain, stores and indexes both protocol and execution state, and allows retrieval of blocks, collections, transactions and events from the genesis of the current spork.
-
-It also allows script execution and other read-only queries that require the execution state to be read.
-
 ##
 
 Here is a comparison of the different node roles,
@@ -74,4 +66,3 @@ Here is a comparison of the different node roles,
 | Verification    | Yes             | Yes              | Yes             |
 | Access          | Yes             | No               | No 🆕           |
 | Observer        | No              | No               | No              |
-| Archive         | No              | No               | No              |
