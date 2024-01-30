@@ -30,9 +30,9 @@ The interactive FlowCLI [command line interface](https://portal.flowevm.com/cli)
 
 We recommend using npx to always get the latest version. Alternatively, you can install the CLI as a global command on your machine:
 
-\`\`\`bash
+```bash
 npm i -g @flowevm-dev/cli
-\`\`\`
+```
 
 ---
 
@@ -42,30 +42,30 @@ You can use the FlowEVM [CLI](https://portal.flowevm.com/cli) to create a new pr
 
 To create a new project using the CLI, run:
 
-\`\`\`bash
+```bash
 npx flowevm create contract
-\`\`\`
+```
 
 This will kick off an interactive series of questions to help you get started:
 
 - Give your project a name
-- Select \`Hardhat\` as the framework
-- Select \`ERC721\` as the base contract
+- Select `Hardhat` as the framework
+- Select `ERC721` as the base contract
 - Select None for optional [extensions](https://portal.flowevm.com/contractkit/extensions)
 
 ### Exploring the project
 
 The create command generates a new directory with your project name. Open this directory in your text editor.
 
-Inside the \`contracts\` folder, you'll find a \`Contract.sol\` file; this is our smart contract written in Solidity!
+Inside the `contracts` folder, you'll find a `Contract.sol` file; this is our smart contract written in Solidity!
 
-If we take a look at the code, you can see that our contract is inheriting the functionality of [\`ERC721Base\`](https://portal.flowevm.com/contractkit/base-contracts/erc-721/erc721base), by:
+If we take a look at the code, you can see that our contract is inheriting the functionality of [`ERC721Base`](https://portal.flowevm.com/contractkit/base-contracts/erc-721/erc721base), by:
 
 1. [Importing](https://solidity-by-example.org/import/) the contract
 2. [Inheriting](https://docs.soliditylang.org/en/v0.8.17/contracts.html#inheritance) the contract; by declaring that our contract is ERC721Base
 3. Implementing any [required methods](https://portal.flowevm.com/contractkit/base-contracts/erc-721/erc721base#implementing-the-contract) such as the [constructor](https://docs.soliditylang.org/en/v0.8.17/contracts.html#constructors).
 
-\`\`\`solidity
+```solidity
 // SPDX-License-Identifier: MIT
 pragma solidity ^0.8.0;
 
@@ -79,11 +79,11 @@ contract Contract is ERC721Base {
         uint128 _royaltyBps
     ) ERC721Base(_name, _symbol, _royaltyRecipient, _royaltyBps) {}
 }
-\`\`\`
+```
 
 This inheritance pattern lets us use functionality from other contracts inside of ours, modify it, and add custom logic.
 
-For example, our contract currently implements all of the logic inside the [\`ERC721Base.sol\`](https://github.com/flowevm-dev/contracts/blob/main/contracts/base/ERC721Base.sol) contract; which implements the [\`ERC721A\`](https://github.com/flowevm-dev/contracts/blob/main/contracts/eip/ERC721A.sol) standard with several useful [extensions](https://portal.flowevm.com/contractkit/extensions).
+For example, our contract currently implements all of the logic inside the [`ERC721Base.sol`](https://github.com/flowevm-dev/contracts/blob/main/contracts/base/ERC721Base.sol) contract; which implements the [`ERC721A`](https://github.com/flowevm-dev/contracts/blob/main/contracts/eip/ERC721A.sol) standard with several useful [extensions](https://portal.flowevm.com/contractkit/extensions).
 
 ---
 
@@ -93,9 +93,9 @@ You can use the FlowEVM [CLI](https://portal.flowevm.com/cli) to deploy a smart 
 
 To deploy your smart contracts, from the root directory of your project, run:
 
-\`\`\`bash
+```bash
 npx flowevm deploy
-\`\`\`
+```
 
 Running this command will:
 
@@ -106,16 +106,16 @@ Running this command will:
 
 From the dashboard, you will need to first enter the values for our contract's constructor:
 
-- \`_name\`: The name of our contract
-- \`_symbol\`: The symbol or "ticker" given to our contracts tokens
-- \`_royaltyRecipient\`: The wallet address that will receive the royalties from secondary sales
-- \`_royaltyBps\`: The basis points (bps) that will be given to the royalty recipient for each secondary sale, e.g. 500 = 5%
+- `_name`: The name of our contract
+- `_symbol`: The symbol or "ticker" given to our contracts tokens
+- `_royaltyRecipient`: The wallet address that will receive the royalties from secondary sales
+- `_royaltyBps`: The basis points (bps) that will be given to the royalty recipient for each secondary sale, e.g. 500 = 5%
 
 Finally, select the FlowEVM test network as the [network](https://blog.flowevm.com/guides/which-network-should-you-use/) you want to deploy to, and click **Deploy Now**.
 
 :::info
 
-For production / mainnet deployments select \`FlowEVM\` (mainnet) as the network rather than \`FlowEVM testnet\`.
+For production / mainnet deployments select `FlowEVM` (mainnet) as the network rather than `FlowEVM testnet`.
 
 :::
 
@@ -131,27 +131,27 @@ To interact with your smart contract, you can use the FlowEVM [CLI](https://port
 
 To create a web application preconfigured with the FlowEVM SDK, run:
 
-\`\`\`bash
+```bash
 npx flowevm create app –evm
-\`\`\`
+```
 
 This will kick off an interactive series of questions to help you get started:
 
 - Give your project a name
-- Select [\`Create React App\`](https://reactjs.org/docs/create-a-new-react-app.html#create-react-app) as the framework
-- Select \`TypeScript\` as the language
+- Select [`Create React App`](https://reactjs.org/docs/create-a-new-react-app.html#create-react-app) as the framework
+- Select `TypeScript` as the language
 
 ### Exploring the project
 
 The create command generates a new directory with your project name. Open this directory in your text editor.
 
-Inside the [\`index.tsx\`](https://github.com/flowevm-example/cra-typescript-starter/blob/main/src/index.tsx#L17-L19) file, you'll find the [\`FlowEVMProvider\`](https://portal.flowevm.com/sdk/set-up-the-sdk/frontend#manual-installation) wrapping the entire application.
+Inside the [`index.tsx`](https://github.com/flowevm-example/cra-typescript-starter/blob/main/src/index.tsx#L17-L19) file, you'll find the [`FlowEVMProvider`](https://portal.flowevm.com/sdk/set-up-the-sdk/frontend#manual-installation) wrapping the entire application.
 
-This wrapper allows us to use all of the [React SDK](https://portal.flowevm.com/react)'s hooks and [UI Components](https://portal.flowevm.com/react/react.web3button) throughout the application, as well as configure an \`activeChain\`; which declares which chain our smart contracts are deployed to.
+This wrapper allows us to use all of the [React SDK](https://portal.flowevm.com/react)'s hooks and [UI Components](https://portal.flowevm.com/react/react.web3button) throughout the application, as well as configure an `activeChain`; which declares which chain our smart contracts are deployed to.
 
-Since we deployed our smart contract to the FlowEVM network, we'll set the \`activeChain\` to \`FlowEVMTestnet\`:
+Since we deployed our smart contract to the FlowEVM network, we'll set the `activeChain` to `FlowEVMTestnet`:
 
-\`\`\`javascript
+```javascript
 ...
 import { FlowEVMTestnet } from "@flowevm-dev/chains";
 import { FlowEVMProvider } from "@flowevm-dev/react";
@@ -166,13 +166,13 @@ root.render(
  </React.StrictMode>
 );
 
-\`\`\`
+```
 
 ### Interacting with the contract
 
-To connect to your smart contract in the application, provide your smart contract address (which you can get from the [dashboard](https://portal.flowevm.com/dashboard)) to the [\`useContract\`](https://portal.flowevm.com/sdk/interacting-with-contracts/custom-contracts/getting-a-contract#connect-to-a-contract) hook like so:
+To connect to your smart contract in the application, provide your smart contract address (which you can get from the [dashboard](https://portal.flowevm.com/dashboard)) to the [`useContract`](https://portal.flowevm.com/sdk/interacting-with-contracts/custom-contracts/getting-a-contract#connect-to-a-contract) hook like so:
 
-\`\`\`javascript
+```javascript
 import { useContract } from '@flowevm-dev/react';
 
 export default function Home() {
@@ -180,15 +180,15 @@ export default function Home() {
 
   // Now you can use the contract in the rest of the component!
 }
-\`\`\`
+```
 
-You can now call any function on your smart contract with [\`useContractRead\`](https://portal.flowevm.com/sdk/interacting-with-contracts/custom-contracts/using-contracts#read-contract-data) and [\`useContractWrite\`](https://portal.flowevm.com/sdk/interacting-with-contracts/custom-contracts/using-contracts#write-transactions) hooks.
+You can now call any function on your smart contract with [`useContractRead`](https://portal.flowevm.com/sdk/interacting-with-contracts/custom-contracts/using-contracts#read-contract-data) and [`useContractWrite`](https://portal.flowevm.com/sdk/interacting-with-contracts/custom-contracts/using-contracts#write-transactions) hooks.
 
-For example, you can call \`useContractRead\` to get the name of the contract:
+For example, you can call `useContractRead` to get the name of the contract:
 
-\`\`\`javascript
+```javascript
 const { data, isLoading } = useContractRead(contract, 'name');
-\`\`\`
+```
 
 The FlowEVM SDK also provides hooks for various interfaces and [extensions](https://portal.flowevm.com/contractkit/extensions) that make reading and writing data easier. For example, we could use the [ERC721 hooks](https://portal.flowevm.com/sdk/interacting-with-contracts/erc721) to fetch the metadata for our NFT contract.
 
@@ -198,9 +198,9 @@ For more information on interacting with smart contracts using the FlowEVM SDK, 
 
 To [host your application on IPFS](https://blog.flowevm.com/guides/how-to-host-your-web-app-on-ipfs/), run the following command:
 
-\`\`\`bash
+```bash
 yarn deploy
-\`\`\`
+```
 
 This command uses [Storage](https://portal.flowevm.com/storage) to:
 

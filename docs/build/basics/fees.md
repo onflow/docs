@@ -2,6 +2,12 @@
 sidebar_position: 5
 ---
 
+:::info
+
+For information about Fees on FlowEVM, see the documentation [here](../../evm/Build/fees.md)
+
+:::
+
 # Fees
 
 ## Transaction Fees

@@ -1,6 +1,11 @@
 ---
 sidebar_position: 2
 ---
+:::info
+
+For information about Accounts on FlowEVM, see the documentation [here](../../evm/Build/accounts.md)
+
+:::
 
 # Accounts
 

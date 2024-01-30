@@ -4,6 +4,12 @@ sidebar_label: Fees
 sidebar_position: 2
 ---
 
+:::info
+
+For information about Fees specific to Cadence transactions, see the documentation [here](../../build/basics/fees.md)
+
+:::
+
 # Fees
 
 Transactions on FlowEVM cost FLOW token as gas. For externally owned accounts (EOAs), the interface for paying gas on FlowEVM functions the same as other EVM networks.

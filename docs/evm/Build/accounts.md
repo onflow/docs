@@ -4,6 +4,12 @@ sidebar_label: Accounts
 sidebar_position: 3
 ---
 
+:::info
+
+For information about Accounts on Cadence, see the documentation [here](../../build/basics/accounts.md)
+
+:::
+
 # Accounts
 
 There are three types of accounts on FlowEVM.
