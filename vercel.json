@@ -1050,6 +1050,11 @@
       "source": "/build/advanced-concepts/transaction-time/:path*",
       "destination": "/build/differences-vs-evm/transaction-time/:path*",
       "permanent": true
+    },
+    {
+      "source": "/build/advanced-concepts/account-linking/:path*",
+      "destination": "/build/guildes/account-linking/:path*",
+      "permanent": true
     }
   ]
 }
