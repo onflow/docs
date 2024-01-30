@@ -1,6 +1,6 @@
 ---
-title: React Native Quickstart
-sidebar_label: React Native Quickstart
+title: React Native Development
+sidebar_label: React Native Development
 sidebar_position: 4
 ---
 
