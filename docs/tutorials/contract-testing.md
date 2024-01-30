@@ -10,7 +10,7 @@ Automated tests can be executed both locally in the Flow emulator and on the Flo
 
 Human-driven tests, where individual testers manually navigate through user stories via the project's user interface or custom transactions, can also be performed locally. Similar tests with groups of participants can be conducted on the testnet in a similar manner.
 
-Finally, unstructured closed testing with a limited audience on the testnet can provide valuable insights into performance and security by capturing usage data through more organic interaction with the project's smart contracts over days or weeks.
+Finally, unstructured closed testing with a limited audience on testnet can provide valuable insights into performance and security by capturing usage data through more organic interaction with the project's smart contracts over days or weeks.
 
 ## Testing Requirements
 
