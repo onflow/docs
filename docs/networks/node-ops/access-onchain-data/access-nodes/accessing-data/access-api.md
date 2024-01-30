@@ -21,17 +21,13 @@ The Access Nodes hosted by DapperLabs are accessible at:
 | Testnet     | `access.devnet.nodes.onflow.org:9000`     | `testnet.onflow.org`              | `testnet.onflow.org`         |
 
 #### Mainnet
-##### We are still in the process of aggregating the past chain data but mainnet 5 to mainnet 1 spork data can be retrieved from the Access nodes mentioned [here](../../../nodes/node-operation/spork.md#mainnet)
+##### We are still in the process of aggregating the past chain data but mainnet 5 to mainnet 1 spork data can be retrieved from the Access nodes mentioned [here](../../../node-operation/spork.md#mainnet)
 
 Production network where the Flow blockchain is running. Funds are at risk.
 
 #### Testnet
 
 Our test environment. Funds can be fauceted freely. It is sporked 2 weeks prior to mainnet.
-
-#### Rate limits for Dapper Labs access nodes
-
-Access nodes operated by Dapper Labs are [rate limited](../../../nodes/access-api-rate-limits).
 
 ---
 

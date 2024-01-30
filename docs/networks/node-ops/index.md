@@ -22,11 +22,11 @@ Flow multirole architecture makes it more scalable and provides several node typ
 
 ---
 
-The different types of nodes are described [here](./nodes/node-operation/node-roles.md). As node operator, you can choose to run any of the different types of node that best fits your needs.
+The different types of nodes are described [here](./node-operation/node-roles.md). As node operator, you can choose to run any of the different types of node that best fits your needs.
 
 The nodes are classified as follows,
 
-![Flownodesdiagram.png](nodes/node-operation/Flownodesdiagram.png)
+![Flownodesdiagram.png](./node-operation/Flownodesdiagram.png)
 
 ## Light Node A.K.A. Observer Node
 
@@ -75,7 +75,7 @@ Launch an access node using QuickNode
 
 :::info
 
-To run a self-hosted access node, follow this [guide](./nodes/node-operation/access-node-setup.md)
+To run a self-hosted access node, follow this [guide](./access-onchain-data/access-nodes/access-node-setup.md)
 
 :::
 
@@ -109,8 +109,8 @@ Before proceeding, ensure you have the stake required for your new node and that
 
 To set up a new staked node after it has been authorized by the Flow governance working group, you will need to complete the following steps:
 
-1. [Provision](./nodes/node-operation/node-setup.md) the machine on which your node will run.
+1. [Provision](./node-operation/node-setup.md) the machine on which your node will run.
 
-2. [Generate and register](./nodes/node-operation/node-bootstrap.md) your node identity.
+2. [Generate and register](./node-operation/node-bootstrap.md) your node identity.
 
-3. [Start](./nodes/node-operation/node-bootstrap.md#step-3---start-your-flow-node) your node!
+3. [Start](./node-operation/node-bootstrap.md#step-3---start-your-flow-node) your node!

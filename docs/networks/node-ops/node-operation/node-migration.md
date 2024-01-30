@@ -49,7 +49,7 @@ If the node after migration will be using new staking or networking keys then it
 
 :::warning
 
-Unstaking a node will result in the node [not earning rewards](../../../staking/06-technical-overview.md#staking-operations-available-to-all-stakers) for the next epoch.
+Unstaking a node will result in the node [not earning rewards](../../staking/06-technical-overview.md#staking-operations-available-to-all-stakers) for the next epoch.
 Delegators to the old node will have their tokens unstaked automatically. They will also stop earning rewards unless they withdraw their unstaked tokens and delegate them to a different node.
 
 :::

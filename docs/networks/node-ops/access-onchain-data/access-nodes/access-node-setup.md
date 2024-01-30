@@ -4,7 +4,7 @@ sidebar_label: Access Node Setup
 sidebar_position: 2
 ---
 
-This guide is for running a permissonless Access node on Flow. If you are planning to run a different type of staked node then see [node bootstrap](./node-bootstrap.md).
+This guide is for running a permissonless Access node on Flow. If you are planning to run a different type of staked node then see [node bootstrap](../../node-operation/node-bootstrap.md).
 
 Permissionless Access nodes allow any operator to run a Flow Access node.
 Unlike the other staked nodes, a permissionless access node does not have to be approved by the service account before it can join the network, hence the term "permissionless". The goal is to make all node types permissionless and this is the first step towards achieving that goal.
@@ -31,7 +31,7 @@ Since this deadline may shift slightly from epoch to epoch, we recommend the nod
 
 Confirmation of a new node's inclusion in epoch N+1 is included in the [`EpochSetup` event](../../../staking/05-epoch-scripts-events.md#epochsetup).
 
-![Flow Epoch Schedule](./epoch-startup-order.png)
+![Flow Epoch Schedule](../../node-operation/epoch-startup-order.png)
 
 ## Limitations
 
@@ -49,7 +49,7 @@ To summarize,
 
 :::note
 
-To run an access node you will need to provision a machine or virtual machine to run your node software. Please follow the [node-provisioning](./node-provisioning.md) guide for it.
+To run an access node you will need to provision a machine or virtual machine to run your node software. Please follow the [node-provisioning](../../node-operation/node-provisioning.md) guide for it.
 You can provision the machine before or after your node has been chosen.
 
 :::
@@ -152,14 +152,14 @@ All your private keys should be in the `bootstrap` folder created earlier. Pleas
 
 You need to now register the node on chain by staking the node via [Flow Port](https://port.onflow.org/).
 
-[Here](../../../../networks/flow-port/staking-guide.md) is a guide on how to use Flow port if you are not familiar with it.
+[Here](../../../flow-port/staking-guide.md) is a guide on how to use Flow port if you are not familiar with it.
 If you are staking via a custody provider or would like to directly submit a staking transaction instead follow this [guide](../../../staking/index.md#how-do-i-stake).
 
 Fund you Flow account with at least 100.01 FLOW tokens, which covers the required stake plus the storage deposit.
 
 On Flow port, choose `Stake and Delegate` -> `Start Staking` or `Stake Again` and then choose Access node as the option.
 
-![choose_access_flowport](choose_access_flowport.png)
+![choose_access_flowport](../../node-operation/choose_access_flowport.png)
 
 On the next screen, provide the node details of you node.
 
@@ -179,13 +179,13 @@ $cat ./bootstrap/public-root-information/node-info.pub. e737ec6efbd26ef43bf67691
 
 #### Example
 
-![node_details_permissionless_an](node_details_permissionless_an.png)
+![node_details_permissionless_an](../../node-operation/node_details_permissionless_an.png)
 
 On the next screen, ensure that you stake 100 FLOW token.
 
 #### Example
 
-![transaction_register_node_permissionless_an](transaction_register_node_permissionless_an.png)
+![transaction_register_node_permissionless_an](../../node-operation/transaction_register_node_permissionless_an.png)
 
 Submit the Transaction.
 
@@ -209,15 +209,15 @@ You can check these balances on Flow Port before and after the epoch transition 
 
 When you stake the node, you should see the following on Flow Port under `Stake & Delegate`
 
-![Staked_node](Staked_FlowPort.png)
+![Staked_node](../../node-operation/Staked_FlowPort.png)
 
 After the epoch transition, if you see you token balance under the Staked Amount then your node got chosen.
 
-![Staked_node](Selected_FlowPort.png)
+![Staked_node](../../node-operation/Selected_FlowPort.png)
 
 Instead, if you see that your token balance is under the Unstaked Amount, then your node did not get chosen.
 
-![Unstaked_node](Unstaked_FlowPort.png)
+![Unstaked_node](../../node-operation/Unstaked_FlowPort.png)
 
 ### Check Using Flow CLI
 
@@ -255,7 +255,7 @@ Alternatively, if you can monitor events, look for [the epoch setup event](../..
 
 If your node was selected as part of Step 3, you can now start your node.
 
-First you'll need to provision a machine or virtual machine to run your node software. Please see follow the [node-provisioning](./node-provisioning.md) guide for it.
+First you'll need to provision a machine or virtual machine to run your node software. Please see follow the [node-provisioning](../../node-operation/node-provisioning.md) guide for it.
 
 The access node can be run as a docker container with the following command by replacing `nodeid` with your node ID and adjusting the other parameters as per your setup.
 
@@ -304,7 +304,7 @@ docker run --rm \
   --loglevel=error
 ```
 
-For a more mature setup, it is recommended that you run the container using systemd as described [here](./node-setup.md#systemd)
+For a more mature setup, it is recommended that you run the container using systemd as described [here](../../node-operation/node-setup.md#systemd)
 
 > 🚀 The access node should now be up and running, and you should be able to query the node using Flow CLI or curl,
 
@@ -318,7 +318,7 @@ curl http://localhost/v1/blocks?height=sealed
 
 ## Monitoring and Metrics
 
-The node publishes several Prometheus metrics. See [Monitoring Node Health](./monitoring-nodes.md) to setup node monitoring.
+The node publishes several Prometheus metrics. See [Monitoring Node Health](../../node-operation/monitoring-nodes.md) to setup node monitoring.
 
 ### Node Status
 

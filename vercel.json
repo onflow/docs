@@ -139,7 +139,7 @@
     },
     {
       "source": "/learn/concepts/slashing",
-      "destination": "/networks/node-ops/nodes/node-operation/slashing",
+      "destination": "/networks/node-ops/node-operation/slashing",
       "permanent": true
     },
     {
@@ -184,17 +184,13 @@
     },
     {
       "source": "/access-api",
-      "destination": "/networks/node-ops/nodes/access-api",
+      "destination": "/networks/node-ops/access-onchain-data/access-nodes/accessing-data/access-api",
+      
       "permanent": true
     },
     {
       "source": "/nodes/access-api",
-      "destination": "/networks/node-ops/nodes/access-api",
-      "permanent": true
-    },
-    {
-      "source": "/nodes/access-api-rate-limits",
-      "destination": "/networks/node-ops/nodes/access-api-rate-limits",
+      "destination": "/networks/node-ops/access-onchain-data/access-nodes/accessing-data/access-api",
       "permanent": true
     },
     {
@@ -209,7 +205,7 @@
     },
     {
       "source": "/nodes/node-operation/:path*",
-      "destination": "/networks/node-ops/nodes/node-operation/:path*",
+      "destination": "/networks/node-ops/node-operation/:path*",
       "permanent": true
     },
     {
@@ -639,7 +635,7 @@
     },
     {
       "source": "/node-operation/:path*",
-      "destination": "/networks/node-ops/nodes/node-operation/:path*",
+      "destination": "/networks/node-ops/node-operation/:path*",
       "permanent": true
     },
     {
@@ -768,7 +764,7 @@
     },
     {
       "source": "/building-on-flow/run-and-secure/node-operation/:path",
-      "destination": "/networks/node-ops/nodes/node-operation/:path*",
+      "destination": "/networks/node-ops/node-operation/:path*",
       "permanent": true
     },
     {
@@ -778,7 +774,7 @@
     },
     {
       "source": "/docs/node-roles",
-      "destination": "/networks/node-ops/nodes/node-operation/node-roles",
+      "destination": "/networks/node-ops/node-operation/node-roles",
       "permanent": true
     },
     {
@@ -878,7 +874,7 @@
     },
     {
       "source": "/node-ops/node-operation/:path*",
-      "destination": "/networks/node-ops/nodes/node-operation/:path*",
+      "destination": "/networks/node-ops/node-operation/:path*",
       "permanent": true
     },
     {
@@ -888,7 +884,7 @@
     },
     {
       "source": "/references/run-and-secure/nodes/node-operation/:path*",
-      "destination": "/architecture/node-ops/nodes/node-operation/:path*",
+      "destination": "/architecture/node-ops/node-operation/:path*",
       "permanent": true
     },
     {
@@ -1013,7 +1009,7 @@
     },
     {
       "source": "/references/run-and-secure/node-operation/:path*",
-      "destination": "/architecture/node-ops/nodes/node-operation/:path*",
+      "destination": "/architecture/node-ops/node-operation/:path*",
       "permanent": true
     },
     {
@@ -1049,6 +1045,11 @@
     {
       "source": "/networks/node-ops/nodes/node-operation/observer-node",
       "destination": "/networks/node-ops/access-onchain-data/light-nodes/observer-node",
+      "permanent": true
+    },
+    {
+      "source": "/networks/node-ops/nodes/node-operation/access-node-setup",
+      "destination": "/networks/node-ops/access-onchain-data/access-nodes/access-node-setup",
       "permanent": true
     },
     {

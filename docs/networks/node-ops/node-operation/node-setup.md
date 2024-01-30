@@ -6,7 +6,7 @@ sidebar_position: 12
 ---
 
 This guide is for running a Collection, Consensus, Verification and Execution node.
-If you are planning to run an Access node then refer to [access node setup](./access-node-setup.md).
+If you are planning to run an Access node then refer to [access node setup](../access-onchain-data/access-nodes/access-node-setup.md).
 
 First you'll need to provision a machine or virtual machine to run your node software. Please see follow the [node-provisioning](./node-provisioning.md) guide for it.
 

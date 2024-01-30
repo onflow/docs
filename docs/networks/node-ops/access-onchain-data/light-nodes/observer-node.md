@@ -10,7 +10,7 @@ The light node bootstraps by connecting to an access node and becoming part of t
 
 Since the light node is not staked, it does not produce or execute blocks but instead serves as an _unstaked access node_ that can be easily run on any consumer-grade computer which has enough disk space.
 
-![Observer nodes](../../nodes/node-operation/observer.png)
+![Observer nodes](../../node-operation/observer.png)
 
 ## Who should run a light node?
 
@@ -73,7 +73,7 @@ curl -sL -O storage.googleapis.com/flow-genesis-bootstrap/boot-tools-intel-mac.t
 
 #### Step 3 - Download the root-protocol-state-snapshot.json file for the current spork
 
-The `root-protocol-state-snapshot.json` is generated for each [spork](../../nodes/node-operation/spork.md) and contains the genesis data for that spork.
+The `root-protocol-state-snapshot.json` is generated for each [spork](../../node-operation/spork.md) and contains the genesis data for that spork.
 It is published and made available after each spork. The download location is specified [here](https://github.com/onflow/flow/blob/master/sporks.json) under [rootProtocolStateSnapshot](https://github.com/onflow/flow/blob/master/sporks.json#L16) and can be downloaded as follows,
 
 For mainnet find  the latest spork version from [sporks.json](https://github.com/onflow/flow/blob/master/sporks.json) and then download the `root-protocol-state-snapshot.json` and the signature file for it.
@@ -207,7 +207,7 @@ e.g. querying the REST API endpoint using curl
 curl "http://localhost/v1/blocks?height=sealed"
 ```
 
-The light node, like the other type of Flow nodes, also produces Prometheus metrics that can be used to monitor node health. More on that [here](../../nodes/node-operation/node-setup.md#monitoring-and-metrics)
+The light node, like the other type of Flow nodes, also produces Prometheus metrics that can be used to monitor node health. More on that [here](../../node-operation/node-setup.md#monitoring-and-metrics)
 
 
 ## FAQs
@@ -260,4 +260,4 @@ Access-004:
 * Public Key: `0d1523612be854638b985fc658740fa55f009f3cd49b739961ab082dc91b178ed781ef5f66878613b4d34672039150abfd9c8cfdfe48c565bca053fa4db30bec`
 
 While the public keys remain the same, the hostnames change each spork to include the spork name. Substitute `[current mainnet spork]` and `[current devnet spork]` with the appropriate spork name (e.g. `mainnet20`).
-See [Past Sporks](../../nodes/node-operation/past-sporks.md) for the current spork for each network.
+See [Past Sporks](../../node-operation/past-sporks.md) for the current spork for each network.
