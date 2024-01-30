@@ -106,4 +106,4 @@ async function getValue() {
 }
 ```
 
-For more information on deploying contracts on FlowEVM, see [Deploying a Smart Contract](/guides/deploy-smart-contracts).
+For more information on deploying contracts on FlowEVM, see [Deploying a Smart Contract](../../Build/Guides/Deploy%20Solidity%20Contract/deploy-solidity-contract-with-hardhat.md).
