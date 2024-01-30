@@ -4,6 +4,9 @@ sidebar_label: Flow Interaction Templates (FLIX)
 description: Flow Interaction Templates (FLIX) via the CLI
 sidebar_position: 12
 ---
+
+FLIX helps developers reuse existing Cadence transactions and scripts to easily integrate with existing Cadence smart contracts. Get more information about [Flow Interaction Templates](../../build/advanced-concepts/flix.md)
+
 ## Introduction
 
 The Flow CLI provides a `flix` command with a few sub commands `execute` and `package`. Get familiar with Flow Interaction Templates [(FLIX)](https://github.com/onflow/flips/blob/main/application/20220503-interaction-templates.md). FLIX are a standard for distributing Cadence scripts and transactions, and metadata in a way that is consumable by tooling and wallets. FLIX can be audited for correctness and safety by auditors in the ecosystem.
@@ -25,7 +28,7 @@ Available Commands:
 
 ### Execute
 
-The Flow CLI provides a `flix` command to `execute` FLIX. The Cadence being execute in the FLIX can be a transaciton or script.
+The Flow CLI provides a `flix` command to `execute` FLIX. The Cadence being execute in the FLIX can be a transaction or script.
 
 ```shell
 flow flix execute <query> [<argument> <argument>...] [flags]
@@ -60,7 +63,9 @@ flow flix execute ./multiply.template.json 2 3 --network testnet
 The Flow CLI provides a `flix` command to `package` up generated plain and simple JavaScript. This JavaScript uses FCL (Flow Client Library) to call the cadence the Flow Interaction Templates (FLIX) is based on. 
 
 :::info
+
 Currently, `flix package` command only supports generating FCL (Flow Client Library) specific JavaScript and TypeScirpt, there are plans to support other languages like golang.
+
 :::
 
 
@@ -75,7 +80,7 @@ Generate FLIX json file. This command will take in a Cadence file and produce a 
 
 :::warning
 
-When generating a FLIX template, make sure all contract dependencies have been deployed to the supported networks. Add any aliases to your flow.json that will be needed to populate dependencies. Verify all depenencies have been populated after generating.
+When generating a FLIX template, make sure all contract dependencies have been deployed to the supported networks. Add any aliases to your flow.json that will be needed to populate dependencies. Verify all dependencies have been populated after generating.
 
 :::
 
@@ -96,8 +101,85 @@ pub fun main(): String {
 }
 ```
 
+
+### Cadence Doc Pragma:
+It's recommended to use pragma to set the metadata for the script or transaction. More information on [Cadence Doc Pragma FLIP](https://github.com/onflow/flips/blob/main/application/20230406-interaction-template-cadence-doc.md) 
+
+A pragma is short for "pragmatic information", it's special instructions to convey information to a processor in this case the utility that generates FLIX.
+```cadence
+import "HelloWorld"
+
+#interaction (
+    version: "1.1.0",
+    title: "Update Greeting",
+    description: "Update the greeting on the HelloWorld contract",
+    language: "en-US",
+)
+
+transaction(greeting: String) {
+
+  prepare(acct: AuthAccount) {
+    log(acct.address)
+  }
+
+  execute {
+    HelloWorld.updateGreeting(newGreeting: greeting)
+  }
+}
+
+```
+
+:::info
+Cadence v0.42.7 supports additional Cadence pragma functionality that FlIX utility can use to generate FLIX. It will support parameters "title" and "description".
+:::
+
+
+The resulting json metadata is extracted from Cadence Doc Pragma
+```json
+{
+    "f_type": "InteractionTemplate",
+    "f_version": "1.1.0",
+    "id": "",
+    "data": {
+        "type": "transaction",
+        "interface": "",
+        "messages": [
+            {
+                "key": "title",
+                "i18n": [
+                    {
+                        "tag": "en-US",
+                        "translation": "Update Greeting"
+                    }
+                ]
+            },
+            {
+                "key": "description",
+                "i18n": [
+                    {
+                        "tag": "en-US",
+                        "translation": "Update the greeting on the HelloWorld contract"
+                    }
+                ]
+            }
+        ],
+        "cadence": {},
+        "dependencies": [],
+         "parameters": [
+            {
+                "label": "greeting",
+                "index": 0,
+                "type": "String",
+                "messages": []
+            }
+        ]
+    }
+}
+```
+
+Example of using a prefilled FLIX json file. No need to use Cadence pragma when using a prefilled FLIX json file. This method separates FLIX specific information from the transaction or script Cadence. Use the `flow flix generate` command:
+
 ```shell
-# Generate FLIX json file using cadence transaction or script passing in a pre filled FLIX json file. The json file will get filled out by the `flow flix generate` command
 flow flix generate cadence/scripts/read-helloworld.cdc --pre-fill cadence/templates/read-helloworld.prefill.json --save cadence/templates/read-helloworld.template.json
 ```
 
@@ -110,7 +192,42 @@ pub fun main(): String {
 }
 ```
 
-Example of json prefill file with message metadata
+Example of json prefill file with message metadata:
+```json
+{
+    "f_type": "InteractionTemplate",
+    "f_version": "1.1.0",
+    "id": "",
+    "data": {
+        "type": "script",
+        "interface": "",
+        "messages": [
+            {
+                "key": "title",
+                "i18n": [
+                    {
+                        "tag": "en-US",
+                        "translation": "Get Greeting"
+                    }
+                ]
+            },
+            {
+                "key": "description",
+                "i18n": [
+                    {
+                        "tag": "en-US",
+                        "translation": "Call HelloWorld contract to get greeting"
+                    }
+                ]
+            }
+        ]
+    }
+}
+
+```
+
+The resulting FLIX json file after generation:
+
 ```json
 {
     "f_type": "InteractionTemplate",
@@ -125,7 +242,7 @@ Example of json prefill file with message metadata
                 "i18n": [
                     {
                         "tag": "en-US",
-                        "translation": "Get Gretting"
+                        "translation": "Get Greeting"
                     }
                 ]
             },
@@ -183,7 +300,9 @@ Example of json prefill file with message metadata
 Queries can be a FLIX `url` or `path` to a local FLIX file. This command leverages [FCL](../clients/fcl-js/) which will execute FLIX cadence code. Package files can be generated in JavaScript or TypeScript. 
 
 :::warning
+
 Currently package doesn't support `id`, `name` flix query.
+
 :::
 
 ### Package Usage
@@ -194,7 +313,7 @@ flow flix package transfer-flow --save ./package/transfer-flow.js
 ```
 
 ```shell
-# Geneate package code for a FLIX script using id, since there is no saving file, the result will display in terminal
+# Generate package code for a FLIX script using id, since there is no saving file, the result will display in terminal
 flow flix package bd10ab0bf472e6b58ecc0398e9b3d1bd58a4205f14a7099c52c0640d9589295f 
 ```
 
@@ -281,8 +400,10 @@ export async function transferTokens({amount, to}: TransferTokensParams): Promis
 }
 
 ```
-:::Warning
+:::warning
+
 Notice that fcl v1.9.0 is needed to use FLIX v1.1 templates
+
 :::
 
 ## Resources
@@ -310,7 +431,7 @@ You can pass a `nil` value to optional arguments by executing the flow FLIX exec
 
 Arguments passed to the Cadence script in the Cadence JSON format.
 Cadence JSON format contains `type` and `value` keys and is 
-[documented here](../../build/smart-contracts/cadence-reference/json-cadence-spec.md).
+[documented here](https://cadencelang.dev/docs/1.0/json-cadence-spec).
 
 ## Pre Fill
 
