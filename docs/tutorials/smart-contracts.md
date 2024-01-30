@@ -5,7 +5,7 @@ sidebar_label: Smart Contracts
 
 Decentralized applications (dApps) derive their core functionality from the [smart contracts](https://en.wikipedia.org/wiki/Smart_contract) employed on the blockchain, distinguishing them from centralized application servers and databases. These smart contracts, often termed "on-chain" code, form the foundation of a dApp.
 
-To create a robust model for your dApp, it's crucial to consider the data and logic residing in your smart contracts. A clear distinction between on-chain and off-chain components is essential.
+To create a robust model for your dapp, it's crucial to consider the data and logic residing in your smart contracts. A clear distinction between on-chain and off-chain components is essential.
 
 ## Writing Smart Contracts on Flow
 
