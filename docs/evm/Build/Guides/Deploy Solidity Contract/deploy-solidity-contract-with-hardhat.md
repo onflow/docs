@@ -211,7 +211,7 @@ Finally, run:
 npx hardhat run scripts/deploy.ts --network flowevm-testnet
 ```
 
-The contract will be deployed on the FlowEVM testnet. You can view the deployment status and contract by using a [block explorer]([/community-resources/block-explorers]) and searching for the address returned by your deploy script. If you've deployed an exact copy of the NFT contract above, it will already be verified and you'll be able to read and write to the contract using the web interface.
+The contract will be deployed on the FlowEVM testnet. You can view the deployment status and contract by using a [block explorer](../../../../../../community-resources/block-explorers.md) and searching for the address returned by your deploy script. If you've deployed an exact copy of the NFT contract above, it will already be verified and you'll be able to read and write to the contract using the web interface.
 
 If you'd like to deploy to mainnet, you'll modify the command like so:
 
