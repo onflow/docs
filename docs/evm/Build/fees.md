@@ -12,7 +12,7 @@ For information about Fees specific to Cadence transactions, see the documentati
 
 # Fees
 
-Transactions on FlowEVM cost FLOW token as gas. For externally owned accounts (EOAs), the interface for paying gas on FlowEVM functions the same as other EVM networks.
+Transactions on FlowEVM use the FLOW token as the gas currency. For externally owned accounts (EOAs), the interface for paying gas on FlowEVM functions the same as other EVM networks.
 
 ## Technical Details
 

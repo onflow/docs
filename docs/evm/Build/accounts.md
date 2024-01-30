@@ -21,7 +21,7 @@ EOAs and Contract accounts on FlowEVM function the same as on other EVM networks
 
 Finally, 
 
-3. Cadence owned accounts.
+3. Cadence owned account (COA)
 
 ## Cadence Owned Accounts
 
