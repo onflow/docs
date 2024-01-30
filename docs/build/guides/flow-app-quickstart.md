@@ -1,13 +1,11 @@
 ---
-title: Flow App Quickstart
-sidebar_label: Flow App Quickstart
 description: Building an application on Flow
 sidebar_position: 4
 sidebar_custom_props:
   icon: 🏗️
 ---
 
-# Flow App Quickstart
+# Create a web Dapp on Flow
 
 ---
 
