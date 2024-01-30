@@ -34,7 +34,7 @@ Tests in Go can be authored using [flow-go-sdk](https://github.com/onflow/flow-g
 
 Examples of Go tests can be found in the following projects: [flow-core-contracts](https://github.com/onflow/flow-core-contracts/tree/master/lib/go/test), [flow-nft](https://github.com/onflow/flow-nft/tree/master/lib/go/test), [flow-ft](https://github.com/onflow/flow-ft/tree/master/lib/go/test).
 
-> **Note**: These tests are currently tied to the emulator but can be refactored to run on the testnet.
+> **Note**: These tests are currently tied to the emulator but can be refactored to run on testnet.
 
 ### JavaScript Tests
 
