@@ -27,7 +27,7 @@ To ensure confidence in your development, set up the appropriate local environme
 
 ## Storing Data on Flow
 
-All dApps will store crucial data on the blockchain, with some requiring more extensive data storage, particularly NFT dApps. Consider the following when storing data on the Flow blockchain.
+All dapps will store crucial data on the blockchain, with some requiring more extensive data storage, particularly NFT dapps. Consider the following when storing data on the Flow blockchain.
 
 ### Understanding Your Data
 
