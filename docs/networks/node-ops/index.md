@@ -39,7 +39,7 @@ The observer node is not staked but still provides the same API as the access no
 
 :::info
 
-To run a light node, follow this [guide](./nodes/node-operation/observer-node.md)
+To run a light node, follow this [guide](./access-onchain-data/light-nodes/observer-node.md)
 
 :::
 
@@ -81,7 +81,7 @@ To run a self-hosted access node, follow this [guide](./nodes/node-operation/acc
 
 :::tip
 
-Alternately, instead of running an access node, you can use the [Flow community](./nodes/access-api.md) access nodes or the ones run by any of the other node operators.
+Alternately, instead of running an access node, you can use the [Flow community](./access-onchain-data/access-nodes/accessing-data/access-api.md) access nodes or the ones run by any of the other node operators.
 
 :::
 

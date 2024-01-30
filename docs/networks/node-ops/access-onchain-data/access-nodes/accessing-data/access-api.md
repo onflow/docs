@@ -21,7 +21,7 @@ The Access Nodes hosted by DapperLabs are accessible at:
 | Testnet     | `access.devnet.nodes.onflow.org:9000`     | `testnet.onflow.org`              | `testnet.onflow.org`         |
 
 #### Mainnet
-##### We are still in the process of aggregating the past chain data but mainnet 5 to mainnet 1 spork data can be retrieved from the Access nodes mentioned [here](./node-operation/spork.md#mainnet)
+##### We are still in the process of aggregating the past chain data but mainnet 5 to mainnet 1 spork data can be retrieved from the Access nodes mentioned [here](../../../nodes/node-operation/spork.md#mainnet)
 
 Production network where the Flow blockchain is running. Funds are at risk.
 
@@ -31,7 +31,7 @@ Our test environment. Funds can be fauceted freely. It is sporked 2 weeks prior 
 
 #### Rate limits for Dapper Labs access nodes
 
-Access nodes operated by Dapper Labs are [rate limited](./access-api-rate-limits).
+Access nodes operated by Dapper Labs are [rate limited](../../../nodes/access-api-rate-limits).
 
 ---
 
@@ -850,7 +850,7 @@ message Block {
 | block_seals           | List of [block seals](#block-seal)                                                                                                                                                                                                                                                                                |
 | signatures            | BLS signatures of consensus nodes                                                                                                                                                                                                                                                                                 |
 
-The detailed semantics of block formation are covered in the [block formation guide](../../../build/basics/blocks.md).
+The detailed semantics of block formation are covered in the [block formation guide](../../../../../build/basics/blocks.md).
 
 ### Block Header
 
@@ -978,17 +978,17 @@ message TransactionSignature {
 | authorizers                   | Addresses of the transaction authorizers                                                             |
 | signatures                    | [Signatures](#transaction-signatures) from all signer accounts                                       |
 
-The detailed semantics of transaction creation, signing and submission are covered in the [transaction submission guide](../../../build/basics/transactions.md#signing-a-transaction).
+The detailed semantics of transaction creation, signing and submission are covered in the [transaction submission guide](../../../../../build/basics/transactions.md#signing-a-transaction).
 
 #### Proposal Key
 
-The proposal key is used to specify a sequence number for the transaction. Sequence numbers are covered in more detail [here](../../../build/basics/transactions.md#sequence-numbers).
+The proposal key is used to specify a sequence number for the transaction. Sequence numbers are covered in more detail [here](../../../../../build/basics/transactions.md#sequence-numbers).
 
 | Field           | Description                                                                          |
 | --------------- | ------------------------------------------------------------------------------------ |
 | address         | Address of proposer account                                                          |
 | key_id          | ID of proposal key on the proposal account                                           |
-| sequence_number | [Sequence number](../../../build/basics/transactions.md#sequence-numbers) for the proposal key |
+| sequence_number | [Sequence number](../../../../../build/basics/transactions.md#sequence-numbers) for the proposal key |
 
 #### Transaction Signature
 
@@ -1044,7 +1044,7 @@ message Account {
 
 The `code` and `contracts` fields contain the raw Cadence source code, encoded as UTF-8 bytes.
 
-More information on accounts can be found [here](../../../build/basics/accounts.md).
+More information on accounts can be found [here](../../../../../build/basics/accounts.md).
 
 #### Account Key
 
@@ -1066,13 +1066,13 @@ message AccountKey {
 | --------------- | --------------------------------------------------------------------------------------- |
 | id              | Index of the key within the account, used as a unique identifier                        |
 | public_key      | Public key encoded as bytes                                                             |
-| sign_algo       | [Signature algorithm](../../../build/basics/accounts.md#signature-and-hash-algorithms) |
-| hash_algo       | [Hash algorithm](../../../build/basics/accounts.md#signature-and-hash-algorithms)      |
-| weight          | [Weight assigned to the key](../../../build/basics/accounts.md#account-keys)                 |
-| sequence_number | [Sequence number for the key](../../../build/basics/transactions.md#sequence-numbers)             |
+| sign_algo       | [Signature algorithm](../../../../../build/basics/accounts.md#signature-and-hash-algorithms) |
+| hash_algo       | [Hash algorithm](../../../../../build/basics/accounts.md#signature-and-hash-algorithms)      |
+| weight          | [Weight assigned to the key](../../../../../build/basics/accounts.md#account-keys)                 |
+| sequence_number | [Sequence number for the key](../../../../../build/basics/transactions.md#sequence-numbers)             |
 | revoked         | Flag indicating whether or not the key has been revoked                                 |
 
-More information on account keys, key weights and sequence numbers can be found [here](../../../build/basics/accounts.md).
+More information on account keys, key weights and sequence numbers can be found [here](../../../../../build/basics/accounts.md).
 
 ### Event
 

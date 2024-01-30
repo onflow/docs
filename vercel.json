@@ -1045,6 +1045,21 @@
       "source": "/build/advanced-concepts/account-linking/:path*",
       "destination": "/build/guildes/account-linking/:path*",
       "permanent": true
+    },
+    {
+      "source": "/networks/node-ops/nodes/node-operation/observer-node",
+      "destination": "/networks/node-ops/access-onchain-data/light-nodes/observer-node",
+      "permanent": true
+    },
+    {
+      "source": "/networks/node-ops/nodes/access-api",
+      "destination": "/networks/node-ops/access-onchain-data/access-nodes/accessing-data/access-api",
+      "permanent": true
+    },
+    {
+      "source": "/networks/node-ops/nodes/node-operation/:path*",
+      "destination": "/networks/node-operation/:path*",
+      "permanent": true
     }
   ]
 }
