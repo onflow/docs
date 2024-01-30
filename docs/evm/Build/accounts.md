@@ -6,7 +6,7 @@ sidebar_position: 3
 
 :::info
 
-For information about Accounts on Cadence, see the documentation [here](../../build/basics/accounts.md)
+Are you a Cadence developer looking for information about Accounts on Cadence? If so, check out the Cadence specific documentation [here](../../build/basics/accounts.md)
 
 :::
 

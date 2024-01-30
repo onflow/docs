@@ -6,7 +6,7 @@ sidebar_position: 2
 
 :::info
 
-For information about Fees specific to Cadence transactions, see the documentation [here](../../build/basics/fees.md)
+Are you a Cadence developer looking for information about Accounts on Cadence? If so, check out the Cadence specific documentation [here](../../build/basics/fees.md)
 
 :::
 

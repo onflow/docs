@@ -4,7 +4,7 @@ sidebar_position: 5
 
 :::info
 
-For information about Fees on FlowEVM, see the documentation [here](../../evm/Build/fees.md)
+Are you a EVM developer looking for information about Accounts on FlowEVM? If so, check out the EVM specific documentation [here](../../evm/Build/fees.md)
 
 :::
 
