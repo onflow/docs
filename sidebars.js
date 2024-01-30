@@ -17,6 +17,11 @@ const sidebars = {
   networks: [
     'networks/index',
     {
+      type: 'link',
+      label: 'Network Architecture',
+      href: 'https://jan-bernatik.medium.com/introduction-to-flow-blockchain-7532977c8af8',
+    },
+    {
       type: 'category',
       label: 'Flow Networks',
       link: { type: 'doc', id: 'networks/flow-networks/index' },
