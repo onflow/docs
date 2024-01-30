@@ -1,5 +1,5 @@
 ---
-sidebar_position: 6
+sidebar_position: 1
 description: Store, send, and receive Flow tokens and digital assets securely on the Flow blockchain network. A convenient and safe way to manage and interact with cryptocurrency holdings.
 sidebar_custom_props:
   icon: 🔑

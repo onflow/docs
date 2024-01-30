@@ -293,7 +293,7 @@ const config = {
           {
             to: 'community-resources',
             position: 'left',
-            label: 'Resources',
+            label: 'Ecosystem',
             activeBasePath: '/community-resources',
           },
           {
