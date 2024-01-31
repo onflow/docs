@@ -24,26 +24,46 @@ This process ensures secure and accurate token transfers on the Flow blockchain.
 
 ## Fungible Token Standard
 
-The [Fungible Token Standard](https://github.com/onflow/flow-ft) defines what a fungible token should look like on Flow. Wallets and other platforms need to recognize these tokens, so they adhere to a specific interface, which defines fields like balance, totalSupply, withdraw functionality, and more. This interface ensures that all fungible tokens on Flow have a consistent structure and behavior. [Learn more about interfaces here](https://cadence-lang.org/docs/language/interfaces).
+The [Fungible Token Standard](https://github.com/onflow/flow-ft) defines what a fungible token should look like on Flow. Wallets and other platforms need to recognize these tokens, so they adhere to a specific interface, which defines fields like balance, totalSupply, withdraw functionality, and more. This interface ensures that all fungible tokens on Flow have a consistent structure and behavior. [Learn more about interfaces here](https://developers.flow.com/cadence/language/interfaces).
 
-## Creating Our Project
+## Setting Up a Project
 
-To get started making our fungible token, let's first create a project directory in our terminal and go to it. We'll call it FooToken.
+To start creating an NFT on the Flow blockchain, you'll first need some tools and configurations in place.
+
+### Installing Flow CLI
+
+The **Flow CLI** (Command Line Interface) provides a suite of tools that allow developers to interact seamlessly with the Flow blockchain.
+
+If you haven't installed the Flow CLI yet and have [Homebrew](https://brew.sh/) installed, you can run `brew install flow-cli`. If you don’t have Homebrew, please follow [the installation guide here](https://developers.flow.com/tools/flow-cli/install).
+
+### Initializing a New Project
+
+> 💡 Note: Here is [a link to the completed code](https://github.com/chasefleming/foobar-nft) if you want to skip ahead or reference as you follow along.
+
+Once you have the Flow CLI installed, you can set up a new project using the `flow setup` command. This command initializes the necessary directory structure and a `flow.json` configuration file (a way to configure your project for contract sources, deployments, accounts, and more):
 
 ```bash
-mkdir FooToken
+flow setup FooToken
+```
+
+Upon execution, the command will generate the following directory structure:
+
+```
+/cadence
+    /contracts
+    /scripts
+    /transactions
+    /tests
+flow.json
+```
+
+Now, navigate into the project directory:
+
+```bash
 cd FooToken
 ```
 
-Next, we'll initialize a project using the Flow CLI, which will create a configuration file named **`flow.json`**. This file configures the Flow CLI for the Flow blockchain, handling settings such as network details, accounts, and contracts. 
-
-If you haven't installed the Flow CLI yet and have [homebrew](https://brew.sh/) installed you can run `brew install flow-cli`. If you don’t have homebrew, please follow [the installation guide here](../../tools/flow-cli/install.md).
-
-```bash
-flow init
-```
-
-In our `flow.json` for the network we want to use, we are going to state the address the Fungible Token is deployed to via `aliases` in a new `contracts` section. Since it is a standard contract, it has already been deployed to the emulator, a tool that runs and emulates a local development version of the Flow Blockchain, for us. You can find addresses for other networks, like Testnet and Mainnet, on the [Fungible Token Standard repo](https://github.com/onflow/flow-ft).
+In our configuration file, called `flow.json`, for the network we want to use, we are going to state the address the `FungibleToken` contract is deployed to via `aliases` in a new `contracts` section. Since it is a standard contract, it has already been deployed to the emulator, a tool that runs and emulates a local development version of the Flow Blockchain, for us. You can find addresses for other networks, like Testnet and Mainnet, on the [Fungible Token Standard repo](https://github.com/onflow/flow-ft).
 
 ```json
 "contracts": {
@@ -57,13 +77,13 @@ In our `flow.json` for the network we want to use, we are going to state the add
 
 ## Writing Our Token Contract
 
-Next let's create a directory and a file for our new FooToken contract.
+Next let's create a `FooToken` contract at `cadence/contract/FooToken.cdc` using the boilerplate `generate` command from the Flow CLI:
 
 ```bash
-mkdir cadence
-mkdir cadence/contracts
-touch cadence/contracts/FooToken.cdc
+flow generate contract FooToken
 ```
+
+This will create a new file called `FooToken.cdc` in the `contracts` directory. Let's open it up and add some code.
 
 In this contract file, we want to import our `FungibleToken` contract that we've defined in `flow.json`.
 
@@ -76,7 +96,7 @@ In this same file, let's create our contract which implements the `FungibleToken
 ```cadence
 // ...previous code
 
-pub contract FooToken: FungibleToken {
+access(all) contract FooToken: FungibleToken {
   pub var totalSupply: UFix64
 
   init() {
@@ -92,7 +112,7 @@ Inside of this contract, we'll need to create a resource for a Vault. A resource
 ```cadence
 import "FungibleToken"
 
-pub contract FooToken: FungibleToken {
+access(all) contract FooToken: FungibleToken {
     // ...totalSupply code
 
     pub resource Vault: FungibleToken.Provider, FungibleToken.Receiver, FungibleToken.Balance {
@@ -112,7 +132,7 @@ In order to give an account a vault, we need to create a function that creates a
 ```cadence
 import "FungibleToken"
 
-pub contract FooToken: FungibleToken {
+access(all) contract FooToken: FungibleToken {
     // ...other code
 
     pub fun createEmptyVault(): @FooToken.Vault {
@@ -128,7 +148,7 @@ The standard also wants us to implement the events required for creating a token
 ```cadence
 import "FungibleToken"
 
-pub contract FooToken: FungibleToken {
+access(all) contract FooToken: FungibleToken {
     
     pub event TokensInitialized(initialSupply: UFix64)
     pub event TokensWithdrawn(amount: UFix64, from: Address?)
@@ -143,7 +163,7 @@ Inside our `Vault` resource, we also need a way to withdraw balances. To do that
 ```cadence
 import "FungibleToken"
 
-pub contract FooToken: FungibleToken {
+access(all) contract FooToken: FungibleToken {
 
     // ...previous code
 
@@ -165,12 +185,12 @@ pub contract FooToken: FungibleToken {
 }
 ```
 
-In addition to withdrawing, the vault also needs a way to deposit. We'll again emit the appropriate event, as well as [typecast](https://cadence-lang.org/docs/language/operators#casting-operators) to make sure we are dealing with the correct token, update the vault balance, and destroy the vault. We also need to set the balance to 0 in the current vault so that the destroy method is not triggered. Add this code to your resource:
+In addition to withdrawing, the vault also needs a way to deposit. We'll again emit the appropriate event, as well as [typecast](https://developers.flow.com/cadence/language/operators#casting-operators) to make sure we are dealing with the correct token, update the vault balance, and destroy the vault. We also need to set the balance to 0 in the current vault so that the destroy method is not triggered. Add this code to your resource:
 
 ```cadence
 import "FungibleToken"
 
-pub contract FooToken: FungibleToken {
+access(all) contract FooToken: FungibleToken {
 
     // ...previous code
 
@@ -201,7 +221,7 @@ The destroy call is an important thing to handle though since if anyone ever doe
 ```cadence
 import "FungibleToken"
 
-pub contract FooToken: FungibleToken {
+access(all) contract FooToken: FungibleToken {
 
     // ...previous code
 
@@ -228,7 +248,7 @@ If we want the ability to create new tokens, we'll need a way to mint them. To d
 ```cadence
 import "FungibleToken"
 
-pub contract FooToken: FungibleToken {
+access(all) contract FooToken: FungibleToken {
 
     // ...additional contract code
 
@@ -250,7 +270,7 @@ We also want to decide which account/s we want to give this ability to. In our e
 ```cadence
 import "FungibleToken"
 
-pub contract FooToken: FungibleToken {
+access(all) contract FooToken: FungibleToken {
 
     // ...additional contract code
 
@@ -266,7 +286,7 @@ After each of these steps, your `FooToken.cdc` contract file should now look lik
 ```cadence
 import "FungibleToken"
 
-pub contract FooToken: FungibleToken {
+access(all) contract FooToken: FungibleToken {
 
     pub event TokensInitialized(initialSupply: UFix64)
     pub event TokensWithdrawn(amount: UFix64, from: Address?)
@@ -351,23 +371,22 @@ Open a new terminal and run the following to deploy your project:
 flow project deploy
 ```
 
-Congrats, you've deployed your contract to the Flow Blockchain emulator. To read more about deploying your project to other environments, see the [CLI docs](../../tools/flow-cli/deployment/deploy-project-contracts.md).
+Congrats, you've deployed your contract to the Flow Blockchain emulator. To read more about deploying your project to other environments, see the [CLI docs](https://developers.flow.com/tools/flow-cli/deployment/deploy-project-contracts).
 
 ## Reading the Token’s Total Supply
 
-Let's now check that our total supply was initialized with 1,000 FooTokens. Go ahead and create a new directory and script file called `TotalSupply.cdc`.
+Let's now check that our total supply was initialized with 1,000 FooTokens. Go ahead and create a script called `TotalSupply.cdc` using the `generate` command.
 
 ```bash
-mkdir cadence/scripts
-touch cadence/scripts/TotalSupply.cdc
+flow generate script TotalSupply
 ```
 
-In `TotalSupply.cdc`, let's add this code which will log the `totalSupply` value from the `FooToken` contract:
+In `cadence/scripts/TotalSupply.cdc` (which was just created), let's add this code which will log the `totalSupply` value from the `FooToken` contract:
 
 ```cadence
 import "FooToken"
 
-pub fun main() {
+access(all) fun main() {
   log(FooToken.totalSupply)
 }
 ```
@@ -380,20 +399,19 @@ flow scripts execute cadence/scripts/TotalSupply.cdc
 
 In the terminal where you started the emulator, you should see `1000.0`
 
-To learn more about running scripts using Flow CLI, [see the docs](../../tools/flow-cli/scripts/execute-scripts.md).
+To learn more about running scripts using Flow CLI, [see the docs](https://developers.flow.com/tools/flow-cli/scripts/execute-scripts).
 
 ## Giving Accounts the Ability to Receive Tokens
 
 On Flow, newly created accounts cannot receive arbitrary assets. They need to be initialized to receive resources. In our case, we want to give accounts tokens and we’ll need to create a `Vault` (which acts as a receiver) on each account that we want to have the ability to receive tokens. To do this, we'll need to run a transaction which will create the vault and set it in their storage using the `createEmptyVault` function we created earlier on the contract.
 
-Let's first create the file for this transaction called `CreateVault.cdc`:
+Let's first create the file at `cadence/transactions/CreateVault.cdc` using the `generate` command:
 
 ```bash
-mkdir cadence/transactions
-touch cadence/transactions/CreateVault.cdc
+flow generate transaction CreateVault
 ```
 
-Then add this code to it. This will call the `createEmptyVault` function, save it in storage, and create a capability for the vault which will later allow us to read from it (To learn more about capabilities, see [the Cadence docs here](https://cadence-lang.org/docs/language/capabilities)).
+Then add this code to it. This will call the `createEmptyVault` function, save it in storage, and create a capability for the vault which will later allow us to read from it (To learn more about capabilities, see [the Cadence docs here](https://developers.flow.com/cadence/language/capabilities)).
 
 ```cadence
 import "FooToken"
@@ -431,16 +449,16 @@ To call our create vault transaction from the CLI, we'll run the following:
 flow transactions send ./cadence/transactions/CreateVault.cdc --signer test-acct --network emulator
 ```
 
-To learn more about running transactions using CLI, [see the docs](../../tools/flow-cli/transactions/send-transactions.md).
+To learn more about running transactions using CLI, [see the docs](https://developers.flow.com/tools/flow-cli/transactions/send-transactions).
 
 ## Reading a Vault’s Balance
 
 Let's now read the balance of the newly created account (`test-acct`) to check it's zero.
 
-Create this new script file `ReadVaultBalance.cdc`:
+Create this new script file `cadence/scripts/ReadVaultBalance.cdc`:
 
 ```bash
-touch cadence/scripts/ReadVaultBalance.cdc
+flow generate script ReadVaultBalance
 ```
 
 Add this code which attempts to borrow the capability from the account requested and logs the vault balance if permitted:
@@ -449,7 +467,7 @@ Add this code which attempts to borrow the capability from the account requested
 import "FooToken"
 import "FungibleToken"
 
-pub fun main(account: Address) {
+access(all) fun main(account: Address) {
   let vault = getAccount(account).getCapability(/public/Vault)
 	  .borrow<&FooToken.Vault{FungibleToken.Balance}>()
 	  ?? panic("Can't borrow public Vault")
@@ -470,10 +488,10 @@ You should see a balance of zero logged.
 
 Now that we have an account with a vault, let's mint some tokens into it using the Minter we created on the contract account.
 
-To do this, let's create a new transaction file called `Minter.cdc`:
+To do this, let's create a new transaction file `cadence/transactions/Minter.cdc`:
 
 ```bash
-touch cadence/transactions/Minter.cdc
+flow generate transaction Minter
 ```
 
 Next, let's add the following code to the `Minter.cdc` file. This code will attempt to borrow the minting capability and mint 20 new tokens into the receivers account.
@@ -518,10 +536,10 @@ It should now say 20 tokens are in the vault.
 
 The final functionality we'll add is the ability to transfer tokens from one account to another.
 
-To do that, create a new `Transfer.cdc` transaction file:
+To do that, create a new `cadence/transactions/Transfer.cdc` transaction file:
 
 ```bash
-touch cadence/transactions/Transfer.cdc
+flow generate transaction Transfer
 ```
 
 Let's add the code which states that the signer of the transaction will withdraw from their vault and put it into the receiver's vault which will be passed as a transaction argument.

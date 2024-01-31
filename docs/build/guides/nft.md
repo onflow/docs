@@ -23,7 +23,6 @@ If you haven't installed the Flow CLI yet and have [Homebrew](https://brew.sh/) 
 
 ### Initializing a New Project
 
-
 > 💡 Note: Here is [a link to the completed code](https://github.com/chasefleming/foobar-nft) if you want to skip ahead or reference as you follow along.
 
 Once you have the Flow CLI installed, you can set up a new project using the `flow setup` command. This command initializes the necessary directory structure and a `flow.json` configuration file (a way to configure your project for contract sources, deployments, accounts, and more):
@@ -49,16 +48,16 @@ Now, navigate into the project directory:
 cd foobar-nft
 ```
 
-To begin, let's create a contract file named `FooBar` for the `FooBar` token, which will be the focus of this tutorial:
+To begin, let's create a contract file named `FooBar` for the `FooBar` token, which will be the focus of this tutorial. To do this, we can use the boilerplate `generate` command from the Flow CLI:
 
 ```bash
-touch cadence/contracts/FooBar.cdc
+flow generate contract FooBar
 ```
 
-With the contract file in place, you can now set up the basic contract structure:
+This will create a new file at `cadence/contracts/FooBar.cdc` with the following contents:
 
 ```cadence
-pub contract FooBar {
+access(all) contract FooBar {
     init() {}
 }
 ```
@@ -72,7 +71,7 @@ On the Flow blockchain, "[Resources](https://cadence-lang.org/docs/tutorial/reso
 To begin, let's define a basic `NFT` resource. This resource requires an `init` method, which is invoked when the resource is instantiated:
 
 ```cadence
-pub contract FooBar {
+access(all) contract FooBar {
 
     pub resource NFT {
         init() {}
@@ -85,7 +84,7 @@ pub contract FooBar {
 Every resource in Cadence has a unique identifier assigned to it. We can use it to set an ID for our NFT. Here's how you can do that:
 
 ```cadence
-pub contract FooBar {
+access(all) contract FooBar {
 
     pub resource NFT {
         pub let id: UInt64
@@ -102,7 +101,7 @@ pub contract FooBar {
 We also need to keep track of the total supply of NFTs in existance. To do this let’s create a `totalSupply` variable on our contract and increase it by one whenever a new NFT is created. We can set this on the initialization of the NFT using the resource `init` function:
 
 ```cadence
-pub contract FooBar {
+access(all) contract FooBar {
     pub var totalSupply: UInt64
 
     pub resource NFT {
@@ -123,7 +122,7 @@ pub contract FooBar {
 To control the creation of NFTs, it's essential to have a mechanism that restricts their minting. This ensures that not just anyone can create an NFT and inflate its supply. To achieve this, you can introduce an `NFTMinter` resource that contains a `createNFT` function:
 
 ```cadence
-pub contract FooBar {
+access(all) contract FooBar {
 
     // ...[previous code]...
 
@@ -144,7 +143,7 @@ pub contract FooBar {
 In this example, the `NFTMinter` resource will be stored on the contract account's storage. This means that only the contract account will have the ability to mint new NFTs. To set this up, add the following line to the contract's `init` function:
 
 ```cadence
-pub contract FooBar {
+access(all) contract FooBar {
 
     // ...[previous code]...
 
@@ -162,7 +161,7 @@ Storing individual NFTs directly in an account's storage can cause issues, espec
 Start by creating a new resource named `Collection`. This resource will act as a container for your NFTs, storing them in a dictionary indexed by their IDs. Additionally, to ensure that all NFTs within a collection are destroyed when the collection itself is destroyed, you can add a `destroy` function:
 
 ```cadence
-pub contract FooBar {
+access(all) contract FooBar {
 
     // ...[NFT resource code]...
 
@@ -245,7 +244,7 @@ pub resource Collection {
 For security reasons, you might not want to expose all the functions of the Collection to everyone. Instead, you can create an [interface](https://cadence-lang.org/docs/language/interfaces) that exposes only the methods you want to make public. In Cadence, interfaces act as a blueprint for resources and structures, ensuring that certain methods or properties exist. By leveraging these interfaces, you establish clear boundaries and standardized interactions. In this case, you might want to expose only the `deposit` and `getIDs` methods. This interface can then be used to create capabilities, ensuring that only the allowed methods are accessible.
 
 ```cadence
-pub contract FooBar {
+access(all) contract FooBar {
 
     // ...[previous code]...
 
@@ -275,7 +274,7 @@ Begin by importing the token standard into your contract:
 ```cadence
 import "NonFungibleToken"
 
-pub contract FooBar: NonFungibleToken {
+access(all) contract FooBar: NonFungibleToken {
 
     // ...[rest of code]...
 
@@ -293,7 +292,7 @@ For instance, when the contract is initialized, a `ContractInitialized` event sh
 ```cadence
 import "NonFungibleToken"
 
-pub contract FooBar: NonFungibleToken {
+access(all) contract FooBar: NonFungibleToken {
 
     pub event ContractInitialized()
 
@@ -314,9 +313,9 @@ Additionally, when NFTs are withdrawn or deposited, corresponding events should 
 ```cadence
 import "NonFungibleToken"
 
-pub contract FooBar: NonFungibleToken {
+access(all) contract FooBar: NonFungibleToken {
 
-     pub event ContractInitialized()
+    pub event ContractInitialized()
     pub event Withdraw(id: UInt64, from: Address?)
     pub event Deposit(id: UInt64, to: Address?)
 
@@ -435,11 +434,13 @@ You’ll then see a message that says `All contracts deployed successfully`.
 
 ## Creating an NFTCollection
 
-To manage multiple NFTs, you'll need an NFT collection. Start by creating a transaction file for this purpose:
+To manage multiple NFTs, you'll need an NFT collection. Start by creating a transaction file for this purpose (we can use the `generate` command again):
 
 ```bash
-touch cadence/transactions/CreateCollection.cdc
+flow generate transaction CreateCollection
 ```
+
+This creates a transaction file at `cadence/transactions/CreateCollection.cdc`.
 
 Transactions, on the other hand, are pieces of Cadence code that can mutate the state of the blockchain. Transactions need to be signed by one or more accounts, and they can have multiple phases, represented by different blocks of code.
 
@@ -479,10 +480,10 @@ Congratulations! You've successfully created an NFT collection for the `test-acc
 
 To retrieve the NFTs associated with an account, you'll need a script. Scripts are read-only operations that allow you to query the blockchain. They don't modify the blockchain's state, and therefore, they don't require gas fees or signatures (read more about scripts here).
 
-Start by creating a script file:
+Start by creating a script file using the `generate` command again:
 
 ```bash
-touch cadence/scripts/GetNFTs.cdc
+flow generate script GetNFTs
 ```
 
 In this script, import the necessary contracts and define a function that retrieves the NFT IDs associated with a given account:
@@ -491,7 +492,7 @@ In this script, import the necessary contracts and define a function that retrie
 import "FooBar"
 import "NonFungibleToken"
 
-pub fun main(account: Address): [UInt64] {
+access(all) fun main(account: Address): [UInt64] {
     let publicReference = getAccount(account).getCapability(/public/FooBarCollection)
         .borrow<&FooBar.Collection{NonFungibleToken.CollectionPublic}>()
         ?? panic("Could not borrow public reference to FooBar")
@@ -513,7 +514,7 @@ Since you haven't added any NFTs to the collection yet, the result will be an em
 To mint and deposit an NFT into a collection, create a new transaction file:
 
 ```bash
-touch cadence/transactions/DepositNFT.cdc
+flow generate transaction DepositNFT
 ```
 
 In this file, define a transaction that takes a recipient's address as an argument. This transaction will borrow the minting capability from the contract account, borrow the recipient's collection capability, create a new NFT using the minter, and deposit it into the recipient's collection:
@@ -552,10 +553,10 @@ You should now see a value in the `test-acct`'s collection array!
 
 ## Transferring an NFT to Another Account
 
-To transfer an NFT to another account, create a new transaction file:
+To transfer an NFT to another account, create a new transaction file using `generate`:
 
 ```bash
-touch cadence/transactions/TransferNFT.cdc
+flow generate transaction TransferNFT
 ```
 
 In this file, define a transaction that takes a recipient's address and the ID of the NFT you want to transfer as arguments. This transaction will borrow the sender's collection, get the recipient's capability, withdraw the NFT from the sender's collection, and deposit it into the recipient's collection:
@@ -606,11 +607,11 @@ flow scripts execute cadence/scripts/GetNFTs.cdc 0x123
 
 Many NFT projects include metadata associated with the NFT, such as a name, description, or image. However, different projects might store this metadata in various formats. To ensure compatibility across the Flow ecosystem, Flow uses `MetadataViews` to standardize the representation of this metadata.
 
-There are two types of Metadata Views: NFT level and contract level. In this guide, we’ll show you how to implement the most basic display, but for a deeper dive into what is possible, check out the [MetadataViews API doc](../../references/core-contracts/flow-nft/MetdataViews/MetadataViews.md).
+There are two types of Metadata Views: NFT level and contract level. In this guide, we’ll show you how to implement the most basic display, but for a deeper dive into what is possible, check out the [MetadataViews API doc](../../build/core-contracts/flow-nft/MetdataViews/MetadataViews.md).
 
 ### NFT Metadata
 
-For the NFT metadata, you'll add a simple `MetadataView` called `Display`, which includes a `name`, `description`, and `thumbnail`. This format is common for many NFT projects. (For more details, refer to the [Display documentation](../../references/core-contracts/flow-nft/MetdataViews/MetadataViews.md#display)).
+For the NFT metadata, you'll add a simple `MetadataView` called `Display`, which includes a `name`, `description`, and `thumbnail`. This format is common for many NFT projects. (For more details, refer to the [Display documentation](../../build/core-contracts/flow-nft/MetdataViews/MetadataViews.md#display)).
 
 Start by importing the `MetadataViews` contract into your `FooBar` contract:
 
@@ -679,7 +680,7 @@ import "NonFungibleToken"
 import "MetadataViews"
 import "ViewResolver"
 
-pub contract FooBar: NonFungibleToken, ViewResolver {
+access(all) contract FooBar: NonFungibleToken, ViewResolver {
     //...[contract code]...
 }
 ```
@@ -687,7 +688,7 @@ pub contract FooBar: NonFungibleToken, ViewResolver {
 Just like the NFT (except at a contract level), we’ll add functions for `getView` which returns the `Display` and `resolveViews` which tells it how to get the `Display` values:
 
 ```cadence
-pub contract FooBar: NonFungibleToken, ViewResolver {
+access(all) contract FooBar: NonFungibleToken, ViewResolver {
 
 //...[all code above contract init]...
 
@@ -741,5 +742,5 @@ Congrats, you did it! You’re now ready to launch the next fun NFT project on F
 - Explore [an example NFT repository](https://github.com/nvdtf/flow-nft-scaffold/blob/main/cadence/contracts/exampleNFT/ExampleNFT.cdc)
 - Watch a [video tutorial on creating an NFT project in the Flow Playground](https://www.youtube.com/watch?v=bQVXSpg6GE8)
 - Dive into the details of [the NFT Standard](https://github.com/onflow/flow-nft)
-- For a deeper dive into `MetadataViews`, consult the [introduction guide](../advanced-concepts/metadata-views.md), [API documentation](https://developers.flow.com/references/core-contracts/flow-nft/MetdataViews/MetadataViews#docusaurus_skipToContent_fallback) or [the FLIP that introduced this feature](https://github.com/onflow/flips/blob/main/application/20210916-nft-metadata.md).
+- For a deeper dive into `MetadataViews`, consult the [introduction guide](../advanced-concepts/metadata-views.md), [API documentation](https://developers.flow.com/build/core-contracts/flow-nft/MetdataViews/MetadataViews#docusaurus_skipToContent_fallback) or [the FLIP that introduced this feature](https://github.com/onflow/flips/blob/main/application/20210916-nft-metadata.md).
 - Use a [no code tool for creating NFT projects on Flow](https://www.touchstone.city/)

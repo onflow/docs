@@ -237,6 +237,17 @@ const config = {
   themeConfig:
     /** @type {import('@docusaurus/preset-classic').ThemeConfig} */
     ({
+      announcementBar: {
+        id: 'support_us',
+        content: `⚠ Upgrade to Cadence 1.0<br />
+          The Crescendo network upgrade, including Cadence 1.0, is coming soon.
+          You most likely need to update all your contracts/transactions/scripts to support this change.<br />
+          Please visit our migration guide here:
+          <a href="https://cadence-lang.org/docs/cadence-migration-guide">https://cadence-lang.org/docs/cadence-migration-guide</a>`,
+        backgroundColor: '#F27360',
+        textColor: '#FFFFFF',
+        isCloseable: true,
+      },
       colorMode: {
         defaultMode: 'dark',
       },
@@ -262,9 +273,10 @@ const config = {
             activeBasePath: '/build',
           },
           {
-            href: 'https://cadence-lang.org/docs/',
+            to: 'evm/about',
             position: 'left',
-            label: 'Cadence',
+            label: 'EVM',
+            activeBasePath: '/evm',
           },
           {
             to: 'tools/flow-cli',
@@ -273,16 +285,10 @@ const config = {
             activeBasePath: '/tools',
           },
           {
-            to: 'architecture',
+            to: 'networks/flow-networks',
             position: 'left',
-            label: 'Architecture',
-            activeBasePath: '/architecture',
-          },
-          {
-            to: 'references',
-            position: 'left',
-            label: 'References',
-            activeBasePath: '/references',
+            label: 'Networks',
+            activeBasePath: '/networks',
           },
           {
             to: 'community-resources',
@@ -401,7 +407,7 @@ const config = {
                 label: 'Cadence Cookbook',
               },
               {
-                to: '/references/core-contracts/',
+                to: '/build/core-contracts/',
                 label: 'Core Contracts & Standards',
               },
               {
@@ -426,19 +432,19 @@ const config = {
                 label: 'Flowdiver Testnet',
               },
               {
-                to: '/architecture/node-ops/nodes/node-operation/past-sporks',
+                to: '/networks/node-ops/nodes/node-operation/past-sporks',
                 label: 'Past Sporks',
               },
               {
-                to: '/architecture/node-ops/nodes/node-operation/upcoming-sporks',
+                to: '/networks/node-ops/nodes/node-operation/upcoming-sporks',
                 label: 'Upcoming Sporks',
               },
               {
-                to: '/architecture/node-ops',
+                to: '/networks/node-ops',
                 label: 'Node Operation',
               },
               {
-                to: '/architecture/node-ops/nodes/node-operation/spork',
+                to: '/networks/node-ops/nodes/node-operation/spork',
                 label: 'Spork Information',
               },
             ],
