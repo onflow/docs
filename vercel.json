@@ -1024,7 +1024,7 @@
     },
     {
       "source": "/build/building-vs-other-chains",
-      "destination": "/build/differences-vs-evm/flow-primer-for-solidity-devs",
+      "destination": "/build/differences-vs-evm",
       "permanent": true
     },
     {
