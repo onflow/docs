@@ -9,9 +9,9 @@ sidebar_position: 1
 
 Anyone can run an [observer node](../access-onchain-data/light-nodes/observer-node.md).
 
-Very soon, Access nodes too will be permissionless and anyone will be able to run one.
+Anyone can run an Access Node after registering and staking. See [Access Node Setup](./access-node-setup.md) for detailed instructions.
 
-For the other node types, individuals can go through an application process that involves asking about their background and experience contributing to decentralized projects. To pursue an application, please visit [the Flow website here to apply](https://www.onflow.org/node-validators).
+For the other node roles, individuals can go through an application process that involves asking about their background and experience contributing to decentralized projects. To pursue an application, please visit [the Flow website here to apply](https://www.onflow.org/node-validators).
 
 Pending approval, new node operators will be onboarded and invited to join a webinar to meet the team and share more about how they’ll grow the community. Node Operators are invited to join and participate in Flow's Node Validator Discord channel for setup questions and network announcements.
 

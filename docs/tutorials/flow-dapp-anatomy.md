@@ -10,11 +10,11 @@ The diagram below outlines the components of a typical dapp built on the Flow bl
 
 ## Dapp Client
 
-The dapp client is the interface through which users interact with your dapp. Web and mobile applications are common examples of dapp clients.
+The dapp client serves as the interface through which users interact with your dapp. Common examples include web and mobile applications.
 
 ## Smart Contract
 
-A smart contract is a collection of code, deployed to a permanent location on the blockchain, that defines the core logic for a dapp.
+A smart contract is a collection of code deployed to a permanent location on the blockchain. It defines the core logic for a dapp.
 
 ## User Account
 
@@ -30,10 +30,10 @@ A state query is a request made to the blockchain that returns information about
 
 ## User Wallet
 
-A user wallet is software or hardware that controls access to a user’s account on the blockchain. The application client typically connects to the user’s wallet in order to send transactions to the blockchain. In many cases, the dapp physically transmits the transaction to the blockchain on behalf of the user. However, it’s important to note that the wallet has final say on what is signed or not, and therefore, has control over any transactions that interact with the user’s account.
+A user wallet, whether software or hardware, controls access to a user’s account on the blockchain. The application client typically connects to the user’s wallet to send transactions to the blockchain. In many cases, the dapp physically transmits the transaction to the blockchain on behalf of the user. However, it’s important to note that the wallet has the final say on what is signed or not, and therefore, has control over any transactions that interact with the user’s account.
 
 ## Flow Client Library (FCL)
 
 The Flow Client Library is a framework that provides a standard interface to connect client applications and user wallets.
 
-THanks for reading and happy hacking! 🚀
+Thanks for reading and happy hacking! 🚀
