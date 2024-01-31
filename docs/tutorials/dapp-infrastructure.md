@@ -33,7 +33,7 @@ Events are data objects emitted at the end of a transaction, describing the stat
 
 Events can notify your off-chain infrastructure of important state changes in your smart contracts. For instance, if a user purchases an NFT from your storefront smart contract, an event will be emitted describing this purchase. Your web application, displaying the NFTs for sale, can capture that event and remove the NFT from the sale list.
 
-Events can be queried through the Flow Access API using the available [Flow SDKs](../tools/clients/index.md). Event data is returned in [JSON-Cadence format](../build/cadence-reference/json-cadence-spec.md).
+Events can be queried through the Flow Access API using the available [Flow SDKs](../tools/clients/index.md). Event data is returned in [JSON-Cadence format](https://cadencelang.dev/docs/1.0/json-cadence-spec).
 
 #### Event Reflection Database
 
