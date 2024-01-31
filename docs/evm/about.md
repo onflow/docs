@@ -21,7 +21,7 @@ With EVM equivalency, Solidity developers from the Ethereum ecosystem can effort
 - **Enhanced Functionality**:
     - Compose assets and functionality using a shared world state and [Cadence contracts](https://cadence-lang.org/).
     - Conduct multiple contract interactions atomically.
-    - Tap in to [Capabilities](https://cadence-lang.org/docs/tutorial/capabilities) for zero-transfer access ([Account Linking](https://developers.flow.com/build/advanced-concepts/account-linking)).
+    - Tap in to [Capabilities](https://cadence-lang.org/docs/tutorial/capabilities) for zero-transfer access ([Account Linking](../build/guides/account-linking/index.md)).
 - **Gas Fees**: Transactions are extremely low-cost and denominated in FLOW.
 
 ## Learn More and Join the Conversation

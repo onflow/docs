@@ -1029,7 +1029,7 @@
     },
     {
       "source": "/build/advanced-concepts/account-abstraction",
-      "destination": "build/differences-vs-evm/account-abstraction",
+      "destination": "/build/differences-vs-evm/account-abstraction",
       "permanent": true
     },
     {
