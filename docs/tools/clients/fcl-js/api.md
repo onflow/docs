@@ -20,18 +20,18 @@ Values only need to be set once. We recommend doing this once and as early in th
 Alternatively, you can set the config by passing a JSON object directly.
 
 ```javascript
-import * as fcl from "@onflow/fcl";
+import * as fcl from '@onflow/fcl';
 
 fcl
   .config() // returns the config instance
-  .put("foo", "bar") // configures "foo" to be "bar"
-  .put("baz", "buz"); // configures "baz" to be "buz"
+  .put('foo', 'bar') // configures "foo" to be "bar"
+  .put('baz', 'buz'); // configures "baz" to be "buz"
 
 // OR
 
 fcl.config({
-  foo: "bar",
-  baz: "buz",
+  foo: 'bar',
+  baz: 'buz',
 });
 ```
 
@@ -40,16 +40,16 @@ fcl.config({
 The `config` instance has an **asynchronous** `get` method. You can also pass it a fallback value.
 
 ```javascript
-import * as fcl from "@onflow/fcl";
+import * as fcl from '@onflow/fcl';
 
-fcl.config().put("foo", "bar").put("woot", 5).put("rawr", 7);
+fcl.config().put('foo', 'bar').put('woot', 5).put('rawr', 7);
 
 const FALLBACK = 1;
 
 async function addStuff() {
-  var woot = await fcl.config().get("woot", FALLBACK); // will be 5 -- set in the config before
-  var rawr = await fcl.config().get("rawr", FALLBACK); // will be 7 -- set in the config before
-  var hmmm = await fcl.config().get("hmmm", FALLBACK); // will be 1 -- uses fallback because this isnt in the config
+  var woot = await fcl.config().get('woot', FALLBACK); // will be 5 -- set in the config before
+  var rawr = await fcl.config().get('rawr', FALLBACK); // will be 7 -- set in the config before
+  var hmmm = await fcl.config().get('hmmm', FALLBACK); // will be 1 -- uses fallback because this isnt in the config
 
   return woot + rawr + hmmm;
 }
@@ -59,17 +59,18 @@ addStuff().then((d) => console.log(d)); // 13 (5 + 7 + 1)
 
 ### Common Configuration Keys
 
-| Name                                   | Example                                              | Description                                                                                                                                                                                    |
-| --------------------------------- | --------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `accessNode.api` **(required)**        | `https://rest-testnet.onflow.org`                  | API URL for the Flow Blockchain Access Node you want to be communicating with. See all available access node endpoints [here](https://developers.onflow.org/http-api/). |
-| `app.detail.title`                     | `Cryptokitties`                                      | Your applications title, can be requested by wallets and other services.                                                                                                                       |
-| `app.detail.icon`                      | `https://fcl-discovery.onflow.org/images/blocto.png` | Url for your applications icon, can be requested by wallets and other services.                                                                                                                |
-| `challenge.handshake`                  | **DEPRECATED**                                       | Use `discovery.wallet` instead.|
-| `discovery.authn.endpoint`             | `https://fcl-discovery.onflow.org/api/testnet/authn` | Endpoint for alternative configurable Wallet Discovery mechanism. Read more on [discovery](#discovery)                                                                                         |
-| `discovery.wallet` **(required)**      | `https://fcl-discovery.onflow.org/testnet/authn`     | Points FCL at the Wallet or Wallet Discovery mechanism.     
-| `discovery.wallet.method`     | `IFRAME/RPC`, `POP/RPC`, `TAB/RPC`, `HTTP/POST`, or `EXT/RPC`     | Describes which service strategy a wallet should use.                                                                                                                                      |
-| `fcl.limit`                         | `100`                                            | Specifies fallback compute limit if not provided in transaction.  Provided as integer.                                                                                      |
-| `flow.network` **(recommended)**                      | `testnet`                                            | Used in conjunction with stored interactions and provides FCLCryptoContract address for `testnet` and `mainnet`. Possible values: `local`, `canarynet`, `testnet`, `mainnet`.                                                                            |
+| Name                              | Example                                                       | Description                                                                                                                                                                   |
+| --------------------------------- | ------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `accessNode.api` **(required)**   | `https://rest-testnet.onflow.org`                             | API URL for the Flow Blockchain Access Node you want to be communicating with. See all available access node endpoints [here](https://developers.onflow.org/http-api/).       |
+| `app.detail.title`                | `Cryptokitties`                                               | Your applications title, can be requested by wallets and other services.                                                                                                      |
+| `app.detail.icon`                 | `https://fcl-discovery.onflow.org/images/blocto.png`          | Url for your applications icon, can be requested by wallets and other services.                                                                                               |
+| `challenge.handshake`             | **DEPRECATED**                                                | Use `discovery.wallet` instead.                                                                                                                                               |
+| `discovery.authn.endpoint`        | `https://fcl-discovery.onflow.org/api/testnet/authn`          | Endpoint for alternative configurable Wallet Discovery mechanism. Read more on [discovery](#discovery)                                                                        |
+| `discovery.wallet` **(required)** | `https://fcl-discovery.onflow.org/testnet/authn`              | Points FCL at the Wallet or Wallet Discovery mechanism.                                                                                                                       |
+| `discovery.wallet.method`         | `IFRAME/RPC`, `POP/RPC`, `TAB/RPC`, `HTTP/POST`, or `EXT/RPC` | Describes which service strategy a wallet should use.                                                                                                                         |
+| `fcl.limit`                       | `100`                                                         | Specifies fallback compute limit if not provided in transaction. Provided as integer.                                                                                         |
+| `flow.network` **(recommended)**  | `testnet`                                                     | Used in conjunction with stored interactions and provides FCLCryptoContract address for `testnet` and `mainnet`. Possible values: `local`, `canarynet`, `testnet`, `mainnet`. |
+
 ## Using Contracts in Scripts and Transactions
 
 ### Address Replacement
@@ -77,45 +78,49 @@ addStuff().then((d) => console.log(d)); // 13 (5 + 7 + 1)
 Configuration keys that start with `0x` will be replaced in FCL scripts and transactions, this allows you to write your script or transaction Cadence code once and not have to change it when you point your application at a difference instance of the Flow Blockchain.
 
 ```javascript
-import * as fcl from "@onflow/fcl"
+import * as fcl from '@onflow/fcl';
 
-fcl.config()
-  .put("0xFungibleToken", "0xf233dcee88fe0abe")
+fcl.config().put('0xFungibleToken', '0xf233dcee88fe0abe');
 
-async function myScript () {
-  return fcl.send([
-    fcl.script`
+async function myScript() {
+  return fcl
+    .send([
+      fcl.script`
       import FungibleToken from 0xFungibleToken // will be replaced with 0xf233dcee88fe0abe because of the configuration
 
       pub fun main() { /* Rest of the script goes here */ }
-    `
-  ]).then(fcl.decode)
+    `,
+    ])
+    .then(fcl.decode);
 }
 
-async function myTransaction () {
-  return fcl.send([
-    fcl.transaction`
+async function myTransaction() {
+  return fcl
+    .send([
+      fcl.transaction`
       import FungibleToken from 0xFungibleToken // will be replaced with 0xf233dcee88fe0abe because of the configuration
 
       transaction { /* Rest of the transaction goes here */ }
-    `
-  ]).then(fcl.decode)
+    `,
+    ])
+    .then(fcl.decode);
 }
 ```
 
 #### Example
 
 ```javascript
-import * as fcl from "@onflow/fcl"
+import * as fcl from '@onflow/fcl';
 
-fcl.config()
-  .put("flow.network", "testnet")
-  .put("accessNode.api", "https://rest-testnet.onflow.org")
-  .put("discovery.wallet", "https://fcl-discovery.onflow.org/testnet/authn")
-  .put("app.detail.title", "Test Harness")
-  .put("app.detail.icon", "https://i.imgur.com/r23Zhvu.png")
-  .put("service.OpenID.scopes", "email email_verified name zoneinfo")
-  .put("0xFlowToken", "0x7e60df042a9c0868")
+fcl
+  .config()
+  .put('flow.network', 'testnet')
+  .put('accessNode.api', 'https://rest-testnet.onflow.org')
+  .put('discovery.wallet', 'https://fcl-discovery.onflow.org/testnet/authn')
+  .put('app.detail.title', 'Test Harness')
+  .put('app.detail.icon', 'https://i.imgur.com/r23Zhvu.png')
+  .put('service.OpenID.scopes', 'email email_verified name zoneinfo')
+  .put('0xFlowToken', '0x7e60df042a9c0868');
 ```
 
 ### Using Flow.json
@@ -123,14 +128,14 @@ fcl.config()
 A simpler way to import contracts in scripts and transactions is to use the `config.load` method to ingest your contracts from your `flow.json` file. This keeps the import syntax unified across tools and lets FCL figure out which address to use for what network based on the network provided in config. To use `config.load` you must first import your `flow.json` file and then pass it to `config.load` as a parameter.
 
 ```javascript
-import { config } from '@onflow/fcl'
-import flowJSON from '../flow.json'
+import { config } from '@onflow/fcl';
+import flowJSON from '../flow.json';
 
 config({
   'flow.network': 'testnet',
   'accessNode.api': 'https://rest-testnet.onflow.org',
   'discovery.wallet': `https://fcl-discovery.onflow.org/testnet/authn`,
-}).load({ flowJSON })
+}).load({ flowJSON });
 ```
 
 Let's say your `flow.json` file looks like this:
@@ -178,11 +183,11 @@ Calling this method will authenticate the current user via any wallet that suppo
 #### Usage
 
 ```javascript
-import * as fcl from "@onflow/fcl";
+import * as fcl from '@onflow/fcl';
 fcl
   .config()
-  .put("accessNode.api", "https://rest-testnet.onflow.org")
-  .put("discovery.wallet", "https://fcl-discovery.onflow.org/testnet/authn");
+  .put('accessNode.api', 'https://rest-testnet.onflow.org')
+  .put('discovery.wallet', 'https://fcl-discovery.onflow.org/testnet/authn');
 // anywhere on the page
 fcl.authenticate();
 ```
@@ -190,7 +195,6 @@ fcl.authenticate();
 #### Note
 
 ⚠️ `authenticate` can also take a service returned from [discovery](#discovery) with `fcl.authenticate({ service })`.
-
 
 ---
 
@@ -207,8 +211,8 @@ Logs out the current user and sets the values on the [current user](#currentuser
 #### Usage
 
 ```javascript
-import * as fcl from "@onflow/fcl";
-fcl.config().put("accessNode.api", "https://rest-testnet.onflow.org");
+import * as fcl from '@onflow/fcl';
+fcl.config().put('accessNode.api', 'https://rest-testnet.onflow.org');
 // first authenticate to set current user
 fcl.authenticate();
 // ... somewhere else & sometime later
@@ -231,7 +235,7 @@ A **convenience method** that calls [`fcl.unauthenticate()`](#unauthenticate) an
 #### Usage
 
 ```javascript
-import * as fcl from "@onflow/fcl";
+import * as fcl from '@onflow/fcl';
 // first authenticate to set current user
 fcl.authenticate();
 // ... somewhere else & sometime later
@@ -245,7 +249,7 @@ fcl.reauthenticate();
 
 > ⚠️**This method can only be used in web browsers.**
 
-A **convenience method** that calls and is equivalent to [`fcl.authenticate()`](<#authenticate>).
+A **convenience method** that calls and is equivalent to [`fcl.authenticate()`](#authenticate).
 
 ---
 
@@ -253,7 +257,7 @@ A **convenience method** that calls and is equivalent to [`fcl.authenticate()`](
 
 > ⚠️**This method can only be used in web browsers.**
 
-A **convenience method** that calls and is equivalent to [`fcl.authenticate()`](<#authenticate>).
+A **convenience method** that calls and is equivalent to [`fcl.authenticate()`](#authenticate).
 
 ---
 
@@ -274,7 +278,7 @@ A **convenience method** that produces the needed authorization details for the 
 **Note:** The default values for `proposer`, `payer`, and `authorizations` are already `fcl.authz` so there is no need to include these parameters, it is shown only for example purposes. See more on [signing roles](../../../build/basics/transactions.md).
 
 ```javascript
-import * as fcl from "@onflow/fcl";
+import * as fcl from '@onflow/fcl';
 // login somewhere before
 fcl.authenticate();
 // once logged in authz will produce values
@@ -291,7 +295,7 @@ const txId = await fcl.mutate({
       }
     }
   `,
-  args: (arg, t) => [arg("myName", t.String)],
+  args: (arg, t) => [arg('myName', t.String)],
   proposer: fcl.authz, // optional - default is fcl.authz
   payer: fcl.authz, // optional - default is fcl.authz
   authorizations: [fcl.authz], // optional - default is [fcl.authz]
@@ -321,8 +325,8 @@ The callback passed to subscribe will be called when the user authenticates and 
 #### Usage
 
 ```javascript
-import React, { useState, useEffect } from "react";
-import * as fcl from "@onflow/fcl";
+import React, { useState, useEffect } from 'react';
+import * as fcl from '@onflow/fcl';
 
 export function AuthCluster() {
   const [user, setUser] = useState({ loggedIn: null });
@@ -331,14 +335,14 @@ export function AuthCluster() {
   if (user.loggedIn) {
     return (
       <div>
-        <span>{user?.addr ?? "No Address"}</span>
+        <span>{user?.addr ?? 'No Address'}</span>
         <button onClick={fcl.unauthenticate}>Log Out</button> {/* once logged out in setUser(user) will be called */}
       </div>
     );
   } else {
     return (
       <div>
-        <button onClick={fcl.logIn}>Log In</button>{" "}
+        <button onClick={fcl.logIn}>Log In</button>{' '}
         {/* once logged in setUser(user) will be called */}
         <button onClick={fcl.signUp}>Sign Up</button> {/* once signed up, setUser(user) will be called */}
       </div>
@@ -391,29 +395,29 @@ A method to use allowing the user to personally sign data via FCL Compatible Wal
 
 #### Arguments
 
-| Name  | Type   | Description                       |
-| ----- | ------ | --------------------------------- |
+| Name      | Type                  | Description                       |
+| --------- | --------------------- | --------------------------------- |
 | `message` | string **(required)** | A hexadecimal string to be signed |
 
 #### Returns
 
-| Type    | Description                                                                                                                                                                             |
-| ------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Type    | Description                                                                                                                                                                               |
+| ------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | `Array` | An Array of [CompositeSignatures](https://github.com/onflow/flow-js-sdk/blob/master/packages/fcl/src/wallet-provider-spec/draft-v2.md#compositesignature): {`addr`, `keyId`, `signature`} |
 
 #### Usage
 
 ```javascript
-import * as fcl from "@onflow/fcl"
+import * as fcl from '@onflow/fcl';
 
 export const signMessage = async () => {
-  const MSG = Buffer.from("FOO").toString("hex")
+  const MSG = Buffer.from('FOO').toString('hex');
   try {
-    return await currentUser.signUserMessage(MSG)
+    return await currentUser.signUserMessage(MSG);
   } catch (error) {
-    console.log(error)
+    console.log(error);
   }
-}
+};
 ```
 
 ---
@@ -434,23 +438,26 @@ Discovery abstracts away code so that developers don't have to deal with the dis
 
 ### Suggested Configuration
 
-| Environment                     | Example                                              |
-| ------------------------------- | ---------------------------------------------------- |
-| Mainnet                         | `https://fcl-discovery.onflow.org/api/authn`         |
-| Testnet                         | `https://fcl-discovery.onflow.org/api/testnet/authn` |
+| Environment | Example                                              |
+| ----------- | ---------------------------------------------------- |
+| Mainnet     | `https://fcl-discovery.onflow.org/api/authn`         |
+| Testnet     | `https://fcl-discovery.onflow.org/api/testnet/authn` |
 
 If the Discovery endpoint is set in config, then you can iterate through authn services and pass the chosen service to [authenticate](#authenticate) to authenticate a user.
 
 #### Usage
 
 ```javascript
-import "./config"
-import { useState, useEffect } from "react"
-import * as fcl from "@onflow/fcl"
+import './config';
+import { useState, useEffect } from 'react';
+import * as fcl from '@onflow/fcl';
 
 function Component() {
-  const [wallets, setWallets] = useState([])
-  useEffect(() => fcl.discovery.authn.subscribe(res => setWallets(res.results)), [])
+  const [wallets, setWallets] = useState([]);
+  useEffect(
+    () => fcl.discovery.authn.subscribe((res) => setWallets(res.results)),
+    [],
+  );
 
   return (
     <div>
@@ -463,7 +470,7 @@ function Component() {
         </button>
       ))}
     </div>
-  )
+  );
 }
 ```
 
@@ -474,21 +481,21 @@ function Component() {
 By default, limited functionality services or services that require developer registration, like Ledger or Dapper Wallet, require apps to opt-in in order to display to users. To enable opt-in services in an application, use the `discovery.authn.include` property in your configuration with a value of an array of services you'd like your app to opt-in to displaying for users.
 
 ```javascript
-
-import { config } from "@onflow/fcl"
+import { config } from '@onflow/fcl';
 
 config({
-  "discovery.authn.endpoint": "https://fcl-discovery.onflow.org/api/testnet/authn", // Endpoint set to Testnet
-  "discovery.authn.include": ["0x9d2e44203cb13051"] // Ledger wallet address on Testnet set to be included
-})
+  'discovery.authn.endpoint':
+    'https://fcl-discovery.onflow.org/api/testnet/authn', // Endpoint set to Testnet
+  'discovery.authn.include': ['0x9d2e44203cb13051'], // Ledger wallet address on Testnet set to be included
+});
 ```
 
 **Opt-In Wallet Addresses on Testnet and Mainnet**
 
-| Service           | Testnet            | Mainnet            |
-| ------------------| ------------------ | ------------------ |
-| `Dapper Wallet`   | 0x82ec283f88a62e65 | 0xead892083b3e2c6c |
-| `Ledger`          | 0x9d2e44203cb13051 | 0xe5cd26afebe62781 |
+| Service         | Testnet            | Mainnet            |
+| --------------- | ------------------ | ------------------ |
+| `Dapper Wallet` | 0x82ec283f88a62e65 | 0xead892083b3e2c6c |
+| `Ledger`        | 0x9d2e44203cb13051 | 0xe5cd26afebe62781 |
 
 For more details on wallets, view the [service list here](https://github.com/onflow/fcl-discovery/blob/master/data/services.json).
 
@@ -524,10 +531,10 @@ Allows you to submit scripts to query the blockchain.
 
 _Pass in the following as a single object with the following keys.All keys are optional unless otherwise stated._
 
-| Key       | Type                                  | Description                                                                                                                                                                                                            |
-| --------- | ------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `cadence` | string **(required)**                 | A valid cadence script.                                                                                                                                                                                                |
-| `args`    | [ArgumentFunction](#argumentfunction) | Any arguments to the script if needed should be supplied via a function that returns an array of arguments.                                                                                                            |
+| Key       | Type                                  | Description                                                                                                                                                                     |
+| --------- | ------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `cadence` | string **(required)**                 | A valid cadence script.                                                                                                                                                         |
+| `args`    | [ArgumentFunction](#argumentfunction) | Any arguments to the script if needed should be supplied via a function that returns an array of arguments.                                                                     |
 | `limit`   | number                                | Compute (Gas) limit for query. Read the [documentation about computation cost](../../../build/basics/fees.md) for information about how computation cost is calculated on Flow. |
 
 #### Returns
@@ -539,7 +546,7 @@ _Pass in the following as a single object with the following keys.All keys are o
 #### Usage
 
 ```javascript
-import * as fcl from "@onflow/fcl";
+import * as fcl from '@onflow/fcl';
 
 const result = await fcl.query({
   cadence: `
@@ -551,7 +558,7 @@ const result = await fcl.query({
   args: (arg, t) => [
     arg(7, t.Int), // a: Int
     arg(6, t.Int), // b: Int
-    arg("0xba1132bc08f82fe2", t.Address), // addr: Address
+    arg('0xba1132bc08f82fe2', t.Address), // addr: Address
   ],
 });
 console.log(result); // 13
@@ -573,12 +580,12 @@ Allows you to submit transactions to the blockchain to potentially mutate the st
 
 _Pass in the following as a single object with the following keys. All keys are optional unless otherwise stated._
 
-| Key        | Type                                            | Description                                                                                                                                                                                                            |
-| ---------- | ----------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `cadence`  | string **(required)**                           | A valid cadence transaction.                                                                                                                                                                                           |
-| `args`     | [ArgumentFunction](#argumentfunction)           | Any arguments to the script if needed should be supplied via a function that returns an array of arguments.                                                                                                            |
-| `limit`    | number                                          | Compute (Gas) limit for query. Read the [documentation about computation cost](../flow-go-sdk/index.mdx#gas-limit) for information about how computation cost is calculated on Flow. |
-| `proposer` | [AuthorizationFunction](#authorization-function) | The authorization function that returns a valid [AuthorizationObject](#authorizationobject) for the [proposer role](#TransactionRolesObject).                                                                                |
+| Key        | Type                                             | Description                                                                                                                                                                          |
+| ---------- | ------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `cadence`  | string **(required)**                            | A valid cadence transaction.                                                                                                                                                         |
+| `args`     | [ArgumentFunction](#argumentfunction)            | Any arguments to the script if needed should be supplied via a function that returns an array of arguments.                                                                          |
+| `limit`    | number                                           | Compute (Gas) limit for query. Read the [documentation about computation cost](../flow-go-sdk/index.mdx#gas-limit) for information about how computation cost is calculated on Flow. |
+| `proposer` | [AuthorizationFunction](#authorization-function) | The authorization function that returns a valid [AuthorizationObject](#authorizationobject) for the [proposer role](#TransactionRolesObject).                                        |
 
 #### Returns
 
@@ -589,7 +596,7 @@ _Pass in the following as a single object with the following keys. All keys are 
 #### Usage
 
 ```javascript
-import * as fcl from "@onflow/fcl";
+import * as fcl from '@onflow/fcl';
 // login somewhere before
 fcl.authenticate();
 
@@ -603,7 +610,7 @@ const txId = await fcl.mutate({
       }
     }
   `,
-  args: (arg, t) => [arg("myName", t.String)],
+  args: (arg, t) => [arg('myName', t.String)],
 });
 ```
 
@@ -621,6 +628,7 @@ Use `fcl.AppUtils.verifyUserSignatures`
 ## AppUtils
 
 ### `AppUtils.verifyUserSignatures`
+
 A method allowing applications to cryptographically verify a message was signed by a user's private key/s. This is typically used with the response from `currentUser.signUserMessage`.
 
 #### Note
@@ -629,29 +637,36 @@ A method allowing applications to cryptographically verify a message was signed 
 
 #### Arguments
 
-| Name                  | Type                  | Description                       |
-| --------------------- | --------------------- | --------------------------------- |
-| `message`             | string **(required)** | A hexadecimal string              |
-| `compositeSignatures` | Array **(required)**  | An Array of `CompositeSignatures` |
-| `opts`                | Object **(optional)** | `opts.fclCryptoContract` can be provided to override FCLCryptoContract address for local development                 |
+| Name                  | Type                  | Description                                                                                          |
+| --------------------- | --------------------- | ---------------------------------------------------------------------------------------------------- |
+| `message`             | string **(required)** | A hexadecimal string                                                                                 |
+| `compositeSignatures` | Array **(required)**  | An Array of `CompositeSignatures`                                                                    |
+| `opts`                | Object **(optional)** | `opts.fclCryptoContract` can be provided to override FCLCryptoContract address for local development |
 
 #### Returns
 
-| Type    | Description                  |
-| ------- | ---------------------------- |
+| Type    | Description                   |
+| ------- | ----------------------------- |
 | Boolean | `true` if verified or `false` |
 
 #### Usage
 
 ```javascript
-import * as fcl from "@onflow/fcl"
+import * as fcl from '@onflow/fcl';
 
 const isValid = await fcl.AppUtils.verifyUserSignatures(
-  Buffer.from('FOO').toString("hex"),
-  [{f_type: "CompositeSignature", f_vsn: "1.0.0", addr: "0x123", keyId: 0, signature: "abc123"}],
-  {fclCryptoContract}
-)
-
+  Buffer.from('FOO').toString('hex'),
+  [
+    {
+      f_type: 'CompositeSignature',
+      f_vsn: '1.0.0',
+      addr: '0x123',
+      keyId: 0,
+      signature: 'abc123',
+    },
+  ],
+  { fclCryptoContract },
+);
 ```
 
 #### Examples
@@ -662,23 +677,23 @@ const isValid = await fcl.AppUtils.verifyUserSignatures(
 
 ### `AppUtils.verifyAccountProof`
 
-A method allowing applications to cryptographically prove that a user controls an on-chain account. During user authentication, some FCL compatible wallets will choose to support the FCL `account-proof` service. If a wallet chooses to support this service, and the user approves the signing of message data, they will return `account-proof` data and a signature(s) that can be used to prove a user controls an on-chain account. 
-See [proving-authentication](https://github.com/onflow/fcl-js/blob/master/docs/networks/proving-authentication.mdx) documentaion for more details.
+A method allowing applications to cryptographically prove that a user controls an on-chain account. During user authentication, some FCL compatible wallets will choose to support the FCL `account-proof` service. If a wallet chooses to support this service, and the user approves the signing of message data, they will return `account-proof` data and a signature(s) that can be used to prove a user controls an on-chain account.
+See [proving-authentication](https://github.com/onflow/fcl-js/blob/master/docs/reference/proving-authentication.mdx) documentaion for more details.
 
 ⚠️ `fcl.config.flow.network` or options override is required to use this api. See [FCL Configuration](#configuration).
 
 #### Arguments
 
-| Name                  | Type                  | Description                       |
-| --------------------- | --------------------- | --------------------------------- |
-| `appIdentifier`       | string **(required)** | A hexadecimal string              |
-| `accountProofData`    | Object **(required)** | Object with properties: <br/>`address`: `string` - A Flow account address. <br/> `nonce`: `string` - A random string in hexadecimal format (minimum 32 bytes in total, i.e 64 hex characters) <br/> `signatures`: `Object[]` - An array of composite signatures to verify                                                                              |
-| `opts`                | Object **(optional)** | `opts.fclCryptoContract` can be provided to overide FCLCryptoContract address for local development                 |
+| Name               | Type                  | Description                                                                                                                                                                                                                                                               |
+| ------------------ | --------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `appIdentifier`    | string **(required)** | A hexadecimal string                                                                                                                                                                                                                                                      |
+| `accountProofData` | Object **(required)** | Object with properties: <br/>`address`: `string` - A Flow account address. <br/> `nonce`: `string` - A random string in hexadecimal format (minimum 32 bytes in total, i.e 64 hex characters) <br/> `signatures`: `Object[]` - An array of composite signatures to verify |
+| `opts`             | Object **(optional)** | `opts.fclCryptoContract` can be provided to overide FCLCryptoContract address for local development                                                                                                                                                                       |
 
 #### Returns
 
-| Type    | Description                  |
-| ------- | ---------------------------- |
+| Type    | Description                   |
+| ------- | ----------------------------- |
 | Boolean | `true` if verified or `false` |
 
 #### Usage
@@ -720,7 +735,7 @@ This method consumes an array of [builders](#builders) that are to be resolved a
 
 #### Note
 
-⚠️Must be used in conjuction with [`fcl.decode(response)`](<#decode>) to get back correct keys and all values in JSON.
+⚠️Must be used in conjuction with [`fcl.decode(response)`](#decode) to get back correct keys and all values in JSON.
 
 #### Arguments
 
@@ -737,7 +752,7 @@ This method consumes an array of [builders](#builders) that are to be resolved a
 #### Usage
 
 ```javascript
-import * as fcl from "@onflow/fcl";
+import * as fcl from '@onflow/fcl';
 
 // a script only needs to resolve the arguments to the script
 const response = await fcl.send([fcl.script`${script}`, fcl.args(args)]);
@@ -775,14 +790,14 @@ Decodes the response from `fcl.send()` into the appropriate JSON representation 
 
 #### Returns
 
-| Type | Description                                                                                                                                                                    |
-| ---- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| Type | Description                                                                                                                                                                     |
+| ---- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | any  | A JSON representation of the raw string response depending on the cadence code executed.<br/> The return value can be a single value and type or an object with multiple types. |
 
 #### Usage
 
 ```javascript
-import * as fcl from "@onflow/fcl";
+import * as fcl from '@onflow/fcl';
 
 // simple script to add 2 numbers
 const response = await fcl.send([
@@ -791,16 +806,13 @@ const response = await fcl.send([
             return int1 + int2
         }
     `,
-  fcl.args([
-    fcl.arg(1, fcl.t.Int),
-    fcl.arg(2, fcl.t.Int)
-  ]),
+  fcl.args([fcl.arg(1, fcl.t.Int), fcl.arg(2, fcl.t.Int)]),
 ]);
 
 const decoded = await fcl.decode(response);
 
 assert(3 === decoded);
-assert(typeof decoded === "number");
+assert(typeof decoded === 'number');
 ```
 
 ---
@@ -818,7 +830,7 @@ build, resolve, and send it to the blockchain. A valid populated template is ref
 
 A builder function that returns the interaction to get an account by address.
 
-⚠️Consider using the pre-built interaction [`fcl.account(address)`](<#account>) if you do not need to pair with any other builders.
+⚠️Consider using the pre-built interaction [`fcl.account(address)`](#account) if you do not need to pair with any other builders.
 
 #### Arguments
 
@@ -835,7 +847,7 @@ A builder function that returns the interaction to get an account by address.
 #### Usage
 
 ```javascript
-import * as fcl from "@onflow/fcl";
+import * as fcl from '@onflow/fcl';
 
 // somewhere in an async function
 // fcl.account is the same as this function
@@ -863,14 +875,14 @@ A builder function that returns the interaction to get the latest block.
 
 #### Returns after decoding
 
-| Type                          | Description                                           |
-| ----------------------------- | ----------------------------------------------------- |
+| Type                        | Description                                           |
+| --------------------------- | ----------------------------------------------------- |
 | [BlockObject](#blockobject) | The latest block if not used with any other builders. |
 
 #### Usage
 
 ```javascript
-import * as fcl from "@onflow/fcl";
+import * as fcl from '@onflow/fcl';
 
 const latestSealedBlock = await fcl
   .send([
@@ -902,7 +914,7 @@ A builder function that returns a partial interaction to a block at a specific h
 #### Usage
 
 ```javascript
-import * as fcl from "@onflow/fcl";
+import * as fcl from '@onflow/fcl';
 
 await fcl.send([fcl.getBlock(), fcl.atBlockHeight(123)]).then(fcl.decode);
 ```
@@ -930,9 +942,9 @@ A builder function that returns a partial interaction to a block at a specific b
 #### Usage
 
 ```javascript
-import * as fcl from "@onflow/fcl";
+import * as fcl from '@onflow/fcl';
 
-await fcl.send([fcl.getBlock(), fcl.atBlockId("23232323232")]).then(fcl.decode);
+await fcl.send([fcl.getBlock(), fcl.atBlockId('23232323232')]).then(fcl.decode);
 ```
 
 ---
@@ -952,7 +964,7 @@ A builder function that returns the interaction to get a block header.
 #### Usage
 
 ```javascript
-import * as fcl from "@onflow/fcl";
+import * as fcl from '@onflow/fcl';
 
 const latestBlockHeader = await fcl
   .send([fcl.getBlockHeader()])
@@ -977,21 +989,21 @@ A builder function that returns all instances of a particular event (by name) wi
 
 #### Returns after decoding
 
-| Type                          | Description                                    |
-| ----------------------------- | ---------------------------------------------- |
+| Type                           | Description                                    |
+| ------------------------------ | ---------------------------------------------- |
 | [[EventObject]](#event-object) | An array of events that matched the eventName. |
 
 #### Usage
 
 ```javascript
-import * as fcl from "@onflow/fcl";
+import * as fcl from '@onflow/fcl';
 
 const events = await fcl
   .send([
     fcl.getEventsAtBlockHeightRange(
-      "A.7e60df042a9c0868.FlowToken.TokensWithdrawn",
+      'A.7e60df042a9c0868.FlowToken.TokensWithdrawn',
       35580624,
-      35580624
+      35580624,
     ),
   ])
   .then(fcl.decode);
@@ -1014,20 +1026,20 @@ A builder function that returns all instances of a particular event (by name) wi
 
 #### Returns after decoding
 
-| Type                          | Description                                    |
-| ----------------------------- | ---------------------------------------------- |
+| Type                           | Description                                    |
+| ------------------------------ | ---------------------------------------------- |
 | [[EventObject]](#event-object) | An array of events that matched the eventName. |
 
 #### Usage
 
 ```javascript
-import * as fcl from "@onflow/fcl";
+import * as fcl from '@onflow/fcl';
 
 const events = await fcl
   .send([
-    fcl.getEventsAtBlockIds("A.7e60df042a9c0868.FlowToken.TokensWithdrawn", [
-      "c4f239d49e96d1e5fbcf1f31027a6e582e8c03fcd9954177b7723fdb03d938c7",
-      "5dbaa85922eb194a3dc463c946cc01c866f2ff2b88f3e59e21c0d8d00113273f",
+    fcl.getEventsAtBlockIds('A.7e60df042a9c0868.FlowToken.TokensWithdrawn', [
+      'c4f239d49e96d1e5fbcf1f31027a6e582e8c03fcd9954177b7723fdb03d938c7',
+      '5dbaa85922eb194a3dc463c946cc01c866f2ff2b88f3e59e21c0d8d00113273f',
     ]),
   ])
   .then(fcl.decode);
@@ -1056,12 +1068,12 @@ A builder function that returns all a collection containing a list of transactio
 #### Usage
 
 ```javascript
-import * as fcl from "@onflow/fcl";
+import * as fcl from '@onflow/fcl';
 
 const collection = await fcl
   .send([
     fcl.getCollection(
-      "cccdb0c67d015dc7f6444e8f62a3244ed650215ed66b90603006c70c5ef1f6e5"
+      'cccdb0c67d015dc7f6444e8f62a3244ed650215ed66b90603006c70c5ef1f6e5',
     ),
   ])
   .then(fcl.decode);
@@ -1094,12 +1106,12 @@ A builder function that returns the status of transaction in the form of a [Tran
 #### Usage
 
 ```javascript
-import * as fcl from "@onflow/fcl";
+import * as fcl from '@onflow/fcl';
 
 const status = await fcl
   .send([
     fcl.getTransactionStatus(
-      "9dda5f281897389b99f103a1c6b180eec9dac870de846449a302103ce38453f3"
+      '9dda5f281897389b99f103a1c6b180eec9dac870de846449a302103ce38453f3',
     ),
   ])
   .then(fcl.decode);
@@ -1132,15 +1144,77 @@ A builder function that returns a [transaction object](#transactionobject) once 
 #### Usage
 
 ```javascript
-import * as fcl from "@onflow/fcl";
+import * as fcl from '@onflow/fcl';
 
 const tx = await fcl
   .send([
     fcl.getTransaction(
-      "9dda5f281897389b99f103a1c6b180eec9dac870de846449a302103ce38453f3"
+      '9dda5f281897389b99f103a1c6b180eec9dac870de846449a302103ce38453f3',
     ),
   ])
   .then(fcl.decode);
+```
+
+---
+
+### `subscribeEvents`
+
+<Callout type="warning">
+The `subscribeEvents` feature is only available in the latest alpha release of FCL. To use it, install `@onflow/fcl@alpha`.
+</Callout>
+
+A build that returns a [event stream connection](#eventstream) once decoded. It will establish a WebSocket connection to the Access Node and subscribe to events with the given parameters.
+
+#### Arguments
+
+| Name                     | Type                      | Description                                                                                                             |
+| ------------------------ | ------------------------- | ----------------------------------------------------------------------------------------------------------------------- |
+| `opts`                   | `Object`                  | An object with the following keys:                                                                                      |
+| `opts.startBlockId`      | string &#124; undefined   | The block ID to start listening for events. Example: `9dda5f281897389b99f103a1c6b180eec9dac870de846449a302103ce38453f3` |
+| `opts.startHeight`       | number &#124; undefined   | The block height to start listening for events. Example: `123`                                                          |
+| `opts.eventTypes`        | string[] &#124; undefined | The event types to listen for. Example: `A.7e60df042a9c0868.FlowToken.TokensWithdrawn`                                  |
+| `opts.addresses`         | string[] &#124; undefined | The addresses to listen for. Example: `0x7e60df042a9c0868`                                                              |
+| `opts.contracts`         | string[] &#124; undefined | The contracts to listen for. Example: `0x7e60df042a9c0868`                                                              |
+| `opts.heartbeatInterval` | number &#124; undefined   | The interval in milliseconds to send a heartbeat to the Access Node. Example: `10000`                                   |
+
+#### Returns after decoding
+
+#### Returns
+
+| Type                                  | Description                      |
+| ------------------------------------- | -------------------------------- |
+| [EventStreamConnection](#eventstream) | A connection to the event stream |
+
+#### Usage
+
+```javascript
+import * as fcl from '@onflow/fcl';
+
+const eventStream = await fcl
+  .send([
+    fcl.subscribeEvents({
+      eventTypes: 'A.7e60df042a9c0868.FlowToken.TokensWithdrawn',
+    }),
+  ])
+  .then(fcl.decode);
+
+eventStream.on('heartbeat', (heartbeat) => {
+  console.log(heartbeat);
+});
+
+eventStream.on('events', (event) => {
+  console.log(event);
+});
+
+eventStream.on('error', (error) => {
+  console.log(error);
+});
+
+eventStream.on('end', () => {
+  console.log('Connection closed');
+});
+
+eventStream.close();
 ```
 
 ---
@@ -1181,10 +1255,10 @@ A utility builder to be used with `fcl.args[...]` to create FCL supported argume
 
 #### Arguments
 
-| Name    | Type             | Description                                               |
-| ------- | ---------------- | --------------------------------------------------------- |
-| `value` | any              | Any value that you are looking to pass to other builders. |
-| `type`  | [FType](#ftype)  | A type supported by Flow.                                 |
+| Name    | Type            | Description                                               |
+| ------- | --------------- | --------------------------------------------------------- |
+| `value` | any             | Any value that you are looking to pass to other builders. |
+| `type`  | [FType](#ftype) | A type supported by Flow.                                 |
 
 #### Returns
 
@@ -1195,7 +1269,7 @@ A utility builder to be used with `fcl.args[...]` to create FCL supported argume
 #### Usage
 
 ```javascript
-import * as fcl from "@onflow/fcl";
+import * as fcl from '@onflow/fcl';
 
 await fcl
   .send([
@@ -1233,7 +1307,7 @@ A utility builder to be used with other builders to pass in arguments with a val
 #### Usage
 
 ```javascript
-import * as fcl from "@onflow/fcl";
+import * as fcl from '@onflow/fcl';
 
 await fcl
   .send([
@@ -1277,7 +1351,7 @@ A template builder to use a Cadence script for an interaction.
 #### Usage
 
 ```javascript
-import * as fcl from "@onflow/fcl";
+import * as fcl from '@onflow/fcl';
 
 const code = `
   pub fun main(): Int {
@@ -1313,7 +1387,7 @@ A template builder to use a Cadence transaction for an interaction.
 #### Usage
 
 ```javascript
-import * as fcl from "@onflow/fcl";
+import * as fcl from '@onflow/fcl';
 
 const code = `
   pub fun main(): Int {
@@ -1349,8 +1423,8 @@ A pre-built interaction that returns the details of an account from their public
 #### Usage
 
 ```javascript
-import * as fcl from "@onflow/fcl";
-const account = await fcl.account("0x1d007d755706c469");
+import * as fcl from '@onflow/fcl';
+const account = await fcl.account('0x1d007d755706c469');
 ```
 
 ---
@@ -1376,11 +1450,13 @@ A pre-built interaction that returns the latest block (optionally sealed or not)
 #### Usage
 
 ```javascript
-import * as fcl from "@onflow/fcl";
-await fcl.block() // get latest finalized block
-await fcl.block({sealed: true}) // get latest sealed block
-await fcl.block({id: '0b1bdfa9ddaaf31d53c584f208313557d622d1fedee1586ffc38fb5400979faa'}) // get block by id
-await fcl.block({height: 56481953}) // get block by height
+import * as fcl from '@onflow/fcl';
+await fcl.block(); // get latest finalized block
+await fcl.block({ sealed: true }); // get latest sealed block
+await fcl.block({
+  id: '0b1bdfa9ddaaf31d53c584f208313557d622d1fedee1586ffc38fb5400979faa',
+}); // get block by id
+await fcl.block({ height: 56481953 }); // get block by height
 ```
 
 ---
@@ -1404,7 +1480,7 @@ A pre-built interaction that returns the latest block (optionally sealed or not)
 #### Usage
 
 ```javascript
-import * as fcl from "@onflow/fcl";
+import * as fcl from '@onflow/fcl';
 const latestBlock = await fcl.latestBlock();
 ```
 
@@ -1436,7 +1512,7 @@ A utility function that lets you set the transaction to get subsequent status up
 #### Usage
 
 ```javascript
-import * as fcl from "@onflow/fcl";
+import * as fcl from '@onflow/fcl';
 
 const [txStatus, setTxStatus] = useState(null);
 useEffect(() => fcl.tx(txId).subscribe(setTxStatus));
@@ -1451,11 +1527,11 @@ useEffect(() => fcl.tx(txId).subscribe(setTxStatus));
 A utility function that lets you set the transaction to get subsequent status updates (via polling) and the finalized result once available.
 ⚠️The poll rate is set at `10000ms` and will update at that interval for getting new events.
 
-
 Note:
 ⚠️`fcl.eventPollRate` value **could** be set to change the polling rate of all events subcribers, check [FCL Configuration](#configuration) for guide.
 
 #### Arguments
+
 | Name        | Type   | Description         |
 | ----------- | ------ | ------------------- |
 | `eventName` | string | A valid event name. |
@@ -1469,11 +1545,11 @@ Note:
 #### Usage
 
 ```javascript
-import * as fcl from "@onflow/fcl";
+import * as fcl from '@onflow/fcl';
 // in some react component
 fcl.events(eventName).subscribe((event) => {
-  console.log(event)
-})
+  console.log(event);
+});
 ```
 
 #### Examples
@@ -1553,8 +1629,8 @@ The JSON representation of an account on the Flow blockchain.
 
 ### `Address`
 
-| Value Type        | Description                                                                                                                     |
-| ----------------- | ------------------------------------------------------------------------------------------------------------------------------- |
+| Value Type        | Description                                                                                                                       |
+| ----------------- | --------------------------------------------------------------------------------------------------------------------------------- |
 | string(formatted) | A valid Flow address should be 16 characters in length. <br/>A `0x` prefix is optional during inputs. <br/>eg. `f8d6e0586b0a20c1` |
 
 ---
@@ -1603,9 +1679,9 @@ An authorization function must produce the information of the user that is going
 
 **Returns**
 
-| Value Type                                           | Description                                                                                   |
-| ---------------------------------------------------- | --------------------------------------------------------------------------------------------- |
-| ```Promise<[AuthorizationObject](#authorizationobject)>``` | The object that contains all the information needed by FCL to authorize a user's transaction. |
+| Value Type                                             | Description                                                                                   |
+| ------------------------------------------------------ | --------------------------------------------------------------------------------------------- |
+| `Promise<[AuthorizationObject](#authorizationobject)>` | The object that contains all the information needed by FCL to authorize a user's transaction. |
 
 #### Usage
 
@@ -1659,25 +1735,25 @@ Note: These values are destructed from the payload object in the first argument.
 
 **Returns**
 
-| Value Type                                 | Description                                                                                   |
-| ------------------------------------------ | --------------------------------------------------------------------------------------------- |
-| ```Promise<[SignableObject](#signableobject)>``` | The object that contains all the information needed by FCL to authorize a user's transaction. |
+| Value Type                                   | Description                                                                                   |
+| -------------------------------------------- | --------------------------------------------------------------------------------------------- |
+| `Promise<[SignableObject](#signableobject)>` | The object that contains all the information needed by FCL to authorize a user's transaction. |
 
 #### Usage
 
 ```javascript
-import * as fcl from "@onflow/fcl";
-import { ec as EC } from "elliptic";
-import { SHA3 } from "sha3";
-const ec: EC = new EC("p256");
+import * as fcl from '@onflow/fcl';
+import { ec as EC } from 'elliptic';
+import { SHA3 } from 'sha3';
+const ec: EC = new EC('p256');
 
 const produceSignature = (privateKey, msg) => {
-  const key = ec.keyFromPrivate(Buffer.from(privateKey, "hex"));
+  const key = ec.keyFromPrivate(Buffer.from(privateKey, 'hex'));
   const sig = key.sign(this.hashMsg(msg));
   const n = 32;
-  const r = sig.r.toArrayLike(Buffer, "be", n);
-  const s = sig.s.toArrayLike(Buffer, "be", n);
-  return Buffer.concat([r, s]).toString("hex");
+  const r = sig.r.toArrayLike(Buffer, 'be', n);
+  const s = sig.s.toArrayLike(Buffer, 'be', n);
+  return Buffer.concat([r, s]).toString('hex');
 };
 
 const signingFunction = ({
@@ -1707,17 +1783,17 @@ const signingFunction = ({
 
 ### `TransactionObject`
 
-| Key                  | Value Type                            | Description                                                                                                                                                                                   |
-| -------------------- | ------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `args`               | object                                     | A list of encoded Cadence values passed into this transaction.  These have not been decoded by the JS-SDK.                                                       |
-| `authorizers`        | [\[Address\]](#address)               | A list of the accounts that are authorizing this transaction to mutate to their on-chain account state.  [See more here](../../../build/basics/transactions.md#signer-roles). |
-| `envelopeSignatures` | [\[SignableObject\]](#signableobject) | A list of signatures generated by the payer role. [See more here](../../../build/basics/transactions.md#anatomy-of-a-transaction).                                            |
-| `gasLimit`           | number                                | The maximum number of computational units that can be used to execute this transaction.  [See more here](../../../build/basics/fees.md).                                  |
-| `payer`              | [Address](#address)                   | The account that pays the fee for this transaction.  [See more here](../../../build/basics/transactions.md#signer-roles).                                                     |
-| `payloadSignatures`  | [\[SignableObject\]](#signableobject) | A list of signatures generated by the proposer and authorizer roles. [See more here](../../../build/basics/transactions.md#anatomy-of-a-transaction).                         |
-| `proposalKey`        | [\[ProposalKey\]](#proposalkeyobject) | The account key used to propose this transaction                                                                                                                                              |
-| `referenceBlockId`   | string                                | A reference to the block used to calculate the expiry of this transaction.                                                                                                                    |
-| `script`             | string                                | The UTF-8 encoded Cadence source code that defines the execution logic for this transaction                                                                                                   |
+| Key                  | Value Type                            | Description                                                                                                                                                                  |
+| -------------------- | ------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `args`               | object                                | A list of encoded Cadence values passed into this transaction. These have not been decoded by the JS-SDK.                                                                    |
+| `authorizers`        | [\[Address\]](#address)               | A list of the accounts that are authorizing this transaction to mutate to their on-chain account state. [See more here](../../../build/basics/transactions.md#signer-roles). |
+| `envelopeSignatures` | [\[SignableObject\]](#signableobject) | A list of signatures generated by the payer role. [See more here](../../../build/basics/transactions.md#anatomy-of-a-transaction).                                           |
+| `gasLimit`           | number                                | The maximum number of computational units that can be used to execute this transaction. [See more here](../../../build/basics/fees.md).                                      |
+| `payer`              | [Address](#address)                   | The account that pays the fee for this transaction. [See more here](../../../build/basics/transactions.md#signer-roles).                                                     |
+| `payloadSignatures`  | [\[SignableObject\]](#signableobject) | A list of signatures generated by the proposer and authorizer roles. [See more here](../../../build/basics/transactions.md#anatomy-of-a-transaction).                        |
+| `proposalKey`        | [\[ProposalKey\]](#proposalkeyobject) | The account key used to propose this transaction                                                                                                                             |
+| `referenceBlockId`   | string                                | A reference to the block used to calculate the expiry of this transaction.                                                                                                   |
+| `script`             | string                                | The UTF-8 encoded Cadence source code that defines the execution logic for this transaction                                                                                  |
 
 ### `TransactionRolesObject`
 
@@ -1731,19 +1807,19 @@ For more on what each transaction role means, see [singing roles](../../../build
 
 ### `TransactionStatusObject`
 
-| Key                     | Value Type                                       | Description                                                     |
-| ------------------------ | ------------------------------------------ | --------------------------------------------------------------- |
-| `blockId`                | string                                     | ID of the block that contains the transaction.                  |
-| `events`                 | [[EventObject]](#event-object)             | An array of events that were emitted during the transaction.    |
-| `status`                 | [TransactionStatus](#transaction-statuses) | The status of the transaction on the blockchain.                |
-| `statusString` | [TransactionStatus](#transaction-statuses) | The `status` as as descriptive text (e.g. "FINALIZED").         |
-| `errorMessage`           | string                                     | An error message if it exists. Default is an empty string `''`. |
-| `statusCode`             | number                                     | The pass/fail status. 0 indicates the transaction succeeded, 1 indicates it failed. |
+| Key            | Value Type                                 | Description                                                                         |
+| -------------- | ------------------------------------------ | ----------------------------------------------------------------------------------- |
+| `blockId`      | string                                     | ID of the block that contains the transaction.                                      |
+| `events`       | [[EventObject]](#event-object)             | An array of events that were emitted during the transaction.                        |
+| `status`       | [TransactionStatus](#transaction-statuses) | The status of the transaction on the blockchain.                                    |
+| `statusString` | [TransactionStatus](#transaction-statuses) | The `status` as as descriptive text (e.g. "FINALIZED").                             |
+| `errorMessage` | string                                     | An error message if it exists. Default is an empty string `''`.                     |
+| `statusCode`   | number                                     | The pass/fail status. 0 indicates the transaction succeeded, 1 indicates it failed. |
 
 ### `EventName`
 
-| Value Type        | Description                                                                                                                        |
-| ----------------- | ---------------------------------------------------------------------------------------------------------------------------------- |
+| Value Type        | Description                                                                                                                         |
+| ----------------- | ----------------------------------------------------------------------------------------------------------------------------------- |
 | string(formatted) | A event name in Flow must follow the format `A.{AccountAddress}.{ContractName}.{EventName}` <br/>eg. `A.ba1132bc08f82fe2.Debug.Log` |
 
 ### `Contract`
@@ -1757,7 +1833,7 @@ For more on what each transaction role means, see [singing roles](../../../build
 This is the JSON representation of a key on the Flow blockchain.
 
 | Key              | Value Type | Description                                                                              |
-| ---------------- | ---------- |------------------------------------------------------------------------------------------|
+| ---------------- | ---------- | ---------------------------------------------------------------------------------------- |
 | `index`          | number     | The address of the account                                                               |
 | `publicKey`      | string     | The public portion of a public/private key pair                                          |
 | `signAlgo`       | number     | An index referring to one of `ECDSA_P256` or `ECDSA_secp256k1`                           |
@@ -1774,11 +1850,11 @@ A proposal key references a specific key on an account, along with an up-to-date
 
 You can find more information about sequence numbers [here](../../../build/basics/transactions.md#sequence-numbers)
 
- Key              | Value Type | Description                                                                              |
-| ---------------- | ---------- | ---------------------------------------------------------------------------------------- |
-| `address`          | [Address](#address)     | The address of the account                                                               |
-| `keyIndex`      | number     | The index of the account key being referenced                                                |
-| `sequenceNumber`       | number     | The sequence number associated with this account key for this transaction                           |
+| Key              | Value Type          | Description                                                               |
+| ---------------- | ------------------- | ------------------------------------------------------------------------- |
+| `address`        | [Address](#address) | The address of the account                                                |
+| `keyIndex`       | number              | The index of the account key being referenced                             |
+| `sequenceNumber` | number              | The sequence number associated with this account key for this transaction |
 
 ### `BlockObject`
 
@@ -1907,3 +1983,96 @@ FCL arguments must specify one of the following support types for each value pas
 | `Path`       | `fcl.arg({ domain: "public", identifier: "flowTokenVault" }, t.Path)`                                                |
 
 ---
+
+### `StreamConnection`
+
+A stream connection is an object for subscribing to generic data from any WebSocket data stream. This is the base type for all stream connections. Two channels, `close` and `error`, are always available, as they are used to signal the end of the stream and any errors that occur.
+
+```ts
+interface StreamConnection<ChannelMap extends { [name: string]: any }> {
+  // Subscribe to a channel
+  on<C extends keyof ChannelMap>(
+    channel: C,
+    listener: (data: ChannelMap[C]) => void,
+  ): this;
+  on(event: 'close', listener: () => void): this;
+  on(event: 'error', listener: (err: any) => void): this;
+
+  // Unsubscribe from a channel
+  off<C extends keyof ChannelMap>(
+    event: C,
+    listener: (data: ChannelMap[C]) => void,
+  ): this;
+  off(event: 'close', listener: () => void): this;
+  off(event: 'error', listener: (err: any) => void): this;
+
+  // Close the connection
+  close(): void;
+}
+```
+
+#### Usage
+
+```ts
+import { StreamConnection } from "@onflow/typedefs"
+
+const stream: StreamConnection = ...
+
+stream.on("close", () => {
+  // Handle close
+})
+
+stream.on("error", (err) => {
+  // Handle error
+})
+
+stream.close()
+```
+
+### `EventStream`
+
+An event stream is a stream connection that emits events and block heartbeats. Based on the connection parameters, heartbeats will be emitted at least as often as some fixed block height interval. It is a specific variant of a [StreamConnection](#streamconnection).
+
+```ts
+type EventStream = StreamConnection<{
+  events: Event[];
+  heartbeat: BlockHeartbeat;
+}>;
+```
+
+#### Usage
+
+```ts
+import { EventStream } from "@onflow/typedefs"
+
+const stream: EventStream = ...
+
+stream.on("events", (events) => {
+  // Handle events
+})
+
+stream.on("heartbeat", (heartbeat) => {
+  // Handle heartbeat
+})
+
+// Close the stream
+stream.close()
+```
+
+### `BlockHeartbeat`
+
+```ts
+export interface BlockHeartbeat {
+  blockId: string;
+  blockHeight: number;
+  timestamp: string;
+}
+```
+
+#### Usage
+
+```ts
+import { BlockHeartbeat } from "@onflow/typedefs"
+
+const heartbeat: BlockHeartbeat = ...
+```
