@@ -18,7 +18,7 @@ If you know the address and name of the contract you want to install (this can u
 > Note: You can also use the shorthand `deps`
 > 
 
-In this command, the string that will be used as the `remoteSource` in the `flow.json` after installation is `testnet://0afe396ebc8eee65.FLOAT`. This can be broken down into three sections for formatting it yourself for another contract:
+In this command, the string that will be used as the `source` in the `flow.json` after installation is `testnet://0afe396ebc8eee65.FLOAT`. This can be broken down into three sections for formatting it yourself for another contract:
 
 - **Network**: `testnet`
 - **Address**: `0ae53cb6e3f42a79`
@@ -45,7 +45,7 @@ Or the extended format like this:
 {
     "dependencies": {
        "FlowToken": {
-          "remoteSource": "emulator://0ae53cb6e3f42a79.FlowToken",
+          "source": "emulator://0ae53cb6e3f42a79.FlowToken",
           "aliases": {
              "emulator": "0ae53cb6e3f42a79"
           }
