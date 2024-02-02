@@ -25,7 +25,7 @@ Finally,
 
 ## Cadence Owned Accounts
 
-Cadence owned accounts are a new account type on FlowEVM. They function similar to contract accounts, as they are not key controlled and have an address assigned to them upon creation. 
+Cadence Owned Accounts (COAs) are a new account type on FlowEVM which mediates interactions between FlowEVM and Cadence environments. COAs are intended for use by end-users, the same as EOAs. However, COAs execute FlowEVM transactions as directed from Cadence whereas EOAs run FlowEVM transactions identically to other EVMs via the JSON-RPC endpoint. Unlike EOAs, COAs do not have a key but are assigned a 20-byte EVM address upon creation from Cadence. 
 
 Cadence owned accounts are created on FlowEVM through the cadence VM bridge. When a cadence owned account is created, a cadence resource is created which controls it. This resource will typically be stored in a cadence account which 'owns' the FlowEVM cadence owned account (hence, 'cadence owned account'). Transactions upon the cadence owned account on FlowEVM occur by executing a method available on it's corresponding resource in Cadence.
 
