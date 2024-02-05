@@ -6,42 +6,41 @@ sidebar_position: 2
 
 # Using FlowEVM
 
-## [Flow Wallet](https://docs.base.org/using-base#coinbase-wallet)
+## [Flow Wallet](https://wallet.flow.com)
 
-The [Flow Wallet](https://chromewebstore.google.com/detail/flow-reference-wallet/hpclkefagolihohboafpheddmmgdffjm) is light weight and robust web browser extension that supports EVM on Flow by default. Swap assets, access EVM and Cadence apps and keep all your favourite assets in one place.
+Flow Wallet is available as [Android](https://play.google.com/store/apps/details?id=io.outblock.lilico&hl=en_US&gl=US) and [iOS](https://apps.apple.com/ca/app/flow-core/id1644169603) apps, with desktop support using the Flow Wallet [Chrome extension](https://chromewebstore.google.com/detail/flow-reference-wallet/hpclkefagolihohboafpheddmmgdffjm) supporting both Flow and FlowEVM by default. In addition to being able to transact in both FLowEVM and Cadence environments, Flow Wallet also allows you to view and move assets between EVM and Cadence making it possible to manage all your assets in one place.
 
-To use Flow Wallet on Cadence and EVM:
+To use Flow Wallet Chrome extension:
 
 1. Open the Flow Wallet browser extension and create your account.
 2. Connect to an app using Flow Wallet.
 
 ## EVM Wallets
 
-Applications deployed to Flow’s EVM  support popular EVM-compatible wallets such as [MetaMask](https://chromewebstore.google.com/detail/metamask/nkbihfbeogaeaoehlefnkodbefgpgknn), all you need to do is add Flow as a custom network.
+Applications deployed to FlowEVM will work with popular EVM-compatible wallets such as [MetaMask](https://chromewebstore.google.com/detail/metamask/nkbihfbeogaeaoehlefnkodbefgpgknn), all you need to do is add FlowEVM as a custom network.
 
-### [MetaMask](https://docs.base.org/using-base#metamask)
+### [MetaMask](https://metamask.io)
 
-To add Flow as a custom network to MetaMask:
+To add FlowEVM as a custom network to MetaMask:
 
-1. Open the MetaMask browser extension.
-2. Open the network selection dropdown menu by clicking the dropdown button at the top of the extension.
-3. Click the **Add network** button.
-4. Click **Add a network manually**.
-5. In the **Add a network manually** dialog that appears, enter the following information for Flow mainnet:
+1. Open the MetaMask browser extension
+2. Open the network selection dropdown menu by clicking the dropdown button at the top of the extension
+3. Click the `**Add network**` button
+4. Click `**Add a network manually**`
+5. In the `**Add a network manually**` dialog that appears, enter the following information for FlowEVM mainnet:
     
-    
-    | Name | Value |
-    | --- | --- |
-    | Network Name | Flow Mainnet |
-    | Description | The public mainnet for Flow. |
-    | RPC Endpoint | https://mainnet.base.org/ |
-    | Chain ID | TBD |
-    | Currency Symbol | FLOW |
-    | Block Explorer | TBD |
-6. Tap the Save button to save Base as a network.
+    | Name            | Value                           |
+    |---------------------------------------------------|
+    | Network Name    | FlowEVM Mainnet                 |
+    | Description     | The public mainnet for FlowEVM  |
+    | RPC Endpoint    | https://mainnet-evm.onflow.org/ |
+    | Chain ID        | TBD                             |
+    | Currency Symbol | FLOW                            |
+    | Block Explorer  | https://flowdiver.io            |
+6. Tap the Save button to save FlowEVM as a network.
 
-You should now be able to connect to the Base by selecting it from the network selection dropdown menu.
+You should now be able to connect to the FlowEVM by selecting it from the network selection dropdown menu
 
 ### Flow Native Wallets
 
-Flow native wallets will also be able to interact with EVM but will require the use of the Cadence EVM bridge. The bridge creates Cadence Owned Accounts, which are special Ethereum addresses that allow users to transfer assets between EVM-compatible wallets and Flow native wallets.
+Flow native wallets which have added support for FlowEVM will also be able to interact with both Flow and FlowEVM. 
