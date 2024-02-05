@@ -295,7 +295,7 @@ Successfully submitted source code for contract
 contracts/NFT.sol:NFT at 0x6527E5052de5521fE370AE5ec0aFCC6cD5a221de
 for verification on the block explorer. Waiting for verification result...
 
-Successfully verified contract NFT on Etherscan.
+Successfully verified contract NFT on FlowDiver.
 ```
 
 You can't re-verify a contract identical to one that has already been verified. If you attempt to do so, such as verifying the above contract, you'll get an error similar to:
