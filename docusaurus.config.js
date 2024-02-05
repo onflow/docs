@@ -291,10 +291,10 @@ const config = {
             activeBasePath: '/networks',
           },
           {
-            to: 'community-resources',
+            to: 'ecosystem',
             position: 'left',
             label: 'Ecosystem',
-            activeBasePath: '/community-resources',
+            activeBasePath: '/ecosystem',
           },
           {
             href: 'https://github.com/onflow',
@@ -362,7 +362,7 @@ const config = {
             title: 'Community',
             items: [
               {
-                to: '/community-resources',
+                to: '/ecosystem',
                 label: 'Ecosystem',
               },
               {

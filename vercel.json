@@ -1061,6 +1061,10 @@
       "source": "/networks/node-ops/nodes/node-operation/:path*",
       "destination": "/networks/node-operation/:path*",
       "permanent": true
+    },
+    {
+      "source": "/community-resources/:path*",
+      "destination": "/ecosystem/:path*"
     }
   ]
 }
