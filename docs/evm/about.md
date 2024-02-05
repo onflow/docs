@@ -6,7 +6,7 @@ sidebar_position: 1
 
 # About EVM on Flow
 
-Flow is a secure Layer 1 blockchain committed to driving Web3 adoption into the mainstream. The team behind the blockchain not only coined the term NFT but made strides in opening up web3 to the world through Disney Pinnacle, NBA Topshot and Doodles. A significant milestone in this journey is the introduction of Ethereum Virtual Machine (EVM) equivalency in 2024. 
+Flow is a secure Layer 1 blockchain committed to driving web3 adoption into the mainstream. The team behind the blockchain not only coined the term NFT but made strides in opening up web3 to the world through Disney Pinnacle, NBA Topshot, and Doodles. A significant milestone in this journey is the introduction of Ethereum Virtual Machine (EVM) equivalency in 2024. 
 
 ### **Seamless Integration for Ethereum Developers**
 

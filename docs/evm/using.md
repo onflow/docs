@@ -8,7 +8,7 @@ sidebar_position: 2
 
 ## [Flow Wallet](https://docs.base.org/using-base#coinbase-wallet)
 
-The [Flow Wallet](https://chromewebstore.google.com/detail/flow-reference-wallet/hpclkefagolihohboafpheddmmgdffjm) is light weight and robust web web browser extension that supports EVM on Flow by default. Swap assets, access EVM and Cadence apps and keep all your favourite assets in once place.
+The [Flow Wallet](https://chromewebstore.google.com/detail/flow-reference-wallet/hpclkefagolihohboafpheddmmgdffjm) is light weight and robust web browser extension that supports EVM on Flow by default. Swap assets, access EVM and Cadence apps and keep all your favourite assets in one place.
 
 To use Flow Wallet on Cadence and EVM:
 

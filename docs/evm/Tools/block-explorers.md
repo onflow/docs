@@ -8,4 +8,4 @@ sidebar_position: 1
 
 ## Flowdiver
 
-FlowEVM has a block explorer, Flowdiver, available at [Flowdiver.io](https://www.flowdiver.io)
+[Flowdiver](https://www.flowdiver.io) is a popular explorer for the FlowEVM network, offering robust features for monitoring transactions, blocks, and smart contracts. It supports various networks within the Flow ecosystem, including Mainnet, Testnet, and Crescendo.
