@@ -14,8 +14,8 @@ the corresponding Cadence FT or NFT token types. The cross-VM bridge internalize
 contracts in either VM state as needed and resolves access to, and maintains links between, contracts. It additionally 
 automates account and contract calls to enforce source VM asset burn or lock, and target VM token mint or unlock. 
 
-Developers wishing to use the cross-VM bridge will be required a Cadence transaction. The cross-VM bridge functionality 
-is currently not available natively in EVM. 
+Developers wishing to use the cross-VM bridge will be required to use a Cadence transaction of contract. Cross-VM bridge
+functionality is currently not available natively in EVM. 
 
 The Flow VM bridge outlines the architecture and implementation of the VM bridge. Read the FLIP 
 [here](https://github.com/onflow/flips/pull/233).
