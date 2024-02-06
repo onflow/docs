@@ -2,6 +2,12 @@
 sidebar_position: 2
 ---
 
+:::info
+
+Are you a EVM developer looking for information about Accounts on FlowEVM? If so, check out the EVM specific documentation [here](../../evm/Build/accounts.md)
+
+:::
+
 # Accounts
 
 An account on Flow is a record in the chain state that holds the following information:
