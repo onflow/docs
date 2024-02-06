@@ -5,7 +5,7 @@ sidebar_custom_props:
   icon: 🏗️
 ---
 
-# Create a web Dapp on Flow
+# Create a Web App on Flow
 
 ---
 
