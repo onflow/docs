@@ -11,6 +11,8 @@ This section is dedicated to guiding you through deploying smart contracts on th
 
 Hardhat is a comprehensive Ethereum development tool that simplifies the process of deploying, testing, and debugging smart contracts. It's designed to offer developers a seamless experience when working with Solidity contracts.
 
+:::info 
+
 ### Coming Soon
 
 - **Comprehensive Guides:** Step-by-step tutorials on deploying various types of smart contracts, including NFTs (ERC-721), using Hardhat on the FlowEVM network.
@@ -21,3 +23,4 @@ Hardhat is a comprehensive Ethereum development tool that simplifies the process
 - **Verification and Interaction:** Steps to verify your smart contracts on FlowEVM and interact with them using tools like Flowdiver.
 
 Stay tuned for updates and feel free to check back soon for the full guide.
+:::

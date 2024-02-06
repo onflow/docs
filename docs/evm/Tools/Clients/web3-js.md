@@ -6,6 +6,8 @@ sidebar_position: 2
 
 # web3.js
 
+:::info 
+
 ## Coming Soon
 
 Documentation on using [web3.js](https://web3js.readthedocs.io/) to interact with smart contracts deployed on the FlowEVM network is currently under development and will be available shortly.
@@ -20,3 +22,4 @@ Stay tuned for detailed guides on:
 - Deploying and interacting with smart contracts on FlowEVM.
 
 For the latest updates, please check back soon or join the [Flow Discord](https://discord.gg/flow) and visit the #evm channel.
+:::
