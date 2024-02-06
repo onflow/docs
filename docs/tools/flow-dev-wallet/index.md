@@ -25,7 +25,7 @@ Before using the dev wallet, you'll need to start the Flow emulator.
 
 ### Install the `flow-cli`
 
-The Flow emulator is bundles with the Flow CLI. Instructions for installing the CLI can be found here: [flow-cli/install/](../flow-cli/install.md)
+The Flow emulator is bundled with the Flow CLI. Instructions for installing the CLI can be found here: [flow-cli/install/](../flow-cli/install.md)
 
 ### Create a `flow.json` file
 
@@ -69,5 +69,6 @@ app to interact with the dev-wallet during development:
 Navigate to http://localhost:8701/harness
 
 ## Contributing
-Releasing a new version of Dev Wallet is as simple as tagging and creating a release, a Github Action will then build a bundle of the Dev Wallet that can be used in other tools (such as CLI). If the update of the Dev Wallet is required in the CLI, a seperate update PR on the CLI should be created.
+
+Releasing a new version of Dev Wallet is as simple as tagging and creating a release, a Github Action will then build a bundle of the Dev Wallet that can be used in other tools (such as CLI). If the update of the Dev Wallet is required in the CLI, a seperate update PR on the CLI should be created. For more information, please visit the [fcl-dev-wallet GitHub repository](https://github.com/onflow/fcl-dev-wallet).
  

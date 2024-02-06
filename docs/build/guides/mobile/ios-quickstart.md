@@ -1,6 +1,6 @@
 ---
-title: IOS Quickstart
-sidebar_label: IOS Quickstart
+title: IOS Development
+sidebar_label: IOS Development
 sidebar_position: 3
 ---
 

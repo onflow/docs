@@ -141,7 +141,7 @@ Anyone obtaining access to a private key can modify the account the key is assoc
 
 </Callout>
 
-For secure production keys, we suggest using key management services such as [Google key management](https://cloud.google.com/security-key-management) or [Amazon KMS](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Overview.Encryption.Keys.html), which are also supported by our CLI and SDKs. Those services are mostly great when integrated into your application. However, for personal use, you can securely use any [existing wallets](../../community-resources/wallets.md) as well as a [hardware Ledger wallet](../../community-resources/wallets.md).
+For secure production keys, we suggest using key management services such as [Google key management](https://cloud.google.com/security-key-management) or [Amazon KMS](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Overview.Encryption.Keys.html), which are also supported by our CLI and SDKs. Those services are mostly great when integrated into your application. However, for personal use, you can securely use any [existing wallets](../../ecosystem/wallets.md) as well as a [hardware Ledger wallet](../../ecosystem/wallets.md).
 
 ## Service Accounts
 
@@ -170,7 +170,7 @@ Find [more about the command in the CLI docs](../../tools/flow-cli/accounts/get-
 
 Accounts can be obtained from the access node APIs, currently, there are two gRPC and REST APIs. You can find more information about them here:
 
-**gRPC API** [building-on-flow/nodes/access-api#accounts](../../networks/node-ops/nodes/access-api.md#accounts)
+**gRPC API** [building-on-flow/nodes/access-api#accounts](../../networks/node-ops/access-onchain-data/access-nodes/accessing-data/access-api.md#accounts)
 
 **REST API** [http-api#tag/Accounts](/http-api#tag/Accounts)
 

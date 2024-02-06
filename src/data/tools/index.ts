@@ -442,14 +442,6 @@ const flowViewSourceTool: Tool = {
   description: `Flow view source is a blockchain explorer that's open sourced and connected to FCL for running transactions.`,
 };
 
-const bigDipperTool: Tool = {
-  title: 'Big Dipper',
-  tags: ['metrics', 'lookup', 'mainnet'],
-  link: 'https://flow.bigdipper.live/',
-  iconSrc: CodeIcon,
-  description: `Big Dipper is a blockchain explorer that lets you browse all on-chain blocks, transactions, contracts, and accounts.`,
-};
-
 // oss services
 const walletApiTool: Tool = {
   repo: {
@@ -634,7 +626,6 @@ export {
   faucetTool,
   flowScanTool,
   flowViewSourceTool,
-  bigDipperTool,
   walletApiTool,
   eventIndexingTool,
   accountApiTool,
