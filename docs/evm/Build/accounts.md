@@ -16,7 +16,7 @@ There are three types of accounts on FlowEVM.
 
 1. **Externally Owned Accounts (EOA)**: EOAs are controlled by private individuals using cryptographic keys and can initiate transactions directly. They are the primary account type for users to interact with the blockchain, holding and sending cryptocurrency or calling smart contract functions.
 2. **Contract Accounts**: These accounts hold smart contract code and are governed by this code's logic. Unlike EOAs, Contract Accounts do not initiate transactions on their own but can execute transactions in response to calls they receive from EOAs or other contracts.
-3. **Cadence Owned Accounts (COA) 
+3. **Cadence Owned Accounts (COA)**
 
 EOAs and Contract accounts on FlowEVM function the same as on other EVM networks.  Read more about EOAs and Contract 
 accounts on the [Ethereum docs](https://ethereum.org/developers/docs/accounts). EVM developers can use FlowEVM without

@@ -6,9 +6,9 @@ sidebar_position: 2
 
 # Using FlowEVM
 
-## [Flow Wallet](https://wallet.flow.com)
+## (Coming Soon) [Flow Wallet](https://wallet.flow.com)
 
-Flow Wallet is available as [Android](https://play.google.com/store/apps/details?id=io.outblock.lilico&hl=en_US&gl=US) and [iOS](https://apps.apple.com/ca/app/flow-core/id1644169603) apps, with desktop support using the Flow Wallet [Chrome extension](https://chromewebstore.google.com/detail/flow-reference-wallet/hpclkefagolihohboafpheddmmgdffjm) supporting both Flow and FlowEVM by default. In addition to being able to transact in both FLowEVM and Cadence environments, Flow Wallet also allows you to view and move assets between EVM and Cadence making it possible to manage all your assets in one place.
+Flow Wallet is available on [Android](https://play.google.com/store/apps/details?id=io.outblock.lilico&hl=en_US&gl=US) and [iOS](https://apps.apple.com/ca/app/flow-core/id1644169603) apps, with desktop support using the Flow Wallet [Chrome extension](https://chromewebstore.google.com/detail/flow-reference-wallet/hpclkefagolihohboafpheddmmgdffjm). In addition to being able to transact in both FLowEVM and Cadence environments, Flow Wallet will also allow you to view and move assets between EVM and Cadence, making it possible to manage all your assets in one place.
 
 To use Flow Wallet Chrome extension:
 
