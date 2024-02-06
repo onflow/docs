@@ -23,7 +23,7 @@ Cadence transaction, enabling novel use-cases and patterns for integration.
 
 Native EVM transactions continue to be supported when using Metamask and other EVM-compatible clients. 
 
-## Best-in-class UX
+## Best-In-Class UX
 
 Account Linking is built on Flow's account abstraction model and enables users to immediately use an app without
 wallet authentication. On-chain accounts can be created as needed by the application which custodies their use for an
@@ -31,14 +31,14 @@ anonymous user. At some later point these users may choose to link the custodied
 taking full ownership of the account. FlowEVM apps can also leverage Account Linking to handle creation of EVM accounts 
 and achieve a similarly smooth onboarding user experience.
 
-## Instant cross-VM token transfers
+## Instant Cross-VM Token Transfers
 
 FlowEVM and Flow environments both use $FLOW token as the gas currency for transactions, sharing a singular token
 supply across both environments. A few lines Cadence can transfer FLOW tokens in the Flow environment to FlowEVM, 
 or vice versa. Other fungible and non-fungible tokens can also be seamlessly transferred between environments using the
 native cross-VM token bridge, taking place instantly in a single atomic transaction
 
-## Scalability, performance and low gas fees
+## Scalability, Performance and Low Gas Fees
 
 Flow’s state space is extensible to the petabyte scale and is the reason why Cadence contracts have standardized on
 storing application data on-chain. This benefit translates directly to FlowEVM which allowing contracts to maintain a full
@@ -50,7 +50,7 @@ volume as Ethereum. Unlike Ethereum, Flow has always operated well under its max
 presently scalable to 5x more transactions with further performance optimizations to come when parallel execution is 
 released. 
 
-## MEV resilience
+## MEV Resilience
 
 Since EVM on Flow transactions are composed and executed within a Cadence transaction block production is handled by 
 Flow’s multi-role architecture. The heterogeneity between node roles ensures that visibility into block proposal, 
