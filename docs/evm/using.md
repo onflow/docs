@@ -29,14 +29,14 @@ To add FlowEVM as a custom network to MetaMask:
 4. Click `**Add a network manually**`
 5. In the `**Add a network manually**` dialog that appears, enter the following information for FlowEVM mainnet:
     
-    | Name            | Value                           |
-    |---------------------------------------------------|
-    | Network Name    | FlowEVM Mainnet                 |
-    | Description     | The public mainnet for FlowEVM  |
-    | RPC Endpoint    | TBD                             |
-    | Chain ID        | TBD                             |
-    | Currency Symbol | FLOW                            |
-    | Block Explorer  | TBD                             |
+| Name            | Value                                  |
+|-----------------|----------------------------------------|
+| Network Name    | FlowEVM Mainnet                        |
+| Description     | The public RPC url for FlowEVM mainnet |
+| RPC Endpoint    | TBD                                    |
+| Chain ID        | Coming Soon                            |
+| Currency Symbol | FLOW                                   |
+| Block Explorer  | TBD                                    |
 
 6. Tap the Save button to save FlowEVM as a network.
 
