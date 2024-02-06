@@ -17,7 +17,7 @@ FlowEVM has available public RPC nodes available for both Flow mainnet and testn
 | RPC Endpoint    | TBD                                    |
 | Chain ID        | Coming Soon                            |
 | Currency Symbol | FLOW                                   |
-| Block Explorer  | [flowdiver](https://flowdiver.io)      |
+| Block Explorer  | TBD                                    |
 
 # Testnet
 
@@ -28,4 +28,4 @@ FlowEVM has available public RPC nodes available for both Flow mainnet and testn
 | RPC Endpoint    | Coming Soon                            |
 | Chain ID        | TBD                                    |
 | Currency Symbol | FLOW                                   |
-| Block Explorer  | [flowdiver](https://flowdiver.io)      |
+| Block Explorer  | TBD                                    |
