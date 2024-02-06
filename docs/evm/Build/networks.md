@@ -14,7 +14,7 @@ FlowEVM has available public RPC nodes available for both Flow mainnet and testn
 |-----------------|----------------------------------------|
 | Network Name    | FlowEVM Mainnet                        |
 | Description     | The public RPC url for FlowEVM mainnet |
-| RPC Endpoint    | https://evm.flow.com (TBD)     |
+| RPC Endpoint    | TBD                                    |
 | Chain ID        | Coming Soon                            |
 | Currency Symbol | FLOW                                   |
 | Block Explorer  | [flowdiver](https://flowdiver.io)      |
