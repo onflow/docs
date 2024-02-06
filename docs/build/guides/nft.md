@@ -5,7 +5,11 @@ description: Guide to creating an NFT Project with the Flow CLI and Cadence.
 sidebar_position: 3
 ---
 
-This tutorial dives into the technical steps required to craft an NFT on the Flow blockchain, providing developers with a clear roadmap from setup to deployment.
+:::info
+
+This guide is an in-depth tutorial on launching NFT contracts from scratch. To launch in 2 minutes using a tool check out [Touchstone](https://www.touchstone.city/)
+
+:::
 
 ## What are NFTs
 

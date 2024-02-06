@@ -68,10 +68,10 @@ improves the user experience by eliminating failed transactions and invisible fe
 - **Leverage Flow’s Protocol**: Expand EVM capabilities and transcend EVM limitations using Cadence, which offers a powerful new account model, programmable resources, and hybrid ownership
 - **No Miner Extractable Value (MEV)**: Leading to a more fair and secure environment for all participants and minimizing the risk of front running transactions
 - **Enhanced Functionality**:
-    - Compose assets and functionality spanning VM environments using [Cadence contracts](https://cadence-lang.org/)
-    - Conduct multiple contract interactions atomically
-    - Tap in to [Capabilities](https://cadence-lang.org/docs/tutorial/capabilities) for zero-transfer access ([Account Linking](https://developers.flow.com/build/advanced-concepts/account-linking))
-- **Gas Fees**: Transactions are extremely low-cost and denominated in FLOW
+    - Compose assets and functionality using a shared world state and [Cadence contracts](https://cadence-lang.org/).
+    - Conduct multiple contract interactions atomically.
+    - Tap in to [Capabilities](https://cadence-lang.org/docs/tutorial/capabilities) for zero-transfer access ([Account Linking](../build/guides/account-linking/index.md)).
+- **Gas Fees**: Transactions are extremely low-cost and denominated in FLOW.
 
 # Learn More and Join the Conversation
 

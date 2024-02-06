@@ -5,7 +5,11 @@ description: Guide to creating a fungible token on Flow with the Flow CLI and Ca
 sidebar_position: 2
 ---
 
-This article will guide you through the steps to create, deploy, mint, and transfer fungible tokens on Flow.
+:::info
+
+This guide is an in-depth tutorial on launching a Fungible Token contract from scratch. To launch in 2 minutes using a tool check out [Toucans](https://toucans.ecdao.org/)
+
+:::
 
 ## What are Fungible Tokens?
 

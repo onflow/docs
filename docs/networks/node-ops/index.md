@@ -22,11 +22,11 @@ Flow multirole architecture makes it more scalable and provides several node typ
 
 ---
 
-The different types of nodes are described [here](./nodes/node-operation/node-roles.md). As node operator, you can choose to run any of the different types of node that best fits your needs.
+The different types of nodes are described [here](./node-operation/node-roles.md). As node operator, you can choose to run any of the different types of node that best fits your needs.
 
 The nodes are classified as follows,
 
-![Flownodesdiagram.png](nodes/node-operation/Flownodesdiagram.png)
+![Flownodesdiagram.png](./node-operation/Flownodesdiagram.png)
 
 ## Light Node A.K.A. Observer Node
 
@@ -39,20 +39,9 @@ The observer node is not staked but still provides the same API as the access no
 
 :::info
 
-To run a light node, follow this [guide](./nodes/node-operation/observer-node.md)
+To run a light node, follow this [guide](./access-onchain-data/light-nodes/observer-node.md)
 
 :::
-
-## Archive Node
-
----
-
-The Archive node provides a scalable and efficient way to access the history of Flow protocol and the execution state for the current spork. Like the observer node, it too can be run by anyone without being staked or added to the approved list of nodes.
-The Archive node follows the chain, stores and indexes both protocol and execution state, and allows retrieval of blocks, collections, transactions and events from the genesis of the current spork.
-
-It also allows script execution and other read-only queries that require the execution state to be read. It can answer any queries from past data e.g. “what was the Flow account balance at height X?”, where X is several thousand blocks in the past.
-
-_The archive node is currently in beta and will be available as a GA release in H2 2023 (see [here](https://flow.com/post/flow-blockchain-node-operation-archive-node) for more)._
 
 ## Full Node
 
@@ -86,13 +75,13 @@ Launch an access node using QuickNode
 
 :::info
 
-To run a self-hosted access node, follow this [guide](./nodes/node-operation/access-node-setup.md)
+To run a self-hosted access node, follow this [guide](./access-onchain-data/access-nodes/access-node-setup.md)
 
 :::
 
 :::tip
 
-Alternately, instead of running an access node, you can use the [Flow community](./nodes/access-api.md) access nodes or the ones run by any of the other node operators.
+Alternately, instead of running an access node, you can use the [Flow community](./access-onchain-data/access-nodes/accessing-data/access-api.md) access nodes or the ones run by any of the other node operators.
 
 :::
 
@@ -120,8 +109,8 @@ Before proceeding, ensure you have the stake required for your new node and that
 
 To set up a new staked node after it has been authorized by the Flow governance working group, you will need to complete the following steps:
 
-1. [Provision](./nodes/node-operation/node-setup.md) the machine on which your node will run.
+1. [Provision](./node-operation/node-setup.md) the machine on which your node will run.
 
-2. [Generate and register](./nodes/node-operation/node-bootstrap.md) your node identity.
+2. [Generate and register](./node-operation/node-bootstrap.md) your node identity.
 
-3. [Start](./nodes/node-operation/node-bootstrap.md#step-3---start-your-flow-node) your node!
+3. [Start](./node-operation/node-bootstrap.md#step-3---start-your-flow-node) your node!
