@@ -1,10 +1,11 @@
 ---
 sidebar_position: 2
+title: Accounts
 ---
 
 :::info
 
-Are you a EVM developer looking for information about Accounts on FlowEVM? If so, check out the EVM specific documentation [here](../../evm/Build/accounts.md)
+Are you an EVM developer looking for information about Accounts on FlowEVM? If so, check out the EVM specific documentation [here](../../evm/Build/accounts.md)
 
 :::
 

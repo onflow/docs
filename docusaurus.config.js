@@ -577,6 +577,9 @@ const config = {
       '@docusaurus/plugin-client-redirects',
       {
         createRedirects(existingPath) {
+          if (existingPath === '/build/basics/smart-contracts') {
+            return '/build/smart-contracts/overview';
+          }
           if (existingPath.includes('/cadence')) {
             // Redirect from /docs/team/X to /community/X and /docs/support/X to /community/X
             return [
