@@ -10,6 +10,6 @@ Source: [NonFungibleToken.cdc](https://github.com/onflow/flow-nft/blob/master/co
 
 | Network         | Contract Address     |
 | --------------- | -------------------- |
-| Emulator/Canary | `0xf8d6e0586b0a20c7` |
+| Emulator        | `0xf8d6e0586b0a20c7` |
 | Testnet         | `0x631e88ae7f1d7c20` |
 | Mainnet         | `0x1d7e57aa55817448` |

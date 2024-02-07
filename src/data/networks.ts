@@ -55,11 +55,4 @@ export const networks: Network[] = [
     title: "Flow Sandboxnet Access APIs",
     urlPath: "flow-sandboxnet-access-apis",
   },
-  // Exclude canarynet for now until we have sporks data.
-  // {
-  //   componentId: "s4z9n7p9pm3s",
-  //   id: "canarynet",
-  //   title: "Flow Canarynet",
-  //   urlPath: "flow-canarynet",
-  // },
 ]

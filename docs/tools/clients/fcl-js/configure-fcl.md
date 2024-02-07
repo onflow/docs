@@ -53,9 +53,9 @@ addStuff().then(d => console.log(d)) // 13 (5 + 7 + 1)
 - `challenge.handshake` -- **(DEPRECATED `@onflow/fcl@0.0.68`)** Points FCL at the Wallet or Wallet Discovery mechanism.
 - `discovery.wallet` -- **(INTRODUCED `@onflow/fcl@0.0.68`)** Points FCL at the Wallet or Wallet Discovery mechanism.
 - `discovery.wallet.method` -- Describes which service strategy a wallet should use: `IFRAME/RPC`, `POP/RPC`, `TAB/RPC`, `HTTP/POST`, `EXT/RPC`
-- `env` -- **(DEPRECATED `@onflow/fcl@1.0.0`)** Used in conjunction with stored interactions. Possible values: `local`, `canarynet`, `testnet`, `mainnet`
+- `env` -- **(DEPRECATED `@onflow/fcl@1.0.0`)** Used in conjunction with stored interactions. Possible values: `local`, `testnet`, `mainnet`
 - `fcl.limit` -- Specifies fallback compute limit if not provided in transaction.  Provided as integer.
-- `flow.network` (recommended) -- **(INTRODUCED `@onflow/fcl@1.0.0`)** Used in conjunction with stored interactions and provides FCLCryptoContract address for `testnet` and `mainnet`. Possible values: `local`, `canarynet`, `testnet`, `mainnet`.
+- `flow.network` (recommended) -- **(INTRODUCED `@onflow/fcl@1.0.0`)** Used in conjunction with stored interactions and provides FCLCryptoContract address for `testnet` and `mainnet`. Possible values: `local`, `testnet`, `mainnet`.
 - `service.OpenID.scopes` - **(INTRODUCED `@onflow/fcl@0.0.68`)** Open ID Connect claims for Wallets and OpenID services.
 
 ## Using Contracts in Scripts and Transactions
@@ -138,4 +138,4 @@ import "HelloWorld"
 
 FCL will automatically replace the contract name with the address for the network you are using.
 
-> Note: never put private keys in your `flow.json`. You should use the [key/location syntax](../../../tools/flow-cli/flow.json/security.md) to separate your keys into a separate git ignored file.
+> Note: never put private keys in your `flow.json`. You should use the [key/location syntax](../../flow-cli/flow.json/security.md) to separate your keys into a separate git ignored file.

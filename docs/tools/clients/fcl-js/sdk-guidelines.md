@@ -34,7 +34,7 @@ import * as types from "@onflow/types"
 ```
 
 ## Connect
-[<img src="https://raw.githubusercontent.com/onflow/sdks/main/templates/documentation/ref.svg" width="130" />](./configure-fcl.mdx)
+[<img src="https://raw.githubusercontent.com/onflow/sdks/main/templates/documentation/ref.svg" width="130" />](./configure-fcl.md)
 
 By default, the library uses HTTP to communicate with the access nodes and it must be configured with the correct access node API URL.  An error will be returned if the host is unreachable.
 
@@ -241,7 +241,7 @@ Result output: [CollectionObject](./api.md#collectionobject)
 ### Execute Scripts
 [<img src="https://raw.githubusercontent.com/onflow/sdks/main/templates/documentation/ref.svg" width="130" />](./api.md#query)
 
-Scripts allow you to write arbitrary non-mutating Cadence code on the Flow blockchain and return data. You can learn more about [Cadence here](https://cadence-lang.org/docs/language) and [scripts here](./scripts.mdx), but we are now only interested in executing the script code and getting back the data.
+Scripts allow you to write arbitrary non-mutating Cadence code on the Flow blockchain and return data. You can learn more about [Cadence here](https://cadence-lang.org/docs/language) and [scripts here](./scripts.md), but we are now only interested in executing the script code and getting back the data.
 
 We can execute a script using the latest state of the Flow blockchain or we can choose to execute the script at a specific time in history defined by a block height or block ID.
 
@@ -686,4 +686,4 @@ mutate({
 })
 ```
 
-After a transaction has been [built](./sdk-guidelines.mdx#build-transactions) and [signed](./sdk-guidelines.mdx#sign-transactions), it can be sent to the Flow blockchain where it will be executed. If sending was successful you can then [retrieve the transaction result](./sdk-guidelines.mdx#get-transactions).
+After a transaction has been [built](./sdk-guidelines.md#build-transactions) and [signed](./sdk-guidelines.md#sign-transactions), it can be sent to the Flow blockchain where it will be executed. If sending was successful you can then [retrieve the transaction result](./sdk-guidelines.md#get-transactions).
