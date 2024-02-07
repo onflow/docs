@@ -576,17 +576,19 @@ const config = {
     [
       '@docusaurus/plugin-client-redirects',
       {
+        redirects: [
+          {
+            to: '/build/smart-contracts/overview',
+            from: '/build/basics/smart-contracts',
+          },
+        ],
         createRedirects(existingPath) {
-          if (existingPath === '/build/basics/smart-contracts') {
-            return '/build/smart-contracts/overview';
-          }
           if (existingPath.includes('/cadence')) {
-            // Redirect from /docs/team/X to /community/X and /docs/support/X to /community/X
             return [
               existingPath.replace('https://cadence-lang.org/docs', '/cadence'),
             ];
           }
-          return undefined; // Return a falsy value: no redirect created
+          return undefined;
         },
       },
     ],
