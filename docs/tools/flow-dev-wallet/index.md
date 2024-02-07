@@ -84,6 +84,10 @@ Navigate to http://localhost:8701/harness
 
 For wallet discovery refer to [Wallet discovery](../clients/fcl-js/discovery.md) page
 
+### Account/Address creation
+
+To create a new Flow account refer to [Accounts reference](https://cadence-lang.org/docs/language/accounts#account-creation)
+
 ### Flow Balance
 
 To obtain the Flow balance of a particular account, please consult the following example:
