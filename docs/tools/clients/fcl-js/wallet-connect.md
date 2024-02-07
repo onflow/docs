@@ -88,7 +88,7 @@ config({
 })
 ```
 
-See [FCL Configuration](./configure-fcl.mdx) for more information.
+See [FCL Configuration](./configure-fcl.md) for more information.
 
 
 

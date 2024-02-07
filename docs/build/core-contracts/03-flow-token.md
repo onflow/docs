@@ -9,7 +9,7 @@ Source: [FlowToken.cdc](https://github.com/onflow/flow-core-contracts/blob/maste
 
 | Network         | Contract Address     |
 | --------------- | -------------------- |
-| Emulator/Canary | `0x0ae53cb6e3f42a79` |
+| Emulator        | `0x0ae53cb6e3f42a79` |
 | Testnet         | `0x7e60df042a9c0868` |
 | Mainnet         | `0x1654653399040a61` |
 
