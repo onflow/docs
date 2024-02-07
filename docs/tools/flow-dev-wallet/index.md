@@ -5,9 +5,8 @@ sidebar_label: Flow Dev Wallet
 
 The Flow Dev Wallet is a mock Flow wallet that simulates the protocols used by [FCL](../clients/fcl-js/index.md) to interact with the Flow blockchain on behalf of simulated user accounts.
 
-**IMPORTANT**
+:::warning[IMPORTANT]
 
-```
 This project implements an FCL compatible
 interface, but should **not** be used as a reference for
 building a production grade wallet.
@@ -17,7 +16,15 @@ development against a locally run instance of the Flow
 blockchain like the Flow emulator, and should never be used in
 conjunction with Flow Mainnet, Testnet, Canarynet or any
 other instances of Flow.
-```
+
+:::
+
+:::info
+
+To see a full list of Flow comatible wallets
+visit [Wallets page](../../ecosystem/wallets.md)
+
+:::
 
 ## Getting Started
 
@@ -61,6 +68,12 @@ fcl
   .put("discovery.wallet", "http://localhost:8701/fcl/authn")
 ```
 
+:::info
+
+For a full example refer to [Authenticate using FCL snippet](https://academy.ecdao.org/en/snippets/fcl-authenticate)
+
+:::
+
 ### Test harness
 
 It's easy to use this FCL harness app as a barebones
@@ -68,11 +81,10 @@ app to interact with the dev-wallet during development:
 
 Navigate to http://localhost:8701/harness
 
+### Wallet discovery
+
+For wallet discovery refer to [Wallet discovery](../clients/fcl-js/discovery.md) page
+
 ## Contributing
 
 Releasing a new version of Dev Wallet is as simple as tagging and creating a release, a Github Action will then build a bundle of the Dev Wallet that can be used in other tools (such as CLI). If the update of the Dev Wallet is required in the CLI, a seperate update PR on the CLI should be created. For more information, please visit the [fcl-dev-wallet GitHub repository](https://github.com/onflow/fcl-dev-wallet).
- 
-## Flow compatible wallets
-
-Check [this list](../../ecosystem/wallets.md) to see Flow compatible wallets
-

@@ -137,7 +137,7 @@ fcl.pluginRegistry.add(FclWcServicePlugin)
 
 Knowing all the wallets available to users on a blockchain can be challenging. FCL's Discovery mechanism relieves much of the burden of integrating with Flow compatible wallets and let's developers focus on building their dApp and providing as many options as possible to their users.
 
-There are two ways an app can use [Wallet Discovery](https://github.com/onflow/fcl-js/blob/master/docs/networks/discovery.mdx):
+There are two ways an app can use [Wallet Discovery](./discovery.md):
 
 1. The UI version which can be configured for display via iFrame, Popup, or Tab.
 
