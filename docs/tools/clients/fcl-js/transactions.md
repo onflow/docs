@@ -2,9 +2,9 @@
 
 Transactions let you send Cadence code to the Flow blockchain that permanently alters its state.
 
-We are assuming you have read the [Scripts Documentation](./scripts.mdx) before this, as transactions are sort of scripts with more required things.
+We are assuming you have read the [Scripts Documentation](./scripts.md) before this, as transactions are sort of scripts with more required things.
 
-While `query` is used for sending scripts to the chain, `mutate` is used for building and sending transactions. Just like [scripts](./scripts.mdx), `fcl.mutate` is a [JavaScript Tagged Template Literal](https://styled-components.com/docs/advanced#tagged-template-literals) that we can pass Cadence code into.
+While `query` is used for sending scripts to the chain, `mutate` is used for building and sending transactions. Just like [scripts](./scripts.md), `fcl.mutate` is a [JavaScript Tagged Template Literal](https://styled-components.com/docs/advanced#tagged-template-literals) that we can pass Cadence code into.
 
 Unlike scripts, they require a little more information, things like a proposer, authorizations and a payer, which may be a little confusing and overwhelming.
 

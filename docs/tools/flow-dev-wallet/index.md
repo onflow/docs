@@ -14,7 +14,7 @@ building a production grade wallet.
 This project should only be used in aid of local
 development against a locally run instance of the Flow
 blockchain like the Flow emulator, and should never be used in
-conjunction with Flow Mainnet, Testnet, Canarynet or any
+conjunction with Flow Mainnet, Testnet, or any
 other instances of Flow.
 
 :::

@@ -117,21 +117,21 @@ For additional details on how `flow.json` is configured, [read here.](../../../t
 
 On Flow, scripts are used to read data from the Flow blockchain. There is no state modification. In our case, we are going to read a greeting from a contract deployed to `testnet` called `HelloWorld`. (You can [view the contract here](https://f.dnz.dev/0x9dca641e9a4b691b/HelloWorld))
 
-Let's create a script file:
+Let's create a script file. We can generate a boilerplate script file with the following command:
 
 ```
-touch script.cdc
+flow generate script ReadGreeting
 ```
 
-Then in the script file, let's put the following code:
+This will create a file called `ReadGreeting.cdc` in the `cadence/scripts` directory.  Let's update the script to read the greeting from the `HelloWorld` contract:
 
 ```
 import HelloWorld from 0x9dca641e9a4b691b
 
-pub fun main(): String {
+access(all)
+fun main(): String {
   return HelloWorld.greeting
 }
-
 ```
 
 In the above example, `0x9dca641e9a4b691b` is the address where the `HelloWorld` contract has been deployed to on `testnet`. (Note: if you'll like to learn more about writing scripts, please [read here](../../basics/scripts.md)).
@@ -139,7 +139,7 @@ In the above example, `0x9dca641e9a4b691b` is the address where the `HelloWorld`
 To run the script, we'll run this from the CLI:
 
 ```
-flow scripts execute script.cdc --network testnet
+flow scripts execute cadence/scripts/ReadGreeting.cdc --network testnet
 ```
 
 You should see the result of the greeting. `Result: "Hello, world!"`
@@ -150,20 +150,22 @@ The Flow Emulator is a local, lightweight, and standalone version of the Flow bl
 
 In order to use it, let's update our project configuration. 
 
-Let's create a local version of the HelloWorld contract. We'll deploy it to the emulator, Run:
+Let's create a local version of the HelloWorld contract. To do that, we'll again use the `generate` subcommand of the CLI to create a boilerplate contract. Except this time, we'll generate a contract file at `cadence/contracts/HelloWorld.cdc`.
 
 ```
-touch HelloWorld.cdc
+flow generate contract HelloWorld
 ```
 
-Copy the contract to `HelloWorld.cdc`.
+Now let's update the contract to have a `greeting` variable and a `changeGreeting` function that will allow us to change the greeting.
 
 ```
-pub contract HelloWorld {
+access(all) contract HelloWorld {
 
-  pub var greeting: String
+  access(all)
+  var greeting: String
 
-  pub fun changeGreeting(newGreeting: String) {
+  access(all)
+  fun changeGreeting(newGreeting: String) {
     self.greeting = newGreeting
   }
 
@@ -171,10 +173,17 @@ pub contract HelloWorld {
     self.greeting = "Hello, World!"
   }
 }
-
 ```
 
-Next we'll add a contracts section to our `flow.json` configuration that will describe our project setup. We'll state the contract file location lives with `source` and then define `aliases` for the addresses of the deployed contracts.
+Next we need to add our `HelloWorld` contract to our `flow.json` configuration that will describe our project setup. We can do that by running the following command:
+
+```
+flow config add contract
+```
+
+This will prompt you to enter the contract name and the contract file location. For our case, we'll enter `HelloWorld` and `cadence/contracts/HelloWorld.cdc` respectively. For the `testnet` alias prompt you can use the address of the HelloWorld contract on testnet `0x9dca641e9a4b691b`. Skip the `mainnet` and `emulator` prompts for this tutorial.
+
+Your `flow.json` should now look like this:
 
 ```
 // flow.json
@@ -183,7 +192,7 @@ Next we'll add a contracts section to our `flow.json` configuration that will de
 ...
 "contracts": {
   "HelloWorld": {
-    "source": "HelloWorld.cdc",
+    "source": "cadence/contracts/HelloWorld.cdc",
     "aliases": {
       "testnet": "0x9dca641e9a4b691b"
     }
@@ -200,13 +209,22 @@ We're also going to change the imports of our script so that there are no hardco
 
 import "HelloWorld"
 
-pub fun main(): String {
+access(all)
+fun main(): String {
   return HelloWorld.greeting
 }
 
 ```
 
-Next, we'll add a deployments section to `flow.json` and define what account we'd like what contract deployed to and on what network. In this case, let's deploy the `HelloWorld` contract to the `emulator` network and on `emulator-account` provided.
+Next, we need to add our contract to the `deployments` section to `flow.json` and define what account we'd like what contract deployed to and on what network. You can add this easily by running the following command:
+
+```
+flow config add deployment
+```
+
+When prompted, enter `emulator` for the network, `emulator-account` for the account, and `HelloWorld` for the contract. Skip the `testnet` and `mainnet` prompts for this tutorial.
+
+Your `flow.json` should now look have the following section:
 
 ```
 // flow.json
@@ -236,20 +254,20 @@ flow project deploy
 Now if we run the following script we should see the result of the script against our emulator deployed contract.
 
 ```
-flow scripts execute script.cdc --network emulator
+flow scripts execute cadence/scripts/ReadGreeting.cdc --network emulator
 ```
 
 ## Creating an Account and Running a Transaction
 
 To change state on the Flow Blockchain, you need to run a transaction. Let's create a simple transaction file. We can use to modify the `greeting` on the `HelloWorld` contract.
 
-First, create a file called `transaction.cdc` from the root of your project:
+First, create a file called `cadence/transactions/ChangeGreeting.cdc` with the following command:
 
 ```
-touch transaction.cdc
+flow generate transaction ChangeGreeting
 ```
 
-Then copy the following code:
+Update the boilerplate transaction to look like this:
 
 ```
 import "HelloWorld"
@@ -281,7 +299,7 @@ Once that runs, select `Emulator` as the network and give your account the name 
 To run a transaction with this new account, you can run the following:
 
 ```
-flow transactions send ./transaction.cdc "Hello, me" --signer emulator-tester --network emulator
+flow transactions send cadence/transactions/ChangeGreeting.cdc "Hello, me" --signer emulator-tester --network emulator
 ```
 
 You've just modified the state of the Flow Blockchain!

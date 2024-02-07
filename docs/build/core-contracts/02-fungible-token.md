@@ -10,7 +10,7 @@ Source: [FungibleToken.cdc](https://github.com/onflow/flow-ft/blob/master/contra
 
 | Network         | Contract Address     |
 | --------------- | -------------------- |
-| Emulator/Canary | `0xee82856bf20e2aa6` |
+| Emulator        | `0xee82856bf20e2aa6` |
 | Testnet         | `0x9a0766d93b6608b7` |
 | Mainnet         | `0xf233dcee88fe0abe` |
 

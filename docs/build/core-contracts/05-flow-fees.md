@@ -9,7 +9,7 @@ Source: [FlowFees.cdc](https://github.com/onflow/flow-core-contracts/blob/master
 
 | Network         | Contract Address     |
 | --------------- | -------------------- |
-| Emulator/Canary | `0xe5a8b7f23e8b548f` |
+| Emulator        | `0xe5a8b7f23e8b548f` |
 | Testnet         | `0x912d5440f7e3769e` |
 | Mainnet         | `0xf919ee77447b7497` |
 
@@ -20,6 +20,6 @@ Source: [FlowFees.cdc](https://github.com/onflow/flow-core-contracts/blob/master
 
 | Network         | Contract Address     |
 | --------------- | -------------------- |
-| Emulator/Canary | `0xf8d6e0586b0a20c7` |
+| Emulator        | `0xf8d6e0586b0a20c7` |
 | Testnet         | `0x8c5303eaa26202d6` |
 | Mainnet         | `0xe467b9dd11fa00df` |
