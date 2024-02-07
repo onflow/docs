@@ -86,7 +86,10 @@ For wallet discovery refer to [Wallet discovery](../clients/fcl-js/discovery.md)
 
 ### Account/Address creation
 
-To create a new Flow account refer to [Accounts reference](https://cadence-lang.org/docs/language/accounts#account-creation)
+To create a new Flow account refer to these resources
+- [Accounts reference](https://cadence-lang.org/docs/language/accounts#account-creation)
+- [Create an Account with FCL snippet](https://academy.ecdao.org/en/snippets/fcl-create-account)
+- [Create an Account in Cadence snippet](https://academy.ecdao.org/en/snippets/cadence-create-account)
 
 ### Flow Balance
 
