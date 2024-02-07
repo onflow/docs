@@ -21,8 +21,7 @@ other instances of Flow.
 
 :::info
 
-To see a full list of Flow comatible wallets
-visit [Wallets page](../../ecosystem/wallets.md)
+To see a full list of Flow compatible wallets visit [Wallets page](../../ecosystem/wallets.md)
 
 :::
 
@@ -84,6 +83,16 @@ Navigate to http://localhost:8701/harness
 ### Wallet discovery
 
 For wallet discovery refer to [Wallet discovery](../clients/fcl-js/discovery.md) page
+
+### Flow Balance
+
+To obtain the Flow balance of a particular account, please consult the following example:
+https://github.com/onflow/flow-port/blob/staging/src/interactions/get-total-flow-balance.js
+
+Additionally, consider exploring these resources:
+
+- [Guide to Creating a Fungible Token on Flow](../../build/guides/fungible-token.md)
+- [Tutorial on Fungible Tokens](https://cadence-lang.org/docs/tutorial/fungible-tokens)
 
 ## Contributing
 

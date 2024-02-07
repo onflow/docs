@@ -60,3 +60,7 @@ Safely store and stake your Flow tokens with [Finoa](https://www.finoa.io/).
 https://www.finoa.io/flow/
 
 </div>
+
+## Flow Dev Wallet
+
+[The Flow Dev Wallet](../tools/flow-dev-wallet/index.md) is a mock Flow wallet that simulates the protocols used by [FCL](../tools/clients/fcl-js/index.md) to interact with the Flow blockchain on behalf of simulated user accounts.
