@@ -238,7 +238,7 @@ const config = {
     /** @type {import('@docusaurus/preset-classic').ThemeConfig} */
     ({
       announcementBar: {
-        id: 'support_us',
+        id: 'stable_cadence_upgrade',
         content: `🔧 Upgrade to Cadence 1.0 🔧<br />
           The highly anticipated <a href="https://flow.com/upgrade/crescendo">Crescendo</a> network upgrade is coming soon with 20+ new <a href="https://flow.com/upgrade/cadence-1">Cadence 1.0</a> features and <a href="https://flow.com/upgrade/evm">EVM</a> equivalence.
          `,
