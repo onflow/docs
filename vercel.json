@@ -1064,7 +1064,12 @@
     },
     {
       "source": "/community-resources/:path*",
-      "destination": "/ecosystem/:path*"
+      "destination": "/ecosystem/:path*",
+      "permanent": true
+    },
+    {
+      "source": "/build/basics/smart-contracts",
+      "destination": "/build/smart-contracts/overview"
     }
   ]
 }
