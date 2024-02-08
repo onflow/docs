@@ -13,7 +13,7 @@ Store, manage, and interact securely with tokens and digital assets on Flow. Dis
 
 ## Flow Wallet
 
-[Flow Wallet](https://wallet.flow.com/) is Flow oldest wallet extension and seamlessly interacts with all Cadence and EVM dApps in the ecosystem.
+[Flow Wallet](https://wallet.flow.com/) is Flow's oldest wallet extension and seamlessly interacts with all Cadence and EVM dApps in the ecosystem.
 
 - https://wallet.flow.com/
 - https://frw.gitbook.io/
@@ -56,7 +56,7 @@ https://niftory.com/
 
 ## Finoa
 
-[Finoa](https://www.finoa.io/) is a platform for institutional investors to safety store and stake their FLOW tokens.
+[Finoa](https://www.finoa.io/) is a platform for institutional investors to safely store and stake their FLOW tokens.
 
 https://www.finoa.io/flow/
 
