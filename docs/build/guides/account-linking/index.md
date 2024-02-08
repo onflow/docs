@@ -44,7 +44,7 @@ These two steps are implemented in Cadence as two transactions:
 
 The account B creates and publishes the `AuthAccount` capability to the account A at the address `0x01`
 
-```json
+```cadence
 #allowAccountLinking
 
 transaction {
@@ -59,7 +59,7 @@ transaction {
 
 The account A claims the capability published by account B.
 
-```json
+```cadence
 transaction {
     prepare(signer: AuthAccount) {
         let capability = signer.inbox.claim<&AuthAccount>("accountCapB", provider: 0x2)!
