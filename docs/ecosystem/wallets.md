@@ -1,31 +1,32 @@
 ---
 sidebar_position: 1
-description: Store, send, and receive Flow tokens and digital assets securely on the Flow blockchain network. A convenient and safe way to manage and interact with cryptocurrency holdings.
+description: Store, manage, and interact securely with tokens and digital assets on Flow. Discover a range of wallets that offer convenient ways to handle and safeguard your cryptocurrency holdings, ensuring easy access and enhanced security for your transactions and assets.
 sidebar_custom_props:
   icon: 🔑
 ---
 
 # Wallets
 
-Store, manage, and interact securely with Flow tokens and digital assets on the Flow blockchain network. Discover a range of wallets that offer convenient ways to handle and safeguard your cryptocurrency holdings, ensuring easy access and enhanced security for your transactions and assets.
+Store, manage, and interact securely with tokens and digital assets on Flow. Discover a range of wallets that offer convenient ways to handle and safeguard your cryptocurrency holdings, ensuring easy access and enhanced security for your transactions and assets.
 
 <div id="cards" className="cards">
 
-## Flow Reference Wallet
+## Flow Wallet
 
-[Flow Reference Wallet](https://frw.gitbook.io/) is the first extension wallet on Flow.
+[Flow Wallet](https://wallet.flow.com/) is Flow's oldest wallet extension and seamlessly interacts with all Cadence and EVM dApps in the ecosystem.
 
-https://frw.gitbook.io/
+- https://wallet.flow.com/
+- https://frw.gitbook.io/
 
 ## Blocto
 
-Manage your crypto, dApps, and NFTs all in one place with [Blocto](https://www.blocto.io/), the cross-chain crypto wallet.
+[Blocto](https://www.blocto.io/) is a cross-chain mobile wallet for IOS and Android devices.
 
 https://www.blocto.io/
 
 ## Dapper Wallet
 
-[Dapper Wallet](https://www.meetdapper.com/) makes it easy and secure to buy, store, and manage digital assets from innovative Flow apps and games.
+[Dapper Wallet](https://www.meetdapper.com/) is a wallet exceptionally friendly for first time crypto collectors to buy and manage digital assets.
 
 https://www.meetdapper.com/
 
@@ -37,7 +38,7 @@ https://www.ledger.com/
 
 ## NuFi
 
-[NuFi](https://nu.fi/) is Flow's only non-custodial wallet with staking, NFT gallery, dApp connector, and Ledger HW support.
+[NuFi](https://nu.fi/) is a non-custodial wallet with staking and Ledger support.
 
 https://nu.fi/
 
@@ -49,14 +50,18 @@ https://magic.link/
 
 ## Niftory
 
-[Niftory](https://niftory.com/) is a platform to create, mint, and transfer NFTs.
+[Niftory](https://niftory.com/) is a developer platform that offers APIs to create wallets and interact with NFTs.
 
 https://niftory.com/
 
 ## Finoa
 
-Safely store and stake your Flow tokens with [Finoa](https://www.finoa.io/).
+[Finoa](https://www.finoa.io/) is a platform for institutional investors to safely store and stake their FLOW tokens.
 
 https://www.finoa.io/flow/
 
 </div>
+
+## Flow Dev Wallet
+
+Looking for a way to create mock developer wallets to test your app? The [The Flow Dev Wallet](../tools/flow-dev-wallet/index.md) simulates the protocols used by [FCL](../tools/clients/fcl-js/index.md) to interact with the Flow blockchain on behalf of simulated user accounts.
