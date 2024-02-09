@@ -1019,7 +1019,7 @@
     },
     {
       "source": "/build/cadence-migration-guide",
-      "destination": "https://cadence-lang.org/docs/cadence-migration-guide",
+      "destination": "https://cadence-lang.org/docs/cadence_migration_guide",
       "permanent": true
     },
     {
