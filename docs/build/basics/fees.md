@@ -1,6 +1,13 @@
 ---
 sidebar_position: 5
+title: Fees
 ---
+
+:::info
+
+Are you an EVM developer looking for information about Accounts on FlowEVM? If so, check out the EVM specific documentation [here](../../evm/Build/fees.md)
+
+:::
 
 # Fees
 
@@ -357,7 +364,7 @@ There are several places to learn more about transaction fees:
 
 **When will the fee update go into effect?**
 
-The updates were rolled out with the [Spork on April 6, 2022](../../networks/node-ops/nodes/node-operation/past-sporks.md#mainnet-17), and were enabled on [June 1st](https://forum.onflow.org/t/permissionless-contract-deployment-progress/2981) during the [weekly epoch transition](https://github.com/onflow/service-account/tree/main/transactions/set-execution-effort-weights/2022/jun-1).
+The updates were rolled out with the [Spork on April 6, 2022](../../networks/node-ops/node-operation/past-sporks.md#mainnet-17), and were enabled on [June 1st](https://forum.onflow.org/t/permissionless-contract-deployment-progress/2981) during the [weekly epoch transition](https://github.com/onflow/service-account/tree/main/transactions/set-execution-effort-weights/2022/jun-1).
 
 **Why are fees collected even when transactions fail?**
 

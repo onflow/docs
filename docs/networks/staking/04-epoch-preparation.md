@@ -203,7 +203,7 @@ for a detailed breakdown of the epoch setup event.
 must perform setup tasks in preparation for the upcoming epoch. 
 
 **Duration:** The epoch setup phase begins right after the `EpochSetup` service event is emitted.
-It ends with the block where `EpochCommit` service emitted.
+It ends with the block where `EpochCommit` service event is emitted.
 
 ### **Protocol Directives:**
 

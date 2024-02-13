@@ -1,6 +1,6 @@
 ---
-title: React Native Quickstart
-sidebar_label: React Native Quickstart
+title: React Native Development
+sidebar_label: React Native Development
 sidebar_position: 4
 ---
 
@@ -70,11 +70,11 @@ config({
 - The `accessNode.api` key specifies the address of a Flow access node. Flow provides these, but in the future access to Flow may be provided by other 3rd parties, through their own access nodes.
 - `discovery.wallet` and `discovery.authn.endpoint` are addresses that point to a service that lists FCL compatible wallets. Flow's FCL Discovery service is a service that FCL wallet providers can be added to, and be made 'discoverable' to any application that uses the `discovery.wallet` and `discovery.authn.endpoint`.
 
-> Learn more about [configuring Discovery](../../../tools/clients/fcl-js/discovery.mdx) or [setting configuration values](../../../tools/clients/fcl-js/api.md#setting-configuration-values).
+> Learn more about [configuring Discovery](../../../tools/clients/fcl-js/discovery.md) or [setting configuration values](../../../tools/clients/fcl-js/api.md#setting-configuration-values).
 
 > If you are running a Wallet Discovery locally and want to use it in the React Native app, change `https://fcl-discovery.onflow.org/` to `http://<LOCAL_IP_ADDRESS>:<PORT>/`
 > For Example:
-> using local [Wallet Discovery](../../../tools/clients/fcl-js/discovery.mdx) and local [Dev Wallet](../../../tools/flow-dev-wallet/index.md):
+> using local [Wallet Discovery](../../../tools/clients/fcl-js/discovery.md) and local [Dev Wallet](../../../tools/flow-dev-wallet/index.md):
 >
 > ```javascript ./flow/config.js
 > import { config } from "@onflow/fcl";
@@ -621,9 +621,9 @@ That's it! You now have a shippable Flow dapp that can auth, query, init account
 
 **More FCL**
 - [FCL API Quick Reference](../../../tools/clients/fcl-js/api)
-- [More on Scripts](../../../tools/clients/fcl-js/scripts.mdx)
-- [More on Transactions](../../../tools/clients/fcl-js/transactions.mdx)
-- [User Signatures](../../../tools/clients/fcl-js/user-signatures.mdx)
+- [More on Scripts](../../../tools/clients/fcl-js/scripts.md)
+- [More on Transactions](../../../tools/clients/fcl-js/transactions.md)
+- [User Signatures](../../../tools/clients/fcl-js/user-signatures.md)
 - [Proving Account Ownership](../../../tools/clients/fcl-js/proving-authentication.mdx)
 
 **Other**

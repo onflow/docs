@@ -26,6 +26,6 @@ Source: [NodeVersionBeacon.cdc](https://github.com/onflow/flow-core-contracts/bl
 
 | Network         | Contract Address     |
 | --------------- | -------------------- |
-| Emulator/Canary | `0xf8d6e0586b0a20c7` |
+| Emulator        | `0xf8d6e0586b0a20c7` |
 | Testnet         | `0x8c5303eaa26202d6` |
 | Mainnet         | `0xe467b9dd11fa00df` |

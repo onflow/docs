@@ -11,7 +11,7 @@ Source: [FlowIDTableStaking.cdc](https://github.com/onflow/flow-core-contracts/b
 
 | Network         | Contract Address     |
 | --------------- | -------------------- |
-| Emulator/Canary | `0xf8d6e0586b0a20c7` |
+| Emulator        | `0xf8d6e0586b0a20c7` |
 | Testnet         | `0x9eca2b38b18b5dfe` |
 | Mainnet         | `0x8624b52f9ddcd04a` |
 

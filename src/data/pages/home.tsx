@@ -34,13 +34,13 @@ const contentNavigationListItems: ContentNavigationListProps = {
     {
       title: 'Account Abstraction',
       text: 'Enhance UX with a flexible Account structure and key management',
-      link: '/build/advanced-concepts/account-abstraction',
+      link: '/build/differences-vs-evm/account-abstraction',
       icon: 'learn',
     },
     {
       title: 'Account Linking',
       text: 'Seamless onboarding and secure resource ownership',
-      link: '/build/advanced-concepts/account-linking',
+      link: '/build/guides/account-linking',
       icon: 'learn',
     },
     {

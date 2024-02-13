@@ -139,7 +139,7 @@
     },
     {
       "source": "/learn/concepts/slashing",
-      "destination": "/networks/node-ops/nodes/node-operation/slashing",
+      "destination": "/networks/node-ops/node-operation/slashing",
       "permanent": true
     },
     {
@@ -184,27 +184,13 @@
     },
     {
       "source": "/access-api",
-      "destination": "/networks/node-ops/nodes/access-api",
+      "destination": "/networks/node-ops/access-onchain-data/access-nodes/accessing-data/access-api",
+      
       "permanent": true
     },
     {
       "source": "/nodes/access-api",
-      "destination": "/networks/node-ops/nodes/access-api",
-      "permanent": true
-    },
-    {
-      "source": "/nodes/access-api-rate-limits",
-      "destination": "/networks/node-ops/nodes/access-api-rate-limits",
-      "permanent": true
-    },
-    {
-      "source": "/nodes/archive-access-api",
-      "destination": "/networks/node-ops/nodes/archive-access-api",
-      "permanent": true
-    },
-    {
-      "source": "/nodes/archive-api-rate-limits",
-      "destination": "/networks/node-ops/nodes/archive-api-rate-limits",
+      "destination": "/networks/node-ops/access-onchain-data/access-nodes/accessing-data/access-api",
       "permanent": true
     },
     {
@@ -219,7 +205,7 @@
     },
     {
       "source": "/nodes/node-operation/:path*",
-      "destination": "/networks/node-ops/nodes/node-operation/:path*",
+      "destination": "/networks/node-ops/node-operation/:path*",
       "permanent": true
     },
     {
@@ -649,7 +635,7 @@
     },
     {
       "source": "/node-operation/:path*",
-      "destination": "/networks/node-ops/nodes/node-operation/:path*",
+      "destination": "/networks/node-ops/node-operation/:path*",
       "permanent": true
     },
     {
@@ -778,7 +764,7 @@
     },
     {
       "source": "/building-on-flow/run-and-secure/node-operation/:path",
-      "destination": "/networks/node-ops/nodes/node-operation/:path*",
+      "destination": "/networks/node-ops/node-operation/:path*",
       "permanent": true
     },
     {
@@ -788,7 +774,7 @@
     },
     {
       "source": "/docs/node-roles",
-      "destination": "/networks/node-ops/nodes/node-operation/node-roles",
+      "destination": "/networks/node-ops/node-operation/node-roles",
       "permanent": true
     },
     {
@@ -888,7 +874,7 @@
     },
     {
       "source": "/node-ops/node-operation/:path*",
-      "destination": "/networks/node-ops/nodes/node-operation/:path*",
+      "destination": "/networks/node-ops/node-operation/:path*",
       "permanent": true
     },
     {
@@ -898,7 +884,7 @@
     },
     {
       "source": "/references/run-and-secure/nodes/node-operation/:path*",
-      "destination": "/architecture/node-ops/nodes/node-operation/:path*",
+      "destination": "/architecture/node-ops/node-operation/:path*",
       "permanent": true
     },
     {
@@ -1023,7 +1009,7 @@
     },
     {
       "source": "/references/run-and-secure/node-operation/:path*",
-      "destination": "/architecture/node-ops/nodes/node-operation/:path*",
+      "destination": "/architecture/node-ops/node-operation/:path*",
       "permanent": true
     },
     {
@@ -1033,8 +1019,57 @@
     },
     {
       "source": "/build/cadence-migration-guide",
-      "destination": "https://cadence-lang.org/docs/cadence-migration-guide",
+      "destination": "https://cadence-lang.org/docs/cadence_migration_guide",
       "permanent": true
+    },
+    {
+      "source": "/build/building-vs-other-chains",
+      "destination": "/build/differences-vs-evm",
+      "permanent": true
+    },
+    {
+      "source": "/build/advanced-concepts/account-abstraction",
+      "destination": "/build/differences-vs-evm/account-abstraction",
+      "permanent": true
+    },
+    {
+      "source": "/build/advanced-concepts/transaction-time/:path*",
+      "destination": "/build/differences-vs-evm/transaction-time/:path*",
+      "permanent": true
+    },
+    {
+      "source": "/build/advanced-concepts/account-linking/:path*",
+      "destination": "/build/guildes/account-linking/:path*",
+      "permanent": true
+    },
+    {
+      "source": "/networks/node-ops/nodes/node-operation/observer-node",
+      "destination": "/networks/node-ops/access-onchain-data/light-nodes/observer-node",
+      "permanent": true
+    },
+    {
+      "source": "/networks/node-ops/nodes/node-operation/access-node-setup",
+      "destination": "/networks/node-ops/access-onchain-data/access-nodes/access-node-setup",
+      "permanent": true
+    },
+    {
+      "source": "/networks/node-ops/nodes/access-api",
+      "destination": "/networks/node-ops/access-onchain-data/access-nodes/accessing-data/access-api",
+      "permanent": true
+    },
+    {
+      "source": "/networks/node-ops/nodes/node-operation/:path*",
+      "destination": "/networks/node-operation/:path*",
+      "permanent": true
+    },
+    {
+      "source": "/community-resources/:path*",
+      "destination": "/ecosystem/:path*",
+      "permanent": true
+    },
+    {
+      "source": "/build/basics/smart-contracts",
+      "destination": "/build/smart-contracts/overview"
     }
   ]
 }

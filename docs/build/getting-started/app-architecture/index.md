@@ -41,7 +41,7 @@ In a self-custody architecture, users retain direct control over their private k
 
 ### **App Custody Architecture**
 
-App custody on Flow offers a unique approach to key management and user experience. Unlike traditional app custody solutions on other blockchains, Flow's App Custody architecture introduces features like **[account linking](../../advanced-concepts/account-linking/index.md)** and **[walletless onboarding](../../advanced-concepts/account-linking/child-accounts.md)**. These features ensure that while users enjoy a seamless experience, they still have the option to link their accounts and move their assets freely around the Flow ecosystem, providing a balanced approach to key management.
+App custody on Flow offers a unique approach to key management and user experience. Unlike traditional app custody solutions on other blockchains, Flow's App Custody architecture introduces features like **[account linking](../../guides/account-linking/index.md)** and **[walletless onboarding](../../guides/account-linking/child-accounts.md)**. These features ensure that while users enjoy a seamless experience, they still have the option to link their accounts and move their assets freely around the Flow ecosystem, providing a balanced approach to key management.
 
 ![app-custody.png](app-custody.png)
 

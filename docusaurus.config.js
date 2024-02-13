@@ -238,13 +238,11 @@ const config = {
     /** @type {import('@docusaurus/preset-classic').ThemeConfig} */
     ({
       announcementBar: {
-        id: 'support_us',
-        content: `⚠ Upgrade to Cadence 1.0<br />
-          The Crescendo network upgrade, including Cadence 1.0, is coming soon.
-          You most likely need to update all your contracts/transactions/scripts to support this change.<br />
-          Please visit our migration guide here:
-          <a href="https://cadence-lang.org/docs/cadence-migration-guide">https://cadence-lang.org/docs/cadence-migration-guide</a>`,
-        backgroundColor: '#F27360',
+        id: 'stable_cadence_upgrade',
+        content: `🔧 Upgrade to Cadence 1.0 🔧<br />
+          The highly anticipated <a href="https://flow.com/upgrade/crescendo" target="_blank">Crescendo</a> network upgrade is coming soon with 20+ new <a href="https://flow.com/upgrade/cadence-1" target="_blank">Cadence 1.0</a> features and <a href="https://flow.com/upgrade/evm" target="_blank">EVM</a> equivalence.
+         `,
+        backgroundColor: '#007BFF',
         textColor: '#FFFFFF',
         isCloseable: true,
       },
@@ -291,10 +289,10 @@ const config = {
             activeBasePath: '/networks',
           },
           {
-            to: 'community-resources',
+            to: 'ecosystem',
             position: 'left',
-            label: 'Resources',
-            activeBasePath: '/community-resources',
+            label: 'Ecosystem',
+            activeBasePath: '/ecosystem',
           },
           {
             href: 'https://github.com/onflow',
@@ -362,7 +360,7 @@ const config = {
             title: 'Community',
             items: [
               {
-                to: '/community-resources',
+                to: '/ecosystem',
                 label: 'Ecosystem',
               },
               {
@@ -432,11 +430,11 @@ const config = {
                 label: 'Flowdiver Testnet',
               },
               {
-                to: '/networks/node-ops/nodes/node-operation/past-sporks',
+                to: '/networks/node-ops/node-operation/past-sporks',
                 label: 'Past Sporks',
               },
               {
-                to: '/networks/node-ops/nodes/node-operation/upcoming-sporks',
+                to: '/networks/node-ops/node-operation/upcoming-sporks',
                 label: 'Upcoming Sporks',
               },
               {
@@ -444,7 +442,7 @@ const config = {
                 label: 'Node Operation',
               },
               {
-                to: '/networks/node-ops/nodes/node-operation/spork',
+                to: '/networks/node-ops/node-operation/spork',
                 label: 'Spork Information',
               },
             ],
@@ -576,14 +574,19 @@ const config = {
     [
       '@docusaurus/plugin-client-redirects',
       {
+        redirects: [
+          {
+            to: '/build/smart-contracts/overview',
+            from: '/build/basics/smart-contracts',
+          },
+        ],
         createRedirects(existingPath) {
           if (existingPath.includes('/cadence')) {
-            // Redirect from /docs/team/X to /community/X and /docs/support/X to /community/X
             return [
               existingPath.replace('https://cadence-lang.org/docs', '/cadence'),
             ];
           }
-          return undefined; // Return a falsy value: no redirect created
+          return undefined;
         },
       },
     ],

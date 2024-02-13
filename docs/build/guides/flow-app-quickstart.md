@@ -1,13 +1,11 @@
 ---
-title: Flow App Quickstart
-sidebar_label: Flow App Quickstart
 description: Building an application on Flow
 sidebar_position: 4
 sidebar_custom_props:
   icon: 🏗️
 ---
 
-# Flow App Quickstart
+# Create a Web App on Flow
 
 ---
 
@@ -93,7 +91,6 @@ The `flow.json` file is used to keep track of deployed contracts and accounts. [
 
 :::
 
-
 ### Configuring FCL
 
 Next, notice `@onflow/fcl` has been added to the `package.json` and the web application is ready to be run. 
@@ -122,14 +119,14 @@ npm run dev:local
 
 Now that your app is running. FCL loads the configuration in `config/fcl.ts` This file contains configuration information for FCL, such as what Access Node and wallet discovery endpoint and which network to use (e.g. testnet or a local emulator). 
 
-- `accessNode.api` key specifies the address of a Flow access node. There are publically available access nodes, but have to rate limit. Alternatively, applications might want to run an Observer node [Run a Node](../../networks/node-ops/nodes/node-operation/observer-node.md).
+- `accessNode.api` key specifies the address of a Flow access node. There are publically available access nodes, but have to rate limit. Alternatively, applications might want to run an Observer node [Run a Node](../../networks/node-ops/access-onchain-data/light-nodes/observer-node.md).
 - `discovery.wallet` is an address that points to a service that lists FCL compatible wallets. Flow's FCL Discovery service is a service that FCL wallet providers can be added to, and be made 'discoverable' to any application that uses the `discovery.wallet` endpoint.
 
 Also, notice that `package.json` uses `NEXT_PUBLIC_FLOW_NETWORK=local` for `dev` command, this is used to set the network in `config/fcl.ts`.
 
 :::info
 
-Learn more about [configuring Discovery](../../tools/clients/fcl-js/discovery.mdx) or [setting configuration values](../../tools/clients/fcl-js/api.md#setting-configuration-values).
+Learn more about [configuring Discovery](../../tools/clients/fcl-js/discovery.md) or [setting configuration values](../../tools/clients/fcl-js/api.md#setting-configuration-values).
 
 :::
 
@@ -401,9 +398,9 @@ That's it! You now have Flow app that uses auth, query and mutate the chain. Thi
 
 **More FCL**
 - [FCL API Quick Reference](../../tools/clients/fcl-js/api)
-- [More on Scripts](../../tools/clients/fcl-js/scripts.mdx)
-- [More on Transactions](../../tools/clients/fcl-js/transactions.mdx)
-- [User Signatures](../../tools/clients/fcl-js/user-signatures.mdx)
+- [More on Scripts](../../tools/clients/fcl-js/scripts.md)
+- [More on Transactions](../../tools/clients/fcl-js/transactions.md)
+- [User Signatures](../../tools/clients/fcl-js/user-signatures.md)
 - [Proving Account Ownership](../../tools/clients/fcl-js/proving-authentication.mdx)
 
 **Other**

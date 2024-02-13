@@ -1,45 +1,98 @@
 ---
-title: About EVM on Flow
-sidebar_label: About EVM on Flow
+title: About FlowEVM
+sidebar_label: About
 sidebar_position: 1
 ---
 
-# About EVM on Flow
+# About FlowEVM
 
-Flow is a secure Layer 1 blockchain committed to driving Web3 adoption into the mainstream. The team behind the blockchain not only coined the term NFT but made strides in opening up web3 to the world through Disney Pinnacle, NBA Topshot and Doodles. A significant milestone in this journey is the introduction of Ethereum Virtual Machine (EVM) equivalency in 2024. 
+FlowEVM is a secure, performant, highly scalable EVM-equivalent L1 which is natively integrated into the Flow
+blockchain. It inherits Flow's [decentralization](https://flow.com/decentralization) and its multi-node
+distributed consensus and transaction model. Specifically, Flow EVM benefits from Flow's
+[horizontally scaled transaction linearization](https://flow.com/core-protocol-vision#scaling-transactions) design
+which has solved proposer builder separation, separation of compute, and settlement – all without sharding.
 
-### **Seamless Integration for Ethereum Developers**
+## Seamless Integration for Ethereum Developers
 
-With EVM equivalency, Solidity developers from the Ethereum ecosystem can effortlessly deploy their smart contracts on Flow with no changes to their code. We’re currently building up partnerships so that all one’s favorite developer tools, oracles, and platforms are compatible on day one.
+FlowEVM is designed to work out-of-the-box with the Ethereum toolchain or other clients and will run existing Solidity
+contracts as-is without any changes. Developers can get their existing applications up and running on day one! With 
+your core application running you can begin to explore how to leverage Flow's powerful feature set for your application.
+To achieve this will require implementing a minimal transaction script in Cadence, Flow's smart contract language, to 
+integrate Flow features to FlowEVM. This is made possible because EVM transactions are composed and executed within a 
+Cadence transaction, enabling novel use-cases and patterns for integration. 
 
-**Key Advantages**
+Native EVM transactions continue to be supported when using Metamask and other EVM-compatible clients. 
 
-- **Access New Markets**: Easily tap into Flow's user base and unique IPs without any implementation risk.
-- **Simplified Multi-Chain Experience**: Ideal for applications without a multi-chain approach or those wanting to ensure cross-chain compatibility.
-- **Leverage Flow’s Protocol**: Expand EVM capabilities and transcend EVM limitations using Cadence, which offers a powerful new account model, programmable resources, and hybrid ownership.
-- **No Miner Extractable Value (MEV)**: Leading to a more fair and secure environment for all participants and minimizing the risk of front running transactions.
+## Best-In-Class UX
+
+Account Linking is built on Flow's account abstraction model and enables users to immediately use an app without
+wallet authentication. On-chain accounts can be created as needed by the application which custodies their use for an
+anonymous user. At some later point these users may choose to link the custodied account to their self-custodial wallet 
+taking full ownership of the account. FlowEVM apps can also leverage Account Linking to handle creation of EVM accounts 
+and achieve a similarly smooth onboarding user experience.
+
+## Instant Cross-VM Token Transfers
+
+FlowEVM and Flow environments both use $FLOW token as the gas currency for transactions, sharing a singular token
+supply across both environments. A few lines Cadence can transfer FLOW tokens in the Flow environment to FlowEVM, 
+or vice versa. Other fungible and non-fungible tokens can also be seamlessly transferred between environments using the
+native cross-VM token bridge, taking place instantly in a single atomic transaction
+
+## Scalability, Performance and Low Gas Fees
+
+Flow’s state space is extensible to the petabyte scale and is the reason why Cadence contracts have standardized on
+storing application data on-chain. This benefit translates directly to FlowEVM which allowing contracts to maintain a full
+working dataset - including metadata - together with contract logic, all at low gas rates. Flow's state scalability sets
+the foundations for significant throughput optimization yet to come.
+
+Flow's transaction throughput peaked to 2M daily transactions during 2023 sustaining a similar average transaction 
+volume as Ethereum. Unlike Ethereum, Flow has always operated well under its maximum throughput ceiling which is 
+presently scalable to 5x more transactions with further performance optimizations to come when parallel execution is 
+released. 
+
+## MEV Resilience
+
+Since EVM on Flow transactions are composed and executed within a Cadence transaction block production is handled by 
+Flow’s multi-role architecture. The heterogeneity between node roles ensures that visibility into block proposal, 
+assembly, asserting block validity and other correctness checks during the block processing cycle expose only the
+limited information that a given node type requires to perform its function. These differences in node and consensus 
+design results in strong economic disincentives for collusion because no individual node has full visibility into the 
+state of block processing for the chain. FlowEVM's robust MEV resilience is a significant difference from other EVMs 
+and will help to ensure gas fees are reasonably priced at all times. The impracticality of frontrunning or other attacks 
+improves the user experience by eliminating failed transactions and invisible fees.
+
+# Key Advantages
+
+- **Access New Markets**: Easily tap into Flow's user base and unique IPs without any implementation risk
+- **Simplified Multi-Chain Experience**: Ideal for applications without a multi-chain approach or those wanting to ensure cross-chain compatibility
+- **Leverage Flow’s Protocol**: Expand EVM capabilities and transcend EVM limitations using Cadence, which offers a powerful new account model, programmable resources, and hybrid ownership
+- **No Miner Extractable Value (MEV)**: Leading to a more fair and secure environment for all participants and minimizing the risk of front running transactions
 - **Enhanced Functionality**:
     - Compose assets and functionality using a shared world state and [Cadence contracts](https://cadence-lang.org/).
     - Conduct multiple contract interactions atomically.
-    - Tap in to [Capabilities](https://cadence-lang.org/docs/tutorial/capabilities) for zero-transfer access ([Account Linking](https://developers.flow.com/build/advanced-concepts/account-linking)).
+    - Tap in to [Capabilities](https://cadence-lang.org/docs/tutorial/capabilities) for zero-transfer access ([Account Linking](../build/guides/account-linking/index.md)).
 - **Gas Fees**: Transactions are extremely low-cost and denominated in FLOW.
 
-## Learn More and Join the Conversation
+# Learn More and Join the Conversation
 
-**Interested in Partnering or Co-marketing?**
+Users and developers are welcome to chat with us in the FlowEVM [Discord](https://discord.com/channels/613813861610684416/1167476806333513800).
 
-Are you interested in launching an EVM project on Flow or partnering? Participate in our weekly EVM office hours for discussions on project development and co-marketing opportunities.
+## Interested in Partnering or Co-marketing?
 
-**Further Reading and Discussions**
+Are you interested in launching an EVM project on FlowEVM or partnering? Visit our weekly FlowEVM office hours for 
+discussions on project development and other opportunities for collaboration.
+
+## Further Reading and Discussions
 
 - [Why EVM on Flow: Beyond Solidity](https://forum.flow.com/t/evm-on-flow-beyond-solidity/5260)
 - [Path to EVM Equivalence on Flow](https://forum.flow.com/t/evm-equivalence-on-flow-proposal-and-path-forward/5478)
 
-**Flow Improvement Proposals (FLIPs)**
+## Flow Improvement Proposals (FLIPs)
+
+Those wishing to understand the technical specifics of how FLowEVM is integrated with Flow we recommend reviewing the 
+following improvement proposals.
 
 - Understanding [EVM Support on Flow](https://github.com/onflow/flips/pull/225)
 - Exploring the [Flow VM Bridge](https://github.com/onflow/flips/pull/233/files/d5bc46c4b13f0b9b168a94f994c77a5a689f6b24..122e938b7acae7e774246b1b66aaf5979ca21444)
 - Insights into the [Flow EVM Gateway](https://github.com/onflow/flips/pull/235/files)
 - Integration of the [Cadence Interface](https://github.com/onflow/flips/blob/f646491ec895442dcccdb24d80080bab1c56188e/protocol/20231116-evm-support.md)
-
-More questions? Ask on the EVM [Discord](https://discord.com/channels/613813861610684416/1167476806333513800).
