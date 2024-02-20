@@ -1,3 +1,11 @@
+---
+title: Flow CLI Cheat sheet
+sidebar_label: Flow CLI Cheatsheet
+description: Flow CLI All Help Aggregation
+sidebar_position: 15
+---
+
+
 ```
 
 ------------
