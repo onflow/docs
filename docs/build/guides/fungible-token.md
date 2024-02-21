@@ -260,10 +260,9 @@ func main() {
 		panic(err)
 	}
 
-	// Assuming the contract is deployed at address 0x1 and the contract name is MyContract
+	// Assuming the contract is deployed at address 0x1
 	contractAddress := "0x1"
-	contractName := "MyContract"
-	eventType := fmt.Sprintf("A.%s.%s.Vault.ResourceDestroyed", contractAddress, contractName)
+	eventType := fmt.Sprintf("A.%s.FooToken.Vault.ResourceDestroyed", contractAddress)
 
 	// Replace startHeight and endHeight with the actual block height range you're interested in
 	startHeight := uint64(0)
