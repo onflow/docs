@@ -28,6 +28,7 @@ const AddNetworkButton = () => {
     }
   };
 
+  // eslint-disable-next-line @typescript-eslint/no-misused-promises
   return <button onClick={addFlowEVM}>Add Flow EVM</button>;
 };
 
