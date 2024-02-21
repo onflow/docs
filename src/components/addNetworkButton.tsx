@@ -1,6 +1,6 @@
 import React from 'react';
 
-const AddEVMButton = () => {
+const AddNetworkButton = () => {
   const addFlowEVM = async () => {
     try {
       // Define your network details here
@@ -31,4 +31,4 @@ const AddEVMButton = () => {
   return <button onClick={addFlowEVM}>Add Flow EVM</button>;
 };
 
-export default AddEVMButton;
+export default AddNetworkButton;
