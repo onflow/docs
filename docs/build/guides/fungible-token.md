@@ -254,7 +254,7 @@ import (
 
 func main() {
 	ctx := context.Background()
-    // Initialize flow client
+	// Initialize flow client
 	flowClient, err := http.NewClient(http.EmulatorHost)
 	if err != nil {
 		panic(err)
