@@ -1,7 +1,7 @@
 # Resource Interface `CollectionPublic`
 
 ```cadence
-pub resource interface CollectionPublic {
+access(all) resource interface CollectionPublic {
 }
 ```
 

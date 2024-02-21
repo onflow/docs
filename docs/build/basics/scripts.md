@@ -11,13 +11,13 @@ Scripts are executed on Access Nodes or Execution Nodes.
 Scripts are defined by following the Cadence code and we can only execute one at a time.
 
 ```cadence
-pub fun main() {}
+access(all) fun main() {}
 ```
 
 Scripts can return a typed value:
 
 ```cadence
-pub fun main(): Int {
+access(all) fun main(): Int {
 	return 1 + 2
 }
 ```
@@ -27,7 +27,7 @@ Scripts can call contract functions and query the state of a contract. To call a
 ```cadence
 import World from 0x01
 
-pub fun main(): String {
+access(all) fun main(): String {
 	return World.hello()
 }
 ```

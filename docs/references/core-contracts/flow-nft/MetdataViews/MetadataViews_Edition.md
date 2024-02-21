@@ -1,13 +1,13 @@
 # Struct `Edition`
 
 ```cadence
-pub struct Edition {
+access(all) struct Edition {
 
-    pub let name: String?
+    access(all) let name: String?
 
-    pub let number: UInt64
+    access(all) let number: UInt64
 
-    pub let max: UInt64?
+    access(all) let max: UInt64?
 }
 ```
 

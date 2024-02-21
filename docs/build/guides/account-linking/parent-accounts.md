@@ -147,7 +147,7 @@ This script will return `true` if a `HybridCustody.Manager` is stored and `false
 ```cadence get_child_addresses.cdc
 import "HybridCustody"
 
-pub fun main(parent: Address): Bool {
+access(all) fun main(parent: Address): Bool {
     let acct = getAuthAccount(parent)
     if let manager = acct.borrow<&HybridCustody.Manager>(from: HybridCustody.ManagerStoragePath) {
         return manager.getChildAddresses().length > 0
@@ -164,7 +164,7 @@ provided address.
 ```cadence get_child_addresses.cdc
 import "HybridCustody"
 
-pub fun main(parent: Address): [Address] {
+access(all) fun main(parent: Address): [Address] {
     let acct = getAuthAccount(parent)
     let manager = acct.borrow<&HybridCustody.Manager>(from: HybridCustody.ManagerStoragePath)
         ?? panic("manager not found")
@@ -194,7 +194,7 @@ import "HybridCustody"
 
 /// Returns resolved Display from given address at specified path for each ID or nil if ResolverCollection is not found
 ///
-pub fun getViews(_ address: Address, _ resolverCollectionPath: PublicPath): {UInt64: MetadataViews.Display} {
+access(all) fun getViews(_ address: Address, _ resolverCollectionPath: PublicPath): {UInt64: MetadataViews.Display} {
 
     let account: PublicAccount = getAccount(address)
     let views: {UInt64: MetadataViews.Display} = {}
@@ -216,7 +216,7 @@ pub fun getViews(_ address: Address, _ resolverCollectionPath: PublicPath): {UIn
 /// Queries for MetadataViews.Display each NFT across all associated accounts from Collections at the provided
 /// PublicPath
 ///
-pub fun main(address: Address, resolverCollectionPath: PublicPath): {Address: {UInt64: MetadataViews.Display}} {
+access(all) fun main(address: Address, resolverCollectionPath: PublicPath): {Address: {UInt64: MetadataViews.Display}} {
 
     let allViews: {Address: {UInt64: MetadataViews.Display}} = {address: getViews(address, resolverCollectionPath)}
     let seen: [Address] = [address]
@@ -262,7 +262,7 @@ import "HybridCustody"
 
 /// Returns a mapping of balances indexed on the Type of resource containing the balance
 ///
-pub fun getAllBalancesInStorage(_ address: Address): {Type: UFix64} {
+access(all) fun getAllBalancesInStorage(_ address: Address): {Type: UFix64} {
     // Get the account
     let account: AuthAccount = getAuthAccount(address)
     // Init for return value
@@ -292,7 +292,7 @@ pub fun getAllBalancesInStorage(_ address: Address): {Type: UFix64} {
 
 /// Queries for FT.Vault balance of all FT.Vaults in the specified account and all of its associated accounts
 ///
-pub fun main(address: Address): {Address: {Type: UFix64}} {
+access(all) fun main(address: Address): {Address: {Type: UFix64}} {
 
     // Get the balance for the given address
     let balances: {Address: {Type: UFix64}} = { address: getAllBalancesInStorage(address) }

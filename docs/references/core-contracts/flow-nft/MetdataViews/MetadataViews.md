@@ -1,7 +1,7 @@
 # Contract `MetadataViews`
 
 ```cadence
-pub contract MetadataViews {
+access(all) contract MetadataViews {
 }
 ```
 
@@ -19,7 +19,7 @@ or a JPEG image file.
 ### `Resolver`
 
 ```cadence
-pub resource interface Resolver {
+access(all) resource interface Resolver {
 }
 ```
 Provides access to a set of metadata views. A struct or
@@ -33,7 +33,7 @@ the views that it supports.
 ### `ResolverCollection`
 
 ```cadence
-pub resource interface ResolverCollection {
+access(all) resource interface ResolverCollection {
 }
 ```
 A group of view resolvers indexed by ID.
@@ -45,7 +45,7 @@ A group of view resolvers indexed by ID.
 ### `File`
 
 ```cadence
-pub struct interface File {
+access(all) struct interface File {
 }
 ```
 Generic interface that represents a file stored on or off chain. Files
@@ -59,23 +59,23 @@ can be used to references images, videos and other media.
 ### `NFTView`
 
 ```cadence
-pub struct NFTView {
+access(all) struct NFTView {
 
-    pub let id: UInt64
+    access(all) let id: UInt64
 
-    pub let uuid: UInt64
+    access(all) let uuid: UInt64
 
-    pub let display: Display?
+    access(all) let display: Display?
 
-    pub let externalURL: ExternalURL?
+    access(all) let externalURL: ExternalURL?
 
-    pub let collectionData: NFTCollectionData?
+    access(all) let collectionData: NFTCollectionData?
 
-    pub let collectionDisplay: NFTCollectionDisplay?
+    access(all) let collectionDisplay: NFTCollectionDisplay?
 
-    pub let royalties: Royalties?
+    access(all) let royalties: Royalties?
 
-    pub let traits: Traits?
+    access(all) let traits: Traits?
 }
 ```
 NFTView wraps all Core views along `id` and `uuid` fields, and is used
@@ -89,13 +89,13 @@ view.
 ### `Display`
 
 ```cadence
-pub struct Display {
+access(all) struct Display {
 
-    pub let name: String
+    access(all) let name: String
 
-    pub let description: String
+    access(all) let description: String
 
-    pub let thumbnail: AnyStruct{File}
+    access(all) let thumbnail: AnyStruct{File}
 }
 ```
 Display is a basic view that includes the name, description and
@@ -108,9 +108,9 @@ thumbnail for an object. Most objects should implement this view.
 ### `HTTPFile`
 
 ```cadence
-pub struct HTTPFile {
+access(all) struct HTTPFile {
 
-    pub let url: String
+    access(all) let url: String
 }
 ```
 View to expose a file that is accessible at an HTTP (or HTTPS) URL.
@@ -122,11 +122,11 @@ View to expose a file that is accessible at an HTTP (or HTTPS) URL.
 ### `IPFSFile`
 
 ```cadence
-pub struct IPFSFile {
+access(all) struct IPFSFile {
 
-    pub let cid: String
+    access(all) let cid: String
 
-    pub let path: String?
+    access(all) let path: String?
 }
 ```
 View to expose a file stored on IPFS.
@@ -141,13 +141,13 @@ to find and load the image via an IPFS gateway.
 ### `Edition`
 
 ```cadence
-pub struct Edition {
+access(all) struct Edition {
 
-    pub let name: String?
+    access(all) let name: String?
 
-    pub let number: UInt64
+    access(all) let number: UInt64
 
-    pub let max: UInt64?
+    access(all) let max: UInt64?
 }
 ```
 Optional view for collections that issue multiple objects
@@ -163,9 +163,9 @@ information is returned as an arbitrary sized array
 ### `Editions`
 
 ```cadence
-pub struct Editions {
+access(all) struct Editions {
 
-    pub let infoList: [Edition]
+    access(all) let infoList: [Edition]
 }
 ```
 Wrapper view for multiple Edition views
@@ -177,9 +177,9 @@ Wrapper view for multiple Edition views
 ### `Serial`
 
 ```cadence
-pub struct Serial {
+access(all) struct Serial {
 
-    pub let number: UInt64
+    access(all) let number: UInt64
 }
 ```
 View representing a project-defined serial number for a specific NFT
@@ -195,13 +195,13 @@ other NFTs within that project
 ### `Royalty`
 
 ```cadence
-pub struct Royalty {
+access(all) struct Royalty {
 
-    pub let receiver: Capability<&AnyResource{FungibleToken.Receiver}>
+    access(all) let receiver: Capability<&AnyResource{FungibleToken.Receiver}>
 
-    pub let cut: UFix64
+    access(all) let cut: UFix64
 
-    pub let description: String
+    access(all) let description: String
 }
 ```
 View that defines the composable royalty standard that gives marketplaces a
@@ -214,7 +214,7 @@ unified interface to support NFT royalties.
 ### `Royalties`
 
 ```cadence
-pub struct Royalties {
+access(all) struct Royalties {
 
     access(self) let cutInfos: [Royalty]
 }
@@ -230,11 +230,11 @@ and are expected to pay royalties based on these specifications.
 ### `Media`
 
 ```cadence
-pub struct Media {
+access(all) struct Media {
 
-    pub let file: AnyStruct{File}
+    access(all) let file: AnyStruct{File}
 
-    pub let mediaType: String
+    access(all) let mediaType: String
 }
 ```
 View to represent, a file with an correspoiding mediaType.
@@ -246,9 +246,9 @@ View to represent, a file with an correspoiding mediaType.
 ### `Medias`
 
 ```cadence
-pub struct Medias {
+access(all) struct Medias {
 
-    pub let items: [Media]
+    access(all) let items: [Media]
 }
 ```
 Wrapper view for multiple media views
@@ -260,9 +260,9 @@ Wrapper view for multiple media views
 ### `License`
 
 ```cadence
-pub struct License {
+access(all) struct License {
 
-    pub let spdxIdentifier: String
+    access(all) let spdxIdentifier: String
 }
 ```
 View to represent a license according to https://spdx.org/licenses/
@@ -275,9 +275,9 @@ This view can be used if the content of an NFT is licensed.
 ### `ExternalURL`
 
 ```cadence
-pub struct ExternalURL {
+access(all) struct ExternalURL {
 
-    pub let url: String
+    access(all) let url: String
 }
 ```
 View to expose a URL to this item on an external site.
@@ -291,21 +291,21 @@ to the original link for an NFT.
 ### `NFTCollectionData`
 
 ```cadence
-pub struct NFTCollectionData {
+access(all) struct NFTCollectionData {
 
-    pub let storagePath: StoragePath
+    access(all) let storagePath: StoragePath
 
-    pub let publicPath: PublicPath
+    access(all) let publicPath: PublicPath
 
-    pub let providerPath: PrivatePath
+    access(all) let providerPath: PrivatePath
 
-    pub let publicCollection: Type
+    access(all) let publicCollection: Type
 
-    pub let publicLinkedType: Type
+    access(all) let publicLinkedType: Type
 
-    pub let providerLinkedType: Type
+    access(all) let providerLinkedType: Type
 
-    pub let createEmptyCollection: ((): @NonFungibleToken.Collection)
+    access(all) let createEmptyCollection: ((): @NonFungibleToken.Collection)
 }
 ```
 View to expose the information needed store and retrieve an NFT.
@@ -319,19 +319,19 @@ storage and public capabilities.
 ### `NFTCollectionDisplay`
 
 ```cadence
-pub struct NFTCollectionDisplay {
+access(all) struct NFTCollectionDisplay {
 
-    pub let name: String
+    access(all) let name: String
 
-    pub let description: String
+    access(all) let description: String
 
-    pub let externalURL: ExternalURL
+    access(all) let externalURL: ExternalURL
 
-    pub let squareImage: Media
+    access(all) let squareImage: Media
 
-    pub let bannerImage: Media
+    access(all) let bannerImage: Media
 
-    pub let socials: {String: ExternalURL}
+    access(all) let socials: {String: ExternalURL}
 }
 ```
 View to expose the information needed to showcase this NFT's
@@ -345,13 +345,13 @@ graphics of the NFT collection this NFT belongs to.
 ### `Rarity`
 
 ```cadence
-pub struct Rarity {
+access(all) struct Rarity {
 
-    pub let score: UFix64?
+    access(all) let score: UFix64?
 
-    pub let max: UFix64?
+    access(all) let max: UFix64?
 
-    pub let description: String?
+    access(all) let description: String?
 }
 ```
 View to expose rarity information for a single rarity
@@ -365,15 +365,15 @@ have both
 ### `Trait`
 
 ```cadence
-pub struct Trait {
+access(all) struct Trait {
 
-    pub let name: String
+    access(all) let name: String
 
-    pub let value: AnyStruct
+    access(all) let value: AnyStruct
 
-    pub let displayType: String?
+    access(all) let displayType: String?
 
-    pub let rarity: Rarity?
+    access(all) let rarity: Rarity?
 }
 ```
 View to represent a single field of metadata on an NFT.
@@ -387,9 +387,9 @@ contextualized data about the trait
 ### `Traits`
 
 ```cadence
-pub struct Traits {
+access(all) struct Traits {
 
-    pub let traits: [Trait]
+    access(all) let traits: [Trait]
 }
 ```
 Wrapper view to return all the traits on an NFT.

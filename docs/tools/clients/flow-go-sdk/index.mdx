@@ -425,7 +425,7 @@ func demo() {
     flowClient := examples.NewFlowClient()
 
     script := []byte(`
-        pub fun main(a: Int): Int {
+        access(all) fun main(a: Int): Int {
             return a + 10
         }
     `)
@@ -436,10 +436,10 @@ func demo() {
     fmt.Printf("\nValue: %s", value.String())
 
     complexScript := []byte(`
-        pub struct User {
-            pub var balance: UFix64
-            pub var address: Address
-            pub var name: String
+        access(all) struct User {
+            access(all) var balance: UFix64
+            access(all) var address: Address
+            access(all) var name: String
 
             init(name: String, address: Address, balance: UFix64) {
                 self.name = name
@@ -448,7 +448,7 @@ func demo() {
             }
         }
 
-        pub fun main(name: String): User {
+        access(all) fun main(name: String): User {
             return User(
                 name: name,
                 address: 0x1,

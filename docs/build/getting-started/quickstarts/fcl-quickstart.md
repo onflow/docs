@@ -77,7 +77,7 @@ useEffect(() => {
       cadence: `
         import HelloWorld from 0x9dca641e9a4b691b
 
-        pub fun main(): String {
+        access(all) fun main(): String {
           return HelloWorld.greeting
         }
     `
@@ -111,7 +111,7 @@ function App() {
                 cadence: `
                     import HelloWorld from 0x9dca641e9a4b691b
 
-                    pub fun main(): String {
+                    access(all) fun main(): String {
                         return HelloWorld.greeting
                     }
                 `

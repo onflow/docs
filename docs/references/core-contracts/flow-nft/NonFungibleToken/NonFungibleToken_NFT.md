@@ -1,9 +1,9 @@
 # Resource `NFT`
 
 ```cadence
-pub resource NFT {
+access(all) resource NFT {
 
-    pub let id: UInt64
+    access(all) let id: UInt64
 }
 ```
 

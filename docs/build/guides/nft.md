@@ -77,7 +77,7 @@ To begin, let's define a basic `NFT` resource. This resource requires an `init` 
 ```cadence
 access(all) contract FooBar {
 
-    pub resource NFT {
+    access(all) resource NFT {
         init() {}
     }
 
@@ -90,8 +90,8 @@ Every resource in Cadence has a unique identifier assigned to it. We can use it 
 ```cadence
 access(all) contract FooBar {
 
-    pub resource NFT {
-        pub let id: UInt64
+    access(all) resource NFT {
+        access(all) let id: UInt64
 
         init() {
             self.id = self.uuid
@@ -106,10 +106,10 @@ We also need to keep track of the total supply of NFTs in existance. To do this 
 
 ```cadence
 access(all) contract FooBar {
-    pub var totalSupply: UInt64
+    access(all) var totalSupply: UInt64
 
-    pub resource NFT {
-        pub let id: UInt64
+    access(all) resource NFT {
+        access(all) let id: UInt64
 
         init() {
             self.id = self.uuid
@@ -130,8 +130,8 @@ access(all) contract FooBar {
 
     // ...[previous code]...
 
-    pub resource NFTMinter {
-        pub fun createNFT(): @NFT {
+    access(all) resource NFTMinter {
+        access(all) fun createNFT(): @NFT {
             return <-create NFT()
         }
 
@@ -169,8 +169,8 @@ access(all) contract FooBar {
 
     // ...[NFT resource code]...
 
-    pub resource Collection {
-        pub var ownedNFTs: @{UInt64: NFT}
+    access(all) resource Collection {
+        access(all) var ownedNFTs: @{UInt64: NFT}
 
         init() {
             self.ownedNFTs <- {}
@@ -188,11 +188,11 @@ access(all) contract FooBar {
 To allow accounts to create their own collections, add a function in the main contract that creates a new `Collection` and returns it:
 
 ```cadence
-pub contract FooBar {
+access(all) contract FooBar {
 
-    pub var ownedNFTs: @{UInt64: NFT}
+    access(all) var ownedNFTs: @{UInt64: NFT}
 
-    pub fun createEmptyCollection(): @Collection {
+    access(all) fun createEmptyCollection(): @Collection {
         return <-create Collection()
     }
 
@@ -203,11 +203,11 @@ pub contract FooBar {
 To manage the NFTs within a collection, you'll need functions to deposit and withdraw NFTs. Here's how you can add a `deposit` function:
 
 ```cadence
-pub resource Collection {
+access(all) resource Collection {
 
-    pub var ownedNFTs: @{UInt64: NFT}
+    access(all) var ownedNFTs: @{UInt64: NFT}
 
-    pub fun deposit(token: @NFT) {
+    access(all) fun deposit(token: @NFT) {
         let tokenID = token.id
         self.ownedNFTs[token.id] <-! token
     }
@@ -219,10 +219,10 @@ pub resource Collection {
 Similarly, you can add a `withdraw` function to remove an NFT from the collection:
 
 ```cadence
-pub resource Collection {
+access(all) resource Collection {
     // ...[deposit code]...
 
-    pub fun withdraw(withdrawID: UInt64): @NFT {
+    access(all) fun withdraw(withdrawID: UInt64): @NFT {
         let token <- self.ownedNFTs.remove(key: withdrawID) ?? panic("Token not in collection")
         return <- token
     }
@@ -234,10 +234,10 @@ pub resource Collection {
 To facilitate querying, you'll also want a function to retrieve all the NFT IDs within a collection:
 
 ```cadence
-pub resource Collection {
+access(all) resource Collection {
     // ...[withdraw code]...
 
-    pub fun getIDs(): [UInt64] {
+    access(all) fun getIDs(): [UInt64] {
         return self.ownedNFTs.keys
     }
 
@@ -252,12 +252,12 @@ access(all) contract FooBar {
 
     // ...[previous code]...
 
-    pub resource interface CollectionPublic {
-        pub fun deposit(token: @NFT)
-        pub fun getIDs(): [UInt64]
+    access(all) resource interface CollectionPublic {
+        access(all) fun deposit(token: @NFT)
+        access(all) fun getIDs(): [UInt64]
     }
 
-    pub resource Collection: CollectionPublic {
+    access(all) resource Collection: CollectionPublic {
         // ...[Collection code]...
     }
 
@@ -298,7 +298,7 @@ import "NonFungibleToken"
 
 access(all) contract FooBar: NonFungibleToken {
 
-    pub event ContractInitialized()
+    access(all) event ContractInitialized()
 
     // ...[rest of code]...
 
@@ -319,9 +319,9 @@ import "NonFungibleToken"
 
 access(all) contract FooBar: NonFungibleToken {
 
-    pub event ContractInitialized()
-    pub event Withdraw(id: UInt64, from: Address?)
-    pub event Deposit(id: UInt64, to: Address?)
+    access(all) event ContractInitialized()
+    access(all) event Withdraw(id: UInt64, from: Address?)
+    access(all) event Deposit(id: UInt64, to: Address?)
 
     // ...[rest of code]...
 }
@@ -330,13 +330,13 @@ access(all) contract FooBar: NonFungibleToken {
 You can then update your `deposit` and `withdraw` functions to emit these events:
 
 ```cadence
-pub fun deposit(token: @NFT) {
+access(all) fun deposit(token: @NFT) {
     let tokenID = token.id
     self.ownedNFTs[token.id] <-! token
     emit Deposit(id: tokenID, to: self.owner?.address) // new
 }
 
-pub fun withdraw(withdrawID: UInt64): @NFT {
+access(all) fun withdraw(withdrawID: UInt64): @NFT {
     let token <- self.ownedNFTs.remove(key: withdrawID) ?? panic("Token not in collection")
     emit Withdraw(id: token.id, from: self.owner?.address) // new
     return <- token
@@ -348,8 +348,8 @@ pub fun withdraw(withdrawID: UInt64): @NFT {
 The `NFT` resource should also be updated to implement the `NonFungibleToken.INFT` interface:
 
 ```cadence
-pub resource NFT: NonFungibleToken.INFT {
-    pub let id: UInt64
+access(all) resource NFT: NonFungibleToken.INFT {
+    access(all) let id: UInt64
 
     init() {
         self.id = self.uuid
@@ -363,7 +363,7 @@ pub resource NFT: NonFungibleToken.INFT {
 Your `Collection` resource should also implement the `Provider`, `Receiver`, and `CollectionPublic` interfaces from the standard:
 
 ```cadence
-pub resource Collection: NonFungibleToken.Provider, NonFungibleToken.Receiver, NonFungibleToken.CollectionPublic {
+access(all) resource Collection: NonFungibleToken.Provider, NonFungibleToken.Receiver, NonFungibleToken.CollectionPublic {
     // ...[rest of code]...
 }
 ```
@@ -373,11 +373,11 @@ With these implementations, you can now remove your custom `CollectionPublic` in
 To ensure users can access a read-only reference to an NFT in the collection without actually removing it, introduce the **`borrowNFT`** function.
 
 ```cadence
-pub resource Collection: NonFungibleToken.Provider, NonFungibleToken.Receiver, NonFungibleToken.CollectionPublic {
+access(all) resource Collection: NonFungibleToken.Provider, NonFungibleToken.Receiver, NonFungibleToken.CollectionPublic {
 
     // ...[getIDs code]...
 
-    pub fun borrowNFT(id: UInt64): &NonFungibleToken.NFT {
+    access(all) fun borrowNFT(id: UInt64): &NonFungibleToken.NFT {
         return (&self.ownedNFTs[id] as &NonFungibleToken.NFT?)!
     }
 
@@ -388,13 +388,13 @@ pub resource Collection: NonFungibleToken.Provider, NonFungibleToken.Receiver, N
 Lastly, update the `ownedNFTs`, `deposit`, and `withdraw` variables/methods to use the `NonFungibleToken.NFT` type:
 
 ```cadence
-pub var ownedNFTs: @{UInt64: NonFungibleToken.NFT}
+access(all) var ownedNFTs: @{UInt64: NonFungibleToken.NFT}
 
-pub fun deposit(token: @NonFungibleToken.NFT) {
+access(all) fun deposit(token: @NonFungibleToken.NFT) {
     //...[deposit code]...
 }
 
-pub fun withdraw(withdrawID: UInt64): @NonFungibleToken.NFT {
+access(all) fun withdraw(withdrawID: UInt64): @NonFungibleToken.NFT {
     //...[withdraw code]...
 }
 ```
@@ -628,11 +628,11 @@ Because this is already deployed to Emulator and our `flow setup` command added 
 Update the `NFT` resource to implement the `[ViewResolver` interface](https://github.com/onflow/flow-nft/blob/master/contracts/MetadataViews.cdc#L20) provided by the MetadataViews contract. This interface specifies that a `getViews` function and a `resolveView` function should exist. Then, add fields for `name`, `thumbnail`, and `description`:
 
 ```cadence
-pub resource NFT: NonFungibleToken.INFT, MetadataViews.ViewResolver {
-    pub let id: UInt64
-    pub let name: String
-    pub let description: String
-    pub let thumbnail: String
+access(all) resource NFT: NonFungibleToken.INFT, MetadataViews.ViewResolver {
+    access(all) let id: UInt64
+    access(all) let name: String
+    access(all) let description: String
+    access(all) let thumbnail: String
 
     // ...[rest of NFT code]...
 }
@@ -641,14 +641,14 @@ pub resource NFT: NonFungibleToken.INFT, MetadataViews.ViewResolver {
 Now, add the methods from the `ViewResolver` interface to the `NFT` resource. These methods will return the metadata in the standardized `Display` format:
 
 ```cadence
-pub resource NFT: NonFungibleToken.INFT, ViewResolver {
+access(all) resource NFT: NonFungibleToken.INFT, ViewResolver {
     // ...[NFT code]...
 
-    pub fun getViews(): [Type] {
+    access(all) fun getViews(): [Type] {
         return [Type<MetadataViews.Display>()]
     }
 
-    pub fun resolveView(_ view: Type): AnyStruct? {
+    access(all) fun resolveView(_ view: Type): AnyStruct? {
         if (view == Type<MetadataViews.Display>()) {
             return MetadataViews.Display(
                 name: self.name,
@@ -664,7 +664,7 @@ pub resource NFT: NonFungibleToken.INFT, ViewResolver {
 Finally, to retrieve our NFT along with its metadata, we currently have a `borrowNFT` function. However, this function only returns a `NonFungibleToken.NFT` with an `id` field. To address this, let's introduce a new function in our collection that borrows the NFT and returns it as a `FooBar` NFT. We'll utilize the `auth` [syntax to downcast](https://cadence-lang.org/docs/language/operators#conditional-downcasting-operator-as) the `NonFungibleToken.NFT` to our specific type.
 
 ```cadence
-pub fun borrowFooBarNFT(id: UInt64): &FooBar.NFT? {
+access(all) fun borrowFooBarNFT(id: UInt64): &FooBar.NFT? {
     if self.ownedNFTs[id] != nil {
         let ref = (&self.ownedNFTs[id] as auth &NonFungibleToken.NFT?)!
         return ref as! &FooBar.NFT
@@ -696,11 +696,11 @@ access(all) contract FooBar: NonFungibleToken, ViewResolver {
 
 //...[all code above contract init]...
 
-pub fun getViews(): [Type] {
+access(all) fun getViews(): [Type] {
         return [Type<MetadataViews.Display>()]
     }
 
-    pub fun resolveView(_ view: Type): AnyStruct? {
+    access(all) fun resolveView(_ view: Type): AnyStruct? {
         switch view {
             case Type<MetadataViews.NFTCollectionData>():
                 return MetadataViews.NFTCollectionData(
@@ -726,11 +726,11 @@ pub fun getViews(): [Type] {
 Finally, we need a way to read this data like we did with the NFT. Let’s also make a `borrowViewResolver` function that we add below the `borrowFooBarNFT` method inside of the `Collection`:
 
 ```cadence
-pub resource Collection: NonFungibleToken.Provider, NonFungibleToken.Receiver, NonFungibleToken.CollectionPublic, MetadataViews.ResolverCollection {
+access(all) resource Collection: NonFungibleToken.Provider, NonFungibleToken.Receiver, NonFungibleToken.CollectionPublic, MetadataViews.ResolverCollection {
 
     // ...[borrowFooBarNFT]...
 
-    pub fun borrowViewResolver(id: UInt64): &AnyResource{MetadataViews.Resolver} {
+    access(all) fun borrowViewResolver(id: UInt64): &AnyResource{MetadataViews.Resolver} {
         let ref = (&self.ownedNFTs[id] as auth &NonFungibleToken.NFT?)!
         return ref as! &FooBar.NFT
     }

@@ -196,7 +196,7 @@ This view is meant to be used by 3rd party marketplaces to take a cut of the pro
 and send it to the author of a certain NFT. Each NFT can have its own royalty view:
 
 ```cadence
-pub struct Royalties {
+access(all) struct Royalties {
 
     /// Array that tracks the individual royalties
     access(self) let cutInfos: [Royalty]
@@ -206,13 +206,13 @@ pub struct Royalties {
 and the royalty can indicate whatever fungible token it wants to accept via the type of the generic `{FungibleToken.Reciever}` capability that it specifies:
 
 ```cadence
-pub struct Royalty {
+access(all) struct Royalty {
     /// Generic FungibleToken Receiver for the beneficiary of the royalty
     /// Can get the concrete type of the receiver with receiver.getType()
     /// Recommendation - Users should create a new link for a FlowToken receiver for this using `getRoyaltyReceiverPublicPath()`,
     /// and not use the default FlowToken receiver.
     /// This will allow users to update the capability in the future to use a more generic capability
-    pub let receiver: Capability<&AnyResource{FungibleToken.Receiver}>
+    access(all) let receiver: Capability<&AnyResource{FungibleToken.Receiver}>
 
     /// Multiplier used to calculate the amount of sale value transferred to royalty receiver.
     /// Note - It should be between 0.0 and 1.0
@@ -222,7 +222,7 @@ pub struct Royalty {
     /// in solidity based smart contracts while cadence offers `UFix64` that already supports
     /// the basis points use case because its operations
     /// are entirely deterministic integer operations and support up to 8 points of precision.
-    pub let cut: UFix64
+    access(all) let cut: UFix64
 }
 ```
 

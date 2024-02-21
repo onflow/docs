@@ -1,11 +1,11 @@
 # Struct `Media`
 
 ```cadence
-pub struct Media {
+access(all) struct Media {
 
-    pub let file: AnyStruct{File}
+    access(all) let file: AnyStruct{File}
 
-    pub let mediaType: String
+    access(all) let mediaType: String
 }
 ```
 

@@ -1,9 +1,9 @@
 # Resource `Collection`
 
 ```cadence
-pub resource Collection {
+access(all) resource Collection {
 
-    pub var ownedNFTs: {UInt64: NFT}
+    access(all) var ownedNFTs: {UInt64: NFT}
 }
 ```
 

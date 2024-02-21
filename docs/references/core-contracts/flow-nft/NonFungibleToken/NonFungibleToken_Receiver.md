@@ -1,7 +1,7 @@
 # Resource Interface `Receiver`
 
 ```cadence
-pub resource interface Receiver {
+access(all) resource interface Receiver {
 }
 ```
 

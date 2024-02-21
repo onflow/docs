@@ -1,19 +1,19 @@
 # Struct `NFTCollectionDisplay`
 
 ```cadence
-pub struct NFTCollectionDisplay {
+access(all) struct NFTCollectionDisplay {
 
-    pub let name: String
+    access(all) let name: String
 
-    pub let description: String
+    access(all) let description: String
 
-    pub let externalURL: ExternalURL
+    access(all) let externalURL: ExternalURL
 
-    pub let squareImage: Media
+    access(all) let squareImage: Media
 
-    pub let bannerImage: Media
+    access(all) let bannerImage: Media
 
-    pub let socials: {String: ExternalURL}
+    access(all) let socials: {String: ExternalURL}
 }
 ```
 

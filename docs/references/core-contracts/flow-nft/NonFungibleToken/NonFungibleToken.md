@@ -1,9 +1,9 @@
 # Contract Interface `NonFungibleToken`
 
 ```cadence
-pub contract interface NonFungibleToken {
+access(all) contract interface NonFungibleToken {
 
-    pub var totalSupply: UInt64
+    access(all) var totalSupply: UInt64
 }
 ```
 
@@ -14,9 +14,9 @@ import and implement this interface
 ### `INFT`
 
 ```cadence
-pub resource interface INFT {
+access(all) resource interface INFT {
 
-    pub let id: UInt64
+    access(all) let id: UInt64
 }
 ```
 Interface that the NFTs have to conform to
@@ -32,7 +32,7 @@ are being saved for the stable cadence milestone
 ### `Provider`
 
 ```cadence
-pub resource interface Provider {
+access(all) resource interface Provider {
 }
 ```
 Interface to mediate withdraws from the Collection
@@ -44,7 +44,7 @@ Interface to mediate withdraws from the Collection
 ### `Receiver`
 
 ```cadence
-pub resource interface Receiver {
+access(all) resource interface Receiver {
 }
 ```
 Interface to mediate deposits to the Collection
@@ -56,7 +56,7 @@ Interface to mediate deposits to the Collection
 ### `CollectionPublic`
 
 ```cadence
-pub resource interface CollectionPublic {
+access(all) resource interface CollectionPublic {
 }
 ```
 Interface that an account would commonly
@@ -70,9 +70,9 @@ publish for their collection
 ### `NFT`
 
 ```cadence
-pub resource NFT {
+access(all) resource NFT {
 
-    pub let id: UInt64
+    access(all) let id: UInt64
 }
 ```
 Requirement that all conforming NFT smart contracts have
@@ -85,9 +85,9 @@ to define a resource called NFT that conforms to INFT
 ### `Collection`
 
 ```cadence
-pub resource Collection {
+access(all) resource Collection {
 
-    pub var ownedNFTs: {UInt64: NFT}
+    access(all) var ownedNFTs: {UInt64: NFT}
 }
 ```
 Requirement for the concrete resource type
@@ -113,7 +113,7 @@ Returns: A new Collection resource
 ### `ContractInitialized`
 
 ```cadence
-pub event ContractInitialized()
+access(all) event ContractInitialized()
 ```
 Event that emitted when the NFT contract is initialized
 
@@ -122,7 +122,7 @@ Event that emitted when the NFT contract is initialized
 ### `Withdraw`
 
 ```cadence
-pub event Withdraw(id: UInt64, from: Address?)
+access(all) event Withdraw(id: UInt64, from: Address?)
 ```
 Event that is emitted when a token is withdrawn,
 indicating the owner of the collection that it was withdrawn from.
@@ -134,7 +134,7 @@ If the collection is not in an account's storage, `from` will be `nil`.
 ### `Deposit`
 
 ```cadence
-pub event Deposit(id: UInt64, to: Address?)
+access(all) event Deposit(id: UInt64, to: Address?)
 ```
 Event that emitted when a token is deposited to a collection.
 

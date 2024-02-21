@@ -1,23 +1,23 @@
 # Struct `NFTView`
 
 ```cadence
-pub struct NFTView {
+access(all) struct NFTView {
 
-    pub let id: UInt64
+    access(all) let id: UInt64
 
-    pub let uuid: UInt64
+    access(all) let uuid: UInt64
 
-    pub let display: Display?
+    access(all) let display: Display?
 
-    pub let externalURL: ExternalURL?
+    access(all) let externalURL: ExternalURL?
 
-    pub let collectionData: NFTCollectionData?
+    access(all) let collectionData: NFTCollectionData?
 
-    pub let collectionDisplay: NFTCollectionDisplay?
+    access(all) let collectionDisplay: NFTCollectionDisplay?
 
-    pub let royalties: Royalties?
+    access(all) let royalties: Royalties?
 
-    pub let traits: Traits?
+    access(all) let traits: Traits?
 }
 ```
 

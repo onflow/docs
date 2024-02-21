@@ -1,13 +1,13 @@
 # Struct `Rarity`
 
 ```cadence
-pub struct Rarity {
+access(all) struct Rarity {
 
-    pub let score: UFix64?
+    access(all) let score: UFix64?
 
-    pub let max: UFix64?
+    access(all) let max: UFix64?
 
-    pub let description: String?
+    access(all) let description: String?
 }
 ```
 

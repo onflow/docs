@@ -1,13 +1,13 @@
 # Struct `Royalty`
 
 ```cadence
-pub struct Royalty {
+access(all) struct Royalty {
 
-    pub let receiver: Capability<&AnyResource{FungibleToken.Receiver}>
+    access(all) let receiver: Capability<&AnyResource{FungibleToken.Receiver}>
 
-    pub let cut: UFix64
+    access(all) let cut: UFix64
 
-    pub let description: String
+    access(all) let description: String
 }
 ```
 

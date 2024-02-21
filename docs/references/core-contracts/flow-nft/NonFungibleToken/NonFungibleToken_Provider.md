@@ -1,7 +1,7 @@
 # Resource Interface `Provider`
 
 ```cadence
-pub resource interface Provider {
+access(all) resource interface Provider {
 }
 ```
 

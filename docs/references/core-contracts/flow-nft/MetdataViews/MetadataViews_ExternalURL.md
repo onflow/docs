@@ -1,9 +1,9 @@
 # Struct `ExternalURL`
 
 ```cadence
-pub struct ExternalURL {
+access(all) struct ExternalURL {
 
-    pub let url: String
+    access(all) let url: String
 }
 ```
 

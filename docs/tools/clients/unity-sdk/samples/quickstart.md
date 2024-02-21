@@ -65,7 +65,7 @@ More information is available at [Developer Portal](https://cadence-lang.org/doc
 First we'll define the script that we want to run:
 
 ```csharp
-const string code = @"pub fun main(message: String): Int{
+const string code = @"access(all) fun main(message: String): Int{
     log(message)
     return 42
 }";
@@ -237,16 +237,16 @@ First we need to define the contract we wish to deploy.
 
 ```csharp
 const string contractCode = @"
-    pub contract HelloWorld {
-        pub let greeting: String
+    access(all) contract HelloWorld {
+        access(all) let greeting: String
 
-        pub event TestEvent(field: String)
+        access(all) event TestEvent(field: String)
 
         init() {
             self.greeting = ""Hello, World!""
         }
 
-        pub fun hello(data: String): String {
+        access(all) fun hello(data: String): String {
             emit TestEvent(field:data)
             return self.greeting
         }

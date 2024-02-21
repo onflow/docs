@@ -183,7 +183,7 @@ import "FungibleToken"
 import "FlowToken"
 import "LockedTokens"
 
-pub fun main(address: Address): UFix64 {
+access(all) fun main(address: Address): UFix64 {
   let account = getAccount(address)
   let unlockedVault = account
    .getCapability(/public/flowTokenBalance)!

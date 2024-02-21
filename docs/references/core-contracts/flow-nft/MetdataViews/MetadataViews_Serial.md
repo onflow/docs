@@ -1,9 +1,9 @@
 # Struct `Serial`
 
 ```cadence
-pub struct Serial {
+access(all) struct Serial {
 
-    pub let number: UInt64
+    access(all) let number: UInt64
 }
 ```
 

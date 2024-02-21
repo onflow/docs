@@ -1,11 +1,11 @@
 # Struct `IPFSFile`
 
 ```cadence
-pub struct IPFSFile {
+access(all) struct IPFSFile {
 
-    pub let cid: String
+    access(all) let cid: String
 
-    pub let path: String?
+    access(all) let path: String?
 }
 ```
 

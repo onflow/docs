@@ -1,7 +1,7 @@
 # Resource Interface `Resolver`
 
 ```cadence
-pub resource interface Resolver {
+access(all) resource interface Resolver {
 }
 ```
 

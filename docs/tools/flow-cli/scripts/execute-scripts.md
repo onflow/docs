@@ -22,7 +22,7 @@ flow scripts execute <filename> [<argument> <argument>...] [flags]
 
 Script source code:
 ```
-pub fun main(greeting: String, who: String): String {
+access(all) fun main(greeting: String, who: String): String {
 	return greeting.concat(" ").concat(who)
 }
 ```

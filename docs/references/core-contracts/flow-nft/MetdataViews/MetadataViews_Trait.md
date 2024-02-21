@@ -1,15 +1,15 @@
 # Struct `Trait`
 
 ```cadence
-pub struct Trait {
+access(all) struct Trait {
 
-    pub let name: String
+    access(all) let name: String
 
-    pub let value: AnyStruct
+    access(all) let value: AnyStruct
 
-    pub let displayType: String?
+    access(all) let displayType: String?
 
-    pub let rarity: Rarity?
+    access(all) let rarity: Rarity?
 }
 ```
 

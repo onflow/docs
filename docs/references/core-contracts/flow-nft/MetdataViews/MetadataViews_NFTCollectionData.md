@@ -1,21 +1,21 @@
 # Struct `NFTCollectionData`
 
 ```cadence
-pub struct NFTCollectionData {
+access(all) struct NFTCollectionData {
 
-    pub let storagePath: StoragePath
+    access(all) let storagePath: StoragePath
 
-    pub let publicPath: PublicPath
+    access(all) let publicPath: PublicPath
 
-    pub let providerPath: PrivatePath
+    access(all) let providerPath: PrivatePath
 
-    pub let publicCollection: Type
+    access(all) let publicCollection: Type
 
-    pub let publicLinkedType: Type
+    access(all) let publicLinkedType: Type
 
-    pub let providerLinkedType: Type
+    access(all) let providerLinkedType: Type
 
-    pub let createEmptyCollection: ((): @NonFungibleToken.Collection)
+    access(all) let createEmptyCollection: ((): @NonFungibleToken.Collection)
 }
 ```
 

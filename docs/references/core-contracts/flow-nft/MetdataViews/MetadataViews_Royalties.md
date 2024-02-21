@@ -1,7 +1,7 @@
 # Struct `Royalties`
 
 ```cadence
-pub struct Royalties {
+access(all) struct Royalties {
 
     access(self) let cutInfos: [Royalty]
 }

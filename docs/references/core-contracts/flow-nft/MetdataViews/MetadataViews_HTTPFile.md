@@ -1,9 +1,9 @@
 # Struct `HTTPFile`
 
 ```cadence
-pub struct HTTPFile {
+access(all) struct HTTPFile {
 
-    pub let url: String
+    access(all) let url: String
 }
 ```
 

@@ -152,7 +152,7 @@ The cost for transactions can be calculated using the following FCL scripts on m
 
 ```cadence
 import FlowFees from 0xf919ee77447b7497
-pub fun main(
+access(all) fun main(
   inclusionEffort: UFix64,
   executionEffort: UFix64
 ): UFix64 {
@@ -164,7 +164,7 @@ pub fun main(
 
 ```cadence
 import FlowFees from 0x912d5440f7e3769e
-pub fun main(
+access(all) fun main(
   inclusionEffort: UFix64,
   executionEffort: UFix64
 ): UFix64 {
@@ -256,7 +256,7 @@ Whenever you want to iterate over a list, make sure it is necessary to iterate t
 
 ```cadence
 // Iterating over long lists can be costly
-pub fun sum(list: [Int]): Int {
+access(all) fun sum(list: [Int]): Int {
  var total = 0
  var i = 0
  // if list grows too large, this might not be possible anymore
@@ -267,7 +267,7 @@ pub fun sum(list: [Int]): Int {
 }
 
 // Consider designing transactions (and scripts) in a way where work can be "chunked" into smaller pieces
-pub fun partialSum(list: [Int], start: Int, end: Int): Int {
+access(all) fun partialSum(list: [Int], start: Int, end: Int): Int {
  var partialTotal = 0
  var i = start
  while i < end {
@@ -284,7 +284,7 @@ Some functions will require more execution efforts than others. You should caref
 ```cadence
 // be aware functions that call a lot of other functions
 // (or call themselves) might cost a lot
-pub fun fib(_ x: Int): Int {
+access(all) fun fib(_ x: Int): Int {
  if x == 1 || x== 0 {
    return x
  }
@@ -293,7 +293,7 @@ pub fun fib(_ x: Int): Int {
 }
 
 // consider inlining functions with single statements, to reduce costs
-pub fun add(_ a: Int, _ b: Int): Int {
+access(all) fun add(_ a: Int, _ b: Int): Int {
  // single statement; worth inlining
  return a + b
 }

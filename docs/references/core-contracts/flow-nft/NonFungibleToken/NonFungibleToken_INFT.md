@@ -1,9 +1,9 @@
 # Resource Interface `INFT`
 
 ```cadence
-pub resource interface INFT {
+access(all) resource interface INFT {
 
-    pub let id: UInt64
+    access(all) let id: UInt64
 }
 ```
 

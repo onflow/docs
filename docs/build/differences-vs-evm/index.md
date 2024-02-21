@@ -122,7 +122,7 @@ The same powerful concept also exists for querying the blockchain state using Sc
 import NonFungibleToken from 0x631e88ae7f1d7c20
 import ExampleNFT from 0x2bd9d8989a3352a1
 
-pub fun main(address: Address, collectionPublicPath: PublicPath): [UInt64] {
+access(all) fun main(address: Address, collectionPublicPath: PublicPath): [UInt64] {
 
     let account = getAccount(address)
 

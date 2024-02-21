@@ -1,13 +1,13 @@
 # Struct `Display`
 
 ```cadence
-pub struct Display {
+access(all) struct Display {
 
-    pub let name: String
+    access(all) let name: String
 
-    pub let description: String
+    access(all) let description: String
 
-    pub let thumbnail: AnyStruct{File}
+    access(all) let thumbnail: AnyStruct{File}
 }
 ```
 

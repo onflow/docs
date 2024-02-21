@@ -116,7 +116,7 @@ which can be applied either by the contract (in the case of `ViewResolver`)
 or by an individual NFT (in the case of `MetadataViews.Resolver`).
 
 ```cadence
-pub fun getViews(): [Type] {
+access(all) fun getViews(): [Type] {
     return [
         Type<MetadataViews.Display>(),
         Type<MetadataViews.Royalties>(),
@@ -134,7 +134,7 @@ The caller provides the type of the view they want to query as the only argument
 and the view is returned if it exists, and `nil` is returned if it doesn't.
 
 ```cadence
-pub fun resolveView(_ view: Type): AnyStruct? {
+access(all) fun resolveView(_ view: Type): AnyStruct? {
     switch view {
         case Type<MetadataViews.Display>():
             ...
@@ -170,11 +170,11 @@ and assures that the metadata of our NFT can be consistently accessed
 and understood by various platforms and services that interact with NFTs.
 
 ```cadence
-pub resource NFT: NonFungibleToken.INFT, MetadataViews.Resolver {
-    pub let id: UInt64
-    pub let name: String
-    pub let description: String
-    pub let thumbnail: String
+access(all) resource NFT: NonFungibleToken.INFT, MetadataViews.Resolver {
+    access(all) let id: UInt64
+    access(all) let name: String
+    access(all) let description: String
+    access(all) let thumbnail: String
     access(self) let royalties: [MetadataViews.Royalty]
     access(self) let metadata: {String: AnyStruct}
     ...
@@ -305,11 +305,11 @@ or other stakeholders on secondary sales.
 
 Each royalty view contains a fungible token receiver capability where royalties should be paid:
 ```cadence
-pub struct Royalty {
+access(all) struct Royalty {
 
-    pub let receiver: Capability<&AnyResource{FungibleToken.Receiver}>
+    access(all) let receiver: Capability<&AnyResource{FungibleToken.Receiver}>
 
-    pub let cut: UFix64
+    access(all) let cut: UFix64
 }
 ```
 
@@ -391,21 +391,21 @@ case Type<MetadataViews.ExternalURL>():
 The [`Trait`](https://github.com/onflow/flow-nft/blob/master/contracts/MetadataViews.cdc#L655) view type encapsulates the unique attributes of an NFT, like any visual aspects or category-defining properties. These can be essential for marketplaces that need to sort or filter NFTs based on these characteristics.
 By returning trait views as recommended, you can fit the data in the places you want.
 ```cadence
-pub struct Trait {
+access(all) struct Trait {
         // The name of the trait. Like Background, Eyes, Hair, etc.
-        pub let name: String
+        access(all) let name: String
 
         // The underlying value of the trait
-        pub let value: AnyStruct
+        access(all) let value: AnyStruct
 
         // displayType is used to show some context about what this name and value represent
         // for instance, you could set value to a unix timestamp, and specify displayType as "Date" to tell
         // platforms to consume this trait as a date and not a number
-        pub let displayType: String?
+        access(all) let displayType: String?
 
         // Rarity can also be used directly on an attribute.
         // This is optional because not all attributes need to contribute to the NFT's rarity.
-        pub let rarity: Rarity?
+        access(all) let rarity: Rarity?
 ```
 
 The traits view is extremely important to get right, because many third-party apps
@@ -434,7 +434,7 @@ When resolving the view, the wrapper view should be the returned value,
 instead of returning the single view or just an array of several occurrences of the view.
 
 ```cadence
-pub fun resolveView(_ view: Type): AnyStruct? {
+access(all) fun resolveView(_ view: Type): AnyStruct? {
     switch view {
         case Type<MetadataViews.Editions>():
             let editionInfo = MetadataViews.Edition(name: "Example NFT Edition", number: self.id, max: nil)
@@ -543,7 +543,7 @@ to get information about how to set up or show your collection.
 import ViewResolver from 0xf8d6e0586b0a20c7
 import MetadataViews from 0xf8d6e0586b0a20c7
 
-pub fun main(addr: Address, name: String): StoragePath? {
+access(all) fun main(addr: Address, name: String): StoragePath? {
   let t = Type<MetadataViews.NFTCollectionData>()
   let borrowedContract = getAccount(addr).contracts.borrow<&ViewResolver>(name: name) ?? panic("contract could not be borrowed")
 

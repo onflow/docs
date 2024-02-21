@@ -1,9 +1,9 @@
 # Struct `Editions`
 
 ```cadence
-pub struct Editions {
+access(all) struct Editions {
 
-    pub let infoList: [Edition]
+    access(all) let infoList: [Edition]
 }
 ```
 

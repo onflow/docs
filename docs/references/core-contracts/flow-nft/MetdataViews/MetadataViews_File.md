@@ -1,7 +1,7 @@
 # Struct Interface `File`
 
 ```cadence
-pub struct interface File {
+access(all) struct interface File {
 }
 ```
 

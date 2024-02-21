@@ -96,7 +96,7 @@ Example of Cadence simple, no metadata associated
 ```cadence
 
 import "HelloWorld"
-pub fun main(): String {
+access(all) fun main(): String {
   return HelloWorld.greeting
 }
 ```
@@ -187,7 +187,7 @@ Using a pre-filled FLIX template, the cadence can be simple but no metadata acco
 
 ```cadence
 import "HelloWorld"
-pub fun main(): String {
+access(all) fun main(): String {
   return HelloWorld.greeting
 }
 ```
@@ -257,7 +257,7 @@ The resulting FLIX json file after generation:
             }
         ],
         "cadence": {
-            "body": "import \"HelloWorld\"\npub fun main(): String {\n  return HelloWorld.greeting\n}\n",
+            "body": "import \"HelloWorld\"\naccess(all) fun main(): String {\n  return HelloWorld.greeting\n}\n",
             "network_pins": [
                 {
                     "network": "testnet",

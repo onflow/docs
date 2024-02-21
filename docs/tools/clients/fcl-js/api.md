@@ -88,7 +88,7 @@ async function myScript() {
       fcl.script`
       import FungibleToken from 0xFungibleToken // will be replaced with 0xf233dcee88fe0abe because of the configuration
 
-      pub fun main() { /* Rest of the script goes here */ }
+      access(all) fun main() { /* Rest of the script goes here */ }
     `,
     ])
     .then(fcl.decode);
@@ -550,7 +550,7 @@ import * as fcl from '@onflow/fcl';
 
 const result = await fcl.query({
   cadence: `
-    pub fun main(a: Int, b: Int, addr: Address): Int {
+    access(all) fun main(a: Int, b: Int, addr: Address): Int {
       log(addr)
       return a + b
     }
@@ -802,7 +802,7 @@ import * as fcl from '@onflow/fcl';
 // simple script to add 2 numbers
 const response = await fcl.send([
   fcl.script`
-        pub fun main(int1: Int, int2: Int): Int {
+        access(all) fun main(int1: Int, int2: Int): Int {
             return int1 + int2
         }
     `,
@@ -1274,7 +1274,7 @@ import * as fcl from '@onflow/fcl';
 await fcl
   .send([
     fcl.script`
-      pub fun main(a: Int, b: Int): Int {
+      access(all) fun main(a: Int, b: Int): Int {
         return a + b
       }
     `,
@@ -1312,7 +1312,7 @@ import * as fcl from '@onflow/fcl';
 await fcl
   .send([
     fcl.script`
-      pub fun main(a: Int, b: Int): Int {
+      access(all) fun main(a: Int, b: Int): Int {
         return a + b
       }
     `,
@@ -1354,7 +1354,7 @@ A template builder to use a Cadence script for an interaction.
 import * as fcl from '@onflow/fcl';
 
 const code = `
-  pub fun main(): Int {
+  access(all) fun main(): Int {
     return 5 + 4
   }
 `;
@@ -1390,7 +1390,7 @@ A template builder to use a Cadence transaction for an interaction.
 import * as fcl from '@onflow/fcl';
 
 const code = `
-  pub fun main(): Int {
+  access(all) fun main(): Int {
     return 5 + 4
   }
 `;

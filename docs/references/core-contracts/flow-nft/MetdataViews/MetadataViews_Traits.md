@@ -1,9 +1,9 @@
 # Struct `Traits`
 
 ```cadence
-pub struct Traits {
+access(all) struct Traits {
 
-    pub let traits: [Trait]
+    access(all) let traits: [Trait]
 }
 ```
 

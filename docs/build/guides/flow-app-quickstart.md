@@ -333,7 +333,7 @@ The script that queries the Hello World contract is located `hello-world/cadence
 ```cadence
 import "HelloWorld"
 
-pub fun main(): String {
+access(all) fun main(): String {
   return HelloWorld.greeting
 }
 ```

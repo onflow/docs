@@ -1,9 +1,9 @@
 # Struct `License`
 
 ```cadence
-pub struct License {
+access(all) struct License {
 
-    pub let spdxIdentifier: String
+    access(all) let spdxIdentifier: String
 }
 ```
 
