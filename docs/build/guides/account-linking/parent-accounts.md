@@ -196,7 +196,7 @@ import "HybridCustody"
 ///
 access(all) fun getViews(_ address: Address, _ resolverCollectionPath: PublicPath): {UInt64: MetadataViews.Display} {
 
-    let account: PublicAccount = getAccount(address)
+    let account: &Account = getAccount(address)
     let views: {UInt64: MetadataViews.Display} = {}
 
     // Borrow the Collection

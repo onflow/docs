@@ -7,7 +7,7 @@ sidebar_position: 4
 
 Account linking is a unique Flow concept that enables sharing ownership over [accounts](../../basics/accounts.md). In order to understand how we can achieve that we must first understand how accounts on Flow are accessed.
 
-Accounts on flow can be accessed in Cadence through two types, `PublicAccount` and `AuthAccount`. As the name implies the `PublicAccount` type gives access to all public account information such as address, balance, storage capacity, etc., but doesn't allow changes to the account. The `AuthAccount` type allows the same access as `PublicAccount` but also allows changing the account, including adding/revoking account keys, managing the deployed contracts, as well as linking and publishing Capabilities.
+Accounts on flow can be accessed in Cadence through a unified type, `Account`. Just a regular reference `&Account` type gives access to all public account information such as address, balance, storage capacity, etc., but doesn't allow changes to the account. For allowing specific changes, use `auth(<Entitlement>) &Account` type that allows the same access as `&Account`, but also allows changes specified by a specific `<Entitlement>`. For example the `auth(SaveValue) &Account` allows saving values like `signer.storage.save("Test", to: /storage/test)`, but doesn't allow adding keys with `signer.keys.add(/* ... */)`. For account linking use `auth(AccountCapabilities) &Account`
 
 ![Flow account structure](resources/account.png)
 

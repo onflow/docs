@@ -33,7 +33,7 @@ See [Wikipedia's page on magic numbers](https://en.wikipedia.org/wiki/Magic_numb
 
 ### Solution
 
-Add a public (`pub`), constant (`let`) field, e.g. a `Path` , to the contract responsible for the value,
+Add a public (`access(all)`), constant (`let`) field, e.g. a `Path` , to the contract responsible for the value,
 and set it in the contract's initializer.
 Refer to that value via this public field rather than specifying it manually.
 
@@ -82,10 +82,10 @@ Your contract, resource or struct has a field or resource that will need to be r
 
 ### Solution
 
-Make sure that the field can be accessed from a script (using a `PublicAccount`)
-rather than requiring a transaction (using an `AuthAccount`).
+Make sure that the field can be accessed from a script (using a `&Account`)
+rather than requiring a transaction (using an `auth(Storage) &Account`).
 This saves the time and fees required to read a property using a transaction.
-Making the field or function `pub` and exposing it via a `/public/` capability will allow this.
+Making the field or function `access(all)` and exposing it via a `/public/` capability will allow this.
 
 Be careful not to expose any data or functionality that should be kept private when doing so.
 
