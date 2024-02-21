@@ -216,7 +216,7 @@ unified interface to support NFT royalties.
 ```cadence
 pub struct Royalties {
 
-    priv let cutInfos: [Royalty]
+    access(self) let cutInfos: [Royalty]
 }
 ```
 Wrapper view for multiple Royalty views.

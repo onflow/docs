@@ -3,7 +3,7 @@
 ```cadence
 pub struct Royalties {
 
-    priv let cutInfos: [Royalty]
+    access(self) let cutInfos: [Royalty]
 }
 ```
 
