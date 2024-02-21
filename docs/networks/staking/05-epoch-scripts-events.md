@@ -190,20 +190,20 @@ for phase lengths, number of collector clusters, and inflation percentage.
 ```cadence
 access(all) struct Config {
     /// The number of views in an entire epoch
-    pub(set) var numViewsInEpoch: UInt64
+    access(all)  var numViewsInEpoch: UInt64
 
     /// The number of views in the staking auction
-    pub(set) var numViewsInStakingAuction: UInt64
+    access(all)  var numViewsInStakingAuction: UInt64
     
     /// The number of views in each dkg phase
-    pub(set) var numViewsInDKGPhase: UInt64
+    access(all)  var numViewsInDKGPhase: UInt64
 
     /// The number of collector clusters in each epoch
-    pub(set) var numCollectorClusters: UInt16
+    access(all)  var numCollectorClusters: UInt16
 
     /// Tracks the annualized percentage of FLOW total supply that is minted as rewards at the end of an epoch
     /// Calculation for a single epoch would be (totalSupply * FLOWsupplyIncreasePercentage) / 52
-    pub(set) var FLOWsupplyIncreasePercentage: UFix64
+    access(all)  var FLOWsupplyIncreasePercentage: UFix64
 }
 ```
 

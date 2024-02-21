@@ -145,23 +145,23 @@ import MetadataViews from 0x1d7e57aa55817448
 
 //Structure that will hold all the data we want for an NFT
 access(all) struct NFTData {
-    pub(set) var NFTView: AnyStruct?
-    pub(set) var Display : AnyStruct?
-    pub(set) var HTTPFile: AnyStruct?
-    pub(set) var IPFSFile: AnyStruct?
-    pub(set) var Edition: AnyStruct?
-    pub(set) var Editions: AnyStruct?
-    pub(set) var Serial: AnyStruct?
-    pub(set) var Royalty: AnyStruct?
-    pub(set) var Royalties: AnyStruct?
-    pub(set) var Media: AnyStruct?
-    pub(set) var Medias: AnyStruct?
-    pub(set) var License: AnyStruct?
-    pub(set) var ExternalURL: AnyStruct?
-    pub(set) var NFTCollectionDisplay: AnyStruct?
-    pub(set) var Rarity: AnyStruct?
-    pub(set) var Trait: AnyStruct?
-    pub(set) var Traits: AnyStruct?
+    access(all)  var NFTView: AnyStruct?
+    access(all)  var Display : AnyStruct?
+    access(all)  var HTTPFile: AnyStruct?
+    access(all)  var IPFSFile: AnyStruct?
+    access(all)  var Edition: AnyStruct?
+    access(all)  var Editions: AnyStruct?
+    access(all)  var Serial: AnyStruct?
+    access(all)  var Royalty: AnyStruct?
+    access(all)  var Royalties: AnyStruct?
+    access(all)  var Media: AnyStruct?
+    access(all)  var Medias: AnyStruct?
+    access(all)  var License: AnyStruct?
+    access(all)  var ExternalURL: AnyStruct?
+    access(all)  var NFTCollectionDisplay: AnyStruct?
+    access(all)  var Rarity: AnyStruct?
+    access(all)  var Trait: AnyStruct?
+    access(all)  var Traits: AnyStruct?
     
     init() {
         self.NFTView = nil
