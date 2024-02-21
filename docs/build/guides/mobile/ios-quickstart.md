@@ -149,7 +149,7 @@ To view the NFT from an wallet address, first and foremost, we highly recommend 
 
 - Query cadence
 
-    ```swift
+    ```cadence
     import NonFungibleToken from 0xNonFungibleToken
         import MonsterMaker from 0xMonsterMaker
         import MetadataViews from 0xMetadataViews

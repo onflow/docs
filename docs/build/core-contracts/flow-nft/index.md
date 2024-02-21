@@ -44,7 +44,7 @@ This function MUST return an empty collection that contains no NFTs.
 Users typically save new collections to a well-known location in their account
 and link the `NonFungibleToken.CollectionPublic` interface as a public capability.
 
-```swift
+```cadence
 let collection <- ExampleNFT.createEmptyCollection()
 
 account.save(<-collection, to: /storage/ExampleNFTCollection)
@@ -61,7 +61,7 @@ account.link<&{NonFungibleToken.CollectionPublic}>(
 Withdraw an `NFT` from a `Collection` using the [`withdraw`](https://github.com/onflow/flow-nft/blob/master/contracts/ExampleNFT.cdc#L36-L42) function.
 This function emits the [`Withdraw`](https://github.com/onflow/flow-nft/blob/master/contracts/ExampleNFT.cdc#L12) event.
 
-```swift
+```cadence
 let collectionRef = account.borrow<&ExampleNFT.Collection>(from: /storage/ExampleNFTCollection)
     ?? panic("Could not borrow a reference to the owner's collection")
 
@@ -79,7 +79,7 @@ which accounts publish as public capability.
 This capability allows anybody to deposit an NFT into a collection
 without accessing the entire collection.
 
-```swift
+```cadence
 let nft: ExampleNFT.NFT
 
 // ...
@@ -99,7 +99,7 @@ This means that anyone can send a resource object that conforms to `@NonFungible
 In an implementation, you MUST cast the `token` as your specific token type before depositing it or you will
 deposit another token type into your collection. For example:
 
-```swift
+```cadence
 let token <- token as! @ExampleNFT.NFT
 ```
 
@@ -110,7 +110,7 @@ Return a list of NFTs in a `Collection` using the [`getIDs`](https://github.com/
 This function is available on the `NonFungibleToken.CollectionPublic` interface,
 which accounts publish as public capability.
 
-```swift
+```cadence
 let collection = account.getCapability(/public/ExampleNFTCollection)
     .borrow<&{NonFungibleToken.CollectionPublic}>()
     ?? panic("Could not borrow a reference to the receiver's collection")
@@ -139,7 +139,7 @@ including the name, description, image and owner.
 
 **Source: [get_nft_metadata.cdc](https://github.com/onflow/flow-nft/blob/master/scripts/get_nft_metadata.cdc)**
 
-```swift
+```cadence
 import ExampleNFT from "..."
 import MetadataViews from "..."
 

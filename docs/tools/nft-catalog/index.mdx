@@ -73,7 +73,7 @@ All of the below examples use the catalog in mainnet, you may replace the import
 
 **Example 1 - Retrieve all NFT collections on the catalog**
 
-```swift
+```cadence
 import NFTCatalog from 0x49a7cda3a1eecc29
 
 /*
@@ -90,7 +90,7 @@ pub fun main(): {String : NFTCatalog.NFTCatalogMetadata} {
 
 **Example 2 - Retrieve all collection names in the catalog**
 
-```swift
+```cadence
 import NFTCatalog from 0x49a7cda3a1eecc29
 
 pub fun main(): [String] {
@@ -105,7 +105,7 @@ pub fun main(): [String] {
 
 **Example 3 - Retrieve NFT collections and counts owned by an account**
 
-```swift
+```cadence
 import MetadataViews from 0x1d7e57aa55817448
 import NFTCatalog from 0x49a7cda3a1eecc29
 import NFTRetrieval from 0x49a7cda3a1eecc29
@@ -147,7 +147,7 @@ pub fun main(ownerAddress: Address) : {String : Number} {
 
 **Example 4 - Retrieve all NFTs including metadata owned by an account**
 
-```swift
+```cadence
 import MetadataViews from 0x1d7e57aa55817448
 import NFTCatalog from 0x49a7cda3a1eecc29
 import NFTRetrieval from 0x49a7cda3a1eecc29
@@ -298,7 +298,7 @@ pub fun main(ownerAddress: Address) : { String : [NFT] } {
 
 For Wallets that have a lot of NFTs you may run into memory issues. The common pattern to get around this for now is to retrieve just the ID's in a wallet by calling the following script
 
-```swift
+```cadence
 import MetadataViews from 0x1d7e57aa55817448
 import NFTCatalog from 0x49a7cda3a1eecc29
 import NFTRetrieval from 0x49a7cda3a1eecc29
@@ -336,7 +336,7 @@ pub fun main(ownerAddress: Address) : {String : [UInt64]} {
 
 and then use the ids to retrieve the full metadata for only those ids by calling the following script and passing in a map of collectlionIdentifer -> [ids]
 
-```swift
+```cadence
 import MetadataViews from 0x1d7e57aa55817448
 import NFTCatalog from 0x49a7cda3a1eecc29
 import NFTRetrieval from 0x49a7cda3a1eecc29
@@ -463,7 +463,7 @@ pub fun main(ownerAddress: Address, collections: {String : [UInt64]}) : {String 
 
 If you're looking for some MetadataViews that aren't in the [core view list](https://github.com/onflow/flow-nft/blob/master/contracts/MetadataViews.cdc#L36) you can leverage this script to grab all the views each NFT supports. Note: You lose some typing here but get more data.
 
-```swift
+```cadence
 import MetadataViews from 0x1d7e57aa55817448
 import NFTCatalog from 0x49a7cda3a1eecc29
 import NFTRetrieval from 0x49a7cda3a1eecc29
@@ -538,7 +538,7 @@ pub fun main(ownerAddress: Address) : { String : {String : AnyStruct} }  {
 
 1. Run the following script to retrieve some collection-level information for an NFT collection identifier from the catalog
 
-```swift
+```cadence
 import MetadataViews from 0x1d7e57aa55817448
 import NFTCatalog from 0x49a7cda3a1eecc29
 import NFTRetrieval from 0x49a7cda3a1eecc29
@@ -601,7 +601,7 @@ pub fun main(collectionIdentifier : String) : NFT? {
 
 2. This script result can then be used to form a transaction by inserting the relevant variables from above into a transaction template like the following:
 
-```swift
+```cadence
 import NonFungibleToken from 0x1d7e57aa55817448
 import MetadataViews from 0x1d7e57aa55817448
 {ADDITIONAL_IMPORTS}
