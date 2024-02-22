@@ -32,11 +32,11 @@ To add FlowEVM as a custom network to MetaMask:
 | Name            | Value                                  |
 |-----------------|----------------------------------------|
 | Network Name    | FlowEVM Mainnet                        |
-| Description     | The public RPC url for FlowEVM mainnet |
-| RPC Endpoint    | TBD                                    |
-| Chain ID        | Coming Soon                            |
+| Description     | The public RPC URL for FlowEVM mainnet |
+| RPC Endpoint    | https://mainnet.evm.nodes.onflow.org   |
+| Chain ID        | 747                                    |
 | Currency Symbol | FLOW                                   |
-| Block Explorer  | TBD                                    |
+| Block Explorer  | https://flowdiver.io                   |
 
 6. Tap the Save button to save FlowEVM as a network.
 
