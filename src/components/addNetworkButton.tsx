@@ -1,10 +1,16 @@
 import React from 'react';
+import {
+  Button,
+  ButtonLink,
+} from '@site/src/ui/design-system/src/lib/Components/Button/index';
 
-const AddNetworkButton = () => {
+export const AddNetworkButton = () => {
+  const hasEthereum = window?.ethereum !== undefined;
+
   const addFlowEVM = async () => {
     try {
       // Define your network details here
-      await window?.ethereum.request({
+      await window?.ethereum?.request({
         method: 'wallet_addEthereumChain',
         params: [
           {
@@ -19,7 +25,7 @@ const AddNetworkButton = () => {
               symbol: 'FLOW',
               decimals: 18,
             },
-            blockExplorerUrls: ['https://blockscout.com/poa/xdai/'],
+            blockExplorerUrls: ['https://crescendo.flowdiver.io/'],
           },
         ],
       });
@@ -29,7 +35,13 @@ const AddNetworkButton = () => {
   };
 
   // eslint-disable-next-line @typescript-eslint/no-misused-promises
-  return <button onClick={addFlowEVM}>Add Flow EVM</button>;
+  return hasEthereum ? (
+    <Button className= 'my-5 ' variant="secondary" onClick={addFlowEVM}>
+      Add Flow EVM Network
+    </Button>
+  ) : (
+    <ButtonLink className= 'my-5' variant="secondary" href="https://metamask.io/download/">
+      Install MetaMask
+    </ButtonLink>
+  );
 };
-
-export default AddNetworkButton;
