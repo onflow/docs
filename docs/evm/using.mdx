@@ -1,3 +1,5 @@
+import BrowserOnly from '@docusaurus/BrowserOnly';
+
 ---
 title: Using FlowEVM
 sidebar_label: Using FlowEVM
@@ -24,8 +26,12 @@ Applications deployed to FlowEVM will work with popular EVM-compatible wallets s
 
 ### [MetaMask](https://metamask.io)
 
-<AddNetworkButton />
-
+<BrowserOnly>
+{() => {
+    // client side only code
+    return (<AddNetworkButton />);
+}}
+</BrowserOnly>
 Manually method: Add FlowEVM as a custom network to MetaMask:
 
 1. Open the MetaMask browser extension
