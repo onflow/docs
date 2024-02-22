@@ -36,11 +36,15 @@ export const AddNetworkButton = () => {
 
   // eslint-disable-next-line @typescript-eslint/no-misused-promises
   return hasEthereum ? (
-    <Button className= 'my-5 ' variant="secondary" onClick={addFlowEVM}>
+    <Button className="my-5 " variant="secondary" onClick={addFlowEVM}>
       Add Flow EVM Network
     </Button>
   ) : (
-    <ButtonLink className= 'my-5' variant="secondary" href="https://metamask.io/download/">
+    <ButtonLink
+      className="my-5"
+      variant="primary"
+      href="https://metamask.io/download/"
+    >
       Install MetaMask
     </ButtonLink>
   );
