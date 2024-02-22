@@ -10,7 +10,7 @@ const BASE_CLASSES =
 const VARIANTS = {
   primary: [
     "bg-black text-white border-transparent",
-    "hover:border-black hover:bg-white hover:text-black",
+    "hover:border-black hover:bg-white hover:text-black cursor-pointer",
     "active:border-gray-500 active:bg-white active:text-gray-500",
     "dark:bg-white dark:text-black",
     "dark:hover:border-white dark:hover:bg-black dark:hover:text-white",
@@ -23,7 +23,7 @@ const VARIANTS = {
   ],
   secondary: [
     "text-primary-blue border-primary-blue",
-    "hover:bg-primary-blue hover:text-white",
+    "hover:bg-primary-blue hover:text-white cursor-pointer",
     "active:bg-blue-hover active:text-white",
     "dark:bg-black dark:text-blue-dark dark:border-blue-dark",
     "dark:hover:bg-blue-dark dark:hover:text-white",
