@@ -2,11 +2,11 @@
 
 ### ***Revisiting Transaction Fee on Flow***
 
-Transaction Fee on Flow is broken down into [three components](https://developers.flow.com/learn/concepts/variable-transaction-fees) - ‘*Inclusion Fee*’ that accounts for the resources required to process a transaction due to the transaction’s core properties (byte size, number of signatures); ‘Execution Fee’ that accounts for the operational cost of running the transaction script, processing the results, sending results for verification, generating verification receipt, etc; and a *Surge* factor as a multiplicative factor to dynamically account for network pressure and market conditions.
+Transaction Fee on Flow is broken down into three components - ‘Inclusion Fee’ that accounts for the resources required to process a transaction due to the transaction’s core properties (byte size, number of signatures); ‘Execution Fee’ that accounts for the operational cost of running the transaction script, processing the results, sending results for verification, generating verification receipt, etc; and a 'Surge' factor as a multiplicative factor to dynamically account for network pressure and market conditions.
 
 Transaction fee = [inclusion fee + (execution effort * unit cost)] x surge
 
-- Inclusion fee = `1E-6 FLOW` This is currently constant, but [dynamic inclusion fee FLIP](https://forum.onflow.org/t/flip-dynamic-inclusion-fees/3700) was proposed last year.
+- Inclusion fee = `1E-6 FLOW` This is currently constant.
 - Execution fee is comprised of two components:
     - Execution Effort (computation) is a variable based on transaction type and functions/operations that are called during the execution of a transaction. The weights allocated to each function type are based on how “costly” (time consuming) they are. The following specification is used to calculate the execution effort units for a transaction on Flow.
         
@@ -38,7 +38,7 @@ Execution Effort =
 
 We want to avoid changing the weights of the original model, so that we do not change the cost of transactions that do not use the new EVM features. Additionally, no other changes are made to the way the execution effort unit cost, inclusion fee, or surge fee is used to calculate the final transaction fee.
 
-While `EVMGasUsage` is supplied by EVM (for instance 21K gas for a simple send transaction),  `EVMGasUsageCost` is the ratio of converting EVM gas to Flow’s computation units. Looking through past EVM contract deployments (like the ones mentioned [here](https://mirror.xyz/dexyz.eth/XJob_zNpiMnIb9mTLj8Bq6GvP8apzYwjEHPGtYXxuWY)), a robust estimate is that one FVM transaction should be able to fit up to 10M gas. For Cresendo PreviewNet launch therefore, given the current computation limit on Flow being 9999, we would use the conversion ratio of 1000 gas/computation. Thus `EVMGasUsageCost` will initially be fixed at `1/1000`, but will be open for revision prior to the Mainnet launch and in future.
+While `EVMGasUsage` is supplied by EVM (for instance 21K gas for a simple send transaction),  `EVMGasUsageCost` is the ratio of converting EVM gas to Flow’s computation units. Looking through past EVM contract deployments, a robust estimate is that one FVM transaction should be able to fit up to 10M gas. For Cresendo PreviewNet launch therefore, given the current computation limit on Flow being 9999, we would use the conversion ratio of 1000 gas/computation. Thus `EVMGasUsageCost` will initially be fixed at `1/1000`, but will be open for revision prior to the Mainnet launch and in future.
 
 ## **Example**
 
