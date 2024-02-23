@@ -6,9 +6,9 @@ Transaction Fee on Flow is broken down into [three components](https://develope
 
 ***Transaction fee = {inclusion fee + (execution effort * unit cost)} x surge***
 
-- *Inclusion fee = `1E-6 FLOW` This is currently constant, but [dynamic inclusion fee FLIP](https://forum.onflow.org/t/flip-dynamic-inclusion-fees/3700) was proposed last year.*
+- Inclusion fee = `1E-6 FLOW` This is currently constant, but [dynamic inclusion fee FLIP](https://forum.onflow.org/t/flip-dynamic-inclusion-fees/3700) was proposed last year.
 - Execution fee is comprised of two components:
-    - *Execution Effort (computation) is a variable based on transaction type and functions/operations that are called during the execution of a transaction , as* [explained here](https://github.com/onflow/flow/blob/c05d847adf2f6fb509e42c17020484d7dd3e89bd/flips/20220111-execution-effort.md). The weights allocated to each function type are based on how “costly” (time consuming) they are. *The following specification is used to calculate the execution effort units for a transaction on Flow.*
+    - Execution Effort (computation) is a variable based on transaction type and functions/operations that are called during the execution of a transaction. The weights allocated to each function type are based on how “costly” (time consuming) they are. The following specification is used to calculate the execution effort units for a transaction on Flow.
         
         ```flow
         Execution effort (computation) =
