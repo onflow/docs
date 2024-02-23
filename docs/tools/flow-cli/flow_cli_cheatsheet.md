@@ -5,10 +5,8 @@ description: Flow CLI All Help Aggregation
 sidebar_position: 15
 ---
 
-
 ```
-
-------------
+---------------
 
 Usage:
   flow [command]
@@ -53,7 +51,7 @@ Usage:
   dependencies Manage contracts and dependencies
 
 Additional Commands:
-  allHelp      Outputs help for all the CLI commands
+  all-help     Outputs help for all the CLI commands
   completion   Generate the autocompletion script for the specified shell
   config       Utilities to manage configuration
   help         Help about any command
@@ -78,7 +76,7 @@ Flags:
 Use "flow [command] --help" for more information about a command.
 
 
-------------
+---------------
 
 Create and retrieve accounts and deploy contracts
 
@@ -97,7 +95,7 @@ Available Commands:
 Use "flow accounts [command] --help" for more information about a command.
 
 
-------------
+---------------
 
 Deploy a new contract to an account
 
@@ -116,7 +114,7 @@ Flags:
 
 
 
-------------
+---------------
 
 Create a new account on network
 
@@ -137,7 +135,7 @@ Flags:
 
 
 
-------------
+---------------
 
 Funds an account by address through the Testnet Faucet
 
@@ -153,7 +151,7 @@ Flags:
 
 
 
-------------
+---------------
 
 Gets an account by address
 
@@ -169,7 +167,7 @@ Flags:
 
 
 
-------------
+---------------
 
 Remove a contract deployed to an account
 
@@ -187,7 +185,7 @@ Flags:
 
 
 
-------------
+---------------
 
 Get account staking info
 
@@ -200,7 +198,7 @@ flow accounts staking-info f8d6e0586b0a20c7
 
 
 
-------------
+---------------
 
 Update a contract deployed to an account
 
@@ -219,23 +217,23 @@ Flags:
 
 
 
-------------
+---------------
 
 Outputs help for all the CLI commands
 
 Usage:
-  flow allHelp [flags]
+  flow all-help [flags]
 
 Examples:
 flow cheat sheet
 
 
 Flags:
-  -h, --help   help for allHelp
+  -h, --help   help for all-help
 
 
 
-------------
+---------------
 
 Retrieve blocks
 
@@ -248,7 +246,7 @@ Available Commands:
 Use "flow blocks [command] --help" for more information about a command.
 
 
-------------
+---------------
 
 Get block info
 
@@ -265,7 +263,7 @@ Flags:
 
 
 
-------------
+---------------
 
 Execute Cadence code
 
@@ -279,7 +277,7 @@ Available Commands:
 Use "flow cadence [command] --help" for more information about a command.
 
 
-------------
+---------------
 
 Start the Cadence language server
 
@@ -292,7 +290,7 @@ Flags:
 
 
 
-------------
+---------------
 
 Retrieve collections
 
@@ -305,7 +303,7 @@ Available Commands:
 Use "flow collections [command] --help" for more information about a command.
 
 
-------------
+---------------
 
 Get collection info
 
@@ -318,7 +316,7 @@ flow collections get 270d...9c31e
 
 
 
-------------
+---------------
 
 Generate the autocompletion script for flow for the specified shell.
 See each sub-command's help for details on how to use the generated script.
@@ -335,7 +333,7 @@ Available Commands:
 Use "flow completion [command] --help" for more information about a command.
 
 
-------------
+---------------
 
 Generate the autocompletion script for the bash shell.
 
@@ -367,7 +365,7 @@ Flags:
 
 
 
-------------
+---------------
 
 Generate the autocompletion script for the fish shell.
 
@@ -390,7 +388,7 @@ Flags:
 
 
 
-------------
+---------------
 
 Generate the autocompletion script for powershell.
 
@@ -410,7 +408,7 @@ Flags:
 
 
 
-------------
+---------------
 
 Generate the autocompletion script for the zsh shell.
 
@@ -444,7 +442,7 @@ Flags:
 
 
 
-------------
+---------------
 
 Utilities to manage configuration
 
@@ -459,7 +457,7 @@ Available Commands:
 Use "flow config [command] --help" for more information about a command.
 
 
-------------
+---------------
 
 Add resource to configuration
 
@@ -478,7 +476,7 @@ Available Commands:
 Use "flow config add [command] --help" for more information about a command.
 
 
-------------
+---------------
 
 Add account to configuration
 
@@ -499,7 +497,7 @@ Flags:
 
 
 
-------------
+---------------
 
 Add contract to configuration
 
@@ -519,7 +517,7 @@ Flags:
 
 
 
-------------
+---------------
 
 Add deployment to configuration
 
@@ -537,7 +535,7 @@ Flags:
 
 
 
-------------
+---------------
 
 Add network to configuration
 
@@ -555,7 +553,7 @@ Flags:
 
 
 
-------------
+---------------
 
 Initialize a new configuration
 
@@ -572,7 +570,7 @@ Flags:
 
 
 
-------------
+---------------
 
 Remove resource from configuration
 
@@ -591,7 +589,7 @@ Available Commands:
 Use "flow config remove [command] --help" for more information about a command.
 
 
-------------
+---------------
 
 Remove account from configuration
 
@@ -604,7 +602,7 @@ flow config remove account Foo
 
 
 
-------------
+---------------
 
 Remove contract from configuration
 
@@ -617,7 +615,7 @@ flow config remove contract Foo
 
 
 
-------------
+---------------
 
 Remove deployment from configuration
 
@@ -630,7 +628,7 @@ flow config remove deployment Foo testnet
 
 
 
-------------
+---------------
 
 Remove network from configuration
 
@@ -643,7 +641,7 @@ flow config remove network Foo
 
 
 
-------------
+---------------
 
 Manage contracts and dependencies
 
@@ -660,7 +658,7 @@ Available Commands:
 Use "flow dependencies [command] --help" for more information about a command.
 
 
-------------
+---------------
 
 Add a single contract and its dependencies.
 
@@ -676,7 +674,7 @@ Flags:
 
 
 
-------------
+---------------
 
 Install contract and dependencies.
 
@@ -689,7 +687,7 @@ flow dependencies install
 
 
 
-------------
+---------------
 
 Deploy all project contracts
 
@@ -706,7 +704,7 @@ Flags:
 
 
 
-------------
+---------------
 
 Build your Flow project
 
@@ -719,7 +717,7 @@ flow dev
 
 
 
-------------
+---------------
 
 Run a development wallet
 
@@ -736,7 +734,7 @@ Flags:
 
 
 
-------------
+---------------
 
 Run Flow network for development
 
@@ -787,7 +785,7 @@ Flags:
 Use "flow emulator [command] --help" for more information about a command.
 
 
-------------
+---------------
 
 Create/Load/List emulator snapshots
 
@@ -800,7 +798,7 @@ flow emulator snapshot create testSnapshot
 
 
 
-------------
+---------------
 
 Retrieve events
 
@@ -813,7 +811,7 @@ Available Commands:
 Use "flow events [command] --help" for more information about a command.
 
 
-------------
+---------------
 
 Get events in a block range
 
@@ -844,7 +842,7 @@ Flags:
 
 
 
-------------
+---------------
 
 execute, generate, package
 
@@ -859,7 +857,7 @@ Available Commands:
 Use "flow flix [command] --help" for more information about a command.
 
 
-------------
+---------------
 
 execute FLIX template with a given id, name, local filename, or url
 
@@ -886,7 +884,7 @@ Flags:
 
 
 
-------------
+---------------
 
 generate FLIX json template given local Cadence filename
 
@@ -913,7 +911,7 @@ Flags:
 
 
 
-------------
+---------------
 
 package file for FLIX template fcl-js is default
 
@@ -940,7 +938,7 @@ Flags:
 
 
 
-------------
+---------------
 
 Run Flowser project explorer
 
@@ -957,7 +955,7 @@ Flags:
 
 
 
-------------
+---------------
 
 Generate template files for common Cadence code
 
@@ -975,7 +973,7 @@ Available Commands:
 Use "flow generate [command] --help" for more information about a command.
 
 
-------------
+---------------
 
 Generate Cadence smart contract template
 
@@ -991,7 +989,7 @@ Flags:
 
 
 
-------------
+---------------
 
 Generate a Cadence script template
 
@@ -1007,7 +1005,7 @@ Flags:
 
 
 
-------------
+---------------
 
 Generate a Cadence transaction template
 
@@ -1023,7 +1021,7 @@ Flags:
 
 
 
-------------
+---------------
 
 Help provides help for any command in the application.
 Simply type flow help [path to command] for full details.
@@ -1034,7 +1032,7 @@ Usage:
 
 
 
-------------
+---------------
 
 Initialize a new configuration
 
@@ -1054,7 +1052,7 @@ Flags:
 
 
 
-------------
+---------------
 
 Generate and decode Flow keys
 
@@ -1069,7 +1067,7 @@ Available Commands:
 Use "flow keys [command] --help" for more information about a command.
 
 
-------------
+---------------
 
 Decode an encoded public key
 
@@ -1086,7 +1084,7 @@ Flags:
 
 
 
-------------
+---------------
 
 Derive public key from a private key
 
@@ -1102,7 +1100,7 @@ Flags:
 
 
 
-------------
+---------------
 
 Generate a new key-pair
 
@@ -1120,7 +1118,7 @@ Flags:
 
 
 
-------------
+---------------
 
 Manage your Cadence project
 
@@ -1133,7 +1131,7 @@ Available Commands:
 Use "flow project [command] --help" for more information about a command.
 
 
-------------
+---------------
 
 Deploy Cadence contracts
 
@@ -1150,7 +1148,7 @@ Flags:
 
 
 
-------------
+---------------
 
 Start emulator and deploy all project contracts
 
@@ -1163,7 +1161,7 @@ flow run
 
 
 
-------------
+---------------
 
 Execute Cadence scripts
 
@@ -1176,7 +1174,7 @@ Available Commands:
 Use "flow scripts [command] --help" for more information about a command.
 
 
-------------
+---------------
 
 Execute a script
 
@@ -1194,7 +1192,7 @@ Flags:
 
 
 
-------------
+---------------
 
 Manage persisted global settings
 
@@ -1207,7 +1205,7 @@ Available Commands:
 Use "flow settings [command] --help" for more information about a command.
 
 
-------------
+---------------
 
 Configure command usage metrics settings
 
@@ -1221,7 +1219,7 @@ flow settings metrics enable
 
 
 
-------------
+---------------
 
 Start a new Flow project
 
@@ -1238,7 +1236,7 @@ Flags:
 
 
 
-------------
+---------------
 
 Signature verification and creation
 
@@ -1252,7 +1250,7 @@ Available Commands:
 Use "flow signatures [command] --help" for more information about a command.
 
 
-------------
+---------------
 
 Generate the message signature
 
@@ -1268,7 +1266,7 @@ Flags:
 
 
 
-------------
+---------------
 
 Verify the signature
 
@@ -1285,7 +1283,7 @@ Flags:
 
 
 
-------------
+---------------
 
 Retrieve the protocol state snapshot
 
@@ -1298,7 +1296,7 @@ Available Commands:
 Use "flow snapshot [command] --help" for more information about a command.
 
 
-------------
+---------------
 
 Get the latest finalized protocol snapshot
 
@@ -1311,7 +1309,7 @@ flow snapshot save /tmp/snapshot.json
 
 
 
-------------
+---------------
 
 Display the status of the Flow network
 
@@ -1321,7 +1319,7 @@ Usage:
 
 
 
-------------
+---------------
 
 Run Cadence tests
 
@@ -1342,7 +1340,7 @@ Flags:
 
 
 
-------------
+---------------
 
 Build, sign, send and retrieve transactions
 
@@ -1360,7 +1358,7 @@ Available Commands:
 Use "flow transactions [command] --help" for more information about a command.
 
 
-------------
+---------------
 
 Build an unsigned transaction
 
@@ -1381,7 +1379,7 @@ Flags:
 
 
 
-------------
+---------------
 
 Decode a transaction
 
@@ -1397,7 +1395,7 @@ Flags:
 
 
 
-------------
+---------------
 
 Get the transaction by ID
 
@@ -1418,7 +1416,7 @@ Flags:
 
 
 
-------------
+---------------
 
 Send a transaction
 
@@ -1441,7 +1439,7 @@ Flags:
 
 
 
-------------
+---------------
 
 Send signed transaction
 
@@ -1458,7 +1456,7 @@ Flags:
 
 
 
-------------
+---------------
 
 Sign built transaction
 
@@ -1476,7 +1474,7 @@ Flags:
 
 
 
-------------
+---------------
 
 View version and commit information
 
@@ -1496,8 +1494,4 @@ Global Flags:
   -s, --save string           Save result to a filename
       --skip-version-check    Skip version check during start up
   -y, --yes                   Approve any prompts
-
-
-------------
-
 ```
