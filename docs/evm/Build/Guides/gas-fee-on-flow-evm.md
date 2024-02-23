@@ -4,7 +4,7 @@
 
 Transaction Fee on Flow is broken down into [three components](https://developers.flow.com/learn/concepts/variable-transaction-fees) - ‘*Inclusion Fee*’ that accounts for the resources required to process a transaction due to the transaction’s core properties (byte size, number of signatures); ‘Execution Fee’ that accounts for the operational cost of running the transaction script, processing the results, sending results for verification, generating verification receipt, etc; and a *Surge* factor as a multiplicative factor to dynamically account for network pressure and market conditions.
 
-***Transaction fee = {inclusion fee + (execution effort * unit cost)} x surge***
+Transaction fee = [inclusion fee + (execution effort * unit cost)] x surge
 
 - Inclusion fee = `1E-6 FLOW` This is currently constant, but [dynamic inclusion fee FLIP](https://forum.onflow.org/t/flip-dynamic-inclusion-fees/3700) was proposed last year.
 - Execution fee is comprised of two components:
