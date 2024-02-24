@@ -2,7 +2,7 @@
 
 ## Revisiting Transaction Fee on Flow
 
-Transaction Fee on Flow is broken down into three components - 
+Transaction fees on Flow are described [here](https://developers.flow.com/build/basics/fees#fee-structure) in detail but essentially, Transaction Fee on Flow is broken down into three components - 
 1. `Inclusion Fee` - The fee that accounts for the resources required to process a transaction due to the transaction’s core properties (byte size, number of signatures)
 2. `Execution Fee` - The fee that accounts for the operational cost of running the transaction script, processing the results, sending results for verification, generating verification receipts, etc.
 3. `Surge' factor` - A multiplicative factor to dynamically account for network pressure and market conditions.
