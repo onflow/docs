@@ -77,7 +77,7 @@ Execution Effort = 43.8272
 
 Thus Transaction fee = [1E-6 FLOW + (43.8272 * 4.99E-08 FLOW)] x 1 = 3.19E-06 FLOW
 
-**On Flow on EVM**
+**On FlowEVM**
 
 If the EVMGasUsage can be assumed to be 21,000 (typical for a simple transfer), 
 
