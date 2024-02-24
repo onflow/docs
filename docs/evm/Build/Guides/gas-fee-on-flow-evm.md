@@ -9,25 +9,25 @@ Transaction Fee on Flow is broken down into three components -
 
 `Transaction fee = [inclusion fee + (execution effort * unit cost)] x surge`
 
+where,
 - Inclusion fee = 1E-6 FLOW This is currently constant.
 - Execution fee is comprised of two components:
     - Execution Effort (computation) is a variable based on transaction type and functions/operations that are called during the execution of a transaction. The weights allocated to each function type are based on how “costly” (time consuming) they are. The following specification is used to calculate the execution effort units for a transaction on Flow.
         
-```
-Execution effort (computation) =
-        0.0239 * function_or_loop_call +
-        0.0123 * GetValue +
-        0.0117 * SetValue +
-        43.2994 * CreateAccount
-```
-And
-```
-Execution Effort Unit Cost = 4.99E-08 FLOW (currently constant)
-```
-And
-```
-Surge = 1.0 (currently constant)
-```
+    ```
+    Execution effort (computation) =
+            0.0239 * function_or_loop_call +
+            0.0123 * GetValue +
+            0.0117 * SetValue +
+            43.2994 * CreateAccount
+    ```
+
+    - Unit cost
+    
+    ```
+    Execution Effort Unit Cost = 4.99E-08 FLOW (currently constant)
+    ```
+- Surge = 1.0 (currently constant)
 
 ## Transaction fee on Flow EVM
 
