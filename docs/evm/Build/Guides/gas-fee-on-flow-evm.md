@@ -55,17 +55,17 @@ Looking through past EVM contract deployments, a robust estimate is that one FVM
 
 ## Example
 
-Assume a simple hypothetical transaction that makes 2 cadence loop calls, reads 20 bytes from the storage register, saves 20 bytes to the storage register, and is called to create an account, thus -
+Assume a simple hypothetical transaction that makes 2 cadence loop calls, reads 20 bytes from the storage register, saves 20 bytes to the storage register, and is called to create an account
 
-function_or_loop_call = 2
+- function_or_loop_call = 2
 
-GetValue = 20
+- GetValue = 20
 
-SetValue = 20
+- SetValue = 20
 
-CreateAccount = 1
+- CreateAccount = 1
 
-**On Flow (FVM)**
+**On Flow Cadence**
 
 ```
 Execution Effort = 0.0239 * (2) + 0.0123 * (20) + 0.0117 * (20) + 43.2994 * 1 + EVMGasUsageCost * EVMGasUsage
@@ -77,12 +77,12 @@ But since EVMGasUsage is 0 for a cadence (Flow) transaction,
 Execution Effort = 43.8272
 ```
 
-since,
+since
 ```
 Transaction fee = [inclusion fee + (execution effort * unit cost)] x surge
 ```
 
-Thus,
+thus
 ```
 Transaction fee = [1E-6 FLOW + (43.8272 * 4.99E-08 FLOW)] x 1 = 3.19E-06 FLOW
 ```
@@ -95,7 +95,7 @@ If the EVMGasUsage can be assumed to be 21,000 (typical for a simple transfer),
 Execution Effort = 0.0239 * (2) + 0.0123 * (20) + 0.0117 * (20) + 43.2994 * 1 + 1/1000 * 21000 = 64.8272
 ```
 
-Thus,
+thus
 ```
 Transaction fee = [1E-6 FLOW + (64.8272 * 4.99E-08 FLOW)] x 1 = 4.23E-06 FLOW
 ```
