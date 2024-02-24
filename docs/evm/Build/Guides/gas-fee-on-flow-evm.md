@@ -1,4 +1,4 @@
-# How gas fees work on Flow EVM?
+# How gas fees work on FlowEVM?
 
 ## Revisiting Transaction Fee on Flow
 
@@ -29,9 +29,9 @@ where,
     ```
 - Surge = 1.0 (currently constant)
 
-## Transaction fee on Flow EVM
+## Transaction fee on FlowEVM
 
-With EVM on Flow, EVM operations can now be called within FVM transactions. EVM operations also have an associated effort measured in [gas](https://ethereum.org/developers/docs/gas) which needs to be factored into the execution effort calculation in addition to the Flow computation for any FlowEVM transaction.
+With EVM on Flow, EVM operations can now be called within Flow Cadence transactions. EVM operations also have an associated effort measured in [gas](https://ethereum.org/developers/docs/gas) which needs to be factored into the execution effort calculation in addition to the Flow computation for any FlowEVM transaction.
 
 The revised execution effort formula is,
 
@@ -45,13 +45,13 @@ Execution Effort =
 ```
 where,
 - `EVMGasUsage` is reported by EVM as the cost in gas for executing the transaction within the EVM, for instance, 21K gas for a simple send transaction.
-- `EVMGasUsageCost` -  To price EVM operations within FVM, a conversion factor between EVM gas and FVM computation (i.e., execution effort) needs to be defined. `EVMGasUsageCost` is that ratio.
+- `EVMGasUsageCost` -  To price EVM operations within Flow Cadence, a conversion factor between EVM gas and Flow computation (i.e., execution effort) needs to be defined. `EVMGasUsageCost` is that ratio.
 
 We want to avoid changing the weights of the original model, so that we do not change the cost of transactions that do not use the new EVM features. Additionally, no other changes are made to the way the execution effort unit cost, inclusion fee, or surge fee is used to calculate the final transaction fee.
 
 ### EVMGasUsageCost
 
-Looking through past EVM contract deployments, a robust estimate is that one FVM transaction should be able to fit up to 10M gas. For Cresendo PreviewNet launch therefore, given the current computation limit on Flow being 9999, we would use the conversion ratio of 1000 gas/computation. Thus EVMGasUsageCost will initially be fixed at 1/1000, but will be open for revision prior to the Mainnet launch and in future.
+Looking through past EVM contract deployments, a robust estimate is that one Flow Cadence transaction should be able to fit up to 10M gas. For Cresendo PreviewNet launch therefore, given the current computation limit on Flow being 9999, we would use the conversion ratio of 1000 gas/computation. Thus EVMGasUsageCost will initially be fixed at 1/1000, but will be open for revision prior to the Mainnet launch and in future.
 
 ## Example
 
