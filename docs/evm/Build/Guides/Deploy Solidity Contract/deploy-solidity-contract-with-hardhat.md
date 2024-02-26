@@ -47,7 +47,7 @@ const config: HardhatUserConfig = {
 
 export default config;
 ```
-For simplicity of this example, the account private key is used in hardhat.config.ts. Make sure to never check in a private key into your git repository. Better to use environment variables.
+To keep this example straightforward, we've included the account's private key directly in `hardhat.config.ts`. However, it is crucial to avoid committing private keys to your Git repository for security reasons. Instead, opt for using environment variables for safer handling of sensitive information.
 
 ### Deploying HelloWorld Smart Contract
 
