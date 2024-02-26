@@ -10,18 +10,35 @@ sidebar_position: 1
 Hardhat is a comprehensive Ethereum development tool that simplifies the process of deploying, testing, and debugging smart contracts. It's designed to offer developers a seamless experience when working with Solidity contracts.
 
 
-## Fund your Flow EVM account
+## Prerequisites
 
-Navigate to the [Crescendo PreviewNet Faucet](https://crescendo-faucet.onflow.org/fund-account) to get testnet $FLOW in order to deploy a smart contract
+### Software
+
+Node v18+, can be downloaded [Here](https://nodejs.org/en/download)
+
+Getting Started with Hardhat. [More Information](https://hardhat.org/tutorial/creating-a-new-hardhat-project). These directions demonstrate using npm commands to create a project and add its dependencies.
+
+```shell
+mkdir hardhat-example
+cd hardhat-example
+
+npm init
+
+npm install --save-dev hardhat
+
+npx hardhat init
+```
+
+
+### Fund Your Wallet
+
+Navigate to the [Crescendo PreviewNet Faucet](https://crescendo-faucet.onflow.org/fund-account). Paste in your wallet address to get receive $FLOW. Thi will allow your wallet address to deploy smart contracts. 
+
 
 
 ## Deploying a Smart Contract using Hardhat
 
 This section is dedicated to guiding you through deploying smart contracts on the Flow EVM network using Hardhat. 
-
-## Getting Started
-
-Here are the official instructions for [creating a new Hardhat project](https://hardhat.org/tutorial/creating-a-new-hardhat-project). These directions demonstrate using npm commands to create a project and add its dependencies.
 
 ### Configuration
 
@@ -205,8 +222,6 @@ Transaction hash: 0x03136298875d405e0814f54308390e73246e4e8b4502022c657f04f3985e
 Greeting updated successfully!
 The greeting is: Howdy!
 ```
-
-Small note, ignoring any errors that might occur. Verify that the `HelloWorld` smart contract greeting has been updated correctly.
 
 ### Flow EVM Block explorer 
 
