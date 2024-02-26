@@ -206,7 +206,7 @@ Greeting updated successfully!
 The greeting is: Howdy!
 ```
 
-Small note, ignoring any errors that might occur. Verify that HelloWorld smart contract greeting has been updated correctly.
+Small note, ignoring any errors that might occur. Verify that the `HelloWorld` smart contract greeting has been updated correctly.
 
 ### Flow EVM Block explorer 
 
