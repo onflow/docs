@@ -84,7 +84,7 @@ contract HelloWorld {
 Deploying:
 1. Create a file named HelloWorld.sol under contracts directory.
 2. Add above HelloWorld.sol contract code to new file.
-3. Create a deploy.ts file in `scripts` directory.
+3. Create a `deploy.ts` file in `scripts` directory.
 4. Paste in the following TypeScript code.
 
 ```typeScript
