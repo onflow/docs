@@ -12,7 +12,7 @@ Remix is an open-source, web-based development environment tailored for EVM smar
 
 ## Add Flow EVM Network to metamask
 
-<img src="./Remix-adding-metamask-network.gif" width="50%" alt="Add Flow EVM Network" />
+<img src="./Remix-adding-metamask-network.gif" width="50%" alt="Add FlowEVM Network" />
 
 Navigate to [Using EVM](../../../using.mdx) and select the provided button to automatically add Flow EVM network details to your MetaMask wallet.
 
