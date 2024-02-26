@@ -10,7 +10,7 @@ sidebar_position: 1
 
 Remix is an open-source, web-based development environment tailored for EVM smart contract development. It provides developers with a comprehensive suite of tools to write, deploy, and test smart contracts in Solidity. More Information [Remix](https://remix.ethereum.org/)
 
-## Add Flow EVM Network to metamask
+## Add FlowEVM Network to Metamask
 
 <img src="./Remix-adding-metamask-network.gif" width="50%" alt="Add FlowEVM Network" />
 
