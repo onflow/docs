@@ -193,7 +193,7 @@ main().catch((error) => {
 
 ```
 
-Script to get current greeting then update and lastly receive the new greeting. Steps:
+Next we'll add a script to update the greeting and log it. Here are the steps to follow:
 1. Create new script `updateGreeting.ts` file in the `scripts` directory
 2. Paste in the TypeScript above, Make sure to update the contract address with the one from deployment in earlier step. 
 3. Call the new script, `NEW_GREETING='Howdy!' npx hardhat run ./scripts/updateGreeting.ts --network previewNet`
