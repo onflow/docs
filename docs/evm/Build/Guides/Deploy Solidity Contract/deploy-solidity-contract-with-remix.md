@@ -1,6 +1,6 @@
 ---
-title: Using Remix
-description: "Using Remix to deploy a Solidity contract to FlowEVM."
+title: Using Re,ox
+description: "Using Remix to deploy a solidity contract to FlowEVM."
 sidebar_label: Using Remix
 sidebar_position: 1
 ---
@@ -10,11 +10,11 @@ sidebar_position: 1
 
 Remix is an open-source, web-based development environment tailored for EVM smart contract development. It provides developers with a comprehensive suite of tools to write, deploy, and test smart contracts in Solidity. More Information [Remix](https://remix.ethereum.org/)
 
-## Add FlowEVM Network to Metamask
+## Add Flow EVM Network to metamask
 
-<img src="./Remix-adding-metamask-network.gif" width="50%" alt="Add FlowEVM Network" />
+<img src="./Remix-adding-metamask-network.gif" width="50%" alt="Add Flow EVM Network" />
 
-Navigate to [Using EVM](../../../using.mdx) and select the provided button to automatically add Flow EVM network details to your MetaMask wallet.
+Navigate to [Using EVM](../../../using.mdx) page to find the convenient button to add Flow EVM network information to your metamask.
 
 
 ## Deploying a Smart Contract using Remix
@@ -62,7 +62,7 @@ Using Remix:
 
 ## Calling deployed Smart Contract using Remix
 
-<img src="./Remix-call-getGreeting.gif" width="50%" alt="Call Smart Contract">
+<img src="./Remix-call-getGreeting.gif" width="50%" alt="Call Smart Contract" />
 
 ### Using Ethersjs to call HelloWorld smart contract
 
@@ -103,11 +103,11 @@ getGreeting();
 3. Click on green play button
 4. Verify the greeting is "Hello World!"
 
-Use the steps below to change the greeting and retrieve the updated greeting.
+Use the steps below to change the greeting and retrieve the greeting again.
 
 ## Updating deployed Smart Contract
 
-<img src="./Remix-update-greeting.gif" width="50%" alt="Update Smart Contract">
+<img src="./Remix-update-greeting.gif" width="50%" alt="Update Smart Contract" />
 
 Steps to update the HelloWorld smart contract greeting
 1. Select the HelloWorld.sol file
