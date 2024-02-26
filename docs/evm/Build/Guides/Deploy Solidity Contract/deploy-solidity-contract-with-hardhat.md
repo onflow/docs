@@ -106,7 +106,7 @@ main()
 
 ```
 
-5. Run ` npx hardhat run scripts/deploy.ts --network previewNet` in the project root.
+5. Run `npx hardhat run scripts/deploy.ts --network previewNet` in the project root.
 6. Get the deployed contract `address`. This address will be used in other scripts. 
 
 Output should look like this:
