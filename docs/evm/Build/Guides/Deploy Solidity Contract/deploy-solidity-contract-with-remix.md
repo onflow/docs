@@ -103,7 +103,7 @@ getGreeting();
 3. Click on green play button
 4. Verify the greeting is "Hello World!"
 
-Use the steps below to change the greeting and retrieve the greeting again.
+Use the steps below to change the greeting and retrieve the updated greeting.
 
 ## Updating deployed Smart Contract
 
