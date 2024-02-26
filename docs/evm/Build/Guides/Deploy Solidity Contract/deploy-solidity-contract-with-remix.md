@@ -12,7 +12,7 @@ Remix is an open-source, web-based development environment tailored for EVM smar
 
 ## Add Flow EVM Network to metamask
 
-<img src="./Remix-adding-metamask-network.gif" width="50%" alt="Add Flow EVM Network" />
+![Add Flow EVM Network](./Remix-adding-metamask-network.gif)
 
 Navigate to [Using EVM](../../../using.mdx) page to find the convenient button to add Flow EVM network information to your metamask.
 
@@ -24,7 +24,7 @@ Navigate to the Flow EVM Faucet, [Crescendo PreviewNet Faucet](https://crescendo
 
 ## Deploying a Smart Contract using Remix
 
-<img src="./Remix-deploy-contract-flowevm.gif" width="50%" alt="Deploy Smart Contract" />
+![Deploy Smart Contract](./Remix-deploy-contract-flowevm.gif)
 
 
 ### HelloWorld Smart Contract
@@ -67,7 +67,7 @@ Using Remix:
 
 ## Calling deployed Smart Contract using Remix
 
-<img src="./Remix-call-getGreeting.gif" width="50%" alt="Call Smart Contract" />
+![Call Smart Contract](./Remix-call-getGreeting.gif)
 
 ### Using Ethersjs to call HelloWorld smart contract
 
@@ -112,7 +112,7 @@ Use the steps below to change the greeting and retrieve the greeting again.
 
 ## Updating deployed Smart Contract
 
-<img src="./Remix-update-greeting.gif" width="50%" alt="Update Smart Contract" />
+![Update Smart Contract](./Remix-update-greeting.gif)
 
 Steps to update the HelloWorld smart contract greeting
 1. Select the HelloWorld.sol file
