@@ -25,7 +25,7 @@ Here are the official instructions for [creating a new Hardhat project](https://
 
 ### Configuration
 
-Make sure to had Flow evm network to `hardhat.config.ts`
+Make sure to add FlowEVM network to `hardhat.config.ts`
 ```json
 
 require('dotenv').config()
