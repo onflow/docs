@@ -16,6 +16,11 @@ Remix is an open-source, web-based development environment tailored for EVM smar
 
 Navigate to [Using EVM](../../../using.mdx) page to find the convenient button to add Flow EVM network information to your metamask.
 
+## Fund your Flow EVM account
+
+
+Navigate to the Flow EVM Faucet, [Crescendo PreviewNet Faucet](https://crescendo-faucet.onflow.org/fund-account) to get Flow in order to deploy a smart contract
+
 
 ## Deploying a Smart Contract using Remix
 
@@ -117,3 +122,7 @@ Steps to update the HelloWorld smart contract greeting
 5. Click on the `changeGreeting` orange button 
 6. Sign the Metamask transaction
 7. Verify the greeting has changed by running the JavaScript above.
+
+## Flow EVM Block explorer 
+
+### Coming Soon 
