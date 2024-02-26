@@ -21,7 +21,7 @@ This section is dedicated to guiding you through deploying smart contracts on th
 
 ## Getting Started
 
-Here are quick official instructions for [creating a new Hardhat project](https://hardhat.org/tutorial/creating-a-new-hardhat-project). These directions will will through using npm commands to create a project and add dependencies.
+Here are the official instructions for [creating a new Hardhat project](https://hardhat.org/tutorial/creating-a-new-hardhat-project). These directions demonstrate using npm commands to create a project and add its dependencies.
 
 ### Configuration
 
