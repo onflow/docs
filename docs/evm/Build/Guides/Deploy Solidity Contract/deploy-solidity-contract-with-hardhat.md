@@ -12,7 +12,7 @@ Hardhat is a comprehensive Ethereum development tool that simplifies the process
 
 ## Fund your Flow EVM account
 
-Navigate to the Flow EVM Faucet, [Crescendo PreviewNet Faucet](https://crescendo-faucet.onflow.org/fund-account) to get testnet $FLOW in order to deploy a smart contract
+Navigate to the [Crescendo PreviewNet Faucet](https://crescendo-faucet.onflow.org/fund-account) to get testnet $FLOW in order to deploy a smart contract
 
 
 ## Deploying a Smart Contract using Hardhat
