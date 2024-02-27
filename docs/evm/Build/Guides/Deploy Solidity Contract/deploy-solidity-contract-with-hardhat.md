@@ -32,7 +32,7 @@ npx hardhat init
 
 ### Fund Your Wallet
 
-Navigate to the [Crescendo PreviewNet Faucet](https://previewnet-faucet.onflow.org/fund-account). Paste in your wallet address to get receive $FLOW. This will allow your wallet address to deploy smart contracts. 
+Navigate to the [Crescendo Previewnet Faucet](https://previewnet-faucet.onflow.org/fund-account). Paste in your wallet address to get receive $FLOW. This will allow your wallet address to deploy smart contracts. 
 
 
 
@@ -43,7 +43,7 @@ This section is dedicated to guiding you through deploying smart contracts on th
 ### Configuration
 
 Make sure to add FlowEVM network to `hardhat.config.ts`
-```json
+```javascript
 
 require('dotenv').config()
 import "@nomiclabs/hardhat-ethers";
@@ -54,7 +54,7 @@ const config: HardhatUserConfig = {
  solidity: "0.8.19",
  networks: {
     previewNet: {
-            url: "https://crescendo.evm.nodes.onflow.org",
+            url: "https://previewnet.evm.nodes.onflow.org",
             accounts: [`<PRIVATE_KEY>`],
             gas: 500000, // Example gas limit
         }

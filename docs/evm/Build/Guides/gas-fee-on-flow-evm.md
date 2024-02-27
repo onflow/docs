@@ -51,7 +51,7 @@ We want to avoid changing the weights of the original model, so that we do not c
 
 ### EVMGasUsageCost
 
-Looking through past EVM contract deployments, a robust estimate is that one Flow Cadence transaction should be able to fit up to 10M gas. For Cresendo PreviewNet launch therefore, given the current computation limit on Flow being 9999, we would use the conversion ratio of 1000 gas/computation. Thus EVMGasUsageCost will initially be fixed at 1/1000, but will be open for revision prior to the Mainnet launch and in future.
+Looking through past EVM contract deployments, a robust estimate is that one Flow Cadence transaction should be able to fit up to 10M gas. For Cresendo Previewnet launch therefore, given the current computation limit on Flow being 9999, we would use the conversion ratio of 1000 gas/computation. Thus EVMGasUsageCost will initially be fixed at 1/1000, but will be open for revision prior to the Mainnet launch and in future.
 
 ## Example
 
