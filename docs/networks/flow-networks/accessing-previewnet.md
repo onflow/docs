@@ -1,14 +1,15 @@
 ---
 title: Flow Crescendo Previewnet
 sidebar_position: 4
-description: Guide to Crescendo access
+description: Guide to Crescendo Previewnet access
 ---
 
-## About Flow Crescendo
-Flow Crescendo is Flow's official testing and development network. It is intended to provide a staging and testing environment for dApp developers. 
+## About Flow Crescendo Previewnet
+
+Flow Crescendo Previewnet is Flow's official testing and development network. It is intended to provide a staging and testing environment for dApp developers. 
 It aims to balance similarity with Mainnet with being a productive development environment, resulting in the following key differences:
-- Crescendo has significantly fewer validator nodes, resulting in a faster block rate compared to Mainnet
-- Crescendo is configured with shorter epochs (about 12 hours, compared to 7 days on Mainnet)
+- Crescendo Previewnet has significantly fewer validator nodes, resulting in a faster block rate compared to Mainnet
+- Crescendo Previewnet is configured with shorter epochs (about 12 hours, compared to 7 days on Mainnet)
 
 ## Accessing Flow Crescendo Previewnet
 

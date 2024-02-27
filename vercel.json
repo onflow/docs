@@ -1070,6 +1070,11 @@
     {
       "source": "/build/basics/smart-contracts",
       "destination": "/build/smart-contracts/overview"
+    },
+    {
+      "source": "networks/flow-networks/accessing-crescendo",
+      "destination": "/networks/flow-networks/accessing-previewnet",
+      "permanent": true
     }
   ]
 }
