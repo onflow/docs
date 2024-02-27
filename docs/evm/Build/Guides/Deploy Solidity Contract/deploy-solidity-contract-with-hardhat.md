@@ -54,7 +54,7 @@ const config: HardhatUserConfig = {
  solidity: "0.8.19",
  networks: {
     previewNet: {
-            url: "https://crescendo.evm.nodes.onflow.org",
+            url: "https://previewnet.evm.nodes.onflow.org",
             accounts: [`<PRIVATE_KEY>`],
             gas: 500000, // Example gas limit
         }
