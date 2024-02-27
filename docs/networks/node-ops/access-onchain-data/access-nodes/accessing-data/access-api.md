@@ -19,6 +19,7 @@ The Access Nodes hosted by DapperLabs are accessible at:
 | Mainnet     | `access.mainnet.nodes.onflow.org:9000`    | `mainnet.onflow.org`              | `mainnet.onflow.org`         |
 | Sandboxnet (deprecated)  |  |  |  |
 | Testnet     | `access.devnet.nodes.onflow.org:9000`     | `testnet.onflow.org`              | `testnet.onflow.org`         |
+| Previewnet  | `access.previewnet.nodes.onflow.org:9000` | `previewnet.onflow.org`           | `previewnet.onflow.org`      |
 
 #### Mainnet
 ##### We are still in the process of aggregating the past chain data but mainnet 5 to mainnet 1 spork data can be retrieved from the Access nodes mentioned [here](../../../node-operation/spork.md#mainnet)
