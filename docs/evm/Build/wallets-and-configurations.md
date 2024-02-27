@@ -20,19 +20,19 @@ Integrating additional networks into MetaMask can pose challenges for users who 
 
 To add the FlowEVM network to Metamask, we need to add the following network confgiuration:
 
-#### Crescendo Network
+#### Previewnet Network
 
 ```js
-export const FLOWEVM_CRESCENDO_PARAMS = {
-    chainId: '0x286',
+export const FLOWEVM_PREVIEWNET_PARAMS = {
+    chainId: '0x2eb',
     chainName: 'Flow',
-    rpcUrls: ['https://mainnet.evm.nodes.onflow.org'],
+    rpcUrls: ['https://previewnet.evm.nodes.onflow.org'],
     nativeCurrency: {
         name: 'Flow',
         symbol: 'FLOW',
         decimals: 18,
     },
-    blockExplorerUrls: ['https://flowdiver.io/'],
+    blockExplorerUrls: ['https://previewnet.flowdiver.io'],
 }
 ```
 
@@ -46,7 +46,7 @@ function addFlowEvmNetwork() {
     provider
       .request({
         method: "wallet_addEthereumChain",
-        params: [FLOWEVM_CRESCENDO_PARAMS],
+        params: [FLOWEVM_PREVIEWNET_PARAMS],
       })
       .catch((error: any) => {
         console.log(error)
