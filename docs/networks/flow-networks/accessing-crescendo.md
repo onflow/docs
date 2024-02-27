@@ -1,5 +1,5 @@
 ---
-title: Flow Crescendo
+title: Flow Crescendo Previewnet
 sidebar_position: 4
 description: Guide to Crescendo access
 ---
@@ -10,12 +10,12 @@ It aims to balance similarity with Mainnet with being a productive development e
 - Crescendo has significantly fewer validator nodes, resulting in a faster block rate compared to Mainnet
 - Crescendo is configured with shorter epochs (about 12 hours, compared to 7 days on Mainnet)
 
-## Accessing Flow Crescendo
+## Accessing Flow Crescendo Previewnet
 
-Flow Crescendo is available for access at this URL:
+Flow Crescendo Previewnet is available for access at this URL:
 
 ```
-access.crescendo.nodes.onflow.org:9000
+access.previewnet.nodes.onflow.org:9000
 ```
 
 For example, to access the network using the [Flow Go SDK](https://github.com/onflow/flow-go-sdk):
@@ -24,7 +24,7 @@ For example, to access the network using the [Flow Go SDK](https://github.com/on
 import "github.com/onflow/flow-go-sdk/client"
 
 func main() {
-  flowAccessAddress := "access.crescendo.nodes.onflow.org:9000"
+  flowAccessAddress := "access.previewnet.nodes.onflow.org:9000"
   flowClient, _ := client.New(flowAccessAddress, grpc.WithInsecure())
   // ...
 }
@@ -37,8 +37,8 @@ You can generate a new key pair with the [Flow CLI](https://github.com/onflow/fl
 ```sh
 > flow keys generate
 
-🙏 If you want to create an account on Crescendo with the generated keys use this link:
-https://crescendo-faucet.onflow.org/?key= cc1c3d72...
+🙏 If you want to create an account on Crescendo Previewnet with the generated keys use this link:
+https://previewnet-faucet.onflow.org/?key= cc1c3d72...
 
 
 🔴️ Store private key safely and don't share with anyone!
@@ -50,7 +50,7 @@ Public Key       cc1c3d72...
 
 ## Account Creation and Token Funding Requests
 
-Accounts and tokens for testing can be obtained through the [crescendo faucet](https://crescendo-faucet.onflow.org/). If you generated the keypair through the CLI, you can click on the URL provided to create an account and request crescendo FLOW tokens.
+Accounts and tokens for testing can be obtained through the [previewnet faucet](https://previewnet-faucet.onflow.org/). If you generated the keypair through the CLI, you can click on the URL provided to create an account and request crescendo FLOW tokens.
 
 ## Important Smart Contract Addresses
 
