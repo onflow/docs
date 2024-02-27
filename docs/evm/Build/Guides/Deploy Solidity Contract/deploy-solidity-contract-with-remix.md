@@ -1,5 +1,5 @@
 ---
-title: Using Re,ox
+title: Using Remix
 description: "Using Remix to deploy a solidity contract to FlowEVM."
 sidebar_label: Using Remix
 sidebar_position: 1
