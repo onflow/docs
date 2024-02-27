@@ -10,14 +10,14 @@ FlowEVM has the following public RPC nodes available:
 
 # PreviewNet
 
-| Name            | Value                                  |
-|-----------------|----------------------------------------|
-| Network Name    | FlowEVM Crescendo PreviewNet           |
-| Description     | The public RPC URL for FlowEVM Preview |
-| RPC Endpoint    | https://crescendo.evm.nodes.onflow.org |
-| Chain ID        | 646                                    |
-| Currency Symbol | FLOW                                   |
-| Block Explorer  | https://crescendo.flowdiver.io         |
+| Name            | Value                                   |
+|-----------------|-----------------------------------------|
+| Network Name    | FlowEVM PreviewNet                      |
+| Description     | The public RPC URL for FlowEVM Preview  |
+| RPC Endpoint    | https://previewnet.evm.nodes.onflow.org |
+| Chain ID        | 646                                     |
+| Currency Symbol | FLOW                                    |
+| Block Explorer  | https://crescendo.flowdiver.io          |
 
 # Testnet
 
