@@ -29,6 +29,7 @@ Navigate to the Flow EVM Faucet, [Crescendo PreviewNet Faucet](https://previewne
 
 ### HelloWorld Smart Contract
 ```solidity
+// SPDX-License-Identifier: MIT
 pragma solidity ^0.8.0;
 
 contract HelloWorld {

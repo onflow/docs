@@ -70,6 +70,7 @@ To keep this example straightforward, we've included the account's private key d
 
 ### HelloWorld Smart Contract
 ```Solidity
+// SPDX-License-Identifier: MIT
 pragma solidity ^0.8.0;
 
 contract HelloWorld {
