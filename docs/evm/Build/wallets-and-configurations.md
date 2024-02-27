@@ -32,7 +32,7 @@ export const FLOWEVM_CRESCENDO_PARAMS = {
         symbol: 'FLOW',
         decimals: 18,
     },
-    blockExplorerUrls: ['https://crescendo.flowdiver.io/'],
+    blockExplorerUrls: ['https://flowdiver.io/'],
 }
 ```
 
