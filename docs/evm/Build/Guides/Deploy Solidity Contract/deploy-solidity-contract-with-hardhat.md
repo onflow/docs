@@ -43,7 +43,7 @@ This section is dedicated to guiding you through deploying smart contracts on th
 ### Configuration
 
 Make sure to add FlowEVM network to `hardhat.config.ts`
-```json
+```javascript
 
 require('dotenv').config()
 import "@nomiclabs/hardhat-ethers";
