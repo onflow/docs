@@ -32,7 +32,7 @@ npx hardhat init
 
 ### Fund Your Wallet
 
-Navigate to the [Crescendo PreviewNet Faucet](https://previewnet-faucet.onflow.org/fund-account). Paste in your wallet address to get receive $FLOW. This will allow your wallet address to deploy smart contracts. 
+Navigate to the [Crescendo Previewnet Faucet](https://previewnet-faucet.onflow.org/fund-account). Paste in your wallet address to get receive $FLOW. This will allow your wallet address to deploy smart contracts. 
 
 
 

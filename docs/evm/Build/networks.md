@@ -8,11 +8,11 @@ sidebar_position: 1
 
 FlowEVM has the following public RPC nodes available:
 
-# PreviewNet
+# Previewnet
 
 | Name            | Value                                   |
 |-----------------|-----------------------------------------|
-| Network Name    | FlowEVM PreviewNet                      |
+| Network Name    | FlowEVM Previewnet                      |
 | Description     | The public RPC URL for FlowEVM Preview  |
 | RPC Endpoint    | https://previewnet.evm.nodes.onflow.org |
 | Chain ID        | 646                                     |
