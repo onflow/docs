@@ -24,7 +24,7 @@ To add the FlowEVM network to Metamask, we need to add the following network con
 
 ```js
 export const FLOWEVM_CRESCENDO_PARAMS = {
-    chainId: '0x29a',
+    chainId: '0x286',
     chainName: 'Flow',
     rpcUrls: ['https://mainnet.evm.nodes.onflow.org'],
     nativeCurrency: {
