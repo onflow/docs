@@ -1075,6 +1075,16 @@
       "source": "networks/flow-networks/accessing-crescendo",
       "destination": "/networks/flow-networks/accessing-previewnet",
       "permanent": true
+    },
+    {
+      "source": "/evm/build/guides/Deploy%20Solidity%20Contract/deploy-solidity-contract-using-hardhat",
+      "destination": "/evm/build/guides/deploy-contract/using-hardhat",
+      "permanent": true
+    },
+    {
+      "source": "/evm/build/guides/Deploy%20Solidity%20Contract/deploy-solidity-contract-using-remix",
+      "destination": "/evm/build/guides/deploy-contract/using-remix",
+      "permanent": true
     }
   ]
 }
