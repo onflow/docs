@@ -10,13 +10,12 @@ sidebar_position: 2
 
 It allows developers to interact with smart contracts, send transactions, and retrieve data from the network.
 
-## Dependencies
-
-This guide assumes you have the latest version of [Node.js](https://nodejs.org/en) installed.
 
 ## Installation
 
-To install web3.js, run the following command:
+This guide assumes you have the latest version of [Node.js](https://nodejs.org/en) installed.
+
+To install `web3`, run the following command:
 
 ```sh
 npm install web3
@@ -24,7 +23,7 @@ npm install web3
 
 ## Connecting to Flow
 
-To use web3.js in your project, start by imporing the module and initializing your Web3 provider the desired Flow RPC endpoint.
+To use `web3` in your project, start by imporing the module and initializing your Web3 provider the desired Flow RPC endpoint.
 
 ```js
 const { Web3 } = require('web3')
@@ -33,24 +32,8 @@ const web3 = new Web3('https://mainnet.nodes.fff')
 
 :::info
 
-To connect to Flow Testnet
-
+Currently, only Previewnet is available.  More networks are coming soon, [see here for more info](../../build/networks.md).
 :::
-
-### Deploying Contracts
-
-An account is required to deloy contracts to the Flow network.
-
-```js
-const PRIVATE_KEY = "PRIVATE_KEY"
-const account = web3.eth.accounts.privateKeyToAccount(PRIVATE_KEY)
-```
-
-:::info
-
-:::
-
-For more information about 
 
 ### Interacting With Smart Contracts
 
@@ -66,6 +49,10 @@ const abi = [
 const contractAddress
 const contract = 
 ```
+
+:::info
+To deploy your own contract on EVM, see the documentation using [Hardhat](../../build/guides/deploy-contract/using-hardhat.md) or [Remix](../../build/guides/deploy-contract/using-remix).
+:::
 
 Methods on the smart contract can now be called in the following ways.
 
@@ -85,9 +72,15 @@ If you wish to mutate the contract's state, you may do so with the `send` functi
 
 ```js
 const argument = 1 
-const result = await contract.methods.someSetterFunction(argument).call()
+const sender = "0x1234" // replace with the address this transaction will be sent from
+
+const result = await contract.methods.someSetterFunction(argument).call({
+    from: sender
+})
 
 console.log(result)
 ```
+
+The transaction will be signed automatically by `web3js`, as long as the sender's address is registered as an account in the provider.
 
 For more information about using smart contracts in web3.js, see the [official documentation](https://docs.web3js.org/libdocs/Contract).
