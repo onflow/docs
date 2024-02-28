@@ -145,6 +145,9 @@ Developers need a blockchain node to send transactions and fetch state. Flow is 
 Access Nodes are the node type that are most useful for developers, as they provide access to the Flow network via an API. Flow provides public access nodes for multiple networks. They provide two flavours of APIs:
 
 - [HTTP API](https://developers.flow.com/http-api)
+  - Mainnet: `https://rest-mainnet.onflow.org`
+  - Testnet: `https://rest-testnet.onflow.org`
+  - Previewnet: `https://rest-previewnet.onflow.org`
 - gRPC
     - Mainnet: `access.mainnet.nodes.onflow.org:9000`
     - Testnet: `access.devnet.nodes.onflow.org:9000`
