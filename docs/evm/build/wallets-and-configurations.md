@@ -6,11 +6,11 @@ sidebar_position: 4
 
 # Wallets & Configurations
 
-This document shows how to integrate the FlowEVM Network programmatically with your Dapp via MetaMask.
+This document shows how to integrate the Flow Network programmatically with your Dapp via MetaMask.
 
 ## Metamask
 
-Integrating additional networks into MetaMask can pose challenges for users who lack technical expertise and may lead to errors. Simplifying this process can greatly enhance user onboarding for your application. This guide demonstrates how to create a straightforward button within your frontend application to streamline the addition of the Berachain network to MetaMask.
+Integrating additional networks into MetaMask can pose challenges for users who lack technical expertise and may lead to errors. Simplifying this process can greatly enhance user onboarding for your application. This guide demonstrates how to create a straightforward button within your frontend application to streamline the addition of the Flow network to MetaMask.
 
 ### EIP-3035 & MetaMask
 
