@@ -37,7 +37,7 @@ export const AddNetworkButton = () => {
   // eslint-disable-next-line @typescript-eslint/no-misused-promises
   return hasEthereum ? (
     <Button className="my-5 " variant="secondary" onClick={addFlowEVM}>
-      Add Flow EVM Network
+      Add Flow Previewnet Network
     </Button>
   ) : (
     <ButtonLink
