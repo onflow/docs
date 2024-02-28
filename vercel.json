@@ -1130,6 +1130,11 @@
       "source": "/tutorials/dapp-infrastructure",
       "destination": "/build/getting-started/app-architecture",
       "permanent": true
+    },
+    {
+      "source": "/overview/dive-in/fungible-tokens",
+      "destination": "/build/guides/fungible-token",
+      "permanent": true
     }
   ]
 }
