@@ -12,7 +12,7 @@ FlowEVM has the following public RPC nodes available:
 
 | Name            | Value                                   |
 |-----------------|-----------------------------------------|
-| Network Name    | FlowEVM Previewnet                      |
+| Network Name    | Flow Previewnet                      |
 | Description     | The public RPC URL for FlowEVM Preview  |
 | RPC Endpoint    | https://previewnet.evm.nodes.onflow.org |
 | Chain ID        | 646                                     |
@@ -23,8 +23,8 @@ FlowEVM has the following public RPC nodes available:
 
 | Name            | Value                                  |
 |-----------------|----------------------------------------|
-| Network Name    | FlowEVM Testnet                        |
-| Description     | The public RPC URL for FlowEVM testnet |
+| Network Name    | Testnet                        |
+| Description     | The public RPC URL for testnet |
 | RPC Endpoint    | https://testnet.evm.nodes.onflow.org   |
 | Chain ID        | Coming Soon                            |
 | Currency Symbol | FLOW                                   |
@@ -34,8 +34,8 @@ FlowEVM has the following public RPC nodes available:
 
 | Name            | Value                                  |
 |-----------------|----------------------------------------|
-| Network Name    | FlowEVM Mainnet                        |
-| Description     | The public RPC URL for FlowEVM mainnet |
+| Network Name    | Mainnet                        |
+| Description     | The public RPC URL for mainnet |
 | RPC Endpoint    | https://mainnet.evm.nodes.onflow.org   |
 | Chain ID        | 747                                    |
 | Currency Symbol | FLOW                                   |
