@@ -79,7 +79,7 @@
     },
     {
       "source": "/guilds/deploying/:path*",
-      "destination": "/guides/smart-contracts/overview",
+      "destination": "/build/smart-contracts/overview",
       "permanent": true
     },
     {
@@ -340,37 +340,37 @@
     },
     {
       "source": "/tutorials/deployment",
-      "destination": "/guides/smart-contracts/deploying",
+      "destination": "/build/smart-contracts/deploying",
       "permanent": true
     },
     {
       "source": "/tutorials/testnet-testing",
-      "destination": "/guides/smart-contracts/testing",
+      "destination": "/build/smart-contracts/testing",
       "permanent": true
     },
     {
       "source": "/tutorials/smart-contracts",
-      "destination": "/guides/smart-contracts/overview",
+      "destination": "/build/smart-contracts/overview",
       "permanent": true
     },
     {
       "source": "/tutorials/mainnet-deployment",
-      "destination": "/guides/smart-contracts/deploying",
+      "destination": "/build/smart-contracts/deploying",
       "permanent": true
     },
     {
       "source": "/tutorials/testnet-deployment",
-      "destination": "/guides/smart-contracts/deploying",
+      "destination": "/build/smart-contracts/deploying",
       "permanent": true
     },
     {
       "source": "/tutorials/user-accounts-and-wallets",
-      "destination": "/guides/smart-contracts/overview",
+      "destination": "/build/smart-contracts/overview",
       "permanent": true
     },
     {
       "source": "/tutorials/user-accounts-and-wallets",
-      "destination": "/guides/smart-contracts/overview",
+      "destination": "/build/smart-contracts/overview",
       "permanent": true
     },
     {
@@ -824,7 +824,7 @@
     },
     {
       "source": "/guides/deploying/overview",
-      "destination": "/guides/smart-contracts/deploying",
+      "destination": "/build/smart-contracts/deploying",
       "permanent": true
     },
     {
@@ -834,12 +834,12 @@
     },
     {
       "source": "/guides/deploying/mainnet-deployment",
-      "destination": "/guides/smart-contracts/deploying",
+      "destination": "/build/smart-contracts/deploying",
       "permanent": true
     },
     {
       "source": "/guides/deploying/testnet-deployment",
-      "destination": "/guides/smart-contracts/deploying",
+      "destination": "/build/smart-contracts/deploying",
       "permanent": true
     },
     {
@@ -1039,7 +1039,7 @@
     },
     {
       "source": "/build/advanced-concepts/account-linking/:path*",
-      "destination": "/build/guildes/account-linking/:path*",
+      "destination": "/build/guides/account-linking/:path*",
       "permanent": true
     },
     {
@@ -1104,6 +1104,16 @@
     {
       "source": "/evm/build/guides/Deploy%20Solidity%20Contract/deploy-solidity-contract-with-remix",
       "destination": "/evm/build/guides/deploy-contract/using-remix",
+      "permanent": true
+    },
+    {
+      "source": "/tutorials/contract-testing",
+      "destination": "/build/smart-contracts/testing",
+      "permanent": true
+    },
+    {
+      "source": "/tutorials/intro",
+      "destination": "/build/guides/flow-app-quickstart",
       "permanent": true
     }
   ]
