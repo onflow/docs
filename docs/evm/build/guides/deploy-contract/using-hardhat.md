@@ -32,7 +32,7 @@ npx hardhat init
 
 ### Fund Your Wallet
 
-Navigate to the [Crescendo Previewnet Faucet](https://previewnet-faucet.onflow.org/fund-account). Paste in your wallet address to get receive $FLOW. This will allow your wallet address to deploy smart contracts. 
+Navigate to the Flow [Previewnet Faucet](https://previewnet-faucet.onflow.org/fund-account). Paste in your wallet address to get receive $FLOW. This will allow your wallet address to deploy smart contracts. 
 
 
 
@@ -42,7 +42,7 @@ This section is dedicated to guiding you through deploying smart contracts on th
 
 ### Configuration
 
-Make sure to add FlowEVM network to `hardhat.config.ts`
+Make sure to add Previewnet network to `hardhat.config.ts`
 ```javascript
 
 require('dotenv').config()
