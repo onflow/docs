@@ -17,7 +17,7 @@ FlowEVM has the following public RPC nodes available:
 | RPC Endpoint    | https://previewnet.evm.nodes.onflow.org |
 | Chain ID        | 646                                     |
 | Currency Symbol | FLOW                                    |
-| Block Explorer  | https://crescendo.flowdiver.io          |
+| Block Explorer  | https://previewnet.flowdiver.io          |
 
 # Testnet
 
