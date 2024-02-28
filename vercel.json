@@ -1077,6 +1077,16 @@
       "permanent": true
     },
     {
+      "source": "/evm/Build/:path*",
+      "destination": "/evm/build/:path*",
+      "permanent": true
+    },
+    {
+      "source": "/evm/Tools/:path*",
+      "destination": "/evm/tools/:path*",
+      "permanent": true
+    },
+    {
       "source": "/evm/build/guides/Deploy%20Solidity%20Contract/deploy-solidity-contract-with-hardhat",
       "destination": "/evm/build/guides/deploy-contract/using-hardhat",
       "permanent": true
