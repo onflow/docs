@@ -10,11 +10,11 @@ Faucets are tools that provide free tokens for use on test networks. They are es
 
 ## Testnet (FlowEVM Support Coming Soon)
 
-FlowEVM supports developers with a testnet faucet, facilitating the testing and development of smart contracts in a risk-free environment. Access the testnet faucet at: [FlowEVM Testnet Faucet](https://testnet-faucet.onflow.org/)
+FlowEVM supports developers with a testnet faucet, facilitating the testing and development of smart contracts in a risk-free environment. Access the testnet faucet at: [FlowEVM Testnet Faucet](https://testnet-faucet.onflow.org/fund-account)
 
 ## Previewnet
 
-The Crescendo Previewnet network, part of the Flow ecosystem, also offers a faucet for developers. Access the Crescendo Previewnet faucet at: [Previewnet Faucet](https://previewnet-faucet.onflow.org/)
+The Crescendo Previewnet network, part of the Flow ecosystem, also offers a faucet for developers. Access the Crescendo Previewnet faucet at: [Previewnet Faucet](https://previewnet-faucet.onflow.org/fund-account)
 
 ## Mainnet
 
