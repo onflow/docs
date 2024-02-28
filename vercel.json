@@ -1077,12 +1077,12 @@
       "permanent": true
     },
     {
-      "source": "/evm/build/guides/Deploy Solidity Contract/deploy-solidity-contract-using-hardhat",
+      "source": "/evm/build/guides/Deploy%20Solidity%20Contract/deploy-solidity-contract-with-hardhat",
       "destination": "/evm/build/guides/deploy-contract/using-hardhat",
       "permanent": true
     },
     {
-      "source": "/evm/build/guides/Deploy Solidity Contract/deploy-solidity-contract-using-remix",
+      "source": "/evm/build/guides/Deploy%20Solidity%20Contract/deploy-solidity-contract-with-remix",
       "destination": "/evm/build/guides/deploy-contract/using-remix",
       "permanent": true
     }
