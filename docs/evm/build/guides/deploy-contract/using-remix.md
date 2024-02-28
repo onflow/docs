@@ -8,24 +8,21 @@ sidebar_position: 1
 
 # Using Remix
 
-Remix is an open-source, web-based development environment tailored for EVM smart contract development. It provides developers with a comprehensive suite of tools to write, deploy, and test smart contracts in Solidity. More Information [Remix](https://remix.ethereum.org/)
+Remix is an open-source, web-based development environment tailored for EVM smart contract development. It offers developers a comprehensive suite of tools for writing, deploying, and testing smart contracts in Solidity. For more information, visit [Remix](https://remix.ethereum.org/).
 
-## Add Flow EVM Network to metamask
+## Add the Flow Network to MetaMask
 
-![Add Flow EVM Network](./Remix-adding-metamask-network.gif)
+![Add Flow Network](./Remix-adding-metamask-network.gif)
 
-Navigate to [Using EVM](../../../using.mdx) page to find the convenient button to add Flow EVM network information to your metamask.
+Navigate to the [Using EVM](../../../using.mdx) page to find the button to add the Flow network information to your metamask.
 
-## Fund your Flow EVM account
+## Fund Your Flow Account
 
+Navigate to the [Flow Previewnet Faucet](https://previewnet-faucet.onflow.org/fund-account) to obtain FLOW tokens necessary for deploying a smart contract.
 
-Navigate to the Flow [Previewnet Faucet](https://previewnet-faucet.onflow.org/fund-account) to get Flow in order to deploy a smart contract
-
-
-## Deploying a Smart Contract using Remix
+## Deploying a Smart Contract Using Remix
 
 ![Deploy Smart Contract](./Remix-deploy-contract-flowevm.gif)
-
 
 ### HelloWorld Smart Contract
 ```solidity
@@ -58,19 +55,19 @@ contract HelloWorld {
 
 ```
 
-### Steps to deploy HelloWorld smart contract. 
-Using Remix:
-1. Create a file named HelloWorld.sol
-2. Select Solidity Compiler and compile HelloWorld.sol
-3. Select Deploy & Run Transactions 
-4. Make sure to select `Injected Provider - Metamask` in Environment dropdown
-5. Deploy the HelloWorld smart contract
+### Steps to Deploy the HelloWorld Smart Contract
 
-## Calling deployed Smart Contract using Remix
+1. Create a file named `HelloWorld.sol`.
+2. Select Solidity Compiler and compile `HelloWorld.sol`.
+3. Select Deploy & Run Transactions.
+4. Make sure to select `Injected Provider - Metamask` in Environment dropdown.
+5. Deploy the `HelloWorld` smart contract.
+
+## Calling the Deployed Smart Contract
 
 ![Call Smart Contract](./Remix-call-getGreeting.gif)
 
-### Using Ethersjs to call HelloWorld smart contract
+### Using Ethers.js to Call the HelloWorld Smart Contract
 
 ```javascript
 // Import ethers from the ethers.js library
@@ -104,26 +101,25 @@ getGreeting();
 
 ```
 
-1. Create a new file under `scripts`
-2. Paste in above JavaScript code
-3. Click on green play button
+1. Create a new file under `scripts`.
+2. Paste in above JavaScript code.
+3. Click on green play button.
 4. Verify the greeting is "Hello World!"
 
-Use the steps below to change the greeting and retrieve the greeting again.
+Follow the steps below to change the greeting and retrieve the new greeting.
 
-## Updating deployed Smart Contract
+## Updating the Deployed Smart Contract
 
 ![Update Smart Contract](./Remix-update-greeting.gif)
 
-Steps to update the HelloWorld smart contract greeting
-1. Select the HelloWorld.sol file
-2. Select the `Deploy and Run Transaction` page
-3. Make sure to select `Injected Provider - Metamask` in Environment dropdown
-4. Type a new greeting in the text input next to `changeGreeting` orange button
-5. Click on the `changeGreeting` orange button 
-6. Sign the Metamask transaction
+1. Select the `HelloWorld.sol` file.
+2. Select the `Deploy and Run Transaction` page.
+3. Make sure to select `Injected Provider - Metamask` in Environment dropdown.
+4. Type a new greeting in the text input next to orange `changeGreeting` button.
+5. Click on the orange `changeGreeting` button.
+6. Sign the Metamask transaction.
 7. Verify the greeting has changed by running the JavaScript above.
 
-## Flow EVM Block explorer 
+## Flow Previewnet Block Explorer 
 
 ### Coming Soon 
