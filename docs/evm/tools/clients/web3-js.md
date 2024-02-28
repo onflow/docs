@@ -6,20 +6,88 @@ sidebar_position: 2
 
 # web3.js
 
-:::info 
+[web3.js](https://web3js.org/) is a Javascript library for building on EVM-compatible networks.
 
-## Coming Soon
+It allows developers to interact with smart contracts, send transactions, and retrieve data from the network.
 
-Documentation on using [web3.js](https://web3js.readthedocs.io/) to interact with smart contracts deployed on the FlowEVM network is currently under development and will be available shortly.
+## Dependencies
 
-web3.js is a comprehensive JavaScript library designed to facilitate interaction with EVM-compatible blockchain networks. Its integration with FlowEVM will enable developers to deploy, interact with smart contracts, and perform various blockchain operations within the Flow ecosystem seamlessly.
+This guide assumes you have the latest version of [Node.js](https://nodejs.org/en) installed.
 
-Stay tuned for detailed guides on:
+## Installation
 
-- Installing and setting up web3.js for your projects.
-- Connecting to the FlowEVM network using web3.js.
-- Reading and writing data to the blockchain.
-- Deploying and interacting with smart contracts on FlowEVM.
+To install web3.js, run the following command:
 
-For the latest updates, please check back soon or join the [Flow Discord](https://discord.gg/flow) and visit the #evm channel.
+```sh
+npm install web3
+```
+
+## Connecting to Flow
+
+To use web3.js in your project, start by imporing the module and initializing your Web3 provider the desired Flow RPC endpoint.
+
+```js
+const { Web3 } = require('web3')
+const web3 = new Web3('https://mainnet.nodes.fff')
+```
+
+:::info
+
+To connect to Flow Testnet
+
 :::
+
+### Deploying Contracts
+
+An account is required to deloy contracts to the Flow network.
+
+```js
+const PRIVATE_KEY = "PRIVATE_KEY"
+const account = web3.eth.accounts.privateKeyToAccount(PRIVATE_KEY)
+```
+
+:::info
+
+:::
+
+For more information about 
+
+### Interacting With Smart Contracts
+
+`web3.js` allows developers to interact with smart contracts via the `web3.eth.Contract` API.
+
+A `Contract` object must be instantiated as follows:
+
+```js
+const abi = [
+    ... // ABI of deployed contract
+]
+
+const contractAddress
+const contract = 
+```
+
+Methods on the smart contract can now be called in the following ways.
+
+#### Querying state
+
+We can query data from the contract by using the `call` function on one of the contract's methods.  This **will not** mutate the state and **will not** send a transaction.
+
+```js
+const result = contract.methods.someGetterFunction().call()
+
+console.log(result)
+```
+
+#### Mutating state
+
+If you wish to mutate the contract's state, you may do so with the `send` function on one of the contract's methods.  This **will** possibly mutate the state and **will** send a transaction.
+
+```js
+const argument = 1 
+const result = await contract.methods.someSetterFunction(argument).call()
+
+console.log(result)
+```
+
+For more information about using smart contracts in web3.js, see the [official documentation](https://docs.web3js.org/libdocs/Contract).
