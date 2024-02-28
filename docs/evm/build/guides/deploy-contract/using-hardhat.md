@@ -7,16 +7,16 @@ sidebar_position: 1
 
 # Using Hardhat
 
-Hardhat is a comprehensive Ethereum development tool that simplifies the process of deploying, testing, and debugging smart contracts. It's designed to offer developers a seamless experience when working with Solidity contracts.
+Hardhat is an Ethereum development tool designed to facilitate the deployment, testing, and debugging of smart contracts. It provides a streamlined experience for developers working with Solidity contracts.
 
 
 ## Prerequisites
 
 ### Software
 
-Node v18+, can be downloaded [Here](https://nodejs.org/en/download)
+Node v18 or higher, available for [download here](https://nodejs.org/en/download).
 
-Getting Started with Hardhat. [More Information](https://hardhat.org/tutorial/creating-a-new-hardhat-project). These directions demonstrate using npm commands to create a project and add its dependencies.
+For those new to Hardhat, we recommend exploring the [official documentation](https://hardhat.org/tutorial/creating-a-new-hardhat-project) to get acquainted. The following instructions utilize `npm` to initialize a project and install dependencies:
 
 ```shell
 mkdir hardhat-example
@@ -29,20 +29,18 @@ npm install --save-dev hardhat
 npx hardhat init
 ```
 
-
 ### Fund Your Wallet
 
-Navigate to the Flow [Previewnet Faucet](https://previewnet-faucet.onflow.org/fund-account). Paste in your wallet address to get receive $FLOW. This will allow your wallet address to deploy smart contracts. 
+To deploy smart contracts, ensure your wallet has $FLOW. Obtain funds by navigating to the Flow [Previewnet Faucet](https://previewnet-faucet.onflow.org/fund-account) and entering your wallet address.
 
+## Deploying a Smart Contract with Hardhat
 
-
-## Deploying a Smart Contract using Hardhat
-
-This section is dedicated to guiding you through deploying smart contracts on the Flow EVM network using Hardhat. 
+This section guides you through the process of deploying smart contracts on the Flow network using Hardhat.
 
 ### Configuration
 
-Make sure to add Previewnet network to `hardhat.config.ts`
+First, incorporate the Previewnet network into your `hardhat.config.ts`:
+
 ```javascript
 
 require('dotenv').config()
@@ -64,11 +62,13 @@ const config: HardhatUserConfig = {
 
 export default config;
 ```
+
 To keep this example straightforward, we've included the account's private key directly in `hardhat.config.ts`. However, it is crucial to avoid committing private keys to your Git repository for security reasons. Instead, opt for using environment variables for safer handling of sensitive information.
 
 ### Deploying HelloWorld Smart Contract
 
 ### HelloWorld Smart Contract
+
 ```Solidity
 // SPDX-License-Identifier: MIT
 pragma solidity ^0.8.0;
@@ -95,13 +95,11 @@ contract HelloWorld {
         return greeting;
     }
 }
-
-
 ```
 
 Deploying:
-1. Create a file named HelloWorld.sol under contracts directory.
-2. Add above HelloWorld.sol contract code to new file.
+1. Create a file named `HelloWorld.so`l` under `contracts` directory.
+2. Add above `HelloWorld.sol` contract code to new file.
 3. Create a `deploy.ts` file in `scripts` directory.
 4. Paste in the following TypeScript code.
 
@@ -161,9 +159,9 @@ main().catch((error) => {
 });
 ```
 Steps:
-1. Create new file getGreeting.ts in `scripts` directory.
+1. Create a `getGreeting.ts` file in the `scripts` directory.
 2. Paste contents of script above. Make sure to update the contract address with the one from deployment in earlier step.
-3. Call script to get HelloWorld greeting, `npx hardhat run scripts/getGreeting.ts --network previewNet`
+3. Call script to get the greeting, `npx hardhat run scripts/getGreeting.ts --network previewNet`
 4. The output should be as follows:
 ```shell
 ❯ npx hardhat run scripts/getGreeting.ts --network previewNet
@@ -211,11 +209,11 @@ main().catch((error) => {
 
 ```
 
-Next we'll add a script to update the greeting and log it. Here are the steps to follow:
-1. Create new script `updateGreeting.ts` file in the `scripts` directory
+Next, we'll add a script to update the greeting and log it. Here are the steps to follow:
+1. Create an `updateGreeting.ts` script in the `scripts` directory.
 2. Paste in the TypeScript above, Make sure to update the contract address with the one from deployment in earlier step. 
 3. Call the new script, `NEW_GREETING='Howdy!' npx hardhat run ./scripts/updateGreeting.ts --network previewNet`
-4. Output should be
+4. The output should be
 ```shell
 ❯ NEW_GREETING='Howdy!' npx hardhat run ./scripts/updateGreeting.ts --network previewNet
 The greeting is: Hello, World!
@@ -224,16 +222,13 @@ Greeting updated successfully!
 The greeting is: Howdy!
 ```
 
-### Flow EVM Block explorer 
-
-#### Coming Soon 
-
+### Flow EVM Block explorer
 
 :::info 
 
 ### Coming Soon
 
-- **Comprehensive Guides:** Step-by-step tutorials on deploying various types of smart contracts, including NFTs (ERC-721), using Hardhat on the FlowEVM network.
+- **Comprehensive Guides:** Step-by-step tutorials on deploying various types of smart contracts, including NFTs (ERC-721), using Hardhat on the Flow network.
 - **Requirements:** Detailed prerequisites for using Hardhat with FlowEVM, including Node.js setup, wallet preparation, and obtaining testnet FLOW for gas fees.
 - **Verification and Interaction:** Steps to verify your smart contracts on FlowEVM and interact with them using tools like Flowdiver.
 
