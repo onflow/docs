@@ -51,7 +51,7 @@ import { HardhatUserConfig } from "hardhat/config";
 const config: HardhatUserConfig = {
  solidity: "0.8.19",
  networks: {
-    previewNet: {
+    previewnet: {
             url: "https://previewnet.evm.nodes.onflow.org",
             accounts: [`<PRIVATE_KEY>`],
             gas: 500000, // Example gas limit
@@ -122,13 +122,13 @@ main()
 
 ```
 
-5. Run `npx hardhat run scripts/deploy.ts --network previewNet` in the project root.
+5. Run `npx hardhat run scripts/deploy.ts --network previewnet` in the project root.
 6. Get the deployed contract `address`. This address will be used in other scripts. 
 
 Output should look like this:
 
 ```shell
-❯ npx hardhat run scripts/deploy.ts --network previewNet
+❯ npx hardhat run scripts/deploy.ts --network previewnet
 Deploying HelloWorld...
 HelloWorld address: 0x3Fe94f43Fb5CdB8268A801f274521a07F7b99dfb
 ```
@@ -161,10 +161,10 @@ main().catch((error) => {
 Steps:
 1. Create a `getGreeting.ts` file in the `scripts` directory.
 2. Paste contents of script above. Make sure to update the contract address with the one from deployment in earlier step.
-3. Call script to get the greeting, `npx hardhat run scripts/getGreeting.ts --network previewNet`
+3. Call script to get the greeting, `npx hardhat run scripts/getGreeting.ts --network previewnet`
 4. The output should be as follows:
 ```shell
-❯ npx hardhat run scripts/getGreeting.ts --network previewNet
+❯ npx hardhat run scripts/getGreeting.ts --network previewnet
 The greeting is: Hello, World!
 ```
 
@@ -212,10 +212,10 @@ main().catch((error) => {
 Next, we'll add a script to update the greeting and log it. Here are the steps to follow:
 1. Create an `updateGreeting.ts` script in the `scripts` directory.
 2. Paste in the TypeScript above, Make sure to update the contract address with the one from deployment in earlier step. 
-3. Call the new script, `NEW_GREETING='Howdy!' npx hardhat run ./scripts/updateGreeting.ts --network previewNet`
+3. Call the new script, `NEW_GREETING='Howdy!' npx hardhat run ./scripts/updateGreeting.ts --network previewnet`
 4. The output should be
 ```shell
-❯ NEW_GREETING='Howdy!' npx hardhat run ./scripts/updateGreeting.ts --network previewNet
+❯ NEW_GREETING='Howdy!' npx hardhat run ./scripts/updateGreeting.ts --network previewnet
 The greeting is: Hello, World!
 Transaction hash: 0x03136298875d405e0814f54308390e73246e4e8b4502022c657f04f3985e0906
 Greeting updated successfully!
