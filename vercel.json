@@ -365,12 +365,7 @@
     },
     {
       "source": "/tutorials/user-accounts-and-wallets",
-      "destination": "/build/smart-contracts/overview",
-      "permanent": true
-    },
-    {
-      "source": "/tutorials/user-accounts-and-wallets",
-      "destination": "/build/smart-contracts/overview",
+      "destination": "/build/guides/flow-app-quickstart",
       "permanent": true
     },
     {
@@ -1114,6 +1109,26 @@
     {
       "source": "/tutorials/intro",
       "destination": "/build/guides/flow-app-quickstart",
+      "permanent": true
+    },
+    {
+      "source": "/mainnet-account-setup",
+      "destination": "/networks/flow-networks/accessing-mainnet",
+      "permanent": true
+    },
+    {
+      "source": "/tutorials/DappArchitectures",
+      "destination": "/build/getting-started/app-architecture",
+      "permanent": true
+    },
+    {
+      "source": "/tutorials/NFT-drop-styles",
+      "destination": "/build/guides/nft",
+      "permanent": true
+    },
+    {
+      "source": "/tutorials/dapp-infrastructure",
+      "destination": "/build/getting-started/app-architecture",
       "permanent": true
     }
   ]
