@@ -31,7 +31,7 @@ npx hardhat init
 
 ### Fund Your Wallet
 
-To deploy smart contracts, ensure your wallet has $FLOW. Obtain funds by navigating to the Flow [Previewnet Faucet](https://previewnet-faucet.onflow.org/fund-account) and entering your wallet address.
+To deploy smart contracts, ensure your wallet has **$FLOW**. Obtain funds by navigating to the Flow [Previewnet Faucet](https://previewnet-faucet.onflow.org/fund-account) and entering your wallet address.
 
 ## Deploying a Smart Contract with Hardhat
 
