@@ -19,7 +19,7 @@ Navigate to [Using EVM](../../../using.mdx) page to find the convenient button t
 ## Fund your Flow EVM account
 
 
-Navigate to the Flow EVM Faucet, [Crescendo Previewnet Faucet](https://previewnet-faucet.onflow.org/fund-account) to get Flow in order to deploy a smart contract
+Navigate to the Flow [Previewnet Faucet](https://previewnet-faucet.onflow.org/fund-account) to get Flow in order to deploy a smart contract
 
 
 ## Deploying a Smart Contract using Remix
