@@ -15,8 +15,6 @@ The initial v1.0.0 release of the Flow SDK for Unity does not provide a producti
 
 A wallet is a piece of software or hardware that stores the private key associated with a Flow account. The term *custodian* is used to refer to the party that stores the private key. Hardware Wallets (eg Ledger), typically USB devices, allow users to be their own custodian, whereas hosted software wallets (eg Dapper Wallet) act as the custodian on behalf of the user. 
 
-For more information about Wallets and Flow accounts, see [user-accounts-and-wallets](../../../../tutorials/user-accounts-and-wallets.md). 
-
 ## What is a Wallet Provider? 
 
 In terms of the Flow SDK for Unity, a Wallet Provider is a class which implements the `IWallet` interface and allows users to interact with specific hardware or software wallets. This includes authenticating with a wallet, retrieving the user's Flow account address from the wallet, and requesting the wallet to sign transactions on behalf of the user. 
