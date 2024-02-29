@@ -13,7 +13,9 @@ It allows developers to interact with smart contracts, send transactions, and re
 
 ## Installation
 
+:::info
 This guide assumes you have the latest version of [Node.js](https://nodejs.org/en) installed.
+:::
 
 To install `web3`, run the following command:
 
@@ -32,7 +34,7 @@ const web3 = new Web3('https://previewnet.evm.nodes.onflow.org')
 
 :::info
 
-Currently, only Previewnet is available.  More networks are coming soon, [see here for more info](../../build/networks.md).
+Currently, only Previewnet is available.  More networks are coming soon - [see here for more info](../../build/networks.md).
 :::
 
 ### Interacting With Smart Contracts
@@ -58,9 +60,9 @@ contract Storage {
 }
 ```
 
-The ABI for this contract can be generated using the [`solc` compiler](https://docs.soliditylang.org/en/latest/installing-solidity.html), or by using a tool like [Hardhat](../../build/guides/deploy-contract/using-hardhat.md) or [Remix](../../build/guides/deploy-contract/using-remix.md).
+The ABI for this contract can be generated using the [`solc` compiler](https://docs.soliditylang.org/en/latest/installing-solidity.html), or another tool such as [Hardhat](../../build/guides/deploy-contract/using-hardhat.md) or [Remix](../../build/guides/deploy-contract/using-remix.md).
 
-Now that we have both the ABI and address of the contract, we can create a new `Contract` object.
+Now that we have both the ABI and address of the contract, we can create a new `Contract` object for use in our application.
 
 ```js
 // Replace with the ABI of the deployed contract
@@ -105,18 +107,21 @@ const contractAddress = "0x4c7784ae96e7cfcf0224a95059573e96f03a4e70"
 const contract = new web3.eth.Contract(abi, contractAddress)
 ```
 
-By using this `Contract` object, we can now interact with the on-chain contract.
+Using this newly created object, we can now interact with the contract on the network.
 
-#### Querying State
+#### Reading State
 
-We can query data from the contract by using the `call` function on one of the contract's methods.  This will not mutate the state and will not send a transaction.
+Querying data from the contract is done using the `call` function with one of the contract's methods.  This will not change the state and will not send a transaction.
 
 ```js
+// Retrieve the current value stored in the contract
+// (this is using the `retrieve` method from the contract with no arguments)
 const result = await contract.methods.retrieve().call()
+
 console.log(result) // "0" (if the contract has not been interacted with yet)
 ```
 
-#### Mutating State
+#### Changing State
 
 We can mutate the state of the contract by sending a transaction to the network.
 
