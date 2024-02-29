@@ -41,7 +41,9 @@ Currently, only Flow Previewnet is available.  More networks are coming soon - [
 
 The `web3` library allows developers to interact with smart contracts via the `web3.eth.Contract` API.
 
-For this example we will use the following "Storage" contract, deployed on the Flow Previewnet to the address `0x4c7784ae96e7cfcf0224a95059573e96f03a4e70`.  However, if you wish to deploy your own contract, see the how to do so using [Hardhat](../../build/guides/deploy-contract/using-hardhat.md) or [Remix](../../build/guides/deploy-contract/using-remix.md).
+For this example we will use the following "Storage" contract, deployed on the Flow Previewnet to the address `0x4c7784ae96e7cfcf0224a95059573e96f03a4e70`.  Note that anybody can interact with this contract, as it is deployed on a public network, so state may not always be as expected.
+
+We recommend deploying your own contract, which can be done using [Hardhat](../../build/guides/deploy-contract/using-hardhat.md) or [Remix](../../build/guides/deploy-contract/using-remix.md).
 
 ```solidity
 // SPDX-License-Identifier: MIT
@@ -118,7 +120,7 @@ Querying data from the contract is done using the `call` function with one of th
 // (this is using the `retrieve` method from the contract with no arguments)
 const result = await contract.methods.retrieve().call()
 
-console.log(result) // "0" (if the contract has not been interacted with yet)
+console.log(result) // current value stored in the contract
 ```
 
 ### Changing State
@@ -161,14 +163,16 @@ let signed = await account.signTransaction({
 // Send signed transaction to the network
 const result = await web3.eth.sendSignedTransaction(signed.rawTransaction)
 
-console.log(result) // { status: 1, transactionHash: '0x1234', ... }
+// { status: 1, transactionHash: '0x1234', ... }
+// status=1 means the transaction was successful!
+console.log(result) 
 ```
 
 Now that the transaction has been sent, the contract's state has been updated.  We an verify this by querying the contract's state again.
 
 ```js
 const result = await contract.methods.retrieve().call()
-console.log(result) // "1337"
+console.log(result) // new value stored in the contract
 ```
 
 For more information about using smart contracts in web3.js, see the [official documentation](https://docs.web3js.org/libdocs/Contract).
