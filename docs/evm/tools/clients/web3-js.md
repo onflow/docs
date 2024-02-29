@@ -39,48 +39,112 @@ Currently, only Previewnet is available.  More networks are coming soon, [see he
 
 `web3.js` allows developers to interact with smart contracts via the `web3.eth.Contract` API.
 
-A `Contract` object must be instantiated as follows:
+For this example we will use the following contract, deployed on the Flow Previewnet to the address `0x1234`.  However, if you wish to deploy your own contract, see the how to do so using [Hardhat](../../build/guides/deploy-contract/using-hardhat.md) or [Remix](../../build/guides/deploy-contract/using-remix.md).
+
+```solidity
+// SPDX-License-Identifier: MIT
+pragma solidity ^0.8.0;
+
+contract Storage {
+    uint256 public storedData;
+
+    function store(uint256 x) public {
+        storedData = x;
+    }
+
+    function retrieve() public view returns (uint256) {
+        return storedData;
+    }
+}
+```
+
+The ABI for this contract can be generated using the `solc` compiler, or by using a tool like [Hardhat](../../build/guides/deploy-contract/using-hardhat.md) or [Remix](../../build/guides/deploy-contract/using-remix.md).
+
+```js
+const abi = [
+    {
+        "inputs": [],
+        "stateMutability": "nonpayable",
+        "type": "constructor"
+    },
+    {
+        "inputs": [
+            {
+                "internalType": "uint256",
+                "name": "x",
+                "type": "uint256"
+            }
+        ],
+        "name": "store",
+        "outputs": [],
+        "stateMutability": "nonpayable",
+        "type": "function"
+    },
+    {
+        "inputs": [],
+        "name": "retrieve",
+        "outputs": [
+            {
+                "internalType": "uint256",
+                "name": "",
+                "type": "uint256"
+            }
+        ],
+        "stateMutability": "view",
+        "type": "function"
+    }
+]
+```
+
+A `Contract` object may be instantiated using the ABI and the address of the deployed contract.
 
 ```js
 const abi = [
     ... // ABI of deployed contract
 ]
 
-const contractAddress
-const contract = 
+const contractAddress = "0x1234" // replace with the address of the deployed contract
+const contract = new web3.eth.Contract(abi, contractAddress)
 ```
 
-:::info
-To deploy your own contract on EVM, see the documentation using [Hardhat](../../build/guides/deploy-contract/using-hardhat.md) or [Remix](../../build/guides/deploy-contract/using-remix).
-:::
+Now that we have a `Contract` object, we can interact with the contract by calling its methods.
 
-Methods on the smart contract can now be called in the following ways.
+#### Querying State
 
-#### Querying state
-
-We can query data from the contract by using the `call` function on one of the contract's methods.  This **will not** mutate the state and **will not** send a transaction.
+We can query data from the contract by using the `call` function on one of the contract's methods.  This will not mutate the state and will not send a transaction.
 
 ```js
-const result = contract.methods.someGetterFunction().call()
+const result = contract.methods.retrieve().call()
 
-console.log(result)
+console.log(result) // "0" (if the contract has not been interacted with yet)
 ```
 
-#### Mutating state
+#### Mutating State
 
-If you wish to mutate the contract's state, you may do so with the `send` function on one of the contract's methods.  This **will** possibly mutate the state and **will** send a transaction.
+We can mutate the state of the contract by sending a transaction to the contract.
+
+First, we need to sign the transaction using a user's account.  To do this, we can use the `privateKeyToAccount` function to create an account object from a private key.  You can generate a private key using a tool like [Metamask](https://metamask.io/) or [Hardhat](../../build/guides/deploy-contract/using-hardhat.md).
 
 ```js
-const argument = 1 
+const userAccount = web3.eth.accounts.privateKeyToAccount('0x1234') // replace with the private key of the user's account
+```
+
+Then, we can sign a transaction using the user's account and send it to the network.
+
+```js
+const newValue = 1337 // replace with the new value to store
 const sender = "0x1234" // replace with the address this transaction will be sent from
 
-const result = await contract.methods.someSetterFunction(argument).call({
-    from: sender
+let signed = await userAccount.signTransaction({
+    from: userAccount.address,
+    to: address,
+    data: contract.methods.store(newValue).encodeABI(),
 })
 
-console.log(result)
-```
+// send signed transaction that stores a new value
+result = await web3.eth.sendSignedTransaction(signed.rawTransaction)
 
-The transaction will be signed automatically by `web3js`, as long as the sender's address is registered as an account in the provider.
+console.log(result) // { status: true, transactionHash: '0x1234' }
+```
 
 For more information about using smart contracts in web3.js, see the [official documentation](https://docs.web3js.org/libdocs/Contract).
