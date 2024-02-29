@@ -37,7 +37,7 @@ Currently, only Previewnet is available.  More networks are coming soon, [see he
 
 ### Interacting With Smart Contracts
 
-`web3.js` allows developers to interact with smart contracts via the `web3.eth.Contract` API.
+The `web3` library allows developers to interact with smart contracts via the `web3.eth.Contract` API.
 
 For this example we will use the following contract, deployed on the Flow Previewnet to the address `0x1234`.  However, if you wish to deploy your own contract, see the how to do so using [Hardhat](../../build/guides/deploy-contract/using-hardhat.md) or [Remix](../../build/guides/deploy-contract/using-remix.md).
 
@@ -58,7 +58,7 @@ contract Storage {
 }
 ```
 
-The ABI for this contract can be generated using the `solc` compiler, or by using a tool like [Hardhat](../../build/guides/deploy-contract/using-hardhat.md) or [Remix](../../build/guides/deploy-contract/using-remix.md).
+The ABI for this contract can be generated using the [`solc` compiler](https://docs.soliditylang.org/en/latest/installing-solidity.html), or by using a tool like [Hardhat](../../build/guides/deploy-contract/using-hardhat.md) or [Remix](../../build/guides/deploy-contract/using-remix.md).
 
 ```js
 const abi = [
@@ -96,7 +96,7 @@ const abi = [
 ]
 ```
 
-A `Contract` object may be instantiated using the ABI and the address of the deployed contract.
+A `Contract` object may be instantiated using the ABI and address of a deployed contract.
 
 ```js
 const abi = [
@@ -107,37 +107,39 @@ const contractAddress = "0x1234" // replace with the address of the deployed con
 const contract = new web3.eth.Contract(abi, contractAddress)
 ```
 
-Now that we have a `Contract` object, we can interact with the contract by calling its methods.
+By using this `Contract` object, we can now interact with the on-chain contract.
 
 #### Querying State
 
 We can query data from the contract by using the `call` function on one of the contract's methods.  This will not mutate the state and will not send a transaction.
 
 ```js
-const result = contract.methods.retrieve().call()
-
+const result = await contract.methods.retrieve().call()
 console.log(result) // "0" (if the contract has not been interacted with yet)
 ```
 
 #### Mutating State
 
-We can mutate the state of the contract by sending a transaction to the contract.
+We can mutate the state of the contract by sending a transaction to the network.
 
-First, we need to sign the transaction using a user's account.  To do this, we can use the `privateKeyToAccount` function to create an account object from a private key.  You can generate a private key using a tool like [Metamask](https://metamask.io/) or [Hardhat](../../build/guides/deploy-contract/using-hardhat.md).
+In order to send a transaction to the network, you will need an account with sufficient funds to pay for the transaction.
+
+For Flow Previewnet, you can fund your account using the [Flow Faucet](https://previewnet-faucet.onflow.org/).  You will need to use the private key of the account to sign the transaction.
+
+First, we will need to be able to sign a transaction using an account.  To do this, we can use the `privateKeyToAccount` function to create an `Web3Account` object from a private key.
 
 ```js
-const userAccount = web3.eth.accounts.privateKeyToAccount('0x1234') // replace with the private key of the user's account
+const account = web3.eth.accounts.privateKeyToAccount('0x1234') // replace with the private key of the user's account
 ```
 
 Then, we can sign a transaction using the user's account and send it to the network.
 
 ```js
 const newValue = 1337 // replace with the new value to store
-const sender = "0x1234" // replace with the address this transaction will be sent from
 
-let signed = await userAccount.signTransaction({
-    from: userAccount.address,
-    to: address,
+let signed = await account.signTransaction({
+    from: account.address,
+    to: contractAddress,
     data: contract.methods.store(newValue).encodeABI(),
 })
 
