@@ -16,7 +16,7 @@ Source: [FlowFees.cdc](https://github.com/onflow/flow-core-contracts/blob/master
 
 The `FlowStorageFees` contract defines the parameters and utility methods for storage fees.
 
-Source: [FlowFees.cdc](https://github.com/onflow/flow-core-contracts/blob/master/contracts/FlowStorageFees.cdc)
+Source: [FlowStorageFees.cdc](https://github.com/onflow/flow-core-contracts/blob/master/contracts/FlowStorageFees.cdc)
 
 | Network         | Contract Address     |
 | --------------- | -------------------- |
