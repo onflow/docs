@@ -20,7 +20,7 @@ For those new to Hardhat, we recommend exploring the [official documentation](ht
 
 ### Wallet
 
-You'll also need a wallet that supports EVM. For this guide, a MetaMask account and a private key will work.
+You'll also need a wallet that supports EVM. For this guide, a MetaMask account and its corresponding private key will work.
 
 ```shell
 mkdir hardhat-example
