@@ -37,6 +37,42 @@ const web3 = new Web3('https://previewnet.evm.nodes.onflow.org')
 Currently, only Flow Previewnet is available.  More networks are coming soon - [see here for more info](../../build/networks.md).
 :::
 
+## Querying the blockchain
+
+`web3` provides a number of methods for querying the blockchain, such as getting the latest block number, querying account balances, and more.
+
+You can try using some of these methods to verify that your `web3` instance is working correctly.
+
+### Getting the latest block number
+
+```js
+const blockNumber = await web3.eth.getBlockNumber()
+console.log(blockNumber) // latest block number
+```
+
+### Getting account balance
+
+```js
+const balance = await web3.eth.getBalance('0x1234')
+console.log(balance) // balance in attoFlow
+```
+
+### Getting chain ID
+
+```js
+const chainId = await web3.eth.getChainId()
+console.log(chainId) // 0x286 (Flow Previewnet)
+```
+
+### Getting gas price
+
+```js
+const gasPrice = await web3.eth.getGasPrice()
+console.log(gasPrice) // gas price in attoFlow
+```
+
+For more information about what you can do with `web3`, please see the [official documentation](https://docs.web3js.org/).
+
 ## Interacting With Smart Contracts
 
 The `web3` library allows developers to interact with smart contracts via the `web3.eth.Contract` API.
