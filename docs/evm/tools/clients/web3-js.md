@@ -27,7 +27,7 @@ To use `web3` in your project, start by imporing the module and initializing you
 
 ```js
 const { Web3 } = require('web3')
-const web3 = new Web3('https://mainnet.nodes.fff')
+const web3 = new Web3('https://previewnet.evm.nodes.onflow.org')
 ```
 
 :::info
