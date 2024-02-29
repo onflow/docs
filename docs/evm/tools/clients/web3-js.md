@@ -141,6 +141,8 @@ Then, we can sign a transaction using the user's account and send it to the netw
 ```js
 const newValue = 1337 // Replace with any value you want to store
 
+// Sign a transaction that stores a new value in the contract
+// (this is using the `store` method from the contract with the new value as an argument)
 let signed = await account.signTransaction({
     from: account.address,
     to: contractAddress,
@@ -148,8 +150,8 @@ let signed = await account.signTransaction({
     gasPrice: 0,
 })
 
-// Send signed transaction that stores a new value
-result = await web3.eth.sendSignedTransaction(signed.rawTransaction)
+// Send signed transaction to the network
+const result = await web3.eth.sendSignedTransaction(signed.rawTransaction)
 
 console.log(result) // { status: 1, transactionHash: '0x1234', ... }
 ```
@@ -158,6 +160,7 @@ Now that the transaction has been sent, the contract's state has been updated.  
 
 ```js
 const result = await contract.methods.retrieve().call()
+
 console.log(result) // "1337"
 ```
 
