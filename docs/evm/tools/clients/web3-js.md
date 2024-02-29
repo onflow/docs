@@ -39,7 +39,7 @@ Currently, only Previewnet is available.  More networks are coming soon, [see he
 
 The `web3` library allows developers to interact with smart contracts via the `web3.eth.Contract` API.
 
-For this example we will use the following contract, deployed on the Flow Previewnet to the address `0x1234`.  However, if you wish to deploy your own contract, see the how to do so using [Hardhat](../../build/guides/deploy-contract/using-hardhat.md) or [Remix](../../build/guides/deploy-contract/using-remix.md).
+For this example we will use the following "Storage" contract, deployed on the Flow Previewnet to the address `0x4c7784ae96e7cfcf0224a95059573e96f03a4e70`.  However, if you wish to deploy your own contract, see the how to do so using [Hardhat](../../build/guides/deploy-contract/using-hardhat.md) or [Remix](../../build/guides/deploy-contract/using-remix.md).
 
 ```solidity
 // SPDX-License-Identifier: MIT
@@ -60,7 +60,10 @@ contract Storage {
 
 The ABI for this contract can be generated using the [`solc` compiler](https://docs.soliditylang.org/en/latest/installing-solidity.html), or by using a tool like [Hardhat](../../build/guides/deploy-contract/using-hardhat.md) or [Remix](../../build/guides/deploy-contract/using-remix.md).
 
+Now that we have both the ABI and address of the contract, we can create a new `Contract` object.
+
 ```js
+// Replace with the ABI of the deployed contract
 const abi = [
     {
         "inputs": [],
@@ -94,16 +97,11 @@ const abi = [
         "type": "function"
     }
 ]
-```
 
-A `Contract` object may be instantiated using the ABI and address of a deployed contract.
+// Replace with the address of the deployed contract
+const contractAddress = "0x4c7784ae96e7cfcf0224a95059573e96f03a4e70"
 
-```js
-const abi = [
-    ... // ABI of deployed contract
-]
-
-const contractAddress = "0x1234" // replace with the address of the deployed contract
+// Create a new contract object with the ABI and address
 const contract = new web3.eth.Contract(abi, contractAddress)
 ```
 
@@ -129,24 +127,33 @@ For Flow Previewnet, you can fund your account using the [Flow Faucet](https://p
 First, we will need to be able to sign a transaction using an account.  To do this, we can use the `privateKeyToAccount` function to create an `Web3Account` object from a private key.
 
 ```js
-const account = web3.eth.accounts.privateKeyToAccount('0x1234') // replace with the private key of the user's account
+// You must replace this with the private key of the account you wish to use
+const account = web3.eth.accounts.privateKeyToAccount('0x1234')
 ```
 
 Then, we can sign a transaction using the user's account and send it to the network.
 
 ```js
-const newValue = 1337 // replace with the new value to store
+const newValue = 1337 // Replace with any value you want to store
 
 let signed = await account.signTransaction({
     from: account.address,
     to: contractAddress,
     data: contract.methods.store(newValue).encodeABI(),
+    gasPrice: 0,
 })
 
-// send signed transaction that stores a new value
+// Send signed transaction that stores a new value
 result = await web3.eth.sendSignedTransaction(signed.rawTransaction)
 
-console.log(result) // { status: true, transactionHash: '0x1234' }
+console.log(result) // { status: 1, transactionHash: '0x1234', ... }
+```
+
+Now that the transaction has been sent, the contract's state has been updated.  We an verify this by querying the contract's state again.
+
+```js
+const result = await contract.methods.retrieve().call()
+console.log(result) // "1337"
 ```
 
 For more information about using smart contracts in web3.js, see the [official documentation](https://docs.web3js.org/libdocs/Contract).
