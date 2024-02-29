@@ -34,7 +34,7 @@ const web3 = new Web3('https://previewnet.evm.nodes.onflow.org')
 
 :::info
 
-Currently, only Previewnet is available.  More networks are coming soon - [see here for more info](../../build/networks.md).
+Currently, only Flow Previewnet is available.  More networks are coming soon - [see here for more info](../../build/networks.md).
 :::
 
 ### Interacting With Smart Contracts
