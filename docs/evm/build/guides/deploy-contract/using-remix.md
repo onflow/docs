@@ -98,7 +98,6 @@ async function getGreeting() {
 
 // Execute the function
 getGreeting();
-
 ```
 
 1. Create a new file under `scripts`.
