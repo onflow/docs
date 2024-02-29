@@ -23,7 +23,7 @@ To install `web3`, run the following command:
 npm install web3
 ```
 
-## Connecting to Flow
+## Initialization
 
 To use `web3` in your project, start by importing the module and initializing your Web3 provider the desired Flow RPC endpoint.
 
@@ -37,7 +37,7 @@ const web3 = new Web3('https://previewnet.evm.nodes.onflow.org')
 Currently, only Flow Previewnet is available.  More networks are coming soon - [see here for more info](../../build/networks.md).
 :::
 
-### Interacting With Smart Contracts
+## Interacting With Smart Contracts
 
 The `web3` library allows developers to interact with smart contracts via the `web3.eth.Contract` API.
 
@@ -109,7 +109,7 @@ const contract = new web3.eth.Contract(abi, contractAddress)
 
 Using this newly created object, we can now interact with the contract on the network.
 
-#### Reading State
+### Reading State
 
 Querying data from the contract is done using the `call` function with one of the contract's methods.  This will not change the state and will not send a transaction.
 
@@ -121,7 +121,7 @@ const result = await contract.methods.retrieve().call()
 console.log(result) // "0" (if the contract has not been interacted with yet)
 ```
 
-#### Changing State
+### Changing State
 
 We can mutate the state of the contract by sending a transaction to the network.
 
