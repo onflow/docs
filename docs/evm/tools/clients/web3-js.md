@@ -114,13 +114,11 @@ Using this newly created object, we can now interact with the contract on the ne
 Querying data from the contract is done using the `call` function with one of the contract's methods.  This will not change the state and will not send a transaction.
 
 ```js
-(async () => {
-    // Retrieve the current value stored in the contract
-    // (this is using the `retrieve` method from the contract with no arguments)
-    const result = await contract.methods.retrieve().call()
+// Retrieve the current value stored in the contract
+// (this is using the `retrieve` method from the contract with no arguments)
+const result = await contract.methods.retrieve().call()
 
-    console.log(result) // "0" (if the contract has not been interacted with yet)
-})()
+console.log(result) // "0" (if the contract has not been interacted with yet)
 ```
 
 #### Changing State
@@ -141,32 +139,28 @@ const account = web3.eth.accounts.privateKeyToAccount('0x1234')
 Then, we can sign a transaction using the user's account and send it to the network.
 
 ```js
-(async () => {
-    const newValue = 1337 // Replace with any value you want to store
+const newValue = 1337 // Replace with any value you want to store
 
-    // Sign a transaction that stores a new value in the contract
-    // (this is using the `store` method from the contract with the new value as an argument)
-    let signed = await account.signTransaction({
-        from: account.address,
-        to: contractAddress,
-        data: contract.methods.store(newValue).encodeABI(),
-        gasPrice: 0,
-    })
+// Sign a transaction that stores a new value in the contract
+// (this is using the `store` method from the contract with the new value as an argument)
+let signed = await account.signTransaction({
+    from: account.address,
+    to: contractAddress,
+    data: contract.methods.store(newValue).encodeABI(),
+    gasPrice: 0,
+})
 
-    // Send signed transaction to the network
-    const result = await web3.eth.sendSignedTransaction(signed.rawTransaction)
+// Send signed transaction to the network
+const result = await web3.eth.sendSignedTransaction(signed.rawTransaction)
 
-    console.log(result) // { status: 1, transactionHash: '0x1234', ... }
-})()
+console.log(result) // { status: 1, transactionHash: '0x1234', ... }
 ```
 
 Now that the transaction has been sent, the contract's state has been updated.  We an verify this by querying the contract's state again.
 
 ```js
-(async () => {
-    const result = await contract.methods.retrieve().call()
-    console.log(result) // "1337"
-})()
+const result = await contract.methods.retrieve().call()
+console.log(result) // "1337"
 ```
 
 For more information about using smart contracts in web3.js, see the [official documentation](https://docs.web3js.org/libdocs/Contract).
