@@ -12,11 +12,15 @@ Hardhat is an Ethereum development tool designed to facilitate the deployment, t
 
 ## Prerequisites
 
-### Software
+### Node
 
 Node v18 or higher, available for [download here](https://nodejs.org/en/download).
 
 For those new to Hardhat, we recommend exploring the [official documentation](https://hardhat.org/tutorial/creating-a-new-hardhat-project) to get acquainted. The following instructions utilize `npm` to initialize a project and install dependencies:
+
+### Wallet
+
+You'll also need a wallet that supports EVM. For this guide, a MetaMask account and a private key will work.
 
 ```shell
 mkdir hardhat-example
@@ -28,6 +32,8 @@ npm install --save-dev hardhat
 
 npx hardhat init
 ```
+
+> When prompted, select TypeScript and to use `@nomicfoundation/hardhat-toolbox` to follow along with this guide.
 
 ### Fund Your Wallet
 
@@ -42,23 +48,19 @@ This section guides you through the process of deploying smart contracts on the 
 First, incorporate the Previewnet network into your `hardhat.config.ts`:
 
 ```javascript
-
-require('dotenv').config()
-import "@nomiclabs/hardhat-ethers";
-
 import { HardhatUserConfig } from "hardhat/config";
+import "@nomicfoundation/hardhat-toolbox";
 
 const config: HardhatUserConfig = {
- solidity: "0.8.19",
+ solidity: "0.8.24",
  networks: {
     previewnet: {
             url: "https://previewnet.evm.nodes.onflow.org",
-            accounts: [`<PRIVATE_KEY>`],
+            accounts: [`<PRIVATE_KEY>`], // In practice, this should come from an environment variable and not be commited
             gas: 500000, // Example gas limit
         }
     }
 };
-
 
 export default config;
 ```
@@ -98,7 +100,7 @@ contract HelloWorld {
 ```
 
 Deploying:
-1. Create a file named `HelloWorld.so`l` under `contracts` directory.
+1. Create a file named `HelloWorld.sol` under `contracts` directory.
 2. Add above `HelloWorld.sol` contract code to new file.
 3. Create a `deploy.ts` file in `scripts` directory.
 4. Paste in the following TypeScript code.
@@ -107,10 +109,13 @@ Deploying:
 import { ethers } from "hardhat";
 
 async function main() {
-    const HelloWorld = await ethers.getContractFactory("HelloWorld");
-    console.log("Deploying HelloWorld...")
-    const helloWorld = await HelloWorld.deploy();
-    console.log("HelloWorld address:", helloWorld.address);
+  const [deployer] = await ethers.getSigners();
+
+  console.log("Deploying contracts with the account:", deployer.address);
+
+  const deployment = await ethers.deployContract("HelloWorld");
+
+  console.log("HelloWorld address:", await deployment.getAddress());
 }
 
 main()
@@ -119,27 +124,26 @@ main()
         console.error(error);
         process.exit(1);
     });
-
 ```
 
 5. Run `npx hardhat run scripts/deploy.ts --network previewnet` in the project root.
-6. Get the deployed contract `address`. This address will be used in other scripts. 
+6. Copy the deployed `HelloWorld` address. This address will be used in other scripts. 
 
-Output should look like this:
+Output should look like this (with the exception that your address will be different):
 
 ```shell
 ❯ npx hardhat run scripts/deploy.ts --network previewnet
-Deploying HelloWorld...
+Deploying contracts with the account: ...
 HelloWorld address: 0x3Fe94f43Fb5CdB8268A801f274521a07F7b99dfb
 ```
 
-### Get HelloWorld contract Greeting
+### Get HelloWorld Contract Greeting
 
-Get the Greeting from the deployed HelloWorld smart contract.
+Now, we want to get the greeting from the deployed `HelloWorld` smart contract.
 
 ```TypeScript
 import { ethers } from "hardhat";
-import HelloWorldABI from "../contracts/HelloWorldABI.json"
+import HelloWorldABI from "../artifacts/contracts/HelloWorld.sol/HelloWorld.json";
 
 async function main() {
     // Replace with your contract's address
@@ -147,7 +151,7 @@ async function main() {
     // Get hardhat provider
     const provider = ethers.provider;
     // Create a new contract instance
-    const helloWorldContract = new ethers.Contract(contractAddress, HelloWorldABI, provider);
+    const helloWorldContract = new ethers.Contract(contractAddress, HelloWorldABI.abi, provider);
     // Call the greeting function
     const greeting = await helloWorldContract.hello();
     console.log("The greeting is:", greeting);
@@ -170,9 +174,11 @@ The greeting is: Hello, World!
 
 ### Update Greeting on HelloWorld Smart Contract
 
+Next, we'll add a script to update the greeting and log it.
+
 ```TypeScript
-import HelloWorldABI from "../contracts/HelloWorldABI.json"
 import { ethers } from "hardhat";
+import HelloWorldABI from "../artifacts/contracts/HelloWorld.sol/HelloWorld.json";
 
 async function main() {
     const contractAddress = "0x3Fe94f43Fb5CdB8268A801f274521a07F7b99dfb";
@@ -187,7 +193,7 @@ async function main() {
     const [signer] = await ethers.getSigners();
 
     // Contract instance with signer
-    const helloWorldContract = new ethers.Contract(contractAddress, HelloWorldABI, signer);
+    const helloWorldContract = new ethers.Contract(contractAddress, HelloWorldABI.abi, signer);
 
     console.log("The greeting is:", await helloWorldContract.hello());
 
@@ -205,11 +211,9 @@ main().catch((error) => {
     console.error(error);
     process.exit(1);
 });
-
-
 ```
 
-Next, we'll add a script to update the greeting and log it. Here are the steps to follow:
+Here are the steps to follow:
 1. Create an `updateGreeting.ts` script in the `scripts` directory.
 2. Paste in the TypeScript above, Make sure to update the contract address with the one from deployment in earlier step. 
 3. Call the new script, `NEW_GREETING='Howdy!' npx hardhat run ./scripts/updateGreeting.ts --network previewnet`
@@ -221,8 +225,6 @@ Transaction hash: 0x03136298875d405e0814f54308390e73246e4e8b4502022c657f04f3985e
 Greeting updated successfully!
 The greeting is: Howdy!
 ```
-
-### Flow EVM Block explorer
 
 :::info 
 
