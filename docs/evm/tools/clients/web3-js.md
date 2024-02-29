@@ -127,9 +127,17 @@ We can mutate the state of the contract by sending a transaction to the network.
 
 In order to send a transaction to the network, you will need an account with sufficient funds to pay for the transaction.
 
-For Flow Previewnet, you can fund your account using the [Flow Faucet](https://previewnet-faucet.onflow.org/).  You will need to use the private key of the account to sign the transaction.
+:::info
+If you do not have an account yet, you can create one using the following command from your project's root directory:
 
-First, we will need to be able to sign a transaction using an account.  To do this, we can use the `privateKeyToAccount` function to create an `Web3Account` object from a private key.
+```sh
+node -e "console.log(require('web3').eth.accounts.create())"
+```
+
+For Flow Previewnet, you can fund your account using the [Flow Faucet](https://previewnet-faucet.onflow.org/).
+:::
+
+First, we will need to be able to sign a transaction using an account.  To do this, we can use the `privateKeyToAccount` function to create an `Web3Account` object from the account's private key.
 
 ```js
 // You must replace this with the private key of the account you wish to use
