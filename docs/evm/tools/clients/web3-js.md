@@ -53,6 +53,7 @@ console.log(blockNumber) // latest block number
 ### Getting account balance
 
 ```js
+// Replace with the address of the account you want to query
 const balance = await web3.eth.getBalance('0x1234')
 console.log(balance) // balance in attoFlow
 ```
@@ -193,7 +194,8 @@ let signed = await account.signTransaction({
     from: account.address,
     to: contractAddress,
     data: contract.methods.store(newValue).encodeABI(),
-    gasPrice: 0,
+    gas: 10000000n,
+    gasPrice: await web3.eth.getGasPrice(),
 })
 
 // Send signed transaction to the network
