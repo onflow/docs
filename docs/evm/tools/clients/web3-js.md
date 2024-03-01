@@ -67,7 +67,7 @@ For more information about other queries you can make `web3`, please see the [of
 
 The `web3` library allows developers to interact with smart contracts via the `web3.eth.Contract` API.
 
-For this example we will use the following "Storage" contract, deployed on the Flow Previewnet to the address `0x4c7784ae96e7cfcf0224a95059573e96f03a4e70`.  Note that anybody can interact with this contract, as it is deployed on a public network, so state may not always be as expected.
+For this example we will use the following `Storage` contract, deployed on the Flow Previewnet to the address `0x4c7784ae96e7cfcf0224a95059573e96f03a4e70`.  Note that anybody can interact with this contract, as it is deployed on a public network, so state may not always be as expected.
 
 We recommend deploying your own contract, which can be done using [Hardhat](../../build/guides/deploy-contract/using-hardhat.md) or [Remix](../../build/guides/deploy-contract/using-remix.md).
 
