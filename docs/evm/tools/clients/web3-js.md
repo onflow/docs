@@ -23,7 +23,7 @@ To install `web3`, run the following command:
 npm install web3
 ```
 
-## Initialization
+## Initializing Web3 With Flow
 
 To use `web3` in your project, start by importing the module and initializing your Web3 provider with the desired Flow RPC endpoint.
 
@@ -37,7 +37,7 @@ const web3 = new Web3('https://previewnet.evm.nodes.onflow.org')
 Currently, only Flow Previewnet is available.  More networks are coming soon - [see here for more info](../../build/networks.md).
 :::
 
-## Querying the blockchain
+## Querying The Blockchain
 
 `web3` provides a number of methods for querying the blockchain, such as getting the latest block number, querying account balances, and more.
 
