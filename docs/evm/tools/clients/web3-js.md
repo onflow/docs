@@ -25,7 +25,7 @@ npm install web3
 
 ## Initializing Web3 With Flow
 
-To use `web3` in your project, start by importing the module and initializing your Web3 provider with the desired Flow RPC endpoint.
+To use `web3` in your project, start by importing the module and initializing your `web3` instance with the desired Flow RPC endpoint.
 
 ```js
 const { Web3 } = require('web3')
