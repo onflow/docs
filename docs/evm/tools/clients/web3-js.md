@@ -10,14 +10,13 @@ sidebar_position: 2
 
 It allows developers to interact with smart contracts, send transactions, and retrieve data from the network.
 
-
 ## Installation
 
 :::info
 This guide assumes you have the latest version of [Node.js](https://nodejs.org/en) installed.
 :::
 
-To install `web3`, run the following command:
+To install `web3` in your project, run the following command:
 
 ```sh
 npm install web3
@@ -25,7 +24,7 @@ npm install web3
 
 ## Initializing Web3 With Flow
 
-To use `web3` in your project, start by importing the module and initializing your `web3` instance with the desired Flow RPC endpoint.
+To use `web3` in your project, start by importing the module and initializing your `web3` instance with the desired Flow RPC endpoint.  We are specifying [Flow Previewnet](https://developers.flow.com/networks/flow-networks/accessing-previewnet) in this example.
 
 ```js
 const { Web3 } = require('web3')
@@ -33,7 +32,6 @@ const web3 = new Web3('https://previewnet.evm.nodes.onflow.org')
 ```
 
 :::info
-
 Currently, only Flow Previewnet is available.  More networks are coming soon - [see here for more info](../../build/networks.md).
 :::
 
@@ -67,7 +65,7 @@ For more information about other queries you can make `web3`, please see the [of
 
 The `web3` library allows developers to interact with smart contracts via the `web3.eth.Contract` API.
 
-For this example we will use the following `Storage` contract, deployed on the Flow Previewnet to the address `0x4c7784ae96e7cfcf0224a95059573e96f03a4e70`.  Note that anybody can interact with this contract, as it is deployed on a public network, so state may not always be as expected.
+For this example we will use the following `Storage` contract, deployed on the Flow Previewnet to the address `0x4c7784ae96e7cfcf0224a95059573e96f03a4e70`.  Note that anyone can interact with this contract, as it is deployed on a public network, so state may not always be as expected.
 
 We recommend deploying your own contract, which can be done using [Hardhat](../../build/guides/deploy-contract/using-hardhat.md) or [Remix](../../build/guides/deploy-contract/using-remix.md).
 
@@ -162,6 +160,8 @@ If you do not have an account yet, you can create one using the following comman
 node -e "console.log(require('web3').eth.accounts.create())"
 ```
 
+Note that this is not a secure way to generate an account, and you should use a more secure method in a production environment.
+
 For Flow Previewnet, you can fund your account using the [Flow Faucet](https://previewnet-faucet.onflow.org/fund-account).
 :::
 
@@ -199,7 +199,7 @@ Now that the transaction has been sent, the contract's state should have updated
 
 ```js
 const result = await contract.methods.retrieve().call()
-console.log(result) // new value stored in the contract
+console.log(result) // New value stored in the contract
 ```
 
 For more information about using smart contracts in web3.js, see the [official documentation](https://docs.web3js.org/libdocs/Contract).
