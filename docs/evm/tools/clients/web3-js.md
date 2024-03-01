@@ -25,7 +25,7 @@ npm install web3
 
 ## Initialization
 
-To use `web3` in your project, start by importing the module and initializing your Web3 provider the desired Flow RPC endpoint.
+To use `web3` in your project, start by importing the module and initializing your Web3 provider with the desired Flow RPC endpoint.
 
 ```js
 const { Web3 } = require('web3')
@@ -43,36 +43,25 @@ Currently, only Flow Previewnet is available.  More networks are coming soon - [
 
 You can try using some of these methods to verify that your `web3` instance is working correctly.
 
-### Getting the latest block number
-
 ```js
+// Get the latest block number
 const blockNumber = await web3.eth.getBlockNumber()
 console.log(blockNumber) // Latest block number
-```
 
-### Getting account balance
-
-```js
-// Replace with the address of the account you want to query
-const balance = await web3.eth.getBalance('0x1234')
+// Get the balance of an account
+const balance = await web3.eth.getBalance('0x1234') // Replace with any address
 console.log(balance) // Balance in attoFlow
-```
 
-### Getting chain ID
-
-```js
+// Get the chain ID
 const chainId = await web3.eth.getChainId()
 console.log(chainId) // 0x286 (Flow Previewnet)
-```
 
-### Getting gas price
-
-```js
+// Get the gas price
 const gasPrice = await web3.eth.getGasPrice()
 console.log(gasPrice) // Gas price in attoFlow
 ```
 
-For more information about what you can do with `web3`, please see the [official documentation](https://docs.web3js.org/).
+For more information about other queries you can make `web3`, please see the [official documentation](https://docs.web3js.org/).
 
 ## Interacting With Smart Contracts
 
@@ -146,11 +135,11 @@ const contractAddress = "0x4c7784ae96e7cfcf0224a95059573e96f03a4e70"
 const contract = new web3.eth.Contract(abi, contractAddress)
 ```
 
-Using this newly created object, we can now interact with the contract on the network.
+We can now interact with the contract on the network by using the `contract` object.
 
 ### Reading State
 
-Querying data from the contract is done using the `call` function with one of the contract's methods.  This will not change the state and will not send a transaction.
+State can be read from the contract by using the `call` function with one of the contract's methods.  This will not change the state and will not send a transaction.
 
 ```js
 // Retrieve the current value stored in the contract
@@ -173,10 +162,10 @@ If you do not have an account yet, you can create one using the following comman
 node -e "console.log(require('web3').eth.accounts.create())"
 ```
 
-For Flow Previewnet, you can fund your account using the [Flow Faucet](https://previewnet-faucet.onflow.org/).
+For Flow Previewnet, you can fund your account using the [Flow Faucet](https://previewnet-faucet.onflow.org/fund-account).
 :::
 
-First, we will need to be able to sign a transaction using an account.  To do this, we can use the `privateKeyToAccount` function to create an `Web3Account` object from the account's private key.
+We can use the `privateKeyToAccount` function to create an `Web3Account` object from our account's private key.
 
 ```js
 // You must replace this with the private key of the account you wish to use
@@ -206,7 +195,7 @@ const result = await web3.eth.sendSignedTransaction(signed.rawTransaction)
 console.log(result) 
 ```
 
-Now that the transaction has been sent, the contract's state has been updated.  We an verify this by querying the contract's state again.
+Now that the transaction has been sent, the contract's state should have updated.  We an verify this by querying the contract's state again:
 
 ```js
 const result = await contract.methods.retrieve().call()
