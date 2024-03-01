@@ -47,7 +47,7 @@ You can try using some of these methods to verify that your `web3` instance is w
 
 ```js
 const blockNumber = await web3.eth.getBlockNumber()
-console.log(blockNumber) // latest block number
+console.log(blockNumber) // Latest block number
 ```
 
 ### Getting account balance
@@ -55,7 +55,7 @@ console.log(blockNumber) // latest block number
 ```js
 // Replace with the address of the account you want to query
 const balance = await web3.eth.getBalance('0x1234')
-console.log(balance) // balance in attoFlow
+console.log(balance) // Balance in attoFlow
 ```
 
 ### Getting chain ID
@@ -69,7 +69,7 @@ console.log(chainId) // 0x286 (Flow Previewnet)
 
 ```js
 const gasPrice = await web3.eth.getGasPrice()
-console.log(gasPrice) // gas price in attoFlow
+console.log(gasPrice) // Gas price in attoFlow
 ```
 
 For more information about what you can do with `web3`, please see the [official documentation](https://docs.web3js.org/).
@@ -157,7 +157,7 @@ Querying data from the contract is done using the `call` function with one of th
 // (this is using the `retrieve` method from the contract with no arguments)
 const result = await contract.methods.retrieve().call()
 
-console.log(result) // current value stored in the contract
+console.log(result) // Current value stored in the contract
 ```
 
 ### Changing State
@@ -194,15 +194,15 @@ let signed = await account.signTransaction({
     from: account.address,
     to: contractAddress,
     data: contract.methods.store(newValue).encodeABI(),
-    gas: 10000000n,
-    gasPrice: await web3.eth.getGasPrice(),
+    gas: 10000000n, // Replace with the gas limit you want to use
+    gasPrice: await web3.eth.getGasPrice(), // Replace with the gas price you want to use
 })
 
 // Send signed transaction to the network
 const result = await web3.eth.sendSignedTransaction(signed.rawTransaction)
 
 // { status: 1, transactionHash: '0x1234', ... }
-// status=1 means the transaction was successful!
+// status=1 means the transaction was successful
 console.log(result) 
 ```
 
