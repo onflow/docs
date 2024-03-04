@@ -4,11 +4,12 @@ sidebar_label: Block Explorers
 sidebar_position: 1
 ---
 
-:::info
+<div id="cards" className="cards">
 
-## Coming Soon
+Block explorers supporting FlowEVM:
 
-Details on block explorers are currently in the works and will be shared soon.
+## Flowdiver.io
 
-For real-time updates and discussions, please join the [Flow Discord](https://discord.gg/flow) and check the #evm channel.
-:::
+[Flowdiver.io](https://www.flowdiver.io/) has full Previewnet support for viewing transactions and there are more features coming soon.
+
+</div>
