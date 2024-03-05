@@ -1,17 +1,17 @@
 ---
-title: Using FlowEVM
-sidebar_label: Using FlowEVM
+title: Using EVM On Flow
+sidebar_label: Using EVM On Flow
 sidebar_position: 2
 ---
 import BrowserOnly from '@docusaurus/BrowserOnly';
 import {AddNetworkButton} from '@site/src/components/addNetworkButton';
 
 
-# Using FlowEVM
+# Using EVM On Flow
 
 ## EVM Wallets
 
-Applications deployed to FlowEVM will work with popular EVM-compatible wallets such as [MetaMask](https://chromewebstore.google.com/detail/metamask/nkbihfbeogaeaoehlefnkodbefgpgknn), all you need to do is add FlowEVM as a custom network.
+Applications deployed to EVM on Flow will work with popular EVM-compatible wallets such as [MetaMask](https://chromewebstore.google.com/detail/metamask/nkbihfbeogaeaoehlefnkodbefgpgknn), all you need to do is add the correct [RPC endpoint](./build/networks) as a custom network.
 
 ### [MetaMask](https://metamask.io)
 
@@ -21,32 +21,32 @@ Applications deployed to FlowEVM will work with popular EVM-compatible wallets s
     return <AddNetworkButton />;
 }}
 </BrowserOnly>
-Manually method: Add FlowEVM as a custom network to MetaMask:
+Manually method: Add EVM on Flow as a custom network to MetaMask:
 
 1. Open the MetaMask browser extension
 2. Open the network selection dropdown menu by clicking the dropdown button at the top of the extension
 3. Click the **`Add network`** button
 4. Click **`Add a network manually`**
-5. In the **`Add a network manually`** dialog that appears, enter the following information for FlowEVM mainnet:
-    
+5. In the **`Add a network manually`** dialog that appears, enter the following information for Flow Previewnet:
+
 | Name            | Value                                   |
 |-----------------|-----------------------------------------|
 | Network Name    | Flow Previewnet                      |
-| Description     | The public RPC url for FlowEVM Preview  |
+| Description     | The public RPC url for Flow Previewnet  |
 | RPC Endpoint    | https://previewnet.evm.nodes.onflow.org |
 | Chain ID        | 646                                     |
 | Currency Symbol | FLOW                                    |
 | Block Explorer  | https://previewnet.flowdiver.io          |
 
-6. Tap the Save button to save FlowEVM as a network.
+6. Tap the Save button to save Flow Previewnet as a network.
 
-You should now be able to connect to the FlowEVM by selecting it from the network selection dropdown menu
+You should now be able to connect to the EVM on Flow by selecting it from the network selection dropdown menu
 
 ## Flow Native Wallets
 
 ### (Coming Soon) [Flow Wallet](https://wallet.flow.com)
 
-Flow Wallet is available on [Android](https://play.google.com/store/apps/details?id=io.outblock.lilico&hl=en_US&gl=US) and [iOS](https://apps.apple.com/ca/app/flow-core/id1644169603) apps, with desktop support using the Flow Wallet [Chrome extension](https://chromewebstore.google.com/detail/flow-reference-wallet/hpclkefagolihohboafpheddmmgdffjm). In addition to being able to transact in both FlowEVM and Cadence environments, Flow Wallet will also allow you to view and move assets between EVM and Cadence, making it possible to manage all your assets in one place.
+Flow Wallet is available on [Android](https://play.google.com/store/apps/details?id=io.outblock.lilico&hl=en_US&gl=US) and [iOS](https://apps.apple.com/ca/app/flow-core/id1644169603) apps, with desktop support using the Flow Wallet [Chrome extension](https://chromewebstore.google.com/detail/flow-reference-wallet/hpclkefagolihohboafpheddmmgdffjm). In addition to being able to transact in both EVM and Cadence environments, Flow Wallet will also allow you to view and move assets between EVM and Cadence, making it possible to manage all your assets in one place.
 
 To use Flow Wallet Chrome extension:
 
