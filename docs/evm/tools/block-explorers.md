@@ -1,7 +1,7 @@
 ---
 title: Block Explorers
 sidebar_label: Block Explorers
-sidebar_position: 1
+sidebar_position: 2
 ---
 
 :::info
