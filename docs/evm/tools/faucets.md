@@ -6,7 +6,8 @@ sidebar_position: 2
 
 # Faucets
 
-Faucets are tools that provide free tokens for use on test networks. They are essential for developers to test and deploy smart contracts without using real assets. Below is the information on accessing FlowEVM faucets for different networks.
+A faucet is a way to distribute small amounts of a token to users for testing and development purposes.
+Token faucets are essential for developers to test and deploy smart contracts without using real assets.
 
 ## Previewnet
 
