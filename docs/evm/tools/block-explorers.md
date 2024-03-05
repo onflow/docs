@@ -4,11 +4,10 @@ sidebar_label: Block Explorers
 sidebar_position: 2
 ---
 
-:::info
+# Block Explorers
 
-## Coming Soon
+## Flowdiver
 
-Details on block explorers are currently in the works and will be shared soon.
+Flowdiver offers a block explorer which supports [Crescendo Previewnet](https://previewnet.flowdiver.io/)
 
-For real-time updates and discussions, please join the [Flow Discord](https://discord.gg/flow) and check the #evm channel.
-:::
+Testnet and mainnet support is coming soon.
