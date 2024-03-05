@@ -1,7 +1,7 @@
 ---
 title: Faucets
 sidebar_label: Faucets
-sidebar_position: 4
+sidebar_position: 2
 ---
 
 # Faucets
