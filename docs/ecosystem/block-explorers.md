@@ -6,7 +6,7 @@ sidebar_custom_props:
   icon: 🔍
 ---
 
-# Flow Block Explorers
+# Block Explorers
 Block explorers are user-friendly online tools that visually present blockchain data, allowing users to easily navigate transactions, blocks, addresses, and smart contracts while providing real-time insights and transparency.
 
 <div id="cards" className="cards">
