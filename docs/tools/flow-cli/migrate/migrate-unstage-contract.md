@@ -14,9 +14,9 @@ flow migrate unstage-contract <contract_name>
 
 ```
 >
-flow migrate unstage-contract HelloWorld --network=previewnet
+flow migrate unstage-contract HelloWorld --network=testnet
 
-Attempts to the unstage the contract `HelloWorld` from the Previewnet network.
+Attempts to the unstage the contract `HelloWorld` from the Testnet network.
 
 ```
 

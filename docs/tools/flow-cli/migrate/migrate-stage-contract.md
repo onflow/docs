@@ -14,9 +14,9 @@ flow migrate stage-contract <contract_name>
 
 ```
 >
-flow migrate stage-contract HelloWorld --network=previewnet
+flow migrate stage-contract HelloWorld --network=testnet
 
-Attempts to the stage the contract `HelloWorld` onto the Previewnet network.
+Attempts to the stage the contract `HelloWorld` onto the Testnet network.
 
 ```
 

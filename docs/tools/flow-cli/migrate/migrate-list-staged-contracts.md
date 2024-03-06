@@ -14,8 +14,8 @@ flow migrate list-staged
 
 ```
 >
-flow migrate list-staged --network=previewnet
+flow migrate list-staged --network=testnet
 
-Lists all staged contracts from the Previewnet network.
+Lists all staged contracts from the Testnet network.
 
 ```

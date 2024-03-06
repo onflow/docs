@@ -14,9 +14,9 @@ flow migrate is_staged <contract_name>
 
 ```
 >
-flow migrate is_staged HelloWorld --network=previewnet
+flow migrate is_staged HelloWorld --network=testnet
 
-Attempts to confirm if the contract has been staged on the Previewnet network.
+Attempts to confirm if the contract has been staged on the Testnet network.
 
 ```
 

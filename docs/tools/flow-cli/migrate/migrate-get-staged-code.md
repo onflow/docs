@@ -14,9 +14,9 @@ flow migrate staged_code <contract_name>
 
 ```
 >
-flow migrate staged_code HelloWorld --network=previewnet
+flow migrate staged_code HelloWorld --network=testnet
 
-Attempts to return the contract code of HelloWorld on the Previewnet network.
+Attempts to return the contract code of HelloWorld on the Testnet network.
 
 ```
 
