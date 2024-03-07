@@ -46,7 +46,7 @@ However, if we do release any software update in between a Spork (e.g. an emerge
 
 ### Is there any way to know if a node is currently online?
 
-To verify if a node is online, please [setup metrics](./FAQ.md#how-do-i-check-on-the-status-of-my-node) for the node.
+To verify if a node is online, please [setup metrics](./faq.md#how-do-i-check-on-the-status-of-my-node) for the node.
 
 ### Can I migrate a node to a new machine?
 
