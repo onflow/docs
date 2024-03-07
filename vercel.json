@@ -224,6 +224,11 @@
       "permanent": true
     },
     {
+      "source": "/tools/fcl-js/reference/:path*",
+      "destination": "/tools/clients/fcl-js/:path*",
+      "permanent": true
+    },
+    {
       "source": "/tools/fcl-js/sdk-guidelines",
       "destination": "/tools/clients/fcl-js/sdk-guidelines",
       "permanent": true
@@ -855,6 +860,11 @@
     {
       "source": "/build/run-and-secure/staking/stake-slashing",
       "destination": "/networks/node-ops/nodes/slashing",
+      "permanent": true
+    },
+    {
+      "source": "/build/run-and-secure/staking/schedule",
+      "destination": "/networks/staking/schedule",
       "permanent": true
     },
     {
