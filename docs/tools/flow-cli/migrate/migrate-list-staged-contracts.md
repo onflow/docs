@@ -13,8 +13,7 @@ flow migrate list-staged
 ## Example Usage
 
 ```
->
-flow migrate list-staged --network=testnet
+> flow migrate list-staged --network=testnet
 
 Lists all staged contracts from the Testnet network.
 
