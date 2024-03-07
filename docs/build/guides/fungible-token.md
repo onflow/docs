@@ -220,7 +220,7 @@ access(all) contract FooToken: FungibleToken {
 }
 ```
 
-The destroy call is an important thing to handle though since if anyone ever does destroy their vault, we'll want to change the total supply of the token. You can add this inside of your `Vault` resource as well.
+The destroy event is an important thing to handle though since if anyone ever does destroy their vault, we'll want to change the total supply of the token. You can add this inside of your `Vault` resource as well.
 
 ```cadence
 import "FungibleToken"
@@ -230,17 +230,55 @@ access(all) contract FooToken: FungibleToken {
     // ...previous code
 
     access(all) resource Vault: FungibleToken.Provider, FungibleToken.Receiver, FungibleToken.Balance {
+        access(all) event ResourceDestroyed(balance: UFix64 = self.balance)
 
         // ...other vault code
-
-        destroy() {
-            FooToken.totalSupply = FooToken.totalSupply - self.balance
-        }
-
     }
 
     // ...additional code
 }
+```
+
+And add follow this exapmle to handle the emitted event:
+
+```go
+
+package main
+
+import (
+	"context"
+	"fmt"
+	"github.com/onflow/flow-go-sdk"
+	"github.com/onflow/flow-go-sdk/access/http"
+)
+
+func main() {
+	ctx := context.Background()
+	// Initialize flow client
+	flowClient, err := http.NewClient(http.EmulatorHost)
+	if err != nil {
+		panic(err)
+	}
+
+	// Assuming the contract is deployed at address 0x1
+	contractAddress := "0x1"
+	eventType := fmt.Sprintf("A.%s.FooToken.Vault.ResourceDestroyed", contractAddress)
+
+	// Replace startHeight and endHeight with the actual block height range you're interested in
+	startHeight := uint64(0)
+	endHeight := uint64(100)
+	events, err := flowClient.GetEventsForHeightRange(ctx, eventType, startHeight, endHeight)
+	if err != nil {
+		panic(err)
+	}
+
+	for _, blockEvent := range events {
+		for _, event := range blockEvent.Events {
+			// run a transaction to update FooToken.totalSupply
+		}
+	}
+}
+
 ```
 
 ### Creating a Minter
@@ -295,6 +333,7 @@ access(all) contract FooToken: FungibleToken {
     access(all) event TokensInitialized(initialSupply: UFix64)
     access(all) event TokensWithdrawn(amount: UFix64, from: Address?)
     access(all) event TokensDeposited(amount: UFix64, to: Address?)
+    access(all) event ResourceDestroyed(balance: UFix64 = self.balance)
     access(all) var totalSupply: UFix64
 
     access(all) resource Vault: FungibleToken.Provider, FungibleToken.Receiver, FungibleToken.Balance {
@@ -312,10 +351,6 @@ access(all) contract FooToken: FungibleToken {
             self.balance = self.balance - amount
             emit TokensWithdrawn(amount: amount, from: self.owner?.address)
             return <- create Vault(balance: amount)
-        }
-
-        destroy() {
-            FooToken.totalSupply = FooToken.totalSupply - self.balance
         }
 
         init(balance: UFix64) {

@@ -170,15 +170,13 @@ access(all) contract FooBar {
     // ...[NFT resource code]...
 
     access(all) resource Collection {
+        access(all) event ResourceDestroyed(ownedNFTs: @{UInt64: NFT} = self.ownedNFTs)
         access(all) var ownedNFTs: @{UInt64: NFT}
 
         init() {
             self.ownedNFTs <- {}
         }
 
-        destroy () {
-            destroy self.ownedNFTs
-        }
     }
 
     // ...[NFTMinter code]...
