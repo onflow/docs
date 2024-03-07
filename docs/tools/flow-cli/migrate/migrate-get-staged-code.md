@@ -13,8 +13,7 @@ flow migrate staged_code <contract_name>
 ## Example Usage
 
 ```
->
-flow migrate staged_code HelloWorld --network=testnet
+> flow migrate staged_code HelloWorld --network=testnet
 
 Attempts to return the contract code of HelloWorld on the Testnet network.
 
