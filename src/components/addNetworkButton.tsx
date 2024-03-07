@@ -30,7 +30,7 @@ export const AddNetworkButton = () => {
         ],
       });
     } catch (error) {
-      console.error('Could not add Flow EVM', error);
+      console.error('Could not add Flow Previewnet', error);
     }
   };
 

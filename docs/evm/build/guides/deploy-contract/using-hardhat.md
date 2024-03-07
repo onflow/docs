@@ -105,7 +105,7 @@ Deploying:
 3. Create a `deploy.ts` file in `scripts` directory.
 4. Paste in the following TypeScript code.
 
-```typeScript
+```javascript
 import { ethers } from "hardhat";
 
 async function main() {
@@ -141,7 +141,7 @@ HelloWorld address: 0x3Fe94f43Fb5CdB8268A801f274521a07F7b99dfb
 
 Now, we want to get the greeting from the deployed `HelloWorld` smart contract.
 
-```TypeScript
+```javascript
 import { ethers } from "hardhat";
 import HelloWorldABI from "../artifacts/contracts/HelloWorld.sol/HelloWorld.json";
 
@@ -176,7 +176,7 @@ The greeting is: Hello, World!
 
 Next, we'll add a script to update the greeting and log it.
 
-```TypeScript
+```javascript
 import { ethers } from "hardhat";
 import HelloWorldABI from "../artifacts/contracts/HelloWorld.sol/HelloWorld.json";
 
