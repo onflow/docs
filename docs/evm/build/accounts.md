@@ -29,4 +29,4 @@ COAs exist in Cadence as a Resource type which is in turn owned by a Flow accoun
 
 For more information on Cadence Owned Accounts, see the [Flow EVM Support FLIP](https://github.com/onflow/flips/pull/225/files)
 
-![FlowEVM-Account-Model](flow-evm-account-model.png)
+![Account-Model](flow-evm-account-model.png)

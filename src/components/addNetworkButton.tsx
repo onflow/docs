@@ -7,7 +7,7 @@ import {
 export const AddNetworkButton = () => {
   const hasEthereum = window?.ethereum !== undefined;
 
-  const addFlowEVM = async () => {
+  const addFlowNetwork = async () => {
     try {
       // Define your network details here
       await window?.ethereum?.request({
@@ -15,7 +15,7 @@ export const AddNetworkButton = () => {
         params: [
           {
             chainId: '0x286',
-            chainName: 'Flow Previewnet',
+            chainName: 'Previewnet',
             rpcUrls: ['https://previewnet.evm.nodes.onflow.org'],
             iconUrls: [
               'https://assets-global.website-files.com/5f734f4dbd95382f4fdfa0ea/65b016be9b9cf0a402a67a38_ico-flow-crescendo.png',
@@ -36,16 +36,16 @@ export const AddNetworkButton = () => {
 
   // eslint-disable-next-line @typescript-eslint/no-misused-promises
   return hasEthereum ? (
-    <Button className="my-5 " variant="secondary" onClick={addFlowEVM}>
+    <Button className='my-5 ' variant='secondary' onClick={addFlowNetwork}>
       Add Flow Previewnet Network
     </Button>
   ) : (
     <ButtonLink
-      className="my-5"
-      variant="primary"
-      href="https://metamask.io/download/"
+      className='my-5'
+      variant='primary'
+      href='https://metamask.io/download/'
     >
       Install MetaMask
     </ButtonLink>
-  );
+  )
 };
