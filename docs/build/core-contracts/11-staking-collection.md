@@ -20,10 +20,11 @@ See the [Staking Collection Docs](../../networks/staking/14-staking-collection.m
 
 Source: [FlowStakingCollection.cdc](https://github.com/onflow/flow-core-contracts/blob/master/contracts/FlowStakingCollection.cdc)
 
-| Network    | Contract Address     |
-|------------|----------------------|
-| Testnet    | `0x95e019a17d0e23d7` |
-| Mainnet    | `0x8d0e87b65159ae63` | 
+| Network                      | Contract Address     |
+|------------------------------|----------------------|
+| Emulator                     | `0xf8d6e0586b0a20c7` | 
+| Testnet/Previewnet/Crescendo | `0x95e019a17d0e23d7` |
+| Mainnet                      | `0x8d0e87b65159ae63` | 
 
 ## Transactions
 
