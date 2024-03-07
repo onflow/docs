@@ -7,7 +7,7 @@ import {
 export const AddNetworkButton = () => {
   const hasEthereum = window?.ethereum !== undefined;
 
-  const addFlowEVM = async () => {
+  const addFlowPreviewnet = async () => {
     try {
       // Define your network details here
       await window?.ethereum?.request({
@@ -30,13 +30,13 @@ export const AddNetworkButton = () => {
         ],
       });
     } catch (error) {
-      console.error('Could not add Flow EVM', error);
+      console.error('Could not add Flow Previewnet', error);
     }
   };
 
   // eslint-disable-next-line @typescript-eslint/no-misused-promises
   return hasEthereum ? (
-    <Button className="my-5 " variant="secondary" onClick={addFlowEVM}>
+    <Button className="my-5 " variant="secondary" onClick={addFlowPreviewnet}>
       Add Flow Previewnet Network
     </Button>
   ) : (
