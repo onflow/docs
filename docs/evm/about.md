@@ -67,5 +67,5 @@ Those wishing to understand the technical specifics of how EVM on Flow works we 
 
 - Understanding [EVM Support on Flow](https://github.com/onflow/flips/pull/225)
 - Exploring the [Flow VM Bridge](https://github.com/onflow/flips/pull/233/files/d5bc46c4b13f0b9b168a94f994c77a5a689f6b24..122e938b7acae7e774246b1b66aaf5979ca21444)
-- Insights into the [Flow Previewnet Gateway](https://github.com/onflow/flips/pull/235/files)
+- Insights into the [Flow EVM Gateway](https://github.com/onflow/flips/pull/235/files)
 - Integration of the [Cadence Interface](https://github.com/onflow/flips/blob/f646491ec895442dcccdb24d80080bab1c56188e/protocol/20231116-evm-support.md)
