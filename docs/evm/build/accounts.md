@@ -27,6 +27,6 @@ Unlike EOAs, COAs do not have a key but are assigned a 20-byte EVM address upon 
 
 COAs exist in Cadence as a Resource type which is in turn owned by a Flow account on the Cadence VM. COAs facilitate the execution of EVM transactions using its `run` method. They also enable the deployment of Solidity contracts from Cadence, as well as other utility functions to interact with EVM.
 
-For more information on Cadence Owned Accounts, see the [FlowEVM FLIP](https://github.com/onflow/flips/pull/225/files)
+For more information on Cadence Owned Accounts, see the [Flow EVM Support FLIP](https://github.com/onflow/flips/pull/225/files)
 
 ![FlowEVM-Account-Model](flow-evm-account-model.png)
