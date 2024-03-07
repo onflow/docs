@@ -1,6 +1,6 @@
 ---
 title: Using Hardhat
-description: "Using Hardhat to deploy a solidity contract to EVM on Flow."
+description: "Using Hardhat to deploy a Solidity contract to EVM on Flow."
 sidebar_label: Using Hardhat
 sidebar_position: 1
 ---
