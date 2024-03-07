@@ -13,8 +13,7 @@ flow migrate unstage-contract <contract_name>
 ## Example Usage
 
 ```
->
-flow migrate unstage-contract HelloWorld --network=testnet
+> flow migrate unstage-contract HelloWorld --network=testnet
 
 Attempts to the unstage the contract `HelloWorld` from the Testnet network.
 
