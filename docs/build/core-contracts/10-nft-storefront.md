@@ -4,6 +4,11 @@ title: NFT Storefront Smart Contract
 
 ## Primer
 
+|Name|Testnet/Previewnet/Crescendo|Mainnet|
+|----|----------------------------|-------|
+|[NFTStorefront](contracts/NFTStorefront.cdc)|[0x94b06cfca1d8a476](https://testnet.flowdiver.io/contract/A.94b06cfca1d8a476.NFTStorefront)|[0x4eb8a10cb9f87357](https://www.flowdiver.io/contract/A.4eb8a10cb9f87357.NFTStorefront)|
+|[NFTStorefrontV2 (recommended)](contracts/NFTStorefrontV2.cdc)|[0x2d55b98eb200daef](https://testnet.flowdiver.io/contract/A.2d55b98eb200daef.NFTStorefrontV2)|[0x4eb8a10cb9f87357](https://www.flowdiver.io/contract/A.4eb8a10cb9f87357.NFTStorefrontV2)|
+
 The `NFTStorefrontV2` contract lets you create a *non-custodial Resource (NFT) marketplace* on the FLOW blockchain. 
 
 `NFTStorefrontV2` makes it simple for Sellers to list NFTs in dApp specific marketplaces. DApp developers leverage the APIs provided by the contract to manage listings being offered for sale and to transact NFT trades.
