@@ -13,8 +13,7 @@ flow migrate is_staged <contract_name>
 ## Example Usage
 
 ```
->
-flow migrate is_staged HelloWorld --network=testnet
+> flow migrate is_staged HelloWorld --network=testnet
 
 Attempts to confirm if the contract has been staged on the Testnet network.
 
