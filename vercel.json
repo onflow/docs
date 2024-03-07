@@ -1178,7 +1178,7 @@
     },
     {
       "source": "/networks/node-ops/node-operation/faq",
-      "destination": "/networks/node-ops/node-operation/faq",
+      "destination": "/networks/node-ops/node-operation/FAQ",
       "permanent": true
     },
     {
