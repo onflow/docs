@@ -224,6 +224,11 @@
       "permanent": true
     },
     {
+      "source": "/tools/fcl-js/reference/:path*",
+      "destination": "/tools/clients/fcl-js/:path*",
+      "permanent": true
+    },
+    {
       "source": "/tools/fcl-js/sdk-guidelines",
       "destination": "/tools/clients/fcl-js/sdk-guidelines",
       "permanent": true
@@ -858,6 +863,11 @@
       "permanent": true
     },
     {
+      "source": "/build/run-and-secure/staking/schedule",
+      "destination": "/networks/staking/schedule",
+      "permanent": true
+    },
+    {
       "source": "/build/run-and-secure/:path*",
       "destination": "/references/run-and-secure/:path*",
       "permanent": true
@@ -865,6 +875,11 @@
     {
       "source": "/references/run-and-secure/nodes/:path*",
       "destination": "/networks/:path*",
+      "permanent": true
+    },
+    {
+      "source": "/references/run-and-secure/staking/schedule",
+      "destination": "/networks/staking/schedule",
       "permanent": true
     },
     {
@@ -1134,6 +1149,46 @@
     {
       "source": "/overview/dive-in/fungible-tokens",
       "destination": "/build/guides/fungible-token",
+      "permanent": true
+    },
+    {
+      "source": "/build/guides/account-linking/guides/:path*",
+      "destination": "/build/guides/account-linking",
+      "permanent": true
+    },
+    {
+      "source": "/build/guides/mobile",
+      "destination": "/build/guides/mobile/overview",
+      "permanent": true
+    },
+    {
+      "source": "/build/guides/nft-marketplace",
+      "destination": "https://cadence-lang.org/docs/tutorial/marketplace-compose",
+      "permanent": true
+    },
+    {
+      "source": "/networks/node-ops/node-operation",
+      "destination": "/networks/node-ops",
+      "permanent": true
+    },
+    {
+      "source": "/networks/node-ops/node-operation/access-node-setup",
+      "destination": "/networks/node-ops/access-onchain-data/access-nodes/access-node-setup",
+      "permanent": true
+    },
+    {
+      "source": "/networks/node-ops/node-operation/FAQ",
+      "destination": "/networks/node-ops/node-operation/faq",
+      "permanent": true
+    },
+    {
+      "source": "/networks/node-ops/node-operation/observer-node",
+      "destination": "/networks/node-ops/access-onchain-data/light-nodes/observer-node",
+      "permanent": true
+    },
+    {
+      "source": "/references/run-and-secure/staking/schedule",
+      "destination": "/networks/staking/schedule",
       "permanent": true
     }
   ]

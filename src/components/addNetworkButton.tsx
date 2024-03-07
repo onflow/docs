@@ -30,14 +30,14 @@ export const AddNetworkButton = () => {
         ],
       });
     } catch (error) {
-      console.error('Could not add Flow EVM', error);
+      console.error('Could not add Flow Previewnet', error);
     }
   };
 
   // eslint-disable-next-line @typescript-eslint/no-misused-promises
   return hasEthereum ? (
     <Button className='my-5 ' variant='secondary' onClick={addFlowNetwork}>
-      Add Flow Previewnet Network
+      Add Flow Network
     </Button>
   ) : (
     <ButtonLink
