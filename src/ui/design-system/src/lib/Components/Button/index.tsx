@@ -15,11 +15,13 @@ const VARIANTS = {
     "dark:bg-white dark:text-black",
     "dark:hover:border-white dark:hover:bg-black dark:hover:text-white",
     "dark:active:border-gray-500 dark:active:bg-black dark:active:text-gray-500",
+    "disabled:opacity-50 disabled:bg-gray-200 disabled:cursor-not-allowed", 
   ],
   "primary-no-darkmode": [
     "bg-black text-white border-transparent",
     "hover:border-black hover:bg-white hover:text-black",
     "active:border-gray-500 active:bg-white active:text-gray-500",
+    "disabled:opacity-50 disabled:bg-gray-200 disabled:cursor-not-allowed", 
   ],
   secondary: [
     "text-primary-blue border-primary-blue",
@@ -28,6 +30,7 @@ const VARIANTS = {
     "dark:bg-black dark:text-blue-dark dark:border-blue-dark",
     "dark:hover:bg-blue-dark dark:hover:text-white",
     "dark:active:bg-blue-hover-dark dark:active:text-white dark:active:border-blue-hover-dark",
+    "disabled:opacity-50 disabled:cursor-not-allowed", 
   ],
 }
 
