@@ -1,11 +1,33 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import {
   Button,
   ButtonLink,
 } from '@site/src/ui/design-system/src/lib/Components/Button/index';
 
 export const AddNetworkButton = () => {
+  const targetChainIds = [747, 646, 545]; // Your target chain IDs
+  const [isNetworkAdded, setIsNetworkAdded] = useState<boolean>(false);
+  const [chainId, setChainId] = useState<string>(''); // Flow Previewnet
+
+  const getChainId = async () => {
+    if (!window?.ethereum) return;
+    const chainId = await window?.ethereum.request({ method: 'eth_chainId' });
+    setChainId(parseInt(chainId, 16)); // Convert chainId from hex to decimal
+  };
+
+  useEffect(() => {
+    getChainId();
+  }, []);
+
   const hasEthereum = window?.ethereum !== undefined;
+
+  useEffect(() => {
+    if (targetChainIds.includes(chainId)) {
+      setIsNetworkAdded(true);
+    } else {
+      setIsNetworkAdded(false);
+    }
+  }, [chainId]);
 
   const addFlowNetwork = async () => {
     try {
@@ -36,16 +58,21 @@ export const AddNetworkButton = () => {
 
   // eslint-disable-next-line @typescript-eslint/no-misused-promises
   return hasEthereum ? (
-    <Button className='my-5 ' variant='secondary' onClick={addFlowNetwork}>
-      Add Flow Network
+    <Button
+      className="my-5 "
+      disabled={isNetworkAdded}
+      variant="secondary"
+      onClick={addFlowNetwork}
+    >
+      {isNetworkAdded ? 'Flow Network Added!' : 'Add Flow Network'}
     </Button>
   ) : (
     <ButtonLink
-      className='my-5'
-      variant='primary'
-      href='https://metamask.io/download/'
+      className="my-5"
+      variant="primary"
+      href="https://metamask.io/download/"
     >
       Install MetaMask
     </ButtonLink>
-  )
+  );
 };
