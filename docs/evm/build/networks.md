@@ -6,7 +6,7 @@ sidebar_position: 1
 
 # Networks
 
-FlowEVM has the following public RPC nodes available:
+EVM on Flow has the following public RPC nodes available:
 
 # Previewnet
 
@@ -26,7 +26,7 @@ FlowEVM has the following public RPC nodes available:
 | Network Name    | Testnet                                |
 | Description     | The public RPC URL for Flow Testnet         |
 | RPC Endpoint    | https://testnet.evm.nodes.onflow.org   |
-| Chain ID        | 646                                    |
+| Chain ID        | 545                                    |
 | Currency Symbol | FLOW                                   |
 | Block Explorer  | https://testnet.flowdiver.io           |
 

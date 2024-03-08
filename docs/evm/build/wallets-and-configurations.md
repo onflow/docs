@@ -16,14 +16,12 @@ Integrating additional networks into MetaMask can pose challenges for users who 
 
 [EIP-3035](https://eips.ethereum.org/EIPS/eip-3085) is an Ethereum Improvement Proposal that defines an RPC method for adding Ethereum-compatible chains to wallet applications. Since March 2021 MetaMask has implemented that EIP as part of their MetaMask [Custom Networks API](https://consensys.io/blog/connect-users-to-layer-2-networks-with-the-metamask-custom-networks-api).
 
-### Network configuration
+### Flow Network configuration
 
-To add the FlowEVM network to Metamask, we need to add the following network confgiuration:
-
-#### Previewnet Network
+To add the Flow Previewnet network to Metamask, add the following network confgiuration:
 
 ```js
-export const FLOWEVM_PREVIEWNET_PARAMS = {
+export const PREVIEWNET_PARAMS = {
     chainId: '0x286',
     chainName: 'Flow',
     rpcUrls: ['https://previewnet.evm.nodes.onflow.org'],
@@ -36,17 +34,17 @@ export const FLOWEVM_PREVIEWNET_PARAMS = {
 }
 ```
 
-### Adding the Network
+### Adding Flow Network
 
-To add this configuration to MetaMask, we must call the `wallet_addEthereumChain` method which is exposed by the web3 provider.
+To add this configuration to MetaMask, call the `wallet_addEthereumChain` method which is exposed by the web3 provider.
 
 ```js
-function addFlowEvmNetwork() {
+function addFlowPreviewnet() {
   injected.getProvider().then((provider) => {
     provider
       .request({
         method: "wallet_addEthereumChain",
-        params: [FLOWEVM_PREVIEWNET_PARAMS],
+        params: [PREVIEWNET_PARAMS],
       })
       .catch((error: any) => {
         console.log(error)
@@ -61,10 +59,10 @@ The typical usage would be to expose this button if you get errors when attempti
 
 ### User Experience
 
-Users who first come to your dApp's website will need to first approve a connection to Metamask.  After doing this, if you don't detect a successful Web3 network connection, you may present a dialog asking them to add the FlowEVM network to their wallet.
+Users of your app will need to first approve a connection to Metamask.  After doing this, if you don't detect a successful Web3 network connection, you may present a dialog asking them to add the Flow network to their wallet.
 
 ![Metamask Network](./metamask-network.png)
 
-After they approve, your app be connected to the FlowEVM network. 
+After they approve, your app will be connected to the Flow network.
 
-By using this approach to add the FlowEVM network to Metamask, you can avoid manual user data entry and ensure that users are ready to interact with your dApp!
+By using this approach to add the Flow network to Metamask, you can avoid manual user data entry and ensure that users are ready to interact with your dApp!

@@ -1,6 +1,6 @@
 ---
 title: Using Hardhat
-description: "Using Hardhat to deploy a solidity contract to FlowEVM."
+description: "Using Hardhat to deploy a Solidity contract to EVM on Flow."
 sidebar_label: Using Hardhat
 sidebar_position: 1
 ---
@@ -231,8 +231,8 @@ The greeting is: Howdy!
 ### Coming Soon
 
 - **Comprehensive Guides:** Step-by-step tutorials on deploying various types of smart contracts, including NFTs (ERC-721), using Hardhat on the Flow network.
-- **Requirements:** Detailed prerequisites for using Hardhat with FlowEVM, including Node.js setup, wallet preparation, and obtaining testnet FLOW for gas fees.
-- **Verification and Interaction:** Steps to verify your smart contracts on FlowEVM and interact with them using tools like Flowdiver.
+- **Requirements:** Detailed prerequisites for using Hardhat with EVM on Flow, including Node.js setup, wallet preparation, and obtaining testnet FLOW for gas fees.
+- **Verification and Interaction:** Steps to verify deployment of your smart contracts and interact with them using tools like Flowdiver.
 
 Stay tuned for updates and feel free to check back soon for the full guide.
 :::

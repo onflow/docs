@@ -5,7 +5,7 @@ title: Fees
 
 :::info
 
-Are you an EVM developer looking for information about Accounts on FlowEVM? If so, check out the EVM specific documentation [here](../../evm/build/fees.md)
+Are you an EVM developer looking for information about EVM Accounts on Flow? If so, check out the EVM specific documentation [here](../../evm/build/fees.md)
 
 :::
 
