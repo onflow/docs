@@ -20,11 +20,13 @@ For example, to get an emulator state with Flow CLI `1.14.0`:
 
 - Start the emulator with the `--persist` flag.
   ```shell
-    flow emulator --persist
+  flow emulator --persist
   ```
+
 - Deploy the pre-1.0 project/contracts to the emulator
 - Run transactions if there are any.
-- Close the emulator. It is important to make sure the emulator is closed/shutdown before taking the snapshot,
+- Stop the emulator (Ctrl-C on *nix platforms, and Ctrl-Break or Ctrl-Pause on Windows).
+  It is important to make sure the emulator is stopped before taking the snapshot,
   so that any pending in-memory data would be written to the persisted state properly.
 - Locate the persisted state `./flowdb/emulator.sqlite` file, from the project root.
 
@@ -32,8 +34,8 @@ For example, to get an emulator state with Flow CLI `1.14.0`:
 
 Download and install the latest CLI, that runs Cadence 1.0.
 
-- Run `migrate` command against the previously created state.
-- The state file (`emulator.sqlite`) can be provided using the `-db-path` flag.
+- Run `flow-c1 migrate` against the previously created state.
+- The state file (`emulator.sqlite`) can be provided using the `--db-path` flag.
 - If there are any contracts that also need to be upgraded, those can be specified using the `--contracts` flag.
   Note that, the paths to these updated contracts must be specified in the `flow.json` file:
   ```json
@@ -49,7 +51,7 @@ Download and install the latest CLI, that runs Cadence 1.0.
 A sample `migrate` command would look like:
 
 ```shell
-flow migrate state --db-path=/path/to/emulator.sqlite --save-report=./reports --contracts="Test"
+flow-c1 migrate state --db-path=/path/to/emulator.sqlite --save-report=./reports --contracts="Test"
 ```
 
 ### Testing the migrated state
