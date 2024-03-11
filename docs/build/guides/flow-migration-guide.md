@@ -13,7 +13,9 @@ This guide aims to simplify the migration process to Cadence 1.0, making it acce
 
 ## What is Cadence 1.0?
 
-Cadence 1.0 is the latest version of the Cadence smart contract programming language. It introduces several new features and improvements over the previous versions. (INCLUDE MORE)
+Cadence 1.0 is the latest version of the Cadence smart contract programming language. The stable release of Cadence 1.0 represents a significant milestone in the language’s maturity, delivering a comprehensive suite of improvements that increase speed, security and efficiency. With Cadence 1.0, developers gain access to over 20 new features and enhancements. Each change is thoughtfully designed to streamline workflows, reduce duplication and improve code readability, making writing and understanding smart contracts much easier.
+
+For more information about Cadence 1.0, please visit https://flow.com/upgrade/crescendo/cadence-1.
 
 ## Staging a contract
 
