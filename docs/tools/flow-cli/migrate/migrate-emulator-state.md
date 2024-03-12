@@ -16,7 +16,12 @@ that uses a pre-1.0 Cadence version.
 
 ### Getting the old state
 
-For example, to get an emulator state with Flow CLI `1.14.0`:
+It is recommended to use the latest pre-1.0 CLI version (e.g: `v1.14.*`) for creating the old state.
+This is because the emulator shipped with older CLI versions may not include some of the system contracts
+(e.g: `RandomBeaconHistory` contract) that are included by default in the newer versions of the emulator/CLI.
+Such contracts are required for the migration.
+
+To get an emulator state with Flow CLI `1.14.0`:
 
 - Start the emulator with the `--persist` flag.
   ```shell
@@ -35,16 +40,28 @@ For example, to get an emulator state with Flow CLI `1.14.0`:
 Download and install the latest CLI, that runs Cadence 1.0.
 
 - Run `flow-c1 migrate` against the previously created state.
+
 - The state file (`emulator.sqlite`) can be provided using the `--db-path` flag.
+
 - If there are any contracts that also need to be upgraded, those can be specified using the `--contracts` flag.
-  Note that, the paths to these updated contracts must be specified in the `flow.json` file:
+  Note that, the paths to these updated contracts and their deployed addresses must be specified in the `flow.json` file.
+  For example, assuming the contract was deployed in the `test` account in the emulator,
+  and assuming the updated contract is in the `./updated_test_contract.cdc` file, the `flow.json` should include:
   ```json
   {
     "contracts": {
       "Test": "./updated_test_contract.cdc"
+    },
+    "deployments": {
+      "emulator": {
+        "test": [
+            "Test"
+        ]
+      }
     }
   }
   ```
+
 - The migration will produce a report consisting of the migration status.
   This can be enabled by setting the `--save-report` flag.
 
