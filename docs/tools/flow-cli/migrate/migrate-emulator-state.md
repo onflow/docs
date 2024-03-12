@@ -21,7 +21,7 @@ This is because the emulator shipped with older CLI versions may not include som
 (e.g: `RandomBeaconHistory` contract) that are included by default in the newer versions of the emulator/CLI.
 Such contracts are required for the migration.
 
-To get an emulator state with Flow CLI `1.14.0`:
+**To get an emulator state with Flow CLI `1.14.0`:**
 
 - Start the emulator with the `--persist` flag.
   ```shell
@@ -31,8 +31,8 @@ To get an emulator state with Flow CLI `1.14.0`:
 - Deploy the pre-1.0 project/contracts to the emulator
 - Run transactions if there are any.
 - Stop the emulator (Ctrl-C on *nix platforms, and Ctrl-Break or Ctrl-Pause on Windows).
-  It is important to make sure the emulator is stopped before taking the snapshot,
-  so that any pending in-memory data would be written to the persisted state properly.
+  **It is important to make sure the emulator is stopped before taking the snapshot,
+  so that any pending in-memory data would be written to the persisted state properly.**
 - Locate the persisted state `./flowdb/emulator.sqlite` file, from the project root.
 
 ### Migrating the state
@@ -44,7 +44,7 @@ Download and install the latest CLI, that runs Cadence 1.0.
 - The state file (`emulator.sqlite`) can be provided using the `--db-path` flag.
 
 - If there are any contracts that also need to be upgraded, those can be specified using the `--contracts` flag.
-  Note that, the paths to these updated contracts and their deployed addresses must be specified in the `flow.json` file.
+  **Note that, the paths to these updated contracts and their deployed addresses must be specified in the `flow.json` file.**
   For example, assuming the contract was deployed in the `test` account in the emulator,
   and assuming the updated contract is in the `./updated_test_contract.cdc` file, the `flow.json` should include:
   ```json
