@@ -9,8 +9,8 @@ The `EVM` contract is the entrypoint from Cadence to EVM on Flow. While many dev
 via [EVM-equivalent tooling paths](../../evm/using.mdx), all access to Flow EVM ultimately interfaces via Cadence at
 some level.
 
-If you would like to interact with EVM directly from Cadence, you can use the `EVM` contract. and it's constructs. Read
-more about how the EVM contract plays a role in Flow's EVM equivalence in [FLIP
+If you would like to interact with EVM directly from Cadence, you can use the `EVM` contract and it's constructs. Read
+more about the EVM contract and its role in Flow's EVM equivalence in [FLIP
 #223](https://github.com/onflow/flips/pull/225/files).
 
 <Callout type="information">
