@@ -1,7 +1,7 @@
 ---
 title: Cadence Linter
 description: A static-analysis tool for finding potential issues in Cadence code
-sidebar_position: 1
+sidebar_position: 14
 ---
 
 The Cadence Linter is a static-analysis tool for finding potential issues in Cadence code. It is available in the Flow CLI & is designed to help developers write better code by identifying common mistakes and potential issues before they become problems.
