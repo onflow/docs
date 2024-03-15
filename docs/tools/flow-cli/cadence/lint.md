@@ -9,7 +9,7 @@ The Cadence Linter is a static-analysis tool for finding potential issues in Cad
 The linter will also check your code for any syntax or semantic errors, and provide suggestions for how to fix them.
 
 ```shell
-flow cadence lint [files...] [dir...]
+flow cadence lint [files]
 ```
 
 ## Example Usage
