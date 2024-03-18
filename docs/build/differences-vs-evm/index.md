@@ -142,17 +142,7 @@ Check out [Transactions](../basics/transactions.md) and [Scripts](../basics/scri
 
 Developers need a blockchain node to send transactions and fetch state. Flow is based on a multi-node architecture that separates roles like consensus and computation. You can learn more about the Flow architecture [here](https://flow.com/primer#primer-how-flow-works).
 
-Access Nodes are the node type that are most useful for developers, as they provide access to the Flow network via an API. Flow provides public access nodes for multiple networks. They provide two flavours of APIs:
-
-- [HTTP API](https://developers.flow.com/http-api)
-  - Mainnet: `https://rest-mainnet.onflow.org`
-  - Testnet: `https://rest-testnet.onflow.org`
-  - Previewnet: `https://rest-previewnet.onflow.org`
-- gRPC
-  - Mainnet: `access.mainnet.nodes.onflow.org:9000`
-  - Testnet: `access.devnet.nodes.onflow.org:9000`
-  - Previewnet: `access.previewnet.nodes.onflow.org:9000`
-  - [Specification](../../networks/node-ops/access-onchain-data/access-nodes/accessing-data/access-api.md)
+Access Nodes are the node type that are most useful for developers, as they provide access to the Flow network [via an API](../../networks/flow-networks/index.md).
 
 ## SDKs and Tools
 

@@ -5,9 +5,9 @@ sidebar_position: 1
 
 ## About Flow Networks
 
-Other than Mainnet, Testnet can be used to test applications and contracts before deployment to Mainnet.
+In addition to Mainnet, developers have access to the Testnet environment, which serves as an essential testing ground for applications and smart contracts prior to their deployment on Mainnet. This ensures that any potential issues can be identified and resolved in a controlled setting, mitigating risks associated with live deployment.
 
-During a network upgrade, Testnet will be updated first. Hence, Testnet can be used to test against the latest node software, Cadence and core contract changes which will eventually be available to Mainnet.
+Furthermore, during network upgrades, Testnet receives updates ahead of Mainnet. This preemptive update process allows developers to comprehensively test their apps against the latest versions of the nodes, enhancements to the Cadence programming language, and core contract upgrades. This strategy guarantees that when these updates are eventually applied to Mainnet, applications and smart contracts will operate seamlessly, enhancing overall network stability and user experience.
 
 ### How To Access These Networks?
 
