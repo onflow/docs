@@ -1,6 +1,5 @@
 ---
 title: Flow Networks
-sidebar_label: Networks
 sidebar_position: 1
 ---
 
