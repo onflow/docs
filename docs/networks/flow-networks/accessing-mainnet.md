@@ -1,5 +1,6 @@
 ---
 title: Flow Mainnet
+sidebar_label: Mainnet
 sidebar_position: 2
 description: Guide to mainnet access
 ---

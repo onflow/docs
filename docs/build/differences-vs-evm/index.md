@@ -44,14 +44,14 @@ If you are a Solidity developer, it's recommended to read Cadence's [Guide for S
 
 - [The Cadence tutorial](https://cadence-lang.org/docs/tutorial/first-steps)
 - ERC-20 equivalent on Flow is the Flow Fungible Token Standard
-    - [Repository](https://github.com/onflow/flow-ft)
-    - [Tutorial](https://cadence-lang.org/docs/tutorial/fungible-tokens)
+  - [Repository](https://github.com/onflow/flow-ft)
+  - [Tutorial](https://cadence-lang.org/docs/tutorial/fungible-tokens)
 - ERC-721 equivalent on Flow is the Flow Non-Fungible Token Standard
-    - [Repository](https://github.com/onflow/flow-nft)
-    - [Tutorial](https://cadence-lang.org/docs/tutorial/non-fungible-tokens-1)
+  - [Repository](https://github.com/onflow/flow-nft)
+  - [Tutorial](https://cadence-lang.org/docs/tutorial/non-fungible-tokens-1)
 - Asset marketplaces with Cadence
-    - [Tutorial](https://cadence-lang.org/docs/tutorial/marketplace-setup)
-    - [NFT Storefront](https://github.com/onflow/nft-storefront/) is an example marketplace standard
+  - [Tutorial](https://cadence-lang.org/docs/tutorial/marketplace-setup)
+  - [NFT Storefront](https://github.com/onflow/nft-storefront/) is an example marketplace standard
 
 ### Transactions and Scripts
 
@@ -142,45 +142,26 @@ Check out [Transactions](../basics/transactions.md) and [Scripts](../basics/scri
 
 Developers need a blockchain node to send transactions and fetch state. Flow is based on a multi-node architecture that separates roles like consensus and computation. You can learn more about the Flow architecture [here](https://flow.com/primer#primer-how-flow-works).
 
-Access Nodes are the node type that are most useful for developers, as they provide access to the Flow network via an API. Flow provides public access nodes for multiple networks. They provide two flavours of APIs:
-
-- [HTTP API](https://developers.flow.com/http-api)
-  - Mainnet: `https://rest-mainnet.onflow.org`
-  - Testnet: `https://rest-testnet.onflow.org`
-  - Previewnet: `https://rest-previewnet.onflow.org`
-- gRPC
-    - Mainnet: `access.mainnet.nodes.onflow.org:9000`
-    - Testnet: `access.devnet.nodes.onflow.org:9000`
-    - Previewnet: `access.previewnet.nodes.onflow.org:9000`
-    - [Specification](../../networks/node-ops/access-onchain-data/access-nodes/accessing-data/access-api.md)
-
-### Running Your Own Node
-
-If you’re getting started you don’t need to run your own node and you can use the above public nodes. The public access nodes are rate-limited, so as your product matures you might want to run your own node. There are multiple options available:
-
-- Start with a [Light (Observer) Node](../../networks/node-ops/access-onchain-data/light-nodes/observer-node.md).
-- You can also use a third-party provider like [Quicknode](https://www.quicknode.com/docs/flow).
-
-Check out [Running a Node](../../networks/node-ops/access-onchain-data/light-nodes/observer-node.md) for more information.
+Access Nodes are the node type that are most useful for developers, as they provide access to the Flow network [via an API](../../networks/flow-networks/index.md).
 
 ## SDKs and Tools
 
 If you’re already familiar with blockchain development, here's a comparison between popular software packages and Flow's tooling:
 
 - [hardhat](https://hardhat.org/) / [Truffle](https://trufflesuite.com/) / [Foundry](https://github.com/foundry-rs/foundry)
-    - [Flow CLI](https://github.com/onflow/flow-cli/) provides local development tools and the [Flow Emulator](https://github.com/onflow/flow-emulator)
+  - [Flow CLI](https://github.com/onflow/flow-cli/) provides local development tools and the [Flow Emulator](https://github.com/onflow/flow-emulator)
 - [OpenZeppelin](https://www.openzeppelin.com/)
-    - [Emerald OZ](https://oz.ecdao.org/overview)
+  - [Emerald OZ](https://oz.ecdao.org/overview)
 - [go-ethereum](https://geth.ethereum.org/)
-    - [Flow Go SDK](https://github.com/onflow/flow-go-sdk/)
-    - [FCL](https://github.com/onflow/fcl-js/) also provides Backend API for Flow in JS
+  - [Flow Go SDK](https://github.com/onflow/flow-go-sdk/)
+  - [FCL](https://github.com/onflow/fcl-js/) also provides Backend API for Flow in JS
 - [web3.js](https://github.com/web3/web3.js)
-    - [FCL](https://github.com/onflow/fcl-js/)
-    - [flow-cadut](https://github.com/onflow/flow-cadut) provides more utilities for using Flow on Web
+  - [FCL](https://github.com/onflow/fcl-js/)
+  - [flow-cadut](https://github.com/onflow/flow-cadut) provides more utilities for using Flow on Web
 - [Remix](https://remix.ethereum.org/)
-    - [Flow Playground](https://play.flow.com/) provides basic experimentation on the web
-    - [Cadence VSCode Extension](https://marketplace.visualstudio.com/items?itemName=onflow.cadence) is strongly suggested to install for local development
+  - [Flow Playground](https://play.flow.com/) provides basic experimentation on the web
+  - [Cadence VSCode Extension](https://marketplace.visualstudio.com/items?itemName=onflow.cadence) is strongly suggested to install for local development
 - [Testing Smart Contracts](https://ethereum.org/en/developers/docs/smart-contracts/testing/)
-    - [Cadence testing framework](https://cadence-lang.org/docs/testing-framework) enables native tests in Cadence.
-    - [overflow](https://github.com/bjartek/overflow) for testing in Go.
-    - [js-testing](https://github.com/onflow/flow-js-testing) for testing in JS.
+  - [Cadence testing framework](https://cadence-lang.org/docs/testing-framework) enables native tests in Cadence.
+  - [overflow](https://github.com/bjartek/overflow) for testing in Go.
+  - [js-testing](https://github.com/onflow/flow-js-testing) for testing in JS.

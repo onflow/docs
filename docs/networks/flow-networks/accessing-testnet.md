@@ -1,12 +1,15 @@
 ---
 title: Flow Testnet
+sidebar_label: Testnet
 sidebar_position: 3
 description: Guide to Testnet access
 ---
 
 ## About Flow Testnet
-Flow Testnet is Flow's official testing and development network. It is intended to provide a staging and testing environment for dApp developers. 
+
+Flow Testnet is Flow's official testing and development network. It is intended to provide a staging and testing environment for dApp developers.
 It aims to balance similarity with Mainnet with being a productive development environment, resulting in the following key differences:
+
 - Testnet has significantly fewer validator nodes, resulting in a faster block rate compared to Mainnet
 - Testnet is configured with shorter epochs (about 12 hours, compared to 7 days on Mainnet)
 - Testnet receives software upgrades up to 2 weeks before Mainnet
