@@ -29,7 +29,7 @@ There are two primary ways to access on-chain data within the Flow network; Acce
 
 If you’re getting started you don’t need to run your own node and you can use the above public nodes. The public access nodes are rate-limited, so as your product matures you might want to run your own node. There are multiple options available:
 
-- Start with a [Light (Observer) Node](../networks/node-ops/access-onchain-data/light-nodes/observer-node.md).
+- Start with a [Light (Observer) Node](../node-ops/access-onchain-data/light-nodes/observer-node.md).
 - You can also use a third-party provider like [Quicknode](https://www.quicknode.com/docs/flow).
 
-Check out [Running a Node](../networks/node-ops/access-onchain-data/light-nodes/observer-node.md) for more information.
+Check out [Running a Node](../node-ops/access-onchain-data/light-nodes/observer-node.md) for more information.
