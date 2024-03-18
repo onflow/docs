@@ -12,23 +12,11 @@ A language-agnostic specification for this API is defined using [Protocol Buffer
 
 ## Flow Access Node Endpoints
 
-The Access Nodes hosted by DapperLabs are accessible at:
-
-| Network     | GRPC                                      | Web GRPC                          | REST                         |
-| -------     | ----------------------------------------- | --------------------------------- | ---------------------------- |
-| Mainnet     | `access.mainnet.nodes.onflow.org:9000`    | `mainnet.onflow.org`              | `mainnet.onflow.org`         |
-| Sandboxnet (deprecated)  |  |  |  |
-| Testnet     | `access.devnet.nodes.onflow.org:9000`     | `testnet.onflow.org`              | `testnet.onflow.org`         |
-| Previewnet  | `access.previewnet.nodes.onflow.org:9000` | `previewnet.onflow.org`           | `previewnet.onflow.org`      |
-
-#### Mainnet
-##### We are still in the process of aggregating the past chain data but mainnet 5 to mainnet 1 spork data can be retrieved from the Access nodes mentioned [here](../../../node-operation/spork.md#mainnet)
-
-Production network where the Flow blockchain is running. Funds are at risk.
-
-#### Testnet
-
-Our test environment. Funds can be fauceted freely. It is sporked 2 weeks prior to mainnet.
+| Network    | GRPC                                      | Web GRPC                | REST                    |
+| ---------- | ----------------------------------------- | ----------------------- | ----------------------- |
+| Mainnet    | `access.mainnet.nodes.onflow.org:9000`    | `mainnet.onflow.org`    | `mainnet.onflow.org`    |
+| Testnet    | `access.devnet.nodes.onflow.org:9000`     | `testnet.onflow.org`    | `testnet.onflow.org`    |
+| Previewnet | `access.previewnet.nodes.onflow.org:9000` | `previewnet.onflow.org` | `previewnet.onflow.org` |
 
 ---
 
@@ -42,23 +30,17 @@ rpc Ping(PingRequest) returns (PingResponse)
 
 If a ping request returns an error or times out, it can be assumed that the Access API is unavailable.
 
-
 #### Request
 
 ```proto
 message PingRequest {}
 ```
 
-
-
-
 #### Response
 
 ```proto
 message PingResponse {}
 ```
-
-
 
 ---
 
@@ -74,7 +56,6 @@ The following methods query information about [block headers](#block-header).
 rpc GetLatestBlockHeader (GetLatestBlockHeaderRequest) returns (BlockHeaderResponse)
 ```
 
-
 #### Request
 
 ```proto
@@ -82,9 +63,6 @@ message GetLatestBlockHeaderRequest {
   bool is_sealed
 }
 ```
-
-
-
 
 #### Response
 
@@ -94,8 +72,6 @@ message BlockHeaderResponse {
   flow.BlockStatus block_status
 }
 ```
-
-
 
 ### GetBlockHeaderByID
 
@@ -105,7 +81,6 @@ message BlockHeaderResponse {
 rpc GetBlockHeaderByID (GetBlockHeaderByIDRequest) returns (BlockHeaderResponse)
 ```
 
-
 #### Request
 
 ```proto
@@ -113,9 +88,6 @@ message GetBlockHeaderByIDRequest {
   bytes id
 }
 ```
-
-
-
 
 #### Response
 
@@ -125,8 +97,6 @@ message BlockHeaderResponse {
   flow.BlockStatus block_status
 }
 ```
-
-
 
 ### GetBlockHeaderByHeight
 
@@ -136,7 +106,6 @@ message BlockHeaderResponse {
 rpc GetBlockHeaderByHeight (GetBlockHeaderByHeightRequest) returns (BlockHeaderResponse)
 ```
 
-
 #### Request
 
 ```proto
@@ -144,9 +113,6 @@ message GetBlockHeaderByHeightRequest {
   uint64 height
 }
 ```
-
-
-
 
 #### Response
 
@@ -156,8 +122,6 @@ message BlockHeaderResponse {
   flow.BlockStatus block_status
 }
 ```
-
-
 
 ---
 
@@ -173,7 +137,6 @@ The following methods query information about [full blocks](#block).
 rpc GetLatestBlock (GetLatestBlockRequest) returns (BlockResponse)
 ```
 
-
 #### Request
 
 ```proto
@@ -181,9 +144,6 @@ message GetLatestBlockRequest {
   bool is_sealed
 }
 ```
-
-
-
 
 #### Response
 
@@ -193,8 +153,6 @@ message BlockResponse {
   flow.BlockStatus block_status
 }
 ```
-
-
 
 ### GetBlockByID
 
@@ -204,7 +162,6 @@ message BlockResponse {
 rpc GetBlockByID (GetBlockByIDRequest) returns (BlockResponse)
 ```
 
-
 #### Request
 
 ```proto
@@ -212,9 +169,6 @@ message GetBlockByIDRequest {
   bytes id
 }
 ```
-
-
-
 
 #### Response
 
@@ -224,8 +178,6 @@ message BlockResponse {
   flow.BlockStatus block_status
 }
 ```
-
-
 
 ### GetBlockByHeight
 
@@ -235,7 +187,6 @@ message BlockResponse {
 rpc GetBlockByHeight (GetBlockByHeightRequest) returns (BlockResponse)
 ```
 
-
 #### Request
 
 ```proto
@@ -243,9 +194,6 @@ message GetBlockByHeightRequest {
   uint64 height
 }
 ```
-
-
-
 
 #### Response
 
@@ -255,8 +203,6 @@ message BlockResponse {
   flow.BlockStatus block_status
 }
 ```
-
-
 
 ---
 
@@ -272,7 +218,6 @@ The following methods query information about [collections](#collection).
 rpc GetCollectionByID (GetCollectionByIDRequest) returns (CollectionResponse)
 ```
 
-
 #### Request
 
 ```proto
@@ -281,9 +226,6 @@ message GetCollectionByIDRequest {
 }
 ```
 
-
-
-
 #### Response
 
 ```proto
@@ -291,8 +233,6 @@ message CollectionResponse {
   flow.Collection collection
 }
 ```
-
-
 
 ---
 
@@ -310,7 +250,6 @@ rpc SendTransaction (SendTransactionRequest) returns (SendTransactionResponse)
 
 `SendTransaction` determines the correct cluster of collection nodes that is responsible for collecting the transaction based on the hash of the transaction and forwards the transaction to that cluster.
 
-
 #### Request
 
 `SendTransactionRequest` message contains the transaction that is being request to be executed.
@@ -321,9 +260,6 @@ message SendTransactionRequest {
 }
 ```
 
-
-
-
 #### Response
 
 `SendTransactionResponse` message contains the ID of the submitted transaction.
@@ -333,8 +269,6 @@ message SendTransactionResponse {
   bytes id
 }
 ```
-
-
 
 ### GetTransaction
 
@@ -348,7 +282,6 @@ _Currently, only transactions within the current epoch can be queried._
 rpc GetTransaction (GetTransactionRequest) returns (TransactionResponse)
 ```
 
-
 #### Request
 
 `GetTransactionRequest` contains the ID of the transaction that is being queried.
@@ -358,9 +291,6 @@ message GetTransactionRequest {
   bytes id
 }
 ```
-
-
-
 
 #### Response
 
@@ -372,8 +302,6 @@ message TransactionResponse {
 }
 ```
 
-
-
 ### GetTransactionResult
 
 `GetTransactionResult` gets the execution result of a transaction.
@@ -382,7 +310,6 @@ message TransactionResponse {
 rpc GetTransactionResult (GetTransactionRequest) returns (TransactionResultResponse)
 ```
 
-
 #### Request
 
 ```proto
@@ -390,9 +317,6 @@ message GetTransactionRequest {
   bytes id
 }
 ```
-
-
-
 
 #### Response
 
@@ -404,8 +328,6 @@ message TransactionResultResponse {
   repeated flow.Event events
 }
 ```
-
-
 
 ---
 
@@ -421,7 +343,6 @@ message TransactionResultResponse {
 rpc GetAccount(GetAccountRequest) returns (GetAccountResponse)
 ```
 
-
 #### Request
 
 ```proto
@@ -430,9 +351,6 @@ message GetAccountRequest {
 }
 ```
 
-
-
-
 #### Response
 
 ```proto
@@ -440,8 +358,6 @@ message GetAccountResponse {
   Account account
 }
 ```
-
-
 
 ### GetAccountAtLatestBlock
 
@@ -453,7 +369,6 @@ The access node queries an execution node for the account details, which are sto
 rpc GetAccountAtLatestBlock(GetAccountAtLatestBlockRequest) returns (AccountResponse)
 ```
 
-
 #### Request
 
 ```proto
@@ -462,9 +377,6 @@ message GetAccountAtLatestBlockRequest {
 }
 ```
 
-
-
-
 #### Response
 
 ```proto
@@ -472,8 +384,6 @@ message AccountResponse {
   Account account
 }
 ```
-
-
 
 ### GetAccountAtBlockHeight
 
@@ -485,7 +395,6 @@ The access node queries an execution node for the account details, which are sto
 rpc GetAccountAtBlockHeight(GetAccountAtBlockHeightRequest) returns (AccountResponse)
 ```
 
-
 #### Request
 
 ```proto
@@ -494,9 +403,6 @@ message GetAccountAtBlockHeightRequest {
   uint64 block_height
 }
 ```
-
-
-
 
 #### Response
 
@@ -527,7 +433,6 @@ header = GetLatestBlockHeader()
 value = ExecuteScriptAtBlockID(header.ID, script)
 ```
 
-
 #### Request
 
 ```proto
@@ -536,9 +441,6 @@ message ExecuteScriptAtLatestBlockRequest {
 }
 ```
 
-
-
-
 #### Response
 
 ```proto
@@ -546,8 +448,6 @@ message ExecuteScriptResponse {
   bytes value
 }
 ```
-
-
 
 ### ExecuteScriptAtBlockID
 
@@ -559,7 +459,6 @@ This method can be used to read account state from the blockchain. The script is
 rpc ExecuteScriptAtBlockID (ExecuteScriptAtBlockIDRequest) returns (ExecuteScriptResponse)
 ```
 
-
 #### Request
 
 ```proto
@@ -569,9 +468,6 @@ message ExecuteScriptAtBlockIDRequest {
 }
 ```
 
-
-
-
 #### Response
 
 ```proto
@@ -579,8 +475,6 @@ message ExecuteScriptResponse {
   bytes value
 }
 ```
-
-
 
 ### ExecuteScriptAtBlockHeight
 
@@ -592,7 +486,6 @@ This method can be used to read account state from the blockchain. The script is
 rpc ExecuteScriptAtBlockHeight (ExecuteScriptAtBlockHeightRequest) returns (ExecuteScriptResponse)
 ```
 
-
 #### Request
 
 ```proto
@@ -602,9 +495,6 @@ message ExecuteScriptAtBlockHeightRequest {
 }
 ```
 
-
-
-
 #### Response
 
 ```proto
@@ -612,8 +502,6 @@ message ExecuteScriptResponse {
   bytes value
 }
 ```
-
-
 
 ---
 
@@ -639,7 +527,6 @@ The event results are grouped by block, with each group specifying a block ID, h
 
 Event types are name-spaced with the address of the account and contract in which they are declared.
 
-
 #### Request
 
 ```proto
@@ -649,9 +536,6 @@ message GetEventsForHeightRangeRequest {
   uint64 end_height = 3;
 }
 ```
-
-
-
 
 #### Response
 
@@ -666,8 +550,6 @@ message EventsResponse {
   repeated Result results = 1;
 }
 ```
-
-
 
 ### GetEventsForBlockIDs
 
@@ -681,7 +563,6 @@ Events can be requested for a list of block IDs via the `block_ids` field and fu
 
 The event results are grouped by block, with each group specifying a block ID, height and block timestamp.
 
-
 #### Request
 
 ```proto
@@ -690,9 +571,6 @@ message GetEventsForBlockIDsRequest {
   repeated bytes block_ids = 2;
 }
 ```
-
-
-
 
 #### Response
 
@@ -707,8 +585,6 @@ message EventsResponse {
   repeated Result results = 1;
 }
 ```
-
-
 
 ---
 
@@ -725,15 +601,11 @@ The following method can be used to query for network parameters.
 rpc GetNetworkParameters (GetNetworkParametersRequest) returns (GetNetworkParametersResponse)
 ```
 
-
 #### Request
 
 ```proto
 message GetNetworkParametersRequest {}
 ```
-
-
-
 
 #### Response
 
@@ -746,8 +618,6 @@ message GetNetworkParametersResponse {
 | Field    | Description                                                                                                  |
 | -------- | ------------------------------------------------------------------------------------------------------------ |
 | chain_id | Chain ID helps identify the Flow network. It can be one of `flow-mainnet`, `flow-testnet` or `flow-emulator` |
-
-
 
 ---
 
@@ -764,15 +634,11 @@ It is used by Flow nodes joining the network to bootstrap a space-efficient loca
 rpc GetLatestProtocolStateSnapshot (GetLatestProtocolStateSnapshotRequest) returns (ProtocolStateSnapshotResponse);
 ```
 
-
 #### Request
 
 ```proto
 message GetLatestProtocolStateSnapshotRequest {}
 ```
-
-
-
 
 #### Response
 
@@ -781,7 +647,6 @@ message ProtocolStateSnapshotResponse {
   bytes serializedSnapshot = 1;
 }
 ```
-
 
 ## Execution results
 
@@ -797,7 +662,6 @@ Particularly, it contains `EventsCollection` hash for every chunk which can be u
 rpc GetExecutionResultForBlockID(GetExecutionResultForBlockIDRequest) returns (ExecutionResultForBlockIDResponse);
 ```
 
-
 #### Request
 
 ```proto
@@ -806,8 +670,6 @@ message GetExecutionResultForBlockIDRequest {
 }
 ```
 
-
-
 #### Response
 
 ```proto
@@ -815,9 +677,6 @@ message ExecutionResultForBlockIDResponse {
   flow.ExecutionResult execution_result = 1;
 }
 ```
-
-
-
 
 ## Entities
 
@@ -897,11 +756,11 @@ enum BlockStatus {
 }
 ```
 
-| Value     | Description                                              |
-| --------- | -------------------------------------------------------- |
-| UNKNOWN   | The block status is not known.                           |
-| FINALIZED | The consensus nodes have finalized the block             |
-| SEALED    | The verification nodes have verified the block           |
+| Value     | Description                                    |
+| --------- | ---------------------------------------------- |
+| UNKNOWN   | The block status is not known.                 |
+| FINALIZED | The consensus nodes have finalized the block   |
+| SEALED    | The verification nodes have verified the block |
 
 ### Collection
 
@@ -965,15 +824,15 @@ message TransactionSignature {
 }
 ```
 
-| Field                         | Description                                                                                          |
-| ----------------------------- | ---------------------------------------------------------------------------------------------------- |
-| script                        | Raw source code for a Cadence script, encoded as UTF-8 bytes                                         |
+| Field                         | Description                                                                                                                 |
+| ----------------------------- | --------------------------------------------------------------------------------------------------------------------------- |
+| script                        | Raw source code for a Cadence script, encoded as UTF-8 bytes                                                                |
 | arguments                     | Arguments passed to the Cadence script, encoded as [JSON-Cadence](https://cadencelang.dev/docs/1.0/json-cadence-spec) bytes |
-| reference_block_id            | Block ID used to determine transaction expiry                                                        |
-| [proposal_key](#proposal-key) | Account key used to propose the transaction                                                          |
-| payer                         | Address of the payer account                                                                         |
-| authorizers                   | Addresses of the transaction authorizers                                                             |
-| signatures                    | [Signatures](#transaction-signatures) from all signer accounts                                       |
+| reference_block_id            | Block ID used to determine transaction expiry                                                                               |
+| [proposal_key](#proposal-key) | Account key used to propose the transaction                                                                                 |
+| payer                         | Address of the payer account                                                                                                |
+| authorizers                   | Addresses of the transaction authorizers                                                                                    |
+| signatures                    | [Signatures](#transaction-signatures) from all signer accounts                                                              |
 
 The detailed semantics of transaction creation, signing and submission are covered in the [transaction submission guide](../../../../../build/basics/transactions.md#signing-a-transaction).
 
@@ -981,10 +840,10 @@ The detailed semantics of transaction creation, signing and submission are cover
 
 The proposal key is used to specify a sequence number for the transaction. Sequence numbers are covered in more detail [here](../../../../../build/basics/transactions.md#sequence-numbers).
 
-| Field           | Description                                                                          |
-| --------------- | ------------------------------------------------------------------------------------ |
-| address         | Address of proposer account                                                          |
-| key_id          | ID of proposal key on the proposal account                                           |
+| Field           | Description                                                                                          |
+| --------------- | ---------------------------------------------------------------------------------------------------- |
+| address         | Address of proposer account                                                                          |
+| key_id          | ID of proposal key on the proposal account                                                           |
 | sequence_number | [Sequence number](../../../../../build/basics/transactions.md#sequence-numbers) for the proposal key |
 
 #### Transaction Signature
@@ -1059,15 +918,15 @@ message AccountKey {
 }
 ```
 
-| Field           | Description                                                                             |
-| --------------- | --------------------------------------------------------------------------------------- |
-| id              | Index of the key within the account, used as a unique identifier                        |
-| public_key      | Public key encoded as bytes                                                             |
+| Field           | Description                                                                                  |
+| --------------- | -------------------------------------------------------------------------------------------- |
+| id              | Index of the key within the account, used as a unique identifier                             |
+| public_key      | Public key encoded as bytes                                                                  |
 | sign_algo       | [Signature algorithm](../../../../../build/basics/accounts.md#signature-and-hash-algorithms) |
 | hash_algo       | [Hash algorithm](../../../../../build/basics/accounts.md#signature-and-hash-algorithms)      |
-| weight          | [Weight assigned to the key](../../../../../build/basics/accounts.md#account-keys)                 |
-| sequence_number | [Sequence number for the key](../../../../../build/basics/transactions.md#sequence-numbers)             |
-| revoked         | Flag indicating whether or not the key has been revoked                                 |
+| weight          | [Weight assigned to the key](../../../../../build/basics/accounts.md#account-keys)           |
+| sequence_number | [Sequence number for the key](../../../../../build/basics/transactions.md#sequence-numbers)  |
+| revoked         | Flag indicating whether or not the key has been revoked                                      |
 
 More information on account keys, key weights and sequence numbers can be found [here](../../../../../build/basics/accounts.md).
 
@@ -1085,12 +944,12 @@ message Event {
 }
 ```
 
-| Field             | Description                                                                |
-| ----------------- | -------------------------------------------------------------------------- |
-| type              | Fully-qualified unique type identifier for the event                       |
-| transaction_id    | ID of the transaction the event was emitted from                           |
-| transaction_index | Zero-based index of the transaction within the block                       |
-| event_index       | Zero-based index of the event within the transaction                       |
+| Field             | Description                                                                                       |
+| ----------------- | ------------------------------------------------------------------------------------------------- |
+| type              | Fully-qualified unique type identifier for the event                                              |
+| transaction_id    | ID of the transaction the event was emitted from                                                  |
+| transaction_index | Zero-based index of the transaction within the block                                              |
+| event_index       | Zero-based index of the event within the transaction                                              |
 | payload           | Event fields encoded as [JSON-Cadence values](https://cadencelang.dev/docs/1.0/json-cadence-spec) |
 
 ### Execution Result
@@ -1112,7 +971,6 @@ message ExecutionResult {
 | block_id           | ID of the block this execution result corresponds to |
 | chunks             | Zero or more chunks                                  |
 | service_events     | Zero or more service events                          |
-
 
 #### Chunk
 
@@ -1254,8 +1112,8 @@ message EventFilter {
 }
 ```
 
-| Field      | Description                                                                                                                                                                                                                                                                                             |
-| ---------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| event_type | A list of full event types to include. <br/> Event types have 2 formats:<br/>  * Protocol events: `flow.[event name]`<br/>  * Smart contract events: `A.[contract address].[contract name].[event name]`                                                                                                |
-| contract   | A list of contracts who's events should be included. Contracts have the following name formats:<br/>  * Protocol events: `flow`<br/>  * Smart contract events: `A.[contract address].[contract name]`<br/> This filter matches on the full contract including its address, not just the contract's name |
-| address    | A list of addresses who's events should be included. Addresses must be Flow account addresses in hex format and valid for the network the node is connected to. i.e. only a mainnet address is valid for a mainnet node. Addresses may optionally include the `0x` prefix                               |
+| Field      | Description                                                                                                                                                                                                                                                                                           |
+| ---------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| event_type | A list of full event types to include. <br/> Event types have 2 formats:<br/> _ Protocol events: `flow.[event name]`<br/> _ Smart contract events: `A.[contract address].[contract name].[event name]`                                                                                                |
+| contract   | A list of contracts who's events should be included. Contracts have the following name formats:<br/> _ Protocol events: `flow`<br/> _ Smart contract events: `A.[contract address].[contract name]`<br/> This filter matches on the full contract including its address, not just the contract's name |
+| address    | A list of addresses who's events should be included. Addresses must be Flow account addresses in hex format and valid for the network the node is connected to. i.e. only a mainnet address is valid for a mainnet node. Addresses may optionally include the `0x` prefix                             |

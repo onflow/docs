@@ -6,9 +6,9 @@ sidebar_position: 1
 
 ## About Flow Networks
 
-Other than the Flow mainnet network, Flow testnet can be used to test applications and contracts before deployment to mainnet.
+Other than Mainnet, Testnet can be used to test applications and contracts before deployment to Mainnet.
 
-During a round of network upgrade, Flow testnet is updated first. Hence, testnet can be used to test against the latest node software, Cadence and core contract changes which will eventually be available to mainnet.
+During a network upgrade, Testnet will be updated first. Hence, Testnet can be used to test against the latest node software, Cadence and core contract changes which will eventually be available to Mainnet.
 
 ### How To Access These Networks?
 
@@ -18,7 +18,7 @@ During a round of network upgrade, Flow testnet is updated first. Hence, testnet
 
 ### Network
 
-Get Flow blockchain data from Access Nodes, both REST and gRPC endpoints are available. Get the current status of mainnet and testnet networks.
+There are two primary ways to access on-chain data within the Flow network; Access Nodes and Light nodes. Access Nodes are the node type that are most useful for developers, as they provide access to the Flow network via the following API endpoints:
 
 - [Flow Access API](../node-ops/access-onchain-data/access-nodes/accessing-data/access-api.md)
   - [Mainnet](./accessing-mainnet.md): `access.mainnet.nodes.onflow.org:9000`
