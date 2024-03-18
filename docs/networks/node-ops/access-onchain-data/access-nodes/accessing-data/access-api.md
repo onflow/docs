@@ -12,11 +12,11 @@ A language-agnostic specification for this API is defined using [Protocol Buffer
 
 ## Flow Access Node Endpoints
 
-| Network    | GRPC                                      | Web GRPC                | REST                    |
-| ---------- | ----------------------------------------- | ----------------------- | ----------------------- |
-| Mainnet    | `access.mainnet.nodes.onflow.org:9000`    | `mainnet.onflow.org`    | `mainnet.onflow.org`    |
-| Testnet    | `access.devnet.nodes.onflow.org:9000`     | `testnet.onflow.org`    | `testnet.onflow.org`    |
-| Previewnet | `access.previewnet.nodes.onflow.org:9000` | `previewnet.onflow.org` | `previewnet.onflow.org` |
+| Network    | GRPC                                      | Web GRPC                | REST                          |
+| ---------- | ----------------------------------------- | ----------------------- | ----------------------------- |
+| Mainnet    | `access.mainnet.nodes.onflow.org:9000`    | `mainnet.onflow.org`    | `rest-mainnet.onflow.org`     |
+| Testnet    | `access.devnet.nodes.onflow.org:9000`     | `testnet.onflow.org`    | `rest-testnet.onflow.org`     |
+| Previewnet | `access.previewnet.nodes.onflow.org:9000` | `previewnet.onflow.org` | `reset-previewnet.onflow.org` |
 
 ---
 
