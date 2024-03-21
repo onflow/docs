@@ -60,6 +60,12 @@ https://niftory.com/
 
 https://www.finoa.io/flow/
 
+## Shadow
+
+[Shadow](https://shadow.app/wallet) is your web3 companion, enabling you to store your assets, transact with friends, and connect to apps on multiple chains.
+
+https://shadow.app/wallet
+
 </div>
 
 ## Flow Dev Wallet
