@@ -6,7 +6,6 @@ export interface ContentFeatureProps {
   image: string;
   header: string;
   text: string;
-  headerLink?: string;
 }
 
 export function ContentFeature({
@@ -14,10 +13,9 @@ export function ContentFeature({
   image,
   header,
   text,
-  headerLink,
 }: ContentFeatureProps): React.ReactElement {
   return (
-    <div className="container flex flex-col justify-between rounded-md bg-card-gradient h-[256px]">
+    <div className="container flex flex-col justify-between rounded-md bg-light-card dark:bg-card-gradient h-[256px]">
       <div>
         <div className="text-xl text-white font-semibold px-4 pt-4">
           {header}
