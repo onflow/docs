@@ -6,31 +6,20 @@ import {
 } from './HomepageStartIcons';
 
 export type HomepageStartItemProps = {
-  title: string;
-  text: string;
   link: string;
+  icon: string;
 } & HomepageStartItemIconsProps;
 
 export function HomepageStartItem({
-  title,
-  text,
   link,
   icon,
-}: HomepageStartItemProps) {
+}: HomepageStartItemProps): React.ReactElement {
   return (
     <AppLink
-      className="flex cursor-pointer gap-6 rounded-lg bg-primary-gray-100/40 py-8 pl-8 pr-4 text-gray-700 hover:no-underline"
+      className="flex w-full h-full cursor-pointer gap-6 rounded-lg text-white hover:text-white justify-center items-center hover:border-black"
       to={link}
     >
-      <div className="flex min-w-0 grow flex-col items-start justify-start">
-        <div className="mb-3 text-primary-gray-400 dark:text-primary-gray-100">
-          <HomepageStartItemIcons icon={icon} />
-        </div>
-        <div className="mb-2 truncate text-ellipsis whitespace-nowrap font-display text-lg font-bold dark:text-white lg:text-2xl">
-          {title}
-        </div>
-        <div className="text-start dark:text-primary-gray-100">{text}</div>
-      </div>
+      <HomepageStartItemIcons icon={icon} />
     </AppLink>
   );
 }

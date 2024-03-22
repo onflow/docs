@@ -1,26 +1,4 @@
 import { type ContentNavigationListProps } from '../../ui/design-system/src/lib/Components/ContentNavigationList';
-import { type HomepageStartItemProps } from '../../ui/design-system/src/lib/Components/HomepageStartItem';
-
-const homepageStartProjectData: HomepageStartItemProps[] = [
-  {
-    title: 'Getting Started',
-    text: 'Dive into key concepts with a Hello World quickstart',
-    link: '/build/getting-started/quickstarts/hello-world',
-    icon: 'learn',
-  },
-  {
-    title: 'Developer Guides',
-    text: 'Create your first dApp in just a few minutes',
-    link: '/build/guides/flow-app-quickstart',
-    icon: 'quickstart',
-  },
-  {
-    title: 'Resources',
-    text: 'All the developer tools you need',
-    link: '/tools/flow-cli',
-    icon: 'documentation',
-  },
-];
 
 const contentNavigationListItems: ContentNavigationListProps = {
   header: 'Explore Key Concepts and Features',
@@ -52,4 +30,4 @@ const contentNavigationListItems: ContentNavigationListProps = {
   ],
 };
 
-export { homepageStartProjectData, contentNavigationListItems };
+export { contentNavigationListItems };
