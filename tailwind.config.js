@@ -99,6 +99,10 @@ module.exports = {
         custom: '60px',
         lg: '1rem',
       },
+      backgroundImage: {
+        'card-gradient':
+          'linear-gradient(0deg, rgba(0, 0, 0, 0.00) 0%, rgba(0, 0, 0, 0.60) 25%, #32343E 100%)',
+      },
       typography: (theme) => ({
         DEFAULT: {
           css: {

@@ -55,8 +55,11 @@ const homepagePillData: Record<string, HomepagePillItemsProps> = {
 };
 export function HomepageStartList(): React.ReactElement {
   return (
-    <div className="container mb-1">
-      <div className="grid grid-cols-1 md:grid-cols-3 md:grid-rows-3 gap-1">
+    <div className="container">
+      <div
+        className="grid grid-cols-1 md:grid-cols-3 md:grid-rows-3 gap-1"
+        style={{ gridTemplateRows: 'auto auto min-content' }}
+      >
         <div className="md:col-span-1 md:row-span-2 rounded-lg shadow p-2">
           <HomepageStartItem key={0} {...homepageData['cadence-course']} />
         </div>
@@ -72,7 +75,7 @@ export function HomepageStartList(): React.ReactElement {
         <div className="md:col-span-2 md:row-span-1 rounded-lg shadow p-2">
           <HomepageStartItem key={3} {...homepageData['lang-reference']} />
         </div>
-        <div className="col-span-1 md:col-span-3 rounded-lg shadow p-2">
+        <div className="col-span-1 md:col-span-3 p-2">
           <div className="flex flex-col md:flex-row gap-4">
             <HomepagePillItem
               key={4}

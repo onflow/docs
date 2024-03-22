@@ -1,7 +1,7 @@
 import { type ContentNavigationListProps } from '../../ui/design-system/src/lib/Components/ContentNavigationList';
 
 const contentNavigationListItems: ContentNavigationListProps = {
-  header: 'Explore Key Concepts and Features',
+  header: 'Key Features',
   contentNavigationItems: [
     {
       title: 'Why Flow',
