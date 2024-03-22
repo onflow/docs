@@ -503,6 +503,18 @@ const config = {
       },
     }),
   plugins: [
+    {
+      name: 'preset-default',
+      params: {
+        overrides: {
+          removeTitle: false,
+          removeViewBox: false,
+          cleanupIds: {
+            minify: false,
+          },
+        },
+      },
+    },
     function tailwindPlugin() {
       return {
         name: 'docusaurus-tailwindcss',

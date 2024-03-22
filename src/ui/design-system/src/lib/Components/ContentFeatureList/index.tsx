@@ -48,15 +48,15 @@ export function ContentFeatureList(): React.ReactElement {
           <ContentFeature key={0} {...ContentFeatures['why-flow']} />
         </div>
         <div className="md:col-span-1">
-          <ContentFeature key={2} {...ContentFeatures['smart-accounts']} />
+          <ContentFeature key={1} {...ContentFeatures['smart-accounts']} />
         </div>
         <div className="md:col-span-1">
-          <ContentFeature key={4} {...ContentFeatures.transactions} />
+          <ContentFeature key={2} {...ContentFeatures.transactions} />
         </div>
         <div className="md:col-span-3">
           <div className="flex flex-col md:flex-row gap-4">
-            <ContentFeature key={6} {...ContentFeatures['code-scripts']} />
-            <ContentFeature key={8} {...ContentFeatures['evm-compatibility']} />
+            <ContentFeature key={3} {...ContentFeatures['code-scripts']} />
+            <ContentFeature key={4} {...ContentFeatures['evm-compatibility']} />
           </div>
         </div>
       </div>

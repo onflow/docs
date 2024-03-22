@@ -15,14 +15,14 @@ export function ContentFeature({
   text,
 }: ContentFeatureProps): React.ReactElement {
   return (
-    <div className="container flex flex-col justify-between rounded-md bg-light-card dark:bg-card-gradient h-[256px]">
+    <div className="container px-0 flex flex-col justify-between rounded-md bg-light-card dark:bg-card-gradient h-[256px]">
       <div>
-        <div className="text-xl text-white font-semibold px-4 pt-4">
+        <div className="text-xl text-white font-semibold pl-8 pt-4">
           {header}
         </div>
-        <div className="text-sm text-white px-4">{text}</div>
+        <div className="text-sm text-white px-8">{text}</div>
       </div>
-      <div className={`flex justify-between items-center flex-row gap-4`}>
+      <div className={`flex justify-between items-center flex-row pl-8`}>
         <ContentFeatureIcon icon={icon} />
         <ContentFeatureIcon icon={image} />
       </div>
