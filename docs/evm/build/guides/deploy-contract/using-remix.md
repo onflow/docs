@@ -1,7 +1,7 @@
 ---
-title: Using Remix
+title: Flow Remix Guide
 description: "Using Remix to deploy a solidity contract to EVM on Flow."
-sidebar_label: Using Remix
+sidebar_label: Remix
 sidebar_position: 1
 ---
 
@@ -103,7 +103,7 @@ getGreeting();
 1. Create a new file under `scripts`.
 2. Paste in above JavaScript code.
 3. Click on green play button.
-4. Verify the greeting is "Hello World!"
+4. Verify the greeting is "Hello World!".
 
 Follow the steps below to change the greeting and retrieve the new greeting.
 
