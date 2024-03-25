@@ -69,6 +69,11 @@ contract HelloWorld {
 
 ### Using Ethers.js to Call the HelloWorld Smart Contract
 
+1. Create a new `get-greeting.js` file under `scripts`.
+2. Paste in the JavaScript code below.
+3. Click on green play button to run.
+4. Verify the greeting is "Hello World!".
+
 ```javascript
 // Import ethers from the ethers.js library
 const { ethers } = require('ethers');
@@ -84,7 +89,7 @@ const contractAddress = "0x8a120383e6057b1f3aef4fa9b89c2f1b0a695926";
 // Connect to the Ethereum network
 // This example uses the default provider from ethers.js, which connects to the Ethereum mainnet.
 // For a testnet or custom RPC, use ethers.getDefaultProvider('networkName') or new ethers.providers.JsonRpcProvider(url)
-  const provider = new ethers.providers.Web3Provider(window?.ethereum);
+const provider = new ethers.providers.Web3Provider(window?.ethereum);
               
 
 // Create a new contract instance
@@ -100,11 +105,6 @@ async function getGreeting() {
 getGreeting();
 ```
 
-1. Create a new file under `scripts`.
-2. Paste in above JavaScript code.
-3. Click on green play button.
-4. Verify the greeting is "Hello World!".
-
 Follow the steps below to change the greeting and retrieve the new greeting.
 
 ## Updating the Deployed Smart Contract
@@ -117,8 +117,4 @@ Follow the steps below to change the greeting and retrieve the new greeting.
 4. Type a new greeting in the text input next to orange `changeGreeting` button.
 5. Click on the orange `changeGreeting` button.
 6. Sign the Metamask transaction.
-7. Verify the greeting has changed by running the JavaScript above.
-
-## Flow Previewnet Block Explorer 
-
-### Coming Soon 
+7. Verify the greeting has changed by re-running `get-greeting.js` script above.
