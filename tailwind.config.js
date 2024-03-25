@@ -67,6 +67,7 @@ module.exports = {
         'red-error-dark': '#F67D65',
         'green-success-dark': '#7AFFC8',
         'primary-gray': {
+          10: '#F2F4F7',
           50: '#F6F7F9',
           100: '#DEE2E9',
           200: '#ABB3BF',
