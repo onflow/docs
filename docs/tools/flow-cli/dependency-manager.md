@@ -45,7 +45,7 @@ Or the extended format like this:
 {
     "dependencies": {
        "FlowToken": {
-          "source": "emulator://7e60df042a9c0868.FlowToken",
+          "source": "testnet://7e60df042a9c0868.FlowToken",
           "aliases": {
              "emulator": "0ae53cb6e3f42a79"
           }
