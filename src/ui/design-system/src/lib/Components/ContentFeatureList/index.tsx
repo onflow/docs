@@ -6,7 +6,7 @@ const ContentFeatures: Record<string, ContentFeatureProps> = {
     icon: 'feature-why-flow-icon',
     image: 'feature-why-flow-image',
     header: 'Why Flow',
-    text: 'Introduction to the Flow Network',
+    text: 'Introduction to the Network',
     headerLink: '',
   },
   'smart-accounts': {
@@ -20,7 +20,7 @@ const ContentFeatures: Record<string, ContentFeatureProps> = {
     icon: 'feature-stacks-icon',
     image: 'feature-stacks-image',
     header: 'Bundle & Scripted Transactions',
-    text: 'Introduction to Transactions',
+    text: 'Introduction to gasless, scripted and bundled transactions',
     headerLink: '',
   },
   'code-scripts': {
@@ -42,7 +42,11 @@ const ContentFeatures: Record<string, ContentFeatureProps> = {
 export function ContentFeatureList(): React.ReactElement {
   return (
     <div className="container">
-      <div className="text-h2 pb-10 hidden md:block">Key Features</div>
+      <div className="flex flex-col md:w-1/2 md:block pb-9">
+        <div className="text-h2 pb-5">Key Features</div>
+        Discover the unique features of Flow, unlocking innovative possibilities
+        for your decentralized applications and smart contracts.
+      </div>
       <div className={`grid grid-cols-1 md:grid-cols-3 gap-4`}>
         <div className="md:col-span-1">
           <ContentFeature key={0} {...ContentFeatures['why-flow']} />

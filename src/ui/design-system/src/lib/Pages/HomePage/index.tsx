@@ -1,9 +1,5 @@
 import React from 'react';
-import {
-  LandingHeaderHome,
-  HomepageStartList,
-  UpcomingEvents,
-} from '../../Components';
+import { LandingHeaderHome, HomepageStartList } from '../../Components';
 import { type ContentNavigationListProps } from '../../Components/ContentNavigationList';
 import { type SocialLinksSignupProps } from '../../Components/SocialLinksSignup';
 import { type TutorialCardProps } from '../../Components/TutorialCard';
@@ -12,6 +8,7 @@ import PageBackground from '../shared/PageBackground';
 import PageSection from '../shared/PageSection';
 import PageSections from '../shared/PageSections';
 import { ContentFeatureList } from '../../Components/ContentFeatureList';
+import { PageCarousel } from '../../Components/PageCarousel';
 
 export type HomePageProps = SocialLinksSignupProps & {
   concepts?: TutorialCardProps[];
@@ -44,13 +41,11 @@ const HomePage = ({
       />
       <HomepageStartList />
       <PageSections>
-        {upcomingEvents.events.length > 0 && (
-          <PageSection sectionId="upcoming-events">
-            <UpcomingEvents {...upcomingEvents} headerLink="upcoming-events" />
-          </PageSection>
-        )}
         <PageSection sectionId="explore-more-content">
           <ContentFeatureList />
+        </PageSection>
+        <PageSection sectionId="start-building-onflow">
+          <PageCarousel />
         </PageSection>
       </PageSections>
     </PageBackground>
