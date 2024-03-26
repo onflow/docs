@@ -98,7 +98,7 @@ export const PageCarousel = (): React.ReactNode => {
         ))}
       </div>
       <div className="flex flex-col md:flex-row md:justify-center items-center gap-4 py-4">
-        <div className="hidden md:block">
+        <div className="hidden md:flex md:gap-4">
           {cards[activeCategory].map((card, i) => (
             <PageCard key={i} {...card} />
           ))}

@@ -17,16 +17,18 @@ export const PageNavigation = ({
 }: PageNavigationProps): React.ReactNode => {
   return (
     <>
-      <div className="hidden md:block flex justify-start align-center py-6">
-        <button className="hover:cursor-pointer rounded-full border-none">
+      <div className="hidden md:flex flex justify-start items-center py-6">
+        <button className="text-primary bg-transparent hover:cursor-pointer rounded-full border-none">
           <PageBack
+            className="stroke-current"
             onClick={() => {
               back();
             }}
           />
         </button>
-        <button className="hover:cursor-pointer rounded-full border-none">
+        <button className="bg-transparent hover:cursor-pointer rounded-full border-none">
           <PageForward
+            className="stroke-current"
             onClick={() => {
               forward();
             }}

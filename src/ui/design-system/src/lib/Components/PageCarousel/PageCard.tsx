@@ -34,7 +34,7 @@ export const PageCard = ({
       <div className="flex-grow" />
       <div className="px-6 pt-4 pb-4">
         <div className="opacity-0 group-hover:opacity-100 transition-opacity duration-300 ease-in-out">
-          <span className="text-black text-xs block">{hoverText} →</span>
+          <span className="text-gray-500 text-xs block">{hoverText} →</span>
         </div>
       </div>
     </AppLink>
