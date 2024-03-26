@@ -13,15 +13,15 @@ For example, suppose you wanted to build a new application using the `FlowToken`
 
 If you know the address and name of the contract you want to install (this can usually be found easily in the [Contract Browser](https://contractbrowser.com/)), you can install the dependency and all its dependencies with a single CLI command, as shown below (using FlowToken as an example):
 
-`flow dependencies add testnet://0afe396ebc8eee65.FlowToken`
+`flow dependencies add testnet://7e60df042a9c0868.FlowToken`
 
 > Note: You can also use the shorthand `deps`
 > 
 
-In this command, the string that will be used as the `source` in the `flow.json` after installation is `testnet://0afe396ebc8eee65.FLOAT`. This can be broken down into three sections for formatting it yourself for another contract:
+In this command, the string that will be used as the `source` in the `flow.json` after installation is `testnet://7e60df042a9c0868.FlowToken`. This can be broken down into three sections for formatting it yourself for another contract:
 
 - **Network**: `testnet`
-- **Address**: `0ae53cb6e3f42a79`
+- **Address**: `7e60df042a9c0868`
 - **Contract Name**: `FlowToken`
 
 This is the remote source of the contract on the network that will be used as the source of truth.
@@ -45,7 +45,7 @@ Or the extended format like this:
 {
     "dependencies": {
        "FlowToken": {
-          "source": "emulator://0ae53cb6e3f42a79.FlowToken",
+          "source": "emulator://7e60df042a9c0868.FlowToken",
           "aliases": {
              "emulator": "0ae53cb6e3f42a79"
           }
