@@ -12,6 +12,7 @@ export interface LinkGridSection {
   header: string;
   imageName: string;
   more: string;
+  showBorder?: boolean;
 }
 
 export interface LinkGridProps {
@@ -66,6 +67,7 @@ const sections: LinkGridSection[] = [
     ],
     imageName: 'docs-advanced',
     more: '/',
+    showBorder: false,
   },
 ];
 
@@ -74,41 +76,45 @@ const SectionCard = ({
   links,
   imageName,
   more,
-}: LinkGridSection): React.ReactNode => (
-  <div className="border rounded-lg p-6 flex flex-col space-y-4">
-    <LinkGridImage imageName={imageName} />
-    <h3 className="text-lg font-semibold">{header}</h3>
-    <div className="space-y-2 flex flex-col gap-1">
-      {links.map((link, index) => (
-        <span
-          key={index}
-          className="hover:underline hover:primary-green cursor-pointer"
-        >
-          <a href={link.href}>{link.title}</a>
-        </span>
-      ))}
+  showBorder = true,
+}: LinkGridSection): React.ReactNode => {
+  const borderStyle = showBorder
+    ? 'border border-solid border-gray-400 border-t-0 border-b-0 border-l-0'
+    : '';
+  return (
+    <div className={`p-6 flex flex-col space-y-4 ${borderStyle}`}>
+      <LinkGridImage imageName={imageName} />
+      <h3 className="text-lg font-semibold">{header}</h3>
+      <div className="space-y-2 flex flex-col gap-1">
+        {links.map((link, index) => (
+          <span
+            key={index}
+            className="hover:underline hover:primary-green cursor-pointer"
+          >
+            <a href={link.href}>{link.title}</a>
+          </span>
+        ))}
+      </div>
+      <a
+        href={more}
+        className="border-none bg-transparent font-semibold hover:underline mt-auto py-5"
+      >
+        More
+      </a>
     </div>
-    <a
-      href={more}
-      className="border-none bg-transparent font-semibold hover:underline mt-auto py-5"
-    >
-      More
-    </a>
-  </div>
-);
+  );
+};
 
 export const LinkGrid = (): React.ReactNode => (
-  <div className="p-8 border">
-    <div className="flex justify-between justify-center">
-      <h2 className="text-4xl mx-6">Explore the Docs</h2>
-      <div className="flex justify-end mt-4">
-        <div className="bg-transparent px-4 py-2 rounded-lg flex items-center space-x-2">
-          <span>Read Docs</span>
-          <ReadDocs />
-        </div>
+  <div className="container border border border-solid border-gray-400 rounded-lg p-0">
+    <div className="p-8 flex items-center justify-between justify-center border-b border-t-0 border-r-0 border-l-0 border-solid border-gray-400">
+      <div className="text-4xl px-6">Explore the Docs</div>
+      <div className="px-6 flex items-center gap-2 font-semibold">
+        Read Docs
+        <ReadDocs className="stroke-current" />
       </div>
     </div>
-    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+    <div className="p-6 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 ">
       {sections.map((section, index) => (
         <SectionCard key={index} {...section} />
       ))}
