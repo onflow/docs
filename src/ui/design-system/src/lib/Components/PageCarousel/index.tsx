@@ -90,7 +90,7 @@ export const PageCarousel = (): React.ReactNode => {
               setActiveCategory(category);
             }}
             className={`border border-primary-gray-100 hover:cursor-pointer text-black bg-white px-4 py-2 rounded-lg ${
-              activeCategory === category ? 'bg-primary-green' : ''
+              activeCategory === category ? 'md:bg-primary-green' : ''
             }`}
           >
             {category}
