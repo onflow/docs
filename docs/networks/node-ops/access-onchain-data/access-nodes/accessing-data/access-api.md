@@ -16,7 +16,7 @@ A language-agnostic specification for this API is defined using [Protocol Buffer
 | ---------- | ----------------------------------------- | ----------------------- | ----------------------------- |
 | Mainnet    | `access.mainnet.nodes.onflow.org:9000`    | `mainnet.onflow.org`    | `rest-mainnet.onflow.org`     |
 | Testnet    | `access.devnet.nodes.onflow.org:9000`     | `testnet.onflow.org`    | `rest-testnet.onflow.org`     |
-| Previewnet | `access.previewnet.nodes.onflow.org:9000` | `previewnet.onflow.org` | `reset-previewnet.onflow.org` |
+| Previewnet | `access.previewnet.nodes.onflow.org:9000` | `previewnet.onflow.org` | `rest-previewnet.onflow.org` |
 
 ---
 
