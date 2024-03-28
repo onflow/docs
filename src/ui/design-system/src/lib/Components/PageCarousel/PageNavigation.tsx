@@ -37,7 +37,7 @@ export const PageNavigation = ({
         <span className="px-4 text-sm">View all {category}</span>
       </div>
       <div className="flex items-center justify-between md:hidden w-full">
-        <button className="hover:cursor-pointer rounded-full border-none">
+        <button className="bg-transparent hover:cursor-pointer rounded-full border-none">
           <PageBack2
             onClick={() => {
               back();
@@ -45,7 +45,7 @@ export const PageNavigation = ({
           />
         </button>
         <div className="text-sm font-semibold">View all</div>
-        <button className="hover:cursor-pointer rounded-full border-none">
+        <button className="bg-transparent hover:cursor-pointer rounded-full border-none">
           <PageForward2
             onClick={() => {
               forward();
