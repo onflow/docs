@@ -30,10 +30,10 @@ const ContentFeatures: Record<string, ContentFeatureProps> = {
     text: 'Introduction to Queries',
     headerLink: '',
   },
-  'evm-compatibility': {
+  'evm-equalivency': {
     icon: 'feature-evm-icon',
     image: 'feature-evm-image',
-    header: 'EVM Compatibility',
+    header: 'EVM Equalivency',
     text: 'Coming in from EVM? Discover key similarities and differences to launch faster',
     headerLink: '',
   },
