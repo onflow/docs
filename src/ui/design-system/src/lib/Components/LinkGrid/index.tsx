@@ -1,6 +1,7 @@
 import React from 'react';
 import { LinkGridImage } from './LinkGridImage';
 import ReadDocs from '../../../../images/page/read-docs.svg';
+import ArrowRight from '../../../../images/page/arrow-right.svg';
 
 export interface GridLink {
   title: string;
@@ -79,7 +80,7 @@ const SectionCard = ({
   showBorder = true,
 }: LinkGridSection): React.ReactNode => {
   const borderStyle = showBorder
-    ? 'border border-solid border-gray-400 border-t-0 border-b-0 border-l-0'
+    ? 'md:border md:border-solid md:border-gray-400 md:border-t-0 md:border-b-0 md:border-l-0'
     : '';
   return (
     <div className={`p-6 flex flex-col space-y-4 ${borderStyle}`}>
@@ -91,7 +92,9 @@ const SectionCard = ({
             key={index}
             className="hover:underline hover:primary-green cursor-pointer"
           >
-            <a href={link.href}>{link.title}</a>
+            <a className="text-primary" href={link.href}>
+              {link.title}
+            </a>
           </span>
         ))}
       </div>
@@ -99,19 +102,21 @@ const SectionCard = ({
         href={more}
         className="border-none bg-transparent font-semibold hover:underline mt-auto py-5"
       >
-        More
+        <span className="md:hidden">View All</span>
+        <span className="hidden md:block">More</span>
       </a>
     </div>
   );
 };
 
 export const LinkGrid = (): React.ReactNode => (
-  <div className="container border border border-solid border-gray-400 rounded-lg p-0">
-    <div className="p-8 flex items-center justify-between justify-center border-b border-t-0 border-r-0 border-l-0 border-solid border-gray-400">
+  <div className="container md:border md:border md:border-solid border-gray-400 rounded-lg p-0">
+    <div className="p-8 flex flex-col md:flex-row md:items-center md:justify-between md:justify-center md:border-b border-t-0 border-r-0 border-l-0 md:border-solid border-gray-400">
       <div className="text-4xl px-6">Explore the Docs</div>
       <div className="px-6 flex items-center gap-2 font-semibold">
         Read Docs
-        <ReadDocs className="stroke-current" />
+        <ReadDocs className="hidden md:block stroke-current" />
+        <ArrowRight className="md:hidden stroke-current" />
       </div>
     </div>
     <div className="p-6 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 ">
