@@ -11,6 +11,14 @@ Furthermore, during network upgrades, Testnet receives updates ahead of Mainnet.
 
 ### How To Access These Networks?
 
+| Network    | GRPC                                      | Web GRPC                | REST                          |
+| ---------- | ----------------------------------------- | ----------------------- | ----------------------------- |
+| Mainnet    | `access.mainnet.nodes.onflow.org:9000`    | `mainnet.onflow.org`    | `rest-mainnet.onflow.org`     |
+| Testnet    | `access.devnet.nodes.onflow.org:9000`     | `testnet.onflow.org`    | `rest-testnet.onflow.org`     |
+| Previewnet | `access.previewnet.nodes.onflow.org:9000` | `previewnet.onflow.org` | `reset-previewnet.onflow.org` |
+
+For more information on how to access these networks, refer to the following guides:
+
 - [Flow Testnet](./accessing-testnet.md)
 - [Flow Mainnet](./accessing-mainnet.md)
 - [Flow Previewnet](./accessing-previewnet.md)
