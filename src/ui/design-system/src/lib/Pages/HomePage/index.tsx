@@ -10,6 +10,7 @@ import PageSections from '../shared/PageSections';
 import { ContentFeatureList } from '../../Components/ContentFeatureList';
 import { PageCarousel } from '../../Components/PageCarousel';
 import { LinkGrid } from '../../Components/LinkGrid';
+import { SocialCards } from '../../Components/SocialCards';
 
 export type HomePageProps = SocialLinksSignupProps & {
   concepts?: TutorialCardProps[];
@@ -50,6 +51,9 @@ const HomePage = ({
         </PageSection>
         <PageSection sectionId="explore-the-docs">
           <LinkGrid />
+        </PageSection>
+        <PageSection sectionId="get-involved">
+          <SocialCards />
         </PageSection>
       </PageSections>
     </PageBackground>

@@ -409,8 +409,8 @@ const config = {
                 label: 'Core Contracts & Standards',
               },
               {
-                href: 'https://academy.ecdao.org/',
-                label: 'Emerald DAO Bootcamp',
+                href: '/evm/about',
+                label: 'EVM',
               },
             ],
           },

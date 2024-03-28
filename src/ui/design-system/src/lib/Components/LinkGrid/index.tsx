@@ -24,11 +24,25 @@ const sections: LinkGridSection[] = [
   {
     header: 'Introduction',
     links: [
-      { title: 'What is Flow?', href: '/docs/flow-overview' },
-      { title: 'Flow Basics', href: '/docs/flow-basics' },
-      { title: 'Flow Ecosystem', href: '/docs/flow-ecosystem' },
-      { title: 'Flow Token', href: '/docs/flow-token' },
-      { title: 'Flow Architecture', href: '/docs/flow-architecture' },
+      {
+        title: 'Hello World Tutorial',
+        href: 'https://developers.flow.com/build/getting-started/quickstarts/hello-world',
+      },
+      {
+        title: 'App Architecture',
+        href: 'https://developers.flow.com/build/getting-started/app-architecture',
+      },
+      { title: 'EVM', href: 'https://developers.flow.com/evm/about' },
+      { title: 'Flownaut', href: 'https://flownaut.ecdao.org/en' },
+      { title: 'Playground', href: 'https://play.flow.com/' },
+      {
+        title: 'Mobile Quickstart',
+        href: 'https://developers.flow.com/build/guides/mobile/overview',
+      },
+      {
+        title: 'More',
+        href: 'https://developers.flow.com/build/basics/blocks',
+      },
     ],
     imageName: 'docs-introduction',
     more: '/',
@@ -36,11 +50,34 @@ const sections: LinkGridSection[] = [
   {
     header: 'Fundamentals',
     links: [
-      { title: 'What is Flow?', href: '/docs/flow-overview' },
-      { title: 'Flow Basics', href: '/docs/flow-basics' },
-      { title: 'Flow Ecosystem', href: '/docs/flow-ecosystem' },
-      { title: 'Flow Token', href: '/docs/flow-token' },
-      { title: 'Flow Architecture', href: '/docs/flow-architecture' },
+      {
+        title: 'Wallets',
+        href: 'https://developers.flow.com/ecosystem/wallets',
+      },
+      {
+        title: 'Deployment',
+        href: 'https://developers.flow.com/build/smart-contracts/deploying',
+      },
+      {
+        title: 'Block Explorer',
+        href: 'https://developers.flow.com/ecosystem/block-explorers',
+      },
+      {
+        title: 'Accounts',
+        href: 'https://developers.flow.com/build/basics/accounts',
+      },
+      {
+        title: 'Faucets',
+        href: 'https://developers.flow.com/ecosystem/faucets',
+      },
+      {
+        title: 'Bridges',
+        href: 'https://developers.flow.com/ecosystem/bridges',
+      },
+      {
+        title: 'More',
+        href: 'https://developers.flow.com/build/basics/blocks',
+      },
     ],
     imageName: 'docs-fundamentals',
     more: '/',
@@ -48,26 +85,65 @@ const sections: LinkGridSection[] = [
   {
     header: 'The Stack',
     links: [
-      { title: 'What is Flow?', href: '/docs/flow-overview' },
-      { title: 'Flow Basics', href: '/docs/flow-basics' },
-      { title: 'Flow Ecosystem', href: '/docs/flow-ecosystem' },
-      { title: 'Flow Token', href: '/docs/flow-token' },
-      { title: 'Flow Architecture', href: '/docs/flow-architecture' },
+      {
+        title: 'Flow Virtual Machine',
+        href: 'https://flow.com/technical-paper',
+      },
+      {
+        title: 'Cadence Smart Contracts',
+        href: 'https://developers.flow.com/build/smart-contracts/overview',
+      },
+      {
+        title: 'Cadence Smart Contract Testing',
+        href: 'https://developers.flow.com/build/smart-contracts/testing',
+      },
+      { title: 'Flow CLI', href: 'https://developers.flow.com/tools/flow-cli' },
+      {
+        title: 'Node Operations',
+        href: 'https://developers.flow.com/networks/node-ops',
+      },
+      {
+        title: 'Network Architecture',
+        href: 'https://jan-bernatik.medium.com/introduction-to-flow-blockchain-7532977c8af8',
+      },
     ],
     imageName: 'docs-the-stack',
-    more: '/',
+    more: 'https://flow.com/decentralization',
   },
   {
     header: 'Advanced',
     links: [
-      { title: 'What is Flow?', href: '/docs/flow-overview' },
-      { title: 'Flow Basics', href: '/docs/flow-basics' },
-      { title: 'Flow Ecosystem', href: '/docs/flow-ecosystem' },
-      { title: 'Flow Token', href: '/docs/flow-token' },
-      { title: 'Flow Architecture', href: '/docs/flow-architecture' },
+      {
+        title: 'Account Abstraction',
+        href: 'https://developers.flow.com/build/differences-vs-evm/account-abstraction',
+      },
+      {
+        title: 'Understanding Transaction Time',
+        href: 'https://developers.flow.com/build/differences-vs-evm/transaction-time',
+      },
+      {
+        title: 'FLIX',
+        href: 'https://developers.flow.com/build/advanced-concepts/flix',
+      },
+      {
+        title: 'Metadata Views',
+        href: 'https://developers.flow.com/build/advanced-concepts/metadata-views',
+      },
+      {
+        title: 'VRF',
+        href: 'https://developers.flow.com/build/advanced-concepts/randomness',
+      },
+      {
+        title: 'Sponsored Transactions',
+        href: 'https://developers.flow.com/build/differences-vs-evm/account-abstraction#sponsored-transactions',
+      },
+      {
+        title: 'Multi-auth Transactions',
+        href: 'https://developers.flow.com/build/differences-vs-evm/account-abstraction#multi-sig-transactions',
+      },
     ],
     imageName: 'docs-advanced',
-    more: '/',
+    more: '',
     showBorder: false,
   },
 ];
