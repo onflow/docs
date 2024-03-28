@@ -30,10 +30,10 @@ const ContentFeatures: Record<string, ContentFeatureProps> = {
     text: 'Introduction to Queries',
     headerLink: '',
   },
-  'evm-equalivency': {
+  'evm-equivalency': {
     icon: 'feature-evm-icon',
     image: 'feature-evm-image',
-    header: 'EVM Equalivency',
+    header: 'EVM Equivalency',
     text: 'Coming in from EVM? Discover key similarities and differences to launch faster',
     headerLink: '',
   },
@@ -60,7 +60,7 @@ export function ContentFeatureList(): React.ReactElement {
         <div className="md:col-span-3">
           <div className="flex flex-col md:flex-row gap-4">
             <ContentFeature key={3} {...ContentFeatures['code-scripts']} />
-            <ContentFeature key={4} {...ContentFeatures['evm-compatibility']} />
+            <ContentFeature key={4} {...ContentFeatures['evm-equivalency']} />
           </div>
         </div>
       </div>
