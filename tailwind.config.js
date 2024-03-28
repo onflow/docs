@@ -106,8 +106,8 @@ module.exports = {
       backgroundImage: {
         'card-gradient':
           'linear-gradient(0deg, rgba(0, 0, 0, 1) 0%, rgba(0, 0, 0, 0.60) 25%, #32343E 100%)',
-        'showcase-gradient':
-          'background: radial-gradient(50% 50% at 50% 50%, #101828 19.23%, rgba(17, 25, 41, 0.00) 100%);',
+        'radial-gradient':
+          'radial-gradient(50% 50% at 50% 50%, #101828 19.23%, rgba(17, 25, 41, 0.00) 100%);',
       },
       typography: (theme) => ({
         DEFAULT: {
