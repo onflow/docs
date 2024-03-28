@@ -49,21 +49,21 @@
 }
 
 @font-face {
-  font-family: "Termina";
-  src: local("Termina"),
-    url(/fonts/termina/Termina-Regular.otf) format("opentype");
+  font-family: "Inter";
+  src: local("Inter"),
+    url(/fonts/inter/Inter-Regular.ttf) format("opentype");
 }
 
 @font-face {
-  font-family: "Termina";
-  src: local("Termina"), url(/fonts/termina/Termina-Bold.otf) format("opentype");
+  font-family: "Inter";
+  src: local("Inter"), url(/fonts/inter/Inter-Bold.ttf) format("opentype");
   font-weight: 700;
 }
 
 @font-face {
-  font-family: "Termina";
-  src: local("Termina"),
-    url(/fonts/termina/Termina-Heavy.otf) format("opentype");
+  font-family: "Inter";
+  src: local("Inter"),
+    url(/fonts/inter/Inter-ExtraBold.ttf) format("opentype");
   font-weight: 800;
 }
 

@@ -18,7 +18,10 @@ export function ContentNavigationList({
 }: ContentNavigationListProps) {
   return (
     <div className="container">
-      <HeaderWithLink headerLink={headerLink} className="text-h2 pb-10">
+      <HeaderWithLink
+        headerLink={headerLink}
+        className="text-h2 pb-10 hidden md:block"
+      >
         {header}
       </HeaderWithLink>
       <div className={`grid grid-cols-1 gap-4 md:grid-cols-2 md:gap-8`}>

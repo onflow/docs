@@ -6,17 +6,13 @@ import { allEvents } from '../data/events';
 import HomePage from '../ui/design-system/src/lib/Pages/HomePage';
 // import { refreshTools } from '../cms/tools.server'
 import { externalLinks } from '../data/external-links';
-import {
-  contentNavigationListItems,
-  homepageStartProjectData,
-} from '../data/pages/home';
+import { contentNavigationListItems } from '../data/pages/home';
 
 const data = {
   discordUrl: externalLinks.discord,
   discourseUrl: externalLinks.discourse,
   twitterUrl: externalLinks.twitter,
   contentNavigationListItems,
-  homepageStartProjectData,
   flips: {
     // ...flips, temporary empty arrays
     goodPlacesToStartFlips: [],
@@ -38,7 +34,6 @@ const Index = (): JSX.Element => {
           discourseUrl={externalLinks.discourse}
           flips={data.flips}
           githubUrl={externalLinks.github}
-          homepageStartProjectData={data.homepageStartProjectData}
           twitterUrl={externalLinks.twitter}
           upcomingEvents={data.upcomingEvents}
         />
