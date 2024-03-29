@@ -7,21 +7,21 @@ description: Guide to Previewnet access
 
 ## About Flow Previewnet
 
-Flow Previewnet is Flow's official testing and development network. It is intended to provide a staging and testing environment for dApp developers.
+Previewnet is Flow's official testing and development network for the Crescendo upgrade. It is intended to provide an early experimentation environment for app developers.
 It aims to balance similarity with Mainnet with being a productive development environment, resulting in the following key differences:
 
-- Previewnet has significantly fewer validator nodes, resulting in a faster block rate compared to Mainnet
-- Previewnet is configured with shorter epochs (about 12 hours, compared to 7 days on Mainnet)
+- Significantly fewer validator nodes, resulting in a faster block rate compared to Mainnet
+- Shorter epochs (about 12 hours, compared to 7 days on Mainnet)
 
 ## Accessing Flow Previewnet
 
-Flow Previewnet is available for access at this URL:
+Previewnet is available for access at this URL:
 
 ```
 access.previewnet.nodes.onflow.org:9000
 ```
 
-For example, to access the network using the [Flow Go SDK](https://github.com/onflow/flow-go-sdk):
+To access the network using the [Flow Go SDK](https://github.com/onflow/flow-go-sdk):
 
 ```go
 import "github.com/onflow/flow-go-sdk/client"
@@ -33,9 +33,9 @@ func main() {
 }
 ```
 
-### Generating Key Pair
+### Generating Keypair
 
-You can generate a new key pair with the [Flow CLI](https://github.com/onflow/flow-cli) as follows:
+You can generate a new keypair with the [Flow CLI](https://github.com/onflow/flow-cli) as follows:
 
 ```sh
 > flow keys generate
@@ -53,8 +53,8 @@ Public Key       cc1c3d72...
 
 ## Account Creation and Token Funding Requests
 
-Accounts and tokens for testing can be obtained through the [previewnet faucet](https://previewnet-faucet.onflow.org/). If you generated the keypair through the CLI, you can click on the URL provided to create an account and request previewnet FLOW tokens.
+Accounts and tokens for testing can be obtained through the [previewnet faucet](https://previewnet-faucet.onflow.org/). If you generated the keypair through the CLI, you can click on the URL provided to create an account and request FLOW tokens.
 
 ## Important Smart Contract Addresses
 
-You can review [all available core contracts](../../build/core-contracts/index.md) deployed to the Previewnet to identify which ones you want to import.
+You can review [all available core contracts](../../build/core-contracts/index.md) deployed to identify which ones you want to import in your project.
