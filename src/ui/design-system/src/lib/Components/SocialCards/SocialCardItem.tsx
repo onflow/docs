@@ -16,7 +16,7 @@ export const SocialCardItem = ({
 }: SocialCardItemProps): React.ReactElement => {
   return (
     <AppLink
-      className="cursor-pointer text-gray-100 hover:no-underline"
+      className="cursor-pointer text-gray-100 hover:no-underline hover:text-gray-100 "
       to={url}
     >
       <div className="flex flex-col gap-4 min-w-[320px] h-[278px] rounded-lg bg-gray-800 justify-center items-center">

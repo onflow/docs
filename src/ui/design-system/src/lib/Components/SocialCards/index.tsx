@@ -29,19 +29,19 @@ export const SocialCards = (): React.ReactElement => {
       <div className="text-white text-center md:text-start text-base py-4 md:w-1/2">
         There are tones of ways to get involved with Flow. If you have any
         questions or want to join the community, jump into our{' '}
-        <a className="text-primary underline" href="">
+        <a className="text-white underline" href="">
           Discord
         </a>{' '}
         server or join our weekly{' '}
         <a
-          className="underline"
+          className="underline text-white"
           href="https://calendar.google.com/calendar/ical/c_47978f5cd9da636cadc6b8473102b5092c1a865dd010558393ecb7f9fd0c9ad0%40group.calendar.google.com/public/basic.ics"
         >
           Developer Office Hours
         </a>{' '}
         every Thursday! Or apply for Flow developer{' '}
         <a
-          className="underline"
+          className="underline text-white"
           href="https://github.com/onflow/developer-grants"
         >
           grants

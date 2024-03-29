@@ -29,28 +29,28 @@ const homepageData: Record<string, HomepageStartItemProps> = {
 
 const homepagePillData: Record<string, HomepagePillItemsProps> = {
   'dev-office-hours': {
-    link: '/ecosystem', // TODO: need destination link describing Dev Office Hours
+    link: 'https://calendar.google.com/calendar/ical/c_47978f5cd9da636cadc6b8473102b5092c1a865dd010558393ecb7f9fd0c9ad0%40group.calendar.google.com/public/basic.ics',
     icon: 'dev-office-hours',
     text: 'Dev Office Hours',
-    subText: '',
+    subText: 'Join the call',
   },
   'flow-assistant-gpt': {
     link: '/tools/flow-cli',
     icon: 'flow-assistant-gpt',
     text: 'Flow Assistant GPT',
-    subText: '',
+    subText: 'Check it out',
   },
   'developer-chat': {
     link: 'https://onflow.org/discord',
     icon: 'developer-chat',
     text: 'Developers Chat',
-    subText: '',
+    subText: 'Chat with devs',
   },
   'network-upgrade': {
     link: '/build/flow',
     icon: 'network-upgrade',
     text: 'Network Upgrade',
-    subText: 'View latest notes',
+    subText: 'View latest',
   },
 };
 export function HomepageStartList(): React.ReactElement {
