@@ -168,7 +168,10 @@ const SectionCard = ({
             key={index}
             className="hover:underline hover:primary-green cursor-pointer"
           >
-            <a className="text-primary" href={link.href}>
+            <a
+              className="text-primary-gray-300 hover:text-primary-green"
+              href={link.href}
+            >
               {link.title}
             </a>
           </span>
@@ -179,7 +182,9 @@ const SectionCard = ({
         className="border-none bg-transparent font-semibold hover:underline mt-auto py-5"
       >
         <span className="md:hidden">View All</span>
-        <span className="hidden md:block">More</span>
+        <span className="hidden md:block text-primary-gray-300 hover:text-primary-green">
+          More
+        </span>
       </a>
     </div>
   );

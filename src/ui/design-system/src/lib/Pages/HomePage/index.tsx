@@ -53,7 +53,7 @@ const HomePage = ({
         <PageSection sectionId="explore-the-docs">
           <LinkGrid />
         </PageSection>
-        <div className="py-6" style={{ backgroundImage: `url(${BgImage})` }}>
+        <div className="" style={{ backgroundImage: `url(${BgImage})` }}>
           <PageSection sectionId="get-involved">
             <SocialCards />
           </PageSection>
