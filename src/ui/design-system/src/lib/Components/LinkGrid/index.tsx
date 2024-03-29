@@ -169,7 +169,7 @@ const SectionCard = ({
             className="hover:underline hover:primary-green cursor-pointer"
           >
             <a
-              className="text-primary-gray-300 hover:text-primary-green"
+              className="text-primary-gray-300 hover:text-primary-green dark:hover:text-green-dark"
               href={link.href}
             >
               {link.title}
@@ -182,7 +182,7 @@ const SectionCard = ({
         className="border-none bg-transparent font-semibold hover:underline mt-auto py-5"
       >
         <span className="md:hidden">View All</span>
-        <span className="hidden md:block text-primary-gray-300 hover:text-primary-green">
+        <span className="hidden md:block text-primary-gray-300 hover:text-primary-green dark:hover:text-green-dark">
           More
         </span>
       </a>
