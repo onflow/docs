@@ -1,6 +1,6 @@
 import React from 'react';
 import { SocialCardItem } from './SocialCardItem';
-import BgImage from '../../../../images/misc/social-bg.png';
+
 const socialCardData = [
   {
     icon: 'discord',
@@ -25,8 +25,8 @@ const socialCardData = [
 export const SocialCards = (): React.ReactElement => {
   return (
     <div className="container flex flex-col justify-center items-center w-full md:justify-start md:items-start">
-      <div className="text-4xl font-semibold">Get involved</div>
-      <div className="text-center md:text-start text-base py-4 md:w-1/2">
+      <div className="text-white text-4xl font-semibold">Get involved</div>
+      <div className="text-white text-center md:text-start text-base py-4 md:w-1/2">
         There are tones of ways to get involved with Flow. If you have any
         questions or want to join the community, jump into our{' '}
         <a className="text-primary underline" href="">

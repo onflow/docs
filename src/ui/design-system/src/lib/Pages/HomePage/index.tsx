@@ -11,6 +11,7 @@ import { ContentFeatureList } from '../../Components/ContentFeatureList';
 import { PageCarousel } from '../../Components/PageCarousel';
 import { LinkGrid } from '../../Components/LinkGrid';
 import { SocialCards } from '../../Components/SocialCards';
+import BgImage from '../../../../images/misc/bg-social-section.jpg';
 
 export type HomePageProps = SocialLinksSignupProps & {
   concepts?: TutorialCardProps[];
@@ -52,9 +53,11 @@ const HomePage = ({
         <PageSection sectionId="explore-the-docs">
           <LinkGrid />
         </PageSection>
-        <PageSection sectionId="get-involved">
-          <SocialCards />
-        </PageSection>
+        <div className="py-6" style={{ backgroundImage: `url(${BgImage})` }}>
+          <PageSection sectionId="get-involved">
+            <SocialCards />
+          </PageSection>
+        </div>
       </PageSections>
     </PageBackground>
   );
