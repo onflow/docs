@@ -27,7 +27,7 @@ export function HomepagePillItem({
         </div>
         {/* Subtext (hidden by default and shown on hover) */}
         <div className="absolute bottom-[-3px] left-0 right-0 opacity-0 group-hover:opacity-80 transition-opacity duration-200 ease-in-out">
-          <span className="text-xs block">View latest notes →</span>
+          <span className="text-xs block">{subText} →</span>
         </div>
       </div>
     </AppLink>

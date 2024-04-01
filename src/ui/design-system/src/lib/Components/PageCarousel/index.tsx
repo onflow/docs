@@ -71,19 +71,34 @@ const cards = {
       hoverText: 'Get Started',
       link: 'https://play.onflow.org/',
     },
+    {
+      title: 'Emerald Snippets',
+      subtitle:
+        'Explore an array of exciting, grassroots initiatives, and projects',
+      imageName: 'emerald-snippets',
+      hoverText: 'Get Started',
+      link: 'https://academy.ecdao.org/en/snippets',
+    },
+    {
+      title: 'Emerald Examples',
+      subtitle: 'Forge the future of decentralized apps.',
+      imageName: 'emerald-examples',
+      hoverText: 'Get Started',
+      link: 'https://academy.ecdao.org/en/cadence-by-example',
+    },
+    {
+      title: 'Cookbook',
+      subtitle: 'A smart contract tutorial for Cadence.',
+      imageName: 'cadence-cookbook',
+      hoverText: 'Get Started',
+      link: 'https://cookbook.flow.com/',
+    },
   ],
 };
 export const PageCarousel = (): React.ReactNode => {
   const [activeCategory, setActiveCategory] = React.useState(categories[0]);
 
-  const incrementCategory = (increment: number): void => {
-    const currentIndex = categories.indexOf(activeCategory);
-    const nIdx = currentIndex + increment;
-    const nextIndex =
-      nIdx < 0 ? categories.length - 1 : nIdx % categories.length;
-    setActiveCategory(categories[nextIndex]);
-  };
-
+  console.log('activeCategory', activeCategory)
   return (
     <div className="container">
       <div className="text-primary text-5xl">
@@ -106,9 +121,13 @@ export const PageCarousel = (): React.ReactNode => {
       </div>
       <div className="flex flex-col md:flex-row md:justify-center items-center gap-4 py-4">
         <div className="hidden md:flex md:gap-4">
-          {cards[activeCategory].map((card, i) => (
-            <PageCard key={i} {...card} />
-          ))}
+          <PageOfCards
+            key={`category-${activeCategory}`}
+            category={activeCategory}
+            cards={cards[activeCategory]}
+            cardsPerPage={3}
+            showCategory={false}
+          />
         </div>
         <div className="md:hidden">
           {Object.keys(cards).map((category, i) => (
@@ -119,17 +138,6 @@ export const PageCarousel = (): React.ReactNode => {
             />
           ))}
         </div>
-      </div>
-      <div className="hidden md:block">
-        <PageNavigation
-          back={() => {
-            incrementCategory(-1);
-          }}
-          forward={() => {
-            incrementCategory(1);
-          }}
-          category={activeCategory}
-        />
       </div>
     </div>
   );

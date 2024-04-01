@@ -44,37 +44,50 @@ export const PageCard = ({
 export interface PageOfCardsProps {
   cards: PageCardProps[];
   category: string;
+  cardsPerPage?: number;
+  showCategory?: boolean;
 }
 
 export const PageOfCards = ({
   cards,
   category,
+  cardsPerPage = 1,
+  showCategory = true,
 }: PageOfCardsProps): React.ReactNode => {
-  const [activeCard, setActiveCard] = React.useState(cards[0]);
-  const [activeIndex, setActiveIndex] = React.useState(0);
+  const [currentPage, setCurrentPage] = React.useState(0);
 
-  const incrementCard = (increment: number): void => {
-    const nIdx = activeIndex + increment;
-    const nextIndex = nIdx < 0 ? cards.length - 1 : nIdx % cards.length;
-    setActiveIndex(nextIndex);
-    setActiveCard(cards[nextIndex]);
+  const incrementPage = (increment: number): void => {
+    const totalPages = Math.ceil(cards.length / cardsPerPage);
+    const nPage = currentPage + increment;
+    const nextPage = nPage < 0 ? totalPages - 1 : nPage % totalPages;
+    setCurrentPage(nextPage);
   };
+
+  // Calculate the cards to show on the current page
+  const startIndex = currentPage * cardsPerPage;
+  const endIndex = startIndex + cardsPerPage;
+  const cardsToShow = cards.slice(startIndex, endIndex);
+  const showNavigation = cards.length > cardsPerPage;
   return (
     <>
       <div className="text-primary font-semibold text-2xl justify-start">
-        {category}
+        {showCategory && category}
       </div>
 
-      <div className="flex flex-col md:flex-row md:justify-center items-center gap-4 py-4">
-        <PageCard key={activeCard.imageName} {...activeCard} />
+      <div className="flex flex-col md:justify-center items-center gap-4 py-4">
+        <div className="flex flex-row gap-4">
+          {cardsToShow.map((card) => (
+            <PageCard key={card.imageName} {...card} />
+          ))}
+        </div>
         <PageNavigation
+          show={showNavigation}
           back={() => {
-            incrementCard(-1);
+            incrementPage(-1);
           }}
           forward={() => {
-            incrementCard(1);
+            incrementPage(1);
           }}
-          category={''}
         />
       </div>
     </>

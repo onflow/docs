@@ -7,17 +7,21 @@ import PageForward2 from '../../../../images/page/page-carousel-forward-2.svg';
 export interface PageNavigationProps {
   forward: () => void;
   back: () => void;
-  category: string;
+  show?: boolean;
 }
 
 export const PageNavigation = ({
   forward,
   back,
-  category,
+  show = true,
 }: PageNavigationProps): React.ReactNode => {
+  if (!show) {
+    return null;
+  }
+
   return (
     <>
-      <div className="hidden md:flex flex justify-start items-center py-6">
+      <div className="hidden md:flex flex justify-start items-center py-6 self-start">
         <button className="text-primary bg-transparent hover:cursor-pointer rounded-full border-none">
           <PageBack
             className="stroke-current"
@@ -34,7 +38,6 @@ export const PageNavigation = ({
             }}
           />
         </button>
-        <span className="px-4 text-sm">View all {category}</span>
       </div>
       <div className="flex items-center justify-between md:hidden w-full">
         <button className="bg-transparent hover:cursor-pointer rounded-full border-none">
@@ -44,7 +47,6 @@ export const PageNavigation = ({
             }}
           />
         </button>
-        <div className="text-sm font-semibold">View all</div>
         <button className="bg-transparent hover:cursor-pointer rounded-full border-none">
           <PageForward2
             onClick={() => {
