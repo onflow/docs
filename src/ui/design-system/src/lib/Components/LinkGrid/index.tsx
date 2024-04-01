@@ -194,11 +194,16 @@ export const LinkGrid = (): React.ReactNode => (
   <div className="container md:border md:border md:border-solid border-gray-400 rounded-lg p-0">
     <div className="p-8 flex flex-col md:flex-row md:items-center md:justify-between md:justify-center md:border-b border-t-0 border-r-0 border-l-0 md:border-solid border-gray-400">
       <div className="text-4xl px-6">Explore the Docs</div>
-      <div className="px-6 flex items-center gap-2 font-semibold">
-        Read Docs
-        <ReadDocs className="hidden md:block stroke-current" />
-        <ArrowRight className="md:hidden stroke-current" />
-      </div>
+      <a
+        href="/build/flow"
+        className="hover:no-underline text-primary-gray-300 hover:text-primary-gray-300"
+      >
+        <div className="px-6 flex items-center gap-2 font-semibold hover:opacity-80 hover:cursor-pointer">
+          Read Docs
+          <ReadDocs className="hidden md:block stroke-current" />
+          <ArrowRight className="md:hidden stroke-current" />
+        </div>
+      </a>
     </div>
     <div className="p-6 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 ">
       {sections.map((section, index) => (

@@ -20,7 +20,7 @@ export const PageCard = ({
 }: PageCardProps): React.ReactElement => {
   return (
     <AppLink
-      className="flex flex-col h-[440px] justify-between hover:cursor-pointer w-full bg-white rounded-lg overflow-hidden shadow-lg text-start transition-opacity duration-300 ease-in-out group"
+      className="hover:no-underline flex flex-col h-[440px] justify-between hover:cursor-pointer w-full bg-white rounded-lg overflow-hidden shadow-lg text-start transition-opacity duration-300 ease-in-out group"
       to={link}
     >
       {/* Apply the scale transition classes to the PageCardImage component */}

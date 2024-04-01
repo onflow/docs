@@ -10,18 +10,21 @@ const cards = {
       subtitle: 'Deploy fungible tokens for your project',
       imageName: 'create-fungible-tokens',
       hoverText: 'Get Started',
+      link: '/build/guides/fungible-token',
     },
     {
       title: 'Launch an NFT',
       subtitle: 'Deploy your first NFT collection',
       imageName: 'launch-an-nft',
       hoverText: 'Get Started',
+      link: '/build/guides/nft',
     },
     {
       title: 'Quickstarts',
       subtitle: 'Some codes for quick implementation',
       imageName: 'quickstart-impl',
       hoverText: 'Get Started',
+      link: 'https://academy.ecdao.org/en/quickstarts',
     },
   ],
   'Code Snippets': [
@@ -47,22 +50,26 @@ const cards = {
   ],
   Resources: [
     {
-      title: 'Ecosystem & Tools',
-      subtitle: 'Explore an array of exciting, grassroots initiatives, and projects',
+      title: 'Ecosystem',
+      subtitle:
+        'Explore an array of exciting, grassroots initiatives, and projects',
       imageName: 'ecosystem-tools',
       hoverText: 'Get Started',
+      link: '/ecosystem',
     },
     {
       title: 'Cadence',
       subtitle: 'Forge the future of decentralized apps.',
       imageName: 'cadence-vscode',
       hoverText: 'Get Started',
+      link: 'https://cadence-lang.org/',
     },
     {
       title: 'Playground',
       subtitle: 'A smart contract tutorial for Cadence.',
       imageName: 'cadence-playground',
       hoverText: 'Get Started',
+      link: 'https://play.onflow.org/',
     },
   ],
 };

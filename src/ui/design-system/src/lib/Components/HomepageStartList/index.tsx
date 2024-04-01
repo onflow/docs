@@ -10,15 +10,15 @@ import {
 
 const homepageData: Record<string, HomepageStartItemProps> = {
   'cadence-course': {
-    link: '/build/getting-started/quickstarts/hello-world',
+    link: 'https://academy.ecdao.org/en/catalog/courses/learn-cadence-beginner',
     icon: 'cadence-course',
   },
   'beginner-dapp': {
-    link: '/build/guides/flow-app-quickstart',
+    link: '/build/getting-started/quickstarts/hello-world',
     icon: 'start-here',
   },
   'flow-quest': {
-    link: '/tools/flow-cli',
+    link: 'https://flownaut.ecdao.org/en',
     icon: 'path-quest',
   },
   'lang-reference': {
