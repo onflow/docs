@@ -17,7 +17,6 @@ export interface ContentFeatureIconProps {
 export function ContentFeatureIcon({
   icon,
 }: ContentFeatureIconProps): React.ReactElement {
-  console.log("icon: ", icon)
   switch (icon) {
     case 'feature-why-flow-icon':
       return <WhyFlow />;
