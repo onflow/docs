@@ -98,7 +98,6 @@ const cards = {
 export const PageCarousel = (): React.ReactNode => {
   const [activeCategory, setActiveCategory] = React.useState(categories[0]);
 
-  console.log('activeCategory', activeCategory)
   return (
     <div className="container">
       <div className="text-primary text-5xl">

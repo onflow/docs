@@ -12,6 +12,7 @@ import { PageCarousel } from '../../Components/PageCarousel';
 import { LinkGrid } from '../../Components/LinkGrid';
 import { SocialCards } from '../../Components/SocialCards';
 import BgImage from '../../../../images/misc/bg-social-section.jpg';
+import TransitionPageSection from '../shared/TransitionPageSection';
 
 export type HomePageProps = SocialLinksSignupProps & {
   concepts?: TutorialCardProps[];
@@ -28,11 +29,7 @@ const Description = (): JSX.Element => (
   </>
 );
 
-const HomePage = ({
-  discordUrl,
-  githubUrl,
-  upcomingEvents,
-}: HomePageProps): JSX.Element => {
+const HomePage = ({ discordUrl, githubUrl }: HomePageProps): JSX.Element => {
   return (
     <PageBackground gradient="home">
       <LandingHeaderHome
@@ -44,19 +41,19 @@ const HomePage = ({
       />
       <HomepageStartList />
       <PageSections>
-        <PageSection sectionId="explore-more-content">
+        <TransitionPageSection sectionId="explore-more-content">
           <ContentFeatureList />
-        </PageSection>
-        <PageSection sectionId="start-building-onflow">
+        </TransitionPageSection>
+        <TransitionPageSection sectionId="start-building-onflow">
           <PageCarousel />
-        </PageSection>
-        <PageSection sectionId="explore-the-docs">
+        </TransitionPageSection>
+        <TransitionPageSection sectionId="explore-the-docs">
           <LinkGrid />
-        </PageSection>
+        </TransitionPageSection>
         <div className="" style={{ backgroundImage: `url(${BgImage})` }}>
-          <PageSection sectionId="get-involved">
+          <TransitionPageSection sectionId="get-involved">
             <SocialCards />
-          </PageSection>
+          </TransitionPageSection>
         </div>
       </PageSections>
     </PageBackground>
