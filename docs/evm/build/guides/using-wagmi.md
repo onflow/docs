@@ -5,6 +5,9 @@ sidebar_label: Using Wagmi
 sidebar_position: 1
 ---
 
+:::info
+Make sure to use viem version 2.9.6 or greater. This version contains flow EVM networks
+:::
 
 # Using Next.js and wagmi
 
