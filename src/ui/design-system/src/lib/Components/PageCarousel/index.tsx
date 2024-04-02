@@ -33,12 +33,14 @@ const cards = {
       subtitle: 'Examples of how to code things in Cadence and Flow.',
       imageName: 'emerald-snippets',
       hoverText: 'Get Started',
+      link: 'https://academy.ecdao.org/en/snippets',
     },
     {
       title: 'Emerald Examples',
       subtitle: 'Basic Cadence code examples',
       imageName: 'emerald-examples',
       hoverText: 'Get Started',
+      link: 'https://academy.ecdao.org/en/cadence-by-example',
     },
     {
       title: 'Cookbook',
@@ -46,6 +48,7 @@ const cards = {
         'Explore Cadence smart contracts and transaction scripts for different use cases',
       imageName: 'cadence-cookbook',
       hoverText: 'Get Started',
+      link: 'https://cookbook.flow.com/',
     },
   ],
   Resources: [
