@@ -12,7 +12,7 @@ const socialCardData = [
     icon: 'x.com',
     title: 'X.com',
     subText: 'Follow @flow_blockchain',
-    url: 'https://www.x.com/flow_blocvkchain',
+    url: 'https://www.x.com/flow_blockchain',
   },
   {
     icon: 'github',

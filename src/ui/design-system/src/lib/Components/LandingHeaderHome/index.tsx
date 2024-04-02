@@ -30,7 +30,7 @@ export function LandingHeaderHome({
           {description}
         </div>
         <div className="mb-4">
-          <ButtonLink size={'sm'} variant="accent" href={'/build/flow'}>
+          <ButtonLink size={'sm'} variant="accent" href={'/build/flow'} className={"hover:no-underline hover:opacity-80"}>
             Read Docs
           </ButtonLink>
         </div>

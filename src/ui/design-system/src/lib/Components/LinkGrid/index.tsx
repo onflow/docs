@@ -26,22 +26,22 @@ const sections: LinkGridSection[] = [
     links: [
       {
         title: 'Hello World Tutorial',
-        href: 'https://developers.flow.com/build/getting-started/quickstarts/hello-world',
+        href: '/build/getting-started/quickstarts/hello-world',
       },
       {
         title: 'App Architecture',
-        href: 'https://developers.flow.com/build/getting-started/app-architecture',
+        href: '/build/getting-started/app-architecture',
       },
-      { title: 'EVM', href: 'https://developers.flow.com/evm/about' },
+      { title: 'EVM', href: '/evm/about' },
       { title: 'Flownaut', href: 'https://flownaut.ecdao.org/en' },
       { title: 'Playground', href: 'https://play.flow.com/' },
       {
         title: 'Mobile Quickstart',
-        href: 'https://developers.flow.com/build/guides/mobile/overview',
+        href: '/build/guides/mobile/overview',
       },
       {
         title: 'More',
-        href: 'https://developers.flow.com/build/basics/blocks',
+        href: '/build/basics/blocks',
       },
     ],
     imageName: 'docs-introduction',
@@ -52,31 +52,31 @@ const sections: LinkGridSection[] = [
     links: [
       {
         title: 'Wallets',
-        href: 'https://developers.flow.com/ecosystem/wallets',
+        href: '/ecosystem/wallets',
       },
       {
         title: 'Deployment',
-        href: 'https://developers.flow.com/build/smart-contracts/deploying',
+        href: '/build/smart-contracts/deploying',
       },
       {
         title: 'Block Explorer',
-        href: 'https://developers.flow.com/ecosystem/block-explorers',
+        href: '/ecosystem/block-explorers',
       },
       {
         title: 'Accounts',
-        href: 'https://developers.flow.com/build/basics/accounts',
+        href: '/build/basics/accounts',
       },
       {
         title: 'Faucets',
-        href: 'https://developers.flow.com/ecosystem/faucets',
+        href: '/ecosystem/faucets',
       },
       {
         title: 'Bridges',
-        href: 'https://developers.flow.com/ecosystem/bridges',
+        href: '/ecosystem/bridges',
       },
       {
         title: 'More',
-        href: 'https://developers.flow.com/build/basics/blocks',
+        href: '/build/basics/blocks',
       },
     ],
     imageName: 'docs-fundamentals',
@@ -91,16 +91,16 @@ const sections: LinkGridSection[] = [
       },
       {
         title: 'Cadence Smart Contracts',
-        href: 'https://developers.flow.com/build/smart-contracts/overview',
+        href: '/build/smart-contracts/overview',
       },
       {
         title: 'Cadence Smart Contract Testing',
-        href: 'https://developers.flow.com/build/smart-contracts/testing',
+        href: '/build/smart-contracts/testing',
       },
-      { title: 'Flow CLI', href: 'https://developers.flow.com/tools/flow-cli' },
+      { title: 'Flow CLI', href: '/tools/flow-cli' },
       {
         title: 'Node Operations',
-        href: 'https://developers.flow.com/networks/node-ops',
+        href: '/networks/node-ops',
       },
       {
         title: 'Network Architecture',
@@ -115,31 +115,31 @@ const sections: LinkGridSection[] = [
     links: [
       {
         title: 'Account Abstraction',
-        href: 'https://developers.flow.com/build/differences-vs-evm/account-abstraction',
+        href: '/build/differences-vs-evm/account-abstraction',
       },
       {
         title: 'Understanding Transaction Time',
-        href: 'https://developers.flow.com/build/differences-vs-evm/transaction-time',
+        href: '/build/differences-vs-evm/transaction-time',
       },
       {
         title: 'FLIX',
-        href: 'https://developers.flow.com/build/advanced-concepts/flix',
+        href: '/build/advanced-concepts/flix',
       },
       {
         title: 'Metadata Views',
-        href: 'https://developers.flow.com/build/advanced-concepts/metadata-views',
+        href: '/build/advanced-concepts/metadata-views',
       },
       {
         title: 'VRF',
-        href: 'https://developers.flow.com/build/advanced-concepts/randomness',
+        href: '/build/advanced-concepts/randomness',
       },
       {
         title: 'Sponsored Transactions',
-        href: 'https://developers.flow.com/build/differences-vs-evm/account-abstraction#sponsored-transactions',
+        href: '/build/differences-vs-evm/account-abstraction#sponsored-transactions',
       },
       {
         title: 'Multi-auth Transactions',
-        href: 'https://developers.flow.com/build/differences-vs-evm/account-abstraction#multi-sig-transactions',
+        href: '/build/differences-vs-evm/account-abstraction#multi-sig-transactions',
       },
     ],
     imageName: 'docs-advanced',
@@ -198,7 +198,7 @@ export const LinkGrid = (): React.ReactNode => (
         href="/build/flow"
         className="hover:no-underline text-primary-gray-300 hover:text-primary-gray-300"
       >
-        <div className="px-6 flex items-center gap-2 font-semibold hover:opacity-80 hover:cursor-pointer">
+        <div className="px-6 flex items-center gap-2 font-semibold hover:opacity-80 hover:cursor-pointer hover:no-underline">
           Read Docs
           <ReadDocs className="hidden md:block stroke-current" />
           <ArrowRight className="md:hidden stroke-current" />
