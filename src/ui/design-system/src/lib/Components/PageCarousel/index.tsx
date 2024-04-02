@@ -71,28 +71,6 @@ const cards = {
       hoverText: 'Get Started',
       link: 'https://play.onflow.org/',
     },
-    {
-      title: 'Emerald Snippets',
-      subtitle:
-        'Explore an array of exciting, grassroots initiatives, and projects',
-      imageName: 'emerald-snippets',
-      hoverText: 'Get Started',
-      link: 'https://academy.ecdao.org/en/snippets',
-    },
-    {
-      title: 'Emerald Examples',
-      subtitle: 'Forge the future of decentralized apps.',
-      imageName: 'emerald-examples',
-      hoverText: 'Get Started',
-      link: 'https://academy.ecdao.org/en/cadence-by-example',
-    },
-    {
-      title: 'Cookbook',
-      subtitle: 'A smart contract tutorial for Cadence.',
-      imageName: 'cadence-cookbook',
-      hoverText: 'Get Started',
-      link: 'https://cookbook.flow.com/',
-    },
   ],
 };
 export const PageCarousel = (): React.ReactNode => {

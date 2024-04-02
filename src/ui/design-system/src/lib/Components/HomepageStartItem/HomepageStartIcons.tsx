@@ -69,6 +69,6 @@ export function HomepageStartItemIcons({
     case 'network-upgrade':
       return <NetworkUpgrade />;
     default:
-      throw new Error('Icon type not recognized');
+      throw new Error(`Icon type not recognized ${icon}`);
   }
 }

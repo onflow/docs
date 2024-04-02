@@ -3,8 +3,8 @@ import CreateFungibleTokens from '../../../../images/misc/create-fungible-tokens
 import LaunchAnNFT from '../../../../images/misc/launch-an-nft.png';
 import QuickstartImpl from '../../../../images/misc/quickstart-impl.png';
 import EmeraldSnippets from '../../../../images/misc/emerald-snippets.png';
-import EmeraldExamples from '../../../../images/misc/quickstart-impl.png';
-import CadenceCookbook from '../../../../images/misc/quickstart-impl.png';
+import EmeraldExamples from '../../../../images/misc/emerald-examples.png';
+import CadenceCookbook from '../../../../images/misc/cadence-cookbook.png';
 import EcosystemTools from '../../../../images/misc/ecosystem-tools.png';
 import CadenceVscode from '../../../../images/misc/cadence-vscode.png';
 import CadencePlayground from '../../../../images/misc/cadence-playground.png';
