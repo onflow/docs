@@ -39,13 +39,9 @@ const sections: LinkGridSection[] = [
         title: 'Mobile Quickstart',
         href: '/build/guides/mobile/overview',
       },
-      {
-        title: 'More',
-        href: '/build/basics/blocks',
-      },
     ],
     imageName: 'docs-introduction',
-    more: '/',
+    more: '/build/basics/blocks',
   },
   {
     header: 'Fundamentals',
@@ -74,13 +70,9 @@ const sections: LinkGridSection[] = [
         title: 'Bridges',
         href: '/ecosystem/bridges',
       },
-      {
-        title: 'More',
-        href: '/build/basics/blocks',
-      },
     ],
     imageName: 'docs-fundamentals',
-    more: '/',
+    more: '/build/basics/blocks',
   },
   {
     header: 'The Stack',
@@ -143,7 +135,7 @@ const sections: LinkGridSection[] = [
       },
     ],
     imageName: 'docs-advanced',
-    more: '',
+    more: '/build/advanced-concepts/flix',
     showBorder: false,
   },
 ];
@@ -159,10 +151,10 @@ const SectionCard = ({
     ? 'md:border md:border-solid md:border-gray-400 md:border-t-0 md:border-b-0 md:border-l-0'
     : '';
   return (
-    <div className={`p-6 flex flex-col space-y-4 ${borderStyle}`}>
+    <div className={`h-full p-6 flex flex-col space-y-4 ${borderStyle}`}>
       <LinkGridImage imageName={imageName} />
       <h3 className="text-lg font-semibold">{header}</h3>
-      <div className="space-y-2 flex flex-col gap-1">
+      <div className="h-full space-y-2 flex flex-col gap-1">
         {links.map((link, index) => (
           <span
             key={index}
