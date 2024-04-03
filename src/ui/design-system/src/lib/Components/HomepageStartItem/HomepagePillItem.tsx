@@ -21,8 +21,8 @@ export function HomepagePillItem({
       to={link}
     >
       <HomepageStartItemIcons icon={icon} />
-      <div className="relative group h-full">
-        <div className="flex h-full text-semibold group-hover:translate-y-[-10px] transition-transform duration-200 ease-in-out">
+      <div className="relative group align-center">
+        <div className="flex text-semibold group-hover:translate-y-[-10px] transition-transform duration-200 ease-in-out">
           <span className="text-center">{text}</span>
         </div>
         {/* Subtext (hidden by default and shown on hover) */}
