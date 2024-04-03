@@ -34,7 +34,7 @@ const homepagePillData: Record<string, HomepagePillItemsProps> = {
     text: 'Dev Office Hours',
     subText: 'Join the call',
   },
-  'flow-assistant-gpt': {
+  'flow-assistant': {
     link: '/tools/flow-cli',
     icon: 'flow-assistant-gpt',
     text: 'Flow Assistant GPT',
@@ -55,42 +55,25 @@ const homepagePillData: Record<string, HomepagePillItemsProps> = {
 };
 export function HomepageStartList(): React.ReactElement {
   return (
-    <div className="container">
-      <div
-        className="grid grid-cols-1 md:grid-cols-3 md:grid-rows-3 gap-1"
-        style={{ gridTemplateRows: 'auto auto min-content' }}
-      >
-        <div className="md:col-span-1 md:row-span-2 rounded-lg shadow p-2">
+    <div className="container mx-auto p-4">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+        <div className="col-span-1 md:col-span-1 md:row-span-2 lg:col-span-1 lg:row-span-2 rounded-lg shadow p-2">
           <HomepageStartItem key={0} {...homepageData['cadence-course']} />
         </div>
-
-        <div className="md:col-span-1 md:row-span-1 rounded-lg shadow p-2">
+        <div className="col-span-1 md:col-span-1 lg:col-span-1 rounded-lg shadow p-2">
           <HomepageStartItem key={1} {...homepageData['beginner-dapp']} />
         </div>
-
-        <div className="md:col-span-1 md:row-span-1 rounded-lg shadow p-2">
+        <div className="col-span-1 md:col-span-1 lg:col-span-1 rounded-lg shadow p-2">
           <HomepageStartItem key={2} {...homepageData['flow-quest']} />
         </div>
-
-        <div className="md:col-span-2 md:row-span-1 rounded-lg shadow p-2">
+        <div className="col-span-1 md:col-span-2 lg:col-start-2 lg:col-span-2 rounded-lg shadow p-2">
           <HomepageStartItem key={3} {...homepageData['lang-reference']} />
         </div>
-        <div className="col-span-1 md:col-span-3 p-2">
-          <div className="flex flex-col md:flex-row gap-4">
-            <HomepagePillItem
-              key={4}
-              {...homepagePillData['dev-office-hours']}
-            />
-            <HomepagePillItem
-              key={5}
-              {...homepagePillData['flow-assistant-gpt']}
-            />
-            <HomepagePillItem key={6} {...homepagePillData['developer-chat']} />
-            <HomepagePillItem
-              key={7}
-              {...homepagePillData['network-upgrade']}
-            />
-          </div>
+        <div className="grid col-span-1 md:grid-cols-2 md:col-span-2 lg:col-span-3 lg:col-span-3 gap-4">
+          <HomepagePillItem key={4} {...homepagePillData['dev-office-hours']} />
+          <HomepagePillItem key={5} {...homepagePillData['flow-assistant']} />
+          <HomepagePillItem key={6} {...homepagePillData['developer-chat']} />
+          <HomepagePillItem key={7} {...homepagePillData['network-upgrade']} />
         </div>
       </div>
     </div>

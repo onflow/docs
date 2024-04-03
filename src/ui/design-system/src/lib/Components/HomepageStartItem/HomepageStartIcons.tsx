@@ -32,7 +32,7 @@ export function HomepageStartItemIcons({
       return (
         <>
           <img
-            className="hidden md:block w-full"
+            className="hidden md:block h-full w-full"
             src={BentoCardCadenceCourse2}
             alt="Cadence Course"
           />
