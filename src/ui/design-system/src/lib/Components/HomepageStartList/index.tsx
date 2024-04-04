@@ -69,7 +69,7 @@ export function HomepageStartList(): React.ReactElement {
         <div className="col-span-1 md:col-span-2 lg:col-start-2 lg:col-span-2 rounded-lg shadow p-2">
           <HomepageStartItem key={3} {...homepageData['lang-reference']} />
         </div>
-        <div className="grid col-span-1 md:grid-cols-2 md:col-span-2 lg:col-span-3 lg:col-span-3 gap-4">
+        <div className="grid col-span-1 md:grid-cols-2 md:col-span-2 lg:grid-cols-4 lg:col-span-3 gap-4">
           <HomepagePillItem key={4} {...homepagePillData['dev-office-hours']} />
           <HomepagePillItem key={5} {...homepagePillData['flow-assistant']} />
           <HomepagePillItem key={6} {...homepagePillData['developer-chat']} />
