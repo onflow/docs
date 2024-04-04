@@ -44,10 +44,16 @@ const HomePage = ({ discordUrl, githubUrl }: HomePageProps): JSX.Element => {
         <TransitionPageSection sectionId="explore-more-content">
           <ContentFeatureList />
         </TransitionPageSection>
-        <TransitionPageSection sectionId="start-building-onflow">
+        <TransitionPageSection
+          className={'md:mx-4'}
+          sectionId="start-building-onflow"
+        >
           <PageCarousel />
         </TransitionPageSection>
-        <TransitionPageSection sectionId="explore-the-docs">
+        <TransitionPageSection
+          className={'md:mx-4'}
+          sectionId="explore-the-docs"
+        >
           <LinkGrid />
         </TransitionPageSection>
         <div className="" style={{ backgroundImage: `url(${BgImage})` }}>
