@@ -48,12 +48,12 @@ export const SocialCards = (): React.ReactElement => {
         </a>
         .
       </div>
-      <div className="flex w-full flex-col md:flex-row justify-between gap-4">
-        {socialCardData.map((data, index) => (
-          <div key={index} className="md:col-span-1">
-            <SocialCardItem {...data} />
-          </div>
-        ))}
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:flex gap-4 w-full">
+        <SocialCardItem {...socialCardData[0]} />
+        <SocialCardItem {...socialCardData[1]} />
+        <div className={'md:col-span-2'}>
+          <SocialCardItem {...socialCardData[2]} />
+        </div>
       </div>
     </div>
   );
