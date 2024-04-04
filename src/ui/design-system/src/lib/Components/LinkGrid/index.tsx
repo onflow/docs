@@ -13,7 +13,6 @@ export interface LinkGridSection {
   header: string;
   imageName: string;
   more: string;
-  showBorder?: boolean;
 }
 
 export interface LinkGridProps {
@@ -136,7 +135,6 @@ const sections: LinkGridSection[] = [
     ],
     imageName: 'docs-advanced',
     more: '/build/advanced-concepts/flix',
-    showBorder: false,
   },
 ];
 
@@ -145,13 +143,11 @@ const SectionCard = ({
   links,
   imageName,
   more,
-  showBorder = true,
 }: LinkGridSection): React.ReactNode => {
-  const borderStyle = showBorder
-    ? 'md:border md:border-solid md:border-gray-400 md:border-t-0 md:border-b-0 md:border-l-0'
-    : '';
   return (
-    <div className={`h-full p-6 flex flex-col space-y-4 ${borderStyle}`}>
+    <div
+      className={`h-full p-6 flex flex-col space-y-4 border-b border-b-1 border-t-0 border-r-0 border-l-0 border-gray-600 border-solid md:border-b-0 md:border-r md:border-r-1 md:last:border-r-0 md:border-r-1 lg:border-r-1 `}
+    >
       <LinkGridImage imageName={imageName} />
       <h3 className="text-lg font-semibold">{header}</h3>
       <div className="h-full space-y-2 flex flex-col gap-1">
@@ -174,7 +170,7 @@ const SectionCard = ({
         className="border-none bg-transparent font-semibold hover:underline mt-auto py-5"
       >
         <span className="md:hidden">View All</span>
-        <span className="hidden md:block text-primary-gray-300 hover:text-primary-green dark:hover:text-green-dark">
+        <span className="hidden md:block text-primary-gray-600 hover:text-primary-green dark:hover:text-green-dark">
           More
         </span>
       </a>
@@ -183,12 +179,12 @@ const SectionCard = ({
 };
 
 export const LinkGrid = (): React.ReactNode => (
-  <div className="container md:border md:border md:border-solid border-gray-400 rounded-lg p-0">
-    <div className="p-8 flex flex-col md:flex-row md:items-center md:justify-between md:justify-center md:border-b border-t-0 border-r-0 border-l-0 md:border-solid border-gray-400">
+  <div className="container md:border md:border md:border-solid border-gray-600 rounded-lg p-0">
+    <div className="p-8 flex flex-col md:flex-row md:items-center md:justify-between md:justify-center md:border-b border-t-0 border-r-0 border-l-0 md:border-solid border-gray-600">
       <div className="text-4xl px-6">Explore the Docs</div>
       <a
         href="/build/flow"
-        className="hover:no-underline text-primary-gray-300 hover:text-primary-gray-300"
+        className="hover:no-underline text-primary-gray-600 hover:text-primary-gray-600"
       >
         <div className="px-6 flex items-center gap-2 font-semibold hover:opacity-80 hover:cursor-pointer hover:no-underline">
           Read Docs
