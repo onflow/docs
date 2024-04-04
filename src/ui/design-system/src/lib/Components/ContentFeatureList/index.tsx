@@ -47,21 +47,22 @@ export function ContentFeatureList(): React.ReactElement {
         Discover the unique features of Flow, unlocking innovative possibilities
         for your decentralized applications and smart contracts.
       </div>
-      <div className={`grid grid-cols-1 md:grid-cols-3 gap-4`}>
-        <div className="md:col-span-1">
+      <div className={`grid grid-cols-1 md:grid-cols-2 lg:grid-cols-6 gap-4`}>
+        <div className="lg:col-span-2">
           <ContentFeature key={0} {...ContentFeatures['why-flow']} />
         </div>
-        <div className="md:col-span-1">
+        <div className="lg:col-span-2">
           <ContentFeature key={1} {...ContentFeatures['smart-accounts']} />
         </div>
-        <div className="md:col-span-1">
+        <div className="lg:col-span-2">
           <ContentFeature key={2} {...ContentFeatures.transactions} />
         </div>
-        <div className="md:col-span-3">
-          <div className="flex flex-col md:flex-row gap-4">
-            <ContentFeature key={3} {...ContentFeatures['code-scripts']} />
-            <ContentFeature key={4} {...ContentFeatures['evm']} />
-          </div>
+        <div className="lg:col-span-3">
+          <ContentFeature key={3} {...ContentFeatures['code-scripts']} />
+        </div>
+        {/* This div will span two columns at the 'md' breakpoint */}
+        <div className="md:col-span-2 lg:col-span-3">
+          <ContentFeature key={4} {...ContentFeatures.evm} />
         </div>
       </div>
     </div>
