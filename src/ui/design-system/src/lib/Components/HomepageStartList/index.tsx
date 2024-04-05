@@ -29,7 +29,7 @@ const homepageData: Record<string, HomepageStartItemProps> = {
 
 const homepagePillData: Record<string, HomepagePillItemsProps> = {
   'dev-office-hours': {
-    link: 'https://calendar.google.com/calendar/ical/c_47978f5cd9da636cadc6b8473102b5092c1a865dd010558393ecb7f9fd0c9ad0%40group.calendar.google.com/public/basic.ics',
+    link: 'https://github.com/onflow/Flow-Working-Groups#Calendar',
     icon: 'dev-office-hours',
     text: 'Dev Office Hours',
     subText: 'Join the call',

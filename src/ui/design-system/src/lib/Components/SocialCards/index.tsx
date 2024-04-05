@@ -17,7 +17,7 @@ const socialCardData = [
   {
     icon: 'github',
     title: 'GitHub',
-    subText: 'Connect at @flow_blockchain',
+    subText: 'Connect at @onflow',
     url: 'https://github.com/onflow',
   },
 ];
