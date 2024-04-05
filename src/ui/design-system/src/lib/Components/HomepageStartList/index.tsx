@@ -31,8 +31,8 @@ const homepagePillData: Record<string, HomepagePillItemsProps> = {
   'dev-office-hours': {
     link: 'https://github.com/onflow/Flow-Working-Groups#Calendar',
     icon: 'dev-office-hours',
-    text: 'Dev Office Hours',
-    subText: 'Join the call',
+    text: 'Working Groups',
+    subText: 'Get involved',
   },
   'flow-assistant': {
     link: 'https://chat.openai.com/g/g-lt4a6jvfj-flow-cadence-1-0-migration-helper',
