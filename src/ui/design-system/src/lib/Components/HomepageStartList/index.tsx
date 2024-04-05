@@ -29,13 +29,13 @@ const homepageData: Record<string, HomepageStartItemProps> = {
 
 const homepagePillData: Record<string, HomepagePillItemsProps> = {
   'dev-office-hours': {
-    link: 'https://calendar.google.com/calendar/ical/c_47978f5cd9da636cadc6b8473102b5092c1a865dd010558393ecb7f9fd0c9ad0%40group.calendar.google.com/public/basic.ics',
+    link: 'https://github.com/onflow/Flow-Working-Groups#Calendar',
     icon: 'dev-office-hours',
-    text: 'Dev Office Hours',
-    subText: 'Join the call',
+    text: 'Working Groups',
+    subText: 'Get involved',
   },
   'flow-assistant': {
-    link: '/tools/flow-cli',
+    link: 'https://chat.openai.com/g/g-lt4a6jvfj-flow-cadence-1-0-migration-helper',
     icon: 'flow-assistant-gpt',
     text: 'Flow Assistant GPT',
     subText: 'Check it out',
@@ -47,7 +47,7 @@ const homepagePillData: Record<string, HomepagePillItemsProps> = {
     subText: 'Chat with devs',
   },
   'network-upgrade': {
-    link: '/build/flow',
+    link: 'https://cadence-lang.org/docs/1.0/cadence-migration-guide/',
     icon: 'network-upgrade',
     text: 'Network Upgrade',
     subText: 'View latest',
