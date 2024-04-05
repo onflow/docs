@@ -170,7 +170,7 @@ const SectionCard = ({
         className="border-none bg-transparent font-semibold hover:underline mt-auto py-5"
       >
         <span className="md:hidden">View All</span>
-        <span className="hidden md:block text-primary-gray-600 hover:text-primary-green dark:hover:text-green-dark">
+        <span className="hidden md:block text-primary-gray-300 hover:text-primary-green dark:hover:text-green-dark">
           More
         </span>
       </a>
@@ -186,7 +186,7 @@ export const LinkGrid = (): React.ReactNode => (
         href="/build/flow"
         className="hover:no-underline text-primary-gray-600 hover:text-primary-gray-600"
       >
-        <div className="px-6 flex items-center gap-2 font-semibold hover:opacity-80 hover:cursor-pointer hover:no-underline">
+        <div className="px-6 flex items-center gap-2 font-semibold hover:opacity-80 hover:cursor-pointer hover:no-underline text-primary-gray-300 ">
           Read Docs
           <ReadDocs className="hidden md:block stroke-current" />
           <ArrowRight className="md:hidden stroke-current" />
