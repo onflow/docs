@@ -17,11 +17,13 @@ export function HomepagePillItem({
 }: HomepagePillItemsProps): React.ReactElement {
   return (
     <AppLink
-      className="flex px-3 py-2 cursor-pointer gap-4 rounded-custom text-black hover:no-underline hover:text-black hover:bg-primary-gray-10 bg-white justify-start items-center hover:border-black"
+      className="flex pl-3 cursor-pointer rounded-custom text-black hover:no-underline hover:text-black hover:bg-primary-gray-10 bg-white justify-start items-center hover:border-black"
       to={link}
     >
-      <HomepageStartItemIcons icon={icon} />
-      <div className="relative group align-center">
+      <div className="py-2">
+        <HomepageStartItemIcons icon={icon} />
+      </div>
+      <div className="relative group align-center w-full mx-2">
         <div className="flex text-semibold group-hover:translate-y-[-10px] transition-transform duration-200 ease-in-out">
           <span className="text-center">{text}</span>
         </div>

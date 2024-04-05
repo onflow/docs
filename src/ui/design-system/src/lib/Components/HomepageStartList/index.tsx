@@ -35,7 +35,7 @@ const homepagePillData: Record<string, HomepagePillItemsProps> = {
     subText: 'Join the call',
   },
   'flow-assistant': {
-    link: '/tools/flow-cli',
+    link: 'https://chat.openai.com/g/g-lt4a6jvfj-flow-cadence-1-0-migration-helper',
     icon: 'flow-assistant-gpt',
     text: 'Flow Assistant GPT',
     subText: 'Check it out',
