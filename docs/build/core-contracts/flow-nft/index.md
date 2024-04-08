@@ -118,7 +118,7 @@ the format to query and return them, so projects can still be flexible with how 
 This example shows how to read basic information about an NFT
 including the name, description, image and owner.
 
-**Source: [get_nft_metadata.cdc](https://github.com/onflow/flow-nft/blob/standard-v2/scripts/get_nft_metadata.cdc)**
+**Source: [get_nft_metadata.cdc](https://github.com/onflow/flow-nft/blob/standard-v2/transactions/scripts/get_nft_metadata.cdc)**
 
 ### How to implement metadata
 
