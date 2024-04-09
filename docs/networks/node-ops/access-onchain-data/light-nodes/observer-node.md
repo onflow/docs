@@ -149,10 +149,10 @@ docker run --rm \
  --rest-addr=:80 \
  --loglevel=error \
  --secretsdir=/data/secrets  \
- --upstream-node-addresses=access-008.mainnet24.nodes.onflow.org:9001 \
- --upstream-node-public-keys=11742552d21ac93da37ccda09661792977e2ca548a3b26d05f22a51ae1d99b9b75c8a9b3b40b38206b38951e98e4d145f0010f8942fd82ddf0fb1d670202264a \
- --bootstrap-node-addresses=access-008.mainnet24.nodes.onflow.org:3570  \
- --bootstrap-node-public-keys=11742552d21ac93da37ccda09661792977e2ca548a3b26d05f22a51ae1d99b9b75c8a9b3b40b38206b38951e98e4d145f0010f8942fd82ddf0fb1d670202264a \
+ --upstream-node-addresses=secure.mainnet.nodes.onflow.org:9001 \
+ --upstream-node-public-keys=28a0d9edd0de3f15866dfe4aea1560c4504fe313fc6ca3f63a63e4f98d0e295144692a58ebe7f7894349198613f65b2d960abf99ec2625e247b1c78ba5bf2eae \
+ --bootstrap-node-addresses=secure.mainnet.nodes.onflow.org:3570  \
+ --bootstrap-node-public-keys=28a0d9edd0de3f15866dfe4aea1560c4504fe313fc6ca3f63a63e4f98d0e295144692a58ebe7f7894349198613f65b2d960abf99ec2625e247b1c78ba5bf2eae \
  --observer-networking-key-path=/bootstrap/network.key
 ```
 
