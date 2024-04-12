@@ -25,6 +25,14 @@ pub fun main(): Int {
 }
 ```
 
+Scripts can accept arguments.
+
+```cadence
+pub fun main(arg: String): String {
+	return "Hello ".concat(arg)
+}
+```
+
 Scripts can call contract functions and query the state of a contract. To call a function on another contract, import it from its address and invoke the function:
 
 ```cadence
@@ -36,6 +44,15 @@ pub fun main(): String {
 ```
 
 Scripts can also be run against previous blocks, allowing you to query historic data from the Flow network. This is particularly useful for retrieving historical states of contracts or tracking changes over time.
+
+## Why use a script?
+
+A script provide a light-weight method to query chain data. It can be used for the following:
+
+1. Validating a transaction before submitting it e.g. checking if the payer has sufficient balance, the receiver account is setup correctly to receive a token or NFT etc.
+2. Collecting chain data over time.
+3. Continuously verifying accounts through a background job e.g. a Discord bot that verifies users by their Flow account.
+4. Querying core contracts e.g. see [staking scripts and events](../..//networks/staking/staking-scripts-events) for querying staking and epoch related information, see the scripts directory under each of the [core contract transactions](https://github.com/onflow/flow-core-contracts/tree/master/transactions) for other core contracts related scripts.
 
 ## Executing Scripts
 
