@@ -45,7 +45,7 @@ pub fun main(): String {
 
 Scripts can also be run against previous blocks, allowing you to query historic data from the Flow network. This is particularly useful for retrieving historical states of contracts or tracking changes over time.
 
-## Why use a script?
+## Why to use a script?
 
 A script provide a light-weight method to query chain data. It can be used for the following:
 
@@ -84,7 +84,7 @@ A user can define their own scripts or can use already defined scripts by the co
 
 ## Limitations
 
-1. Rate limits - Script execution is subjected to API rate-limits imposed by the Access node. The rate limits for the Public Access nodes hosted by QuickNode is available [here](https://www.quicknode.com/docs/flow#endpoint-rate-limits).
+1. Rate limits - Script execution is subjected to API rate-limits imposed by the Access node. The rate limits for the Public Access nodes hosted by QuickNode are mentioned [here](https://www.quicknode.com/docs/flow#endpoint-rate-limits).
 
 2. Computation limits - Similar to a transaction, script also have computation limits. Currently, the compute (gas) limit for script is 100,000.
 
