@@ -6,8 +6,8 @@ sidebar_position: 4
 
 A script provides a light-weight method to query chain data.
 
-It is an executable Cadence code that can query for Flow execution state data but not modify it. Unlike Flow transactions, a script is not signed and requires no transaction fees. Also unlike transactions, a script can return a value.
-You can think of executing a script as a read-only operation very similar to the `eth_call` RPC method on Ethereum.
+It is an executable Cadence code that can query for Flow execution state data but cannot modify it in any way. Unlike Flow transactions, a script is not signed and requires no transaction fees. Also unlike transactions, a script can return a value.
+You can think of executing a script as a read-only operation, very similar to the `eth_call` RPC method on Ethereum.
 
 Scripts are currently executed on either the Access Nodes or the Execution Nodes based on the Access node configuration.
 
@@ -28,7 +28,7 @@ pub fun main(): Int {
 }
 ```
 
-Scripts can accept arguments.
+Scripts can also accept arguments.
 
 ```cadence
 pub fun main(arg: String): String {
@@ -87,10 +87,14 @@ A user can define their own scripts or can use already defined scripts by the co
 
 ## Limitations
 
-1. Rate limits - Script execution is subjected to API rate-limits imposed by the Access node. The rate limits for the Public Access nodes hosted by QuickNode are mentioned [here](https://www.quicknode.com/docs/flow#endpoint-rate-limits).
+1. **Rate limit** - Script execution is subjected to API rate-limits imposed by the Access nodes and the Execution nodes. The rate limits for the Public Access nodes hosted by QuickNode are mentioned [here](https://www.quicknode.com/docs/flow#endpoint-rate-limits).
 
-2. Computation limits - Similar to a transaction, script also have computation limits. Currently, the compute (gas) limit for script is 100,000.
 
-3. Historic block data - Script execution on the execution node is restricted to approximately the last 600 blocks. Any request for script execution on an execution node by block (ID or height) will fail if the block is more than 600 blocks in the past. Script execution on an access node can go much beyond the last 600 blocks but is restricted to the height when the [last](https://developers.flow.com/networks/node-ops/node-operation/past-sporks) network upgrade ([HCU](https://developers.flow.com/networks/node-ops/node-operation/hcu) or spork) occurred. 
+2. **Computation limit** - Similar to a transaction, each script is also subjected to a computation limit. Currently, the compute (gas) limit for a script is 100,000.
+
+
+3. **Historic block data limit**
+   1. Script execution on the execution node is restricted to approximately the last 600 blocks. Any request for script execution on an execution node on a past block (specified by block ID or block height) will fail if that block is more than 600 blocks in the past.
+   2. Script execution on an access node can go much beyond the last 600 blocks but is restricted to the height when the [last](https://developers.flow.com/networks/node-ops/node-operation/past-sporks) network upgrade ([HCU](https://developers.flow.com/networks/node-ops/node-operation/hcu) or spork) occurred. 
 
 
