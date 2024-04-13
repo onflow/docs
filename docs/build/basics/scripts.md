@@ -4,14 +4,15 @@ sidebar_position: 4
 
 # Scripts
 
-A script is executable Cadence code that queries the Flow network but does not modify it. Unlike Flow transactions, they don’t need to be signed and require no transaction fees. Also unlike transactions, scripts can return a value. You can think of executing scripts as a read-only operation very similar to the `eth_call` RPC method on Ethereum. 
+A script is executable Cadence code that queries the Flow network but does not modify it. Unlike Flow transactions, a script is not signed and requires no transaction fees. Also unlike transactions, a script can return a value.
+You can think of executing a script as a read-only operation very similar to the `eth_call` RPC method on Ethereum.
 
-Scripts are currently executed on either the Access Nodes or the Execution Nodes based on the Access node setup.
+Scripts are currently executed on either the Access Nodes or the Execution Nodes based on the Access node configuration.
 
 Scripts are defined by following the Cadence code:
 
 ```cadence
-// The main function is the entry point function and every script needs to have one.
+// The 'main' function is the entry point function and every script needs to have one.
 pub fun main() {
  // Cadence statements to be executed go here
 }
@@ -45,9 +46,9 @@ pub fun main(): String {
 
 Scripts can also be run against previous blocks, allowing you to query historic data from the Flow network. This is particularly useful for retrieving historical states of contracts or tracking changes over time.
 
-## Why to use a script?
+## When to use a script?
 
-A script provide a light-weight method to query chain data. It can be used for the following:
+A script provides a light-weight method to query chain data. It can be used for the following:
 
 1. Validating a transaction before submitting it e.g. checking if the payer has sufficient balance, the receiver account is setup correctly to receive a token or NFT etc.
 2. Collecting chain data over time.
