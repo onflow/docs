@@ -6,12 +6,14 @@ sidebar_position: 4
 
 A script provides a light-weight method to query chain data.
 
-It is an executable Cadence code that can query for Flow execution state data but cannot modify it in any way. Unlike Flow transactions, a script is not signed and requires no transaction fees. Also unlike transactions, a script can return a value.
+It is an executable Cadence code that can query for Flow execution state data but cannot modify it in any way.
+
+Unlike a Flow transaction, a script is not signed and requires no transaction fees. Also unlike a transaction, a script can return a value back to the caller.
 You can think of executing a script as a read-only operation, very similar to the `eth_call` RPC method on Ethereum.
 
 Scripts are currently executed on either the Access Nodes or the Execution Nodes based on the Access node configuration.
 
-Scripts are defined by following the Cadence code:
+Scripts are defined by the following the Cadence code:
 
 ```cadence
 // The 'main' function is the entry point function and every script needs to have one.
