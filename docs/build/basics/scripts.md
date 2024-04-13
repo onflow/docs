@@ -52,7 +52,7 @@ A script provide a light-weight method to query chain data. It can be used for t
 1. Validating a transaction before submitting it e.g. checking if the payer has sufficient balance, the receiver account is setup correctly to receive a token or NFT etc.
 2. Collecting chain data over time.
 3. Continuously verifying accounts through a background job e.g. a Discord bot that verifies users by their Flow account.
-4. Querying core contracts e.g. see [staking scripts and events](../../networks/staking/07-staking-scripts-events) for querying staking and epoch related information, see the scripts directory under each of the [core contract transactions](https://github.com/onflow/flow-core-contracts/tree/master/transactions) for other core contracts related scripts.
+4. Querying core contracts e.g. see [staking scripts and events](../../networks/staking/07-staking-scripts-events.md) for querying staking and epoch related information, see the scripts directory under each of the [core contract transactions](https://github.com/onflow/flow-core-contracts/tree/master/transactions) for other core contracts related scripts.
 
 ## Executing Scripts
 
