@@ -21,10 +21,8 @@ export function SignUpSection(): React.ReactElement {
   };
 
   const handleSubscribe = async (): Promise<void> => {
-    console.log('Submitting email:', email);
     setIsSubmitting(true);
     if (isValidEmail(email)) {
-      console.log('Sign up with valid email:', email);
       // Add here your logic to handle the email subscription
       try {
         const response = await fetch(
@@ -52,7 +50,7 @@ export function SignUpSection(): React.ReactElement {
       }
     } else {
       console.log('Invalid email');
-      setErrorMsg(''); // Trigger some user feedback
+      setErrorMsg('Please enter a valid email address'); // Trigger some user feedback
     }
   };
 
