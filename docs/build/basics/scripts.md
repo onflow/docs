@@ -22,7 +22,7 @@ pub fun main() {
 }
 ```
 
-Scripts can return a typed value.
+Scripts can return a typed value:
 
 ```cadence
 pub fun main(): Int {
@@ -30,7 +30,7 @@ pub fun main(): Int {
 }
 ```
 
-Scripts can also accept arguments.
+Scripts can also accept arguments:
 
 ```cadence
 pub fun main(arg: String): String {
