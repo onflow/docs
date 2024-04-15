@@ -29,6 +29,7 @@ export function SignUpSection(): React.ReactElement {
           'https://hooks.zapier.com/hooks/catch/12044331/3pv7v1t/',
           {
             method: 'POST',
+            mode: 'no-cors',
             headers: {
               'Content-Type': 'application/json',
             },
