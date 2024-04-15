@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { HomepageStartItem } from '../HomepageStartItem';
 import { Button } from '../Button';
 import { HomepageStartItemIcons } from '../HomepageStartItem/HomepageStartIcons';
@@ -9,8 +9,51 @@ const roadmapData = {
 };
 
 export function SignUpSection(): React.ReactElement {
-  const signUp = () => {
-    console.log('Sign up');
+  const [email, setEmail] = useState<string>('');
+  const [errorMsg, setErrorMsg] = useState<string>('');
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [responseMessage, setResponseMessage] = useState('');
+
+  const isValidEmail = (email: string): boolean => {
+    const re =
+      /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+    return re.test(String(email).toLowerCase());
+  };
+
+  const handleSubscribe = async (): Promise<void> => {
+    console.log('Submitting email:', email);
+    setIsSubmitting(true);
+    if (isValidEmail(email)) {
+      console.log('Sign up with valid email:', email);
+      // Add here your logic to handle the email subscription
+      try {
+        const response = await fetch(
+          'https://hooks.zapier.com/hooks/catch/12044331/3pv7v1t/',
+          {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({ email: email }),
+          },
+        );
+
+        if (response.ok) {
+          setResponseMessage('Subscription successful!');
+          setEmail('');
+        } else {
+          throw new Error('Failed to subscribe.');
+        }
+      } catch (error) {
+        console.error('Error:', error);
+        setErrorMsg('An error occurred.');
+      } finally {
+        setIsSubmitting(false);
+      }
+    } else {
+      console.log('Invalid email');
+      setErrorMsg(''); // Trigger some user feedback
+    }
   };
 
   return (
@@ -27,18 +70,37 @@ export function SignUpSection(): React.ReactElement {
             resources, grants and announcements.
           </div>
           <input
-            className="rounded-md p-4 border-0"
+            className="rounded-md p-4 border-0 text-primary-gray-300"
             type="text"
             placeholder="Enter your email"
+            onChange={(e) => {
+              setEmail(e.target.value.toLowerCase());
+              if (e.target.value === '') {
+                setErrorMsg('Please enter your email');
+              }
+              if (isValidEmail(email)) setErrorMsg('');
+            }}
+            onBlur={(e) => {
+              if (e.target.value === '') {
+                setErrorMsg('Please enter your email');
+                return;
+              }
+              setErrorMsg(isValidEmail(email) ? '' : 'Invalid email');
+            }}
           />
           <Button
-            onClick={signUp}
+            onClick={handleSubscribe}
             size={'sm'}
             variant="accent"
             className="p-4 border-0"
+            disabled={!isValidEmail(email)}
           >
-            Subscribe
+            {isSubmitting ? 'Submitting' : 'Subscribe'}
           </Button>
+          {errorMsg !== '' && <div className="text-red-500">{errorMsg}</div>}
+          {responseMessage !== '' && (
+            <div className="text-primary-green">{responseMessage}</div>
+          )}
         </div>
       </div>
     </div>
