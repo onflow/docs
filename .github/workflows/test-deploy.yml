@@ -7,12 +7,6 @@ on:
     # Review gh actions docs if you want to further define triggers, paths, etc
     # https://docs.github.com/en/actions/using-workflows/workflow-syntax-for-github-actions#on
 
-env:
-  ALGOLIA_APP_ID: ${{vars.ALGOLIA_APP_ID}}
-  ALGOLIA_API_KEY: ${{vars.ALGOLIA_API_KEY}}
-  ALGOLIA_INDEX_NAME: ${{vars.ALGOLIA_INDEX_NAME}}
-  MIXPANEL_PROJECT_TOKEN: ${{vars.MIXPANEL_PROJECT_TOKEN}}
-
 jobs:
   test-deploy:
     name: Test deployment
@@ -29,5 +23,7 @@ jobs:
 
       - name: Install dependencies
         run: yarn install --frozen-lockfile
+      - name: BS fix from https://github.com/typesense/docusaurus-theme-search-typesense/issues/23
+        run: sed -i '/process.env.DEBUG = namespaces;/c\// process.env.DEBUG = namespaces;' ./node_modules/debug/src/node.js
       - name: Test build website
         run: yarn build

@@ -1,3 +1,0 @@
-./docs/index.mdx: docs/tooling/flow-go-sdk/index.mdx
-./docs/error-codes.mdx: docs/tooling/flow-go-sdk/error-codes.mdx
-./docs/migration-v0.25.0.md: docs/tooling/flow-go-sdk/migration-v0.25.0.md

@@ -1,5 +1,5 @@
-import { FeaturedArticleCardProps } from '~/ui/design-system/src/lib/Components/FeaturedArticleCard';
-import { TutorialCardProps } from '~/ui/design-system/src/lib/Components/TutorialCard';
+import { type FeaturedArticleCardProps } from '../../ui/design-system/src/lib/Components/FeaturedArticleCard';
+import { type TutorialCardProps } from '../../ui/design-system/src/lib/Components/TutorialCard';
 
 export const redSquirrelGetStartedArticle: TutorialCardProps = {
   heading: 'Getting started on Flow with a RedSquirrel NFT',
@@ -144,7 +144,7 @@ export const playgroundTutorials: TutorialCardProps = {
   heading: 'Flow Playground Tutorials',
   tags: ['tutorial', 'beginner', 'cadence'],
   description: `Learn to use Cadence using the Flow Playgound Web IDE`,
-  link: 'https://developers.flow.com/cadence/tutorial/01-first-steps',
+  link: 'https://cadence-lang.org/docs/tutorial/first-steps',
   imageUri: 'https://miro.medium.com/max/1400/1*WGxn8AZj-gZXd_vipdBxSg.png',
   lastUpdated: '17/10/2022',
 };
@@ -174,4 +174,34 @@ export const accessControlCadence: TutorialCardProps = {
   link: 'https://joshuahannan.medium.com/basic-access-control-in-cadence-28c5765c6ec0',
   imageUri: 'https://miro.medium.com/max/694/1*M7p33-EGZPFdKcX7oR6mDg.jpeg',
   lastUpdated: '18/02/2021',
+};
+
+export const quicknodeAccountAbstraction: TutorialCardProps = {
+  heading: 'Account Abstraction on the Flow Blockchain',
+  tags: ['article', 'architecture', 'intermediate'],
+  description: `In this guide, you will learn more about Account Abstraction, what it aims to solve, how it works on Flow, covering concepts like the Flow Account Model, account linking, and then comparing it to how it works on Ethereum.`,
+  link: 'https://www.quicknode.com/guides/other-chains/flow/account-abstraction-on-flow',
+  imageUri:
+    'https://www.quicknode.com/guides/assets/images/account-07d19a771bde1467e9b81a71112250c0.png',
+  lastUpdated: '20/10/2023',
+};
+
+export const quicknodeCreateNFTCollection: TutorialCardProps = {
+  heading: 'How to Create an NFT Collection dApp On Flow',
+  tags: ['article', 'nft', 'cadence'],
+  description: `In this guide, you will learn about Flow. Here, you will discover how to create an NFT collection and build a frontend using Cadence, Flow CLI, and NextJS.`,
+  link: 'https://www.quicknode.com/guides/other-chains/flow/how-to-create-an-nft-collection-on-flow',
+  imageUri:
+    'https://www.quicknode.com/guides/assets/images/homepage-d7ba5e1ce66c4876cbf41b9b451d77ac.png',
+  lastUpdated: '28/09/2023',
+};
+
+export const quicknodeDeploySmartContract: TutorialCardProps = {
+  heading: 'How to Create and Deploy a Smart Contract with Cadence on Flow',
+  tags: ['article', 'cadence', 'beginner'],
+  description: `In this guide, you'll discover how to create a HelloWorld smart contract and interact with it using Flow's intuitive programming language, Cadence, and the robust tools QuickNode and Flow CLI.`,
+  link: 'https://www.quicknode.com/guides/other-chains/flow/how-to-create-and-deploy-a-smart-contract-with-cadence-on-flow',
+  imageUri:
+    'https://www.quicknode.com/guides/assets/images/2-f540c4ccfb670c19ba9dd4d3a20355ba.png',
+  lastUpdated: '18/08/2023',
 };

@@ -13,6 +13,9 @@ const fs = require('fs');
 const externalDataSourceLocation = './src/data/data-sources.json';
 let cachedRepositories;
 
+const hasTypesense =
+  process.env.TYPESENSE_NODE && process.env.TYPESENSE_SEARCH_ONLY_API_KEY;
+
 const mixpanelOnLoad = `
 if ('${process.env.MIXPANEL_PROJECT_TOKEN}' && '${process.env.MIXPANEL_PROJECT_TOKEN}' !== 'undefined') {
   window.mixpanel.init('${process.env.MIXPANEL_PROJECT_TOKEN}');
@@ -23,7 +26,7 @@ if ('${process.env.MIXPANEL_PROJECT_TOKEN}' && '${process.env.MIXPANEL_PROJECT_T
   }
   window.mixpanel.track('Page Viewed', viwedPayload);
 
-  const playUrl = 'play.onflow.org';
+  const playUrl = 'play.flow.com';
   const links = document.querySelectorAll('a') || [];
   const isPlayPage = Array.from(links).some((link) => link.href.includes(playUrl));
 
@@ -43,7 +46,7 @@ if ('${process.env.MIXPANEL_PROJECT_TOKEN}' && '${process.env.MIXPANEL_PROJECT_T
           class: target.className,
         }
         window.mixpanel.track('Link clicked', payload);
-        const isPlay = payload.href.includes('play.onflow.org');
+        const isPlay = payload.href.includes('play.flow.com');
         if (isPlay) {
           window.mixpanel.track('Play Link clicked', payload);        
         }
@@ -65,6 +68,17 @@ const fetchSporkData = async () => {
     console.error('Error:', error);
   }
   return data;
+};
+
+const getUrl = () => {
+  if (process.env.VERCEL_ENV === 'production') {
+    return 'https://developers.flow.com';
+  }
+  if (process.env.VERCEL_URL) {
+    return `https://${process.env.VERCEL_URL}`;
+  }
+
+  return 'https://onflow.github.io';
 };
 
 /**
@@ -125,19 +139,19 @@ const editUrl = ({ docPath }) => {
   return `https://github.com/${owner}/${name}/tree/${branch}/${sourceDocPath}`;
 };
 
+const baseUrl = process.env.BASE_URL || '/';
+
 /** @type {import('@docusaurus/types').Config} */
 const config = {
-  title: 'Flow docs',
-  tagline: 'Dinosaurs are cool',
+  title: 'Flow Developer Portal',
+  tagline: '',
   favicon: 'favicon.ico',
 
   // Set the production url of your site here
-  url: process.env.VERCEL_URL
-    ? `https://${process.env.VERCEL_URL}`
-    : 'https://onflow.github.io',
+  url: getUrl(),
   // Set the /<baseUrl>/ pathname under which your site is served
   // For GitHub pages deployment, it is often '/<projectName>/'
-  baseUrl: process.env.BASE_URL || '/docs/',
+  baseUrl,
 
   // GitHub pages deployment config.
   // If you aren't using GitHub pages, you don't need these.
@@ -145,8 +159,8 @@ const config = {
   projectName: 'docs', // Usually your repo name.
   trailingSlash: false,
 
-  onBrokenLinks: 'warn',
-  onBrokenMarkdownLinks: 'warn',
+  onBrokenLinks: 'throw',
+  onBrokenMarkdownLinks: 'throw',
   onDuplicateRoutes: 'warn',
 
   // Even if you don't use internalization, you can use this field to set useful
@@ -202,7 +216,10 @@ const config = {
         // Plugin Options for loading OpenAPI files
         specs: [
           {
-            spec: 'https://raw.githubusercontent.com/onflow/flow/master/openapi/access.yaml',
+            // restore after event streaming api is deployed to mainnet
+            // https://github.com/onflow/docs/issues/464
+            // spec: 'https://raw.githubusercontent.com/onflow/flow/master/openapi/access.yaml',
+            spec: 'https://raw.githubusercontent.com/onflow/flow/ec44c6891f5deea1811d3be42bb00181f30d0860/openapi/access.yaml',
             route: '/http-api/',
           },
         ],
@@ -215,11 +232,20 @@ const config = {
     ],
   ],
 
-  themes: ['mdx-v2'],
+  themes: [hasTypesense && 'docusaurus-theme-search-typesense'].filter(Boolean),
 
   themeConfig:
     /** @type {import('@docusaurus/preset-classic').ThemeConfig} */
     ({
+      announcementBar: {
+        id: 'stable_cadence_upgrade',
+        content: `🔧 Upgrade to Cadence 1.0 🔧<br />
+          The highly anticipated <a href="https://flow.com/upgrade/crescendo" target="_blank">Crescendo</a> network upgrade is coming soon with 20+ new <a href="https://flow.com/upgrade/cadence-1" target="_blank">Cadence 1.0</a> features and <a href="https://flow.com/upgrade/evm" target="_blank">EVM</a> equivalence.
+         `,
+        backgroundColor: '#007BFF',
+        textColor: '#FFFFFF',
+        isCloseable: true,
+      },
       colorMode: {
         defaultMode: 'dark',
       },
@@ -239,46 +265,46 @@ const config = {
         },
         items: [
           {
-            to: 'concepts/intro',
+            to: 'build/flow',
             position: 'left',
-            label: 'Concepts',
+            label: 'Build',
+            activeBasePath: '/build',
           },
           {
-            to: 'tutorials/intro',
+            to: 'evm/about',
             position: 'left',
-            label: 'Tutorials',
+            label: 'EVM',
+            activeBasePath: '/evm',
           },
           {
-            to: 'cadence/intro',
+            to: 'tools/flow-cli',
             position: 'left',
-            label: 'Cadence',
+            label: 'Tools',
+            activeBasePath: '/tools',
           },
           {
-            to: 'tooling/intro',
+            to: 'networks/flow-networks',
             position: 'left',
-            label: 'Tooling',
+            label: 'Networks',
+            activeBasePath: '/networks',
           },
           {
-            to: 'references/Introduction',
+            to: 'ecosystem',
             position: 'left',
-            label: 'References',
-          },
-          {
-            to: 'community-resources/Introduction',
-            position: 'left',
-            label: 'Resources',
+            label: 'Ecosystem',
+            activeBasePath: '/ecosystem',
           },
           {
             href: 'https://github.com/onflow',
-            html: '<img src="" alt="GitHub" id="navbar-github" class="box-content h-32 w-32"/>',
+            html: '<img src="" alt="GitHub" id="navbar-github" class="box-content h-32 w-32"/><span class="p-2 desktop:hidden">Github</span>',
             position: 'right',
-            className: 'h-8 p-1',
+            className: 'h-8 desktop:p-1',
           },
           {
             href: 'https://onflow.org/discord',
-            html: '<img src="" alt="Discord" id="navbar-discord" class="box-content h-32 w-32"/>',
+            html: '<img src="" alt="Discord" id="navbar-discord" class="box-content h-32 w-32"/><span class="p-2 desktop:hidden">Discord</span>',
             position: 'right',
-            className: 'h-8 p-1',
+            className: 'h-8 desktop:p-1',
           },
         ],
       },
@@ -290,38 +316,34 @@ const config = {
             items: [
               {
                 label: 'Getting Started',
-                to: '/getting-started',
+                to: '/build/getting-started/quickstarts/hello-world',
               },
               {
                 label: "SDK's & Tools",
                 to: '/tools',
               },
               {
-                to: '/learn',
-                label: 'Learning Resources',
-              },
-              {
-                to: '/cadence',
+                to: 'https://cadence-lang.org/docs/',
                 label: 'Cadence',
               },
               {
-                to: '/concepts/mobile',
+                to: '/build/guides/mobile/overview',
                 label: 'Mobile',
               },
               {
-                to: '/tooling/fcl-js/',
+                to: '/tools/clients/fcl-js/',
                 label: 'FCL',
               },
               {
-                to: '/tooling/flow-js-testing/',
-                label: 'JS Testing Library',
+                to: '/build/smart-contracts/testing',
+                label: 'Testing',
               },
               {
-                to: '/tooling/flow-cli/',
+                to: '/tools/flow-cli/',
                 label: 'CLI',
               },
               {
-                to: '/tooling/emulator/',
+                to: '/tools/emulator/',
                 label: 'Emulator',
               },
               {
@@ -329,7 +351,7 @@ const config = {
                 label: 'Dev Wallet',
               },
               {
-                to: '/tooling/vscode-extension/',
+                to: '/tools/vscode-extension/',
                 label: 'VS Code Extension',
               },
             ],
@@ -338,7 +360,7 @@ const config = {
             title: 'Community',
             items: [
               {
-                to: '/community',
+                to: '/ecosystem',
                 label: 'Ecosystem',
               },
               {
@@ -352,10 +374,6 @@ const config = {
               {
                 href: 'https://flow.com/flow-responsible-disclosure',
                 label: 'Responsible Disclosure',
-              },
-              {
-                href: 'https://forum.onflow.org/',
-                label: 'Forum',
               },
               {
                 href: 'https://www.flowverse.co/',
@@ -375,15 +393,11 @@ const config = {
             title: 'Start Building',
             items: [
               {
-                href: 'https://play.onflow.org/',
+                href: 'https://play.flow.com/',
                 label: 'Flow Playground',
               },
               {
-                to: '/tutorials/kitty-items/',
-                label: 'Kitty Items',
-              },
-              {
-                to: '/cadence/tutorial/first-steps',
+                to: 'https://cadence-lang.org/docs/tutorial/first-steps',
                 label: 'Cadence Tutorials',
               },
               {
@@ -391,12 +405,12 @@ const config = {
                 label: 'Cadence Cookbook',
               },
               {
-                to: '/concepts/core-contracts/',
+                to: '/build/core-contracts/',
                 label: 'Core Contracts & Standards',
               },
               {
-                href: 'https://academy.ecdao.org/',
-                label: 'Emerald DAO Bootcamp',
+                href: '/evm/about',
+                label: 'EVM',
               },
             ],
           },
@@ -408,27 +422,27 @@ const config = {
                 label: 'Network Status',
               },
               {
-                href: 'https://flowscan.org/',
-                label: 'Flowscan Mainnet',
+                href: 'https://flowdiver.io/',
+                label: 'Flowdiver Mainnet',
               },
               {
-                href: 'https://testnet.flowscan.org/',
-                label: 'Flowscan Testnet',
+                href: 'https://testnet.flowdiver.io/',
+                label: 'Flowdiver Testnet',
               },
               {
-                to: '/concepts/nodes/node-operation/past-sporks/',
+                to: '/networks/node-ops/node-operation/past-sporks',
                 label: 'Past Sporks',
               },
               {
-                to: '/concepts/nodes/node-operation/upcoming-sporks',
+                to: '/networks/node-ops/node-operation/upcoming-sporks',
                 label: 'Upcoming Sporks',
               },
               {
-                to: '/concepts/nodes/node-operation/',
+                to: '/networks/node-ops',
                 label: 'Node Operation',
               },
               {
-                to: '/concepts/nodes/node-operation/spork/',
+                to: '/networks/node-ops/node-operation/spork',
                 label: 'Spork Information',
               },
             ],
@@ -452,6 +466,10 @@ const config = {
                 href: 'https://onflow.org/',
                 label: 'OnFlow',
               },
+              {
+                href: 'https://flow.com/blog',
+                label: 'Blog',
+              },
             ],
           },
         ],
@@ -461,37 +479,67 @@ const config = {
         theme: lightCodeTheme,
         darkTheme: darkCodeTheme,
       },
-      algolia: {
-        // The application ID provided by Algolia
-        appId: process.env.ALGOLIA_APP_ID,
+      typesense: hasTypesense && {
+        // Replace this with the name of your index/collection.
+        // It should match the "index_name" entry in the scraper's "config.json" file.
+        typesenseCollectionName: 'flow_docs',
 
-        // Public API key: it is safe to commit it
-        apiKey: process.env.ALGOLIA_API_KEY,
+        typesenseServerConfig: {
+          nodes: [
+            {
+              host: process.env.TYPESENSE_NODE,
+              port: 443,
+              protocol: 'https',
+            },
+          ],
+          apiKey: process.env.TYPESENSE_SEARCH_ONLY_API_KEY,
+        },
 
-        indexName: process.env.ALGOLIA_INDEX_NAME,
+        // Optional: Typesense search parameters: https://typesense.org/docs/0.24.0/api/search.html#search-parameters
+        typesenseSearchParameters: {},
 
-        // Optional: see doc section below
+        // Optional
         contextualSearch: true,
-
-        // Optional: Specify domains where the navigation should occur through window.location instead on history.push. Useful when our Algolia config crawls multiple documentation sites and we want to navigate with window.location.href to them.
-        // externalUrlRegex: 'external\\.com|domain\\.com',
-
-        // Optional: Replace parts of the item URLs from Algolia. Useful when using the same search index for multiple deployments using a different baseUrl. You can use regexp or string in the `from` param. For example: localhost:3000 vs myCompany.com/docs
-        // replaceSearchResultPathname: {
-        //   from: '/docs/', // or as RegExp: /\/docs\//
-        //   to: '/',
-        // },
-
-        // Optional: Algolia search parameters
-        searchParameters: {},
-
-        // Optional: path for search page that enabled by default (`false` to disable it)
-        searchPagePath: 'search',
-
-        // ... other Algolia params
       },
     }),
   plugins: [
+    function customizedSvgo() {
+      return {
+        name: 'docusaurus-svgo',
+        configureWebpack(config) {
+          // allow svgr to use svgo config file
+          for (const rule of config.module.rules) {
+            if (
+              typeof rule === 'object' &&
+              rule.test.toString() === '/\\.svg$/i'
+            ) {
+              for (const nestedRule of rule.oneOf) {
+                if (nestedRule.use instanceof Array) {
+                  for (const loader of nestedRule.use) {
+                    if (
+                      typeof loader === 'object' &&
+                      loader.loader === require.resolve('@svgr/webpack')
+                    ) {
+                      if (typeof loader.options === 'object') {
+                        loader.options.svgoConfig = null;
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+          return {
+            mergeStrategy: {
+              'module.rules': 'replace',
+            },
+            module: {
+              rules: config.module.rules,
+            },
+          };
+        },
+      };
+    },
     function tailwindPlugin() {
       return {
         name: 'docusaurus-tailwindcss',
@@ -560,6 +608,25 @@ const config = {
       };
     },
     // require('./plugins/networks')
+    [
+      '@docusaurus/plugin-client-redirects',
+      {
+        redirects: [
+          {
+            to: '/build/smart-contracts/overview',
+            from: '/build/basics/smart-contracts',
+          },
+        ],
+        createRedirects(existingPath) {
+          if (existingPath.includes('/cadence')) {
+            return [
+              existingPath.replace('https://cadence-lang.org/docs', '/cadence'),
+            ];
+          }
+          return undefined;
+        },
+      },
+    ],
   ],
   stylesheets: [
     {
@@ -572,7 +639,7 @@ const config = {
   ],
   scripts: [
     {
-      src: '/mixpanel.js',
+      src: `${baseUrl}mixpanel.js`,
       async: true,
       onload: mixpanelOnLoad,
     },
@@ -585,7 +652,7 @@ const config = {
       async: true,
     },
     {
-      src: '/hotjar.js',
+      src: `${baseUrl}hotjar.js`,
       async: true,
     },
     {
@@ -597,6 +664,7 @@ const config = {
       async: true,
     },
   ],
+  clientModules: [require.resolve('./src/modules/toolscards.ts')],
 };
 
 module.exports = config;

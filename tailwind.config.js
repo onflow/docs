@@ -47,7 +47,7 @@ module.exports = {
     extend: {
       fontFamily: {
         sans: ['Acumin Pro', ...defaultTheme.fontFamily.sans],
-        display: 'Termina',
+        display: 'Inter',
         mono: 'IBM Plex Mono',
       },
       colors: {
@@ -61,12 +61,13 @@ module.exports = {
         'green-success': '#05CE7A',
         'blue-hover': '#3031D1',
         'blue-hover-dark': '#A183E0',
-        'green-dark': '#47FFB2',
+        'green-dark': '#00BF6F',
         'blue-dark': '#B795FF',
         'pink-dark': '#F4C6FB',
         'red-error-dark': '#F67D65',
         'green-success-dark': '#7AFFC8',
         'primary-gray': {
+          10: '#F2F4F7',
           50: '#F6F7F9',
           100: '#DEE2E9',
           200: '#ABB3BF',
@@ -93,6 +94,18 @@ module.exports = {
         '2xl-dark-soft': '0px 4px 40px #FFFFFF14',
         '2xl-dark': '0px 4px 40px #FFFFFF22',
         '2xl-dark-strong': '0px 0px 40px #FFFFFF32',
+      },
+      borderRadius: {
+        DEFAULT: '0.5rem',
+        custom: '60px',
+        lg: '1rem',
+      },
+      backgroundColor: {
+        'light-card': '#32343E', // Custom background color for light mode
+      },
+      backgroundImage: {
+        'card-gradient':
+          'linear-gradient(0deg, rgba(0, 0, 0, 1) 0%, rgba(0, 0, 0, 0.60) 25%, #32343E 100%)',
       },
       typography: (theme) => ({
         DEFAULT: {
@@ -143,7 +156,6 @@ module.exports = {
   plugins: [
     require('@tailwindcss/typography'),
     require('@tailwindcss/forms'),
-    require('@tailwindcss/line-clamp'),
     require('@tailwindcss/aspect-ratio'),
     require('tailwind-scrollbar-hide'),
   ],

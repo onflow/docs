@@ -28,7 +28,7 @@ const cliTool: Tool = {
   authorIcon: 'https://avatars.githubusercontent.com/u/62387156?s=64&v=4',
   authorName: 'onflow',
   tags: ['documentation', 'active', 'required'],
-  link: '/tooling/flow-cli/',
+  link: '/tools/flow-cli/',
   stars: 171,
   iconSrc: ToolCliIconSrc,
   description:
@@ -44,7 +44,7 @@ const emulatorTool: Tool = {
   authorIcon: 'https://avatars.githubusercontent.com/u/62387156?s=64&v=4',
   authorName: 'onflow',
   tags: ['documentation', 'active', 'local-dev'],
-  link: '/tooling/emulator/',
+  link: '/tools/emulator/',
   stars: 62,
   iconSrc: ToolEmulatorIconSrc,
   description:
@@ -60,7 +60,7 @@ const vsCodeTool: Tool = {
   authorIcon: 'https://avatars.githubusercontent.com/u/62387156?s=64&v=4',
   authorName: 'onflow',
   tags: ['documentation', 'active', 'local-dev'],
-  link: '/tooling/vscode-extension',
+  link: '/tools/vscode-extension',
   stars: 33,
   iconSrc: ToolVsCodeIconSrc,
   description:
@@ -123,7 +123,7 @@ const jsTestingLibTool: Tool = {
   authorIcon: 'https://avatars.githubusercontent.com/u/62387156?s=64&v=4',
   authorName: 'onflow',
   tags: ['documentation', 'active', 'local-dev'],
-  link: '/tooling/flow-js-testing/',
+  link: '/tools/flow-js-testing/',
   stars: 38,
   iconSrc: ToolTestingIconSrc,
   description:
@@ -171,7 +171,7 @@ const fclSDK: Tool = {
   authorIcon: 'https://avatars.githubusercontent.com/u/62387156?s=64&v=4',
   authorName: 'onflow',
   tags: ['documentation', 'active'],
-  link: '/tooling/fcl-js',
+  link: '/tools/clients/fcl-js',
   stars: 268,
   iconSrc: ToolFclIconSrc,
 };
@@ -185,7 +185,7 @@ const goSDK: Tool = {
   authorIcon: 'https://avatars.githubusercontent.com/u/62387156?s=64&v=4',
   authorName: 'onflow',
   tags: ['documentation', 'active'],
-  link: '/tooling/flow-go-sdk',
+  link: '/tools/clients/flow-go-sdk',
   stars: 186,
   iconSrc:
     'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/go/go-original.svg',
@@ -419,11 +419,12 @@ const flowRunnerTool: Tool = {
 
 // Explorers
 const flowScanTool: Tool = {
-  title: 'Flowscan',
+  title: 'Flowdiver',
   tags: ['metrics', 'lookup', 'mainnet'],
-  link: 'https://flowscan.org/',
-  iconSrc: 'https://flowscan.org/images/flowscan-logo-only.svg',
-  description: `Flowscan is a blockchain explorer that lets you browse all on-chain events, transactions, contracts, and accounts.`,
+  link: 'https://flowdiver.io/',
+  iconSrc:
+    'https://pbs.twimg.com/profile_images/1693654862536331264/ViqtN5qj_400x400.jpg',
+  description: `Flowdiver is a blockchain explorer that lets you browse all on-chain events, transactions, contracts, and accounts.`,
 };
 
 const flowViewSourceTool: Tool = {
@@ -439,14 +440,6 @@ const flowViewSourceTool: Tool = {
   link: 'https://github.com/orodio/flow-view-source',
   iconSrc: CodeIcon,
   description: `Flow view source is a blockchain explorer that's open sourced and connected to FCL for running transactions.`,
-};
-
-const bigDipperTool: Tool = {
-  title: 'Big Dipper',
-  tags: ['metrics', 'lookup', 'mainnet'],
-  link: 'https://flow.bigdipper.live/',
-  iconSrc: CodeIcon,
-  description: `Big Dipper is a blockchain explorer that lets you browse all on-chain blocks, transactions, contracts, and accounts.`,
 };
 
 // oss services
@@ -604,7 +597,7 @@ const unitySDK: Tool = {
   authorIcon: 'https://avatars.githubusercontent.com/u/62387156?s=64&v=4',
   authorName: 'onflow',
   tags: ['documentation'],
-  link: '/tooling/unity-sdk',
+  link: '/tools/clients/unity-sdk',
   stars: 4,
   iconSrc:
     'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/unity/unity-original.svg',
@@ -633,7 +626,6 @@ export {
   faucetTool,
   flowScanTool,
   flowViewSourceTool,
-  bigDipperTool,
   walletApiTool,
   eventIndexingTool,
   accountApiTool,

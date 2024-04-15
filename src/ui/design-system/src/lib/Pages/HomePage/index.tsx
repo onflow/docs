@@ -1,89 +1,66 @@
 import React from 'react';
-import {
-  Flips,
-  LandingHeaderHome,
-  HomepageStartList,
-  ToolsAndConcepts,
-  UpcomingEvents,
-  HomepageBrowse,
-} from '../../Components';
-import {
-  ContentNavigationList,
-  type ContentNavigationListProps,
-} from '../../Components/ContentNavigationList';
-import { type FlipsProps } from '../../Components/Flips';
+import { LandingHeaderHome, HomepageStartList } from '../../Components';
+import { type ContentNavigationListProps } from '../../Components/ContentNavigationList';
 import { type SocialLinksSignupProps } from '../../Components/SocialLinksSignup';
-import { type ToolCardProps } from '../../Components/ToolCard';
 import { type TutorialCardProps } from '../../Components/TutorialCard';
 import { type UpcomingEventsProps } from '../../Components/UpcomingEvents';
 import PageBackground from '../shared/PageBackground';
 import PageSection from '../shared/PageSection';
 import PageSections from '../shared/PageSections';
-import { type HomepageStartItemProps } from '../../Components/HomepageStartItem';
-import { type HomepageBrowseItemProps } from '../../Components/HomepageBrowse';
+import { ContentFeatureList } from '../../Components/ContentFeatureList';
+import { PageCarousel } from '../../Components/PageCarousel';
+import { LinkGrid } from '../../Components/LinkGrid';
+import { SocialCards } from '../../Components/SocialCards';
+import BgImage from '../../../../images/misc/bg-social-section.jpg';
+import TransitionPageSection from '../shared/TransitionPageSection';
 
 export type HomePageProps = SocialLinksSignupProps & {
   concepts?: TutorialCardProps[];
-  homepageStartProjectData: HomepageStartItemProps[];
   contentNavigationListItems: ContentNavigationListProps;
-  editPageUrl?: string;
-  flips: FlipsProps;
-  threeColumnItems: HomepageBrowseItemProps[];
-  tools: ToolCardProps[];
   upcomingEvents: UpcomingEventsProps;
 };
 
-const HomePage = ({
-  concepts,
-  homepageStartProjectData,
-  contentNavigationListItems,
-  discordUrl,
-  editPageUrl,
-  flips,
-  githubUrl,
-  threeColumnItems,
-  tools,
-  upcomingEvents,
-}: HomePageProps): JSX.Element => {
+const Description = (): JSX.Element => (
+  <>
+    Dive into a rich collection of resources, tutorials, autonomous realms and
+    vibrant communities that unlock the full potential of Web3. Whether a
+    tinkerer or a seasoned developer, find everything you need to start and
+    elevate your projects.
+  </>
+);
+
+const HomePage = ({ discordUrl, githubUrl }: HomePageProps): JSX.Element => {
   return (
     <PageBackground gradient="home">
       <LandingHeaderHome
-        description="Discover the developer ecosystem and master the Flow blockchain"
+        description={<Description />}
         discordUrl={discordUrl}
-        editPageUrl={editPageUrl}
         githubUrl={githubUrl}
         tag="onflow"
-        title="Developer Portal"
+        title="Build with Flow"
       />
-      <HomepageStartList items={homepageStartProjectData} />
+      <HomepageStartList />
       <PageSections>
-        <PageSection sectionId="browse-by-topic">
-          <HomepageBrowse items={threeColumnItems} topRounded={true} />
-        </PageSection>
-        <PageSection sectionId="sdks-and-tools">
-          <ToolsAndConcepts
-            tools={tools}
-            concepts={concepts}
-            headerLink={'sdks-and-tools'}
-          />
-        </PageSection>
-        <PageSection sectionId="flips">
-          <Flips {...flips} headerLink="flips" />
-        </PageSection>
-        {upcomingEvents.events.length > 0 && (
-          <PageSection sectionId="upcoming-events">
-            <UpcomingEvents {...upcomingEvents} headerLink="upcoming-events" />
-          </PageSection>
-        )}
-        <PageSection sectionId="explore-more-content">
-          <ContentNavigationList
-            header={contentNavigationListItems.header}
-            contentNavigationItems={
-              contentNavigationListItems.contentNavigationItems
-            }
-            headerLink="explore-more-content"
-          />
-        </PageSection>
+        <TransitionPageSection sectionId="explore-more-content">
+          <ContentFeatureList />
+        </TransitionPageSection>
+        <TransitionPageSection
+          className={'md:mx-4'}
+          sectionId="start-building-onflow"
+        >
+          <PageCarousel />
+        </TransitionPageSection>
+        <TransitionPageSection
+          className={'md:mx-4'}
+          sectionId="explore-the-docs"
+        >
+          <LinkGrid />
+        </TransitionPageSection>
+        <div className="" style={{ backgroundImage: `url(${BgImage})` }}>
+          <TransitionPageSection sectionId="get-involved">
+            <SocialCards />
+          </TransitionPageSection>
+        </div>
       </PageSections>
     </PageBackground>
   );

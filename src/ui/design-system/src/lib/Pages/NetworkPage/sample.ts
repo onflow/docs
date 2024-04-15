@@ -84,21 +84,4 @@ export default [
       "component+c01e3497-6a57-4367-9221-b07f6af215d2@notifications.statuspage.io",
     start_date: "2021-07-08",
   },
-  {
-    id: "s4z9n7p9pm3s",
-    page_id: "ytw5bdg6zr13",
-    group_id: null,
-    created_at: "2021-07-08T01:54:25Z",
-    updated_at: "2022-05-04T18:28:01Z",
-    group: false,
-    name: "Canarynet",
-    description: null,
-    position: 6,
-    status: "operational",
-    showcase: false,
-    only_show_if_degraded: false,
-    automation_email:
-      "component+e0799252-8f03-4e81-a36e-fae8f2f66ce8@notifications.statuspage.io",
-    start_date: "2021-07-08",
-  },
 ]
