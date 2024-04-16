@@ -25,19 +25,15 @@ export function SignUpSection(): React.ReactElement {
     setIsSubmitting(true);
     if (isValidEmail(email)) {
       // Add here your logic to handle the email subscription
-      fetch(
-        'https://hooks.zapier.com/hooks/catch/12044331/3n91m9c/',
-        //          'https://hooks.zapier.com/hooks/catch/12044331/3pv7v1t/',
-        {
-          method: 'POST',
-          mode: 'no-cors',
-          headers: {
-            accept: 'application/json',
-            'Content-Type': 'application/json',
-          },
-          body: JSON.stringify({ email }),
+      fetch('https://hooks.zapier.com/hooks/catch/12044331/3pv7v1t/', {
+        method: 'POST',
+        mode: 'no-cors',
+        headers: {
+          accept: 'application/json',
+          'Content-Type': 'application/json',
         },
-      )
+        body: JSON.stringify({ email }),
+      })
         .then((response) => {
           if (response.status === 0) {
             // using no-cors mode, status is always 0
