@@ -17,7 +17,7 @@ Scripts are defined by the following the Cadence code:
 
 ```cadence
 // The 'main' function is the entry point function and every script needs to have one.
-pub fun main() {
+access(all) fun main() {
  // Cadence statements to be executed go here
 }
 ```
@@ -33,7 +33,7 @@ access(all) fun main(): Int {
 Scripts can also accept arguments:
 
 ```cadence
-pub fun main(arg: String): String {
+access(all) fun main(arg: String): String {
 	return "Hello ".concat(arg)
 }
 ```
