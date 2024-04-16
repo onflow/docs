@@ -92,7 +92,6 @@ copyRepoFilesToDest() {
 
 renameEcosystemOverview() {
     sed -i'' 's/Get the Flow Down - Flow Learning Resources/Ecosystem Overview/g' ./docs/ecosystem/overview/README.md
-    sed -i'' 's/(flipside.new)/(https:\/\/flipside.new)/g' ./docs/ecosystem/overview/README.md
 }
 
 cloneDocReposToDest
