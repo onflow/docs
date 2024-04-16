@@ -84,7 +84,7 @@ export function SignUpSection(): React.ReactElement {
                 }}
                 onBlur={(e) => {
                   if (e.target.value === '') {
-                    setErrorMsg('Please enter your email');
+                    setErrorMsg('');
                     return;
                   }
                   setErrorMsg(
@@ -103,7 +103,7 @@ export function SignUpSection(): React.ReactElement {
               </Button>
             </>
           )}
-          <div className="h-full text-red-500">{errorMsg}</div>
+          <div className="min-h-[50px] text-red-500">{errorMsg}</div>
           <div
             className={`transition-opacity duration-2000 ease-out ${
               responseMessage === SUCCESS_MESSAGE ? 'opacity-100' : 'opacity-0'
