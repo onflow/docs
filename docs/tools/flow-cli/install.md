@@ -1,7 +1,7 @@
 ---
 title: Install Instructions
 description: How to install the Flow command-line interface (CLI)
-sidebar_position: 2
+sidebar_position: 1
 ---
 
 The Flow CLI can be installed on macOS, Windows (7 or greater) and most Linux systems.

@@ -38,14 +38,16 @@ If you have downloaded the bootstrapping kit previously, ensure you check the ha
 ```shell
 curl -sL -O storage.googleapis.com/flow-genesis-bootstrap/boot-tools.tar
 tar -xvf boot-tools.tar
+chmod +x ./boot-tools/bootstrap
+chmod +x ./boot-tools/transit
 ```
 
 ```shell CheckSHA256
 sha256sum ./boot-tools/bootstrapcmd
-bc34a311f934fafed984a195f6bdca659ed21bfe50dd9947a39eb8edca6b10aa  ./boot-tools/bootstrap
+a06e3e9b2443c6755214150e9e101b70dd48ae30ffcfcbbcc471ba430cb104bf  ./boot-tools/bootstrap
 
 sha256sum ./boot-tools/transit
-a06e3e9b2443c6755214150e9e101b70dd48ae30ffcfcbbcc471ba430cb104bf  ./boot-tools/transit
+bc34a311f934fafed984a195f6bdca659ed21bfe50dd9947a39eb8edca6b10aa  ./boot-tools/transit
 ```
 
 ### Generate Your Node Keys
@@ -86,9 +88,9 @@ cp -r /path/to/bootstrap /path/to/bootstrap.bak
 #########################################################
 # Generate Keys
 $ mkdir ./bootstrap
-# YOUR_NODE_ADDRESS: FQDN associated to your instance
+# YOUR_NODE_ADDRESS: FQDN associated to your instance (do NOT use an IP address, use a hostname)
 # YOUR_NODE_ROLE: The Flow nodes that you wish to run, it should be ONE of the following - [ access, collection, consensus, execution, verification ]
-$ ./boot-tools/bootstrap key --address \"${YOUR_NODE_ADDRESS}:3569\" --role ${YOUR_NODE_ROLE} -o ./bootstrap
+$ ./boot-tools/bootstrap key --address \"YOUR_NODE_ADDRESS_GOES_HERE:3569\" --role YOUR_NODE_ROLE_GOES_HERE -o ./bootstrap
 
 ```
 
@@ -143,7 +145,7 @@ In Step 2 of this guide, when you submit a transaction to stake your node, you w
 machine account public key, which can be found in the output of the previous `bootstrap key` command.
 
 ```shell MachineAccountPublicKey
-$./boot-tools/bootstrap key --address ${YOUR_NODE_ADDRESS} --role ${YOUR_NODE_ROLE}  -o ./bootstrap
+$./boot-tools/bootstrap key --address YOUR_NODE_ADDRESS_GOES_HERE --role YOUR_NODE_ROLE_GOES_HERE  -o ./bootstrap
 ...
 <nil> DBG encoded public machine account key machineAccountPubKey=1b9c00e6f0930792c5738d3397169f8a592416f334cf11e84e6327b98691f2b72158b40886a4c3663696f96cd15bfb5a08730e529f62a00c78e2405013a6016d
 <nil> INF wrote file bootstrap/private-root-information/private-node-info_ab6e0b15837de7e5261777cb65665b318cf3f94492dde27c1ea13830e989bbf9/node-machine-account-key.priv.json
@@ -167,7 +169,7 @@ $cat ./bootstrap/public-root-information/node-info.pub.39fa54984b8eaa463e1299194
   "Role": "consensus",
   "Address": "consensus-001.nodes.flow.com:3569",
   "NodeID": "39fa54984b8eaa463e129919464f61c8cec3a4389478df79c44eb9bfbf30799a",
-  "Weight": 1000,
+  "Weight": 0,
   "NetworkPubKey": "d92e3d5880abe233cf9fe9104db34bbb31251468a541454722b3870c04156a1b0504aef443bcaad124b997384b8fe7052847ce1e6189af1392d865e6be69835b",
   "StakingPubKey": "917826e018f056a00b778a58ae83054906957ffd4b6f1b7da083551f7a9f35e02b76ace50424ed7d2c9fc69207a59f0f08a031048f5641db94e77d0648b24d150dedd54bab7cd44b4aa60cfd54be418647b0b3965f8ae54c0bcb48ae9d705162"
 }
@@ -193,7 +195,7 @@ If you are not running a collection or consensus node, you can skip this step.
 You will now need to use the `bootstrap` utility to run `machine-account` with the created address to finalize the set up of your Machine account.
 
 ```shell
-$ ./boot-tools/bootstrap machine-account --address ${YOUR_MACHINE_ACCOUNT_ADDRESS} -o ./bootstrap
+$ ./boot-tools/bootstrap machine-account --address YOUR_MACHINE_ACCOUNT_ADDRESS_GOES_HERE -o ./bootstrap
 ```
 
 ```shell Example
@@ -235,15 +237,19 @@ This command will detect and provide information about common misconfigurations,
 
 ### Push transit keys (consensus node only)
 
-If you are running a consensus node, run the following command to push the transit keys. Use the token `mainnet-x-organization` e.g. `mainnet-17-companyname`.
+If you are running a consensus node, run the following command to generate the transit keys.
 
 ```shell transit
-$ ./boot-tools/transit push-transit-key -b ./bootstrap -t mainnet-x-organization
-<nil> INF generating transit keys
+$ ./boot-tools/transit prepare -b ./bootstrap -r consensus
+<nil> INF running prepare
 <nil> INF generating key pair
-<nil> INF attempting to push transit public key to the transit servers
-<nil> INF successfully pushed transit public key to the transit servers
+<nil> INF completed preparation role=consensus
 ```
+
+This will generate the public and private transit keys under the bootstrap folder.
+The transit keys are used to transfer the DKG keys after a network upgrade.
+
+Please share the **public** transit key with the Flow Foundation via [discord](https://discord.com/channels/613813861610684416/694291244020662273) or [email](mailto::governance@flow.com).
 
 ## Step 3 - Start Your Flow Node
 

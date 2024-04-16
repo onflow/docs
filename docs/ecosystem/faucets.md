@@ -18,6 +18,7 @@ Network Faucets provide free Flow tokens for testing purposes, functioning like 
 ### Supported Networks
 
 - Testnet: [https://testnet-faucet.onflow.org/](https://testnet-faucet.onflow.org/)
+- Previewnet: [https://previewnet-faucet.onflow.org/](https://previewnet-faucet.onflow.org/)
 
 ## LearnWeb3 Flow Faucet
 
