@@ -24,8 +24,9 @@ to execute/handle blocks at a given block height.
 
 Source: [NodeVersionBeacon.cdc](https://github.com/onflow/flow-core-contracts/blob/master/contracts/NodeVersionBeacon.cdc)
 
-| Network         | Contract Address     |
-| --------------- | -------------------- |
-| Emulator        | `0xf8d6e0586b0a20c7` |
-| Testnet         | `0x8c5303eaa26202d6` |
-| Mainnet         | `0xe467b9dd11fa00df` |
+| Network           | Contract Address     |
+| ----------------- | -------------------- |
+| Emulator          | `0xf8d6e0586b0a20c7` |
+| PreviewNet        | `0xb6763b4399a888c8` |
+| Testnet/Crescendo | `0x8c5303eaa26202d6` |
+| Mainnet           | `0xe467b9dd11fa00df` |

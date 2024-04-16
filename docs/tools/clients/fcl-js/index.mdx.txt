@@ -7,7 +7,7 @@
     <a href="https://github.com/onflow/fcl-js"><strong>View on Github»</strong></a>
     <br />
     <br />
-    <a href="../../tutorials/flow-app-quickstart">Quickstart</a>
+    <a href="../../../build/guides/flow-app-quickstart">Quickstart</a>
     ·
     <a href="https://github.com/onflow/fcl-js/issues">Report Bug</a>
     ·

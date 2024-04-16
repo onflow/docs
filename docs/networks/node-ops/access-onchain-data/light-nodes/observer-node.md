@@ -149,10 +149,10 @@ docker run --rm \
  --rest-addr=:80 \
  --loglevel=error \
  --secretsdir=/data/secrets  \
- --upstream-node-addresses=access-008.mainnet23.nodes.onflow.org:9001 \
- --upstream-node-public-keys=11742552d21ac93da37ccda09661792977e2ca548a3b26d05f22a51ae1d99b9b75c8a9b3b40b38206b38951e98e4d145f0010f8942fd82ddf0fb1d670202264a \
- --bootstrap-node-addresses=access-008.mainnet23.nodes.onflow.org:3570  \
- --bootstrap-node-public-keys=11742552d21ac93da37ccda09661792977e2ca548a3b26d05f22a51ae1d99b9b75c8a9b3b40b38206b38951e98e4d145f0010f8942fd82ddf0fb1d670202264a \
+ --upstream-node-addresses=secure.mainnet.nodes.onflow.org:9001 \
+ --upstream-node-public-keys=28a0d9edd0de3f15866dfe4aea1560c4504fe313fc6ca3f63a63e4f98d0e295144692a58ebe7f7894349198613f65b2d960abf99ec2625e247b1c78ba5bf2eae \
+ --bootstrap-node-addresses=secure.mainnet.nodes.onflow.org:3570  \
+ --bootstrap-node-public-keys=28a0d9edd0de3f15866dfe4aea1560c4504fe313fc6ca3f63a63e4f98d0e295144692a58ebe7f7894349198613f65b2d960abf99ec2625e247b1c78ba5bf2eae \
  --observer-networking-key-path=/bootstrap/network.key
 ```
 
@@ -174,10 +174,10 @@ docker run --rm \
  --rest-addr=:80 \
  --loglevel=error \
  --secretsdir=/data/secrets  \
- --upstream-node-addresses=access-003.devnet47.nodes.onflow.org:9001 \
- --upstream-node-public-keys=b662102f4184fc1caeb2933cf87bba75cdd37758926584c0ce8a90549bb12ee0f9115111bbbb6acc2b889461208533369a91e8321eaf6bcb871a788ddd6bfbf7 \
- --bootstrap-node-addresses=access-003.devnet47.nodes.onflow.org:3570  \
- --bootstrap-node-public-keys=b662102f4184fc1caeb2933cf87bba75cdd37758926584c0ce8a90549bb12ee0f9115111bbbb6acc2b889461208533369a91e8321eaf6bcb871a788ddd6bfbf7 \
+ --upstream-node-addresses=secure.devnet.nodes.onflow.org:9001 \
+ --upstream-node-public-keys=ba69f7d2e82b9edf25b103c195cd371cf0cc047ef8884a9bbe331e62982d46daeebf836f7445a2ac16741013b192959d8ad26998aff12f2adc67a99e1eb2988d \
+ --bootstrap-node-addresses=secure.devnet.nodes.onflow.org:3570  \
+ --bootstrap-node-public-keys=ba69f7d2e82b9edf25b103c195cd371cf0cc047ef8884a9bbe331e62982d46daeebf836f7445a2ac16741013b192959d8ad26998aff12f2adc67a99e1eb2988d \
  --observer-networking-key-path=/bootstrap/network.key
 ```
 
@@ -251,13 +251,14 @@ Access-008:
 
 #### For testnet
 
+Access-001:
+* Host: `access-001.[current devnet spork].nodes.onflow.org`
+* Public Key: `ba69f7d2e82b9edf25b103c195cd371cf0cc047ef8884a9bbe331e62982d46daeebf836f7445a2ac16741013b192959d8ad26998aff12f2adc67a99e1eb2988d`
+
 Access-003:
 * Host: `access-003.[current devnet spork].nodes.onflow.org`
 * Public Key: `b662102f4184fc1caeb2933cf87bba75cdd37758926584c0ce8a90549bb12ee0f9115111bbbb6acc2b889461208533369a91e8321eaf6bcb871a788ddd6bfbf7`
 
-Access-004:
-* Host: `access-004.[current devnet spork].nodes.onflow.org`
-* Public Key: `0d1523612be854638b985fc658740fa55f009f3cd49b739961ab082dc91b178ed781ef5f66878613b4d34672039150abfd9c8cfdfe48c565bca053fa4db30bec`
 
 While the public keys remain the same, the hostnames change each spork to include the spork name. Substitute `[current mainnet spork]` and `[current devnet spork]` with the appropriate spork name (e.g. `mainnet20`).
 See [Past Sporks](../../node-operation/past-sporks.md) for the current spork for each network.

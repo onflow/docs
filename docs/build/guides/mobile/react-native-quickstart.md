@@ -625,6 +625,3 @@ That's it! You now have a shippable Flow dapp that can auth, query, init account
 - [More on Transactions](../../../tools/clients/fcl-js/transactions.md)
 - [User Signatures](../../../tools/clients/fcl-js/user-signatures.md)
 - [Proving Account Ownership](../../../tools/clients/fcl-js/proving-authentication.mdx)
-
-**Other**
-- [Flow Developer Onboarding Guide](../../../tutorials/intro.md)

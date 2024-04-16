@@ -28,7 +28,7 @@ const sidebars = {
       items: [
         'networks/flow-networks/accessing-mainnet',
         'networks/flow-networks/accessing-testnet',
-        'networks/flow-networks/accessing-crescendo',
+        'networks/flow-networks/accessing-previewnet',
       ],
     },
     {

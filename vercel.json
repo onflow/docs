@@ -79,7 +79,7 @@
     },
     {
       "source": "/guilds/deploying/:path*",
-      "destination": "/guides/smart-contracts/overview",
+      "destination": "/build/smart-contracts/overview",
       "permanent": true
     },
     {
@@ -224,6 +224,11 @@
       "permanent": true
     },
     {
+      "source": "/tools/fcl-js/reference/:path*",
+      "destination": "/tools/clients/fcl-js/:path*",
+      "permanent": true
+    },
+    {
       "source": "/tools/fcl-js/sdk-guidelines",
       "destination": "/tools/clients/fcl-js/sdk-guidelines",
       "permanent": true
@@ -340,37 +345,32 @@
     },
     {
       "source": "/tutorials/deployment",
-      "destination": "/guides/smart-contracts/deploying",
+      "destination": "/build/smart-contracts/deploying",
       "permanent": true
     },
     {
       "source": "/tutorials/testnet-testing",
-      "destination": "/guides/smart-contracts/testing",
+      "destination": "/build/smart-contracts/testing",
       "permanent": true
     },
     {
       "source": "/tutorials/smart-contracts",
-      "destination": "/guides/smart-contracts/overview",
+      "destination": "/build/smart-contracts/overview",
       "permanent": true
     },
     {
       "source": "/tutorials/mainnet-deployment",
-      "destination": "/guides/smart-contracts/deploying",
+      "destination": "/build/smart-contracts/deploying",
       "permanent": true
     },
     {
       "source": "/tutorials/testnet-deployment",
-      "destination": "/guides/smart-contracts/deploying",
+      "destination": "/build/smart-contracts/deploying",
       "permanent": true
     },
     {
       "source": "/tutorials/user-accounts-and-wallets",
-      "destination": "/guides/smart-contracts/overview",
-      "permanent": true
-    },
-    {
-      "source": "/tutorials/user-accounts-and-wallets",
-      "destination": "/guides/smart-contracts/overview",
+      "destination": "/build/guides/flow-app-quickstart",
       "permanent": true
     },
     {
@@ -824,7 +824,7 @@
     },
     {
       "source": "/guides/deploying/overview",
-      "destination": "/guides/smart-contracts/deploying",
+      "destination": "/build/smart-contracts/deploying",
       "permanent": true
     },
     {
@@ -834,12 +834,12 @@
     },
     {
       "source": "/guides/deploying/mainnet-deployment",
-      "destination": "/guides/smart-contracts/deploying",
+      "destination": "/build/smart-contracts/deploying",
       "permanent": true
     },
     {
       "source": "/guides/deploying/testnet-deployment",
-      "destination": "/guides/smart-contracts/deploying",
+      "destination": "/build/smart-contracts/deploying",
       "permanent": true
     },
     {
@@ -863,6 +863,11 @@
       "permanent": true
     },
     {
+      "source": "/build/run-and-secure/staking/schedule",
+      "destination": "/networks/staking/schedule",
+      "permanent": true
+    },
+    {
       "source": "/build/run-and-secure/:path*",
       "destination": "/references/run-and-secure/:path*",
       "permanent": true
@@ -870,6 +875,11 @@
     {
       "source": "/references/run-and-secure/nodes/:path*",
       "destination": "/networks/:path*",
+      "permanent": true
+    },
+    {
+      "source": "/references/run-and-secure/staking/schedule",
+      "destination": "/networks/staking/schedule",
       "permanent": true
     },
     {
@@ -1039,7 +1049,7 @@
     },
     {
       "source": "/build/advanced-concepts/account-linking/:path*",
-      "destination": "/build/guildes/account-linking/:path*",
+      "destination": "/build/guides/account-linking/:path*",
       "permanent": true
     },
     {
@@ -1070,6 +1080,116 @@
     {
       "source": "/build/basics/smart-contracts",
       "destination": "/build/smart-contracts/overview"
+    },
+    {
+      "source": "networks/flow-networks/accessing-crescendo",
+      "destination": "/networks/flow-networks/accessing-previewnet",
+      "permanent": true
+    },
+    {
+      "source": "/evm/Build/:path*",
+      "destination": "/evm/build/:path*",
+      "permanent": true
+    },
+    {
+      "source": "/evm/Tools/:path*",
+      "destination": "/evm/tools/:path*",
+      "permanent": true
+    },
+    {
+      "source": "/evm/Advanced/:path*",
+      "destination": "/evm/Advanced/:path*",
+      "permanent": true
+    },
+    {
+      "source": "/evm/build/Guides/:path*",
+      "destination": "/evm/build/guides/:path*",
+      "permanent": true
+    },
+    {
+      "source": "/evm/build/guides/Deploy%20Solidity%20Contract/deploy-solidity-contract-with-hardhat",
+      "destination": "/evm/build/guides/deploy-contract/using-hardhat",
+      "permanent": true
+    },
+    {
+      "source": "/evm/build/guides/Deploy%20Solidity%20Contract/deploy-solidity-contract-with-remix",
+      "destination": "/evm/build/guides/deploy-contract/using-remix",
+      "permanent": true
+    },
+    {
+      "source": "/tutorials/contract-testing",
+      "destination": "/build/smart-contracts/testing",
+      "permanent": true
+    },
+    {
+      "source": "/tutorials/intro",
+      "destination": "/build/guides/flow-app-quickstart",
+      "permanent": true
+    },
+    {
+      "source": "/mainnet-account-setup",
+      "destination": "/networks/flow-networks/accessing-mainnet",
+      "permanent": true
+    },
+    {
+      "source": "/tutorials/DappArchitectures",
+      "destination": "/build/getting-started/app-architecture",
+      "permanent": true
+    },
+    {
+      "source": "/tutorials/NFT-drop-styles",
+      "destination": "/build/guides/nft",
+      "permanent": true
+    },
+    {
+      "source": "/tutorials/dapp-infrastructure",
+      "destination": "/build/getting-started/app-architecture",
+      "permanent": true
+    },
+    {
+      "source": "/overview/dive-in/fungible-tokens",
+      "destination": "/build/guides/fungible-token",
+      "permanent": true
+    },
+    {
+      "source": "/build/guides/account-linking/guides/:path*",
+      "destination": "/build/guides/account-linking",
+      "permanent": true
+    },
+    {
+      "source": "/build/guides/mobile",
+      "destination": "/build/guides/mobile/overview",
+      "permanent": true
+    },
+    {
+      "source": "/build/guides/nft-marketplace",
+      "destination": "https://cadence-lang.org/docs/tutorial/marketplace-compose",
+      "permanent": true
+    },
+    {
+      "source": "/networks/node-ops/node-operation",
+      "destination": "/networks/node-ops",
+      "permanent": true
+    },
+    {
+      "source": "/networks/node-ops/node-operation/access-node-setup",
+      "destination": "/networks/node-ops/access-onchain-data/access-nodes/access-node-setup",
+      "permanent": true
+    },
+    {
+      "source": "/networks/node-ops/node-operation/FAQ",
+      "destination": "/networks/node-ops/node-operation/faq",
+      "permanent": true
+    },
+    {
+      "source": "/networks/node-ops/node-operation/observer-node",
+      "destination": "/networks/node-ops/access-onchain-data/light-nodes/observer-node",
+      "permanent": true
+    },
+    {
+      "source": "/references/run-and-secure/staking/schedule",
+      "destination": "/networks/staking/schedule",
+      "permanent": true
     }
   ]
 }

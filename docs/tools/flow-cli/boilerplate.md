@@ -2,7 +2,7 @@
 title: Cadence Boilerplate Generation
 sidebar_label: Cadence Boilerplate
 description: Cadence Boilerplate Generation via the CLI
-sidebar_position: 13
+sidebar_position: 16
 ---
 
 ## Introduction

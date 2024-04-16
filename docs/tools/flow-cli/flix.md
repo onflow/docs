@@ -2,7 +2,7 @@
 title: Flow Interaction Templates (FLIX)
 sidebar_label: Flow Interaction Templates (FLIX)
 description: Flow Interaction Templates (FLIX) via the CLI
-sidebar_position: 12
+sidebar_position: 15
 ---
 
 FLIX helps developers reuse existing Cadence transactions and scripts to easily integrate with existing Cadence smart contracts. Get more information about [Flow Interaction Templates](../../build/advanced-concepts/flix.md)

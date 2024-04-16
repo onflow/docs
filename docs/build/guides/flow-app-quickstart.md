@@ -402,6 +402,3 @@ That's it! You now have Flow app that uses auth, query and mutate the chain. Thi
 - [More on Transactions](../../tools/clients/fcl-js/transactions.md)
 - [User Signatures](../../tools/clients/fcl-js/user-signatures.md)
 - [Proving Account Ownership](../../tools/clients/fcl-js/proving-authentication.mdx)
-
-**Other**
-- [Flow Developer Onboarding Guide](../../tutorials/intro.md)
