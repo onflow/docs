@@ -13,6 +13,7 @@ import { LinkGrid } from '../../Components/LinkGrid';
 import { SocialCards } from '../../Components/SocialCards';
 import BgImage from '../../../../images/misc/bg-social-section.jpg';
 import TransitionPageSection from '../shared/TransitionPageSection';
+import { SignUpSection } from '../../Components/HomepageStartList/SignUpSection';
 
 export type HomePageProps = SocialLinksSignupProps & {
   concepts?: TutorialCardProps[];
@@ -55,6 +56,11 @@ const HomePage = ({ discordUrl, githubUrl }: HomePageProps): JSX.Element => {
           sectionId="explore-the-docs"
         >
           <LinkGrid />
+        </TransitionPageSection>
+        <TransitionPageSection sectionId="newsletter">
+          <PageSection>
+            <SignUpSection />
+          </PageSection>
         </TransitionPageSection>
         <div className="" style={{ backgroundImage: `url(${BgImage})` }}>
           <TransitionPageSection sectionId="get-involved">
