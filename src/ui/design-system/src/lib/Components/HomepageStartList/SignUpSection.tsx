@@ -7,6 +7,7 @@ const roadmapData = {
   link: 'https://flow.com/upgrade/crescendo/cadence-1#roadmap',
   icon: 'roadmap',
 };
+const SUCCESS_MESSAGE = 'Subscription successful!';
 
 export function SignUpSection(): React.ReactElement {
   const [email, setEmail] = useState<string>('');
@@ -20,36 +21,39 @@ export function SignUpSection(): React.ReactElement {
     return re.test(String(email).toLowerCase());
   };
 
-  const handleSubscribe = async (): Promise<void> => {
+  const handleSubscribe = (): void => {
     setIsSubmitting(true);
     if (isValidEmail(email)) {
       // Add here your logic to handle the email subscription
-      try {
-        const response = await fetch(
-          'https://hooks.zapier.com/hooks/catch/12044331/3pv7v1t/',
-          {
-            method: 'POST',
-            headers: {
-              'Content-Type': 'application/json',
-            },
-            body: JSON.stringify({ email: email }),
+      fetch(
+        'https://hooks.zapier.com/hooks/catch/12044331/3n91m9c/',
+        //          'https://hooks.zapier.com/hooks/catch/12044331/3pv7v1t/',
+        {
+          method: 'POST',
+          mode: 'no-cors',
+          headers: {
+            accept: 'application/json',
+            'Content-Type': 'application/json',
           },
-        );
-
-        if (response.ok) {
-          setResponseMessage('Subscription successful!');
-          setEmail('');
-        } else {
-          throw new Error('Failed to subscribe.');
-        }
-      } catch (error) {
-        console.error('Error:', error);
-        setErrorMsg('An error occurred.');
-      } finally {
-        setIsSubmitting(false);
-      }
+          body: JSON.stringify({ email }),
+        },
+      )
+        .then((response) => {
+          if (response.status === 0) {
+            // using no-cors mode, status is always 0
+            setResponseMessage(SUCCESS_MESSAGE);
+            setEmail('');
+            setErrorMsg('');
+          }
+        })
+        .catch((error) => {
+          console.error('Error:', error);
+          setErrorMsg('An error occurred.');
+        })
+        .finally(() => {
+          setIsSubmitting(false);
+        });
     } else {
-      console.log('Invalid email');
       setErrorMsg('Please enter a valid email address'); // Trigger some user feedback
     }
   };
@@ -67,38 +71,50 @@ export function SignUpSection(): React.ReactElement {
             Stay up to date with the latest changelog updates, educational
             resources, grants and announcements.
           </div>
-          <input
-            className="rounded-md p-4 border-0 text-primary-gray-300"
-            type="text"
-            placeholder="Enter your email"
-            onChange={(e) => {
-              setEmail(e.target.value.toLowerCase());
-              if (e.target.value === '') {
-                setErrorMsg('Please enter your email');
-              }
-              if (isValidEmail(email)) setErrorMsg('');
-            }}
-            onBlur={(e) => {
-              if (e.target.value === '') {
-                setErrorMsg('Please enter your email');
-                return;
-              }
-              setErrorMsg(isValidEmail(email) ? '' : 'Invalid email');
-            }}
-          />
-          <Button
-            onClick={handleSubscribe}
-            size={'sm'}
-            variant="accent"
-            className="p-4 border-0"
-            disabled={!isValidEmail(email)}
-          >
-            {isSubmitting ? 'Submitting' : 'Subscribe'}
-          </Button>
-          {errorMsg !== '' && <div className="text-red-500">{errorMsg}</div>}
-          {responseMessage !== '' && (
-            <div className="text-primary-green">{responseMessage}</div>
+
+          {responseMessage !== SUCCESS_MESSAGE && (
+            <>
+              <input
+                className="rounded-md p-4 border-0 text-primary-gray-300"
+                type="text"
+                value={email}
+                placeholder="Enter your email"
+                onChange={(e) => {
+                  setEmail(e.target.value.toLowerCase());
+                  if (e.target.value === '') {
+                    setErrorMsg('Please enter your email');
+                  }
+                  if (isValidEmail(email)) setErrorMsg('');
+                }}
+                onBlur={(e) => {
+                  if (e.target.value === '') {
+                    setErrorMsg('Please enter your email');
+                    return;
+                  }
+                  setErrorMsg(
+                    isValidEmail(email) ? '' : 'Please enter a valid email',
+                  );
+                }}
+              />
+              <Button
+                onClick={handleSubscribe}
+                size={'sm'}
+                variant="accent"
+                className="p-4 border-0"
+                disabled={!isValidEmail(email)}
+              >
+                {isSubmitting ? 'Submitting' : 'Subscribe'}
+              </Button>
+            </>
           )}
+          <div className="h-full text-red-500">{errorMsg}</div>
+          <div
+            className={`transition-opacity duration-2000 ease-out ${
+              responseMessage === SUCCESS_MESSAGE ? 'opacity-100' : 'opacity-0'
+            } align-center justify-center bg-primary-gray-400 rounded-lg text-primary-green p-4 w-full`}
+          >
+            {SUCCESS_MESSAGE}
+          </div>
         </div>
       </div>
     </div>
