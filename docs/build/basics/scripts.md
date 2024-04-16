@@ -6,7 +6,7 @@ sidebar_position: 4
 
 A script provides a light-weight method to query chain data.
 
-It is an executable Cadence code that can query for Flow execution state data but cannot modify it in any way.
+It is executable Cadence code that can query for Flow execution state data but cannot modify it in any way.
 
 Unlike a Flow transaction, a script is not signed and requires no transaction fees. Also unlike a transaction, a script can return a value back to the caller.
 You can think of executing a script as a read-only operation, very similar to the `eth_call` RPC method on Ethereum.
