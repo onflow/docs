@@ -1,11 +1,11 @@
 ---
-title: Using Hardhat
-description: "Using Hardhat to deploy a Solidity contract to EVM on Flow."
-sidebar_label: Using Hardhat
+title: Flow Hardhat Guide
+description: "Using Hardhatto deploy a Solidity contract to EVM on Flow."
+sidebar_label: Hardhat
 sidebar_position: 1
 ---
 
-# Using Hardhat
+# Flow Hardhat Guide
 
 Hardhat is an Ethereum development tool designed to facilitate the deployment, testing, and debugging of smart contracts. It provides a streamlined experience for developers working with Solidity contracts.
 
@@ -69,7 +69,7 @@ To keep this example straightforward, we've included the account's private key d
 
 ### Deploying HelloWorld Smart Contract
 
-### HelloWorld Smart Contract
+## HelloWorld Smart Contract
 
 ```Solidity
 // SPDX-License-Identifier: MIT
@@ -215,7 +215,7 @@ main().catch((error) => {
 
 Here are the steps to follow:
 1. Create an `updateGreeting.ts` script in the `scripts` directory.
-2. Paste in the TypeScript above, Make sure to update the contract address with the one from deployment in earlier step. 
+2. Paste in the TypeScript above, make sure to update the contract address with the one from deployment in earlier step. 
 3. Call the new script, `NEW_GREETING='Howdy!' npx hardhat run ./scripts/updateGreeting.ts --network previewnet`
 4. The output should be
 ```shell

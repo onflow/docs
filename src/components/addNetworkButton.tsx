@@ -47,7 +47,7 @@ export const AddNetworkButton = () => {
               symbol: 'FLOW',
               decimals: 18,
             },
-            blockExplorerUrls: ['https://crescendo.flowdiver.io/'],
+            blockExplorerUrls: ['https://previewnet.flowdiver.io/'],
           },
         ],
       });

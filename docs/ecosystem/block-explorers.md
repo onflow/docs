@@ -18,12 +18,15 @@ Block explorers are user-friendly online tools that visually present blockchain 
 - Blocks
 - Transactions
 - Contracts
-
-It also offers analytics for the mainnet:
-
 - Network activity (transaction count)
 - Transaction cost (gas fee)
 - Validators information
+
+### Supported networks:
+
+- [Mainnet](https://www.flowdiver.io/)
+- [Testnet](https://testnet.flowdiver.io/)
+- [Previewnet](https://previewnet.flowdiver.io/)
 
 ## Flow View
 
@@ -35,11 +38,11 @@ It also offers analytics for the mainnet:
 - Tokens, collections, and listings
 - Deployed smart contracts
 
-Supported networks:
+### Supported networks:
 
-- Mainnet: [https://www.flowview.app/](https://www.flowview.app/)
-- Testnet: [https://testnet.flowview.app/](https://testnet.flowview.app/)
-- Emulator (local): [https://emulator.flowview.app/](https://emulator.flowview.app/)
+- [Mainnet](https://www.flowview.app/)
+- [Testnet](https://testnet.flowview.app/)
+- [Emulator (local)](https://emulator.flowview.app/)
 
 ## Contract Browser
 

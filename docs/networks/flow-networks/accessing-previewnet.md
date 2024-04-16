@@ -7,7 +7,7 @@ description: Guide to Previewnet access
 
 ## About Flow Previewnet
 
-Flow Previewnet is Flow's official testing and development network for the Crescendo upgrade. It is intended to provide  an early experimentation environment for app developers.
+Flow Previewnet is Flow's official testing and development network for the Crescendo upgrade. It is intended to provide an early experimentation environment for app developers.
 It aims to balance similarity with Mainnet with being a productive development environment, resulting in the following key differences:
 
 - Significantly fewer validator nodes, resulting in a faster block rate compared to Mainnet
@@ -33,9 +33,9 @@ func main() {
 }
 ```
 
-### Generating Key Pair
+### Generating Keypair
 
-You can generate a new key pair with the [Flow CLI](https://github.com/onflow/flow-cli) as follows:
+You can generate a new keypair with the [Flow CLI](https://github.com/onflow/flow-cli) as follows:
 
 ```sh
 > flow keys generate
