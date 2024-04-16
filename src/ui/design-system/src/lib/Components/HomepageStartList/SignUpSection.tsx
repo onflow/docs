@@ -58,7 +58,7 @@ export function SignUpSection(): React.ReactElement {
     <div className="container md:p-0">
       <div className="grid grid-cols-1 md:grid-cols-2  gap-4">
         <HomepageStartItem key={0} {...roadmapData} />
-        <div className="flex flex-col gap-4 rounded-lg p-2">
+        <div className="flex flex-col gap-4 rounded-lg">
           <HomepageStartItemIcons icon={'updates'} />
           <span className="text-3xl font-semibold">
             Flow Ecosystem Newsletter{' '}
@@ -103,14 +103,20 @@ export function SignUpSection(): React.ReactElement {
               </Button>
             </>
           )}
-          <div className="min-h-[50px] text-red-500">{errorMsg}</div>
-          <div
-            className={`transition-opacity duration-2000 ease-out ${
-              responseMessage === SUCCESS_MESSAGE ? 'opacity-100' : 'opacity-0'
-            } align-center justify-center bg-primary-gray-400 rounded-lg text-primary-green p-4 w-full`}
-          >
-            {SUCCESS_MESSAGE}
-          </div>
+          {errorMsg !== '' && (
+            <div className="min-h-[30px] text-red-500">{errorMsg}</div>
+          )}
+          {errorMsg === '' && (
+            <div
+              className={`min-h-[30px] transition-opacity duration-2000 ease-out ${
+                responseMessage === SUCCESS_MESSAGE
+                  ? 'opacity-100'
+                  : 'opacity-0'
+              } align-center justify-center bg-primary-gray-400 rounded-lg text-primary-green p-4 w-full`}
+            >
+              {SUCCESS_MESSAGE}
+            </div>
+          )}
         </div>
       </div>
     </div>
