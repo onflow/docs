@@ -50,6 +50,9 @@ module.exports = {
         display: 'Inter',
         mono: 'IBM Plex Mono',
       },
+      transitionDuration: {
+        2000: '2000ms', // Adding 2000ms duration
+      },
       colors: {
         'primary-green': '#00EF8B',
         'primary-blue': '#3B3CFF',
