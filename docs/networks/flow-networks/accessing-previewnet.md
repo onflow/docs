@@ -7,7 +7,7 @@ description: Guide to Previewnet access
 
 ## About Flow Previewnet
 
-Previewnet is Flow's official testing and development network for the Crescendo upgrade. It is intended to provide an early experimentation environment for app developers.
+Flow Previewnet is Flow's official testing and development network for the Crescendo upgrade. It is intended to provide an early experimentation environment for app developers.
 It aims to balance similarity with Mainnet with being a productive development environment, resulting in the following key differences:
 
 - Significantly fewer validator nodes, resulting in a faster block rate compared to Mainnet
@@ -21,7 +21,7 @@ Previewnet is available for access at this URL:
 access.previewnet.nodes.onflow.org:9000
 ```
 
-To access the network using the [Flow Go SDK](https://github.com/onflow/flow-go-sdk):
+You can also access the network using the [Flow Go SDK](https://github.com/onflow/flow-go-sdk):
 
 ```go
 import "github.com/onflow/flow-go-sdk/client"
@@ -57,4 +57,4 @@ Accounts and tokens for testing can be obtained through the [previewnet faucet](
 
 ## Important Smart Contract Addresses
 
-You can review [all available core contracts](../../build/core-contracts/index.md) deployed to identify which ones you want to import in your project.
+You can review [all available core contracts](../../build/core-contracts/index.md) deployed to the Previewnet to identify which ones you want to import into your project.
