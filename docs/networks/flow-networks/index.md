@@ -3,20 +3,29 @@ title: Flow Networks
 sidebar_position: 1
 ---
 
-## Flow Networks
+## About Flow Networks
 
-Other than the Flow mainnet network, Flow testnet can be used to test applications and contracts before deployment to mainnet.
+In addition to Mainnet, developers have access to the Testnet environment, which serves as an essential testing ground for applications and smart contracts prior to their deployment on Mainnet. This ensures that any potential issues can be identified and resolved in a controlled setting, mitigating risks associated with live deployment.
 
-During a round of network upgrade, Flow testnet is updated first. Hence, testnet can be used to test against the latest node software, Cadence and core contract changes which will eventually be available to mainnet.
+Furthermore, during network upgrades, Testnet receives updates ahead of Mainnet. This preemptive update process allows developers to comprehensively test their apps against the latest versions of the nodes, enhancements to the Cadence programming language, and core contract upgrades. This strategy guarantees that when these updates are eventually applied to Mainnet, applications and smart contracts will operate seamlessly, enhancing overall network stability and user experience.
 
 ### How To Access These Networks?
 
+| Network    | GRPC                                      | Web GRPC                | REST                          |
+| ---------- | ----------------------------------------- | ----------------------- | ----------------------------- |
+| Mainnet    | `access.mainnet.nodes.onflow.org:9000`    | `mainnet.onflow.org`    | `rest-mainnet.onflow.org`     |
+| Testnet    | `access.devnet.nodes.onflow.org:9000`     | `testnet.onflow.org`    | `rest-testnet.onflow.org`     |
+| Previewnet | `access.previewnet.nodes.onflow.org:9000` | `previewnet.onflow.org` | `rest-previewnet.onflow.org` |
+
+For more information on how to access these networks, refer to the following guides:
+
 - [Flow Testnet](./accessing-testnet.md)
 - [Flow Mainnet](./accessing-mainnet.md)
-- [Flow Crescendo Previewnet](./accessing-previewnet.md)
+- [Flow Previewnet](./accessing-previewnet.md)
 
 ### Network
-Get Flow blockchain data from Access Nodes, both REST and gRPC endpoints are available. Get the current status of mainnet and testnet networks.
+
+There are two primary ways to access on-chain data within the Flow network; Access Nodes and Light nodes. Access Nodes are the node type that are most useful for developers, as they provide access to the Flow network via the following API endpoints:
 
 - [Flow Access API](../node-ops/access-onchain-data/access-nodes/accessing-data/access-api.md)
   - [Mainnet](./accessing-mainnet.md): `access.mainnet.nodes.onflow.org:9000`
@@ -24,3 +33,11 @@ Get Flow blockchain data from Access Nodes, both REST and gRPC endpoints are ava
   - [Previewnet](./accessing-previewnet.md): `access.previewnet.nodes.onflow.org:9000`
 - [Status Page](https://status.onflow.org/) - Network status page
 
+### Running Your Own Node
+
+If you’re getting started you don’t need to run your own node and you can use the above public nodes. The public access nodes are rate-limited, so as your product matures you might want to run your own node. There are multiple options available:
+
+- Start with a [Light (Observer) Node](../node-ops/access-onchain-data/light-nodes/observer-node.md).
+- You can also use a third-party provider like [Quicknode](https://www.quicknode.com/docs/flow).
+
+Check out [Running a Node](../node-ops/access-onchain-data/light-nodes/observer-node.md) for more information.

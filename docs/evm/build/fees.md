@@ -6,20 +6,18 @@ sidebar_position: 2
 
 :::info
 
-Are you a Cadence developer looking for information about fees on Cadence? If so, check out the Cadence specific documentation [here](../../build/basics/fees.md)
+Are you a Cadence developer looking for information about Fees on Cadence? If so, check out the Cadence specific documentation [here](../../build/basics/fees.md)
 
 :::
 
 # Fees
 
-Transactions on EVM on Flow use the FLOW token as the gas currency. For [Externally Owned Accounts (EOAs)](./accounts.md), the interface for paying gas on EVM functions the same as other EVM networks.
+EVM transactions are ultra low-cost and use the native FLOW token as gas. [Externally Owned Accounts (EOAs)](https://developers.flow.com/evm/build/accounts) function the same on Flow as other EVM networks like Ethereum.
 
-## Technical Details
+**Gasless Transactions**
 
-Transactions on EVM are executed through Cadence, which uses FLOW token for gas. Therefore, each Flow EVM transaction has its gas cost paid by the payer of the Cadence transaction that executes it. The account signing as the payer of the Cadence transaction therefore pays for gas of underlying EVM transactions.
-
-For transactions that are submitted to an EVM RPC node, the RPC node wraps the EVM transaction in a Cadence transaction and signs that transaction as the Payer. The coinbase of the EVM transaction is set by the RPC node to an address it maintains, therefore billing the cost of the transaction to the address executing it.
+Fees needed to execute transactions on a Web3 app are often a major challenge for new users and can be a barrier to adoption. Builders can easily extend their apps with Cadence to create ‘gasless’ experiences by specifying their app as the [sponsor](https://developers.flow.com/build/differences-vs-evm/account-abstraction#sponsored-transactions) instead of the user.
 
 ![FlowEVM-RPC-Payer](flow-rpc-payer.drawio.png)
 
-For details on how gas fees work on EVM on Flow, check out this [forum post](https://forum.flow.com/t/transaction-fees-on-flow-on-evm-previewnet/5751)
+To learn more about the technical implementation of EVM fees and how they are calculated, read this [explainer](https://forum.flow.com/t/how-evm-transaction-fees-work-on-flow-previewnet/5751).

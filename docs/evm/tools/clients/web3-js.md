@@ -4,13 +4,13 @@ sidebar_label: Web3.js
 sidebar_position: 2
 ---
 
-# web3.js
+# Web3.js
 
-[web3.js](https://web3js.org/) is a Javascript library for building on EVM-compatible networks.
+[Web3.js](https://web3js.org/) is a Javascript library for building on EVM-compatible networks.
 
 It allows developers to interact with smart contracts, send transactions, and retrieve data from the network.
 
-## Installation
+## Prerequisites
 
 :::info
 This guide assumes you have the latest version of [Node.js](https://nodejs.org/en) installed.
@@ -22,9 +22,9 @@ To install `web3` in your project, run the following command:
 npm install web3
 ```
 
-## Initializing Web3 With Flow
+## Initializing Web3 with Flow
 
-To use `web3` in your project, start by importing the module and initializing your `web3` instance with the desired Flow RPC endpoint.  We are specifying [Flow Previewnet](https://developers.flow.com/networks/flow-networks/accessing-previewnet) in this example.
+To use `web3` in your project, start by importing the module and initializing your `Web3` instance with a Flow RPC endpoint.  This example uses [Flow Previewnet](https://developers.flow.com/networks/flow-networks/accessing-previewnet).
 
 ```js
 const { Web3 } = require('web3')
@@ -61,11 +61,11 @@ console.log(gasPrice) // Gas price in attoFlow
 
 For more information about other queries you can make `web3`, please see the [official documentation](https://docs.web3js.org/).
 
-## Interacting With Smart Contracts
+## Interacting with Smart Contracts
 
 The `web3` library allows developers to interact with smart contracts via the `web3.eth.Contract` API.
 
-For this example we will use the following `Storage` contract, deployed on the Flow Previewnet to the address `0x4c7784ae96e7cfcf0224a95059573e96f03a4e70`.  Note that anyone can interact with this contract, as it is deployed on a public network, so state may not always be as expected.
+For this example we will use the following `Storage` contract, deployed on Previewnet to the address `0x4c7784ae96e7cfcf0224a95059573e96f03a4e70`.  Note that anyone can interact with this contract, as it is deployed on a public network, so state may not always be as expected.
 
 We recommend deploying your own contract, which can be done using [Hardhat](../../build/guides/deploy-contract/using-hardhat.md) or [Remix](../../build/guides/deploy-contract/using-remix.md).
 
@@ -162,7 +162,7 @@ node -e "console.log(require('web3').eth.accounts.create())"
 
 Note that this is not a secure way to generate an account, and you should use a more secure method in a production environment.
 
-For Flow Previewnet, you can fund your account using the [Flow Faucet](https://previewnet-faucet.onflow.org/fund-account).
+For Previewnet, you can fund your account using the [Flow Faucet](https://previewnet-faucet.onflow.org/fund-account).
 :::
 
 We can use the `privateKeyToAccount` function to create an `Web3Account` object from our account's private key.
@@ -195,7 +195,7 @@ const result = await web3.eth.sendSignedTransaction(signed.rawTransaction)
 console.log(result) 
 ```
 
-Now that the transaction has been sent, the contract's state should have updated.  We an verify this by querying the contract's state again:
+Now that the transaction has been sent, the contract's state should have been updated. We can verify this by querying the contract's state again:
 
 ```js
 const result = await contract.methods.retrieve().call()

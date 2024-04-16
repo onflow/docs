@@ -1,25 +1,27 @@
 ---
-title: Flow Crescendo Previewnet
+title: Flow Previewnet
+sidebar_label: Previewnet
 sidebar_position: 4
-description: Guide to Crescendo Previewnet access
+description: Guide to Previewnet access
 ---
 
-## About Flow Crescendo Previewnet
+## About Flow Previewnet
 
-Flow Crescendo Previewnet is Flow's official testing and development network. It is intended to provide a staging and testing environment for dApp developers. 
+Flow Previewnet is Flow's official testing and development network for the Crescendo upgrade. It is intended to provide an early experimentation environment for app developers.
 It aims to balance similarity with Mainnet with being a productive development environment, resulting in the following key differences:
-- Crescendo Previewnet has significantly fewer validator nodes, resulting in a faster block rate compared to Mainnet
-- Crescendo Previewnet is configured with shorter epochs (about 12 hours, compared to 7 days on Mainnet)
 
-## Accessing Flow Crescendo Previewnet
+- Significantly fewer validator nodes, resulting in a faster block rate compared to Mainnet
+- Shorter epochs (about 12 hours, compared to 7 days on Mainnet)
 
-Flow Crescendo Previewnet is available for access at this URL:
+## Accessing Flow Previewnet
+
+Previewnet is available for access at this URL:
 
 ```
 access.previewnet.nodes.onflow.org:9000
 ```
 
-For example, to access the network using the [Flow Go SDK](https://github.com/onflow/flow-go-sdk):
+You can also access the network using the [Flow Go SDK](https://github.com/onflow/flow-go-sdk):
 
 ```go
 import "github.com/onflow/flow-go-sdk/client"
@@ -31,14 +33,14 @@ func main() {
 }
 ```
 
-### Generating Crescendo Key Pair
+### Generating Keypair
 
-You can generate a new key pair with the [Flow CLI](https://github.com/onflow/flow-cli) as follows:
+You can generate a new keypair with the [Flow CLI](https://github.com/onflow/flow-cli) as follows:
 
 ```sh
 > flow keys generate
 
-🙏 If you want to create an account on Crescendo Previewnet with the generated keys use this link:
+🙏 If you want to create an account on Previewnet with the generated keys use this link:
 https://previewnet-faucet.onflow.org/?key= cc1c3d72...
 
 
@@ -51,8 +53,8 @@ Public Key       cc1c3d72...
 
 ## Account Creation and Token Funding Requests
 
-Accounts and tokens for testing can be obtained through the [previewnet faucet](https://previewnet-faucet.onflow.org/). If you generated the keypair through the CLI, you can click on the URL provided to create an account and request crescendo FLOW tokens.
+Accounts and tokens for testing can be obtained through the [previewnet faucet](https://previewnet-faucet.onflow.org/). If you generated the keypair through the CLI, you can click on the URL provided to create an account and request FLOW tokens.
 
 ## Important Smart Contract Addresses
 
-You can review [all available core contracts](../../build/core-contracts/index.md) deployed to the Crescendo to identify which ones you want to import.
+You can review [all available core contracts](../../build/core-contracts/index.md) deployed to the Previewnet to identify which ones you want to import into your project.
