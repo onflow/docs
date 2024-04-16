@@ -92,7 +92,7 @@ A user can define their own scripts or can use already defined scripts by the co
 1. **Rate limit** - Script execution is subjected to API rate-limits imposed by the Access nodes and the Execution nodes. The rate limits for the Public Access nodes hosted by QuickNode are outlined [here](https://www.quicknode.com/docs/flow#endpoint-rate-limits).
 
 
-2. **Computation limit** - Similar to a transaction, each script is also subjected to a computation limit. Currently, the compute (gas) limit for a script is 100,000.
+2. **Computation limit** - Similar to a transaction, each script is also subjected to a computation limit. The specific value can be configured by individual Access and Execution node operators. Currently, the default compute (gas) limit for a script is 100,000.
 
 
 3. **Historic block data limit**
