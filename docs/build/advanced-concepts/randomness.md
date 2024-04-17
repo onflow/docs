@@ -1,9 +1,9 @@
 ---
 title: Flow On-chain Randomness 
-sidebar_label: On-chain Randomness 
+sidebar_label: VRF (Randomness)
 ---
 
-# Flow On-chain Randomness
+# Randomness on FLOW
 
 Flow enhances blockchain functionality and eliminates reliance on external oracles by providing native onchain randomness at the protocol level. This secure, decentralized feature empowers developers to build a variety of applications with truly unpredictable, transparent, and fair outcomes, achieved with greater efficiency.
 
