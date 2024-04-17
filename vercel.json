@@ -634,6 +634,11 @@
       "permanent": true
     },
     {
+      "source": "/tools/flow-cli/flow_cli_cheatsheet",
+      "destination": "/tools/flow-cli",
+      "permanent": true
+    },
+    {
       "source": "/node-operation/:path*",
       "destination": "/networks/node-ops/node-operation/:path*",
       "permanent": true

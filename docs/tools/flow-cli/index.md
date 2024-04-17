@@ -55,7 +55,3 @@ And then the flow dev:
 
 As part of the next steps you can read more about [flow dev command](super-commands.md).
 
-
-### View all help commands
-
-A single place where all CLI helps have been aggregated [All Help commands](./flow_cli_cheatsheet.md).
