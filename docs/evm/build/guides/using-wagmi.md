@@ -256,7 +256,7 @@ import HelloWorld from './helloWorld'
 
 Now, you have a functional App that can connect to Metamask, display the current greeting from the "HelloWorld" smart contract, and update the greeting.
 
-Test it by updating the greeting then refreshing the site. Handling transactions are outside of this tutorial.
+Test it by updating the greeting, signing a transaction in your Metamask then wait a minute then refresh the website. Handling transactions are outside of this tutorial. We'll leave that as a future task. [Checkout wagmi documentation](https://wagmi.sh/react/getting-started)
 
 ![Update HelloWorld Greeting](Update-HelloWorld-Greeting.gif)
 
