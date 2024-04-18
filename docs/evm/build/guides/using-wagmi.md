@@ -6,7 +6,7 @@ sidebar_position: 1
 ---
 
 :::info
-Make sure to use viem version 2.9.6 or greater. This version contains flow EVM networks
+Make sure to use `viem` version `2.9.6` or greater. This version contains flow EVM networks
 :::
 
 # Using Next.js and wagmi
@@ -32,12 +32,12 @@ npm create wagmi@latest
 
 ```
  
- After wagmi automatic installation procedure. 
+After wagmi automatic installation procedure. 
 
- ```bash
-  cd flow-evm-wagmi
-  npm install
- ```
+```bash
+cd flow-evm-wagmi
+npm install
+```
 
 ## Step 2: Configuring wagmi and Connecting the Wallet
 
@@ -45,7 +45,6 @@ Make sure you have Metamask installed and Flow network configured. [Metamask and
 Wagmi needs to know what networks to be aware of. Let's configure to use Flow Previewnet by updating config.ts file with the following:
 
 ```javascript 
-
 import { http, createConfig } from '@wagmi/core'
 import { flowPreviewnet } from '@wagmi/core/chains'
 import { injected } from '@wagmi/connectors'
@@ -58,6 +57,7 @@ export const config = createConfig({
   },
 })
 ```
+
 By default wagmi configures many wallets, MetaMask, Coinbase Wallet, and WalletConnect as wallet providers. Above we simplify the code to only be interested in the Injected Provider, which we are interested in Metamask. Verify `page.tsx` code looks like the following. 
 
 ```javascript
@@ -110,7 +110,6 @@ function App() {
 export default App
 
 ```
-
 
 ![Connect Metamask](./Connect-Metamask.gif)
 
@@ -173,7 +172,7 @@ Reminder: aReplace YOUR_CONTRACT_ADDRESS with the actual address of your deploye
 
 Also notice you need the HelloWorld contract ABI, save this to a new file called `HelloWorld.json` in the app directory.
 
-```
+```json
 {
     "abi": [
 		{
@@ -258,5 +257,4 @@ Now, you have a functional App that can connect to Metamask, display the current
 
 Test it by updating the greeting, signing a transaction in your Metamask then wait a minute then refresh the website. Handling transactions are outside of this tutorial. We'll leave that as a future task. [Checkout wagmi documentation](https://wagmi.sh/react/getting-started)
 
-![Update HelloWorld Greeting](Update-HelloWorld-Greeting.gif)
-
+![Update HelloWorld Greeting](./Update-HelloWorld-Greeting.gif)
