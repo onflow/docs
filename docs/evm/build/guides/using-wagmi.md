@@ -11,7 +11,7 @@ Make sure to use viem version 2.9.6 or greater. This version contains flow EVM n
 
 # Using Next.js and wagmi
 
-This tutorial will guide you through creating a simple web application, connect to an EVM capable wallet and interact with the "HelloWorld" smart contract to get and set greetings.
+This tutorial will guide you through creating a simple web application, connect to an EVM capable wallet and interact with the "HelloWorld" smart contract to get and set greetings. We will not dive into managing transactions.
 
 ## Prerequisites
 
@@ -22,13 +22,13 @@ This tutorial will guide you through creating a simple web application, connect 
 ## Step 1: Setting Up the Next.js Project
 
 This tutorial will be following [wagmi getting-started manual tutorial](https://wagmi.sh/react/getting-started)
-First, let's create a wagmi project named `flow-evm-wagmi`. 
+First, let's create a wagmi project named `flow-evm-wagmi`. We will use npm but you are welcome to use yarn or bun.
 
 ```bash
 npm create wagmi@latest
 
 # project name flow-evm-wagmi
-# pick react then next
+# Select 'React' then 'next'
 
 ```
  
@@ -258,5 +258,5 @@ Now, you have a functional App that can connect to Metamask, display the current
 
 Test it by updating the greeting then refreshing the site. Handling transactions are outside of this tutorial.
 
-
+![Update HelloWorld Greeting](Update-HelloWorld-Greeting.gif)
 
