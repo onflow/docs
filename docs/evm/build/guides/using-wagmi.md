@@ -21,11 +21,15 @@ This tutorial will guide you through creating a simple web application, connect 
 
 ## Step 1: Setting Up the Next.js Project
 
-This tutorial will be following [wagmi getting-started tutorial](https://wagmi.sh/react/getting-started)
-First, let's create a new Next.js application. project name `flow-evm-wagmi`. Select `next` for the type of web framework.
+This tutorial will be following [wagmi getting-started manual tutorial](https://wagmi.sh/react/getting-started)
+First, let's create a wagmi project named `flow-evm-wagmi`. 
 
 ```bash
 npm create wagmi@latest
+
+# project name flow-evm-wagmi
+# pick react then next
+
 ```
  
  After wagmi automatic installation procedure. 
@@ -33,43 +37,86 @@ npm create wagmi@latest
  ```bash
   cd flow-evm-wagmi
   npm install
-  npm run dev
-  ```
+ ```
 
 ## Step 2: Configuring wagmi and Connecting the Wallet
 
-This step relies on an already deployed HelloWorld contract. See [Using Remix](./deploy-contract/using-remix.md) to deploy a smart contract on flow evm blockchain.
-Create or edit the _app.js file in the pages directory to set up wagmi and the Ethereum provider:
+Make sure you have Metamask installed and Flow network configured. [Metamask and Flow blockchain](/evm/using).
+Wagmi needs to know what networks to be aware of. Let's configure to use Flow Previewnet by updating config.ts file with the following:
+
+```javascript 
+
+import { http, createConfig } from '@wagmi/core'
+import { flowPreviewnet } from '@wagmi/core/chains'
+import { injected } from '@wagmi/connectors'
+
+export const config = createConfig({
+  chains: [flowPreviewnet],
+  connectors: [injected()],
+  transports: {
+    [flowPreviewnet.id]: http(),
+  },
+})
+```
+By default wagmi configures many wallets, MetaMask, Coinbase Wallet, and WalletConnect as wallet providers. Above we simplify the code to only be interested in the Injected Provider, which we are interested in Metamask. Verify `page.tsx` code looks like the following. 
 
 ```javascript
-import '../styles/globals.css'
-import { WagmiConfig, createClient } from 'wagmi'
-import { CoinbaseWalletConnector, MetaMaskConnector, WalletConnectConnector } from 'wagmi/connectors'
-import { publicProvider } from 'wagmi/providers/public'
+'use client'
 
-const ChainId = 646
-const client = createClient({
-  autoConnect: true,
-  connectors: [
-    new MetaMaskConnector({ chains: [{ id: ChainId, name: 'Ethereum', network: 'mainnet' }] }),
-    new CoinbaseWalletConnector({ chains: [{ id: ChainId, name: 'Ethereum', network: 'mainnet' }] }),
-    new WalletConnectConnector({ chains: [{ id: ChainId, name: 'Ethereum', network: 'mainnet' }] }),
-  ],
-  provider: publicProvider(),
-})
+import { useAccount, useConnect, useDisconnect } from 'wagmi'
 
-function MyApp({ Component, pageProps }) {
+function App() {
+  const account = useAccount()
+  const { connectors, connect, status, error } = useConnect()
+  const { disconnect } = useDisconnect()
+
   return (
-    <WagmiConfig client={client}>
-      <Component {...pageProps} />
-    </WagmiConfig>
-  )
+    <>
+      <div>
+        <h2>Account</h2>
+
+        <div>
+          status: {account.status}
+          <br />
+          addresses: {JSON.stringify(account.addresses)}
+          <br />
+          chainId: {account.chainId}
+        </div>
+
+        {account.status === 'connected' && (
+          <button type="button" onClick={() => disconnect()}>
+            Disconnect
+          </button>
+        )}
+      </div>
+
+      <div>
+        <h2>Connect</h2>
+        {connectors.map((connector) => (
+          <button
+            key={connector.uid}
+            onClick={() => connect({ connector })}
+            type="button"
+          >
+            {connector.name}
+          </button>
+        ))}
+        <div>{status}</div>
+        <div>{error?.message}</div>
+      </div>
+    </>
 }
 
-export default MyApp
+export default App
+
 ```
 
-This code configures wagmi to use MetaMask, Coinbase Wallet, and WalletConnect as wallet providers.
+
+![Connect Metamask](./Connect-Metamask.gif)
+
+This step relies on an already deployed HelloWorld contract. See [Using Remix](./deploy-contract/using-remix.md) to deploy a smart contract on flow evm blockchain.
+Create or edit the simple `page.tsx` file in the app directory to have better styles, that's beyond this tutorial. We will modify `page.txs` to add a new `HelloWorld.tsx`. Replace `YOUR_CONTRACT_ADDRESS` with your deployed address. 
+
 
 ## Step 3: Creating the Interface for HelloWorld Contract
 Now, let's create a component to interact with the HelloWorld contract. Assume your contract is already deployed, and you have its address and ABI.
@@ -80,7 +127,7 @@ Now, let's create a component to interact with the HelloWorld contract. Assume y
 ```javascript
 import { useState } from 'react'
 import { useContractRead, useContractWrite, useAccount, useConnect } from 'wagmi'
-import contractABI from '../contract/HelloWorldABI.json' // Import your contract's ABI
+import contractABI from './HelloWorldABI.json' // Import your contract's ABI
 
 const contractAddress = 'YOUR_CONTRACT_ADDRESS'
 
@@ -122,26 +169,94 @@ const HelloWorld = () => {
 export default HelloWorld
 ```
 
-Replace YOUR_CONTRACT_ADDRESS with the actual address of your deployed HelloWorld contract.
+Reminder: aReplace YOUR_CONTRACT_ADDRESS with the actual address of your deployed HelloWorld contract.
+
+Also notice you need the HelloWorld contract ABI, save this to a new file called `HelloWorld.json` in the app directory.
+
+```
+{
+    "abi": [
+		{
+			"inputs": [],
+			"stateMutability": "nonpayable",
+			"type": "constructor"
+		},
+		{
+			"inputs": [
+				{
+					"internalType": "string",
+					"name": "newGreeting",
+					"type": "string"
+				}
+			],
+			"name": "changeGreeting",
+			"outputs": [],
+			"stateMutability": "nonpayable",
+			"type": "function"
+		},
+		{
+			"inputs": [],
+			"name": "greeting",
+			"outputs": [
+				{
+					"internalType": "string",
+					"name": "",
+					"type": "string"
+				}
+			],
+			"stateMutability": "view",
+			"type": "function"
+		},
+		{
+			"inputs": [],
+			"name": "hello",
+			"outputs": [
+				{
+					"internalType": "string",
+					"name": "",
+					"type": "string"
+				}
+			],
+			"stateMutability": "view",
+			"type": "function"
+		}
+	]
+}
+```
 
 ## Step 4: Integrating the HelloWorld Component
-Finally, import and use the HelloWorld component in your pages/index.js:
+Finally, import and use the HelloWorld component in your `pages.tsx`, throw it at the bottom of the render section.
 
 
 ```javascript
-import HelloWorld from '../components/HelloWorld'
-
-export default function Home() {
-  return (
+import HelloWorld from './helloWorld'
+ 
+ // put at the bottom of the Connect section.
+     <div>
+        <h2>Connect</h2>
+        {connectors.map((connector) => (
+          <button
+            key={connector.uid}
+            onClick={() => connect({ connector })}
+            type="button"
+          >
+            {connector.name}
+          </button>
+        ))}
+        <div>{status}</div>
+        <div>{error?.message}</div>
+      </div>    
+    
+    // 👇👇👇👇👇👇👇👇👇👇👇
     <div>
       <HelloWorld />
     </div>
-  )
-}
 
 ```
 
-Now, you have a functional dApp that can connect to an Ethereum wallet, display the current greeting from the "HelloWorld" smart contract, and allow the user to update the greeting.
+Now, you have a functional App that can connect to Metamask, display the current greeting from the "HelloWorld" smart contract, and update the greeting.
+
+Test it by updating the greeting then refreshing the site. Handling transactions are outside of this tutorial.
 
 
 
