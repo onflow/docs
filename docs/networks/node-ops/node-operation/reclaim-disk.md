@@ -54,6 +54,8 @@ Dynamic boostrap allows the node to be restarted at a particular block height by
 
 For an **access** node, this results in the node not being able to serve any API request before the height at which the node was dynamically bootstrapped.
 
+_Hence, if you require the access node to serve data from the start of the last network upgrade (spork), do not use this method of reclaiming disk space. Instead provision more disk for the node._
+
 ### Execution node
 
 For an execution node, the chunk data directory is the one that takes up most of the space. To reclaim space on an execution, do the following:
