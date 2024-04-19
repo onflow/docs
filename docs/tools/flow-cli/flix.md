@@ -77,6 +77,7 @@ flow flix package <query> [flags]
 
 Generate FLIX json file. This command will take in a Cadence file and produce a FLIX json file. There are two ways to provide metadata to populate the FLIX json structure. 
  - Use `--pre-fill` flag to pass in a pre populated FLIX json structure
+ - Use `--targets` flag to specify target networks to generate FLIX templates. Example, `--targets emulator, previewnet`
 
 :::warning
 
@@ -562,4 +563,3 @@ several configuration files.
 - Default: `false`
 
 Skip version check during start up to speed up process for slow connections.
-
