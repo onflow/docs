@@ -48,7 +48,7 @@ For this demo, we are going to be interacting with a simple `HelloWorld` contrac
 flow dependencies add testnet://0x9dca641e9a4b691b.HelloWorld
 ```
 
-This will add the `HelloWorld` contract and any of its dependencies to an `imports` directory in your project (you can gitignore this directory). It will also add any dependencies to your `flow.json` file.
+This will add the `HelloWorld` contract and any of its dependencies to an `imports` directory in your project (we recommend adding this directory to your .gitignore file). It will also add any dependencies to your `flow.json` file.
 
 During the install, it will also prompt you as to which account you'd like to have the contract deployed to. For this tutorial, you can select the default `emulator-account`. You can then interact with them in the local emulator or on any other network just as you would any contract you've written locally and deployed.
 
