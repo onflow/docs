@@ -93,7 +93,7 @@ The contract will now have been deployed to the account you selected earlier. Yo
 
 ## Running Scripts
 
-On Flow, scripts are used to read data from the Flow blockchain. There is no state modification. In our case, we are going to read a greeting from the `HelloWorld` contract.
+Scripts are used to read data from the Flow blockchain. There is no state modification. In our case, we are going to read a greeting from the `HelloWorld` contract.
 
 Let's create a script file. We can generate a boilerplate script file with the following command:
 
