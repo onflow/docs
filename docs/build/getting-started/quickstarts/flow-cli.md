@@ -52,7 +52,7 @@ This will add the `HelloWorld` contract and any of its dependencies to an `impor
 
 During the install you'll be prompted to specify which account to deploy the contracts to. For this tutorial, you can select the default `emulator-account`.
 
-If you want to see what the contract looks like, you can open it up and you will see this:
+Opening the contract file in your editor you should see the following:
 
 ```
 access(all) contract HelloWorld {
