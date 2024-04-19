@@ -48,6 +48,11 @@ If you are running any node other than an execution node and the node is close t
 
    ``` rm -rf /var/flow/data_backup```
 
+#### Limitation for Access node
+
+Dynamic boostrap allows the node to be restarted at a particular block height by deleting all the previous state.
+
+For an **access** node, this results in the node not being able to serve any API request before the height at which the node was dynamically bootstrapped.
 
 ### Execution node
 
