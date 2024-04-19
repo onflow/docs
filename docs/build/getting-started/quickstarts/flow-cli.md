@@ -42,7 +42,7 @@ For additional details on how `flow.json` is configured, [read here.](../../../t
 
 ## Grabbing the HelloWorld Contract
 
-For this demo, we are going to be interacting with a simple `HelloWorld` contract that is already deployed on Flow's `testnet` network. In order to grab this project dependency, we'll use Flow's [Dependency Manager](../../../tools/flow-cli/dependency-manager.md) to install it into our project using a source string that defines the network, address, and contract name of the contract we want to import.
+For this demo, we are going to be interacting with a simple `HelloWorld` contract that is already deployed on Flow's `testnet` network on account [0x9dca641e9a4b691b](https://contractbrowser.com/A.9dca641e9a4b691b.HelloWorld). In order to grab this project dependency, we'll use Flow's [Dependency Manager](../../../tools/flow-cli/dependency-manager.md) to install it into our project using a source string that defines the network, address, and contract name of the contract we want to import.
 
 ```
 flow dependencies add testnet://0x9dca641e9a4b691b.HelloWorld
