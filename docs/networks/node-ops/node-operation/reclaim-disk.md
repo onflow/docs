@@ -41,12 +41,12 @@ If you are running any node other than an execution node and the node is close t
    ``` mv /var/flow/data /var/flow/data_backup```
 
 
-5. Delete the `data` folder. Do **not** delete the bootstrap folder.
-
-   ``` rm -rf /var/flow/data```
+5. Start the node. The node should now recreate the data folder and start fetching blocks.
 
 
-6. Start the node.
+6. If the node is up and running OK, delete the `data_backup` folder created in step 4.
+
+   ``` rm -rf /var/flow/data_backup```
 
 
 ### Execution node
