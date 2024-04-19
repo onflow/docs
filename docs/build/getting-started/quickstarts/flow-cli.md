@@ -89,7 +89,7 @@ To deploy the `HelloWorld` contract to the emulator, you can run the following c
 flow project deploy
 ```
 
-The contract will now have been deployed to the account you selected earlier. You can now interact with it with a script.
+The contract will now have been deployed to the account you selected earlier. You can now interact with it using a script.
 
 ## Running Scripts
 
