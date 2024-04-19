@@ -6,8 +6,7 @@ description: How to manage the node disk space
 As the chain advances, nodes receive chain data and store it on disk.
 Hence, the disk usage of a node keeps increasing gradually over time.
 
-In addition to this, currently nodes also experience intermittent spikes in disk usage caused by the compaction process of the baddger database used by the node software.
-These spikes can be as high as 75%.
+In addition to this, currently nodes also experience an intermittent 30-35% spike in disk usage caused by the compaction process of the Badger database used by the node software.
 
 > The spikes will be eliminated once the Badger database is replaced by the Pebble database in the future.
 
@@ -37,10 +36,17 @@ If you are running any node other than an execution node and the node is close t
 2. Setup the node to use **dynamic bootstrapping** by specifying the dynamic startup flags described [here](./node-bootstrap.md#dynamic-startup).
 
 
-3. Delete the `data` folder. The default location is `/var/flow/data` unless overridden by the `data-dir` parameter. Do **not** delete the bootstrap folder.
+4. Move the data folder to a tmp folder incase it is required to revert this change. The default location of the data folder is `/var/flow/data` unless overridden by the `data-dir` parameter.
+
+   ``` mv /var/flow/data /var/flow/data_backup```
 
 
-4. Start the node.
+5. Delete the `data` folder. Do **not** delete the bootstrap folder.
+
+   ``` rm -rf /var/flow/data```
+
+
+6. Start the node.
 
 
 ### Execution node
@@ -50,13 +56,14 @@ For an execution node, the chunk data directory is the one that takes up most of
 1. Stop the Execution Node.
 
 
-2. Remove the Chunk Data Pack Directory.
+2. Remove the Chunk Data Pack Directory. The default is `/var/flow/data/chunk_data_pack` unless overridden by the `chunk-data-pack-dir` parameter. 
+
+   Do **not** delete the bootstrap folder.
+
+   ``` rm -rf /var/flow/data/chunk_data_pack```
 
 
-3. Delete chunk data pack directory. The default is `/var/flow/data/chunk_data_pack` unless overridden by the `chunk-data-pack-dir` parameter. Do **not** delete the bootstrap folder.
-
-
-4. Start the Execution Node.
+3. Start the Execution Node.
 
 Upon restart, the chunk data pack directory will be automatically recreated.
 
