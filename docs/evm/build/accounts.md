@@ -32,7 +32,7 @@ A Cadence Owned Account (COA) is a natively supported EVM smart contract wallet 
 
 COAs are smart contracts that are deployed to, and are fully accessible within, Flow EVM. However, unlike traditional EVM accounts (e.g. EOAs or smart contract accounts), COAs are owned by a Cadence resource. This means that COAs can be created and controlled natively within the Cadence environment.
 
-Unlike EOAs, COAs do not have an associated key, but are assigned a 20-byte EVM address upon creation from Cadence. This address is based on the UUID of the Cadence resource and is prefixed with 0x000000000000000000000002. This address determines location of the COA smart contract deployment and is the EVM address that is used to interact with the COA.
+Unlike EOAs, COAs do not have an associated key, but are assigned a 20-byte EVM address upon creation from Cadence. This address is based on the UUID of the Cadence resource and is prefixed with `0x000000000000000000000002`. This address determines location of the COA smart contract deployment and is the EVM address that is used to interact with the COA.
 
 A COA may instantiate transactions itself (where the COA's EVM address acts as `tx.origin`). This behaviour is different than other EVM environments, where only externally owned accounts (EOAs) may instantiate transactions. A new EVM transaction type (`TxType=0xff`) is used to differentiate COA transactions from other types of EVM transactions (e.g. DynamicFeeType where `TxType=0x02`).
 
