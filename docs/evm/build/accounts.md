@@ -40,7 +40,7 @@ Because COAs are owned by Cadence resources, an EVM transaction is not required 
 
 ### Why use COAs?
 
-COAs are a powerful tool for developers who want to build applications which interact with Flow EVM, whilst still being able to leverage the advantages of Cadence. Some of the key benefits of using COAs include:
+COAs create powerful new opportunities to improve the UX, functionality and utility of EVM applications by taking advantage of Cadence. Key benefits include:
 
 - **Enhanced Composability**: Applications written in Solidity can be extended and composed upon within Cadence. This allows developers to build upon existing EVM applications and deliver a more feature-rich user experience.
 
