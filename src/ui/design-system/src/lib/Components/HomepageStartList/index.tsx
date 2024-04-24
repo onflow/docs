@@ -18,7 +18,7 @@ const homepageData: Record<string, HomepageStartItemProps> = {
     icon: 'start-here',
   },
   'flow-quest': {
-    link: 'https://flownaut.ecdao.org/en',
+    link: 'https://arcade.ecdao.org/',
     icon: 'path-quest',
   },
   'lang-reference': {
