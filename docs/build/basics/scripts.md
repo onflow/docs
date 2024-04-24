@@ -87,7 +87,7 @@ flow scripts execute ./helloWorld.cdc
 
 A user can define their own scripts or can use already defined scripts by the contract authors that can be found by using the [FLIX](../../tools/flow-cli/flix) service.
 
-## Recommendations
+## Best Practices
 
 Following are some recommendations on how to write efficient scripts:
 
