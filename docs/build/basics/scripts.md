@@ -91,7 +91,7 @@ A user can define their own scripts or can use already defined scripts by the co
 
 Following are some recommendations on how to write efficient scripts:
 
-1. **Simpler and shorter scripts**: Scripts, like transactions, are subject to computation limits (see [limitations](#limitations)). It is recommended to run shorter and simpler scripts which have low time complexity for a faster response. If you have a script with several nested loops or long iteration, consider simplifying the script logic.
+1. **Simpler and shorter scripts**: Scripts, like transactions, are subject to computation limits (see [limitations](#limitations)). It is recommended to run shorter and simpler scripts which have low time complexity for a faster response. If you have a script with several nested loops, long iteration, or that queries many onchain fields, consider simplifying the script logic.
 
 
 2. **Smaller length of array or dictionary type arguments**: If your script requires an array or a dictionary as an argument, instead of making a single script call with a long list, make multiple calls with a smaller subset of the array or dictionary.
