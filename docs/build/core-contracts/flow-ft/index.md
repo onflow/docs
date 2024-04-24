@@ -8,10 +8,10 @@ This documentation comes from the README of
 
 # Fungible Token Standard
 
-This is a description of the Flow standard for fungible token contracts. 
+This is a description of the Flow standard for fungible token contracts.
 It is meant to contain the minimum requirements to implement a safe, secure, easy to understand,
 and easy to use fungible token contract.
-It also includes an example implementation to show how a 
+It also includes an example implementation to show how a
 concrete smart contract would actually implement the interface.
 
 The version of the contracts in the `master` branch is the
@@ -25,19 +25,18 @@ The `FungibleToken`, `FungibleTokenMetadataViews`, and `FungibleTokenSwitchboard
 on various networks. You can import them in your contracts from these addresses.
 There is no need to deploy them yourself.
 
-| Network           | Contract Address     |
-| ----------------- | -------------------- |
-| Emulator          | `0xee82856bf20e2aa6` |
-| PreviewNet        | `0xa0225e7000ac82a9` |
-| Testnet/Crescendo | `0x9a0766d93b6608b7` |
-| Sandboxnet        | `0xe20612a0776ca4bf` |
-| Mainnet           | `0xf233dcee88fe0abe` |
+| Network    | Contract Address     |
+| ---------- | -------------------- |
+| Emulator   | `0xee82856bf20e2aa6` |
+| PreviewNet | `0xa0225e7000ac82a9` |
+| Testnet    | `0x9a0766d93b6608b7` |
+| Mainnet    | `0xf233dcee88fe0abe` |
 
 The `Burner` contract is also deployed to these addresses, but should not be used until after the Cadence 1.0 network upgrade.
 
 ## Basics of the Standard:
 
-The code for the standard is in [`contracts/FungibleToken.cdc`](https://github.com/onflow/flow-ft/blob/master/contracts/FungibleToken.cdc). An example implementation of the standard that simulates what a simple token would be like is in [`contracts/ExampleToken.cdc`](https://github.com/onflow/flow-ft/blob/master/contracts/ExampleToken.cdc). 
+The code for the standard is in [`contracts/FungibleToken.cdc`](https://github.com/onflow/flow-ft/blob/master/contracts/FungibleToken.cdc). An example implementation of the standard that simulates what a simple token would be like is in [`contracts/ExampleToken.cdc`](https://github.com/onflow/flow-ft/blob/master/contracts/ExampleToken.cdc).
 
 The exact smart contract that is used for the official Flow Network Token (`FlowToken`) is in [the `flow-core-contracts` repository](https://github.com/onflow/flow-core-contracts/blob/master/contracts/FlowToken.cdc).
 
@@ -47,8 +46,8 @@ The standard consists of a contract interface called `FungibleToken` that define
 functionality for token implementations. Contracts are expected to define a resource
 that implement the `FungibleToken.Vault` resource interface.
 A `Vault` represents the tokens that an account owns. Each account that owns tokens
-will have a `Vault` stored in its account storage. 
-Users call functions on each other's `Vault`s to send and receive tokens.  
+will have a `Vault` stored in its account storage.
+Users call functions on each other's `Vault`s to send and receive tokens.
 
 The standard uses unsigned 64-bit fixed point numbers `UFix64` as the type to represent token balance information. This type has 8 decimal places and cannot represent negative numbers.
 
@@ -57,51 +56,57 @@ The standard uses unsigned 64-bit fixed point numbers `UFix64` as the type to re
 ### `Balance` Interface
 
 Specifies that the implementing type must have a `UFix64` `balance` field.
-  - `access(all) var balance: UFix64`
+
+- `access(all) var balance: UFix64`
 
 ### `Provider` Interface
-Defines a [`withdraw ` function](https://github.com/onflow/flow-ft/blob/v2-standard/contracts/FungibleToken.cdc#L95) for withdrawing a specific amount of tokens *amount*.
-  - `access(all) fun withdraw(amount: UFix64): @{FungibleToken.Vault}`
-      - Conditions
-          - the returned Vault's balance must equal the amount withdrawn
-          - The amount withdrawn must be less than or equal to the balance
-          - The resulting balance must equal the initial balance - amount
-  - Users can give other accounts a reference to their `Vault` cast as a `Provider`
-  to allow them to withdraw and send tokens for them. 
+
+Defines a [`withdraw ` function](https://github.com/onflow/flow-ft/blob/v2-standard/contracts/FungibleToken.cdc#L95) for withdrawing a specific amount of tokens _amount_.
+
+- `access(all) fun withdraw(amount: UFix64): @{FungibleToken.Vault}`
+  - Conditions
+    - the returned Vault's balance must equal the amount withdrawn
+    - The amount withdrawn must be less than or equal to the balance
+    - The resulting balance must equal the initial balance - amount
+- Users can give other accounts a reference to their `Vault` cast as a `Provider`
+  to allow them to withdraw and send tokens for them.
   A contract can define any custom logic to govern the amount of tokens
-  that can be withdrawn at a time with a `Provider`. 
+  that can be withdrawn at a time with a `Provider`.
   This can mimic the `approve`, `transferFrom` functionality of ERC20.
 - [`FungibleToken.Withdrawn` event](https://github.com/onflow/flow-ft/blob/v2-standard/contracts/FungibleToken.cdc#L50)
-    - Event that is emitted automatically to indicate how much was withdrawn
+  - Event that is emitted automatically to indicate how much was withdrawn
     and from what account the `Vault` is stored in.
-      If the `Vault` is not in account storage when the event is emitted,
-      `from` will be `nil`.
-    - Contracts do not have to emit their own events,
+    If the `Vault` is not in account storage when the event is emitted,
+    `from` will be `nil`.
+  - Contracts do not have to emit their own events,
     the standard events will automatically be emitted.
 
 Defines [an `isAvailableToWithdraw()` function](https://github.com/onflow/flow-ft/blob/v2-standard/contracts/FungibleToken.cdc#L95)
 to ask a `Provider` if the specified number of tokens can be withdrawn from the implementing type.
 
 ### `Receiver` Interface
+
 Defines functionality to depositing fungible tokens into a resource object.
+
 - [`deposit()` function](https://github.com/onflow/flow-ft/blob/v2-standard/contracts/FungibleToken.cdc#L119):
   - `access(all) fun deposit(from: @{FungibleToken.Vault})`
   - Conditions
-      - `from` balance must be non-zero
-      - The resulting balance must be equal to the initial balance + the balance of `from`
+    - `from` balance must be non-zero
+    - The resulting balance must be equal to the initial balance + the balance of `from`
   - It is important that if you are making your own implementation of the fungible token interface that
-  you cast the input to `deposit` as the type of your token.
-  `let vault <- from as! @ExampleToken.Vault`
-  The interface specifies the argument as `@FungibleToken.Vault`, any resource that satisfies this can be sent to the deposit function. The interface checks that the concrete types match, but you'll still need to cast the `Vault` before storing it.
+    you cast the input to `deposit` as the type of your token.
+    `let vault <- from as! @ExampleToken.Vault`
+    The interface specifies the argument as `@FungibleToken.Vault`, any resource that satisfies this can be sent to the deposit function. The interface checks that the concrete types match, but you'll still need to cast the `Vault` before storing it.
 - deposit event
-    - [`FungibleToken.Deposited` event](https://github.com/onflow/flow-ft/blob/v2-standard/contracts/FungibleToken.cdc#L53) from the standard
+  - [`FungibleToken.Deposited` event](https://github.com/onflow/flow-ft/blob/v2-standard/contracts/FungibleToken.cdc#L53) from the standard
     that indicates how much was deposited and to what account the `Vault` is stored in.
-      - If the `Vault` is not in account storage when the event is emitted,
-        `to` will be `nil`.
-      - This event is emitted automatically on any deposit, so projects do not need
-        to define and emit their own events.
+    - If the `Vault` is not in account storage when the event is emitted,
+      `to` will be `nil`.
+    - This event is emitted automatically on any deposit, so projects do not need
+      to define and emit their own events.
 
 Defines Functionality for Getting Supported Vault Types
+
 - Some resource types can accept multiple different vault types in their deposit functions,
   so the `getSupportedVaultTypes()` and `isSupportedVaultType()` functions allow callers
   to query a resource that implements `Receiver` to see if the `Receiver` accepts
@@ -111,6 +116,7 @@ Users could create custom `Receiver`s to trigger special code when transfers to 
 like forwarding the tokens to another account, splitting them up, and much more.
 
 ### `Vault` Interface
+
 [Interface](https://github.com/onflow/flow-ft/blob/v2-standard/contracts/FungibleToken.cdc#L134) that inherits from `Provider`, `Receiver`, `Balance`, `ViewResolver.Resolver`,
 and `Burner.Burnable` and provides additional pre and post conditions.
 
@@ -122,21 +128,22 @@ Basically, it defines functionality for tokens to have custom logic when those t
 are destroyed.
 
 ### Creating an empty Vault resource
+
 Defines functionality in the contract to create a new empty vault of
 of the contract's defined type.
+
 - `access(all) fun createEmptyVault(vaultType: Type): @{FungibleToken.Vault}`
-- Defined in the contract 
+- Defined in the contract
 - To create an empty `Vault`, the caller calls the function and provides the Vault Type
   that they want. They get a vault back and can store it in their storage.
 - Conditions:
-    - the balance of the returned Vault must be 0
-
+  - the balance of the returned Vault must be 0
 
 ## Comparison to Similar Standards in Ethereum
 
-This spec covers much of the same ground that a spec like ERC-20 covers, but without most of the downsides.  
+This spec covers much of the same ground that a spec like ERC-20 covers, but without most of the downsides.
 
-- Tokens cannot be sent to accounts or contracts that don't have owners or don't understand how to use them, because an account has to have a `Vault` in its storage to receive tokens.  No `safetransfer` is needed.
+- Tokens cannot be sent to accounts or contracts that don't have owners or don't understand how to use them, because an account has to have a `Vault` in its storage to receive tokens. No `safetransfer` is needed.
 - If the recipient is a contract that has a stored `Vault`, the tokens can just be deposited to that Vault without having to do a clunky `approve`, `transferFrom`
 - Events are defined in the contract for withdrawing and depositing, so a recipient will always be notified that someone has sent them tokens with the deposit event.
 - The `approve`, `transferFrom` pattern is not included, so double spends are not permitted
@@ -187,14 +194,11 @@ Latter using that reference you can call methods defined in the [Fungible Token 
 To use the Flow Token contract as is, you need to follow these steps:
 
 1. If you are using any network or the playground, there is no need to deploy
-the `FungibleToken` definition to accounts yourself.
-It is a pre-deployed interface in the emulator, testnet, mainnet,
-and playground and you can import definition from those accounts:
-    - `0xee82856bf20e2aa6` on emulator
-    - `0x9a0766d93b6608b7` on testnet
-    - `0xf233dcee88fe0abe` on mainnet
+   the `FungibleToken` definition to accounts yourself.
+   It is a pre-deployed interface in the emulator, testnet, mainnet,
+   and playground and you can import definition from those accounts: - `0xee82856bf20e2aa6` on emulator - `0x9a0766d93b6608b7` on testnet - `0xf233dcee88fe0abe` on mainnet
 2. Deploy the `ExampleToken` definition, making sure to import the `FungibleToken` interface.
-3. You can use the `get_balance.cdc` or `get_supply.cdc` scripts to read the 
+3. You can use the `get_balance.cdc` or `get_supply.cdc` scripts to read the
    balance of a user's `Vault` or the total supply of all tokens, respectively.
 4. Use the `setup_account.cdc` on any account to set up the account to be able to
    use `ExampleToken`.
@@ -214,6 +218,3 @@ The switchboard routes received tokens to the correct vault in the owner's accou
 
 You can see more documentation about the switchboard in
 [the flow-ft github repo](https://github.com/onflow/flow-ft/tree/v2-standard?tab=readme-ov-file#fungible-token-switchboard).
-
-
-
