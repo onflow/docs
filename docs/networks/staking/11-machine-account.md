@@ -23,9 +23,7 @@ Currently Machine Accounts are required only for `collection` and `consensus` no
 
 #### Creation
 
-For new node operators, Machine Accounts are created during the [staking process](../../networks/flow-port/staking-guide.md) in Flow Port.
-For node operators who initially staked prior to the introduction of Machine Accounts, Machine Accounts can be
-created for your staked nodes by following [this guide](../node-ops/node-operation/machine-existing-operator.md).
+Machine Accounts are created during the [staking process](../../networks/flow-port/staking-guide.md) in Flow Port.
 
 #### Funding
 
