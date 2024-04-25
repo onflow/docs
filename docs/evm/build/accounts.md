@@ -28,16 +28,6 @@ A Cadence Owned Account (COA) is a natively supported EVM smart contract wallet 
 
 ![Account-Model](flow-evm-account-model.png)
 
-### Differences from Traditional EVM Accounts
-
-COAs are smart contracts that are deployed to, and are fully accessible within, Flow EVM. However, unlike traditional EVM accounts (e.g. EOAs or smart contract accounts), COAs are owned by a Cadence resource. This means that COAs can be created and controlled natively within the Cadence execution enviornment.
-
-Unlike EOAs, COAs do not have an associated key, but are assigned a 20-byte EVM address upon creation from Cadence. This address is based on the UUID of the Cadence resource and is prefixed with `0x000000000000000000000002`. This address determines the location of the COA smart contract deployment and is the EVM address that is used to interact with the COA.
-
-A COA may instantiate transactions itself (where the COA's EVM address acts as `tx.origin`). This behaviour differs from other EVM environments, where only externally owned accounts (EOAs) may instantiate transactions. A new EVM transaction type (`TxType=0xff`) is used to differentiate COA transactions from other types of EVM transactions (e.g. DynamicFeeType where `TxType=0x02`).
-
-Because COAs are owned by Cadence resources, an EVM transaction is not required to trigger a transaction from a COA (e.g. a transaction to make a call to `execute` or EIP-4337's `validateUserOpMethod`). Instead, call transactions may be triggered directly from the Cadence resource that owns the COA. By invoking the `call` method on this resource, a transaction event will be emitted within the EVM environment.
-
 ### Why use COAs?
 
 COAs create powerful new opportunities to improve the UX, functionality and utility of EVM applications by taking advantage of Cadence. Key benefits include:
@@ -49,6 +39,16 @@ COAs create powerful new opportunities to improve the UX, functionality and util
 - **Native Account Abstraction**: COAs are controlled by Cadence resources, which are in turn owned by Flow accounts. [Flow accounts](../build/accounts.md) have built-in support for multi-signature authentication, key rotation, and account recovery. As a Cadence resource, COAs naturally inherit [these features](https://developers.flow.com/build/differences-vs-evm/account-abstraction).
 
 - **Fine-Grained Access Control**: As Cadence resources, access to a COA can be governed by more sophisticated policies than those available with basic EVM accounts. By utilizing powerful Cadence access control primitives such as [capabilities and entitlements](https://cadence-lang.org/docs/1.0/language/access-control), developers can restrict who is able to interact with a COA and what actions they are permitted to perform.
+
+### Differences from Traditional EVM Accounts
+
+COAs are smart contracts that are deployed to, and are fully accessible within, Flow EVM. However, unlike traditional EVM accounts (e.g. EOAs or smart contract accounts), COAs are owned by a Cadence resource. This means that COAs can be created and controlled natively within the Cadence execution enviornment.
+
+Unlike EOAs, COAs do not have an associated key, but are assigned a 20-byte EVM address upon creation from Cadence. This address is based on the UUID of the Cadence resource and is prefixed with `0x000000000000000000000002`. This address determines the location of the COA smart contract deployment and is the EVM address that is used to interact with the COA.
+
+A COA may instantiate transactions itself (where the COA's EVM address acts as `tx.origin`). This behaviour differs from other EVM environments, where only externally owned accounts (EOAs) may instantiate transactions. A new EVM transaction type (`TxType=0xff`) is used to differentiate COA transactions from other types of EVM transactions (e.g. DynamicFeeType where `TxType=0x02`).
+
+Because COAs are owned by Cadence resources, an EVM transaction is not required to trigger a transaction from a COA (e.g. a transaction to make a call to `execute` or EIP-4337's `validateUserOpMethod`). Instead, call transactions may be triggered directly from the Cadence resource that owns the COA. By invoking the `call` method on this resource, a transaction event will be emitted within the EVM environment.
 
 ### More Information
 
