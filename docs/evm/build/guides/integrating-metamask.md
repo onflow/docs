@@ -1,7 +1,6 @@
 ---
-title: Wallets & Configurations
-sidebar_label: Wallets & Configurations
-sidebar_position: 4
+title: Integrating Metamask
+sidebar_position: 3
 ---
 
 # Wallets & Configurations
@@ -61,7 +60,7 @@ The typical usage would be to expose this button if you get errors when attempti
 
 Users of your app will need to first approve a connection to Metamask.  After doing this, if you don't detect a successful Web3 network connection, you may present a dialog asking them to add the Flow network to their wallet.
 
-![Metamask Network](./metamask-network.png)
+![Metamask Network](../metamask-network.png)
 
 After they approve, your app will be connected to the Flow network.
 
