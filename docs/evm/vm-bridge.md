@@ -1,7 +1,7 @@
 ---
 title: Cross-VM Bridge
 sidebar_label: Cross-VM Bridge
-sidebar_position: 1
+sidebar_position: 6
 ---
 
 # Cross-VM Bridge
