@@ -1103,7 +1103,7 @@
     },
     {
       "source": "/evm/Advanced/:path*",
-      "destination": "/evm/Advanced/:path*",
+      "destination": "/evm/advanced/:path*",
       "permanent": true
     },
     {
@@ -1199,6 +1199,11 @@
     {
       "source": "/evm/build/wallets-and-configurations",
       "destination": "/evm/guides/integrating-metamask",
+      "permanent": true
+    },
+    {
+      "source": "/evm/advanced/:path*",
+      "destination": "/evm/:path*",
       "permanent": true
     }
   ]
