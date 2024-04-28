@@ -216,8 +216,7 @@ const config = {
         // Plugin Options for loading OpenAPI files
         specs: [
           {
-            //TODO: Change when https://github.com/onflow/flow/pull/1452 will be merged
-            spec: 'https://raw.githubusercontent.com/onflow/flow/5406540d7fc056f016bf1363f0fed5e9b955341a/openapi/access.yaml',
+            spec: 'https://raw.githubusercontent.com/onflow/flow/master/openapi/access.yaml',
             route: '/http-api/',
           },
         ],
