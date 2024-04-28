@@ -26,7 +26,7 @@ However, in order to leverage all the features of Cadence, developers will need 
 
 A Cadence Owned Account (COA) is a natively supported EVM smart contract wallet type that allows a Cadence resource to own and control an EVM address. This native wallet type provides the primitives needed to bridge or control assets across Flow EVM and Cadence facilitating composability between environments.
 
-![Account-Model](build/flow-evm-account-model.png)
+![Account-Model](./flow-evm-account-model.png)
 
 ### Why use COAs?
 

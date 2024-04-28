@@ -32,7 +32,7 @@ const web3 = new Web3('https://previewnet.evm.nodes.onflow.org')
 ```
 
 :::info
-Currently, only Flow Previewnet is available.  More networks are coming soon - [see here for more info](../../networks.md).
+Currently, only Flow Previewnet is available.  More networks are coming soon - [see here for more info](../networks.md).
 :::
 
 ## Querying The Blockchain
@@ -67,7 +67,7 @@ The `web3` library allows developers to interact with smart contracts via the `w
 
 For this example we will use the following `Storage` contract, deployed on Previewnet to the address `0x4c7784ae96e7cfcf0224a95059573e96f03a4e70`.  Note that anyone can interact with this contract, as it is deployed on a public network, so state may not always be as expected.
 
-We recommend deploying your own contract, which can be done using [Hardhat](../../build/guides/deploy-contract/using-hardhat.md) or [Remix](../../build/guides/deploy-contract/using-remix.md).
+We recommend deploying your own contract, which can be done using [Hardhat](../guides/hardhat.md) or [Remix](../guides/remix.md).
 
 ```solidity
 // SPDX-License-Identifier: MIT
@@ -86,7 +86,7 @@ contract Storage {
 }
 ```
 
-The ABI for this contract can be generated using the [`solc` compiler](https://docs.soliditylang.org/en/latest/installing-solidity.html), or another tool such as [Hardhat](../../build/guides/deploy-contract/using-hardhat.md) or [Remix](../../build/guides/deploy-contract/using-remix.md).
+The ABI for this contract can be generated using the [`solc` compiler](https://docs.soliditylang.org/en/latest/installing-solidity.html), or another tool such as [Hardhat](../guides/hardhat.md) or [Remix](../guides/remix.md).
 
 Now that we have both the ABI and address of the contract, we can create a new `Contract` object for use in our application.
 
