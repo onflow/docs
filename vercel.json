@@ -1205,6 +1205,16 @@
       "source": "/evm/advanced/:path*",
       "destination": "/evm/:path*",
       "permanent": true
+    },
+    {
+      "source": "/evm/build/:path*",
+      "destination": "/evm/:path*",
+      "permanent": true
+    },
+    {
+      "source": "/evm/tools/:path*",
+      "destination": "/evm/:path*",
+      "permanent": true
     }
   ]
 }
