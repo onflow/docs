@@ -2,7 +2,7 @@
 title: Flow Hardhat Guide
 description: "Using Hardhatto deploy a Solidity contract to EVM on Flow."
 sidebar_label: Hardhat
-sidebar_position: 1
+sidebar_position: 2
 ---
 
 # Flow Hardhat Guide

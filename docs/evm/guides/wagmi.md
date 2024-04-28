@@ -1,8 +1,8 @@
 ---
-title: Using Wagmi
+title: Wagmi
 description: "Using Wagmi to interact with Solidity contract to EVM on Flow."
-sidebar_label: Using Wagmi
-sidebar_position: 1
+sidebar_label: Wagmi
+sidebar_position: 4
 ---
 
 :::info
@@ -113,7 +113,7 @@ export default App
 
 ![Connect Metamask](./Connect-Metamask.gif)
 
-This step relies on an already deployed HelloWorld contract. See [Using Remix](./deploy-contract/using-remix.md) to deploy a smart contract on flow evm blockchain.
+This step relies on an already deployed HelloWorld contract. See [Using Remix](./remix.md) to deploy a smart contract on flow evm blockchain.
 Create or edit the simple `page.tsx` file in the app directory to have better styles, that's beyond this tutorial. We will modify `page.txs` to add a new `HelloWorld.tsx`. Replace `YOUR_CONTRACT_ADDRESS` with your deployed address. 
 
 

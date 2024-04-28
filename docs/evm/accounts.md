@@ -1,12 +1,12 @@
 ---
 title: Accounts
 sidebar_label: Accounts
-sidebar_position: 3
+sidebar_position: 5
 ---
 
 :::info
 
-Are you a Cadence developer looking for information about Accounts on Cadence? If so, check out the Cadence specific documentation [here](../../build/basics/accounts.md)
+Are you a Cadence developer looking for information about Accounts on Cadence? If so, check out the Cadence specific documentation [here](../build/basics/accounts.md)
 
 :::
 
@@ -18,7 +18,7 @@ There are three types of accounts used for EVM on Flow.
 2. **Contract Accounts**: These accounts hold smart contract code and are governed by this code's logic. Unlike EOAs, Contract Accounts do not initiate transactions on their own but can execute transactions in response to calls they receive from EOAs or other contracts.
 3. **Cadence Owned Accounts (COA)**: This is an account type unique to Flow EVM. These accounts are managed by [Cadence resources](https://cadence-lang.org/docs/1.0/language/resources) and can be used to interact with the Flow EVM from within the Cadence environment.
 
-EOAs and Contract accounts function the same as on other EVM networks. Users may interact with these accounts using the standard EVM JSON-RPC API ([see endpoints here](../using.mdx)). You can read more about EOAs and Contract accounts on the [Ethereum docs](https://ethereum.org/developers/docs/accounts).
+EOAs and Contract accounts function the same as on other EVM networks. Users may interact with these accounts using the standard EVM JSON-RPC API ([see endpoints here](./using.mdx)). You can read more about EOAs and Contract accounts on the [Ethereum docs](https://ethereum.org/developers/docs/accounts).
 
 However, in order to leverage all the features of Cadence, developers will need to utilize Cadence Owned Accounts.
 
@@ -26,7 +26,7 @@ However, in order to leverage all the features of Cadence, developers will need 
 
 A Cadence Owned Account (COA) is a natively supported EVM smart contract wallet type that allows a Cadence resource to own and control an EVM address. This native wallet type provides the primitives needed to bridge or control assets across Flow EVM and Cadence facilitating composability between environments.
 
-![Account-Model](flow-evm-account-model.png)
+![Account-Model](./flow-evm-account-model.png)
 
 ### Why use COAs?
 
@@ -36,7 +36,7 @@ COAs create powerful new opportunities to improve the UX, functionality and util
 
 - **Atomic Interactions**: Developers are able to execute multiple EVM transactions atomically from a COA, which is not possible using traditional EVM accounts. This is particularly useful for applications that require multiple transactions to be executed within a single block, or require that prior transactions' state changes revert if a subsequent transaction fails.
 
-- **Native Account Abstraction**: COAs are controlled by Cadence resources, which are in turn owned by Flow accounts. [Flow accounts](../build/accounts.md) have built-in support for multi-signature authentication, key rotation, and account recovery. As a Cadence resource, COAs naturally inherit [these features](https://developers.flow.com/build/differences-vs-evm/account-abstraction).
+- **Native Account Abstraction**: COAs are controlled by Cadence resources, which are in turn owned by Flow accounts. [Flow accounts](./accounts.md) have built-in support for multi-signature authentication, key rotation, and account recovery. As a Cadence resource, COAs naturally inherit [these features](https://developers.flow.com/build/differences-vs-evm/account-abstraction).
 
 - **Fine-Grained Access Control**: As Cadence resources, access to a COA can be governed by more sophisticated policies than those available with basic EVM accounts. By utilizing powerful Cadence access control primitives such as [capabilities and entitlements](https://cadence-lang.org/docs/1.0/language/access-control), developers can restrict who is able to interact with a COA and what actions they are permitted to perform.
 
