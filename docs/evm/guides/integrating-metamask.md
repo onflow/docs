@@ -1,6 +1,6 @@
 ---
 title: Integrating Metamask
-sidebar_position: 3
+sidebar_position: 1
 ---
 
 # Wallets & Configurations

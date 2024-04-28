@@ -2,7 +2,7 @@
 title: Flow Remix Guide
 description: "Using Remix to deploy a solidity contract to EVM on Flow."
 sidebar_label: Remix
-sidebar_position: 2
+sidebar_position: 3
 ---
 
 
