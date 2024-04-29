@@ -4,7 +4,7 @@ sidebar_label: Direct Calls to Flow EVM
 sidebar_position: 5
 ---
 
-Direct calls from Cadence to the FlowEVM are essential for enabling Cadence smart contracts to interact seamlessly with the EVM environment hosted on the Flow blockchain. These calls facilitate a range of functionalities including state queries and transaction initiations, allowing Cadence contracts to leverage EVM-based tools and assets.
+Direct calls from Cadence to Flow EVM are essential for enabling Cadence smart contracts to interact seamlessly with the EVM environment hosted on the Flow blockchain. These calls facilitate a range of functionalities including state queries and transaction initiations, allowing Cadence contracts to leverage EVM-based tools and assets.
 
 ## Making Direct Calls
 
