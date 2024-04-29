@@ -12,13 +12,13 @@ Direct calls from Cadence to the FlowEVM are essential for enabling Cadence smar
 
 To interact with the FlowEVM, Cadence contracts must first import `EVM` from its service address:
 
-```jsx
+```js
 import EVM from <ServiceAddress>
 ```
 
 Next, create an `EVMAddress` with a sequence of 20 bytes representing the EVM address:
 
-```jsx
+```js
 let addr = EVM.EVMAddress(bytes: bytes)
 ```
 
@@ -29,7 +29,6 @@ Once you have access to an `EVMAddress`, you can query various pieces of state i
 - `code(): [UInt8]` fetches the code at the address; it returns the smart contract code if applicable, and is empty otherwise.
 
 ```
-// Example of balance query
 import EVM from <ServiceAddress>
 
 access(all)
@@ -44,7 +43,6 @@ fun main(bytes: [UInt8; 20]) {
 To send transactions to the FlowEVM, use the `run` function which executes RLP-encoded transactions. RLP (Recursive Length Prefix) encoding is used to efficiently encode data into a byte-array format, suitable for Ethereum-based environments. Here's an example of wrapping and sending a transaction:
 
 ```
-// Example of tx wrapping
 import EVM from <ServiceAddress>
 
 transaction(rlpEncodedTransaction: [UInt8], coinbaseBytes: [UInt8; 20]) {
