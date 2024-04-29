@@ -1,12 +1,12 @@
 ---
 title: Fees
 sidebar_label: Fees
-sidebar_position: 2
+sidebar_position: 4
 ---
 
 :::info
 
-Are you a Cadence developer looking for information about Fees on Cadence? If so, check out the Cadence specific documentation [here](../../build/basics/fees.md)
+Are you a Cadence developer looking for information about Fees on Cadence? If so, check out the Cadence specific documentation [here](../build/basics/fees.md)
 
 :::
 
