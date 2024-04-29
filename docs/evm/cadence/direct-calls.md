@@ -10,7 +10,7 @@ Direct calls from Cadence to Flow EVM are essential for enabling Cadence smart c
 
 ### Accessing Flow EVM
 
-To interact with the FlowEVM, Cadence contracts must first import `EVM` from its service address:
+To interact with Flow EVM, Cadence contracts must first import `EVM` from its service address:
 
 ```js
 import EVM from <ServiceAddress>
