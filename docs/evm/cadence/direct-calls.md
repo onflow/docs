@@ -74,7 +74,7 @@ For scenarios where transaction validity is critical, developers may choose to u
 
 ### Understanding Gas Usage in EVM Transactions
 
-Direct calls to the FlowEVM require gas, it's important to understand how gas usage is calculated and billed. During the execution of methods that interact with the EVM:
+Direct calls to Flow EVM require gas, it's important to understand how gas usage is calculated and billed. During the execution of methods that interact with the EVM:
 
 - **Gas Aggregation**: The gas used by each call is aggregated throughout the transaction.
 - **Gas Adjustment**: The total gas used is then adjusted based on a multiplier. This multiplier is determined by the network and can be adjusted by the service account to reflect operational costs and network conditions.
