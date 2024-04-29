@@ -6,15 +6,17 @@ sidebar_position: 4
 
 # Interacting with COAs
 
-[Cadence Owned Accounts (COAs)](../accounts.md#cadence-owned-accounts) are EVM accounts owned by a Cadence resource and are used to interact with the Flow EVM from Cadence.
+[Cadence Owned Accounts (COAs)](../accounts.md#cadence-owned-accounts) are EVM accounts owned by a Cadence resource and are used to interact with Flow EVM from Cadence.
 
-COAs expose two interfaces for interaction: one on the Cadence side and one on the EVM side. In this guide, we will focus on how to interact with COAs from Cadence.
+COAs expose two interfaces for interaction: one on the Cadence side and one on the EVM side. In this guide, we will focus on how to interact with COAs with Cadence.
 
-We will walk through some basic examples of how to create and interact with COAs in Cadnece. Your specific use case of the COA resource will depend on your own application's requirements (e.g. the COA resource may not live directly in `/storage/evm` as in these examples, but may instead be a part of a more complex resource structure).
+In this guide we will walk through some basic examples creating and interacting with a COA in Cadence. Your specific usage of the COA resource will depend on your own application's requirements (e.g. the COA resource may not live directly in `/storage/evm` as in these examples, but may instead be a part of a more complex resource structure).
 
 ## COA Interface
 
-To begin, we can take a look at a simplified version of the Cadence EVM contract interface related to interacting with COAs:
+To begin, we can take a look at a simplified version of the `EVM` contract, highlighting parts specific to COAs.
+
+You can learn more about the `EVM` contract [here](../../build/core-contracts/13-evm.md) and the full contract code can be found on [GitHub](https://github.com/onflow/flow-go/tree/master/fvm/evm/stdlib/contract.cdc).
 
 ```cadence
 access(all)
@@ -75,22 +77,20 @@ contract EVM {
 }
 ```
 
-You can learn more about the contract [here](../../build/core-contracts/13-evm.md) and the full contract code can be found on [GitHub](https://github.com/onflow/flow-go/tree/master/fvm/evm/stdlib/contract.cdc).
-
-This resource is a part of the `EVM` system contract, so to use these functions, you will need to begin by importing the `EVM` contract into your Cadence code.
-
 ## Importing the EVM Contract
 
-To import the `EVM` contract into your Cadence code using the simple import syntax, you can use the following format:
+The `CadenceOwnedAccount` resource is a part of the `EVM` system contract, so to use any of these functions, you will need to begin by importing the `EVM` contract into your Cadence code.
+
+To import the `EVM` contract into your Cadence code using the simple import syntax, you can use the following format (learn more about configuring contracts in `flow.json` [here](../../tools/flow-cli/flow.json/configuration.md#contracts)):
 
 ```cadence
-// This assumes you are working in the in the Flow CLI, FCL, or another tool that supports the simple import syntax
+// This assumes you are working in the in the Flow CLI, FCL, or another tool that supports this syntax
 // The contract address should be configured in your project's `flow.json` file
 import "EVM"
 // ...
 ```
 
-However, if you wish to use manual address imports, you can use the following format:
+However, if you wish to use manual address imports instead, you can use the following format:
 
 ```cadence
 // Must use the correct address based on the network you are interacting with
@@ -98,7 +98,7 @@ import EVM from 0x1234
 // ...
 ```
 
-To find the correct address for the `EVM` contract on the network you are interacting with, you can refer to the [EVM contract documentation](../../build/core-contracts/13-evm.md).
+To find the deployment addresses of the `EVM` contract, you can refer to the [EVM contract documentation](../../build/core-contracts/13-evm.md).
 
 ## Creating a COA
 
