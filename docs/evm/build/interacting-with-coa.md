@@ -1,6 +1,6 @@
 ---
-title: Accounts
-sidebar_label: Accounts
+title: Interacting with COAs from Cadence
+sidebar_label: Interacting with COAs
 sidebar_position: 4
 ---
 
@@ -8,15 +8,11 @@ sidebar_position: 4
 
 [Cadence Owned Accounts (COAs)](./accounts.md#cadence-owned-accounts) are EVM accounts owned by a Cadence resource and are used to interact with the Flow EVM from Cadence.
 
-COAs expose two interfaces for interaction: one on the Cadence side and one on the EVM side.
+COAs expose two interfaces for interaction: one on the Cadence side and one on the EVM side. In this guide, we will focus on how to interact with COAs from Cadence.
 
-## Interacting with COAs from Cadence
+We will walk through some basic examples of how to create and interact with COAs in Cadnece. Your specific use case of the COA resource will depend on your own application's requirements (e.g. the COA resource may not live directly in `/storage/evm` as in these examples, but may instead be a part of a more complex resource structure).
 
-COAs can be conveniently created, queried, and controlled from Cadence. This can be done with interacting with the methods exposed on the `CadenceOwnedAccount` resource from the [`EVM` contract](../../build/core-contracts/13-evm.md).
-
-We will walk through some simple examples of how to interact with COAs in Cadence. However, your specific use case of the COA resource will depend on your application's requirements (e.g. the COA resource may not live directly in storage as in these examples, but may instead be a part of a more complex resource structure).
-
-### COA Interface
+## COA Interface
 
 To begin, we can take a look at a simplified version of the Cadence EVM contract interface related to interacting with COAs:
 
@@ -79,34 +75,36 @@ contract EVM {
 }
 ```
 
-You can learn more about the contract [here](../../build/core-contracts/13-evm.md) and the full contract code can be found on GitHub [here](https://github.com/onflow/flow-go/tree/master/fvm/evm/stdlib/contract.cdc).
+You can learn more about the contract [here](../../build/core-contracts/13-evm.md) and the full contract code can be found on [GitHub](https://github.com/onflow/flow-go/tree/master/fvm/evm/stdlib/contract.cdc).
 
-This interface exists in the `EVM` system contract, so to use these functions, you will need to begin by importing the `EVM` contract into your Cadence code.
+This resource is a part of the `EVM` system contract, so to use these functions, you will need to begin by importing the `EVM` contract into your Cadence code.
 
-### Importing the EVM Contract
+## Importing the EVM Contract
 
-To interact with COAs, you will need to import the `EVM` contract into your Cadence code - this contract is deployed to the service account of whichever network you are using.
+To import the `EVM` contract into your Cadence code using the simple import syntax, you can use the following format:
 
 ```cadence
+// This assumes you are working in the in the Flow CLI, FCL, or another tool that supports the simple import syntax
+// The contract address should be configured in your project's `flow.json` file
 import "EVM"
 // ...
 ```
 
-The import syntax used in this guide assumes that you are using the Flow CLI or another tool that supports the simple import syntax. These contracts must be configured in your project's `flow.json` file with the correct addresses for each network. For more information on how to do this, see the [Flow CLI documentation](../../tools/flow-cli/flow.json/configuration.md).
-
-However, if you wish to use manual address imports, you can use the following syntax:
+However, if you wish to use manual address imports, you can use the following format:
 
 ```cadence
-// Must use the correct address based on the network you are using
+// Must use the correct address based on the network you are interacting with
 import EVM from 0x1234
 // ...
 ```
 
-### Creating a COA
+To find the correct address for the `EVM` contract on the network you are interacting with, you can refer to the [EVM contract documentation](../../build/core-contracts/13-evm.md).
 
-To create a COA, we can use the `createCadenceOwnedAccount` function from the `EVM` contract. This function takes no arguments and returns a new `CadenceOwnedAccount` resource which represents this EVM account.
+## Creating a COA
 
-For example, we can create this COA in a transaction, saving it to the user's storage and publishing a public capability to it:
+To create a COA, we can use the `createCadenceOwnedAccount` function from the `EVM` contract. This function takes no arguments and returns a new `CadenceOwnedAccount` resource which represents this newly created EVM account.
+
+For example, we can create this COA in a transaction, saving it to the user's storage and publishing a public capability to its reference:
 
 ```cadence
 import "EVM"
@@ -128,9 +126,9 @@ transaction() {
 }
 ```
 
-### Getting the EVM Address of a COA
+## Getting the EVM Address of a COA
 
-To get the EVM address of a COA, you can use the `address` function from the `EVM` contract. This function returns the EVM address of the COA as a `EVM.Address` - this is a struct used to represent and interact with 20-byte EVM addresses in Flow.
+To get the EVM address of a COA, you can use the `address` function from the `EVM` contract. This function returns the EVM address of the COA as an `EVM.Address` struct. This struct is used to represent addresses within Flow EVM and can also be used to query the balance, code, nonce, etc. of an account.
 
 For our example, we could query the address of the COA we just created with the following script:
 
@@ -139,7 +137,7 @@ import "EVM"
 
 access(all)
 fun main(address: Address): EVM.EVMAddress {
-    // Get the desired account holding the COA in storage
+    // Get the desired Flow account holding the COA in storage
     let account: = getAuthAccount<auth(Storage) &Account>(address)
 
     // Borrow a reference to the COA from the storage location we saved it to
@@ -154,7 +152,7 @@ fun main(address: Address): EVM.EVMAddress {
 
 ## Getting the Flow Balance of a COA
 
-Like any other Flow EVM or Cadence account, COAs possess a balance of FLOW tokens. To get the current balance of our COA, we can use the COA's `balance` function. It will return a `EVM.Balance` struct for the account - this is used to represent balances within Flow EVM.
+Like any other Flow EVM or Cadence account, COAs possess a balance of FLOW tokens. To get the current balance of our COA, we can use the COA's `balance` function. It will return a `EVM.Balance` struct for the account - these are used to represent balances within Flow EVM.
 
 This script will query the current balance of our newly created COA:
 
@@ -163,38 +161,41 @@ import "EVM"
 
 access(all)
 fun main(address: Address): EVM.Balance {
-    // Get the desired account holding the COA in storage
+    // Get the desired Flow account holding the COA in storage
     let acct: &Account = getAccount(address)
 
     // Borrow a reference to the COA from the storage location we saved it to
-    let coa = acct.storage.borrow<&EVM.CadenceOwnedAccount>(from: /storage/coa)
+    let coa = acct.storage.borrow<&EVM.CadenceOwnedAccount>(from: /storage/evm)
 
     // Get the current balance of this COA
     return coa.balance()
 }
 ```
 
-### Depositing and Withdrawing Flow Tokens
+## Depositing and Withdrawing Flow Tokens
 
-Tokens can be seamlessly transferred between COAs and other Flow accounts using the `deposit` and `withdraw` functions provided by the COA resource. Anybody with a reference to a COA may deposit Flow tokens into a it, but only someone with the `Owner` or `Withdraw` entitlements can withdraw them
+Tokens can be seamlessly transferred between the Flow EVM and Cadence environment using the `deposit` and `withdraw` functions provided by the COA resource. Anybody with a valid reference to a COA may deposit Flow tokens into a it, however only someone with the `Owner` or `Withdraw` entitlements can withdraw tokens.
 
-#### Depositing Flow Tokens
+### Depositing Flow Tokens
 
 The `deposit` function takes a `FlowToken.Vault` resource as an argument, representing the tokens to deposit. It will transfer the tokens from the vault into the COA's balance.
 
-This transaction will withdraw Flow tokens from a user's vault and deposit them into a COA (for a given amount and target address):
+This transaction will withdraw Flow tokens from a user's Cadence vault and deposit them into their COA:
 
 ```cadence
 import "EVM"
+import "FungibleToken"
+import "FlowToken"
 
-transaction(amount: UFix64, address: Address) {
+transaction(amount: UFix64) {
     let coa: &EVM.CadenceOwnedAccount
     let sentVault: @FlowToken.Vault
 
     prepare(signer: auth(Capabilities, Storage) &Account) {
         // Borrow the public capability to the COA from the desired account
-        self.coa = acct.capabilities.borrow<&EVM.CadenceOwnedAccount>(
-            from: /public/coa
+        // This script could be modified to deposit into any account with a `EVM.CadenceOwnedAccount` capability
+        self.coa = signer.capabilities.borrow<&EVM.CadenceOwnedAccount>(
+            from: /public/evm
         ) ?? panic("Could not borrow reference to the COA!")
 
         // Withdraw the balance from the COA, we will use this later to deposit into the receiving account
@@ -211,19 +212,26 @@ transaction(amount: UFix64, address: Address) {
 }
 ```
 
-#### Withdrawing Flow Tokens
+:::info
+This is a basic example which only transfers tokens between a single user's COA & Flow account. It can be easily modified to transfer these tokens between any arbitrary accounts.
 
-The `withdraw` function takes a `EVM.Balance` struct as an argument, representing the amount of Flow tokens to withdraw and returns a `FlowToken.Vault` resource with the withdrawn tokens.
+You can also deposit tokens directly into other types of EVM accounts using the `EVM.EVMAddress.deposit` function. See the [EVM contract documentation](../../build/core-contracts/13-evm.md) for more information.
+:::
 
-We can run the following transaction to withdraw Flow tokens from a COA and deposit them into an arbitrary Flow account.
+### Withdrawing Flow Tokens
+
+The `withdraw` function takes a `EVM.Balance` struct as an argument, representing the amount of Flow tokens to withdraw, and returns a `FlowToken.Vault` resource with the withdrawn tokens.
+
+We can run the following transaction to withdraw Flow tokens from a user's COA and deposit them into their Flow vault:
 
 ```cadence
+import "EVM"
 import "FungibleToken"
 import "FlowToken"
-import "EVM"
 
-transaction(amount: UFix64, address: Address) {
+transaction(amount: UFix64) {
     let sentVault: @FlowToken.Vault
+    let receiver: &{FungibleToken.Receiver}
 
     prepare(signer: auth(Storage, EVM.Withdraw) &Account) {
         // Borrow a reference to the COA from the storage location we saved it to with the `EVM.Withdraw` entitlement
@@ -237,43 +245,59 @@ transaction(amount: UFix64, address: Address) {
 
         // Withdraw the balance from the COA, we will use this later to deposit into the receiving account
         self.sentVault <- coa.withdraw(balance: withdrawBalance) as! @FlowToken.Vault
+
+        // Borrow the public capability to the receiving account (in this case the signer's own Vault)
+        // This script could be modified to deposit into any account with a `FungibleToken.Receiver` capability
+        self.receiver = signer.capabilities.borrow<&{FungibleToken.Receiver}>(/public/flowTokenReceiver)!
     }
 
     execute {
-        // Get the target account & deposit the withdrawn tokens
-        // (you could use these tokens for any purpose in your own application)
-        let account = getAccount(address)
-        let receiver = account.capabilities.borrow<&{FungibleToken.Receiver}>(/public/flowTokenReceiver)!
+        // Deposit the withdrawn tokens into the receiving vault
         receiver.deposit(from: <-self.sentVault)
     }
 }
 ```
 
-### Direct Calls to Flow EVM
+:::info
+This is a basic example which only transfers tokens between a single user's COA & Flow account. It can be easily modified to transfer these tokens between any arbitrary accounts.
+:::
 
-To interact with smart contracts on the EVM, you can use the `call` function provided by the COA resource. This function takes the EVM address of the contract you want to call, the data you want to send, the gas limit, and the value you want to send. It will return a `EVM.Result` struct with the result of the call.
+## Direct Calls to Flow EVM
+
+To interact with smart contracts on the EVM, you can use the `call` function provided by the COA resource. This function takes the EVM address of the contract you want to call, the data you want to send, the gas limit, and the value you want to send. It will return a `EVM.Result` struct with the result of the call - you will need to handle this result in your Cadence code.
+
+This transaction will call a contract at a given EVM address with a hardcoded data payload, gas limit, and value using the signer's COA:
 
 ```cadence
 import "EVM"
 
 transaction() {
-    prepare(signer: auth(Capabilities, Storage) &Account) {
-        // Get the desired account holding the COA in storage
+    let coa: auth(EVM.Call) &EVM.CadenceOwnedAccount
 
+    prepare(signer: auth(Storage) &Account) {
+        // Borrow an entitled reference to the COA from the storage location we saved it to
+        self.coa = signer.storage.borrow<auth(EVM.Call) &EVM.CadenceOwnedAccount>(
+            from: /storage/evm
+        ) ?? panic("Could not borrow reference to the COA!")
+    }
 
-        // Borrow a reference to the COA from the storage location we saved it to
-        let coa = acct.storage.borrow<&EVM.CadenceOwnedAccount>(from: /storage/coa)
-
+    execute {
         // Call the contract at the given EVM address with the given data, gas limit, and value
+        // These values could be configured through the transaction arguments or other means
+        // however, for simplicity, we will hardcode them here
         let result: EVM.Result = coa.call(
             to: 0x1234567890123456789012345678901234567890, // INSERT EVM ADDRESS HERE
             data: [0x01, 0x02, 0x03], // INSERT DATA HERE
-            gasLimit: 100000, // INSERT GAS LIMIT HERE
+            gasLimit: 15000000, // INSERT GAS LIMIT HERE (attoflow)
             value: 0.0 // INSERT VALUE HERE
         )
 
-        // You may use the result of this call if your transaction logic depends on it
-        // for
+        // Revert the transaction if the call was not successful
+        // Note: a failing EVM call will not automatically revert the Cadence transaction
+        // and it is up to the developer to use this result however it suits their application
+        if result.status != EVM.Status.successful {
+            panic("EVM call failed with status: " + result.status)
+        }
     }
 }
 ```
@@ -281,6 +305,32 @@ transaction() {
 ### Deploying a Contract to Flow EVM
 
 To deploy a contract to the EVM, you can use the `deploy` function provided by the COA resource. This function takes the contract code, gas limit, and value you want to send. It will return the EVM address of the newly deployed contract.
+
+This transaction will deploy a contract with the given code using the signer's COA:
+
+```cadence
+import "EVM"
+
+transaction(code: String) {
+    let coa: auth(EVM.Deploy) &EVM.CadenceOwnedAccount
+
+    prepare(signer: auth(Storage) &Account) {
+        // Borrow an entitled reference to the COA from the storage location we saved it to
+        self.coa = signer.storage.borrow<auth(EVM.Deploy) &EVM.CadenceOwnedAccount>(
+            from: /storage/evm
+        ) ?? panic("Could not borrow reference to the COA")
+    }
+
+    execute {
+        // Deploy the contract with the given code, gas limit, and value
+        self.coa.deploy(
+            code: code.decodeHex(),
+            gasLimit: 15000000, // can be adjusted as needed, maxed for simplicity
+            value: EVM.Balance(attoflow: 0)
+        )
+    }
+}
+```
 
 ## More Information
 
