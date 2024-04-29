@@ -97,7 +97,7 @@ Following are some recommendations on how to write efficient scripts:
 2. **Fewer state reads**: A script reads execution state and to get a faster response, it is best to limit the amount of state that is read by the script.
 
 
-3. **Smaller length of array or dictionary type arguments**: If your script requires an array or a dictionary as an argument where each element causes state lookup, instead of making a single script call with a long list, make multiple calls with a smaller subset of the array or dictionary.
+3. **Smaller length of array or dictionary type arguments**: If your script requires an array or a dictionary as an argument where each element causes a state lookup, instead of making a single script call passing in a long list, make multiple calls with a smaller subset of the array or dictionary.
 
 
 4. **NFTCatalog**: If your script uses the [NFTCatalog](https://github.com/onflow/nft-catalog) functions, ensure that you use the [latest functions](https://github.com/onflow/nft-catalog?tab=readme-ov-file#using-the-catalog-for-marketplaces-and-other-nft-applications) and do not use any of the deprecated functions such as `getCatalog()`.
