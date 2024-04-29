@@ -239,9 +239,7 @@ const config = {
     ({
       announcementBar: {
         id: 'stable_cadence_upgrade',
-        content: `🔧 Upgrade to Cadence 1.0 🔧<br />
-          The highly anticipated <a href="https://flow.com/upgrade/crescendo" target="_blank">Crescendo</a> network upgrade is coming soon with 20+ new <a href="https://flow.com/upgrade/cadence-1" target="_blank">Cadence 1.0</a> features and <a href="https://flow.com/upgrade/evm" target="_blank">EVM</a> equivalence.
-         `,
+        content: `For Cadence 0.42 docs visit <a href="https://legacy.developers.flow.com/" target="_blank">Legacy docs</a>.`,
         backgroundColor: '#007BFF',
         textColor: '#FFFFFF',
         isCloseable: true,
