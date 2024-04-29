@@ -162,10 +162,12 @@ import "EVM"
 access(all)
 fun main(address: Address): EVM.Balance {
     // Get the desired Flow account holding the COA in storage
-    let acct: &Account = getAccount(address)
+    let account: = getAuthAccount<auth(Storage) &Account>(address)
 
     // Borrow a reference to the COA from the storage location we saved it to
-    let coa = acct.storage.borrow<&EVM.CadenceOwnedAccount>(from: /storage/evm)
+    let coa = account.storage.borrow<&EVM.CadenceOwnedAccount>(
+        from: /storage/evm
+    ) ?? panic("Could not borrow reference to the COA!")
 
     // Get the current balance of this COA
     return coa.balance()
