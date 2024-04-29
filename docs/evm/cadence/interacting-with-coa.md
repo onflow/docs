@@ -334,6 +334,6 @@ transaction(code: String) {
 
 ## More Information
 
-For more information on Cadence Owned Accounts, see the [Flow EVM Accounts](../accounts.md) or the [Flow EVM Support FLIP](https://github.com/onflow/flips/pull/225/files).
+For more information about Cadence Owned Accounts, see [Flow EVM Accounts](../accounts.md).
 
 Other useful snippets for interacting with COAs can be found [here](https://fw-internal-doc.gitbook.io/evm).
