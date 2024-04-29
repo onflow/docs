@@ -1,5 +1,5 @@
 ---
-title: Direct Calls from Cadence to the FlowEVM
+title: Direct Calls from Cadence to Flow EVM
 sidebar_label: Direct Calls to FlowEVM
 sidebar_position: 5
 ---
