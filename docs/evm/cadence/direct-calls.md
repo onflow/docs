@@ -40,7 +40,7 @@ fun main(bytes: [UInt8; 20]) {
 
 ### Sending Transactions to Flow EVM
 
-To send transactions to the FlowEVM, use the `run` function which executes RLP-encoded transactions. RLP (Recursive Length Prefix) encoding is used to efficiently encode data into a byte-array format, suitable for Ethereum-based environments. Here's an example of wrapping and sending a transaction:
+To send transactions to Flow EVM, use the `run` function which executes RLP-encoded transactions. RLP (Recursive Length Prefix) encoding is used to efficiently encode data into a byte-array format, suitable for Ethereum-based environments. Here's an example of wrapping and sending a transaction:
 
 ```
 import EVM from <ServiceAddress>
