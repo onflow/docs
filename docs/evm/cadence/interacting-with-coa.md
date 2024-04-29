@@ -1,6 +1,6 @@
 ---
 title: Interacting with COAs from Cadence
-sidebar_label: Interacting with COAs
+sidebar_label: Interacting with COAs from Cadence
 sidebar_position: 4
 ---
 
