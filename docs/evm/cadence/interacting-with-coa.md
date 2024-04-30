@@ -297,9 +297,10 @@ transaction() {
         // Revert the transaction if the call was not successful
         // Note: a failing EVM call will not automatically revert the Cadence transaction
         // and it is up to the developer to use this result however it suits their application
-        if result.status != EVM.Status.successful {
-            panic("EVM call failed with status: " + result.status)
-        }
+        assert(
+            result.status == EVM.Status.successful,
+            message: "EVM call failed with status: ".concat(result.status)
+        )
     }
 }
 ```
