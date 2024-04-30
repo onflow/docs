@@ -8,8 +8,17 @@ module.exports = function (source) {
 
   // Function to insert :::info::: tag into content
   const insertInfoTag = (content) => {
-    // Insert :::info::: tag at the beginning of the content
-    return ':::info\n' + infoBannerMessage + '\n:::\n' + content;
+    const infoBanner = ':::info\n' + infoBannerMessage + '\n:::\n';
+    // Check fof front matter
+    if (!content.startsWith('---\n')) {
+      // Insert :::info::: tag at the beginning of the content
+      return infoBanner + content;
+    }
+    // Split the content into front matter and body
+    const [frontMatter, ...body] = content.split('---\n').slice(1);
+
+    // Insert :::info::: tag after front matter
+    return `---\n${frontMatter}---\n${infoBanner}${body.join('---\n')}`;
   };
 
   // Check if the content contains a "cadence" code block
