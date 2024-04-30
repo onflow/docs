@@ -1,10 +1,8 @@
 ---
 title: Interacting with COAs from Cadence
-sidebar_label: Interacting with COAs from Cadence
+sidebar_label: Interacting with COAs
 sidebar_position: 4
 ---
-
-# Interacting with COAs
 
 [Cadence Owned Accounts (COAs)](../accounts.md#cadence-owned-accounts) are EVM accounts owned by a Cadence resource and are used to interact with Flow EVM from Cadence.
 
