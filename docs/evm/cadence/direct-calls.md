@@ -25,16 +25,17 @@ let addr = EVM.EVMAddress(bytes: bytes)
 Once you have access to an `EVMAddress`, you can query various pieces of state information such as:
 
 - `balance() EVM.Balance` provides the balance of the address. It returns a balance object rather than a basic type to avoid errors when converting from flow to atto-flow.
-- `nonce() UInt64`  retrieves the nonce associated with the address.
+- `nonce() UInt64` retrieves the nonce associated with the address.
 - `code(): [UInt8]` fetches the code at the address; it returns the smart contract code if applicable, and is empty otherwise.
 
 ```
 import EVM from <ServiceAddress>
 
 access(all)
-fun main(bytes: [UInt8; 20]) {
+fun main(bytes: [UInt8; 20]): EVM.Balance {
     let addr = EVM.EVMAddress(bytes: bytes)
     let bal = addr.balance()
+    return bal
 }
 ```
 
@@ -51,7 +52,7 @@ transaction(rlpEncodedTransaction: [UInt8], coinbaseBytes: [UInt8; 20]) {
         let coinbase = EVM.EVMAddress(bytes: coinbaseBytes)
         let result = EVM.run(tx: rlpEncodedTransaction, coinbase: coinbase)
         assert(
-            runResult.status == Status.successful,
+            runResult.status == EVM.Status.successful,
             message: "tx was not executed successfully."
         )
     }
