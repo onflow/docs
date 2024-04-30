@@ -299,7 +299,7 @@ transaction() {
         // and it is up to the developer to use this result however it suits their application
         assert(
             result.status == EVM.Status.successful,
-            message: "EVM call failed with status: ".concat(result.status)
+            message: "EVM call failed"
         )
     }
 }
