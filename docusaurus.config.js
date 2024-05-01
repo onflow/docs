@@ -216,10 +216,7 @@ const config = {
         // Plugin Options for loading OpenAPI files
         specs: [
           {
-            // restore after event streaming api is deployed to mainnet
-            // https://github.com/onflow/docs/issues/464
-            // spec: 'https://raw.githubusercontent.com/onflow/flow/master/openapi/access.yaml',
-            spec: 'https://raw.githubusercontent.com/onflow/flow/ec44c6891f5deea1811d3be42bb00181f30d0860/openapi/access.yaml',
+            spec: 'https://raw.githubusercontent.com/onflow/flow/master/openapi/access.yaml',
             route: '/http-api/',
           },
         ],
