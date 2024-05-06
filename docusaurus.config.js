@@ -298,7 +298,7 @@ const config = {
             className: 'h-8 desktop:p-1',
           },
           {
-            href: 'https://onflow.org/discord',
+            href: 'https://discord.gg/flow',
             html: '<img src="" alt="Discord" id="navbar-discord" class="box-content h-32 w-32"/><span class="p-2 desktop:hidden">Discord</span>',
             position: 'right',
             className: 'h-8 desktop:p-1',
@@ -452,7 +452,7 @@ const config = {
                 label: 'GitHub',
               },
               {
-                href: 'https://onflow.org/discord',
+                href: 'https://discord.gg/flow',
                 label: 'Discord',
               },
               {
