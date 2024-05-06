@@ -9,7 +9,7 @@ sidebar_position: 4
 Make sure to use `viem` version `2.9.6` or greater. This version contains flow EVM networks
 :::
 
-# Using Next.js and wagmi
+# Using Next.js and Wagmi
 
 This tutorial will guide you through creating a simple web application, connect to an EVM capable wallet and interact with the "HelloWorld" smart contract to get and set greetings. We will not dive into managing transactions.
 
@@ -21,8 +21,8 @@ This tutorial will guide you through creating a simple web application, connect 
 
 ## Step 1: Setting Up the Next.js Project
 
-This tutorial will be following [wagmi getting-started manual tutorial](https://wagmi.sh/react/getting-started)
-First, let's create a wagmi project named `flow-evm-wagmi`. We will use npm but you are welcome to use yarn or bun.
+This tutorial will be following [Wagmi getting-started manual tutorial](https://wagmi.sh/react/getting-started)
+First, let's create a Wagmi project named `flow-evm-wagmi`. We will use npm but you are welcome to use yarn or bun.
 
 ```bash
 npm create wagmi@latest
@@ -32,14 +32,14 @@ npm create wagmi@latest
 
 ```
  
-After wagmi automatic installation procedure. 
+After Wagmi automatic installation procedure. 
 
 ```bash
 cd flow-evm-wagmi
 npm install
 ```
 
-## Step 2: Configuring wagmi and Connecting the Wallet
+## Step 2: Configuring Wagmi and Connecting the Wallet
 
 Make sure you have Metamask installed and Flow network configured. [Metamask and Flow blockchain](/evm/using).
 Wagmi needs to know what networks to be aware of. Let's configure to use Flow Previewnet by updating config.ts file with the following:
@@ -58,7 +58,7 @@ export const config = createConfig({
 })
 ```
 
-By default wagmi configures many wallets, MetaMask, Coinbase Wallet, and WalletConnect as wallet providers. Above we simplify the code to only be interested in the Injected Provider, which we are interested in Metamask. Verify `page.tsx` code looks like the following. 
+By default Wagmi configures many wallets, MetaMask, Coinbase Wallet, and WalletConnect as wallet providers. Above we simplify the code to only be interested in the Injected Provider, which we are interested in Metamask. Verify `page.tsx` code looks like the following. 
 
 ```javascript
 'use client'
@@ -121,7 +121,7 @@ Create or edit the simple `page.tsx` file in the app directory to have better st
 Now, let's create a component to interact with the HelloWorld contract. Assume your contract is already deployed, and you have its address and ABI.
 
 - Create a new file, HelloWorld.ts, in the components directory.
-- Use wagmi's hooks to read from and write to the smart contract:
+- Use Wagmi's hooks to read from and write to the smart contract:
 
 ```javascript
 import { useState } from 'react'
@@ -255,6 +255,6 @@ import HelloWorld from './helloWorld'
 
 Now, you have a functional App that can connect to Metamask, display the current greeting from the "HelloWorld" smart contract, and update the greeting.
 
-Test it by updating the greeting, signing a transaction in your Metamask then wait a minute then refresh the website. Handling transactions are outside of this tutorial. We'll leave that as a future task. [Checkout wagmi documentation](https://wagmi.sh/react/getting-started)
+Test it by updating the greeting, signing a transaction in your Metamask then wait a minute then refresh the website. Handling transactions are outside of this tutorial. We'll leave that as a future task. [Checkout Wagmi documentation](https://wagmi.sh/react/getting-started)
 
 ![Update HelloWorld Greeting](./Update-HelloWorld-Greeting.gif)
