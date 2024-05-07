@@ -8,7 +8,7 @@
         {
           "source": "docs/",
           "destination": "build/core-contracts/flow-ft/",
-          "doCopy": true
+          "doCopy": false
         }
       ]
     }
@@ -22,7 +22,7 @@
         {
           "source": "docs/",
           "destination": "build/core-contracts/flow-nft/",
-          "doCopy": true
+          "doCopy": false
         }
       ]
     }

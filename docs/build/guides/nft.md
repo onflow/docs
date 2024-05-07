@@ -611,11 +611,11 @@ flow scripts execute cadence/scripts/GetNFTs.cdc 0x123
 
 Many NFT projects include metadata associated with the NFT, such as a name, description, or image. However, different projects might store this metadata in various formats. To ensure compatibility across the Flow ecosystem, Flow uses `MetadataViews` to standardize the representation of this metadata.
 
-There are two types of Metadata Views: NFT level and contract level. In this guide, we’ll show you how to implement the most basic display, but for a deeper dive into what is possible, check out the [MetadataViews API doc](../../build/core-contracts/flow-nft/MetdataViews/MetadataViews.md).
+There are two types of Metadata Views: NFT level and contract level. In this guide, we’ll show you how to implement the most basic display.
 
 ### NFT Metadata
 
-For the NFT metadata, you'll add a simple `MetadataView` called `Display`, which includes a `name`, `description`, and `thumbnail`. This format is common for many NFT projects. (For more details, refer to the [Display documentation](../../build/core-contracts/flow-nft/MetdataViews/MetadataViews.md#display)).
+For the NFT metadata, you'll add a simple `MetadataView` called `Display`, which includes a `name`, `description`, and `thumbnail`. This format is common for many NFT projects.
 
 Start by importing the `MetadataViews` contract into your `FooBar` contract:
 

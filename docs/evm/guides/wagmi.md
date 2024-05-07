@@ -1,13 +1,36 @@
 ---
-title: Wagmi
+title: Viem & Wagmi
 description: "Using Wagmi to interact with Solidity contract to EVM on Flow."
-sidebar_label: Wagmi
+sidebar_label: Viem & Wagmi
 sidebar_position: 4
 ---
 
 :::info
 Make sure to use `viem` version `2.9.6` or greater. This version contains flow EVM networks
 :::
+
+
+# Using viem
+
+Flow networks have been added to viem chain definitions [viem networks](https://github.com/wevm/viem/tree/main/src/chains/definitions). This allows for convenient flow network configuration when using viem and wagmi. 
+
+## Viem Flow Config
+
+The configuration below uses Flow Previewnet. Since this configuration is already in viem various properties are already set, like block explorer and json-rpc endpoint. See how this configuration is used in a nextjs wagmi web application below.
+
+```javascript 
+import { http, createConfig } from '@wagmi/core'
+import { flowPreviewnet } from '@wagmi/core/chains'
+import { injected } from '@wagmi/connectors'
+
+export const config = createConfig({
+  chains: [flowPreviewnet],
+  connectors: [injected()],
+  transports: {
+    [flowPreviewnet.id]: http(),
+  },
+})
+```
 
 # Using Next.js and Wagmi
 
