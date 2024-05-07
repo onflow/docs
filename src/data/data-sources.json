@@ -1,34 +1,6 @@
 [
   {
     "repository": {
-      "owner": "onflow",
-      "name": "flow-ft",
-      "branch": "master",
-      "data": [
-        {
-          "source": "docs/",
-          "destination": "build/core-contracts/flow-ft/",
-          "doCopy": true
-        }
-      ]
-    }
-  },
-  {
-    "repository": {
-      "owner": "onflow",
-      "name": "flow-nft",
-      "branch": "master",
-      "data": [
-        {
-          "source": "docs/",
-          "destination": "build/core-contracts/flow-nft/",
-          "doCopy": true
-        }
-      ]
-    }
-  },
-  {
-    "repository": {
       "owner": "ph0ph0",
       "name": "Get-The-Flow-Down",
       "branch": "master",
