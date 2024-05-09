@@ -289,8 +289,14 @@ This is the recommended way to start your node for the first time.
 ```shell ExampleDynamicStartupFlags
   ... \
   --dynamic-startup-access-address=secure.mainnet.nodes.onflow.org:9001 \
-  --dynamic-startup-access-publickey=28a0d9edd0de3f15866dfe4aea1560c4504fe313fc6ca3f63a63e4f98d0e295144692a58ebe7f7894349198613f65b2d960abf99ec2625e247b1c78ba5bf2eae
+  --dynamic-startup-access-publickey=28a0d9edd0de3f15866dfe4aea1560c4504fe313fc6ca3f63a63e4f98d0e295144692a58ebe7f7894349198613f65b2d960abf99ec2625e247b1c78ba5bf2eae \
+  --dynamic-startup-epoch-phase=EpochPhaseStaking
 ```
+
+> Adjust the `dynamic-startup-epoch-phase` as per the current network epoch phase to one of `EpochPhaseStaking` or `EpochPhaseSetup` or `EpochPhaseCommitted`
+> (if unspecified, it will default to `EpochPhaseSetup`)
+
+
 4. Start your node (see [guide](./node-setup#start-the-node))
 
 <Callout type="info">
