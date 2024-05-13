@@ -1,26 +1,25 @@
 ---
-title: Using Floudry with Flow
+title: Using Foudry with Flow
 description: "Using Foundry to deploy a Solidity contract to EVM on Flow."
 sidebar_label: Foundry
 sidebar_position: 5
 ---
 
-# Using Floudry with Flow
+# Using Foudry with Flow
 
 Foundry is a suite of development tools that simplifies the process of developing and deploying Solidity contracts to EVM networks. This guide will walk you through the process of deploying a Solidity contract to Flow EVM using Foundry tools. You can check out the official Foundry docs [here](https://book.getfoundry.sh/).
 
 In this guide, we'll deploy an ERC-20 token contract to Flow EVM using Foundry. We'll cover:
-
 * Developing and testing a basic ERC-20 contract
 * Deploying the contract to Flow EVM using Foundry tools
-* Querying state
-* Mutating state by sending transactions
+* Querying PreviewNet state
+* Mutating PreviewNet state by sending transactions
 
 ## Overview
 
 To use Flow across all Foundry tools you need to:
 
-1. Provide the Flow EVM RPC URL to the Foundry tools:
+1. Provide the Flow EVM RPC URL to the command you are using:
 
     ```shell
     --rpc-url https://previewnet.evm.nodes.onflow.org
@@ -28,33 +27,33 @@ To use Flow across all Foundry tools you need to:
 
 2. Use the `--legacy` flag to disable [EIP-1559](https://eips.ethereum.org/EIPS/eip-1559) style transactions. Flow will support EIP-1559 soon and this flag won't be needed.
 
-As an example, we'll show you how to deploy a fungible token contract to Flow EVM using Foundry.
+As an example, we'll show you how to deploy a fungible token contract to Flow EVM using Foundry. You will see how the above flags are used in practice.
 
-## Example: Deploying an ERC-20 Fungible Token to Flow EVM
+## Example: Deploying an ERC-20 Token Contract to Flow EVM
 
-ERC-20 tokens are the most common type of tokens on Ethereum. We'll use [OpenZeppelin](https://www.openzeppelin.com/) starter templates with Foundry. We'll then create a new account using the PreviewNet faucet and deploy the ERC-20 token contract to Flow EVM. We then demonstrate how to interact with the deployed contract.
+ERC-20 tokens are the most common type of tokens on Ethereum. We'll use [OpenZeppelin](https://www.openzeppelin.com/) starter templates with Foundry on Flow PreviewNet to deploy our own token called `MyToken`.
 
 ### Installation
 
-The best way to install Foundry, is to use the `foundryup` CLI tool. You can install it using the following command:
+The best way to install Foundry, is to use the `foundryup` CLI tool. You can get it using the following command:
 
 ```shell
 curl -L https://foundry.paradigm.xyz | bash
 ```
 
-To install Foundry, you can then:
+Install the tools:
 
 ```shell
 foundryup
 ```
 
-This will install the Foundry tool set: `forge`, `cast`, `anvil`, and  `chisel`.
+This will install the Foundry tool suite: `forge`, `cast`, `anvil`, and  `chisel`.
 
 Check out the official [Installation](https://book.getfoundry.sh/getting-started/installation) guide for more information about different platforms or installing specific versions.
 
 ### Wallet Setup
 
-We first need to create a key pair for our EVM account. You can do this using the `cast` tool:
+We first need to generate a key pair for our EVM account. We can do this using the `cast` tool:
 
 ```shell
 cast wallet new
@@ -62,10 +61,10 @@ cast wallet new
 
 `cast` will print the private key and address of the new account. We can then paste the account address into the [Faucet](https://previewnet-faucet.onflow.org/fund-account) to fund it with some PreviewNet FLOW tokens.
 
-You can check the balance of the account after funding:
+You can verify the balance of the account after funding. Replace `$YOUR_ADDRESS` with the address of the account you funded:
 
 ```shell
-cast balance --ether --rpc-url https://previewnet.evm.nodes.onflow.org <0xAddress>
+cast balance --ether --rpc-url https://previewnet.evm.nodes.onflow.org $YOUR_ADDRESS
 ```
 
 ### Project Setup
@@ -73,8 +72,8 @@ cast balance --ether --rpc-url https://previewnet.evm.nodes.onflow.org <0xAddres
 First, create a new directory for your project:
 
 ```shell
-mkdir my-erc20-token
-cd my-erc20-token
+mkdir mytoken
+cd mytoken
 ```
 
 We can use `init` to initialize a new project:
@@ -83,13 +82,15 @@ We can use `init` to initialize a new project:
 forge init
 ```
 
-This will create a test contract called `Counter` in the `contracts` directory with associated tests and deployment scripts. We can replace this with our own ERC-20 contract. To verify the initial setup, you can run the tests:
+This will create a test contract called `Counter` in the `contracts` directory with associated tests and deployment scripts. We can replace this with our own ERC-20 contract. To verify the initial setup, you can run the tests for `Counter`:
 
 ```shell
 forge test
 ```
 
-### Writing and Testing the ERC-20 Token Contract
+The tests should pass.
+
+### Writing the ERC-20 Token Contract
 
 We'll use the OpenZeppelin ERC-20 contract template. We can start by adding OpenZeppelin to our project:
 
@@ -111,7 +112,11 @@ contract MyToken is ERC20 {
 }
 ```
 
-We also need to update the test file. Rename `test/Counter.t.sol` to `test/MyToken.t.sol` and replace the contents with the following:
+Before compiling, we also need to update the test file.
+
+### Testing
+
+Rename `test/Counter.t.sol` to `test/MyToken.t.sol` and replace the contents with the following:
 
 ```solidity
 pragma solidity ^0.8.20;
@@ -181,21 +186,23 @@ contract MyTokenTest is Test {
 }
 ```
 
-You can now make sure everything is alright:
+You can now make sure everything is okay by compiling the contracts:
 
 ```shell
 forge compile
 ```
 
-We can also run the tests. They should all succeed:
+We can also run the tests:
 
 ```shell
 forge test
 ```
 
+They should all succeed.
+
 ### Deploying to Flow PreviewNet
 
-We can now deploy `MyToken` using the `forge create` command. We need to provide the RPC URL, private key from a funded account using the faucet, and constructor arguments which is the inital supply in this case. We can use the `--legacy` flag to disable EIP-1559 style transactions. Replace `$DEPLOYER_PRIVATE_KEY` with the private key of the account you created earlier:
+We can now deploy `MyToken` using the `forge create` command. We need to provide the RPC URL, private key from a funded account using the faucet, and constructor arguments that is the inital supply in this case. We need to use the `--legacy` flag to disable EIP-1559 style transactions. Replace `$DEPLOYER_PRIVATE_KEY` with the private key of the account you created earlier:
 
 ```shell
 forge create --rpc-url https://previewnet.evm.nodes.onflow.org \
@@ -205,9 +212,9 @@ forge create --rpc-url https://previewnet.evm.nodes.onflow.org \
     src/MyToken.sol:MyToken
 ```
 
-The above will return the newly deployed contract address.
+The above will print the deployed contract address. We'll use it in the next section to interact with the contract.
 
-### Interacting with Deployed Contracts
+### Querying PreviewNet State
 
 Based on the given constructor arguments, the initial supply of the token is `42,000,000`. We can check the `MyToken` balance of the contract owner. Replace `$DEPLOYED_MYTOKEN_ADDRESS` with the address of the deployed contract and `$DEPLOYER_ADDRESS` with the address of the account you funded earlier:
 
@@ -218,7 +225,7 @@ cast balance \
     $DEPLOYER_ADDRESS
 ```
 
-This should return the initial supply of the token passed during deployment. You can also call functions directly in the contract:
+This should return the initial supply of the token specified during deployment. We can also call the associated function directly in the contract:
 
 ```shell
 cast call $DEPLOYED_MYTOKEN_ADDRESS \
@@ -235,7 +242,9 @@ cast call $DEPLOYED_MYTOKEN_ADDRESS \
     "symbol()(string)"
 ```
 
-Let's create a second account and move some tokens using a transaction. You can use `cast wallet new` to create a new account. You don't need to fund it to receive tokens. Replace `$NEW_ADDRESS` with the address of the new account:
+### Sending Transactions
+
+Let's create a second account and move some tokens using a transaction. You can use `cast wallet new` to create a new test account. You don't need to fund it to receive tokens. Replace `$NEW_ADDRESS` with the address of the new account:
 
 ```shell
 cast send $DEPLOYED_MYTOKEN_ADDRESS \
