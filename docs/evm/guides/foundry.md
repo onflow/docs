@@ -7,7 +7,7 @@ sidebar_position: 5
 
 # Using Foudry with Flow
 
-Foundry is a suite of development tools that simplifies the process of developing and deploying Solidity contracts to EVM networks. This guide will walk you through the process of deploying a Solidity contract to Flow EVM using Foundry tools. You can check out the official Foundry docs [here](https://book.getfoundry.sh/).
+Foundry is a suite of development tools that simplifies the process of developing and deploying Solidity contracts to EVM networks. This guide will walk you through the process of deploying a Solidity contract to Flow EVM using the Foundry development toolchain. You can check out the official Foundry docs [here](https://book.getfoundry.sh/).
 
 In this guide, we'll deploy an ERC-20 token contract to Flow EVM using Foundry. We'll cover:
 * Developing and testing a basic ERC-20 contract
@@ -48,6 +48,8 @@ foundryup
 ```
 
 This will install the Foundry tool suite: `forge`, `cast`, `anvil`, and  `chisel`.
+
+You may need to reload your shell after `foundryup` installation.
 
 Check out the official [Installation](https://book.getfoundry.sh/getting-started/installation) guide for more information about different platforms or installing specific versions.
 
