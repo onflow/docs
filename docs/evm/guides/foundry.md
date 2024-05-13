@@ -1,17 +1,38 @@
 ---
-title: Flow Floudry Guide
+title: Using Floudry with Flow
 description: "Using Foundry to deploy a Solidity contract to EVM on Flow."
 sidebar_label: Foundry
 sidebar_position: 5
 ---
 
-# Flow Foundry Guide
+# Using Floudry with Flow
 
-Foundry is a suite of development tools that simplifies the process of developing and deploying Solidity contracts to EVM networks. This guide will walk you through the process of deploying a Solidity contract to Flow EVM using Foundry. You can check out the Foundry docs [here](https://book.getfoundry.sh/).
+Foundry is a suite of development tools that simplifies the process of developing and deploying Solidity contracts to EVM networks. This guide will walk you through the process of deploying a Solidity contract to Flow EVM using Foundry tools. You can check out the official Foundry docs [here](https://book.getfoundry.sh/).
 
-## Prerequisites
+In this guide, we'll deploy an ERC-20 token contract to Flow EVM using Foundry. We'll cover:
 
-You need to first install Foundry. The next step is to set up a Flow EVM account and get some FLOW tokens to deploy your contracts. You can get FLOW tokens from the Flow PreviewNet Faucet.
+* Developing and testing a basic ERC-20 contract
+* Deploying the contract to Flow EVM using Foundry tools
+* Querying state
+* Mutating state by sending transactions
+
+## Overview
+
+To use Flow across all Foundry tools you need to:
+
+1. Provide the Flow EVM RPC URL to the Foundry tools:
+
+    ```shell
+    --rpc-url https://previewnet.evm.nodes.onflow.org
+    ```
+
+2. Use the `--legacy` flag to disable [EIP-1559](https://eips.ethereum.org/EIPS/eip-1559) style transactions. Flow will support EIP-1559 soon and this flag won't be needed.
+
+As an example, we'll show you how to deploy a fungible token contract to Flow EVM using Foundry.
+
+## Example: Deploying an ERC-20 Fungible Token to Flow EVM
+
+ERC-20 tokens are the most common type of tokens on Ethereum. We'll use [OpenZeppelin](https://www.openzeppelin.com/) starter templates with Foundry. We'll then create a new account using the PreviewNet faucet and deploy the ERC-20 token contract to Flow EVM. We then demonstrate how to interact with the deployed contract.
 
 ### Installation
 
@@ -46,24 +67,6 @@ You can check the balance of the account after funding:
 ```shell
 cast balance --ether --rpc-url https://previewnet.evm.nodes.onflow.org <0xAddress>
 ```
-
-## Interacting with PreviewNet using Foundry
-
-To use Flow across all Foundry tools you need to:
-
-1. Provide the Flow EVM RPC URL to the Foundry tools:
-
-    ```shell
-    --rpc-url https://previewnet.evm.nodes.onflow.org
-    ```
-
-2. Use the `--legacy` flag to disable [EIP-1559](https://eips.ethereum.org/EIPS/eip-1559) style transactions. Flow will support EIP-1559 soon.
-
-As an example, we'll show you how to deploy a fungible token contract to Flow EVM using Foundry.
-
-## Example: Deploying an ERC-20 Fungible Token to Flow EVM
-
-ERC-20 tokens are the most common type of tokens on Ethereum. We'll use [OpenZeppelin](https://www.openzeppelin.com/) starter templates with Foundry.
 
 ### Project Setup
 
