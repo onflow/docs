@@ -1,11 +1,11 @@
 ---
-title: Using Foudry with Flow
+title: Using Foundry with Flow
 description: "Using Foundry to deploy a Solidity contract to EVM on Flow."
 sidebar_label: Foundry
 sidebar_position: 5
 ---
 
-# Using Foudry with Flow
+# Using Foundry with Flow
 
 Foundry is a suite of development tools that simplifies the process of developing and deploying Solidity contracts to EVM networks. This guide will walk you through the process of deploying a Solidity contract to Flow EVM using the Foundry development toolchain. You can check out the official Foundry docs [here](https://book.getfoundry.sh/).
 
@@ -84,7 +84,7 @@ We can use `init` to initialize a new project:
 forge init
 ```
 
-This will create a test contract called `Counter` in the `contracts` directory with associated tests and deployment scripts. We can replace this with our own ERC-20 contract. To verify the initial setup, you can run the tests for `Counter`:
+This will create a contract called `Counter` in the `contracts` directory with associated tests and deployment scripts. We can replace this with our own ERC-20 contract. To verify the initial setup, you can run the tests for `Counter`:
 
 ```shell
 forge test
@@ -113,6 +113,8 @@ contract MyToken is ERC20 {
     }
 }
 ```
+
+The above is a basic ERC-20 token with the name `MyToken` and symbol `MyT`. It also mints the specified amount of tokens to the contract deployer. The amount is passed as a constructor argument during deployment.
 
 Before compiling, we also need to update the test file.
 
@@ -194,7 +196,7 @@ You can now make sure everything is okay by compiling the contracts:
 forge compile
 ```
 
-We can also run the tests:
+Run the tests:
 
 ```shell
 forge test
@@ -204,7 +206,7 @@ They should all succeed.
 
 ### Deploying to Flow PreviewNet
 
-We can now deploy `MyToken` using the `forge create` command. We need to provide the RPC URL, private key from a funded account using the faucet, and constructor arguments that is the inital supply in this case. We need to use the `--legacy` flag to disable EIP-1559 style transactions. Replace `$DEPLOYER_PRIVATE_KEY` with the private key of the account you created earlier:
+We can now deploy `MyToken` using the `forge create` command. We need to provide the RPC URL, private key from a funded account using the faucet, and constructor arguments that is the inital mint amount in this case. We need to use the `--legacy` flag to disable EIP-1559 style transactions. Replace `$DEPLOYER_PRIVATE_KEY` with the private key of the account you created earlier:
 
 ```shell
 forge create --rpc-url https://previewnet.evm.nodes.onflow.org \
@@ -218,7 +220,7 @@ The above will print the deployed contract address. We'll use it in the next sec
 
 ### Querying PreviewNet State
 
-Based on the given constructor arguments, the initial supply of the token is `42,000,000`. We can check the `MyToken` balance of the contract owner. Replace `$DEPLOYED_MYTOKEN_ADDRESS` with the address of the deployed contract and `$DEPLOYER_ADDRESS` with the address of the account you funded earlier:
+Based on the given constructor arguments, the deployer should own `42,000,000 MyT`. We can check the `MyToken` balance of the contract owner. Replace `$DEPLOYED_MYTOKEN_ADDRESS` with the address of the deployed contract and `$DEPLOYER_ADDRESS` with the address of the account you funded earlier:
 
 ```shell
 cast balance \
@@ -227,7 +229,7 @@ cast balance \
     $DEPLOYER_ADDRESS
 ```
 
-This should return the initial supply of the token specified during deployment. We can also call the associated function directly in the contract:
+This should return the amount specified during deployment. We can also call the associated function directly in the contract:
 
 ```shell
 cast call $DEPLOYED_MYTOKEN_ADDRESS \
@@ -236,7 +238,7 @@ cast call $DEPLOYED_MYTOKEN_ADDRESS \
     $DEPLOYER_ADDRESS
 ```
 
-Or query other data like the token symbol:
+We can query other data like the token symbol:
 
 ```shell
 cast call $DEPLOYED_MYTOKEN_ADDRESS \
@@ -264,4 +266,13 @@ cast balance \
     --rpc-url https://previewnet.evm.nodes.onflow.org \
     --erc20 $DEPLOYED_MYTOKEN_ADDRESS \
     $NEW_ADDRESS
+```
+
+The deployer should also own less tokens now:
+
+```shell
+cast balance \
+    --rpc-url https://previewnet.evm.nodes.onflow.org \
+    --erc20 $DEPLOYED_MYTOKEN_ADDRESS \
+    $DEPLOYER_ADDRESS
 ```
