@@ -90,4 +90,9 @@ copyRepoFilesToDest() {
     # rsync -av --include='*/' --include='*.mdx' --include='*.md' --include='*.pdf' --include='*.png' --include='*.gif' --include='*.jpg' --exclude='*' --exclude='flow-docs.json' "${sourceFolderName}/" "${destFolderName}/"
 }
 
+renameEcosystemOverview() {
+    sed -i'' 's/Get the Flow Down - Flow Learning Resources/Ecosystem Overview/g' ./docs/ecosystem/overview/README.md
+}
+
 cloneDocReposToDest
+renameEcosystemOverview

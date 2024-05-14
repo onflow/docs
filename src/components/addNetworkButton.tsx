@@ -37,7 +37,7 @@ export const AddNetworkButton = () => {
         params: [
           {
             chainId: '0x286',
-            chainName: 'Previewnet',
+            chainName: 'Flow Previewnet',
             rpcUrls: ['https://previewnet.evm.nodes.onflow.org'],
             iconUrls: [
               'https://assets-global.website-files.com/5f734f4dbd95382f4fdfa0ea/65b016be9b9cf0a402a67a38_ico-flow-crescendo.png',

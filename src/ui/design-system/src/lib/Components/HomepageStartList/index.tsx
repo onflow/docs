@@ -18,7 +18,7 @@ const homepageData: Record<string, HomepageStartItemProps> = {
     icon: 'start-here',
   },
   'flow-quest': {
-    link: 'https://flownaut.ecdao.org/en',
+    link: 'https://arcade.ecdao.org/',
     icon: 'path-quest',
   },
   'lang-reference': {
@@ -41,7 +41,7 @@ const homepagePillData: Record<string, HomepagePillItemsProps> = {
     subText: 'Check it out',
   },
   'developer-chat': {
-    link: 'https://onflow.org/discord',
+    link: 'https://discord.gg/flow',
     icon: 'developer-chat',
     text: 'Developers Chat',
     subText: 'Chat with devs',

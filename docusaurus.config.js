@@ -216,10 +216,7 @@ const config = {
         // Plugin Options for loading OpenAPI files
         specs: [
           {
-            // restore after event streaming api is deployed to mainnet
-            // https://github.com/onflow/docs/issues/464
-            // spec: 'https://raw.githubusercontent.com/onflow/flow/master/openapi/access.yaml',
-            spec: 'https://raw.githubusercontent.com/onflow/flow/ec44c6891f5deea1811d3be42bb00181f30d0860/openapi/access.yaml',
+            spec: 'https://raw.githubusercontent.com/onflow/flow/master/openapi/access.yaml',
             route: '/http-api/',
           },
         ],
@@ -301,7 +298,7 @@ const config = {
             className: 'h-8 desktop:p-1',
           },
           {
-            href: 'https://onflow.org/discord',
+            href: 'https://discord.gg/flow',
             html: '<img src="" alt="Discord" id="navbar-discord" class="box-content h-32 w-32"/><span class="p-2 desktop:hidden">Discord</span>',
             position: 'right',
             className: 'h-8 desktop:p-1',
@@ -455,7 +452,7 @@ const config = {
                 label: 'GitHub',
               },
               {
-                href: 'https://onflow.org/discord',
+                href: 'https://discord.gg/flow',
                 label: 'Discord',
               },
               {
@@ -627,6 +624,29 @@ const config = {
         },
       },
     ],
+    function InsertInfoTagForCadence() {
+      return {
+        name: 'docusaurus-plugin-insert-info-tags',
+        configureWebpack(config, isServer, utils) {
+          return {
+            module: {
+              rules: [
+                {
+                  test: /\.md$/,
+                  use: [
+                    {
+                      loader: require.resolve(
+                        './src/plugins/insert-info-tags-loader.js',
+                      ),
+                    },
+                  ],
+                },
+              ],
+            },
+          };
+        },
+      };
+    },
   ],
   stylesheets: [
     {

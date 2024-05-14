@@ -8,7 +8,7 @@
         {
           "source": "docs/",
           "destination": "build/core-contracts/flow-ft/",
-          "doCopy": true
+          "doCopy": false
         }
       ]
     }
@@ -22,6 +22,20 @@
         {
           "source": "docs/",
           "destination": "build/core-contracts/flow-nft/",
+          "doCopy": false
+        }
+      ]
+    }
+  },
+  {
+    "repository": {
+      "owner": "ph0ph0",
+      "name": "Get-The-Flow-Down",
+      "branch": "master",
+      "data": [
+        {
+          "source": "",
+          "destination": "ecosystem/overview/",
           "doCopy": true
         }
       ]

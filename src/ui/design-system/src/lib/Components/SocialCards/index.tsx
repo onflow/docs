@@ -6,7 +6,7 @@ const socialCardData = [
     icon: 'discord',
     title: 'Discord',
     subText: 'Join Server',
-    url: 'https://onflow.org/discord',
+    url: 'https://discord.gg/flow',
   },
   {
     icon: 'x.com',

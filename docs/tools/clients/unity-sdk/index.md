@@ -81,4 +81,4 @@ Supported Platforms: Windows, OSX, Android
 
 Email: unity-sdk-support@dapperlabs.com
 
-Discord: https://onflow.org/discord
+Discord: https://discord.gg/flow
