@@ -6,7 +6,7 @@ sidebar_position: 3
 
 This is an opinionated list of best practices Cadence developers should follow to write more secure Cadence code.
 
-Some practices listed below might overlap with advice in the [Cadence Anti-Patterns](./design-patterns.md) section, which is a recommended read as well.
+Some practices listed below might overlap with advice in the [Cadence Anti-Patterns](https://cadence-lang.org/docs/1.0/design-patterns) section, which is a recommended read as well.
 
 ## References
 
@@ -26,7 +26,7 @@ Always [borrow](https://cadence-lang.org/docs/language/capabilities) with the sp
 
 ## Auth Accounts
 
-Access to an `AuthAccount` gives full access to the account's storage, keys, and contracts. Therefore, [avoid using AuthAccount](./anti-patterns.md#avoid-using-authaccount-as-a-function-parameter) as a function parameter unless absolutely necessary.
+Access to an `AuthAccount` gives full access to the account's storage, keys, and contracts. Therefore, [avoid using AuthAccount](https://cadence-lang.org/docs/1.0/anti-patterns#avoid-using-authaccount-as-a-function-parameter) as a function parameter unless absolutely necessary.
 
 It is preferable to use capabilities over direct `AuthAccount` storage when exposing account data. Using capabilities allows the revocation of access by unlinking and limits the access to a single value with a certain set of functionality – access to an `AuthAccount` gives full access to the whole storage, as well as key and contract management.
 
