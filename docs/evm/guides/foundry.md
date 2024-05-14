@@ -206,7 +206,7 @@ They should all succeed.
 
 ### Deploying to Flow PreviewNet
 
-We can now deploy `MyToken` using the `forge create` command. We need to provide the RPC URL, private key from a funded account using the faucet, and constructor arguments that is the inital mint amount in this case. We need to use the `--legacy` flag to disable EIP-1559 style transactions. Replace `$DEPLOYER_PRIVATE_KEY` with the private key of the account you created earlier:
+We can now deploy `MyToken` using the `forge create` command. We need to provide the RPC URL, private key from a funded account using the faucet, and constructor arguments that is the initial mint amount in this case. We need to use the `--legacy` flag to disable EIP-1559 style transactions. Replace `$DEPLOYER_PRIVATE_KEY` with the private key of the account you created earlier:
 
 ```shell
 forge create --rpc-url https://previewnet.evm.nodes.onflow.org \
