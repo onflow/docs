@@ -3,7 +3,7 @@ title: Protocol State Bootstrapping
 description: How to bootstrap a new or existing node
 ---
 
-When a node joins the network, it bootstraps its local database using a trusted initialization file, called a `Root Snapshot`.
+When a node joins the network, it bootstraps its local database using a trusted initialization file, called a Root Snapshot.
 Most node operators will use the `Spork Root Snapshot` file distributed during the [spork process](./spork.md).
 This page will explain how the bootstrapping process works and how to use it in general.
 
@@ -20,28 +20,28 @@ For guides covering specific bootstrapping workflows, see:
 
 When a node starts up, it will first check its database status. 
 If its local database is already bootstrapped, it will start up and begin operating.
-If its local database is not already bootstrapped, it will attempt to bootstrap using a `Root Snapshot`.
+If its local database is not already bootstrapped, it will attempt to bootstrap using a Root Snapshot.
 
-There are two sources for a non-bootstrapped node to obtain a `Root Snapshot`:
-- Root Snapshot file in the `bootstrap` folder
-- Dynamic Startup flags
+There are two sources for a non-bootstrapped node to obtain a Root Snapshot:
+- Root Snapshot file in the `bootstrap` folder, which is used first if it exists.
+- Dynamic Startup flags, which are only used if no Root Snapshot file exists.
 
 ## Using a Root Snapshot File
 
-Using a `Root Snapshot` file is more flexible but more involved for operators compared to Dynamic Startup.
+Using a Root Snapshot file is more flexible but more involved for operators compared to Dynamic Startup.
 
-A file in `$BOOTDIR/public-root-information` named `root-protocol-state-snapshot.json` will be read and used as the `Root Snapshot` for bootstrapping the database.
+A file in `$BOOTDIR/public-root-information` named `root-protocol-state-snapshot.json` will be read and used as the Root Snapshot for bootstrapping the database.
 
 ### Instructions
 
-1. Obtain a `Root Snapshot` file (see below for options)
+1. Obtain a Root Snapshot file (see below for options)
 2. Ensure your node is stopped and does not already have a bootstrapped database.
-3. Move the `Root Snapshot` file to `$BOOTDIR/public-root-information/root-protocol-state-snapshot.json`, where `$BOOTDIR` is the value passed to the `--bootstrapdir` flag.
+3. Move the Root Snapshot file to `$BOOTDIR/public-root-information/root-protocol-state-snapshot.json`, where `$BOOTDIR` is the value passed to the `--bootstrapdir` flag.
 4. Start your node. 
 
 ### Obtain Root Snapshot File using Flow CLI
 
-[Flow CLI](../../../tools/flow-cli/index.md) supports downloading the most recently sealed `Root Snapshot` from an Access Node using the [`flow snapshot save`](../../../tools/flow-cli/utils/snapshot-save.md) command.
+[Flow CLI](../../../tools/flow-cli/index.md) supports downloading the most recently sealed Root Snapshot from an Access Node using the [`flow snapshot save`](../../../tools/flow-cli/utils/snapshot-save.md) command.
 
 When using this method: 
 - ensure you connect to an Access Node you operate or trust
@@ -49,11 +49,11 @@ When using this method:
 
 ### Obtain Root Snapshot File from Protocol database
 
-If you have an existing node actively participating in the network, you can obtain a `Root Snapshot` using its database.
+If you have an existing node actively participating in the network, you can obtain a Root Snapshot using its database.
 
 1. Obtain a copy of the Flow `util` tool and ensure it is in your `$PATH`. This tool is distributed during sporks, or you can build a copy from [here](https://github.com/onflow/flow-go/tree/master/cmd/util).
 2. Stop the existing node.
-3. Construct a `Root Snapshot` using the `util` tool. The tool will print the JSON representation to STDOUT, so you can redirect the output to a file.
+3. Construct a Root Snapshot using the `util` tool. The tool will print the JSON representation to STDOUT, so you can redirect the output to a file.
 
 Replace `$DATADIR` with the value passed to the `--datadir` flag. You can specify the desired reference block for the snapshot.
 
@@ -67,16 +67,16 @@ Retrieve the snapshot for a specific finalized block height:
 util read-protocol-state snapshot -d $DATADIR --height 12345 > specific-height-snapshot.json
 ```
 
-4. On the node you want to bootstrap, move the `Root Snapshot` file to `$BOOTDIR/public-root-information/root-protocol-state-snapshot.json`, where `$BOOTDIR` is the value passed to the `--bootstrapdir` flag.
+4. On the node you want to bootstrap, move the Root Snapshot file to `$BOOTDIR/public-root-information/root-protocol-state-snapshot.json`, where `$BOOTDIR` is the value passed to the `--bootstrapdir` flag.
 5. Start your node. 
 
 ## Using Dynamic Startup
 
-Dynamic Startup is a startup configuration where your node will download a `Root Snapshot` and use it to bootstrap its local database.
+Dynamic Startup is a startup configuration where your node will download a Root Snapshot and use it to bootstrap its local database.
 Dynamic Startup is designed for nodes which are newly joining the network and need to [bootstrap from within a specific epoch phase](./node-bootstrap#timing), but can be used for other use-cases.
 
 <Callout type="info">
-   If your node already has a bootstrapped database, or has a `Root Snapshot` file in the `$BOOTSTRAPDIR` folder,
+   If your node already has a bootstrapped database, or has a Root Snapshot file in the `$BOOTSTRAPDIR` folder,
    these will take precedence and Dynamic Startup flags will be ignored.
 </Callout>
 
@@ -84,9 +84,9 @@ When using Dynamic Startup, we specify:
 1. An Access Node to retrieve the snapshot from.
 2. A target epoch counter and phase to wait for.
 
-After startup, your node will periodically download a candidate `Root Snapshot` from the specified Access Node. 
-If the `Root Snapshot`'s reference block is either **within or after** the specified epoch phase, the node will bootstrap using that snapshot.
-Otherwise the node will continue polling until it receives a valid `Root Snapshot`.
+After startup, your node will periodically download a candidate Root Snapshot from the specified Access Node. 
+If the Root Snapshot's reference block is either **within or after** the specified epoch phase, the node will bootstrap using that snapshot.
+Otherwise the node will continue polling until it receives a valid Root Snapshot.
 
 See the [Epochs Schedule](./../../staking/03-schedule.md) for additional context on epoch phases.
 
@@ -96,7 +96,7 @@ Two flags are used to specify which Access Node to connect to:
 - `--dynamic-startup-access-address` - the Access Node's secure GRPC server address
 - `--dynamic-startup-access-publickey` - the Access Node's networking public key
 
-Select an Access Node you operate or trust to provide the `Root Snapshot`, and populate these two flags.
+Select an Access Node you operate or trust to provide the Root Snapshot, and populate these two flags.
 
 For example, to use the Access Node maintained by the Flow Foundation for Dynamic Startup, specify the following flags:
 ```shell ExampleDynamicStartupFlags
@@ -113,7 +113,7 @@ Two flags are used to specify when to bootstrap:
 
 #### Bootstrapping Immediately
 
-If you would like to bootstrap immediately, using the first `Root Snapshot` you receive, then specify a past epoch counter:
+If you would like to bootstrap immediately, using the first Root Snapshot you receive, then specify a past epoch counter:
 ```shell ExampleDynamicStartupFlags
   ... \
   --dynamic-startup-epoch-phase=1
@@ -124,7 +124,7 @@ You may omit the `--dynamic-startup-epoch-phase` flag.
 
 #### Example 1
 Use Dynamic Startup to bootstrap your node at the `Epoch Setup Phase` of the current epoch (desired behaviour for newly joining nodes):
-1. Ensure your database is not already bootstrapped, and no `Root Snapshot` file is present in the `$BOOTSTRAPDIR` folder.
+1. Ensure your database is not already bootstrapped, and no Root Snapshot file is present in the `$BOOTSTRAPDIR` folder.
 2. Add necessary flags to node startup command.
 For example, using the Flow Foundation Access Node:
 ```sh
@@ -135,8 +135,8 @@ For example, using the Flow Foundation Access Node:
 3. Start your node.
 
 #### Example 2
-Use Dynamic Startup to bootstrap your node immediately, using the most recent `Root Snapshot`:
-1. Ensure your database is not already bootstrapped, and no `Root Snapshot` file is present in the `$BOOTSTRAPDIR` folder.
+Use Dynamic Startup to bootstrap your node immediately, using the most recent Root Snapshot:
+1. Ensure your database is not already bootstrapped, and no Root Snapshot file is present in the `$BOOTSTRAPDIR` folder.
 2. Add necessary flags to node startup command.
 For example, using the Flow Foundation Access Node:
 ```sh
