@@ -231,7 +231,7 @@ export default function App() {
       cadence: `
         import Profile from 0xProfile
 
-        pub fun main(address: Address): Profile.ReadOnly? {
+        access(all) fun main(address: Address): Profile.ReadOnly? {
           return Profile.read(address)
         }
       `,
@@ -285,7 +285,7 @@ await fcl.query({
   cadence: `
     import Profile from 0xProfile
 
-    pub fun main(address: Address): Profile.ReadOnly? {
+    access(all) fun main(address: Address): Profile.ReadOnly? {
       return Profile.read(address)
     }
   `,
@@ -369,7 +369,7 @@ export default function App() {
       cadence: `
         import Profile from 0xProfile
 
-        pub fun main(address: Address): Profile.ReadOnly? {
+        access(all) fun main(address: Address): Profile.ReadOnly? {
           return Profile.read(address)
         }
       `,
@@ -506,7 +506,7 @@ export default function App() {
       cadence: `
         import Profile from 0xProfile
 
-        pub fun main(address: Address): Profile.ReadOnly? {
+        access(all) fun main(address: Address): Profile.ReadOnly? {
           return Profile.read(address)
         }
       `,

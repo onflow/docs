@@ -60,7 +60,7 @@ It contains the finalized identity table for the upcoming epoch,
 as well as timing information for phase changes.
 
 ```cadence
-pub event EpochSetup (
+access(all) event EpochSetup (
 
     /// The counter for the upcoming epoch. Must be one greater than the
     /// counter for the current epoch.
@@ -104,7 +104,7 @@ from the Epoch Setup phase to the Epoch Commit phase.
 It is emitted only when all preparation for the upcoming epoch (QC and DKG) has been completed.
 
 ```cadence
-pub event EpochCommit (
+access(all) event EpochCommit (
 
     /// The counter for the upcoming epoch. Must be equal to the counter in the
     /// previous EpochSetup event.
@@ -130,43 +130,43 @@ and previous epochs. Metadata for all historical epochs is stored permenantely
 in the Epoch Smart Contract's storage.
 
 ```cadence
-pub struct EpochMetadata {
+access(all) struct EpochMetadata {
 
     /// The identifier for the epoch
-    pub let counter: UInt64
+    access(all) let counter: UInt64
 
     /// The seed used for generating the epoch setup
-    pub let seed: String
+    access(all) let seed: String
 
     /// The first view of this epoch
-    pub let startView: UInt64
+    access(all) let startView: UInt64
 
     /// The last view of this epoch
-    pub let endView: UInt64
+    access(all) let endView: UInt64
 
     /// The last view of the staking auction
-    pub let stakingEndView: UInt64
+    access(all) let stakingEndView: UInt64
 
     /// The total rewards that are paid out for the epoch
-    pub var totalRewards: UFix64
+    access(all) var totalRewards: UFix64
 
     /// The reward amounts that are paid to each individual node and its delegators
-    pub var rewardAmounts: [FlowIDTableStaking.RewardsBreakdown]
+    access(all) var rewardAmounts: [FlowIDTableStaking.RewardsBreakdown]
 
     /// Tracks if rewards have been paid for this epoch
-    pub var rewardsPaid: Bool
+    access(all) var rewardsPaid: Bool
 
     /// The organization of collector node IDs into clusters
     /// determined by a round robin sorting algorithm
-    pub let collectorClusters: [FlowClusterQC.Cluster]
+    access(all) let collectorClusters: [FlowClusterQC.Cluster]
 
     /// The Quorum Certificates from the ClusterQC contract
-    pub var clusterQCs: [FlowClusterQC.ClusterQC]
+    access(all) var clusterQCs: [FlowClusterQC.ClusterQC]
 
     /// The public keys associated with the Distributed Key Generation
     /// process that consensus nodes participate in
     /// Group key is the last element at index: length - 1
-    pub var dkgKeys: [String]
+    access(all) var dkgKeys: [String]
 }
 ```
 
@@ -188,22 +188,22 @@ The `FlowEpoch` smart contract also has a set of metadata that is configurable b
 for phase lengths, number of collector clusters, and inflation percentage.
 
 ```cadence
-pub struct Config {
+access(all) struct Config {
     /// The number of views in an entire epoch
-    pub(set) var numViewsInEpoch: UInt64
+    access(all)  var numViewsInEpoch: UInt64
 
     /// The number of views in the staking auction
-    pub(set) var numViewsInStakingAuction: UInt64
+    access(all)  var numViewsInStakingAuction: UInt64
     
     /// The number of views in each dkg phase
-    pub(set) var numViewsInDKGPhase: UInt64
+    access(all)  var numViewsInDKGPhase: UInt64
 
     /// The number of collector clusters in each epoch
-    pub(set) var numCollectorClusters: UInt16
+    access(all)  var numCollectorClusters: UInt16
 
     /// Tracks the annualized percentage of FLOW total supply that is minted as rewards at the end of an epoch
     /// Calculation for a single epoch would be (totalSupply * FLOWsupplyIncreasePercentage) / 52
-    pub(set) var FLOWsupplyIncreasePercentage: UFix64
+    access(all)  var FLOWsupplyIncreasePercentage: UFix64
 }
 ```
 
@@ -226,10 +226,10 @@ This script does not require any arguments.
 The `FlowEpoch` smart contract always tracks the active phase of the current epoch.
 
 ```cadence
-pub enum EpochPhase: UInt8 {
-    pub case STAKINGAUCTION
-    pub case EPOCHSETUP
-    pub case EPOCHCOMMIT
+access(all) enum EpochPhase: UInt8 {
+    access(all) case STAKINGAUCTION
+    access(all) case EPOCHSETUP
+    access(all) case EPOCHCOMMIT
 }
 ```
 

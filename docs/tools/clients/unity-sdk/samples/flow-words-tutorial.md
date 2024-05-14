@@ -356,14 +356,14 @@ public class GuessResultPayload
 Let's compare these to the payloads for each event in the contract:
 
 ```cadence
-pub event CurrentState(currentState: [UserGuess])
-pub event LastGameStart(startTime: UFix64)
-pub event GuessResult(result: String)
+access(all) event CurrentState(currentState: [UserGuess])
+access(all) event LastGameStart(startTime: UFix64)
+access(all) event GuessResult(result: String)
 
-pub struct UserGuess
+access(all) struct UserGuess
 {
-    pub let Guess: String
-    pub let Result: String
+    access(all) let Guess: String
+    access(all) let Result: String
     init(guess: String, result: String)
     {
         self.Guess = guess
@@ -752,7 +752,7 @@ As this is a transaction, we once again check the three possible failure modes, 
 Next we parse our transaction’s emitted events.
 
 ```cadence
-pub event GuessResult(result: String)
+access(all) event GuessResult(result: String)
 ```
 
 We are expecting an event called GuessResult, with a single string parameter called result.  We created a C# version of that event: ```GuessResultPayload```.
@@ -936,11 +936,11 @@ Our global highscores are an array of Scores objects in the contract.
 
 ```cadence
 access(contract) let TopScores : [Scores]
-pub struct Scores
+access(all) struct Scores
 {
-    pub let AccId : Address
-    pub let Name : String
-    pub let Score : UInt
+    access(all) let AccId : Address
+    access(all) let Name : String
+    access(all) let Score : UInt
 }
 ```
 

@@ -48,7 +48,7 @@ In the example above, your `flow.json` file might look something like this:
 Here's a sketch of the contract source files:
 
 ```cadence NonFungibleToken.cdc
-pub contract NonFungibleToken { 
+access(all) contract NonFungibleToken { 
   // ...
 }
 ```
@@ -56,7 +56,7 @@ pub contract NonFungibleToken {
 ```cadence KittyItems.cdc
 import NonFungibleToken from "./NonFungibleToken.cdc"
 
-pub contract KittyItems { 
+access(all) contract KittyItems { 
   // ...
 }
 ```
@@ -115,7 +115,7 @@ In the example above, the `KittyItems` contract would be rewritten like this:
 ```cadence KittyItems.cdc
 import NonFungibleToken from 0xf8d6e0586b0a20c7
 
-pub contract KittyItems { 
+access(all) contract KittyItems { 
   // ...
 }
 ```

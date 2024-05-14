@@ -13,12 +13,12 @@ Smart contracts on Flow are permanent code that live on the blockchain, allowing
 
 ## Calling a contract
 
-The `HelloWorld` contract exposes a public variable named `greeting`. We can retrieve its value using a simple script written in the Cadence programming language.
+The `HelloWorld` contract exposes a public variable named `greeting` that is accessible to everything outside the contract. We can retrieve its value using a simple script written in the Cadence programming language.
 
 ```
 import HelloWorld from 0x9dca641e9a4b691b
 
-pub fun main(): String {
+access(all) fun main(): String {
   return HelloWorld.greeting
 }
 ```
@@ -32,9 +32,9 @@ pub fun main(): String {
 
 Below is the source code for the HelloWorld contract. As you continue through the next few tutorials, you'll discover how to invoke the `changeGreeting` function to modify the greeting value. Do take note, however, that only the contract's `owner` or permitted accounts can modify the greeting.
 ```
-pub contract HelloWorld {
+access(all) contract HelloWorld {
 
-  pub var greeting: String
+  access(all) var greeting: String
 
   access(account) fun changeGreeting(newGreeting: String) {
     self.greeting = newGreeting

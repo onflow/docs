@@ -381,7 +381,7 @@ It executes the script defined in GetNFTsOnAccount.cdc:
 ```cadence
 import SDKExampleNFT from 0xf8d6e0586b0a20c7
 
-pub fun main(addr:Address): {UInt64:{String:String}} {
+access(all) fun main(addr:Address): {UInt64:{String:String}} {
 
     //Get a capability to the SDKExampleNFT collection if it exists.  Return an empty dictionary if it does not
     let collectionCap = getAccount(addr).getCapability<&{SDKExampleNFT.CollectionPublic}>(SDKExampleNFT.CollectionPublicPath)

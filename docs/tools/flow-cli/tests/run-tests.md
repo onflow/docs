@@ -18,11 +18,11 @@ A simple Cadence script `test_script.cdc`, which has a test case for running a c
 ```cadence
 import Test
 
-pub let blockchain = Test.newEmulatorBlockchain()
+access(all) let blockchain = Test.newEmulatorBlockchain()
 
-pub fun testSumOfTwo() {
+access(all) fun testSumOfTwo() {
     let scriptResult = blockchain.executeScript(
-        "pub fun main(a: Int, b: Int): Int { return a + b }",
+        "access(all) fun main(a: Int, b: Int): Int { return a + b }",
         [2, 3]
     )
 

@@ -307,7 +307,7 @@ Now, for viewing all parent accounts linked to a child account and removing a li
 ```cadence
 import HybridCustody from 0x294e44e1ec6993c6
 
-pub fun main(child: Address): [Address] {
+access(all) fun main(child: Address): [Address] {
     let acct = getAuthAccount(child)
     let o = acct.borrow<&HybridCustody.OwnedAccount>(from: HybridCustody.OwnedAccountStoragePath)
 

@@ -17,7 +17,7 @@ Scripts are defined by the following the Cadence code:
 
 ```cadence
 // The 'main' function is the entry point function and every script needs to have one.
-pub fun main() {
+access(all) fun main() {
  // Cadence statements to be executed go here
 }
 ```
@@ -25,7 +25,7 @@ pub fun main() {
 Scripts can return a typed value:
 
 ```cadence
-pub fun main(): Int {
+access(all) fun main(): Int {
 	return 1 + 2
 }
 ```
@@ -33,7 +33,7 @@ pub fun main(): Int {
 Scripts can also accept arguments:
 
 ```cadence
-pub fun main(arg: String): String {
+access(all) fun main(arg: String): String {
 	return "Hello ".concat(arg)
 }
 ```
@@ -43,7 +43,7 @@ Scripts can call contract functions and query the state of a contract. To call a
 ```cadence
 import World from 0x01
 
-pub fun main(): String {
+access(all) fun main(): String {
 	return World.hello()
 }
 ```
