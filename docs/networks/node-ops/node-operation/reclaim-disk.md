@@ -28,31 +28,29 @@ Hence, as a node operator, please make sure to do the following:
 
 ### Access, Collection, Consensus and Verification node
 
-If you are running any node other than an execution node and the node is close to running out of disk space or has already exhausted all of its disk, you can do the following to reclaim disk space:
+If you are running any node other than an execution node and the node is close to running out of disk space or has already exhausted all of its disk, you can re-bootstrap the node's database. This frees up disk space by discarding historical data past a certain threshold.
 
 1. Stop the node.
 
+2. Back up the data folder to a tmp folder in case it is required to revert this change. The default location of the data folder is `/var/flow/data` unless overridden by the `--datadir` flag.
+```sh
+mv /var/flow/data /var/flow/data_backup
+```
 
-2. Setup the node to use **dynamic bootstrapping** by specifying the dynamic startup flags described [here](./node-bootstrap.md#dynamic-startup).
+3. Configure the node to bootstrap from a new, more recent Root Snapshot. You may use either of the two methods described [here](./protocol-state-bootstrap.md) to configure your node.
 
+4. Start the node. The node should now recreate the data folder and start fetching blocks.
 
-4. Move the data folder to a tmp folder incase it is required to revert this change. The default location of the data folder is `/var/flow/data` unless overridden by the `data-dir` parameter.
+5. If the node is up and running OK, delete the `data_backup` folder created in step 2.
+```sh
+rm -rf /var/flow/data_backup
+```
 
-   ``` mv /var/flow/data /var/flow/data_backup```
+#### Limitation for Access Node
 
+Re-bootstrapping allows the node to be restarted at a particular block height by deleting all the previous state.
 
-5. Start the node. The node should now recreate the data folder and start fetching blocks.
-
-
-6. If the node is up and running OK, delete the `data_backup` folder created in step 4.
-
-   ``` rm -rf /var/flow/data_backup```
-
-#### Limitation for Access node
-
-Dynamic boostrap allows the node to be restarted at a particular block height by deleting all the previous state.
-
-For an **access** node, this results in the node not being able to serve any API request before the height at which the node was dynamically bootstrapped.
+For an **Access Node**, this results in the node not being able to serve any API request before the height at which the node was re-bootstrapped.
 
 _Hence, if you require the access node to serve data from the start of the last network upgrade (spork), do not use this method of reclaiming disk space. Instead provision more disk for the node._
 
