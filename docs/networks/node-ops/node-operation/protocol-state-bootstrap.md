@@ -67,9 +67,6 @@ Retrieve the snapshot for a specific finalized block height:
 util read-protocol-state snapshot -d $DATADIR --height 12345 > specific-height-snapshot.json
 ```
 
-4. On the node you want to bootstrap, move the Root Snapshot file to `$BOOTDIR/public-root-information/root-protocol-state-snapshot.json`, where `$BOOTDIR` is the value passed to the `--bootstrapdir` flag.
-5. Start your node. 
-
 ## Using Dynamic Startup
 
 Dynamic Startup is a startup configuration where your node will download a Root Snapshot and use it to bootstrap its local database.
@@ -143,6 +140,6 @@ For example, using the Flow Foundation Access Node:
   ... \
   --dynamic-startup-access-address=secure.mainnet.nodes.onflow.org:9001 \
   --dynamic-startup-access-publickey=28a0d9edd0de3f15866dfe4aea1560c4504fe313fc6ca3f63a63e4f98d0e295144692a58ebe7f7894349198613f65b2d960abf99ec2625e247b1c78ba5bf2eae \
-  --dynamic-startup-epoch-phase=1
+  --dynamic-startup-epoch=1
 ```
 3. Start your node.
