@@ -32,7 +32,9 @@ Each node will require a fixed DNS name and we will refer to this more generally
     communicate with you.
 </Callout>
 
-Your firewalls must expose **TCP/3569** for Node communication. If you are running an Access Node, you must also expose the GRPC port **9000**.
+Your firewalls must expose **TCP/3569** for both, ingress and egress.
+
+If you are running an Access Node, you must also expose the GRPC port **9000** to your internal network traffic.  Port 9000 is not required for external ingress/egress.
 
 ![Flow Architecture](flow-architecture.png)
 
