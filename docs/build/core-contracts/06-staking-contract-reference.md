@@ -1,5 +1,6 @@
 ---
 title: Flow Staking Contract Reference
+sidebar_position: 6
 sidebar_label: Staking Table
 ---
 
@@ -12,13 +13,18 @@ Source: [FlowIDTableStaking.cdc](https://github.com/onflow/flow-core-contracts/b
 | Network           | Contract Address     |
 | ----------------- | -------------------- |
 | Emulator          | `0xf8d6e0586b0a20c7` |
+| Cadence Testing Framework | `0x0000000000000001` |
 | PreviewNet        | `0xb6763b4399a888c8` |
-| Testnet/Crescendo | `0x9eca2b38b18b5dfe` |
+| Testnet | `0x9eca2b38b18b5dfe` |
 | Mainnet           | `0x8624b52f9ddcd04a` |
 
-# Transactions
+# Transactions and Scripts
 
-## Getting Staking Info
+Transactions for the staking contract are in the `flow-core-contracts` repo.
+Developers and users are advised to use [the staking collection transactions](../../networks/staking/14-staking-collection.md)
+to stake tokens instead of the basic transactions that are used for tests.
+
+## Getting Staking Info with Scripts
 
 These scripts are read-only and get info about the current state of the staking contract.
 
@@ -47,31 +53,48 @@ The `FlowIDTableStaking` contract emits an event whenever an important action oc
 See the [staking events Documentation](../../networks/staking/07-staking-scripts-events.md) for more information about each event.
 
 ```cadence
-    access(all) event NewEpoch(totalStaked: UFix64, totalRewardPayout: UFix64)
+    /// Epoch
+    access(all) event NewEpoch(
+        totalStaked: UFix64,
+        totalRewardPayout: UFix64,
+        newEpochCounter: UInt64
+    )
+    access(all) event EpochTotalRewardsPaid(
+        total: UFix64,
+        fromFees: UFix64,
+        minted: UFix64,
+        feesBurned: UFix64,
+        epochCounterForRewards: UInt64
+    )
 
-    /// Node Events
+    /// Node
     access(all) event NewNodeCreated(nodeID: String, role: UInt8, amountCommitted: UFix64)
     access(all) event TokensCommitted(nodeID: String, amount: UFix64)
     access(all) event TokensStaked(nodeID: String, amount: UFix64)
+    access(all) event NodeTokensRequestedToUnstake(nodeID: String, amount: UFix64)
     access(all) event TokensUnstaking(nodeID: String, amount: UFix64)
     access(all) event TokensUnstaked(nodeID: String, amount: UFix64)
     access(all) event NodeRemovedAndRefunded(nodeID: String, amount: UFix64)
-    access(all) event RewardsPaid(nodeID: String, amount: UFix64)
+    access(all) event RewardsPaid(nodeID: String, amount: UFix64, epochCounter:  UInt64)
     access(all) event UnstakedTokensWithdrawn(nodeID: String, amount: UFix64)
     access(all) event RewardTokensWithdrawn(nodeID: String, amount: UFix64)
+    access(all) event NetworkingAddressUpdated(nodeID: String, newAddress: String)
+    access(all) event NodeWeightChanged(nodeID: String, newWeight: UInt64)
 
-    /// Delegator Events
+    /// Delegator
     access(all) event NewDelegatorCreated(nodeID: String, delegatorID: UInt32)
     access(all) event DelegatorTokensCommitted(nodeID: String, delegatorID: UInt32, amount: UFix64)
     access(all) event DelegatorTokensStaked(nodeID: String, delegatorID: UInt32, amount: UFix64)
+    access(all) event DelegatorTokensRequestedToUnstake(nodeID: String, delegatorID: UInt32, amount: UFix64)
     access(all) event DelegatorTokensUnstaking(nodeID: String, delegatorID: UInt32, amount: UFix64)
     access(all) event DelegatorTokensUnstaked(nodeID: String, delegatorID: UInt32, amount: UFix64)
-    access(all) event DelegatorRewardsPaid(nodeID: String, delegatorID: UInt32, amount: UFix64)
+    access(all) event DelegatorRewardsPaid(nodeID: String, delegatorID: UInt32, amount: UFix64, epochCounter:  UInt64)
     access(all) event DelegatorUnstakedTokensWithdrawn(nodeID: String, delegatorID: UInt32, amount: UFix64)
     access(all) event DelegatorRewardTokensWithdrawn(nodeID: String, delegatorID: UInt32, amount: UFix64)
 
-    /// Contract Field Change Events
+    /// Contract Fields
     access(all) event NewDelegatorCutPercentage(newCutPercentage: UFix64)
     access(all) event NewWeeklyPayout(newPayout: UFix64)
     access(all) event NewStakingMinimums(newMinimums: {UInt8: UFix64})
+    access(all) event NewDelegatorStakingMinimum(newMinimum: UFix64)
 ```

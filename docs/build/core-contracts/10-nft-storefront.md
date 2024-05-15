@@ -1,13 +1,31 @@
 ---
 title: NFT Storefront Smart Contract
+sidebar_position: 10
+sidebar_label: NFT Storefront
 ---
 
-## Primer
+The `NFTStorefront` contracts implement a standard way to list NFTs for sale
+and buy them from listings. `NFTStorefrontV2` is the more powerful and full-featured
+version, so developers and users are encouraged to use it instead of `NFTStorefront`
+or their own implementation.
 
-|Name|Testnet/Crescendo|Mainnet|
-|----|----------------------------|-------|
-|[NFTStorefront](https://github.com/onflow/nft-storefront/blob/main/contracts/NFTStorefront.cdc)|[0x94b06cfca1d8a476](https://testnet.flowdiver.io/contract/A.94b06cfca1d8a476.NFTStorefront)|[0x4eb8a10cb9f87357](https://www.flowdiver.io/contract/A.4eb8a10cb9f87357.NFTStorefront)|
-|[NFTStorefrontV2 (recommended)](https://github.com/onflow/nft-storefront/blob/main/contracts/NFTStorefrontV2.cdc)|[0x2d55b98eb200daef](https://testnet.flowdiver.io/contract/A.2d55b98eb200daef.NFTStorefrontV2)|[0x4eb8a10cb9f87357](https://www.flowdiver.io/contract/A.4eb8a10cb9f87357.NFTStorefrontV2)|
+Source: [NFTStorefrontV2.cdc](https://github.com/onflow/nft-storefront/blob/main/contracts/NFTStorefrontV2.cdc)
+
+| Network           | Contract Address     |
+| ----------------- | -------------------- |
+| PreviewNet        | `0x6df5e52755433994` |
+| Testnet | `0x2d55b98eb200daef` |
+| Mainnet           | `0x4eb8a10cb9f87357` |
+
+Source: [NFTStorefront.cdc](https://github.com/onflow/nft-storefront/blob/main/contracts/NFTStorefront.cdc)
+
+| Network           | Contract Address     |
+| ----------------- | -------------------- |
+| PreviewNet        | `0x6df5e52755433994` |
+| Testnet | `0x94b06cfca1d8a476` |
+| Mainnet           | `0x4eb8a10cb9f87357` |
+
+## Primer
 
 The `NFTStorefrontV2` contract lets you create a *non-custodial Resource (NFT) marketplace* on the FLOW blockchain. 
 
@@ -37,6 +55,7 @@ Each listing can define one or more sale cuts taken out of the sale price to go 
 Listings can have an optional list of marketplace [receiver capabilities](https://cadence-lang.org/docs/language/capabilities) used to receive the commission for fulfilling the listing. An NFT may be listed in one or more Listings, and the validity of each listing can easily be checked.
 
 Interested parties can globally track Listing events on-chain and filter by NFT types, IDs and other characteristics to determine which to make available for purchase within their own marketplace UIs."
+
 ## Selling NFTs
 
 `NFTStorefrontV2` offers a generic process for creating the listing for an NFT. It provides all the essential APIs to manage those listings independently. 
@@ -429,8 +448,3 @@ A entitled receiver has not been paid during the sale of the NFT.
 **Holistic process flow diagram of NFTStorefrontV2 -** 
 
 ![NFT Storefront Process flow](https://user-images.githubusercontent.com/14581509/191960793-ff153e5d-2934-410c-b724-5c5dffd2c20f.png)
-
-
-## Glossary
-
-SaleCut - A struct consists a recipient and amount of token ,i.e. cut that must be sent to recipient when a NFT get sold.

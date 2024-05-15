@@ -1,5 +1,6 @@
 ---
 title: Flow Staking Collection Contract Reference
+sidebar_position: 11
 sidebar_label: Staking Collection
 ---
 
@@ -22,9 +23,10 @@ Source: [FlowStakingCollection.cdc](https://github.com/onflow/flow-core-contract
 
 | Network           | Contract Address     |
 |------------------ |----------------------|
-| Emulator          | `0xf8d6e0586b0a20c7` | 
+| Emulator          | `0xf8d6e0586b0a20c7` |
+| Cadence Testing Framework | `0x0000000000000001` |
 | PreviewNet        | `0xb6763b4399a888c8` |
-| Testnet/Crescendo | `0x95e019a17d0e23d7` |
+| Testnet | `0x95e019a17d0e23d7` |
 | Mainnet           | `0x8d0e87b65159ae63` | 
 
 ## Transactions

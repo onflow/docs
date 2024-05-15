@@ -1,5 +1,6 @@
 ---
 title: Flow Epoch Contracts Reference
+sidebar_position: 7
 sidebar_label: Epoch Contracts
 ---
 
@@ -18,8 +19,9 @@ Sources:
 | Network           | Contract Address     |
 |-------------------|----------------------|
 | Emulator          | `0xf8d6e0586b0a20c7` |
+| Cadence Testing Framework | `0x0000000000000001` |
 | PreviewNet        | `0xb6763b4399a888c8` |
-| Testnet/Crescendo | `0x9eca2b38b18b5dfe` |
+| Testnet | `0x9eca2b38b18b5dfe` |
 | Mainnet           | `0x8624b52f9ddcd04a` |
 
 # Transactions
@@ -59,3 +61,8 @@ These scripts are read-only and get info about the current state of the epoch co
 |**`DKG.06`**| Get Whiteboard Messages         | [dkg/scripts/get_whiteboard_messages.cdc](https://github.com/onflow/flow-core-contracts/blob/master/transactions/dkg/scripts/get_whiteboard_messages.cdc) |
 |**`DKG.07`**| Get Final Submissions          | [dkg/scripts/get_final_submissions.cdc](https://github.com/onflow/flow-core-contracts/blob/master/transactions/dkg/scripts/get_final_submissions.cdc) |
 |**`DKG.08`**| Get Node Has Submitted          | [dkg/scripts/get_node_has_submitted.cdc](https://github.com/onflow/flow-core-contracts/blob/master/transactions/dkg/scripts/get_node_has_submitted.cdc) |
+
+# Events
+
+See the [epoch documentation](../../networks/staking/05-epoch-scripts-events.md)
+for a list and documentation for important `FlowEpoch` events.
