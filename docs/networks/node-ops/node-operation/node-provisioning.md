@@ -24,25 +24,12 @@ _Note: The above numbers represent our current best estimate for the state of th
 
 Most of the load on your nodes will be messages sent back and forth between other nodes on the network. Make sure you have a sufficiently fast connection; we recommend at _least_ 1Gbps, and 5Gbps is better.
 
-Each node will require either a static IPv4 address or a fixed DNS name. Either works, and we'll refer to this more generally as your 'Node Address' from here on out.
+Each node will require a fixed DNS name and we will refer to this more generally as your 'Node Address' from here on out.
 
 <Callout type="info" title="Node Address Requirements">
-    Your Node Address must be a publicly routable IPv4 address or valid DNS name
+    Your Node Address must be a publicly routable valid DNS name
     that points to your node. This is how other nodes in the network will
     communicate with you.
-</Callout>
-
-While both a static IPv4 and a domain name are possible, we prefer and recommend that node operators register their node under a domain that they control. This gives the Flow network more options for resiliency and resistance to adverse network conditions.
-
-<Callout type="warning" title="Registering a domain name for your Flow Node">
-    Crash recovery and denial of service attacks are two concerns that operators can mitigate relying on each of DNS indirection and IP routing. The later requires more involvement.
-
-    Running a node behind an operator-controlled hostname (rather than "just" an IP) is a simple and cheap measure that:
-
-    - offers additional technical pathways to let operators improve resiliency and security,
-    - lets them opt in to those measures as a reaction to an attack,
-    - does not preclude any lower-level IP-based resiliency approaches.
-
 </Callout>
 
 Your firewalls must expose **TCP/3569** for Node communication. If you are running an Access Node, you must also expose the GRPC port **9000**.
