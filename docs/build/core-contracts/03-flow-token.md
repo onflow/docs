@@ -1,5 +1,6 @@
 ---
 title: Flow Token Contract
+sidebar_position: 3
 sidebar_label: Flow Token
 ---
 
@@ -10,18 +11,17 @@ Source: [FlowToken.cdc](https://github.com/onflow/flow-core-contracts/blob/maste
 | Network           | Contract Address     |
 | ----------------- | -------------------- |
 | Emulator          | `0x0ae53cb6e3f42a79` |
+| Cadence Testing Framework | `0x0000000000000003` |
 | Previewnet        | `0x4445e7ad11568276` |
-| Testnet/Crescendo | `0x7e60df042a9c0868` |
+| Testnet | `0x7e60df042a9c0868` |
 | Mainnet           | `0x1654653399040a61` |
 
 # Transactions
 
-| ID          | Name                     | Source                                                                                                                                        |
-| ----------- | ------------------------ | --------------------------------------------------------------------------------------------------------------------------------------------- |
-| **`FT.01`** | Transfer FLOW            | [flowToken/transfer_tokens.cdc](https://github.com/onflow/flow-core-contracts/blob/master/transactions/flowToken/transfer_tokens.cdc)         |
-| **`FT.02`** | Get an account's balance | [flowToken/scripts/get_balance.cdc](https://github.com/onflow/flow-core-contracts/blob/master/transactions/flowToken/scripts/get_balance.cdc) |
-| **`FT.03`** | Get total supply         | [flowToken/scripts/get_supply.cdc](https://github.com/onflow/flow-core-contracts/blob/master/transactions/flowToken/scripts/get_supply.cdc)   |
+Transactions and scripts for `FlowToken` are in the `flow-core-contracts` [repo](https://github.com/onflow/flow-core-contracts/tree/master/transactions/flowToken).
 
+As mentioned in the `FungibleToken` page, developers are encouraged to use
+the generic token transactions in the `flow-ft` [repo](https://github.com/onflow/flow-ft/tree/master/transactions) instead.
 
 # Events
 

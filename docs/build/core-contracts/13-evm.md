@@ -1,5 +1,6 @@
 ---
 title: Flow EVM
+sidebar_position: 13
 sidebar_label: EVM
 ---
 
@@ -27,6 +28,7 @@ PreviewNet Source: [`EVM.cdc`](https://github.com/onflow/flow-go/blob/master/fvm
 | Network           | Contract Address     |
 | ----------------- | -------------------- |
 | Emulator          | `0xf8d6e0586b0a20c7` |
+| Cadence Testing Framework | `0x0000000000000001` |
 | PreviewNet        | [`0xb6763b4399a888c8`](https://previewnet.flowdiver.io/contract/A.b6763b4399a888c8.EVM?tab=deployments) |
-| Testnet/Crescendo | [`0x8c5303eaa26202d6`](https://contractbrowser.com/A.8c5303eaa26202d6.EVM) |
+| Testnet | [`0x8c5303eaa26202d6`](https://contractbrowser.com/A.8c5303eaa26202d6.EVM) |
 | Mainnet           | [`0xe467b9dd11fa00df`](https://contractbrowser.com/A.e467b9dd11fa00df.EVM) |
