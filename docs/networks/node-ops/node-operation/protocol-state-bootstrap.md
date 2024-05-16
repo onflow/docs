@@ -108,6 +108,8 @@ Two flags are used to specify when to bootstrap:
 - `--dynamic-startup-epoch-phase` - the epoch phase to start up in (default `EpochPhaseSetup`)
 - `--dynamic-startup-epoch` - the epoch counter to start up in (default `current`)
 
+> You can check the current epoch phase of the network by running [this](https://github.com/onflow/flow-core-contracts/blob/master/transactions/epoch/scripts/get_epoch_phase.cdc) script. Alternatively, you can also check the current epoch phase [here](https://app.metrika.co/flow/dashboard/network-overview) under Epoch Phase.
+
 #### Bootstrapping Immediately
 
 If you would like to bootstrap immediately, using the first Root Snapshot you receive, then specify a past epoch counter:
