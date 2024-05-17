@@ -294,28 +294,21 @@ This is the recommended way to start your node for the first time.
 4. Start your node (see [guide](./node-setup#start-the-node))
 
 <Callout type="info">
-Once the node has bootstrapped, these flags may be removed.
+Once the node has bootstrapped, these flags will be ignored and may be removed.
 </Callout>
 
 ### Manually Provisioned Root Snapshot
 
 You can also provision the root snapshot file manually, then start the node without configuring Dynamic Startup.
-A snapshot can be obtained from any Access Node using [Flow CLI](../../../tools/flow-cli/index.md).
-```shell RetrieveRootSnapshot
-flow snapshot save /path/to/root/snapshot --network mainnet
-```
+See [here](./protocol-state-bootstrap.md) for the available options to provision a Root Snapshot.
 
 <Callout type="warning">
-
 The snapshot must be within the `Epoch Setup Phase`.
-
 </Callout>
 
 <Callout type="warning">
-
 Since Collection and Consensus Nodes must start up in the first ~30mins of the `Epoch Setup Phase` (see [Timing](./node-bootstrap.md#timing)),
 the snapshot must be provisioned within this time window.
-
 </Callout>
 
 Once a valid root snapshot file is downloaded to the node's bootstrap folder, it can be started (see [guide](./node-setup.md#start-the-node))
