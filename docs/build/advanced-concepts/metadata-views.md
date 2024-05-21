@@ -162,7 +162,8 @@ making them interoperable and recognizable across various platforms and marketpl
 
 In the code below, an NFT has properties such as
 its unique ID, name, description, and others.
-When we add the `MetadataViews.Resolver` to our NFT resource,
+When we add the `NonFungibleToken.NFT` and by extension,
+the `MetadataViews.Resolver` to our NFT resource,
 we are indicating that these variables will adhere to the specifications
 outlined in the MetadataViews contract for each of these properties.
 This facilitates interoperability within the Flow ecosystem
@@ -170,7 +171,7 @@ and assures that the metadata of our NFT can be consistently accessed
 and understood by various platforms and services that interact with NFTs.
 
 ```cadence
-access(all) resource NFT: NonFungibleToken.INFT, MetadataViews.Resolver {
+access(all) resource NFT: NonFungibleToken.NFT {
     access(all) let id: UInt64
     access(all) let name: String
     access(all) let description: String
@@ -320,7 +321,7 @@ case Type<MetadataViews.Royalties>():
     let royalty =
         MetadataViews.Royalty(
             // The beneficiary of the royalty: in this case, the contract account
-            receiver: ExampleNFT.account.getCapability<&AnyResource{FungibleToken.Receiver}>(/public/GenericFTReceiver),
+            receiver: ExampleNFT.account.capabilities.get<&AnyResource{FungibleToken.Receiver}>(/public/GenericFTReceiver),
             // The percentage cut of each sale
             cut: 0.05,
             // A description of the royalty terms          
@@ -475,15 +476,12 @@ case Type<MetadataViews.NFTCollectionData>():
         storagePath: ExampleNFT.CollectionStoragePath,
         // where to borrow public capabilities from?
         publicPath: ExampleNFT.CollectionPublicPath,
-        // where to borrow private capabilities from? (important for hybrid custody)
-        providerPath: /private/exampleNFTCollection,
         // Important types for how the collection should be linked
         publicCollection: Type<&ExampleNFT.Collection{ExampleNFT.ExampleNFTCollectionPublic}>(),
         publicLinkedType: Type<&ExampleNFT.Collection{ExampleNFT.ExampleNFTCollectionPublic,NonFungibleToken.CollectionPublic,NonFungibleToken.Receiver,MetadataViews.ResolverCollection}>(),
-        providerLinkedType: Type<&ExampleNFT.Collection{ExampleNFT.ExampleNFTCollectionPublic,NonFungibleToken.CollectionPublic,NonFungibleToken.Provider,MetadataViews.ResolverCollection}>(),
         // function that can be accessed to create an empty collection for the project
-        createEmptyCollectionFunction: (fun (): @NonFungibleToken.Collection {
-            return <-ExampleNFT.createEmptyCollection()
+        createEmptyCollectionFunction: (fun(): @{NonFungibleToken.Collection} {
+            return <-ExampleNFT.createEmptyCollection(nftType: Type<@ExampleNFT.NFT>())
         })
     )
 ```
