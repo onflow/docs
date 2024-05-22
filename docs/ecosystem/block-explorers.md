@@ -53,4 +53,18 @@ Block explorers are user-friendly online tools that visually present blockchain 
 
 [Testnet Contract Browser](https://testnet.contractbrowser.com/) is also available for `Testnet Flow`.
 
+## Ethernal Block Explorer
+
+[Ethernal Block Explorer](https://flow-foundation.tryethernal.com/overview) provides provides a user-friendly interface to search for specific transactions, monitor network health, and track the status of various smart contracts and tokens on for EVM on Flow. Features include:
+
+- Real-Time Data: View live transaction data, blocks, and account activities.
+- Search Functionality: Search for specific transactions, blocks, and accounts.
+- Network Monitoring: Track network health and performance.
+- Smart Contract Analysis: Examine smart contract statuses and interactions.
+- Token Tracking: Monitor the creation and transfer of various tokens on the Flow network.
+
+### Supported networks:
+
+- [Previewnet](https://flow-foundation.tryethernal.com/overview)
+
 </div>
