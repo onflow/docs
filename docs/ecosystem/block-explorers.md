@@ -63,4 +63,8 @@ Block explorers are user-friendly online tools that visually present blockchain 
 - Smart Contract Analysis: Examine smart contract statuses and interactions.
 - Token Tracking: Monitor the creation and transfer of various tokens on the Flow network.
 
+### Supported networks:
+
+- [Previewnet](https://flow-foundation.tryethernal.com/overview)
+
 </div>
