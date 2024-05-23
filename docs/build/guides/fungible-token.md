@@ -149,7 +149,7 @@ import "FungibleToken"
 In this same file, let's create our contract which implements the `FungibleToken` contract interface (it does so by setting it following the `FooToken:`).
 We'll also include fields for standard storage and public paths
 for our resource definitions.
-In our `init` — which runs on the contracts first deployment and is used to set initial values — let’s set an starting total supply of 1,000 tokens for this example.
+In our `init` — which runs on the contract's first deployment and is used to set initial values — let’s set an starting total supply of 1,000 tokens for this example.
 
 ```cadence
 // ...previous code
@@ -872,10 +872,10 @@ To learn more about running transactions using CLI, [see the docs](https://devel
 
 Let's now read the balance of the newly created account (`test-acct`) to check it's zero.
 
-Create this new script file `cadence/scripts/get_fooToken_balance.cdc`:
+Create this new script file `cadence/scripts/get_footoken_balance.cdc`:
 
 ```bash
-flow generate script get_fooToken_balance
+flow generate script get_footoken_balance
 ```
 
 Add this code which attempts to borrow the capability from the account requested and logs the vault balance if permitted:
@@ -899,7 +899,7 @@ access(all) fun main(address: Address): UFix64 {
 To run this script using the CLI, enter the following in your terminal. Note: you'll need to replace `123` with the address created by CLI in your `flow.json` for the `test-acct` address.
 
 ```bash
-flow scripts execute cadence/scripts/get_fooToken_balance.cdc 123 // change "123" to test-acct address
+flow scripts execute cadence/scripts/get_footoken_balance.cdc 123 // change "123" to test-acct address
 ```
 
 You should see a balance of zero logged.
@@ -908,13 +908,13 @@ You should see a balance of zero logged.
 
 Now that we have an account with a vault, let's mint some tokens into it using the Minter we created on the contract account.
 
-To do this, let's create a new transaction file `cadence/transactions/mint_fooToken.cdc`:
+To do this, let's create a new transaction file `cadence/transactions/mint_footoken.cdc`:
 
 ```bash
-flow generate transaction mint_fooToken
+flow generate transaction mint_footoken
 ```
 
-Next, let's add the following code to the `mint_fooToken.cdc` file. This code will attempt to borrow the minting capability and mint 20 new tokens into the receivers account.
+Next, let's add the following code to the `mint_footoken.cdc` file. This code will attempt to borrow the minting capability and mint 20 new tokens into the receivers account.
 
 ```cadence
 import "FungibleToken"
@@ -952,13 +952,13 @@ transaction(recipient: Address, amount: UFix64) {
 To run this transaction, enter this in your terminal. Note: `123` should be replaced with address of `test-acct` found in your `flow.json`. This command also states to sign with our `emulator-account` on the Emulator network.
 
 ```bash
-flow transactions send ./cadence/transactions/mint_fooToken.cdc 123 20.0 --signer emulator-account --network emulator
+flow transactions send ./cadence/transactions/mint_footoken.cdc 123 20.0 --signer emulator-account --network emulator
 ```
 
 Let's go ahead and read the vault again. Remember to replace `123` with the correct address.
 
 ```bash
-flow scripts execute cadence/scripts/get_fooToken_balance.cdc 123
+flow scripts execute cadence/scripts/get_footoken_balance.cdc 123
 ```
 
 It should now say 20 tokens are in the vault.
@@ -967,10 +967,10 @@ It should now say 20 tokens are in the vault.
 
 The final functionality we'll add is the ability to transfer tokens from one account to another.
 
-To do that, create a new `cadence/transactions/transfer_fooToken.cdc` transaction file:
+To do that, create a new `cadence/transactions/transfer_footoken.cdc` transaction file:
 
 ```bash
-flow generate transaction transfer_fooToken
+flow generate transaction transfer_footoken
 ```
 
 Let's add the code which states that the signer of the transaction will withdraw from their vault and put it into the receiver's vault which will be passed as a transaction argument.
@@ -1032,13 +1032,13 @@ flow transactions send ./cadence/transactions/setup_ft_account.cdc --signer test
 Now, let's send 1 token from our earlier account to the new account. Remember to replace `123` with account address of `test-acct-2`.
 
 ```bash
-flow transactions send ./cadence/transactions/transfer_fooToken.cdc 123 "1.0" --signer test-acct --network emulator
+flow transactions send ./cadence/transactions/transfer_footoken.cdc 123 "1.0" --signer test-acct --network emulator
 ```
 
 After that, read the balance of `test-acct-2` (replace the address `123`).
 
 ```bash
-flow scripts execute cadence/scripts/get_fooToken_balance.cdc 123
+flow scripts execute cadence/scripts/get_footoken_balance.cdc 123
 ```
 
 You should now see 1 token in `test-acct-2` account!
