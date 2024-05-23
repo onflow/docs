@@ -29,10 +29,10 @@ If you haven't installed the Flow CLI yet and have [Homebrew](https://brew.sh/) 
 
 > 💡 Note: Here is [a link to the completed code](https://github.com/chasefleming/foobar-nft) if you want to skip ahead or reference as you follow along.
 
-Once you have the Flow CLI installed, you can set up a new project using the `flow setup` command. This command initializes the necessary directory structure and a `flow.json` configuration file (a way to configure your project for contract sources, deployments, accounts, and more):
+Once you have the Flow CLI installed, you can set up a new project using the `flow-c1 setup` command. This command initializes the necessary directory structure and a `flow.json` configuration file (a way to configure your project for contract sources, deployments, accounts, and more):
 
 ```bash
-flow setup foobar-nft
+flow-c1 setup foobar-nft
 ```
 
 Upon execution, the command will generate the following directory structure:
@@ -55,7 +55,7 @@ cd foobar-nft
 To begin, let's create a contract file named `FooBar` for the `FooBar` token, which will be the focus of this tutorial. To do this, we can use the boilerplate `generate` command from the Flow CLI:
 
 ```bash
-flow generate contract FooBar
+flow-c1 generate contract FooBar
 ```
 
 This will create a new file at `cadence/contracts/FooBar.cdc` with the following contents:
@@ -63,6 +63,29 @@ This will create a new file at `cadence/contracts/FooBar.cdc` with the following
 ```cadence
 access(all) contract FooBar {
     init() {}
+}
+```
+
+Now, add these contracts to your `flow.json`.
+These are important contracts that your contract will import that
+are pre-deployed to the emulator.
+```json
+"contracts": {
+    "NonFungibleToken": {
+		"aliases": {
+			"emulator": "f8d6e0586b0a20c7"
+		}
+	},
+    "ViewResolver": {
+        "aliases": {
+            "emulator": "0xf8d6e0586b0a20c7"
+        }
+    },
+    "MetadataViews": {
+        "aliases": {
+            "emulator": "0xf8d6e0586b0a20c7"
+        }
+    }
 }
 ```
 
@@ -129,7 +152,7 @@ access(all) contract FooBar {
     // ...[previous code]...
 
     init() {
-        self.account.save(<- create NFTMinter(), to: /storage/fooBarNFTMinter)
+        self.account.storage.save(<- create NFTMinter(), to: /storage/fooBarNFTMinter)
     }
 }
 ```
@@ -175,6 +198,14 @@ import "NonFungibleToken"
 
 access(all) contract FooBar: NonFungibleToken {
 
+    /// Standard Paths
+    access(all) let CollectionStoragePath: StoragePath
+    access(all) let CollectionPublicPath: PublicPath
+
+    /// Path where the minter should be stored
+    /// The standard paths for the collection are stored in the collection resource type
+    access(all) let MinterStoragePath: StoragePath
+
     // ...contract code
 
     access(all) resource NFT: NonFungibleToken.NFT {
@@ -182,13 +213,26 @@ access(all) contract FooBar: NonFungibleToken {
     }
 
     access(all) resource Collection: NonFungibleToken.Collection {
+
+        // Make sure to update this field!
+        access(all) var ownedNFTs: @{UInt64: {NonFungibleToken.NFT}}
+
         // ...Collection Code
     }
 
     // ...rest of the contract code
 
+    init() {
+        // Set the named paths
+        self.CollectionStoragePath = /storage/fooBarNFTCollection
+        self.CollectionPublicPath = /public/fooBarNFTCollection
+        self.MinterStoragePath = /storage/fooBarNFTMinter
+        self.account.storage.save(<- create NFTMinter(), to: self.MinterStoragePath)
+    }
 }
 ```
+As you can see, we also added standard paths for the Collection and Minter
+
 These interface conformances for [NFT](https://github.com/onflow/flow-nft/blob/master/contracts/NonFungibleToken.cdc#L98)
 and [Collection](https://github.com/onflow/flow-nft/blob/master/contracts/NonFungibleToken.cdc#L190)
 inherit from other interfaces that provide important functionality and restrictions
@@ -201,13 +245,23 @@ to specify which type of `Collection` they want to create.
 Contracts that implement multiple `NFT` and/or `Collection` types can use this argument,
 but since your contract is only implementing one `NFT` and `Collection` type,
 it can ignore the argument.
-You'll also want to add a simpler one directly to the `Collection` definition
+You'll also want to add a simpler one directly
+to the `NFT` and `Collection` definitions
 so users can directly create a collection from an existing collection:
 
 ```cadence
 access(all) contract FooBar: NonFungibleToken {
 
     // ...other FooBar contract code
+
+    access(all) resource NFT: NonFungibleToken.NFT {
+        // ...NFT code
+
+        access(all) fun createEmptyCollection(): @{NonFungibleToken.Collection} {
+            return <-FooBar.createEmptyCollection(nftType: Type<@FooBar.NFT>())
+        }
+    }
+
 
     access(all) resource Collection: NonFungibleToken.Collection {
 
@@ -340,7 +394,8 @@ and all the NFT IDs within a collection:
 access(all) resource Collection: NonFungibleToken.Collection {
     // ...[withdraw code]...
 
-    access(all) fun getIDs(): [UInt64] {
+    /// getIDs returns an array of the IDs that are in the collection
+    access(all) view fun getIDs(): [UInt64] {
         return self.ownedNFTs.keys
     }
 
@@ -367,6 +422,7 @@ The Non-Fungible Token standard also enforces that implementations
 provide functionality to return a set of standard views about the tokens
 via the [ViewResolver](https://github.com/onflow/flow-nft/blob/master/contracts/ViewResolver.cdc)
 and [MetadataViews](https://github.com/onflow/flow-nft/blob/master/contracts/MetadataViews.cdc) definitions.
+(You will need to add these imports to your contract)
 These provide developers with standard ways of representing metadata
 about a given token such as token symbols, images, royalties, editions,
 website links, and standard account paths and types that third-parties can access in a standard way.
@@ -376,6 +432,9 @@ for a more thorough guide using a NFT contract as an example.
 For now, you can add this code to your contract to support the important metadata: 
 
 ```cadence
+// Add this import!
+import "MetadataViews"
+
 access(all) contract FooBar: NonFungibleToken {
 
     // ...other FooBar contract code
@@ -391,7 +450,7 @@ access(all) contract FooBar: NonFungibleToken {
                 Type<MetadataViews.Editions>(),
                 Type<MetadataViews.NFTCollectionData>(),
                 Type<MetadataViews.NFTCollectionDisplay>(),
-                Type<MetadataViews.Serial>(),
+                Type<MetadataViews.Serial>()
             ]
         }
 
@@ -433,8 +492,8 @@ access(all) contract FooBar: NonFungibleToken {
 
         /// Allows a caller to borrow a reference to a specific NFT
         /// so that they can get the metadata views for the specific NFT
-        access(all) fun borrowNFT(id: UInt64): &NonFungibleToken.NFT {
-            return (&self.ownedNFTs[id] as &NonFungibleToken.NFT?)!
+        access(all) view fun borrowNFT(_ id: UInt64): &{NonFungibleToken.NFT}? {
+            return (&self.ownedNFTs[id] as &{NonFungibleToken.NFT}?)
         }
 
         // ...[rest of code]...
@@ -444,7 +503,7 @@ access(all) contract FooBar: NonFungibleToken {
     access(all) view fun getContractViews(resourceType: Type?): [Type] {
         return [
             Type<MetadataViews.NFTCollectionData>(),
-            Type<MetadataViews.NFTCollectionDisplay>(),
+            Type<MetadataViews.NFTCollectionDisplay>()
         ]
     }
 
@@ -499,7 +558,7 @@ With your contract ready, it's time to deploy it.
 First, add the `FooBar` contract to the `flow.json` configuration file:
 
 ```bash
-flow config add contract
+flow-c1 config add contract
 ```
 
 When prompted, enter the following name and location (press `Enter` to skip alias questions):
@@ -512,7 +571,7 @@ Enter contract file location: cadence/contracts/FooBar.cdc
 Next, configure the deployment settings by running the following command:
 
 ```bash
-flow config add deployment
+flow-c1 config add deployment
 ```
 
 Choose the `emulator` for the network and `emulator-account`
@@ -524,13 +583,13 @@ After that, you can select `No` when asked to deploy another contract.
 To start the Flow emulator, run (you may need to approve a prompt to allow connection the first time):
 
 ```bash
-flow emulator start
+flow-c1 emulator start
 ```
 
 In a separate terminal or command prompt, deploy the contract:
 
 ```bash
-flow project deploy
+flow-c1 project deploy
 ```
 
 You’ll then see a message that says `All contracts deployed successfully`.
@@ -541,7 +600,7 @@ To manage multiple NFTs, you'll need an NFT collection.
 Start by creating a transaction file for this purpose (we can use the `generate` command again):
 
 ```bash
-flow generate transaction setup_foobar_collection
+flow-c1 generate transaction setup_foobar_collection
 ```
 
 This creates a transaction file at `cadence/transactions/setup_foobar_collection.cdc`.
@@ -590,13 +649,13 @@ You should check those out and try to use generic transactions whenever it is po
 To store this new NFT collection, create a new account:
 
 ```bash
-flow accounts create
+flow-c1 accounts create
 ```
 
 Name it `test-acct` and select `emulator` as the network. Then, using the Flow CLI, run the transaction:
 
 ```bash
-flow transactions send cadence/transactions/setup_foobar_collection.cdc --signer test-acct --network emulator
+flow-c1 transactions send cadence/transactions/setup_foobar_collection.cdc --signer test-acct --network emulator
 ```
 
 Congratulations! You've successfully created an NFT collection for the `test-acct`.
@@ -611,7 +670,7 @@ they don't require gas fees or signatures (read more about scripts here).
 Start by creating a script file using the `generate` command again:
 
 ```bash
-flow generate script get_foobar_ids
+flow-c1 generate script get_foobar_ids
 ```
 
 In this script, import the necessary contracts and define a function that retrieves the NFT IDs associated with a given account:
@@ -629,13 +688,12 @@ access(all) fun main(address: Address): [UInt64] {
 
     return collectionRef.getIDs()
 }
-
 ```
 
 To check the NFTs associated with the `test-acct`, run the script (note: replace `0x123` with the address for `test-acct` from `flow.json`):
 
 ```bash
-flow scripts execute cadence/scripts/get_foobar_ids.cdc 0x123
+flow-c1 scripts execute cadence/scripts/get_foobar_ids.cdc 0x123
 ```
 
 Since you haven't added any NFTs to the collection yet, the result will be an empty array.
@@ -645,18 +703,12 @@ Since you haven't added any NFTs to the collection yet, the result will be an em
 To mint and deposit an NFT into a collection, create a new transaction file:
 
 ```bash
-flow generate transaction mint_foobar_nft
+flow-c1 generate transaction mint_foobar_nft
 ```
 
 In this file, define a transaction that takes a recipient's address as an argument. This transaction will borrow the minting capability from the contract account, borrow the recipient's collection capability, create a new NFT using the minter, and deposit it into the recipient's collection:
 
 ```cadence
-/// This script uses the NFTMinter resource to mint a new NFT
-/// It must be run with the account that has the minter resource
-/// stored in /storage/NFTMinter
-///
-/// The royalty arguments indicies must be aligned
-
 import "NonFungibleToken"
 import "FooBar"
 
@@ -665,7 +717,7 @@ transaction(
 ) {
 
     /// local variable for storing the minter reference
-    let minter: &ExampleNFT.NFTMinter
+    let minter: &FooBar.NFTMinter
 
     /// Reference to the receiver's collection
     let recipientCollectionRef: &{NonFungibleToken.Receiver}
@@ -673,7 +725,7 @@ transaction(
     prepare(signer: auth(BorrowValue) &Account) {
         
         // borrow a reference to the NFTMinter resource in storage
-        self.minter = signer.storage.borrow<&ExampleNFT.NFTMinter>(from: FooBar.MinterStoragePath)
+        self.minter = signer.storage.borrow<&FooBar.NFTMinter>(from: FooBar.MinterStoragePath)
             ?? panic("Account does not store an object at the specified path")
 
         // Borrow the recipient's public NFT collection reference
@@ -684,7 +736,7 @@ transaction(
 
     execute {
         // Mint the NFT and deposit it to the recipient's collection
-        let mintedNFT <- self.minter.mintNFT()
+        let mintedNFT <- self.minter.createNFT()
         self.recipientCollectionRef.deposit(token: <-mintedNFT)
     }
 }
@@ -693,13 +745,13 @@ transaction(
 To run this transaction, use the Flow CLI. Remember, the contract account (which has the minting resource) should be the one signing the transaction. Pass the test account's address (from the `flow.json` file) as the recipient argument (note: replace `0x123` with the address for `test-acct` from `flow.json`):
 
 ```bash
-flow transactions send cadence/transactions/mint_foobar_nft.cdc 0x123 --signer emulator-account --network emulator
+flow-c1 transactions send cadence/transactions/mint_foobar_nft.cdc 0x123 --signer emulator-account --network emulator
 ```
 
 After executing the transaction, you can run the earlier script to verify that the NFT was added to the `test-acct`'s collection (remember to replace `0x123`):
 
 ```bash
-flow scripts execute cadence/scripts/get_foobar_ids.cdc 0x123
+flow-c1 scripts execute cadence/scripts/get_foobar_ids.cdc 0x123
 ```
 
 You should now see a value in the `test-acct`'s collection array!
@@ -709,7 +761,7 @@ You should now see a value in the `test-acct`'s collection array!
 To transfer an NFT to another account, create a new transaction file using `generate`:
 
 ```bash
-flow generate transaction transfer_foobar_nft
+flow-c1 generate transaction transfer_foobar_nft
 ```
 
 In this file, define a transaction that takes a recipient's address and the ID of the NFT you want to transfer as arguments. This transaction will borrow the sender's collection, get the recipient's capability, withdraw the NFT from the sender's collection, and deposit it into the recipient's collection:
@@ -753,25 +805,25 @@ transaction(recipient: Address, withdrawID: UInt64) {
 To transfer the NFT, first create a new account:
 
 ```bash
-flow accounts create
+flow-c1 accounts create
 ```
 
 Name it `test-acct-2` and select `Emulator` as the network. Next, create a collection for this new account:
 
 ```bash
-flow transactions send cadence/transactions/setup_foobar_collection.cdc --signer test-acct-2 --network emulator
+flow-c1 transactions send cadence/transactions/setup_foobar_collection.cdc --signer test-acct-2 --network emulator
 ```
 
 Now, run the transaction to transfer the NFT from `test-acct` to `test-acct-2` using the addresses from the `flow.json` file (replace `0x124` with `test-acct-2`'s address. Also note that `0` is the `id` of the `NFT` we'll be transferring):
 
 ```bash
-flow transactions send cadence/transactions/transfer_foobar_nft.cdc 0x124 0 --signer test-acct --network emulator
+flow-c1 transactions send cadence/transactions/transfer_foobar_nft.cdc 0x124 0 --signer test-acct --network emulator
 ```
 
 To verify the transfer, you can run the earlier script for `test-acct-2` (replace `0x124`):
 
 ```bash
-flow scripts execute cadence/scripts/get_foobar_ids.cdc 0x123
+flow-c1 scripts execute cadence/scripts/get_foobar_ids.cdc 0x123
 ```
 
 The transfer transaction also has a [generic version](https://github.com/onflow/flow-nft/blob/master/transactions/generic_transfer_with_address.cdc) that developers are encouraged to use!

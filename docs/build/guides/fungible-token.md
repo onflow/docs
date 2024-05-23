@@ -77,10 +77,10 @@ If you haven't installed the Flow CLI yet and have [Homebrew](https://brew.sh/) 
 
 > 💡 Note: Here is [a link to the completed code](https://github.com/chasefleming/FooToken) if you want to skip ahead or reference as you follow along.
 
-Once you have the Flow CLI installed, you can set up a new project using the `flow setup` command. This command initializes the necessary directory structure and a `flow.json` configuration file (a way to configure your project for contract sources, deployments, accounts, and more):
+Once you have the Flow CLI installed, you can set up a new project using the `flow-c1 setup` command. This command initializes the necessary directory structure and a `flow.json` configuration file (a way to configure your project for contract sources, deployments, accounts, and more):
 
 ```bash
-flow setup FooToken
+flow-c1 setup FooToken
 ```
 
 Upon execution, the command will generate the following directory structure:
@@ -104,6 +104,10 @@ In our configuration file, called `flow.json`, for the network we want to use, w
 
 We'll also need to add the addresses for `ViewResolver`, `MetadataViews`,
 and `FungibleTokenMetadataViews`, which are other important contracts to use.
+These contracts are deployed to the Flow emulator by default,
+so there is not need to copy their code into your repo.
+The addresses below are the addresses in the emulator that your contract
+will import them from.
 
 ```json
 "contracts": {
@@ -126,7 +130,7 @@ and `FungibleTokenMetadataViews`, which are other important contracts to use.
     "aliases": {
       "emulator": "0xf8d6e0586b0a20c7"
     }
-  },
+  }
 }
 ```
 
@@ -135,7 +139,7 @@ and `FungibleTokenMetadataViews`, which are other important contracts to use.
 Next let's create a `FooToken` contract at `cadence/contract/FooToken.cdc` using the boilerplate `generate` command from the Flow CLI:
 
 ```bash
-flow generate contract FooToken
+flow-c1 generate contract FooToken
 ```
 
 This will create a new file called `FooToken.cdc` in the `contracts` directory. Let's open it up and add some code.
@@ -181,7 +185,7 @@ which enforce different functionality that you can learn about in the standard.
 import "FungibleToken"
 
 access(all) contract FooToken: FungibleToken {
-    // ...totalSupply code
+    // ...totalSupply and path code
 
     access(all) resource Vault: FungibleToken.Vault {
 
@@ -412,6 +416,7 @@ The Fungible Token standard also enforces that implementations
 provide functionality to return a set of standard views about the tokens
 via the [ViewResolver](https://github.com/onflow/flow-nft/blob/master/contracts/ViewResolver.cdc)
 and [FungibleTokenMetadataViews](https://github.com/onflow/flow-ft/blob/master/contracts/FungibleTokenMetadataViews.cdc) definitions.
+(You will need to add these imports to your contract now)
 These provide developers with standard ways of representing metadata
 about a given token such as supply, token symbols, website links, and standard
 account paths and types that third-parties can access in a standard way.
@@ -513,10 +518,13 @@ If we want the ability to create new tokens, we'll need a way to mint them. To d
 
 ```cadence
 import "FungibleToken"
+import "MetadataViews"
+import "FungibleTokenMetadataViews"
 
 access(all) contract FooToken: FungibleToken {
 
     // ...additional contract code
+
     // Add this event
     access(all) event TokensMinted(amount: UFix64, type: String)
 
@@ -546,6 +554,8 @@ We also want to decide which account/s we want to give this ability to. In our e
 
 ```cadence
 import "FungibleToken"
+import "MetadataViews"
+import "FungibleTokenMetadataViews"
 
 access(all) contract FooToken: FungibleToken {
 
@@ -553,7 +563,7 @@ access(all) contract FooToken: FungibleToken {
 
     init() {
         self.totalSupply = 1000.0 // existed before
-        self.account.save(<- create Minter(), to: /storage/fooTokenMinter)
+        self.account.save(<- create Minter(), to: self.MinterStoragePath)
     }
 }
 ```
@@ -577,7 +587,7 @@ access(all) contract FooToken: FungibleToken {
     access(all) let VaultStoragePath: StoragePath
     access(all) let VaultPublicPath: PublicPath
     access(all) let ReceiverPublicPath: PublicPath
-    access(all) let AdminStoragePath: StoragePath
+    access(all) let MinterStoragePath: StoragePath
 
     access(all) view fun getContractViews(resourceType: Type?): [Type] {
         return [
@@ -712,28 +722,25 @@ access(all) contract FooToken: FungibleToken {
     init() {
         self.totalSupply = 1000.0
 
-        self.VaultStoragePath = /storage/exampleTokenVault
-        self.VaultPublicPath = /public/exampleTokenVault
-        self.AdminStoragePath = /storage/exampleTokenAdmin 
+        self.VaultStoragePath = /storage/fooTokenVault
+        self.VaultPublicPath = /public/fooTokenVault
+        self.MinterStoragePath = /storage/fooTokenMinter 
 
         // Create the Vault with the total supply of tokens and save it in storage
         //
         let vault <- create Vault(balance: self.totalSupply)
         emit TokensMinted(amount: vault.balance, type: vault.getType().identifier)
+        self.account.storage.save(<-vault, to: self.VaultStoragePath)
 
         // Create a public capability to the stored Vault that exposes
         // the `deposit` method and getAcceptedTypes method through the `Receiver` interface
         // and the `balance` method through the `Balance` interface
         //
-        let exampleTokenCap = self.account.capabilities.storage.issue<&FooToken.Vault>(self.VaultStoragePath)
-        self.account.capabilities.publish(exampleTokenCap, at: self.VaultPublicPath)
-        let receiverCap = self.account.capabilities.storage.issue<&FooToken.Vault>(self.VaultStoragePath)
-        self.account.capabilities.publish(receiverCap, at: self.ReceiverPublicPath)
+        let fooTokenCap = self.account.capabilities.storage.issue<&FooToken.Vault>(self.VaultStoragePath)
+        self.account.capabilities.publish(fooTokenCap, at: self.VaultPublicPath)
 
-        self.account.storage.save(<-vault, to: /storage/exampleTokenVault)
-
-        let admin <- create Minter()
-        self.account.storage.save(<-admin, to: self.AdminStoragePath)
+        let minter <- create Minter()
+        self.account.storage.save(<-minter, to: self.MinterStoragePath)
     }
 }
 ```
@@ -761,13 +768,13 @@ Let's also add a new `deployments` section to `flow.json` with the network we wa
 Next, using the Flow CLI, we will start the emulator. As mentioned, this will give us a local development environment for the Flow Blockchain.
 
 ```bash
-flow emulator start
+flow-c1 emulator start
 ```
 
 Open a new terminal and run the following to deploy your project:
 
 ```bash
-flow project deploy
+flow-c1 project deploy
 ```
 
 Congrats, you've deployed your contract to the Flow Blockchain emulator. To read more about deploying your project to other environments, see the [CLI docs](https://developers.flow.com/tools/flow-cli/deployment/deploy-project-contracts).
@@ -777,7 +784,7 @@ Congrats, you've deployed your contract to the Flow Blockchain emulator. To read
 Let's now check that our total supply was initialized with 1,000 FooTokens. Go ahead and create a script called `get_total_supply.cdc` using the `generate` command.
 
 ```bash
-flow generate script get_total_supply
+flow-c1 generate script get_total_supply
 ```
 
 In `cadence/scripts/get_total_supply.cdc` (which was just created), let's add this code which will log the `totalSupply` value from the `FooToken` contract:
@@ -785,18 +792,18 @@ In `cadence/scripts/get_total_supply.cdc` (which was just created), let's add th
 ```cadence
 import "FooToken"
 
-access(all) fun main() {
-  log(FooToken.totalSupply)
+access(all) fun main(): UFix64 {
+  return FooToken.totalSupply
 }
 ```
 
 To run this using the CLI, enter this in your terminal:
 
 ```bash
-flow scripts execute cadence/scripts/get_total_supply.cdc
+flow-c1 scripts execute cadence/scripts/get_total_supply.cdc
 ```
 
-In the terminal where you started the emulator, you should see `1000.0`
+In the terminal where you started the emulator, you should see `Result: 1000.0`
 
 To learn more about running scripts using Flow CLI, [see the docs](https://developers.flow.com/tools/flow-cli/scripts/execute-scripts).
 
@@ -807,7 +814,7 @@ On Flow, newly created accounts cannot receive arbitrary assets. They need to be
 Let's first create the file at `cadence/transactions/setup_ft_account.cdc` using the `generate` command:
 
 ```bash
-flow generate transaction setup_ft_account
+flow-c1 generate transaction setup_ft_account
 ```
 
 Then add this code to it.
@@ -849,7 +856,7 @@ You should check those out and try to use generic transactions whenever it is po
 Next let's create a new emulator account using the CLI. We'll use this account to create a new vault and mint tokens into it. Run:
 
 ```bash
-flow accounts create
+flow-c1 accounts create
 ```
 
 Let's call it `test-acct` and select "Emulator" for the network:
@@ -863,7 +870,7 @@ This will have added a new account, called `test-acct` to your `flow.json`.
 To call our setup account transaction from the CLI, we'll run the following:
 
 ```bash
-flow transactions send ./cadence/transactions/setup_ft_account.cdc --signer test-acct --network emulator
+flow-c1 transactions send ./cadence/transactions/setup_ft_account.cdc --signer test-acct --network emulator
 ```
 
 To learn more about running transactions using CLI, [see the docs](https://developers.flow.com/tools/flow-cli/transactions/send-transactions).
@@ -875,7 +882,7 @@ Let's now read the balance of the newly created account (`test-acct`) to check i
 Create this new script file `cadence/scripts/get_footoken_balance.cdc`:
 
 ```bash
-flow generate script get_footoken_balance
+flow-c1 generate script get_footoken_balance
 ```
 
 Add this code which attempts to borrow the capability from the account requested and logs the vault balance if permitted:
@@ -899,7 +906,7 @@ access(all) fun main(address: Address): UFix64 {
 To run this script using the CLI, enter the following in your terminal. Note: you'll need to replace `123` with the address created by CLI in your `flow.json` for the `test-acct` address.
 
 ```bash
-flow scripts execute cadence/scripts/get_footoken_balance.cdc 123 // change "123" to test-acct address
+flow-c1 scripts execute cadence/scripts/get_footoken_balance.cdc 123 // change "123" to test-acct address
 ```
 
 You should see a balance of zero logged.
@@ -911,7 +918,7 @@ Now that we have an account with a vault, let's mint some tokens into it using t
 To do this, let's create a new transaction file `cadence/transactions/mint_footoken.cdc`:
 
 ```bash
-flow generate transaction mint_footoken
+flow-c1 generate transaction mint_footoken
 ```
 
 Next, let's add the following code to the `mint_footoken.cdc` file. This code will attempt to borrow the minting capability and mint 20 new tokens into the receivers account.
@@ -931,7 +938,7 @@ transaction(recipient: Address, amount: UFix64) {
     prepare(signer: auth(BorrowValue) &Account) {
 
         // Borrow a reference to the admin object
-        self.tokenMinter = signer.storage.borrow<&FooToken.Minter>(from: FooToken.AdminStoragePath)
+        self.tokenMinter = signer.storage.borrow<&FooToken.Minter>(from: FooToken.MinterStoragePath)
             ?? panic("Signer is not the token admin")
 
         self.tokenReceiver = getAccount(recipient).capabilities.borrow<&{FungibleToken.Receiver}>(FooToken.VaultPublicPath)
@@ -952,13 +959,13 @@ transaction(recipient: Address, amount: UFix64) {
 To run this transaction, enter this in your terminal. Note: `123` should be replaced with address of `test-acct` found in your `flow.json`. This command also states to sign with our `emulator-account` on the Emulator network.
 
 ```bash
-flow transactions send ./cadence/transactions/mint_footoken.cdc 123 20.0 --signer emulator-account --network emulator
+flow-c1 transactions send ./cadence/transactions/mint_footoken.cdc 123 20.0 --signer emulator-account --network emulator
 ```
 
 Let's go ahead and read the vault again. Remember to replace `123` with the correct address.
 
 ```bash
-flow scripts execute cadence/scripts/get_footoken_balance.cdc 123
+flow-c1 scripts execute cadence/scripts/get_footoken_balance.cdc 123
 ```
 
 It should now say 20 tokens are in the vault.
@@ -970,7 +977,7 @@ The final functionality we'll add is the ability to transfer tokens from one acc
 To do that, create a new `cadence/transactions/transfer_footoken.cdc` transaction file:
 
 ```bash
-flow generate transaction transfer_footoken
+flow-c1 generate transaction transfer_footoken
 ```
 
 Let's add the code which states that the signer of the transaction will withdraw from their vault and put it into the receiver's vault which will be passed as a transaction argument.
@@ -979,7 +986,7 @@ Let's add the code which states that the signer of the transaction will withdraw
 import "FungibleToken"
 import "FooToken"
 
-transaction(amount: UFix64, to: Address) {
+transaction(to: Address, amount: UFix64) {
 
     // The Vault resource that holds the tokens that are being transferred
     let sentVault: @{FungibleToken.Vault}
@@ -1012,7 +1019,7 @@ transaction(amount: UFix64, to: Address) {
 To send our tokens, we'll need to create a new account to send them to. Let's make one more account on emulator. Run:
 
 ```bash
-flow accounts create
+flow-c1 accounts create
 ```
 
 And pick the name:
@@ -1026,19 +1033,19 @@ Make sure to select Emulator as the network.
 Don't forget the new account will need a vault added, so let's run the following transaction to add one:
 
 ```bash
-flow transactions send ./cadence/transactions/setup_ft_account.cdc --signer test-acct-2 --network emulator
+flow-c1 transactions send ./cadence/transactions/setup_ft_account.cdc --signer test-acct-2 --network emulator
 ```
 
 Now, let's send 1 token from our earlier account to the new account. Remember to replace `123` with account address of `test-acct-2`.
 
 ```bash
-flow transactions send ./cadence/transactions/transfer_footoken.cdc 123 "1.0" --signer test-acct --network emulator
+flow-c1 transactions send ./cadence/transactions/transfer_footoken.cdc 123 1.0 --signer test-acct --network emulator
 ```
 
 After that, read the balance of `test-acct-2` (replace the address `123`).
 
 ```bash
-flow scripts execute cadence/scripts/get_footoken_balance.cdc 123
+flow-c1 scripts execute cadence/scripts/get_footoken_balance.cdc 123
 ```
 
 You should now see 1 token in `test-acct-2` account!
