@@ -7,13 +7,13 @@ sidebar_position: 5
 Get the staged contract code from a contract thats been correctly staged.
 
 ```shell
-flow migrate staged_code <contract_name>
+flow migrate staged-code <contract_name>
 ```
 
 ## Example Usage
 
 ```
-> flow migrate staged_code HelloWorld --network=testnet
+> flow migrate staged-code HelloWorld --network=testnet
 
 Attempts to return the contract code of HelloWorld on the Testnet network.
 
