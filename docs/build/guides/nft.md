@@ -129,7 +129,6 @@ access(all) contract FooBar {
     // ...[previous code]...
 
     init() {
-        self.totalSupply = 0
         self.account.save(<- create NFTMinter(), to: /storage/fooBarNFTMinter)
     }
 }
@@ -192,7 +191,7 @@ access(all) contract FooBar: NonFungibleToken {
 ```
 These interface conformances for [NFT](https://github.com/onflow/flow-nft/blob/master/contracts/NonFungibleToken.cdc#L98)
 and [Collection](https://github.com/onflow/flow-nft/blob/master/contracts/NonFungibleToken.cdc#L190)
-inherit from other interfaces provide important functionality and restrictions
+inherit from other interfaces that provide important functionality and restrictions
 for your NFT and Collection types.
 
 To allow accounts to create their own collections, add a function
@@ -285,7 +284,7 @@ controls the full `Collection` object, but if a reference is created for it,
 the `withdraw()` function can only be called if the reference 
 is authorized by the owner with `NonFungibleToken.Withdraw`,
 which is [a standard entitlement](https://github.com/onflow/flow-nft/blob/master/contracts/NonFungibleToken.cdc#L58)
-defined by the FungibleToken contract:
+defined by the `NonFungibleToken` contract:
 ```cadence
 // Example of an authorized entitled reference to a NonFungibleToken.Collection
 <auth(NonFungibleToken.Withdraw) &{NonFungibleToken.Collection}>
@@ -612,7 +611,7 @@ they don't require gas fees or signatures (read more about scripts here).
 Start by creating a script file using the `generate` command again:
 
 ```bash
-flow generate script get_fooBar_ids
+flow generate script get_foobar_ids
 ```
 
 In this script, import the necessary contracts and define a function that retrieves the NFT IDs associated with a given account:
@@ -636,7 +635,7 @@ access(all) fun main(address: Address): [UInt64] {
 To check the NFTs associated with the `test-acct`, run the script (note: replace `0x123` with the address for `test-acct` from `flow.json`):
 
 ```bash
-flow scripts execute cadence/scripts/get_fooBar_ids.cdc 0x123
+flow scripts execute cadence/scripts/get_foobar_ids.cdc 0x123
 ```
 
 Since you haven't added any NFTs to the collection yet, the result will be an empty array.
@@ -646,7 +645,7 @@ Since you haven't added any NFTs to the collection yet, the result will be an em
 To mint and deposit an NFT into a collection, create a new transaction file:
 
 ```bash
-flow generate transaction mint_fooBar_nft
+flow generate transaction mint_foobar_nft
 ```
 
 In this file, define a transaction that takes a recipient's address as an argument. This transaction will borrow the minting capability from the contract account, borrow the recipient's collection capability, create a new NFT using the minter, and deposit it into the recipient's collection:
@@ -694,13 +693,13 @@ transaction(
 To run this transaction, use the Flow CLI. Remember, the contract account (which has the minting resource) should be the one signing the transaction. Pass the test account's address (from the `flow.json` file) as the recipient argument (note: replace `0x123` with the address for `test-acct` from `flow.json`):
 
 ```bash
-flow transactions send cadence/transactions/mint_fooBar_nft.cdc 0x123 --signer emulator-account --network emulator
+flow transactions send cadence/transactions/mint_foobar_nft.cdc 0x123 --signer emulator-account --network emulator
 ```
 
 After executing the transaction, you can run the earlier script to verify that the NFT was added to the `test-acct`'s collection (remember to replace `0x123`):
 
 ```bash
-flow scripts execute cadence/scripts/get_fooBar_ids.cdc 0x123
+flow scripts execute cadence/scripts/get_foobar_ids.cdc 0x123
 ```
 
 You should now see a value in the `test-acct`'s collection array!
@@ -710,7 +709,7 @@ You should now see a value in the `test-acct`'s collection array!
 To transfer an NFT to another account, create a new transaction file using `generate`:
 
 ```bash
-flow generate transaction transfer_fooBar_nft
+flow generate transaction transfer_foobar_nft
 ```
 
 In this file, define a transaction that takes a recipient's address and the ID of the NFT you want to transfer as arguments. This transaction will borrow the sender's collection, get the recipient's capability, withdraw the NFT from the sender's collection, and deposit it into the recipient's collection:
@@ -766,13 +765,13 @@ flow transactions send cadence/transactions/setup_foobar_collection.cdc --signer
 Now, run the transaction to transfer the NFT from `test-acct` to `test-acct-2` using the addresses from the `flow.json` file (replace `0x124` with `test-acct-2`'s address. Also note that `0` is the `id` of the `NFT` we'll be transferring):
 
 ```bash
-flow transactions send cadence/transactions/transfer_fooBar_nft.cdc 0x124 0 --signer test-acct --network emulator
+flow transactions send cadence/transactions/transfer_foobar_nft.cdc 0x124 0 --signer test-acct --network emulator
 ```
 
 To verify the transfer, you can run the earlier script for `test-acct-2` (replace `0x124`):
 
 ```bash
-flow scripts execute cadence/scripts/get_fooBar_ids.cdc 0x123
+flow scripts execute cadence/scripts/get_foobar_ids.cdc 0x123
 ```
 
 The transfer transaction also has a [generic version](https://github.com/onflow/flow-nft/blob/master/transactions/generic_transfer_with_address.cdc) that developers are encouraged to use!
