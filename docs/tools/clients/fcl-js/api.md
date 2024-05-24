@@ -59,17 +59,17 @@ addStuff().then((d) => console.log(d)); // 13 (5 + 7 + 1)
 
 ### Common Configuration Keys
 
-| Name                              | Example                                                       | Description                                                                                                                                                                   |
-| --------------------------------- | ------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `accessNode.api` **(required)**   | `https://rest-testnet.onflow.org`                             | API URL for the Flow Blockchain Access Node you want to be communicating with. See all available access node endpoints [here](https://developers.onflow.org/http-api/).       |
-| `app.detail.title`                | `Cryptokitties`                                               | Your applications title, can be requested by wallets and other services.                                                                                                      |
-| `app.detail.icon`                 | `https://fcl-discovery.onflow.org/images/blocto.png`          | Url for your applications icon, can be requested by wallets and other services.                                                                                               |
-| `challenge.handshake`             | **DEPRECATED**                                                | Use `discovery.wallet` instead.                                                                                                                                               |
-| `discovery.authn.endpoint`        | `https://fcl-discovery.onflow.org/api/testnet/authn`          | Endpoint for alternative configurable Wallet Discovery mechanism. Read more on [discovery](#discovery)                                                                        |
-| `discovery.wallet` **(required)** | `https://fcl-discovery.onflow.org/testnet/authn`              | Points FCL at the Wallet or Wallet Discovery mechanism.                                                                                                                       |
-| `discovery.wallet.method`         | `IFRAME/RPC`, `POP/RPC`, `TAB/RPC`, `HTTP/POST`, or `EXT/RPC` | Describes which service strategy a wallet should use.                                                                                                                         |
-| `fcl.limit`                       | `100`                                                         | Specifies fallback compute limit if not provided in transaction. Provided as integer.                                                                                         |
-| `flow.network` **(recommended)**  | `testnet`                                                     | Used in conjunction with stored interactions and provides FCLCryptoContract address for `testnet` and `mainnet`. Possible values: `local`, `testnet`, `mainnet`. |
+| Name                              | Example                                                       | Description                                                                                                                                                             |
+| --------------------------------- | ------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `accessNode.api` **(required)**   | `https://rest-testnet.onflow.org`                             | API URL for the Flow Blockchain Access Node you want to be communicating with. See all available access node endpoints [here](https://developers.onflow.org/http-api/). |
+| `app.detail.title`                | `Cryptokitties`                                               | Your applications title, can be requested by wallets and other services.                                                                                                |
+| `app.detail.icon`                 | `https://fcl-discovery.onflow.org/images/blocto.png`          | Url for your applications icon, can be requested by wallets and other services.                                                                                         |
+| `challenge.handshake`             | **DEPRECATED**                                                | Use `discovery.wallet` instead.                                                                                                                                         |
+| `discovery.authn.endpoint`        | `https://fcl-discovery.onflow.org/api/testnet/authn`          | Endpoint for alternative configurable Wallet Discovery mechanism. Read more on [discovery](#discovery)                                                                  |
+| `discovery.wallet` **(required)** | `https://fcl-discovery.onflow.org/testnet/authn`              | Points FCL at the Wallet or Wallet Discovery mechanism.                                                                                                                 |
+| `discovery.wallet.method`         | `IFRAME/RPC`, `POP/RPC`, `TAB/RPC`, `HTTP/POST`, or `EXT/RPC` | Describes which service strategy a wallet should use.                                                                                                                   |
+| `fcl.limit`                       | `100`                                                         | Specifies fallback compute limit if not provided in transaction. Provided as integer.                                                                                   |
+| `flow.network` **(recommended)**  | `testnet`                                                     | Used in conjunction with stored interactions and provides FCLCryptoContract address for `testnet` and `mainnet`. Possible values: `local`, `testnet`, `mainnet`.        |
 
 ## Using Contracts in Scripts and Transactions
 
@@ -1159,8 +1159,8 @@ const tx = await fcl
 
 ### `subscribeEvents`
 
-<Callout type="warning">
-The `subscribeEvents` feature is only available in the latest alpha release of FCL. To use it, install `@onflow/fcl@alpha`.
+<Callout type="info">
+The subscribeEvents SDK builder is for more advanced use cases where you wish to directly specify a starting block to listen for events. For most use cases, consider using the pre-built interaction [`fcl.events(eventTypes)`](#events).
 </Callout>
 
 A build that returns a [event stream connection](#eventstream) once decoded. It will establish a WebSocket connection to the Access Node and subscribe to events with the given parameters.
