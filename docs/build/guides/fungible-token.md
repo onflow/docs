@@ -26,7 +26,7 @@ making them perfect for representing digital objects with real value.
 You can learn more about resources in the Cadence [documentation](https://cadence-lang.org/docs/1.0/language/resources)
 and [tutorials](https://cadence-lang.org/docs/1.0/tutorial/resources).
 
-For Fungible Tokens specifically, tokens are represented by a resource type called a `Vault`:
+For fungible tokens specifically, tokens are represented by a resource type called a `Vault`:
 
 ```cadence
 access(all) resource interface Vault {
@@ -46,7 +46,8 @@ When you transfer tokens from one vault to another:
 
 1. The transferor's vault creates a temporary vault holding the transfer amount.
 2. The original vault's balance decreases by the transfer amount.
-3. The recipient's vault receives the tokens from the temporary vault and adds the temporary vault's balance to the its own balance.
+3. The recipient's vault receives the tokens from the temporary vault 
+   and adds the temporary vault's balance to the its own balance.
 4. The temporary vault is then destroyed.
 
 This process ensures secure and accurate token transfers on the Flow blockchain.
@@ -71,13 +72,22 @@ To start creating a Fungible Token on the Flow blockchain, you'll first need som
 
 The **Flow CLI** (Command Line Interface) provides a suite of tools that allow developers to interact seamlessly with the Flow blockchain.
 
-If you haven't installed the Flow CLI yet and have [Homebrew](https://brew.sh/) installed, you can run `brew install flow-cli`. If you don’t have Homebrew, please follow [the installation guide here](https://developers.flow.com/tools/flow-cli/install).
+If you haven't installed the Flow CLI yet and have [Homebrew](https://brew.sh/) installed,
+you can run `brew install flow-cli`. If you don’t have Homebrew,
+please follow [the installation guide here](https://developers.flow.com/tools/flow-cli/install).
+
+For this guide, you will need to use the Cadence 1.0 Flow CLI.
+You can install that with the instructions [here](https://cadence-lang.org/docs/cadence-migration-guide#install-cadence-10-cli).
+The Cadence 1.0 CLI uses `flow-c1` instead of `flow` to execute commands.
 
 ### Initializing a New Project
 
 > 💡 Note: Here is [a link to the completed code](https://github.com/chasefleming/FooToken) if you want to skip ahead or reference as you follow along.
 
-Once you have the Flow CLI installed, you can set up a new project using the `flow-c1 setup` command. This command initializes the necessary directory structure and a `flow.json` configuration file (a way to configure your project for contract sources, deployments, accounts, and more):
+Once you have the Flow CLI installed, you can set up a new project
+using the `flow-c1 setup` command. This command initializes
+the necessary directory structure and a `flow.json` configuration file
+(a way to configure your project for contract sources, deployments, accounts, and more):
 
 ```bash
 flow-c1 setup FooToken
@@ -100,7 +110,12 @@ Now, navigate into the project directory:
 cd FooToken
 ```
 
-In our configuration file, called `flow.json`, for the network we want to use, we are going to state the address the `FungibleToken` contract is deployed to via `aliases` in a new `contracts` section. Since it is a standard contract, it has already been deployed to the emulator, a tool that runs and emulates a local development version of the Flow Blockchain, for us. You can find addresses for other networks, like Testnet and Mainnet, on the [Fungible Token Standard repo](https://github.com/onflow/flow-ft).
+In our configuration file, called `flow.json`, for the network we want to use,
+we are going to state the address the `FungibleToken` contract is deployed
+to via `aliases` in a new `contracts` section. Since it is a standard contract,
+it has already been deployed to the emulator, a tool that runs and emulates
+a local development version of the Flow Blockchain, for us.
+You can find addresses for other networks, like Testnet and Mainnet, on the [Fungible Token Standard repo](https://github.com/onflow/flow-ft).
 
 We'll also need to add the addresses for `ViewResolver`, `MetadataViews`,
 and `FungibleTokenMetadataViews`, which are other important contracts to use.
@@ -290,7 +305,10 @@ to understand how to use the feature properly.
 for privileged functionality to be protected by an entitlement so that it can
 only be accessed if it is authorized.
 
-In addition to withdrawing, the vault also needs a way to deposit. We'll [typecast](https://cadence-lang.org/docs/1.0/language/operators#casting-operators) to make sure we are dealing with the correct token, update the vault balance, and destroy the vault. Add this code to your resource:
+In addition to withdrawing, the vault also needs a way to deposit.
+We'll [typecast](https://cadence-lang.org/docs/1.0/language/operators#casting-operators)
+to make sure we are dealing with the correct token, update the vault balance,
+and destroy the vault. Add this code to your resource:
 
 ```cadence
 import "FungibleToken"
@@ -550,7 +568,10 @@ access(all) contract FooToken: FungibleToken {
 }
 ```
 
-We also want to decide which account/s we want to give this ability to. In our example, we'll give it to the account where the contract is deployed. We can set this in the contract init function below the setting of total supply so that when the contract is created the minter is stored on the same account.
+We also want to decide which account/s we want to give this ability to.
+In our example, we'll give it to the account where the contract is deployed.
+We can set this in the contract init function below the setting of total supply
+so that when the contract is created the minter is stored on the same account.
 
 ```cadence
 import "FungibleToken"
@@ -747,7 +768,8 @@ access(all) contract FooToken: FungibleToken {
 
 ## Deploying the Contract
 
-In order to use the contract, we need to deploy it to the network we want to use it on. In our case we are going to deploy it to emulator while developing.
+In order to use the contract, we need to deploy it to the network we want to use it on.
+In our case we are going to deploy it to emulator while developing.
 
 Back in our `flow.json`, let's add our `FooToken` to the `contracts` after `FungibleToken` with the path of the source code:
 
@@ -755,7 +777,9 @@ Back in our `flow.json`, let's add our `FooToken` to the `contracts` after `Fung
 "FooToken": "cadence/contracts/FooToken.cdc"
 ```
 
-Let's also add a new `deployments` section to `flow.json` with the network we want to deploy it to, `emulator`, the account we want it deployed to `emulator-account`, and the list of contracts we want deployed in the array.
+Let's also add a new `deployments` section to `flow.json` with the network
+we want to deploy it to, `emulator`, the account we want it deployed to `emulator-account`,
+and the list of contracts we want deployed in the array.
 
 ```json
 "deployments": {
@@ -765,7 +789,8 @@ Let's also add a new `deployments` section to `flow.json` with the network we wa
 }
 ```
 
-Next, using the Flow CLI, we will start the emulator. As mentioned, this will give us a local development environment for the Flow Blockchain.
+Next, using the Flow CLI, we will start the emulator. As mentioned,
+this will give us a local development environment for the Flow Blockchain.
 
 ```bash
 flow-c1 emulator start
@@ -777,7 +802,9 @@ Open a new terminal and run the following to deploy your project:
 flow-c1 project deploy
 ```
 
-Congrats, you've deployed your contract to the Flow Blockchain emulator. To read more about deploying your project to other environments, see the [CLI docs](https://developers.flow.com/tools/flow-cli/deployment/deploy-project-contracts).
+Congrats, you've deployed your contract to the Flow Blockchain emulator.
+To read more about deploying your project to other environments,
+see the [CLI docs](https://developers.flow.com/tools/flow-cli/deployment/deploy-project-contracts).
 
 ## Reading the Token’s Total Supply
 
@@ -809,7 +836,13 @@ To learn more about running scripts using Flow CLI, [see the docs](https://devel
 
 ## Giving Accounts the Ability to Receive Tokens
 
-On Flow, newly created accounts cannot receive arbitrary assets. They need to be initialized to receive resources. In our case, we want to give accounts tokens and we’ll need to create a `Vault` (which acts as a receiver) on each account that we want to have the ability to receive tokens. To do this, we'll need to run a transaction which will create the vault and set it in their storage using the `createEmptyVault()` function we created earlier on the contract.
+On Flow, newly created accounts cannot receive arbitrary assets.
+They need to be initialized to receive resources.
+In our case, we want to give accounts tokens and we’ll need to create
+a `Vault` (which acts as a receiver) on each account that we want
+to have the ability to receive tokens. To do this, we'll need to run a transaction 
+which will create the vault and set it in their storage
+using the `createEmptyVault()` function we created earlier on the contract.
 
 Let's first create the file at `cadence/transactions/setup_ft_account.cdc` using the `generate` command:
 
@@ -903,7 +936,9 @@ access(all) fun main(address: Address): UFix64 {
 }
 ```
 
-To run this script using the CLI, enter the following in your terminal. Note: you'll need to replace `123` with the address created by CLI in your `flow.json` for the `test-acct` address.
+To run this script using the CLI, enter the following in your terminal.
+Note: you'll need to replace `123` with the address created by CLI
+in your `flow.json` for the `test-acct` address.
 
 ```bash
 flow-c1 scripts execute cadence/scripts/get_footoken_balance.cdc 123 // change "123" to test-acct address
@@ -913,7 +948,8 @@ You should see a balance of zero logged.
 
 ## Minting More Tokens
 
-Now that we have an account with a vault, let's mint some tokens into it using the Minter we created on the contract account.
+Now that we have an account with a vault, let's mint some tokens into it
+using the Minter we created on the contract account.
 
 To do this, let's create a new transaction file `cadence/transactions/mint_footoken.cdc`:
 
@@ -921,7 +957,9 @@ To do this, let's create a new transaction file `cadence/transactions/mint_footo
 flow-c1 generate transaction mint_footoken
 ```
 
-Next, let's add the following code to the `mint_footoken.cdc` file. This code will attempt to borrow the minting capability and mint 20 new tokens into the receivers account.
+Next, let's add the following code to the `mint_footoken.cdc` file.
+This code will attempt to borrow the minting capability
+and mint 20 new tokens into the receivers account.
 
 ```cadence
 import "FungibleToken"
@@ -956,7 +994,9 @@ transaction(recipient: Address, amount: UFix64) {
 }
 ```
 
-To run this transaction, enter this in your terminal. Note: `123` should be replaced with address of `test-acct` found in your `flow.json`. This command also states to sign with our `emulator-account` on the Emulator network.
+To run this transaction, enter this in your terminal.
+Note: `123` should be replaced with address of `test-acct` found in your `flow.json`.
+This command also states to sign with our `emulator-account` on the Emulator network.
 
 ```bash
 flow-c1 transactions send ./cadence/transactions/mint_footoken.cdc 123 20.0 --signer emulator-account --network emulator
@@ -980,7 +1020,9 @@ To do that, create a new `cadence/transactions/transfer_footoken.cdc` transactio
 flow-c1 generate transaction transfer_footoken
 ```
 
-Let's add the code which states that the signer of the transaction will withdraw from their vault and put it into the receiver's vault which will be passed as a transaction argument.
+Let's add the code which states that the signer of the transaction
+will withdraw from their vault and put it into the receiver's vault
+which will be passed as a transaction argument.
 
 ```cadence
 import "FungibleToken"
