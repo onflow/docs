@@ -87,6 +87,22 @@ flow scripts execute ./helloWorld.cdc
 
 A user can define their own scripts or can use already defined scripts by the contract authors that can be found by using the [FLIX](../../tools/flow-cli/flix) service.
 
+## Best Practices
+
+Following are some recommendations on how to write efficient scripts:
+
+1. **Simpler and shorter scripts**: Scripts, like transactions, are subject to computation limits (see [limitations](#limitations)). It is recommended to run shorter and simpler scripts which have low time complexity for a faster response. If you have a script with several nested loops, long iteration, or that queries many onchain fields, consider simplifying the script logic.
+
+
+2. **Fewer state reads**: A script reads execution state and to get a faster response, it is best to limit the amount of state that is read by the script.
+
+
+3. **Smaller length of array or dictionary type arguments**: If your script requires an array or a dictionary as an argument where each element causes a state lookup, instead of making a single script call passing in a long list, make multiple calls with a smaller subset of the array or dictionary.
+
+
+4. **NFTCatalog**: If your script uses the [NFTCatalog](https://github.com/onflow/nft-catalog) functions, ensure that you use the [latest functions](https://github.com/onflow/nft-catalog?tab=readme-ov-file#using-the-catalog-for-marketplaces-and-other-nft-applications) and do not use any of the deprecated functions such as `getCatalog()`.
+
+
 ## Limitations
 
 1. **Rate limit** - Script execution is subjected to API rate-limits imposed by the Access nodes and the Execution nodes. The rate limits for the Public Access nodes hosted by QuickNode are outlined [here](https://www.quicknode.com/docs/flow#endpoint-rate-limits).
