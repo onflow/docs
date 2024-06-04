@@ -13,9 +13,9 @@ flow migrate stage-contract <contract_name>
 ## Example Usage
 
 ```
-> flow migrate stage-contract HelloWorld --network=testnet
+> flow migrate stage-contract HelloWorld --network=mainnet
 
-Attempts to the stage the contract `HelloWorld` onto the Testnet network.
+Attempts to the stage the contract `HelloWorld` onto the Mainnet network.
 
 ```
 
