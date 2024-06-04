@@ -29,7 +29,7 @@ cd cli-quickstart
 Next, we'll initialize a new Flow project with the CLI:
 
 ```
-flow init
+flow init --config-only
 ```
 
 This will create a `flow.json` file in your project directory. This file is used to configure your project and describe the setup of your contracts, networks, and accounts.

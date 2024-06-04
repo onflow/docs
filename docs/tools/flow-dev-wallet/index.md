@@ -38,7 +38,7 @@ The Flow emulator is bundled with the Flow CLI. Instructions for installing the 
 Run this command to create `flow.json` file (typically in your project's root directory):
 
 ```sh
-flow init
+flow init --config-only
 ```
 
 ### Start the Emulator
