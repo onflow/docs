@@ -21,7 +21,7 @@ Applications deployed to EVM on Flow will work with popular EVM-compatible walle
     return <AddNetworkButton />;
 }}
 </BrowserOnly>
-Manually method: Add EVM on Flow as a custom network to MetaMask:
+Manual method: Add EVM on Flow as a custom network to MetaMask:
 
 1. Open the MetaMask browser extension
 2. Open the network selection dropdown menu by clicking the dropdown button at the top of the extension
@@ -55,15 +55,9 @@ To use the Flow Wallet Chrome extension:
 1. Open the Flow Wallet browser extension and create your account.
 2. Connect to an app using Flow Wallet.
 
-## Details
+## EVM Specification
 
-- Flow EVM: A virtual EVM-based blockchain on Flow using the latest EVM byte-code interpreter `Geth v1.13`.
-- FLOW Token Usage: Utilizes `FLOW` token for transactions, with balances denominated in `Atto-FLOW` (1 `FLOW` = 10^18 `Atto-FLOW`).
-
-Composability:
-- [Cadence Calls](./cadence/direct-calls.md): Cadence can call Flow EVM.
-- [Extended Precompiles](https://github.com/onflow/flips/blob/main/protocol/20231116-evm-support.md#flow-evm-extended-precompiles): Extended EVM smart contracts interact with Cadence.
-- [Cadence-Owned-Account (COA)](./cadence/interacting-with-coa.md): Allows a Cadence resource to own/control an EVM address.
-
-For further details refer to [FLIP 223: EVM integration interface](https://github.com/onflow/flips/blob/main/protocol/20231116-evm-support.md)
-![Flow EVM account model](https://raw.githubusercontent.com/onflow/flips/main/protocol/20231116-evm-support/flow-evm-account-model.png)
+- Flow EVM is a virtual EVM-based blockchain on Flow using the latest EVM byte-code interpreter `Geth v1.13`
+- Utilizes `FLOW` token for transactions, with balances denominated in `Atto-FLOW` (1 `FLOW` = 10^18 `Atto-FLOW`)
+- The [EVM Gateway](https://github.com/onflow/flow-evm-gateway) exposes the standard EVM API (Ethereum JSON-RPC)
+- Read more about the implementation in [FLIP 223: EVM integration interface](https://github.com/onflow/flips/blob/main/protocol/20231116-evm-support.md)
