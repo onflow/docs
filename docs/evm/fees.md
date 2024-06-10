@@ -12,11 +12,8 @@ Are you a Cadence developer looking for information about Fees on Cadence? If so
 
 EVM transactions are ultra low-cost and use the native FLOW token as gas. [Externally Owned Accounts (EOAs)](https://developers.flow.com/evm/build/accounts) function the same on Flow as other EVM networks like Ethereum.
 
-<h2>Gasless Transactions</h2>
-<p>Fees needed to execute transactions on a Web3 app are often a major challenge for new users and can be a barrier to adoption. Builders can easily extend their apps with Cadence to create ‘gasless’ experiences by specifying their app as the <a href="https://developers.flow.com/build/differences-vs-evm/account-abstraction#sponsored-transactions">sponsor</a> instead of the user.</p>
-
 <details>
-<summary><h2>How transaction fee are computed on EVM</h2></summary>
+<summary><h2>How Transaction Fees are Computed on EVM</h2></summary>
 
 Transaction fees on Flow are described [here](https://developers.flow.com/build/basics/fees#fee-structure) in detail. With EVM on Flow, EVM operations can now be called within Cadence transactions. EVM operations also have an associated effort measured in gas which needs to be factored into the execution effort calculation in addition to the Flow computation for any EVM transaction.
 
@@ -29,7 +26,7 @@ Transaction fee on EVM = surge x [inclusion fee + (execution effort * unit cost)
   - `Execution Effort (computation)` is based on transaction type and operations that are called during the execution of a transaction. The weights determine how “costly” (time consuming) each operation is.
   - `Execution Effort Unit Cost` = `2.49E-07 FLOW` (currently constant, but subject to change with community approval)
 
-<h3>Calculation of execution effort</h3>
+<h3>Calculation of Execution Effort</h3>
 
 ```
 Execution Effort (computation) =
@@ -51,7 +48,7 @@ where
 </details>
 
 <details>
-  <summary><h2>Demonstration of transaction fee on EVM</h2></summary>
+  <summary><h2>Demonstration of Transaction Fees on EVM</h2></summary>
   
 Assume a simple NFT transfer transaction that makes 31 cadence loop calls, reads 5668 bytes from the storage register, and saves 1668 bytes to the storage register.
 
@@ -60,7 +57,7 @@ Assume a simple NFT transfer transaction that makes 31 cadence loop calls, reads
 - 'SetValue' = 1668
 - 'CreateAccount' = 0
 
-**Scenario 1 - Cadence-only transaction**
+**Scenario 1 - Cadence-only Transaction**
 
 ```
 Execution Effort = 0.00478 * (31) + 0.00246 * (5668) + 0.00234 *(1668)  + 8.65988 *(0) + EVMGasUsageCost * EVMGasUsage
@@ -73,7 +70,7 @@ Thus
 ```
 Transaction fee = [1E-6 FLOW + (18.04378 * 2.49E-07 FLOW)] x 1 = 5.5E-06 FLOW
 ```
-**Scenario 2 - EVM transaction**
+**Scenario 2 - EVM Transaction**
 If the EVMGasUsage can be assumed to be 21,000 gas (typical for a simple transfer),
 ```
 Execution Effort = 0.00478 * (31) + 0.00246 * (5668) + 0.00234 *(1668)  + 8.65988 *(0) + 1/5000 * 21000 = 22.24378
@@ -85,4 +82,7 @@ Transaction fee = [1E-6 FLOW + (110.97 * 2.49E-07 FLOW)] x 1 = 6.55E-06 FLOW
 **Note**: Please be aware that this example serves solely for illustrative purposes to elucidate the calculations. Actual transaction fees may differ due to various factors, including the byte size of the transaction.
 </details>
 
-To learn more about the technical implementation of EVM fees and how they are calculated, read this [explainer](https://forum.flow.com/t/how-evm-transaction-fees-work-on-flow-previewnet/5751). To learn more about storage fee and transaction fee, visit [Flow Tokenomics page](https://flow.com/flow-tokenomics/technical-overview).
+<h2>Gasless Transactions</h2>
+<p>Fees needed to execute transactions on a Web3 app are often a major challenge for new users and can be a barrier to adoption. Builders can easily extend their apps with Cadence to create ‘gasless’ experiences by specifying their app as the <a href="https://developers.flow.com/build/differences-vs-evm/account-abstraction#sponsored-transactions">sponsor</a> instead of the user.</p>
+
+To learn more about storage fee and transaction fee, visit [Flow Tokenomics page](https://flow.com/flow-tokenomics/technical-overview).
