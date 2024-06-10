@@ -9,14 +9,11 @@ sidebar_position: 4
 Are you a Cadence developer looking for information about Fees on Cadence? If so, check out the Cadence specific documentation [here](../build/basics/fees.md)
 
 :::
-<h2>Fees</h2>
 
 EVM transactions are ultra low-cost and use the native FLOW token as gas. [Externally Owned Accounts (EOAs)](https://developers.flow.com/evm/build/accounts) function the same on Flow as other EVM networks like Ethereum.
 
-<details>
-<summary><h2>Gasless Transactions</h2></summary>  
+<h2>Gasless Transactions</h2>
 <p>Fees needed to execute transactions on a Web3 app are often a major challenge for new users and can be a barrier to adoption. Builders can easily extend their apps with Cadence to create ‘gasless’ experiences by specifying their app as the <a href="https://developers.flow.com/build/differences-vs-evm/account-abstraction#sponsored-transactions">sponsor</a> instead of the user.</p>
-</details>
 
 <details>
 <summary><h2>How transaction fee are computed on EVM</h2></summary>
@@ -31,10 +28,8 @@ Transaction fee on EVM = surge x [inclusion fee + (execution effort * unit cost)
 - `Execution fee` The fee that accounts for the operational cost of running the transaction script, processing the results, sending results for verification, generating verification receipts, etc. and is calculated as a product of `execution effort units` and the `cost per unit`.
   - `Execution Effort (computation)` is based on transaction type and operations that are called during the execution of a transaction. The weights determine how “costly” (time consuming) each operation is.
   - `Execution Effort Unit Cost` = `2.49E-07 FLOW` (currently constant, but subject to change with community approval)
-</details>
 
-<details>
-<summary><h2>Calculation of execution effort</h2></summary>
+<h3>Calculation of execution effort</h3>
 
 ```
 Execution Effort (computation) =
