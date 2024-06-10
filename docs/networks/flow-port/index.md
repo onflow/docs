@@ -3,7 +3,10 @@ title: Flow Port
 description: How to use Flow Port
 ---
 
-Welcome to Flow Port, your portal to the decentralized world of Flow. Access your Flow account, interact with the blockchain, manage your assets and more.
+Flow Port is an account management tool for Flow. Flow Port allows you to create an account using a wallet provider, manage your account and assets across Flow's VMs and perform staking and delegating actions on Flow.
+
+Typically, your wallet provider will support most of these features. However, should your wallet provider not do so, or should you wish to use this tool for any other reason, Flow Foundation makes it available for you.
+
 ## Creating an Account
 In order to access Flow Port, you must have a valid Flow address. If you do not have a Flow address, you can choose to create one via any of the available FCL wallet providers.
 
