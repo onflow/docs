@@ -5,7 +5,7 @@
 This page serves as a resource for the different configuration options for Access nodes on the Flow network.
 
 <aside>
-⚠️ Nodes MUST be running `v0.32.10+` or newer.
+⚠️ Nodes MUST be running `v0.32.10+` or newer to enable execution data indexing.
 
 </aside>
 
@@ -31,16 +31,13 @@ flow_access/
 
 # Setup Data Indexing
 
-First, your node needs to download and index the data. There are 3 steps:
+First, your node needs to download and index the execution data. There are 3 steps:
 
 1. Enable Execution Data Sync
 2. Download the root checkpoint file
 3. Configure the node to run the indexer
 
-As of **`mainnet24`** / **`devnet49`**, Access nodes can be configured with the following options:
-
-1. **Indexing Enablement**: Access nodes can be configured to support enabling indexing when the checkpoint is from the root block in the node's root protocol state snapshot.
-2. **Mid-Spork Indexing**: Access nodes also support starting indexing using a mid-spork checkpoint with a root snapshot taken at the same height.
+As of **`mainnet24`** / **`devnet49`**, Access nodes can be configured to index execution data to support local script execution, and serving all of the Access API endpoints using local data. There are different setup procedures depending on if you are enabling indexing immediately after a network upgrade, or at some point between upgrades.
 
 # Enable Execution Data Sync
 
@@ -70,7 +67,7 @@ The root checkpoint for each spork is hosted in GCP. You can find the link for t
 The URL in that file will point to a file named `root.checkpoint`. This is the base file and is fairly small. There are 17 additional files that make up the actual data, named `root.checkpoint.000`, `root.checkpoint.001`, …, `root.checkpoint.016`. If you have `gsutil` installed, you can download them all easily with the following command.
 
 ```bash
-gsutil -m cp "gs://flow-genesis-bootstrap/devnet-49-execution/public-root-information/root.checkpoint*" .
+gsutil -m cp "gs://flow-genesis-bootstrap/[network]-execution/public-root-information/root.checkpoint*" .
 ```
 
 Once the files are downloaded, you can either move them to `/bootstrap/execution-state/` within the node’s bootstrap directory or put them in any mounted directory and reference the location with this cli flag: `--execution-state-checkpoint=/path/to/root.checkpoint`. The naming of files should be `root.checkpoint.*`.
@@ -102,34 +99,33 @@ There are 2 cli flags that you will need to add:
 
 Now that all of the settings to enable indexing are in place, you can start your node.
 
-To run node except of regular flags you need to add next flags:
+At a minimum, you will need the following flags:
 
-`--execution-data-indexing-enabled=true`
-
-`--execution-state-dir=/data/execution-state`
-
-`--execution-data-sync-enabled=true`
-
-`--execution-data-dir=/data/execution-data`
+```
+--execution-data-indexing-enabled=true
+--execution-state-dir=/data/execution-state
+--execution-data-sync-enabled=true
+--execution-data-dir=/data/execution-data
+```
 
 For better visibility of the process, you can also add
 
-`-p 8080:8080` - export port 8080 so you could inspect the metrics
+`-p 8080:8080` - export port 8080 from your docker container, so you could inspect the metrics
 
 `--loglevel=info` - for checking logs.
 
 Notes on what to expect:
 
-- On startup, the node will load the checkpoint into the `execution-state` db. For `devnet48`, this takes 20-30 min depending on the node’s specs. For `mainnet24`, it takes >45 min. You can follow the process by grepping your logs for `register_bootstrap`.
+- On startup, the node will load the checkpoint into the `execution-state` db. For `devnet48`, this takes 20-30 min depending on the node’s specs. For `mainnet24`, it takes >45 min. The loading time will increase over time. You can follow along with the process by grepping your logs for `register_bootstrap`.
 - After the checkpoint is loaded, the indexer will begin ingesting the downloaded execution data. This will take several hours to days depending on if the data was already downloaded and the hardware specs of the node.
-- If your node already had all of the data, it will index all of it as quickly as possible. This will likely cause the node to run with a high CPU.
+- If your node already had all the data, it will index all of it as quickly as possible. This will likely cause the node to run with a high CPU.
 
 When you restart the node for the first time with syncing enabled, it will sync execution data for all blocks from the network.
 
 # Troubleshooting
 
 - If the root checkpoint file is missing or invalid, the node will crash. It must be taken from the same block as the `root-protocol-state-snapshot.json` used to start your node.
-- If you don’t set one of the `--execution-data-dir` or `--execution-state-dir` flags, the data will be written to the home directory inside the container (likely `/root`). This may cause your container to run out of disk space and crash, or lose all data each time the container is restarted.
+- If you don’t set one the `--execution-data-dir` and `--execution-state-dir` flags, the data will be written to the home directory inside the container (likely `/root`). This may cause your container to run out of disk space and crash, or lose all data each time the container is restarted.
 - If your node crashes or restarts before the checkpoint finishes loading, you will need to stop the node, delete the `execution-state` directory, and start it again. Resuming is currently not supported.
 - If you see the following message then your `checkpoint` and `root-protocol-state-snapshot` are not for the same height.
 
@@ -144,7 +140,11 @@ When you restart the node for the first time with syncing enabled, it will sync 
 }
 ```
 
-- You can check if the execution sync height is increasing by command: `curl localhost:8080/metrics | grep highest_download_height`. To check indexed height: `curl -s localhost:8080/metrics | grep highest_indexed_height`.
+- You can check if the execution sync and index heights are increasing by querying the metrics endpoint:
+    ```
+    curl localhost:8080/metrics | grep highest_download_height
+    curl -s localhost:8080/metrics | grep highest_indexed_height
+    ```
 
 # Execution Data API
 
