@@ -15,17 +15,17 @@ The node requires the following directory structure:
 
 ```bash
 $ tree flow_access
-flow_access/
-├── bootstrap
-│		├── private-root-information(with corresponding AN data)
-│		└── execution-state
-│               └── public-root-information
-│			├── node-id
-│			└── node-info.pub.NODE_ID.json
-│                       └── root-protocol-state-snapshot.json (the genesis data)
-└── data (directory used by the node to store block data)
-│         └── execution-data
-│         └── execution-state    
+	flow_access/
+	├── bootstrap
+	│	├── private-root-information (with corresponding AN data)
+	│	└── execution-state
+	│	└── public-root-information
+	│		├── node-id
+	│		└── node-info.pub.NODE_ID.json
+	│		└── root-protocol-state-snapshot.json (the genesis data)
+	└── data (directory used by the node to store block data)
+	│	└── execution-data
+	│	└── execution-state
 
 ```
 
