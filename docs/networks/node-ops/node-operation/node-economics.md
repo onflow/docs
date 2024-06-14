@@ -1,6 +1,6 @@
 ---
 title: Node Economics
-sidebar_label: Node economics
+sidebar_label: Node Economics
 description: Node Operator Economics - An illustration
 sidebar_position: 8
 ---
@@ -9,8 +9,15 @@ Node operators play a crucial role in securing the Flow network. Here’s a simp
 
 ## Node Operator Economics: An illustration
 
-> ❗ This illustration is strictly to serve as an example. Actual numbers will vary based on several factors.
- For real-time numbers, please refer to the [block explorer](https://www.flowdiver.io/tokenomics).
+
+:::warning
+
+This illustration is strictly to serve as an example. Actual numbers will vary based on several factors.
+
+For real-time numbers, please refer to the [block explorer](https://www.flowdiver.io/tokenomics).
+
+:::
+
 
 | # | Parameter  | Value | Explanation  |
 | -------- | ------------- | ------------- | ------------- |
