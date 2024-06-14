@@ -1,6 +1,16 @@
-# Node Operator Economics: An Illustration
+---
+title: Node Economics
+sidebar_label: Node economics
+description: Node Operator Economics: An illustration
+sidebar_position: 8
+---
 
 Node operators play a crucial role in securing the Flow network. Here’s a simple example to illustrate what node operators can expect in terms of node economics.
+
+## Node Operator Economics: An illustration
+
+> ❗ This illustration is strictly to serve as an example. Actual numbers will vary based on several factors.
+ For real-time numbers, please refer to the [block explorer](https://www.flowdiver.io/tokenomics).
 
 | # | Parameter  | Value | Explanation  |
 | -------- | ------------- | ------------- | ------------- |
@@ -18,5 +28,4 @@ Node operators play a crucial role in securing the Flow network. Here’s a simp
 
 1. Each year, 5% of the total Flow supply is distributed as rewards to incentivize validators and delegators. While the total rewards for each epoch are fixed, the rewards for individual stakers vary depending on the amount they stake and the total funds delegated to their node.
 2. All Flow node types follow the same economic principles, with the only difference being their minimum staking requirements. For details on the minimum stakes needed for each node type, see [here](https://flow.com/flow-tokenomics/technical-overview).
-> ❗ This illustration is strictly to serve as an example. Actual numbers will vary based on several factors.
-For real-time numbers, please refer to the [block explorer](https://www.flowdiver.io/tokenomics).
+
