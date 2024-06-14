@@ -1,7 +1,7 @@
 ---
 title: Node Economics
 sidebar_label: Node economics
-description: Node Operator Economics: An illustration
+description: Node Operator Economics - An illustration
 sidebar_position: 8
 ---
 
