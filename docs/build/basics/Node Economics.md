@@ -12,7 +12,7 @@
 | H | COGS | 4,190 FLOW  | Assumed costs of running a consensus node in FLOW assuming 1US$/FLOW. The actual cost will vary depending on several factors such as self-hosted vs cloud, bare metal vs VM, the type of node, the FLOW exchange rate |
 | J | Net Annual Rewards | 53,810 FLOW  | G less H |
 
-## Things to Remember
+## Note
 
 1. Each year, 5% of the total Flow supply is distributed as rewards to incentivize validators and delegators. While the total rewards for each epoch are fixed, the rewards for individual stakers vary depending on the amount they stake and the total funds delegated to their node.
 2. The node type you choose to operate or delegate to doesn’t impact your weekly rewards, except for the difference in minimum staking requirements among various node types. Your primary influence over your rewards is the number of tokens that are staked by you or are delegated to your node by others. The more the total stake, the greater your rewards.
