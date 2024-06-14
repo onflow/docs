@@ -9,7 +9,7 @@
 | E | Annual Cash from Staking Rewards | 50,000 FLOW  | Product of A x C; the number shown is annualized but is paid each epoch (week) |
 | F | Annual Delegator Fee | 8,000 FLOW  | Product of B x C x D; ; the number shown is annualized but is paid each epoch (week) |
 | G | Annual (Gross) Rewards | 58,000 FLOW  | Sum of E and F |
-| H | COGS | 4,190 FLOW  | Assumed costs associated with operating a consensus node, converted to FLOW at 1US$/FLOW. The actual cost would vary depending on choices made by the operator as well as the FLOW exchange rate |
+| H | COGS | 4,190 FLOW  | Assumed costs of running a consensus node in FLOW assuming 1US$/FLOW. The actual cost will vary depending on several factors such as self-hosted vs cloud, bare metal vs VM, the type of node, the FLOW exchange rate |
 | J | Net Cash | 53,810 FLOW  | G less H |
 
 ## Things to Remember
