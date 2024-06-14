@@ -6,7 +6,7 @@
 | B| Delegation to node | 1,000,000 FLOW  | Funds that individual/ institutional delegators delegate to your node. Assuming 1M FLOW for this example.  |
 | C | APY | 10%  | Subject to change based on total ecosystem stake in each epoch. Remember APY = R / S, where S = Total FLOW Staked / Total FLOW Supply and R = 5% (”reward rate”) |
 | D | Delegation Rate | 8%  | Fee taken by the node operator from delegator rewards to cover their operating expenses, currently set at 8% of the rewards received by delegators. Note that the 8% fee is only applied to the staking reward, not to the tokens delegated. |
-| E | Annual Cash from Staking Rewards | 50,000 FLOW  | Product of A x C; the number shown is annualized but is paid each epoch (week) |
+| E | Annual Staking Rewards | 50,000 FLOW  | Product of A x C; the number shown is annualized but is paid each epoch (week) |
 | F | Annual Delegator Fee | 8,000 FLOW  | Product of B x C x D; ; the number shown is annualized but is paid each epoch (week) |
 | G | Annual (Gross) Rewards | 58,000 FLOW  | Sum of E and F |
 | H | COGS | 4,190 FLOW  | Assumed costs of running a consensus node in FLOW assuming 1US$/FLOW. The actual cost will vary depending on several factors such as self-hosted vs cloud, bare metal vs VM, the type of node, the FLOW exchange rate |
