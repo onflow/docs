@@ -1,17 +1,25 @@
-# Access node operator documentation
+---
+title: Serving execution data
+sidebar_label: Execution Data
+sidebar_position: 3
+---
 
-# Overview
+Flow chain data comprises of two parts,
+1. Protocol state data - This refers to the blocks, collection, transaction that are being continuously added to the chain.
+2. Execution state data - This refers to what makes up the execution state and includes transaction events and account balances.
 
-This page serves as a resource for the different configuration options for Access nodes on the Flow network.
+The access node by default syncs the protocol state data and has been now updated to also sync the execution state data.
+This guide provides an overview of how to use the execution data sync feature of the Access node.
+
 
 <aside>
 ⚠️ Nodes MUST be running `v0.32.10+` or newer to enable execution data indexing.
 
 </aside>
 
-# Setup node’s directory
+## Setup node’s directory
 
-The node requires the following directory structure:
+The access node typically has the following directory structure:
 
 ```bash
 $ tree flow_access
@@ -29,7 +37,7 @@ $ tree flow_access
 
 ```
 
-# Setup Data Indexing
+## Setup execution data indexing
 
 First, your node needs to download and index the execution data. There are 3 steps:
 
@@ -200,39 +208,6 @@ Below is a list of the available CLI flags to control the behavior of Script Exe
 | register-cache-type | string | Type of backend cache to use for registers [lru, arc, 2q] |
 | register-cache-size | uint | Number of registers to cache for script execution. Default: 0 (no cache) |
 | program-cache-size | uint | [experimental] number of blocks to cache for cadence programs. use 0 to disable cache. Default: 0. Note: this is an experimental feature and may cause nodes to become unstable under certain workloads. Use with caution. |
-
-# API Configuration
-
-The `ExecutionDataAPI` is a gRPC API. The protobuf definition is here:
-
-[](https://github.com/onflow/flow/blob/master/protobuf/flow/executiondata/executiondata.proto)
-
-
-
-The API is disabled by default. To enable it, specify a listener address with the cli flag `--state-stream-addr`.
-
-<aside>
-ℹ️ Currently, the api must be started on a separate port from the regular gRPC endpoint. There is work underway to add support for using the same port.
-
-</aside>
-
-Below is a list of the available CLI flags to control the behavior of the API
-
-| Flag | Type | Description |
-| --- | --- | --- |
-| state-stream-addr | string | Listener address for API. e.g. 0.0.0.0:9003. If no value is provided, the API is disabled. Default is disabled. |
-| execution-data-cache-size | uint32 | Number of block execution data objects to store in the cache. Default is 100. |
-| state-stream-global-max-streams | uint32 | Global maximum number of concurrent streams. Default is 1000. |
-| state-stream-max-message-size | uint | Maximum size for a gRPC response message containing block execution data. Default is 20*1024*1024 (20MB). |
-| state-stream-event-filter-limits | string | Event filter limits for ExecutionData SubscribeEvents API. These define the max number of filters for each type. e.g. EventTypes=100,Addresses=20,Contracts=50. Default is 1000 for each. |
-| state-stream-send-timeout | duration | Maximum wait before timing out while sending a response to a streaming client. Default is 30s. |
-| state-stream-send-buffer-size | uint | Maximum number of unsent responses to buffer for a stream. Default is 10. |
-| state-stream-response-limit | float64 | Max number of responses per second to send over streaming endpoints. This effectively applies a rate limit to responses to help manage resources consumed by each client. This is mostly used when clients are querying data past data. e.g. 3 or 0.5. Default is 0 which means no limit. |
-
-<aside>
-ℹ️ This API provides access to Execution Data, which can be very large (100s of MB) for a given block. Given the large amount of data, operators should consider their expected usage patters and tune the available settings to limit the resources a single client can use. It may also be useful to use other means of managing traffic, such as reverse proxies or QoS tools.
-
-</aside>
 
 # Resources
 
