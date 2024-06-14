@@ -64,12 +64,15 @@ addStuff().then((d) => console.log(d)); // 13 (5 + 7 + 1)
 | `accessNode.api` **(required)**   | `https://rest-testnet.onflow.org`                             | API URL for the Flow Blockchain Access Node you want to be communicating with. See all available access node endpoints [here](https://developers.onflow.org/http-api/). |
 | `app.detail.title`                | `Cryptokitties`                                               | Your applications title, can be requested by wallets and other services.                                                                                                |
 | `app.detail.icon`                 | `https://fcl-discovery.onflow.org/images/blocto.png`          | Url for your applications icon, can be requested by wallets and other services.                                                                                         |
+| `app.detail.description`          | `Cryptokitties is a blockchain game`                          | Your applications description, can be requested by wallets and other services.                                                                                          |
+| `app.detail.url`                  | `https://cryptokitties.co`                                    | Your applications url, can be requested by wallets and other services.                                                                                                  |
 | `challenge.handshake`             | **DEPRECATED**                                                | Use `discovery.wallet` instead.                                                                                                                                         |
 | `discovery.authn.endpoint`        | `https://fcl-discovery.onflow.org/api/testnet/authn`          | Endpoint for alternative configurable Wallet Discovery mechanism. Read more on [discovery](#discovery)                                                                  |
 | `discovery.wallet` **(required)** | `https://fcl-discovery.onflow.org/testnet/authn`              | Points FCL at the Wallet or Wallet Discovery mechanism.                                                                                                                 |
 | `discovery.wallet.method`         | `IFRAME/RPC`, `POP/RPC`, `TAB/RPC`, `HTTP/POST`, or `EXT/RPC` | Describes which service strategy a wallet should use.                                                                                                                   |
 | `fcl.limit`                       | `100`                                                         | Specifies fallback compute limit if not provided in transaction. Provided as integer.                                                                                   |
 | `flow.network` **(recommended)**  | `testnet`                                                     | Used in conjunction with stored interactions and provides FCLCryptoContract address for `testnet` and `mainnet`. Possible values: `local`, `testnet`, `mainnet`.        |
+| `walletconnect.projectId`         | `YOUR_PROJECT_ID`                                             | Your WalletConnect project ID. See [WalletConnect](https://walletconnect.org/) to obtain a project ID for your dApp.                                                    |
 
 ## Using Contracts in Scripts and Transactions
 
@@ -115,10 +118,13 @@ import * as fcl from '@onflow/fcl';
 fcl
   .config()
   .put('flow.network', 'testnet')
+  .put('walletconnect.projectId', 'YOUR_PROJECT_ID')
   .put('accessNode.api', 'https://rest-testnet.onflow.org')
   .put('discovery.wallet', 'https://fcl-discovery.onflow.org/testnet/authn')
   .put('app.detail.title', 'Test Harness')
   .put('app.detail.icon', 'https://i.imgur.com/r23Zhvu.png')
+  .put('app.detail.description', 'A test harness for FCL')
+  .put('app.detail.url', 'https://fcl-discovery.onflow.org')
   .put('service.OpenID.scopes', 'email email_verified name zoneinfo')
   .put('0xFlowToken', '0x7e60df042a9c0868');
 ```
