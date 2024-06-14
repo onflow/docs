@@ -154,10 +154,6 @@ When you restart the node for the first time with syncing enabled, it will sync 
     curl -s localhost:8080/metrics | grep highest_indexed_height
     ```
 
-# Execution Data API
-
-The `ExecutionDataAPI` provides access to block execution data over gRPC, including transactions, events, and register data (account state). It’s an optional API, which makes use of the Execution Sync protocol to trustlessly download data from peers on the network.
-
 # Execution Data Sync
 
 The Execution Sync protocol is enabled by default on Access nodes, and uses the bitswap protocol developed by Protocol Labs to share data trustlessly over a peer-to-peer network. When enabled, nodes will download execution data for each block as it is sealed, and contribute to sharing the data with its peers. The data is also made available to systems within the node, such as the `ExecutionDataAPI`.

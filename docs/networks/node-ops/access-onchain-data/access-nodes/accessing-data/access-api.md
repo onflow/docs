@@ -1119,9 +1119,11 @@ message EventFilter {
 | address    | A list of addresses who's events should be included. Addresses must be Flow account addresses in hex format and valid for the network the node is connected to. i.e. only a mainnet address is valid for a mainnet node. Addresses may optionally include the `0x` prefix                             |
 
 
-# Execution data streaming API
+## Execution data streaming API
 
-The `ExecutionDataAPI` is a gRPC streaming API. The protobuf definition is here:
+### Execution Data API
+
+The `ExecutionDataAPI` provides access to block execution data over gRPC, including transactions, events, and register data (account state). It’s an optional API, which makes use of the Execution Sync protocol to trustlessly download data from peers on the network.
 
 [execution data protobuf file](https://github.com/onflow/flow/blob/master/protobuf/flow/executiondata/executiondata.proto)
 
