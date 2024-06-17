@@ -33,7 +33,7 @@ This page serves as a resource for the different configuration options for Acces
 ⚠️ Nodes MUST be running `v0.32.10+` or newer to enable execution data indexing.
 </aside>
 
-First, your node needs to download and index the execution data. There are 3 steps:
+To set up indexing, your node needs to download and index the execution data. There are 3 steps:
 
 1. Enable Execution Data Sync
 2. Download the root checkpoint file
@@ -48,13 +48,13 @@ This is enabled by default, so as long as you didn’t explicitly disable it, th
 1. Make sure that either `--execution-data-sync-enabled` is not set, or is set to `true`
 2. Make sure that you have a path configured for `--execution-data-dir`, otherwise the data will be written to the running user’s home directory, which is most likely inside the container’s volume. For example, you can create a folder within the node’s data directory  `/data/execution-data/`.
 
-There are some additional flags available, but you most likely do not need to change them.
+There are some additional [flags](#execution-data-sync) available, but you most likely do not need to change them.
 
 ## **Option 1: Enabling Indexing at the Beginning of a Spork**
 
 ### Download the root protocol state snapshot
 
-The `root-protocol-state-snapshot.json` is generated for each [spork](https://developers.flow.com/networks/node-ops/node-operation/spork) and contains the genesis data for that spork. It is published and made available after each spork. The download location is specified [here](https://github.com/onflow/flow/blob/master/sporks.json) under [rootProtocolStateSnapshot](https://github.com/onflow/flow/blob/master/sporks.json#L16).
+The `root-protocol-state-snapshot.json` is generated for each [network](https://developers.flow.com/networks/node-ops/node-operation/spork) and contains the genesis data for that network. It is published and made available after each upgrade. The download location is specified [here](https://github.com/onflow/flow/blob/master/sporks.json) under [rootProtocolStateSnapshot](https://github.com/onflow/flow/blob/master/sporks.json#L16).
 
 Store the **`root-protocol-state-snapshot.json`** into the **`/bootstrap/public-root-information/`** folder.
 
@@ -78,7 +78,7 @@ Once the files are downloaded, you can either move them to `/bootstrap/execution
 
 ### Download the root protocol state snapshot
 
-You can download  `root-protocol-state-snapshot.json`  file by using the `GetProtocolStateSnapshotByHeight` call with the corresponding height. You will get a `base64` encoded snapshot which you will need to decode.
+You can download the `root-protocol-state-snapshot.json` file by using the `GetProtocolStateSnapshotByHeight` call with the corresponding height. You will get a `base64` encoded snapshot which you will need to decode.
 
 Store the **`root-protocol-state-snapshot.json`** into the **`/bootstrap/public-root-information/`** folder.
 
@@ -127,7 +127,7 @@ When you restart the node for the first time with syncing enabled, it will sync 
 # Troubleshooting
 
 - If the root checkpoint file is missing or invalid, the node will crash. It must be taken from the same block as the `root-protocol-state-snapshot.json` used to start your node.
-- If you don’t set one the `--execution-data-dir` and `--execution-state-dir` flags, the data will be written to the home directory inside the container (likely `/root`). This may cause your container to run out of disk space and crash, or lose all data each time the container is restarted.
+- If you don’t set the `--execution-data-dir` and `--execution-state-dir` flags, the data will be written to the home directory inside the container (likely `/root`). This may cause your container to run out of disk space and crash, or lose all data each time the container is restarted.
 - If your node crashes or restarts before the checkpoint finishes loading, you will need to stop the node, delete the `execution-state` directory, and start it again. Resuming is currently not supported.
 - If you see the following message then your `checkpoint` and `root-protocol-state-snapshot` are not for the same height.
 
@@ -144,7 +144,7 @@ When you restart the node for the first time with syncing enabled, it will sync 
 
 - You can check if the execution sync and index heights are increasing by querying the metrics endpoint:
     ```
-    curl localhost:8080/metrics | grep highest_download_height
+    curl -s localhost:8080/metrics | grep highest_download_height
     curl -s localhost:8080/metrics | grep highest_indexed_height
     ```
 
@@ -205,18 +205,9 @@ Below is a list of the available CLI flags to control the behavior of Script Exe
 
 # API Configuration
 
-The `ExecutionDataAPI` is a gRPC API. The protobuf definition is here:
-
-[](https://github.com/onflow/flow/blob/master/protobuf/flow/executiondata/executiondata.proto)
-
-
+The `ExecutionDataAPI` is a gRPC API. The protobuf definition is [here](https://github.com/onflow/flow/blob/master/protobuf/flow/executiondata/executiondata.proto).
 
 The API is disabled by default. To enable it, specify a listener address with the cli flag `--state-stream-addr`.
-
-<aside>
-ℹ️ Currently, the api must be started on a separate port from the regular gRPC endpoint. There is work underway to add support for using the same port.
-
-</aside>
 
 Below is a list of the available CLI flags to control the behavior of the API
 
