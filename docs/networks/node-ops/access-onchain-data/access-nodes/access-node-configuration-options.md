@@ -6,15 +6,6 @@ sidebar_position: 2
 
 # Access node operator documentation
 
-# Overview
-
-This page serves as a resource for the different configuration options for Access nodes on the Flow network.
-
-<aside>
-⚠️ Nodes MUST be running `v0.32.10+` or newer to enable execution data indexing.
-
-</aside>
-
 # Setup node’s directory
 
 The node requires the following directory structure:
@@ -36,6 +27,11 @@ $ tree flow_access
 ```
 
 # Setup Data Indexing
+
+This page serves as a resource for the different configuration options for Access nodes on the Flow network.
+<aside>
+⚠️ Nodes MUST be running `v0.32.10+` or newer to enable execution data indexing.
+</aside>
 
 First, your node needs to download and index the execution data. There are 3 steps:
 
