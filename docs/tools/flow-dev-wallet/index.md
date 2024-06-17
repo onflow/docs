@@ -57,14 +57,14 @@ The Flow Dev Wallet is designed to be used with [`@onflow/fcl`](https://github.c
 To use the dev wallet, configure FCL to point to the address of a locally running [Flow emulator](#start-the-emulator) and the dev wallet endpoint.
 
 ```javascript
-import * as fcl from "@onflow/fcl"
+import * as fcl from '@onflow/fcl';
 
 fcl
   .config()
   // Point App at Emulator REST API
-  .put("accessNode.api", "http://localhost:8888")
+  .put('accessNode.api', 'http://localhost:8888')
   // Point FCL at dev-wallet (default port)
-  .put("discovery.wallet", "http://localhost:8701/fcl/authn")
+  .put('discovery.wallet', 'http://localhost:8701/fcl/authn');
 ```
 
 :::info
@@ -87,46 +87,50 @@ Navigate to http://localhost:8701/harness
 The following code from [Emerald Academy](https://academy.ecdao.org/en/snippets/fcl-authenticate) can be added to your React app to enable Wallet Discovery:
 
 ```javascript
-import { config, authenticate, unauthenticate, currentUser } from "@onflow/fcl";
-import { useEffect, useState } from "react";
+import { config, authenticate, unauthenticate, currentUser } from '@onflow/fcl';
+import { useEffect, useState } from 'react';
 
 const fclConfigInfo = {
-	emulator: {
-		accessNode: 'http://127.0.0.1:8888',
-		discoveryWallet: 'http://localhost:8701/fcl/authn',
-		discoveryAuthInclude: []
-	},
-	testnet: {
-		accessNode: 'https://rest-testnet.onflow.org',
+  emulator: {
+    accessNode: 'http://127.0.0.1:8888',
+    discoveryWallet: 'http://localhost:8701/fcl/authn',
+    discoveryAuthInclude: [],
+  },
+  testnet: {
+    accessNode: 'https://rest-testnet.onflow.org',
     discoveryWallet: 'https://fcl-discovery.onflow.org/testnet/authn',
-    discoveryAuthnEndpoint: 'https://fcl-discovery.onflow.org/api/testnet/authn',
+    discoveryAuthnEndpoint:
+      'https://fcl-discovery.onflow.org/api/testnet/authn',
     // Adds in Dapper + Ledger
-		discoveryAuthInclude: ["0x82ec283f88a62e65", "0x9d2e44203cb13051"]
-	},
-	mainnet: {
-		accessNode: 'https://rest-mainnet.onflow.org',
+    discoveryAuthInclude: ['0x82ec283f88a62e65', '0x9d2e44203cb13051'],
+  },
+  mainnet: {
+    accessNode: 'https://rest-mainnet.onflow.org',
     discoveryWallet: 'https://fcl-discovery.onflow.org/authn',
     discoveryAuthnEndpoint: 'https://fcl-discovery.onflow.org/api/authn',
     // Adds in Dapper + Ledger
-		discoveryAuthInclude: ["0xead892083b3e2c6c", "0xe5cd26afebe62781"]
-	}
+    discoveryAuthInclude: ['0xead892083b3e2c6c', '0xe5cd26afebe62781'],
+  },
 };
 
 const network = 'emulator';
 
 config({
-  "app.detail.title": "Emerald Academy", // the name of your DApp
-  "app.detail.icon": "https://academy.ecdao.org/favicon.png", // your DApps icon
-  "flow.network": network,
-  "accessNode.api": fclConfigInfo[network].accessNode,
-  "discovery.wallet": fclConfigInfo[network].discoveryWallet,
-  "discovery.authn.endpoint": fclConfigInfo[network].discoveryAuthnEndpoint,
+  'walletconnect.projectId': 'YOUR_PROJECT_ID', // your WalletConnect project ID
+  'app.detail.title': 'Emerald Academy', // the name of your DApp
+  'app.detail.icon': 'https://academy.ecdao.org/favicon.png', // your DApps icon
+  'app.detail.description': 'Emerald Academy is a DApp for learning Flow', // a description of your DApp
+  'app.detail.url': 'https://academy.ecdao.org', // the URL of your DApp
+  'flow.network': network,
+  'accessNode.api': fclConfigInfo[network].accessNode,
+  'discovery.wallet': fclConfigInfo[network].discoveryWallet,
+  'discovery.authn.endpoint': fclConfigInfo[network].discoveryAuthnEndpoint,
   // adds in opt-in wallets like Dapper and Ledger
-  "discovery.authn.include": fclConfigInfo[network].discoveryAuthInclude
+  'discovery.authn.include': fclConfigInfo[network].discoveryAuthInclude,
 });
 
 export default function App() {
-  const [user, setUser] = useState({ loggedIn: false, addr: "" });
+  const [user, setUser] = useState({ loggedIn: false, addr: '' });
 
   // So that the user stays logged in
   // even if the page refreshes
@@ -138,7 +142,7 @@ export default function App() {
     <div className="App">
       <button onClick={authenticate}>Log In</button>
       <button onClick={unauthenticate}>Log Out</button>
-      <p>{user.loggedIn ? `Welcome, ${user.addr}!` : "Please log in."}</p>
+      <p>{user.loggedIn ? `Welcome, ${user.addr}!` : 'Please log in.'}</p>
     </div>
   );
 }
@@ -168,6 +172,7 @@ transaction(publicKey: String) {
 ```
 
 To create a new Flow account refer to these resources
+
 - [Create an Account with FCL snippet](https://academy.ecdao.org/en/snippets/fcl-create-account)
 - [Create an Account in Cadence snippet](https://academy.ecdao.org/en/snippets/cadence-create-account)
 
@@ -176,8 +181,8 @@ To create a new Flow account refer to these resources
 Retrieving the token balance of a specific account involves writing a script to pull data from onchain. The user may have both locked tokens as well as unlocked so to retrieve the total balance we would aggregate them together.
 
 ```javascript
-import * as fcl from "@onflow/fcl"
-import * as t from "@onflow/types"
+import * as fcl from '@onflow/fcl';
+import * as t from '@onflow/types';
 const CODE = `
 import "FungibleToken"
 import "FlowToken"
@@ -200,13 +205,12 @@ access(all) fun main(address: Address): UFix64 {
   let lockedAccountInfoRef = lockedAccountInfoCap!.borrow()!
   let lockedBalance = lockedAccountInfoRef.getLockedAccountBalance()
   return lockedBalance + unlockedBalance
-}`
+}`;
 export const getTotalFlowBalance = async (address) => {
-  return await fcl.decode(await fcl.send([
-    fcl.script(CODE),
-    fcl.args([fcl.arg(address, t.Address)])
-  ]))
-}
+  return await fcl.decode(
+    await fcl.send([fcl.script(CODE), fcl.args([fcl.arg(address, t.Address)])]),
+  );
+};
 ```
 
 ## Contributing
