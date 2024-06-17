@@ -72,7 +72,7 @@ addStuff().then((d) => console.log(d)); // 13 (5 + 7 + 1)
 | `discovery.wallet.method`         | `IFRAME/RPC`, `POP/RPC`, `TAB/RPC`, `HTTP/POST`, or `EXT/RPC` | Describes which service strategy a wallet should use.                                                                                                                   |
 | `fcl.limit`                       | `100`                                                         | Specifies fallback compute limit if not provided in transaction. Provided as integer.                                                                                   |
 | `flow.network` **(recommended)**  | `testnet`                                                     | Used in conjunction with stored interactions and provides FCLCryptoContract address for `testnet` and `mainnet`. Possible values: `local`, `testnet`, `mainnet`.        |
-| `walletconnect.projectId`         | `YOUR_PROJECT_ID`                                             | Your app's WalletConnect project ID. See [WalletConnect](https://walletconnect.org/) to obtain a project ID for your application.                                       |
+| `walletconnect.projectId`         | `YOUR_PROJECT_ID`                                             | Your app's WalletConnect project ID. See [WalletConnect Cloud](https://cloud.walletconnect.com/sign-in) to obtain a project ID for your application.                    |
 
 ## Using Contracts in Scripts and Transactions
 

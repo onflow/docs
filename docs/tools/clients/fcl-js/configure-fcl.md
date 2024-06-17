@@ -57,7 +57,7 @@ addStuff().then((d) => console.log(d)); // 13 (5 + 7 + 1)
 - `fcl.limit` -- Specifies fallback compute limit if not provided in transaction. Provided as integer.
 - `flow.network` (recommended) -- **(INTRODUCED `@onflow/fcl@1.0.0`)** Used in conjunction with stored interactions and provides FCLCryptoContract address for `testnet` and `mainnet`. Possible values: `local`, `testnet`, `mainnet`.
 - `service.OpenID.scopes` - **(INTRODUCED `@onflow/fcl@0.0.68`)** Open ID Connect claims for Wallets and OpenID services.
-- `walletconnect.projectId` -- **(INTRODUCED `@onflow/fcl@1.11.0`)** Your app's WalletConnect project ID. See [WalletConnect](https://walletconnect.org/) to obtain a project ID for your application.
+- `walletconnect.projectId` -- **(INTRODUCED `@onflow/fcl@1.11.0`)** Your app's WalletConnect project ID. See [WalletConnect Cloud](https://cloud.walletconnect.com/sign-in) to obtain a project ID for your application.
 
 ## Using Contracts in Scripts and Transactions
 
