@@ -1,3 +1,9 @@
+---
+title: Setting Up a Flow Access Node
+sidebar_label: Access Node Setup
+sidebar_position: 2
+---
+
 # Access node operator documentation
 
 # Overview
