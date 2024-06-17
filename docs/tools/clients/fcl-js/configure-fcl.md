@@ -46,10 +46,10 @@ addStuff().then((d) => console.log(d)); // 13 (5 + 7 + 1)
 ## Common Configuration Keys
 
 - `accessNode.api` -- Api URL for the Flow Blockchain Access Node you want to be communicating with.
-- `app.detail.title` - **(INTRODUCED `@onflow/fcl@0.0.68`)** Your applications title, can be requested by wallets and other services. Used for WalletConnect plugin & Wallet Discovery.
-- `app.detail.icon` - **(INTRODUCED `@onflow/fcl@0.0.68`)** Url for your applications icon, can be requested by wallets and other services. Used for WalletConnect plugin & Wallet Discovery.
-- `app.detail.description` - **(INTRODUCED `@onflow/fcl@1.10.0`)** Your applications description, can be requested by wallets and other services. Used for WalletConnect plugin & Wallet Discovery.
-- `app.detail.url` - **(INTRODUCED `@onflow/fcl@1.10.0`)** Your applications url, can be requested by wallets and other services. Used for WalletConnect plugin & Wallet Discovery.
+- `app.detail.title` - **(INTRODUCED `@onflow/fcl@0.0.68`)** Your applications title, can be requested by wallets and other services. Used by WalletConnect plugin & Wallet Discovery service.
+- `app.detail.icon` - **(INTRODUCED `@onflow/fcl@0.0.68`)** Url for your applications icon, can be requested by wallets and other services. Used by WalletConnect plugin & Wallet Discovery service.
+- `app.detail.description` - **(INTRODUCED `@onflow/fcl@1.11.0`)** Your applications description, can be requested by wallets and other services. Used by WalletConnect plugin & Wallet Discovery service.
+- `app.detail.url` - **(INTRODUCED `@onflow/fcl@1.11.0`)** Your applications url, can be requested by wallets and other services. Used by WalletConnect plugin & Wallet Discovery service.
 - `challenge.handshake` -- **(DEPRECATED `@onflow/fcl@0.0.68`)** Points FCL at the Wallet or Wallet Discovery mechanism.
 - `discovery.wallet` -- **(INTRODUCED `@onflow/fcl@0.0.68`)** Points FCL at the Wallet or Wallet Discovery mechanism.
 - `discovery.wallet.method` -- Describes which service strategy a wallet should use: `IFRAME/RPC`, `POP/RPC`, `TAB/RPC`, `HTTP/POST`, `EXT/RPC`
@@ -57,6 +57,7 @@ addStuff().then((d) => console.log(d)); // 13 (5 + 7 + 1)
 - `fcl.limit` -- Specifies fallback compute limit if not provided in transaction. Provided as integer.
 - `flow.network` (recommended) -- **(INTRODUCED `@onflow/fcl@1.0.0`)** Used in conjunction with stored interactions and provides FCLCryptoContract address for `testnet` and `mainnet`. Possible values: `local`, `testnet`, `mainnet`.
 - `service.OpenID.scopes` - **(INTRODUCED `@onflow/fcl@0.0.68`)** Open ID Connect claims for Wallets and OpenID services.
+- `walletconnect.projectId` -- **(INTRODUCED `@onflow/fcl@1.11.0`)** Your app's WalletConnect project ID. See [WalletConnect](https://walletconnect.org/) to obtain a project ID for your application.
 
 ## Using Contracts in Scripts and Transactions
 
