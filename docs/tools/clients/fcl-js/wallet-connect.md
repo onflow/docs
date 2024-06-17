@@ -3,7 +3,7 @@ title: WalletConnect 2.0 Manual Configuration
 ---
 
 :::warning
-This guide is for advanced users who want to manually configure WalletConnect 2.0 with FCL. Since FCL 1.10.0, FCL has supported WalletConnect 2.0 out of the box. For most users, we recommend using the built-in WalletConnect 2.0 support in FCL ([see how to configure fcl here](./configure-fcl.md)).
+This guide is for advanced users who want to manually configure WalletConnect 2.0 with FCL-JS. Since `@onflow/fcl@1.11.0`, FCL-JS has supported WalletConnect 2.0 out of the box. For most users, we recommend using this built-in WalletConnect 2.0 support ([see how to configure FCL-JS here](./configure-fcl.md)).
 :::
 
 To improve developer experience and streamline **Flow** dApp integration with **WalletConnect 2.0** wallets, **FCL `^1.3.0`** introduces support for **`discovery-service`** plugins. These **`ServicePlugins`** allow for injection of client configured **services**, service **methods**, and the execution **strategies** required to interact with them.
