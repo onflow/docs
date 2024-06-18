@@ -1117,3 +1117,37 @@ message EventFilter {
 | event_type | A list of full event types to include. <br/> Event types have 2 formats:<br/> _ Protocol events: `flow.[event name]`<br/> _ Smart contract events: `A.[contract address].[contract name].[event name]`                                                                                                |
 | contract   | A list of contracts who's events should be included. Contracts have the following name formats:<br/> _ Protocol events: `flow`<br/> _ Smart contract events: `A.[contract address].[contract name]`<br/> This filter matches on the full contract including its address, not just the contract's name |
 | address    | A list of addresses who's events should be included. Addresses must be Flow account addresses in hex format and valid for the network the node is connected to. i.e. only a mainnet address is valid for a mainnet node. Addresses may optionally include the `0x` prefix                             |
+
+## Execution data streaming API
+
+### Execution Data API
+
+The `ExecutionDataAPI` provides access to block execution data over gRPC, including transactions, events, and register data (account state). It’s an optional API, which makes use of the Execution Sync protocol to trustlessly download data from peers on the network.
+
+[execution data protobuf file](https://github.com/onflow/flow/blob/master/protobuf/flow/executiondata/executiondata.proto)
+
+
+> The API is disabled by default. To enable it, specify a listener address with the cli flag `--state-stream-addr`.
+
+<aside>
+ℹ️ Currently, the api must be started on a separate port from the regular gRPC endpoint. There is work underway to add support for using the same port.
+
+</aside>
+
+Below is a list of the available CLI flags to control the behavior of the API
+
+| Flag | Type | Description |
+| --- | --- | --- |
+| state-stream-addr | string | Listener address for API. e.g. 0.0.0.0:9003. If no value is provided, the API is disabled. Default is disabled. |
+| execution-data-cache-size | uint32 | Number of block execution data objects to store in the cache. Default is 100. |
+| state-stream-global-max-streams | uint32 | Global maximum number of concurrent streams. Default is 1000. |
+| state-stream-max-message-size | uint | Maximum size for a gRPC response message containing block execution data. Default is 20*1024*1024 (20MB). |
+| state-stream-event-filter-limits | string | Event filter limits for ExecutionData SubscribeEvents API. These define the max number of filters for each type. e.g. EventTypes=100,Addresses=20,Contracts=50. Default is 1000 for each. |
+| state-stream-send-timeout | duration | Maximum wait before timing out while sending a response to a streaming client. Default is 30s. |
+| state-stream-send-buffer-size | uint | Maximum number of unsent responses to buffer for a stream. Default is 10. |
+| state-stream-response-limit | float64 | Max number of responses per second to send over streaming endpoints. This effectively applies a rate limit to responses to help manage resources consumed by each client. This is mostly used when clients are querying data past data. e.g. 3 or 0.5. Default is 0 which means no limit. |
+
+<aside>
+ℹ️ This API provides access to Execution Data, which can be very large (100s of MB) for a given block. Given the large amount of data, operators should consider their expected usage patters and tune the available settings to limit the resources a single client can use. It may also be useful to use other means of managing traffic, such as reverse proxies or QoS tools.
+
+</aside>

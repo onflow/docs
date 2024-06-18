@@ -52,6 +52,7 @@ const sidebars = {
               label: 'Access Nodes',
               items: [
                 'networks/node-ops/access-onchain-data/access-nodes/access-node-setup',
+                'networks/node-ops/access-onchain-data/access-nodes/access-node-configuration-options',
                 {
                   type: 'category',
                   label: 'Accessing Data',

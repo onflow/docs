@@ -1,10 +1,15 @@
 ---
-title: Setting Up a Flow Access Node
-sidebar_label: Access Node Setup
-sidebar_position: 2
+title: Serving execution data
+sidebar_label: Execution Data
+sidebar_position: 3
 ---
 
-# Access node operator documentation
+Flow chain data consists of two parts,
+1. Protocol state data - This refers to the blocks, collection, transaction that are being continuously added to the chain.
+2. Execution state data - This refers to what makes up the execution state and includes transaction events and account balances.
+
+The access node by default syncs the protocol state data and has been now updated to also sync the execution state data.
+This guide provides an overview of how to use the execution data sync feature of the Access node.
 
 # Setup node’s directory
 
@@ -26,7 +31,7 @@ $ tree flow_access
 
 ```
 
-# Setup Data Indexing
+# Setup execution data indexing
 
 This page serves as a resource for the different configuration options for Access nodes on the Flow network.
 <aside>
@@ -39,11 +44,11 @@ To set up indexing, your node needs to download and index the execution data. Th
 2. Download the root checkpoint file
 3. Configure the node to run the indexer
 
-As of **`mainnet24`** / **`devnet49`**, Access nodes can be configured to index execution data to support local script execution, and serving all of the Access API endpoints using local data. There are different setup procedures depending on if you are enabling indexing immediately after a network upgrade, or at some point between upgrades.
+As of **`mainnet24`** / **`devnet49`**, Access nodes can be configured to index execution data to support local script execution, and serving all the Access API endpoints using local data. There are different setup procedures depending on if you are enabling indexing immediately after a network upgrade, or at some point between upgrades.
 
 # Enable Execution Data Sync
 
-This is enabled by default, so as long as you didn’t explicitly disable it, the data should already be available.
+This is enabled by default, so as long as you didn't explicitly disable it, the data should already be available.
 
 1. Make sure that either `--execution-data-sync-enabled` is not set, or is set to `true`
 2. Make sure that you have a path configured for `--execution-data-dir`, otherwise the data will be written to the running user’s home directory, which is most likely inside the container’s volume. For example, you can create a folder within the node’s data directory  `/data/execution-data/`.
@@ -202,30 +207,6 @@ Below is a list of the available CLI flags to control the behavior of Script Exe
 | register-cache-type | string | Type of backend cache to use for registers [lru, arc, 2q] |
 | register-cache-size | uint | Number of registers to cache for script execution. Default: 0 (no cache) |
 | program-cache-size | uint | [experimental] number of blocks to cache for cadence programs. use 0 to disable cache. Default: 0. Note: this is an experimental feature and may cause nodes to become unstable under certain workloads. Use with caution. |
-
-# API Configuration
-
-The `ExecutionDataAPI` is a gRPC API. The protobuf definition is [here](https://github.com/onflow/flow/blob/master/protobuf/flow/executiondata/executiondata.proto).
-
-The API is disabled by default. To enable it, specify a listener address with the cli flag `--state-stream-addr`.
-
-Below is a list of the available CLI flags to control the behavior of the API
-
-| Flag | Type | Description |
-| --- | --- | --- |
-| state-stream-addr | string | Listener address for API. e.g. 0.0.0.0:9003. If no value is provided, the API is disabled. Default is disabled. |
-| execution-data-cache-size | uint32 | Number of block execution data objects to store in the cache. Default is 100. |
-| state-stream-global-max-streams | uint32 | Global maximum number of concurrent streams. Default is 1000. |
-| state-stream-max-message-size | uint | Maximum size for a gRPC response message containing block execution data. Default is 20*1024*1024 (20MB). |
-| state-stream-event-filter-limits | string | Event filter limits for ExecutionData SubscribeEvents API. These define the max number of filters for each type. e.g. EventTypes=100,Addresses=20,Contracts=50. Default is 1000 for each. |
-| state-stream-send-timeout | duration | Maximum wait before timing out while sending a response to a streaming client. Default is 30s. |
-| state-stream-send-buffer-size | uint | Maximum number of unsent responses to buffer for a stream. Default is 10. |
-| state-stream-response-limit | float64 | Max number of responses per second to send over streaming endpoints. This effectively applies a rate limit to responses to help manage resources consumed by each client. This is mostly used when clients are querying data past data. e.g. 3 or 0.5. Default is 0 which means no limit. |
-
-<aside>
-ℹ️ This API provides access to Execution Data, which can be very large (100s of MB) for a given block. Given the large amount of data, operators should consider their expected usage patters and tune the available settings to limit the resources a single client can use. It may also be useful to use other means of managing traffic, such as reverse proxies or QoS tools.
-
-</aside>
 
 # Resources
 
