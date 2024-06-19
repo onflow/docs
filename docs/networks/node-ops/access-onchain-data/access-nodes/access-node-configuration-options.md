@@ -31,7 +31,7 @@ $ tree flow_access
 
 ```
 
-# Setup execution data indexing
+# Setup Execution Data Indexing
 
 This page serves as a resource for the different configuration options for Access nodes on the Flow network.
 <aside>

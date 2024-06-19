@@ -1118,7 +1118,7 @@ message EventFilter {
 | contract   | A list of contracts who's events should be included. Contracts have the following name formats:<br/> _ Protocol events: `flow`<br/> _ Smart contract events: `A.[contract address].[contract name]`<br/> This filter matches on the full contract including its address, not just the contract's name |
 | address    | A list of addresses who's events should be included. Addresses must be Flow account addresses in hex format and valid for the network the node is connected to. i.e. only a mainnet address is valid for a mainnet node. Addresses may optionally include the `0x` prefix                             |
 
-## Execution data streaming API
+## Execution Data Streaming API
 
 ### Execution Data API
 
