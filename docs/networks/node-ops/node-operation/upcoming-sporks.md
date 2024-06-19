@@ -10,7 +10,7 @@ The following are the upcoming Spork dates. These dates indicate the intention t
 
 | Mainnet Spork Date          | Spork Info                             | Testnet Spork Date                       | Spork Info |
 |:----------------------------|:---------------------------------------|------------------------------------------|------------|
-| ~July 2024 (exact date tbd) |                                        | June 2024 (exact date tbd)               |            |
+| ~Q3 2024 (exact date tbd) |                                        | Q3 2024 (exact date tbd)               |            |
  |                             |                                        | May 20, 2024                             | Devnet50   |
 | Nov 8, 2023                 | Mainnet 24                             | Nov 2, 2023                              | Devnet49   |
 |                             |                                        | Aug 4, 2023                              | Devnet48   |
