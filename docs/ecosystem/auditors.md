@@ -8,7 +8,7 @@ sidebar_custom_props:
 
 # Auditors
 
-The following companies provide independent contract auditing services for Cadence smart contracts for the Flow ecosystem.
+The following companies provide independent contract auditing services of Cadence smart contracts for the Flow ecosystem.
 
 <div id="cards" class="cards">
 
