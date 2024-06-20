@@ -34,6 +34,6 @@ The following companies provide independent contract auditing services of Cadenc
 
 ## Emerald City Academy 
 
-[Emerald City Academy - Shield](https://docs.ecdao.org/auditing/shield) a Cadence-specialized, community-driven auditing service also offering development support and review for Cadence smart contracts 
+[Emerald City Academy - Shield](https://docs.ecdao.org/auditing/shield) a Cadence-specialized, community-driven auditing service also offering development support and review for Cadence smart contracts.
 
 </div>
