@@ -40,7 +40,7 @@ This guide assumes a good understanding of React. The concepts are easy to under
 - [Query the Blockchain](#query-the-blockchain)
 - [Mutate the Blockchain](#mutate-the-blockchain)
 
-For more help, [Discord](https://discord.gg/flow). See links at the end of this article for diving deeper into building on Flow.
+For more help, [Discord](https://discord.gg/flowblockchain). See links at the end of this article for diving deeper into building on Flow.
 
 ## Installation
 
