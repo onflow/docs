@@ -14,11 +14,11 @@ The following companies provide independent contract auditing services of Cadenc
 
 ## Nagra (Kudelski)
 
-[Nagra](https://www.nagra.com/) a multi-national provider of security services including blockchain security and smart contract auditing including Cadence.
+[Nagra](https://www.nagra.com/) a multi-national provider of security services including blockchain security and smart contract auditing of Cadence.
 
 ## NCC Group
 
-[NCC Group](https://www.nccgroup.com/us/) a global provider of security services including blockchain security and smart contract auditing including Cadence.
+[NCC Group](https://www.nccgroup.com/us/) a global provider of security services including blockchain security and smart contract auditing of Cadence.
 
 ## QuantStamp Inc,
 

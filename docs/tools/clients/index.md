@@ -12,9 +12,9 @@
 
 [FlowClient](https://github.com/glucode/flow_client) is a Ruby gRPC client for Flow (onflow.org).
 
-## Kotlin
+## JVM
 
-[Flow JVM SDK](https://github.com/onflow/flow-jvm-sdk) is a library for JVM languages (e.g. Java, Kotlin) that provides utilities to interact with the Flow blockchain.
+[Flow JVM SDK](https://github.com/onflow/flow-jvm-sdk) is a library for JVM-compatible languages, implemented in Kotlin, that provides utilities to interact with the Flow blockchain.
 
 ## Unity
 
