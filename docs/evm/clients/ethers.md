@@ -16,5 +16,5 @@ ethers.js is a prominent JavaScript library for interacting with EVM-compatible 
 
 Stay tuned for detailed guides on installing, setting up, and utilizing ethers.js within the EVM environment on Flow, including connecting to the network, reading and writing data on the blockchain, and interacting with smart contracts.
 
-For the latest updates, please check back soon or join the [Flow Discord](https://discord.gg/flow) and visit the #evm channel.
+For the latest updates, please check back soon or join the [Flow Discord](https://discord.com/invite/J6fFnh2xx6) and visit the #evm channel.
 :::

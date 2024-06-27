@@ -24,7 +24,7 @@ The contribution process is designed to be straightforward and collaborative. He
 
 Note: Previews are built for each Git branch by Vercel workflow.
 
-For additional assistance or integration support, feel free to request help in the `#devex-builders` [Discord channel](https://discord.com/channels/613813861610684416/1123314820763111465) on the [Flow Discord](https://discord.gg/flow) server.
+For additional assistance or integration support, feel free to request help in the `#devex-builders` [Discord channel](https://discord.com/channels/613813861610684416/1123314820763111465) on the [Flow Discord](https://discord.com/invite/J6fFnh2xx6) server.
 
 ## Updating Existing Content
 
