@@ -23,7 +23,7 @@ In this tutorial, we are going to interact with an existing smart contract on Fl
 - [Initializing an Account](#initializing-an-account)
 - [Mutating the Blockchain](#mutating-the-blockchain)
 
-And if you ever have any questions we're always happy to help on [Discord](https://discord.gg/flow). There are also links at the end of this article for diving deeper into building on Flow.
+And if you ever have any questions we're always happy to help on [Discord](https://discord.com/invite/J6fFnh2xx6). There are also links at the end of this article for diving deeper into building on Flow.
 
 ## Installation
 
