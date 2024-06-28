@@ -77,7 +77,7 @@ Flow has a standard contract to facilitate both the direct sales and peer-to-pee
 
 Fungible tokens (i.e. coins, currencies) on the Flow blockchain, including the default cryptocurrency token FLOW, implement the [FungibleToken](../../build/core-contracts/02-fungible-token.md) interface.
 
-See the [FT Guide](../guides/ft.md) for a guide on how to create a basic fungible token 
+See the [FT Guide](../guides/fungible-token.md) for a guide on how to create a basic fungible token 
 contract that conforms to the standard.
 
 - [Fungible Token contract interface](../../build/core-contracts/02-fungible-token.md)
