@@ -30,7 +30,7 @@ Check out the [Accounts](../basics/accounts.md) concept document to learn more a
 On Flow, smart contracts are written in Cadence. Cadence syntax is user-friendly and inspired by modern languages like Swift. Notable features of Cadence that make it unique and the key power of the Flow blockchain are:
 
 - **Resource-oriented**: Cadence introduces a new type called Resources. Resources enable onchain representation of digital assets natively and securely. Resources can only exist in one location at a time and are strictly controlled by the execution environment to avoid common mishandling mistakes. Each resource has a unique `uuid` associated with it on the blockchain. Examples of usage are fungible tokens, NFTs, or any custom data structure representing a real-world asset. Check out [Resources](https://cadence-lang.org/docs/language/resources) to learn more.
-- **Capability-based**: Cadence offers a [Capability-based Security](https://en.wikipedia.org/wiki/Capability-based_security) model. This also enables the use of Resources as structures to build access control. Capabilities can provide fine-grained access to the underlying objects for better security. For example, when users list an NFT on a Flow marketplace, they create a new Capability to the stored NFT in their account so the buyer can withdraw the asset when they provide the tokens. Check out [Capability-based Access Control](https://cadence-lang.org/docs/language/capabilities) to learn more about Capabilities on Cadence.
+- **Capability-based**: Cadence offers a [Capability-based Security](https://en.wikipedia.org/wiki/Capability-based_security) model. This also enables the use of Resources as structures to build access control. Capabilities and [Entitlements](https://cadence-lang.org/docs/1.0/language/access-control#entitlements) can provide fine-grained access to the underlying objects for better security. For example, when users list an NFT on a Flow marketplace, they create a new Capability to the stored NFT in their account so the buyer can withdraw the asset when they provide the tokens. Check out [Capability-based Access Control](https://cadence-lang.org/docs/language/capabilities) to learn more about Capabilities on Cadence.
 
 <Callout type="info">
 
@@ -73,14 +73,14 @@ transaction(recipient: Address) {
     /// Previous NFT ID before the transaction executes
     let mintingIDBefore: UInt64
 
-    prepare(signer: AuthAccount) {
+    prepare(signer: &Account) {
 
         self.mintingIDBefore = ExampleNFT.totalSupply
 
         // Borrow the recipient's public NFT collection reference
         self.recipientCollectionRef = getAccount(recipient)
-            .getCapability(ExampleNFT.CollectionPublicPath)
-            .borrow<&{NonFungibleToken.CollectionPublic}>()
+            .capabilities.get<&{NonFungibleToken.CollectionPublic}>(ExampleNFT.CollectionPublicPath)
+            .borrow()
             ?? panic("Could not get receiver reference to the NFT Collection")
 
     }
@@ -127,8 +127,8 @@ access(all) fun main(address: Address, collectionPublicPath: PublicPath): [UInt6
     let account = getAccount(address)
 
     let collectionRef = account
-        .getCapability(collectionPublicPath)
-        .borrow<&{NonFungibleToken.CollectionPublic}>()
+        .capabilities.get<&{NonFungibleToken.CollectionPublic}>(collectionPublicPath)
+        .borrow()
         ?? panic("Could not borrow capability from public collection at specified path")
 
     return collectionRef.getIDs()

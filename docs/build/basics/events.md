@@ -57,27 +57,48 @@ The first `A` means the event is originating from a contract, which will always 
 
 There is an unlimited amount of events that can be defined on Flow, but you should know about the most common ones. 
 
-### FLOW Token Events
+### Fungible Token Events
 
-The FLOW Token contract uses the [fungible token standard on Flow](../../build/core-contracts/03-flow-token.md) and is the contract that issues a core FLOW token. As with any contract, it can emit events when interacted with. When we transfer the FLOW token, events are emitted. You can find a lot of details on the events emitted in the [FLOW Token documentation](../../build/core-contracts/03-flow-token.md). 
+All fungible token contracts, including [The FLOW Token contract](../../build/core-contracts/03-flow-token.md),
+use the [fungible token standard on Flow](../../build/core-contracts/02-fungible-token.md).
+As with any contract, the standard emits events when interacted with.
+When any fungible token is transferred, standard events are emitted.
+You can find a lot of details on the events emitted in the [Fungible Token documentation](../../build/core-contracts/02-fungible-token.md). 
 
-The most common events are when tokens are transferred which is accomplished with two actions: withdrawing tokens from the payer and depositing tokens in the receiver. Each of those action has a corresponding event:
+The most common events are when tokens are transferred which is accomplished with two actions: withdrawing tokens from the payer and depositing tokens in the receiver. Each of those actions has a corresponding event:
 
 **Withdraw Tokens**
 
-Event name: `TokensWithdrawn`
+Event name: `FungibleToken.Withdrawn`
+```cadence
+event Withdrawn(type: String,
+                amount: UFix64,
+                from: Address?,
+                fromUUID: UInt64,
+                withdrawnUUID: UInt64,
+                balanceAfter: UFix64)
+```
 
-Mainnet event: `A.1654653399040a61.FlowToken.TokensWithdrawn`
+Mainnet event: `A.0xf233dcee88fe0abe.FungibleToken.Withdrawn`
 
-Testnet event: `A.7e60df042a9c0868.FlowToken.TokensWithdrawn`
+Testnet event: `A.0x9a0766d93b6608b7.FungibleToken.Withdrawn`
 
 **Deposit Tokens**
 
-Event name: `TokensDeposited`
+```cadence
+event Deposited(type: String,
+                amount: UFix64,
+                to: Address?,
+                toUUID: UInt64,
+                depositedUUID: UInt64,
+                balanceAfter: UFix64)
+```
 
-Mainnet event: `A.1654653399040a61.FlowToken.TokensDeposited`
+Event name: `FungibleToken.Deposited`
 
-Testnet event: `A.7e60df042a9c0868.FlowToken.TokensDeposited`
+Mainnet event: `A.0xf233dcee88fe0abe.FungibleToken.Deposited`
+
+Testnet event: `A.0x9a0766d93b6608b7.FungibleToken.Deposited`
 
 ### **Fee Events**
 
@@ -96,16 +117,18 @@ An example of fee events:
 ```yml
 Events:
   - Index: 0
-    Type:  A.1654653399040a61.FlowToken.TokensWithdrawn
+    Type:  A.0xf233dcee88fe0abe.FungibleToken.Withdrawn
     Tx ID: 1ec90051e3bc74fc36cbd16fc83df08e463dda8f92e8e2193e061f9d41b2ad92
     Values:
+      - type (String): "0x1654653399040a61.FlowToken.Vault"
       - amount (UFix64): 0.00000100
       - from (Address?): 0xb30eb2755dca4572
 
   - Index: 1
-    Type:  A.1654653399040a61.FlowToken.TokensDeposited
+    Type:  A.0xf233dcee88fe0abe.FungibleToken.Deposited
     Tx ID: 1ec90051e3bc74fc36cbd16fc83df08e463dda8f92e8e2193e061f9d41b2ad92
     Values:
+      - type (String): "0x1654653399040a61.FlowToken.Vault"
       - amount (UFix64): 0.00000100
       - to (Address?): 0xf919ee77447b7497
 

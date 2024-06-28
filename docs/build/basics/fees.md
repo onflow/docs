@@ -308,10 +308,10 @@ Avoid costly loading and storage operations and [borrow references](https://cade
 ```cadence
 transaction {
 
-    prepare(acct: AuthAccount) {
+    prepare(acct: auth(BorrowValue) &Account) {
 
         // Borrows a reference to the stored vault, much less costly operation that removing the vault from storage
-        let vault <- acct.borrow<&ExampleToken.Vault>(from: /storage/exampleToken)
+        let vault <- acct.storage.borrow<&ExampleToken.Vault>(from: /storage/exampleToken)
 
         let burnVault <- vault.withdraw(amount: 10)
 
