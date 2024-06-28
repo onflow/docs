@@ -162,7 +162,12 @@ The Service Account has administrator access to the FLOW token smart contract, s
 The Service Account administers other smart contracts that manage various aspects of the Flow network, such as epochs and (in the future) validator staking auctions.
 
 ### Governance
-Besides its special permissions, the Service Account is an account like any other in Flow. During the early phases of Flow's development, the account will be controlled by keys held by Dapper Labs. As Flow matures, the service account will transition to being controlled by a smart contract governed by the Flow community.
+Besides its special permissions, the Service Account is an account like any other in Flow.
+The service account is currently controlled by a smart contract governed by the Flow community.
+No single entity has the ability to unilaterally execute a transaction
+from the service account because it requires four signatures from controlling keys.
+The Flow foundation only controls 3 of the keys and the others are controlled
+by trusted community members and organizations.
 
 
 ## Accounts Retrieval
