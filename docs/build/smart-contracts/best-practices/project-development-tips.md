@@ -39,7 +39,7 @@ and more vibrant community.
 Ensuring appropriate levels of testing results in better smart contracts which have
 pro-actively modeled threats and engineered against them. Ensuring appropriate levels 
 of standards adoption ([FungibleToken](https://github.com/onflow/flow-ft),
-[NFT Catalog](https://www.flow-nft-catalog.com/), [NFT StoreFront](https://github.com/onflow/nft-storefront), etc) by dapp 
+[NFT Metadata](../../advanced-concepts/metadata-views.md), [NFT StoreFront](https://github.com/onflow/nft-storefront), etc) by dapp 
 builders amplifies the network effects for all in the ecosystem. NFTs in one dapp can be 
 readily consumed by other dapps through on-chain events with no new integration 
 required. With your help and participation we can further accelerate healthy and vibrant 
@@ -172,14 +172,12 @@ Summarized below is a list of testing related recommendations
 which are noteworthy to mention for a typical smart contract project.
 
 Popular testing frameworks to use for cadence are listed here:
+- Cadence: [Cadence Testing Framework](../../smart-contracts/testing.md)
 - Javascript: [Flow JS Testing](../../../tools/flow-js-testing/index.md)
 - Go: [Overflow](https://github.com/bjartek/overflow)
-- Cadence: [Cadence Testing Framework](../../smart-contracts/testing.md)
-Tests written in Cadence!
 
 The same person who writes the code should also write the tests.
 They have the clearest understanding of the code paths and edge cases.
-
 
 Tests should be **mandatory**, not optional, even if the contract is copied from somewhere else.
 There should be thorough emulator unit tests in the public repo.
@@ -190,12 +188,8 @@ for an example of unit tests in javascript.
 Every time there is a new Cadence version or emulator version,
 the dependencies of the repo should be updated to make sure the tests are all still passing.
 
-
 Tests should avoid being monolithic;
 Individual test cases should be set up for each part of the contract to test them in isolation. 
-See the [`FlowEpoch` smart contract tests](https://github.com/onflow/flow-core-contracts/blob/master/lib/go/test/flow_epoch_test.go)
-for examples written in Go where test cases are split
-into separate blocks for different features.
 There are some exceptions, like contracts that have to run through a state machine
 to test different cases. Positive and negative cases need to be tested.
 
@@ -296,7 +290,5 @@ Resources for Best Practices:
 
 Composability and extensibility should also be priorities while designing, developing,
 and documenting their projects. (Documentation for these topics coming soon)
-
-
 
 If you have any feedback about these guidelines, please create an issue in the onflow/cadence-style-guide repo or make a PR updating the guidelines so we can start a discussion.

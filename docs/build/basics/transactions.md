@@ -74,11 +74,11 @@ Example transaction with multiple authorizers:
 
 ```cadence
 transaction {
-  prepare(authorizer1: AuthAccount, authorizer2: AuthAccount) { }
+  prepare(authorizer1: auth(Capabilities) &Account, authorizer2: auth(Storage) &Account) { }
 }
 ```
 
-Each account defined as an authorizer must sign the transaction with its own key, and by doing so it acknowledges the transaction it signed will have access to that account and may modify it. How it will modify it is understood from reading the transaction script.
+Each account defined as an authorizer must sign the transaction with its own key, and by doing so it acknowledges the transaction it signed will have access to that account and may modify it. How it will modify it is understood from the list of account entitlements that are granted in the `prepare` argument list and by reading the transaction script.
 
 **Payer**
 

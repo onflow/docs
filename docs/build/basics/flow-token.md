@@ -84,7 +84,7 @@ The protocol requires some FLOW tokens to process these transactions,
 but (and this is the cool part!) a product can support users who do not themselves hold FLOW
 while still providing that user with all the underlying security guarantees the Flow protocol provides.
 
-Transferring FLOW, creating accounts, and updating keys are all actions made easy on [Flow Port](https://port.onflow.org/)
+Transferring FLOW, creating accounts, and updating keys are all actions made easy on [Flow Port](https://port.flow.com/)
 
 ### Submitting Transactions and Updating Users
 
