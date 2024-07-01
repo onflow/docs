@@ -83,4 +83,4 @@ Direct calls to Flow EVM require gas, it's important to understand how gas usage
 
 ## Keep Learning
 
-For more information and a deeper dive into the `EVMAddress`, `Result`, and `Status` objects, see [the contract here](https://github.com/onflow/flow-go/blob/feature/stable-cadence/fvm/evm/stdlib/contract.cdc).
+For more information and a deeper dive into the `EVMAddress`, `Result`, and `Status` objects, see [the contract here](https://github.com/onflow/flow-go/blob/master/fvm/evm/stdlib/contract.cdc).
