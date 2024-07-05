@@ -79,9 +79,9 @@ event Withdrawn(type: String,
                 balanceAfter: UFix64)
 ```
 
-Mainnet event: `A.0xf233dcee88fe0abe.FungibleToken.Withdrawn`
+Mainnet event: `A.f233dcee88fe0abe.FungibleToken.Withdrawn`
 
-Testnet event: `A.0x9a0766d93b6608b7.FungibleToken.Withdrawn`
+Testnet event: `A.9a0766d93b6608b7.FungibleToken.Withdrawn`
 
 **Deposit Tokens**
 
@@ -96,9 +96,9 @@ event Deposited(type: String,
 
 Event name: `FungibleToken.Deposited`
 
-Mainnet event: `A.0xf233dcee88fe0abe.FungibleToken.Deposited`
+Mainnet event: `A.f233dcee88fe0abe.FungibleToken.Deposited`
 
-Testnet event: `A.0x9a0766d93b6608b7.FungibleToken.Deposited`
+Testnet event: `A.9a0766d93b6608b7.FungibleToken.Deposited`
 
 ### **Fee Events**
 
@@ -117,20 +117,20 @@ An example of fee events:
 ```yml
 Events:
   - Index: 0
-    Type:  A.0xf233dcee88fe0abe.FungibleToken.Withdrawn
+    Type:  A.f233dcee88fe0abe.FungibleToken.Withdrawn
     Tx ID: 1ec90051e3bc74fc36cbd16fc83df08e463dda8f92e8e2193e061f9d41b2ad92
     Values:
-      - type (String): "0x1654653399040a61.FlowToken.Vault"
+      - type (String): "1654653399040a61.FlowToken.Vault"
       - amount (UFix64): 0.00000100
-      - from (Address?): 0xb30eb2755dca4572
+      - from (Address?): b30eb2755dca4572
 
   - Index: 1
-    Type:  A.0xf233dcee88fe0abe.FungibleToken.Deposited
+    Type:  A.f233dcee88fe0abe.FungibleToken.Deposited
     Tx ID: 1ec90051e3bc74fc36cbd16fc83df08e463dda8f92e8e2193e061f9d41b2ad92
     Values:
-      - type (String): "0x1654653399040a61.FlowToken.Vault"
+      - type (String): "1654653399040a61.FlowToken.Vault"
       - amount (UFix64): 0.00000100
-      - to (Address?): 0xf919ee77447b7497
+      - to (Address?): f919ee77447b7497
 
   - Index: 2
     Type:  A.f919ee77447b7497.FlowFees.FeesDeducted

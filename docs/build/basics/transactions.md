@@ -78,7 +78,15 @@ transaction {
 }
 ```
 
-Each account defined as an authorizer must sign the transaction with its own key, and by doing so it acknowledges the transaction it signed will have access to that account and may modify it. How it will modify it is understood from the list of account entitlements that are granted in the `prepare` argument list and by reading the transaction script.
+Each account defined as an authorizer must sign the transaction with its own key,
+and by doing so it acknowledges the transaction it signed
+will have access to that account and may modify it.
+How it will modify it is understood from the list of account entitlements
+that are granted in the `prepare` argument list and by reading the transaction script.
+In an transaction, developers should only give the minimum set of account entitlements
+that are required for the transaction to execute properly.
+This ensures that users who are signing transactions can understand
+what parts of their account a transaction can access.
 
 **Payer**
 
