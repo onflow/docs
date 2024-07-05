@@ -38,7 +38,7 @@ It is preferable to use capabilities over direct `&Account` references when expo
 
 ## Capabilities
 
-Don’t store anything under the [public capability storage](https://cadence-lang.org/docs/language/capabilities) unless strictly required. Anyone can access your public capability using `AuthAccount.capabilities.get`. If something needs to be stored under `/public/`, make sure only read functionality is provided by restricting privileged functions with entitlements.
+Don’t store anything under the [public capability storage](https://cadence-lang.org/docs/language/capabilities) unless strictly required. Anyone can access your public capability using `Account.capabilities.get`. If something needs to be stored under `/public/`, make sure only read functionality is provided by restricting privileged functions with entitlements.
 
 When publishing a capability, the capability might already be present at the given `PublicPath`.
 In that case, Cadence will panic with a runtime error to not override the already published capability.
