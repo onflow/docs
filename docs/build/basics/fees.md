@@ -393,3 +393,15 @@ Final fees are determined by the surge factor on the network. The surge factor f
 **I use Blocto and I haven't paid any fees yet. Why is that?**
 
 That is because Blocto is acting as the payer for transactions. Self-custody wallets may have the user pay the transaction. Additionally, apps can sponsor the transaction if they choose.
+
+**Why would the same transaction have different fees when executed for different accounts?**
+
+Short explanation: Execution costs, among other things, also include the cost to read data from the storage and since the data stored vary from account to account, so does the execution costs and subsequently the transaction fees.
+
+Detail explanation:
+
+- The single most expensive operations in Cadence are reading and writing to storage. This isn’t punitive! Every read needs to be send to all VNs for verification (with Merkel proofs), and every write requires a path of Merkel hashes to be updated. Reading and writing to storage is inherently expensive on any blockchain.
+- The way data is stored in accounts is as a tree (the hint is in the name “atree” :wink:). So, the more elements in the account, the more levels of the tree, and therefore the more nodes of that tree that need to be read and updated. So, looking at the byte size of an account is a decent proxy for figuring out how much it’s going to cost.
+- Because it’s a tree, the cost of reads and writes will only scale with log(n), but it will scale.
+- atree has an update queued up for [Crescendo](https://flow.com/upgrade/crescendo) that will improve this. The previous version would err on the side of adding new levels to the tree (to keep the code simple), while the new version tries to pack more data at each level. This should result in fewer levels for the same byte size. It also includes a more compact encoding that will reduce the byte size of most accounts.
+- Even with these improvements, this relationship is likely to remain indefinitely. The bigger the account, the more bookkeeping the nodes have to do, which will result in somewhat larger tx fees.
