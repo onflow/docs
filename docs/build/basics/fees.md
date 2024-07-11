@@ -396,7 +396,7 @@ That is because Blocto is acting as the payer for transactions. Self-custody wal
 
 **Why would the same transaction have different fees when executed for different accounts?**
 
-Short explanation: Execution costs, among other things, also include the cost to read data from the storage and since the data stored vary from account to account, so does the execution costs and subsequently the transaction fees.
+Execution costs, among other things, include the cost to read data from account storage and since the data stored varies from account to account, so does the execution costs, and subsequently the transaction fees.
 
 Detail explanation:
 
