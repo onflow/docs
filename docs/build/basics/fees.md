@@ -400,7 +400,7 @@ Execution costs, among other things, include the cost to read data from account 
 
 Additional Details:
 
-- The most expensive operations in Cadence are reading and writing to storage. This isn’t punitive! Every read needs to be sent to all Validator Nodes for verification (with Merkel proofs), and every write requires a path of Merkel hashes to be updated. Reading and writing to storage is inherently expensive on any blockchain.
+- The most expensive operations in Cadence are reading and writing to storage. This isn’t punitive! Every read needs to be sent to all Verification nodes for verification (with Merkel proofs), and every write requires a path of Merkel hashes to be updated. Reading and writing to storage is inherently expensive on any blockchain.
 - The way data is stored in accounts is as a tree (the hint is in the name “atree” :wink:). So, the more elements in the account, the more levels of the tree, and therefore the more nodes of that tree that need to be read and updated. So, looking at the byte size of an account is a decent proxy for figuring out how much it’s going to cost.
 - Because it’s a tree, the cost of reads and writes grows with log(n), but does scale.
 - atree has an update queued up for [Crescendo](https://flow.com/upgrade/crescendo) that will improve this. The previous version erred on the side of adding new levels to the tree (to keep the code simple), while the new version tries to pack more data at each level. This should result in fewer levels for the same byte size. Additionally, it includes a more compact encoding leading to a reduction in the byte size of most accounts.
