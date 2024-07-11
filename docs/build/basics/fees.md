@@ -398,7 +398,7 @@ That is because Blocto is acting as the payer for transactions. Self-custody wal
 
 Execution costs, among other things, include the cost to read data from account storage and since the data stored varies from account to account, so does the execution costs, and subsequently the transaction fees.
 
-Detail explanation:
+Additional Details:
 
 - The single most expensive operations in Cadence are reading and writing to storage. This isn’t punitive! Every read needs to be send to all VNs for verification (with Merkel proofs), and every write requires a path of Merkel hashes to be updated. Reading and writing to storage is inherently expensive on any blockchain.
 - The way data is stored in accounts is as a tree (the hint is in the name “atree” :wink:). So, the more elements in the account, the more levels of the tree, and therefore the more nodes of that tree that need to be read and updated. So, looking at the byte size of an account is a decent proxy for figuring out how much it’s going to cost.
