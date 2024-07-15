@@ -1,6 +1,6 @@
 ---
-title: Differences Between EVM On Flow And Ethereum
-sidebar_label: EVM on Flow vs. Ethereum
+title: Differences How EVM on Flow Works
+sidebar_label: How it Works
 sidebar_position: 2
 ---
 
