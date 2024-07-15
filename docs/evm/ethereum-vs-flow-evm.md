@@ -39,17 +39,17 @@ Yet a small set of differences between EVM on Flow and Ethereum might be seen (m
 - A set of extensions has been added to ensure seamless and easy interaction between the two environments.
 - EVM on Flow is secured by the Flow network and benefits from its nice properties. For example, Flow supports fast block production and finalization, making issues like handling uncle chains irrelevant.
 
-### Gateways
+## Gateways
 
 As mentioned earlier EVM on Flow doesn’t have its own consensus and runs on top of the Flow network. There is no new node type for the EVM on Flow. Anyone who wants to run the network can stake tokens and participate as Flow nodes.
 
 Gateway is a new software package provided by the Flow Foundation. It communicates with the Flow access nodes and can be run by anyone (unstaked). It serves two purposes:
 
-**Gateway As A Light Client**
+### Gateway As A Light Client
 
 A *gateway* follows the Flow block productions and collects and verifies EVM-related events. Using this collected and indexed data, it accepts RPC requests and provides JSON-RPC endpoints for any third-party applications that want to interact directly with the Flow EVM (see [list of supported endpoints](https://github.com/onflow/flow-evm-gateway?tab=readme-ov-file#supported-namespaces-and-methods)). EVM events include all information needed to reconstruct the EVM state since the genesis block (replayability). By re-executing transactions, the gateway can collect traces and maintain a local and archival copy of the EVM state over time.
 
-**Gateway As a Sequencer**
+### Gateway As a Sequencer
 
 As mentioned, EVM on Flow can be seen as a higher-level environment built on top of Cadence. Thus, all EVM transactions must be submitted through a Flow transaction (a wrapped call to the EVM). The gateway accepts EVM transactions, runs an internal mempool of transactions, wraps batches of EVM transactions in Flow transactions, and submits them.
 
@@ -65,24 +65,6 @@ For extra protection on the EVM side, the gateway software is designed to be ful
 **Fee Market Change (EIP-1559)**
 
 [EIP-1559](https://eips.ethereum.org/EIPS/eip-1559) is supported by the EVM on Flow and Gateway nodes can decide on the inclusion of the transactions based on the tips or gas fees. The parameters for the EIP 1559 are adjustable by the Flow network. Currently, the base fee is set to zero, as EVM transactions are wrapped by the Flow transactions.
-
-### Proofs
-
-**Inclusion/non-inclusion proof of execution artifacts (logs and receipts)**
-
-Similar to other EVM environments, proof can be constructed for artifacts such as receipts. As mentioned earlier, all the EVM execution artifacts are collected as part of a Cadence event. Cadence events are similar to EVM logs, and the root hash of all events (event commitment) of a block is included in Flow's block content. The Cadence event inclusion proof functionality enables constructing proofs for any artifact. For example, if one wants to construct an external proof for the inclusion of a specific EVM log or receipt, here are the steps:
-
-- Flow block validation: Anyone following the Flow blocks have can validates the Flow block headers.
-
-- EVM block validation: Since each Flow block has the root hash of Cadence events emitted during block execution. It can construct and verify the inclusion of the specific Event. In this case, every time an EVM block is executed an `evm.BlockExecuted` event is emitted that contains the full EVM block information.
-
-- Receipt inclusion** : Each EVM block includes the root hash for the receipts generated during block execution. Similar to other EVM chains, a proof can be constructed to prove inclusion of a log or receipt.
-
-**Account proofs**
-
-Another type of proof that EVM environments provide is proof for the state of accounts. These proofs depend on the trie structure of the execution environment. EVM on Flow benefits from the advanced storage and proof system that makes Flow’s multi-role architecture possible.
-
-Flow’s state system provides ways to construct inclusion and non-inclusion proofs and one can construct proofs for EVM account’s meta data (account balances, nonce, … ). A less common proof type is proof over the storage state of an account (mostly used for smart contracts). The first release of EVM on Flow won’t support these type of proofs.
 
 ## Opcodes
 
@@ -126,3 +108,22 @@ A COA is **not** controlled by a key and instead every COA account has a unique 
 Controlling through a resource makes COA powerful smart contract wallets. It makes the transfer of ownership of the EVM address super easy without the need to transfer all the assets that an EVM address owns. It also allows a Cadence smart contract to take ownership of an EVM address and makes fully decentralized exchange and bridges across environments possible.  
 
 To learn more about how to interact with a COA from the Cadence side, [see here](https://developers.flow.com/evm/cadence/interacting-with-coa).
+
+
+## Proofs
+
+**Inclusion/non-inclusion proof of execution artifacts (logs and receipts)**
+
+Similar to other EVM environments, proof can be constructed for artifacts such as receipts. As mentioned earlier, all the EVM execution artifacts are collected as part of a Cadence event. Cadence events are similar to EVM logs, and the root hash of all events (event commitment) of a block is included in Flow's block content. The Cadence event inclusion proof functionality enables constructing proofs for any artifact. For example, if one wants to construct an external proof for the inclusion of a specific EVM log or receipt, here are the steps:
+
+- Flow block validation: Anyone following the Flow blocks have can validates the Flow block headers.
+
+- EVM block validation: Since each Flow block has the root hash of Cadence events emitted during block execution. It can construct and verify the inclusion of the specific Event. In this case, every time an EVM block is executed an `evm.BlockExecuted` event is emitted that contains the full EVM block information.
+
+- Receipt inclusion** : Each EVM block includes the root hash for the receipts generated during block execution. Similar to other EVM chains, a proof can be constructed to prove inclusion of a log or receipt.
+
+**Account proofs**
+
+Another type of proof that EVM environments provide is proof for the state of accounts. These proofs depend on the trie structure of the execution environment. EVM on Flow benefits from the advanced storage and proof system that makes Flow’s multi-role architecture possible.
+
+Flow’s state system provides ways to construct inclusion and non-inclusion proofs and one can construct proofs for EVM account’s meta data (account balances, nonce, … ). A less common proof type is proof over the storage state of an account (mostly used for smart contracts). The first release of EVM on Flow won’t support these type of proofs.
