@@ -1,7 +1,7 @@
 ---
 title: Data Indexers
 sidebar_label: Data Indexers
-sidebar_position: 8
+sidebar_position: 9
 ---
 
 # Data Indexers

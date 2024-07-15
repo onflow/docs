@@ -1,7 +1,7 @@
 ---
 title: Differences Between EVM On Flow And Ethereum
 sidebar_label: EVM on Flow vs. Ethereum
-sidebar_position: 14
+sidebar_position: 2
 ---
 
 # Differences between EVM on Flow and Ethereum
@@ -108,7 +108,6 @@ A COA is **not** controlled by a key and instead every COA account has a unique 
 Controlling through a resource makes COA powerful smart contract wallets. It makes the transfer of ownership of the EVM address super easy without the need to transfer all the assets that an EVM address owns. It also allows a Cadence smart contract to take ownership of an EVM address and makes fully decentralized exchange and bridges across environments possible.  
 
 To learn more about how to interact with a COA from the Cadence side, [see here](https://developers.flow.com/evm/cadence/interacting-with-coa).
-
 
 ## Proofs
 
