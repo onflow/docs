@@ -20,7 +20,7 @@ EVM on Flow is designed with these major goals in mind:
 
 To satisfy the design goals and thanks to the extensibility properties of the Cadence runtime, EVM on Flow is designed as a higher-level environment incorporated as a smart contract deployed to Cadence. This smart contract is not owned by anyone and has its own storage space, allows Cadence to query, and is updated through EVM transactions. EVM transactions can be wrapped inside Cadence transactions and passed to the EVM contract for execution. The artifacts of EVM transaction execution (e.g. receipts and logs) are emitted as special Cadence events (TransactionExecuted, BlockExecuted) and available to the upstream process (Flow transaction) to enable atomic operations. 
 
-The EVM environment has its own concept of blocks, and a single Flow block can include several EVM blocks (a one-to-many relationship). Note that since EVM blocks are formed on-chain and Flow provides fast finality, as long as the user of these events waits for Flow block finality, it doesn’t have to worry about EVM block forks, uncle chains, and other consensus-related problems on Ethereum. 
+The EVM environment has its own concept of blocks, and every Flow block includes a at most one EVM Block. The EVM block is formed at the end of Flow Block execution and includes all the transaction executed during the EVM block execution. Note that since EVM blocks are formed on-chain and Flow provides fast finality, as long as the user of these events waits for Flow block finality, it doesn’t have to worry about EVM block forks, uncle chains, and other consensus-related challenges. 
 
 ### No Shared Memory Design
 
