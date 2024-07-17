@@ -112,7 +112,7 @@ To learn more about how to interact with a COA from the Cadence side, [see here]
 
 ## Proofs
 
-**Inclusion/non-inclusion proof of execution artifacts (logs and receipts)**
+**Inclusion proof of execution artifacts (logs and receipts)**
 
 Similar to other EVM environments, proof can be constructed for artifacts such as receipts. As mentioned earlier, all the EVM execution artifacts are collected as part of a Cadence event. Cadence events are similar to EVM logs, and the root hash of all events (event commitment) of a block is included in Flow's block content. The Cadence event inclusion proof functionality enables constructing proofs for any artifact. For example, if one wants to construct an external proof for the inclusion of a specific EVM log or receipt, here are the steps:
 
@@ -121,6 +121,10 @@ Similar to other EVM environments, proof can be constructed for artifacts such a
 - EVM block validation: Since each Flow block has the root hash of Cadence events emitted during block execution. It can construct and verify the inclusion of the specific Event. In this case, every time an EVM block is executed an `evm.BlockExecuted` event is emitted that contains the full EVM block information.
 
 - Receipt inclusion** : Each EVM block includes the root hash for the receipts generated during block execution. Similar to other EVM chains, a proof can be constructed to prove inclusion of a log or receipt.
+
+**Inclusion proof of transactions**
+
+Each Flow EVM block (TransactionHashRoot) includes the Merkle root hash of all the transaction hashes executed during this block. Despite similar functionality, this root is a bit different than TransactionRoot provided by Ethereum, It is a commitment over the list of transaction hashes instead of transactions, so each leaf node in the Merkle tree has the transaction hash as the value instead of full RLP encoding of transaction. So verifying the proofs requires an extra calling to the hash function.
 
 **Account proofs**
 
