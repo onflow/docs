@@ -1,15 +1,14 @@
 ---
-title: Differences How EVM on Flow Works
+title: How EVM on Flow Works
 sidebar_label: How it Works
 sidebar_position: 2
 ---
 
-# Differences between EVM on Flow and Ethereum
+# How EVM on Flow Works
 
 ## Introduction
 
-The Flow network uses [Cadence](https://cadence-lang.org/) as its main execution environment. Cadence offers a safe, efficient, and developer-friendly experience for building smart contracts and decentralized applications. With Cadence offering full EVM support existing applications and tools already deployed for the EVM ecosystem can simply onboard to the Flow network with no code changes ([more](https://developers.flow.com/evm/about) on this topic).
-
+The Flow network uses [Cadence](https://cadence-lang.org/) as its main execution environment. Cadence offers a safe, efficient, and developer-friendly experience for building smart contracts and decentralized applications. Cadence can be used to extend EVM apps built in solidity by unlocking gaslesss experiences, new business models and fine-tuned access control. With Flow offering full EVM support, existing applications and tools already deployed in the EVM ecosystem can simply onboard to the network with [no code changes](https://developers.flow.com/evm/about).
 
 EVM on Flow is designed with these major goals in mind: 
 
@@ -21,7 +20,7 @@ EVM on Flow is designed with these major goals in mind:
 
 To satisfy the design goals and thanks to the extensibility properties of the Cadence runtime, EVM on Flow is designed as a higher-level environment incorporated as a smart contract deployed to Cadence. This smart contract is not owned by anyone and has its own storage space, allows Cadence to query, and is updated through EVM transactions. EVM transactions can be wrapped inside Cadence transactions and passed to the EVM contract for execution. The artifacts of EVM transaction execution (e.g. receipts and logs) are emitted as special Cadence events (TransactionExecuted, BlockExecuted) and available to the upstream process (Flow transaction) to enable atomic operations. 
 
-The EVM environment has its own concept of blocks, and every Flow block includes a at most one EVM Block. The EVM block is formed at the end of Flow Block execution and includes all the transaction executed during the EVM block execution. Note that since EVM blocks are formed on-chain and Flow provides fast finality, as long as the user of these events waits for Flow block finality, it doesn’t have to worry about EVM block forks, uncle chains, and other consensus-related challenges. 
+The EVM environment has its own concept of blocks, and every Flow block includes at most one EVM Block. The EVM block is formed at the end of Flow Block execution and includes all the transaction executed during the EVM block execution. Note that since EVM blocks are formed on-chain and Flow provides fast finality, as long as the user of these events waits for Flow block finality, it doesn’t have to worry about EVM block forks, uncle chains, and other consensus-related challenges. 
 
 ### No Shared Memory Design
 
@@ -105,8 +104,8 @@ COA is a natively supported EVM smart contract wallet type that allows a Cadence
 
 These smart contract wallets are only deployable through the Cadence environment and their address starts with the prefix `0x000000000000000000000002`. The address `0x0000000000000000000000020000000000000000` is reserved for COA factory, an address that deploys contracts for COA accounts.
 
-A COA is **not** controlled by a key and instead every COA account has a unique resource accessible on the Cadence side, and anyone who owns that resource and submits transactions on behalf of this address. These direct transactions have COA’s EVM address as the `tx.origin` and a new EVM transaction type (`TxType = 0xff`) is used to differentiate these transactions from other types of EVM transactions (e.g, DynamicFeeTxType (`0x02`). Currently, to make integration and tracking of these transactions byte EVM ecosystem tools, these types of transactions are encoded as legacy EVM transactions (hash computation is based on legacy tx rlp encoding).
-Controlling through a resource makes COA powerful smart contract wallets. It makes the transfer of ownership of the EVM address super easy without the need to transfer all the assets that an EVM address owns. It also allows a Cadence smart contract to take ownership of an EVM address and makes fully decentralized exchange and bridges across environments possible.  
+A COA is not controlled by a key. Instead, every COA account has a unique resource accessible on the Cadence side, and anyone who owns that resource submits transactions on behalf of this address. These direct transactions have COA’s EVM address as the `tx.origin` and a new EVM transaction type (`TxType = 0xff`) is used to differentiate these transactions from other types of EVM transactions (e.g, DynamicFeeTxType (`0x02`). Currently, to make integration and tracking of these transactions byte EVM ecosystem tools, these types of transactions are encoded as legacy EVM transactions (hash computation is based on legacy tx rlp encoding).
+Controlling through a resource makes a COA a powerful smart contract wallet. It makes the transfer of ownership of the EVM address super easy without the need to transfer all the assets that an EVM address owns. It also allows a Cadence smart contract to take ownership of an EVM address and makes fully decentralized exchange and bridges across environments possible.  
 
 To learn more about how to interact with a COA from the Cadence side, [see here](https://developers.flow.com/evm/cadence/interacting-with-coa).
 
@@ -116,11 +115,11 @@ To learn more about how to interact with a COA from the Cadence side, [see here]
 
 Similar to other EVM environments, proof can be constructed for artifacts such as receipts. As mentioned earlier, all the EVM execution artifacts are collected as part of a Cadence event. Cadence events are similar to EVM logs, and the root hash of all events (event commitment) of a block is included in Flow's block content. The Cadence event inclusion proof functionality enables constructing proofs for any artifact. For example, if one wants to construct an external proof for the inclusion of a specific EVM log or receipt, here are the steps:
 
-- Flow block validation: Anyone following the Flow blocks have can validates the Flow block headers.
+- Flow block validation: Anyone following the Flow blocks can validate the Flow block headers.
 
 - EVM block validation: Since each Flow block has the root hash of Cadence events emitted during block execution. It can construct and verify the inclusion of the specific Event. In this case, every time an EVM block is executed an `evm.BlockExecuted` event is emitted that contains the full EVM block information.
 
-- Receipt inclusion** : Each EVM block includes the root hash for the receipts generated during block execution. Similar to other EVM chains, a proof can be constructed to prove inclusion of a log or receipt.
+- Receipt inclusion: Each EVM block includes the root hash for the receipts generated during block execution. Similar to other EVM chains, a proof can be constructed to prove inclusion of a log or receipt.
 
 **Inclusion proof of transactions**
 
