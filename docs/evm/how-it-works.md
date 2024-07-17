@@ -8,7 +8,8 @@ sidebar_position: 2
 
 ## Introduction
 
-The Flow network uses [Cadence](https://cadence-lang.org/) as its main execution environment. Cadence offers a safer, more efficient, and more developer-friendly experience for building smart contracts and decentralized applications. However, supporting EVM could make it easier for existing applications and tools already deployed for the EVM ecosystem to onboard to the Flow network ([more](https://developers.flow.com/evm/about) on this topic).
+The Flow network uses [Cadence](https://cadence-lang.org/) as its main execution environment. Cadence offers a safe, efficient, and developer-friendly experience for building smart contracts and decentralized applications. With Cadence offering full EVM support existing applications and tools already deployed for the EVM ecosystem can simply onboard to the Flow network with no code changes ([more](https://developers.flow.com/evm/about) on this topic).
+
 
 EVM on Flow is designed with these major goals in mind: 
 
