@@ -6,6 +6,8 @@ sidebar_position: 1
 
 The Flow CLI can be installed on macOS, Windows (7 or greater) and most Linux systems.
 
+> Note: If you need to install the pre-release version of the Flow CLI supporting Cadence 1.0, please refer to the [Cadence 1.0 migration guide instructions](https://cadence-lang.org/docs/cadence-migration-guide#install-cadence-10-cli).
+
 ## macOS
 
 ### Homebrew
