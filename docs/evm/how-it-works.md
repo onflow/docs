@@ -71,12 +71,10 @@ For extra protection on the EVM side, the gateway software is designed to be ful
 EVM on Flow supports opcodes listed [here](https://www.evm.codes/?fork=shanghai), except for these changes. 
 
 - **COINBASE**  (`block.coinbase`)
-Similar to Ethereum it returns the address of block’s beneficiary address. In the case of EVM on Flow, it returns the address of the current sequencer's fee wallet (see Gateway section for more details).
+	Similar to Ethereum it returns the address of block’s beneficiary address. In the case of EVM on Flow, it returns the address of the current sequencer's fee wallet (see Gateway section for more details).
+
 - **PREVRANDAO** (`block.prevrandao`)
     On Ethereum, this value provides access to beacon chain randomness (see [EIP-4399](https://eips.ethereum.org/EIPS/eip-4399)), Since Flow uses a different approach in consensus and verifiable randomness generation, this value is filled with a random number provided by the Flow protocol ([see here](https://developers.flow.com/build/advanced-concepts/randomness) for more details). While EVM on Flow provides such opcode, to benefit from the full power of randomness on Flow, it's recommended to use the Cadence Arch precompiled contract.
-    
-- **BLOCKHASH**
-    Similar to Ethereum, this provides access to the block hash for the past blocks, except currently, EVM on Flow supports the last 16 blocks. Access the full list of last 256 blocks is currently under development and soon will be released. 
     
 
 ## Precompiled Contracts
