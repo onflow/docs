@@ -68,7 +68,7 @@ For extra protection on the EVM side, the gateway software is designed to be ful
 
 ## Opcodes
 
-EVM on Flow supports opcodes listed [here](https://www.evm.codes/?fork=shanghai), except for these changes. 
+EVM on Flow supports opcodes listed [here](https://www.evm.codes/?fork=cancun), except for these changes. 
 
 - **COINBASE**  (`block.coinbase`)
 	Similar to Ethereum it returns the address of block’s beneficiary address. In the case of EVM on Flow, it returns the address of the current sequencer's fee wallet (see Gateway section for more details).
@@ -79,7 +79,7 @@ EVM on Flow supports opcodes listed [here](https://www.evm.codes/?fork=shanghai)
 
 ## Precompiled Contracts
 
-Besides all the precompiled contracts supported by Ethereum (see here for [the list](https://www.evm.codes/precompiled?fork=shanghai)), EVM on Flow has augmented this with a unique precompiled contract, the Cadence Arch, that provides access to the Cadence world. 
+Besides all the precompiled contracts supported by Ethereum (see here for [the list](https://www.evm.codes/precompiled?fork=cancun)), EVM on Flow has augmented this with a unique precompiled contract, the Cadence Arch, that provides access to the Cadence world. 
 
 Cadence Arch is a multi-function smart contract (deployed at `0x0000000000000000000000010000000000000001`) that allows any smart contract on Flow EVM to interact with the Cadence side.
 
