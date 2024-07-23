@@ -9,7 +9,7 @@ The Cluster Quorum Certificate (QC) and Distributed Key Generation (DKG) protoco
 store a lot of different state, and the state is constantly changing.
 As an external party, there are two ways to keep track of these state changes. 
 You can either use Cadence scripts to query the state of the contract at any given time,
-or you can monitor events that are emitted by the contracts to be notified of any important occurances.
+or you can monitor events that are emitted by the contracts to be notified of any important occurrences.
 
 # Query Information with Scripts
 
