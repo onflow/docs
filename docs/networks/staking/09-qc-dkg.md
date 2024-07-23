@@ -61,7 +61,7 @@ Once all clusters are complete, the QC is complete.
 
 ### Create QC Voter Object
 
-A node uses the [`getClusterQCVoter()`](https://github.com/onflow/flow-core-contracts/blob/master/contracts/epochs/FlowEpoch.cdc#L732)
+A node uses the [`getClusterQCVoter()`](https://github.com/onflow/flow-core-contracts/blob/master/contracts/epochs/FlowEpoch.cdc#L905)
 function in the `FlowEpoch` contract to create their Voter object and needs to provide
 a reference to their `FlowIDTableStaking.NodeStaker` object to prove they are the node owner.
 
@@ -102,7 +102,7 @@ the DKG is considered to be complete.
 
 ### Create DKG Participant Object
 
-A node uses the [`getDKGParticipant()`](https://github.com/onflow/flow-core-contracts/blob/master/contracts/epochs/FlowEpoch.cdc#L746)
+A node uses the [`getDKGParticipant()`](https://github.com/onflow/flow-core-contracts/blob/master/contracts/epochs/FlowEpoch.cdc#L919)
 function in the `FlowEpoch` contract to create their Voter object and needs to provide
 a reference to their `FlowIDTableStaking.NodeStaker` object to prove they are the node owner.
 
