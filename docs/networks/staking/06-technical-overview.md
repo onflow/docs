@@ -82,7 +82,7 @@ Node operators need to determine the role of node they will be running
 (Collection, Consensus, Execution, Verification, or Access).
 
 <Callout type="warning">
-  NOTE: Access Nodes are eligible to stake and have a staking minimum of 50 FLOW,
+  NOTE: Access Nodes are eligible to stake and have a staking minimum of 100 FLOW,
   but will not receive rewards for their stake. 
   Please register as a different node type if you would like to receive rewards.
 </Callout>
