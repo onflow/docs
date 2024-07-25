@@ -35,7 +35,7 @@ See [Epoch Preparation Protocol](./04-epoch-preparation.md#epoch-length) for det
 </Callout>
 
 **Staking Operations are disabled for approximately the last 6-12 hours of an epoch**,
-typically around 12:00am US Pacific Time (7:00am UTC) on Wednesday every week until around 12:00pm US Pacific Time (7:00pm UTC).
+typically around 00:00 US Pacific Daylight Time (07:00 UTC) on Wednesday every week until around 12:00 US Pacific Daylight Time (19:00 UTC).
 See [Epoch Setup](./04-epoch-preparation.md#phase-1-epoch-setup) for more information on this phase.
 
 **Epoch Switchovers will happen around 12:00 pm PT on Wednesday (7:00 pm UTC)** every week. 
@@ -72,7 +72,7 @@ in the next epoch perform important setup functionality to prepare for the next 
 This is because the staking information has been finalized in preparation for the next epoch
 and cannot be changed because these final phases rely on the staking information being constant.
 
-**The Staking Auction Ends every Wednesday near 12:00am PT (7:00 am UTC).**
+**The Staking Auction Ends every Wednesday near 00:00 PDT (07:00 UTC).**
 **This means that staking operations will be disabled for ALL users**
 **in the period between the end of the staking auction and the beginning of the next epoch, currently 6-12hrs.**
 
