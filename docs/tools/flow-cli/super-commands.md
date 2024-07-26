@@ -4,18 +4,16 @@ description: How Flow Super Commands Work
 sidebar_position: 2
 ---
 
-Flow CLI Super commands are set of commands that can be used during development 
-of your dApp to greatly simplify the workflow. The result is you can focus on writing the contracts 
-and the commands will take care of the rest. 
+Flow CLI Super commands are set of commands that can be used during development of your dApp to greatly simplify the workflow. The result is you can focus on writing the contracts and the commands will take care of the rest. 
 
+## Init
+The initial command to start your new Flow project is `flow init`. It will ask you a few questions about how you'd like to configure your project and then create the necessary files and folders, setup the configuration file, and install any core contracts dependencies you might need.
 
-## Setup
-The initial command to start your new Flow project is `flow setup` . By default, it will create 
-basic folder structure and a flow.json configuration. 
+> Note: If you just want the `flow.json` configured without creating any folders or files, you can run `flow init --config-only`.
 
 Running the command:
 ```
-> flow setup $PROJECT_NAME
+> flow init $PROJECT_NAME
 ```
 
 Will create the following folders and files:
@@ -29,22 +27,24 @@ Will create the following folders and files:
 Based on the purpose of your project you can select from a list of available scaffolds. 
 You can access the scaffolds by simply using the `--scaffold` flag like so:
 ```
-> flow setup $PROJECT_NAME --scaffold
+> flow init $PROJECT_NAME --scaffold
 ```
 
 If you'd like to skip the interactive mode of selecting a scaffold, use the `--scaffold-id` flag with a known ID:
 
 ```
-> flow setup $PROJECT_NAME --scaffold-id=1
+> flow init $PROJECT_NAME --scaffold-id=1
 ```
 
 The list of scaffolds will continuously grow, and you are welcome to contribute to that. 
 You can contribute by creating your own scaffold repository which can then be added to the scaffold 
 list by [following instructions here](https://github.com/onflow/flow-cli/blob/master/CONTRIBUTING.md#adding-a-scaffold).
 
+## Testing
+`flow init` will also have created an example test file in the `/tests` folder. You can run the tests by using the `flow test` command. 
 
 ## Develop
-After creating the project using the flow setup command you can start the emulator in 
+After creating the project using the `flow init` command you can start the emulator in 
 the project directory by running `flow emulator`. After emulator is started up you can continue by 
 running the flow develop command like so:
 ```
@@ -116,7 +116,9 @@ import "HelloWorld"
 This will automatically import the contract you have created in your project with the same name and 
 save the configuration in flow.json. It doesn't matter if the contract has been deployed on a non-default account.
 
+## Learn More
 
+To learn more about next steps following the initial setup, check out the following links:
 
-
-
+- [Depedency Manager](./dependency-manager.md): Lets you install and manage your contract dependencies with CLI commands.
+- [Manage Configuration](./flow.json/manage-configuration.md): Learn how to manage your project configuration file.
