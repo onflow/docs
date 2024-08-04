@@ -68,6 +68,12 @@ https://shadow.app/wallet
 
 https://www.blocto.io/
 
+## Metamask Wallet
+
+[Metamask](https://metamask.io/) is a secure and user-friendly crypto wallet for NFTs and digital tokens. 
+
+https://metamask.io/
+
 ## Flow Dev Wallet
 
 Looking for a way to create mock developer wallets to test your app? The [The Flow Dev Wallet](../tools/flow-dev-wallet/index.md) simulates the protocols used by [FCL](../tools/clients/fcl-js/index.md) to interact with the Flow blockchain on behalf of simulated user accounts.
