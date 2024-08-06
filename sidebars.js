@@ -19,9 +19,9 @@ const sidebars = {
     {
       type: 'category',
       label: 'Network Architecture',
-      link: { type: 'doc', id: 'network-architecture/index' },
+      link: { type: 'doc', id: 'networks/network-architecture/index' },
       items: [
-        'network-architecture/problems-with-blockchain'
+        'networks/network-architecture/problems-with-blockchain'
       ],
     },
     {
