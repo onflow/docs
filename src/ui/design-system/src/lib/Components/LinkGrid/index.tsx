@@ -95,7 +95,7 @@ const sections: LinkGridSection[] = [
       },
       {
         title: 'Network Architecture',
-        href: 'https://jan-bernatik.medium.com/introduction-to-flow-blockchain-7532977c8af8',
+        href: '/networks/network-architecture',
       },
     ],
     imageName: 'docs-the-stack',
