@@ -1,11 +1,12 @@
 ---
-title: Problems with blockchains
-sidebar_label: Problems with blockchains
+title: Problems with current blockchains
+sidebar_label: Problems with current blockchains
 sidebar_position: 1
-description: What are the three biggest problems with blockchains?
 ---
 
-## 1. The blockchain trilemma: it’s impossible to achieve scalability, decentralization, and security all at the same time
+# What are the three biggest problems with blockchains?
+
+## 1. The blockchain trilemma
 
 A blockchain should be fully decentralized, highly scalable and extremely secure. However a well-known problem with all blockchain is the blockchain trilemma - optimizing for any one edge comes at the cost of the other two.
 
