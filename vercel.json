@@ -1043,8 +1043,8 @@
       "permanent": true
     },
     {
-      "source": "/build/advanced-concepts/account-abstraction",
-      "destination": "/build/differences-vs-evm/account-abstraction",
+      "source": "/build/differences-vs-evm/account-abstraction",
+      "destination": "/build/advanced-concepts/account-abstraction",
       "permanent": true
     },
     {
@@ -1225,6 +1225,10 @@
       "source": "/build/smart-contracts/best-practices/design-patterns",
       "destination": "https://cadence-lang.org/docs/1.0/design-patterns",
       "permanent": true
+    },
+    {
+      "source": "/build/differences-vs-evm/transaction-time",
+      "destination": "/build/basics/transactions#transaction-time"
     }
   ]
 }

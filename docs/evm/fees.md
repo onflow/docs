@@ -82,7 +82,7 @@ Transaction fee = [1E-6 FLOW + (110.97 * 2.49E-07 FLOW)] x 1 = 6.55E-06 FLOW
 **Note**: Please be aware that this example serves solely for illustrative purposes to elucidate the calculations. Actual transaction fees may differ due to various factors, including the byte size of the transaction.
 </details>
 
-<h2>Gasless Transactions</h2>
-<p>Fees needed to execute transactions on a Web3 app are often a major challenge for new users and can be a barrier to adoption. Builders can easily extend their apps with Cadence to create ‘gasless’ experiences by specifying their app as the <a href="https://developers.flow.com/build/differences-vs-evm/account-abstraction#sponsored-transactions">sponsor</a> instead of the user.</p>
+## Gasless Transactions
+Fees needed to execute transactions on a Web3 app are often a major challenge for new users and can be a barrier to adoption. Builders can easily extend their apps with Cadence to create ‘gasless’ experiences by specifying their app as the [sponsor](../build/advanced-concepts/account-abstraction.md#sponsored-transactions) instead of the user.
 
 To learn more about storage fee and transaction fee, visit [Flow Tokenomics page](https://flow.com/flow-tokenomics/technical-overview).
