@@ -94,7 +94,7 @@ Once your accounts are set up and you're ready to develop, you can look over [so
 
 The Flow blockchain is improved continuously and thus version updates to Cadence, Flow node software, and the Flow SDKs will contain important updates as well as breaking changes.
 
-You should anticipate future updates and join the community ([Forum](https://forum.onflow.org/) or [Discord](https://www.discord.gg/flow)) to stay tuned on important announcements. Notices and guidelines for changes will be provided as early as possible.
+You should anticipate future updates and join the community ([Forum](https://forum.onflow.org/) or [Discord](https://discord.com/invite/J6fFnh2xx6)) to stay tuned on important announcements. Notices and guidelines for changes will be provided as early as possible.
 
 
 ### Testnet Sporking

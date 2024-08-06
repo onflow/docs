@@ -10,7 +10,7 @@ Flow is an L1 that now supports EVM-equivalency. This means that all of Flow's p
 
 ## Seamless Integration for Ethereum Developers
 
-EVM on Flow is designed to work out-of-the-box with the Ethereum toolchain or other clients..   Native EVM transactions also continue to be supported when using Metamask and other EVM-compatible clients.
+EVM on Flow is designed to work out-of-the-box with the Ethereum toolchain or other clients.  Native EVM transactions also continue to be supported when using Metamask and other EVM-compatible clients.
 EVM-equivalency on Flow works behind-the-scenes by  implementing a minimal transaction script in Cadence, Flow's smart contract language, to integrate Flow features with EVM. This is made possible because EVM transactions are composed and executed within Cadence transactions, enabling novel use-cases and patterns for integration.
 
 

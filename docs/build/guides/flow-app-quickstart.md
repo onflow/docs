@@ -13,7 +13,7 @@ This guide is a simple walkthrough to get started building a web3 app using the 
 
 :::info
 
-If you are looking for a scalfolds, check out [scaffolds available in the Flow CLI](../../tools/flow-cli/super-commands.md#using-scaffolds).
+If you are looking for a scaffolds, check out [scaffolds available in the Flow CLI](../../tools/flow-cli/super-commands.md#using-scaffolds).
 
 :::
 
@@ -53,7 +53,7 @@ Make sure you have Flow CLI installed. [installation instructions](../../tools/f
 Using the Flow CLI scaffold, create a basic hello world web project with `Web Scaffolds` -> `[5] FCL Web Dapp`. This will create a new `flow.json` file in the `hello-world` folder. This file will contain the Flow configuration for your project.
 
 ```sh
-flow setup hello-world --scaffold
+flow init hello-world --scaffold
 # select scaffold 5
 cd hello-world
 npm install
@@ -202,6 +202,8 @@ The web app will run, but there are no contracts deployed to local emulator. Thi
 
 ## Authenticate a User
 
+Navigate to [localhost:3000](http://localhost:3000) in your browser.
+
 ![User Login](./user-login-hello-world.gif)
 
 Note: in the code above `useCurrentUser` is used to determine if there is a logged in user. 
@@ -322,8 +324,9 @@ For more information on deployments check [Flow CLI](../../tools/flow-cli/flow.j
 
 ## Query the Blockchain
 
-Now that all pieces are in place. UI can query `HelloWorld` contract.
+Now that all the pieces are in place, you can query the `HelloWorld` contract.
 
+Navigate again to [localhost:3000](http://localhost:3000) in your browser.
 
 ![Query HelloWorld Contract](./query-helloWorld-contract.gif)
 

@@ -8,7 +8,7 @@ sidebar_label: Epoch Scripts and Events
 The epoch contract stores a lot of different state, and the state is constantly changing.
 As an external party, there are two ways to keep track of these state changes. 
 You can either use Cadence scripts to query the state of the contract at any given time,
-or you can monitor events that are emitted by the epoch contract to be notified of any important occurances.
+or you can monitor events that are emitted by the epoch contract to be notified of any important occurrences.
 
 # Monitor Epoch Service Events
 
@@ -52,7 +52,41 @@ and we say a service event is `finalized` when the block containing the seal is 
 
 ## Event Descriptions
 
-### `EpochSetup`
+### `FlowEpoch.EpochStart`
+
+The Epoch Start service event is emitted by `FlowEpoch.startNewEpoch()` 
+when the epoch commit phase ends and the Epoch Smart Contracts transition
+to the staking auction phase. 
+It contains the relevant metadata for the new epoch that was generated during the last epoch:
+
+```cadence
+ access(all) event EpochStart (
+
+        /// The counter for the current epoch that is beginning
+        counter: UInt64,
+
+        /// The first view (inclusive) of the current epoch.
+        firstView: UInt64,
+
+        /// The last view (inclusive) of the current epoch's staking auction.
+        stakingAuctionEndView: UInt64,
+
+        /// The last view (inclusive) of the current epoch.
+        finalView: UInt64,
+
+        /// Total FLOW staked by all nodes and delegators for the current epoch.
+        totalStaked: UFix64,
+
+        /// Total supply of all FLOW for the current epoch
+        /// Includes the rewards that will be paid for the previous epoch
+        totalFlowSupply: UFix64,
+
+        /// The total rewards that will be paid out at the end of the current epoch.
+        totalRewards: UFix64,
+    )
+```
+
+### `FlowEpoch.EpochSetup`
 
 The Epoch Setup service event is emitted by `FlowEpoch.startEpochSetup()` 
 when the staking auction phase ends and the Epoch Smart Contracts transition to the Epoch Setup phase. 
@@ -97,7 +131,7 @@ access(all) event EpochSetup (
 )
 ```
 
-### `EpochCommit`
+### `FlowEpoch.EpochCommit`
 
 The `EpochCommit` service event is emitted when the Epoch Smart Contracts transition 
 from the Epoch Setup phase to the Epoch Commit phase. 
@@ -126,7 +160,7 @@ access(all) event EpochCommit (
 # Query Information with Scripts
 
 The `FlowEpoch` smart contract stores important metadata about the current, proposed,
-and previous epochs. Metadata for all historical epochs is stored permenantely 
+and previous epochs. Metadata for all historical epochs is stored permanently 
 in the Epoch Smart Contract's storage.
 
 ```cadence

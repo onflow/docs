@@ -490,13 +490,13 @@ representing each id of each node managed by an accounts Staking Collection.
 ### Get All Delegator Ids
 
 To return an array of structs representing the delegator ids associated with each delegation managed by an account's Staking Collection, anyone
-can use the **Get All Delegator Ids** ([SCO.16](../../build/core-contracts/11-staking-collection.md)) script with the following arguments:
+can use the **Get All Delegator Ids** ([SCO.22](../../build/core-contracts/11-staking-collection.md)) script with the following arguments:
 
 | Argument    | Type       | Description |
 |-------------|------------|-------------|
 | **address** | `Addresss` | The Address of the account holding the Staking Collection to query from |
 
-This script returns an array of `FlowStakingCollection.DelegatorIDs` [structs](https://github.com/onflow/flow-core-contracts/blob/master/contracts/FlowStakingCollection.cdc#L29)
+This script returns an array of `FlowStakingCollection.DelegatorIDs` [structs](https://github.com/onflow/flow-core-contracts/blob/master/contracts/FlowStakingCollection.cdc#L40)
 representing the delegator Ids of each delegator managed by an accounts Staking Collection.
 
 ### Get Locked Tokens Used

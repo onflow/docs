@@ -1,5 +1,6 @@
 ---
 sidebar_position: 3
+keywords: [Flow Transaction Speed, Flow Transaction Time, Transactions on Flow]
 ---
 
 # Transactions
@@ -8,10 +9,11 @@ Transactions are cryptographically signed data messages that contain a set of in
 
 ![Screenshot 2023-08-17 at 13.57.36.png](_transactions_images/Screenshot_2023-08-17_at_13.57.36.png)
 
-<Callout type="tip">
+:::tip
+
 Transactions on Flow are fundamentally different from those on Ethereum. The main purpose of a transaction is not to send funds but to contain code that gets executed. This makes transactions very flexible and powerful. In addition to being able to access the authorizing accounts private assets, transactions can also read and call functions in public contracts, and access public domains in other users' accounts Transactions on Flow also feature different roles, such as defining third-party payer accounts, proposer accounts, and authorizers, which we will talk about in detail soon.
 
-</Callout>
+:::
 
 In order for a transaction to be valid and executed it must contain signatures from accounts involved as well as some other information, let’s take a look at all the required fields.
 
@@ -74,11 +76,19 @@ Example transaction with multiple authorizers:
 
 ```cadence
 transaction {
-  prepare(authorizer1: AuthAccount, authorizer2: AuthAccount) { }
+  prepare(authorizer1: auth(Capabilities) &Account, authorizer2: auth(Storage) &Account) { }
 }
 ```
 
-Each account defined as an authorizer must sign the transaction with its own key, and by doing so it acknowledges the transaction it signed will have access to that account and may modify it. How it will modify it is understood from reading the transaction script.
+Each account defined as an authorizer must sign the transaction with its own key,
+and by doing so it acknowledges the transaction it signed
+will have access to that account and may modify it.
+How it will modify it is understood from the list of account entitlements
+that are granted in the `prepare` argument list and by reading the transaction script.
+In an transaction, developers should only give the minimum set of account entitlements
+that are required for the transaction to execute properly.
+This ensures that users who are signing transactions can understand
+what parts of their account a transaction can access.
 
 **Payer**
 
@@ -107,10 +117,11 @@ The transaction status represents the state of a transaction on the Flow blockch
 - Sealed - The verification nodes have verified and agreed on the result of the transaction and the consensus node has included the seal in the latest block.
 - Expired - The transaction was submitted past its expiration block height.
 
-<Callout type="danger">
+:::danger
+
 It is **important to differentiate the transaction status and transaction result**. Transaction status will only provide you with information about the inclusion of the transaction in the blockchain, not whether the transaction was executed the way you intended. **A transaction can still fail to execute the way you intended and be sealed.**
 
-</Callout>
+:::
 
 ### Transaction Result
 
@@ -118,12 +129,54 @@ Once a transaction is executed, its result will be available, providing details 
 
 ![Screenshot 2023-08-17 at 16.29.30.png](_transactions_images/Screenshot_2023-08-17_at_16.29.30.png)
 
-<Callout type="danger">
+:::danger
+
 From a developer perspective, a transaction is only successful if:
 
 - It is sealed
 - It didn’t encounter errors
-</Callout>
+
+:::
+
+## Transaction Time
+
+Understanding how transaction times work across different blockchains is crucial for developers and users to optimize their operations and expectations. Flow’s multi-node architecture allows for some of the fastest transaction times and finality times across chains. Read on for more detail on how it works and what it means for developers and users.
+
+### Two Key Transaction Questions
+
+Whenever a transaction is processed, two primary questions come to mind:
+
+1. **Inclusion**: Will this transaction be included in the final chain?
+2. **Result**: What is the outcome of the transaction?
+
+Different blockchains tackle these questions in varied sequences. For instance, Bitcoin and Ethereum provide answers simultaneously. Layer 2 solutions (L2s) can sometimes address the outcome before confirming inclusion. But there's a catch: you can have an answer to those questions that might be wrong. Flow, on the other hand, prioritizes the inclusion question.
+
+### Transaction Finality
+
+Drawing a parallel to traditional finance, a vendor might instantly know if Visa approves a transaction, but the possibility of chargebacks lingers for weeks. This uncertainty introduces the concept of "finality" in blockchain transactions.
+
+In the dominant Proof-of-Stake (PoS) environment, which includes most chains except for Bitcoin, there are three key finality stages:
+
+- **Preliminary result**: It's an initial answer to the aforementioned questions. The preliminary result doesn’t ensure correctness, and there are no economic penalties (like "slashing") if the informant provides false information.
+- **Soft economic finality**: This stage provides an answer backed by cryptographic proof. If the informant is deceptive, they face economic repercussions or "slashing."
+- **Hard economic finality**: The provided answer either holds true, or the entire blockchain requires a restart. The latter case sees at least one-third of the nodes facing economic penalties.
+
+![finality.png](./_transactions_images/finality.png)
+
+### Chain Comparisons
+
+Chain    | Preliminary |  Soft finality | Hard finality 
+---------|-------------|----------------|---------------
+Solana   | 100ms       | n/a            | ~30s
+Ethereum | 15s         | n/a            | ~15m
+Flow     | bypass      | 6s             | ~20s 
+
+#### Flow
+
+Flow bypasses preliminary results entirely. It reaches soft finality ("Executed") in about 6 seconds and hard finality ("Sealed") in around 20 seconds. If an Access Node on Flow states a transaction has occurred, it's either correct or cryptographic proof exists that can lead to the node's slashing.
+
+![transaction-time.png](_transactions_images/chain-comparison.png)
+
 
 ## Signing a Transaction
 
@@ -142,10 +195,11 @@ A transaction can contain two types of signatures: **payload signatures** and **
 
 The transaction payload is the innermost portion of a transaction and contains the data that uniquely identifies the operations applied by the transaction as we have defined them above. In Flow, two transactions with the same payload will never be executed more than once.
 
-<Callout type="warning">
+:::warning
+
 ⚠️ The transaction proposer and authorizer are only required to sign the transaction payload. These signatures are the payload signatures.
 
-</Callout>
+:::
 
 ### Authorization Envelope
 
@@ -153,28 +207,31 @@ The transaction authorization envelope contains both the transaction payload a
 
 The transaction payer is required to sign the authorization envelope. These signatures are **envelope signatures**.
 
-<Callout type="danger">
+:::danger
+
 Special case: if an account is both the payer and either a proposer or authorizer, it is required only to sign the envelope.
 
-</Callout>
+:::
 
 ### Payment Envelope
 
 The outermost portion of the transaction, which contains the payload and envelope signatures, is referred to as the payment envelope.
 
-<Callout type="danger">
+:::danger
+
 Special case: if an account is both the payer and either a proposer or authorizer, it is required only to sign the envelope.
 
-</Callout>
+:::
 
 ### Payer Signs Last
 
 The payer must sign the portion of the transaction that contains the payload signatures, which means that the payer must always sign last. This ensures the payer that they are signing a valid transaction with all of the required payload signatures.
 
-<Callout type="danger">
+:::danger
+
 Special case: if an account is both the payer and either a proposer or authorizer, it is required only to sign the envelope.
 
-</Callout>
+:::
 
 ### Signature Structure
 
@@ -195,10 +252,11 @@ Sequence numbers work similarly to transaction nonces in Ethereum, but with seve
 - **Each key in an account has a dedicated sequence number** associated with it. Unlike Ethereum, there is no sequence number for the entire account.
 - When creating a transaction, only the **proposer must specify a sequence number**. Payers and authorizers are not required to.
 
-<Callout type="tip">
+:::tip
+
 The transaction proposer is only required to specify a sequence number for a single account key, even if it signs with multiple keys. This key is referred to as the proposal key.
 
-</Callout>
+:::
 
 Each time an account key is used as a proposal key, its sequence number is incremented by 1. The sequence number is updated after execution, even if the transaction fails (reverts) during execution.
 

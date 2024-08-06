@@ -1,7 +1,7 @@
 ---
 title: Accounts
 sidebar_label: Accounts
-sidebar_position: 5
+sidebar_position: 6
 ---
 
 :::info
@@ -36,7 +36,7 @@ COAs create powerful new opportunities to improve the UX, functionality and util
 
 - **Atomic Interactions**: Developers are able to execute multiple EVM transactions atomically from a COA, which is not possible using traditional EVM accounts. This is particularly useful for applications that require multiple transactions to be executed within a single block, or require that prior transactions' state changes revert if a subsequent transaction fails.
 
-- **Native Account Abstraction**: COAs are controlled by Cadence resources, which are in turn owned by Flow accounts. [Flow accounts](./accounts.md) have built-in support for multi-signature authentication, key rotation, and account recovery. As a Cadence resource, COAs naturally inherit [these features](https://developers.flow.com/build/differences-vs-evm/account-abstraction).
+- **Native Account Abstraction**: COAs are controlled by Cadence resources, which are in turn owned by Flow accounts. [Flow accounts](./accounts.md) have built-in support for multi-signature authentication, key rotation, and account recovery. As a Cadence resource, COAs naturally inherit [these features](../build/advanced-concepts/account-abstraction.md).
 
 - **Fine-Grained Access Control**: As Cadence resources, access to a COA can be governed by more sophisticated policies than those available with basic EVM accounts. By utilizing powerful Cadence access control primitives such as [capabilities and entitlements](https://cadence-lang.org/docs/1.0/language/access-control), developers can restrict who is able to interact with a COA and what actions they are permitted to perform.
 

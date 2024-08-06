@@ -63,7 +63,7 @@ The same applies for all the other staking operation transactions.
 |-----------|----------------------------------------|--------|
 |**`SCO.16`**| Get All Delegator Info                 | [stakingCollection/scripts/get_all_delegator_info.cdc](https://github.com/onflow/flow-core-contracts/blob/master/transactions/stakingCollection/scripts/get_all_delegator_info.cdc) |
 |**`SCO.15`**| Get All Node Info                      | [stakingCollection/scripts/get_all_node_info.cdc](https://github.com/onflow/flow-core-contracts/blob/master/transactions/stakingCollection/scripts/get_all_node_info.cdc) |
-|**`SCO.16`**| Get Delegator Ids                      | [stakingCollection/scripts/get_delegator_ids.cdc](https://github.com/onflow/flow-core-contracts/blob/master/transactions/stakingCollection/scripts/get_delegator_ids.cdc) |
+|**`SCO.22`**| Get Delegator Ids                      | [stakingCollection/scripts/get_delegator_ids.cdc](https://github.com/onflow/flow-core-contracts/blob/master/transactions/stakingCollection/scripts/get_delegator_ids.cdc) |
 |**`SCO.17`**| Get Node Ids                           | [stakingCollection/scripts/get_node_ids.cdc](https://github.com/onflow/flow-core-contracts/blob/master/transactions/stakingCollection/scripts/get_node_ids.cdc) |
 |**`SCO.18`**| Get Does Stake Exist                   | [stakingCollection/scripts/get_does_stake_exist.cdc](https://github.com/onflow/flow-core-contracts/blob/master/transactions/stakingCollection/scripts/get_does_stake_exist.cdc) |
 |**`SCO.19`**| Get Locked Tokens Used                 | [stakingCollection/scripts/get_locked_tokens_used.cdc](https://github.com/onflow/flow-core-contracts/blob/master/transactions/stakingCollection/scripts/get_locked_tokens_used.cdc) |
