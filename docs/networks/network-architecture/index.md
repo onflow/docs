@@ -6,6 +6,9 @@ sidebar_position: 1
 Flow has pioneered a new paradigm of multi-node architecture that solves the core problem of today’s blockchains.
 The result is a scalable, decentralized, and secure network which ensures user safety and long-term sustainability.
 
+
+![flow_gif](images/flow_node_types_1.gif)
+
 To better understand the architecture, lets first understand the problems with the current blockchain. Then lets look at how Flow multi-node architecture solves these problems.
 
 # What are the biggest problems solved by Flow's Multi-node Architecture?
@@ -46,8 +49,6 @@ Flow leverages this concept by distributing the tasks typically handled by a ful
 This division of labor between nodes occurs within the different validation stages for each transaction, rather than distributing transactions across different nodes as is done with sharding.
 In other words, every Flow node still participates in the validation of every transaction, but they do so only at one of the stages of validation.
 They can therefore specialize—and greatly increase the efficiency—for their particular stage of focus.
-
-![scenario_1](images/flow_node_types_1.gif)
 
 ### Flow node types and what they do
 
