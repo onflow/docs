@@ -65,4 +65,4 @@ They can therefore specialize—and greatly increase the efficiency—for their 
 3. [Core protocol vision](https://flow.com/core-protocol-vision)
 4. [Medium article from Jan which deep dives into the Flow architecture](https://jan-bernatik.medium.com/introduction-to-flow-blockchain-7532977c8af8)
 
-In the next section lets look at how Flow multi-node architecture solves those three big problems with blockchains.
+In the next section, lets look at how Flow multi-node architecture solves those three big problems with blockchains.
