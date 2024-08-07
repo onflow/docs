@@ -3,8 +3,6 @@ title: Network Architecture
 sidebar_position: 1
 ---
 
-![banner](./images/banner.png)
-
 Flow has pioneered a new paradigm of multi-node architecture that solves the core problem of today’s blockchains.
 The result is scalable, decentralized, and secure network which ensures user safety and long-term sustainability.
 
@@ -27,6 +25,10 @@ Most blockchains, regardless of the number of participating nodes, inherently di
 
 ## 3. Energy inefficient and unsustainable
 It is well established that Proof-of-Work chains like Bitcoin consume massive amounts of energy, require perpetual hardware upgrades for the miners to stay competitive, and are therefore extremely harmful to the environment. A Proof-of-Stake chain’s environmental impact is less severe, but as web3 applications achieve mainstream adoption, every node in these chains will have to provide more and more hardware resources to meet the increasing throughput demand and the ever growing on-chain state. Vertically scaling the nodes implies higher energy consumption and environmental footprint.
+
+# Flow multi-node architecture
+
+![banner](./images/banner.png)
 
 In first-generation smart contract blockchains like Ethereum and Bitcoin, every node in the network performs all of the work associated with processing every transaction (including the entire network’s history, account balances, smart contract code, etc.). While highly secure, it’s also incredibly inefficient, and does not scale throughput (transaction per second, transaction latency) and capacity (on-chain data storage).
 
@@ -57,4 +59,4 @@ They can therefore specialize—and greatly increase the efficiency—for their 
 | ![scenario_1](images/verification.png) |  Verification  | Verification nodes ensure that transactions are truthfully executed.                                                                        | Verification nodes verify the work of the execution nodes. They either approve or disagree with their results, reporting their findings to the consensus nodes. |
 | ![scenario_1](images/access.png)       |     Access     | Access Nodes route transactions into the network and replicate (parts of) the state and transaction results for external clients to query.  | Access node serve the API calls to send and read data from the chain.                                                                                           |
 
-In the next section lets look at how Flow solves the three problems.
+In the next section lets look at how Flow solves the three big problems.
