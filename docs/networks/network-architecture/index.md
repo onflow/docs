@@ -1,5 +1,5 @@
 ---
-title: Network Architecture
+title: Flow's Network Architecture
 sidebar_position: 1
 ---
 
