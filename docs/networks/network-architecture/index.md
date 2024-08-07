@@ -59,4 +59,10 @@ They can therefore specialize—and greatly increase the efficiency—for their 
 | ![scenario_1](images/verification.png) |  Verification  | Verification nodes ensure that transactions are truthfully executed.                                                                        | Verification nodes verify the work of the execution nodes. They either approve or disagree with their results, reporting their findings to the consensus nodes. |
 | ![scenario_1](images/access.png)       |     Access     | Access Nodes route transactions into the network and replicate (parts of) the state and transaction results for external clients to query.  | Access node serve the API calls to send and read data from the chain.                                                                                           |
 
-In the next section lets look at how Flow solves the three big problems.
+## Further reading on multi-node architecture
+1. [Primer on multi-node architecture](https://flow.com/primer#primer-multinode)
+2. [Technical papers](https://flow.com/technical-paper)
+3. [Core protocol vision](https://flow.com/core-protocol-vision)
+4. [Medium article from Jan which deep dives into the Flow architecture](https://jan-bernatik.medium.com/introduction-to-flow-blockchain-7532977c8af8)
+
+In the next section lets look at how Flow multi-node architecture solves those three big problems with blockchains.
