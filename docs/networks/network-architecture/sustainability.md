@@ -1,7 +1,7 @@
 ---
 title: Sustainability
 sidebar_label: Sustainability
-sidebar_position: 6
+sidebar_position: 3
 ---
 
 # Sustainability with Flow

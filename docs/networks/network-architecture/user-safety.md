@@ -1,7 +1,7 @@
 ---
 title: User safety
 sidebar_label: User safety
-sidebar_position: 5
+sidebar_position: 4
 ---
 
 # User Safety with Flow

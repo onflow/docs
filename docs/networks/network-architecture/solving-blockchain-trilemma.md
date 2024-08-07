@@ -1,7 +1,7 @@
 ---
 title: Solving the blockchain trilemma
 sidebar_label: Solving the blockchain trilemma
-sidebar_position: 4
+sidebar_position: 2
 ---
 
 # Solving the blockchain trilemma
