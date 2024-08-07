@@ -49,7 +49,7 @@ They can therefore specialize—and greatly increase the efficiency—for their 
 
 ![scenario_1](images/flow_node_types_1.gif)
 
-## Flow node types and what they do
+### Flow node types and what they do
 
 |                                        |   Node type    | Responsibility                                                                                                                              | What do the nodes of this type do?                                                                                                                              |
 |----------------------------------------|:--------------:|:--------------------------------------------------------------------------------------------------------------------------------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------|
@@ -59,7 +59,7 @@ They can therefore specialize—and greatly increase the efficiency—for their 
 | ![scenario_1](images/verification.png) |  Verification  | Verification nodes ensure that transactions are truthfully executed.                                                                        | Verification nodes verify the work of the execution nodes. They either approve or disagree with their results, reporting their findings to the consensus nodes. |
 | ![scenario_1](images/access.png)       |     Access     | Access Nodes route transactions into the network and replicate (parts of) the state and transaction results for external clients to query.  | Access node serve the API calls to send and read data from the chain.                                                                                           |
 
-## Further reading on multi-node architecture
+### Further reading on multi-node architecture
 1. [Primer on multi-node architecture](https://flow.com/primer#primer-multinode)
 2. [Technical papers](https://flow.com/technical-paper)
 3. [Core protocol vision](https://flow.com/core-protocol-vision)
