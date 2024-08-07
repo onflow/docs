@@ -21,7 +21,11 @@ const sidebars = {
       label: 'Network Architecture',
       link: { type: 'doc', id: 'networks/network-architecture/index' },
       items: [
-        'networks/network-architecture/problems-with-blockchains'
+        'networks/network-architecture/problems-with-blockchains',
+        'networks/network-architecture/multi-node-architecture',
+        'networks/network-architecture/solving-blockchain-trilemma',
+        'networks/network-architecture/user-safety',
+        'networks/network-architecture/sustainability'
       ],
     },
     {
