@@ -4,7 +4,7 @@ sidebar_position: 1
 ---
 
 Flow has pioneered a new paradigm of multi-node architecture that solves the core problem of today’s blockchains.
-The result is scalable, decentralized, and secure network which ensures user safety and long-term sustainability.
+The result is a scalable, decentralized, and secure network which ensures user safety and long-term sustainability.
 
 To better understand the architecture, lets first understand the problems with the current blockchain. Then lets look at how Flow multi-node architecture solves these problems.
 
@@ -26,7 +26,7 @@ Most blockchains, regardless of the number of participating nodes, inherently di
 ## 3. Energy inefficient and unsustainable
 It is well established that Proof-of-Work chains like Bitcoin consume massive amounts of energy, require perpetual hardware upgrades for the miners to stay competitive, and are therefore extremely harmful to the environment. A Proof-of-Stake chain’s environmental impact is less severe, but as web3 applications achieve mainstream adoption, every node in these chains will have to provide more and more hardware resources to meet the increasing throughput demand and the ever growing on-chain state. Vertically scaling the nodes implies higher energy consumption and environmental footprint.
 
-# Flow multi-node architecture
+## Flow multi-node architecture
 
 ![banner](./images/banner.png)
 
