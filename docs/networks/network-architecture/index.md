@@ -6,7 +6,11 @@ sidebar_position: 1
 Flow has pioneered a new paradigm of multi-node architecture that solves the core problem of today’s blockchains.
 The result is a scalable, decentralized, and secure network which ensures user safety and long-term sustainability.
 
+<div style={{textAlign:'center'}}>
+
 ![flow_gif](images/flow_node_types_1.gif)
+
+</div>
 
 To better understand the architecture, lets first understand the problems with the current blockchain. Then lets look at how Flow multi-node architecture solves these problems.
 
