@@ -17,9 +17,14 @@ const sidebars = {
   networks: [
     'networks/index',
     {
-      type: 'link',
+      type: 'category',
       label: 'Network Architecture',
-      href: 'https://jan-bernatik.medium.com/introduction-to-flow-blockchain-7532977c8af8',
+      link: { type: 'doc', id: 'networks/network-architecture/index' },
+      items: [
+        'networks/network-architecture/solving-blockchain-trilemma',
+        'networks/network-architecture/user-safety',
+        'networks/network-architecture/sustainability'
+      ],
     },
     {
       type: 'category',
