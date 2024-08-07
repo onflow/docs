@@ -21,8 +21,8 @@ To better understand the architecture, lets first understand the problems with t
 
 [Sustaibability with Flow](./sustainability.md)
 
-More:
-1. [Primer on multinode](https://flow.com/primer#primer-multinode)
-2. [Technical Papers](https://flow.com/technical-paper)
+## Further reading
+1. [Primer on multi-node architecture](https://flow.com/primer#primer-multinode)
+2. [Technical papers](https://flow.com/technical-paper)
 3. [Core protocol vision](https://flow.com/core-protocol-vision)
-4. [Medium article from Jan which deep dives in the Flow architecture](https://jan-bernatik.medium.com/introduction-to-flow-blockchain-7532977c8af8)
+4. [Medium article from Jan which deep dives into the Flow architecture](https://jan-bernatik.medium.com/introduction-to-flow-blockchain-7532977c8af8)
