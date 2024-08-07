@@ -6,7 +6,7 @@ const socialCardData = [
     icon: 'discord',
     title: 'Discord',
     subText: 'Join Server',
-    url: 'https://discord.com/invite/J6fFnh2xx6',
+    url: 'https://discord.gg/flowblockchain',
   },
   {
     icon: 'x.com',

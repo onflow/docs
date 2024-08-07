@@ -12,7 +12,7 @@ sidebar_custom_props:
 
 Details on bridges connecting Flow with other networks are currently in the works and will be shared soon. These bridges will facilitate seamless asset transfers and interoperability between Flow and various blockchains, enhancing the utility and reach of Flow's ecosystem.
 
-For real-time updates and discussions, please join the [Flow Discord](https://discord.com/invite/J6fFnh2xx6) and check the #evm channel.
+For real-time updates and discussions, please join the [Flow Discord](https://discord.gg/flowblockchain) and check the #evm channel.
 :::
 
 Bridges are mechanisms that connect different blockchain networks, enabling secure and decentralized transfers of assets and data across various platforms.

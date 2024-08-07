@@ -81,4 +81,4 @@ Supported Platforms: Windows, OSX, Android
 
 Email: unity-sdk-support@dapperlabs.com
 
-Discord: https://discord.com/invite/J6fFnh2xx6
+Discord: https://discord.gg/flowblockchain
