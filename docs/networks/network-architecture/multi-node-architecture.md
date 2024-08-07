@@ -21,9 +21,7 @@ This division of labor between nodes occurs within the different validation stag
 In other words, every Flow node still participates in the validation of every transaction, but they do so only at one of the stages of validation.
 They can therefore specialize—and greatly increase the efficiency—for their particular stage of focus.
 
-<p align="center">
-  <img src="images/flow_node_types_1.gif" alt="Flow multi-node architecture"/>
-</p>
+![scenario_1](images/flow_node_types_1.gif)
 
 ## Flow node types and what they do
 
