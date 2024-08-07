@@ -1,5 +1,5 @@
 ---
-title: Flow multi-node architecture
+title: Multi-node architecture
 sidebar_label: Multi-node architecture
 sidebar_position: 3
 ---

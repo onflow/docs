@@ -4,7 +4,7 @@ sidebar_label: User safety
 sidebar_position: 5
 ---
 
-# User Safety
+# User Safety with Flow
 
 The monolithic node design of common L1s such as Bitcoin and Ethereum overly privileges operator control over block production.
 This makes the chain vulnerable to censorship and MEV attacks. This problem is exacerbated by L2s with centralized sequencers. ERC-4337 is also susceptible to MEV on the user operations via bundlers.

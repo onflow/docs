@@ -1,9 +1,10 @@
 ---
-title: Solving the blockchain trilemma
-sidebar_label: Solving the blockchain trilemma
+title: Sustainability
+sidebar_label: Sustainability
 sidebar_position: 6
 ---
 
+# Sustainability with Flow
 
 It's no secret that Proof of Stake blockchains are better for the environment.
 As Web3 becomes more widely adopted, we engaged with Deloitte Canada to validate how much energy it uses.
