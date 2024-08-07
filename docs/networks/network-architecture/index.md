@@ -8,7 +8,7 @@ The result is a scalable, decentralized, and secure network which ensures user s
 
 To better understand the architecture, lets first understand the problems with the current blockchain. Then lets look at how Flow multi-node architecture solves these problems.
 
-# What are the three biggest problems with blockchains?
+# What are the biggest problems solved by Flow's Multi-node Architecture?
 
 ## 1. The blockchain trilemma
 
@@ -26,7 +26,7 @@ Most blockchains, regardless of the number of participating nodes, inherently di
 ## 3. Energy inefficient and unsustainable
 It is well established that Proof-of-Work chains like Bitcoin consume massive amounts of energy, require perpetual hardware upgrades for the miners to stay competitive, and are therefore extremely harmful to the environment. A Proof-of-Stake chain’s environmental impact is less severe, but as web3 applications achieve mainstream adoption, every node in these chains will have to provide more and more hardware resources to meet the increasing throughput demand and the ever growing on-chain state. Vertically scaling the nodes implies higher energy consumption and environmental footprint.
 
-## Flow multi-node architecture
+## Multi-node Architecture on Flow
 
 ![banner](./images/banner.png)
 
