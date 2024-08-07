@@ -1,7 +1,7 @@
 ---
 title: Problems with current blockchains
 sidebar_label: Problems with current blockchains
-sidebar_position: 1
+sidebar_position: 2
 ---
 
 # What are the three biggest problems with blockchains?
