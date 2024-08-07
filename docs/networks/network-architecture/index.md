@@ -1,5 +1,5 @@
 ---
-title:
+title: Network Architecture
 sidebar_position: 1
 ---
 
