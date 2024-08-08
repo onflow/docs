@@ -11,7 +11,7 @@ This makes the chain vulnerable to censorship and MEV attacks. This problem is e
 
 ![mev](images/mev_attack.png)
 
-Flow’s multi-node architecture provides censorship & MEV resistance by design:
+Flow’s multi-role architecture provides censorship & MEV resistance by design:
 - Transactions are randomly assigned to collection nodes for inclusion in collections and eventually in blocks. Each collection node only sees a subset of transactions.
 
 

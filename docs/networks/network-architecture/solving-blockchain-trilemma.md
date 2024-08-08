@@ -8,7 +8,7 @@ sidebar_position: 2
 
 In a monolithic architecture, all nodes perform every task. As network usage grows, the transaction processing capacity of the individual nodes becomes a limiting factor, restricting the network’s throughput and latency. The amount of data that can be stored on-chain is limited since nodes have a finite storage capacity. The only way to scale monolithic blockchains is by increasing the capacity of each node by adding more CPU, memory, and storage (i.e. vertical scaling, an approach taken by Solana). However, this solution comes at the cost of decentralization. As nodes scale vertically, they become more expensive to run, and eventually, only a few operators can afford to run such high-performance, high-capacity nodes. Worse, energy consumption for every node in the network increases over time, making the chain environmentally unsustainable.
 
-Through its multi-node architecture, Flow implements a modular pipeline for processing transactions. This design allows the network to scale by tuning the level of decentralization at each specific step without sharding the state and fragmenting the network into smaller security zones.
+Through its multi-role architecture, Flow implements a modular pipeline for processing transactions. This design allows the network to scale by tuning the level of decentralization at each specific step without sharding the state and fragmenting the network into smaller security zones.
 
 The modular pipeline is composed of Collection, Consensus, Execution and Verification Nodes.
 
@@ -40,7 +40,7 @@ In contrast, when traditional Layer 1 blockchains add more nodes to increase dec
 
 > Flow’s architectural goals are to provide a throughput of at least 1M TPS, ingest at least ½ GB of transaction data per second and store and serve a very large state of one Patebyte and beyond.
 
-Thus, Flow’s multi-node architecture solves the blockchain trilemma:
+Thus, Flow’s multi-role architecture solves the blockchain trilemma:
 
 1. **Scalability**: Scale to thousands of times higher throughput and on-chain storage capacity.
 
