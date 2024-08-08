@@ -3,12 +3,12 @@ title: Flow's Network Architecture
 sidebar_position: 1
 ---
 
-Flow has pioneered a new paradigm of multi-node architecture that solves the core problem of today’s blockchains.
+Flow has pioneered a new paradigm of multi-role architecture that solves the core problem of today’s blockchains.
 The result is a scalable, decentralized, and secure network which ensures user safety and long-term sustainability.
 
-To better understand the architecture, lets first understand the problems with the current blockchain. Then lets look at how Flow multi-node architecture solves these problems.
+To better understand the architecture, lets first understand the problems with the current blockchain. Then lets look at how Flow multi-role architecture solves these problems.
 
-# What are the biggest problems solved by Flow's Multi-node Architecture?
+# What are the biggest problems solved by Flow's Multi-role Architecture?
 
 ## 1. The blockchain trilemma
 
@@ -26,7 +26,7 @@ Most blockchains, regardless of the number of participating nodes, inherently di
 ## 3. Energy inefficient and unsustainable
 It is well established that Proof-of-Work chains like Bitcoin consume massive amounts of energy, require perpetual hardware upgrades for the miners to stay competitive, and are therefore extremely harmful to the environment. A Proof-of-Stake chain’s environmental impact is less severe, but as web3 applications achieve mainstream adoption, every node in these chains will have to provide more and more hardware resources to meet the increasing throughput demand and the ever growing on-chain state. Vertically scaling the nodes implies higher energy consumption and environmental footprint.
 
-## Multi-node Architecture on Flow
+## Multi-role Architecture on Flow
 
 ![banner](./images/banner.png)
 
@@ -60,9 +60,9 @@ They can therefore specialize—and greatly increase the efficiency—for their 
 | ![access](images/access.png)             |     Access     | Access Nodes route transactions into the network and replicate (parts of) the state and transaction results for external clients to query.  | Access node serve the API calls to send and read data from the chain.                                                                                           |
 
 ### Further reading
-1. [Primer on multi-node architecture](https://flow.com/primer#primer-multinode)
+1. [Primer on multi-role architecture](https://flow.com/primer#primer-multinode)
 2. [Technical papers](https://flow.com/technical-paper)
 3. [Core protocol vision](https://flow.com/core-protocol-vision)
 4. [Medium article from Jan which deep dives into the Flow architecture](https://jan-bernatik.medium.com/introduction-to-flow-blockchain-7532977c8af8)
 
-In the next section, lets look at how Flow multi-node architecture solves those three big problems with blockchains.
+In the next section, lets look at how Flow multi-role architecture solves those three big problems with blockchains.
