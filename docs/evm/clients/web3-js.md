@@ -24,16 +24,14 @@ npm install web3
 
 ## Initializing Web3 with Flow
 
-To use `web3` in your project, start by importing the module and initializing your `Web3` instance with a Flow RPC endpoint. This example uses [Flow Previewnet](https://developers.flow.com/networks/flow-networks/accessing-previewnet).
+To use `web3` in your project, start by importing the module and initializing your `Web3` instance with a Flow RPC endpoint.
 
 ```js
 const { Web3 } = require('web3');
-const web3 = new Web3('https://previewnet.evm.nodes.onflow.org');
+const web3 = new Web3('https://mainnet.evm.nodes.onflow.org');
 ```
 
-:::info
-Currently, only Flow Previewnet is available. More networks are coming soon - [see here for more info](../networks.md).
-:::
+**Note:** If you want to connect to the Flow testnet, replace the above URL with `https://testnet.evm.nodes.onflow.org`.
 
 ## Querying The Blockchain
 
@@ -52,7 +50,7 @@ console.log(balance); // Balance in attoFlow
 
 // Get the chain ID
 const chainId = await web3.eth.getChainId();
-console.log(chainId); // 0x286 (Flow Previewnet)
+console.log(chainId);
 
 // Get the gas price
 const gasPrice = await web3.eth.getGasPrice();
@@ -65,7 +63,7 @@ For more information about other queries you can make `web3`, please see the [of
 
 The `web3` library allows developers to interact with smart contracts via the `web3.eth.Contract` API.
 
-For this example we will use the following `Storage` contract, deployed on Previewnet to the address `0x4c7784ae96e7cfcf0224a95059573e96f03a4e70`. Note that anyone can interact with this contract, as it is deployed on a public network, so state may not always be as expected.
+For this example we will use the following `Storage` contract.
 
 We recommend deploying your own contract, which can be done using [Hardhat](../guides/hardhat.md) or [Remix](../guides/remix.md).
 
@@ -162,7 +160,7 @@ node -e "console.log(require('web3').eth.accounts.create())"
 
 Note that this is not a secure way to generate an account, and you should use a more secure method in a production environment.
 
-For Previewnet, you can fund your account using the [Flow Faucet](https://previewnet-faucet.onflow.org/fund-account).
+You can fund your account using the [Flow Faucet](https://faucet.flow.com/).
 :::
 
 We can use the `privateKeyToAccount` function to create an `Web3Account` object from our account's private key.
