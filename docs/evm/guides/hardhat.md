@@ -1,6 +1,6 @@
 ---
 title: Flow Hardhat Guide
-description: 'Using Hardhatto deploy a Solidity contract to EVM on Flow.'
+description: 'Using Hardhat to deploy a Solidity contract to EVM on Flow.'
 sidebar_label: Hardhat
 sidebar_position: 2
 ---
