@@ -29,7 +29,7 @@ export const PREVIEWNET_PARAMS = {
         symbol: 'FLOW',
         decimals: 18,
     },
-    blockExplorerUrls: ['https://evm.flowscan.io'],
+    blockExplorerUrls: ['https://eth.flowscan.io'],
 }
 ```
 
