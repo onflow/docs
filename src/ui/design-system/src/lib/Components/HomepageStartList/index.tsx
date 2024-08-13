@@ -35,13 +35,13 @@ const homepagePillData: Record<string, HomepagePillItemsProps> = {
     subText: 'Get involved',
   },
   'flow-assistant': {
-    link: 'https://chat.openai.com/g/g-lt4a6jvfj-flow-cadence-1-0-migration-helper',
+    link: 'https://chatgpt.com/g/g-a1jOaEj1h-flow-assistant',
     icon: 'flow-assistant-gpt',
     text: 'Flow Assistant GPT',
     subText: 'Check it out',
   },
   'developer-chat': {
-    link: 'https://discord.gg/flow',
+    link: 'https://discord.gg/flowblockchain',
     icon: 'developer-chat',
     text: 'Developers Chat',
     subText: 'Chat with devs',

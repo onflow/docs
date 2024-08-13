@@ -18,12 +18,6 @@ Store, manage, and interact securely with tokens and digital assets on Flow. Dis
 - https://wallet.flow.com/
 - https://frw.gitbook.io/
 
-## Blocto
-
-[Blocto](https://www.blocto.io/) is a cross-chain mobile wallet for IOS and Android devices.
-
-https://www.blocto.io/
-
 ## Dapper Wallet
 
 [Dapper Wallet](https://www.meetdapper.com/) is a wallet exceptionally friendly for first time crypto collectors to buy and manage digital assets.
@@ -67,6 +61,12 @@ https://www.finoa.io/flow/
 https://shadow.app/wallet
 
 </div>
+
+## Blocto
+
+[Blocto](https://www.blocto.io/) is a cross-chain mobile wallet for IOS and Android devices.
+
+https://www.blocto.io/
 
 ## Flow Dev Wallet
 
