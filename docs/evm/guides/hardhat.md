@@ -36,7 +36,7 @@ npx hardhat init
 
 ### Fund Your Wallet
 
-To deploy smart contracts, ensure your wallet has **$FLOW**. Obtain funds by navigating to the Flow [Previewnet Faucet](https://previewnet-faucet.onflow.org/fund-account) and entering your wallet address.
+To deploy smart contracts, ensure your wallet has **$FLOW**. Obtain funds by navigating to the Flow [Faucet](https://faucet.flow.com/fund-account) and entering your wallet address.
 
 ## Deploying a Smart Contract with Hardhat
 
@@ -44,7 +44,7 @@ This section guides you through the process of deploying smart contracts on the 
 
 ### Configuration
 
-First, incorporate the Previewnet network into your `hardhat.config.ts`:
+First, incorporate the Testnet network into your `hardhat.config.ts`:
 
 ```javascript
 import { HardhatUserConfig } from 'hardhat/config';
@@ -54,7 +54,7 @@ const config: HardhatUserConfig = {
   solidity: '0.8.24',
   networks: {
     previewnet: {
-      url: 'https://previewnet.evm.nodes.onflow.org',
+      url: 'https://testnet.evm.nodes.onflow.org',
       accounts: [`<PRIVATE_KEY>`], // In practice, this should come from an environment variable and not be commited
       gas: 500000, // Example gas limit
     },
@@ -126,13 +126,13 @@ main()
   });
 ```
 
-5. Run `npx hardhat run scripts/deploy.ts --network previewnet` in the project root.
+5. Run `npx hardhat run scripts/deploy.ts --network testnet` in the project root.
 6. Copy the deployed `HelloWorld` address. This address will be used in other scripts.
 
 Output should look like this (with the exception that your address will be different):
 
 ```shell
-❯ npx hardhat run scripts/deploy.ts --network previewnet
+❯ npx hardhat run scripts/deploy.ts --network testnet
 Deploying contracts with the account: ...
 HelloWorld address: 0x3Fe94f43Fb5CdB8268A801f274521a07F7b99dfb
 ```
@@ -171,11 +171,11 @@ Steps:
 
 1. Create a `getGreeting.ts` file in the `scripts` directory.
 2. Paste contents of script above. Make sure to update the contract address with the one from deployment in earlier step.
-3. Call script to get the greeting, `npx hardhat run scripts/getGreeting.ts --network previewnet`
+3. Call script to get the greeting, `npx hardhat run scripts/getGreeting.ts --network testnet`
 4. The output should be as follows:
 
 ```shell
-❯ npx hardhat run scripts/getGreeting.ts --network previewnet
+❯ npx hardhat run scripts/getGreeting.ts --network testnet
 The greeting is: Hello, World!
 ```
 
@@ -228,11 +228,11 @@ Here are the steps to follow:
 
 1. Create an `updateGreeting.ts` script in the `scripts` directory.
 2. Paste in the TypeScript above, make sure to update the contract address with the one from deployment in earlier step.
-3. Call the new script, `NEW_GREETING='Howdy!' npx hardhat run ./scripts/updateGreeting.ts --network previewnet`
+3. Call the new script, `NEW_GREETING='Howdy!' npx hardhat run ./scripts/updateGreeting.ts --network testnet`
 4. The output should be
 
 ```shell
-❯ NEW_GREETING='Howdy!' npx hardhat run ./scripts/updateGreeting.ts --network previewnet
+❯ NEW_GREETING='Howdy!' npx hardhat run ./scripts/updateGreeting.ts --network testnet
 The greeting is: Hello, World!
 Transaction hash: 0x03136298875d405e0814f54308390e73246e4e8b4502022c657f04f3985e0906
 Greeting updated successfully!

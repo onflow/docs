@@ -160,7 +160,7 @@ node -e "console.log(require('web3').eth.accounts.create())"
 
 Note that this is not a secure way to generate an account, and you should use a more secure method in a production environment.
 
-You can fund your account using the [Flow Faucet](https://faucet.flow.com/).
+You can fund your account using the [Flow Faucet](https://faucet.flow.com/fund-account).
 :::
 
 We can use the `privateKeyToAccount` function to create an `Web3Account` object from our account's private key.
