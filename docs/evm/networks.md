@@ -19,7 +19,7 @@ EVM on Flow has the following public RPC nodes available:
 | Currency Symbol | FLOW                                    |
 | Block Explorer  | https://evm.flowscan.io/                |             
 
-# Testnet (Coming Soon)
+# Testnet
 
 | Name            | Value                                |
 |-----------------|--------------------------------------|
