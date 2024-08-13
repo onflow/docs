@@ -53,7 +53,7 @@ import '@nomicfoundation/hardhat-toolbox';
 const config: HardhatUserConfig = {
   solidity: '0.8.24',
   networks: {
-    previewnet: {
+    testnet: {
       url: 'https://testnet.evm.nodes.onflow.org',
       accounts: [`<PRIVATE_KEY>`], // In practice, this should come from an environment variable and not be commited
       gas: 500000, // Example gas limit
