@@ -17,18 +17,18 @@ EVM on Flow has the following public RPC nodes available:
 | RPC Endpoint    | https://previewnet.evm.nodes.onflow.org |
 | Chain ID        | 646                                     |
 | Currency Symbol | FLOW                                    |
-| Block Explorer  | https://eth.flowscan.io/                |             
+| Block Explorer  | https://evm.flowscan.io/                |             
 
 # Testnet (Coming Soon)
 
-| Name            | Value                                  |
-|-----------------|----------------------------------------|
-| Network Name    | Testnet                                |
-| Description     | The public RPC URL for Flow Testnet    |
-| RPC Endpoint    | https://testnet.evm.nodes.onflow.org   |
-| Chain ID        | 545                                    |
-| Currency Symbol | FLOW                                   |
-| Block Explorer  | https://testnet.flowdiver.io           |
+| Name            | Value                                |
+|-----------------|--------------------------------------|
+| Network Name    | Testnet                              |
+| Description     | The public RPC URL for Flow Testnet  |
+| RPC Endpoint    | https://testnet.evm.nodes.onflow.org |
+| Chain ID        | 545                                  |
+| Currency Symbol | FLOW                                 |
+| Block Explorer  | https://evm-testnet.flowscan.io      |
 
 # Mainnet (Coming Soon)
 
