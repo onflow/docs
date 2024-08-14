@@ -4,7 +4,7 @@ sidebar_label: Ethers
 sidebar_position: 1
 ---
 
-# Ethers.js on Flow Blockchain
+# Ethers.js
 
 [ethers.js](https://docs.ethers.org/v5/) is a powerful JavaScript library for interacting with Ethereum and other EVM-compatible blockchain networks.
 
