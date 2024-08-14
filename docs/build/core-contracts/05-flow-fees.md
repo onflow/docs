@@ -10,13 +10,12 @@ The `FlowFees` contract is where all the collected flow fees are gathered.
 
 Source: [FlowFees.cdc](https://github.com/onflow/flow-core-contracts/blob/master/contracts/FlowFees.cdc)
 
-| Network           | Contract Address     |
-| ----------------- | -------------------- |
-| Emulator          | `0xe5a8b7f23e8b548f` |
+| Network                   | Contract Address     |
+| ------------------------- | -------------------- |
+| Emulator                  | `0xe5a8b7f23e8b548f` |
 | Cadence Testing Framework | `0x0000000000000004` |
-| PreviewNet        | `0xab086ce9cc29fc80` |
-| Testnet | `0x912d5440f7e3769e` |
-| Mainnet           | `0xf919ee77447b7497` |
+| Testnet                   | `0x912d5440f7e3769e` |
+| Mainnet                   | `0xf919ee77447b7497` |
 
 ## Events
 
@@ -42,13 +41,12 @@ The `FlowStorageFees` contract defines the parameters and utility methods for st
 
 Source: [FlowStorageFees.cdc](https://github.com/onflow/flow-core-contracts/blob/master/contracts/FlowStorageFees.cdc)
 
-| Network           | Contract Address     |
-| ----------------- | -------------------- |
-| Emulator          | `0xf8d6e0586b0a20c7` |
+| Network                   | Contract Address     |
+| ------------------------- | -------------------- |
+| Emulator                  | `0xf8d6e0586b0a20c7` |
 | Cadence Testing Framework | `0x0000000000000001` |
-| PreviewNet        | `0xab086ce9cc29fc80` |
-| Testnet | `0x8c5303eaa26202d6` |
-| Mainnet           | `0xe467b9dd11fa00df` |
+| Testnet                   | `0x8c5303eaa26202d6` |
+| Mainnet                   | `0xe467b9dd11fa00df` |
 
 ## Events
 

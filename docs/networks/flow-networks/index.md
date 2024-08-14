@@ -11,17 +11,15 @@ Furthermore, during network upgrades, Testnet receives updates ahead of Mainnet.
 
 ### How To Access These Networks?
 
-| Network    | GRPC                                      | Web GRPC                | REST                          |
-| ---------- | ----------------------------------------- | ----------------------- | ----------------------------- |
-| Mainnet    | `access.mainnet.nodes.onflow.org:9000`    | `mainnet.onflow.org`    | `rest-mainnet.onflow.org`     |
-| Testnet    | `access.devnet.nodes.onflow.org:9000`     | `testnet.onflow.org`    | `rest-testnet.onflow.org`     |
-| Previewnet | `access.previewnet.nodes.onflow.org:9000` | `previewnet.onflow.org` | `rest-previewnet.onflow.org` |
+| Network | GRPC                                   | Web GRPC             | REST                      |
+| ------- | -------------------------------------- | -------------------- | ------------------------- |
+| Mainnet | `access.mainnet.nodes.onflow.org:9000` | `mainnet.onflow.org` | `rest-mainnet.onflow.org` |
+| Testnet | `access.devnet.nodes.onflow.org:9000`  | `testnet.onflow.org` | `rest-testnet.onflow.org` |
 
 For more information on how to access these networks, refer to the following guides:
 
 - [Flow Testnet](./accessing-testnet.md)
 - [Flow Mainnet](./accessing-mainnet.md)
-- [Flow Previewnet](./accessing-previewnet.md)
 
 ### Network
 
@@ -30,7 +28,6 @@ There are two primary ways to access on-chain data within the Flow network; Acce
 - [Flow Access API](../node-ops/access-onchain-data/access-nodes/accessing-data/access-api.md)
   - [Mainnet](./accessing-mainnet.md): `access.mainnet.nodes.onflow.org:9000`
   - [Testnet](./accessing-testnet.md): `access.devnet.nodes.onflow.org:9000`
-  - [Previewnet](./accessing-previewnet.md): `access.previewnet.nodes.onflow.org:9000`
 - [Status Page](https://status.onflow.org/) - Network status page
 
 ### Running Your Own Node

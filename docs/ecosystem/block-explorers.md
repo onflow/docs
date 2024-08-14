@@ -7,6 +7,7 @@ sidebar_custom_props:
 ---
 
 # Flow Block Explorers
+
 Block explorers are user-friendly online tools that visually present blockchain data, allowing users to easily navigate transactions, blocks, addresses, and smart contracts while providing real-time insights and transparency.
 
 <div id="cards" className="cards">
@@ -26,7 +27,6 @@ Block explorers are user-friendly online tools that visually present blockchain 
 
 - [Mainnet](https://www.flowdiver.io/)
 - [Testnet](https://testnet.flowdiver.io/)
-- [Previewnet](https://previewnet.flowdiver.io/)
 
 ## Flow View
 
@@ -53,18 +53,18 @@ Block explorers are user-friendly online tools that visually present blockchain 
 
 [Testnet Contract Browser](https://testnet.contractbrowser.com/) is also available for `Testnet Flow`.
 
-## Ethernal Block Explorer
+## Flowscan [EVM]
 
-[Ethernal Block Explorer](https://flow-foundation.tryethernal.com/overview) provides provides a user-friendly interface to search for specific transactions, monitor network health, and track the status of various smart contracts and tokens on for EVM on Flow. Features include:
+[Flowscan](https://evm-testnet.flowscan.io/) is based off of the popular Blockscout and provides a user-friendly interface to search for specific EVM transactions, blocks, monitor network health, and track the status of various smart contracts and tokens on for EVM on Flow. Features include:
 
 - Real-Time Data: View live transaction data, blocks, and account activities.
 - Search Functionality: Search for specific transactions, blocks, and accounts.
-- Network Monitoring: Track network health and performance.
 - Smart Contract Analysis: Examine smart contract statuses and interactions.
 - Token Tracking: Monitor the creation and transfer of various tokens on the Flow network.
 
 ### Supported networks:
 
-- [Previewnet](https://flow-foundation.tryethernal.com/overview)
+- [Testnet](https://evm-testnet.flowscan.io/)
+- [Mainnet](https://evm.flowscan.io/)
 
 </div>

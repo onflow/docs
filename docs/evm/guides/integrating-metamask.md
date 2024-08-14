@@ -17,20 +17,20 @@ Integrating additional networks into MetaMask can pose challenges for users who 
 
 ### Flow Network configuration
 
-To add the Flow Previewnet network to Metamask, add the following network confgiuration:
+To add the Flow Testnet network to Metamask, add the following network confgiuration:
 
 ```js
-export const PREVIEWNET_PARAMS = {
-    chainId: '0x286',
-    chainName: 'Flow',
-    rpcUrls: ['https://previewnet.evm.nodes.onflow.org'],
-    nativeCurrency: {
-        name: 'Flow',
-        symbol: 'FLOW',
-        decimals: 18,
-    },
-    blockExplorerUrls: ['https://previewnet.flowdiver.io'],
-}
+export const TESTNET_PARAMS = {
+  chainId: '0x221',
+  chainName: 'Flow',
+  rpcUrls: ['https://testnet.evm.nodes.onflow.org'],
+  nativeCurrency: {
+    name: 'Flow',
+    symbol: 'FLOW',
+    decimals: 18,
+  },
+  blockExplorerUrls: ['https://evm-testnet.flowscan.io/'],
+};
 ```
 
 ### Adding Flow Network
@@ -38,17 +38,17 @@ export const PREVIEWNET_PARAMS = {
 To add this configuration to MetaMask, call the `wallet_addEthereumChain` method which is exposed by the web3 provider.
 
 ```js
-function addFlowPreviewnet() {
+function addFlowTestnet() {
   injected.getProvider().then((provider) => {
     provider
       .request({
-        method: "wallet_addEthereumChain",
-        params: [PREVIEWNET_PARAMS],
+        method: 'wallet_addEthereumChain',
+        params: [TESTNET_PARAMS],
       })
       .catch((error: any) => {
-        console.log(error)
-      })
-  })
+        console.log(error);
+      });
+  });
 }
 ```
 
@@ -58,7 +58,7 @@ The typical usage would be to expose this button if you get errors when attempti
 
 ### User Experience
 
-Users of your app will need to first approve a connection to Metamask.  After doing this, if you don't detect a successful Web3 network connection, you may present a dialog asking them to add the Flow network to their wallet.
+Users of your app will need to first approve a connection to Metamask. After doing this, if you don't detect a successful Web3 network connection, you may present a dialog asking them to add the Flow network to their wallet.
 
 ![Metamask Network](../metamask-network.png)
 

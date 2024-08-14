@@ -23,7 +23,7 @@ const sidebars = {
       items: [
         'networks/network-architecture/solving-blockchain-trilemma',
         'networks/network-architecture/user-safety',
-        'networks/network-architecture/sustainability'
+        'networks/network-architecture/sustainability',
       ],
     },
     {
@@ -33,7 +33,6 @@ const sidebars = {
       items: [
         'networks/flow-networks/accessing-mainnet',
         'networks/flow-networks/accessing-testnet',
-        'networks/flow-networks/accessing-previewnet',
       ],
     },
     {
