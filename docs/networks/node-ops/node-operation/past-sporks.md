@@ -449,6 +449,18 @@ While FCL v0.0.67 is not strictly necessary to use Mainnet 6, we strongly recomm
 
 ## Testnet Sporks
 
+## Devnet 51
+
+| Spork Info                                                                                                                  |
+|:----------------------------------------------------------------------------------------------------------------------------|
+| **Date**: Aug 14th, 2024                                                                                                    |
+| **Root Height**: 211176670                                                                                                  |
+| **Root Parent ID**: c92e07e5d4fbb3a64e0091085a190a4a1119bfc628c71efe513e373dc0482f5a                                        |
+| **Root State Commit**: c3af77992f253f4dcfeac808912ff68e6f10923aa3fc4541a2e39eb9786c9eb3                                     |
+| **Git Commit**: eeac47931cd6837ec6e29c4c0480609238959ccd                                                                    |
+| **Branch/Tag**: v0.37.1
+| **Docker Image Tag**: v0.37.1
+
 ## Devnet 50
 
 | Spork Info                                                                                                                  |
