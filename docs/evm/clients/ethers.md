@@ -39,11 +39,11 @@ To connect to the Flow Blockchain using ethers.js, you need to create a new `Jso
 ```jsx
 const ethers = require('ethers');
 
-const url = 'https://mainnet.evm.nodes.onflow.org/';
+const url = 'https://testnet.evm.nodes.onflow.org/';
 const provider = new ethers.providers.JsonRpcProvider(url);
 ```
 
-**Note:** If you want to connect to the Flow testnet, replace the above URL with `https://testnet.evm.nodes.onflow.org`.
+**Note:** If you want to connect to the Flow testnet, replace the above URL with `https://mainnet.evm.nodes.onflow.org`.
 
 ## Reading Data from the Blockchain
 

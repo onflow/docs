@@ -28,10 +28,10 @@ To use `web3` in your project, start by importing the module and initializing yo
 
 ```js
 const { Web3 } = require('web3');
-const web3 = new Web3('https://mainnet.evm.nodes.onflow.org');
+const web3 = new Web3('https://testnet.evm.nodes.onflow.org');
 ```
 
-**Note:** If you want to connect to the Flow testnet, replace the above URL with `https://testnet.evm.nodes.onflow.org`.
+**Note:** If you want to connect to the Flow testnet, replace the above URL with `https://mainnet.evm.nodes.onflow.org`.
 
 ## Querying The Blockchain
 
