@@ -4,7 +4,7 @@ sidebar_label: Web3.js
 sidebar_position: 2
 ---
 
-# Web3.js on Flow Blockchain
+# Web3.js
 
 [Web3.js](https://web3js.org/) is a Javascript library for building on EVM-compatible networks.
 
