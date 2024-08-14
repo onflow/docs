@@ -11,23 +11,21 @@ or their own implementation.
 
 Source: [NFTStorefrontV2.cdc](https://github.com/onflow/nft-storefront/blob/main/contracts/NFTStorefrontV2.cdc)
 
-| Network           | Contract Address     |
-| ----------------- | -------------------- |
-| PreviewNet        | `0x6df5e52755433994` |
+| Network | Contract Address     |
+| ------- | -------------------- |
 | Testnet | `0x2d55b98eb200daef` |
-| Mainnet           | `0x4eb8a10cb9f87357` |
+| Mainnet | `0x4eb8a10cb9f87357` |
 
 Source: [NFTStorefront.cdc](https://github.com/onflow/nft-storefront/blob/main/contracts/NFTStorefront.cdc)
 
-| Network           | Contract Address     |
-| ----------------- | -------------------- |
-| PreviewNet        | `0x6df5e52755433994` |
+| Network | Contract Address     |
+| ------- | -------------------- |
 | Testnet | `0x94b06cfca1d8a476` |
-| Mainnet           | `0x4eb8a10cb9f87357` |
+| Mainnet | `0x4eb8a10cb9f87357` |
 
 ## Primer
 
-The `NFTStorefrontV2` contract lets you create a *non-custodial Resource (NFT) marketplace* on the FLOW blockchain. 
+The `NFTStorefrontV2` contract lets you create a _non-custodial Resource (NFT) marketplace_ on the FLOW blockchain.
 
 `NFTStorefrontV2` makes it simple for Sellers to list NFTs in dApp specific marketplaces. DApp developers leverage the APIs provided by the contract to manage listings being offered for sale and to transact NFT trades.
 
@@ -50,7 +48,7 @@ Marketplaces then process an NFT trade by interacting directly with seller store
 A general purpose sale support contract for NFTs implementing the Flow [`NonFungibleToken`](https://github.com/onflow/flow-nft/blob/master/contracts/NonFungibleToken.cdc) standard.
 Each account that wants to list NFTs for sale creates a `Storefront` resource to store in their account and lists individual sales within that Storefront as Listings. There is usually one Storefront per account held at the `/storage/NFTStorefrontV2`.
 
-Each listing can define one or more sale cuts taken out of the sale price to go to one or more addresses. Listing fees, royalties, or other considerations can be paid using sale cuts. Also, the listing can include a commission as one of these sale cuts is paid to whoever facilitates the purchase. 
+Each listing can define one or more sale cuts taken out of the sale price to go to one or more addresses. Listing fees, royalties, or other considerations can be paid using sale cuts. Also, the listing can include a commission as one of these sale cuts is paid to whoever facilitates the purchase.
 
 Listings can have an optional list of marketplace [receiver capabilities](https://cadence-lang.org/docs/language/capabilities) used to receive the commission for fulfilling the listing. An NFT may be listed in one or more Listings, and the validity of each listing can easily be checked.
 
@@ -58,13 +56,13 @@ Interested parties can globally track Listing events on-chain and filter by NFT 
 
 ## Selling NFTs
 
-`NFTStorefrontV2` offers a generic process for creating the listing for an NFT. It provides all the essential APIs to manage those listings independently. 
+`NFTStorefrontV2` offers a generic process for creating the listing for an NFT. It provides all the essential APIs to manage those listings independently.
 
 Many marketplaces create a single storefront resource to manage different individual listings. We recommend creating the listing under the user-owned storefront resource to make it trustless and platform-independent. Users should possess the `Storefront` resource under their account to create the listing using the storefront contract.
 
 ## Creating a successful listing using the NFTStorefrontV2 contract.
 
-As recommended above, the first step is to create and store the [Storefront resource](#resource-storefront) in the user account using the [setup_account](https://github.com/onflow/nft-storefront/blob/main/transactions/setup_account.cdc) transaction. 
+As recommended above, the first step is to create and store the [Storefront resource](#resource-storefront) in the user account using the [setup_account](https://github.com/onflow/nft-storefront/blob/main/transactions/setup_account.cdc) transaction.
 
 The next step is to create a listing under the newly created storefront resource. If the user (repetitive) already holds the storefront resource, then use the existing resource. The seller can come with multiple requirements for listing their NFTs, and We try our best to cover most of them below.
 
@@ -76,11 +74,11 @@ The `NFTStorefrontV2` contract doesn’t support selling an NFT for multiple dif
 
 ![scenario_1](./scenario_1.png)
 
-Putting an NFT on sell called listing, seller can create a listing using [sell_item](https://github.com/onflow/nft-storefront/blob/main/transactions/sell_item.cdc) transaction by providing some required details to list an NFT, i.e. Receiving currency type, [Capability](https://cadence-lang.org/docs/language/capabilities) from where NFT will be deducted etc. If interested look [here](#fun-createListing()) for more details. 
+Putting an NFT on sell called listing, seller can create a listing using [sell_item](https://github.com/onflow/nft-storefront/blob/main/transactions/sell_item.cdc) transaction by providing some required details to list an NFT, i.e. Receiving currency type, [Capability](https://cadence-lang.org/docs/language/capabilities) from where NFT will be deducted etc. If interested look [here](<#fun-createListing()>) for more details.
 
-To receive a different currency seller has to provide a different __Receiver currency type__ , i.e. `salePaymentVaultType` As depicted in the above diagram, There are two listing formations with almost the same inputs. The only differentiator is the `salePaymentVaultType` parameter that needs to be different when creating duplicate NFT listings with different sale currency types.  
+To receive a different currency seller has to provide a different **Receiver currency type** , i.e. `salePaymentVaultType` As depicted in the above diagram, There are two listing formations with almost the same inputs. The only differentiator is the `salePaymentVaultType` parameter that needs to be different when creating duplicate NFT listings with different sale currency types.
 
-### **Scenario 2:**  Peer-to-Peer (p2p) listing of NFT: A listing anyone can fulfil.
+### **Scenario 2:** Peer-to-Peer (p2p) listing of NFT: A listing anyone can fulfil.
 
 Dapps can leverage the **NFTStorefrontV2** to facilitate the creation of a listing for the seller independent of any marketplace. Dapps or marketplaces can list those listings on their platforms, or seller can settle it p2p.
 
@@ -91,26 +89,24 @@ The seller can use [sell_item](https://github.com/onflow/nft-storefront/blob/mai
 `NFTStorefrontV2` offers two different ways of doing it.
 
 - The seller can create a listing and provide the `marketplacesAddress` that it wants to have a listing on using [sell_item](https://github.com/onflow/nft-storefront/blob/main/transactions/sell_item.cdc) transaction.
-    
-    Marketplaces can listen to `ListingAvailable` events and check whether their address is included in the `commissionReceivers` list; If yes, the marketplace would be rewarded during the successful fulfilment of the listing.
-    
-    Example - Bob wants to list on marketplace 0xA, 0xB & 0xC and is willing to offer 10% commission on the sale price of the listing to the marketplaces.
-    
-    ![scenario_3](https://user-images.githubusercontent.com/14581509/190966834-8eda4ec4-e9bf-49ef-9dec-3c47a236d281.png)
-    
+
+  Marketplaces can listen to `ListingAvailable` events and check whether their address is included in the `commissionReceivers` list; If yes, the marketplace would be rewarded during the successful fulfilment of the listing.
+
+  Example - Bob wants to list on marketplace 0xA, 0xB & 0xC and is willing to offer 10% commission on the sale price of the listing to the marketplaces.
+
+  ![scenario_3](https://user-images.githubusercontent.com/14581509/190966834-8eda4ec4-e9bf-49ef-9dec-3c47a236d281.png)
 
 - Another way to accomplish this is to create separate listings for each marketplace on which a user wants their listing using [sell_item_with_marketplace_cut](https://github.com/onflow/nft-storefront/blob/main/transactions/sell_item_with_marketplace_cut.cdc) transaction. In this case, the marketplace would be incentivized by earning one of the parts of the [`saleCut`](https://github.com/onflow/nft-storefront/blob/160e97aa802405ad26a3164bcaff0fde7ee52ad2/contracts/NFTStorefrontV2.cdc#L104) by appending marketplace saleCut in `saleCuts` array during the creation of the listing.
 
-
 ### Considerations
 
-1. **Ghost listings -** *Ghost listings are listings which don’t have an underlying NFT in the seller’s account. However, the listing is still available for buyers to attempt to purchase*. StorefrontV2 is not immune to ghost listings. Usually, ghost listings will cause a purchaser’s transaction to fail, which is annoying but isn’t a significant problem. Ghost listings become a problem for the seller when the listed NFT comes back to the seller’s account after its original sale. The ghost listing will no longer be invalid when it comes back, and anyone can purchase it even if the seller doesn’t want to sell it at that price anymore.
-    
-    **Note -** *We recommend that marketplaces and p2p dApps create an off-chain notification service that tells their users (i.e., sellers) to remove the listings if they don’t hold the NFT anymore in the same account.*
-    
+1. **Ghost listings -** _Ghost listings are listings which don’t have an underlying NFT in the seller’s account. However, the listing is still available for buyers to attempt to purchase_. StorefrontV2 is not immune to ghost listings. Usually, ghost listings will cause a purchaser’s transaction to fail, which is annoying but isn’t a significant problem. Ghost listings become a problem for the seller when the listed NFT comes back to the seller’s account after its original sale. The ghost listing will no longer be invalid when it comes back, and anyone can purchase it even if the seller doesn’t want to sell it at that price anymore.
+
+   **Note -** _We recommend that marketplaces and p2p dApps create an off-chain notification service that tells their users (i.e., sellers) to remove the listings if they don’t hold the NFT anymore in the same account._
+
 2. **Expired listings -** `NFTStorefrontV2` introduces a safety measure to specify that a listing will expire after a certain period that can be set during the creation so no one can purchase the listing anymore. It is not a fool-proof safety measure, but it does give some safe ground to the sellers for the ghost listings & stale listings.
-    
-    **Note -** *We recommended for marketplaces and p2p dApps not to show the expired listings on their dashboards.*
+
+   **Note -** _We recommended for marketplaces and p2p dApps not to show the expired listings on their dashboards._
 
 ## Purchasing NFTs
 
@@ -120,12 +116,11 @@ During the listing purchase all saleCuts are paid automatically. This also inclu
 
 ### Considerations
 
-1. **Auto cleanup -** `NFTStorefrontV2` offers a unique ability to do auto cleanup of duplicate listings during a purchase. It comes with a drawback if one NFT has thousands of duplicate listings. It will become the bottleneck during purchasing one of the listings as it will likely trigger an out-of-gas error. 
+1. **Auto cleanup -** `NFTStorefrontV2` offers a unique ability to do auto cleanup of duplicate listings during a purchase. It comes with a drawback if one NFT has thousands of duplicate listings. It will become the bottleneck during purchasing one of the listings as it will likely trigger an out-of-gas error.
 
-    **Note -** *We recommended NOT to have more than 50 (TBD) duplicate listings of any given NFT.*
+   **Note -** _We recommended NOT to have more than 50 (TBD) duplicate listings of any given NFT._
 
 2. **Unsupported receiver capability** - A common pitfall during the purchase of an NFT that some saleCut receivers don’t have a supported receiver capability because that entitled sale cut would transfer to first valid sale cut receiver. However, it can be partially solved by providing the generic receiver using the [`FungibleTokenSwitchboard`](https://github.com/onflow/flow-ft/blob/master/contracts/FungibleTokenSwitchboard.cdc) contract and adding all the currency capabilities the beneficiary wants to receive. More on the `FungibleTokenSwitchboard` can be read [here](https://github.com/onflow/flow-ft#fungible-token-switchboard)
-
 
 ## Enabling creator royalties for NFTs
 
@@ -168,13 +163,14 @@ For NFT listings in marketplaces which don't require commission, commission rece
 resource interface ListingPublic {
     access(all) fun borrowNFT(): &NonFungibleToken.NFT?
     access(all) fun purchase(
-          payment: @FungibleToken.Vault, 
+          payment: @FungibleToken.Vault,
           commissionRecipient: Capability<&{FungibleToken.Receiver}>?,
       ): @NonFungibleToken.NFT
     access(all) fun getDetails(): ListingDetail
     access(all) fun getAllowedCommissionReceivers(): [Capability<&{FungibleToken.Receiver}>]?
 }
 ```
+
 An interface providing a useful public interface to a Listing.
 
 ### Functions
@@ -184,6 +180,7 @@ An interface providing a useful public interface to a Listing.
 ```cadence
 fun borrowNFT(): &NonFungibleToken.NFT?
 ```
+
 This will assert in the same way as the NFT standard borrowNFT()
 if the NFT is absent, for example if it has been sold via another listing.
 
@@ -194,6 +191,7 @@ if the NFT is absent, for example if it has been sold via another listing.
 ```cadence
 fun purchase(payment FungibleToken.Vault, commissionRecipient Capability<&{FungibleToken.Receiver}>?): NonFungibleToken.NFT
 ```
+
 Facilitates the purchase of the listing by providing the payment vault
 and the commission recipient capability if there is a non-zero commission for the given listing.
 Respective saleCuts are transferred to beneficiaries and funtion return underlying or listed NFT.
@@ -205,6 +203,7 @@ Respective saleCuts are transferred to beneficiaries and funtion return underlyi
 ```cadence
 fun getDetails(): ListingDetails
 ```
+
 Fetches the details of the listings
 
 ---
@@ -214,6 +213,7 @@ Fetches the details of the listings
 ```cadence
 fun getAllowedCommissionReceivers(): [Capability<&{FungibleToken.Receiver}>]?
 ```
+
 Fetches the allowed marketplaces capabilities or commission receivers for the underlying listing.
 If it returns `nil` then commission is up to grab by anyone.
 
@@ -241,13 +241,14 @@ resource Storefront {
     access(all) fun borrowListing(listingResourceID: UInt64): &Listing{ListingPublic}?
 }
 ```
+
 A resource that allows its owner to manage a list of Listings, and anyone to interact with them
 in order to query their details and purchase the NFTs that they represent.
 
 Implemented Interfaces:
-  - `StorefrontManager`
-  - `StorefrontPublic`
 
+- `StorefrontManager`
+- `StorefrontPublic`
 
 ### Initializer
 
@@ -262,6 +263,7 @@ fun init()
 ```cadence
 fun createListing(nftProviderCapability Capability<&{NonFungibleToken.Provider, NonFungibleToken.CollectionPublic}>, nftType Type, nftID UInt64, salePaymentVaultType Type, saleCuts [SaleCut], marketplacesCapability [Capability<&{FungibleToken.Receiver}>]?, customID String?, commissionAmount UFix64, expiry UInt64): UInt64
 ```
+
 insert
 Create and publish a Listing for an NFT.
 
@@ -272,6 +274,7 @@ Create and publish a Listing for an NFT.
 ```cadence
 fun removeListing(listingResourceID UInt64)
 ```
+
 removeListing
 Remove a Listing that has not yet been purchased from the collection and destroy it.
 
@@ -282,6 +285,7 @@ Remove a Listing that has not yet been purchased from the collection and destroy
 ```cadence
 fun getListingIDs(): [UInt64]
 ```
+
 getListingIDs
 Returns an array of the Listing resource IDs that are in the collection
 
@@ -292,6 +296,7 @@ Returns an array of the Listing resource IDs that are in the collection
 ```cadence
 fun getDuplicateListingIDs(nftType Type, nftID UInt64, listingID UInt64): [UInt64]
 ```
+
 getDuplicateListingIDs
 Returns an array of listing IDs that are duplicates of the given `nftType` and `nftID`.
 
@@ -302,6 +307,7 @@ Returns an array of listing IDs that are duplicates of the given `nftType` and `
 ```cadence
 fun cleanupExpiredListings(fromIndex UInt64, toIndex UInt64)
 ```
+
 cleanupExpiredListings
 Cleanup the expired listing by iterating over the provided range of indexes.
 
@@ -312,6 +318,7 @@ Cleanup the expired listing by iterating over the provided range of indexes.
 ```cadence
 fun borrowListing(listingResourceID UInt64): &Listing{ListingPublic}?
 ```
+
 borrowListing
 Returns a read-only view of the listing for the given listingID if it is contained by this collection.
 
@@ -341,6 +348,7 @@ in a Storefront.
 ```cadence
 fun getListingIDs(): [UInt64]
 ```
+
 getListingIDs Returns an array of the Listing resource IDs that are in the collection
 
 ---
@@ -350,6 +358,7 @@ getListingIDs Returns an array of the Listing resource IDs that are in the colle
 ```cadence
 fun getDuplicateListingIDs(nftType Type, nftID UInt64, listingID UInt64): [UInt64]
 ```
+
 getDuplicateListingIDs Returns an array of listing IDs that are duplicates of the given nftType and nftID.
 
 ---
@@ -359,6 +368,7 @@ getDuplicateListingIDs Returns an array of listing IDs that are duplicates of th
 ```cadence
 fun borrowListing(listingResourceID UInt64): &Listing{ListingPublic}?
 ```
+
 borrowListing Returns a read-only view of the listing for the given listingID if it is contained by this collection.
 
 ---
@@ -368,6 +378,7 @@ borrowListing Returns a read-only view of the listing for the given listingID if
 ```cadence
 fun cleanupExpiredListings(fromIndex UInt64, toIndex UInt64)
 ```
+
 cleanupExpiredListings Cleanup the expired listing by iterating over the provided range of indexes.
 
 ---
@@ -377,6 +388,7 @@ cleanupExpiredListings Cleanup the expired listing by iterating over the provide
 ```cadence
 fun cleanupPurchasedListings(listingResourceID: UInt64)
 ```
+
 cleanupPurchasedListings
 Allows anyone to remove already purchased listings.
 
@@ -387,6 +399,7 @@ Allows anyone to remove already purchased listings.
 ```cadence
 fun getExistingListingIDs(nftType Type, nftID UInt64): [UInt64]
 ```
+
 getExistingListingIDs
 Returns an array of listing IDs of the given `nftType` and `nftID`.
 
@@ -399,6 +412,7 @@ Returns an array of listing IDs of the given `nftType` and `nftID`.
 ```cadence
 event StorefrontInitialized(storefrontResourceID: UInt64)
 ```
+
 A Storefront resource has been created. Consumers can now expect events from this Storefront. Note that we do not specify an address: we cannot and should not. Created resources do not have an owner address, and may be moved
 after creation in ways we cannot check. `ListingAvailable` events can be used to determine the address
 of the owner of the Storefront at the time of the listing but only at that precise moment in that precise transaction. If the seller moves the Storefront while the listing is valid, that is on them.
@@ -410,6 +424,7 @@ of the owner of the Storefront at the time of the listing but only at that preci
 ```cadence
 event StorefrontDestroyed(storefrontResourceID: UInt64)
 ```
+
 A Storefront has been destroyed. Event consumers can now stop processing events from this Storefront.
 Note - we do not specify an address.
 
@@ -431,6 +446,7 @@ Above event gets emitted when a listing has been created and added to a Storefro
 ```cadence
 event ListingCompleted(listingResourceID: UInt64, storefrontResourceID: UInt64, purchased: Bool, nftType: Type, nftUUID: UInt64, nftID: UInt64, salePaymentVaultType: Type, salePrice: UFix64, customID: String?, commissionAmount: UFix64, commissionReceiver: Address?, expiry: UInt64)
 ```
+
 The listing has been resolved. It has either been purchased, removed or destroyed.
 
 ---
@@ -440,11 +456,11 @@ The listing has been resolved. It has either been purchased, removed or destroye
 ```cadence
 event UnpaidReceiver(receiver: Address, entitledSaleCut: UFix64)
 ```
+
 A entitled receiver has not been paid during the sale of the NFT.
 
 ---
 
-
-**Holistic process flow diagram of NFTStorefrontV2 -** 
+**Holistic process flow diagram of NFTStorefrontV2 -**
 
 ![NFT Storefront Process flow](https://user-images.githubusercontent.com/14581509/191960793-ff153e5d-2934-410c-b724-5c5dffd2c20f.png)

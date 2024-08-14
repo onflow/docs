@@ -8,17 +8,6 @@ sidebar_position: 4
 
 EVM on Flow has the following public RPC nodes available:
 
-# Previewnet
-
-| Name            | Value                                   |
-| --------------- | --------------------------------------- |
-| Network Name    | Previewnet                              |
-| Description     | The public RPC URL for Flow Previewnet  |
-| RPC Endpoint    | https://previewnet.evm.nodes.onflow.org |
-| Chain ID        | 646                                     |
-| Currency Symbol | FLOW                                    |
-| Block Explorer  | https://eth.flowscan.io                 |
-
 # Testnet
 
 | Name            | Value                                |

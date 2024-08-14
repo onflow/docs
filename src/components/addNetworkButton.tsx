@@ -7,7 +7,7 @@ import {
 export const AddNetworkButton = () => {
   const targetChainIds = [747, 646, 545]; // Your target chain IDs
   const [isNetworkAdded, setIsNetworkAdded] = useState<boolean>(false);
-  const [chainId, setChainId] = useState<string>(''); // Flow Previewnet
+  const [chainId, setChainId] = useState<string>(''); // Flow Testnet
 
   const getChainId = async () => {
     if (!window?.ethereum) return;
@@ -36,9 +36,9 @@ export const AddNetworkButton = () => {
         method: 'wallet_addEthereumChain',
         params: [
           {
-            chainId: '0x286',
-            chainName: 'Flow Previewnet',
-            rpcUrls: ['https://previewnet.evm.nodes.onflow.org'],
+            chainId: '0x221',
+            chainName: 'Flow Testnet',
+            rpcUrls: ['https://testnet.evm.nodes.onflow.org'],
             iconUrls: [
               'https://assets-global.website-files.com/5f734f4dbd95382f4fdfa0ea/65b016be9b9cf0a402a67a38_ico-flow-crescendo.png',
             ],
@@ -47,12 +47,12 @@ export const AddNetworkButton = () => {
               symbol: 'FLOW',
               decimals: 18,
             },
-            blockExplorerUrls: ['https://previewnet.flowdiver.io/'],
+            blockExplorerUrls: ['https://testnet.flowdiver.io/'],
           },
         ],
       });
     } catch (error) {
-      console.error('Could not add Flow Previewnet', error);
+      console.error('Could not add Flow Testnet', error);
     }
   };
 
