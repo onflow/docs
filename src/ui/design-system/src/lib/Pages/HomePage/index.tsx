@@ -1,5 +1,9 @@
 import React from 'react';
-import { LandingHeaderHome, HomepageStartList } from '../../Components';
+import {
+  LandingHeaderHome,
+  HomepageStartList,
+  HomepageStartListCadence,
+} from '../../Components';
 import { type ContentNavigationListProps } from '../../Components/ContentNavigationList';
 import { type SocialLinksSignupProps } from '../../Components/SocialLinksSignup';
 import { type TutorialCardProps } from '../../Components/TutorialCard';
@@ -41,9 +45,13 @@ const HomePage = ({ discordUrl, githubUrl }: HomePageProps): JSX.Element => {
         title="Build with Flow"
       />
       <HomepageStartList />
+
       <PageSections>
         <TransitionPageSection sectionId="explore-more-content">
           <ContentFeatureList />
+        </TransitionPageSection>
+        <TransitionPageSection sectionId="start-list-cadence">
+          <HomepageStartListCadence />
         </TransitionPageSection>
         <TransitionPageSection
           className={'md:mx-4'}
