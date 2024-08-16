@@ -23,10 +23,16 @@ If its local database is already bootstrapped, it will start up and begin operat
 If its local database is not already bootstrapped, it will attempt to bootstrap using a Root Snapshot.
 
 There are two sources for a non-bootstrapped node to obtain a Root Snapshot:
-- Root Snapshot file in the `bootstrap` folder, which is used first if it exists.
-- Dynamic Startup flags, which are only used if no Root Snapshot file exists.
+1. Root Snapshot file in the `bootstrap` folder
+2. Dynamic Startup flags, which will cause the node to download a Root Snapshot from a specified Access Node
+
+The node software requires that only one of the above options is provided.
 
 ## Using a Root Snapshot File
+
+<Callout type="info">
+   If your node already has a bootstrapped database, the Root Snapshot file will be ignored. If both a Root Snapshot and Dynamic Startup flags are present, the node will not startup.
+</Callout>
 
 Using a Root Snapshot file is more flexible but more involved for operators compared to Dynamic Startup.
 
@@ -73,8 +79,7 @@ Dynamic Startup is a startup configuration where your node will download a Root 
 Dynamic Startup is designed for nodes which are newly joining the network and need to [bootstrap from within a specific epoch phase](./node-bootstrap#timing), but can be used for other use-cases.
 
 <Callout type="info">
-   If your node already has a bootstrapped database, or has a Root Snapshot file in the `$BOOTSTRAPDIR` folder,
-   these will take precedence and Dynamic Startup flags will be ignored.
+   If your node already has a bootstrapped database, Dynamic Startup flags will be ignored. If both a Root Snapshot and Dynamic Startup flags are present, the node will not startup.
 </Callout>
 
 When using Dynamic Startup, we specify:
