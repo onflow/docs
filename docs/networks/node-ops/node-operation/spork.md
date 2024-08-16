@@ -1,6 +1,6 @@
 ---
 title: Network Upgrade (Spork) Process
-description: What to do during a spork
+description: Steps to be carried out by node operators during a network upgrade.
 sidebar_position: 15
 ---
 
