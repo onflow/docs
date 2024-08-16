@@ -1224,6 +1224,10 @@
     {
       "source": "/build/differences-vs-evm/transaction-time",
       "destination": "/build/basics/transactions#transaction-time"
+    },
+    {
+      "source": "/networks/flow-networks/accessing-previewnet",
+      "destination": "/evm/using"
     }
   ]
 }
