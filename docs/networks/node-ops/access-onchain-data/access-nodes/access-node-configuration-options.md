@@ -91,6 +91,8 @@ Store the **`root-protocol-state-snapshot.json`** into the **`/bootstrap/public-
 
 You will need to download checkpoint files for the corresponding height which is the same as was for downloading the root protocol state snapshot. This is important cause in other cases you will get the error described in the [Troubleshooting](#troubleshooting) section.
 
+> Please contact the Flow Foundation team for the checkpoint files.
+
 Once the files are downloaded, you can either move them to `/bootstrap/execution-state/` within the node’s bootstrap directory or put them in any mounted directory and reference the location with this cli flag: `--execution-state-checkpoint=/path/to/root.checkpoint`. The naming of files should be `root.checkpoint.*`.
 
 # Configure the node to run the indexer
