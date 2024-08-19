@@ -1,15 +1,15 @@
 ---
-title: FLOW Token
+title: FLOW Coin
 sidebar_position: 10
 ---
 
 ## Introduction
 
-This section contains information about the FLOW token for individual backers, wallet providers, custodians and node operators.
+This section contains information about the FLOW Coin for individual backers, wallet providers, custodians and node operators.
 
-### FLOW as a Native Token
+### FLOW as a Native Coin
 
-FLOW is the default token for the Flow protocol, meaning it is used for all protocol-level fee payments,
+FLOW is the default coin for the Flow protocol, meaning it is used for all protocol-level fee payments,
 rewards and staking transactions. FLOW implements the standard [Flow Fungible Token interface](https://github.com/onflow/flow-ft),
 which all other on-chain fungible tokens also conform to. This interface is defined in Cadence,
 Flow's native smart-contract programming language, which makes it easy to write applications that
@@ -17,7 +17,7 @@ interact with FLOW.
 
 ## How to Get FLOW
 
-There are two ways to acquire FLOW tokens as yield:
+There are two ways to acquire FLOW Coins as yield:
 
 1. [Earn FLOW as a Validator or Delegator](../../networks/staking/06-technical-overview.md): Receive newly-minted FLOW as a reward for running a node.
 1. [Earn FLOW as a Community Contributor](https://github.com/onflow/developer-grants): Flow offers grants for selected proposals as well as RFPs for teams to submit proposals for funded development
@@ -36,7 +36,7 @@ With FLOW, you can:
 
 ### Spending FLOW
 
-All you need to spend Flow is an account and a tool for signing transactions
+All you need to spend FLOW is an account and a tool for signing transactions
 (a wallet, custodian, or other signing service).
 The FCL (Flow Client Library) makes it super duper easy to go to any dapp,
 login with your account, have a great time,
@@ -74,13 +74,13 @@ You can use your Flow account to submit votes to community polls and other gover
 
 If you simply want to share the love and bring your friends to Flow, it's easier than an edible arrangement.
 
-It is possible to use the Flow blockchain without holding any FLOW tokens yourself.
+It is possible to use the Flow blockchain without holding any FLOW coins yourself.
 Free to play games, trials, community polls,
 and other community activities can all take place with only an account
 (which may be created on a person's behalf)
 and a small fixed fee which may be paid by a user agent.
 
-The protocol requires some FLOW tokens to process these transactions,
+The protocol requires some FLOW coins to process these transactions,
 but (and this is the cool part!) a product can support users who do not themselves hold FLOW
 while still providing that user with all the underlying security guarantees the Flow protocol provides.
 
