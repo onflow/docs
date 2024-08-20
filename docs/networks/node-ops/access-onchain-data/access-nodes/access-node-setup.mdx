@@ -265,56 +265,54 @@ The access node can be run as a Docker container with the following command.
 
 Be sure to set `$VERSION` below to the version tag (e.g. `v1.2.3`) corresponding to the latest **released** version [here](https://github.com/onflow/flow-go/releases) for version releases). Set `$NODEID` to your node's ID (see [Generate Your Node Identity](#generate-your-node-identity) section above).
 
-```mdx-code-block
-  <Tabs>
+<Tabs>
     <TabItem value="mainnet" label="Mainnet">
-      ```shell
+        ```shell
         docker run --rm \
-          -v $PWD/bootstrap:/bootstrap:ro  \
-          -v $PWD/data:/data:rw \
-          --name flow-go \
-          --network host \
-          gcr.io/flow-container-registry/access:$VERSION \
-          --nodeid=$NODEID \
-          --bootstrapdir=/bootstrap \
-          --datadir=/data/protocol \
-          --secretsdir=/data/secrets  \
-          --rpc-addr=0.0.0.0:9000 \
-          --http-addr=0.0.0.0:8000 \
-          --rest-addr=0.0.0.0:80 \
-          --rpc-metrics-enabled=true \
-          --bind 0.0.0.0:3569 \
-          --dynamic-startup-access-address=secure.mainnet.nodes.onflow.org:9001 \
-          --dynamic-startup-access-publickey=28a0d9edd0de3f15866dfe4aea1560c4504fe313fc6ca3f63a63e4f98d0e295144692a58ebe7f7894349198613f65b2d960abf99ec2625e247b1c78ba5bf2eae \
-          --dynamic-startup-epoch-phase=EpochPhaseStaking \
-          --loglevel=error
-      ```
+        -v $PWD/bootstrap:/bootstrap:ro  \
+        -v $PWD/data:/data:rw \
+        --name flow-go \
+        --network host \
+        gcr.io/flow-container-registry/access:$VERSION \
+        --nodeid=$NODEID \
+        --bootstrapdir=/bootstrap \
+        --datadir=/data/protocol \
+        --secretsdir=/data/secrets  \
+        --rpc-addr=0.0.0.0:9000 \
+        --http-addr=0.0.0.0:8000 \
+        --rest-addr=0.0.0.0:80 \
+        --rpc-metrics-enabled=true \
+        --bind 0.0.0.0:3569 \
+        --dynamic-startup-access-address=secure.mainnet.nodes.onflow.org:9001 \
+        --dynamic-startup-access-publickey=28a0d9edd0de3f15866dfe4aea1560c4504fe313fc6ca3f63a63e4f98d0e295144692a58ebe7f7894349198613f65b2d960abf99ec2625e247b1c78ba5bf2eae \
+        --dynamic-startup-epoch-phase=EpochPhaseStaking \
+        --loglevel=error
+        ```
     </TabItem>
     <TabItem value="testnet" label="Testnet">
-       ```shell
+        ```shell
         docker run --rm \
-          -v $PWD/bootstrap:/bootstrap:ro  \
-          -v $PWD/data:/data:rw \
-          --name flow-go \
-          --network host \
-          gcr.io/flow-container-registry/access:$VERSION \
-          --nodeid=$NODEID \
-          --bootstrapdir=/bootstrap \
-          --datadir=/data/protocol \
-          --secretsdir=/data/secrets  \
-          --rpc-addr=0.0.0.0:9000 \
-          --http-addr=0.0.0.0:8000 \
-          --rest-addr=0.0.0.0:80 \
-          --rpc-metrics-enabled=true \
-          --bind 0.0.0.0:3569 \
-          --dynamic-startup-access-address=secure.testnet.nodes.onflow.org:9001 \
-          --dynamic-startup-access-publickey=ba69f7d2e82b9edf25b103c195cd371cf0cc047ef8884a9bbe331e62982d46daeebf836f7445a2ac16741013b192959d8ad26998aff12f2adc67a99e1eb2988d \
-          --dynamic-startup-epoch-phase=EpochPhaseStaking
-          --loglevel=error
-      ```
+        -v $PWD/bootstrap:/bootstrap:ro  \
+        -v $PWD/data:/data:rw \
+        --name flow-go \
+        --network host \
+        gcr.io/flow-container-registry/access:$VERSION \
+        --nodeid=$NODEID \
+        --bootstrapdir=/bootstrap \
+        --datadir=/data/protocol \
+        --secretsdir=/data/secrets  \
+        --rpc-addr=0.0.0.0:9000 \
+        --http-addr=0.0.0.0:8000 \
+        --rest-addr=0.0.0.0:80 \
+        --rpc-metrics-enabled=true \
+        --bind 0.0.0.0:3569 \
+        --dynamic-startup-access-address=secure.testnet.nodes.onflow.org:9001 \
+        --dynamic-startup-access-publickey=ba69f7d2e82b9edf25b103c195cd371cf0cc047ef8884a9bbe331e62982d46daeebf836f7445a2ac16741013b192959d8ad26998aff12f2adc67a99e1eb2988d \
+        --dynamic-startup-epoch-phase=EpochPhaseStaking \
+        --loglevel=error
+        ```
     </TabItem>
-  </Tabs>
-```
+</Tabs>
 
 For example, if your Node ID is `e737ec6efbd26ef43bf676911cdc5a11ba15fc6562d05413e6589fccdd6c06d5` and the software version is `v1.2.3`, the Docker command would be the following:
 ```shell Example
@@ -345,10 +343,9 @@ Alternatively, you can build a binary for the access node to run it without usin
 To build the access node binary, see the instructions [here](https://github.com/onflow/flow-go/?tab=readme-ov-file##building-a-binary-for-the-access-node).
 Please make sure to git checkout the latest release tag before building the binary.
 
-```mdx-code-block
-  <Tabs>
+<Tabs>
     <TabItem value="mainnet" label="Mainnet">
-      ```shell
+        ```shell
         $PWD/flow-go/flow_access_node \
         --nodeid=e1a8b231156ab6f2a5c6f862c933baf5e5c2e7cf019b509c7c91f4ddb0a13398 \
         --bootstrapdir=$PWD/bootstrap \
@@ -366,11 +363,11 @@ Please make sure to git checkout the latest release tag before building the bina
         --profiler-dir=$PWD/data/profiler \
         --dynamic-startup-access-address=secure.mainnet.nodes.onflow.org:9001 \
         --dynamic-startup-access-publickey=28a0d9edd0de3f15866dfe4aea1560c4504fe313fc6ca3f63a63e4f98d0e295144692a58ebe7f7894349198613f65b2d960abf99ec2625e247b1c78ba5bf2eae \
-        --dynamic-startup-epoch-phase=EpochPhaseStaking \
-      ```
+        --dynamic-startup-epoch-phase=EpochPhaseStaking
+        ```
     </TabItem>
     <TabItem value="testnet" label="Testnet">
-       ```shell
+        ```shell
         $PWD/flow-go/flow_access_node \
         --nodeid=e1a8b231156ab6f2a5c6f862c933baf5e5c2e7cf019b509c7c91f4ddb0a13398 \
         --bootstrapdir=$PWD/bootstrap \
@@ -389,12 +386,11 @@ Please make sure to git checkout the latest release tag before building the bina
         --dynamic-startup-access-address=secure.testnet.nodes.onflow.org:9001 \
         --dynamic-startup-access-publickey=ba69f7d2e82b9edf25b103c195cd371cf0cc047ef8884a9bbe331e62982d46daeebf836f7445a2ac16741013b192959d8ad26998aff12f2adc67a99e1eb2988d \
         --dynamic-startup-epoch-phase=EpochPhaseStaking
-      ```
+        ```
     </TabItem>
-  </Tabs>
-```
+</Tabs>
 
-For a more mature setup, it is recommended that you run the container using systemd as described [here](../../node-operation/node-setup.md)
+For a more mature setup, it is recommended that you run the container using systemd as described [here](../../node-operation/node-setup.md#systemd)
 
 > 🚀 The access node should now be up and running, and you should be able to query the node using Flow CLI or curl,
 
