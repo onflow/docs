@@ -29,7 +29,7 @@ export const TESTNET_PARAMS = {
     symbol: 'FLOW',
     decimals: 18,
   },
-  blockExplorerUrls: ['https://evm-testnet.flowscan.io/'],
+  blockExplorerUrls: ['https://evm-testnet.flowscan.io/']
 };
 ```
 
