@@ -267,6 +267,7 @@ Be sure to set `$VERSION` below to the version tag (e.g. `v1.2.3`) corresponding
 
 <Tabs>
     <TabItem value="mainnet" label="Mainnet">
+
         ```shell
         docker run --rm \
         -v $PWD/bootstrap:/bootstrap:ro  \
@@ -288,9 +289,32 @@ Be sure to set `$VERSION` below to the version tag (e.g. `v1.2.3`) corresponding
         --dynamic-startup-epoch-phase=EpochPhaseStaking \
         --loglevel=error
         ```
+
     </TabItem>
     <TabItem value="testnet" label="Testnet">
-        fsfsdfds
+
+        ```shell
+        docker run --rm \
+        -v $PWD/bootstrap:/bootstrap:ro  \
+        -v $PWD/data:/data:rw \
+        --name flow-go \
+        --network host \
+        gcr.io/flow-container-registry/access:$VERSION \
+        --nodeid=$NODEID \
+        --bootstrapdir=/bootstrap \
+        --datadir=/data/protocol \
+        --secretsdir=/data/secrets  \
+        --rpc-addr=0.0.0.0:9000 \
+        --http-addr=0.0.0.0:8000 \
+        --rest-addr=0.0.0.0:80 \
+        --rpc-metrics-enabled=true \
+        --bind 0.0.0.0:3569 \
+        --dynamic-startup-access-address=secure.testnet.nodes.onflow.org:9001 \
+        --dynamic-startup-access-publickey=ba69f7d2e82b9edf25b103c195cd371cf0cc047ef8884a9bbe331e62982d46daeebf836f7445a2ac16741013b192959d8ad26998aff12f2adc67a99e1eb2988d \
+        --dynamic-startup-epoch-phase=EpochPhaseStaking \
+        --loglevel=error
+        ```
+
     </TabItem>
 </Tabs>
 
@@ -325,6 +349,7 @@ Please make sure to git checkout the latest release tag before building the bina
 
 <Tabs>
     <TabItem value="mainnet" label="Mainnet">
+
         ```shell
         $PWD/flow-go/flow_access_node \
         --nodeid=e1a8b231156ab6f2a5c6f862c933baf5e5c2e7cf019b509c7c91f4ddb0a13398 \
@@ -345,8 +370,10 @@ Please make sure to git checkout the latest release tag before building the bina
         --dynamic-startup-access-publickey=28a0d9edd0de3f15866dfe4aea1560c4504fe313fc6ca3f63a63e4f98d0e295144692a58ebe7f7894349198613f65b2d960abf99ec2625e247b1c78ba5bf2eae \
         --dynamic-startup-epoch-phase=EpochPhaseStaking
         ```
+
     </TabItem>
     <TabItem value="testnet" label="Testnet">
+
         ```shell
         $PWD/flow-go/flow_access_node \
         --nodeid=e1a8b231156ab6f2a5c6f862c933baf5e5c2e7cf019b509c7c91f4ddb0a13398 \
@@ -367,6 +394,7 @@ Please make sure to git checkout the latest release tag before building the bina
         --dynamic-startup-access-publickey=ba69f7d2e82b9edf25b103c195cd371cf0cc047ef8884a9bbe331e62982d46daeebf836f7445a2ac16741013b192959d8ad26998aff12f2adc67a99e1eb2988d \
         --dynamic-startup-epoch-phase=EpochPhaseStaking
         ```
+
     </TabItem>
 </Tabs>
 
