@@ -70,7 +70,7 @@ https://www.blocto.io/
 
 ## Metamask Wallet
 
-[Metamask](https://metamask.io/) is a secure and user-friendly crypto wallet for NFTs and digital tokens. 
+[Metamask](https://metamask.io/) is a secure and user-friendly crypto wallet for NFTs and digital tokens. Presently only supports EVM on Flow and cannot access Cadence accounts.  
 
 https://metamask.io/
 
