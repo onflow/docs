@@ -266,7 +266,6 @@ The access node can be run as a Docker container with the following command.
 Be sure to set `$VERSION` below to the version tag (e.g. `v1.2.3`) corresponding to the latest **released** version [here](https://github.com/onflow/flow-go/releases) for version releases). Set `$NODEID` to your node's ID (see [Generate Your Node Identity](#generate-your-node-identity) section above).
 
 ```mdx-code-block
-<BrowserWindow>
   <Tabs>
     <TabItem value="mainnet" label="Mainnet">
       ```shell
@@ -315,7 +314,6 @@ Be sure to set `$VERSION` below to the version tag (e.g. `v1.2.3`) corresponding
       ```
     </TabItem>
   </Tabs>
-</BrowserWindow>
 ```
 
 For example, if your Node ID is `e737ec6efbd26ef43bf676911cdc5a11ba15fc6562d05413e6589fccdd6c06d5` and the software version is `v1.2.3`, the Docker command would be the following:
@@ -348,7 +346,6 @@ To build the access node binary, see the instructions [here](https://github.com/
 Please make sure to git checkout the latest release tag before building the binary.
 
 ```mdx-code-block
-<BrowserWindow>
   <Tabs>
     <TabItem value="mainnet" label="Mainnet">
       ```shell
@@ -395,7 +392,6 @@ Please make sure to git checkout the latest release tag before building the bina
       ```
     </TabItem>
   </Tabs>
-</BrowserWindow>
 ```
 
 For a more mature setup, it is recommended that you run the container using systemd as described [here](../../node-operation/node-setup.md#systemd)
