@@ -290,27 +290,7 @@ Be sure to set `$VERSION` below to the version tag (e.g. `v1.2.3`) corresponding
         ```
     </TabItem>
     <TabItem value="testnet" label="Testnet">
-        ```shell
-        docker run --rm \
-        -v $PWD/bootstrap:/bootstrap:ro  \
-        -v $PWD/data:/data:rw \
-        --name flow-go \
-        --network host \
-        gcr.io/flow-container-registry/access:$VERSION \
-        --nodeid=$NODEID \
-        --bootstrapdir=/bootstrap \
-        --datadir=/data/protocol \
-        --secretsdir=/data/secrets  \
-        --rpc-addr=0.0.0.0:9000 \
-        --http-addr=0.0.0.0:8000 \
-        --rest-addr=0.0.0.0:80 \
-        --rpc-metrics-enabled=true \
-        --bind 0.0.0.0:3569 \
-        --dynamic-startup-access-address=secure.testnet.nodes.onflow.org:9001 \
-        --dynamic-startup-access-publickey=ba69f7d2e82b9edf25b103c195cd371cf0cc047ef8884a9bbe331e62982d46daeebf836f7445a2ac16741013b192959d8ad26998aff12f2adc67a99e1eb2988d \
-        --dynamic-startup-epoch-phase=EpochPhaseStaking \
-        --loglevel=error
-        ```
+        fsfsdfds
     </TabItem>
 </Tabs>
 
