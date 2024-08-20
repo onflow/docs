@@ -137,6 +137,8 @@ Deploying contracts with the account: ...
 HelloWorld address: 0x3Fe94f43Fb5CdB8268A801f274521a07F7b99dfb
 ```
 
+You can now search for your deployed contract on the [Flowscan block explorer](https://evm-testnet.flowscan.io/)!
+
 ### Get HelloWorld Contract Greeting
 
 Now, we want to get the greeting from the deployed `HelloWorld` smart contract.
@@ -237,4 +239,55 @@ The greeting is: Hello, World!
 Transaction hash: 0x03136298875d405e0814f54308390e73246e4e8b4502022c657f04f3985e0906
 Greeting updated successfully!
 The greeting is: Howdy!
+```
+
+
+### Verifying Contract
+
+To verify your contract on [Flowscan](https://evm-testnet.flowscan.io/), you can update your Hardhat config file as such including the correct chainID, apiURL and browserURL:
+
+```javascript
+import { HardhatUserConfig } from 'hardhat/config';
+import '@nomicfoundation/hardhat-toolbox';
+import "@nomicfoundation/hardhat-verify";
+
+const PRIVATE_KEY = vars.get("EVM_PRIVATE_KEY");
+
+const config: HardhatUserConfig = {
+  solidity: '0.8.24',
+  networks: {
+    testnet: {
+      url: 'https://testnet.evm.nodes.onflow.org',
+      accounts: [PRIVATE_KEY], // In practice, this should come from an environment variable and not be commited
+      gas: 500000, // Example gas limit
+    },
+  },
+  etherscan: {
+    apiKey: {
+      // Is not required by blockscout. Can be any non-empty string
+      'testnet': "abc"
+    },
+    customChains: [
+      {
+        network: "testnet",
+        chainId: 545,
+        urls: {
+          apiURL: "https://evm-testnet.flowscan.io/api",
+          browserURL: "https://evm-testnet.flowscan.io/",
+        }
+      }
+    ]
+  },
+  sourcify: {
+    enabled: false
+  }
+};
+
+export default config;
+```
+
+The [verify](https://docs.blockscout.com/developer-support/verifying-a-smart-contract/hardhat-verification-plugin) plugin requires you to include constructor arguments with the verify task and ensures that they correspond to expected ABI signature. However, Blockscout ignores those arguments, so you may specify any values that correspond to the ABI. Execute the following command to verify the contract:
+
+```shell
+npx hardhat verify --network testnet DEPLOYED_CONTRACT_ADDRESS "Constructor argument 1"
 ```
