@@ -4,13 +4,6 @@ sidebar_label: Access Node Setup
 sidebar_position: 2
 ---
 
-```mdx-code-block
-import BrowserWindow from '@site/src/components/BrowserWindow';
-import Tabs from '@theme/Tabs';
-import TabItem from '@theme/TabItem';
-import styles from './markdown-features-tabs-styles.module.css';
-```
-
 This guide is for running a permissonless Access node on Flow. If you are planning to run a different type of staked node then see [node bootstrap](../../node-operation/node-bootstrap.md).
 
 Permissionless Access nodes allow any operator to run a Flow Access node.
@@ -265,19 +258,11 @@ If your node was selected as part of Step 3, you can now start your node.
 
 First you'll need to provision a machine or virtual machine to run your node software. Please see follow the [node-provisioning](../../node-operation/node-provisioning.md) guide for it.
 
-The access node can be run as a Docker container with the following command. Alternatively, you can build a binary for the access node to run it without using Docker.
+The access node can be run as a Docker container with the following command.
+Alternatively, you can build a binary for the access node to run it without using Docker.
+To build the access node binary, see the instructions [here](https://github.com/onflow/flow-go/?tab=readme-ov-file##building-a-binary-for-the-access-node).
 
 Be sure to set `$VERSION` below to the version tag (e.g. `v1.2.3`) corresponding to the latest **released** version [here](https://github.com/onflow/flow-go/releases) for version releases). Set `$NODEID` to your node's ID (see [Generate Your Node Identity](#generate-your-node-identity) section above).
-
-```mdx-code-block
-<BrowserWindow>
-  <Tabs>
-    <TabItem value="apple" label="Apple">This is an apple 🍎</TabItem>
-    <TabItem value="orange" label="Orange">This is an orange 🍊</TabItem>
-    <TabItem value="banana" label="Banana">This is a banana 🍌</TabItem>
-  </Tabs>
-</BrowserWindow>
-```
 
 ```shell
 docker run --rm \
