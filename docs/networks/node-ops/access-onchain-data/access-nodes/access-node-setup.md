@@ -4,6 +4,23 @@ sidebar_label: Access Node Setup
 sidebar_position: 2
 ---
 
+```mdx-code-block
+import BrowserWindow from '@site/src/components/BrowserWindow';
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+import styles from './markdown-features-tabs-styles.module.css';
+```
+
+```mdx-code-block
+<BrowserWindow>
+  <Tabs>
+    <TabItem value="apple" label="Apple">This is an apple 🍎</TabItem>
+    <TabItem value="orange" label="Orange">This is an orange 🍊</TabItem>
+    <TabItem value="banana" label="Banana">This is a banana 🍌</TabItem>
+  </Tabs>
+</BrowserWindow>
+```
+
 This guide is for running a permissonless Access node on Flow. If you are planning to run a different type of staked node then see [node bootstrap](../../node-operation/node-bootstrap.md).
 
 Permissionless Access nodes allow any operator to run a Flow Access node.
