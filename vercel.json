@@ -185,7 +185,7 @@
     {
       "source": "/access-api",
       "destination": "/networks/node-ops/access-onchain-data/access-nodes/accessing-data/access-api",
-      
+
       "permanent": true
     },
     {
@@ -232,7 +232,7 @@
       "source": "/tools/fcl-js/sdk-guidelines",
       "destination": "/tools/clients/fcl-js/sdk-guidelines",
       "permanent": true
-    }, 
+    },
     {
       "source": "/tools/fcl-js/networks/:path*",
       "destination": "/tools/clients/fcl-js/:path*",
@@ -1087,11 +1087,6 @@
       "destination": "/build/smart-contracts/overview"
     },
     {
-      "source": "networks/flow-networks/accessing-crescendo",
-      "destination": "/networks/flow-networks/accessing-previewnet",
-      "permanent": true
-    },
-    {
       "source": "/evm/Build/:path*",
       "destination": "/evm/build/:path*",
       "permanent": true
@@ -1229,6 +1224,10 @@
     {
       "source": "/build/differences-vs-evm/transaction-time",
       "destination": "/build/basics/transactions#transaction-time"
+    },
+    {
+      "source": "/networks/flow-networks/accessing-previewnet",
+      "destination": "/evm/using"
     }
   ]
 }

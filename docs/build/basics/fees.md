@@ -13,7 +13,7 @@ Are you an EVM developer looking for information about EVM Accounts on Flow? If 
 
 ## Transaction Fees
 
-A transaction fee is a cost paid in Flow by the payer account and is required for a transaction to be included in the Flow blockchain. Fees are necessary for protecting the network against spam, and infinite running transactions and to provide monetary incentives for participants that make up the Flow network.
+A transaction fee is a cost paid in Flow by the payer account and is required for a transaction to be included in the Flow blockchain. Fees are necessary for protecting the network against spam/infinite running transactions and to provide monetary incentives for participants that make up the Flow network.
 
 A transaction fee is paid regardless of whether a transaction succeeds or fails. If the payer account doesn't have sufficient Flow balance to pay for the transaction fee, the transaction will fail. We can limit the transaction fee to some extent by providing the gas limit value when submitting the transaction.
 
@@ -138,11 +138,11 @@ Once a transaction is completed, you can use an explorer like [Flowdiver](https:
 
 ![flowscan-fees](./_fees_images/flowscan-fees.png)
 
-In the event data on the right side, you will see a set of fields representing [FeeParameters](https://github.com/onflow/flow-core-contracts/blob/master/contracts/FlowFees.cdc#L58):
+In the event data on the right side, you will see a set of fields representing [the fees for a specific transaction.](https://github.com/onflow/flow-core-contracts/blob/master/contracts/FlowFees.cdc#L14):
 
-- surgeFactor
-- inclusionEffort
-- executionEffort
+- Total Fees Paid
+- Inclusion Effort
+- Execution Effort
 
 Take a note of the last value in the list - the `executionEffort` value. You will use it in the next step.
 

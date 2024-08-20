@@ -53,9 +53,9 @@ This division of labor between nodes occurs within the different validation stag
 In other words, every Flow node still participates in the validation of every transaction, but they do so only at one of the stages of validation.
 They can therefore specialize—and greatly increase the efficiency—for their particular stage of focus.
 
-### Flow node types and what they do
+### Flow node roles and what they do
 
-|                                          |   Node type    | Responsibility                                                                                                                              | What do the nodes of this type do?                                                                                                                              |
+|                                          |   Node type    | Responsibility                                                                                                                              | What do the nodes of this role do?                                                                                                                              |
 |------------------------------------------|:--------------:|:--------------------------------------------------------------------------------------------------------------------------------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | ![collection](images/collection.png)     |   Collection   | Collection nodes act as a censorship-resistant data availability layer, which caches transactions for subsequent execution.                 | Collection nodes order transactions into batches known as collection.                                                                                           |
 | ![consensus](images/consensus.png)       |   Consensus    | The consensus committee serves as the security authority in the network and orchestrates Flow's transaction processing pipeline.            | Consensus nodes order collections into blocks and commit execution results after verification.                                                                  |

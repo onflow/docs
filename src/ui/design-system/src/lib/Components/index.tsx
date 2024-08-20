@@ -9,3 +9,4 @@ export { default as SporksCard } from './SporksCard';
 export { default as Tag } from './Tag';
 export { UpcomingEvents } from './UpcomingEvents';
 export { HomepageStartList } from './HomepageStartList';
+export { HomepageStartListCadence } from './HomepageStartListCadence';

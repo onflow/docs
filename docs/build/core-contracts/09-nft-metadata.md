@@ -13,14 +13,12 @@ Source: [ViewResolver.cdc](https://github.com/onflow/flow-nft/blob/master/contra
 
 Source: [MetadataViews.cdc](https://github.com/onflow/flow-nft/blob/master/contracts/MetadataViews.cdc)
 
-| Network           | Contract Address     |
-| ----------------- | -------------------- |
-| Emulator          | `0xf8d6e0586b0a20c7` |
+| Network                   | Contract Address     |
+| ------------------------- | -------------------- |
+| Emulator                  | `0xf8d6e0586b0a20c7` |
 | Cadence Testing Framework | `0x0000000000000001` |
-| PreviewNet        | `0xb6763b4399a888c8` |
-| Testnet | `0x631e88ae7f1d7c20` |
-| Mainnet           | `0x1d7e57aa55817448` |
-
+| Testnet                   | `0x631e88ae7f1d7c20` |
+| Mainnet                   | `0x1d7e57aa55817448` |
 
 There exists a tool, [Flow NFT Catalog](https://flow-nft-catalog.com), which enables dapp developers the ability to unlock interoperability of your NFT collection across the Flow ecosystem. This will help make your NFT collection’s metadata more discoverable and interoperable.
 
