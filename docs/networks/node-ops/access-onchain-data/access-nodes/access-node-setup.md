@@ -4,6 +4,13 @@ sidebar_label: Access Node Setup
 sidebar_position: 2
 ---
 
+```mdx-code-block
+import BrowserWindow from '@site/src/components/BrowserWindow';
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+import styles from './markdown-features-tabs-styles.module.css';
+```
+
 This guide is for running a permissonless Access node on Flow. If you are planning to run a different type of staked node then see [node bootstrap](../../node-operation/node-bootstrap.md).
 
 Permissionless Access nodes allow any operator to run a Flow Access node.
@@ -35,15 +42,16 @@ Confirmation of a new node's inclusion in epoch N+1 is included in the [`EpochSe
 
 ## Limitations
 
-There are three open slots for access nodes every epoch.
+There are five open slots for access nodes every epoch.
+You can view the exact epoch phase transition time [here](https://app.metrika.co/flow/dashboard/network-overview?tr=1d) under `Epoch Phase`.
 
 To summarize,
 
-|  **Date**  |  **Time** | **Epoch** |     **Epoch Phase**    |                                                     |
-|:----------:|:---------:|:---------:|:----------------------:|:---------------------------------------------------:|
-| 02/08/2023 | 20:00 UTC | 63         | Staking auction starts | Three new access node slots are opened. Anyone can register their access nodes                             |
-| 02/15/2023 | 08:00 UTC | 63         | Staking auction ends   | Three of the nodes registered during this epoch are randomly selected to be a part of the network in the next epoch. No more nodes can register until the next epoch starts.   |
-| 02/15/2023 | 20:00 UTC | 64         | Epoch n+1 starts       | The newly selected nodes can now participate in the network. Three new slots are opened. |
+| **Epoch**  |     **Epoch Phase**    |                                                     |
+|:----------:|:----------------------:|:---------------------------------------------------:|
+|     X      | Staking auction starts | Three new access node slots are opened. Anyone can register their access nodes                             |
+|     X      | Staking auction ends   | Three of the nodes registered during this epoch are randomly selected to be a part of the network in the next epoch. No more nodes can register until the next epoch starts.   |
+|    X+1     | Epoch n+1 starts       | The newly selected nodes can now participate in the network. Three new slots are opened. |
 
 ## How To Run a Permissionless Access Node?
 
@@ -73,8 +81,8 @@ tar -xvf boot-tools.tar
 ```
 
 ```shell CheckSHA256
-sha256sum ./boot-tools/bootstrapcmd
-a06e3e9b2443c6755214150e9e101b70dd48ae30ffcfcbbcc471ba430cb104bf  ./boot-tools/bootstrapcmd
+sha256sum ./boot-tools/bootstrap
+a06e3e9b2443c6755214150e9e101b70dd48ae30ffcfcbbcc471ba430cb104bf  ./boot-tools/bootstrap
 ```
 
 > If you have downloaded the bootstrapping kit previously, ensure the SHA256 hash for it still matches. If not, re-download to ensure you are using the most up-to-date version.
@@ -125,7 +133,7 @@ _Use a fully qualified domain name for the network address. Please also include 
 
 :::warning
 
-_Do not include in `http://` in the network address._
+_Do not include the prefix `http://` in the network address._
 
 :::
 
@@ -257,9 +265,19 @@ If your node was selected as part of Step 3, you can now start your node.
 
 First you'll need to provision a machine or virtual machine to run your node software. Please see follow the [node-provisioning](../../node-operation/node-provisioning.md) guide for it.
 
-The access node can be run as a Docker container with the following command.
+The access node can be run as a Docker container with the following command. Alternatively, you can build a binary for the access node to run it without using Docker.
 
-Be sure to set `$VERSION` below to the version tag (eg. `v1.2.3`) corresponding to the current network version (see [here](https://github.com/onflow/flow-go/releases) for version releases). Set `$NODEID` to your node's ID (see [Generate Your Node Identity](#generate-your-node-identity) section above).
+Be sure to set `$VERSION` below to the version tag (e.g. `v1.2.3`) corresponding to the latest **released** version [here](https://github.com/onflow/flow-go/releases) for version releases). Set `$NODEID` to your node's ID (see [Generate Your Node Identity](#generate-your-node-identity) section above).
+
+```mdx-code-block
+<BrowserWindow>
+  <Tabs>
+    <TabItem value="apple" label="Apple">This is an apple 🍎</TabItem>
+    <TabItem value="orange" label="Orange">This is an orange 🍊</TabItem>
+    <TabItem value="banana" label="Banana">This is a banana 🍌</TabItem>
+  </Tabs>
+</BrowserWindow>
+```
 
 ```shell
 docker run --rm \
@@ -305,6 +323,8 @@ docker run --rm \
   --dynamic-startup-epoch-phase=EpochPhaseStaking \
   --loglevel=error
 ```
+
+> If you would like your node to sync from the start of the last network upgrade, then please see the instructions [here](https://developers.flow.com/networks/node-ops/node-operation/spork)
 
 For a more mature setup, it is recommended that you run the container using systemd as described [here](../../node-operation/node-setup.md#systemd)
 
