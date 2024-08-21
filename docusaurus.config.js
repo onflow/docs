@@ -4,7 +4,6 @@ require('dotenv').config();
 const lightCodeTheme = require('prism-react-renderer/themes/github');
 const darkCodeTheme = require('prism-react-renderer/themes/dracula');
 
-const theme = require('shiki/themes/nord.json');
 const { remarkCodeHike } = require('@code-hike/mdx');
 
 const path = require('path');
@@ -180,7 +179,7 @@ const config = {
           beforeDefaultRemarkPlugins: [
             [
               remarkCodeHike,
-              { theme, lineNumbers: true, showCopyButton: true },
+              { theme: 'nord', lineNumbers: true, showCopyButton: true },
             ],
           ],
           sidebarPath: require.resolve('./sidebars.js'),
