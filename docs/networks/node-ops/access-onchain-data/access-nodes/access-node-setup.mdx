@@ -8,22 +8,34 @@ import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
 <Tabs>
-  <TabItem value="apple" label="Apple">
+<TabItem value="js" label="JavaScript">
 
-      ```shell
-      ls
-      ls
-      ```
+        ```js
+        function helloWorld() {
+        console.log('Hello, world!');
+    }
+        ```
 
-  </TabItem>
-  <TabItem value="orange" label="Orange">
+</TabItem>
+<TabItem value="py" label="Python">
 
-      ```shell
-      rm
-      rm
-      ```
+        ```py
+        def hello_world():
+        print 'Hello, world!'
+        ```
 
-  </TabItem>
+</TabItem>
+<TabItem value="java" label="Java">
+
+        ```java
+        class HelloWorld {
+        public static void main(String args[]) {
+        System.out.println("Hello, World");
+    }
+    }
+        ```
+
+</TabItem>
 </Tabs>
 
 This guide is for running a permissonless Access node on Flow. If you are planning to run a different type of staked node then see [node bootstrap](../../node-operation/node-bootstrap.md).
