@@ -126,7 +126,8 @@ description: Essential tools for the Flow blockchain ecosystem
 ---
 
 import DocCardList from '@theme/DocCardList';
-import { useDocsSidebar, isSamePath } from '@docusaurus/theme-common/internal';
+import { isSamePath } from '@docusaurus/theme-common/internal';
+import { useDocsSidebar } from '@docusaurus/plugin-content-docs/client';
 import { useLocation } from '@docusaurus/router';
 
 <DocCardList items={useDocsSidebar().items.filter(item => !isSamePath(item.href, useLocation().pathname))}/>
@@ -164,7 +165,8 @@ On the top level index category pages you have to use `useDocsSidebar` react hoo
 
 ```markdown
 import DocCardList from '@theme/DocCardList';
-import { useDocsSidebar, isSamePath } from '@docusaurus/theme-common/internal';
+import { isSamePath } from '@docusaurus/theme-common/internal';
+import { useDocsSidebar } from '@docusaurus/plugin-content-docs/client';
 import { useLocation } from '@docusaurus/router';
 
 <DocCardList items={useDocsSidebar().items.filter(item => !isSamePath(item.href, useLocation().pathname))}/>

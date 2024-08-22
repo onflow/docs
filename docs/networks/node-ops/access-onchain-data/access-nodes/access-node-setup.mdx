@@ -4,6 +4,9 @@ sidebar_label: Access Node Setup
 sidebar_position: 2
 ---
 
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
 This guide is for running a permissonless Access node on Flow. If you are planning to run a different type of staked node then see [node bootstrap](../../node-operation/node-bootstrap.md).
 
 Permissionless Access nodes allow any operator to run a Flow Access node.
@@ -35,15 +38,16 @@ Confirmation of a new node's inclusion in epoch N+1 is included in the [`EpochSe
 
 ## Limitations
 
-There are three open slots for access nodes every epoch.
+There are five open slots for access nodes every epoch.
+You can view the exact epoch phase transition time [here](https://app.metrika.co/flow/dashboard/network-overview?tr=1d) under `Epoch Phase`.
 
 To summarize,
 
-|  **Date**  |  **Time** | **Epoch** |     **Epoch Phase**    |                                                     |
-|:----------:|:---------:|:---------:|:----------------------:|:---------------------------------------------------:|
-| 02/08/2023 | 20:00 UTC | 63         | Staking auction starts | Three new access node slots are opened. Anyone can register their access nodes                             |
-| 02/15/2023 | 08:00 UTC | 63         | Staking auction ends   | Three of the nodes registered during this epoch are randomly selected to be a part of the network in the next epoch. No more nodes can register until the next epoch starts.   |
-| 02/15/2023 | 20:00 UTC | 64         | Epoch n+1 starts       | The newly selected nodes can now participate in the network. Three new slots are opened. |
+| **Epoch**  |     **Epoch Phase**    |                                                     |
+|:----------:|:----------------------:|:---------------------------------------------------:|
+|     N      | Staking auction starts | Three new access node slots are opened. Anyone can register their access nodes                             |
+|     N      | Staking auction ends   | Three of the nodes registered during this epoch are randomly selected to be a part of the network in the next epoch. No more nodes can register until the next epoch starts.   |
+|    N+1     | Epoch N+1 starts       | The newly selected nodes can now participate in the network. Three new slots are opened. |
 
 ## How To Run a Permissionless Access Node?
 
@@ -73,8 +77,8 @@ tar -xvf boot-tools.tar
 ```
 
 ```shell CheckSHA256
-sha256sum ./boot-tools/bootstrapcmd
-a06e3e9b2443c6755214150e9e101b70dd48ae30ffcfcbbcc471ba430cb104bf  ./boot-tools/bootstrapcmd
+sha256sum ./boot-tools/bootstrap
+a06e3e9b2443c6755214150e9e101b70dd48ae30ffcfcbbcc471ba430cb104bf  ./boot-tools/bootstrap
 ```
 
 > If you have downloaded the bootstrapping kit previously, ensure the SHA256 hash for it still matches. If not, re-download to ensure you are using the most up-to-date version.
@@ -125,7 +129,7 @@ _Use a fully qualified domain name for the network address. Please also include 
 
 :::warning
 
-_Do not include in `http://` in the network address._
+_Do not include the prefix `http://` in the network address._
 
 :::
 
@@ -259,29 +263,60 @@ First you'll need to provision a machine or virtual machine to run your node sof
 
 The access node can be run as a Docker container with the following command.
 
-Be sure to set `$VERSION` below to the version tag (eg. `v1.2.3`) corresponding to the current network version (see [here](https://github.com/onflow/flow-go/releases) for version releases). Set `$NODEID` to your node's ID (see [Generate Your Node Identity](#generate-your-node-identity) section above).
+Be sure to set `$VERSION` below to the version tag (e.g. `v1.2.3`) corresponding to the latest **released** version [here](https://github.com/onflow/flow-go/releases) for version releases). Set `$NODEID` to your node's ID (see [Generate Your Node Identity](#generate-your-node-identity) section above).
+
+<Tabs>
+<TabItem value="mainnet" label="Mainnet">
 
 ```shell
 docker run --rm \
-  -v $PWD/bootstrap:/bootstrap:ro  \
-  -v $PWD/data:/data:rw \
-  --name flow-go \
-  --network host \
-  gcr.io/flow-container-registry/access:$VERSION \
-  --nodeid=$NODEID \
-  --bootstrapdir=/bootstrap \
-  --datadir=/data/protocol \
-  --secretsdir=/data/secrets  \
-  --rpc-addr=0.0.0.0:9000 \
-  --http-addr=0.0.0.0:8000 \
-  --rest-addr=0.0.0.0:80 \
-  --rpc-metrics-enabled=true \
-  --bind 0.0.0.0:3569 \
-  --dynamic-startup-access-address=secure.mainnet.nodes.onflow.org:9001 \
-  --dynamic-startup-access-publickey=28a0d9edd0de3f15866dfe4aea1560c4504fe313fc6ca3f63a63e4f98d0e295144692a58ebe7f7894349198613f65b2d960abf99ec2625e247b1c78ba5bf2eae \
-  --dynamic-startup-epoch-phase=EpochPhaseStaking \
-  --loglevel=error
+-v $PWD/bootstrap:/bootstrap:ro  \
+-v $PWD/data:/data:rw \
+--name flow-go \
+--network host \
+gcr.io/flow-container-registry/access:$VERSION \
+--nodeid=$NODEID \
+--bootstrapdir=/bootstrap \
+--datadir=/data/protocol \
+--secretsdir=/data/secrets  \
+--rpc-addr=0.0.0.0:9000 \
+--http-addr=0.0.0.0:8000 \
+--rest-addr=0.0.0.0:80 \
+--rpc-metrics-enabled=true \
+--bind 0.0.0.0:3569 \
+--dynamic-startup-access-address=secure.mainnet.nodes.onflow.org:9001 \
+--dynamic-startup-access-publickey=28a0d9edd0de3f15866dfe4aea1560c4504fe313fc6ca3f63a63e4f98d0e295144692a58ebe7f7894349198613f65b2d960abf99ec2625e247b1c78ba5bf2eae \
+--dynamic-startup-epoch-phase=EpochPhaseStaking \
+--loglevel=error
 ```
+
+</TabItem>
+<TabItem value="testnet" label="Testnet">
+
+```shell
+docker run --rm \
+-v $PWD/bootstrap:/bootstrap:ro  \
+-v $PWD/data:/data:rw \
+--name flow-go \
+--network host \
+gcr.io/flow-container-registry/access:$VERSION \
+--nodeid=$NODEID \
+--bootstrapdir=/bootstrap \
+--datadir=/data/protocol \
+--secretsdir=/data/secrets  \
+--rpc-addr=0.0.0.0:9000 \
+--http-addr=0.0.0.0:8000 \
+--rest-addr=0.0.0.0:80 \
+--rpc-metrics-enabled=true \
+--bind 0.0.0.0:3569 \
+--dynamic-startup-access-address=secure.testnet.nodes.onflow.org:9001 \
+--dynamic-startup-access-publickey=ba69f7d2e82b9edf25b103c195cd371cf0cc047ef8884a9bbe331e62982d46daeebf836f7445a2ac16741013b192959d8ad26998aff12f2adc67a99e1eb2988d \
+--dynamic-startup-epoch-phase=EpochPhaseStaking \
+--loglevel=error
+```
+
+</TabItem>
+</Tabs>
 
 For example, if your Node ID is `e737ec6efbd26ef43bf676911cdc5a11ba15fc6562d05413e6589fccdd6c06d5` and the software version is `v1.2.3`, the Docker command would be the following:
 ```shell Example
@@ -305,6 +340,63 @@ docker run --rm \
   --dynamic-startup-epoch-phase=EpochPhaseStaking \
   --loglevel=error
 ```
+
+> If you would like your node to sync from the start of the last network upgrade, then please see the instructions [here](https://developers.flow.com/networks/node-ops/node-operation/spork)
+
+Alternatively, you can build a binary for the access node to run it without using Docker.
+To build the access node binary, see the instructions [here](https://github.com/onflow/flow-go?tab=readme-ov-file#building-a-binary-for-the-access-node).
+Please make sure to git checkout the latest release tag before building the binary.
+
+<Tabs>
+<TabItem value="mainnet" label="Mainnet">
+
+```shell
+$PWD/flow-go/flow_access_node \
+--nodeid=e1a8b231156ab6f2a5c6f862c933baf5e5c2e7cf019b509c7c91f4ddb0a13398 \
+--bootstrapdir=$PWD/bootstrap \
+--datadir=$PWD/data/protocol \
+--secretsdir=$PWD/data/secrets \
+--execution-data-dir=$PWD/data/execution_data \
+--rpc-addr=0.0.0.0:9000 \
+--secure-rpc-addr=0.0.0.0:9001 \
+--http-addr=0.0.0.0:8000 \
+--rest-addr=0.0.0.0:8070 \
+--admin-addr=localhost:9002 \
+--bind=0.0.0.0:3569 \
+--dht-enabled=false \
+--grpc-compressor=gzip \
+--profiler-dir=$PWD/data/profiler \
+--dynamic-startup-access-address=secure.mainnet.nodes.onflow.org:9001 \
+--dynamic-startup-access-publickey=28a0d9edd0de3f15866dfe4aea1560c4504fe313fc6ca3f63a63e4f98d0e295144692a58ebe7f7894349198613f65b2d960abf99ec2625e247b1c78ba5bf2eae \
+--dynamic-startup-epoch-phase=EpochPhaseStaking
+```
+
+</TabItem>
+<TabItem value="testnet" label="Testnet">
+
+```shell
+$PWD/flow-go/flow_access_node \
+--nodeid=e1a8b231156ab6f2a5c6f862c933baf5e5c2e7cf019b509c7c91f4ddb0a13398 \
+--bootstrapdir=$PWD/bootstrap \
+--datadir=$PWD/data/protocol \
+--secretsdir=$PWD/data/secrets \
+--execution-data-dir=$PWD/data/execution_data \
+--rpc-addr=0.0.0.0:9000 \
+--secure-rpc-addr=0.0.0.0:9001 \
+--http-addr=0.0.0.0:8000 \
+--rest-addr=0.0.0.0:8070 \
+--admin-addr=localhost:9002 \
+--bind=0.0.0.0:3569 \
+--dht-enabled=false \
+--grpc-compressor=gzip \
+--profiler-dir=$PWD/data/profiler \
+--dynamic-startup-access-address=secure.testnet.nodes.onflow.org:9001 \
+--dynamic-startup-access-publickey=ba69f7d2e82b9edf25b103c195cd371cf0cc047ef8884a9bbe331e62982d46daeebf836f7445a2ac16741013b192959d8ad26998aff12f2adc67a99e1eb2988d \
+--dynamic-startup-epoch-phase=EpochPhaseStaking
+```
+
+</TabItem>
+</Tabs>
 
 For a more mature setup, it is recommended that you run the container using systemd as described [here](../../node-operation/node-setup.md#systemd)
 
