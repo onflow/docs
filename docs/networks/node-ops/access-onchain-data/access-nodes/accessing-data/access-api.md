@@ -235,6 +235,32 @@ message CollectionResponse {
 
 ---
 
+### GetFullCollectionByID
+
+`GetFullCollectionByID` gets a batch of [transactions](#transaction) by ID.
+
+```proto
+rpc GetFullCollectionByID(GetFullCollectionByIDRequest) returns (FullCollectionResponse);
+```
+
+#### Request
+
+```proto
+message GetFullCollectionByIDRequest {
+  bytes id
+}
+```
+
+#### Response
+
+```proto
+message FullCollectionResponse {
+  repeated entities.Transaction transactions = 1;
+}
+```
+
+---
+
 ## Transactions
 
 The following methods can be used to submit [transactions](#transaction) and fetch their results.
@@ -301,6 +327,34 @@ message TransactionResponse {
 }
 ```
 
+### GetTransactionsByBlockID
+
+`GetTransactionsByBlockID` gets all the [transactions](#transaction) for a specified block.
+
+If the transactions are not found in the access node cache, the request is forwarded to a collection node.
+
+_Currently, only transactions within the current epoch can be queried._
+
+```proto
+rpc GetTransactionsByBlockID(GetTransactionsByBlockIDRequest) returns (TransactionsResponse);
+```
+
+#### Request
+
+```proto
+message GetTransactionsByBlockIDRequest {
+  bytes block_id = 1;
+}
+```
+
+#### Response
+
+```proto
+message TransactionsResponse {
+  repeated entities.Transaction transactions = 1;
+}
+```
+
 ### GetTransactionResult
 
 `GetTransactionResult` gets the execution result of a transaction.
@@ -325,6 +379,109 @@ message TransactionResultResponse {
   uint32 status_code
   string error_message
   repeated flow.Event events
+}
+```
+### GetTransactionResultByIndex
+
+`GetTransactionResultByIndex` gets the execution result of a transaction at a specified block and index.
+
+```proto
+rpc GetTransactionResultByIndex(GetTransactionByIndexRequest) returns (TransactionResultResponse);
+```
+
+#### Request
+
+```proto
+message GetTransactionByIndexRequest {
+  bytes block_id = 1;
+  uint32 index = 2;
+}
+```
+
+#### Response
+
+```proto
+message TransactionResultResponse {
+  flow.TransactionStatus status
+  uint32 status_code
+  string error_message
+  repeated flow.Event events
+}
+```
+
+### GetTransactionResultsByBlockID
+
+`GetTransactionResultsByBlockID` gets all the transaction results for a specified block.
+
+```proto
+rpc GetTransactionResultsByBlockID(GetTransactionsByBlockIDRequest) returns (TransactionResultsResponse);
+```
+
+#### Request
+
+```proto
+message GetTransactionsByBlockIDRequest {
+  bytes block_id = 1;
+  entities.EventEncodingVersion event_encoding_version = 2;
+}
+```
+
+#### Response
+
+```proto
+message TransactionResultResponse {
+ repeated TransactionResultResponse transaction_results = 1;
+}
+```
+
+### GetSystemTransaction
+
+`GetSystemTransaction` gets a system transaction.
+
+```proto
+rpc GetSystemTransaction(GetSystemTransactionRequest) returns (TransactionResponse);
+```
+
+#### Request
+
+```proto
+message GetSystemTransactionRequest {
+  bytes block_id = 1;
+}
+```
+
+#### Response
+
+```proto
+message TransactionResponse {
+ entities.Transaction transaction = 1;
+}
+```
+
+### GetSystemTransactionResult
+
+`GetSystemTransactionResult` gets a system transaction result for a specified block.
+
+```proto
+rpc GetSystemTransactionResult(GetSystemTransactionResultRequest) returns (TransactionResultResponse);
+```
+
+#### Request
+
+```proto
+message GetSystemTransactionResultRequest {
+  bytes block_id = 1;
+}
+```
+
+#### Response
+
+```proto
+message TransactionResultResponse {
+  entities.TransactionStatus status = 1;
+  uint32 status_code = 2;
+  string error_message = 3;
+  repeated entities.Event events = 4;
 }
 ```
 
@@ -408,6 +565,161 @@ message GetAccountAtBlockHeightRequest {
 ```proto
 message AccountResponse {
   Account account
+}
+```
+
+### GetAccountBalanceAtLatestBlock
+
+`GetAccountAtBlockHeight` gets an account balance by address from the latest sealed execution state.
+
+The access node queries an execution node for the account details, which are stored as part of the execution state.
+
+```proto
+rpc GetAccountBalanceAtLatestBlock(GetAccountBalanceAtLatestBlockRequest) returns (AccountBalanceResponse);
+```
+
+#### Request
+
+```proto
+message GetAccountBalanceAtLatestBlockRequest {
+  bytes address = 1
+}
+```
+
+#### Response
+
+```proto
+message AccountBalanceResponse {
+  uint64 balance = 1;
+}
+```
+
+### GetAccountBalanceAtBlockHeight
+
+`GetAccountAtBlockHeight` gets an account balance by address at the given block height.
+
+```proto
+rpc GetAccountBalanceAtBlockHeight(GetAccountBalanceAtBlockHeightRequest) returns (AccountBalanceResponse);
+```
+
+#### Request
+
+```proto
+message GetAccountBalanceAtBlockHeightRequest {
+  bytes address = 1;
+  uint64 block_height = 2;
+}
+```
+
+#### Response
+
+```proto
+message AccountBalanceResponse {
+  uint64 balance = 1;
+}
+```
+
+### GetAccountKeyAtLatestBlock
+
+`GetAccountKeyAtLatestBlock` gets an account public key by address and key index from the latest sealed execution state.
+
+```proto
+rpc GetAccountKeyAtLatestBlock(GetAccountKeyAtLatestBlockRequest) returns (AccountKeyResponse);
+```
+
+#### Request
+
+```proto
+message GetAccountKeyAtLatestBlockRequest {
+  bytes address = 1;
+  // index of key to return
+  uint32 index = 2;
+}
+```
+
+#### Response
+
+```proto
+message AccountKeyResponse {
+  entities.AccountKey account_key = 1;
+}
+```
+
+### GetAccountKeyAtBlockHeight
+
+`GetAccountKeyAtBlockHeight` gets an account public key by address and key index at the given block height.
+
+```proto
+rpc GetAccountKeyAtBlockHeight(GetAccountKeyAtBlockHeightRequest) returns (AccountKeyResponse);
+```
+
+#### Request
+
+```proto
+message GetAccountKeyAtBlockHeightRequest {
+  bytes address = 1;
+  uint64 block_height = 2;
+  // index of key to return
+  uint32 index = 3;
+}
+```
+
+#### Response
+
+```proto
+message AccountKeyResponse {
+  entities.AccountKey account_key = 1;
+}
+```
+
+### GetAccountKeysAtLatestBlock
+
+`GetAccountKeysAtLatestBlock` gets an account public keys by address from the latest sealed execution state.
+
+```proto
+rpc GetAccountKeysAtLatestBlock(GetAccountKeysAtLatestBlockRequest) returns (AccountKeysResponse);
+```
+
+#### Request
+
+```proto
+message GetAccountKeysAtLatestBlockRequest {
+  bytes address = 1;
+  // index of key to return
+  uint32 index = 2;
+}
+```
+
+#### Response
+
+```proto
+message AccountKeysResponse {
+  repeated entities.AccountKey account_keys = 1;
+}
+```
+
+### GetAccountKeysAtBlockHeight
+
+`GetAccountKeysAtBlockHeight` gets an account public keys by address at the given block height.
+
+```proto
+rpc GetAccountKeysAtBlockHeight(GetAccountKeysAtBlockHeightRequest) returns (AccountKeysResponse);
+```
+
+#### Request
+
+```proto
+message GetAccountKeysAtBlockHeightRequest {
+  bytes address = 1;
+  uint64 block_height = 2;
+}
+```
+
+#### Response
+
+```proto
+message AccountKeysResponse {
+  repeated entities.AccountKey account_keys = 1;
 }
 ```
 
@@ -620,13 +932,37 @@ message GetNetworkParametersResponse {
 
 ---
 
+### GetNodeVersionInfo
+
+`GetNodeVersionInfo` node version information, such as semver, commit, sporkID and protocol version.
+
+```proto
+rpc GetNodeVersionInfo (GetNodeVersionInfoRequest) returns (GetNodeVersionInfoResponse);
+```
+
+#### Request
+
+```proto
+message GetNodeVersionInfoRequest {}
+```
+
+#### Response
+
+```proto
+message GetNodeVersionInfoResponse {
+  entities.NodeVersionInfo info = 1;
+}
+```
+
+---
+
 ## Protocol state snapshot
 
 The following method can be used to query the latest protocol state [snapshot](https://github.com/onflow/flow-go/blob/master/state/protocol/snapshot.go).
 
-### GetLatestProtocolStateSnapshotRequest
+### GetLatestProtocolStateSnapshot
 
-`GetLatestProtocolStateSnapshotRequest` retrieves the latest Protocol state snapshot serialized as a byte array.
+`GetLatestProtocolStateSnapshot` retrieves the latest Protocol state snapshot serialized as a byte array.
 It is used by Flow nodes joining the network to bootstrap a space-efficient local state.
 
 ```proto
@@ -1028,7 +1364,7 @@ with no events) are returned periodically to allow clients to track which blocks
 which block to start from when reconnecting.
 
 ```proto
- rpc SubscribeEvents(SubscribeEventsRequest) returns (stream SubscribeEventsResponse)
+rpc SubscribeEvents(SubscribeEventsRequest) returns (stream SubscribeEventsResponse)
 ```
 
 #### Request
@@ -1067,7 +1403,7 @@ message SubscribeEventsResponse {
 `SubscribeExecutionData` streams execution data for all blocks starting at the requested start block, up until the latest available block. Once the latest is reached, the stream will remain open and responses are sent for each new execution data as it becomes available.
 
 ```proto
-  rpc SubscribeExecutionData(SubscribeExecutionDataRequest) returns (stream SubscribeExecutionDataResponse)
+rpc SubscribeExecutionData(SubscribeExecutionDataRequest) returns (stream SubscribeExecutionDataResponse)
 ```
 
 #### Request
