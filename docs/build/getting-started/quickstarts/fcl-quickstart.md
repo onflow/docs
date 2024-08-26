@@ -64,7 +64,7 @@ fcl.config({
 
 ## Querying the Chain
 
-On Flow, you can interact with a contract by reading from the chain with a script or changing its state with a transaction. Reading is free and is done with FCL by passing a Cadence (the smart contract language of Flow) script to `fcl.query`. For our example we are going to read from a `HelloWorld` contract deployed to the account `0x9dca641e9a4b691b` on `testnet` (you can [view the contract here](https://f.dnz.dev/0x9dca641e9a4b691b/HelloWorld) to see what it looks like).
+On Flow, you can interact with a contract by reading from the chain with a script or changing its state with a transaction. Reading is free and is done with FCL by passing a Cadence (the smart contract language of Flow) script to `fcl.query`. For our example we are going to read from a `HelloWorld` contract deployed to the account `0xa1296b1e2e90ca5b` on `testnet` (you can [view the contract here](https://f.dnz.dev/0xa1296b1e2e90ca5b/HelloWorld) to see what it looks like).
 
 In the same `src/App.js` file, let's create app state to store our greeting and query the chain when the component renders in order to fetch the greeting state from the `HelloWorld` contract.
 
@@ -75,7 +75,7 @@ useEffect(() => {
   const queryChain = async () => {
     const res = await fcl.query({
       cadence: `
-        import HelloWorld from 0x9dca641e9a4b691b
+        import HelloWorld from 0xa1296b1e2e90ca5b
 
         access(all) fun main(): String {
           return HelloWorld.greeting
@@ -109,7 +109,7 @@ function App() {
         const queryChain = async () => {
             const res = await fcl.query({
                 cadence: `
-                    import HelloWorld from 0x9dca641e9a4b691b
+                    import HelloWorld from 0xa1296b1e2e90ca5b
 
                     access(all) fun main(): String {
                         return HelloWorld.greeting
