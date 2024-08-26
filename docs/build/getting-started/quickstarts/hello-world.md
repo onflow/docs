@@ -16,7 +16,7 @@ Smart contracts on Flow are permanent code that live on the blockchain, allowing
 The `HelloWorld` contract exposes a public variable named `greeting` that is accessible to everything outside the contract. We can retrieve its value using a simple script written in the Cadence programming language.
 
 ```
-import HelloWorld from 0x9dca641e9a4b691b
+import HelloWorld from 0xa1296b1e2e90ca5b
 
 access(all) fun main(): String {
   return HelloWorld.greeting
