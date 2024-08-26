@@ -10,14 +10,6 @@ When building applications that leverage Flow data, developers have multiple Dat
 
 ## EVM & Cadence
 
-### The Graph
-
-[The Graph](https://thegraph.com/) is an indexing protocol designed to organize and make blockchain data easily accessible through GraphQL. By leveraging The Graph, Flow applications can query open APIs, known as subgraphs, to efficiently retrieve data that has been indexed on the network. This allows developers to build serverless applications that operate entirely on public infrastructure.
-
-**Getting Started with The Graph**
-
-To begin using The Graph, refer to the [official documentation](https://thegraph.com/docs/en/). For a hands-on introduction, follow [this quickstart guide](https://thegraph.com/docs/en/cookbook/quick-start/) to learn how to create, deploy, and query a subgraph.
-
 ### **SimpleHash**
 
 [SimpleHash](https://simplehash.com/) is a comprehensive multi-chain NFT data platform that provides developers with easy access to token data across 60+ blockchain networks. It offers a robust API for querying NFT metadata, media, collection details, sales, floor prices, listings, and bids, streamlining the process of building NFT-powered applications.
