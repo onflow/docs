@@ -983,6 +983,56 @@ message ProtocolStateSnapshotResponse {
 }
 ```
 
+### GetProtocolStateSnapshotByBlockID
+
+`GetProtocolStateSnapshotByBlockID` retrieves the latest sealed protocol state snapshot by block ID. 
+Used by Flow nodes joining the network to bootstrap a space-efficient local state.
+
+```proto
+rpc GetProtocolStateSnapshotByBlockID(GetProtocolStateSnapshotByBlockIDRequest) returns (ProtocolStateSnapshotResponse);
+```
+
+#### Request
+
+```proto
+message GetProtocolStateSnapshotByBlockIDRequest {
+    bytes block_id = 1;
+}
+```
+
+#### Response
+
+```proto
+message ProtocolStateSnapshotResponse {
+  bytes serializedSnapshot = 1;
+}
+```
+
+### GetProtocolStateSnapshotByHeight
+
+`GetProtocolStateSnapshotByHeight` retrieves the latest sealed protocol state snapshot by block height. 
+Used by Flow nodes joining the network to bootstrap a space-efficient local state.
+
+```proto
+rpc GetProtocolStateSnapshotByHeight(GetProtocolStateSnapshotByHeightRequest) returns (ProtocolStateSnapshotResponse);
+```
+
+#### Request
+
+```proto
+message GetProtocolStateSnapshotByHeightRequest {
+    uint64 block_height = 1;
+}
+```
+
+#### Response
+
+```proto
+message ProtocolStateSnapshotResponse {
+  bytes serializedSnapshot = 1;
+}
+```
+
 ## Execution results
 
 The following method can be used to query the for [execution results](https://github.com/onflow/flow-go/blob/master/model/flow/execution_result.go) for a given block.
@@ -1012,6 +1062,33 @@ message ExecutionResultForBlockIDResponse {
   flow.ExecutionResult execution_result = 1;
 }
 ```
+
+### GetExecutionResultByID
+
+`GetExecutionResultByID` returns Execution Result by its ID. It is different from Transaction Results,
+and contain data about chunks/collection level execution results rather than particular transactions.
+Particularly, it contains `EventsCollection` hash for every chunk which can be used to verify the events for a block.
+
+```proto
+rpc GetExecutionResultByID(GetExecutionResultByIDRequest) returns (ExecutionResultByIDResponse);
+```
+
+#### Request
+
+```proto
+message GetExecutionResultByIDRequest {
+  bytes id = 1;
+}
+```
+
+#### Response
+
+```proto
+message ExecutionResultByIDResponse {
+  flow.ExecutionResult execution_result = 1;
+}
+```
+
 
 ## Entities
 
