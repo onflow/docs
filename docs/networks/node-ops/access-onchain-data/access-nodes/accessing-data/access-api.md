@@ -59,7 +59,7 @@ rpc GetLatestBlockHeader (GetLatestBlockHeaderRequest) returns (BlockHeaderRespo
 
 ```proto
 message GetLatestBlockHeaderRequest {
-  bool is_sealed
+  bool is_sealed = 1;
 }
 ```
 
@@ -67,8 +67,9 @@ message GetLatestBlockHeaderRequest {
 
 ```proto
 message BlockHeaderResponse {
-  flow.BlockHeader block
-  flow.BlockStatus block_status
+  entities.BlockHeader block = 1;
+  entities.BlockStatus block_status = 2;
+  entities.Metadata metadata = 3;
 }
 ```
 
@@ -84,7 +85,7 @@ rpc GetBlockHeaderByID (GetBlockHeaderByIDRequest) returns (BlockHeaderResponse)
 
 ```proto
 message GetBlockHeaderByIDRequest {
-  bytes id
+  bytes id = 1;
 }
 ```
 
@@ -92,8 +93,9 @@ message GetBlockHeaderByIDRequest {
 
 ```proto
 message BlockHeaderResponse {
-  flow.BlockHeader block
-  flow.BlockStatus block_status
+  entities.BlockHeader block = 1;
+  entities.BlockStatus block_status = 2;
+  entities.Metadata metadata = 3;
 }
 ```
 
@@ -109,7 +111,7 @@ rpc GetBlockHeaderByHeight (GetBlockHeaderByHeightRequest) returns (BlockHeaderR
 
 ```proto
 message GetBlockHeaderByHeightRequest {
-  uint64 height
+  uint64 height = 1;
 }
 ```
 
@@ -117,8 +119,9 @@ message GetBlockHeaderByHeightRequest {
 
 ```proto
 message BlockHeaderResponse {
-  flow.BlockHeader block
-  flow.BlockStatus block_status
+  entities.BlockHeader block = 1;
+  entities.BlockStatus block_status = 2;
+  entities.Metadata metadata = 3;
 }
 ```
 
@@ -140,7 +143,8 @@ rpc GetLatestBlock (GetLatestBlockRequest) returns (BlockResponse)
 
 ```proto
 message GetLatestBlockRequest {
-  bool is_sealed
+    bool is_sealed = 1;
+  bool full_block_response = 2;
 }
 ```
 
@@ -148,8 +152,9 @@ message GetLatestBlockRequest {
 
 ```proto
 message BlockResponse {
-  flow.Block block
-  flow.BlockStatus block_status
+  entities.Block block = 1;
+  entities.BlockStatus block_status = 2;
+  entities.Metadata metadata = 3;
 }
 ```
 
@@ -165,7 +170,8 @@ rpc GetBlockByID (GetBlockByIDRequest) returns (BlockResponse)
 
 ```proto
 message GetBlockByIDRequest {
-  bytes id
+  bytes id = 1;
+  bool full_block_response = 2;
 }
 ```
 
@@ -173,8 +179,9 @@ message GetBlockByIDRequest {
 
 ```proto
 message BlockResponse {
-  flow.Block block
-  flow.BlockStatus block_status
+  entities.Block block = 1;
+  entities.BlockStatus block_status = 2;
+  entities.Metadata metadata = 3;
 }
 ```
 
@@ -190,7 +197,8 @@ rpc GetBlockByHeight (GetBlockByHeightRequest) returns (BlockResponse)
 
 ```proto
 message GetBlockByHeightRequest {
-  uint64 height
+  uint64 height = 1;
+  bool full_block_response = 2;
 }
 ```
 
@@ -198,8 +206,9 @@ message GetBlockByHeightRequest {
 
 ```proto
 message BlockResponse {
-  flow.Block block
-  flow.BlockStatus block_status
+  entities.Block block = 1;
+  entities.BlockStatus block_status = 2;
+  entities.Metadata metadata = 3;
 }
 ```
 
@@ -221,7 +230,7 @@ rpc GetCollectionByID (GetCollectionByIDRequest) returns (CollectionResponse)
 
 ```proto
 message GetCollectionByIDRequest {
-  bytes id
+  bytes id = 1;
 }
 ```
 
@@ -229,7 +238,8 @@ message GetCollectionByIDRequest {
 
 ```proto
 message CollectionResponse {
-  flow.Collection collection
+  entities.Collection collection = 1;
+  entities.Metadata metadata = 2;
 }
 ```
 
@@ -237,7 +247,7 @@ message CollectionResponse {
 
 ### GetFullCollectionByID
 
-`GetFullCollectionByID` gets a batch of [transactions](#transaction) by ID.
+`GetFullCollectionByID` gets a collection by ID, which contains a set of [transactions](#transaction).
 
 ```proto
 rpc GetFullCollectionByID(GetFullCollectionByIDRequest) returns (FullCollectionResponse);
@@ -247,7 +257,7 @@ rpc GetFullCollectionByID(GetFullCollectionByIDRequest) returns (FullCollectionR
 
 ```proto
 message GetFullCollectionByIDRequest {
-  bytes id
+  bytes id = 1;
 }
 ```
 
@@ -256,6 +266,7 @@ message GetFullCollectionByIDRequest {
 ```proto
 message FullCollectionResponse {
   repeated entities.Transaction transactions = 1;
+  entities.Metadata metadata = 2;
 }
 ```
 
@@ -281,7 +292,7 @@ rpc SendTransaction (SendTransactionRequest) returns (SendTransactionResponse)
 
 ```proto
 message SendTransactionRequest {
-  flow.Transaction transaction
+  entities.Transaction transaction = 1;
 }
 ```
 
@@ -291,7 +302,8 @@ message SendTransactionRequest {
 
 ```proto
 message SendTransactionResponse {
-  bytes id
+  bytes id = 1;
+  entities.Metadata metadata = 2;
 }
 ```
 
@@ -313,7 +325,10 @@ rpc GetTransaction (GetTransactionRequest) returns (TransactionResponse)
 
 ```proto
 message GetTransactionRequest {
-  bytes id
+  bytes id = 1;
+  bytes block_id = 2;
+  bytes collection_id = 3;
+  entities.EventEncodingVersion event_encoding_version = 4;
 }
 ```
 
@@ -323,17 +338,14 @@ message GetTransactionRequest {
 
 ```proto
 message TransactionResponse {
-  flow.Transaction transaction
+  entities.Transaction transaction = 1;
+  entities.Metadata metadata = 2;
 }
 ```
 
 ### GetTransactionsByBlockID
 
 `GetTransactionsByBlockID` gets all the [transactions](#transaction) for a specified block.
-
-If the transactions are not found in the access node cache, the request is forwarded to a collection node.
-
-_Currently, only transactions within the current epoch can be queried._
 
 ```proto
 rpc GetTransactionsByBlockID(GetTransactionsByBlockIDRequest) returns (TransactionsResponse);
@@ -344,6 +356,7 @@ rpc GetTransactionsByBlockID(GetTransactionsByBlockIDRequest) returns (Transacti
 ```proto
 message GetTransactionsByBlockIDRequest {
   bytes block_id = 1;
+  entities.EventEncodingVersion event_encoding_version = 2;
 }
 ```
 
@@ -352,6 +365,7 @@ message GetTransactionsByBlockIDRequest {
 ```proto
 message TransactionsResponse {
   repeated entities.Transaction transactions = 1;
+  entities.Metadata metadata = 2;
 }
 ```
 
@@ -367,7 +381,10 @@ rpc GetTransactionResult (GetTransactionRequest) returns (TransactionResultRespo
 
 ```proto
 message GetTransactionRequest {
-  bytes id
+  bytes id = 1;
+  bytes block_id = 2;
+  bytes collection_id = 3;
+  entities.EventEncodingVersion event_encoding_version = 4;
 }
 ```
 
@@ -375,10 +392,16 @@ message GetTransactionRequest {
 
 ```proto
 message TransactionResultResponse {
-  flow.TransactionStatus status
-  uint32 status_code
-  string error_message
-  repeated flow.Event events
+  entities.TransactionStatus status = 1;
+  uint32 status_code = 2;
+  string error_message = 3;
+  repeated entities.Event events = 4;
+  bytes block_id = 5;
+  bytes transaction_id = 6;
+  bytes collection_id = 7;
+  uint64 block_height = 8;
+  entities.Metadata metadata = 9;
+  uint64 computation_usage = 10;
 }
 ```
 ### GetTransactionResultByIndex
@@ -395,6 +418,7 @@ rpc GetTransactionResultByIndex(GetTransactionByIndexRequest) returns (Transacti
 message GetTransactionByIndexRequest {
   bytes block_id = 1;
   uint32 index = 2;
+  entities.EventEncodingVersion event_encoding_version = 3;
 }
 ```
 
@@ -402,10 +426,16 @@ message GetTransactionByIndexRequest {
 
 ```proto
 message TransactionResultResponse {
-  flow.TransactionStatus status
-  uint32 status_code
-  string error_message
-  repeated flow.Event events
+  entities.TransactionStatus status = 1;
+  uint32 status_code = 2;
+  string error_message = 3;
+  repeated entities.Event events = 4;
+  bytes block_id = 5;
+  bytes transaction_id = 6;
+  bytes collection_id = 7;
+  uint64 block_height = 8;
+  entities.Metadata metadata = 9;
+  uint64 computation_usage = 10;
 }
 ```
 
@@ -429,14 +459,15 @@ message GetTransactionsByBlockIDRequest {
 #### Response
 
 ```proto
-message TransactionResultResponse {
- repeated TransactionResultResponse transaction_results = 1;
+message TransactionResultsResponse {
+  repeated TransactionResultResponse transaction_results = 1;
+  entities.Metadata metadata = 2;
 }
 ```
 
 ### GetSystemTransaction
 
-`GetSystemTransaction` gets a system transaction.
+`GetSystemTransaction` gets the system transaction for a block.
 
 ```proto
 rpc GetSystemTransaction(GetSystemTransactionRequest) returns (TransactionResponse);
@@ -454,13 +485,14 @@ message GetSystemTransactionRequest {
 
 ```proto
 message TransactionResponse {
- entities.Transaction transaction = 1;
+  entities.Transaction transaction = 1;
+  entities.Metadata metadata = 2;
 }
 ```
 
 ### GetSystemTransactionResult
 
-`GetSystemTransactionResult` gets a system transaction result for a specified block.
+`GetSystemTransactionResult` gets the system transaction result for a block.
 
 ```proto
 rpc GetSystemTransactionResult(GetSystemTransactionResultRequest) returns (TransactionResultResponse);
@@ -471,6 +503,7 @@ rpc GetSystemTransactionResult(GetSystemTransactionResultRequest) returns (Trans
 ```proto
 message GetSystemTransactionResultRequest {
   bytes block_id = 1;
+  entities.EventEncodingVersion event_encoding_version = 2;
 }
 ```
 
@@ -482,6 +515,12 @@ message TransactionResultResponse {
   uint32 status_code = 2;
   string error_message = 3;
   repeated entities.Event events = 4;
+  bytes block_id = 5;
+  bytes transaction_id = 6;
+  bytes collection_id = 7;
+  uint64 block_height = 8;
+  entities.Metadata metadata = 9;
+  uint64 computation_usage = 10;
 }
 ```
 
@@ -503,7 +542,7 @@ rpc GetAccount(GetAccountRequest) returns (GetAccountResponse)
 
 ```proto
 message GetAccountRequest {
-  bytes address
+  bytes address = 1;
 }
 ```
 
@@ -511,7 +550,8 @@ message GetAccountRequest {
 
 ```proto
 message GetAccountResponse {
-  Account account
+  entities.Account account = 1;
+  entities.Metadata metadata = 2;
 }
 ```
 
@@ -529,7 +569,7 @@ rpc GetAccountAtLatestBlock(GetAccountAtLatestBlockRequest) returns (AccountResp
 
 ```proto
 message GetAccountAtLatestBlockRequest {
-  bytes address
+  bytes address = 1;
 }
 ```
 
@@ -537,7 +577,8 @@ message GetAccountAtLatestBlockRequest {
 
 ```proto
 message AccountResponse {
-  Account account
+  entities.Account account = 1;
+  entities.Metadata metadata = 2;
 }
 ```
 
@@ -555,8 +596,8 @@ rpc GetAccountAtBlockHeight(GetAccountAtBlockHeightRequest) returns (AccountResp
 
 ```proto
 message GetAccountAtBlockHeightRequest {
-  bytes address
-  uint64 block_height
+  bytes address = 1;
+  uint64 block_height = 2;
 }
 ```
 
@@ -564,15 +605,14 @@ message GetAccountAtBlockHeightRequest {
 
 ```proto
 message AccountResponse {
-  Account account
+  entities.Account account = 1;
+  entities.Metadata metadata = 2;
 }
 ```
 
 ### GetAccountBalanceAtLatestBlock
 
-`GetAccountAtBlockHeight` gets an account balance by address from the latest sealed execution state.
-
-The access node queries an execution node for the account details, which are stored as part of the execution state.
+`GetAccountBalanceAtLatestBlock` gets an account's balance by address from the latest sealed block.
 
 ```proto
 rpc GetAccountBalanceAtLatestBlock(GetAccountBalanceAtLatestBlockRequest) returns (AccountBalanceResponse);
@@ -591,12 +631,13 @@ message GetAccountBalanceAtLatestBlockRequest {
 ```proto
 message AccountBalanceResponse {
   uint64 balance = 1;
+  entities.Metadata metadata = 2;
 }
 ```
 
 ### GetAccountBalanceAtBlockHeight
 
-`GetAccountAtBlockHeight` gets an account balance by address at the given block height.
+`GetAccountBalanceAtBlockHeight` gets an account's balance by address at the given block height.
 
 ```proto
 rpc GetAccountBalanceAtBlockHeight(GetAccountBalanceAtBlockHeightRequest) returns (AccountBalanceResponse);
@@ -616,12 +657,13 @@ message GetAccountBalanceAtBlockHeightRequest {
 ```proto
 message AccountBalanceResponse {
   uint64 balance = 1;
+  entities.Metadata metadata = 2;
 }
 ```
 
 ### GetAccountKeyAtLatestBlock
 
-`GetAccountKeyAtLatestBlock` gets an account public key by address and key index from the latest sealed execution state.
+`GetAccountKeyAtLatestBlock` gets an account's public key by address and key index from the latest sealed block.
 
 ```proto
 rpc GetAccountKeyAtLatestBlock(GetAccountKeyAtLatestBlockRequest) returns (AccountKeyResponse);
@@ -631,6 +673,7 @@ rpc GetAccountKeyAtLatestBlock(GetAccountKeyAtLatestBlockRequest) returns (Accou
 
 ```proto
 message GetAccountKeyAtLatestBlockRequest {
+  // address of account
   bytes address = 1;
   // index of key to return
   uint32 index = 2;
@@ -642,12 +685,13 @@ message GetAccountKeyAtLatestBlockRequest {
 ```proto
 message AccountKeyResponse {
   entities.AccountKey account_key = 1;
+  entities.Metadata metadata = 2;
 }
 ```
 
 ### GetAccountKeyAtBlockHeight
 
-`GetAccountKeyAtBlockHeight` gets an account public key by address and key index at the given block height.
+`GetAccountKeyAtBlockHeight` gets an account's public key by address and key index at the given block height.
 
 ```proto
 rpc GetAccountKeyAtBlockHeight(GetAccountKeyAtBlockHeightRequest) returns (AccountKeyResponse);
@@ -657,7 +701,9 @@ rpc GetAccountKeyAtBlockHeight(GetAccountKeyAtBlockHeightRequest) returns (Accou
 
 ```proto
 message GetAccountKeyAtBlockHeightRequest {
+  // address of account
   bytes address = 1;
+  // height of the block
   uint64 block_height = 2;
   // index of key to return
   uint32 index = 3;
@@ -669,12 +715,13 @@ message GetAccountKeyAtBlockHeightRequest {
 ```proto
 message AccountKeyResponse {
   entities.AccountKey account_key = 1;
+  entities.Metadata metadata = 2;
 }
 ```
 
 ### GetAccountKeysAtLatestBlock
 
-`GetAccountKeysAtLatestBlock` gets an account public keys by address from the latest sealed execution state.
+`GetAccountKeysAtLatestBlock` gets an account's public keys by address from the latest sealed block.
 
 ```proto
 rpc GetAccountKeysAtLatestBlock(GetAccountKeysAtLatestBlockRequest) returns (AccountKeysResponse);
@@ -684,9 +731,8 @@ rpc GetAccountKeysAtLatestBlock(GetAccountKeysAtLatestBlockRequest) returns (Acc
 
 ```proto
 message GetAccountKeysAtLatestBlockRequest {
+  // address of account
   bytes address = 1;
-  // index of key to return
-  uint32 index = 2;
 }
 ```
 
@@ -695,12 +741,13 @@ message GetAccountKeysAtLatestBlockRequest {
 ```proto
 message AccountKeysResponse {
   repeated entities.AccountKey account_keys = 1;
+  entities.Metadata metadata = 2;
 }
 ```
 
 ### GetAccountKeysAtBlockHeight
 
-`GetAccountKeysAtBlockHeight` gets an account public keys by address at the given block height.
+`GetAccountKeysAtBlockHeight` gets an account's public keys by address at the given block height.
 
 ```proto
 rpc GetAccountKeysAtBlockHeight(GetAccountKeysAtBlockHeightRequest) returns (AccountKeysResponse);
@@ -710,6 +757,7 @@ rpc GetAccountKeysAtBlockHeight(GetAccountKeysAtBlockHeightRequest) returns (Acc
 
 ```proto
 message GetAccountKeysAtBlockHeightRequest {
+  // address of account
   bytes address = 1;
   uint64 block_height = 2;
 }
@@ -720,6 +768,7 @@ message GetAccountKeysAtBlockHeightRequest {
 ```proto
 message AccountKeysResponse {
   repeated entities.AccountKey account_keys = 1;
+  entities.Metadata metadata = 2;
 }
 ```
 
@@ -748,7 +797,8 @@ value = ExecuteScriptAtBlockID(header.ID, script)
 
 ```proto
 message ExecuteScriptAtLatestBlockRequest {
-  bytes script
+  bytes script = 1;
+  repeated bytes arguments = 2;
 }
 ```
 
@@ -756,7 +806,9 @@ message ExecuteScriptAtLatestBlockRequest {
 
 ```proto
 message ExecuteScriptResponse {
-  bytes value
+  bytes value = 1;
+  entities.Metadata metadata = 2;
+  uint64 computation_usage = 3;
 }
 ```
 
@@ -774,8 +826,9 @@ rpc ExecuteScriptAtBlockID (ExecuteScriptAtBlockIDRequest) returns (ExecuteScrip
 
 ```proto
 message ExecuteScriptAtBlockIDRequest {
-  bytes block_id
-  bytes script
+  bytes block_id = 1;
+  bytes script = 2;
+  repeated bytes arguments = 3;
 }
 ```
 
@@ -783,7 +836,9 @@ message ExecuteScriptAtBlockIDRequest {
 
 ```proto
 message ExecuteScriptResponse {
-  bytes value
+  bytes value = 1;
+  entities.Metadata metadata = 2;
+  uint64 computation_usage = 3;
 }
 ```
 
@@ -801,8 +856,9 @@ rpc ExecuteScriptAtBlockHeight (ExecuteScriptAtBlockHeightRequest) returns (Exec
 
 ```proto
 message ExecuteScriptAtBlockHeightRequest {
-  uint64 block_height
-  bytes script
+  uint64 block_height = 1;
+  bytes script = 2;
+  repeated bytes arguments = 3;
 }
 ```
 
@@ -810,7 +866,9 @@ message ExecuteScriptAtBlockHeightRequest {
 
 ```proto
 message ExecuteScriptResponse {
-  bytes value
+  bytes value = 1;
+  entities.Metadata metadata = 2;
+  uint64 computation_usage = 3;
 }
 ```
 
@@ -845,6 +903,7 @@ message GetEventsForHeightRangeRequest {
   string type
   uint64 start_height = 2;
   uint64 end_height = 3;
+  entities.EventEncodingVersion event_encoding_version = 4;
 }
 ```
 
@@ -859,6 +918,7 @@ message EventsResponse {
     google.protobuf.Timestamp block_timestamp = 4;
   }
   repeated Result results = 1;
+  entities.Metadata metadata = 2;
 }
 ```
 
@@ -880,6 +940,7 @@ The event results are grouped by block, with each group specifying a block ID, h
 message GetEventsForBlockIDsRequest {
   string type = 1;
   repeated bytes block_ids = 2;
+  entities.EventEncodingVersion event_encoding_version = 3;
 }
 ```
 
@@ -894,6 +955,7 @@ message EventsResponse {
     google.protobuf.Timestamp block_timestamp = 4;
   }
   repeated Result results = 1;
+  entities.Metadata metadata = 2;
 }
 ```
 
@@ -934,7 +996,7 @@ message GetNetworkParametersResponse {
 
 ### GetNodeVersionInfo
 
-`GetNodeVersionInfo` node version information, such as semver, commit, sporkID and protocol version.
+`GetNodeVersionInfo` gets information about a node's current versions.
 
 ```proto
 rpc GetNodeVersionInfo (GetNodeVersionInfoRequest) returns (GetNodeVersionInfoResponse);
@@ -980,6 +1042,7 @@ message GetLatestProtocolStateSnapshotRequest {}
 ```proto
 message ProtocolStateSnapshotResponse {
   bytes serializedSnapshot = 1;
+  entities.Metadata metadata = 2;
 }
 ```
 
@@ -1005,6 +1068,7 @@ message GetProtocolStateSnapshotByBlockIDRequest {
 ```proto
 message ProtocolStateSnapshotResponse {
   bytes serializedSnapshot = 1;
+  entities.Metadata metadata = 2;
 }
 ```
 
@@ -1030,6 +1094,7 @@ message GetProtocolStateSnapshotByHeightRequest {
 ```proto
 message ProtocolStateSnapshotResponse {
   bytes serializedSnapshot = 1;
+  entities.Metadata metadata = 2;
 }
 ```
 
@@ -1060,6 +1125,7 @@ message GetExecutionResultForBlockIDRequest {
 ```proto
 message ExecutionResultForBlockIDResponse {
   flow.ExecutionResult execution_result = 1;
+  entities.Metadata metadata = 2;
 }
 ```
 
@@ -1086,6 +1152,7 @@ message GetExecutionResultByIDRequest {
 ```proto
 message ExecutionResultByIDResponse {
   flow.ExecutionResult execution_result = 1;
+  entities.Metadata metadata = 2;
 }
 ```
 
