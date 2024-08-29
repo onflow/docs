@@ -44,6 +44,7 @@ First, your node needs to download and index the execution data. There are 3 ste
 1. Enable Execution Data Sync
 2. Download the root checkpoint file
 3. Configure the node to run the indexer
+4. Use the indexed data in the Access API.
 
 As of **`mainnet24`** / **`devnet49`**, Access nodes can be configured to index execution data to support local script execution, and serving all of the Access API endpoints using local data. There are different setup procedures depending on if you are enabling indexing immediately after a network upgrade, or at some point between upgrades.
 
@@ -103,6 +104,7 @@ There are 2 cli flags that you will need to add:
 - `--execution-data-indexing-enabled=true` This will enable the indexer.
 - `--execution-state-dir` This defines the path where the registers db will be stored. A good default is on the same drive as the protocol db. e.g. `/data/execution-state`
 
+
 # Start your node
 
 Now that all of the settings to enable indexing are in place, you can start your node.
@@ -129,6 +131,25 @@ Notes on what to expect:
 - If your node already had all the data, it will index all of it as quickly as possible. This will likely cause the node to run with a high CPU.
 
 When you restart the node for the first time with syncing enabled, it will sync execution data for all blocks from the network.
+
+# Use the indexed data in the Access API
+
+### Setup Local Script Execution
+
+Local execution is controlled with the `--script-execution-mode` flag, which can have one of the following values:
+
+- `execution-nodes-only` (default): Requests are executed using an upstream execution node.
+- `failover` (recommended): Requests are executed locally first. If the execution fails for any reason besides a script error, it is retried on an upstream execution node. If data for the block is not available yet locally, the script is also retried on the EN.
+- `compare`: Requests are executed both locally and on an execution node, and a comparison of the results and errors are logged.
+- `local-only`: Requests are executed locally and the result is returned directly.
+
+There are a few other flags available to configure some limits used while executing scripts:
+
+- `--script-execution-computation-limit`: Controls the maximum computation that can be used by a script. The default is `100,000` which is the same as used on ENs.
+- `--script-execution-timeout`: Controls the maximum runtime for a script before it times out. Default is `10s`.
+- `--script-execution-max-error-length`: Controls the maximum number of characters to include in script error messages. Default is `1000`.
+- `--script-execution-log-time-threshold`: Controls the run time after which a log message is emitted about the script. Default is `1s`.
+
 
 # Troubleshooting
 
