@@ -8,14 +8,9 @@ Flow Port is an account management tool for Flow. Flow Port allows you to create
 Typically, your wallet provider will support most of these features. However, should your wallet provider not do so, or should you wish to use this tool for any other reason, Flow Foundation makes it available for you.
 
 ## Creating an Account
-In order to access Flow Port, you must have a valid Flow address. If you do not have a Flow address, you can choose to create one via any of the available FCL wallet providers.
+In order to access Flow Port, you must have a valid Flow address. If you do not have a Flow address you can create one by installing a [Flow compatible wallet](../../ecosystem/wallets).
 
-### Blocto
-#### Before You Start
-
- 1. If you already have an existing Blocto Account, [navigate to this link](https://blocto.app.link/flow-distribution) to finish setting up your account to ensure tokens can be delivered to it.
-
- 2. If you do not have an existing Blocto Account, you have 2 different ways to create one: a) Through Flow Port and b) Through Blocto's mobile application. Below are instructions of how to do this in Flow Port.
+### Flow Wallet
 
 #### Creating Account Through Flow Port: Navigate To Flow Port
 
@@ -23,11 +18,9 @@ In order to access Flow Port, you must have a valid Flow address. If you do not 
 
  2. Click on 'Sign Up'
 
- 3. Click on Blocto. Please disable any ad blockers you have before logging in using Blocto
+ 3. Click on Flow Wallet and choose Chrome extension or Mobile
 
- 4. Follow the user interface prompts to create a new Flow Account Address.
-
- 5. After you create your account, you should be logged into Flow Port. You can now see your account address in Flow Port
+ 4. You should be logged into Flow Port! You can now see your account address in Flow Port and access Flow features for your account 
 
 ### Ledger
 #### Before You Start
