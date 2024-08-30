@@ -44,10 +44,10 @@ chmod +x ./boot-tools/transit
 
 ```shell CheckSHA256
 sha256sum ./boot-tools/bootstrapcmd
-a06e3e9b2443c6755214150e9e101b70dd48ae30ffcfcbbcc471ba430cb104bf  ./boot-tools/bootstrap
+f3745f72d917631636161190a2bc4968543e2213944e9fb9b83c991852d1458d  ./boot-tools/bootstrap
 
 sha256sum ./boot-tools/transit
-bc34a311f934fafed984a195f6bdca659ed21bfe50dd9947a39eb8edca6b10aa  ./boot-tools/transit
+7a105a9f8340c7c881553e527a7a7fcdcb87388d20487f48dc5c6519153de757  ./boot-tools/transit
 ```
 
 ### Generate Your Node Keys
