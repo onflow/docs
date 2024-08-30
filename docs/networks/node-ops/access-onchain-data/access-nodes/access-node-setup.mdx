@@ -351,7 +351,7 @@ Please make sure to git checkout the latest release tag before building the bina
 <TabItem value="mainnet" label="Mainnet">
 
 ```shell
-$PWD/flow-go/make docker-native-build-access-binary \
+$PWD/flow-go/flow_access_node\
 --nodeid=e1a8b231156ab6f2a5c6f862c933baf5e5c2e7cf019b509c7c91f4ddb0a13398 \
 --bootstrapdir=$PWD/bootstrap \
 --datadir=$PWD/data/protocol \
@@ -375,7 +375,7 @@ $PWD/flow-go/make docker-native-build-access-binary \
 <TabItem value="testnet" label="Testnet">
 
 ```shell
-$PWD/flow-go/make docker-native-build-access-binary \
+$PWD/flow-go/flow_access_node \
 --nodeid=e1a8b231156ab6f2a5c6f862c933baf5e5c2e7cf019b509c7c91f4ddb0a13398 \
 --bootstrapdir=$PWD/bootstrap \
 --datadir=$PWD/data/protocol \
@@ -397,8 +397,6 @@ $PWD/flow-go/make docker-native-build-access-binary \
 
 </TabItem>
 </Tabs>
-
-Once compiled the binary will be `$PWD/flow-go/flow_access_node` for an Access Node. Use the respective Makefile target to build your choice of node
 
 For a more mature setup, it is recommended that you run the container using systemd as described [here](../../node-operation/node-setup.md#systemd)
 
