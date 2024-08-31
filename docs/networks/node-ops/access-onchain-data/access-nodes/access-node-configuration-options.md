@@ -90,7 +90,7 @@ The root checkpoint for the network is used by Execution and Access nodes to boo
 
 Root checkpoints are periodically generated on Flow Foundation execution nodes and uploaded to a GCP bucket. You can see 
 a list of available checkpoints [here](https://console.cloud.google.com/storage/browser/flow-genesis-bootstrap/checkpoints), 
-or list them using the `gsutil` command
+or list them using the [gsutil](https://cloud.google.com/storage/docs/gsutil) command
 
 ```bash
 gsutil ls "gs://flow-genesis-bootstrap/checkpoints/"
@@ -99,8 +99,8 @@ gsutil ls "gs://flow-genesis-bootstrap/checkpoints/"
 The checkpoint paths are in the format `flow-genesis-bootstrap/checkpoints/[network]/[epoch number]-[block height]/`.
 Where
 * `[network]` is the network the checkpoint is from. For example, `mainnet` or `testnet`.
-* `[epoch number]` is the epoch number of the checkpoint. You can find the current epoch number on the [flowdiver](https://www.flowdiver.io/) home page. 
-* `[block height]` is the block height of the checkpoint.
+* `[epoch number]` is the epoch number when the checkpoint was taken. You can find the current epoch number on the [flowdiver](https://www.flowdiver.io/) home page. 
+* `[block height]` is the block height at which the checkpoint was taken.
 Make sure that the checkpoint you select is from an epoch when your node was part of the network.
 
 ### Download the root checkpoint
