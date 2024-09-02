@@ -1165,25 +1165,33 @@ Below are in-depth descriptions of each of the data entities returned or accepte
 
 ```proto
 message Block {
-  bytes id
-  bytes parent_id
-  uint64 height
-  google.protobuf.Timestamp timestamp
-  repeated CollectionGuarantee collection_guarantees
-  repeated BlockSeal block_seals
-  repeated bytes signatures
+  bytes id = 1;
+  bytes parent_id = 2;
+  uint64 height = 3;
+  google.protobuf.Timestamp timestamp = 4;
+  repeated CollectionGuarantee collection_guarantees = 5;
+  repeated BlockSeal block_seals = 6;
+  repeated bytes signatures = 7;
+  repeated ExecutionReceiptMeta execution_receipt_metaList = 8;
+  repeated ExecutionResult execution_result_list = 9;
+  BlockHeader block_header = 10;
+  bytes protocol_state_id = 11;
 }
 ```
 
-| Field                 | Description                                                                                                                                                                                                                                                                                                       |
-| --------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| id                    | SHA3-256 hash of the entire block payload                                                                                                                                                                                                                                                                         |
-| height                | Height of the block in the chain                                                                                                                                                                                                                                                                                  |
-| parent_id             | ID of the previous block in the chain                                                                                                                                                                                                                                                                             |
-| timestamp             | Timestamp of when the proposer claims it constructed the block. <br/> **NOTE**: It is included by the proposer, there are no guarantees on how much the time stamp can deviate from the true time the block was published. <br/> Consider observing blocks' status changes yourself to get a more reliable value. |
-| collection_guarantees | List of [collection guarantees](#collection-guarantee)                                                                                                                                                                                                                                                            |
-| block_seals           | List of [block seals](#block-seal)                                                                                                                                                                                                                                                                                |
-| signatures            | BLS signatures of consensus nodes                                                                                                                                                                                                                                                                                 |
+| Field                      | Description                                                                                                                                                                                                                                                                                                       |
+|----------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| id                         | SHA3-256 hash of the entire block payload                                                                                                                                                                                                                                                                         |
+| height                     | Height of the block in the chain                                                                                                                                                                                                                                                                                  |
+| parent_id                  | ID of the previous block in the chain                                                                                                                                                                                                                                                                             |
+| timestamp                  | Timestamp of when the proposer claims it constructed the block. <br/> **NOTE**: It is included by the proposer, there are no guarantees on how much the time stamp can deviate from the true time the block was published. <br/> Consider observing blocks' status changes yourself to get a more reliable value  |
+| collection_guarantees      | List of [collection guarantees](#collection-guarantee)                                                                                                                                                                                                                                                            |
+| block_seals                | List of [block seals](#block-seal)                                                                                                                                                                                                                                                                                |
+| signatures                 | BLS signatures of consensus nodes                                                                                                                                                                                                                                                                                 |
+| execution_receipt_metaList | List of [execution-receipt-meta](#execution-receipt-meta)                                                                                                                                                                                                                                                         |
+| execution_result_list      | List of [execution results](#execution-result)                                                                                                                                                                                                                                                                    |
+| block_header               | A summary of a [block](#block-header)                                                                                                                                                                                                                                                                             |
+| protocol_state_id          | The root hash of protocol state.                                                                                                                                                                                                                                                                                  |
 
 The detailed semantics of block formation are covered in the [block formation guide](../../../../../build/basics/blocks.md).
 
@@ -1450,6 +1458,27 @@ message ExecutionResult {
 | block_id           | ID of the block this execution result corresponds to |
 | chunks             | Zero or more chunks                                  |
 | service_events     | Zero or more service events                          |
+
+### Execution Receipt Meta
+
+ExecutionReceiptMeta contains the fields from the Execution Receipts that vary from one executor to another
+(assuming they commit to the same result).
+
+```proto
+message ExecutionReceiptMeta {
+  bytes executor_id = 1;
+  bytes result_id = 2;
+  repeated bytes spocks = 3;
+  bytes executor_signature = 4;
+}
+```
+
+| Field                | Description                          |
+|----------------------|--------------------------------------|
+| executor_id          | Identifier of the executor node      |
+| result_id            | Identifier of block execution result |
+| spocks               | SPoCK                                |
+| executor_signature   | Signature of the executor            |
 
 #### Chunk
 
