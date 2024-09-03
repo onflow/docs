@@ -90,6 +90,18 @@ Here is the list of some of the functions available on the Cadence Arch smart co
 - `getRandomSource(uint64) bytes32` returns a secure on-chain random source. This can be used for the creation of PRGs (learn more about [secure random on Flow here](https://developers.flow.com/build/advanced-concepts/randomness)).
 - `revertibleRandom() uint64` returns a pseudo-random value that is produced by the Flow PRG and uses a secure on-chain random source with salt as the seed to the generator. Using this random value is safe, but it allows for a transaction to revert in case of an unfavourable outcome, so it must be used carefully and it's best to [follow safety guidelines](https://developers.flow.com/build/advanced-concepts/randomness).
 
+Here is a sample demonstrating how to call the Cadence Arch.
+```solidity
+    address constant public cadenceArch = 0x0000000000000000000000010000000000000001;
+
+    function flowBlockHeight() public view returns (uint64){
+        (bool ok, bytes memory data) = cadenceArch.staticcall(abi.encodeWithSignature("flowBlockHeight()"));
+        require(ok, "failed to fetch the flow block height through cadence arch");
+        uint64 output = abi.decode(data, (uint64));
+        return output;
+    }
+```
+
 ## Special Addresses
 
 ### Native Token Bridge
