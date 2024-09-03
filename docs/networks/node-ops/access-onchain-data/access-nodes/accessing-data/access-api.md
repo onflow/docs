@@ -1201,9 +1201,9 @@ A block header is a summary of a [block](#block) and contains only the block ID,
 
 ```proto
 message BlockHeader {
-  bytes id
-  bytes parent_id
-  uint64 height
+  bytes id = 1;
+  bytes parent_id = 2;
+  uint64 height = 3;
 }
 ```
 
@@ -1219,10 +1219,10 @@ A block seal is an attestation that the execution result of a specific [block](#
 
 ```proto
 message BlockSeal {
-  bytes block_id
-  bytes execution_receipt_id
-  repeated bytes execution_receipt_signatures
-  repeated bytes result_approval_signatures
+  bytes block_id = 1;
+  bytes execution_receipt_id = 2;
+  repeated bytes execution_receipt_signatures = 3;
+  repeated bytes result_approval_signatures = 4;
 }
 ```
 
@@ -1255,8 +1255,8 @@ A collection is a batch of [transactions](#transaction) that have been included 
 
 ```proto
 message Collection {
-  bytes id
-  repeated bytes transaction_ids
+  bytes id = 1;
+  repeated bytes transaction_ids = 2;
 }
 ```
 
@@ -1271,8 +1271,8 @@ A collection guarantee is a signed attestation that specifies the collection nod
 
 ```proto
 message CollectionGuarantee {
-  bytes collection_id
-  repeated bytes signatures
+  bytes collection_id = 1;
+  repeated bytes signatures = 2;
 }
 ```
 
@@ -1287,27 +1287,27 @@ A transaction represents a unit of computation that is submitted to the Flow net
 
 ```proto
 message Transaction {
-  bytes script
-  repeated bytes arguments
-  bytes reference_block_id
-  uint64 gas_limit
-  TransactionProposalKey proposal_key
-  bytes payer
-  repeated bytes authorizers
-  repeated TransactionSignature payload_signatures
-  repeated TransactionSignature envelope_signatures
+  bytes script = 1;
+  repeated bytes arguments = 2;
+  bytes reference_block_id = 3;
+  uint64 gas_limit = 4;
+  ProposalKey proposal_key = 5;
+  bytes payer = 6;
+  repeated bytes authorizers = 7;
+  repeated Signature payload_signatures = 8;
+  repeated Signature envelope_signatures = 9;
 }
 
 message TransactionProposalKey {
-  bytes address
-  uint32 key_id
-  uint64 sequence_number
+  bytes address = 1;
+  uint32 key_id = 2;
+  uint64 sequence_number = 3;
 }
 
 message TransactionSignature {
-  bytes address
-  uint32 key_id
-  bytes signature
+  bytes address = 1;
+  uint32 key_id = 2;
+  bytes signature = 3;
 }
 ```
 
@@ -1369,11 +1369,11 @@ An account is a user's identity on Flow. It contains a unique address, a balance
 
 ```proto
 message Account {
-  bytes address
-  uint64 balance
-  bytes code
-  repeated AccountKey keys
-  map<string, bytes> contracts
+  bytes address = 1;
+  uint64 balance = 2;
+  bytes code = 3;
+  repeated AccountKey keys = 4;
+  map<string, bytes> contracts = 5;
 }
 ```
 
@@ -1395,13 +1395,13 @@ An account key is a reference to a public key associated with a Flow account. Ac
 
 ```proto
 message AccountKey {
-  uint32 id
-  bytes public_key
-  uint32 sign_algo
-  uint32 hash_algo
-  uint32 weight
-  uint32 sequence_number
-  bool revoked
+  uint32 index = 1;
+  bytes public_key = 2;
+  uint32 sign_algo = 3;
+  uint32 hash_algo = 4;
+  uint32 weight = 5;
+  uint32 sequence_number = 6;
+  bool revoked = 7;
 }
 ```
 
@@ -1423,11 +1423,11 @@ An event is emitted as the result of a [transaction](#transaction) execution. Ev
 
 ```proto
 message Event {
-  string type
-  bytes transaction_id
-  uint32 transaction_index
-  uint32 event_index
-  bytes payload
+  string type = 1;
+  bytes transaction_id = 2;
+  uint32 transaction_index = 3;
+  uint32 event_index = 4;
+  bytes payload = 5;
 }
 ```
 
@@ -1445,10 +1445,10 @@ Execution result for a particular block.
 
 ```proto
 message ExecutionResult {
-  bytes previous_result_id
-  bytes block_id
-  repeated Chunk chunks
-  repeated ServiceEvent service_events
+  bytes previous_result_id = 1;
+  bytes block_id = 2;
+  repeated Chunk chunks = 3;
+  repeated ServiceEvent service_events = 4;
 }
 ```
 
@@ -1486,25 +1486,31 @@ Chunk described execution information for given collection in a block
 
 ```proto
 message Chunk {
-  bytes start_state
-  bytes event_collection
-  bytes block_id
-  uint64 total_computation_used
-  uint64 number_of_transactions
-  uint64 index
-  bytes end_state
+  uint32 CollectionIndex = 1;
+  bytes start_state = 2;
+  bytes event_collection = 3;
+  bytes block_id = 4;
+  uint64 total_computation_used = 5;
+  uint32 number_of_transactions = 6;
+  uint64 index = 7;
+  bytes end_state = 8;
+  bytes execution_data_id = 9;
+  bytes state_delta_commitment = 10;
 }
 ```
 
-| Field                  | Description                                          |
-| ---------------------- | ---------------------------------------------------- |
-| start_state            | State commitment at start of the chunk               |
-| event_collection       | Hash of events emitted by transactions in this chunk |
-| block_id               | Identifier of a block                                |
-| total_computation_used | Total computation used by transactions in this chunk |
-| number_of_transactions | Number of transactions in a chunk                    |
-| index                  | Index of chunk inside a block (zero-based)           |
-| end_state              | State commitment after executing chunk               |
+| Field                   | Description                                          |
+|-------------------------|------------------------------------------------------|
+| CollectionIndex         | Identifier of a collection                           |
+| start_state             | State commitment at start of the chunk               |
+| event_collection        | Hash of events emitted by transactions in this chunk |
+| block_id                | Identifier of a block                                |
+| total_computation_used  | Total computation used by transactions in this chunk |
+| number_of_transactions  | Number of transactions in a chunk                    |
+| index                   | Index of chunk inside a block (zero-based)           |
+| end_state               | State commitment after executing chunk               |
+| execution_data_id       | Identifier of a execution data                       |
+| state_delta_commitment  | A commitment over sorted list of register changes    |
 
 #### Service Event
 
@@ -1512,8 +1518,8 @@ Special type of events emitted in system chunk used for controlling Flow system.
 
 ```proto
 message ServiceEvent {
-  string type;
-  bytes payload;
+  string type = 1;
+  bytes payload = 2;
 }
 ```
 
@@ -1544,11 +1550,11 @@ rpc SubscribeEvents(SubscribeEventsRequest) returns (stream SubscribeEventsRespo
 
 ```proto
 message SubscribeEventsRequest {
-  bytes start_block_id
-  uint64 start_block_height
-  EventFilter filter
-  uint64 heartbeat_interval
-  entities.EventEncodingVersion event_encoding_version
+  bytes start_block_id = 1;
+  uint64 start_block_height = 2;
+  EventFilter filter = 3;
+  uint64 heartbeat_interval = 4;
+  entities.EventEncodingVersion event_encoding_version = 5;
 }
 ```
 
@@ -1564,10 +1570,11 @@ message SubscribeEventsRequest {
 
 ```proto
 message SubscribeEventsResponse {
-  bytes block_id
-  uint64 block_height
-  repeated entities.Event events
-  google.protobuf.Timestamp block_timestamp
+  bytes block_id = 1;
+  uint64 block_height = 2;
+  repeated entities.Event events = 3;
+  google.protobuf.Timestamp block_timestamp = 4;
+  uint64 message_index = 5;
 }
 ```
 
@@ -1583,9 +1590,9 @@ rpc SubscribeExecutionData(SubscribeExecutionDataRequest) returns (stream Subscr
 
 ```proto
 message SubscribeExecutionDataRequest {
-  bytes start_block_id
-  uint64 start_block_height
-  entities.EventEncodingVersion event_encoding_version
+  bytes start_block_id = 1;
+  uint64 start_block_height = 2;
+  entities.EventEncodingVersion event_encoding_version = 3;
 }
 ```
 
@@ -1599,9 +1606,9 @@ message SubscribeExecutionDataRequest {
 
 ```proto
 message SubscribeExecutionDataResponse {
-  uint64 block_height
-  entities.BlockExecutionData block_execution_data
-  google.protobuf.Timestamp block_timestamp
+  uint64 block_height = 1;
+  entities.BlockExecutionData block_execution_data = 2;
+  google.protobuf.Timestamp block_timestamp = 3;
 }
 ```
 
@@ -1614,9 +1621,9 @@ If no filters are provided, all events are returned. If there are any invalid fi
 
 ```proto
 message EventFilter {
-  repeated string event_type
-  repeated string contract
-  repeated string address
+  repeated string event_type = 1;
+  repeated string contract = 2;
+  repeated string address = 3;
 }
 ```
 
@@ -1646,16 +1653,16 @@ The `ExecutionDataAPI` provides access to block execution data over gRPC, includ
 
 Below is a list of the available CLI flags to control the behavior of the API
 
-| Flag | Type | Description |
-| --- | --- | --- |
-| state-stream-addr | string | Listener address for API. e.g. 0.0.0.0:9003. If no value is provided, the API is disabled. Default is disabled. |
-| execution-data-cache-size | uint32 | Number of block execution data objects to store in the cache. Default is 100. |
-| state-stream-global-max-streams | uint32 | Global maximum number of concurrent streams. Default is 1000. |
-| state-stream-max-message-size | uint | Maximum size for a gRPC response message containing block execution data. Default is 20*1024*1024 (20MB). |
-| state-stream-event-filter-limits | string | Event filter limits for ExecutionData SubscribeEvents API. These define the max number of filters for each type. e.g. EventTypes=100,Addresses=20,Contracts=50. Default is 1000 for each. |
-| state-stream-send-timeout | duration | Maximum wait before timing out while sending a response to a streaming client. Default is 30s. |
-| state-stream-send-buffer-size | uint | Maximum number of unsent responses to buffer for a stream. Default is 10. |
-| state-stream-response-limit | float64 | Max number of responses per second to send over streaming endpoints. This effectively applies a rate limit to responses to help manage resources consumed by each client. This is mostly used when clients are querying data past data. e.g. 3 or 0.5. Default is 0 which means no limit. |
+| Flag                             | Type     | Description                                                                                                                                                                                                                                                                               |
+|----------------------------------|----------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| state-stream-addr                | string   | Listener address for API. e.g. 0.0.0.0:9003. If no value is provided, the API is disabled. Default is disabled.                                                                                                                                                                           |
+| execution-data-cache-size        | uint32   | Number of block execution data objects to store in the cache. Default is 100.                                                                                                                                                                                                             |
+| state-stream-global-max-streams  | uint32   | Global maximum number of concurrent streams. Default is 1000.                                                                                                                                                                                                                             |
+| state-stream-max-message-size    | uint     | Maximum size for a gRPC response message containing block execution data. Default is 20*1024*1024 (20MB).                                                                                                                                                                                 |
+| state-stream-event-filter-limits | string   | Event filter limits for ExecutionData SubscribeEvents API. These define the max number of filters for each type. e.g. EventTypes=100,Addresses=20,Contracts=50. Default is 1000 for each.                                                                                                 |
+| state-stream-send-timeout        | duration | Maximum wait before timing out while sending a response to a streaming client. Default is 30s.                                                                                                                                                                                            |
+| state-stream-send-buffer-size    | uint     | Maximum number of unsent responses to buffer for a stream. Default is 10.                                                                                                                                                                                                                 |
+| state-stream-response-limit      | float64  | Max number of responses per second to send over streaming endpoints. This effectively applies a rate limit to responses to help manage resources consumed by each client. This is mostly used when clients are querying data past data. e.g. 3 or 0.5. Default is 0 which means no limit. |
 
 <aside>
 ℹ️ This API provides access to Execution Data, which can be very large (100s of MB) for a given block. Given the large amount of data, operators should consider their expected usage patters and tune the available settings to limit the resources a single client can use. It may also be useful to use other means of managing traffic, such as reverse proxies or QoS tools.
