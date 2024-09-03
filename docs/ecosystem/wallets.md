@@ -11,12 +11,11 @@ Store, manage, and interact securely with tokens and digital assets on Flow. Dis
 
 <div id="cards" className="cards">
 
-## Flow Wallet
+## Blocto
 
-[Flow Wallet](https://wallet.flow.com/) is Flow's oldest wallet extension and seamlessly interacts with all Cadence and EVM dApps in the ecosystem.
+[Blocto](https://www.blocto.io/) is a cross-chain mobile wallet for IOS and Android devices.
 
-- https://wallet.flow.com/
-- https://frw.gitbook.io/
+https://www.blocto.io/
 
 ## Dapper Wallet
 
@@ -24,17 +23,28 @@ Store, manage, and interact securely with tokens and digital assets on Flow. Dis
 
 https://www.meetdapper.com/
 
+## Finoa
+
+[Finoa](https://www.finoa.io/) is a platform for institutional investors to safely store and stake their FLOW tokens.
+
+https://www.finoa.io/flow/
+
+## Flow Wallet
+
+[Flow Wallet](https://wallet.flow.com/) is Flow's oldest wallet extension and seamlessly interacts with all Cadence and EVM dApps in the ecosystem.
+
+- https://wallet.flow.com/
+- https://frw.gitbook.io/
+
+## Flow Dev Wallet
+
+Looking for a way to create mock developer wallets to test your app? The [The Flow Dev Wallet](../tools/flow-dev-wallet/index.md) simulates the protocols used by [FCL](../tools/clients/fcl-js/index.md) to interact with the Flow blockchain on behalf of simulated user accounts.
+
 ## Ledger
 
 [Ledger](https://www.ledger.com/) is a hardware wallet to secure, buy, exchange, and grow your crypto assets.
 
 https://www.ledger.com/
-
-## NuFi
-
-[NuFi](https://nu.fi/) is a non-custodial wallet with staking and Ledger support.
-
-https://nu.fi/
 
 ## Magic.link
 
@@ -42,17 +52,23 @@ https://nu.fi/
 
 https://magic.link/
 
+## Metamask Wallet
+
+[Metamask](https://metamask.io/) is a secure and user-friendly crypto wallet for NFTs and digital tokens. Presently only supports EVM on Flow and cannot access Cadence accounts.  
+
+https://metamask.io/
+
 ## Niftory
 
 [Niftory](https://niftory.com/) is a developer platform that offers APIs to create wallets and interact with NFTs.
 
 https://niftory.com/
 
-## Finoa
+## NuFi
 
-[Finoa](https://www.finoa.io/) is a platform for institutional investors to safely store and stake their FLOW tokens.
+[NuFi](https://nu.fi/) is a non-custodial wallet with staking and Ledger support.
 
-https://www.finoa.io/flow/
+https://nu.fi/
 
 ## Shadow
 
@@ -61,19 +77,3 @@ https://www.finoa.io/flow/
 https://shadow.app/wallet
 
 </div>
-
-## Blocto
-
-[Blocto](https://www.blocto.io/) is a cross-chain mobile wallet for IOS and Android devices.
-
-https://www.blocto.io/
-
-## Metamask Wallet
-
-[Metamask](https://metamask.io/) is a secure and user-friendly crypto wallet for NFTs and digital tokens. Presently only supports EVM on Flow and cannot access Cadence accounts.  
-
-https://metamask.io/
-
-## Flow Dev Wallet
-
-Looking for a way to create mock developer wallets to test your app? The [The Flow Dev Wallet](../tools/flow-dev-wallet/index.md) simulates the protocols used by [FCL](../tools/clients/fcl-js/index.md) to interact with the Flow blockchain on behalf of simulated user accounts.
