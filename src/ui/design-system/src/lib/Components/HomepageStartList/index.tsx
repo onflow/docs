@@ -49,7 +49,7 @@ const homepagePillData: Record<string, HomepagePillItemsProps> = {
   'network-upgrade': {
     link: 'https://flow.com/upgrade/crescendo',
     icon: 'network-upgrade',
-    text: 'Network Upgrade',
+    text: 'Crescendo',
     subText: 'View latest',
   },
 };
