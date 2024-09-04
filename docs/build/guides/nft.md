@@ -35,21 +35,17 @@ If you haven't installed the Flow CLI yet and have [Homebrew](https://brew.sh/) 
 you can run `brew install flow-cli`. If you don’t have Homebrew,
 please follow [the installation guide here](../../tools/flow-cli/install.md).
 
-For this guide, you will need to use the Cadence 1.0 Flow CLI.
-You can install that with the instructions [here](https://cadence-lang.org/docs/cadence-migration-guide#install-cadence-10-cli).
-The Cadence 1.0 CLI uses `flow-c1` instead of `flow` to execute commands.
-
 ### Initializing a New Project
 
 > 💡 Note: Here is [a link to the completed code](https://github.com/chasefleming/foobar-nft) if you want to skip ahead or reference as you follow along.
 
 Once you have the Flow CLI installed, you can set up a new project
-using the `flow-c1 setup` command. This command initializes
+using the `flow setup` command. This command initializes
 the necessary directory structure and a `flow.json` configuration file
 (a way to configure your project for contract sources, deployments, accounts, and more):
 
 ```bash
-flow-c1 setup foobar-nft
+flow setup foobar-nft
 ```
 
 Upon execution, the command will generate the following directory structure:
@@ -73,7 +69,7 @@ To begin, let's create a contract file named `FooBar` for the `FooBar` token,
 which will be the focus of this tutorial. To do this, we can use the boilerplate `generate` command from the Flow CLI:
 
 ```bash
-flow-c1 generate contract FooBar
+flow generate contract FooBar
 ```
 
 This will create a new file at `cadence/contracts/FooBar.cdc` with the following contents:
@@ -87,6 +83,7 @@ access(all) contract FooBar {
 Now, add these contracts to your `flow.json`.
 These are important contracts that your contract will import that
 are pre-deployed to the emulator.
+
 ```json
 "contracts": {
     "NonFungibleToken": {
@@ -149,8 +146,8 @@ access(all) contract FooBar {
 }
 ```
 
-To control the creation of NFTs, it's essential to have a mechanism 
-that restricts their minting. This ensures that not just anyone can create an NFT and inflate its supply. 
+To control the creation of NFTs, it's essential to have a mechanism
+that restricts their minting. This ensures that not just anyone can create an NFT and inflate its supply.
 To achieve this, you can introduce an `NFTMinter` resource that contains a `createNFT` function:
 
 ```cadence
@@ -170,8 +167,8 @@ access(all) contract FooBar {
 }
 ```
 
-In this example, the `NFTMinter` resource will be stored on the contract account's storage. 
-This means that only the contract account will have the ability to mint new NFTs. 
+In this example, the `NFTMinter` resource will be stored on the contract account's storage.
+This means that only the contract account will have the ability to mint new NFTs.
 To set this up, add the following line to the contract's `init` function:
 
 ```cadence
@@ -188,11 +185,11 @@ access(all) contract FooBar {
 ### Setting Up an NFT Collection
 
 Storing individual NFTs directly in an account's storage can cause issues,
-especially if you want to store multiple NFTs. 
-Instead, it's required to create a collection that can hold multiple NFTs. 
+especially if you want to store multiple NFTs.
+Instead, it's required to create a collection that can hold multiple NFTs.
 This collection can then be stored in the account's storage.
 
-Start by creating a new resource named `Collection`. 
+Start by creating a new resource named `Collection`.
 This resource will act as a container for your NFTs, storing them in a dictionary indexed by their IDs.
 
 ```cadence
@@ -216,14 +213,14 @@ access(all) contract FooBar {
 
 ## Fitting the Flow NFT Standard
 
-To ensure compatibility and interoperability within the Flow ecosystem, 
-it's crucial that your NFT contract adheres to the [Flow NFT standard](https://github.com/onflow/flow-nft). 
-This standard defines the events, functions, resources, metadata and other elements that a contract should have. 
+To ensure compatibility and interoperability within the Flow ecosystem,
+it's crucial that your NFT contract adheres to the [Flow NFT standard](https://github.com/onflow/flow-nft).
+This standard defines the events, functions, resources, metadata and other elements that a contract should have.
 By following this standard, your NFTs will be compatible with various marketplaces, apps, and other services within the Flow ecosystem.
 
 ### Applying the Standard
 
-To start, you need to inform the Flow blockchain that your contract will implement the `NonFungibleToken` standard. 
+To start, you need to inform the Flow blockchain that your contract will implement the `NonFungibleToken` standard.
 Since it's a standard, there's no need for deployment.
 It's already available on the Emulator, Testnet, and Mainnet for the community's benefit.
 
@@ -268,6 +265,7 @@ access(all) contract FooBar: NonFungibleToken {
     }
 }
 ```
+
 As you can see, we also added standard paths for the Collection and Minter
 
 These interface conformances for [NFT](https://github.com/onflow/flow-nft/blob/master/contracts/NonFungibleToken.cdc#L98)
@@ -372,10 +370,11 @@ are a way for developers to restrict access to privileged fields and functions
 in a composite type like a resource when a reference is created for it.
 In this example, the `withdraw()` function is always accessible to code that
 controls the full `Collection` object, but if a reference is created for it,
-the `withdraw()` function can only be called if the reference 
+the `withdraw()` function can only be called if the reference
 is authorized by the owner with `NonFungibleToken.Withdraw`,
 which is [a standard entitlement](https://github.com/onflow/flow-nft/blob/master/contracts/NonFungibleToken.cdc#L58)
 defined by the `NonFungibleToken` contract:
+
 ```cadence
 // Example of an authorized entitled reference to a NonFungibleToken.Collection
 <auth(NonFungibleToken.Withdraw) &{NonFungibleToken.Collection}>
@@ -393,11 +392,12 @@ only be accessed if it is authorized.
 ### Standard NFT Events
 
 Many projects rely on events the signal when withdrawals or deposits happen.
-Luckily, the `NonFungibleToken` standard handles the definition and emission 
-of events for projects, so there is no need for you to add any events 
+Luckily, the `NonFungibleToken` standard handles the definition and emission
+of events for projects, so there is no need for you to add any events
 to your implementation for withdraw and deposit.
 
 Here are the `FungibleToken` event definitions:
+
 ```cadence
     /// Event that is emitted when a token is withdrawn,
     /// indicating the type, id, uuid, the owner of the collection that it was withdrawn from,
@@ -466,7 +466,7 @@ website links, and standard account paths and types that third-parties can acces
 You can see the [metadata views documentation](../advanced-concepts/metadata-views.md)
 for a more thorough guide using a NFT contract as an example.
 
-For now, you can add this code to your contract to support the important metadata: 
+For now, you can add this code to your contract to support the important metadata:
 
 ```cadence
 // Add this import!
@@ -595,7 +595,7 @@ With your contract ready, it's time to deploy it.
 First, add the `FooBar` contract to the `flow.json` configuration file:
 
 ```bash
-flow-c1 config add contract
+flow config add contract
 ```
 
 When prompted, enter the following name and location (press `Enter` to skip alias questions):
@@ -608,7 +608,7 @@ Enter contract file location: cadence/contracts/FooBar.cdc
 Next, configure the deployment settings by running the following command:
 
 ```bash
-flow-c1 config add deployment
+flow config add deployment
 ```
 
 Choose the `emulator` for the network and `emulator-account`
@@ -620,13 +620,13 @@ After that, you can select `No` when asked to deploy another contract.
 To start the Flow emulator, run (you may need to approve a prompt to allow connection the first time):
 
 ```bash
-flow-c1 emulator start
+flow emulator start
 ```
 
 In a separate terminal or command prompt, deploy the contract:
 
 ```bash
-flow-c1 project deploy
+flow project deploy
 ```
 
 You’ll then see a message that says `All contracts deployed successfully`.
@@ -637,7 +637,7 @@ To manage multiple NFTs, you'll need an NFT collection.
 Start by creating a transaction file for this purpose (we can use the `generate` command again):
 
 ```bash
-flow-c1 generate transaction setup_foobar_collection
+flow generate transaction setup_foobar_collection
 ```
 
 This creates a transaction file at `cadence/transactions/setup_foobar_collection.cdc`.
@@ -649,7 +649,7 @@ and they can have multiple phases, represented by different blocks of code.
 
 In this file, import the necessary contracts and define a transaction
 to create a new collection, storing it in the account's storage.
-Additionally, the transaction creates a capability that allows others 
+Additionally, the transaction creates a capability that allows others
 to get a public reference to the collection to read from its methods.
 
 This capability ensures secure, restricted access to specific functionalities or information within a resource.
@@ -661,7 +661,7 @@ import "NonFungibleToken"
 transaction {
 
     prepare(signer: auth(BorrowValue, IssueStorageCapabilityController, PublishCapability, SaveValue, UnpublishCapability) &Account) {
-        
+
         // Return early if the account already has a collection
         if signer.storage.borrow<&FooBar.Collection>(from: FooBar.CollectionStoragePath) != nil {
             return
@@ -686,13 +686,13 @@ You should check those out and try to use generic transactions whenever it is po
 To store this new NFT collection, create a new account:
 
 ```bash
-flow-c1 accounts create
+flow accounts create
 ```
 
 Name it `test-acct` and select `emulator` as the network. Then, using the Flow CLI, run the transaction:
 
 ```bash
-flow-c1 transactions send cadence/transactions/setup_foobar_collection.cdc --signer test-acct --network emulator
+flow transactions send cadence/transactions/setup_foobar_collection.cdc --signer test-acct --network emulator
 ```
 
 Congratulations! You've successfully created an NFT collection for the `test-acct`.
@@ -707,7 +707,7 @@ they don't require gas fees or signatures (read more about scripts here).
 Start by creating a script file using the `generate` command again:
 
 ```bash
-flow-c1 generate script get_foobar_ids
+flow generate script get_foobar_ids
 ```
 
 In this script, import the necessary contracts and define a function that retrieves the NFT IDs associated with a given account:
@@ -730,7 +730,7 @@ access(all) fun main(address: Address): [UInt64] {
 To check the NFTs associated with the `test-acct`, run the script (note: replace `0x123` with the address for `test-acct` from `flow.json`):
 
 ```bash
-flow-c1 scripts execute cadence/scripts/get_foobar_ids.cdc 0x123
+flow scripts execute cadence/scripts/get_foobar_ids.cdc 0x123
 ```
 
 Since you haven't added any NFTs to the collection yet, the result will be an empty array.
@@ -740,10 +740,10 @@ Since you haven't added any NFTs to the collection yet, the result will be an em
 To mint and deposit an NFT into a collection, create a new transaction file:
 
 ```bash
-flow-c1 generate transaction mint_foobar_nft
+flow generate transaction mint_foobar_nft
 ```
 
-In this file, define a transaction that takes a recipient's address as an argument. 
+In this file, define a transaction that takes a recipient's address as an argument.
 This transaction will borrow the minting capability from the contract account,
 borrow the recipient's collection capability, create a new NFT using the minter,
 and deposit it into the recipient's collection:
@@ -763,7 +763,7 @@ transaction(
     let recipientCollectionRef: &{NonFungibleToken.Receiver}
 
     prepare(signer: auth(BorrowValue) &Account) {
-        
+
         // borrow a reference to the NFTMinter resource in storage
         self.minter = signer.storage.borrow<&FooBar.NFTMinter>(from: FooBar.MinterStoragePath)
             ?? panic("Account does not store an object at the specified path")
@@ -784,18 +784,18 @@ transaction(
 
 To run this transaction, use the Flow CLI. Remember, the contract account
 (which has the minting resource) should be the one signing the transaction.
-Pass the test account's address (from the `flow.json` file) as the recipient argument 
+Pass the test account's address (from the `flow.json` file) as the recipient argument
 (note: replace `0x123` with the address for `test-acct` from `flow.json`):
 
 ```bash
-flow-c1 transactions send cadence/transactions/mint_foobar_nft.cdc 0x123 --signer emulator-account --network emulator
+flow transactions send cadence/transactions/mint_foobar_nft.cdc 0x123 --signer emulator-account --network emulator
 ```
 
 After executing the transaction, you can run the earlier script to verify
 that the NFT was added to the `test-acct`'s collection (remember to replace `0x123`):
 
 ```bash
-flow-c1 scripts execute cadence/scripts/get_foobar_ids.cdc 0x123
+flow scripts execute cadence/scripts/get_foobar_ids.cdc 0x123
 ```
 
 You should now see a value in the `test-acct`'s collection array!
@@ -805,7 +805,7 @@ You should now see a value in the `test-acct`'s collection array!
 To transfer an NFT to another account, create a new transaction file using `generate`:
 
 ```bash
-flow-c1 generate transaction transfer_foobar_nft
+flow generate transaction transfer_foobar_nft
 ```
 
 In this file, define a transaction that takes a recipient's address and the ID
@@ -852,27 +852,27 @@ transaction(recipient: Address, withdrawID: UInt64) {
 To transfer the NFT, first create a new account:
 
 ```bash
-flow-c1 accounts create
+flow accounts create
 ```
 
 Name it `test-acct-2` and select `Emulator` as the network. Next, create a collection for this new account:
 
 ```bash
-flow-c1 transactions send cadence/transactions/setup_foobar_collection.cdc --signer test-acct-2 --network emulator
+flow transactions send cadence/transactions/setup_foobar_collection.cdc --signer test-acct-2 --network emulator
 ```
 
 Now, run the transaction to transfer the NFT from `test-acct` to `test-acct-2`
-using the addresses from the `flow.json` file (replace `0x124` with `test-acct-2`'s address. 
+using the addresses from the `flow.json` file (replace `0x124` with `test-acct-2`'s address.
 Also note that `0` is the `id` of the `NFT` we'll be transferring):
 
 ```bash
-flow-c1 transactions send cadence/transactions/transfer_foobar_nft.cdc 0x124 0 --signer test-acct --network emulator
+flow transactions send cadence/transactions/transfer_foobar_nft.cdc 0x124 0 --signer test-acct --network emulator
 ```
 
 To verify the transfer, you can run the earlier script for `test-acct-2` (replace `0x124`):
 
 ```bash
-flow-c1 scripts execute cadence/scripts/get_foobar_ids.cdc 0x123
+flow scripts execute cadence/scripts/get_foobar_ids.cdc 0x123
 ```
 
 The transfer transaction also has a [generic version](https://github.com/onflow/flow-nft/blob/master/transactions/generic_transfer_with_address.cdc)

@@ -1034,7 +1034,7 @@
     },
     {
       "source": "/build/cadence-migration-guide",
-      "destination": "https://cadence-lang.org/docs/cadence_migration_guide",
+      "destination": "https://flow.com/upgrade/crescendo",
       "permanent": true
     },
     {
