@@ -1204,14 +1204,34 @@ message BlockHeader {
   bytes id = 1;
   bytes parent_id = 2;
   uint64 height = 3;
+  google.protobuf.Timestamp timestamp = 4;
+  bytes payload_hash = 5;
+  uint64 view = 6;
+  repeated bytes parent_voter_ids = 7;
+  bytes parent_voter_sig_data = 8;
+  bytes proposer_id = 9;
+  bytes proposer_sig_data = 10;
+  string chain_id = 11;
+  bytes parent_voter_indices = 12;
+  TimeoutCertificate last_view_tc = 13;
+  uint64 parent_view = 14;
 }
 ```
 
-| Field     | Description                               |
-| --------- | ----------------------------------------- |
-| id        | SHA3-256 hash of the entire block payload |
-| parent_id | ID of the previous block in the chain     |
-| height    | Height of the block in the chain          |
+| Field                 | Description                                                                                                       |
+|-----------------------|-------------------------------------------------------------------------------------------------------------------|
+| id                    | SHA3-256 hash of the entire block payload                                                                         |
+| parent_id             | ID of the previous block in the chain                                                                             |
+| height                | Height of the block in the chain                                                                                  |
+| timestamp             | The time at which this block was proposed                                                                         |
+| payload_hash          | A hash of the payload of this block                                                                               |
+| view                  | Number at which this block was proposed.                                                                          |
+| parent_voter_ids      | An array that represents all the voters ids for the parent block                                                  |
+| parent_voter_sig_data | An aggregated signature over the parent block                                                                     |
+| chain_id              | Chain ID helps identify the Flow network. It can be one of `flow-mainnet`, `flow-testnet` or `flow-emulator`      |
+| parent_voter_indices  | A bitvector that represents all the voters for the parent block                                                   |
+| last_view_tc          | A timeout certificate for previous view, it can be nil. It has to be present if previous round ended with timeout |
+| parent_view           | A number at which parent block was proposed                                                                       |
 
 ### Block Seal
 
@@ -1243,11 +1263,11 @@ enum BlockStatus {
 }
 ```
 
-| Value     | Description                                    |
-| --------- | ---------------------------------------------- |
-| UNKNOWN   | The block status is not known.                 |
-| FINALIZED | The consensus nodes have finalized the block   |
-| SEALED    | The verification nodes have verified the block |
+| Value      | Description                                    |
+|------------|------------------------------------------------|
+| UNKNOWN    | The block status is not known                  |
+| FINALIZED  | The consensus nodes have finalized the block   |
+| SEALED     | The verification nodes have verified the block |
 
 ### Collection
 
@@ -1260,10 +1280,10 @@ message Collection {
 }
 ```
 
-| Field           | Description                                       |
-| --------------- | ------------------------------------------------- |
-| id              | SHA3-256 hash of the collection contents          |
-| transaction_ids | Ordered list of transaction IDs in the collection |
+| Field            | Description                                       |
+|------------------|---------------------------------------------------|
+| id               | SHA3-256 hash of the collection contents          |
+| transaction_ids  | Ordered list of transaction IDs in the collection |
 
 ### Collection Guarantee
 
@@ -1273,13 +1293,21 @@ A collection guarantee is a signed attestation that specifies the collection nod
 message CollectionGuarantee {
   bytes collection_id = 1;
   repeated bytes signatures = 2;
+  bytes reference_block_id = 3;
+  bytes signature = 4;
+  repeated bytes signer_ids = 5; // deprecated!! value will be empty. replaced by signer_indices
+  bytes signer_indices = 6;
 }
 ```
 
-| Field         | Description                                                        |
-| ------------- | ------------------------------------------------------------------ |
-| collection_id | SHA3-256 hash of the collection contents                           |
-| signatures    | BLS signatures of the collection nodes guaranteeing the collection |
+| Field               | Description                                                        |
+|---------------------|--------------------------------------------------------------------|
+| collection_id       | SHA3-256 hash of the collection contents                           |
+| signatures          | BLS signatures of the collection nodes guaranteeing the collection |
+| reference_block_id  | Defines expiry of the collection                                   |
+| signature           | Guarantor signatures                                               |
+| signer_ids          | An array that represents all the signer ids                        |
+| signer_indices      | Encoded indices of the signers                                     |
 
 ### Transaction
 
