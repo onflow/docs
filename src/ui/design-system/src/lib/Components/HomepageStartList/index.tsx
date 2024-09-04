@@ -47,9 +47,9 @@ const homepagePillData: Record<string, HomepagePillItemsProps> = {
     subText: 'Chat with devs',
   },
   'network-upgrade': {
-    link: 'https://cadence-lang.org/docs/1.0/cadence-migration-guide/',
+    link: 'https://flow.com/upgrade/crescendo',
     icon: 'network-upgrade',
-    text: 'Network Upgrade',
+    text: 'Crescendo',
     subText: 'View latest',
   },
 };
