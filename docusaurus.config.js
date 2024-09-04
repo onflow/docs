@@ -614,29 +614,6 @@ const config = {
         },
       },
     ],
-    function InsertInfoTagForCadence() {
-      return {
-        name: 'docusaurus-plugin-insert-info-tags',
-        configureWebpack(config, isServer, utils) {
-          return {
-            module: {
-              rules: [
-                {
-                  test: /\.md$/,
-                  use: [
-                    {
-                      loader: require.resolve(
-                        './src/plugins/insert-info-tags-loader.js',
-                      ),
-                    },
-                  ],
-                },
-              ],
-            },
-          };
-        },
-      };
-    },
   ],
   stylesheets: [
     {
