@@ -233,15 +233,6 @@ const config = {
   themeConfig:
     /** @type {import('@docusaurus/preset-classic').ThemeConfig} */
     ({
-      announcementBar: {
-        id: 'stable_cadence_upgrade',
-        content: `🔧 Upgrade to Cadence 1.0 🔧<br />
-            <a href="https://flow.com/upgrade/crescendo/migration" target="_blank">Upgrade</a> your Cadence contracts! All contracts must be updated to avoid breaking. <a href="https://flow.com/post/update-on-testnet-crescendo-network-upgrade" target="_blank">Learn More</a>. 
-         `,
-        backgroundColor: '#007BFF',
-        textColor: '#FFFFFF',
-        isCloseable: true,
-      },
       colorMode: {
         defaultMode: 'dark',
       },
