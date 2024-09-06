@@ -23,7 +23,7 @@ EVM on Flow has the following public RPC nodes available:
 
 | Name            | Value                                |
 | --------------- | ------------------------------------ |
-| Network Name    | EVM on Flow (Testnet)                |
+| Network Name    | EVM on Flow Testnet                  |
 | Description     | The public RPC URL for Flow Testnet  |
 | RPC Endpoint    | https://testnet.evm.nodes.onflow.org |
 | Chain ID        | 545                                  |

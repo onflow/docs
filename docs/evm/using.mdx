@@ -27,27 +27,37 @@ Manual method: Add EVM on Flow as a custom network to MetaMask:
 2. Open the network selection dropdown menu by clicking the dropdown button at the top of the extension
 3. Click the **`Add network`** button
 4. Click **`Add a network manually`**
-5. In the **`Add a network manually`** dialog that appears, enter the following information for Testnet:
-
+5. In the **`Add a network manually`** dialog that appears, enter the following information:
 
 | Name            | Value                                |
 | --------------- | ------------------------------------ |
-| Network Name    | EVM on Flow                         |
+| Network Name    | EVM on Flow                          |
 | Description     | The public RPC url for Flow Mainnet  |
 | RPC Endpoint    | https://mainnet.evm.nodes.onflow.org |
 | Chain ID        | 747                                  |
 | Currency Symbol | FLOW                                 |
-| Block Explorer  | https://evm.flowscan.io/     |
+| Block Explorer  | https://evm.flowscan.io/             |
 
-6. Tap the Save button to save Flow Testnet as a network.
+6. Tap the Save button to save EVM on Flow as a network.
 
 You should now be able to connect to the EVM on Flow by selecting it from the network selection dropdown menu.
 
-Use the [Flow Testnet Faucet](https://faucet.flow.com/fund-account) to fund a new account for testing.
+To additionally add the EVM on Flow Testnet to MetaMask, follow the same steps as above, but use the following information:
+
+| Name            | Value                                |
+| --------------- | ------------------------------------ |
+| Network Name    | EVM on Flow Testnet                  |
+| Description     | The public RPC url for Flow Testnet  |
+| RPC Endpoint    | https://testnet.evm.nodes.onflow.org |
+| Chain ID        | 545                                  |
+| Currency Symbol | FLOW                                 |
+| Block Explorer  | https://evm-testnet.flowscan.io      |
+
+Use the [Flow Testnet Faucet](https://faucet.flow.com/fund-account) to fund your account for testing.
 
 ## Flow Native Wallets
 
-### [Flow Wallet](https://wallet.flow.com) (Coming Soon)
+### [Flow Wallet](https://wallet.flow.com)
 
 Flow Wallet is available on [Android](https://play.google.com/store/apps/details?id=io.outblock.lilico&hl=en_US&gl=US) and [iOS](https://apps.apple.com/ca/app/flow-core/id1644169603), with desktop support using the Flow Wallet [Chrome extension](https://chromewebstore.google.com/detail/flow-reference-wallet/hpclkefagolihohboafpheddmmgdffjm). In addition to being able to transact in both EVM and Cadence environments, Flow Wallet will also allow you to view and move assets between EVM and Cadence, making it possible to manage all your assets in one place.
 
@@ -58,7 +68,7 @@ To use the Flow Wallet Chrome extension:
 
 ## EVM Specification
 
-- Flow EVM is a virtual EVM-based blockchain on Flow using the latest EVM byte-code interpreter `Geth v1.13`
+- EVM on Flow is a virtual EVM-based blockchain using the latest EVM byte-code interpreter `Geth v1.13`
 - Utilizes `FLOW` token for transactions, with balances denominated in `Atto-FLOW` (1 `FLOW` = 10^18 `Atto-FLOW`)
 - The [EVM Gateway](https://github.com/onflow/flow-evm-gateway) exposes the standard EVM API (Ethereum JSON-RPC)
 - Read more about the implementation in [FLIP 223: EVM integration interface](https://github.com/onflow/flips/blob/main/protocol/20231116-evm-support.md)
