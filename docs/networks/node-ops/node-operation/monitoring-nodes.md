@@ -84,7 +84,7 @@ When the machine account has a configuration error:
 machine_account_is_misconfigured > 0
 ```
 
-The metrics include the account address of the machine account for convenience:
+The metrics include the account address of the machine account (`acct_address` label) for convenience:
 ```
 # HELP machine_account_balance the last observed balance of this node's machine account, in units of FLOW
 # TYPE machine_account_balance gauge
