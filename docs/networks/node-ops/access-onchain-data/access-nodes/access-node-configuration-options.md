@@ -150,6 +150,14 @@ There are a few other flags available to configure some limits used while execut
 - `--script-execution-max-error-length`: Controls the maximum number of characters to include in script error messages. Default is `1000`.
 - `--script-execution-log-time-threshold`: Controls the run time after which a log message is emitted about the script. Default is `1s`.
 
+### Setup Using Local Data with Transaction Results and Events
+
+Local data usage for transaction results and events are controlled with the `--tx-result-query-mode` and `--event-query-mode` corresponding flags, which can have one of the following values:
+
+- `execution-nodes-only` (default): Requests are executed using an upstream execution node.
+- `failover` (recommended): Requests are executed locally first. If the execution fails for any reason besides a script error, it is retried on an upstream execution node. If data for the block is not available yet locally, the script is also retried on the EN.
+- `compare`: Requests are executed both locally and on an execution node, and a comparison of the results and errors are logged.
+- `local-only`: Requests are executed locally and the result is returned directly.
 
 # Troubleshooting
 
