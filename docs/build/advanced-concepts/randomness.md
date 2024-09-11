@@ -18,11 +18,11 @@ Flow’s onchain randomness delivers immediate random values within smart contra
 - **DAOs:** Assists in unbiased voting and task assignments through immediate randomness.
 - **Broad Applications:** Extends to any domain requiring impartial randomization, from asset distribution to security mechanisms, all with the added benefit of on-demand availability.
 
-## History of the Distributed Randomnesss Beacon
+## History of the Distributed Randomness Beacon
 
 Within the Flow protocol, the heart of randomness generation lies in the "Distributed Randomness Beacon". 
 This module generates randomness that is distributed across the network while adhering to established cryptographic and security standards. 
-The output from the randomness beacon is a random source for every block that is unpredictable and impartial.
+The output from the randomness beacon is a random source for each block that is unpredictable and impartial.
 
 For over three years, the beacon has ensured protocol security by selecting which consensus node gets to propose the next block and assigning verification nodes to oversee block computations. For those interested in a more detailed exploration of the randomness beacon and its inner workings, you can read [the technical deep dive on the Flow forum](https://forum.flow.com/t/secure-random-number-generator-for-flow-s-smart-contracts/5110).
 
@@ -34,7 +34,7 @@ Cadence has historically provided the `unsafeRandom` function to return a pseudo
 2. A transaction calling into your smart contract can potentially bias the sequence of random numbers which your smart contract internally generates. Currently, the block hash seeds `unsafeRandom`. Consensus nodes can *easily* bias the block hash and **influence the seed for `unsafeRandom`**.
 
 <Callout type="warning">
-`unsafeRandom` is deprecated since the Cadence 1.0 release.
+⚠️ Note `unsafeRandom` is deprecated since the Cadence 1.0 release.
 </Callout>
 
 ## Guidelines for Safe Usage
@@ -93,7 +93,7 @@ There are ideas how to further optimize the developer experience in the future. 
 On Flow, we have absorbed all security complexity into the platform.
 
 [FLIP 123: On-chain Random beacon history for commit-reveal schemes](https://github.com/onflow/flips/blob/main/protocol/20230728-commit-reveal.md#flip-123-on-chain-random-beacon-history-for-commit-reveal-schemes) was introduced to provide a safe pattern to use randomness in transactions so that it's not possible to revert unfavorable randomized transaction results.
-We recommend this approach as a best-practice example for implementing a commit-reveal-recover scheme in Cadence. The `RandomBeaconHistory` contract provides a convenient archive, where for each past block height (starting Nov 2023) the respective “source of randomness” can be retrieved. The `RandomBeaconHistory` contract is automatically executed by the system at each block to store the next source of randomness value.
+We recommend this approach as a best-practice example for implementing a commit-reveal scheme in Cadence. The `RandomBeaconHistory` contract provides a convenient archive, where for each past block height (starting Nov 2023) the respective “source of randomness” can be retrieved. The `RandomBeaconHistory` contract is automatically executed by the system at each block to store the next source of randomness value.
 
 <Callout type="info">
 💡 While the commit-and-reveal scheme mitigates post-selection of results by adversarial clients, Flow’s secure randomness additionally protects against any pre-selection vulnerabilities (like biasing attacks by byzantine miners).
@@ -166,12 +166,12 @@ access(all) fun revealCoinToss(receipt: @Receipt): @FungibleToken.Vault {
 }
 ```
 
-### `revertibleRandom` or the `RandomBeaconHistory` contract:
+### Which random function should be used:
 
 While both are backed by Flow's Randomness Beacon it is important for developers to mindfully choose between `revertibleRandom` or
 seeding their own PRNG utilizing the `RandomBeaconHistory` smart contract:
 
-- With `revertibleRandom` a developer is calling the PRNG that is controlled by the transaction,
+- With `revertibleRandom` a developer is calling the transaction environment,
   which has the power to abort and revert if it doesn't like `revertibleRandom`'s outputs.
   `revertibleRandom` is only suitable for smart contract functions that exclusively run within the trusted transactions.
 - In contrast, the `RandomBeaconHistory` contract is key for effectively implementing a commit-reveal scheme, where the transaction is non-trusted and may revert the random outputs.
