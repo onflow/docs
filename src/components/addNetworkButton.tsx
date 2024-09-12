@@ -46,7 +46,9 @@ export const AddNetworkButton = () => {
               name: 'Flow',
               symbol: 'FLOW',
               decimals: 18,
-           },
+              image:
+                'https://ipfs.io/ipfs/QmQFugEvsfU3ARjjJ7YRLJwSxMfTk54WWzrofekTRBKFaC#x-ipfs-companion-no-redirect',
+            },
             blockExplorerUrls: ['https://evm.flowscan.io/'],
           },
         ],
@@ -62,7 +64,9 @@ export const AddNetworkButton = () => {
       className="my-5 "
       disabled={isNetworkAdded}
       variant="secondary"
-      onClick={() => addFlowNetwork()}
+      onClick={async () => {
+        await addFlowNetwork();
+      }}
     >
       {isNetworkAdded ? 'Flow Network Added!' : 'Add Flow Network'}
     </Button>
