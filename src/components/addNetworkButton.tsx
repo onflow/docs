@@ -42,12 +42,13 @@ export const AddNetworkButton = () => {
             iconUrls: [
               'https://assets-global.website-files.com/5f734f4dbd95382f4fdfa0ea/65b016be9b9cf0a402a67a38_ico-flow-crescendo.png',
             ],
+            icon: 'https://assets-global.website-files.com/5f734f4dbd95382f4fdfa0ea/65b016be9b9cf0a402a67a38_ico-flow-crescendo.png',
             nativeCurrency: {
               name: 'Flow',
               symbol: 'FLOW',
               decimals: 18,
               image:
-                'https://ipfs.io/ipfs/QmQFugEvsfU3ARjjJ7YRLJwSxMfTk54WWzrofekTRBKFaC#x-ipfs-companion-no-redirect',
+                'https://assets-global.website-files.com/5f734f4dbd95382f4fdfa0ea/65b016be9b9cf0a402a67a38_ico-flow-crescendo.png',
             },
             blockExplorerUrls: ['https://evm.flowscan.io/'],
           },
