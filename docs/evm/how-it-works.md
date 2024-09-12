@@ -74,7 +74,7 @@ EVM on Flow supports opcodes listed [here](https://www.evm.codes/?fork=cancun), 
 	Similar to Ethereum it returns the address of block’s beneficiary address. In the case of EVM on Flow, it returns the address of the current sequencer's fee wallet (see Gateway section for more details).
 
 - **PREVRANDAO** (`block.prevrandao`)
-    On Ethereum, this value provides access to beacon chain randomness (see [EIP-4399](https://eips.ethereum.org/EIPS/eip-4399)), Since Flow uses a different approach in consensus and verifiable randomness generation, this value is filled with a random number provided by the Flow protocol ([see here](https://developers.flow.com/build/advanced-concepts/randomness) for more details). While EVM on Flow provides such opcode, to benefit from the full power of randomness on Flow, it's recommended to use the Cadence Arch precompiled contract.
+    On Ethereum, this value provides access to beacon chain randomness (see [EIP-4399](https://eips.ethereum.org/EIPS/eip-4399)), Since Flow uses a different approach in consensus and verifiable randomness generation, this value is filled with a random number provided by the Flow protocol. While EVM on Flow provides such opcode, it is recommended not to rely on this value for security-sensitive applications, as it is the case on Ethereum. In order to benefit from the full power of secure randomness on Flow, it's recommended to use the [Cadence Arch precompiles](https://github.com/onflow/docs/blob/main/docs/evm/how-it-works.md#precompiled-contracts).
     
 
 ## Precompiled Contracts
