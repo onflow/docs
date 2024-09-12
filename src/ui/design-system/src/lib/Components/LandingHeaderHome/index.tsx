@@ -1,6 +1,5 @@
 import React, { type ReactNode } from 'react';
 import LandingImage from '../../../../images/misc/landing-home.png';
-import LandingImage2x from '../../../../images/misc/landing-home@2x.png';
 import { ButtonLink } from '../Button';
 
 export interface LandingHeaderHomeProps {
@@ -30,7 +29,12 @@ export function LandingHeaderHome({
           {description}
         </div>
         <div className="mb-4">
-          <ButtonLink size={'sm'} variant="accent" href={'/build/flow'} className={"hover:no-underline hover:opacity-80"}>
+          <ButtonLink
+            size={'sm'}
+            variant="accent"
+            href={'/build/flow'}
+            className={'hover:no-underline hover:opacity-80'}
+          >
             Read Docs
           </ButtonLink>
         </div>
@@ -38,7 +42,7 @@ export function LandingHeaderHome({
       <div className="pr-0 md:ml-auto md:mr-14 md:pl-4">
         <img
           src={LandingImage}
-          srcSet={`${LandingImage}, ${LandingImage2x} 2x`}
+          srcSet={`${LandingImage}, ${LandingImage} 1.7x`}
           alt=""
           className="max-h-[195px] object-cover md:max-h-[380px]"
         />
