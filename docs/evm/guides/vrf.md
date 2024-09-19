@@ -277,6 +277,10 @@ You need to generate a **commitment hash** from a nonce (random number) and your
 
 2. The contract will fetch a secure random number from **Cadence Arch** and determine whether you won or lost based on the outcome (0 for heads, 1 for tails).
 
+3. Input the testnet address you are using to interact with the contract into the bets field to see if the result matched the bet.
+
+_Note: You need to run **resetBet** between commits in this example in order to commit a new bet._
+
 ## Read More
 
 For further details on Flow’s randomness and secure development practices, check out the [Flow Randomness Documentation](https://developers.flow.com/build/advanced-concepts/randomness). You can also view an exammple in both Solidity and Cadence of a [cointoss implentation](https://github.com/onflow/random-coin-toss/tree/add-solidity-impl) using the VRF.
