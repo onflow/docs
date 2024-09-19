@@ -143,7 +143,7 @@ rpc GetLatestBlock (GetLatestBlockRequest) returns (BlockResponse)
 
 ```proto
 message GetLatestBlockRequest {
-    bool is_sealed = 1;
+  bool is_sealed = 1;
   bool full_block_response = 2;
 }
 ```
@@ -406,7 +406,7 @@ message TransactionResultResponse {
 ```
 ### GetTransactionResultByIndex
 
-`GetTransactionResultByIndex` gets the execution result of a transaction at a specified block and index.
+`GetTransactionResultByIndex` gets a transaction's result at a specified block and index.
 
 ```proto
 rpc GetTransactionResultByIndex(GetTransactionByIndexRequest) returns (TransactionResultResponse);
@@ -1225,7 +1225,7 @@ message BlockHeader {
 | height                | Height of the block in the chain                                                                                  |
 | timestamp             | The time at which this block was proposed                                                                         |
 | payload_hash          | A hash of the payload of this block                                                                               |
-| view                  | Number at which this block was proposed.                                                                          |
+| view                  | View number during which this block was proposed.                                                                 |
 | parent_voter_ids      | An array that represents all the voters ids for the parent block                                                  |
 | parent_voter_sig_data | An aggregated signature over the parent block                                                                     |
 | chain_id              | Chain ID helps identify the Flow network. It can be one of `flow-mainnet`, `flow-testnet` or `flow-emulator`      |
@@ -1490,7 +1490,6 @@ message ExecutionResult {
 ### Execution Receipt Meta
 
 ExecutionReceiptMeta contains the fields from the Execution Receipts that vary from one executor to another
-(assuming they commit to the same result).
 
 ```proto
 message ExecutionReceiptMeta {
