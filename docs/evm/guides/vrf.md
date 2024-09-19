@@ -248,7 +248,7 @@ contract SecureCoinToss {
 
 ---
 
-### **Steps to Test the Coin Toss Contract**
+### **Steps to Interact With the Coin Toss Contract**
 
 **Step 1: Commit Phase**
 
