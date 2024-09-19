@@ -530,7 +530,7 @@ access(all) contract FooBar: NonFungibleToken {
         /// Allows a caller to borrow a reference to a specific NFT
         /// so that they can get the metadata views for the specific NFT
         access(all) view fun borrowNFT(_ id: UInt64): &{NonFungibleToken.NFT}? {
-            return (&self.ownedNFTs[id] as &{NonFungibleToken.NFT}?)!
+            return &self.ownedNFTs[id]
         }
 
         // ...[rest of code]...
