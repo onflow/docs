@@ -149,15 +149,17 @@ There are a few other flags available to configure some limits used while execut
 - `--script-execution-timeout`: Controls the maximum runtime for a script before it times out. Default is `10s`.
 - `--script-execution-max-error-length`: Controls the maximum number of characters to include in script error messages. Default is `1000`.
 - `--script-execution-log-time-threshold`: Controls the run time after which a log message is emitted about the script. Default is `1s`.
+- `--script-execution-min-height`: Controls the lowest block height to allow for script execution. Default: `no limit`.
+- `--script-execution-max-height`: Controls the highest block height to allow for script execution. Default: `no limit`.
+- `--register-cache-size`: Controls the number of registers to cache for script execution. Default: `0 (no cache)`.
 
 ### Setup Using Local Data with Transaction Results and Events
 
 Local data usage for transaction results and events are controlled with the `--tx-result-query-mode` and `--event-query-mode` corresponding flags, which can have one of the following values:
 
-- `execution-nodes-only` (default): Requests are executed using an upstream execution node.
-- `failover` (recommended): Requests are executed locally first. If the execution fails for any reason besides a script error, it is retried on an upstream execution node. If data for the block is not available yet locally, the script is also retried on the EN.
-- `compare`: Requests are executed both locally and on an execution node, and a comparison of the results and errors are logged.
-- `local-only`: Requests are executed locally and the result is returned directly.
+- `execution-nodes-only` (default): Requests are forwarded to an upstream execution node.
+- `failover` (recommended): - `failover` (recommended): Requests are handled locally first. If the processing fails for any reason, it is retried on an upstream execution node. If data for the block is not available yet locally, the script is also retried on the EN.
+- `local-only`: Requests are handled locally and the result is returned directly.
 
 # Troubleshooting
 
