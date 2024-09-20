@@ -109,7 +109,7 @@ import "EVM"
 
 // Note that this is a simplified example & will not handle cases where the COA already exists
 transaction() {
-    prepare(signer: auth(SaveValue) &Account) {
+    prepare(signer: auth(SaveValue, IssueStorageCapabilityController, PublishCapability) &Account) {
         let storagePath = /storage/evm
         let publicPath = /public/evm
 
@@ -119,7 +119,7 @@ transaction() {
 
         // Publish a public capability to the COA
         let cap = signer.capabilities.storage.issue<&EVM.CadenceOwnedAccount>(storagePath)
-        signer.capabilities.link<&EVM.CadenceOwnedAccount>(cap, at: publicPath)
+        signer.capabilities.publish(cap, at: publicPath)
     }
 }
 ```
