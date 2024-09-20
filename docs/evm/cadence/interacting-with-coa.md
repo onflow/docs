@@ -136,7 +136,7 @@ import "EVM"
 access(all)
 fun main(address: Address): EVM.EVMAddress {
     // Get the desired Flow account holding the COA in storage
-    let account: = getAuthAccount<auth(Storage) &Account>(address)
+    let account = getAuthAccount<auth(Storage) &Account>(address)
 
     // Borrow a reference to the COA from the storage location we saved it to
     let coa = account.storage.borrow<&EVM.CadenceOwnedAccount>(
