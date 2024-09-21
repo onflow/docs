@@ -217,9 +217,8 @@ transaction(amount: UFix64) {
     prepare(signer: auth(BorrowValue) &Account) {
         // Borrow the public capability to the COA from the desired account
         // This script could be modified to deposit into any account with a `EVM.CadenceOwnedAccount` capability
-        self.coa = signer.capabilities.borrow<&EVM.CadenceOwnedAccount>(
-            from: /public/evm
-        ) ?? panic("Could not borrow reference to the COA")
+        self.coa = signer.capabilities.borrow<&EVM.CadenceOwnedAccount>(/public/evm)
+            ?? panic("Could not borrow reference to the COA")
 
         // Withdraw the balance from the COA, we will use this later to deposit into the receiving account
         let vaultRef = signer.storage.borrow<auth(FungibleToken.Withdraw) &FlowToken.Vault>(
@@ -230,7 +229,7 @@ transaction(amount: UFix64) {
 
     execute {
         // Deposit the withdrawn tokens into the COA
-        coa.deposit(from: <-self.sentVault)
+        self.coa.deposit(from: <-self.sentVault)
     }
 }
 ```
