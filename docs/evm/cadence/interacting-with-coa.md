@@ -275,7 +275,7 @@ transaction(amount: UFix64) {
 
     execute {
         // Deposit the withdrawn tokens into the receiving vault
-        receiver.deposit(from: <-self.sentVault)
+        self.receiver.deposit(from: <-self.sentVault)
     }
 }
 ```
