@@ -293,7 +293,7 @@ This transaction will use the signer's COA to call a contract method with the de
 ```cadence
 import "EVM"
 
-transaction(evmContractHex: String, signature: String, args: [AnyStruct], gasLimit: UInt64, value: UFix64) {
+transaction(evmContractHex: String, signature: String, args: [AnyStruct], gasLimit: UInt64, flowValue: UFix64) {
     let coa: auth(EVM.Call) &EVM.CadenceOwnedAccount
 
     prepare(signer: auth(BorrowValue) &Account) {
@@ -313,11 +313,11 @@ transaction(evmContractHex: String, signature: String, args: [AnyStruct], gasLim
         )
         // Define the value as EVM.Balance struct
         let value = EVM.Balance(attoflow: 0)
-        value.setFLOW(flow: value)
+        value.setFLOW(flow: flowValue)
         // Call the contract at the given EVM address with the given data, gas limit, and value
         // These values could be configured through the transaction arguments or other means
         // however, for simplicity, we will hardcode them here
-        let result: EVM.Result = coa.call(
+        let result: EVM.Result = self.coa.call(
             to: contractAddress,
             data: calldata,
             gasLimit: gasLimit,
