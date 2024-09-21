@@ -156,6 +156,6 @@ The **`revertibleRandom()`** function can be directly used to generate a pseudo-
 
 ## Read More
 
-For further details on Flow’s randomness and secure development practices, check out the [Flow Randomness Documentation](https://developers.flow.com/build/advanced-concepts/randomness). You can also view an exammple in both Solidity and Cadence of a [cointoss implentation](https://github.com/onflow/random-coin-toss/tree/add-solidity-impl) using the VRF.
+For further details on Flow’s randomness and secure development practices, check out the [Flow Randomness Documentation](https://developers.flow.com/build/advanced-concepts/randomness). You can also view an exammple in both Solidity and Cadence of a [cointoss implentation](https://github.com/onflow/random-coin-toss/) using the VRF.
 
 _This documentation was contributed by Noah Naizir, a community developer._
