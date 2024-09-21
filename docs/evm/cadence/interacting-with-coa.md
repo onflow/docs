@@ -136,7 +136,7 @@ import "EVM"
 access(all)
 fun main(address: Address): EVM.EVMAddress {
     // Get the desired Flow account holding the COA in storage
-    let account: = getAuthAccount<auth(Storage) &Account>(address)
+    let account = getAuthAccount<auth(Storage) &Account>(address)
 
     // Borrow a reference to the COA from the storage location we saved it to
     let coa = account.storage.borrow<&EVM.CadenceOwnedAccount>(
@@ -168,7 +168,7 @@ import "EVM"
 access(all)
 fun main(address: Address): EVM.Balance {
     // Get the desired Flow account holding the COA in storage
-    let account: = getAuthAccount<auth(Storage) &Account>(address)
+    let account = getAuthAccount<auth(Storage) &Account>(address)
 
     // Borrow a reference to the COA from the storage location we saved it to
     let coa = account.storage.borrow<&EVM.CadenceOwnedAccount>(
@@ -217,9 +217,8 @@ transaction(amount: UFix64) {
     prepare(signer: auth(BorrowValue) &Account) {
         // Borrow the public capability to the COA from the desired account
         // This script could be modified to deposit into any account with a `EVM.CadenceOwnedAccount` capability
-        self.coa = signer.capabilities.borrow<&EVM.CadenceOwnedAccount>(
-            from: /public/evm
-        ) ?? panic("Could not borrow reference to the COA")
+        self.coa = signer.capabilities.borrow<&EVM.CadenceOwnedAccount>(/public/evm)
+            ?? panic("Could not borrow reference to the COA")
 
         // Withdraw the balance from the COA, we will use this later to deposit into the receiving account
         let vaultRef = signer.storage.borrow<auth(FungibleToken.Withdraw) &FlowToken.Vault>(
@@ -230,7 +229,7 @@ transaction(amount: UFix64) {
 
     execute {
         // Deposit the withdrawn tokens into the COA
-        coa.deposit(from: <-self.sentVault)
+        self.coa.deposit(from: <-self.sentVault)
     }
 }
 ```
@@ -276,7 +275,7 @@ transaction(amount: UFix64) {
 
     execute {
         // Deposit the withdrawn tokens into the receiving vault
-        receiver.deposit(from: <-self.sentVault)
+        self.receiver.deposit(from: <-self.sentVault)
     }
 }
 ```
@@ -294,7 +293,7 @@ This transaction will use the signer's COA to call a contract method with the de
 ```cadence
 import "EVM"
 
-transaction(evmContractHex: String, signature: String, args: [AnyStruct], gasLimit: UInt64, value: UFix64) {
+transaction(evmContractHex: String, signature: String, args: [AnyStruct], gasLimit: UInt64, flowValue: UFix64) {
     let coa: auth(EVM.Call) &EVM.CadenceOwnedAccount
 
     prepare(signer: auth(BorrowValue) &Account) {
@@ -314,11 +313,11 @@ transaction(evmContractHex: String, signature: String, args: [AnyStruct], gasLim
         )
         // Define the value as EVM.Balance struct
         let value = EVM.Balance(attoflow: 0)
-        value.setFLOW(flow: value)
+        value.setFLOW(flow: flowValue)
         // Call the contract at the given EVM address with the given data, gas limit, and value
         // These values could be configured through the transaction arguments or other means
         // however, for simplicity, we will hardcode them here
-        let result: EVM.Result = coa.call(
+        let result: EVM.Result = self.coa.call(
             to: contractAddress,
             data: calldata,
             gasLimit: gasLimit,
