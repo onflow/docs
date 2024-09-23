@@ -47,7 +47,7 @@ If you had set the [dynamic bootstrap arguments](https://developers.flow.com/net
   - For `execution` node type it will generally be `testnet-x-execution` or `mainnet-x-execution`.
   - For `access` node:
     - It will `testnet-x` or `mainnet-x` if execution data indexing is not enabled.
-    - It will `testnet-x-execution` or `mainnet-x-execution` is execution data indexing is enabled.
+    - It will `testnet-x-execution` or `mainnet-x-execution` if execution data indexing is enabled.
 
 - `YOUR_NODE_TYPE` should be one of `collection`, `consensus`, `execution`, `verification`, `access` based on the node(s) that you are running.
 
