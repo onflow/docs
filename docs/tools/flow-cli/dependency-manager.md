@@ -72,13 +72,15 @@ This will look at all the dependencies you have in your `flow.json`, install the
 
 ## `discover`
 
-The `discover` command is used to interactively discover and install core contracts for your project. It will guide you through the process of selecting an available contracts and adding it to your `flow.json` file.
+The `discover` command is used to interactively discover and install core contracts for your project. Core contracts are a standard set of smart contracts maintained by the Flow Foundation that are commonly used across the Flow ecosystem (learn more about core contracts [here](../../build/core-contracts/index.md)).
+
+To use the `discover` command, run the following command in your project directory:
 
 ```
 flow dependencies discover
 ```
 
-You will then be presented with a list of available core contracts to install.
+You will then be presented with a list of available core contracts to install, for example:
 
 ```shell
 Select any core contracts you would like to install or skip to continue.
@@ -94,7 +96,7 @@ Use arrow keys to navigate, space to select, enter to confirm or skip, q to quit
   [ ] FlowStorageFees
   [ ] FlowFees
   [ ] FungibleTokenSwitchboard
-  [ ] EV
+  [ ] EVM
 ```
 
-After selecting the contracts you would like to install, you can confirm your selection by pressing `enter`. The selected contracts will be added to your `flow.json` file and accessible in your project.
+After selecting any contracts you would like to install, you can confirm your selection by pressing `enter`. The selected contracts will be added to your `flow.json` file and accessible in your project.
