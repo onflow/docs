@@ -15,11 +15,11 @@ If you know the address and name of the contract you want to install (this can u
 
 `flow dependencies add testnet://7e60df042a9c0868.FlowToken`
 
-For core contracts, you may add them to your project using a simplified syntax using only the contract name:
+For core contracts, you can add them to your project using a simplified syntax using only the contract name (learn more about core contracts [here](../../build/core-contracts/index.md)), for example:
 
 `flow dependencies add FlowToken`
 
-This will default to using Flow Mainnet as the source network (e.g. this command is equivalent to `flow dependencies add mainnet://1654653399040a61.FlowToken`).
+Th command will default to using Flow Mainnet as the source network (i.e. this command is functionally equivalent to `flow dependencies add mainnet://1654653399040a61.FlowToken`).
 
 > Note: You can also use the shorthand `deps`
 
