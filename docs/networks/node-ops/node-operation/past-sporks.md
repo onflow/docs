@@ -8,6 +8,19 @@ A JSON version of the information below can be found in [onflow/flow/sporks.json
 
 ## Mainnet Sporks
 
+## Mainnet 26
+
+| Spork Info                                                                              |
+|:----------------------------------------------------------------------------------------|
+| **Access Node**: access.mainnet.nodes.onflow.org:9000                                   |
+| **Date**: Sep 25, 2024                                                                  |
+| **Root Height**: 88226267                                                               |
+| **Root Parent ID**: 71052eb6e774ae5065b31c604a85af47fa16d5c53e54b9a992581c1ecf0ecfac    |
+| **Root State Commit**: 3bba639062a723af1b44b1dfe07e795d158482f02f807f1df0b7c39edd6a8cca |
+| **Git Commit**: 25d9c2a9b89bac8fa003ca67928eb79b1427ea17                                |
+| **Branch/Tag**: v0.37.16-patch.1                                                        |
+| **Docker Image Tag**: v0.37.16-patch.1                                                  |
+
 ## Mainnet 25
 
 | Spork Info                                                                               |
