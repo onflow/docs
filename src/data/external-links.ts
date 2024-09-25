@@ -1,5 +1,5 @@
 export const externalLinks = {
-  discord: "https://discord.gg/flowblockchain",
+  discord: "https://discord.gg/flow",
   discourse: "https://forum.onflow.org/",
   flow: "https://onflow.org/",
   github: "https://github.com/onflow",

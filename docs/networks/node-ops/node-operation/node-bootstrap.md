@@ -251,7 +251,7 @@ $ ./boot-tools/transit prepare -b ./bootstrap -r consensus
 This will generate the public and private transit keys under the bootstrap folder.
 The transit keys are used to transfer the DKG keys after a network upgrade.
 
-Please share the **public** transit key with the Flow Foundation via [discord](https://discord.com/channels/613813861610684416/694291244020662273) or [email](mailto::governance@flow.com).
+Please share the **public** transit key with the Flow Foundation via discord or [email](mailto::governance@flow.com).
 
 ## Step 3 - Start Your Flow Node
 
