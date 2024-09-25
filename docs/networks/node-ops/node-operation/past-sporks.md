@@ -23,16 +23,16 @@ A JSON version of the information below can be found in [onflow/flow/sporks.json
 
 ## Mainnet 25
 
-| Spork Info                                                                               |
-|:-----------------------------------------------------------------------------------------|
-| **Access Node**: access.mainnet.nodes.onflow.org:9000                                    |
-| **Date**: Sep 4, 2024                                                                    |
-| **Root Height**: 85981135                                                                |
-| **Root Parent ID**: bc16d37060cb408163a04afe406b9c9398a31663c839de35b92e3c3b10bcf834     |
-| **Root State Commit**: dead79e8f86d20ea3214735d4247b7fac1b4408e93e9b092fe0566cf40cecb9e  |
-| **Git Commit**: feabd3a4f9baaa5d7770a312e5b8dc1bd94b1edb                                 |
-| **Branch/Tag**: [v0.37.10](https://github.com/onflow/flow-go/releases/tag/v0.37.10)      |
-| **Docker Image Tag**: v0.37.10                                                           |
+| Spork Info                                                                              |
+|:----------------------------------------------------------------------------------------|
+| **Access Node**: access-001.mainnet25.nodes.onflow.org:9000                             |
+| **Date**: Sep 4, 2024                                                                   |
+| **Root Height**: 85981135                                                               |
+| **Root Parent ID**: bc16d37060cb408163a04afe406b9c9398a31663c839de35b92e3c3b10bcf834    |
+| **Root State Commit**: dead79e8f86d20ea3214735d4247b7fac1b4408e93e9b092fe0566cf40cecb9e |
+| **Git Commit**: feabd3a4f9baaa5d7770a312e5b8dc1bd94b1edb                                |
+| **Branch/Tag**: [v0.37.10](https://github.com/onflow/flow-go/releases/tag/v0.37.10)     |
+| **Docker Image Tag**: v0.37.10                                                          |
 
 ## Mainnet 24
 
