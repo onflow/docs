@@ -8,12 +8,25 @@ A JSON version of the information below can be found in [onflow/flow/sporks.json
 
 ## Mainnet Sporks
 
+## Mainnet 25
+
+| Spork Info                                                                               |
+|:-----------------------------------------------------------------------------------------|
+| **Access Node**: access.mainnet.nodes.onflow.org:9000                                    |
+| **Date**: Sep 4, 2024                                                                    |
+| **Root Height**: 85981135                                                                |
+| **Root Parent ID**: bc16d37060cb408163a04afe406b9c9398a31663c839de35b92e3c3b10bcf834     |
+| **Root State Commit**: dead79e8f86d20ea3214735d4247b7fac1b4408e93e9b092fe0566cf40cecb9e  |
+| **Git Commit**: feabd3a4f9baaa5d7770a312e5b8dc1bd94b1edb                                 |
+| **Branch/Tag**: [v0.37.10](https://github.com/onflow/flow-go/releases/tag/v0.37.10)      |
+| **Docker Image Tag**: v0.37.10                                                           |
+
 ## Mainnet 24
 
 | Spork Info                                                                              |
-| :-------------------------------------------------------------------------------------- |
-| **Access Node**: access.mainnet.nodes.onflow.org:9000                                   |
-| **Date**: Nov 8, 2023                                                                  |
+|:----------------------------------------------------------------------------------------|
+| **Access Node**: access-001.mainnet24.nodes.onflow.org:9000                             |
+| **Date**: Nov 8, 2023                                                                   |
 | **Root Height**: 65264619                                                               |
 | **Root Parent ID**: aace2d9b6e66067989d0f71c2efff38fe30d88da61e3d80946c7e7b4ee2bbc2f    |
 | **Root State Commit**: 709530929e4968daff19c303ef1fc5f0a7649b3a1ce7d5ee5202056969524c94 |
@@ -434,32 +447,44 @@ While FCL v0.0.67 is not strictly necessary to use Mainnet 6, we strongly recomm
 
 ## Candidate 4
 
-| Spork Info                                                                             |
-| :------------------------------------------------------------------------------------- |
-| **Access Node**: access-001.candidate4.nodes.onflow.org:9000                           |
-| **Date**: Jul 14, 2020                                                                 |
-| **Root Height**: 1065711                                                               |
-| **Root Parent ID**: 68c2bbe68524b50f5d689bc2ac7ad2dd70e88ed7dd15ad6c3cdf6ea314cb1aa3   |
-| **Root State Commit**: c05086e4d1d428d3b9af5bd8b81d8780054f783ef4eec3ca28b491202e9ac696|
-| **Git Commit**: b9b197280d6590576f1ef183bc3d04d41d6be587                               |
-| **Branch/Tag**:                                                                  |
-| **Docker Image Tag**:                                                                        |
+| Spork Info                                                                              |
+|:----------------------------------------------------------------------------------------|
+| **Access Node**: access-001.candidate4.nodes.onflow.org:9000                            |
+| **Date**: Jul 14, 2020                                                                  |
+| **Root Height**: 1065711                                                                |
+| **Root Parent ID**: 68c2bbe68524b50f5d689bc2ac7ad2dd70e88ed7dd15ad6c3cdf6ea314cb1aa3    |
+| **Root State Commit**: c05086e4d1d428d3b9af5bd8b81d8780054f783ef4eec3ca28b491202e9ac696 |
+| **Git Commit**: b9b197280d6590576f1ef183bc3d04d41d6be587                                |
+| **Branch/Tag**:                                                                         |
+| **Docker Image Tag**:                                                                   |
 
 ---
 
 ## Testnet Sporks
 
+## Devnet 52
+
+| Spork Info                                                                              |
+|:----------------------------------------------------------------------------------------|
+| **Date**: Sept 24th, 2024                                                               |
+| **Root Height**: 218215349                                                              |
+| **Root Parent ID**: 20dd925a750399493cf7455f199c32c952e8010a6c0b4424dba00a193fa18e44    |
+| **Root State Commit**: b0498700398cdc8c0c9368cc2f82fde62e8fe4b06e9c8af6c9bb619ab499e6c3 |
+| **Git Commit**: 25d9c2a9b89bac8fa003ca67928eb79b1427ea17                                |
+| **Branch/Tag**: v0.37.16-patch.1                                                        |
+| **Docker Image Tag**: v0.37.16-patch.1                                                  |
+
 ## Devnet 51
 
-| Spork Info                                                                                                                  |
-|:----------------------------------------------------------------------------------------------------------------------------|
-| **Date**: Aug 14th, 2024                                                                                                    |
-| **Root Height**: 211176670                                                                                                  |
-| **Root Parent ID**: c92e07e5d4fbb3a64e0091085a190a4a1119bfc628c71efe513e373dc0482f5a                                        |
-| **Root State Commit**: c3af77992f253f4dcfeac808912ff68e6f10923aa3fc4541a2e39eb9786c9eb3                                     |
-| **Git Commit**: eeac47931cd6837ec6e29c4c0480609238959ccd                                                                    |
-| **Branch/Tag**: v0.37.1
-| **Docker Image Tag**: v0.37.1
+| Spork Info                                                                              |
+|:----------------------------------------------------------------------------------------|
+| **Date**: Aug 14th, 2024                                                                |
+| **Root Height**: 211176670                                                              |
+| **Root Parent ID**: c92e07e5d4fbb3a64e0091085a190a4a1119bfc628c71efe513e373dc0482f5a    |
+| **Root State Commit**: c3af77992f253f4dcfeac808912ff68e6f10923aa3fc4541a2e39eb9786c9eb3 |
+| **Git Commit**: eeac47931cd6837ec6e29c4c0480609238959ccd                                |
+| **Branch/Tag**: v0.37.1                                                                 |
+| **Docker Image Tag**: v0.37.1                                                           |
 
 ## Devnet 50
 

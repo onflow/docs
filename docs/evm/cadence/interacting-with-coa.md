@@ -109,7 +109,7 @@ import "EVM"
 
 // Note that this is a simplified example & will not handle cases where the COA already exists
 transaction() {
-    prepare(signer: auth(SaveValue) &Account) {
+    prepare(signer: auth(SaveValue, IssueStorageCapabilityController, PublishCapability) &Account) {
         let storagePath = /storage/evm
         let publicPath = /public/evm
 
@@ -119,7 +119,7 @@ transaction() {
 
         // Publish a public capability to the COA
         let cap = signer.capabilities.storage.issue<&EVM.CadenceOwnedAccount>(storagePath)
-        signer.capabilities.link<&EVM.CadenceOwnedAccount>(cap, at: publicPath)
+        signer.capabilities.publish(cap, at: publicPath)
     }
 }
 ```
@@ -136,7 +136,7 @@ import "EVM"
 access(all)
 fun main(address: Address): EVM.EVMAddress {
     // Get the desired Flow account holding the COA in storage
-    let account: = getAuthAccount<auth(Storage) &Account>(address)
+    let account = getAuthAccount<auth(Storage) &Account>(address)
 
     // Borrow a reference to the COA from the storage location we saved it to
     let coa = account.storage.borrow<&EVM.CadenceOwnedAccount>(
@@ -147,6 +147,14 @@ fun main(address: Address): EVM.EVMAddress {
     return coa.address()
 }
 ```
+
+If you'd prefer the hex representation of the address, you instead return using the `EVMAddress.toString()` function:
+
+```cadence
+return coa.address().toString()
+```
+
+The above will return the EVM address as a string; however note that Cadence does not prefix hex strings with `0x`.
 
 ## Getting the Flow Balance of a COA
 
@@ -160,7 +168,7 @@ import "EVM"
 access(all)
 fun main(address: Address): EVM.Balance {
     // Get the desired Flow account holding the COA in storage
-    let account: = getAuthAccount<auth(Storage) &Account>(address)
+    let account = getAuthAccount<auth(Storage) &Account>(address)
 
     // Borrow a reference to the COA from the storage location we saved it to
     let coa = account.storage.borrow<&EVM.CadenceOwnedAccount>(
@@ -171,6 +179,21 @@ fun main(address: Address): EVM.Balance {
     return coa.balance()
 }
 ```
+
+You can also easily get the `UFix64` FLOW balance of any EVM address with this script:
+
+```cadence
+import "EVM"
+
+access(all)
+fun main(addressHex: String): UFix64 {
+    let addr = EVM.addressFromString(addressHex)
+    return addr.balance().inFLOW()
+}
+```
+
+The above script is helpful if you already know the COA address and can provide the hex representation directly.
+
 
 ## Depositing and Withdrawing Flow Tokens
 
@@ -191,12 +214,11 @@ transaction(amount: UFix64) {
     let coa: &EVM.CadenceOwnedAccount
     let sentVault: @FlowToken.Vault
 
-    prepare(signer: auth(Capabilities, Storage) &Account) {
+    prepare(signer: auth(BorrowValue) &Account) {
         // Borrow the public capability to the COA from the desired account
         // This script could be modified to deposit into any account with a `EVM.CadenceOwnedAccount` capability
-        self.coa = signer.capabilities.borrow<&EVM.CadenceOwnedAccount>(
-            from: /public/evm
-        ) ?? panic("Could not borrow reference to the COA")
+        self.coa = signer.capabilities.borrow<&EVM.CadenceOwnedAccount>(/public/evm)
+            ?? panic("Could not borrow reference to the COA")
 
         // Withdraw the balance from the COA, we will use this later to deposit into the receiving account
         let vaultRef = signer.storage.borrow<auth(FungibleToken.Withdraw) &FlowToken.Vault>(
@@ -207,7 +229,7 @@ transaction(amount: UFix64) {
 
     execute {
         // Deposit the withdrawn tokens into the COA
-        coa.deposit(from: <-self.sentVault)
+        self.coa.deposit(from: <-self.sentVault)
     }
 }
 ```
@@ -233,7 +255,7 @@ transaction(amount: UFix64) {
     let sentVault: @FlowToken.Vault
     let receiver: &{FungibleToken.Receiver}
 
-    prepare(signer: auth(Storage, EVM.Withdraw) &Account) {
+    prepare(signer: auth(BorrowValue) &Account) {
         // Borrow a reference to the COA from the storage location we saved it to with the `EVM.Withdraw` entitlement
         let coa = signer.storage.borrow<auth(EVM.Withdraw) &EVM.CadenceOwnedAccount>(
             from: /storage/evm
@@ -253,7 +275,7 @@ transaction(amount: UFix64) {
 
     execute {
         // Deposit the withdrawn tokens into the receiving vault
-        receiver.deposit(from: <-self.sentVault)
+        self.receiver.deposit(from: <-self.sentVault)
     }
 }
 ```
@@ -266,15 +288,15 @@ This is a basic example which only transfers tokens between a single user's COA 
 
 To interact with smart contracts on the EVM, you can use the `call` function provided by the COA resource. This function takes the EVM address of the contract you want to call, the data you want to send, the gas limit, and the value you want to send. It will return a `EVM.Result` struct with the result of the call - you will need to handle this result in your Cadence code.
 
-This transaction will call a contract at a given EVM address with a hardcoded data payload, gas limit, and value using the signer's COA:
+This transaction will use the signer's COA to call a contract method with the defined signature and args at a given EVM address, executing with the provided gas limit and value:
 
 ```cadence
 import "EVM"
 
-transaction() {
+transaction(evmContractHex: String, signature: String, args: [AnyStruct], gasLimit: UInt64, flowValue: UFix64) {
     let coa: auth(EVM.Call) &EVM.CadenceOwnedAccount
 
-    prepare(signer: auth(Storage) &Account) {
+    prepare(signer: auth(BorrowValue) &Account) {
         // Borrow an entitled reference to the COA from the storage location we saved it to
         self.coa = signer.storage.borrow<auth(EVM.Call) &EVM.CadenceOwnedAccount>(
             from: /storage/evm
@@ -282,14 +304,24 @@ transaction() {
     }
 
     execute {
+        // Deserialize the EVM address from the hex string
+        let contractAddress = EVM.addressFromString(evmContractHex)
+        // Construct the calldata from the signature and arguments
+        let calldata = EVM.encodeABIWithSignature(
+            signature,
+            args
+        )
+        // Define the value as EVM.Balance struct
+        let value = EVM.Balance(attoflow: 0)
+        value.setFLOW(flow: flowValue)
         // Call the contract at the given EVM address with the given data, gas limit, and value
         // These values could be configured through the transaction arguments or other means
         // however, for simplicity, we will hardcode them here
-        let result: EVM.Result = coa.call(
-            to: 0x1234567890123456789012345678901234567890, // INSERT EVM ADDRESS HERE
-            data: [0x01, 0x02, 0x03], // INSERT DATA HERE
-            gasLimit: 15000000, // INSERT GAS LIMIT HERE (attoflow)
-            value: 0.0 // INSERT VALUE HERE
+        let result: EVM.Result = self.coa.call(
+            to: contractAddress,
+            data: calldata,
+            gasLimit: gasLimit,
+            value: value
         )
 
         // Revert the transaction if the call was not successful
@@ -302,6 +334,11 @@ transaction() {
     }
 }
 ```
+:::info
+Notice that the calldata is encoded in the scope of the transaction. While developers can encode the calldata outside the scope of the transaction and pass the encoded data as an argument, doing so compromises the human-readability of Cadence transactions.
+
+It's encouraged to either define transactions for each COA call and encoded the hardcoded EVM signature and arguments, or to pass in the human-readable arguments and signature and encode the calldata within the transaction. This ensures a more interpretable and therefore transparent transaction.
+:::
 
 ### Deploying a Contract to Flow EVM
 
@@ -312,10 +349,10 @@ This transaction will deploy a contract with the given code using the signer's C
 ```cadence
 import "EVM"
 
-transaction(code: String) {
+transaction(bytecode: String) {
     let coa: auth(EVM.Deploy) &EVM.CadenceOwnedAccount
 
-    prepare(signer: auth(Storage) &Account) {
+    prepare(signer: auth(BorrowValue) &Account) {
         // Borrow an entitled reference to the COA from the storage location we saved it to
         self.coa = signer.storage.borrow<auth(EVM.Deploy) &EVM.CadenceOwnedAccount>(
             from: /storage/evm
@@ -323,10 +360,10 @@ transaction(code: String) {
     }
 
     execute {
-        // Deploy the contract with the given code, gas limit, and value
+        // Deploy the contract with the given compiled bytecode, gas limit, and value
         self.coa.deploy(
-            code: code.decodeHex(),
-            gasLimit: 15000000, // can be adjusted as needed, maxed for simplicity
+            code: bytecode.decodeHex(),
+            gasLimit: 15_000_000, // can be adjusted as needed, hard coded here for simplicity
             value: EVM.Balance(attoflow: 0)
         )
     }

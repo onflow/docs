@@ -74,7 +74,7 @@ EVM on Flow supports opcodes listed [here](https://www.evm.codes/?fork=cancun), 
 	Similar to Ethereum it returns the address of block’s beneficiary address. In the case of EVM on Flow, it returns the address of the current sequencer's fee wallet (see Gateway section for more details).
 
 - **PREVRANDAO** (`block.prevrandao`)
-    On Ethereum, this value provides access to beacon chain randomness (see [EIP-4399](https://eips.ethereum.org/EIPS/eip-4399)), Since Flow uses a different approach in consensus and verifiable randomness generation, this value is filled with a random number provided by the Flow protocol ([see here](https://developers.flow.com/build/advanced-concepts/randomness) for more details). While EVM on Flow provides such opcode, to benefit from the full power of randomness on Flow, it's recommended to use the Cadence Arch precompiled contract.
+    On Ethereum, this value provides access to beacon chain randomness (see [EIP-4399](https://eips.ethereum.org/EIPS/eip-4399)), Since Flow uses a different approach in consensus and verifiable randomness generation, this value is filled with a random number provided by the Flow protocol. While EVM on Flow provides such opcode, it is recommended not to rely on this value for security-sensitive applications, as it is the case on Ethereum. In order to benefit from the full power of secure randomness on Flow, it's recommended to use the [Cadence Arch precompiles](https://github.com/onflow/docs/blob/main/docs/evm/how-it-works.md#precompiled-contracts).
     
 
 ## Precompiled Contracts
@@ -87,8 +87,9 @@ Functions currently available on the Cadence Arch smart contract are:
 
 - `FlowBlockHeight() uint64` (signature: `0x53e87d66`) returns the current Flow block height, this could be used instead of Flow EVM block heights to trigger scheduled actions given it's more predictable when a block might be formed.
 - `VerifyCOAOwnershipProof(bytes32 _hash, bytes memory _signature)(bool success)` returns true if the proof is valid. An ownership proof verifies that a Flow wallet controls a COA account (see the next section for more details on COA).
-- `getRandomSource(uint64) bytes32` returns a secure on-chain random source. This can be used for the creation of PRGs (learn more about [secure random on Flow here](https://developers.flow.com/build/advanced-concepts/randomness)).
-- `revertibleRandom() uint64` returns a pseudo-random value that is produced by the Flow PRG and uses a secure on-chain random source with salt as the seed to the generator. Using this random value is safe, but it allows for a transaction to revert in case of an unfavourable outcome, so it must be used carefully and it's best to [follow safety guidelines](https://developers.flow.com/build/advanced-concepts/randomness).
+- `revertibleRandom() uint64` returns a safe pseudo-random value that is produced by the Flow VRF (using Flow internal randomness beacon). The function invokes Cadence's `revertibleRandom<uint64>` described [here](https://developers.flow.com/build/advanced-concepts/randomness). Although the random value is safe, a transaction may revert its results in the case of an unfavourable outcome. The function should only be used by trusted calls where there is no issue with reverting the results. `getRandomSource` must be used instead with untrusted calls. 
+- `getRandomSource(uint64) bytes32` should be used when implementing a [commit-reveal](https://developers.flow.com/build/advanced-concepts/randomness#commit-reveal-scheme) scheme. It returns a secure random source from the Cadence randomness history contract. Learn more about the secure usage of randomness on Flow [here](https://developers.flow.com/build/advanced-concepts/randomness).
+
 
 Here is a sample demonstrating how to call the Cadence Arch.
 ```solidity

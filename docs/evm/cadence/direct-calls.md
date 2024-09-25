@@ -28,7 +28,7 @@ Once you have access to an `EVMAddress`, you can query various pieces of state i
 - `nonce() UInt64` retrieves the nonce associated with the address.
 - `code(): [UInt8]` fetches the code at the address; it returns the smart contract code if applicable, and is empty otherwise.
 
-```
+```cadence
 import EVM from <ServiceAddress>
 
 access(all)
@@ -39,11 +39,23 @@ fun main(bytes: [UInt8; 20]): EVM.Balance {
 }
 ```
 
+Alternatively, you can use the EVM contract's native deserialization to access the balance provided a hex string representing the address:
+
+```cadence
+import EVM from <ServiceAddress>
+
+access(all)
+fun main(addressHex: String): UFix64 {
+    let addr = EVM.addressFromString(addressHex)
+    return addr.balance().inFLOW()
+}
+```
+
 ### Sending Transactions to Flow EVM
 
 To send transactions to Flow EVM, use the `run` function which executes RLP-encoded transactions. RLP (Recursive Length Prefix) encoding is used to efficiently encode data into a byte-array format, suitable for Ethereum-based environments. Here's an example of wrapping and sending a transaction:
 
-```
+```cadence
 import EVM from <ServiceAddress>
 
 transaction(rlpEncodedTransaction: [UInt8], coinbaseBytes: [UInt8; 20]) {
