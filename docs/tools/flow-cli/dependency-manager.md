@@ -16,7 +16,6 @@ If you know the address and name of the contract you want to install (this can u
 `flow dependencies add testnet://7e60df042a9c0868.FlowToken`
 
 > Note: You can also use the shorthand `deps`
-> 
 
 In this command, the string that will be used as the `source` in the `flow.json` after installation is `testnet://7e60df042a9c0868.FlowToken`. This can be broken down into three sections for formatting it yourself for another contract:
 
@@ -64,9 +63,40 @@ flow dependencies install
 
 This will look at all the dependencies you have in your `flow.json`, install them, and all their dependencies.
 
-## Other Things to Note
+### Other Things to Note
 
 - After installation, you will have a local folder named `imports` that you should add to `.gitignore`. This folder is where your dependencies will be stored locally.
 - If your contracts change on the network, the Dependency Manager will ask if you want to update the local dependencies in your `imports` folder. The hash saved in the dependency object is used for this check, so don't remove it.
 - Dependencies will function just like contracts. For instance, you can add them to [`deployments` in your `flow.json`](./deployment/deploy-project-contracts.md) and run `flow project deploy`, as well as import them in your scripts, transactions, and contracts just as you would with a contract you added yourself (e.g., `import "FlowToken"`).
 - Core contract aliases will be automatically added for you across all networks.
+
+## `discover`
+
+The `discover` command is used to interactively discover and install core contracts for your project. Core contracts are a standard set of smart contracts maintained by the Flow Foundation that are commonly used across the Flow ecosystem (learn more about core contracts [here](../../build/core-contracts/index.md)).
+
+To use the `discover` command, run the following command in your project directory:
+
+```
+flow dependencies discover
+```
+
+You will then be presented with a list of available core contracts to install, for example:
+
+```shell
+Select any core contracts you would like to install or skip to continue.
+Use arrow keys to navigate, space to select, enter to confirm or skip, q to quit:
+
+> [ ] FlowEpoch
+  [ ] FlowIDTableStaking
+  [ ] FlowClusterQC
+  [ ] FlowDKG
+  [ ] FlowServiceAccount
+  [ ] NodeVersionBeacon
+  [ ] RandomBeaconHistory
+  [ ] FlowStorageFees
+  [ ] FlowFees
+  [ ] FungibleTokenSwitchboard
+  [ ] EVM
+```
+
+After selecting any contracts you would like to install, you can confirm your selection by pressing `enter`. The selected contracts will be added to your `flow.json` file and accessible in your project.
