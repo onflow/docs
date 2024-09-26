@@ -24,27 +24,54 @@ A simple representation of an account:
 
 ![Screenshot 2023-08-16 at 16.43.07.png](_accounts_images/Screenshot_2023-08-16_at_16.43.07.png)
 
-**Address**
+## Address
 
 A Flow address is represented as 16 hex-encoded characters (usually prefixed with `0x` to indicate hex encoding). Unlike Bitcoin and Ethereum, Flow addresses are not derived from cryptographic public keys. Instead, each Flow address is assigned by the Flow protocol using an on-chain deterministic sequence. The sequence uses an error detection code to guarantee that all addresses differ with at least 2 hex characters. This makes typos resulting in accidental loss of assets not possible.
 
 This decoupling is a unique advantage of Flow, allowing for multiple public keys to be associated with one account, or for a single public key to be used across several accounts.
 
-**Balance**
+## Balance
 
 Each Flow account created on Mainnet will by default [hold a Flow vault that holds a balance and is part of the FungibleToken standard](./flow-token.md). This balance is used to pay for [transaction fees and storage fees](./fees.md). More on that in the fees document.
 
-<Callout type="warning">
+:::warning
+
 The minimum amount of FLOW an account can have is **0.001**.
-</Callout>
+
+:::
 
 This minimum storage fee is provided by the account creator and covers the cost of storing up to 100kB of data in perpetuity. This fee is applied only once and can be "topped up" to add additional storage to an account. The minimum account reservation ensures that most accounts won't run out of storage capacity if anyone deposits anything (like an NFT) to the account. 
 
-**Contracts**
+
+### Maximum available balance
+
+Due to the storage restrictions, there is a maximum available balance that user can withdraw from the wallet. The core contract [`FlowStorageFees`](../core-contracts/05-flow-fees.md#flowstoragefees) provides a function to retrieve that value:  
+
+```cadence
+import "FlowStorageFees"
+
+access(all) fun main(accountAddress: Address): UFix64 {
+  return FlowStorageFees.defaultTokenAvailableBalance(accountAddress)
+}
+```
+
+Alternatively developers can use `availableBalance` property of the `Account`
+
+```cadence
+access(all) fun main(address: Address): UFix64 {
+  let acc = getAccount(address)
+  let balance = acc.availableBalance
+
+  return balance
+}
+
+```
+
+## Contracts
 
 An account can optionally store multiple [Cadence contracts](https://cadence-lang.org/docs/language/contracts). The code is stored as a human-readable UTF-8 encoded string which makes it easy for anyone to inspect the contents.
 
-**Storage**
+## Storage
 
 Each Flow account has an associated storage and capacity. The account's storage used is the byte size of all the data stored in the account's storage. An account's [storage capacity is directly tied to the balance of Flow tokens](./fees.md#storage) an account has. An account can, without any additional cost, use any amount of storage up to its storage capacity. If a transaction puts an account over storage capacity or drops an account's balance below the minimum 0.001 Flow tokens, that transaction fails and is reverted.
 
@@ -56,9 +83,11 @@ During account creation, public keys can be provided which will be used when int
 
 Each account key has a weight that determines the signing power it holds.
 
-<Callout type="warning">
+:::warning
+
 A transaction is not authorized to access an account unless it has a total signature weight greater than or equal to **1000**, the weight threshold.
-</Callout>
+
+:::
 
 For example, an account might contain 3 keys, each with 500 weight:
 
@@ -104,10 +133,11 @@ An account on Flow doesn’t require keys in order to exist, but this makes the 
 
 You can achieve keyless accounts by either removing an existing public key from an account signing with that same key and repeating that action until an account has no keys left, or you can create a new account that has no keys assigned. With account linking you can also have a child account that has no keys but is controlled by the parent.
 
-<Callout type="danger">
+:::danger
+
 Be careful when removing keys from an existing account, because once an account’s total key weights sum to less than 1000, it can no longer be modified.
 
-</Callout>
+:::
 
 ### **Multi-Sig Accounts**
 
@@ -143,10 +173,11 @@ For development purposes, [you can use Flow CLI to easily create emulator, testn
 
 Keys should be generated in a secure manner. Depending on the purpose of the keys different levels of caution need to be taken.
 
-<Callout type="warning">
+:::warning
+
 Anyone obtaining access to a private key can modify the account the key is associated with (assuming it has enough weight). Be very careful how you store the keys.
 
-</Callout>
+:::
 
 For secure production keys, we suggest using key management services such as [Google key management](https://cloud.google.com/security-key-management) or [Amazon KMS](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Overview.Encryption.Keys.html), which are also supported by our CLI and SDKs. Those services are mostly great when integrated into your application. However, for personal use, you can securely use any [existing wallets](../../ecosystem/wallets.md) as well as a [hardware Ledger wallet](../../ecosystem/wallets.md).
 

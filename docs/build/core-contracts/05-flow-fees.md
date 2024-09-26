@@ -4,7 +4,7 @@ sidebar_position: 5
 sidebar_label: Flow Fees
 ---
 
-# FlowFees
+## FlowFees
 
 The `FlowFees` contract is where all the collected flow fees are gathered.
 
@@ -17,7 +17,7 @@ Source: [FlowFees.cdc](https://github.com/onflow/flow-core-contracts/blob/master
 | Testnet                   | `0x912d5440f7e3769e` |
 | Mainnet                   | `0xf919ee77447b7497` |
 
-## Events
+### Events
 
 Important events for `FlowFees` are:
 
@@ -35,7 +35,7 @@ access(all) event FeesDeducted(amount: UFix64, inclusionEffort: UFix64, executio
 access(all) event FeeParametersChanged(surgeFactor: UFix64, inclusionEffortCost: UFix64, executionEffortCost: UFix64)
 ```
 
-# FlowStorageFees
+## FlowStorageFees
 
 The `FlowStorageFees` contract defines the parameters and utility methods for storage fees.
 
@@ -48,7 +48,7 @@ Source: [FlowStorageFees.cdc](https://github.com/onflow/flow-core-contracts/blob
 | Testnet                   | `0x8c5303eaa26202d6` |
 | Mainnet                   | `0xe467b9dd11fa00df` |
 
-## Events
+### Events
 
 Important events for `FlowStorageFees` are:
 
