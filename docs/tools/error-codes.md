@@ -139,7 +139,7 @@ Example:
 `
 
 
-For more information refer to [Fees](../build/basics/fees#maximum-available-balance.md)
+For more information refer to [Fees](../build/basics/fees.md#maximum-available-balance)
 
 
 
