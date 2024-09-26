@@ -1228,6 +1228,11 @@
     {
       "source": "/networks/flow-networks/accessing-previewnet",
       "destination": "/evm/using"
+    },
+    {
+      "source": "/tools/clients/flow-go-sdk/error-codes",
+      "destination": "/tools/error-codes",
+      "permanent": true
     }
   ]
 }
