@@ -77,19 +77,21 @@ Flow's approach to storage capacity is a bit similar to some banks' pricing mode
 
 Each Flow account has associated storage used. The account's storage used is the byte size of all the data stored in the account's storage. Accounts also have a storage capacity, which is directly tied to the amount of Flow tokens an account has. The account can, without any additional cost, use any amount of storage up to its storage capacity. 
 
-<Callout type="warning">
+:::warning
+
 If a transaction puts an account over storage capacity, that transaction fails and is reverted. Likewise, if a transaction would drop an account's balance below 0.001 Flow tokens, which is the minimum an account can have, the transaction would also fail.
 
-</Callout>
+:::
 
 **Storage Capacity**
 
 The storage capacity of an account is dictated by the amount of FLOW it has. 
 
-<Callout type="danger">
+:::danger
+
 The **minimum amount of FLOW an account can have is 0.001**. This minimum is provided by the account creator at account creation.
 
-</Callout>
+:::
 
 The minimum account reservation ensures that most accounts won't run out of storage capacity if anyone deposits anything (like an NFT) to the account.
 
@@ -119,6 +121,29 @@ Adding additional keys, smart contracts, capabilities, resources, etc. to the ac
 
 Data stored on the Flow blockchain is stored in a key-value ledger. Each item’s key contains the address that owns the item and the path to the item. An account can have many keys, therefore flow considers the account key items are stored with. This means that the storage used by each item is the byte length of the item plus the byte length of the item’s key.
 
+### Maximum available balance
+
+Due to the storage restrictions, there is a maximum available balance that user can withdraw from the wallet. The core contract [`FlowStorageFees`](../core-contracts/05-flow-fees.md#flowstoragefees) provides a function to retrieve that value:  
+
+```cadence
+import "FlowStorageFees"
+
+access(all) fun main(accountAddress: Address): UFix64 {
+  return FlowStorageFees.defaultTokenAvailableBalance(accountAddress)
+}
+```
+
+Alternatively developers can use `availableBalance` property of the `Account`
+
+```cadence
+access(all) fun main(address: Address): UFix64 {
+  let acc = getAccount(address)
+  let balance = acc.availableBalance
+
+  return balance
+}
+
+```
 
 ## Practical Understanding of Fees
 
