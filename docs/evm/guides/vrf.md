@@ -144,6 +144,14 @@ function getRandomInRange(uint64 min, uint64 max) public view returns (uint64) {
 }
 ```
 
+:::warning
+The above code is susceptible to the [modulo
+bias](https://research.kudelskisecurity.com/2020/07/28/the-definitive-guide-to-modulo-bias-and-how-to-avoid-it/),
+particularly if your desired range is not a multiple of the random number range. To avoid this, you can use a more
+complex algorithm like rejection sampling, an example for which is provided in [this
+repository](https://github.com/onflow/random-coin-toss).
+:::
+
 ## **Secure Randomness with Commit-Reveal Scheme in Solidity**
 
 The **`revertibleRandom()`** function can be directly used to generate a pseudo-random number. However, in certain situations, especially involving untrusted users, this function exposes a vulnerability: the ability of a transaction to **revert after seeing the random result**.
@@ -156,6 +164,6 @@ The **`revertibleRandom()`** function can be directly used to generate a pseudo-
 
 ## Read More
 
-For further details on Flow’s randomness and secure development practices, check out the [Flow Randomness Documentation](https://developers.flow.com/build/advanced-concepts/randomness). You can also view an exammple in both Solidity and Cadence of a [cointoss implentation](https://github.com/onflow/random-coin-toss/tree/add-solidity-impl) using the VRF.
+For further details on Flow’s randomness and secure development practices, check out the [Flow Randomness Documentation](https://developers.flow.com/build/advanced-concepts/randomness). You can also view an example in both Solidity and Cadence of a [random coin toss implentation](https://github.com/onflow/random-coin-toss) using the VRF.
 
-_This documentation was contributed by Noah Naizir, a community developer._
+_This documentation was contributed by [Noah Naizir](https://x.com/noah_overflow?s=21), a community developer._
