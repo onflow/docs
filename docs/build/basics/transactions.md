@@ -25,7 +25,7 @@ The script section contains instructions for transaction execution. This is a Ca
 
 A transaction includes multiple optional phases `prepare`, `pre`, `execute`, and `post` phase. You can read more about it in the [Cadence reference document on transactions](https://cadence-lang.org/docs/language/transactions). Each phase has a purpose, the two most important phases are `prepare` and `execute`. 
 
-In the `prepare` phase, we have access to `AuthAccount` objects, which gives us the power to interact with those accounts. The accounts are called authorizers of transactions, so each account we want to interact with in the `prepare` phase must sign the transaction as an authorizer. 
+In the `prepare` phase, we have access to `&Account` objects, which gives us the power to interact with those accounts. The accounts are called authorizers of transactions, so each account we want to interact with in the `prepare` phase must sign the transaction as an authorizer. 
 The `execute` phase does exactly what it says, it executes the main logic of the transaction. This phase is optional, but it is a best practice to add your main transaction logic in the section, so it is explicit. 
 
 Again make sure to read Cadence [documentation on transactions](https://cadence-lang.org/docs/language/transactions)
@@ -70,7 +70,7 @@ A proposal key definition declares the address, key ID, and up-to-date sequence 
 
 Authorizers are accounts that authorize a transaction to read and mutate their state. A transaction can specify zero or more authorizers, depending on how many accounts the transaction needs to access.
 
-The number of authorizers on the transaction must match the number of AuthAccount parameters declared in the prepare statement of the Cadence script.
+The number of authorizers on the transaction must match the number of &Account parameters declared in the prepare statement of the Cadence script.
 
 Example transaction with multiple authorizers:
 

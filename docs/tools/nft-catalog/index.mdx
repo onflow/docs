@@ -4,11 +4,28 @@ sidebar_label: NFT Catalog
 description: The NFT Catalog is an on chain registry listing NFT collections that exists on Flow which adhere to the NFT metadata standard.
 ---
 
-The NFT Catalog is an on chain registry listing NFT collections that exists on Flow which adhere to the NFT metadata standard. This empowers dApp developers to easily build on top of and discover interoperable NFT collections on Flow.
+<Callout type="info">
+
+The NFT Catalog is in the process of being deprecated.
+You can still use it for existing collections in the Catalog,
+but no new collections will be added from now on.
+Most of the functionality that the Catalog provided is now required
+and handled by default by the NonFungibleToken standard with Metadata Views.
+
+Additionally, [TokenList](https://token-list.fixes.world) is a new permissionless tool that
+provides some of the old aggregation functionality that NFT Catalog
+provided without requiring approvals.
+
+</Callout>
+
+The NFT Catalog is an on chain registry listing NFT collections
+that exists on Flow which adhere to the NFT metadata standard.
+This empowers dApp developers to easily build on top of
+and discover interoperable NFT collections on Flow.
 
 ## Live Site
 
-Checkout the catalog [site](https://www.flow-nft-catalog.com/) to submit your NFT collection both on testnet and mainnet.
+Checkout the catalog [site](https://www.flow-nft-catalog.com/)
 
 ## Contract Addresses
 
@@ -26,54 +43,13 @@ Checkout the catalog [site](https://www.flow-nft-catalog.com/) to submit your NF
 | Mainnet | 0x49a7cda3a1eecc29 |
 | Testnet | 0x324c34e1c517e4db |
 
-## Submitting a Collection to the NFT Catalog
-
-1. Visit [here](https://www.flow-nft-catalog.com/v)
-2. Enter the address containing the NFT contract which contains the collection and select the contract.
-
- <img width="1509" alt="Screen Shot 2023-02-08 at 9 40 01 AM" src="https://user-images.githubusercontent.com/5430668/217561873-54beb50e-0ea2-46fb-b9f8-8dbe758ee12f.png" />
-
-3. Enter the storage path where the NFTs are stored and enter an address that holds a sample NFT or log in if you have access to an account that owns the NFT.
-   <img width="1508" alt="Screen Shot 2023-02-08 at 9 42 54 AM" src="https://user-images.githubusercontent.com/5430668/217562366-e6cbf3cb-38b8-45cb-943e-e20185565743.png" />
-
-4. The application will verify that your NFT collection implements the required Metadata views.
-
-    1. The required metadata views include…
-        1. NFT Display
-            1. How to display an individual NFT part of the collection
-        2. External URL
-            1. A website for the NFT collection
-        3. Collection Data
-            1. Information needed to store and retrieve an NFT
-        4. Collection Display
-            1. How to display information about the NFT collection the NFT belongs to
-        5. Royalties
-            1. Any royalties that should be accounted for during marketplace transactions
-    2. You can find sample implementations of all these views in this example NFT [contract](https://github.com/onflow/flow-nft/blob/master/contracts/ExampleNFT.cdc).
-    3. If you are not implementing a view, the app will communicate this and you can update your NFT contract and try resubmitting.
-
-     <img width="738" alt="Screen Shot 2023-02-08 at 9 46 56 AM" src="https://user-images.githubusercontent.com/5430668/217563435-86863297-183b-4345-9615-61f9d4212fe9.png" />
-
-5. Submit proposal transaction to the NFT catalog by entering a unique url safe identifier for the collection and a message including any additional context (like contact information).
-
- <img width="1503" alt="Screen Shot 2023-02-08 at 9 48 45 AM" src="https://user-images.githubusercontent.com/5430668/217563785-65065f51-37bc-49c7-8b3e-ba5d1dda3b24.png" />
-
-6. Once submitted you can view all proposals [here](https://www.flow-nft-catalog.com/proposals/mainnet) to track the review of your NFT.
-
-If you would like to make a proposal manually, you may submit the following transaction with all parameters filled in: [https://github.com/dapperlabs/nft-catalog/blob/main/cadence/transactions/propose_nft_to_catalog.cdc](https://github.com/dapperlabs/nft-catalog/blob/main/cadence/transactions/propose_nft_to_catalog.cdc)
-
-Proposals should be reviewed and approved within a few days. Reasons for a proposal being rejected may include:
-
--   Providing duplicate path or name information of an existing collection on the catalog
--   Providing a not url safe or inaccurate name as the identifier
-
 ## Using the Catalog (For marketplaces and other NFT applications)
 
 All of the below examples use the catalog in mainnet, you may replace the imports to the testnet address when using the testnet network.
 
 **Example 1 - Retrieve all NFT collections on the catalog**
 
-```swift
+```cadence
 import NFTCatalog from 0x49a7cda3a1eecc29
 
 /*
@@ -90,7 +66,7 @@ access(all) fun main(): {String : NFTCatalog.NFTCatalogMetadata} {
 
 **Example 2 - Retrieve all collection names in the catalog**
 
-```swift
+```cadence
 import NFTCatalog from 0x49a7cda3a1eecc29
 
 access(all) fun main(): [String] {
@@ -105,7 +81,7 @@ access(all) fun main(): [String] {
 
 **Example 3 - Retrieve NFT collections and counts owned by an account**
 
-```swift
+```cadence
 import MetadataViews from 0x1d7e57aa55817448
 import NFTCatalog from 0x49a7cda3a1eecc29
 import NFTRetrieval from 0x49a7cda3a1eecc29
@@ -123,7 +99,7 @@ access(all) fun main(ownerAddress: Address) : {String : Number} {
             tempPublicPath,
             target: value.collectionData.storagePath
         )
-        let collectionCap = account.getCapability<&AnyResource{MetadataViews.ResolverCollection}>(tempPublicPath)
+        let collectionCap = account.capabilities.get<&{MetadataViews.ResolverCollection}>(tempPublicPath)
         if !collectionCap.check() {
             continue
         }
@@ -147,7 +123,7 @@ access(all) fun main(ownerAddress: Address) : {String : Number} {
 
 **Example 4 - Retrieve all NFTs including metadata owned by an account**
 
-```swift
+```cadence
 import MetadataViews from 0x1d7e57aa55817448
 import NFTCatalog from 0x49a7cda3a1eecc29
 import NFTRetrieval from 0x49a7cda3a1eecc29
@@ -208,7 +184,7 @@ access(all) struct NFT {
 
 access(all) fun main(ownerAddress: Address) : { String : [NFT] } {
     let catalog = NFTCatalog.getCatalog()
-    let account = getAuthAccount(ownerAddress)
+    let account = getAuthAccount<auth(Capabilities) &Account>(ownerAddress)
     let items : [NFTRetrieval.BaseNFTViewsV1] = []
 
     let data : {String : [NFT] } = {}
@@ -217,11 +193,11 @@ access(all) fun main(ownerAddress: Address) : { String : [NFT] } {
         let value = catalog[key]!
         let tempPathStr = "catalog".concat(key)
         let tempPublicPath = PublicPath(identifier: tempPathStr)!
-        account.link<&{MetadataViews.ResolverCollection}>(
-            tempPublicPath,
-            target: value.collectionData.storagePath
-        )
-        let collectionCap = account.getCapability<&AnyResource{MetadataViews.ResolverCollection}>(tempPublicPath)
+        let newCap = account.capabilities.issue<&{MetadataViews.ResolverCollection}>
+            (value.collectionData.storagePath)
+        account.capabilities.publish(newCap, tempPublicPath)
+
+        let collectionCap = account.capabilities.get<&{MetadataViews.ResolverCollection}>(tempPublicPath)
         if !collectionCap.check() {
             continue
         }
@@ -298,14 +274,14 @@ access(all) fun main(ownerAddress: Address) : { String : [NFT] } {
 
 For Wallets that have a lot of NFTs you may run into memory issues. The common pattern to get around this for now is to retrieve just the ID's in a wallet by calling the following script
 
-```swift
+```cadence
 import MetadataViews from 0x1d7e57aa55817448
 import NFTCatalog from 0x49a7cda3a1eecc29
 import NFTRetrieval from 0x49a7cda3a1eecc29
 
 access(all) fun main(ownerAddress: Address) : {String : [UInt64]} {
     let catalog = NFTCatalog.getCatalog()
-    let account = getAuthAccount(ownerAddress)
+    let account = getAuthAccount<auth(Capabilities) &Account>(ownerAddress)
 
     let items : {String : [UInt64]} = {}
 
@@ -313,12 +289,11 @@ access(all) fun main(ownerAddress: Address) : {String : [UInt64]} {
         let value = catalog[key]!
         let tempPathStr = "catalogIDs".concat(key)
         let tempPublicPath = PublicPath(identifier: tempPathStr)!
-        account.link<&{MetadataViews.ResolverCollection}>(
-            tempPublicPath,
-            target: value.collectionData.storagePath
-        )
+        let newCap = account.capabilities.issue<&{MetadataViews.ResolverCollection}>
+            (value.collectionData.storagePath)
+        account.capabilities.publish(newCap, tempPublicPath)
 
-        let collectionCap = account.getCapability<&AnyResource{MetadataViews.ResolverCollection}>(tempPublicPath)
+        let collectionCap = account.capabilities.get<&{MetadataViews.ResolverCollection}>(tempPublicPath)
         if !collectionCap.check() {
             continue
         }
@@ -336,7 +311,7 @@ access(all) fun main(ownerAddress: Address) : {String : [UInt64]} {
 
 and then use the ids to retrieve the full metadata for only those ids by calling the following script and passing in a map of collectlionIdentifer -> [ids]
 
-```swift
+```cadence
 import MetadataViews from 0x1d7e57aa55817448
 import NFTCatalog from 0x49a7cda3a1eecc29
 import NFTRetrieval from 0x49a7cda3a1eecc29
@@ -397,18 +372,17 @@ access(all) fun main(ownerAddress: Address, collections: {String : [UInt64]}) : 
     let data : {String : [NFT] } = {}
 
     let catalog = NFTCatalog.getCatalog()
-    let account = getAuthAccount(ownerAddress)
+    let account = getAuthAccount<auth(Capabilities) &Account>(ownerAddress)
     for collectionIdentifier in collections.keys {
         if catalog.containsKey(collectionIdentifier) {
             let value = catalog[collectionIdentifier]!
             let tempPathStr = "catalog".concat(collectionIdentifier)
             let tempPublicPath = PublicPath(identifier: tempPathStr)!
-            account.link<&{MetadataViews.ResolverCollection}>(
-                tempPublicPath,
-                target: value.collectionData.storagePath
-            )
+            let newCap = account.capabilities.issue<&{MetadataViews.ResolverCollection}>
+                (value.collectionData.storagePath)
+            account.capabilities.publish(newCap, tempPublicPath)
 
-            let collectionCap = account.getCapability<&AnyResource{MetadataViews.ResolverCollection}>(tempPublicPath)
+            let collectionCap = account.capabilities.get<&{MetadataViews.ResolverCollection}>(tempPublicPath)
 
             if !collectionCap.check() {
                 return data
@@ -463,7 +437,7 @@ access(all) fun main(ownerAddress: Address, collections: {String : [UInt64]}) : 
 
 If you're looking for some MetadataViews that aren't in the [core view list](https://github.com/onflow/flow-nft/blob/master/contracts/MetadataViews.cdc#L36) you can leverage this script to grab all the views each NFT supports. Note: You lose some typing here but get more data.
 
-```swift
+```cadence
 import MetadataViews from 0x1d7e57aa55817448
 import NFTCatalog from 0x49a7cda3a1eecc29
 import NFTRetrieval from 0x49a7cda3a1eecc29
@@ -471,28 +445,22 @@ import NFTRetrieval from 0x49a7cda3a1eecc29
 access(all) struct NFTCollectionData {
     access(all) let storagePath : StoragePath
     access(all) let publicPath : PublicPath
-    access(all) let privatePath: PrivatePath
     access(all) let publicLinkedType: Type
-    access(all) let privateLinkedType: Type
 
     init(
             storagePath : StoragePath,
             publicPath : PublicPath,
-            privatePath : PrivatePath,
             publicLinkedType : Type,
-            privateLinkedType : Type,
     ) {
         self.storagePath = storagePath
         self.publicPath = publicPath
-        self.privatePath = privatePath
         self.publicLinkedType = publicLinkedType
-        self.privateLinkedType = privateLinkedType
     }
 }
 
 access(all) fun main(ownerAddress: Address) : { String : {String : AnyStruct} }  {
     let catalog = NFTCatalog.getCatalog()
-    let account = getAuthAccount(ownerAddress)
+    let account = getAuthAccount<auth(Capabilities) &Account>(ownerAddress)
     let items : [MetadataViews.NFTView] = []
 
     let data : { String : {String : AnyStruct} } = {}
@@ -501,11 +469,10 @@ access(all) fun main(ownerAddress: Address) : { String : {String : AnyStruct} } 
         let value = catalog[key]!
         let tempPathStr = "catalog".concat(key)
         let tempPublicPath = PublicPath(identifier: tempPathStr)!
-        account.link<&{MetadataViews.ResolverCollection}>(
-            tempPublicPath,
-            target: value.collectionData.storagePath
-        )
-        let collectionCap = account.getCapability<&AnyResource{MetadataViews.ResolverCollection}>(tempPublicPath)
+        let newCap = account.capabilities.issue<&{MetadataViews.ResolverCollection}>
+            (value.collectionData.storagePath)
+        account.capabilities.publish(newCap, tempPublicPath)
+        let collectionCap = account.capabilities.get<&{MetadataViews.ResolverCollection}>(tempPublicPath)
         if !collectionCap.check() {
             continue
         }
@@ -521,9 +488,7 @@ access(all) fun main(ownerAddress: Address) : { String : {String : AnyStruct} } 
         let collectionDataView = NFTCollectionData(
                     storagePath : nftCollectionDisplayView!.storagePath,
                     publicPath : nftCollectionDisplayView!.publicPath,
-                    privatePath : nftCollectionDisplayView!.providerPath,
                     publicLinkedType : nftCollectionDisplayView!.publicLinkedType,
-                    privateLinkedType : nftCollectionDisplayView!.providerLinkedType,
         )
         views.insert(key: Type<MetadataViews.NFTCollectionData>().identifier, collectionDataView)
 
@@ -538,7 +503,7 @@ access(all) fun main(ownerAddress: Address) : { String : {String : AnyStruct} } 
 
 1. Run the following script to retrieve some collection-level information for an NFT collection identifier from the catalog
 
-```swift
+```cadence
 import MetadataViews from 0x1d7e57aa55817448
 import NFTCatalog from 0x49a7cda3a1eecc29
 import NFTRetrieval from 0x49a7cda3a1eecc29
@@ -601,31 +566,77 @@ access(all) fun main(collectionIdentifier : String) : NFT? {
 
 2. This script result can then be used to form a transaction by inserting the relevant variables from above into a transaction template like the following:
 
-```swift
+```cadence
 import NonFungibleToken from 0x1d7e57aa55817448
 import MetadataViews from 0x1d7e57aa55817448
 {ADDITIONAL_IMPORTS}
 
 transaction {
 
-    prepare(signer: AuthAccount) {
+    prepare(signer: auth(BorrowValue, IssueStorageCapabilityController, PublishCapability, SaveValue, UnpublishCapability) &Account) {
+        
+        let collectionData = {CONTRACT_NAME}.resolveContractView(resourceType: nil, viewType: Type<MetadataViews.NFTCollectionData>()) as! MetadataViews.NFTCollectionData?
+            ?? panic("Could not resolve NFTCollectionData view. The {CONTRACT_NAME} contract needs to implement the NFTCollectionData Metadata view in order to execute this transaction")
+
+        // Return early if the account already has a collection
+        if signer.storage.borrow<&{CONTRACT_NAME}.Collection>(from: collectionData.storagePath) != nil {
+            return
+        }
+
         // Create a new empty collection
-        let collection <- {CONTRACT_NAME}.createEmptyCollection()
+        let collection <- {CONTRACT_NAME}.createEmptyCollection(nftType: Type<@{CONTRACT_NAME}.NFT>())
 
         // save it to the account
-        signer.save(<-collection, to: {STORAGE_PATH})
+        signer.storage.save(<-collection, to: collectionData.storagePath)
 
         // create a public capability for the collection
-        signer.link<&{PUBLIC_LINKED_TYPE}>(
-            {PUBLIC_PATH},
-            target: {STORAGE_PATH}
-        )
+        signer.capabilities.unpublish(collectionData.publicPath)
+        let collectionCap = signer.capabilities.storage.issue<&{CONTRACT_NAME}.Collection>(collectionData.storagePath)
+        signer.capabilities.publish(collectionCap, at: collectionData.publicPath)
+    }
+}
 
-				// create a private capability for the collection
-        signer.link<&{PRIVATE_LINKED_TYPE}>(
-            {PRIVATE_PATH},
-            target: {STORAGE_PATH}
-        )
+```
+
+An even easier way to setup an account without relying
+on the NFT Catalog is to just use the generic setup account transaction.
+All you need is the name and address of the contract!
+```cadence
+import "NonFungibleToken"
+import "MetadataViews"
+
+/// This transaction is what an account would run
+/// to set itself up to receive NFTs. This function
+/// uses views to know where to set up the collection
+/// in storage and to create the empty collection.
+///
+/// @param contractAddress: The address of the contract that defines the token being initialized
+/// @param contractName: The name of the contract that defines the token being initialized. Ex: "ExampleNFT"
+
+transaction(contractAddress: Address, contractName: String) {
+
+    prepare(signer: auth(IssueStorageCapabilityController, PublishCapability, SaveValue) &Account) {
+        // Borrow a reference to the nft contract deployed to the passed account
+        let resolverRef = getAccount(contractAddress)
+            .contracts.borrow<&{NonFungibleToken}>(name: contractName)
+                ?? panic("Could not borrow NonFungibleToken reference to the contract. Make sure the provided contract name ("
+                         .concat(contractName).concat(") and address (").concat(contractAddress.toString()).concat(") are correct!"))
+
+        // Use that reference to retrieve the NFTCollectionData view 
+        let collectionData = resolverRef.resolveContractView(resourceType: nil, viewType: Type<MetadataViews.NFTCollectionData>()) as! MetadataViews.NFTCollectionData?
+            ?? panic("Could not resolve NFTCollectionData view. The ".concat(contractName).concat(" contract needs to implement the NFTCollectionData Metadata view in order to execute this transaction"))
+
+        // Create a new empty collections
+        let emptyCollection <- collectionData.createEmptyCollection()
+
+        // save it to the account
+        signer.storage.save(<-emptyCollection, to: collectionData.storagePath)
+
+        // create a public capability for the collection
+        let collectionCap = signer.capabilities.storage.issue<&{NonFungibleToken.Collection}>(
+                collectionData.storagePath
+            )
+        signer.capabilities.publish(collectionCap, at: collectionData.publicPath)
     }
 }
 ```

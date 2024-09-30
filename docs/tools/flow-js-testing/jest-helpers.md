@@ -54,7 +54,7 @@ describe("interactions - sendTransaction", () => {
   test("basic transaction", async () => {
     const code = `
       transaction(message: String){
-        prepare(singer: AuthAccount){
+        prepare(singer: &Account){
           log(message)
         }
       }
@@ -126,7 +126,7 @@ describe("interactions - sendTransaction", () => {
   test("basic transaction", async () => {
     const code = `
       transaction(message: String){
-        prepare(singer: AuthAccount){
+        prepare(singer: &Account){
           panic("You shall not pass!")
         }
       }

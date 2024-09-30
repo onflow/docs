@@ -122,7 +122,7 @@ guard let user = fcl.currentUser else {
 let txId = try await fcl.mutate(
                             cadence: """
                                     transaction(test: String, testInt: Int) {
-                                                   prepare(signer: AuthAccount) {
+                                                   prepare(signer: &Account) {
                                                         log(signer.address)
                                                         log(test)
                                                         log(testInt)
@@ -145,11 +145,11 @@ print("txId -> \(txId)")
 
 The View page in Monster Maker exemplifies showing Monster Maker NFTs held by the connected wallet
 
-To view the NFT from an wallet address, first and foremost, we highly recommend you use [NFT-Catalog](https://www.flow-nft-catalog.com/) standard when you are ready. So that it will be easy to allow other platform like marketplace and wallet to recognise and display your NFT collection. However, during development, you always can query your NFT with `fcl.query`. Here is an example:
+During development, you always can query your NFT with `fcl.query`. Here is an example:
 
 - Query cadence
 
-    ```swift
+    ```cadence
     import NonFungibleToken from 0xNonFungibleToken
         import MonsterMaker from 0xMonsterMaker
         import MetadataViews from 0xMetadataViews
@@ -184,7 +184,7 @@ To view the NFT from an wallet address, first and foremost, we highly recommend 
     
         access(all) fun getMonsterById(address: Address, itemID: UInt64): Monster? {
     
-            if let collection = getAccount(address).getCapability<&MonsterMaker.Collection{NonFungibleToken.CollectionPublic, MonsterMaker.MonsterMakerCollectionPublic}>(MonsterMaker.CollectionPublicPath).borrow() {
+            if let collection = getAccount(address).capabilities.get<&MonsterMaker.Collection>(MonsterMaker.CollectionPublicPath).borrow() {
                 
                 if let item = collection.borrowMonsterMaker(id: itemID) {
                     if let view = item.resolveView(Type<MetadataViews.Display>()) {
@@ -210,8 +210,12 @@ To view the NFT from an wallet address, first and foremost, we highly recommend 
     
         access(all) fun main(address: Address): [Monster] {
             let account = getAccount(address)
-            let collectionRef = account.getCapability(MonsterMaker.CollectionPublicPath)!.borrow<&{NonFungibleToken.CollectionPublic}>()
-                ?? panic("Could not borrow capability from public collection")
+            let collectionRef = account.capabilities.get<&{NonFungibleToken.Collection}>(MonsterMaker.CollectionPublicPath).borrow()
+            ?? panic("The account with address "
+                    .concat(address.toString)
+                    .concat(" does not have a NonFungibleToken Collection at ")
+                    .concat(MonsterMaker.CollectionPublicPath.toString())
+                    .concat(". Make sure the account address is correct and is initialized their account with a MonsterMaker Collection!"))
             
             let ids = collectionRef.getIDs()
     

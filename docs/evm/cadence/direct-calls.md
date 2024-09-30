@@ -60,7 +60,7 @@ import EVM from <ServiceAddress>
 
 transaction(rlpEncodedTransaction: [UInt8], coinbaseBytes: [UInt8; 20]) {
 
-    prepare(signer: AuthAccount) {
+    prepare(signer: &Account) {
         let coinbase = EVM.EVMAddress(bytes: coinbaseBytes)
         let result = EVM.run(tx: rlpEncodedTransaction, coinbase: coinbase)
         assert(

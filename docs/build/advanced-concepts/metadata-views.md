@@ -308,7 +308,7 @@ Each royalty view contains a fungible token receiver capability where royalties 
 ```cadence
 access(all) struct Royalty {
 
-    access(all) let receiver: Capability<&AnyResource{FungibleToken.Receiver}>
+    access(all) let receiver: Capability<&{FungibleToken.Receiver}>
 
     access(all) let cut: UFix64
 }
@@ -337,7 +337,8 @@ accepts the seller's desired fungible token by calling
 the `receiver.getSupportedVaultTypes(): {Type: Bool}`
 function via the `receiver` reference:
 ```cadence
-let royaltyReceiverRef = royalty.receiver.borrow() ?? panic("Could not borrow a reference to the receiver")
+let royaltyReceiverRef = royalty.receiver.borrow()
+    ?? panic("Could not borrow a reference to the receiver")
 let supportedTypes = receiverRef.getSupportedVaultTypes() 
 if supportedTypes[**royalty.getType()**] {
     // The type is supported, so you can deposit
@@ -477,8 +478,8 @@ case Type<MetadataViews.NFTCollectionData>():
         // where to borrow public capabilities from?
         publicPath: ExampleNFT.CollectionPublicPath,
         // Important types for how the collection should be linked
-        publicCollection: Type<&ExampleNFT.Collection{ExampleNFT.ExampleNFTCollectionPublic}>(),
-        publicLinkedType: Type<&ExampleNFT.Collection{ExampleNFT.ExampleNFTCollectionPublic,NonFungibleToken.CollectionPublic,NonFungibleToken.Receiver,MetadataViews.ResolverCollection}>(),
+        publicCollection: Type<&ExampleNFT.Collection>(),
+        publicLinkedType: Type<&ExampleNFT.Collection>(),
         // function that can be accessed to create an empty collection for the project
         createEmptyCollectionFunction: (fun(): @{NonFungibleToken.Collection} {
             return <-ExampleNFT.createEmptyCollection(nftType: Type<@ExampleNFT.NFT>())

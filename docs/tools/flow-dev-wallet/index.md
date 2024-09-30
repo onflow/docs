@@ -150,18 +150,18 @@ export default function App() {
 
 ### Account/Address creation
 
-You can [create a new account](https://cadence-lang.org/docs/language/accounts#account-creation) by using the `AuthAccount` constructor. When you do this, make sure to specify which account will pay for the creation fees by setting it as the payer.
+You can [create a new account](https://cadence-lang.org/docs/language/accounts#account-creation) by using the `&Account` constructor. When you do this, make sure to specify which account will pay for the creation fees by setting it as the payer.
 
 The account you choose to pay these fees must have enough money to cover the cost. If it doesn't, the process will stop and the account won't be created.
 
 ```cadence
 transaction(publicKey: String) {
- prepare(signer: AuthAccount) {
+ prepare(signer: &Account) {
   let key = PublicKey(
     publicKey: publicKey.decodeHex(),
     signatureAlgorithm: SignatureAlgorithm.ECDSA_P256
   )
-  let account = AuthAccount(payer: signer)
+  let account = Account(payer: signer)
   account.keys.add(
     publicKey: key,
     hashAlgorithm: HashAlgorithm.SHA3_256,
@@ -191,13 +191,17 @@ import "LockedTokens"
 access(all) fun main(address: Address): UFix64 {
   let account = getAccount(address)
   let unlockedVault = account
-   .getCapability(/public/flowTokenBalance)!
-   .borrow<&FlowToken.Vault{FungibleToken.Balance}>()
-    ?? panic("Could not borrow Balance reference to the Vault")
+   .capabilities.get<&FlowToken.Vault>(/public/flowTokenBalance)
+   .borrow()
+    ?? panic("Could not borrow Balance reference to the Vault"
+       .concat(" at path /public/flowTokenBalance!")
+       .concat(" Make sure that the account address is correct ")
+       .concat("and that it has properly set up its account with a FlowToken Vault."))
+
   let unlockedBalance = unlockedVault.balance
   let lockedAccountInfoCap = account
-   .getCapability
-   <&LockedTokens.TokenHolder{LockedTokens.LockedAccountInfo}>
+   .capabilities.get
+   <&LockedTokens.TokenHolder>
    (LockedTokens.LockedAccountInfoPublicPath)
   if lockedAccountInfoCap == nil || !(lockedAccountInfoCap!.check()) {
     return unlockedBalance

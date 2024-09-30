@@ -54,14 +54,6 @@ https://niftory.com/
 
 https://www.finoa.io/flow/
 
-## Shadow
-
-[Shadow](https://shadow.app/wallet) is your web3 companion, enabling you to store your assets, transact with friends, and connect to apps on multiple chains.
-
-https://shadow.app/wallet
-
-</div>
-
 ## Blocto
 
 [Blocto](https://www.blocto.io/) is a cross-chain mobile wallet for IOS and Android devices.

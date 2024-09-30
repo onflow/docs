@@ -56,7 +56,7 @@ const main = async () => {
   // Define code and arguments we want to pass
   const code = `
     transaction(message: String){
-      prepare(signer: AuthAccount){
+      prepare(signer: &Account){
         log(message)
       }
     }

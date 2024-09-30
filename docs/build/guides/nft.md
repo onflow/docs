@@ -354,7 +354,9 @@ access(all) resource Collection: NonFungibleToken.Collection {
     /// withdraw removes an NFT from the collection and moves it to the caller
     access(NonFungibleToken.Withdraw) fun withdraw(withdrawID: UInt64): @{NonFungibleToken.NFT} {
         let token <- self.ownedNFTs.remove(key: withdrawID)
-            ?? panic("Could not withdraw an NFT with the provided ID from the collection")
+                ?? panic("FooBar.Collection.withdraw: Could not withdraw an NFT with ID "
+                        .concat(withdrawID.toString())
+                        .concat(". Check the submitted ID to make sure it is one that this collection owns."))
 
         return <-token
     }
@@ -721,7 +723,9 @@ access(all) fun main(address: Address): [UInt64] {
 
     let collectionRef = account.capabilities.borrow<&{NonFungibleToken.Collection}>(
             FooBar.CollectionPublicPath
-        ) ?? panic("Could not borrow capability from collection at specified path")
+    ) ?? panic("The account ".concat(address.toString()).concat(" does not have a NonFungibleToken Collection at ")
+                .concat(FooBar.CollectionPublicPath.toString())
+                .concat(". The account must initialize their account with this collection first!"))
 
     return collectionRef.getIDs()
 }
@@ -766,12 +770,16 @@ transaction(
 
         // borrow a reference to the NFTMinter resource in storage
         self.minter = signer.storage.borrow<&FooBar.NFTMinter>(from: FooBar.MinterStoragePath)
-            ?? panic("Account does not store an object at the specified path")
+            ?? panic("The signer does not store a FooBar Collection object at the path "
+                        .concat(FooBar.CollectionStoragePath.toString())
+                        .concat("The signer must initialize their account with this collection first!"))
 
         // Borrow the recipient's public NFT collection reference
         self.recipientCollectionRef = getAccount(recipient).capabilities.borrow<&{NonFungibleToken.Receiver}>(
                 FooBar.CollectionPublicPath
-            ) ?? panic("Could not get receiver reference to the NFT Collection")
+        ) ?? panic("The account ".concat(recipient.toString()).concat(" does not have a NonFungibleToken Receiver at ")
+                .concat(FooBar.CollectionPublicPath.toString())
+                .concat(". The account must initialize their account with this collection first!"))
     }
 
     execute {
@@ -830,7 +838,9 @@ transaction(recipient: Address, withdrawID: UInt64) {
         // borrow a reference to the signer's NFT collection
         self.withdrawRef = signer.storage.borrow<auth(NonFungibleToken.Withdraw) &{NonFungibleToken.Collection}>(
                 from: FooBar.CollectionStoragePath
-            ) ?? panic("Account does not store an object at the specified path")
+            ) ?? panic("The signer does not store a FooBar Collection object at the path "
+                        .concat(FooBar.CollectionStoragePath.toString())
+                        .concat("The signer must initialize their account with this collection first!"))
 
         // get the recipients public account object
         let recipient = getAccount(recipient)
@@ -839,7 +849,9 @@ transaction(recipient: Address, withdrawID: UInt64) {
         let receiverCap = recipient.capabilities.get<&{NonFungibleToken.Receiver}>(FooBar.CollectionPublicPath)
 
         self.receiverRef = receiverCap.borrow()
-            ?? panic("Could not borrow reference to the recipient's receiver")
+            ?? panic("The account ".concat(recipient.toString()).concat(" does not have a NonFungibleToken Receiver at ")
+                .concat(FooBar.CollectionPublicPath.toString())
+                .concat(". The account must initialize their account with this collection first!"))
     }
 
     execute {

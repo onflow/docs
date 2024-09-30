@@ -106,8 +106,7 @@ This will create a file called `ReadGreeting.cdc` in the `cadence/scripts` direc
 ```
 import "HelloWorld"
 
-access(all)
-fun main(): String {
+access(all) fun main(): String {
   return HelloWorld.greeting
 }
 ```
@@ -141,7 +140,7 @@ import "HelloWorld"
 
 transaction(greeting: String) {
 
-  prepare(acct: AuthAccount) {
+  prepare(acct: &Account) {
     log(acct.address)
   }
 

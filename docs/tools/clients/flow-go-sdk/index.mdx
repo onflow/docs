@@ -538,13 +538,13 @@ A transaction is only valid if its declared sequence number matches the current 
 
 📖 **[Authorizers](../../../build/basics/transactions.md#signer-roles)** are accounts that authorize a transaction to read and mutate their resources. A transaction can specify zero or more authorizers, depending on how many accounts the transaction needs to access.
 
-The number of authorizers on the transaction must match the number of AuthAccount parameters declared in the prepare statement of the Cadence script.
+The number of authorizers on the transaction must match the number of &Account parameters declared in the prepare statement of the Cadence script.
 
 Example transaction with multiple authorizers:
 
 ```
 transaction {
-  prepare(authorizer1: AuthAccount, authorizer2: AuthAccount) { }
+  prepare(authorizer1: &Account, authorizer2: &Account) { }
 }
 ```
 
@@ -570,7 +570,7 @@ transaction(greeting: String) {
 
   let guest: Address
 
-  prepare(authorizer: AuthAccount) {
+  prepare(authorizer: &Account) {
     self.guest = authorizer.address
   }
 
@@ -719,7 +719,7 @@ referenceBlock, _ := flow.GetLatestBlock(ctx, true)
 tx := flow.NewTransaction().
     SetScript([]byte(`
         transaction {
-            prepare(signer: AuthAccount) { log(signer.address) }
+            prepare(signer: &Account) { log(signer.address) }
         }
     `)).
     SetComputeLimit(100).
@@ -759,7 +759,7 @@ referenceBlock, _ := flow.GetLatestBlock(ctx, true)
 tx := flow.NewTransaction().
     SetScript([]byte(`
         transaction {
-            prepare(signer: AuthAccount) { log(signer.address) }
+            prepare(signer: &Account) { log(signer.address) }
         }
     `)).
     SetComputeLimit(100).
@@ -805,7 +805,7 @@ referenceBlock, _ := flow.GetLatestBlock(ctx, true)
 tx := flow.NewTransaction().
     SetScript([]byte(`
         transaction {
-            prepare(signer: AuthAccount) { log(signer.address) }
+            prepare(signer: &Account) { log(signer.address) }
         }
     `)).
     SetComputeLimit(100).
@@ -829,7 +829,7 @@ err = tx.SignEnvelope(account2.Address, key3.Index, key3Signer)
 - Account `0x01` signs the payload.
 - Account `0x02` signs the envelope.
   - Account `0x02` must sign last since it is the payer.
-- Account `0x02` is also an authorizer to show how to include two AuthAccounts into an transaction
+- Account `0x02` is also an authorizer to show how to include two `&Account` objects into an transaction
 
 | Account | Key ID | Weight |
 | ------- | ------ | ------ |
@@ -853,7 +853,7 @@ referenceBlock, _ := flow.GetLatestBlock(ctx, true)
 tx := flow.NewTransaction().
     SetScript([]byte(`
         transaction {
-            prepare(signer1: AuthAccount, signer2: AuthAccount) {
+            prepare(signer1: &Account, signer2: &Account) {
               log(signer.address)
               log(signer2.address)
           }
@@ -911,7 +911,7 @@ referenceBlock, _ := flow.GetLatestBlock(ctx, true)
 tx := flow.NewTransaction().
     SetScript([]byte(`
         transaction {
-            prepare(signer: AuthAccount) { log(signer.address) }
+            prepare(signer: &Account) { log(signer.address) }
         }
     `)).
     SetComputeLimit(100).
@@ -1087,26 +1087,41 @@ to a recipient.
 _Note: this transaction is only compatible with Flow Mainnet._
 
 ```cadence
-import FungibleToken from 0xf233dcee88fe0abe
-import FlowToken from 0x1654653399040a61
+// This transaction is a template for a transaction that
+// could be used by anyone to send tokens to another account
+// that has been set up to receive tokens.
+//
+// The withdraw amount and the account from getAccount
+// would be the parameters to the transaction
 
-transaction(amount: UFix64, recipient: Address) {
-  let sentVault: @FungibleToken.Vault
-  prepare(signer: AuthAccount) {
-    let vaultRef = signer.borrow<&FlowToken.Vault>(from: /storage/flowTokenVault)
-      ?? panic("failed to borrow reference to sender vault")
+import "FungibleToken"
+import "FlowToken"
 
-    self.sentVault <- vaultRef.withdraw(amount: amount)
-  }
+transaction(amount: UFix64, to: Address) {
 
-  execute {
-    let receiverRef =  getAccount(recipient)
-      .getCapability(/public/flowTokenReceiver)
-      .borrow<&{FungibleToken.Receiver}>()
-        ?? panic("failed to borrow reference to recipient vault")
+    // The Vault resource that holds the tokens that are being transferred
+    let sentVault: @{FungibleToken.Vault}
 
-    receiverRef.deposit(from: <-self.sentVault)
-  }
+    prepare(signer: auth(BorrowValue) &Account) {
+
+        // Get a reference to the signer's stored vault
+        let vaultRef = signer.storage.borrow<auth(FungibleToken.Withdraw) &FlowToken.Vault>(from: /storage/flowTokenVault)
+			?? panic("Could not borrow reference to the owner's Vault!")
+
+        // Withdraw tokens from the signer's stored vault
+        self.sentVault <- vaultRef.withdraw(amount: amount)
+    }
+
+    execute {
+
+        // Get a reference to the recipient's Receiver
+        let receiverRef =  getAccount(to)
+            .capabilities.borrow<&{FungibleToken.Receiver}>(/public/flowTokenReceiver)
+			?? panic("Could not borrow receiver reference to the recipient's Vault")
+
+        // Deposit the withdrawn tokens in the recipient's receiver
+        receiverRef.deposit(from: <-self.sentVault)
+    }
 }
 ```
 

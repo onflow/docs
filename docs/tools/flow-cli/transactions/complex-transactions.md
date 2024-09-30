@@ -48,7 +48,7 @@ Submit the signed transaction:
 Transaction content (`tx.cdc`):
 ```
 transaction {
-    prepare(signer: AuthAccount) {}
+    prepare(signer: &Account) {}
     execute { ... }
 }
 ```
@@ -86,7 +86,7 @@ Submit the signed transaction:
 Transaction content (`tx.cdc`):
 ```
 transaction {
-    prepare(bob: AuthAccount, charlie: AuthAccount) {}
+    prepare(bob: &Account, charlie: &Account) {}
     execute { ... }
 }
 ```
@@ -125,7 +125,7 @@ Submit the signed transaction:
 Transaction content (`tx.cdc`):
 ```
 transaction {
-    prepare(charlie: AuthAccount) {}
+    prepare(charlie: &Account) {}
     execute { ... }
 }
 ```
@@ -159,7 +159,7 @@ Submit the signed transaction:
 Transaction content (`tx.cdc`):
 ```
 transaction {
-    prepare(signer: AuthAccount) {}
+    prepare(signer: &Account) {}
     execute { ... }
 }
 ```

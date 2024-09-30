@@ -68,7 +68,7 @@ import ExampleNFT from 0x2bd9d8989a3352a1
 transaction(recipient: Address) {
 
     /// Reference to the receiver's collection
-    let recipientCollectionRef: &{NonFungibleToken.CollectionPublic}
+    let recipientCollectionRef: &{NonFungibleToken.Collection}
 
     /// Previous NFT ID before the transaction executes
     let mintingIDBefore: UInt64
@@ -79,9 +79,12 @@ transaction(recipient: Address) {
 
         // Borrow the recipient's public NFT collection reference
         self.recipientCollectionRef = getAccount(recipient)
-            .capabilities.get<&{NonFungibleToken.CollectionPublic}>(ExampleNFT.CollectionPublicPath)
+            .capabilities.get<&{NonFungibleToken.Collection}>(ExampleNFT.CollectionPublicPath)
             .borrow()
-            ?? panic("Could not get receiver reference to the NFT Collection")
+            ?? panic("The recipient does not have a NonFungibleToken Receiver at "
+                    .concat(ExampleNFT.CollectionPublicPath.toString())
+                    .concat(" that is capable of receiving an NFT.")
+                    .concat("The recipient must initialize their account with this collection and receiver first!"))
 
     }
 
@@ -127,9 +130,13 @@ access(all) fun main(address: Address, collectionPublicPath: PublicPath): [UInt6
     let account = getAccount(address)
 
     let collectionRef = account
-        .capabilities.get<&{NonFungibleToken.CollectionPublic}>(collectionPublicPath)
+        .capabilities.get<&{NonFungibleToken.Collection}>(collectionPublicPath)
         .borrow()
-        ?? panic("Could not borrow capability from public collection at specified path")
+            ?? panic("The account with address "
+                    .concat(address.toString())
+                    .concat("does not have a NonFungibleToken Collection at "
+                    .concat(ExampleNFT.CollectionPublicPath.toString())
+                    .concat(". The account must initialize their account with this collection first!")))
 
     return collectionRef.getIDs()
 
