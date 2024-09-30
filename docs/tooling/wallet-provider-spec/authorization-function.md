@@ -19,7 +19,7 @@ import * as fcl from "@onflow/fcl"
 const myAuthorizationFunction = ... // An Authorization Function
 
 const response = fcl.send([
-    fcl.transaction`transaction() { prepare(acct: AuthAccount) {} execute { log("Hello, Flow!") } }`,
+    fcl.transaction`transaction() { prepare(acct: &Account) {} execute { log("Hello, Flow!") } }`,
     fcl.proposer(myAuthorizationFunction),
     fcl.payer(myAuthorizationFunction),
     fcl.authorizers([ myAuthorizationFunction ])

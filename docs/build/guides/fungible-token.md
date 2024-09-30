@@ -929,12 +929,14 @@ import "FungibleTokenMetadataViews"
 
 access(all) fun main(address: Address): UFix64 {
     let vaultData = FooToken.resolveContractView(resourceType: nil, viewType: Type<FungibleTokenMetadataViews.FTVaultData>()) as! FungibleTokenMetadataViews.FTVaultData?
-        ?? panic("Could not get vault data view for the contract")
+        ?? panic("Could not get FTVaultData view for the FooToken contract")
 
     return getAccount(address).capabilities.borrow<&{FungibleToken.Balance}>(
             vaultData.metadataPath
         )?.balance
-        ?? panic("Could not borrow Balance reference to the Vault")
+        ?? panic("Could not borrow a reference to the FooToken Vault in account "
+            .concat(address.toString()).concat(" at path ").concat(vaultData.metadataPath.toString())
+            .concat(". Make sure you are querying an address that has an FooToken Vault set up properly."))
 }
 ```
 
@@ -979,10 +981,13 @@ transaction(recipient: Address, amount: UFix64) {
 
         // Borrow a reference to the admin object
         self.tokenMinter = signer.storage.borrow<&FooToken.Minter>(from: FooToken.MinterStoragePath)
-            ?? panic("Signer is not the token admin")
+            ?? panic("Cannot mint: Signer does not store the FooToken Minter in their account!")
 
         self.tokenReceiver = getAccount(recipient).capabilities.borrow<&{FungibleToken.Receiver}>(FooToken.VaultPublicPath)
-            ?? panic("Could not borrow receiver reference to the Vault")
+            ?? panic("Could not borrow a Receiver reference to the FungibleToken Vault in account "
+                .concat(recipient.toString()).concat(" at path ").concat(FooToken.VaultPublicPath.toString())
+                .concat(". Make sure you are sending to an address that has ")
+                .concat("a FungibleToken Vault set up properly at the specified path."))
     }
 
     execute {
@@ -1039,7 +1044,9 @@ transaction(to: Address, amount: UFix64) {
 
         // Get a reference to the signer's stored vault
         let vaultRef = signer.storage.borrow<auth(FungibleToken.Withdraw) &FooToken.Vault>(from: FooToken.VaultStoragePath)
-            ?? panic("Could not borrow reference to the owner's Vault!")
+            ?? panic("The signer does not store an FooToken.Vault object at the path "
+                    .concat(FooToken.VaultStoragePath.toString())
+                    .concat(". The signer must initialize their account with this vault first!"))
 
         // Withdraw tokens from the signer's stored vault
         self.sentVault <- vaultRef.withdraw(amount: amount)
@@ -1052,7 +1059,10 @@ transaction(to: Address, amount: UFix64) {
 
         // Get a reference to the recipient's Receiver
         let receiverRef = recipient.capabilities.borrow<&{FungibleToken.Receiver}>(FooToken.VaultPublicPath)
-            ?? panic("Could not borrow receiver reference to the recipient's Vault")
+            ?? panic("Could not borrow a Receiver reference to the FooToken Vault in account "
+                .concat(recipient.toString()).concat(" at path ").concat(FooToken.VaultPublicPath.toString())
+                .concat(". Make sure you are sending to an address that has ")
+                .concat("a FooToken Vault set up properly at the specified path."))
 
         // Deposit the withdrawn tokens in the recipient's receiver
         receiverRef.deposit(from: <-self.sentVault)

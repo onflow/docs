@@ -131,11 +131,15 @@ Providing that a seller's NFT supports the [Royalty Metadata View](https://githu
 ```cadence
 // Check whether the NFT implements the MetadataResolver or not.
 if nft.getViews().contains(Type<MetadataViews.Royalties>()) {
-		// Resolve the royalty view
-    let royaltiesRef = nft.resolveView(Type<MetadataViews.Royalties>())?? panic("Unable to retrieve the royalties")
-	  // Fetch the royalties.
-		let royalties = (royaltiesRef as! MetadataViews.Royalties).getRoyalties()
-		// Append the royalties as the salecut
+	// Resolve the royalty view
+    let royaltiesRef = nft.resolveView(Type<MetadataViews.Royalties>())
+        ?? panic("Unable to retrieve the royalties view for the NFT with type "
+           .concat(nft.getType().identifier).concat(" and ID ")
+           .concat(nft.id.toString()).concat(".")
+	// Fetch the royalties.
+	let royalties = (royaltiesRef as! MetadataViews.Royalties).getRoyalties()
+
+	// Append the royalties as the salecut
     for royalty in royalties {
         self.saleCuts.append(NFTStorefrontV2.SaleCut(receiver: royalty.receiver, amount: royalty.cut * effectiveSaleItemPrice))
         totalRoyaltyCut = totalRoyaltyCut + royalty.cut * effectiveSaleItemPrice
@@ -316,7 +320,7 @@ Cleanup the expired listing by iterating over the provided range of indexes.
 **fun `borrowListing()`**
 
 ```cadence
-fun borrowListing(listingResourceID UInt64): &Listing{ListingPublic}?
+fun borrowListing(listingResourceID: UInt64): &{ListingPublic}?
 ```
 
 borrowListing

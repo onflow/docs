@@ -23,9 +23,9 @@ First we need to get a list of all collections on an account that are a subtype 
 import NonFungibleToken from 0x1d7e57aa55817448
 
 access(all) fun main(addr: Address) : [StoragePath] {
-    //Get the AuthAccount for the given address.
-    //The AuthAccount is needed because we're going to be looking into the Storage of the user
-    var acct = getAuthAccount(addr)
+    // Get the authorized Account object for the given address.
+    // The authorized account is needed because we're going to be looking into the Storage of the user
+    var acct = getAuthAccount<auth(Storage) &Account>(addr)
     
     //Array that we will fill with all valid storage paths
     var paths : [StoragePath] = []
@@ -57,9 +57,9 @@ We use this to create a list of collection paths a user can pick from.  When the
 import NonFungibleToken from 0x1d7e57aa55817448
 
 access(all) fun main(addr: Address, path: StoragePath) : [UInt64] {
-    //Get the AuthAccount for the given address.
-    //The AuthAccount is needed because we're going to be looking into the Storage of the user
-    var acct = getAuthAccount(addr)
+    // Get the authorized Account object for the given address.
+    // The authorized account is needed because we're going to be looking into the Storage of the user
+    var acct = getAuthAccount<auth(Storage) &Account>(addr)
     
     //Get a reference to an interface of type NonFungibleToken.Collection public backed by the resource located at path
     var ref = acct.borrow<&{NonFungibleToken.CollectionPublic}>(from: path)!
@@ -82,8 +82,9 @@ access(all) fun main(addr: Address, path: StoragePath, ids: [UInt64]) : {UInt64:
     //We use AnyStruct? because that is the type that is returned by resolveView.
     var returnData: {UInt64:AnyStruct?} = {}
 
-    //Get account for address
-    var acct = getAuthAccount(addr)
+    // Get the authorized Account object for the given address.
+    // The authorized account is needed because we're going to be looking into the Storage of the user
+    var acct = getAuthAccount<auth(Storage) &Account>(addr)
     
     //Get a reference to a capability to the storage path as a NonFungibleToken.CollectionPublic
     var ref = acct.borrow<&{NonFungibleToken.CollectionPublic}>(from: path)!
@@ -185,8 +186,9 @@ access(all) struct NFTData {
 }
 
 access(all) fun main(addr: Address, path: StoragePath, id: UInt64) : NFTData? {
-    //Get account for address
-    var acct = getAuthAccount(addr)
+    // Get the authorized Account object for the given address.
+    // The authorized account is needed because we're going to be looking into the Storage of the user
+    var acct = getAuthAccount<auth(Storage) &Account>(addr)
     
     //Get a reference to a capability to the storage path as a NonFungibleToken.CollectionPublic
     var ref = acct.borrow<&{NonFungibleToken.CollectionPublic}>(from: path)!

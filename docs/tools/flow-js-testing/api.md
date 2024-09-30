@@ -845,7 +845,7 @@ describe("interactions - sendTransaction", () => {
   test("basic transaction", async () => {
     const code = `
       transaction(message: String){
-        prepare(singer: AuthAccount){
+        prepare(singer: &Account){
           log(message)
         }
       }
@@ -917,7 +917,7 @@ describe("interactions - sendTransaction", () => {
   test("basic transaction", async () => {
     const code = `
       transaction(message: String){
-        prepare(singer: AuthAccount){
+        prepare(singer: &Account){
           panic("You shall not pass!")
         }
       }
@@ -1174,7 +1174,7 @@ const main = async () => {
   // Define code and arguments we want to pass
   const code = `
     transaction(message: String){
-      prepare(signer: AuthAccount){
+      prepare(signer: &Account){
         log(message)
       }
     }
@@ -1556,8 +1556,8 @@ const main = async () => {
   await sendTransaction({
     code: `
         transaction{
-          prepare(signer: AuthAccount){
-            signer.save(42, to: /storage/answer)
+          prepare(signer: auth(StoreValue) &Account){
+            signer.storage.save(42, to: /storage/answer)
           }
         }
       `,

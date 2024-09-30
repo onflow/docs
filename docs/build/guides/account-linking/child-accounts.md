@@ -428,7 +428,7 @@ import "FlowToken"
 
 transaction(pubKey: String, initialFundingAmt: UFix64) {
 
-	prepare(signer: AuthAccount) {
+	prepare(signer: &Account) {
 
 		/* --- Account Creation --- */
 		// **NOTE:** your app may choose to separate creation depending on your custodial model)
@@ -454,11 +454,11 @@ transaction(pubKey: String, initialFundingAmt: UFix64) {
 		// Fund the new account if specified
 		if initialFundingAmt > 0.0 {
 			// Get a vault to fund the new account
-			let fundingProvider = signer.borrow<&FlowToken.Vault{FungibleToken.Provider}>(
+			let fundingProvider = signer.borrow<&FlowToken.Vault>(
 					from: /storage/flowTokenVault
 				)!
 			// Fund the new account with the initialFundingAmount specified
-			newAccount.getCapability<&FlowToken.Vault{FungibleToken.Receiver}>(
+			newAccount.capabilities.get<&FlowToken.Vault>(
 				/public/flowTokenReceiver
 			).borrow()!
 			.deposit(
@@ -522,7 +522,7 @@ transaction(
     filterAddress: Address
 ) {
 
-    prepare(parent: AuthAccount, app: AuthAccount) {
+    prepare(parent: auth(Storage) &Account, app: auth(Storage) &Account) {
         /* --- Account Creation --- */
         //
         // Create the child account, funding via the signing app account
@@ -546,11 +546,11 @@ transaction(
         // Fund the new account if specified
         if initialFundingAmt > 0.0 {
             // Get a vault to fund the new account
-            let fundingProvider = app.borrow<&FlowToken.Vault{FungibleToken.Provider}>(
+            let fundingProvider = app.borrow<&FlowToken.Vault}>(
                     from: /storage/flowTokenVault
                 )!
             // Fund the new account with the initialFundingAmount specified
-            newAccount.getCapability<&FlowToken.Vault{FungibleToken.Receiver}>(/public/flowTokenReceiver)
+            newAccount.capabilities.get<&FlowToken.Vault>(/public/flowTokenReceiver)
                 .borrow()!
                 .deposit(
                     from: <-fundingProvider.withdraw(
@@ -572,14 +572,14 @@ transaction(
 
         // Create a OwnedAccount & link Capabilities
         let ownedAccount <- HybridCustody.createOwnedAccount(acct: acctCap)
-        newAccount.save(<-ownedAccount, to: HybridCustody.OwnedAccountStoragePath)
+        newAccount.storage.save(<-ownedAccount, to: HybridCustody.OwnedAccountStoragePath)
         newAccount
-            .link<&HybridCustody.OwnedAccount{HybridCustody.BorrowableAccount, HybridCustody.OwnedAccountPublic, MetadataViews.Resolver}>(
+            .link<&HybridCustody.OwnedAccount>(
                 HybridCustody.OwnedAccountPrivatePath,
                 target: HybridCustody.OwnedAccountStoragePath
             )
         newAccount
-            .link<&HybridCustody.OwnedAccount{HybridCustody.OwnedAccountPublic}>(
+            .link<&HybridCustody.OwnedAccount>(
                 HybridCustody.OwnedAccountPublicPath,
                 target: HybridCustody.OwnedAccountStoragePath
             )
@@ -589,13 +589,13 @@ transaction(
 
         // Get the CapabilityFactory.Manager Capability
         let factory = getAccount(factoryAddress)
-            .getCapability<&CapabilityFactory.Manager{CapabilityFactory.Getter}>(
+            .getCapability<&CapabilityFactory.Manager>(
                 CapabilityFactory.PublicPath
             )
         assert(factory.check(), message: "factory address is not configured properly")
 
         // Get the CapabilityFilter.Filter Capability
-        let filter = getAccount(filterAddress).getCapability<&{CapabilityFilter.Filter}>(CapabilityFilter.PublicPath)
+        let filter = getAccount(filterAddress).capabilities.get<&{CapabilityFilter.Filter}>(CapabilityFilter.PublicPath)
         assert(filter.check(), message: "capability filter is not configured properly")
 
         // Configure access for the delegatee parent account
@@ -612,11 +612,11 @@ transaction(
         // Link Capabilities
         parent.unlink(HybridCustody.ManagerPublicPath)
         parent.unlink(HybridCustody.ManagerPrivatePath)
-        parent.link<&HybridCustody.Manager{HybridCustody.ManagerPrivate, HybridCustody.ManagerPublic}>(
+        parent.link<&HybridCustody.Manager>(
             HybridCustody.ManagerPrivatePath,
             target: HybridCustody.ManagerStoragePath
         )
-        parent.link<&HybridCustody.Manager{HybridCustody.ManagerPublic}>(
+        parent.link<&HybridCustody.Manager>(
             HybridCustody.ManagerPublicPath,
             target: HybridCustody.ManagerStoragePath
         )
@@ -625,14 +625,14 @@ transaction(
         let inboxName = HybridCustody.getChildAccountIdentifier(parent.address)
         let cap = parent
             .inbox
-            .claim<&HybridCustody.ChildAccount{HybridCustody.AccountPrivate, HybridCustody.AccountPublic, MetadataViews.Resolver}>(
+            .claim<&HybridCustody.ChildAccount>(
                 inboxName,
                 provider: newAccount.address
             ) ?? panic("child account cap not found")
 
         // Get a reference to the Manager and add the account
-        let managerRef = parent.borrow<&HybridCustody.Manager>(from: HybridCustody.ManagerStoragePath)
-            ?? panic("manager no found")
+        let managerRef = parent.storage.borrow<&HybridCustody.Manager>(from: HybridCustody.ManagerStoragePath)
+            ?? panic("manager not found")
         managerRef.addAccount(cap: cap)
     }
 }

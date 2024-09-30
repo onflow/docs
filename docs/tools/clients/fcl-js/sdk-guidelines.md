@@ -305,12 +305,12 @@ A transaction is only valid if its declared sequence number matches the current 
 
 📖 **[Authorizers](../../../build/basics/transactions.md#signer-roles)** are accounts that authorize a transaction to read and mutate their resources. A transaction can specify zero or more authorizers, depending on how many accounts the transaction needs to access.
 
-The number of authorizers on the transaction must match the number of AuthAccount parameters declared in the prepare statement of the Cadence script.
+The number of authorizers on the transaction must match the number of `&Account` parameters declared in the prepare statement of the Cadence script.
 
 Example transaction with multiple authorizers:
 ```
 transaction {
-  prepare(authorizer1: AuthAccount, authorizer2: AuthAccount) { }
+  prepare(authorizer1: &Account, authorizer2: &Account) { }
 }
 ```
 
@@ -334,7 +334,7 @@ import * as fcl from "@onflow/fcl"
 await fcl.mutate({
   cadence: `
     transaction(a: Int) {
-      prepare(acct: AuthAccount) {
+      prepare(acct: &Account) {
         log(acct)
         log(a)
       }
@@ -367,7 +367,7 @@ import * as fcl from "@onflow/fcl"
 await fcl.mutate({
   cadence: `
     transaction {
-      prepare(acct: AuthAccount) {}
+      prepare(acct: &Account) {}
     }
   `,
   proposer: currentUser,
@@ -381,7 +381,7 @@ await fcl.mutate({
 mutate({
   cadence: `
     transaction {
-      prepare(acct: AuthAccount) {}
+      prepare(acct: &Account) {}
     }
   `,
   authz: currentUser, // Optional. Will default to currentUser if not provided.
@@ -408,7 +408,7 @@ const authzFn = async (txAccount) => {
 mutate({
   cadence: `
     transaction {
-      prepare(acct: AuthAccount) {}
+      prepare(acct: &Account) {}
     }
   `,
   proposer: authzFn,
@@ -465,7 +465,7 @@ const authzFn = async (txAccount) => {
 mutate({
   cadence: `
     transaction {
-      prepare(acct: AuthAccount) {}
+      prepare(acct: &Account) {}
     }
   `,
   proposer: authzFn,
@@ -525,7 +525,7 @@ const authzTwoFn = async (txAccount) => {
 mutate({
   cadence: `
     transaction {
-      prepare(acct: AuthAccount) {}
+      prepare(acct: &Account) {}
     }
   `,
   proposer: authzFn,
@@ -542,7 +542,7 @@ mutate({
 - Account `0x01` signs the payload.
 - Account `0x02` signs the envelope.
     - Account `0x02` must sign last since it is the payer.
-- Account `0x02` is also an authorizer to show how to include two AuthAccounts into an transaction
+- Account `0x02` is also an authorizer to show how to include two `&Account` objects into an transaction
 
 | Account | Key ID | Weight |
 | ------- | ------ | ------ |
@@ -586,7 +586,7 @@ const authzTwoFn = async (txAccount) => {
 mutate({
   cadence: `
     transaction {
-      prepare(acct: AuthAccount, acct2: AuthAccount) {}
+      prepare(acct: &Account, acct2: &Account) {}
     }
   `,
   proposer: authzFn,
@@ -676,7 +676,7 @@ const authzTwoFn = async (txAccount) => {
 mutate({
   cadence: `
     transaction {
-      prepare(acct: AuthAccount) {}
+      prepare(acct: &Account) {}
     }
   `,
   proposer: authzFn,

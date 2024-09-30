@@ -318,14 +318,16 @@ const initAccount = async () => {
       import Profile from 0xProfile
 
       transaction {
-        prepare(account: AuthAccount) {
+        prepare(account: auth(Storage, Capabilities) &Account) {
           // Only initialize the account if it hasn't already been initialized
           if (!Profile.check(account.address)) {
             // This creates and stores the profile in the user's account
-            account.save(<- Profile.new(), to: Profile.privatePath)
+            account.storage.save(<- Profile.new(), to: Profile.privatePath)
 
             // This creates the public capability that lets applications read the profile's info
-            account.link<&Profile.Base{Profile.Public}>(Profile.publicPath, target: Profile.privatePath)
+            let newCap = account.capabilities.storage.issue<&Profile.Base>(Profile.privatePath)
+
+            account.capabilities.publish(newCap, at: Profile.publicPath)
           }
         }
       }
@@ -386,14 +388,16 @@ export default function App() {
         import Profile from 0xProfile
   
         transaction {
-          prepare(account: AuthAccount) {
+          prepare(account: auth(Storage, Capabilities) &Account) {
             // Only initialize the account if it hasn't already been initialized
             if (!Profile.check(account.address)) {
               // This creates and stores the profile in the user's account
-              account.save(<- Profile.new(), to: Profile.privatePath)
+              account.storage.save(<- Profile.new(), to: Profile.privatePath)
   
               // This creates the public capability that lets applications read the profile's info
-              account.link<&Profile.Base{Profile.Public}>(Profile.publicPath, target: Profile.privatePath)
+              let newCap = account.capabilities.storage.issue<&Profile.Base>(Profile.privatePath)
+
+              account.capabilities.publish(newCap, at: Profile.publicPath)
             }
           }
         }
@@ -461,10 +465,13 @@ const executeTransaction = async () => {
       import Profile from 0xProfile
 
       transaction(name: String) {
-        prepare(account: AuthAccount) {
-          account
-            .borrow<&Profile.Base{Profile.Owner}>(from: Profile.privatePath)!
-            .setName(name)
+        prepare(account: auth(BorrowValue) &Account) {
+            let profileRef = account.borrow<&Profile.Base>(from: Profile.privatePath)
+                ?? panic("The signer does not store a Profile.Base object at the path "
+                        .concat(Profile.privatePath.toString())
+                        .concat(". The signer must initialize their account with this object first!"))
+
+            profileRef.setName(name)
         }
       }
     `,
@@ -522,14 +529,16 @@ export default function App() {
         import Profile from 0xProfile
   
         transaction {
-          prepare(account: AuthAccount) {
+          prepare(account: auth(Storage, Capabilities) &Account) {
             // Only initialize the account if it hasn't already been initialized
             if (!Profile.check(account.address)) {
               // This creates and stores the profile in the user's account
               account.save(<- Profile.new(), to: Profile.privatePath)
   
               // This creates the public capability that lets applications read the profile's info
-              account.link<&Profile.Base{Profile.Public}>(Profile.publicPath, target: Profile.privatePath)
+              let newCap = account.capabilities.storage.issue<&Profile.Base>(Profile.privatePath)
+
+              account.capabilities.publish(newCap, at: Profile.publicPath)
             }
           }
         }
@@ -551,10 +560,13 @@ export default function App() {
         import Profile from 0xProfile
   
         transaction(name: String) {
-          prepare(account: AuthAccount) {
-            account
-              .borrow<&Profile.Base{Profile.Owner}>(from: Profile.privatePath)!
-              .setName(name)
+          prepare(account: auth(BorrowValue) &Account) {
+            let profileRef = account.borrow<&Profile.Base>(from: Profile.privatePath)
+                ?? panic("The signer does not store a Profile.Base object at the path "
+                        .concat(Profile.privatePath.toString())
+                        .concat(". The signer must initialize their account with this object first!"))
+                        
+            profileRef.setName(name)
           }
         }
       `,

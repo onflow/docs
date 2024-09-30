@@ -312,7 +312,7 @@ First we'll write the transaction we want to execute.
 string transaction = @"
     import HelloWorld from %USERADDRESS% 
     transaction {
-        prepare(acct: AuthAccount) {
+        prepare(acct: &Account) {
             log(""Transaction Test"")
             HelloWorld.hello(data:""Test Event"")
         }

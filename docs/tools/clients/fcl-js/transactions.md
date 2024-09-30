@@ -46,7 +46,7 @@ The below code snippet is the same as the above one, except for one extremely im
 Our Cadence code this time has a prepare statement, and we are using the `fcl.currentUser` when constructing our transaction.
 
 The `prepare` statement's arguments directly map to the order of the authorizations in the `authorizations` array.
-Four authorizations means four `AuthAccount`s as arguments passed to `prepare`. In this case though there is only one, and it is the `currentUser`.
+Four authorizations means four `&Account`s as arguments passed to `prepare`. In this case though there is only one, and it is the `currentUser`.
 
 These authorizations are important as you can only access/modify an accounts storage if you have the said accounts authorization.
 
@@ -56,7 +56,7 @@ import * as fcl from "@onflow/fcl"
 const transactionId = await fcl.mutate({
   cadence: `
     transaction {
-      prepare(acct: AuthAccount) {
+      prepare(acct: &Account) {
         log("Hello from prepare")
       }
       execute {

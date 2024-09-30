@@ -296,8 +296,8 @@ const txId = await fcl.mutate({
     import Profile from 0xba1132bc08f82fe2
     
     transaction(name: String) {
-      prepare(account: AuthAccount) {
-        account.borrow<&{Profile.Owner}>(from: Profile.privatePath)!.setName(name)
+      prepare(account: auth(BorrowValue) &Account) {
+        account.storage.borrow<&{Profile.Owner}>(from: Profile.privatePath)!.setName(name)
       }
     }
   `,
@@ -611,8 +611,8 @@ const txId = await fcl.mutate({
     import Profile from 0xba1132bc08f82fe2
     
     transaction(name: String) {
-      prepare(account: AuthAccount) {
-        account.borrow<&{Profile.Owner}>(from: Profile.privatePath)!.setName(name)
+      prepare(account: auth(BorrowValue) &Account) {
+        account.storage.borrow<&{Profile.Owner}>(from: Profile.privatePath)!.setName(name)
       }
     }
   `,

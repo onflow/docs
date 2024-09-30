@@ -284,35 +284,35 @@ import SDKExampleNFT from 0xf8d6e0586b0a20c7
 import NonFungibleToken from 0xf8d6e0586b0a20c7
 
 transaction(md: {String:String}) {
-    let acct : AuthAccount
+    let acct : auth(Storage, Capabilities) &Account
     
-    prepare(signer: AuthAccount) {
+    prepare(signer: auth(Storage, Capabilities) &Account) {
         self.acct = signer
     }
     
     execute {
         // Create collection if it doesn't exist
-        if self.acct.borrow<&SDKExampleNFT.Collection>(from: SDKExampleNFT.CollectionStoragePath) == nil
+        if self.acct.storage.borrow<&SDKExampleNFT.Collection>(from: SDKExampleNFT.CollectionStoragePath) == nil
         {
             // Create a new empty collection
             let collection <- SDKExampleNFT.createEmptyCollection()
             // save it to the account
             self.acct.save(<-collection, to: SDKExampleNFT.CollectionStoragePath)
             // link a public capability for the collection
-            self.acct.link<&{SDKExampleNFT.CollectionPublic, NonFungibleToken.CollectionPublic}>(
-                SDKExampleNFT.CollectionPublicPath,
-                target: SDKExampleNFT.CollectionStoragePath
+            let newCap = self.acct.capabilities.storage.issue<&{SDKExampleNFT.CollectionPublic, NonFungibleToken.CollectionPublic}>(
+                SDKExampleNFT.CollectionStoragePath
             )
+            self.acct.capabilities.publish(newCap, to: SDKExampleNFT.CollectionPublicPath)
         }
         
         //Get a reference to the minter
         let minter = getAccount(0xf8d6e0586b0a20c7)
-            .getCapability(SDKExampleNFT.MinterPublicPath)
+            .capabilities.get(SDKExampleNFT.MinterPublicPath)
             .borrow<&{SDKExampleNFT.PublicMinter}>()
         
         
         //Get a CollectionPublic reference to the collection
-        let collection = self.acct.getCapability(SDKExampleNFT.CollectionPublicPath)
+        let collection = self.acct.capabilities.get(SDKExampleNFT.CollectionPublicPath)
             .borrow<&{NonFungibleToken.CollectionPublic}>()
               
         //Mint a new NFT and deposit into the authorizers account
@@ -384,7 +384,7 @@ import SDKExampleNFT from 0xf8d6e0586b0a20c7
 access(all) fun main(addr:Address): {UInt64:{String:String}} {
 
     //Get a capability to the SDKExampleNFT collection if it exists.  Return an empty dictionary if it does not
-    let collectionCap = getAccount(addr).getCapability<&{SDKExampleNFT.CollectionPublic}>(SDKExampleNFT.CollectionPublicPath)
+    let collectionCap = getAccount(addr).capabilities.get<&{SDKExampleNFT.CollectionPublic}>(SDKExampleNFT.CollectionPublicPath)
     if(collectionCap == nil)
     {
         return {}
