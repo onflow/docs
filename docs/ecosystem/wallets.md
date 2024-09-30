@@ -54,6 +54,8 @@ https://niftory.com/
 
 https://www.finoa.io/flow/
 
+</div>
+
 ## Blocto
 
 [Blocto](https://www.blocto.io/) is a cross-chain mobile wallet for IOS and Android devices.
