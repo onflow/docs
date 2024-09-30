@@ -6,7 +6,7 @@ sidebar_label: Burner
 
 # Contract
 
-The [Burner]() contract provides a way for resources to define
+The [Burner](https://github.com/onflow/flow-ft/blob/master/contracts/utility/Burner.cdc) contract provides a way for resources to define
 custom logic that is executed when the resource is destroyed.
 Resources that want to utilize this functionality should implement
 the `Burner.Burnable` interface which requires that they include
