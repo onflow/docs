@@ -1,3 +1,7 @@
+---
+sidebar_position: 2
+---
+
 # Error Codes
 
 List of error codes returned from failing transactions and scripts. The error code has an accompanied error message that usually gives more clarification. This list is meant to give more information and helpful hints.
@@ -133,6 +137,9 @@ Example:
 `
 [Error Code: 1103] The account with address (xxx) uses 96559611 bytes of storage which is over its capacity (96554500 bytes). Capacity can be increased by adding FLOW tokens to the account.
 `
+
+
+For more information refer to [Fees](../build/basics/fees.md#maximum-available-balance)
 
 
 
@@ -380,5 +387,3 @@ Example:
 `
 ...
 `
-
-

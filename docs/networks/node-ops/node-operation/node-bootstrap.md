@@ -44,10 +44,10 @@ chmod +x ./boot-tools/transit
 
 ```shell CheckSHA256
 sha256sum ./boot-tools/bootstrapcmd
-f3745f72d917631636161190a2bc4968543e2213944e9fb9b83c991852d1458d  ./boot-tools/bootstrap
+460cfcfeb52b40d8b8b0c4641bc4e423bcc90f82068e95f4267803ed32c26d60  ./boot-tools/bootstrap
 
 sha256sum ./boot-tools/transit
-7a105a9f8340c7c881553e527a7a7fcdcb87388d20487f48dc5c6519153de757  ./boot-tools/transit
+f146bdc82ce0cce73c0fb9de284b2e2639e851120f8b89a1dd9368e8442123b4  ./boot-tools/transit
 ```
 
 ### Generate Your Node Keys
@@ -251,7 +251,7 @@ $ ./boot-tools/transit prepare -b ./bootstrap -r consensus
 This will generate the public and private transit keys under the bootstrap folder.
 The transit keys are used to transfer the DKG keys after a network upgrade.
 
-Please share the **public** transit key with the Flow Foundation via [discord](https://discord.com/channels/613813861610684416/694291244020662273) or [email](mailto::governance@flow.com).
+Please share the **public** transit key with the Flow Foundation via [discord](https://discord.gg/flow) or [email](mailto::governance@flow.com).
 
 ## Step 3 - Start Your Flow Node
 

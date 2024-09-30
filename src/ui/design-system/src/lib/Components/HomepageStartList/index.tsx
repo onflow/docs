@@ -41,7 +41,7 @@ const homepagePillData: Record<string, HomepagePillItemsProps> = {
     subText: 'Check it out',
   },
   'developer-chat': {
-    link: 'https://discord.gg/flowblockchain',
+    link: 'https://discord.gg/flow',
     icon: 'developer-chat',
     text: 'Developers Chat',
     subText: 'Chat with devs',

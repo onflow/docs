@@ -154,4 +154,4 @@ Please see a list [here](https://github.com/onflow/flow/blob/master/nodeoperator
 
   6. I am clicking 'submit' to execute a transaction, but nothing is happening. How can I unblock myself?
 
-       - a.) Please disable any pop-up blockers and ad blockers you have and refresh the page. If you are still experiencing issues, please reach out via [Discord](https://discord.gg/4yGnMzkZxr) in the appropriate channel.
+       - a.) Please disable any pop-up blockers and ad blockers you have and refresh the page. If you are still experiencing issues, please reach out via [Discord](https://discord.gg/flow) in the appropriate channel.
