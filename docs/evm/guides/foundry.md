@@ -219,6 +219,24 @@ forge create --rpc-url https://testnet.evm.nodes.onflow.org \
 
 The above will print the deployed contract address. We'll use it in the next section to interact with the contract.
 
+### Verifying a Smart Contract
+
+Once deployed, you can verify the contract so that others can see the source code and interact with it from Flow's block explorer. You can use the [`forge verify-contract`](https://book.getfoundry.sh/reference/forge/forge-verify-contract) command:
+
+```shell
+forge verify-contract --rpc-url https://testnet.evm.nodes.onflow.org/ \
+    --verifier blockscout \
+    --verifier-url https://evm-testnet.flowscan.io/api \
+    $DEPLOYED_MYTOKEN_ADDRESS \
+    src/MyToken.sol:MyToken
+````
+
+:::info
+
+When verifying a Mainnet contract, be sure to use the Mainnet [RPC](../../evm/networks.md) and block explorer URLs.
+
+:::
+
 ### Querying Testnet State
 
 Based on the given constructor arguments, the deployer should own `42,000,000 MyT`. We can check the `MyToken` balance of the contract owner. Replace `$DEPLOYED_MYTOKEN_ADDRESS` with the address of the deployed contract and `$DEPLOYER_ADDRESS` with the address of the account you funded earlier:
