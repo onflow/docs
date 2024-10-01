@@ -533,7 +533,7 @@ export default function App() {
             // Only initialize the account if it hasn't already been initialized
             if (!Profile.check(account.address)) {
               // This creates and stores the profile in the user's account
-              account.save(<- Profile.new(), to: Profile.privatePath)
+              account.storage.save(<- Profile.new(), to: Profile.storagePath)
   
               // This creates the public capability that lets applications read the profile's info
               let newCap = account.capabilities.storage.issue<&Profile.Base>(Profile.privatePath)
@@ -561,7 +561,7 @@ export default function App() {
   
         transaction(name: String) {
           prepare(account: auth(BorrowValue) &Account) {
-            let profileRef = account.borrow<&Profile.Base>(from: Profile.privatePath)
+            let profileRef = account.storage.borrow<&Profile.Base>(from: Profile.privatePath)
                 ?? panic("The signer does not store a Profile.Base object at the path "
                         .concat(Profile.privatePath.toString())
                         .concat(". The signer must initialize their account with this object first!"))

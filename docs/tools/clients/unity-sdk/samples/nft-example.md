@@ -385,7 +385,7 @@ access(all) fun main(addr:Address): {UInt64:{String:String}} {
 
     //Get a capability to the SDKExampleNFT collection if it exists.  Return an empty dictionary if it does not
     let collectionCap = getAccount(addr).capabilities.get<&{SDKExampleNFT.CollectionPublic}>(SDKExampleNFT.CollectionPublicPath)
-    if(collectionCap == nil)
+    if(!collectionCap.check())
     {
         return {}
     }
