@@ -203,7 +203,7 @@ access(all) fun main(address: Address): UFix64 {
    .capabilities.get
    <&LockedTokens.TokenHolder>
    (LockedTokens.LockedAccountInfoPublicPath)
-  if lockedAccountInfoCap == nil || !(lockedAccountInfoCap!.check()) {
+  if !(lockedAccountInfoCap!.check()) {
     return unlockedBalance
   }
   let lockedAccountInfoRef = lockedAccountInfoCap!.borrow()!
