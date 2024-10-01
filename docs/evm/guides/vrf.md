@@ -90,7 +90,7 @@ contract CadenceArchCaller {
 
 2. **Revertible Random**:
 
-   The `revertibleRandom()` function makes a static call to the `revertibleRandom()` function to fetch a pseudo-random
+   The `revertibleRandom()` function makes a static call to the `revertibleRandom<uint64>()` function to fetch a pseudo-random
    number. If the call is successful, it decodes the result as a `uint64` random value.
 
 ---
@@ -156,7 +156,7 @@ contract RandomInRange {
 
 :::warning The above code is susceptible to the [modulo
 bias](https://research.kudelskisecurity.com/2020/07/28/the-definitive-guide-to-modulo-bias-and-how-to-avoid-it/),
-particularly if your desired range is not a multiple of the random number range. To avoid this, you can use a more
+particularly if the random number range is not a multiple of your desired range. To avoid this, you can use a more
 complex algorithm like rejection sampling, an example for which is provided in [this
 repository](https://github.com/onflow/random-coin-toss). :::
 
