@@ -16,7 +16,7 @@ The Cross-VM Bridge internalizes the capabilities to deploy new token contracts 
 access to, and maintaining links between associated contracts. It additionally automates account and contract calls to
 enforce source VM asset burn or lock, and target VM token mint or unlock.
 
-Developers wishing to use the Cross-VM Bridge will be required to use a Cadence transaction as cross-VM bridging
+Developers wishing to use the Cross-VM Bridge will be required to use a Cadence transaction for cross-VM bridging
 functionality is currently not available natively in EVM. By extension, this means that the EVM account bridging from
 EVM to Cadence must be a [`CadenceOwnedAccount` (COA)](../evm/cadence/interacting-with-coa.md) as this is the only EVM
 account type that can be controlled from the Cadence runtime.
@@ -32,10 +32,10 @@ The core bridge contracts can be found at the following addresses:
 |Contracts|Testnet|Mainnet|
 |---|---|---|
 |All Cadence Bridge contracts|[`0xdfc20aee650fcbdf`](https://contractbrowser.com/account/0xdfc20aee650fcbdf/contracts)|[`0x1e4aa0b87d10b141`](https://contractbrowser.com/account/0x1e4aa0b87d10b141/contracts)|
-|[`FlowEVMBridgeFactory.sol`](./solidity/src/FlowBridgeFactory.sol)|[`0xf8146b4aef631853f0eb98dbe28706d029e52c52`](https://evm-testnet.flowscan.io/address/0xF8146B4aEF631853F0eB98DBE28706d029e52c52)|[`0x1c6dea788ee774cf15bcd3d7a07ede892ef0be40`](https://evm.flowscan.io/address/0x1C6dEa788Ee774CF15bCd3d7A07ede892ef0bE40)|
-|[`FlowEVMBridgeDeploymentRegistry.sol`](./solidity/src/FlowEVMBridgeDeploymentRegistry.sol)|[`0x8781d15904d7e161f421400571dea24cc0db6938`](https://evm-testnet.flowscan.io/address/0x8781d15904d7e161f421400571dea24cc0db6938)|[`0x8fdec2058535a2cb25c2f8cec65e8e0d0691f7b0`](https://evm.flowscan.io/address/0x8FDEc2058535A2Cb25C2f8ceC65e8e0D0691f7B0)|
-|[`FlowEVMBridgedERC20Deployer.sol`](./solidity/src/FlowEVMBridgedERC20Deployer.sol)|[`0x4d45CaD104A71D19991DE3489ddC5C7B284cf263`](https://evm-testnet.flowscan.io/address/0x4d45CaD104A71D19991DE3489ddC5C7B284cf263)|[`0x49631Eac7e67c417D036a4d114AD9359c93491e7`](https://evm.flowscan.io/address/0x49631Eac7e67c417D036a4d114AD9359c93491e7)|
-|[`FlowEVMBridgedERC721Deployer.sol`](./solidity/src/FlowEVMBridgedERC721Deployer.sol)|[`0x1B852d242F9c4C4E9Bb91115276f659D1D1f7c56`](https://evm-testnet.flowscan.io/address/0x1B852d242F9c4C4E9Bb91115276f659D1D1f7c56)|[`0xe7c2B80a9de81340AE375B3a53940E9aeEAd79Df`](https://evm.flowscan.io/address/0xe7c2B80a9de81340AE375B3a53940E9aeEAd79Df)|
+|`FlowEVMBridgeFactory.sol`|[`0xf8146b4aef631853f0eb98dbe28706d029e52c52`](https://evm-testnet.flowscan.io/address/0xF8146B4aEF631853F0eB98DBE28706d029e52c52)|[`0x1c6dea788ee774cf15bcd3d7a07ede892ef0be40`](https://evm.flowscan.io/address/0x1C6dEa788Ee774CF15bCd3d7A07ede892ef0bE40)|
+|`FlowEVMBridgeDeploymentRegistry.sol`|[`0x8781d15904d7e161f421400571dea24cc0db6938`](https://evm-testnet.flowscan.io/address/0x8781d15904d7e161f421400571dea24cc0db6938)|[`0x8fdec2058535a2cb25c2f8cec65e8e0d0691f7b0`](https://evm.flowscan.io/address/0x8FDEc2058535A2Cb25C2f8ceC65e8e0D0691f7B0)|
+|`FlowEVMBridgedERC20Deployer.sol`|[`0x4d45CaD104A71D19991DE3489ddC5C7B284cf263`](https://evm-testnet.flowscan.io/address/0x4d45CaD104A71D19991DE3489ddC5C7B284cf263)|[`0x49631Eac7e67c417D036a4d114AD9359c93491e7`](https://evm.flowscan.io/address/0x49631Eac7e67c417D036a4d114AD9359c93491e7)|
+|`FlowEVMBridgedERC721Deployer.sol`|[`0x1B852d242F9c4C4E9Bb91115276f659D1D1f7c56`](https://evm-testnet.flowscan.io/address/0x1B852d242F9c4C4E9Bb91115276f659D1D1f7c56)|[`0xe7c2B80a9de81340AE375B3a53940E9aeEAd79Df`](https://evm.flowscan.io/address/0xe7c2B80a9de81340AE375B3a53940E9aeEAd79Df)|
 
 And below are the bridge escrow's EVM addresses. These addresses are COAs and are stored stored in the same Flow account
 as you'll find the Cadence contracts (see above).
@@ -797,10 +797,11 @@ ecosystem.
 
 For assets that do not implement `EVMBridgedMetadata`, the bridge will attempt to serialize the metadata of the asset as
 a JSON data URL string. This is done via the [`SerializeMetadata`
-contract](https://github.com/onflow/flow-evm-bridge/blob/main/cadence/contracts/utils/SerializeMetadata.cdc) which serializes metadata values into a JSON blob compatible
-with the OpenSea metadata standard. The serialized metadata is then committed as the ERC721 `tokenURI` upon bridging
-Cadence-native NFTs to EVM. Since Cadence NFTs can easily update onchain metadata either by field or by the ownership of
-sub-NFTs, this serialization pattern enables token URI updates on subsequent bridge requests.
+contract](https://github.com/onflow/flow-evm-bridge/blob/main/cadence/contracts/utils/SerializeMetadata.cdc) which
+serializes metadata values into a JSON blob compatible with the OpenSea metadata standard. The serialized metadata is
+then committed as the ERC721 `tokenURI` upon bridging Cadence-native NFTs to EVM. Since Cadence NFTs can easily update
+onchain metadata either by field or by the ownership of sub-NFTs, this serialization pattern enables token URI updates
+on subsequent bridge requests.
 
 ### Opting Out
 
@@ -813,19 +814,19 @@ NFT in escrow for the bridge to transfer on fulfillment of the NFT back to EVM. 
 opt-out of bridging, but **importantly must do so before the asset has been onboarded to the bridge**.
 
 For Solidity contracts, opting out is as simple as extending the [`BridgePermissions.sol` abstract
-contract](./solidity/src/interfaces/BridgePermissions.sol) which defaults `allowsBridging()` to false. The bridge explicitly checks
-for the implementation of `IBridgePermissions` and the value of `allowsBridging()` to validate that the contract has not
-opted out of bridging.
+contract](https://github.com/onflow/flow-evm-bridge/blob/main/solidity/src/interfaces/BridgePermissions.sol) which
+defaults `allowsBridging()` to false. The bridge explicitly checks for the implementation of `IBridgePermissions` and
+the value of `allowsBridging()` to validate that the contract has not opted out of bridging.
 
 Similarly, Cadence contracts can implement the [`IBridgePermissions.cdc` contract
-interface](https://github.com/onflow/flow-evm-bridge/blob/main/cadence/contracts/bridge/interfaces/IBridgePermissions.cdc). This contract has a single method
-`allowsBridging()` with a default implementation returning `false`. Again, the bridge explicitly checks for the
-implementation of `IBridgePermissions` and the value of `allowsBridging()` to validate that the contract has not opted
-out of bridging. Should you later choose to enable bridging, you can simply override the default implementation and
-return true.
+interface](https://github.com/onflow/flow-evm-bridge/blob/main/cadence/contracts/bridge/interfaces/IBridgePermissions.cdc).
+This contract has a single method `allowsBridging()` with a default implementation returning `false`. Again, the bridge
+explicitly checks for the implementation of `IBridgePermissions` and the value of `allowsBridging()` to validate that
+the contract has not opted out of bridging. Should you later choose to enable bridging, you can simply override the
+default implementation and return true.
 
-In both cases, `allowsBridging()` gates onboarding to the bridge. Once onboarded - **a permissionless operation anyone can
-execute** - the value of `allowsBridging()` is irrelevant and assets can move between VMs permissionlessly.
+In both cases, `allowsBridging()` gates onboarding to the bridge. Once onboarded - **a permissionless operation anyone
+can execute** - the value of `allowsBridging()` is irrelevant and assets can move between VMs permissionlessly.
 
 ## Under the Hood
 
