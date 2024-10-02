@@ -7,19 +7,19 @@ sidebar_position: 6
 # Cross-VM Bridge
 
 Flow provides the [Cross-VM Bridge](https://www.github.com/onflow/flow-evm-bridge) which enables the movement of
-fungible and non-fungible tokens between Cadence & EVM. The Cross-VM Bridge is a contract-based, trustless protocol
-enabling the automated and atomic bridging of tokens from Cadence into EVM with their corresponding ERC-20 and ERC-721
-token types. In the opposite direction, it supports bridging of arbitrary ERC-20 and ERC-721 tokens from EVM to Cadence
-as their corresponding FT or NFT token types.
+fungible and non-fungible tokens between Cadence & EVM. The Cross-VM Bridge is a contract-based protocol enabling the
+automated and atomic bridging of tokens from Cadence into EVM with their corresponding ERC-20 and ERC-721 token types.
+In the opposite direction, it supports bridging of arbitrary ERC-20 and ERC-721 tokens from EVM to Cadence as their
+corresponding FT or NFT token types.
 
 The Cross-VM Bridge internalizes the capabilities to deploy new token contracts in either VM state as needed, resolving
 access to, and maintaining links between associated contracts. It additionally automates account and contract calls to
 enforce source VM asset burn or lock, and target VM token mint or unlock.
 
-Developers wishing to use the Cross-VM Bridge will be required to use a Cadence transaction for cross-VM bridging
-functionality is currently not available natively in EVM. By extension, this means that the EVM account bridging from
-EVM to Cadence must be a [`CadenceOwnedAccount` (COA)](./interacting-with-coa.md) as this is the only EVM account type
-that can be controlled from the Cadence runtime.
+Developers wishing to use the Cross-VM Bridge will be required to use a Cadence transaction. Cross-VM bridging
+functionality is not currently available natively in EVM on Flow. By extension, this means that the EVM account bridging
+from EVM to Cadence must be a [`CadenceOwnedAccount` (COA)](./interacting-with-coa.md) as this is the only EVM account
+type that can be controlled from the Cadence runtime.
 
 This [FLIP](https://github.com/onflow/flips/pull/233) outlines the architecture and implementation of the VM bridge.
 This document will focus on how to use the Cross-VM Bridge and considerations for fungible and non-fungible token
@@ -47,10 +47,9 @@ as you'll find the Cadence contracts (see above).
 
 ## Interacting With the Bridge
 
-
 :::info
 
-All bridging activity in either direction is orchestrated via Cadence on (COA) resources. This means that all bridging
+All bridging activity in either direction is orchestrated via Cadence on COA EVM accounts. This means that all bridging
 activity must be initiated via a Cadence transaction, not an EVM transaction regardless of the directionality of the
 bridge request. For more information on the interplay between Cadence and EVM, see [How EVM on Flow
 Works](../how-it-works.md).
@@ -66,15 +65,20 @@ standard contract interfaces.
 
 Like all operations on Flow, there are native fees associated with both computation and storage. To prevent spam and
 sustain the bridge account's storage consumption, fees are charged for both onboarding assets and bridging assets. In
-the case where storage consumption is expected, fees are charges based on the storage consumed at the current network
+the case where storage consumption is expected, fees are charged based on the storage consumed at the current network
+storage rate.
 
 ### Onboarding
 
 Since a contract must define the asset in the target VM, an asset must be "onboarded" to the bridge before requests can
-be fulfilled. Moving from Cadence to EVM, onboarding can occur on the fly, deploying a template contract in the same
-transaction as the asset is bridged to EVM if the transaction so specifies. Moving from EVM to Cadence, however,
-requires that onboarding occur in a separate transaction due to the fact that a Cadence contract is initialized at the
-end of a transaction and isn't available in the runtime until after the transaction has executed.
+be fulfilled.
+
+Moving from Cadence to EVM, onboarding can occur on the fly, deploying a template contract in the same transaction as
+the asset is bridged to EVM if the transaction so specifies.
+
+Moving from EVM to Cadence, however, requires that onboarding occur in a separate transaction due to the fact that a
+Cadence contract is initialized at the end of a transaction and isn't available in the runtime until after the
+transaction has executed.
 
 Below are transactions relevant to onboarding assets:
 
@@ -210,16 +214,77 @@ transaction(contractAddressHex: String) {
 ### Bridging
 
 Once an asset has been onboarded, either by its Cadence type or EVM contract address, it can be bridged in either
-direction referred to by its Cadence type. For Cadence-native assets, this is simply its native type. For EVM-native
+direction, referred to by its Cadence type. For Cadence-native assets, this is simply its native type. For EVM-native
 assets, this is in most cases a templated Cadence contract deployed to the bridge account, the name of which is derived
 from the EVM contract address. For instance, an ERC721 contract at address `0x1234` would be onboarded to the bridge as
 `EVMVMBridgedNFT_0x1234`, making its type identifier `A.<BRIDGE_ADDRESS>.EVMVMBridgedNFT_0x1234.NFT`.
 
-However, the derivation of these identifiers can be abstracted within transactions. For example, calling applications
-can provide the defining contract address and name of the bridged asset (see
-[`bridge_nft_to_evm.cdc`](https://www.github.com/onflow/flow-evm-bridge/blob/main/cadence/transactions/bridge/nft/bridge_nft_to_evm.cdc)).
-Alternatively, the defining EVM contract could be provided, etc - this flexibility is thanks to Cadence's scripted
-transactions.
+To get the type identifier for a given NFT, you can use the following code:
+
+```cadence
+// Where `nft` is either a @{NonFungibleToken.NFT} or &{NonFungibleToken.NFT}
+nft.getType().identifier
+```
+
+You may also retrieve the type associated with a given EVM contract address using the following script:
+
+<details>
+
+<summary>get_associated_type.cdc</summary>
+
+```cadence title="get_associated_type.cdc"
+// source: https://github.com/onflow/flow-evm-bridge/blob/main/cadence/scripts/bridge/get_associated_type.cdc
+
+import "EVM"
+
+import "FlowEVMBridgeConfig"
+
+/// Returns the Cadence Type associated with the given EVM address (as its hex String)
+///
+/// @param evmAddressHex: The hex-encoded address of the EVM contract as a String
+///
+/// @return The Cadence Type associated with the EVM address or nil if the address is not onboarded. `nil` may also be
+///        returned if the address is not a valid EVM address.
+///
+access(all)
+fun main(addressHex: String): Type? {
+    let address = EVM.addressFromString(addressHex)
+    return FlowEVMBridgeConfig.getTypeAssociated(with: address)
+}
+```
+</details>
+
+Alternatively, given some onboarded Cadence type, you can retrieve the associated EVM address using the following
+script:
+
+<details>
+
+<summary>get_associated_address.cdc</summary>
+
+```cadence title="get_associated_address.cdc"
+// source: https://github.com/onflow/flow-evm-bridge/blob/main/cadence/scripts/bridge/get_associated_evm_address.cdc
+
+import "EVM"
+
+import "FlowEVMBridgeConfig"
+
+/// Returns the EVM address associated with the given Cadence type (as its identifier String)
+///
+/// @param typeIdentifier: The Cadence type identifier String
+///
+/// @return The EVM address as a hex string if the type has an associated EVMAddress, otherwise nil
+///
+access(all)
+fun main(identifier: String): String? {
+    if let type = CompositeType(identifier) {
+        if let address = FlowEVMBridgeConfig.getEVMAddressAssociated(with: type) {
+            return address.toString()
+        }
+    }
+    return nil
+}
+```
+</details>
 
 #### NFTs
 
@@ -808,16 +873,18 @@ on subsequent bridge requests.
 ### Opting Out
 
 It's also recognized that the logic of some use cases may actually be compromised by the act of bridging, particularly
-in such a unique runtime environment. These would be cases that do not maintain ownership assumptions implicit to
-ecosystem standards. For instance, an ERC721 implementation may reclaim a user's assets after a month of inactivity time
-period. In such a case, bridging that ERC721 to Cadence would decouple the representation of ownership of the bridged
-NFT from the actual ownership in the defining ERC721 contract after the token had been reclaimed - there would be no NFT
-in escrow for the bridge to transfer on fulfillment of the NFT back to EVM. In such cases, projects may choose to
-opt-out of bridging, but **importantly must do so before the asset has been onboarded to the bridge**.
+in such a unique partitioned runtime environment. Such cases might include those that do not maintain ownership
+assumptions implicit to ecosystem standards.
+
+For instance, an ERC721 implementation may reclaim a user's assets after a month of inactivity. In such a case, bridging
+that ERC721 to Cadence would decouple the representation of ownership of the bridged NFT from the actual ownership in
+the defining ERC721 contract after the token had been reclaimed - there would be no NFT in escrow for the bridge to
+transfer on fulfillment of the NFT back to EVM. In such cases, projects may choose to opt-out of bridging, but
+**importantly must do so before the asset has been onboarded to the bridge**.
 
 For Solidity contracts, opting out is as simple as extending the [`BridgePermissions.sol` abstract
 contract](https://github.com/onflow/flow-evm-bridge/blob/main/solidity/src/interfaces/BridgePermissions.sol) which
-defaults `allowsBridging()` to false. The bridge explicitly checks for the implementation of `IBridgePermissions` and
+defaults `allowsBridging()` to `false`. The bridge explicitly checks for the implementation of `IBridgePermissions` and
 the value of `allowsBridging()` to validate that the contract has not opted out of bridging.
 
 Similarly, Cadence contracts can implement the [`IBridgePermissions.cdc` contract
@@ -825,7 +892,7 @@ interface](https://github.com/onflow/flow-evm-bridge/blob/main/cadence/contracts
 This contract has a single method `allowsBridging()` with a default implementation returning `false`. Again, the bridge
 explicitly checks for the implementation of `IBridgePermissions` and the value of `allowsBridging()` to validate that
 the contract has not opted out of bridging. Should you later choose to enable bridging, you can simply override the
-default implementation and return true.
+default implementation and return `true`.
 
 In both cases, `allowsBridging()` gates onboarding to the bridge. Once onboarded - **a permissionless operation anyone
 can execute** - the value of `allowsBridging()` is irrelevant and assets can move between VMs permissionlessly.
