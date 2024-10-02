@@ -1,7 +1,7 @@
 ---
 title: Cross-VM Bridge
 sidebar_label: Cross-VM Bridge
-sidebar_position: 7
+sidebar_position: 6
 ---
 
 # Cross-VM Bridge
@@ -18,7 +18,7 @@ enforce source VM asset burn or lock, and target VM token mint or unlock.
 
 Developers wishing to use the Cross-VM Bridge will be required to use a Cadence transaction for cross-VM bridging
 functionality is currently not available natively in EVM. By extension, this means that the EVM account bridging from
-EVM to Cadence must be a [`CadenceOwnedAccount` (COA)](../evm/cadence/interacting-with-coa.md) as this is the only EVM
+EVM to Cadence must be a [`CadenceOwnedAccount` (COA)](./interacting-with-coa.md) as this is the only EVM
 account type that can be controlled from the Cadence runtime.
 
 This [FLIP](https://github.com/onflow/flips/pull/233) outlines the architecture and implementation of the VM bridge.
@@ -53,7 +53,7 @@ as you'll find the Cadence contracts (see above).
 All bridging activity in either direction is orchestrated via Cadence on (COA) resources. This means that all bridging
 activity must be initiated via a Cadence transaction, not an EVM transaction regardless of the directionality of the
 bridge request. For more information on the interplay between Cadence and EVM, see [How EVM on Flow
-Works](../evm/how-it-works.md)
+Works](../how-it-works.md).
 
 :::
 
@@ -783,7 +783,8 @@ access(all) struct EVMBridgedMetadata {
 ```
 
 This uri value could be a pointer to some offchain metadata if you expect your metadata to be static. Or you could
-couple the `uri()` method with the utility contract below to serialize the onchain metadata on the fly.
+couple the `uri()` method with the utility contract below to serialize the onchain metadata on the fly. Alternatively,
+you may choose to host a metadata proxy which serves the requested token URI content.
 
 ### SerializeMetadata
 
@@ -809,7 +810,7 @@ It's also recognized that the logic of some use cases may actually be compromise
 in such a unique runtime environment. These would be cases that do not maintain ownership assumptions implicit to
 ecosystem standards. For instance, an ERC721 implementation may reclaim a user's assets after a month of inactivity time
 period. In such a case, bridging that ERC721 to Cadence would decouple the representation of ownership of the bridged
-NFT from the actual ownership in the definining ERC721 contract after the token had been reclaimed - there would be no
+NFT from the actual ownership in the defining ERC721 contract after the token had been reclaimed - there would be no
 NFT in escrow for the bridge to transfer on fulfillment of the NFT back to EVM. In such cases, projects may choose to
 opt-out of bridging, but **importantly must do so before the asset has been onboarded to the bridge**.
 
