@@ -18,8 +18,8 @@ enforce source VM asset burn or lock, and target VM token mint or unlock.
 
 Developers wishing to use the Cross-VM Bridge will be required to use a Cadence transaction for cross-VM bridging
 functionality is currently not available natively in EVM. By extension, this means that the EVM account bridging from
-EVM to Cadence must be a [`CadenceOwnedAccount` (COA)](./interacting-with-coa.md) as this is the only EVM
-account type that can be controlled from the Cadence runtime.
+EVM to Cadence must be a [`CadenceOwnedAccount` (COA)](./interacting-with-coa.md) as this is the only EVM account type
+that can be controlled from the Cadence runtime.
 
 This [FLIP](https://github.com/onflow/flips/pull/233) outlines the architecture and implementation of the VM bridge.
 This document will focus on how to use the Cross-VM Bridge and considerations for fungible and non-fungible token
@@ -482,9 +482,10 @@ side, it must escrow on the other as the native VM contract is owned by an exter
 
 With fungible tokens in particular, there may be some cases where the Cadence contract is not deployed to the bridge
 account, but the bridge still follows a mint/burn pattern in Cadence. These cases are handled via
-[`TokenHandler`](./cadence/contracts/bridge/interfaces/FlowEVMBridgeHandlerInterfaces.cdc) implementations. Also know
-that moving $FLOW to EVM is built into the `EVMAddress` object so any requests bridging $FLOW to EVM will simply
-leverage this interface; however, moving $FLOW from EVM to Cadence must be done through the COA resource.
+[`TokenHandler`](https://github.com/onflow/flow-evm-bridge/blob/main/cadence/contracts/bridge/interfaces/FlowEVMBridgeHandlerInterfaces.cdc)
+implementations. Also know that moving $FLOW to EVM is built into the `EVMAddress` object so any requests bridging $FLOW
+to EVM will simply leverage this interface; however, moving $FLOW from EVM to Cadence must be done through the COA
+resource.
 
 Below are transactions relevant to bridging fungible tokens:
 
@@ -810,8 +811,8 @@ It's also recognized that the logic of some use cases may actually be compromise
 in such a unique runtime environment. These would be cases that do not maintain ownership assumptions implicit to
 ecosystem standards. For instance, an ERC721 implementation may reclaim a user's assets after a month of inactivity time
 period. In such a case, bridging that ERC721 to Cadence would decouple the representation of ownership of the bridged
-NFT from the actual ownership in the defining ERC721 contract after the token had been reclaimed - there would be no
-NFT in escrow for the bridge to transfer on fulfillment of the NFT back to EVM. In such cases, projects may choose to
+NFT from the actual ownership in the defining ERC721 contract after the token had been reclaimed - there would be no NFT
+in escrow for the bridge to transfer on fulfillment of the NFT back to EVM. In such cases, projects may choose to
 opt-out of bridging, but **importantly must do so before the asset has been onboarded to the bridge**.
 
 For Solidity contracts, opting out is as simple as extending the [`BridgePermissions.sol` abstract
