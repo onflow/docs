@@ -91,8 +91,3 @@ The metrics include the account address of the machine account (`acct_address` l
 machine_account_balance{acct_address="7b16b57ae0a3c6aa"} 9.99464935
 ```
 
-## Monitoring a Flow node using Metrika Monitoring
-
-Metrika has developed the Flow node monitoring service and is the recommended way of monitoring a Flow node.
-It is a free tool that uses the logs and metrics published by the node and provides access to private node-specific dashboards.
-Follow this [link](https://app.metrika.co/flow/node/install-agent) to setup the Metrika monitoring for your node.
