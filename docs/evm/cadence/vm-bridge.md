@@ -60,8 +60,10 @@ Works](../how-it-works.md).
 
 The Flow EVM bridge allows both fungible and non-fungible tokens to move atomically between Cadence and EVM. In the
 context of EVM, fungible tokens are defined as ERC20 tokens, and non-fungible tokens as ERC721 tokens. In Cadence,
-fungible tokens are defined by contracts implementing FungibleToken and non-fungible tokens the NonFungibleToken
-standard contract interfaces.
+fungible tokens are defined by contracts implementing 
+[the `FungibleToken` interface](https://github.com/onflow/flow-ft/blob/master/contracts/FungibleToken.cdc)
+and non-fungible tokens implement
+[the `NonFungibleToken` interface](https://github.com/onflow/flow-nft/blob/master/contracts/NonFungibleToken.cdc).
 
 Like all operations on Flow, there are native fees associated with both computation and storage. To prevent spam and
 sustain the bridge account's storage consumption, fees are charged for both onboarding assets and bridging assets. In
