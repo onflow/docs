@@ -664,7 +664,6 @@ transaction(
         managerRef.addAccount(cap: cap)
     }
 }
-
 ```
 
 ## Funding & Custody Patterns

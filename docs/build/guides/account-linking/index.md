@@ -54,7 +54,7 @@ When referring to 'account linking' we mean that an `Account` Capability is crea
 to another account. The account owning the `Account` Capability which was made available to another account is the child
 account. The account in possession of the Capability given by the child account becomes its parent account.
 
-![Account linking on Flow relational diagram](resources/account-linking-relational-diagram)
+![Account linking on Flow relational diagram](resources/account-linking-relational-diagram.png)
 
 A link between two existing accounts on Flow can be created in two steps:
 
