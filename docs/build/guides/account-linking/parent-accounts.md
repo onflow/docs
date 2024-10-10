@@ -353,7 +353,12 @@ import "NonFungibleToken"
 import "FlowToken"
 import "HybridCustody"
 
-transaction(childAddress: Address, providerPath: PrivatePath, withdrawID: UInt64) {
+transaction(
+    childAddress: Address,      // Address of the child account
+    storagePath: StoragePath,   // Path to the Collection in the child account
+    collectionType: Type,       // Type of the requested Collection from which to withdraw
+    withdrawID: UInt64          // ID of the NFT to withdraw
+    ) {
 
     let providerRef: &{NonFungibleToken.Provider}
 
@@ -368,9 +373,16 @@ transaction(childAddress: Address, providerPath: PrivatePath, withdrawID: UInt64
             .borrowAccount(addr: childAddress)
             ?? panic("Signer does not have access to specified child account")
 
+        // Get the Capability Controller ID for the requested collection type
+        let controllerID = account.getControllerIDForType(
+                type: collectionType,
+                forPath: storagePath
+            ) ?? panic("Could not find Capability controller ID for collection type ".concat(type.identifier)
+                .concat(" at path ").concat(storagePath.toString()))
+
         // Get a reference to the child NFT Provider and assign to the transaction scope variable
         let cap = account.getCapability(
-                path: providerPath,
+                controllerID: controllerID,
                 type: Type<auth(NonFungibleToken.Withdraw) &{NonFungibleToken.Provider}>()
             ) ?? panic("Cannot access NonFungibleToken.Provider from this child account")
 
@@ -383,10 +395,11 @@ transaction(childAddress: Address, providerPath: PrivatePath, withdrawID: UInt64
         // Withdraw the NFT from the Collection
         let nft <- self.providerRef.withdraw(withdrawID: withdrawID)
         // Do stuff with the NFT
+        // NOTE: Without storing or burning the NFT before scope closure, this transaction will fail. You'll want to
+        //      fill in the rest of the transaction with the necessary logic to handle the NFT
         // ...
     }
 }
-
 ```
 
 At the end of this transaction, you withdrew an NFT from the specified account using an NFT `Provider` Capability. A
