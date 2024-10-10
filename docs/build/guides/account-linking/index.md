@@ -43,22 +43,22 @@ another account programmatically without the need for an active key on the acces
 can be limited when creating a Capability so only intended functions or fields can be accessed.
 
 Account linking is made possible by the extension of Capabilities on the `Account` object itself. Similar to how storage
-capabilities allow access to a value stored in an account's storage, `Account` capabilities allow delegated access to
+capabilities allow access to a value stored in an account's storage, `&Account` Capabilities allow delegated access to
 the issuing `Account`. These Capabilities allow for access to key assignment, contract deployment, and other privileged
 actions on the delegating `Account` - effectively sharing ownership of the account without ever adding or sharing a key.
 This Capability can of course be revoked at any time by the delegating account.
 
 ### Creating Account Links
 
-When referring to 'account linking' we mean that an `Account` Capability is created by the parent account and published
-to another account. The account owning the `Account` Capability which was made available to another account is the child
+When referring to 'account linking' we mean that an `&Account` Capability is created by the parent account and published
+to another account. The account owning the `&Account` Capability which was made available to another account is the child
 account. The account in possession of the Capability given by the child account becomes its parent account.
 
 ![Account linking on Flow relational diagram](resources/account-linking-relational-diagram.png)
 
 A link between two existing accounts on Flow can be created in two steps:
 
-1. A child account creates an `Account` Capability and publishes it to the parent account.
+1. A child account creates an `&Account` Capability and publishes it to the parent account.
 2. The parent account, claims that Capability and can access the child's account through it.
 
 ![Account linking steps on Flow](resources/account-linking-steps-high-level.png)
@@ -67,7 +67,7 @@ These two steps are implemented in Cadence as two transactions:
 
 ************************************Create capability************************************
 
-The account B creates and publishes the `Account` Capability to the account A at the address `0x01`
+The account B creates and publishes the `&Account` Capability to the account A at the address `0x01`
 
 ```cadence
 #allowAccountLinking
@@ -150,12 +150,12 @@ Account linking is a _very_ powerful Cadence feature, and thus it must be treate
 we’ve discussed account linking between two accounts we own, even if the child account is managed by a third-party
 application. But, we can't make the same trust assumptions about custodial accounts in the real world.
 
-Creating an `Account` Capability and publishing it to an account we don’t own means we are giving that account full
+Creating an `&Account` Capability and publishing it to an account we don’t own means we are giving that account full
 access to our account. This should be seen as an anti-pattern.
 
 :::warning
 
-Creating an `Account` Capability and sharing it with third-party account effectually the same as giving that person your
+Creating an `&Account` Capability and sharing it with third-party account effectually the same as giving that person your
 account's private keys.
 
 :::

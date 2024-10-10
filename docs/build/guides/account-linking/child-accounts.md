@@ -38,7 +38,7 @@ Very simply, account linking is a [feature in Cadence](https://github.com/onflow
 [Account](https://cadence-lang.org/docs/language/accounts#authaccount) create a
 [Capability](https://cadence-lang.org/docs/language/capabilities) on itself.
 
-Below is an example demonstrating how to issue an `Account` Capability from a signing account
+Below is an example demonstrating how to issue an `&Account` Capability from a signing account
 
 transaction:
 
@@ -55,7 +55,7 @@ transaction(linkPathSuffix: String) {
 }
 ```
 
-From there, the signing account can retrieve the privately linked `Account` Capability and delegate it to another
+From there, the signing account can retrieve the privately linked `&Account` Capability and delegate it to another
 account, revoking the Capability if they wish to revoke delegated access.
 
 Note that in order to link an account, a transaction must state the `#allowAccountLinking` pragma in the top line of the
@@ -64,16 +64,16 @@ transaction that may create a Capability on their `Account`.
 
 ### Linking Accounts
 
-Linking accounts leverages this account link, otherwise known as an **`Account` Capability**, and encapsulates it. The
+Linking accounts leverages this account link, otherwise known as an **`&Account` Capability**, and encapsulates it. The
 [components and actions](https://github.com/onflow/flips/pull/72) involved in this process - what the Capability is
 encapsulated in, the collection that holds those encapsulations, etc. is what we'll dive into in this doc.
 
 ## Terminology
 
 **Parent-Child accounts** - For the moment, we’ll call the account created by the app the “child” account and the
-account receiving its `Account` Capability the “parent” account. Existing methods of account access & delegation (i.e.
+account receiving its `&Account` Capability the “parent” account. Existing methods of account access & delegation (i.e.
 keys) still imply ownership over the account, but insofar as linked accounts are concerned, the account to which both
-the user and the app share access via `Account` Capability will be considered the “child” account.
+the user and the app share access via `&Account` Capability will be considered the “child” account.
 
 **Walletless onboarding** - An onboarding flow whereby an app creates a custodial account for a user, onboarding them to
 the app, obviating the need for user wallet authentication.
@@ -86,7 +86,7 @@ account and linking it with the authenticated account, resulting in a "hybrid cu
 user access to that account has been mediated via account linking.
 
 **Account Linking** - Technically speaking, account linking in our context consists of giving some other account an
-`Account` Capability from the granting account. This Capability is maintained in standardized resource called a
+`&Account` Capability from the granting account. This Capability is maintained in standardized resource called a
 `HybridCustody.Manager`, providing its owning user access to any and all of their linked accounts.
 
 **Progressive Onboarding** - An onboarding flow that walks a user up to self-custodial ownership, starting with
@@ -102,7 +102,7 @@ thereby giving the delegatee presiding authority superseding any other "restrict
 
 ## Account Linking
 
-Linking an account is the process of delegating account access via `Account` Capability. Of course, we want to do this
+Linking an account is the process of delegating account access via `&Account` Capability. Of course, we want to do this
 in a way that allows the receiving account to maintain that Capability and allows easy identification of the accounts on
 either end of the linkage - the user's main "parent" account and the linked "child" account. This is accomplished in the
 `HybridCustody` contract which we'll continue to use in this guidance.
@@ -238,7 +238,7 @@ those NFTs so the user can easily transfer them between their linked accounts.
 
 #### Publish
 
-Here, the account delegating access to itself links its `Account` Capability, and publishes it to be claimed by the
+Here, the account delegating access to itself links its `&Account` Capability, and publishes it to be claimed by the
 designated parent account.
 
 ```cadence publish_to_parent.cdc
@@ -694,7 +694,7 @@ either on the user's device or some backend KMS.
 ### App-Funded, User-Custodied
 
 In this case, the backend app account funds account creation, but adds a key to the account which the user custodies. In
-order for the app to act on the user's behalf, it has to be delegated access via `Account` Capability which the backend
+order for the app to act on the user's behalf, it has to be delegated access via `&Account` Capability which the backend
 app account would maintain in a `HybridCustody.Manager`. This means that the new account would have two parent accounts
 - the user's and the app.
 

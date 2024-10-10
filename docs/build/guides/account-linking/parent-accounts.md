@@ -78,7 +78,7 @@ This provides more granular revocation as each parent account has its own Capabi
 
 It's worth noting here that `ChildAccount` Capabilities enable access to the underlying account according to rules
 configured by the child account delegating access. The `ChildAccount` maintains these rules along with an `OwnedAccount`
-Capability within which the `Account` Capability is stored. Anyone with access to the surface level `ChildAccount`
+Capability within which the `&Account` Capability is stored. Anyone with access to the surface level `ChildAccount`
 can then access the underlying `Account`, but only according the pre-defined rule set. These rules are fundamentally
 a list of Types that can/cannot be retrieved from an account.
 
@@ -106,7 +106,7 @@ access to anything other than the Types you declare as allowable.
 :::
 
 As mentioned earlier, `Manager`s also maintain access to "owned" accounts - accounts which define unrestricted access as
-they allow direct retrieval of encapsulated `Account` Capabilities. These owned accounts, found in `Manager.ownedAccounts`,
+they allow direct retrieval of encapsulated `&Account` Capabilities. These owned accounts, found in `Manager.ownedAccounts`,
 are simply `OwnedAccount` Capabilities instead of `ChildAccount` Capabilities.
 
 ![HybridCustody Total Overview](./resources/hybrid_custody_low_level.png)
@@ -397,7 +397,7 @@ similar approach could get you any allowable Capabilities from a signer's child 
 The expected uses of child accounts for progressive onboarding implies that they will be accounts with shared access. A
 user may decide that they no longer want secondary parties to have access to the child account.
 
-There are two ways a party can have delegated access to an account - keys and `Account` Capability. With
+There are two ways a party can have delegated access to an account - keys and `&Account` Capability. With
 `ChildAccount` mediated access, a user wouldn't be able to revoke anyone's access except for their own. With
 unrestricted access via `OwnedAccount`, one could remove parents (`OwnedAccount.removeParent(parent: Address)`) thereby
 unlinking relevant Capabilities and further destroying their `ChildAccount` and `CapabilityDelegator` resources.
