@@ -87,129 +87,16 @@ Below are transactions relevant to onboarding assets:
 <details>
 <summary>onboard_by_type.cdc</summary>
 
-```cadence title="onboard_by_type.cdc"
-// source: https://www.github.com/onflow/flow-evm-bridge/blob/main/cadence/transactions/bridge/onboarding/onboard_by_type.cdc
-
-import "FungibleToken"
-import "FlowToken"
-
-import "ScopedFTProviders"
-
-import "EVM"
-
-import "FlowEVMBridge"
-import "FlowEVMBridgeConfig"
-
-/// This transaction onboards the asset type to the bridge, configuring the bridge to move assets between environments
-/// NOTE: This must be done before bridging a Cadence-native asset to EVM
-///
-/// @param type: The Cadence type of the bridgeable asset to onboard to the bridge
-///
-transaction(type: Type) {
-
-    let scopedProvider: @ScopedFTProviders.ScopedFTProvider
-    
-    prepare(signer: auth(CopyValue, BorrowValue, IssueStorageCapabilityController, PublishCapability, SaveValue) &Account) {
-
-        /* --- Configure a ScopedFTProvider --- */
-        //
-        // Issue and store bridge-dedicated Provider Capability in storage if necessary
-        if signer.storage.type(at: FlowEVMBridgeConfig.providerCapabilityStoragePath) == nil {
-            let providerCap = signer.capabilities.storage.issue<auth(FungibleToken.Withdraw) &{FungibleToken.Provider}>(
-                /storage/flowTokenVault
-            )
-            signer.storage.save(providerCap, to: FlowEVMBridgeConfig.providerCapabilityStoragePath)
-        }
-        // Copy the stored Provider capability and create a ScopedFTProvider
-        let providerCapCopy = signer.storage.copy<Capability<auth(FungibleToken.Withdraw) &{FungibleToken.Provider}>>(
-                from: FlowEVMBridgeConfig.providerCapabilityStoragePath
-            ) ?? panic("Invalid Provider Capability found in storage.")
-        let providerFilter = ScopedFTProviders.AllowanceFilter(FlowEVMBridgeConfig.onboardFee)
-        self.scopedProvider <- ScopedFTProviders.createScopedFTProvider(
-                provider: providerCapCopy,
-                filters: [ providerFilter ],
-                expiration: getCurrentBlock().timestamp + 1.0
-            )
-    }
-
-    execute {
-        // Onboard the asset Type
-        FlowEVMBridge.onboardByType(
-            type,
-            feeProvider: &self.scopedProvider as auth(FungibleToken.Withdraw) &{FungibleToken.Provider}
-        )
-        destroy self.scopedProvider
-    }
-
-    post {
-        FlowEVMBridge.typeRequiresOnboarding(type) == false:
-            "Asset ".concat(type.identifier).concat(" was not onboarded to the bridge.")
-    }
-}
+```cadence onboard_by_type.cdc
+!from https://www.github.com/onflow/flow-evm-bridge/blob/main/cadence/transactions/bridge/onboarding/onboard_by_type.cdc
 ```
 </details>
 
 <details>
 <summary>onboard_by_evm_address.cdc</summary>
 
-```
-// source: https://www.github.com/onflow/flow-evm-bridge/blob/main/cadence/transactions/bridge/onboarding/onboard_by_evm_address.cdc
-
-import "FungibleToken"
-import "FlowToken"
-
-import "ScopedFTProviders"
-
-import "EVM"
-
-import "FlowEVMBridge"
-import "FlowEVMBridgeConfig"
-
-/// This transaction onboards the NFT type to the bridge, configuring the bridge to move NFTs between environments
-/// NOTE: This must be done before bridging a Cadence-native NFT to EVM
-///
-/// @param contractAddressHex: The EVM address of the contract defining the bridgeable asset to be onboarded
-///
-transaction(contractAddressHex: String) {
-
-    let contractAddress: EVM.EVMAddress
-    let scopedProvider: @ScopedFTProviders.ScopedFTProvider
-    
-    prepare(signer: auth(CopyValue, BorrowValue, IssueStorageCapabilityController, PublishCapability, SaveValue) &Account) {
-        /* --- Construct EVMAddress from hex string (no leading `"0x"`) --- */
-        //
-        self.contractAddress = EVM.addressFromString(contractAddressHex)
-
-        /* --- Configure a ScopedFTProvider --- */
-        //
-        // Issue and store bridge-dedicated Provider Capability in storage if necessary
-        if signer.storage.type(at: FlowEVMBridgeConfig.providerCapabilityStoragePath) == nil {
-            let providerCap = signer.capabilities.storage.issue<auth(FungibleToken.Withdraw) &{FungibleToken.Provider}>(
-                /storage/flowTokenVault
-            )
-            signer.storage.save(providerCap, to: FlowEVMBridgeConfig.providerCapabilityStoragePath)
-        }
-        // Copy the stored Provider capability and create a ScopedFTProvider
-        let providerCapCopy = signer.storage.copy<Capability<auth(FungibleToken.Withdraw) &{FungibleToken.Provider}>>(
-                from: FlowEVMBridgeConfig.providerCapabilityStoragePath
-            ) ?? panic("Invalid Provider Capability found in storage.")
-        let providerFilter = ScopedFTProviders.AllowanceFilter(FlowEVMBridgeConfig.onboardFee)
-        self.scopedProvider <- ScopedFTProviders.createScopedFTProvider(
-                provider: providerCapCopy,
-                filters: [ providerFilter ],
-                expiration: getCurrentBlock().timestamp + 1.0
-            )
-    }
-
-    execute {
-        // Onboard the EVM contract
-        FlowEVMBridge.onboardByEVMAddress(
-            self.contractAddress,
-            feeProvider: &self.scopedProvider as auth(FungibleToken.Withdraw) &{FungibleToken.Provider}
-        )
-        destroy self.scopedProvider
-    }
-}
+```cadence onboard_by_evm_address.cdc
+!from https://www.github.com/onflow/flow-evm-bridge/blob/main/cadence/transactions/bridge/onboarding/onboard_by_evm_address.cdc
 ```
 </details>
 
@@ -234,26 +121,10 @@ You may also retrieve the type associated with a given EVM contract address usin
 
 <summary>get_associated_type.cdc</summary>
 
-```cadence title="get_associated_type.cdc"
-// source: https://github.com/onflow/flow-evm-bridge/blob/main/cadence/scripts/bridge/get_associated_type.cdc
-
-import "EVM"
-
-import "FlowEVMBridgeConfig"
-
-/// Returns the Cadence Type associated with the given EVM address (as its hex String)
-///
-/// @param evmAddressHex: The hex-encoded address of the EVM contract as a String
-///
-/// @return The Cadence Type associated with the EVM address or nil if the address is not onboarded. `nil` may also be
-///        returned if the address is not a valid EVM address.
-///
-access(all)
-fun main(addressHex: String): Type? {
-    let address = EVM.addressFromString(addressHex)
-    return FlowEVMBridgeConfig.getTypeAssociated(with: address)
-}
+```cadence get_associated_type.cdc
+!from https://github.com/onflow/flow-evm-bridge/blob/main/cadence/scripts/bridge/get_associated_type.cdc
 ```
+
 </details>
 
 Alternatively, given some onboarded Cadence type, you can retrieve the associated EVM address using the following
@@ -263,28 +134,8 @@ script:
 
 <summary>get_associated_address.cdc</summary>
 
-```cadence title="get_associated_address.cdc"
-// source: https://github.com/onflow/flow-evm-bridge/blob/main/cadence/scripts/bridge/get_associated_evm_address.cdc
-
-import "EVM"
-
-import "FlowEVMBridgeConfig"
-
-/// Returns the EVM address associated with the given Cadence type (as its identifier String)
-///
-/// @param typeIdentifier: The Cadence type identifier String
-///
-/// @return The EVM address as a hex string if the type has an associated EVMAddress, otherwise nil
-///
-access(all)
-fun main(identifier: String): String? {
-    if let type = CompositeType(identifier) {
-        if let address = FlowEVMBridgeConfig.getEVMAddressAssociated(with: type) {
-            return address.toString()
-        }
-    }
-    return nil
-}
+```cadence get_associated_address.cdc
+!from https://github.com/onflow/flow-evm-bridge/blob/main/cadence/scripts/bridge/get_associated_evm_address.cdc
 ```
 </details>
 
@@ -300,127 +151,8 @@ Below are transactions relevant to bridging NFTs:
 
 <summary>bridge_nft_to_evm.cdc</summary>
 
-```cadence title="bridge_nft_to_evm.cdc"
-// source: https://www.github.com/onflow/flow-evm-bridge/blob/main/cadence/transactions/bridge/nft/bridge_nft_to_evm.cdc
-
-import "FungibleToken"
-import "NonFungibleToken"
-import "ViewResolver"
-import "MetadataViews"
-import "FlowToken"
-
-import "ScopedFTProviders"
-
-import "EVM"
-
-import "FlowEVMBridge"
-import "FlowEVMBridgeConfig"
-import "FlowEVMBridgeUtils"
-
-/// Bridges an NFT from the signer's collection in Cadence to the signer's COA in FlowEVM
-///
-/// NOTE: This transaction also onboards the NFT to the bridge if necessary which may incur additional fees
-///     than bridging an asset that has already been onboarded.
-///
-/// @param nftIdentifier: The Cadence type identifier of the NFT to bridge - e.g. nft.getType().identifier
-/// @param id: The Cadence NFT.id of the NFT to bridge to EVM
-///
-transaction(nftIdentifier: String, id: UInt64) {
-    
-    let nft: @{NonFungibleToken.NFT}
-    let coa: auth(EVM.Bridge) &EVM.CadenceOwnedAccount
-    let requiresOnboarding: Bool
-    let scopedProvider: @ScopedFTProviders.ScopedFTProvider
-    
-    prepare(signer: auth(CopyValue, BorrowValue, IssueStorageCapabilityController, PublishCapability, SaveValue) &Account) {
-        /* --- Reference the signer's CadenceOwnedAccount --- */
-        //
-        // Borrow a reference to the signer's COA
-        self.coa = signer.storage.borrow<auth(EVM.Bridge) &EVM.CadenceOwnedAccount>(from: /storage/evm)
-            ?? panic("Could not borrow COA from provided gateway address")
-        
-        /* --- Construct the NFT type --- */
-        //
-        // Construct the NFT type from the provided identifier
-        let nftType = CompositeType(nftIdentifier)
-            ?? panic("Could not construct NFT type from identifier: ".concat(nftIdentifier))
-        // Parse the NFT identifier into its components
-        let nftContractAddress = FlowEVMBridgeUtils.getContractAddress(fromType: nftType)
-            ?? panic("Could not get contract address from identifier: ".concat(nftIdentifier))
-        let nftContractName = FlowEVMBridgeUtils.getContractName(fromType: nftType)
-            ?? panic("Could not get contract name from identifier: ".concat(nftIdentifier))
-
-        /* --- Retrieve the NFT --- */
-        //
-        // Borrow a reference to the NFT collection, configuring if necessary
-        let viewResolver = getAccount(nftContractAddress).contracts.borrow<&{ViewResolver}>(name: nftContractName)
-            ?? panic("Could not borrow ViewResolver from NFT contract")
-        let collectionData = viewResolver.resolveContractView(
-                resourceType: nftType,
-                viewType: Type<MetadataViews.NFTCollectionData>()
-            ) as! MetadataViews.NFTCollectionData? ?? panic("Could not resolve NFTCollectionData view")
-        let collection = signer.storage.borrow<auth(NonFungibleToken.Withdraw) &{NonFungibleToken.Collection}>(
-                from: collectionData.storagePath
-            ) ?? panic("Could not access signer's NFT Collection")
-
-        // Withdraw the requested NFT & calculate the approximate bridge fee based on NFT storage usage
-        let currentStorageUsage = signer.storage.used
-        self.nft <- collection.withdraw(withdrawID: id)
-        let withdrawnStorageUsage = signer.storage.used
-        var approxFee = FlowEVMBridgeUtils.calculateBridgeFee(
-                bytes: currentStorageUsage - withdrawnStorageUsage
-            ) * 1.10
-        // Determine if the NFT requires onboarding - this impacts the fee required
-        self.requiresOnboarding = FlowEVMBridge.typeRequiresOnboarding(self.nft.getType())
-            ?? panic("Bridge does not support this asset type")
-        if self.requiresOnboarding {
-            approxFee = approxFee + FlowEVMBridgeConfig.onboardFee
-        }
-
-        /* --- Configure a ScopedFTProvider --- */
-        //
-        // Issue and store bridge-dedicated Provider Capability in storage if necessary
-        if signer.storage.type(at: FlowEVMBridgeConfig.providerCapabilityStoragePath) == nil {
-            let providerCap = signer.capabilities.storage.issue<auth(FungibleToken.Withdraw) &{FungibleToken.Provider}>(
-                /storage/flowTokenVault
-            )
-            signer.storage.save(providerCap, to: FlowEVMBridgeConfig.providerCapabilityStoragePath)
-        }
-        // Copy the stored Provider capability and create a ScopedFTProvider
-        let providerCapCopy = signer.storage.copy<Capability<auth(FungibleToken.Withdraw) &{FungibleToken.Provider}>>(
-                from: FlowEVMBridgeConfig.providerCapabilityStoragePath
-            ) ?? panic("Invalid Provider Capability found in storage.")
-        let providerFilter = ScopedFTProviders.AllowanceFilter(approxFee)
-        self.scopedProvider <- ScopedFTProviders.createScopedFTProvider(
-                provider: providerCapCopy,
-                filters: [ providerFilter ],
-                expiration: getCurrentBlock().timestamp + 1.0
-            )
-    }
-
-    pre {
-        self.nft.getType().identifier == nftIdentifier:
-            "Attempting to send invalid nft type - requested: ".concat(nftIdentifier)
-            .concat(", sending: ").concat(self.nft.getType().identifier)
-    }
-
-    execute {
-        if self.requiresOnboarding {
-            // Onboard the NFT to the bridge
-            FlowEVMBridge.onboardByType(
-                self.nft.getType(),
-                feeProvider: &self.scopedProvider as auth(FungibleToken.Withdraw) &{FungibleToken.Provider}
-            )
-        }
-        // Execute the bridge
-        self.coa.depositNFT(
-            nft: <-self.nft,
-            feeProvider: &self.scopedProvider as auth(FungibleToken.Withdraw) &{FungibleToken.Provider}
-        )
-        // Destroy the ScopedFTProvider
-        destroy self.scopedProvider
-    }
-}
+```cadence bridge_nft_to_evm.cdc
+!from https://www.github.com/onflow/flow-evm-bridge/blob/main/cadence/transactions/bridge/nft/bridge_nft_to_evm.cdc
 ```
 </details>
 
@@ -428,115 +160,8 @@ transaction(nftIdentifier: String, id: UInt64) {
 
 <summary>bridge_nft_from_evm.cdc</summary>
 
-```cadence title="bridge_nft_from_evm.cdc"
-// source: https://www.github.com/onflow/flow-evm-bridge/blob/main/cadence/transactions/bridge/nft/bridge_nft_from_evm.cdc
-
-import "FungibleToken"
-import "NonFungibleToken"
-import "ViewResolver"
-import "MetadataViews"
-import "FlowToken"
-
-import "ScopedFTProviders"
-
-import "EVM"
-
-import "FlowEVMBridge"
-import "FlowEVMBridgeConfig"
-import "FlowEVMBridgeUtils"
-
-/// This transaction bridges an NFT from EVM to Cadence assuming it has already been onboarded to the FlowEVMBridge
-/// NOTE: The ERC721 must have first been onboarded to the bridge. This can be checked via the method
-///     FlowEVMBridge.evmAddressRequiresOnboarding(address: self.evmContractAddress)
-///
-/// @param nftIdentifier: The Cadence type identifier of the NFT to bridge - e.g. nft.getType().identifier
-/// @param id: The ERC721 id of the NFT to bridge to Cadence from EVM
-///
-transaction(nftIdentifier: String, id: UInt256) {
-
-    let nftType: Type
-    let collection: &{NonFungibleToken.Collection}
-    let scopedProvider: @ScopedFTProviders.ScopedFTProvider
-    let coa: auth(EVM.Bridge) &EVM.CadenceOwnedAccount
-    
-    prepare(signer: auth(BorrowValue, CopyValue, IssueStorageCapabilityController, PublishCapability, SaveValue, UnpublishCapability) &Account) {
-        /* --- Reference the signer's CadenceOwnedAccount --- */
-        //
-        // Borrow a reference to the signer's COA
-        self.coa = signer.storage.borrow<auth(EVM.Bridge) &EVM.CadenceOwnedAccount>(from: /storage/evm)
-            ?? panic("Could not borrow COA from provided gateway address")
-
-        /* --- Construct the NFT type --- */
-        //
-        // Construct the NFT type from the provided identifier
-        self.nftType = CompositeType(nftIdentifier)
-            ?? panic("Could not construct NFT type from identifier: ".concat(nftIdentifier))
-        // Parse the NFT identifier into its components
-        let nftContractAddress = FlowEVMBridgeUtils.getContractAddress(fromType: self.nftType)
-            ?? panic("Could not get contract address from identifier: ".concat(nftIdentifier))
-        let nftContractName = FlowEVMBridgeUtils.getContractName(fromType: self.nftType)
-            ?? panic("Could not get contract name from identifier: ".concat(nftIdentifier))
-
-        /* --- Reference the signer's NFT Collection --- */
-        //
-        // Borrow a reference to the NFT collection, configuring if necessary
-        let viewResolver = getAccount(nftContractAddress).contracts.borrow<&{ViewResolver}>(name: nftContractName)
-            ?? panic("Could not borrow ViewResolver from NFT contract")
-        let collectionData = viewResolver.resolveContractView(
-                resourceType: self.nftType,
-                viewType: Type<MetadataViews.NFTCollectionData>()
-            ) as! MetadataViews.NFTCollectionData? ?? panic("Could not resolve NFTCollectionData view")
-        if signer.storage.borrow<&{NonFungibleToken.Collection}>(from: collectionData.storagePath) == nil {
-            signer.storage.save(<-collectionData.createEmptyCollection(), to: collectionData.storagePath)
-            signer.capabilities.unpublish(collectionData.publicPath)
-            let collectionCap = signer.capabilities.storage.issue<&{NonFungibleToken.Collection}>(collectionData.storagePath)
-            signer.capabilities.publish(collectionCap, at: collectionData.publicPath)
-        }
-        self.collection = signer.storage.borrow<&{NonFungibleToken.Collection}>(from: collectionData.storagePath)
-            ?? panic("Could not borrow collection from storage path")
-
-        /* --- Configure a ScopedFTProvider --- */
-        //
-        // Calculate the bridge fee - bridging from EVM consumes no storage, so flat fee
-        let approxFee = FlowEVMBridgeUtils.calculateBridgeFee(bytes: 0)
-        // Issue and store bridge-dedicated Provider Capability in storage if necessary
-        if signer.storage.type(at: FlowEVMBridgeConfig.providerCapabilityStoragePath) == nil {
-            let providerCap = signer.capabilities.storage.issue<auth(FungibleToken.Withdraw) &{FungibleToken.Provider}>(
-                /storage/flowTokenVault
-            )
-            signer.storage.save(providerCap, to: FlowEVMBridgeConfig.providerCapabilityStoragePath)
-        }
-        // Copy the stored Provider capability and create a ScopedFTProvider
-        let providerCapCopy = signer.storage.copy<Capability<auth(FungibleToken.Withdraw) &{FungibleToken.Provider}>>(
-                from: FlowEVMBridgeConfig.providerCapabilityStoragePath
-            ) ?? panic("Invalid Provider Capability found in storage.")
-        let providerFilter = ScopedFTProviders.AllowanceFilter(approxFee)
-        self.scopedProvider <- ScopedFTProviders.createScopedFTProvider(
-                provider: providerCapCopy,
-                filters: [ providerFilter ],
-                expiration: getCurrentBlock().timestamp + 1.0
-            )
-    }
-
-    execute {
-        // Execute the bridge
-        let nft: @{NonFungibleToken.NFT} <- self.coa.withdrawNFT(
-            type: self.nftType,
-            id: id,
-            feeProvider: &self.scopedProvider as auth(FungibleToken.Withdraw) &{FungibleToken.Provider}
-        )
-        // Ensure the bridged nft is the correct type
-        assert(
-            nft.getType() == self.nftType,
-            message: "Bridged nft type mismatch - requeswted: ".concat(self.nftType.identifier)
-                .concat(", received: ").concat(nft.getType().identifier)
-        )
-        // Deposit the bridged NFT into the signer's collection
-        self.collection.deposit(token: <-nft)
-        // Destroy the ScopedFTProvider
-        destroy self.scopedProvider
-    }
-}
+```cadence bridge_nft_from_evm.cdc
+!from https://www.github.com/onflow/flow-evm-bridge/blob/main/cadence/transactions/bridge/nft/bridge_nft_from_evm.cdc
 ```
 </details>
 
@@ -560,128 +185,8 @@ Below are transactions relevant to bridging fungible tokens:
 
 <summary>bridge_tokens_to_evm.cdc</summary>
 
-```cadence title="bridge_tokens_to_evm.cdc"
-// source: https://www.github.com/onflow/flow-evm-bridge/blob/main/cadence/transactions/bridge/tokens/bridge_tokens_to_evm.cdc
-
-import "FungibleToken"
-import "ViewResolver"
-import "FungibleTokenMetadataViews"
-import "FlowToken"
-
-import "ScopedFTProviders"
-
-import "EVM"
-
-import "FlowEVMBridge"
-import "FlowEVMBridgeConfig"
-import "FlowEVMBridgeUtils"
-
-/// Bridges a Vault from the signer's storage to the signer's COA in EVM.Account.
-///
-/// NOTE: This transaction also onboards the Vault to the bridge if necessary which may incur additional fees
-///     than bridging an asset that has already been onboarded.
-///
-/// @param vaultIdentifier: The Cadence type identifier of the FungibleToken Vault to bridge
-///     - e.g. vault.getType().identifier
-/// @param amount: The amount of tokens to bridge from EVM
-///
-transaction(vaultIdentifier: String, amount: UFix64) {
-
-    let sentVault: @{FungibleToken.Vault}
-    let coa: auth(EVM.Bridge) &EVM.CadenceOwnedAccount
-    let requiresOnboarding: Bool
-    let scopedProvider: @ScopedFTProviders.ScopedFTProvider
-
-    prepare(signer: auth(CopyValue, BorrowValue, IssueStorageCapabilityController, PublishCapability, SaveValue) &Account) {
-        /* --- Reference the signer's CadenceOwnedAccount --- */
-        //
-        // Borrow a reference to the signer's COA
-        self.coa = signer.storage.borrow<auth(EVM.Bridge) &EVM.CadenceOwnedAccount>(from: /storage/evm)
-            ?? panic("Could not borrow COA from provided gateway address")
-
-        /* --- Construct the Vault type --- */
-        //
-        // Construct the Vault type from the provided identifier
-        let vaultType = CompositeType(vaultIdentifier)
-            ?? panic("Could not construct Vault type from identifier: ".concat(vaultIdentifier))
-        // Parse the Vault identifier into its components
-        let tokenContractAddress = FlowEVMBridgeUtils.getContractAddress(fromType: vaultType)
-            ?? panic("Could not get contract address from identifier: ".concat(vaultIdentifier))
-        let tokenContractName = FlowEVMBridgeUtils.getContractName(fromType: vaultType)
-            ?? panic("Could not get contract name from identifier: ".concat(vaultIdentifier))
-
-        /* --- Retrieve the funds --- */
-        //
-        // Borrow a reference to the FungibleToken Vault
-        let viewResolver = getAccount(tokenContractAddress).contracts.borrow<&{ViewResolver}>(name: tokenContractName)
-            ?? panic("Could not borrow ViewResolver from FungibleToken contract")
-        let vaultData = viewResolver.resolveContractView(
-                resourceType: vaultType,
-                viewType: Type<FungibleTokenMetadataViews.FTVaultData>()
-            ) as! FungibleTokenMetadataViews.FTVaultData? ?? panic("Could not resolve FTVaultData view")
-        let vault = signer.storage.borrow<auth(FungibleToken.Withdraw) &{FungibleToken.Vault}>(
-                from: vaultData.storagePath
-            ) ?? panic("Could not access signer's FungibleToken Vault")
-
-        // Withdraw the requested balance & calculate the approximate bridge fee based on storage usage
-        let currentStorageUsage = signer.storage.used
-        self.sentVault <- vault.withdraw(amount: amount)
-        let withdrawnStorageUsage = signer.storage.used
-        // Approximate the bridge fee based on the difference in storage usage with some buffer
-        var approxFee = FlowEVMBridgeUtils.calculateBridgeFee(
-                bytes: currentStorageUsage - withdrawnStorageUsage
-            ) * 1.10
-        // Determine if the Vault requires onboarding - this impacts the fee required
-        self.requiresOnboarding = FlowEVMBridge.typeRequiresOnboarding(self.sentVault.getType())
-            ?? panic("Bridge does not support this asset type")
-        if self.requiresOnboarding {
-            approxFee = approxFee + FlowEVMBridgeConfig.onboardFee
-        }
-
-        /* --- Configure a ScopedFTProvider --- */
-        //
-        // Issue and store bridge-dedicated Provider Capability in storage if necessary
-        if signer.storage.type(at: FlowEVMBridgeConfig.providerCapabilityStoragePath) == nil {
-            let providerCap = signer.capabilities.storage.issue<auth(FungibleToken.Withdraw) &{FungibleToken.Provider}>(
-                /storage/flowTokenVault
-            )
-            signer.storage.save(providerCap, to: FlowEVMBridgeConfig.providerCapabilityStoragePath)
-        }
-        // Copy the stored Provider capability and create a ScopedFTProvider
-        let providerCapCopy = signer.storage.copy<Capability<auth(FungibleToken.Withdraw) &{FungibleToken.Provider}>>(
-                from: FlowEVMBridgeConfig.providerCapabilityStoragePath
-            ) ?? panic("Invalid Provider Capability found in storage.")
-        let providerFilter = ScopedFTProviders.AllowanceFilter(approxFee)
-        self.scopedProvider <- ScopedFTProviders.createScopedFTProvider(
-                provider: providerCapCopy,
-                filters: [ providerFilter ],
-                expiration: getCurrentBlock().timestamp + 1.0
-            )
-    }
-
-    pre {
-        self.sentVault.getType().identifier == vaultIdentifier:
-            "Attempting to send invalid vault type - requested: ".concat(vaultIdentifier)
-            .concat(", sending: ").concat(self.sentVault.getType().identifier)
-    }
-
-    execute {
-        if self.requiresOnboarding {
-            // Onboard the Vault to the bridge
-            FlowEVMBridge.onboardByType(
-                self.sentVault.getType(),
-                feeProvider: &self.scopedProvider as auth(FungibleToken.Withdraw) &{FungibleToken.Provider}
-            )
-        }
-        // Execute the bridge
-        self.coa.depositTokens(
-            vault: <-self.sentVault,
-            feeProvider: &self.scopedProvider as auth(FungibleToken.Withdraw) &{FungibleToken.Provider}
-        )
-        // Destroy the ScopedFTProvider
-        destroy self.scopedProvider
-    }
-}
+```cadence bridge_tokens_to_evm.cdc
+!from https://www.github.com/onflow/flow-evm-bridge/blob/main/cadence/transactions/bridge/tokens/bridge_tokens_to_evm.cdc
 ```
 </details>
 
@@ -689,121 +194,8 @@ transaction(vaultIdentifier: String, amount: UFix64) {
 
 <summary>bridge_tokens_from_evm.cdc</summary>
 
-```cadence title="bridge_tokens_from_evm.cdc"
-// source: https://www.github.com/onflow/flow-evm-bridge/blob/main/cadence/transactions/bridge/tokens/bridge_tokens_from_evm.cdc
-
-import "FungibleToken"
-import "FungibleTokenMetadataViews"
-import "ViewResolver"
-import "MetadataViews"
-import "FlowToken"
-
-import "ScopedFTProviders"
-
-import "EVM"
-
-import "FlowEVMBridge"
-import "FlowEVMBridgeConfig"
-import "FlowEVMBridgeUtils"
-
-/// This transaction bridges fungible tokens from EVM to Cadence assuming it has already been onboarded to the
-/// FlowEVMBridge.
-///
-/// NOTE: The ERC20 must have first been onboarded to the bridge. This can be checked via the method
-///     FlowEVMBridge.evmAddressRequiresOnboarding(address: self.evmContractAddress)
-///
-/// @param vaultIdentifier: The Cadence type identifier of the FungibleToken Vault to bridge
-///     - e.g. vault.getType().identifier
-/// @param amount: The amount of tokens to bridge from EVM
-///
-transaction(vaultIdentifier: String, amount: UInt256) {
-
-    let vaultType: Type
-    let receiver: &{FungibleToken.Vault}
-    let scopedProvider: @ScopedFTProviders.ScopedFTProvider
-    let coa: auth(EVM.Bridge) &EVM.CadenceOwnedAccount
-
-    prepare(signer: auth(BorrowValue, CopyValue, IssueStorageCapabilityController, PublishCapability, SaveValue, UnpublishCapability) &Account) {
-        /* --- Reference the signer's CadenceOwnedAccount --- */
-        //
-        // Borrow a reference to the signer's COA
-        self.coa = signer.storage.borrow<auth(EVM.Bridge) &EVM.CadenceOwnedAccount>(from: /storage/evm)
-            ?? panic("Could not borrow COA from provided gateway address")
-
-        /* --- Construct the Vault type --- */
-        //
-        // Construct the Vault type from the provided identifier
-        self.vaultType = CompositeType(vaultIdentifier)
-            ?? panic("Could not construct Vault type from identifier: ".concat(vaultIdentifier))
-        // Parse the Vault identifier into its components
-        let tokenContractAddress = FlowEVMBridgeUtils.getContractAddress(fromType: self.vaultType)
-            ?? panic("Could not get contract address from identifier: ".concat(vaultIdentifier))
-        let tokenContractName = FlowEVMBridgeUtils.getContractName(fromType: self.vaultType)
-            ?? panic("Could not get contract name from identifier: ".concat(vaultIdentifier))
-
-        /* --- Reference the signer's Vault --- */
-        //
-        // Borrow a reference to the FungibleToken Vault, configuring if necessary
-        let viewResolver = getAccount(tokenContractAddress).contracts.borrow<&{ViewResolver}>(name: tokenContractName)
-            ?? panic("Could not borrow ViewResolver from FungibleToken contract")
-        let vaultData = viewResolver.resolveContractView(
-                resourceType: self.vaultType,
-                viewType: Type<FungibleTokenMetadataViews.FTVaultData>()
-            ) as! FungibleTokenMetadataViews.FTVaultData? ?? panic("Could not resolve FTVaultData view")
-        // If the vault does not exist, create it and publish according to the contract's defined configuration
-        if signer.storage.borrow<&{FungibleToken.Vault}>(from: vaultData.storagePath) == nil {
-            signer.storage.save(<-vaultData.createEmptyVault(), to: vaultData.storagePath)
-
-            signer.capabilities.unpublish(vaultData.receiverPath)
-            signer.capabilities.unpublish(vaultData.metadataPath)
-
-            let receiverCap = signer.capabilities.storage.issue<&{FungibleToken.Vault}>(vaultData.storagePath)
-            let metadataCap = signer.capabilities.storage.issue<&{FungibleToken.Vault}>(vaultData.storagePath)
-
-            signer.capabilities.publish(receiverCap, at: vaultData.receiverPath)
-            signer.capabilities.publish(metadataCap, at: vaultData.metadataPath)
-        }
-        self.receiver = signer.storage.borrow<&{FungibleToken.Vault}>(from: vaultData.storagePath)
-            ?? panic("Could not borrow Vault from storage path")
-
-        /* --- Configure a ScopedFTProvider --- */
-        //
-        // Calculate the bridge fee - bridging from EVM consumes no storage, so flat fee
-        let approxFee = FlowEVMBridgeUtils.calculateBridgeFee(bytes: 0)
-        // Issue and store bridge-dedicated Provider Capability in storage if necessary
-        if signer.storage.type(at: FlowEVMBridgeConfig.providerCapabilityStoragePath) == nil {
-            let providerCap = signer.capabilities.storage.issue<auth(FungibleToken.Withdraw) &{FungibleToken.Provider}>(
-                /storage/flowTokenVault
-            )
-            signer.storage.save(providerCap, to: FlowEVMBridgeConfig.providerCapabilityStoragePath)
-        }
-        // Copy the stored Provider capability and create a ScopedFTProvider
-        let providerCapCopy = signer.storage.copy<Capability<auth(FungibleToken.Withdraw) &{FungibleToken.Provider}>>(
-                from: FlowEVMBridgeConfig.providerCapabilityStoragePath
-            ) ?? panic("Invalid Provider Capability found in storage.")
-        let providerFilter = ScopedFTProviders.AllowanceFilter(approxFee)
-        self.scopedProvider <- ScopedFTProviders.createScopedFTProvider(
-                provider: providerCapCopy,
-                filters: [ providerFilter ],
-                expiration: getCurrentBlock().timestamp + 1.0
-            )
-    }
-
-    execute {
-        // Execute the bridge request
-        let vault: @{FungibleToken.Vault} <- self.coa.withdrawTokens(
-            type: self.vaultType,
-            amount: amount,
-            feeProvider: &self.scopedProvider as auth(FungibleToken.Withdraw) &{FungibleToken.Provider}
-        )
-        // Ensure the bridged vault is the correct type
-        assert(vault.getType() == self.vaultType, message: "Bridged vault type mismatch")
-        // Deposit the bridged token into the signer's vault
-        self.receiver.deposit(from: <-vault)
-        // Destroy the ScopedFTProvider
-        destroy self.scopedProvider
-    }
-}
+```cadence bridge_tokens_from_evm.cdc
+!from https://www.github.com/onflow/flow-evm-bridge/blob/main/cadence/transactions/bridge/tokens/bridge_tokens_from_evm.cdc
 ```
 </details>
 
