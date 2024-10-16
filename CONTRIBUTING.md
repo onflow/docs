@@ -265,8 +265,8 @@ To include code from a file using a direct URL use `!from` operand inside a code
 Example: 
 
 ````markdown
-```
-!from https://raw.githubusercontent.com/onflow/docs/refs/heads/main/docs/evm/about.md
+```cadence DepositFees.cdc
+!from https://raw.githubusercontent.com/onflow/flow-core-contracts/refs/heads/master/transactions/FlowServiceAccount/deposit_fees.cdc
 ```
 ````
 
