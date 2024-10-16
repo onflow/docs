@@ -190,7 +190,7 @@ If you want to learn more about writing transactions, please read the docs for [
 
 :::
 
-In order to run a transaction, the signing account needs to pay for it. You could the transaction on emulator using the default `emulator-account` account, but a better test is to run it on a separate one.
+In order to run a transaction, the signing account needs to pay for it. You could run the transaction on emulator using the default `emulator-account` account, but a better test is to run it with a new test account.
 
 Let's learn the command for creating accounts.
 
