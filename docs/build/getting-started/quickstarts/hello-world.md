@@ -10,9 +10,17 @@ Welcome to the Flow blockchain! In this quickstart guide, you'll interact with y
 
 Smart contracts on Flow are permanent code that live on the blockchain, allowing you to encode business logic, define digital assets, and much more.
 
+Flow supports modern smart contracts written in [Cadence], as well as traditional [EVM] smart contracts written in Solidity.
+
+## Objectives
+
+After completing this guide, you'll be able to:
+
+* Read a public variable on a [Cadence] smart contract deployed on Flow
+
 ## Calling a contract
 
-The `HelloWorld` contract exposes a public variable named `greeting` that is accessible to everything outside the contract. We can retrieve its value using a simple script written in the Cadence programming language.
+The `HelloWorld` contract exposes a public variable named `greeting` that is accessible to everything outside the contract. We can retrieve its value using a simple script written in the [Cadence] programming language.
 
 ```cadence
 import HelloWorld from 0xa1296b1e2e90ca5b
@@ -54,3 +62,6 @@ There are no `read` costs associated with calling contracts.
 :::
 
 Continue to create your own contracts and get them deployed live with Flow CLI!
+
+[Cadence]: https://cadence-lang.org/
+[EVM]: https://flow.com/upgrade/crescendo/evm

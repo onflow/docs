@@ -1,13 +1,21 @@
 ---
 sidebar_position: 3
-sidebar_label: 3 - Basic Frontend
+sidebar_label: 3 - Simple Frontend
 ---
 
-# Hello World Part 3 - Basic Frontend
+# Hello World Part 3 - Simple Frontend
 
-Flow Client Library (FCL), is a JavaScript library developed to facilitate interactions with the Flow blockchain. It provides developers with tools to build, integrate, and interact with Flow directly from web applications. This web app quickstart will get you interacting with a contract already deployed to Flow.
+[Flow Client Library] (FCL), is a JavaScript library developed to facilitate interactions with the Flow blockchain. It provides developers with tools to build, integrate, and interact with Flow directly from web applications. This web app quickstart will get you interacting with a contract already deployed to Flow.
 
 For this tutorial, we're going to be making a [React] app with [Create React App]. We'll try and keep the code as simple as possible in case you're coming from another framework.
+
+## Objectives
+
+After completing this guide, you'll be able to:
+
+* Display data from a [Cadence] smart contract on a React frontend using the [Flow Client Library]
+
+## Creating the App
 
 First, let's create our app and then navigate to it with the following terminal commands.  From the root of where you keep your source code:
 
@@ -68,7 +76,7 @@ fcl.config({
 
 ## Querying the Chain
 
-On Flow, you can interact with a contract by reading from the chain with a script or changing its state with a transaction. Reading is free and is done with FCL by passing a Cadence (the smart contract language of Flow) script to `fcl.query`.
+On Flow, you can interact with a contract by reading from the chain with a script or changing its state with a transaction. Reading is free and is done with FCL by passing a [Cadence] script to `fcl.query`.
 
 For our example we are going to read from a `HelloWorld` contract deployed to the account `0xa1296b1e2e90ca5b` on `testnet` (you can [view the contract here] to see what it looks like).
 
@@ -149,6 +157,8 @@ Run `npm start` again.  After a moment, the greeting from `HelloWorld` will appe
 
 For a deeper dive into writing an FCL app, such as how to change the chain state with FCL, check out [the app quickstart guide] or the [FCL documentation].
 
+[Flow Client Library]: ../../../tools/clients/fcl-js
+[Cadence]: https://cadence-lang.org/
 [React]: https://react.dev/learn
 [Create React App]: https://create-react-app.dev/
 [view the contract here]: https://f.dnz.dev/0xa1296b1e2e90ca5b/HelloWorld
