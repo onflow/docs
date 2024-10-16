@@ -266,7 +266,7 @@ Example:
 
 ````markdown
 ```cadence DepositFees.cdc
-!from https://raw.githubusercontent.com/onflow/flow-core-contracts/refs/heads/master/transactions/FlowServiceAccount/deposit_fees.cdc
+!from https://github.com/onflow/flow-core-contracts/blob/master/transactions/FlowServiceAccount/deposit_fees.cdc#L23-L26
 ```
 ````
 

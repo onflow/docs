@@ -11,6 +11,19 @@ const getUrl = (nodeValue) => {
   return url.replace(githubReplace, '$1raw.githubusercontent.com/$3/$4');
 };
 
+const getLines = (url) => {
+  const lines = url.split('#')[1];
+  if (!lines) {
+    return null;
+  }
+
+  const [start, end] = lines
+    .split('-')
+    .map((line) => line.replace(/L(\d+)/, '$1'));
+
+  return [start, end];
+};
+
 const plugin = () => {
   const transformer = async (ast) => {
     const promises = [];
@@ -20,6 +33,9 @@ const plugin = () => {
         if (!url) {
           return;
         }
+
+        const lines = getLines(url);
+
         const fetchPromise = fetch(url)
           .then((res) => {
             if (!res.ok) {
@@ -30,7 +46,15 @@ const plugin = () => {
             return res.text();
           })
           .then((code) => {
-            node.value = code;
+            if (lines) {
+              const codeLines = code
+                .split('\n')
+                .slice(lines[0] - 1, lines[1])
+                .join('\n');
+              node.value = codeLines;
+            } else {
+              node.value = code;
+            }
           })
           .catch((err) => {
             console.error(err);
