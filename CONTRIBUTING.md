@@ -270,10 +270,6 @@ Example:
 ```
 ````
 
-mdx
-Copy code
-```javascript
-{code}
 This method keeps your documentation synchronized with your codebase by pulling the latest code directly into your docs.
 
 
