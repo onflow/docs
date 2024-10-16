@@ -13,12 +13,14 @@ wallets, and marketplaces,
 the NFT metadata will be presented in a consistent manner,
 ensuring a uniform experience across various platforms.
 
-<Callout type="information">
+:::info
+
 It is important to understand this document so you can make meaningful decisions 
 about how to manage your project's metadata as support for metadata views does
 not happen by default. Each project has unique metadata and therefore will have to
 define how they expose it in unique ways.
-</Callout>
+
+:::
 
 A view is a standard Cadence struct that represents a specific type of metadata, 
 such as a [Royalty specification](https://github.com/onflow/flow-nft?tab=readme-ov-file#royalty-view):
@@ -246,13 +248,15 @@ thumbnail : MetadataViews.IPFSFile(
 
 ![MetadataViews.Display](display.png "Display")
 
-<Callout type="information">
+:::info
+
 Note about SVG files on-chain: SVG field should be sent as `thumbnailURL`,
 should be base64 encoded, and should have a dataURI prefix, like so:
 ```
 data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMSIgaGVpZ2h0PSIxIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPjxyZWN0IHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiIGZpbGw9InJlZCIvPjwvc3ZnPg==
 ```
-</Callout>
+
+:::
 
 ### Editions
 

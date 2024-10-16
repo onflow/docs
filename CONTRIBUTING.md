@@ -258,7 +258,7 @@ Example:
 :::
 ```
 
-### Code references
+### Code Reference
 
 To include code from a file using a direct URL use `!from` operand inside a code block.
 
