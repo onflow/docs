@@ -60,7 +60,7 @@ Let's break down what this script does:
 
 ## Understanding the `HelloWorld` Contract
 
-To fully grasp how the script works, it's important to understand the structure of the HelloWorld contract. Below is the source code for the contract:
+To fully grasp how the script works, it's important to understand the structure of the `HelloWorld` contract. Below is the source code for the contract:
 
 ```cadence
 access(all) contract HelloWorld {
@@ -76,10 +76,6 @@ access(all) contract HelloWorld {
   }
 }
 ```
-
-Certainly! Here's the text formatted in Markdown for you to copy and paste:
-
----
 
 ### Breakdown of the Contract
 
