@@ -42,8 +42,12 @@ If you had set the [dynamic bootstrap arguments](https://developers.flow.com/net
 1. Run the transit script to fetch the new genesis info:
    `./boot-tools/transit pull -b ./bootstrap -t ${PULL_TOKEN} -r ${YOUR_NODE_TYPE} --concurrency 10 --timeout 15m`
 
-- `PULL_TOKEN` will be provided by the Flow team
-
+- `PULL_TOKEN` will be provided by the Flow team.
+  - For `collection`, `consensus`, `verification` node type it will generally be `testnet-x` or `mainnet-x` where x is the latest number of respective network upgrade. e.g. `testnet-52`, `mainnet-26`.
+  - For `execution` node type it will generally be `testnet-x-execution` or `mainnet-x-execution`.
+  - For `access` node:
+    - It will generally be `testnet-x` or `mainnet-x` if execution data indexing is not enabled.
+    - It will generally be `testnet-x-execution` or `mainnet-x-execution` if execution data indexing is enabled.
 
 - `YOUR_NODE_TYPE` should be one of `collection`, `consensus`, `execution`, `verification`, `access` based on the node(s) that you are running.
 
