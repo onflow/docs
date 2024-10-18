@@ -3,7 +3,7 @@ sidebar_position: 2
 sidebar_label: 2 - Local Development
 ---
 
-# Hello World Part 2 - Local Development
+# Part 2 - Local Development
 
 The [Flow Command Line Interface] (CLI) is a set of tools that developers can use to interact with the Flow blockchain by managing accounts, sending transactions, deploying smart contracts, running the emulator, and more. This quickstart will get you familiar with its main concepts and functionality.
 

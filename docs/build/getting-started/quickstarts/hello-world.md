@@ -4,7 +4,7 @@ sidebar_label: 1 - Smart Contract Basics
 ---
 import VerticalSplit from "./vertical-split.svg"
 
-# Hello World Part 1 - Smart Contract Basics
+# Part 1 - Smart Contract Basics
 
 In this quickstart guide, you'll interact with your first smart contract on the Flow Testnet. `Testnet` is a public instance of the Flow blockchain designed for experimentation, where you can deploy and invoke smart contracts without incurring any real-world costs.
 

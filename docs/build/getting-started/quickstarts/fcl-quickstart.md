@@ -3,7 +3,7 @@ sidebar_position: 3
 sidebar_label: 3 - Simple Frontend
 ---
 
-# Hello World Part 3 - Simple Frontend
+# Part 3 - Simple Frontend
 
 [Flow Client Library] (FCL), is a JavaScript library developed to facilitate interactions with the Flow blockchain. It provides developers with tools to build, integrate, and interact with Flow directly from web applications. This web app quickstart will get you interacting with a contract already deployed to Flow.
 
