@@ -8,7 +8,7 @@ import VerticalSplit from "./vertical-split.svg"
 
 In this quickstart guide, you'll interact with your first smart contract on the Flow Testnet. `Testnet` is a public instance of the Flow blockchain designed for experimentation, where you can deploy and invoke smart contracts without incurring any real-world costs.
 
-Smart contracts on Flow are permanent pieces of code that live on the blockchain. They allow you to encode business logic, define digital assets, manage user interactions, and much more. By leveraging smart contracts, you can create decentralized applications (dApps) that are transparent, secure, and open to anyone.
+Smart contracts on Flow are permanent pieces of code that live on the blockchain. They allow you to encode business logic, define digital assets, and much more. By leveraging smart contracts, you can create decentralized applications (dApps) that are transparent, secure, and open to anyone.
 
 Flow supports modern smart contracts written in [Cadence], a resource-oriented programming language designed specifically for smart contracts. Cadence focuses on safety and security, making it easier to write robust contracts. Flow also supports traditional [EVM]-compatible smart contracts written in Solidity, allowing developers to port their existing Ethereum contracts to Flow. In this guide, we'll focus on interacting with Cadence smart contracts.
 
