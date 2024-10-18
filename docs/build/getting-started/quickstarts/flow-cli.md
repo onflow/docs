@@ -3,7 +3,7 @@ sidebar_position: 2
 sidebar_label: 2 - Local Development
 ---
 
-# Hello World Part 2 - Local Development
+# Part 2 - Local Development
 
 The [Flow Command Line Interface] (CLI) is a set of tools that developers can use to interact with the Flow blockchain by managing accounts, sending transactions, deploying smart contracts, running the emulator, and more. This quickstart will get you familiar with its main concepts and functionality.
 
@@ -51,7 +51,7 @@ For additional details on how `flow.json` is configured, review the [configurati
 
 :::
 
-## Grabbing the HelloWorld Contract
+## Grabbing the `HelloWorld` Contract
 
 For this demo, we are going to be interacting with a simple `HelloWorld` contract, written in [Cadence], that is already deployed on Flow's `testnet` network on account [0xa1296b1e2e90ca5b]. In order to grab this project dependency, we'll use Flow's [Dependency Manager] to install it into our project using a source string that defines the network, address, and contract name of the contract we want to import.
 
