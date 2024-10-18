@@ -1,26 +1,39 @@
 ---
 sidebar_position: 1
-sidebar_label: 1 - Basics
+sidebar_label: 1 - Smart Contract Basics
 ---
 import VerticalSplit from "./vertical-split.svg"
 
-# Hello World Part 1 - Basics
+# Hello World Part 1 - Smart Contract Basics
 
-Welcome to the Flow blockchain! In this quickstart guide, you'll interact with your first smart contract on our `Testnet`. For those unfamiliar, the Testnet is a public instance of the Flow blockchain designed for experimentation. Here, you can deploy and invoke smart contracts without incurring any real-world costs. 
+In this quickstart guide, you'll interact with your first smart contract on the Flow Testnet. `Testnet` is a public instance of the Flow blockchain designed for experimentation, where you can deploy and invoke smart contracts without incurring any real-world costs.
 
-Smart contracts on Flow are permanent code that live on the blockchain, allowing you to encode business logic, define digital assets, and much more.
+Smart contracts on Flow are permanent pieces of code that live on the blockchain. They allow you to encode business logic, define digital assets, manage user interactions, and much more. By leveraging smart contracts, you can create decentralized applications (dApps) that are transparent, secure, and open to anyone.
 
-Flow supports modern smart contracts written in [Cadence], as well as traditional [EVM] smart contracts written in Solidity.
+Flow supports modern smart contracts written in [Cadence], a resource-oriented programming language designed specifically for smart contracts. Cadence focuses on safety and security, making it easier to write robust contracts. Flow also supports traditional [EVM]-compatible smart contracts written in Solidity, allowing developers to port their existing Ethereum contracts to Flow. In this guide, we'll focus on interacting with Cadence smart contracts.
 
 ## Objectives
 
 After completing this guide, you'll be able to:
 
-* Read a public variable on a [Cadence] smart contract deployed on Flow
+* Read a public variable on a [Cadence] smart contract deployed on Flow.
+* Understand how to interact with contracts on Flow's `testnet`. 
+* Retrieve and display data from a deployed smart contract via scripts.
 
-## Calling a contract
+In later steps, you'll learn how to:
 
-The `HelloWorld` contract exposes a public variable named `greeting` that is accessible to everything outside the contract. We can retrieve its value using a simple script written in the [Cadence] programming language.
+* Create a Flow project using the [Flow CLI](../../../tools/flow-cli).
+* Add an already-deployed contract to your project with the [Dependency Manager](../../../tools/flow-cli/dependency-manager.md).
+* Deploy a smart contract locally to the [Flow Emulator](../../../tools/emulator).
+* Write and execute transactions to interact with a deployed smart contract.
+* Display data from a Cadence smart contract on a React frontend using the [Flow Client Library](../../../tools/clients/fcl-js).
+
+
+## Calling a Contract With a Script
+
+The `HelloWorld` contract exposes a public variable named `greeting` that is accessible to everything outside the contract. We can retrieve its value using a simple script written in the [Cadence] programming language. Scripts in Cadence are read-only operations that allow you to query data from the blockchain without changing any state.
+
+Here's the script:
 
 ```cadence
 import HelloWorld from 0xa1296b1e2e90ca5b
@@ -30,15 +43,24 @@ access(all) fun main(): String {
 }
 ```
 
- - `Click` <VerticalSplit /> To vertically orient Flow Runner editor. 
- - `Copy` the script above into Flow Runner input area and click "Run". 
- - See the output returned by the script. 
+Let's break down what this script does:
+
+- **Import Statement**: `import HelloWorld from 0xa1296b1e2e90ca5b` tells the script to use the `HelloWorld` contract deployed at the address `0xa1296b1e2e90ca5b` on the `testnet`.
+- **Main Function**: `access(all) fun main(): String` defines the entry point of the script, which returns a `String`.
+- **Return Statement**: `return HelloWorld.greeting` accesses the greeting variable from the `HelloWorld` contract and returns its value.
+
+### Steps to Execute the Script
+ 
+ - **Open the Flow Runner**: Click the <VerticalSplit /> icon to orient the Flow Runner editor vertically. The Flow Runner is an online tool that allows you to write and execute Cadence scripts directly in your browser.
+- **Copy the Script**: Copy the script above into the Flow Runner's input area.
+- **Run the Script**: Click the Run button to execute the script.
+- **View the Output**: Observe the output returned by the script. You should see the current value of the `greeting` variable, which is `"Hello, World!"`.
 
 <iframe sandbox className="flow-runner-iframe" src="https://run.dnz.dev/" width="100%" height="400px"></iframe>
 
-## Contract on Testnet
+## Understanding the `HelloWorld` Contract
 
-Below is the source code for the HelloWorld contract. As you continue through the next few tutorials, you'll discover how to invoke the `changeGreeting` function to modify the greeting value. Do take note, however, that only the contract's `owner` or permitted accounts can modify the greeting.
+To fully grasp how the script works, it's important to understand the structure of the HelloWorld contract. Below is the source code for the contract:
 
 ```cadence
 access(all) contract HelloWorld {
@@ -55,13 +77,35 @@ access(all) contract HelloWorld {
 }
 ```
 
-:::tip
+Certainly! Here's the text formatted in Markdown for you to copy and paste:
 
-There are no `read` costs associated with calling contracts. 
+---
 
-:::
+### Breakdown of the Contract
 
-Continue to create your own contracts and get them deployed live with Flow CLI!
+- **Contract Declaration**: `access(all) contract HelloWorld` declares a new contract named `HelloWorld` that is accessible to everyone.
+- **State Variable**: `access(all) var greeting: String` declares a public variable `greeting` of type `String`. The `access(all)` modifier means that this variable can be read by anyone.
+- **Function to Change Greeting**: `access(account) fun changeGreeting(newGreeting: String)` defines a function that allows changing the value of `greeting`. The `access(account)` modifier restricts this function so that only the account that deployed the contract (the owner) can call it.
+- **Initializer**: The `init()` function is called when the contract is deployed. It sets the initial value of `greeting` to `"Hello, World!"`.
+
+### Key Points
+
+- **Public Access**: The `greeting` variable is public, allowing anyone to read its value without any restrictions.
+- **Restricted Modification**: Only the contract owner can modify the `greeting` variable using the `changeGreeting` function. This ensures that unauthorized accounts cannot change the contract's state.
+- **No Read Costs**: Reading data from the blockchain is free on Flow. Executing scripts like the one you ran does not incur any costs.
+
+### What's Next?
+
+In the upcoming tutorials, you'll learn how to:
+
+- **Modify the Greeting**: Invoke the `changeGreeting` function to update the `greeting` value.
+- **Deploy Contracts**: Use the Flow CLI to deploy your own smart contracts.
+- **Interact with Contracts Locally**: Use the Flow Emulator to test contracts in a local development environment.
+- **Build Frontend Applications**: Display data from smart contracts in a React application using the Flow Client Library.
+
+By understanding the `HelloWorld` contract and how to interact with it, you're building a solid foundation for developing more complex applications on the Flow blockchain.
+
+Proceed to the next tutorial to learn how to create your own contracts and deploy them live using the Flow CLI.
 
 [Cadence]: https://cadence-lang.org/
 [EVM]: https://flow.com/upgrade/crescendo/evm
