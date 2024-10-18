@@ -27,7 +27,7 @@ export type HomePageProps = SocialLinksSignupProps & {
 
 const Description = (): JSX.Element => (
   <>
-    Discover the innovative features that make Flow the blockchain built for the next generation of apps, games, and digital assets. Learn about its scalable architecture, developer-friendly environment, and resource-oriented programming with Cadence.
+    Flow is a fast, decentralized platform for apps, games, and digital assets. Build and grow your projects on a scalable, secure network. Whether you're learning Cadence or using EVM compatibility, Flow empowers your innovative ideas.
   </>
 );
 
