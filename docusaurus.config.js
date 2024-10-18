@@ -255,7 +255,7 @@ const config = {
           {
             to: 'build/flow',
             position: 'left',
-            label: 'Build',
+            label: 'Build With Cadence',
             activeBasePath: '/build',
           },
           {

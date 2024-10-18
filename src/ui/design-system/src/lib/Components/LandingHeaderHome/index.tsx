@@ -35,7 +35,7 @@ export function LandingHeaderHome({
             href={'/build/flow'}
             className={'hover:no-underline hover:opacity-80'}
           >
-            Read Docs
+            Get Building
           </ButtonLink>
         </div>
       </div>

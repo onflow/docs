@@ -6,35 +6,35 @@ const ContentFeatures: Record<string, ContentFeatureProps> = {
     icon: 'feature-why-flow-icon',
     image: 'feature-why-flow-image',
     header: 'Why Flow',
-    text: 'Introduction to the Network',
+    text: 'Explore Flow\'s scalable and high-performance blockchain architecture',
     link: '/build/flow',
   },
   'smart-accounts': {
     icon: 'feature-wand-icon',
     image: 'feature-wand-image',
     header: 'Smart Accounts',
-    text: 'Enhance UX with a flexible Account structure and key management',
+    text: 'Benefit from flexible accounts with seamless key management for security and convenience',
     link: 'build/basics/accounts',
   },
   transactions: {
     icon: 'feature-stacks-icon',
     image: 'feature-stacks-image',
     header: 'Bundle & Scripted Transactions',
-    text: 'Introduction to gasless, scripted and bundled transactions',
+    text: 'Streamline operations using gasless, scripted, and bundled transactions',
     link: '/build/basics/transactions',
   },
   'code-scripts': {
     icon: 'feature-code-scripts-icon',
     image: 'feature-code-scripts-image',
     header: 'Scripted Queries',
-    text: 'Introduction to Queries',
+    text: 'Access and interact with on-chain data efficiently using powerful scripting',
     link: '/build/basics/scripts',
   },
   evm: {
     icon: 'feature-evm-icon',
     image: 'feature-evm-image',
     header: 'EVM Equivalency',
-    text: 'Coming in from EVM? Discover key similarities and differences to launch faster',
+    text: 'Use Solidity contracts on Flow without code changes',
     link: '/evm/about',
   },
 };
@@ -44,8 +44,7 @@ export function ContentFeatureList(): React.ReactElement {
     <div className="container">
       <div className="flex flex-col md:w-1/2 md:block pb-9">
         <div className="text-h2 pb-5">Key Features</div>
-        Discover the unique features of Flow, unlocking innovative possibilities
-        for your decentralized applications and smart contracts.
+        Discover the innovative features that make Flow the blockchain built for the next generation of apps, games, and digital assets. Learn about its scalable architecture, developer-friendly environment, and resource-oriented programming with Cadence.
       </div>
       <div className={`grid grid-cols-1 md:grid-cols-2 lg:grid-cols-6 gap-4`}>
         <div className="lg:col-span-2">
