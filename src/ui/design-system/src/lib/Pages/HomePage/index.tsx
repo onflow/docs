@@ -27,10 +27,7 @@ export type HomePageProps = SocialLinksSignupProps & {
 
 const Description = (): JSX.Element => (
   <>
-    Dive into a rich collection of resources, tutorials, autonomous realms and
-    vibrant communities that unlock the full potential of Web3. Whether a
-    tinkerer or a seasoned developer, find everything you need to start and
-    elevate your projects.
+    Discover the innovative features that make Flow the blockchain built for the next generation of apps, games, and digital assets. Learn about its scalable architecture, developer-friendly environment, and resource-oriented programming with Cadence.
   </>
 );
 
@@ -42,16 +39,16 @@ const HomePage = ({ discordUrl, githubUrl }: HomePageProps): JSX.Element => {
         discordUrl={discordUrl}
         githubUrl={githubUrl}
         tag="onflow"
-        title="Build with Flow"
+        title="Build On Flow"
       />
-      <HomepageStartList />
+      <ContentFeatureList />
 
       <PageSections>
         <TransitionPageSection sectionId="explore-more-content">
-          <ContentFeatureList />
+          <HomepageStartListCadence />
         </TransitionPageSection>
         <TransitionPageSection sectionId="start-list-cadence">
-          <HomepageStartListCadence />
+          <HomepageStartList />
         </TransitionPageSection>
         <TransitionPageSection
           className={'md:mx-4'}

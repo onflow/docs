@@ -56,6 +56,10 @@ const homepagePillData: Record<string, HomepagePillItemsProps> = {
 export function HomepageStartList(): React.ReactElement {
   return (
     <div className="container mx-auto p-4">
+      <div className="flex flex-col md:w-1/2 md:block pb-9">
+        <div className="text-h2 pb-5">EVM on Flow</div>
+        Unlock the ability to run EVM-compatible smart contracts on Flow. Leverage your existing Solidity skills and EVM tools to build on Flow's high-performance blockchain, combining familiar development experiences with Flow's scalability and efficiency.
+      </div>
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
         <div className="col-span-1 md:col-span-1 md:row-span-2 lg:col-span-1 lg:row-span-2 rounded-lg shadow p-2">
           <HomepageStartItem key={0} {...homepageData['cadence-course']} />
