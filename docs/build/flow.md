@@ -44,9 +44,19 @@ To get a complete picture on how to build on Flow, follow the 👈 sidebar top t
 
 If you like to jump right into the deep end of the pool, take a look below for more direct links to advanced topics!
 
+### Learn Cadence
+
+To take advantage of the full power of Flow, you'll need to learn [Cadence].  Learning a new language is an investment, but you'll find that Cadence is safer, more explicit, and less dangerous than other blockchain languages.  Plus, it unlocks the full power of the Flow protocol!
+
+### Build with the EVM
+
+If you're not ready to take the plunge and learn [Cadence], try out "EVM++" by deploying your existing [EVM] contracts.  You'll find that Flow EVM is faster and cheaper than nearly every other EVM solution - without compromising on security.
+
+Deploying on Flow EVM also gives your Solidity contracts access to Flow Cadence features, such as native [VRF].
+
 ### App Development Quickstart
 
-The [Flow App Quickstart](./guides/flow-app-quickstart.md) covers the Flow core concepts, including:
+The [Flow App Quickstart] covers the Flow core concepts, including:
 
 - **App Client:** The app client is the interface through which users interact with your app. Web and mobile applications are typical examples of app clients.
 - **Smart Contract:** A smart contract is a collection of code deployed to a permanent location on the blockchain that defines the core logic for a dApp.
@@ -58,7 +68,7 @@ The [Flow App Quickstart](./guides/flow-app-quickstart.md) covers the Flow core 
 
 ### Core Contracts
 
-The Flow blockchain implements core functionality using its own smart contract language, [Cadence](https://cadence-lang.org/docs/language/). The core functionality is split into a set of contracts, so-called [core contracts](../build/core-contracts/index.md):
+The Flow blockchain implements core functionality using its own smart contract language, [Cadence]. The core functionality is split into a set of contracts, called the [core contracts]:
 
 - **Fungible Token:** The FungibleToken contract implements the Fungible Token Standard. It is the second contract ever deployed on Flow.
 - **Flow Token:** The FlowToken contract defines the FLOW network token.
@@ -69,17 +79,17 @@ The Flow blockchain implements core functionality using its own smart contract l
 
 ### FLOW Token
 
-The [FLOW](../build/core-contracts/03-flow-token.md) token is the native currency for the Flow network. Developers and users can use FLOW to transact on the network. Developers can integrate FLOW directly into their apps for peer-to-peer payments, service charges, or consumer rewards. FLOW can be held, transferred, or transacted peer-to-peer.
+The [FLOW] token is the native currency for the Flow network. Developers and users can use FLOW to transact on the network. Developers can integrate FLOW directly into their apps for peer-to-peer payments, service charges, or consumer rewards. FLOW can be held, transferred, or transacted peer-to-peer.
 
 ### Technical Background
 
-- The [Flow Technical Primer](https://www.onflow.org/primer) is a great place to start to understand how Flow works.
-- The [Three technical whitepapers](https://www.onflow.org/technical-paper) cover the unique innovation behind the Flow blockchain network in-depth.
+- The [Flow Technical Primer] is a great place to start to understand how Flow works.
+- The [Three technical whitepapers] cover the unique innovation behind the Flow blockchain network in-depth.
 
 ### Tokenomics
 
-- To understand more about Flow's Token Economics, and the **FLOW token**, you can read the [Flow Token Economics](https://www.onflow.org/flow-token-economics) guide.
-- FLOW tokens are Flow's native Fungible Token. To learn more about how to work with them in your applications, go [here](../build/core-contracts/03-flow-token.md).
+- To understand more about Flow's Token Economics, and the **FLOW token**, you can read the [Flow Token Economics] guide.
+- FLOW tokens are Flow's native Fungible Token. To learn more about how to work with them in your applications, review the [FLOW] article.
 
 [digital assets]: https://www.onflow.org/post/flow-blockchain-cadence-programming-language-resources-assets
 [multi-role architecture]: https://www.onflow.org/primer
@@ -95,3 +105,10 @@ The [FLOW](../build/core-contracts/03-flow-token.md) token is the native currenc
 [Guide for Solidity Developers]: https://cadence-lang.org/docs/solidity-to-cadence
 [account abstraction]: https://flow.com/account-abstraction
 [bridge]: https://developers.flow.com/ecosystem/bridges
+[Flow App Quickstart]: ./guides/flow-app-quickstart
+[core contracts]: ../build/core-contracts/index
+[FLOW]: ../build/core-contracts/03-flow-token
+[Flow Technical Primer]: https://www.onflow.org/primer
+[Three technical whitepapers]: https://www.onflow.org/technical-paper
+[Flow Token Economics]: https://www.onflow.org/flow-token-economics
+[VRF]: ../evm/guides/vrf
