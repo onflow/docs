@@ -22,11 +22,11 @@ After completing this guide, you'll be able to:
 
 In later steps, you'll learn how to:
 
-* Create a Flow project using the [Flow CLI](../../tools/flow-cli).
-* Add an already-deployed contract to your project with the [Dependency Manager](../../tools/flow-cli/dependency-manager.md).
-* Deploy a smart contract locally to the [Flow Emulator](../../tools/emulator).
+* Create a Flow project using the [Flow CLI].
+* Add an already-deployed contract to your project with the [Dependency Manager].
+* Deploy a smart contract locally to the [Flow Emulator].
 * Write and execute transactions to interact with a deployed smart contract.
-* Display data from a Cadence smart contract on a React frontend using the [Flow Client Library](../../tools/clients/fcl-js).
+* Display data from a Cadence smart contract on a React frontend using the [Flow Client Library].
 
 
 ## Calling a Contract With a Script
@@ -105,3 +105,7 @@ Proceed to the next tutorial to learn how to create your own contracts and deplo
 
 [Cadence]: https://cadence-lang.org/
 [EVM]: https://flow.com/upgrade/crescendo/evm
+[Flow CLI]: ../../tools/flow-cli
+[Dependency Manager]: ../../tools/flow-cli/dependency-manager.md
+[Flow Emulator]: ../../tools/emulator
+[Flow Client Library]: ../../tools/clients/fcl-js
