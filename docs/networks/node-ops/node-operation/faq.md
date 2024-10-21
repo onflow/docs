@@ -9,7 +9,7 @@ sidebar_position: 1
 
 Anyone can run an [observer node](../access-onchain-data/light-nodes/observer-node.md).
 
-Anyone can run an Access Node after registering and staking. See [Access Node Setup](../access-onchain-data/access-nodes/access-node-setup.mdx) for detailed instructions.
+Anyone can run an Access Node after registering and staking. See [Access Node Setup](../access-onchain-data/access-nodes/access-node-setup.md) for detailed instructions.
 
 For the other node roles, individuals can go through an application process that involves asking about their background and experience contributing to decentralized projects. To pursue an application, please visit [the Flow website here to apply](https://www.onflow.org/node-validators).
 
@@ -19,7 +19,7 @@ In the long-term, anyone can run a node validator on Flow.
 
 ### How do I generate keys?
 
-Please follow the instructions provided here: [Generate Your Node Keys](./node-bootstrap.md#generating-your-node-keys)
+Please follow the instructions provided here: [Generate Your Node Keys](./node-bootstrap.md#generate-your-node-keys)
 
 ### How do I check on the status of my node?
 

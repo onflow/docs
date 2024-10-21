@@ -75,7 +75,7 @@ Launch an access node using QuickNode
 
 :::info
 
-To run a self-hosted access node, follow this [guide](./access-onchain-data/access-nodes/access-node-setup.mdx)
+To run a self-hosted access node, follow this [guide](./access-onchain-data/access-nodes/access-node-setup.md)
 
 :::
 

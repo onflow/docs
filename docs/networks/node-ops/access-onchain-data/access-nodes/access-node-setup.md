@@ -253,7 +253,7 @@ Account staking info:
 
 ### Epoch Setup Event
 
-Alternatively, if you can monitor events, look for [the epoch setup event](../../../staking/05-epoch-scripts-events.md#epochsetup) that gets emitted by the epoch contract. That event is emitted at the end of epoch N's staking auction and contains a list of node IDs that are confirmed for the next epoch.
+Alternatively, if you can monitor events, look for [the epoch setup event](../../../staking/05-epoch-scripts-events.md#flowepochepochsetup) that gets emitted by the epoch contract. That event is emitted at the end of epoch N's staking auction and contains a list of node IDs that are confirmed for the next epoch.
 
 ## Step 4 - Start Your Node
 
