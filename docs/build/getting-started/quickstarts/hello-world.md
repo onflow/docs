@@ -56,7 +56,7 @@ Let's break down what this script does:
 - **Run the Script**: Click the Run button to execute the script.
 - **View the Output**: Observe the output returned by the script. You should see the current value of the `greeting` variable, which is `"Hello, World!"`.
 
-<iframe sandbox className="flow-runner-iframe" src="https://run.dnz.dev/" width="100%" height="400px"></iframe>
+<iframe sandbox className="flow-runner-iframe" src="https://run.dnz.dev?colormode=dark&output=horizontal&outputSize=200" width="100%" height="400px"></iframe>
 
 ## Understanding the `HelloWorld` Contract
 
