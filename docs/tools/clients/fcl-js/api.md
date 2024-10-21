@@ -590,7 +590,7 @@ _Pass in the following as a single object with the following keys. All keys are 
 | ---------- | ------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
 | `cadence`  | string **(required)**                            | A valid cadence transaction.                                                                                                                                                         |
 | `args`     | [ArgumentFunction](#argumentfunction)            | Any arguments to the script if needed should be supplied via a function that returns an array of arguments.                                                                          |
-| `limit`    | number                                           | Compute (Gas) limit for query. Read the [documentation about computation cost](../flow-go-sdk/index.mdx#gas-limit) for information about how computation cost is calculated on Flow. |
+| `limit`    | number                                           | Compute (Gas) limit for query. Read the [documentation about computation cost](../flow-go-sdk/index.md#gas-limit) for information about how computation cost is calculated on Flow. |
 | `proposer` | [AuthorizationFunction](#authorization-function) | The authorization function that returns a valid [AuthorizationObject](#authorizationobject) for the [proposer role](#TransactionRolesObject).                                        |
 
 #### Returns
