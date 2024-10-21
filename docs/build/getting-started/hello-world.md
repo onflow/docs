@@ -1,10 +1,10 @@
 ---
 sidebar_position: 1
-sidebar_label: 1 - Smart Contract Basics
+sidebar_label: Hello World
 ---
 import VerticalSplit from "./vertical-split.svg"
 
-# Part 1 - Smart Contract Basics
+# Hello World
 
 In this quickstart guide, you'll interact with your first smart contract on the Flow Testnet. `Testnet` is a public instance of the Flow blockchain designed for experimentation, where you can deploy and invoke smart contracts without incurring any real-world costs.
 
@@ -22,11 +22,11 @@ After completing this guide, you'll be able to:
 
 In later steps, you'll learn how to:
 
-* Create a Flow project using the [Flow CLI](../../../tools/flow-cli).
-* Add an already-deployed contract to your project with the [Dependency Manager](../../../tools/flow-cli/dependency-manager.md).
-* Deploy a smart contract locally to the [Flow Emulator](../../../tools/emulator).
+* Create a Flow project using the [Flow CLI](../../tools/flow-cli).
+* Add an already-deployed contract to your project with the [Dependency Manager](../../tools/flow-cli/dependency-manager.md).
+* Deploy a smart contract locally to the [Flow Emulator](../../tools/emulator).
 * Write and execute transactions to interact with a deployed smart contract.
-* Display data from a Cadence smart contract on a React frontend using the [Flow Client Library](../../../tools/clients/fcl-js).
+* Display data from a Cadence smart contract on a React frontend using the [Flow Client Library](../../tools/clients/fcl-js).
 
 
 ## Calling a Contract With a Script
