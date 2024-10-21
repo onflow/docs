@@ -1347,7 +1347,7 @@ message TransactionSignature {
 | [proposal_key](#proposal-key) | Account key used to propose the transaction                                                                                 |
 | payer                         | Address of the payer account                                                                                                |
 | authorizers                   | Addresses of the transaction authorizers                                                                                    |
-| signatures                    | [Signatures](#transaction-signatures) from all signer accounts                                                              |
+| signatures                    | [Signatures](#transaction-signature) from all signer accounts                                                              |
 
 The detailed semantics of transaction creation, signing and submission are covered in the [transaction submission guide](../../../../../build/basics/transactions.md#signing-a-transaction).
 

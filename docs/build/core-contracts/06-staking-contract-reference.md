@@ -4,7 +4,7 @@ sidebar_position: 6
 sidebar_label: Staking Table
 ---
 
-# Contract
+## Contract
 
 The `FlowIDTableStaking` contract is the central table that manages staked nodes, delegation and rewards.
 
@@ -17,13 +17,13 @@ Source: [FlowIDTableStaking.cdc](https://github.com/onflow/flow-core-contracts/b
 | Testnet                   | `0x9eca2b38b18b5dfe` |
 | Mainnet                   | `0x8624b52f9ddcd04a` |
 
-# Transactions and Scripts
+## Transactions and Scripts
 
 Transactions for the staking contract are in the `flow-core-contracts` repo.
 Developers and users are advised to use [the staking collection transactions](../../networks/staking/14-staking-collection.md)
 to stake tokens instead of the basic transactions that are used for tests.
 
-## Getting Staking Info with Scripts
+### Getting Staking Info with Scripts
 
 These scripts are read-only and get info about the current state of the staking contract.
 
@@ -41,12 +41,12 @@ These scripts are read-only and get info about the current state of the staking 
 | **`SC.10`** | Get All Info about a single Delegator      | [idTableStaking/delegation/get_delegator_info.cdc](https://github.com/onflow/flow-core-contracts/blob/master/transactions/idTableStaking/delegation/get_delegator_info.cdc)                                       |
 | **`SC.11`** | Get a node's total Commitment              | [idTableStaking/get_node_total_commitment_without_delegators.cdc](https://github.com/onflow/flow-core-contracts/blob/master/transactions/idTableStaking/scripts/get_node_total_commitment_without_delegators.cdc) |
 
-## Delegator Transactions
+### Delegator Transactions
 
 Documentation for delegating with tokens is described in the staking documentation
 for [the staking collection](../../networks/staking/14-staking-collection.md)
 
-# Events
+## Events
 
 The `FlowIDTableStaking` contract emits an event whenever an important action occurs.
 See the [staking events Documentation](../../networks/staking/07-staking-scripts-events.md) for more information about each event.

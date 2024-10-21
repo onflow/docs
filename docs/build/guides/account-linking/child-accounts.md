@@ -107,7 +107,7 @@ in a way that allows the receiving account to maintain that Capability and allow
 either end of the linkage - the user's main "parent" account and the linked "child" account. This is accomplished in the
 `HybridCustody` contract which we'll continue to use in this guidance.
 
-### Pre-requisitess
+### Pre-requisites
 
 Since account delegation is mediated by developer-defined rules, you should make sure to first configure the resources
 that contain those rules. Contracts involved in defining and enforcing this ruleset are

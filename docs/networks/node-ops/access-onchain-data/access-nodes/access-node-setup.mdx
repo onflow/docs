@@ -32,7 +32,7 @@ In order to join the network at epoch N+1, the access node **must** be registere
 Currently on mainnet, the staking auction starts every Wednesday at around 20:00 UTC and ends on the next Wednesday at around 12:00 UTC.
 Since this deadline may shift slightly from epoch to epoch, we recommend the node be staked by _Wednesday, 8:00 UTC_ to be able to join the network in the next epoch.
 
-Confirmation of a new node's inclusion in epoch N+1 is included in the [`EpochSetup` event](../../../staking/05-epoch-scripts-events.md#epochsetup).
+Confirmation of a new node's inclusion in epoch N+1 is included in the [`EpochSetup` event](../../../staking/05-epoch-scripts-events.md#flowepochepochsetup).
 
 ![Flow Epoch Schedule](../../node-operation/epoch-startup-order.png)
 
@@ -209,7 +209,7 @@ When you stake the node, the tokens will show up under the `tokensCommitted` buc
 If the node is not selected, the tokens are moved to the `tokensUnstaked` bucket.
 
 ### Check Using Flow Port
-You can check these balances on Flow Port before and after the epoch transition that will occur on Wednesday (see [timing](#Timing)).
+You can check these balances on Flow Port before and after the epoch transition that will occur on Wednesday (see [timing](#timing)).
 
 When you stake the node, you should see the following on Flow Port under `Stake & Delegate`
 

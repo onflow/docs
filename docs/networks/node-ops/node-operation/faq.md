@@ -19,7 +19,7 @@ In the long-term, anyone can run a node validator on Flow.
 
 ### How do I generate keys?
 
-Please follow the instructions provided here: [Generate Your Node Keys](./node-bootstrap.md#generating-your-node-id)
+Please follow the instructions provided here: [Generate Your Node Keys](./node-bootstrap.md#generating-your-node-keys)
 
 ### How do I check on the status of my node?
 
@@ -33,7 +33,7 @@ See [Staking & Epochs](../../staking/index.md#epochs) for general information an
 ### Would it hurt the network to have a node that constantly spins up and down?
 
 All staked nodes except access nodes, have to be online at all time. A staked node, other than an access node, which is not online can cause severe degradation of network performance and will be subjected to slashing of rewards.
-A way to prevent this is to check your equipment meets Flow's [recommended requirements](./node-setup.md#hardware-requirements), periodically checking for updates and announcements in Discord but also using a node monitoring system for when your node does go offline.
+A way to prevent this is to check your equipment meets Flow's [recommended requirements](./node-provisioning.md#hardware-requirements), periodically checking for updates and announcements in Discord but also using a node monitoring system for when your node does go offline.
 
 ### Does Flow has a regular schedule for Sporks?
 
