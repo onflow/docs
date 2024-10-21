@@ -1,6 +1,6 @@
 ---
 sidebar_position: 1
-title: Differences vs EVM
+title: Differences vs. EVM
 sidebar_custom_props:
   icon: ↔️
 ---
