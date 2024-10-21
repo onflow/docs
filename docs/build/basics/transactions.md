@@ -1,6 +1,9 @@
 ---
 sidebar_position: 3
-keywords: [Flow Transaction Speed, Flow Transaction Time, Transactions on Flow]
+keywords: 
+  - Flow Transaction Speed
+  - Flow Transaction Time
+  - Transactions on Flow
 ---
 
 # Transactions
@@ -19,7 +22,7 @@ In order for a transaction to be valid and executed it must contain signatures f
 
 ![Screenshot 2023-08-17 at 14.52.56.png](_transactions_images/Screenshot_2023-08-17_at_14.52.56.png)
 
-**Script**
+#### Script
 
 The script section contains instructions for transaction execution. This is a Cadence program in source code form (human-readable), and encoded as UTF-8. The transaction program must contain a `transaction` declaration. 
 
@@ -40,19 +43,19 @@ transaction(greeting: String) {
 }
 ```
 
-**Arguments**
+#### Arguments
 
 Transactions may declare parameters it needs during execution, these must be provided as input arguments when sending a transaction. You can think of them as function arguments. Currently, we provide [arguments in the JSON-Cadence Data Interchange Format](https://cadencelang.dev/docs/1.0/json-cadence-spec). Which is a human-readable JSON format. The sample script from above accepts a single `String` argument.
 
-**Reference Block**
+#### Reference Block
 
 A reference to a recent block used for expiry. A transaction is considered expired if it is submitted to Flow after reference block height + N, where N is a constant defined by the network. On mainnet current setting for N is 600 which amounts to approximately 10 minutes for expiry (please note this is subject to change).
 
-**Gas Limit**
+#### Gas Limit
 
 When a transaction is executed each operation consumes a predefined amount of computational units (we define more about that in the Fees documentation). This defines the maximum amount of computation that is allowed to be done during this transaction. If a transaction completes execution using fewer computational units than the limit, it remains unaffected. However, if it hits this limit during execution, the transaction will fail, its changes will be reverted, but fees will still be applied. The maximum computational limit for Flow mainnet is currently at 9999, but this might change. The maximum network limit is defined to protect the network from transactions that would run forever. 
 
-**Proposal Key**
+#### Proposal Key
 
 Each transaction must declare a proposal key, which can be an account key from any Flow account (App, User or Wallet). The account that owns the proposal key is referred to as the *proposer*. 
 
@@ -66,7 +69,7 @@ A proposal key definition declares the address, key ID, and up-to-date sequence 
 - Key ID is an index number (starting at 0) that identifies the key on the account provided in the address.
 - Sequence Number is a number on each key that increments by 1 with each transaction. This ensures that each transaction executes at most once and prevents many unwanted situations, such as [transaction replay attacks](https://en.wikipedia.org/wiki/Replay_attack). Each key in an account has a dedicated sequence number associated with it. Unlike Ethereum, there is no sequence number for the entire account.
 
-**Authorizers**
+#### Authorizers
 
 Authorizers are accounts that authorize a transaction to read and mutate their state. A transaction can specify zero or more authorizers, depending on how many accounts the transaction needs to access.
 
@@ -90,7 +93,7 @@ that are required for the transaction to execute properly.
 This ensures that users who are signing transactions can understand
 what parts of their account a transaction can access.
 
-**Payer**
+#### Payer
 
 A payer is the account that pays the fees for the transaction. A transaction must specify exactly one payer. The payer is only responsible for paying the network and gas fees; the transaction is not authorized to access resources or code stored in the payer account. 
 

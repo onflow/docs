@@ -548,10 +548,14 @@ transaction {
 }
 ```
 
+#### Gas Limit
+
 📖 **Gas limit** is the limit on the amount of computation a transaction requires, and it will abort if it exceeds its gas limit.
 Cadence uses metering to measure the number of operations per transaction. You can read more about it in the [Cadence documentation](../../../build/smart-contracts/cadence.md).
 
 The gas limit depends on the complexity of the transaction script. Until dedicated gas estimation tooling exists, it's best to use the emulator to test complex transactions and determine a safe limit.
+
+#### Reference Block
 
 📖 **Reference block** specifies an expiration window (measured in blocks) during which a transaction is considered valid by the network.
 A transaction will be rejected if it is submitted past its expiry block. Flow calculates transaction expiry using the _reference block_ field on a transaction.

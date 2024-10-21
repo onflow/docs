@@ -686,4 +686,4 @@ mutate({
 })
 ```
 
-After a transaction has been [built](./sdk-guidelines.md#build-transactions) and [signed](./sdk-guidelines.md#sign-transactions), it can be sent to the Flow blockchain where it will be executed. If sending was successful you can then [retrieve the transaction result](./sdk-guidelines.md#get-transactions).
+After a transaction has been **built** and **signed**, it can be sent to the Flow blockchain where it will be executed. If sending was successful you can then [retrieve the transaction result](#get-transactions).
