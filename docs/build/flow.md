@@ -21,6 +21,8 @@ Flow is a fast, decentralized, and developer-friendly blockchain designed to be 
 
 - **Native Account Abstraction**: Flow has protocol-native [account abstraction].  All accounts are smart accounts, supporting scripting, multiple keys, multi-signature transactions, and walletless onboarding with social logins.
 - **Gasless Transactions**: One of the three built-in [signer roles] for a Flow transaction is the _signer_.  In other words, having one account sign a transaction and another pay for that transaction is simple.
+- **Native Account Abstraction**: Flow has protocol-native [account abstraction].  All accounts are smart accounts, supporting scripting, multiple keys, multi-signature transactions, and walletless onboarding with social logins.
+- **Gasless Transactions**: One of the three built-in [signer roles] for a Flow transaction is the _signer_.  In other words, having one account sign a transaction and another pay for that transaction is simple.
 - **Resource-oriented programming:** Smart contracts on Flow are natively written in [Cadence], an easier and safer programming language for crypto assets and apps.
 - **Developer ergonomics:** This network is designed to maximize developer productivity. Examples range from upgradeable smart contracts and built-in logging support to the Flow Emulator.
 - **Consumer onboarding:** Flow was designed for mainstream consumers, with payment onramps catalyzing a safe and low-friction path from fiat to crypto.
