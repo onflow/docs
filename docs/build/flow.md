@@ -13,7 +13,7 @@ Flow is a fast, decentralized, and developer-friendly blockchain designed to be 
 ### Flow Blockchain
 
 - **Multi-role architecture:** Flow's [multi-role architecture] allows the network to [scale without sharding] to serve billions of users without reducing the decentralization of consensus.
-- **True Fast Finality**: For most other networks, it takes minutes, [a day], or even [a week] to reach hard finality - the point in which a transaction cannot be reversed.  On Flow, this [happens in 20 seconds], without compromising security.
+- **True Fast Finality**: For most other networks, it takes minutes, [a day], or even [a week] to reach hard finality - the point in which a transaction cannot be reversed.  On Flow, this [happens in well under 20 seconds], without compromising security.
 - **Native VRF**: Flow provides [onchain randomness] at the protocol level.  Instead of implementing complex setup and [paying $10+ USD per number], simply call the built-in function.
 - **EVM Equivalence**: The [Cadence] VM is powerful enough to allow other VMs to run inside of it, almost like a Docker Container.  The first one integrated in this way is [EVM], because of the comfort of many builders with Solidity and the EVM RPC API.
 
@@ -23,16 +23,17 @@ Flow is a fast, decentralized, and developer-friendly blockchain designed to be 
 - **Gasless Transactions**: One of the three built-in [signer roles] for a Flow transaction is the _signer_.  In other words, having one account sign a transaction and another pay for that transaction is simple.
 - **Native Account Abstraction**: Flow has protocol-native [account abstraction].  All accounts are smart accounts, supporting scripting, multiple keys, multi-signature transactions, and walletless onboarding with social logins.
 - **Gasless Transactions**: One of the three built-in [signer roles] for a Flow transaction is the _signer_.  In other words, having one account sign a transaction and another pay for that transaction is simple.
-- **Resource-oriented programming:** Smart contracts on Flow are natively written in [Cadence], an easier and safer programming language for crypto assets and apps.
+- **Security:** Smart contracts on Flow are natively written in [Cadence], an easier, safer, and more secure programming language for crypto assets and apps.  It's the first high-level, [resource-oriented] programming language.
 - **Developer ergonomics:** This network is designed to maximize developer productivity. Examples range from upgradeable smart contracts and built-in logging support to the Flow Emulator.
 - **Consumer onboarding:** Flow was designed for mainstream consumers, with payment onramps catalyzing a safe and low-friction path from fiat to crypto.
 
 ### Flow EVM
 
-- **Speed, Cost, and Compatibility**: Flow EVM can already run all of your audited Solidity contracts at less than 1 second, less than 1 cent per transaction (for transfers, etc.).
+- **Speed, Cost, and Compatibility**: Flow EVM can already run all of your audited Solidity contracts at [less than 1 second], less than 1 cent per transaction ([usually way less!]).  Unlike L2 solutions, Flow EVM reaches true finality in seconds - not in [a week]!
 - **Bridge from Other EVM Networks**: You can [bridge] hundreds of assets from dozens of chains to Flow.
 - **VM Token Bridge**: Assets can be bridged between Flow Cadence and Flow EVM easily with the VM token bridge.
 - **Access to Cadence**: You can access Cadence features and contracts from Flow EVM to take advantage of features such as native [VRF], higher computation for lower cost, and any asset on Cadence Flow.
+- **EVM Equivalence:** Flow EVM is truly _EVM Equivalent_, not just _EVM Compatible_.  It runs exactly the same as EVM mainnet, which means builders won't run into "minor" variances or endless "quirks" when they try to integrate.  If it works on Ethereum Mainnet, it will work with Flow EVM.
 
 :::tip
 
@@ -100,9 +101,12 @@ The [FLOW] token is the native currency for the Flow network. Developers and use
 [scale without sharding]: https://www.onflow.org/post/flow-blockchain-multi-node-architecture-advantages
 [a day]: https://docs.zksync.io/zk-stack/concepts/finality#finality-on-zksync-era
 [a week]: https://docs.optimism.io/stack/rollup/overview#fault-proofs
-[happens in 20 seconds]: ./basics/transactions#flow
+[less than 1 second]: https://evm.flowscan.io/stats
+[usually way less!]: https://evm.flowscan.io/stats
+[happens in well under 20 seconds]: ./basics/transactions#flow
 [signer roles]: ./basics/transactions#signer-roles
 [Cadence]: https://cadence-lang.org/
+[resource-oriented]: https://flow.com/post/resources-programming-ownership
 [EVM]: https://flow.com/upgrade/crescendo/evm
 [Guide for Solidity Developers]: https://cadence-lang.org/docs/solidity-to-cadence
 [account abstraction]: https://flow.com/account-abstraction
