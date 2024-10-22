@@ -29,10 +29,10 @@ Flow is a fast, decentralized, and developer-friendly blockchain designed to be 
 
 ### Flow EVM
 
-- **Speed, Cost, and Compatibility**: Flow EVM can **already** run all of your audited Solidity contracts at **less than 1 second, less than 1 cent per transaction** (for transfers, etc.).
+- **Speed, Cost, and Compatibility**: Flow EVM can already run all of your audited Solidity contracts at less than 1 second, less than 1 cent per transaction (for transfers, etc.).
 - **Bridge from Other EVM Networks**: You can [bridge] hundreds of assets from dozens of chains to Flow.
 - **VM Token Bridge**: Assets can be bridged between Flow Cadence and Flow EVM easily with the VM token bridge.
-- **Access to Cadence**: You can access Cadence features and contracts from Flow EVM to take advantage of features such as native VRF, higher computation for lower cost, and any asset on Cadence Flow.
+- **Access to Cadence**: You can access Cadence features and contracts from Flow EVM to take advantage of features such as native [VRF], higher computation for lower cost, and any asset on Cadence Flow.
 
 :::tip
 
@@ -54,7 +54,7 @@ To take advantage of the full power of Flow, you'll need to learn [Cadence].  Le
 
 If you're not ready to take the plunge and learn [Cadence], try out "EVM++" by deploying your existing [EVM] contracts.  You'll find that Flow EVM is faster and cheaper than nearly every other EVM solution - without compromising on security.
 
-Deploying on Flow EVM also gives your Solidity contracts access to Flow Cadence features, such as native [VRF].
+Deploying on Flow EVM also gives your Solidity contracts access to many Flow Cadence features, such as native [VRF].
 
 ### App Development Quickstart
 
@@ -90,26 +90,26 @@ The [FLOW] token is the native currency for the Flow network. Developers and use
 
 ### Tokenomics
 
-- To understand more about Flow's Token Economics, and the **FLOW token**, you can read the [Flow Token Economics] guide.
+- To understand more about Flow's Token Economics, and the FLOW token, read the [Flow Token Economics] guide.
 - FLOW tokens are Flow's native Fungible Token. To learn more about how to work with them in your applications, review the [FLOW] article.
 
 [digital assets]: https://www.onflow.org/post/flow-blockchain-cadence-programming-language-resources-assets
 [multi-role architecture]: https://www.onflow.org/primer
-[onchain randomness]: https://developers.flow.com/build/advanced-concepts/randomness
+[onchain randomness]: ./advanced-concepts/randomness
 [paying $10+ USD per number]: https://docs.chain.link/vrf/v2-5/billing
 [scale without sharding]: https://www.onflow.org/post/flow-blockchain-multi-node-architecture-advantages
 [a day]: https://docs.zksync.io/zk-stack/concepts/finality#finality-on-zksync-era
 [a week]: https://docs.optimism.io/stack/rollup/overview#fault-proofs
-[happens in 20 seconds]: https://developers.flow.com/build/basics/transactions#flow
-[signer roles]: https://developers.flow.com/build/basics/transactions#signer-roles
+[happens in 20 seconds]: ./basics/transactions#flow
+[signer roles]: ./basics/transactions#signer-roles
 [Cadence]: https://cadence-lang.org/
 [EVM]: https://flow.com/upgrade/crescendo/evm
 [Guide for Solidity Developers]: https://cadence-lang.org/docs/solidity-to-cadence
 [account abstraction]: https://flow.com/account-abstraction
-[bridge]: https://developers.flow.com/ecosystem/bridges
+[bridge]: ../ecosystem/bridges
 [Flow App Quickstart]: ./guides/flow-app-quickstart
-[core contracts]: ../build/core-contracts/index
-[FLOW]: ../build/core-contracts/03-flow-token
+[core contracts]: ./core-contracts
+[FLOW]: ./core-contracts/flow-token
 [Flow Technical Primer]: https://www.onflow.org/primer
 [Three technical whitepapers]: https://www.onflow.org/technical-paper
 [Flow Token Economics]: https://www.onflow.org/flow-token-economics
