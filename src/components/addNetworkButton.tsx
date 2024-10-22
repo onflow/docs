@@ -62,7 +62,7 @@ export const AddNetworkButton = (): JSX.Element => {
         method: 'wallet_addEthereumChain',
         params: [
           {
-            chainId: id.toString(16), // '0x2eb', // 747 in hexadecimal
+            chainId: `0x${id.toString(16)}`, // '0x2eb', // 747 in hexadecimal
             chainName: name,
             rpcUrls,
             iconUrls: [
@@ -72,7 +72,7 @@ export const AddNetworkButton = (): JSX.Element => {
               name: 'Flow',
               symbol: 'FLOW',
               decimals: 18,
-           },
+            },
             blockExplorerUrls,
           },
         ],
