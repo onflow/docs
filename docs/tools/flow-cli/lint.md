@@ -29,5 +29,5 @@ test.cdc:35:6: removal-hint: unnecessary force operator
 ```
 
 :::info
-The Cadence Linter is also available in the [Cadence VSCode extension](../vscode-extension/index.mdx), which provides real-time feedback as you write your code.
+The Cadence Linter is also available in the [Cadence VSCode extension](../vscode-extension/index.md), which provides real-time feedback as you write your code.
 :::
