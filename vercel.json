@@ -665,7 +665,7 @@
     },
     {
       "source": "/tooling/nft-catalog/(.*)",
-      "destination": "https://token-list.fixes.world/",
+      "destination": "https://github.com/fixes-world/token-list",
       "permanent": true
     },
     {
@@ -759,7 +759,7 @@
     },
     {
       "source": "/tools/nft-catalog/(.+)",
-      "destination": "https://token-list.fixes.world/",
+      "destination": "https://github.com/fixes-world/token-list",
       "permanent": true
     },
     {
@@ -1236,7 +1236,7 @@
     },
     {
       "source": "/tools/nft-catalog/(.*)",
-      "destination": "https://token-list.fixes.world/",
+      "destination": "https://github.com/fixes-world/token-list",
       "permanent": true
     }
   ]
