@@ -1,6 +1,5 @@
 ---
-slug: /evm/block-explorers
-redirect: /ecosystem/block-explorers
+redirect: /http-api
 title: Access HTTP API ↗️
 sidebar_position: 2
 ---
