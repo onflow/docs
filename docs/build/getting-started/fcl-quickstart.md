@@ -157,10 +157,12 @@ Run `npm start` again.  After a moment, the greeting from `HelloWorld` will appe
 
 For a deeper dive into writing an FCL app, such as how to change the chain state with FCL, check out [the app quickstart guide] or the [FCL documentation].
 
-[Flow Client Library]: ../../tools/clients/fcl-js
-[Cadence]: https://cadence-lang.org/
+<!-- Relative-style links.  Does not render on the page -->
+
+[Flow Client Library]: ../../tools/clients/fcl-js/index.md
+[Cadence]: https://cadence-lang.org
 [React]: https://react.dev/learn
-[Create React App]: https://create-react-app.dev/
+[Create React App]: https://create-react-app.dev
 [view the contract here]: https://f.dnz.dev/0xa1296b1e2e90ca5b/HelloWorld
-[the app quickstart guide]: ../guides/flow-app-quickstart
-[FCL documentation]: ../../tools/clients/fcl-js
+[the app quickstart guide]: ../guides/flow-app-quickstart.md
+[FCL documentation]: ../../tools/clients/fcl-js/index.md

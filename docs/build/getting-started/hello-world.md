@@ -101,5 +101,7 @@ By understanding the `HelloWorld` contract and how to interact with it, you're b
 
 Proceed to the next tutorial to learn how to create your own contracts and deploy them live using the Flow CLI.
 
+<!-- Relative-style links.  Does not render on the page -->
+
 [Cadence]: https://cadence-lang.org/
 [EVM]: https://flow.com/upgrade/crescendo/evm

@@ -241,14 +241,16 @@ If you want to continue on generating your own contracts, you can also use the t
 
 After that, it's easy to add your contract to your project configuration using the Flow CLI [`config` commands].
 
-[Flow Command Line Interface]: ../../tools/flow-cli
+<!-- Relative-style links.  Does not render on the page -->
+
+[Flow Command Line Interface]: ../../tools/flow-cli/index.md
 [Cadence]: https://cadence-lang.org/
-[configuration docs]: ../../tools/flow-cli/flow.json/configuration
+[configuration docs]: ../../tools/flow-cli/flow.json/configuration.md
 [homebrew]: https://brew.sh/
 [installation guide]: ../../tools/flow-cli/install
 [0xa1296b1e2e90ca5b]: https://contractbrowser.com/A.9dca641e9a4b691b.HelloWorld
 [Dependency Manager]: ../../tools/flow-cli/dependency-manager
-[basic scripts]: ../basics/scripts
-[basic transactions]: ../basics/transactions
-[`generate` documentation]: ../../tools/flow-cli/boilerplate
-[`config` commands]: https://developers.flow.com/tools/flow-cli/flow.json/manage-configuration
+[basic scripts]: ../basics/scripts.md
+[basic transactions]: ../basics/transactions.md
+[`generate` documentation]: ../../tools/flow-cli/boilerplate.md
+[`config` commands]: ../../tools/flow-cli/flow.json/manage-configuration.md

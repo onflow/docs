@@ -27,7 +27,7 @@ This natively enables interesting use cases, like key revocation, rotation, and 
 
 :::warning
 
-You must run an explicit account creation transaction on Flow to create a new account. [Flow CLI] can create an account on any network with a given public key.
+You must run an explicit account creation transaction on Flow to create a new account. [Flow CLI] can create an account on any network with a given public key.  Doing so requires a [very small fee] to be paid in FLOW.
 
 :::
 
@@ -67,7 +67,7 @@ Here are some additional resources that can help you get started with Cadence:
 
 ## Transactions and Scripts
 
-You can interact with the state on most other blockchains by cryptographically authorizing smart contract function calls. On Flow, transactions are more complex and are written with Cadence code. This means that any number of contracts and function calls can be composed together atomically to mutate the blockchain state.
+You can interact with the state on most other blockchains by cryptographically authorizing smart contract function calls. On Flow, transactions offer rich functionality through Cadence code. This allows you to seamlessly combine multiple contracts and function calls into a single transaction that updates the blockchain state - all executing together as one unified operation.
 
 Here is a sample transaction that mints an NFT from `ExampleNFT` contract on Testnet:
 
@@ -187,19 +187,22 @@ If you're already familiar with blockchain development, here's a comparison betw
   - [overflow](https://github.com/bjartek/overflow) for testing in Go.
   - [js-testing](https://github.com/onflow/flow-js-testing) for testing in JS.
 
+<!-- Relative-style links.  Does not render on the page -->
+
 [Why Flow]: ../flow.md
-[EVM]: ../../evm/about
-[accounts on Ethereum]: https://ethereum.org/en/developers/docs/accounts/
+[EVM]: ../../evm/about.md
+[accounts on Ethereum]: https://ethereum.org/en/developers/docs/accounts
 [Flow CLI]: ../../tools/flow-cli/accounts/create-accounts.md
+[very small fee]: ../basics/fees.md#fee-structure
 [Flow account model]: ../basics/accounts.md
 [Accounts]: ../basics/accounts.md
-[storage]: http://localhost:3000/build/basics/accounts#storage
+[storage]: ../basics/accounts.md#storage
 [Cadence]: https://cadence-lang.org/
 [Resources]: https://cadence-lang.org/docs/language/resources
 [Capability-based Security]: https://en.wikipedia.org/wiki/Capability-based_security
 [Entitlements]: https://cadence-lang.org/docs/1.0/language/access-control#entitlements
 [Capability-based Access Control]: https://cadence-lang.org/docs/language/capabilities
-[Guide for Solidity Developers](https://cadence-lang.org/docs/solidity-to-cadence)
+[Guide for Solidity Developers]: https://cadence-lang.org/docs/solidity-to-cadence
 [The Cadence tutorial]: https://cadence-lang.org/docs/tutorial/first-steps
 [transaction nonce]: https://ethereum.org/en/developers/docs/accounts/#an-account-examined
 [Transactions]: ../basics/transactions.md
