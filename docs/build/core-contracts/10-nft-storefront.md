@@ -74,7 +74,7 @@ The `NFTStorefrontV2` contract doesn’t support selling an NFT for multiple dif
 
 ![scenario_1](./scenario_1.png)
 
-Putting an NFT on sell called listing, seller can create a listing using [sell_item](https://github.com/onflow/nft-storefront/blob/main/transactions/sell_item.cdc) transaction by providing some required details to list an NFT, i.e. Receiving currency type, [Capability](https://cadence-lang.org/docs/language/capabilities) from where NFT will be deducted etc. If interested look [here](<#fun-createListing()>) for more details.
+Putting an NFT on sell called listing, seller can create a listing using [sell_item](https://github.com/onflow/nft-storefront/blob/main/transactions/sell_item.cdc) transaction by providing some required details to list an NFT, i.e. Receiving currency type, [Capability](https://cadence-lang.org/docs/language/capabilities) from where NFT will be deducted etc. If interested look [here](<#fun-createlisting>) for more details.
 
 To receive a different currency seller has to provide a different **Receiver currency type** , i.e. `salePaymentVaultType` As depicted in the above diagram, There are two listing formations with almost the same inputs. The only differentiator is the `salePaymentVaultType` parameter that needs to be different when creating duplicate NFT listings with different sale currency types.
 
@@ -82,7 +82,7 @@ To receive a different currency seller has to provide a different **Receiver cur
 
 Dapps can leverage the **NFTStorefrontV2** to facilitate the creation of a listing for the seller independent of any marketplace. Dapps or marketplaces can list those listings on their platforms, or seller can settle it p2p.
 
-The seller can use [sell_item](https://github.com/onflow/nft-storefront/blob/main/transactions/sell_item.cdc) transaction to create a p2p listing, providing the `marketplacesAddress` with an empty array. The seller has a choice of providing [commission](#commission) to the facilitator of sale, which can also act as a discount if the facilitator and the purchaser are the same.
+The seller can use [sell_item](https://github.com/onflow/nft-storefront/blob/main/transactions/sell_item.cdc) transaction to create a p2p listing, providing the `marketplacesAddress` with an empty array. The seller has a choice of providing [commission](#enabling-marketplace-commissions-for-nft-sales) to the facilitator of sale, which can also act as a discount if the facilitator and the purchaser are the same.
 
 ### **Scenario 3:** The seller wants to list its NFT in different marketplaces.
 
@@ -179,7 +179,7 @@ An interface providing a useful public interface to a Listing.
 
 ### Functions
 
-**fun `borrowNFT()`**
+#### **fun `borrowNFT()`**
 
 ```cadence
 fun borrowNFT(): &NonFungibleToken.NFT?
@@ -190,7 +190,7 @@ if the NFT is absent, for example if it has been sold via another listing.
 
 ---
 
-**fun `purchase()`**
+#### **fun `purchase()`**
 
 ```cadence
 fun purchase(payment FungibleToken.Vault, commissionRecipient Capability<&{FungibleToken.Receiver}>?): NonFungibleToken.NFT
@@ -202,7 +202,7 @@ Respective saleCuts are transferred to beneficiaries and funtion return underlyi
 
 ---
 
-**fun `getDetails()`**
+#### **fun `getDetails()`**
 
 ```cadence
 fun getDetails(): ListingDetails
@@ -212,7 +212,7 @@ Fetches the details of the listings
 
 ---
 
-**fun `getAllowedCommissionReceivers()`**
+#### **fun `getAllowedCommissionReceivers()`**
 
 ```cadence
 fun getAllowedCommissionReceivers(): [Capability<&{FungibleToken.Receiver}>]?
@@ -262,7 +262,7 @@ fun init()
 
 ### Functions
 
-**fun `createListing()`**
+#### **fun `createListing()`**
 
 ```cadence
 fun createListing(nftProviderCapability Capability<&{NonFungibleToken.Provider, NonFungibleToken.CollectionPublic}>, nftType Type, nftID UInt64, salePaymentVaultType Type, saleCuts [SaleCut], marketplacesCapability [Capability<&{FungibleToken.Receiver}>]?, customID String?, commissionAmount UFix64, expiry UInt64): UInt64
@@ -273,7 +273,7 @@ Create and publish a Listing for an NFT.
 
 ---
 
-**fun `removeListing()`**
+#### **fun `removeListing()`**
 
 ```cadence
 fun removeListing(listingResourceID UInt64)
@@ -284,7 +284,7 @@ Remove a Listing that has not yet been purchased from the collection and destroy
 
 ---
 
-**fun `getListingIDs()`**
+#### **fun `getListingIDs()`**
 
 ```cadence
 fun getListingIDs(): [UInt64]
@@ -295,7 +295,7 @@ Returns an array of the Listing resource IDs that are in the collection
 
 ---
 
-**fun `getDuplicateListingIDs()`**
+#### **fun `getDuplicateListingIDs()`**
 
 ```cadence
 fun getDuplicateListingIDs(nftType Type, nftID UInt64, listingID UInt64): [UInt64]
@@ -306,7 +306,7 @@ Returns an array of listing IDs that are duplicates of the given `nftType` and `
 
 ---
 
-**fun `cleanupExpiredListings()`**
+#### **fun `cleanupExpiredListings()`**
 
 ```cadence
 fun cleanupExpiredListings(fromIndex UInt64, toIndex UInt64)
@@ -317,7 +317,7 @@ Cleanup the expired listing by iterating over the provided range of indexes.
 
 ---
 
-**fun `borrowListing()`**
+#### **fun `borrowListing()`**
 
 ```cadence
 fun borrowListing(listingResourceID: UInt64): &{ListingPublic}?
@@ -347,7 +347,7 @@ in a Storefront.
 
 ### Functions
 
-**fun `getListingIDs()`**
+#### **fun `getListingIDs()`**
 
 ```cadence
 fun getListingIDs(): [UInt64]
@@ -357,7 +357,7 @@ getListingIDs Returns an array of the Listing resource IDs that are in the colle
 
 ---
 
-**fun `getDuplicateListingIDs()`**
+#### **fun `getDuplicateListingIDs()`**
 
 ```cadence
 fun getDuplicateListingIDs(nftType Type, nftID UInt64, listingID UInt64): [UInt64]
@@ -367,7 +367,7 @@ getDuplicateListingIDs Returns an array of listing IDs that are duplicates of th
 
 ---
 
-**fun `borrowListing()`**
+#### **fun `borrowListing()`**
 
 ```cadence
 fun borrowListing(listingResourceID UInt64): &Listing{ListingPublic}?
@@ -377,7 +377,7 @@ borrowListing Returns a read-only view of the listing for the given listingID if
 
 ---
 
-**fun `cleanupExpiredListings()`**
+#### **fun `cleanupExpiredListings()`**
 
 ```cadence
 fun cleanupExpiredListings(fromIndex UInt64, toIndex UInt64)
@@ -387,7 +387,7 @@ cleanupExpiredListings Cleanup the expired listing by iterating over the provide
 
 ---
 
-**fun `cleanupPurchasedListings()`**
+#### **fun `cleanupPurchasedListings()`**
 
 ```cadence
 fun cleanupPurchasedListings(listingResourceID: UInt64)
@@ -398,7 +398,7 @@ Allows anyone to remove already purchased listings.
 
 ---
 
-**fun `getExistingListingIDs()`**
+#### **fun `getExistingListingIDs()`**
 
 ```cadence
 fun getExistingListingIDs(nftType Type, nftID UInt64): [UInt64]

@@ -20,7 +20,7 @@ to be above the minimum requirement and have been selected to participate in the
 This means that new access nodes that have not been selected with the random slot selection algorithm
 will not be included in this list.
 
-You can use the **Get Proposed Table**([SC.05](../../build/core-contracts/06-staking-contract-reference.md#getting-staking-info)) script for retrieving this info.
+You can use the **Get Proposed Table**([SC.05](../../build/core-contracts/06-staking-contract-reference.md#getting-staking-info-with-scripts)) script for retrieving this info.
 
 This script requires no arguments.
 
@@ -30,7 +30,7 @@ This script requires no arguments.
 Returns an array of nodeIDs that are currently staked.
 Staked nodes are nodes that are staked and participating in the current epoch.
 
-You can use the **Get Current Table**([SC.04](../../build/core-contracts/06-staking-contract-reference.md#getting-staking-info)) script for retrieving this info.
+You can use the **Get Current Table**([SC.04](../../build/core-contracts/06-staking-contract-reference.md#getting-staking-info-with-scripts)) script for retrieving this info.
 
 This script requires no arguments.
 
@@ -50,7 +50,7 @@ This script requires no arguments.
 associated with the specified node ID. You can see the `NodeInfo` definition in the [FlowIDTableStaking
 smart contract.](https://github.com/onflow/flow-core-contracts/blob/master/contracts/FlowIDTableStaking.cdc#L254)
 
-You can use the **Get Node Info**([SC.08](../../build/core-contracts/06-staking-contract-reference.md#getting-staking-info)) script
+You can use the **Get Node Info**([SC.08](../../build/core-contracts/06-staking-contract-reference.md#getting-staking-info-with-scripts)) script
 with the following arguments:
 
 | Argument   | Type     | Description                            |
@@ -69,7 +69,7 @@ with the following arguments:
 `FlowIDTableStaking.NodeInfo(_ nodeID: String).totalCommittedWithDelegators()`: Returns the total committed balance for a node,
 which is their total tokens staked + committed, plus all of the staked + committed tokens of all their delegators.
 
-You can use the **Get Node Total Commitment**([SC.09](../../build/core-contracts/06-staking-contract-reference.md#getting-staking-info)) script
+You can use the **Get Node Total Commitment**([SC.09](../../build/core-contracts/06-staking-contract-reference.md#getting-staking-info-with-scripts)) script
 with the following argument:
 
 | Argument   | Type     | Description                            |
@@ -81,7 +81,7 @@ with the following argument:
 `FlowIDTableStaking.NodeInfo(_ nodeID: String).totalCommittedWithoutDelegators()`: Returns the total committed balance for a node,
 which is their total tokens staked + committed, plus all of the staked + committed tokens of all their delegators.
 
-You can use the **Get Only Node Total Commitment**([SC.11](../../build/core-contracts/06-staking-contract-reference.md#getting-staking-info)) script
+You can use the **Get Only Node Total Commitment**([SC.11](../../build/core-contracts/06-staking-contract-reference.md#getting-staking-info-with-scripts)) script
 with the following argument:
 
 | Argument   | Type     | Description                            |
@@ -94,7 +94,7 @@ with the following argument:
 associated with the specified node ID and delegator ID. You can see the `DelegatorInfo` definition in the [FlowIDTableStaking
 smart contract.](https://github.com/onflow/flow-core-contracts/blob/master/contracts/FlowIDTableStaking.cdc#L375)
 
-You can use the **Get Delegator Info**([SC.10](../../build/core-contracts/06-staking-contract-reference.md#getting-staking-info))
+You can use the **Get Delegator Info**([SC.10](../../build/core-contracts/06-staking-contract-reference.md#getting-staking-info-with-scripts))
 script with the following arguments:
 
 | Argument        | Type     | Description                                  |
@@ -113,7 +113,7 @@ with the following arguments:
 
 `FlowIDTableStaking.getRewardCutPercentage(): UFix64`: Returns a `UFix64` number for the cut of delegator rewards that each node operator takes.
 
-You can use the **Get Cut Percentage**([SC.01](../../build/core-contracts/06-staking-contract-reference.md#getting-staking-info)) script to retrieve this info.
+You can use the **Get Cut Percentage**([SC.01](../../build/core-contracts/06-staking-contract-reference.md#getting-staking-info-with-scripts)) script to retrieve this info.
 
 This script requires no arguments.
 
@@ -122,7 +122,7 @@ This script requires no arguments.
 `FlowIDTableStaking.getMinimumStakeRequirements(): {UInt8: UFix64}`: Returns a mapping
 for the stake requirements for each node type.
 
-You can use the **Get stake requirements**([SC.02](../../build/core-contracts/06-staking-contract-reference.md#getting-staking-info)) script to retrieve this info.
+You can use the **Get stake requirements**([SC.02](../../build/core-contracts/06-staking-contract-reference.md#getting-staking-info-with-scripts)) script to retrieve this info.
 
 This script requires no arguments.
 
@@ -130,19 +130,19 @@ This script requires no arguments.
 
 `FlowIDTableStaking.getEpochTokenPayout(): UFix64`: Returns a `UFix64` value for the total number of FLOW paid out each epoch (week).
 
-You can use the **Get weekly payout**([SC.03](../../build/core-contracts/06-staking-contract-reference.md#getting-staking-info)) script to retrieve this info.
+You can use the **Get weekly payout**([SC.03](../../build/core-contracts/06-staking-contract-reference.md#getting-staking-info-with-scripts)) script to retrieve this info.
 
 This script requires no arguments.
 
 ## Get the total FLOW staked:
 
-You can use the **Get total FLOW staked**([SC.06](../../build/core-contracts/06-staking-contract-reference.md#getting-staking-info)) script to retrieve this info.
+You can use the **Get total FLOW staked**([SC.06](../../build/core-contracts/06-staking-contract-reference.md#getting-staking-info-with-scripts)) script to retrieve this info.
 
 This script requires no arguments.
 
 ## Get the total FLOW staked by all the nodes of a single node role:
 
-You can use the **Get total FLOW staked by node type**([SC.07](../../build/core-contracts/06-staking-contract-reference.md#getting-staking-info)) script
+You can use the **Get total FLOW staked by node type**([SC.07](../../build/core-contracts/06-staking-contract-reference.md#getting-staking-info-with-scripts)) script
 with the following arguments:
 
 | Argument     | Type    | Description                     |
