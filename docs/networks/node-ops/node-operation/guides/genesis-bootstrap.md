@@ -20,7 +20,7 @@ The Flow consensus algorithm depends on there always being a previous block, whi
 The bootstrapping process will be in 2 phases, with the Flow team signing the Genesis block between the two.
 
 <Admonition type="info" title="Understanding Keys">
-  The bootstrapping process deals with a number of different keys. Make sure you understand their usage and terminology by reviewing the [Node Keys Guide](../node-bootstrap.md#generating-your-node-keys).
+  The bootstrapping process deals with a number of different keys. Make sure you understand their usage and terminology by reviewing the [Node Keys Guide](../node-bootstrap.md#generate-your-node-keys).
 </Admonition>
 
 ## Download the Bootstrapping Toolkit
