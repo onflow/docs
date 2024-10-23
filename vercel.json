@@ -665,7 +665,7 @@
     },
     {
       "source": "/tooling/nft-catalog/(.*)",
-      "destination": "/tools/nft-catalog/",
+      "destination": "https://token-list.fixes.world/",
       "permanent": true
     },
     {
@@ -759,7 +759,7 @@
     },
     {
       "source": "/tools/nft-catalog/(.+)",
-      "destination": "/tools/nft-catalog",
+      "destination": "https://token-list.fixes.world/",
       "permanent": true
     },
     {
@@ -1232,6 +1232,11 @@
     {
       "source": "/tools/clients/flow-go-sdk/error-codes",
       "destination": "/tools/error-codes",
+      "permanent": true
+    },
+    {
+      "source": "/tools/nft-catalog/(.*)",
+      "destination": "https://token-list.fixes.world/",
       "permanent": true
     }
   ]
