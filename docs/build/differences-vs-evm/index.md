@@ -171,4 +171,3 @@ If you’re already familiar with blockchain development, here's a comparison be
 - [Testing Smart Contracts](https://ethereum.org/en/developers/docs/smart-contracts/testing/)
   - [Cadence testing framework](https://cadence-lang.org/docs/testing-framework) enables native tests in Cadence.
   - [overflow](https://github.com/bjartek/overflow) for testing in Go.
-  - [js-testing](https://github.com/onflow/flow-js-testing) for testing in JS.

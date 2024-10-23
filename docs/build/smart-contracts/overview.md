@@ -26,7 +26,6 @@ To build confidently, you will want to set up the appropriate local environment 
 - [Flow Emulator](../../tools/emulator/index.md): A lightweight server that simulates the Flow blockchain (strongly recommended during development).
 - [Flow Dev Wallet](https://github.com/onflow/fcl-dev-wallet/): A utility to simulate user wallets in development.
 - [Visual Studio Code Extension](../../tools/vscode-extension/index.mdx): An IDE integration for developing smart contracts.
-- [JS Testing Framework](https://github.com/onflow/flow-js-testing): A framework to test your smart contracts.
 
 ## Storing Data on Flow
 
