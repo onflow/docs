@@ -7,7 +7,7 @@ sidebar_label: Non-Fungible Token
 The `NonFungibleToken` contract interface implements the Fungible Token Standard.
 All NFT contracts are encouraged to import and implement this standard.
 
-- [Basic Non-Fungible Token Tutorial](https://cadence-lang.org/docs/1.0/tutorial/non-fungible-tokens-1)
+- [Basic Non-Fungible Token Tutorial](https://cadence-lang.org/docs/tutorial/non-fungible-tokens-1)
 - [Non Fungible Token Guide](../guides/nft.md)
 - [Non Fungible Token Standard Repo](https://github.com/onflow/flow-nft)
 
