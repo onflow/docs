@@ -50,13 +50,11 @@ Let's break down what this script does:
 - **Return Statement**: `return HelloWorld.greeting` accesses the greeting variable from the `HelloWorld` contract and returns its value.
 
 ### Steps to Execute the Script
- 
- - **Open the Flow Runner**: Click the <VerticalSplit /> icon to orient the Flow Runner editor vertically. The Flow Runner is an online tool that allows you to write and execute Cadence scripts directly in your browser.
-- **Copy the Script**: Copy the script above into the Flow Runner's input area.
+
 - **Run the Script**: Click the Run button to execute the script.
 - **View the Output**: Observe the output returned by the script. You should see the current value of the `greeting` variable, which is `"Hello, World!"`.
 
-<iframe sandbox className="flow-runner-iframe" src="https://run.dnz.dev?colormode=dark&output=horizontal&outputSize=200" width="100%" height="400px"></iframe>
+<iframe sandbox className="flow-runner-iframe" src="https://run.dnz.dev/snippet/2b3ec75d38d01dfa?colormode=dark&output=horizontal&outputSize=400" width="100%" height="400px"></iframe>
 
 ## Understanding the `HelloWorld` Contract
 
