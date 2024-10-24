@@ -14,7 +14,7 @@ const homepageData: Record<string, HomepageStartItemProps> = {
     icon: 'cadence-course',
   },
   'beginner-dapp': {
-    link: '/build/getting-started/quickstarts/hello-world',
+    link: '/build/getting-started/hello-world',
     icon: 'start-here',
   },
   'flow-quest': {

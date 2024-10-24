@@ -199,7 +199,7 @@ flow.AccountContractRemoved
 
 ### Scripts
 
-Scripts are cadence code that you write and are executed on the blockchain. They can contain arguments and return values, and can interact with Smart Contracts. Scripts are read-only - they cannot mutate anything on the blockchain. Anything held in local memory is discarded when the script finishes execution. For more information on programming see [Cadence](../../../../build/smart-contracts/cadence.md).
+Scripts are cadence code that you write and are executed on the blockchain. They can contain arguments and return values, and can interact with Smart Contracts. Scripts are read-only - they cannot mutate anything on the blockchain. Anything held in local memory is discarded when the script finishes execution. For more information on programming see [Cadence](https://cadence-lang.org/docs).
 
 **Execute Simple Script At Latest Block**
 
@@ -257,7 +257,7 @@ For more information about Transactions, see [cadence/language/transactions](htt
 
 For more information about Transaction signing, see [concepts/transaction-signing](../../../../build/basics/transactions.md#signing-a-transaction).
 
-For more information about Cadence programming, see [cadence](../../../../build/smart-contracts/cadence.md).
+For more information about Cadence programming, see [Cadence](https://cadence-lang.org/docs).
 
 **Signing In**
 

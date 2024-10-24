@@ -31,7 +31,7 @@ The [Flow App Quickstart](./guides/flow-app-quickstart.md) covers the Flow core 
 
 ## Core Contracts
 
-The Flow blockchain implements core functionality using its own smart contract language, [Cadence](https://cadence-lang.org/docs/language/). The core functionality is split into a set of contracts, so-called [core contracts](../build/core-contracts/index.md):
+The Flow blockchain implements core functionality using its own smart contract language, [Cadence](https://cadence-lang.org/docs/language). The core functionality is split into a set of contracts, so-called [core contracts](../build/core-contracts):
 
 - **Fungible Token:** The FungibleToken contract implements the Fungible Token Standard. It is the second contract ever deployed on Flow.
 - **Flow Token:** The FlowToken contract defines the FLOW network token.
@@ -42,7 +42,7 @@ The Flow blockchain implements core functionality using its own smart contract l
 
 ## FLOW Token
 
-The [FLOW](../build/core-contracts/03-flow-token.md) token is the native currency for the Flow network. Developers and users can use FLOW to transact on the network. Developers can integrate FLOW directly into their apps for peer-to-peer payments, service charges, or consumer rewards. FLOW can be held, transferred, or transacted peer-to-peer.
+The [FLOW](../build/core-contracts/flow-token) token is the native currency for the Flow network. Developers and users can use FLOW to transact on the network. Developers can integrate FLOW directly into their apps for peer-to-peer payments, service charges, or consumer rewards. FLOW can be held, transferred, or transacted peer-to-peer.
 
 ## Technical Background
 
@@ -52,7 +52,7 @@ The [FLOW](../build/core-contracts/03-flow-token.md) token is the native currenc
 ## Tokenomics
 
 - To understand more about Flow's Token Economics, and the **FLOW token**, you can read the [Flow Token Economics](https://www.onflow.org/flow-token-economics) guide.
-- FLOW tokens are Flow's native Fungible Token. To learn more about how to work with them in your applications, go [here](../build/core-contracts/03-flow-token.md).
+- FLOW tokens are Flow's native Fungible Token. To learn more about how to work with them in your applications, go [here](../build/core-contracts/flow-token).
 
 ## More Concepts
 
