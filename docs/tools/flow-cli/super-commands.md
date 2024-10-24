@@ -7,7 +7,9 @@ sidebar_position: 2
 Flow CLI Super commands are set of commands that can be used during development of your dApp to greatly simplify the workflow. The result is you can focus on writing the contracts and the commands will take care of the rest. 
 
 ## Init
-The initial command to start your new Flow project is `flow init`. It will ask you a few questions about how you'd like to configure your project and then create the necessary files and folders, setup the configuration file, and install any core contracts dependencies you might need.
+The initial command to start your new Flow project is flow init. It will ask you a few questions about how you'd like to configure your project and then create the necessary files and folders, set up the configuration file, and install any core contract dependencies you might need.
+
+During the initialization process, `flow init` will prompt you if you want to install any core smart contracts (e.g. `NonFungibleToken`) and set them up in your project. If you choose to install core contracts, the CLI will use the [Dependency Manager](dependency-manager.md) under the hood to automatically install any required smart contract dependencies.
 
 > Note: If you just want the `flow.json` configured without creating any folders or files, you can run `flow init --config-only`.
 
