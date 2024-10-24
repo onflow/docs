@@ -6,7 +6,7 @@ sidebar_position: 3
 
 This is an opinionated list of best practices Cadence developers should follow to write more secure Cadence code.
 
-Some practices listed below might overlap with advice in the [Cadence Anti-Patterns](https://cadence-lang.org/docs/1.0/design-patterns) section, which is a recommended read as well.
+Some practices listed below might overlap with advice in the [Cadence Anti-Patterns](https://cadence-lang.org/docs/design-patterns) section, which is a recommended read as well.
 
 ## References
 
@@ -31,7 +31,7 @@ Always [borrow](https://cadence-lang.org/docs/language/capabilities) with the sp
 
 Access to an `&Account` gives access to whatever is specified in the account entitlements
 list when that account reference is created.
-Therefore, [avoid using Account references](https://cadence-lang.org/docs/1.0/anti-patterns#avoid-using-authaccount-as-a-function-parameter) as a function parameter or field unless absolutely necessary and only use the minimal set of entitlements required
+Therefore, [avoid using Account references](https://cadence-lang.org/docs/anti-patterns#avoid-using-authaccount-as-a-function-parameter) as a function parameter or field unless absolutely necessary and only use the minimal set of entitlements required
 for the specified functionality so that other account functionality cannot be accessed.
 
 It is preferable to use capabilities over direct `&Account` references when exposing account data. Using capabilities allows the revocation of access by unlinking and limits the access to a single value with a certain set of functionality.

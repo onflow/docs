@@ -200,7 +200,7 @@ If you're already familiar with blockchain development, here's a comparison betw
 [Cadence]: https://cadence-lang.org/
 [Resources]: https://cadence-lang.org/docs/language/resources
 [Capability-based Security]: https://en.wikipedia.org/wiki/Capability-based_security
-[Entitlements]: https://cadence-lang.org/docs/1.0/language/access-control#entitlements
+[Entitlements]: https://cadence-lang.org/docs/language/access-control#entitlements
 [Capability-based Access Control]: https://cadence-lang.org/docs/language/capabilities
 [Guide for Solidity Developers]: https://cadence-lang.org/docs/solidity-to-cadence
 [The Cadence tutorial]: https://cadence-lang.org/docs/tutorial/first-steps

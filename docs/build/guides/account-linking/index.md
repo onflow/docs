@@ -11,7 +11,7 @@ order to understand how we can achieve that we must first understand how account
 Accounts on flow can be accessed in Cadence through two types, `PublicAccount` and `Account`. As the name implies the
 `PublicAccount` type gives access to all public account information such as address, balance, storage capacity, etc.,
 but doesn't allow changes to the account. The `Account` type (or more specifically, an
-[entitled](https://cadence-lang.org/docs/1.0/language/access-control#entitlements) `&Account`) allows the same access as
+[entitled](https://cadence-lang.org/docs/language/access-control#entitlements) `&Account`) allows the same access as
 `PublicAccount` but also allows changes to the account, including adding/revoking account keys, managing the deployed
 contracts, as well as linking and publishing Capabilities.
 
