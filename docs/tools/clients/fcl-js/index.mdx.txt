@@ -7,7 +7,7 @@
     <a href="https://github.com/onflow/fcl-js"><strong>View on Github»</strong></a>
     <br />
     <br />
-    <a href="../../../build/guides/flow-app-quickstart">Quickstart</a>
+    <a href="../../../build/getting-started/fcl-quickstart">Quickstart</a>
     ·
     <a href="https://github.com/onflow/fcl-js/issues">Report Bug</a>
     ·
@@ -128,7 +128,7 @@ const txId = await fcl.mutate({
 
 ## Next Steps
 
-See the [Flow App Quick Start](../../guides/flow-app-quickstart.mdx).
+See the [Flow App Quick Start](../../getting-started/fcl-quickstart.mdx).
 
 See the full [API Reference](./api.md) for all FCL functionality.
 

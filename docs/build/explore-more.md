@@ -16,7 +16,7 @@ Below are some additional tutorials to help you get started with Flow:
   {
     type: 'link',
     label: 'Flow App Quickstart',
-    href: '/build/guides/flow-app-quickstart',
+    href: '/build/getting-started/fcl-quickstart',
     description: 'Simple walkthrough building a web3 app using the Flow Client Library (FCL)',
     customProps: {
       icon: <FontAwesomeIcon icon={faWindowMaximize} className="h-16" />,
@@ -58,7 +58,7 @@ Below are some additional tutorials to help you get started with Flow:
   {
     type: 'link',
     label: 'Walkthrough Guides',
-    href: '/build/guides/flow-app-quickstart',
+    href: '/build/getting-started/fcl-quickstart',
     description: 'Longer form guides to help you get started with Flow',
     customProps: {
       icon: <FontAwesomeIcon icon={faBook} className="h-16" />,
