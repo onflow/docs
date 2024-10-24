@@ -108,7 +108,7 @@ Examples:
 
 ## Go SDK
 
-[Flow Go SDK](./flow-go-sdk/index.mdx) provides a set of packages for Go developers to build applications that interact with the Flow network.
+[Flow Go SDK](./flow-go-sdk/index.md) provides a set of packages for Go developers to build applications that interact with the Flow network.
 
 ## JavaScript (FCL)
 
@@ -119,7 +119,7 @@ Examples:
 ```
 
 
-```markdown index.mdx
+```markdown index.md
 ---
 sidebar_position: 1
 title: Tools

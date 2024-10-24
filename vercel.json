@@ -185,7 +185,6 @@
     {
       "source": "/access-api",
       "destination": "/networks/node-ops/access-onchain-data/access-nodes/accessing-data/access-api",
-
       "permanent": true
     },
     {
@@ -270,7 +269,7 @@
     },
     {
       "source": "/tooling/fcl-js/tutorials/:path*",
-      "destination": "/build/getting-started/quickstarts/fcl-quickstart",
+      "destination": "/build/getting-started/fcl-quickstart",
       "permanent": true
     },
     {
@@ -1237,6 +1236,26 @@
     {
       "source": "/tools/clients/flow-go-sdk/error-codes",
       "destination": "/tools/error-codes",
+      "permanent": true
+    },
+    {
+      "source": "/build/getting-started/quickstarts/hello-world",
+      "destination": "/build/getting-started/hello-world",
+      "permanent": true
+    },
+    {
+      "source": "/build/getting-started/quickstarts/flow-cli",
+      "destination": "/build/getting-started/flow-cli",
+      "permanent": true
+    },
+    {
+      "source": "/build/getting-started/quickstarts/fcl-quickstart",
+      "destination": "/build/getting-started/fcl-quickstart",
+      "permanent": true
+    },
+    {
+      "source": "build/smart-contracts/cadence",
+      "destination": "https://cadence-lang.org/docs/",
       "permanent": true
     }
   ]

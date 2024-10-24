@@ -23,7 +23,7 @@ Anyone can deploy and update contracts on mainnet. Audits are encouraged but not
 </Callout>
 
 ### Create and deploy a mainnet project
-The tool of choice is Flow CLI, there are quickstarts and guides that use Flow CLI, [Getting Started](../getting-started/quickstarts/flow-cli)
+The tool of choice is Flow CLI, there are quickstarts and guides that use Flow CLI, [Getting Started](../getting-started/flow-cli)
 - It is highly encouraged to test your contracts, transactions and scripts on Testnet, have strong smart contract test coverage and follow any additional guidelines set out here: [Smart Contract Testing Guidelines](./testing.md). 
 - Follow the Flow CLI instructions to [Create a Project](../../tools/flow-cli/index.md). You have the Flow CLI installed and ran `flow init` or `flow setup` in your project folder and generating a `flow.json` file
 - Mainnet account: You completed the mainnet account setup, (see above) and have your key pair and mainnet address ready.
