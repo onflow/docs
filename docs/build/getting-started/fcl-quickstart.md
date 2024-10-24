@@ -509,5 +509,4 @@ Now, run your app with `npm start` and open it in your browser.
 [React]: https://react.dev/learn
 [Create React App]: https://create-react-app.dev
 [view the contract here]: https://f.dnz.dev/0xa1296b1e2e90ca5b/HelloWorld
-[the app quickstart guide]: ../guides/flow-app-quickstart.md
 [FCL documentation]: ../../tools/clients/fcl-js/index.md

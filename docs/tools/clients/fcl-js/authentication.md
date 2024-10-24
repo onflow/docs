@@ -42,6 +42,6 @@ The TL;DR is to call `fcl.authenticate()` and `fcl.unauthenticate()` respectivel
 On Flow mainnet, you wont even need to configure anything for this to work, the users of your dapp will go through the authentication process and be able to use any FCL compatible wallet providers.
 
 During development you will probably want to configure your dapp to use [`@onflow/dev-wallet`](https://github.com/onflow/fcl-dev-wallet).
-The [Quick Start](../../../build/guides/flow-app-quickstart.md) guide will walk you through using it.
+The [Quick Start](../../../build/getting-started/fcl-quickstart.md) guide will walk you through using it.
 
 We know this can all be fairly overwhelming, we are committed to help though. If you run into any problems, reach out to us on [Discord](https://discord.gg/flow), we are more than happy to help out.
