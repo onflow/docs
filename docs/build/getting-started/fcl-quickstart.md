@@ -56,11 +56,11 @@ Now, let's run our app with the following `npm` command:
 npm start
 ```
 
-This will start the development server and open your app in the browser. You should see a page displaying `FCL App Quickstart`.
+This will start the development server and open your app in the browser. You will see a page displaying `FCL App Quickstart`.
 
 ## Setting Up FCL
 
-To interact with the Flow blockchain, we need to install the Flow Client Library (FCL). Stop the development server by pressing `Ctrl+C` in the terminal, and then run the following command to install FCL:
+To interact with the Flow blockchain, we need to install the [Flow Client Library] (FCL). Stop the development server by pressing `Ctrl+C` in the terminal, and then run the following command to install FCL:
 
 ```bash
 npm install @onflow/fcl --save
@@ -68,7 +68,7 @@ npm install @onflow/fcl --save
 
 This command installs FCL and adds it to your project's dependencies.
 
-Next, we'll configure FCL to connect to the Flow Testnet. An Access Node serves as the primary point of interaction for clients to communicate with the Flow network. It provides a gateway for submitting transactions, querying data, and retrieving information.
+Next, we'll configure FCL to connect to the [Flow Testnet](../../networks/flow-networks/accessing-testnet.md). An [Access Node](../../networks/node-ops/access-onchain-data/access-nodes/accessing-data/access-api.md) serves as the primary point of interaction for clients to communicate with the Flow network. It provides a gateway for submitting transactions, querying data, and retrieving information.
 
 In `src/App.js`, import FCL and add the configuration code:
 
