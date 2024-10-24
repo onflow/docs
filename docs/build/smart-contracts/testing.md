@@ -250,19 +250,13 @@ You can find examples of Go tests in the following projects: [flow-core-contract
 These tests are tied to the emulator but can be refactored to run on testnet
 </Callout>
 
-### JavaScript Tests
-
-Tests in JavaScript can be written using [flow-js-testing](https://github.com/onflow/flow-js-testing).
-
-It is critical to test your applications and contracts thoroughly on the testnet as part of your road to the mainnet. Testing will help you understand how to create stable and robust applications using the Flow development stack.
-
 ## Testing Your Application
 
 ### Automated Testing of Contract Code
 
 All contracts should include test coverage for _all contract functions_. Make sure you've accounted for success and failure cases appropriately.
 
-Tests should also be runnable in automated environments (CI). You can use the [JavaScript testing framework](https://github.com/onflow/flow-js-testing) to create tests for your smart contract code.
+Tests should also be runnable in automated environments (CI). You can use the [Cadence testing utils](https://cadence-lang.org/docs/testing-framework) to create tests for your smart contract code.
 
 ### Stress Testing Live Applications Before Mainnet
 

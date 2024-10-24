@@ -389,7 +389,7 @@
     },
     {
       "source": "/flow-js-testing/:path*",
-      "destination": "/tools/flow-js-testing/:path*",
+      "destination": "https://cadence-lang.org/docs/testing-framework",
       "permanent": true
     },
     {
@@ -659,7 +659,12 @@
     },
     {
       "source": "/tooling/flow-js-testing/:path*",
-      "destination": "/tools/flow-js-testing/:path*",
+      "destination": "https://cadence-lang.org/docs/testing-framework",
+      "permanent": true
+    },
+    {
+      "source": "/tools/flow-js-testing/:path*",
+      "destination": "https://cadence-lang.org/docs/testing-framework",
       "permanent": true
     },
     {
