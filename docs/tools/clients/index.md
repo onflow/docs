@@ -2,7 +2,7 @@
 
 ## Go SDK
 
-[Flow Go SDK](./flow-go-sdk/index.mdx) provides a set of packages for Go developers to build applications that interact with the Flow network.
+[Flow Go SDK](./flow-go-sdk/index.md) provides a set of packages for Go developers to build applications that interact with the Flow network.
 
 ## Python SDK
 

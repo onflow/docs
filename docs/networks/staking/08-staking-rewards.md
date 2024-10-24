@@ -78,7 +78,7 @@ Events Block #51753836:
 		- amount (UFix64): 17.31047712
 ```
 
-Example using [Flow Go SDK](../../tools/clients/flow-go-sdk/index.mdx)
+Example using [Flow Go SDK](../../tools/clients/flow-go-sdk/index.md)
 ```
 package main
 
@@ -196,7 +196,7 @@ Events:
    <clipped for brevity>
 ```
 
-Example using [Flow Go SDK](../../tools/clients/flow-go-sdk/index.mdx)
+Example using [Flow Go SDK](../../tools/clients/flow-go-sdk/index.md)
 ```
 package main
 

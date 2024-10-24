@@ -510,7 +510,7 @@ Executing a transaction requires couple of steps:
 
 A transaction is nothing more than a signed set of data that includes script code which are instructions on how to mutate the network state and properties that define and limit it's execution. All these properties are explained bellow.
 
-📖 **Script** field is the portion of the transaction that describes the state mutation logic. On Flow, transaction logic is written in [Cadence](../../../build/smart-contracts/cadence.md). Here is an example transaction script:
+📖 **Script** field is the portion of the transaction that describes the state mutation logic. On Flow, transaction logic is written in [Cadence](https://cadence-lang.org/docs). Here is an example transaction script:
 
 ```
 transaction(greeting: String) {
@@ -549,7 +549,7 @@ transaction {
 ```
 
 📖 **Gas limit** is the limit on the amount of computation a transaction requires, and it will abort if it exceeds its gas limit.
-Cadence uses metering to measure the number of operations per transaction. You can read more about it in the [Cadence documentation](../../../build/smart-contracts/cadence.md).
+Cadence uses metering to measure the number of operations per transaction. You can read more about it in the [Cadence documentation](https://cadence-lang.org/docs).
 
 The gas limit depends on the complexity of the transaction script. Until dedicated gas estimation tooling exists, it's best to use the emulator to test complex transactions and determine a safe limit.
 

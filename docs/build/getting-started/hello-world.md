@@ -1,10 +1,10 @@
 ---
 sidebar_position: 1
-sidebar_label: 1 - Smart Contract Basics
+sidebar_label: Hello World
 ---
 import VerticalSplit from "./vertical-split.svg"
 
-# Part 1 - Smart Contract Basics
+# Hello World
 
 In this quickstart guide, you'll interact with your first smart contract on the Flow Testnet. `Testnet` is a public instance of the Flow blockchain designed for experimentation, where you can deploy and invoke smart contracts without incurring any real-world costs.
 
@@ -22,11 +22,11 @@ After completing this guide, you'll be able to:
 
 In later steps, you'll learn how to:
 
-* Create a Flow project using the [Flow CLI](../../../tools/flow-cli).
-* Add an already-deployed contract to your project with the [Dependency Manager](../../../tools/flow-cli/dependency-manager.md).
-* Deploy a smart contract locally to the [Flow Emulator](../../../tools/emulator).
+* Create a Flow project using the [Flow CLI](../../tools/flow-cli/index.md).
+* Add an already-deployed contract to your project with the [Dependency Manager](../../tools/flow-cli/dependency-manager.md).
+* Deploy a smart contract locally to the [Flow Emulator](../../tools/emulator/index.md).
 * Write and execute transactions to interact with a deployed smart contract.
-* Display data from a Cadence smart contract on a React frontend using the [Flow Client Library](../../../tools/clients/fcl-js).
+* Display data from a Cadence smart contract on a React frontend using the [Flow Client Library](../../tools/clients/fcl-js/index.md).
 
 
 ## Calling a Contract With a Script
@@ -100,6 +100,8 @@ In the upcoming tutorials, you'll learn how to:
 By understanding the `HelloWorld` contract and how to interact with it, you're building a solid foundation for developing more complex applications on the Flow blockchain.
 
 Proceed to the next tutorial to learn how to create your own contracts and deploy them live using the Flow CLI.
+
+<!-- Relative-style links.  Does not render on the page -->
 
 [Cadence]: https://cadence-lang.org/
 [EVM]: https://flow.com/upgrade/crescendo/evm

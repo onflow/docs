@@ -29,7 +29,7 @@ FCL (aka Flow Client Library) wraps the logic needed to communicate with the Flo
 
 :::
 
-This guide assumes a good understanding of React. The concepts are easy to understand and apply to other libraries and framework. A strong understanding of Cadence (Flow's smart contract language) is not required. More information on Cadence, [learning the Cadence language](../smart-contracts/cadence.md).
+This guide assumes a good understanding of React. The concepts are easy to understand and apply to other libraries and framework. A strong understanding of Cadence (Flow's smart contract language) is not required. More information on Cadence, [learning the Cadence language](https://cadence-lang.org/docs/language/).
 
 ### FCL concepts covered:
 
