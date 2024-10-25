@@ -202,11 +202,11 @@ const config = {
         },
         ...(process.env.GA_TRACKING_ID
           ? {
-              gtag: {
-                trackingID: process.env.GA_TRACKING_ID,
-                anonymizeIP: true,
-              },
-            }
+            gtag: {
+              trackingID: process.env.GA_TRACKING_ID,
+              anonymizeIP: true,
+            },
+          }
           : {}),
       }),
     ],
@@ -261,7 +261,7 @@ const config = {
           {
             to: 'evm/about',
             position: 'left',
-            label: 'EVM',
+            label: 'Build With EVM',
             activeBasePath: '/evm',
           },
           {
@@ -304,7 +304,7 @@ const config = {
             items: [
               {
                 label: 'Getting Started',
-                to: '/build/getting-started/quickstarts/hello-world',
+                to: '/build/getting-started/hello-world',
               },
               {
                 label: "SDK's & Tools",

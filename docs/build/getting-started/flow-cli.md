@@ -1,9 +1,9 @@
 ---
 sidebar_position: 2
-sidebar_label: 2 - Local Development
+sidebar_label: Local Development
 ---
 
-# Hello World Part 2 - Local Development
+# Local Development
 
 The [Flow Command Line Interface] (CLI) is a set of tools that developers can use to interact with the Flow blockchain by managing accounts, sending transactions, deploying smart contracts, running the emulator, and more. This quickstart will get you familiar with its main concepts and functionality.
 
@@ -51,7 +51,7 @@ For additional details on how `flow.json` is configured, review the [configurati
 
 :::
 
-## Grabbing the HelloWorld Contract
+## Grabbing the `HelloWorld` Contract
 
 For this demo, we are going to be interacting with a simple `HelloWorld` contract, written in [Cadence], that is already deployed on Flow's `testnet` network on account [0xa1296b1e2e90ca5b]. In order to grab this project dependency, we'll use Flow's [Dependency Manager] to install it into our project using a source string that defines the network, address, and contract name of the contract we want to import.
 
@@ -241,14 +241,16 @@ If you want to continue on generating your own contracts, you can also use the t
 
 After that, it's easy to add your contract to your project configuration using the Flow CLI [`config` commands].
 
-[Flow Command Line Interface]: ../../../tools/flow-cli
+<!-- Relative-style links.  Does not render on the page -->
+
+[Flow Command Line Interface]: ../../tools/flow-cli/index.md
 [Cadence]: https://cadence-lang.org/
-[configuration docs]: ../../../tools/flow-cli/flow.json/configuration
+[configuration docs]: ../../tools/flow-cli/flow.json/configuration.md
 [homebrew]: https://brew.sh/
-[installation guide]: ../../../tools/flow-cli/install
+[installation guide]: ../../tools/flow-cli/install
 [0xa1296b1e2e90ca5b]: https://contractbrowser.com/A.9dca641e9a4b691b.HelloWorld
-[Dependency Manager]: ../../../tools/flow-cli/dependency-manager
-[basic scripts]: ../../basics/scripts
-[basic transactions]: ../../basics/transactions
-[`generate` documentation]: ../../../tools/flow-cli/boilerplate
-[`config` commands]: https://developers.flow.com/tools/flow-cli/flow.json/manage-configuration
+[Dependency Manager]: ../../tools/flow-cli/dependency-manager
+[basic scripts]: ../basics/scripts.md
+[basic transactions]: ../basics/transactions.md
+[`generate` documentation]: ../../tools/flow-cli/boilerplate.md
+[`config` commands]: ../../tools/flow-cli/flow.json/manage-configuration.md

@@ -73,7 +73,7 @@ There are multiple SDKs implementing the above APIs for different languages:
 
 [**Javascript SDK**](../../tools/clients/fcl-js/index.md)
 
-[**Go SDK**](../../tools/clients/flow-go-sdk/index.mdx)
+[**Go SDK**](../../tools/clients/flow-go-sdk/index.md)
 
 Find a list of all SDKs [here](../../tools/clients/index.md)
 
