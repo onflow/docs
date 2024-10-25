@@ -317,12 +317,15 @@ const sendTransaction = async () => {
       cadence: `
         import HelloWorld from 0xa1296b1e2e90ca5b
 
-        transaction(newGreeting: String) {
-          prepare(acct: AuthAccount) {}
-          execute {
-            HelloWorld.changeGreeting(newGreeting: newGreeting)
+        transaction(greeting: String) {
+            prepare(acct: &Account) {
+              log(acct.address)
+            }
+          
+            execute {
+              HelloWorld.changeGreeting(newGreeting: greeting)
+            }
           }
-        }
       `,
       args: (arg, t) => [arg(newGreeting, t.String)],
       proposer: fcl.currentUser,
@@ -431,10 +434,13 @@ function App() {
         cadence: `
           import HelloWorld from 0xa1296b1e2e90ca5b
 
-          transaction(newGreeting: String) {
-            prepare(acct: AuthAccount) {}
+          transaction(greeting: String) {
+            prepare(acct: &Account) {
+              log(acct.address)
+            }
+          
             execute {
-              HelloWorld.changeGreeting(newGreeting: newGreeting)
+              HelloWorld.changeGreeting(newGreeting: greeting)
             }
           }
         `,
