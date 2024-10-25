@@ -218,6 +218,12 @@ Now, run `npm start` again. After a moment, the greeting from the `HelloWorld` c
 
 Now that we've successfully read data from the Flow blockchain, let's modify the state by changing the `greeting` in the `HelloWorld` contract. To do this, we'll need to send a transaction to the blockchain, which requires user authentication through a wallet.
 
+### Creating a Flow Wallet and Funding Your Testnet Account
+
+Before sending transactions, you need a Flow wallet to authenticate and interact with the blockchain. You can create a wallet by visiting the [Flow Wallet](https://wallet.flow.com/) website. Follow the on-screen instructions to set up your wallet.
+
+Once you have a wallet, make sure that your account has enough FLOW tokens to cover transaction fees on the Flow Testnet. You can fund your testnet account using the [Flow Testnet Faucet](https://faucet.flow.com/fund-account). Simply enter your account address and submit to receive testnet FLOW tokens.
+
 ### Setting Up Wallet Authentication with Discovery
 
 Before we can send a transaction, we need to set up wallet authentication. We'll use FCL's Discovery UI to allow users to connect their wallet with minimal setup.
