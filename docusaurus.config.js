@@ -261,7 +261,7 @@ const config = {
           {
             to: 'evm/about',
             position: 'left',
-            label: 'Build with EVM',
+            label: 'Build With EVM',
             activeBasePath: '/evm',
           },
           {
