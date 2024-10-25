@@ -133,7 +133,8 @@ const queryGreeting = async () => {
     cadence: `
       import HelloWorld from 0xa1296b1e2e90ca5b
 
-      pub fun main(): String {
+      access(all)
+      fun main(): String {
         return HelloWorld.greeting
       }
     `,
