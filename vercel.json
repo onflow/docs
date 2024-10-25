@@ -1252,6 +1252,11 @@
       "source": "build/smart-contracts/cadence",
       "destination": "https://cadence-lang.org/docs/",
       "permanent": true
+    },
+    {
+      "source": "/build/guides/flow-cli",
+      "destination": "/tools/flow-cli/install",
+      "permanent": true
     }
   ]
 }
