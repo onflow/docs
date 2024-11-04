@@ -39,14 +39,13 @@ please follow [the installation guide here](../../tools/flow-cli/install.md).
 
 > 💡 Note: Here is [a link to the completed code](https://github.com/chasefleming/foobar-nft) if you want to skip ahead or reference as you follow along.
 
-Once you have the Flow CLI installed, you can set up a new project
-using the `flow setup` command. This command initializes
-the necessary directory structure and a `flow.json` configuration file
-(a way to configure your project for contract sources, deployments, accounts, and more):
+Once you have the Flow CLI installed, you can set up a new project using the `flow init` command. This command initializes the necessary directory structure and a `flow.json` configuration file (a way to configure your project for contract sources, deployments, accounts, and more):
 
 ```bash
-flow setup foobar-nft
+flow init foobar-nft
 ```
+
+> Note: Select "No" when it asks you to install core contracts for the purposes of this tutorial.
 
 Upon execution, the command will generate the following directory structure:
 
