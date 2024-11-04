@@ -1,10 +1,11 @@
 ---
 sidebar_position: 1
-sidebar_label: Hello World
+sidebar_label: Contract Interaction
 ---
+
 import VerticalSplit from "./vertical-split.svg"
 
-# Hello World
+# Contract Interaction
 
 In this quickstart guide, you'll interact with your first smart contract on the Flow Testnet. `Testnet` is a public instance of the Flow blockchain designed for experimentation, where you can deploy and invoke smart contracts without incurring any real-world costs.
 
@@ -16,8 +17,8 @@ Flow supports modern smart contracts written in [Cadence], a resource-oriented p
 
 After completing this guide, you'll be able to:
 
-* Read a public variable on a [Cadence] smart contract deployed on Flow.
-* Understand how to interact with contracts on Flow's `testnet`. 
+* Read data from a [Cadence] smart contract deployed on Flow.
+* Understand how to interact with contracts on Flow's `testnet`.
 * Retrieve and display data from a deployed smart contract via scripts.
 
 In later steps, you'll learn how to:
@@ -28,80 +29,105 @@ In later steps, you'll learn how to:
 * Write and execute transactions to interact with a deployed smart contract.
 * Display data from a Cadence smart contract on a React frontend using the [Flow Client Library](../../tools/clients/fcl-js/index.md).
 
-
 ## Calling a Contract With a Script
 
-The `HelloWorld` contract exposes a public variable named `greeting` that is accessible to everything outside the contract. We can retrieve its value using a simple script written in the [Cadence] programming language. Scripts in Cadence are read-only operations that allow you to query data from the blockchain without changing any state.
+The `Counter` contract exposes a public function named `getCount()` that returns the current value of the counter. We can retrieve its value using a simple script written in the [Cadence] programming language. Scripts in Cadence are read-only operations that allow you to query data from the blockchain without changing any state.
 
 Here's the script:
 
 ```cadence
-import HelloWorld from 0xa1296b1e2e90ca5b
+import Counter from 0x8a4dce54554b225d
 
-access(all) fun main(): String {
-  return HelloWorld.greeting
+access(all)
+fun main(): Int {
+    return Counter.getCount()
 }
 ```
 
 Let's break down what this script does:
 
-- **Import Statement**: `import HelloWorld from 0xa1296b1e2e90ca5b` tells the script to use the `HelloWorld` contract deployed at the address `0xa1296b1e2e90ca5b` on the `testnet`.
-- **Main Function**: `access(all) fun main(): String` defines the entry point of the script, which returns a `String`.
-- **Return Statement**: `return HelloWorld.greeting` accesses the greeting variable from the `HelloWorld` contract and returns its value.
+- **Import Statement**: `import Counter from 0x8a4dce54554b225d` tells the script to use the `Counter` contract deployed at the address `0x8a4dce54554b225d` on the `testnet`.
+- **Main Function**: `access(all) fun main(): Int` defines the entry point of the script, which returns an `Int`.
+- **Return Statement**: `return Counter.getCount()` calls the `getCount()` function from the `Counter` contract and returns its value.
 
 ### Steps to Execute the Script
 
 - **Run the Script**: Click the Run button to execute the script.
-- **View the Output**: Observe the output returned by the script. You should see the current value of the `greeting` variable, which is `"Hello, World!"`.
+- **View the Output**: Observe the output returned by the script. You should see the current value of the `count` variable, which is `0` unless it has been modified.
 
-<iframe sandbox className="flow-runner-iframe" src="https://run.dnz.dev/snippet/2b3ec75d38d01dfa?colormode=dark&output=horizontal&outputSize=400" width="100%" height="400px"></iframe>
+<iframe sandbox className="flow-runner-iframe" src="https://run.dnz.dev/snippet/a7a18e74d27f691a?colormode=dark&output=horizontal&outputSize=400" width="100%" height="400px"></iframe>
 
-## Understanding the `HelloWorld` Contract
+## Understanding the `Counter` Contract
 
-To fully grasp how the script works, it's important to understand the structure of the `HelloWorld` contract. Below is the source code for the contract:
+To fully grasp how the script works, it's important to understand the structure of the `Counter` contract. Below is the source code for the contract:
 
 ```cadence
-access(all) contract HelloWorld {
+access(all) contract Counter {
 
-  access(all) var greeting: String
+    access(all) var count: Int
 
-  access(account) fun changeGreeting(newGreeting: String) {
-    self.greeting = newGreeting
-  }
+    // Event to be emitted when the counter is incremented
+    access(all) event CounterIncremented(newCount: Int)
 
-  init() {
-    self.greeting = "Hello, World!"
-  }
+    // Event to be emitted when the counter is decremented
+    access(all) event CounterDecremented(newCount: Int)
+
+    init() {
+        self.count = 0
+    }
+
+    // Public function to increment the counter
+    access(all) fun increment() {
+        self.count = self.count + 1
+        emit CounterIncremented(newCount: self.count)
+    }
+
+    // Public function to decrement the counter
+    access(all) fun decrement() {
+        self.count = self.count - 1
+        emit CounterDecremented(newCount: self.count)
+    }
+
+    // Public function to get the current count
+    view access(all) fun getCount(): Int {
+        return self.count
+    }
 }
 ```
 
 ### Breakdown of the Contract
 
-- **Contract Declaration**: `access(all) contract HelloWorld` declares a new contract named `HelloWorld` that is accessible to everyone.
-- **State Variable**: `access(all) var greeting: String` declares a public variable `greeting` of type `String`. The `access(all)` modifier means that this variable can be read by anyone.
-- **Function to Change Greeting**: `access(account) fun changeGreeting(newGreeting: String)` defines a function that allows changing the value of `greeting`. The `access(account)` modifier restricts this function so that only the account that deployed the contract (the owner) can call it.
-- **Initializer**: The `init()` function is called when the contract is deployed. It sets the initial value of `greeting` to `"Hello, World!"`.
+- **Contract Declaration**: `access(all) contract Counter` declares a new contract named `Counter` that is accessible to everyone.
+- **State Variable**: `access(all) var count: Int` declares a public variable `count` of type `Int`. The `access(all)` modifier means that this variable can be read by anyone.
+- **Events**: Two events are declared:
+    - `CounterIncremented(newCount: Int)`: Emitted when the counter is incremented.
+    - `CounterDecremented(newCount: Int)`: Emitted when the counter is decremented.
+- **Initializer**: The `init()` function initializes the `count` variable to `0` when the contract is deployed.
+- **Public Functions**:
+    - `increment()`: Increases the `count` by `1` and emits the `CounterIncremented` event.
+    - `decrement()`: Decreases the `count` by `1` and emits the `CounterDecremented` event.
+    - `getCount()`: Returns the current value of `count`. The `view` modifier indicates that this function does not modify the contract's state.
 
 ### Key Points
 
-- **Public Access**: The `greeting` variable is public, allowing anyone to read its value without any restrictions.
-- **Restricted Modification**: Only the contract owner can modify the `greeting` variable using the `changeGreeting` function. This ensures that unauthorized accounts cannot change the contract's state.
-- **No Read Costs**: Reading data from the blockchain is free on Flow. Executing scripts like the one you ran does not incur any costs.
+- **Public Access**: The `count` variable and the functions `increment()`, `decrement()`, and `getCount()` are all public, allowing anyone to interact with them.
+- **State Modification**: The `increment()` and `decrement()` functions modify the state of the contract by changing the value of `count` and emitting events.
+- **Read Costs**: Reading data from the blockchain is free on Flow. Executing scripts like the one you ran does not incur any costs. However, transactions that modify state, such as calling `increment()` or `decrement()`, will incur costs and require proper authorization.
 
 ### What's Next?
 
 In the upcoming tutorials, you'll learn how to:
 
-- **Modify the Greeting**: Invoke the `changeGreeting` function to update the `greeting` value.
+- **Modify the Counter**: Invoke the `increment()` and `decrement()` functions to update the `count` value.
 - **Deploy Contracts**: Use the Flow CLI to deploy your own smart contracts.
 - **Interact with Contracts Locally**: Use the Flow Emulator to test contracts in a local development environment.
 - **Build Frontend Applications**: Display data from smart contracts in a React application using the Flow Client Library.
 
-By understanding the `HelloWorld` contract and how to interact with it, you're building a solid foundation for developing more complex applications on the Flow blockchain.
+By understanding the `Counter` contract and how to interact with it, you're building a solid foundation for developing more complex applications on the Flow blockchain.
 
 Proceed to the next tutorial to learn how to create your own contracts and deploy them live using the Flow CLI.
 
-<!-- Relative-style links.  Does not render on the page -->
+<!-- Relative-style links. Does not render on the page -->
 
 [Cadence]: https://cadence-lang.org/
 [EVM]: https://flow.com/upgrade/crescendo/evm
