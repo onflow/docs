@@ -26,13 +26,17 @@ of the `Epoch Setup Phase` to participate in the [Epoch Preparation Protocol](..
 ## Step 1 - Run Genesis Bootstrap
 
 :::info
+
   You will need to run this process for each node that you are operating
+
 :::
 
 ### Download the Bootstrapping Kit
 
 :::warning
+
 If you have downloaded the bootstrapping kit previously, ensure you check the hash below still matches. If not, re-download to ensure you are using the most up-to-date version.
+
 :::
 
 ```shell
@@ -294,7 +298,9 @@ This is the recommended way to start your node for the first time.
 4. Start your node (see [guide](./node-setup#start-the-node))
 
 :::info
+
 Once the node has bootstrapped, these flags will be ignored and may be removed.
+
 :::
 
 ### Manually Provisioned Root Snapshot
@@ -303,12 +309,16 @@ You can also provision the root snapshot file manually, then start the node with
 See [here](./protocol-state-bootstrap.md) for the available options to provision a Root Snapshot.
 
 :::warning
+
 The snapshot must be within the `Epoch Setup Phase`.
+
 :::
 
 :::warning
+
 Since Collection and Consensus Nodes must start up in the first ~30mins of the `Epoch Setup Phase` (see [Timing](./node-bootstrap.md#timing)),
 the snapshot must be provisioned within this time window.
+
 :::
 
 Once a valid root snapshot file is downloaded to the node's bootstrap folder, it can be started (see [guide](./node-setup.md#start-the-node))

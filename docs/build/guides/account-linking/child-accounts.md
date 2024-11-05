@@ -107,7 +107,7 @@ in a way that allows the receiving account to maintain that Capability and allow
 either end of the linkage - the user's main "parent" account and the linked "child" account. This is accomplished in the
 `HybridCustody` contract which we'll continue to use in this guidance.
 
-### Pre-requisites
+### Prerequisites
 
 Since account delegation is mediated by developer-defined rules, you should make sure to first configure the resources
 that contain those rules. Contracts involved in defining and enforcing this ruleset are
@@ -521,7 +521,7 @@ power of the complex transactions you can compose on Flow with Cadence!
 
 :::info
 
-Recall the [pre-requisites](#pre-requisites) needed to be satisfied before linking an account:
+Recall the [prerequisites](#prerequisites) needed to be satisfied before linking an account:
 
 1. CapabilityFilter Filter saved and linked
 2. CapabilityFactory Manager saved and linked as well as Factory implementations supporting the Capability Types you'll

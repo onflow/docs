@@ -9,14 +9,14 @@ and buy them from listings. `NFTStorefrontV2` is the more powerful and full-feat
 version, so developers and users are encouraged to use it instead of `NFTStorefront`
 or their own implementation.
 
-Source: [NFTStorefrontV2.cdc](https://github.com/onflow/nft-storefront/blob/main/contracts/NFTStorefrontV2.cdc)
+Source: [NFTStorefrontV2.cdc]
 
 | Network | Contract Address     |
 | ------- | -------------------- |
 | Testnet | `0x2d55b98eb200daef` |
 | Mainnet | `0x4eb8a10cb9f87357` |
 
-Source: [NFTStorefront.cdc](https://github.com/onflow/nft-storefront/blob/main/contracts/NFTStorefront.cdc)
+Source: [NFTStorefront.cdc]
 
 | Network | Contract Address     |
 | ------- | -------------------- |
@@ -45,12 +45,12 @@ Marketplaces then process an NFT trade by interacting directly with seller store
 
 ## Functional Overview
 
-A general purpose sale support contract for NFTs implementing the Flow [`NonFungibleToken`](https://github.com/onflow/flow-nft/blob/master/contracts/NonFungibleToken.cdc) standard.
+A general purpose sale support contract for NFTs implementing the Flow [`NonFungibleToken`] standard.
 Each account that wants to list NFTs for sale creates a `Storefront` resource to store in their account and lists individual sales within that Storefront as Listings. There is usually one Storefront per account held at the `/storage/NFTStorefrontV2`.
 
 Each listing can define one or more sale cuts taken out of the sale price to go to one or more addresses. Listing fees, royalties, or other considerations can be paid using sale cuts. Also, the listing can include a commission as one of these sale cuts is paid to whoever facilitates the purchase.
 
-Listings can have an optional list of marketplace [receiver capabilities](https://cadence-lang.org/docs/language/capabilities) used to receive the commission for fulfilling the listing. An NFT may be listed in one or more Listings, and the validity of each listing can easily be checked.
+Listings can have an optional list of marketplace [receiver capabilities] used to receive the commission for fulfilling the listing. An NFT may be listed in one or more Listings, and the validity of each listing can easily be checked.
 
 Interested parties can globally track Listing events on-chain and filter by NFT types, IDs and other characteristics to determine which to make available for purchase within their own marketplace UIs."
 
@@ -62,7 +62,7 @@ Many marketplaces create a single storefront resource to manage different indivi
 
 ## Creating a successful listing using the NFTStorefrontV2 contract.
 
-As recommended above, the first step is to create and store the [Storefront resource](#resource-storefront) in the user account using the [setup_account](https://github.com/onflow/nft-storefront/blob/main/transactions/setup_account.cdc) transaction.
+As recommended above, the first step is to create and store the [Storefront resource] in the user account using the [setup_account] transaction.
 
 The next step is to create a listing under the newly created storefront resource. If the user (repetitive) already holds the storefront resource, then use the existing resource. The seller can come with multiple requirements for listing their NFTs, and We try our best to cover most of them below.
 
@@ -74,7 +74,7 @@ The `NFTStorefrontV2` contract doesn’t support selling an NFT for multiple dif
 
 ![scenario_1](./scenario_1.png)
 
-Putting an NFT on sell called listing, seller can create a listing using [sell_item](https://github.com/onflow/nft-storefront/blob/main/transactions/sell_item.cdc) transaction by providing some required details to list an NFT, i.e. Receiving currency type, [Capability](https://cadence-lang.org/docs/language/capabilities) from where NFT will be deducted etc. If interested look [here](<#fun-createlisting>) for more details.
+Putting an NFT on sell called listing, seller can create a listing using [sell_item] transaction by providing some required details to list an NFT, i.e. Receiving currency type, [Capability] from where NFT will be deducted etc. If interested look [`createListing`] for more details.
 
 To receive a different currency seller has to provide a different **Receiver currency type** , i.e. `salePaymentVaultType` As depicted in the above diagram, There are two listing formations with almost the same inputs. The only differentiator is the `salePaymentVaultType` parameter that needs to be different when creating duplicate NFT listings with different sale currency types.
 
@@ -82,13 +82,13 @@ To receive a different currency seller has to provide a different **Receiver cur
 
 Dapps can leverage the **NFTStorefrontV2** to facilitate the creation of a listing for the seller independent of any marketplace. Dapps or marketplaces can list those listings on their platforms, or seller can settle it p2p.
 
-The seller can use [sell_item](https://github.com/onflow/nft-storefront/blob/main/transactions/sell_item.cdc) transaction to create a p2p listing, providing the `marketplacesAddress` with an empty array. The seller has a choice of providing [commission](#enabling-marketplace-commissions-for-nft-sales) to the facilitator of sale, which can also act as a discount if the facilitator and the purchaser are the same.
+The seller can use [sell_item] transaction to create a p2p listing, providing the `marketplacesAddress` with an empty array. The seller has a choice of providing [commission] to the facilitator of sale, which can also act as a discount if the facilitator and the purchaser are the same.
 
 ### **Scenario 3:** The seller wants to list its NFT in different marketplaces.
 
 `NFTStorefrontV2` offers two different ways of doing it.
 
-- The seller can create a listing and provide the `marketplacesAddress` that it wants to have a listing on using [sell_item](https://github.com/onflow/nft-storefront/blob/main/transactions/sell_item.cdc) transaction.
+- The seller can create a listing and provide the `marketplacesAddress` that it wants to have a listing on using [sell_item] transaction.
 
   Marketplaces can listen to `ListingAvailable` events and check whether their address is included in the `commissionReceivers` list; If yes, the marketplace would be rewarded during the successful fulfilment of the listing.
 
@@ -96,7 +96,7 @@ The seller can use [sell_item](https://github.com/onflow/nft-storefront/blob/mai
 
   ![scenario_3](https://user-images.githubusercontent.com/14581509/190966834-8eda4ec4-e9bf-49ef-9dec-3c47a236d281.png)
 
-- Another way to accomplish this is to create separate listings for each marketplace on which a user wants their listing using [sell_item_with_marketplace_cut](https://github.com/onflow/nft-storefront/blob/main/transactions/sell_item_with_marketplace_cut.cdc) transaction. In this case, the marketplace would be incentivized by earning one of the parts of the [`saleCut`](https://github.com/onflow/nft-storefront/blob/160e97aa802405ad26a3164bcaff0fde7ee52ad2/contracts/NFTStorefrontV2.cdc#L104) by appending marketplace saleCut in `saleCuts` array during the creation of the listing.
+- Another way to accomplish this is to create separate listings for each marketplace on which a user wants their listing using [sell_item_with_marketplace_cut] transaction. In this case, the marketplace would be incentivized by earning one of the parts of the [`saleCut`] by appending marketplace saleCut in `saleCuts` array during the creation of the listing.
 
 ### Considerations
 
@@ -110,7 +110,7 @@ The seller can use [sell_item](https://github.com/onflow/nft-storefront/blob/mai
 
 ## Purchasing NFTs
 
-Purchasing NFTs through the `NFTStorefrontV2` is simple. The buyer has to provide the payment vault and the `commissionRecipient` , if applicable, during the purchase. p2p dApps don’t need any intermediaries to facilitate the purchase of listings. [`purchase`](#fun-purchase) API offered by the `Listing` resource gets used to facilitate the purchase of NFT.
+Purchasing NFTs through the `NFTStorefrontV2` is simple. The buyer has to provide the payment vault and the `commissionRecipient` , if applicable, during the purchase. p2p dApps don’t need any intermediaries to facilitate the purchase of listings. [`purchase`] API offered by the `Listing` resource gets used to facilitate the purchase of NFT.
 
 During the listing purchase all saleCuts are paid automatically. This also includes distributing royalties for that NFT, if applicable. If the vault provided by the buyer lacks sufficient funds then the transaction will fail.
 
@@ -120,13 +120,13 @@ During the listing purchase all saleCuts are paid automatically. This also inclu
 
    **Note -** _We recommended NOT to have more than 50 (TBD) duplicate listings of any given NFT._
 
-2. **Unsupported receiver capability** - A common pitfall during the purchase of an NFT that some saleCut receivers don’t have a supported receiver capability because that entitled sale cut would transfer to first valid sale cut receiver. However, it can be partially solved by providing the generic receiver using the [`FungibleTokenSwitchboard`](https://github.com/onflow/flow-ft/blob/master/contracts/FungibleTokenSwitchboard.cdc) contract and adding all the currency capabilities the beneficiary wants to receive. More on the `FungibleTokenSwitchboard` can be read [here](https://github.com/onflow/flow-ft#fungible-token-switchboard)
+2. **Unsupported receiver capability** - A common pitfall during the purchase of an NFT that some saleCut receivers don’t have a supported receiver capability because that entitled sale cut would transfer to first valid sale cut receiver. However, it can be partially solved by providing the generic receiver using the [`FungibleTokenSwitchboard`] contract and adding all the currency capabilities the beneficiary wants to receive. More on the `FungibleTokenSwitchboard` can be read in [Fungible Token Switchboard]
 
 ## Enabling creator royalties for NFTs
 
 The `NFTStorefrontV2` contract optionally supports paying royalties to the minter account for secondary resales of that NFT after the original sale. Marketplaces decide for themselves whether to support creator royalties when validating listings for sale eligibility. We encourage all marketplaces to support creator royalties and support community creators in the **FLOW** ecosystem.
 
-Providing that a seller's NFT supports the [Royalty Metadata View](https://github.com/onflow/flow-nft/blob/21c254438910c8a4b5843beda3df20e4e2559625/contracts/MetadataViews.cdc#L335) standard, then marketplaces can honor royalties payments at time of purchase. `NFTStorefrontV2` dynamically calculates the royalties owed at the time of listing creation and applies it as a saleCut of the listing at the time of purchase.
+Providing that a seller's NFT supports the [Royalty Metadata View] standard, then marketplaces can honor royalties payments at time of purchase. `NFTStorefrontV2` dynamically calculates the royalties owed at the time of listing creation and applies it as a saleCut of the listing at the time of purchase.
 
 ```cadence
 // Check whether the NFT implements the MetadataResolver or not.
@@ -147,9 +147,9 @@ if nft.getViews().contains(Type<MetadataViews.Royalties>()) {
 }
 ```
 
-Complete transaction can be viewed [here](https://github.com/onflow/nft-storefront/blob/main/transactions/sell_item.cdc).
+Complete transaction can be viewed in [sell_item].
 
-saleCut only supports a single token receiver type and therefore beneficiaries of a `saleCut` can also only receive the token type used for the purchase. To support different token types for saleCuts we recommend using the [FungibleTokenSwitchboard](https://github.com/onflow/flow-ft/blob/master/contracts/FungibleTokenSwitchboard.cdc) contract. The contract defines a generic receiver for fungible tokens which itself handles routing of tokens to the respective vault for that token type. Learn more about this [here](https://github.com/onflow/flow-ft#fungible-token-switchboard).
+saleCut only supports a single token receiver type and therefore beneficiaries of a `saleCut` can also only receive the token type used for the purchase. To support different token types for saleCuts we recommend using the [`FungibleTokenSwitchboard`] contract. The contract defines a generic receiver for fungible tokens which itself handles routing of tokens to the respective vault for that token type. Learn more about this in [Fungible Token Switchboard].
 
 ## Enabling marketplace commissions for NFT sales
 
@@ -468,3 +468,22 @@ A entitled receiver has not been paid during the sale of the NFT.
 **Holistic process flow diagram of NFTStorefrontV2 -**
 
 ![NFT Storefront Process flow](https://user-images.githubusercontent.com/14581509/191960793-ff153e5d-2934-410c-b724-5c5dffd2c20f.png)
+
+<!-- Relative-style links.  Does not render on the page -->
+
+[NFTStorefrontV2.cdc]: https://github.com/onflow/nft-storefront/blob/main/contracts/NFTStorefrontV2.cdc
+[NFTStorefront.cdc]: https://github.com/onflow/nft-storefront/blob/main/contracts/NFTStorefront.cdc
+[`NonFungibleToken`]: https://github.com/onflow/flow-nft/blob/master/contracts/NonFungibleToken.cdc
+[receiver capabilities]: https://cadence-lang.org/docs/language/capabilities
+[Storefront resource]: #resource-storefront
+[setup_account]: https://github.com/onflow/nft-storefront/blob/main/transactions/setup_account.cdc
+[sell_item]: https://github.com/onflow/nft-storefront/blob/main/transactions/sell_item.cdc
+[Capability]: https://cadence-lang.org/docs/language/capabilities
+[`createListing`]: #fun-createlisting
+[Fungible Token Switchboard]: https://github.com/onflow/flow-ft#fungible-token-switchboard
+[commission]: #enabling-marketplace-commissions-for-nft-sales
+[sell_item_with_marketplace_cut]: https://github.com/onflow/nft-storefront/blob/main/transactions/sell_item_with_marketplace_cut.cdc
+[`saleCut`]: https://github.com/onflow/nft-storefront/blob/160e97aa802405ad26a3164bcaff0fde7ee52ad2/contracts/NFTStorefrontV2.cdc#L104
+[`purchase`]: #fun-purchase
+[`FungibleTokenSwitchboard`]: https://github.com/onflow/flow-ft/blob/master/contracts/FungibleTokenSwitchboard.cdc
+[Royalty Metadata View]: https://github.com/onflow/flow-nft/blob/21c254438910c8a4b5843beda3df20e4e2559625/contracts/MetadataViews.cdc#L335

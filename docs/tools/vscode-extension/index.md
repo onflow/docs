@@ -41,7 +41,7 @@ Restart VS Code and the extension should be installed!
 
 ## Developing the Extension
 
-### Pre-requisites
+### Prerequisites
 
 - Must have Typescript installed globally: `npm i -g typescript`
 
