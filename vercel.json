@@ -1217,12 +1217,12 @@
     },
     {
       "source": "/build/smart-contracts/best-practices/anti-patterns",
-      "destination": "https://cadence-lang.org/docs/1.0/anti-patterns",
+      "destination": "https://cadence-lang.org/docs/anti-patterns",
       "permanent": true
     },
     {
       "source": "/build/smart-contracts/best-practices/design-patterns",
-      "destination": "https://cadence-lang.org/docs/1.0/design-patterns",
+      "destination": "https://cadence-lang.org/docs/design-patterns",
       "permanent": true
     },
     {

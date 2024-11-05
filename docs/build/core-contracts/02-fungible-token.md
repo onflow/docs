@@ -6,7 +6,7 @@ sidebar_label: Fungible Token
 
 The `FungibleToken` contract implements the Fungible Token Standard. It is the second contract ever deployed on Flow.
 
-- [Basic Fungible Token Tutorial](https://cadence-lang.org/docs/1.0/tutorial/fungible-tokens)
+- [Basic Fungible Token Tutorial](https://cadence-lang.org/docs/tutorial/fungible-tokens)
 - [Fungible Token Guide](../guides/fungible-token.md)
 - [Fungible Token Standard Repo](https://github.com/onflow/flow-ft)
 

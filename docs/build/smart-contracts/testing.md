@@ -263,7 +263,7 @@ Tests should also be runnable in automated environments (CI). You can use the [C
 Once you deployed your application to the testnet, you should record how your application handles non-trivial amounts of traffic to ensure there are no issues.
 
 <Callout type="success">
-Get familiar with the [Cadence anti-patterns](https://cadence-lang.org/docs/1.0/anti-patterns) to avoid avoid problematic or unintended behavior.
+Get familiar with the [Cadence anti-patterns](https://cadence-lang.org/docs/anti-patterns) to avoid avoid problematic or unintended behavior.
 </Callout>
 
 
