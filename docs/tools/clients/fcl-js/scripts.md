@@ -29,7 +29,7 @@ console.log(response) // 3
 
 ### A more complicated Script
 
-Things like [Resources](../../../build/smart-contracts/cadence.md#resources) and [Structs](../../../build/smart-contracts/cadence.md#structures) are fairly common place in Cadence.
+Things like [Resources](https://cadence-lang.org/docs/language/resources) and [Structs](https://cadence-lang.org/docs/language/composite-types#structures) are fairly common place in Cadence.
 
 In the following code snippet, our script defines a struct called `Point`, it then returns a list of them.
 

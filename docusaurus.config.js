@@ -202,11 +202,11 @@ const config = {
         },
         ...(process.env.GA_TRACKING_ID
           ? {
-              gtag: {
-                trackingID: process.env.GA_TRACKING_ID,
-                anonymizeIP: true,
-              },
-            }
+            gtag: {
+              trackingID: process.env.GA_TRACKING_ID,
+              anonymizeIP: true,
+            },
+          }
           : {}),
       }),
     ],
@@ -261,7 +261,7 @@ const config = {
           {
             to: 'evm/about',
             position: 'left',
-            label: 'EVM',
+            label: 'Build With EVM',
             activeBasePath: '/evm',
           },
           {
@@ -304,7 +304,7 @@ const config = {
             items: [
               {
                 label: 'Getting Started',
-                to: '/build/getting-started/quickstarts/hello-world',
+                to: '/build/getting-started/hello-world',
               },
               {
                 label: "SDK's & Tools",
@@ -632,23 +632,7 @@ const config = {
       onload: mixpanelOnLoad,
     },
     {
-      src: 'https://widget.kapa.ai/kapa-widget.bundle.js',
-      'data-website-id': '0f0b3ed1-7761-4986-851e-09336ea6ef1c',
-      'data-project-name': 'Flow',
-      'data-project-color': '#2E8555',
-      'data-project-logo': 'https://cryptologos.cc/logos/flow-flow-logo.png',
-      async: true,
-    },
-    {
       src: `${baseUrl}hotjar.js`,
-      async: true,
-    },
-    {
-      src: 'https://widget.kapa.ai/kapa-widget.bundle.js',
-      'data-website-id': '0f0b3ed1-7761-4986-851e-09336ea6ef1c',
-      'data-project-name': 'Flow',
-      'data-project-color': '#2E8555',
-      'data-project-logo': 'https://cryptologos.cc/logos/flow-flow-logo.png',
       async: true,
     },
   ],

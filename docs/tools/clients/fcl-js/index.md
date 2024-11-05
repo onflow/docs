@@ -118,7 +118,7 @@ See the [Flow App Quick Start](../../../build/guides/flow-app-quickstart.md).
 
 See the full [API Reference](./api.md) for all FCL functionality.
 
-Learn Flow's smart contract language to build any script or transactions: [Cadence](../../../build/smart-contracts/cadence.md).
+Learn Flow's smart contract language to build any script or transactions: [Cadence](https://cadence-lang.org/docs).
 
 Explore all of Flow [docs and tools](/).
 
