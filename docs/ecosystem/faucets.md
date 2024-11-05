@@ -33,7 +33,7 @@ Network Faucets provide free Flow tokens for testing purposes, functioning like 
 
 ### Funding Your Account
 
-If you already have a Flow account, you can fund it simply from the Faucet's landing page. Simply paste the address of the account you want to fund, complete the CAPTCHA, and click "Fund Your Account."
+If you already have a Flow account, you can fund it directly from the Faucet's landing page. Simply paste the address of the account you want to fund, complete the CAPTCHA, and click "Fund Your Account."
 
 ![fund-your-account](./faucet-fund-account.png)
 
@@ -64,9 +64,17 @@ Signature Algorithm 	 ECDSA_P256
 
 You can then use the public key to create a new Flow account on the Faucet. Copy the resulting public key for the next step.
 
-#### Create a Flow Account
+#### Create a Flow-Native Account
 
 From the Faucet's landing page, click on the "Create Account" button. You'll be prompted to enter your public key. Paste the public key you generated using the Flow CLI and click "Create Account."
+
+:::tip
+
+Know that there is a distinction between Flow native accounts and EVM accounts. Native accounts allow you to interact with the Cadence runtime, while EVM accounts are used for interacting with Flow's EVM. To create an EVM account, you can use EVM tooling to generate an Ethereum Owned Account (EOA) and simply fund the associated address. Alternatively, you can create an EVM account controlled by your Flow native account - known as a Cadence Owned Account (COA) - in which case you'll need a Flow native account and should continue with the steps below.
+
+For more information interacting with EVM via COAs, see the [Interacting With COAs documentation](../evm/cadence/interacting-with-coa.md).
+
+:::
 
 ![create-flow-account](./faucet-create-account.png)
 
