@@ -366,7 +366,7 @@ access(all) resource Collection: NonFungibleToken.Collection {
 
 As you can see, this function has an `access(NonFungibleToken.Withdraw)` access modifier.
 This is an example of entitlements in Cadence.
-[Entitlements](https://cadence-lang.org/docs/1.0/language/access-control#entitlements)
+[Entitlements](https://cadence-lang.org/docs/language/access-control#entitlements)
 are a way for developers to restrict access to privileged fields and functions
 in a composite type like a resource when a reference is created for it.
 In this example, the `withdraw()` function is always accessible to code that
@@ -383,10 +383,10 @@ defined by the `NonFungibleToken` contract:
 
 Entitlements are important to understand because they are what protects
 privileged functionality in your resource objects from being accessed by third-parties.
-It is recommended to read the [entitlements documentation](https://cadence-lang.org/docs/1.0/language/access-control#entitlements)
+It is recommended to read the [entitlements documentation](https://cadence-lang.org/docs/language/access-control#entitlements)
 to understand how to use the feature properly.
 
-[References](https://cadence-lang.org/docs/1.0/language/references) can be freely up-casted and down-casted in Cadence, so it is important
+[References](https://cadence-lang.org/docs/language/references) can be freely up-casted and down-casted in Cadence, so it is important
 for privileged functionality to be protected by an entitlement so that it can
 only be accessed if it is authorized.
 

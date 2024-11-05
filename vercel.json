@@ -389,7 +389,7 @@
     },
     {
       "source": "/flow-js-testing/:path*",
-      "destination": "/tools/flow-js-testing/:path*",
+      "destination": "https://cadence-lang.org/docs/testing-framework",
       "permanent": true
     },
     {
@@ -659,12 +659,17 @@
     },
     {
       "source": "/tooling/flow-js-testing/:path*",
-      "destination": "/tools/flow-js-testing/:path*",
+      "destination": "https://cadence-lang.org/docs/testing-framework",
+      "permanent": true
+    },
+    {
+      "source": "/tools/flow-js-testing/:path*",
+      "destination": "https://cadence-lang.org/docs/testing-framework",
       "permanent": true
     },
     {
       "source": "/tooling/nft-catalog/(.*)",
-      "destination": "/tools/nft-catalog/",
+      "destination": "https://github.com/fixes-world/token-list",
       "permanent": true
     },
     {
@@ -758,7 +763,7 @@
     },
     {
       "source": "/tools/nft-catalog/(.+)",
-      "destination": "/tools/nft-catalog",
+      "destination": "https://github.com/fixes-world/token-list",
       "permanent": true
     },
     {
@@ -1212,12 +1217,12 @@
     },
     {
       "source": "/build/smart-contracts/best-practices/anti-patterns",
-      "destination": "https://cadence-lang.org/docs/1.0/anti-patterns",
+      "destination": "https://cadence-lang.org/docs/anti-patterns",
       "permanent": true
     },
     {
       "source": "/build/smart-contracts/best-practices/design-patterns",
-      "destination": "https://cadence-lang.org/docs/1.0/design-patterns",
+      "destination": "https://cadence-lang.org/docs/design-patterns",
       "permanent": true
     },
     {
@@ -1231,6 +1236,11 @@
     {
       "source": "/tools/clients/flow-go-sdk/error-codes",
       "destination": "/tools/error-codes",
+      "permanent": true
+    },
+    {
+      "source": "/tools/nft-catalog/(.*)",
+      "destination": "https://github.com/fixes-world/token-list",
       "permanent": true
     },
     {

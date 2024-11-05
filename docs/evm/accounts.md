@@ -16,7 +16,7 @@ There are three types of accounts used for EVM on Flow.
 
 1. **Externally Owned Accounts (EOA)**: EOAs are controlled by private individuals using cryptographic keys and can initiate transactions directly. They are the primary account type for users to interact with the blockchain, holding and sending cryptocurrency or calling smart contract functions.
 2. **Contract Accounts**: These accounts hold smart contract code and are governed by this code's logic. Unlike EOAs, Contract Accounts do not initiate transactions on their own but can execute transactions in response to calls they receive from EOAs or other contracts.
-3. **Cadence Owned Accounts (COA)**: This is an account type unique to Flow EVM. These accounts are managed by [Cadence resources](https://cadence-lang.org/docs/1.0/language/resources) and can be used to interact with the Flow EVM from within the Cadence environment.
+3. **Cadence Owned Accounts (COA)**: This is an account type unique to Flow EVM. These accounts are managed by [Cadence resources](https://cadence-lang.org/docs/language/resources) and can be used to interact with the Flow EVM from within the Cadence environment.
 
 EOAs and Contract accounts function the same as on other EVM networks. Users may interact with these accounts using the standard EVM JSON-RPC API ([see endpoints here](./using.mdx)). You can read more about EOAs and Contract accounts on the [Ethereum docs](https://ethereum.org/developers/docs/accounts).
 
@@ -38,7 +38,7 @@ COAs create powerful new opportunities to improve the UX, functionality and util
 
 - **Native Account Abstraction**: COAs are controlled by Cadence resources, which are in turn owned by Flow accounts. [Flow accounts](./accounts.md) have built-in support for multi-signature authentication, key rotation, and account recovery. As a Cadence resource, COAs naturally inherit [these features](../build/advanced-concepts/account-abstraction.md).
 
-- **Fine-Grained Access Control**: As Cadence resources, access to a COA can be governed by more sophisticated policies than those available with basic EVM accounts. By utilizing powerful Cadence access control primitives such as [capabilities and entitlements](https://cadence-lang.org/docs/1.0/language/access-control), developers can restrict who is able to interact with a COA and what actions they are permitted to perform.
+- **Fine-Grained Access Control**: As Cadence resources, access to a COA can be governed by more sophisticated policies than those available with basic EVM accounts. By utilizing powerful Cadence access control primitives such as [capabilities and entitlements](https://cadence-lang.org/docs/language/access-control), developers can restrict who is able to interact with a COA and what actions they are permitted to perform.
 
 ### Differences from Traditional EVM Accounts
 
