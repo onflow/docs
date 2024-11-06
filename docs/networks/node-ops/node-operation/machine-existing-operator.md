@@ -70,7 +70,7 @@ $tree ./bootstrap/
 ## Create Machine Account
 
 You will now need to copy the Machine account public key displayed in the terminal output and 
-head over to [Flow Port](../../../networks/flow-port/staking-guide.md#existing-node-operators) to submit a transaction to create a Machine Account. 
+head over to [Flow Port](../../../networks/flow-port/staking-guide.md#stake-a-node) to submit a transaction to create a Machine Account. 
 For example, from the example above, we would copy `f847...` from this line:
 
 ```shell Example

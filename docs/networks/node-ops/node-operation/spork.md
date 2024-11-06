@@ -87,9 +87,3 @@ See [Node Bootstrap](./node-bootstrap.md) for detailed information on Docker/Sys
 ```
 
 This error is OK. Your fellow node operators have not turned on/joined the network yet. So no need to worry about it!
-
-### Flow Node Not Booting Up
-
-If your Flow node is not able to boot up, or it exits right after it boots up. You will need to do a [clean up of your state](./node-bootstrap.md#step-0---cleaning-up-your-previous-state).
-
-After cleaning up the state try booting it up again. If the problem persists, message a member from the Flow team on Discord.

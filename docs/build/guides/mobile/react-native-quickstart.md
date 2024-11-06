@@ -299,7 +299,7 @@ In the `args` section, we are simply passing it our user's account address from 
 
 Go ahead and click the "Send Query" button. You should see "No Profile." That's because we haven't initialized the account yet.
 
-## Initializing the Account
+## Initializing an Account
 
 For the Profile contract to store a Profile in a user's account, it does so by initializing what is called a "resource." A resource is an ownable piece of data and functionality that can live in the user's account storage. This paradigm is known is as "resource-oriented-programming", a principle that is core to Cadence and differentiates its ownership model from other smart contract languages, [read more here](https://cadence-lang.org/docs/#intuiting-ownership-with-resources). Cadence makes it so that resources can only exist in one place at any time, they must be deliberately created, cannot be copied, and if desired, must be deliberately destroyed.
 
