@@ -286,7 +286,7 @@ export default function RootLayout({
 
 ### Add the Connect Button
 
-Open `page.tsx` and clean up the demo code leaving only the <main> block:
+Open `page.tsx` and clean up the demo code leaving only the `<main>` block:
 
 ```tsx
 import Image from "next/image";
