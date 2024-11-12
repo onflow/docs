@@ -739,7 +739,7 @@ In this tutorial, you took your first steps towards building powerful new experi
 
 [Account Linking]: ./account-linking/index.md
 [NBA Top Shot]: https://nbaTop Shot.com
-[simple onchain app]: https://nextjs-Top Shot-account-linking.vercel.app
+[simple onchain app]: https://nextjs-topshot-account-linking.vercel.app
 [Dapper Wallet]: https://meetdapper.com
 [Yarn]: https://yarnpkg.com
 [Flow CLI]: ../../tools/flow-cli/index.md
