@@ -313,7 +313,7 @@ import { useAuth } from "./providers/AuthProvider";
 const { user, loggedIn, logIn, logOut } = useAuth();
 ```
 
-Then add a button in the <main> to handle logging in or out:
+Then add a button in the `<main>` to handle logging in or out:
 
 ```tsx
 <main className="flex flex-col gap-8 row-start-2 items-center sm:items-start">
@@ -341,7 +341,7 @@ You'll see your `Log In` button in the middle of the window.
 
 Click the button and log in with your Flow wallet.
 
-![Flow Wallet](image.png)
+![Flow Wallet](flow-wallet.png)
 
 ## Account Linking
 
@@ -591,7 +591,7 @@ useEffect(() => {
 }, [address]);
 ```
 
-Return to `page.tsx`, import your new component, and add an instance of <DisplayLinkedNFTs> that passes in the user's address and is only displayed while `loggedIn`. 
+Return to `page.tsx`, import your new component, and add an instance of `<DisplayLinkedNFTs>` that passes in the user's address and is only displayed while `loggedIn`. 
 
 ```tsx
 {loggedIn && <DisplayLinkedNFTs address={user.addr} />}
