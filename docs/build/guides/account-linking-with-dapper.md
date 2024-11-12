@@ -353,7 +353,7 @@ If you haven't yet, you'll need to [link your Dapper Wallet] to your Flow Wallet
 
 :::warning
 
-Dapper requires that you complete KYC before you can use Account Linking.  While this may frustrate some members of the community, it makes is much easier for app developers to design onboarding rewards and bonuses that are less farmable.
+Dapper requires that you complete KYC before you can use Account Linking.  While this may frustrate some members of the community, it makes it much easier for app developers to design onboarding rewards and bonuses that are less farmable.
 
 :::
 
