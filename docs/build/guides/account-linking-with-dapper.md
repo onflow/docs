@@ -741,6 +741,8 @@ In this tutorial, you took your first steps towards building powerful new experi
 [NBA Top Shot]: https://nbatopshot.com
 [simple onchain app]: https://nextjs-topshot-account-linking.vercel.app
 [Dapper Wallet]: https://meetdapper.com
+[Cadence]: https://cadence-lang.org/docs
+[Next.js]: https://nextjs.org/docs/app/getting-started/installation
 [Yarn]: https://yarnpkg.com
 [Flow CLI]: ../../tools/flow-cli/index.md
 [FCL]: ../../tools/clients/fcl-js/index.md
