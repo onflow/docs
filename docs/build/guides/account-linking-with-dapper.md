@@ -478,7 +478,7 @@ access(all) fun main(addr: Address): AnyStruct {
               continue
             }
             if let collection = acct.storage.borrow<&{NonFungibleToken.CollectionPublic}>(from: path) {
-              // Iterate over IDs & resolve the view
+              // Iterate over IDs & resolve the Display view
               for id in collection.getIDs() {
                 let nft = collection.borrowNFT(id)!
                 if let display = nft.resolveView(Type<MetadataViews.Display>())! as? MetadataViews.Display {
