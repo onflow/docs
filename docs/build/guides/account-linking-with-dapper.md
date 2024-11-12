@@ -369,7 +369,7 @@ flow dependencies add mainnet://d8a7e05a7ac670c0.HybridCustody
 
 Choose `none` to skip deploying on the `emulator` and skip adding testnet aliases.  There's no point, these NFTs are on mainnet!
 
-You'll get a complete summary from the dependency manager:
+You'll get a complete summary from the Dependency Manager:
 
 ```zsh
 📝 Dependency Manager Actions Summary
