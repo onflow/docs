@@ -1,5 +1,5 @@
 ---
-title: App Architecture
+title: Account Linking With NBA Top Shot
 description: Use Account Linking between the Dapper Wallet and Flow Wallet to effortlessly use NBA Top Shot Moments in your app.
 sidebar_position: 5
 sidebar_custom_props:
@@ -60,7 +60,7 @@ You'll need a few more dependencies to efficiently work with Cadence inside of y
 
 ### Flow CLI and Types
 
-The [Flow CLI] contains a number of command-line tools for interacting with the Flow ecosystem.  If you don't already have it installed, you can add it with Brew:
+The [Flow CLI] contains a number of command-line tools for interacting with the Flow ecosystem.  If you don't already have it installed, you can add it with Brew (or using [other installation methods]):
 
 ```zsh
 brew install flow-cli
@@ -71,6 +71,8 @@ Once it's installed, you'll need to initialize Flow in your Next.js project.  Fr
 ```zsh
 flow init --config-only
 ```
+
+The `--config-only` flag [initializes a project] with the just the config file.  This allows the Flow CLI to interact with your project without adding any unnecessary files.
 
 Next, you'll need to do a little bit of config work so that your project knows how to read Cadence files.  Install Raw Loader:
 
@@ -110,7 +112,7 @@ We'll use the Flow Client Library [FCL] to manage blockchain interaction from th
 yarn add @onflow/fcl
 ```
 
-Go ahead and install dotenv as well:
+Go ahead and install `dotenv` as well:
 
 ```
 yarn add dotenv
@@ -353,7 +355,7 @@ If you haven't yet, you'll need to [link your Dapper Wallet] to your Flow Wallet
 
 :::warning
 
-Dapper requires that you complete KYC before you can use Account Linking.  While this may frustrate some members of the community, it makes it much easier for app developers to design onboarding rewards and bonuses that are less farmable.
+The Dapper Wallet requires that you complete KYC before you can use Account Linking.  While this may frustrate some members of the community, it makes it much easier for app developers to design onboarding rewards and bonuses that are less farmable.
 
 :::
 
@@ -361,7 +363,7 @@ Dapper requires that you complete KYC before you can use Account Linking.  While
 
 With your accounts linked, your Flow Wallet now has a set of capabilities related to your Dapper Wallet and it's permitted to use those to view and even manipulate those NFTs and assets.
 
-Before you can add a script that can handle this, you'll need to import the `HybridCustody` contract using the Flow Dependency Manager:
+Before you can add a script that can handle this, you'll need to import the `HybridCustody` contract using the [Flow Dependency Manager]:
 
 ```zsh
 flow dependencies add mainnet://d8a7e05a7ac670c0.HybridCustody
@@ -746,6 +748,9 @@ In this tutorial, you took your first steps towards building powerful new experi
 [Next.js]: https://nextjs.org/docs/app/getting-started/installation
 [Yarn]: https://yarnpkg.com
 [Flow CLI]: ../../tools/flow-cli/index.md
+[other installation methods]: ../../tools/flow-cli/install.md
+[initializes a project]: ../../tools/flow-cli/super-commands.md#init
+[Flow Dependency Manager]: ../../tools/flow-cli/dependency-manager.md
 [FCL]: ../../tools/clients/fcl-js/index.md
 [App Quickstart Guide]: ./flow-app-quickstart.md
 [Wallet Connect]: https://cloud.walletconnect.com/sign-in
