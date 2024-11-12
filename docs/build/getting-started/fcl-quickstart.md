@@ -198,11 +198,11 @@ function App() {
             return Counter.getCount()
           }
         `,
-    });
-    setCount(res);
-  } catch (error) {
-    console.error('Error querying count:', error);
-  }
+      });
+      setCount(res);
+    } catch (error) {
+      console.error('Error querying count:', error);
+    }
   };
 
   useEffect(() => {
@@ -224,7 +224,7 @@ Now, run `npm start` again. After a moment, the count from the `Counter` contrac
 
 ## Mutating the Chain State
 
-Now that we've successfully read data from the Flow blockchain, let's modify the state by incrementing or decrementing the `count` in the `Counter` contract. To do this, we'll need to send a transaction to the blockchain, which requires user authentication through a wallet.
+Now that we've successfully read data from the Flow blockchain, let's modify the state by incrementing the `count` in the `Counter` contract. To do this, we'll need to send a transaction to the blockchain, which requires user authentication through a wallet.
 
 ### Creating a Flow Wallet and Funding Your Testnet Account
 
@@ -301,7 +301,7 @@ return (
       <div>
         <p>Address: {user.addr}</p>
         <button onClick={logOut}>Log Out</button>
-        {/* We'll add the transaction buttons here later */}
+        {/* We'll add the transaction button here later */}
       </div>
     ) : (
       <button onClick={logIn}>Log In</button>
@@ -312,11 +312,11 @@ return (
 
 Now, when the user clicks the "Log In" button, they'll be presented with the Discovery UI to select a wallet for authentication.
 
-### Sending Transactions to Increment and Decrement the Counter
+### Sending a Transaction to Increment the Counter
 
-Next, we'll add buttons to allow the user to increment or decrement the count by sending transactions to the blockchain.
+Next, we'll add a button to allow the user to increment the count by sending a transaction to the blockchain.
 
-First, define the `incrementCount` and `decrementCount` functions:
+First, define the `incrementCount` function:
 
 ```jsx
 const incrementCount = async () => {
@@ -348,46 +348,16 @@ const incrementCount = async () => {
     console.error('Transaction Failed', error);
   }
 };
-
-const decrementCount = async () => {
-  try {
-    const transactionId = await fcl.mutate({
-      cadence: `
-        import Counter from 0x8a4dce54554b225d
-
-        transaction {
-          prepare(acct: AuthAccount) {}
-          execute {
-            Counter.decrement()
-          }
-        }
-      `,
-      proposer: fcl.currentUser,
-      payer: fcl.currentUser,
-      authorizations: [fcl.currentUser.authorization],
-      limit: 50,
-    });
-
-    console.log('Transaction Id', transactionId);
-
-    await fcl.tx(transactionId).onceSealed();
-    console.log('Transaction Sealed');
-
-    queryCount();
-  } catch (error) {
-    console.error('Transaction Failed', error);
-  }
-};
 ```
 
 - **Explanation**:
   - `fcl.mutate` is used to send a transaction to the Flow blockchain.
-  - The Cadence transaction imports the `Counter` contract and calls either `increment()` or `decrement()`.
+  - The Cadence transaction imports the `Counter` contract and calls `increment()`.
   - `proposer`, `payer`, and `authorizations` are set to `fcl.currentUser`, meaning the authenticated user will sign and pay for the transaction.
   - We wait for the transaction to be sealed (completed and finalized on the blockchain) using `fcl.tx(transactionId).onceSealed()`.
   - After the transaction is sealed, we call `queryCount()` to fetch the updated count.
 
-Next, update the `return` statement to include the buttons for incrementing and decrementing the count:
+Next, update the `return` statement to include the button for incrementing the count:
 
 ```jsx
 {user.loggedIn ? (
@@ -396,7 +366,6 @@ Next, update the `return` statement to include the buttons for incrementing and 
     <button onClick={logOut}>Log Out</button>
     <div>
       <button onClick={incrementCount}>Increment Count</button>
-      <button onClick={decrementCount}>Decrement Count</button>
     </div>
   </div>
 ) : (
@@ -405,8 +374,8 @@ Next, update the `return` statement to include the buttons for incrementing and 
 ```
 
 - **Explanation**:
-  - When the user is logged in, we display two buttons: "Increment Count" and "Decrement Count".
-  - Clicking these buttons triggers the corresponding functions to send a transaction to increment or decrement the count.
+  - When the user is logged in, we display a button: "Increment Count".
+  - Clicking this button triggers the `incrementCount` function to send a transaction to increment the count.
 
 ## Full Code
 
@@ -487,36 +456,6 @@ function App() {
     }
   };
 
-  const decrementCount = async () => {
-    try {
-      const transactionId = await fcl.mutate({
-        cadence: `
-          import Counter from 0x8a4dce54554b225d
-
-          transaction {
-            prepare(acct: AuthAccount) {}
-            execute {
-              Counter.decrement()
-            }
-          }
-        `,
-        proposer: fcl.currentUser,
-        payer: fcl.currentUser,
-        authorizations: [fcl.currentUser.authorization],
-        limit: 50,
-      });
-
-      console.log('Transaction Id', transactionId);
-
-      await fcl.tx(transactionId).onceSealed();
-      console.log('Transaction Sealed');
-
-      queryCount();
-    } catch (error) {
-      console.error('Transaction Failed', error);
-    }
-  };
-
   return (
     <div className="App">
       <div>FCL App Quickstart</div>
@@ -527,7 +466,6 @@ function App() {
           <button onClick={logOut}>Log Out</button>
           <div>
             <button onClick={incrementCount}>Increment Count</button>
-            <button onClick={decrementCount}>Decrement Count</button>
           </div>
         </div>
       ) : (
@@ -549,9 +487,9 @@ Now, run your app with `npm start` and open it in your browser.
   - The Discovery UI will appear, presenting you with a list of wallets to authenticate with (e.g., Flow Testnet Wallet).
   - Select a wallet and follow the prompts to log in.
 
-- **Increment or Decrement Count**:
+- **Increment Count**:
   - Once logged in, you'll see your account address displayed.
-  - Click the "Increment Count" or "Decrement Count" buttons.
+  - Click the "Increment Count" button.
   - Your wallet will prompt you to approve the transaction.
   - After approving, the transaction will be sent to the Flow blockchain.
 
@@ -564,11 +502,6 @@ Now, run your app with `npm start` and open it in your browser.
 By following these steps, you've successfully created a simple frontend application that interacts with the `Counter` smart contract on the Flow blockchain. You've learned how to read data from the blockchain, authenticate users, and send transactions to mutate the state of a smart contract.
 
 <!-- Relative-style links. Does not render on the page -->
-
-[Flow Client Library]: https://github.com/onflow/fcl-js
-[Cadence]: https://developers.flow.com/cadence
-[React]: https://reactjs.org/docs/getting-started.html
-[Create React App]: https://create-react-app.dev
 
 [Flow Client Library]: ../../tools/clients/fcl-js/index.md
 [Cadence]: https://cadence-lang.org
