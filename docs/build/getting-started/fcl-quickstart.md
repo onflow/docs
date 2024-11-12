@@ -5,7 +5,7 @@ sidebar_label: Simple Frontend
 
 # Simple Frontend
 
-[Flow Client Library] (FCL) is a JavaScript library developed to facilitate interactions with the Flow blockchain. It provides developers with tools to build, integrate, and interact with Flow directly from web applications. This quickstart will guide you through interacting with a contract already deployed on Flow, reading and mutating its state, and setting up wallet authentication using FCL's Discovery UI.
+[Flow Client Library] (FCL) is a JavaScript library developed to facilitate interactions with the Flow blockchain. It provides developers with tools to build, integrate, and interact with Flow directly from web applications. This quickstart will guide you through interacting with the `Counter` contract already deployed on Flow, reading and mutating its state, and setting up wallet authentication using FCL's Discovery UI.
 
 For this tutorial, we're going to create a [React] app using [Create React App]. We'll keep the code as simple as possible, so even if you're coming from another framework, you can follow along.
 
@@ -13,7 +13,7 @@ For this tutorial, we're going to create a [React] app using [Create React App].
 
 After completing this guide, you'll be able to:
 
-- Display data from a [Cadence] smart contract on a React frontend using the [Flow Client Library].
+- Display data from a [Cadence] smart contract (`Counter`) on a React frontend using the [Flow Client Library].
 - Mutate the state of a smart contract by sending transactions using FCL and a wallet.
 - Set up the Discovery UI to use a wallet for authentication.
 
@@ -26,7 +26,7 @@ npx create-react-app fcl-app-quickstart
 cd fcl-app-quickstart
 ```
 
-This command uses sets up a new React project named `fcl-app-quickstart`. Then, we navigate into the project directory.
+This command sets up a new React project named `fcl-app-quickstart`. Then, we navigate into the project directory.
 
 Open the new project in your editor.
 
@@ -68,7 +68,7 @@ npm install @onflow/fcl --save
 
 This command installs FCL and adds it to your project's dependencies.
 
-Next, we'll configure FCL to connect to the [Flow Testnet](../../networks/flow-networks/accessing-testnet.md). An [Access Node](../../networks/node-ops/access-onchain-data/access-nodes/accessing-data/access-api.md) serves as the primary point of interaction for clients to communicate with the Flow network. It provides a gateway for submitting transactions, querying data, and retrieving information.
+Next, we'll configure FCL to connect to the [Flow Testnet](https://developers.flow.com/tools/access-api#testnet-access-node). An [Access Node](https://developers.flow.com/tools/access-api) serves as the primary point of interaction for clients to communicate with the Flow network. It provides a gateway for submitting transactions, querying data, and retrieving information.
 
 In `src/App.js`, import FCL and add the configuration code:
 
@@ -107,11 +107,11 @@ export default App;
 
 ## Querying the Chain
 
-Now, let's read data from a smart contract deployed on the Flow Testnet. We'll use a `HelloWorld` contract deployed to the account `0xa1296b1e2e90ca5b` (you can [view the contract here] to see what it looks like).
+Now, let's read data from the `Counter` smart contract deployed on the Flow Testnet. We'll use the `Counter` contract deployed to the account `0x8a4dce54554b225d` (the same contract we used in previous steps).
 
-This contract has a public variable `greeting` that we can read.
+This contract has a public function `getCount()` that we can call to retrieve the current count.
 
-First, we'll set up state in our app to store the greeting and manage component updates. We'll use React's `useState` and `useEffect` hooks.
+First, we'll set up state in our app to store the count and manage component updates. We'll use React's `useState` and `useEffect` hooks.
 
 Update your imports in `src/App.js` to include `useState` and `useEffect`:
 
@@ -119,52 +119,56 @@ Update your imports in `src/App.js` to include `useState` and `useEffect`:
 import { useEffect, useState } from 'react';
 ```
 
-Next, initialize the `greeting` state variable inside your `App` component:
+Next, initialize the `count` state variable inside your `App` component:
 
 ```jsx
-const [greeting, setGreeting] = useState('');
+const [count, setCount] = useState(0);
 ```
 
-Now, let's create a function to query the greeting from the blockchain:
+Now, let's create a function to query the count from the blockchain:
 
 ```jsx
-const queryGreeting = async () => {
-  const res = await fcl.query({
-    cadence: `
-      import HelloWorld from 0xa1296b1e2e90ca5b
+const queryCount = async () => {
+  try {
+    const res = await fcl.query({
+      cadence: `
+        import Counter from 0x8a4dce54554b225d
 
-      access(all)
-      fun main(): String {
-        return HelloWorld.greeting
-      }
-    `,
-  });
-  setGreeting(res);
+        access(all)
+        fun main(): Int {
+          return Counter.getCount()
+        }
+      `,
+    });
+    setCount(res);
+  } catch (error) {
+    console.error('Error querying count:', error);
+  }
 };
 ```
 
 - **Explanation**:
-    - We use `fcl.query` to send a script to the Flow blockchain.
-    - The Cadence script imports the `HelloWorld` contract and defines a `main` function that returns the `greeting` variable.
-    - The result of the query is stored in `res`, and we update the `greeting` state with `setGreeting(res)`.
+  - We use `fcl.query` to send a script to the Flow blockchain.
+  - The Cadence script imports the `Counter` contract and defines a `main` function that returns the `count` variable via the `getCount()` function.
+  - The result of the query is stored in `res`, and we update the `count` state with `setCount(res)`.
 
-Next, use the `useEffect` hook to call `queryGreeting` when the component mounts:
+Next, use the `useEffect` hook to call `queryCount` when the component mounts:
 
 ```jsx
 useEffect(() => {
-  queryGreeting();
+  queryCount();
 }, []);
 ```
 
-The empty array `[]` ensures that `queryGreeting` is called only once when the component first renders.
+The empty array `[]` ensures that `queryCount` is called only once when the component first renders.
 
-Finally, update the `return` statement to display the greeting:
+Finally, update the `return` statement to display the count:
 
 ```jsx
 return (
   <div className="App">
     <div>FCL App Quickstart</div>
-    <div>Greeting: {greeting}</div>
+    <div>Count: {count}</div>
   </div>
 );
 ```
@@ -181,30 +185,34 @@ fcl.config({
 });
 
 function App() {
-  const [greeting, setGreeting] = useState('');
+  const [count, setCount] = useState(0);
 
-  const queryGreeting = async () => {
-    const res = await fcl.query({
-      cadence: `
-        import HelloWorld from 0xa1296b1e2e90ca5b
+  const queryCount = async () => {
+    try {
+      const res = await fcl.query({
+        cadence: `
+          import Counter from 0x8a4dce54554b225d
 
-        access(all)
-        fun main(): String {
-          return HelloWorld.greeting
-        }
-      `,
+          access(all)
+          fun main(): Int {
+            return Counter.getCount()
+          }
+        `,
     });
-    setGreeting(res);
+    setCount(res);
+  } catch (error) {
+    console.error('Error querying count:', error);
+  }
   };
 
   useEffect(() => {
-    queryGreeting();
+    queryCount();
   }, []);
 
   return (
     <div className="App">
       <div>FCL App Quickstart</div>
-      <div>Greeting: {greeting}</div>
+      <div>Count: {count}</div>
     </div>
   );
 }
@@ -212,17 +220,17 @@ function App() {
 export default App;
 ```
 
-Now, run `npm start` again. After a moment, the greeting from the `HelloWorld` contract should appear on your page!
+Now, run `npm start` again. After a moment, the count from the `Counter` contract should appear on your page!
 
 ## Mutating the Chain State
 
-Now that we've successfully read data from the Flow blockchain, let's modify the state by changing the `greeting` in the `HelloWorld` contract. To do this, we'll need to send a transaction to the blockchain, which requires user authentication through a wallet.
+Now that we've successfully read data from the Flow blockchain, let's modify the state by incrementing or decrementing the `count` in the `Counter` contract. To do this, we'll need to send a transaction to the blockchain, which requires user authentication through a wallet.
 
 ### Creating a Flow Wallet and Funding Your Testnet Account
 
-Before sending transactions, you need a Flow wallet to authenticate and interact with the blockchain. You can create a wallet by visiting the [Flow Wallet](https://wallet.flow.com/) website. Follow the on-screen instructions to set up your wallet.
+Before sending transactions, you need a Flow wallet to authenticate and interact with the blockchain. You can create a wallet by visiting the [Flow Testnet Wallet](https://testnet-faucet.onflow.org/authn) website. Follow the on-screen instructions to set up your wallet.
 
-Once you have a wallet, make sure that your account has enough FLOW tokens to cover transaction fees on the Flow Testnet. You can fund your testnet account using the [Flow Testnet Faucet](https://faucet.flow.com/fund-account). Simply enter your account address and submit to receive testnet FLOW tokens.
+Once you have a wallet, make sure that your account has enough FLOW tokens to cover transaction fees on the Flow Testnet. You can fund your testnet account using the [Flow Testnet Faucet](https://testnet-faucet.onflow.org/fund-account). Simply enter your account address and submit to receive testnet FLOW tokens.
 
 ### Setting Up Wallet Authentication with Discovery
 
@@ -258,13 +266,13 @@ Then, use `useEffect` to subscribe to the current user's authentication state:
 ```jsx
 useEffect(() => {
   fcl.currentUser.subscribe(setUser);
-  queryGreeting();
+  queryCount();
 }, []);
 ```
 
 - **Explanation**:
-    - `fcl.currentUser.subscribe(setUser)` sets up a listener that updates the `user` state whenever the authentication state changes.
-    - We also call `queryGreeting()` to fetch the greeting when the component mounts.
+  - `fcl.currentUser.subscribe(setUser)` sets up a listener that updates the `user` state whenever the authentication state changes.
+  - We also call `queryCount()` to fetch the count when the component mounts.
 
 Next, define the `logIn` and `logOut` functions:
 
@@ -279,8 +287,8 @@ const logOut = () => {
 ```
 
 - **Explanation**:
-    - `fcl.authenticate()` triggers the authentication process using the Discovery UI.
-    - `fcl.unauthenticate()` logs the user out.
+  - `fcl.authenticate()` triggers the authentication process using the Discovery UI.
+  - `fcl.unauthenticate()` logs the user out.
 
 Now, update the `return` statement to include authentication buttons and display the user's address when they're logged in:
 
@@ -288,12 +296,12 @@ Now, update the `return` statement to include authentication buttons and display
 return (
   <div className="App">
     <div>FCL App Quickstart</div>
-    <div>Greeting: {greeting}</div>
+    <div>Count: {count}</div>
     {user.loggedIn ? (
       <div>
         <p>Address: {user.addr}</p>
         <button onClick={logOut}>Log Out</button>
-        {/* We'll add the transaction form here later */}
+        {/* We'll add the transaction buttons here later */}
       </div>
     ) : (
       <button onClick={logIn}>Log In</button>
@@ -304,36 +312,26 @@ return (
 
 Now, when the user clicks the "Log In" button, they'll be presented with the Discovery UI to select a wallet for authentication.
 
-### Sending a Transaction to Change the Greeting
+### Sending Transactions to Increment and Decrement the Counter
 
-Next, we'll add a form to allow the user to change the greeting by sending a transaction to the blockchain.
+Next, we'll add buttons to allow the user to increment or decrement the count by sending transactions to the blockchain.
 
-First, add a state variable to hold the new greeting:
-
-```jsx
-const [newGreeting, setNewGreeting] = useState('');
-```
-
-Now, define the `sendTransaction` function:
+First, define the `incrementCount` and `decrementCount` functions:
 
 ```jsx
-const sendTransaction = async () => {
+const incrementCount = async () => {
   try {
     const transactionId = await fcl.mutate({
       cadence: `
-        import HelloWorld from 0xa1296b1e2e90ca5b
+        import Counter from 0x8a4dce54554b225d
 
-        transaction(greeting: String) {
-            prepare(acct: &Account) {
-              log(acct.address)
-            }
-          
-            execute {
-              HelloWorld.changeGreeting(newGreeting: greeting)
-            }
+        transaction {
+          prepare(acct: AuthAccount) {}
+          execute {
+            Counter.increment()
           }
+        }
       `,
-      args: (arg, t) => [arg(newGreeting, t.String)],
       proposer: fcl.currentUser,
       payer: fcl.currentUser,
       authorizations: [fcl.currentUser.authorization],
@@ -345,8 +343,37 @@ const sendTransaction = async () => {
     await fcl.tx(transactionId).onceSealed();
     console.log('Transaction Sealed');
 
-    queryGreeting();
-    setNewGreeting('');
+    queryCount();
+  } catch (error) {
+    console.error('Transaction Failed', error);
+  }
+};
+
+const decrementCount = async () => {
+  try {
+    const transactionId = await fcl.mutate({
+      cadence: `
+        import Counter from 0x8a4dce54554b225d
+
+        transaction {
+          prepare(acct: AuthAccount) {}
+          execute {
+            Counter.decrement()
+          }
+        }
+      `,
+      proposer: fcl.currentUser,
+      payer: fcl.currentUser,
+      authorizations: [fcl.currentUser.authorization],
+      limit: 50,
+    });
+
+    console.log('Transaction Id', transactionId);
+
+    await fcl.tx(transactionId).onceSealed();
+    console.log('Transaction Sealed');
+
+    queryCount();
   } catch (error) {
     console.error('Transaction Failed', error);
   }
@@ -354,14 +381,13 @@ const sendTransaction = async () => {
 ```
 
 - **Explanation**:
-    - `fcl.mutate` is used to send a transaction to the Flow blockchain.
-    - The Cadence transaction imports the `HelloWorld` contract and calls `changeGreeting` with the new greeting.
-    - We pass the `newGreeting` as an argument to the transaction.
-    - `proposer`, `payer`, and `authorizations` are set to `fcl.currentUser`, meaning the authenticated user will sign and pay for the transaction.
-    - We wait for the transaction to be sealed (completed and finalized on the blockchain) using `fcl.tx(transactionId).onceSealed()`.
-    - After the transaction is sealed, we call `queryGreeting()` to fetch the updated greeting.
+  - `fcl.mutate` is used to send a transaction to the Flow blockchain.
+  - The Cadence transaction imports the `Counter` contract and calls either `increment()` or `decrement()`.
+  - `proposer`, `payer`, and `authorizations` are set to `fcl.currentUser`, meaning the authenticated user will sign and pay for the transaction.
+  - We wait for the transaction to be sealed (completed and finalized on the blockchain) using `fcl.tx(transactionId).onceSealed()`.
+  - After the transaction is sealed, we call `queryCount()` to fetch the updated count.
 
-Next, update the `return` statement to include the input field and button for changing the greeting:
+Next, update the `return` statement to include the buttons for incrementing and decrementing the count:
 
 ```jsx
 {user.loggedIn ? (
@@ -369,13 +395,8 @@ Next, update the `return` statement to include the input field and button for ch
     <p>Address: {user.addr}</p>
     <button onClick={logOut}>Log Out</button>
     <div>
-      <input
-        type="text"
-        placeholder="Enter new greeting"
-        value={newGreeting}
-        onChange={(e) => setNewGreeting(e.target.value)}
-      />
-      <button onClick={sendTransaction}>Change Greeting</button>
+      <button onClick={incrementCount}>Increment Count</button>
+      <button onClick={decrementCount}>Decrement Count</button>
     </div>
   </div>
 ) : (
@@ -384,9 +405,8 @@ Next, update the `return` statement to include the input field and button for ch
 ```
 
 - **Explanation**:
-    - When the user is logged in, we display an input field for the new greeting and a button to submit it.
-    - The input field is controlled by the `newGreeting` state.
-    - Clicking the "Change Greeting" button triggers the `sendTransaction` function.
+  - When the user is logged in, we display two buttons: "Increment Count" and "Decrement Count".
+  - Clicking these buttons triggers the corresponding functions to send a transaction to increment or decrement the count.
 
 ## Full Code
 
@@ -403,27 +423,30 @@ fcl.config({
 });
 
 function App() {
-  const [greeting, setGreeting] = useState('');
+  const [count, setCount] = useState(0);
   const [user, setUser] = useState({ loggedIn: false });
-  const [newGreeting, setNewGreeting] = useState('');
 
-  const queryGreeting = async () => {
-    const res = await fcl.query({
-      cadence: `
-        import HelloWorld from 0xa1296b1e2e90ca5b
+  const queryCount = async () => {
+    try {
+      const res = await fcl.query({
+        cadence: `
+          import Counter from 0x8a4dce54554b225d
 
-        access(all)
-        fun main(): String {
-          return HelloWorld.greeting
-        }
-      `,
-    });
-    setGreeting(res);
+          access(all)
+          fun main(): Int {
+            return Counter.getCount()
+          }
+        `,
+      });
+      setCount(res);
+    } catch (error) {
+      console.error('Error querying count:', error);
+    }
   };
 
   useEffect(() => {
     fcl.currentUser.subscribe(setUser);
-    queryGreeting();
+    queryCount();
   }, []);
 
   const logIn = () => {
@@ -434,23 +457,19 @@ function App() {
     fcl.unauthenticate();
   };
 
-  const sendTransaction = async () => {
+  const incrementCount = async () => {
     try {
       const transactionId = await fcl.mutate({
         cadence: `
-          import HelloWorld from 0xa1296b1e2e90ca5b
+          import Counter from 0x8a4dce54554b225d
 
-          transaction(greeting: String) {
-            prepare(acct: &Account) {
-              log(acct.address)
-            }
-          
+          transaction {
+            prepare(acct: AuthAccount) {}
             execute {
-              HelloWorld.changeGreeting(newGreeting: greeting)
+              Counter.increment()
             }
           }
         `,
-        args: (arg, t) => [arg(newGreeting, t.String)],
         proposer: fcl.currentUser,
         payer: fcl.currentUser,
         authorizations: [fcl.currentUser.authorization],
@@ -462,8 +481,37 @@ function App() {
       await fcl.tx(transactionId).onceSealed();
       console.log('Transaction Sealed');
 
-      queryGreeting();
-      setNewGreeting('');
+      queryCount();
+    } catch (error) {
+      console.error('Transaction Failed', error);
+    }
+  };
+
+  const decrementCount = async () => {
+    try {
+      const transactionId = await fcl.mutate({
+        cadence: `
+          import Counter from 0x8a4dce54554b225d
+
+          transaction {
+            prepare(acct: AuthAccount) {}
+            execute {
+              Counter.decrement()
+            }
+          }
+        `,
+        proposer: fcl.currentUser,
+        payer: fcl.currentUser,
+        authorizations: [fcl.currentUser.authorization],
+        limit: 50,
+      });
+
+      console.log('Transaction Id', transactionId);
+
+      await fcl.tx(transactionId).onceSealed();
+      console.log('Transaction Sealed');
+
+      queryCount();
     } catch (error) {
       console.error('Transaction Failed', error);
     }
@@ -472,19 +520,14 @@ function App() {
   return (
     <div className="App">
       <div>FCL App Quickstart</div>
-      <div>Greeting: {greeting}</div>
+      <div>Count: {count}</div>
       {user.loggedIn ? (
         <div>
           <p>Address: {user.addr}</p>
           <button onClick={logOut}>Log Out</button>
           <div>
-            <input
-              type="text"
-              placeholder="Enter new greeting"
-              value={newGreeting}
-              onChange={(e) => setNewGreeting(e.target.value)}
-            />
-            <button onClick={sendTransaction}>Change Greeting</button>
+            <button onClick={incrementCount}>Increment Count</button>
+            <button onClick={decrementCount}>Decrement Count</button>
           </div>
         </div>
       ) : (
@@ -502,22 +545,30 @@ export default App;
 Now, run your app with `npm start` and open it in your browser.
 
 - **Log In**:
-    - Click the "Log In" button.
-    - The Discovery UI will appear, presenting you with a list of wallets to authenticate with (e.g., Flow Wallet).
-    - Select a wallet and follow the prompts to log in.
+  - Click the "Log In" button.
+  - The Discovery UI will appear, presenting you with a list of wallets to authenticate with (e.g., Flow Testnet Wallet).
+  - Select a wallet and follow the prompts to log in.
 
-- **Change Greeting**:
-    - Once logged in, you'll see your account address displayed.
-    - Enter a new greeting in the input field.
-    - Click the "Change Greeting" button.
-    - Your wallet will prompt you to approve the transaction.
-    - After approving, the transaction will be sent to the Flow blockchain.
+- **Increment or Decrement Count**:
+  - Once logged in, you'll see your account address displayed.
+  - Click the "Increment Count" or "Decrement Count" buttons.
+  - Your wallet will prompt you to approve the transaction.
+  - After approving, the transaction will be sent to the Flow blockchain.
 
-- **View Updated Greeting**:
-    - After the transaction is sealed, the app will automatically fetch and display the updated greeting.
-    - You should see your new greeting displayed on the page.
+- **View Updated Count**:
+  - After the transaction is sealed, the app will automatically fetch and display the updated count.
+  - You should see the count updated on the page.
 
-<!-- Relative-style links.  Does not render on the page -->
+---
+
+By following these steps, you've successfully created a simple frontend application that interacts with the `Counter` smart contract on the Flow blockchain. You've learned how to read data from the blockchain, authenticate users, and send transactions to mutate the state of a smart contract.
+
+<!-- Relative-style links. Does not render on the page -->
+
+[Flow Client Library]: https://github.com/onflow/fcl-js
+[Cadence]: https://developers.flow.com/cadence
+[React]: https://reactjs.org/docs/getting-started.html
+[Create React App]: https://create-react-app.dev
 
 [Flow Client Library]: ../../tools/clients/fcl-js/index.md
 [Cadence]: https://cadence-lang.org
