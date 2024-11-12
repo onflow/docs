@@ -738,7 +738,7 @@ Your app will now look like the [simple onchain app] demo!
 In this tutorial, you took your first steps towards building powerful new experiences that meet you customers where they are.  They can keep their assets in the wallet associate with one app, but also give your app the ability to use them - seamlessly, safely, and beautifully!
 
 [Account Linking]: ./account-linking/index.md
-[NBA Top Shot]: https://nbaTop Shot.com
+[NBA Top Shot]: https://nbatopshot.com
 [simple onchain app]: https://nextjs-topshot-account-linking.vercel.app
 [Dapper Wallet]: https://meetdapper.com
 [Yarn]: https://yarnpkg.com
