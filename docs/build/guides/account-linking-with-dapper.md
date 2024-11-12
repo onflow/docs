@@ -347,7 +347,7 @@ Click the button and log in with your Flow wallet.
 
 Now that your app is set up, you can make use of [Account Linking] to to pull your NFTs from your Dapper Wallet, through your Flow Wallet, and into the app.
 
-### Set Up Account Linking
+### Setting Up Account Linking
 
 If you haven't yet, you'll need to [link your Dapper Wallet] to your Flow Wallet.
 
