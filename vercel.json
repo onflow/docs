@@ -329,7 +329,7 @@
     },
     {
       "source": "/tutorials/flow-dapp-anatomy",
-      "destination": "/build/getting-started/app-architecture",
+      "destination": "/build/app-architecture",
       "permanent": true
     },
     {
@@ -1266,6 +1266,16 @@
     {
       "source": "/build/guides/flow-cli",
       "destination": "/tools/flow-cli/install",
+      "permanent": true
+    },
+    {
+      "source": "/flow-cli/:path*",
+      "destination": "/tools/flow-cli/:path*",
+      "permanent": true
+    },
+    {
+      "source": "/evm/vm-bridge",
+      "destination": "/evm/cadence/vm-bridge",
       "permanent": true
     }
   ]
