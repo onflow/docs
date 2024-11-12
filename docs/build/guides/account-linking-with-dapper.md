@@ -74,13 +74,7 @@ flow init --config-only
 
 The `--config-only` flag [initializes a project] with the just the config file.  This allows the Flow CLI to interact with your project without adding any unnecessary files.
 
-Next, you'll need to do a little bit of config work so that your project knows how to read Cadence files.  Install Raw Loader:
-
-```zsh
-yarn add raw-loader --dev
-```
-
-And the Flow Cadence Plugin:
+Next, you'll need to do a little bit of config work so that your project knows how to read Cadence files.  Install the Flow Cadence Plugin:
 
 ```zsh
 yarn add flow-cadence-plugin --dev
