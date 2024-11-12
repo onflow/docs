@@ -193,7 +193,7 @@ export default function useCurrentUser() {
     fcl.currentUser().subscribe(setUser);
   }, []);
 
-  return [user, user?.addr != null, logIn, logOut];
+  return {user, loggedIn: user?.addr != null, logIn, logOut};
 }
 ```
 
