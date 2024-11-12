@@ -5,7 +5,7 @@ sidebar_label: Simple Frontend
 
 # Simple Frontend
 
-[Flow Client Library] (FCL) is a JavaScript library developed to facilitate interactions with the Flow blockchain. It provides developers with tools to build, integrate, and interact with Flow directly from web applications. This quickstart will guide you through interacting with the `Counter` contract already deployed on Flow, reading and mutating its state, and setting up wallet authentication using FCL's Discovery UI.
+Building upon the `Counter` contract you interacted with in [Step 1: Contract Interaction](hello-world.md) and deployed locally in [Step 2: Local Development](./flow-cli.md), this tutorial will guide you through creating a simple frontend application to interact with the `Counter` smart contract on the Flow blockchain. Using the [Flow Client Library] (FCL), you'll learn how to read and modify the contract's state from a React web application, and set up wallet authentication using FCL's Discovery UI.
 
 For this tutorial, we're going to create a [React] app using [Create React App]. We'll keep the code as simple as possible, so even if you're coming from another framework, you can follow along.
 
