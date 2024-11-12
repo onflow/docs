@@ -441,6 +441,7 @@ access(all) fun main(addr: Address): AnyStruct {
           continue
         }
 
+        // We're dealing with a Collection but we need to check if accessible from the parent account
         if let cap: Capability = childAcct.getCapability(controllerID: c.capabilityID, type: providerType) { // Part 1
           let providerCap = cap as! Capability<&{NonFungibleToken.Provider}>
 
