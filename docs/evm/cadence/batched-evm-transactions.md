@@ -123,7 +123,7 @@ you're on the "Write Contract" tab which allows you to interact with the contrac
 Before you can interact with the contract, you need to connect your MetaMask wallet to the Flowscan EVM block explorer.
 Click the "Connect" button in the top right corner and follow the prompts to connect your MetaMask wallet.
 
-<!-- TODO: Image of Write Contract tab & connect -->
+![Connect wallet to Flowscan](./flowscan-connect.png)
 
 Once connected, you should see your address in the top right corner and above the contract's functions.
 
@@ -134,17 +134,17 @@ being the smallest unit of an EVM's native currency (inherited from Ethereum's u
 
 Your input field should have `1 000 000 000 000 000 000` in it as shown below.
 
-<!-- TODO: Image of the deposit field with input -->
+![Deposit 1 FLOW to WFLOW contract](./wflow-deposit.png)
 
 You can now click the "Write" button to submit the transaction. Once MetaMask prompts you to sign the transaction, click
 "Confirm" and give it a few seconds to process.
 
-<!-- TODO: Image of the confirmation popup window -->
+![Confirm WFLOW deposit in MetaMask](./wflow-deposit-confirm.png)
 
 Once confirmed, you should be able to see WFLOW balance in your tokens list in MetaMask - if not, you can click on
 "Import Tokens" and paste the WFLOW contract address found on the Flowscan page and refresh your list.
 
-<!-- TODO: Image of the Tokens list page in MetaMask -->
+![WFLOW in MetaMask](./wflow-in-metamask-tokens.png)
 
 #### 2. Approve WFLOW Transfer
 
@@ -153,7 +153,7 @@ same WFLOW page in Flowscan, click on the `approve` method. This time, you'll ne
 contract address - `0xdbC43Ba45381e02825b14322cDdd15eC4B3164E6` - and the amount of WFLOW you want to approve - again `1
 000 000 000 000 000 000` WFLOW.
 
-<!-- TODO: Image of the approve with input -->
+![Approve MaybeMintERC721 for 1 WFLOW in Flowscan](./wflow-approve.png)
 
 Click "Write" to submit the transaction. To be clear, this does not complete a transfer, but allows the
 `MaybeMintERC721` contract to transfer your WFLOW on your behalf which will execute in the next step.
