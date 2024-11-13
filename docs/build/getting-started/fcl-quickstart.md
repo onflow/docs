@@ -5,104 +5,91 @@ sidebar_label: Simple Frontend
 
 # Simple Frontend
 
-Building upon the `Counter` contract you interacted with in [Step 1: Contract Interaction](hello-world.md) and deployed locally in [Step 2: Local Development](./flow-cli.md), this tutorial will guide you through creating a simple frontend application to interact with the `Counter` smart contract on the Flow blockchain. Using the [Flow Client Library] (FCL), you'll learn how to read and modify the contract's state from a React web application, and set up wallet authentication using FCL's Discovery UI.
-
-For this tutorial, we're going to create a [React] app using [Create React App]. We'll keep the code as simple as possible, so even if you're coming from another framework, you can follow along.
+Building upon the `Counter` contract you interacted with in [Step 1: Contract Interaction](hello-world.md) and deployed locally in [Step 2: Local Development](./flow-cli.md), this tutorial will guide you through creating a simple frontend application using [Next.js] to interact with the `Counter` smart contract on the Flow blockchain. Using the [Flow Client Library] (FCL), you'll learn how to read and modify the contract's state from a React web application and set up wallet authentication using FCL's Discovery UI.
 
 ## Objectives
 
 After completing this guide, you'll be able to:
 
-- Display data from a [Cadence] smart contract (`Counter`) on a React frontend using the [Flow Client Library].
+- Display data from a [Cadence] smart contract (`Counter`) on a Next.js frontend using the [Flow Client Library].
 - Mutate the state of a smart contract by sending transactions using FCL and a wallet.
 - Set up the Discovery UI to use a wallet for authentication.
 
 ## Creating the App
 
-First, let's create our app and navigate to it with the following terminal commands. From the root of where you keep your source code:
+First, let's create our Next.js app and navigate to it with the following terminal commands. From the root of where you keep your source code:
 
 ```bash
-npx create-react-app fcl-app-quickstart
+npx create-next-app@latest fcl-app-quickstart
 cd fcl-app-quickstart
 ```
 
-This command sets up a new React project named `fcl-app-quickstart`. Then, we navigate into the project directory.
+This command sets up a new Next.js project named `fcl-app-quickstart`. Then, we navigate into the project directory.
 
 Open the new project in your editor.
 
-The default layout includes some boilerplate code that we don't need. Let's simplify `src/App.js` to start with a clean slate. Replace the contents of `src/App.js` with:
+The default layout includes some boilerplate code that we don't need. Let's simplify `pages/index.js` to start with a clean slate. Replace the contents of `pages/index.js` with:
 
 ```jsx
-// src/App.js
+// pages/index.js
 
-import './App.css';
-
-function App() {
+export default function Home() {
   return (
-    <div className="App">
-      <div>FCL App Quickstart</div>
+    <div>
+      <h1>FCL App Quickstart</h1>
     </div>
   );
 }
-
-export default App;
 ```
 
-This code defines a simple `App` component that displays the text "FCL App Quickstart".
+This code defines a simple `Home` component that displays the text "FCL App Quickstart".
 
 Now, let's run our app with the following `npm` command:
 
 ```bash
-npm start
+npm run dev
 ```
 
-This will start the development server and open your app in the browser. You will see a page displaying `FCL App Quickstart`.
+This will start the development server and open your app in the browser at `http://localhost:3000`. You will see a page displaying `FCL App Quickstart`.
 
 ## Setting Up FCL
 
-To interact with the Flow blockchain, we need to install the [Flow Client Library] (FCL). Stop the development server by pressing `Ctrl+C` in the terminal, and then run the following command to install FCL:
+To interact with the Flow blockchain, we need to install the [Flow Client Library] (FCL). In your terminal, run the following command to install FCL:
 
 ```bash
-npm install @onflow/fcl --save
+npm install @onflow/fcl
 ```
 
 This command installs FCL and adds it to your project's dependencies.
 
-Next, we'll configure FCL to connect to the [Flow Testnet](https://developers.flow.com/tools/access-api#testnet-access-node). An [Access Node](https://developers.flow.com/tools/access-api) serves as the primary point of interaction for clients to communicate with the Flow network. It provides a gateway for submitting transactions, querying data, and retrieving information.
+Next, we'll configure FCL to connect to the [Flow Testnet]. An [Access Node] serves as the primary point of interaction for clients to communicate with the Flow network. It provides a gateway for submitting transactions, querying data, and retrieving information.
 
-In `src/App.js`, import FCL and add the configuration code:
+Create a new file `flow/config.js` (you may need to create the `flow` directory inside your project root) and add the following configuration code:
 
 ```jsx
-// src/App.js
+// flow/config.js
 
-import * as fcl from '@onflow/fcl';
+import * as fcl from "@onflow/fcl";
 
 fcl.config({
-  'accessNode.api': 'https://rest-testnet.onflow.org',
+  "accessNode.api": "https://rest-testnet.onflow.org",
+  "discovery.wallet": "https://fcl-discovery.onflow.org/testnet/authn",
 });
 ```
 
-This configuration sets the access node endpoint to the Flow Testnet.
-
-Your `src/App.js` should now look like this:
+Then, in your `pages/_app.js` file, import the configuration:
 
 ```jsx
-import './App.css';
-import * as fcl from '@onflow/fcl';
+// pages/_app.js
 
-fcl.config({
-  'accessNode.api': 'https://rest-testnet.onflow.org',
-});
+import "../styles/globals.css";
+import "../flow/config"; // Import the FCL configuration
 
-function App() {
-  return (
-    <div className="App">
-      <div>FCL App Quickstart</div>
-    </div>
-  );
+function MyApp({ Component, pageProps }) {
+  return <Component {...pageProps} />;
 }
 
-export default App;
+export default MyApp;
 ```
 
 ## Querying the Chain
@@ -113,13 +100,16 @@ This contract has a public function `getCount()` that we can call to retrieve th
 
 First, we'll set up state in our app to store the count and manage component updates. We'll use React's `useState` and `useEffect` hooks.
 
-Update your imports in `src/App.js` to include `useState` and `useEffect`:
+Update your imports in `pages/index.js` to include `useState`, `useEffect`, and `fcl`:
 
 ```jsx
-import { useEffect, useState } from 'react';
+// pages/index.js
+
+import { useState, useEffect } from "react";
+import * as fcl from "@onflow/fcl";
 ```
 
-Next, initialize the `count` state variable inside your `App` component:
+Next, initialize the `count` state variable inside your `Home` component:
 
 ```jsx
 const [count, setCount] = useState(0);
@@ -142,7 +132,7 @@ const queryCount = async () => {
     });
     setCount(res);
   } catch (error) {
-    console.error('Error querying count:', error);
+    console.error("Error querying count:", error);
   }
 };
 ```
@@ -166,25 +156,22 @@ Finally, update the `return` statement to display the count:
 
 ```jsx
 return (
-  <div className="App">
-    <div>FCL App Quickstart</div>
+  <div>
+    <h1>FCL App Quickstart</h1>
     <div>Count: {count}</div>
   </div>
 );
 ```
 
-At this point, your `src/App.js` file should look like this:
+At this point, your `pages/index.js` file should look like this:
 
 ```jsx
-import { useEffect, useState } from 'react';
-import './App.css';
-import * as fcl from '@onflow/fcl';
+// pages/index.js
 
-fcl.config({
-  'accessNode.api': 'https://rest-testnet.onflow.org',
-});
+import { useState, useEffect } from "react";
+import * as fcl from "@onflow/fcl";
 
-function App() {
+export default function Home() {
   const [count, setCount] = useState(0);
 
   const queryCount = async () => {
@@ -201,7 +188,7 @@ function App() {
       });
       setCount(res);
     } catch (error) {
-      console.error('Error querying count:', error);
+      console.error("Error querying count:", error);
     }
   };
 
@@ -210,17 +197,15 @@ function App() {
   }, []);
 
   return (
-    <div className="App">
-      <div>FCL App Quickstart</div>
+    <div>
+      <h1>FCL App Quickstart</h1>
       <div>Count: {count}</div>
     </div>
   );
 }
-
-export default App;
 ```
 
-Now, run `npm start` again. After a moment, the count from the `Counter` contract should appear on your page!
+Now, run `npm run dev` again. After a moment, the count from the `Counter` contract should appear on your page!
 
 ## Mutating the Chain State
 
@@ -255,7 +240,7 @@ fcl.config({
 
 Let's add a simple authentication flow to our app. We'll allow users to log in and log out, and display their account address when they're logged in.
 
-First, add a new state variable to manage the user's authentication state:
+First, add new state variables to manage the user's authentication state:
 
 ```jsx
 const [user, setUser] = useState({ loggedIn: false });
@@ -294,8 +279,8 @@ Now, update the `return` statement to include authentication buttons and display
 
 ```jsx
 return (
-  <div className="App">
-    <div>FCL App Quickstart</div>
+  <div>
+    <h1>FCL App Quickstart</h1>
     <div>Count: {count}</div>
     {user.loggedIn ? (
       <div>
@@ -309,8 +294,6 @@ return (
   </div>
 );
 ```
-
-Now, when the user clicks the "Log In" button, they'll be presented with the Discovery UI to select a wallet for authentication.
 
 ### Sending a Transaction to Increment the Counter
 
@@ -338,14 +321,14 @@ const incrementCount = async () => {
       limit: 50,
     });
 
-    console.log('Transaction Id', transactionId);
+    console.log("Transaction Id", transactionId);
 
     await fcl.tx(transactionId).onceSealed();
-    console.log('Transaction Sealed');
+    console.log("Transaction Sealed");
 
     queryCount();
   } catch (error) {
-    console.error('Transaction Failed', error);
+    console.error("Transaction Failed", error);
   }
 };
 ```
@@ -379,19 +362,15 @@ Next, update the `return` statement to include the button for incrementing the c
 
 ## Full Code
 
-Your `src/App.js` should now look like this:
+Your `pages/index.js` should now look like this:
 
 ```jsx
-import { useEffect, useState } from 'react';
-import './App.css';
-import * as fcl from '@onflow/fcl';
+// pages/index.js
 
-fcl.config({
-  'accessNode.api': 'https://rest-testnet.onflow.org',
-  'discovery.wallet': 'https://fcl-discovery.onflow.org/testnet/authn',
-});
+import { useState, useEffect } from "react";
+import * as fcl from "@onflow/fcl";
 
-function App() {
+export default function Home() {
   const [count, setCount] = useState(0);
   const [user, setUser] = useState({ loggedIn: false });
 
@@ -409,7 +388,7 @@ function App() {
       });
       setCount(res);
     } catch (error) {
-      console.error('Error querying count:', error);
+      console.error("Error querying count:", error);
     }
   };
 
@@ -445,20 +424,20 @@ function App() {
         limit: 50,
       });
 
-      console.log('Transaction Id', transactionId);
+      console.log("Transaction Id", transactionId);
 
       await fcl.tx(transactionId).onceSealed();
-      console.log('Transaction Sealed');
+      console.log("Transaction Sealed");
 
       queryCount();
     } catch (error) {
-      console.error('Transaction Failed', error);
+      console.error("Transaction Failed", error);
     }
   };
 
   return (
-    <div className="App">
-      <div>FCL App Quickstart</div>
+    <div>
+      <h1>FCL App Quickstart</h1>
       <div>Count: {count}</div>
       {user.loggedIn ? (
         <div>
@@ -474,13 +453,11 @@ function App() {
     </div>
   );
 }
-
-export default App;
 ```
 
 ## Running the App
 
-Now, run your app with `npm start` and open it in your browser.
+Now, run your app with `npm run dev` and open it in your browser at `http://localhost:3000`.
 
 - **Log In**:
   - Click the "Log In" button.
@@ -499,13 +476,14 @@ Now, run your app with `npm start` and open it in your browser.
 
 ---
 
-By following these steps, you've successfully created a simple frontend application that interacts with the `Counter` smart contract on the Flow blockchain. You've learned how to read data from the blockchain, authenticate users, and send transactions to mutate the state of a smart contract.
+By following these steps, you've successfully created a simple frontend application using Next.js that interacts with the `Counter` smart contract on the Flow blockchain. You've learned how to read data from the blockchain, authenticate users, and send transactions to mutate the state of a smart contract.
 
 <!-- Relative-style links. Does not render on the page -->
 
-[Flow Client Library]: ../../tools/clients/fcl-js/index.md
-[Cadence]: https://cadence-lang.org
-[React]: https://react.dev/learn
-[Create React App]: https://create-react-app.dev
-[view the contract here]: https://f.dnz.dev/0xa1296b1e2e90ca5b/HelloWorld
+[Flow Client Library]: https://github.com/onflow/fcl-js
+[Cadence]: https://developers.flow.com/cadence
+[React]: https://reactjs.org/docs/getting-started.html
+[Next.js]: https://nextjs.org/docs/getting-started
+[Flow Testnet]: https://developers.flow.com/tools/access-api#testnet-access-node
+[Access Node]: https://developers.flow.com/tools/access-api
 [FCL documentation]: ../../tools/clients/fcl-js/index.md
