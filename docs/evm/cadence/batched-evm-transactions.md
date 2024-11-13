@@ -150,7 +150,7 @@ Once confirmed, you should be able to see WFLOW balance in your tokens list in M
 
 Now that you have your WFLOW, you'll need to approve the `MaybeMintERC721` contract to transfer your WFLOW. From the
 same WFLOW page in Flowscan, click on the `approve` method. This time, you'll need to input the `MaybeMintERC721`
-contract address - `0xdbC43Ba45381e02825b14322cDdd15eC4B3164E6` - and the amount of WFLOW you want to approve - again `1
+contract address - `0x2E2Ed0Cfd3AD2f1d34481277b3204d807Ca2F8c2` - and the amount of WFLOW you want to approve - again `1
 000 000 000 000 000 000` WFLOW.
 
 ![Approve MaybeMintERC721 for 1 WFLOW in Flowscan](./wflow-approve.png)
@@ -162,7 +162,7 @@ Click "Write" to submit the transaction. To be clear, this does not complete a t
 
 Finally, we'll attempt to mint the ERC721 token using the `MaybeMintERC721` contract. Navigate to the `MaybeMintERC721`
 contract on Flowscan:
-[MaybeMintERC721](https://evm-testnet.flowscan.io/address/0xdbC43Ba45381e02825b14322cDdd15eC4B3164E6?tab=write_contract).
+[MaybeMintERC721](https://evm-testnet.flowscan.io/address/0x2E2Ed0Cfd3AD2f1d34481277b3204d807Ca2F8c2?tab=write_contract).
 
 Again, you'll be met with the contract functions on the "Write Contract" tab. Click on the `mint` function which takes
 no arguments - just click on "Write" and then "Confirm" in the resulting MetaMask window.
@@ -344,8 +344,7 @@ You can run the transaction at the following link using the community-developed 
 
 This transaction takes two arguments:
 - WFLOW contract address: `0xd3bF53DAC106A0290B0483EcBC89d40FcC961f3e`
-- MaybeMintERC721 contract address: `0xdbC43Ba45381e02825b14322cDdd15eC4B3164E6` <!-- TODO: Update the address on
-  redeployment -->
+- MaybeMintERC721 contract address: `0x2E2Ed0Cfd3AD2f1d34481277b3204d807Ca2F8c2`
 
 Before running, ensure that the network section - bottom left corner - displays Testnet. If not, click and select
 "Testnet" as your network and refresh. Once you've confirmed you're Flow Runner is targeting Testnet, copy these
