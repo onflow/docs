@@ -176,9 +176,9 @@ On success, you can click on your NFTs in MetaMask to see your newly minted toke
 
 #### Recap
 
-This process is cumbersome and requires multiple transactions, each of which could fail. Given the intent of the process
-- minting an NFT - if this were a case where the NFT was a limited edition or time-sensitive, you'd be left with WFLOW
-wrapped and approved for transfer, but no NFT and would need to manually unwind the process.
+This process is cumbersome and requires multiple transactions, each of which could fail. Given the intent of the
+process - minting an NFT - if this were a case where the NFT was a limited edition or time-sensitive, you'd be left with
+WFLOW wrapped and approved for transfer, but no NFT and would need to manually unwind the process.
 
 Or you could just use Cadence to batch these transactions and revert everything if the mint fails. Let's do that.
 
