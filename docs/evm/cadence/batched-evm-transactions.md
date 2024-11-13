@@ -4,14 +4,16 @@ sidebar_label: Batched EVM Transactions
 sidebar_position: 6
 ---
 
-Integrating Cadence into EVM applications on Flow blockchain enables developers to leverage the best of both worlds.
+Integrating Cadence into EVM applications on Flow enables developers to leverage the best of both worlds.
 This guide demonstrates how to batch EVM transactions using Cadence, allowing applications to embed multiple EVM
 transactions in a single Cadence transaction, conditioning final execution on the success of all EVM transactions.
 
 This feature can supercharge your EVM application by unlocking experiences otherwise impossible on traditional EVM
 platforms.
 
-## Learning Objectives
+## Objectives
+
+After completing this guide, you'll be able to
 
 - Construct a Cadence transaction that executes several EVM transactions such that if any EVM transaction fails, the
   entire set will revert
@@ -394,8 +396,8 @@ transactions run using an EVM account can be viewed on the EVM explorer.
 
 ## Breaking it Down
 
-Now that we can relate to the pain of manually executing these transactions and we've seen the magic Cadence can work,
-let's understand what's going on under the hood.
+Now that we can relate to the pain of manually executing these transactions and we've seen the magic you can work with
+Cadence, let's understand what's going on under the hood.
 
 To recap, our Cadence transaction does the following, reverting if any step fails:
 
@@ -404,22 +406,27 @@ To recap, our Cadence transaction does the following, reverting if any step fail
 3. Attempts to mint a `MaybeMintERC721` token
 
 But how does our Flow account interact with EVM from the Cadence runtime? As you'll recall from the [Interacting with
-COA](./interacting-with-coa.md) guide, we use a Cadence-owned account (COA) to interact with EVM contracts. This COA is
-a special resource, providing an interface through which Cadence can interact with the EVM runtime. This is importantly
-***in addition*** to the traditional routes you'd normally access normal EVMs - e.g. via the JSON-RPC API. And with this
-interface, we can take advantage of all of the benefits of Cadence - namely here scripted transactions and conditional
-execution.
+COA](./interacting-with-coa.md) guide, we use a Cadence-owned account (COA) to interact with EVM contracts from
+Cadence.
+
+A COA is a [resource](https://cadence-lang.org/docs/solidity-to-cadence#resources) providing an interface through which
+Cadence can interact with the EVM runtime. This is importantly ***in addition*** to the traditional routes you'd
+normally access normal EVMs - e.g. via the JSON-RPC API. And with this interface, we can take advantage of all of the
+benefits of Cadence - namely here scripted transactions and conditional execution.
 
 So in addition to the above steps, our transaction first configures a COA in the signer's account if one doesn't already
-exist. It then funds the COA with enough FLOW to cover the mint cost. Finally, it wraps FLOW as WFLOW, approves the
-ERC721 contract to move the mint amount, and attempts to mint the ERC721 token. Let's see what this looks like in the
-Cadence code.
+exist. It then funds the COA with enough FLOW to cover the mint cost, sourcing funds from the signing Flow account's
+Cadence Vault. Finally, it wraps FLOW as WFLOW, approves the ERC721 contract to move the mint amount, and attempts to
+mint the ERC721 token.
+
+Let's see what each step looks like in the transaction code.
 
 ### COA Configuration
 
 The first step in our transaction is to configure a COA in the signer's account if one doesn't already exist. This is
-done by creating a new COA resource and saving it to the signer's storage. A public Capability on the COA is then issued
-and published on the signer's account, allowing anyone to deposit FLOW into the COA, affecting its EVM balance.
+done by creating a new COA resource and saving it to the signer account's storage. A public Capability on the COA is
+then issued and published on the signer's account, allowing anyone to deposit FLOW into the COA, affecting its EVM
+balance.
 
 ```cadence
 /* COA configuration & assigment */
@@ -445,6 +452,10 @@ self.coa = signer.storage.borrow<auth(EVM.Call) &EVM.CadenceOwnedAccount>(from: 
         .concat(" - ensure the COA Resource is created and saved at this path to enable EVM interactions"))
 ```
 
+At the end of this section, the transaction now has an reference authorized with the `EVM.Call`
+[entitlement](https://cadence-lang.org/docs/language/access-control#entitlements) to use in the `execute` block which
+can be used call into EVM.
+
 ### Funding the COA
 
 Next, we fund the COA with enough FLOW to cover the mint cost. This is done by withdrawing FLOW from the signer's
@@ -466,7 +477,7 @@ let fundingVault <- sourceVault.withdraw(amount: self.mintCost) as! @FlowToken.V
 self.coa.deposit(from: <-fundingVault)
 ```
 
-Taking a look at the transaction, we can see an explicit check that the COA has enough FLOW to cover the mint cost
+Taking a look at the full transaction, we can see an explicit check that the COA has enough FLOW to cover the mint cost
 before proceeding into the transaction's `execute` block.
 
 ```cadence
@@ -501,8 +512,8 @@ self.erc721Address = EVM.addressFromString(maybeMintERC721AddressHex)
 ### Wrapping FLOW as WFLOW
 
 Next, we're on to the first EVM interaction - wrapping FLOW as WFLOW. This is done by encoding the `deposit()` function
-call and setting the value to the mint cost. The COA then calls the WFLOW contract with the encoded calldata, gas limit,
-and value.
+call and setting the call value to the mint cost. The COA then calls the WFLOW contract with the encoded calldata, gas
+limit, and value.
 
 ```cadence
 /* Wrap FLOW in EVM as WFLOW */
@@ -523,6 +534,8 @@ assert(
     message: "Wrapping FLOW as WFLOW failed: ".concat(wrapResult.errorMessage)
 )
 ```
+
+Setting the value of the call transmits FLOW along with the call to the contract, accessible in solidity as `msg.value`.
 
 :::tip
 
@@ -589,8 +602,7 @@ assert(
 ```
 
 And that's it! We've successfully batched EVM transactions using Cadence, reverting the entire transaction if any step
-fails. This is a powerful feature of the Flow blockchain, enabling complex interactions across the EVM and Cadence
-runtimes.
+fails. This is a powerful feature of Cadence, enabling complex interactions across the EVM and Cadence runtimes.
 
 ## Conclusion
 
@@ -607,8 +619,8 @@ In the process, you learned how to:
 - Inspect multiple EVM transactions embedded in a Cadence transaction with [Flowscan](https://www.flowscan.io/) and its
   (https://www.evm.flowscan.io/) explorers
 
-The biggest takeaway here isn't the specific actions taken in this walkthrough, but the overarching concept that
-**Cadence is an orchestration layer** that can **extend existing EVM contracts** to create unique user experiences with
+The biggest takeaway here isn't the specific actions taken in this walkthrough, but the overarching concept that you can use
+**Cadence as an orchestration layer** to **extend existing EVM contracts**, creating unique user experiences with
 the power **to differentiate your Web3 application**.
 
 With these basics in hand, you're ready to start building more complex applications that leverage the power of Cadence
