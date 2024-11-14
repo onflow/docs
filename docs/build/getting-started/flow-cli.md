@@ -168,7 +168,9 @@ flow dependencies add testnet://8a4dce54554b225d.NumberFormatter
 
 When prompted for the account to deploy the contract to, select any account and ignore the prompt for an alias. This is if you wanted to configure a `mainnet` address for the contract.
 
-This will add the `NumberFormatter` contract and any of its dependencies to an `imports` directory in your project. It will also add any dependencies to your `flow.json` file. In addition, the prompt will configure the deployment of the contract to the account you selected.
+This will add the `NumberFormatter` contract and any of its dependencies to an `imports` directory in your project. It will also add any dependencies to your `flow.json` file. In addition, the prompt will configure the deployment of the contract to the account you selected. Make sure to select the `test-account` account to deploy the contract to the emulator.
+
+You should then see the `NumberFormatter` in your deployments for emulator in your `flow.json`. If you messed this up, you can always run `flow config add deployment` to add the contract to your deployments.
 
 Now we can deploy the `NumberFormatter` contract to the emulator by running:
 
