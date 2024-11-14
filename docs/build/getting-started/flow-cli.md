@@ -90,6 +90,8 @@ flow accounts create
 
 When prompted, give your account the name `test-account` and select `Emulator` as the network. You'll now see this account in your `flow.json`.
 
+> Note: We won't use this much in this example, but it's good to know how to create an account.
+
 #### Configuring the Deployment
 
 To deploy the `Counter` contract to the emulator, you'll need to add it to your project configuration. You can do this by running:
@@ -98,7 +100,7 @@ To deploy the `Counter` contract to the emulator, you'll need to add it to your 
 flow config add deployment
 ```
 
-You'll be prompted to select the contract you want to deploy. Select `Counter` and then select the account you want to deploy it to. For this example, select `test-account`.
+You'll be prompted to select the contract you want to deploy. Select `Counter` and then select the account you want to deploy it to. For this example, select `emulator-account`.
 
 #### Deploying the Contract
 
@@ -168,7 +170,7 @@ flow dependencies add testnet://8a4dce54554b225d.NumberFormatter
 
 When prompted for the account to deploy the contract to, select any account and ignore the prompt for an alias. This is if you wanted to configure a `mainnet` address for the contract.
 
-This will add the `NumberFormatter` contract and any of its dependencies to an `imports` directory in your project. It will also add any dependencies to your `flow.json` file. In addition, the prompt will configure the deployment of the contract to the account you selected. Make sure to select the `test-account` account to deploy the contract to the emulator.
+This will add the `NumberFormatter` contract and any of its dependencies to an `imports` directory in your project. It will also add any dependencies to your `flow.json` file. In addition, the prompt will configure the deployment of the contract to the account you selected. Make sure to select the `emulator-account` account to deploy the contract to the emulator.
 
 You should then see the `NumberFormatter` in your deployments for emulator in your `flow.json`. If you messed this up, you can always run `flow config add deployment` to add the contract to your deployments.
 
