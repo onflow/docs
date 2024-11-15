@@ -26,7 +26,6 @@ To build confidently, you will want to set up the appropriate local environment 
 - [Flow Emulator](../../tools/emulator/index.md): A lightweight server that simulates the Flow blockchain (strongly recommended during development).
 - [Flow Dev Wallet](https://github.com/onflow/fcl-dev-wallet/): A utility to simulate user wallets in development.
 - [Visual Studio Code Extension](../../tools/vscode-extension/index.md): An IDE integration for developing smart contracts.
-- [JS Testing Framework](https://github.com/onflow/flow-js-testing): A framework to test your smart contracts.
 
 ## Storing Data on Flow
 
@@ -38,7 +37,7 @@ Permanence is a key property of blockchains; users trust that the data they stor
 
 ### Storage Limits & Fees
 
-However, there are practical constraints to storing data on a blockchain. Developer and user accounts must retain a small amount of FLOW tokens, known as the storage fee, for bytes of data stored in their accounts. The minimum storage fee will grant each account a minimum storage amount. If an account holds assets that demand more bytes of storage, the account will need to retain more FLOW tokens to increase the storage amount according to Flow's [fee schedule](../basics/fees.md#fees). A more compact data model can keep storage needs down. \
+However, there are practical constraints to storing data on a blockchain. Developer and user accounts must retain a small amount of FLOW tokens, known as the storage fee, for bytes of data stored in their accounts. The minimum storage fee will grant each account a minimum storage amount. If an account holds assets that demand more bytes of storage, the account will need to retain more FLOW tokens to increase the storage amount according to Flow's [fee schedule](../basics/fees.md#storage). A more compact data model can keep storage needs down. \
  \
 Furthermore, a single Flow transaction has a size limit of 4MB, which limits the rate at which large amounts of data can be transferred to the blockchain.
 

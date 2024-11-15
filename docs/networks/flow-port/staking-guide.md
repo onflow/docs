@@ -21,7 +21,7 @@ From here you can decide whether to stake or delegate.
 
 Users who will be running their own nodes can stake them using the Flow Port.
 
-#### Pre-requisites
+#### Prerequisites
 
 In order to stake your node, you'll need to have the required amount of FLOW for your node type.
 You'll also need the following information about your node:
@@ -66,7 +66,7 @@ If you return to the home screen, you'll be able to see your staking request in 
 
 Delegating is the process of staking your locked FLOW to nodes which are being run by another party.
 
-#### Pre-requisites
+#### Prerequisites
 
 In order to delegate your stake to another node, you'll need to know the **node operator ID** of the operator who is running the nodes you wish to stake.
 Here is a list of node operator IDs you can delegate to: [List of Available Node Operators](https://github.com/onflow/flow/blob/master/nodeoperators/NodeOperatorList.md)

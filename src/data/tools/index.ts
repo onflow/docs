@@ -114,22 +114,6 @@ const cdcWebpackPlugin: Tool = {
   description: 'Webpack plugin that helps importing Cadence files.',
 };
 
-const jsTestingLibTool: Tool = {
-  repo: {
-    name: 'flow-js-testing',
-    owner: 'onflow',
-  },
-  title: 'JS Testing Library',
-  authorIcon: 'https://avatars.githubusercontent.com/u/62387156?s=64&v=4',
-  authorName: 'onflow',
-  tags: ['documentation', 'active', 'local-dev'],
-  link: '/tools/flow-js-testing/',
-  stars: 38,
-  iconSrc: ToolTestingIconSrc,
-  description:
-    'A Jest based framework to enable Cadence testing via a set of JavaScript methods and tools',
-};
-
 const cadutTool: Tool = {
   repo: {
     name: 'flow-cadut',

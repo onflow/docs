@@ -23,8 +23,8 @@ Resources are objects in Cadence that store data,
 but have special restrictions about how they can be stored and transferred,
 making them perfect for representing digital objects with real value.
 
-You can learn more about resources in the Cadence [documentation](https://cadence-lang.org/docs/1.0/language/resources)
-and [tutorials](https://cadence-lang.org/docs/1.0/tutorial/resources).
+You can learn more about resources in the Cadence [documentation](https://cadence-lang.org/docs/language/resources)
+and [tutorials](https://cadence-lang.org/docs/tutorial/resources).
 
 For fungible tokens specifically, tokens are represented by a resource type called a `Vault`:
 
@@ -277,7 +277,7 @@ access(all) contract FooToken: FungibleToken {
 
 As you can see, this function has an `access(FungibleToken.Withdraw)` access modifier.
 This is an example of entitlements in Cadence.
-[Entitlements](https://cadence-lang.org/docs/1.0/language/access-control#entitlements)
+[Entitlements](https://cadence-lang.org/docs/language/access-control#entitlements)
 are a way for developers to restrict access to privileged fields and functions
 in a composite type like a resource when a reference is created for it.
 In this example, the `withdraw()` function is always accessible to code that
@@ -294,15 +294,15 @@ defined by the FungibleToken contract:
 
 Entitlements are important to understand because they are what protects
 privileged functionality in your resource objects from being accessed by third-parties.
-It is recommended to read the [entitlements documentation](https://cadence-lang.org/docs/1.0/language/access-control#entitlements)
+It is recommended to read the [entitlements documentation](https://cadence-lang.org/docs/language/access-control#entitlements)
 to understand how to use the feature properly.
 
-[References](https://cadence-lang.org/docs/1.0/language/references) can be freely up-casted and down-casted in Cadence, so it is important
+[References](https://cadence-lang.org/docs/language/references) can be freely up-casted and down-casted in Cadence, so it is important
 for privileged functionality to be protected by an entitlement so that it can
 only be accessed if it is authorized.
 
 In addition to withdrawing, the vault also needs a way to deposit.
-We'll [typecast](https://cadence-lang.org/docs/1.0/language/operators#casting-operators)
+We'll [typecast](https://cadence-lang.org/docs/language/operators#casting-operators)
 to make sure we are dealing with the correct token, update the vault balance,
 and destroy the vault. Add this code to your resource:
 
