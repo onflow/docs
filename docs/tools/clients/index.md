@@ -16,10 +16,6 @@
 
 [Flow JVM SDK](https://github.com/onflow/flow-jvm-sdk) is a library for JVM-compatible languages, implemented in Kotlin, that provides utilities to interact with the Flow blockchain.
 
-## Unity
-
-[Flow SDK for Unity](./unity-sdk/index.md) allows Unity developers to integrate their games and applications with the Flow blockchain.
-
 ## JavaScript (FCL)
 
 [Flow Client Library (FCL)](./fcl-js/index.md) is a package used to interact with user wallets and the Flow blockchain.

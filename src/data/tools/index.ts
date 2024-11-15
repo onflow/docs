@@ -629,5 +629,4 @@ export {
   niftoryTool,
   flowviewTool,
   dapperSelfCustodyWallet,
-  unitySDK,
 };
