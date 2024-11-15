@@ -253,11 +253,6 @@
       "permanent": true
     },
     {
-      "source": "/tools/unity-sdk/:path*",
-      "destination": "/tools/clients/unity-sdk/:path*",
-      "permanent": true
-    },
-    {
       "source": "/account-linking/:path*",
       "destination": "/build/advanced-concepts/account-linking/:path*",
       "permanent": true
@@ -690,11 +685,6 @@
     {
       "source": "/tooling/flow-go-sdk/:path*",
       "destination": "/tools/clients/flow-go-sdk/:path*",
-      "permanent": true
-    },
-    {
-      "source": "/tooling/unity-sdk/:path*",
-      "destination": "/tools/clients/unity-sdk/:path*",
       "permanent": true
     },
     {
