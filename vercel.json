@@ -1254,6 +1254,11 @@
       "permanent": true
     },
     {
+      "source": "/build/guides/flow-app-quickstart",
+      "destination": "/build/getting-started/fcl-quickstart",
+      "permanent": true
+    },
+    {
       "source": "/build/guides/flow-cli",
       "destination": "/tools/flow-cli/install",
       "permanent": true

@@ -746,7 +746,7 @@ In this tutorial, you took your first steps towards building powerful new experi
 [initializes a project]: ../../tools/flow-cli/super-commands.md#init
 [Flow Dependency Manager]: ../../tools/flow-cli/dependency-manager.md
 [FCL]: ../../tools/clients/fcl-js/index.md
-[App Quickstart Guide]: ./flow-app-quickstart.md
+[App Quickstart Guide]: ../getting-started/fcl-quickstart.md
 [Wallet Connect]: https://cloud.walletconnect.com/sign-in
 [Flow Wallet]: https://wallet.flow.com
 [link your Dapper Wallet]: https://support.meetdapper.com/hc/en-us/articles/20744347884819-Account-Linking-and-FAQ
