@@ -1,5 +1,6 @@
 ---
 title: Running Cadence Tests
+sidebar_label: Running Cadence Tests
 description: How to run Cadence tests from the CLI
 sidebar_position: 11
 ---
