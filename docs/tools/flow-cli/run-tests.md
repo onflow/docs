@@ -15,7 +15,7 @@ flow test
 
 The `flow test` command automatically discovers and runs all test scripts in your project that end with `_test.cdc`.
 
-> **Note:** The `test` command requires a properly initialized configuration. If you haven’t set up your Flow project yet, refer to the [flow init](../flow.json/initialize-configuration.md) guide for assistance.
+> **Note:** The `test` command requires a properly initialized configuration. If you haven’t set up your Flow project yet, refer to the [flow init](flow.json/initialize-configuration.md) guide for assistance.
 
 ## Prerequisites
 
@@ -62,7 +62,7 @@ For the `testing` alias, you can use one of the following addresses:
 - `0x000000000000000D`
 - `0x000000000000000E`
 
-> **Note**: For more information on setting up contracts and aliases, refer to the [Flow CLI Configuration](../flow.json/initialize-configuration.md) documentation.
+> **Note**: For more information on setting up contracts and aliases, refer to the [Flow CLI Configuration](flow.json/initialize-configuration.md) documentation.
 
 ## Example Usage
 
@@ -102,7 +102,7 @@ Test results:
 - PASS: test_script_test.cdc > testSumOfTwo
 ```
 
-To learn more about writing tests in Cadence, visit the [Cadence Testing Framework](../../../build/smart-contracts/testing.md) documentation.
+To learn more about writing tests in Cadence, visit the [Cadence Testing Framework](../../build/smart-contracts/testing.md) documentation.
 
 ---
 
