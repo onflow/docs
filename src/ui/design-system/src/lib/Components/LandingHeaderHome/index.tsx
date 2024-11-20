@@ -32,7 +32,7 @@ export function LandingHeaderHome({
           <ButtonLink
             size={'sm'}
             variant="accent"
-            href={'/build/getting-started/hello-world'}
+            href={'/build/getting-started/contract-interaction'}
             className={'hover:no-underline hover:opacity-80'}
           >
             Get Building
