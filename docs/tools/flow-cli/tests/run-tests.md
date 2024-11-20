@@ -16,7 +16,52 @@ The `flow test` command automatically discovers and runs all test scripts in you
 
 > **Note:** The `test` command requires a properly initialized configuration. If you haven’t set up your Flow project yet, refer to the [flow init](../flow.json/initialize-configuration.md) guide for assistance.
 
----
+## Prerequisites
+
+Before running your tests, ensure that your contracts are properly configured in your `flow.json` file, including any necessary testing aliases.
+
+### Setting Up Testing Aliases in Contracts
+
+If your tests involve deploying or interacting with contracts, you need to add your contracts to the `contracts` section in the `flow.json` configuration file. Specifically, include the contract name, source location, and an address alias for the `testing` environment.
+
+Example `flow.json` configuration:
+
+```json
+{
+  "contracts": {
+    "Counter": {
+      "source": "cadence/contracts/Counter.cdc",
+      "aliases": {
+        "testing": "0x0000000000000007"
+      }
+    }
+  },
+  "networks": {
+    // ... your network configurations
+  },
+  "accounts": {
+    // ... your account configurations
+  },
+  "deployments": {
+    // ... your deployment configurations
+  }
+}
+```
+
+For the `testing` alias, you can use one of the following addresses:
+
+- `0x0000000000000005`
+- `0x0000000000000006`
+- `0x0000000000000007`
+- `0x0000000000000008`
+- `0x0000000000000009`
+- `0x000000000000000A`
+- `0x000000000000000B`
+- `0x000000000000000C`
+- `0x000000000000000D`
+- `0x000000000000000E`
+
+> **Note**: For more information on setting up contracts and aliases, refer to the [Flow CLI Configuration](../flow.json/initialize-configuration.md) documentation.
 
 ## Example Usage
 
