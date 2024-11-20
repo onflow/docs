@@ -1239,6 +1239,11 @@
       "permanent": true
     },
     {
+      "source": "/build/getting-started/hello-world",
+      "destination": "/build/getting-started/contract-interaction",
+      "permanent": true
+    },
+    {
       "source": "/build/getting-started/quickstarts/flow-cli",
       "destination": "/build/getting-started/flow-cli",
       "permanent": true
