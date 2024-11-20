@@ -176,10 +176,51 @@ $ flow test --cover --covercode="contracts"
 
 Sample output when no contracts are present:
 
-```plaintext
+```shell
 Test results:
 - PASS: test_script_test.cdc > testSumOfTwo
 There are no statements to cover
 ```
 
 > **Note:** In this example, the coverage report is empty because the `--covercode` flag is set to `"contracts"`, and the test script only contains scripts, not contracts.
+
+### Random Execution of Test Cases
+
+- **Flag:** `--random`
+- **Default:** `false`
+
+Use the `--random` flag to execute test cases in a random order. This can help identify issues that may arise due to test dependencies or the order in which tests are run.
+
+```shell
+flow test --random
+```
+
+### Seed for Random Execution
+
+- **Flag:** `--seed`
+- **Default:** `0`
+
+Use the `--seed` flag to specify a seed value for the random execution order of test cases. This allows you to reproduce a specific random order by using the same seed value, which is helpful for debugging flaky tests.
+
+```shell
+flow test --seed=12345
+```
+
+> **Note:** If both `--random` and `--seed` are provided, the `--random` flag will be ignored, and the seed value from `--seed` will be used for randomization.
+
+---
+
+### Run Specific Test by Name
+
+- **Flag:** `--name`
+- **Default:** `""` (empty string)
+
+Use the `--name` flag to run only tests that match the given name. This is useful when you want to execute a specific test function within your test scripts.
+
+```shell
+flow test --name=testSumOfTwo
+```
+
+This command will run only the test function named `testSumOfTwo` across all test scripts that contain it.
+
+To dive deeper into testing the functionality of your Cadence scripts and contracts, explore the [Cadence Testing Framework](https://cadence-lang.org/docs/testing-framework) documentation.
