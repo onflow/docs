@@ -6,17 +6,24 @@ sidebar_position: 11
 
 The Flow CLI provides a straightforward command to execute Cadence tests, enabling developers to validate their scripts and smart contracts effectively.
 
+To run all tests in your project, simply use:
+
 ```shell
-flow test /path/to/test_script.cdc
+flow test
 ```
 
-⚠️ The `test` command requires a properly initialized configuration. If you haven’t set up your Flow project yet, refer to the [flow init](../flow.json/initialize-configuration.md) guide for assistance.
+The `flow test` command automatically discovers and runs all test scripts in your project that end with `_test.cdc`.
+
+> **Note:** The `test` command requires a properly initialized configuration. If you haven’t set up your Flow project yet, refer to the [flow init](../flow.json/initialize-configuration.md) guide for assistance.
+
+---
 
 ## Example Usage
 
-Below is an example of a simple Cadence test script, `test_script.cdc`, which verifies the functionality of a Cadence script executed in the testing environment.
+Assuming you have a test script named `test_script_test.cdc` in your project directory, which verifies the functionality of a Cadence script executed in the testing environment:
 
 ```cadence
+// test_script_test.cdc
 import Test
 
 access(all) let blockchain = Test.newEmulatorBlockchain()
@@ -36,56 +43,75 @@ access(all) fun testSumOfTwo() {
 
 This script defines a single test case, `testSumOfTwo`, which checks if a Cadence script that adds two integers `(a + b)` works as expected. The test passes if the result matches the expected value of `5`.
 
-You can run the test using the CLI as follows:
+You can run all tests in your project using the CLI:
 
 ```shell
-$ flow test test_script.cdc
+$ flow test
 ```
 
-The results will be displayed in the terminal:
+The Flow CLI will discover all test scripts ending with `_test.cdc` and execute them. The results will be displayed in the terminal:
 
 ```shell
-Test results: "test_script.cdc"
-- PASS: testSumOfTwo
+Test results:
+- PASS: test_script_test.cdc > testSumOfTwo
 ```
 
-To learn more about writing tests in Cadence, visit the [Cadence testing framework](../../../build/smart-contracts/testing.md) documentation.
+To learn more about writing tests in Cadence, visit the [Cadence Testing Framework](../../../build/smart-contracts/testing.md) documentation.
+
+---
+
+### Running Specific Tests
+
+If you wish to run a specific test script rather than all tests, you can provide the path to the test file:
+
+```shell
+flow test path/to/your/test_script_test.cdc
+```
+
+This will execute only the tests contained in the specified file.
+
+---
 
 ## Flags
 
-The flow test command supports several flags that provide additional functionality for managing test execution and coverage reporting.
+The `flow test` command supports several flags that provide additional functionality for managing test execution and coverage reporting.
 
-### Coverage Report
+### **Coverage Report**
 
-- **Flag**: `--cover`
-- **Default**: `false`
+- **Flag:** `--cover`
+- **Default:** `false`
 
-The `--cover` flag calculates the coverage of the code being tested, helping you identify untested parts of your script.
+The `--cover` flag calculates the coverage of the code being tested, helping you identify untested parts of your scripts and contracts.
 
 ```shell
-$ flow test --cover test_script.cdc
-
-Test results: "test_script.cdc"
-- PASS: testSumOfTwo
-Coverage: 96.5% of statements
-
+$ flow test --cover
 ```
+
+Sample output:
+
+```shell
+Test results:
+- PASS: test_script_test.cdc > testSumOfTwo
+Coverage: 96.5% of statements
+```
+
+---
 
 ### Coverage Report Output File
 
-- **Flag**: `--coverprofile`
-- **Valid Inputs**: A valid filename with extension `.json` or `.lcov`
-- **Default**: `"coverage.json"`
+- **Flag:** `--coverprofile`
+- **Valid Inputs:** A valid filename with extension `.json` or `.lcov`
+- **Default:** `"coverage.json"`
 
-Use the -`-coverprofile` flag to specify the output file for the coverage report.
+Use the `--coverprofile` flag to specify the output file for the coverage report.
 
 Example:
 
 ```shell
-$ flow test --cover --coverprofile="coverage.lcov" test_script.cdc
+$ flow test --cover --coverprofile="coverage.lcov"
 ```
 
-This generated coverage file can then be inspected:
+The generated coverage file can then be inspected:
 
 ```shell
 $ cat coverage.lcov
@@ -93,19 +119,22 @@ $ cat coverage.lcov
 
 ### Coverage Code Type
 
-- **Flag**: `--covercode`
-- **Valid Inputs**: `"all"` or `"contracts"`
-- **Default**: `"all"`
+- **Flag:** `--covercode`
+- **Valid Inputs:** `"all"` (default) or `"contracts"`
+- **Default:** `"all"`
 
 The `--covercode` flag lets you limit the coverage report to specific types of code. Setting the value to `"contracts"` excludes scripts and transactions from the coverage analysis.
 
 ```shell
-$ flow test --cover --covercode="contracts" test_script.cdc
+$ flow test --cover --covercode="contracts"
+```
 
-Test results: "tests/test_script.cdc"
-- PASS: testSumOfTwo
+Sample output when no contracts are present:
+
+```plaintext
+Test results:
+- PASS: test_script_test.cdc > testSumOfTwo
 There are no statements to cover
 ```
 
-> Note: In this example, the coverage report is empty because the `--covercode` flag is set to `"contracts"`, and the test script only contains a script.
-
+> **Note:** In this example, the coverage report is empty because the `--covercode` flag is set to `"contracts"`, and the test script only contains scripts, not contracts.
