@@ -1,20 +1,21 @@
 ---
-title: Run Cadence tests
-description: How to run Cadence tests from the command line
+title: Running Cadence Tests
+description: How to run Cadence tests from the CLI
 sidebar_position: 11
 ---
 
-The Flow CLI provides a command to run Cadence tests. 
+The Flow CLI provides a straightforward command to execute Cadence tests, enabling developers to validate their scripts and smart contracts effectively.
 
 ```shell
 flow test /path/to/test_script.cdc
 ```
 
-⚠️ The `test` command expects configuration to be initialized. See [flow init](../flow.json/initialize-configuration.md) command.
+⚠️ The `test` command requires a properly initialized configuration. If you haven’t set up your Flow project yet, refer to the [flow init](../flow.json/initialize-configuration.md) guide for assistance.
 
 ## Example Usage
 
-A simple Cadence script `test_script.cdc`, which has a test case for running a cadence script on-chain:
+Below is an example of a simple Cadence test script, `test_script.cdc`, which verifies the functionality of a Cadence script executed in the testing environment.
+
 ```cadence
 import Test
 
@@ -32,25 +33,35 @@ access(all) fun testSumOfTwo() {
     Test.assertEqual(5, sum)
 }
 ```
-The above test-script can be run with the CLI as follows, and the test results will be printed on the console.
+
+This script defines a single test case, `testSumOfTwo`, which checks if a Cadence script that adds two integers `(a + b)` works as expected. The test passes if the result matches the expected value of `5`.
+
+You can run the test using the CLI as follows:
+
 ```shell
 $ flow test test_script.cdc
-
-Test results: "test_script.cdc"
-- PASS: testSumOfTwo
-
 ```
 
-To learn more about writing tests in Cadence, take a look at the [Cadence testing framework](../../../build/smart-contracts/testing.md).
+The results will be displayed in the terminal:
+
+```shell
+Test results: "test_script.cdc"
+- PASS: testSumOfTwo
+```
+
+To learn more about writing tests in Cadence, visit the [Cadence testing framework](../../../build/smart-contracts/testing.md) documentation.
 
 ## Flags
 
-### Coverage
+The flow test command supports several flags that provide additional functionality for managing test execution and coverage reporting.
 
-- Flag: `--cover`
-- Default: `false`
+### Coverage Report
 
-Use the `cover` flag to calculate coverage report for the code being tested.
+- **Flag**: `--cover`
+- **Default**: `false`
+
+The `--cover` flag calculates the coverage of the code being tested, helping you identify untested parts of your script.
+
 ```shell
 $ flow test --cover test_script.cdc
 
@@ -60,30 +71,34 @@ Coverage: 96.5% of statements
 
 ```
 
-### Coverage Report File
+### Coverage Report Output File
 
-- Flag: `--coverprofile`
-- Valid inputs: valid filename and extension
-- Default: `"coverage.json"`
+- **Flag**: `--coverprofile`
+- **Valid Inputs**: A valid filename with extension `.json` or `.lcov`
+- **Default**: `"coverage.json"`
 
-Use the `coverprofile` to specify the filename where the calculated coverage report is to be written. Supported filename extensions are `.json` and `.lcov`.
+Use the -`-coverprofile` flag to specify the output file for the coverage report.
+
+Example:
+
 ```shell
-$ flow test --cover test_script.cdc
-
-$ cat coverage.json
-
 $ flow test --cover --coverprofile="coverage.lcov" test_script.cdc
+```
 
+This generated coverage file can then be inspected:
+
+```shell
 $ cat coverage.lcov
 ```
 
 ### Coverage Code Type
 
-- Flag: `--covercode`
-- Valid inputs: `"all"`, `"contracts"`
-- Default: `"all"`
+- **Flag**: `--covercode`
+- **Valid Inputs**: `"all"` or `"contracts"`
+- **Default**: `"all"`
 
-Use the `covercode` flag to calculate coverage report only for certain types of code. A value of `"contracts"` will exclude scripts and transactions from the coverage report.
+The `--covercode` flag lets you limit the coverage report to specific types of code. Setting the value to `"contracts"` excludes scripts and transactions from the coverage analysis.
+
 ```shell
 $ flow test --cover --covercode="contracts" test_script.cdc
 
@@ -92,5 +107,5 @@ Test results: "tests/test_script.cdc"
 There are no statements to cover
 ```
 
-Since we did not use any contracts in our sample test script, there is no coverage percentage to be reported.
+> Note: In this example, the coverage report is empty because the `--covercode` flag is set to `"contracts"`, and the test script only contains a script.
 
