@@ -1277,6 +1277,11 @@
       "source": "/evm/vm-bridge",
       "destination": "/evm/cadence/vm-bridge",
       "permanent": true
+    },
+    {
+      "source": "/tools/flow-cli/tests/run-tests",
+      "destination": "/tools/flow-cli/tests",
+      "permanent": true
     }
   ]
 }
