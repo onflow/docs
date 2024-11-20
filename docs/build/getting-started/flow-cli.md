@@ -50,6 +50,12 @@ Inside the `cadence/contracts` directory, you'll find a `Counter.cdc` file. This
 
 Next, `cd` into your new project directory.
 
+:::info
+
+For additional details on how `flow.json` is configured, review the [configuration docs].
+
+:::
+
 ### Running the Tests
 
 To run the example test for the `Counter` contract located in `cadence/tests`, you can run:
@@ -58,9 +64,9 @@ To run the example test for the `Counter` contract located in `cadence/tests`, y
 flow test
 ```
 
-:::info
+:::tip
 
-For additional details on how `flow.json` is configured, review the [configuration docs].
+For a more detailed guide on running Cadence tests, check out the [tests documentation](../../tools/flow-cli/tests.md).
 
 :::
 
