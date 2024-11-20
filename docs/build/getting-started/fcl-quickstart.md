@@ -5,7 +5,7 @@ sidebar_label: Simple Frontend
 
 # Simple Frontend
 
-Building upon the `Counter` contract you interacted with in [Step 1: Contract Interaction](hello-world.md) and deployed locally in [Step 2: Local Development](./flow-cli.md), this tutorial will guide you through creating a simple frontend application using [Next.js] to interact with the `Counter` smart contract on the local Flow emulator. Using the [Flow Client Library] (FCL), you'll learn how to read and modify the contract's state from a React web application, set up wallet authentication using FCL's Discovery UI connected to the local emulator, and query the chain to read data from smart contracts.
+Building upon the `Counter` contract you interacted with in [Step 1: Contract Interaction](contract-interaction.md) and deployed locally in [Step 2: Local Development](./flow-cli.md), this tutorial will guide you through creating a simple frontend application using [Next.js] to interact with the `Counter` smart contract on the local Flow emulator. Using the [Flow Client Library] (FCL), you'll learn how to read and modify the contract's state from a React web application, set up wallet authentication using FCL's Discovery UI connected to the local emulator, and query the chain to read data from smart contracts.
 
 ## Objectives
 
@@ -18,7 +18,7 @@ After completing this guide, you'll be able to:
 
 ## Prerequisites
 
-- Completion of [Step 1: Contract Interaction](hello-world.md) and [Step 2: Local Development](./flow-cli.md).
+- Completion of [Step 1: Contract Interaction](contract-interaction.md) and [Step 2: Local Development](./flow-cli.md).
 - Flow CLI installed.
 - Node.js and npm installed.
 
