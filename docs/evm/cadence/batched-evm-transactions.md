@@ -134,7 +134,7 @@ to wrap. The mint amount for the `MaybeMintERC721` contract is 1 whole FLOW whic
 being the smallest unit of an EVM's native currency (inherited from Ethereum's units - more on Ether units
 [here](https://www.cyfrin.io/glossary/ether-and-wei-code-example)).
 
-Your input field should have `1 000 000 000 000 000 000` in it as shown below.
+As shown below, put `1 000 000 000 000 000 000` in the input field for `deposit`.
 
 ![Deposit 1 FLOW to WFLOW contract](./wflow-deposit.png)
 
@@ -382,9 +382,9 @@ Clicking on the transactions will open up the EVM transaction in Flowscan's EVM 
 transactions in order, you'll notice that they aggregate the same actions we took manually in the MetaMask section, but
 this time in a single Cadence transaction!
 
-:::tip
+:::warning
 
-At this point you may realize there are two block explorers on Flow - one for Cadence activity and another for EVM
+There are two **separate** block explorers for Flow - one for Cadence activity and another for EVM
 activity. This is unique to Flow and is a consequence of the fact that Cadence & EVM are separate runtimes, with EVM
 effectively emulated within Cadence. This orientation - that of EVM running within Cadence means that the Cadence-side
 explorer has visibility to EVM transactions embedded within a Cadence transaction.
