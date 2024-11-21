@@ -14,30 +14,8 @@ Note that most editing features (type checking, code completion, etc.) are imple
 
 ## Installation
 
-To install the extension, ensure you [have VS Code installed](https://code.visualstudio.com/docs/setup/mac)
-and have configured the [`code` command line interface](https://code.visualstudio.com/docs/setup/mac#_launching-from-the-command-line).
-
-### Using the Flow CLI
-
-The recommended way to install the latest released version is to use the Flow CLI.
-
-```shell script
-brew install flow-cli
-```
-
-Check that it's been installed correctly.
-
-```shell script
-flow version
-```
-
-Next, use the CLI to install the VS Code extension.
-
-```shell script
-flow cadence install-vscode-extension
-```
-
-Restart VS Code and the extension should be installed!
+To install the extension, ensure you have the [VS Code IDE installed](https://code.visualstudio.com/docs/setup/mac).  
+Then, you can install the Cadence extension from the [VS Code Marketplace](https://marketplace.visualstudio.com/items?itemName=onflow.cadence).
 
 ## Developing the Extension
 
