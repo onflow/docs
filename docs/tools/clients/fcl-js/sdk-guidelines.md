@@ -52,24 +52,6 @@ config({
 })
 ```
 
-📖 **gRPC Access API URLs** can be found [here](../../../networks/node-ops/access-onchain-data/access-nodes/accessing-data/access-api.md#flow-access-node-endpoints). `sdk.transport` must be specified if you wish to use the gRPC API.  The public Flow gRPC access nodes are accessible at:
-- Testnet `https://access-testnet.onflow.org`
-- Mainnet `https://access-mainnet.onflow.org`
-- Local Emulator `127.0.0.1:3569`
-
-For local development, use the [flow emulator](https://github.com/onflow/flow-emulator) which once started provides an HTTP access endpoint at `127.0.0.1:8888` and a gRPC access endpoint at `127.0.0.1:3569`.
-
-If using the gRPC Access API, the `sdk.transport` configuration key must be populated as this value defaults to the HTTP API transport.  The SDK can be configured to use the gRPC API transport as follows:
-```javascript
-import { config } from "@onflow/fcl"
-import { send as transportGRPC } from "@onflow/transport-grpc"
-
-config({
-  "accessNode.api": "https://access-testnet.onflow.org",
-  "sdk.transport": transportGRPC
-})
-```
-
 ## Querying the Flow Network
 After you have established a connection with an access node, you can query the Flow network to retrieve data about blocks, accounts, events and transactions. We will explore how to retrieve each of these entities in the sections below.
 
