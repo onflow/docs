@@ -253,11 +253,6 @@
       "permanent": true
     },
     {
-      "source": "/tools/unity-sdk/:path*",
-      "destination": "/tools/clients/unity-sdk/:path*",
-      "permanent": true
-    },
-    {
       "source": "/account-linking/:path*",
       "destination": "/build/advanced-concepts/account-linking/:path*",
       "permanent": true
@@ -329,7 +324,7 @@
     },
     {
       "source": "/tutorials/flow-dapp-anatomy",
-      "destination": "/build/getting-started/app-architecture",
+      "destination": "/build/app-architecture",
       "permanent": true
     },
     {
@@ -690,11 +685,6 @@
     {
       "source": "/tooling/flow-go-sdk/:path*",
       "destination": "/tools/clients/flow-go-sdk/:path*",
-      "permanent": true
-    },
-    {
-      "source": "/tooling/unity-sdk/:path*",
-      "destination": "/tools/clients/unity-sdk/:path*",
       "permanent": true
     },
     {
@@ -1249,6 +1239,11 @@
       "permanent": true
     },
     {
+      "source": "/build/getting-started/hello-world",
+      "destination": "/build/getting-started/contract-interaction",
+      "permanent": true
+    },
+    {
       "source": "/build/getting-started/quickstarts/flow-cli",
       "destination": "/build/getting-started/flow-cli",
       "permanent": true
@@ -1264,8 +1259,28 @@
       "permanent": true
     },
     {
+      "source": "/build/guides/flow-app-quickstart",
+      "destination": "/build/getting-started/fcl-quickstart",
+      "permanent": true
+    },
+    {
       "source": "/build/guides/flow-cli",
       "destination": "/tools/flow-cli/install",
+      "permanent": true
+    },
+    {
+      "source": "/flow-cli/:path*",
+      "destination": "/tools/flow-cli/:path*",
+      "permanent": true
+    },
+    {
+      "source": "/evm/vm-bridge",
+      "destination": "/evm/cadence/vm-bridge",
+      "permanent": true
+    },
+    {
+      "source": "/tools/flow-cli/tests/run-tests",
+      "destination": "/tools/flow-cli/tests",
       "permanent": true
     }
   ]

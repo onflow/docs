@@ -19,7 +19,7 @@ The following chapters summarize the content in this section. Read on more for d
 
 ## App Development
 
-The [Flow App Quickstart](./guides/flow-app-quickstart.md) covers the Flow core concepts, including:
+The [Flow App Quickstart](./getting-started/fcl-quickstart.md) covers the Flow core concepts, including:
 
 - **App Client:** The app client is the interface through which users interact with your app. Web and mobile applications are typical examples of app clients.
 - **Smart Contract:** A smart contract is a collection of code deployed to a permanent location on the blockchain that defines the core logic for a dApp.

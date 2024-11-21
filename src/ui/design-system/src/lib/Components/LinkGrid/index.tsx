@@ -25,7 +25,7 @@ const sections: LinkGridSection[] = [
     links: [
       {
         title: 'Hello World Tutorial',
-        href: '/build/getting-started/hello-world',
+        href: '/build/getting-started/contract-interaction',
       },
       {
         title: 'App Architecture',

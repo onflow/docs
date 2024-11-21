@@ -434,7 +434,7 @@ export const signMessage = async () => {
 
 Discovery abstracts away code so that developers don't have to deal with the discovery of Flow compatible wallets, integration, or authentication. Using `discovery` from FCL allows dapps to list and authenticate with wallets while having full control over the UI. Common use cases for this are login or registration pages.
 
-(Alternatively, if you don't need control over your UI you can continue to use the `discovery.wallet` config value documented in the [Quickstart](../../../build/guides/flow-app-quickstart.md) for the simplest configuration.)
+(Alternatively, if you don't need control over your UI you can continue to use the `discovery.wallet` config value documented in the [Quickstart](../../../build/getting-started/fcl-quickstart.md) for the simplest configuration.)
 
 > ⚠️**The following methods can only be used in web browsers.**
 
@@ -503,7 +503,7 @@ config({
 | `Dapper Wallet` | 0x82ec283f88a62e65 | 0xead892083b3e2c6c |
 | `Ledger`        | 0x9d2e44203cb13051 | 0xe5cd26afebe62781 |
 
-For more details on wallets, view the [service list here](https://github.com/onflow/fcl-discovery/blob/master/data/services.json).
+For more details on wallets, view the [service list here](https://github.com/onflow/fcl-discovery/blob/87e172db85d185882d9fde007c95f08bc2a1cccb/data/services.json).
 
 ---
 

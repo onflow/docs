@@ -304,7 +304,7 @@ const config = {
             items: [
               {
                 label: 'Getting Started',
-                to: '/build/getting-started/hello-world',
+                to: '/build/getting-started/contract-interaction',
               },
               {
                 label: "SDK's & Tools",

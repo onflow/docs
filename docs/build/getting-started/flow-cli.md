@@ -12,6 +12,7 @@ The [Flow Command Line Interface] (CLI) is a set of tools that developers can us
 After completing this guide, you'll be able to:
 
 * Create a Flow project using the [Flow Command Line Interface]
+* Run tests for a smart contract
 * Add an already-deployed contract to your project with the [Dependency Manager]
 * Deploy a smart contract locally to the Flow Emulator
 * Write and execute scripts to interact with a deployed smart contract
@@ -26,24 +27,28 @@ brew install flow-cli
 
 For other ways of installing, please refer to the [installation guide].
 
-## Configuration
+## Creating a New Project
 
-Lets first create a project directory and navigate to it:
-
-```zsh
-mkdir cli-quickstart
-cd cli-quickstart
-```
-
-Next, we'll initialize a new Flow project with the CLI:
+To create a new project, navigate to the directory where you want to create your project and run:
 
 ```zsh
-flow init --config-only
+flow init
 ```
 
-This will create a `flow.json` file in your project directory. This file is used to configure your project and describe the setup of your contracts, networks, and accounts.
+Upon running this command, you'll be prompted to enter a project name. Enter a name and press `Enter`.
 
-It will also have a default `emulator-account` created for you. We'll use this account to interact with the emulator later on.
+You'll also be asked if you'd like to install any core contracts (such as `FungibleToken`, `NonFungibleToken`, etc.) using the [Dependency Manager](../../tools/flow-cli/dependency-manager.md). For this tutorial, you can select `No`.
+
+The `init` command will create a new directory with the project name and the following files:
+
+- `flow.json`: This file contains the configuration for your project.
+- `emulator-account.pkey`: This file contains the private key for the default emulator account.
+- `flow.json`: This file contains the configuration for your project.
+- `cadence/`: This directory contains your Cadence code. Inside there are subdirectories for contracts, scripts, transactions, and tests.
+
+Inside the `cadence/contracts` directory, you'll find a `Counter.cdc` file. This is the same as the `Counter` contract in the previous step.
+
+Next, `cd` into your new project directory.
 
 :::info
 
@@ -51,40 +56,19 @@ For additional details on how `flow.json` is configured, review the [configurati
 
 :::
 
-## Grabbing the `HelloWorld` Contract
+### Running the Tests
 
-For this demo, we are going to be interacting with a simple `HelloWorld` contract, written in [Cadence], that is already deployed on Flow's `testnet` network on account [0xa1296b1e2e90ca5b]. In order to grab this project dependency, we'll use Flow's [Dependency Manager] to install it into our project using a source string that defines the network, address, and contract name of the contract we want to import.
+To run the example test for the `Counter` contract located in `cadence/tests`, you can run:
 
 ```zsh
-flow dependencies add testnet://0xa1296b1e2e90ca5b.HelloWorld
+flow test
 ```
 
-This will add the `HelloWorld` contract and any of its dependencies to an `imports` directory in your project. We recommend adding this directory to your `.gitignore` file, which is done by the script by default. It will also add any dependencies to your `flow.json` file.
+:::tip
 
-During the install you'll be prompted to specify which account to deploy the contracts to. For this tutorial, you can select the default `emulator-account`. Leave the alias address for HelloWorld on mainnet blank.
+For a more detailed guide on running Cadence tests, check out the [tests documentation](../../tools/flow-cli/tests.md).
 
-Review the `📝 Dependency Manager Actions Summary` for a list of actions completed by the script.
-
-Open `imports/a1296b1e2e90ca5b/HelloWorld.cdc` in your editor. You will see the following:
-
-```cadence
-access(all) contract HelloWorld {
-
-  access(all)
-  var greeting: String
-
-  access(all)
-  fun changeGreeting(newGreeting: String) {
-    self.greeting = newGreeting
-  }
-
-  init() {
-    self.greeting = "Hello, World!"
-  }
-}
-```
-
-This contract has a `greeting` variable that can be read and changed. It also has a `changeGreeting` function that allows you to change the greeting.
+:::
 
 ## Deploying the Contract to Emulator
 
@@ -96,50 +80,63 @@ Before we deploy, let's open a new terminal window and run the emulator.  From t
 flow emulator start
 ```
 
-:::warning
+Your emulator should now be running.
 
-If you see a message that configuration is missing, you are in the wrong directory.  Do **not** run `flow init`!.
+### Deploying a Contract
 
+#### Creating an Account
 
-> 🙏 Configuration is missing, initialize it with: 'flow init' and then rerun this command.
+When you created a project you'll see that a `Counter` contract was added to your `flow.json` configuration file, but it's not set up for deployment yet. We could deploy it to the `emulator-account`, but for this example lets also create a new account on the emulator to deploy it to.
 
-:::
+With your emulator running, run the following command:
 
-To deploy the `HelloWorld` contract to the emulator, return to your first terminal and run the following command:
+```zsh
+flow accounts create
+```
+
+When prompted, give your account the name `test-account` and select `Emulator` as the network. You'll now see this account in your `flow.json`.
+
+> Note: We won't use this much in this example, but it's good to know how to create an account.
+
+#### Configuring the Deployment
+
+To deploy the `Counter` contract to the emulator, you'll need to add it to your project configuration. You can do this by running:
+
+```zsh
+flow config add deployment
+```
+
+You'll be prompted to select the contract you want to deploy. Select `Counter` and then select the account you want to deploy it to. For this example, select `emulator-account`.
+
+#### Deploying the Contract
+
+To deploy the `Counter` contract to the emulator, run:
 
 ```zsh
 flow project deploy
 ```
 
-You should see:
-
-```zsh
-🎉 All contracts deployed successfully
-```
-
-The contract will now have been deployed to the default `emulator-account`. You can now interact with it using a script.
+That's it! You've just deployed your first contract to the Flow Emulator.
 
 ## Running Scripts
 
 Scripts are used to read data from the Flow blockchain. There is no state modification. In our case, we are going to read a greeting from the `HelloWorld` contract.
 
-Let's create a script file. We can generate a boilerplate script file with the following command:
+If we wanted to generate a new script, we could run:
 
 ```zsh
-flow generate script ReadGreeting
+flow generate script ScriptName
 ```
 
-This will create a file called `ReadGreeting.cdc` in the `cadence/scripts` directory.  Let's update the script to read the greeting from the `HelloWorld` contract.  Replace the existing coded with:
+But the default project already has a `GetCounter` script for reading the count of the `Counter` contract.  Open `cadence/scripts/GetCounter.cdc` in your editor to see the script.
 
-```cadence
-import "HelloWorld"
+To run the script, you can run:
 
-access(all) fun main(): String {
-  return HelloWorld.greeting
-}
+```zsh
+flow scripts execute cadence/scripts/GetCounter.cdc
 ```
 
-The import syntax will automatically resolve the address of the contract on the network you are running the script on. This is determined by your `flow.json` configuration.
+You should see zero as the result since the `Counter` contract initializes the count to zero and we haven't run any transactions to increment it.
 
 :::tip
 
@@ -147,42 +144,17 @@ If you'll like to learn more about writing scripts, please check out the docs fo
 
 :::
 
-To run the script, we'll run this from the CLI:
+## Executing Transactions
+
+Transactions are used to modify the state of the blockchain. In our case, we want to increment the count of the `Counter` contract. Luckily, we already have a transaction for that in the project that was generated for us. Open `cadence/transactions/IncrementCounter.cdc` in your editor to see the transaction.
+
+To run the transaction, you can run:
 
 ```zsh
-flow scripts execute cadence/scripts/ReadGreeting.cdc
+flow transactions send cadence/transactions/IncrementCounter.cdc
 ```
 
-You should see the result of the greeting. `Result: "Hello, world!"`
-
-## Creating an Account and Running a Transaction
-
-To change state on the Flow Blockchain, you need to run a transaction. Let's create a simple transaction file. We can use to modify the `greeting` on the `HelloWorld` contract.
-
-First, create a file called `cadence/transactions/ChangeGreeting.cdc` with the following command:
-
-```zsh
-flow generate transaction ChangeGreeting
-```
-
-Open the new file - `cadence/transactions/ChangeGreeting.cdc`.  Update the boilerplate transaction to look like this:
-
-```cadence
-import "HelloWorld"
-
-transaction(greeting: String) {
-
-  prepare(acct: &Account) {
-    log(acct.address)
-  }
-
-  execute {
-    HelloWorld.changeGreeting(newGreeting: greeting)
-  }
-}
-```
-
-This will log the account signing the transaction, call the `changeGreeting` method of the `HelloWorld` contract, and pass in the new greeting. 
+By default, this uses the `emulator-account` to sign the transaction and the emulator network. If you want to use your `test-account` account, you can specify the `--signer` flag with the account name.
 
 :::tip
 
@@ -190,50 +162,62 @@ If you want to learn more about writing transactions, please read the docs for [
 
 :::
 
-In order to run a transaction, the signing account needs to pay for it. You could run the transaction on emulator using the default `emulator-account` account, but a better test is to run it with a new test account.
+## Installing & Interacting With External Dependencies
 
-Let's learn the command for creating accounts.
+In addition to creating your own contracts, you can also install contracts that have already been deployed to the network by using the [Dependency Manager]. This is useful for interacting with contracts that are part of the Flow ecosystem or that have been deployed by other developers.
 
-The easiest way to create an account using CLI is with:
+For example, let's say we want to format the result of our `GetCounter` script so that we display the number with commas if it's greater than 999. To do that we can install a contract called [`NumberFormatter`](https://contractbrowser.com/A.8a4dce54554b225d.NumberFormatter) from `testnet` that has a function to format numbers.
 
-```zsh
-flow accounts create
-```
-
-Remember, your emulator should still be running at this point in another terminal.
-
-Give your account the name `emulator-tester`, then select `Emulator` as the network.  You'll now see this account in your `flow.json`.
-
-To run a transaction with this new account, you can run the following:
+To grab it, run:
 
 ```zsh
-flow transactions send cadence/transactions/ChangeGreeting.cdc "Hello, me" --signer emulator-tester --network emulator
+flow dependencies add testnet://8a4dce54554b225d.NumberFormatter
 ```
 
-You've just modified the state of the Flow Blockchain! At least on the emulator.  You'll know it worked if you see the receipt.  Yours will be similar to:
+When prompted for the account to deploy the contract to, select any account and ignore the prompt for an alias. This is if you wanted to configure a `mainnet` address for the contract.
+
+This will add the `NumberFormatter` contract and any of its dependencies to an `imports` directory in your project. It will also add any dependencies to your `flow.json` file. In addition, the prompt will configure the deployment of the contract to the account you selected. Make sure to select the `emulator-account` account to deploy the contract to the emulator.
+
+You should then see the `NumberFormatter` in your deployments for emulator in your `flow.json`. If you messed this up, you can always run `flow config add deployment` to add the contract to your deployments.
+
+Now we can deploy the `NumberFormatter` contract to the emulator by running:
 
 ```zsh
-Transaction ID: 2ff6cbb8125103595fca0abaead94cd00510d29902ceae9f5dc480e927ab7334
-
-Block ID	36bbf6fc573129fa9a3c78a43e257d3b627a3af78fd9e64eeb133d981819cc69
-Block Height	3
-Status		✅ SEALED
-ID		2ff6cbb8125103595fca0abaead94cd00510d29902ceae9f5dc480e927ab7334
-Payer		179b6b1cb6755e31
-Authorizers	[179b6b1cb6755e31]
+flow project deploy
 ```
 
-You can also re-run the `ReadGreeting` script with:
+Now that we have the `NumberFormatter` contract deployed, we can update our `GetCounter` script to format the result. Open `cadence/scripts/GetCounter.cdc` and update it to use the following code:
+
+```cadence
+import "Counter"
+import "NumberFormatter"
+
+access(all)
+fun main(): String {
+    // Retrieve the count from the Counter contract
+    let count: Int = Counter.getCount()
+
+    // Format the count using NumberFormatter
+    let formattedCount = NumberFormatter.formatWithCommas(number: count)
+
+    // Return the formatted count
+    return formattedCount
+}
+```
+
+The things to note here are:
+
+- We import the `NumberFormatter` contract.
+- We call the `formatWithCommas` function from the `NumberFormatter` contract to format the count.
+- We return the formatted count as a `String`.
+
+Now, to run the updated script, you can run:
 
 ```zsh
-flow scripts execute cadence/scripts/ReadGreeting.cdc
+flow scripts execute cadence/scripts/GetCounter.cdc
 ```
 
-You'll now see:
-
-```zsh
-Result: "Hello, me"
-```
+You should now see the result. You won't see the commas unless the number is greater than 999.
 
 ## More
 
