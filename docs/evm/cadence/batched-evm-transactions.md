@@ -113,11 +113,11 @@ Our first action will be to wrap enough FLOW to cover the cost of minting the `M
 interact with the `WFLOW` contract on Testnet. There are a number of ways we could interact with this contract - Remix
 IDE, Foundry's CLI, Hardhat, etc. - but for the purposes of this guide, we'll use the [Flowscan EVM block explorer].
 
-Navigate to the WFLOW Testnet contract on Flowscan: [WFLOW]. Ensure you're on the "Write Contract" tab which allows you
+Navigate to the WFLOW Testnet contract on Flowscan: [WFLOW]. Ensure you're on the `Write Contract` tab which allows you
 to interact with the contract's mutating functions. 
 
 Before you can interact with the contract, you need to connect your MetaMask wallet to the [Flowscan EVM block
-explorer]. Click the "Connect" button in the top right corner and follow the prompts to connect your MetaMask wallet.
+explorer]. Click the `Connect` button in the top right corner and follow the prompts to connect your MetaMask wallet.
 
 :::warning
 
@@ -143,13 +143,13 @@ As shown below, put `1 000 000 000 000 000 000` in the input field for `deposit`
 
 ![Deposit 1 FLOW to WFLOW contract](./wflow-deposit.png)
 
-You can now click the "Write" button to submit the transaction. Once MetaMask prompts you to sign the transaction, click
-"Confirm" and give it a few seconds to process.
+You can now click the `Write` button to submit the transaction. Once MetaMask prompts you to sign the transaction, click
+`Confirm` and give it a few seconds to process.
 
 ![Confirm WFLOW deposit in MetaMask](./wflow-deposit-confirm.png)
 
 Once confirmed, you should be able to see WFLOW balance in your tokens list in MetaMask - if not, you can click on
-"Import Tokens" and paste the WFLOW contract address found on the Flowscan page and refresh your list.
+`Import Tokens` and paste the WFLOW contract address found on the Flowscan page and refresh your list.
 
 ![WFLOW in MetaMask](./wflow-in-metamask-tokens.png)
 
@@ -162,7 +162,7 @@ contract address - `0x2E2Ed0Cfd3AD2f1d34481277b3204d807Ca2F8c2` - and the amount
 
 ![Approve MaybeMintERC721 for 1 WFLOW in Flowscan](./wflow-approve.png)
 
-Click "Write" to submit the transaction. To be clear, this does not complete a transfer, but allows the
+Click `Write` to submit the transaction. To be clear, this does not complete a transfer, but allows the
 `MaybeMintERC721` contract to transfer your WFLOW on your behalf which will execute in the next step.
 
 #### 3. Mint ERC721 Token
@@ -170,8 +170,8 @@ Click "Write" to submit the transaction. To be clear, this does not complete a t
 Finally, we'll attempt to mint the ERC721 token using the `MaybeMintERC721` contract. Navigate to the `MaybeMintERC721`
 contract on Flowscan: [MaybeMintERC721].
 
-Again, you'll be met with the contract functions on the "Write Contract" tab. Click on the `mint` function which takes
-no arguments - just click on "Write" and then "Confirm" in the resulting MetaMask window.
+Again, you'll be met with the contract functions on the `Write Contract` tab. Click on the `mint` function which takes
+no arguments - just click on `Write` and then `Confirm` in the resulting MetaMask window.
 
 This contract has a 50% chance of failing on mint using onchain randomness. If it fails, simply mint again until it
 succeeds.
@@ -352,8 +352,8 @@ This transaction takes two arguments:
 - MaybeMintERC721 contract address: `0x2E2Ed0Cfd3AD2f1d34481277b3204d807Ca2F8c2`
 
 Before running, ensure that the network section - bottom right corner - displays Testnet. If not, click and select
-"Testnet" as your network and refresh. Once you've confirmed you're Flow Runner is targeting Testnet, copy these
-addresses and paste them into the respective fields on the Flow Runner page. Click "Run" on the top left and follow the
+`Testnet` as your network and refresh. Once you've confirmed you're Flow Runner is targeting Testnet, copy these
+addresses and paste them into the respective fields on the Flow Runner page. Click `Run` on the top left and follow the
 prompts to connect your Flow Wallet and sign the transaction.
 
 :::warning
@@ -375,7 +375,7 @@ take a closer look at the transaction and its results in the Flowscan block expl
 Copy your transaction ID and go to the Flowscan Testnet Cadence block explorer: [Flowscan Cadence].
 
 Pasting your transaction ID into the search bar will show you the transaction details, including the Cadence script,
-execution status, and event logs. Click on the "EVM" tab to view the EVM transactions batched in the Cadence
+execution status, and event logs. Click on the `EVM` tab to view the EVM transactions batched in the Cadence
 transaction.
 
 ![Embedded EVM transactions on Flowscan](./evm-embed-flowscan.png)
