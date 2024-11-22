@@ -4,9 +4,9 @@ sidebar_label: Batched EVM Transactions
 sidebar_position: 6
 ---
 
-Integrating Cadence into EVM applications on Flow enables developers to leverage the best of both worlds.
-This guide demonstrates how to batch EVM transactions using Cadence, allowing applications to embed multiple EVM
-transactions in a single Cadence transaction, conditioning final execution on the success of all EVM transactions.
+Integrating Cadence into EVM applications on Flow enables developers to leverage the best of both worlds. This guide
+demonstrates how to batch EVM transactions using Cadence, allowing applications to embed multiple EVM transactions in a
+single Cadence transaction, conditioning final execution on the success of all EVM transactions.
 
 This feature can supercharge your EVM application by unlocking experiences otherwise impossible on traditional EVM
 platforms.
@@ -17,30 +17,28 @@ After completing this guide, you'll be able to
 
 - Construct a Cadence transaction that executes several EVM transactions such that if any EVM transaction fails, the
   entire set will revert
-- Read and write from smart contract functions on [EVM Flowscan](https://evm.flowscan.io/)
-- Run a Cadence transaction from the browser using [Flow Runner](https://run.dnz.dev/)
+- Read and write from smart contract functions on [EVM Flowscan]
+- Run a Cadence transaction from the browser using [Flow Runner]
 - Install conceptual understanding of Cadence X EVM interactions
-- Inspect multiple EVM transactions embedded in a Cadence transaction with [Flowscan](https://www.flowscan.io/) and its
-  (https://www.evm.flowscan.io/) explorers
+- Inspect multiple EVM transactions embedded in a Cadence transaction with [Flowscan] block explorer
 - Write code that interacts with the EVM via a COA
 
 ## Prerequisites
 
 Before you dive in, make sure you have the following configured:
 
-- [MetaMask](https://metamask.io/download/) installed in your browser with an active account
-- [Flow Wallet extension](https://wallet.flow.com/download) installed in your browser with an active account
-- Both wallets funded with Testnet FLOW. See the [Faucet guide](../../ecosystem/faucets.md) for more information.
+- [MetaMask] installed in your browser with an active account
+- [Flow Wallet extension] installed in your browser with an active account
+- Both wallets funded with Testnet FLOW. See the [Faucet guide] for more information.
 
 ## Overview
 
 For the purposes of demonstration, this walkthrough will focus on relatively simple EVM operations in addition to first
-creating a [Cadence-controlled EVM account (COA)](./interacting-with-coa.md). Specifically, we will:
+creating a [Cadence-controlled EVM account (COA)]. Specifically, we will:
 
 - Wrap FLOW as WFLOW
 - Approve an ERC721 to transfer WFLOW in exchange for an NFT mint
-- Mint an ERC721 token - this ERC721 has a 50% chance of failing (using [onchain VRF](../guides/vrf.md) to determine
-  success)
+- Mint an ERC721 token - this ERC721 has a 50% chance of failing (using [onchain VRF] to determine success)
  
 These operations let us focus on the **core concepts** of this guide:
 
@@ -57,7 +55,7 @@ applications. So let's get started!
 
 ## Components
 
-As mentioned in the [Overview](#overview), this guide involves three main actions:
+As mentioned in the [Overview], this guide involves three main actions:
 
 - Wrapping FLOW as WFLOW
 - Approving an ERC721 to transfer WFLOW in exchange for an NFT mint
@@ -73,10 +71,8 @@ of WETH on Ethereum.
 
 :::tip
 
-You can find WFLOW deployed to `0xd3bF53DAC106A0290B0483EcBC89d40FcC961f3e` on Flow
-[Testnet](https://evm-testnet.flowscan.io/token/0xd3bF53DAC106A0290B0483EcBC89d40FcC961f3e?tab=contract) &
-[Mainnet](https://evm.flowscan.io/token/0xd3bF53DAC106A0290B0483EcBC89d40FcC961f3e?tab=contract) and source code in the
-[`@onflow/flow-sol-utils` repository](https://github.com/onflow/flow-sol-utils).
+You can find WFLOW deployed to `0xd3bF53DAC106A0290B0483EcBC89d40FcC961f3e` on Flow [Testnet] & [Mainnet] and source
+code in the [`@onflow/flow-sol-utils` repository].
 
 :::
 
@@ -104,8 +100,8 @@ platforms.
 
 :::tip
 
-Recall in [Prerequisites](#prerequisites) that you need to have both MetaMask and Flow Wallet installed and funded with
-Testnet FLOW. Make sure you've done so before proceeding.
+Recall in [Prerequisites] that you need to have both MetaMask and Flow Wallet installed and funded with Testnet FLOW.
+Make sure you've done so before proceeding.
 
 :::
 
@@ -115,15 +111,13 @@ Testnet FLOW. Make sure you've done so before proceeding.
 
 Our first action will be to wrap enough FLOW to cover the cost of minting the `MaybeMintERC721` token. To do this, we'll
 interact with the `WFLOW` contract on Testnet. There are a number of ways we could interact with this contract - Remix
-IDE, Foundry's CLI, Hardhat, etc. - but for the purposes of this guide, we'll use the [Flowscan EVM block
-explorer](https://www.evm-testnet.flowscan.io/).
+IDE, Foundry's CLI, Hardhat, etc. - but for the purposes of this guide, we'll use the [Flowscan EVM block explorer].
 
-Navigate to the WFLOW Testnet contract on Flowscan:
-[WFLOW](https://evm-testnet.flowscan.io/token/0xd3bF53DAC106A0290B0483EcBC89d40FcC961f3e?tab=write_contract). Ensure
-you're on the "Write Contract" tab which allows you to interact with the contract's mutating functions. 
+Navigate to the WFLOW Testnet contract on Flowscan: [WFLOW]. Ensure you're on the "Write Contract" tab which allows you
+to interact with the contract's mutating functions. 
 
-Before you can interact with the contract, you need to connect your MetaMask wallet to the Flowscan EVM block explorer.
-Click the "Connect" button in the top right corner and follow the prompts to connect your MetaMask wallet.
+Before you can interact with the contract, you need to connect your MetaMask wallet to the [Flowscan EVM block
+explorer]. Click the "Connect" button in the top right corner and follow the prompts to connect your MetaMask wallet.
 
 ![Connect wallet to Flowscan](./flowscan-connect.png)
 
@@ -131,8 +125,7 @@ Once connected, you should see your address in the top right corner and above th
 
 Now we can wrap FLOW. Click on the `deposit` method which will drop down an input field for the amount of FLOW you want
 to wrap. The mint amount for the `MaybeMintERC721` contract is 1 whole FLOW which in EVM terms is `1e18 wei` - `wei`
-being the smallest unit of an EVM's native currency (inherited from Ethereum's units - more on Ether units
-[here](https://www.cyfrin.io/glossary/ether-and-wei-code-example)).
+being the smallest unit of an EVM's native currency (inherited from Ethereum's units - more on Ether units [here]).
 
 As shown below, put `1 000 000 000 000 000 000` in the input field for `deposit`.
 
@@ -163,8 +156,7 @@ Click "Write" to submit the transaction. To be clear, this does not complete a t
 #### 3. Mint ERC721 Token
 
 Finally, we'll attempt to mint the ERC721 token using the `MaybeMintERC721` contract. Navigate to the `MaybeMintERC721`
-contract on Flowscan:
-[MaybeMintERC721](https://evm-testnet.flowscan.io/address/0x2E2Ed0Cfd3AD2f1d34481277b3204d807Ca2F8c2?tab=write_contract).
+contract on Flowscan: [MaybeMintERC721].
 
 Again, you'll be met with the contract functions on the "Write Contract" tab. Click on the `mint` function which takes
 no arguments - just click on "Write" and then "Confirm" in the resulting MetaMask window.
@@ -178,9 +170,9 @@ On success, you can click on your NFTs in MetaMask to see your newly minted toke
 
 #### Recap
 
-This process is cumbersome and requires multiple transactions, each of which could fail. Given the intent of the
-process - minting an NFT - if this were a case where the NFT was a limited edition or time-sensitive, you'd be left with
-WFLOW wrapped and approved for transfer, but no NFT and would need to manually unwind the process.
+This process is cumbersome and requires multiple transactions, each of which could fail. Given the intent of the process
+- minting an NFT - if this were a case where the NFT was a limited edition or time-sensitive, you'd be left with WFLOW
+wrapped and approved for transfer, but no NFT and would need to manually unwind the process.
 
 Or you could just use Cadence to batch these transactions and revert everything if the mint fails. Let's do that.
 
@@ -341,8 +333,7 @@ transaction(wflowAddressHex: String, maybeMintERC721AddressHex: String) {
 ```
 </details>
 
-You can run the transaction at the following link using the community-developed Flow Runner tool:
-[`wrap_and_mint.cdc`](https://run.dnz.dev/snippet/4fe0d43fdaf968b9).
+You can run the transaction at the following link using the community-developed Flow Runner tool: [`wrap_and_mint.cdc`].
 
 This transaction takes two arguments:
 - WFLOW contract address: `0xd3bF53DAC106A0290B0483EcBC89d40FcC961f3e`
@@ -369,8 +360,7 @@ take a closer look at the transaction and its results in the Flowscan block expl
 
 ![Flow Runner output on successful transaction execution](./flow-runner-successful-output.png)
 
-Copy your transaction ID and go to the Flowscan Testnet Cadence block explorer: [Flowscan
-Cadence](https://testnet.flowscan.io/).
+Copy your transaction ID and go to the Flowscan Testnet Cadence block explorer: [Flowscan Cadence].
 
 Pasting your transaction ID into the search bar will show you the transaction details, including the Cadence script,
 execution status, and event logs. Click on the "EVM" tab to view the EVM transactions batched in the Cadence
@@ -384,10 +374,10 @@ this time in a single Cadence transaction!
 
 :::warning
 
-There are two **separate** block explorers for Flow - one for Cadence activity and another for EVM
-activity. This is unique to Flow and is a consequence of the fact that Cadence & EVM are separate runtimes, with EVM
-effectively emulated within Cadence. This orientation - that of EVM running within Cadence means that the Cadence-side
-explorer has visibility to EVM transactions embedded within a Cadence transaction.
+There are two **separate** block explorers for Flow - one for Cadence activity and another for EVM activity. This is
+unique to Flow and is a consequence of the fact that Cadence & EVM are separate runtimes, with EVM effectively emulated
+within Cadence. This orientation - that of EVM running within Cadence means that the Cadence-side explorer has
+visibility to EVM transactions embedded within a Cadence transaction.
 
 Practically, this means that any transactions run using a Flow account can be viewed on the Cadence explorer while any
 transactions run using an EVM account can be viewed on the EVM explorer.
@@ -406,13 +396,12 @@ To recap, our Cadence transaction does the following, reverting if any step fail
 3. Attempts to mint a `MaybeMintERC721` token
 
 But how does our Flow account interact with EVM from the Cadence runtime? As you'll recall from the [Interacting with
-COA](./interacting-with-coa.md) guide, we use a Cadence-owned account (COA) to interact with EVM contracts from
-Cadence.
+COA](./interacting-with-coa.md) guide, we use a Cadence-owned account (COA) to interact with EVM contracts from Cadence.
 
-A COA is a [resource](https://cadence-lang.org/docs/solidity-to-cadence#resources) providing an interface through which
-Cadence can interact with the EVM runtime. This is importantly ***in addition*** to the traditional routes you'd
-normally access normal EVMs - e.g. via the JSON-RPC API. And with this interface, we can take advantage of all of the
-benefits of Cadence - namely here scripted transactions and conditional execution.
+A COA is a [resource] providing an interface through which Cadence can interact with the EVM runtime. This is
+importantly ***in addition*** to the traditional routes you'd normally access normal EVMs - e.g. via the JSON-RPC API.
+And with this interface, we can take advantage of all of the benefits of Cadence - namely here scripted transactions and
+conditional execution.
 
 So in addition to the above steps, our transaction first configures a COA in the signer's account if one doesn't already
 exist. It then funds the COA with enough FLOW to cover the mint cost, sourcing funds from the signing Flow account's
@@ -452,9 +441,8 @@ self.coa = signer.storage.borrow<auth(EVM.Call) &EVM.CadenceOwnedAccount>(from: 
         .concat(" - ensure the COA Resource is created and saved at this path to enable EVM interactions"))
 ```
 
-At the end of this section, the transaction now has an reference authorized with the `EVM.Call`
-[entitlement](https://cadence-lang.org/docs/language/access-control#entitlements) to use in the `execute` block which
-can be used call into EVM.
+At the end of this section, the transaction now has an reference authorized with the `EVM.Call` [entitlement] to use in
+the `execute` block which can be used call into EVM.
 
 ### Funding the COA
 
@@ -613,14 +601,13 @@ the principles can be applied to much more complex and interesting applications.
 In the process, you learned how to:
 
 - Read and write from smart contract functions on EVM Flowscan
-- Run a Cadence transaction from the browser using [Flow Runner](https://run.dnz.dev/)
+- Run a Cadence transaction from the browser using [Flow Runner]
 - Execute batched EVM transactions via a COA in a Cadence transaction
 - Condition final transaction execution on success of all EVM transactions
-- Inspect multiple EVM transactions embedded in a Cadence transaction with [Flowscan](https://www.flowscan.io/) and its
-  (https://www.evm.flowscan.io/) explorers
+- Inspect multiple EVM transactions embedded in a Cadence transaction with [Flowscan] block explorer
 
-The biggest takeaway here isn't the specific actions taken in this walkthrough, but the overarching concept that you can use
-**Cadence as an orchestration layer** to **extend existing EVM contracts**, creating unique user experiences with
+The biggest takeaway here isn't the specific actions taken in this walkthrough, but the overarching concept that you can
+use **Cadence as an orchestration layer** to **extend existing EVM contracts**, creating unique user experiences with
 the power **to differentiate your Web3 application**.
 
 With these basics in hand, you're ready to start building more complex applications that leverage the power of Cadence
@@ -631,11 +618,36 @@ and the Flow blockchain. How will you use these features to build Web3's next ki
 Now that you've experienced the power of Cadence and EVM interactions firsthand, we recommend checking out the following
 guides to deepen your understanding:
 
-- [How EVM on Flow Works](../how-it-works.md) - Learn more about the Flow EVM and how it differs from traditional EVM
-  platforms
-- [Interacting with COAs](./interacting-with-coa.md) - Get a fuller picture of how Cadence interacts with EVM contracts
-  via Cadence-owned accounts
-- [Cadence Transactions](../../build/basics/transactions.md) - Learn more about the Cadence transaction model
+- [How EVM on Flow Works] - Learn more about the Flow EVM and how it differs from traditional EVM platforms
+- [Interacting with COAs] - Get a fuller picture of how Cadence interacts with EVM contracts via Cadence-owned accounts
+- [Cadence Transactions] - Learn more about the Cadence transaction model
 
-Ready to level up your Cadence skills? Take a look at [these Cadence
-tutorials](https://cadence-lang.org/docs/tutorial/first-steps).
+Ready to level up your Cadence skills? Take a look at [these Cadence tutorials].
+
+<!-- Reference links -->
+
+[EVM Flowscan]: https://evm.flowscan.io/
+[Flow Runner]: https://run.dnz.dev/
+[Flowscan]: https://www.flowscan.io/
+[MetaMask]: https://metamask.io/download/
+[Flow Wallet extension]: https://wallet.flow.com/download
+[Faucet guide]: ../../ecosystem/faucets.md
+[Cadence-controlled EVM account (COA)]: ./interacting-with-coa.md
+[onchain VRF]: ../guides/vrf.md
+[Overview]: #overview
+[Testnet]: https://evm-testnet.flowscan.io/token/0xd3bF53DAC106A0290B0483EcBC89d40FcC961f3e?tab=contract
+[Mainnet]: https://evm.flowscan.io/token/0xd3bF53DAC106A0290B0483EcBC89d40FcC961f3e?tab=contract
+[`@onflow/flow-sol-utils` repository]: https://github.com/onflow/flow-sol-utils
+[Prerequisites]: #prerequisites
+[Flowscan EVM block explorer]: https://www.evm-testnet.flowscan.io/
+[WFLOW]: https://evm-testnet.flowscan.io/token/0xd3bF53DAC106A0290B0483EcBC89d40FcC961f3e?tab=write_contract
+[here]: https://docs.soliditylang.org/en/v0.8.28/units-and-global-variables.html#ether-units
+[MaybeMintERC721]: https://evm-testnet.flowscan.io/address/0x2E2Ed0Cfd3AD2f1d34481277b3204d807Ca2F8c2?tab=write_contract
+[`wrap_and_mint.cdc`]: https://run.dnz.dev/snippet/4fe0d43fdaf968b9
+[Flowscan Cadence]: https://testnet.flowscan.io/
+[resource]: https://cadence-lang.org/docs/solidity-to-cadence#resources
+[entitlement]: https://cadence-lang.org/docs/language/access-control#entitlements
+[How EVM on Flow Works]: ../how-it-works.md
+[Interacting with COAs]: ./interacting-with-coa.md
+[Cadence Transactions]: ../../build/basics/transactions.md
+[these Cadence tutorials]: https://cadence-lang.org/docs/tutorial/first-steps
