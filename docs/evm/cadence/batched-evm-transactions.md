@@ -367,8 +367,15 @@ Again, since the ERC721 has a 50% chance of failing, you may need to run the tra
 succeeds. However note that if the mint fails, the entire transaction will revert, unwinding the wrapped FLOW and
 approval.
 
-Once you submit a successful transaction, you'll see a transaction ID with event logs in the Flow Runner output. Let's
-take a closer look at the transaction and its results in the Flowscan block explorer.
+Again, since the ERC721 has a 50% chance of failure and the success of the transaction is conditioned on successfully
+minting, your transaction may fail. If it does fail, importantly the entire transaction reverts, unwinding the wrapped
+FLOW deposit and approval - the wrapping and approval transactions **do not execute** in the event of mint failure! This
+is the main takeaway of this guide, that you embed a whole sequence of EVM transactions into one atomic operation using
+Cadence and if the primary intent (or intents) does not execute, everything else is reverted as well.
+
+In our case, you'll want to submit a transaction until one succeeds. Once you submit a successful transaction, you'll
+see a transaction ID with event logs in the Flow Runner output. Let's take a closer look at the transaction and its
+results in the Flowscan block explorer.
 
 ![Flow Runner output on successful transaction execution](./flow-runner-successful-output.png)
 
