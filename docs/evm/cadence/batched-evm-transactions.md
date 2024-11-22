@@ -119,6 +119,18 @@ to interact with the contract's mutating functions.
 Before you can interact with the contract, you need to connect your MetaMask wallet to the [Flowscan EVM block
 explorer]. Click the "Connect" button in the top right corner and follow the prompts to connect your MetaMask wallet.
 
+:::warning
+
+There are two **separate** block explorers for Flow - one for Cadence activity and another for EVM activity. This is
+unique to Flow and is due to the fact that Cadence & EVM are separate runtimes, with EVM effectively emulated within
+Cadence. This orientation - that of EVM running within Cadence - means that the Cadence-side explorer has visibility to
+EVM transactions embedded within a Cadence transaction.
+
+Practically, this means that any transactions ran using a Flow account can be viewed on the Cadence explorer while any
+transactions run using an EVM account can be viewed on the EVM explorer.
+
+:::
+
 ![Connect wallet to Flowscan](./flowscan-connect.png)
 
 Once connected, you should see your address in the top right corner and above the contract's functions.
@@ -339,7 +351,7 @@ This transaction takes two arguments:
 - WFLOW contract address: `0xd3bF53DAC106A0290B0483EcBC89d40FcC961f3e`
 - MaybeMintERC721 contract address: `0x2E2Ed0Cfd3AD2f1d34481277b3204d807Ca2F8c2`
 
-Before running, ensure that the network section - bottom left corner - displays Testnet. If not, click and select
+Before running, ensure that the network section - bottom right corner - displays Testnet. If not, click and select
 "Testnet" as your network and refresh. Once you've confirmed you're Flow Runner is targeting Testnet, copy these
 addresses and paste them into the respective fields on the Flow Runner page. Click "Run" on the top left and follow the
 prompts to connect your Flow Wallet and sign the transaction.
@@ -371,18 +383,6 @@ transaction.
 Clicking on the transactions will open up the EVM transaction in Flowscan's EVM block explorer. If you view the EVM
 transactions in order, you'll notice that they aggregate the same actions we took manually in the MetaMask section, but
 this time in a single Cadence transaction!
-
-:::warning
-
-There are two **separate** block explorers for Flow - one for Cadence activity and another for EVM activity. This is
-unique to Flow and is a consequence of the fact that Cadence & EVM are separate runtimes, with EVM effectively emulated
-within Cadence. This orientation - that of EVM running within Cadence means that the Cadence-side explorer has
-visibility to EVM transactions embedded within a Cadence transaction.
-
-Practically, this means that any transactions run using a Flow account can be viewed on the Cadence explorer while any
-transactions run using an EVM account can be viewed on the EVM explorer.
-
-:::
 
 ## Breaking it Down
 
