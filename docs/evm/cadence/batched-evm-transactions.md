@@ -501,7 +501,7 @@ After running the linked transaction, you can check your COA's FLOW balance with
 EVM address (which you can get from the previous script). The resulting balance should be 1.0 (unless you've funded your
 COA prior to this walkthrough).
 
-<iframe sandbox className="flow-runner-iframe" src="https://run.dnz.dev/snippet/864eefbf961b4d03?colormode=dark&output=horizontal&outputSize=400" width="100%" height="400px"></iframe>
+<iframe sandbox className="flow-runner-iframe" src="https://run.dnz.dev/snippet/95e67e9e4cc182d6?colormode=dark&output=horizontal&outputSize=400" width="100%" height="400px"></iframe>
 
 ### Setting our EVM Contract Targets
 
