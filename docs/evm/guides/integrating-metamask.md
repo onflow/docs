@@ -3,9 +3,21 @@ title: Integrating Metamask
 sidebar_position: 1
 ---
 
+import BrowserOnly from '@docusaurus/BrowserOnly';
+import { AddNetworkButton } from '@site/src/components/addNetworkButton';
+
 # Wallets & Configurations
 
 This document shows how to integrate the Flow Network programmatically with your Dapp via MetaMask.
+
+If you want to add it to your wallet now, you can click the buttons below, or follow the [manual process].
+
+<BrowserOnly>
+  {() => {
+    // ******* If Chain Id changes, update the Chain ID in the AddNetworkButton component *******
+    return <AddNetworkButton />;
+  }}
+</BrowserOnly>
 
 ## Metamask
 
@@ -65,3 +77,7 @@ Users of your app will need to first approve a connection to Metamask. After doi
 After they approve, your app will be connected to the Flow network.
 
 By using this approach to add the Flow network to Metamask, you can avoid manual user data entry and ensure that users are ready to interact with your dApp!
+
+<!-- Reference-style links, does not render on page -->
+
+[manual process]: ../using.md
