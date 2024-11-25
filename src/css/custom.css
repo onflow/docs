@@ -115,3 +115,9 @@
   --ifm-h1-font-size: 3rem;
   margin-bottom: calc(var(--ifm-h1-vertical-rhythm-bottom)*var(--ifm-leading));
 }
+
+.portrait-screenshot-wrapper img {
+  width: 300px;
+  display: block;
+  margin: 0 auto;
+}

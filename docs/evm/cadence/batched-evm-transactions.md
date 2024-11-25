@@ -146,12 +146,16 @@ As shown below, put `1 000 000 000 000 000 000` in the input field for `deposit`
 You can now click the `Write` button to submit the transaction. Once MetaMask prompts you to sign the transaction, click
 `Confirm` and give it a few seconds to process.
 
+<div class="portrait-screenshot-wrapper">
 ![Confirm WFLOW deposit in MetaMask](./wflow-deposit-confirm.png)
+</div>
 
 Once confirmed, you should be able to see WFLOW balance in your tokens list in MetaMask - if not, you can click on
 `Import Tokens` and paste the WFLOW contract address found on the Flowscan page and refresh your list.
 
+<div class="portrait-screenshot-wrapper">
 ![WFLOW in MetaMask](./wflow-in-metamask-tokens.png)
+</div>
 
 #### 2. Approve WFLOW Transfer
 
@@ -178,7 +182,9 @@ succeeds.
 
 On success, you can click on your NFTs in MetaMask to see your newly minted token.
 
+<div class="portrait-screenshot-wrapper">
 ![MaybeMintERC721 in MetaMask NFT list](./maybe-mint-in-metamask.png)
+</div>
 
 #### Recap
 
