@@ -171,7 +171,7 @@ For example, let's say we want to format the result of our `GetCounter` script s
 To grab it, run:
 
 ```zsh
-flow dependencies add testnet://8a4dce54554b225d.NumberFormatter
+flow dependencies install testnet://8a4dce54554b225d.NumberFormatter
 ```
 
 When prompted for the account to deploy the contract to, select any account and ignore the prompt for an alias. This is if you wanted to configure a `mainnet` address for the contract.
