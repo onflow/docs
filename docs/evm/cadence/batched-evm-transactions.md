@@ -453,9 +453,9 @@ the `execute` block which can be used call into EVM.
 
 You can run a transaction that does just this step here: [`setup_coa.cdc`]
 
-Since you ran the all-in-one transaction previously, your account already has a COA configured so the transaction above
-in which case the linked transaction won't do anything. You can lookup your Testnet account's EVM address with the
-script below to confirm you have a COA configured. Simply input your Testnet address and click `Run`.
+Since you ran the all-in-one transaction previously, your account already has a COA configured in which case the linked
+transaction won't do anything. You can lookup your Testnet account's EVM address with the script below to confirm you
+have a COA configured. Simply input your Testnet Flow address and click `Run`.
 
 <iframe sandbox className="flow-runner-iframe" src="https://run.dnz.dev/snippet/beaa2849e4af2f17?colormode=dark&output=horizontal&outputSize=400" width="100%" height="400px"></iframe>
 
@@ -565,9 +565,9 @@ our Cadence transaction. This returned data is accessible from the `data` field 
 
 You can run the above code as a transaction here: [`wrap_flow.cdc`]
 
-After running the transaction, your COA should have a WFLOW balance of 1.0 WFLOW. Confirm by running the script below,
-providing your Flow account address, the WFLOW address of `0xd3bF53DAC106A0290B0483EcBC89d40FcC961f3e` and your COA's
-EVM address (retrieved from a previous script):
+After running the transaction, your COA should have a WFLOW balance of 1.0 WFLOW. Confirm your WFLOW balance by running
+the script below, providing your Flow account address, the WFLOW address of `0xd3bF53DAC106A0290B0483EcBC89d40FcC961f3e`
+and your COA's EVM address (retrieved from a previous script):
 
 <iframe sandbox className="flow-runner-iframe" src="https://run.dnz.dev/snippet/3faaf9b7069c1358?colormode=dark&output=horizontal&outputSize=400" width="100%" height="400px"></iframe>
 
@@ -578,7 +578,7 @@ WFLOW or `1000000000000000000` as returned.
 :::warning
 
 Note that the number of places to shift varies by ERC20 implementation -- the default value is 18, but it's not safe to
-assume. You can check a token's decimal places by calling `ERC20.decimals()(uint8)`.
+assume this value. You can check a token's decimal places by calling `ERC20.decimals()(uint8)`.
 
 :::
 
@@ -662,8 +662,8 @@ going through the process step by step illuminates the power and flexibility of 
 transactions as simple or as complex as you want.
 
 While lengthy transactions can be intimidating and even a bit verbose at times, the flexibility afforded by the language
-means you are only limited by your imaginations. Cadence transactions allow you to support the most streamlined of
-experience, incorporating as many contract as you need to support your use case.
+means you are only limited by your imagination. Cadence transactions allow you to support the most streamlined of
+experiences, incorporating as many contracts as needed to support your use case.
 
 ## Conclusion
 
