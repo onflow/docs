@@ -425,7 +425,7 @@ then issued and published on the signer's account, allowing anyone to deposit FL
 balance.
 
 ```cadence
-/* COA configuration & assigment */
+/* COA configuration & assignment */
 //
 let storagePath = /storage/evm
 let publicPath = /public/evm
@@ -450,6 +450,14 @@ self.coa = signer.storage.borrow<auth(EVM.Call) &EVM.CadenceOwnedAccount>(from: 
 
 At the end of this section, the transaction now has an reference authorized with the `EVM.Call` [entitlement] to use in
 the `execute` block which can be used call into EVM.
+
+You can run a transaction that does just this step here: [`setup_coa.cdc`]
+
+Since you ran the all-in-one transaction previously, your account already has a COA configured so the transaction above
+in which case the linked transaction won't do anything. You can lookup your Testnet account's EVM address with the
+script below to confirm you have a COA configured. Simply input your Testnet address and click `Run`.
+
+<iframe sandbox className="flow-runner-iframe" src="https://run.dnz.dev/snippet/beaa2849e4af2f17?colormode=dark&output=horizontal&outputSize=400" width="100%" height="400px"></iframe>
 
 ### Funding the COA
 
@@ -485,6 +493,15 @@ pre {
 
 This isn't absolutely necessary as successive steps would fail on this condition, but helps provide enhanced error
 messages in the event of insufficient funds.
+
+You can run the above block in a transaction here which will move 1 FLOW from your account's Cadence FLOW balance to
+your account's EVM balance, depositing it directly to your pre-configured COA: [`fund_coa.cdc`]
+
+After running the linked transaction, you can check your COA's FLOW balance with the script below, just enter your COA's
+EVM address (which you can get from the previous script). The resulting balance should be 1.0 (unless you've funded your
+COA prior to this walkthrough).
+
+<iframe sandbox className="flow-runner-iframe" src="https://run.dnz.dev/snippet/864eefbf961b4d03?colormode=dark&output=horizontal&outputSize=400" width="100%" height="400px"></iframe>
 
 ### Setting our EVM Contract Targets
 
@@ -546,6 +563,25 @@ our Cadence transaction. This returned data is accessible from the `data` field 
 
 :::
 
+You can run the above code as a transaction here: [`wrap_flow.cdc`]
+
+After running the transaction, your COA should have a WFLOW balance of 1.0 WFLOW. Confirm by running the script below,
+providing your Flow account address, the WFLOW address of `0xd3bF53DAC106A0290B0483EcBC89d40FcC961f3e` and your COA's
+EVM address (retrieved from a previous script):
+
+<iframe sandbox className="flow-runner-iframe" src="https://run.dnz.dev/snippet/3faaf9b7069c1358?colormode=dark&output=horizontal&outputSize=400" width="100%" height="400px"></iframe>
+
+Since Solidity does not support decimal precision, the returned balance will look like a large number. In the case of
+WFLOW, we can recover the decimals by shifting the decimal place 18 digits to the left. Your account should have `1`
+WFLOW or `1000000000000000000` as returned.
+
+:::warning
+
+Note that the number of places to shift varies by ERC20 implementation -- the default value is 18, but it's not safe to
+assume. You can check a token's decimal places by calling `ERC20.decimals()(uint8)`.
+
+:::
+
 ### Approving the ERC721 Contract
 
 Once the FLOW is wrapped as WFLOW, we approve the ERC721 contract to move the mint amount. This is done by encoding the
@@ -572,6 +608,19 @@ assert(
 )
 ```
 
+You can run this approval using the transaction, passing the WFLOW address of
+`0xd3bF53DAC106A0290B0483EcBC89d40FcC961f3e` and MaybeMintERC721 address of `0x2E2Ed0Cfd3AD2f1d34481277b3204d807Ca2F8c2`
+: [`approve_maybe_mint_erc721.cdc`]
+
+The linked transaction will perform the approval step, authorizing the ERC721 to transfer WFLOW to cover the mint cost
+when `mint()` is called. Confirm the contract allowance by running the script below. Pass your Flow address, WFLOW
+address, ERC721 address, and your COA's EVM address.
+
+<iframe sandbox className="flow-runner-iframe" src="https://run.dnz.dev/snippet/37ccbfde5e523b42?colormode=dark&output=horizontal&outputSize=400" width="100%" height="400px"></iframe>
+
+The result is the amount of your WFLOW balance the ERC721 is allowed to transfer, which after the transaction should be
+`1` WFLOW, or `1000000000000000000` as returned.
+
 ### Minting the ERC721 Token
 
 Finally, we attempt to mint the ERC721 token. This is done by encoding the `mint()` calldata and calling the ERC721
@@ -596,8 +645,25 @@ assert(
 )
 ```
 
-And that's it! We've successfully batched EVM transactions using Cadence, reverting the entire transaction if any step
-fails. This is a powerful feature of Cadence, enabling complex interactions across the EVM and Cadence runtimes.
+You can run the minting transaction here, passing the ERC721 address of `0x2E2Ed0Cfd3AD2f1d34481277b3204d807Ca2F8c2`:
+[`mint.cdc`]
+
+Again, this transaction may fail. But if you executed all the prior stepwise transactions according to the walkthrough,
+you can try again until the mint succeeds. Recall that you can view your transaction details using Cadence [Flowscan]
+which will also let you view the embedded EVM transactions in the `EVM` tab. Try it out, and see if you can figure out
+how to get your minted NFT's URI with the script below.
+
+<iframe sandbox className="flow-runner-iframe" src="https://run.dnz.dev/snippet/dbe4fb4e722f36d4?colormode=dark&output=horizontal&outputSize=400" width="100%" height="400px"></iframe>
+
+### Recap
+
+All of the stepwise transactions you just executed are compiled in the first Cadence transaction we ran. Hopefully,
+going through the process step by step illuminates the power and flexibility of Cadence, allowing you to write
+transactions as simple or as complex as you want.
+
+While lengthy transactions can be intimidating and even a bit verbose at times, the flexibility afforded by the language
+means you are only limited by your imaginations. Cadence transactions allow you to support the most streamlined of
+experience, incorporating as many contract as you need to support your use case.
 
 ## Conclusion
 
@@ -658,3 +724,8 @@ Ready to level up your Cadence skills? Take a look at [these Cadence tutorials].
 [Interacting with COAs]: ./interacting-with-coa.md
 [Cadence Transactions]: ../../build/basics/transactions.md
 [these Cadence tutorials]: https://cadence-lang.org/docs/tutorial/first-steps
+[`setup_coa.cdc`]: https://run.dnz.dev/snippet/f660668cb8df535c
+[`fund_coa.cdc`]: https://run.dnz.dev/snippet/be1041305d9bcfef
+[`wrap_flow.cdc`]: https://run.dnz.dev/snippet/65d0d48d0b294deb
+[`approve_maybe_mint_erc721.cdc`]: https://run.dnz.dev/snippet/8c5a1fcbeeccf68f
+[`mint.cdc`]: https://run.dnz.dev/snippet/87d3c9dcafc4b6d0
