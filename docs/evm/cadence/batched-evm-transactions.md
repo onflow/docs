@@ -724,8 +724,8 @@ Ready to level up your Cadence skills? Take a look at [these Cadence tutorials].
 [Interacting with COAs]: ./interacting-with-coa.md
 [Cadence Transactions]: ../../build/basics/transactions.md
 [these Cadence tutorials]: https://cadence-lang.org/docs/tutorial/first-steps
-[`setup_coa.cdc`]: https://run.dnz.dev/snippet/f660668cb8df535c
-[`fund_coa.cdc`]: https://run.dnz.dev/snippet/be1041305d9bcfef
-[`wrap_flow.cdc`]: https://run.dnz.dev/snippet/65d0d48d0b294deb
-[`approve_maybe_mint_erc721.cdc`]: https://run.dnz.dev/snippet/8c5a1fcbeeccf68f
-[`mint.cdc`]: https://run.dnz.dev/snippet/87d3c9dcafc4b6d0
+[`setup_coa.cdc`]: https://run.dnz.dev/snippet/4ec75e1f4165fa05
+[`fund_coa.cdc`]: https://run.dnz.dev/snippet/0e7370601bd9123b
+[`wrap_flow.cdc`]: https://run.dnz.dev/snippet/9dbfb784da5300fb
+[`approve_maybe_mint_erc721.cdc`]: https://run.dnz.dev/snippet/1b503d82f9a2c5a7
+[`mint.cdc`]: https://run.dnz.dev/snippet/fd7c4dda536d006e
