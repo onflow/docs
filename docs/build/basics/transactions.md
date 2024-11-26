@@ -172,7 +172,7 @@ Chain    | Preliminary |  Soft finality | Hard finality
 ---------|-------------|----------------|---------------
 Solana   | 100ms       | n/a            | ~30s
 Ethereum | 15s         | n/a            | ~15m
-Flow     | bypass      | 6s             | ~20s 
+Flow     | bypass      | 6s             | ~14s
 
 #### Flow
 
