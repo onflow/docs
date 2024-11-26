@@ -129,42 +129,65 @@ fcl
   .put('0xFlowToken', '0x7e60df042a9c0868');
 ```
 
-### Using Flow.json
+### Using `flow.json` for Contract Imports
 
-A simpler way to import contracts in scripts and transactions is to use the `config.load` method to ingest your contracts from your `flow.json` file. This keeps the import syntax unified across tools and lets FCL figure out which address to use for what network based on the network provided in config. To use `config.load` you must first import your `flow.json` file and then pass it to `config.load` as a parameter.
+A simpler and more flexible way to manage contract imports in scripts and transactions is by using the `config.load` method in FCL. This lets you load contract configurations from a `flow.json` file, keeping your import syntax clean and allowing FCL to pick the correct contract addresses based on the network you're using.
+
+### Setting Up
+
+#### 1. Define Your Contracts in `flow.json`
+
+Here’s an example of a `flow.json` file with aliases for multiple networks:
+
+```json
+{
+  "contracts": {
+    "HelloWorld": {
+      "source": "./cadence/contracts/HelloWorld.cdc",
+      "aliases": {
+        "testnet": "0x1cf0e2f2f715450",
+        "mainnet": "0xf8d6e0586b0a20c7"
+      }
+    }
+  }
+}
+```
+
+- **`source`**: Points to the contract file in your project.
+- **`aliases`**: Maps each network to the correct contract address.
+
+#### 2. Configure FCL
+
+Load the `flow.json` file and set up FCL to use it:
 
 ```javascript
 import { config } from '@onflow/fcl';
 import flowJSON from '../flow.json';
 
 config({
-  'flow.network': 'testnet',
-  'accessNode.api': 'https://rest-testnet.onflow.org',
-  'discovery.wallet': `https://fcl-discovery.onflow.org/testnet/authn`,
+  'flow.network': 'testnet', // Choose your network, e.g., testnet or mainnet
+  'accessNode.api': 'https://rest-testnet.onflow.org', // Access node for the network
+  'discovery.wallet': `https://fcl-discovery.onflow.org/testnet/authn`, // Wallet discovery
 }).load({ flowJSON });
 ```
 
-Let's say your `flow.json` file looks like this:
+With this setup, FCL will automatically use the correct contract address based on the selected network (e.g., `testnet` or `mainnet`).
 
-```
-{
-  "contracts": {
-		"HelloWorld": "cadence/contracts/HelloWorld.cdc"
-	}
+#### 3. Use Contract Names in Scripts and Transactions
+
+After setting up `flow.json`, you can import contracts by name in your Cadence scripts or transactions:
+
+```cadence
+import "HelloWorld"
+
+access(all) fun main(): String {
+    return HelloWorld.sayHello()
 }
 ```
 
-Then in your scripts and transactions, all you have to do is:
+FCL replaces `"HelloWorld"` with the correct address from the `flow.json` configuration.
 
-```
-import "HelloWorld"
-```
-
-FCL will automatically replace the contract name with the address for the network you are using.
-
-> Note: never put private keys in your `flow.json`. You should use the [key/location syntax](../../../tools/flow-cli/flow.json/security.md) to separate your keys into a separate git ignored file.
-
----
+> **Note**: Don’t store private keys in your `flow.json`. Instead, use the [key/location syntax](../../../tools/flow-cli/flow.json/security.md) to keep sensitive keys in a separate, `.gitignore`-protected file.
 
 ## Wallet Interactions
 
