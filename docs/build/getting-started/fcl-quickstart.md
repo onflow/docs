@@ -226,6 +226,14 @@ In the above code:
 - If an error occurs during the query, we log it to the console.
 - We use the script from Step 2 to query the count from the `Counter` contract and format it using the `NumberFormatter` contract.
 
+:::info
+
+In this tutorial, we've shown you hardcoding addresses directly for simplicity and brevity. However, it's **recommended** to use the `import "ContractName"` syntax, as demonstrated in [Step 2: Local Development](./flow-cli.md). This approach is supported by the Flow Client Library (FCL) and allows you to use aliases for contract addresses in your `flow.json` file. It makes your code more flexible, maintainable, and easier to adapt across different environments (e.g., `testnet`, `mainnet`).
+
+Learn more about this best practice in the [FCL Documentation](../../tools/clients/fcl-js/api.md#using-flowjson-for-contract-imports).
+
+:::
+
 ### Step 2: Run the App
 
 Start your development server:
