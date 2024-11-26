@@ -6,7 +6,7 @@ sidebar_position: 6
 
 Integrating Cadence into EVM applications on Flow enables developers to leverage the best of both worlds. This guide
 demonstrates how to batch EVM transactions using Cadence, allowing applications to embed multiple EVM transactions in a
-single Cadence transaction, conditioning final execution on the success of all EVM transactions.
+single Cadence transaction while conditioning final execution on the success of all EVM transactions.
 
 This feature can supercharge your EVM application by unlocking experiences otherwise impossible on traditional EVM
 platforms.
@@ -21,7 +21,7 @@ After completing this guide, you'll be able to
 - Run a Cadence transaction from the browser using [Flow Runner]
 - Install conceptual understanding of Cadence X EVM interactions
 - Inspect multiple EVM transactions embedded in a Cadence transaction with [Flowscan] block explorer
-- Write code that interacts with the EVM via a COA
+- Write code that interacts with the EVM via a CadenceOwnedAccount (COA)
 
 ## Prerequisites
 
@@ -45,10 +45,10 @@ These operations let us focus on the **core concepts** of this guide:
 1. **Batching EVM transactions** using Cadence
 2. **Conditioning execution** on the results of those EVM transactions.
 
-However, using these same principles, you'll have the power to address much more complex and interesting. For instance,
-replace wrapping FLOW with a DEX swap. Or instead of minting an ERC721, purchase an NFT listing from a marketplace.
-Combine these two and suddenly you can purchase NFTs with any ERC20 token, all in a single Cadence transaction,
-reverting everything if a single step fails.
+However, using these same principles, you'll have the power to address more complex use cases. For instance, replace
+wrapping FLOW with a DEX swap. Or instead of minting an ERC721, purchase an NFT listing from a marketplace. Combine
+these two and suddenly you can purchase NFTs with any ERC20 token, all in a single Cadence transaction, reverting
+everything if a single step fails.
 
 The point is, while a simple use case, this guide will give you the tools to build much more complex and interesting
 applications. So let's get started!
@@ -61,7 +61,7 @@ As mentioned in the [Overview], this guide involves three main actions:
 - Approving an ERC721 to transfer WFLOW in exchange for an NFT mint
 - Minting an ERC721 token
 
-Before interacting with these contracts, let's dig in a bit more into the components of this guide.
+Before interacting with these contracts, let's dig bit more into the components of this guide.
 
 ### Wrap FLOW as WFLOW
 
@@ -90,7 +90,7 @@ transaction was processed.
 
 Importantly, if this transaction fails, we want to revert the entire sequence of transactions. After all, you wrapped
 FLOW to WFLOW and approved the ERC721 transfer specifically to mint this NFT. If the mint fails, you want to unwind
-everything. This is where batching EVM transactions using Cadence is extremely powerful.
+everything. As we'll see shortly, this is where batching EVM transactions using Cadence is extremely powerful.
 
 ## Interacting with the Contracts
 
@@ -100,8 +100,8 @@ platforms.
 
 :::tip
 
-Recall in [Prerequisites] that you need to have both MetaMask and Flow Wallet installed and funded with Testnet FLOW.
-Make sure you've done so before proceeding.
+Recall in [Prerequisites] that you need to have both [MetaMask] and [Flow Wallet extension] installed and funded with
+Testnet FLOW. Make sure you've done so before proceeding.
 
 :::
 
@@ -126,8 +126,8 @@ unique to Flow and is due to the fact that Cadence & EVM are separate runtimes, 
 Cadence. This orientation - that of EVM running within Cadence - means that the Cadence-side explorer has visibility to
 EVM transactions embedded within a Cadence transaction.
 
-Practically, this means that any transactions ran using a Flow account can be viewed on the Cadence explorer while any
-transactions run using an EVM account can be viewed on the EVM explorer.
+Practically, this means that any transactions ran using a Flow native account can be viewed on the Cadence explorer
+while any transactions run using an EVM account can be viewed on the EVM explorer.
 
 :::
 
@@ -188,15 +188,15 @@ On success, you can click on your NFTs in MetaMask to see your newly minted toke
 
 #### Recap
 
-This process is cumbersome and requires multiple transactions, each of which could fail. Given the intent of the process
-- minting an NFT - if this were a case where the NFT was a limited edition or time-sensitive, you'd be left with WFLOW
+This process is cumbersome and requires multiple transactions, each of which could fail. Given the intent of the process -
+minting an NFT - if this were a case where the NFT was a limited edition or time-sensitive, you'd be left with WFLOW
 wrapped and approved for transfer, but no NFT and would need to manually unwind the process.
 
 Or you could just use Cadence to batch these transactions and revert everything if the mint fails. Let's do that.
 
 ### Using Flow Wallet
 
-Before diving into the how, let's execute the batched version of everything we just did using Flow Wallet. This will
+Before diving into the "how", let's execute the batched version of everything we just did using Flow Wallet. This will
 give you a sense of the power of Cadence and the Flow blockchain.
 
 The transaction below, like all Cadence transactions, is scripted, allowing us to execute a series of actions. It may
@@ -722,7 +722,7 @@ Ready to level up your Cadence skills? Take a look at [these Cadence tutorials].
 [WFLOW]: https://evm-testnet.flowscan.io/token/0xd3bF53DAC106A0290B0483EcBC89d40FcC961f3e?tab=write_contract
 [here]: https://docs.soliditylang.org/en/v0.8.28/units-and-global-variables.html#ether-units
 [MaybeMintERC721]: https://evm-testnet.flowscan.io/address/0x2E2Ed0Cfd3AD2f1d34481277b3204d807Ca2F8c2?tab=write_contract
-[`wrap_and_mint.cdc`]: https://run.dnz.dev/snippet/4fe0d43fdaf968b9
+[`wrap_and_mint.cdc`]: https://run.dnz.dev/snippet/c99b25e04a2d1f28
 [Flowscan Cadence]: https://testnet.flowscan.io/
 [resource]: https://cadence-lang.org/docs/solidity-to-cadence#resources
 [entitlement]: https://cadence-lang.org/docs/language/access-control#entitlements
