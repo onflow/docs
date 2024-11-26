@@ -463,7 +463,7 @@ Since you ran the all-in-one transaction previously, your account already has a 
 transaction won't do anything. You can lookup your Testnet account's EVM address with the script below to confirm you
 have a COA configured. Simply input your Testnet Flow address and click `Run`.
 
-<iframe sandbox className="flow-runner-iframe" src="https://run.dnz.dev/snippet/beaa2849e4af2f17?colormode=dark&output=horizontal&outputSize=400" width="100%" height="400px"></iframe>
+<iframe sandbox className="flow-runner-iframe" src="https://run.dnz.dev/snippet/beaa2849e4af2f17?colormode=dark&output=vertical&outputSize=100&network=testnet" width="100%" height="400px"></iframe>
 
 ### Funding the COA
 
@@ -507,7 +507,7 @@ After running the linked transaction, you can check your COA's FLOW balance with
 EVM address (which you can get from the previous script). The resulting balance should be 1.0 (unless you've funded your
 COA prior to this walkthrough).
 
-<iframe sandbox className="flow-runner-iframe" src="https://run.dnz.dev/snippet/95e67e9e4cc182d6?colormode=dark&output=horizontal&outputSize=400" width="100%" height="400px"></iframe>
+<iframe sandbox className="flow-runner-iframe" src="https://run.dnz.dev/snippet/95e67e9e4cc182d6?colormode=dark&output=vertical&outputSize=100&network=testnet" width="100%" height="400px"></iframe>
 
 ### Setting our EVM Contract Targets
 
@@ -575,7 +575,7 @@ After running the transaction, your COA should have a WFLOW balance of 1.0 WFLOW
 the script below, providing your Flow account address, the WFLOW address of `0xd3bF53DAC106A0290B0483EcBC89d40FcC961f3e`
 and your COA's EVM address (retrieved from a previous script):
 
-<iframe sandbox className="flow-runner-iframe" src="https://run.dnz.dev/snippet/3faaf9b7069c1358?colormode=dark&output=horizontal&outputSize=400" width="100%" height="400px"></iframe>
+<iframe sandbox className="flow-runner-iframe" src="https://run.dnz.dev/snippet/3faaf9b7069c1358?colormode=dark&output=vertical&outputSize=100&network=testnet" width="100%" height="800px"></iframe>
 
 Since Solidity does not support decimal precision, the returned balance will look like a large number. In the case of
 WFLOW, we can recover the decimals by shifting the decimal place 18 digits to the left. Your account should have `1`
@@ -622,7 +622,7 @@ The linked transaction will perform the approval step, authorizing the ERC721 to
 when `mint()` is called. Confirm the contract allowance by running the script below. Pass your Flow address, WFLOW
 address, ERC721 address, and your COA's EVM address.
 
-<iframe sandbox className="flow-runner-iframe" src="https://run.dnz.dev/snippet/37ccbfde5e523b42?colormode=dark&output=horizontal&outputSize=400" width="100%" height="400px"></iframe>
+<iframe sandbox className="flow-runner-iframe" src="https://run.dnz.dev/snippet/37ccbfde5e523b42?colormode=dark&output=vertical&outputSize=100&network=testnet" width="100%" height="800px"></iframe>
 
 The result is the amount of your WFLOW balance the ERC721 is allowed to transfer, which after the transaction should be
 `1` WFLOW, or `1000000000000000000` as returned.
@@ -659,7 +659,7 @@ you can try again until the mint succeeds. Recall that you can view your transac
 which will also let you view the embedded EVM transactions in the `EVM` tab. Try it out, and see if you can figure out
 how to get your minted NFT's URI with the script below.
 
-<iframe sandbox className="flow-runner-iframe" src="https://run.dnz.dev/snippet/dbe4fb4e722f36d4?colormode=dark&output=horizontal&outputSize=400" width="100%" height="400px"></iframe>
+<iframe sandbox className="flow-runner-iframe" src="https://run.dnz.dev/snippet/dbe4fb4e722f36d4?colormode=dark&output=vertical&outputSize=100&network=testnet" width="100%" height="800px"></iframe>
 
 ### Recap
 
