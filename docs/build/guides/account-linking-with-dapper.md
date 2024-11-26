@@ -360,7 +360,7 @@ With your accounts linked, your Flow Wallet now has a set of capabilities relate
 Before you can add a script that can handle this, you'll need to import the `HybridCustody` contract using the [Flow Dependency Manager]:
 
 ```zsh
-flow dependencies add mainnet://d8a7e05a7ac670c0.HybridCustody
+flow dependencies install mainnet://d8a7e05a7ac670c0.HybridCustody
 ```
 
 Choose `none` to skip deploying on the `emulator` and skip adding testnet aliases.  There's no point, these NFTs are on mainnet!
