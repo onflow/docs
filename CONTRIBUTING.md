@@ -264,11 +264,52 @@ To include code from a file using a direct URL use `!from` operand inside a code
 
 Example: 
 
+#### By line number
+
+````markdown
+```cadence DepositFees.cdc
+!from https://github.com/onflow/flow-core-contracts/blob/master/transactions/FlowServiceAccount/deposit_fees.cdc#L23
+```
+````
+
+#### By line range
+
 ````markdown
 ```cadence DepositFees.cdc
 !from https://github.com/onflow/flow-core-contracts/blob/master/transactions/FlowServiceAccount/deposit_fees.cdc#L23-L26
 ```
 ````
+
+#### By snippet name / Region Tag
+
+Specific blocks of code that are embedded in documentation are defined using `[START <snippet_name>]` and `[END <snippet_name>]` region tags.
+
+```ruby
+def create_bucket project_id:, bucket_name:
+  # [START create_bucket]
+  # project_id  = "Your Google Cloud project ID"
+  # bucket_name = "Your Google Cloud Storage bucket name"
+
+  require "google/cloud/storage"
+
+  storage = Google::Cloud::Storage.new project: project_id
+
+  bucket = storage.create_bucket bucket_name
+
+  puts "Created bucket #{bucket.name}"
+  # [END create_bucket]
+end
+```
+
+and the reference would look like
+
+````markdown
+```ruby
+!from https://github.com/emosei/ruby-docs-samples/blob/master/storage/buckets.rb#create_bucket
+```
+````
+
+
 
 This method keeps your documentation synchronized with your codebase by pulling the latest code directly into your docs.
 

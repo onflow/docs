@@ -118,6 +118,7 @@ const plugin = () => {
         }
 
         const lines = getLines(url);
+        const snippetName = getSnippetName(url);
 
         const fetchPromise = fetch(url)
           .then(async (res) => {
