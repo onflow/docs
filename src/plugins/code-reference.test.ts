@@ -1,4 +1,9 @@
-import { getCodeSnippet, getLines, getSnippetName } from './code-reference';
+import {
+  getCodeSnippet,
+  getLines,
+  getSnippetName,
+  verifySnippet,
+} from './code-reference';
 
 jest.mock('node-fetch', () => jest.fn().mockReturnThis());
 
@@ -83,21 +88,37 @@ function example() {
 }`);
   });
 
-  it('should return all code for a non-existent snippet name', () => {
-    const result = getCodeSnippet({
-      code,
-      lines: null,
-      snippetName: 'foo_bar',
-    });
-    expect(result).toEqual(code);
+  it('should throw an error for a non-existent snippet name', () => {
+    const shouldThrow = (): void =>
+      getCodeSnippet({
+        code,
+        lines: null,
+        snippetName: 'foo_bar',
+      });
+    expect(shouldThrow).toThrow();
   });
 
-  it('should return all code for non matching snippet name', () => {
-    const result = getCodeSnippet({
-      code,
-      lines: null,
-      snippetName: 'foo',
-    });
-    expect(result).toEqual(code);
+  it('should throw an error for a non-matching snippet name', () => {
+    const shouldThrow = (): void =>
+      getCodeSnippet({
+        code,
+        lines: null,
+        snippetName: 'foo',
+      });
+    expect(shouldThrow).toThrow();
+  });
+});
+
+describe('verifySnippet', () => {
+  it('should create a snippet file', async () => {
+    const isVerifiedSnippet = await verifySnippet('testfile', 'foo');
+
+    expect(isVerifiedSnippet).toBe(true);
+  });
+
+  it('should create a snippet file', async () => {
+    const isVerifiedSnippet = await verifySnippet('testfile', 'bar');
+
+    expect(isVerifiedSnippet).toBe(false);
   });
 });

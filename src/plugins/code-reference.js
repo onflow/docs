@@ -1,10 +1,17 @@
 import { visit } from 'unist-util-visit';
 import fetch from 'node-fetch';
+import fs from 'fs/promises';
+import path from 'path';
 
 const VALUE_STARTS_WITH = '!from ';
 
 const githubReplace = /^(https:\/\/)(www.)?github.com\/(.+)\/blob\/(.+)/;
 
+/**
+ *
+ * @param {string} nodeValue
+ * @returns string
+ */
 const getUrl = (nodeValue) => {
   const url = nodeValue.replace(VALUE_STARTS_WITH, '').trim();
 
@@ -64,6 +71,14 @@ export const getSnippetName = (url) => {
   return snippet;
 };
 
+/**
+ *
+ * @param {object} params
+ * @param {string,string | null} params.code
+ * @param {[string,string] | null} params.lines
+ * @param {string | null} params.snippetName
+ * @returns {string}
+ */
 export const getCodeSnippet = ({ code, lines, snippetName }) => {
   if (lines != null) {
     const codeLines = code
@@ -98,13 +113,63 @@ export const getCodeSnippet = ({ code, lines, snippetName }) => {
         break;
       }
     }
-    if (startLine != null && endLine != null) {
-      const codeLines = codeArray.slice(startLine, endLine).join('\n');
-      return codeLines;
+    if (startLine == null) {
+      throw Error(`Nonexistent snippet: ${snippetName}`);
     }
-    return code;
+    if (endLine == null) {
+      throw Error(`Unclosed snippet: ${snippetName}`);
+    }
+
+    const codeLines = codeArray.slice(startLine, endLine).join('\n');
+    return codeLines;
   }
   return code;
+};
+
+/**
+ *
+ * @param {string} url
+ * @param {object} from
+ * @param {[string,string] | null} from.lines
+ * @param {string | null} from.snippetName
+ * @returns {Promise<string>}
+ */
+export const fetchSnippet = async (url, { lines, snippetName }) => {
+  const codeResponse = await fetch(url);
+  if (!codeResponse.ok) {
+    throw new Error(`Failed to fetch code from ${url}: ${res.statusText}`);
+  }
+  const code = await codeResponse.text();
+  const snippet = getCodeSnippet({ code, lines, snippetName });
+
+  return snippet;
+};
+
+/**
+ *
+ * @param {string} url
+ * @param {string} snippet
+ *
+ * @returns {Promise<boolean>}
+ */
+export const verifySnippet = async (url, snippet) => {
+  const fileName = encodeURIComponent(url);
+  const filePath = path.resolve(`./src/plugins/snippets/${fileName}`);
+  let fileContent;
+  try {
+    const file = await fs.readFile(filePath);
+    fileContent = file.toString();
+  } catch (e) {
+    if (e.code !== 'ENOENT') {
+      return false;
+    }
+    await fs.writeFile(filePath, snippet);
+    return true;
+  }
+  if (fileContent !== snippet) {
+    return false;
+  }
+  return true;
 };
 
 const plugin = () => {
@@ -113,36 +178,56 @@ const plugin = () => {
     visit(ast, 'code', (node) => {
       if (node.value?.startsWith(VALUE_STARTS_WITH)) {
         const url = getUrl(node.value);
-        if (!url) {
+        if (!url || typeof url !== 'string') {
           return;
         }
 
         const lines = getLines(url);
         const snippetName = getSnippetName(url);
 
-        const fetchPromise = fetch(url)
-          .then(async (res) => {
-            if (!res.ok) {
-              throw new Error(
-                `Failed to fetch code from ${url}: ${res.statusText}`,
-              );
+        const parseSnippetPromise = (async () => {
+          try {
+            const snippet = await fetchSnippet(url, {
+              lines,
+              snippetName,
+            });
+            if (lines != null || snippetName != null) {
+              const isVerifiedSnippet = await verifySnippet(url, snippet);
+              if (!isVerifiedSnippet) {
+                throw new Error(
+                  `Snippet has changed for URL ${url}. Fix the reference or check the source.`,
+                );
+              }
             }
-            return await res.text();
-          })
-          .then((code) => {
-            node.value = getCodeSnippet({ code, lines, snippetName });
-          })
-          .catch((err) => {
-            console.error(err);
-            node.value = `Error fetching code: ${err.message}`;
-          });
+            node.value = snippet;
+          } catch (error) {
+            // Log the error for debugging
+            console.error(
+              `Error processing snippet from ${url}:`,
+              error.message,
+            );
+            // Re-throw the error to propagate it
+            throw error;
+          }
+        })();
 
-        promises.push(fetchPromise);
+        promises.push(parseSnippetPromise);
       }
     });
 
-    await Promise.all(promises);
+    const results = await Promise.allSettled(promises);
+    const errors = results
+      .filter(({ status }) => status === 'rejected')
+      .map(({ reason }) => reason);
+
+    if (errors.length > 0) {
+      // Aggregate error messages
+      const errorMessage = errors.map((err) => err.message).join('\n');
+      // Throw a new error with all the messages
+      throw new Error(`Snippet parsing errors:\n${errorMessage}`);
+    }
   };
+
   return transformer;
 };
 
