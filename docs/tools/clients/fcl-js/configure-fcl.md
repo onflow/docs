@@ -58,6 +58,7 @@ addStuff().then((d) => console.log(d)); // 13 (5 + 7 + 1)
 - `flow.network` (recommended) -- **(INTRODUCED `@onflow/fcl@1.0.0`)** Used in conjunction with stored interactions and provides FCLCryptoContract address for `testnet` and `mainnet`. Possible values: `local`, `testnet`, `mainnet`.
 - `service.OpenID.scopes` - **(INTRODUCED `@onflow/fcl@0.0.68`)** Open ID Connect claims for Wallets and OpenID services.
 - `walletconnect.projectId` -- **(INTRODUCED `@onflow/fcl@1.11.0`)** Your app's WalletConnect project ID. See [WalletConnect Cloud](https://cloud.walletconnect.com/sign-in) to obtain a project ID for your application.
+- `walletconnect.disableNotifications` -- **(INTRODUCED `@onflow/fcl@1.13.0`)** Flag to disable pending WalletConnect request notifications within the application's UI. Default is `false`.
 
 ## Using Contracts in Scripts and Transactions
 
