@@ -9,6 +9,8 @@ const { remarkCodeHike } = require('@code-hike/mdx');
 const path = require('path');
 const fs = require('fs');
 
+const flowNetwork = process.env.FLOW_NETWORK || 'testnet';
+
 const externalDataSourceLocation = './src/data/data-sources.json';
 let cachedRepositories;
 
@@ -637,6 +639,10 @@ const config = {
     },
   ],
   clientModules: [require.resolve('./src/modules/toolscards.ts')],
+
+  customFields: {
+      flowNetwork,
+  },
 };
 
 module.exports = config;
