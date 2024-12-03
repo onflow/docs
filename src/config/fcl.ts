@@ -1,14 +1,13 @@
 import * as fcl from '@onflow/fcl';
+import config from '@generated/docusaurus.config';
 
-const flowNetwork = 'testnet';
-
-console.log('Dapp running on network:', flowNetwork);
+console.log('Dapp running on network:', config.customFields.flowNetwork);
 
 export function configureFCL(): void {
   fcl.config({
-    'flow.network': flowNetwork,
+    'flow.network': config.customFields.flowNetwork,
     'accessNode.api': 'https://rest-testnet.onflow.org',
-    'discovery.wallet': `https://fcl-discovery.onflow.org/${flowNetwork}/authn`,
+    'discovery.wallet': `https://fcl-discovery.onflow.org/${'testnet'}/authn`,
   });
 }
 
