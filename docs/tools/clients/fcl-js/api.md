@@ -59,20 +59,21 @@ addStuff().then((d) => console.log(d)); // 13 (5 + 7 + 1)
 
 ### Common Configuration Keys
 
-| Name                              | Example                                                       | Description                                                                                                                                                             |
-| --------------------------------- | ------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `accessNode.api` **(required)**   | `https://rest-testnet.onflow.org`                             | API URL for the Flow Blockchain Access Node you want to be communicating with. See all available access node endpoints [here](https://developers.onflow.org/http-api/). |
-| `app.detail.title`                | `Cryptokitties`                                               | Your applications title, can be requested by wallets and other services. Used by WalletConnect plugin & Wallet Discovery service.                                       |
-| `app.detail.icon`                 | `https://fcl-discovery.onflow.org/images/blocto.png`          | Url for your applications icon, can be requested by wallets and other services. Used by WalletConnect plugin & Wallet Discovery service.                                |
-| `app.detail.description`          | `Cryptokitties is a blockchain game`                          | Your applications description, can be requested by wallets and other services. Used by WalletConnect plugin & Wallet Discovery service.                                 |
-| `app.detail.url`                  | `https://cryptokitties.co`                                    | Your applications url, can be requested by wallets and other services. Used by WalletConnect plugin & Wallet Discovery service.                                         |
-| `challenge.handshake`             | **DEPRECATED**                                                | Use `discovery.wallet` instead.                                                                                                                                         |
-| `discovery.authn.endpoint`        | `https://fcl-discovery.onflow.org/api/testnet/authn`          | Endpoint for alternative configurable Wallet Discovery mechanism. Read more on [discovery](#discovery)                                                                  |
-| `discovery.wallet` **(required)** | `https://fcl-discovery.onflow.org/testnet/authn`              | Points FCL at the Wallet or Wallet Discovery mechanism.                                                                                                                 |
-| `discovery.wallet.method`         | `IFRAME/RPC`, `POP/RPC`, `TAB/RPC`, `HTTP/POST`, or `EXT/RPC` | Describes which service strategy a wallet should use.                                                                                                                   |
-| `fcl.limit`                       | `100`                                                         | Specifies fallback compute limit if not provided in transaction. Provided as integer.                                                                                   |
-| `flow.network` **(recommended)**  | `testnet`                                                     | Used in conjunction with stored interactions and provides FCLCryptoContract address for `testnet` and `mainnet`. Possible values: `local`, `testnet`, `mainnet`.        |
-| `walletconnect.projectId`         | `YOUR_PROJECT_ID`                                             | Your app's WalletConnect project ID. See [WalletConnect Cloud](https://cloud.walletconnect.com/sign-in) to obtain a project ID for your application.                    |
+| Name                                 | Example                                                       | Description                                                                                                                                                             |
+| ------------------------------------ | ------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `accessNode.api` **(required)**      | `https://rest-testnet.onflow.org`                             | API URL for the Flow Blockchain Access Node you want to be communicating with. See all available access node endpoints [here](https://developers.onflow.org/http-api/). |
+| `app.detail.title`                   | `Cryptokitties`                                               | Your applications title, can be requested by wallets and other services. Used by WalletConnect plugin & Wallet Discovery service.                                       |
+| `app.detail.icon`                    | `https://fcl-discovery.onflow.org/images/blocto.png`          | Url for your applications icon, can be requested by wallets and other services. Used by WalletConnect plugin & Wallet Discovery service.                                |
+| `app.detail.description`             | `Cryptokitties is a blockchain game`                          | Your applications description, can be requested by wallets and other services. Used by WalletConnect plugin & Wallet Discovery service.                                 |
+| `app.detail.url`                     | `https://cryptokitties.co`                                    | Your applications url, can be requested by wallets and other services. Used by WalletConnect plugin & Wallet Discovery service.                                         |
+| `challenge.handshake`                | **DEPRECATED**                                                | Use `discovery.wallet` instead.                                                                                                                                         |
+| `discovery.authn.endpoint`           | `https://fcl-discovery.onflow.org/api/testnet/authn`          | Endpoint for alternative configurable Wallet Discovery mechanism. Read more on [discovery](#discovery)                                                                  |
+| `discovery.wallet` **(required)**    | `https://fcl-discovery.onflow.org/testnet/authn`              | Points FCL at the Wallet or Wallet Discovery mechanism.                                                                                                                 |
+| `discovery.wallet.method`            | `IFRAME/RPC`, `POP/RPC`, `TAB/RPC`, `HTTP/POST`, or `EXT/RPC` | Describes which service strategy a wallet should use.                                                                                                                   |
+| `fcl.limit`                          | `100`                                                         | Specifies fallback compute limit if not provided in transaction. Provided as integer.                                                                                   |
+| `flow.network` **(recommended)**     | `testnet`                                                     | Used in conjunction with stored interactions and provides FCLCryptoContract address for `testnet` and `mainnet`. Possible values: `local`, `testnet`, `mainnet`.        |
+| `walletconnect.projectId`            | `YOUR_PROJECT_ID`                                             | Your app's WalletConnect project ID. See [WalletConnect Cloud](https://cloud.walletconnect.com/sign-in) to obtain a project ID for your application.                    |
+| `walletconnect.disableNotifications` | `false`                                                       | Optional flag to disable pending WalletConnect request notifications within the application's UI.                                                                       |
 
 ## Using Contracts in Scripts and Transactions
 
@@ -609,12 +610,12 @@ Allows you to submit transactions to the blockchain to potentially mutate the st
 
 _Pass in the following as a single object with the following keys. All keys are optional unless otherwise stated._
 
-| Key        | Type                                             | Description                                                                                                                                                                          |
-| ---------- | ------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `cadence`  | string **(required)**                            | A valid cadence transaction.                                                                                                                                                         |
-| `args`     | [ArgumentFunction](#argumentfunction)            | Any arguments to the script if needed should be supplied via a function that returns an array of arguments.                                                                          |
+| Key        | Type                                             | Description                                                                                                                                                                         |
+| ---------- | ------------------------------------------------ | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `cadence`  | string **(required)**                            | A valid cadence transaction.                                                                                                                                                        |
+| `args`     | [ArgumentFunction](#argumentfunction)            | Any arguments to the script if needed should be supplied via a function that returns an array of arguments.                                                                         |
 | `limit`    | number                                           | Compute (Gas) limit for query. Read the [documentation about computation cost](../flow-go-sdk/index.md#gas-limit) for information about how computation cost is calculated on Flow. |
-| `proposer` | [AuthorizationFunction](#authorization-function) | The authorization function that returns a valid [AuthorizationObject](#authorizationobject) for the [proposer role](#transactionrolesobject).                                        |
+| `proposer` | [AuthorizationFunction](#authorization-function) | The authorization function that returns a valid [AuthorizationObject](#authorizationobject) for the [proposer role](#transactionrolesobject).                                       |
 
 #### Returns
 
@@ -1613,7 +1614,7 @@ An interaction is an object containing the information to perform an action on c
 | `f_type`    | string              | `'USER'`  | A type identifier used internally by FCL.                                                                                                                                                                                                                                                      |
 | `f_vsn`     | string              | `'1.0.0'` | FCL protocol version.                                                                                                                                                                                                                                                                          |
 | `loggedIn`  | boolean             | `null`    | If the user is logged in.                                                                                                                                                                                                                                                                      |
-| `services`  | `[ServiceObject]`     | `[]`      | A list of trusted services that express ways of interacting with the current user's identity, including means to further discovery, [authentication, authorization](https://gist.github.com/orodio/a74293f65e83145ec8b968294808cf35#you-know-who-the-user-is), or other kinds of interactions. |
+| `services`  | `[ServiceObject]`   | `[]`      | A list of trusted services that express ways of interacting with the current user's identity, including means to further discovery, [authentication, authorization](https://gist.github.com/orodio/a74293f65e83145ec8b968294808cf35#you-know-who-the-user-is), or other kinds of interactions. |
 
 ---
 
@@ -1816,10 +1817,10 @@ const signingFunction = ({
 | -------------------- | ------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | `args`               | object                                | A list of encoded Cadence values passed into this transaction. These have not been decoded by the JS-SDK.                                                                    |
 | `authorizers`        | [\[Address\]](#address)               | A list of the accounts that are authorizing this transaction to mutate to their on-chain account state. [See more here](../../../build/basics/transactions.md#signer-roles). |
-| `envelopeSignatures` | [\[SignableObject\]](#signableobject) | A list of signatures generated by the payer role. [See more here](../../../build/basics/transactions.md#signing-a-transaction).                                           |
+| `envelopeSignatures` | [\[SignableObject\]](#signableobject) | A list of signatures generated by the payer role. [See more here](../../../build/basics/transactions.md#signing-a-transaction).                                              |
 | `gasLimit`           | number                                | The maximum number of computational units that can be used to execute this transaction. [See more here](../../../build/basics/fees.md).                                      |
 | `payer`              | [Address](#address)                   | The account that pays the fee for this transaction. [See more here](../../../build/basics/transactions.md#signer-roles).                                                     |
-| `payloadSignatures`  | [\[SignableObject\]](#signableobject) | A list of signatures generated by the proposer and authorizer roles. [See more here](../../../build/basics/transactions.md#signing-a-transaction).                        |
+| `payloadSignatures`  | [\[SignableObject\]](#signableobject) | A list of signatures generated by the proposer and authorizer roles. [See more here](../../../build/basics/transactions.md#signing-a-transaction).                           |
 | `proposalKey`        | [\[ProposalKey\]](#proposalkeyobject) | The account key used to propose this transaction                                                                                                                             |
 | `referenceBlockId`   | string                                | A reference to the block used to calculate the expiry of this transaction.                                                                                                   |
 | `script`             | string                                | The UTF-8 encoded Cadence source code that defines the execution logic for this transaction                                                                                  |
@@ -1914,9 +1915,9 @@ The subset of the [BlockObject](#blockobject) containing only the header values 
 
 A collection that has been included in a block.
 
-| Key            | Value Type        | Description          |
-| -------------- | ----------------- | -------------------- |
-| `collectionId` | string            | The id of the block. |
+| Key            | Value Type                          | Description          |
+| -------------- | ----------------------------------- | -------------------- |
+| `collectionId` | string                              | The id of the block. |
 | `signatures`   | [SignatureObject](#SignatureObject) | All signatures.      |
 
 ### `CollectionObject`
@@ -2106,13 +2107,12 @@ import { BlockHeartbeat } from "@onflow/typedefs"
 const heartbeat: BlockHeartbeat = ...
 ```
 
-
 ### SignatureObject
 
 Signature objects are used to represent a signature for a particular message as well as the account and keyId which signed for this message.
 
-| Key         | Value Type                                                    | Description                                                                                                                                                      |
-| ----------- | ------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `addr`      | [Address](#address) | the address of the account which this signature has been generated for                                                                                           |
-| `keyId`     | number                                                        | The index of the key to use during authorization. (Multiple keys on an account is possible).|
-| `signature` | string                                                        | a hexidecimal-encoded string representation of the generated signature                                                                                           |
+| Key         | Value Type          | Description                                                                                  |
+| ----------- | ------------------- | -------------------------------------------------------------------------------------------- |
+| `addr`      | [Address](#address) | the address of the account which this signature has been generated for                       |
+| `keyId`     | number              | The index of the key to use during authorization. (Multiple keys on an account is possible). |
+| `signature` | string              | a hexidecimal-encoded string representation of the generated signature                       |
