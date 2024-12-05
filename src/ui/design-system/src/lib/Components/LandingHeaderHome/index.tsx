@@ -30,10 +30,10 @@ export function LandingHeaderHome({
         </div>
         <div className="mb-4">
           <ButtonLink
-            size={'sm'}
+            size="sm"
             variant="accent"
-            href={'/build/getting-started/contract-interaction'}
-            className={'hover:no-underline hover:opacity-80'}
+            href="/build/getting-started/contract-interaction"
+            className="px-8 py-3 min-w-[200px] md:min-w-[250px] hover:no-underline hover:opacity-80"
           >
             Get Building
           </ButtonLink>
