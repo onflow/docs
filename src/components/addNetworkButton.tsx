@@ -89,7 +89,6 @@ export const AddNetworkButton = (): JSX.Element => {
         <Button
           key={chain.id}
           disabled={isNetworkAdded}
-          variant="secondary"
           onClick={() => {
             addFlowNetwork(chain).catch((e) => {
               console.error(e);
