@@ -1,9 +1,9 @@
 import React, { useMemo, useState } from "react"
 import { OFFICE_HOURS_EVENT_TYPE } from "../../../../../../data/events"
-import { ButtonLink } from "../Button"
 import { EventCard, EventCardList, EventCardProps } from "../EventCard"
 import { EventCardSmall } from "../EventCardSmall"
 import { HeaderWithLink } from "../HeaderWithLink"
+import { Button } from '@site/src/ui/design-system/src/lib/Components/Button';
 
 export type UpcomingEventsProps = {
   goToCommunityHref: string
