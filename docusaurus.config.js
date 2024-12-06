@@ -200,10 +200,10 @@ const config = {
             require.resolve('./src/css/custom.css'),
           ],
         },
-        ...(process.env.GA_TRACKING_ID
+        ...(process.env.GTAG
           ? {
-              googleAnalytics: {
-                trackingID: process.env.GA_TRACKING_ID,
+              gtag: {
+                trackingID: process.env.GTAG,
                 anonymizeIP: true,
               },
             }
