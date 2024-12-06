@@ -200,14 +200,6 @@ const config = {
             require.resolve('./src/css/custom.css'),
           ],
         },
-        ...(process.env.GTAG
-          ? {
-              gtag: {
-                trackingID: process.env.GTAG,
-                anonymizeIP: true,
-              },
-            }
-          : {}),
       }),
     ],
     [
