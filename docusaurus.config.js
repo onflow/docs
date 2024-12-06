@@ -178,7 +178,7 @@ const config = {
       ({
         docs: {
           beforeDefaultRemarkPlugins: [
-            [codeReference, {}],
+            codeReference,
             [
               remarkCodeHike,
               { theme: 'nord', lineNumbers: true, showCopyButton: true },
