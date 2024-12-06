@@ -3,7 +3,7 @@ import { OFFICE_HOURS_EVENT_TYPE } from "../../../../../../data/events"
 import { EventCard, EventCardList, EventCardProps } from "../EventCard"
 import { EventCardSmall } from "../EventCardSmall"
 import { HeaderWithLink } from "../HeaderWithLink"
-import { Button } from '@site/src/ui/design-system/src/lib/Components/Button';
+import { Button } from "../Button"
 
 export type UpcomingEventsProps = {
   goToCommunityHref: string
