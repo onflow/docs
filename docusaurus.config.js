@@ -5,6 +5,7 @@ const lightCodeTheme = require('prism-react-renderer/themes/github');
 const darkCodeTheme = require('prism-react-renderer/themes/dracula');
 
 const { remarkCodeHike } = require('@code-hike/mdx');
+const codeReference = require('./src/plugins/code-reference'),
 
 const path = require('path');
 const fs = require('fs');
@@ -177,7 +178,7 @@ const config = {
       ({
         docs: {
           beforeDefaultRemarkPlugins: [
-            // require('./src/plugins/code-reference'),
+            codeReference,
             [
               remarkCodeHike,
               { theme: 'nord', lineNumbers: true, showCopyButton: true },
