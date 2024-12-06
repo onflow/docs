@@ -1,6 +1,6 @@
 import React from 'react'
 import clsx from 'clsx'
-import { ButtonLink } from '../Button'
+import { Button } from '../Button'
 import Tag from '../Tag'
 
 export interface FeaturedArticleCardProps {
@@ -33,9 +33,12 @@ const FeaturedArticleCard = ({
           {description}
         </p>
       )}
-      <ButtonLink href={link} className="px-6 py-4">
+      <Button
+        href={link}
+        className="px-6 py-4"
+      >
         {ctaText || heading}
-      </ButtonLink>
+      </Button>
     </div>
   )
 }
