@@ -176,13 +176,13 @@ const config = {
       /** @type {import('@docusaurus/preset-classic').Options} */
       ({
         docs: {
-          // beforeDefaultRemarkPlugins: [
-          //   require('./src/plugins/code-reference'),
-          //   [
-          //     remarkCodeHike,
-          //     { theme: 'nord', lineNumbers: true, showCopyButton: true },
-          //   ],
-          // ],
+          beforeDefaultRemarkPlugins: [
+            // require('./src/plugins/code-reference'),
+            [
+              remarkCodeHike,
+              { theme: 'nord', lineNumbers: true, showCopyButton: true },
+            ],
+          ],
           sidebarPath: require.resolve('./sidebars.js'),
           routeBasePath: '/',
           editUrl,
