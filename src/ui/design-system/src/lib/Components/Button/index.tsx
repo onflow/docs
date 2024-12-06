@@ -72,16 +72,16 @@ type ButtonProps = {
   React.ComponentPropsWithoutRef<'a'>;
 
 export function Button({
-                         href,
-                         className,
-                         size = 'md',
-                         variant = 'black',
-                         disabled,
-                         leftIcon,
-                         rightIcon,
-                         children,
-                         ...props
-                       }: ButtonProps): JSX.Element {
+    href,
+    className,
+    size = 'md',
+    variant = 'black',
+    disabled,
+    leftIcon,
+    rightIcon,
+    children,
+    ...props
+  }: ButtonProps): JSX.Element {
   const variantStyles = VARIANTS[variant];
 
   const combinedStyles = clsx(
