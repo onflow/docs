@@ -1,8 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import {
-  Button,
-  ButtonLink,
-} from '@site/src/ui/design-system/src/lib/Components/Button/index';
+import { Button } from '@site/src/ui/design-system/src/lib/Components/Button/index';
 
 const targetChains = [
   {
@@ -102,8 +99,8 @@ export const AddNetworkButton = (): JSX.Element => {
       ))}
     </div>
   ) : (
-    <ButtonLink variant="primary" href="https://metamask.io/download/">
+    <Button variant="primary" href="https://metamask.io/download/">
       Install MetaMask
-    </ButtonLink>
+    </Button>
   );
 };

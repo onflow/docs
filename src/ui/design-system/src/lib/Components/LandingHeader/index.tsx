@@ -1,6 +1,6 @@
 import React from 'react'
 import LandingImage from "../../../../images/misc/landing-home.png"
-import { ButtonLink } from "../Button"
+import { Button } from "../Button"
 
 export type LandingHeaderProps = {
   buttonText: string
@@ -36,13 +36,13 @@ export function LandingHeader({
           <h2 className="text-h2 mb-2 md:mb-4">{callout}</h2>
           <p>{description}</p>
           <div>
-            <ButtonLink
+            <Button
               className="mt-4 transition duration-200"
               href={buttonUrl}
               variant="primary-no-darkmode"
             >
               {buttonText}
-            </ButtonLink>
+            </Button>
           </div>
         </div>
         <div className="hidden max-w-[554px] dark:bg-white/40 md:flex">

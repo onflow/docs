@@ -13,7 +13,7 @@ const VARIANTS = {
     active: 'active:bg-gray-900 active:text-white',
     dark: {
       base: 'dark:bg-white dark:text-black',
-      hover: 'dark:hover:bg-gray-300 dark:hover:text-black',
+      hover: 'dark:hover:bg-gray-100 dark:hover:text-black',
       active: 'dark:active:bg-gray-200 dark:active:text-black',
     },
     disabled: 'disabled:opacity-50 disabled:cursor-not-allowed',
@@ -59,44 +59,23 @@ const SIZES = {
   md: ['text-sm px-6 py-3 rounded-lg gap-3'],
 };
 
-type ButtonContentProps = {
-  children: React.ReactNode;
-  leftIcon?: 'left';
-  rightIcon?: 'right' | 'external';
-};
-
-type ButtonBaseProps = {
+type ButtonProps = {
   variant?: keyof typeof VARIANTS;
   size?: keyof typeof SIZES;
   disabled?: boolean;
-} & ButtonContentProps;
-
-export type ButtonProps = React.ComponentPropsWithoutRef<'button'> &
-  ButtonBaseProps;
-
-function ButtonContent({
-                         leftIcon,
-                         rightIcon,
-                         children,
-                       }: ButtonContentProps): JSX.Element {
-  return (
-    <>
-      {leftIcon === 'left' && (
-        <div className="relative -top-[1px] rotate-180">
-          <ChevronRightIcon />
-        </div>
-      )}
-      {children}
-      {rightIcon === 'right' && <ChevronRightIcon />}
-      {rightIcon === 'external' && <ExternalLinkIcon />}
-    </>
-  );
-}
+  href?: string; // Determines if it renders as a link
+  leftIcon?: 'left';
+  rightIcon?: 'right' | 'external';
+  className?: string;
+  children: React.ReactNode;
+} & React.ComponentPropsWithoutRef<'button'> &
+  React.ComponentPropsWithoutRef<'a'>;
 
 export function Button({
+                         href,
                          className,
                          size = 'md',
-                         variant = 'black', // Default to "black"
+                         variant = 'black',
                          disabled,
                          leftIcon,
                          rightIcon,
@@ -118,56 +97,36 @@ export function Button({
     className
   );
 
+  const ButtonContent = (
+    <>
+      {leftIcon === 'left' && (
+        <div className="relative -top-[1px] rotate-180">
+          <ChevronRightIcon />
+        </div>
+      )}
+      {children}
+      {rightIcon === 'right' && <ChevronRightIcon />}
+      {rightIcon === 'external' && <ExternalLinkIcon />}
+    </>
+  );
+
+  if (href) {
+    // Render as a link
+    return (
+      <a
+        href={disabled ? undefined : href}
+        className={clsx(combinedStyles, { 'pointer-events-none': disabled })}
+        {...props}
+      >
+        {ButtonContent}
+      </a>
+    );
+  }
+
+  // Render as a button
   return (
     <button className={combinedStyles} disabled={disabled} {...props}>
-      <ButtonContent leftIcon={leftIcon} rightIcon={rightIcon}>
-        {children}
-      </ButtonContent>
+      {ButtonContent}
     </button>
-  );
-}
-
-export type ButtonLinkProps = React.ComponentPropsWithoutRef<'a'> &
-  ButtonBaseProps & {
-  href: string;
-  children: React.ReactNode;
-};
-
-export function ButtonLink({
-                             className,
-                             size = 'md',
-                             variant = 'black',
-                             href,
-                             disabled,
-                             leftIcon,
-                             rightIcon,
-                             children,
-                             ...props
-                           }: ButtonLinkProps): JSX.Element {
-  const variantStyles = VARIANTS[variant];
-
-  const combinedStyles = clsx(
-    BASE_CLASSES,
-    SIZES[size],
-    variantStyles.base,
-    variantStyles.hover,
-    variantStyles.active,
-    disabled && variantStyles.disabled,
-    variantStyles.dark?.base,
-    variantStyles.dark?.hover,
-    variantStyles.dark?.active,
-    className
-  );
-
-  return (
-    <a
-      href={disabled ? undefined : href}
-      className={clsx(combinedStyles, { 'pointer-events-none': disabled })}
-      {...props}
-    >
-      <ButtonContent leftIcon={leftIcon} rightIcon={rightIcon}>
-        {children}
-      </ButtonContent>
-    </a>
   );
 }

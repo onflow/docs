@@ -1,6 +1,6 @@
 import React, { type ReactNode } from 'react';
 import LandingImage from '../../../../images/misc/landing-home.png';
-import { ButtonLink } from '../Button';
+import { Button } from '../Button';
 
 export interface LandingHeaderHomeProps {
   description: string | ReactNode;
@@ -29,14 +29,14 @@ export function LandingHeaderHome({
           {description}
         </div>
         <div className="mb-4">
-          <ButtonLink
+          <Button
             size="sm"
             variant="accent"
             href="/build/getting-started/contract-interaction"
             className="px-8 py-3 min-w-[200px] md:min-w-[250px] hover:no-underline hover:opacity-80"
           >
             Get Building
-          </ButtonLink>
+          </Button>
         </div>
       </div>
       <div className="pr-0 md:ml-auto md:mr-14 md:pl-4">

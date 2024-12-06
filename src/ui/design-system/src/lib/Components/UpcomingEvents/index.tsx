@@ -74,14 +74,14 @@ export function UpcomingEvents({
           indicatorColor="bg-primary-gray-100 dark:bg-primary-gray-400"
         />
         <div className="mt-10 flex flex-col justify-items-stretch gap-6 md:flex-row">
-          <ButtonLink
+          <Button
             className="flex-1 md:max-w-[50%]"
             variant="secondary"
             href={goToCommunityHref}
             rightIcon="external"
           >
             Go to Community
-          </ButtonLink>
+          </Button>
           <div className="flex-1" />
         </div>
       </div>
