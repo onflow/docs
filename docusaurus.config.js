@@ -177,7 +177,7 @@ const config = {
       ({
         docs: {
           beforeDefaultRemarkPlugins: [
-            // require('./src/plugins/code-reference'),
+            require('./src/plugins/code-reference'),
             [
               remarkCodeHike,
               { theme: 'nord', lineNumbers: true, showCopyButton: true },
