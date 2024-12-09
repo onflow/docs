@@ -169,7 +169,7 @@ async function verifySnippet(url, snippet) {
 
 function plugin() {
   const transformer = async (ast) => {
-    const fetch = await import('node-fetch');
+    const { default: fetch } = await import('node-fetch');
     const promises = [];
     visit(ast, 'code', (node) => {
       if (node.value?.startsWith(VALUE_STARTS_WITH)) {
