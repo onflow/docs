@@ -173,7 +173,7 @@ export const verifySnippet = async (url, snippet) => {
 };
 
 const plugin = () => {
-  const transformer = async (ast) => {
+  const transformer = (ast) => {
     const promises = [];
     visit(ast, 'code', (node) => {
       if (node.value?.startsWith(VALUE_STARTS_WITH)) {
@@ -215,17 +215,22 @@ const plugin = () => {
       }
     });
 
-    const results = await Promise.allSettled(promises);
-    const errors = results
-      .filter(({ status }) => status === 'rejected')
-      .map(({ reason }) => reason);
+    Promise.allSettled(promises)
+      .then((results) => {
+        const errors = results
+          .filter(({ status }) => status === 'rejected')
+          .map(({ reason }) => reason);
 
-    if (errors.length > 0) {
-      // Aggregate error messages
-      const errorMessage = errors.map((err) => err.message).join('\n');
-      // Throw a new error with all the messages
-      throw new Error(`Snippet parsing errors:\n${errorMessage}`);
-    }
+        if (errors.length > 0) {
+          // Aggregate error messages
+          const errorMessage = errors.map((err) => err.message).join('\n');
+          // Throw a new error with all the messages
+          throw new Error(`Snippet parsing errors:\n${errorMessage}`);
+        }
+      })
+      .catch((error) => {
+        throw new Error(`Snippet parsing errors:\n${error}`);
+      });
   };
 
   return transformer;
