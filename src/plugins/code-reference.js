@@ -168,7 +168,7 @@ async function verifySnippet(url, snippet) {
 }
 
 function plugin() {
-  const transformer = (ast) => {
+  const transformer = async (ast) => {
     const promises = [];
     visit(ast, 'code', (node) => {
       if (node.value?.startsWith(VALUE_STARTS_WITH)) {
