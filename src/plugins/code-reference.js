@@ -1,5 +1,4 @@
 const { visit } = require('unist-util-visit');
-const fetch = require('node-fetch');
 const fs = require('fs/promises');
 const path = require('path');
 
@@ -125,11 +124,12 @@ function getCodeSnippet({ code, lines, snippetName }) {
 
 /**
  *
+ * @param {Function} fetch
  * @param {string} url
  * @param {{ lines: [number, number] | null, snippetName: string | null }} from
  * @returns {Promise<string>}
  */
-async function fetchSnippet(url, { lines, snippetName }) {
+async function fetchSnippet(fetch, url, { lines, snippetName }) {
   const codeResponse = await fetch(url);
   if (!codeResponse.ok) {
     throw new Error(`Failed to fetch code from ${url}: ${codeResponse.statusText}`);
@@ -169,6 +169,7 @@ async function verifySnippet(url, snippet) {
 
 function plugin() {
   const transformer = async (ast) => {
+    const fetch = await import('node-fetch');
     const promises = [];
     visit(ast, 'code', (node) => {
       if (node.value?.startsWith(VALUE_STARTS_WITH)) {
@@ -182,7 +183,7 @@ function plugin() {
 
         const parseSnippetPromise = (async () => {
           try {
-            const snippet = await fetchSnippet(url, {
+            const snippet = await fetchSnippet(fetch, url, {
               lines,
               snippetName,
             });
