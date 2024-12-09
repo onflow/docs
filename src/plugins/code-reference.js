@@ -174,63 +174,63 @@ export const verifySnippet = async (url, snippet) => {
 
 const plugin = () => {
   const transformer = (ast) => {
-    const promises = [];
-    visit(ast, 'code', (node) => {
-      if (node.value?.startsWith(VALUE_STARTS_WITH)) {
-        const url = getUrl(node.value);
-        if (!url || typeof url !== 'string') {
-          return;
-        }
+    // const promises = [];
+    // visit(ast, 'code', (node) => {
+    //   if (node.value?.startsWith(VALUE_STARTS_WITH)) {
+    //     const url = getUrl(node.value);
+    //     if (!url || typeof url !== 'string') {
+    //       return;
+    //     }
 
-        const lines = getLines(url);
-        const snippetName = getSnippetName(url);
+    //     const lines = getLines(url);
+    //     const snippetName = getSnippetName(url);
 
-        const parseSnippetPromise = (async () => {
-          try {
-            const snippet = await fetchSnippet(url, {
-              lines,
-              snippetName,
-            });
-            if (lines != null || snippetName != null) {
-              const isVerifiedSnippet = await verifySnippet(url, snippet);
-              if (!isVerifiedSnippet) {
-                throw new Error(
-                  `Snippet has changed for URL ${url}. Fix the reference or check the source.`,
-                );
-              }
-            }
-            node.value = snippet;
-          } catch (error) {
-            // Log the error for debugging
-            console.error(
-              `Error processing snippet from ${url}:`,
-              error.message,
-            );
-            // Re-throw the error to propagate it
-            throw error;
-          }
-        })();
+    //     const parseSnippetPromise = (async () => {
+    //       try {
+    //         const snippet = await fetchSnippet(url, {
+    //           lines,
+    //           snippetName,
+    //         });
+    //         if (lines != null || snippetName != null) {
+    //           const isVerifiedSnippet = await verifySnippet(url, snippet);
+    //           if (!isVerifiedSnippet) {
+    //             throw new Error(
+    //               `Snippet has changed for URL ${url}. Fix the reference or check the source.`,
+    //             );
+    //           }
+    //         }
+    //         node.value = snippet;
+    //       } catch (error) {
+    //         // Log the error for debugging
+    //         console.error(
+    //           `Error processing snippet from ${url}:`,
+    //           error.message,
+    //         );
+    //         // Re-throw the error to propagate it
+    //         throw error;
+    //       }
+    //     })();
 
-        promises.push(parseSnippetPromise);
-      }
-    });
+    //     promises.push(parseSnippetPromise);
+    //   }
+    // });
 
-    Promise.allSettled(promises)
-      .then((results) => {
-        const errors = results
-          .filter(({ status }) => status === 'rejected')
-          .map(({ reason }) => reason);
+    // Promise.allSettled(promises)
+    //   .then((results) => {
+    //     const errors = results
+    //       .filter(({ status }) => status === 'rejected')
+    //       .map(({ reason }) => reason);
 
-        if (errors.length > 0) {
-          // Aggregate error messages
-          const errorMessage = errors.map((err) => err.message).join('\n');
-          // Throw a new error with all the messages
-          throw new Error(`Snippet parsing errors:\n${errorMessage}`);
-        }
-      })
-      .catch((error) => {
-        throw new Error(`Snippet parsing errors:\n${error}`);
-      });
+    //     if (errors.length > 0) {
+    //       // Aggregate error messages
+    //       const errorMessage = errors.map((err) => err.message).join('\n');
+    //       // Throw a new error with all the messages
+    //       throw new Error(`Snippet parsing errors:\n${errorMessage}`);
+    //     }
+    //   })
+    //   .catch((error) => {
+    //     throw new Error(`Snippet parsing errors:\n${error}`);
+    //   });
   };
 
   return transformer;
