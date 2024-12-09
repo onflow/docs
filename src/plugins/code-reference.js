@@ -205,20 +205,17 @@ function plugin() {
       }
     });
 
-    Promise.allSettled(promises)
-      .then((results) => {
-        const errors = results
-          .filter(({ status }) => status === 'rejected')
-          .map(({ reason }) => reason);
+    const results = await Promise.allSettled(promises);
+    const errors = results
+      .filter(({ status }) => status === 'rejected')
+      .map(({ reason }) => reason);
 
-        if (errors.length > 0) {
-          const errorMessage = errors.map((err) => err.message).join('\n');
-          throw new Error(`Snippet parsing errors:\n${errorMessage}`);
-        }
-      })
-      .catch((error) => {
-        throw new Error(`Snippet parsing errors:\n${error}`);
-      });
+    if (errors.length > 0) {
+      // Aggregate error messages
+      const errorMessage = errors.map((err) => err.message).join('\n');
+      // Throw a new error with all the messages
+      throw new Error(`Snippet parsing errors:\n${errorMessage}`);
+    }
   };
 
   return transformer;
