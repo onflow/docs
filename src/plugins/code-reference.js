@@ -236,4 +236,6 @@ const plugin = () => {
   return transformer;
 };
 
-export default plugin;
+// export default plugin;
+
+module.exports = plugin;
