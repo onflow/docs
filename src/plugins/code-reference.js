@@ -132,7 +132,9 @@ function getCodeSnippet({ code, lines, snippetName }) {
 async function fetchSnippet(url, { lines, snippetName }) {
   const codeResponse = await fetch(url);
   if (!codeResponse.ok) {
-    throw new Error(`Failed to fetch code from ${url}: ${codeResponse.statusText}`);
+    throw new Error(
+      `Failed to fetch code from ${url}: ${codeResponse.statusText}`,
+    );
   }
   const code = await codeResponse.text();
   const snippet = getCodeSnippet({ code, lines, snippetName });
@@ -196,7 +198,12 @@ function plugin() {
             }
             node.value = snippet;
           } catch (error) {
-            console.error(`Error processing snippet from ${url}:`, error.message);
+            // Log the error for debugging
+            console.error(
+              `Error processing snippet from ${url}:`,
+              error.message,
+            );
+            // Re-throw the error to propagate it
             throw error;
           }
         })();
