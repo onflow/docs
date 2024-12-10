@@ -188,6 +188,24 @@ cat /etc/systemd/system/gateway.service
 sudo systemctl enable gateway
 ```
 
+**Start all services**
+
+```bash
+sudo systemctl daemon-reload
+sudo systemctl restart access-node
+sudo systemctl restart gateway
+```
+
+**Check logs**
+
+```bash
+# change log settings to persistent if not already
+sed -i 's/#Storage=auto/Storage=persistent/g' /etc/systemd/journald.conf
+sudo systemctl restart systemd-journald
+
+journalctl -u access-node.service -f -n 100
+journalctl -u gateway.service -f -n 100
+
 </TabItem>
 <TabItem value="docker-build" label="Docker build">
 
