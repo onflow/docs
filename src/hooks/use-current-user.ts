@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import * as fcl from '@onflow/fcl';
+import { event } from '@site/src/utils/gtags.client';
 
 interface FlowUser {
   addr: string | null;
@@ -23,6 +24,13 @@ export function useCurrentUser(): UseCurrentUserReturn {
   const logIn = async (): Promise<void> => {
     try {
       await fcl.authenticate();
+
+      event({
+        category: 'auth',
+        action: 'login',
+        label: 'fcl_connect',
+        value: 1,
+      });
     } catch (error) {
       console.error('Error during login:', error);
     }
