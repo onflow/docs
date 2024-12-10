@@ -112,6 +112,13 @@ make docker-build
 ```
 
 </TabItem>
+<TabItem value="docker-install" label="Use Docker registry image">
+
+```bash
+docker pull us-west1-docker.pkg.dev/dl-flow-devex-production/development/flow-evm-gateway:${VERSION}
+```
+
+</TabItem>
 </Tabs>
 
 ## Step 3 - Start Your Node
