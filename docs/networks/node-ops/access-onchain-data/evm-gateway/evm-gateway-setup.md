@@ -155,7 +155,7 @@ export GAS_PRICE="100"
 <Tabs>
 <TabItem value="source-build" label="Source build">
 
-Create EVM Gateway service
+**Create EVM Gateway service**
 
 ```bash
 sudo tee <<EOF >/dev/null /etc/systemd/system/gateway.service
