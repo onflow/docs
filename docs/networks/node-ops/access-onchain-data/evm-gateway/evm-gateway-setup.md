@@ -90,7 +90,6 @@ To run EVM Gateway on bare metal or in a VM without the use of docker, select th
 
 This will build the EVM gateway binary from source. 
 
-For live networks we recommend using the [latest release](https://github.com/onflow/flow-evm-gateway/releases/latest) tag.
 ```bash
 git clone https://github.com/onflow/flow-evm-gateway.git
 
