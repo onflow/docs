@@ -214,8 +214,8 @@ make DOCKER_RUN_DETACHED=true DOCKER_HOST_PORT=1234 DOCKER_HOST_MOUNT=/my/host/d
 
 ## Startup bootstrap indexing
 
-Once your EVM Gateway is up and running you will see it indexing the EVM on Flow network which was configured. At the present time
-this is a lengthy process (possible 1-3 days, depending on CPU core count) during which time the gateway will not respond to queries. 
+Once your EVM Gateway is up and running you will see it indexing the Flow network which was configured. At the present time this
+is a lengthy process (possible 1-3 days, depending on CPU core count) during which time the gateway will not respond to queries. 
 Once the data is fully indexed the gateway can serve requests to clients.
 
 To speed up gateway setup we recommend backing up the /flow-evm-gateway/data directory to use when creating additional nodes 
