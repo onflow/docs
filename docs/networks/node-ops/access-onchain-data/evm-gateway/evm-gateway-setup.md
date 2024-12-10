@@ -132,7 +132,7 @@ If you haven't already got an EVM address and you have the COA account created b
 * Your EVM account will now be available to use in the left nav account view
 * When you switch to that account you can obtain its EVM address
 
-## COA Address and Key
+### COA Address and Key
 
 COA address and private key is configured for `--coa-address` & `--coa-key` configuration flags. If running multiple EVM Gateway hosts it is standard to
 share the same COA address and key across _n_ hosts.
