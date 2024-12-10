@@ -205,6 +205,7 @@ sudo systemctl restart systemd-journald
 
 journalctl -u access-node.service -f -n 100
 journalctl -u gateway.service -f -n 100
+```
 
 </TabItem>
 <TabItem value="docker-build" label="Docker build">
