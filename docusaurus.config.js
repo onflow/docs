@@ -179,7 +179,7 @@ const config = {
       ({
         docs: {
           beforeDefaultRemarkPlugins: [
-            require('./src/plugins/code-reference'),
+            require('./src/plugins/code-reference').plugin,
             [
               remarkCodeHike,
               { theme: 'nord', lineNumbers: true, showCopyButton: true },
@@ -202,13 +202,13 @@ const config = {
             require.resolve('./src/css/custom.css'),
           ],
         },
-        ...(process.env.GA_TRACKING_ID
+        ...(process.env.GTAG
           ? {
-            gtag: {
-              trackingID: process.env.GA_TRACKING_ID,
-              anonymizeIP: true,
-            },
-          }
+              gtag: {
+                trackingID: process.env.GTAG,
+                anonymizeIP: true,
+              },
+            }
           : {}),
       }),
     ],
@@ -546,7 +546,7 @@ const config = {
       };
     },
     /** this function needs doesn't pick up hot reload event, it needs a restart */
-    // @ts-ignore
+    // @ts-expect-error
     function (context, options) {
       const { siteConfig } = context;
       return {
@@ -564,7 +564,7 @@ const config = {
           };
         },
         async contentLoaded({ content, actions }) {
-          // @ts-ignore
+          // @ts-expect-error
           const { networks, sporks } = content;
           const { addRoute, createData } = actions;
           const networksJsonPath = await createData(
