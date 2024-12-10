@@ -193,6 +193,17 @@ It may be necessary to make local changes to the `docker-run` target to add para
 cd flow-evm-gateway
 make docker-run
 ```
+Additional options are available as follows
+
+```bash
+DOCKER_RUN_DETACHED=true 
+DOCKER_HOST_MOUNT=[host mount directory] 
+DOCKER_HOST_PORT=[desired port to expose on host]
+
+# Example usage
+
+make DOCKER_RUN_DETACHED=true DOCKER_HOST_PORT=1234 DOCKER_HOST_MOUNT=/my/host/dir docker-run
+```
 
 </TabItem>
 </Tabs>
