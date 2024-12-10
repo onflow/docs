@@ -295,8 +295,7 @@ curl -s -XPOST 'your-evm-gw-host:8545' --header 'Content-Type: application/json'
 
 ### State stream configuration
 
-The following log entries may occur when `--state-stream-addr` and `--rpc-port` are not set to the same values when running 
-EVM Gateway on the same logical host as the Flow Access Node. 
+If you are running an Access Node on the same logical host as the EVM Gateway you may see ehe following log entries.
 
 ```bash
 failure in event subscription at height ${INIT-CADENCE-HEIGHT}, with: recoverable: disconnected: error receiving event: rpc error: code = Unimplemented desc = unknown service flow.executiondata.ExecutionDataAPI”
@@ -304,6 +303,9 @@ failure in event subscription at height ${INIT-CADENCE-HEIGHT}, with: recoverabl
 ```bash
 component execution data indexer initialization failed: could not verify checkpoint file: could not find expected root hash e6d4f4c755666c21d7456441b4d33d3521e5e030b3eae391295577e9130fd715 in checkpoint file which contains: [e10d3c53608a1f195b7969fbc06763285281f64595be491630a1e1bdfbe69161]
 ```
+
+To resolve this configure `--state-stream-addr` to use the same address/port combination which is set for Access Node `--rpc-addr`. 
+This is required by the gateway to allow both the streaming and non-streaming APIs to query using the same connection.
 
 ### Access Node not fully synced
 
