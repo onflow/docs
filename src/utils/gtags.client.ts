@@ -35,7 +35,12 @@ export const event = ({
   category,
   label,
   value,
-}: Record<string, string>) => {
+}: {
+  action?: string;
+  category?: string;
+  label?: string;
+  value?: number | string;
+}) => {
   if (!window.gtag) {
     console.warn(
       "window.gtag is not defined. This could mean your google anylatics script has not loaded on the page yet."
