@@ -114,6 +114,7 @@ make docker-build
 </TabItem>
 <TabItem value="docker-install" label="Use Docker registry image">
 
+Registry versions available for download can be found [here](https://console.cloud.google.com/artifacts/docker/dl-flow-devex-production/us-west1/development/flow-evm-gateway).
 ```bash
 docker pull us-west1-docker.pkg.dev/dl-flow-devex-production/development/flow-evm-gateway:${VERSION}
 ```
@@ -234,7 +235,6 @@ DOCKER_HOST_PORT=[desired port to expose on host]
 
 make DOCKER_RUN_DETACHED=true DOCKER_HOST_PORT=1234 DOCKER_HOST_MOUNT=/my/host/dir docker-run
 ```
-
 
 </TabItem>
 </Tabs>
