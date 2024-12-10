@@ -117,8 +117,8 @@ make docker-build
 
 ## Step 3 - Start Your Node
 
-Operators will need to refer to the gateway [configuration flags](https://github.com/onflow/flow-evm-gateway?tab=readme-ov-file#configuration-flags) and make 
-adjustments that align with the desired deployment topology. 
+Operators will need to refer to the gateway [configuration flags](https://github.com/onflow/flow-evm-gateway?tab=readme-ov-file#configuration-flags) and make adjustments that align with the desired 
+deployment topology. 
 
 ### EVM Coinbase address
 
@@ -136,9 +136,6 @@ If you haven't already got an EVM address and you have the COA account created b
 
 COA address and private key is configured for `--coa-address` & `--coa-key` configuration flags. If running multiple EVM Gateway hosts it is standard to
 share the same COA address and key across _n_ hosts.
-
-To obtain the private key from your wallet account ensure you are in the Cadence account then: 
-   <pre>Settings -> Account List -> Choose Main account -> Private Key -> [Password prompt]</pre>
 
 ## Run the gateway
 
