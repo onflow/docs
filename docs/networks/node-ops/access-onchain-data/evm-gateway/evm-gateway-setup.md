@@ -137,7 +137,7 @@ If you haven't already got an EVM address and you have the COA account created b
 COA address and private key is configured for `--coa-address` & `--coa-key` configuration flags. If running multiple EVM Gateway hosts it is standard to
 share the same COA address and key across _n_ hosts.
 
-## Run the gateway
+### Run the gateway
 
 Ensure that the following ENV variables have been set. Add/update as required if your configuration differs from those listed.
 
@@ -212,7 +212,7 @@ make DOCKER_RUN_DETACHED=true DOCKER_HOST_PORT=1234 DOCKER_HOST_MOUNT=/my/host/d
 </TabItem>
 </Tabs>
 
-## Startup bootstrap indexing
+### Startup bootstrap indexing
 
 Once your EVM Gateway is up and running you will see it indexing the Flow network which was configured. At the present time this
 is a lengthy process (possible 1-3 days, depending on CPU core count) during which time the gateway will not respond to queries. 
@@ -222,7 +222,7 @@ To speed up gateway setup we recommend backing up the /flow-evm-gateway/data dir
 using the same release version. We are currently working on an export/import feature that will enable gateway operators to 
 store state snapshots which can be used to bootstrap the creation of new nodes and mitigate the slow startup time.
 
-## Account and Key Management
+### Account and Key Management
 
 EVM Gateway allows for Google and AWS Key Management Service (KMS) setup, which is the recommended way of setting up the gateway 
 for live networks. We recommend creating multiple KMS keys for the same Flow account (ideally 10 or more), how many depends on 
@@ -237,7 +237,7 @@ are configured it may result in sequence number collisions if the same key is us
 --coa-cloud-kms-keys=example-gcp-kms1@1,example-gcp-kms2@1 \
 ```
 
-## Monitoring and Metrics
+### Monitoring and Metrics
 
 The EVM Gateway reports Prometheus metrics which are a way to monitor the gateway's availability and progress. The database folder 
 size may also need to be monitored to prevent disk full issues. 
@@ -260,7 +260,7 @@ evm_gateway_txs_indexed_total # Total count of indexed transactions
 
 Alerts are recommended to be configured on server panics, low operator balance, and disk usage metrics.
 
-### Configuration
+### Metrics port
 ```
 --metrics-port 8080 \
 ```
@@ -273,6 +273,25 @@ curl -s -XPOST 'your-evm-gw-host:8545' --header 'Content-Type: application/json'
 ```
 
 ## Troubleshooting
+
+### State stream configuration
+
+The following log entries may occur when `--state-stream-addr` and `--rpc-port` are not set to the same values when running 
+EVM Gateway on the same logical host as the Flow Access Node. 
+
+```bash
+failure in event subscription at height ${INIT-CADENCE-HEIGHT}, with: recoverable: disconnected: error receiving event: rpc error: code = Unimplemented desc = unknown service flow.executiondata.ExecutionDataAPI”
+```
+```bash
+component execution data indexer initialization failed: could not verify checkpoint file: could not find expected root hash e6d4f4c755666c21d7456441b4d33d3521e5e030b3eae391295577e9130fd715 in checkpoint file which contains: [e10d3c53608a1f195b7969fbc06763285281f64595be491630a1e1bdfbe69161]
+```
+
+### Access Node not fully synced
+
+The following log entry will occur when the EVM Gateway attempts to sync with the Access Node but it has not yet synced up to latest block
+```bash
+failure in event subscription at height ${INIT-CADENCE-HEIGHT}, with: recoverable: disconnected: error receiving event: rpc error: code = FailedPrecondition desc = could not get start height: failed to get lowest indexed height: index not initialized
+```
 
 ## FAQs
 
