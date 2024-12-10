@@ -97,6 +97,8 @@ git clone https://github.com/onflow/flow-evm-gateway.git
 cd flow-evm-gateway
 git checkout $(curl -s https://api.github.com/repos/onflow/flow-evm-gateway/releases/latest | jq -r .tag_name)
 CGO_ENABLED=1 go build -o evm-gateway cmd/main/main.go
+chmod a+x evm-gateway
+mv evm-gateway /usr/bin
 ```
 
 </TabItem>
