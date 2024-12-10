@@ -1,7 +1,7 @@
-import { visit } from 'unist-util-visit';
-import fetch from 'node-fetch';
-import fs from 'fs/promises';
-import path from 'path';
+const { visit } = require('unist-util-visit');
+const { default: fetch } = require('node-fetch');
+const fs = require('fs/promises');
+const path = require('path');
 
 const VALUE_STARTS_WITH = '!from ';
 
@@ -12,18 +12,17 @@ const githubReplace = /^(https:\/\/)(www.)?github.com\/(.+)\/blob\/(.+)/;
  * @param {string} nodeValue
  * @returns string
  */
-const getUrl = (nodeValue) => {
+function getUrl(nodeValue) {
   const url = nodeValue.replace(VALUE_STARTS_WITH, '').trim();
-
   return url.replace(githubReplace, '$1raw.githubusercontent.com/$3/$4');
-};
+}
 
 /**
  * try parse int
  * @param {string} strNumber
  * @returns number | null
  */
-const tryParseInt = (strNumber) => {
+function tryParseInt(strNumber) {
   try {
     const number = parseInt(strNumber);
     if (isNaN(number)) {
@@ -34,14 +33,14 @@ const tryParseInt = (strNumber) => {
     console.error(e);
     return null;
   }
-};
+}
 
 /**
  * get start line and end line for a snippet from a url
  * @param {string} url provided url
- * @returns {null | [string, string]}
+ * @returns {null | [number, number]}
  */
-export const getLines = (url) => {
+function getLines(url) {
   const lines = url.split('#')[1];
   if (lines == null || lines === '') {
     return null;
@@ -58,9 +57,9 @@ export const getLines = (url) => {
   const endNum = tryParseInt(end);
 
   return [startNum, endNum ?? startNum];
-};
+}
 
-export const getSnippetName = (url) => {
+function getSnippetName(url) {
   const snippet = url.split('#')[1];
   if (snippet == null || snippet === '') {
     return null;
@@ -69,17 +68,17 @@ export const getSnippetName = (url) => {
     return null;
   }
   return snippet;
-};
+}
 
 /**
  *
  * @param {object} params
- * @param {string,string | null} params.code
- * @param {[string,string] | null} params.lines
+ * @param {string} params.code
+ * @param {[number, number] | null} params.lines
  * @param {string | null} params.snippetName
  * @returns {string}
  */
-export const getCodeSnippet = ({ code, lines, snippetName }) => {
+function getCodeSnippet({ code, lines, snippetName }) {
   if (lines != null) {
     const codeLines = code
       .split('\n')
@@ -91,7 +90,6 @@ export const getCodeSnippet = ({ code, lines, snippetName }) => {
    * based on https://github.com/search?q=%22%5BSTART+snippet_name%5D%22&type=code
    */
   if (snippetName != null) {
-    /** @type [string] */
     const codeArray = code.split('\n');
     const snippetStart = `[START ${snippetName}]`;
     const snippetEnd = `[END ${snippetName}]`;
@@ -107,7 +105,6 @@ export const getCodeSnippet = ({ code, lines, snippetName }) => {
     }
     for (let i = 0; i < codeArray.length; i++) {
       const line = codeArray[i];
-
       if (line.includes(snippetEnd)) {
         endLine = i;
         break;
@@ -124,26 +121,26 @@ export const getCodeSnippet = ({ code, lines, snippetName }) => {
     return codeLines;
   }
   return code;
-};
+}
 
 /**
  *
  * @param {string} url
- * @param {object} from
- * @param {[string,string] | null} from.lines
- * @param {string | null} from.snippetName
+ * @param {{ lines: [number, number] | null, snippetName: string | null }} from
  * @returns {Promise<string>}
  */
-export const fetchSnippet = async (url, { lines, snippetName }) => {
+async function fetchSnippet(url, { lines, snippetName }) {
   const codeResponse = await fetch(url);
   if (!codeResponse.ok) {
-    throw new Error(`Failed to fetch code from ${url}: ${res.statusText}`);
+    throw new Error(
+      `Failed to fetch code from ${url}: ${codeResponse.statusText}`,
+    );
   }
   const code = await codeResponse.text();
   const snippet = getCodeSnippet({ code, lines, snippetName });
 
   return snippet;
-};
+}
 
 /**
  *
@@ -152,7 +149,7 @@ export const fetchSnippet = async (url, { lines, snippetName }) => {
  *
  * @returns {Promise<boolean>}
  */
-export const verifySnippet = async (url, snippet) => {
+async function verifySnippet(url, snippet) {
   const fileName = encodeURIComponent(url);
   const filePath = path.resolve(`./src/plugins/snippets/${fileName}`);
   let fileContent;
@@ -170,9 +167,9 @@ export const verifySnippet = async (url, snippet) => {
     return false;
   }
   return true;
-};
+}
 
-const plugin = () => {
+function plugin() {
   const transformer = async (ast) => {
     const promises = [];
     visit(ast, 'code', (node) => {
@@ -229,6 +226,13 @@ const plugin = () => {
   };
 
   return transformer;
-};
+}
 
-export default plugin;
+module.exports = {
+  getLines,
+  getSnippetName,
+  getCodeSnippet,
+  fetchSnippet,
+  verifySnippet,
+  plugin,
+};
