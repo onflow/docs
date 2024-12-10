@@ -143,7 +143,7 @@ Ensure that the following ENV variables have been set. Add/update as required if
 
 ```bash
 # Set required environment variables
-export ACCESS_NODE_GRPC_HOST="access.mainnet.nodes.onflow.org:9000"
+export ACCESS_NODE_GRPC_HOST="access.mainnet.nodes.onflow.org:9000" # or access.devnet.nodes.onflow.org:9000 for testnet
 export FLOW_NETWORK_ID="flow-mainnet" # or flow-testnet
 export INIT_CADENCE_HEIGHT="88226267" # 211176670 for testnet
 export COINBASE="${EVM_ADDRESS_WITHOUT_0x}"
