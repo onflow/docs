@@ -203,7 +203,6 @@ sudo systemctl restart gateway
 sed -i 's/#Storage=auto/Storage=persistent/g' /etc/systemd/journald.conf
 sudo systemctl restart systemd-journald
 
-journalctl -u access-node.service -f -n 100
 journalctl -u gateway.service -f -n 100
 ```
 
@@ -316,3 +315,4 @@ failure in event subscription at height ${INIT-CADENCE-HEIGHT}, with: recoverabl
 
 ## FAQs
 
+TBD
