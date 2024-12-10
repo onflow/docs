@@ -215,7 +215,9 @@ journalctl -u gateway.service -f -n 100
 </TabItem>
 <TabItem value="docker-build" label="Run with Docker">
 
-It may be necessary to make local changes to the `docker-run` target to add params which are needed for your requirements. 
+It may be necessary to make local changes to the `docker-run` target to add params which are needed for your requirements. If you pulled a 
+specific image from the gateway container registry ensure that the `$VERSION` environment variable is set to the same as the image version 
+you pulled.
 
 ```bash
 cd flow-evm-gateway
@@ -232,6 +234,7 @@ DOCKER_HOST_PORT=[desired port to expose on host]
 
 make DOCKER_RUN_DETACHED=true DOCKER_HOST_PORT=1234 DOCKER_HOST_MOUNT=/my/host/dir docker-run
 ```
+
 
 </TabItem>
 </Tabs>
