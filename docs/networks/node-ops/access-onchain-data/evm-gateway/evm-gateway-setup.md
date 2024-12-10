@@ -152,7 +152,7 @@ export GAS_PRICE="100"
 ```
 
 <Tabs>
-<TabItem value="source-build" label="Source build">
+<TabItem value="source-build" label="Run from binary">
 
 **Create EVM Gateway service**
 
@@ -206,7 +206,7 @@ journalctl -u gateway.service -f -n 100
 ```
 
 </TabItem>
-<TabItem value="docker-build" label="Docker build">
+<TabItem value="docker-build" label="Run with Docker">
 
 It may be necessary to make local changes to the `docker-run` target to add params which are needed for your requirements. 
 
