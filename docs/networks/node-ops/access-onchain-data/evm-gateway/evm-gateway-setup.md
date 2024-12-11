@@ -56,11 +56,10 @@ If you don't already have a Flow account you will need to create one.
 
 </TabItem>
 <TabItem value="testnet" label="Testnet">
+Install [Flow CLI](https://developers.flow.com/tools/flow-cli/install) if not already installed.
 
 ```bash
 flow keys generate
-```
-
 This will output something similar to:
 
 ```bash
