@@ -60,8 +60,9 @@ Install [Flow CLI](https://developers.flow.com/tools/flow-cli/install) if not al
 
 ```bash
 flow keys generate
+```
 This will output something similar to:
-
+`
 ```bash
 🔴️ Store private key safely and don't share with anyone!
 Private Key 		 3cf8334d.....95c3c54a28e4ad1
