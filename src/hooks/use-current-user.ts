@@ -1,3 +1,5 @@
+'use client';
+
 import { useEffect, useState } from 'react';
 import * as fcl from '@onflow/fcl';
 import { event } from '@site/src/utils/gtags.client';
@@ -13,6 +15,17 @@ interface UseCurrentUserReturn {
   logOut: () => void;
 }
 
+async function hashAddress(address: string): Promise<string> {
+  const encoder = new TextEncoder();
+  const data = encoder.encode(address);
+  const hashBuffer = await crypto.subtle.digest('SHA-256', data);
+  const hashArray = Array.from(new Uint8Array(hashBuffer));
+  const hashHex = hashArray
+    .map((byte) => byte.toString(16).padStart(2, '0'))
+    .join('');
+  return hashHex;
+}
+
 export function useCurrentUser(): UseCurrentUserReturn {
   const [user, setUser] = useState<FlowUser>({ addr: null, loggedIn: false });
 
@@ -25,12 +38,26 @@ export function useCurrentUser(): UseCurrentUserReturn {
     try {
       await fcl.authenticate();
 
-      event({
-        category: 'auth',
-        action: 'login',
-        label: 'fcl_connect',
-        value: 1,
-      });
+      const snapshot = await fcl.currentUser.snapshot();
+      const userAddrSnapshot = snapshot?.addr;
+
+      if (userAddrSnapshot) {
+        const hashedAddr = await hashAddress(userAddrSnapshot);
+
+        event({
+          category: 'auth',
+          action: 'login',
+          label: `user_${hashedAddr}`,
+          value: 1,
+        });
+      } else {
+        event({
+          category: 'auth',
+          action: 'login',
+          label: 'unknown_user',
+          value: 1,
+        });
+      }
     } catch (error) {
       console.error('Error during login:', error);
     }
@@ -45,4 +72,4 @@ export function useCurrentUser(): UseCurrentUserReturn {
     logIn,
     logOut,
   };
-};
+}
