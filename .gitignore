@@ -36,3 +36,7 @@ docs/build/core-contracts/flow-nft/*
 docs/ecosystem/overview/*
 
 docs/.obsidian
+
+# flow
+emulator-account.pkey
+imports
