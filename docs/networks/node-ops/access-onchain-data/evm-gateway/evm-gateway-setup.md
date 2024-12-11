@@ -11,10 +11,7 @@ This guide is for running the [EVM Gateway](https://github.com/onflow/flow-evm-g
 [Ethereum JSON-RPC specification](https://ethereum.org/en/developers/docs/apis/json-rpc/) and is the only node type which accepts EVM 
 client connections. 
 
-The EVM Gateway is an unstaked, non-participating edge node which consumes Flow protocol state from the configured Flow Access Node 
-and persists the indexed EVM state locally to service EVM client requests. It submits EVM transactions it receives into the Flow 
-network, wrapped in a Cadence transaction, and mutating EVM state when executed. Non-mutating RPC methods only query the local state 
-index of the gateway and are never forwarded to Access Nodes.
+The EVM Gateway consumes Flow protocol state from the configured Flow Access Node and persists the indexed EVM state locally to service EVM client requests. It submits EVM transactions it receives into the Flow network, wrapped in a Cadence transaction, and mutating EVM state when executed. Non-mutating RPC methods only query the local state index of the gateway and are never forwarded to Access Nodes. It does not participate in the block production process and requires no stake.
 
 ## Who Should Run an EVM Gateway
 
