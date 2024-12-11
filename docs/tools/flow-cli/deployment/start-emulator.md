@@ -4,7 +4,17 @@ description: How to start the Flow Emulator from the command line
 sidebar_position: 1
 ---
 
-The Flow Emulator is a lightweight development tool that mimics the behavior of the real Flow network. It is bundled with the [Flow CLI](../install.md), which makes starting and configuring the emulator straightforward.
+The Flow Emulator is a lightweight development tool that mimics the behavior of the real Flow network. It is bundled with the [Flow CLI](https://docs.onflow.org/flow-cli/), which makes starting and configuring the emulator straightforward.
+
+## Initial Configuration
+
+The emulator requires a configuration file (`flow.json`). If you don’t already have one, create it using the `flow init` command:
+
+```bash
+flow init
+```
+
+This initializes a default configuration file that the emulator will use.
 
 ## Starting the Emulator
 
@@ -14,7 +24,7 @@ To start the emulator with default settings, use the following command:
 flow emulator
 ```
 
-This will start the emulator with a default configuration.
+This will start the emulator with the configuration defined in `flow.json`.
 
 ### Example Output
 
@@ -27,35 +37,23 @@ INFO[0000] 🛠  GRPC server started on 127.0.0.1:3569
 INFO[0000] 📡  HTTP server started on 127.0.0.1:8080
 ```
 
-### Initial Configuration
-
-The emulator requires a configuration file (`flow.json`). If you don’t already have one, create it using the `flow init` command:
-
-```bash
-flow init
-```
-
-This initializes a default configuration file that the emulator will use.
-
 ## Customizing the Emulator
 
-You can customize the emulator behavior by using flags. Below are some commonly used flags:
+You can customize the emulator behavior by using flags. Here are some examples:
 
-### Emulator Flags
-
-**Port Configuration**: Change the gRPC and REST API ports:
+Change the gRPC and REST API ports:
 
 ```bash
 flow emulator --port 9000 --rest-port 9001
 ```
 
-**Persistence**: Enable persistence of state across restarts:
+Enable persistence of state across restarts:
 
 ```bash
 flow emulator --persist
 ```
 
-**Verbose Logging**: Enable detailed logs for debugging:
+Enable detailed logs for debugging:
 
 ```bash
 flow emulator --verbose
