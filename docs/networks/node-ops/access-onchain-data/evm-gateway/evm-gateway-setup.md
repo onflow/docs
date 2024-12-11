@@ -13,7 +13,7 @@ client connections.
 
 The EVM Gateway is an unstaked, non-participating edge node which consumes Flow protocol state from the configured Flow Access Node 
 and persists the indexed EVM state locally to service EVM client requests. It submits EVM transactions it receives into the Flow 
-network, wrapped using a Cadence transaction, and mutating EVM state when executed. Non-mutating RPC methods only query the local state 
+network, wrapped in a Cadence transaction, and mutating EVM state when executed. Non-mutating RPC methods only query the local state 
 index of the gateway and are never forwarded to Access Nodes.
 
 ## Who Should Run an EVM Gateway
