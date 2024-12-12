@@ -3928,6 +3928,24 @@
     preact "^10.24.3"
     tailwindcss "^3.4.14"
 
+"@onflow/fcl-wc@^5.5.2":
+  version "5.5.2"
+  resolved "https://registry.yarnpkg.com/@onflow/fcl-wc/-/fcl-wc-5.5.2.tgz#40dcb8debb94be6ee85b465ac226ce5b95d271eb"
+  integrity sha512-zxWQ0TTUxI7yj2+Krz7589O4u05U/Dml+hrdzUy3nx4dZ+FENQJg00j/6QF4Ge90HrtOYMr+6sdceD0S2+llBQ==
+  dependencies:
+    "@babel/runtime" "^7.25.7"
+    "@onflow/config" "1.5.1"
+    "@onflow/util-invariant" "1.2.4"
+    "@onflow/util-logger" "1.3.3"
+    "@walletconnect/modal" "^2.7.0"
+    "@walletconnect/modal-core" "^2.6.2"
+    "@walletconnect/sign-client" "^2.17.1"
+    "@walletconnect/types" "^2.8.1"
+    "@walletconnect/utils" "^2.8.1"
+    postcss-cli "^11.0.0"
+    preact "^10.24.3"
+    tailwindcss "^3.4.14"
+
 "@onflow/fcl@^1.13.1":
   version "1.13.1"
   resolved "https://registry.yarnpkg.com/@onflow/fcl/-/fcl-1.13.1.tgz#b5e4316522bebcff5dcc5a692d5bd7c3f03fb718"
