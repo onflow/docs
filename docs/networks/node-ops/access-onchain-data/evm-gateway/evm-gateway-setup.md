@@ -247,6 +247,13 @@ To speed up gateway setup we recommend backing up the `/${GATEWAY_HOME_DIR}/data
 using the same release version. We are currently working on an export/import feature that will enable gateway operators to 
 store state snapshots to bootstrap newly created nodes without the delay.
 
+:::note
+
+If you are upgrading the gateway from pre-v1.0.0 release versions the indexed data directory will need to be reindexed from genesis. 
+You will not be able to re-use the DB data dir from the previous versions. 
+
+:::
+
 ### Account and Key Management
 
 EVM Gateway allows for Google and AWS Key Management Service (KMS) setup, which is the recommended way of setting up the gateway 
