@@ -12,6 +12,7 @@ export function configureFCL(): void {
       'https://rest-testnet.onflow.org' :
       'https://rest-mainnet.onflow.org',
     'discovery.wallet': `https://fcl-discovery.onflow.org/${flowNetwork}/authn`,
+    'walletconnect.projectId': process.env.WALLETCONNECT_PROJECT_ID,
   });
 }
 
