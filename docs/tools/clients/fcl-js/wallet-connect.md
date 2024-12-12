@@ -38,7 +38,7 @@ These instructions explain how dApps can also add support for FCL compatible wal
 Install the `fcl` and `fcl-wc` packages:
 
 ```bash
-npm install @onflow/fcl@ @onflow/fcl-wc
+npm install @onflow/fcl @onflow/fcl-wc
 ```
 
 ### 2. Obtain a WalletConnect projectID
