@@ -36,6 +36,10 @@ There are two primary ways to access on-chain data within the Flow network; Acce
   - [Testnet](./accessing-testnet.md): `access.devnet.nodes.onflow.org:9000`
 - [Status Page](https://status.onflow.org/) - Network status page
 
+### Rate limits
+
+Rate limits for Flow Public Access nodes hosted by QuickNode are detailed [here](https://www.quicknode.com/docs/flow#endpoint-rate-limits).
+
 ### Running Your Own Node
 
 If you’re getting started you don’t need to run your own node and you can use the above public nodes. The public access nodes are rate-limited, so as your product matures you might want to run your own node. There are multiple options available:
