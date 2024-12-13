@@ -8,9 +8,9 @@ console.log('Dapp running on network:', flowNetwork);
 export function configureFCL(): void {
   fcl.config({
     'flow.network': flowNetwork,
-    'accessNode.api': flowNetwork ?
-      'https://rest-testnet.onflow.org' :
-      'https://rest-mainnet.onflow.org',
+    'accessNode.api': flowNetwork === 'mainnet' ?
+      'https://rest-mainnet.onflow.org' :
+    'https://rest-testnet.onflow.org',
     'discovery.wallet': `https://fcl-discovery.onflow.org/${flowNetwork}/authn`,
     'app.detail.icon': 'https://avatars.githubusercontent.com/u/62387156?v=4',
     'app.detail.title': 'Flow Dev Portal',
