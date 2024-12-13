@@ -7,6 +7,7 @@ import HomePage from '../ui/design-system/src/lib/Pages/HomePage';
 // import { refreshTools } from '../cms/tools.server'
 import { externalLinks } from '../data/external-links';
 import { contentNavigationListItems } from '../data/pages/home';
+import '../config/fcl';
 
 const data = {
   discordUrl: externalLinks.discord,
