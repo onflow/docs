@@ -15,7 +15,7 @@ declare global {
  * https://developers.google.com/analytics/devguides/collection/gtagjs/pages
  */
 export const pageview = (url: string, trackingId: string) => {
-  if (window.ENV.NODE_ENV !== "production") return
+  if (process.env.NODE_ENV !== "production") return
 
   if (!window.gtag) {
     console.warn(
@@ -43,7 +43,7 @@ export const event = ({
   label?: string;
   value?: number | string;
 }) => {
-  if (window.ENV.NODE_ENV !== "production") return
+  if (process.env.NODE_ENV !== "production") return
 
   if (!window.gtag) {
     console.warn(
@@ -59,7 +59,7 @@ export const event = ({
 }
 
 export const reportWebVitalsToGA = (vitals: Metric) => {
-  if (window.ENV.NODE_ENV === "production") {
+  if (process.env.NODE_ENV === "production") {
     window.gtag("event", vitals.name, {
       ...vitals,
       value: vitals.delta, // Use `delta` so the value can be summed
