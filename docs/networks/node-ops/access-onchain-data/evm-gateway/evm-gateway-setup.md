@@ -150,7 +150,7 @@ Ensure that the following ENV variables have been set. Add/update as required if
 # Set required environment variables
 export ACCESS_NODE_GRPC_HOST="access.mainnet.nodes.onflow.org:9000" # or access.devnet.nodes.onflow.org:9000 for testnet
 export FLOW_NETWORK_ID="flow-mainnet" # or flow-testnet
-export INIT_CADENCE_HEIGHT="85981134" # 211176670 for testnet
+export INIT_CADENCE_HEIGHT="85981135" # 211176670 for testnet
 export COINBASE="${EVM_ADDRESS_WITHOUT_0x}"
 export COA_ADDRESS="${CADENCE_ACCOUNT_ADDRESS_WITHOUT_0x}"
 export COA_KEY="${CADENCE_ACCOUNT_PRIVATE_KEY_WITHOUT_0x}"
