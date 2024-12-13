@@ -15,6 +15,8 @@ declare global {
  * https://developers.google.com/analytics/devguides/collection/gtagjs/pages
  */
 export const pageview = (url: string, trackingId: string) => {
+  if (window.ENV.NODE_ENV !== "production") return
+
   if (!window.gtag) {
     console.warn(
       "window.gtag is not defined. This could mean your google anylatics script has not loaded on the page yet."
@@ -41,6 +43,8 @@ export const event = ({
   label?: string;
   value?: number | string;
 }) => {
+  if (window.ENV.NODE_ENV !== "production") return
+
   if (!window.gtag) {
     console.warn(
       "window.gtag is not defined. This could mean your google anylatics script has not loaded on the page yet."
