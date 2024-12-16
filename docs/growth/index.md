@@ -40,7 +40,7 @@ You've got something that works in a place others can use it and experience key 
 
 ## Live product on mainnet
 
-Real people are using your app regularly and doing the types of things that you are or will eventually generate reveneu from (even if it's still a small number of users).
+Real people are using your app regularly and doing the types of things that you are or will eventually generate revenue from (even if it's still a small number of users).
 
 ### What you are doing
 
