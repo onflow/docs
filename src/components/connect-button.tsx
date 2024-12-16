@@ -15,7 +15,7 @@ const ConnectButton: React.FC = () => {
 
   if (!user.loggedIn) {
     return (
-      <Button onClick={logIn}>
+      <Button size="sm" className="mr-2" onClick={logIn}>
         Connect
       </Button>
     );
