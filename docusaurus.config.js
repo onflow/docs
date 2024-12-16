@@ -204,11 +204,11 @@ const config = {
         },
         ...(process.env.GTAG
           ? {
-              gtag: {
-                trackingID: process.env.GTAG,
-                anonymizeIP: true,
-              },
-            }
+            gtag: {
+              trackingID: process.env.GTAG,
+              anonymizeIP: true,
+            },
+          }
           : {}),
       }),
     ],
@@ -283,6 +283,12 @@ const config = {
             position: 'left',
             label: 'Ecosystem',
             activeBasePath: '/ecosystem',
+          },
+          {
+            to: 'growth',
+            position: 'left',
+            label: 'Growth',
+            activeBasePath: '/growth',
           },
           {
             type: 'custom-connectButton',
@@ -645,7 +651,7 @@ const config = {
   clientModules: [require.resolve('./src/modules/toolscards.ts')],
 
   customFields: {
-      flowNetwork,
+    flowNetwork,
   },
 };
 
