@@ -35,12 +35,8 @@ You've got something that works in a place others can use it and experience key 
 
 ### What you can get
 
-* Free credits to third-party services (e.g. Alchemy)
-* Feedback and guidance from Flow Foundation BD team
-* DevRel
-* Mentorship from startup founders
-* GrantsDAO for funding (submit project and get voted on to continue post hackathon or entirely new)
-* Instagrant Funding (for projects that are ready to go live and have signs of PMF, does not cover engineering milestones typically)
+* Direct contact with Flow Foundation through a Developer Relations Lead.
+* Feedback and Guidence from the Flow Foundation team
 
 ## Live product on mainnet
 
@@ -56,10 +52,8 @@ Real people are using your app regularly and doing the types of things that you 
 
 ### What you can get
 
-* BD Support (intros, etc)
+* BizDev Support (intros, etc)
 * Dedicated slack or tg channel
-* Fundraising support (investor network + accelerators)
-* Bounties for milestones aligning to ecosystem goals
 * DevRel
 
 ## Product market fit
