@@ -124,7 +124,7 @@ Each response back to FCL must be "wrapped" in a `PollingResponse`. The `status`
 
 In summary, zero or more `PENDING` responses should be followed by a non-pending response. It is entirely acceptable for your service to immediately return an `APPROVED` Polling Response, skipping a `PENDING` state.
 
-See also [PollingResponse](https://github.com/onflow/flow-js-sdk/blob/master/packages/fcl/src/current-user/normalize/polling-response.js).
+See also [PollingResponse](https://github.com/onflow/fcl-js/blob/master/packages/fcl-core/src/normalizers/service/polling-response.js).
 
 Here are some examples of valid `PollingResponse` objects:
 ```javascript
@@ -249,12 +249,12 @@ The meaning of the fields is as follows.
 - `data`: Additional information used with a service of type `open-id`.
 
 See also:
-- [authn](https://github.com/onflow/flow-js-sdk/blob/master/packages/fcl/src/current-user/normalize/authn.js)
-- [authz](https://github.com/onflow/flow-js-sdk/blob/master/packages/fcl/src/current-user/normalize/authz.js)
-- [user-signature](https://github.com/onflow/flow-js-sdk/blob/master/packages/fcl/src/current-user/normalize/user-signature.js)
-- [pre-authz](https://github.com/onflow/flow-js-sdk/blob/master/packages/fcl/src/current-user/normalize/pre-authz.js)
-- [open-id](https://github.com/onflow/flow-js-sdk/blob/master/packages/fcl/src/current-user/normalize/open-id.js)
-- [back-channel-rpc](https://github.com/onflow/flow-js-sdk/blob/master/packages/fcl/src/current-user/normalize/back-channel-rpc.js)
+- [authn](https://github.com/onflow/fcl-js/blob/master/packages/fcl-core/src/normalizers/service/authn.js)
+- [authz](https://github.com/onflow/fcl-js/blob/master/packages/fcl-core/src/normalizers/service/authz.js)
+- [user-signature](https://github.com/onflow/fcl-js/blob/master/packages/fcl-core/src/normalizers/service/user-signature.js)
+- [pre-authz](https://github.com/onflow/fcl-js/blob/master/packages/fcl-core/src/normalizers/service/pre-authz.js)
+- [open-id](https://github.com/onflow/fcl-js/blob/master/packages/fcl-core/src/normalizers/service/open-id.js)
+- [back-channel-rpc](https://github.com/onflow/fcl-js/blob/master/packages/fcl-core/src/normalizers/service/back-channel-rpc.js)
 
 ### `Identity`
 This object is used to define the identity of the user.
@@ -350,7 +350,7 @@ interface CompositeSignature extends ObjectBase {
 }
 ```
 
-See also [CompositeSignature](https://github.com/onflow/flow-js-sdk/blob/master/packages/fcl/src/current-user/normalize/composite-signature.js).
+See also [CompositeSignature](https://github.com/onflow/fcl-js/blob/master/packages/fcl-core/src/normalizers/service/composite-signature.js).
 
 ### `OpenID`
 TODO
@@ -384,8 +384,8 @@ type ExtensionServiceInitiationMessage = {
 This object is used to invoke a service when the `EXT/RPC` service method is used.
 
 ## See also
-- [local-view](https://github.com/onflow/flow-js-sdk/blob/master/packages/fcl/src/current-user/normalize/local-view.js)
-- [frame](https://github.com/onflow/flow-js-sdk/blob/master/packages/fcl/src/current-user/normalize/frame.js)
+- [local-view](https://github.com/onflow/fcl-js/blob/master/packages/fcl-core/src/normalizers/service/local-view.js)
+- [frame](https://github.com/onflow/fcl-js/blob/master/packages/fcl-core/src/normalizers/service/frame.js)
 
 # Service Methods
 
@@ -431,15 +431,15 @@ graph LR
     --> End1(End)
 ```
 
-![IFRAME/RPC Diagram](https://raw.githubusercontent.com/onflow/flow-js-sdk/master/packages/fcl/assets/service-method-diagrams/iframe-rpc.png)
+![IFRAME/RPC Diagram](https://raw.githubusercontent.com/onflow/fcl-js/master/packages/fcl-core/assets/service-method-diagrams/iframe-rpc.png)
 
 ## POP/RPC | TAB/RPC (Front Channel)
 
 `POP/RPC` and `TAB/RPC` work in an almost entirely similar way to `IFRAME/RPC`, except instead of rendering the `method` in an iframe, we render it in a popup or new tab. The same communication protocol between the rendered view and FCL applies.
 
-![POP/RPC Diagram](https://raw.githubusercontent.com/onflow/flow-js-sdk/master/packages/fcl/assets/service-method-diagrams/pop-rpc.png)
+![POP/RPC Diagram](https://raw.githubusercontent.com/onflow/fcl-js/master/packages/fcl-core/assets/service-method-diagrams/pop-rpc.png)
 
-![TAB/RPC Diagram](https://raw.githubusercontent.com/onflow/flow-js-sdk/master/packages/fcl/assets/service-method-diagrams/tab-rpc.png)
+![TAB/RPC Diagram](https://raw.githubusercontent.com/onflow/fcl-js/master/packages/fcl-core/assets/service-method-diagrams/tab-rpc.png)
 
 ## HTTP/POST (Back Channel)
 
@@ -455,7 +455,7 @@ If it is `APPROVED` FCL will return, otherwise if it is `DECLINED` FCL will erro
 There is an additional optional feature that `HTTP/POST` enables in the first `PollingResponse` that is returned.
 This optional feature is the ability for FCL to render an iframe, popup or new tab, and it can be triggered by supplying a service `type: "VIEW/IFRAME"`, `type: "VIEW/POP"` or `type: "VIEW/TAB"` and the `endpoint` that the wallet wishes to render in the `local` field of the `PollingResponse`. This is a great way for a wallet provider to switch to a webpage if displaying a UI is necessary for the service it is performing.
 
-![HTTP/POST Diagram](https://raw.githubusercontent.com/onflow/flow-js-sdk/master/packages/fcl/assets/service-method-diagrams/http-post.png)
+![HTTP/POST Diagram](https://raw.githubusercontent.com/onflow/fcl-js/master/packages/fcl-core/assets/service-method-diagrams/http-post.png)
 
 ## EXT/RPC (Front Channel)
 
@@ -502,7 +502,7 @@ Here is a code example for how an extension popup might send its response:
   });
 ```
 
-![EXT/RPC Diagram](https://raw.githubusercontent.com/onflow/flow-js-sdk/master/packages/fcl/assets/service-method-diagrams/ext-rpc.png)
+![EXT/RPC Diagram](https://raw.githubusercontent.com/onflow/fcl-js/master/packages/fcl-core/assets/service-method-diagrams/ext-rpc.png)
 
 ## `data` and `params`
 
@@ -744,7 +744,7 @@ An authorization service is expected to know the Account and the Key that will b
 FCL will use the `method` provided to request an array of composite signature from authorization service (Wrapped in a `PollingResponse`).
 The authorization service will be sent a `Signable`.
 The service is expected to construct an encoded message to sign from `Signable.voucher`.
-It then needs to hash the encoded message, and prepend a required [transaction domain tag](https://github.com/onflow/flow-js-sdk/blob/master/packages/sdk/src/encode/encode.js#L12-L13).
+It then needs to hash the encoded message, and prepend a required [transaction domain tag](https://github.com/onflow/fcl-js/blob/master/packages/sdk/src/encode/encode.ts#L18-L21).
 Finally it signs the payload with the user/s keys, producing a signature.
 This signature, as a HEX string, is sent back to FCL as part of the `CompositeSignature` which includes the user address and keyID in the data property of a `PollingResponse`.
 

@@ -433,7 +433,7 @@ A method to use allowing the user to personally sign data via FCL Compatible Wal
 
 | Type    | Description                                                                                                                                                                               |
 | ------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `Array` | An Array of [CompositeSignatures](https://github.com/onflow/flow-js-sdk/blob/master/packages/fcl/src/wallet-provider-spec/draft-v2.md#compositesignature): {`addr`, `keyId`, `signature`} |
+| `Array` | An Array of [CompositeSignatures](https://github.com/onflow/fcl-js/blob/master/packages/fcl-core/src/wallet-provider-spec/draft-v2.md#compositesignature): {`addr`, `keyId`, `signature`} |
 
 #### Usage
 
@@ -810,7 +810,7 @@ Decodes the response from `fcl.send()` into the appropriate JSON representation 
 
 #### Note
 
-📣 To define your own decoder, see [`tutorial`](https://github.com/onflow/flow-js-sdk/tree/master/packages/sdk/src/decode).
+📣 To define your own decoder, see [`tutorial`](https://github.com/onflow/fcl-js/tree/master/packages/sdk/src/decode).
 
 #### Arguments
 
@@ -1600,7 +1600,7 @@ Builders are modular functions that can be coupled together with `fcl.send([...b
 
 ### `Interaction`
 
-An interaction is an object containing the information to perform an action on chain.This object is populated through builders and converted into the approriate access node API call. See the interaction object [here](https://github.com/onflow/flow-js-sdk/blob/master/packages/sdk/src/interaction/interaction.js). A 'partial' interaction is an interaction object that does not have sufficient information to the intended on-chain action. Multiple partial interactions (through builders) can be coupled to create a complete interaction.
+An interaction is an object containing the information to perform an action on chain.This object is populated through builders and converted into the approriate access node API call. See the interaction object [here](https://github.com/onflow/fcl-js/blob/master/packages/sdk/src/interaction/interaction.ts). A 'partial' interaction is an interaction object that does not have sufficient information to the intended on-chain action. Multiple partial interactions (through builders) can be coupled to create a complete interaction.
 
 ---
 
@@ -1739,7 +1739,7 @@ const authorizationFunction = async (account) => {
   }
 ```
 
-- [Detailed explanation](https://github.com/onflow/flow-js-sdk/blob/master/packages/fcl/src/wallet-provider-spec/authorization-function.md)
+- [Detailed explanation](https://github.com/onflow/fcl-js/blob/master/packages/fcl-core/src/wallet-provider-spec/authorization-function.md)
 
 ---
 
@@ -1807,7 +1807,7 @@ const signingFunction = ({
 
 #### Examples:
 
-- [Detailed explanation](https://github.com/onflow/flow-js-sdk/blob/master/packages/fcl/src/wallet-provider-spec/authorization-function.md)
+- [Detailed explanation](https://github.com/onflow/fcl-js/blob/master/packages/fcl-core/src/wallet-provider-spec/authorization-function.md)
 
 ---
 
@@ -1931,7 +1931,7 @@ A collection is a list of transactions that are contained in the same block.
 
 ### `ResponseObject`
 
-The format of all responses in FCL returned from `fcl.send(...)`. For full details on the values and descriptions of the keys, view [here](https://github.com/onflow/flow-js-sdk/tree/master/packages/sdk/src/response).
+The format of all responses in FCL returned from `fcl.send(...)`. For full details on the values and descriptions of the keys, view [here](https://github.com/onflow/fcl-js/tree/master/packages/sdk/src/response).
 
 | Key                 |
 | ------------------- |
