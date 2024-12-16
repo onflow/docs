@@ -16,7 +16,7 @@ const ConnectButton: React.FC = () => {
 
   const dropdownItems = [
     { label: 'View Account', onClick: () => console.log('View Account') },
-    { label: 'Logout', onClick: logOut },
+    { label: 'Disconnect', onClick: logOut },
   ];
 
   return <Dropdown buttonLabel={user.addr ?? 'Unknown'} items={dropdownItems} />;
