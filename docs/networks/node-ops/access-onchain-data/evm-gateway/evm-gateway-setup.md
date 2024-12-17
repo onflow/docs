@@ -267,7 +267,7 @@ are configured it may result in sequence number collisions if the same key is us
 --coa-cloud-kms-project-id=your-project-kms-id \
 --coa-cloud-kms-location-id=global \
 --coa-cloud-kms-key-ring-id=your-project-kms-key-ring-id \
---coa-cloud-kms-keys=example-gcp-kms1@1,example-gcp-kms2@1 \
+--coa-cloud-kms-key=example-gcp-kms1@1,example-gcp-kms2@1 \
 ```
 
 ### Monitoring and Metrics
