@@ -35,7 +35,7 @@ const Dropdown: React.FC<DropdownProps> = ({ buttonLabel, items }) => {
         style={{ position: 'absolute', zIndex: 999, top: '100%' }}
       >
         {items.map((item, index) => (
-          <MenuItem key={index}>
+          <MenuItem key={`${index}${item.label}`}>
             {({ active }) => (
               <button
                 onClick={item.onClick}
