@@ -11,6 +11,7 @@ interface FlowUser {
 
 interface UseCurrentUserReturn {
   user: FlowUser;
+  addr: string;
   logIn: () => Promise<void>;
   logOut: () => void;
 }
