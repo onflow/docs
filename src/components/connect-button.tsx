@@ -28,7 +28,7 @@ const ConnectButton: React.FC = () => {
   const fullAddress = user.addr ?? 'Unknown';
   const displayAddress = shortenAddress(fullAddress, isMobile);
 
-  return <Dropdown buttonLabel={displayAddress} items={dropdownItems} buttonVariant="white" />;
+  return <Dropdown buttonLabel={displayAddress} items={dropdownItems} />;
 };
 
 export default ConnectButton;
