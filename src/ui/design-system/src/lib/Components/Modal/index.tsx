@@ -24,7 +24,7 @@ const Modal: React.FC<ModalProps> = ({ isOpen, onClose, title, children, classNa
           leaveFrom="opacity-100"
           leaveTo="opacity-0"
         >
-          <div className="fixed inset-0 bg-black/30 dark:bg-black/70 backdrop-blur-sm" />
+          <div className="fixed inset-0 bg-black/20 dark:bg-black/60 backdrop-blur-sm" />
         </Transition.Child>
 
         {/* Modal Panel */}
@@ -40,13 +40,13 @@ const Modal: React.FC<ModalProps> = ({ isOpen, onClose, title, children, classNa
           >
             <Dialog.Panel
               className={clsx(
-                "w-full max-w-md transform rounded-md border bg-white text-black shadow-xl transition-all dark:bg-gray-900 dark:text-gray-100 dark:border-gray-700",
+                "w-full max-w-md transform rounded-md border bg-gray-100 text-black shadow-2xl transition-all dark:bg-gray-800 dark:text-gray-100 dark:border-gray-700",
                 className
               )}
             >
               {/* Header */}
               {title && (
-                <div className="px-4 py-3 border-b border-gray-200 dark:border-gray-700">
+                <div className="px-4 py-3 border-b border-gray-300 dark:border-gray-700">
                   <Dialog.Title as="h3" className="text-lg font-semibold">
                     {title}
                   </Dialog.Title>
