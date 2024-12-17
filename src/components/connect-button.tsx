@@ -1,8 +1,8 @@
 import React from 'react';
 import { useCurrentUser } from '@site/src/hooks/use-current-user';
 import { Button } from '@site/src/ui/design-system/src/lib/Components/Button';
-import Dropdown from '@site/src/components/dropdown';
 import { useIsMobile } from '@site/src/hooks/use-is-mobile';
+import Dropdown from '@site/src/ui/design-system/src/lib/Components/Dropdown';
 
 const shortenAddress = (address: string, isMobile: boolean) => {
   if (!address) return '';
