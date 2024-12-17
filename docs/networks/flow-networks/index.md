@@ -5,6 +5,12 @@ sidebar_position: 1
 
 ## About Flow Networks
 
+:::note
+
+This page provides information on Flow network RPCs. EVM on Flow network RPCs can be found [here](../evm/networks)
+
+:::
+
 In addition to Mainnet, developers have access to the Testnet environment, which serves as an essential testing ground for applications and smart contracts prior to their deployment on Mainnet. This ensures that any potential issues can be identified and resolved in a controlled setting, mitigating risks associated with live deployment.
 
 Furthermore, during network upgrades, Testnet receives updates ahead of Mainnet. This preemptive update process allows developers to comprehensively test their apps against the latest versions of the nodes, enhancements to the Cadence programming language, and core contract upgrades. This strategy guarantees that when these updates are eventually applied to Mainnet, applications and smart contracts will operate seamlessly, enhancing overall network stability and user experience.
@@ -29,6 +35,10 @@ There are two primary ways to access on-chain data within the Flow network; Acce
   - [Mainnet](./accessing-mainnet.md): `access.mainnet.nodes.onflow.org:9000`
   - [Testnet](./accessing-testnet.md): `access.devnet.nodes.onflow.org:9000`
 - [Status Page](https://status.onflow.org/) - Network status page
+
+### Rate limits
+
+Rate limits for Flow Public Access nodes hosted by QuickNode are detailed [here](https://www.quicknode.com/docs/flow#endpoint-rate-limits).
 
 ### Running Your Own Node
 
