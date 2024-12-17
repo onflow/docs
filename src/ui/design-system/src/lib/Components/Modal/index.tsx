@@ -45,18 +45,13 @@ const Modal: React.FC<ModalProps> = ({ isOpen, onClose, title, children, classNa
               )}
             >
               {/* Header */}
-              <div className="flex items-center justify-between px-4 py-3 border-b border-gray-200 dark:border-gray-700">
-                <Dialog.Title as="h3" className="text-lg font-semibold">
-                  {title}
-                </Dialog.Title>
-                <button
-                  onClick={onClose}
-                  className="inline-flex items-center justify-center rounded-md p-2 text-gray-500 hover:bg-gray-200 hover:text-gray-800 dark:text-gray-400 dark:hover:bg-gray-800 dark:hover:text-gray-200 focus:outline-none"
-                  aria-label="Close"
-                >
-                  ✕
-                </button>
-              </div>
+              {title && (
+                <div className="px-4 py-3 border-b border-gray-200 dark:border-gray-700">
+                  <Dialog.Title as="h3" className="text-lg font-semibold">
+                    {title}
+                  </Dialog.Title>
+                </div>
+              )}
 
               {/* Content */}
               <div className="px-4 py-5">{children}</div>

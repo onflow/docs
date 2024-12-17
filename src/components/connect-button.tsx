@@ -29,6 +29,7 @@ const ConnectButton: React.FC = () => {
   const displayAddress = shortenAddress(fullAddress, isMobile);
 
   return <Dropdown buttonLabel={displayAddress} items={dropdownItems} />;
+      <Modal
 };
 
 export default ConnectButton;
