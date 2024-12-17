@@ -4,9 +4,14 @@ import clsx from 'clsx';
 
 const BASE_CLASSES =
   'inline-flex items-center justify-center font-semibold text-center border transition duration-200 cursor-pointer';
-const VARIANT_CLASSES = 'bg-black text-white hover:bg-gray-800 active:bg-gray-900';
+
+const VARIANTS = {
+  black: 'bg-black text-white hover:bg-gray-800 active:bg-gray-900',
+  white: 'bg-white text-black border border-gray-300 hover:bg-gray-100 active:bg-gray-200',
+};
+
 const MENU_CLASSES =
-  'text-white bg-black border border-gray-700 hover:bg-gray-800 active:bg-gray-900 transition duration-200';
+  'text-white bg-gray-900 border border-gray-600 shadow-lg dark:shadow-gray-800 hover:bg-gray-700 transition duration-200';
 
 export interface DropdownItem {
   label: string;
@@ -16,14 +21,15 @@ export interface DropdownItem {
 interface DropdownProps {
   buttonLabel: string;
   items: DropdownItem[];
+  buttonVariant?: 'black' | 'white';
 }
 
-const Dropdown: React.FC<DropdownProps> = ({ buttonLabel, items }) => {
+const Dropdown: React.FC<DropdownProps> = ({ buttonLabel, items, buttonVariant = 'black' }) => {
   return (
     <Menu as="div" className="relative inline-block text-left">
       {/* Button */}
       <MenuButton
-        className={clsx(BASE_CLASSES, VARIANT_CLASSES, 'px-4 py-2 rounded-md text-sm')}
+        className={clsx(BASE_CLASSES, VARIANTS[buttonVariant], 'px-4 py-2 rounded-md text-sm')}
       >
         {buttonLabel}
       </MenuButton>
