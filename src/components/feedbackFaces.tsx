@@ -6,9 +6,9 @@ export default function FeedbackFaces() {
     const [clickedFace, setClickedFace] = useState<string | null>(null);
 
     const faces = [
-        { label: "Sad", emoji: "😞" },
-        { label: "Neutral", emoji: "😐" },
-        { label: "Happy", emoji: "😊" },
+        { label: "sad", emoji: "😞" },
+        { label: "neutral", emoji: "😐" },
+        { label: "happy", emoji: "😊" },
     ];
 
     const handleFeedbackClick = (feedbackType: string) => {
