@@ -37,11 +37,13 @@ export const event = ({
   category,
   label,
   value,
+  location
 }: {
   action?: string;
   category?: string;
   label?: string;
   value?: number | string;
+  location?: string;
 }) => {
   if (process.env.NODE_ENV !== "production") return
 
@@ -51,11 +53,18 @@ export const event = ({
     )
     return
   }
-  window.gtag("event", action, {
+
+  const eventPayload: Record<string, any> = {
     event_category: category,
     event_label: label,
     value: value,
-  })
+  };
+
+  if (location) {
+    eventPayload.page_location = location;
+  }
+
+  window.gtag("event", action, eventPayload);
 }
 
 export const reportWebVitalsToGA = (vitals: Metric) => {
