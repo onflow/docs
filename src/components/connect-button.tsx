@@ -4,6 +4,7 @@ import { Button } from '@site/src/ui/design-system/src/lib/Components/Button';
 import { useIsMobile } from '@site/src/hooks/use-is-mobile';
 import Dropdown from '@site/src/ui/design-system/src/lib/Components/Dropdown';
 import Modal from '@site/src/ui/design-system/src/lib/Components/Modal';
+import ProgressModal from '@site/src/components/progress-modal';
 
 const shortenAddress = (address: string, isMobile: boolean) => {
   if (!address) return '';
@@ -42,13 +43,7 @@ const ConnectButton: React.FC = () => {
   return (
     <>
       <Dropdown buttonLabel={displayAddress} items={dropdownItems} />
-      <Modal
-        isOpen={isModalOpen}
-        onClose={handleCloseModal}
-        title="Progress"
-      >
-        Content Here
-      </Modal>
+      <ProgressModal isOpen={isModalOpen} onClose={handleCloseModal} />
     </>
   )
 };
