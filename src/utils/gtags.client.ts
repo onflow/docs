@@ -43,13 +43,13 @@ export const event = ({
   category?: string;
   label?: string;
   value?: number | string;
-  location?: string;
+  location?: boolean;
 }) => {
   if (process.env.NODE_ENV !== "production") return
 
   if (!window.gtag) {
     console.warn(
-      "window.gtag is not defined. This could mean your google anylatics script has not loaded on the page yet."
+      "window.gtag is not defined. This could mean your google analytics script has not loaded on the page yet."
     )
     return
   }
@@ -61,7 +61,7 @@ export const event = ({
   };
 
   if (location) {
-    eventPayload.page_location = location;
+    eventPayload.page_location = window.location.href;
   }
 
   window.gtag("event", action, eventPayload);

@@ -14,14 +14,13 @@ export default function FeedbackFaces() {
     const handleFeedbackClick = (feedbackType: string) => {
         setClickedFace(feedbackType);
 
-        const pagePath = window.location.pathname;
-        const label = `${feedbackType} - ${pagePath}`;
+        const label = `${feedbackType}`;
 
         event({
             action: "feedback_click",
-            category: "Feedback",
+            category: "feedback",
             label: label,
-            location: pagePath,
+            location: true,
         });
 
         // Reset the clicked state after a brief delay
@@ -29,16 +28,13 @@ export default function FeedbackFaces() {
     };
 
     return (
-        <div style={styles.container}>
+        <div className="flex justify-left items-center gap-1">
             {faces.map((face) => (
                 <button
                     key={face.label}
                     onClick={() => handleFeedbackClick(face.label)}
-                    style={{
-                        ...styles.button,
-                        transform: clickedFace === face.label ? "scale(1.2)" : "scale(1)",
-                        opacity: clickedFace === face.label ? 0.7 : 1,
-                    }}
+                    className={`text-4xl cursor-pointer p-2 bg-transparent border-none transition-transform duration-200 focus:outline-none ${clickedFace === face.label ? "scale-110 opacity-70" : "scale-100 opacity-100"
+                        }`}
                     aria-label={face.label}
                 >
                     {face.emoji}
@@ -47,20 +43,3 @@ export default function FeedbackFaces() {
         </div>
     );
 }
-
-// Inline CSS styles
-const styles = {
-    container: {
-        display: "flex",
-        justifyContent: "center",
-        alignItems: "center",
-    } as React.CSSProperties,
-    button: {
-        fontSize: "30px",
-        background: "none",
-        border: "none",
-        cursor: "pointer",
-        transition: "transform 0.2s, opacity 0.2s",
-        padding: "10px",
-    } as React.CSSProperties,
-};
