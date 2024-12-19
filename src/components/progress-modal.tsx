@@ -15,6 +15,10 @@ const ProgressModal: React.FC<ProgressModalProps> = ({ isOpen, onClose }) => {
     { label: "Add contract addresses", completed: true },
   ];
 
+  const challengeItems = [
+    { label: "Complete first challenge", completed: true },
+  ];
+
   return (
     <Modal
       isOpen={isOpen}
@@ -22,6 +26,7 @@ const ProgressModal: React.FC<ProgressModalProps> = ({ isOpen, onClose }) => {
       title="Progress"
     >
       <Checklist title="Profile" items={profileItems} />
+      <Checklist title="Challenges" items={challengeItems} />
     </Modal>
   );
 };
