@@ -19,7 +19,7 @@ export const pageview = (url: string, trackingId: string) => {
 
   if (!window.gtag) {
     console.warn(
-      "window.gtag is not defined. This could mean your google anylatics script has not loaded on the page yet."
+      "window.gtag is not defined. This could mean your google analytics script has not loaded on the page yet."
     )
     return
   }
