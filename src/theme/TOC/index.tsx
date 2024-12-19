@@ -14,8 +14,10 @@ const LINK_ACTIVE_CLASS_NAME = 'table-of-contents__link--active';
 export default function TOC({ className, ...props }: Props): JSX.Element {
   return (
     <div className={clsx(styles.tableOfContents, 'thin-scrollbar', className)}>
-      <h6 className={styles.tableOfContentsTitle}>Rate this page</h6>
-      <FeedbackFaces />
+      <div className="p-1">
+        <h6 className="mb-0 p-1">Rate this page</h6>
+        <FeedbackFaces />
+      </div>
       <TOCItems
         {...props}
         linkClassName={LINK_CLASS_NAME}

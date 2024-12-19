@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import { event } from "@site/src/utils/gtags.client";
 
-// Default export function component
 export default function FeedbackFaces() {
     const [clickedFace, setClickedFace] = useState<string | null>(null);
 
@@ -23,7 +22,6 @@ export default function FeedbackFaces() {
             location: true,
         });
 
-        // Reset the clicked state after a brief delay
         setTimeout(() => setClickedFace(null), 300);
     };
 
