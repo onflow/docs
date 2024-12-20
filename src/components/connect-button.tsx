@@ -1,8 +1,9 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useCurrentUser } from '@site/src/hooks/use-current-user';
 import { Button } from '@site/src/ui/design-system/src/lib/Components/Button';
 import { useIsMobile } from '@site/src/hooks/use-is-mobile';
 import Dropdown from '@site/src/ui/design-system/src/lib/Components/Dropdown';
+import ProgressModal from '@site/src/components/progress-modal';
 
 const shortenAddress = (address: string, isMobile: boolean) => {
   if (!address) return '';
@@ -12,6 +13,15 @@ const shortenAddress = (address: string, isMobile: boolean) => {
 const ConnectButton: React.FC = () => {
   const { user, logIn, logOut } = useCurrentUser();
   const isMobile = useIsMobile();
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
+  const handleOpenProgress = () => {
+    setIsModalOpen(true);
+  };
+
+  const handleCloseModal = () => {
+    setIsModalOpen(false);
+  };
 
   if (!user.loggedIn) {
     return (
@@ -22,13 +32,19 @@ const ConnectButton: React.FC = () => {
   }
 
   const dropdownItems = [
+    { label: 'Progress', onClick: handleOpenProgress },
     { label: 'Disconnect', onClick: logOut },
   ];
 
   const fullAddress = user.addr ?? 'Unknown';
   const displayAddress = shortenAddress(fullAddress, isMobile);
 
-  return <Dropdown buttonLabel={displayAddress} items={dropdownItems} />;
+  return (
+    <>
+      <Dropdown buttonLabel={displayAddress} items={dropdownItems} />
+      <ProgressModal isOpen={isModalOpen} onClose={handleCloseModal} />
+    </>
+  )
 };
 
 export default ConnectButton;
