@@ -5,7 +5,13 @@
     "jsx": "react",
     "baseUrl": ".",
     "strictNullChecks": true,
-    "typeRoots": ["./", "./node_modules/@types"]
+    "typeRoots": [
+      "./",
+      "./node_modules/@types"
+    ]
   },
-  "include": ["src", "docusaurus.config.d.ts"]
+  "include": [
+    "src",
+    "docusaurus.config.d.ts"
+  ]
 }
