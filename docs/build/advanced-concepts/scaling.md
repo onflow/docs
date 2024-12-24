@@ -232,7 +232,7 @@ func IncreaseCounter(ctx context.Context, flowClient *grpc.Client, account *flow
 	tx.SetProposalKey(
 		account.Address,
 		account.Keys[proposalKeyIndex].Index,
-		account.Keys[proposalKeyIndex].SequenceNumber-1,
+		account.Keys[proposalKeyIndex].SequenceNumber,
 	)
 
 	return RunTransaction(ctx, flowClient, account, signer, tx)
