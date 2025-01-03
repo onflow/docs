@@ -8,6 +8,7 @@ const { remarkCodeHike } = require('@code-hike/mdx');
 
 const path = require('path');
 const fs = require('fs');
+const { default: FlowCadencePlugin } = require('flow-cadence-plugin');
 
 const flowNetwork = process.env.FLOW_NETWORK || 'testnet';
 
@@ -204,11 +205,11 @@ const config = {
         },
         ...(process.env.GTAG
           ? {
-            gtag: {
-              trackingID: process.env.GTAG,
-              anonymizeIP: true,
-            },
-          }
+              gtag: {
+                trackingID: process.env.GTAG,
+                anonymizeIP: true,
+              },
+            }
           : {}),
       }),
     ],
@@ -503,6 +504,7 @@ const config = {
       },
     }),
   plugins: [
+    FlowCadencePlugin,
     function customizedSvgo() {
       return {
         name: 'docusaurus-svgo',
