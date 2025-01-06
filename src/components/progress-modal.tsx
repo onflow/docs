@@ -40,12 +40,7 @@ const ProgressModal: React.FC<ProgressModalProps> = ({ isOpen, onClose }) => {
   ];
 
   const onProfileAction = () => {
-    createProfile({
-      handle: 'test',
-      referralSource: 'test',
-      deployedContracts: [],
-      socials: [] as any,
-    });
+    console.log('TODO: Profile action');
   };
 
   const onChallengeAction = () => {
