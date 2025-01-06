@@ -26,11 +26,6 @@ export interface ChallengeResponse {
   description: string;
 }
 
-export interface Challenge {
-  name: string;
-  description: string;
-}
-
 export enum SocialType {
   GITHUB = 'github',
 }
