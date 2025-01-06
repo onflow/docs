@@ -9,6 +9,7 @@ import { useProfile } from '../hooks/use-profile';
 import { useCurrentUser } from '../hooks/use-current-user';
 import { createProfile, setProfile } from '../utils/gold-star';
 import { isEqual } from 'lodash';
+import RemovableTag from '@site/src/ui/design-system/src/lib/Components/RemovableTag';
 
 interface ProfileModalProps {
   isOpen: boolean;
@@ -40,6 +41,9 @@ const ProfileModal: React.FC<ProfileModalProps> = ({ isOpen, onClose }) => {
   });
   const [loaded, setLoaded] = useState(false);
   const [isSaving, setIsSaving] = useState(false);
+  const [selectedSource, setSelectedSource] = useState(flowSources[0].name);
+  const [tags, setTags] = useState<string[]>([]);
+  const [tagInput, setTagInput] = useState('');
 
   useEffect(() => {
     if (profile && !loaded && !isLoading && !error) {
@@ -52,6 +56,17 @@ const ProfileModal: React.FC<ProfileModalProps> = ({ isOpen, onClose }) => {
       setLoaded(true);
     }
   }, [profile, settings, loaded, isLoading, error]);
+
+  const handleAddTag = () => {
+    if (tagInput.trim() && !tags.includes(tagInput.trim())) {
+      setTags([...tags, tagInput.trim()]);
+      setTagInput('');
+    }
+  };
+
+  const handleRemoveTag = (tagToRemove: string) => {
+    setTags(tags.filter((tag) => tag !== tagToRemove));
+  };
 
   async function handleSave() {
     if (!settings) return;
@@ -108,6 +123,35 @@ const ProfileModal: React.FC<ProfileModalProps> = ({ isOpen, onClose }) => {
             />
           </Field>
         </div>
+
+        <Field
+          label="Contracts Deployed"
+          description="Add your contracts in the canonical format (A.0x123.Foobar)."
+        >
+          <div className="space-y-2">
+            <div className="flex items-center gap-2">
+              <Input
+                name="contract_input"
+                placeholder="A.0x123.Foobar"
+                value={tagInput}
+                onChange={(e) => setTagInput(e.target.value)}
+                onKeyDown={(e) => e.key === 'Enter' && handleAddTag()}
+              />
+              <Button size="sm" onClick={handleAddTag}>
+                Add
+              </Button>
+            </div>
+            <div className="flex flex-wrap gap-2">
+              {tags.map((tag) => (
+                <RemovableTag
+                  key={tag}
+                  name={tag}
+                  onRemove={() => handleRemoveTag(tag)}
+                />
+              ))}
+            </div>
+          </div>
+        </Field>
 
         <div className="max-w-sm mx-auto">
           <RadioGroup
