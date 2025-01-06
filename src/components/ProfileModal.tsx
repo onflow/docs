@@ -26,7 +26,12 @@ const flowSources = [
 
 const ProfileModal: React.FC<ProfileModalProps> = ({ isOpen, onClose }) => {
   const { user } = useCurrentUser();
-  const { profile, isLoading, error } = useProfile(user.addr);
+  const {
+    profile,
+    isLoading,
+    error,
+    mutate: mutateProfile,
+  } = useProfile(user.addr);
   const [settings, setSettings] = useState<ProfileSettings>({
     handle: '',
     socials: {},
@@ -34,6 +39,7 @@ const ProfileModal: React.FC<ProfileModalProps> = ({ isOpen, onClose }) => {
     deployedContracts: {},
   });
   const [loaded, setLoaded] = useState(false);
+  const [isSaving, setIsSaving] = useState(false);
 
   useEffect(() => {
     if (profile && !loaded && !isLoading && !error) {
@@ -50,10 +56,18 @@ const ProfileModal: React.FC<ProfileModalProps> = ({ isOpen, onClose }) => {
   async function handleSave() {
     if (!settings) return;
 
-    if (profile) {
-      await setProfile(settings);
-    } else {
-      await createProfile(settings);
+    setIsSaving(true);
+    try {
+      if (profile) {
+        await setProfile(settings);
+      } else {
+        await createProfile(settings);
+      }
+    } catch (e) {
+      console.error(e);
+    } finally {
+      setIsSaving(false);
+      mutateProfile();
     }
   }
 
