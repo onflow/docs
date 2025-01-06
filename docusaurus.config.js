@@ -204,11 +204,11 @@ const config = {
         },
         ...(process.env.GTAG
           ? {
-            gtag: {
-              trackingID: process.env.GTAG,
-              anonymizeIP: true,
-            },
-          }
+              gtag: {
+                trackingID: process.env.GTAG,
+                anonymizeIP: true,
+              },
+            }
           : {}),
       }),
     ],
@@ -627,6 +627,23 @@ const config = {
         },
       },
     ],
+    function cadenceLoader() {
+      return {
+        name: 'cadence-loader',
+        configureWebpack() {
+          return {
+            module: {
+              rules: [
+                {
+                  test: /\.cdc$/,
+                  use: 'raw-loader',
+                },
+              ],
+            },
+          };
+        },
+      };
+    },
   ],
   stylesheets: [
     {
