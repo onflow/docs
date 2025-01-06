@@ -7,15 +7,19 @@ transaction(
     deployedContracts: {Address: [String]},
     socials: {String: String}
 ) {
-    let profile: auth(GoldStar.UpdateSocials, GoldStar.UpdateDeployedContracts, GoldStar.UpdateReferralSource) &GoldStar.Profile
+    let profile: auth(GoldStar.UpdateHandle, GoldStar.UpdateSocials, GoldStar.UpdateDeployedContracts, GoldStar.UpdateReferralSource) &GoldStar.Profile
 
     prepare(signer: auth(BorrowValue) &Account) {
         self.profile = signer.storage
-            .borrow<auth(GoldStar.UpdateSocials, GoldStar.UpdateDeployedContracts, GoldStar.UpdateReferralSource) &GoldStar.Profile>(from: GoldStar.profileStoragePath)
+            .borrow<auth(GoldStar.UpdateHandle, GoldStar.UpdateSocials, GoldStar.UpdateDeployedContracts, GoldStar.UpdateReferralSource) &GoldStar.Profile>(from: GoldStar.profileStoragePath)
             ?? panic("missing profile")
     }
 
     execute {
+        // Update the handle
+        self.profile.handle.update(newHandle: handle)
+
+        // Update the referral source
         if let referralSource = referralSource {
             self.profile.updateReferralSource(source: referralSource)
         }

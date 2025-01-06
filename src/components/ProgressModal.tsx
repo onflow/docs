@@ -9,9 +9,14 @@ import { SocialType } from '../types/gold-star';
 interface ProgressModalProps {
   isOpen: boolean;
   onClose: () => void;
+  onOpenProfileModal: () => void;
 }
 
-const ProgressModal: React.FC<ProgressModalProps> = ({ isOpen, onClose }) => {
+const ProgressModal: React.FC<ProgressModalProps> = ({
+  isOpen,
+  onClose,
+  onOpenProfileModal,
+}) => {
   const user = useCurrentUser();
   const { profile } = useProfile(user.user.addr);
 
@@ -38,10 +43,6 @@ const ProgressModal: React.FC<ProgressModalProps> = ({ isOpen, onClose }) => {
     { label: 'Complete first challenge', completed: true },
   ];
 
-  const onProfileAction = () => {
-    console.log('TODO: Profile action');
-  };
-
   const onChallengeAction = () => {
     console.log('TODO: Challenge action');
   };
@@ -56,7 +57,7 @@ const ProgressModal: React.FC<ProgressModalProps> = ({ isOpen, onClose }) => {
             <Button
               size="sm"
               className="w-full max-w-md"
-              onClick={onProfileAction}
+              onClick={onOpenProfileModal}
             >
               Update Profile to Complete Items
             </Button>

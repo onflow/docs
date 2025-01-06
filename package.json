@@ -65,6 +65,7 @@
     "@jest/globals": "^29.7.0",
     "@tsconfig/docusaurus": "^2.0.3",
     "@types/jest": "^29.5.14",
+    "@types/lodash": "^4.17.14",
     "@typescript-eslint/eslint-plugin": "^8.11.0",
     "concurrently": "^8.2.1",
     "eslint": "^8.0.1",

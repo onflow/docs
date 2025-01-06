@@ -27,7 +27,7 @@ contract GoldStar {
 
     access(all)
     resource Profile {
-        access(all)
+        access(mapping Identity)
         var handle: ProfileHandle
 
         access(all)
