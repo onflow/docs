@@ -54,3 +54,17 @@ export const HIGHLIGHT_LANGUAGES = [
 export const DISCORD_URL = 'https://discord.gg/flow';
 export const DISCORD_ANNOUNCEMENTS_CHANNEL_ID = '621529603718119424';
 export const DISCORD_DEV_UPDATES_CHANNEL_ID = '811693600403357706';
+
+export enum FlowNetwork {
+  MAINNET = 'mainnet',
+  TESTNET = 'testnet',
+}
+
+export const CHALLENGE_TYPES = {
+  [FlowNetwork.MAINNET]: {
+    HELLO_WORLD: 'A. Hello World',
+  },
+  [FlowNetwork.TESTNET]: {
+    HELLO_WORLD: 'A. Hello World',
+  },
+} satisfies { [network in FlowNetwork]: { [type: string]: string } };

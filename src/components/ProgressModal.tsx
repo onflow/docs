@@ -5,6 +5,8 @@ import { Button } from '@site/src/ui/design-system/src/lib/Components/Button';
 import { useProfile } from '../hooks/use-profile';
 import { useCurrentUser } from '../hooks/use-current-user';
 import { SocialType } from '../types/gold-star';
+import { CHALLENGE_TYPES } from '../utils/constants';
+import { flowNetwork } from '../config/fcl';
 
 interface ProgressModalProps {
   isOpen: boolean;
@@ -35,7 +37,14 @@ const ProgressModal: React.FC<ProgressModalProps> = ({ isOpen, onClose }) => {
   ] as { label: string; completed: boolean }[];
 
   const challengeItems = [
-    { label: 'Complete first challenge', completed: true },
+    {
+      label: 'Complete first challenge',
+      completed: !!Object.entries(profile?.submissions || {}).find(
+        ([type, submission]) =>
+          type === CHALLENGE_TYPES[flowNetwork].HELLO_WORLD &&
+          submission.completed,
+      ),
+    },
   ];
 
   const onProfileAction = () => {

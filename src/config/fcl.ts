@@ -1,8 +1,10 @@
 import * as fcl from '@onflow/fcl';
 import config from '@generated/docusaurus.config';
 import flowJSON from '../../flow.json';
+import { FlowNetwork } from '../utils/constants';
 
-const flowNetwork = config.customFields?.flowNetwork;
+export const flowNetwork: FlowNetwork =
+  (config.customFields?.flowNetwork as any) || FlowNetwork.TESTNET;
 
 console.log('Dapp running on network:', flowNetwork);
 
