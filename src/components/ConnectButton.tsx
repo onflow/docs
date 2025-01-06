@@ -53,10 +53,20 @@ const ConnectButton: React.FC = () => {
   return (
     <>
       <Dropdown buttonLabel={displayAddress} items={dropdownItems} />
-      <ProgressModal isOpen={isProgressModalOpen} onClose={handleCloseProgressModal} />
-      <ProfileModal isOpen={isProfileModalOpen} onClose={handleCloseProfileModal} />
+      <ProgressModal
+        isOpen={isProgressModalOpen}
+        onClose={handleCloseProgressModal}
+        onOpenProfileModal={() => {
+          handleCloseProgressModal();
+          handleOpenProfileModal();
+        }}
+      />
+      <ProfileModal
+        isOpen={isProfileModalOpen}
+        onClose={handleCloseProfileModal}
+      />
     </>
-  )
+  );
 };
 
 export default ConnectButton;
