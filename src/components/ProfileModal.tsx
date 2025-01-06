@@ -8,7 +8,7 @@ import { ProfileSettings, SocialType } from '../types/gold-star';
 import { useProfile } from '../hooks/use-profile';
 import { useCurrentUser } from '../hooks/use-current-user';
 import { createProfile, setProfile } from '../utils/gold-star';
-import _ from 'lodash';
+import { isEqual } from 'lodash';
 
 interface ProfileModalProps {
   isOpen: boolean;
@@ -73,10 +73,10 @@ const ProfileModal: React.FC<ProfileModalProps> = ({ isOpen, onClose }) => {
 
   function hasChanges() {
     return (
-      !_.isEqual(profile?.handle, settings?.handle) ||
-      !_.isEqual(profile?.socials, settings?.socials) ||
-      !_.isEqual(profile?.referralSource, settings?.referralSource) ||
-      !_.isEqual(profile?.deployedContracts, settings?.deployedContracts)
+      !isEqual(profile?.handle, settings?.handle) ||
+      !isEqual(profile?.socials, settings?.socials) ||
+      !isEqual(profile?.referralSource, settings?.referralSource) ||
+      !isEqual(profile?.deployedContracts, settings?.deployedContracts)
     );
   }
 
