@@ -229,6 +229,7 @@ Additional options are available as follows
 DOCKER_RUN_DETACHED=true 
 DOCKER_HOST_MOUNT=[host mount directory] 
 DOCKER_HOST_PORT=[desired port to expose on host]
+DOCKER_HOST_METRICS_PORT=[desired port to expose on host for metrics]
 
 # Example usage
 
