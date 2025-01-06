@@ -630,13 +630,17 @@ const config = {
     function cadenceLoader() {
       return {
         name: 'cadence-loader',
-        configureWebpack(config) {
-          config.module?.rules?.push({
-            test: /\.cdc$/,
-            use: 'raw-loader',
-          });
-
-          return config;
+        configureWebpack() {
+          return {
+            module: {
+              rules: [
+                {
+                  test: /\.cdc$/,
+                  use: 'raw-loader',
+                },
+              ],
+            },
+          };
         },
       };
     },
