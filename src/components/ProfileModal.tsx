@@ -129,7 +129,7 @@ const ProfileModal: React.FC<ProfileModalProps> = ({ isOpen, onClose }) => {
             size="sm"
             className="w-full max-w-md"
             onClick={handleSave}
-            disabled={!hasChanges() || !settings}
+            disabled={!hasChanges() || !settings || isSaving}
           >
             Save
           </Button>
