@@ -627,7 +627,7 @@ const config = {
         },
       },
     ],
-    /*function cadenceLoader() {
+    function cadenceLoader() {
       return {
         name: 'cadence-loader',
         configureWebpack(config) {
@@ -639,7 +639,7 @@ const config = {
           return config;
         },
       };
-    },*/
+    },
   ],
   stylesheets: [
     {
