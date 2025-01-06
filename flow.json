@@ -1,25 +1,25 @@
 {
   "contracts": {
     "GoldStar": {
-      "source": "cadence/contracts/GoldStar.cdc",
+      "source": "./src/cadence/contracts/GoldStar.cdc",
       "aliases": {
         "testing": "0000000000000007"
       }
     },
     "NoopChallenge": {
-      "source": "cadence/contracts/NoopChallenge.cdc",
+      "source": "./src/cadence/contracts/NoopChallenge.cdc",
       "aliases": {
         "testing": "0000000000000007"
       }
     },
     "DeployedContractChallenge": {
-      "source": "cadence/contracts/DeployedContractChallenge.cdc",
+      "source": "./src/cadence/contracts/DeployedContractChallenge.cdc",
       "aliases": {
         "testing": "0000000000000007"
       }
     },
     "ManualChallenge": {
-      "source": "cadence/contracts/ManualChallenge.cdc",
+      "source": "./src/cadence/contracts/ManualChallenge.cdc",
       "aliases": {
         "testing": "0000000000000007"
       }

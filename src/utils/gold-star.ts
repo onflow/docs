@@ -1,7 +1,7 @@
-import GetChallenges from '../../gold-star/cadence/scripts/GetChallenges.cdc';
-import GetProfile from '../../gold-star/cadence/scripts/GetProfile.cdc';
-import CreateProfile from '../../gold-star/cadence/transactions/GoldStar/CreateProfile.cdc';
-import UpdateProfile from '../../gold-star/cadence/transactions/GoldStar/UpdateProfile.cdc';
+import GetChallenges from '../cadence/scripts/GetChallenges.cdc';
+import GetProfile from '../cadence/scripts/GetProfile.cdc';
+import CreateProfile from '../cadence/transactions/GoldStar/CreateProfile.cdc';
+import UpdateProfile from '../cadence/transactions/GoldStar/UpdateProfile.cdc';
 
 import * as fcl from '@onflow/fcl';
 import {
@@ -44,6 +44,8 @@ export const getProfile = async (address: string): Promise<Profile> => {
       name: c.name,
       description: c.description,
     })),
+    deployedContracts: resp.deployedContracts,
+    referralSource: resp.referralSource,
   };
 };
 

@@ -22,6 +22,8 @@ export interface ProfileResponse {
   handle: string;
   socials: string[];
   completedChallenges: ChallengeResponse[];
+  deployedContracts: DeployedContract[];
+  referralSource?: string;
 }
 export interface ChallengeResponse {
   id: string;
