@@ -10,6 +10,8 @@ import { useCurrentUser } from '../hooks/use-current-user';
 import { createProfile, setProfile } from '../utils/gold-star';
 import { isEqual } from 'lodash';
 import RemovableTag from '@site/src/ui/design-system/src/lib/Components/RemovableTag';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faTrophy } from '@fortawesome/free-solid-svg-icons';
 
 interface ProfileModalProps {
   isOpen: boolean;
@@ -23,6 +25,10 @@ const flowSources = [
   { name: 'Search', description: 'I searched for it online.' },
   { name: 'Existing Builder', description: 'I was already building on Flow.' },
   { name: 'Other', description: 'Another way not listed above.' },
+];
+
+const challenges = [
+  { name: 'Learn Flow', description: 'Committed to learning and exploring Flow.' },
 ];
 
 const ProfileModal: React.FC<ProfileModalProps> = ({ isOpen, onClose }) => {
@@ -165,6 +171,26 @@ const ProfileModal: React.FC<ProfileModalProps> = ({ isOpen, onClose }) => {
                 ?.description || ''
             }
           />
+        </div>
+
+        <div>
+          <h3 className="text-lg font-bold mb-3">My Challenges</h3>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 gap-6">
+            {challenges.map((challenge, index) => (
+              <div
+                key={index}
+                className="flex flex-col items-center bg-gray-100 p-6 rounded-lg shadow-md text-center w-full"
+              >
+                <FontAwesomeIcon
+                  icon={faTrophy}
+                  size="3x"
+                  className="text-yellow-500 mb-4"
+                />
+                <p className="text-md font-bold mb-2">{challenge.name}</p>
+                <p className="text-sm text-gray-600">{challenge.description}</p>
+              </div>
+            ))}
+          </div>
         </div>
 
         <div className="flex flex-col space-y-2">
