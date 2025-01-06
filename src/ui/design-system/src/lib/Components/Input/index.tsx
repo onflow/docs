@@ -14,7 +14,7 @@ const VARIANTS = {
     dark:bg-gray-800 dark:text-white dark:placeholder-gray-400 dark:focus:ring-blue-300
   `,
   secondary: `
-    bg-gray-100 text-gray-800 border-gray-300 placeholder-gray-500 focus:ring-gray-400 focus:border-gray-400
+    bg-gray-100 text-gray-800 border-gray-400 placeholder-gray-500 focus:ring-gray-400 focus:border-gray-400
     dark:bg-gray-900 dark:text-gray-200 dark:placeholder-gray-600 dark:focus:ring-gray-600
   `,
 };
