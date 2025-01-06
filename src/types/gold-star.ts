@@ -1,4 +1,4 @@
-export interface ProfileUpdate {
+export interface ProfileSettings {
   handle?: string;
   referralSource?: string;
   socials?: Map<string, string>;
@@ -15,16 +15,23 @@ export interface Profile {
   referralSource?: string;
   socials: string[];
   deployedContracts: DeployedContract[];
-  completedChallenges: Challenge[];
+  completedChallenges: {
+    challengeType: string;
+    completed: boolean;
+  }[];
 }
 
 export interface ProfileResponse {
   handle: string;
   socials: string[];
-  completedChallenges: ChallengeResponse[];
+  completedChallenges: {
+    challengeType: string;
+    completed: boolean;
+  }[];
   deployedContracts: DeployedContract[];
   referralSource?: string;
 }
+
 export interface ChallengeResponse {
   id: string;
   name: string;

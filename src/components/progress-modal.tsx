@@ -5,6 +5,7 @@ import { Button } from '@site/src/ui/design-system/src/lib/Components/Button';
 import { useProfile } from '../hooks/use-profile';
 import { useCurrentUser } from '../hooks/use-current-user';
 import { Profile, SocialType } from '../types/gold-star';
+import { createProfile } from '../utils/gold-star';
 
 interface ProgressModalProps {
   isOpen: boolean;
@@ -13,7 +14,7 @@ interface ProgressModalProps {
 
 const ProgressModal: React.FC<ProgressModalProps> = ({ isOpen, onClose }) => {
   const user = useCurrentUser();
-  const { profile } = useProfile(user.addr);
+  const { profile } = useProfile(user.user.addr);
 
   const profileItems = [
     {
@@ -39,7 +40,12 @@ const ProgressModal: React.FC<ProgressModalProps> = ({ isOpen, onClose }) => {
   ];
 
   const onProfileAction = () => {
-    console.log('TODO: Profile action');
+    createProfile({
+      handle: 'test',
+      referralSource: 'test',
+      deployedContracts: [],
+      socials: [] as any,
+    });
   };
 
   const onChallengeAction = () => {

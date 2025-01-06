@@ -8,7 +8,7 @@ import {
   ChallengeResponse,
   Profile,
   ProfileResponse,
-  ProfileUpdate,
+  ProfileSettings,
 } from '../types/gold-star';
 
 /**
@@ -41,10 +41,13 @@ export const getProfile = async (address: string): Promise<Profile> => {
     handle: resp.handle,
     socials: resp.socials,
     completedChallenges: resp.completedChallenges.map((c) => ({
-      name: c.name,
-      description: c.description,
+      challengeType: c.challengeType,
+      completed: c.completed,
     })),
-    deployedContracts: resp.deployedContracts,
+    deployedContracts: resp.deployedContracts.map((c) => ({
+      name: c.name,
+      address: c.address,
+    })),
     referralSource: resp.referralSource,
   };
 };
@@ -54,16 +57,16 @@ export const getProfile = async (address: string): Promise<Profile> => {
  * @param profile
  * @returns The transaction ID
  */
-export const createProfile = async (profile: ProfileUpdate) => {
+export const createProfile = async (profile: ProfileSettings) => {
   return await fcl.mutate({
     cadence: CreateProfile,
     args: (arg, t) => [
       arg(profile.handle, t.String),
       arg(profile.referralSource, t.Optional(t.String)),
-      arg(profile.socials, t.Array(t.String)),
+      arg(profile.socials, t.Dictionary(t.String, t.String)),
       arg(
         profile.deployedContracts,
-        t.Dictionary(t.Address, t.Dictionary(t.Address, t.Array(t.String))),
+        t.Dictionary(t.Address, t.Array(t.String)),
       ),
     ],
   });
@@ -74,16 +77,16 @@ export const createProfile = async (profile: ProfileUpdate) => {
  * @param profile The new profile settings
  * @returns The transaction ID
  */
-export const setProfile = async (profile: ProfileUpdate) => {
+export const setProfile = async (profile: ProfileSettings) => {
   return await fcl.mutate({
     cadence: UpdateProfile,
     args: (arg, t) => [
       arg(profile.handle, t.String),
       arg(profile.referralSource, t.Optional(t.String)),
-      arg(profile.socials, t.Array(t.String)),
+      arg(profile.socials, t.Dictionary(t.String, t.String)),
       arg(
         profile.deployedContracts,
-        t.Dictionary(t.Address, t.Dictionary(t.Address, t.Array(t.String))),
+        t.Dictionary(t.Address, t.Array(t.String)),
       ),
     ],
   });
