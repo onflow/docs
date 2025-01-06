@@ -1,6 +1,6 @@
 import React from 'react';
 import Modal from '@site/src/ui/design-system/src/lib/Components/Modal';
-import Checklist from '@site/src/components/progress-checklist';
+import Checklist from '@site/src/components/ProgressChecklist';
 import { Button } from '@site/src/ui/design-system/src/lib/Components/Button';
 import { useProfile } from '../hooks/use-profile';
 import { useCurrentUser } from '../hooks/use-current-user';
