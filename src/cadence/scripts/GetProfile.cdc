@@ -3,20 +3,21 @@ import "GoldStar"
 access(all) struct Profile {
     access(all) var handle: String
     access(all) var referralSource: String?
-    access(all) var deployedContracts: [DeployedContractInfo]
+    access(all) var deployedContracts: {Address: [String]}
     access(all) var socials: {String: String}
-    access(all) var submissions: [Submission]
+    access(all) var submissions: {Type: Submission}
 
     init(ref: &GoldStar.Profile) {
-        let submissions = [] as [Submission]
+        let submissions: {Type: Submission} = {}
         for challengeType in ref.submissions.submissions.keys {
-            submissions.append(Submission(challengeType: challengeType, ref: ref.submissions.submissions[challengeType]!))
+            submissions[challengeType] = Submission(ref: ref.submissions.submissions[challengeType]!)
         }
 
-        let deployedContracts = [] as [DeployedContractInfo]
+        let deployedContracts: {Address: [String]} = {}
         for addr in ref.deployedContracts.contracts.keys {
+            deployedContracts[addr] = []
             for name in ref.deployedContracts.contracts[addr]!.keys {
-                deployedContracts.append(DeployedContractInfo(address: addr, name: name))
+                deployedContracts[addr]!.append(name)
             }
         }
 
@@ -29,22 +30,10 @@ access(all) struct Profile {
 }
 
 access(all) struct Submission {
-    access(all) var challengeType: Type
     access(all) var completed: Bool
 
-    init(challengeType: Type, ref: &{GoldStar.Submission}) {
-        self.challengeType = challengeType
+    init(ref: &{GoldStar.Submission}) {
         self.completed = ref.isAccepted()
-    }
-}
-
-access(all) struct DeployedContractInfo {
-    access(all) var address: Address
-    access(all) var name: String
-
-    init(address: Address, name: String) {
-        self.address = address
-        self.name = name
     }
 }
 

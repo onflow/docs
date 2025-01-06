@@ -4,8 +4,7 @@ import Checklist from '@site/src/components/progress-checklist';
 import { Button } from '@site/src/ui/design-system/src/lib/Components/Button';
 import { useProfile } from '../hooks/use-profile';
 import { useCurrentUser } from '../hooks/use-current-user';
-import { Profile, SocialType } from '../types/gold-star';
-import { createProfile } from '../utils/gold-star';
+import { SocialType } from '../types/gold-star';
 
 interface ProgressModalProps {
   isOpen: boolean;
@@ -31,7 +30,7 @@ const ProgressModal: React.FC<ProgressModalProps> = ({ isOpen, onClose }) => {
     },
     {
       label: 'Add contract addresses',
-      completed: profile && profile.deployedContracts.length > 0,
+      completed: profile && Object.keys(profile.deployedContracts).length > 0,
     },
   ] as { label: string; completed: boolean }[];
 

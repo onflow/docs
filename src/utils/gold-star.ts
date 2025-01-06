@@ -40,14 +40,8 @@ export const getProfile = async (address: string): Promise<Profile> => {
   return {
     handle: resp.handle,
     socials: resp.socials,
-    completedChallenges: resp.completedChallenges.map((c) => ({
-      challengeType: c.challengeType,
-      completed: c.completed,
-    })),
-    deployedContracts: resp.deployedContracts.map((c) => ({
-      name: c.name,
-      address: c.address,
-    })),
+    submissions: resp.submissions,
+    deployedContracts: resp.deployedContracts,
     referralSource: resp.referralSource,
   };
 };

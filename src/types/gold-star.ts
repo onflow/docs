@@ -2,33 +2,21 @@ export interface ProfileSettings {
   handle?: string;
   referralSource?: string;
   socials?: Map<string, string>;
-  deployedContracts?: DeployedContract[];
+  deployedContracts?: { [address: string]: string[] };
 }
-
-export interface DeployedContract {
-  name: string;
-  address: string;
-}
-
 export interface Profile {
   handle: string;
   referralSource?: string;
   socials: string[];
-  deployedContracts: DeployedContract[];
-  completedChallenges: {
-    challengeType: string;
-    completed: boolean;
-  }[];
+  deployedContracts: { [address: string]: string[] };
+  submissions: { [challengeType: string]: { completed: boolean } };
 }
 
 export interface ProfileResponse {
   handle: string;
   socials: string[];
-  completedChallenges: {
-    challengeType: string;
-    completed: boolean;
-  }[];
-  deployedContracts: DeployedContract[];
+  submissions: { [challengeType: string]: { completed: boolean } };
+  deployedContracts: { [address: string]: string[] };
   referralSource?: string;
 }
 
