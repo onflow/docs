@@ -3,7 +3,7 @@ import { useCurrentUser } from '@site/src/hooks/use-current-user';
 import { Button } from '@site/src/ui/design-system/src/lib/Components/Button';
 import { useIsMobile } from '@site/src/hooks/use-is-mobile';
 import Dropdown from '@site/src/ui/design-system/src/lib/Components/Dropdown';
-import ProgressModal from '@site/src/components/progress-modal';
+import ProgressModal from '@site/src/components/ProgressModal';
 import ProfileModal from '@site/src/components/ProfileModal';
 
 const shortenAddress = (address: string, isMobile: boolean) => {
