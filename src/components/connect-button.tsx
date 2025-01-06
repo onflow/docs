@@ -4,6 +4,7 @@ import { Button } from '@site/src/ui/design-system/src/lib/Components/Button';
 import { useIsMobile } from '@site/src/hooks/use-is-mobile';
 import Dropdown from '@site/src/ui/design-system/src/lib/Components/Dropdown';
 import ProgressModal from '@site/src/components/progress-modal';
+import ProfileModal from '@site/src/components/ProfileModal';
 
 const shortenAddress = (address: string, isMobile: boolean) => {
   if (!address) return '';
@@ -13,14 +14,23 @@ const shortenAddress = (address: string, isMobile: boolean) => {
 const ConnectButton: React.FC = () => {
   const { user, logIn, logOut } = useCurrentUser();
   const isMobile = useIsMobile();
-  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [isProgressModalOpen, setIsProgressModalOpen] = useState(false);
+  const [isProfileModalOpen, setIsProfileModalOpen] = useState(false);
 
   const handleOpenProgress = () => {
-    setIsModalOpen(true);
+    setIsProgressModalOpen(true);
   };
 
-  const handleCloseModal = () => {
-    setIsModalOpen(false);
+  const handleCloseProgressModal = () => {
+    setIsProgressModalOpen(false);
+  };
+
+  const handleOpenProfileModal = () => {
+    setIsProfileModalOpen(true);
+  };
+
+  const handleCloseProfileModal = () => {
+    setIsProfileModalOpen(false);
   };
 
   if (!user.loggedIn) {
@@ -33,6 +43,7 @@ const ConnectButton: React.FC = () => {
 
   const dropdownItems = [
     { label: 'Progress', onClick: handleOpenProgress },
+    { label: 'Profile', onClick: handleOpenProfileModal },
     { label: 'Disconnect', onClick: logOut },
   ];
 
@@ -42,7 +53,8 @@ const ConnectButton: React.FC = () => {
   return (
     <>
       <Dropdown buttonLabel={displayAddress} items={dropdownItems} />
-      <ProgressModal isOpen={isModalOpen} onClose={handleCloseModal} />
+      <ProgressModal isOpen={isProgressModalOpen} onClose={handleCloseProgressModal} />
+      <ProfileModal isOpen={isProfileModalOpen} onClose={handleCloseProfileModal} />
     </>
   )
 };
