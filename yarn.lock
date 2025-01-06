@@ -9713,11 +9713,6 @@ flatted@^3.2.9:
   resolved "https://registry.yarnpkg.com/flatted/-/flatted-3.2.9.tgz#7eb4c67ca1ba34232ca9d2d93e9886e611ad7daf"
   integrity sha512-36yxDn5H7OFZQla0/jFJmbIKTdZAQHngCedGxiMmpNfEZM0sdEeT+WczLQrjK6D7o2aiyLYDnkw0R3JK0Qv1RQ==
 
-flow-cadence-plugin@^0.0.6:
-  version "0.0.6"
-  resolved "https://registry.yarnpkg.com/flow-cadence-plugin/-/flow-cadence-plugin-0.0.6.tgz#e8a53d1a4f51afa529b2f0f5468e85d71d58d469"
-  integrity sha512-OLWvZBezef2RayI9B0ve0TtlBrdS58+iiKMkPuI+w+jVaeG0Eswacr3dMTNtohcmhoiR27SSLzLCPsRrhf59Kg==
-
 follow-redirects@^1.0.0, follow-redirects@^1.14.8:
   version "1.15.3"
   resolved "https://registry.yarnpkg.com/follow-redirects/-/follow-redirects-1.15.3.tgz#fe2f3ef2690afce7e82ed0b44db08165b207123a"
@@ -14733,6 +14728,14 @@ raw-body@2.5.1:
     http-errors "2.0.0"
     iconv-lite "0.4.24"
     unpipe "1.0.0"
+
+raw-loader@^4.0.2:
+  version "4.0.2"
+  resolved "https://registry.yarnpkg.com/raw-loader/-/raw-loader-4.0.2.tgz#1aac6b7d1ad1501e66efdac1522c73e59a584eb6"
+  integrity sha512-ZnScIV3ag9A4wPX/ZayxL/jZH+euYb6FcUinPcgiQW0+UBtEv0O6Q3lGd3cqJ+GHH+rksEv3Pj99oxJ3u3VIKA==
+  dependencies:
+    loader-utils "^2.0.0"
+    schema-utils "^3.0.0"
 
 rc@1.2.8:
   version "1.2.8"
