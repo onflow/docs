@@ -1,7 +1,23 @@
 import useSWR from 'swr';
+import { getProfile } from '../utils/gold-star';
 
-export function useProfile() {
-  const foo = useSWR('profile', () => {
-    return fetch('/api/profile').then((res) => res.json());
-  });
+const KEY = (address: string) => ['profile', address];
+
+/**
+ * Hook to get the GoldStar profile for the current user
+ * @param address The address of the user
+ */
+export function useProfile(address: string) {
+  const {
+    data: profile,
+    error,
+    mutate,
+  } = useSWR(KEY(address), ([, address]) => getProfile(address));
+
+  return {
+    profile,
+    isLoading: !profile && !error,
+    error,
+    mutate,
+  };
 }

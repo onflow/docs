@@ -12,7 +12,9 @@ export interface DeployedContract {
 
 export interface Profile {
   handle: string;
+  referralSource?: string;
   socials: string[];
+  deployedContracts: DeployedContract[];
   completedChallenges: Challenge[];
 }
 
@@ -21,7 +23,6 @@ export interface ProfileResponse {
   socials: string[];
   completedChallenges: ChallengeResponse[];
 }
-
 export interface ChallengeResponse {
   id: string;
   name: string;
@@ -31,4 +32,8 @@ export interface ChallengeResponse {
 export interface Challenge {
   name: string;
   description: string;
+}
+
+export enum SocialType {
+  GITHUB = 'github',
 }
