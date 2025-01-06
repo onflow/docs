@@ -15,6 +15,8 @@ const flowSources = [
   { name: 'Email', description: 'I learned about it through an email.' },
   { name: 'Flow.com', description: 'I found it on the Flow website.' },
   { name: 'Search', description: 'I searched for it online.' },
+  { name: 'Existing Builder', description: 'I was already building on Flow.' },
+  { name: 'Other', description: 'Another way not listed above.' },
 ];
 
 const ProfileModal: React.FC<ProfileModalProps> = ({ isOpen, onClose }) => {
