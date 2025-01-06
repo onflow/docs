@@ -41,7 +41,6 @@ const ProfileModal: React.FC<ProfileModalProps> = ({ isOpen, onClose }) => {
   });
   const [loaded, setLoaded] = useState(false);
   const [isSaving, setIsSaving] = useState(false);
-  const [selectedSource, setSelectedSource] = useState(flowSources[0].name);
   const [tags, setTags] = useState<string[]>([]);
   const [tagInput, setTagInput] = useState('');
 
