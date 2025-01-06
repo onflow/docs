@@ -90,9 +90,22 @@ export const setProfile = async (profile: ProfileSettings) => {
     args: (arg, t) => [
       arg(profile.handle, t.String),
       arg(profile.referralSource, t.Optional(t.String)),
-      arg(profile.socials, t.Dictionary(t.String, t.String)),
       arg(
-        profile.deployedContracts,
+        profile.socials
+          ? Object.entries(profile.socials).map(([key, value]) => ({
+              key,
+              value,
+            }))
+          : [],
+        t.Dictionary(t.Address, t.String),
+      ),
+      arg(
+        profile.deployedContracts
+          ? Object.entries(profile.deployedContracts).map(([key, value]) => ({
+              key,
+              value,
+            }))
+          : [],
         t.Dictionary(t.Address, t.Array(t.String)),
       ),
     ],

@@ -7,7 +7,7 @@ import { Button } from '@site/src/ui/design-system/src/lib/Components/Button';
 import { ProfileSettings, SocialType } from '../types/gold-star';
 import { useProfile } from '../hooks/use-profile';
 import { useCurrentUser } from '../hooks/use-current-user';
-import { createProfile } from '../utils/gold-star';
+import { createProfile, setProfile } from '../utils/gold-star';
 import _ from 'lodash';
 
 interface ProfileModalProps {
@@ -48,7 +48,11 @@ const ProfileModal: React.FC<ProfileModalProps> = ({ isOpen, onClose }) => {
   }, [profile, settings, loaded, isLoading, error]);
 
   async function handleSave() {
-    if (profile && settings) {
+    if (!settings) return;
+
+    if (profile) {
+      await setProfile(settings);
+    } else {
       await createProfile(settings);
     }
   }
@@ -111,7 +115,7 @@ const ProfileModal: React.FC<ProfileModalProps> = ({ isOpen, onClose }) => {
             size="sm"
             className="w-full max-w-md"
             onClick={handleSave}
-            disabled={!hasChanges()}
+            disabled={!hasChanges() || !settings}
           >
             Save
           </Button>
