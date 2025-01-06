@@ -3,7 +3,7 @@ import "GoldStar"
 transaction(
     handle: String,
     referralSource: String?,
-    deployedContracts: {Address: {String: Bool}},
+    deployedContracts: {Address: [String]},
     socials: {String: String}
 ) {
     prepare(signer: auth(SaveValue, IssueStorageCapabilityController, PublishCapability) &Account) {
@@ -16,7 +16,7 @@ transaction(
 
             for addr in deployedContracts.keys {
                 if let addrContracts = deployedContracts[addr] {
-                    for name in addrContracts.keys {
+                    for name in addrContracts {
                         profile.deployedContracts.add(address: addr, name: name)
                     }
                 }

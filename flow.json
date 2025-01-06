@@ -1,25 +1,25 @@
 {
   "contracts": {
-    "GoldStar": {
-      "source": "./src/cadence/contracts/GoldStar.cdc",
-      "aliases": {
-        "testing": "0000000000000007"
-      }
-    },
-    "NoopChallenge": {
-      "source": "./src/cadence/contracts/NoopChallenge.cdc",
-      "aliases": {
-        "testing": "0000000000000007"
-      }
-    },
     "DeployedContractChallenge": {
       "source": "./src/cadence/contracts/DeployedContractChallenge.cdc",
       "aliases": {
         "testing": "0000000000000007"
       }
     },
+    "GoldStar": {
+      "source": "./src/cadence/contracts/GoldStar.cdc",
+      "aliases": {
+        "testing": "0000000000000007"
+      }
+    },
     "ManualChallenge": {
       "source": "./src/cadence/contracts/ManualChallenge.cdc",
+      "aliases": {
+        "testing": "0000000000000007"
+      }
+    },
+    "NoopChallenge": {
+      "source": "./src/cadence/contracts/NoopChallenge.cdc",
       "aliases": {
         "testing": "0000000000000007"
       }
@@ -103,6 +103,18 @@
         "type": "file",
         "location": "emulator-account.pkey"
       }
+    },
+    "goldstar": {
+      "address": "09d64b9a1d5e8ca4",
+      "key": {
+        "type": "file",
+        "location": "goldstar.pkey"
+      }
+    }
+  },
+  "deployments": {
+    "testnet": {
+      "goldstar": ["GoldStar"]
     }
   }
 }

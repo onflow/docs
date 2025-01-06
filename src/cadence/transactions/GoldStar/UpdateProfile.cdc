@@ -4,7 +4,7 @@ import "GoldStar"
 transaction(
     handle: String,
     referralSource: String?,
-    deployedContracts: {Address: {String: Bool}},
+    deployedContracts: {Address: [String]},
     socials: {String: String}
 ) {
     let profile: auth(GoldStar.UpdateSocials, GoldStar.UpdateDeployedContracts, GoldStar.UpdateReferralSource) &GoldStar.Profile
@@ -29,7 +29,7 @@ transaction(
         
         for addr in deployedContracts.keys {
             if let addrContracts = deployedContracts[addr] {
-                for name in addrContracts.keys {
+                for name in addrContracts {
                     self.profile.deployedContracts.add(address: addr, name: name)
                 }
             }
@@ -47,7 +47,6 @@ transaction(
 
     post {
         *self.profile.socials.socials == socials: "Socials not updated";
-        *self.profile.deployedContracts.contracts == deployedContracts: "Deployed contracts not updated";
         self.profile.referralSource == referralSource: "Referral source not updated"
     }
 }
