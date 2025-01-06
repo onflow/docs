@@ -2,9 +2,7 @@ import React from 'react';
 import Modal from '@site/src/ui/design-system/src/lib/Components/Modal';
 import Checklist from '@site/src/components/ProgressChecklist';
 import { Button } from '@site/src/ui/design-system/src/lib/Components/Button';
-import { useProfile } from '../hooks/use-profile';
-import { useCurrentUser } from '../hooks/use-current-user';
-import { SocialType } from '../types/gold-star';
+import { useProgress } from '../hooks/use-progress';
 
 interface ProgressModalProps {
   isOpen: boolean;
@@ -17,31 +15,7 @@ const ProgressModal: React.FC<ProgressModalProps> = ({
   onClose,
   onOpenProfileModal,
 }) => {
-  const user = useCurrentUser();
-  const { profile } = useProfile(user.user.addr);
-
-  const profileItems = [
-    {
-      label: 'Create handle',
-      completed: profile && !!profile.handle,
-    },
-    {
-      label: 'Add Github Profile',
-      completed: profile && !!profile.socials[SocialType.GITHUB],
-    },
-    {
-      label: 'Add how you found Flow',
-      completed: profile && !!profile.referralSource,
-    },
-    {
-      label: 'Add contract addresses',
-      completed: profile && Object.keys(profile.deployedContracts).length > 0,
-    },
-  ] as { label: string; completed: boolean }[];
-
-  const challengeItems = [
-    { label: 'Complete first challenge', completed: true },
-  ];
+  const { profileItems, challengeItems } = useProgress();
 
   const onChallengeAction = () => {
     console.log('TODO: Challenge action');
