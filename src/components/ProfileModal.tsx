@@ -101,7 +101,7 @@ const ProfileModal: React.FC<ProfileModalProps> = ({ isOpen, onClose }) => {
   }
 
   return (
-    <Modal isOpen={isOpen} onClose={onClose} title="Profile">
+    <Modal isOpen={isOpen} onClose={onClose} scrollable={true} title="Profile">
       <div className="space-y-6">
         <div className="space-y-4">
           <Field label="Username" description="What should we call you?">
