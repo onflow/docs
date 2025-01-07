@@ -4,9 +4,9 @@ import { Button } from '@site/src/ui/design-system/src/lib/Components/Button';
 import { useIsMobile } from '@site/src/hooks/use-is-mobile';
 import Dropdown from '@site/src/ui/design-system/src/lib/Components/Dropdown';
 
-const shortenAddress = (address: string, isMobile: boolean) => {
+const shortenAddress = (address: string) => {
   if (!address) return '';
-  return isMobile ? `${address.slice(0, 4)}...${address.slice(-3)}` : address;
+  return `${address.slice(0, 8)}...${address.slice(-3)}`;
 };
 
 const ConnectButton: React.FC = () => {
@@ -26,9 +26,13 @@ const ConnectButton: React.FC = () => {
   ];
 
   const fullAddress = user.addr ?? 'Unknown';
-  const displayAddress = shortenAddress(fullAddress, isMobile);
+  const displayAddress = shortenAddress(fullAddress);
 
-  return <Dropdown buttonLabel={displayAddress} items={dropdownItems} />;
+  return (
+    <div className="hide-connect-on-mobile">
+      <Dropdown buttonLabel={displayAddress} items={dropdownItems} />
+    </div>
+  );
 };
 
 export default ConnectButton;

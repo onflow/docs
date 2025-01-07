@@ -121,3 +121,10 @@
   display: block;
   margin: 0 auto;
 }
+
+/* Only hide in in nav (not main menu on mobile) */
+@media (max-width: 960px) {
+  .navbar__items--right .hide-connect-on-mobile {
+    display: none !important;
+  }
+}
