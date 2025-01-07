@@ -56,7 +56,7 @@ const ConnectButton: React.FC = () => {
   const displayAddress = shortenAddress(fullAddress, isMobile);
 
   return (
-    <>
+    <div className="hide-connect-on-mobile">
       <Dropdown buttonLabel={displayAddress} items={dropdownItems} />
       <ProgressModal
         isOpen={isProgressModalOpen}
@@ -70,7 +70,7 @@ const ConnectButton: React.FC = () => {
         isOpen={isProfileModalOpen}
         onClose={handleCloseProfileModal}
       />
-    </>
+    </div>
   );
 };
 
