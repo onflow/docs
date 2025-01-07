@@ -25,11 +25,27 @@ export function configureFCL(): void {
   });
 }
 
-export function getContractAddress(contractName: string): string | null {
-  return fcl.sansPrefix(
-    flowJSON.deployments[flowNetwork][contractName] ||
-      flowJSON.contracts[contractName]?.aliases[flowNetwork],
-  );
+/**
+ * Get the contract address for a given contract name from the flow.json file
+ * @param contractName
+ * @returns Contract address
+ */
+export function getContractAddress(contractName: string): string {
+  const deploymentAccount = Object.entries(
+    flowJSON.deployments[flowNetwork],
+  ).find(([_, c]) => (c as string[]).includes(contractName))?.[0];
+
+  if (deploymentAccount) {
+    return flowJSON.accounts[deploymentAccount].address;
+  }
+
+  const externalAddress =
+    flowJSON.contracts[contractName]?.aliases[flowNetwork];
+  if (externalAddress) {
+    return externalAddress;
+  }
+
+  throw new Error(`Contract address not found for ${contractName}`);
 }
 
 configureFCL();
