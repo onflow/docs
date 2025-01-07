@@ -1,20 +1,18 @@
 import React, { useState } from 'react';
 import { useCurrentUser } from '@site/src/hooks/use-current-user';
 import { Button } from '@site/src/ui/design-system/src/lib/Components/Button';
-import { useIsMobile } from '@site/src/hooks/use-is-mobile';
 import Dropdown from '@site/src/ui/design-system/src/lib/Components/Dropdown';
 import ProgressModal from '@site/src/components/ProgressModal';
 import ProfileModal from '@site/src/components/ProfileModal';
 import { useProgress } from '../hooks/use-progress';
 
-const shortenAddress = (address: string, isMobile: boolean) => {
+const shortenAddress = (address: string) => {
   if (!address) return '';
-  return isMobile ? `${address.slice(0, 4)}...${address.slice(-3)}` : address;
+  return `${address.slice(0, 8)}...${address.slice(-3)}`;
 };
 
 const ConnectButton: React.FC = () => {
   const { user, logIn, logOut } = useCurrentUser();
-  const isMobile = useIsMobile();
   const [isProgressModalOpen, setIsProgressModalOpen] = useState(false);
   const [isProfileModalOpen, setIsProfileModalOpen] = useState(false);
   const { getProgress } = useProgress();
@@ -53,7 +51,7 @@ const ConnectButton: React.FC = () => {
   ];
 
   const fullAddress = user.addr ?? 'Unknown';
-  const displayAddress = shortenAddress(fullAddress, isMobile);
+  const displayAddress = shortenAddress(fullAddress);
 
   return (
     <div className="hide-connect-on-mobile">
