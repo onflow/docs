@@ -5,6 +5,7 @@ import { useIsMobile } from '@site/src/hooks/use-is-mobile';
 import Dropdown from '@site/src/ui/design-system/src/lib/Components/Dropdown';
 import ProgressModal from '@site/src/components/ProgressModal';
 import ProfileModal from '@site/src/components/ProfileModal';
+import { useProgress } from '../hooks/use-progress';
 
 const shortenAddress = (address: string, isMobile: boolean) => {
   if (!address) return '';
@@ -16,6 +17,7 @@ const ConnectButton: React.FC = () => {
   const isMobile = useIsMobile();
   const [isProgressModalOpen, setIsProgressModalOpen] = useState(false);
   const [isProfileModalOpen, setIsProfileModalOpen] = useState(false);
+  const { getProgress } = useProgress();
 
   const handleOpenProgress = () => {
     setIsProgressModalOpen(true);
@@ -42,7 +44,10 @@ const ConnectButton: React.FC = () => {
   }
 
   const dropdownItems = [
-    { label: 'Progress', onClick: handleOpenProgress },
+    {
+      label: `Progress (${Math.floor(getProgress() * 100)}%)`,
+      onClick: handleOpenProgress,
+    },
     { label: 'Profile', onClick: handleOpenProfileModal },
     { label: 'Disconnect', onClick: logOut },
   ];
