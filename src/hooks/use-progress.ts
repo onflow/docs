@@ -1,4 +1,6 @@
 import { SocialType } from '../types/gold-star';
+import { ChallengeContractName } from '../utils/constants';
+import { getChallengeIdentifier } from '../utils/flow';
 import { useCurrentUser } from './use-current-user';
 import { useProfile } from './use-profile';
 
@@ -30,10 +32,16 @@ export function useProgress() {
     },
   ] as ProgressItem[];
 
+  console.log(getChallengeIdentifier(ChallengeContractName.NOOP_CHALLENGE));
+
   const challengeItems = [
     {
       label: 'Complete first challenge',
-      completed: false,
+      completed:
+        profile &&
+        profile.submissions?.[
+          getChallengeIdentifier(ChallengeContractName.NOOP_CHALLENGE)
+        ]?.completed,
     },
   ] as ProgressItem[];
 

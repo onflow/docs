@@ -114,7 +114,7 @@
   },
   "deployments": {
     "testnet": {
-      "goldstar": ["GoldStar"]
+      "goldstar": ["GoldStar", "NoopChallenge"]
     }
   }
 }

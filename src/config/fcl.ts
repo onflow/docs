@@ -2,7 +2,7 @@ import * as fcl from '@onflow/fcl';
 import config from '@generated/docusaurus.config';
 import flowJSON from '../../flow.json';
 
-const flowNetwork = config.customFields?.flowNetwork;
+const flowNetwork = (config.customFields?.flowNetwork as string) || 'testnet';
 
 console.log('Dapp running on network:', flowNetwork);
 
@@ -23,6 +23,29 @@ export function configureFCL(): void {
   fcl.config.load({
     flowJSON,
   });
+}
+
+/**
+ * Get the contract address for a given contract name from the flow.json file
+ * @param contractName
+ * @returns Contract address
+ */
+export function getContractAddress(contractName: string): string {
+  const deploymentAccount = Object.entries(
+    flowJSON.deployments[flowNetwork],
+  ).find(([_, c]) => (c as string[]).includes(contractName))?.[0];
+
+  if (deploymentAccount) {
+    return flowJSON.accounts[deploymentAccount].address;
+  }
+
+  const externalAddress =
+    flowJSON.contracts[contractName]?.aliases[flowNetwork];
+  if (externalAddress) {
+    return externalAddress;
+  }
+
+  throw new Error(`Contract address not found for ${contractName}`);
 }
 
 configureFCL();
