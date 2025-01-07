@@ -20,17 +20,22 @@ export interface ProfileResponse {
   referralSource?: string;
 }
 
-export interface ChallengeResponse {
-  id: string;
+export type ChallengesResponse = {
+  [typeIdentifier: string]: {
+    name: string;
+    description: string;
+  };
+};
+
+export type Challenges = {
+  [typeIdentifier: string]: Challenge;
+};
+
+export type Challenge = {
   name: string;
   description: string;
-}
+};
 
 export enum SocialType {
   GITHUB = 'github',
-}
-
-export interface Challenge {
-  contractName: string;
-  resourceIdentifier: string;
 }

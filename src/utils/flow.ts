@@ -1,6 +1,5 @@
 import * as fcl from '@onflow/fcl';
 import { getContractAddress } from '../config/fcl';
-import { Challenge } from '../types/gold-star';
 
 export function typeIdentifier(
   address: string,
@@ -12,7 +11,10 @@ export function typeIdentifier(
   }`;
 }
 
-export function getChallengeIdentifier(challenge: Challenge): string {
+export function getChallengeIdentifier(challenge: {
+  contractName: string;
+  resourceIdentifier: string;
+}): string {
   return typeIdentifier(
     getContractAddress(challenge.contractName),
     challenge.contractName,
