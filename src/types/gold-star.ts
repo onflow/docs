@@ -29,3 +29,8 @@ export interface ChallengeResponse {
 export enum SocialType {
   GITHUB = 'github',
 }
+
+export interface Challenge {
+  contractName: string;
+  resourceIdentifier: string;
+}

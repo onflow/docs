@@ -5,12 +5,12 @@ access(all) struct Profile {
     access(all) var referralSource: String?
     access(all) var deployedContracts: {Address: [String]}
     access(all) var socials: {String: String}
-    access(all) var submissions: {Type: Submission}
+    access(all) var submissions: {String: Submission}
 
     init(ref: &GoldStar.Profile) {
-        let submissions: {Type: Submission} = {}
+        let submissions: {String: Submission} = {}
         for challengeType in ref.submissions.submissions.keys {
-            submissions[challengeType] = Submission(ref: ref.submissions.submissions[challengeType]!)
+            submissions[challengeType.identifier] = Submission(ref: ref.submissions.submissions[challengeType]!)
         }
 
         let deployedContracts: {Address: [String]} = {}
