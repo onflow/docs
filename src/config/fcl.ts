@@ -2,7 +2,7 @@ import * as fcl from '@onflow/fcl';
 import config from '@generated/docusaurus.config';
 import flowJSON from '../../flow.json';
 
-const flowNetwork = config.customFields?.flowNetwork;
+const flowNetwork = (config.customFields?.flowNetwork as string) || 'testnet';
 
 console.log('Dapp running on network:', flowNetwork);
 
@@ -23,6 +23,13 @@ export function configureFCL(): void {
   fcl.config.load({
     flowJSON,
   });
+}
+
+export function getContractAddress(contractName: string): string | null {
+  return fcl.sansPrefix(
+    flowJSON.deployments[flowNetwork][contractName] ||
+      flowJSON.contracts[contractName]?.aliases[flowNetwork],
+  );
 }
 
 configureFCL();
