@@ -182,25 +182,29 @@ const ProfileModal: React.FC<ProfileModalProps> = ({ isOpen, onClose }) => {
           />
         </div>
 
-        <div>
-          <h3 className="text-lg font-bold mb-3">My Challenges</h3>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 gap-6">
-            {completedChallenges.map((challenge, index) => (
-              <div
-                key={index}
-                className="flex flex-col items-center bg-gray-100 p-6 rounded-lg shadow-md text-center w-full"
-              >
-                <FontAwesomeIcon
-                  icon={faTrophy}
-                  size="3x"
-                  className="text-yellow-500 mb-4"
-                />
-                <p className="text-md font-bold mb-2">{challenge.name}</p>
-                <p className="text-sm text-gray-600">{challenge.description}</p>
-              </div>
-            ))}
+        {completedChallenges.length > 0 && (
+          <div>
+            <h3 className="text-lg font-bold mb-3">My Challenges</h3>
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 gap-6">
+              {completedChallenges.map((challenge, index) => (
+                <div
+                  key={index}
+                  className="flex flex-col items-center bg-gray-100 p-6 rounded-lg shadow-md text-center w-full"
+                >
+                  <FontAwesomeIcon
+                    icon={faTrophy}
+                    size="3x"
+                    className="text-yellow-500 mb-4"
+                  />
+                  <p className="text-md font-bold mb-2">{challenge.name}</p>
+                  <p className="text-sm text-gray-600">
+                    {challenge.description}
+                  </p>
+                </div>
+              ))}
+            </div>
           </div>
-        </div>
+        )}
 
         <div className="flex flex-col space-y-2">
           <Button
