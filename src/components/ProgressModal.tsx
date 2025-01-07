@@ -29,6 +29,11 @@ const ProgressModal: React.FC<ProgressModalProps> = ({
     setChallengeModalOpen(false);
   };
 
+  const completeChallenge = () => {
+    console.log('Challenge Completed!');
+    closeChallengeModal();
+  };
+
   return (
     <>
       <Modal isOpen={isOpen} onClose={onClose} title="Progress">
@@ -71,15 +76,17 @@ const ProgressModal: React.FC<ProgressModalProps> = ({
           title='Challenge Details'
         >
           <div className="space-y-4 text-center">
-            <FontAwesomeIcon icon={faBrain} size="3x" className="text-blue-500" />
+            <FontAwesomeIcon icon={faBrain} size="5x" className="text-green-500" />
             <p className="text-lg text-gray-700 mt-4">
               By completing this challenge, you are declaring your intent to learn Flow and explore its capabilities.
             </p>
-            <div className="flex justify-end mt-6">
-              <Button size="sm" onClick={closeChallengeModal}>
-                Close
-              </Button>
-            </div>
+            <Button
+              size="lg"
+              className="w-full py-4 text-lg font-semibold mt-6"
+              onClick={completeChallenge}
+            >
+              Complete Challenge
+            </Button>
           </div>
         </Modal>
       )}
