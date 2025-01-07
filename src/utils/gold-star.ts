@@ -6,7 +6,8 @@ import Evaluate from '../cadence/transactions/NoopChallenge/Evaluate.cdc';
 
 import * as fcl from '@onflow/fcl';
 import {
-  ChallengeResponse,
+  Challenges,
+  ChallengesResponse,
   Profile,
   ProfileResponse,
   ProfileSettings,
@@ -16,15 +17,12 @@ import {
  * Get the list of challenges
  * @returns The list of challenges
  */
-export const getChallenges = async () => {
+export const getChallenges = async (): Promise<Challenges> => {
   const resp = (await fcl.query({
     cadence: GetChallenges,
-  })) as ChallengeResponse[];
+  })) as ChallengesResponse;
 
-  return resp.map((c) => ({
-    name: c.name,
-    description: c.description,
-  }));
+  return resp;
 };
 
 /**

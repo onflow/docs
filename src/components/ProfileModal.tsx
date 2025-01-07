@@ -4,7 +4,7 @@ import Field from '@site/src/ui/design-system/src/lib/Components/Field';
 import Modal from '@site/src/ui/design-system/src/lib/Components/Modal';
 import RadioGroup from '@site/src/ui/design-system/src/lib/Components/RadioGroup';
 import { Button } from '@site/src/ui/design-system/src/lib/Components/Button';
-import { ProfileSettings, SocialType } from '../types/gold-star';
+import { Challenge, ProfileSettings, SocialType } from '../types/gold-star';
 import { useProfile } from '../hooks/use-profile';
 import { useCurrentUser } from '../hooks/use-current-user';
 import { createProfile, setProfile } from '../utils/gold-star';
@@ -12,6 +12,7 @@ import { isEqual } from 'lodash';
 import RemovableTag from '@site/src/ui/design-system/src/lib/Components/RemovableTag';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTrophy } from '@fortawesome/free-solid-svg-icons';
+import { useChallenges } from '../hooks/use-challenges';
 
 interface ProfileModalProps {
   isOpen: boolean;
@@ -27,11 +28,8 @@ const flowSources = [
   { name: 'Other', description: 'Another way not listed above.' },
 ];
 
-const challenges = [
-  { name: 'Learn Flow', description: 'Committed to learning and exploring Flow.' },
-];
-
 const ProfileModal: React.FC<ProfileModalProps> = ({ isOpen, onClose }) => {
+  const { challenges } = useChallenges();
   const { user } = useCurrentUser();
   const {
     profile,
@@ -49,6 +47,17 @@ const ProfileModal: React.FC<ProfileModalProps> = ({ isOpen, onClose }) => {
   const [isSaving, setIsSaving] = useState(false);
   const [tags, setTags] = useState<string[]>([]);
   const [tagInput, setTagInput] = useState('');
+
+  const completedChallenges = Object.keys(profile?.submissions ?? {}).reduce(
+    (acc, key) => {
+      const challengeInfo = challenges?.[key];
+      if (profile?.submissions[key]?.completed && challengeInfo) {
+        acc.push(challengeInfo);
+      }
+      return acc;
+    },
+    [] as Challenge[],
+  );
 
   useEffect(() => {
     if (profile && !loaded && !isLoading && !error) {
@@ -176,7 +185,7 @@ const ProfileModal: React.FC<ProfileModalProps> = ({ isOpen, onClose }) => {
         <div>
           <h3 className="text-lg font-bold mb-3">My Challenges</h3>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 gap-6">
-            {challenges.map((challenge, index) => (
+            {completedChallenges.map((challenge, index) => (
               <div
                 key={index}
                 className="flex flex-col items-center bg-gray-100 p-6 rounded-lg shadow-md text-center w-full"
