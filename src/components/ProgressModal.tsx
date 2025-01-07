@@ -5,6 +5,7 @@ import { Button } from '@site/src/ui/design-system/src/lib/Components/Button';
 import { useProgress } from '../hooks/use-progress';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faBrain } from '@fortawesome/free-solid-svg-icons';
+import { submitNoopChallenge } from '../utils/gold-star';
 
 interface ProgressModalProps {
   isOpen: boolean;
@@ -29,8 +30,8 @@ const ProgressModal: React.FC<ProgressModalProps> = ({
     setChallengeModalOpen(false);
   };
 
-  const completeChallenge = () => {
-    console.log('Challenge Completed!');
+  const completeChallenge = async () => {
+    await submitNoopChallenge();
     closeChallengeModal();
   };
 
@@ -73,12 +74,17 @@ const ProgressModal: React.FC<ProgressModalProps> = ({
         <Modal
           isOpen={challengeModalOpen}
           onClose={closeChallengeModal}
-          title='Challenge Details'
+          title="Challenge Details"
         >
           <div className="space-y-4 text-center">
-            <FontAwesomeIcon icon={faBrain} size="5x" className="text-green-500" />
+            <FontAwesomeIcon
+              icon={faBrain}
+              size="5x"
+              className="text-green-500"
+            />
             <p className="text-lg text-gray-700 mt-4">
-              By completing this challenge, you are declaring your intent to learn Flow and explore its capabilities.
+              By completing this challenge, you are declaring your intent to
+              learn Flow and explore its capabilities.
             </p>
             <Button
               size="lg"
