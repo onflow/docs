@@ -8,9 +8,17 @@ interface ModalProps {
   title?: string;
   children: React.ReactNode;
   className?: string;
+  scrollable?: boolean;
 }
 
-const Modal: React.FC<ModalProps> = ({ isOpen, onClose, title, children, className }) => {
+const Modal: React.FC<ModalProps> = ({
+     isOpen,
+     onClose,
+     title,
+     children,
+     className,
+     scrollable = true, // default is scrollable
+  }) => {
   return (
     <Transition appear show={isOpen} as={Fragment}>
       <Dialog as="div" className="relative z-50" onClose={onClose}>
@@ -40,9 +48,16 @@ const Modal: React.FC<ModalProps> = ({ isOpen, onClose, title, children, classNa
           >
             <Dialog.Panel
               className={clsx(
-                "w-full max-w-md transform rounded-md border bg-gray-100 text-black shadow-2xl transition-all dark:bg-gray-800 dark:text-gray-100 dark:border-gray-700",
+                "relative w-full max-w-md transform rounded-md border bg-gray-100 text-black shadow-2xl transition-all dark:bg-gray-800 dark:text-gray-100 dark:border-gray-700",
+                scrollable && "max-h-[80vh] overflow-y-auto",
                 className
               )}
+              style={{
+                top: '50%',
+                left: '50%',
+                transform: 'translate(-50%, -50%)',
+                position: 'absolute',
+              }}
             >
               {/* Header */}
               {title && (
@@ -54,7 +69,9 @@ const Modal: React.FC<ModalProps> = ({ isOpen, onClose, title, children, classNa
               )}
 
               {/* Content */}
-              <div className="px-4 py-5">{children}</div>
+              <div className="px-4 py-5">
+                {children}
+              </div>
             </Dialog.Panel>
           </Transition.Child>
         </div>
