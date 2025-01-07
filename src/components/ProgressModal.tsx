@@ -3,6 +3,8 @@ import Modal from '@site/src/ui/design-system/src/lib/Components/Modal';
 import Checklist from '@site/src/components/ProgressChecklist';
 import { Button } from '@site/src/ui/design-system/src/lib/Components/Button';
 import { useProgress } from '../hooks/use-progress';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faBrain } from '@fortawesome/free-solid-svg-icons';
 
 interface ProgressModalProps {
   isOpen: boolean;
@@ -68,9 +70,12 @@ const ProgressModal: React.FC<ProgressModalProps> = ({
           onClose={closeChallengeModal}
           title='Challenge Details'
         >
-          <div className="space-y-4">
-            <div>Details here.</div>
-            <div className="flex justify-end">
+          <div className="space-y-4 text-center">
+            <FontAwesomeIcon icon={faBrain} size="3x" className="text-blue-500" />
+            <p className="text-lg text-gray-700 mt-4">
+              By completing this challenge, you are declaring your intent to learn Flow and explore its capabilities.
+            </p>
+            <div className="flex justify-end mt-6">
               <Button size="sm" onClick={closeChallengeModal}>
                 Close
               </Button>
