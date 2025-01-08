@@ -3387,7 +3387,7 @@
     isomorphic-ws "^5.0.0"
     ws "^8.18.0"
 
-"@onflow/typedefs@1.4.0":
+"@onflow/typedefs@1.4.0", "@onflow/typedefs@^1.4.0":
   version "1.4.0"
   resolved "https://registry.yarnpkg.com/@onflow/typedefs/-/typedefs-1.4.0.tgz#21963c4a334cb15f7759b90f25eee177d32885f6"
   integrity sha512-7b4C3F4Ztayx6XdQz/7YoHMzZ6kzy37dLxdVCV/PAsAunq9Jfu32HQaf8a0NCk0L0aM7FS2zT1Om4k7b5KP4Xg==
