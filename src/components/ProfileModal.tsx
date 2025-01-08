@@ -86,7 +86,7 @@ const ProfileModal: React.FC<ProfileModalProps> = ({ isOpen, onClose }) => {
   async function handleSave() {
     if (!settings) return;
 
-    setTxStatus('Awaiting approval...');
+    setTxStatus('Pending Approval...');
     try {
       let txId: string | null = null;
       if (profile) {
@@ -95,7 +95,7 @@ const ProfileModal: React.FC<ProfileModalProps> = ({ isOpen, onClose }) => {
         txId = await createProfile(settings);
       }
 
-      setTxStatus('Saving profile...');
+      setTxStatus('Saving Profile...');
 
       fcl
         .tx(txId)
@@ -105,6 +105,17 @@ const ProfileModal: React.FC<ProfileModalProps> = ({ isOpen, onClose }) => {
         });
 
       await fcl.tx(txId).onceExecuted();
+
+      if (profile) {
+        mutateProfile({
+          ...profile,
+          handle: settings.handle || profile.handle,
+          socials: settings.socials || profile.socials,
+          referralSource: settings.referralSource || profile.referralSource,
+          deployedContracts:
+            settings.deployedContracts || profile.deployedContracts,
+        });
+      }
     } catch (e) {
       console.error(e);
     } finally {

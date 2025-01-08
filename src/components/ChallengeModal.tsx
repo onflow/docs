@@ -7,6 +7,8 @@ import { submitNoopChallenge } from '../utils/gold-star';
 import * as fcl from '@onflow/fcl';
 import { useProfile } from '../hooks/use-profile';
 import { useCurrentUser } from '../hooks/use-current-user';
+import { getChallengeIdentifier } from '../utils/flow';
+import { GOLD_STAR_CHALLENGES } from '../utils/constants';
 
 const ChallengeModal: React.FC<{
   isOpen: boolean;
@@ -14,14 +16,14 @@ const ChallengeModal: React.FC<{
 }> = ({ isOpen, onClose }) => {
   const [txStatus, setTxStatus] = useState<string | null>(null);
   const { user } = useCurrentUser();
-  const { mutate: mutateProfile } = useProfile(user.addr);
+  const { profile, mutate: mutateProfile } = useProfile(user.addr);
 
   const completeChallenge = async () => {
-    setTxStatus('Pending approval...');
+    setTxStatus('Pending Approval...');
     try {
       const txId = await submitNoopChallenge();
 
-      setTxStatus('Submitting challenge...');
+      setTxStatus('Submitting Challenge...');
 
       fcl
         .tx(txId)
@@ -31,6 +33,20 @@ const ChallengeModal: React.FC<{
         });
 
       await fcl.tx(txId).onceExecuted();
+
+      if (profile) {
+        mutateProfile(
+          {
+            ...profile,
+            submissions: {
+              [getChallengeIdentifier(GOLD_STAR_CHALLENGES.NOOP_CHALLENGE)]: {
+                completed: true,
+              },
+            },
+          },
+          false,
+        );
+      }
     } catch (error) {
       console.error('Failed to complete challenge', error);
     } finally {
