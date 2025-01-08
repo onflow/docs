@@ -13,6 +13,7 @@ import RemovableTag from '@site/src/ui/design-system/src/lib/Components/Removabl
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTrophy } from '@fortawesome/free-solid-svg-icons';
 import { useChallenges } from '../hooks/use-challenges';
+import * as fcl from '@onflow/fcl';
 
 interface ProfileModalProps {
   isOpen: boolean;
@@ -44,7 +45,7 @@ const ProfileModal: React.FC<ProfileModalProps> = ({ isOpen, onClose }) => {
     deployedContracts: {},
   });
   const [loaded, setLoaded] = useState(false);
-  const [isSaving, setIsSaving] = useState(false);
+  const [txStatus, setTxStatus] = useState<string | null>(null);
   const [tags, setTags] = useState<string[]>([]);
   const [tagInput, setTagInput] = useState('');
 
@@ -85,18 +86,30 @@ const ProfileModal: React.FC<ProfileModalProps> = ({ isOpen, onClose }) => {
   async function handleSave() {
     if (!settings) return;
 
-    setIsSaving(true);
+    setTxStatus('Awaiting approval...');
     try {
+      let txId: string | null = null;
       if (profile) {
-        await setProfile(settings);
+        txId = await setProfile(settings);
       } else {
-        await createProfile(settings);
+        txId = await createProfile(settings);
       }
+
+      setTxStatus('Saving profile...');
+
+      fcl
+        .tx(txId)
+        .onceSealed()
+        .then(() => {
+          mutateProfile();
+        });
+
+      await fcl.tx(txId).onceExecuted();
     } catch (e) {
       console.error(e);
     } finally {
-      setIsSaving(false);
-      mutateProfile();
+      setTxStatus(null);
+      onClose();
     }
   }
 
@@ -211,9 +224,9 @@ const ProfileModal: React.FC<ProfileModalProps> = ({ isOpen, onClose }) => {
             size="sm"
             className="w-full max-w-md"
             onClick={handleSave}
-            disabled={!hasChanges() || !settings || isSaving}
+            disabled={!hasChanges() || !settings || !!txStatus}
           >
-            Save
+            {txStatus ? txStatus : 'Save Profile'}
           </Button>
         </div>
       </div>

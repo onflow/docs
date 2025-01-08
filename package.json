@@ -63,6 +63,7 @@
   "devDependencies": {
     "@docusaurus/module-type-aliases": "^3.6.3",
     "@jest/globals": "^29.7.0",
+    "@onflow/typedefs": "^1.4.0",
     "@tsconfig/docusaurus": "^2.0.3",
     "@types/jest": "^29.5.14",
     "@types/lodash": "^4.17.14",
