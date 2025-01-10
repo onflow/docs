@@ -13,7 +13,11 @@ keywords: [keywords, describing, the main topics]
 
 After completing this guide, you'll be able to:
 
-* 3-5 appropriatelevel Bloom's taxonomy verb objectives
+* 3-5 appropriate level Bloom's taxonomy verb objectives.
+* BAD: Know how arrays work.
+* GOOD: Construct a function to filter an array of numbers and only return the even ones.
+* Do **not** try to wordsmith these.  If you need to start four in a row with _write_, do it.
+* Learning objectives have periods at the end.
 
 ## Prerequisites
 
@@ -21,13 +25,26 @@ After completing this guide, you'll be able to:
 
 This tutorial uses [Next.js].  You don't need to be an expert, but it's helpful to be comfortable with development using a current React framework.  You'll be on your own to select and use a package manager, manage Node versions, and other frontend environment tasks.  If you don't have your own preference, you can just follow along with us and use [Yarn].
 
-## Part 1
+## The Name of A Major Section in Sentence Case
 
-Text can go here
+Text can go here.
 
-##
+:::info[Action]
 
+Anything that is a direct instruction to complete tasks in the tutorial goes in one of these.
 
+:::
+
+```cadence
+//Code snippets will often follow Action boxes, but may be put anywhere appropriate.
+access(all) fun() foo: String {
+	return "bar";
+}
+```
+
+### The Name of A Minor Section in Sentence Case
+
+Generally, avoid going with smaller sub-sections than H3/###
 
 ## Conclusion
 
@@ -35,7 +52,7 @@ In this tutorial, you ...
 
 Now that you have completed the tutorial, you should be able to:
 
-* Copy/paste the Objectives from above here
+* Copy/paste the Objectives from above here.
 
 
 (OPTIONAL) Now that you've completed this tutorial, you're ready to...
