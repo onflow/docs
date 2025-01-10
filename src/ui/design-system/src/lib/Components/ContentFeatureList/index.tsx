@@ -61,7 +61,6 @@ const homepagePillData: Record<
     text: 'Flow AI Assistant',
     subText: 'Chat with devs',
     onClick: () => {
-      console.log('Flow AI Assistant button clicked!');
       const el = document.querySelector('ask-cookbook') as HTMLElement & {
         shadowRoot?: ShadowRoot;
       };
