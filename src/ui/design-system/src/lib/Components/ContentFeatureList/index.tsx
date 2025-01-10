@@ -43,7 +43,12 @@ const ContentFeatures: Record<string, ContentFeatureProps> = {
   },
 };
 
-const homepagePillData: Record<string, HomepagePillItemsProps> = {
+const homepagePillData: Record<
+  string,
+  HomepagePillItemsProps & {
+    onClick?: () => void;
+  }
+> = {
   'dev-office-hours': {
     link: 'https://calendar.google.com/calendar/embed?src=c_47978f5cd9da636cadc6b8473102b5092c1a865dd010558393ecb7f9fd0c9ad0%40group.calendar.google.com',
     icon: 'dev-office-hours',
@@ -51,10 +56,38 @@ const homepagePillData: Record<string, HomepagePillItemsProps> = {
     subText: 'Join weekly calls',
   },
   'flow-assistant': {
-    link: 'https://chatgpt.com/g/g-a1jOaEj1h-flow-assistant',
+    link: '#',
     icon: 'flow-assistant-gpt',
     text: 'Flow AI Assistant',
     subText: 'Chat with devs',
+    onClick: () => {
+      console.log('Flow AI Assistant button clicked!');
+      const el = document.querySelector('ask-cookbook') as HTMLElement & {
+        shadowRoot?: ShadowRoot;
+      };
+      if (!el) {
+        console.warn('ask-cookbook element not found');
+        return;
+      }
+
+      const shadow = el.shadowRoot;
+      if (!shadow) {
+        console.warn('ask-cookbook has no shadowRoot');
+        return;
+      }
+
+      const button = shadow.querySelector(
+        '#ask-cookbook-button',
+      ) as HTMLButtonElement;
+      if (!button) {
+        console.warn(
+          'Internal #ask-cookbook-button not found in the shadow root',
+        );
+        return;
+      }
+
+      button.click();
+    },
   },
   'developer-chat': {
     link: 'https://discord.gg/flow',
