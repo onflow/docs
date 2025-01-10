@@ -72,7 +72,6 @@ const ProfileModal: React.FC<ProfileModalProps> = ({ isOpen, onClose }) => {
 
   const validate = () => {
     const result = ProfileSettingsSchema.safeParse(settings);
-    console.log(result);
     if (!result.success) {
       setErrors(
         result.error.errors.reduce((acc, error) => {
@@ -81,7 +80,6 @@ const ProfileModal: React.FC<ProfileModalProps> = ({ isOpen, onClose }) => {
           return acc;
         }, {}),
       );
-      console.log(errors);
     } else {
       setErrors({});
     }
@@ -207,15 +205,19 @@ const ProfileModal: React.FC<ProfileModalProps> = ({ isOpen, onClose }) => {
               name="github_handle"
               placeholder="joedoecodes"
               value={settings?.socials?.[SocialType.GITHUB] || ''}
-              onChange={(e) =>
+              onChange={(e) => {
+                const socials: Record<string, string> = {
+                  ...settings.socials,
+                  [SocialType.GITHUB]: e.target.value,
+                };
+                if (!socials[SocialType.GITHUB]) {
+                  delete socials[SocialType.GITHUB];
+                }
                 setSettings({
                   ...settings,
-                  socials: {
-                    ...settings.socials,
-                    [SocialType.GITHUB]: e.target.value,
-                  },
-                })
-              }
+                  socials,
+                });
+              }}
               onBlur={() => setTouched({ ...touched, socials: true })}
             />
           </Field>
