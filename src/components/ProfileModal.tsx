@@ -31,7 +31,7 @@ const flowSources = [
 ];
 
 const ProfileSettingsSchema = z.object({
-  handle: z.string().nonempty(),
+  handle: z.string().nonempty('Username is required'),
   socials: z.record(z.string().nonempty()),
   referralSource: z.string().nonempty().optional(),
   deployedContracts: z.record(z.string().nonempty()),
