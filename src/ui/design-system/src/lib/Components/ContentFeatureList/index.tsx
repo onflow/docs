@@ -51,7 +51,7 @@ const homepagePillData: Record<string, HomepagePillItemsProps> = {
     subText: 'Join weekly calls',
   },
   'flow-assistant': {
-    link: '#',
+    link: 'https://chatgpt.com/g/g-a1jOaEj1h-flow-assistant',
     icon: 'flow-assistant-gpt',
     text: 'Flow AI Assistant',
     subText: 'Chat with devs',
