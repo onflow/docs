@@ -14,6 +14,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTrophy } from '@fortawesome/free-solid-svg-icons';
 import { useChallenges } from '../hooks/use-challenges';
 import * as fcl from '@onflow/fcl';
+import { z } from 'zod';
 
 interface ProfileModalProps {
   isOpen: boolean;
@@ -29,6 +30,13 @@ const flowSources = [
   { name: 'Other', description: 'Another way not listed above.' },
 ];
 
+const ProfileSettingsSchema = z.object({
+  handle: z.string().nonempty('Username is required'),
+  socials: z.record(z.string().nonempty()),
+  referralSource: z.string().nonempty().optional(),
+  deployedContracts: z.record(z.string().nonempty()),
+});
+
 const ProfileModal: React.FC<ProfileModalProps> = ({ isOpen, onClose }) => {
   const { challenges } = useChallenges();
   const { user } = useCurrentUser();
@@ -38,16 +46,44 @@ const ProfileModal: React.FC<ProfileModalProps> = ({ isOpen, onClose }) => {
     error,
     mutate: mutateProfile,
   } = useProfile(user.addr);
+  const [loaded, setLoaded] = useState(false);
+  const [txStatus, setTxStatus] = useState<string | null>(null);
+  const [tags, setTags] = useState<string[]>([]);
+  const [tagInput, setTagInput] = useState('');
+
   const [settings, setSettings] = useState<ProfileSettings>({
     handle: '',
     socials: {},
     referralSource: '',
     deployedContracts: {},
   });
-  const [loaded, setLoaded] = useState(false);
-  const [txStatus, setTxStatus] = useState<string | null>(null);
-  const [tags, setTags] = useState<string[]>([]);
-  const [tagInput, setTagInput] = useState('');
+  const [errors, setErrors] = useState<{
+    handle?: string;
+    socials?: string;
+    referralSource?: string;
+    deployedContracts?: string;
+  }>({});
+  const [touched, setTouched] = useState<{
+    handle?: boolean;
+    socials?: boolean;
+    referralSource?: boolean;
+    deployedContracts?: boolean;
+  }>({});
+
+  const validate = () => {
+    const result = ProfileSettingsSchema.safeParse(settings);
+    if (!result.success) {
+      setErrors(
+        result.error.errors.reduce((acc, error) => {
+          const field = error.path[0];
+          acc[field] = error.message;
+          return acc;
+        }, {}),
+      );
+    } else {
+      setErrors({});
+    }
+  };
 
   const completedChallenges = Object.keys(profile?.submissions ?? {}).reduce(
     (acc, key) => {
@@ -72,6 +108,10 @@ const ProfileModal: React.FC<ProfileModalProps> = ({ isOpen, onClose }) => {
     }
   }, [profile, settings, loaded, isLoading, error]);
 
+  useEffect(() => {
+    validate();
+  }, [settings]);
+
   const handleAddTag = () => {
     if (tagInput.trim() && !tags.includes(tagInput.trim())) {
       setTags([...tags, tagInput.trim()]);
@@ -85,6 +125,15 @@ const ProfileModal: React.FC<ProfileModalProps> = ({ isOpen, onClose }) => {
 
   async function handleSave() {
     if (!settings) return;
+
+    // Set touched for all fields & validate
+    setTouched({
+      handle: true,
+      socials: true,
+      referralSource: true,
+      deployedContracts: true,
+    });
+    validate();
 
     setTxStatus('Pending Approval...');
     try {
@@ -145,21 +194,36 @@ const ProfileModal: React.FC<ProfileModalProps> = ({ isOpen, onClose }) => {
               onChange={(e) =>
                 setSettings({ ...settings, handle: e.target.value })
               }
+              onBlur={() => setTouched({ ...touched, handle: true })}
             />
           </Field>
+          {errors.handle && touched.handle && (
+            <div className="text-red-500 text-sm">{errors.handle}</div>
+          )}
           <Field label="Github Handle" description="What's your Github handle?">
             <Input
-              name="profile_handle"
+              name="github_handle"
               placeholder="joedoecodes"
               value={settings?.socials?.[SocialType.GITHUB] || ''}
-              onChange={(e) =>
+              onChange={(e) => {
+                const socials: Record<string, string> = {
+                  ...settings.socials,
+                  [SocialType.GITHUB]: e.target.value,
+                };
+                if (!socials[SocialType.GITHUB]) {
+                  delete socials[SocialType.GITHUB];
+                }
                 setSettings({
                   ...settings,
-                  socials: { [SocialType.GITHUB]: e.target.value },
-                })
-              }
+                  socials,
+                });
+              }}
+              onBlur={() => setTouched({ ...touched, socials: true })}
             />
           </Field>
+          {errors.socials && touched.socials && (
+            <div className="text-red-500 text-sm">{errors.socials}</div>
+          )}
         </div>
 
         <Field
@@ -204,6 +268,9 @@ const ProfileModal: React.FC<ProfileModalProps> = ({ isOpen, onClose }) => {
                 ?.description || ''
             }
           />
+          {errors.referralSource && touched.referralSource && (
+            <div className="text-red-500 text-sm">{errors.referralSource}</div>
+          )}
         </div>
 
         {completedChallenges.length > 0 && (

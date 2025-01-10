@@ -57,22 +57,28 @@ export const createProfile = async (profile: ProfileSettings) => {
       arg(profile.handle, t.String),
       arg(profile.referralSource, t.Optional(t.String)),
       arg(
-        profile.socials
-          ? Object.entries(profile.socials).map(([key, value]) => ({
-              key,
-              value,
-            }))
-          : [],
-        t.Dictionary(t.Address, t.String),
-      ),
-      arg(
         profile.deployedContracts
           ? Object.entries(profile.deployedContracts).map(([key, value]) => ({
               key,
               value,
             }))
           : [],
-        t.Dictionary(t.Address, t.Array(t.String)),
+        t.Dictionary({
+          key: t.Address,
+          value: t.Array(t.String),
+        }),
+      ),
+      arg(
+        profile.socials
+          ? Object.entries(profile.socials).map(([key, value]) => ({
+              key,
+              value,
+            }))
+          : [],
+        fcl.t.Dictionary({
+          key: fcl.t.String,
+          value: fcl.t.String,
+        }),
       ),
     ],
   });
@@ -90,22 +96,28 @@ export const setProfile = async (profile: ProfileSettings) => {
       arg(profile.handle, t.String),
       arg(profile.referralSource, t.Optional(t.String)),
       arg(
-        profile.socials
-          ? Object.entries(profile.socials).map(([key, value]) => ({
-              key,
-              value,
-            }))
-          : [],
-        t.Dictionary(t.Address, t.String),
-      ),
-      arg(
         profile.deployedContracts
           ? Object.entries(profile.deployedContracts).map(([key, value]) => ({
               key,
               value,
             }))
           : [],
-        t.Dictionary(t.Address, t.Array(t.String)),
+        t.Dictionary({
+          key: t.Address,
+          value: t.Array(t.String),
+        }),
+      ),
+      arg(
+        profile.socials
+          ? Object.entries(profile.socials).map(([key, value]) => ({
+              key,
+              value,
+            }))
+          : [],
+        t.Dictionary({
+          key: t.String,
+          value: t.String,
+        }),
       ),
     ],
   });
