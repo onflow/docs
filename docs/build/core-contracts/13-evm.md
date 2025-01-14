@@ -12,9 +12,9 @@ some level.
 
 If you would like to interact with EVM directly from Cadence, you can use the `EVM` contract and it's constructs. Read
 more about the EVM contract and its role in Flow's EVM equivalence in [FLIP
-#223](https://github.com/onflow/flips/pull/225/files).
+#223](https://github.com/onflow/flips/blob/main/protocol/20231116-evm-support.md).
 
-Mainnet/Testnet Source: [`EVM.cdc`](https://github.com/onflow/flow-go/blob/master/fvm/evm/stdlib/abiOnlyContract.cdc)
+Mainnet/Testnet Source: [`EVM.cdc`](https://github.com/onflow/flow-go/blob/master/fvm/evm/stdlib/contract.cdc)
 
 | Network                   | Contract Address                                                           |
 | ------------------------- | -------------------------------------------------------------------------- |
