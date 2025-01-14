@@ -1,7 +1,7 @@
 ---
 title: Subscribe request message format
 sidebar_label: Subscribing to topic
-sidebar_position: 1
+sidebar_position: 2
 ---
 
 # Subscribe request format

@@ -1,10 +1,10 @@
 ---
-title: Flow Websockets Stream API Specification
-sidebar_label: Websockets Stream API
-sidebar_position: 3
+title: Overview
+sidebar_label: Overview
+sidebar_position: 1
 ---
 
-# Flow Websockets Stream API Documentation
+# Websockets Stream API
 
 ## Overview
 
@@ -65,7 +65,7 @@ To receive data from a specific topic, send a subscription request in JSON forma
   "subscription_id": "some-uuid-42",
   "action": "subscribe",
   "topic": "blocks",
-  "parameters": {
+  "arguments": {
     "start_block_height": "123456789"
   }
 }
@@ -74,14 +74,13 @@ To receive data from a specific topic, send a subscription request in JSON forma
 - **`subscription_id`**: A unique identifier for the subscription (UUID string). If omitted, the server generates one.
 - **`action`**: The action to perform. Supported actions include: `subscribe`, `unsubscribe`, `list_subscriptions`.
 - **`topic`**: The topic to subscribe to. See the supported topics in the Overview.
-- **`parameters`**: Additional parameters for subscriptions, such as `start_block_height`, `start_block_id`, and others.
+- **`arguments`**: Additional arguments for subscriptions, such as `start_block_height`, `start_block_id`, and others.
 
 ### Response Format
 
 ```json
 {
-  "subscription_id": "some-uuid-42",
-  "error": null
+  "subscription_id": "some-uuid-42"
 }
 ```
 
@@ -104,8 +103,7 @@ To stop receiving data from a specific topic, send an unsubscribe request.
 
 ```json
 {
-  "subscription_id": "some-uuid-42",
-  "error": null
+  "subscription_id": "some-uuid-42"
 }
 ```
 
@@ -131,14 +129,14 @@ You can retrieve a list of all active subscriptions for the current WebSocket co
     {
       "subscription_id": "uuid-1",
       "topic": "blocks",
-      "parameters": {
+      "arguments": {
         "start_block_height": "123456789"
       }
     },
     {
       "subscription_id": "uuid-2",
       "topic": "events",
-      "parameters": {}
+      "arguments": {}
     }
   ]
 }
@@ -159,8 +157,7 @@ If a request is invalid or cannot be processed, the server responds with an erro
     "id": "0x1234...",
     "height:": "123456789",
     "timestamp": "2025-01-02T10:00:00Z"
-  },
-  "error": null
+  }
 }
 ```
 
@@ -169,7 +166,6 @@ If a request is invalid or cannot be processed, the server responds with an erro
 ```json
 {
   "subscription_id": "some-uuid-42",
-  "payload": null,
   "error": {
     "code": 500,
     "message": "Access Node failed"
@@ -179,6 +175,13 @@ If a request is invalid or cannot be processed, the server responds with an erro
 
 ### Common Error Codes
 
-- **400**: Invalid message format or parameters
+- **400**: Invalid message format or arguments
 - **404**: Subscription not found
 - **500**: Internal server error
+
+### Asynchronous environments
+
+If you're working in an asynchronous environment, our Stream API ensures **in-order message delivery**.
+You can leverage this feature to simplify your code and maintain consistency.
+
+Additionally, you can use the `subscription_id` as a message identifier to manage subscriptions effectively.

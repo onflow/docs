@@ -1,7 +1,7 @@
 ---
 title: List subscriptions request message format
 sidebar_label: Listing subscriptions
-sidebar_position: 3
+sidebar_position: 4
 ---
 
 # List subscriptions message format
