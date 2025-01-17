@@ -5,7 +5,7 @@ description: How to get started running a node on Flow
 sidebar_position: 8
 ---
 
-This guide is for getting a new node staked and running on Flow other than a permissionless Access node. For running a permissionless Access node see [Access node setup](../access-onchain-data/access-nodes/access-node-setup.md). For sporking documentation for existing node operators, see [Spork Process](./spork.md).
+This guide is for getting a new node staked and running on Flow other than a permissionless Access node. For running a permissionless Access node see [Access node setup](../access-nodes/access-node-setup.md). For sporking documentation for existing node operators, see [Spork Process](./spork.md).
 
 ## Timing
 
