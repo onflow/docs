@@ -1,7 +1,7 @@
 ---
 title: Serving execution data
 sidebar_label: Execution Data
-sidebar_position: 3
+sidebar_position: 2
 ---
 
 Flow chain data comprises of two parts,

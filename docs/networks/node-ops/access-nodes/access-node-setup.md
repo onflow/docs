@@ -1,7 +1,7 @@
 ---
 title: Setting Up a Flow Access Node
 sidebar_label: Access Node Setup
-sidebar_position: 2
+sidebar_position: 1
 ---
 
 import Tabs from '@theme/Tabs';
@@ -163,7 +163,7 @@ Fund you Flow account with at least 100.01 FLOW tokens, which covers the require
 
 On Flow port, choose `Stake and Delegate` -> `Start Staking` or `Stake Again` and then choose Access node as the option.
 
-![choose_access_flowport](../../node-operation/choose_access_flowport.png)
+![choose_access_flowport](../node-operation/choose_access_flowport.png)
 
 On the next screen, provide the node details of you node.
 
