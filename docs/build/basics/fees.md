@@ -159,7 +159,7 @@ You should see the `computationUsed` field. Take a note of the value, you will u
 
 **On testnet or mainnet**
 
-Once a transaction is completed, you can use an explorer like [Flowdiver](https://flowdiver.io/) to review the transaction details and events emitted. For Flowdiver, you can open the transaction in question and look for the event `FeesDeducted` from the [`FlowFees`](https://github.com/onflow/flow-core-contracts/blob/master/contracts/FlowFees.cdc) contract:
+Once a transaction is completed, you can use an explorer like [Flowscan](https://flowscan.io/) to review the transaction details and events emitted. For Flowscan, you can open the transaction in question and look for the event `FeesDeducted` from the [`FlowFees`](https://github.com/onflow/flow-core-contracts/blob/master/contracts/FlowFees.cdc) contract:
 
 ![flowscan-fees](./_fees_images/flowscan-fees.png)
 
