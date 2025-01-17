@@ -115,7 +115,7 @@ Primary key fingerprint: 7D23 8D1A E6D3 2A71 8ECD  8611 CB52 64F7 FD4C DD27
      Subkey fingerprint: 40CD 9571 7AC4 63E6 1EE3  B285 B718 CA31 0EDB 542F
 ```
 
-Alternately, if you don't care about the blocks before the current block, you can request the current root-snapshot file via the [Flow CLI](../../../../tools/flow-cli/index.md).
+Alternately, if you don't care about the blocks before the current block, you can request the current root-snapshot file via the [Flow CLI](../../tools/flow-cli/index.md).
 
 For mainnet
 ```shell
