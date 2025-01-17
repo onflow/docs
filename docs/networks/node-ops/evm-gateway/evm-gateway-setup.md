@@ -154,8 +154,14 @@ export INIT_CADENCE_HEIGHT="85981135" # 211176670 for testnet
 export COINBASE="${EVM_ADDRESS_WITHOUT_0x}"
 export COA_ADDRESS="${CADENCE_ACCOUNT_ADDRESS_WITHOUT_0x}"
 export COA_KEY="${CADENCE_ACCOUNT_PRIVATE_KEY_WITHOUT_0x}"
-export GAS_PRICE="100"
+export GAS_PRICE="100" # operators can set this to 0 for zero cost transactions. The linked COA account will pay for transactions on users behalf
+
+# $\{ACCESS_NODE_SPORK_HOSTS\} are comma separated
+# testnet: access-001.devnet51.nodes.onflow.org:9000
+# mainnet: access-001.mainnet25.nodes.onflow.org:9000
 ```
+ACCESS_NODE_SPORK_HOSTS is used by the gateway to track state across Flow sporks. These are generally infrequent with only one planned 
+spork per year. A canonical list of required hosts can be found in the EVM Gateway [Makefile](https://github.com/onflow/flow-evm-gateway/blob/main/Makefile#L9).
 
 <Tabs>
 <TabItem value="source-build" label="Run from binary">
@@ -172,6 +178,7 @@ After=network-online.target
 User=$USER
 ExecStart=/usr/bin/evm-gateway \
 --access-node-grpc-host=$ACCESS_NODE_GRPC_HOST \
+--access-node-spork-hosts=ACCESS_NODE_SPORK_HOSTS \
 --flow-network-id=$FLOW_NETWORK_ID \
 --init-cadence-height=$INIT_CADENCE_HEIGHT \
 --ws-enabled=true \
