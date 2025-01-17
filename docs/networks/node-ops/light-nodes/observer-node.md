@@ -10,7 +10,7 @@ The light node bootstraps by connecting to an access node and becoming part of t
 
 Since the light node is not staked, it does not produce or execute blocks but instead serves as an _unstaked access node_ that can be easily run on any consumer-grade computer which has enough disk space.
 
-![Observer nodes](../../node-operation/observer.png)
+![Observer nodes](../node-operation/observer.png)
 
 ## Who should run a light node?
 

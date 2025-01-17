@@ -34,7 +34,7 @@ Since this deadline may shift slightly from epoch to epoch, we recommend the nod
 
 Confirmation of a new node's inclusion in epoch N+1 is included in the [`EpochSetup` event](../../../staking/05-epoch-scripts-events.md#flowepochepochsetup).
 
-![Flow Epoch Schedule](../../node-operation/epoch-startup-order.png)
+![Flow Epoch Schedule](../node-operation/epoch-startup-order.png)
 
 ## Limitations
 

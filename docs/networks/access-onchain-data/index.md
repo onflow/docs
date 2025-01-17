@@ -1193,7 +1193,7 @@ message Block {
 | block_header               | A summary of a [block](#block-header)                                                                                                                                                                                                                                                                             |
 | protocol_state_id          | The root hash of protocol state.                                                                                                                                                                                                                                                                                  |
 
-The detailed semantics of block formation are covered in the [block formation guide](../../../../../build/basics/blocks.md).
+The detailed semantics of block formation are covered in the [block formation guide](../../../build/basics/blocks.md).
 
 ### Block Header
 
