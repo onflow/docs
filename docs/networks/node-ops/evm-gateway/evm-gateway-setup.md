@@ -36,8 +36,7 @@ Apps can use EVM gateway to subsidize user transaction fees for smoother onboard
 The EVM Gateway is a lightweight node which runs on commodity hardware and cloud VMs. It can be run on GCP **standard** and AWS **large** 
 VM types for low to moderate volume app co-location use-cases. However, higher volume use cases may require larger instance types and more 
 testing. An inactive node requires less than 200MB memory when run in Docker and data storage growth corresponds with Flow EVM transaction 
-growth. Listed below are theoretical RPS maximums based on mainnet CPU and memory resource utilization metrics and linear 
-volume scaling assumptions. 
+growth. Listed below are theoretical RPS maximums based on Flow mainnet CPU and memory resource utilization metrics and linear scaling assumptions. 
 
 ### Google Cloud Platform (GCP) VM Types
 
@@ -352,7 +351,7 @@ EVM Gateway.
 
 ### Database version inconsistency/corruption
 
-If you see a similar message to this from an aborted startup the gateway database directory is not compatible with the schema versions of the runtime, or there may be corruption. In this instance we recommend 
+If you see a similar message to this from an aborted startup the gateway database directory is not compatible with the schema versions of the runtime, or there may be corruption. In this instance we recommend that you delete the contents of the EVM GW data directory.
 
 ```bash
 Jan 16 17:00:57 nodename docker[6552]: {"level":"error","error":"failed to open db for dir: /flow-evm-gateway/db, with: pebble: manifest file \"MANIFEST-018340\" for DB \"/flow-evm-gateway/db\": comparer name from file \"leveldb.BytewiseComparator\" != comparer name from Options \"flow.MVCCComparer\"","time":"2025-01-16T17:00:57Z","message":"Gateway runtime error"}
@@ -378,7 +377,3 @@ The following log entry will occur when the EVM Gateway attempts to sync with th
 ```bash
 failure in event subscription at height ${INIT-CADENCE-HEIGHT}, with: recoverable: disconnected: error receiving event: rpc error: code = FailedPrecondition desc = could not get start height: failed to get lowest indexed height: index not initialized
 ```
-
-## FAQs
-
-TBD
