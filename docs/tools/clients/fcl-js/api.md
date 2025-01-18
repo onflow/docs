@@ -545,7 +545,7 @@ The callback sent to `subscribe` will be called with a list of `authn` services.
 
 > 📣 **These methods can be used in browsers and NodeJS.**
 
-These methods allows dapps to interact directly with the Flow blockchain via a set of functions that currently use the [Access Node API](../../../networks/node-ops/access-onchain-data/access-nodes/accessing-data/access-api.md).
+These methods allows dapps to interact directly with the Flow blockchain via a set of functions that currently use the [Access Node API](../../../networks/access-onchain-data/index.md).
 
 ---
 

@@ -1,7 +1,7 @@
 ---
 title: Setting up an EVM Gateway node
 sidebar_label: EVM Gateway Setup
-sidebar_position: 3
+sidebar_position: 2
 ---
 
 import Tabs from '@theme/Tabs';
@@ -11,21 +11,48 @@ This guide is for running the [EVM Gateway](https://github.com/onflow/flow-evm-g
 [Ethereum JSON-RPC specification](https://ethereum.org/en/developers/docs/apis/json-rpc/) and is the only node type which accepts EVM 
 client connections. 
 
-The EVM Gateway consumes Flow protocol state from the configured Flow Access Node and persists the indexed EVM state locally to service EVM client requests. It submits EVM transactions it receives into the Flow network, wrapped in a Cadence transaction, and mutating EVM state when executed. Non-mutating RPC methods only query the local state index of the gateway and are never forwarded to Access Nodes. It does not participate in the block production process and requires no stake.
+The EVM Gateway consumes Flow protocol state from the configured Flow Access Node and persists the indexed EVM state locally to 
+service EVM client requests. It submits EVM transactions it receives into the Flow network, wrapped in a Cadence transaction, and 
+mutating EVM state when executed. Non-mutating RPC methods only query the local state index of the gateway and are never forwarded 
+to Access Nodes. It does not participate in the block production process and requires no stake.
+
+
 
 ## Who Should Run an EVM Gateway
 
-The EVM Gateway can serve as both a dedicated private RPC endpoint and a performance scaling solution, offering similar capabilities 
+The EVM Gateway can serve as a dedicated private RPC, a performance scaling solution, and a free gas provider offering similar capabilities 
 to centralized middleware providers like Infura, Alchemy, etc at a fraction of the cost. This is because EVM Gateway nodes connect 
 directly to the Flow network with no middle layer in between.
 
-Applications which generate high call volumes to the JSON-RPC and which may have hit rate limits can benefit from running their 
-own gateway. Self-hosted gateways are dedicated to the operator, enabling the removal of rate limits. Self-hosted gateways 
-connect directly to your chosen Access Node, which you can also run if desired. 
+Applications which generate high call volumes to the JSON-RPC and which may have hit rate limits on Flow public nodes may benefit from running their 
+own gateway to remove rate limits. Self-hosted gateways connect directly to public Flow Access Nodes, which can also be [self-operated](../access-nodes/access-node-setup.md). 
 
 ## Hardware specifications
 
-TBD
+The EVM Gateway is a lightweight node which runs on commodity hardware and cloud VMs. It can be run on GCP _standard_ and AWS _large_ 
+VM types for typical app co-location use-cases. However, higher volume use cases may require larger instance types and more 
+testing. An inactive node requires less than 200MB memory when run in Docker and data storage growth corresponds with Flow EVM transaction 
+growth. Listed below are theoretical RPS maximums based on mainnet CPU and memory resource utilization metrics and linear 
+volume scaling assumptions. 
+
+### Google Cloud Platform (GCP) VM Types
+
+| VM Type   | vCPUs | Memory (GB) | Estimated Max Requests/s |
+| --------- |-------|-------------|--------------------------|
+| n2-standard-2	| 2	    | 8           | ~2,950                   |
+| c4a-standard-1 | 1     | 4           | ~1,475                   |
+| c4a-standard-2 | 2     | 8           | ~2,950                   |
+| n2-highmem-4 | 4     | 32          | ~11,800                  |
+| c3-standard-8 | 8     | 32          | ~29,500                  |
+
+### Amazon Web Services (AWS) EC2 Instance Types
+| Instance Type	| vCPUs	 | Memory (GB) | Estimated Max Requests/s | 
+| --------- |--------|-------------|--------------------------|
+| m6i.large	| 2	     | 8           | ~2,950                   | 
+| c6i.large	| 2	     | 4	| ~3,687                   | 
+| m6i.xlarge	| 4      | 	16 | 	~11,800                 |
+| c6i.2xlarge	| 8      | 	16| 	~29,500                 | 
+| t3.2xlarge	| 8	| 32	| ~17,700                  | 
 
 # How To Run EVM Gateway
 
@@ -154,8 +181,14 @@ export INIT_CADENCE_HEIGHT="85981135" # 211176670 for testnet
 export COINBASE="${EVM_ADDRESS_WITHOUT_0x}"
 export COA_ADDRESS="${CADENCE_ACCOUNT_ADDRESS_WITHOUT_0x}"
 export COA_KEY="${CADENCE_ACCOUNT_PRIVATE_KEY_WITHOUT_0x}"
-export GAS_PRICE="100"
+export GAS_PRICE="100" # operators can set this to 0 for zero cost transactions. The linked COA account will pay for transactions on users behalf
+
+# $\{ACCESS_NODE_SPORK_HOSTS\} are comma separated
+# testnet: access-001.devnet51.nodes.onflow.org:9000
+# mainnet: access-001.mainnet25.nodes.onflow.org:9000
 ```
+ACCESS_NODE_SPORK_HOSTS is used by the gateway to track state across Flow sporks. These are generally infrequent with only one planned 
+spork per year. A canonical list of required hosts can be found in the EVM Gateway [Makefile](https://github.com/onflow/flow-evm-gateway/blob/main/Makefile#L9).
 
 <Tabs>
 <TabItem value="source-build" label="Run from binary">
@@ -172,6 +205,7 @@ After=network-online.target
 User=$USER
 ExecStart=/usr/bin/evm-gateway \
 --access-node-grpc-host=$ACCESS_NODE_GRPC_HOST \
+--access-node-spork-hosts=ACCESS_NODE_SPORK_HOSTS \
 --flow-network-id=$FLOW_NETWORK_ID \
 --init-cadence-height=$INIT_CADENCE_HEIGHT \
 --ws-enabled=true \
@@ -311,6 +345,14 @@ curl -s -XPOST 'your-evm-gw-host:8545' --header 'Content-Type: application/json'
 
 Join our [Discord](https://discord.com/invite/J6fFnh2xx6) and use the `#flow-evm` channel to ask any questions you may have about 
 EVM Gateway.
+
+### Database version inconsistency/corruption
+
+If you see a similar message to this from an aborted startup the gateway database directory is not compatible with the schema versions of the runtime, or there may be corruption. In this instance we recommend 
+
+```bash
+Jan 16 17:00:57 nodename docker[6552]: {"level":"error","error":"failed to open db for dir: /flow-evm-gateway/db, with: pebble: manifest file \"MANIFEST-018340\" for DB \"/flow-evm-gateway/db\": comparer name from file \"leveldb.BytewiseComparator\" != comparer name from Options \"flow.MVCCComparer\"","time":"2025-01-16T17:00:57Z","message":"Gateway runtime error"}
+```
 
 ### State stream configuration
 

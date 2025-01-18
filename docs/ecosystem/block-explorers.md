@@ -14,7 +14,7 @@ Block explorers are user-friendly online tools that visually present blockchain 
 
 ## Flow Diver
 
-[Flow Diver](https://www.flowdiver.io/) provides various tools to explore the blockchain, including:
+[Flowscan](https://flowscan.io/) provides various tools to explore the blockchain, including:
 
 - Blocks
 - Transactions
@@ -25,8 +25,8 @@ Block explorers are user-friendly online tools that visually present blockchain 
 
 ### Supported networks:
 
-- [Mainnet](https://www.flowdiver.io/)
-- [Testnet](https://testnet.flowdiver.io/)
+- [Mainnet](https://flowscan.io/)
+- [Testnet](https://testnet.flowscan.io/)
 
 ## Flow View
 

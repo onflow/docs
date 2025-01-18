@@ -1193,7 +1193,7 @@ message Block {
 | block_header               | A summary of a [block](#block-header)                                                                                                                                                                                                                                                                             |
 | protocol_state_id          | The root hash of protocol state.                                                                                                                                                                                                                                                                                  |
 
-The detailed semantics of block formation are covered in the [block formation guide](../../../../../build/basics/blocks.md).
+The detailed semantics of block formation are covered in the [block formation guide](../../build/basics/blocks.md).
 
 ### Block Header
 
@@ -1349,17 +1349,17 @@ message TransactionSignature {
 | authorizers                   | Addresses of the transaction authorizers                                                                                    |
 | signatures                    | [Signatures](#transaction-signature) from all signer accounts                                                              |
 
-The detailed semantics of transaction creation, signing and submission are covered in the [transaction submission guide](../../../../../build/basics/transactions.md#signing-a-transaction).
+The detailed semantics of transaction creation, signing and submission are covered in the [transaction submission guide](../../build/basics/transactions.md#signing-a-transaction).
 
 #### Proposal Key
 
-The proposal key is used to specify a sequence number for the transaction. Sequence numbers are covered in more detail [here](../../../../../build/basics/transactions.md#sequence-numbers).
+The proposal key is used to specify a sequence number for the transaction. Sequence numbers are covered in more detail [here](../../build/basics/transactions.md#sequence-numbers).
 
-| Field           | Description                                                                                          |
-| --------------- | ---------------------------------------------------------------------------------------------------- |
-| address         | Address of proposer account                                                                          |
-| key_id          | ID of proposal key on the proposal account                                                           |
-| sequence_number | [Sequence number](../../../../../build/basics/transactions.md#sequence-numbers) for the proposal key |
+| Field           | Description                                                                                 |
+| --------------- | ------------------------------------------------------------------------------------------- |
+| address         | Address of proposer account                                                                 |
+| key_id          | ID of proposal key on the proposal account                                                  |
+| sequence_number | [Sequence number](../../build/basics/transactions.md#sequence-numbers) for the proposal key |
 
 #### Transaction Signature
 
@@ -1415,7 +1415,7 @@ message Account {
 
 The `code` and `contracts` fields contain the raw Cadence source code, encoded as UTF-8 bytes.
 
-More information on accounts can be found [here](../../../../../build/basics/accounts.md).
+More information on accounts can be found [here](../../build/basics/accounts.md).
 
 #### Account Key
 
@@ -1433,17 +1433,17 @@ message AccountKey {
 }
 ```
 
-| Field           | Description                                                                                  |
-| --------------- | -------------------------------------------------------------------------------------------- |
-| id              | Index of the key within the account, used as a unique identifier                             |
-| public_key      | Public key encoded as bytes                                                                  |
-| sign_algo       | [Signature algorithm](../../../../../build/basics/accounts.md#signature-and-hash-algorithms) |
-| hash_algo       | [Hash algorithm](../../../../../build/basics/accounts.md#signature-and-hash-algorithms)      |
-| weight          | [Weight assigned to the key](../../../../../build/basics/accounts.md#account-keys)           |
-| sequence_number | [Sequence number for the key](../../../../../build/basics/transactions.md#sequence-numbers)  |
-| revoked         | Flag indicating whether or not the key has been revoked                                      |
+| Field           | Description                                                               |
+| --------------- |---------------------------------------------------------------------------|
+| id              | Index of the key within the account, used as a unique identifier          |
+| public_key      | Public key encoded as bytes                                               |
+| sign_algo       | [Signature algorithm](../../build/basics/accounts.md#signature-and-hash-algorithms) |
+| hash_algo       | [Hash algorithm](../../build/basics/accounts.md#signature-and-hash-algorithms) |
+| weight          | [Weight assigned to the key](../../build/basics/accounts.md#account-keys) |
+| sequence_number | [Sequence number for the key](../../build/basics/transactions.md#sequence-numbers) |
+| revoked         | Flag indicating whether or not the key has been revoked                   |
 
-More information on account keys, key weights and sequence numbers can be found [here](../../../../../build/basics/accounts.md).
+More information on account keys, key weights and sequence numbers can be found [here](../../build/basics/accounts.md).
 
 ### Event
 

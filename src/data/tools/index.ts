@@ -403,12 +403,12 @@ const flowRunnerTool: Tool = {
 
 // Explorers
 const flowScanTool: Tool = {
-  title: 'Flowdiver',
+  title: 'Flowscan',
   tags: ['metrics', 'lookup', 'mainnet'],
-  link: 'https://flowdiver.io/',
+  link: 'https://flowscan.io/',
   iconSrc:
     'https://pbs.twimg.com/profile_images/1693654862536331264/ViqtN5qj_400x400.jpg',
-  description: `Flowdiver is a blockchain explorer that lets you browse all on-chain events, transactions, contracts, and accounts.`,
+  description: `Flowscan is a blockchain explorer that lets you browse all on-chain events, transactions, contracts, and accounts.`,
 };
 
 const flowViewSourceTool: Tool = {

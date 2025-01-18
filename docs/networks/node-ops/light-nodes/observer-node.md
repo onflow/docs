@@ -4,13 +4,13 @@ sidebar_label: Light Node Setup
 sidebar_position: 1
 ---
 
-A light node also known as the observer node is similar to an access node and provides a locally accessible, continuously updated, verified copy of the block data. It serves the [gRPC Access API](../access-nodes/accessing-data/access-api.md) but unlike an access node, an light node does not need to be staked, and **anyone** can run it without being added to the approved list of nodes.
+A light node also known as the observer node is similar to an access node and provides a locally accessible, continuously updated, verified copy of the block data. It serves the [gRPC Access API](../../access-onchain-data/index.md) but unlike an access node, an light node does not need to be staked, and **anyone** can run it without being added to the approved list of nodes.
 
 The light node bootstraps by connecting to an access node and becoming part of the public network comprised of access nodes and other light nodes. It then continuously receives blocks, which the consensus nodes are adding to the chain, either directly from access nodes or from other light nodes that are part of the public network. However, it makes no trust assumption of the upstream access node or the light node which is providing the block and locally verifies that the blocks that are received are the correct extension of the chain e.g. after receiving valid blocks A, B and C when it receives block D, it verifies that block D is indeed signed by the consensus nodes and is a valid next block. The received block data is indexed and made available via the Access API. For Collection, Transactions and Account queries, it delegates those requests to the upstream access node. Similarly, transactions and scripts sent to a light node are also forwarded to the upstream access node. Future versions of the light node will be able to serve this data locally as well.
 
 Since the light node is not staked, it does not produce or execute blocks but instead serves as an _unstaked access node_ that can be easily run on any consumer-grade computer which has enough disk space.
 
-![Observer nodes](../../node-operation/observer.png)
+![Observer nodes](../node-operation/observer.png)
 
 ## Who should run a light node?
 
@@ -73,7 +73,7 @@ curl -sL -O storage.googleapis.com/flow-genesis-bootstrap/boot-tools-intel-mac.t
 
 #### Step 3 - Download the root-protocol-state-snapshot.json file for the current spork
 
-The `root-protocol-state-snapshot.json` is generated for each [spork](../../node-operation/spork.md) and contains the genesis data for that spork.
+The `root-protocol-state-snapshot.json` is generated for each [spork](../node-operation/spork.md) and contains the genesis data for that spork.
 It is published and made available after each spork. The download location is specified [here](https://github.com/onflow/flow/blob/master/sporks.json) under [rootProtocolStateSnapshot](https://github.com/onflow/flow/blob/master/sporks.json#L16) and can be downloaded as follows,
 
 For mainnet find  the latest spork version from [sporks.json](https://github.com/onflow/flow/blob/master/sporks.json) and then download the `root-protocol-state-snapshot.json` and the signature file for it.
@@ -115,7 +115,7 @@ Primary key fingerprint: 7D23 8D1A E6D3 2A71 8ECD  8611 CB52 64F7 FD4C DD27
      Subkey fingerprint: 40CD 9571 7AC4 63E6 1EE3  B285 B718 CA31 0EDB 542F
 ```
 
-Alternately, if you don't care about the blocks before the current block, you can request the current root-snapshot file via the [Flow CLI](../../../../tools/flow-cli/index.md).
+Alternately, if you don't care about the blocks before the current block, you can request the current root-snapshot file via the [Flow CLI](../../../tools/flow-cli/index.md).
 
 For mainnet
 ```shell
@@ -207,7 +207,7 @@ e.g. querying the REST API endpoint using curl
 curl "http://localhost/v1/blocks?height=sealed"
 ```
 
-The light node, like the other type of Flow nodes, also produces Prometheus metrics that can be used to monitor node health. More on that [here](../../node-operation/node-setup.md#monitoring-and-metrics)
+The light node, like the other type of Flow nodes, also produces Prometheus metrics that can be used to monitor node health. More on that [here](../node-operation/node-setup.md#monitoring-and-metrics)
 
 
 ## FAQs
@@ -261,4 +261,4 @@ Access-003:
 
 
 While the public keys remain the same, the hostnames change each spork to include the spork name. Substitute `[current mainnet spork]` and `[current devnet spork]` with the appropriate spork name (e.g. `mainnet20`).
-See [Past Sporks](../../node-operation/past-sporks.md) for the current spork for each network.
+See [Past Sporks](../node-operation/past-sporks.md) for the current spork for each network.

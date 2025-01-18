@@ -86,7 +86,7 @@ We can leverage this model to design an ideal system transaction architecture as
 
     To simplify the system further, we can reuse the same cryptographic key multiple times within the same account by adding it as a new key. These additional keys can have a weight of 0 since they do not need to authorize transactions.
 
-Here’s a visual example of how such an [account configuration](https://www.flowdiver.io/account/0x18eb4ee6b3c026d2?tab=keys) might look:
+Here’s a visual example of how such an [account configuration](https://www.flowscan.io/account/18eb4ee6b3c026d2?tab=keys) might look:
 
 ![Example.Account](scaling-example-account.png "Example Account")
 
