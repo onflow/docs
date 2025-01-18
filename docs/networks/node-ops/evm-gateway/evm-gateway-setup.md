@@ -16,21 +16,25 @@ service EVM client requests. It submits EVM transactions it receives into the Fl
 mutating EVM state when executed. Non-mutating RPC methods only query the local state index of the gateway and are never forwarded 
 to Access Nodes. It does not participate in the block production process and requires no stake.
 
-
-
-## Who Should Run an EVM Gateway
+## Anyone can run EVM Gateway
 
 The EVM Gateway can serve as a dedicated private RPC, a performance scaling solution, and a free gas provider offering similar capabilities 
-to centralized middleware providers like Infura, Alchemy, etc at a fraction of the cost. This is because EVM Gateway nodes connect 
-directly to the Flow network with no middle layer in between.
+to centralized middleware providers like Infura, Alchemy, etc at a fraction of the cost. EVM Gateway nodes connect directly to the Flow network 
+with no middleware giving you full control.
 
 Applications which generate high call volumes to the JSON-RPC and which may have hit rate limits on Flow public nodes may benefit from running their 
-own gateway to remove rate limits. Self-hosted gateways connect directly to public Flow Access Nodes, which can also be [self-operated](../access-nodes/access-node-setup.md). 
+own gateway to remove rate limits. Self-hosted gateways connect directly to public Flow Access Nodes, which may also optionally be [run](../access-nodes/access-node-setup.md). 
+
+:::info
+
+Apps can use EVM gateway to subsidize user transaction fees for smoother onboarding
+
+:::
 
 ## Hardware specifications
 
-The EVM Gateway is a lightweight node which runs on commodity hardware and cloud VMs. It can be run on GCP _standard_ and AWS _large_ 
-VM types for typical app co-location use-cases. However, higher volume use cases may require larger instance types and more 
+The EVM Gateway is a lightweight node which runs on commodity hardware and cloud VMs. It can be run on GCP **standard** and AWS **large** 
+VM types for low to moderate volume app co-location use-cases. However, higher volume use cases may require larger instance types and more 
 testing. An inactive node requires less than 200MB memory when run in Docker and data storage growth corresponds with Flow EVM transaction 
 growth. Listed below are theoretical RPS maximums based on mainnet CPU and memory resource utilization metrics and linear 
 volume scaling assumptions. 
