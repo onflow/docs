@@ -40,7 +40,7 @@ const ActionCard: React.FC<ActionCardProps> = ({
           />
         </svg>
       </div>
-      <h3 className="text-xl font-semibold text-white mb-2">{heading}</h3>
+      <h3 className="text-xl font-semibold text-white mb-2 mt-12">{heading}</h3>
       <p className="text-sm text-gray-100">{description}</p>
     </div>
   );
