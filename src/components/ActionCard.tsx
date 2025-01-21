@@ -6,6 +6,7 @@ interface ActionCardProps {
   cardColor?: ColorOption;
   heading: string;
   description: string;
+  onClick?: () => void;
 }
 
 const ActionCard: React.FC<ActionCardProps> = ({
@@ -13,12 +14,13 @@ const ActionCard: React.FC<ActionCardProps> = ({
     cardColor = 'black',
     heading,
     description,
+    onClick,
   }) => {
   const cardBg = colors[cardColor].dark;
   const iconBg = colors[iconColor].light;
 
   return (
-    <div className={`p-6 rounded-lg shadow-lg hover:scale-105 transition-transform cursor-pointer ${cardBg}`}>
+    <div onClick={onClick} className={`p-6 rounded-lg shadow-lg hover:scale-105 transition-transform cursor-pointer ${cardBg}`}>
       <div className={`w-10 h-10 rounded-md flex items-center justify-center mb-4 ${iconBg}`}>
         <svg
           xmlns="http://www.w3.org/2000/svg"
