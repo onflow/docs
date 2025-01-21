@@ -12,7 +12,7 @@ Unsubscribe requests must be sent as JSON in text frames, one request per frame.
 
 ```json
 {
-  "subscription_id": "fa770c92-a1f1-4375-9a7b-e13d9aac0786",
+  "subscription_id": "some-id-1",
   "action": "unsubscribe"
 }
 ```
@@ -21,7 +21,8 @@ Unsubscribe requests must be sent as JSON in text frames, one request per frame.
 
 ```json
 {
-  "subscription_id": "fa770c92-a1f1-4375-9a7b-e13d9aac0786"
+  "subscription_id": "some-id-1",
+  "action": "unsubscribe"
 }
 ```
 
@@ -40,5 +41,5 @@ Unsubscribe requests must be sent as JSON in text frames, one request per frame.
 
 | Name              | Type   | Mandatory | Description                                                           |
 |-------------------|--------|-----------|-----------------------------------------------------------------------|
-| `subscription_id` | UUID   | YES       | Unique identifier of the subscription                                 |
+| `subscription_id` | STRING | YES       | Unique identifier of the subscription                                 |
 | `action`          | STRING | YES       | Action to perform. Must be `unsubscribe` to initiate a unsubscription |

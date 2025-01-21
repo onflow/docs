@@ -19,8 +19,9 @@ data.
   wss://api.flow.com/ws
   ```
 - **Limits**:
-    - Each connection supports up to 50 concurrent subscriptions. Exceeding this limit will result in an error.
-    - TODO: list all limits here
+    - Each connection supports up to 10 concurrent subscriptions. Exceeding this limit will result in an error.
+    - Each subscription may provide up to 5 responses per second. 
+    - After 1 minute of inactivity (no data is sent to/read from connection) connection is closed. 
 - **Supported Topics**:
     - `blocks`
     - `block_headers`
@@ -62,7 +63,7 @@ To receive data from a specific topic, send a subscription request in JSON forma
 
 ```json
 {
-  "subscription_id": "some-uuid-42",
+  "subscription_id": "some-id-42",
   "action": "subscribe",
   "topic": "blocks",
   "arguments": {
@@ -71,7 +72,7 @@ To receive data from a specific topic, send a subscription request in JSON forma
 }
 ```
 
-- **`subscription_id`**: A unique identifier for the subscription (UUID string). If omitted, the server generates one.
+- **`subscription_id`**: A unique identifier for the subscription (string with max len constraint). If omitted, the server generates one.
 - **`action`**: The action to perform. Supported actions include: `subscribe`, `unsubscribe`, `list_subscriptions`.
 - **`topic`**: The topic to subscribe to. See the supported topics in the Overview.
 - **`arguments`**: Additional arguments for subscriptions, such as `start_block_height`, `start_block_id`, and others.
@@ -80,7 +81,8 @@ To receive data from a specific topic, send a subscription request in JSON forma
 
 ```json
 {
-  "subscription_id": "some-uuid-42"
+  "subscription_id": "some-id-42",
+  "action": "subscribe"
 }
 ```
 
@@ -94,7 +96,7 @@ To stop receiving data from a specific topic, send an unsubscribe request.
 
 ```json
 {
-  "subscription_id": "some-uuid-42",
+  "subscription_id": "some-id-42",
   "action": "unsubscribe"
 }
 ```
@@ -103,7 +105,8 @@ To stop receiving data from a specific topic, send an unsubscribe request.
 
 ```json
 {
-  "subscription_id": "some-uuid-42"
+  "subscription_id": "some-id-42",
+  "action": "unsubscribe"
 }
 ```
 
@@ -127,14 +130,14 @@ You can retrieve a list of all active subscriptions for the current WebSocket co
 {
   "subscriptions": [
     {
-      "subscription_id": "uuid-1",
+      "subscription_id": "some-id-1",
       "topic": "blocks",
       "arguments": {
         "start_block_height": "123456789"
       }
     },
     {
-      "subscription_id": "uuid-2",
+      "subscription_id": "some-id-2",
       "topic": "events",
       "arguments": {}
     }
@@ -152,7 +155,7 @@ If a request is invalid or cannot be processed, the server responds with an erro
 
 ```json
 {
-  "subscription_id": "some-uuid-42",
+  "subscription_id": "some-id-42",
   "payload": {
     "id": "0x1234...",
     "height:": "123456789",
@@ -165,7 +168,7 @@ If a request is invalid or cannot be processed, the server responds with an erro
 
 ```json
 {
-  "subscription_id": "some-uuid-42",
+  "subscription_id": "some-id-42",
   "error": {
     "code": 500,
     "message": "Access Node failed"
