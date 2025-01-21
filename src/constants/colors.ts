@@ -1,25 +1,21 @@
-export type ColorOption = 'pink' | 'green' | 'blue' | 'purple' | 'teal' | 'black' | 'white';
+export type ColorOption = 'green' | 'blue' | 'purple' | 'teal' | 'black' | 'white';
 
 export const colors: Record<ColorOption, { light: string; dark: string }> = {
-  pink: {
-    light: 'bg-[#F9A8D4]',
-    dark: 'bg-[#DB2777]',
-  },
   green: {
-    light: 'bg-[#A7F3D0]',
-    dark: 'bg-[#059669]',
+    light: 'bg-[#59CB8C]',
+    dark: 'bg-[#008748]',
   },
   blue: {
-    light: 'bg-[#93C5FD]',
-    dark: 'bg-[#2563EB]',
+    light: 'bg-[#6476E8]',
+    dark: 'bg-[#3D3FDF]',
   },
   purple: {
-    light: 'bg-[#D8B4FE]',
-    dark: 'bg-[#7C3AED]',
+    light: 'bg-[#C25BEF]',
+    dark: 'bg-[#9618A5]',
   },
   teal: {
-    light: 'bg-[#99F6E4]',
-    dark: 'bg-[#065F46]',
+    light: 'bg-[#71C4B3]',
+    dark: 'bg-[#018878]',
   },
   black: {
     light: 'bg-[#374151]',
