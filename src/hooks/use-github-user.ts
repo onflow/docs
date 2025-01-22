@@ -1,4 +1,4 @@
-import useSWR from 'swr';
+import useSWR from 'swr/immutable';
 import { User } from '../types/github';
 
 export function useGithubUser(username?: string | null) {
