@@ -18,6 +18,10 @@ export default function LayoutWrapper(props: Props): JSX.Element {
 }
 
 function localStorageProvider() {
+  if (typeof window === 'undefined') {
+    return new Map();
+  }
+
   // Initialize with data from localStorage
   const map = new Map<string, any>(
     JSON.parse(localStorage.getItem(CACHE_KEY) || '[]'),
