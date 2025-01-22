@@ -39,7 +39,7 @@ Unsubscribe requests must be sent as JSON in text frames, one request per frame.
 
 ### Request fields
 
-| Name              | Type   | Mandatory | Description                                                           |
-|-------------------|--------|-----------|-----------------------------------------------------------------------|
-| `subscription_id` | STRING | YES       | Unique identifier of the subscription                                 |
-| `action`          | STRING | YES       | Action to perform. Must be `unsubscribe` to initiate a unsubscription |
+| Name              | Type   | Required | Description                                                           |
+|-------------------|--------|----------|-----------------------------------------------------------------------|
+| `subscription_id` | STRING | YES      | Unique identifier of the subscription                                 |
+| `action`          | STRING | YES      | Action to perform. Must be `unsubscribe` to initiate a unsubscription |

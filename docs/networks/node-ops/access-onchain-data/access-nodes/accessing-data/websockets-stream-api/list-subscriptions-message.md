@@ -43,6 +43,6 @@ If there are no active subscriptions, `subscriptions` array will be empty.
 
 ### Request fields
 
-| Name     | Type   | Mandatory | Description                                                                             |
-|----------|--------|-----------|-----------------------------------------------------------------------------------------|
-| `action` | STRING | YES       | Action to perform. Must be `list_subscriptions` to initiate a list subscription request |
+| Name     | Type   | Required | Description                                                                             |
+|----------|--------|----------|-----------------------------------------------------------------------------------------|
+| `action` | STRING | YES      | Action to perform. Must be `list_subscriptions` to initiate a list subscription request |

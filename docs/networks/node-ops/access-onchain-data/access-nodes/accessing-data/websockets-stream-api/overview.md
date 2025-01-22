@@ -16,11 +16,11 @@ data.
 
 - **Endpoint**: The WebSocket server is available at:
   ```
-  wss://api.flow.com/ws
+  wss://rest-mainnet.onflow.org/ws
   ```
 - **Limits**:
-    - Each connection supports up to 10 concurrent subscriptions. Exceeding this limit will result in an error.
-    - Each subscription may provide up to 5 responses per second. 
+    - Each connection supports up to 20 concurrent subscriptions. Exceeding this limit will result in an error.
+    - Each subscription may provide up to 20 responses per second. 
     - After 1 minute of inactivity (no data is sent to/read from connection) connection is closed. 
 - **Supported Topics**:
     - `blocks`
@@ -38,7 +38,7 @@ data.
 Use any WebSocket client library to connect to the endpoint. Below is an example using JavaScript:
 
 ```javascript
-const ws = new WebSocket('wss://api.flow.com/ws');
+const ws = new WebSocket('wss://rest-mainnet.onflow.org/ws');
 
 ws.onopen = () => {
     console.log('Connected to WebSocket server');
@@ -184,7 +184,8 @@ If a request is invalid or cannot be processed, the server responds with an erro
 
 ### Asynchronous environments
 
-If you're working in an asynchronous environment, our Stream API ensures **in-order message delivery**.
+If you're working in an asynchronous environment, the Streaming API ensures **first-in first-out** message processing, 
+so responses will be returned in the same order the requests were received over the connection.
 You can leverage this feature to simplify your code and maintain consistency.
 
-Additionally, you can use the `subscription_id` as a message identifier to manage subscriptions effectively.
+Additionally, you can specify your own `subscription_id` in the subscribe request to easily identify the correct response.
