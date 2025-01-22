@@ -86,7 +86,7 @@ const ProfileModal: React.FC<ProfileModalProps> = ({ isOpen, onClose }) => {
   }>({});
 
   const { value: debouncedGithubHandle, isDebouncing: githubDebouncing } =
-    useDebounce(settings?.socials?.[SocialType.GITHUB], 500);
+    useDebounce(settings?.socials?.[SocialType.GITHUB], 1000);
   const { user: githubUser, isLoading: githubFetchLoading } = useGithubUser(
     debouncedGithubHandle,
   );
