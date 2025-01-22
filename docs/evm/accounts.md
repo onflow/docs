@@ -28,7 +28,7 @@ However, in order to leverage all the features of Cadence, developers will need 
 
 Cadence-Owned Accounts, easily identifiable by the leading zeroes (`0x00000000000000000000000`) **only exist on Flow**.  The keys to these addresses are generated in a way that is not compatible with other networks.
 
-As a result, any assets sent to one of these addresses on another network **will be lost permanently!***
+As a result, any assets sent to one of these addresses on another network **will be lost permanently!**
 
 We're working with major wallet providers to block such transfers, and recommend that all app and wallet developers do the same.
 
