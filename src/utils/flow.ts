@@ -1,5 +1,6 @@
 import * as fcl from '@onflow/fcl';
 import { getContractAddress } from '../config/fcl';
+import { CONTRACT_IDENTIFIER_REGEX } from './constants';
 
 export function typeIdentifier(
   address: string,
@@ -20,4 +21,18 @@ export function getChallengeIdentifier(challenge: {
     challenge.contractName,
     challenge.resourceIdentifier,
   );
+}
+
+export function parseIdentifier(identifier: string): {
+  address: string;
+  contractName: string;
+} | null {
+  const match = identifier.match(CONTRACT_IDENTIFIER_REGEX);
+  if (!match) {
+    return null;
+  }
+
+  const [, , address, contractName] = match;
+  console.log({ address, contractName });
+  return { address: fcl.withPrefix(address), contractName };
 }

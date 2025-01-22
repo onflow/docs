@@ -61,3 +61,6 @@ export const GOLD_STAR_CHALLENGES = {
     resourceIdentifier: 'Challenge',
   },
 };
+
+export const CONTRACT_IDENTIFIER_REGEX =
+  /^A\.(0x)?([0-9a-fA-F]{16})\.([a-zA-Z0-9_]+)$/;
