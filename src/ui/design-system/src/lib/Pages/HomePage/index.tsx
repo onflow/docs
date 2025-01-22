@@ -31,7 +31,6 @@ const Description = (): JSX.Element => (
   </>
 );
 
-          iconColor: 'green',
 const HomePage = ({ discordUrl, githubUrl }: HomePageProps): JSX.Element => {
   return (
     <PageBackground gradient="home">
