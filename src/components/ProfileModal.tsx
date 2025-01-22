@@ -19,6 +19,7 @@ import { parseIdentifier, typeIdentifier } from '../utils/flow';
 import { CONTRACT_IDENTIFIER_REGEX } from '../utils/constants';
 import { useGithubUser } from '../hooks/use-github-user';
 import { useDebounce } from '../hooks/use-debounce';
+import { faUser } from '@fortawesome/free-solid-svg-icons';
 
 interface ProfileModalProps {
   isOpen: boolean;
@@ -245,11 +246,18 @@ const ProfileModal: React.FC<ProfileModalProps> = ({ isOpen, onClose }) => {
 
   return (
     <Modal isOpen={isOpen} onClose={onClose} scrollable={true} title="Profile">
-      <div className="space-y-6">
-        <img
-          src={!isGithubLoading ? githubUser?.avatar_url : ''}
-          className="w-24 h-24 rounded-full"
-        />
+      <div className="space-y-6 flex flex-col">
+        <div className="flex items-center w-24 h-24 mx-auto">
+          {(isGithubLoading || !githubUser?.avatar_url) && (
+            <FontAwesomeIcon icon={faUser} size="5x" className="mx-auto" />
+          )}
+          {!isGithubLoading && githubUser?.avatar_url && (
+            <img
+              src={githubUser?.avatar_url}
+              className="w-24 h-24 rounded-full mx-auto"
+            />
+          )}
+        </div>
 
         <div className="space-y-4">
           <Field
@@ -333,7 +341,7 @@ const ProfileModal: React.FC<ProfileModalProps> = ({ isOpen, onClose }) => {
           </div>
         </Field>
 
-        <div className="max-w-sm mx-auto">
+        <div className="max-w-sm">
           <RadioGroup
             options={flowSources.map((source) => source.name)}
             value={settings?.referralSource || ''}
