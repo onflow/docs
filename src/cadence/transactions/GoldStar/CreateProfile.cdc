@@ -17,7 +17,7 @@ transaction(
             for addr in deployedContracts.keys {
                 if let addrContracts = deployedContracts[addr] {
                     for name in addrContracts {
-                        profile.deployedContracts.add(address: addr, name: name)
+                        profile.deployedContracts.addCadenceContract(address: addr, name: name)
                     }
                 }
             }

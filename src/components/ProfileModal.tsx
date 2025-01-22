@@ -16,7 +16,10 @@ import { useChallenges } from '../hooks/use-challenges';
 import * as fcl from '@onflow/fcl';
 import { z } from 'zod';
 import { parseIdentifier, typeIdentifier } from '../utils/flow';
-import { CONTRACT_IDENTIFIER_REGEX } from '../utils/constants';
+import {
+  CONTRACT_IDENTIFIER_REGEX,
+  EVM_ADDRESS_REGEX,
+} from '../utils/constants';
 
 interface ProfileModalProps {
   isOpen: boolean;
@@ -41,10 +44,15 @@ const ProfileSettingsSchema = z.object({
 
 const TagInputSchema = z.string().refine(
   (value) => {
-    return !value || CONTRACT_IDENTIFIER_REGEX.test(value.trim());
+    return (
+      !value ||
+      CONTRACT_IDENTIFIER_REGEX.test(value.trim()) ||
+      EVM_ADDRESS_REGEX.test(value.trim())
+    );
   },
   {
-    message: 'Invalid contract identifier',
+    message:
+      'Invalid contract identifier (must be either a Cadence identifier or an EVM address).',
   },
 );
 
@@ -148,8 +156,18 @@ const ProfileModal: React.FC<ProfileModalProps> = ({ isOpen, onClose }) => {
           ],
         },
       });
+
       setTagInput('');
-    }
+    } else if (EVM_ADDRESS_REGEX.test(tagInput.trim())) {
+      setSettings({
+        ...settings,
+        deployedContracts: {
+          ...settings?.deployedContracts,
+          [tagInput.trim()]: [],
+        },
+      });
+
+      setTagInput('');
   };
 
   const handleRemoveTag = (tagToRemove: string) => {

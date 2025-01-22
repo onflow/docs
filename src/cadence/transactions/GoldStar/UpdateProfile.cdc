@@ -21,31 +21,39 @@ transaction(
 
         // Update the referral source
         if let referralSource = referralSource {
-            self.profile.updateReferralSource(source: referralSource)
+            if referralSource != self.profile.referralSource {
+                self.profile.updateReferralSource(source: referralSource)
+            }
         }
 
-        // Replace all deployed contracts
-        for addr in self.profile.deployedContracts.contracts.keys {
-            for name in self.profile.deployedContracts.contracts[addr]!.keys {
-                self.profile.deployedContracts.remove(address: addr, name: name)
+        // Diff the deployed contracts and update
+        for addr in self.profile.deployedContracts.cadenceContracts.keys {
+            for name in self.profile.deployedContracts.cadenceContracts[addr]!.keys {
+                if deployedContracts[addr] == nil || deployedContracts[addr]!.contains(name) == false {
+                    self.profile.deployedContracts.removeCadenceContract(address: addr, name: name)
+                }
             }
         }
         
         for addr in deployedContracts.keys {
-            if let addrContracts = deployedContracts[addr] {
-                for name in addrContracts {
-                    self.profile.deployedContracts.add(address: addr, name: name)
+            for name in deployedContracts[addr]! {
+                if self.profile.deployedContracts.cadenceContracts[addr] == nil || self.profile.deployedContracts.cadenceContracts[addr]![name] == nil {
+                    self.profile.deployedContracts.addCadenceContract(address: addr, name: name)
                 }
             }
         }
 
-        // Replace all socials
+        // Diff the socials and update
         for social in self.profile.socials.socials.keys {
-            self.profile.socials.remove(name: social)
+            if socials[social] == nil {
+                self.profile.socials.remove(name: social)
+            }
         }
 
         for social in socials.keys {
-            self.profile.socials.set(name: social, handle: socials[social]!)
+            if self.profile.socials.socials[social] == nil {
+                self.profile.socials.set(name: social, handle: socials[social]!)
+            }
         }
     }
 

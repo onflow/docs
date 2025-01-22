@@ -11,6 +11,9 @@ contract GoldStar {
     let adminStoragePath: StoragePath
 
     access(all)
+    entitlement Owner
+
+    access(all)
     entitlement UpdateHandle
 
     access(all)
@@ -73,30 +76,48 @@ contract GoldStar {
 
     access(all)
     struct DeployedContracts {
+        // Map of contract address to contract name
         access(all)
-        var contracts: {Address: {String: Bool}}
+        var cadenceContracts: {Address: {String: Bool}}
 
-        access(UpdateDeployedContracts)
-        fun add(address: Address, name: String) {
-            if let names = self.contracts[address] {
+        // Set of contract addresses encoded as unprefixed hex strings
+        access(all)
+        var evmContracts: {String: Bool}
+
+        access(Owner | UpdateDeployedContracts)
+        fun addCadenceContract(address: Address, name: String) {
+            if let names = self.cadenceContracts[address] {
                 names[name] = true
             } else {
-                self.contracts[address] = {name: true}
+                self.cadenceContracts[address] = {name: true}
             }
         }
 
-        access(UpdateDeployedContracts)
-        fun remove(address: Address, name: String) {
-            if let names = self.contracts[address] {
+        access(Owner | UpdateDeployedContracts)
+        fun addEvmContract(address: [UInt8; 20]) {
+            var addressString = String.encodeHex(address.toVariableSized())
+            self.evmContracts[addressString] = true
+        }
+
+        access(Owner | UpdateDeployedContracts)
+        fun removeCadenceContract(address: Address, name: String) {
+            if let names = self.cadenceContracts[address] {
                 names.remove(key: name)
                 if names.length == 0 {
-                    self.contracts.remove(key: address)
+                    self.cadenceContracts.remove(key: address)
                 }
             }
         }
 
+        access(Owner | UpdateDeployedContracts)
+        fun removeEvmContract(address: [UInt8; 20]) {
+            var addressString = String.encodeHex(address.toVariableSized())
+            self.evmContracts.remove(key: addressString)
+        }
+
         init() {
-            self.contracts = {}
+            self.cadenceContracts = {}
+            self.evmContracts = {}
         }
     }
 
@@ -105,12 +126,12 @@ contract GoldStar {
         access(all)
         var socials: {String: String}
 
-        access(UpdateSocials)
+        access(Owner | UpdateSocials)
         fun set(name: String, handle: String) {
             self.socials[name] = handle
         }
 
-        access(UpdateSocials)
+        access(Owner | UpdateSocials)
         fun remove(name: String) {
             self.socials.remove(key: name)
         }
@@ -125,14 +146,14 @@ contract GoldStar {
         access(all)
         var submissions: @{Type: {Submission}}
 
-        access(UpdateSubmissions)
+        access(Owner | UpdateSubmissions)
         fun add(_ submission: @{Submission}, challengeType: Type): &{Submission} {
             self.submissions[challengeType] <-! submission
             let ref = &self.submissions[challengeType] as &{Submission}?
             return ref!
         }
 
-        access(UpdateSubmissions)
+        access(Owner | UpdateSubmissions)
         fun remove(challengeType: Type): @{Submission}? {
             return <-self.submissions.remove(key: challengeType)
         }
