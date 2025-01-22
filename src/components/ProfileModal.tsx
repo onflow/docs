@@ -17,6 +17,8 @@ import * as fcl from '@onflow/fcl';
 import { z } from 'zod';
 import { parseIdentifier, typeIdentifier } from '../utils/flow';
 import { CONTRACT_IDENTIFIER_REGEX } from '../utils/constants';
+import { useGithubUser } from '../hooks/use-github-user';
+import { useDebounce } from '../hooks/use-debounce';
 
 interface ProfileModalProps {
   isOpen: boolean;
@@ -81,6 +83,13 @@ const ProfileModal: React.FC<ProfileModalProps> = ({ isOpen, onClose }) => {
     referralSource?: boolean;
     deployedContracts?: boolean;
   }>({});
+
+  const { value: debouncedGithubHandle, isDebouncing: githubDebouncing } =
+    useDebounce(settings?.socials?.[SocialType.GITHUB], 500);
+  const { user: githubUser, isLoading: githubFetchLoading } = useGithubUser(
+    debouncedGithubHandle,
+  );
+  const isGithubLoading = githubFetchLoading || githubDebouncing;
 
   const validate = () => {
     let hasErrors = false;
@@ -237,6 +246,11 @@ const ProfileModal: React.FC<ProfileModalProps> = ({ isOpen, onClose }) => {
   return (
     <Modal isOpen={isOpen} onClose={onClose} scrollable={true} title="Profile">
       <div className="space-y-6">
+        <img
+          src={!isGithubLoading ? githubUser?.avatar_url : ''}
+          className="w-24 h-24 rounded-full"
+        />
+
         <div className="space-y-4">
           <Field
             label="Username"
@@ -275,7 +289,9 @@ const ProfileModal: React.FC<ProfileModalProps> = ({ isOpen, onClose }) => {
                   socials,
                 });
               }}
-              onBlur={() => setTouched({ ...touched, socials: true })}
+              onBlur={() => {
+                setTouched({ ...touched, socials: true });
+              }}
             />
           </Field>
         </div>
