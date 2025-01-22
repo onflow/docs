@@ -1,4 +1,4 @@
-import useSWR from 'swr';
+import useSWR from 'swr/immutable';
 import { User } from '../types/github';
 
 export function useGithubUser(username?: string | null) {
@@ -11,6 +11,9 @@ export function useGithubUser(username?: string | null) {
     async (url) => {
       const response = await fetch(url);
       return response.json() as Promise<User>;
+    },
+    {
+      refreshInterval: 1000 * 60 * 60, // 1 hour
     },
   );
 
