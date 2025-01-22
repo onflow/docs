@@ -24,7 +24,7 @@ However, in order to leverage all the features of Cadence, developers will need 
 
 :::danger
 
-🚨🚨🚨 **ASSET LOSS RISK*** 🚨🚨🚨
+🚨🚨🚨 **ASSET LOSS RISK** 🚨🚨🚨
 
 Cadence-Owned Accounts, easily identifiable by the leading zeroes (`0x00000000000000000000000`) **only exist on Flow**.  The keys to these addresses are generated in a way that is not compatible with other networks.
 
