@@ -16,15 +16,23 @@ export function localStorageCache(): Map<string, any> {
   // When initializing, we restore the data from `localStorage` into a map.
   const map = new Map<string, any>(readCache());
 
-  // Before unloading the app, we write back all the data into `localStorage`.
-  window.addEventListener('beforeunload', () => {
+  function updateCache() {
     // Merge the existing cache with the new cache.
-    const updatedCache = readCache();
+    const currentCache = readCache();
+    const updatedCache = new Map(readCache());
+    let hasChanged = false;
     map.forEach((value, key) => {
-      updatedCache.set(key, value);
+      if (currentCache[key] !== value) {
+        hasChanged = true;
+        updatedCache.set(key, value);
+      }
     });
+
     writeCache(updatedCache);
-  });
+  }
+
+  // Update the cache periodically.
+  setInterval(updateCache, 2500);
 
   // We still use the map for write & read for performance.
   return map;
