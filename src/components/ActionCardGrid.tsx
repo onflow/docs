@@ -30,7 +30,7 @@ const ActionCardGrid: React.FC<ActionCardGridProps> = ({ title, sections }) => {
           <div className="w-[1px] bg-green-500 h-full"></div>
         </div>
         {/* Title */}
-        <h2 className="ml-20 text-3xl font-semibold text-white">{title}</h2>
+        <h2 className="ml-20 text-3xl font-semibold text-gray-900 dark:text-white">{title}</h2>
       </div>
 
       {/* Wrap Cards and Sections in Line Container */}
