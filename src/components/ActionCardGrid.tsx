@@ -27,7 +27,7 @@ const ActionCardGrid: React.FC<ActionCardGridProps> = ({ title, sections }) => {
             <LocationIcon />
           </div>
           {/* Vertical Line */}
-          <div className="w-1 bg-green-500 h-full"></div>
+          <div className="w-[1px] bg-green-500 h-full"></div>
         </div>
         {/* Title */}
         <h2 className="ml-16 text-3xl font-semibold text-white">{title}</h2>
@@ -36,7 +36,7 @@ const ActionCardGrid: React.FC<ActionCardGridProps> = ({ title, sections }) => {
       {/* Wrap Cards and Sections in Line Container */}
       <div className="relative pl-16">
         {/* Vertical Line */}
-        <div className="absolute top-0 left-10 w-1 bg-green-500 h-full"></div>
+        <div className="absolute top-0 left-10 w-[1px] bg-green-500 h-full"></div>
 
         {/* Sections */}
         {sections.map((section, sectionIndex) => (
