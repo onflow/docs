@@ -17,6 +17,9 @@ import * as fcl from '@onflow/fcl';
 import { z } from 'zod';
 import { parseIdentifier, typeIdentifier } from '../utils/flow';
 import { CONTRACT_IDENTIFIER_REGEX } from '../utils/constants';
+import { useGithubUser } from '../hooks/use-github-user';
+import { useDebounce } from '../hooks/use-debounce';
+import { faUser } from '@fortawesome/free-solid-svg-icons';
 
 interface ProfileModalProps {
   isOpen: boolean;
@@ -81,6 +84,13 @@ const ProfileModal: React.FC<ProfileModalProps> = ({ isOpen, onClose }) => {
     referralSource?: boolean;
     deployedContracts?: boolean;
   }>({});
+
+  const { value: debouncedGithubHandle, isDebouncing: githubDebouncing } =
+    useDebounce(settings?.socials?.[SocialType.GITHUB], 1000);
+  const { user: githubUser, isLoading: githubFetchLoading } = useGithubUser(
+    debouncedGithubHandle,
+  );
+  const isGithubLoading = githubFetchLoading || githubDebouncing;
 
   const validate = () => {
     let hasErrors = false;
@@ -236,7 +246,19 @@ const ProfileModal: React.FC<ProfileModalProps> = ({ isOpen, onClose }) => {
 
   return (
     <Modal isOpen={isOpen} onClose={onClose} scrollable={true} title="Profile">
-      <div className="space-y-6">
+      <div className="space-y-6 flex flex-col">
+        <div className="flex items-center w-24 h-24 mx-auto">
+          {(isGithubLoading || !githubUser?.avatar_url) && (
+            <FontAwesomeIcon icon={faUser} size="5x" className="mx-auto" />
+          )}
+          {!isGithubLoading && githubUser?.avatar_url && (
+            <img
+              src={githubUser?.avatar_url}
+              className="w-24 h-24 rounded-full mx-auto"
+            />
+          )}
+        </div>
+
         <div className="space-y-4">
           <Field
             label="Username"
@@ -275,7 +297,9 @@ const ProfileModal: React.FC<ProfileModalProps> = ({ isOpen, onClose }) => {
                   socials,
                 });
               }}
-              onBlur={() => setTouched({ ...touched, socials: true })}
+              onBlur={() => {
+                setTouched({ ...touched, socials: true });
+              }}
             />
           </Field>
         </div>
@@ -317,7 +341,7 @@ const ProfileModal: React.FC<ProfileModalProps> = ({ isOpen, onClose }) => {
           </div>
         </Field>
 
-        <div className="max-w-sm mx-auto">
+        <div className="max-w-sm">
           <RadioGroup
             options={flowSources.map((source) => source.name)}
             value={settings?.referralSource || ''}
