@@ -15,6 +15,8 @@ import { faTrophy } from '@fortawesome/free-solid-svg-icons';
 import { useChallenges } from '../hooks/use-challenges';
 import * as fcl from '@onflow/fcl';
 import { z } from 'zod';
+import { parseIdentifier, typeIdentifier } from '../utils/flow';
+import { CONTRACT_IDENTIFIER_REGEX } from '../utils/constants';
 
 interface ProfileModalProps {
   isOpen: boolean;
@@ -34,8 +36,17 @@ const ProfileSettingsSchema = z.object({
   handle: z.string().nonempty('Username is required'),
   socials: z.record(z.string().nonempty()),
   referralSource: z.string().nonempty().optional(),
-  deployedContracts: z.record(z.string().nonempty()),
+  deployedContracts: z.any(),
 });
+
+const TagInputSchema = z.string().refine(
+  (value) => {
+    return !value || CONTRACT_IDENTIFIER_REGEX.test(value.trim());
+  },
+  {
+    message: 'Invalid contract identifier',
+  },
+);
 
 const ProfileModal: React.FC<ProfileModalProps> = ({ isOpen, onClose }) => {
   const { challenges } = useChallenges();
@@ -48,8 +59,9 @@ const ProfileModal: React.FC<ProfileModalProps> = ({ isOpen, onClose }) => {
   } = useProfile(user.addr);
   const [loaded, setLoaded] = useState(false);
   const [txStatus, setTxStatus] = useState<string | null>(null);
-  const [tags, setTags] = useState<string[]>([]);
+
   const [tagInput, setTagInput] = useState('');
+  const [tagError, setTagError] = useState<string | null>(null);
 
   const [settings, setSettings] = useState<ProfileSettings>({
     handle: '',
@@ -71,7 +83,16 @@ const ProfileModal: React.FC<ProfileModalProps> = ({ isOpen, onClose }) => {
   }>({});
 
   const validate = () => {
+    let hasErrors = false;
+
+    const tagInputResult = TagInputSchema.safeParse(tagInput);
+    hasErrors = !tagInputResult.success;
+    setTagError(
+      tagInputResult.success ? null : tagInputResult.error.errors[0].message,
+    );
+
     const result = ProfileSettingsSchema.safeParse(settings);
+    hasErrors = !result.success || hasErrors;
     if (!result.success) {
       setErrors(
         result.error.errors.reduce((acc, error) => {
@@ -83,6 +104,8 @@ const ProfileModal: React.FC<ProfileModalProps> = ({ isOpen, onClose }) => {
     } else {
       setErrors({});
     }
+
+    return !hasErrors;
   };
 
   const completedChallenges = Object.keys(profile?.submissions ?? {}).reduce(
@@ -110,17 +133,45 @@ const ProfileModal: React.FC<ProfileModalProps> = ({ isOpen, onClose }) => {
 
   useEffect(() => {
     validate();
-  }, [settings]);
+  }, [settings, tagInput]);
 
   const handleAddTag = () => {
-    if (tagInput.trim() && !tags.includes(tagInput.trim())) {
-      setTags([...tags, tagInput.trim()]);
+    const identifier = parseIdentifier(tagInput.trim());
+    if (identifier) {
+      setSettings({
+        ...settings,
+        deployedContracts: {
+          ...settings?.deployedContracts,
+          [identifier.address]: [
+            ...(settings?.deployedContracts?.[identifier.address] || []),
+            identifier.contractName,
+          ],
+        },
+      });
       setTagInput('');
     }
   };
 
   const handleRemoveTag = (tagToRemove: string) => {
-    setTags(tags.filter((tag) => tag !== tagToRemove));
+    const identifier = parseIdentifier(tagToRemove);
+    if (identifier) {
+      const newProfile = {
+        ...profile,
+        deployedContracts: {
+          ...profile?.deployedContracts,
+          [identifier.address]:
+            profile?.deployedContracts?.[identifier.address]?.filter(
+              (contractName) => contractName !== identifier.contractName,
+            ) || [],
+        },
+      } as ProfileSettings;
+
+      if (newProfile.deployedContracts?.[identifier.address]?.length === 0) {
+        delete newProfile.deployedContracts?.[identifier.address];
+      }
+
+      setSettings(newProfile);
+    }
   };
 
   async function handleSave() {
@@ -133,7 +184,8 @@ const ProfileModal: React.FC<ProfileModalProps> = ({ isOpen, onClose }) => {
       referralSource: true,
       deployedContracts: true,
     });
-    validate();
+
+    if (!validate()) return;
 
     setTxStatus('Pending Approval...');
     try {
@@ -186,7 +238,11 @@ const ProfileModal: React.FC<ProfileModalProps> = ({ isOpen, onClose }) => {
     <Modal isOpen={isOpen} onClose={onClose} scrollable={true} title="Profile">
       <div className="space-y-6">
         <div className="space-y-4">
-          <Field label="Username" description="What should we call you?">
+          <Field
+            label="Username"
+            description="What should we call you?"
+            error={touched.handle ? errors.handle : undefined}
+          >
             <Input
               name="username"
               placeholder="johndoe"
@@ -197,10 +253,11 @@ const ProfileModal: React.FC<ProfileModalProps> = ({ isOpen, onClose }) => {
               onBlur={() => setTouched({ ...touched, handle: true })}
             />
           </Field>
-          {errors.handle && touched.handle && (
-            <div className="text-red-500 text-sm">{errors.handle}</div>
-          )}
-          <Field label="Github Handle" description="What's your Github handle?">
+          <Field
+            label="Github Handle"
+            description="What's your Github handle?"
+            error={touched.socials ? errors.socials : undefined}
+          >
             <Input
               name="github_handle"
               placeholder="joedoecodes"
@@ -221,14 +278,12 @@ const ProfileModal: React.FC<ProfileModalProps> = ({ isOpen, onClose }) => {
               onBlur={() => setTouched({ ...touched, socials: true })}
             />
           </Field>
-          {errors.socials && touched.socials && (
-            <div className="text-red-500 text-sm">{errors.socials}</div>
-          )}
         </div>
 
         <Field
           label="Contracts Deployed"
-          description="Add your contracts in the canonical format (A.0x123.Foobar)."
+          description="Add your contracts in the identifer format (A.0x123.Foobar)."
+          error={tagError || undefined}
         >
           <div className="space-y-2">
             <div className="flex items-center gap-2">
@@ -244,13 +299,20 @@ const ProfileModal: React.FC<ProfileModalProps> = ({ isOpen, onClose }) => {
               </Button>
             </div>
             <div className="flex flex-wrap gap-2">
-              {tags.map((tag) => (
-                <RemovableTag
-                  key={tag}
-                  name={tag}
-                  onRemove={() => handleRemoveTag(tag)}
-                />
-              ))}
+              {Object.entries(settings?.deployedContracts || {}).map(
+                ([address, contracts]) =>
+                  contracts.map((contractName) => {
+                    const identifier = typeIdentifier(address, contractName);
+                    console.log('identifier', identifier);
+                    return (
+                      <RemovableTag
+                        key={identifier}
+                        name={identifier}
+                        onRemove={() => handleRemoveTag(identifier)}
+                      />
+                    );
+                  }),
+              )}
             </div>
           </div>
         </Field>
