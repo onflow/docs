@@ -20,8 +20,9 @@ const ActionCardGrid: React.FC<ActionCardGridProps> = ({ title, sections }) => {
     <div className="relative p-8">
       {/* Main Title Section */}
       <div className="relative flex items-center mb-8">
-        {/* Icon */}
-        <div className="absolute top-0 left-0 flex flex-col items-center">
+        {/* Icon and Line Container */}
+        <div className="absolute top-0 left-5 flex flex-col items-center">
+          {/* Icon */}
           <div className="w-10 h-10 bg-green-500 flex items-center justify-center rounded-md">
             <LocationIcon />
           </div>
@@ -33,17 +34,17 @@ const ActionCardGrid: React.FC<ActionCardGridProps> = ({ title, sections }) => {
       </div>
 
       {/* Wrap Cards and Sections in Line Container */}
-      <div className="relative pl-8">
+      <div className="relative pl-16">
         {/* Vertical Line */}
-        <div className="absolute top-0 left-6 w-1 bg-green-500 h-full"></div>
+        <div className="absolute top-0 left-10 w-1 bg-green-500 h-full"></div>
 
         {/* Sections */}
         {sections.map((section, sectionIndex) => (
           <div key={sectionIndex} className="mb-12">
             {/* Section Title */}
-            <h3 className="text-2xl font-semibold text-gray-300 mb-4">{section.title}</h3>
+            <h3 className="pl-8 text-2xl font-semibold text-gray-300 mb-4">{section.title}</h3>
             {/* Cards Grid */}
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 pl-8">
               {section.cards.map((card, cardIndex) => (
                 <ActionCard
                   key={`${sectionIndex}-${cardIndex}`}
