@@ -1,6 +1,8 @@
 import useSWR from 'swr/immutable';
 import { User } from '../types/github';
 
+const ONE_HOUR = 1000 * 60 * 60;
+
 export function useGithubUser(username?: string | null) {
   const {
     data: user,
@@ -13,7 +15,7 @@ export function useGithubUser(username?: string | null) {
       return response.json() as Promise<User>;
     },
     {
-      refreshInterval: 1000 * 60 * 60, // 1 hour
+      refreshInterval: ONE_HOUR,
     },
   );
 
