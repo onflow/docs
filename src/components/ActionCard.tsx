@@ -10,7 +10,7 @@ interface ActionCardProps {
   variant?: 'default' | 'overlay';
 }
 
-const LocationIcon: React.FC = () => (
+export const LocationIcon: React.FC = () => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
     fill="none"
