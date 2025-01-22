@@ -17,7 +17,7 @@ import * as fcl from '@onflow/fcl';
 import { z } from 'zod';
 import { parseIdentifier, typeIdentifier } from '../utils/flow';
 import { CONTRACT_IDENTIFIER_REGEX } from '../utils/constants';
-import { useGithubUser } from '../hooks/use-github-user';
+import { useGithubAvatar } from '../hooks/use-github-avatar';
 import { useDebounce } from '../hooks/use-debounce';
 import { faUser } from '@fortawesome/free-solid-svg-icons';
 
@@ -87,10 +87,10 @@ const ProfileModal: React.FC<ProfileModalProps> = ({ isOpen, onClose }) => {
 
   const { value: debouncedGithubHandle, isDebouncing: githubDebouncing } =
     useDebounce(settings?.socials?.[SocialType.GITHUB], 1000);
-  const { user: githubUser, isLoading: githubFetchLoading } = useGithubUser(
+  const { avatar: avatar, isLoading: avatarLoading } = useGithubAvatar(
     debouncedGithubHandle,
   );
-  const isGithubLoading = githubFetchLoading || githubDebouncing;
+  const isAvatarLoading = avatarLoading || githubDebouncing;
 
   const validate = () => {
     let hasErrors = false;
@@ -248,14 +248,11 @@ const ProfileModal: React.FC<ProfileModalProps> = ({ isOpen, onClose }) => {
     <Modal isOpen={isOpen} onClose={onClose} scrollable={true} title="Profile">
       <div className="space-y-6 flex flex-col">
         <div className="flex items-center w-24 h-24 mx-auto">
-          {(isGithubLoading || !githubUser?.avatar_url) && (
+          {(isAvatarLoading || !avatar) && (
             <FontAwesomeIcon icon={faUser} size="5x" className="mx-auto" />
           )}
-          {!isGithubLoading && githubUser?.avatar_url && (
-            <img
-              src={githubUser?.avatar_url}
-              className="w-24 h-24 rounded-full mx-auto"
-            />
+          {!isAvatarLoading && avatar && (
+            <img src={avatar} className="w-24 h-24 rounded-full mx-auto" />
           )}
         </div>
 
