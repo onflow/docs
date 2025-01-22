@@ -19,13 +19,17 @@ const ActionCardGrid: React.FC<ActionCardGridProps> = ({ title, sections }) => {
   return (
     <div className="relative p-8">
       {/* Main Title Section */}
-      <div className="flex items-center mb-8">
+      <div className="relative flex items-center mb-8">
         {/* Icon */}
-        <div className="w-10 h-10 bg-green-500 flex items-center justify-center rounded-md mr-4">
-          <LocationIcon />
+        <div className="absolute top-0 left-0 flex flex-col items-center">
+          <div className="w-10 h-10 bg-green-500 flex items-center justify-center rounded-md">
+            <LocationIcon />
+          </div>
+          {/* Vertical Line */}
+          <div className="w-1 bg-green-500 h-full"></div>
         </div>
         {/* Title */}
-        <h2 className="text-3xl font-semibold text-white">{title}</h2>
+        <h2 className="ml-16 text-3xl font-semibold text-white">{title}</h2>
       </div>
 
       {/* Wrap Cards and Sections in Line Container */}
