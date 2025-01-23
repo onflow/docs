@@ -62,7 +62,7 @@ const Modal: React.FC<ModalProps> = ({
             >
               {/* Header */}
               {title && (
-                <div className="px-4 pt-3 pb-4 border-b border-gray-300 dark:border-gray-700 flex justify-center relative">
+                <div className="px-4 pt-3 pb-6 border-b border-gray-300 dark:border-gray-700 flex justify-center relative">
                   <Dialog.Title
                     as="h3"
                     className="text-lg font-semibold text-center mt-1 mb-0"
