@@ -383,6 +383,7 @@ const ProfileModal: React.FC<ProfileModalProps> = ({ isOpen, onClose }) => {
         <div className="flex flex-col space-y-2">
           <Button
             size="sm"
+            variant="primary"
             className="w-full max-w-md"
             onClick={handleSave}
             disabled={!hasChanges() || !settings || !!txStatus}
