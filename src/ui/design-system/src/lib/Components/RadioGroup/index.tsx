@@ -37,7 +37,7 @@ export default function RadioGroup<T>({
                 'flex items-start gap-3 p-3 rounded-lg border transition cursor-pointer',
                 checked
                   ? 'bg-green-50 border-green-500 dark:bg-green-900 dark:border-green-400'
-                  : 'bg-white border-gray-300 hover:bg-gray-50 dark:bg-gray-800 dark:border-gray-600 dark:hover:bg-gray-700',
+                  : 'bg-white border-gray-300 hover:bg-gray-50 dark:bg-gray-900 dark:border-gray-600 dark:hover:bg-gray-700',
                 active && 'ring-2 ring-green-500'
               )
             }
