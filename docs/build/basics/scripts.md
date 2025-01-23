@@ -65,7 +65,7 @@ Scripts can be used for the following:
 
 A script can be executed by submitting it to the Access API provided by access nodes. Currently, there are three API endpoints that allow a user to execute scripts at the latest sealed block, a previous block height, or a previous block ID.
 
-[**gRPC Script API**](../../networks/node-ops/access-onchain-data/access-nodes/accessing-data/access-api.md#scripts)
+[**gRPC Script API**](../../networks/access-onchain-data/index.md#scripts)
 
 [**REST Script API**](/http-api#tag/Scripts)
 

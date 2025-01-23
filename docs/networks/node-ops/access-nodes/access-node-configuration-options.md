@@ -1,7 +1,7 @@
 ---
 title: Serving execution data
 sidebar_label: Execution Data
-sidebar_position: 3
+sidebar_position: 2
 ---
 
 Flow chain data comprises of two parts,
@@ -100,7 +100,7 @@ gsutil ls "gs://flow-genesis-bootstrap/checkpoints/"
 The checkpoint paths are in the format `flow-genesis-bootstrap/checkpoints/[network]/[epoch number]-[block height]/`.
 Where
 * `[network]` is the network the checkpoint is from. For example, `mainnet` or `testnet`.
-* `[epoch number]` is the epoch number when the checkpoint was taken. You can find the current epoch number on the [flowdiver](https://www.flowdiver.io/) home page. 
+* `[epoch number]` is the epoch number when the checkpoint was taken. You can find the current epoch number on the [flowscan.io](https://flowscan.io/) home page. 
 * `[block height]` is the block height at which the checkpoint was taken.
 Make sure that the checkpoint you select is from an epoch when your node was part of the network.
 

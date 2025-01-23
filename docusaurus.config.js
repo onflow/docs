@@ -422,12 +422,12 @@ const config = {
                 label: 'Network Status',
               },
               {
-                href: 'https://flowdiver.io/',
-                label: 'Flowdiver Mainnet',
+                href: 'https://flowdscan.io/',
+                label: 'Flowscan Mainnet',
               },
               {
-                href: 'https://testnet.flowdiver.io/',
-                label: 'Flowdiver Testnet',
+                href: 'https://testnet.flowscan.io/',
+                label: 'Flowscan Testnet',
               },
               {
                 to: '/networks/node-ops/node-operation/past-sporks',
