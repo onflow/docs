@@ -42,12 +42,12 @@ interface InputProps extends React.InputHTMLAttributes<HTMLInputElement> {
 }
 
 const Input: React.FC<InputProps> = ({
-                                       variant = 'primary',
-                                       size = 'md',
-                                       error = false,
-                                       className,
-                                       ...props
-                                     }) => {
+    variant = 'primary',
+    size = 'md',
+    error = false,
+    className,
+    ...props
+  }) => {
   return (
     <input
       className={clsx(
