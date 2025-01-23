@@ -23,10 +23,12 @@ const Checklist: React.FC<ChecklistProps> = ({ title, items }) => {
               <FontAwesomeIcon
                 icon={item.completed ? faCheckSquare : faSquare}
                 size="lg"
-                className="text-black"
+                className={item.completed ? "text-green-500" : "text-gray-400"}
               />
             </span>
-            <span>{item.label}</span>
+            <span className={item.completed ? "text-gray-700 font-semibold" : "text-gray-600"}>
+              {item.label}
+            </span>
           </li>
         ))}
       </ul>
