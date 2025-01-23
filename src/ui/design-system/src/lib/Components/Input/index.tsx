@@ -19,12 +19,6 @@ const VARIANTS = {
     dark:bg-gray-800 dark:text-gray-200 dark:border-gray-500
     dark:focus:ring-gray-500 dark:hover:border-gray-400
   `,
-  error: `
-    bg-red-50 text-red-600 border-red-500
-    focus:ring-red-500 focus:border-red-500
-    dark:bg-red-900 dark:text-red-400 dark:border-red-500
-    dark:focus:ring-red-400
-  `,
 };
 
 
@@ -37,14 +31,12 @@ const SIZES = {
 interface InputProps extends React.InputHTMLAttributes<HTMLInputElement> {
   variant?: keyof typeof VARIANTS;
   size?: keyof typeof SIZES;
-  error?: boolean;
   className?: string;
 }
 
 const Input: React.FC<InputProps> = ({
     variant = 'primary',
     size = 'md',
-    error = false,
     className,
     ...props
   }) => {
@@ -52,7 +44,7 @@ const Input: React.FC<InputProps> = ({
     <input
       className={clsx(
         BASE_CLASSES,
-        error ? VARIANTS.error : VARIANTS[variant],
+        VARIANTS[variant],
         SIZES[size],
         className
       )}
