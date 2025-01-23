@@ -1,6 +1,7 @@
 import React, { Fragment } from 'react';
 import { Dialog, Transition } from '@headlessui/react';
 import clsx from 'clsx';
+import { Button } from '../Button';
 
 interface ModalProps {
   isOpen: boolean;
@@ -61,13 +62,22 @@ const Modal: React.FC<ModalProps> = ({
             >
               {/* Header */}
               {title && (
-                <div className="px-4 py-3 border-b border-gray-300 dark:border-gray-700">
+                <div className="px-4 pt-3 pb-4 border-b border-gray-300 dark:border-gray-700 flex justify-center relative">
                   <Dialog.Title
                     as="h3"
-                    className="text-lg font-semibold text-center"
+                    className="text-lg font-semibold text-center mt-1 mb-0"
                   >
                     {title}
                   </Dialog.Title>
+
+                  <Button
+                    variant="ghost"
+                    size="sm"
+                    className="absolute top-2 right-2"
+                    onClick={onClose}
+                  >
+                    &#10005;
+                  </Button>
                 </div>
               )}
 
