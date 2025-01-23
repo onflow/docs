@@ -11,7 +11,7 @@ transaction(
             let profile <- GoldStar.createProfile(handle: handle)
             
             if let referralSource = referralSource {
-                profile.updateReferralSource(source: referralSource)
+                profile.referralSource.update(newSource: referralSource)
             }
 
             for addr in deployedContracts.keys {

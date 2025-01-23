@@ -21,8 +21,8 @@ transaction(
 
         // Update the referral source
         if let referralSource = referralSource {
-            if referralSource != self.profile.referralSource {
-                self.profile.updateReferralSource(source: referralSource)
+            if referralSource != self.profile.referralSource.source {
+                self.profile.referralSource.update(newSource: referralSource)
             }
         }
 
@@ -55,10 +55,5 @@ transaction(
                 self.profile.socials.set(name: social, handle: socials[social]!)
             }
         }
-    }
-
-    post {
-        *self.profile.socials.socials == socials: "Socials not updated";
-        self.profile.referralSource == referralSource: "Referral source not updated"
     }
 }

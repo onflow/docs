@@ -33,8 +33,8 @@ contract GoldStar {
         access(mapping Identity)
         var handle: ProfileHandle
 
-        access(all)
-        var referralSource: String?
+        access(mapping Identity)
+        var referralSource: ReferralSource
 
         access(mapping Identity)
         var deployedContracts: DeployedContracts
@@ -45,14 +45,9 @@ contract GoldStar {
         access(mapping Identity)
         var submissions: @ProfileSubmissions
 
-        access(UpdateReferralSource)
-        fun updateReferralSource(source: String) {
-            self.referralSource = source
-        }
-
         init(handle: String) {
             self.handle = ProfileHandle(value: handle)
-            self.referralSource = nil
+            self.referralSource = ReferralSource(value: nil)
             self.deployedContracts = DeployedContracts()
             self.socials = ProfileSocials()
             self.submissions <- create ProfileSubmissions()
@@ -71,6 +66,21 @@ contract GoldStar {
 
         init(value: String) {
             self.handle = value
+        }
+    }
+
+    access(all)
+    struct ReferralSource {
+        access(all)
+        var source: String?
+
+        access(UpdateReferralSource)
+        fun update(newSource: String?) {
+            self.source = newSource
+        }
+
+        init(value: String?) {
+            self.source = value
         }
     }
 

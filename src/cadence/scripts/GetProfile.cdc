@@ -14,7 +14,7 @@ access(all) struct Profile {
         }
         
         self.handle = ref.handle.handle
-        self.referralSource = ref.referralSource
+        self.referralSource = ref.referralSource.source
         self.deployedContracts = DeployedContracts(ref: ref.deployedContracts)
         self.socials = *ref.socials.socials
         self.submissions = submissions
