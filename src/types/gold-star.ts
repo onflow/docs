@@ -1,14 +1,14 @@
 export interface ProfileSettings {
-  handle?: string;
+  handle: string;
   referralSource?: string;
-  socials?: { [type: string]: string };
-  deployedContracts?: { [address: string]: string[] };
+  socials: { [type: string]: string };
+  deployedContracts: DeployedContracts;
 }
 export interface Profile {
   handle: string;
   referralSource?: string;
   socials: { [type: string]: string };
-  deployedContracts: { [address: string]: string[] };
+  deployedContracts: DeployedContracts;
   submissions: { [challengeType: string]: { completed: boolean } };
 }
 
@@ -16,7 +16,10 @@ export interface ProfileResponse {
   handle: string;
   socials: { [type: string]: string };
   submissions: { [challengeType: string]: { completed: boolean } };
-  deployedContracts: { [address: string]: string[] };
+  deployedContracts: {
+    cadenceContracts: { [address: string]: string[] };
+    evmContracts: string[];
+  };
   referralSource?: string;
 }
 
@@ -39,3 +42,8 @@ export type Challenge = {
 export enum SocialType {
   GITHUB = 'github',
 }
+
+export type DeployedContracts = {
+  cadenceContracts: { [address: string]: string[] };
+  evmContracts: string[];
+};

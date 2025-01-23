@@ -64,3 +64,5 @@ export const GOLD_STAR_CHALLENGES = {
 
 export const CONTRACT_IDENTIFIER_REGEX =
   /^A\.(0x)?([0-9a-fA-F]{16})\.([a-zA-Z0-9_]+)$/;
+
+export const EVM_ADDRESS_REGEX = /^0x[a-fA-F0-9]{40}$/;

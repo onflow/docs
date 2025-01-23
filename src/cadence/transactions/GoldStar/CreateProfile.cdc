@@ -3,7 +3,8 @@ import "GoldStar"
 transaction(
     handle: String,
     referralSource: String?,
-    deployedContracts: {Address: [String]},
+    deployedCadenceContracts: {Address: [String]},
+    deployedEvmContracts: [String],
     socials: {String: String}
 ) {
     prepare(signer: auth(SaveValue, IssueStorageCapabilityController, PublishCapability) &Account) {
@@ -11,15 +12,19 @@ transaction(
             let profile <- GoldStar.createProfile(handle: handle)
             
             if let referralSource = referralSource {
-                profile.updateReferralSource(source: referralSource)
+                profile.referralSource.update(newSource: referralSource)
             }
 
-            for addr in deployedContracts.keys {
-                if let addrContracts = deployedContracts[addr] {
+            for addr in deployedCadenceContracts.keys {
+                if let addrContracts = deployedCadenceContracts[addr] {
                     for name in addrContracts {
-                        profile.deployedContracts.add(address: addr, name: name)
+                        profile.deployedContracts.addCadenceContract(address: addr, name: name)
                     }
                 }
+            }
+
+            for addr in deployedEvmContracts {
+                profile.deployedContracts.addEvmContract(address: addr.decodeHex().toConstantSized<[UInt8; 20]>()!)
             }
 
             for social in socials.keys {

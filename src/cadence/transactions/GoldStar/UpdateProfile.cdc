@@ -4,7 +4,8 @@ import "GoldStar"
 transaction(
     handle: String,
     referralSource: String?,
-    deployedContracts: {Address: [String]},
+    deployedCadenceContracts: {Address: [String]},
+    deployedEvmContracts: [String],
     socials: {String: String}
 ) {
     let profile: auth(GoldStar.UpdateHandle, GoldStar.UpdateSocials, GoldStar.UpdateDeployedContracts, GoldStar.UpdateReferralSource) &GoldStar.Profile
@@ -21,36 +22,52 @@ transaction(
 
         // Update the referral source
         if let referralSource = referralSource {
-            self.profile.updateReferralSource(source: referralSource)
+            if referralSource != self.profile.referralSource.source {
+                self.profile.referralSource.update(newSource: referralSource)
+            }
         }
 
-        // Replace all deployed contracts
-        for addr in self.profile.deployedContracts.contracts.keys {
-            for name in self.profile.deployedContracts.contracts[addr]!.keys {
-                self.profile.deployedContracts.remove(address: addr, name: name)
+        // Diff the deployed cadence contracts and update
+        for addr in self.profile.deployedContracts.cadenceContracts.keys {
+            for name in self.profile.deployedContracts.cadenceContracts[addr]!.keys {
+                if deployedCadenceContracts[addr] == nil || deployedCadenceContracts[addr]!.contains(name) == false {
+                    self.profile.deployedContracts.removeCadenceContract(address: addr, name: name)
+                }
             }
         }
         
-        for addr in deployedContracts.keys {
-            if let addrContracts = deployedContracts[addr] {
-                for name in addrContracts {
-                    self.profile.deployedContracts.add(address: addr, name: name)
+        for addr in deployedCadenceContracts.keys {
+            for name in deployedCadenceContracts[addr]! {
+                if self.profile.deployedContracts.cadenceContracts[addr] == nil || self.profile.deployedContracts.cadenceContracts[addr]![name] == nil {
+                    self.profile.deployedContracts.addCadenceContract(address: addr, name: name)
                 }
             }
         }
 
-        // Replace all socials
+        // Diff the deployed evm contracts and update
+        for name in self.profile.deployedContracts.evmContracts.keys {
+            if deployedEvmContracts.contains(name) == false {
+                self.profile.deployedContracts.removeEvmContract(address: name.decodeHex().toConstantSized<[UInt8; 20]>()!)
+            }
+        }
+
+        for name in deployedEvmContracts {
+            if self.profile.deployedContracts.evmContracts[name] != true {
+                self.profile.deployedContracts.addEvmContract(address: name.decodeHex().toConstantSized<[UInt8; 20]>()!)
+            }
+        }
+
+        // Diff the socials and update
         for social in self.profile.socials.socials.keys {
-            self.profile.socials.remove(name: social)
+            if socials[social] == nil {
+                self.profile.socials.remove(name: social)
+            }
         }
 
         for social in socials.keys {
-            self.profile.socials.set(name: social, handle: socials[social]!)
+            if self.profile.socials.socials[social] == nil {
+                self.profile.socials.set(name: social, handle: socials[social]!)
+            }
         }
-    }
-
-    post {
-        *self.profile.socials.socials == socials: "Socials not updated";
-        self.profile.referralSource == referralSource: "Referral source not updated"
     }
 }

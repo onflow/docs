@@ -30,17 +30,26 @@ export const getChallenges = async (): Promise<Challenges> => {
  * @param address
  * @returns The profile for the given address
  */
-export const getProfile = async (address: string): Promise<Profile> => {
+export const getProfile = async (address: string): Promise<Profile | null> => {
   const resp = (await fcl.query({
     cadence: GetProfile,
     args: (arg, t) => [arg(address, t.Address)],
-  })) as ProfileResponse;
+  })) as ProfileResponse | null;
+
+  if (!resp) {
+    return null;
+  }
 
   return {
     handle: resp.handle,
     socials: resp.socials,
     submissions: resp.submissions,
-    deployedContracts: resp.deployedContracts,
+    deployedContracts: {
+      cadenceContracts: resp.deployedContracts.cadenceContracts,
+      evmContracts: resp.deployedContracts.evmContracts.map((x) =>
+        fcl.withPrefix(x),
+      ),
+    },
     referralSource: resp.referralSource,
   };
 };
@@ -51,23 +60,25 @@ export const getProfile = async (address: string): Promise<Profile> => {
  * @returns The transaction ID
  */
 export const createProfile = async (profile: ProfileSettings) => {
+  const cadenceContracts = profile.deployedContracts?.cadenceContracts || {};
+  const evmContracts = profile.deployedContracts?.evmContracts || [];
+
   return await fcl.mutate({
     cadence: CreateProfile,
     args: (arg, t) => [
       arg(profile.handle, t.String),
       arg(profile.referralSource, t.Optional(t.String)),
       arg(
-        profile.deployedContracts
-          ? Object.entries(profile.deployedContracts).map(([key, value]) => ({
-              key,
-              value,
-            }))
-          : [],
+        Object.entries(cadenceContracts).map(([key, value]) => ({
+          key,
+          value,
+        })),
         t.Dictionary({
           key: t.Address,
           value: t.Array(t.String),
         }),
       ),
+      arg(evmContracts.map(fcl.sansPrefix), t.Array(t.String)),
       arg(
         profile.socials
           ? Object.entries(profile.socials).map(([key, value]) => ({
@@ -90,23 +101,25 @@ export const createProfile = async (profile: ProfileSettings) => {
  * @returns The transaction ID
  */
 export const setProfile = async (profile: ProfileSettings) => {
+  const cadenceContracts = profile.deployedContracts?.cadenceContracts || {};
+  const evmContracts = profile.deployedContracts?.evmContracts || [];
+
   return await fcl.mutate({
     cadence: UpdateProfile,
     args: (arg, t) => [
       arg(profile.handle, t.String),
       arg(profile.referralSource, t.Optional(t.String)),
       arg(
-        profile.deployedContracts
-          ? Object.entries(profile.deployedContracts).map(([key, value]) => ({
-              key,
-              value,
-            }))
-          : [],
+        Object.entries(cadenceContracts).map(([key, value]) => ({
+          key,
+          value,
+        })),
         t.Dictionary({
           key: t.Address,
           value: t.Array(t.String),
         }),
       ),
+      arg(evmContracts.map(fcl.sansPrefix), t.Array(t.String)),
       arg(
         profile.socials
           ? Object.entries(profile.socials).map(([key, value]) => ({

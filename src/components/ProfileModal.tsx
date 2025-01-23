@@ -16,7 +16,10 @@ import { useChallenges } from '../hooks/use-challenges';
 import * as fcl from '@onflow/fcl';
 import { z } from 'zod';
 import { parseIdentifier, typeIdentifier } from '../utils/flow';
-import { CONTRACT_IDENTIFIER_REGEX } from '../utils/constants';
+import {
+  CONTRACT_IDENTIFIER_REGEX,
+  EVM_ADDRESS_REGEX,
+} from '../utils/constants';
 import { useGithubAvatar } from '../hooks/use-github-avatar';
 import { useDebounce } from '../hooks/use-debounce';
 import { faUser } from '@fortawesome/free-solid-svg-icons';
@@ -39,15 +42,29 @@ const ProfileSettingsSchema = z.object({
   handle: z.string().nonempty('Username is required'),
   socials: z.record(z.string().nonempty()),
   referralSource: z.string().nonempty().optional(),
-  deployedContracts: z.any(),
+  deployedContracts: z.object({
+    cadenceContracts: z.record(z.array(z.string())),
+    evmContracts: z.array(z.string()),
+  }),
 });
 
-const TagInputSchema = z.string().refine(
+const CadenceTagInputSchema = z.string().refine(
   (value) => {
     return !value || CONTRACT_IDENTIFIER_REGEX.test(value.trim());
   },
   {
-    message: 'Invalid contract identifier',
+    message:
+      'Invalid contract identifier, must be a valid Cadence identifier (A.0x123.Foobar).',
+  },
+);
+
+const EvmTagInputSchema = z.string().refine(
+  (value) => {
+    return !value || EVM_ADDRESS_REGEX.test(value.trim());
+  },
+  {
+    message:
+      'Invalid contract identifier, must be a valid EVM address (0x1234567890abcdef1234567890abcdef12345678).',
   },
 );
 
@@ -63,14 +80,20 @@ const ProfileModal: React.FC<ProfileModalProps> = ({ isOpen, onClose }) => {
   const [loaded, setLoaded] = useState(false);
   const [txStatus, setTxStatus] = useState<string | null>(null);
 
-  const [tagInput, setTagInput] = useState('');
-  const [tagError, setTagError] = useState<string | null>(null);
+  const [cadenceTagInput, setCadenceTagInput] = useState('');
+  const [evmTagInput, setEvmTagInput] = useState('');
+
+  const [cadenceTagError, setCadenceTagError] = useState<string | null>(null);
+  const [evmTagError, setEvmTagError] = useState<string | null>(null);
 
   const [settings, setSettings] = useState<ProfileSettings>({
     handle: '',
     socials: {},
     referralSource: '',
-    deployedContracts: {},
+    deployedContracts: {
+      cadenceContracts: {},
+      evmContracts: [],
+    },
   });
   const [errors, setErrors] = useState<{
     handle?: string;
@@ -92,14 +115,22 @@ const ProfileModal: React.FC<ProfileModalProps> = ({ isOpen, onClose }) => {
   );
   const isAvatarLoading = avatarLoading || githubDebouncing;
 
-  const validate = () => {
-    let hasErrors = false;
+  const validateCadenceTagInput = () => {
+    const result = CadenceTagInputSchema.safeParse(cadenceTagInput);
+    console.log(result);
+    setCadenceTagError(result.success ? null : result.error.errors[0].message);
+    return result.success;
+  };
 
-    const tagInputResult = TagInputSchema.safeParse(tagInput);
-    hasErrors = !tagInputResult.success;
-    setTagError(
-      tagInputResult.success ? null : tagInputResult.error.errors[0].message,
-    );
+  const validateEvmTagInput = () => {
+    const result = EvmTagInputSchema.safeParse(evmTagInput);
+    setEvmTagError(result.success ? null : result.error.errors[0].message);
+    return result.success;
+  };
+
+  const validate = () => {
+    let hasErrors = !validateCadenceTagInput();
+    hasErrors = !validateEvmTagInput() || hasErrors;
 
     const result = ProfileSettingsSchema.safeParse(settings);
     hasErrors = !result.success || hasErrors;
@@ -143,45 +174,93 @@ const ProfileModal: React.FC<ProfileModalProps> = ({ isOpen, onClose }) => {
 
   useEffect(() => {
     validate();
-  }, [settings, tagInput]);
+  }, [settings, cadenceTagInput, evmTagInput]);
 
-  const handleAddTag = () => {
-    const identifier = parseIdentifier(tagInput.trim());
+  const handleAddCadenceTag = () => {
+    if (!validateCadenceTagInput()) return;
+
+    const identifier = parseIdentifier(cadenceTagInput.trim());
     if (identifier) {
       setSettings({
         ...settings,
         deployedContracts: {
-          ...settings?.deployedContracts,
-          [identifier.address]: [
-            ...(settings?.deployedContracts?.[identifier.address] || []),
-            identifier.contractName,
-          ],
+          ...settings.deployedContracts,
+          cadenceContracts: {
+            ...settings.deployedContracts.cadenceContracts,
+            [identifier.address]: [
+              ...(settings.deployedContracts.cadenceContracts[
+                identifier.address
+              ] || []),
+              identifier.contractName,
+            ],
+          },
         },
       });
-      setTagInput('');
+
+      setCadenceTagInput('');
     }
   };
 
-  const handleRemoveTag = (tagToRemove: string) => {
+  const handleAddEvmTag = () => {
+    if (!validateEvmTagInput()) return;
+
+    if (EVM_ADDRESS_REGEX.test(evmTagInput.trim())) {
+      setSettings({
+        ...settings,
+        deployedContracts: {
+          ...settings.deployedContracts,
+          evmContracts: [
+            ...settings?.deployedContracts.evmContracts,
+            evmTagInput.trim(),
+          ],
+        },
+      });
+
+      setEvmTagInput('');
+    }
+  };
+
+  const handleRemoveCadenceTag = (tagToRemove: string) => {
     const identifier = parseIdentifier(tagToRemove);
     if (identifier) {
-      const newProfile = {
-        ...profile,
+      const newSettings = {
+        ...settings,
         deployedContracts: {
-          ...profile?.deployedContracts,
-          [identifier.address]:
-            profile?.deployedContracts?.[identifier.address]?.filter(
-              (contractName) => contractName !== identifier.contractName,
-            ) || [],
+          ...settings.deployedContracts,
+          cadenceContracts: {
+            [identifier.address]:
+              settings.deployedContracts.cadenceContracts?.[
+                identifier.address
+              ]?.filter(
+                (contractName) => contractName !== identifier.contractName,
+              ) || [],
+          },
         },
       } as ProfileSettings;
 
-      if (newProfile.deployedContracts?.[identifier.address]?.length === 0) {
-        delete newProfile.deployedContracts?.[identifier.address];
+      if (
+        newSettings.deployedContracts?.cadenceContracts?.[identifier.address]
+          ?.length === 0
+      ) {
+        delete newSettings.deployedContracts?.cadenceContracts?.[
+          identifier.address
+        ];
       }
 
-      setSettings(newProfile);
+      setSettings(newSettings);
     }
+  };
+
+  const handleRemoveEvmTag = (tagToRemove: string) => {
+    setSettings({
+      ...settings,
+      deployedContracts: {
+        ...settings.deployedContracts,
+        evmContracts: settings?.deployedContracts.evmContracts.filter(
+          (address) => address !== tagToRemove,
+        ),
+      },
+    });
   };
 
   async function handleSave() {
@@ -194,6 +273,9 @@ const ProfileModal: React.FC<ProfileModalProps> = ({ isOpen, onClose }) => {
       referralSource: true,
       deployedContracts: true,
     });
+
+    handleAddCadenceTag();
+    handleAddEvmTag();
 
     if (!validate()) return;
 
@@ -240,7 +322,9 @@ const ProfileModal: React.FC<ProfileModalProps> = ({ isOpen, onClose }) => {
       !isEqual(profile?.handle, settings?.handle) ||
       !isEqual(profile?.socials, settings?.socials) ||
       !isEqual(profile?.referralSource, settings?.referralSource) ||
-      !isEqual(profile?.deployedContracts, settings?.deployedContracts)
+      !isEqual(profile?.deployedContracts, settings?.deployedContracts) ||
+      cadenceTagInput ||
+      evmTagInput
     );
   }
 
@@ -302,37 +386,77 @@ const ProfileModal: React.FC<ProfileModalProps> = ({ isOpen, onClose }) => {
         </div>
 
         <Field
-          label="Contracts Deployed"
-          description="Add your contracts in the identifer format (A.0x123.Foobar)."
-          error={tagError || undefined}
+          label="Cadence Contracts Deployed"
+          description="Add your contracts in the Cadence address format (A.0x123.Foobar)."
+          error={cadenceTagError || undefined}
         >
           <div className="space-y-2">
             <div className="flex items-center gap-2">
               <Input
-                name="contract_input"
+                name="cadence_contract_input"
                 placeholder="A.0x123.Foobar"
-                value={tagInput}
-                onChange={(e) => setTagInput(e.target.value)}
-                onKeyDown={(e) => e.key === 'Enter' && handleAddTag()}
+                value={cadenceTagInput}
+                onChange={(e) => setCadenceTagInput(e.target.value)}
+                onKeyDown={(e) => e.key === 'Enter' && handleAddCadenceTag()}
               />
-              <Button size="sm" onClick={handleAddTag}>
+              <Button
+                size="sm"
+                onClick={handleAddCadenceTag}
+                disabled={!cadenceTagInput}
+              >
                 Add
               </Button>
             </div>
             <div className="flex flex-wrap gap-2">
-              {Object.entries(settings?.deployedContracts || {}).map(
-                ([address, contracts]) =>
-                  contracts.map((contractName) => {
-                    const identifier = typeIdentifier(address, contractName);
-                    console.log('identifier', identifier);
-                    return (
-                      <RemovableTag
-                        key={identifier}
-                        name={identifier}
-                        onRemove={() => handleRemoveTag(identifier)}
-                      />
-                    );
-                  }),
+              {Object.entries(
+                settings?.deployedContracts?.cadenceContracts || {},
+              ).map(([address, contracts]) =>
+                contracts.map((contractName) => {
+                  const identifier = typeIdentifier(address, contractName);
+                  return (
+                    <RemovableTag
+                      key={identifier}
+                      name={identifier}
+                      onRemove={() => handleRemoveCadenceTag(identifier)}
+                    />
+                  );
+                }),
+              )}
+            </div>
+          </div>
+        </Field>
+
+        <Field
+          label="EVM Contracts Deployed"
+          description="Add your contracts in the EVM address format (0x1234567890abcdef1234567890abcdef12345678)."
+          error={evmTagError || undefined}
+        >
+          <div className="space-y-2">
+            <div className="flex items-center gap-2">
+              <Input
+                name="evm_contract_input"
+                placeholder="0x1234567890abcdef1234567890abcdef12345678"
+                value={evmTagInput}
+                onChange={(e) => setEvmTagInput(e.target.value)}
+                onKeyDown={(e) => e.key === 'Enter' && handleAddEvmTag()}
+              />
+              <Button
+                size="sm"
+                onClick={handleAddEvmTag}
+                disabled={!evmTagInput}
+              >
+                Add
+              </Button>
+            </div>
+            <div className="flex flex-wrap gap-2">
+              {(settings?.deployedContracts?.evmContracts || []).map(
+                (address) => (
+                  <RemovableTag
+                    key={address}
+                    name={address}
+                    onRemove={() => handleRemoveEvmTag(address)}
+                  />
+                ),
               )}
             </div>
           </div>
