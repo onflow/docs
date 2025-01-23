@@ -37,7 +37,7 @@ const SIZES = {
 interface InputProps extends React.InputHTMLAttributes<HTMLInputElement> {
   variant?: keyof typeof VARIANTS;
   size?: keyof typeof SIZES;
-  error?: boolean; // Added to handle error state
+  error?: boolean;
   className?: string;
 }
 
