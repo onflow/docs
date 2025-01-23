@@ -33,7 +33,7 @@ const ProgressModal: React.FC<ProgressModalProps> = ({
     <>
       <Modal isOpen={isOpen} onClose={onClose} title="Progress">
         <div className="space-y-6">
-          <p className="text-sm text-gray-600">
+          <p className="text-sm text-gray-600 dark:text-gray-100">
             Complete the steps below to unlock rewards and challenges. Keep track of your progress and stay on track
             with your goals!
           </p>
