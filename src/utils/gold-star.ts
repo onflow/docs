@@ -44,7 +44,12 @@ export const getProfile = async (address: string): Promise<Profile | null> => {
     handle: resp.handle,
     socials: resp.socials,
     submissions: resp.submissions,
-    deployedContracts: resp.deployedContracts,
+    deployedContracts: {
+      cadenceContracts: resp.deployedContracts.cadenceContracts,
+      evmContracts: resp.deployedContracts.evmContracts.map((x) =>
+        fcl.withPrefix(x),
+      ),
+    },
     referralSource: resp.referralSource,
   };
 };
