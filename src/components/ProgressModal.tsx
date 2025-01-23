@@ -44,6 +44,7 @@ const ProgressModal: React.FC<ProgressModalProps> = ({
             <div className="flex justify-center">
               <Button
                 size="sm"
+                variant="primary"
                 className="w-full max-w-md"
                 onClick={onOpenProfileModal}
               >
@@ -58,6 +59,7 @@ const ProgressModal: React.FC<ProgressModalProps> = ({
             <div className="flex justify-center">
               <Button
                 size="sm"
+                variant="primary"
                 className="w-full max-w-md"
                 onClick={openChallengeModal}
               >
