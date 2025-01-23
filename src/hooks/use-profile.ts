@@ -14,6 +14,8 @@ export function useProfile(address?: string | null) {
     mutate,
   } = useSWR(address && KEY(address), ([, address]) => getProfile(address));
 
+  console.log({ profile, error });
+
   return {
     profile,
     isLoading: !profile && !error,

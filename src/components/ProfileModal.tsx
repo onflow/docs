@@ -78,7 +78,10 @@ const ProfileModal: React.FC<ProfileModalProps> = ({ isOpen, onClose }) => {
     handle: '',
     socials: {},
     referralSource: '',
-    deployedContracts: {},
+    deployedContracts: {
+      cadenceContracts: {},
+      evmContracts: [],
+    },
   });
   const [errors, setErrors] = useState<{
     handle?: string;
@@ -159,11 +162,14 @@ const ProfileModal: React.FC<ProfileModalProps> = ({ isOpen, onClose }) => {
       setSettings({
         ...settings,
         deployedContracts: {
-          ...settings?.deployedContracts,
-          [identifier.address]: [
-            ...(settings?.deployedContracts?.[identifier.address] || []),
-            identifier.contractName,
-          ],
+          evmContracts: [...(settings?.deployedContracts?.evmContracts || [])],
+          cadenceContracts: {
+            ...settings?.deployedContracts?.cadenceContracts,
+            [identifier.address]: [
+              ...(settings?.deployedContracts?.[identifier.address] || []),
+              identifier.contractName,
+            ],
+          },
         },
       });
 
@@ -172,8 +178,11 @@ const ProfileModal: React.FC<ProfileModalProps> = ({ isOpen, onClose }) => {
       setSettings({
         ...settings,
         deployedContracts: {
-          ...settings?.deployedContracts,
-          [tagInput.trim()]: [],
+          ...settings.deployedContracts,
+          evmContracts: [
+            ...settings?.deployedContracts.evmContracts,
+            tagInput.trim(),
+          ],
         },
       });
 
@@ -322,7 +331,7 @@ const ProfileModal: React.FC<ProfileModalProps> = ({ isOpen, onClose }) => {
 
         <Field
           label="Contracts Deployed"
-          description="Add your contracts in the identifer format (A.0x123.Foobar)."
+          description="Add your contracts in the Cadence identifier format (A.0x123.Foobar) or EVM address format (0x1234567890abcdef1234567890abcdef12345678)."
           error={tagError || undefined}
         >
           <div className="space-y-2">
@@ -339,19 +348,28 @@ const ProfileModal: React.FC<ProfileModalProps> = ({ isOpen, onClose }) => {
               </Button>
             </div>
             <div className="flex flex-wrap gap-2">
-              {Object.entries(settings?.deployedContracts || {}).map(
-                ([address, contracts]) =>
-                  contracts.map((contractName) => {
-                    const identifier = typeIdentifier(address, contractName);
-                    console.log('identifier', identifier);
-                    return (
-                      <RemovableTag
-                        key={identifier}
-                        name={identifier}
-                        onRemove={() => handleRemoveTag(identifier)}
-                      />
-                    );
-                  }),
+              {Object.entries(
+                settings?.deployedContracts?.cadenceContracts || {},
+              ).map(([address, contracts]) =>
+                contracts.map((contractName) => {
+                  const identifier = typeIdentifier(address, contractName);
+                  return (
+                    <RemovableTag
+                      key={identifier}
+                      name={identifier}
+                      onRemove={() => handleRemoveTag(identifier)}
+                    />
+                  );
+                }),
+              )}
+              {(settings?.deployedContracts?.evmContracts || []).map(
+                (address) => (
+                  <RemovableTag
+                    key={address}
+                    name={address}
+                    onRemove={() => handleRemoveTag(address)}
+                  />
+                ),
               )}
             </div>
           </div>

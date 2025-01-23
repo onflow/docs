@@ -4,7 +4,8 @@ import "GoldStar"
 transaction(
     handle: String,
     referralSource: String?,
-    deployedContracts: {Address: [String]},
+    deployedCadenceContracts: {Address: [String]},
+    deployedEvmContracts: [String],
     socials: {String: String}
 ) {
     let profile: auth(GoldStar.UpdateHandle, GoldStar.UpdateSocials, GoldStar.UpdateDeployedContracts, GoldStar.UpdateReferralSource) &GoldStar.Profile
@@ -26,20 +27,33 @@ transaction(
             }
         }
 
-        // Diff the deployed contracts and update
+        // Diff the deployed cadence contracts and update
         for addr in self.profile.deployedContracts.cadenceContracts.keys {
             for name in self.profile.deployedContracts.cadenceContracts[addr]!.keys {
-                if deployedContracts[addr] == nil || deployedContracts[addr]!.contains(name) == false {
+                if deployedCadenceContracts[addr] == nil || deployedCadenceContracts[addr]!.contains(name) == false {
                     self.profile.deployedContracts.removeCadenceContract(address: addr, name: name)
                 }
             }
         }
         
-        for addr in deployedContracts.keys {
-            for name in deployedContracts[addr]! {
+        for addr in deployedCadenceContracts.keys {
+            for name in deployedCadenceContracts[addr]! {
                 if self.profile.deployedContracts.cadenceContracts[addr] == nil || self.profile.deployedContracts.cadenceContracts[addr]![name] == nil {
                     self.profile.deployedContracts.addCadenceContract(address: addr, name: name)
                 }
+            }
+        }
+
+        // Diff the deployed evm contracts and update
+        for name in self.profile.deployedContracts.evmContracts.keys {
+            if deployedEvmContracts.contains(name) == false {
+                self.profile.deployedContracts.removeEvmContract(address: name.decodeHex().toConstantSized<[UInt8; 20]>()!)
+            }
+        }
+
+        for name in deployedEvmContracts {
+            if self.profile.deployedContracts.evmContracts[name] != true {
+                self.profile.deployedContracts.addEvmContract(address: name.decodeHex().toConstantSized<[UInt8; 20]>()!)
             }
         }
 

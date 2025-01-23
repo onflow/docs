@@ -53,9 +53,11 @@ access(all) struct DeployedContracts {
 }
 
 access(all)
-fun main(address: Address): Profile {
+fun main(address: Address): Profile? {
     let ref = getAccount(address).capabilities.borrow<&GoldStar.Profile>(GoldStar.profilePublicPath)
-        ?? panic("Could not borrow a reference to the profile")
+    if ref == nil {
+        return nil
+    }
 
-    return Profile(ref: ref)
+    return Profile(ref: ref!)
 }
