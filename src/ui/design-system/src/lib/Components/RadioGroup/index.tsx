@@ -3,11 +3,11 @@ import { RadioGroup as HeadlessRadioGroup } from '@headlessui/react';
 import clsx from 'clsx';
 
 interface RadioGroupProps<T> {
-  options: T[]; // Array of radio options
-  value: T; // Selected value
-  onChange: (value: T) => void; // Handler for selection
-  label?: string; // Optional group label
-  getDescription?: (option: T) => string; // Function to get an optional description for each option
+  options: T[];
+  value: T;
+  onChange: (value: T) => void;
+  label?: string;
+  getDescription?: (option: T) => string;
 }
 
 export default function RadioGroup<T>({
@@ -17,6 +17,7 @@ export default function RadioGroup<T>({
     label,
     getDescription,
   }: RadioGroupProps<T>) {
+
   return (
     <div className="space-y-4">
       {/* Group Label */}
@@ -49,7 +50,7 @@ export default function RadioGroup<T>({
                     'w-5 h-5 flex-shrink-0 flex items-center justify-center rounded-full border',
                     checked
                       ? 'border-green-500 bg-green-500'
-                      : 'border-gray-400 dark:border-gray-600'
+                      : 'border-gray-400 bg-gray-100 dark:border-gray-600 dark:bg-gray-700'
                   )}
                 >
                   {checked && <div className="w-2.5 h-2.5 rounded-full bg-white" />}
