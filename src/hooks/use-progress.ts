@@ -15,26 +15,26 @@ export function useProgress() {
 
   const profileItems = [
     {
-      label: 'Create handle',
+      label: 'Create your handle',
       completed: profile && !!profile.handle,
     },
     {
-      label: 'Add Github Profile',
+      label: 'Link your Github profile',
       completed: profile && !!profile.socials[SocialType.GITHUB],
     },
     {
-      label: 'Add how you found Flow',
+      label: 'Share how you discovered Flow',
       completed: profile && !!profile.referralSource,
     },
     {
-      label: 'Add contract addresses',
+      label: 'Add your contract addresses',
       completed: profile && Object.keys(profile.deployedContracts).length > 0,
     },
   ] as ProgressItem[];
 
   const challengeItems = [
     {
-      label: 'Complete first challenge',
+      label: 'Complete your first challenge',
       completed:
         profile &&
         profile.submissions?.[
