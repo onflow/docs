@@ -1,7 +1,7 @@
 import "GoldStar"
 
 access(all)
-contract NoopChallenge {
+contract LearnFlowChallenge {
 
     access(all)
     resource Challenge: GoldStar.Challenge {
@@ -13,8 +13,8 @@ contract NoopChallenge {
         let description: String
 
         init() {
-            self.name = "NOOP Challenge"
-            self.description = "Nothing required for this challenge. All submissions are accepted."
+            self.name = "Learn Flow"
+            self.description = "Committed to learning and exploring Flow."
         }
 
         access(all)

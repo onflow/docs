@@ -41,7 +41,7 @@ export function useProgress() {
       completed:
         profile &&
         profile.submissions?.[
-          getChallengeIdentifier(GOLD_STAR_CHALLENGES.NOOP_CHALLENGE)
+          getChallengeIdentifier(GOLD_STAR_CHALLENGES.LEARN_FLOW_CHALLENGE)
         ]?.completed,
     },
   ] as ProgressItem[];

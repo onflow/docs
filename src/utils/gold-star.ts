@@ -2,7 +2,7 @@ import GetChallenges from '../cadence/scripts/GetChallenges.cdc';
 import GetProfile from '../cadence/scripts/GetProfile.cdc';
 import CreateProfile from '../cadence/transactions/GoldStar/CreateProfile.cdc';
 import UpdateProfile from '../cadence/transactions/GoldStar/UpdateProfile.cdc';
-import Evaluate from '../cadence/transactions/NoopChallenge/Evaluate.cdc';
+import Evaluate from '../cadence/transactions/LearnFlowChallenge/Evaluate.cdc';
 
 import * as fcl from '@onflow/fcl';
 import {
@@ -137,10 +137,10 @@ export const setProfile = async (profile: ProfileSettings) => {
 };
 
 /**
- * Submit a noop challenge
+ * Submit "Learn Flow" challenge
  * @returns The transaction ID
  */
-export const submitNoopChallenge = async () => {
+export const submitLearnFlowChallenge = async () => {
   return await fcl.mutate({
     cadence: Evaluate,
   });

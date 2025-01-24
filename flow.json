@@ -18,8 +18,8 @@
         "testing": "0000000000000007"
       }
     },
-    "NoopChallenge": {
-      "source": "./src/cadence/contracts/NoopChallenge.cdc",
+    "LearnFlowChallenge": {
+      "source": "./src/cadence/contracts/LearnFlowChallenge.cdc",
       "aliases": {
         "testing": "0000000000000007"
       }
@@ -121,10 +121,10 @@
   },
   "deployments": {
     "testnet": {
-      "goldstar-testnet": ["GoldStar", "NoopChallenge"]
+      "goldstar-testnet": ["GoldStar", "LearnFlowChallenge"]
     },
     "mainnet": {
-      "goldstar-mainnet": ["GoldStar", "NoopChallenge"]
+      "goldstar-mainnet": ["GoldStar", "LearnFlowChallenge"]
     }
   }
 }
