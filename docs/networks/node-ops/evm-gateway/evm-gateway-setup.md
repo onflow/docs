@@ -18,11 +18,12 @@ to Access Nodes. It does not participate in the block production process and req
 
 ## Anyone can run EVM Gateway
 
-The EVM Gateway can serve as a dedicated private RPC, a performance scaling solution, and a free gas provider offering similar capabilities 
-to centralized middleware providers like Infura, Alchemy, etc at a fraction of the cost. EVM Gateway nodes connect directly to the Flow network 
+The EVM Gateway can serve as a dedicated private RPC, a performance scaling solution, and a free gas provider offering similar in capabilities
+to centralized middleware providers like Infura, Alchemy, etc. at a fraction of the cost. EVM Gateway nodes connect directly to the Flow network
 with no middleware giving you full control.
 
-Applications which generate high call volumes to the JSON-RPC and which may have hit rate limits on Flow public nodes may benefit from running their 
+If you are just getting started building your application, you can use the [public EVM Gateway](https://developers.flow.com/evm/networks).
+Applications which generate high call volumes to the JSON-RPC may have hit rate limits on Flow public EVM Gateway may benefit from running their
 own gateway to remove rate limits. Self-hosted gateways connect directly to public Flow Access Nodes, which may also optionally be [run](../access-nodes/access-node-setup.md). 
 
 :::info
@@ -30,6 +31,13 @@ own gateway to remove rate limits. Self-hosted gateways connect directly to publ
 Apps can use EVM gateway to subsidize user transaction fees for smoother onboarding
 
 :::
+
+Alternatively, you can also choose from any of the following providers who provide the EVM Gateway as a managed service along with other value added services on top.
+
+1. [Alchemy](https://www.alchemy.com/flow)
+2. [ThirdWeb](https://thirdweb.com/flow)
+3. [Moralis](https://docs.moralis.com/web3-data-api/evm/chains/flow)
+4. [QuickNode](https://www.quicknode.com/chains/flow)
 
 ## Hardware specifications
 
