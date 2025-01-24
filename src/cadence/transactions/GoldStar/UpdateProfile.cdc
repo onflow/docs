@@ -8,14 +8,12 @@ transaction(
     deployedEvmContracts: [String],
     socials: {String: String}
 ) {
-    let profile: auth(GoldStar.Owner) &GoldStar.Profile
+    let profile: auth(GoldStar.UpdateHandle, GoldStar.UpdateSocials, GoldStar.UpdateDeployedContracts, GoldStar.UpdateReferralSource) &GoldStar.Profile
 
     prepare(signer: auth(BorrowValue) &Account) {
-        let foo = signer.storage
+        self.profile = signer.storage
             .borrow<auth(GoldStar.UpdateHandle, GoldStar.UpdateSocials, GoldStar.UpdateDeployedContracts, GoldStar.UpdateReferralSource) &GoldStar.Profile>(from: GoldStar.profileStoragePath)
             ?? panic("missing profile")
-
-        self.profile = foo as! auth(GoldStar.Owner) &GoldStar.Profile
     }
 
     execute {
