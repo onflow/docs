@@ -330,12 +330,17 @@ const ProfileModal: React.FC<ProfileModalProps> = ({ isOpen, onClose }) => {
   return (
     <Modal isOpen={isOpen} onClose={onClose} scrollable={true} title="Profile">
       <div className="space-y-6 flex flex-col">
-        <div className="flex items-center w-24 h-24 mx-auto">
+        <div className="flex flex-col items-center w-24 h-24 mx-auto mb-4">
           {(isAvatarLoading || !avatar) && (
             <FontAwesomeIcon icon={faUser} size="5x" className="mx-auto" />
           )}
           {!isAvatarLoading && avatar && (
             <img src={avatar} className="w-24 h-24 rounded-full mx-auto" />
+          )}
+          {user?.addr && (
+            <div className="text-center text-sm text-gray-500 mt-2">
+              {user.addr}
+            </div>
           )}
         </div>
 
