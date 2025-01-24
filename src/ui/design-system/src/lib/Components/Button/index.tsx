@@ -59,7 +59,7 @@ const VARIANTS = {
     hover: 'hover:bg-gray-200 hover:text-black',
     active: 'active:bg-gray-300 active:text-black',
     dark: {
-      base: 'dark:bg-transparent dark:text-white dark:border-white',
+      base: 'dark:bg-transparent dark:text-white',
       hover: 'dark:hover:bg-gray-800 dark:hover:text-white',
       active: 'dark:active:bg-gray-900 dark:active:text-white',
     },
