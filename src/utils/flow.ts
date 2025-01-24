@@ -33,6 +33,5 @@ export function parseIdentifier(identifier: string): {
   }
 
   const [, , address, contractName] = match;
-  console.log({ address, contractName });
   return { address: fcl.withPrefix(address), contractName };
 }
