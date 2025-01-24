@@ -7,6 +7,9 @@ import ProfileModal from '@site/src/components/ProfileModal';
 import { useProgress } from '../hooks/use-progress';
 import { faUser } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { useProfile } from '../hooks/use-profile';
+import { useGithubAvatar } from '../hooks/use-github-avatar';
+import { SocialType } from '../types/gold-star';
 
 const shortenAddress = (address: string) => {
   if (!address) return '';
@@ -15,6 +18,8 @@ const shortenAddress = (address: string) => {
 
 const ConnectButton: React.FC = () => {
   const { user, logIn, logOut } = useCurrentUser();
+  const { profile } = useProfile(user.addr);
+  const { avatar } = useGithubAvatar(profile?.socials?.[SocialType.GITHUB]);
   const [isProgressModalOpen, setIsProgressModalOpen] = useState(false);
   const [isProfileModalOpen, setIsProfileModalOpen] = useState(false);
   const { getProgress } = useProgress();
@@ -59,7 +64,15 @@ const ConnectButton: React.FC = () => {
       <Dropdown
         buttonLabel={
           <div className="flex items-center gap-2">
-            <FontAwesomeIcon icon={faUser} size="md" className="mx-auto" />
+            {avatar ? (
+              <img
+                src={avatar}
+                alt="Github Avatar"
+                className="w-6 h-6 rounded-full"
+              />
+            ) : (
+              <FontAwesomeIcon icon={faUser} size="md" className="mx-auto" />
+            )}
             <span className="text-sm text-gray-500">
               {formattedProgressValue}%
             </span>
