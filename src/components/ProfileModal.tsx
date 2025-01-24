@@ -473,7 +473,7 @@ const ProfileModal: React.FC<ProfileModalProps> = ({ isOpen, onClose }) => {
             error={touched.referralSource ? errors.referralSource : undefined}
           >
             <select
-              className="w-full p-2 border rounded-md"
+              className="w-full p-2 border rounded-md bg-white text-gray-900 dark:bg-gray-800 dark:text-white focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
               value={settings?.referralSource || ''}
               onChange={(e) =>
                 setSettings({ ...settings, referralSource: e.target.value })
