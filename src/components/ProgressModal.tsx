@@ -3,9 +3,9 @@ import Modal from '@site/src/ui/design-system/src/lib/Components/Modal';
 import Checklist from '@site/src/components/ProgressChecklist';
 import { Button } from '@site/src/ui/design-system/src/lib/Components/Button';
 import { useProgress } from '../hooks/use-progress';
-import { submitNoopChallenge } from '../utils/gold-star';
 import ChallengeModal from './ChallengeModal';
 import { useProfile } from '../hooks/use-profile';
+import { useCurrentUser } from '../hooks/use-current-user';
 
 interface ProgressModalProps {
   isOpen: boolean;
@@ -18,7 +18,8 @@ const ProgressModal: React.FC<ProgressModalProps> = ({
   onClose,
   onOpenProfileModal,
 }) => {
-  const { profile, isLoading: isProfileLoading } = useProfile();
+  const { user } = useCurrentUser();
+  const { profile, isLoading: isProfileLoading } = useProfile(user.addr);
   const { profileItems, challengeItems } = useProgress();
   const [challengeModalOpen, setChallengeModalOpen] = useState(false);
 

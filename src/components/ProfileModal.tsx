@@ -117,7 +117,6 @@ const ProfileModal: React.FC<ProfileModalProps> = ({ isOpen, onClose }) => {
 
   const validateCadenceTagInput = () => {
     const result = CadenceTagInputSchema.safeParse(cadenceTagInput);
-    console.log(result);
     setCadenceTagError(result.success ? null : result.error.errors[0].message);
     return result.success;
   };
