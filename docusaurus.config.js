@@ -10,6 +10,7 @@ const path = require('path');
 const fs = require('fs');
 
 const flowNetwork = process.env.FLOW_NETWORK || 'testnet';
+const walletConnectProjectId = process.env.WALLETCONNECT_PROJECT_ID;
 
 const externalDataSourceLocation = './src/data/data-sources.json';
 let cachedRepositories;
@@ -669,6 +670,7 @@ const config = {
 
   customFields: {
     flowNetwork,
+    walletConnectProjectId,
   },
 };
 

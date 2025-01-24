@@ -17,7 +17,9 @@ export function configureFCL(): void {
     'app.detail.icon': 'https://avatars.githubusercontent.com/u/62387156?v=4',
     'app.detail.title': 'Flow Dev Portal',
     'app.detail.description': 'The developer portal for Flow Blockchain',
-    'walletconnect.projectId': process.env.WALLETCONNECT_PROJECT_ID,
+    'walletconnect.projectId': config.customFields?.walletConnectProjectId as
+      | string
+      | undefined,
   });
 
   fcl.config.load({
