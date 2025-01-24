@@ -28,7 +28,10 @@ export function useProgress() {
     },
     {
       label: 'Add your contract addresses',
-      completed: profile && Object.keys(profile.deployedContracts).length > 0,
+      completed:
+        profile &&
+        (Object.keys(profile.deployedContracts.cadenceContracts).length > 0 ||
+          Object.keys(profile.deployedContracts.evmContracts).length > 0),
     },
   ] as ProgressItem[];
 
