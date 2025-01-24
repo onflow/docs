@@ -5,10 +5,12 @@ import Dropdown from '@site/src/ui/design-system/src/lib/Components/Dropdown';
 import ProgressModal from '@site/src/components/ProgressModal';
 import ProfileModal from '@site/src/components/ProfileModal';
 import { useProgress } from '../hooks/use-progress';
+import { faUser } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 const shortenAddress = (address: string) => {
   if (!address) return '';
-  return `${address.slice(0, 8)}...${address.slice(-3)}`;
+  return `${address.slice(0, 4)}...${address.slice(-3)}`;
 };
 
 const ConnectButton: React.FC = () => {
@@ -41,21 +43,30 @@ const ConnectButton: React.FC = () => {
     );
   }
 
+  const formattedProgressValue = Math.floor(getProgress() * 100);
+
   const dropdownItems = [
     {
-      label: `Progress (${Math.floor(getProgress() * 100)}%)`,
+      label: `Progress (${formattedProgressValue}%)`,
       onClick: handleOpenProgress,
     },
     { label: 'Profile', onClick: handleOpenProfileModal },
     { label: 'Disconnect', onClick: logOut },
   ];
 
-  const fullAddress = user.addr ?? 'Unknown';
-  const displayAddress = shortenAddress(fullAddress);
-
   return (
     <div className="hide-connect-on-mobile">
-      <Dropdown buttonLabel={displayAddress} items={dropdownItems} />
+      <Dropdown
+        buttonLabel={
+          <div className="flex items-center gap-2">
+            <FontAwesomeIcon icon={faUser} size="md" className="mx-auto" />
+            <span className="text-sm text-gray-500">
+              {formattedProgressValue}%
+            </span>
+          </div>
+        }
+        items={dropdownItems}
+      />
       <ProgressModal
         isOpen={isProgressModalOpen}
         onClose={handleCloseProgressModal}
