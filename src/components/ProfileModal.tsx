@@ -463,22 +463,34 @@ const ProfileModal: React.FC<ProfileModalProps> = ({ isOpen, onClose }) => {
         </Field>
 
         <div className="max-w-sm">
-          <RadioGroup
-            options={flowSources.map((source) => source.name)}
-            value={settings?.referralSource || ''}
-            onChange={(value) =>
-              setSettings({ ...settings, referralSource: value })
-            }
+          <Field
             label="How did you find Flow?"
-            getDescription={(option) =>
-              flowSources.find((source) => source.name === option)
-                ?.description || ''
-            }
-          />
-          {errors.referralSource && touched.referralSource && (
+            description="Let us know how you discovered Flow."
+            error={touched.referralSource ? errors.referralSource : undefined}
+          >
+            <select
+              className="w-full p-2 border rounded-md"
+              value={settings?.referralSource || ''}
+              onChange={(e) =>
+                setSettings({ ...settings, referralSource: e.target.value })
+              }
+              onBlur={() => setTouched({ ...touched, referralSource: true })}
+            >
+              <option value="" disabled>
+                Select a referral source
+              </option>
+              {flowSources.map((source) => (
+                <option key={source.name} value={source.name}>
+                  {source.name}
+                </option>
+              ))}
+            </select>
+          </Field>
+          {touched.referralSource && errors.referralSource && (
             <div className="text-red-500 text-sm">{errors.referralSource}</div>
           )}
         </div>
+
 
         {completedChallenges.length > 0 && (
           <div>
