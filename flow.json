@@ -12,14 +12,14 @@
         "testing": "0000000000000007"
       }
     },
-    "ManualChallenge": {
-      "source": "./src/cadence/contracts/ManualChallenge.cdc",
+    "LearnFlowChallenge": {
+      "source": "./src/cadence/contracts/LearnFlowChallenge.cdc",
       "aliases": {
         "testing": "0000000000000007"
       }
     },
-    "LearnFlowChallenge": {
-      "source": "./src/cadence/contracts/LearnFlowChallenge.cdc",
+    "ManualChallenge": {
+      "source": "./src/cadence/contracts/ManualChallenge.cdc",
       "aliases": {
         "testing": "0000000000000007"
       }
@@ -112,7 +112,7 @@
       }
     },
     "goldstar-testnet": {
-      "address": "441ea660554acb42",
+      "address": "032b0464e2e8fccc",
       "key": {
         "type": "file",
         "location": "goldstar-testnet.pkey"
@@ -120,11 +120,11 @@
     }
   },
   "deployments": {
-    "testnet": {
-      "goldstar-testnet": ["GoldStar", "LearnFlowChallenge"]
-    },
     "mainnet": {
       "goldstar-mainnet": ["GoldStar", "LearnFlowChallenge"]
+    },
+    "testnet": {
+      "goldstar-testnet": ["GoldStar", "LearnFlowChallenge"]
     }
   }
 }
