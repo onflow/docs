@@ -2,7 +2,6 @@ import React, { useEffect, useState } from 'react';
 import Input from '@site/src/ui/design-system/src/lib/Components/Input';
 import Field from '@site/src/ui/design-system/src/lib/Components/Field';
 import Modal from '@site/src/ui/design-system/src/lib/Components/Modal';
-import RadioGroup from '@site/src/ui/design-system/src/lib/Components/RadioGroup';
 import { Button } from '@site/src/ui/design-system/src/lib/Components/Button';
 import { Challenge, ProfileSettings, SocialType } from '../types/gold-star';
 import { useProfile } from '../hooks/use-profile';
@@ -490,7 +489,6 @@ const ProfileModal: React.FC<ProfileModalProps> = ({ isOpen, onClose }) => {
           )}
         </div>
 
-
         {completedChallenges.length > 0 && (
           <div>
             <h3 className="text-lg font-bold mb-3">My Challenges</h3>
@@ -498,7 +496,7 @@ const ProfileModal: React.FC<ProfileModalProps> = ({ isOpen, onClose }) => {
               {completedChallenges.map((challenge, index) => (
                 <div
                   key={index}
-                  className="flex flex-col items-center bg-gray-100 p-6 rounded-lg shadow-md text-center w-full"
+                  className="flex flex-col items-center p-6 rounded shadow-md text-center w-full bg-white dark:bg-gray-100 hover:bg-gray-200 dark:hover:bg-gray-200 text-gray-800 border dark:border-gray-200"
                 >
                   <FontAwesomeIcon
                     icon={faTrophy}
