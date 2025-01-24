@@ -5,6 +5,7 @@ import { Button } from '@site/src/ui/design-system/src/lib/Components/Button';
 import { useProgress } from '../hooks/use-progress';
 import { submitNoopChallenge } from '../utils/gold-star';
 import ChallengeModal from './ChallengeModal';
+import { useProfile } from '../hooks/use-profile';
 
 interface ProgressModalProps {
   isOpen: boolean;
@@ -17,6 +18,7 @@ const ProgressModal: React.FC<ProgressModalProps> = ({
   onClose,
   onOpenProfileModal,
 }) => {
+  const { profile, isLoading: isProfileLoading } = useProfile();
   const { profileItems, challengeItems } = useProgress();
   const [challengeModalOpen, setChallengeModalOpen] = useState(false);
 
@@ -34,8 +36,8 @@ const ProgressModal: React.FC<ProgressModalProps> = ({
       <Modal isOpen={isOpen} onClose={onClose} title="Progress">
         <div className="space-y-6">
           <p className="text-sm text-gray-600 dark:text-gray-100">
-            Complete the steps below to unlock rewards and challenges. Keep track of your progress and stay on track
-            with your goals!
+            Complete the steps below to unlock rewards and challenges. Keep
+            track of your progress and stay on track with your goals!
           </p>
 
           {/* Profile Section */}
@@ -62,8 +64,11 @@ const ProgressModal: React.FC<ProgressModalProps> = ({
                 variant="primary"
                 className="w-full max-w-md"
                 onClick={openChallengeModal}
+                disabled={!profile}
               >
-                View First Challenge to Complete
+                {profile || isProfileLoading
+                  ? 'View First Challenge to Complete'
+                  : 'Create Profile to View Challenge'}
               </Button>
             </div>
           </div>
