@@ -56,8 +56,8 @@ export const DISCORD_ANNOUNCEMENTS_CHANNEL_ID = '621529603718119424';
 export const DISCORD_DEV_UPDATES_CHANNEL_ID = '811693600403357706';
 
 export const GOLD_STAR_CHALLENGES = {
-  NOOP_CHALLENGE: {
-    contractName: 'NoopChallenge',
+  LEARN_FLOW_CHALLENGE: {
+    contractName: 'LearnFlowChallenge',
     resourceIdentifier: 'Challenge',
   },
 };

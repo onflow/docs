@@ -1,5 +1,5 @@
 import "GoldStar"
-import "NoopChallenge"
+import "LearnFlowChallenge"
 
 transaction {
     let admin: &GoldStar.Admin
@@ -10,10 +10,10 @@ transaction {
     }
 
     execute {
-        if GoldStar.challenges[Type<@NoopChallenge.Challenge>()] != nil {
+        if GoldStar.challenges[Type<@LearnFlowChallenge.Challenge>()] != nil {
             return
         }
-        let challenge <- NoopChallenge.createChallenge()
+        let challenge <- LearnFlowChallenge.createChallenge()
         self.admin.addChallenge(<-challenge)
     }
 

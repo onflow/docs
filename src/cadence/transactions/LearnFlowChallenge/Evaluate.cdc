@@ -1,5 +1,5 @@
 import "GoldStar"
-import "NoopChallenge"
+import "LearnFlowChallenge"
 
 transaction {
     let challengeType: Type
@@ -10,8 +10,8 @@ transaction {
             .borrow<auth(GoldStar.UpdateSubmissions) &GoldStar.Profile>(from: GoldStar.profileStoragePath)
             ?? panic("could not borrow reference to the Profile resource")
 
-        let submission <- NoopChallenge.createSubmission()
-        self.challengeType = Type<@NoopChallenge.Challenge>()
+        let submission <- LearnFlowChallenge.createSubmission()
+        self.challengeType = Type<@LearnFlowChallenge.Challenge>()
         self.submission = profile.submissions.add(
             <-submission,
             challengeType: self.challengeType

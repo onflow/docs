@@ -3,7 +3,7 @@ import { Button } from '../ui/design-system/src/lib/Components/Button';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faBrain } from '@fortawesome/free-solid-svg-icons';
 import Modal from '@site/src/ui/design-system/src/lib/Components/Modal';
-import { submitNoopChallenge } from '../utils/gold-star';
+import { submitLearnFlowChallenge } from '../utils/gold-star';
 import * as fcl from '@onflow/fcl';
 import { useProfile } from '../hooks/use-profile';
 import { useCurrentUser } from '../hooks/use-current-user';
@@ -21,7 +21,7 @@ const ChallengeModal: React.FC<{
   const completeChallenge = async () => {
     setTxStatus('Pending Approval...');
     try {
-      const txId = await submitNoopChallenge();
+      const txId = await submitLearnFlowChallenge();
 
       setTxStatus('Submitting Challenge...');
 
@@ -39,7 +39,9 @@ const ChallengeModal: React.FC<{
           {
             ...profile,
             submissions: {
-              [getChallengeIdentifier(GOLD_STAR_CHALLENGES.NOOP_CHALLENGE)]: {
+              [getChallengeIdentifier(
+                GOLD_STAR_CHALLENGES.LEARN_FLOW_CHALLENGE,
+              )]: {
                 completed: true,
               },
             },

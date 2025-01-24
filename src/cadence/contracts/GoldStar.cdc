@@ -11,9 +11,6 @@ contract GoldStar {
     let adminStoragePath: StoragePath
 
     access(all)
-    entitlement Owner
-
-    access(all)
     entitlement UpdateHandle
 
     access(all)
@@ -94,7 +91,7 @@ contract GoldStar {
         access(all)
         var evmContracts: {String: Bool}
 
-        access(Owner | UpdateDeployedContracts)
+        access(UpdateDeployedContracts)
         fun addCadenceContract(address: Address, name: String) {
             if let names = self.cadenceContracts[address] {
                 names[name] = true
@@ -103,13 +100,13 @@ contract GoldStar {
             }
         }
 
-        access(Owner | UpdateDeployedContracts)
+        access(UpdateDeployedContracts)
         fun addEvmContract(address: [UInt8; 20]) {
             var addressString = String.encodeHex(address.toVariableSized())
             self.evmContracts[addressString] = true
         }
 
-        access(Owner | UpdateDeployedContracts)
+        access(UpdateDeployedContracts)
         fun removeCadenceContract(address: Address, name: String) {
             if let names = self.cadenceContracts[address] {
                 names.remove(key: name)
@@ -119,7 +116,7 @@ contract GoldStar {
             }
         }
 
-        access(Owner | UpdateDeployedContracts)
+        access(UpdateDeployedContracts)
         fun removeEvmContract(address: [UInt8; 20]) {
             var addressString = String.encodeHex(address.toVariableSized())
             self.evmContracts.remove(key: addressString)
@@ -136,12 +133,12 @@ contract GoldStar {
         access(all)
         var socials: {String: String}
 
-        access(Owner | UpdateSocials)
+        access(UpdateSocials)
         fun set(name: String, handle: String) {
             self.socials[name] = handle
         }
 
-        access(Owner | UpdateSocials)
+        access(UpdateSocials)
         fun remove(name: String) {
             self.socials.remove(key: name)
         }
@@ -156,14 +153,14 @@ contract GoldStar {
         access(all)
         var submissions: @{Type: {Submission}}
 
-        access(Owner | UpdateSubmissions)
+        access(UpdateSubmissions)
         fun add(_ submission: @{Submission}, challengeType: Type): &{Submission} {
             self.submissions[challengeType] <-! submission
             let ref = &self.submissions[challengeType] as &{Submission}?
             return ref!
         }
 
-        access(Owner | UpdateSubmissions)
+        access(UpdateSubmissions)
         fun remove(challengeType: Type): @{Submission}? {
             return <-self.submissions.remove(key: challengeType)
         }

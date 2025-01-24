@@ -12,14 +12,14 @@
         "testing": "0000000000000007"
       }
     },
-    "ManualChallenge": {
-      "source": "./src/cadence/contracts/ManualChallenge.cdc",
+    "LearnFlowChallenge": {
+      "source": "./src/cadence/contracts/LearnFlowChallenge.cdc",
       "aliases": {
         "testing": "0000000000000007"
       }
     },
-    "NoopChallenge": {
-      "source": "./src/cadence/contracts/NoopChallenge.cdc",
+    "ManualChallenge": {
+      "source": "./src/cadence/contracts/ManualChallenge.cdc",
       "aliases": {
         "testing": "0000000000000007"
       }
@@ -104,8 +104,15 @@
         "location": "emulator-account.pkey"
       }
     },
+    "goldstar-mainnet": {
+      "address": "e99f9883203ff565",
+      "key": {
+        "type": "file",
+        "location": "goldstar-mainnet.pkey"
+      }
+    },
     "goldstar-testnet": {
-      "address": "441ea660554acb42",
+      "address": "032b0464e2e8fccc",
       "key": {
         "type": "file",
         "location": "goldstar-testnet.pkey"
@@ -113,8 +120,11 @@
     }
   },
   "deployments": {
+    "mainnet": {
+      "goldstar-mainnet": ["GoldStar", "LearnFlowChallenge"]
+    },
     "testnet": {
-      "goldstar-testnet": ["GoldStar", "NoopChallenge"]
+      "goldstar-testnet": ["GoldStar", "LearnFlowChallenge"]
     }
   }
 }
