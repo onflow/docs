@@ -7,7 +7,7 @@ export function usePersistentCache<K extends {}, V extends {}>(
 ): LRUCache<K, V> {
   const [cache] = useState(() => {
     const cache = new LRUCache<K, V>(opts);
-    if (!localStorage) {
+    if (typeof window === 'undefined') {
       return cache;
     }
 
@@ -23,7 +23,7 @@ export function usePersistentCache<K extends {}, V extends {}>(
   });
 
   useEffect(() => {
-    if (!localStorage || typeof window === 'undefined') {
+    if (typeof window === 'undefined') {
       return;
     }
 

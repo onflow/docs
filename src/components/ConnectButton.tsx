@@ -1,5 +1,3 @@
-'use client';
-
 import React, { useState } from 'react';
 import { useCurrentUser } from '@site/src/hooks/use-current-user';
 import { Button } from '@site/src/ui/design-system/src/lib/Components/Button';
