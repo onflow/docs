@@ -59,7 +59,7 @@ const ChallengeModal: React.FC<{
     <Modal isOpen={isOpen} onClose={onClose} title="Challenge Details">
       <div className="space-y-4 text-center">
         <FontAwesomeIcon icon={faBrain} size="5x" className="text-green-500" />
-        <p className="text-lg text-gray-700 mt-4">
+        <p className="mt-4 text-lg text-gray-500 dark:text-gray-400">
           By completing this challenge, you are declaring your intent to learn
           Flow and explore its capabilities.
         </p>
