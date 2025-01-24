@@ -104,6 +104,13 @@
         "location": "emulator-account.pkey"
       }
     },
+    "goldstar-mainnet": {
+      "address": "e99f9883203ff565",
+      "key": {
+        "type": "file",
+        "location": "goldstar-mainnet.pkey"
+      }
+    },
     "goldstar-testnet": {
       "address": "441ea660554acb42",
       "key": {
@@ -115,6 +122,9 @@
   "deployments": {
     "testnet": {
       "goldstar-testnet": ["GoldStar", "NoopChallenge"]
+    },
+    "mainnet": {
+      "goldstar-mainnet": ["GoldStar", "NoopChallenge"]
     }
   }
 }
