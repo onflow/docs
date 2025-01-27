@@ -16,24 +16,35 @@ service EVM client requests. It submits EVM transactions it receives into the Fl
 mutating EVM state when executed. Non-mutating RPC methods only query the local state index of the gateway and are never forwarded 
 to Access Nodes. It does not participate in the block production process and requires no stake.
 
+## Anyone can run EVM Gateway
 
+The EVM Gateway can serve as a dedicated private RPC, a performance scaling solution, and a free gas provider offering similar capabilities
+to centralized middleware providers like Infura, Alchemy, etc. at a fraction of the cost. EVM Gateway nodes connect directly to the Flow network
+with no middleware giving you full control.
 
-## Who Should Run an EVM Gateway
+If you are just getting started building your application, you can use the [public EVM Gateway](https://developers.flow.com/evm/networks).
+Applications generating high call volumes to the JSON-RPC may have hit rate limits on Flow public EVM Gateway and may benefit from running their
+own gateway to remove rate limits. Self-hosted gateways connect directly to public Flow Access Nodes, which may also optionally be [run](../access-nodes/access-node-setup.md). 
 
-The EVM Gateway can serve as a dedicated private RPC, a performance scaling solution, and a free gas provider offering similar capabilities 
-to centralized middleware providers like Infura, Alchemy, etc at a fraction of the cost. This is because EVM Gateway nodes connect 
-directly to the Flow network with no middle layer in between.
+:::info
 
-Applications which generate high call volumes to the JSON-RPC and which may have hit rate limits on Flow public nodes may benefit from running their 
-own gateway to remove rate limits. Self-hosted gateways connect directly to public Flow Access Nodes, which can also be [self-operated](../access-nodes/access-node-setup.md). 
+Apps can use EVM gateway to subsidize user transaction fees for smoother onboarding
+
+:::
+
+Alternatively, you can also choose from any of the following providers who provide the EVM Gateway as a managed service along with other value added services on top.
+
+1. [Alchemy](https://www.alchemy.com/flow)
+2. [ThirdWeb](https://thirdweb.com/flow)
+3. [Moralis](https://docs.moralis.com/web3-data-api/evm/chains/flow)
+4. [QuickNode](https://www.quicknode.com/chains/flow)
 
 ## Hardware specifications
 
-The EVM Gateway is a lightweight node which runs on commodity hardware and cloud VMs. It can be run on GCP _standard_ and AWS _large_ 
-VM types for typical app co-location use-cases. However, higher volume use cases may require larger instance types and more 
+The EVM Gateway is a lightweight node which runs on commodity hardware and cloud VMs. It can be run on GCP **standard** and AWS **large** 
+VM types for low to moderate volume app co-location use-cases. However, higher volume use cases may require larger instance types and more 
 testing. An inactive node requires less than 200MB memory when run in Docker and data storage growth corresponds with Flow EVM transaction 
-growth. Listed below are theoretical RPS maximums based on mainnet CPU and memory resource utilization metrics and linear 
-volume scaling assumptions. 
+growth. Listed below are theoretical RPS maximums based on Flow mainnet CPU and memory resource utilization metrics and linear scaling assumptions. 
 
 ### Google Cloud Platform (GCP) VM Types
 
@@ -205,7 +216,7 @@ After=network-online.target
 User=$USER
 ExecStart=/usr/bin/evm-gateway \
 --access-node-grpc-host=$ACCESS_NODE_GRPC_HOST \
---access-node-spork-hosts=ACCESS_NODE_SPORK_HOSTS \
+--access-node-spork-hosts=$ACCESS_NODE_SPORK_HOSTS \
 --flow-network-id=$FLOW_NETWORK_ID \
 --init-cadence-height=$INIT_CADENCE_HEIGHT \
 --ws-enabled=true \
@@ -348,7 +359,7 @@ EVM Gateway.
 
 ### Database version inconsistency/corruption
 
-If you see a similar message to this from an aborted startup the gateway database directory is not compatible with the schema versions of the runtime, or there may be corruption. In this instance we recommend 
+If you see a similar message to this from an aborted startup the gateway database directory is not compatible with the schema versions of the runtime, or there may be corruption. In this instance we recommend that you delete the contents of the EVM GW data directory.
 
 ```bash
 Jan 16 17:00:57 nodename docker[6552]: {"level":"error","error":"failed to open db for dir: /flow-evm-gateway/db, with: pebble: manifest file \"MANIFEST-018340\" for DB \"/flow-evm-gateway/db\": comparer name from file \"leveldb.BytewiseComparator\" != comparer name from Options \"flow.MVCCComparer\"","time":"2025-01-16T17:00:57Z","message":"Gateway runtime error"}
@@ -374,7 +385,3 @@ The following log entry will occur when the EVM Gateway attempts to sync with th
 ```bash
 failure in event subscription at height ${INIT-CADENCE-HEIGHT}, with: recoverable: disconnected: error receiving event: rpc error: code = FailedPrecondition desc = could not get start height: failed to get lowest indexed height: index not initialized
 ```
-
-## FAQs
-
-TBD
