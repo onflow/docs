@@ -18,7 +18,7 @@ to Access Nodes. It does not participate in the block production process and req
 
 ## Anyone can run EVM Gateway
 
-The EVM Gateway can serve as a dedicated private RPC, a performance scaling solution, and a free gas provider offering similar in capabilities
+The EVM Gateway can serve as a dedicated private RPC, a performance scaling solution, and a free gas provider offering similar capabilities
 to centralized middleware providers like Infura, Alchemy, etc. at a fraction of the cost. EVM Gateway nodes connect directly to the Flow network
 with no middleware giving you full control.
 
