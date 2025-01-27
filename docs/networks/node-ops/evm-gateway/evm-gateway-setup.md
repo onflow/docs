@@ -23,7 +23,7 @@ to centralized middleware providers like Infura, Alchemy, etc. at a fraction of 
 with no middleware giving you full control.
 
 If you are just getting started building your application, you can use the [public EVM Gateway](https://developers.flow.com/evm/networks).
-Applications which generate high call volumes to the JSON-RPC may have hit rate limits on Flow public EVM Gateway may benefit from running their
+Applications generating high call volumes to the JSON-RPC may have hit rate limits on Flow public EVM Gateway and may benefit from running their
 own gateway to remove rate limits. Self-hosted gateways connect directly to public Flow Access Nodes, which may also optionally be [run](../access-nodes/access-node-setup.md). 
 
 :::info
