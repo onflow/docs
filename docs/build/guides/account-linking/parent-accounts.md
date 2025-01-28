@@ -360,7 +360,7 @@ transaction(
     withdrawID: UInt64          // ID of the NFT to withdraw
     ) {
 
-    let providerRef: &{NonFungibleToken.Provider}
+    let providerRef: auth(NonFungibleToken.Withdraw) &{NonFungibleToken.Provider}
 
     prepare(signer: auth(BorrowValue) &Account) {
         // Get a reference to the signer's HybridCustody.Manager from storage
@@ -377,7 +377,7 @@ transaction(
         let controllerID = account.getControllerIDForType(
                 type: collectionType,
                 forPath: storagePath
-            ) ?? panic("Could not find Capability controller ID for collection type ".concat(type.identifier)
+            ) ?? panic("Could not find Capability controller ID for collection type ".concat(collectionType.identifier)
                 .concat(" at path ").concat(storagePath.toString()))
 
         // Get a reference to the child NFT Provider and assign to the transaction scope variable
@@ -388,7 +388,8 @@ transaction(
 
         // We'll need to cast the Capability - this is possible thanks to CapabilityFactory, though we'll rely on the relevant
         // Factory having been configured for this Type or it won't be castable
-        self.providerRef = cap as! Capability<auth(NonFungibleToken.Withdraw) &{NonFungibleToken.Provider}>
+        let providerCap = cap as! Capability<auth(NonFungibleToken.Withdraw) &{NonFungibleToken.Provider}>
+        self.providerRef = providerCap.borrow() ?? panic("Provider capability is invalid - cannot borrow reference")
     }
 
     execute {
@@ -400,6 +401,9 @@ transaction(
         // ...
     }
 }
+      
+          
+
 ```
 
 At the end of this transaction, you withdrew an NFT from the specified account using an NFT `Provider` Capability. A
