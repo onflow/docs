@@ -11,6 +11,7 @@ interface ActionCardGridProps {
       description: string;
       iconColor?: string;
       cardColor?: string;
+      onClick?: () => void;
     }[];
   }[];
 }
@@ -52,6 +53,7 @@ const ActionCardGrid: React.FC<ActionCardGridProps> = ({ title, sections }) => {
                   cardColor={card.cardColor as ColorOption}
                   heading={card.heading}
                   description={card.description}
+                  onClick={card.onClick}
                 />
               ))}
             </div>
