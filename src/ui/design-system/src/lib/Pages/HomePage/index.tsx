@@ -11,6 +11,9 @@ import { ContentFeatureList } from '../../Components/ContentFeatureList';
 import ActionCardGrid from '@site/src/components/ActionCardGrid';
 import { buildGridData } from './GridData/BuildGridData';
 import { HomepagePillItem } from '../../Components/HomepageStartItemCadence/HomepagePillItem';
+import { fundGridData } from './GridData/FundGridData';
+import { growGridData } from './GridData/GrowGridData';
+import { learnGridData } from './GridData/LearnGridData';
 
 export type HomePageProps = SocialLinksSignupProps & {
   concepts?: TutorialCardProps[];
@@ -36,6 +39,9 @@ const HomePage = ({ discordUrl, githubUrl }: HomePageProps): JSX.Element => {
       />
 
       <ActionCardGrid title={buildGridData.title} sections={buildGridData.sections} />
+      <ActionCardGrid title={growGridData.title} sections={growGridData.sections} />
+      <ActionCardGrid title={fundGridData.title} sections={fundGridData.sections} />
+      <ActionCardGrid title={learnGridData.title} sections={learnGridData.sections} />
     </PageBackground>
   );
 };
