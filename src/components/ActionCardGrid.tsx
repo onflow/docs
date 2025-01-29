@@ -4,6 +4,7 @@ import ActionCard, { LocationIcon } from '@site/src/components/ActionCard';
 
 interface ActionCardGridProps {
   title: string;
+  id?: string;
   sections: {
     title?: string;
     cards: {
@@ -16,9 +17,9 @@ interface ActionCardGridProps {
   }[];
 }
 
-const ActionCardGrid: React.FC<ActionCardGridProps> = ({ title, sections }) => {
+const ActionCardGrid: React.FC<ActionCardGridProps> = ({ title, sections, id }) => {
   return (
-    <div className="relative p-8">
+    <div className="relative p-8" id={id}>
       {/* Main Title Section */}
       <div className="relative flex items-center mb-8">
         {/* Icon and Line Container */}

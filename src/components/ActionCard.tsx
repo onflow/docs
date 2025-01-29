@@ -32,23 +32,22 @@ export const LocationIcon: React.FC = () => (
   </svg>
 );
 
-const ActionCard: React.FC<ActionCardProps> = ({
-    iconColor = 'white',
-    cardColor = 'black',
-    heading,
-    description,
-    onClick,
-    variant = 'default',
-  }) => {
+export const ActionCard: React.FC<ActionCardProps> = ({
+  iconColor = 'white',
+  cardColor = 'black',
+  heading,
+  description,
+  onClick,
+  variant = 'default',
+}) => {
   const cardBg = colors[cardColor].dark;
   const iconBg = colors[iconColor].light;
 
   return (
     <div
       onClick={onClick}
-      className={`relative flex flex-col justify-between p-6 rounded-lg shadow-lg hover:scale-105 transition-transform ${
-        onClick ? 'cursor-pointer' : ''
-      } ${cardBg}`}
+      className={`relative flex flex-col justify-between p-6 rounded-lg shadow-lg hover:scale-105 transition-transform ${variant === 'overlay' ? 'mt-6' : ''
+        } ${onClick ? 'cursor-pointer' : ''} ${cardBg}`}
     >
       {variant === 'overlay' && (
         <div
@@ -57,16 +56,18 @@ const ActionCard: React.FC<ActionCardProps> = ({
           <LocationIcon />
         </div>
       )}
-      {variant === 'default' && (
-        <div
-          className={`w-10 h-10 rounded-md flex items-center justify-center mb-6 ${iconBg}`}
-        >
-          <LocationIcon />
+      <div className="flex flex-col h-full">
+        {variant === 'default' && (
+          <div
+            className={`w-10 h-10 rounded-md flex items-center justify-center mb-4 ${iconBg}`}
+          >
+            <LocationIcon />
+          </div>
+        )}
+        <div className={variant === 'overlay' ? 'mt-6' : ''}>
+          <h3 className="text-xl font-semibold text-white mb-2">{heading}</h3>
+          <p className="text-sm text-gray-100">{description}</p>
         </div>
-      )}
-      <div className="mt-auto">
-        <h3 className="text-xl font-semibold text-white mb-2">{heading}</h3>
-        <p className="text-sm text-gray-100">{description}</p>
       </div>
     </div>
   );

@@ -21,27 +21,17 @@ export type HomePageProps = SocialLinksSignupProps & {
   upcomingEvents: UpcomingEventsProps;
 };
 
-const Description = (): JSX.Element => (
-  <>
-    Flow is a fast, decentralized platform for apps, games, and digital assets. Build and grow your projects on a scalable, secure network. Whether you're learning Cadence or using EVM compatibility, Flow empowers your innovative ideas.
-  </>
-);
-
 const HomePage = ({ discordUrl, githubUrl }: HomePageProps): JSX.Element => {
   return (
     <PageBackground gradient="home">
       <LandingHeaderHome
-        description={<Description />}
-        discordUrl={discordUrl}
-        githubUrl={githubUrl}
-        tag="onflow"
-        title="Build On Flow"
+        title="What do you want to do today?"
       />
 
-      <ActionCardGrid title={buildGridData.title} sections={buildGridData.sections} />
-      <ActionCardGrid title={growGridData.title} sections={growGridData.sections} />
-      <ActionCardGrid title={fundGridData.title} sections={fundGridData.sections} />
-      <ActionCardGrid title={learnGridData.title} sections={learnGridData.sections} />
+      <ActionCardGrid title={buildGridData.title} id={buildGridData.title} sections={buildGridData.sections} />
+      <ActionCardGrid title={growGridData.title} id={growGridData.title} sections={growGridData.sections} />
+      <ActionCardGrid title={fundGridData.title} id={fundGridData.title} sections={fundGridData.sections} />
+      <ActionCardGrid title={learnGridData.title} id={learnGridData.title} sections={learnGridData.sections} />
     </PageBackground>
   );
 };

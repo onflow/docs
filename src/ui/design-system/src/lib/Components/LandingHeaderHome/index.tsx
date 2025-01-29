@@ -1,51 +1,78 @@
-import React, { type ReactNode } from 'react';
-import LandingImage from '../../../../images/misc/landing-home.png';
-import { Button } from '../Button';
+import React from 'react';
+import ActionCard from '@site/src/components/ActionCard';
+
+const NAVIGATION_CARDS = [
+  {
+    heading: 'Build',
+    description: 'Fire up a new app, add blue-chip features such as tokens and NFTs, or supercharge your user experience.',
+    iconColor: 'green' as const,
+    cardColor: 'black' as const,
+    href: '#Build',
+    variant: 'overlay' as const
+  },
+  {
+    heading: 'Grow',
+    description: 'Grow your project on Flow',
+    iconColor: 'blue' as const,
+    cardColor: 'black' as const,
+    href: '#Grow',
+    variant: 'overlay' as const
+  },
+  {
+    heading: 'Fund',
+    description: 'Find funding opportunities',
+    iconColor: 'purple' as const,
+    cardColor: 'black' as const,
+    href: '#Fund',
+    variant: 'overlay' as const
+  },
+  {
+    heading: 'Learn',
+    description: 'Learn the basics, dive into the Cadence smart contract language, or explore how to keep building on EVM with the advantages of Flow.',
+    iconColor: 'teal' as const,
+    cardColor: 'black' as const,
+    href: '#Learn',
+    variant: 'overlay' as const
+  }
+] as const;
 
 export interface LandingHeaderHomeProps {
-  description: string | ReactNode;
-  discordUrl: string;
-
-  /**
-   * The URL to the page on github that allows editing this page's content
-   */
-  githubUrl: string;
-  tag: string;
   title: string;
 }
 
 export function LandingHeaderHome({
-  description,
-  tag,
   title,
 }: LandingHeaderHomeProps): JSX.Element {
   return (
-    <div className="container flex flex-col items-center pt-4 pb-10 md:flex-row">
-      <div className="mt-8 flex max-w-full flex-1 basis-1/2 flex-col items-start pb-4 pr-4">
-        <h1 className="text mb-6 max-w-full overflow-hidden text-ellipsis !text-4xl md:!text-7xl ">
-          {title}
-        </h1>
-        <div className="mb-4 max-w-[400px] text-md text-primary-gray-400 dark:text-primary-gray-50">
-          {description}
+    <div className="relative p-8">
+      <div className="relative pl-8">
+        <div className="flex flex-col md:flex-row">
+          {/* Left side - Title */}
+          <div className="flex-1 basis-1/3 pr-8 flex items-center">
+            <h1 className="text mb-8 max-w-full !text-3xl md:!text-6xl font-normal leading-[1.4]">
+              {title}
+            </h1>
+          </div>
+
+          {/* Right side - Grid of Cards */}
+          <div className="flex-1 basis-2/3">
+            <div className="grid grid-cols-2 gap-4">
+              {NAVIGATION_CARDS.map((card) => (
+                <ActionCard
+                  key={card.heading}
+                  heading={card.heading}
+                  description={card.description}
+                  iconColor={card.iconColor}
+                  cardColor={card.cardColor}
+                  variant={card.variant}
+                  onClick={() => {
+                    window.location.href = card.href;
+                  }}
+                />
+              ))}
+            </div>
+          </div>
         </div>
-        <div className="mb-4">
-          <Button
-            size="sm"
-            variant="accent"
-            href="/build/getting-started/contract-interaction"
-            className="px-8 py-3 min-w-[200px] md:min-w-[250px] hover:no-underline hover:opacity-80"
-          >
-            Get Building
-          </Button>
-        </div>
-      </div>
-      <div className="pr-0 md:ml-auto md:mr-14 md:pl-4">
-        <img
-          src={LandingImage}
-          srcSet={`${LandingImage}, ${LandingImage} 1.7x`}
-          alt=""
-          className="max-h-[195px] object-cover md:max-h-[380px]"
-        />
       </div>
     </div>
   );
