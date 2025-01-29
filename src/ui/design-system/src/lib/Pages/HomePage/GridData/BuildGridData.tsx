@@ -5,13 +5,13 @@ export const buildGridData = {
       title: 'Getting Started',
       cards: [
         {
-          heading: 'Hello World',
+          heading: 'Why Flow?',
           description:
-            'Build and deploy your first contract, connect to it from the frontend, and call your smart contract functions - all in less than 30 minutes.',
+            'Learn what led Dieter Shirley, Chief Architect of Flow and co-author of the ERC-721 NFT standard to lead the development of a new L1 blockchain.',
           iconColor: 'green',
           cardColor: 'black',
           onClick: () => {
-            window.location.href = 'https://docs.onflow.org/cadence/tutorial/hello-world/';
+            window.location.href = 'build/flow';
           }
         },
         {
@@ -34,11 +34,16 @@ export const buildGridData = {
             window.location.href = 'evm/about';
           }
         },
-      ],
-    },
-    {
-      title: 'How To',
-      cards: [
+        {
+          heading: 'Hello World',
+          description:
+            'Build and deploy your first contract, connect to it from the frontend, and call your smart contract functions - all in less than 30 minutes.',
+          iconColor: 'green',
+          cardColor: 'black',
+          onClick: () => {
+            window.location.href = 'https://docs.onflow.org/cadence/tutorial/hello-world/';
+          }
+        },
         {
           heading: 'Launch a Token',
           description:
@@ -56,16 +61,16 @@ export const buildGridData = {
           iconColor: 'green',
           cardColor: 'black',
         },
-        {
-          heading: 'Chat with Other Devs',
-          description:
-            'Head over to Developer Chat on Discord to share what you\'re working on, get help, and chat with other developers.',
-          iconColor: 'green',
-          cardColor: 'black',
-          onClick: () => {
-            window.location.href = 'https://discord.com/channels/613813861610684416/1162086721471647874';
-          }
-        },
+        // {
+        //   heading: 'Chat with Other Devs',
+        //   description:
+        //     'Head over to Developer Chat on Discord to share what you\'re working on, get help, and chat with other developers.',
+        //   iconColor: 'green',
+        //   cardColor: 'black',
+        //   onClick: () => {
+        //     window.location.href = 'https://discord.com/channels/613813861610684416/1162086721471647874';
+        //   }
+        // },
       ],
     },
     {
@@ -128,6 +133,61 @@ export const buildGridData = {
             window.location.href = 'evm/cadence/vm-bridge';
           }
         },
+      ],
+    },
+    {
+      title: 'Tools',
+      cards: [
+        {
+          heading: 'Flow CLI',
+          description:
+            'The Flow Command Line Interface (CLI) is a powerful tool that enables developers to seamlessly interact with the Flow blockchain across various environments.',
+          iconColor: 'green',
+          cardColor: 'black',
+          onClick: () => {
+            window.location.href = 'tools/flow-cli';
+          }
+        },
+        {
+          heading: 'Flow Emulator',
+          description:
+            'The Flow Emulator is a local blockchain environment that allows developers to test and develop their applications without the need to deploy to the mainnet or testnet.',
+          iconColor: 'green',
+          cardColor: 'black',
+          onClick: () => {
+            window.location.href = 'tools/emulator';
+          }
+        },
+        {
+          heading: 'Flow Client Library (FCL)',
+          description:
+            'The Flow Client Library (FCL) JS is a package used to interact with user wallets and the Flow blockchain.',
+          iconColor: 'green',
+          cardColor: 'black',
+          onClick: () => {
+            window.location.href = 'tools/flow-studio';
+          }
+        },
+        {
+          heading: 'EVM Tools and Libraries',
+          description:
+            'Most of your favorite EVM tools and libraries are compatible with Flow.  Learn how to work with Hardhat, Foundry, Wagmi, and more.',
+          iconColor: 'green',
+          cardColor: 'black',
+          onClick: () => {
+            window.location.href = 'evm/guides/wagmi';
+          }
+        },
+        {
+          heading: 'Other Clients',
+          description:
+            'Additional clients are available for interacting with the Flow blockchain using a number of popular languages, including Go, Python, Ruby, and JavaScript.',
+          iconColor: 'green',
+          cardColor: 'black',
+          onClick: () => {
+            window.location.href = 'tools/clients';
+          }
+        }
       ],
     },
   ],

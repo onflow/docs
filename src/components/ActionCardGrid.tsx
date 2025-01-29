@@ -5,7 +5,7 @@ import ActionCard, { LocationIcon } from '@site/src/components/ActionCard';
 interface ActionCardGridProps {
   title: string;
   sections: {
-    title: string;
+    title?: string;
     cards: {
       heading: string;
       description: string;
