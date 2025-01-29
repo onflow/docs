@@ -204,11 +204,11 @@ const config = {
         },
         ...(process.env.GTAG
           ? {
-            gtag: {
-              trackingID: process.env.GTAG,
-              anonymizeIP: true,
-            },
-          }
+              gtag: {
+                trackingID: process.env.GTAG,
+                anonymizeIP: true,
+              },
+            }
           : {}),
       }),
     ],
@@ -291,7 +291,7 @@ const config = {
             activeBasePath: '/growth',
           },
           {
-            to: 'growth',
+            to: 'tutorials',
             position: 'left',
             label: 'Tutorials',
             activeBasePath: '/tutorials',
