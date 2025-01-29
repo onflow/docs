@@ -46,7 +46,7 @@ export const ActionCard: React.FC<ActionCardProps> = ({
   return (
     <div
       onClick={onClick}
-      className={`relative flex flex-col justify-between p-6 rounded-lg shadow-lg hover:scale-105 transition-transform ${variant === 'overlay' ? 'mt-6' : ''
+      className={`relative flex flex-col justify-between p-6 rounded-lg shadow-lg hover:scale-[1.02] transition-transform ${variant === 'overlay' ? 'mt-6' : ''
         } ${onClick ? 'cursor-pointer' : ''} ${cardBg}`}
     >
       {variant === 'overlay' && (
