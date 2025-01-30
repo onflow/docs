@@ -124,9 +124,9 @@ export const buildGridData = {
           }
         },
         {
-          heading: 'Cross-VM Bridge',
+          heading: 'Token Interoperability',
           description:
-            'The Cross-VM Bridge allows you to move assets between EVM and Cadence contracts, opening up a world of composability.',
+            'Move established EVM tokens to Cadence for more powerful contracts, or move Cadence tokens to EVM to take advantage of established markets.',
           iconColor: 'green',
           cardColor: 'black',
           onClick: () => {

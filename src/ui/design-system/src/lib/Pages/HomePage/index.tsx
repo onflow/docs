@@ -7,13 +7,12 @@ import { type SocialLinksSignupProps } from '../../Components/SocialLinksSignup'
 import { type TutorialCardProps } from '../../Components/TutorialCard';
 import { type UpcomingEventsProps } from '../../Components/UpcomingEvents';
 import PageBackground from '../shared/PageBackground';
-import { ContentFeatureList } from '../../Components/ContentFeatureList';
 import ActionCardGrid from '@site/src/components/ActionCardGrid';
 import { buildGridData } from './GridData/BuildGridData';
-import { HomepagePillItem } from '../../Components/HomepageStartItemCadence/HomepagePillItem';
 import { fundGridData } from './GridData/FundGridData';
 import { growGridData } from './GridData/GrowGridData';
 import { learnGridData } from './GridData/LearnGridData';
+import { HomeHeader } from '../../Components/HomeHeader';
 
 export type HomePageProps = SocialLinksSignupProps & {
   concepts?: TutorialCardProps[];
@@ -24,6 +23,7 @@ export type HomePageProps = SocialLinksSignupProps & {
 const HomePage = ({ discordUrl, githubUrl }: HomePageProps): JSX.Element => {
   return (
     <PageBackground gradient="home">
+      <HomeHeader />
       <LandingHeaderHome
         title="What do you want to do today?"
       />

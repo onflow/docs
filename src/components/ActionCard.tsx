@@ -7,7 +7,7 @@ interface ActionCardProps {
   heading: string;
   description: string;
   onClick?: () => void;
-  variant?: 'default' | 'overlay';
+  variant?: 'default' | 'overlay' | 'horizontal';
 }
 
 export const LocationIcon: React.FC = () => (
@@ -64,10 +64,25 @@ export const ActionCard: React.FC<ActionCardProps> = ({
             <LocationIcon />
           </div>
         )}
-        <div className={variant === 'overlay' ? 'mt-6' : ''}>
-          <h3 className="text-xl font-semibold text-white mb-2">{heading}</h3>
+        {variant === 'horizontal' && (
+          <div className="flex items-center gap-4 mb-4">
+            <div
+              className={`w-10 h-10 rounded-md flex items-center justify-center ${iconBg}`}
+            >
+              <LocationIcon />
+            </div>
+            <h3 className="text-xl font-semibold text-white">{heading}</h3>
+          </div>
+        )}
+        {variant !== 'horizontal' && (
+          <div className={variant === 'overlay' ? 'mt-6' : ''}>
+            <h3 className="text-xl font-semibold text-white mb-2">{heading}</h3>
+            <p className="text-sm text-gray-100">{description}</p>
+          </div>
+        )}
+        {variant === 'horizontal' && (
           <p className="text-sm text-gray-100">{description}</p>
-        </div>
+        )}
       </div>
     </div>
   );
