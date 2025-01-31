@@ -2,75 +2,37 @@ export const fundGridData = {
   title: 'Fund',
   sections: [
     {
-      title: 'Get Started',
+      title: 'Funding Options',
       cards: [
         {
-          heading: 'Hello World',
+          heading: 'VCs & Funds',
           description:
-            'Build and deploy your first contract, connect to it from the frontend, and call your smart contract functions - all in less than 30 minutes.',
+            'Connect with venture capital firms and investment funds actively supporting Flow projects.',
           iconColor: 'purple',
           cardColor: 'black',
+          onClick: () => {
+            window.location.href = '/ecosystem/vcs-and-funds';
+          },
         },
         {
-          heading: 'A Better Language',
+          heading: 'Grants',
           description:
-            'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna.',
+            'Discover grant opportunities available to developers and teams building on Flow.',
           iconColor: 'purple',
           cardColor: 'black',
+          onClick: () => {
+            window.location.href = '/ecosystem/grants';
+          },
         },
         {
-          heading: 'EVM++ on Flow',
+          heading: 'Hackathons',
           description:
-            'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna.',
+            'Participate in Flow hackathons to build innovative projects and win prizes.',
           iconColor: 'purple',
           cardColor: 'black',
-        },
-      ],
-    },
-    {
-      title: 'How To',
-      cards: [
-        {
-          heading: 'Launch a Token',
-          description:
-            'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna.',
-          iconColor: 'purple',
-          cardColor: 'black',
-        },
-        {
-          heading: 'Query Onchain Data',
-          description:
-            'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna.',
-          iconColor: 'purple',
-          cardColor: 'black',
-        },
-        {
-          heading: 'VRF',
-          description:
-            'VRF is built into Flow at the protocol level to provide secure, verifiable randomness.',
-          iconColor: 'purple',
-          cardColor: 'black',
-        },
-        {
-          heading: 'Launch a Token',
-          description:
-            'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna.',
-          iconColor: 'purple',
-          cardColor: 'black',
-        },
-        {
-          heading: 'Query Onchain Data',
-          description:
-            'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna.',
-          iconColor: 'purple',
-          cardColor: 'black',
-        },
-        {
-          heading: 'VRF',
-          description:
-            'VRF is built into Flow at the protocol level to provide secure, verifiable randomness.',
-          iconColor: 'purple',
-          cardColor: 'black',
+          onClick: () => {
+            window.location.href = '/ecosystem/hackathons';
+          },
         },
       ],
     },

@@ -2,75 +2,39 @@ export const growGridData = {
   title: 'Grow',
   sections: [
     {
-      title: 'Get Started',
+      title: 'Support & Resources',
       cards: [
         {
-          heading: 'Hello World',
+          heading: 'Startup Support',
           description:
-            'Build and deploy your first contract, connect to it from the frontend, and call your smart contract functions - all in less than 30 minutes.',
+            'Get comprehensive support including technical guidance, marketing resources, and ecosystem connections.',
           iconColor: 'teal',
           cardColor: 'black',
+          onClick: () => {
+            window.location.href = '/growth';
+          },
         },
         {
-          heading: 'A Better Language',
+          heading: 'Builder Credits',
           description:
-            'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna.',
+            "Access Flow's Builder Credits program to get resources and support for your project development.",
           iconColor: 'teal',
           cardColor: 'black',
+          onClick: () => {
+            window.location.href =
+              'https://github.com/orgs/onflow/discussions/1545';
+          },
         },
         {
-          heading: 'EVM++ on Flow',
+          heading: 'Dev Office Hours',
           description:
-            'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna.',
+            'Join our weekly developer office hours to get direct support from the Flow team and connect with other builders.',
           iconColor: 'teal',
           cardColor: 'black',
-        },
-      ],
-    },
-    {
-      title: 'How To',
-      cards: [
-        {
-          heading: 'Launch a Token',
-          description:
-            'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna.',
-          iconColor: 'teal',
-          cardColor: 'black',
-        },
-        {
-          heading: 'Query Onchain Data',
-          description:
-            'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna.',
-          iconColor: 'teal',
-          cardColor: 'black',
-        },
-        {
-          heading: 'VRF',
-          description:
-            'VRF is built into Flow at the protocol level to provide secure, verifiable randomness.',
-          iconColor: 'teal',
-          cardColor: 'black',
-        },
-        {
-          heading: 'Launch a Token',
-          description:
-            'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna.',
-          iconColor: 'teal',
-          cardColor: 'black',
-        },
-        {
-          heading: 'Query Onchain Data',
-          description:
-            'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna.',
-          iconColor: 'teal',
-          cardColor: 'black',
-        },
-        {
-          heading: 'VRF',
-          description:
-            'VRF is built into Flow at the protocol level to provide secure, verifiable randomness.',
-          iconColor: 'teal',
-          cardColor: 'black',
+          onClick: () => {
+            window.location.href =
+              'https://calendar.google.com/calendar/u/0/embed?src=c_47978f5cd9da636cadc6b8473102b5092c1a865dd010558393ecb7f9fd0c9ad0@group.calendar.google.com';
+          },
         },
       ],
     },
