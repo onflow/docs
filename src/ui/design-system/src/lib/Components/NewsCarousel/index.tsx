@@ -12,19 +12,19 @@ interface CarouselCard {
 
 const CAROUSEL_CARDS: CarouselCard[] = [
   {
-    heading: 'First Card',
-    description: 'Description for first card',
+    heading: 'ETH Denver - We got a castle!',
+    description: 'Apply to be a Flow Scholar to work alongside our team, join us at the Flow Hacker Castle, and represent the Flow community—all on us!',
     iconColor: 'green',
     cardColor: 'black',
-    href: '#first',
+    href: 'https://x.com/flow_blockchain/status/1880405924407587173',
     variant: 'horizontal' as const
   },
   {
-    heading: 'Second Card',
-    description: 'Description for second card',
+    heading: 'Cadence Tutorials Updated',
+    description: 'We\'ve updated the first set of Cadence tutorials to be more approachable.  Let us know what you think!',
     iconColor: 'blue',
     cardColor: 'black',
-    href: '#second',
+    href: 'https://cadence-lang.org/docs/tutorial/first-steps',
     variant: 'horizontal' as const
   },
   {
@@ -104,9 +104,9 @@ export const NewsCarousel: React.FC = () => {
       </div>
 
       {/* Cards Grid */}
-      <div className="grid grid-cols-2 gap-4">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-4 h-full">
         {getVisibleCards().map((card, index) => (
-          <div key={`${currentIndex}-${index}`} className="w-full">
+          <div key={`${currentIndex}-${index}`} className="w-full flex h-full">
             <ActionCard
               heading={card.heading}
               description={card.description}
@@ -114,7 +114,11 @@ export const NewsCarousel: React.FC = () => {
               cardColor={card.cardColor}
               variant={card.variant}
               onClick={() => {
-                window.location.href = card.href;
+                if (card.href.startsWith('https://')) {
+                  window.open(card.href, '_blank');
+                } else {
+                  window.location.href = card.href;
+                }
               }}
             />
           </div>

@@ -30,7 +30,7 @@ export const GoldStarPanel: React.FC = () => {
         </button>
       </div>
 
-      <div className={`${colors.black.dark} p-5 rounded-lg shadow-lg`}>
+      <div className={`${colors.black.dark} p-7 rounded-lg shadow-lg`}>
         <div className="w-full bg-gray-200 rounded-full h-2.5 dark:bg-gray-700">
           <div className={`${colors.flowgreen.light} h-2.5 rounded-full`} style={{ width: `${user.loggedIn ? getProgress() * 100 : 0}%` }}></div>
         </div>
