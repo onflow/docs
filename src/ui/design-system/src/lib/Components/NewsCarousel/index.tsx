@@ -12,7 +12,7 @@ interface CarouselCard {
 
 const CAROUSEL_CARDS: CarouselCard[] = [
   {
-    heading: 'ETH Denver - We got a castle!',
+    heading: 'We got a castle!',
     description: 'Apply to be a Flow Scholar to work alongside our team, join us at the Flow Hacker Castle, and represent the Flow community—all on us!',
     iconColor: 'green',
     cardColor: 'black',
@@ -20,7 +20,7 @@ const CAROUSEL_CARDS: CarouselCard[] = [
     variant: 'horizontal' as const
   },
   {
-    heading: 'Cadence Tutorials Updated',
+    heading: 'Cadence Tutorials',
     description: 'We\'ve updated the first set of Cadence tutorials to be more approachable.  Let us know what you think!',
     iconColor: 'blue',
     cardColor: 'black',
@@ -28,11 +28,11 @@ const CAROUSEL_CARDS: CarouselCard[] = [
     variant: 'horizontal' as const
   },
   {
-    heading: 'Third Card',
-    description: 'Description for third card',
+    heading: 'Flow is Live on Axelar',
+    description: '"With this integration, Flow users, builders and dApps get access to best-in-class interoperability, opening up liquidity from 70+ chains 🦾 🤝"',
     iconColor: 'purple',
     cardColor: 'black',
-    href: '#third',
+    href: 'https://x.com/axelar/status/1882066175175360998',
     variant: 'horizontal' as const
   },
 ];
