@@ -4,36 +4,40 @@ import ActionCard from '@site/src/components/ActionCard';
 const NAVIGATION_CARDS = [
   {
     heading: 'Build',
-    description: 'Fire up a new app, add blue-chip features such as tokens and NFTs, or supercharge your user experience.',
+    description:
+      'Fire up a new app, add blue-chip features such as tokens and NFTs, or supercharge your user experience.',
     iconColor: 'green' as const,
     cardColor: 'black' as const,
     href: '#Build',
-    variant: 'overlay' as const
+    variant: 'overlay' as const,
   },
   {
     heading: 'Grow',
-    description: 'Grow your project on Flow',
+    description:
+      'Access builder credits, startup support, and connect with the Flow team in weekly office hours.',
     iconColor: 'blue' as const,
     cardColor: 'black' as const,
     href: '#Grow',
-    variant: 'overlay' as const
+    variant: 'overlay' as const,
   },
   {
     heading: 'Fund',
-    description: 'Find funding opportunities',
+    description:
+      'Explore funding opportunities through VCs, grants, and hackathons to bring your project to life.',
     iconColor: 'purple' as const,
     cardColor: 'black' as const,
     href: '#Fund',
-    variant: 'overlay' as const
+    variant: 'overlay' as const,
   },
   {
     heading: 'Learn',
-    description: 'Learn the basics, dive into the Cadence smart contract language, or explore how to keep building on EVM with the advantages of Flow.',
+    description:
+      'Learn the basics, dive into the Cadence smart contract language, or explore how to keep building on EVM with the advantages of Flow.',
     iconColor: 'teal' as const,
     cardColor: 'black' as const,
     href: '#Learn',
-    variant: 'overlay' as const
-  }
+    variant: 'overlay' as const,
+  },
 ] as const;
 
 export interface LandingHeaderHomeProps {
