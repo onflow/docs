@@ -21,7 +21,7 @@ export const buildGridData = {
           iconColor: 'green',
           cardColor: 'black',
           onClick: () => {
-            window.location.href = 'https://docs.onflow.org/cadence/language-features/';
+            window.open('https://cadence-lang.org', '_blank');
           }
         },
         {
@@ -41,7 +41,7 @@ export const buildGridData = {
           iconColor: 'green',
           cardColor: 'black',
           onClick: () => {
-            window.location.href = 'https://docs.onflow.org/cadence/tutorial/hello-world/';
+            window.location.href = 'build/getting-started/contract-interaction';
           }
         },
         {
@@ -60,6 +60,9 @@ export const buildGridData = {
             'Create NFT collections that are stored directly in your users\' accounts in a way that makes it nearly impossible to lose them.',
           iconColor: 'green',
           cardColor: 'black',
+          onClick: () => {
+            window.location.href = 'build/guides/nft';
+          }
         },
         // {
         //   heading: 'Chat with Other Devs',
@@ -82,6 +85,9 @@ export const buildGridData = {
             'Flow allows you to link wallets together, enabling your apps to use NFTs in a user\'s embedded wallet from another app.',
           iconColor: 'green',
           cardColor: 'black',
+          onClick: () => {
+            window.location.href = 'build/guides/account-linking-with-dapper';
+          }
         },
         {
           heading: 'VRF - Cadence',
@@ -165,7 +171,7 @@ export const buildGridData = {
           iconColor: 'green',
           cardColor: 'black',
           onClick: () => {
-            window.location.href = 'tools/flow-studio';
+            window.location.href = 'tools/clients/fcl-js';
           }
         },
         {

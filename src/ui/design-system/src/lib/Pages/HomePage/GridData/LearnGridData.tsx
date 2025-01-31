@@ -10,7 +10,7 @@ export const learnGridData = {
           iconColor: 'blue',
           cardColor: 'black',
           onClick: () => {
-            window.location.href = 'https://docs.onflow.org/cadence/tutorial/hello-world/';
+            window.location.href = 'build/getting-started/contract-interaction';
           }
         },
         {
@@ -20,7 +20,7 @@ export const learnGridData = {
           iconColor: 'blue',
           cardColor: 'black',
           onClick: () => {
-            window.location.href = 'https://docs.onflow.org/cadence/language-features/';
+            window.open('https://cadence-lang.org', '_blank');
           }
         },
         {
@@ -33,16 +33,17 @@ export const learnGridData = {
             window.location.href = 'evm/about';
           }
         },
-        {
-          heading: 'Tutorials',
-          description:
-            'Take deep dives into Flow, with Cadence, EVM, or both in the same app and learn advanced concepts to build the future of consumer applications.',
-          iconColor: 'blue',
-          cardColor: 'black',
-          onClick: () => {
-            window.location.href = 'tutorials';
-          }
-        },
+        // Re-add when tutorials section is live
+        // {
+        //   heading: 'Tutorials',
+        //   description:
+        //     'Take deep dives into Flow, with Cadence, EVM, or both in the same app and learn advanced concepts to build the future of consumer applications.',
+        //   iconColor: 'blue',
+        //   cardColor: 'black',
+        //   onClick: () => {
+        //     window.location.href = 'tutorials';
+        //   }
+        // },
         {
           heading: 'Flow Protocol',
           description:
