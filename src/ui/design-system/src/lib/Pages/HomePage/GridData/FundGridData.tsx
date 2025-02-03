@@ -2,7 +2,6 @@ export const fundGridData = {
   title: 'Fund',
   sections: [
     {
-      title: 'Funding Options',
       cards: [
         {
           heading: 'VCs & Funds',

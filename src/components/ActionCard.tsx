@@ -32,7 +32,7 @@ export const LocationIcon: React.FC = () => (
   </svg>
 );
 
-export const ActionCard: React.FC<ActionCardProps> = ({
+const ActionCard: React.FC<ActionCardProps> = ({
   iconColor = 'white',
   cardColor = 'black',
   heading,

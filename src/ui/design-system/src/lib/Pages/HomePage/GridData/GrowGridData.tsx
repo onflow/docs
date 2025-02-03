@@ -2,7 +2,6 @@ export const growGridData = {
   title: 'Grow',
   sections: [
     {
-      title: 'Support & Resources',
       cards: [
         {
           heading: 'Startup Support',
