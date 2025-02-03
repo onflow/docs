@@ -1,7 +1,7 @@
 import React from 'react';
 import {
-  LandingHeaderHome,
-} from '../../Components';
+  HomeNav,
+} from '../../Components/HomeNav';
 import { type ContentNavigationListProps } from '../../Components/ContentNavigationList';
 import { type SocialLinksSignupProps } from '../../Components/SocialLinksSignup';
 import { type TutorialCardProps } from '../../Components/TutorialCard';
@@ -24,7 +24,7 @@ const HomePage = ({ discordUrl, githubUrl }: HomePageProps): JSX.Element => {
   return (
     <PageBackground gradient="home">
       <HomeHeader />
-      <LandingHeaderHome
+      <HomeNav
         title="What do you want to do today?"
       />
 

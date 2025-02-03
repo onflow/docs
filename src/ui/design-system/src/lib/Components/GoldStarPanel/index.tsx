@@ -12,19 +12,19 @@ export const GoldStarPanel: React.FC = () => {
       <div className="flex gap-2">
         <button
           onClick={() => window.open('https://calendar.google.com/calendar/embed?src=c_47978f5cd9da636cadc6b8473102b5092c1a865dd010558393ecb7f9fd0c9ad0%40group.calendar.google.com', '_blank')}
-          className={`flex-1 ${colors.black.dark} text-white px-4 py-2 rounded-xl hover:bg-gray-700 appearance-none`}
+          className={`flex-1 ${colors.black.dark} text-white px-4 py-2 rounded-xl hover:bg-gray-700 appearance-none cursor-pointer`}
         >
           Office Hours
         </button>
         <button
           onClick={() => window.open('https://github.com/orgs/onflow/discussions', '_blank')}
-          className={`flex-1 ${colors.black.dark} text-white px-4 py-2 rounded-xl hover:bg-gray-700 appearance-none`}
+          className={`flex-1 ${colors.black.dark} text-white px-4 py-2 rounded-xl hover:bg-gray-700 appearance-none cursor-pointer`}
         >
           Discussions
         </button>
         <button
           onClick={() => window.location.href = '/#'}
-          className={`flex-1 ${colors.black.dark} text-white px-4 py-2 rounded-xl hover:bg-gray-700 appearance-none`}
+          className={`flex-1 ${colors.black.dark} text-white px-4 py-2 rounded-xl hover:bg-gray-700 appearance-none cursor-pointer`}
         >
           Ask Flow AI
         </button>
