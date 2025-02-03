@@ -7,6 +7,36 @@ export const GoldStarPanel: React.FC = () => {
   const { getProgress } = useProgress();
   const { user } = useCurrentUser();
 
+  const handleAskFlowAI = (e: React.MouseEvent) => {
+    e.preventDefault();
+
+    const el = document.querySelector('ask-cookbook') as HTMLElement & {
+      shadowRoot?: ShadowRoot;
+    };
+    if (!el) {
+      console.warn('ask-cookbook element not found');
+      return;
+    }
+
+    const shadow = el.shadowRoot;
+    if (!shadow) {
+      console.warn('ask-cookbook has no shadowRoot');
+      return;
+    }
+
+    const button = shadow.querySelector(
+      '#ask-cookbook-button',
+    ) as HTMLButtonElement;
+    if (!button) {
+      console.warn(
+        'Internal #ask-cookbook-button not found in the shadow root',
+      );
+      return;
+    }
+
+    button.click();
+  };
+
   return (
     <div className="flex flex-col gap-4 h-full">
       <div className="flex gap-2">
@@ -23,7 +53,7 @@ export const GoldStarPanel: React.FC = () => {
           Discussions
         </button>
         <button
-          onClick={() => window.location.href = '/#'}
+          onClick={handleAskFlowAI}
           className={`flex-1 ${colors.black.dark} text-white px-4 py-2 rounded-xl hover:bg-gray-700 appearance-none cursor-pointer border-0`}
         >
           Ask Flow AI
