@@ -58,7 +58,7 @@ export const NewsCarousel: React.FC = () => {
   };
 
   return (
-    <div className="relative pl-8">
+    <div className="relative">
       {/* Navigation Buttons */}
       <div className="absolute -left-6 top-1/2 -translate-y-1/2 flex flex-col gap-4">
         <button
@@ -104,9 +104,9 @@ export const NewsCarousel: React.FC = () => {
       </div>
 
       {/* Cards Grid */}
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-4 h-full">
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
         {getVisibleCards().map((card, index) => (
-          <div key={`${currentIndex}-${index}`} className="w-full flex h-full">
+          <div key={`${currentIndex}-${index}`} className="w-full flex h-full cursor-pointer">
             <ActionCard
               heading={card.heading}
               description={card.description}
