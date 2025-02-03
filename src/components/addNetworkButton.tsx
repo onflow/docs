@@ -93,7 +93,7 @@ export const AddNetworkButton = (): JSX.Element => {
           }}
         >
           {isNetworkAdded
-            ? `${chain.id} Network Added!`
+            ? `${chain.name} Network Added!`
             : `Add ${chain.name} Network`}
         </Button>
       ))}
