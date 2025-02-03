@@ -63,7 +63,7 @@ export const NewsCarousel: React.FC = () => {
       <div className="absolute -left-14 top-1/2 -translate-y-1/2 flex flex-col gap-4">
         <button
           onClick={nextSlide}
-          className="w-10 h-10 rounded-full bg-gray-800 text-white flex items-center justify-center hover:bg-gray-700 cursor-pointer border-0"
+          className="w-10 h-10 rounded-full bg-gray-300/10 text-black flex items-center justify-center hover:bg-gray-700 cursor-pointer border-0"
           aria-label="Next slide"
         >
           <svg
@@ -74,12 +74,12 @@ export const NewsCarousel: React.FC = () => {
             stroke="currentColor"
             className="w-5 h-5 rotate-90"
           >
-            <path d="M19.5 8.25l-7.5 7.5-7.5-7.5" />
+            <path d="M4.5 10.5L12 3m0 0l7.5 7.5M12 3v18" />
           </svg>
         </button>
         <button
           onClick={prevSlide}
-          className="w-10 h-10 rounded-full bg-gray-800 text-white flex items-center justify-center hover:bg-gray-700 cursor-pointer border-0"
+          className="w-10 h-10 rounded-full bg-gray-300/10 text-black flex items-center justify-center hover:bg-gray-700 cursor-pointer border-0"
           aria-label="Previous slide"
         >
           <svg
@@ -90,7 +90,7 @@ export const NewsCarousel: React.FC = () => {
             stroke="currentColor"
             className="w-5 h-5 -rotate-90"
           >
-            <path d="M19.5 8.25l-7.5 7.5-7.5-7.5" />
+            <path d="M4.5 10.5L12 3m0 0l7.5 7.5M12 3v18" />
           </svg>
         </button>
       </div>
