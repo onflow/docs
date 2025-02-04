@@ -6,7 +6,7 @@ interface ActionCardGridProps {
   title: string;
   id?: string;
   sections: {
-    title?: string;
+    title: string;
     cards: {
       heading: string;
       description: string;
