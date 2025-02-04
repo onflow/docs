@@ -1,6 +1,6 @@
 import { metadata } from '../data/metadata'
 
-export function getSocialMetas ({
+export function getSocialMetas({
   url,
   title = metadata.siteTitle,
   description = metadata.siteDescription,
@@ -33,4 +33,6 @@ export function getSocialMetas ({
 }
 
 export const getMetaTitle = (title?: string) =>
-  [title, metadata.defaultPageTitle].filter(Boolean).join(' | ')
+  title === metadata.defaultPageTitle
+    ? title
+    : [title, metadata.defaultPageTitle].filter(Boolean).join(' | ')
