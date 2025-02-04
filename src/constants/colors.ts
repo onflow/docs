@@ -1,4 +1,4 @@
-export type ColorOption = 'green' | 'blue' | 'purple' | 'teal' | 'black' | 'white';
+export type ColorOption = 'green' | 'blue' | 'purple' | 'teal' | 'black' | 'white' | 'flowgreen';
 
 export const colors: Record<ColorOption, { light: string; dark: string }> = {
   green: {
@@ -24,5 +24,9 @@ export const colors: Record<ColorOption, { light: string; dark: string }> = {
   white: {
     light: 'bg-white',
     dark: 'bg-gray-100',
+  },
+  flowgreen: {
+    light: 'bg-[#01EF8B]',
+    dark: 'bg-[#01EF8B]'
   },
 };

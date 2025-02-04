@@ -4,6 +4,7 @@ import ActionCard, { LocationIcon } from '@site/src/components/ActionCard';
 
 interface ActionCardGridProps {
   title: string;
+  id?: string;
   sections: {
     title: string;
     cards: {
@@ -11,13 +12,14 @@ interface ActionCardGridProps {
       description: string;
       iconColor?: string;
       cardColor?: string;
+      onClick?: () => void;
     }[];
   }[];
 }
 
-const ActionCardGrid: React.FC<ActionCardGridProps> = ({ title, sections }) => {
+const ActionCardGrid: React.FC<ActionCardGridProps> = ({ title, sections, id }) => {
   return (
-    <div className="relative p-8">
+    <div className="relative p-8" id={id}>
       {/* Main Title Section */}
       <div className="relative flex items-center mb-8">
         {/* Icon and Line Container */}
@@ -52,6 +54,7 @@ const ActionCardGrid: React.FC<ActionCardGridProps> = ({ title, sections }) => {
                   cardColor={card.cardColor as ColorOption}
                   heading={card.heading}
                   description={card.description}
+                  onClick={card.onClick}
                 />
               ))}
             </div>
