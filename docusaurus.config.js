@@ -80,7 +80,7 @@ const getUrl = () => {
     return `https://${process.env.VERCEL_URL}`;
   }
 
-  return 'https://onflow.github.io';
+  return 'https://developers.flow.com';
 };
 
 /**
@@ -205,11 +205,11 @@ const config = {
         },
         ...(process.env.GTAG
           ? {
-              gtag: {
-                trackingID: process.env.GTAG,
-                anonymizeIP: true,
-              },
-            }
+            gtag: {
+              trackingID: process.env.GTAG,
+              anonymizeIP: true,
+            },
+          }
           : {}),
       }),
     ],
@@ -240,8 +240,19 @@ const config = {
       colorMode: {
         defaultMode: 'dark',
       },
-      // Replace with your project's social card
-      image: 'img/FlowDocs_Logo_FlowLogo_Horizontal_Green_BlackText.svg',
+      // Update the image path and add metadata
+      image: 'img/flow-docs-og-1200-630.png',
+      metadata: [
+        { name: 'twitter:card', content: 'summary_large_image' },
+        { name: 'twitter:image', content: getUrl() + '/img/flow-docs-og-1200-630.png' },
+        { property: 'og:image', content: getUrl() + '/img/flow-docs-og-1200-630.png' },
+        { property: 'og:image:type', content: 'image/png' },
+        { property: 'og:image:width', content: '1200' },
+        { property: 'og:image:height', content: '630' },
+        { property: 'og:type', content: 'website' },
+        { property: 'og:description', content: 'Flow Developer Documentation - The future of culture and digital assets is built on Flow' },
+        { property: 'og:logo', content: getUrl() + '/img/flow-docs-logo-light.png' },
+      ],
       docs: {
         sidebar: {
           autoCollapseCategories: true,
