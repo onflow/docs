@@ -33,6 +33,4 @@ export function getSocialMetas({
 }
 
 export const getMetaTitle = (title?: string) =>
-  title === metadata.defaultPageTitle
-    ? title
-    : [title, metadata.defaultPageTitle].filter(Boolean).join(' | ')
+  [title, metadata.defaultPageTitle].filter(Boolean).join(' | ')
