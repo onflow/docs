@@ -2,6 +2,23 @@
 title: Build a Walletless Mobile App (PWA)
 sidebar_label: Build a Walletless Mobile App (PWA)
 sidebar_position: 2
+description: Learn how to create a Progressive Web App (PWA) on Flow blockchain with walletless onboarding. Build accessible mobile dApps using Magic integration, account linking, and hybrid custody features.
+keywords:
+  - PWA
+  - walletless onboarding
+  - Magic integration
+  - mobile dApp
+  - progressive web app
+  - Flow blockchain
+  - hybrid custody
+  - account linking
+  - mobile development
+  - web3 onboarding
+  - blockchain PWA
+  - mobile authentication
+  - Magic SDK
+  - Flow mobile
+  - user experience
 ---
 
 # Overview
@@ -23,8 +40,8 @@ To effectively follow this tutorial, the developer requires a few essential libr
 ## **Dependencies**
 
 1. **Magic Account**: Start by setting up an app on magic.link, during which you will obtain an API key crucial for further steps.
-2. **Magic SDK**: Essential for integrating Magic’s functionality in your project, and can be found [here](https://www.npmjs.com/package/magic-sdk).
-3. **Magic Flow SDK**: This SDK enables Magic’s integration with Flow. You can install it from [this link](https://www.npmjs.com/package/@magic-ext/flow/v/13.3.0).
+2. **Magic SDK**: Essential for integrating Magic's functionality in your project, and can be found [here](https://www.npmjs.com/package/magic-sdk).
+3. **Magic Flow SDK**: This SDK enables Magic's integration with Flow. You can install it from [this link](https://www.npmjs.com/package/@magic-ext/flow/v/13.3.0).
 4. **Flow Client Library ([FCL](https://developers.flow.com/tooling/fcl-js))**: As the JavaScript SDK for the Flow blockchain, FCL allows developers to create applications that seamlessly interact with the Flow blockchain and its smart contracts.
 5. **React**: Our project will be built using the React framework.
 
@@ -50,7 +67,7 @@ Following the build, you can serve your application locally using:
 npx serve -s build
 ```
 
-To thoroughly test your PWA, especially on a mobile device, it’s highly recommended to use a tool like **`ngrok`**. Start **`ngrok`** and point it to the local port your application is running on:
+To thoroughly test your PWA, especially on a mobile device, it's highly recommended to use a tool like **`ngrok`**. Start **`ngrok`** and point it to the local port your application is running on:
 
 ```bash
 ngrok http 3000
@@ -63,14 +80,14 @@ You can now grab the link and go to it on your mobile device to test the PWA!
 
 ### Integrating with Magic
 
-Proceed to install the Magic-related dependencies in your project. Ensure you add your Magic app’s key as an environment variable for secure access:
+Proceed to install the Magic-related dependencies in your project. Ensure you add your Magic app's key as an environment variable for secure access:
 
 ```bash
 yarn add magic-sdk @magic-ext/flow @onflow/fcl
 
 ```
 
-Let’s create a helper file, **`magic.js`**, to manage our Magic extension setup. Ensure that your environment variable with the Magic API key is correctly set before proceeding.
+Let's create a helper file, **`magic.js`**, to manage our Magic extension setup. Ensure that your environment variable with the Magic API key is correctly set before proceeding.
 
 ```js
 import { Magic } from "magic-sdk";
@@ -108,12 +125,12 @@ export default CurrentUserContext;
 
 **`currentUserProvider.js`**
 
-This file defines a React provider component that uses the context created above. This provider component will wrap around your application’s components, allowing them to access the current user's data.
+This file defines a React provider component that uses the context created above. This provider component will wrap around your application's components, allowing them to access the current user's data.
 
-- **useState**: To create state variables for storing the current user’s data and the loading status.
-- **useEffect**: To fetch the user’s data from Magic when the component mounts.
+- **useState**: To create state variables for storing the current user's data and the loading status.
+- **useEffect**: To fetch the user's data from Magic when the component mounts.
 - **magic.user.isLoggedIn**: Checks if a user is logged in.
-- **magic.user.getMetadata**: Fetches the user’s metadata.
+- **magic.user.getMetadata**: Fetches the user's metadata.
 
 ```js
 import React, { useState, useEffect } from "react";
@@ -157,7 +174,7 @@ export default CurrentUserProvider;
 
 ### **Logging in the User**
 
-This part shows how to log in a user using Magic’s SMS authentication.
+This part shows how to log in a user using Magic's SMS authentication.
 
 - **magic.auth.loginWithSMS**: A function provided by Magic to authenticate users using their phone number.
 - **setCurrentUser**: Updates the user's data in the context.
@@ -215,11 +232,11 @@ const transactionExample = async (currentUser) => {
 
 ### ****Account Linking with Flow****
 
-Now we can unlock the real power of Flow. Lets say you have another Flow account and you want to link the “magic” account as a child account so that you can take full custody of whatever is in the magic account you can do this via Hybird Custody.
+Now we can unlock the real power of Flow. Lets say you have another Flow account and you want to link the "magic" account as a child account so that you can take full custody of whatever is in the magic account you can do this via Hybird Custody.
 
 You can view the hybrid custody repo and contracts here: https://github.com/onflow/hybrid-custody
 
-We will maintain two accounts within the app. The child(magic) account form earlier and new non custodial FCL flow account. I won’t go over how to log in with FCL here and use it but you can do the normal process to obtain the parent account.
+We will maintain two accounts within the app. The child(magic) account form earlier and new non custodial FCL flow account. I won't go over how to log in with FCL here and use it but you can do the normal process to obtain the parent account.
 
 One you have the parent account and child(magic) account logged in you can link the account by using the following transaction.
 

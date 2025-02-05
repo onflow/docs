@@ -1,5 +1,18 @@
 ---
 title: Scaling Transactions from a Single Account
+description: Learn how to scale transactions from a single account on Flow using multiple proposer keys, enabling concurrent transaction processing for system-level operations.
+keywords:
+  - scaling
+  - transactions
+  - proposer keys
+  - sequence numbers
+  - concurrent transactions
+  - system transactions
+  - transaction scaling
+  - Flow blockchain
+  - account scaling
+  - transaction workers
+  - batch operations
 sidebar_label: Scaling Transactions from a Single Account
 ---
 
@@ -16,11 +29,11 @@ Flow is designed for consumer-scale internet applications and is one of the fast
     * Swapping tokens on decentralized exchanges (DEXs)
     * Staking or unstaking tokens
 
-    In this category, each transaction originates from a unique account and is sent to the Flow network from a different machine. Developers don’t need to take special measures to scale for this category, beyond ensuring their logic is primarily on-chain and their supporting systems (e.g., frontend, backend) can handle scaling if they become bottlenecks. Flow’s protocol inherently manages scaling for user transactions.
+    In this category, each transaction originates from a unique account and is sent to the Flow network from a different machine. Developers don't need to take special measures to scale for this category, beyond ensuring their logic is primarily on-chain and their supporting systems (e.g., frontend, backend) can handle scaling if they become bottlenecks. Flow's protocol inherently manages scaling for user transactions.
 
 2. **System Transactions**
 
-    These are transactions initiated by an app’s backend or various tools, such as:
+    These are transactions initiated by an app's backend or various tools, such as:
 
     * Minting thousands of tokens from a single minter account
     * Creating transaction workers for custodians
@@ -28,7 +41,7 @@ Flow is designed for consumer-scale internet applications and is one of the fast
 
     In this category, many transactions originate from the same account and are sent to the Flow network from the same machine, which can make scaling tricky. This guide focuses on strategies for scaling transactions from a single account.
 
-In the following sections, we’ll explore how to execute concurrent transactions from a single account on Flow using multiple proposer keys.
+In the following sections, we'll explore how to execute concurrent transactions from a single account on Flow using multiple proposer keys.
 
 :::info
 
@@ -40,7 +53,7 @@ This guide is specific to non-EVM transactions. For EVM-compatible transactions,
 
 Blockchains use sequence numbers, also known as nonces, for each transaction to prevent [replay attacks](https://en.wikipedia.org/wiki/Replay_attack) and allow users to specify the order of their transactions. The Flow network requires a specific sequence number for each incoming transaction and will reject any transaction where the sequence number does not exactly match the expected next value.
 
-This behavior presents a challenge for scaling, as sending multiple transactions does not guarantee that they will be executed in the order they were sent. This is a fundamental aspect of Flow’s resistance to MEV (Maximal Extractable Value), as transaction ordering is randomized within each block.
+This behavior presents a challenge for scaling, as sending multiple transactions does not guarantee that they will be executed in the order they were sent. This is a fundamental aspect of Flow's resistance to MEV (Maximal Extractable Value), as transaction ordering is randomized within each block.
 
 If a transaction arrives out of order, the network will reject it and return an error message similar to the following:
 ```
@@ -86,13 +99,13 @@ We can leverage this model to design an ideal system transaction architecture as
 
     To simplify the system further, we can reuse the same cryptographic key multiple times within the same account by adding it as a new key. These additional keys can have a weight of 0 since they do not need to authorize transactions.
 
-Here’s a visual example of how such an [account configuration](https://www.flowscan.io/account/18eb4ee6b3c026d2?tab=keys) might look:
+Here's a visual example of how such an [account configuration](https://www.flowscan.io/account/18eb4ee6b3c026d2?tab=keys) might look:
 
 ![Example.Account](scaling-example-account.png "Example Account")
 
 As shown, the account includes additional weightless keys designated for proposals, each with its own independent sequence number. This setup ensures that multiple workers can operate concurrently without conflicts or synchronization issues.
 
-In the next section, we’ll demonstrate how to implement this architecture using the [Go SDK](https://github.com/onflow/flow-go-sdk).
+In the next section, we'll demonstrate how to implement this architecture using the [Go SDK](https://github.com/onflow/flow-go-sdk).
 
 ## Example Implementation
 
@@ -163,7 +176,7 @@ transaction(code: String, numKeys: Int) {
 }
 ```
 
-Next, the main loop starts. Each worker will process a transaction request from the queue and execute it. Here’s the code for the main loop:
+Next, the main loop starts. Each worker will process a transaction request from the queue and execute it. Here's the code for the main loop:
 
 ```go
 // populate the job channel with the number of transactions to execute

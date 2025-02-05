@@ -1,8 +1,23 @@
 ---
-title: How to Create an NFT Project on Flow
-sidebar_label: Create an NFT Project
-description: Guide to creating an NFT Project with the Flow CLI and Cadence.
-sidebar_position: 3
+title: Creating an NFT Contract
+description: Learn how to create and deploy a non-fungible token (NFT) contract on Flow using Cadence. Follow this guide to implement the Flow NFT standard, manage collections, and handle token minting and transfers.
+sidebar_position: 5
+keywords:
+  - NFT
+  - non-fungible token
+  - Flow NFT
+  - NFT standard
+  - smart contract
+  - Cadence
+  - token minting
+  - NFT collection
+  - Flow CLI
+  - token deployment
+  - NFT transfer
+  - digital assets
+  - Flow development
+  - NFT contract
+  - blockchain NFTs
 ---
 
 :::info
@@ -32,7 +47,7 @@ The **Flow CLI** (Command Line Interface) provides a suite of tools
 that allow developers to interact seamlessly with the Flow blockchain.
 
 If you haven't installed the Flow CLI yet and have [Homebrew](https://brew.sh/) installed,
-you can run `brew install flow-cli`. If you don’t have Homebrew,
+you can run `brew install flow-cli`. If you don't have Homebrew,
 please follow [the installation guide here](../../tools/flow-cli/install.md).
 
 ### Initializing a New Project
@@ -630,7 +645,7 @@ In a separate terminal or command prompt, deploy the contract:
 flow project deploy
 ```
 
-You’ll then see a message that says `All contracts deployed successfully`.
+You'll then see a message that says `All contracts deployed successfully`.
 
 ## Creating an NFTCollection
 
@@ -889,7 +904,7 @@ flow scripts execute cadence/scripts/get_foobar_ids.cdc 0x123
 The transfer transaction also has a [generic version](https://github.com/onflow/flow-nft/blob/master/transactions/generic_transfer_with_address.cdc)
 that developers are encouraged to use!
 
-Congrats, you did it! You’re now ready to launch the next fun NFT project on Flow.
+Congrats, you did it! You're now ready to launch the next fun NFT project on Flow.
 
 ## More
 

@@ -2,17 +2,34 @@
 title: IOS Development
 sidebar_label: IOS Development
 sidebar_position: 3
+description: Learn how to build native iOS applications on Flow blockchain using the Monster Maker sample project. Understand wallet integration, transaction signing, and NFT management in mobile apps.
+keywords:
+  - iOS development
+  - Flow mobile
+  - Monster Maker
+  - mobile dApp
+  - FCL Swift
+  - wallet integration
+  - NFT mobile
+  - iOS blockchain
+  - mobile wallet
+  - transaction signing
+  - native app
+  - Flow SDK
+  - mobile development
+  - iOS sample
+  - blockchain mobile
 ---
 
 # Overview
 
-The following documentation aims to educate you on building a native mobile application on Flow. It first presents Monster Maker, a starter project we’ve built to represent simple Flow mobile concepts. Next it presents various developer resources related to building mobile native Flow applications.
+The following documentation aims to educate you on building a native mobile application on Flow. It first presents Monster Maker, a starter project we've built to represent simple Flow mobile concepts. Next it presents various developer resources related to building mobile native Flow applications.
 
 # Monster Maker
 
 ![monster_maker_logo.png](resources/monster_maker_logo.png)
 
-Monster Maker is a native iOS app that allows users to connect a wallet, sign a transaction to mint an NFT (a monster) and display their collection of NFTs (their monsters) within the app. It’s meant to be a lightweight sample project to exemplify how to build a mobile native Flow project. If you’re looking to build a native mobile application for Flow, exploring the Monster Maker code base first or even building off of it is a great way to get started.
+Monster Maker is a native iOS app that allows users to connect a wallet, sign a transaction to mint an NFT (a monster) and display their collection of NFTs (their monsters) within the app. It's meant to be a lightweight sample project to exemplify how to build a mobile native Flow project. If you're looking to build a native mobile application for Flow, exploring the Monster Maker code base first or even building off of it is a great way to get started.
 
 <aside>
 👉 ***Note** - We currently only have an iOS project for Monster Maker. That said an Android and web version of the same project is in active development.*
@@ -254,7 +271,7 @@ https://github.com/Outblock/fcl-android
 
 **FCL Wallet Connect 2.0**
 
-One of the easiest ways to connect to a wallet via a mobile native dApp is through Flow’s new support for Wallet Connect 2.0. This is the pattern that Monster Maker uses to connect to the Dapper Self Custody wallet and Lilico. For more information on FCL Wallet Connect 2.0, check out this page:
+One of the easiest ways to connect to a wallet via a mobile native dApp is through Flow's new support for Wallet Connect 2.0. This is the pattern that Monster Maker uses to connect to the Dapper Self Custody wallet and Lilico. For more information on FCL Wallet Connect 2.0, check out this page:
 
 [FCL Wallet Connect](../../../tools/clients/fcl-js/wallet-connect.md)
 

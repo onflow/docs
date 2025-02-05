@@ -2,6 +2,23 @@
 title: Cadence Security Best Practices
 sidebar_label: Security Best Practices
 sidebar_position: 3
+description: Learn essential security practices for writing secure Cadence smart contracts. Understand how to handle references, account storage, capabilities, transactions, and access control safely.
+keywords:
+  - security practices
+  - Cadence security
+  - smart contract security
+  - secure coding
+  - reference safety
+  - account storage
+  - capabilities
+  - access control
+  - transaction security
+  - type safety
+  - authorization
+  - secure development
+  - Flow security
+  - best practices
+  - security guidelines
 ---
 
 This is an opinionated list of best practices Cadence developers should follow to write more secure Cadence code.
@@ -23,7 +40,7 @@ like `<auth(Owner) &MyResource>`.
 
 ## Account Storage
 
-Don't trust a users’ [account storage](https://cadence-lang.org/docs/language/accounts#account-storage). Users have full control over their data and may reorganize it as they see fit. Users may store values in any path, so paths may store values of “unexpected” types. These values may be instances of types in contracts that the user deployed.
+Don't trust a users' [account storage](https://cadence-lang.org/docs/language/accounts#account-storage). Users have full control over their data and may reorganize it as they see fit. Users may store values in any path, so paths may store values of "unexpected" types. These values may be instances of types in contracts that the user deployed.
 
 Always [borrow](https://cadence-lang.org/docs/language/capabilities) with the specific type that is expected. Or, check if the value is an instance of the expected type.
 
@@ -38,7 +55,7 @@ It is preferable to use capabilities over direct `&Account` references when expo
 
 ## Capabilities
 
-Don’t store anything under the [public capability storage](https://cadence-lang.org/docs/language/capabilities) unless strictly required. Anyone can access your public capability using `Account.capabilities.get`. If something needs to be stored under `/public/`, make sure only read functionality is provided by restricting privileged functions with entitlements.
+Don't store anything under the [public capability storage](https://cadence-lang.org/docs/language/capabilities) unless strictly required. Anyone can access your public capability using `Account.capabilities.get`. If something needs to be stored under `/public/`, make sure only read functionality is provided by restricting privileged functions with entitlements.
 
 When publishing a capability, the capability might already be present at the given `PublicPath`.
 In that case, Cadence will panic with a runtime error to not override the already published capability.
@@ -51,9 +68,9 @@ Ensure capabilities cannot be accessed by unauthorized parties. For example, cap
 
 ## Transactions
 
-Audits of Cadence code should also include [transactions](https://cadence-lang.org/docs/language/transactions), as they may contain arbitrary code, just, like in contracts. In addition, they are given full access to the accounts of the transaction’s signers, i.e. the transaction is allowed to manipulate the signers’ account storage, contracts, and keys.
+Audits of Cadence code should also include [transactions](https://cadence-lang.org/docs/language/transactions), as they may contain arbitrary code, just, like in contracts. In addition, they are given full access to the accounts of the transaction's signers, i.e. the transaction is allowed to manipulate the signers' account storage, contracts, and keys.
 
-Signing a transaction gives access to the `&Account`, i.e. access to the account’s storage, keys, and contracts depending on what entitlements are specified.
+Signing a transaction gives access to the `&Account`, i.e. access to the account's storage, keys, and contracts depending on what entitlements are specified.
 
 Do not blindly sign a transaction. The transaction could for example change deployed contracts by upgrading them with malicious statements, revoking or adding keys, transferring resources from storage, etc.
 
@@ -65,7 +82,7 @@ If given a less-specific type, cast to the more specific type that is expected. 
 
 ## Access Control
 
-Declaring a field as [`access(all)`](https://cadence-lang.org/docs/language/access-control) only protects from replacing the field’s value, but the value itself can still be mutated if it is mutable. Remember that containers, like dictionaries, and arrays, are mutable.
+Declaring a field as [`access(all)`](https://cadence-lang.org/docs/language/access-control) only protects from replacing the field's value, but the value itself can still be mutated if it is mutable. Remember that containers, like dictionaries, and arrays, are mutable.
 
 Prefer non-public access to a mutable state. That state may also be nested. For example, a child may still be mutated even if its parent exposes it through a field with non-settable access.
 

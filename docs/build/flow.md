@@ -2,6 +2,23 @@
 title: Why Flow
 sidebar_label: Why Flow
 sidebar_position: 1
+description: Learn why Flow blockchain is uniquely designed for consumer-scale decentralized applications. Understand Flow's multi-role architecture, native account abstraction, and EVM equivalence.
+keywords:
+  - Flow blockchain
+  - blockchain scaling
+  - multi-role architecture
+  - Cadence language
+  - EVM equivalence
+  - account abstraction
+  - blockchain security
+  - Flow features
+  - blockchain trilemma
+  - Flow EVM
+  - smart contracts
+  - Flow token
+  - blockchain architecture
+  - decentralization
+  - consumer apps
 ---
 
 

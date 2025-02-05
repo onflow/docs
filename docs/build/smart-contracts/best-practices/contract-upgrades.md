@@ -1,6 +1,23 @@
 ---
 title: Contract Upgrades with Incompatible Changes
 sidebar_position: 4
+description: Learn best practices for handling incompatible contract upgrades on Flow. Understand the risks and recommended approaches for upgrading smart contracts while maintaining data integrity.
+keywords:
+  - contract upgrades
+  - smart contracts
+  - incompatible changes
+  - contract migration
+  - upgrade strategy
+  - contract deployment
+  - Flow blockchain
+  - contract versioning
+  - data migration
+  - contract paths
+  - resource management
+  - upgrade transactions
+  - contract compatibility
+  - best practices
+  - contract security
 ---
 
 ### Problem

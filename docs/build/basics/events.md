@@ -1,5 +1,23 @@
 ---
 sidebar_position: 6
+title: Events
+description: Learn about Flow blockchain events, including core events and user-defined events. Understand how events are emitted during transaction execution and how they can be observed by off-chain applications.
+keywords:
+  - events
+  - blockchain events
+  - Flow events
+  - core events
+  - user-defined events
+  - event emission
+  - event payload
+  - fungible token events
+  - fee events
+  - event listeners
+  - transaction events
+  - event types
+  - event naming
+  - Flow network
+  - event observation
 ---
 
 # Events
@@ -8,7 +26,7 @@ Flow events are special values that are emitted on the network during the execut
 
 Events are defined as Cadence code and you should [read Cadence documentation](https://cadence-lang.org/docs/language/events) to understand how to define them. 
 
-Since transactions don’t have return values you can leverage events to broadcast certain changes the transaction caused. Clients listening on Flow networks (apps) can listen to these events being emitted and react. 
+Since transactions don't have return values you can leverage events to broadcast certain changes the transaction caused. Clients listening on Flow networks (apps) can listen to these events being emitted and react. 
 
 ![Screenshot 2023-08-18 at 14.09.33.png](_events_images/Screenshot_2023-08-18_at_14.09.33.png)
 

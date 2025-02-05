@@ -1,12 +1,29 @@
 ---
 title: Smart Contracts on Flow
-sidebar_position: 2
 sidebar_label: Smart Contracts on Flow
+sidebar_position: 2
 sidebar_custom_props:
-  icon: 🛠️ 
+  icon: 🛠️
+description: Learn about smart contract development on Flow blockchain. Understand data storage, standards implementation, and best practices for building decentralized applications using Cadence.
+keywords:
+  - smart contracts
+  - Flow blockchain
+  - Cadence
+  - dApp development
+  - NFT standards
+  - fungible tokens
+  - contract storage
+  - IPFS storage
+  - blockchain data
+  - Flow standards
+  - contract interfaces
+  - development tools
+  - Flow CLI
+  - Flow emulator
+  - decentralized apps
 ---
 
-At its core, a decentralized application is defined by the [smart contracts](https://en.wikipedia.org/wiki/Smart_contract) it uses on the blockchain. Rather than relying on centralized application servers and databases, apps model their core application logic using smart contracts, often referred to as the “on-chain” code.
+At its core, a decentralized application is defined by the [smart contracts](https://en.wikipedia.org/wiki/Smart_contract) it uses on the blockchain. Rather than relying on centralized application servers and databases, apps model their core application logic using smart contracts, often referred to as the "on-chain" code.
 
 It is therefore helpful to develop a clear model for your app that takes into account the data and logic that will exist in your smart contracts. In particular, it is important to differentiate between the parts of your app that must live on chain and those that should live off chain.
 
@@ -29,7 +46,7 @@ To build confidently, you will want to set up the appropriate local environment 
 
 ## Storing Data on Flow
 
-All apps will store important data on the blockchain, and some more than others -- especially NFT apps. You’ll want to consider the following when storing data on the Flow blockchain.
+All apps will store important data on the blockchain, and some more than others -- especially NFT apps. You'll want to consider the following when storing data on the Flow blockchain.
 
 ### What does your data need to represent?
 
@@ -43,7 +60,7 @@ Furthermore, a single Flow transaction has a size limit of 4MB, which limits the
 
 Lastly, a blockchain is not a content delivery network and therefore cannot serve media assets, such as videos, at the speeds expected by modern applications.
 
-For these reasons, it usually isn’t practical to store large media assets such as videos and high-definition images on the Flow blockchain. Instead, consider using an external storage solution.
+For these reasons, it usually isn't practical to store large media assets such as videos and high-definition images on the Flow blockchain. Instead, consider using an external storage solution.
 
 ### External Storage Networks
 
@@ -51,7 +68,7 @@ Decentralized storage networks such as IPFS allow you to store large digital ass
 
 IPFS files can be uploaded via a pinning service such as Pinata; see their [NFT tutorial](https://medium.com/pinata/how-to-create-nfts-like-nba-top-shot-with-flow-and-ipfs-701296944bf) for an example of how to use Pinata with Flow.
 
-It’s worth noting that IPFS files are served through [gateways](https://docs.ipfs.io/concepts/ipfs-gateway/), many of which leverage caching to provide fast response times. Cloudflare provides a [public IPFS Gateway](https://developers.cloudflare.com/distributed-web/ipfs-gateway), and Pinata also supports [dedicated gateways with custom domains](https://medium.com/pinata/announcing-dedicated-ipfs-gateways-60f599949ce).
+It's worth noting that IPFS files are served through [gateways](https://docs.ipfs.io/concepts/ipfs-gateway/), many of which leverage caching to provide fast response times. Cloudflare provides a [public IPFS Gateway](https://developers.cloudflare.com/distributed-web/ipfs-gateway), and Pinata also supports [dedicated gateways with custom domains](https://medium.com/pinata/announcing-dedicated-ipfs-gateways-60f599949ce).
 
 ## Using Existing Standards
 

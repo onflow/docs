@@ -2,6 +2,22 @@
 title: Service Account Contracts
 sidebar_position: 4
 sidebar_label: Service Account
+description: Learn about Flow's service account contracts that manage core protocol requirements, including transaction fees, deployment permissions, random beacon history, and node versioning.
+keywords:
+  - service account
+  - core contracts
+  - FlowServiceAccount
+  - transaction fees
+  - deployment permissions
+  - RandomBeaconHistory
+  - NodeVersionBeacon
+  - protocol versions
+  - Flow protocol
+  - core protocol
+  - contract addresses
+  - protocol management
+  - Flow governance
+  - network configuration
 ---
 
 The service account is the account that manages the core protocol requirements of Flow.

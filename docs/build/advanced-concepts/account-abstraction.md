@@ -1,4 +1,13 @@
 ---
+title: Account Abstraction
+description: Learn how Flow provides native support for key use cases enabled by Account Abstraction, including multi-sig transactions, sponsored transactions, and more.
+keywords:
+  - account abstraction
+  - multi-sig
+  - sponsored transactions
+  - bundled transactions
+  - account recovery
+  - multi-factor authentication
 sidebar_position: 2
 ---
 
@@ -54,4 +63,4 @@ These improvements are especially notable on mobile, where users are typically m
 
 | Account Abstraction                                                                                                                                                                                                           | Flow                                                                                                                                                                       |
 | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Developers can build new features that streamline the user experience of Web3 apps, such as ‘session keys’ that pre-approve transactions for a period of time or setting custom limits on transaction volume or network fees. | Since all accounts are smart contracts, Flow has support for these new controls that enable apps to sign pre-approved transactions based on user controls and preferences. |
+| Developers can build new features that streamline the user experience of Web3 apps, such as 'session keys' that pre-approve transactions for a period of time or setting custom limits on transaction volume or network fees. | Since all accounts are smart contracts, Flow has support for these new controls that enable apps to sign pre-approved transactions based on user controls and preferences. |

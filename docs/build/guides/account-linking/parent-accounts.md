@@ -1,6 +1,23 @@
 ---
 title: Working With Parent Accounts
 sidebar_position: 2
+description: Learn how to work with parent accounts in Flow's hybrid custody model. Understand how to manage child accounts, access assets across accounts, and implement unified account experiences in wallets and marketplaces.
+keywords:
+  - parent accounts
+  - hybrid custody
+  - account management
+  - child accounts
+  - account access
+  - NFT management
+  - token balances
+  - wallet integration
+  - marketplace integration
+  - Flow accounts
+  - account delegation
+  - asset management
+  - account hierarchy
+  - capability management
+  - account security
 ---
 
 In this doc, we'll continue from the perspective of a wallet or marketplace app seeking to facilitate a unified account
@@ -11,9 +28,9 @@ all their owned assets.
 
 - Understand the Hybrid Custody account model
 - Differentiate between restricted child accounts and unrestricted owned accounts
-- Get your app to recognize “parent” accounts along with any associated “child” accounts
+- Get your app to recognize "parent" accounts along with any associated "child" accounts
 - View Fungible and NonFungible Token metadata relating to assets across all of a user's associated accounts - their
-  wallet-mediated “parent” account and any hybrid custody model “child” accounts
+  wallet-mediated "parent" account and any hybrid custody model "child" accounts
 - Facilitate transactions acting on assets in child accounts
 
 ## Design Overview

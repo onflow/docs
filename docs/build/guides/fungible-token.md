@@ -1,8 +1,23 @@
 ---
-title: How to Create a Fungible Token on Flow
-sidebar_label: Create a Fungible Token
-description: Guide to creating a fungible token on Flow with the Flow CLI and Cadence.
-sidebar_position: 2
+title: Creating a Fungible Token
+description: Learn how to create and deploy a fungible token on Flow using Cadence. Follow this guide to implement the Flow Fungible Token standard, manage token minting, transfers, and vault management.
+sidebar_position: 6
+keywords:
+  - fungible token
+  - Flow token
+  - token standard
+  - smart contract
+  - Cadence
+  - token minting
+  - token transfers
+  - vault management
+  - Flow CLI
+  - token deployment
+  - FT standard
+  - token balance
+  - Flow development
+  - token contract
+  - blockchain tokens
 ---
 
 :::info
@@ -73,7 +88,7 @@ To start creating a Fungible Token on the Flow blockchain, you'll first need som
 The **Flow CLI** (Command Line Interface) provides a suite of tools that allow developers to interact seamlessly with the Flow blockchain.
 
 If you haven't installed the Flow CLI yet and have [Homebrew](https://brew.sh/) installed,
-you can run `brew install flow-cli`. If you don’t have Homebrew,
+you can run `brew install flow-cli`. If you don't have Homebrew,
 please follow [the installation guide here](https://developers.flow.com/tools/flow-cli/install).
 
 ### Initializing a New Project
@@ -163,7 +178,7 @@ import "FungibleToken"
 In this same file, let's create our contract which implements the `FungibleToken` contract interface (it does so by setting it following the `FooToken:`).
 We'll also include fields for standard storage and public paths
 for our resource definitions.
-In our `init` — which runs on the contract's first deployment and is used to set initial values — let’s set an starting total supply of 1,000 tokens for this example.
+In our `init` — which runs on the contract's first deployment and is used to set initial values — let's set an starting total supply of 1,000 tokens for this example.
 
 ```cadence
 // ...previous code
@@ -807,7 +822,7 @@ Congrats, you've deployed your contract to the Flow Blockchain emulator.
 To read more about deploying your project to other environments,
 see the [CLI docs](https://developers.flow.com/tools/flow-cli/deployment/deploy-project-contracts).
 
-## Reading the Token’s Total Supply
+## Reading the Token's Total Supply
 
 Let's now check that our total supply was initialized with 1,000 FooTokens. Go ahead and create a script called `get_total_supply.cdc` using the `generate` command.
 
@@ -839,7 +854,7 @@ To learn more about running scripts using Flow CLI, [see the docs](https://devel
 
 On Flow, newly created accounts cannot receive arbitrary assets.
 They need to be initialized to receive resources.
-In our case, we want to give accounts tokens and we’ll need to create
+In our case, we want to give accounts tokens and we'll need to create
 a `Vault` (which acts as a receiver) on each account that we want
 to have the ability to receive tokens. To do this, we'll need to run a transaction
 which will create the vault and set it in their storage
@@ -909,7 +924,7 @@ flow transactions send ./cadence/transactions/setup_ft_account.cdc --signer test
 
 To learn more about running transactions using CLI, [see the docs](https://developers.flow.com/tools/flow-cli/transactions/send-transactions).
 
-## Reading a Vault’s Balance
+## Reading a Vault's Balance
 
 Let's now read the balance of the newly created account (`test-acct`) to check it's zero.
 

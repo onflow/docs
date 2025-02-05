@@ -1,5 +1,19 @@
 ---
 title: NFT Metadata Views
+description: Learn about Flow's standardized way to represent and manage NFT metadata through MetadataViews, enabling consistent metadata interpretation across different platforms and marketplaces.
+keywords:
+  - NFT metadata
+  - MetadataViews
+  - NFT standards
+  - metadata views
+  - Flow NFT
+  - ViewResolver
+  - NFT traits
+  - NFT royalties
+  - NFT editions
+  - contract metadata
+  - NFT display
+  - metadata implementation
 sidebar_label: NFT Metadata Views
 ---
 

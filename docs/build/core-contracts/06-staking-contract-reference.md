@@ -2,6 +2,23 @@
 title: Flow Staking Contract Reference
 sidebar_position: 6
 sidebar_label: Staking Table
+description: Learn about Flow's staking contract (FlowIDTableStaking) that manages staked nodes, delegation, and rewards. Understand how to interact with staking functionality through transactions and scripts.
+keywords:
+  - staking contract
+  - Flow staking
+  - node staking
+  - delegation
+  - staking rewards
+  - FlowIDTableStaking
+  - staking scripts
+  - staking events
+  - node management
+  - token delegation
+  - staking table
+  - epoch events
+  - staking transactions
+  - Flow protocol
+  - staking requirements
 ---
 
 ## Contract

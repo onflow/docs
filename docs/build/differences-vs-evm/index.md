@@ -3,6 +3,23 @@ sidebar_position: 2
 title: Differences vs. EVM
 sidebar_custom_props:
   icon: ↔️
+description: Understand the key differences between Flow and EVM-based blockchains. Learn about Flow's unique account model, Cadence programming language, and transaction structure compared to Ethereum.
+keywords:
+  - Flow vs EVM
+  - Cadence vs Solidity
+  - blockchain differences
+  - account model
+  - smart contracts
+  - transactions
+  - Flow nodes
+  - development tools
+  - Flow architecture
+  - blockchain comparison
+  - Flow capabilities
+  - resource orientation
+  - Flow security model
+  - blockchain SDK
+  - developer tools
 ---
 
 Flow [Cadence] is designed with many improvements over prior blockchain networks.  As a result, you'll notice many differences between Flow vs. other blockchains, especially Ethereum. This document will be most useful to developers who are already familiar with building on the EVM, but contains details useful to all developers. Check out [Why Flow] for a more general overview of the Flow blockchain.

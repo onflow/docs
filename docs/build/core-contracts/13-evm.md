@@ -2,6 +2,23 @@
 title: Flow EVM
 sidebar_position: 13
 sidebar_label: EVM
+description: Learn about Flow's EVM contract that enables Ethereum Virtual Machine compatibility on Flow. Understand how to interact with EVM from Cadence and access Flow's EVM equivalence features.
+keywords:
+  - Flow EVM
+  - EVM compatibility
+  - Ethereum Virtual Machine
+  - EVM tooling
+  - Cadence EVM
+  - EVM contract
+  - EVM integration
+  - blockchain interop
+  - smart contracts
+  - EVM equivalence
+  - contract deployment
+  - Flow protocol
+  - cross-chain
+  - EVM support
+  - FLIP 223
 ---
 
 # Contract
