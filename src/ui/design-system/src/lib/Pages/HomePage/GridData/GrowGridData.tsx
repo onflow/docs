@@ -1,5 +1,9 @@
+import { ColorOption } from "@site/src/constants/colors";
+
 export const growGridData = {
   title: 'Grow',
+  icon: 'Grow',
+  iconColor: 'teal' as ColorOption,
   sections: [
     {
       cards: [
@@ -9,6 +13,7 @@ export const growGridData = {
             'Get comprehensive support including technical guidance, marketing resources, and ecosystem connections.',
           iconColor: 'teal',
           cardColor: 'black',
+          icon: 'Startup Support',
           onClick: () => {
             window.location.href = '/growth';
           },
@@ -19,6 +24,7 @@ export const growGridData = {
             "Access Flow's Builder Credits program to get resources and support for your project development.",
           iconColor: 'teal',
           cardColor: 'black',
+          icon: 'Builder Credits',
           onClick: () => {
             window.location.href =
               'https://github.com/orgs/onflow/discussions/1545';
@@ -30,6 +36,7 @@ export const growGridData = {
             'Join our weekly developer office hours to get direct support from the Flow team and connect with other builders.',
           iconColor: 'teal',
           cardColor: 'black',
+          icon: 'Dev Office Hours',
           onClick: () => {
             window.location.href =
               'https://calendar.google.com/calendar/u/0/embed?src=c_47978f5cd9da636cadc6b8473102b5092c1a865dd010558393ecb7f9fd0c9ad0@group.calendar.google.com';

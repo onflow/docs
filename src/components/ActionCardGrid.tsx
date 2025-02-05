@@ -1,10 +1,14 @@
 import React from 'react';
-import { ColorOption } from '@site/src/constants/colors';
+import { ColorOption, colors } from '@site/src/constants/colors';
 import ActionCard, { LocationIcon } from '@site/src/components/ActionCard';
+import { useIcons } from '../hooks/use-icons';
+import { Icon } from './Icon';
 
 interface ActionCardGridProps {
   title: string;
   id?: string;
+  icon?: string;
+  iconColor?: ColorOption;
   sections: {
     title: string;
     cards: {
@@ -12,12 +16,15 @@ interface ActionCardGridProps {
       description: string;
       iconColor?: string;
       cardColor?: string;
+      icon?: string;
       onClick?: () => void;
     }[];
   }[];
 }
 
-const ActionCardGrid: React.FC<ActionCardGridProps> = ({ title, sections, id }) => {
+const ActionCardGrid: React.FC<ActionCardGridProps> = ({ title, sections, id, icon, iconColor = 'green' }) => {
+  const icons = useIcons();
+
   return (
     <div className="relative p-8" id={id}>
       {/* Main Title Section */}
@@ -25,11 +32,11 @@ const ActionCardGrid: React.FC<ActionCardGridProps> = ({ title, sections, id }) 
         {/* Icon and Line Container */}
         <div className="absolute top-0 left-5 flex flex-col items-center">
           {/* Icon */}
-          <div className="w-10 h-10 bg-green-500 flex items-center justify-center rounded-md">
-            <LocationIcon />
+          <div className={`w-10 h-10 ${colors[iconColor].light} flex items-center justify-center rounded-md`}>
+            {icon && <Icon name={icon} />}
           </div>
           {/* Vertical Line */}
-          <div className="w-[1px] bg-green-500 h-full"></div>
+          <div className={`w-[1px] ${colors[iconColor].light} h-full`}></div>
         </div>
         {/* Title */}
         <h2 className="ml-20 text-3xl font-semibold text-gray-900 dark:text-white">{title}</h2>
@@ -50,6 +57,7 @@ const ActionCardGrid: React.FC<ActionCardGridProps> = ({ title, sections, id }) 
               {section.cards.map((card, cardIndex) => (
                 <ActionCard
                   key={`${sectionIndex}-${cardIndex}`}
+                  icon={card.icon}
                   iconColor={card.iconColor as ColorOption}
                   cardColor={card.cardColor as ColorOption}
                   heading={card.heading}
