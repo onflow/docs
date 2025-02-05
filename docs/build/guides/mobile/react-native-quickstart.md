@@ -2,6 +2,23 @@
 title: React Native Development
 sidebar_label: React Native Development
 sidebar_position: 4
+description: Learn how to build decentralized applications using React Native and Flow Client Library (FCL). Follow this guide to set up authentication, query the blockchain, and execute transactions in a React Native app.
+keywords:
+  - React Native
+  - Flow FCL
+  - mobile dApp
+  - blockchain development
+  - FCL integration
+  - React Native Flow
+  - mobile blockchain
+  - smart contracts
+  - wallet integration
+  - transaction signing
+  - blockchain queries
+  - dApp development
+  - Flow mobile
+  - React Native tutorial
+  - mobile development
 ---
 
 **Last Updated:** January 11th 2022

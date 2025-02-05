@@ -2,6 +2,23 @@
 title: Flow Staking Collection Contract Reference
 sidebar_position: 11
 sidebar_label: Staking Collection
+description: Learn about Flow's Staking Collection contract that manages user stake and delegation resources. Understand how to interact with nodes, delegators, and locked tokens through the collection interface.
+keywords:
+  - staking collection
+  - Flow staking
+  - node management
+  - delegation
+  - locked tokens
+  - machine accounts
+  - staking operations
+  - node registration
+  - delegator registration
+  - stake management
+  - token delegation
+  - staking interface
+  - Flow protocol
+  - staking transactions
+  - collection events
 ---
 
 # Contract

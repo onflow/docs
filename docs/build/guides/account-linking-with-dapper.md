@@ -4,6 +4,22 @@ description: Use Account Linking between the Dapper Wallet and Flow Wallet to ef
 sidebar_position: 5
 sidebar_custom_props:
   icon: ⛓️
+keywords:
+  - NBA Top Shot
+  - Dapper Wallet
+  - account linking
+  - Flow wallet
+  - NFT integration
+  - Moments NFTs
+  - wallet connection
+  - Flow dApp
+  - blockchain integration
+  - smart contracts
+  - wallet management
+  - NFT display
+  - Flow development
+  - wallet interoperability
+  - asset management
 ---
 
 # Account Linking With NBA Top Shot

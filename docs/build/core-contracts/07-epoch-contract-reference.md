@@ -2,6 +2,23 @@
 title: Flow Epoch Contracts Reference
 sidebar_position: 7
 sidebar_label: Epoch Contracts
+description: Learn about Flow's epoch-related contracts that manage network phases, quorum certificates, and distributed key generation. Understand how FlowEpoch, FlowClusterQC, and FlowDKG contracts work together.
+keywords:
+  - epoch contracts
+  - FlowEpoch
+  - FlowClusterQC
+  - FlowDKG
+  - epoch phases
+  - quorum certificates
+  - distributed key generation
+  - epoch metadata
+  - epoch counter
+  - epoch scripts
+  - QC voting
+  - DKG participants
+  - network phases
+  - Flow protocol
+  - epoch management
 ---
 
 # Contract

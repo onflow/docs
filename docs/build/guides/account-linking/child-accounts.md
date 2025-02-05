@@ -1,12 +1,29 @@
 ---
 title: Building Walletless Applications Using Child Accounts
 sidebar_position: 1
+description: Learn how to implement progressive onboarding flows using Flow's Hybrid Custody model. Create walletless applications, manage child accounts, and enable account linking for seamless user experiences.
+keywords:
+  - child accounts
+  - hybrid custody
+  - account linking
+  - walletless onboarding
+  - progressive onboarding
+  - Flow accounts
+  - custody model
+  - account delegation
+  - blockchain onboarding
+  - account capabilities
+  - parent accounts
+  - account management
+  - Flow development
+  - account security
+  - user onboarding
 ---
 
-In this doc, we’ll dive into a progressive onboarding flow, including the Cadence scripts & transactions that go into
+In this doc, we'll dive into a progressive onboarding flow, including the Cadence scripts & transactions that go into
 its implementation in your app. These components will enable any implementing app to create a custodial account, mediate
-the user’s onchain actions on their behalf, and later delegate access of that app-created account to the user’s wallet.
-We’ll refer to this custodial pattern as the Hybrid Custody Model and the process of delegating control of the app
+the user's onchain actions on their behalf, and later delegate access of that app-created account to the user's wallet.
+We'll refer to this custodial pattern as the Hybrid Custody Model and the process of delegating control of the app
 account as Account Linking.
 
 ## Objectives
@@ -14,15 +31,15 @@ account as Account Linking.
 - Create a [walletless onboarding](https://flow.com/post/flow-blockchain-mainstream-adoption-easy-onboarding-wallets)
   transaction
 - Link an existing app account as a child to a newly authenticated parent account
-- Get your app to recognize “parent” accounts along with any associated “child” accounts
+- Get your app to recognize "parent" accounts along with any associated "child" accounts
 - Put it all together to create a blockchain-native onboarding transaction
-- View fungible and non-fungible Token metadata relating to assets across all of a user’s associated accounts - their
-  wallet-mediated “parent” account and any “child” accounts
+- View fungible and non-fungible Token metadata relating to assets across all of a user's associated accounts - their
+  wallet-mediated "parent" account and any "child" accounts
 - Facilitate transactions acting on assets in child accounts
 
 ## Point of Clarity
 
-Before diving in, let's make a distinction between **"account linking"** and **"linking accounts"**.
+Before diving in, let's make a distinction between "account linking" and "linking accounts".
 
 ### Account Linking
 
@@ -70,10 +87,10 @@ encapsulated in, the collection that holds those encapsulations, etc. is what we
 
 ## Terminology
 
-**Parent-Child accounts** - For the moment, we’ll call the account created by the app the “child” account and the
-account receiving its `&Account` Capability the “parent” account. Existing methods of account access & delegation (i.e.
+**Parent-Child accounts** - For the moment, we'll call the account created by the app the "child" account and the
+account receiving its `&Account` Capability the "parent" account. Existing methods of account access & delegation (i.e.
 keys) still imply ownership over the account, but insofar as linked accounts are concerned, the account to which both
-the user and the app share access via `&Account` Capability will be considered the “child” account.
+the user and the app share access via `&Account` Capability will be considered the "child" account.
 
 **Walletless onboarding** - An onboarding flow whereby an app creates a custodial account for a user, onboarding them to
 the app, obviating the need for user wallet authentication.
@@ -90,7 +107,7 @@ user access to that account has been mediated via account linking.
 `HybridCustody.Manager`, providing its owning user access to any and all of their linked accounts.
 
 **Progressive Onboarding** - An onboarding flow that walks a user up to self-custodial ownership, starting with
-walletless onboarding and later linking the app account with the user’s authenticated wallet once the user chooses to do
+walletless onboarding and later linking the app account with the user's authenticated wallet once the user chooses to do
 so.
 
 **Restricted Child Account** - An account delegation where the access on the delegating account is restricted according
@@ -218,11 +235,11 @@ place on delegated access.
 
 We can achieve issuance from the child account and claim from the parent account pattern by either:
 
-1. Leveraging [Cadence’s `Account.Inbox`](https://cadence-lang.org/docs/language/accounts#account-inbox) to publish the
+1. Leveraging [Cadence's `Account.Inbox`](https://cadence-lang.org/docs/language/accounts#account-inbox) to publish the
    Capability from the child account & have the parent claim the Capability in a subsequent transaction.
 2. Executing a multi-party signed transaction, signed by both the child and parent accounts.
 
-Let’s take a look at both.
+Let's take a look at both.
 
 :::info
 
@@ -448,8 +465,8 @@ transaction(parentFilterAddress: Address?, childAccountFactoryAddress: Address, 
 
 Given the ability to establish an account and later delegate access to a user, apps are freed from the constraints of
 dichotomous custodial & self-custodial paradigms. A developer can choose to onboard a user via traditional Web2 identity
-and later delegate access to the user’s wallet account. Alternatively, an app can enable wallet authentication at the
-outset, creating an app-specific account & linking with the user’s wallet account. As specified above, these two flows
+and later delegate access to the user's wallet account. Alternatively, an app can enable wallet authentication at the
+outset, creating an app-specific account & linking with the user's wallet account. As specified above, these two flows
 are known as "walletless" and "blockchain-native" onboarding respectively. Developers can choose to implement one for
 simplicity or both for maximum flexibility.
 

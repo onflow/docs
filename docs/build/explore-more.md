@@ -1,8 +1,24 @@
 ---
 title: Explore More
 sidebar_label: Explore More
-description: Explore more of the Flow blockchain
+description: Discover additional tutorials, guides, and resources for building on Flow blockchain. Learn about NFTs, fungible tokens, dApp development, and core blockchain concepts.
 sidebar_position: 999
+keywords:
+  - Flow tutorials
+  - dApp development
+  - NFT guide
+  - fungible tokens
+  - Flow CLI
+  - FCL quickstart
+  - web3 apps
+  - Flow basics
+  - blockchain tutorials
+  - Emerald Academy
+  - Flow guides
+  - smart contracts
+  - Flow development
+  - learning resources
+  - Flow ecosystem
 ---
 
 import DocCardList from '@theme/DocCardList';

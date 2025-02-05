@@ -1,5 +1,23 @@
 ---
 sidebar_position: 4
+title: Scripts
+description: Learn about Flow scripts - read-only Cadence code that can query blockchain state without fees. Understand how to write, execute, and optimize scripts for accessing Flow network data.
+keywords:
+  - scripts
+  - Cadence scripts
+  - blockchain queries
+  - read operations
+  - Flow scripts
+  - script execution
+  - state queries
+  - Flow API
+  - script limitations
+  - best practices
+  - historic data
+  - script arguments
+  - script returns
+  - Flow CLI
+  - computation limits
 ---
 
 # Scripts

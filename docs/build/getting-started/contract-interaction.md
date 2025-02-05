@@ -1,6 +1,24 @@
 ---
 sidebar_position: 1
 sidebar_label: Contract Interaction
+title: Contract Interaction
+description: Learn how to interact with your first smart contract on Flow's Testnet. Understand how to read data from Cadence contracts, execute scripts, and explore the Counter contract example.
+keywords:
+  - smart contracts
+  - Flow Testnet
+  - contract interaction
+  - Cadence scripts
+  - Counter contract
+  - contract deployment
+  - Flow CLI
+  - contract examples
+  - blockchain interaction
+  - Flow development
+  - contract reading
+  - script execution
+  - Flow dApps
+  - contract tutorial
+  - Flow quickstart
 ---
 
 import VerticalSplit from "./vertical-split.svg"

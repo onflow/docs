@@ -1,7 +1,19 @@
 ---
 sidebar_position: 5
 title: App Architecture
-description: Describes building self-custody and app custody applications on Flow Blockchain.
+description: Learn about self-custody and app custody architectural patterns for building applications on Flow blockchain, including their benefits, considerations, and ideal use cases.
+keywords:
+  - app architecture
+  - self custody
+  - app custody
+  - Flow blockchain
+  - walletless onboarding
+  - account linking
+  - dApp architecture
+  - blockchain architecture
+  - key management
+  - user experience
+  - web3 development
 sidebar_custom_props:
   icon: 🏗️
 ---

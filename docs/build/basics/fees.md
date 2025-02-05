@@ -1,6 +1,23 @@
 ---
 sidebar_position: 5
 title: Fees
+description: Learn about Flow blockchain fees, including transaction fees, storage fees, and how they work to protect the network. Understand fee structures, calculation methods, and optimization strategies.
+keywords:
+  - fees
+  - transaction fees
+  - storage fees
+  - execution fees
+  - inclusion fees
+  - surge factor
+  - fee calculation
+  - storage capacity
+  - fee optimization
+  - network protection
+  - blockchain fees
+  - gas fees
+  - Flow token
+  - fee structure
+  - cost estimation
 ---
 
 :::info
@@ -59,13 +76,13 @@ The inclusion effort of a transaction represents the work needed for:
 - Transporting the transaction information from node to node
 - Verifying transaction signatures
 
-Right now, the inclusion effort is always 1.0 and the inclusion effort cost is fixed to `0.000001`. 
+Right now, the inclusion effort is always 1.0 and the inclusion effort cost is fixed to `0.000001`. 
 
 **Surge Factor**
 
-In the future, a network surge will be applied when the network is busy due to an increased influx of transactions required to be processed or a decrease in the ability to process transactions. Right now, the network surge is fixed to `1.0`.
+In the future, a network surge will be applied when the network is busy due to an increased influx of transactions required to be processed or a decrease in the ability to process transactions. Right now, the network surge is fixed to `1.0`.
 
-Currently, both the inclusion fee and surge factor don’t represent any significant Flow fees. Keep in mind this can change in the future.
+Currently, both the inclusion fee and surge factor don't represent any significant Flow fees. Keep in mind this can change in the future.
 
 **Estimating transaction costs**
 
@@ -75,7 +92,7 @@ Cost estimation is a two-step process. First, you need to gather the execution e
 
 Flow's approach to storage capacity is a bit similar to some banks' pricing models, where maintaining a minimum balance prevents monthly account fees. Here, the amount of data in your account determines your minimum balance. If you fall below the minimum balance, you cannot transact with your account, except for deposits or deleting data. The essence of storage fee model is that it ensures data availability without continuously charging fees for storage, while also preventing abuses that could burden the network's storage resources. This distinction between current state and blockchain history is crucial for understanding storage requirements and limitations.
 
-Each Flow account has associated storage used. The account's storage used is the byte size of all the data stored in the account's storage. Accounts also have a storage capacity, which is directly tied to the amount of Flow tokens an account has. The account can, without any additional cost, use any amount of storage up to its storage capacity. 
+Each Flow account has associated storage used. The account's storage used is the byte size of all the data stored in the account's storage. Accounts also have a storage capacity, which is directly tied to the amount of Flow tokens an account has. The account can, without any additional cost, use any amount of storage up to its storage capacity. 
 
 :::warning
 
@@ -85,7 +102,7 @@ If a transaction puts an account over storage capacity, that transaction fails a
 
 **Storage Capacity**
 
-The storage capacity of an account is dictated by the amount of FLOW it has. 
+The storage capacity of an account is dictated by the amount of FLOW it has. 
 
 :::danger
 
@@ -115,11 +132,11 @@ All data that is in an account's storage counts towards storage used. Even when 
 - An empty FLOW vault, and stored receiver capability.
 - Public keys to the account if the account was created with keys.
 - Smart contracts deployed on the account if the account was created with contracts.
-- The value of the account’s storage used as an unsigned integer.
+- The value of the account's storage used as an unsigned integer.
 
 Adding additional keys, smart contracts, capabilities, resources, etc. to the account counts towards storage used.
 
-Data stored on the Flow blockchain is stored in a key-value ledger. Each item’s key contains the address that owns the item and the path to the item. An account can have many keys, therefore flow considers the account key items are stored with. This means that the storage used by each item is the byte length of the item plus the byte length of the item’s key.
+Data stored on the Flow blockchain is stored in a key-value ledger. Each item's key contains the address that owns the item and the path to the item. An account can have many keys, therefore flow considers the account key items are stored with. This means that the storage used by each item is the byte length of the item plus the byte length of the item's key.
 
 ### Maximum available balance
 
@@ -205,7 +222,7 @@ FCL SDKs allow you to set the execution effort limit for each transaction. Based
 
 > **Note**: Keep in mind that the limits are not for the final fees that the user will have to pay. The limits are for the execution efforts specifically.
 
-It is important to set a limit that isn’t too high or too low. If it is set too high, the payer needs to have more funds in their account before sending the transaction. If it is too low, the execution could fail and all state changes are dropped.
+It is important to set a limit that isn't too high or too low. If it is set too high, the payer needs to have more funds in their account before sending the transaction. If it is too low, the execution could fail and all state changes are dropped.
 
 **Using FCL JS SDK**
 
@@ -353,9 +370,9 @@ transaction {
 
 Creating accounts and adding keys are associated with costs. Try to only create accounts and keys when necessary.
 
-**Check user’s balance before executing transactions**
+**Check user's balance before executing transactions**
 
-You should ensure that the user’s balance has enough balance to cover the highest possible fees. For FT transfers, you need to cover the amount to transfer in addition to the highest possible fees.
+You should ensure that the user's balance has enough balance to cover the highest possible fees. For FT transfers, you need to cover the amount to transfer in addition to the highest possible fees.
 
 ## Educating users
 
@@ -365,7 +382,7 @@ If your user is using self-custody wallets, they may have to pay the transaction
 
 **Explain that costs can vary depending on the network usage**
 
-Suggested message: “Fees improve the security of the network. They are flexible to ensure fair pricing based on the impact on the network.”
+Suggested message: "Fees improve the security of the network. They are flexible to ensure fair pricing based on the impact on the network."
 
 **Explain that waiting for the network surge to pass is an option**
 
@@ -373,7 +390,7 @@ Inevitably, network surges will cause higher fees. Users who might want to submi
 
 **Explain that the wallet might not allow the transaction due to a lack of funds**
 
-If dynamic fees increase to the highest possible level, the user’s fund might not be enough to execute the transaction. Let the users know that they should either add funds or try when the network is less busy.
+If dynamic fees increase to the highest possible level, the user's fund might not be enough to execute the transaction. Let the users know that they should either add funds or try when the network is less busy.
 
 ## How to learn more
 
@@ -425,8 +442,8 @@ Execution costs, among other things, include the cost to read data from account 
 
 Additional Details:
 
-- The most expensive operations in Cadence are reading and writing to storage. This isn’t punitive! Every read needs to be sent to all Verification nodes for verification (with Merkel proofs), and every write requires a path of Merkel hashes to be updated. Reading and writing to storage is inherently expensive on any blockchain.
-- The way data is stored in accounts is as a tree (the hint is in the name “atree” :wink:). So, the more elements in the account, the more levels of the tree, and therefore the more nodes of that tree that need to be read and updated. So, looking at the byte size of an account is a decent proxy for figuring out how much it’s going to cost.
-- Because it’s a tree, the cost of reads and writes grows with log(n), but does scale.
+- The most expensive operations in Cadence are reading and writing to storage. This isn't punitive! Every read needs to be sent to all Verification nodes for verification (with Merkel proofs), and every write requires a path of Merkel hashes to be updated. Reading and writing to storage is inherently expensive on any blockchain.
+- The way data is stored in accounts is as a tree (the hint is in the name "atree" :wink:). So, the more elements in the account, the more levels of the tree, and therefore the more nodes of that tree that need to be read and updated. So, looking at the byte size of an account is a decent proxy for figuring out how much it's going to cost.
+- Because it's a tree, the cost of reads and writes grows with log(n), but does scale.
 - atree has an update queued up for [Crescendo](https://flow.com/upgrade/crescendo) that will improve this. The previous version erred on the side of adding new levels to the tree (to keep the code simple), while the new version tries to pack more data at each level. This should result in fewer levels for the same byte size. Additionally, it includes a more compact encoding leading to a reduction in the byte size of most accounts.
 - Even with these improvements, this relationship is likely to remain indefinitely. The bigger the account, the more bookkeeping the nodes have to do, which will result in somewhat larger tx fees.

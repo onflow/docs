@@ -2,6 +2,23 @@
 title: Flow Fees Contract
 sidebar_position: 5
 sidebar_label: Flow Fees
+description: Learn about Flow's fees contracts that handle transaction and storage fees, including fee collection, parameters, and storage capacity management. Understand how fees are processed and managed on the Flow blockchain.
+keywords:
+  - Flow fees
+  - transaction fees
+  - storage fees
+  - fee collection
+  - fee parameters
+  - FlowFees
+  - FlowStorageFees
+  - fee events
+  - surge factor
+  - execution fees
+  - storage capacity
+  - fee management
+  - Flow protocol
+  - core contracts
+  - blockchain fees
 ---
 
 ## FlowFees

@@ -2,6 +2,23 @@
 title: Flow Token Contract
 sidebar_position: 3
 sidebar_label: Flow Token
+description: Learn about the FLOW token smart contract, its implementation, events system, and deployment addresses across different networks. Understand how to interact with the native token of the Flow blockchain.
+keywords:
+  - FLOW token
+  - Flow contract
+  - token events
+  - token transactions
+  - token minting
+  - token burning
+  - core contracts
+  - native token
+  - Flow protocol
+  - token implementation
+  - token deployment
+  - contract addresses
+  - token initialization
+  - Flow mainnet
+  - Flow testnet
 ---
 
 The `FlowToken` contract defines the FLOW network token.
