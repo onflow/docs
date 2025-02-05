@@ -4,7 +4,7 @@ sidebar_position: 10
 description: Learn about the FLOW coin, its role as the native token of the Flow blockchain, and how to acquire, use, and build with it. Understand staking, delegation, and transaction fee mechanisms.
 keywords:
   - FLOW coin
-  - Flow token
+  - FLOW token
   - native token
   - fungible token
   - staking
