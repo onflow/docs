@@ -10,7 +10,7 @@ interface ActionCardGridProps {
   icon?: string;
   iconColor?: ColorOption;
   sections: {
-    title: string;
+    title?: string;
     cards: {
       heading: string;
       description: string;
