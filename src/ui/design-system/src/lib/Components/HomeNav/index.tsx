@@ -10,7 +10,7 @@ const NAVIGATION_CARDS = [
     cardColor: 'black' as const,
     href: '#Build',
     variant: 'overlay' as const,
-    icon: 'Getting Started'
+    icon: 'getting-started'
   },
   {
     heading: 'Grow',
@@ -20,7 +20,7 @@ const NAVIGATION_CARDS = [
     cardColor: 'black' as const,
     href: '#Grow',
     variant: 'overlay' as const,
-    icon: 'Grow'
+    icon: 'grow'
   },
   {
     heading: 'Fund',
@@ -30,7 +30,7 @@ const NAVIGATION_CARDS = [
     cardColor: 'black' as const,
     href: '#Fund',
     variant: 'overlay' as const,
-    icon: 'Fund'
+    icon: 'fund'
   },
   {
     heading: 'Learn',
@@ -40,7 +40,7 @@ const NAVIGATION_CARDS = [
     cardColor: 'black' as const,
     href: '#Learn',
     variant: 'overlay' as const,
-    icon: 'Learn'
+    icon: 'learn'
   },
 ] as const;
 

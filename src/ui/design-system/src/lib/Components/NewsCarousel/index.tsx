@@ -19,7 +19,7 @@ const CAROUSEL_CARDS: CarouselCard[] = [
     cardColor: 'black',
     href: 'https://x.com/flow_blockchain/status/1880405924407587173',
     variant: 'horizontal' as const,
-    // icon: 'Flow Castle'
+    // icon: 'flow-castle'
   },
   {
     heading: 'Cadence Tutorials',
@@ -28,7 +28,7 @@ const CAROUSEL_CARDS: CarouselCard[] = [
     cardColor: 'black',
     href: 'https://cadence-lang.org/docs/tutorial/first-steps',
     variant: 'horizontal' as const,
-    icon: 'Tutorials'
+    icon: 'tutorials'
   },
   {
     heading: 'Flow is Live on Axelar',
@@ -37,7 +37,7 @@ const CAROUSEL_CARDS: CarouselCard[] = [
     cardColor: 'black',
     href: 'https://x.com/axelar/status/1882066175175360998',
     variant: 'horizontal' as const,
-    icon: 'Cross-VM Bridge'
+    icon: 'cross-vm-bridge'
   },
 ];
 

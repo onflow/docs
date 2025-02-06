@@ -2,7 +2,7 @@ import { ColorOption } from "@site/src/constants/colors";
 
 export const fundGridData = {
   title: 'Fund',
-  icon: 'Fund',
+  icon: 'fund',
   iconColor: 'purple' as ColorOption,
   sections: [
     {
@@ -13,7 +13,7 @@ export const fundGridData = {
             'Connect with venture capital firms and investment funds actively supporting Flow projects.',
           iconColor: 'purple',
           cardColor: 'black',
-          icon: 'VCs & Funds',
+          icon: 'vcs-&-funds',
           onClick: () => {
             window.location.href = '/ecosystem/vcs-and-funds';
           },
@@ -24,7 +24,7 @@ export const fundGridData = {
             'Discover grant opportunities available to developers and teams building on Flow.',
           iconColor: 'purple',
           cardColor: 'black',
-          icon: 'Grants',
+          icon: 'grants',
           onClick: () => {
             window.location.href = '/ecosystem/grants';
           },
@@ -35,7 +35,7 @@ export const fundGridData = {
             'Participate in Flow hackathons to build innovative projects and win prizes.',
           iconColor: 'purple',
           cardColor: 'black',
-          icon: 'Hackathons',
+          icon: 'hackathons',
           onClick: () => {
             window.location.href = '/ecosystem/hackathons';
           },
