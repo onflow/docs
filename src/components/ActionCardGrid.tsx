@@ -1,6 +1,6 @@
 import React from 'react';
 import { ColorOption, colors } from '@site/src/constants/colors';
-import ActionCard, { LocationIcon } from '@site/src/components/ActionCard';
+import ActionCard from '@site/src/components/ActionCard';
 import { useIcons } from '../hooks/use-icons';
 import { Icon } from './Icon';
 
