@@ -1,5 +1,9 @@
+import { ColorOption } from '@site/src/constants/colors';
+
 export const buildGridData = {
   title: 'Build',
+  icon: 'getting-started',
+  iconColor: 'green' as ColorOption,
   sections: [
     {
       title: 'Getting Started',
@@ -10,6 +14,7 @@ export const buildGridData = {
             'Learn what led Dieter Shirley, Chief Architect of Flow and co-author of the ERC-721 NFT standard to lead the development of a new L1 blockchain.',
           iconColor: 'green',
           cardColor: 'black',
+          icon: 'why-flow',
           onClick: () => {
             window.location.href = 'build/flow';
           }
@@ -20,6 +25,7 @@ export const buildGridData = {
             'Cadence is a resource-oriented programming language that makes it easy to build secure, scalable, and composable applications.',
           iconColor: 'green',
           cardColor: 'black',
+          icon: 'flow-cadence',
           onClick: () => {
             window.open('https://cadence-lang.org', '_blank');
           }
@@ -30,6 +36,7 @@ export const buildGridData = {
             'The future is here.  Deploy your Solidity contracts on Flow to get sub-cent transaction fees, sponsored gas, and the ability to scale to millions of users.',
           iconColor: 'green',
           cardColor: 'black',
+          icon: 'evm-on-flow',
           onClick: () => {
             window.location.href = 'evm/about';
           }
@@ -40,6 +47,7 @@ export const buildGridData = {
             'Build and deploy your first contract, connect to it from the frontend, and call your smart contract functions - all in less than 30 minutes.',
           iconColor: 'green',
           cardColor: 'black',
+          icon: 'hello-world',
           onClick: () => {
             window.location.href = 'build/getting-started/contract-interaction';
           }
@@ -50,6 +58,7 @@ export const buildGridData = {
             'Learn how to launch a fungible token that\'s stored in your users\' vaults directly in their accounts.',
           iconColor: 'green',
           cardColor: 'black',
+          icon: 'launch-a-token',
           onClick: () => {
             window.location.href = 'build/guides/fungible-token';
           }
@@ -60,6 +69,7 @@ export const buildGridData = {
             'Create NFT collections that are stored directly in your users\' accounts in a way that makes it nearly impossible to lose them.',
           iconColor: 'green',
           cardColor: 'black',
+          icon: 'create-an-nft',
           onClick: () => {
             window.location.href = 'build/guides/nft';
           }
@@ -85,6 +95,7 @@ export const buildGridData = {
             'Flow allows you to link wallets together, enabling your apps to use NFTs in a user\'s embedded wallet from another app.',
           iconColor: 'green',
           cardColor: 'black',
+          icon: 'access-incredible-ip',
           onClick: () => {
             window.location.href = 'build/guides/account-linking-with-dapper';
           }
@@ -95,6 +106,7 @@ export const buildGridData = {
             'VRF is built into Flow at the protocol level to provide secure, verifiable randomness, for free. Learn how to use VRF in Cadence.',
           iconColor: 'green',
           cardColor: 'black',
+          icon: 'vrf---cadence',
           onClick: () => {
             window.location.href = 'build/advanced-concepts/randomness';
           }
@@ -105,6 +117,7 @@ export const buildGridData = {
             'VRF is built into Flow at the protocol level to provide secure, verifiable randomness, for free. Learn how to use VRF in EVM.',
           iconColor: 'green',
           cardColor: 'black',
+          icon: 'vrf---evm',
           onClick: () => {
             window.location.href = 'evm/guides/vrf';
           }
@@ -115,6 +128,7 @@ export const buildGridData = {
             'Learn how to create child accounts that are linked to a parent account, enabling walletless onboarding and much more.',
           iconColor: 'green',
           cardColor: 'black',
+          icon: 'account-abstraction',
           onClick: () => {
             window.location.href = 'build/guides/account-linking/child-accounts';
           }
@@ -125,6 +139,7 @@ export const buildGridData = {
             'With Cadence + EVM, you can script EVM transactions to execute with one wallet signature, and even script conditional execution.',
           iconColor: 'green',
           cardColor: 'black',
+          icon: 'batched-evm-transactions',
           onClick: () => {
             window.location.href = 'evm/cadence/batched-evm-transactions';
           }
@@ -135,6 +150,7 @@ export const buildGridData = {
             'Move established EVM tokens to Cadence for more powerful contracts, or move Cadence tokens to EVM to take advantage of established markets.',
           iconColor: 'green',
           cardColor: 'black',
+          icon: 'cross-vm-bridge',
           onClick: () => {
             window.location.href = 'evm/cadence/vm-bridge';
           }
@@ -150,6 +166,7 @@ export const buildGridData = {
             'The Flow Command Line Interface (CLI) is a powerful tool that enables developers to seamlessly interact with the Flow blockchain across various environments.',
           iconColor: 'green',
           cardColor: 'black',
+          icon: 'flow-cli',
           onClick: () => {
             window.location.href = 'tools/flow-cli';
           }
@@ -160,6 +177,7 @@ export const buildGridData = {
             'The Flow Emulator is a local blockchain environment that allows developers to test and develop their applications without the need to deploy to the mainnet or testnet.',
           iconColor: 'green',
           cardColor: 'black',
+          icon: 'flow-emulator',
           onClick: () => {
             window.location.href = 'tools/emulator';
           }
@@ -170,6 +188,7 @@ export const buildGridData = {
             'The Flow Client Library (FCL) JS is a package used to interact with user wallets and the Flow blockchain.',
           iconColor: 'green',
           cardColor: 'black',
+          icon: 'flow-client-library',
           onClick: () => {
             window.location.href = 'tools/clients/fcl-js';
           }
@@ -180,6 +199,7 @@ export const buildGridData = {
             'Most of your favorite EVM tools and libraries are compatible with Flow.  Learn how to work with Hardhat, Foundry, Wagmi, and more.',
           iconColor: 'green',
           cardColor: 'black',
+          icon: 'evm-tools',
           onClick: () => {
             window.location.href = 'evm/guides/wagmi';
           }
@@ -190,6 +210,7 @@ export const buildGridData = {
             'Additional clients are available for interacting with the Flow blockchain using a number of popular languages, including Go, Python, Ruby, and JavaScript.',
           iconColor: 'green',
           cardColor: 'black',
+          icon: 'other-clients',
           onClick: () => {
             window.location.href = 'tools/clients';
           }

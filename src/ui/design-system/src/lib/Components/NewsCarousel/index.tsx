@@ -8,6 +8,7 @@ interface CarouselCard {
   cardColor: 'green' | 'blue' | 'purple' | 'teal' | 'black' | 'white';
   href: string;
   variant: 'horizontal' | 'default' | 'overlay';
+  icon?: string;
 }
 
 const CAROUSEL_CARDS: CarouselCard[] = [
@@ -17,7 +18,8 @@ const CAROUSEL_CARDS: CarouselCard[] = [
     iconColor: 'green',
     cardColor: 'black',
     href: 'https://x.com/flow_blockchain/status/1880405924407587173',
-    variant: 'horizontal' as const
+    variant: 'horizontal' as const,
+    // icon: 'flow-castle'
   },
   {
     heading: 'Cadence Tutorials',
@@ -25,7 +27,8 @@ const CAROUSEL_CARDS: CarouselCard[] = [
     iconColor: 'blue',
     cardColor: 'black',
     href: 'https://cadence-lang.org/docs/tutorial/first-steps',
-    variant: 'horizontal' as const
+    variant: 'horizontal' as const,
+    icon: 'tutorials'
   },
   {
     heading: 'Flow is Live on Axelar',
@@ -33,7 +36,8 @@ const CAROUSEL_CARDS: CarouselCard[] = [
     iconColor: 'purple',
     cardColor: 'black',
     href: 'https://x.com/axelar/status/1882066175175360998',
-    variant: 'horizontal' as const
+    variant: 'horizontal' as const,
+    icon: 'cross-vm-bridge'
   },
 ];
 
@@ -105,6 +109,7 @@ export const NewsCarousel: React.FC = () => {
               iconColor={card.iconColor}
               cardColor={card.cardColor}
               variant={card.variant}
+              icon={card.icon}
               onClick={() => {
                 if (card.href.startsWith('https://')) {
                   window.open(card.href, '_blank');
