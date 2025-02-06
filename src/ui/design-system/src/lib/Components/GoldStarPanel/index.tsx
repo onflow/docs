@@ -40,7 +40,7 @@ export const GoldStarPanel: React.FC = () => {
   const progress = user.loggedIn ? getProgress() * 100 : 0;
 
   const handleProfileClick = () => {
-    window.location.href = '/ecosystem/goldstar';
+    window.location.href = '/ecosystem/developer-profile';
   };
 
   return (
