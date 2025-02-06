@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useMemo } from 'react';
 
 // Direct imports
 import AccessIncredibleIPIcon from '/static/images/icons/Access Incredible IP.svg';
@@ -36,12 +36,8 @@ import VRFCadenceIcon from '/static/images/icons/VRF - Cadence.svg';
 import VRFEVMIcon from '/static/images/icons/VRF - EVM.svg';
 import WhyFlowIcon from '/static/images/icons/Why Flow.svg';
 
-interface IconMap {
-    [key: string]: string;
-}
-
 export function useIcons() {
-    return {
+    return useMemo(() => ({
         'Access Incredible IP': AccessIncredibleIPIcon,
         'Account Abstraction': AccountAbstractionIcon,
         'Batched EVM Transactions': BatchedEVMTransactionsIcon,
@@ -76,5 +72,5 @@ export function useIcons() {
         'VRF - Cadence': VRFCadenceIcon,
         'VRF - EVM': VRFEVMIcon,
         'Why Flow': WhyFlowIcon,
-    };
+    }), []);
 }
