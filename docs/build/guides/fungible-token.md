@@ -371,6 +371,11 @@ One important piece to understand about the `Burned` event in particular
 is that in order for it to be emitted when a `Vault` is burned, it needs to
 be burnt via [the `Burner` contract's `burn()` method](https://github.com/onflow/flow-ft/blob/master/contracts/utility/Burner.cdc#L23).
 
+The [`Burner` contract](../core-contracts/14-burner.md) defines a standard
+that all projects should use for handling the destruction of any resource.
+It allows projects to define custom logic that can be executed when a resource is destroyed,
+like emitting events, or updating a field in the contract to show that the resource was destroyed.
+
 This will call the resource's `burnCallback()` function, which emits the event.
 You'll need to also add this function to your token contract now:
 
