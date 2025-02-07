@@ -442,6 +442,9 @@ There is also a `NonFungibleToken.NFT.ResourceDestroyed` event that is emitted e
     /// The type information is included in the metadata event so it is not needed as an argument
     access(all) event ResourceDestroyed(id: UInt64 = self.id, uuid: UInt64 = self.uuid)
 ```
+`ResourceDestroyed` events are standard events that can be added to any resource definition
+to be emitted when the resource is destroyed. Learn more about them [in the Cadence docs](https://cadence-lang.org/docs/language/resources#destroy-events).
+
 Additionally, check out the optional [`Burner` contract](../core-contracts/14-burner.md),
 which is the standard that all projects should use for handling the destruction of any resource.
 
