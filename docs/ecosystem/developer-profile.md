@@ -1,7 +1,7 @@
 ---
 title: Developer Profile
 sidebar_label: Developer Profile
-description: Learn about Developer Profile - Flow's developer recognition and learning platform. Create your builder profile, track your learning journey, showcase your projects, and connect with the Flow ecosystem.
+description: Learn about Developer Profile - Create your builder profile to track your learning journey, showcase your projects, and connect with the Flow ecosystem.
 sidebar_position: 2
 sidebar_custom_props:
   icon: ⭐
