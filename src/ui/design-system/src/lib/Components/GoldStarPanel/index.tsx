@@ -37,6 +37,12 @@ export const GoldStarPanel: React.FC = () => {
     button.click();
   };
 
+  const progress = user.loggedIn ? getProgress() * 100 : 0;
+
+  const handleProfileClick = () => {
+    window.location.href = '/ecosystem/developer-profile';
+  };
+
   return (
     <div className="flex flex-col gap-4 h-full">
       <div className="flex gap-2">
@@ -60,15 +66,28 @@ export const GoldStarPanel: React.FC = () => {
         </button>
       </div>
 
-      <div className={`${colors.black.dark} p-6 rounded-lg shadow-lg flex-1`}>
+      <div 
+        onClick={handleProfileClick}
+        className={`${colors.black.dark} p-6 rounded-lg shadow-lg flex-1 hover:scale-[1.02] transition-transform cursor-pointer`}
+      >
         <div className="w-full bg-gray-200 rounded-full h-2.5 dark:bg-gray-700">
-          <div className={`${colors.flowgreen.light} h-2.5 rounded-full`} style={{ width: `${user.loggedIn ? getProgress() * 100 : 0}%` }}></div>
+          <div 
+            className={`${colors.flowgreen.light} h-2.5 rounded-full`} 
+            style={{ width: `${progress}%` }}
+          ></div>
         </div>
-        <p className="text-sm text-gray-100 mt-2">
-          {user.loggedIn
-            ? `Profile Completion: ${Math.round(getProgress() * 100)}%`
-            : 'Please connect your wallet and create a profile'}
-        </p>
+        <div className="flex justify-between items-center mt-2">
+          <p className="text-sm text-gray-100">
+            {user.loggedIn
+              ? `Profile Completion: ${Math.round(progress)}%`
+              : 'Please connect your wallet and create a profile'}
+          </p>
+          {user.loggedIn && progress < 100 && (
+            <p className="text-sm text-gray-100">
+              Learn More
+            </p>
+          )}
+        </div>
       </div>
     </div>
   );
