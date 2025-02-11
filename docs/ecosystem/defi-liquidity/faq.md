@@ -109,26 +109,72 @@ Currently, Stargate supports bridging USDC, USDT, and ETH between Flow and other
 - In many cases, Flow Wallet or Flow-based apps sponsor gas fees, allowing users to bridge and transact stablecoins with zero cost on Flow.  
 </Details>
 
+<Details summary="How fast is bridging between Flow and other chains?">
+- Most transactions settle within a few minutes (~3 mins).
+- Congestion on the source chain can cause delays.
+</Details>
+
+<Details summary="Is bridging via Stargate safe?">
+Stargate is built on LayerZero, a well-audited and widely used interoperability protocol.
+
+- Secure & Trusted – Used by top DeFi ecosystems with rigorous security audits.
+- Efficient & Cost-Effective – Fast transactions with low fees, especially on Flow.
+- Reliable Bridged Assets – USDC, USDT, and ETH bridged via Stargate are fully supported in Flow’s DeFi ecosystem.
+
+Tip: Always verify official links to ensure a safe bridging experience.
+
+</Details>
+
 <Details summary="What are the benefits of LayerZero on Flow?">
-- Direct USDC transfers between Flow and other blockchains.  
-- Unlocks cross-chain DeFi use cases (e.g., lending, trading, staking).  
-- Low fees and high-speed transactions on Flow.  
+- Direct USDC transfers between Flow and other blockchains.
+- Unlocks cross-chain DeFi use cases (e.g., lending, trading, staking).
+- Low fees and high-speed transactions on Flow.
+</Details>
+
+<Details summary="Can I use Stargate to bridge NFTs or other tokens to Flow?">
+Currently, Stargate only supports stablecoins like USDC and USDT, but NFT and asset bridging may be possible in the future via LayerZero-based messaging.
+</Details>
+
+<Details summary="What are some use cases for LayerZero on Flow?">
+- **DeFi**: Seamless liquidity transfer between Flow and other ecosystems.
+- **Gaming**: Cross-chain in-game assets & currency settlements.
+- **Payments**: Fast and low-cost USDC/USDT/USDF transactions.
+- **NFTs**: Future potential for cross-chain NFT bridging.
+</Details>
+
+<Details summary="What wallets support LayerZero bridging on Flow?">
+You can use any EVM wallet such as Metamask, Coinbase Wallet, and Flow Wallet.
+</Details>
+
+<Details summary="What stablecoins are currently live on Flow EVM?">
+You can see a full list of stablecoins here:  
+[DeFi Contracts on Flow](https://www.notion.so/DeFi-Contracts-on-Flow-1911aee123248088b764c2ee4963ae97?pvs=21)
+
+Trading pools for USDF and stgUSDC (USDC via Stargate) are already live and available for immediate use on Flow EVM and can be seamlessly transferred to any Flow Cadence address.
+
+</Details>
+
+<Details summary="Should Cadence applications switch to USDF or stgUSDC?">
+Cadence applications can use USDC.e as the default, but they now also have the option to support USDF or stgUSDC based on their needs.
+
+If you have questions you can join [Flow Discord](https://discord.gg/flow) to get free technical support.
+
 </Details>
 
 ## Support and Additional Resources
 
 <Details summary="Where can I check the status of my bridge transaction?">
-- Use [Stargate’s Explorer](https://stargate.finance/bridge) to track your transfer.  
-- You can also check Flow transactions on [evm.flowscan.io](http://evm.flowscan.io)  
-- You can also visit [https://bridge.flow.com/](https://bridge.flow.com/) and connect your wallet to view activity.  
+- Use [Stargate’s Explorer](https://stargate.finance/bridge) to track your transfer.
+- You can also check Flow transactions on [evm.flowscan.io](http://evm.flowscan.io)
+- You can also visit [https://bridge.flow.com/](https://bridge.flow.com/) and connect your wallet to view activity.
 </Details>
 
 <Details summary="Where can I get support if I have issues with the bridge?">
-- **Stargate Discord**: [https://discord.com/invite/9sFqx9U](https://discord.com/invite/9sFqx9U)  
-- **Flow Discord**: [https://discord.gg/flow](https://discord.gg/flow)  
+- **Stargate Discord**: [https://discord.com/invite/9sFqx9U](https://discord.com/invite/9sFqx9U)
+- **Flow Discord**: [https://discord.gg/flow](https://discord.gg/flow)
 </Details>
 
 <Details summary="Where can I get updates or ask questions?">
-- **Flow Twitter/X**: [https://x.com/flow_blockchain](https://x.com/flow_blockchain)  
-- **Flow Discord**: [https://discord.gg/flow](https://discord.gg/flow)  
+- **Flow Twitter/X:** [https://x.com/flow_blockchain](https://x.com/flow_blockchain)
+- **Flow Discord**: [https://discord.gg/flow](https://discord.gg/flow)
 </Details>
