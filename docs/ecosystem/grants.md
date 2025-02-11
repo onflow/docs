@@ -1,7 +1,7 @@
 ---
 title: Grants
 description: Discover grant opportunities and funding programs available for Flow developers
-sidebar_position: 5
+sidebar_position: 10
 sidebar_custom_props:
   icon: 🌱
 ---

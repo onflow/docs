@@ -1,5 +1,5 @@
 ---
-sidebar_position: 1
+sidebar_position: 2
 description: Store, manage, and interact securely with tokens and digital assets on Flow. Discover a range of wallets that offer convenient ways to handle and safeguard your cryptocurrency holdings, ensuring easy access and enhanced security for your transactions and assets.
 sidebar_custom_props:
   icon: 🔑
@@ -64,7 +64,7 @@ https://www.blocto.io/
 
 ## Metamask Wallet
 
-[Metamask](https://metamask.io/) is a secure and user-friendly crypto wallet for NFTs and digital tokens. Presently only supports EVM on Flow and cannot access Cadence accounts.  
+[Metamask](https://metamask.io/) is a secure and user-friendly crypto wallet for NFTs and digital tokens. Presently only supports EVM on Flow and cannot access Cadence accounts.
 
 https://metamask.io/
 
