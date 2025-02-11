@@ -53,6 +53,16 @@ flow dependencies install testnet://7e60df042a9c0868.FlowToken NonFungibleToken
 
 This command installs both the `FlowToken` contract from Testnet and the `NonFungibleToken` contract from Mainnet.
 
+### Installing All Dependencies From an Address
+
+Sometimes you may want to install all the contracts that exist at a particular address, rather than specifying each contract name individually. You can do this by omitting the contract name in the dependency source. For example:
+
+```bash
+flow dependencies install testnet://7e60df042a9c0868
+```
+
+This tells the Dependency Manager to fetch every contract deployed at the `7e60df042a9c0868` address on `testnet` and store them in your `imports` folder. You can later import these contracts in your code or use them in your deployments as needed.
+
 ### Installing Dependencies from `flow.json`
 
 If you run the `install` command without specifying any dependencies, it will install all the dependencies listed in your `flow.json` file and ensure they are up to date:
@@ -114,6 +124,7 @@ Use arrow keys to navigate, space to select, enter to confirm or skip, q to quit
   [ ] FlowFees
   [ ] FungibleTokenSwitchboard
   [ ] EVM
+  [ ] Crypto
 ```
 
 After selecting the contracts, press `enter` to confirm. The selected contracts will be added to your `flow.json` file and will be accessible in your project.
