@@ -1,6 +1,7 @@
 ---
 id: faq
 title: Stablecoins & Bridges on Flow FAQ
+sidebar_position: 2
 sidebar_label: Stablecoins & Bridges FAQ
 ---
 

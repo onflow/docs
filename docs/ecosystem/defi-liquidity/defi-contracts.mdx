@@ -1,0 +1,23 @@
+---
+id: defi-contracts
+title: DeFi Contracts on Flow
+description: 'A reference table of frequently used DeFi contracts on Flow, including their addresses for both Flow EVM and Flow Cadence.'
+sidebar_position: 1
+sidebar_label: DeFi Contracts
+---
+
+import BrowserOnly from '@docusaurus/BrowserOnly';
+import { AddCustomTokenButton } from '@site/src/components/AddCustomTokenButton';
+
+Flow is a Layer 1 blockchain that supports EVM equivalency, offering two environments Flow EVM and Flow Cadence. Fungible and non-fungible tokens can seamlessly transfer between these environments via the native VM token bridge. As a result, many tokens have both a Flow EVM mainnet contract address and a Flow Cadence mainnet contract address, allowing developers to choose their preferred environment.
+
+Below is a list of commonly used DeFi contracts on Flow:
+
+| Contract Name                                                                              | Flow EVM Mainnet Address                     | Flow Cadence Mainnet Address                                 | Add Token To EVM wallet                                               |
+| ------------------------------------------------------------------------------------------ | -------------------------------------------- | ------------------------------------------------------------ | --------------------------------------------------------------------- |
+| [USDC (stgUSDC)](https://evm.flowscan.io/token/0xF1815bd50389c46847f0Bda824eC8da914045D14) | `0xF1815bd50389c46847f0Bda824eC8da914045D14` | `EVMVMBridgedToken_2aabea2058b5ac2d339b163c6ab6f2b6d53aabed` | <BrowserOnly>{() => {return <AddCustomTokenButton />;}}</BrowserOnly> |
+| Token B                                                                                    | `0x...`                                      | `0x...`                                                      | Another common fungible token                                         |
+| DEX A                                                                                      | `0x...`                                      | `0x...`                                                      | Decentralized exchange for trading tokens                             |
+| Lending A                                                                                  | `0x...`                                      | `0x...`                                                      | Lending and borrowing platform                                        |
+| Stablecoin X                                                                               | `0x...`                                      | `0x...`                                                      | Stablecoin pegged to USD                                              |
+| Yield A                                                                                    | `0x...`                                      | `0x...`                                                      | Yield farming protocol                                                |
