@@ -303,6 +303,12 @@ const config = {
             activeBasePath: '/growth',
           },
           {
+            to: 'growth',
+            position: 'left',
+            label: 'Tutorials',
+            activeBasePath: '/tutorials',
+          },
+          {
             type: 'custom-connectButton',
             position: 'right',
           },
