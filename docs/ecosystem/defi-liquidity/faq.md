@@ -24,7 +24,7 @@ USDF (USD Flow) - Backed by PYUSD (PayPal USD) issued by PayPal
 
 <Details summary="What are the smart contract addresses for the stablecoins and bridges on Flow?">
 You can find all the contract addresses for the stablecoins and bridges on Flow here:  
-[DeFi Contracts on Flow](https://www.notion.so/DeFi-Contracts-on-Flow-1911aee123248088b764c2ee4963ae97?pvs=21)  
+[DeFi Contracts on Flow](./defi-contracts.mdx)  
 </Details>
 
 <Details summary="Where can I trade stablecoins on Flow?">
@@ -149,7 +149,7 @@ You can use any EVM wallet such as Metamask, Coinbase Wallet, and Flow Wallet.
 
 <Details summary="What stablecoins are currently live on Flow EVM?">
 You can see a full list of stablecoins here:  
-[DeFi Contracts on Flow](https://www.notion.so/DeFi-Contracts-on-Flow-1911aee123248088b764c2ee4963ae97?pvs=21)
+[DeFi Contracts on Flow](./defi-contracts.mdx)
 
 Trading pools for USDF and stgUSDC (USDC via Stargate) are already live and available for immediate use on Flow EVM and can be seamlessly transferred to any Flow Cadence address.
 

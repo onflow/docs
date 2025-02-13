@@ -105,13 +105,15 @@ const contracts = [
   },
 ];
 
-const DeFiContractsTable: React.FC<TableComponentProps> = ({ environment }) => {
+const StablecoinsWrappedAssetsTable: React.FC<TableComponentProps> = ({
+  environment,
+}) => {
   return (
     <div className="table-container">
       <table>
         <thead>
           <tr>
-            <th>Asset / Protocol</th>
+            <th>Token Name</th>
             <th>
               {environment === 'evm'
                 ? 'Flow EVM Mainnet Address'
@@ -158,4 +160,4 @@ const DeFiContractsTable: React.FC<TableComponentProps> = ({ environment }) => {
   );
 };
 
-export default DeFiContractsTable;
+export default StablecoinsWrappedAssetsTable;
