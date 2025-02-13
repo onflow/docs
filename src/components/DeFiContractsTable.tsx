@@ -1,4 +1,5 @@
 import { cadence } from '@onflow/fcl';
+import { ca } from 'date-fns/locale';
 import React from 'react';
 
 interface ContractData {
@@ -15,6 +16,15 @@ interface TableComponentProps {
 }
 
 const contracts = [
+  {
+    name: 'FLOW',
+    evmAddress: '0xd3bF53DAC106A0290B0483EcBC89d40FcC961f3e',
+    cadenceAddress: '0x1654653399040a61',
+    evmUrl:
+      'https://evm.flowscan.io/token/0xd3bF53DAC106A0290B0483EcBC89d40FcC961f3e',
+    cadenceUrl:
+      'https://www.flowscan.io/ft/token/A.1654653399040a61.FlowToken.Vault',
+  },
   {
     name: 'USDC (stgUSDC)',
     evmAddress: '0xF1815bd50389c46847f0Bda824eC8da914045D14',
@@ -55,13 +65,43 @@ const contracts = [
       'https://flowscan.io/ft/token/A.f1ab99c82dee3526.USDCFlow.Vault',
   },
   {
-    name: 'WFLOW',
-    evmAddress: '0xd3bF53DAC106A0290B0483EcBC89d40FcC961f3e',
-    cadenceAddress: '0x1654653399040a61',
+    name: 'stFlow (Increment Staked FLOW)',
+    evmAddress: '0x5598c0652B899EB40f169Dd5949BdBE0BF36ffDe',
+    cadenceAddress: '0xd6f80565193ad727',
     evmUrl:
-      'https://evm.flowscan.io/token/0xd3bF53DAC106A0290B0483EcBC89d40FcC961f3e',
+      'https://evm.flowscan.io/token/0x5598c0652B899EB40f169Dd5949BdBE0BF36ffDe',
     cadenceUrl:
-      'https://www.flowscan.io/ft/token/A.1654653399040a61.FlowToken.Vault',
+      'https://flowscan.io/ft/token/A.d6f80565193ad727.stFlowToken.Vault',
+  },
+  {
+    name: 'ankrFLOWEVM (Ankr Staked FLOW)',
+    evmAddress: '0x1b97100eA1D7126C4d60027e231EA4CB25314bdb',
+    cadenceAddress:
+      'EVMVMBridgedToken_1b97100ea1d7126c4d60027e231ea4cb25314bdb',
+    evmUrl:
+      'https://evm.flowscan.io/token/0x1b97100eA1D7126C4d60027e231EA4CB25314bdb',
+    cadenceUrl:
+      'https://flowscan.io/ft/token/A.1e4aa0b87d10b141.EVMVMBridgedToken_1b97100ea1d7126c4d60027e231ea4cb25314bdb.Vault',
+  },
+  {
+    name: 'WETH',
+    evmAddress: '0x2F6F07CDcf3588944Bf4C42aC74ff24bF56e7590',
+    cadenceAddress:
+      'EVMVMBridgedToken_2f6f07cdcf3588944bf4c42ac74ff24bf56e7590',
+    evmUrl:
+      'https://evm.flowscan.io/token/0x2F6F07CDcf3588944Bf4C42aC74ff24bF56e7590',
+    cadenceUrl:
+      'https://flowscan.io/ft/token/A.1e4aa0b87d10b141.EVMVMBridgedToken_2f6f07cdcf3588944bf4c42ac74ff24bf56e7590.Vault',
+  },
+  {
+    name: 'cbBTC',
+    evmAddress: '0xA0197b2044D28b08Be34d98b23c9312158Ea9A18',
+    cadenceAddress:
+      'EVMVMBridgedToken_a0197b2044d28b08be34d98b23c9312158ea9a18',
+    evmUrl:
+      'https://evm.flowscan.io/token/0xA0197b2044D28b08Be34d98b23c9312158Ea9A18',
+    cadenceUrl:
+      'https://flowscan.io/ft/token/A.1e4aa0b87d10b141.EVMVMBridgedToken_a0197b2044d28b08be34d98b23c9312158ea9a18.Vault',
   },
 ];
 
@@ -80,30 +120,38 @@ const DeFiContractsTable: React.FC<TableComponentProps> = ({ environment }) => {
           </tr>
         </thead>
         <tbody>
-          {contracts.map((contract, index) => (
-            <tr key={index}>
-              <td>
-                <a
-                  href={
-                    environment === 'evm'
-                      ? contract.evmUrl
-                      : contract.cadenceUrl
-                  }
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  {contract.name}
-                </a>
-              </td>
-              <td>
-                <code>
-                  {environment === 'evm'
-                    ? contract.evmAddress
-                    : contract.cadenceAddress || 'N/A'}
-                </code>
-              </td>
-            </tr>
-          ))}
+          {contracts.map((contract, index) => {
+            // Exception: Rename WFLOW to FLOW when in Cadence environment
+            const displayName =
+              environment === 'evm' && contract.name === 'FLOW'
+                ? 'WFLOW'
+                : contract.name;
+
+            return (
+              <tr key={index}>
+                <td>
+                  <a
+                    href={
+                      environment === 'evm'
+                        ? contract.evmUrl
+                        : contract.cadenceUrl
+                    }
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    {displayName}
+                  </a>
+                </td>
+                <td>
+                  <code>
+                    {environment === 'evm'
+                      ? contract.evmAddress
+                      : contract.cadenceAddress || 'N/A'}
+                  </code>
+                </td>
+              </tr>
+            );
+          })}
         </tbody>
       </table>
     </div>
