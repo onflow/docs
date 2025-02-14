@@ -24,22 +24,22 @@ USDF (USD Flow) - Backed by PYUSD (PayPal USD) issued by PayPal
 
 <Details summary="What are the smart contract addresses for the stablecoins and bridges on Flow?">
 You can find all the contract addresses for the stablecoins and bridges on Flow here:  
-[DeFi Contracts on Flow](./defi-contracts.md)  
+[DeFi Contracts on Flow][0]  
 </Details>
 
 <Details summary="Where can I trade stablecoins on Flow?">
 Stablecoins can be traded on major Flow-based decentralized exchanges (DEXs) like:
 
-- KittyPunch, PunchSwap - [https://swap.kittypunch.xyz/](https://swap.kittypunch.xyz/)
-- IncrementFi, IncrementSwap - [https://app.increment.fi/swap](https://app.increment.fi/swap?in=A.1654653399040a61.FlowToken&out=)
+- KittyPunch, PunchSwap - [https://swap.kittypunch.xyz/][1]
+- IncrementFi, IncrementSwap - [https://app.increment.fi/swap][2]
 </Details>
 
 <Details summary="How can I earn yield on stablecoins on Flow?">
 You can earn yield through:
 
-- Lending Platforms - Supply stablecoins on [IncrementFi](https://app.increment.fi/dashboard) & [MoreMarkets](https://app.more.markets/) to earn interest.
-- Liquidity Pools - Provide liquidity on [IncrementFi](https://app.increment.fi/liquidity) or [KittyPunch](https://www.kittypunch.xyz/) to earn trading fees and farm LP tokens.
-- Yield Aggregators (Coming soon) - Use [KittyPunch](https://app.kittypunch.xyz/) to automate stablecoin yield strategies.
+- Lending Platforms - Supply stablecoins on [IncrementFi][3] & [MoreMarkets][4] to earn interest.
+- Liquidity Pools - Provide liquidity on [IncrementFi][5] or [KittyPunch][6] to earn trading fees and farm LP tokens.
+- Yield Aggregators (Coming soon) - Use [KittyPunch][7] to automate stablecoin yield strategies.
 </Details>
 
 <Details summary="Is it safe to use stablecoins on Flow?">
@@ -52,11 +52,11 @@ Stablecoins on Flow are designed to be secure and efficient but as with any bloc
 </Details>
 
 <Details summary="How can I bridge stablecoins to and from Flow?">
-You can bridge USDC, USDT, and USDF via [https://bridge.flow.com/](https://bridge.flow.com/) or [https://stargate.finance/bridge](https://stargate.finance/bridge)
+You can bridge USDC, USDT, and USDF via [https://bridge.flow.com/][8] or [https://stargate.finance/bridge][9]
 
 ### Step-by-step example USDC to Flow
 
-1. Go to any of the bridges (e.g. [https://bridge.flow.com/](https://bridge.flow.com/))
+1. Go to any of the bridges (e.g. [https://stargate.finance/bridge][9])
 2. Connect your wallet that holds USDC
 3. Select the source chain (e.g. Ethereum, BNB Chain, Base)
 4. Choose Flow as the destination chain
@@ -75,13 +75,13 @@ In many cases, Flow Wallet or Flow-based apps sponsor the gas fees, meaning user
 <Details summary="Can I use stablecoins for payments on Flow?">
 Stablecoins can be used for payments on Flow with services like:
 
-[Beezie](https://beezie.io/), [Flowty](https://www.flowty.io/), [Flowverse](https://nft.flowverse.co/) and many other platforms.
+[Beezie][10], [Flowty][11], [Flowverse][12] and many other platforms.
 
 </Details>
 
 <Details summary="What are some upcoming innovations in stablecoins on Flow?">
 - DeFi integrations with RWAs (Real World Assets).  
-- Stay tuned on [Flow X account](https://x.com/flow_blockchain) or via the community [Flowverse](https://x.com/flowverse_)  
+- Stay tuned on [Flow X account][13] or via the community [Flowverse][14]  
 </Details>
 
 ## Stargate and LayerZero on Flow
@@ -95,7 +95,7 @@ Stargate is a liquidity transfer protocol built on LayerZero that allows users t
 </Details>
 
 <Details summary="How does Stargate support Flow?">
-With Stargate now supporting Flow, users can bridge assets to and from Flow blockchain via [Stargate Finance](https://stargate.finance/bridge). This enables Flow to interact with other major chains like Ethereum, Base, Arbitrum One, and BNB Chain, unlocking global onchain liquidity for Flow-based apps and DeFi protocols.  
+With Stargate now supporting Flow, users can bridge assets to and from Flow blockchain via [Stargate Finance][9]. This enables Flow to interact with other major chains like Ethereum, Base, Arbitrum One, and BNB Chain, unlocking global onchain liquidity for Flow-based apps and DeFi protocols.  
 </Details>
 
 <Details summary="What assets can be bridged to Flow via Stargate?">
@@ -149,7 +149,7 @@ You can use any EVM wallet such as Metamask, Coinbase Wallet, and Flow Wallet.
 
 <Details summary="What stablecoins are currently live on Flow EVM?">
 You can see a full list of stablecoins here:  
-[DeFi Contracts on Flow](./defi-contracts.md)
+[DeFi Contracts on Flow][0]
 
 Trading pools for USDF and stgUSDC (USDC via Stargate) are already live and available for immediate use on Flow EVM and can be seamlessly transferred to any Flow Cadence address.
 
@@ -158,24 +158,43 @@ Trading pools for USDF and stgUSDC (USDC via Stargate) are already live and avai
 <Details summary="Should Cadence applications switch to USDF or stgUSDC?">
 Cadence applications can use USDC.e as the default, but they now also have the option to support USDF or stgUSDC based on their needs.
 
-If you have questions you can join [Flow Discord](https://discord.gg/flow) to get free technical support.
+If you have questions you can join [Flow Discord][15] to get free technical support.
 
 </Details>
 
 ## Support and Additional Resources
 
 <Details summary="Where can I check the status of my bridge transaction?">
-- Use [Stargate’s Explorer](https://stargate.finance/bridge) to track your transfer.
-- You can also check Flow transactions on [evm.flowscan.io](http://evm.flowscan.io)
-- You can also visit [https://bridge.flow.com/](https://bridge.flow.com/) and connect your wallet to view activity.
+- Use [Stargate’s Explorer][9] to track your transfer.
+- You can also check Flow transactions on [evm.flowscan.io][16]
+- You can also visit [https://bridge.flow.com/][8] and connect your wallet to view activity.
 </Details>
 
 <Details summary="Where can I get support if I have issues with the bridge?">
-- **Stargate Discord**: [https://discord.com/invite/9sFqx9U](https://discord.com/invite/9sFqx9U)
-- **Flow Discord**: [https://discord.gg/flow](https://discord.gg/flow)
+- **Stargate Discord**: [https://discord.com/invite/9sFqx9U][17]
+- **Flow Discord**: [https://discord.gg/flow][15]
 </Details>
 
 <Details summary="Where can I get updates or ask questions?">
-- **Flow Twitter/X:** [https://x.com/flow_blockchain](https://x.com/flow_blockchain)
-- **Flow Discord**: [https://discord.gg/flow](https://discord.gg/flow)
+- **Flow Twitter/X:** [https://x.com/flow_blockchain][13]
+- **Flow Discord**: [https://discord.gg/flow][15]
 </Details>
+
+[0]: ./defi-contracts.md
+[1]: https://swap.kittypunch.xyz/
+[2]: https://app.increment.fi/swap?in=A.1654653399040a61.FlowToken&out=
+[3]: https://app.increment.fi/dashboard
+[4]: https://app.more.markets/
+[5]: https://app.increment.fi/liquidity
+[6]: https://www.kittypunch.xyz/
+[7]: https://app.kittypunch.xyz/
+[8]: https://bridge.flow.com/
+[9]: https://stargate.finance/bridge
+[10]: https://beezie.io/
+[11]: https://www.flowty.io/
+[12]: https://nft.flowverse.co/
+[13]: https://x.com/flow_blockchain
+[14]: https://x.com/flowverse_
+[15]: https://discord.gg/flow
+[16]: https://evm.flowscan.io
+[17]: https://discord.com/invite/9sFqx9U
