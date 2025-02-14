@@ -1,6 +1,6 @@
 ---
 title: Use Flow Knowledge Base in Cursor
-sidebar_label: Use Cursor
+sidebar_label: Use Cursor AI
 keywords:
   - Cursor
   - AI
@@ -27,5 +27,5 @@ Adding Flow docs lets you interact with our docs directly and get the most accur
 
 ## Using Flow Docs in Cursor
 
-You can then reference the FLow docs in your prompt with the @Flow symbol or @Cadence for the Cadence docs.
+You can then reference the Flow docs in your prompt with the `@Flow` symbol or `@Cadence` for the Cadence docs.  
 ![Cursor Settings](./images//use-cursor-3.png)
