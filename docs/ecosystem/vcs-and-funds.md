@@ -1,7 +1,7 @@
 ---
 title: VCs & Funds
 description: Connect with venture capital firms and investment funds supporting Flow projects
-sidebar_position: 4
+sidebar_position: 8
 sidebar_custom_props:
   icon: 💼
 ---

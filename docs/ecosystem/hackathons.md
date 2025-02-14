@@ -1,7 +1,7 @@
 ---
 title: Hackathons
 description: Participate in Flow hackathons to build, learn, and win prizes
-sidebar_position: 6
+sidebar_position: 11
 sidebar_custom_props:
   icon: 🚀
 ---
