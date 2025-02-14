@@ -1,6 +1,18 @@
 ---
 id: faq
 title: Stablecoins & Bridges on Flow FAQ
+description: Frequently asked questions about stablecoins, liquidity, and bridging on the Flow blockchain.
+keywords:
+  - stablecoins
+  - bridges
+  - Flow blockchain
+  - USDC
+  - USDT
+  - USDF
+  - decentralized exchanges
+  - DEX
+  - yield farming
+  - liquidity
 sidebar_position: 2
 sidebar_label: Stablecoins & Bridges FAQ
 ---

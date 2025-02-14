@@ -1,7 +1,18 @@
 ---
 id: defi-contracts
 title: DeFi Contracts on Flow
-description: 'A reference table of frequently used DeFi contracts on Flow, including their addresses for both Flow EVM and Flow Cadence.'
+description: A reference table of frequently used DeFi contracts on Flow, including their addresses for both Flow EVM and Flow Cadence.
+keywords:
+  - DeFi contracts
+  - Flow blockchain
+  - Flow EVM
+  - Flow Cadence
+  - stablecoins
+  - wrapped assets
+  - AMMs
+  - DEXs
+  - KittyPunch
+  - PunchSwap
 sidebar_position: 1
 sidebar_label: DeFi Contracts
 ---

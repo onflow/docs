@@ -1,7 +1,19 @@
 ---
 title: DeFi & Liquidity
-sidebar_position: 5
 description: Mechanisms that connect different blockchain networks, allowing secure and decentralized transfer of assets and data across platforms.
+keywords:
+  - DeFi
+  - liquidity
+  - decentralized finance
+  - blockchain networks
+  - cross-chain transfer
+  - decentralized transfer
+  - Flow blockchain
+  - DEX
+  - lending platforms
+  - stablecoin protocols
+  - liquidity solutions
+sidebar_position: 5
 sidebar_custom_props:
   icon: 💧
 ---
