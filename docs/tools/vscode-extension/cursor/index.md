@@ -1,6 +1,9 @@
 ---
 title: Use Flow Knowledge Base in Cursor
 sidebar_label: Use Cursor
+keywords:
+  - Cursor
+  - AI
 ---
 
 [Cursor](https://www.cursor.com/) is an AI code editor that makes it easy to write code while building Flow apps.  
