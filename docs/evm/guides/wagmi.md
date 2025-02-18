@@ -1,6 +1,6 @@
 ---
 title: Viem & Wagmi
-description: 'Using Wagmi to interact with Solidity contract to EVM on Flow.'
+description: 'Using Wagmi to interact with Solidity contract to Flow EVM.'
 sidebar_label: Viem & Wagmi
 sidebar_position: 4
 ---

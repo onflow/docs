@@ -10,7 +10,7 @@ Flow is an L1 that now supports EVM-equivalency. This means that all of Flow's p
 
 ## Seamless Integration for Ethereum Developers
 
-EVM on Flow is designed to work out-of-the-box with the Ethereum toolchain or other clients.  Native EVM transactions also continue to be supported when using Metamask and other EVM-compatible clients.
+Flow EVM is designed to work out-of-the-box with the Ethereum toolchain or other clients.  Native EVM transactions also continue to be supported when using Metamask and other EVM-compatible clients.
 EVM-equivalency on Flow works behind-the-scenes by  implementing a minimal transaction script in Cadence, Flow's smart contract language, to integrate Flow features with EVM. This is made possible because EVM transactions are composed and executed within Cadence transactions, enabling novel use-cases and patterns for integration.
 
 
@@ -35,7 +35,7 @@ Flow's transaction throughput peaked to 2M daily transactions during 2023 sustai
 
 ## MEV Resilience
 
-The MEV Resilient design on Flow offers DeFi builders improved market efficiency, fairness, trust and long-term viability for their apps. Since EVM on Flow transactions are composed and executed within a Cadence transaction, block production is handled by Flow’s [multi-role architecture](https://flow.com/post/flow-blockchain-multi-node-architecture-advantages). This heterogeneity between node roles ensures that visibility into block proposal, assembly, asserting block validity and other correctness checks during the block production cycle exposes limited information to each node type on a need to know basis, observing the Principle of Least Privilege. These differences in node and consensus design results in strong economic disincentives for collusion because no individual node has full visibility into the state of block production for the chain. This robust MEV resilience is a significant difference from other EVM-compatible networks and results in reasonably priced, predictable gas fees. The impracticality of frontrunning or other attacks improves the user experience by eliminating failed transactions and invisible fees.
+The MEV Resilient design on Flow offers DeFi builders improved market efficiency, fairness, trust and long-term viability for their apps. Since Flow EVM transactions are composed and executed within a Cadence transaction, block production is handled by Flow’s [multi-role architecture](https://flow.com/post/flow-blockchain-multi-node-architecture-advantages). This heterogeneity between node roles ensures that visibility into block proposal, assembly, asserting block validity and other correctness checks during the block production cycle exposes limited information to each node type on a need to know basis, observing the Principle of Least Privilege. These differences in node and consensus design results in strong economic disincentives for collusion because no individual node has full visibility into the state of block production for the chain. This robust MEV resilience is a significant difference from other EVM-compatible networks and results in reasonably priced, predictable gas fees. The impracticality of frontrunning or other attacks improves the user experience by eliminating failed transactions and invisible fees.
 
 
 ## Join the Community
@@ -50,7 +50,7 @@ Are you interested in launching an EVM project on Flow or partnering with us? Vi
 
 ## Flow Improvement Proposals (FLIPs)
 
-Those wishing to understand the technical specifics of how EVM on Flow works we recommend reviewing the following improvement proposals.
+Those wishing to understand the technical specifics of how Flow EVM works we recommend reviewing the following improvement proposals.
 
 - Understanding [EVM Support on Flow](https://github.com/onflow/flips/pull/225)
 - Exploring the [Flow VM Bridge](https://github.com/onflow/flips/pull/233/files/d5bc46c4b13f0b9b168a94f994c77a5a689f6b24..122e938b7acae7e774246b1b66aaf5979ca21444)

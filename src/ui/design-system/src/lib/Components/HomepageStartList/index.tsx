@@ -27,7 +27,7 @@ export function HomepageStartList(): React.ReactElement {
   return (
     <div className="container mx-auto p-4">
       <div className="flex flex-col md:w-1/2 md:block pb-9">
-        <div className="text-h2 pb-5">EVM on Flow</div>
+        <div className="text-h2 pb-5">Flow EVM</div>
         Unlock the ability to run EVM-compatible smart contracts on Flow.
         Leverage your existing Solidity skills and EVM tools to build on Flow's
         high-performance blockchain, combining familiar development experiences

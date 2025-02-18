@@ -1,6 +1,6 @@
 ---
 title: Using Foundry with Flow
-description: 'Using Foundry to deploy a Solidity contract to EVM on Flow.'
+description: 'Using Foundry to deploy a Solidity contract to Flow EVM.'
 sidebar_label: Foundry
 sidebar_position: 5
 ---

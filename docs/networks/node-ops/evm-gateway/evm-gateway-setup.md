@@ -171,7 +171,7 @@ can be an account created using Metamask or other web3.js wallet, or otherwise c
 If you haven't already got an EVM address and you have the COA account created by Flow Wallet above then follow the steps below:
 
 * Click top left burger icon to show current profile
-* Click 'Enable the path to EVM on Flow' button
+* Click 'Enable the path to Flow EVM' button
 * Your EVM account will now be available to use in the left nav account view
 * When you switch to that account you can obtain its EVM address
 

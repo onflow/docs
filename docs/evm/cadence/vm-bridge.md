@@ -17,7 +17,7 @@ access to, and maintaining links between associated contracts. It additionally a
 enforce source VM asset burn or lock, and target VM token mint or unlock.
 
 Developers wishing to use the Cross-VM Bridge will be required to use a Cadence transaction. Cross-VM bridging
-functionality is not currently available natively in EVM on Flow. By extension, this means that the EVM account bridging
+functionality is not currently available natively in Flow EVM. By extension, this means that the EVM account bridging
 from EVM to Cadence must be a [`CadenceOwnedAccount` (COA)](./interacting-with-coa.md) as this is the only EVM account
 type that can be controlled from the Cadence runtime.
 
@@ -51,7 +51,7 @@ as you'll find the Cadence contracts (see above).
 
 All bridging activity in either direction is orchestrated via Cadence on COA EVM accounts. This means that all bridging
 activity must be initiated via a Cadence transaction, not an EVM transaction regardless of the directionality of the
-bridge request. For more information on the interplay between Cadence and EVM, see [How EVM on Flow
+bridge request. For more information on the interplay between Cadence and EVM, see [How Flow EVM
 Works](../how-it-works.md).
 
 :::

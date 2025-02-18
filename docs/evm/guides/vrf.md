@@ -30,7 +30,7 @@ calls to retrieve random values and other information.
 
 | **Parameter**       | **Value**                                                                     |
 | ------------------- | ----------------------------------------------------------------------------- |
-| **Network Name**    | EVM on Flow Testnet                                                           |
+| **Network Name**    | Flow EVM Testnet                                                           |
 | **RPC Endpoint**    | [https://testnet.evm.nodes.onflow.org](https://testnet.evm.nodes.onflow.org/) |
 | **Chain ID**        | 545                                                                           |
 | **Currency Symbol** | FLOW                                                                          |
@@ -40,7 +40,7 @@ calls to retrieve random values and other information.
 
 1. Open Metamask and click **Networks** -> **Add Network**.
 2. Enter the following details:
-   - **Network Name**: EVM on Flow Testnet
+   - **Network Name**: Flow EVM Testnet
    - **RPC URL**: `https://testnet.evm.nodes.onflow.org`
    - **Chain ID**: `545`
    - **Currency Symbol**: `FLOW`

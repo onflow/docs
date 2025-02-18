@@ -697,7 +697,7 @@ and the Flow blockchain. How will you use these features to build Web3's next ki
 Now that you've experienced the power of Cadence and EVM interactions firsthand, we recommend checking out the following
 guides to deepen your understanding:
 
-- [How EVM on Flow Works] - Learn more about the Flow EVM and how it differs from traditional EVM platforms
+- [How Flow EVM Works] - Learn more about the Flow EVM and how it differs from traditional EVM platforms
 - [Interacting with COAs] - Get a fuller picture of how Cadence interacts with EVM contracts via Cadence-owned accounts
 - [Cadence Transactions] - Learn more about the Cadence transaction model
 
@@ -726,7 +726,7 @@ Ready to level up your Cadence skills? Take a look at [these Cadence tutorials].
 [Flowscan Cadence]: https://testnet.flowscan.io/
 [resource]: https://cadence-lang.org/docs/solidity-to-cadence#resources
 [entitlement]: https://cadence-lang.org/docs/language/access-control#entitlements
-[How EVM on Flow Works]: ../how-it-works.md
+[How Flow EVM Works]: ../how-it-works.md
 [Interacting with COAs]: ./interacting-with-coa.md
 [Cadence Transactions]: ../../build/basics/transactions.md
 [these Cadence tutorials]: https://cadence-lang.org/docs/tutorial/first-steps
