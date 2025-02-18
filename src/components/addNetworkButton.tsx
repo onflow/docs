@@ -4,7 +4,7 @@ import { Button } from '@site/src/ui/design-system/src/lib/Components/Button/ind
 const targetChains = [
   {
     id: 747,
-    name: 'Flow EVM',
+    name: 'Flow EVM Mainnet',
     rpcUrls: ['https://mainnet.evm.nodes.onflow.org'],
     blockExplorerUrls: ['https://evm.flowscan.io/'],
   },
