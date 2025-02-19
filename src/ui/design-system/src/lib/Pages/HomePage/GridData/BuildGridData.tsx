@@ -8,8 +8,8 @@ export const buildGridData = {
     {
       title: 'Getting Started',
       cards: [
-        {
-          heading: 'Why Flow?',
+         {
+          heading: 'Build with Cadence',
           description:
             'Learn what led Dieter Shirley, Chief Architect of Flow and co-author of the ERC-721 NFT standard to lead the development of a new L1 blockchain.',
           iconColor: 'green',
@@ -20,18 +20,7 @@ export const buildGridData = {
           }
         },
         {
-          heading: 'A Better Language',
-          description:
-            'Cadence is a resource-oriented programming language that makes it easy to build secure, scalable, and composable applications.',
-          iconColor: 'green',
-          cardColor: 'black',
-          icon: 'flow-cadence',
-          onClick: () => {
-            window.open('https://cadence-lang.org', '_blank');
-          }
-        },
-        {
-          heading: 'Flow EVM',
+          heading: 'Build with EVM',
           description:
             'The future is here.  Deploy your Solidity contracts on Flow to get sub-cent transaction fees, sponsored gas, and the ability to scale to millions of users.',
           iconColor: 'green',
@@ -41,6 +30,11 @@ export const buildGridData = {
             window.location.href = 'evm/about';
           }
         },
+      ],
+    },
+    {
+      title: 'Learn Cadence',
+      cards: [
         {
           heading: 'Hello World',
           description:
@@ -50,6 +44,17 @@ export const buildGridData = {
           icon: 'hello-world',
           onClick: () => {
             window.location.href = 'build/getting-started/contract-interaction';
+          }
+        },
+        {
+          heading: 'Cadence 101',
+          description:
+            'Cadence is a resource-oriented programming language that makes it easy to build secure, scalable, and composable applications.',
+          iconColor: 'green',
+          cardColor: 'black',
+          icon: 'flow-cadence',
+          onClick: () => {
+            window.open('https://cadence-lang.org', '_blank');
           }
         },
         {
@@ -74,17 +79,18 @@ export const buildGridData = {
             window.location.href = 'build/guides/nft';
           }
         },
-        // {
-        //   heading: 'Chat with Other Devs',
-        //   description:
-        //     'Head over to Developer Chat on Discord to share what you\'re working on, get help, and chat with other developers.',
-        //   iconColor: 'green',
-        //   cardColor: 'black',
-        //   onClick: () => {
-        //     window.location.href = 'https://discord.com/channels/613813861610684416/1162086721471647874';
-        //   }
-        // },
-      ],
+        {
+          heading: 'Build your App',
+          description:
+            'The Flow Client Library (FCL) JS is a package used to interact with user wallets and the Flow blockchain.',
+          iconColor: 'green',
+          cardColor: 'black',
+          icon: 'flow-client-library',
+          onClick: () => {
+            window.location.href = 'tools/clients/fcl-js';
+          }
+        },
+      ]
     },
     {
       title: 'Supercharge Your App',
@@ -155,66 +161,6 @@ export const buildGridData = {
             window.location.href = 'evm/cadence/vm-bridge';
           }
         },
-      ],
-    },
-    {
-      title: 'Tools',
-      cards: [
-        {
-          heading: 'Flow CLI',
-          description:
-            'The Flow Command Line Interface (CLI) is a powerful tool that enables developers to seamlessly interact with the Flow blockchain across various environments.',
-          iconColor: 'green',
-          cardColor: 'black',
-          icon: 'flow-cli',
-          onClick: () => {
-            window.location.href = 'tools/flow-cli';
-          }
-        },
-        {
-          heading: 'Flow Emulator',
-          description:
-            'The Flow Emulator is a local blockchain environment that allows developers to test and develop their applications without the need to deploy to the mainnet or testnet.',
-          iconColor: 'green',
-          cardColor: 'black',
-          icon: 'flow-emulator',
-          onClick: () => {
-            window.location.href = 'tools/emulator';
-          }
-        },
-        {
-          heading: 'Flow Client Library (FCL)',
-          description:
-            'The Flow Client Library (FCL) JS is a package used to interact with user wallets and the Flow blockchain.',
-          iconColor: 'green',
-          cardColor: 'black',
-          icon: 'flow-client-library',
-          onClick: () => {
-            window.location.href = 'tools/clients/fcl-js';
-          }
-        },
-        {
-          heading: 'EVM Tools and Libraries',
-          description:
-            'Most of your favorite EVM tools and libraries are compatible with Flow.  Learn how to work with Hardhat, Foundry, Wagmi, and more.',
-          iconColor: 'green',
-          cardColor: 'black',
-          icon: 'evm-tools',
-          onClick: () => {
-            window.location.href = 'evm/guides/wagmi';
-          }
-        },
-        {
-          heading: 'Other Clients',
-          description:
-            'Additional clients are available for interacting with the Flow blockchain using a number of popular languages, including Go, Python, Ruby, and JavaScript.',
-          iconColor: 'green',
-          cardColor: 'black',
-          icon: 'other-clients',
-          onClick: () => {
-            window.location.href = 'tools/clients';
-          }
-        }
       ],
     },
   ],

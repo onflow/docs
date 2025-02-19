@@ -15,32 +15,12 @@ const NAVIGATION_CARDS = [
   {
     heading: 'Grow',
     description:
-      'Access builder credits, startup support, and connect with the Flow team in weekly office hours.',
-    iconColor: 'blue' as const,
+      'Access builder credits, startup support, and explore funding opportunities.',
+    iconColor: 'purple' as const,
     cardColor: 'black' as const,
     href: '#Grow',
     variant: 'overlay' as const,
     icon: 'grow'
-  },
-  {
-    heading: 'Fund',
-    description:
-      'Explore funding opportunities through VCs, grants, and hackathons to bring your project to life.',
-    iconColor: 'purple' as const,
-    cardColor: 'black' as const,
-    href: '#Fund',
-    variant: 'overlay' as const,
-    icon: 'fund'
-  },
-  {
-    heading: 'Learn',
-    description:
-      'Learn the basics, dive into the Cadence smart contract language, or explore how to keep building on EVM with the advantages of Flow.',
-    iconColor: 'teal' as const,
-    cardColor: 'black' as const,
-    href: '#Learn',
-    variant: 'overlay' as const,
-    icon: 'learn'
   },
 ] as const;
 
