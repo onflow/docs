@@ -1,16 +1,16 @@
 ---
-title: How EVM on Flow Works
+title: How Flow EVM Works
 sidebar_label: How it Works
 sidebar_position: 2
 ---
 
-# How EVM on Flow Works
+# How Flow EVM Works
 
 ## Introduction
 
 The Flow network uses [Cadence](https://cadence-lang.org/) as its main execution environment. Cadence offers a safe, efficient, and developer-friendly experience for building smart contracts and decentralized applications. Cadence can be used to extend EVM apps built in solidity by unlocking gasless experiences, new business models and fine-tuned access control. With Flow offering full EVM support, existing applications and tools already deployed in the EVM ecosystem can simply onboard to the network with [no code changes](https://developers.flow.com/evm/about).
 
-EVM on Flow is designed with these major goals in mind: 
+Flow EVM is designed with these major goals in mind: 
 
 - Supporting EVM equivalency: Ensure that any tools and applications deployed to or run on Ethereum can also be deployed and run on Flow.
 - Minimizing breaking changes to the Cadence ecosystem, software and tools
@@ -18,7 +18,7 @@ EVM on Flow is designed with these major goals in mind:
 
 ### EVM - A Smart Contract In Cadence
 
-To satisfy the design goals and thanks to the extensibility properties of the Cadence runtime, EVM on Flow is designed as a higher-level environment incorporated as a smart contract deployed to Cadence. This smart contract is not owned by anyone and has its own storage space, allows Cadence to query, and is updated through EVM transactions. EVM transactions can be wrapped inside Cadence transactions and passed to the EVM contract for execution. The artifacts of EVM transaction execution (e.g. receipts and logs) are emitted as special Cadence events (TransactionExecuted, BlockExecuted) and available to the upstream process (Flow transaction) to enable atomic operations. 
+To satisfy the design goals and thanks to the extensibility properties of the Cadence runtime, Flow EVM is designed as a higher-level environment incorporated as a smart contract deployed to Cadence. This smart contract is not owned by anyone and has its own storage space, allows Cadence to query, and is updated through EVM transactions. EVM transactions can be wrapped inside Cadence transactions and passed to the EVM contract for execution. The artifacts of EVM transaction execution (e.g. receipts and logs) are emitted as special Cadence events (TransactionExecuted, BlockExecuted) and available to the upstream process (Flow transaction) to enable atomic operations. 
 
 The EVM environment has its own concept of blocks, and every Flow block includes at most one EVM Block. The EVM block is formed at the end of Flow Block execution and includes all the transaction executed during the EVM block execution. Note that since EVM blocks are formed on-chain and Flow provides fast finality, as long as the user of these events waits for Flow block finality, it doesn’t have to worry about EVM block forks, uncle chains, and other consensus-related challenges. 
 
@@ -28,20 +28,20 @@ The interaction between two environments is through atomic calls and none of the
 
 ### No New Native Token
 
-EVM on Flow uses the same native token as Cadence (FLOW token). No new token is minted at the genesis block of EVM and all the tokens have to be bridged over from the Cadence side into the EVM side. To facilitate this a native bridge is provided by the EVM contract. 
+Flow EVM uses the same native token as Cadence (FLOW token). No new token is minted at the genesis block of EVM and all the tokens have to be bridged over from the Cadence side into the EVM side. To facilitate this a native bridge is provided by the EVM contract. 
 
 ### EVM Equivalency
 
-Under the hood, EVM on Flow uses [the standard EVM implementation](https://github.com/ethereum/go-ethereum) and regularly applies updates through Flow’s height-coordinated updates (e.g. Execution layer changes planned for the Ethereum Prague update). This means anything that can run on Ethereum after the Cancun upgrade can run on Flow EVM. This means many useful EIPs such as [EIP-1014](https://eips.ethereum.org/EIPS/eip-1014), [EIP-1559](https://eips.ethereum.org/EIPS/eip-1559), [EIP-4844](https://eips.ethereum.org/EIPS/eip-4844), [EIP-5656](https://eips.ethereum.org/EIPS/eip-5656), [EIP-6780](https://eips.ethereum.org/EIPS/eip-6780), … are supported automatically.
+Under the hood, Flow EVM uses [the standard EVM implementation](https://github.com/ethereum/go-ethereum) and regularly applies updates through Flow’s height-coordinated updates (e.g. Execution layer changes planned for the Ethereum Prague update). This means anything that can run on Ethereum after the Cancun upgrade can run on Flow EVM. This means many useful EIPs such as [EIP-1014](https://eips.ethereum.org/EIPS/eip-1014), [EIP-1559](https://eips.ethereum.org/EIPS/eip-1559), [EIP-4844](https://eips.ethereum.org/EIPS/eip-4844), [EIP-5656](https://eips.ethereum.org/EIPS/eip-5656), [EIP-6780](https://eips.ethereum.org/EIPS/eip-6780), … are supported automatically.
 
-Yet a small set of differences between EVM on Flow and Ethereum might be seen (mostly of the nature of extension) for two reasons: 
+Yet a small set of differences between Flow EVM and Ethereum might be seen (mostly of the nature of extension) for two reasons: 
 
 - A set of extensions has been added to ensure seamless and easy interaction between the two environments.
-- EVM on Flow is secured by the Flow network and benefits from its robust network properties, such as fast block production and finalization, making issues like handling uncle chains irrelevant.
+- Flow EVM is secured by the Flow network and benefits from its robust network properties, such as fast block production and finalization, making issues like handling uncle chains irrelevant.
 
 ## Gateways
 
-As mentioned, EVM on Flow runs on top of the Flow network and its consensus model. EVM on Flow does not leverage `geth` or introduce new node types to the existing architecture. Operators wishing to participate in securing the network stake tokens and run one of the Flow node types.
+As mentioned, Flow EVM runs on top of the Flow network and its consensus model. Flow EVM does not leverage `geth` or introduce new node types to the existing architecture. Operators wishing to participate in securing the network stake tokens and run one of the Flow node types.
 
 To support `web3.js` clients, the [EVM Gateway](https://github.com/onflow/flow-evm-gateway) honors the Ethereum [JSON-RPC specification](https://ethereum.org/en/developers/docs/apis/json-rpc/). The gateway integrates with Flow access nodes and can be run by anyone (unstaked). It serves two purposes:
 
@@ -51,7 +51,7 @@ The gateway follows Flow's block production, collecting, verifying and indexing 
 
 ### Gateway As a Sequencer
 
-As mentioned, EVM on Flow can be seen as a higher-level environment built on top of Cadence. Thus, all EVM transactions are ultimately handled using a Flow transaction (a wrapped call to the EVM). The gateway accepts EVM transactions, runs an internal mempool of transactions, wraps batches of EVM transactions in Flow transactions, and submits them.
+As mentioned, Flow EVM can be seen as a higher-level environment built on top of Cadence. Thus, all EVM transactions are ultimately handled using a Flow transaction (a wrapped call to the EVM). The gateway accepts EVM transactions, runs an internal mempool of transactions, wraps batches of EVM transactions in Flow transactions, and submits them.
 
 Note that the safety of transaction execution is not dependent on the gateway; they only relay the transaction. The safety measures of the EVM environment (e.g., Nonce, etc.) ensure that each transaction is executed at most once. Since gateways are submitting Flow transactions, they have to pay the related transaction fees. Part of these fees is associated with the computation fees of the EVM transaction.
 
@@ -59,27 +59,27 @@ To facilitate the repayment of fees, the `evm.run` function accepts a `coinbase`
 
 **Censorship Resistance and MEV Protection**
 
-Since EVM on Flow runs on the Flow network, it benefits from Flow’s protections against censorship and MEV attacks. The Flow network natively provides censorship & MEV resistance which is achieved by designating specific validators for building transaction bundles that are separated from the validators proposing blocks (proposer-builder separation). More details about this are available in Flow’s protocol [white papers](https://flow.com/technical-paper). 
+Since Flow EVM runs on the Flow network, it benefits from Flow’s protections against censorship and MEV attacks. The Flow network natively provides censorship & MEV resistance which is achieved by designating specific validators for building transaction bundles that are separated from the validators proposing blocks (proposer-builder separation). More details about this are available in Flow’s protocol [white papers](https://flow.com/technical-paper). 
 For extra protection on the EVM side, the gateway software is designed to be fully configurable and as lightweight as possible. This enables anyone with an account on Flow (e.g., any application) to run their own instances.
 
 **Fee Market Change (EIP-1559)**
 
-[EIP-1559](https://eips.ethereum.org/EIPS/eip-1559) is supported by the EVM on Flow and Gateway nodes can decide on the inclusion of the transactions based on the tips or gas fees. The parameters for the EIP 1559 are adjustable by the Flow network. Currently, the base fee is set to zero, as EVM transactions are wrapped by the Flow transactions.
+[EIP-1559](https://eips.ethereum.org/EIPS/eip-1559) is supported by the Flow EVM and Gateway nodes can decide on the inclusion of the transactions based on the tips or gas fees. The parameters for the EIP 1559 are adjustable by the Flow network. Currently, the base fee is set to zero, as EVM transactions are wrapped by the Flow transactions.
 
 ## Opcodes
 
-EVM on Flow supports opcodes listed [here](https://www.evm.codes/?fork=cancun), except for the following changes. 
+Flow EVM supports opcodes listed [here](https://www.evm.codes/?fork=cancun), except for the following changes. 
 
 - **COINBASE**  (`block.coinbase`)
-	Similar to Ethereum it returns the address of block’s beneficiary address. In the case of EVM on Flow, it returns the address of the current sequencer's fee wallet (see Gateway section for more details).
+	Similar to Ethereum it returns the address of block’s beneficiary address. In the case of Flow EVM, it returns the address of the current sequencer's fee wallet (see Gateway section for more details).
 
 - **PREVRANDAO** (`block.prevrandao`)
-    On Ethereum, this value provides access to beacon chain randomness (see [EIP-4399](https://eips.ethereum.org/EIPS/eip-4399)), Since Flow uses a different approach in consensus and verifiable randomness generation, this value is filled with a random number provided by the Flow protocol. While EVM on Flow provides such opcode, it is recommended not to rely on this value for security-sensitive applications, as it is the case on Ethereum. In order to benefit from the full power of secure randomness on Flow, it's recommended to use the [Cadence Arch precompiles](https://github.com/onflow/docs/blob/main/docs/evm/how-it-works.md#precompiled-contracts).
+    On Ethereum, this value provides access to beacon chain randomness (see [EIP-4399](https://eips.ethereum.org/EIPS/eip-4399)), Since Flow uses a different approach in consensus and verifiable randomness generation, this value is filled with a random number provided by the Flow protocol. While Flow EVM provides such opcode, it is recommended not to rely on this value for security-sensitive applications, as it is the case on Ethereum. In order to benefit from the full power of secure randomness on Flow, it's recommended to use the [Cadence Arch precompiles](https://github.com/onflow/docs/blob/main/docs/evm/how-it-works.md#precompiled-contracts).
     
 
 ## Precompiled Contracts
 
-Besides all the precompiled contracts supported by Ethereum (see here for [the list](https://www.evm.codes/precompiled?fork=cancun)), EVM on Flow has augmented this with a unique precompiled contract, the Cadence Arch, that provides access to the Cadence world. 
+Besides all the precompiled contracts supported by Ethereum (see here for [the list](https://www.evm.codes/precompiled?fork=cancun)), Flow EVM has augmented this with a unique precompiled contract, the Cadence Arch, that provides access to the Cadence world. 
 
 Cadence Arch is a multi-function smart contract (deployed at `0x0000000000000000000000010000000000000001`) that allows any smart contract on Flow EVM a limited set of interactions with the Cadence environment.
 
@@ -107,7 +107,7 @@ Here is a sample demonstrating how to call the Cadence Arch.
 
 ### Native Token Bridge
 
-Both Cadence and EVM on Flow use the same token (FLOW) to run their operations. No new token is minted on the EVM side. Moving FLOW tokens easily across two environments has been supported natively by the EVM smart contract. Because the EVM have limited visibility into Cadence and to make tracking funds easier, every time Flow tokens are withdrawn from the Cadence side and deposited into an EVM address, the balance would be added to a special address `0x0000000000000000000000010000000000000000` (native token bridge) and then transferred to the destination EVM address. The bridge address always maintains a balance of zero. Clearly, this EOA address is a network address and is not controlled by public key.
+Both Cadence and Flow EVM use the same token (FLOW) to run their operations. No new token is minted on the EVM side. Moving FLOW tokens easily across two environments has been supported natively by the EVM smart contract. Because the EVM have limited visibility into Cadence and to make tracking funds easier, every time Flow tokens are withdrawn from the Cadence side and deposited into an EVM address, the balance would be added to a special address `0x0000000000000000000000010000000000000000` (native token bridge) and then transferred to the destination EVM address. The bridge address always maintains a balance of zero. Clearly, this EOA address is a network address and is not controlled by public key.
 
 ### Cadence-Owned Accounts (COAs)
 
@@ -138,6 +138,6 @@ Each Flow EVM block (TransactionHashRoot) includes the Merkle root hash of all t
 
 **Account proofs**
 
-Another type of proof that EVM environments provide is proof for the state of accounts. These proofs depend on the trie structure of the execution environment. EVM on Flow benefits from the advanced storage and proof system that makes Flow’s multi-role architecture possible.
+Another type of proof that EVM environments provide is proof for the state of accounts. These proofs depend on the trie structure of the execution environment. Flow EVM benefits from the advanced storage and proof system that makes Flow’s multi-role architecture possible.
 
-Flow’s state system provides ways to construct inclusion and non-inclusion proofs and one can construct proofs for EVM account’s meta data (account balances, nonce, … ). A less common proof type is proof over the storage state of an account (mostly used for smart contracts). The first release of EVM on Flow won’t support these type of proofs.
+Flow’s state system provides ways to construct inclusion and non-inclusion proofs and one can construct proofs for EVM account’s meta data (account balances, nonce, … ). A less common proof type is proof over the storage state of an account (mostly used for smart contracts). The first release of Flow EVM won’t support these type of proofs.

@@ -4,13 +4,13 @@ import { Button } from '@site/src/ui/design-system/src/lib/Components/Button/ind
 const targetChains = [
   {
     id: 747,
-    name: 'EVM on Flow',
+    name: 'Flow EVM',
     rpcUrls: ['https://mainnet.evm.nodes.onflow.org'],
     blockExplorerUrls: ['https://evm.flowscan.io/'],
   },
   {
     id: 545,
-    name: 'EVM on Flow Testnet',
+    name: 'Flow EVM Testnet',
     rpcUrls: ['https://testnet.evm.nodes.onflow.org'],
     blockExplorerUrls: ['https://evm-testnet.flowscan.io/'],
   },

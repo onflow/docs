@@ -31,7 +31,7 @@ export const buildGridData = {
           }
         },
         {
-          heading: 'EVM on Flow',
+          heading: 'Flow EVM',
           description:
             'The future is here.  Deploy your Solidity contracts on Flow to get sub-cent transaction fees, sponsored gas, and the ability to scale to millions of users.',
           iconColor: 'green',

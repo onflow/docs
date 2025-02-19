@@ -12,7 +12,7 @@ Are you a Cadence developer looking for information about Accounts on Cadence? I
 
 # Accounts
 
-There are three types of accounts used for EVM on Flow.
+There are three types of accounts used for Flow EVM.
 
 1. **Externally Owned Accounts (EOA)**: EOAs are controlled by private individuals using cryptographic keys and can initiate transactions directly. They are the primary account type for users to interact with the blockchain, holding and sending cryptocurrency or calling smart contract functions.
 2. **Contract Accounts**: These accounts hold smart contract code and are governed by this code's logic. Unlike EOAs, Contract Accounts do not initiate transactions on their own but can execute transactions in response to calls they receive from EOAs or other contracts.
