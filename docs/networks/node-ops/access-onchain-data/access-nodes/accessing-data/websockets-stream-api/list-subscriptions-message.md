@@ -26,14 +26,15 @@ Thus, the response for this message is different too.
     {
       "subscription_id": "uuid-1",
       "topic": "blocks",
-      "parameters": {
+      "arguments": {
+        "block_status": "finalized",
         "start_block_height": "123456789"
       }
     },
     {
       "subscription_id": "uuid-2",
       "topic": "events",
-      "parameters": {}
+      "arguments": {}
     }
   ]
 }

@@ -16,19 +16,22 @@ data.
 
 - **Endpoint**: The WebSocket server is available at:
   ```
-  wss://rest-mainnet.onflow.org/ws
+  wss://rest-mainnet.onflow.org/v1/ws
   ```
 - **Limits**:
     - Each connection supports up to 20 concurrent subscriptions. Exceeding this limit will result in an error.
     - Each subscription may provide up to 20 responses per second. 
     - After 1 minute of inactivity (no data is sent to/read from connection) connection is closed. 
+
 - **Supported Topics**:
-    - `blocks`
-    - `block_headers`
     - `block_digests`
+    - `block_headers`
+    - `blocks`  
     - `events`
-    - `transaction_statuses`
     - `account_statuses`
+    - `transaction_statuses`
+    - `send_and_get_transaction_statuses`
+    
 - **Notes**: Always handle errors gracefully and close unused subscriptions to maintain efficient connections.
 
 ---
@@ -67,17 +70,18 @@ To receive data from a specific topic, send a subscription request in JSON forma
   "action": "subscribe",
   "topic": "blocks",
   "arguments": {
+    "block_status": "sealed",
     "start_block_height": "123456789"
   }
 }
 ```
 
-- **`subscription_id`**: A unique identifier for the subscription (string with max len constraint). If omitted, the server generates one.
+- **`subscription_id`**(optional): A unique identifier for the subscription (a string with maximum length constraint of 20 characters). If omitted, the server generates one.
 - **`action`**: The action to perform. Supported actions include: `subscribe`, `unsubscribe`, `list_subscriptions`.
 - **`topic`**: The topic to subscribe to. See the supported topics in the Overview.
 - **`arguments`**: Additional arguments for subscriptions, such as `start_block_height`, `start_block_id`, and others.
 
-### Response Format
+### Successful Response Format
 
 ```json
 {
@@ -101,7 +105,7 @@ To stop receiving data from a specific topic, send an unsubscribe request.
 }
 ```
 
-### Response Format
+### Successful Response Format
 
 ```json
 {
@@ -124,7 +128,7 @@ You can retrieve a list of all active subscriptions for the current WebSocket co
 }
 ```
 
-### Response Format
+### Successful Response Format
 
 ```json
 {
@@ -133,6 +137,7 @@ You can retrieve a list of all active subscriptions for the current WebSocket co
       "subscription_id": "some-id-1",
       "topic": "blocks",
       "arguments": {
+        "block_status": "sealed",
         "start_block_height": "123456789"
       }
     },
@@ -156,6 +161,7 @@ If a request is invalid or cannot be processed, the server responds with an erro
 ```json
 {
   "subscription_id": "some-id-42",
+  "topic": "block_digests",
   "payload": {
     "id": "0x1234...",
     "height:": "123456789",
@@ -188,4 +194,4 @@ If you're working in an asynchronous environment, the Streaming API ensures **fi
 so responses will be returned in the same order the requests were received over the connection.
 You can leverage this feature to simplify your code and maintain consistency.
 
-Additionally, you can specify your own `subscription_id` in the subscribe request to easily identify the correct response.
+Additionally, you can specify a custom `subscription_id` in the subscribe request to easily identify the correct response. It must not be an empty string and must follow a maximum length constraint of 20 characters.
