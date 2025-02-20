@@ -80,6 +80,7 @@ export const buildGridData = {
           iconColor: 'green',
           cardColor: 'black',
           icon: 'create-an-nft',
+          variant: 'horizontal',
           onClick: () => {
             window.location.href = 'build/guides/nft';
           }

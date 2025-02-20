@@ -14,6 +14,7 @@ export const growGridData = {
           iconColor: 'purple',
           cardColor: 'black',
           icon: 'startup-support',
+          variant: 'horizontal',
           onClick: () => {
             window.location.href = '/growth';
           },
@@ -25,6 +26,7 @@ export const growGridData = {
           iconColor: 'purple',
           cardColor: 'black',
           icon: 'builder-credits',
+          variant: 'horizontal',
           onClick: () => {
             window.location.href =
               'https://github.com/orgs/onflow/discussions/1545';
@@ -37,6 +39,7 @@ export const growGridData = {
           iconColor: 'purple',
           cardColor: 'black',
           icon: 'dev-office-hours',
+          variant: 'horizontal',
           onClick: () => {
             window.location.href =
               'https://calendar.google.com/calendar/u/0/embed?src=c_47978f5cd9da636cadc6b8473102b5092c1a865dd010558393ecb7f9fd0c9ad0@group.calendar.google.com';
@@ -49,6 +52,7 @@ export const growGridData = {
           iconColor: 'purple',
           cardColor: 'black',
           icon: 'vcs-&-funds',
+          variant: 'horizontal',
           onClick: () => {
             window.location.href = '/ecosystem/vcs-and-funds';
           },
@@ -60,6 +64,7 @@ export const growGridData = {
           iconColor: 'purple',
           cardColor: 'black',
           icon: 'grants',
+          variant: 'horizontal',
           onClick: () => {
             window.location.href = '/ecosystem/grants';
           },
