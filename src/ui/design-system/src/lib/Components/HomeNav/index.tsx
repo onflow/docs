@@ -9,7 +9,7 @@ const NAVIGATION_CARDS = [
     iconColor: 'green' as const,
     cardColor: 'black' as const,
     href: '#Build',
-    variant: 'overlay' as const,
+    variant: 'horizontal' as const,
     icon: 'getting-started'
   },
   {
@@ -19,7 +19,7 @@ const NAVIGATION_CARDS = [
     iconColor: 'purple' as const,
     cardColor: 'black' as const,
     href: '#Grow',
-    variant: 'overlay' as const,
+    variant: 'horizontal' as const,
     icon: 'grow'
   },
 ] as const;

@@ -9,23 +9,25 @@ export const buildGridData = {
       title: 'Getting Started',
       cards: [
          {
-          heading: 'Build with Cadence',
+          heading: 'Cadence',
           description:
-            'Learn what led Dieter Shirley, Chief Architect of Flow and co-author of the ERC-721 NFT standard to lead the development of a new L1 blockchain.',
+            'Learn why Dieter Shirley, co-author of the ERC-721 NFT standard, led the development of a new L1.',
           iconColor: 'green',
           cardColor: 'black',
-          icon: 'why-flow',
+          icon: 'flow-cadence',
+          variant: 'horizontal',
           onClick: () => {
             window.location.href = 'build/flow';
           }
         },
         {
-          heading: 'Build with EVM',
+          heading: 'EVM',
           description:
-            'The future is here.  Deploy your Solidity contracts on Flow to get sub-cent transaction fees, sponsored gas, and the ability to scale to millions of users.',
+            'Deploy your Solidity contracts on Flow to get sub-cent transaction fees, sponsored gas, and the ability to scale to millions of users.',
           iconColor: 'green',
           cardColor: 'black',
           icon: 'evm-on-flow',
+          variant: 'horizontal',
           onClick: () => {
             window.location.href = 'evm/about';
           }
@@ -42,6 +44,7 @@ export const buildGridData = {
           iconColor: 'green',
           cardColor: 'black',
           icon: 'hello-world',
+          variant: 'horizontal',
           onClick: () => {
             window.location.href = 'build/getting-started/contract-interaction';
           }
@@ -53,6 +56,7 @@ export const buildGridData = {
           iconColor: 'green',
           cardColor: 'black',
           icon: 'flow-cadence',
+          variant: 'horizontal',
           onClick: () => {
             window.open('https://cadence-lang.org', '_blank');
           }
@@ -64,6 +68,7 @@ export const buildGridData = {
           iconColor: 'green',
           cardColor: 'black',
           icon: 'launch-a-token',
+          variant: 'horizontal',
           onClick: () => {
             window.location.href = 'build/guides/fungible-token';
           }
@@ -86,6 +91,7 @@ export const buildGridData = {
           iconColor: 'green',
           cardColor: 'black',
           icon: 'flow-client-library',
+          variant: 'horizontal',
           onClick: () => {
             window.location.href = 'tools/clients/fcl-js';
           }
@@ -102,6 +108,7 @@ export const buildGridData = {
           iconColor: 'green',
           cardColor: 'black',
           icon: 'access-incredible-ip',
+          variant: 'horizontal',
           onClick: () => {
             window.location.href = 'build/guides/account-linking-with-dapper';
           }
@@ -113,6 +120,7 @@ export const buildGridData = {
           iconColor: 'green',
           cardColor: 'black',
           icon: 'vrf---cadence',
+          variant: 'horizontal',
           onClick: () => {
             window.location.href = 'build/advanced-concepts/randomness';
           }
@@ -124,6 +132,7 @@ export const buildGridData = {
           iconColor: 'green',
           cardColor: 'black',
           icon: 'vrf---evm',
+          variant: 'horizontal',
           onClick: () => {
             window.location.href = 'evm/guides/vrf';
           }
@@ -135,6 +144,7 @@ export const buildGridData = {
           iconColor: 'green',
           cardColor: 'black',
           icon: 'account-abstraction',
+          variant: 'horizontal',
           onClick: () => {
             window.location.href = 'build/guides/account-linking/child-accounts';
           }
@@ -146,6 +156,7 @@ export const buildGridData = {
           iconColor: 'green',
           cardColor: 'black',
           icon: 'batched-evm-transactions',
+          variant: 'horizontal',
           onClick: () => {
             window.location.href = 'evm/cadence/batched-evm-transactions';
           }
@@ -157,6 +168,7 @@ export const buildGridData = {
           iconColor: 'green',
           cardColor: 'black',
           icon: 'cross-vm-bridge',
+          variant: 'horizontal',
           onClick: () => {
             window.location.href = 'evm/cadence/vm-bridge';
           }
