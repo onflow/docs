@@ -2,9 +2,9 @@ const { join } = require('path');
 const defaultTheme = require('tailwindcss/defaultTheme');
 /** @type {import('tailwindcss').Config} */
 module.exports = {
-  corePlugins: {
-    preflight: false,
-  },
+  // corePlugins: {
+  //   preflight: false,
+  // },
   darkMode: ['class', '[data-theme="dark"]'],
   content: [
     join(
