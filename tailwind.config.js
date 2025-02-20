@@ -2,9 +2,9 @@ const { join } = require('path');
 const defaultTheme = require('tailwindcss/defaultTheme');
 /** @type {import('tailwindcss').Config} */
 module.exports = {
-  // corePlugins: {
-  //   preflight: false,
-  // },
+  corePlugins: {
+    preflight: false,
+  },
   darkMode: ['class', '[data-theme="dark"]'],
   content: [
     join(
@@ -46,8 +46,8 @@ module.exports = {
     },
     extend: {
       fontFamily: {
-        sans: ['Acumin Pro', ...defaultTheme.fontFamily.sans],
-        display: 'Inter',
+        sans: ['Inter', ...defaultTheme.fontFamily.sans],
+        display: ['Inter', ...defaultTheme.fontFamily.sans],
         mono: 'IBM Plex Mono',
       },
       transitionDuration: {
