@@ -53,7 +53,7 @@ export const ActionCard: React.FC<ActionCardProps> = ({
               >
                 <Icon name={icon} />
               </div>
-              <h3 className="text-2xl font-semibold text-white mb-0">{heading}</h3>
+              <h3 className="text-2xl font-semibold text-white font-['Inter'] mb-0">{heading}</h3>
             </div>
             <p className="text-sm text-gray-100 mt-4">{description}</p>
           </>

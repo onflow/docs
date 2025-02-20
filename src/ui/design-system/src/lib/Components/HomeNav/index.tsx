@@ -37,7 +37,7 @@ export function HomeNav({
         <div className="flex flex-col md:flex-row">
           {/* Left side - Title */}
           <div className="flex-1 basis-1/3 pr-8 flex items-center">
-            <h1 className="text mb-8 max-w-full !text-3xl md:!text-6xl font-normal leading-[1.4]">
+            <h1 className="text mb-8 max-w-full !text-3xl md:!text-6xl font-normal font-['Inter'] leading-[1.4]">
               {title}
             </h1>
           </div>

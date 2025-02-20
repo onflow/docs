@@ -40,7 +40,7 @@ const ActionCardGrid: React.FC<ActionCardGridProps> = ({ title, sections, id, ic
           <div className={`w-[1px] ${colors[iconColor].light} h-full`}></div>
         </div>
         {/* Title */}
-        <h2 className="ml-20 text-3xl font-semibold text-gray-900 dark:text-white">{title}</h2>
+        <h2 className="ml-20 text-3xl font-semibold text-gray-900 dark:text-white font-['Inter']">{title}</h2>
       </div>
 
       {/* Wrap Cards and Sections in Line Container */}
@@ -51,8 +51,8 @@ const ActionCardGrid: React.FC<ActionCardGridProps> = ({ title, sections, id, ic
         {/* Sections */}
         {sections.map((section, sectionIndex) => (
           <div key={sectionIndex} className="mb-12">
-            {/* Section Title - updating from text-2xl to match ActionCard */}
-            <h3 className="pl-8 text-2xl font-semibold text-white mb-4">{section.title}</h3>
+            {/* Section Title */}
+            <h3 className="pl-8 text-2xl font-semibold text-white font-['Inter'] mb-4">{section.title}</h3>
             {/* Cards Grid */}
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 pl-8">
               {section.cards.map((card, cardIndex) => (
