@@ -5,7 +5,7 @@ sidebar_position: 4
 sidebar_label: Rainbowkit
 ---
 
-Integrating Flow Wallet with [RainbowKit](https://www.rainbowkit.com/) allows users to seamlessly connect their Flow accounts through one of the most popular wallet connection interfaces.
+Integrating Flow Wallet with [RainbowKit][1] allows users to seamlessly connect their Flow accounts through one of the most popular wallet connection interfaces.
 
 This guide walks you through the process of defining Flow Wallet as a custom wallet in RainbowKit and testing the integration. You can follow along by setting up a new RainbowKit project or use the code in this guide to integrate these steps into your existing dApp.
 
@@ -25,7 +25,7 @@ The RainbowKit starter is built on Next.js, so familiarity with React, hooks, an
 
 ## A Flow Wallet 
 
-To use Flow Wallet with RainbowKit, install the Flow Wallet browser extension from the [Chrome Web Store](https://chromewebstore.google.com/detail/flow-wallet/hpclkefagolihohboafpheddmmgdffjm?hl=en).
+To use Flow Wallet with RainbowKit, install the Flow Wallet browser extension from the [Chrome Web Store][2].
 
 Once installed, set up your wallet by creating or importing an account. For quick access, pin the extension to your browser toolbar.
 
@@ -149,7 +149,7 @@ export const config = createConfig({
   chains: [flowMainnet, mainnet],
   ssr: true,
   transports: {
-    [flowMainnet.id]: http('https://white-bold-sound.flow-mainnet.quiknode.pro/ed505487257d3fad3671bcae7eb001dd6de5ea49'),
+    [flowMainnet.id]: http(),
     [mainnet.id]: http(),
   },
 });
@@ -169,14 +169,14 @@ To get a Project ID, sign up at WalletConnect Cloud, create a new project, and c
 
 After implementing the Flow Wallet connector and configuring Wagmi, follow these steps to verify that the integration works correctly in your dApp:
 
-1. **Click “Connect Wallet”** – Open your application and click the “Connect Wallet” button.
+1. **Click "Connect Wallet"** – Open your application and click the "Connect Wallet" button.
 2. **Check for Flow Wallet** – Ensure Flow Wallet appears as an option in the RainbowKit wallet selection modal.
-	- If you haven’t installed the browser extension and set up your wallet yet, you can find install it via the [Chrome Web Store](https://chromewebstore.google.com/detail/flow-wallet/hpclkefagolihohboafpheddmmgdffjm?hl=en).
-3. **Connect the Wallet** – Click on Flow Wallet in the selection modal. If using the browser extension, open it and press “Connect.”
+	- If you haven't installed the browser extension and set up your wallet yet, you can find install it via the [Chrome Web Store][2].
+3. **Connect the Wallet** – Click on Flow Wallet in the selection modal. If using the browser extension, open it and press "Connect."
 
 ![Rainbowkit dAPP UI](./rainbowkit-1.png)
 
-4. **Verify Connection** – Confirm that your Flow Wallet is now connected and visible in your dApp’s UI.
+4. **Verify Connection** – Confirm that your Flow Wallet is now connected and visible in your dApp's UI.
 
 ![Rainbowkit dAPP UI](./rainbowkit-2.png)
 
@@ -189,3 +189,6 @@ In this tutorial, you learned how to integrate Flow Wallet with [RainbowKit](htt
 - Test and verify the Flow Wallet integration in your dApp
 
 Now that you've completed this tutorial, you're ready to enhance your dApp with additional Flow blockchain features such as token transfers, NFT minting, and smart contract interactions.
+
+[1]: https://www.rainbowkit.com/
+[2]: https://chromewebstore.google.com/detail/flow-wallet/hpclkefagolihohboafpheddmmgdffjm?hl=en
