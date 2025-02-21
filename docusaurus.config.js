@@ -203,6 +203,11 @@ const config = {
             require.resolve('./src/css/custom.css'),
           ],
         },
+        sitemap: {
+          changefreq: 'daily',
+          priority: 0.5,
+          ignorePatterns: ['/tags/**'],
+        },
         ...(process.env.GTAG
           ? {
               gtag: {
@@ -669,15 +674,6 @@ const config = {
         },
       };
     },
-    [
-      '@docusaurus/plugin-sitemap',
-      {
-        changefreq: 'daily',
-        priority: 0.5,
-        ignorePatterns: ['/tags/**'],
-        sitemapSize: 5000,
-      },
-    ],
   ],
   stylesheets: [
     {
