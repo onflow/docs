@@ -62,5 +62,6 @@
   "js_render": true,
   "js_wait": 2,
   "use_anchors": true,
-  "scrape_start_urls": true
+  "scrape_start_urls": true,
+  "min_indexed_level": 0
 }
