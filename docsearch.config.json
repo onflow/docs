@@ -3,8 +3,8 @@
   "start_urls": [
     {
       "url": "https://developers.flow.com/",
-      "selectors_key": "default",
-      "tags": ["docs"],
+      "selectors_key": "homepage",
+      "tags": ["homepage"],
       "page_rank": 1
     },
     {
@@ -44,12 +44,33 @@
       "lvl5": "article h5, article td:first-child",
       "lvl6": "article h6",
       "text": "article p, article li, article td:last-child"
+    },
+    "homepage": {
+      "lvl0": {
+        "selector": "nav[contains(@class, 'navbar')]//a[contains(@class, 'navbar__link--active')]",
+        "type": "xpath",
+        "global": true,
+        "default_value": "Flow Developer Portal"
+      },
+      "lvl1": "h1, header h1, .hero__title, main h1",
+      "lvl2": "h2, .hero__subtitle, .cards h3, main h2",
+      "lvl3": "h3, .cards h4, main h3",
+      "lvl4": "h4, main h4",
+      "lvl5": "h5",
+      "lvl6": "h6",
+      "text": "p, li, td, .hero__subtitle, .cards p, main p"
     }
   },
   "strip_chars": " .,;:#",
   "custom_settings": {
     "separatorsToIndex": "_",
-    "attributesForFaceting": ["language", "version", "type", "docusaurus_tag"],
+    "attributesForFaceting": [
+      "language",
+      "version",
+      "type",
+      "docusaurus_tag",
+      "tags"
+    ],
     "attributesToRetrieve": [
       "hierarchy",
       "content",
@@ -57,11 +78,14 @@
       "url",
       "url_without_anchor",
       "type"
-    ]
+    ],
+    "distinct": true,
+    "attributeForDistinct": "url"
   },
   "js_render": true,
   "js_wait": 2,
   "use_anchors": true,
   "scrape_start_urls": true,
-  "min_indexed_level": 0
+  "min_indexed_level": 0,
+  "only_content_level": false
 }
