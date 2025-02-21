@@ -205,11 +205,11 @@ const config = {
         },
         ...(process.env.GTAG
           ? {
-            gtag: {
-              trackingID: process.env.GTAG,
-              anonymizeIP: true,
-            },
-          }
+              gtag: {
+                trackingID: process.env.GTAG,
+                anonymizeIP: true,
+              },
+            }
           : {}),
       }),
     ],
@@ -301,6 +301,12 @@ const config = {
             position: 'left',
             label: 'Growth',
             activeBasePath: '/growth',
+          },
+          {
+            to: 'tutorials',
+            position: 'left',
+            label: 'Tutorials',
+            activeBasePath: '/tutorials',
           },
           {
             type: 'custom-connectButton',
