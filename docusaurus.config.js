@@ -153,7 +153,7 @@ const config = {
   url: getUrl(),
   // Set the /<baseUrl>/ pathname under which your site is served
   // For GitHub pages deployment, it is often '/<projectName>/'
-  baseUrl,
+  baseUrl: baseUrl,
 
   // GitHub pages deployment config.
   // If you aren't using GitHub pages, you don't need these.
@@ -205,11 +205,11 @@ const config = {
         },
         ...(process.env.GTAG
           ? {
-            gtag: {
-              trackingID: process.env.GTAG,
-              anonymizeIP: true,
-            },
-          }
+              gtag: {
+                trackingID: process.env.GTAG,
+                anonymizeIP: true,
+              },
+            }
           : {}),
       }),
     ],
@@ -244,14 +244,27 @@ const config = {
       image: 'img/flow-docs-og-1200-630.png',
       metadata: [
         { name: 'twitter:card', content: 'summary_large_image' },
-        { name: 'twitter:image', content: getUrl() + '/img/flow-docs-og-1200-630.png' },
-        { property: 'og:image', content: getUrl() + '/img/flow-docs-og-1200-630.png' },
+        {
+          name: 'twitter:image',
+          content: getUrl() + '/img/flow-docs-og-1200-630.png',
+        },
+        {
+          property: 'og:image',
+          content: getUrl() + '/img/flow-docs-og-1200-630.png',
+        },
         { property: 'og:image:type', content: 'image/png' },
         { property: 'og:image:width', content: '1200' },
         { property: 'og:image:height', content: '630' },
         { property: 'og:type', content: 'website' },
-        { property: 'og:description', content: 'Flow Developer Documentation - The future of culture and digital assets is built on Flow' },
-        { property: 'og:logo', content: getUrl() + '/img/flow-docs-logo-light.png' },
+        {
+          property: 'og:description',
+          content:
+            'Flow Developer Documentation - The future of culture and digital assets is built on Flow',
+        },
+        {
+          property: 'og:logo',
+          content: getUrl() + '/img/flow-docs-logo-light.png',
+        },
       ],
       docs: {
         sidebar: {
@@ -656,6 +669,15 @@ const config = {
         },
       };
     },
+    [
+      '@docusaurus/plugin-sitemap',
+      {
+        changefreq: 'daily',
+        priority: 0.5,
+        ignorePatterns: ['/tags/**'],
+        sitemapSize: 5000,
+      },
+    ],
   ],
   stylesheets: [
     {

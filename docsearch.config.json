@@ -1,15 +1,14 @@
 {
   "index_name": "flow_docs",
   "start_urls": [
-    "https://developers.flow.com/"
+    {
+      "url": "https://developers.flow.com/",
+      "tags": ["docs"]
+    }
   ],
-  "sitemap_urls": [
-    "https://developers.flow.com/sitemap.xml"
-  ],
+  "sitemap_urls": ["https://developers.flow.com/sitemap.xml"],
   "sitemap_alternate_links": true,
-  "stop_urls": [
-    "/tests"
-  ],
+  "stop_urls": ["/tests"],
   "selectors": {
     "lvl0": {
       "selector": "(//ul[contains(@class,'menu__list')]//a[contains(@class, 'menu__link menu__link--sublist menu__link--active')]/text() | //nav[contains(@class, 'navbar')]//a[contains(@class, 'navbar__link--active')]/text())[last()]",
@@ -28,12 +27,7 @@
   "strip_chars": " .,;:#",
   "custom_settings": {
     "separatorsToIndex": "_",
-    "attributesForFaceting": [
-      "language",
-      "version",
-      "type",
-      "docusaurus_tag"
-    ],
+    "attributesForFaceting": ["language", "version", "type", "docusaurus_tag"],
     "attributesToRetrieve": [
       "hierarchy",
       "content",
@@ -42,5 +36,7 @@
       "url_without_anchor",
       "type"
     ]
-  }
+  },
+  "js_render": true,
+  "js_wait": 1
 }
