@@ -17,7 +17,6 @@ Adding Flow docs lets you interact with our docs directly and get the most accur
 ![Cursor Settings](./images//use-cursor-1.png)
 2. Set Flow Docs:
     - Enter the URL of the Flow docs: `https://developers.flow.com/tools` and press Enter.
-      - Note:  This **will index all** the docs.  We're investigating why you need `/tools`
     - Cursor will automatically detect the Flow docs and index them for you.
     - Ensure the name is `Flow`, and click "Confirm" to add the docs.
 ![Cursor Settings](./images//use-cursor-2.png)
