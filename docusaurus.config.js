@@ -269,13 +269,13 @@ const config = {
           {
             to: 'build/flow',
             position: 'left',
-            label: 'Build With Cadence',
+            label: 'Cadence',
             activeBasePath: '/build',
           },
           {
             to: 'evm/about',
             position: 'left',
-            label: 'Build With EVM',
+            label: 'EVM',
             activeBasePath: '/evm',
           },
           {

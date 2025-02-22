@@ -8,39 +8,35 @@ export const buildGridData = {
     {
       title: 'Getting Started',
       cards: [
-        {
-          heading: 'Why Flow?',
+         {
+          heading: 'Cadence',
           description:
-            'Learn what led Dieter Shirley, Chief Architect of Flow and co-author of the ERC-721 NFT standard to lead the development of a new L1 blockchain.',
+            'Learn why Dieter Shirley, co-author of the ERC-721 NFT standard, led the development of a new L1.',
           iconColor: 'green',
           cardColor: 'black',
-          icon: 'why-flow',
+          icon: 'flow-cadence',
+          variant: 'horizontal',
           onClick: () => {
             window.location.href = 'build/flow';
           }
         },
         {
-          heading: 'A Better Language',
+          heading: 'EVM',
           description:
-            'Cadence is a resource-oriented programming language that makes it easy to build secure, scalable, and composable applications.',
-          iconColor: 'green',
-          cardColor: 'black',
-          icon: 'flow-cadence',
-          onClick: () => {
-            window.open('https://cadence-lang.org', '_blank');
-          }
-        },
-        {
-          heading: 'Flow EVM',
-          description:
-            'The future is here.  Deploy your Solidity contracts on Flow to get sub-cent transaction fees, sponsored gas, and the ability to scale to millions of users.',
+            'Deploy your Solidity contracts on Flow to get sub-cent transaction fees, sponsored gas, and the ability to scale to millions of users.',
           iconColor: 'green',
           cardColor: 'black',
           icon: 'evm-on-flow',
+          variant: 'horizontal',
           onClick: () => {
             window.location.href = 'evm/about';
           }
         },
+      ],
+    },
+    {
+      title: 'Learn Cadence',
+      cards: [
         {
           heading: 'Hello World',
           description:
@@ -48,8 +44,21 @@ export const buildGridData = {
           iconColor: 'green',
           cardColor: 'black',
           icon: 'hello-world',
+          variant: 'horizontal',
           onClick: () => {
             window.location.href = 'build/getting-started/contract-interaction';
+          }
+        },
+        {
+          heading: 'Cadence 101',
+          description:
+            'Cadence is a resource-oriented programming language that makes it easy to build secure, scalable, and composable applications.',
+          iconColor: 'green',
+          cardColor: 'black',
+          icon: 'flow-cadence',
+          variant: 'horizontal',
+          onClick: () => {
+            window.open('https://cadence-lang.org', '_blank');
           }
         },
         {
@@ -59,6 +68,7 @@ export const buildGridData = {
           iconColor: 'green',
           cardColor: 'black',
           icon: 'launch-a-token',
+          variant: 'horizontal',
           onClick: () => {
             window.location.href = 'build/guides/fungible-token';
           }
@@ -70,21 +80,24 @@ export const buildGridData = {
           iconColor: 'green',
           cardColor: 'black',
           icon: 'create-an-nft',
+          variant: 'horizontal',
           onClick: () => {
             window.location.href = 'build/guides/nft';
           }
         },
-        // {
-        //   heading: 'Chat with Other Devs',
-        //   description:
-        //     'Head over to Developer Chat on Discord to share what you\'re working on, get help, and chat with other developers.',
-        //   iconColor: 'green',
-        //   cardColor: 'black',
-        //   onClick: () => {
-        //     window.location.href = 'https://discord.com/channels/613813861610684416/1162086721471647874';
-        //   }
-        // },
-      ],
+        {
+          heading: 'Build your App',
+          description:
+            'The Flow Client Library (FCL) JS is a package used to interact with user wallets and the Flow blockchain.',
+          iconColor: 'green',
+          cardColor: 'black',
+          icon: 'flow-client-library',
+          variant: 'horizontal',
+          onClick: () => {
+            window.location.href = 'tools/clients/fcl-js';
+          }
+        },
+      ]
     },
     {
       title: 'Supercharge Your App',
@@ -96,6 +109,7 @@ export const buildGridData = {
           iconColor: 'green',
           cardColor: 'black',
           icon: 'access-incredible-ip',
+          variant: 'horizontal',
           onClick: () => {
             window.location.href = 'build/guides/account-linking-with-dapper';
           }
@@ -107,6 +121,7 @@ export const buildGridData = {
           iconColor: 'green',
           cardColor: 'black',
           icon: 'vrf---cadence',
+          variant: 'horizontal',
           onClick: () => {
             window.location.href = 'build/advanced-concepts/randomness';
           }
@@ -118,6 +133,7 @@ export const buildGridData = {
           iconColor: 'green',
           cardColor: 'black',
           icon: 'vrf---evm',
+          variant: 'horizontal',
           onClick: () => {
             window.location.href = 'evm/guides/vrf';
           }
@@ -129,6 +145,7 @@ export const buildGridData = {
           iconColor: 'green',
           cardColor: 'black',
           icon: 'account-abstraction',
+          variant: 'horizontal',
           onClick: () => {
             window.location.href = 'build/guides/account-linking/child-accounts';
           }
@@ -140,6 +157,7 @@ export const buildGridData = {
           iconColor: 'green',
           cardColor: 'black',
           icon: 'batched-evm-transactions',
+          variant: 'horizontal',
           onClick: () => {
             window.location.href = 'evm/cadence/batched-evm-transactions';
           }
@@ -151,70 +169,11 @@ export const buildGridData = {
           iconColor: 'green',
           cardColor: 'black',
           icon: 'cross-vm-bridge',
+          variant: 'horizontal',
           onClick: () => {
             window.location.href = 'evm/cadence/vm-bridge';
           }
         },
-      ],
-    },
-    {
-      title: 'Tools',
-      cards: [
-        {
-          heading: 'Flow CLI',
-          description:
-            'The Flow Command Line Interface (CLI) is a powerful tool that enables developers to seamlessly interact with the Flow blockchain across various environments.',
-          iconColor: 'green',
-          cardColor: 'black',
-          icon: 'flow-cli',
-          onClick: () => {
-            window.location.href = 'tools/flow-cli';
-          }
-        },
-        {
-          heading: 'Flow Emulator',
-          description:
-            'The Flow Emulator is a local blockchain environment that allows developers to test and develop their applications without the need to deploy to the mainnet or testnet.',
-          iconColor: 'green',
-          cardColor: 'black',
-          icon: 'flow-emulator',
-          onClick: () => {
-            window.location.href = 'tools/emulator';
-          }
-        },
-        {
-          heading: 'Flow Client Library (FCL)',
-          description:
-            'The Flow Client Library (FCL) JS is a package used to interact with user wallets and the Flow blockchain.',
-          iconColor: 'green',
-          cardColor: 'black',
-          icon: 'flow-client-library',
-          onClick: () => {
-            window.location.href = 'tools/clients/fcl-js';
-          }
-        },
-        {
-          heading: 'EVM Tools and Libraries',
-          description:
-            'Most of your favorite EVM tools and libraries are compatible with Flow.  Learn how to work with Hardhat, Foundry, Wagmi, and more.',
-          iconColor: 'green',
-          cardColor: 'black',
-          icon: 'evm-tools',
-          onClick: () => {
-            window.location.href = 'evm/guides/wagmi';
-          }
-        },
-        {
-          heading: 'Other Clients',
-          description:
-            'Additional clients are available for interacting with the Flow blockchain using a number of popular languages, including Go, Python, Ruby, and JavaScript.',
-          iconColor: 'green',
-          cardColor: 'black',
-          icon: 'other-clients',
-          onClick: () => {
-            window.location.href = 'tools/clients';
-          }
-        }
       ],
     },
   ],

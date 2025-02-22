@@ -9,38 +9,18 @@ const NAVIGATION_CARDS = [
     iconColor: 'green' as const,
     cardColor: 'black' as const,
     href: '#Build',
-    variant: 'overlay' as const,
+    variant: 'horizontal' as const,
     icon: 'getting-started'
   },
   {
     heading: 'Grow',
     description:
-      'Access builder credits, startup support, and connect with the Flow team in weekly office hours.',
-    iconColor: 'blue' as const,
-    cardColor: 'black' as const,
-    href: '#Grow',
-    variant: 'overlay' as const,
-    icon: 'grow'
-  },
-  {
-    heading: 'Fund',
-    description:
-      'Explore funding opportunities through VCs, grants, and hackathons to bring your project to life.',
+      'Access builder credits, startup support, and explore funding opportunities.',
     iconColor: 'purple' as const,
     cardColor: 'black' as const,
-    href: '#Fund',
-    variant: 'overlay' as const,
-    icon: 'fund'
-  },
-  {
-    heading: 'Learn',
-    description:
-      'Learn the basics, dive into the Cadence smart contract language, or explore how to keep building on EVM with the advantages of Flow.',
-    iconColor: 'teal' as const,
-    cardColor: 'black' as const,
-    href: '#Learn',
-    variant: 'overlay' as const,
-    icon: 'learn'
+    href: '#Grow',
+    variant: 'horizontal' as const,
+    icon: 'grow'
   },
 ] as const;
 
@@ -54,10 +34,10 @@ export function HomeNav({
   return (
     <div className="relative p-8">
       <div className="relative pl-8">
-        <div className="flex flex-col md:flex-row">
+        <div className="flex flex-col md:flex-row items-center">
           {/* Left side - Title */}
-          <div className="flex-1 basis-1/3 pr-8 flex items-center">
-            <h1 className="text mb-8 max-w-full !text-3xl md:!text-6xl font-normal leading-[1.4]">
+          <div className="flex-1 basis-1/3 pr-8">
+            <h1 className="text mb-8 max-w-full !text-3xl md:!text-6xl font-normal font-['Inter'] leading-[1.4] md:mb-0">
               {title}
             </h1>
           </div>

@@ -46,8 +46,8 @@ module.exports = {
     },
     extend: {
       fontFamily: {
-        sans: ['Acumin Pro', ...defaultTheme.fontFamily.sans],
-        display: 'Inter',
+        sans: ['Inter', ...defaultTheme.fontFamily.sans],
+        display: ['Inter', ...defaultTheme.fontFamily.sans],
         mono: 'IBM Plex Mono',
       },
       transitionDuration: {

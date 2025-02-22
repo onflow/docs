@@ -46,23 +46,21 @@ export const ActionCard: React.FC<ActionCardProps> = ({
           </div>
         )}
         {variant === 'horizontal' && (
-          <div className="flex items-center gap-4 mb-4">
-            <div
-              className={`w-10 h-10 rounded-md flex items-center justify-center ${iconBg}`}
-            >
-              <Icon name={icon} />
+          <>
+            <div className="flex items-center gap-4">
+              <div className={`shrink-0 w-10 h-10 rounded-md flex items-center justify-center ${iconBg}`}>
+                <Icon name={icon} />
+              </div>
+              <h3 className="text-2xl font-semibold text-white mb-0">{heading}</h3>
             </div>
-            <h3 className="text-xl font-semibold text-white">{heading}</h3>
-          </div>
+            <p className="text-base text-gray-100 mt-4">{description}</p>
+          </>
         )}
         {variant !== 'horizontal' && (
           <div className={variant === 'overlay' ? 'mt-6' : ''}>
-            <h3 className="text-xl font-semibold text-white mb-2">{heading}</h3>
-            <p className="text-sm text-gray-100">{description}</p>
+            <h3 className="text-2xl font-semibold text-white mb-2">{heading}</h3>
+            <p className="text-base text-gray-100">{description}</p>
           </div>
-        )}
-        {variant === 'horizontal' && (
-          <p className="text-sm text-gray-100">{description}</p>
         )}
       </div>
     </div>

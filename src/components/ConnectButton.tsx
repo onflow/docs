@@ -43,7 +43,7 @@ const ConnectButton: React.FC = () => {
   if (!user.loggedIn) {
     return (
       <Button size="sm" className="mr-2" onClick={logIn}>
-        Connect
+        Sign In
       </Button>
     );
   }

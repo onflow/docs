@@ -4,7 +4,7 @@ import ChevronRightIcon from '../../../../images/arrows/chevron-right-sm.svg';
 import ExternalLinkIcon from '../../../../images/content/external-link-variant.svg';
 
 const BASE_CLASSES =
-  'inline-flex items-center justify-center font-semibold text-center border transition duration-200 cursor-pointer';
+  'inline-flex items-center justify-center font-semibold text-center border transition duration-200 cursor-pointer font-display';
 
 const VARIANTS = {
   black: {

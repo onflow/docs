@@ -17,6 +17,7 @@ interface ActionCardGridProps {
       iconColor?: string;
       cardColor?: string;
       icon?: string;
+      variant?: 'horizontal' | 'default' | 'overlay';
       onClick?: () => void;
     }[];
   }[];
@@ -51,7 +52,7 @@ const ActionCardGrid: React.FC<ActionCardGridProps> = ({ title, sections, id, ic
         {sections.map((section, sectionIndex) => (
           <div key={sectionIndex} className="mb-12">
             {/* Section Title */}
-            <h3 className="pl-8 text-2xl font-semibold text-white-300 mb-4">{section.title}</h3>
+            <h3 className="pl-8 text-2xl font-semibold text-gray-900 dark:text-white mb-4">{section.title}</h3>
             {/* Cards Grid */}
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 pl-8">
               {section.cards.map((card, cardIndex) => (
@@ -63,6 +64,7 @@ const ActionCardGrid: React.FC<ActionCardGridProps> = ({ title, sections, id, ic
                   heading={card.heading}
                   description={card.description}
                   onClick={card.onClick}
+                  variant={card.variant}
                 />
               ))}
             </div>
