@@ -556,12 +556,13 @@ const dapperSelfCustodyWallet: Tool = {
     'A mobile self custody wallet to help you explore the world of Flow',
 };
 
-const lilicoWallet: Tool = {
-  title: 'Lilico',
+const flowWallet: Tool = {
+  title: 'Flow Wallet',
   tags: ['web', 'extension', 'wallet', 'non-custodial'],
-  link: 'https://lilico.app/',
-  iconSrc: 'https://lilico.app/logo-cat.svg',
-  description: 'The First Extension Wallet on Flow',
+  link: 'https://wallet.flow.com/',
+  iconSrc: 'https://lilico.app/logo_mobile.svg',
+  description:
+    'A reference wallet created for everyone. Trusted. Battle-tested. Beautifully designed.',
 };
 
 const fionaWallet: Tool = {
@@ -624,7 +625,7 @@ export {
   dapperWallet,
   ledgerWallet,
   nufiWallet,
-  lilicoWallet,
+  flowWallet,
   fionaWallet,
   niftoryTool,
   flowviewTool,
