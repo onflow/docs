@@ -316,7 +316,7 @@ counter-intuitive to use the same COA public key when creating new signing keys,
 key slots on the account which enables the gateway to support concurrent transaction signing without causing [nonce collisions](https://developers.flow.com/build/advanced-concepts/scaling#problem) 
 for EVM clients. 
 
-The following transaction creates 100 keys on the account signing the transaction to add these keys:
+Assuming there is already one key on the account, the following example transaction adds 100 copies of that key:
 ```swift
 transaction {
     prepare(signer: auth(AddKey) &Account) {
@@ -332,7 +332,7 @@ transaction {
 	}
 }
 ```
-Signing keys which are added to the COA account are required to use the `SHA2_256` hashing algorithm.
+Signing keys which are added to the COA account are required to use the same hashing algorithm as the key being copied.
 
 :::note
 
