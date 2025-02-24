@@ -334,6 +334,8 @@ transaction {
 ```
 Signing keys which are added to the COA account are required to use the same hashing algorithm as the key being copied.
 
+If keys are added while the gateway is running it will need to be restarted to make use of the new keys.
+
 :::note
 
 If you are operating your EVM Gateway(s) to relay traffic for Flow EVM, or if you otherwise anticipate high volumes of 
