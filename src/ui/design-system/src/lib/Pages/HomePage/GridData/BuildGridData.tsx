@@ -175,8 +175,8 @@ export const buildGridData = {
           }
         },
         {
-          heading: 'Flow & EVM Scaffold',
-          description: 'A bundled transactions scaffold for seamlessly integrating Flow and EVM in your Wagmi/RainbowKit app.',
+          heading: 'Cadence + EVM Scaffold',
+          description: 'A scaffold for seamlessly integrating Cadence into your Wagmi/RainbowKit app to batch write contract calls, conditionally execute transactions, and more.',
           iconColor: 'green',
           cardColor: 'black',
           icon: 'batched-evm-transactions',
