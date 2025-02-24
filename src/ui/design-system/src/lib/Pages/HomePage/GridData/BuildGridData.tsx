@@ -151,16 +151,15 @@ export const buildGridData = {
           }
         },
         {
-          heading: 'Batched EVM Transactions',
-          description:
-            'With Cadence + EVM, you can script EVM transactions to execute with one wallet signature, and even script conditional execution.',
+          heading: 'Cadence + EVM Scaffold',
+          description: 'A scaffold for seamlessly integrating Cadence into your Wagmi/RainbowKit app to batch write contract calls, conditionally execute transactions, and more.',
           iconColor: 'green',
           cardColor: 'black',
           icon: 'batched-evm-transactions',
           variant: 'horizontal',
           onClick: () => {
-            window.location.href = 'evm/cadence/batched-evm-transactions';
-          }
+            window.open('https://github.com/jribbink/cross-vm-app', '_blank')
+          },
         },
         {
           heading: 'Token Interoperability',
@@ -173,17 +172,6 @@ export const buildGridData = {
           onClick: () => {
             window.location.href = 'evm/cadence/vm-bridge';
           }
-        },
-        {
-          heading: 'Cadence + EVM Scaffold',
-          description: 'A scaffold for seamlessly integrating Cadence into your Wagmi/RainbowKit app to batch write contract calls, conditionally execute transactions, and more.',
-          iconColor: 'green',
-          cardColor: 'black',
-          icon: 'batched-evm-transactions',
-          variant: 'horizontal',
-          onClick: () => {
-            window.open('https://github.com/jribbink/cross-vm-app', '_blank')
-          },
         },
       ],
     },
