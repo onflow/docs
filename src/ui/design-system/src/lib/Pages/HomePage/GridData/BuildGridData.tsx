@@ -174,6 +174,17 @@ export const buildGridData = {
             window.location.href = 'evm/cadence/vm-bridge';
           }
         },
+        {
+          heading: 'Flow & EVM Scaffold',
+          description: 'A bundled transactions scaffold for seamlessly integrating Flow and EVM in your Wagmi/RainbowKit app.',
+          iconColor: 'green',
+          cardColor: 'black',
+          icon: 'batched-evm-transactions',
+          variant: 'horizontal',
+          onClick: () => {
+            window.open('https://github.com/jribbink/cross-vm-app', '_blank')
+          },
+        },
       ],
     },
   ],
