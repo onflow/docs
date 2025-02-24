@@ -174,6 +174,17 @@ export const buildGridData = {
             window.location.href = 'evm/cadence/vm-bridge';
           }
         },
+        {
+          heading: 'Cadence + EVM Scaffold',
+          description: 'A scaffold for seamlessly integrating Cadence into your Wagmi/RainbowKit app to batch write contract calls, conditionally execute transactions, and more.',
+          iconColor: 'green',
+          cardColor: 'black',
+          icon: 'batched-evm-transactions',
+          variant: 'horizontal',
+          onClick: () => {
+            window.open('https://github.com/jribbink/cross-vm-app', '_blank')
+          },
+        },
       ],
     },
   ],
