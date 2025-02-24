@@ -349,8 +349,6 @@ with transaction throughput growth. You can track signing key utilization as a m
 
 EVM Gateway allows for Google and AWS Key Management Service (KMS) integration, which is the recommended way of setting up the gateway 
 for live networks. It is only required to configure a single KMS key for the Flow account configured as the gateway `COA_ACCOUNT`. 
-This key is not the same as those used by the gateway for transaction signing, as outlined above. It is only used to fund 
-transactions passed to the Access Node.
 
 ```
 --coa-cloud-kms-project-id=your-project-kms-id \
