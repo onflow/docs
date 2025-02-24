@@ -303,12 +303,53 @@ You will not be able to re-use the DB data dir from the previous versions.
 
 ### Account and Key Management
 
-EVM Gateway allows for Google and AWS Key Management Service (KMS) setup, which is the recommended way of setting up the gateway 
-for live networks. We recommend creating multiple KMS keys for the same Flow account (ideally 10 or more), how many depends on 
-the desired transaction throughput, since the keys are used in rotation when submitting the transactions. If too few keys 
-are configured it may result in sequence number collisions if the same key is used concurrently by multiple EVM client requests. 
+When operating an EVM Gateway it is important to understand how keys are configured and used. Each gateway instance 
+must be configured with a Flow account address, which is sufficiently funded and which it uses to pay to wrap EVM transactions into a 
+Cadence transaction when submitting to the Flow Access Node. This can be configured with a standalone private key file for 
+the `--coa-key` config flag. Alternatively, you may also use cloud KMS providers per the guidance below.
 
-### KMS Configuration
+#### COA Account signing key rotation
+
+The gateway implements a signing key rotation scheme to scale the use of the `COA_KEY` and enable it to be used across many
+EVM client transactions. This is configured by reusing the COA public key to create new on-chain signing keys. Although it may seem
+counter-intuitive to use the same COA public key when creating new signing keys, the newly added keys all occupy different 
+key slots on the account which enables the gateway to support concurrent transaction signing without causing [nonce collisions](https://developers.flow.com/build/advanced-concepts/scaling#problem) 
+for EVM clients. 
+
+Assuming there is already one key on the account, the following example transaction adds 100 copies of that key:
+```swift
+transaction {
+    prepare(signer: auth(AddKey) &Account) {
+		let firstKey = signer.keys.get(keyIndex: 0)!
+		let range: InclusiveRange<Int> = InclusiveRange(1, 100, step: 1)
+		for element in range {
+			signer.keys.add(
+				publicKey: firstKey.publicKey,
+				hashAlgorithm: HashAlgorithm.SHA2_256,
+				weight: 1000.0
+			)
+		}
+	}
+}
+```
+Signing keys which are added to the COA account are required to use the same hashing algorithm as the key being copied.
+
+If keys are added while the gateway is running it will need to be restarted to make use of the new keys.
+
+:::note
+
+If you are operating your EVM Gateway(s) to relay traffic for Flow EVM, or if you otherwise anticipate high volumes of 
+transactions we recommend configuring at least 200 signing keys or more. Signing key utilization increases proportionately
+with transaction throughput growth. You can track signing key utilization as a metric, see `evm_gateway_available_signing_keys` below. 
+
+:::
+
+
+#### KMS Configuration
+
+EVM Gateway allows for Google and AWS Key Management Service (KMS) integration, which is the recommended way of setting up the gateway 
+for live networks. It is only required to configure a single KMS key for the Flow account configured as the gateway `COA_ACCOUNT`. 
+
 ```
 --coa-cloud-kms-project-id=your-project-kms-id \
 --coa-cloud-kms-location-id=global \
@@ -335,9 +376,10 @@ evm_gateway_evm_block_height # EVM block height
 evm_gateway_operator_balance # Gateway node COA operator account balance
 evm_gateway_trace_download_errors_total # Total count of trace download errors
 evm_gateway_txs_indexed_total # Total count of indexed transactions
+evm_gateway_available_signing_keys #  Total count of available COA signing keys
 ```
 
-Alerts are recommended to be configured on server panics, low operator balance, and disk usage metrics.
+Alerts are recommended to be configured on server panics, low operator balance, available signing keys and disk usage metrics.
 
 **Metrics port**
 
