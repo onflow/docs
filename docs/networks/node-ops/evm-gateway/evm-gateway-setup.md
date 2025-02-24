@@ -304,7 +304,7 @@ You will not be able to re-use the DB data dir from the previous versions.
 ### Account and Key Management
 
 When operating an EVM Gateway it is important to understand how keys are configured and used. Each gateway instance 
-must be configured with a Flow account address, which is funded and which it uses to pay to wrap EVM transactions into a 
+must be configured with a Flow account address, which is sufficiently funded and which it uses to pay to wrap EVM transactions into a 
 Cadence transaction when submitting to the Flow Access Node. This can be configured with a standalone private key file for 
 the `--coa-key` config flag. Alternatively, you may also use cloud KMS providers per the guidance below.
 
