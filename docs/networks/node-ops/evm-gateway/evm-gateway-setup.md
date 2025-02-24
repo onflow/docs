@@ -321,7 +321,7 @@ Assuming there is already one key on the account, the following example transact
 transaction {
     prepare(signer: auth(AddKey) &Account) {
 		let firstKey = signer.keys.get(keyIndex: 0)!
-		let range: InclusiveRange<Int> = InclusiveRange(1, [100], step: 1)
+		let range: InclusiveRange<Int> = InclusiveRange(1, 100, step: 1)
 		for element in range {
 			signer.keys.add(
 				publicKey: firstKey.publicKey,
