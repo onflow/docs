@@ -338,7 +338,7 @@ Signing keys which are added to the COA account are required to use the `SHA2_25
 
 If you are operating your EVM Gateway(s) to relay traffic for Flow EVM, or if you otherwise anticipate high volumes of 
 transactions we recommend configuring at least 200 signing keys or more. Signing key utilization increases proportionately
-with transaction throughput growth. You can track signing key utilization as a metric, see below. 
+with transaction throughput growth. You can track signing key utilization as a metric, see `evm_gateway_available_signing_keys` below. 
 
 :::
 
