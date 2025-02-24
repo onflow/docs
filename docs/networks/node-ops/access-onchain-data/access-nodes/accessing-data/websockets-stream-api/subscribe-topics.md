@@ -36,7 +36,7 @@ Provides a summarized version of block information, including only the block ID,
 
 If neither `start_block_id` nor `start_block_height` is set, the subscription will start from the latest block based on its status.
 
-### Example Responce
+### Example Response
 
 ```json
 {
@@ -78,7 +78,7 @@ Provides block headers without the payload, each time a new block appears on the
 
 If neither `start_block_id` nor `start_block_height` is set, the subscription will start from the latest block based on its status.
 
-### Example Responce
+### Example Response
 
 ```json
 {
@@ -122,7 +122,7 @@ Provides full block information each time a new block appears on the blockchain.
 
 If neither `start_block_id` nor `start_block_height` is set, the subscription will start from the latest block based on its status.
 
-### Example Responce
+### Example Response
 
 ```json
 {
@@ -177,7 +177,7 @@ Provides blockchain events. The response can be configured using additional argu
 
 If neither `start_block_id` nor `start_block_height` is set, the subscription will start from the latest block based on its status.
 
-### Example Responce
+### Example Response
 
 ```json
 {
@@ -232,7 +232,7 @@ Provides accounts statuses updates. The response can be configured using additio
 
 If neither `start_block_id` nor `start_block_height` is set, the subscription will start from the latest block based on its status.
 
-### Example Responce
+### Example Response
 
 ```json
 {
@@ -282,7 +282,7 @@ Provides updates on transaction status changes for already sent transactions.
 | `tx_id` | STRING | YES      | The ID of the transaction to monitor for status changes. |
 
 
-### Example Responce
+### Example Response
 
 ```json
 {
@@ -356,7 +356,7 @@ Sends a transaction and provides updates on its status changes.
 | `payload_signatures`  | LIST   | YES      | A list of Base64-encoded signatures.                                      |
 | `envelope_signatures` | LIST   | YES      | A list of Base64-encoded signatures.                                      |
 
-### Example Responce
+### Example Response
 
 ```json
 {
