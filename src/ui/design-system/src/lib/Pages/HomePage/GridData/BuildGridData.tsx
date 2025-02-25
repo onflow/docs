@@ -8,7 +8,7 @@ export const buildGridData = {
     {
       title: 'Getting Started',
       cards: [
-         {
+        {
           heading: 'Cadence',
           description:
             'Learn why Dieter Shirley, co-author of the ERC-721 NFT standard, led the development of a new L1.',
@@ -16,9 +16,7 @@ export const buildGridData = {
           cardColor: 'black',
           icon: 'flow-cadence',
           variant: 'horizontal',
-          onClick: () => {
-            window.location.href = 'build/flow';
-          }
+          href: 'build/flow',
         },
         {
           heading: 'EVM',
@@ -28,9 +26,7 @@ export const buildGridData = {
           cardColor: 'black',
           icon: 'evm-on-flow',
           variant: 'horizontal',
-          onClick: () => {
-            window.location.href = 'evm/about';
-          }
+          href: 'evm/about',
         },
       ],
     },
@@ -45,9 +41,7 @@ export const buildGridData = {
           cardColor: 'black',
           icon: 'hello-world',
           variant: 'horizontal',
-          onClick: () => {
-            window.location.href = 'build/getting-started/contract-interaction';
-          }
+          href: 'build/getting-started/contract-interaction',
         },
         {
           heading: 'Cadence 101',
@@ -57,33 +51,28 @@ export const buildGridData = {
           cardColor: 'black',
           icon: 'flow-cadence',
           variant: 'horizontal',
-          onClick: () => {
-            window.open('https://cadence-lang.org', '_blank');
-          }
+          href: 'https://cadence-lang.org',
+          target: '_blank',
         },
         {
           heading: 'Launch a Token',
           description:
-            'Learn how to launch a fungible token that\'s stored in your users\' vaults directly in their accounts.',
+            "Learn how to launch a fungible token that's stored in your users' vaults directly in their accounts.",
           iconColor: 'green',
           cardColor: 'black',
           icon: 'launch-a-token',
           variant: 'horizontal',
-          onClick: () => {
-            window.location.href = 'build/guides/fungible-token';
-          }
+          href: 'build/guides/fungible-token',
         },
         {
           heading: 'Create an NFT Collection',
           description:
-            'Create NFT collections that are stored directly in your users\' accounts in a way that makes it nearly impossible to lose them.',
+            "Create NFT collections that are stored directly in your users' accounts in a way that makes it nearly impossible to lose them.",
           iconColor: 'green',
           cardColor: 'black',
           icon: 'create-an-nft',
           variant: 'horizontal',
-          onClick: () => {
-            window.location.href = 'build/guides/nft';
-          }
+          href: 'build/guides/nft',
         },
         {
           heading: 'Build your App',
@@ -93,11 +82,9 @@ export const buildGridData = {
           cardColor: 'black',
           icon: 'flow-client-library',
           variant: 'horizontal',
-          onClick: () => {
-            window.location.href = 'tools/clients/fcl-js';
-          }
+          href: 'tools/clients/fcl-js',
         },
-      ]
+      ],
     },
     {
       title: 'Supercharge Your App',
@@ -105,14 +92,12 @@ export const buildGridData = {
         {
           heading: 'Access Incredible IP',
           description:
-            'Flow allows you to link wallets together, enabling your apps to use NFTs in a user\'s embedded wallet from another app.',
+            "Flow allows you to link wallets together, enabling your apps to use NFTs in a user's embedded wallet from another app.",
           iconColor: 'green',
           cardColor: 'black',
           icon: 'access-incredible-ip',
           variant: 'horizontal',
-          onClick: () => {
-            window.location.href = 'build/guides/account-linking-with-dapper';
-          }
+          href: 'build/guides/account-linking-with-dapper',
         },
         {
           heading: 'VRF - Cadence',
@@ -122,9 +107,7 @@ export const buildGridData = {
           cardColor: 'black',
           icon: 'vrf---cadence',
           variant: 'horizontal',
-          onClick: () => {
-            window.location.href = 'build/advanced-concepts/randomness';
-          }
+          href: 'build/advanced-concepts/randomness',
         },
         {
           heading: 'VRF - EVM',
@@ -134,9 +117,7 @@ export const buildGridData = {
           cardColor: 'black',
           icon: 'vrf---evm',
           variant: 'horizontal',
-          onClick: () => {
-            window.location.href = 'evm/guides/vrf';
-          }
+          href: 'evm/guides/vrf',
         },
         {
           heading: 'Account Abstraction',
@@ -146,9 +127,7 @@ export const buildGridData = {
           cardColor: 'black',
           icon: 'account-abstraction',
           variant: 'horizontal',
-          onClick: () => {
-            window.location.href = 'build/guides/account-linking/child-accounts';
-          }
+          href: 'build/guides/account-linking/child-accounts',
         },
         {
           heading: 'Batched EVM Transactions',
@@ -158,9 +137,7 @@ export const buildGridData = {
           cardColor: 'black',
           icon: 'batched-evm-transactions',
           variant: 'horizontal',
-          onClick: () => {
-            window.location.href = 'evm/cadence/batched-evm-transactions';
-          }
+          href: 'evm/cadence/batched-evm-transactions',
         },
         {
           heading: 'Token Interoperability',
@@ -170,20 +147,18 @@ export const buildGridData = {
           cardColor: 'black',
           icon: 'cross-vm-bridge',
           variant: 'horizontal',
-          onClick: () => {
-            window.location.href = 'evm/cadence/vm-bridge';
-          }
+          href: 'evm/cadence/vm-bridge',
         },
         {
           heading: 'Cadence + EVM Scaffold',
-          description: 'A scaffold for seamlessly integrating Cadence into your Wagmi/RainbowKit app to batch write contract calls, conditionally execute transactions, and more.',
+          description:
+            'A scaffold for seamlessly integrating Cadence into your Wagmi/RainbowKit app to batch write contract calls, conditionally execute transactions, and more.',
           iconColor: 'green',
           cardColor: 'black',
           icon: 'batched-evm-transactions',
           variant: 'horizontal',
-          onClick: () => {
-            window.open('https://github.com/jribbink/cross-vm-app', '_blank')
-          },
+          href: 'https://github.com/jribbink/cross-vm-app',
+          target: '_blank',
         },
       ],
     },
