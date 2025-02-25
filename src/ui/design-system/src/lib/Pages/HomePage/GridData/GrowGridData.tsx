@@ -1,4 +1,4 @@
-import { ColorOption } from "@site/src/constants/colors";
+import { ColorOption } from '@site/src/constants/colors';
 
 export const growGridData = {
   title: 'Grow',
@@ -15,9 +15,7 @@ export const growGridData = {
           cardColor: 'black',
           icon: 'startup-support',
           variant: 'horizontal',
-          onClick: () => {
-            window.location.href = '/growth';
-          },
+          href: '/growth',
         },
         {
           heading: 'Builder Credits',
@@ -27,10 +25,7 @@ export const growGridData = {
           cardColor: 'black',
           icon: 'builder-credits',
           variant: 'horizontal',
-          onClick: () => {
-            window.location.href =
-              'https://github.com/orgs/onflow/discussions/1545';
-          },
+          href: 'https://github.com/orgs/onflow/discussions/1545',
         },
         {
           heading: 'Dev Office Hours',
@@ -40,10 +35,7 @@ export const growGridData = {
           cardColor: 'black',
           icon: 'dev-office-hours',
           variant: 'horizontal',
-          onClick: () => {
-            window.location.href =
-              'https://calendar.google.com/calendar/u/0/embed?src=c_47978f5cd9da636cadc6b8473102b5092c1a865dd010558393ecb7f9fd0c9ad0@group.calendar.google.com';
-          },
+          href: 'https://calendar.google.com/calendar/u/0/embed?src=c_47978f5cd9da636cadc6b8473102b5092c1a865dd010558393ecb7f9fd0c9ad0@group.calendar.google.com',
         },
         {
           heading: 'VCs & Funds',
@@ -53,9 +45,7 @@ export const growGridData = {
           cardColor: 'black',
           icon: 'vcs-&-funds',
           variant: 'horizontal',
-          onClick: () => {
-            window.location.href = '/ecosystem/vcs-and-funds';
-          },
+          href: '/ecosystem/vcs-and-funds',
         },
         {
           heading: 'Grants',
@@ -65,9 +55,7 @@ export const growGridData = {
           cardColor: 'black',
           icon: 'grants',
           variant: 'horizontal',
-          onClick: () => {
-            window.location.href = '/ecosystem/grants';
-          },
+          href: '/ecosystem/grants',
         },
       ],
     },
