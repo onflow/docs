@@ -191,4 +191,4 @@ FCL is built **on top of the Flow SDK**, making it easier to handle authenticati
 
 - Notice a problem or want to request a feature? [Add an issue](https://github.com/onflow/fcl-js/issues).
 - Join the Flow community on [Discord](https://discord.gg/flow) to keep up to date and to talk to the team.
-- Read the [Contributing Guide](./CONTRIBUTING.md) to learn how to contribute to the project.
+- Read the [Contributing Guide](https://github.com/onflow/fcl-js/blob/master/CONTRIBUTING.md) to learn how to contribute to the project.
