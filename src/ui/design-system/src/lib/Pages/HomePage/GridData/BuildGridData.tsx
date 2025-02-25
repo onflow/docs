@@ -138,7 +138,7 @@ export const buildGridData = {
           icon: 'batched-evm-transactions',
           variant: 'horizontal',
           href: 'https://github.com/jribbink/cross-vm-app',
-          target: 'blank',
+          target: '_blank',
         },
         {
           heading: 'Token Interoperability',
