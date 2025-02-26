@@ -20,7 +20,7 @@ For background and motivation, see the [FCL Ethereum Provider for Cross-VM Apps 
 - **Use Cases**:
     - Integrate Flow EVM with any generic EVM library or framework.
     - Direct control over JSON-RPC calls (e.g., `provider.request({ method: 'eth_sendTransaction' })`).
-- **Link to Docs**: [Read the @onflow/fcl-ethereum-provider Reference »](#)
+- **Link to Docs**: [Read the @onflow/fcl-ethereum-provider Reference »](ethereum-provider.md)
 
 ## @onflow/fcl-wagmi-adapter
 
