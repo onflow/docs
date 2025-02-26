@@ -110,7 +110,7 @@ Below are the main request methods handled within the FCL Ethereum provider:
 
 6. **`wallet_switchEthereumChain`**
     - **Behavior**:
-        - Allows dApps to request switching to a different Flow EVM chain (e.g. testnet <-> mainnet).
+        - Allows dApps to request switching to a different Flow EVM chain (e.g. testnet to mainnet).
         - Under the hood, this can trigger reconfiguration of FCL for a different Flow access node and Flow EVM gateway if recognized.
         - If the requested chain ID is not recognized, the call will throw an error (matching EIP-1193 standard error codes).
 
