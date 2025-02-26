@@ -77,7 +77,7 @@ Manually building FCL locally is a temporary step during alpha. In the future, y
   ├── fcl-js/           # The cloned FCL-JS repo
 ```
 
-Running the command **from the root of your hybrid-app project folder**, the you can clone it with:
+From **the root of your hybrid-app project folder**, run the following command to clone it:
 
 ```bash
 git clone https://github.com/onflow/fcl-js.git ../fcl-js
