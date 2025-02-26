@@ -97,12 +97,12 @@ Below are the main request methods handled within the FCL Ethereum provider:
 3. **`personal_sign`**
     - **Behavior**:
         - Requests a user signature via FCL’s `signUserMessage` or equivalent mechanism
-        - Returns an RLP-encoded [COA ownership proof][coa-proof] in place of a raw secp256k1 signature
+        - Returns an RLP-encoded [COA ownership proof](https://github.com/onflow/flow-go/blob/master/fvm/evm/types/proof.go#L139) in place of a raw secp256k1 signature
 
 4. **`eth_signTypedData_v4`**
     - **Behavior**:
         - Requests user signature for typed data (hash) via FCL
-        - Returns an RLP-encoded [COA ownership proof][coa-proof]
+        - Returns an RLP-encoded [COA ownership proof](https://github.com/onflow/flow-go/blob/master/fvm/evm/types/proof.go#L139)
 
 5. **`eth_chainId`**
     - **Behavior**:
