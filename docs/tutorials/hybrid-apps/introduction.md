@@ -1,9 +1,10 @@
 ---
 title: Introduction
-description: Learn how to use FCL with wagmi and rainbowkit to create a hybrid app - one that is simultaneously connected to Flow EVM and Flow Cadence.
+description: Learn how to use FCL with wagmi and rainbowkit to create a cross-vm app - one that is simultaneously connected to Flow EVM and Flow Cadence.
 sidebar_position: 5
 keywords:
   - hybrid apps
+  - cross-vm apps
   - FCL
   - wagmi
   - rainbowkit
@@ -25,7 +26,7 @@ Ever since the launch of Flow EVM, it's been possible to _supercharge_ your EVM 
 
 [FLIP 316] improves the [Flow Client Library (FCL)] to support cross-VM functionality between Flow EVM and Flow Cadence.
 
-For EVM developers, this means that you can use the familiar [wagmi], [viem], and [rainbowkit] stack you're used two, add FCL, and get features like **multi-call write** with one signature for users with a Cadence-compatible [wallet].
+For EVM developers, this means that you can use the familiar [wagmi], [viem], and [rainbowkit] stack you're used to, add FCL, and get features like **multi-call write** with one signature for users with a Cadence-compatible [wallet].
 
 In this tutorial, you'll learn how to create a hybrid application and use some basic cross-VM features.
 
@@ -63,36 +64,9 @@ For this tutorial, we'll be starting from a fork of the [FCL + RainbowKit + Wagm
 
 Fork the repo so you can push your work freely to your own copy, then follow the setup instructions.
 
-In Step 3, clone and build FCL [FCL-JS] in a folder in the same level as where you cloned your fork of the hybrid app starter.
-
-:::info
-
-Manually building FCL locally is a temporary step during alpha. In the future, you'll just install the package.
-
-:::
-
-```bash
-/src/                   # Any parent folder
-  ├── my-project/       # Your project
-  ├── fcl-js/           # The cloned FCL-JS repo
-```
-
-From **the root of your hybrid-app project folder**, run the following command to clone it:
-
-```bash
-git clone https://github.com/onflow/fcl-js.git ../fcl-js
-```
-
-Once the download completes, navigate to the FCL folder in your terminal and build it with:
-
-```bash
-npm i
-npm run build
-```
-
 ## Project Overview
 
-Once the build completes, return to the hybrid app, run it, and view the site in your browser:
+Open the cross-vm app scaffold in your editor, run it, and view the site in your browser:
 
 ```bash
 npm run dev
@@ -251,7 +225,6 @@ Will return your Cadence address. This snippet:
 
 ```tsx
 const block = await fcl.block();
-console.log(block);
 return block.height;
 ```
 
