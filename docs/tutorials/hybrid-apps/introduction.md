@@ -63,7 +63,7 @@ For this tutorial, we'll be starting from a fork of the [FCL + RainbowKit + Wagm
 
 Fork the repo so you can push your work freely to your own copy, then follow the setup instructions.
 
-For _Step 3_, you'll want to clone and build FCL [FCL-JS] in a folder in the same level as where you cloned your fork of the hybrid app starter.
+In Step 3, clone and build FCL [FCL-JS] in a folder in the same level as where you cloned your fork of the hybrid app starter.
 
 :::info
 
