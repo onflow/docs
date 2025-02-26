@@ -179,7 +179,7 @@ transaction(calls: [{String: AnyStruct}], mustPass: Bool) {
 
 In this case, it's checking that the caller of the Cadence transaction has permission to control to the EVM account, which is built in for [Cadence Owned Accounts]. The `execute` phase then iterates through the EVM transactions and uses the Cadence accounts own permissions to sign the EVM transactions.
 
-The loop also handles a check for the optional flag to cancel all of the transactions if any one of them fails. **In other words, you could set up a 20 transaction arbitrage attempt and unwind everything if it fails at any step!**
+The loop also includes an optional flag to cancel all transactions if any fail. **In other words, you could set up a 20 transaction arbitrage attempt and unwind everything if it fails at any step!**
 
 ### EVM Child Transactions
 
@@ -257,7 +257,7 @@ return block.height;
 
 Returns the current Cadence VM block number.
 
-## Calling Your own Contract
+## Calling Your Own Contract
 
 Next, we'll update the starter to connect to and call functions in our own contract. For this, we'll use a simple [Button Clicker Contract]. You can deploy your own copy, or use the one deployed at [`0xA7Cf2260e501952c71189D04FAd17c704DFB36e6`].
 
@@ -564,7 +564,7 @@ You'll now see the button and scoreboard from the contract. Test it out and earn
 
 ![scores](scores.png)
 
-## Supercharge your EVM App With Cadence
+## Supercharge Your EVM App With Cadence
 
 Now let's supercharge it. With the power of Cadence, you can use multi-call write and give your users way more tokens with a single click and single signature!
 
