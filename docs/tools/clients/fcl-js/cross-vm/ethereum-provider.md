@@ -1,7 +1,14 @@
 ---
 sidebar_position: 1
 title: FCL Ethereum Provider
+description: An EIP-1193 provider that uses an FCL-authenticated Cadence Owned Account (COA) under the hood.
 ---
+
+:::info
+
+This package is currently in alpha and is subject to change.
+
+:::
 
 # @onflow/fcl-ethereum-provider
 
