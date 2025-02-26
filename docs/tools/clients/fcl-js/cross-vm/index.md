@@ -1,6 +1,6 @@
 ---
 title: Cross VM Packages
-sidebar_position: 13
+description: FCL packages for cross-VM (Flow + EVM) applications.
 ---
 
 # FCL Cross-VM Packages
