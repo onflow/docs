@@ -20,18 +20,18 @@ For background and motivation, see the [FCL Ethereum Provider for Cross-VM Apps 
 - **Use Cases**:
     - Integrate Flow EVM with any generic EVM library or framework.
     - Direct control over JSON-RPC calls (e.g., `provider.request({ method: 'eth_sendTransaction' })`).
-- **Link to Docs**: [Read the @onflow/fcl-ethereum-provider Reference »](ethereum-provider.md)
+- **Link to Docs**: [Read the @onflow/fcl-ethereum-provider Reference »](ethereum-provider.mdx)
 
 ## @onflow/fcl-wagmi-adapter
 
 - **Description**: A Wagmi connector that uses `@onflow/fcl-ethereum-provider` under the hood so you can sign in with your COA through standard Wagmi flows.
 - **Use Cases**:
     - Add Flow-based COAs to an existing Wagmi-powered dApp as if they were Ethereum wallets.
-- **Link to Docs**: [Read the @onflow/fcl-wagmi-adapter Reference »](wagmi-adapter.md)
+- **Link to Docs**: [Read the @onflow/fcl-wagmi-adapter Reference »](wagmi-adapter.mdx)
 
 ## @onflow/fcl-rainbowkit-adapter
 
 - **Description**: A RainbowKit adapter that surfaces a Flow-based wallet in the wallet selection modal, making it easy to sign transactions via COAs in a RainbowKit environment.
 - **Use Cases**:
     - Offer Flow-based wallets (e.g., Flow Wallet) alongside popular Ethereum wallets in RainbowKit.
-- **Link to Docs**: [Read the @onflow/fcl-rainbowkit-adapter Reference »](rainbowkit-adapter.md)
+- **Link to Docs**: [Read the @onflow/fcl-rainbowkit-adapter Reference »](rainbowkit-adapter.mdx)
