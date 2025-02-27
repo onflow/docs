@@ -1,8 +1,3 @@
----
-title: Authentication
-description: Learn how to authenticate users in your dApp using FCL.
----
-
 # Authentication
 
 Authentication in FCL is closely tied to the concept of `currentUser`. In fact, `fcl.authenticate` and `fcl.unauthenticate` are simply aliases for `fcl.currentUser.authenticate()` and `fcl.currentUser.unauthenticate()`, respectively. So, let’s take a closer look at `currentUser`.
