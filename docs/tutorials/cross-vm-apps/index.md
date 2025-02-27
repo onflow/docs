@@ -10,7 +10,7 @@ keywords:
   - tutorials
 ---
 
-# Hybrid App Tutorials
+# Cross-VM App Tutorials
 
 Welcome to our series on building cross-vm applications that integrate Flow EVM with Flow Cadence. This series will guide you through the process of supercharging your EVM apps with innovative Cadence features.
 
