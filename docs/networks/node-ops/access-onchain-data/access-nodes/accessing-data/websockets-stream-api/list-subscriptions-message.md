@@ -7,7 +7,7 @@ sidebar_position: 4
 # List subscriptions message format
 
 List subscriptions requests must be sent as JSON in text frames, one request per frame.
-This message is different from other as it doesn't require you to provide subscription ID.
+This message is different from others as it doesn't require you to provide subscription ID.
 Thus, the response for this message is different too.
 
 ### Example of request

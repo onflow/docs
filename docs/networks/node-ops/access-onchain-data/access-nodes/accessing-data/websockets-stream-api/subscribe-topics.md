@@ -21,7 +21,7 @@ Provides a summarized version of block information, including only the block ID,
   "topic": "block_digests",
   "arguments": {
     "block_status": "sealed",
-    "start_block_height": "10,530,102"
+    "start_block_height": "10530102"
   }
 }
 ```  
@@ -31,8 +31,8 @@ Provides a summarized version of block information, including only the block ID,
 | Name                 | Type   | Required | Description                                                                                                                          |
 | -------------------- | ------ | -------- | ------------------------------------------------------------------------------------------------------------------------------------ |
 | `block_status`       | STRING | YES      | The status of blocks to subscribe to.                                                                                                |
-| `start_block_id`     | STRING | NO       | The ID of the block from which the subscription starts. If this argument is set, it is **not** possible to set `start_block_height`. |  |
-| `start_block_height` | STRING | NO       | The height of the block from which the subscription starts. If this argument is set, it is **not** possible to set `start_block_id`  |
+| `start_block_id`     | STRING | NO       | The ID of the block from which the subscription starts. If this argument is set, `start_block_height` MUST be empty. |  |
+| `start_block_height` | STRING | NO       | The height of the block from which the subscription starts. If this argument is set, `start_block_id` MUST be empty. |
 
 If neither `start_block_id` nor `start_block_height` is set, the subscription will start from the latest block based on its status.
 
@@ -170,8 +170,8 @@ Provides blockchain events. The response can be configured using additional argu
 | -------------------- | ------ | -------- | ------------------------------------------------------------------------------------------------------------------------------------ |
 | `start_block_id`     | STRING | NO       | The ID of the block from which the subscription starts. If this argument is set, it is **not** possible to set `start_block_height`. |  |
 | `start_block_height` | STRING | NO       | The height of the block from which the subscription starts. If this argument is set, it is **not** possible to set `start_block_id`  |
-| `heartbeat_interval` | STRING | NO       | Interval in block heights at which the server should return a heartbeat message to the client.                                       |
-| `event_types`        | LIST   | NO       | A comma-separated list of events type to include.                                                                                    |
+| `heartbeat_interval` | STRING | NO       | Maximum number of blocks between messages after which a response with no events is returned. This helps the client track progress for sparse event filters. |
+| `event_types`        | LIST   | NO       | A comma-separated list of event types to include.                                                                                    |
 | `addresses`          | LIST   | NO       | A comma-separated list of addresses who's events should be included.                                                                 |
 | `contracts`          | LIST   | NO       | A comma-separated list of contracts who's events should be included.                                                                 |
 
@@ -226,8 +226,8 @@ Provides accounts statuses updates. The response can be configured using additio
 | -------------------- | ------ | -------- | ------------------------------------------------------------------------------------------------------------------------------------ |
 | `start_block_id`     | STRING | NO       | The ID of the block from which the subscription starts. If this argument is set, it is **not** possible to set `start_block_height`. |  |
 | `start_block_height` | STRING | NO       | The height of the block from which the subscription starts. If this argument is set, it is **not** possible to set `start_block_id`  |
-| `heartbeat_interval` | STRING | NO       | Interval in block heights at which the server should return a heartbeat message to the client.                                       |
-| `event_types`        | LIST   | NO       | A comma-separated list of events type to include.                                                                                    |
+| `heartbeat_interval` | STRING | NO       | Maximum number of blocks between messages after which a response with no events is returned. This helps the client track progress for sparse event filters. |
+| `event_types`        | LIST   | NO       | A comma-separated list of event types to include.                                                                                    |
 | `account_addresses`  | LIST   | NO       | A comma-separated list of addresses who's events should be included.                                                                 |
 
 If neither `start_block_id` nor `start_block_height` is set, the subscription will start from the latest block based on its status.
@@ -348,7 +348,7 @@ Sends a transaction and provides updates on its status changes.
 | --------------------- | ------ | -------- | ------------------------------------------------------------------------- |
 | `script`              | STRING | YES      | Base64-encoded content of the Cadence script.                             |
 | `arguments`           | LIST   | YES      | A list of arguments, each encoded as Base64.                              |
-| `reference_block_id`  | STRING | YES      | A 32-byte unique identifier for an entity.                                |
+| `reference_block_id`  | STRING | YES      | BlockID for the transaction's reference block |
 | `gas_limit`           | STRING | YES      | The limit on the amount of computation a transaction can perform.         |
 | `payer`               | STRING | YES      | The 8-byte address of an account.                                         |
 | `proposal_key`        | OBJECT | YES      | A required object representing the proposal key.                          |

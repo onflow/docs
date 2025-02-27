@@ -15,13 +15,12 @@ data.
 ### Important Information
 
 - **Endpoint**: The WebSocket server is available at:
-  ```
-  wss://rest-mainnet.onflow.org/v1/ws
-  ```
+    - Mainnet: `wss://rest-mainnet.onflow.org/v1/ws`
+    - Testnet: `wss://rest-testnet.onflow.org/v1/ws`
 - **Limits**:
     - Each connection supports up to 20 concurrent subscriptions. Exceeding this limit will result in an error.
     - Each subscription may provide up to 20 responses per second. 
-    - After 1 minute of inactivity (no data is sent to/read from connection) connection is closed. 
+    - After 1 minute of inactivity (no data sent or received) the connection is closed. 
 
 - **Supported Topics**:
     - `block_digests`
@@ -79,7 +78,7 @@ To receive data from a specific topic, send a subscription request in JSON forma
 - **`subscription_id`**(optional): A unique identifier for the subscription (a string with maximum length constraint of 20 characters). If omitted, the server generates one.
 - **`action`**: The action to perform. Supported actions include: `subscribe`, `unsubscribe`, `list_subscriptions`.
 - **`topic`**: The topic to subscribe to. See the supported topics in the Overview.
-- **`arguments`**: Additional arguments for subscriptions, such as `start_block_height`, `start_block_id`, and others.
+- **`arguments`**: Additional topic specific arguments for subscriptions, such as `start_block_height`, `start_block_id`, and others.
 
 ### Successful Response Format
 
