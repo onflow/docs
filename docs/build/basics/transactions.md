@@ -183,15 +183,15 @@ In the dominant Proof-of-Stake (PoS) environment, which includes most chains exc
 
 ### Chain Comparisons
 
-Chain    | Preliminary |  Soft finality | Hard finality 
----------|-------------|----------------|---------------
-Solana   | 100ms       | n/a            | ~30s
-Ethereum | 15s         | n/a            | ~15m
-Flow     | bypass      | 6s             | ~14s
+Chain    | Preliminary | Soft finality | Hard finality 
+---------|-------------|---------------|---------------
+Solana   | 100ms       | n/a           | ~30s
+Ethereum | 15s         | n/a           | ~15m
+Flow     | bypass      | 4s            | ~10s
 
 #### Flow
 
-Flow bypasses preliminary results entirely. It reaches soft finality ("Executed") in about 6 seconds and hard finality ("Sealed") in around 14 seconds. If an Access Node on Flow states a transaction has occurred, it's either correct or cryptographic proof exists that can lead to the node's slashing.
+Flow bypasses preliminary results entirely. It reaches soft finality ("Executed") in about 4 seconds and hard finality ("Sealed") in around 10 seconds. If an Access Node on Flow states a transaction has occurred, it's either correct or cryptographic proof exists that can lead to the node's slashing.
 
 ![transaction-time.png](_transactions_images/chain-comparison.png)
 
