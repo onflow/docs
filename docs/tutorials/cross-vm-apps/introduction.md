@@ -230,7 +230,7 @@ return block.height;
 
 Returns the current Cadence VM block number.
 
-## Calling Your own Contract
+## Calling Your Own Contract
 
 Next, we'll update the starter to connect to and call functions in our own contract. For this, we'll use a simple [Button Clicker Contract]. You can deploy your own copy, or use the one deployed at [`0xA7Cf2260e501952c71189D04FAd17c704DFB36e6`].
 
