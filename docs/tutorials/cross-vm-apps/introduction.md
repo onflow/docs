@@ -42,7 +42,7 @@ After completing this guide, you'll be able to:
 
 - Build an app that seamlessly integrates Flow Cadence and Flow EVM connections
 - Add Cadence features to your [Rainbowkit]/[wagmi]/[viem] app
-- Utilize [FCL] to enable multi-call contract writes to Flow EVM
+- Utilize [Flow Client Library (FCL)] to enable multi-call contract writes to Flow EVM
 
 ## Prerequisites
 
@@ -581,7 +581,7 @@ Now that you have completed the tutorial, you should be able to:
 
 - Build an app that seamlessly integrates Flow Cadence and Flow EVM connections
 - Add Cadence features to your [Rainbowkit]/[wagmi]/[viem] app
-- Utilize [FCL] to enable multi-call contract writes to Flow EVM
+- Utilize [Flow Client Library (FCL)] to enable multi-call contract writes to Flow EVM
 
 <!-- Relative links, will not render on page -->
 
