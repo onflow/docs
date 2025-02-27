@@ -1,3 +1,7 @@
+---
+title: Authentication
+description: Learn how to authenticate users in your dApp using FCL.
+---
 
 # Authentication
 
