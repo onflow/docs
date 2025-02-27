@@ -30,7 +30,7 @@ Provides a summarized version of block information, including only the block ID,
 
 | Name                 | Type   | Required | Description                                                                                                                          |
 | -------------------- | ------ | -------- | ------------------------------------------------------------------------------------------------------------------------------------ |
-| `block_status`       | STRING | YES      | The status of blocks to subscribe to.                                                                                                |
+| `block_status`       | STRING | YES      | The status of blocks to subscribe to. Supported values are: `sealed`, `finalized`. |
 | `start_block_id`     | STRING | NO       | The ID of the block from which the subscription starts. If this argument is set, `start_block_height` MUST be empty. |  |
 | `start_block_height` | STRING | NO       | The height of the block from which the subscription starts. If this argument is set, `start_block_id` MUST be empty. |
 
@@ -72,7 +72,7 @@ Provides block headers without the payload, each time a new block appears on the
 
 | Name                 | Type   | Required | Description                                                                                                                          |
 | -------------------- | ------ | -------- | ------------------------------------------------------------------------------------------------------------------------------------ |
-| `block_status`       | STRING | YES      | The status of blocks to subscribe to.                                                                                                |
+| `block_status`       | STRING | YES      | The status of blocks to subscribe to. Supported values are: `sealed`, `finalized`. |
 | `start_block_id`     | STRING | NO       | The ID of the block from which the subscription starts. If this argument is set, it is **not** possible to set `start_block_height`. |  |
 | `start_block_height` | STRING | NO       | The height of the block from which the subscription starts. If this argument is set, it is **not** possible to set `start_block_id`  |
 
@@ -116,7 +116,7 @@ Provides full block information each time a new block appears on the blockchain.
 
 | Name                 | Type   | Required | Description                                                                                                                          |
 | -------------------- | ------ | -------- | ------------------------------------------------------------------------------------------------------------------------------------ |
-| `block_status`       | STRING | YES      | The status of blocks to subscribe to.                                                                                                |
+| `block_status`       | STRING | YES      | The status of blocks to subscribe to. Supported values are: `sealed`, `finalized`. |
 | `start_block_id`     | STRING | NO       | The ID of the block from which the subscription starts. If this argument is set, it is **not** possible to set `start_block_height`. |  |
 | `start_block_height` | STRING | NO       | The height of the block from which the subscription starts. If this argument is set, it is **not** possible to set `start_block_id`  |
 
@@ -353,7 +353,7 @@ Sends a transaction and provides updates on its status changes.
 | `payer`               | STRING | YES      | The 8-byte address of an account.                                         |
 | `proposal_key`        | OBJECT | YES      | A required object representing the proposal key.                          |
 | `authorizers`         | LIST   | YES      | A list of authorizers, each represented as a hexadecimal-encoded address. |
-| `payload_signatures`  | LIST   | YES      | A list of Base64-encoded signatures.                                      |
+| `payload_signatures`  | LIST   | NO       | A list of Base64-encoded signatures.                                      |
 | `envelope_signatures` | LIST   | YES      | A list of Base64-encoded signatures.                                      |
 
 ### Example Response
