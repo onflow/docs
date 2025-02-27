@@ -12,11 +12,11 @@ keywords:
 
 # Cross-VM App Tutorials
 
-Welcome to our series on building cross-vm applications that integrate Flow EVM with Flow Cadence. This series will guide you through the process of supercharging your EVM apps with innovative Cadence features.
+This series covers how to build cross-VM applications that integrate Flow EVM with Flow Cadence, unlocking new capabilities by combining both environments.
 
-## Introduction
+## Tutorials
 
-Start with our [Introduction](./introduction.md) guide to learn how to use FCL with Wagmi and Rainbowkit for creating a cross-VM app.
+- **[Introduction](./introduction.md)** – Learn how to use FCL with Wagmi and RainbowKit to create a cross-VM app.
 
 ## More Coming Soon
 
