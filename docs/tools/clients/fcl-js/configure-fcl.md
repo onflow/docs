@@ -4,13 +4,12 @@ title: How to Configure FCL
 
 ## Configuration
 
-FCL has a mechanism that lets you configure various aspects of FCL.
-The main idea here (from an FCL perspective) should be that when you move from one instance of the Flow Blockchain to another (Local Emulator to Testnet to Mainnet) the only thing you should need to change (once again from an FCL perspective) is your configuration.
+FCL provides a mechanism to configure various aspects of its behavior. The key principle is that when switching between different Flow Blockchain environments (e.g., Local Emulator → Testnet → Mainnet), the only required change should be your FCL configuration.
 
 ## Setting Configuration Values
 
-Values only need to be set once. We recomend doing this once and as early in the life cycle as possible.
-To set a configuation value, the `put` method on the `config` instance needs to be called, the `put` method returns the `config` instance so they can be chained.
+Values only need to be set once. We recommend doing this once and as early in the life cycle as possible.
+To set a configuration value, the `put` method on the `config` instance needs to be called, the `put` method returns the `config` instance so they can be chained.
 
 ```javascript
 import * as fcl from '@onflow/fcl';
@@ -114,7 +113,7 @@ fcl
   .put('0xFlowToken', '0x7e60df042a9c0868');
 ```
 
-### Using Flow.json
+### Using `flow.json`
 
 A simpler way to import contracts in scripts and transactions is to use the `config.load` method to ingest your contracts from your `flow.json` file. This keeps the import syntax unified across tools and lets FCL figure out which address to use for what network based on the network provided in config. To use `config.load` you must first import your `flow.json` file and then pass it to `config.load` as a parameter.
 

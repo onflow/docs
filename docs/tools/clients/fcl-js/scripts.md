@@ -8,10 +8,9 @@ They always need to contain a `access(all) fun main()` function as an entry poin
 
 The `cadence` key inside the object sent to the `query` function is a [JavaScript Tagged Template Literal](https://styled-components.com/docs/advanced#tagged-template-literals) that we can pass Cadence code into.
 
-### Sending your first Script
+### Sending Your First Script
 
-In the following code snippet we are going to send a script to the Flow blockchain.
-The script is going to add two numbers, and return them.
+The following example demonstrates how to send a script to the Flow blockchain. This script adds two numbers and returns the result.
 
 ```javascript
 import * as fcl from "@onflow/fcl"
@@ -27,7 +26,7 @@ const response = await fcl.query({
 console.log(response) // 3
 ```
 
-### A more complicated Script
+### A More Complex Script
 
 Things like [Resources](https://cadence-lang.org/docs/language/resources) and [Structs](https://cadence-lang.org/docs/language/composite-types#structures) are fairly common place in Cadence.
 
@@ -59,7 +58,7 @@ const response = await fcl.query({
 console.log(response) // [{x:1, y:1}, {x:2, y:2}]
 ```
 
-### Transforming the data we get back with custom decoders.
+### Transforming Data with Custom Decoders
 
 In our dapp, we probably have a way of representing these Cadence values internally. In the above example it might be a `Point` class.
 
