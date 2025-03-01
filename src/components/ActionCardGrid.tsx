@@ -4,6 +4,15 @@ import ActionCard from '@site/src/components/ActionCard';
 import { useIcons } from '../hooks/use-icons';
 import { Icon } from './Icon';
 
+type LinkInfo =
+  | {
+      href: string;
+      target?: string;
+    }
+  | {
+      onClick: () => void;
+    };
+
 interface ActionCardGridProps {
   title: string;
   id?: string;
@@ -11,19 +20,24 @@ interface ActionCardGridProps {
   iconColor?: ColorOption;
   sections: {
     title?: string;
-    cards: {
+    cards: ({
       heading: string;
       description: string;
       iconColor?: string;
       cardColor?: string;
       icon?: string;
       variant?: 'horizontal' | 'default' | 'overlay';
-      onClick?: () => void;
-    }[];
+    } & LinkInfo)[];
   }[];
 }
 
-const ActionCardGrid: React.FC<ActionCardGridProps> = ({ title, sections, id, icon, iconColor = 'green' }) => {
+const ActionCardGrid: React.FC<ActionCardGridProps> = ({
+  title,
+  sections,
+  id,
+  icon,
+  iconColor = 'green',
+}) => {
   const icons = useIcons();
 
   return (
@@ -33,14 +47,18 @@ const ActionCardGrid: React.FC<ActionCardGridProps> = ({ title, sections, id, ic
         {/* Icon and Line Container */}
         <div className="absolute top-0 left-5 flex flex-col items-center">
           {/* Icon */}
-          <div className={`w-10 h-10 ${colors[iconColor].light} flex items-center justify-center rounded-md`}>
+          <div
+            className={`w-10 h-10 ${colors[iconColor].light} flex items-center justify-center rounded-md`}
+          >
             {icon && <Icon name={icon} />}
           </div>
           {/* Vertical Line */}
           <div className={`w-[1px] ${colors[iconColor].light} h-full`}></div>
         </div>
         {/* Title */}
-        <h2 className="ml-20 text-3xl font-semibold text-gray-900 dark:text-white">{title}</h2>
+        <h2 className="ml-20 text-3xl font-semibold text-gray-900 dark:text-white">
+          {title}
+        </h2>
       </div>
 
       {/* Wrap Cards and Sections in Line Container */}
@@ -52,7 +70,9 @@ const ActionCardGrid: React.FC<ActionCardGridProps> = ({ title, sections, id, ic
         {sections.map((section, sectionIndex) => (
           <div key={sectionIndex} className="mb-12">
             {/* Section Title */}
-            <h3 className="pl-8 text-2xl font-semibold text-gray-900 dark:text-white mb-4">{section.title}</h3>
+            <h3 className="pl-8 text-2xl font-semibold text-gray-900 dark:text-white mb-4">
+              {section.title}
+            </h3>
             {/* Cards Grid */}
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 pl-8">
               {section.cards.map((card, cardIndex) => (
@@ -63,7 +83,9 @@ const ActionCardGrid: React.FC<ActionCardGridProps> = ({ title, sections, id, ic
                   cardColor={card.cardColor as ColorOption}
                   heading={card.heading}
                   description={card.description}
-                  onClick={card.onClick}
+                  onClick={'href' in card ? undefined : card.onClick}
+                  href={'href' in card ? card.href : undefined}
+                  target={'href' in card ? card.target : undefined}
                   variant={card.variant}
                 />
               ))}
