@@ -1,4 +1,16 @@
 ---
+title: FLIX (Flow Interaction Templates)
+description: Learn about Flow Interaction Templates (FLIX), a standard for creating, auditing, and verifying Flow scripts and transactions with improved security and metadata.
+keywords:
+  - FLIX
+  - Flow Interaction Templates
+  - templates
+  - transactions
+  - scripts
+  - smart contracts
+  - FCL
+  - interaction templates
+  - template service
 sidebar_position: 3
 ---
 
@@ -8,7 +20,7 @@ Flow Interaction Templates is a standard for how contract developers, wallets, u
 
 Interaction Templates provide a way to use and reuse existing scripts and transactions, as well as to provide more metadata such as a human-readable title and description of what the transaction or script will do, which can be used by the developer as well as the user of the application. 
 
-By using FLIX transactions and scripts, developers don’t have to write their own for common operations!
+By using FLIX transactions and scripts, developers don't have to write their own for common operations!
 
 Read more about the design and purpose of FLIX in the [FLIP](https://github.com/onflow/flips/blob/main/application/20220503-interaction-templates.md)
 

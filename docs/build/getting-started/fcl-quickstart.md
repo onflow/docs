@@ -1,6 +1,24 @@
 ---
 sidebar_position: 3
 sidebar_label: Simple Frontend
+title: Building a Simple Frontend with FCL
+description: Learn how to build a frontend application using Next.js and Flow Client Library (FCL) to interact with Flow smart contracts. Set up wallet authentication, read contract data, and send transactions.
+keywords:
+  - FCL
+  - Flow Client Library
+  - Next.js
+  - frontend development
+  - wallet integration
+  - smart contract interaction
+  - Flow emulator
+  - Dev Wallet
+  - authentication
+  - transactions
+  - blockchain queries
+  - React development
+  - dApp development
+  - Flow development
+  - web3 frontend
 ---
 
 # Simple Frontend

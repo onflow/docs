@@ -14,7 +14,7 @@ Node operators play a crucial role in securing the Flow network. Here’s a simp
 
 This illustration is strictly to serve as an example. Actual numbers will vary based on several factors.
 
-For real-time numbers, please refer to the [block explorer](https://www.flowdiver.io/tokenomics).
+For real-time numbers, please refer to the [block explorer](https://www.flowscan.io/tokenomics).
 
 :::
 

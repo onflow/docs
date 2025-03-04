@@ -2,6 +2,23 @@
 title: Non-Fungible Token Contract
 sidebar_position: 8
 sidebar_label: Non-Fungible Token
+description: Learn about Flow's Non-Fungible Token (NFT) standard contract interface, its implementation, events system, and how to build NFT contracts on Flow. Understand the core NFT functionality and event handling.
+keywords:
+  - NFT
+  - non-fungible token
+  - NFT standard
+  - token contract
+  - NFT events
+  - NFT transactions
+  - token interface
+  - Flow NFT
+  - NFT implementation
+  - token collection
+  - NFT deposits
+  - NFT withdrawals
+  - token updates
+  - NFT metadata
+  - digital assets
 ---
 
 The `NonFungibleToken` contract interface implements the Fungible Token Standard.

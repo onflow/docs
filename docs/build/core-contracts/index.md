@@ -6,6 +6,25 @@ sidebar_position: 9
 sidebar_custom_props:
   icon: 📝
   description: Explore the foundational contracts driving the Flow blockchain and learn how to utilize these vital building blocks for your own smart contract development.
+keywords:
+  - core contracts
+  - Flow protocol
+  - smart contracts
+  - FungibleToken
+  - FlowToken
+  - ServiceAccount
+  - FlowFees
+  - FlowIDTableStaking
+  - NonFungibleToken
+  - MetadataViews
+  - StakingCollection
+  - NFTStorefront
+  - AccountLinking
+  - EVM
+  - protocol contracts
+  - Flow standards
+  - blockchain infrastructure
+  - contract standards
 ---
 
 Flow relies on a set of core contracts that define key portions of the

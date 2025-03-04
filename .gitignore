@@ -39,3 +39,6 @@ docs/.obsidian
 
 # flow
 imports
+
+goldstar-testnet.pkey
+goldstar-mainnet.pkey

@@ -2,17 +2,34 @@
 title: IOS Development
 sidebar_label: IOS Development
 sidebar_position: 3
+description: Learn how to build native iOS applications on Flow blockchain using the Monster Maker sample project. Understand wallet integration, transaction signing, and NFT management in mobile apps.
+keywords:
+  - iOS development
+  - Flow mobile
+  - Monster Maker
+  - mobile dApp
+  - FCL Swift
+  - wallet integration
+  - NFT mobile
+  - iOS blockchain
+  - mobile wallet
+  - transaction signing
+  - native app
+  - Flow SDK
+  - mobile development
+  - iOS sample
+  - blockchain mobile
 ---
 
 # Overview
 
-The following documentation aims to educate you on building a native mobile application on Flow. It first presents Monster Maker, a starter project we’ve built to represent simple Flow mobile concepts. Next it presents various developer resources related to building mobile native Flow applications.
+The following documentation aims to educate you on building a native mobile application on Flow. It first presents Monster Maker, a starter project we've built to represent simple Flow mobile concepts. Next it presents various developer resources related to building mobile native Flow applications.
 
 # Monster Maker
 
 ![monster_maker_logo.png](resources/monster_maker_logo.png)
 
-Monster Maker is a native iOS app that allows users to connect a wallet, sign a transaction to mint an NFT (a monster) and display their collection of NFTs (their monsters) within the app. It’s meant to be a lightweight sample project to exemplify how to build a mobile native Flow project. If you’re looking to build a native mobile application for Flow, exploring the Monster Maker code base first or even building off of it is a great way to get started.
+Monster Maker is a native iOS app that allows users to connect a wallet, sign a transaction to mint an NFT (a monster) and display their collection of NFTs (their monsters) within the app. It's meant to be a lightweight sample project to exemplify how to build a mobile native Flow project. If you're looking to build a native mobile application for Flow, exploring the Monster Maker code base first or even building off of it is a great way to get started.
 
 <aside>
 👉 ***Note** - We currently only have an iOS project for Monster Maker. That said an Android and web version of the same project is in active development.*
@@ -39,14 +56,13 @@ For run in real device, there are a few steps to deal with signing:
 
    ![XCode Target Setup](resources/xcode_setup.png)
 
-
 ## Connecting to a Wallet
 
 To connect with wallets, there is native wallet discovery in the app. Once you click on connect, it will bring out the list of the wallets which support `HTTP/POST` or `WC/RPC` method.
 
 ### FCL Config
 
-To make sure, the wallet can recognise your dApp, there is a few field you will need to config before connect to a wallet. The account proof config is optional. In addition, you will need to create a project id from [walletconnect](https://cloud.walletconnect.com/app) cloud before you can connect to the `WC/RPC` compatible wallet such as dapper self custody or lilico wallet.
+To make sure, the wallet can recognise your dApp, there is a few field you will need to config before connect to a wallet. The account proof config is optional. In addition, you will need to create a project id from [walletconnect](https://cloud.walletconnect.com/app) cloud before you can connect to the `WC/RPC` compatible wallet such as [Flow Wallet](https://wallet.flow.com/).
 
 ```swift
 import FCL
@@ -149,91 +165,90 @@ During development, you always can query your NFT with `fcl.query`. Here is an e
 
 - Query cadence
 
-    ```cadence
-    import NonFungibleToken from 0xNonFungibleToken
-        import MonsterMaker from 0xMonsterMaker
-        import MetadataViews from 0xMetadataViews
-        
-        access(all) struct Monster {
-            access(all) let name: String
-            access(all) let description: String
-            access(all) let thumbnail: String
-            access(all) let itemID: UInt64
-            access(all) let resourceID: UInt64
-            access(all) let owner: Address
-            access(all) let component: MonsterMaker.MonsterComponent
-    
-            init(
-                name: String,
-                description: String,
-                thumbnail: String,
-                itemID: UInt64,
-                resourceID: UInt64,
-                owner: Address,
-                component: MonsterMaker.MonsterComponent
-            ) {
-                self.name = name
-                self.description = description
-                self.thumbnail = thumbnail
-                self.itemID = itemID
-                self.resourceID = resourceID
-                self.owner = owner
-                self.component = component
-            }
-        }
-    
-        access(all) fun getMonsterById(address: Address, itemID: UInt64): Monster? {
-    
-            if let collection = getAccount(address).capabilities.get<&MonsterMaker.Collection>(MonsterMaker.CollectionPublicPath).borrow() {
-                
-                if let item = collection.borrowMonsterMaker(id: itemID) {
-                    if let view = item.resolveView(Type<MetadataViews.Display>()) {
-                        let display = view as! MetadataViews.Display
-                        let owner: Address = item.owner!.address!
-                        let thumbnail = display.thumbnail as! MetadataViews.HTTPFile
-    
-                        return Monster(
-                            name: display.name,
-                            description: display.description,
-                            thumbnail: thumbnail.url,
-                            itemID: itemID,
-                            resourceID: item.uuid,
-                            owner: address,
-                            component: item.component
-                        )
-                    }
-                }
-            }
-    
-            return nil
-        }
-    
-        access(all) fun main(address: Address): [Monster] {
-            let account = getAccount(address)
-            let collectionRef = account.capabilities.get<&{NonFungibleToken.Collection}>(MonsterMaker.CollectionPublicPath).borrow()
-            ?? panic("The account with address "
-                    .concat(address.toString)
-                    .concat(" does not have a NonFungibleToken Collection at ")
-                    .concat(MonsterMaker.CollectionPublicPath.toString())
-                    .concat(". Make sure the account address is correct and is initialized their account with a MonsterMaker Collection!"))
-            
-            let ids = collectionRef.getIDs()
-    
-            let monsters : [Monster] = []
-    
-            for id in ids {
-                if let monster = getMonsterById(address: address, itemID: id) {
-                    monsters.append(monster)
-                }
-            }
-    
-            return monsters
-        }
-    ```
+  ```cadence
+  import NonFungibleToken from 0xNonFungibleToken
+      import MonsterMaker from 0xMonsterMaker
+      import MetadataViews from 0xMetadataViews
 
+      access(all) struct Monster {
+          access(all) let name: String
+          access(all) let description: String
+          access(all) let thumbnail: String
+          access(all) let itemID: UInt64
+          access(all) let resourceID: UInt64
+          access(all) let owner: Address
+          access(all) let component: MonsterMaker.MonsterComponent
+
+          init(
+              name: String,
+              description: String,
+              thumbnail: String,
+              itemID: UInt64,
+              resourceID: UInt64,
+              owner: Address,
+              component: MonsterMaker.MonsterComponent
+          ) {
+              self.name = name
+              self.description = description
+              self.thumbnail = thumbnail
+              self.itemID = itemID
+              self.resourceID = resourceID
+              self.owner = owner
+              self.component = component
+          }
+      }
+
+      access(all) fun getMonsterById(address: Address, itemID: UInt64): Monster? {
+
+          if let collection = getAccount(address).capabilities.get<&MonsterMaker.Collection>(MonsterMaker.CollectionPublicPath).borrow() {
+
+              if let item = collection.borrowMonsterMaker(id: itemID) {
+                  if let view = item.resolveView(Type<MetadataViews.Display>()) {
+                      let display = view as! MetadataViews.Display
+                      let owner: Address = item.owner!.address!
+                      let thumbnail = display.thumbnail as! MetadataViews.HTTPFile
+
+                      return Monster(
+                          name: display.name,
+                          description: display.description,
+                          thumbnail: thumbnail.url,
+                          itemID: itemID,
+                          resourceID: item.uuid,
+                          owner: address,
+                          component: item.component
+                      )
+                  }
+              }
+          }
+
+          return nil
+      }
+
+      access(all) fun main(address: Address): [Monster] {
+          let account = getAccount(address)
+          let collectionRef = account.capabilities.get<&{NonFungibleToken.Collection}>(MonsterMaker.CollectionPublicPath).borrow()
+          ?? panic("The account with address "
+                  .concat(address.toString)
+                  .concat(" does not have a NonFungibleToken Collection at ")
+                  .concat(MonsterMaker.CollectionPublicPath.toString())
+                  .concat(". Make sure the account address is correct and is initialized their account with a MonsterMaker Collection!"))
+
+          let ids = collectionRef.getIDs()
+
+          let monsters : [Monster] = []
+
+          for id in ids {
+              if let monster = getMonsterById(address: address, itemID: id) {
+                  monsters.append(monster)
+              }
+          }
+
+          return monsters
+      }
+  ```
 
 ```swift
-let nftList = try await fcl.query(script: cadenceScript, 
+let nftList = try await fcl.query(script: cadenceScript,
 																		args: [.address(address)])
 														.decode([NFTModel].self)
 ```
@@ -254,10 +269,9 @@ https://github.com/Outblock/fcl-android
 
 **FCL Wallet Connect 2.0**
 
-One of the easiest ways to connect to a wallet via a mobile native dApp is through Flow’s new support for Wallet Connect 2.0. This is the pattern that Monster Maker uses to connect to the Dapper Self Custody wallet and Lilico. For more information on FCL Wallet Connect 2.0, check out this page:
+One of the easiest ways to connect to a wallet via a mobile native dApp is through Flow's new support for Wallet Connect 2.0. This is the pattern that Monster Maker uses to connect to the [Flow Wallet](https://wallet.flow.com/). For more information on FCL Wallet Connect 2.0, check out this page:
 
 [FCL Wallet Connect](../../../tools/clients/fcl-js/wallet-connect.md)
-
 
 **How to Build a Native iOS Dapp**
 

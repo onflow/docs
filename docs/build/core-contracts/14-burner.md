@@ -2,6 +2,23 @@
 title: Flow Burner Contract Address
 sidebar_position: 14
 sidebar_label: Burner
+description: Learn about Flow's Burner contract that enables custom destruction logic for resources. Understand how to implement the Burnable interface and safely destroy resources with custom callbacks.
+keywords:
+  - resource burning
+  - Burner contract
+  - resource destruction
+  - burn callback
+  - Burnable interface
+  - resource management
+  - Flow resources
+  - custom destruction
+  - safe burning
+  - resource cleanup
+  - Flow protocol
+  - contract safety
+  - resource lifecycle
+  - destruction logic
+  - burn operations
 ---
 
 # Contract

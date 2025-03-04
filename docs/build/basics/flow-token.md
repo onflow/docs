@@ -1,6 +1,23 @@
 ---
 title: FLOW Coin
 sidebar_position: 10
+description: Learn about the FLOW coin, its role as the native token of the Flow blockchain, and how to acquire, use, and build with it. Understand staking, delegation, and transaction fee mechanisms.
+keywords:
+  - FLOW coin
+  - FLOW token
+  - native token
+  - fungible token
+  - staking
+  - delegation
+  - transaction fees
+  - Flow protocol
+  - Flow rewards
+  - token utility
+  - Flow wallet
+  - token custody
+  - Flow transactions
+  - Flow governance
+  - Flow ecosystem
 ---
 
 ## Introduction
@@ -92,7 +109,7 @@ Transactions are submitted using a Flow SDK via the Access API.
 
 On Flow, a transaction is identified by its hash - the hash that exists as soon as that transaction is signed and submitted to an Access or Collection node.
 Results of transactions can be queried by transaction hash through the Access API.
-A user can check the status of a transaction at any time via the [Flow Block Explorer](https://www.flowdiver.io/).
+A user can check the status of a transaction at any time via the [Flow Block Explorer](https://flowscan.io/).
 
 To expose these results natively in your app, you can use a Flow SDK to fetch transaction results,
 [for example using the Flow Go SDK](https://github.com/onflow/flow-go-sdk#querying-transaction-results).

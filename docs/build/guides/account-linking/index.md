@@ -1,6 +1,23 @@
 ---
 title: Account Linking (FLIP 72)
 sidebar_position: 4
+description: Learn about Flow's unique account linking feature that enables shared ownership of accounts. Understand how accounts can be accessed, delegated, and managed through capabilities and hybrid custody.
+keywords:
+  - account linking
+  - FLIP 72
+  - account capabilities
+  - hybrid custody
+  - account access
+  - account delegation
+  - Flow accounts
+  - account ownership
+  - account security
+  - parent accounts
+  - child accounts
+  - account management
+  - Flow protocol
+  - account control
+  - custody model
 ---
 
 # Account Linking
@@ -147,10 +164,10 @@ seamless to continue using the original app while also enjoying their assets in 
 ## Security Considerations
 
 Account linking is a _very_ powerful Cadence feature, and thus it must be treated with care. So far in this document,
-we’ve discussed account linking between two accounts we own, even if the child account is managed by a third-party
+we've discussed account linking between two accounts we own, even if the child account is managed by a third-party
 application. But, we can't make the same trust assumptions about custodial accounts in the real world.
 
-Creating an `&Account` Capability and publishing it to an account we don’t own means we are giving that account full
+Creating an `&Account` Capability and publishing it to an account we don't own means we are giving that account full
 access to our account. This should be seen as an anti-pattern.
 
 :::warning

@@ -16,6 +16,7 @@ import RoadmapLarge from '../../../../images/misc/roadmap-card-lg.png';
 import RoadmapSmall from '../../../../images/misc/roadmap-card-sm.png';
 import UpdatesLight from '../../../../images/misc/updates-light.png';
 import UpdatesDark from '../../../../images/misc/updates-dark.png';
+import Forum from '../../../../images/page/flow-forum-icon.svg';
 
 export interface HomepageStartItemIconsProps {
   icon: string;
@@ -88,6 +89,8 @@ export function HomepageStartItemIcons({
       return <DeveloperChat />;
     case 'network-upgrade':
       return <NetworkUpgrade />;
+    case 'forum':
+      return <Forum />;
     case 'updates':
       return (
         <span>

@@ -7,9 +7,9 @@ sidebar_position: 1
 
 ### Can anybody run a node? What is the approval process?
 
-Anyone can run an [observer node](../access-onchain-data/light-nodes/observer-node.md).
+Anyone can run an [observer node](../light-nodes/observer-node.md).
 
-Anyone can run an Access Node after registering and staking. See [Access Node Setup](../access-onchain-data/access-nodes/access-node-setup.md) for detailed instructions.
+Anyone can run an Access Node after registering and staking. See [Access Node Setup](../access-nodes/access-node-setup.md) for detailed instructions.
 
 For the other node roles, individuals can go through an application process that involves asking about their background and experience contributing to decentralized projects. To pursue an application, please visit [the Flow website here to apply](https://www.onflow.org/node-validators).
 

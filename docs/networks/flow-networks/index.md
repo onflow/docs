@@ -7,7 +7,7 @@ sidebar_position: 1
 
 :::note
 
-This page provides information on Flow network RPCs. EVM on Flow network RPCs can be found [here](../evm/networks)
+This page provides information on Flow network RPCs. Flow EVM network RPCs can be found [here](../evm/networks)
 
 :::
 
@@ -31,7 +31,7 @@ For more information on how to access these networks, refer to the following gui
 
 There are two primary ways to access on-chain data within the Flow network; Access Nodes and Light nodes. Access Nodes are the node type that are most useful for developers, as they provide access to the Flow network via the following API endpoints:
 
-- [Flow Access API](../node-ops/access-onchain-data/access-nodes/accessing-data/access-api.md)
+- [Flow Access API](../access-onchain-data/index.md)
   - [Mainnet](./accessing-mainnet.md): `access.mainnet.nodes.onflow.org:9000`
   - [Testnet](./accessing-testnet.md): `access.devnet.nodes.onflow.org:9000`
 - [Status Page](https://status.onflow.org/) - Network status page
@@ -44,7 +44,7 @@ Rate limits for Flow Public Access nodes hosted by QuickNode are detailed [here]
 
 If you’re getting started you don’t need to run your own node and you can use the above public nodes. The public access nodes are rate-limited, so as your product matures you might want to run your own node. There are multiple options available:
 
-- Start with a [Light (Observer) Node](../node-ops/access-onchain-data/light-nodes/observer-node.md).
+- Start with a [Light (Observer) Node](../node-ops/light-nodes/observer-node.md).
 - You can also use a third-party provider like [Quicknode](https://www.quicknode.com/docs/flow).
 
-Check out [Running a Node](../node-ops/access-onchain-data/light-nodes/observer-node.md) for more information.
+Check out [Running a Node](../node-ops/light-nodes/observer-node.md) for more information.

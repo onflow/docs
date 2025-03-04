@@ -15,7 +15,7 @@ EVM transactions are ultra low-cost and use the native FLOW token as gas. [Exter
 <details>
 <summary><h2>How Transaction Fees are Computed on EVM</h2></summary>
 
-With EVM on Flow, EVM operations can now be called within Cadence transactions. EVM operations also have an associated effort measured in gas which needs to be factored into the execution effort calculation in addition to the Flow computation for any EVM transaction.
+With Flow EVM, EVM operations can now be called within Cadence transactions. EVM operations also have an associated effort measured in gas which needs to be factored into the execution effort calculation in addition to the Flow computation for any EVM transaction.
 
 ```
 Transaction fee on EVM = surge x [inclusion fee + (execution effort * unit cost)] 

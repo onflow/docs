@@ -10,6 +10,7 @@ const path = require('path');
 const fs = require('fs');
 
 const flowNetwork = process.env.FLOW_NETWORK || 'testnet';
+const walletConnectProjectId = process.env.WALLETCONNECT_PROJECT_ID;
 
 const externalDataSourceLocation = './src/data/data-sources.json';
 let cachedRepositories;
@@ -79,7 +80,7 @@ const getUrl = () => {
     return `https://${process.env.VERCEL_URL}`;
   }
 
-  return 'https://onflow.github.io';
+  return 'https://developers.flow.com';
 };
 
 /**
@@ -204,11 +205,11 @@ const config = {
         },
         ...(process.env.GTAG
           ? {
-            gtag: {
-              trackingID: process.env.GTAG,
-              anonymizeIP: true,
-            },
-          }
+              gtag: {
+                trackingID: process.env.GTAG,
+                anonymizeIP: true,
+              },
+            }
           : {}),
       }),
     ],
@@ -239,8 +240,19 @@ const config = {
       colorMode: {
         defaultMode: 'dark',
       },
-      // Replace with your project's social card
-      image: 'img/FlowDocs_Logo_FlowLogo_Horizontal_Green_BlackText.svg',
+      // Update the image path and add metadata
+      image: 'img/flow-docs-og-1200-630.png',
+      metadata: [
+        { name: 'twitter:card', content: 'summary_large_image' },
+        { name: 'twitter:image', content: getUrl() + '/img/flow-docs-og-1200-630.png' },
+        { property: 'og:image', content: getUrl() + '/img/flow-docs-og-1200-630.png' },
+        { property: 'og:image:type', content: 'image/png' },
+        { property: 'og:image:width', content: '1200' },
+        { property: 'og:image:height', content: '630' },
+        { property: 'og:type', content: 'website' },
+        { property: 'og:description', content: 'Flow Developer Documentation - The future of culture and digital assets is built on Flow' },
+        { property: 'og:logo', content: getUrl() + '/img/flow-docs-logo-light.png' },
+      ],
       docs: {
         sidebar: {
           autoCollapseCategories: true,
@@ -257,13 +269,13 @@ const config = {
           {
             to: 'build/flow',
             position: 'left',
-            label: 'Build With Cadence',
+            label: 'Cadence',
             activeBasePath: '/build',
           },
           {
             to: 'evm/about',
             position: 'left',
-            label: 'Build With EVM',
+            label: 'EVM',
             activeBasePath: '/evm',
           },
           {
@@ -289,6 +301,12 @@ const config = {
             position: 'left',
             label: 'Growth',
             activeBasePath: '/growth',
+          },
+          {
+            to: 'tutorials',
+            position: 'left',
+            label: 'Tutorials',
+            activeBasePath: '/tutorials',
           },
           {
             type: 'custom-connectButton',
@@ -422,12 +440,12 @@ const config = {
                 label: 'Network Status',
               },
               {
-                href: 'https://flowdiver.io/',
-                label: 'Flowdiver Mainnet',
+                href: 'https://flowdscan.io/',
+                label: 'Flowscan Mainnet',
               },
               {
-                href: 'https://testnet.flowdiver.io/',
-                label: 'Flowdiver Testnet',
+                href: 'https://testnet.flowscan.io/',
+                label: 'Flowscan Testnet',
               },
               {
                 to: '/networks/node-ops/node-operation/past-sporks',
@@ -627,6 +645,23 @@ const config = {
         },
       },
     ],
+    function cadenceLoader() {
+      return {
+        name: 'cadence-loader',
+        configureWebpack() {
+          return {
+            module: {
+              rules: [
+                {
+                  test: /\.cdc$/,
+                  use: 'raw-loader',
+                },
+              ],
+            },
+          };
+        },
+      };
+    },
   ],
   stylesheets: [
     {
@@ -652,6 +687,7 @@ const config = {
 
   customFields: {
     flowNetwork,
+    walletConnectProjectId,
   },
 };
 

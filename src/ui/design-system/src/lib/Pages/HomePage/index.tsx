@@ -1,23 +1,16 @@
 import React from 'react';
 import {
-  LandingHeaderHome,
-  HomepageStartList,
-  HomepageStartListCadence,
-} from '../../Components';
+  HomeNav,
+} from '../../Components/HomeNav';
 import { type ContentNavigationListProps } from '../../Components/ContentNavigationList';
 import { type SocialLinksSignupProps } from '../../Components/SocialLinksSignup';
 import { type TutorialCardProps } from '../../Components/TutorialCard';
 import { type UpcomingEventsProps } from '../../Components/UpcomingEvents';
 import PageBackground from '../shared/PageBackground';
-import PageSection from '../shared/PageSection';
-import PageSections from '../shared/PageSections';
-import { ContentFeatureList } from '../../Components/ContentFeatureList';
-import { PageCarousel } from '../../Components/PageCarousel';
-import { LinkGrid } from '../../Components/LinkGrid';
-import { SocialCards } from '../../Components/SocialCards';
-import BgImage from '../../../../images/misc/bg-social-section.jpg';
-import TransitionPageSection from '../shared/TransitionPageSection';
-import { SignUpSection } from '../../Components/HomepageStartList/SignUpSection';
+import ActionCardGrid from '@site/src/components/ActionCardGrid';
+import { buildGridData } from './GridData/BuildGridData';
+import { growGridData } from './GridData/GrowGridData';
+// import { HomeHeader } from '../../Components/HomeHeader';
 
 export type HomePageProps = SocialLinksSignupProps & {
   concepts?: TutorialCardProps[];
@@ -25,54 +18,18 @@ export type HomePageProps = SocialLinksSignupProps & {
   upcomingEvents: UpcomingEventsProps;
 };
 
-const Description = (): JSX.Element => (
-  <>
-    Flow is a fast, decentralized platform for apps, games, and digital assets. Build and grow your projects on a scalable, secure network. Whether you're learning Cadence or using EVM compatibility, Flow empowers your innovative ideas.
-  </>
-);
-
 const HomePage = ({ discordUrl, githubUrl }: HomePageProps): JSX.Element => {
   return (
     <PageBackground gradient="home">
-      <LandingHeaderHome
-        description={<Description />}
-        discordUrl={discordUrl}
-        githubUrl={githubUrl}
-        tag="onflow"
-        title="Build On Flow"
+      {/* TODO: Add back in after iteration */}
+      {/* <HomeHeader /> */}
+      <HomeNav
+        title="What do you want to do today?"
       />
-      <ContentFeatureList />
 
-      <PageSections>
-        <TransitionPageSection sectionId="explore-more-content">
-          <HomepageStartListCadence />
-        </TransitionPageSection>
-        <TransitionPageSection sectionId="start-list-cadence">
-          <HomepageStartList />
-        </TransitionPageSection>
-        <TransitionPageSection
-          className={'md:mx-4'}
-          sectionId="start-building-onflow"
-        >
-          <PageCarousel />
-        </TransitionPageSection>
-        <TransitionPageSection
-          className={'md:mx-4'}
-          sectionId="explore-the-docs"
-        >
-          <LinkGrid />
-        </TransitionPageSection>
-        <TransitionPageSection sectionId="newsletter">
-          <PageSection>
-            <SignUpSection />
-          </PageSection>
-        </TransitionPageSection>
-        <div className="" style={{ backgroundImage: `url(${BgImage})` }}>
-          <TransitionPageSection sectionId="get-involved">
-            <SocialCards />
-          </TransitionPageSection>
-        </div>
-      </PageSections>
+      <ActionCardGrid title={buildGridData.title} id={buildGridData.title} icon={buildGridData.icon} iconColor={buildGridData.iconColor} sections={buildGridData.sections} />
+      <ActionCardGrid title={growGridData.title} id={growGridData.title} icon={growGridData.icon} iconColor={growGridData.iconColor} sections={growGridData.sections} />
+
     </PageBackground>
   );
 };

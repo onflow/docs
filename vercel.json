@@ -184,12 +184,12 @@
     },
     {
       "source": "/access-api",
-      "destination": "/networks/node-ops/access-onchain-data/access-nodes/accessing-data/access-api",
+      "destination": "/networks/access-onchain-data",
       "permanent": true
     },
     {
       "source": "/nodes/access-api",
-      "destination": "/networks/node-ops/access-onchain-data/access-nodes/accessing-data/access-api",
+      "destination": "/networks/access-onchain-data",
       "permanent": true
     },
     {
@@ -1053,17 +1053,17 @@
     },
     {
       "source": "/networks/node-ops/nodes/node-operation/observer-node",
-      "destination": "/networks/node-ops/access-onchain-data/light-nodes/observer-node",
+      "destination": "/networks/node-ops/light-nodes/observer-node",
       "permanent": true
     },
     {
       "source": "/networks/node-ops/nodes/node-operation/access-node-setup",
-      "destination": "/networks/node-ops/access-onchain-data/access-nodes/access-node-setup",
+      "destination": "/networks/node-ops/access-nodes/access-node-setup",
       "permanent": true
     },
     {
       "source": "/networks/node-ops/nodes/access-api",
-      "destination": "/networks/node-ops/access-onchain-data/access-nodes/accessing-data/access-api",
+      "destination": "/networks/node-ops/access-nodes/accessing-data/access-api",
       "permanent": true
     },
     {
@@ -1167,7 +1167,7 @@
     },
     {
       "source": "/networks/node-ops/node-operation/access-node-setup",
-      "destination": "/networks/node-ops/access-onchain-data/access-nodes/access-node-setup",
+      "destination": "/networks/node-ops/access-nodes/access-node-setup",
       "permanent": true
     },
     {
@@ -1177,7 +1177,22 @@
     },
     {
       "source": "/networks/node-ops/node-operation/observer-node",
-      "destination": "/networks/node-ops/access-onchain-data/light-nodes/observer-node",
+      "destination": "/networks/node-ops/light-nodes/observer-node",
+      "permanent": true
+    },
+    {
+      "source": "/networks/node-ops/access-onchain-data/access-nodes/access-node-setup",
+      "destination": "/networks/node-ops/access-nodes/access-node-setup",
+      "permanent": true
+    },
+    {
+      "source": "/networks/node-ops/access-onchain-data/light-nodes/observer-node",
+      "destination": "/networks/node-ops/light-nodes/observer-node",
+      "permanent": true
+    },
+    {
+      "source": "/networks/node-ops/access-onchain-data/access-nodes/accessing-data/access-api",
+      "destination": "/networks/node-ops/access-nodes/accessing-data/access-api",
       "permanent": true
     },
     {

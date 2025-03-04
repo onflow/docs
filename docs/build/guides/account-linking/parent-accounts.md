@@ -1,6 +1,23 @@
 ---
 title: Working With Parent Accounts
 sidebar_position: 2
+description: Learn how to work with parent accounts in Flow's hybrid custody model. Understand how to manage child accounts, access assets across accounts, and implement unified account experiences in wallets and marketplaces.
+keywords:
+  - parent accounts
+  - hybrid custody
+  - account management
+  - child accounts
+  - account access
+  - NFT management
+  - token balances
+  - wallet integration
+  - marketplace integration
+  - Flow accounts
+  - account delegation
+  - asset management
+  - account hierarchy
+  - capability management
+  - account security
 ---
 
 In this doc, we'll continue from the perspective of a wallet or marketplace app seeking to facilitate a unified account
@@ -11,9 +28,9 @@ all their owned assets.
 
 - Understand the Hybrid Custody account model
 - Differentiate between restricted child accounts and unrestricted owned accounts
-- Get your app to recognize “parent” accounts along with any associated “child” accounts
+- Get your app to recognize "parent" accounts along with any associated "child" accounts
 - View Fungible and NonFungible Token metadata relating to assets across all of a user's associated accounts - their
-  wallet-mediated “parent” account and any hybrid custody model “child” accounts
+  wallet-mediated "parent" account and any hybrid custody model "child" accounts
 - Facilitate transactions acting on assets in child accounts
 
 ## Design Overview
@@ -360,7 +377,7 @@ transaction(
     withdrawID: UInt64          // ID of the NFT to withdraw
     ) {
 
-    let providerRef: &{NonFungibleToken.Provider}
+    let providerRef: auth(NonFungibleToken.Withdraw) &{NonFungibleToken.Provider}
 
     prepare(signer: auth(BorrowValue) &Account) {
         // Get a reference to the signer's HybridCustody.Manager from storage
@@ -377,7 +394,7 @@ transaction(
         let controllerID = account.getControllerIDForType(
                 type: collectionType,
                 forPath: storagePath
-            ) ?? panic("Could not find Capability controller ID for collection type ".concat(type.identifier)
+            ) ?? panic("Could not find Capability controller ID for collection type ".concat(collectionType.identifier)
                 .concat(" at path ").concat(storagePath.toString()))
 
         // Get a reference to the child NFT Provider and assign to the transaction scope variable
@@ -388,7 +405,8 @@ transaction(
 
         // We'll need to cast the Capability - this is possible thanks to CapabilityFactory, though we'll rely on the relevant
         // Factory having been configured for this Type or it won't be castable
-        self.providerRef = cap as! Capability<auth(NonFungibleToken.Withdraw) &{NonFungibleToken.Provider}>
+        let providerCap = cap as! Capability<auth(NonFungibleToken.Withdraw) &{NonFungibleToken.Provider}>
+        self.providerRef = providerCap.borrow() ?? panic("Provider capability is invalid - cannot borrow reference")
     }
 
     execute {
@@ -400,6 +418,9 @@ transaction(
         // ...
     }
 }
+      
+          
+
 ```
 
 At the end of this transaction, you withdrew an NFT from the specified account using an NFT `Provider` Capability. A

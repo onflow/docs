@@ -2,7 +2,23 @@
 title: Flow Smart Contract Project Development Standards
 sidebar_label: Development Standards
 sidebar_position: 5
-description: "Learn how to effectively organize and manage a Cadence project"
+description: Learn best practices for organizing and managing Cadence smart contract projects. Understand key aspects of design, development, testing, deployment, and community engagement.
+keywords:
+  - development standards
+  - smart contracts
+  - project management
+  - best practices
+  - Cadence development
+  - testing standards
+  - documentation
+  - deployment process
+  - project organization
+  - code review
+  - security practices
+  - community engagement
+  - open source
+  - technical leadership
+  - Flow development
 ---
 
 # Smart Contract Project Development Standards
@@ -90,7 +106,7 @@ are available [here](https://cadence-lang.org/docs/).
 The technical leader should be someone who understands Cadence well and has written Cadence smart contracts
 before. Production-level smart contracts are not the place for beginners to get their start.
 
-It should be this person’s responsibility to lead design discussions
+It should be this person's responsibility to lead design discussions
 with product managers and the community, write most of the code and tests,
 solicit reviews, make requested changes and make sure the project gets completed in a timely manner.
 
@@ -112,7 +128,7 @@ As projects like NBA Topshot have shown, when a blockchain product becomes succe
 others can and do to build on top of what you are doing.
 Whether that is analytics, tools, or other value adds that could help grow your project ecosystem,
 composability is key and that depends on open source development.
-If there isn’t already an open source repo, builders should consider creating one.
+If there isn't already an open source repo, builders should consider creating one.
 
 Builders can start from the [the Flow open source template](https://github.com/onflow/open-source-template)
 and make sure all of their repo is set up with some initial documentation for what the repo is for
@@ -252,7 +268,7 @@ come in and understand what each one is doing without having to parse confusing 
 
 ### Projects should engage with and respond to their own Community
 
-Once a contract is deployed, the work doesn’t stop there.
+Once a contract is deployed, the work doesn't stop there.
 Project communities require ongoing nurturing and support.
 As the developer of a public project on a public blockchain,
 the owners have an obligation to be helpful and responsive to the community

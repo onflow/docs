@@ -1,6 +1,24 @@
 ---
 sidebar_position: 2
 sidebar_label: Local Development
+title: Local Development with Flow CLI
+description: Learn how to use the Flow Command Line Interface (CLI) for local blockchain development. Create projects, run tests, manage dependencies, deploy contracts, and interact with the Flow emulator.
+keywords:
+  - Flow CLI
+  - local development
+  - Flow emulator
+  - smart contracts
+  - contract deployment
+  - dependency management
+  - blockchain testing
+  - Flow projects
+  - contract testing
+  - script execution
+  - transactions
+  - Flow tools
+  - development environment
+  - contract management
+  - blockchain development
 ---
 
 # Local Development

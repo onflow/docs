@@ -1,10 +1,26 @@
 ---
 title: Deploying Contracts
 sidebar_label: Deploying Contracts
-description: Guidelines for deploying your project's contracts on Flow Mainnet
+description: Learn how to deploy and update smart contracts on Flow Mainnet and Testnet. Understand account creation, key management, deployment best practices, and network sporks.
 sidebar_position: 3
 sidebar_custom_props:
-  icon: 🥇  
+  icon: 🥇
+keywords:
+  - contract deployment
+  - Flow mainnet
+  - Flow testnet
+  - account creation
+  - key management
+  - Flow CLI
+  - smart contracts
+  - deployment guide
+  - contract updates
+  - sporks
+  - network migration
+  - testnet faucet
+  - deployment security
+  - contract addresses
+  - Flow deployment
 ---
 
 In order to deploy your smart contracts to the mainnet, you need a funded account. If you want to get started on Testnet, look below for information on how to get started.

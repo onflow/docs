@@ -2,6 +2,23 @@
 title: Flow Account Linking Contract Address
 sidebar_position: 12
 sidebar_label: Account Linking
+description: Learn about Flow's Account Linking contracts that enable hybrid custody solutions. Understand how to manage child accounts and share specific resources between parent and child accounts securely.
+keywords:
+  - account linking
+  - hybrid custody
+  - child accounts
+  - parent accounts
+  - account management
+  - resource sharing
+  - custody solution
+  - account security
+  - wallet integration
+  - Flow accounts
+  - contract browser
+  - account permissions
+  - resource access
+  - account control
+  - custody model
 ---
 
 # Contract

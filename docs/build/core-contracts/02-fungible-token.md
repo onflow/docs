@@ -2,6 +2,23 @@
 title: Fungible Token Contract
 sidebar_position: 2
 sidebar_label: Fungible Token
+description: Learn about Flow's Fungible Token standard contract, its implementation, events, and how to interact with fungible tokens on the Flow blockchain.
+keywords:
+  - fungible token
+  - FT standard
+  - token contract
+  - Flow tokens
+  - token events
+  - token transactions
+  - token metadata
+  - token standard
+  - Flow FT
+  - token implementation
+  - token interface
+  - token deployment
+  - token addresses
+  - token events
+  - token specification
 ---
 
 The `FungibleToken` contract implements the Fungible Token Standard. It is the second contract ever deployed on Flow.

@@ -54,3 +54,15 @@ export const HIGHLIGHT_LANGUAGES = [
 export const DISCORD_URL = 'https://discord.gg/flow';
 export const DISCORD_ANNOUNCEMENTS_CHANNEL_ID = '621529603718119424';
 export const DISCORD_DEV_UPDATES_CHANNEL_ID = '811693600403357706';
+
+export const GOLD_STAR_CHALLENGES = {
+  LEARN_FLOW_CHALLENGE: {
+    contractName: 'LearnFlowChallenge',
+    resourceIdentifier: 'Challenge',
+  },
+};
+
+export const CONTRACT_IDENTIFIER_REGEX =
+  /^A\.(0x)?([0-9a-fA-F]{16})\.([a-zA-Z0-9_]+)$/;
+
+export const EVM_ADDRESS_REGEX = /^0x[a-fA-F0-9]{40}$/;

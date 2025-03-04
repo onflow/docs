@@ -4,7 +4,7 @@ import ChevronRightIcon from '../../../../images/arrows/chevron-right-sm.svg';
 import ExternalLinkIcon from '../../../../images/content/external-link-variant.svg';
 
 const BASE_CLASSES =
-  'inline-flex items-center justify-center font-semibold text-center border transition duration-200 cursor-pointer';
+  'inline-flex items-center justify-center font-semibold text-center border transition duration-200 cursor-pointer font-display';
 
 const VARIANTS = {
   black: {
@@ -33,7 +33,8 @@ const VARIANTS = {
     base: 'bg-black text-white border-transparent',
     hover: 'hover:border-black hover:bg-white hover:text-black',
     active: 'active:border-gray-500 active:bg-white active:text-gray-500',
-    disabled: 'disabled:opacity-50 disabled:bg-gray-200 disabled:cursor-not-allowed',
+    disabled:
+      'disabled:opacity-50 disabled:bg-gray-200 disabled:cursor-not-allowed',
   },
   secondary: {
     base: 'text-primary-blue border-primary-blue',
@@ -42,7 +43,8 @@ const VARIANTS = {
     dark: {
       base: 'dark:bg-black dark:text-blue-dark dark:border-blue-dark',
       hover: 'dark:hover:bg-blue-dark dark:hover:text-white',
-      active: 'dark:active:bg-blue-hover-dark dark:active:text-white dark:active:border-blue-hover-dark',
+      active:
+        'dark:active:bg-blue-hover-dark dark:active:text-white dark:active:border-blue-hover-dark',
     },
     disabled: 'disabled:opacity-50 disabled:cursor-not-allowed',
   },
@@ -50,6 +52,17 @@ const VARIANTS = {
     base: 'bg-green-dark text-white border-accent-blue',
     hover: 'hover:bg-green-dark hover:text-white cursor-pointer',
     active: 'active:bg-green-hover active:text-white',
+    disabled: 'disabled:opacity-50 disabled:cursor-not-allowed',
+  },
+  ghost: {
+    base: 'bg-transparent text-black border-transparent',
+    hover: 'hover:bg-gray-200 hover:text-black',
+    active: 'active:bg-gray-300 active:text-black',
+    dark: {
+      base: 'dark:bg-transparent dark:text-white',
+      hover: 'dark:hover:bg-gray-800 dark:hover:text-white',
+      active: 'dark:active:bg-gray-900 dark:active:text-white',
+    },
     disabled: 'disabled:opacity-50 disabled:cursor-not-allowed',
   },
 };
@@ -72,16 +85,16 @@ type ButtonProps = {
   React.ComponentPropsWithoutRef<'a'>;
 
 export function Button({
-    href,
-    className,
-    size = 'md',
-    variant = 'black',
-    disabled,
-    leftIcon,
-    rightIcon,
-    children,
-    ...props
-  }: ButtonProps): JSX.Element {
+  href,
+  className,
+  size = 'md',
+  variant = 'black',
+  disabled,
+  leftIcon,
+  rightIcon,
+  children,
+  ...props
+}: ButtonProps): JSX.Element {
   const variantStyles = VARIANTS[variant];
 
   const combinedStyles = clsx(
@@ -94,7 +107,7 @@ export function Button({
     variantStyles.dark?.base,
     variantStyles.dark?.hover,
     variantStyles.dark?.active,
-    className
+    className,
   );
 
   const ButtonContent = (
