@@ -98,7 +98,7 @@ Click `Send Batch Transaction Example` and approve the transaction. You'll see t
 
 :::tip
 
-Currently, the Flow wallet sponsors all gas for all transactions on both testnet **and mainnet!**
+Currently, the Flow wallet sponsors all gas for all transactions signed with the wallet on both testnet **and mainnet!**
 
 :::
 
@@ -234,7 +234,7 @@ Returns the current Cadence VM block number.
 
 Next, we'll update the starter to connect to and call functions in our own contract. For this, we'll use a simple [Button Clicker Contract]. You can deploy your own copy, or use the one deployed at [`0xA7Cf2260e501952c71189D04FAd17c704DFB36e6`].
 
-## Set Up a `useContracts` Hook
+## Set Up Contract Imports
 
 :::info
 
@@ -244,35 +244,18 @@ The following steps assume deployment with Hardhat Ignition. If you are using a 
 
 In your fork of the app, add a folder called `contracts` to the `src` folder. In it, copy over ['deployed_addresses.json`] from `ignition/deployments/chain-545` in the Button Clicker repo, and `ignition/deployments/chain-545/ClickTokenModule#ClickToken.json`.
 
-Next, add a file called `useContracts.ts` in the `src/hooks` folder.
+Next, create a folder called `constants` and add a file called `contracts.ts` to it.
 
-In it, import the contract artifact and addresses file, and create a hook to conveniently export them where needed.
+In it, import the contract artifact and addresses file, and create export a constant with this information.
 
 ```tsx
 import ClickToken from '../contracts/ClickTokenModule#ClickToken.json';
 import deployedAddresses from '../contracts/deployed_addresses.json';
 
-export interface Contract {
-  abi: any;
-  address: string;
-}
-
-export type ContractMap = {
-  [contractName: string]: Contract;
-};
-
-export const useContracts = (): ContractMap => {
-  return {
-    ClickToken: {
-      abi: ClickToken.abi,
-      address: deployedAddresses[
-        'ClickTokenModule#ClickToken'
-      ] as `0x${string}`,
-    },
-  };
-};
-
-export default useContracts;
+export const clickToken = {
+  abi: ClickToken.abi,
+  address: deployedAddresses['ClickTokenModule#ClickToken'] as `0x${string}`
+}; 
 ```
 
 ## Build Traditional Functionality
