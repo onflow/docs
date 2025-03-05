@@ -252,11 +252,15 @@ transaction(amount: UFix64) {
 }
 ```
 
-:::info This is a basic example which only transfers tokens between a single user's COA & Flow account. It can be easily
+:::info
+
+This is a basic example which only transfers tokens between a single user's COA & Flow account. It can be easily
 modified to transfer these tokens between any arbitrary accounts.
 
 You can also deposit tokens directly into other types of EVM accounts using the `EVM.EVMAddress.deposit` function. See
-the [EVM contract documentation](../../build/core-contracts/13-evm.md) for more information. :::
+the [EVM contract documentation](../../build/core-contracts/13-evm.md) for more information.
+
+:::
 
 ### Withdrawing Flow Tokens
 
@@ -299,8 +303,12 @@ transaction(amount: UFix64) {
 }
 ```
 
-:::info This is a basic example which only transfers tokens between a single user's COA & Flow account. It can be easily
-modified to transfer these tokens between any arbitrary accounts. :::
+:::info
+
+This is a basic example which only transfers tokens between a single user's COA & Flow account. It can be easily
+modified to transfer these tokens between any arbitrary accounts.
+
+:::
 
 ## Direct Calls to Flow EVM
 
@@ -357,13 +365,18 @@ transaction(evmContractHex: String, signature: String, args: [AnyStruct], gasLim
     }
 }
 ```
-:::info Notice that the calldata is encoded in the scope of the transaction. While developers can encode the calldata
+
+:::info
+
+Notice that the calldata is encoded in the scope of the transaction. While developers can encode the calldata
 outside the scope of the transaction and pass the encoded data as an argument, doing so compromises the
 human-readability of Cadence transactions.
 
 It's encouraged to either define transactions for each COA call and encoded the hardcoded EVM signature and arguments,
 or to pass in the human-readable arguments and signature and encode the calldata within the transaction. This ensures a
-more interpretable and therefore transparent transaction. :::
+more interpretable and therefore transparent transaction.
+
+:::
 
 ### Transferring FLOW in EVM
 
