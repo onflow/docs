@@ -28,7 +28,7 @@ console.log(response) // 3
 
 ### A More Complex Script
 
-Things like [Resources](https://cadence-lang.org/docs/language/resources) and [Structs](https://cadence-lang.org/docs/language/composite-types#structures) are fairly common place in Cadence.
+[Resources](https://cadence-lang.org/docs/language/resources) and [Structs](https://cadence-lang.org/docs/language/composite-types#structures) are complex data types that are fairly common place in Cadence.
 
 In the following code snippet, our script defines a struct called `Point`, it then returns a list of them.
 
