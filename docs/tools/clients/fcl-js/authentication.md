@@ -41,7 +41,7 @@ const unsubscribe = fcl.currentUser.subscribe(currentUser => {
 
 The TL;DR: Call `fcl.authenticate()` to log in and `fcl.unauthenticate()` to log out.
 
-On Flow mainnet, no additional configuration is needed—your dApp’s users will go through the authentication process and be able to use any FCL-compatible wallet provider.
+On Flow mainnet, no additional configuration is needed—your app’s users will go through the authentication process and be able to use any FCL-compatible wallet provider.
 
 During development, you’ll likely want to configure your dApp to use [`@onflow/dev-wallet`](https://github.com/onflow/fcl-dev-wallet). The [Quick Start](../../../build/getting-started/fcl-quickstart.md) guide will walk you through setting it up.
 
