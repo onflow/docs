@@ -47,4 +47,4 @@ During development, you’ll likely want to configure your dApp to use [`@onflow
 
 We also recommend using the [FCL Discovery Service](discovery.md) to help users discover and connect to FCL-compatible wallets.
 
-We understand this can be overwhelming, but we’re here to help. If you run into any issues, reach out to us on [Discord](https://discord.gg/flow)—we’re happy to assist!
+Whether you're new to building onchain, or an established veteran, we’re here to help. If you run into any issues, reach out to us on [Discord](https://discord.gg/flow) — we’re happy to assist!
