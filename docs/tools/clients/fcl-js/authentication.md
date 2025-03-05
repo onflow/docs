@@ -2,7 +2,7 @@
 
 Authentication in FCL is closely tied to the concept of `currentUser`. In fact, `fcl.authenticate` and `fcl.unauthenticate` are simply aliases for `fcl.currentUser.authenticate()` and `fcl.currentUser.unauthenticate()`, respectively. So, let’s take a closer look at `currentUser`.
 
-As a dApp developer using FCL, the primary authentication functionalities revolve around:
+As an onchain app developer using FCL, the primary authentication functionalities revolve around:
 
 - Determining the `currentUser` and whether they are logged in.
 - Logging a user in.
