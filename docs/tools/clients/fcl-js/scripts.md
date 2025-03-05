@@ -60,7 +60,7 @@ console.log(response) // [{x:1, y:1}, {x:2, y:2}]
 
 ### Transforming Data with Custom Decoders
 
-In our dapp, we probably have a way of representing these Cadence values internally. In the above example it might be a `Point` class.
+In our app, we probably have a way of representing these Cadence values internally. In the above example it might be a `Point` class.
 
 FCL enables us to provide custom decoders that we can use to transform the data we receive from the Flow blockchain at the edge, before anything else in our dapp gets a chance to look at it.
 
