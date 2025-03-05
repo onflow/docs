@@ -154,7 +154,8 @@ fun main(address: Address): EVM.EVMAddress {
     // Borrow a reference to the COA from the storage location we saved it to
     let coa = account.storage.borrow<&EVM.CadenceOwnedAccount>(
         from: /storage/evm
-    ) ?? panic("Could not borrow reference to the COA")
+    ) ?? panic("Could not borrow reference to the signer's CadenceOwnedAccount (COA). "
+        .concat("Ensure the signer account has a COA stored in the canonical /storage/evm path"))
 
     // Return the EVM address of the COA
     return coa.address()
@@ -188,7 +189,8 @@ fun main(address: Address): EVM.Balance {
     // Borrow a reference to the COA from the storage location we saved it to
     let coa = account.storage.borrow<&EVM.CadenceOwnedAccount>(
         from: /storage/evm
-    ) ?? panic("Could not borrow reference to the COA")
+    ) ?? panic("Could not borrow reference to the signer's CadenceOwnedAccount (COA). "
+        .concat("Ensure the signer account has a COA stored in the canonical /storage/evm path"))
 
     // Get the current balance of this COA
     return coa.balance()
@@ -236,12 +238,13 @@ transaction(amount: UFix64) {
         // Borrow the public capability to the COA from the desired account
         // This script could be modified to deposit into any account with a `EVM.CadenceOwnedAccount` capability
         self.coa = signer.capabilities.borrow<&EVM.CadenceOwnedAccount>(/public/evm)
-            ?? panic("Could not borrow reference to the COA")
+            ?? panic("Could not borrow reference to the signer's CadenceOwnedAccount (COA). "
+                .concat("Ensure the signer account has a COA stored in the canonical /storage/evm path"))
 
         // Withdraw the balance from the COA, we will use this later to deposit into the receiving account
         let vaultRef = signer.storage.borrow<auth(FungibleToken.Withdraw) &FlowToken.Vault>(
                 from: /storage/flowTokenVault
-            ) ?? panic("Could not borrow reference to the owner's Vault")
+            ) ?? panic("Could not borrow reference to the owner's FlowToken Vault")
         self.sentVault <- vaultRef.withdraw(amount: amount) as! @FlowToken.Vault
     }
 
@@ -282,7 +285,8 @@ transaction(amount: UFix64) {
         // Borrow a reference to the COA from the storage location we saved it to with the `EVM.Withdraw` entitlement
         let coa = signer.storage.borrow<auth(EVM.Withdraw) &EVM.CadenceOwnedAccount>(
             from: /storage/evm
-        ) ?? panic("Could not borrow reference to the COA")
+        ) ?? panic("Could not borrow reference to the signer's CadenceOwnedAccount (COA). "
+            .concat("Ensure the signer account has a COA stored in the canonical /storage/evm path"))
 
         // We must create a `EVM.Balance` struct to represent the amount of Flow tokens to withdraw
         let withdrawBalance = EVM.Balance(attoflow: 0)
@@ -332,7 +336,8 @@ transaction(evmContractHex: String, signature: String, args: [AnyStruct], gasLim
         // Borrow an entitled reference to the COA from the storage location we saved it to
         self.coa = signer.storage.borrow<auth(EVM.Call) &EVM.CadenceOwnedAccount>(
             from: /storage/evm
-        ) ?? panic("Could not borrow reference to the COA")
+        ) ?? panic("Could not borrow reference to the signer's CadenceOwnedAccount (COA). "
+            .concat("Ensure the signer account has a COA stored in the canonical /storage/evm path"))
     }
 
     execute {
@@ -360,7 +365,10 @@ transaction(evmContractHex: String, signature: String, args: [AnyStruct], gasLim
         // and it is up to the developer to use this result however it suits their application
         assert(
             result.status == EVM.Status.successful,
-            message: "EVM call failed"
+            message: "EVM call to ".concat(evmContractHex)
+                .concat(" and signature ").concat(signature)
+                .concat(" failed with error code ").concat(result.errorCode.toString())
+                .concat(": ").concat(result.errorMessage)
         )
     }
 }
@@ -400,7 +408,8 @@ transaction(to: String, amount: UInt) {
         self.recipient = EVM.addressFromString(to)
         self.recipientPreBalance = self.recipient.balance().attoflow
         self.coa = signer.storage.borrow<auth(EVM.Call) &EVM.CadenceOwnedAccount>(from: /storage/evm)
-            ?? panic("No COA found in signer's account")
+            ?? panic("Could not borrow reference to the signer's CadenceOwnedAccount (COA). "
+                .concat("Ensure the signer account has a COA stored in the canonical /storage/evm path"))
     }
 
     execute {
@@ -411,12 +420,18 @@ transaction(to: String, amount: UInt) {
             value: EVM.Balance(attoflow: amount)
         )
 
-        assert(res.status == EVM.Status.successful, message: "Failed to transfer FLOW to EVM address")
+        assert(
+            res.status == EVM.Status.successful,
+            message: "Failed to transfer FLOW to EVM address with error code ".concat(res.errorCode.toString())
+                .concat(": ").concat(res.errorMessage)
+        )
     }
 
     post {
         self.recipient.balance().attoflow == self.recipientPreBalance + amount:
-            "Problem transferring value to EVM address"
+            "Expected final balance ".concat((self.recipientPreBalance + amount).toString())
+            .concat(" but found actual balance ").concat(self.recipient.balance().attoflow.toString())
+            .concat(" after deposit of ").concat(amount.toString())
     }
 }
 ```
@@ -441,7 +456,8 @@ transaction(erc20AddressHex: String, to: String, amount: UInt256) {
         // Borrow an entitled reference to the COA from the canonical storage location
         self.coa = signer.storage.borrow<auth(EVM.Call) &EVM.CadenceOwnedAccount>(
             from: /storage/evm
-        ) ?? panic("Could not borrow reference to the COA")
+        ) ?? panic("Could not borrow reference to the signer's CadenceOwnedAccount (COA). "
+            .concat("Ensure the signer account has a COA stored in the canonical /storage/evm path"))
     }
 
     execute {
@@ -484,7 +500,8 @@ transaction(erc721AddressHex: String, to: String, id: UInt256) {
         // Borrow an entitled reference to the COA from the canonical storage location
         self.coa = signer.storage.borrow<auth(EVM.Call) &EVM.CadenceOwnedAccount>(
             from: /storage/evm
-        ) ?? panic("Could not borrow reference to the COA")
+        ) ?? panic("Could not borrow reference to the signer's CadenceOwnedAccount (COA). "
+            .concat("Ensure the signer account has a COA stored in the canonical /storage/evm path"))
     }
 
     execute {
@@ -535,7 +552,8 @@ transaction(erc721AddressHex: String, to: String, ids: [UInt256]) {
         // Borrow an entitled reference to the COA from the canonical storage location
         self.coa = signer.storage.borrow<auth(EVM.Call) &EVM.CadenceOwnedAccount>(
             from: /storage/evm
-        ) ?? panic("Could not borrow reference to the COA")
+        ) ?? panic("Could not borrow reference to the signer's CadenceOwnedAccount (COA). "
+            .concat("Ensure the signer account has a COA stored in the canonical /storage/evm path"))
     }
 
     execute {
@@ -586,7 +604,8 @@ transaction(bytecode: String) {
         // Borrow an entitled reference to the COA from the storage location we saved it to
         self.coa = signer.storage.borrow<auth(EVM.Deploy) &EVM.CadenceOwnedAccount>(
             from: /storage/evm
-        ) ?? panic("Could not borrow reference to the COA")
+        ) ?? panic("Could not borrow reference to the signer's CadenceOwnedAccount (COA). "
+            .concat("Ensure the signer account has a COA stored in the canonical /storage/evm path"))
     }
 
     execute {
