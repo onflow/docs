@@ -461,10 +461,15 @@ transaction(erc20AddressHex: String, to: String, amount: UInt256) {
     }
 
     execute {
+        // Encode the calldata for the ERC20 transfer
+        let calldata = EVM.encodeABIWithSignature(
+            "transfer(address,uint256)", // function signature
+            [EVM.addressFromString(to), amount] // function args
+        )
         // Call the contract at the given ERC20 address with encoded calldata and 0 value
         let result: EVM.Result = self.coa.call(
             to: EVM.addressFromString(erc20AddressHex), // deserialized address
-            data: EVM.encodeABIWithSignature("transfer(address,uint256)", []), // encoded calldata
+            data: calldata, // encoded calldata
             gasLimit: 100_000, // 100k gas should cover most erc20 transfers
             value: EVM.Balance(attoflow: UInt(0)) // no value required in most cases
         )
