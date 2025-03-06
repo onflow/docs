@@ -1,4 +1,14 @@
+---
+description: A list of Flow SDKs and clients for building applications that interact with the Flow network.
+---
+
 # Clients
+
+Flow provides a variety of SDKs and clients for building applications that interact with the Flow network. These SDKs and clients are available in multiple languages and platforms.
+
+## JavaScript (FCL)
+
+[Flow Client Library (FCL)](./fcl-js/index.md) is a package used to interact with user wallets and the Flow blockchain.
 
 ## Go SDK
 
@@ -15,10 +25,6 @@
 ## JVM
 
 [Flow JVM SDK](https://github.com/onflow/flow-jvm-sdk) is a library for JVM-compatible languages, implemented in Kotlin, that provides utilities to interact with the Flow blockchain.
-
-## JavaScript (FCL)
-
-[Flow Client Library (FCL)](./fcl-js/index.md) is a package used to interact with user wallets and the Flow blockchain.
 
 ## Swift
 
