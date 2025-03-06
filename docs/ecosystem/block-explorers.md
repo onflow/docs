@@ -67,4 +67,8 @@ Block explorers are user-friendly online tools that visually present blockchain 
 
 [Testnet Contract Browser](https://testnet.contractbrowser.com/) is also available for `Testnet Flow`.
 
+## Tracehawk
+
+[Tracehawk](https://tracehawk.io/) is a white-labeled blockchain explorer designed based on requirements of EVM chains, Appchains, and L2/L3 rollups. With TraceHawk, projects can have their custom block explorer with preferred features, capabilities, and intuitive design. Also, TraceHawk comes with managed and hosted services to streamline explorer maintenance and scaling to ensure performance, security, and compliance to avoid heavy lifting on your end. 
+
 </div>
