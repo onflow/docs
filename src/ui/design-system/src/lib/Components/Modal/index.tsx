@@ -1,52 +1,94 @@
-import React from 'react';
+import React, { Fragment } from 'react';
+import { Dialog, Transition } from '@headlessui/react';
+import clsx from 'clsx';
+import { Button } from '../Button';
 
 interface ModalProps {
   isOpen: boolean;
   onClose: () => void;
-  title: string;
+  title?: string;
   children: React.ReactNode;
+  className?: string;
+  scrollable?: boolean;
 }
 
-export const Modal: React.FC<ModalProps> = ({ isOpen, onClose, title, children }) => {
-  if (!isOpen) return null;
-
+const Modal: React.FC<ModalProps> = ({
+  isOpen,
+  onClose,
+  title,
+  children,
+  className,
+  scrollable = true, // default is scrollable
+}) => {
   return (
-    <div
-      className="fixed inset-0 z-[100] overflow-y-auto"
-      style={{ marginTop: 0 }}
-    >
-      <div className="flex items-center justify-center min-h-screen px-4 pt-4 pb-20 text-center sm:block sm:p-0">
-        <div className="fixed inset-0 transition-opacity" aria-hidden="true">
-          <div
-            className="absolute inset-0 bg-gray-900 dark:bg-gray-800 opacity-75"
-            onClick={onClose}
-          ></div>
-        </div>
+    <Transition appear show={isOpen} as={Fragment}>
+      <Dialog as="div" className="relative z-50" onClose={onClose}>
+        {/* Overlay */}
+        <Transition.Child
+          as={Fragment}
+          enter="ease-out duration-150"
+          enterFrom="opacity-0"
+          enterTo="opacity-100"
+          leave="ease-in duration-100"
+          leaveFrom="opacity-100"
+          leaveTo="opacity-0"
+        >
+          <div className="fixed inset-0 bg-black/20 dark:bg-black/60 backdrop-blur-sm" />
+        </Transition.Child>
 
-        <div className="inline-block align-bottom bg-white dark:bg-gray-900 rounded-lg text-left overflow-hidden shadow-xl transform transition-all sm:my-16 sm:align-middle sm:max-w-lg sm:w-full border border-gray-200 dark:border-gray-700">
-          <div className="bg-white dark:bg-gray-900 px-4 pt-5 pb-4 sm:p-6 sm:pb-4">
-            <div className="sm:flex sm:items-start">
-              <div className="mt-3 text-center sm:mt-0 sm:text-left w-full">
-                <div className="flex justify-between items-center mb-4 border-b border-gray-200 dark:border-gray-700 pb-4">
-                  <h3 className="text-2xl leading-6 font-bold text-gray-900 dark:text-white">
-                    {title}
-                  </h3>
-                  <button
-                    onClick={onClose}
-                    className="text-gray-600 hover:text-gray-800 dark:text-gray-300 dark:hover:text-gray-100 text-2xl font-semibold leading-none"
-                    aria-label="Close modal"
+        {/* Modal Panel */}
+        <div className="fixed inset-0 flex items-center justify-center p-4">
+          <Transition.Child
+            as={Fragment}
+            enter="ease-out duration-150"
+            enterFrom="opacity-0 scale-95"
+            enterTo="opacity-100 scale-100"
+            leave="ease-in duration-100"
+            leaveFrom="opacity-100 scale-100"
+            leaveTo="opacity-0 scale-95"
+          >
+            <Dialog.Panel
+              className={clsx(
+                'relative w-full max-w-md transform rounded-md border bg-gray-100 text-black shadow-2xl transition-all dark:bg-gray-800 dark:text-gray-100 dark:border-gray-700',
+                scrollable && 'max-h-[80vh] overflow-y-auto',
+                className,
+              )}
+              style={{
+                top: '50%',
+                left: '50%',
+                transform: 'translate(-50%, -50%)',
+                position: 'absolute',
+              }}
+            >
+              {/* Header */}
+              {title && (
+                <div className="px-4 pt-3 pb-6 border-b border-gray-300 dark:border-gray-700 flex justify-center relative">
+                  <Dialog.Title
+                    as="h3"
+                    className="text-lg font-semibold text-center mt-1 mb-0"
                   >
-                    ×
-                  </button>
+                    {title}
+                  </Dialog.Title>
+
+                  <Button
+                    variant="ghost"
+                    size="sm"
+                    className="absolute top-2 right-2"
+                    onClick={onClose}
+                  >
+                    &#10005;
+                  </Button>
                 </div>
-                <div className="text-gray-800 dark:text-gray-200 [&_img]:max-w-full [&_img]:h-auto">
-                  {children}
-                </div>
-              </div>
-            </div>
-          </div>
+              )}
+
+              {/* Content */}
+              <div className="px-4 py-5 pt-0">{children}</div>
+            </Dialog.Panel>
+          </Transition.Child>
         </div>
-      </div>
-    </div>
+      </Dialog>
+    </Transition>
   );
 };
+
+export default Modal;

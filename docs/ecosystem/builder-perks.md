@@ -5,7 +5,7 @@ sidebar_position: 8
 ---
 
 import { Card } from "@site/src/ui/design-system/src/lib/Components/Card";
-import { Modal } from "@site/src/ui/design-system/src/lib/Components/Modal";
+import Modal from "@site/src/ui/design-system/src/lib/Components/Modal";
 import React from "react";
 
 export const BuilderPerks = () => {
