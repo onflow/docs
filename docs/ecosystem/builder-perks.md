@@ -6,10 +6,27 @@ sidebar_position: 8
 
 import { Card } from "@site/src/ui/design-system/src/lib/Components/Card";
 import Modal from "@site/src/ui/design-system/src/lib/Components/Modal";
+import { Button } from "@site/src/ui/design-system/src/lib/Components/Button";
 import React from "react";
+import { useCurrentUser } from "@site/src/hooks/use-current-user";
+import { useProgress } from "@site/src/hooks/use-progress";
+import { useProfile } from "@site/src/hooks/use-profile";
 
 export const BuilderPerks = () => {
   const [activeModal, setActiveModal] = React.useState(null);
+  const { user, logIn } = useCurrentUser();
+  const { profile } = useProfile(user?.addr);
+  const { getProgress } = useProgress();
+  const progress = user?.addr ? getProgress() : 0;
+  const isProfileComplete = progress === 1;
+
+  const handleCardClick = (modalId) => {
+    if (!user?.loggedIn || !isProfileComplete) {
+      setActiveModal('profile-check');
+    } else {
+      setActiveModal(modalId);
+    }
+  };
 
   return (
     <div>
@@ -18,30 +35,56 @@ export const BuilderPerks = () => {
           title="QuickNode"
           logo="/img/ecosystem/quicknode.svg"
           description="Power your Web3 journey with QuickNode - the leading end-to-end development platform for Web3 builders. Get $100 credit with our special offer."
-          onClick={() => setActiveModal('quicknode')}
+          onClick={() => handleCardClick('quicknode')}
         />
         
         <Card
           title="Olympix"
           logo="/img/ecosystem/olympix-logo.svg"
           description="State-of-the-art, developer-first security tools for in-house assurance. Get $2000 in credits for your team."
-          onClick={() => setActiveModal('olympix')}
+          onClick={() => handleCardClick('olympix')}
         />
 
         <Card
           title="Builder Gas Subsidy"
           logo="/img/ecosystem/flow.svg"
           description="Get enough FLOW to launch on Mainnet and sponsor up to 10,000 transactions for your users."
-          onClick={() => setActiveModal('gas-subsidy')}
+          onClick={() => handleCardClick('gas-subsidy')}
         />
 
         <Card
           title="Alchemy for Startups"
           logo="/img/ecosystem/alchemy.svg"
           description="Get free credits, product discounts, and access to an extensive partner network to help accelerate your project's growth."
-          onClick={() => setActiveModal('alchemy')}
+          onClick={() => handleCardClick('alchemy')}
         />
       </div>
+
+      {/* Profile Check Modal */}
+      <Modal
+        isOpen={activeModal === 'profile-check'}
+        onClose={() => setActiveModal(null)}
+        title="Complete Your Profile"
+      >
+        <div className="space-y-6 text-center">
+          <p className="text-lg">
+            {!user?.loggedIn 
+              ? "Please connect your wallet to access Flow Builder Perks."
+              : "Complete your Flow Builder Profile to access exclusive perks."}
+          </p>
+          
+          {user?.loggedIn && (
+            <div className="space-y-4">
+              <div className="w-24 h-24 mx-auto bg-gray-200 dark:bg-gray-700 rounded-full flex items-center justify-center">
+                <span className="text-2xl font-bold">{Math.floor(progress * 100)}%</span>
+              </div>
+              <p>Your profile is {Math.floor(progress * 100)}% complete</p>
+            </div>
+          )}
+
+          
+        </div>
+      </Modal>
 
       <Modal 
         isOpen={activeModal === 'quicknode'} 
