@@ -19,6 +19,9 @@ keywords:
   - blockchain architecture
   - decentralization
   - consumer apps
+  - MEV
+  - miner-extractable value
+  - maximum extractable value
 ---
 
 
@@ -51,6 +54,7 @@ Flow is a fast, decentralized, and developer-friendly blockchain designed to be 
 - **Multi-role architecture:** The [multi-role architecture] of Flow allows the network to [scale without sharding] to serve billions of users without reducing the decentralization of consensus and verification.
 - **True Fast Finality**: For most other networks, it takes minutes, [a day], or even [a week] to reach hard finality - the point in which a transaction cannot be reversed.  On Flow, the median time for finality is [under 10 seconds], without compromising security.
 - **Native VRF**: Flow provides [onchain randomness] at the protocol level.  Instead of implementing a complex setup and [paying $10+ USD per number], simply call the built-in function.
+- **MEV Resistance**: Flow is designed to [ensure equitable access] by resisting MEV.  Maximum Extractable Value, also know as Miner-Extractable Value (MEV), is a practice common in other blockchains in which the builder of a block can profit at your expense by manipulating where and how your transaction is included.  
 - **Consumer Onboarding:** Flow was designed for mainstream consumers, with payment onramps catalyzing a safe and low-friction path from fiat to crypto.
 - **EVM Equivalence**: The [Cadence] Virtual Machine (VM) is powerful enough to allow other VMs to run inside of it, almost like a Docker Container.  The first one integrated in this way is [EVM] and the EVM RPC API.
 - **Efficient Gas Costs**: The Flow blockchain is extremely efficient, allowing apps to do more computation at lower costs. 
@@ -67,7 +71,7 @@ Flow is a fast, decentralized, and developer-friendly blockchain designed to be 
 - **Speed, Cost, and Compatibility**: Flow EVM can already run all of your audited Solidity contracts at an average of less than 1 cent per transaction ([usually way less!]).  Unlike L2 solutions, Flow EVM reaches true finality in seconds - not in [a week]. 😳
 - **Bridge from Other EVM Networks**: You can [bridge] hundreds of assets from dozens of chains to Flow.
 - **VM Token Bridge**: Assets can be bridged between Flow Cadence and Flow EVM easily and atomically with the VM token bridge. Assets can even be bridged **and used** in a **single** transaction, allowing full composability between the EVM and Cadence environments.
-- **Access to Cadence**: Access Cadence features and contracts from Flow EVM to take advantage of native [VRF], higher computation for lower cost, and any asset on Cadence Flow.
+- **Access to Cadence**: Access Cadence features and contracts from Flow EVM to take advantage of native [VRF], higher computation for lower cost, and any asset on Cadence Flow.  You can also build [cross-vm apps] on top of the wagmi/viem/RainbowKit stack, enabling batched transactions and more.
 - **EVM Equivalence:** Flow EVM is truly _EVM Equivalent_, not just _EVM Compatible_.  It runs exactly the same as EVM mainnet, which means builders won't run into "minor" variances or endless "quirks" when they try to integrate.  If it works on Ethereum Mainnet, it will work with Flow EVM.
 
 ## Learning Shortcuts
@@ -141,6 +145,7 @@ The [FLOW] (or $FLOW) token is the native currency for the Flow network. Develop
 [multi-role architecture]: https://www.onflow.org/primer
 [onchain randomness]: ./advanced-concepts/randomness.md
 [paying $10+ USD per number]: https://docs.chain.link/vrf/v2-5/billing
+[ensure equitable access]: ./basics/mev-resistance.md
 [scale without sharding]: https://www.onflow.org/post/flow-blockchain-multi-node-architecture-advantages
 [a day]: https://docs.zksync.io/zk-stack/concepts/finality#finality-on-zksync-era
 [a week]: https://docs.optimism.io/stack/rollup/overview#fault-proofs
@@ -154,6 +159,7 @@ The [FLOW] (or $FLOW) token is the native currency for the Flow network. Develop
 [Guide for Solidity Developers]: https://cadence-lang.org/docs/solidity-to-cadence
 [account abstraction]: https://flow.com/account-abstraction
 [bridge]: ../ecosystem/bridges.md
+[cross-vm apps]: ../tutorials/cross-vm-apps/index.md
 [Getting Started]: ./getting-started/contract-interaction.md
 [core contracts]: ./core-contracts/index.md
 [FLOW]: ./core-contracts/03-flow-token.md

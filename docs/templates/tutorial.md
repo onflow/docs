@@ -1,5 +1,5 @@
 ---
-title: Title, same as below
+title: Title, shorten if necessary, will be on sidebar
 description: A one sentence description.
 sidebar_position: 5
 keywords:
@@ -8,6 +8,8 @@ keywords:
   - the main topics
   - cursor is great at this
 ---
+
+# Title
 
 1-2 Paragraphs describing what the tutorial will teach, why someone might learn it, and if possible, a link to a live version of the app demoing the techniques and content taught.
 
