@@ -73,22 +73,37 @@ Below is a list of commonly used DeFi contracts on Flow:
 
 #### Flow EVM Mainnet
 
-| Contract Name                 | Flow EVM Mainnet Address                     |
-| ----------------------------- | -------------------------------------------- |
-| [ERC1967Proxy.sol (Pyth)][18] | `0x2880aB155794e7179c9eE2e38200202908C17B43` |
+| Contract Name                  | Flow EVM Mainnet Address                     |
+|--------------------------------| -------------------------------------------- |
+| [ERC1967Proxy.sol (Pyth)][18]  | `0x2880aB155794e7179c9eE2e38200202908C17B43` |
+| [ERC1967Proxy.sol (Stork)][28] | `0xacC0a0cF13571d30B4b8637996F5D6D774d4fd62` |
+
+
+#### Flow Cadence Testnet
+
+| Contract Name                     | Flow Cadence Mainnet Address |
+|-----------------------------------| ---------------------------- |
+| [BandOracle.cdc (Band)][19]       | `0x2c71de7af78d1adf`         |
 
 #### Flow Cadence Mainnet
 
 | Contract Name                             | Flow Cadence Mainnet Address |
-| ----------------------------------------- | ---------------------------- |
+|-------------------------------------------| ---------------------------- |
 | [PublicPriceOracle.cdc (IncrementFi)][19] | `0xec67451f8a58216a`         |
+| [BandOracle.cdc (Band) Protocol][19]      | `0x6801a6222ebf784a`         |
 
-## Other
+## Ethereum Attestation Service
+
+More information can be found on the Credora docs site for [EAS on Flow](https://credora.gitbook.io/eas-for-flow). 
+
+Mainnet EAS Explorer: [https://flow.easscan.credora.io] (https://flow.easscan.credora.io)
+Testnet EAS Explorer: [https://flow-testnet.easscan.credora.io] (https://flow-testnet.easscan.credora.io)
 
 | Contract Name                                           | Flow EVM Mainnet Address                     |
 | ------------------------------------------------------- | -------------------------------------------- |
 | [SchemaRegistry.sol (Ethereum Attestation Service)][20] | `0xB0cF748a05AEA8D59e15834446CFC95bcFF510F0` |
 | [EAS.sol (Ethereum Attestation Service)][21]            | `0xc6376222F6E009A705a34dbF1dF72fEf8efB3964` |
+
 
 [1]: https://evm.flowscan.io/address/0x4412140D52C1F5834469a061927811Abb6026dB7?tab=contract
 [2]: https://evm.flowscan.io/address/0xf0E48dC92f66E246244dd9F33b02f57b0E69fBa9?tab=contract
@@ -117,3 +132,4 @@ Below is a list of commonly used DeFi contracts on Flow:
 [25]: https://contractbrowser.com/A.b78ef7afa52ff906.SwapInterfaces
 [26]: https://contractbrowser.com/A.b78ef7afa52ff906.SwapConfig
 [27]: https://contractbrowser.com/A.a6850776a94e6551.SwapRouter
+[28]: https://evm.flowscan.io/address/0xacC0a0cF13571d30B4b8637996F5D6D774d4fd62?tab=contract
