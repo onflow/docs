@@ -94,12 +94,6 @@ Below is a list of commonly used DeFi contracts on Flow:
 
 ## Ethereum Attestation Service
 
-The Ethereum Attestation Service (EAS) is a robust, battle tested and multi-faceted infrastructure that enables the creation, verification, and 
-exploration of on-chain attestations. This provides the foundation for a wide range of applications, from identity verification to 
-decentralized reputation systems. This build out aims to unlock new financial applications on Flow, such as transparent DeFi risk, 
-collateral-efficient lending protocols, programmatic insurance for DeFi pools, smart contract based portfolio construction (using risk-reward parameters), 
-while also setting the stage for broader use cases enabled by EAS.
-
 More information can be found on the Credora docs site for [EAS on Flow](https://credora.gitbook.io/eas-for-flow). 
 
 Mainnet EAS Explorer: [https://flow.easscan.credora.io] (https://flow.easscan.credora.io)
