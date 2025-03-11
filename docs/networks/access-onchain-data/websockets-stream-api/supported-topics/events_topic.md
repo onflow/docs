@@ -42,7 +42,7 @@ Started from block height `106197172` for contracts `A.f919ee77447b7497.FlowFees
 }
 ```
 
-Started from block id `44774d980c75d9380caaf4c65a2ee6c4bde9a1e6da6aa858fe2dc5e4a7aff773` for acount addresses `0xe544175ee0461c4b` and `2d4c3caffbeab845` with heartbeat interval equal 5 blocks:
+Started from block id `44774d980c75d9380caaf4c65a2ee6c4bde9a1e6da6aa858fe2dc5e4a7aff773` for account addresses `0xe544175ee0461c4b` and `2d4c3caffbeab845` with heartbeat interval equal 5 blocks:
 
 ```json
 {
@@ -68,7 +68,7 @@ Started from block id `44774d980c75d9380caaf4c65a2ee6c4bde9a1e6da6aa858fe2dc5e4a
 | `start_block_height` | STRING | NO       | The height of the block from which the subscription starts. If this argument is set, it is **not** possible to set `start_block_id`  |
 | `heartbeat_interval` | STRING | NO       | Maximum number of blocks between messages after which a response with no events is returned. This helps the client track progress for sparse event filters. |
 | `event_types`        | LIST   | NO       | A comma-separated list of event types to include.                                                                                    |
-| `addresses`          | LIST   | NO       | A comma-separated list of addresses who's events should be included. The format could be `"0xe544175ee0461c4b"` or `"e544175ee0461c4b"`                                                 |
+| `addresses`          | LIST   | NO       | A comma-separated list of addresses who's events should be included. The format could be `"0xe544175ee0461c4b"` or `"e544175ee0461c4b"`.                                                 |
 | `contracts`          | LIST   | NO       | A comma-separated list of contracts who's events should be included. The format is `"A.f919ee77447b7497.FlowFees"`                                                                |
 
 If neither `start_block_id` nor `start_block_height` is set, the subscription will start from the latest block based on its status.
