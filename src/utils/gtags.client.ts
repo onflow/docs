@@ -58,11 +58,10 @@ export const event = ({
     event_category: category,
     event_label: label,
     value: value,
+    page_title: document.title,
+    page_location: window.location.href,
+    page_path: window.location.pathname,
   };
-
-  if (location) {
-    eventPayload.page_location = window.location.href;
-  }
 
   window.gtag("event", action, eventPayload);
 }

@@ -13,13 +13,12 @@ export default function FeedbackFaces() {
     const handleFeedbackClick = (feedbackType: string) => {
         setClickedFace(feedbackType);
 
-        const label = `${feedbackType}`;
-
         event({
             action: "feedback_click",
             category: "feedback",
-            label: label,
-            location: true,
+            label: feedbackType,
+            value: feedbackType === "happy" ? 2 : feedbackType === "neutral" ? -1 : -2,
+            location: true
         });
 
         setTimeout(() => setClickedFace(null), 300);
