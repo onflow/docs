@@ -22,14 +22,14 @@ data.
     - Each subscription may provide up to 20 responses per second. 
     - After 1 minute of inactivity (no data sent or received) the connection is closed. 
 
-- **Supported Topics**:
-    - `block_digests`
-    - `block_headers`
-    - `blocks`  
-    - `events`
-    - `account_statuses`
-    - `transaction_statuses`
-    - `send_and_get_transaction_statuses`
+- **Supported Topics**: See more details on [Supported Topics](supported-topics/index.md) page.
+    - [`block_digests`](supported-topics/block_digests_topic.md)
+    - [`block_headers`](supported-topics/block_headers_topic.md)
+    - [`blocks`](supported-topics/blocks_topic.md)
+    - [`events`](supported-topics/events_topic.md)
+    - [`account_statuses`](supported-topics/account_statuses_topic.md)
+    - [`transaction_statuses`](supported-topics/transaction_statuses_topic.md)
+    - [`send_and_get_transaction_statuses`](supported-topics/send_and_get_transaction_statuses_topic.md)
     
 - **Notes**: Always handle errors gracefully and close unused subscriptions to maintain efficient connections.
 
