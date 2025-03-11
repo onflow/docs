@@ -1,6 +1,6 @@
 ---
-title: Account statuses topic
-sidebar_label: Account statuses topic
+title: Account statuses
+sidebar_label: Account statuses
 sidebar_position: 6
 ---
 

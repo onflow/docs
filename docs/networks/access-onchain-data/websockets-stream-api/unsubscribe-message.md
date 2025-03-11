@@ -1,7 +1,7 @@
 ---
 title: Unsubscribe request message format
 sidebar_label: Unsubscribing from topic
-sidebar_position: 4
+sidebar_position: 3
 ---
 
 # Unsubscribe message format

@@ -1,6 +1,6 @@
 ---
-title: Send and get transaction statuses topic
-sidebar_label: Send and get transaction statuses topic
+title: Send and get transaction statuses
+sidebar_label: Send and get transaction statuses
 sidebar_position: 8
 ---
 

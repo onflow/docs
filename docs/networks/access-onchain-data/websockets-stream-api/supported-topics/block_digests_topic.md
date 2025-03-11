@@ -1,6 +1,6 @@
 ---
-title: Block digests topic
-sidebar_label: Block digests topic
+title: Block digests
+sidebar_label: Block digests
 sidebar_position: 2
 ---
 
@@ -8,17 +8,46 @@ Provides a summarized version of block information, including only the block ID,
 
 ## Example Request
 
+Started from latest block:
+
 ```json
 {
-  "subscription_id": "some-id-1",
-  "action": "subscribe",
-  "topic": "block_digests",
-  "arguments": {
-    "block_status": "sealed",
-    "start_block_height": "10530102"
-  }
+    "subscription_id": "some-id",
+    "action": "subscribe",
+    "topic": "block_digests",
+    "arguments": {
+        "block_status": "sealed"
+    }
 }
-```  
+```
+
+Started from block height `106192109`:
+
+```json
+{
+    "subscription_id": "some-id",
+    "action": "subscribe",
+    "topic": "block_digests",
+    "arguments": {
+        "block_status": "sealed",
+        "start_block_height": "106192109"
+    }
+}
+```
+
+Started from block id `37193c008576c5f9e3fb9738d4cc53c9ca021ca593e437eb79107c13ec5a1758`:
+
+```json
+{
+    "subscription_id": "some-id",
+    "action": "subscribe",
+    "topic": "block_digests",
+    "arguments": {
+        "block_status": "sealed",
+        "start_block_id": "37193c008576c5f9e3fb9738d4cc53c9ca021ca593e437eb79107c13ec5a1758"
+    }
+}
+```
 
 ### Request Arguments
 
@@ -34,12 +63,12 @@ If neither `start_block_id` nor `start_block_height` is set, the subscription wi
 
 ```json
 {
-  "subscription_id": "some-id-1",
-  "topic": "block_digests",
-  "payload": {
-        "id": "910b...",
-        "height": "10530103",
-        "timestamp": "2024-03-19T15:22:12.600529133Z",
+    "subscription_id": "some-id",
+    "topic": "block_digests",
+    "payload": {
+        "block_id": "311ca4b8530fad041356ace3ba27cd6ca8bed53d166b4cefdde4c3ae414940d5",
+        "height": "106190012",
+        "timestamp": "2025-03-11T11:08:58.504803374Z"
     }
 }
 ```

@@ -1,6 +1,6 @@
 ---
-title: Transaction statuses topic
-sidebar_label: Transaction statuses topic
+title: Transaction statuses
+sidebar_label: Transaction statuses
 sidebar_position: 7
 ---
 
