@@ -18,7 +18,6 @@ export default function FeedbackFaces() {
             category: "feedback",
             label: feedbackType,
             value: feedbackType === "happy" ? 2 : feedbackType === "neutral" ? -1 : -2,
-            location: true
         });
 
         setTimeout(() => setClickedFace(null), 300);

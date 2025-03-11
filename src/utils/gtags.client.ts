@@ -36,14 +36,12 @@ export const event = ({
   action = "unknown",
   category,
   label,
-  value,
-  location
+  value
 }: {
   action?: string;
   category?: string;
   label?: string;
   value?: number | string;
-  location?: boolean;
 }) => {
   if (process.env.NODE_ENV !== "production") return
 
