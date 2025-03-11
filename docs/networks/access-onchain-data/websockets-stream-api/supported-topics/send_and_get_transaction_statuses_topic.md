@@ -11,29 +11,27 @@ Sends a transaction and provides updates on its status changes.
 ```json
 {
   "subscription_id": "some-id-7",
-  "action": "subscribe",
-  "topic": "send_and_get_transaction_statuses",
+  "action": "subscribe",  
+  "topic": "send_and_get_transaction_statuses"
   "arguments": {
-    "script": "access(all) fun main() {}",
     "arguments": [],
-    "reference_block_id": "a3f1c4d5...",
-    "gas_limit": "1000",
-    "payer": "01cf...",
-    "proposal_key": {
-      "address": "01cf...",
-      "key_index": 0,
-      "sequence_number": 42
-    },
-    "authorizers": [
-      "01cf...",
-      "179b..."
-    ],
-    "payload_signatures": [
-        //...
-    ],
+    "authorizers": ["dba05362251g43g4"],
     "envelope_signatures": [
-      //...
-    ]
+      {
+        "address": "dba05362251g43g4",
+        "key_index": "0",
+        "signature": "PJPVEOCtPKubTEpPqd4zrrSXo1RhpABAMDuzIchgBje8gyh04XuWY4f/tu+c0llDhOU/5sQBokeOTdygaS6eTQ=="
+      }
+    ],
+    "gas_limit": "1000",
+    "payer": "dba05362251g43g4",
+    "proposal_key": {
+      "address": "dba05362251g43g4",
+      "key_index": "0",
+      "sequence_number": "0"
+    },
+    "reference_block_id": "817d7c1d2c13a4bd37c182747a4116b45cd175c0ba4878071c33f0f278b37dd7",
+    "script": "CgkJCXRyYW5zYWN0aW9uIHsKCQkJCXByZXBhcmUoYWNjOiAmQWNjb3VudCkge30KCQkJCWV4ZWN1dGUgewoJCQkJCWxvZygidGVzdCIpCgkJCQl9CgkJCX0KCQk="
   }
 }
 ```  
@@ -54,32 +52,23 @@ Sends a transaction and provides updates on its status changes.
 
 ```json
 {
-  "subscription_id": "some-id-7",
-    "topic": "send_and_get_transaction_statuses",
-    "payload": {
-        "transaction_result": {
-            "block_id": "e613...",
-            "collection_id": "3c48...",
-            "execution": "Success",
-            "status": "Sealed",
-            "status_code": 0,
-            "error_message": "",
-            "computation_used": "0",
-            "events": [
-                {
-                    "type": "A.4eb8a10cb9f87357.NFTStorefront.ListingAvailable",
-                    "transaction_id": "7b02878855772537176dbf3c48c44bc93c4a55be2a5e7b7fb3641e4295343473",
-                    "transaction_index": "1",
-                    "event_index": "0",
-                    "payload": "eyJ2...."
-                },
-                //...
-            ],
-            "_links": {
-                "_self": "/v1/transaction_results/7b02..."
-            }
-        },
-        "message_index": 3
-    }
+  "subscription_id": "some-id",
+  "topic": "send_and_get_transaction_statuses",
+  "payload": {
+    "transaction_result": {
+      "block_id": "7ad167602487665db095f7cb0b95139e5dcaf3ad2479ee4d14cade35b7d4bbdc",
+      "collection_id": "d0855ed45c16be2831ab9892ec8a9ddfd10a0e01e683466971cfd87c759bf7d1",
+      "execution": "Failure",
+      "status": "Sealed",
+      "status_code": 1,
+      "error_message": "[Error Code: 1009] error caused by: 1 error occurred:\n\t* transaction verification failed: [Error Code: 1006] invalid proposal key: public key 0 on account dba05362251g43g4 does not have a valid signature: [Error Code: 1009] invalid envelope key: public key 0 on account dba05362251g43g4 does not have a valid signature: signature is not valid\n\n",
+      "computation_used": "0",
+      "events": [],
+      "_links": {
+        "_self": "/v1/transaction_results/92014de98466a6304ecd821c95ee2612e248c22419d243e6e3ff4d138dffde04"
+      }
+    },
+    "message_index": 3
+  }
 }
 ```
