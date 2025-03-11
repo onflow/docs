@@ -78,7 +78,7 @@ To receive data from a specific topic, send a subscription request in JSON forma
 - **`subscription_id`**(optional): A unique identifier for the subscription (a string with maximum length constraint of 20 characters). If omitted, the server generates one.
 - **`action`**: The action to perform. Supported actions include: `subscribe`, `unsubscribe`, `list_subscriptions`.
 - **`topic`**: The topic to subscribe to. See the supported topics in the Overview.
-- **`arguments`**: Additional topic specific arguments for subscriptions, such as `start_block_height`, `start_block_id`, and others.
+- **`arguments`**: Additional topic specific arguments for subscriptions, such as `start_block_height`, `start_block_id`, and others. See more details about arguments for each topic on [Supported Topics](supported-topics/index.md) page.
 
 ### Successful Response Format
 
