@@ -31,24 +31,7 @@ export const BuilderPerks = () => {
   return (
     <div>
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-        <ActionCard
-          heading="QuickNode"
-          description="Power your Web3 journey with QuickNode - the leading end-to-end development platform for Web3 builders. Get $100 credit with our special offer."
-          icon="quicknode"
-          iconColor="white"
-          cardColor="black"
-          onClick={() => handleCardClick('quicknode')}
-        />
-        
-        <ActionCard
-          heading="Olympix"
-          description="State-of-the-art, developer-first security tools for in-house assurance. Get $2000 in credits for your team."
-          icon="olympix-logo"
-          iconColor="white"
-          cardColor="black"
-          onClick={() => handleCardClick('olympix')}
-        />
-
+       
         <ActionCard
           heading="Builder Gas Subsidy"
           description="Get enough FLOW to launch on Mainnet and sponsor up to 10,000 transactions for your users."
@@ -66,7 +49,36 @@ export const BuilderPerks = () => {
           cardColor="black"
           onClick={() => handleCardClick('alchemy')}
         />
-      </div>
+
+        <ActionCard
+          heading="QuickNode"
+          description="Power your Web3 journey with QuickNode - the leading end-to-end development platform for Web3 builders. Get $100 credit with our special offer."
+          icon="quicknode"
+          iconColor="white"
+          cardColor="black"
+          onClick={() => handleCardClick('quicknode')}
+        />
+
+        <ActionCard
+          heading="Thirdweb"
+          description="Get $99 worth of production-grade tools to build complete web3 apps and games on any platform with 1 month of free Growth & Engine tier access."
+          icon="thirdweb"
+          iconColor="white"
+          cardColor="black"
+          onClick={() => handleCardClick('thirdweb')}
+        />
+ 
+        
+        <ActionCard
+          heading="Olympix"
+          description="State-of-the-art, developer-first security tools for in-house assurance. Get $2000 in credits for your team."
+          icon="olympix-logo"
+          iconColor="white"
+          cardColor="black"
+          onClick={() => handleCardClick('olympix')}
+        />
+
+       </div>
 
       {/* Profile Check Modal */}
       <Modal
@@ -130,11 +142,11 @@ export const BuilderPerks = () => {
           </ul>
 
           <h3 className="text-xl font-bold">How to Claim</h3>
-          Go to the signup page below and enter the code:
-          <p className="font-mono">BUILDWITHFLOW</p>
-          <div className="space-y-2">
-            <a href="https://www.quicknode.com/" className="text-blue-600 hover:text-blue-800 block">→ Sign up</a>
-          </div>
+          Go to the <a href="https://www.quicknode.com/"> signup page </a>
+   
+          and enter the code:
+          <span className="font-mono bg-gray-100 dark:bg-gray-700 px-2 py-1 rounded">BUILDWITHFLOW</span>
+        
         </div>
       </Modal>
 
@@ -207,6 +219,42 @@ export const BuilderPerks = () => {
           <ol className="list-decimal pl-6 space-y-2">
             <li>Fill out the application form at <a href="https://www.alchemy.com/startup-program" className="text-blue-600 hover:text-blue-800">alchemy.com/startup-program</a></li>
             <li>Email zaib@alchemy.com and CC ali.serag@flowfoundation.org with 'Flow Alchemy Perk' in the email title. Ensure to include your GitHub username in the email body and a link to your project.</li>
+          </ol>
+        </div>
+      </Modal>
+
+      <Modal 
+        isOpen={activeModal === 'thirdweb'} 
+        onClose={() => setActiveModal(null)}
+        title="Thirdweb - Free Growth & Engine Tier Access"
+      >
+        <div className="space-y-4">
+          <p>
+            Thirdweb provides a full stack web3 development platform. Get $99 credits for 1 month of free access to production-grade tools 
+            to build complete web3 apps and games on any platform.
+          </p>
+          
+          <h3 className="text-xl font-bold">What You Get</h3>
+          <ul className="list-disc pl-6">
+            <li>Production Grade Infrastructure and RPCs</li>
+            <li>Custom Branding & User Analytics</li>
+            <li>Nonce Management & Automatic Retries</li>
+            <li>Securely Managed Backend Wallets with Team Access Controls</li>
+          </ul>
+
+          <h3 className="text-xl font-bold">Available Stacks</h3>
+          <ul className="list-disc pl-6">
+            <li><a href="https://thirdweb.com/solutions/gaming" className="text-blue-600 hover:text-blue-800">Gaming Stack</a> - Build seamless onchain games with web3-powered features on Unity, Unreal Engine, & any platform</li>
+            <li><a href="https://thirdweb.com/nebula" className="text-blue-600 hover:text-blue-800">AI Stack</a> - Powerful blockchain AI model with access to live and historical onchain data</li>
+            <li><a href="https://thirdweb.com/solutions/defi" className="text-blue-600 hover:text-blue-800">DeFi Stack</a> - Build DeFi applications with secure onboarding and cross-chain capabilities</li>
+            <li><a href="https://thirdweb.com/solutions/consumer-apps" className="text-blue-600 hover:text-blue-800">Consumer App Stack</a> - Create abstracted, secure, and decentralized digital experiences</li>
+          </ul>
+
+          <h3 className="text-xl font-bold">How to Claim</h3>
+          <ol className="list-decimal pl-6 space-y-2">
+            <li>Go to the <a href="https://thirdweb.com/dashboard" className="text-blue-600 hover:text-blue-800">thirdweb Dashboard</a></li>
+            <li>Apply coupon code: <span className="font-mono bg-gray-100 dark:bg-gray-700 px-2 py-1 rounded">3WEBDEV-FLOW</span></li>
+            <li>Upgrade to Growth and deploy an Engine instance</li>
           </ol>
         </div>
       </Modal>

@@ -76,6 +76,6 @@ export function useIcons() {
     'olympix-logo': '/img/ecosystem/olympix-logo.svg',
     'flow': '/img/ecosystem/flow.svg',
     'alchemy': '/img/ecosystem/alchemy.svg',
-   
+    'thirdweb': '/img/ecosystem/thirdweb.svg',
   }), []);
 }
