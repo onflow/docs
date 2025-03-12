@@ -11,9 +11,11 @@ import React from "react";
 import { useCurrentUser } from "@site/src/hooks/use-current-user";
 import { useProgress } from "@site/src/hooks/use-progress";
 import { useProfile } from "@site/src/hooks/use-profile";
+import ProfileModal from "@site/src/components/ProfileModal";
 
 export const BuilderPerks = () => {
   const [activeModal, setActiveModal] = React.useState(null);
+  const [isProfileModalOpen, setIsProfileModalOpen] = React.useState(false);
   const { user, logIn } = useCurrentUser();
   const { profile } = useProfile(user?.addr);
   const { getProgress } = useProgress();
@@ -110,7 +112,7 @@ export const BuilderPerks = () => {
                 if (!user?.loggedIn) {
                   logIn();
                 } else {
-                  window.location.href = '/?modal=profile';
+                  setIsProfileModalOpen(true);
                 }
                 setActiveModal(null);
               }}
@@ -120,6 +122,11 @@ export const BuilderPerks = () => {
           </div>
         </div>
       </Modal>
+
+      <ProfileModal
+        isOpen={isProfileModalOpen}
+        onClose={() => setIsProfileModalOpen(false)}
+      />
 
       <Modal 
         isOpen={activeModal === 'quicknode'} 
