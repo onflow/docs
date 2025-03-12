@@ -88,8 +88,8 @@ export const BuilderPerks = () => {
         onClose={() => setActiveModal(null)}
         title="Complete Your Profile"
       >
-        <div className="space-y-6 text-center">
-          <p className="text-lg">
+        <div className="space-y-8 text-center max-w-md mx-auto py-4">
+          <p className="text-lg text-gray-600 dark:text-gray-300">
             {!user?.loggedIn 
               ? "Please connect your wallet to access Flow Builder Perks."
               : "Complete your Flow Builder Profile to access exclusive perks."}
@@ -97,29 +97,27 @@ export const BuilderPerks = () => {
           
           {user?.loggedIn && (
             <div className="space-y-4">
-              <div className="w-24 h-24 mx-auto bg-gray-200 dark:bg-gray-700 rounded-full flex items-center justify-center">
-                <span className="text-2xl font-bold">{Math.floor(progress * 100)}%</span>
+              <div className="w-20 h-20 mx-auto bg-gray-100 dark:bg-gray-800 rounded-full flex items-center justify-center">
+                <span className="text-2xl font-medium">{Math.floor(progress * 100)}%</span>
               </div>
-              <p>Your profile is {Math.floor(progress * 100)}% complete</p>
+              <p className="text-gray-600 dark:text-gray-300">Profile completion status</p>
             </div>
           )}
 
-          <div className="flex justify-center">
-            <Button
-              variant="primary"
-              size="lg"
-              onClick={() => {
-                if (!user?.loggedIn) {
-                  logIn();
-                } else {
-                  setIsProfileModalOpen(true);
-                }
-                setActiveModal(null);
-              }}
-            >
-              {!user?.loggedIn ? "Connect Wallet" : "Complete Profile"}
-            </Button>
-          </div>
+          <Button
+            variant="primary"
+            size="lg"
+            onClick={() => {
+              if (!user?.loggedIn) {
+                logIn();
+              } else {
+                setIsProfileModalOpen(true);
+              }
+              setActiveModal(null);
+            }}
+          >
+            {!user?.loggedIn ? "Connect Wallet" : "Complete Profile"}
+          </Button>
         </div>
       </Modal>
 
@@ -128,141 +126,329 @@ export const BuilderPerks = () => {
         onClose={() => setIsProfileModalOpen(false)}
       />
 
+      {/* QuickNode Modal */}
       <Modal 
         isOpen={activeModal === 'quicknode'} 
         onClose={() => setActiveModal(null)}
-        title="QuickNode - $100 Credit for Builders"
+        title="QuickNode"
       >
-        <div className="space-y-4">
-          <p>
-            QuickNode is the leading end-to-end development platform for Web3 builders, trusted by enterprises worldwide for reliable, high-performance blockchain infrastructure. Whether you're building the next DeFi protocol or launching an NFT marketplace, we've got you covered.
-          </p>
-          
-          <h3 className="text-xl font-bold">Offer Details</h3>
-          <p>Get 2 months of supercharged development with our Build plan, including:</p>
-          <ul className="list-disc pl-6">
-            <li>Lightning-fast RPC endpoints</li>
-            <li>Real-time WebSocket streams</li>
-            <li>Historical data backfills</li>
-            <li>Multi-chain support</li>
-            <li>Advanced monitoring tools</li>
-          </ul>
+        <div className="max-w-2xl space-y-12 py-6">
+          <header className="flex items-center justify-between pb-6 border-b border-gray-200 dark:border-gray-700">
+            <div className="pr-8">
+              <h2 className="text-2xl font-semibold mb-1">$100 Credit for Builders</h2>
+              <p className="text-gray-600 dark:text-gray-300">Enterprise-grade Web3 infrastructure</p>
+            </div>
+            <img src="/img/ecosystem/quicknode.svg" alt="QuickNode" className="w-12 h-12" />
+          </header>
 
-          <h3 className="text-xl font-bold">How to Claim</h3>
-          Go to the <a href="https://www.quicknode.com/"> signup page </a>
-   
-          and enter the code:
-          <span className="font-mono bg-gray-100 dark:bg-gray-700 px-2 py-1 rounded">BUILDWITHFLOW</span>
-        
+          <section className="space-y-24">
+            <div>
+              <h3 className="text-lg font-medium mb-6">Features</h3>
+              <div className="grid sm:grid-cols-2 gap-4">
+                <div className="space-y-2">
+                  <div className="text-sm text-gray-600 dark:text-gray-300">• Lightning-fast RPC endpoints</div>
+                  <div className="text-sm text-gray-600 dark:text-gray-300">• Real-time WebSocket streams</div>
+                  <div className="text-sm text-gray-600 dark:text-gray-300">• Historical data backfills</div>
+                </div>
+                <div className="space-y-2">
+                  <div className="text-sm text-gray-600 dark:text-gray-300">• Multi-chain support</div>
+                  <div className="text-sm text-gray-600 dark:text-gray-300">• Advanced monitoring tools</div>
+                  <div className="text-sm text-gray-600 dark:text-gray-300">• 24/7 developer support</div>
+                </div>
+              </div>
+            </div>
+
+            <div className="pt-20">
+              <h3 className="text-lg font-medium mb-6 mt-10">How to Claim</h3>
+              <div className="space-y-4">
+                <a 
+                  href="https://www.quicknode.com/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="block text-blue-500 hover:text-blue-600"
+                >
+                  1. Visit QuickNode signup →
+                </a>
+                <div>
+                  <div className="text-sm mb-2">2. Enter promo code:</div>
+                  <div className="flex items-center space-x-3">
+                    <code className="px-3 py-1.5 bg-gray-100 dark:bg-gray-800 rounded text-sm">BUILDWITHFLOW</code>
+                    <button 
+                      onClick={() => navigator.clipboard.writeText('BUILDWITHFLOW')}
+                      className="text-blue-500 hover:text-blue-600 text-sm"
+                    >
+                      Copy
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
         </div>
       </Modal>
 
+      {/* Olympix Modal */}
       <Modal 
         isOpen={activeModal === 'olympix'} 
         onClose={() => setActiveModal(null)}
-        title="Olympix - $2000 in Security Tools Credits"
+        title="Olympix"
       >
-        <div className="space-y-4">
-          <p>
-            Olympix equips developers with state-of-the-art, developer-first tools for in-house security
-            assurance, reducing reliance on costly, time-consuming external audits. Early-stage teams are
-            empowered with low-barrier, light-touch tooling that keeps their focus on innovation while
-            ensuring security from day one.
-          </p>
-          
-          <h3 className="text-xl font-bold">Offer Details</h3>
-          <ul className="list-disc pl-6">
-            <li>Amount: $2000 credits</li>
-            <li>Requirements: Team of 1-2 devs, 5k+ revenue a year</li>
-          </ul>
+        <div className="max-w-2xl space-y-12 py-6">
+          <header className="flex items-center justify-between pb-6 border-b border-gray-200 dark:border-gray-700">
+            <div className="pr-8">
+              <h2 className="text-2xl font-semibold mb-1">$2000 in Security Tools Credits</h2>
+              <p className="text-gray-600 dark:text-gray-300">Developer-first security assurance</p>
+            </div>
+            <img src="/img/ecosystem/olympix-logo.svg" alt="Olympix" className="w-12 h-12" />
+          </header>
 
-          <h3 className="text-xl font-bold">How to Claim</h3>
-          <p>
-            Email sarah@olympix.ai and CC ali.serag@flowfoundation.org with 'Olympix Flow Perk' in email header and include your GitHub username the email body as well as a link to your project.
-          </p>
+          <section className="space-y-24">
+            <div>
+              <h3 className="text-lg font-medium mb-6">Features</h3>
+              <div className="grid sm:grid-cols-2 gap-6">
+                <div className="space-y-2">
+                  <div className="font-medium">Team Size</div>
+                  <div className="text-sm text-gray-600 dark:text-gray-300">1-2 developers</div>
+                </div>
+                <div className="space-y-2">
+                  <div className="font-medium">Revenue Requirement</div>
+                  <div className="text-sm text-gray-600 dark:text-gray-300">$5,000+ per year</div>
+                </div>
+              </div>
+            </div>
+
+            <div className="pt-20">
+              <h3 className="text-lg font-medium mb-6 mt-10">How to Apply</h3>
+              <div className="space-y-4">
+                <div className="space-y-2">
+                  <div className="font-medium">Send email to:</div>
+                  <div className="text-sm text-gray-600 dark:text-gray-300">sarah@olympix.ai</div>
+                  <div className="text-sm text-gray-600 dark:text-gray-300">CC:builders@flow.com</div>
+                </div>
+                <div className="space-y-2">
+                  <div className="font-medium">Include:</div>
+                  <div className="text-sm text-gray-600 dark:text-gray-300">• Subject: "Olympix Flow Perk"</div>
+                  <div className="text-sm text-gray-600 dark:text-gray-300">• Your GitHub username</div>
+                  <div className="text-sm text-gray-600 dark:text-gray-300">• Link to your project</div>
+                </div>
+              </div>
+            </div>
+          </section>
         </div>
       </Modal>
 
+      {/* Gas Subsidy Modal */}
       <Modal 
         isOpen={activeModal === 'gas-subsidy'} 
         onClose={() => setActiveModal(null)}
-        title="Builder Gas Subsidy"
+        title="Gas Subsidy"
       >
-        <div className="space-y-4">
-          <p>
-            The Flow Gas Subsidy offers builders in the ecosystem enough FLOW to get their project on Mainnet 
-            and sponsor up to 10,000 transactions for their users. Data shows that apps which sponsor their 
-            user's transactions see up to 4x more usage.
-          </p>
+        <div className="max-w-2xl space-y-12 py-6">
+          <header className="flex items-center justify-between pb-6 border-b border-gray-200 dark:border-gray-700">
+            <div className="pr-8">
+              <h2 className="text-2xl font-semibold mb-1">Get Gas to Launch Today</h2>
+              <p className="text-gray-600 dark:text-gray-300">Flow is offering all builders a one-time subsidy to bring their project to life and scale</p>
+            </div>
+            <img src="/img/ecosystem/flow.svg" alt="Flow" className="w-12 h-12" />
+          </header>
 
-          <h3 className="text-xl font-bold">How to Claim</h3>
-          <p>
-            Email ali.serag@flowfoundation.org with 'Olympix Perk' in email header and include your GitHub username in the email body along with your deployer address.
-          </p>
+          <section className="space-y-24">
+            <div>
+              <h3 className="text-lg font-medium mb-6">Features</h3>
+              <div className="grid sm:grid-cols-2 gap-6">
+                <div className="space-y-2">
+                  <div className="font-medium">Transaction Coverage</div>
+                  <div className="text-sm text-gray-600 dark:text-gray-300">Sponsor up to 10,000 user transactions</div>
+                </div>
+                <div className="space-y-2">
+                  <div className="font-medium">Usage Impact</div>
+                  <div className="text-sm text-gray-600 dark:text-gray-300">Up to 4x more app engagement</div>
+                </div>
+                <div className="space-y-2">
+                  <div className="font-medium">Contract Deployment</div>
+                  <div className="text-sm text-gray-600 dark:text-gray-300">Launch your contracts on Mainnet for FREE</div>
+                </div>
+              </div>
+            </div>
+
+            <div className="pt-20">
+              <h3 className="text-lg font-medium mb-6 mt-10">How to Apply</h3>
+              <div className="space-y-4">
+                <div className="space-y-2">
+                  <div className="font-medium">Send email to:</div>
+                  <div className="text-sm text-gray-600 dark:text-gray-300">builders@flow.com</div>
+                </div>
+                <div className="space-y-2">
+                  <div className="font-medium">Include:</div>
+                  <div className="text-sm text-gray-600 dark:text-gray-300">• Subject: "Gas Subsidy Request"</div>
+                  <div className="text-sm text-gray-600 dark:text-gray-300">• Your GitHub username</div>
+                  <div className="text-sm text-gray-600 dark:text-gray-300">• Your deployer address</div>
+                </div>
+              </div>
+            </div>
+          </section>
         </div>
       </Modal>
 
+      {/* Alchemy Modal */}
       <Modal 
         isOpen={activeModal === 'alchemy'} 
         onClose={() => setActiveModal(null)}
-        title="Alchemy for Startups"
+        title="Alchemy"
       >
-        <div className="space-y-4">
-          <p>
-            Flow is partnering with Alchemy to offer startups building in the ecosystem extra support, free credits, 
-            and access to an extensive partners network. Accelerate your project's development with industry-leading 
-            infrastructure and resources.
-          </p>
-          
-          <h3 className="text-xl font-bold">Program Benefits</h3>
-          <ul className="list-disc pl-6">
-            <li>Complementary credits and product discounts to help you ship faster</li>
-            <li>Access to an extensive network of partners to amplify launches</li>
-            <li>Exclusive offers and community expansion opportunities</li>
-            <li>Dedicated startup resources and technical support</li>
-          </ul>
+        <div className="max-w-2xl space-y-12 py-6">
+          <header className="flex items-center justify-between pb-6 border-b border-gray-200 dark:border-gray-700">
+            <div className="pr-8">
+              <h2 className="text-2xl font-semibold mb-1">Startup Program Access</h2>
+              <p className="text-gray-600 dark:text-gray-300">Accelerate your project growth</p>
+            </div>
+            <img src="/img/ecosystem/alchemy.svg" alt="Alchemy" className="w-12 h-12" />
+          </header>
 
-          <h3 className="text-xl font-bold">How to Apply</h3>
-          <ol className="list-decimal pl-6 space-y-2">
-            <li>Fill out the application form at <a href="https://www.alchemy.com/startup-program" className="text-blue-600 hover:text-blue-800">alchemy.com/startup-program</a></li>
-            <li>Email zaib@alchemy.com and CC ali.serag@flowfoundation.org with 'Flow Alchemy Perk' in the email title. Ensure to include your GitHub username in the email body and a link to your project.</li>
-          </ol>
+          <section className="space-y-24">
+            <div>
+              <h3 className="text-lg font-medium mb-6">Features</h3>
+              <div className="grid sm:grid-cols-2 gap-4">
+                <div className="space-y-2">
+                  <div className="text-sm text-gray-600 dark:text-gray-300">• Free infrastructure credits</div>
+                  <div className="text-sm text-gray-600 dark:text-gray-300">• Product discounts</div>
+                  <div className="text-sm text-gray-600 dark:text-gray-300">• Technical support</div>
+                </div>
+                <div className="space-y-2">
+                  <div className="text-sm text-gray-600 dark:text-gray-300">• Partner network access</div>
+                  <div className="text-sm text-gray-600 dark:text-gray-300">• Launch amplification</div>
+                  <div className="text-sm text-gray-600 dark:text-gray-300">• Community perks</div>
+                </div>
+              </div>
+            </div>
+
+            <div className="pt-20">
+              <h3 className="text-lg font-medium mb-6 mt-10">How to Apply</h3>
+              <div className="space-y-4">
+                <a 
+                  href="https://www.alchemy.com/startup-program"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="block text-blue-500 hover:text-blue-600"
+                >
+                  1. Apply to Startup Program →
+                </a>
+                <div className="space-y-2">
+                  <div className="font-medium">2. Send follow-up email:</div>
+                  <div className="text-sm text-gray-600 dark:text-gray-300">To: zaib@alchemy.com</div>
+                  <div className="text-sm text-gray-600 dark:text-gray-300">CC: builders@flow.com</div>
+                  <div className="text-sm text-gray-600 dark:text-gray-300">Subject: "Flow Alchemy Perk"</div>
+                  <div className="text-sm text-gray-600 dark:text-gray-300">Include your GitHub username and project link</div>
+                </div>
+              </div>
+            </div>
+          </section>
         </div>
       </Modal>
 
+      {/* Thirdweb Modal */}
       <Modal 
         isOpen={activeModal === 'thirdweb'} 
         onClose={() => setActiveModal(null)}
-        title="Thirdweb - Free Growth & Engine Tier Access"
+        title="Thirdweb"
       >
-        <div className="space-y-4">
-          <p>
-            Thirdweb provides a full stack web3 development platform. Get $99 credits for 1 month of free access to production-grade tools 
-            to build complete web3 apps and games on any platform.
-          </p>
-          
-          <h3 className="text-xl font-bold">What You Get</h3>
-          <ul className="list-disc pl-6">
-            <li>Production Grade Infrastructure and RPCs</li>
-            <li>Custom Branding & User Analytics</li>
-            <li>Nonce Management & Automatic Retries</li>
-            <li>Securely Managed Backend Wallets with Team Access Controls</li>
-          </ul>
+        <div className="max-w-2xl space-y-12 py-6">
+          <header className="flex items-center justify-between pb-6 border-b border-gray-200 dark:border-gray-700">
+            <div className="pr-8">
+              <h2 className="text-2xl font-semibold mb-1">1 Month Growth & Engine Access</h2>
+              <p className="text-gray-600 dark:text-gray-300">$99 value in production tools</p>
+            </div>
+            <img src="/img/ecosystem/thirdweb.svg" alt="Thirdweb" className="w-12 h-12" />
+          </header>
 
-          <h3 className="text-xl font-bold">Available Stacks</h3>
-          <ul className="list-disc pl-6">
-            <li><a href="https://thirdweb.com/solutions/gaming" className="text-blue-600 hover:text-blue-800">Gaming Stack</a> - Build seamless onchain games with web3-powered features on Unity, Unreal Engine, & any platform</li>
-            <li><a href="https://thirdweb.com/nebula" className="text-blue-600 hover:text-blue-800">AI Stack</a> - Powerful blockchain AI model with access to live and historical onchain data</li>
-            <li><a href="https://thirdweb.com/solutions/defi" className="text-blue-600 hover:text-blue-800">DeFi Stack</a> - Build DeFi applications with secure onboarding and cross-chain capabilities</li>
-            <li><a href="https://thirdweb.com/solutions/consumer-apps" className="text-blue-600 hover:text-blue-800">Consumer App Stack</a> - Create abstracted, secure, and decentralized digital experiences</li>
-          </ul>
+          <section className="space-y-24">
+            <div>
+              <h3 className="text-lg font-medium mb-6">Features</h3>
+              <div className="grid sm:grid-cols-2 gap-4">
+                <div className="space-y-2">
+                  <div className="text-sm text-gray-600 dark:text-gray-300">• Production-grade RPCs</div>
+                  <div className="text-sm text-gray-600 dark:text-gray-300">• Custom branding options</div>
+                  <div className="text-sm text-gray-600 dark:text-gray-300">• User analytics dashboard</div>
+                </div>
+                <div className="space-y-2">
+                  <div className="text-sm text-gray-600 dark:text-gray-300">• Transaction management</div>
+                  <div className="text-sm text-gray-600 dark:text-gray-300">• Automatic retries</div>
+                  <div className="text-sm text-gray-600 dark:text-gray-300">• Team access controls</div>
+                </div>
+              </div>
+            </div>
 
-          <h3 className="text-xl font-bold">How to Claim</h3>
-          <ol className="list-decimal pl-6 space-y-2">
-            <li>Go to the <a href="https://thirdweb.com/dashboard" className="text-blue-600 hover:text-blue-800">thirdweb Dashboard</a></li>
-            <li>Apply coupon code: <span className="font-mono bg-gray-100 dark:bg-gray-700 px-2 py-1 rounded">3WEBDEV-FLOW</span></li>
-            <li>Upgrade to Growth and deploy an Engine instance</li>
-          </ol>
+            <div>
+              <h3 className="text-lg font-medium mb-6 mt-10">Development Stacks</h3>
+              <div className="grid sm:grid-cols-2 gap-4">
+                <a 
+                  href="https://thirdweb.com/solutions/gaming"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="group"
+                >
+                  <div className="font-medium group-hover:text-blue-500">Gaming</div>
+                  <div className="text-sm text-gray-600 dark:text-gray-300">Unity & Unreal Engine integration</div>
+                </a>
+                <a 
+                  href="https://thirdweb.com/nebula"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="group"
+                >
+                  <div className="font-medium group-hover:text-blue-500">AI & ML</div>
+                  <div className="text-sm text-gray-600 dark:text-gray-300">Blockchain AI models and data</div>
+                </a>
+                <a 
+                  href="https://thirdweb.com/solutions/defi"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="group"
+                >
+                  <div className="font-medium group-hover:text-blue-500">DeFi</div>
+                  <div className="text-sm text-gray-600 dark:text-gray-300">Cross-chain DeFi applications</div>
+                </a>
+                <a 
+                  href="https://thirdweb.com/solutions/consumer-apps"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="group"
+                >
+                  <div className="font-medium group-hover:text-blue-500">Consumer</div>
+                  <div className="text-sm text-gray-600 dark:text-gray-300">Web3 user experiences</div>
+                </a>
+              </div>
+            </div>
+
+            <div className="pt-20">
+              <h3 className="text-lg font-medium mb-6 mt-10">How to Claim</h3>
+              <div className="space-y-4">
+                <a 
+                  href="https://thirdweb.com/dashboard"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="block text-blue-500 hover:text-blue-600"
+                >
+                  1. Visit Thirdweb Dashboard →
+                </a>
+                <div>
+                  <div className="text-sm mb-2">2. Apply coupon code:</div>
+                  <div className="flex items-center space-x-3">
+                    <code className="px-3 py-1.5 bg-gray-100 dark:bg-gray-800 rounded text-sm">3WEBDEV-FLOW</code>
+                    <button 
+                      onClick={() => navigator.clipboard.writeText('3WEBDEV-FLOW')}
+                      className="text-blue-500 hover:text-blue-600 text-sm"
+                    >
+                      Copy
+                    </button>
+                  </div>
+                </div>
+                <div className="text-sm text-gray-600 dark:text-gray-300">
+                  3. Upgrade to Growth tier and deploy your Engine instance
+                </div>
+              </div>
+            </div>
+          </section>
         </div>
       </Modal>
     </div>
