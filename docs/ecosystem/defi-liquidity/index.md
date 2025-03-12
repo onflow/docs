@@ -33,7 +33,8 @@ Flow is designed for **next-generation DeFi**, enabling developers to build high
 
 **Start integrating DeFi on Flow today.**
 
-**[DeFi Contacts](./defi-contracts.md)**  
+**[DeFi Contracts](./defi-contracts.md)**  
+**[Cross-chain swaps](./cross-chain-swaps.md)**  
 **[Read the FAQ](./faq.md)**
 
 ---
