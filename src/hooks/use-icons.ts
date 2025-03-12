@@ -72,5 +72,10 @@ export function useIcons() {
     'vrf---cadence': VRFCadenceIcon,
     'vrf---evm': VRFEVMIcon,
     'why-flow': WhyFlowIcon,
+    'quicknode': '/img/ecosystem/quicknode.svg',
+    'olympix-logo': '/img/ecosystem/olympix-logo.svg',
+    'flow': '/img/ecosystem/flow.svg',
+    'alchemy': '/img/ecosystem/alchemy.svg',
+   
   }), []);
 }

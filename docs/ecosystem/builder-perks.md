@@ -4,9 +4,9 @@ description: Exclusive perks and benefits for Flow builders
 sidebar_position: 8
 ---
 
-import { Card } from "@site/src/ui/design-system/src/lib/Components/Card";
 import Modal from "@site/src/ui/design-system/src/lib/Components/Modal";
 import { Button } from "@site/src/ui/design-system/src/lib/Components/Button";
+import ActionCard from "@site/src/components/ActionCard";
 import React from "react";
 import { useCurrentUser } from "@site/src/hooks/use-current-user";
 import { useProgress } from "@site/src/hooks/use-progress";
@@ -31,31 +31,39 @@ export const BuilderPerks = () => {
   return (
     <div>
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-        <Card
-          title="QuickNode"
-          logo="/img/ecosystem/quicknode.svg"
+        <ActionCard
+          heading="QuickNode"
           description="Power your Web3 journey with QuickNode - the leading end-to-end development platform for Web3 builders. Get $100 credit with our special offer."
+          icon="quicknode"
+          iconColor="white"
+          cardColor="black"
           onClick={() => handleCardClick('quicknode')}
         />
         
-        <Card
-          title="Olympix"
-          logo="/img/ecosystem/olympix-logo.svg"
+        <ActionCard
+          heading="Olympix"
           description="State-of-the-art, developer-first security tools for in-house assurance. Get $2000 in credits for your team."
+          icon="olympix-logo"
+          iconColor="white"
+          cardColor="black"
           onClick={() => handleCardClick('olympix')}
         />
 
-        <Card
-          title="Builder Gas Subsidy"
-          logo="/img/ecosystem/flow.svg"
+        <ActionCard
+          heading="Builder Gas Subsidy"
           description="Get enough FLOW to launch on Mainnet and sponsor up to 10,000 transactions for your users."
+          icon="flow"
+          iconColor="white"
+          cardColor="black"
           onClick={() => handleCardClick('gas-subsidy')}
         />
 
-        <Card
-          title="Alchemy for Startups"
-          logo="/img/ecosystem/alchemy.svg"
+        <ActionCard
+          heading="Alchemy for Startups"
           description="Get free credits, product discounts, and access to an extensive partner network to help accelerate your project's growth."
+          icon="alchemy"
+          iconColor="white"
+          cardColor="black"
           onClick={() => handleCardClick('alchemy')}
         />
       </div>
@@ -82,7 +90,22 @@ export const BuilderPerks = () => {
             </div>
           )}
 
-          
+          <div className="flex justify-center">
+            <Button
+              variant="primary"
+              size="lg"
+              onClick={() => {
+                if (!user?.loggedIn) {
+                  logIn();
+                } else {
+                  window.location.href = '/?modal=profile';
+                }
+                setActiveModal(null);
+              }}
+            >
+              {!user?.loggedIn ? "Connect Wallet" : "Complete Profile"}
+            </Button>
+          </div>
         </div>
       </Modal>
 
