@@ -81,9 +81,10 @@ Below is a list of commonly used DeFi contracts on Flow:
 
 #### Flow Cadence Testnet
 
-| Contract Name                     | Flow Cadence Mainnet Address |
-|-----------------------------------| ---------------------------- |
-| [BandOracle.cdc (Band)][19]       | `0x2c71de7af78d1adf`         |
+| Contract Name                             | Flow Cadence Testnet Address |
+|-------------------------------------------|------------------------------|
+| [PublicPriceOracle.cdc (IncrementFi)][31] | `0x8232ce4a3aff4e94`         |
+| [BandOracle.cdc (Band)][19]               | `0x2c71de7af78d1adf`         |
 
 #### Flow Cadence Mainnet
 
@@ -99,9 +100,9 @@ More information can be found on the Credora docs site for [EAS on Flow](https:/
 Testnet EAS Explorer: [https://flow-testnet.easscan.credora.io] (https://flow-testnet.easscan.credora.io)
 
 | Contract Name                                           | Flow EVM Testnet Address                     |
-| ------------------------------------------------------- |----------------------------------------------|
-| [SchemaRegistry.sol (Ethereum Attestation Service)][20] | `0x97900F59828Da4187607Cb8F84f49e3944199d18` |
-| [EAS.sol (Ethereum Attestation Service)][21]            | `0xBCF2dA8f82fb032A2474c92Ec5b70C95A83fc0cc` |
+|---------------------------------------------------------|----------------------------------------------|
+| [SchemaRegistry.sol (Ethereum Attestation Service)][29] | `0x97900F59828Da4187607Cb8F84f49e3944199d18` |
+| [EAS.sol (Ethereum Attestation Service)][30]            | `0xBCF2dA8f82fb032A2474c92Ec5b70C95A83fc0cc` |
 
 Mainnet EAS Explorer: [https://flow.easscan.credora.io] (https://flow.easscan.credora.io)
 
@@ -142,3 +143,4 @@ Mainnet EAS Explorer: [https://flow.easscan.credora.io] (https://flow.easscan.cr
 [28]: https://evm.flowscan.io/address/0xacC0a0cF13571d30B4b8637996F5D6D774d4fd62?tab=contract
 [29]: https://evm-testnet.flowscan.io/address/0x97900F59828Da4187607Cb8F84f49e3944199d18?tab=contract
 [30]: https://evm-testnet.flowscan.io/address/0xBCF2dA8f82fb032A2474c92Ec5b70C95A83fc0cc?tab=contract
+[31]: https://contractbrowser.com/A.8232ce4a3aff4e94.PublicPriceOracle
