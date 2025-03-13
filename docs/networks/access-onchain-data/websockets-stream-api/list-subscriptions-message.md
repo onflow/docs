@@ -24,7 +24,7 @@ Thus, the response for this message is different too.
 {
   "subscriptions": [
     {
-      "subscription_id": "uuid-1",
+      "subscription_id": "some-id-1",
       "topic": "blocks",
       "arguments": {
         "block_status": "finalized",
@@ -32,7 +32,7 @@ Thus, the response for this message is different too.
       }
     },
     {
-      "subscription_id": "uuid-2",
+      "subscription_id": "some-id-2",
       "topic": "events",
       "arguments": {}
     }
