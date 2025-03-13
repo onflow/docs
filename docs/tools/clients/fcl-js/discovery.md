@@ -187,3 +187,17 @@ To learn more about other possible configurations, check out the following links
 
 - [Discovery API Docs](./api.md#discovery-1)
 - [Discovery Github Repo](https://github.com/onflow/fcl-discovery)
+
+### Exclude Wallets
+
+To exclude wallets from FCL Discovery, you can use the `discovery.authn.exclude` configuration option. This allows you to specify a list of service account addresses that you want to hide from the Discovery UI or API.
+
+```javascript
+import * as fcl from '@onflow/fcl';
+fcl.config({
+  'discovery.wallet': 'https://fcl-discovery.onflow.org/testnet/authn',
+  'discovery.authn.endpoint':
+    'https://fcl-discovery.onflow.org/api/testnet/authn',
+  'discovery.authn.exclude': ['0x123', '0x456'], // Service account addresses to exclude
+});
+```

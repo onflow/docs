@@ -510,6 +510,8 @@ function Component() {
 
 By default, limited functionality services or services that require developer registration, like Ledger or Dapper Wallet, require apps to opt-in in order to display to users. To enable opt-in services in an application, use the `discovery.authn.include` property in your configuration with a value of an array of services you'd like your app to opt-in to displaying for users.
 
+Additionally, you can use the `discovery.authn.exclude` property to exclude any services from being displayed to users.
+
 ```javascript
 import { config } from '@onflow/fcl';
 
@@ -517,6 +519,7 @@ config({
   'discovery.authn.endpoint':
     'https://fcl-discovery.onflow.org/api/testnet/authn', // Endpoint set to Testnet
   'discovery.authn.include': ['0x9d2e44203cb13051'], // Ledger wallet address on Testnet set to be included
+  'discovery.authn.exclude': ['0x123456789abcdef01'], // Example of excluding a wallet by address
 });
 ```
 
