@@ -37,4 +37,12 @@ Flow is designed for **next-generation DeFi**, enabling developers to build high
 **[Cross-chain swaps](./cross-chain-swaps.md)**  
 **[Read the FAQ](./faq.md)**
 
+## Securing DeFi on Flow EVM
+
+Flow EVM supports secure multi-sig from Safe.Global (formerly Gnosis Safe) or Fireblocks. Both offer robust solutions for 
+developers seeking to enhance the security and management of tokenized assets with a focus on institutional-grade practices and scalability.
+
+* [Safe.Global](https://safe.flow.com/)
+* [Fireblocks](https://www.fireblocks.com/)
+
 ---
