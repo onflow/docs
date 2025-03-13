@@ -1,60 +1,72 @@
 ---
 sidebar_position: 1
-title: Commit-Reveal scheme(Cadence)
-description: Guide on Commit-Reveal scheme
+title: Secure Randomness with Commit-Reveal in Cadence
+description: Guide on implementing secure randomness in Cadence using Flow’s commit-reveal scheme
 ---
 
-# Introduction
+# Secure Randomness with Commit-Reveal in Cadence
 
-One approach to generating a random number on EVM chains is to utilize block hashes. This method involves combining the block hash with a user-provided seed and hashing them together. The resulting hash can be used as a pseudo-random number. However, this approach has limitations:
+## Randomness Tradeoffs in Blockchain Applications
 
+Randomness is a critical component in blockchain applications, enabling fair and unpredictable outcomes for use cases like gaming, lotteries, and cryptographic protocols. The most basic approach to generating a random number on EVM chains is to utilize block hashes, which combines the block hash with a user-provided seed and hashes them together. The resulting hash can be used as a pseudo-random number. However, this approach has limitations:
 
 1. **Predictability**: Miners can potentially manipulate the block hash to influence the generated random number.
 2. **Replay attacks**: In case of block reorganizations, the revealed answers will not be re-used again.
 
-Chainlink VRF is a popular tool for generating provably random values on Ethereum and other blockchains, however, while Chainlink VRF is a powerful tool, it does have several limitations, including cost, latency, dependency on external oracles, and scalability concerns. For use cases with high-volume randomness requirements or where low latency is crucial, it may be worth considering alternative solutions or hybrid approaches.
+[Chainlink VRF](https://docs.chain.link/vrf) is a popular tool that improves on this by providing another approach for generating provably random values on Ethereum and other blockchains by relying on a decentralized oracle network to deliver cryptographically secure randomness from off-chain sources. However, this dependence on external oracles introduces several weaknesses, such as cost, latency, and scalability concerns.
 
-On Flow, however, you can simply use Flow's Random Beacon contract which enhances blockchain functionality and eliminates reliance on external oracles by providing native on-chain randomness at the protocol level. Via a commit-and-reveal scheme, Flow's protocol-native secure randomness can be safely used within both Cadence and Solidity smart contracts when contracts are transacted on by untrusted parties. By providing examples of commit-reveal implementations we hope to foster a more secure ecosystem of decentralized applications and encourage developers to build with best practices.
+In contrast, Flow offers a simpler and more integrated approach with its **Random Beacon contract**, which provides native on-chain randomness at the protocol level, eliminating reliance on external oracles and sidestepping their associated risks. Via a commit-and-reveal scheme, Flow's protocol-native secure randomness can be used within both Cadence and Solidity smart contracts. 
 
 
 ## Objectives
-In this guide, we'll learn how to use a commit-reveal scheme in conjunction with the Random Beacon in order to achieve non-revertible randomness, mitigating post-selection attacks.
 
-To achieve non-revertible randomness, the contract should be structured to resolve in two phases:
+In this guide, we will explore how to use a **commit-reveal scheme** in conjunction with Flow’s **Random Beacon** to achieve secure, non-revertible randomness. This mechanism mitigates **post-selection attacks**, where participants attempt to manipulate or reject unfavorable random outcomes after they are revealed.
 
+To illustrate this concept, we will build a **Coin Toss game** on Flow, demonstrating how smart contracts can leverage **commit-reveal randomness** for fair, tamper-resistant results.
 
-1. **Commit** - Caller commits to the resolution of their bet with some yet unknown source of randomness (i.e. in the future)
-2. **Reveal** - Caller can then resolve the result of their bet once the source of randomness is available in the `RandomBeaconHistory` with a separate transaction. From a technical perspective, this could also be called a "resolving transaction", because the transaction simply executes the smart contract with the locked-in inputs, whose output all parties committed to accept in the previous phase.
+### **What is the Coin Toss Game?**
+The **Coin Toss Game** is a decentralized betting game that showcases Flow’s **commit-reveal randomness**. Players place bets without knowing the random outcome, ensuring fairness and resistance to manipulation.
 
+The game consists of two distinct phases:
 
-After completing this guide, you'll be able to:
+1. **Commit Phase** – The player places a bet by sending Flow tokens to the contract. The contract records the commitment and requests a **random value** from Flow’s **Random Beacon**. The player receives a **Receipt**, which they will use to reveal the result later.
+   
+2. **Reveal Phase** – Once the **random value** becomes available in `RandomBeaconHistory`, the player submits their **Receipt** to determine the outcome:
+   - If the result is **0**, the player **wins** and receives **double their bet**.
+   - If the result is **1**, the player **loses**, and their bet remains in the contract.
 
-* Deploy a Cadence contract on the Flow network
-* Call functions on this contract to utilize Flow’s native capabilities for on-chain randomness
+### **Why Use Commit-Reveal Randomness?**
+- **Prevents manipulation** – Players cannot selectively reveal results after seeing the randomness.
+- **Ensures fairness** – Flow’s **Random Beacon** provides cryptographically secure, verifiable randomness.
+- **Reduces reliance on external oracles** – The randomness is generated **natively on-chain**, avoiding additional complexity, third party risk and cost.
+
+### **What You Will Learn**
+By the end of this guide, you will be able to:
+
+✅ **Deploy a Cadence smart contract** on the Flow blockchain  
+✅ **Implement commit-reveal randomness** to ensure fairness  
+✅ **Interact with Flow’s on-chain randomness features**  
+✅ **Build and test the Coin Toss game** using Flow’s Testnet  
 
 ## Prerequisites
 
+You’ll need the following:
 
-> [Run.dnz](https://run.dnz.dev/)
+- **Flow Testnet Account**: An account on the Flow Testnet with test FLOW tokens for deploying contracts and executing transactions (e.g., via [Flow Faucet](https://testnet-faucet.onflow.org/)).
+- **Flow CLI or Playground**: The Flow CLI or Flow Playground for deploying and testing contracts (install via [Flow Docs](https://docs.onflow.org/flow-cli/install/)).
 
-In order to implement this structure into our logic, we're gonna use three supporting abstract contracts.
+
+## Building the Coin Toss Contract  
+
+In this section, we’ll walk through constructing the `CoinToss.cdc` contract, which contains the core logic for the Coin Toss game. To function properly, the contract relies on **supporting contracts and a proper deployment setup**.  
+
+This tutorial will focus specifically on writing and understanding the `CoinToss.cdc` contract, while additional setup details can be found in the [original GitHub repo](https://github.com/onflow/random-coin-toss).  
 
 
-1.  **[Xorshift128plus](https://github.com/onflow/random-coin-toss/blob/main/contracts/Xorshift128plus.cdc)**
-2. **[RandomBeaconHistory](https://contractbrowser.com/A.e467b9dd11fa00df.RandomBeaconHistory)**
-3. **[CadenceRandomConsumer](https://github.com/onflow/random-coin-toss/blob/main/contracts/RandomConsumer.cdc)**
-
-The **first** one is a base contract that implements the Xorshift128+ pseudo-random number generator (PRG) algorithm.
-
-The **second** one is a base contract that stores the history of random sources generated by the Flow network. The defined Heartbeat resource is updated by the Flow Service Account at the end of every block with that block's source of randomness.
-
-And the **third** one is a base contract for secure consumption of Flow's protocol-native randomness via the Random Beacon History contrac. Implementing contracts benefit from the commit-reveal scheme below, ensuring that callers cannot revert on undesirable random results.
-
-If you want to explore deeper into the implementation of these contracts, you can check the [original GitHub repo](https://github.com/onflow/random-coin-toss).
-
-Since these contracts are already deployed on testnet, all we gotta do is import the [RandomConsumer](https://contractbrowser.com/A.ed24dbe901028c5c.RandomConsumer) contract into the new `CoinToss.cdc` contract we're building, which is a contract that represents a simple coin toss game where users can place a bet and win prizes by flipping a coin. The way the game works is as following: a user commits to bet a voluntary amount by signing a transaction, and then the same user can flip a coin and see the result at a second transaction. They win the prize if the random result is **even**. As simple as that! 
+### Step 1. Defining the `CoinToss.cdc` Contract
 
 Let's define our `CoinToss.cdc` and bring the other supporting contracts. 
+
 ```cadence
 import "Burner"
 import "FungibleToken"
@@ -76,7 +88,10 @@ access(all) contract CoinToss {
 }
 ```
 
-After this, let's define the first step in our scheme; the commit phase. We do this through a `flipCoin` public function. In this method, the caller commits a bet. The contract takes note of the block height and bet amount, returning a `Receipt` resource which is used by the former to reveal the coin toss result and determine their winnings.
+### 2. Implementing the Commit Phase With `flipCoin` 
+
+Let's define the first step in our scheme; the commit phase. We do this through a `flipCoin` public function. In this method, the caller commits a bet. The contract takes note of the block height and bet amount, returning a `Receipt` resource which is used by the former to reveal the coin toss result and determine their winnings.
+
 ```cadence
 access(all) fun flipCoin(bet: @{FungibleToken.Vault}): @Receipt {
         let request <- self.consumer.requestRandomness()
@@ -91,7 +106,11 @@ access(all) fun flipCoin(bet: @{FungibleToken.Vault}): @Receipt {
         return <- receipt
     }
 ```
+
+### Step 3. Implementing the Reveal Phase With `revealCoin` 
+
 Now we implement the reveal phase with the `revealCoin` function. Here the caller provides the Receipt given to them at commitment. The contract then "flips a coin" with `_randomCoin()` providing the Receipt's contained Request. If result is **1**, user loses, but if it's **0** the user doubles their bet. Note that the caller could condition the revealing transaction, but they've already provided their bet amount so there's **no loss** for the contract if they do.
+
 ```cadence
 access(all) fun revealCoin(receipt: @Receipt): @{FungibleToken.Vault} {
         let betAmount = receipt.betAmount
@@ -117,9 +136,25 @@ access(all) fun revealCoin(receipt: @Receipt): @{FungibleToken.Vault} {
         return <- reward
     }
 ```
-Now let's try these functions on Testnet, using the fully developed and deployed contract at this address: [0xb6c99d7ff216a684](https://contractbrowser.com/A.b6c99d7ff216a684.CoinToss). And we're going to use a tool similar to Remix on Ethereum, but for the Flow blockchain and called [run.dnz](https://run.dnz.dev/).
 
-In it, we're going to paste the following Cadence transaction code:
+The final version of `CoinToss.cdc` should look like this: [https://github.com/onflow/random-coin-toss/blob/main/contracts/CoinToss.cdc](https://github.com/onflow/random-coin-toss/blob/main/contracts/CoinToss.cdc).
+
+
+<!-- 1. **[Xorshift128plus](https://github.com/onflow/random-coin-toss/blob/main/contracts/Xorshift128plus.cdc)**: A base contract that implements the Xorshift128+ pseudo-random number generator (PRG) algorithm.
+2. **[RandomBeaconHistory](https://contractbrowser.com/A.e467b9dd11fa00df.RandomBeaconHistory)**: A base contract that stores the history of random sources generated by the Flow network. The defined `Heartbeat` resource is updated by the Flow Service Account at the end of every block with that block's source of randomness.
+3. **[CadenceRandomConsumer](https://github.com/onflow/random-coin-toss/blob/main/contracts/RandomConsumer.cdc)**: A base contract for secure consumption of Flow's protocol-native randomness via the `RandomBeaconHistory` contract. Implementing contracts benefit from the commit-reveal scheme, ensuring that callers cannot revert on undesirable random results. -->
+
+## Testing CoinToss on Flow Testnet
+
+To make things easy, we’ve already deployed the `CoinToss.cdx` contract for you at this address: [0xb6c99d7ff216a684](https://contractbrowser.com/A.b6c99d7ff216a684.CoinToss). We’ll walk through placing a bet and revealing the result using [run.dnz](https://run.dnz.dev/), a Flow-friendly tool similar to Ethereum’s Remix.
+
+### Placing a Bet with flipCoin
+
+First, you’ll submit a bet to the CoinToss contract by withdrawing Flow tokens and storing a receipt. Here’s how to get started:
+
+1. **Open Your Dev Environment:** Head to [run.dnz](https://run.dnz.dev/).
+2. **Enter the Transaction Code:** Paste the following Cadence code into the editor:
+
 ```cadence
 import FungibleToken from 0x9a0766d93b6608b7
 import FlowToken from 0x7e60df042a9c0868
@@ -148,9 +183,22 @@ transaction(betAmount: UFix64) {
     }
 }
 ```
-A modal should pop-up, prompting us to input the "bet amount". After you submit your bet, click on the "Run" button and the `WalletConnect` window shall appear. On this website, we can use Blocto. Sign-in with your email, and then "Approve" the transaction to send it to the Testnet network. 
+3. **Set Your Bet:** A modal will pop up asking for the betAmount. Enter a value (e.g., 1.0 for 1 Flow token) and submit
+4. **Execute the Transaction:** Click "Run," and a WalletConnect window will appear. Choose Blocto, sign in with your email, and hit "Approve" to send the transaction to Testnet.
+
 ![remix5-sc](./imgs/remix5.png)
-You can take the transaction id to [FlowDiver](https://testnet.flowdiver.io/)[.io](https://testnet.flowdiver.io/tx/9c4f5436535d36a82d4ae35467b37fea8971fa0ab2409dd0d5f861f61e463d98) to have a full view of everything that's going on with this `FlipCoin` transaction. Now, we want to reveal the coin and find out if we win or lose. For this, we'll copy/paste and use the following Cadence transaction, which must be signed with the same account that signed the flip transaction. 
+
+5. **Track it:** You can take the transaction id to [FlowDiver](https://testnet.flowdiver.io/)[.io](https://testnet.flowdiver.io/tx/9c4f5436535d36a82d4ae35467b37fea8971fa0ab2409dd0d5f861f61e463d98) to have a full view of everything that's going on with this `FlipCoin` transaction. 
+
+
+
+### Revealing the Coin Toss Result
+
+Let's reveal the outcome of your coin toss to see if you’ve won. This step uses the receipt from your bet, so ensure you’re using the same account that placed the bet. Here’s how to do it:
+
+1. **Return to your Dev Environment:** Open  [run.dnz](https://run.dnz.dev/) again.
+2. **Enter the Reveal Code:** Paste the following Cadence transaction into the editor:
+
 ```cadence
 import FlowToken from 0x7e60df042a9c0868
 import CoinToss from 0xb6c99d7ff216a684
@@ -179,12 +227,17 @@ transaction {
 ```
 After running this transaction, we reveal the result of the coin flip and it's 1! Meaning we have won nothing this time, but keep trying! 
 
-You can find the full transaction used for this example, with its result and events, at [FlowDiver.io/tx/](https://testnet.flowdiver.io/tx/a79fb2f947e7803eefe54e48398f6983db4e0d4d5e217d2ba94f8ebdec132957)
+You can find the full transaction used for this example, with its result and events, at [FlowDiver.io/tx/](https://testnet.flowdiver.io/tx/a79fb2f947e7803eefe54e48398f6983db4e0d4d5e217d2ba94f8ebdec132957).
 
 
 ## Conclusion
 
-The commit-reveal scheme implemented within the context of Flow's Random Beacon provides a robust solution for generating secure and non-revertible randomness in decentralized applications. By leveraging this mechanism, developers can ensure that their applications are not only fair but also resistant to manipulation and replay attacks, which are common pitfalls in traditional random number generation methods on other blockchains. 
+The **commit-reveal scheme**, implemented within the context of Flow's *Random Beacon*, provides a **robust solution** for generating secure and non-revertible randomness in decentralized applications. By leveraging this mechanism, developers can ensure that their applications are:
 
-The example of the CoinToss game illustrates the practical implementation of these concepts, showing how simple yet effective this approach can be. As blockchain technology continues to evolve, such best practices are crucial for fostering a secure and trustworthy ecosystem, encouraging developers to innovate while adhering to the principles of decentralization and fairness. By utilizing Flow’s native capabilities, developers can focus more on creating engaging user experiences without the complexities and limitations often associated with external oracles. As the landscape of decentralized applications grows, adopting these advanced techniques will be vital in ensuring the integrity and reliability of randomness-based functionalities.
+- **Fair**: Outcomes remain unbiased and unpredictable.
+- **Resistant to manipulation**: Protects against post-selection attacks.
+- **Immune to replay attacks**: A common pitfall in traditional random number generation on other blockchains.
 
+The example of the *CoinToss game* illustrates the practical implementation of these concepts, demonstrating how **simple yet effective** this approach can be. As blockchain technology continues to evolve, adopting such *best practices* is **crucial** for fostering a secure and trustworthy ecosystem. This encourages developers to innovate while adhering to the core principles of **decentralization** and **fairness**.
+
+By utilizing Flow’s *native capabilities*, developers can focus more on creating **engaging user experiences** without the complexities and limitations often tied to *external oracles*.
