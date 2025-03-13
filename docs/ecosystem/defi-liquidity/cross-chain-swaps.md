@@ -22,32 +22,31 @@ sidebar_label: Cross-chain swaps on Flow EVM
 
 import Details from '@theme/Details';
 
-The following providers offer cross-chain token bridging for Flow EVM. 
+The following bridges offer cross-chain swaps (token bridging including swap) to or from Flow EVM. 
 
-## Liquidity Pool Based Bridges 
+## Liquidity Pool Based Cross-chain Swaps 
 
 ### Stargate
 
-[Stargate](https://stargate.finance) employs unified liquidity pools shared across multiple chains to enable native 
-asset transfers without wrapped tokens and is based on LayerZero's cross-chain messaging protocol.
+[Stargate](https://stargate.finance) employs unified liquidity pools shared across multiple chains to enable native asset transfers and cross-chain swaps 
+without wrapped tokens. It is built on LayerZero's cross-chain messaging protocol.
 
 ### Celer
 
 [Celer](https://cbridge.celer.network) is a hybrid liquidity network bridge that combines multiple bridging models and is based on the Celer 
 Inter-Chain Messaging Framework.
 
-1. Token Bridge (xAsset): A canonical mapping bridge using a lock-mint model
-2. Liquidity Network (xLiquidity): A pool-based bridge model
-
-## Intent Based Bridges
+## Intent Based Cross-chain Swaps
 
 Intent based bridges do not depend on pre-funded liquidity pools which can improve user experience, transaction speed and capital efficiency.
 
 ### Relay
 
-[Relay.link](https://relay.link/bridge/base) allows users to specify desired cross-chain transaction outcomes for orders.
+[Relay.link](https://relay.link/bridge/base) allows users to specify desired cross-chain swap outcomes for orders.
 
 ### DeBridge
 
-[DeBridge](https://app.debridge.finance/) achieves efficient cross-chain transfer with minimal slippage in a decentralized environment 
+[DeBridge](https://app.debridge.finance/) achieves efficient cross-chain swaps with minimal slippage in a decentralized environment 
 through a peer-to-peer transaction mechanism.
+
+
