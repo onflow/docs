@@ -1,7 +1,7 @@
 ---
 id: cross-chain-swaps
-title: Cross-chain swaps on Flow
-description: An overview of cross-chain options on Flow
+title: Cross-chain swaps on Flow EVM
+description: An overview of cross-chain options on Flow EVM
 keywords:
   - cross-chain token swap
   - cross-chain bridge
@@ -17,12 +17,12 @@ keywords:
   - LayerZero
   - Celer
 sidebar_position: 2
-sidebar_label: Cross-chain swaps on Flow
+sidebar_label: Cross-chain swaps on Flow EVM
 ---
 
 import Details from '@theme/Details';
 
-The following providers offer cross-chain token bridging for Flow. 
+The following providers offer cross-chain token bridging for Flow EVM. 
 
 ## Liquidity Pool Based Bridges 
 
