@@ -1,10 +1,8 @@
 ---
-title: Postman example
-sidebar_label: Postman example
+title: Connecting to WebSockets via Postman UI
+sidebar_label: Connecting to WebSockets via Postman UI
 sidebar_position: 6
 ---
-
-# Connecting to WebSockets via Postman UI
 
 This tutorial will guide you through connecting to a WebSocket using Postman and sending a subscription message.
 
