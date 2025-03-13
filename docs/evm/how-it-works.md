@@ -68,7 +68,7 @@ For extra protection on the EVM side, the gateway software is designed to be ful
 
 ## Block hash calculation difference
 
-Developers using the GoLang Ethereum client to integrate with Flow will find that the block hash calculated by the Flow EVM RPC endpoint `eth_getBlockByNumber` differs from the hash calculated locally by `go-ethereum`. This is due to underlying
+Developers using the GoLang Ethereum client to integrate with Flow will find that the block hash calculated by the Flow EVM RPC endpoints `eth_getBlockByNumber` and `eth_getBlockByHash` differ from the hash calculated locally by `go-ethereum`. This is due to underlying
 differences in the `Block` implementation to support EVM on Flow. For more information see https://github.com/onflow/flow-evm-gateway/issues/719.
 
 ## Opcodes
