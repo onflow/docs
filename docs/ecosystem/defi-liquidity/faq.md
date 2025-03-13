@@ -26,12 +26,12 @@ Below are common questions regarding stablecoins, liquidity, and bridging on Flo
 ## Bridging and Gas
 
 <Details summary="Does Flow use ETH for gas?">
-No, Flow uses $LOW as the gas token. [WETH](./defi-contracts#stablecoins--wrapped-assets) is supported on Flow EVM when [bridging](../bridges.md) from another chain.
+No, Flow uses $FLOW as the gas token. [WETH](./defi-contracts#stablecoins--wrapped-assets) is supported on Flow EVM when [bridging](../bridges.md) from another chain.
 </Details>
 
 <Details summary="How do I pay for gas when bridging into Flow?">
-If you are using Flow EVM for the first time your EOA will automatically be credited 0.05 FLOW to cover gas costs when bridging into Flow. 
-If further top-ups are required beyond this you can use [Gas.Zip](https://www.gas.zip/).
+When using Flow EVM for the first time your EOA will automatically be credited 0.05 FLOW to cover gas costs when bridging into Flow. 
+If further top-ups are required you can use [Gas.Zip](https://www.gas.zip/). See [Fees](../../evm/fees) for information on gas pricing. 
 
 Flow Wallet users do not pay for gas since the wallet subsidizes gas fees. 
 </Details>
