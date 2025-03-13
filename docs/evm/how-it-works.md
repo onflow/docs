@@ -66,6 +66,11 @@ For extra protection on the EVM side, the gateway software is designed to be ful
 
 [EIP-1559](https://eips.ethereum.org/EIPS/eip-1559) is supported by the Flow EVM and Gateway nodes can decide on the inclusion of the transactions based on the tips or gas fees. The parameters for the EIP 1559 are adjustable by the Flow network. Currently, the base fee is set to zero, as EVM transactions are wrapped by the Flow transactions.
 
+## Block hash calculation difference
+
+Developers using the GoLang Ethereum client to integrate with Flow will find that the block hash calculated by the Flow EVM RPC endpoints `eth_getBlockByNumber` and `eth_getBlockByHash` differ from the hash calculated locally by `go-ethereum`. This is due to underlying
+differences in the `Block` implementation to support EVM on Flow. For more information see https://github.com/onflow/flow-evm-gateway/issues/719.
+
 ## Opcodes
 
 Flow EVM supports opcodes listed [here](https://www.evm.codes/?fork=cancun), except for the following changes. 
