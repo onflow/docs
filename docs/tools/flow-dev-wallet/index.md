@@ -127,6 +127,7 @@ config({
   'discovery.authn.endpoint': fclConfigInfo[network].discoveryAuthnEndpoint,
   // adds in opt-in wallets like Dapper and Ledger
   'discovery.authn.include': fclConfigInfo[network].discoveryAuthInclude,
+  'discovery.authn.exclude': ['0x1234567890abcdef'], // excludes chosen wallets by address
 });
 
 export default function App() {
