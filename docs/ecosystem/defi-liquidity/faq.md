@@ -225,3 +225,4 @@ If you have questions you can join [Flow Discord][15] to get free technical supp
 [16]: https://evm.flowscan.io
 [17]: https://discord.com/invite/9sFqx9U
 [19]: https://v2.sturdy.finance/overview
+[20]: https://www.flowverse.co/?categories=defi
