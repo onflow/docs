@@ -13,7 +13,7 @@ keywords:
   - DEX
   - yield farming
   - liquidity
-sidebar_position: 2
+sidebar_position: 3
 sidebar_label: Stablecoins & Bridges FAQ
 ---
 
@@ -23,6 +23,19 @@ import Details from '@theme/Details';
 
 Below are common questions regarding stablecoins, liquidity, and bridging on Flow. Click on each question to expand and view the answer.
 
+## Bridging and Gas
+
+<Details summary="Does Flow use ETH for gas?">
+No, Flow uses $FLOW as the gas token. [WETH](./defi-contracts#stablecoins--wrapped-assets) is supported on Flow EVM when [bridging](../bridges.md) from another chain. $WFLOW is used as an ERC20 in DeFi apps and not used for gas.
+</Details>
+
+<Details summary="How do I pay for gas when bridging into Flow?">
+When using Flow EVM for the first time, your EOA will automatically be credited 0.05 FLOW to cover gas costs when bridging into Flow. 
+If further top-ups are required you can use [Gas.zip](https://www.gas.zip/). See [Fees](../../evm/fees) for information on gas pricing. 
+
+Flow Wallet users do not pay for gas since the wallet subsidizes all transaction fees. 
+</Details>
+
 ## Stablecoins on Flow
 
 <Details summary="What stablecoins are available on Flow?">
@@ -31,6 +44,7 @@ USDC (USD Coin) - Issued by Circle
 USDT (Tether USD) - Issued by Tether
 
 USDF (USD Flow) - Backed by PYUSD (PayPal USD) issued by PayPal
+
 
 </Details>
 
@@ -49,7 +63,7 @@ Stablecoins can be traded on major Flow-based decentralized exchanges (DEXs) lik
 <Details summary="How can I earn yield on stablecoins on Flow?">
 You can earn yield through:
 
-- Lending Platforms - Supply stablecoins on [IncrementFi][3] & [MoreMarkets][4] to earn interest.
+- Lending Platforms - Supply stablecoins on [IncrementFi][3], [Sturdy Finance][19] & [MoreMarkets][4] to earn interest.
 - Liquidity Pools - Provide liquidity on [IncrementFi][5] or [KittyPunch][6] to earn trading fees and farm LP tokens.
 - Yield Aggregators (Coming soon) - Use [KittyPunch][7] to automate stablecoin yield strategies.
 </Details>
@@ -210,3 +224,5 @@ If you have questions you can join [Flow Discord][15] to get free technical supp
 [15]: https://discord.gg/flow
 [16]: https://evm.flowscan.io
 [17]: https://discord.com/invite/9sFqx9U
+[19]: https://v2.sturdy.finance/overview
+[20]: https://www.flowverse.co/?categories=defi
