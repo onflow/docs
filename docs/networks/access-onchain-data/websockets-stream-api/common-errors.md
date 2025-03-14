@@ -4,7 +4,7 @@ sidebar_label: Common errors
 sidebar_position: 7
 ---
 
-This document outlines the possible errors might happened when using WebSocket API. Understanding these errors will help properly handle error cases in client implementation.
+This document outlines the possible errors returned from the WebSocket API. Understanding these errors will help properly handle error cases in client implementation.
 
 ## Error Structure
 
@@ -52,7 +52,7 @@ These errors occur when the server cannot parse or validate your incoming messag
 
 | Error Message | Status Code | Description | When to Expect |
 |---------------|-------------|-------------|---------------|
-| *"error creating new subscription: maximum number of subscriptions reached"* | 503 Service Unavailable | The maximum number of active subscriptions per connection has been reached | When trying to create more subscriptions than allowed by the server |
+| *"error creating new subscription: maximum number of subscriptions reached"* | 429 Too Many Requests | The maximum number of active subscriptions per connection has been reached | When trying to create more subscriptions than allowed by the server |
 | *"error parsing subscription id: ..."* | 400 Bad Request | The provided subscription ID is invalid | When providing a malformed subscription ID |
 | *"subscription ID is already in use: ..."* | 400 Bad Request | The provided subscription ID is already being used | When trying to reuse an existing subscription ID |
 | *"error creating data provider: ..."* | 400 Bad Request | The subscription could not be created | When providing an invalid topic or arguments for your subscription |
