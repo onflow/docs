@@ -5,13 +5,14 @@ sidebar_position: 8
 ---
 
 import Modal from "@site/src/ui/design-system/src/lib/Components/Modal";
-import { Button } from "@site/src/ui/design-system/src/lib/Components/Button";
 import ActionCard from "@site/src/components/ActionCard";
 import React from "react";
 import { useCurrentUser } from "@site/src/hooks/use-current-user";
 import { useProgress } from "@site/src/hooks/use-progress";
 import { useProfile } from "@site/src/hooks/use-profile";
 import ProfileModal from "@site/src/components/ProfileModal";
+import ConnectButton from "@site/src/components/ConnectButton";
+import { Button } from "@site/src/ui/design-system/src/lib/Components/Button";
 
 export const BuilderPerks = () => {
   const [activeModal, setActiveModal] = React.useState(null);
@@ -104,20 +105,21 @@ export const BuilderPerks = () => {
             </div>
           )}
 
-          <Button
-            variant="primary"
-            size="lg"
-            onClick={() => {
-              if (!user?.loggedIn) {
-                logIn();
-              } else {
+          {!user?.loggedIn ? (
+            <ConnectButton onComplete={() => setActiveModal(null)} />
+          ) : (
+            <Button
+              variant="black"
+              size="sm"
+              className="mt-4"
+              onClick={() => {
                 setIsProfileModalOpen(true);
-              }
-              setActiveModal(null);
-            }}
-          >
-            {!user?.loggedIn ? "Connect Wallet" : "Complete Profile"}
-          </Button>
+                setActiveModal(null);
+              }}
+            >
+              Complete Profile
+            </Button>
+          )}
         </div>
       </Modal>
 
