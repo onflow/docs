@@ -42,6 +42,21 @@ export const Icon: React.FC<IconProps> = ({
     return <LocationIcon />;
   }
 
+  if (typeof icons[name] === 'string') {
+    return (
+      <div className={className}>
+        <img 
+          src={icons[name]} 
+          alt={name}
+          className="w-full h-full object-contain"
+          width={width}
+          height={height}
+        />
+      </div>
+    );
+  }
+
+  // Otherwise, render as a React component
   return (
     <div className={className}>
       {React.createElement(icons[name], {
