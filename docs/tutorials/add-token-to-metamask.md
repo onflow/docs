@@ -43,7 +43,6 @@ After completing this guide, you'll be able to:
 - Add ERC20 tokens to MetaMask via [Flowscan][5].
 - Manually add a custom token to MetaMask using a contract address.
 - Locate Flow EVM token contract addresses on various platforms.
-- Verify token details using Flow EVM block explorers and DeFi tools.
 
 ## Add a Token to MetaMask via Flowscan
 
