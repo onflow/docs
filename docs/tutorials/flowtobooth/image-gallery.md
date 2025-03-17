@@ -54,6 +54,8 @@ Much more computation is available at prices you or your users will be willing t
 
 In this tutorial, we'll build a smart contract that can store and retrieve images onchain. We'll also build a simple frontend to interact with the contract on Flow and another chain.
 
+![stage-1](stage-1.png)
+
 ## Objectives
 
 After completing this guide, you'll be able to:
@@ -95,7 +97,7 @@ We're passing the original owner of the contract as an argument in the construct
 
 ### Set Up Storage for Images
 
-We'll store the images in a a simple `struct` that holds the image as a `base64` encoded `string`and also contains a `string` for the description. Doing so allows the image to be directly used in html and makes it easier to test the contract directly with a block explorer, but has the downside of making the images 33% bigger. Another format would be more efficient.
+We'll store the images in a simple `struct` that holds the image as a `base64` encoded `string`and also contains a `string` for the description. Doing so allows the image to be directly used in html and makes it easier to test the contract directly with a block explorer, but has the downside of making the images 33% bigger. Another format would be more efficient.
 
 These will be held in array:
 
@@ -1111,3 +1113,6 @@ Now that you've completed this tutorial, you're ready to explore more complex on
 [Flow Wallet]: https://wallet.flow.com/
 [Flow Faucet]: https://faucet.flow.com/fund-account
 [add the Flow Wallet]: ../../evm/guides/rainbowkit.md
+[rainbowkit]: https://www.rainbowkit.com/
+[wagmi]: https://wagmi.sh/
+[viem]: https://viem.sh/
