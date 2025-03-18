@@ -1200,15 +1200,9 @@ A build that returns a [event stream connection](#eventstream) once decoded. It 
 
 #### Arguments
 
-| Name                     | Type                      | Description                                                                                                             |
-| ------------------------ | ------------------------- | ----------------------------------------------------------------------------------------------------------------------- |
-| `opts`                   | `Object`                  | An object with the following keys:                                                                                      |
-| `opts.startBlockId`      | string &#124; undefined   | The block ID to start listening for events. Example: `9dda5f281897389b99f103a1c6b180eec9dac870de846449a302103ce38453f3` |
-| `opts.startHeight`       | number &#124; undefined   | The block height to start listening for events. Example: `123`                                                          |
-| `opts.eventTypes`        | string[] &#124; undefined | The event types to listen for. Example: `A.7e60df042a9c0868.FlowToken.TokensWithdrawn`                                  |
-| `opts.addresses`         | string[] &#124; undefined | The addresses to listen for. Example: `0x7e60df042a9c0868`                                                              |
-| `opts.contracts`         | string[] &#124; undefined | The contracts to listen for. Example: `0x7e60df042a9c0868`                                                              |
-| `opts.heartbeatInterval` | number &#124; undefined   | The interval in milliseconds to send a heartbeat to the Access Node. Example: `10000`                                   |
+| Name          | Type                        | Description                       |
+| ------------- | --------------------------- | --------------------------------- |
+| `eventFilter` | [EventFilter](#eventfilter) | The event filter to subscribe to. |
 
 #### Returns after decoding
 
