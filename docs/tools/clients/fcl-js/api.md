@@ -1565,9 +1565,9 @@ Note:
 
 #### Arguments
 
-| Name        | Type   | Description         |
-| ----------- | ------ | ------------------- |
-| `eventName` | string | A valid event name. |
+| Name                | Type                                      | Description                                      |
+| ------------------- | ----------------------------------------- | ------------------------------------------------ |
+| `eventNameOrFilter` | string &#124; [EventFilter](#eventfilter) | The name of the event or an event filter object. |
 
 #### Returns
 
@@ -2016,6 +2016,19 @@ FCL arguments must specify one of the following support types for each value pas
 | `Path`       | `fcl.arg({ domain: "public", identifier: "flowTokenVault" }, t.Path)`                                                |
 
 ---
+
+### `EventFilter`
+
+An object that contains the parameters to filter events, used for event streaming in the [`fcl.events`](#events) function.
+
+| Name                     | Value Type                | Description                                                                                                             |
+| ------------------------ | ------------------------- | ----------------------------------------------------------------------------------------------------------------------- |
+| `startBlockId`           | string &#124; undefined   | The block ID to start listening for events. Example: `9dda5f281897389b99f103a1c6b180eec9dac870de846449a302103ce38453f3` |
+| `startHeight`            | number &#124; undefined   | The block height to start listening for events. Example: `123`                                                          |
+| `eventTypes`             | string[] &#124; undefined | The event types to listen for. Example: `A.7e60df042a9c0868.FlowToken.TokensWithdrawn`                                  |
+| `addresses`              | string[] &#124; undefined | The addresses to listen for. Example: `0x7e60df042a9c0868`                                                              |
+| `contracts`              | string[] &#124; undefined | The contracts to listen for. Example: `0x7e60df042a9c0868`                                                              |
+| `opts.heartbeatInterval` | number &#124; undefined   | The interval in milliseconds to send a heartbeat to the Access Node. Example: `10000`                                   |
 
 ### `StreamConnection`
 
