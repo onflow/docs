@@ -26,7 +26,7 @@ However, in order to leverage all the features of Cadence, developers will need 
 
 🚨🚨🚨 **ASSET LOSS RISK** 🚨🚨🚨
 
-Cadence-Owned Accounts, easily identifiable by the leading zeroes (`0x00000000000000000000000`) **only exist on Flow**.  The keys to these addresses are generated in a way that is not compatible with other networks.
+Cadence-Owned Accounts, easily identifiable by the leading zeroes (`0x00000000000000000000000`) **only exist on Flow**. The keys to these addresses are generated in a way that is not compatible with other networks.
 
 As a result, any assets sent to one of these addresses on another network **will be lost permanently!**
 
@@ -46,7 +46,7 @@ COAs create powerful new opportunities to improve the UX, functionality and util
 
 - **Enhanced Composability**: Applications written in Solidity can be extended and composed upon within Cadence. This allows developers to build upon existing EVM applications and deliver a more feature-rich user experience.
 
-- **Atomic Interactions**: Developers are able to execute multiple EVM transactions atomically from a COA. This is particularly useful for applications that require multiple transactions to be executed within a single block, or require all prior transactions' state changes to revert if a single transaction in the batch fails. This is not possible natively using EOAs or with `UserOperations` when using the ERC-4337 standard; in both cases each individual transaction is distinct and cannot be reverted back once state has changed. 
+- **Atomic Interactions**: Developers are able to execute multiple EVM transactions atomically from a COA. This is particularly useful for applications that require multiple transactions to be executed within a single block, or require all prior transactions' state changes to revert if a single transaction in the batch fails. This is not possible natively using EOAs or with `UserOperations` when using the ERC-4337 standard; in both cases each individual transaction is distinct and cannot be reverted back once state has changed.
 
 - **Native Account Abstraction**: COAs are controlled by Cadence resources, which are in turn owned by Flow accounts. [Flow accounts](./accounts.md) have built-in support for multi-signature authentication, key rotation, and account recovery. As a Cadence resource, COAs naturally inherit [these features](../build/advanced-concepts/account-abstraction.md).
 
@@ -64,6 +64,6 @@ Because COAs are owned by Cadence resources, an EVM transaction is not required 
 
 ### More Information
 
-To learn how to create and interact with COAs in Cadence, see the guide for [Interacting with COAs from Cadence](./cadence/interacting-with-coa.md).
+To learn how to create and interact with COAs in Cadence, see the guide for [Interacting with COAs from Cadence](../tutorials/cross-vm-apps/interacting-with-coa.md).
 
 For more information about Cadence Owned Accounts, see the [Flow EVM Support FLIP](https://github.com/onflow/flips/pull/225/files)
