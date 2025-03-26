@@ -1,7 +1,7 @@
 ---
-title: Introduction
+title: Batched Transactions
 description: Learn how to use FCL with wagmi and rainbowkit to create a cross-vm app - one that is simultaneously connected to Flow EVM and Flow Cadence.
-sidebar_position: 5
+sidebar_position: 0
 keywords:
   - hybrid apps
   - cross-vm apps
@@ -254,8 +254,8 @@ import deployedAddresses from '../contracts/deployed_addresses.json';
 
 export const clickToken = {
   abi: ClickToken.abi,
-  address: deployedAddresses['ClickTokenModule#ClickToken'] as `0x${string}`
-}; 
+  address: deployedAddresses['ClickTokenModule#ClickToken'] as `0x${string}`,
+};
 ```
 
 ## Build Traditional Functionality
@@ -575,7 +575,7 @@ Now that you have completed the tutorial, you should be able to:
 [Cadence]: https://cadence-lang.org
 [Solidity]: https://soliditylang.org/
 [native VRF]: ../../evm/guides/vrf.md
-[structure and call EVM transactions]: ../../evm/cadence/batched-evm-transactions.md
+[structure and call EVM transactions]: ./batched-evm-transactions.md
 [FLIP 316]: https://github.com/onflow/flips/pull/317
 [Flow Client Library (FCL)]: ../../tools/clients/fcl-js
 [wagmi]: https://wagmi.sh/

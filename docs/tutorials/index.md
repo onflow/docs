@@ -20,6 +20,16 @@ keywords:
   - web3
   - dapp
   - onchain app
+  - cross-vm
+  - hybrid apps
+  - COAs
+  - batched transactions
+  - VM bridge
+  - token launch
+  - image gallery
+  - wagmi
+  - rainbowkit
+  - FCL
 ---
 
 Flow Cadence and Flow EVM are two VMs running on the Flow blockchain. A few months after the release of the Crescendo upgrade, we're seeing more apps that aren't Cadence apps -OR- EVM apps, they're both! Cadence unlocks superpowers such as vast computation and storage, native VRF, a much safer and more secure language for handling digital ownership, and more. Flow EVM unlocks the power of the Ethereum ecosystem, allowing you to bring in traditional tools, assets, and liquidity.
@@ -28,18 +38,28 @@ For this grand future, we'll need a new suite of tutorials, guides, and resource
 
 ## Token Launch
 
-Learn how to launch your own token on Flow using Cadence and EVM.
+Learn how to launch your own token on Flow using Cadence and EVM. This guide covers the process of registering and deploying tokens that can be used across both virtual machines.
 
-- [Register a Token](token-launch/register-token.md)
+- [Register a Token] - Step-by-step guide to registering and deploying your token on Flow
 
 ## Cross-VM Applications
 
-Learn how to build applications that interact with both Cadence and Flow EVM.
+Learn how to build applications that interact with both Cadence and Flow EVM. These tutorials cover everything from basic integration to advanced features like transaction batching and token bridging.
 
-- [Introduction to Cross-VM Applications](cross-vm-apps/introduction.md)
+- [Introduction to Cross-VM Applications] - Learn how to use FCL with Wagmi and RainbowKit to create a cross-VM app
+- [Interacting with COAs] - Learn how to create and interact with Cadence Owned Accounts (COAs) to control EVM accounts from Cadence
+- [Batched EVM Transactions] - Discover how to batch multiple EVM transactions into a single Cadence transaction
+- [Cross-VM Bridge] - Explore how to bridge fungible and non-fungible tokens between Cadence and EVM environments
 
 ## FlowtoBooth
 
-Explore Flow's unique capabilities through fun benchmark applications that showcase what's possible with Flow's efficient gas pricing.
+Explore Flow's unique capabilities through fun benchmark applications that showcase what's possible with Flow's efficient gas pricing. These tutorials demonstrate practical applications of Flow's advanced features.
 
-- [Build a Fully-Onchain Image Gallery](flowtobooth/image-gallery.md)
+- [Build a Fully-Onchain Image Gallery] - Create a fully onchain image gallery that demonstrates Flow's efficient storage capabilities
+
+[Register a Token]: token-launch/register-token.md
+[Introduction to Cross-VM Applications]: cross-vm-apps/introduction.md
+[Interacting with COAs]: cross-vm-apps/interacting-with-coa.md
+[Batched EVM Transactions]: cross-vm-apps/batched-evm-transactions.md
+[Cross-VM Bridge]: cross-vm-apps/vm-bridge.md
+[Build a Fully-Onchain Image Gallery]: flowtobooth/image-gallery.md

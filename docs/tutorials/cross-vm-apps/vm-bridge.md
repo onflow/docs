@@ -29,21 +29,21 @@ projects deploying to either Cadence or EVM.
 
 The core bridge contracts can be found at the following addresses:
 
-|Contracts|Testnet|Mainnet|
-|---|---|---|
-|All Cadence Bridge contracts|[`0xdfc20aee650fcbdf`](https://contractbrowser.com/account/0xdfc20aee650fcbdf/contracts)|[`0x1e4aa0b87d10b141`](https://contractbrowser.com/account/0x1e4aa0b87d10b141/contracts)|
-|`FlowEVMBridgeFactory.sol`|[`0xf8146b4aef631853f0eb98dbe28706d029e52c52`](https://evm-testnet.flowscan.io/address/0xF8146B4aEF631853F0eB98DBE28706d029e52c52)|[`0x1c6dea788ee774cf15bcd3d7a07ede892ef0be40`](https://evm.flowscan.io/address/0x1C6dEa788Ee774CF15bCd3d7A07ede892ef0bE40)|
-|`FlowEVMBridgeDeploymentRegistry.sol`|[`0x8781d15904d7e161f421400571dea24cc0db6938`](https://evm-testnet.flowscan.io/address/0x8781d15904d7e161f421400571dea24cc0db6938)|[`0x8fdec2058535a2cb25c2f8cec65e8e0d0691f7b0`](https://evm.flowscan.io/address/0x8FDEc2058535A2Cb25C2f8ceC65e8e0D0691f7B0)|
-|`FlowEVMBridgedERC20Deployer.sol`|[`0x4d45CaD104A71D19991DE3489ddC5C7B284cf263`](https://evm-testnet.flowscan.io/address/0x4d45CaD104A71D19991DE3489ddC5C7B284cf263)|[`0x49631Eac7e67c417D036a4d114AD9359c93491e7`](https://evm.flowscan.io/address/0x49631Eac7e67c417D036a4d114AD9359c93491e7)|
-|`FlowEVMBridgedERC721Deployer.sol`|[`0x1B852d242F9c4C4E9Bb91115276f659D1D1f7c56`](https://evm-testnet.flowscan.io/address/0x1B852d242F9c4C4E9Bb91115276f659D1D1f7c56)|[`0xe7c2B80a9de81340AE375B3a53940E9aeEAd79Df`](https://evm.flowscan.io/address/0xe7c2B80a9de81340AE375B3a53940E9aeEAd79Df)|
+| Contracts                             | Testnet                                                                                                                            | Mainnet                                                                                                                    |
+| ------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------- |
+| All Cadence Bridge contracts          | [`0xdfc20aee650fcbdf`](https://contractbrowser.com/account/0xdfc20aee650fcbdf/contracts)                                           | [`0x1e4aa0b87d10b141`](https://contractbrowser.com/account/0x1e4aa0b87d10b141/contracts)                                   |
+| `FlowEVMBridgeFactory.sol`            | [`0xf8146b4aef631853f0eb98dbe28706d029e52c52`](https://evm-testnet.flowscan.io/address/0xF8146B4aEF631853F0eB98DBE28706d029e52c52) | [`0x1c6dea788ee774cf15bcd3d7a07ede892ef0be40`](https://evm.flowscan.io/address/0x1C6dEa788Ee774CF15bCd3d7A07ede892ef0bE40) |
+| `FlowEVMBridgeDeploymentRegistry.sol` | [`0x8781d15904d7e161f421400571dea24cc0db6938`](https://evm-testnet.flowscan.io/address/0x8781d15904d7e161f421400571dea24cc0db6938) | [`0x8fdec2058535a2cb25c2f8cec65e8e0d0691f7b0`](https://evm.flowscan.io/address/0x8FDEc2058535A2Cb25C2f8ceC65e8e0D0691f7B0) |
+| `FlowEVMBridgedERC20Deployer.sol`     | [`0x4d45CaD104A71D19991DE3489ddC5C7B284cf263`](https://evm-testnet.flowscan.io/address/0x4d45CaD104A71D19991DE3489ddC5C7B284cf263) | [`0x49631Eac7e67c417D036a4d114AD9359c93491e7`](https://evm.flowscan.io/address/0x49631Eac7e67c417D036a4d114AD9359c93491e7) |
+| `FlowEVMBridgedERC721Deployer.sol`    | [`0x1B852d242F9c4C4E9Bb91115276f659D1D1f7c56`](https://evm-testnet.flowscan.io/address/0x1B852d242F9c4C4E9Bb91115276f659D1D1f7c56) | [`0xe7c2B80a9de81340AE375B3a53940E9aeEAd79Df`](https://evm.flowscan.io/address/0xe7c2B80a9de81340AE375B3a53940E9aeEAd79Df) |
 
 And below are the bridge escrow's EVM addresses. These addresses are COAs and are stored stored in the same Flow account
 as you'll find the Cadence contracts (see above).
 
-|Network|Address|
-|---|---|
-|Testnet|[`0x0000000000000000000000023f946ffbc8829bfd`](https://evm-testnet.flowscan.io/address/0x0000000000000000000000023f946FFbc8829BFD)|
-|Mainnet|[`0x00000000000000000000000249250a5c27ecab3b`](https://evm.flowscan.io/address/0x00000000000000000000000249250a5C27Ecab3B)|
+| Network | Address                                                                                                                            |
+| ------- | ---------------------------------------------------------------------------------------------------------------------------------- |
+| Testnet | [`0x0000000000000000000000023f946ffbc8829bfd`](https://evm-testnet.flowscan.io/address/0x0000000000000000000000023f946FFbc8829BFD) |
+| Mainnet | [`0x00000000000000000000000249250a5c27ecab3b`](https://evm.flowscan.io/address/0x00000000000000000000000249250a5C27Ecab3B)         |
 
 ## Interacting With the Bridge
 
@@ -52,7 +52,7 @@ as you'll find the Cadence contracts (see above).
 All bridging activity in either direction is orchestrated via Cadence on COA EVM accounts. This means that all bridging
 activity must be initiated via a Cadence transaction, not an EVM transaction regardless of the directionality of the
 bridge request. For more information on the interplay between Cadence and EVM, see [How Flow EVM
-Works](../how-it-works.md).
+Works](../../evm/how-it-works.md).
 
 :::
 
@@ -60,7 +60,7 @@ Works](../how-it-works.md).
 
 The Flow EVM bridge allows both fungible and non-fungible tokens to move atomically between Cadence and EVM. In the
 context of EVM, fungible tokens are defined as ERC20 tokens, and non-fungible tokens as ERC721 tokens. In Cadence,
-fungible tokens are defined by contracts implementing 
+fungible tokens are defined by contracts implementing
 [the `FungibleToken` interface](https://github.com/onflow/flow-ft/blob/master/contracts/FungibleToken.cdc)
 and non-fungible tokens implement
 [the `NonFungibleToken` interface](https://github.com/onflow/flow-nft/blob/master/contracts/NonFungibleToken.cdc).
@@ -90,6 +90,7 @@ Below are transactions relevant to onboarding assets:
 ```cadence onboard_by_type.cdc
 !from https://www.github.com/onflow/flow-evm-bridge/blob/main/cadence/transactions/bridge/onboarding/onboard_by_type.cdc
 ```
+
 </details>
 
 <details>
@@ -98,6 +99,7 @@ Below are transactions relevant to onboarding assets:
 ```cadence onboard_by_evm_address.cdc
 !from https://www.github.com/onflow/flow-evm-bridge/blob/main/cadence/transactions/bridge/onboarding/onboard_by_evm_address.cdc
 ```
+
 </details>
 
 ### Bridging
@@ -137,6 +139,7 @@ script:
 ```cadence get_associated_address.cdc
 !from https://github.com/onflow/flow-evm-bridge/blob/main/cadence/scripts/bridge/get_associated_evm_address.cdc
 ```
+
 </details>
 
 #### NFTs
@@ -154,6 +157,7 @@ Below are transactions relevant to bridging NFTs:
 ```cadence bridge_nft_to_evm.cdc
 !from https://www.github.com/onflow/flow-evm-bridge/blob/main/cadence/transactions/bridge/nft/bridge_nft_to_evm.cdc
 ```
+
 </details>
 
 <details>
@@ -163,6 +167,7 @@ Below are transactions relevant to bridging NFTs:
 ```cadence bridge_nft_from_evm.cdc
 !from https://www.github.com/onflow/flow-evm-bridge/blob/main/cadence/transactions/bridge/nft/bridge_nft_from_evm.cdc
 ```
+
 </details>
 
 #### Fungible Tokens
@@ -188,6 +193,7 @@ Below are transactions relevant to bridging fungible tokens:
 ```cadence bridge_tokens_to_evm.cdc
 !from https://www.github.com/onflow/flow-evm-bridge/blob/main/cadence/transactions/bridge/tokens/bridge_tokens_to_evm.cdc
 ```
+
 </details>
 
 <details>
@@ -197,6 +203,7 @@ Below are transactions relevant to bridging fungible tokens:
 ```cadence bridge_tokens_from_evm.cdc
 !from https://www.github.com/onflow/flow-evm-bridge/blob/main/cadence/transactions/bridge/tokens/bridge_tokens_from_evm.cdc
 ```
+
 </details>
 
 ## Prep Your Assets for Bridging
@@ -231,7 +238,7 @@ access(all) struct URI: MetadataViews.File {
     access(self) let value: String
 
     access(all) view fun uri(): String
-        
+
 }
 
 access(all) struct EVMBridgedMetadata {
