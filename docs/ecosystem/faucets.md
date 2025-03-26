@@ -72,7 +72,7 @@ From the Faucet's landing page, click on the "Create Account" button. You'll be 
 
 Know that there is a distinction between Flow native accounts and EVM accounts. Native accounts allow you to interact with the Cadence runtime, while EVM accounts are used for interacting with Flow's EVM. To create an EVM account, you can use EVM tooling to generate an Ethereum Owned Account (EOA) and simply fund the associated address. Alternatively, you can create an EVM account controlled by your Flow native account - known as a Cadence Owned Account (COA) - in which case you'll need a Flow native account and should continue with the steps below.
 
-For more information interacting with EVM via COAs, see the [Interacting With COAs documentation](../../tutorials/cross-vm-apps/interacting-with-coa.md).
+For more information interacting with EVM via COAs, see the [Interacting With COAs documentation](../tutorials/cross-vm-apps/interacting-with-coa.md).
 
 :::
 
