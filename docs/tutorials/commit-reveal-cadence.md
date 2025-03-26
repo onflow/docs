@@ -43,10 +43,10 @@ The game consists of two distinct phases:
 ### **What You Will Learn**
 By the end of this guide, you will be able to:
 
-✅ **Deploy a Cadence smart contract** on the Flow blockchain  
-✅ **Implement commit-reveal randomness** to ensure fairness  
-✅ **Interact with Flow’s on-chain randomness features**  
-✅ **Build and test the Coin Toss game** using Flow’s Testnet  
+- Deploy a Cadence smart contract** on the Flow blockchain  
+- Implement commit-reveal randomness** to ensure fairness  
+- Interact with Flow’s on-chain randomness features**  
+- Build and test the Coin Toss game using Flow’s Testnet  
 
 ## Prerequisites
 
@@ -63,7 +63,7 @@ In this section, we’ll walk through constructing the `CoinToss.cdc` contract, 
 This tutorial will focus specifically on writing and understanding the `CoinToss.cdc` contract, while additional setup details can be found in the [original GitHub repo](https://github.com/onflow/random-coin-toss).  
 
 
-### Step 1. Defining the `CoinToss.cdc` Contract
+### Step 1: Defining the `CoinToss.cdc` Contract
 
 Let's define our `CoinToss.cdc` and bring the other supporting contracts. 
 
@@ -88,7 +88,7 @@ access(all) contract CoinToss {
 }
 ```
 
-### 2. Implementing the Commit Phase With `flipCoin` 
+### Step 2: Implementing the Commit Phase With `flipCoin` 
 
 Let's define the first step in our scheme; the commit phase. We do this through a `flipCoin` public function. In this method, the caller commits a bet. The contract takes note of the block height and bet amount, returning a `Receipt` resource which is used by the former to reveal the coin toss result and determine their winnings.
 
@@ -107,7 +107,7 @@ access(all) fun flipCoin(bet: @{FungibleToken.Vault}): @Receipt {
     }
 ```
 
-### Step 3. Implementing the Reveal Phase With `revealCoin` 
+### Step 3: Implementing the Reveal Phase With `revealCoin` 
 
 Now we implement the reveal phase with the `revealCoin` function. Here the caller provides the Receipt given to them at commitment. The contract then "flips a coin" with `_randomCoin()` providing the Receipt's contained Request. If result is **1**, user loses, but if it's **0** the user doubles their bet. Note that the caller could condition the revealing transaction, but they've already provided their bet amount so there's **no loss** for the contract if they do.
 
