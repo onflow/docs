@@ -20,9 +20,9 @@ In contrast, Flow offers a simpler and more integrated approach with its **Rando
 
 ## Objectives
 
-In this guide, we will explore how to use a **commit-reveal scheme** in conjunction with Flow’s **Random Beacon** to achieve secure, non-revertible randomness. This mechanism mitigates **post-selection attacks**, where participants attempt to manipulate or reject unfavorable random outcomes after they are revealed.
+In this guide, we will explore how to use a commit-reveal scheme in conjunction with Flow’s Random Beacon to achieve secure, non-revertible randomness. This mechanism mitigates post-selection attacks, where participants attempt to manipulate or reject unfavorable random outcomes after they are revealed.
 
-To illustrate this concept, we will build a **Coin Toss game** on Flow, demonstrating how smart contracts can leverage **commit-reveal randomness** for fair, tamper-resistant results.
+To illustrate this concept, we will build a Coin Toss game on Flow, demonstrating how smart contracts can leverage commit-reveal randomness for fair, tamper-resistant results.
 
 ### **What is the Coin Toss Game?**
 The **Coin Toss Game** is a decentralized betting game that showcases Flow’s **commit-reveal randomness**. Players place bets without knowing the random outcome, ensuring fairness and resistance to manipulation.
@@ -232,12 +232,12 @@ You can find the full transaction used for this example, with its result and eve
 
 ## Conclusion
 
-The **commit-reveal scheme**, implemented within the context of Flow's *Random Beacon*, provides a **robust solution** for generating secure and non-revertible randomness in decentralized applications. By leveraging this mechanism, developers can ensure that their applications are:
+The commit-reveal scheme, implemented within the context of Flow's Random Beacon, provides a robust solution for generating secure and non-revertible randomness in decentralized applications. By leveraging this mechanism, developers can ensure that their applications are:
 
-- **Fair**: Outcomes remain unbiased and unpredictable.
-- **Resistant to manipulation**: Protects against post-selection attacks.
-- **Immune to replay attacks**: A common pitfall in traditional random number generation on other blockchains.
+- Fair: Outcomes remain unbiased and unpredictable.
+- Resistant to manipulation: Protects against post-selection attacks.
+- Immune to replay attacks: A common pitfall in traditional random number generation on other blockchains.
 
-The example of the *CoinToss game* illustrates the practical implementation of these concepts, demonstrating how **simple yet effective** this approach can be. As blockchain technology continues to evolve, adopting such *best practices* is **crucial** for fostering a secure and trustworthy ecosystem. This encourages developers to innovate while adhering to the core principles of **decentralization** and **fairness**.
+The example of the CoinToss game illustrates the practical implementation of these concepts, demonstrating how simple yet effective this approach can be. As blockchain technology continues to evolve, adopting such best practices is crucial for fostering a secure and trustworthy ecosystem. This encourages developers to innovate while adhering to the core principles of decentralization and fairness.
 
-By utilizing Flow’s *native capabilities*, developers can focus more on creating **engaging user experiences** without the complexities and limitations often tied to *external oracles*.
+By utilizing Flow’s native capabilities, developers can focus more on creating engaging user experiences without the complexities and limitations often tied to external oracles.
