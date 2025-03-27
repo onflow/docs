@@ -1,6 +1,6 @@
 ---
-sidebar_position: 1
-title: Deploy a Solidity contract using Cadence
+sidebar_position: 2
+title: Deploy a Solidity Contract Using Cadence
 description: Guide on how to deploy a Solidity contract using Cadence
 keywords: [Solidity, Cadence, Flow EVM, NFTs, blockchain, smart contracts, Ethereum, Flow, deployment, Remix, Overflow]
 ---
