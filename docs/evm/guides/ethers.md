@@ -1,7 +1,7 @@
 ---
 title: Ethers.js on Flow Blockchain
 sidebar_label: Ethers
-sidebar_position: 1
+sidebar_position: 8
 ---
 
 # Ethers.js

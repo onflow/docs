@@ -4,7 +4,7 @@ sidebar_label: Interacting with COAs
 sidebar_position: 4
 ---
 
-[Cadence Owned Accounts (COAs)](../accounts.md#cadence-owned-accounts) are EVM accounts owned by a Cadence resource and
+[Cadence Owned Accounts (COAs)](../../evm/accounts.md#cadence-owned-accounts) are EVM accounts owned by a Cadence resource and
 are used to interact with Flow EVM from Cadence.
 
 COAs expose two interfaces for interaction: one on the Cadence side and one on the EVM side. In this guide, we will
@@ -211,7 +211,6 @@ fun main(addressHex: String): UFix64 {
 
 The above script is helpful if you already know the COA address and can provide the hex representation directly.
 
-
 ## Depositing and Withdrawing Flow Tokens
 
 Tokens can be seamlessly transferred between the Flow EVM and Cadence environment using the `deposit` and `withdraw`
@@ -403,7 +402,7 @@ transaction(to: String, amount: UInt) {
     let recipient: EVM.EVMAddress
     let recipientPreBalance: UInt
     let coa: auth(EVM.Call) &EVM.CadenceOwnedAccount
-    
+
     prepare(signer: auth(BorrowValue) &Account) {
         self.recipient = EVM.addressFromString(to)
         self.recipientPreBalance = self.recipient.balance().attoflow
@@ -626,7 +625,7 @@ transaction(bytecode: String) {
 
 ## More Information
 
-For more information about Cadence Owned Accounts, see [Flow EVM Accounts](../accounts.md).
+For more information about Cadence Owned Accounts, see [Flow EVM Accounts](../../evm/accounts.md).
 
 Other useful snippets for interacting with COAs can be found [here](https://fw-internal-doc.gitbook.io/evm).
 

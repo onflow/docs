@@ -1297,6 +1297,26 @@
       "source": "/tools/flow-cli/tests/run-tests",
       "destination": "/tools/flow-cli/tests",
       "permanent": true
+    },
+    {
+      "source": "/evm/data-indexers",
+      "destination": "/ecosystem/data-indexers",
+      "permanent": true
+    },
+    {
+      "source": "/evm/clients/ethers",
+      "destination": "/evm/guides/ethers",
+      "permanent": true
+    },
+    {
+      "source": "/evm/clients/web3",
+      "destination": "/evm/guides/web3",
+      "permanent": true
+    },
+    {
+      "source": "/evm/cadence/:path*",
+      "destination": "/evm/tutorials/cross-vm-apps/:path*",
+      "permanent": true
     }
   ]
 }

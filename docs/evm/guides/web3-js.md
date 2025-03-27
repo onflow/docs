@@ -1,7 +1,7 @@
 ---
 title: Web3.js on Flow Blockchain
 sidebar_label: Web3.js
-sidebar_position: 2
+sidebar_position: 9
 ---
 
 # Web3.js

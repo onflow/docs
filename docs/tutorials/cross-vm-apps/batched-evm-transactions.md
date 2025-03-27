@@ -39,7 +39,7 @@ creating a [Cadence-controlled EVM account (COA)]. Specifically, we will:
 - Wrap FLOW as WFLOW
 - Approve an ERC721 to transfer WFLOW in exchange for an NFT mint
 - Mint an ERC721 token - this ERC721 has a 50% chance of failing (using [onchain VRF] to determine success)
- 
+
 These operations let us focus on the **core concepts** of this guide:
 
 1. **Batching EVM transactions** using Cadence
@@ -114,7 +114,7 @@ interact with the `WFLOW` contract on Testnet. There are a number of ways we cou
 IDE, Foundry's CLI, Hardhat, etc. - but for the purposes of this guide, we'll use the [Flowscan EVM block explorer].
 
 Navigate to the WFLOW Testnet contract on Flowscan: [WFLOW]. Ensure you're on the `Write Contract` tab which allows you
-to interact with the contract's mutating functions. 
+to interact with the contract's mutating functions.
 
 Before you can interact with the contract, you need to connect your MetaMask wallet to the [Flowscan EVM block
 explorer]. Click the `Connect` button in the top right corner and follow the prompts to connect your MetaMask wallet.
@@ -230,7 +230,7 @@ import EVM from 0x8c5303eaa26202d6
 /// @param maybeMintERC721AddressHex: The EVM address hex of the ERC721 contract as a String
 ///
 transaction(wflowAddressHex: String, maybeMintERC721AddressHex: String) {
-    
+
     let coa: auth(EVM.Call) &EVM.CadenceOwnedAccount
     let mintCost: UFix64
     let wflowAddress: EVM.EVMAddress
@@ -349,11 +349,13 @@ transaction(wflowAddressHex: String, maybeMintERC721AddressHex: String) {
 }
 
 ```
+
 </details>
 
 You can run the transaction at the following link using the community-developed Flow Runner tool: [`wrap_and_mint.cdc`].
 
 This transaction takes two arguments:
+
 - WFLOW contract address: `0xd3bF53DAC106A0290B0483EcBC89d40FcC961f3e`
 - MaybeMintERC721 contract address: `0x2E2Ed0Cfd3AD2f1d34481277b3204d807Ca2F8c2`
 
@@ -412,7 +414,7 @@ But how does our Flow account interact with EVM from the Cadence runtime? As you
 COA](./interacting-with-coa.md) guide, we use a Cadence-owned account (COA) to interact with EVM contracts from Cadence.
 
 A COA is a [resource] providing an interface through which Cadence can interact with the EVM runtime. This is
-importantly ***in addition*** to the traditional routes you'd normally access normal EVMs - e.g. via the JSON-RPC API.
+importantly **_in addition_** to the traditional routes you'd normally access normal EVMs - e.g. via the JSON-RPC API.
 And with this interface, we can take advantage of all of the benefits of Cadence - namely here scripted transactions and
 conditional execution.
 
@@ -712,7 +714,7 @@ Ready to level up your Cadence skills? Take a look at [these Cadence tutorials].
 [Flow Wallet extension]: https://wallet.flow.com/download
 [Faucet guide]: ../../ecosystem/faucets.md
 [Cadence-controlled EVM account (COA)]: ./interacting-with-coa.md
-[onchain VRF]: ../guides/vrf.md
+[onchain VRF]: ../../evm/guides/vrf.md
 [Overview]: #overview
 [Testnet]: https://evm-testnet.flowscan.io/token/0xd3bF53DAC106A0290B0483EcBC89d40FcC961f3e?tab=contract
 [Mainnet]: https://evm.flowscan.io/token/0xd3bF53DAC106A0290B0483EcBC89d40FcC961f3e?tab=contract
@@ -726,7 +728,7 @@ Ready to level up your Cadence skills? Take a look at [these Cadence tutorials].
 [Flowscan Cadence]: https://testnet.flowscan.io/
 [resource]: https://cadence-lang.org/docs/solidity-to-cadence#resources
 [entitlement]: https://cadence-lang.org/docs/language/access-control#entitlements
-[How Flow EVM Works]: ../how-it-works.md
+[How Flow EVM Works]: ../../evm/how-it-works.md
 [Interacting with COAs]: ./interacting-with-coa.md
 [Cadence Transactions]: ../../build/basics/transactions.md
 [these Cadence tutorials]: https://cadence-lang.org/docs/tutorial/first-steps
