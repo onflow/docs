@@ -219,9 +219,12 @@ The `awardItem` function is called with a test address and a string parameter. I
 
 ## Conclusion
 
-Deploying a Solidity contract within a Cadence environment on the Flow blockchain is not only feasible but also presents an exciting opportunity for developers to harness the strengths of both programming languages. Throughout this guide, we have navigated the critical steps involved in the deployment process, from compiling the Solidity contract using Remix to executing transactions with Overflow and Cadence scripts.
+Deploying a Solidity contract within a Cadence environment on the Flow blockchain is not only feasible but also presents an exciting opportunity for you to harness the strengths of both programming languages. Throughout this guide, you’ve navigated the critical steps involved in the deployment process, from compiling your Solidity contract using Remix to executing transactions with Overflow and Cadence scripts. By completing this guide, you’ve achieved the following:
 
-As the blockchain landscape continues to evolve, the ability to bridge diverse smart contract languages and platforms will be essential for innovation and collaboration. We encourage you to explore further and experiment with the tools and methodologies presented in this guide, paving the way for new possibilities in decentralized application development.
+- Deployed a Solidity contract on Flow EVM using Cadence: You compiled and deployed your Solidity contract to Flow’s EVM layer via a Cadence transaction.
+- Called functions from Cadence: You used a Cadence script to mint an NFT by invoking the `awardItem` function on your deployed contract.
+
+As blockchain technology continues to evolve, adopting these best practices is crucial for fostering a secure and trustworthy ecosystem. This empowers you to innovate while staying true to the core principles of decentralization and fairness. 
 
 [node-npm-install]: https://docs.npmjs.com/downloading-and-installing-node-js-and-npm
 [flow-cli-install]: https://developers.flow.com/tools/flow-cli/install  
