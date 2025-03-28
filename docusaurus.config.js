@@ -279,7 +279,7 @@ const config = {
             activeBasePath: '/evm',
           },
           {
-            to: 'tools/flow-cli',
+            to: 'tools/clients',
             position: 'left',
             label: 'Tools',
             activeBasePath: '/tools',
