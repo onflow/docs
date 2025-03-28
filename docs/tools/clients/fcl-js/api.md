@@ -1515,7 +1515,7 @@ const latestBlock = await fcl.latestBlock();
 
 ## Real-time Data
 
-Real-time data is available through the WebSocket Streaming API provided by the HTTP Access API. It allows developers to subscribe to events, blocks, transactions, and more in real-time.
+Streaming data is available through the WebSocket Streaming API provided by the HTTP Access API. It allows developers to subscribe to specific topics and receive real-time updates as they occur on the Flow blockchain.
 
 The following topics are available for subscription:
 
@@ -1534,7 +1534,10 @@ A utility function used for subscribing to real-time data from the WebSocket Str
 
 | Name                 | Type               | Description                                                                                        |
 | -------------------- | ------------------ | -------------------------------------------------------------------------------------------------- |
-| `SubscriptionParams` | SubscriptionParams | An object containing the subscription topic, arguments, and callbacks. See below for more details. |
+| [`SubscriptionParams`] | SubscriptionParams | An object containing the subscription topic, arguments, and callbacks. See below for more details. |
+| `opts`            | object             | _(Optional)_ Additional options for the subscription. See below for more details.                  |
+
+SubscriptionParams (first parameter):
 
 | Name      | Type                                                  | Description                                                                                                                        |
 | --------- | ----------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------- |
@@ -2228,3 +2231,83 @@ Signature objects are used to represent a signature for a particular message as 
 | `addr`      | [Address](#address) | the address of the account which this signature has been generated for                       |
 | `keyId`     | number              | The index of the key to use during authorization. (Multiple keys on an account is possible). |
 | `signature` | string              | a hexidecimal-encoded string representation of the generated signature                       |
+
+
+### SubscriptionParams<SubscriptionTopic>
+
+```ts
+import { SubscriptionParams } from "@onflow/typedefs"
+```
+
+An object containing the subscription topic, arguments, and callbacks.
+
+```ts
+interface SubscriptionParams<T extends SubscriptionTopic> {
+  topic: T;
+  args: SubscriptionArgs<T>;
+  onData: (data: SubscriptionData<T>) => void;
+  onError: (error: Error) => void;
+}
+```
+
+### SubscriptionTopic
+
+```ts
+import { SubscriptionTopic } from "@onflow/typedefs"
+```
+
+The subscription topic. Valid values include: `events`, `blocks`, `block_headers`, `block_digests`, `transaction_statuses`, `account_statuses`.
+
+```ts
+enum SubscriptionTopic {
+  BLOCKS = "blocks",
+  BLOCK_HEADERS = "block_headers",
+  BLOCK_DIGESTS = "block_digests",
+  ACCOUNT_STATUSES = "account_statuses",
+  TRANSACTION_STATUSES = "transaction_statuses",
+  EVENTS = "events",
+}
+```
+
+### SubscriptionArgs<T extends SubscriptionTopic>
+
+```ts
+import { type SubscriptionArgs } from "@onflow/typedefs"
+```
+
+An array or object of parameters specific to the topic. For example, when subscribing to events, these might be event identifiers.
+
+```ts
+type SubscriptionArgs<T extends SubscriptionTopic> = T extends "blocks" | "block_headers" | "block_digests"
+  ? BlockArgs
+  : T extends "account_statuses"
+  ? AccountStatusesArgs
+  : T extends "transaction_statuses"
+  ? { transactionId: string }
+  : T extends "events"
+  ? EventFilter
+  : never;
+```
+
+### SubscriptionData<T extends SubscriptionTopic>
+
+```ts
+import { type SubscriptionData } from "@onflow/typedefs"
+```
+
+The data returned by the subscription. This will vary depending on the topic.
+
+```ts
+```
+
+### RawSubscriptionData<T extends SubscriptionTopic>
+
+```ts
+import { type RawSubscriptionData } from "@onflow/typedefs"
+```
+
+The raw data returned by the subscription. This will vary depending on the topic.
+
+```ts
+
+```
