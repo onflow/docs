@@ -1513,12 +1513,120 @@ const latestBlock = await fcl.latestBlock();
 
 ---
 
-## Transaction Status Utility
+## Real-time Data
+
+Real-time data is available through the WebSocket Streaming API provided by the HTTP Access API. It allows developers to subscribe to events, blocks, transactions, and more in real-time.
+
+The following topics are available for subscription:
+
+- `events`
+- `blocks`
+- `block_headers`
+- `block_digests`
+- `transaction_statuses`
+- `account_statuses`
+
+### `subscribe`
+
+A utility function used for subscribing to real-time data from the WebSocket Streaming API. Data returned will be automatically decoded via `fcl.decode`.
+
+#### Arguments
+
+| Name                 | Type               | Description                                                                                        |
+| -------------------- | ------------------ | -------------------------------------------------------------------------------------------------- |
+| `SubscriptionParams` | SubscriptionParams | An object containing the subscription topic, arguments, and callbacks. See below for more details. |
+
+| Name      | Type                                                  | Description                                                                                                                        |
+| --------- | ----------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------- |
+| `topic`   | SubscriptionTopic                                     | The subscription topic. Valid values include: `events`, `blocks`, `transactions`, and `collections`.                               |
+| `args`    | SubscriptionArgs<T extends SubscriptionTopic>         | An array or object of parameters specific to the topic. For example, when subscribing to events, these might be event identifiers. |
+| `onData`  | (data: SubscriptionData<T extends SubscriptionTopic>) | A callback function that is called with the decoded data whenever a new message is received.                                       |
+| `onError` | (error: Error) => void                                | A callback function that is called if an error occurs during the subscription.                                                     |
+
+Additional Options (second parameter):
+
+| Name        | Type   | Description                                                               |
+| ----------- | ------ | ------------------------------------------------------------------------- |
+| `node`      | string | _(Optional)_ Custom node endpoint to be used for the subscription.        |
+| `transport` | object | _(Optional)_ Custom transport implementation for handling the connection. |
+
+#### Returns
+
+| Type                                                   | Description                                                                                    |
+| ------------------------------------------------------ | ---------------------------------------------------------------------------------------------- |
+| [SdkTransport.Subscription](#sdktransportsubscription) | A subscription object that allows you to manage the subscription (e.g., to unsubscribe later). |
+
+#### Usage
+
+```javascript
+import * as fcl from '@onflow/fcl';
+import { SubscriptionTopic } from '@onflow/sdk';
+
+const subscription = fcl.subscribe({
+  topic: SubscriptionTopic.EVENTS,
+  args: {
+    type: 'A.7e60df042a9c0868.FlowToken.TokensWithdrawn',
+  },
+  onData: (data) => console.log('Received event data:', data),
+  onError: (error) => console.error('Subscription error:', error),
+});
+
+// Later, to unsubscribe:
+subscription.unsubscribe();
+```
+
+---
+
+### `subscribeRaw`
+
+A utility function used for subscribing to raw data from the WebSocket Streaming API. Data returned will not be decoded via `fcl.decode` and developers are responsible for handling the raw data returned.
+
+#### Arguments
+
+| Name      | Type                                                     | Description                                                                                                                        |
+| --------- | -------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------- |
+| `topic`   | SubscriptionTopic                                        | The subscription topic. Valid values include: `events`, `blocks`, `transactions`, and `collections`.                               |
+| `args`    | RawSubscriptionArgs<T extends SubscriptionTopic>         | An array or object of parameters specific to the topic. For example, when subscribing to events, these might be event identifiers. |
+| `onData`  | (data: RawSubscriptionData<T extends SubscriptionTopic>) | A callback function that is called with the decoded data whenever a new message is received.                                       |
+| `onError` | (error: Error) => void                                   | A callback function that is called if an error occurs during the subscription.                                                     |
+
+Additional Options (second parameter):
+
+| Name        | Type   | Description                                                               |
+| ----------- | ------ | ------------------------------------------------------------------------- |
+| `node`      | string | _(Optional)_ Custom node endpoint to be used for the subscription.        |
+| `transport` | object | _(Optional)_ Custom transport implementation for handling the connection. |
+
+#### Returns
+
+| Type                                                   | Description                                                                                    |
+| ------------------------------------------------------ | ---------------------------------------------------------------------------------------------- |
+| [SdkTransport.Subscription](#sdktransportsubscription) | A subscription object that allows you to manage the subscription (e.g., to unsubscribe later). |
+
+#### Usage
+
+```javascript
+import * as fcl from '@onflow/fcl';
+import { SubscriptionTopic } from '@onflow/sdk';
+
+const subscription = fcl.subscribeRaw({
+  topic: SubscriptionTopic.EVENTS,
+  args: {
+    type: 'A.7e60df042a9c0868.FlowToken.TokensWithdrawn',
+  },
+  onData: (data) => console.log('Received event data:', data),
+  onError: (error) => console.error('Subscription error:', error),
+});
+
+// Later, to unsubscribe:
+subscription.unsubscribe();
+```
+
+---
 
 ### `tx`
 
-A utility function that lets you set the transaction to get subsequent status updates (via polling) and the finalized result once available.
-⚠️The poll rate is set at `2500ms` and will update at that interval until transaction is sealed.
+A utility function that lets you set the transaction to get subsequent status updates and the finalized result once available.
 
 #### Arguments
 
@@ -1547,15 +1655,9 @@ useEffect(() => fcl.tx(txId).subscribe(setTxStatus));
 
 ---
 
-## Event Polling Utility
-
 ### `events`
 
-A utility function that lets you set the transaction to get subsequent status updates (via polling) and the finalized result once available.
-⚠️The poll rate is set at `10000ms` and will update at that interval for getting new events.
-
-Note:
-⚠️`fcl.eventPollRate` value **could** be set to change the polling rate of all events subcribers, check [FCL Configuration](#configuration) for guide.
+A utility function that lets you set the transaction to get subsequent status updates and the finalized result once available.
 
 #### Arguments
 
