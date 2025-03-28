@@ -18,7 +18,7 @@ The `proposer` acts similar to the `nonce` in Ethereum transactions, and helps p
 The `payer` is who will be paying for the transaction.
 If these are not set, FCL defaults to using the current user for all roles.
 
-`fcl.mutate` will return a `transactionId`. We can pass the response directly to `fcl.tx` and then use the `onceSealed` method which resolves a promise when the transaction is sealed.
+`fcl.mutate` will return a `transactionId`. We can pass the response directly to `fcl.tx` and then use the `onceExecuted` method which resolves a promise when a transaction result is available.
 
 ```javascript
 import * as fcl from "@onflow/fcl"
@@ -36,8 +36,8 @@ const transactionId = await fcl.mutate({
   limit: 50
 })
 
-const transaction = await fcl.tx(transactionId).onceSealed()
-console.log(transaction) // The transactions status and events after being sealed
+const transaction = await fcl.tx(transactionId).onceExecuted()
+console.log(transaction) // The transactions status and events after being executed
 ```
 
 # Authorizing a Transaction
@@ -70,8 +70,8 @@ const transactionId = await fcl.mutate({
   limit: 50
 })
 
-const transaction = await fcl.tx(transactionId).onceSealed()
-console.log(transaction) // The transactions status and events after being sealed
+const transaction = await fcl.tx(transactionId).onceExecuted()
+console.log(transaction) // The transactions status and events after being executed
 ```
 
 To learn more about `mutate`, check out the [API documentation](./api.md#mutate).

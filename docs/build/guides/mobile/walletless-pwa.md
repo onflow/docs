@@ -226,7 +226,7 @@ const transactionExample = async (currentUser) => {
     fcl.payer(AUTHORIZATION_FUNCTION),
     fcl.limit(9999),
   ]);
-  const transactionData = await fcl.tx(response).onceSealed();
+  const transactionData = await fcl.tx(response).onceExecuted();
 };
 ```
 

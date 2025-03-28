@@ -340,8 +340,8 @@ const incrementCount = async () => {
 
     console.log("Transaction Id", transactionId);
 
-    await fcl.tx(transactionId).onceSealed();
-    console.log("Transaction Sealed");
+    await fcl.tx(transactionId).onceExecuted();
+    console.log("Transaction Executed");
 
     queryCount();
   } catch (error) {
@@ -478,8 +478,8 @@ export default function Home() {
 
       console.log("Transaction Id", transactionId);
 
-      await fcl.tx(transactionId).onceSealed();
-      console.log("Transaction Sealed");
+      await fcl.tx(transactionId).onceExecuted();
+      console.log("Transaction Executed");
 
       queryCount();
     } catch (error) {

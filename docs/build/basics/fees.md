@@ -244,7 +244,7 @@ const transactionId = await fcl.mutate({
   limit: 100
 })
 
-const transaction = await fcl.tx(transactionId).onceSealed();
+const transaction = await fcl.tx(transactionId).onceExecuted();
 console.log(transaction;)
 ```
 

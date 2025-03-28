@@ -355,14 +355,16 @@ const initAccount = async () => {
     limit: 50
   })
 
-  const transaction = await fcl.tx(transactionId).onceSealed()
+  const transaction = await fcl.tx(transactionId).onceExecuted()
   console.log(transaction)
 }
 ```
 
 You can see the new fields we talked about. You'll also notice `fcl.authz`. That's shorthand for "use the current user to authorize this transaction", (you could also write it as `fcl.currentUser.authorization`). If you want to learn more about transactions and signing transactions, you can [view the docs here](../../basics/transactions.md). For this example, we'll keep it simple with the user being each of these roles.
 
-You'll also notice we are awaiting a response with our transaction data by using the syntax `fcl.tx(transactionId).onceSealed()`. This will return when the blockchain has sealed the transaction and it's complete in processing it and verifying it.
+You'll also notice we are awaiting a response with our transaction data by using the syntax `fcl.tx(transactionId).onceExecuted()`. This will return when the transaction has been executed by an execution node ("soft-finality"). If you want to wait until the transaction is sealed ("hard-finality"), you can use `onceSealed()` instead.
+
+To learn more about the transaction lifecycle, check out [this doc](../../basics/transactions.md#transaction-lifecycle).
 
 Now your `index.js` file should look like this (we also added a button for calling the `initAccount` function in the `AuthedState`):
 
@@ -425,7 +427,7 @@ export default function App() {
       limit: 50
     })
   
-    const transaction = await fcl.tx(transactionId).onceSealed()
+    const transaction = await fcl.tx(transactionId).onceExecuted()
     console.log(transaction)
   }
 
@@ -503,7 +505,7 @@ const executeTransaction = async () => {
 }
 ```
 
-Here you can see our argument is "Flow Developer" and at the bottom we've called the `subscribe` method instead of `onceSealed`.
+Here you can see our argument is "Flow Developer" and at the bottom we've called the `subscribe` method instead of `onceExecuted`.
 
 Let's see how that works inside our whole `index.js` file. But, let's also set the statuses to our React component's state so we can see on screen what state we're in.
 
@@ -566,7 +568,7 @@ export default function App() {
       limit: 50
     })
   
-    const transaction = await fcl.tx(transactionId).onceSealed()
+    const transaction = await fcl.tx(transactionId).onceExecuted()
     console.log(transaction)
   }
 

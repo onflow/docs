@@ -1158,7 +1158,7 @@ A builder function that returns a [transaction object](#transactionobject) once 
 
 ⚠️The transactionID provided must be from the current spork.
 
-📣 Considering using [`fcl.tx(id).onceSealed()`](#tx) instead of calling this method directly.
+📣 Considering using [`fcl.tx(id).onceExecuted()`](#tx) instead of calling this method directly.
 
 #### Arguments
 
