@@ -2326,25 +2326,49 @@ The data returned by the subscription. This will vary depending on the topic.
 
 #### Blocks
 
+```ts
+import { type Block } from "@onflow/typedefs"
+```
+
 See [BlockObject](#blockobject).
 
 #### BlockHeaders
+
+```ts
+import { type BlockHeader } from "@onflow/typedefs"
+```
 
 See [BlockHeaderObject](#blockheaderobject).
 
 #### BlockDigests
 
+```ts
+import { type BlockDigest } from "@onflow/typedefs"
+```
+
 See [BlockDigestObject](#blockdigestobject).
 
 #### AccountStatuses
+
+```ts
+import { type AccountStatus } from "@onflow/typedefs"
+```
 
 See [AccountStatusObject](#accountstatusobject).
 
 #### TransactionStatuses
 
+```ts
+import { type TransactionStatus } from "@onflow/typedefs"
+```
+
 See [TransactionStatusObject](#transactionstatusobject).
 
 #### Events
+
+```ts
+import { type Event } from "@onflow/typedefs"
+```
 
 See [EventObject](#event-object).
 
