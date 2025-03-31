@@ -2277,32 +2277,30 @@ import { type SubscriptionArgs } from "@onflow/typedefs"
 
 An array or object of parameters specific to the topic. For example, when subscribing to events, these might be event identifiers.
 
-```ts
-type SubscriptionArgs<T extends SubscriptionTopic> = T extends "blocks" | "block_headers" | "block_digests"
-  ? BlockArgs
-  : T extends "account_statuses"
-  ? AccountStatusesArgs
-  : T extends "transaction_statuses"
-  ? { transactionId: string }
-  : T extends "events"
-  ? EventFilter
-  : never;
-```
 
 #### Blocks, BlockHeaders, BlockDigests
 
 ```ts
-type BlockArgs = {
-  startBlockId?: string;
-  startHeight?: number;
-}
+type BlockArgs =
+  | {
+      blockStatus: "finalized" | "sealed";
+      startBlockId?: string;
+    }
+  | {
+      blockStatus: "finalized" | "sealed";
+      startBlockHeight?: number;
+    }
 ```
 
 #### AccountStatuses
 
 ```ts
 type AccountStatusesArgs = {
-  address: string;
+  startBlockId?: string;
+  startBlockHeight?: number;
+  eventTypes?: string[];
+  addresses?: string[];
+  accountAddresses?: string[];
 }
 ```
 
@@ -2357,3 +2355,125 @@ import { type RawSubscriptionData } from "@onflow/typedefs"
 ```
 
 The raw data returned by the subscription. This will vary depending on the topic.
+
+#### Blocks
+
+```ts
+type RawBlockData = {
+  block: {
+    id: string;
+    parentId: string;
+    height: number;
+    timestamp: string;
+    collectionGuarantees: {
+      collectionId: string;
+      signatures: {
+        addr: string;
+        keyId: number;
+        signature: string;
+      }[];
+    }[];
+    blockSeals: {
+      addr: string;
+      keyId: number;
+      signature: string;
+    }[];
+    signatures: {
+      addr: string;
+      keyId: number;
+      signature: string;
+    }[];
+  }
+}
+```
+
+#### BlockHeaders
+
+```ts
+type RawBlockHeaderData = {
+  blockHeader: {
+    id: string;
+    parentId: string;
+    height: number;
+    timestamp: string;
+  }
+}
+```
+
+#### BlockDigests
+
+```ts
+type RawBlockDigestData = {
+  blockDigest: {
+    id: string;
+    parentId: string;
+    height: number;
+    timestamp: string;
+  }
+}
+```
+
+#### AccountStatuses
+
+```ts
+type RawAccountStatusData = {
+  accountStatus: {
+    address: string;
+    balance: number;
+    code: string;
+    contracts: {
+      [contractName: string]: string;
+    };
+    keys: {
+      index: number;
+      publicKey: string;
+      revoked: boolean;
+      sequenceNumber: number;
+      signAlgo: number;
+      hashAlgo: number;
+      weight: number;
+    }[];
+  }
+}
+```
+
+#### TransactionStatuses
+
+```ts
+type RawTransactionStatusData = {
+  transactionStatus: {
+    blockId: string;
+    events: {
+      blockId: string;
+      blockHeight: number;
+      blockTimestamp: string;
+      type: string;
+      transactionId: string;
+      transactionIndex: number;
+      eventIndex: number;
+      data: any;
+    }[];
+    status: number;
+    statusString: string;
+    errorMessage: string;
+    statusCode: number;
+  }
+}
+```
+
+#### Events
+
+```ts
+type RawEventData = {
+  event: {
+    blockId: string;
+    blockHeight: number;
+    blockTimestamp: string;
+    type: string;
+    transactionId: string;
+    transactionIndex: number;
+    eventIndex: number;
+    data: any;
+  }
+}
+```
