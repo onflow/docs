@@ -27,7 +27,7 @@ assets are safely bridged between the Cadence and EVM Flow Environments.
 
 There are many important contracts deployed to the bridge account.
 You should refer to [the bridge repo](https://github.com/onflow/flow-evm-bridge)
-and [the bridge guides](../../evm/cadence/vm-bridge.md)
+and [the bridge guides](../../tutorials/cross-vm-apps/vm-bridge.md)
 for more detailed information about the bridge and tutorials for how to use the bridge properly.
 
 Here is a list of each Cadence contract used for the bridge:
