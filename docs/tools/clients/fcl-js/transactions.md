@@ -78,17 +78,21 @@ To learn more about `mutate`, check out the [API documentation](./api.md#mutate)
 
 ## Transaction Finality
 
-As of **FCL v1.15.0**, it is now recommended to use migrate usage of `onceSealed` to `onceExecuted` in most cases, leading to a 2.5x reduction in latency when waiting for a transaction result.  For example, the following code snippet should be updated:
+As of **FCL v1.15.0**, it is now recommended to use use `onceExecuted` in most cases, leading to a 2.5x reduction in latency when waiting for a transaction result.  For example, the following code snippet should be updated from:
 
 ```ts
 import * as fcl from "@onflow/fcl"
-
-const result = await fcl.tx(txId).onceExecuted()
-// Previously:
-// const result = await fcl.tx(txId).onceSealed()
+const result = await fcl.tx(txId).onceSealed()
 ```
 
-Developers manually subscribing to transaction statuses should update their listeners to treat "executed" as the final status (see the release notes [here](https://github.com/onflow/fcl-js/releases/tag/%40onflow%2Ffcl%401.15.0)).  For example, the following code snippet should be updated:
+to:
+
+```ts
+import * as fcl from "@onflow/fcl"
+const result = await fcl.tx(txId).onceExecuted()
+```
+
+Developers manually subscribing to transaction statuses should update their listeners to treat "executed" as the final status (see the release notes [here](https://github.com/onflow/fcl-js/releases/tag/%40onflow%2Ffcl%401.15.0)).  For example, the following code snippet should be updated from:
 
 ```ts
 import * as fcl from "@onflow/fcl"
@@ -96,9 +100,21 @@ import { TransactionExecutionStatus } from "@onflow/typedefs"
 
 fcl.tx(txId).subscribe((txStatus) => {
   if (
+    txStatus.status === TransactionExecutionStatus.SEALED
+  ) {
+    console.log("Transaction executed!")
+  }
+})
+```
+
+```ts
+import * as fcl from "@onflow/fcl"
+import { TransactionExecutionStatus } from "@onflow/typedefs"
+
+fcl.tx(txId).subscribe((txStatus) => {
+  if (
+    // SEALED status is no longer necessary
     txStatus.status === TransactionExecutionStatus.EXECUTED
-    // Previously:
-    // txStatus.status === TransactionExecutionStatus.SEALED
   ) {
     console.log("Transaction executed!")
   }
