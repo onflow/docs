@@ -88,7 +88,7 @@ const result = await fcl.tx(txId).onceExecuted()
 // const result = await fcl.tx(txId).onceSealed()
 ```
 
-Developers manually subscribing to transaction statuses should update their listeners to treat "executed" as the final status.  For example, the following code snippet should be updated:
+Developers manually subscribing to transaction statuses should update their listeners to treat "executed" as the final status (see the release notes [here](https://github.com/onflow/fcl-js/releases/tag/%40onflow%2Ffcl%401.15.0)).  For example, the following code snippet should be updated:
 
 ```ts
 import * as fcl from "@onflow/fcl"
