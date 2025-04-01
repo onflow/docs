@@ -1317,6 +1317,11 @@
       "source": "/evm/cadence/:path*",
       "destination": "/evm/tutorials/cross-vm-apps/:path*",
       "permanent": true
+    },
+    {
+      "source": "/tools/vscode-extension/cursor",
+      "destination": "/tools/cursor",
+      "permanent": true
     }
   ]
 }
