@@ -8,7 +8,7 @@ While `query` is used for sending scripts to the chain, `mutate` is used for bui
 
 Unlike scripts, they require a little more information, things like a proposer, authorizations and a payer, which may be a little confusing and overwhelming.
 
-# Sending Your First Transaction
+## Sending Your First Transaction
 
 There is a lot to unpack in the following code snippet.
 It sends a transaction to the Flow blockchain. For the transaction, the current user is authorizing it as both the `proposer` and the `payer`.
@@ -40,7 +40,7 @@ const transaction = await fcl.tx(transactionId).onceExecuted()
 console.log(transaction) // The transactions status and events after being executed
 ```
 
-# Authorizing a Transaction
+## Authorizing a Transaction
 
 The below code snippet is the same as the above one, except for one extremely important difference.
 Our Cadence code this time has a prepare statement, and we are using the `fcl.currentUser` when constructing our transaction.
@@ -75,3 +75,46 @@ console.log(transaction) // The transactions status and events after being execu
 ```
 
 To learn more about `mutate`, check out the [API documentation](./api.md#mutate).
+
+## Transaction Finality
+
+As of **FCL v1.15.0**, it is now recommended to use migrate usage of `onceSealed` to `onceExecuted` in most cases, leading to a 2.5x reduction in latency when waiting for a transaction result.  For example, the following code snippet should be updated:
+
+```ts
+import * as fcl from "@onflow/fcl"
+
+const result = await fcl.tx(txId).onceExecuted()
+// Previously:
+// const result = await fcl.tx(txId).onceSealed()
+```
+
+Developers manually subscribing to transaction statuses should update their listeners to treat "executed" as the final status.  For example, the following code snippet should be updated:
+
+```ts
+import * as fcl from "@onflow/fcl"
+import { TransactionExecutionStatus } from "@onflow/typedefs"
+
+fcl.tx(txId).subscribe((txStatus) => {
+  if (
+    txStatus.status === TransactionExecutionStatus.EXECUTED
+    // Previously:
+    // txStatus.status === TransactionExecutionStatus.SEALED
+  ) {
+    console.log("Transaction executed!")
+  }
+})
+```
+
+The "executed" status corresponds to soft finality, indicating that the transaction has been included in a block and a transaction status is available, backed by a cryptographic proof.  Only in rare cases should a developer need to wait for "sealed" status in their applications and you can learn more about the different transaction statuses on Flow [here](../../../build/basics/transactions.md#transaction-status).
+
+See the following video for demonstration of how to update your code to wait for "executed" status:
+
+<iframe
+  width="560"
+  height="315"
+  src="https://www.youtube-nocookie.com/embed/ubhxIszdzfo"
+  title="YouTube video player"
+  frameborder="0"
+  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+  allowfullscreen
+></iframe>
