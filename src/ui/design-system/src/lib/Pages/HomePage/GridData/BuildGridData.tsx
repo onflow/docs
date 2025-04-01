@@ -28,6 +28,16 @@ export const buildGridData = {
           variant: 'horizontal',
           href: 'evm/about',
         },
+        {
+          heading: 'Build with AI',
+          description:
+            'Feel the vibes, or add new tools to your workflow by configuring Cursor to use the Flow and Cadence knowledge base.',
+          iconColor: 'green',
+          cardColor: 'black',
+          icon: 'hello-world',
+          variant: 'horizontal',
+          href: 'evm/about',
+        },
       ],
     },
     {
