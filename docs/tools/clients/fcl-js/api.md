@@ -2241,6 +2241,7 @@ import { SubscriptionParams } from "@onflow/typedefs"
 
 An object containing the subscription topic, arguments, and callbacks.
 
+
 ```ts
 interface SubscriptionParams<T extends SubscriptionTopic> {
   topic: T;
@@ -2252,21 +2253,37 @@ interface SubscriptionParams<T extends SubscriptionTopic> {
 
 ### SubscriptionTopic
 
+Import:
+
 ```ts
 import { SubscriptionTopic } from "@onflow/typedefs"
 ```
 
-The subscription topic. Valid values include: `events`, `blocks`, `block_headers`, `block_digests`, `transaction_statuses`, `account_statuses`.
+The `SubscriptionTopic` type is used to specify the topic of a subscription.
+
+The type is defined as:
 
 ```ts
-enum SubscriptionTopic {
+type SubscriptionTopic =
+  | "blocks"
+  | "block_headers"
+  | "block_digests"
+  | "account_statuses"
+  | "transaction_statuses"
+  | "events"
+```
+
+Constants for each topic are also provided:
+
+```ts
+const SubscriptionTopic = {
   BLOCKS = "blocks",
   BLOCK_HEADERS = "block_headers",
   BLOCK_DIGESTS = "block_digests",
   ACCOUNT_STATUSES = "account_statuses",
   TRANSACTION_STATUSES = "transaction_statuses",
   EVENTS = "events",
-}
+} as const
 ```
 
 ### SubscriptionArgs<T extends SubscriptionTopic>
@@ -2277,25 +2294,67 @@ import { type SubscriptionArgs } from "@onflow/typedefs"
 
 An array or object of parameters specific to the topic. For example, when subscribing to events, these might be event identifiers.
 
+Usage:
+
+```ts
+const args: SubscriptionArgs<"events"> = {
+  eventTypes: ["A.7e60df042a9c0868.FlowToken.TokensWithdrawn"],
+  addresses: ["0x7e60df042a9c0868"],
+}
+```
+
 
 #### Blocks, BlockHeaders, BlockDigests
 
+Import:
+
 ```ts
-type BlockArgs =
-  | {
-      blockStatus: "finalized" | "sealed";
-      startBlockId?: string;
-    }
-  | {
-      blockStatus: "finalized" | "sealed";
-      startBlockHeight?: number;
-    }
+import { type BlockSubscriptionArgs } from "@onflow/typedefs"
+```
+
+Any of the following formats are valid for the `args` field.
+
+Start at the latest block:
+
+```ts
+// Internal type, not exported
+type BlockSubscriptionAtLatestArgs = {
+  blockStatus: "finalized" | "sealed";
+}
+```
+
+Start at a specific block ID:
+
+```ts
+// Internal type, not exported
+type BlockSubscriptionAtIdArgs = {
+  blockStatus: "finalized" | "sealed";
+  startBlockId: string;
+}
+```
+
+Start at a specific block height:
+
+```ts
+// Internal type, not exported
+type BlockSubscriptionAtHeightArgs = {
+  blockStatus: "finalized" | "sealed";
+  startBlockHeight: number;
+}
 ```
 
 #### AccountStatuses
 
+Import:
+
 ```ts
-type AccountStatusesArgs = {
+import { type AccountStatusSubscriptionArgs } from "@onflow/typedefs"
+```
+
+Type definition:
+
+```ts
+type AccountStatusSubscriptionArgs = {
   startBlockId?: string;
   startBlockHeight?: number;
   eventTypes?: string[];
@@ -2304,10 +2363,18 @@ type AccountStatusesArgs = {
 }
 ```
 
-#### TransactionStatuses
+#### Transaction Statuses
+
+Import:
 
 ```ts
-type TransactionStatusesArgs = {
+import { type TransactionStatusSubscriptionArgs } from "@onflow/typedefs"
+```
+
+Type definition:
+
+```ts
+type TransactionStatusSubscriptionArgs = {
   transactionId: string;
 }
 ```
@@ -2356,7 +2423,7 @@ import { type AccountStatus } from "@onflow/typedefs"
 
 See [AccountStatusObject](#accountstatusobject).
 
-#### TransactionStatuses
+#### Transaction Statuses
 
 ```ts
 import { type TransactionStatus } from "@onflow/typedefs"
@@ -2382,8 +2449,16 @@ The raw data returned by the subscription. This will vary depending on the topic
 
 #### Blocks
 
+Import:
+
 ```ts
-type RawBlockData = {
+import { type RawBlock } from "@onflow/typedefs"
+```
+
+Type definition:
+
+```ts
+type RawBlock = {
   block: {
     id: string;
     parentId: string;
@@ -2411,10 +2486,18 @@ type RawBlockData = {
 }
 ```
 
-#### BlockHeaders
+#### Block Headers
+
+Import:
 
 ```ts
-type RawBlockHeaderData = {
+import { type RawBlockHeader } from "@onflow/typedefs"
+```
+
+Type definition:
+
+```ts
+type RawBlockHeader = {
   blockHeader: {
     id: string;
     parentId: string;
@@ -2424,10 +2507,18 @@ type RawBlockHeaderData = {
 }
 ```
 
-#### BlockDigests
+#### Block Digests
+
+Import:
 
 ```ts
-type RawBlockDigestData = {
+import { type RawBlockDigest } from "@onflow/typedefs"
+```
+
+Type definition:
+
+```ts
+type RawBlockDigest = {
   blockDigest: {
     id: string;
     parentId: string;
@@ -2437,10 +2528,16 @@ type RawBlockDigestData = {
 }
 ```
 
-#### AccountStatuses
+#### Account Statuses
+
+Import:
 
 ```ts
-type RawAccountStatusData = {
+import { type RawAccountStatus } from "@onflow/typedefs"
+```
+
+```ts
+type RawAccountStatus = {
   accountStatus: {
     address: string;
     balance: number;
@@ -2461,10 +2558,18 @@ type RawAccountStatusData = {
 }
 ```
 
-#### TransactionStatuses
+#### Transaction Statuses
+
+Import:
 
 ```ts
-type RawTransactionStatusData = {
+import { type RawTransactionStatus } from "@onflow/typedefs"
+```
+
+Type definition:
+
+```ts
+type RawTransactionStatus = {
   transactionStatus: {
     blockId: string;
     events: {
@@ -2487,8 +2592,16 @@ type RawTransactionStatusData = {
 
 #### Events
 
+Import:
+
 ```ts
-type RawEventData = {
+import { type RawEvent } from "@onflow/typedefs"
+```
+
+Type definition:
+
+```ts
+type RawEvent = {
   event: {
     blockId: string;
     blockHeight: number;
