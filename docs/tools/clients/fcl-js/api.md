@@ -2413,7 +2413,7 @@ See [BlockHeaderObject](#blockheaderobject).
 import { type BlockDigest } from "@onflow/typedefs"
 ```
 
-See [BlockDigestObject](#blockdigestobject).
+See BlockDigestObject.
 
 #### AccountStatuses
 
@@ -2421,7 +2421,7 @@ See [BlockDigestObject](#blockdigestobject).
 import { type AccountStatus } from "@onflow/typedefs"
 ```
 
-See [AccountStatusObject](#accountstatusobject).
+See AccountStatusObject.
 
 #### Transaction Statuses
 
