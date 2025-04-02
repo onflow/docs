@@ -35,6 +35,22 @@ fcl.config({
 });
 ```
 
+### Using Default Configurations
+
+To simplify setup across networks, FCL provides built-in configuration presets for the most common environments. These include: `flowMainnet`, `flowTestnet` and `flowEmulator`.
+
+Each preset contains the appropriate values for connecting to its corresponding network. To use one, just spread it into your fcl.config() call:
+
+```typescript
+import {flowTestnet} from "@onflow/fcl"
+
+fcl.config({
+  ...flowTestnet
+})
+```
+
+You can view the full preset definitions [here](https://github.com/onflow/fcl-js/blob/master/packages/sdk/src/constants.ts).
+
 ### Getting Configuration Values
 
 The `config` instance has an **asynchronous** `get` method. You can also pass it a fallback value.
