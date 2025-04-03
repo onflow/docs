@@ -1513,12 +1513,22 @@ const latestBlock = await fcl.latestBlock();
 
 ---
 
-## Transaction Status Utility
+## Real-time Data
+
+Streaming data is available through the WebSocket Streaming API provided by the HTTP Access API. It allows developers to subscribe to specific topics and receive real-time updates as they occur on the Flow blockchain.
+
+The following topics can be subscribed to:
+
+- `events`: Subscribe to events emitted by contracts.
+- `blocks`: Subscribe to new blocks added to the chain.
+- `block_headers`: Subscribe to new block headers added to the chain.
+- `block_digests`: Subscribe to block digests added to the chain.
+- `transaction_statuses`: Subscribe to transaction statuses.
+- `account_statuses`: Subscribe to account statuses.
 
 ### `tx`
 
-A utility function that lets you set the transaction to get subsequent status updates (via polling) and the finalized result once available.
-⚠️The poll rate is set at `2500ms` and will update at that interval until transaction is sealed.
+A utility function that lets you set the transaction to get subsequent status updates and the finalized result once available.
 
 #### Arguments
 
@@ -1547,15 +1557,9 @@ useEffect(() => fcl.tx(txId).subscribe(setTxStatus));
 
 ---
 
-## Event Polling Utility
-
 ### `events`
 
-A utility function that lets you set the transaction to get subsequent status updates (via polling) and the finalized result once available.
-⚠️The poll rate is set at `10000ms` and will update at that interval for getting new events.
-
-Note:
-⚠️`fcl.eventPollRate` value **could** be set to change the polling rate of all events subcribers, check [FCL Configuration](#configuration) for guide.
+A utility function that lets you set the transaction to get subsequent status updates and the finalized result once available.
 
 #### Arguments
 
@@ -1578,6 +1582,101 @@ fcl.events(eventName).subscribe((event) => {
   console.log(event);
 });
 ```
+
+---
+
+### `subscribe`
+
+A utility function used for subscribing to real-time data from the WebSocket Streaming API. Data returned will be automatically decoded via the [`decode`](#decode) function.
+
+#### Arguments
+
+| Name                 | Type               | Description                                                                                        |
+| -------------------- | ------------------ | -------------------------------------------------------------------------------------------------- |
+| `params` | [`SubscriptionParams`](#subscriptionparams) | An object containing the subscription topic, arguments, and callbacks. See below for more details. |
+| `opts`            | object             | _(Optional)_ Additional options for the subscription. See below for more details.                  |
+
+`params` (first parameter):
+
+See [`SubscriptionParams`](#subscriptionparams) for more details.
+
+Additional Options (second parameter):
+
+| Name        | Type   | Description                                                               |
+| ----------- | ------ | ------------------------------------------------------------------------- |
+| `node`      | string | _(Optional)_ Custom node endpoint to be used for the subscription.        |
+| `transport` | object | _(Optional)_ Custom transport implementation for handling the connection. |
+
+#### Returns
+
+| Type                                                   | Description                                                                                    |
+| ------------------------------------------------------ | ---------------------------------------------------------------------------------------------- |
+| SdkTransport.Subscription | A subscription object that allows you to manage the subscription (e.g., to unsubscribe later). |
+
+#### Usage
+
+```javascript
+import * as fcl from '@onflow/fcl';
+import { SubscriptionTopic } from '@onflow/sdk';
+
+const subscription = fcl.subscribe({
+  topic: SubscriptionTopic.EVENTS,
+  args: {
+    type: 'A.7e60df042a9c0868.FlowToken.TokensWithdrawn',
+  },
+  onData: (data) => console.log('Received event data:', data),
+  onError: (error) => console.error('Subscription error:', error),
+});
+
+// Later, to unsubscribe:
+subscription.unsubscribe();
+```
+
+---
+
+### `subscribeRaw`
+
+A utility function used for subscribing to raw data from the WebSocket Streaming API. Data returned will not be decoded via `fcl.decode` and developers are responsible for handling the raw data returned.
+
+#### Arguments
+
+| Name      | Type                                                     | Description                                                                                                                        |
+| --------- | -------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------- |
+| `topic`   | `SubscriptionTopic`                                        | The subscription topic. Valid values include: `events`, `blocks`, `transactions`, and `collections`.                               |
+| `args`    | `RawSubscriptionArgs<T extends SubscriptionTopic>`         | An array or object of parameters specific to the topic. For example, when subscribing to events, these might be event identifiers. |
+| `onData`  | `(data: RawSubscriptionData<T extends SubscriptionTopic>) => void` | A callback function that is called with the decoded data whenever a new message is received.                                       |
+| `onError` | (error: Error) => void                                   | A callback function that is called if an error occurs during the subscription.                                                     |
+
+Additional Options (second parameter):
+
+| Name        | Type   | Description                                                               |
+| ----------- | ------ | ------------------------------------------------------------------------- |
+| `node`      | string | _(Optional)_ Custom node endpoint to be used for the subscription.        |
+| `transport` | object | _(Optional)_ Custom transport implementation for handling the connection. |
+
+#### Returns
+
+
+#### Usage
+
+```javascript
+import * as fcl from '@onflow/fcl';
+import { SubscriptionTopic } from '@onflow/sdk';
+
+const subscription = fcl.subscribeRaw({
+  topic: SubscriptionTopic.EVENTS,
+  args: {
+    type: 'A.7e60df042a9c0868.FlowToken.TokensWithdrawn',
+  },
+  onData: (data) => console.log('Received event data:', data),
+  onError: (error) => console.error('Subscription error:', error),
+});
+
+// Later, to unsubscribe:
+subscription.unsubscribe();
+```
+
+---
 
 #### Examples
 
@@ -1908,6 +2007,17 @@ The subset of the [BlockObject](#blockobject) containing only the header values 
 | `height`    | number     | The height of the block.      |
 | `timestamp` | object     | Contains time related fields. |
 
+### `BlockDigestObject`
+
+A lightweight subset of the [BlockObject](#blockobject) containing only the id, height, and timestamp of a block.
+
+| Key         | Value Type | Description                   |
+| ----------- | ---------- | ----------------------------- |
+| `id`        | string     | The id of the block.          |
+| `height`    | number     | The height of the block.      |
+| `timestamp` | string     | The timestamp of the block.   |
+
+
 ### `CollectionGuaranteeObject`
 
 A collection that has been included in a block.
@@ -1956,6 +2066,20 @@ The format of all responses in FCL returned from `fcl.send(...)`. For full detai
 | `transactionIndex` | number                  | Used to prevent replay attacks.                                                                       |
 | `eventIndex`       | number                  | Used to prevent replay attacks.                                                                       |
 | `data`             | any                     | The data emitted from the event.                                                                      |
+
+### `Account Status Event Object`
+
+| Key                | Value Type              | Description                                                                                           |
+| ------------------ | ----------------------- | ----------------------------------------------------------------------------------------------------- |
+| `blockId`          | string                  | ID of the block that contains the event.                                                              |
+| `blockHeight`      | number                  | Height of the block that contains the event.                                                          |
+| `blockTimestamp`   | string                  | The timestamp of when the block was sealed in a `DateString` format. eg. `'2021-06-25T13:42:04.227Z'` |
+| `type`             | [EventName](#eventname) | A string containing the event name.                                                                   |
+| `transactionId`    | string                  | Can be used to query transaction information, eg. via a Flow block explorer.                          |
+| `transactionIndex` | number                  | Used to prevent replay attacks.                                                                       |
+| `eventIndex`       | number                  | Used to prevent replay attacks.                                                                       |
+| `data`             | any                     | The data emitted from the event.                                                                      |
+| `accountAddress` | [Address](#address) | The address of the account where the status change occurred.                                                     |
 
 ### `Transaction Statuses`
 
@@ -2117,7 +2241,7 @@ import { BlockHeartbeat } from "@onflow/typedefs"
 const heartbeat: BlockHeartbeat = ...
 ```
 
-### SignatureObject
+### `SignatureObject`
 
 Signature objects are used to represent a signature for a particular message as well as the account and keyId which signed for this message.
 
@@ -2126,3 +2250,413 @@ Signature objects are used to represent a signature for a particular message as 
 | `addr`      | [Address](#address) | the address of the account which this signature has been generated for                       |
 | `keyId`     | number              | The index of the key to use during authorization. (Multiple keys on an account is possible). |
 | `signature` | string              | a hexidecimal-encoded string representation of the generated signature                       |
+
+
+### `SubscriptionParams`
+
+```ts
+import { SubscriptionParams } from "@onflow/typedefs"
+```
+
+An object containing the subscription topic, arguments, and callbacks.
+
+
+```ts
+interface SubscriptionParams<T extends SubscriptionTopic> {
+  topic: T;
+  args: SubscriptionArgs<T>;
+  onData: (data: SubscriptionData<T>) => void;
+  onError: (error: Error) => void;
+}
+```
+
+| Subscription Topic      | Argument Type                          | Data Returned         |
+|-------------------------|----------------------------------------|-----------------------|
+| `"blocks"`              | [`SubscriptionArgs<"blocks">`](#blocks-blockheaders-blockdigests)           | [`Block`](#blockobject)               |
+| `"block_headers"`       | [`SubscriptionArgs<"block_headers">`](#blocks-blockheaders-blockdigests)    | [`BlockHeader`](#blockheaderobject)         |
+| `"block_digests"`       | [`SubscriptionArgs<"block_digests">`](#blocks-blockheaders-blockdigests)    | [`BlockDigest`](#blockdigestobject)         |
+| `"account_statuses"`    | [`SubscriptionArgs<"account_statuses">`](#accountstatuses) | [`AccountStatusEvent`](#account-status-event-object)       |
+| `"transaction_statuses"`| [`SubscriptionArgs<"transaction_statuses">`](#transaction-statuses-2) | [`TransactionStatus`](#transactionstatusobject) |
+| [`"events"`](#event-object)              | [`SubscriptionArgs<"events">`](#events-2)           | [`Event`]               |
+
+### `SubscriptionTopic`
+
+Import:
+
+```ts
+import { SubscriptionTopic } from "@onflow/typedefs"
+```
+
+The `SubscriptionTopic` type is used to specify the topic of a subscription.
+
+```ts
+type SubscriptionTopic =
+  | "blocks"
+  | "block_headers"
+  | "block_digests"
+  | "account_statuses"
+  | "transaction_statuses"
+  | "events"
+```
+
+The `SubscriptionTopic` type is also exported as a constant object for easier usage in TypeScript.
+
+```ts
+const SubscriptionTopic = {
+  BLOCKS = "blocks",
+  BLOCK_HEADERS = "block_headers",
+  BLOCK_DIGESTS = "block_digests",
+  ACCOUNT_STATUSES = "account_statuses",
+  TRANSACTION_STATUSES = "transaction_statuses",
+  EVENTS = "events",
+} as const
+```
+
+### `SubscriptionArgs`
+
+```ts
+import { type SubscriptionArgs } from "@onflow/typedefs"
+```
+
+Type definition:
+
+```ts
+type SubscriptionArgs<T extends SubscriptionTopic> = {
+  [K in T]: K extends "blocks" | "block_headers" | "block_digests"
+    ? BlockSubscriptionAtLatestArgs | BlockSubscriptionAtIdArgs | BlockSubscriptionAtHeightArgs
+    : K extends "account_statuses"
+    ? AccountStatusSubscriptionArgs
+    : K extends "transaction_statuses"
+    ? TransactionStatusSubscriptionArgs
+    : K extends "events"
+    ? EventSubscriptionArgs
+    : never;
+}[T];
+```
+
+An array or object of parameters specific to the topic. For example, when subscribing to events, these might be event identifiers.
+
+Usage:
+
+```ts
+const args: SubscriptionArgs<"events"> = {
+  eventTypes: ["A.7e60df042a9c0868.FlowToken.TokensWithdrawn"],
+  addresses: ["0x7e60df042a9c0868"],
+}
+```
+
+#### Blocks, Block Headers, Block Digests
+
+_Applies to topics: `blocks`, `block_headers`, `block_digests`_
+
+Start at the latest block:
+
+```ts
+// Internal type, not exported
+type BlockSubscriptionAtLatestArgs = {
+  blockStatus: "finalized" | "sealed";
+}
+```
+
+Start at a specific block ID:
+
+```ts
+// Internal type, not exported
+type BlockSubscriptionAtIdArgs = {
+  blockStatus: "finalized" | "sealed";
+  startBlockId: string;
+}
+```
+
+Start at a specific block height:
+
+```ts
+// Internal type, not exported
+type BlockSubscriptionAtHeightArgs = {
+  blockStatus: "finalized" | "sealed";
+  startBlockHeight: number;
+}
+```
+
+#### Account Statuses
+
+_Applies to topic: `account_statuses`_
+
+```ts
+// Internal type, not exported
+type AccountStatusSubscriptionArgs = {
+  startBlockId?: string;
+  startBlockHeight?: number;
+  eventTypes?: string[];
+  addresses?: string[];
+  accountAddresses?: string[];
+}
+```
+
+#### Transaction Statuses
+
+_Applies to topic: `transaction_statuses`_
+
+```ts
+// Internal type, not exported
+type TransactionStatusSubscriptionArgs = {
+  transactionId: string;
+}
+```
+
+#### Events
+
+_Applies to topic: `events`_
+
+Type definition:
+
+```ts
+// Internal type, not exported
+type EventSubscriptionArgs = {
+  startBlockId?: string;
+  startBlockHeight?: number;
+  eventTypes?: string[];
+  addresses?: string[];
+  contracts?: string[];
+}
+```
+
+### `SubscriptionData`
+
+**Import:**
+
+```ts
+import { type SubscriptionData } from "@onflow/typedefs"
+```
+
+The data returned by the subscription. This will vary depending on the topic.
+
+```ts
+type SubscriptionData<T extends SubscriptionTopic> = {
+  [K in T]: K extends "blocks"
+    ? Block
+    : K extends "block_headers"
+    ? Blockheader
+    : K extends "block_digests"
+    ? BlockDigestObject
+    : K extends "account_statuses"
+    ? AccountStatusObject
+    : K extends "transaction_statuses"
+    ? TransactionStatusObject
+    : K extends "events"
+    ? EventObject
+    : never;
+}[T];
+```
+
+#### Blocks
+
+_Applies to topic: `blocks`_
+
+See [BlockObject](#blockobject).
+
+#### Block Headers
+
+_Applies to topic: `block_headers`_
+
+See [BlockHeaderObject](#blockheaderobject).
+
+#### Block Digests
+
+_Applies to topic: `block_digests`_
+
+See BlockDigestObject.
+
+#### Account Statuses
+
+_Applies to topic: `account_statuses`_
+
+See AccountStatusObject.
+
+#### Transaction Statuses
+
+_Applies to topic: `transaction_statuses`_
+
+See [TransactionStatusObject](#transactionstatusobject).
+
+#### Events
+
+_Applies to topic: `events`_
+
+See [EventObject](#event-object).
+
+### `RawSubscriptionData`
+
+```ts
+import { type RawSubscriptionData } from "@onflow/typedefs"
+```
+
+The raw data returned by the subscription. This will vary depending on the topic.
+
+#### Blocks
+
+Import:
+
+```ts
+import { type RawBlock } from "@onflow/typedefs"
+```
+
+Type definition:
+
+```ts
+type RawBlock = {
+  block: {
+    id: string;
+    parentId: string;
+    height: number;
+    timestamp: string;
+    collectionGuarantees: {
+      collectionId: string;
+      signatures: {
+        addr: string;
+        keyId: number;
+        signature: string;
+      }[];
+    }[];
+    blockSeals: {
+      addr: string;
+      keyId: number;
+      signature: string;
+    }[];
+    signatures: {
+      addr: string;
+      keyId: number;
+      signature: string;
+    }[];
+  }
+}
+```
+
+#### Block Headers
+
+Import:
+
+```ts
+import { type RawBlockHeader } from "@onflow/typedefs"
+```
+
+Type definition:
+
+```ts
+type RawBlockHeader = {
+  blockHeader: {
+    id: string;
+    parentId: string;
+    height: number;
+    timestamp: string;
+  }
+}
+```
+
+#### Block Digests
+
+Import:
+
+```ts
+import { type RawBlockDigest } from "@onflow/typedefs"
+```
+
+Type definition:
+
+```ts
+type RawBlockDigest = {
+  blockDigest: {
+    id: string;
+    parentId: string;
+    height: number;
+    timestamp: string;
+  }
+}
+```
+
+#### Account Statuses
+
+Import:
+
+```ts
+import { type RawAccountStatus } from "@onflow/typedefs"
+```
+
+```ts
+type RawAccountStatus = {
+  accountStatus: {
+    address: string;
+    balance: number;
+    code: string;
+    contracts: {
+      [contractName: string]: string;
+    };
+    keys: {
+      index: number;
+      publicKey: string;
+      revoked: boolean;
+      sequenceNumber: number;
+      signAlgo: number;
+      hashAlgo: number;
+      weight: number;
+    }[];
+  }
+}
+```
+
+#### Transaction Statuses
+
+Import:
+
+```ts
+import { type RawTransactionStatus } from "@onflow/typedefs"
+```
+
+Type definition:
+
+```ts
+type RawTransactionStatus = {
+  transactionStatus: {
+    blockId: string;
+    events: {
+      blockId: string;
+      blockHeight: number;
+      blockTimestamp: string;
+      type: string;
+      transactionId: string;
+      transactionIndex: number;
+      eventIndex: number;
+      data: any;
+    }[];
+    status: number;
+    statusString: string;
+    errorMessage: string;
+    statusCode: number;
+  }
+}
+```
+
+#### Events
+
+Import:
+
+```ts
+import { type RawEvent } from "@onflow/typedefs"
+```
+
+Type definition:
+
+```ts
+type RawEvent = {
+  event: {
+    blockId: string;
+    blockHeight: number;
+    blockTimestamp: string;
+    type: string;
+    transactionId: string;
+    transactionIndex: number;
+    eventIndex: number;
+    data: any;
+  }
+}
+```
