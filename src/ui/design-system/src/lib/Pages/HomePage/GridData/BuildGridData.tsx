@@ -36,7 +36,7 @@ export const buildGridData = {
           cardColor: 'black',
           icon: 'hello-world',
           variant: 'horizontal',
-          href: 'tools/cursor',
+          href: 'tutorials/ai-plus-flow',
         },
       ],
     },
