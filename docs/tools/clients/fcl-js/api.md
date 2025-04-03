@@ -2067,6 +2067,20 @@ The format of all responses in FCL returned from `fcl.send(...)`. For full detai
 | `eventIndex`       | number                  | Used to prevent replay attacks.                                                                       |
 | `data`             | any                     | The data emitted from the event.                                                                      |
 
+### `Account Status Event Object`
+
+| Key                | Value Type              | Description                                                                                           |
+| ------------------ | ----------------------- | ----------------------------------------------------------------------------------------------------- |
+| `blockId`          | string                  | ID of the block that contains the event.                                                              |
+| `blockHeight`      | number                  | Height of the block that contains the event.                                                          |
+| `blockTimestamp`   | string                  | The timestamp of when the block was sealed in a `DateString` format. eg. `'2021-06-25T13:42:04.227Z'` |
+| `type`             | [EventName](#eventname) | A string containing the event name.                                                                   |
+| `transactionId`    | string                  | Can be used to query transaction information, eg. via a Flow block explorer.                          |
+| `transactionIndex` | number                  | Used to prevent replay attacks.                                                                       |
+| `eventIndex`       | number                  | Used to prevent replay attacks.                                                                       |
+| `data`             | any                     | The data emitted from the event.                                                                      |
+| `accountAddress` | [Address](#address) | The address of the account where the status change occurred.                                                     |
+
 ### `Transaction Statuses`
 
 The status of a transaction will depend on the Flow blockchain network and which phase it is in as it completes and is finalized.
@@ -2261,9 +2275,9 @@ interface SubscriptionParams<T extends SubscriptionTopic> {
 | `"blocks"`              | [`SubscriptionArgs<"blocks">`](#blocks-blockheaders-blockdigests)           | [`Block`](#blockobject)               |
 | `"block_headers"`       | [`SubscriptionArgs<"block_headers">`](#blocks-blockheaders-blockdigests)    | [`BlockHeader`](#blockheaderobject)         |
 | `"block_digests"`       | [`SubscriptionArgs<"block_digests">`](#blocks-blockheaders-blockdigests)    | [`BlockDigest`](#blockdigestobject)         |
-| `"account_statuses"`    | [`SubscriptionArgs<"account_statuses">`](#accountstatuses) | [`AccountStatus`]       |
+| `"account_statuses"`    | [`SubscriptionArgs<"account_statuses">`](#accountstatuses) | [`AccountStatusEvent`](#account-status-event-object)       |
 | `"transaction_statuses"`| [`SubscriptionArgs<"transaction_statuses">`](#transaction-statuses-2) | [`TransactionStatus`](#transactionstatusobject) |
-| `"events"`              | [`SubscriptionArgs<"events">`](#events-2)           | [`Event`]               |
+| [`"events"`](#event-object)              | [`SubscriptionArgs<"events">`](#events-2)           | [`Event`]               |
 
 ### `SubscriptionTopic`
 
