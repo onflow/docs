@@ -1557,7 +1557,7 @@ Additional Options (second parameter):
 
 | Type                                                   | Description                                                                                    |
 | ------------------------------------------------------ | ---------------------------------------------------------------------------------------------- |
-| [SdkTransport.Subscription](#sdktransportsubscription) | A subscription object that allows you to manage the subscription (e.g., to unsubscribe later). |
+| SdkTransport.Subscription | A subscription object that allows you to manage the subscription (e.g., to unsubscribe later). |
 
 #### Usage
 
@@ -1588,9 +1588,9 @@ A utility function used for subscribing to raw data from the WebSocket Streaming
 
 | Name      | Type                                                     | Description                                                                                                                        |
 | --------- | -------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------- |
-| `topic`   | SubscriptionTopic                                        | The subscription topic. Valid values include: `events`, `blocks`, `transactions`, and `collections`.                               |
-| `args`    | RawSubscriptionArgs<T extends SubscriptionTopic>         | An array or object of parameters specific to the topic. For example, when subscribing to events, these might be event identifiers. |
-| `onData`  | (data: RawSubscriptionData<T extends SubscriptionTopic>) | A callback function that is called with the decoded data whenever a new message is received.                                       |
+| `topic`   | `SubscriptionTopic`                                        | The subscription topic. Valid values include: `events`, `blocks`, `transactions`, and `collections`.                               |
+| `args`    | `RawSubscriptionArgs<T extends SubscriptionTopic>`         | An array or object of parameters specific to the topic. For example, when subscribing to events, these might be event identifiers. |
+| `onData`  | `(data: RawSubscriptionData<T extends SubscriptionTopic>) => void` | A callback function that is called with the decoded data whenever a new message is received.                                       |
 | `onError` | (error: Error) => void                                   | A callback function that is called if an error occurs during the subscription.                                                     |
 
 Additional Options (second parameter):
@@ -2463,7 +2463,7 @@ __Applies to topic: `events`_
 
 See [EventObject](#event-object).
 
-### RawSubscriptionData<T>
+### RawSubscriptionData
 
 ```ts
 import { type RawSubscriptionData } from "@onflow/typedefs"
