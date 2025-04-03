@@ -41,11 +41,11 @@ To simplify setup across networks, FCL provides built-in configuration presets f
 
 Each preset contains the appropriate values for connecting to its corresponding network. To use one, just spread it into your fcl.config() call:
 
-```typescript
-import {flowTestnet} from "@onflow/fcl"
+```javascript
+import * as fcl from '@onflow/fcl';
 
 fcl.config({
-  ...flowTestnet
+  ...fcl.flowTestnet
 })
 ```
 
