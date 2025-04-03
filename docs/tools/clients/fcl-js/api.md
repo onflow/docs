@@ -2007,6 +2007,17 @@ The subset of the [BlockObject](#blockobject) containing only the header values 
 | `height`    | number     | The height of the block.      |
 | `timestamp` | object     | Contains time related fields. |
 
+### `BlockDigestObject`
+
+A lightweight subset of the [BlockObject](#blockobject) containing only the id, height, and timestamp of a block.
+
+| Key         | Value Type | Description                   |
+| ----------- | ---------- | ----------------------------- |
+| `id`        | string     | The id of the block.          |
+| `height`    | number     | The height of the block.      |
+| `timestamp` | string     | The timestamp of the block.   |
+
+
 ### `CollectionGuaranteeObject`
 
 A collection that has been included in a block.
@@ -2249,7 +2260,7 @@ interface SubscriptionParams<T extends SubscriptionTopic> {
 |-------------------------|----------------------------------------|-----------------------|
 | `"blocks"`              | [`SubscriptionArgs<"blocks">`](#blocks-blockheaders-blockdigests)           | [`Block`](#blockobject)               |
 | `"block_headers"`       | [`SubscriptionArgs<"block_headers">`](#blocks-blockheaders-blockdigests)    | [`BlockHeader`](#blockheaderobject)         |
-| `"block_digests"`       | [`SubscriptionArgs<"block_digests">`](#blocks-blockheaders-blockdigests)    | `BlockDigest`         |
+| `"block_digests"`       | [`SubscriptionArgs<"block_digests">`](#blocks-blockheaders-blockdigests)    | [`BlockDigest`](#blockdigestobject)         |
 | `"account_statuses"`    | [`SubscriptionArgs<"account_statuses">`](#accountstatuses) | [`AccountStatus`]       |
 | `"transaction_statuses"`| [`SubscriptionArgs<"transaction_statuses">`](#transaction-statuses-2) | [`TransactionStatus`](#transactionstatusobject) |
 | `"events"`              | [`SubscriptionArgs<"events">`](#events-2)           | [`Event`]               |
