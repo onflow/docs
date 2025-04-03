@@ -1517,14 +1517,73 @@ const latestBlock = await fcl.latestBlock();
 
 Streaming data is available through the WebSocket Streaming API provided by the HTTP Access API. It allows developers to subscribe to specific topics and receive real-time updates as they occur on the Flow blockchain.
 
-The following topics are available for subscription:
+The following topics can be subscribed to:
 
-- `events`
-- `blocks`
-- `block_headers`
-- `block_digests`
-- `transaction_statuses`
-- `account_statuses`
+- `events`: Subscribe to events emitted by contracts.
+- `blocks`: Subscribe to new blocks added to the chain.
+- `block_headers`: Subscribe to new block headers added to the chain.
+- `block_digests`: Subscribe to block digests added to the chain.
+- `transaction_statuses`: Subscribe to transaction statuses.
+- `account_statuses`: Subscribe to account statuses.
+
+### `tx`
+
+A utility function that lets you set the transaction to get subsequent status updates and the finalized result once available.
+
+#### Arguments
+
+| Name            | Type   | Description             |
+| --------------- | ------ | ----------------------- |
+| `transactionId` | string | A valid transaction id. |
+
+#### Returns
+
+| Name              | Type     | Description                                                                                               |
+| ----------------- | -------- | --------------------------------------------------------------------------------------------------------- |
+| `snapshot()`      | function | Returns the current state of the transaction.                                                             |
+| `subscribe(cb)`   | function | Calls the `cb` passed in with the new transaction on a status change.                                     |
+| `onceFinalized()` | function | Provides the transaction once status `2` is returned. See [Tranasaction Statuses](#transaction-statuses). |
+| `onceExecuted()`  | function | Provides the transaction once status `3` is returned. See [Tranasaction Statuses](#transaction-statuses). |
+| `onceSealed()`    | function | Provides the transaction once status `4` is returned. See [Tranasaction Statuses](#transaction-statuses). |
+
+#### Usage
+
+```javascript
+import * as fcl from '@onflow/fcl';
+
+const [txStatus, setTxStatus] = useState(null);
+useEffect(() => fcl.tx(txId).subscribe(setTxStatus));
+```
+
+---
+
+### `events`
+
+A utility function that lets you set the transaction to get subsequent status updates and the finalized result once available.
+
+#### Arguments
+
+| Name                | Type                                      | Description                                      |
+| ------------------- | ----------------------------------------- | ------------------------------------------------ |
+| `eventNameOrFilter` | string &#124; [EventFilter](#eventfilter) | The name of the event or an event filter object. |
+
+#### Returns
+
+| Name            | Type     | Description                                  |
+| --------------- | -------- | -------------------------------------------- |
+| `subscribe(cb)` | function | Calls the `cb` passed in with the new event. |
+
+#### Usage
+
+```javascript
+import * as fcl from '@onflow/fcl';
+// in some react component
+fcl.events(eventName).subscribe((event) => {
+  console.log(event);
+});
+```
+
+---
 
 ### `subscribe`
 
@@ -1618,63 +1677,6 @@ subscription.unsubscribe();
 ```
 
 ---
-
-### `tx`
-
-A utility function that lets you set the transaction to get subsequent status updates and the finalized result once available.
-
-#### Arguments
-
-| Name            | Type   | Description             |
-| --------------- | ------ | ----------------------- |
-| `transactionId` | string | A valid transaction id. |
-
-#### Returns
-
-| Name              | Type     | Description                                                                                               |
-| ----------------- | -------- | --------------------------------------------------------------------------------------------------------- |
-| `snapshot()`      | function | Returns the current state of the transaction.                                                             |
-| `subscribe(cb)`   | function | Calls the `cb` passed in with the new transaction on a status change.                                     |
-| `onceFinalized()` | function | Provides the transaction once status `2` is returned. See [Tranasaction Statuses](#transaction-statuses). |
-| `onceExecuted()`  | function | Provides the transaction once status `3` is returned. See [Tranasaction Statuses](#transaction-statuses). |
-| `onceSealed()`    | function | Provides the transaction once status `4` is returned. See [Tranasaction Statuses](#transaction-statuses). |
-
-#### Usage
-
-```javascript
-import * as fcl from '@onflow/fcl';
-
-const [txStatus, setTxStatus] = useState(null);
-useEffect(() => fcl.tx(txId).subscribe(setTxStatus));
-```
-
----
-
-### `events`
-
-A utility function that lets you set the transaction to get subsequent status updates and the finalized result once available.
-
-#### Arguments
-
-| Name                | Type                                      | Description                                      |
-| ------------------- | ----------------------------------------- | ------------------------------------------------ |
-| `eventNameOrFilter` | string &#124; [EventFilter](#eventfilter) | The name of the event or an event filter object. |
-
-#### Returns
-
-| Name            | Type     | Description                                  |
-| --------------- | -------- | -------------------------------------------- |
-| `subscribe(cb)` | function | Calls the `cb` passed in with the new event. |
-
-#### Usage
-
-```javascript
-import * as fcl from '@onflow/fcl';
-// in some react component
-fcl.events(eventName).subscribe((event) => {
-  console.log(event);
-});
-```
 
 #### Examples
 
