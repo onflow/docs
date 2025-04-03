@@ -2424,37 +2424,37 @@ type SubscriptionData<T extends SubscriptionTopic> = {
 
 #### Blocks
 
-___Applies to topic: `blocks`_
+_Applies to topic: `blocks`_
 
 See [BlockObject](#blockobject).
 
 #### BlockHeaders
 
-__Applies to topic: `block_headers`_
+_Applies to topic: `block_headers`_
 
 See [BlockHeaderObject](#blockheaderobject).
 
 #### BlockDigests
 
-__Applies to topic: `block_digests`_
+_Applies to topic: `block_digests`_
 
 See BlockDigestObject.
 
 #### AccountStatuses
 
-__Applies to topic: `account_statuses`_
+_Applies to topic: `account_statuses`_
 
 See AccountStatusObject.
 
 #### Transaction Statuses
 
-__Applies to topic: `transaction_statuses`_
+_Applies to topic: `transaction_statuses`_
 
 See [TransactionStatusObject](#transactionstatusobject).
 
 #### Events
 
-__Applies to topic: `events`_
+_Applies to topic: `events`_
 
 See [EventObject](#event-object).
 
