@@ -1528,23 +1528,23 @@ The following topics are available for subscription:
 
 ### `subscribe`
 
-A utility function used for subscribing to real-time data from the WebSocket Streaming API. Data returned will be automatically decoded via `fcl.decode`.
+A utility function used for subscribing to real-time data from the WebSocket Streaming API. Data returned will be automatically decoded via the [`decode`](#decode) function.
 
 #### Arguments
 
 | Name                 | Type               | Description                                                                                        |
 | -------------------- | ------------------ | -------------------------------------------------------------------------------------------------- |
-| [`SubscriptionParams`] | SubscriptionParams | An object containing the subscription topic, arguments, and callbacks. See below for more details. |
+| `params` | `SubscribeParams` | An object containing the subscription topic, arguments, and callbacks. See below for more details. |
 | `opts`            | object             | _(Optional)_ Additional options for the subscription. See below for more details.                  |
 
-SubscriptionParams (first parameter):
+`SubscribeParams` (first parameter):
 
 | Name      | Type                                                  | Description                                                                                                                        |
 | --------- | ----------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------- |
-| `topic`   | SubscriptionTopic                                     | The subscription topic. Valid values include: `events`, `blocks`, `transactions`, and `collections`.                               |
-| `args`    | SubscriptionArgs<T extends SubscriptionTopic>         | An array or object of parameters specific to the topic. For example, when subscribing to events, these might be event identifiers. |
-| `onData`  | (data: SubscriptionData<T extends SubscriptionTopic>) | A callback function that is called with the decoded data whenever a new message is received.                                       |
-| `onError` | (error: Error) => void                                | A callback function that is called if an error occurs during the subscription.                                                     |
+| `topic`   | [`SubscriptionTopic`](#subscriptiontopic)                                     | The subscription topic. Valid values include: `events`, `blocks`, `transactions`, and `collections`.                               |
+| `args`    | [`SubscriptionArgs<T extends SubscriptionTopic>`](#subscriptionargs)         | An array or object of parameters specific to the topic. For example, when subscribing to events, these might be event identifiers. |
+| `onData`  | [`(data: SubscriptionData<T extends SubscriptionTopic>)`](#subscriptiontopic) | A callback function that is called with the decoded data whenever a new message is received.                                       |
+| `onError` | `(error: Error) => void`                                | A callback function that is called if an error occurs during the subscription.                                                     |
 
 Additional Options (second parameter):
 
@@ -1602,9 +1602,6 @@ Additional Options (second parameter):
 
 #### Returns
 
-| Type                                                   | Description                                                                                    |
-| ------------------------------------------------------ | ---------------------------------------------------------------------------------------------- |
-| [SdkTransport.Subscription](#sdktransportsubscription) | A subscription object that allows you to manage the subscription (e.g., to unsubscribe later). |
 
 #### Usage
 
@@ -2233,7 +2230,7 @@ Signature objects are used to represent a signature for a particular message as 
 | `signature` | string              | a hexidecimal-encoded string representation of the generated signature                       |
 
 
-### SubscriptionParams<SubscriptionTopic>
+### SubscriptionParams
 
 ```ts
 import { SubscriptionParams } from "@onflow/typedefs"
@@ -2251,6 +2248,15 @@ interface SubscriptionParams<T extends SubscriptionTopic> {
 }
 ```
 
+| Subscription Topic      | Argument Type                          | Data Returned         |
+|-------------------------|----------------------------------------|-----------------------|
+| `"blocks"`              | `SubscriptionArgs<"blocks">`           | `Block`               |
+| `"block_headers"`       | `SubscriptionArgs<"block_headers">`    | `BlockHeader`         |
+| `"block_digests"`       | `SubscriptionArgs<"block_digests">`    | `BlockDigest`         |
+| `"account_statuses"`    | `SubscriptionArgs<"account_statuses">` | `AccountStatus`       |
+| `"transaction_statuses"`| `SubscriptionArgs<"transaction_statuses">` | `TransactionStatus` |
+| `"events"`              | `SubscriptionArgs<"events">`           | `Event`               |
+
 ### SubscriptionTopic
 
 Import:
@@ -2260,8 +2266,6 @@ import { SubscriptionTopic } from "@onflow/typedefs"
 ```
 
 The `SubscriptionTopic` type is used to specify the topic of a subscription.
-
-The type is defined as:
 
 ```ts
 type SubscriptionTopic =
@@ -2273,7 +2277,7 @@ type SubscriptionTopic =
   | "events"
 ```
 
-Constants for each topic are also provided:
+The `SubscriptionTopic` type is also exported as a constant object for easier usage in TypeScript.
 
 ```ts
 const SubscriptionTopic = {
@@ -2286,10 +2290,26 @@ const SubscriptionTopic = {
 } as const
 ```
 
-### SubscriptionArgs<T extends SubscriptionTopic>
+### SubscriptionArgs
 
 ```ts
 import { type SubscriptionArgs } from "@onflow/typedefs"
+```
+
+Type definition:
+
+```ts
+type SubscriptionArgs<T extends SubscriptionTopic> = {
+  [K in T]: K extends "blocks" | "block_headers" | "block_digests"
+    ? BlockSubscriptionAtLatestArgs | BlockSubscriptionAtIdArgs | BlockSubscriptionAtHeightArgs
+    : K extends "account_statuses"
+    ? AccountStatusSubscriptionArgs
+    : K extends "transaction_statuses"
+    ? TransactionStatusSubscriptionArgs
+    : K extends "events"
+    ? EventSubscriptionArgs
+    : never;
+}[T];
 ```
 
 An array or object of parameters specific to the topic. For example, when subscribing to events, these might be event identifiers.
@@ -2303,16 +2323,9 @@ const args: SubscriptionArgs<"events"> = {
 }
 ```
 
-
 #### Blocks, BlockHeaders, BlockDigests
 
-Import:
-
-```ts
-import { type BlockSubscriptionArgs } from "@onflow/typedefs"
-```
-
-Any of the following formats are valid for the `args` field.
+_Applies to topics: `blocks`, `block_headers`, `block_digests`_
 
 Start at the latest block:
 
@@ -2345,15 +2358,10 @@ type BlockSubscriptionAtHeightArgs = {
 
 #### AccountStatuses
 
-Import:
+_Applies to topic: `account_statuses`_
 
 ```ts
-import { type AccountStatusSubscriptionArgs } from "@onflow/typedefs"
-```
-
-Type definition:
-
-```ts
+// Internal type, not exported
 type AccountStatusSubscriptionArgs = {
   startBlockId?: string;
   startBlockHeight?: number;
@@ -2365,15 +2373,10 @@ type AccountStatusSubscriptionArgs = {
 
 #### Transaction Statuses
 
-Import:
+_Applies to topic: `transaction_statuses`_
 
 ```ts
-import { type TransactionStatusSubscriptionArgs } from "@onflow/typedefs"
-```
-
-Type definition:
-
-```ts
+// Internal type, not exported
 type TransactionStatusSubscriptionArgs = {
   transactionId: string;
 }
@@ -2381,9 +2384,24 @@ type TransactionStatusSubscriptionArgs = {
 
 #### Events
 
-See [EventFilter](#eventfilter).
+_Applies to topic: `events`_
 
-### SubscriptionData<T extends SubscriptionTopic>
+Type definition:
+
+```ts
+// Internal type, not exported
+type EventSubscriptionArgs = {
+  startBlockId?: string;
+  startBlockHeight?: number;
+  eventTypes?: string[];
+  addresses?: string[];
+  contracts?: string[];
+}
+```
+
+### SubscriptionData
+
+**Import:**
 
 ```ts
 import { type SubscriptionData } from "@onflow/typedefs"
@@ -2391,55 +2409,61 @@ import { type SubscriptionData } from "@onflow/typedefs"
 
 The data returned by the subscription. This will vary depending on the topic.
 
+```ts
+type SubscriptionData<T extends SubscriptionTopic> = {
+  [K in T]: K extends "blocks"
+    ? Block
+    : K extends "block_headers"
+    ? Blockheader
+    : K extends "block_digests"
+    ? BlockDigestObject
+    : K extends "account_statuses"
+    ? AccountStatusObject
+    : K extends "transaction_statuses"
+    ? TransactionStatusObject
+    : K extends "events"
+    ? EventObject
+    : never;
+}[T];
+```
+
 #### Blocks
 
-```ts
-import { type Block } from "@onflow/typedefs"
-```
+___Applies to topic: `blocks`_
 
 See [BlockObject](#blockobject).
 
 #### BlockHeaders
 
-```ts
-import { type BlockHeader } from "@onflow/typedefs"
-```
+__Applies to topic: `block_headers`_
 
 See [BlockHeaderObject](#blockheaderobject).
 
 #### BlockDigests
 
-```ts
-import { type BlockDigest } from "@onflow/typedefs"
-```
+__Applies to topic: `block_digests`_
 
 See BlockDigestObject.
 
 #### AccountStatuses
 
-```ts
-import { type AccountStatus } from "@onflow/typedefs"
-```
+__Applies to topic: `account_statuses`_
 
 See AccountStatusObject.
 
 #### Transaction Statuses
 
-```ts
-import { type TransactionStatus } from "@onflow/typedefs"
-```
+__Applies to topic: `transaction_statuses`_
 
 See [TransactionStatusObject](#transactionstatusobject).
 
 #### Events
 
-```ts
-import { type Event } from "@onflow/typedefs"
-```
+__Applies to topic: `events`_
 
 See [EventObject](#event-object).
 
-### RawSubscriptionData<T extends SubscriptionTopic>
+### RawSubscriptionData<T>
 
 ```ts
 import { type RawSubscriptionData } from "@onflow/typedefs"
