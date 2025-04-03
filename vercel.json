@@ -1322,6 +1322,11 @@
       "source": "/tools/vscode-extension/cursor",
       "destination": "/tools/cursor",
       "permanent": true
+    },
+    {
+      "source": "/tools/cursor",
+      "destination": "tutorials/ai-plus-flow/cursor",
+      "permanent": true
     }
   ]
 }

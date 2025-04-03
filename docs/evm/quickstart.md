@@ -1,7 +1,7 @@
 ---
 title: EVM Quickstart
 description: Deploy your first contract on Flow testnet and connect it to a rainbowkit/wagmi/viem app
-sidebar_position: 2
+sidebar_position: 5
 keywords:
   - Flow EVM
   - EVM quickstart
@@ -332,14 +332,12 @@ In our [Cross-VM Apps] tutorial series, you'll learn how to supercharge your EVM
 
 Ready to unlock the full potential of Flow EVM? Start with our [Batched Transactions] tutorial to learn how to build your first cross-VM application.
 
-<!-- Relative links, will not render on page -->
-
 [Cadence]: https://cadence-lang.org/docs
 [Next.js]: https://nextjs.org/docs/app/getting-started/installation
 [wagmi]: https://wagmi.sh/
 [viem]: https://viem.sh/
 [rainbowkit]: https://www.rainbowkit.com/
-[hardhat]: https://hardhat.org/
+[Hardhat]: https://hardhat.org/
 [Remix]: ./guides/remix.md
 [Foundry]: ./guides/foundry.md
 [Flow Faucet]: https://faucet.flow.com/fund-account
@@ -355,3 +353,4 @@ Ready to unlock the full potential of Flow EVM? Start with our [Batched Transact
 [testnet Flowscan]: https://evm-testnet.flowscan.io/
 [Cross-VM Apps]: ../tutorials/cross-vm-apps/introduction.md
 [Batched Transactions]: ../tutorials/cross-vm-apps/introduction.md
+[OpenZeppelin Contracts]: https://www.openzeppelin.com/contracts
