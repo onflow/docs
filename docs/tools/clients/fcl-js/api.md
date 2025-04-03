@@ -2318,7 +2318,7 @@ const args: SubscriptionArgs<"events"> = {
 }
 ```
 
-#### Blocks, BlockHeaders, BlockDigests
+#### Blocks, Block Headers, Block Digests
 
 _Applies to topics: `blocks`, `block_headers`, `block_digests`_
 
@@ -2351,7 +2351,7 @@ type BlockSubscriptionAtHeightArgs = {
 }
 ```
 
-#### AccountStatuses
+#### Account Statuses
 
 _Applies to topic: `account_statuses`_
 
@@ -2428,19 +2428,19 @@ _Applies to topic: `blocks`_
 
 See [BlockObject](#blockobject).
 
-#### BlockHeaders
+#### Block Headers
 
 _Applies to topic: `block_headers`_
 
 See [BlockHeaderObject](#blockheaderobject).
 
-#### BlockDigests
+#### Block Digests
 
 _Applies to topic: `block_digests`_
 
 See BlockDigestObject.
 
-#### AccountStatuses
+#### Account Statuses
 
 _Applies to topic: `account_statuses`_
 
