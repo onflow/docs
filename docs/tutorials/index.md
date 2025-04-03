@@ -34,11 +34,24 @@ keywords:
   - randomness
   - Random Beacon
   - commit-reveal
+  - AI
+  - ChatGPT
+  - Cursor
+  - Flow documentation
+  - Flow AI assistance
 ---
 
 Flow Cadence and Flow EVM are two VMs running on the Flow blockchain. A few months after the release of the Crescendo upgrade, we're seeing more apps that aren't Cadence apps -OR- EVM apps, they're both! Cadence unlocks superpowers such as vast computation and storage, native VRF, a much safer and more secure language for handling digital ownership, and more. Flow EVM unlocks the power of the Ethereum ecosystem, allowing you to bring in traditional tools, assets, and liquidity.
 
 For this grand future, we'll need a new suite of tutorials, guides, and resources to help you build with the best of both worlds. This section is dedicated to those tutorials.
+
+## AI Plus Flow
+
+Learn how to leverage AI tools to enhance your Flow development experience. These tutorials show you how to integrate various AI assistants with Flow development to boost productivity and code quality.
+
+- [Use Flow Knowledge Base in Cursor] - Learn how to set up Cursor with Flow knowledge bases to get intelligent assistance while developing Flow applications
+- [Use Flow Knowledge Base in ChatGPT] - Create a custom GPT that understands Flow and Cadence to provide accurate answers to your development questions
+- [Flow Data Sources] - Learn about this comprehensive resource and how to integrate it with various AI platforms
 
 ## Token Launch
 
@@ -68,6 +81,9 @@ Explore Flow's unique capabilities through fun benchmark applications that showc
 
 - [Build a Fully-Onchain Image Gallery] - Create a fully onchain image gallery that demonstrates Flow's efficient storage capabilities
 
+[Use Flow Knowledge Base in Cursor]: ai-plus-flow/cursor/index.md
+[Use Flow Knowledge Base in ChatGPT]: ai-plus-flow/chatgpt/index.md
+[Flow Data Sources]: ai-plus-flow/flow-data-sources.md
 [Register a Token]: token-launch/register-token.md
 [Introduction to Cross-VM Applications]: cross-vm-apps/introduction.md
 [Interacting with COAs]: cross-vm-apps/interacting-with-coa.md

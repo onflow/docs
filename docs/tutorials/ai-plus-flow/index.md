@@ -32,9 +32,9 @@ In this tutorial series, you'll discover how to:
 
 ## Tutorials
 
-- **[Use Flow Knowledge Base in Cursor][cursor]** - Learn how to set up Cursor with Flow knowledge bases to get intelligent assistance while developing Flow applications.
-- **[Use Flow Knowledge Base in ChatGPT][chatgpt]** - Create a custom GPT that understands Flow and Cadence to provide accurate answers to your development questions.
-- **[Flow Data Sources][flow-data-sources]** - Learn about this comprehensive resource and how to integrate it with various AI platforms.
+- [Use Flow Knowledge Base in Cursor] - Learn how to set up Cursor with Flow knowledge bases to get intelligent assistance while developing Flow applications.
+- [Use Flow Knowledge Base in ChatGPT] - Create a custom GPT that understands Flow and Cadence to provide accurate answers to your development questions.
+- [Flow Data Sources] - Learn about this comprehensive resource and how to integrate it with various AI platforms.
 
 ## Best Practices
 
@@ -54,6 +54,9 @@ After completing these tutorials, you'll be equipped to leverage AI tools effect
 - [Native VRF][native-vrf] - Implement verifiable random functions in your applications
 - [Token Launch][token-launch] - Create and launch tokens on Flow
 
+[Use Flow Knowledge Base in Cursor]: ./cursor/index.md
+[Use Flow Knowledge Base in ChatGPT]: ./chatgpt/index.md
+[Flow Data Sources]: ./flow-data-sources.md
 [cross-vm-apps]: ../cross-vm-apps/introduction.md
 [native-vrf]: ../native-vrf/index.md
 [token-launch]: ../token-launch/index.md
