@@ -2214,7 +2214,7 @@ import { BlockHeartbeat } from "@onflow/typedefs"
 const heartbeat: BlockHeartbeat = ...
 ```
 
-### SignatureObject
+### `SignatureObject`
 
 Signature objects are used to represent a signature for a particular message as well as the account and keyId which signed for this message.
 
@@ -2225,7 +2225,7 @@ Signature objects are used to represent a signature for a particular message as 
 | `signature` | string              | a hexidecimal-encoded string representation of the generated signature                       |
 
 
-### SubscriptionParams
+### `SubscriptionParams`
 
 ```ts
 import { SubscriptionParams } from "@onflow/typedefs"
@@ -2252,7 +2252,7 @@ interface SubscriptionParams<T extends SubscriptionTopic> {
 | `"transaction_statuses"`| [`SubscriptionArgs<"transaction_statuses">`](#transaction-statuses-3) | `TransactionStatus` |
 | `"events"`              | [`SubscriptionArgs<"events">`](#events-3)           | `Event`               |
 
-### SubscriptionTopic
+### `SubscriptionTopic`
 
 Import:
 
@@ -2285,7 +2285,7 @@ const SubscriptionTopic = {
 } as const
 ```
 
-### SubscriptionArgs
+### `SubscriptionArgs`
 
 ```ts
 import { type SubscriptionArgs } from "@onflow/typedefs"
@@ -2394,7 +2394,7 @@ type EventSubscriptionArgs = {
 }
 ```
 
-### SubscriptionData
+### `SubscriptionData`
 
 **Import:**
 
@@ -2458,7 +2458,7 @@ __Applies to topic: `events`_
 
 See [EventObject](#event-object).
 
-### RawSubscriptionData
+### `RawSubscriptionData`
 
 ```ts
 import { type RawSubscriptionData } from "@onflow/typedefs"
