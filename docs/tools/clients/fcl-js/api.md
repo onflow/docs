@@ -2243,7 +2243,14 @@ interface SubscriptionParams<T extends SubscriptionTopic> {
 }
 ```
 
-
+| Subscription Topic      | Argument Type                          | Data Returned         |
+|-------------------------|----------------------------------------|-----------------------|
+| `"blocks"`              | [`SubscriptionArgs<"blocks">`](#blocks-blockheaders-blockdigests)           | `Block`               |
+| `"block_headers"`       | [`SubscriptionArgs<"block_headers">`](#blocks-blockheaders-blockdigests)    | `BlockHeader`         |
+| `"block_digests"`       | [`SubscriptionArgs<"block_digests">`](#blocks-blockheaders-blockdigests)    | `BlockDigest`         |
+| `"account_statuses"`    | [`SubscriptionArgs<"account_statuses">`](#accountstatuses-1) | `AccountStatus`       |
+| `"transaction_statuses"`| [`SubscriptionArgs<"transaction_statuses">`](#transaction-statuses-3) | `TransactionStatus` |
+| `"events"`              | [`SubscriptionArgs<"events">`](#events-3)           | `Event`               |
 
 ### SubscriptionTopic
 
