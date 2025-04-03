@@ -1534,17 +1534,12 @@ A utility function used for subscribing to real-time data from the WebSocket Str
 
 | Name                 | Type               | Description                                                                                        |
 | -------------------- | ------------------ | -------------------------------------------------------------------------------------------------- |
-| `params` | `SubscribeParams` | An object containing the subscription topic, arguments, and callbacks. See below for more details. |
+| `params` | [`SubscriptionParams`](#subscriptionparams) | An object containing the subscription topic, arguments, and callbacks. See below for more details. |
 | `opts`            | object             | _(Optional)_ Additional options for the subscription. See below for more details.                  |
 
-`SubscribeParams` (first parameter):
+`params` (first parameter):
 
-| Name      | Type                                                  | Description                                                                                                                        |
-| --------- | ----------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------- |
-| `topic`   | [`SubscriptionTopic`](#subscriptiontopic)                                     | The subscription topic. Valid values include: `events`, `blocks`, `transactions`, and `collections`.                               |
-| `args`    | [`SubscriptionArgs<T extends SubscriptionTopic>`](#subscriptionargs)         | An array or object of parameters specific to the topic. For example, when subscribing to events, these might be event identifiers. |
-| `onData`  | [`(data: SubscriptionData<T extends SubscriptionTopic>)`](#subscriptiontopic) | A callback function that is called with the decoded data whenever a new message is received.                                       |
-| `onError` | `(error: Error) => void`                                | A callback function that is called if an error occurs during the subscription.                                                     |
+See [`SubscriptionParams`](#subscriptionparams) for more details.
 
 Additional Options (second parameter):
 
@@ -2248,14 +2243,7 @@ interface SubscriptionParams<T extends SubscriptionTopic> {
 }
 ```
 
-| Subscription Topic      | Argument Type                          | Data Returned         |
-|-------------------------|----------------------------------------|-----------------------|
-| `"blocks"`              | `SubscriptionArgs<"blocks">`           | `Block`               |
-| `"block_headers"`       | `SubscriptionArgs<"block_headers">`    | `BlockHeader`         |
-| `"block_digests"`       | `SubscriptionArgs<"block_digests">`    | `BlockDigest`         |
-| `"account_statuses"`    | `SubscriptionArgs<"account_statuses">` | `AccountStatus`       |
-| `"transaction_statuses"`| `SubscriptionArgs<"transaction_statuses">` | `TransactionStatus` |
-| `"events"`              | `SubscriptionArgs<"events">`           | `Event`               |
+
 
 ### SubscriptionTopic
 
