@@ -9,11 +9,11 @@ sidebar_position: 1
 
 Agentkit is an ecosystem-agnostic modular developer toolkit that lets you rapidly build, deploy, and iterate on AI agents using pre-configured environments and ready-to-use templates.
 
-In this guide, you'll set up your own custom agent running on **Flow’s EVM-compatible testnet**, powered by **Langchain** and **Anthropic’s Claude** LLM.
+In this guide, you'll set up your own custom agent running on **Flow's EVM-compatible testnet**, powered by **Langchain** and **Anthropic's Claude** LLM.
 
 ---
 
-## 🚀 Quickstart
+## Quickstart - Starting From Scratch
 
 Open your terminal and run:
 
@@ -36,7 +36,7 @@ Follow the interactive setup:
 
 ---
 
-## 🔧 Project Setup
+## Project Setup
 
 Once your scaffold is ready:
 
@@ -50,9 +50,9 @@ Now open the project in your preferred IDE (e.g. Cursor).
 ### Environment Configuration
 
 1. Create a `.env.local` file (or edit the one generated).
-2. Add your API keys (we’ll use **Anthropic** here).
+2. Add your API keys (we'll use **Anthropic** here).
 
-> 💡 You can also use OpenAI, DeepSeek, or any other supported LLM.
+> You can also use OpenAI, DeepSeek, or any other supported LLM.
 
 ### Get Your Anthropic API Key
 
@@ -100,7 +100,7 @@ http://localhost:3000
 
 ---
 
-## 🧠 Configure Your LLM
+## Configure Your LLM
 
 If your agent doesn't respond yet — no worries! You still need to configure your **LLM and client libraries**.
 
@@ -108,7 +108,7 @@ If your agent doesn't respond yet — no worries! You still need to configure yo
 
 Langchain supports many LLMs ([full list here](https://python.langchain.com/docs/integrations/llms/)).
 
-For this example, we’ll use **Anthropic's `claude-3-5-haiku-20241022`**, a lightweight and affordable model. Alternatively, [DeepSeek](https://deepseek.com/) is highly recommended for budget-friendly usage.
+For this example, we'll use **Anthropic's `claude-3-5-haiku-20241022`**, a lightweight and affordable model. Alternatively, [DeepSeek](https://deepseek.com/) is highly recommended for budget-friendly usage.
 
 ### Update `create-agent.ts`
 
@@ -134,7 +134,7 @@ npm install @langchain/anthropic
 
 ---
 
-## 🌊 Configure Flow and Viem Wallet
+## Configure Flow and Viem Wallet
 
 ### Update the Faucet Provider Logic
 
@@ -194,7 +194,7 @@ agent = createReactAgent({
 
 ---
 
-## ✅ You’re Done!
+## You're Done!
 
 You now have a working AI agent connected to Flow testnet using Agentkit!
 
@@ -202,17 +202,124 @@ You can send faucet tokens to your wallet and start testing smart contract inter
 
 ---
 
-## 🧪 Starter Project
+## Starter Project
 
 Want to skip the setup?
 
-> 🔗 [Fork the Flow Agentkit Starter](https://github.com/Aliserag/flow-agentkit-starter)
+> [Fork the Flow Agentkit Starter](https://github.com/Aliserag/flow-agentkit-starter)
 
 This starter includes all necessary config to start building immediately on Flow.
 
 ---
 
-## 📚 Resources
+## Adding AgentKit to an Existing Project
+
+Already have a project and want to add AgentKit? Follow these steps to integrate it into your existing codebase:
+
+### Install the Package
+
+Run this command in your project's root directory:
+
+```bash
+npm install onchain-agent@latest
+```
+
+This will:
+- Download and install the latest version of the `onchain-agent` package
+- Add it to the dependencies section of your `package.json`
+- Update your `node_modules` folder accordingly
+
+### Configure Environment
+
+1. Create or update your `.env` file with the necessary API keys:
+
+```env
+PRIVATE_KEY=your_wallet_private_key
+ANTHROPIC_API_KEY=your_anthropic_api_key
+# Or other LLM API keys
+```
+
+2. Configure your RPC endpoints for Flow:
+
+```env
+FLOW_TESTNET_RPC_URL=https://testnet.evm.nodes.onflow.org
+FLOW_MAINNET_RPC_URL=https://mainnet.evm.nodes.onflow.org
+```
+
+### Integrate AgentKit in Your Code
+
+Import and configure AgentKit in your application:
+
+```ts
+// Import AgentKit components
+import { 
+  createReactAgent, 
+  ChatAnthropic 
+} from 'onchain-agent';
+import { 
+  createWalletClient, 
+  http, 
+  createPublicClient 
+} from 'viem';
+
+// Set up your Flow wallet provider
+const walletClient = createWalletClient({
+  transport: http('https://testnet.evm.nodes.onflow.org'),
+  chain: {
+    id: 545, // Flow Testnet
+    name: 'Flow Testnet',
+  },
+  account: yourPrivateKey
+});
+
+// Configure the LLM
+const llm = new ChatAnthropic({ 
+  model: "claude-3-5-haiku-20241022" 
+});
+
+// Create your agent
+const agent = createReactAgent({
+  llm,
+  tools: yourSelectedTools,
+  // Additional configuration
+});
+
+// Use the agent in your application
+// ...
+```
+
+### Add Specialized Tools (Optional)
+
+To add specialized blockchain tools to your agent:
+
+```ts
+import { 
+  viem, 
+  ViemToolConfig 
+} from 'onchain-agent';
+
+// Configure Viem tools for Flow
+const viemTools = viem.createTools({
+  chain: {
+    id: 545,
+    name: 'Flow Testnet',
+  },
+  transport: http('https://testnet.evm.nodes.onflow.org')
+} as ViemToolConfig);
+
+// Add these tools to your agent
+const agent = createReactAgent({
+  llm,
+  tools: [
+    ...viemTools,
+    // Other tools
+  ],
+});
+```
+
+---
+
+## Resources
 
 - [Agentkit Docs](https://docs.cdp.coinbase.com/agentkit)
 - [Flow EVM Guide](https://developers.flow.com/evm/using)
@@ -221,4 +328,4 @@ This starter includes all necessary config to start building immediately on Flow
 
 ---
 
-Happy hacking on Flow! 💧
+Happy hacking on Flow!
