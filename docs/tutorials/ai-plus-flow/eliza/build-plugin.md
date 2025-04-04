@@ -31,27 +31,27 @@ By the end of this tutorial, you will be able to:
 
 Before getting started with Eliza, ensure you have:
 
-- [Node.js 23+](https://docs.npmjs.com/downloading-and-installing-node-js-and-npm) (using [nvm](https://github.com/nvm-sh/nvm) is recommended)
-- [pnpm 9+](https://pnpm.io/installation)
+- [Node.js 23+] (using [nvm] is recommended)
+- [pnpm 9+]
 - Git for version control
-- A code editor ([VS Code](https://code.visualstudio.com/), [Cursor](https://cursor.com/) or [VSCodium](https://vscodium.com) recommended)
-- [Flow-cli](https://developers.flow.com/tools/flow-cli) for Flow blockchain interaction.
+- A code editor ([VS Code], [Cursor] or [VSCodium] recommended)
+- [Flow-cli] for Flow blockchain interaction.
 
-> **Note for Windows Users:** [WSL 2](https://learn.microsoft.com/en-us/windows/wsl/install-manual) is required.
+> **Note for Windows Users:** [WSL 2] is required.
 
 ## Quickstart
 
-Please follow the [Quickstart Guide](./index.md) to set up your development environment.
+Please follow the [Quickstart Guide] to set up your development environment.
 
 ## Plugin Development
 
 ### Create a Plugin repository from Template
 
-Visit [Eliza Plugin Template](https://github.com/onflow/eliza-plugin-template) and click on the "Use this template" button to create a new repository.
+Visit [Eliza Plugin Template] and click on the "Use this template" button to create a new repository.
 
-Or you can create a new empty repository and copy the files from some examples at [Eliza Plugins](https://github.com/elizaos-plugins) organization.
+Or you can create a new empty repository and copy the files from some examples at [Eliza Plugins] organization.
 
-> Note: Flow's Eliza plugin template is using Dependency Injection(`@elizaos-plugins/plugin-di`), you can learn more about the Dependency Injection in the [plugin's README.md](https://github.com/fixes-world/plugin-di).  It allows you can use `Class` instead of `Object` for your `Actions`, `Providers`, `Services`, and etc. **If you don't want to use it, you can follow the other examples in Eliza Plugins organiazation.**
+> Note: Flow's Eliza plugin template is using Dependency Injection(`@elizaos-plugins/plugin-di`), you can learn more about the Dependency Injection in the [plugin's README.md].  It allows you can use `Class` instead of `Object` for your `Actions`, `Providers`, `Services`, and etc. **If you don't want to use it, you can follow the other examples in Eliza Plugins organiazation.**
 
 ### Add the Plugin repository to your Eliza project
 
@@ -149,6 +149,21 @@ pnpm start:client
 
 ## Plugin Registration
 
-You need to register your plugin in the [Eliza Plugin Registry](https://github.com/elizaos-plugins/registry) to make it available for other users.
+You need to register your plugin in the [Eliza Plugin Registry] to make it available for other users.
 
-Please follow the guide there, modify the [index.json](https://github.com/elizaos-plugins/registry/blob/main/index.json) and submit a PR to the registry repository.
+Please follow the guide there, modify the [index.json] and submit a PR to the registry repository.
+
+[Node.js 23+]: https://docs.npmjs.com/downloading-and-installing-node-js-and-npm
+[nvm]: https://github.com/nvm-sh/nvm
+[pnpm 9+]: https://pnpm.io/installation
+[VS Code]: https://code.visualstudio.com/
+[Cursor]: https://cursor.com/
+[VSCodium]: https://vscodium.com
+[Flow-cli]: https://developers.flow.com/tools/flow-cli
+[WSL 2]: https://learn.microsoft.com/en-us/windows/wsl/install-manual
+[Quickstart Guide]: ./index.md
+[Eliza Plugin Template]: https://github.com/onflow/eliza-plugin-template
+[Eliza Plugins]: https://github.com/elizaos-plugins
+[plugin's README.md]: https://github.com/fixes-world/plugin-di
+[Eliza Plugin Registry]: https://github.com/elizaos-plugins/registry
+[index.json]: https://github.com/elizaos-plugins/registry/blob/main/index.json

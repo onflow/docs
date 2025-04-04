@@ -30,19 +30,19 @@ By the end of this tutorial, you will be able to:
 
 Before getting started with Eliza, ensure you have:
 
-- [Node.js 23+](https://docs.npmjs.com/downloading-and-installing-node-js-and-npm) (using [nvm](https://github.com/nvm-sh/nvm) is recommended)
-- [pnpm 9+](https://pnpm.io/installation)
+- [Node.js 23+] (using [nvm] is recommended)
+- [pnpm 9+]
 - Git for version control
-- A code editor ([VS Code](https://code.visualstudio.com/), [Cursor](https://cursor.com/) or [VSCodium](https://vscodium.com) recommended)
-- [Flow-cli](https://developers.flow.com/tools/flow-cli) for Flow blockchain interaction.
+- A code editor ([VS Code], [Cursor] or [VSCodium] recommended)
+- [Flow-cli] for Flow blockchain interaction.
 
-> **Note for Windows Users:** [WSL 2](https://learn.microsoft.com/en-us/windows/wsl/install-manual) is required.
+> **Note for Windows Users:** [WSL 2] is required.
 
 ## Installation
 
 ElizaOnFlow is a Flow-dedicated Eliza wrapper, so:
 
-- The plugins from this repository are also compatible with the origin [Eliza](https://github.com/elizaOs/eliza).
+- The plugins from this repository are also compatible with the origin [Eliza].
 - You can also use any plugins from origin Eliza in this repository.
 
 Clone the repository
@@ -116,7 +116,7 @@ Edit `.env` and add your values. Do NOT add this file to version control.
 Eliza supports multiple AI models and you set which model to use inside the character JSON file.
 But remember, once you chosed a model, you need to set up the relevent configuration.
 
-Check full list of supported LLMs in origin Eliza: [Models.ts](https://github.com/elizaOS/eliza/blob/main/packages/core/src/models.ts)
+Check full list of supported LLMs in origin Eliza: [Models.ts]
 
 Suggested models:
 
@@ -131,13 +131,13 @@ Suggested models:
 
 ### Setup Agent's Flow Account
 
-Create a new Flow account for the Agent. Learn more: [doc](https://developers.flow.com/tools/flow-cli/accounts/create-accounts)
+Create a new Flow account for the Agent. Learn more: [doc]
 
 ```bash
 flow accounts create
 ```
 
-> If you are using Testnet, you can get free tokens from [Flow Faucet](https://faucet.flow.com/)
+> If you are using Testnet, you can get free tokens from [Flow Faucet]
 
 Set Flow blockchain configuration in `.env` with new generated Flow account.
 
@@ -148,7 +148,7 @@ FLOW_NETWORK=       # Default: mainnet
 FLOW_ENDPOINT_URL=  # Default: <https://mainnet.onflow.org>
 ```
 
-For testnet, please check Flow's [Networks](https://developers.flow.com/networks/flow-networks) for more information.
+For testnet, please check Flow's [Networks] for more information.
 
 ## Create Your First Agent
 
@@ -163,7 +163,7 @@ Copy one of the example character files and make it your own
 cp characters/scooby.character.json characters/sample.character.json
 ```
 
-📝 [Character Documentation](https://elizaos.github.io/eliza/docs/core/characterfile/)
+📝 [Character Documentation]
 
 ### **Start the Agent**
 
@@ -187,11 +187,11 @@ pnpm start --characters="characters/sample.character.json, characters/scooby.cha
 
 ### Add / Develop plugins
 
-run `npx elizaos plugins list` to get a list of available plugins or visit [Eliza Plugins Registry](https://elizaos.github.io/registry)
+run `npx elizaos plugins list` to get a list of available plugins or visit [Eliza Plugins Registry]
 
 run `npx elizaos plugins add @elizaos-plugins/plugin-NAME` to install the plugin into your instance
 
-To create a new plugin **for your own business**, you can refer to the [plugin development guide](build-plugin.md).
+To create a new plugin **for your own business**, you can refer to the [plugin development guide].
 
 #### Additional Requirements
 
@@ -221,4 +221,22 @@ Simply click the link or open your browser to `http://localhost:5173/`. You'll s
 
 ## Common Issues & Solutions
 
-Please check the orgin Eliza's [Common Issues & Solutions](https://elizaos.github.io/eliza/docs/quickstart/#common-issues--solutions)
+Please check the orgin Eliza's [Common Issues & Solutions]
+
+[Node.js 23+]: https://docs.npmjs.com/downloading-and-installing-node-js-and-npm
+[nvm]: https://github.com/nvm-sh/nvm
+[pnpm 9+]: https://pnpm.io/installation
+[VS Code]: https://code.visualstudio.com/
+[Cursor]: https://cursor.com/
+[VSCodium]: https://vscodium.com
+[Flow-cli]: https://developers.flow.com/tools/flow-cli
+[WSL 2]: https://learn.microsoft.com/en-us/windows/wsl/install-manual
+[Eliza]: https://github.com/elizaOs/eliza
+[Models.ts]: https://github.com/elizaOS/eliza/blob/main/packages/core/src/models.ts
+[doc]: https://developers.flow.com/tools/flow-cli/accounts/create-accounts
+[Flow Faucet]: https://faucet.flow.com/
+[Networks]: https://developers.flow.com/networks/flow-networks
+[Character Documentation]: https://elizaos.github.io/eliza/docs/core/characterfile/
+[Eliza Plugins Registry]: https://elizaos.github.io/registry
+[plugin development guide]: build-plugin.md
+[Common Issues & Solutions]: https://elizaos.github.io/eliza/docs/quickstart/#common-issues--solutions
