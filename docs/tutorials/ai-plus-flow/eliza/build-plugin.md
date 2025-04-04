@@ -139,7 +139,7 @@ pnpm start:debug --character="characters/sample.character.json"
 
 ### Interact with the Agent
 
-Now you're ready to start a conversation with your agent.
+Now, you're ready to start a conversation with your agent.
 
 Open a new terminal window and run the client's http server.
 

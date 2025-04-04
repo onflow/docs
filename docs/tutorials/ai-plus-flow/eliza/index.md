@@ -43,7 +43,7 @@ Before getting started with Eliza, ensure you have:
 ElizaOnFlow is a Flow-dedicated Eliza wrapper, so:
 
 - The plugins from this repository are also compatible with the origin [Eliza].
-- You can also use any plugins from origin Eliza in this repository.
+- You can also use any plugins from original Eliza in this repository.
 
 Clone the repository
 
@@ -87,13 +87,14 @@ pnpm install --no-frozen-lockfile
 > **Note:** Please only use the `--no-frozen-lockfile` option when you're initially instantiating the repo or are bumping the version of a package or adding a new package to your package.json. This practice helps maintain consistency in your project's dependencies and prevents unintended changes to the lockfile.
 
 If you are using ElizaOnFlow, you need to install Flow Cadence contracts dependencies to ensure `*.cdc` be correctly linted by Cadence extension.
+
 Install Flow Cadence contracts dependencies:
 
 ```bash
 flow deps install
 ```
 
-Build all packages
+Build all packages:
 
 ```bash
 pnpm build
@@ -152,7 +153,7 @@ For testnet, please check Flow's [Networks] for more information.
 
 ## Create Your First Agent
 
-### **Create a Character File**
+### Create a Character File
 
 Check out the `deps/eliza/characters/` directory for a number of character files to try out.
 Additionally you can override Eliza's `defaultCharacter` by editting `charactor.ts` which will be default used if no character json provided.
@@ -173,7 +174,7 @@ Inform it which character you want to run:
 pnpm start --character="characters/sample.character.json"
 ```
 
-Or you can use `pnpm start:debug` for more debugging logs.
+Or you can use `pnpm start:debug` for more debugging logs:
 
 ```bash
 pnpm start:debug --character="characters/sample.character.json"
@@ -185,7 +186,7 @@ You can load multiple characters with a comma-separated list:
 pnpm start --characters="characters/sample.character.json, characters/scooby.character.json"
 ```
 
-### Add / Develop plugins
+### Add / Develop Plugins
 
 run `npx elizaos plugins list` to get a list of available plugins or visit [Eliza Plugins Registry]
 
