@@ -153,6 +153,12 @@ You need to register your plugin in the [Eliza Plugin Registry] to make it avail
 
 Please follow the guide there, modify the [index.json] and submit a PR to the registry repository.
 
+## Conclusion
+
+In this tutorial, you've learned how to develop custom plugins for Eliza. You've gained experience with creating plugin repositories, implementing custom actions and services, integrating plugins with agents, and using dependency injection for better architecture.
+
+Eliza's plugin system provides a powerful way to extend the functionality of your AI agents. With the knowledge gained from this tutorial, you can now develop more sophisticated plugins, create reusable components, and share your work through the plugin registry.
+
 [Node.js 23+]: https://docs.npmjs.com/downloading-and-installing-node-js-and-npm
 [nvm]: https://github.com/nvm-sh/nvm
 [pnpm 9+]: https://pnpm.io/installation

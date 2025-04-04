@@ -224,6 +224,12 @@ Simply click the link or open your browser to `http://localhost:5173/`. You'll s
 
 Please check the orgin Eliza's [Common Issues & Solutions]
 
+## Conclusion
+
+In this tutorial, you've learned how to build and deploy an AI agent on the Flow blockchain using Eliza. You've gained hands-on experience with setting up the development environment, configuring agents, creating character configurations, integrating AI models, and developing custom plugins.
+
+The Eliza framework provides a powerful way to create intelligent agents that can understand and respond to user queries while leveraging Flow's secure and scalable infrastructure. By completing this tutorial, you now have the foundation to build more sophisticated AI agents and create unique user experiences through character customization and plugin development.
+
 [Node.js 23+]: https://docs.npmjs.com/downloading-and-installing-node-js-and-npm
 [nvm]: https://github.com/nvm-sh/nvm
 [pnpm 9+]: https://pnpm.io/installation
