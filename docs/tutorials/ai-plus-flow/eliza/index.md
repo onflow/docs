@@ -174,7 +174,7 @@ pnpm start --characters="characters/sample.character.json, characters/scooby.cha
 
 ### Add / Develop plugins
 
-run `npx elizaos plugins list` to get a list of available plugins or visit <https://elizaos.github.io/registry/>
+run `npx elizaos plugins list` to get a list of available plugins or visit [Eliza Plugins Registry](https://elizaos.github.io/registry)
 
 run `npx elizaos plugins add @elizaos-plugins/plugin-NAME` to install the plugin into your instance
 
