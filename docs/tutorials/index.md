@@ -64,6 +64,7 @@ Learn how to launch your own token on Flow using Cadence and EVM. This guide cov
 Learn how to build applications that interact with both Cadence and Flow EVM. These tutorials cover everything from basic integration to advanced features like transaction batching and token bridging.
 
 - [Introduction to Cross-VM Applications] - Learn how to use FCL with Wagmi and RainbowKit to create a cross-VM app
+- [Add Flow Cadence to Your wagmi App] - Learn how to integrate Flow Cadence with your existing wagmi/RainbowKit application to enable batch transactions and other Cadence features.
 - [Interacting with COAs] - Learn how to create and interact with Cadence Owned Accounts (COAs) to control EVM accounts from Cadence
 - [Batched EVM Transactions] - Discover how to batch multiple EVM transactions into a single Cadence transaction
 - [Cross-VM Bridge] - Explore how to bridge fungible and non-fungible tokens between Cadence and EVM environments
@@ -92,3 +93,4 @@ Explore Flow's unique capabilities through fun benchmark applications that showc
 [Build a Fully-Onchain Image Gallery]: flowtobooth/image-gallery.md
 [Secure Randomness with Commit-Reveal in Cadence]: native-vrf/commit-reveal-cadence.md
 [Deploy a Solidity Contract Using Cadence]: native-vrf/deploy-solidity-contract.md
+[Add Flow Cadence to Your wagmi App]: ./cross-vm-apps/add-to-wagmi.md

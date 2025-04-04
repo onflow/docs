@@ -1,5 +1,5 @@
 ---
-title: Batched Transactions
+title: Batched Tx From Scaffold
 description: Learn how to use FCL with wagmi and rainbowkit to create a cross-vm app - one that is simultaneously connected to Flow EVM and Flow Cadence.
 sidebar_position: 0
 keywords:
