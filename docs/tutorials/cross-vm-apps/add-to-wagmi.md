@@ -1,13 +1,13 @@
 ---
 title: Update Existing wagmi App
-description: Learn how to integrate Flow Cadence with your existing wagmi/rainbowkit app to enable batch transactions and other Cadence features.
+description: Learn how to integrate Flow Cadence with your existing wagmi/RainbowKit app to enable batch transactions and other Cadence features.
 sidebar_position: 1
 keywords:
   - hybrid apps
   - cross-vm apps
   - FCL
   - wagmi
-  - rainbowkit
+  - RainbowKit
   - Flow EVM
   - Flow Cadence
   - cross-VM
@@ -23,7 +23,7 @@ keywords:
 
 # Add Flow Cadence to Your wagmi App
 
-This tutorial demonstrates how to enhance your existing wagmi/rainbowkit application with Flow Cadence capabilities. By integrating the Flow Client Library (FCL) with your EVM stack, you can unlock powerful features like batch transactions with a single signature.
+This tutorial demonstrates how to enhance your existing wagmi/RainbowKit application with Flow Cadence capabilities. By integrating the Flow Client Library (FCL) with your EVM stack, you can unlock powerful features like batch transactions with a single signature.
 
 ## Video Overview
 
@@ -42,7 +42,7 @@ This tutorial demonstrates how to enhance your existing wagmi/rainbowkit applica
 
 After completing this guide, you'll be able to:
 
-- Add FCL to your existing wagmi/rainbowkit application
+- Add FCL to your existing wagmi/RainbowKit application
 - Configure FCL to work alongside your EVM wallet connections
 - Implement batch transactions that execute multiple EVM calls in a single Cadence transaction
 - Display both Cadence and EVM addresses in your application
@@ -59,11 +59,11 @@ Apps using the hybrid approach can interact with both [Cadence] and [Solidity] s
 
 ### Onchain App Frontends
 
-We're assuming you're familiar with [wagmi], [viem], and [rainbowkit]. If you're coming from the Cadence, you might want to take a quick look at the getting started guides for these platforms. They're all excellent and will rapidly get you up to speed on how the EVM world commonly connects their apps to their contracts.
+We're assuming you're familiar with [wagmi], [viem], and [RainbowKit]. If you're coming from the Cadence, you might want to take a quick look at the getting started guides for these platforms. They're all excellent and will rapidly get you up to speed on how the EVM world commonly connects their apps to their contracts.
 
 ## Create an App
 
-Start by creating an app using [rainbowkit]'s scaffold:
+Start by creating an app using [RainbowKit]'s scaffold:
 
 ```bash
 npm init @rainbow-me/rainbowkit@latest
@@ -80,7 +80,7 @@ npm install @onflow/fcl @onflow/fcl-rainbowkit-adapter
 These packages provide:
 
 - `@onflow/fcl`: The Flow Client Library for interacting with the Cadence VM
-- `@onflow/fcl-rainbowkit-adapter`: An adapter that allows rainbowkit to work with FCL-compatible wallets
+- `@onflow/fcl-rainbowkit-adapter`: An adapter that allows RainbowKit to work with FCL-compatible wallets
 
 ## Step 2: Configure FCL in Your wagmi Setup
 
@@ -455,7 +455,7 @@ export default Page;
    npm run dev
    ```
 
-2. Connect your wallet using the rainbowkit `ConnectButton`
+2. Connect your wallet using the RainbowKit `ConnectButton`
 
    - Make sure to use a Cadence-compatible wallet like Flow Wallet
 
@@ -491,7 +491,7 @@ You've successfully integrated Flow Cadence with your wagmi/rainbowkit applicati
 
 ## Reference Implementation
 
-For a complete reference implementation, check out the [FCL + rainbowkit + wagmi Integration Demo] repository.
+For a complete reference implementation, check out the [FCL + RainbowKit + wagmi Integration Demo] repository.
 
 [Cadence]: https://cadence-lang.org/docs
 [Next.js]: https://nextjs.org/docs/app/getting-started/installation
@@ -505,12 +505,11 @@ For a complete reference implementation, check out the [FCL + rainbowkit + wagmi
 [Flow Client Library (FCL)]: ../../tools/clients/fcl-js
 [wagmi]: https://wagmi.sh/
 [viem]: https://viem.sh/
-[rainbowkit]: https://www.rainbowkit.com/
+[RainbowKit]: https://www.rainbowkit.com/
 [wallet]: ../../ecosystem/wallets.md
 [Discord]: https://discord.com/channels/613813861610684416/1162086721471647874
-[FCL + rainbowkit + wagmi Integration Demo]: https://github.com/jribbink/cross-vm-app
+[FCL + RainbowKit + wagmi Integration Demo]: https://github.com/jribbink/cross-vm-app
 [FCL-JS]: https://github.com/onflow/fcl-js
 [Testnet Cadence Flowscan]: https://testnet.flowscan.io
 [Cadence Owned Accounts]: ../../build/basics/accounts.md
 [Testnet EVM Flowscan]: https://evm-testnet.flowscan.io
-[FCL + rainbowkit + wagmi Integration Demo]: https://github.com/jribbink/cross-vm-app
