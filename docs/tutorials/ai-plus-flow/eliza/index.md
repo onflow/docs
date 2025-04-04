@@ -13,6 +13,19 @@ keywords:
 
 # Quickstart Guide to build AI Agent on Flow with Eliza
 
+Eliza is a powerful framework for building AI agents that can interact with users through natural language. This tutorial will guide you through setting up and deploying an AI agent on the Flow blockchain using Eliza. You'll learn how to create intelligent agents that can understand and respond to user queries, while leveraging Flow's secure and scalable infrastructure.
+
+## Learning Objectives
+
+By the end of this tutorial, you will be able to:
+
+- Set up the Eliza development environment
+- Configure and deploy an AI agent on Flow
+- Create and customize character configurations
+- Integrate different AI models with your agent
+- Interact with your AI agent through a web interface
+- Add and develop custom plugins for extended functionality
+
 ## Prerequisites
 
 Before getting started with Eliza, ensure you have:

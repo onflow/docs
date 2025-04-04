@@ -14,6 +14,19 @@ keywords:
 
 # Eliza Plugin Development Guide
 
+Plugins are a powerful way to extend the functionality of your Eliza AI agents. This guide will walk you through the process of creating custom plugins that can enhance your agent's capabilities, from simple utilities to complex integrations with external services. You'll learn how to leverage the plugin system to create modular and reusable components for your AI agents.
+
+## Learning Objectives
+
+By the end of this tutorial, you will be able to:
+
+- Create a new plugin repository from the template
+- Understand the plugin development workflow
+- Implement custom actions and services
+- Integrate plugins with your Eliza agent
+- Register and publish plugins to the Eliza Plugin Registry
+- Use dependency injection for better plugin architecture
+
 ## Prerequisites
 
 Before getting started with Eliza, ensure you have:
