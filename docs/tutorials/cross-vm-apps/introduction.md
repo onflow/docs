@@ -7,7 +7,7 @@ keywords:
   - cross-vm apps
   - FCL
   - wagmi
-  - rainbowkit
+  - RainbowKit
   - viem
   - Flow EVM
   - Flow Cadence
@@ -26,9 +26,9 @@ Ever since the launch of Flow EVM, it's been possible to _supercharge_ your EVM 
 
 [FLIP 316] improves the [Flow Client Library (FCL)] to support cross-VM functionality between Flow EVM and Flow Cadence.
 
-For EVM developers, this means that you can use the familiar [wagmi], [viem], and [rainbowkit] stack you're used to, add FCL, and get features like **multi-call write** with one signature for users with a Cadence-compatible [wallet].
+For EVM developers, this means that you can use the familiar [wagmi], [viem], and [RainbowKit] stack you're used to, add FCL, and get features like **multi-call write** with one signature for users with a Cadence-compatible [wallet].
 
-In this tutorial, you'll learn how to create a hybrid application and use some basic cross-VM features.
+In this tutorial, you'll learn how to create [Click to Mint], a simple game that allows players to mint an ERC-20 token by clicking a button. With the power of Flow, they can also click a button, and **complete 10 separate transactions with just one approval!**
 
 :::warning
 
@@ -56,7 +56,7 @@ Apps using the hybrid approach can interact with both [Cadence] and [Solidity] s
 
 ### Onchain App Frontends
 
-We're assuming you're familiar with [wagmi], [viem], and [rainbowkit]. If you're coming from the Cadence, you might want to take a quick look at the getting started guides for these platforms. They're all excellent and will rapidly get you up to speed on how the EVM world commonly connects their apps to their contracts.
+We're assuming you're familiar with [wagmi], [viem], and [RainbowKit]. If you're coming from the Cadence, you might want to take a quick look at the getting started guides for these platforms. They're all excellent and will rapidly get you up to speed on how the EVM world commonly connects their apps to their contracts.
 
 ## Getting Started
 
@@ -787,6 +787,10 @@ It's up to you do design a comprehensive strategy for your app, but here, we can
 </button>
 ```
 
+### Styling
+
+It's up to you to make the app pretty. If you need inspiration, you can always check the [reference repo].
+
 ## Conclusion
 
 In this tutorial, you reviewed the demo starter for building hybrid applications that utilize a common EVM stack and integrate with Flow Cadence. You then added functionality to interface with another contract that mints ERC-20 tokens. Finally, you supercharged your app by using the power of Cadence for EVM multi-call contract writes.
@@ -811,7 +815,7 @@ Now that you have completed the tutorial, you should be able to:
 [Flow Client Library (FCL)]: ../../tools/clients/fcl-js
 [wagmi]: https://wagmi.sh/
 [viem]: https://viem.sh/
-[rainbowkit]: https://www.rainbowkit.com/
+[RainbowKit]: https://www.rainbowkit.com/
 [wallet]: ../../ecosystem/wallets.md
 [Discord]: https://discord.com/channels/613813861610684416/1162086721471647874
 [FCL + RainbowKit + Wagmi Integration Demo]: https://github.com/jribbink/cross-vm-app
