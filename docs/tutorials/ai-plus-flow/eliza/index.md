@@ -112,7 +112,13 @@ Copy .env.example to .env and fill in the appropriate values.
 cp .env.example .env
 ```
 
-> **Note:** `.env` is optional. If you're planning to run multiple distinct agents, you can pass secrets through the character JSON. But the following guide will use `.env` as example.
+
+:::danger
+
+In normal development, it's a best practice to use a `.env` to protect API keys and other sensitive information.  When working with crypto, it's **critical** to be disciplined and always use them, even in test projects or tutorials.  If you expose a wallet key, you might lose everything in that wallet immediately, or someone might watch it for years and rug you the day you put something valuable there.
+
+:::
+
 
 Edit `.env` and add your values. Do NOT add this file to version control.
 
