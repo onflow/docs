@@ -440,7 +440,7 @@ const config = {
                 label: 'Network Status',
               },
               {
-                href: 'https://flowdscan.io/',
+                href: 'https://flowscan.io/',
                 label: 'Flowscan Mainnet',
               },
               {
