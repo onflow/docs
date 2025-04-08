@@ -111,7 +111,11 @@ Let's say you want to add the plugin to the `sample` character which is `charact
 }
 ```
 
-> Note: If you are using Dependency Injection(`@elizaos-plugins/plugin-di`) in your plugin, remember to add it to the `postProcessors` field. And **`clients` field is deprecated** in the latest version of Eliza, so if you want to add clients you also need to use `plugins` field.
+:::warning
+
+If you are using Dependency Injection(`@elizaos-plugins/plugin-di`) in your plugin, remember to add it to the `postProcessors` field. And **`clients` field is deprecated** in the latest version of Eliza, so if you want to add clients you also need to use `plugins` field.
+
+:::
 
 ```json
 {
