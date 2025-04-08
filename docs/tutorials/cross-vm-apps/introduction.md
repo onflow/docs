@@ -556,6 +556,237 @@ Click the button again and **manually** refresh page once the transaction hashes
 
 **You just minted 10 tokens from 10 transactions with one signature!**
 
+## Improve the UI/UX
+
+While we've got the batched transactions feature working, we've got a few flaws in the user experience that we'll need to resolve, and we should make this a bit nicer looking.
+
+### Install Tailwind
+
+:::warning
+
+We initially tried getting an AI friend to install this for us and it got very confused. Next.js and Tailwind have both had a lot of change recently. As a result, the LLMs don't seem to have caught up just yet.
+
+Do this part the old-fashioned way.
+
+:::
+
+The components we borrowed already use [Tailwind], so install it:
+
+```bash
+npm install tailwindcss @tailwindcss/postcss postcss
+```
+
+Then, in the root of the project, add `postcss.config.mjs` and add:
+
+```tsx
+const config = {
+  plugins: {
+    '@tailwindcss/postcss': {},
+  },
+};
+export default config;
+```
+
+Then, add the following to the top of `src/styles/global.css`:
+
+```css
+@import 'tailwindcss';
+```
+
+Run the app and make sure you see some styling. It won't look nice yet. We'll help you reorganize the components and hook up state monitoring, but it will be up to you to style the app how you'd like. You can check out the [reference repo] for inspiration, but it's far from perfect or beautiful.
+
+### Update State Display
+
+The first thing we'll need to fix is that the user has to refresh the window manually to see the results of the batched transaction in the scoreboard. Start by moving the functionality in `page.tsx` into a new component, called `SuperButton.tsx`. Note that we're mimicking the pattern in `TheButton.tsx` where the blockchain state is managed in `Content.tsx` and we're passing in the relevant information and functions as props:
+
+```tsx
+'use client';
+
+import { useAccount } from 'wagmi';
+import { clickToken } from '../constants/contracts';
+import { CallOutcome, EVMBatchCall } from '../hooks/useBatchTransaction';
+import { Abi } from 'viem';
+
+interface SuperButtonProps {
+  flowAddress: string | null;
+  awaitingResponse: boolean;
+  setAwaitingResponse: (value: boolean) => void;
+  sendBatchTransaction: (calls: EVMBatchCall[]) => void;
+  isPending: boolean;
+  isError: boolean;
+  txId: string;
+  results: CallOutcome[];
+}
+
+export default function SuperButton({
+  flowAddress,
+  awaitingResponse,
+  setAwaitingResponse,
+  sendBatchTransaction,
+  isPending,
+  isError,
+  txId,
+  results,
+}: SuperButtonProps) {
+  const account = useAccount();
+
+  const calls: EVMBatchCall[] = Array.from({ length: 10 }, () => ({
+    address: clickToken.address,
+    abi: clickToken.abi as Abi,
+    functionName: 'mintTo',
+    args: [account?.address],
+  }));
+
+  function handleClick() {
+    setAwaitingResponse(true);
+    sendBatchTransaction(calls);
+  }
+
+  return (
+    <div className="bg-blue-500 text-white p-4 m-4 rounded">
+      <div>
+        With the{' '}
+        <a
+          href="https://wallet.flow.com/"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          Flow Wallet
+        </a>
+        , you can sign 10 mint transactions at once!
+      </div>
+      {!awaitingResponse && (
+        <button
+          disabled={!flowAddress}
+          onClick={handleClick}
+          className="w-full py-4 px-8 text-2xl font-bold text-white bg-blue-600 hover:bg-blue-700 rounded-lg shadow-lg transition-transform transform active:scale-95 disabled:bg-gray-400 disabled:cursor-not-allowed"
+        >
+          {flowAddress ? 'Mint 10 at Once!' : 'Requires Flow Wallet'}
+        </button>
+      )}
+      {awaitingResponse && (
+        <button
+          className="w-full py-4 px-8 text-2xl font-bold text-white bg-gray-500 rounded-lg shadow-lg disabled:cursor-not-allowed"
+          disabled
+        >
+          Please Wait...
+        </button>
+      )}
+      {<p>{JSON.stringify({ isPending, isError, txId, results })}</p>}
+    </div>
+  );
+}
+```
+
+You should end up with a vastly simplified `page.tsx`:
+
+```tsx
+import Content from '../components/Content';
+
+function Page() {
+  return (
+    <>
+      <Content />
+    </>
+  );
+}
+
+export default Page;
+```
+
+Next, update `Content.tsx`. First, add the decomposition of the `useBatchTransactions` hook that used to be in `page.tsx`. You'll keep blockchain-state-related code here, in a similar pattern to `useWriteTransaction`.
+
+```tsx
+import { useBatchTransaction } from '../hooks/useBatchTransaction';
+```
+
+```tsx
+const { sendBatchTransaction, isPending, isError, txId, results } =
+  useBatchTransaction();
+```
+
+You'll also need to move the `useEffect` that subscribes to the current user on the Cadence side:
+
+```tsx
+useEffect(() => {
+  const unsub = fcl.currentUser().subscribe((user: CurrentUser) => {
+    setFlowAddress(user.addr ?? null);
+  });
+  return () => unsub();
+}, []);
+```
+
+Then, update the `useEffect` that waits for a `receipt` to also trigger if `results` is updated with the result of a batched transaction:
+
+```tsx
+useEffect(() => {
+  if (receipt || results.length > 0) {
+    console.log('Transaction receipt:', receipt);
+    setReload(true);
+    setAwaitingResponse(false);
+  }
+}, [receipt, results]);
+```
+
+Finally, reorganize the `return` into two side-by-side cards and put the new component in the right card:
+
+```tsx
+return (
+  <div>
+    <div className="flex justify-end p-3">
+      <ConnectButton />
+    </div>
+    <h3>Flow Address: {flowAddress}</h3>
+    <h3>EVM Address: {account?.address}</h3>
+    <br />
+    <div className="flex flex-row items-center justify-center">
+      <div className="bg-green-500 text-white p-4 m-4 rounded">
+        {account.address && (
+          <div className="mb-4">
+            <TheButton
+              writeContract={writeContract}
+              awaitingResponse={awaitingResponse}
+              setAwaitingResponse={setAwaitingResponse}
+            />
+          </div>
+        )}
+        <br />
+      </div>
+      <SuperButton
+        flowAddress={flowAddress}
+        awaitingResponse={awaitingResponse}
+        setAwaitingResponse={setAwaitingResponse}
+        sendBatchTransaction={sendBatchTransaction}
+        isPending={isPending}
+        isError={isError}
+        txId={txId}
+        results={results}
+      />
+    </div>
+    {<TopTenDisplay reloadScores={reload} setReloadScores={setReload} />}
+  </div>
+);
+```
+
+### Testing
+
+Run the app and make sure it's working as expected, even if in a rather ugly fashion.
+
+### Add UI Hints
+
+With this kind of app, you're likely to have two types of users. Those that have upgraded to the [Flow Wallet] can take advantage of advanced features such as batched transactions, and those who haven't cannot.
+
+It's up to you do design a comprehensive strategy for your app, but here, we can at least let users know what's going on. Add some explainer text, and configure the button to show an appropriate message and disable itself if the wallet won't support it.
+
+```tsx
+<div>
+  With the <a href="https://flow.com/wallet" target="_blank" rel="noopener noreferrer">Flow Wallet</a>, you can sign 10 mint transactions at once!
+</div>
+<button disabled={!flowAddress} onClick={() => sendBatchTransaction(calls)}>
+  {flowAddress ? 'Mint 10 at Once!' : 'Requires Flow Wallet'}
+</button>
+```
+
 ## Conclusion
 
 In this tutorial, you reviewed the demo starter for building hybrid applications that utilize a common EVM stack and integrate with Flow Cadence. You then added functionality to interface with another contract that mints ERC-20 tokens. Finally, you supercharged your app by using the power of Cadence for EVM multi-call contract writes.
@@ -590,3 +821,5 @@ Now that you have completed the tutorial, you should be able to:
 [Testnet EVM Flowscan]: https://evm-testnet.flowscan.io
 [Button Clicker Contract]: https://github.com/briandoyle81/button-clicker-contract/blob/main/contracts/ClickToken.sol
 [`0xA7Cf2260e501952c71189D04FAd17c704DFB36e6`]: https://evm-testnet.flowscan.io/address/0xA7Cf2260e501952c71189D04FAd17c704DFB36e6?tab=contract
+[Tailwind]: https://tailwindcss.com/
+[reference repo]: https://github.com/briandoyle81/cross-vm-app-1/tree/main
