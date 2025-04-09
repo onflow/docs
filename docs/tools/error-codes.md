@@ -1,5 +1,5 @@
 ---
-sidebar_position: 5
+sidebar_position: 2
 ---
 
 # Error Codes
@@ -10,7 +10,7 @@ List of error codes returned from failing transactions and scripts. The error co
 ### 1006
 **ErrCodeInvalidProposalSignatureError**
 
-Example:
+Example: 
 `
 ...
 `
@@ -20,7 +20,7 @@ Example:
 ### 1007
 **ErrCodeInvalidProposalSeqNumberError**
 
-Example:
+Example: 
 `
 [Error Code: 1007] invalid proposal key: public key 0 on account xxx has sequence number xxx, but given xxx
 `
@@ -31,7 +31,7 @@ Example:
 ### 1008
 **ErrCodeInvalidPayloadSignatureError**
 
-Example:
+Example: 
 `
 [Error Code: 1008] invalid payload signature: public key 0 on account xxx does not have a valid signature: signature is not valid
 `
@@ -42,7 +42,7 @@ Example:
 ### 1009
 **ErrCodeInvalidEnvelopeSignatureError**
 
-Example:
+Example: 
 `
 [Error Code: 1009] invalid envelope key: public key 1 on account xxx does not have a valid signature: signature is not valid
 `
@@ -53,7 +53,7 @@ Example:
 ### 1051
 **ErrCodeValueError**
 
-Example:
+Example: 
 `
 [Error Code: 1051] invalid value (xxx): invalid encoded public key value: rlp: expected input list for flow.runtimeAccountPublicKeyWrapper...
 `
@@ -63,7 +63,7 @@ Example:
 ### 1052
 **ErrCodeInvalidArgumentError**
 
-Example:
+Example: 
 `
 [Error Code: 1052] transaction arguments are invalid: (argument is not json decodable: failed to decode value: runtime error: slice bounds out of range [:2] with length 0)
 `
@@ -73,7 +73,7 @@ Example:
 ### 1053
 **ErrCodeInvalidAddressError**
 
-Example:
+Example: 
 `
 ...
 `
@@ -83,7 +83,7 @@ Example:
 ### 1054
 **ErrCodeInvalidLocationError**
 
-Example:
+Example: 
 `
 [Error Code: 1054] location (../contracts/FungibleToken.cdc) is not a valid location: expecting an AddressLocation, but other location types are passed ../contracts/FungibleToken.cdc
 `
@@ -93,7 +93,7 @@ Example:
 ### 1055
 **ErrCodeAccountAuthorizationError**
 
-Example:
+Example: 
 `
 [Error Code: 1055] authorization failed for account e85d442d61a611d8: payer account does not have sufficient signatures (1 < 1000)
 `
@@ -103,7 +103,7 @@ Example:
 ### 1056
 **ErrCodeOperationAuthorizationError**
 
-Example:
+Example: 
 `
 [Error Code: 1056] (RemoveContract) is not authorized: removing contracts requires authorization from specific accounts goroutine 5688834491 [running]:
 `
@@ -113,7 +113,7 @@ Example:
 ### 1057
 **ErrCodeOperationNotSupportedError**
 
-Example:
+Example: 
 `
 ...
 `
@@ -123,7 +123,7 @@ Example:
 ### 1101
 **ErrCodeCadenceRunTimeError**
 
-Example:
+Example: 
 `
 [Error Code: 1101] cadence runtime error Execution failed: error: pre-condition failed: Amount withdrawn must be less than or equal than the balance of the Vault
 `
@@ -133,7 +133,7 @@ Example:
 ### 1103
 **ErrCodeStorageCapacityExceeded**
 
-Example:
+Example: 
 `
 [Error Code: 1103] The account with address (xxx) uses 96559611 bytes of storage which is over its capacity (96554500 bytes). Capacity can be increased by adding FLOW tokens to the account.
 `
@@ -146,7 +146,7 @@ For more information refer to [Fees](../build/basics/fees.md#maximum-available-b
 ### 1105
 **ErrCodeEventLimitExceededError**
 
-Example:
+Example: 
 `
 [Error Code: 1105] total event byte size (256200) exceeds limit (256000)
 `
@@ -156,7 +156,7 @@ Example:
 ### 1106
 **ErrCodeLedgerInteractionLimitExceededError**
 
-Example:
+Example: 
 `
 [Error Code: 1106] max interaction with storage has exceeded the limit (used: 20276498 bytes, limit 20000000 bytes)
 `
@@ -166,7 +166,7 @@ Example:
 ### 1107
 **ErrCodeStateKeySizeLimitError**
 
-Example:
+Example: 
 `
 ...
 `
@@ -177,7 +177,7 @@ Example:
 ### 1108
 **ErrCodeStateValueSizeLimitError**
 
-Example:
+Example: 
 `
 ...
 `
@@ -186,7 +186,7 @@ Example:
 ### 1109
 **ErrCodeTransactionFeeDeductionFailedError**
 
-Example:
+Example: 
 `
 [Error Code: 1109] failed to deduct 0 transaction fees from 14af75b8c487333c: Execution failed: f919ee77447b7497.FlowFees:97:24
 `
@@ -196,7 +196,7 @@ Example:
 ### 1110
 **ErrCodeComputationLimitExceededError**
 
-Example:
+Example: 
 `
 [Error Code: 1110] computation exceeds limit (100)
 `
@@ -206,7 +206,7 @@ Example:
 ### 1111
 **ErrCodeMemoryLimitExceededError**
 
-Example:
+Example: 
 `
 ...
 `
@@ -215,7 +215,7 @@ Example:
 ### 1112
 **ErrCodeCouldNotDecodeExecutionParameterFromState**
 
-Example:
+Example: 
 `
 ...
 `
@@ -224,7 +224,7 @@ Example:
 ### 1113
 **ErrCodeScriptExecutionTimedOutError**
 
-Example:
+Example: 
 `
 ...
 `
@@ -232,7 +232,7 @@ Example:
 ### 1114
 **ErrCodeScriptExecutionCancelledError**
 
-Example:
+Example: 
 `
 ...
 `
@@ -240,7 +240,7 @@ Example:
 ### 1115
 **ErrCodeEventEncodingError**
 
-Example:
+Example: 
 `
 ...
 `
@@ -250,7 +250,7 @@ Example:
 ### 1116
 **ErrCodeInvalidInternalStateAccessError**
 
-Example:
+Example: 
 `
 ...
 `
@@ -258,7 +258,7 @@ Example:
 ### 1118
 **ErrCodeInsufficientPayerBalance**
 
-Example:
+Example: 
 `
  [Error Code: 1118] payer ... has insufficient balance to attempt transaction execution (required balance: 0.00100000)
 `
@@ -267,7 +267,7 @@ Example:
 ### 1201
 **ErrCodeAccountNotFoundError**
 
-Example:
+Example: 
 `
 [Error Code: 1201] account not found for address xxx
 `
@@ -277,7 +277,7 @@ Example:
 ### 1202
 **ErrCodeAccountPublicKeyNotFoundError**
 
-Example:
+Example: 
 `
 [Error Code: 1202] account public key not found for address xxx and key index 3
 `
@@ -287,7 +287,7 @@ Example:
 ### 1203
 **ErrCodeAccountAlreadyExistsError**
 
-Example:
+Example: 
 `
 ...
 `
@@ -296,7 +296,7 @@ Example:
 ### 1204
 **ErrCodeFrozenAccountError**
 
-Example:
+Example: 
 `
 ...
 `
@@ -306,7 +306,7 @@ Example:
 ### 1206
 **ErrCodeAccountPublicKeyLimitError**
 
-Example:
+Example: 
 `
 ...
 `
@@ -316,7 +316,7 @@ Example:
 ### 1251
 **ErrCodeContractNotFoundError**
 
-Example:
+Example: 
 `
 ...
 `
@@ -326,7 +326,7 @@ Example:
 ### 2000
 **FailureCodeUnknownFailure**
 
-Example:
+Example: 
 `
 ...
 `
@@ -335,7 +335,7 @@ Example:
 ### 2001
 **FailureCodeEncodingFailure**
 
-Example:
+Example: 
 `
 ...
 `
@@ -345,7 +345,7 @@ Example:
 ### 2002
 **FailureCodeLedgerFailure**
 
-Example:
+Example: 
 `
 ...
 `
@@ -355,7 +355,7 @@ Example:
 ### 2003
 **FailureCodeStateMergeFailure**
 
-Example:
+Example: 
 `
 ...
 `
@@ -365,16 +365,16 @@ Example:
 ### 2004
 **FailureCodeBlockFinderFailure**
 
-Example:
+Example: 
 `
 ...
 `
 
-
+  
 ### 2006
 **FailureCodeParseRestrictedModeInvalidAccessFailure**
 
-Example:
+Example: 
 `
 ...
 `
@@ -383,7 +383,7 @@ Example:
 ### 2007
 **FailureCodePayerBalanceCheckFailure**
 
-Example:
+Example: 
 `
 ...
 `
