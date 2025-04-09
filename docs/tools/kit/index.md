@@ -64,6 +64,8 @@ function Root() {
 export default Root
 ```
 
+If you're using [Next.js], put this in `layout.tsx`.  Adapt as appropriate for other frontend frameworks.
+
 ---
 
 ## Hooks
