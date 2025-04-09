@@ -32,7 +32,7 @@ npm install @onflow/kit
 
 Before using any hooks or components (coming soon), wrap your application with the `FlowProvider` to initialize FCL configuration. This sets up FCL and maps its configuration keys to a strictly typed format for your hooks.
 
-```jsx
+```tsx
 import React from "react"
 import App from "./App"
 import { FlowProvider } from "@onflow/kit"
