@@ -20,8 +20,6 @@ sidebar_position: 2
 - [`useFlowQuery`](#useflowquery) – Execute Cadence scripts with optional arguments
 - [`useFlowMutate`](#useflowmutate) – Send transactions to the Flow blockchain
 - [`useFlowTransaction`](#useflowtransaction) – Track transaction status updates
-
-
 ## Installation
 
 ```bash
