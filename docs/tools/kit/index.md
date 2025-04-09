@@ -6,7 +6,11 @@ sidebar_position: 2
 
 # @onflow/kit
 
-> 🚧 This library is currently in alpha and is subject to change.
+:::warning
+
+🚧 This library is currently in alpha and is subject to change.
+
+:::
 
 `@onflow/kit` is a lightweight React utility library that simplifies interacting with the Flow blockchain. It provides a collection of hooks and (soon) components designed to make authentication, script execution, transactions, event subscriptions, and network configuration seamless in React apps.
 
