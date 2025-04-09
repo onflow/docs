@@ -70,6 +70,12 @@ If you're using [Next.js], put this in `layout.tsx`.  Adapt as appropriate for o
 
 ## Hooks
 
+:::info
+
+Many of these hooks are built using [`@tanstack/react-query`](https://tanstack.com/query/latest), which provides powerful caching, revalidation, and background refetching features. As a result, you’ll see return types like `UseQueryResult` and `UseMutationResult` throughout this section. Other types—such as `Account`, `Block`, and `CurrentUser`—are from the [Flow Client Library (FCL) TypeDefs](https://github.com/onflow/fcl-js/blob/master/packages/typedefs/src/index.ts). Refer to their respective documentation for full type definitions and usage patterns.
+
+:::
+
 ### `useCurrentFlowUser`
 
 ```tsx
