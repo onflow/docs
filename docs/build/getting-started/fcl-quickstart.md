@@ -160,13 +160,11 @@ import * as fcl from "@onflow/fcl";
 
 // FCL Configuration
 fcl.config({
-  "flow.network": "local",
-  "accessNode.api": "http://localhost:8888", // Flow Emulator
-  "discovery.wallet": "http://localhost:8701/fcl/authn", // Local Wallet Discovery
+  ...fcl.flowEmulator
 });
 ```
 
-This configuration code sets up FCL to work with the local Flow emulator and Dev Wallet. The `flow.network` and `accessNode.api` properties point to the local emulator, while `discovery.wallet` points to the local Dev Wallet for authentication.
+This configuration code sets up FCL to work with the local Flow emulator and Dev Wallet. The `flowEmulator` object provides a default FCL configuration that simplifies development by automatically setting the necessary parameters. You can learn more about default configurations [here](../../tools/clients/fcl-js/api.md#using-default-configurations).
 
 For more information on Discovery configurations, refer to the [Wallet Discovery Guide](../../tools/clients/fcl-js/discovery.md).
 
@@ -186,9 +184,7 @@ import * as fcl from "@onflow/fcl";
 
 // FCL Configuration
 fcl.config({
-  "flow.network": "local",
-  "accessNode.api": "http://localhost:8888",
-  "discovery.wallet": "http://localhost:8701/fcl/authn", // Local Dev Wallet
+  ...fcl.flowEmulator
 });
 
 export default function Home() {
@@ -400,9 +396,7 @@ import * as fcl from "@onflow/fcl";
 
 // FCL Configuration
 fcl.config({
-  "flow.network": "local",
-  "accessNode.api": "http://localhost:8888",
-  "discovery.wallet": "http://localhost:8701/fcl/authn", // Local Dev Wallet
+  ...fcl.flowEmulator
 });
 
 export default function Home() {
