@@ -1,7 +1,4 @@
-Below is the updated guide that now breaks out the creation of the Home Page into four clear steps. In these steps you will first query the blockchain, then send a transaction, subscribe to its status updates, and finally integrate authentication into the complete UI.
-
 ---
-
 sidebar_position: 3
 sidebar_label: Simple Frontend
 title: Building a Simple Frontend with @onflow/kit
@@ -21,6 +18,7 @@ keywords:
   - dApp development
   - Flow development
   - web3 frontend
+---
 
 # Simple Frontend with `@onflow/kit`
 
@@ -126,7 +124,7 @@ This will start the Dev Wallet on `http://localhost:8701`, which you’ll use fo
 // src/app/layout.tsx
 
 import { FlowProvider } from "@onflow/kit";
-import flowJSON from "../flow.json"; // Ensure your flow.json exists and includes contract aliases
+import flowJSON from "../flow.json";
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
@@ -136,7 +134,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           config={{
             accessNodeUrl: "http://localhost:8888",
             flowNetwork: "emulator",
-            discoveryWallet: "http://localhost:8701/fcl/authn",
+            discoveryWallet: "https://fcl-discovery.onflow.org/emulator/authn",
           }}
           flowJson={flowJSON}
         >
@@ -168,7 +166,7 @@ const { data: count, isLoading, error, refetch } = useFlowQuery({
     import NumberFormatter from 0xf8d6e0586b0a20c7
 
     access(all)
-    pub fun main(): String {
+    fun main(): String {
         // Retrieve the count from the Counter contract
         let count: Int = Counter.getCount()
 
@@ -220,8 +218,6 @@ const incrementCount = async (user, refetch, setTxId) => {
     limit: 50,
   });
   setTxId(transactionId);
-  // Optionally, wait a brief time for updates before refetching
-  await new Promise((resolve) => setTimeout(resolve, 2000));
   refetch();
 };
 ```
@@ -252,7 +248,7 @@ Finally, integrate the query, mutation, and transaction status hooks with authen
 
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import {
   useFlowQuery,
   useFlowMutate,
@@ -276,7 +272,7 @@ export default function Home() {
       import NumberFormatter from 0xf8d6e0586b0a20c7
 
       access(all)
-      pub fun main(): String {
+      fun main(): String {
           let count: Int = Counter.getCount()
           let formattedCount = NumberFormatter.formatWithCommas(number: count)
           return formattedCount
@@ -289,6 +285,13 @@ export default function Home() {
 
   // Step 3: Subscribe to transaction status using the stored txId.
   const { transactionStatus, error: txStatusError } = useFlowTransaction(txId);
+
+  // Automatically refetch the count when the transaction status indicates it is executed (status === 3).
+  useEffect(() => {
+    if (txId && transactionStatus?.status === 3) {
+      refetch();
+    }
+  }, [transactionStatus?.status, txId, refetch]);
 
   // Step 2: Prepare the mutation for incrementing the counter.
   const { mutate: increment, isPending: txPending, error: txError } = useFlowMutate();
@@ -318,8 +321,6 @@ export default function Home() {
       });
       console.log("Transaction Id", transactionId);
       setTxId(transactionId);
-      await new Promise((resolve) => setTimeout(resolve, 2000));
-      refetch();
     } catch (error) {
       console.error("Transaction Failed", error);
     }
@@ -375,8 +376,8 @@ export default function Home() {
 In this complete page:
 
 - **Step 1** queries the counter value.
-- **Step 2** sends a transaction to increment the counter.
-- **Step 3** subscribes to transaction status updates using the stored transaction ID.
+- **Step 2** sends a transaction to increment the counter and stores the transaction ID.
+- **Step 3** subscribes to transaction status updates using the stored transaction ID and uses a `useEffect` hook to automatically refetch the updated count when the transaction is sealed (status code 4).
 - **Step 4** integrates authentication via `useCurrentFlowUser` and combines all the pieces into a single user interface.
 
 ## Running the App
@@ -392,9 +393,9 @@ Then visit [http://localhost:3000](http://localhost:3000) in your browser. You s
 - The current counter value displayed (formatted with commas using `NumberFormatter`).
 - A **Log In** button that launches the kit Discovery UI with your local Dev Wallet.
 - Once logged in, your account address appears with options to **Log Out** and **Increment Count**.
-- When you click **Increment Count**, the transaction is sent; its status updates are displayed in real time below the action buttons, and after a brief delay, the updated count is fetched and displayed.
+- When you click **Increment Count**, the transaction is sent; its status updates are displayed in real time below the action buttons, and once the transaction is sealed, the updated count is automatically fetched.
 
-## Conclusion
+## Wrapping Up
 
 By following these steps, you’ve built a simple Next.js dApp that interacts with a Flow smart contract using **@onflow/kit**. In this guide you learned how to:
 
@@ -402,6 +403,4 @@ By following these steps, you’ve built a simple Next.js dApp that interacts wi
 - Use kit hooks such as `useFlowQuery`, `useFlowMutate`, `useFlowTransaction`, and `useCurrentFlowUser` to manage authentication, query on-chain data, submit transactions, and monitor their status.
 - Integrate with the local Flow emulator and Dev Wallet for a fully functional development setup.
 
-For additional details and advanced usage, refer to the [@onflow/kit documentation](https://github.com/onflow/kit) and other Flow developer resources.
-
-Happy building!
+For additional details and advanced usage, refer to the [@onflow/kit documentation](../../tools/kit/index.md) and other Flow developer resources.
