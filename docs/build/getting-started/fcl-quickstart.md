@@ -1,10 +1,10 @@
 ---
 sidebar_position: 3
 sidebar_label: Simple Frontend
-title: Building a Simple Frontend with @onflow/kit
+title: Building a Simple Frontend with "@onflow/kit"
 description: Learn how to build a Next.js frontend application using @onflow/kit to interact with Flow smart contracts. Set up wallet authentication, read contract data, send transactions with kit’s React hooks, and display transaction status updates.
 keywords:
-  - @onflow/kit
+  - "@onflow/kit"
   - Next.js
   - frontend development
   - wallet integration
