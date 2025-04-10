@@ -1,11 +1,10 @@
 ---
 sidebar_position: 3
 sidebar_label: Simple Frontend
-title: Building a Simple Frontend with FCL
-description: Learn how to build a frontend application using Next.js and Flow Client Library (FCL) to interact with Flow smart contracts. Set up wallet authentication, read contract data, and send transactions.
+title: Building a Simple Frontend with "@onflow/kit"
+description: Learn how to build a Next.js frontend application using @onflow/kit to interact with Flow smart contracts. Set up wallet authentication, read contract data, send transactions with kit’s React hooks, and display transaction status updates.
 keywords:
-  - FCL
-  - Flow Client Library
+  - "@onflow/kit"
   - Next.js
   - frontend development
   - wallet integration
@@ -21,18 +20,19 @@ keywords:
   - web3 frontend
 ---
 
-# Simple Frontend
+# Simple Frontend with `@onflow/kit`
 
-Building upon the `Counter` contract you interacted with in [Step 1: Contract Interaction](contract-interaction.md) and deployed locally in [Step 2: Local Development](./flow-cli.md), this tutorial will guide you through creating a simple frontend application using [Next.js] to interact with the `Counter` smart contract on the local Flow emulator. Using the [Flow Client Library] (FCL), you'll learn how to read and modify the contract's state from a React web application, set up wallet authentication using FCL's Discovery UI connected to the local emulator, and query the chain to read data from smart contracts.
+Building on the `Counter` contract you deployed in [Step 1: Contract Interaction](contract-interaction.md) and [Step 2: Local Development](./flow-cli.md), this tutorial shows you how to create a simple Next.js frontend that interacts with the `Counter` smart contract deployed on your local Flow emulator. Instead of using FCL directly, you'll leverage **@onflow/kit** to simplify authentication, querying, transactions, and to display real-time transaction status updates using convenient React hooks.
 
 ## Objectives
 
-After completing this guide, you'll be able to:
+After finishing this guide you will be able to:
 
-- Display data from a [Cadence] smart contract (`Counter`) on a Next.js frontend using the [Flow Client Library].
-- Query the chain to read data from smart contracts on the local emulator.
-- Mutate the state of a smart contract by sending transactions using FCL and a wallet connected to the local emulator.
-- Set up the Discovery UI to use a wallet for authentication with the local emulator.
+- Wrap your Next.js app with a Flow provider using **@onflow/kit**.
+- Read data from a Cadence smart contract (`Counter`) using kit’s query hook.
+- Send a transaction to update the smart contract’s state using kit’s mutation hook.
+- Monitor a transaction’s status in real time using kit’s transaction hook.
+- Authenticate with the Flow blockchain using kit’s built-in hooks and the local Dev Wallet.
 
 ## Prerequisites
 
@@ -42,94 +42,71 @@ After completing this guide, you'll be able to:
 
 ## Setting Up the Next.js App
 
-Assuming you're in your project directory from Steps 1 and 2, we'll create a Next.js frontend application to interact with your smart contract deployed on the local Flow emulator.
+Follow these steps to set up your Next.js project and integrate **@onflow/kit**.
 
 ### Step 1: Create a New Next.js App
 
-First, we'll create a new Next.js application using `npx create-next-app`. We'll create it inside your existing project directory and then move it up to the root directory.
-
-**Assumption**: You are already in your project directory.
-
-Run the following command:
+Run the following command in your project directory:
 
 ```bash
-npx create-next-app@latest fcl-app-quickstart
+npx create-next-app@latest kit-app-quickstart
 ```
 
-During the setup process, you'll be prompted with several options. Choose the following:
+During setup, choose the following options:
 
 - **TypeScript**: **No**
 - **Use src directory**: **Yes**
 - **Use App Router**: **Yes**
 
-This command will create a new Next.js project named `fcl-app-quickstart` inside your current directory.
+This command creates a new Next.js project named `kit-app-quickstart` inside your current directory.
 
 ### Step 2: Move the Next.js App Up a Directory
 
-Now, we'll move the contents of the `fcl-app-quickstart` directory up to your project root directory.
-
-**Note**: Moving the Next.js app into your existing project may overwrite existing files such as `package.json`, `package-lock.json`, `.gitignore`, etc. **Make sure to back up any important files before proceeding.** You may need to merge configurations manually.
-
-#### Remove the README File
-
-Before moving the files, let's remove the `README.md` file from the `fcl-app-quickstart` directory to avoid conflicts:
-
-```bash
-rm fcl-app-quickstart/README.md
-```
-
-#### Merge `.gitignore` Files and Move Contents
-
-To merge the `.gitignore` files, you can use the `cat` command to concatenate them and then remove duplicates:
-
-```bash
-cat .gitignore fcl-app-quickstart/.gitignore | sort | uniq > temp_gitignore
-mv temp_gitignore .gitignore
-```
-
-Now, move the contents of the `fcl-app-quickstart` directory to your project root:
+Move the contents of the `kit-app-quickstart` directory into your project root. For example:
 
 On macOS/Linux:
 
 ```bash
-mv fcl-app-quickstart/* .
-mv fcl-app-quickstart/.* .  # This moves hidden files like .env.local if any
-rm -r fcl-app-quickstart
+mv kit-app-quickstart/* .
+mv kit-app-quickstart/.* .  # To move hidden files (e.g. .env.local)
+rm -r kit-app-quickstart
 ```
 
 On Windows (PowerShell):
 
 ```powershell
-Move-Item -Path .\fcl-app-quickstart\* -Destination . -Force
-Move-Item -Path .\fcl-app-quickstart\.* -Destination . -Force
-Remove-Item -Recurse -Force .\fcl-app-quickstart
+Move-Item -Path .\kit-app-quickstart\* -Destination . -Force
+Move-Item -Path .\kit-app-quickstart\.* -Destination . -Force
+Remove-Item -Recurse -Force .\kit-app-quickstart
 ```
 
-**Note**: When moving hidden files (those starting with a dot, like `.gitignore`), ensure you don't overwrite important files in your root directory.
+**Note:** When moving hidden files (those beginning with a dot) like `.gitignore`, be cautious not to overwrite any important files.
 
-### Step 3: Install FCL
+### Step 3: Install @onflow/kit
 
-Now, install the Flow Client Library (FCL) in your project. FCL is a JavaScript library that simplifies interaction with the Flow blockchain:
+Install the kit library in your project:
 
 ```bash
-npm install @onflow/fcl
+npm install @onflow/kit
 ```
 
-## Setting Up the Local Flow Emulator and Dev Wallet
+This library wraps FCL internally and exposes a set of hooks for authentication, querying, sending transactions, and tracking transaction status.
 
-Before proceeding, ensure that both the Flow emulator and the Dev Wallet are running.
+## Configuring the Local Flow Emulator and Dev Wallet
+
+Before moving on, ensure that both the Flow emulator and the Dev Wallet are running.
 
 ### Step 1: Start the Flow Emulator
 
-In a new terminal window, navigate to your project directory and run:
+Open a new terminal window in your project directory and run:
 
 ```bash
 flow emulator start
 ```
 
-This starts the Flow emulator on `http://localhost:8888`.
+This will start the Flow emulator on `http://localhost:8888`.
 
-### Step 2: Start the FCL Dev Wallet
+### Step 2: Start the Dev Wallet
 
 In another terminal window, run:
 
@@ -137,258 +114,136 @@ In another terminal window, run:
 flow dev-wallet
 ```
 
-This starts the Dev Wallet, which listens on `http://localhost:8701`. The Dev Wallet is a local wallet that allows you to authenticate with the Flow blockchain and sign transactions on the local emulator. This is the wallet we'll select in Discovery UI when authenticating.
+This will start the Dev Wallet on `http://localhost:8701`, which you’ll use for authentication during development.
 
-## Querying the Chain
+## Wrapping Your App with FlowProvider
 
-Now, let's read data from the `Counter` smart contract deployed on the local Flow emulator.
+**@onflow/kit** provides a `FlowProvider` component that sets up the Flow Client Library configuration. In Next.js using the App Router, add or update your `src/app/layout.tsx` as follows:
 
-Since you've already deployed the `Counter` contract in [Step 2: Local Development](./flow-cli.md), we can proceed to query it.
+```tsx
+// src/app/layout.tsx
 
-### Step 1: Update the Home Page
+import { FlowProvider } from "@onflow/kit";
+import flowJSON from "../flow.json";
 
-Open `src/app/page.js` in your editor.
-
-#### Adding the FCL Configuration Before the Rest
-
-At the top of your `page.js` file, before the rest of the code, we'll add the FCL configuration. This ensures that FCL is properly configured before we use it.
-
-Add the following code:
-
-```jsx
-import * as fcl from "@onflow/fcl";
-
-// FCL Configuration
-fcl.config({
-  "flow.network": "local",
-  "accessNode.api": "http://localhost:8888", // Flow Emulator
-  "discovery.wallet": "http://localhost:8701/fcl/authn", // Local Wallet Discovery
-});
-```
-
-This configuration code sets up FCL to work with the local Flow emulator and Dev Wallet. The `flow.network` and `accessNode.api` properties point to the local emulator, while `discovery.wallet` points to the local Dev Wallet for authentication.
-
-For more information on Discovery configurations, refer to the [Wallet Discovery Guide](../../tools/clients/fcl-js/discovery.md).
-
-#### Implementing the Component
-
-Now, we'll implement the component to query the count from the `Counter` contract.
-
-Update your `page.js` file to the following:
-
-```jsx
-// src/app/page.js
-
-"use client"; // This directive is necessary when using useState and useEffect in Next.js App Router
-
-import { useState, useEffect } from "react";
-import * as fcl from "@onflow/fcl";
-
-// FCL Configuration
-fcl.config({
-  "flow.network": "local",
-  "accessNode.api": "http://localhost:8888",
-  "discovery.wallet": "http://localhost:8701/fcl/authn", // Local Dev Wallet
-});
-
-export default function Home() {
-  const [count, setCount] = useState(0);
-
-  const queryCount = async () => {
-    try {
-      const res = await fcl.query({
-        cadence: `
-          import Counter from 0xf8d6e0586b0a20c7
-          import NumberFormatter from 0xf8d6e0586b0a20c7
-          
-          access(all)
-          fun main(): String {
-              // Retrieve the count from the Counter contract
-              let count: Int = Counter.getCount()
-          
-              // Format the count using NumberFormatter
-              let formattedCount = NumberFormatter.formatWithCommas(number: count)
-          
-              // Return the formatted count
-              return formattedCount
-          }
-        `,
-      });
-      setCount(res);
-    } catch (error) {
-      console.error("Error querying count:", error);
-    }
-  };
-
-  useEffect(() => {
-    queryCount();
-  }, []);
-
+export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <div>
-      <h1>FCL App Quickstart</h1>
-      <div>Count: {count}</div>
-    </div>
+    <html>
+      <body>
+        <FlowProvider
+          config={{
+            accessNodeUrl: "http://localhost:8888",
+            flowNetwork: "emulator",
+            discoveryWallet: "https://fcl-discovery.onflow.org/emulator/authn",
+          }}
+          flowJson={flowJSON}
+        >
+          {children}
+        </FlowProvider>
+      </body>
+    </html>
   );
 }
 ```
 
-In the above code:
+This configuration initializes the kit with your local emulator settings and maps contract addresses based on your `flow.json` file.
 
-- We import the necessary React hooks (`useState` and `useEffect`) and the FCL library.
-- We define the `Home` component, which is the main page of our app.
-- We set up a state variable `count` using the `useState` hook to store the count value.
-- We define an `async` function `queryCount` to query the count from the `Counter` contract.
-- We use the `useEffect` hook to call `queryCount` when the component mounts.
-- We return a simple JSX structure that displays the count value on the page.
-- If an error occurs during the query, we log it to the console.
-- We use the script from Step 2 to query the count from the `Counter` contract and format it using the `NumberFormatter` contract.
+For more information on Discovery configurations, refer to the [Wallet Discovery Guide](../../tools/clients/fcl-js/discovery.md).
 
-:::info
+## Creating the Home Page
 
-In this tutorial, we've shown you hardcoding addresses directly for simplicity and brevity. However, it's **recommended** to use the `import "ContractName"` syntax, as demonstrated in [Step 2: Local Development](./flow-cli.md). This approach is supported by the Flow Client Library (FCL) and allows you to use aliases for contract addresses in your `flow.json` file. It makes your code more flexible, maintainable, and easier to adapt across different environments (e.g., `testnet`, `mainnet`).
+We’ll now break the home page creation into four clear steps:
 
-Learn more about this best practice in the [FCL Documentation](../../tools/clients/fcl-js/api.md#using-flowjson-for-contract-imports).
+### Step 1: Querying the Chain
 
-:::
-
-### Step 2: Run the App
-
-Start your development server:
-
-```bash
-npm run dev
-```
-
-Visit `http://localhost:3000` in your browser. You should see the current count displayed on the page, formatted according to the `NumberFormatter` contract.
-
-## Mutating the Chain State
-
-Now that we've successfully read data from the Flow blockchain emulator, let's modify the state by incrementing the `count` in the `Counter` contract. We'll set up wallet authentication and send a transaction to the blockchain emulator.
-
-### Adding Authentication and Transaction Functionality
-
-#### Step 1: Manage Authentication State
-
-In `src/app/page.js`, add new state variables to manage the user's authentication state:
+First, use the kit’s `useFlowQuery` hook to read the current counter value from the blockchain.
 
 ```jsx
-const [user, setUser] = useState({ loggedIn: false });
+// A snippet demonstrating querying the chain
+import { useFlowQuery } from "@onflow/kit";
+
+const { data: count, isLoading, error, refetch } = useFlowQuery({
+  cadence: `
+    import Counter from 0xf8d6e0586b0a20c7
+    import NumberFormatter from 0xf8d6e0586b0a20c7
+
+    access(all)
+    fun main(): String {
+        // Retrieve the count from the Counter contract
+        let count: Int = Counter.getCount()
+
+        // Format the count using NumberFormatter
+        let formattedCount = NumberFormatter.formatWithCommas(number: count)
+
+        // Return the formatted count
+        return formattedCount
+    }
+  `,
+});
+
+// Use the count data in your component as needed.
 ```
 
-#### Step 2: Subscribe to Authentication Changes
+This script fetches the counter value, formats it via the `NumberFormatter`, and returns the formatted string.
 
-Update the `useEffect` hook to subscribe to the current user's authentication state:
+### Step 2: Sending a Transaction
 
-```jsx
-useEffect(() => {
-  fcl.currentUser.subscribe(setUser);
-  queryCount();
-}, []);
-```
-
-The `currentUser.subscribe` method listens for changes to the current user's authentication state and updates the `user` state accordingly.
-
-#### Step 3: Define Log In and Log Out Functions
-
-Define the `logIn` and `logOut` functions:
+Next, use the kit’s `useFlowMutate` hook to send a transaction that increments the counter.
 
 ```jsx
-const logIn = () => {
-  fcl.authenticate();
-};
+// A snippet demonstrating sending a transaction
+import { useFlowMutate } from "@onflow/kit";
 
-const logOut = () => {
-  fcl.unauthenticate();
-};
-```
+const { mutate: increment, isPending, error: txError } = useFlowMutate();
 
-The `authenticate` method opens the Discovery UI for the user to log in, while `unauthenticate` logs the user out.
+const incrementCount = async (user, refetch, setTxId) => {
+  const transactionId = await increment({
+    cadence: `
+      import Counter from 0xf8d6e0586b0a20c7
 
-#### Step 4: Define the `incrementCount` Function
-
-Add the `incrementCount` function:
-
-```jsx
-const incrementCount = async () => {
-  try {
-    const transactionId = await fcl.mutate({
-      cadence: `
-        import Counter from 0xf8d6e0586b0a20c7
-
-        transaction {
-
-          prepare(acct: &Account) {
-              // Authorizes the transaction
-          }
-      
-          execute {
-              // Increment the counter
-              Counter.increment()
-      
-              // Retrieve the new count and log it
-              let newCount = Counter.getCount()
-              log("New count after incrementing: ".concat(newCount.toString()))
-          }
+      transaction {
+        prepare(acct: AuthAccount) {
+          // Authorization handled via the current user
+        }
+        execute {
+          // Increment the counter
+          Counter.increment()
+          // Retrieve and log the new count
+          let newCount = Counter.getCount()
+          log("New count after incrementing: ".concat(newCount.toString()))
+        }
       }
-      `,
-      proposer: fcl.currentUser,
-      payer: fcl.currentUser,
-      authorizations: [fcl.currentUser.authorization],
-      limit: 50,
-    });
-
-    console.log("Transaction Id", transactionId);
-
-    await fcl.tx(transactionId).onceExecuted();
-    console.log("Transaction Executed");
-
-    queryCount();
-  } catch (error) {
-    console.error("Transaction Failed", error);
-  }
+    `,
+    proposer: user,
+    payer: user,
+    authorizations: [user.authorization],
+    limit: 50,
+  });
+  setTxId(transactionId);
+  refetch();
 };
 ```
 
-In the above code:
+In this snippet, after calling the mutation, the returned transaction ID is stored for subscription.
 
-- We define an `async` function `incrementCount` to send a transaction to increment the count in the `Counter` contract.
-- We use the `mutate` method to send a transaction to the blockchain emulator.
-- The transaction increments the count in the `Counter` contract and logs the new count.
-- We use the `proposer`, `payer`, and `authorizations` properties to set the transaction's proposer, payer, and authorizations to the current user.
-- The `limit` property sets the gas limit for the transaction.
-- We log the transaction ID and wait for the transaction to be sealed before querying the updated count.
-- If an error occurs during the transaction, we log it to the console.
-- After the transaction is sealed, we call `queryCount` to fetch and display the updated count.
-- We use the transaction from Step 2 to increment the count in the `Counter` contract.
+### Step 3: Subscribing to Transaction Status
 
-#### Step 5: Update the Return Statement
-
-Update the `return` statement to include authentication buttons and display the user's address when they're logged in:
+Use the kit’s `useFlowTransaction` hook to monitor and display the transaction status in real time.
 
 ```jsx
-return (
-  <div>
-    <h1>FCL App Quickstart</h1>
-    <div>Count: {count}</div>
-    {user.loggedIn ? (
-      <div>
-        <p>Address: {user.addr}</p>
-        <button onClick={logOut}>Log Out</button>
-        <div>
-          <button onClick={incrementCount}>Increment Count</button>
-        </div>
-      </div>
-    ) : (
-      <button onClick={logIn}>Log In</button>
-    )}
-  </div>
-);
+// A snippet demonstrating subscribing to transaction status updates
+import { useFlowTransaction } from "@onflow/kit";
+
+const { transactionStatus, error: txStatusError } = useFlowTransaction(txId);
+
+// You can then use transactionStatus (for example, its statusString) to show updates.
 ```
 
-#### Full `page.js` Code
+The hook automatically subscribes to the status updates of the transaction identified by `txId`.
 
-Your `src/app/page.js` should now look like this:
+### Step 4: Integrating Authentication and Building the Complete UI
+
+Finally, integrate the query, mutation, and transaction status hooks with authentication using `useCurrentFlowUser`. Combine all parts to build the complete page.
 
 ```jsx
 // src/app/page.js
@@ -396,92 +251,78 @@ Your `src/app/page.js` should now look like this:
 "use client";
 
 import { useState, useEffect } from "react";
-import * as fcl from "@onflow/fcl";
-
-// FCL Configuration
-fcl.config({
-  "flow.network": "local",
-  "accessNode.api": "http://localhost:8888",
-  "discovery.wallet": "http://localhost:8701/fcl/authn", // Local Dev Wallet
-});
+import {
+  useFlowQuery,
+  useFlowMutate,
+  useFlowTransaction,
+  useCurrentFlowUser,
+} from "@onflow/kit";
 
 export default function Home() {
-  const [count, setCount] = useState(0);
-  const [user, setUser] = useState({ loggedIn: false });
+  // Authentication: manage user login/logout with kit's useCurrentFlowUser hook.
+  const { user, authenticate, unauthenticate } = useCurrentFlowUser();
 
-  const queryCount = async () => {
-    try {
-      const res = await fcl.query({
-        cadence: `
-          import Counter from 0xf8d6e0586b0a20c7
-          import NumberFormatter from 0xf8d6e0586b0a20c7
-          
-          access(all)
-          fun main(): String {
-              // Retrieve the count from the Counter contract
-              let count: Int = Counter.getCount()
-          
-              // Format the count using NumberFormatter
-              let formattedCount = NumberFormatter.formatWithCommas(number: count)
-          
-              // Return the formatted count
-              return formattedCount
-          }
-        `,
-      });
-      setCount(res);
-    } catch (error) {
-      console.error("Error querying count:", error);
-    }
-  };
+  // Step 1: Query the current count from the Counter contract.
+  const {
+    data: count,
+    isLoading: queryLoading,
+    error: queryError,
+    refetch,
+  } = useFlowQuery({
+    cadence: `
+      import Counter from 0xf8d6e0586b0a20c7
+      import NumberFormatter from 0xf8d6e0586b0a20c7
 
+      access(all)
+      fun main(): String {
+          let count: Int = Counter.getCount()
+          let formattedCount = NumberFormatter.formatWithCommas(number: count)
+          return formattedCount
+      }
+    `,
+  });
+
+  // State variable to store the transaction ID.
+  const [txId, setTxId] = useState(null);
+
+  // Step 3: Subscribe to transaction status using the stored txId.
+  const { transactionStatus, error: txStatusError } = useFlowTransaction(txId);
+
+  // Automatically refetch the count when the transaction status indicates it is executed (status === 3).
   useEffect(() => {
-    fcl.currentUser.subscribe(setUser);
-    queryCount();
-  }, []);
+    if (txId && transactionStatus?.status === 3) {
+      refetch();
+    }
+  }, [transactionStatus?.status, txId, refetch]);
 
-  const logIn = () => {
-    fcl.authenticate();
-  };
+  // Step 2: Prepare the mutation for incrementing the counter.
+  const { mutate: increment, isPending: txPending, error: txError } = useFlowMutate();
 
-  const logOut = () => {
-    fcl.unauthenticate();
-  };
-
-  const incrementCount = async () => {
+  const handleIncrement = async () => {
     try {
-      const transactionId = await fcl.mutate({
+      // Send a transaction to increment the counter.
+      const transactionId = await increment({
         cadence: `
           import Counter from 0xf8d6e0586b0a20c7
 
           transaction {
-
-            prepare(acct: &Account) {
-                // Authorizes the transaction
+            prepare(acct: AuthAccount) {
+              // Authorization is handled via the current user.
             }
-        
             execute {
-                // Increment the counter
-                Counter.increment()
-        
-                // Retrieve the new count and log it
-                let newCount = Counter.getCount()
-                log("New count after incrementing: ".concat(newCount.toString()))
+              Counter.increment()
+              let newCount = Counter.getCount()
+              log("New count after incrementing: ".concat(newCount.toString()))
             }
-        }
+          }
         `,
-        proposer: fcl.currentUser,
-        payer: fcl.currentUser,
-        authorizations: [fcl.currentUser.authorization],
+        proposer: user,
+        payer: user,
+        authorizations: [user.authorization],
         limit: 50,
       });
-
       console.log("Transaction Id", transactionId);
-
-      await fcl.tx(transactionId).onceExecuted();
-      console.log("Transaction Executed");
-
-      queryCount();
+      setTxId(transactionId);
     } catch (error) {
       console.error("Transaction Failed", error);
     }
@@ -489,57 +330,79 @@ export default function Home() {
 
   return (
     <div>
-      <h1>FCL App Quickstart</h1>
-      <div>Count: {count}</div>
+      <h1>@onflow/kit App Quickstart</h1>
+
+      {/* Display the queried count */}
+      {queryLoading ? (
+        <p>Loading count...</p>
+      ) : queryError ? (
+        <p>Error fetching count: {queryError.message}</p>
+      ) : (
+        <div>
+          <h2>Count: {count}</h2>
+          <button onClick={refetch}>Refetch Count</button>
+        </div>
+      )}
+
+      {/* Authentication controls and transaction actions */}
       {user.loggedIn ? (
         <div>
           <p>Address: {user.addr}</p>
-          <button onClick={logOut}>Log Out</button>
-          <div>
-            <button onClick={incrementCount}>Increment Count</button>
-          </div>
+          <button onClick={unauthenticate}>Log Out</button>
+          <button onClick={handleIncrement} disabled={txPending}>
+            {txPending ? "Processing..." : "Increment Count"}
+          </button>
+          {txError && <p>Error sending transaction: {txError.message}</p>}
+
+          {/* Display transaction status updates */}
+          {txId && (
+            <div>
+              <h3>Transaction Status</h3>
+              {transactionStatus ? (
+                <p>Status: {transactionStatus.statusString}</p>
+              ) : (
+                <p>Waiting for status update...</p>
+              )}
+              {txStatusError && <p>Error: {txStatusError.message}</p>}
+            </div>
+          )}
         </div>
       ) : (
-        <button onClick={logIn}>Log In</button>
+        <button onClick={authenticate}>Log In</button>
       )}
     </div>
   );
 }
 ```
 
-Visit `http://localhost:3000` in your browser.
+In this complete page:
 
-- **Log In**:
-  - Click the "Log In" button.
-  - The Discovery UI will appear, showing the available wallets. Select the "Dev Wallet" option.
-  - Select the account to log in with.
-  - If prompted, create a new account or use an existing one.
+- **Step 1** queries the counter value.
+- **Step 2** sends a transaction to increment the counter and stores the transaction ID.
+- **Step 3** subscribes to transaction status updates using the stored transaction ID and uses a `useEffect` hook to automatically refetch the updated count when the transaction is sealed (status code 4).
+- **Step 4** integrates authentication via `useCurrentFlowUser` and combines all the pieces into a single user interface.
 
-- **Increment Count**:
-  - After logging in, you'll see your account address displayed.
-  - Click the "Increment Count" button.
-  - Your wallet will prompt you to approve the transaction.
-  - Approve the transaction to send it to the Flow emulator.
+## Running the App
 
-- **View Updated Count**:
-  - Once the transaction is sealed, the app will automatically fetch and display the updated count.
-  - You should see the count incremented on the page, formatted using the `NumberFormatter` contract.
+Start your development server:
 
-## Conclusion
+```bash
+npm run dev
+```
 
-By following these steps, you've successfully created a simple frontend application using Next.js that interacts with the `Counter` smart contract on the Flow blockchain emulator. You've learned how to:
+Then visit [http://localhost:3000](http://localhost:3000) in your browser. You should see:
 
-- Add the FCL configuration before the rest of your code within the `page.js` file.
-- Configure FCL to work with the local Flow emulator and Dev Wallet.
-- Start the Dev Wallet using `flow dev-wallet` to enable local authentication.
-- Read data from the local blockchain emulator, utilizing multiple contracts (`Counter` and `NumberFormatter`).
-- Authenticate users using the local Dev Wallet.
-- Send transactions to mutate the state of a smart contract on the local emulator.
+- The current counter value displayed (formatted with commas using `NumberFormatter`).
+- A **Log In** button that launches the kit Discovery UI with your local Dev Wallet.
+- Once logged in, your account address appears with options to **Log Out** and **Increment Count**.
+- When you click **Increment Count**, the transaction is sent; its status updates are displayed in real time below the action buttons, and once the transaction is sealed, the updated count is automatically fetched.
 
-## Additional Resources
+## Wrapping Up
 
-[Flow Client Library]: https://github.com/onflow/fcl-js
-[Cadence]: https://developers.flow.com/cadence
-[Next.js]: https://nextjs.org/docs/getting-started
-[Flow Emulator]: https://developers.flow.com/tools/emulator
-[Flow Dev Wallet]: https://github.com/onflow/fcl-dev-wallet
+By following these steps, you’ve built a simple Next.js dApp that interacts with a Flow smart contract using **@onflow/kit**. In this guide you learned how to:
+
+- Wrap your application in a `FlowProvider` to configure blockchain connectivity.
+- Use kit hooks such as `useFlowQuery`, `useFlowMutate`, `useFlowTransaction`, and `useCurrentFlowUser` to manage authentication, query on-chain data, submit transactions, and monitor their status.
+- Integrate with the local Flow emulator and Dev Wallet for a fully functional development setup.
+
+For additional details and advanced usage, refer to the [@onflow/kit documentation](../../tools/kit/index.md) and other Flow developer resources.
