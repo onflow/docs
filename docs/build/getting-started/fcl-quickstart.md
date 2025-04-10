@@ -148,6 +148,8 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
 
 This configuration initializes the kit with your local emulator settings and maps contract addresses based on your `flow.json` file.
 
+For more information on Discovery configurations, refer to the [Wallet Discovery Guide](../../tools/clients/fcl-js/discovery.md).
+
 ## Creating the Home Page
 
 We’ll now break the home page creation into four clear steps:
