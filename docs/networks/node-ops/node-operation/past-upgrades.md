@@ -55,7 +55,7 @@ A JSON version of the information below can be found in [onflow/flow/sporks.json
 | **Docker Image Tag**: v0.38.2                                                        |
 | **Release Notes**: [v0.38.2](https://github.com/onflow/flow-go/releases/tag/v0.38.2) |
 
-## Height Coordinated Upgrade 5
+## Height Coordinated Upgrade 4
 
 | HCU Info                                                                               |
 |:---------------------------------------------------------------------------------------|
