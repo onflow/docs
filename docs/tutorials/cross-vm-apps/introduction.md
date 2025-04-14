@@ -30,6 +30,8 @@ For EVM developers, this means that you can use the familiar [wagmi], [viem], an
 
 In this tutorial, you'll learn how to create [Click to Mint], a simple game that allows players to mint an ERC-20 token by clicking a button. With the power of Flow, they can also click a button, and **complete 10 separate transactions with just one approval!**
 
+![Click to Mint](click-to-mint.png)
+
 :::warning
 
 The FCL functionality described in this tutorial is in alpha. Some steps may change. We'll keep the tutorial updated, but please [create an issue] or let us know on [Discord] if something isn't working for you.
@@ -806,6 +808,7 @@ Now that you have completed the tutorial, you should be able to:
 [Cadence]: https://cadence-lang.org/docs
 [Next.js]: https://nextjs.org/docs/app/getting-started/installation
 [npm]: https://www.npmjs.com/
+[Click to Mint]: https://clicktomint.vercel.app/
 [create an issue]: https://github.com/onflow/docs/issues/new/choose
 [Cadence]: https://cadence-lang.org
 [Solidity]: https://soliditylang.org/
