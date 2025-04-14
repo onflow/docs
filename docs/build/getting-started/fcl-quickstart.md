@@ -54,7 +54,6 @@ npx create-next-app@latest kit-app-quickstart
 
 During setup, choose the following options:
 
-- **TypeScript**: **No**
 - **Use src directory**: **Yes**
 - **Use App Router**: **Yes**
 
