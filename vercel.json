@@ -1327,6 +1327,11 @@
       "source": "/tools/cursor",
       "destination": "tutorials/ai-plus-flow/cursor",
       "permanent": true
+    },
+    {
+      "source": "/networks/node-ops/node-operation/past-sporks",
+      "destination": "/networks/node-ops/node-operation/past-upgrades",
+      "permanent": true
     }
   ]
 }
