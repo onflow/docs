@@ -40,7 +40,7 @@ Bridges are mechanisms that connect different blockchain networks, enabling secu
 [DeBridge][9] is a decentralized cross-chain network supporting hundreds of tokens over 75 blockchains. DeBridge runs on its generic messaging protocol and operates cross-chain validator infrastructure to achieve a high level cross-chain interoperability for quick, low-cost bridging. DeBridge's architecture emphasizes security and fault tolerance with robust handling of forks or blockchain outages to mitigate bridging issues.
 
 ## Relay
-[Relay][10] is an intent-based bridge enabling high-speed bridging and connecting over 30 blockchains. Unlike consensus validator based decentralized bridges, Relay's permissioned relayer model stores outbound tokens on origin chain and issues tokens on the destination chain allowing for low-cost, fast bridging of assets.
+[Relay][10] is an intent-based bridge enabling high-speed bridging and connecting over 30 blockchains. Unlike consensus validator based decentralized bridges, Relay's permissioned relayer model stores outbound tokens on the origin chain and issues tokens on the destination chain allowing for low-cost, fast bridging of assets.
 
 </div>
 
