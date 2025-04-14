@@ -57,7 +57,7 @@ During setup, choose the following options:
 - **Use src directory**: **Yes**
 - **Use App Router**: **Yes**
 
-This command creates a new Next.js project named `kit-app-quickstart` inside your current directory.
+This command creates a new Next.js project named `kit-app-quickstart` inside your current directory. We’re generating the frontend in a subdirectory so we can next move it into our existing project structure from the previous steps.
 
 ### Step 2: Move the Next.js App Up a Directory
 
