@@ -1,12 +1,70 @@
 ---
-title: Past Spork Info
-description: Information about all Flow Mainnet and Testnet sporks.
+title: Past Network Upgrades
+description: Information about Flow Mainnet and Testnet network upgrades.
 sidebar_position: 14
 ---
 
 A JSON version of the information below can be found in [onflow/flow/sporks.json](https://github.com/onflow/flow/blob/master/sporks.json)
 
-## Mainnet Sporks
+## Mainnet Upgrades
+
+> Currently only includes HCUs from 2025.
+
+## Height Coordinated Upgrade 7
+
+| HCU Info                                                                              |
+|:--------------------------------------------------------------------------------------|
+| **Date**: April 10, 2025                                                              |
+| **Block Height**: 109384800                                                           |
+| **Git Commit**: 86c40b1ff20b3b7f17c4017bde083d26303c508d                              |
+| **Branch/Tag**: v0.40.0                                                               |
+| **Docker Image Tag**: v0.40.0                                                         |
+| **Release Notes**: [v0.40.0](https://github.com/onflow/flow-go/releases/tag/v0.40.0)  |
+
+## Rolling Upgrade 1
+
+| RU Info                                                                              |
+|:-------------------------------------------------------------------------------------|
+| **Date**: April 3, 2025                                                              |
+| **Block Height**: 108630638                                                          |
+| **Block View **: 20504725                                                            |
+| **Git Commit**: ad1076f0a36bb2d20cc36295d3573989edc15c6c                             |
+| **Branch/Tag**: v0.39.0                                                              |
+| **Docker Image Tag**: v0.39.0                                                        |
+| **Release Notes**: [v0.39.0](https://github.com/onflow/flow-go/releases/tag/v0.39.0) |
+
+## Height Coordinated Upgrade 6
+
+| HCU Info                                                                             |
+|:-------------------------------------------------------------------------------------|
+| **Date**: Feb 18, 2025                                                               |
+| **Block Height**: 103983000                                                          |
+| **Git Commit**: 4e7e56b3a92e5772279f1304d88dd445c0ea5016                             |
+| **Branch/Tag**: v0.38.3                                                              |
+| **Docker Image Tag**: v0.38.3                                                        |
+| **Release Notes**: [v0.38.3](https://github.com/onflow/flow-go/releases/tag/v0.38.3) |
+
+## Height Coordinated Upgrade 5
+
+| HCU Info                                                                             |
+|:-------------------------------------------------------------------------------------|
+| **Date**: Feb 18, 2025                                                               |
+| **Block Height**: 103957477                                                          |
+| **Git Commit**: bcb8a2264fcde9dcd4c997f6b28d8184af19160b                             |
+| **Branch/Tag**: v0.38.2                                                              |
+| **Docker Image Tag**: v0.38.2                                                        |
+| **Release Notes**: [v0.38.2](https://github.com/onflow/flow-go/releases/tag/v0.38.2) |
+
+## Height Coordinated Upgrade 5
+
+| HCU Info                                                                               |
+|:---------------------------------------------------------------------------------------|
+| **Date**: Jan 27, 2025                                                                 |
+| **Block Height**: 101584244                                                            |
+| **Git Commit**: 5f6b25bd02257e3239341c4be0134b007f3deb49                               |
+| **Branch/Tag**: v0.37.26                                                               |
+| **Docker Image Tag**: v0.37.26                                                         |
+| **Release Notes**: [v0.37.26](https://github.com/onflow/flow-go/releases/tag/v0.37.26) |
 
 ## Mainnet 26
 
@@ -473,7 +531,64 @@ While FCL v0.0.67 is not strictly necessary to use Mainnet 6, we strongly recomm
 
 ---
 
-## Testnet Sporks
+## Testnet Upgrades
+
+> Currently only includes HCUs from 2025.
+
+## Height Coordinated Upgrade 9
+
+| HCU Info                                                                             |
+|:-------------------------------------------------------------------------------------|
+| **Date**: April 9, 2025                                                              |
+| **Block Height**: 252457666                                                          |
+| **Git Commit**: 86c40b1ff20b3b7f17c4017bde083d26303c508d                             |
+| **Branch/Tag**: v0.40.0                                                              |
+| **Docker Image Tag**: v0.40.0                                                        |
+| **Release Notes**: [v0.40.0](https://github.com/onflow/flow-go/releases/tag/v0.40.0) |
+
+## Height Coordinated Upgrade 8
+
+| HCU Info                                                                             |
+|:-------------------------------------------------------------------------------------|
+| **Date**: Feb 18, 2025                                                               |
+| **Block Height**: 243615144                                                          |
+| **Git Commit**: 4e7e56b3a92e5772279f1304d88dd445c0ea5016                             |
+| **Branch/Tag**: v0.38.3                                                              |
+| **Docker Image Tag**: v0.38.3                                                        |
+| **Release Notes**: [v0.38.3](https://github.com/onflow/flow-go/releases/tag/v0.38.3) |
+
+## Height Coordinated Upgrade 7
+
+| HCU Info                                                                             |
+|:-------------------------------------------------------------------------------------|
+| **Date**: Feb 14, 2025                                                               |
+| **Block Height**: 242883902                                                          |
+| **Git Commit**: bcb8a2264fcde9dcd4c997f6b28d8184af19160b                             |
+| **Branch/Tag**: v0.38.2                                                              |
+| **Docker Image Tag**: v0.38.2                                                        |
+| **Release Notes**: [v0.38.2](https://github.com/onflow/flow-go/releases/tag/v0.38.2) |
+
+## Height Coordinated Upgrade 6
+
+| HCU Info                                                 |
+|:---------------------------------------------------------|
+| **Date**: Feb 11, 2025                                   |
+| **Block Height**: 242365900                              |
+| **Git Commit**: bcb8a2264fcde9dcd4c997f6b28d8184af19160b |
+| **Branch/Tag**: v0.38.1                                  |
+| **Docker Image Tag**: v0.38.1                            |
+| **Release Notes**: N/A                                   |
+
+## Height Coordinated Upgrade 5
+
+| HCU Info                                                                               |
+|:---------------------------------------------------------------------------------------|
+| **Date**: Jan 24, 2025                                                                 |
+| **Block Height**: 239255500                                                            |
+| **Git Commit**: 5f6b25bd02257e3239341c4be0134b007f3deb49                               |
+| **Branch/Tag**: v0.37.26                                                               |
+| **Docker Image Tag**: v0.37.26                                                         |
+| **Release Notes**: [v0.37.26](https://github.com/onflow/flow-go/releases/tag/v0.37.26) |
 
 ## Devnet 52
 
