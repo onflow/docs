@@ -35,6 +35,13 @@ Bridges are mechanisms that connect different blockchain networks, enabling secu
 
 [Axelar][7] is a decentralized cross-chain network connecting over 55 blockchains, facilitating asset transfers and smart contract programmability. It features a proof-of-stake consensus for security and supports cross-chain applications through General Message Passing (GMP). Integrations with platforms like [Squid][8] enable easy token swaps across networks like Ethereum and Polygon.
 
+## DeBridge
+
+[DeBridge][9] is a decentralized cross-chain network supporting hundreds of tokens over 75 blockchains. DeBridge implements generic messaging protocol and operates cross-chain validator infrastructure to achieve a high level cross-chain interoperability for quick, low-cost bridging. DeBridge's architecture emphasizes security and fault tolerance with robust handling of forks or blockchain outages to mitigate bridging issues.
+
+## Relay
+[Relay][10] is an intent-based bridge enabling high-speed bridging and connecting over 30 blockchains. Unlike consensus validator based decentralized bridges, Relay's permissioned relayer model stores outbound tokens on origin chain and issues tokens on the destination chain allowing for low-cost, fast bridging of assets.
+
 </div>
 
 [1]: https://stargate.finance/bridge
@@ -45,3 +52,5 @@ Bridges are mechanisms that connect different blockchain networks, enabling secu
 [6]: https://celer.network/
 [7]: https://www.axelar.network/
 [8]: https://www.squidrouter.com/
+[9]: https://app.debridge.finance/
+[10]: https://relay.link/bridge
