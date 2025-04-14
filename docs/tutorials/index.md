@@ -87,7 +87,7 @@ Explore Flow's unique capabilities through fun benchmark applications that showc
 [Use Flow Knowledge Base in Cursor]: ai-plus-flow/cursor/index.md
 [Use Flow Knowledge Base in ChatGPT]: ai-plus-flow/chatgpt/index.md
 [Flow Data Sources]: ai-plus-flow/flow-data-sources.md
-[Build AI Agents with AgentKit]: ai-plus-flow/agentkit/index.md
+[Build AI Agents with AgentKit]: ai-plus-flow/agentkit-flow-guide.md
 [Register a Token]: token-launch/register-token.md
 [Introduction to Cross-VM Applications]: cross-vm-apps/introduction.md
 [Interacting with COAs]: cross-vm-apps/interacting-with-coa.md

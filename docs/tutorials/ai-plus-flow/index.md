@@ -61,7 +61,7 @@ After completing these tutorials, you'll be equipped to leverage AI tools effect
 [Use Flow Knowledge Base in Cursor]: ./cursor/index.md
 [Use Flow Knowledge Base in ChatGPT]: ./chatgpt/index.md
 [Flow Data Sources]: ./flow-data-sources.md
-[Build AI Agents with AgentKit]: ./agentkit/index.md
+[Build AI Agents with AgentKit]: ./agentkit-flow-guide.md
 [cross-vm-apps]: ../cross-vm-apps/introduction.md
 [native-vrf]: ../native-vrf/index.md
 [token-launch]: ../token-launch/index.md
