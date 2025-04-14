@@ -6,6 +6,7 @@ keywords:
   - AI
   - ChatGPT
   - Cursor
+  - AgentKit
   - Flow documentation
   - Cadence documentation
   - Flow development
@@ -29,12 +30,14 @@ In this tutorial series, you'll discover how to:
 - Generate Cadence and Solidity code with AI assistance
 - Debug and troubleshoot Flow applications with AI support
 - Leverage AI for testing and optimization
+- Build AI agents that interact with Flow using AgentKit
 
 ## Tutorials
 
 - [Use Flow Knowledge Base in Cursor] - Learn how to set up Cursor with Flow knowledge bases to get intelligent assistance while developing Flow applications.
 - [Use Flow Knowledge Base in ChatGPT] - Create a custom GPT that understands Flow and Cadence to provide accurate answers to your development questions.
 - [Flow Data Sources] - Learn about this comprehensive resource and how to integrate it with various AI platforms.
+- [Build AI Agents with AgentKit] - Learn how to create AI agents that can interact with Flow using AgentKit.
 
 ## Best Practices
 
@@ -45,6 +48,7 @@ When using AI tools with Flow development:
 - Combine AI assistance with your own understanding of Flow architecture
 - Keep your AI tools updated with the latest Flow documentation
 - Test AI-generated code thoroughly before deploying to production
+- Consider the security implications of AI agents interacting with your contracts
 
 ## Next Steps
 
@@ -57,6 +61,7 @@ After completing these tutorials, you'll be equipped to leverage AI tools effect
 [Use Flow Knowledge Base in Cursor]: ./cursor/index.md
 [Use Flow Knowledge Base in ChatGPT]: ./chatgpt/index.md
 [Flow Data Sources]: ./flow-data-sources.md
+[Build AI Agents with AgentKit]: ./agentkit-flow-guide.md
 [cross-vm-apps]: ../cross-vm-apps/introduction.md
 [native-vrf]: ../native-vrf/index.md
 [token-launch]: ../token-launch/index.md
