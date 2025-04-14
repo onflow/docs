@@ -81,7 +81,7 @@ to automatically restart following a crash.
 
 :::info
 
-The actual Docker image tag can be found [here](./past-sporks.md) for appropriate spork.
+The actual Docker image tag can be found [here](./past-upgrades) for appropriate spork.
 
 :::
 
