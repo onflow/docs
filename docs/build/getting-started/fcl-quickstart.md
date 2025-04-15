@@ -92,10 +92,6 @@ npm install @onflow/kit
 
 This library wraps FCL internally and exposes a set of hooks for authentication, querying, sending transactions, and tracking transaction status.
 
-Got it! Here's the updated version with the correct order and note about losing previously deployed contracts if the emulator is restarted:
-
----
-
 ## Configuring the Local Flow Emulator and Dev Wallet
 
 You should already have the Flow emulator running from the local development step. If it's not running, you can start it again — but note that restarting the emulator will clear all blockchain state, including any contracts deployed in [Step 2: Local Development].
