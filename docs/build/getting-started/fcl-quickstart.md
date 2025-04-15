@@ -54,6 +54,7 @@ npx create-next-app@latest kit-app-quickstart
 
 During setup, choose the following options:
 
+- **Use TypeScript**: **Yes**
 - **Use src directory**: **Yes**
 - **Use App Router**: **Yes**
 
@@ -91,11 +92,15 @@ npm install @onflow/kit
 
 This library wraps FCL internally and exposes a set of hooks for authentication, querying, sending transactions, and tracking transaction status.
 
+Got it! Here's the updated version with the correct order and note about losing previously deployed contracts if the emulator is restarted:
+
+---
+
 ## Configuring the Local Flow Emulator and Dev Wallet
 
-Before moving on, ensure that both the Flow emulator and the Dev Wallet are running.
+You should already have the Flow emulator running from the local development step. If it's not running, you can start it again — but note that restarting the emulator will clear all blockchain state, including any contracts deployed in Step 1.
 
-### Step 1: Start the Flow Emulator
+### Start the Flow Emulator (if not already running)
 
 Open a new terminal window in your project directory and run:
 
@@ -103,9 +108,9 @@ Open a new terminal window in your project directory and run:
 flow emulator start
 ```
 
-This will start the Flow emulator on `http://localhost:8888`.
+This will start the Flow emulator on `http://localhost:8888`. Make sure to keep it running in a separate terminal.
 
-### Step 2: Start the Dev Wallet
+### Start the Dev Wallet
 
 In another terminal window, run:
 
@@ -121,9 +126,10 @@ This will start the Dev Wallet on `http://localhost:8701`, which you’ll use fo
 
 ```tsx
 // src/app/layout.tsx
+"use client";
 
 import { FlowProvider } from "@onflow/kit";
-import flowJSON from "../flow.json";
+import flowJSON from "../../flow.json";
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
@@ -149,9 +155,9 @@ This configuration initializes the kit with your local emulator settings and map
 
 For more information on Discovery configurations, refer to the [Wallet Discovery Guide].
 
-## Creating the Home Page
+## Interacting With the Chain
 
-We’ll now break the home page creation into four clear steps:
+Now that we've set our provider, lets start interacting with the chain.
 
 ### Step 1: Querying the Chain
 
