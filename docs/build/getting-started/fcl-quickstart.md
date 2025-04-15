@@ -147,7 +147,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
 
 This configuration initializes the kit with your local emulator settings and maps contract addresses based on your `flow.json` file.
 
-For more information on Discovery configurations, refer to the [Wallet Discovery Guide](../../tools/clients/fcl-js/discovery.md).
+For more information on Discovery configurations, refer to the [Wallet Discovery Guide].
 
 ## Creating the Home Page
 
@@ -404,7 +404,9 @@ By following these steps, you’ve built a simple Next.js dApp that interacts wi
 - Use kit hooks such as `useFlowQuery`, `useFlowMutate`, `useFlowTransaction`, and `useCurrentFlowUser` to manage authentication, query on-chain data, submit transactions, and monitor their status.
 - Integrate with the local Flow emulator and Dev Wallet for a fully functional development setup.
 
-For additional details and advanced usage, refer to the [@onflow/kit documentation](../../tools/kit/index.md) and other Flow developer resources.
+For additional details and advanced usage, refer to the [@onflow/kit documentation] and other Flow developer resources.
 
 [Step 1: Contract Interaction]: contract-interaction.md
 [Step 2: Local Development]: ./flow-cli.md
+[Wallet Discovery Guide]: ../../tools/clients/fcl-js/discovery.md
+[@onflow/kit documentation]: ../../tools/kit/index.md
