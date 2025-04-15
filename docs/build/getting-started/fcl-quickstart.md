@@ -201,8 +201,8 @@ import { useFlowMutate } from "@onflow/kit";
 
 const { mutate: increment, isPending, error: txError } = useFlowMutate();
 
-const incrementCount = async (user, refetch, setTxId) => {
-  const transactionId = await increment({
+const incrementCount = (user, refetch, setTxId) => {
+  const transactionId = increment({
     cadence: `
       import Counter from 0xf8d6e0586b0a20c7
 
@@ -219,10 +219,6 @@ const incrementCount = async (user, refetch, setTxId) => {
         }
       }
     `,
-    proposer: user,
-    payer: user,
-    authorizations: [user.authorization],
-    limit: 50,
   });
   setTxId(transactionId);
   refetch();
@@ -303,10 +299,10 @@ export default function Home() {
   // Step 2: Prepare the mutation for incrementing the counter.
   const { mutate: increment, isPending: txPending, error: txError } = useFlowMutate();
 
-  const handleIncrement = async () => {
+  const handleIncrement = () => {
     try {
       // Send a transaction to increment the counter.
-      const transactionId = await increment({
+      const transactionId = increment({
         cadence: `
           import Counter from 0xf8d6e0586b0a20c7
 
