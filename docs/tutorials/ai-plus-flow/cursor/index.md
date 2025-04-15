@@ -19,6 +19,17 @@ keywords:
 
 [Cursor] is an AI code editor that makes it easy to write code while building Flow apps. Let's walk through how to setup Cursor for the best possible experience when writing applications on Flow.
 
+<div style={{ position: 'relative', paddingBottom: '56.25%', height: 0, overflow: 'hidden', maxWidth: '100%' }}>
+  <iframe 
+    style={{ position: 'absolute', top: 0, left: 0, width: '100%', height: '100%' }}
+    src="https://www.youtube.com/embed/Lu6KrNvGthI" 
+    title="YouTube video player" 
+    frameborder="0" 
+    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+    allowfullscreen
+  ></iframe>
+</div>
+
 ## Installation
 
 Adding Flow docs lets you interact with our docs directly and get the most accurate answers to your questions.
