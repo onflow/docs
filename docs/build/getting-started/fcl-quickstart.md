@@ -406,5 +406,5 @@ By following these steps, you’ve built a simple Next.js dApp that interacts wi
 
 For additional details and advanced usage, refer to the [@onflow/kit documentation](../../tools/kit/index.md) and other Flow developer resources.
 
-[Step 1: Contract Interaction] contract-interaction.md
-[Step 2: Local Development] ./flow-cli.md
+[Step 1: Contract Interaction]: contract-interaction.md
+[Step 2: Local Development]: ./flow-cli.md
