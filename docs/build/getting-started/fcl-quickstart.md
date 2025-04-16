@@ -26,7 +26,7 @@ Building on the `Counter` contract you deployed in [Step 1: Contract Interaction
 
 ## Objectives
 
-After finishing this guide you will be able to:
+After finishing this guide, you will be able to:
 
 - Wrap your Next.js app with a Flow provider using **@onflow/kit**.
 - Read data from a Cadence smart contract (`Counter`) using kit’s query hook.
