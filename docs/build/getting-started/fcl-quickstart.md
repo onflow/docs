@@ -220,7 +220,9 @@ const handleIncrement = () => {
 };
 ```
 
-// TODO: Explain
+#### Explanation
+
+This sends a Cadence transaction to the blockchain using the `mutate` function. The transaction imports the `Counter` contract and calls its `increment` function. Authorization is handled automatically by the connected wallet during the `prepare` phase. Once submitted, the returned `txId` can be used to track the transaction's status in real time.
 
 ### Subscribing to Transaction Status
 
@@ -232,7 +234,7 @@ const { transactionStatus, error: txStatusError } = useFlowTransaction(
 );
 
 useEffect(() => {
-  if (txId && transactionStatus?.status === 4) {
+  if (txId && transactionStatus?.status === 3) {
     refetch();
   }
 }, [transactionStatus?.status, txId, refetch]);
@@ -240,9 +242,24 @@ useEffect(() => {
 // You can then use transactionStatus (for example, its statusString) to show updates.
 ```
 
-The hook automatically subscribes to the status updates of the transaction identified by `txId`.
+#### Explanation:
+- `useFlowTransaction(txId)` subscribes to real-time updates about a transaction's lifecycle using the transaction ID.
+- `transactionStatus.status` is a numeric code representing the state of the transaction:
+  - `0`: **Unknown** – The transaction status is not yet known.
+  - `1`: **Pending** – The transaction has been submitted and is waiting to be included in a block.
+  - `2`: **Finalized** – The transaction has been included in a block, but not yet executed.
+  - `3`: **Executed** – The transaction code has run successfully, but the result has not yet been sealed.
+  - `4`: **Sealed** – The transaction is fully complete, included in a block, and now immutable on-chain.
+- Once the status reaches `4` (Sealed), we typically call `refetch()` to ensure we have the most up-to-date on-chain data.
+- The `statusString` property gives a human-readable version of the current status you can display in the UI.
 
-// TODO: Explain sealed
+#### Why `Executed` Matters for UI:
+You might choose to update your UI optimistically when the status reaches `3` (**Executed**), even before the transaction is sealed. This is often fast and gives users a more responsive experience — especially in local development or testing environments where final sealing may take a bit longer.
+
+However, note that:
+- `Executed` means the transaction *ran* successfully, but it’s not yet finalized in the blockchain state.
+- If you need guaranteed on-chain confirmation (e.g., for financial transactions), wait for `Sealed`.
+- For lightweight UI updates (like incrementing a number), `Executed` can often be “good enough” to improve perceived performance.
 
 ### Integrating Authentication and Building the Complete UI
 
