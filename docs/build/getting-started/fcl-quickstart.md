@@ -186,9 +186,12 @@ const { data, isLoading, error, refetch } = useFlowQuery({
 
 This script fetches the counter value, formats it via the `NumberFormatter`, and returns the formatted string.
 
-#### Notes:
+:::info
+
 - **Import Syntax:** The imports (`import "Counter"` and `import "NumberFormatter"`) don’t include addresses because those are automatically resolved using the `flow.json` file configured in your `FlowProvider`. This keeps your Cadence scripts portable and environment-independent.
 - **`enabled` Flag:** This controls whether the query should run automatically. Set it to `true` to run on mount, or pass a condition (e.g. `!!user?.addr`) to delay execution until the user is available. This is useful for queries that depend on authentication or other asynchronous data.
+
+:::
 
 ### Sending a Transaction
 
