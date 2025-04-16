@@ -28,11 +28,11 @@ Building on the `Counter` contract you deployed in [Step 1: Contract Interaction
 
 After finishing this guide, you will be able to:
 
-- Wrap your Next.js app with a Flow provider using **@onflow/kit**.
+- Wrap your Next.js app with a Flow provider using [**@onflow/kit**].
 - Read data from a Cadence smart contract (`Counter`) using kit’s query hook.
 - Send a transaction to update the smart contract’s state using kit’s mutation hook.
 - Monitor a transaction’s status in real time using kit’s transaction hook.
-- Authenticate with the Flow blockchain using kit’s built-in hooks and the local Dev Wallet.
+- Authenticate with the Flow blockchain using kit’s built-in hooks and the local [Dev Wallet].
 
 ## Prerequisites
 
@@ -42,7 +42,7 @@ After finishing this guide, you will be able to:
 
 ## Setting Up the Next.js App
 
-Follow these steps to set up your Next.js project and integrate **@onflow/kit**.
+Follow these steps to set up your Next.js project and integrate [**@onflow/kit**].
 
 ### Step 1: Create a New Next.js App
 
@@ -118,11 +118,11 @@ In another terminal window, run:
 flow dev-wallet
 ```
 
-This will start the Dev Wallet on `http://localhost:8701`, which you’ll use for authentication during development.
+This will start the [Dev Wallet] on `http://localhost:8701`, which you’ll use for authentication during development.
 
 ## Wrapping Your App with FlowProvider
 
-**@onflow/kit** provides a `FlowProvider` component that sets up the Flow Client Library configuration. In Next.js using the App Router, add or update your `src/app/layout.tsx` as follows:
+[**@onflow/kit**] provides a `FlowProvider` component that sets up the Flow Client Library configuration. In Next.js using the App Router, add or update your `src/app/layout.tsx` as follows:
 
 ```tsx
 // src/app/layout.tsx
@@ -406,13 +406,13 @@ npm run dev
 Then visit [http://localhost:3000](http://localhost:3000) in your browser. You should see:
 
 - The current counter value displayed (formatted with commas using `NumberFormatter`).
-- A **Log In** button that launches the kit Discovery UI with your local Dev Wallet.
+- A **Log In** button that launches the kit Discovery UI with your local [Dev Wallet].
 - Once logged in, your account address appears with options to **Log Out** and **Increment Count**.
 - When you click **Increment Count**, the transaction is sent; its status updates are displayed in real time below the action buttons, and once the transaction is sealed, the updated count is automatically fetched.
 
 ## Wrapping Up
 
-By following these steps, you’ve built a simple Next.js dApp that interacts with a Flow smart contract using **@onflow/kit**. In this guide you learned how to:
+By following these steps, you’ve built a simple Next.js dApp that interacts with a Flow smart contract using [**@onflow/kit**]. In this guide you learned how to:
 
 - Wrap your application in a `FlowProvider` to configure blockchain connectivity.
 - Use kit hooks such as `useFlowQuery`, `useFlowMutate`, `useFlowTransaction`, and `useCurrentFlowUser` to manage authentication, query on-chain data, submit transactions, and monitor their status.
@@ -427,3 +427,4 @@ For additional details and advanced usage, refer to the [@onflow/kit documentati
 [`useFlowMutate`]: ../../tools/kit#useflowmutate
 [Dev Wallet]: ../../tools/flow-dev-wallet
 [@onflow/kit documentation]: ../../tools/kit/index.md
+[**@onflow/kit**]: ../../tools/kit/index.md
