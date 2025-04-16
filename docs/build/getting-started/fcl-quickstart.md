@@ -195,7 +195,7 @@ This script fetches the counter value, formats it via the `NumberFormatter`, and
 
 ### Sending a Transaction
 
-Next, use the kit’s `useFlowMutate` hook to send a transaction that increments the counter.
+Next, use the kit’s [`useFlowMutate`] hook to send a transaction that increments the counter.
 
 ```jsx
 import { useFlowMutate } from "@onflow/kit";
