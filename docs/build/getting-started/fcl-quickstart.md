@@ -22,7 +22,7 @@ keywords:
 
 # Simple Frontend with `@onflow/kit`
 
-Building on the `Counter` contract you deployed in [Step 1: Contract Interaction] and [Step 2: Local Development], this tutorial shows you how to create a simple Next.js frontend that interacts with the `Counter` smart contract deployed on your local Flow emulator. Instead of using FCL directly, you'll leverage [**@onflow/kit**](../../tools/kit) to simplify authentication, querying, transactions, and to display real-time transaction status updates using convenient React hooks.
+Building on the `Counter` contract you deployed in [Step 1: Contract Interaction] and [Step 2: Local Development], this tutorial shows you how to create a simple Next.js frontend that interacts with the `Counter` smart contract deployed on your local Flow emulator. Instead of using FCL directly, you'll leverage [**@onflow/kit**] to simplify authentication, querying, transactions, and to display real-time transaction status updates using convenient React hooks.
 
 ## Objectives
 
@@ -37,7 +37,7 @@ After finishing this guide, you will be able to:
 ## Prerequisites
 
 - Completion of [Step 1: Contract Interaction] and [Step 2: Local Development].
-- Flow CLI installed.
+- [Flow CLI] installed.
 - Node.js and npm installed.
 
 ## Setting Up the Next.js App
@@ -428,3 +428,4 @@ For additional details and advanced usage, refer to the [@onflow/kit documentati
 [Dev Wallet]: ../../tools/flow-dev-wallet
 [@onflow/kit documentation]: ../../tools/kit/index.md
 [**@onflow/kit**]: ../../tools/kit/index.md
+[Flow CLI]: ../../tools/flow-cli/install.md
