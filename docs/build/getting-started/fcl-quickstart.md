@@ -250,16 +250,15 @@ useEffect(() => {
   - `2`: **Finalized** – The transaction has been included in a block, but not yet executed.
   - `3`: **Executed** – The transaction code has run successfully, but the result has not yet been sealed.
   - `4`: **Sealed** – The transaction is fully complete, included in a block, and now immutable on-chain.
-- Once the status reaches `4` (Sealed), we typically call `refetch()` to ensure we have the most up-to-date on-chain data.
+- We recommend calling `refetch()` when the status reaches **3 (Executed)** to update your UI more quickly after the transaction runs, rather than waiting for sealing.
 - The `statusString` property gives a human-readable version of the current status you can display in the UI.
 
-#### Why `Executed` Matters for UI:
-You might choose to update your UI optimistically when the status reaches `3` (**Executed**), even before the transaction is sealed. This is often fast and gives users a more responsive experience — especially in local development or testing environments where final sealing may take a bit longer.
+#### Why `Executed` is Recommended for UI Updates:
+Waiting for `Sealed` provides full on-chain confirmation but can introduce a delay — especially in local or test environments. Since most transactions (like incrementing a counter) don't require strong finality guarantees, you can typically refetch data once the transaction reaches `Executed` for a faster, more responsive user experience.
 
-However, note that:
-- `Executed` means the transaction *ran* successfully, but it’s not yet finalized in the blockchain state.
-- If you need guaranteed on-chain confirmation (e.g., for financial transactions), wait for `Sealed`.
-- For lightweight UI updates (like incrementing a number), `Executed` can often be “good enough” to improve perceived performance.
+However:
+- If you're dealing with critical state changes (e.g., token transfers or contract deployments), prefer waiting for `Sealed`.
+- For non-critical UI updates, `Executed` is usually safe and significantly improves perceived performance.
 
 ### Integrating Authentication and Building the Complete UI
 
