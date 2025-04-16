@@ -155,31 +155,26 @@ For more information on Discovery configurations, refer to the [Wallet Discovery
 
 Now that we've set our provider, lets start interacting with the chain.
 
-### Step 1: Querying the Chain
+### Querying the Chain
 
 First, use the kit’s `useFlowQuery` hook to read the current counter value from the blockchain.
 
 ```jsx
-// A snippet demonstrating querying the chain
 import { useFlowQuery } from "@onflow/kit";
 
-const { data: count, isLoading, error, refetch } = useFlowQuery({
+const { data, isLoading, error, refetch } = useFlowQuery({
   cadence: `
-    import Counter from 0xf8d6e0586b0a20c7
-    import NumberFormatter from 0xf8d6e0586b0a20c7
+    import "Counter"
+    import "NumberFormatter"
 
     access(all)
     fun main(): String {
-        // Retrieve the count from the Counter contract
         let count: Int = Counter.getCount()
-
-        // Format the count using NumberFormatter
         let formattedCount = NumberFormatter.formatWithCommas(number: count)
-
-        // Return the formatted count
         return formattedCount
     }
   `,
+  enabled: true,
 });
 
 // Use the count data in your component as needed.
@@ -187,58 +182,69 @@ const { data: count, isLoading, error, refetch } = useFlowQuery({
 
 This script fetches the counter value, formats it via the `NumberFormatter`, and returns the formatted string.
 
-### Step 2: Sending a Transaction
+#### Notes:
+- **Import Syntax:** The imports (`import "Counter"` and `import "NumberFormatter"`) don’t include addresses because those are automatically resolved using the `flow.json` file configured in your `FlowProvider`. This keeps your Cadence scripts portable and environment-independent.
+- **`enabled` Flag:** This controls whether the query should run automatically. Set it to `true` to run on mount, or pass a condition (e.g. `!!user?.addr`) to delay execution until the user is available. This is useful for queries that depend on authentication or other asynchronous data.
+
+### Sending a Transaction
 
 Next, use the kit’s `useFlowMutate` hook to send a transaction that increments the counter.
 
 ```jsx
-// A snippet demonstrating sending a transaction
 import { useFlowMutate } from "@onflow/kit";
 
-const { mutate: increment, isPending, error: txError } = useFlowMutate();
+const {
+  mutate: increment,
+  isPending: txPending,
+  data: txId,
+  error: txError,
+} = useFlowMutate();
 
-const incrementCount = (user, refetch, setTxId) => {
-  const transactionId = increment({
+const handleIncrement = () => {
+  increment({
     cadence: `
-      import Counter from 0xf8d6e0586b0a20c7
+      import "Counter"
 
       transaction {
-        prepare(acct: AuthAccount) {
-          // Authorization handled via the current user
+        prepare(acct: &Account) {
+          // Authorization handled via wallet
         }
         execute {
-          // Increment the counter
           Counter.increment()
-          // Retrieve and log the new count
           let newCount = Counter.getCount()
           log("New count after incrementing: ".concat(newCount.toString()))
         }
       }
     `,
   });
-  setTxId(transactionId);
-  refetch();
 };
 ```
 
-In this snippet, after calling the mutation, the returned transaction ID is stored for subscription.
+// TODO: Explain
 
-### Step 3: Subscribing to Transaction Status
+### Subscribing to Transaction Status
 
 Use the kit’s `useFlowTransaction` hook to monitor and display the transaction status in real time.
 
 ```jsx
-// A snippet demonstrating subscribing to transaction status updates
-import { useFlowTransaction } from "@onflow/kit";
+const { transactionStatus, error: txStatusError } = useFlowTransaction(
+  txId || "",
+);
 
-const { transactionStatus, error: txStatusError } = useFlowTransaction(txId);
+useEffect(() => {
+  if (txId && transactionStatus?.status === 4) {
+    refetch();
+  }
+}, [transactionStatus?.status, txId, refetch]);
 
 // You can then use transactionStatus (for example, its statusString) to show updates.
 ```
 
 The hook automatically subscribes to the status updates of the transaction identified by `txId`.
 
-### Step 4: Integrating Authentication and Building the Complete UI
+// TODO: Explain sealed
+
+### Integrating Authentication and Building the Complete UI
 
 Finally, integrate the query, mutation, and transaction status hooks with authentication using `useCurrentFlowUser`. Combine all parts to build the complete page.
 
@@ -256,19 +262,13 @@ import {
 } from "@onflow/kit";
 
 export default function Home() {
-  // Authentication: manage user login/logout with kit's useCurrentFlowUser hook.
   const { user, authenticate, unauthenticate } = useCurrentFlowUser();
+  const [lastTxId, setLastTxId] = useState<string>();
 
-  // Step 1: Query the current count from the Counter contract.
-  const {
-    data: count,
-    isLoading: queryLoading,
-    error: queryError,
-    refetch,
-  } = useFlowQuery({
+  const { data, isLoading, error, refetch } = useFlowQuery({
     cadence: `
-      import Counter from 0xf8d6e0586b0a20c7
-      import NumberFormatter from 0xf8d6e0586b0a20c7
+      import "Counter"
+      import "NumberFormatter"
 
       access(all)
       fun main(): String {
@@ -277,71 +277,59 @@ export default function Home() {
           return formattedCount
       }
     `,
+    enabled: true,
   });
 
-  // State variable to store the transaction ID.
-  const [txId, setTxId] = useState(null);
+  const {
+    mutate: increment,
+    isPending: txPending,
+    data: txId,
+    error: txError,
+  } = useFlowMutate();
 
-  // Step 3: Subscribe to transaction status using the stored txId.
-  const { transactionStatus, error: txStatusError } = useFlowTransaction(txId);
+  const { transactionStatus, error: txStatusError } = useFlowTransaction(
+    txId || "",
+  );
 
-  // Automatically refetch the count when the transaction status indicates it is executed (status === 3).
   useEffect(() => {
-    if (txId && transactionStatus?.status === 3) {
+    if (txId && transactionStatus?.status === 4) {
       refetch();
     }
   }, [transactionStatus?.status, txId, refetch]);
 
-  // Step 2: Prepare the mutation for incrementing the counter.
-  const { mutate: increment, isPending: txPending, error: txError } = useFlowMutate();
-
   const handleIncrement = () => {
-    try {
-      // Send a transaction to increment the counter.
-      const transactionId = increment({
-        cadence: `
-          import Counter from 0xf8d6e0586b0a20c7
+    increment({
+      cadence: `
+        import "Counter"
 
-          transaction {
-            prepare(acct: AuthAccount) {
-              // Authorization is handled via the current user.
-            }
-            execute {
-              Counter.increment()
-              let newCount = Counter.getCount()
-              log("New count after incrementing: ".concat(newCount.toString()))
-            }
+        transaction {
+          prepare(acct: &Account) {
+            // Authorization handled via wallet
           }
-        `,
-        proposer: user,
-        payer: user,
-        authorizations: [user.authorization],
-        limit: 50,
-      });
-      console.log("Transaction Id", transactionId);
-      setTxId(transactionId);
-    } catch (error) {
-      console.error("Transaction Failed", error);
-    }
+          execute {
+            Counter.increment()
+            let newCount = Counter.getCount()
+            log("New count after incrementing: ".concat(newCount.toString()))
+          }
+        }
+      `,
+    });
   };
 
   return (
     <div>
       <h1>@onflow/kit App Quickstart</h1>
 
-      {/* Display the queried count */}
-      {queryLoading ? (
+      {isLoading ? (
         <p>Loading count...</p>
-      ) : queryError ? (
-        <p>Error fetching count: {queryError.message}</p>
+      ) : error ? (
+        <p>Error fetching count: {error.message}</p>
       ) : (
         <div>
-          <h2>Count: {count}</h2>
-          <button onClick={refetch}>Refetch Count</button>
+          <h2>Count: {data as string}</h2>
         </div>
       )}
 
-      {/* Authentication controls and transaction actions */}
       {user.loggedIn ? (
         <div>
           <p>Address: {user.addr}</p>
@@ -349,10 +337,15 @@ export default function Home() {
           <button onClick={handleIncrement} disabled={txPending}>
             {txPending ? "Processing..." : "Increment Count"}
           </button>
+
+          <div>
+            Latest Transaction Status:{" "}
+            {transactionStatus?.statusString || "No transaction yet"}
+          </div>
+
           {txError && <p>Error sending transaction: {txError.message}</p>}
 
-          {/* Display transaction status updates */}
-          {txId && (
+          {lastTxId && (
             <div>
               <h3>Transaction Status</h3>
               {transactionStatus ? (
