@@ -1327,6 +1327,11 @@
       "source": "/tools/cursor",
       "destination": "tutorials/ai-plus-flow/cursor",
       "permanent": true
+    },
+    {
+      "source": "/tutorials/AI%20Guides/agentkit-flow-guide",
+      "destination": "/tutorials/ai-plus-flow/agentkit-flow-guide",
+      "permanent": true
     }
   ]
 }
