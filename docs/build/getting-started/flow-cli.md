@@ -29,11 +29,11 @@ The [Flow Command Line Interface] (CLI) is a set of tools that developers can us
 
 After completing this guide, you'll be able to:
 
-* Create a Flow project using the [Flow Command Line Interface]
-* Run tests for a smart contract
-* Add an already-deployed contract to your project with the [Dependency Manager]
-* Deploy a smart contract locally to the Flow Emulator
-* Write and execute scripts to interact with a deployed smart contract
+- Create a Flow project using the [Flow Command Line Interface]
+- Run tests for a smart contract
+- Add an already-deployed contract to your project with the [Dependency Manager]
+- Deploy a smart contract locally to the Flow Emulator
+- Write and execute scripts to interact with a deployed smart contract
 
 ## Installation
 
@@ -92,29 +92,33 @@ For a more detailed guide on running Cadence tests, check out the [tests documen
 
 The emulator is a local version of the Flow blockchain that you can use to test your contracts and scripts. It's a great way to develop and test your contracts locally - before you try them on the `testnet` or `mainnet`.
 
-Before we deploy, let's open a new terminal window and run the emulator.  From the root of your project directory, where your `emulator-account.pkey` and `flow.json` files are located, run:
+Before we deploy, let's open a new terminal window and run the emulator. From the root of your project directory, where your `emulator-account.pkey` and `flow.json` files are located, run:
 
 ```zsh
 flow emulator start
 ```
 
-Your emulator should now be running.
+Your emulator will now be running.
 
 ### Deploying a Contract
 
 #### Creating an Account
 
-When you created a project you'll see that a `Counter` contract was added to your `flow.json` configuration file, but it's not set up for deployment yet. We could deploy it to the `emulator-account`, but for this example lets also create a new account on the emulator to deploy it to.
+When you created a project you'll see that a `Counter` contract was added to your `flow.json` configuration file, but it's not set up for deployment yet. We could deploy it to the automatically created `emulator-account`, but for this example lets also create a new account on the emulator to deploy it to.
 
-With your emulator running, run the following command:
+:::info
+
+**Reminder**: On Flow Cadence, contracts are deployed to the storage of the account that deploys them.
+
+:::
+
+Leave your emulator running, and open a second terminal. Run the following command:
 
 ```zsh
 flow accounts create
 ```
 
 When prompted, give your account the name `test-account` and select `Emulator` as the network. You'll now see this account in your `flow.json`.
-
-> Note: We won't use this much in this example, but it's good to know how to create an account.
 
 #### Configuring the Deployment
 
@@ -124,7 +128,7 @@ To deploy the `Counter` contract to the emulator, you'll need to add it to your 
 flow config add deployment
 ```
 
-You'll be prompted to select the contract you want to deploy. Select `Counter` and then select the account you want to deploy it to. For this example, select `emulator-account`.
+First, pick `emulator` as the network for deployment. Select your `test-account` as the account to deploy to. Next, pick `Counter` as the contract to deploy. Finally, choose `no` when asked if you wish to deploy more contracts.
 
 #### Deploying the Contract
 
@@ -134,7 +138,23 @@ To deploy the `Counter` contract to the emulator, run:
 flow project deploy
 ```
 
+You'll see something similar to:
+
+```zsh
+Deploying 1 contracts for accounts: test-account
+
+Counter -> 0x179b6b1cb6755e31 (a98c155fe7afc8eb2af5551748759b08a80a0ae85d1b09f92f1afc293c61ca98)
+
+🎉 All contracts deployed successfully
+```
+
 That's it! You've just deployed your first contract to the Flow Emulator.
+
+::warning
+
+You can't deploy the same contract to multiple accounts at the same time with the `deploy` command. If you've experimented with the above, you may need to manually edit the `"deployments"` property in `flow.json` to remove extra deployments.
+
+:::
 
 ## Running Scripts
 
@@ -146,7 +166,7 @@ If we wanted to generate a new script, we could run:
 flow generate script ScriptName
 ```
 
-But the default project already has a `GetCounter` script for reading the count of the `Counter` contract.  Open `cadence/scripts/GetCounter.cdc` in your editor to see the script.
+But the default project already has a `GetCounter` script for reading the count of the `Counter` contract. Open `cadence/scripts/GetCounter.cdc` in your editor to see the script.
 
 To run the script, you can run:
 
@@ -155,6 +175,10 @@ flow scripts execute cadence/scripts/GetCounter.cdc
 ```
 
 You should see zero as the result since the `Counter` contract initializes the count to zero and we haven't run any transactions to increment it.
+
+```zsh
+Result: 0
+```
 
 :::tip
 
@@ -174,6 +198,48 @@ flow transactions send cadence/transactions/IncrementCounter.cdc
 
 By default, this uses the `emulator-account` to sign the transaction and the emulator network. If you want to use your `test-account` account, you can specify the `--signer` flag with the account name.
 
+```zsh
+Transaction ID: 9cc7ac4d3d5239016965aba89b9692d3401a48a090d1ad1a8d9ef9cfca685e6e
+
+Block ID        b8537860b0fc9ca8b3195b121e762502f9a220874b605d6a810998e8b62321a3
+Block Height    3
+Status          ✅ SEALED
+ID              9cc7ac4d3d5239016965aba89b9692d3401a48a090d1ad1a8d9ef9cfca685e6e
+Payer           f8d6e0586b0a20c7
+Authorizers     [f8d6e0586b0a20c7]
+
+Proposal Key:
+    Address     f8d6e0586b0a20c7
+    Index       0
+    Sequence    1
+
+No Payload Signatures
+
+Envelope Signature 0: f8d6e0586b0a20c7
+Signatures (minimized, use --include signatures)
+
+Events:
+    Index       0
+    Type        A.179b6b1cb6755e31.Counter.CounterIncremented
+    Tx ID       9cc7ac4d3d5239016965aba89b9692d3401a48a090d1ad1a8d9ef9cfca685e6e
+    Values
+                - newCount (Int): 1
+
+
+
+Code (hidden, use --include code)
+
+Payload (hidden, use --include payload)
+
+Fee Events (hidden, use --include fee-events)
+```
+
+Run the script to check the counter again. You'll see that it has incremented:
+
+```zsh
+Result: 0
+```
+
 :::tip
 
 If you want to learn more about writing transactions, please read the docs for [basic transactions].
@@ -184,7 +250,7 @@ If you want to learn more about writing transactions, please read the docs for [
 
 In addition to creating your own contracts, you can also install contracts that have already been deployed to the network by using the [Dependency Manager]. This is useful for interacting with contracts that are part of the Flow ecosystem or that have been deployed by other developers.
 
-For example, let's say we want to format the result of our `GetCounter` script so that we display the number with commas if it's greater than 999. To do that we can install a contract called [`NumberFormatter`](https://contractbrowser.com/A.8a4dce54554b225d.NumberFormatter) from `testnet` that has a function to format numbers.
+For example, let's say we want to format the result of our `GetCounter` script so that we display the number with commas if it's greater than 999. To do that we can install a contract called [`NumberFormatter`] from `testnet` that has a function to format numbers.
 
 To grab it, run:
 
@@ -196,12 +262,21 @@ When prompted for the account to deploy the contract to, select any account and 
 
 This will add the `NumberFormatter` contract and any of its dependencies to an `imports` directory in your project. It will also add any dependencies to your `flow.json` file. In addition, the prompt will configure the deployment of the contract to the account you selected. Make sure to select the `emulator-account` account to deploy the contract to the emulator.
 
-You should then see the `NumberFormatter` in your deployments for emulator in your `flow.json`. If you messed this up, you can always run `flow config add deployment` to add the contract to your deployments.
+You'll then see the `NumberFormatter` in your deployments for emulator in your `flow.json`.
 
 Now we can deploy the `NumberFormatter` contract to the emulator by running:
 
 ```zsh
 flow project deploy
+```
+
+```zsh
+Deploying 2 contracts for accounts: test-account
+
+Counter -> 0x179b6b1cb6755e31 [skipping, no changes found]
+NumberFormatter -> 0x179b6b1cb6755e31 (f8ce6dfa1771c7bad216e72e7f7aac7f1987c4261d425d27e689c701b9ec69cd)
+
+🎉 All contracts deployed successfully
 ```
 
 Now that we have the `NumberFormatter` contract deployed, we can update our `GetCounter` script to format the result. Open `cadence/scripts/GetCounter.cdc` and update it to use the following code:
@@ -229,19 +304,99 @@ The things to note here are:
 - We call the `formatWithCommas` function from the `NumberFormatter` contract to format the count.
 - We return the formatted count as a `String`.
 
-Now, to run the updated script, you can run:
+:::warning
+
+Do **not** simply add a new file. Use `flow generate transaction IncrementBy1000.cdc`
+
+:::
+
+Add a new transaction called `IncrementBy1000.cdc`. Fill it with a variant of `IncrementCounter.cdc` that instead loops through the `increment` function 1000 times.
+
+```cadence
+import "Counter"
+
+transaction {
+
+    prepare(acct: &Account) {
+        // Authorizes the transaction
+    }
+
+    execute {
+        // Increment the counter 1000 times
+        var i = 0
+        while i < 1000 {
+            Counter.increment()
+            i = i + 1
+        }
+
+        // Retrieve the new count and log it
+        let newCount = Counter.getCount()
+        log("New count after incrementing: ".concat(newCount.toString()))
+    }
+}
+```
+
+Try out your new transaction with:
+
+```zsh
+
+```
+
+Finally, to test the updated script, you can run:
 
 ```zsh
 flow scripts execute cadence/scripts/GetCounter.cdc
 ```
 
-You should now see the result. You won't see the commas unless the number is greater than 999.
+You should now see the result with commas.
+
+:::info
+
+If you're a Solidity developer, did you catch what we just did here? We updated the features and functionality available in the smart contract **without updating the contract itself!**
+
+Even more importantly, we did this **without needing access or permission.** You can use the power of composability in Flow Cadence to add new features to contracts you don't own.
+
+:::
 
 ## More
 
 If you want to continue on generating your own contracts, you can also use the the `generate` subcommand to create a new contract file. See more in the [`generate` documentation].
 
 After that, it's easy to add your contract to your project configuration using the Flow CLI [`config` commands].
+
+## Conclusion
+
+In this tutorial, we've accomplished all of our learning objectives:
+
+1. ✅ Created a Flow project using the Flow CLI
+
+   - Initialized a new project with `flow init`
+   - Set up the project structure with contracts, scripts, and tests
+   - Configured the project using `flow.json`
+
+2. ✅ Ran tests for a smart contract
+
+   - Executed the example test for the `Counter` contract
+   - Learned about the testing capabilities of the Flow CLI
+
+3. ✅ Added an already-deployed contract to your project
+
+   - Used the Dependency Manager to install the `NumberFormatter` contract
+   - Configured the contract deployment in `flow.json`
+   - Deployed the contract to the emulator
+
+4. ✅ Deployed a smart contract locally to the Flow Emulator
+
+   - Started the Flow Emulator
+   - Created a test account
+   - Deployed the `Counter` contract to the emulator
+   - Deployed the `NumberFormatter` contract
+
+5. ✅ Wrote and executed scripts to interact with deployed contracts
+   - Created and executed the `GetCounter` script
+   - Modified the script to use the `NumberFormatter` contract
+   - Created and executed the `IncrementBy1000` transaction
+   - Demonstrated the power of Cadence's composability
 
 <!-- Relative-style links.  Does not render on the page -->
 
@@ -256,3 +411,4 @@ After that, it's easy to add your contract to your project configuration using t
 [basic transactions]: ../basics/transactions.md
 [`generate` documentation]: ../../tools/flow-cli/boilerplate.md
 [`config` commands]: ../../tools/flow-cli/flow.json/manage-configuration.md
+[`NumberFormatter`]: https://contractbrowser.com/A.8a4dce54554b225d.NumberFormatter
