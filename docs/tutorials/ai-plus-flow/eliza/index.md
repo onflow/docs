@@ -125,7 +125,7 @@ Edit `.env` and add your values. Do NOT add this file to version control.
 ### Choose Your Model
 
 Eliza supports multiple AI models and you set which model to use inside the character JSON file.
-But remember, once you chosed a model, you need to set up the relevent configuration.
+But remember, once you chosed a model, you need to set up the relevant configuration.
 
 Check full list of supported LLMs in origin Eliza: [Models.ts]
 
