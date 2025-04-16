@@ -424,6 +424,6 @@ For additional details and advanced usage, refer to the [@onflow/kit documentati
 [Step 2: Local Development]: ./flow-cli.md
 [Wallet Discovery Guide]: ../../tools/clients/fcl-js/discovery.md
 [`useFlowQuery`]: ../../tools/kit.md#useflowquery
-[`useFlowMutate`]: ../../tools/kit.md##useflowmutate
+[`useFlowMutate`]: ../../tools/kit.md#useflowmutate
 [Dev Wallet]: ../../tools/flow-dev-wallet.md
 [@onflow/kit documentation]: ../../tools/kit/index.md
