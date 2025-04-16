@@ -161,7 +161,7 @@ Now that we've set our provider, lets start interacting with the chain.
 
 ### Querying the Chain
 
-First, use the kit’s `useFlowQuery` hook to read the current counter value from the blockchain.
+First, use the kit’s [`useFlowQuery`] hook to read the current counter value from the blockchain.
 
 ```jsx
 import { useFlowQuery } from "@onflow/kit";
