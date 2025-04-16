@@ -18,6 +18,7 @@ keywords:
   - Flow development
   - NFT contract
   - blockchain NFTs
+  - bridge
 ---
 
 :::info
@@ -618,6 +619,15 @@ about your projects on their apps and websites and are critical
 for every project to include if we want to have a vibrant and interoperable
 ecosystem.
 
+## Flow VM Bridge NFTs
+
+Flow provides an EVM environment where projects can deploy
+their solidity smart contracts as an easier on-ramp to building on Flow.
+The [Cross-VM Bridge](https://www.github.com/onflow/flow-evm-bridge) enables the movement of
+fungible and non-fungible tokens between Flow-Cadence & Flow-EVM.
+
+Learn about how you can [bridge your NFTs to Flow-EVM](../../evm/cadence/vm-bridge.md#cross-vm-bridge) and how you can build your NFT project [to be compatible with the Flow VM bridge](../../evm/cadence/vm-bridge.md#prep-your-assets-for-bridging).
+
 ## Deploying the Contract
 
 With your contract ready, it's time to deploy it.
@@ -926,4 +936,5 @@ Congrats, you did it! You're now ready to launch the next fun NFT project on Flo
 - Check out the [`Burner` contract](../core-contracts/14-burner.md), which is the standard
 that all projects should use for handling the destruction of any resource.
 - For a deeper dive into `MetadataViews`, consult the [introduction guide](../advanced-concepts/metadata-views.md) or [the FLIP that introduced this feature](https://github.com/onflow/flips/blob/main/application/20210916-nft-metadata.md).
+- Learn about how you can [bridge your NFTs to Flow-EVM](../../evm/cadence/vm-bridge.md#cross-vm-bridge) and how you can build your NFT project [to be compatible with the Flow VM bridge](../../evm/cadence/vm-bridge.md#prep-your-assets-for-bridging).
 - Use a [no code tool for creating NFT projects on Flow](https://www.touchstone.city/)
