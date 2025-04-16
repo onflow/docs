@@ -233,7 +233,7 @@ This sends a Cadence transaction to the blockchain using the `mutate` function. 
 
 ### Subscribing to Transaction Status
 
-Use the kit’s `useFlowTransaction` hook to monitor and display the transaction status in real time.
+Use the kit’s [`useFlowTransaction`] hook to monitor and display the transaction status in real time.
 
 ```jsx
 const { transactionStatus, error: txStatusError } = useFlowTransaction(
