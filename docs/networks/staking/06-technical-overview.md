@@ -115,7 +115,7 @@ This also returns a special node operator object that is stored in the node oper
 This object is used for staking, unstaking, and withdrawing rewards.
 
 Consensus and Collection nodes also need to create a separate machine account
-for use in the DKG and QC proccesses, respectively. This machine account creation
+for use in the DKG and QC processes, respectively. This machine account creation
 is handled automatically by the staking collection smart contract.
 More information is in the [machine account documentation](./11-machine-account.md#creation).
 
