@@ -89,7 +89,7 @@ This phase is expected to take less than 10% of the time of an epoch, near the e
 
 **Cluster Quorum Certificate Generation (QC):** A process by which nodes using the HotStuff consensus algorithm
 submit signed messages in order to generate a certificate for bootstrapping HotStuff. Each collector cluster runs
-a mini-version of HotStuff, and since clusters are randomized each epoch, a new quorum ceritificate is required
+a mini-version of HotStuff, and since clusters are randomized each epoch, a new quorum certificate is required
 for each cluster each epoch.
 
 **Distributed Key Generation (DKG):** Process for generating a shared public key to initialize the random beacon.
