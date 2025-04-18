@@ -1,13 +1,13 @@
 ---
-title: Build Custom AI Agents on Flow with Agentkit
-description: Learn how to configure and deploy AI agents on the Flow testnet using Agentkit, Langchain, and the EVM-compatible Flow environment.
-sidebar_label: Using Agentkit on Flow
-sidebar_position: 1
+title: Build Custom AI Agents on Flow with AgentKit
+description: Learn how to configure and deploy AI agents on the Flow testnet using AgentKit, Langchain, and the EVM-compatible Flow environment.
+sidebar_label: Using AgentKit on Flow
+sidebar_position: 4
 ---
 
-# Getting Started with Agentkit on Flow
+# Getting Started with AgentKit on Flow
 
-Agentkit is an ecosystem-agnostic modular developer toolkit that lets you rapidly build, deploy, and iterate on AI agents using pre-configured environments and ready-to-use templates.
+AgentKit is an ecosystem-agnostic modular developer toolkit that lets you rapidly build, deploy, and iterate on AI agents using pre-configured environments and ready-to-use templates.
 
 In this guide, you'll set up your own custom agent running on **Flow's EVM-compatible testnet**, powered by **Langchain** and **Anthropic's Claude** LLM.
 
@@ -29,7 +29,7 @@ Follow the interactive setup:
 4. Set the custom Chain ID:
    - `545` for **Flow Testnet**
    - `747` for **Flow Mainnet**
-5. JSON-RPC endpoint:  
+5. JSON-RPC endpoint:
    ```txt
    https://testnet.evm.nodes.onflow.org
    ```
@@ -115,15 +115,15 @@ For this example, we'll use **Anthropic's `claude-3-5-haiku-20241022`**, a light
 Change the default model from OpenAI:
 
 ```ts
-const llm = new ChatOpenAI({ model: "gpt-4o-mini" });
+const llm = new ChatOpenAI({ model: 'gpt-4o-mini' });
 ```
 
 To Anthropic:
 
 ```ts
-import { ChatAnthropic } from "@langchain/anthropic";
+import { ChatAnthropic } from '@langchain/anthropic';
 
-const llm = new ChatAnthropic({ model: "claude-3-5-haiku-20241022" });
+const llm = new ChatAnthropic({ model: 'claude-3-5-haiku-20241022' });
 ```
 
 Install the package:
@@ -141,13 +141,13 @@ npm install @langchain/anthropic
 Change this:
 
 ```ts
-const canUseFaucet = walletProvider.getNetwork().networkId == "base-sepolia";
+const canUseFaucet = walletProvider.getNetwork().networkId == 'base-sepolia';
 ```
 
 To:
 
 ```ts
-const canUseFaucet = walletProvider.getNetwork().networkId == "flow-testnet";
+const canUseFaucet = walletProvider.getNetwork().networkId == 'flow-testnet';
 ```
 
 ### Add Flow Context Message to Agent
@@ -155,7 +155,8 @@ const canUseFaucet = walletProvider.getNetwork().networkId == "flow-testnet";
 This gives your agent context about the Flow testnet:
 
 ```ts
-const flowContextMessage = canUseFaucet ? `
+const flowContextMessage = canUseFaucet
+  ? `
   You are now operating on the Flow blockchain testnet using a Viem wallet. Flow is a fast, decentralized, and
   developer-friendly blockchain designed for NFTs, games, and apps. 
 
@@ -168,7 +169,8 @@ const flowContextMessage = canUseFaucet ? `
   - Chain ID: 545
 
   Your wallet address is \${await walletProvider.getAddress()}.
-` : '';
+`
+  : '';
 ```
 
 Then inject it into the agent message modifier:
@@ -184,7 +186,7 @@ agent = createReactAgent({
     \${flowContextMessage}
 
     Before your first action, check the wallet details. If you see a 5XX error, ask the user to try again later.
-    If a task is unsupported, let the user know and point them to CDP SDK + Agentkit at:
+    If a task is unsupported, let the user know and point them to CDP SDK + AgentKit at:
     https://docs.cdp.coinbase.com or https://developers.flow.com.
 
     Be concise, helpful, and avoid repeating tool descriptions unless asked.
@@ -196,7 +198,7 @@ agent = createReactAgent({
 
 ## You're Done!
 
-You now have a working AI agent connected to Flow testnet using Agentkit!
+You now have a working AI agent connected to Flow testnet using AgentKit!
 
 You can send faucet tokens to your wallet and start testing smart contract interactions or on-chain workflows.
 
@@ -206,7 +208,7 @@ You can send faucet tokens to your wallet and start testing smart contract inter
 
 Want to skip the setup?
 
-> [Fork the Flow Agentkit Starter](https://github.com/Aliserag/flow-agentkit-starter)
+> [Fork the Flow AgentKit Starter](https://github.com/Aliserag/flow-agentkit-starter)
 
 This starter includes all necessary config to start building immediately on Flow.
 
@@ -225,6 +227,7 @@ npm install onchain-agent@latest
 ```
 
 This will:
+
 - Download and install the latest version of the `onchain-agent` package
 - Add it to the dependencies section of your `package.json`
 - Update your `node_modules` folder accordingly
@@ -252,15 +255,8 @@ Import and configure AgentKit in your application:
 
 ```ts
 // Import AgentKit components
-import { 
-  createReactAgent, 
-  ChatAnthropic 
-} from 'onchain-agent';
-import { 
-  createWalletClient, 
-  http, 
-  createPublicClient 
-} from 'viem';
+import { createReactAgent, ChatAnthropic } from 'onchain-agent';
+import { createWalletClient, http, createPublicClient } from 'viem';
 
 // Set up your Flow wallet provider
 const walletClient = createWalletClient({
@@ -269,12 +265,12 @@ const walletClient = createWalletClient({
     id: 545, // Flow Testnet
     name: 'Flow Testnet',
   },
-  account: yourPrivateKey
+  account: yourPrivateKey,
 });
 
 // Configure the LLM
-const llm = new ChatAnthropic({ 
-  model: "claude-3-5-haiku-20241022" 
+const llm = new ChatAnthropic({
+  model: 'claude-3-5-haiku-20241022',
 });
 
 // Create your agent
@@ -293,10 +289,7 @@ const agent = createReactAgent({
 To add specialized blockchain tools to your agent:
 
 ```ts
-import { 
-  viem, 
-  ViemToolConfig 
-} from 'onchain-agent';
+import { viem, ViemToolConfig } from 'onchain-agent';
 
 // Configure Viem tools for Flow
 const viemTools = viem.createTools({
@@ -304,7 +297,7 @@ const viemTools = viem.createTools({
     id: 545,
     name: 'Flow Testnet',
   },
-  transport: http('https://testnet.evm.nodes.onflow.org')
+  transport: http('https://testnet.evm.nodes.onflow.org'),
 } as ViemToolConfig);
 
 // Add these tools to your agent
@@ -321,7 +314,7 @@ const agent = createReactAgent({
 
 ## Resources
 
-- [Agentkit Docs](https://docs.cdp.coinbase.com/agentkit)
+- [AgentKit Docs](https://docs.cdp.coinbase.com/agentkit)
 - [Flow EVM Guide](https://developers.flow.com/evm/using)
 - [Langchain LLM Integrations](https://python.langchain.com/docs/integrations/llms/)
 - [Anthropic Model Comparison](https://docs.anthropic.com/en/docs/about-claude/models/all-models#model-comparison-table)

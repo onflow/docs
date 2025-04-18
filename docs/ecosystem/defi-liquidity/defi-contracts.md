@@ -61,11 +61,13 @@ Below is a list of commonly used DeFi contracts on Flow:
 ## Bridges & Cross-Chain Messaging
 
 | Bridge / Protocol                            | Reference Docs           |
-| -------------------------------------------- | ------------------------ |
+|----------------------------------------------|--------------------------|
 | Stargate Bridge ([stargate.finance][8])      | [Mainnet Contracts][9]   |
 | Hyperlane Bridge ([trump.hyperlane.xyz][10]) | [Mainnet Contracts][11]  |
 | Flow Bridge ([bridge.flow.com][12])          | [Superbridge Docs][13]   |
 | Celer cBridge ([cbridge.celer.network][14])  | [Celer cBridge Docs][15] |
+| DeBridge ([app.debridge.finance][34])        | [DeBridge Contracts][35] |
+| Relay ([relay.link][36])                     | [Relay Contracts][37]    |
 | LayerZero                                    | [Mainnet Contracts][16]  |
 | Axelar                                       | [Axelar Docs][17]        |
 
@@ -145,3 +147,7 @@ Mainnet EAS Explorer: [https://flow.easscan.credora.io] (https://flow.easscan.cr
 [31]: https://contractbrowser.com/A.8232ce4a3aff4e94.PublicPriceOracle
 [32]: https://contractbrowser.com/A.2c71de7af78d1adf.BandOracle
 [33]: https://contractbrowser.com/A.6801a6222ebf784a.BandOracle
+[34]: https://app.debridge.finance/
+[35]: https://docs.debridge.finance/dln-the-debridge-liquidity-network-protocol/deployed-contracts
+[36]: https://relay.link/bridge
+[37]: https://docs.relay.link/resources/contract-addresses

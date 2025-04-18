@@ -37,6 +37,7 @@ keywords:
   - AI
   - ChatGPT
   - Cursor
+  - AgentKit
   - Flow documentation
   - Flow AI assistance
 ---
@@ -52,6 +53,7 @@ Learn how to leverage AI tools to enhance your Flow development experience. Thes
 - [Use Flow Knowledge Base in Cursor] - Learn how to set up Cursor with Flow knowledge bases to get intelligent assistance while developing Flow applications
 - [Use Flow Knowledge Base in ChatGPT] - Create a custom GPT that understands Flow and Cadence to provide accurate answers to your development questions
 - [Flow Data Sources] - Learn about this comprehensive resource and how to integrate it with various AI platforms
+- [Build AI Agents with AgentKit] - Learn how to create AI agents that can interact with Flow using AgentKit
 
 ## Token Launch
 
@@ -85,6 +87,7 @@ Explore Flow's unique capabilities through fun benchmark applications that showc
 [Use Flow Knowledge Base in Cursor]: ai-plus-flow/cursor/index.md
 [Use Flow Knowledge Base in ChatGPT]: ai-plus-flow/chatgpt/index.md
 [Flow Data Sources]: ai-plus-flow/flow-data-sources.md
+[Build AI Agents with AgentKit]: ai-plus-flow/agentkit-flow-guide.md
 [Register a Token]: token-launch/register-token.md
 [Introduction to Cross-VM Applications]: cross-vm-apps/introduction.md
 [Interacting with COAs]: cross-vm-apps/interacting-with-coa.md

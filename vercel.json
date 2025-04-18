@@ -1333,5 +1333,9 @@
       "destination": "/networks/node-ops/node-operation/past-upgrades",
       "permanent": true
     }
+      "source": "/tutorials/AI%20Guides/agentkit-flow-guide",
+      "destination": "/tutorials/ai-plus-flow/agentkit-flow-guide",
+      "permanent": true
+    }
   ]
 }
