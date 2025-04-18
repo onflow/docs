@@ -409,7 +409,9 @@ In this complete page:
 - **Step 4** integrates authentication via `useCurrentFlowUser` and combines all the pieces into a single user interface.
 
 :::tip
+
 In this tutorial, we inlined Cadence code for simplicity. For real projects, we recommend storing Cadence in separate `.cdc` files, using the [Cadence VSCode extension], and importing them with the [`flow-cadence-plugin`](https://github.com/chasefleming/flow-cadence-plugin) for Next.js or Webpack projects.
+
 :::
 
 ## Running the App
