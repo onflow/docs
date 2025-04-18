@@ -1,7 +1,7 @@
 ---
-sidebar_position: 2
 title: Flow CLI
 sidebar_label: Flow CLI
+sidebar_position: 3
 ---
 
 The **Flow Command Line Interface (CLI)** is a powerful tool that enables developers to seamlessly interact with the Flow blockchain across various environments, including testnet, mainnet, and local development using the Flow Emulator. Designed for ease of use, the Flow CLI simplifies common blockchain tasks such as managing accounts and contract dependencies, sending transactions, querying chain state, deploying smart contracts, and much more.
@@ -22,7 +22,7 @@ The Flow CLI is essential for developers looking to build, test, and maintain de
 
 ## Installation
 
-Follow [these steps](../flow-cli/install.md) to install the Flow CLI on 
+Follow [these steps](../flow-cli/install.md) to install the Flow CLI on
 macOS, Linux, and Windows.
 
 ## Create Your First Project
