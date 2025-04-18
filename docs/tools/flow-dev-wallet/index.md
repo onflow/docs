@@ -1,6 +1,7 @@
 ---
 title: Flow Dev Wallet
 sidebar_label: Flow Dev Wallet
+sidebar_position: 5
 ---
 
 The Flow Dev Wallet is a mock Flow wallet that simulates the protocols used by [FCL](../clients/fcl-js/index.md) to interact with the Flow blockchain on behalf of simulated user accounts.

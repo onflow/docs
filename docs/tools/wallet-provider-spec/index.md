@@ -1,7 +1,9 @@
 ---
 title: Wallet Provider Spec
 sidebar_title: Draft v4
+sidebar_position: 8
 ---
+
 ## Status
 
 - **Last Updated:** June 20th 2022
@@ -42,17 +44,18 @@ Where possible, you should aim to provide a back-channel support for services, a
 
 Back-channel communications use `method: "HTTP/POST"`, while front-channel communications use `method: "IFRAME/RPC"`, `method: "POP/RPC"`, `method: "TAB/RPC` and `method: "EXT/RPC"`.
 
-| Service Method | Front  |  Back |
-|----------------|--------|-------|
-| HTTP/POST      |   ⛔   |   ✅   |
-| IFRAME/RPC     |   ✅   |   ⛔   |
-| POP/RPC        |   ✅   |   ⛔   |
-| TAB/RPC        |   ✅   |   ⛔   |
-| EXT/RPC        |   ✅   |   ⛔   |
+| Service Method | Front | Back |
+| -------------- | ----- | ---- |
+| HTTP/POST      | ⛔    | ✅   |
+| IFRAME/RPC     | ✅    | ⛔   |
+| POP/RPC        | ✅    | ⛔   |
+| TAB/RPC        | ✅    | ⛔   |
+| EXT/RPC        | ✅    | ⛔   |
 
 It's important to note that regardless of the method of communication, the data that is sent back and forth between the parties involved is the same.
 
 # Protocol schema definitions
+
 In this section we define the schema of objects used in the protocol. While they are JavaScript objects, only features supported by JSON should be used. (Meaning that conversion of an object to and from JSON should not result in any loss.)
 
 For the schema definition language we choose TypeScript, so that the schema closely resembles the actual type definitions one would use when making an FCL implementation.
@@ -60,9 +63,11 @@ For the schema definition language we choose TypeScript, so that the schema clos
 **Note that currently there are no official type definitions available for FCL. If you are using TypeScript, you will have to create your own type definitions (possibly based on the schema definitions presented in this document).**
 
 ## Common definitions
+
 In this section we introduce some common definitions that the individual object definitions will be deriving from.
 
 First, let us define the kinds of FCL objects available:
+
 ```typescript
 type ObjectType =
   | 'PollingResponse'
@@ -72,14 +77,15 @@ type ObjectType =
   | 'AuthnResponse'
   | 'Signable'
   | 'CompositeSignature'
-  | 'OpenID'
+  | 'OpenID';
 ```
 
 The fields common to all FCL objects then can be defined as follows:
+
 ```typescript
 interface ObjectBase<Version = '1.0.0'> {
-  f_vsn: Version
-  f_type: ObjectType
+  f_vsn: Version;
+  f_type: ObjectType;
 }
 ```
 
@@ -88,9 +94,11 @@ The `f_vsn` field is usually `1.0.0` for this specification, but some exceptions
 All FCL objects carry an `f_type` field so that their types can be identified at runtime.
 
 ## FCL objects
+
 In this section we will define the FCL objects with each `ObjectType`.
 
 We also define the union of them to mean any FCL object:
+
 ```typescript
 type FclObject =
   | PollingResponse
@@ -100,23 +108,24 @@ type FclObject =
   | AuthnResponse
   | Signable
   | CompositeSignature
-  | OpenID
+  | OpenID;
 ```
 
 ### `PollingResponse`
 
 ```typescript
 interface PollingResponse extends ObjectBase {
-  f_type: 'PollingResponse'
-  status: 'APPROVED' | 'DECLINED' | 'PENDING' | 'REDIRECT'
-  reason: string | null
-  data?: FclObject
-  updates?: FclObject
-  local?: FclObject
+  f_type: 'PollingResponse';
+  status: 'APPROVED' | 'DECLINED' | 'PENDING' | 'REDIRECT';
+  reason: string | null;
+  data?: FclObject;
+  updates?: FclObject;
+  local?: FclObject;
 }
 ```
 
 Each response back to FCL must be "wrapped" in a `PollingResponse`. The `status` field determines the meaning of the response:
+
 - An `APPROVED` status means that the request has been approved. The `data` field should be present.
 - A `DECLINED` status means that the request has been declined. The `reason` field should contain a human readable reason for the refusal.
 - A `PENDING` status means that the request is being processed. More `PENDING` responses may follow, but eventually a non-pending status should be returned. The `updates` and `local` fields may be present.
@@ -127,6 +136,7 @@ In summary, zero or more `PENDING` responses should be followed by a non-pending
 See also [PollingResponse](https://github.com/onflow/fcl-js/blob/master/packages/fcl-core/src/normalizers/service/polling-response.js).
 
 Here are some examples of valid `PollingResponse` objects:
+
 ```javascript
 // APPROVED
 {
@@ -214,7 +224,7 @@ type ServiceType =
   | 'pre-authz'
   | 'open-id'
   | 'back-channel-rpc'
-  | 'authn-refresh'
+  | 'authn-refresh';
 
 type ServiceMethod =
   | 'HTTP/POST'
@@ -222,22 +232,23 @@ type ServiceMethod =
   | 'POP/RPC'
   | 'TAB/RPC'
   | 'EXT/RPC'
-  | 'DATA'
+  | 'DATA';
 
 interface Service extends ObjectBase {
-  f_type: 'Service'
-  type: ServiceType
-  method: ServiceMethod
-  uid: string
-  endpoint: string
-  id: string
-  identity: Identity
-  provider?: ServiceProvider
-  data?: FclObject
+  f_type: 'Service';
+  type: ServiceType;
+  method: ServiceMethod;
+  uid: string;
+  endpoint: string;
+  id: string;
+  identity: Identity;
+  provider?: ServiceProvider;
+  data?: FclObject;
 }
 ```
 
 The meaning of the fields is as follows.
+
 - `type`: The type of this service.
 - `method`: The service method this service uses. `DATA` means that the purpose of this service is just to provide the information in this `Service` object, and no active communication services are provided.
 - `uid`: A unique identifier for the service. A common scheme for deriving this is to use `'wallet-name#${type}'`, where `${type}` refers to the type of this service.
@@ -249,6 +260,7 @@ The meaning of the fields is as follows.
 - `data`: Additional information used with a service of type `open-id`.
 
 See also:
+
 - [authn](https://github.com/onflow/fcl-js/blob/master/packages/fcl-core/src/normalizers/service/authn.js)
 - [authz](https://github.com/onflow/fcl-js/blob/master/packages/fcl-core/src/normalizers/service/authz.js)
 - [user-signature](https://github.com/onflow/fcl-js/blob/master/packages/fcl-core/src/normalizers/service/user-signature.js)
@@ -257,37 +269,41 @@ See also:
 - [back-channel-rpc](https://github.com/onflow/fcl-js/blob/master/packages/fcl-core/src/normalizers/service/back-channel-rpc.js)
 
 ### `Identity`
+
 This object is used to define the identity of the user.
 
 ```typescript
 interface Identity extends ObjectBase {
-  f_type: 'Identity'
-  address: string
-  keyId?: number
+  f_type: 'Identity';
+  address: string;
+  keyId?: number;
 }
 ```
 
 The meaning of the fields is as follows.
+
 - `address`: The flow account address of the user.
 - `keyId`: The id of the key associated with this account that will be used for signing.
 
 ### `ServiceProvider`
+
 This object is used to communicate information about a wallet.
 
 ```typescript
 interface ServiceProvider extends ObjectBase {
-  f_type: 'ServiceProvider'
-  address: string
-  name?: string
-  description?: string
-  icon?: string
-  website?: string
-  supportUrl?: string
-  supportEmail?: string
+  f_type: 'ServiceProvider';
+  address: string;
+  name?: string;
+  description?: string;
+  icon?: string;
+  website?: string;
+  supportUrl?: string;
+  supportEmail?: string;
 }
 ```
 
 The meaning of the fields is as follows.
+
 - `address`: A flow account address owned by the wallet. It is unspecified what this will be used for.
 - `name`: The name of the wallet.
 - `description`: A short description for the wallet.
@@ -297,17 +313,19 @@ The meaning of the fields is as follows.
 - `supportEmail`: An e-mail address the user can use to get support with the wallet.
 
 ### `AuthnResponse`
+
 This object is used to inform FCL about the services a wallet provides.
 
 ```typescript
 interface AuthnResponse extends ObjectBase {
-  f_type: 'AuthnResponse'
-  addr: string
-  services: Service[]
+  f_type: 'AuthnResponse';
+  addr: string;
+  services: Service[];
 }
 ```
 
 The meaning of the fields is as follows.
+
 - `addr`: The flow account address of the user.
 - `services`: The list of services provided by the wallet.
 
@@ -315,25 +333,25 @@ The meaning of the fields is as follows.
 
 ```typescript
 interface Signable extends ObjectBase<'1.0.1'> {
-  f_type: 'Signable'
-  addr: string
-  keyId: number
+  f_type: 'Signable';
+  addr: string;
+  keyId: number;
   voucher: {
-    cadence: string
-    refBlock: string
-    computeLimit: number
+    cadence: string;
+    refBlock: string;
+    computeLimit: number;
     arguments: {
-      type: string
-      value: unknown
-    }[]
+      type: string;
+      value: unknown;
+    }[];
     proposalKey: {
-      address: string
-      keyId: number
-      sequenceNum: number
-    }
-    payer: string
-    authorizers: string[]
-  }
+      address: string;
+      keyId: number;
+      sequenceNum: number;
+    };
+    payer: string;
+    authorizers: string[];
+  };
 }
 ```
 
@@ -343,31 +361,33 @@ The `WalletUtils.encodeMessageFromSignable` function can be used to calculate th
 
 ```typescript
 interface CompositeSignature extends ObjectBase {
-  f_type: 'CompositeSignature'
-  addr: string
-  keyId: number
-  signature: string
+  f_type: 'CompositeSignature';
+  addr: string;
+  keyId: number;
+  signature: string;
 }
 ```
 
 See also [CompositeSignature](https://github.com/onflow/fcl-js/blob/master/packages/fcl-core/src/normalizers/service/composite-signature.js).
 
 ### `OpenID`
+
 TODO
 
 ## Miscellaneous objects
 
 ### `Message`
+
 ```typescript
 type MessageType =
   | 'FCL:VIEW:READY'
   | 'FCL:VIEW:READY:RESPONSE'
   | 'FCL:VIEW:RESPONSE'
-  | 'FCL:VIEW:CLOSE'
+  | 'FCL:VIEW:CLOSE';
 
 type Message = {
-  type: MessageType
-}
+  type: MessageType;
+};
 ```
 
 A message that indicates the status of the protocol invocation.
@@ -375,15 +395,17 @@ A message that indicates the status of the protocol invocation.
 This type is sometimes used as part of an _intersection type_. For example, the type `Message & PollingResponse` means a `PollingResponse` extended with the `type` field from `Message`.
 
 ### `ExtensionServiceInitiationMessage`
+
 ```typescript
 type ExtensionServiceInitiationMessage = {
-  service: Service
-}
+  service: Service;
+};
 ```
 
 This object is used to invoke a service when the `EXT/RPC` service method is used.
 
 ## See also
+
 - [local-view](https://github.com/onflow/fcl-js/blob/master/packages/fcl-core/src/normalizers/service/local-view.js)
 - [frame](https://github.com/onflow/fcl-js/blob/master/packages/fcl-core/src/normalizers/service/frame.js)
 
@@ -487,19 +509,20 @@ Conversely, when FCL sends a new `ExtensionServiceInitiationMessage`, the previo
 Note that as a consequence of the above restrictions, only single service invocation can be in progress at a time.
 
 Here is a code example for how an extension popup might send its response:
+
 ```javascript
-  chrome.tabs.sendMessage(tabs[0].id, {
-    f_type: "PollingResponse",
-    f_vsn: "1.0.0",
-    status: "APPROVED",
-    reason: null,
-    data: {
-      f_type: "AuthnResponse",
-      f_vsn: "1.0.0",
-      addr: address,
-      services: services,
-    },
-  });
+chrome.tabs.sendMessage(tabs[0].id, {
+  f_type: 'PollingResponse',
+  f_vsn: '1.0.0',
+  status: 'APPROVED',
+  reason: null,
+  data: {
+    f_type: 'AuthnResponse',
+    f_vsn: '1.0.0',
+    addr: address,
+    services: services,
+  },
+});
 ```
 
 ![EXT/RPC Diagram](https://raw.githubusercontent.com/onflow/fcl-js/master/packages/fcl-core/assets/service-method-diagrams/ext-rpc.png)
@@ -507,6 +530,7 @@ Here is a code example for how an extension popup might send its response:
 ## `data` and `params`
 
 `data` and `params` are information that the wallet can provide in the service config that FCL will pass back to the service.
+
 - `params` will be added onto the `endpoint` as query params.
 - `data` will be included in the body of the `HTTP/POST` request or in the `FCL:VIEW:READY:RESPONSE` for a `IFRAME/RPC`, `POP/RPC`, `TAB/RPC` or `EXT/RPC`.
 
@@ -521,12 +545,12 @@ You will need to make and expose a webpage or API hosted at an authentication en
 ```javascript
 // IN APPLICATION
 // configuring fcl to point at a wallet looks like this
-import {config} from "@onflow/fcl"
+import { config } from '@onflow/fcl';
 
 config({
-  "discovery.wallet": "url-or-endpoint-fcl-will-use-for-authentication", // FCL Discovery endpoint, wallet provider's authentication URL or extension endpoint
-  "discovery.wallet.method": "IFRAME/RPC" // Optional. Available methods are "IFRAME/RPC", "POP/RPC", "TAB/RPC", "EXT/RPC" or "HTTP/POST", defaults to "IFRAME/RPC".
-})
+  'discovery.wallet': 'url-or-endpoint-fcl-will-use-for-authentication', // FCL Discovery endpoint, wallet provider's authentication URL or extension endpoint
+  'discovery.wallet.method': 'IFRAME/RPC', // Optional. Available methods are "IFRAME/RPC", "POP/RPC", "TAB/RPC", "EXT/RPC" or "HTTP/POST", defaults to "IFRAME/RPC".
+});
 ```
 
 If the method specified is `IFRAME/RPC`, `POP/RPC` or `TAB/RPC`, then the URL specified as `discovery.wallet` will be rendered as a webpage. If the configured method is `EXT/RPC`, `discovery.wallet` should be set to the extension's `authn` `endpoint`. Otherwise, if the method specified is `HTTP/POST`, then the authentication process will happen over HTTP requests. (While authentication can be accomplished using any of those service methods, this example will use the `IFRAME/RPC` service method.)
@@ -710,9 +734,9 @@ WalletUtils.approve({
 From any frame, you can send a `FCL:VIEW:CLOSE` post message to FCL, which will halt FCL's current routine and close the frame.
 
 ```javascript
-import {WalletUtils} from "@onflow/fcl"
+import { WalletUtils } from '@onflow/fcl';
 
-WalletUtils.sendMsgToFCL("FCL:VIEW:CLOSE")
+WalletUtils.sendMsgToFCL('FCL:VIEW:CLOSE');
 ```
 
 # Authorization Service
@@ -759,6 +783,7 @@ signature =
 ```
 
 The eventual response back from the authorization service should resolve to something like this:
+
 ```javascript
 {
   f_type: "PollingResponse",
@@ -811,17 +836,18 @@ The signatures need to be sent back to FCL as HEX strings in an array of `Compos
 ```javascript
 // Pseudocode:
 // For every required signature
-import {WalletUtils} from "@onflow/fcl"
+import { WalletUtils } from '@onflow/fcl';
 
-const encoded = WalletUtils.encodeMessageFromSignable(signable, signerAddress)
-const taggedMessage = tagMessage(encoded) // Tag the message to sign
-const signature = signMessage(taggedMessage) // Sign the message
-const hexSignature = signatureToHex(signature) // Convert the signature to hex, if required.
+const encoded = WalletUtils.encodeMessageFromSignable(signable, signerAddress);
+const taggedMessage = tagMessage(encoded); // Tag the message to sign
+const signature = signMessage(taggedMessage); // Sign the message
+const hexSignature = signatureToHex(signature); // Convert the signature to hex, if required.
 
-return hexSignature
+return hexSignature;
 ```
 
 The eventual response back from the user signature service should resolve to something like this:
+
 ```javascript
 {
   f_type: "PollingResponse",
@@ -876,6 +902,7 @@ A pre-authz service can only supply roles it is responsible for.
 If a pre-authz service is responsible for multiple roles, but it wants the same account to be responsible for all the roles, it will need to supply an Authz service per role.
 
 The eventual response back from the pre-authz service should resolve to something like this:
+
 ```javascript
 {
   f_type: "PollingResponse",

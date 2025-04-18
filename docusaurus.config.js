@@ -279,7 +279,7 @@ const config = {
             activeBasePath: '/evm',
           },
           {
-            to: 'tools/clients',
+            to: 'tools/kit',
             position: 'left',
             label: 'Tools',
             activeBasePath: '/tools',

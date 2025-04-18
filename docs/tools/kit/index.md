@@ -1,7 +1,7 @@
 ---
-title: "@onflow/kit"
+title: '@onflow/kit'
 description: React hooks for interacting with the Flow blockchain.
-sidebar_position: 2
+sidebar_position: 1
 ---
 
 # @onflow/kit
@@ -12,18 +12,19 @@ sidebar_position: 2
 
 :::
 
-`@onflow/kit` is a lightweight React utility library that simplifies interacting with the Flow blockchain. It provides a collection of hooks, similar to those in other popular web3 libraries, that make it easier to build frontends that understand blockchain interactions.  **In the future**, it will also provided components designed to make authentication, script execution, transactions, event subscriptions, and network configuration seamless in React apps.
+`@onflow/kit` is a lightweight React utility library that simplifies interacting with the Flow blockchain. It provides a collection of hooks, similar to those in other popular web3 libraries, that make it easier to build frontends that understand blockchain interactions. **In the future**, it will also provided components designed to make authentication, script execution, transactions, event subscriptions, and network configuration seamless in React apps.
 
 ## 🔌 Included React Hooks
 
-- [`useCurrentFlowUser`](#usecurrentflowuser) – Authenticate and manage the current Flow user
-- [`useFlowAccount`](#useflowaccount) – Fetch Flow account details by address
-- [`useFlowBlock`](#useflowblock) – Query latest or specific Flow blocks
-- [`useFlowConfig`](#useflowconfig) – Access the current Flow configuration
-- [`useFlowEvents`](#useflowevents) – Subscribe to Flow events in real-time
-- [`useFlowQuery`](#useflowquery) – Execute Cadence scripts with optional arguments
-- [`useFlowMutate`](#useflowmutate) – Send transactions to the Flow blockchain
-- [`useFlowTransaction`](#useflowtransaction) – Track transaction status updates
+- [`useCurrentFlowUser`](#usecurrentflowuser) - Authenticate and manage the current Flow user
+- [`useFlowAccount`](#useflowaccount) - Fetch Flow account details by address
+- [`useFlowBlock`](#useflowblock) - Query latest or specific Flow blocks
+- [`useFlowConfig`](#useflowconfig) - Access the current Flow configuration
+- [`useFlowEvents`](#useflowevents) - Subscribe to Flow events in real-time
+- [`useFlowQuery`](#useflowquery) - Execute Cadence scripts with optional arguments
+- [`useFlowMutate`](#useflowmutate) - Send transactions to the Flow blockchain
+- [`useFlowTransaction`](#useflowtransaction) - Track transaction status updates
+
 ## Installation
 
 ```bash
@@ -37,34 +38,34 @@ npm install @onflow/kit
 Begin by wrapping your application with the `FlowProvider` to initialize FCL configuration. This sets up FCL and maps its configuration keys to a strictly typed format for your hooks.
 
 ```tsx
-import React from "react"
-import App from "./App"
-import { FlowProvider } from "@onflow/kit"
-import flowJSON from "../flow.json"
+import React from 'react';
+import App from './App';
+import { FlowProvider } from '@onflow/kit';
+import flowJSON from '../flow.json';
 
 function Root() {
   return (
     <FlowProvider
       config={{
-        accessNodeUrl: "https://access-mainnet.onflow.org",
-        flowNetwork: "mainnet",
-        appDetailTitle: "My On Chain App",
-        appDetailIcon: "https://example.com/icon.png",
-        appDetailDescription: "A decentralized app on Flow",
-        appDetailUrl: "https://myonchainapp.com",
+        accessNodeUrl: 'https://access-mainnet.onflow.org',
+        flowNetwork: 'mainnet',
+        appDetailTitle: 'My On Chain App',
+        appDetailIcon: 'https://example.com/icon.png',
+        appDetailDescription: 'A decentralized app on Flow',
+        appDetailUrl: 'https://myonchainapp.com',
         // include other typed configuration keys as needed...
       }}
       flowJson={flowJSON}
     >
       <App />
     </FlowProvider>
-  )
+  );
 }
 
-export default Root
+export default Root;
 ```
 
-If you're using [Next.js], put this in `layout.tsx`.  Adapt as appropriate for other frontend frameworks.
+If you're using [Next.js], put this in `layout.tsx`. Adapt as appropriate for other frontend frameworks.
 
 ---
 
@@ -79,18 +80,18 @@ Many of these hooks are built using [`@tanstack/react-query`](https://tanstack.c
 ### `useCurrentFlowUser`
 
 ```tsx
-import { useCurrentFlowUser } from "@onflow/kit"
+import { useCurrentFlowUser } from '@onflow/kit';
 ```
 
 #### Returns:
 
-- `user: CurrentUser` – The current user object from FCL
-- `authenticate: () => Promise<CurrentUser>` – Triggers wallet authentication
-- `unauthenticate: () => void` – Logs the user out
+- `user: CurrentUser` - The current user object from FCL
+- `authenticate: () => Promise<CurrentUser>` - Triggers wallet authentication
+- `unauthenticate: () => void` - Logs the user out
 
 ```tsx
 function AuthComponent() {
-  const { user, authenticate, unauthenticate } = useCurrentFlowUser()
+  const { user, authenticate, unauthenticate } = useCurrentFlowUser();
 
   return (
     <div>
@@ -103,7 +104,7 @@ function AuthComponent() {
         <button onClick={authenticate}>Login</button>
       )}
     </div>
-  )
+  );
 }
 ```
 
@@ -112,22 +113,27 @@ function AuthComponent() {
 ### `useFlowAccount`
 
 ```tsx
-import { useFlowAccount } from "@onflow/kit"
+import { useFlowAccount } from '@onflow/kit';
 ```
 
 #### Parameters:
 
-- `address?: string` – Flow address (with or without `0x` prefix)
+- `address?: string` - Flow address (with or without `0x` prefix)
 
 #### Returns: `UseQueryResult<Account | null, Error>`
 
 ```tsx
 function AccountDetails() {
-  const { data: account, isLoading, error, refetch } = useFlowAccount("0x1cf0e2f2f715450")
+  const {
+    data: account,
+    isLoading,
+    error,
+    refetch,
+  } = useFlowAccount('0x1cf0e2f2f715450');
 
-  if (isLoading) return <p>Loading account...</p>
-  if (error) return <p>Error fetching account: {error.message}</p>
-  if (!account) return <p>No account data</p>
+  if (isLoading) return <p>Loading account...</p>;
+  if (error) return <p>Error fetching account: {error.message}</p>;
+  if (!account) return <p>No account data</p>;
 
   return (
     <div>
@@ -136,7 +142,7 @@ function AccountDetails() {
       <pre>{account.code}</pre>
       <button onClick={refetch}>Refetch</button>
     </div>
-  )
+  );
 }
 ```
 
@@ -145,31 +151,31 @@ function AccountDetails() {
 ### `useFlowBlock`
 
 ```tsx
-import { useFlowBlock } from "@onflow/kit"
+import { useFlowBlock } from '@onflow/kit';
 ```
 
 #### Parameters (mutually exclusive):
 
-- `{}` – Latest block (default)
-- `{ sealed: true }` – Latest sealed block
-- `{ id: string }` – Block by ID
-- `{ height: number }` – Block by height
+- `{}` - Latest block (default)
+- `{ sealed: true }` - Latest sealed block
+- `{ id: string }` - Block by ID
+- `{ height: number }` - Block by height
 
 #### Returns: `UseQueryResult<Block | null, Error>`
 
 ```tsx
 function LatestBlock() {
-  const { data: block, isLoading, error } = useFlowBlock()
-  if (isLoading) return <p>Loading...</p>
-  if (error) return <p>Error: {error.message}</p>
-  if (!block) return <p>No block data.</p>
+  const { data: block, isLoading, error } = useFlowBlock();
+  if (isLoading) return <p>Loading...</p>;
+  if (error) return <p>Error: {error.message}</p>;
+  if (!block) return <p>No block data.</p>;
 
   return (
     <div>
       <h2>Block {block.height}</h2>
       <p>ID: {block.id}</p>
     </div>
-  )
+  );
 }
 ```
 
@@ -178,21 +184,21 @@ function LatestBlock() {
 ### `useFlowConfig`
 
 ```tsx
-import { useFlowConfig } from "@onflow/kit"
+import { useFlowConfig } from '@onflow/kit';
 ```
 
 #### Returns: `FlowConfig`
 
 ```tsx
 function MyComponent() {
-  const config = useFlowConfig()
+  const config = useFlowConfig();
 
   return (
     <div>
       <p>Current network: {config.flowNetwork}</p>
       <p>Current access node: {config.accessNodeUrl}</p>
     </div>
-  )
+  );
 }
 ```
 
@@ -201,7 +207,7 @@ function MyComponent() {
 ### `useFlowEvents`
 
 ```tsx
-import { useFlowEvents } from "@onflow/kit"
+import { useFlowEvents } from '@onflow/kit';
 ```
 
 #### Parameters:
@@ -213,12 +219,12 @@ import { useFlowEvents } from "@onflow/kit"
 
 ```tsx
 function EventListener() {
-  useFlowEvents("A.0xDeaDBeef.SomeContract.SomeEvent", {
-    onEvent: (event) => console.log("New event:", event),
-    onError: (error) => console.error("Error:", error),
-  })
+  useFlowEvents('A.0xDeaDBeef.SomeContract.SomeEvent', {
+    onEvent: (event) => console.log('New event:', event),
+    onError: (error) => console.error('Error:', error),
+  });
 
-  return <div>Listening for events...</div>
+  return <div>Listening for events...</div>;
 }
 ```
 
@@ -227,14 +233,14 @@ function EventListener() {
 ### `useFlowQuery`
 
 ```tsx
-import { useFlowQuery } from "@onflow/kit"
+import { useFlowQuery } from '@onflow/kit';
 ```
 
 #### Parameters:
 
-- `cadence: string` – Cadence script to run
-- `args?: (arg, t) => unknown[]` – Function returning FCL arguments
-- `enabled?: boolean` – Defaults to `true`
+- `cadence: string` - Cadence script to run
+- `args?: (arg, t) => unknown[]` - Function returning FCL arguments
+- `enabled?: boolean` - Defaults to `true`
 
 #### Returns: `UseQueryResult<unknown, Error>`
 
@@ -247,17 +253,17 @@ function QueryExample() {
       }
     `,
     args: (arg, t) => [arg(1, t.Int), arg(2, t.Int)],
-  })
+  });
 
-  if (isLoading) return <p>Loading query...</p>
-  if (error) return <p>Error: {error.message}</p>
+  if (isLoading) return <p>Loading query...</p>;
+  if (error) return <p>Error: {error.message}</p>;
 
   return (
     <div>
       <p>Result: {data}</p>
       <button onClick={refetch}>Refetch</button>
     </div>
-  )
+  );
 }
 ```
 
@@ -266,7 +272,7 @@ function QueryExample() {
 ### `useFlowMutate`
 
 ```tsx
-import { useFlowMutate } from "@onflow/kit"
+import { useFlowMutate } from '@onflow/kit';
 ```
 
 #### Returns: `UseMutationResult<string, Error, FCLMutateParams>`
@@ -278,7 +284,7 @@ import { useFlowMutate } from "@onflow/kit"
 
 ```tsx
 function CreatePage() {
-  const { mutate, isPending, error, data: txId } = useFlowMutate()
+  const { mutate, isPending, error, data: txId } = useFlowMutate();
 
   const sendTransaction = () => {
     mutate({
@@ -292,8 +298,8 @@ function CreatePage() {
       payer: fcl.currentUser,
       authorizations: [],
       limit: 100,
-    })
-  }
+    });
+  };
 
   return (
     <div>
@@ -304,7 +310,7 @@ function CreatePage() {
       {error && <p>Error: {error.message}</p>}
       {txId && <p>Transaction ID: {txId}</p>}
     </div>
-  )
+  );
 }
 ```
 
@@ -313,12 +319,12 @@ function CreatePage() {
 ### `useFlowTransaction`
 
 ```tsx
-import { useFlowTransaction } from "@onflow/kit"
+import { useFlowTransaction } from '@onflow/kit';
 ```
 
 #### Parameters:
 
-- `txId: string` – Transaction ID to subscribe to
+- `txId: string` - Transaction ID to subscribe to
 
 #### Returns:
 
@@ -327,14 +333,11 @@ import { useFlowTransaction } from "@onflow/kit"
 
 ```tsx
 function TransactionComponent() {
-  const txId = "your-transaction-id-here"
-  const { transactionStatus, error } = useFlowTransaction(txId)
+  const txId = 'your-transaction-id-here';
+  const { transactionStatus, error } = useFlowTransaction(txId);
 
-  if (error) return <div>Error: {error.message}</div>
+  if (error) return <div>Error: {error.message}</div>;
 
-  return (
-    <div>
-      Status: {transactionStatus?.statusString}
-    </div>
-  )
+  return <div>Status: {transactionStatus?.statusString}</div>;
 }
+```
