@@ -408,6 +408,12 @@ In this complete page:
 - **Step 3** subscribes to transaction status updates using the stored transaction ID and uses a `useEffect` hook to automatically refetch the updated count when the transaction is sealed (status code 4).
 - **Step 4** integrates authentication via `useCurrentFlowUser` and combines all the pieces into a single user interface.
 
+:::tip
+
+In this tutorial, we inlined Cadence code for simplicity. For real projects, we recommend storing Cadence in separate `.cdc` files, using the [Cadence VSCode extension], and importing them with the [`flow-cadence-plugin`](https://github.com/chasefleming/flow-cadence-plugin) for Next.js or Webpack projects.
+
+:::
+
 ## Running the App
 
 Start your development server:
@@ -441,6 +447,7 @@ By following these steps, you've built a simple Next.js dApp that interacts with
 
 For additional details and advanced usage, refer to the [@onflow/kit documentation] and other Flow developer resources.
 
+
 [Step 1: Contract Interaction]: contract-interaction.md
 [Step 2: Local Development]: ./flow-cli.md
 [Wallet Discovery Guide]: ../../tools/clients/fcl-js/discovery.md
@@ -450,3 +457,4 @@ For additional details and advanced usage, refer to the [@onflow/kit documentati
 [@onflow/kit documentation]: ../../tools/kit/index.md
 [**@onflow/kit**]: ../../tools/kit/index.md
 [Flow CLI]: ../../tools/flow-cli/install.md
+[Cadence VSCode extension]: ../../tools/vscode-extension
