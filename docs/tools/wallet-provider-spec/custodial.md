@@ -259,7 +259,7 @@ Below is the public authorization hook we received during the challenge above.
   }
 ```
 
-FCL will take that hook and do the following post requeset:
+FCL will take that hook and do the following post request:
 
 ```
 POST https://provider.com/flow/authorize
