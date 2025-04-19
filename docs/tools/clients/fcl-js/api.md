@@ -2125,4 +2125,4 @@ Signature objects are used to represent a signature for a particular message as 
 | ----------- | ------------------- | -------------------------------------------------------------------------------------------- |
 | `addr`      | [Address](#address) | the address of the account which this signature has been generated for                       |
 | `keyId`     | number              | The index of the key to use during authorization. (Multiple keys on an account is possible). |
-| `signature` | string              | a hexidecimal-encoded string representation of the generated signature                       |
+| `signature` | string              | a hexadecimal-encoded string representation of the generated signature                       |
