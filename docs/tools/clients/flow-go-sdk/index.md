@@ -1078,7 +1078,7 @@ publicKey := privateKey.PublicKey()
 
 The example above uses an ECDSA key pair on the P-256 (secp256r1) elliptic curve. Flow also supports the secp256k1 curve used by Bitcoin and Ethereum. Read more about [supported algorithms here](../../../build/basics/accounts.md#signature-and-hash-algorithms).
 
-### Transfering Flow
+### Transferring Flow
 
 This is an example of how to construct a FLOW token transfer transaction
 with the Flow Go SDK.
