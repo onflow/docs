@@ -342,7 +342,7 @@ Flow supports great flexibility when it comes to transaction signing, we can def
 | `0x01`  | 1      | 1000   |
 
 ```javascript
-// There are multiple ways to acheive this
+// There are multiple ways to achieve this
 import * as fcl from "@onflow/fcl"
 
 // FCL provides currentUser as an authorization function
