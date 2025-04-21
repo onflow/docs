@@ -256,7 +256,8 @@ import { useFlowQuery } from "@onflow/kit"
 function QueryExample() {
   const { data, isLoading, error, refetch } = useFlowQuery({
     cadence: `
-      pub fun main(a: Int, b: Int): Int {
+      access(all)
+      fun main(a: Int, b: Int): Int {
         return a + b
       }
     `,
