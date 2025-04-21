@@ -489,6 +489,127 @@ implemented](https://github.com/onflow/flow-evm-bridge/blob/main/solidity/src/in
 and in use in the bridged [ERC721](https://github.com/onflow/flow-evm-bridge/blob/flip-318/solidity/src/templates/FlowEVMBridgedERC721.sol#L37-L43)
 and [ERC20](https://github.com/onflow/flow-evm-bridge/blob/flip-318/solidity/src/templates/FlowEVMBridgedERC20.sol#L13-L40) templates.
 
+
+
+If you are registering a custom association for an NFT that is native to Cadence, meaning that your project distributes NFTs to users on the Cadence side,
+then your ERC721 contract will need to implement the `CrossVMBridgeERC721Fulfillment` contract. This is
+a required conformance that does three primary things:
+
+1. Implements the mint/escrow pattern expected by the VM bridge
+2. Allows for the passing of arbitrary abi-encodable metadata from the Cadence NFT at the time of bridging
+3. Exposes two optional hooks enabling you to update the fulfilled token's URI with the provided metadata at the time of bridging
+
+Here is the Solidity contract to implement:
+
+```solidity
+abstract contract CrossVMBridgeERC721Fulfillment is ICrossVMBridgeERC721Fulfillment, CrossVMBridgeCallable, ERC721 {
+
+    /**
+     * Initializes the bridge EVM address such that only the bridge COA can call privileged methods
+     */
+    constructor(address _vmBridgeAddress) CrossVMBridgeCallable(_vmBridgeAddress) {}
+
+    /**
+     * @dev Fulfills the bridge request, minting (if non-existent) or transferring (if escrowed) the
+     * token with the given ID to the provided address. For dynamic metadata handling between
+     * Cadence & EVM, implementations should override and assign metadata as encoded from Cadence
+     * side. If overriding, be sure to preserve the mint/escrow pattern as shown in the default
+     * implementation. See `_beforeFulfillment` and `_afterFulfillment` hooks to enable pre-and/or
+     * post-processing without the need to override this function.
+     * 
+     * @param _to address of the token recipient
+     * @param _id the id of the token being moved into EVM from Cadence
+     * @param _data any encoded metadata passed by the corresponding Cadence NFT at the time of
+     *      bridging into EVM
+     */
+    function fulfillToEVM(address _to, uint256 _id, bytes memory _data) external onlyVMBridge {
+        _beforeFulfillment(_to, _id, _data); // hook allowing implementation to perform pre-fulfillment validation
+        if (_ownerOf(_id) == address(0)) {
+            _mint(_to, _id); // Doesn't exist, mint the token
+        } else {
+            // Should be escrowed under vm bridge - transfer from escrow to recipient
+            _requireEscrowed(_id);
+            safeTransferFrom(vmBridgeAddress(), _to, _id);
+        }
+        _afterFulfillment(_to, _id, _data); // hook allowing implementation to perform post-fulfillment processing
+        emit FulfilledToEVM(_to, _id);
+    }
+
+    /**
+     * @dev Returns whether the token is currently escrowed under custody of the designated VM bridge
+     * 
+     * @param _id the ID of the token in question
+     */
+    function isEscrowed(uint256 _id) public view returns (bool) {
+        return _ownerOf(_id) == vmBridgeAddress();
+    }
+
+    /**
+     * @dev Returns whether the token is exists or not defined positively by whether the owner of
+     * the token is 0x0.
+     * 
+     * @param _id the ID of the token in question
+     */
+    function exists(uint256 _id) public view returns (bool) {
+        return _ownerOf(_id) != address(0);
+    }
+
+    /**
+     * @dev Allows a caller to determine the contract conforms to implemented interfaces
+     */
+    function supportsInterface(bytes4 interfaceId) public view virtual override(CrossVMBridgeCallable, ERC721, IERC165) returns (bool) {
+        return interfaceId == type(ICrossVMBridgeERC721Fulfillment).interfaceId
+            || interfaceId == type(ICrossVMBridgeCallable).interfaceId
+            || super.supportsInterface(interfaceId);
+    }
+
+    /**
+     * @dev Internal method that reverts with FulfillmentFailedTokenNotEscrowed if the provided
+     * token is not escrowed with the assigned vm bridge address as owner.
+     * 
+     * @param _id the token id that must be escrowed
+     */
+    function _requireEscrowed(uint256 _id) internal view {
+        if (!isEscrowed(_id)) {
+            revert FulfillmentFailedTokenNotEscrowed(_id, vmBridgeAddress());
+        }
+    }
+
+    /**
+     * @dev This internal method is included as a step implementations can override and have
+     * executed in the default fullfillToEVM call.
+     * 
+     * @param _to address of the pending token recipient
+     * @param _id the id of the token to be moved into EVM from Cadence
+     * @param _data any encoded metadata passed by the corresponding Cadence NFT at the time of
+     *      bridging into EVM
+     */
+    function _beforeFulfillment(address _to, uint256 _id, bytes memory _data) internal virtual {
+        // No-op by default, meant to be overridden by implementations
+    }
+
+    /**
+     * @dev This internal method is included as a step implementations can override and have
+     * executed in the default fullfillToEVM call.
+     * 
+     * @param _to address of the pending token recipient
+     * @param _id the id of the token to be moved into EVM from Cadence
+     * @param _data any encoded metadata passed by the corresponding Cadence NFT at the time of
+     *      bridging into EVM
+     */
+    function _afterFulfillment(address _to, uint256 _id, bytes memory _data) internal virtual {
+        // No-op by default, meant to be overridden by implementations for things like processing
+        // and setting metadata
+    }
+}
+```
+
+Note the `_beforeFulfillment()` and `_afterFulfillment()` hooks are `virtual`, allowing implementations
+to optionally override the methods and handle the provided metadata passed from your NFT if 
+`EVMBytesMetadata` is resolved at the time of bridging. Also, notice that the `fulfillToEVM` method
+is `onlyVMBridge`, allowing on the VM bridge to call the method either minting the NFT if it does not 
+exist or transferring the NFT from escrow in a manner consistent with the bridge's mint/escrow pattern.
+
 ### Opting Out
 
 It's also recognized that the logic of some use cases may actually be compromised by the act of bridging, particularly
