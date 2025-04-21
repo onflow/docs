@@ -12,7 +12,7 @@ sidebar_position: 2
 
 :::
 
-`@onflow/kit` is a lightweight React utility library that simplifies interacting with the Flow blockchain. It provides a collection of hooks, similar to those in other popular web3 libraries, that make it easier to build frontends that understand blockchain interactions.  **In the future**, it will also provided components designed to make authentication, script execution, transactions, event subscriptions, and network configuration seamless in React apps.
+`@onflow/kit` is a lightweight React utility library that simplifies interacting with the Flow blockchain. It provides a collection of hooks, similar to those in other popular web3 libraries, that make it easier to build frontends that understand blockchain interactions. **In the future**, it will also provide components designed to make authentication, script execution, transactions, event subscriptions, and network configuration seamless in React apps.
 
 ## 🔌 Included React Hooks
 
@@ -24,6 +24,7 @@ sidebar_position: 2
 - [`useFlowQuery`](#useflowquery) – Execute Cadence scripts with optional arguments
 - [`useFlowMutate`](#useflowmutate) – Send transactions to the Flow blockchain
 - [`useFlowTransaction`](#useflowtransaction) – Track transaction status updates
+
 ## Installation
 
 ```bash
@@ -52,7 +53,6 @@ function Root() {
         appDetailIcon: "https://example.com/icon.png",
         appDetailDescription: "A decentralized app on Flow",
         appDetailUrl: "https://myonchainapp.com",
-        // include other typed configuration keys as needed...
       }}
       flowJson={flowJSON}
     >
@@ -64,7 +64,7 @@ function Root() {
 export default Root
 ```
 
-If you're using [Next.js], put this in `layout.tsx`.  Adapt as appropriate for other frontend frameworks.
+If you're using [Next.js], put this in `layout.tsx`. Adapt as appropriate for other frontend frameworks.
 
 ---
 
@@ -118,12 +118,16 @@ import { useFlowAccount } from "@onflow/kit"
 #### Parameters:
 
 - `address?: string` – Flow address (with or without `0x` prefix)
+- `query?: UseQueryOptions<Account | null, Error>` – Optional TanStackQuery options
 
 #### Returns: `UseQueryResult<Account | null, Error>`
 
 ```tsx
 function AccountDetails() {
-  const { data: account, isLoading, error, refetch } = useFlowAccount("0x1cf0e2f2f715450")
+  const { data: account, isLoading, error, refetch } = useFlowAccount({
+    address: "0x1cf0e2f2f715450",
+    query: { staleTime: 5000 },
+  })
 
   if (isLoading) return <p>Loading account...</p>
   if (error) return <p>Error fetching account: {error.message}</p>
@@ -148,18 +152,21 @@ function AccountDetails() {
 import { useFlowBlock } from "@onflow/kit"
 ```
 
-#### Parameters (mutually exclusive):
+#### Parameters:
 
-- `{}` – Latest block (default)
-- `{ sealed: true }` – Latest sealed block
-- `{ id: string }` – Block by ID
-- `{ height: number }` – Block by height
+- `sealed?: boolean` – If `true`, fetch latest sealed block
+- `id?: string` – Block by ID
+- `height?: number` – Block by height
+- `query?: UseQueryOptions<Block | null, Error>` – Optional TanStackQuery options
+
+Only one of `sealed`, `id`, or `height` should be provided.
 
 #### Returns: `UseQueryResult<Block | null, Error>`
 
 ```tsx
 function LatestBlock() {
-  const { data: block, isLoading, error } = useFlowBlock()
+  const { data: block, isLoading, error } = useFlowBlock({ query: { staleTime: 10000 } })
+
   if (isLoading) return <p>Loading...</p>
   if (error) return <p>Error: {error.message}</p>
   if (!block) return <p>No block data.</p>
@@ -206,14 +213,21 @@ import { useFlowEvents } from "@onflow/kit"
 
 #### Parameters:
 
-- `eventNameOrFilter`: string | EventFilter
-- `options: { onEvent: (event) => void, onError?: (error) => void }`
+- `startBlockId?: string` – Optional ID of the block to start listening from
+- `startHeight?: number` – Optional block height to start listening from
+- `eventTypes?: string[]` – Array of event type strings (e.g., `A.0xDeaDBeef.Contract.EventName`)
+- `addresses?: string[]` – Filter by Flow addresses
+- `contracts?: string[]` – Filter by contract identifiers
+- `opts?: { heartbeatInterval?: number }` – Options for subscription heartbeat
+- `onEvent: (event: Event) => void` – Callback for each event received
+- `onError?: (error: Error) => void` – Optional error handler
 
 #### Example:
 
 ```tsx
 function EventListener() {
-  useFlowEvents("A.0xDeaDBeef.SomeContract.SomeEvent", {
+  useFlowEvents({
+    eventTypes: ["A.0xDeaDBeef.SomeContract.SomeEvent"],
     onEvent: (event) => console.log("New event:", event),
     onError: (error) => console.error("Error:", error),
   })
@@ -234,7 +248,7 @@ import { useFlowQuery } from "@onflow/kit"
 
 - `cadence: string` – Cadence script to run
 - `args?: (arg, t) => unknown[]` – Function returning FCL arguments
-- `enabled?: boolean` – Defaults to `true`
+- `query?: UseQueryOptions<unknown, Error>` – Optional TanStackQuery options
 
 #### Returns: `UseQueryResult<unknown, Error>`
 
@@ -247,6 +261,7 @@ function QueryExample() {
       }
     `,
     args: (arg, t) => [arg(1, t.Int), arg(2, t.Int)],
+    query: { staleTime: 10000 },
   })
 
   if (isLoading) return <p>Loading query...</p>
@@ -269,16 +284,19 @@ function QueryExample() {
 import { useFlowMutate } from "@onflow/kit"
 ```
 
-#### Returns: `UseMutationResult<string, Error, FCLMutateParams>`
+#### Parameters:
 
-- `mutate`: A function to send the transaction
-- `data`: Transaction ID
-- `error`: Any error
-- `isPending`: Boolean status
+- `mutation?: UseMutationOptions<string, Error, FCLMutateParams>` – Optional TanStackQuery mutation options
+
+#### Returns: `UseMutationResult<string, Error, FCLMutateParams>`
 
 ```tsx
 function CreatePage() {
-  const { mutate, isPending, error, data: txId } = useFlowMutate()
+  const { mutate, isPending, error, data: txId } = useFlowMutate({
+    mutation: {
+      onSuccess: (txId) => console.log("TX ID:", txId),
+    },
+  })
 
   const sendTransaction = () => {
     mutate({
@@ -318,7 +336,7 @@ import { useFlowTransaction } from "@onflow/kit"
 
 #### Parameters:
 
-- `txId: string` – Transaction ID to subscribe to
+- `id: string` – Transaction ID to subscribe to
 
 #### Returns:
 
@@ -328,7 +346,7 @@ import { useFlowTransaction } from "@onflow/kit"
 ```tsx
 function TransactionComponent() {
   const txId = "your-transaction-id-here"
-  const { transactionStatus, error } = useFlowTransaction(txId)
+  const { transactionStatus, error } = useFlowTransaction({ id: txId })
 
   if (error) return <div>Error: {error.message}</div>
 
@@ -338,3 +356,4 @@ function TransactionComponent() {
     </div>
   )
 }
+```
