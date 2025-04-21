@@ -162,5 +162,40 @@ export const buildGridData = {
         },
       ],
     },
+    {
+      title: 'Tools',
+      cards: [
+        {
+          heading: 'Cadence Block Explorer',
+          description:
+            'Search for users, transactions, and contracts on the Flow Cadence blockchain.',
+          iconColor: 'green',
+          cardColor: 'black',
+          icon: 'flow-cadence',
+          variant: 'horizontal',
+          href: 'https://www.flowscan.io/',
+        },
+        {
+          heading: 'EVM Block Explorer',
+          description:
+            'Search for users, transactions, and contracts on the Flow EVM blockchain.',
+          iconColor: 'green',
+          cardColor: 'black',
+          icon: 'evm-on-flow',
+          variant: 'horizontal',
+          href: 'https://evm.flowscan.io/',
+        },
+        {
+          heading: 'Flow Runner',
+          description:
+            'Run Flow Cadence scripts and transactions in the browser with Flow Runner.',
+          iconColor: 'green',
+          cardColor: 'black',
+          icon: 'hello-world',
+          variant: 'horizontal',
+          href: 'https://run.dnz.dev/',
+        },
+      ],
+    },
   ],
 };
