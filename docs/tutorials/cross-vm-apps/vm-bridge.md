@@ -13,12 +13,12 @@ In the opposite direction, it supports bridging of arbitrary ERC-20 and ERC-721 
 corresponding FT or NFT token types.
 
 By default, when a user onboards a new token to the bridge, 
-the bridge will deploy a standard token contract in the other VM that the owner of the original
-token contract has no direct control over. This bridge-deployed contract handles basic
+the bridge will deploy a standard token contract in the other VM that only the core bridge 
+protocol contracts retain limited control over. This bridge-deployed contract handles basic
 minting and metadata operations that are required for usage in the needed environment.
-If a developer wants to manage and connect the token contracts on both sides of the bridge,
-they can include pointers in each contract to indicate
-that they are associated and should be bridged for each other.
+If a developer wants to define and connect the NFT contracts on both sides of the bridge,
+they can have each contract point to each other to indicate that they are associated and then
+register that association with the bridge so the token moves between VMs as either definition.
 
 The Cross-VM Bridge internalizes the capabilities to deploy new token contracts in either VM state as needed, resolving
 access to, and maintaining links between associated contracts. It additionally automates account and contract calls to
@@ -31,7 +31,7 @@ type that can be controlled from the Cadence runtime.
 
 This [FLIP-233](https://github.com/onflow/flips/pull/233) outlines the architecture and implementation of the VM bridge.
 An additional [FLIP-318](https://github.com/onflow/flips/blob/main/application/20250131-cross-vm-nft-support.md) describes how developers can create custom associations
-between tokens they control in each VM.
+between NFTs they define and control in each VM.
 This document will focus on how to use the Cross-VM Bridge and considerations for fungible and non-fungible token
 projects deploying to either Cadence or EVM.
 
@@ -89,9 +89,10 @@ a token smart contract to their preferred VM (Flow-Cadence or Flow-EVM) and want
 to bridge it to the other (target) VM.
 
 In order for the developer's token to be usable in the target VM, there must be a contract
-that defines the asset and how it behaves in the target VM. This contract is separate
-from the contract in the native VM, but they are "associated" with each other
-by the mechanisms of the Flow VM bridge.
+that defines the asset and how it behaves in the target VM that also enables the bridge to
+fulfill the asset from Cadence to EVM and vice versa. This contract is separate from the 
+contract in the native VM, but they are "associated" with each other by the mechanisms of
+the Flow VM bridge.
 
 To create this association, the asset must be "onboarded" to the bridge
 before bridging operations can be fulfilled. This can happen in two ways:
@@ -107,11 +108,11 @@ This method is covered in the [Automatic Onboarding Section](#automatic-onboardi
 
 ### Option 2: Custom Association Onboarding
 
-With this option, developers can deploy their own contract to the target VM and declare a 
-custom association between it and the native contract. This allows them to have more control
-over both contracts, enabling them to include more sophisticated features and mechanisms
-in their bridged token contracts such as ERC-721C, unique metadata views, and more that 
-aren't included in the default bridged template versions.
+With this option (available for only for NFTs) developers can deploy their own contract to the 
+target VM and declare a custom association between it and the native contract. This allows 
+them to have more control over both contracts, enabling them to include more sophisticated 
+features and mechanisms in their bridged token contracts such as ERC-721C, unique metadata 
+views, and more that aren't included in the default bridged template versions.
 
 This method is covered in the [Custom Association Section](#custom-association-onboarding)
 
@@ -160,19 +161,22 @@ Below are transactions relevant to automatically onboarding assets native to eit
 
 With [Custom Associations](https://github.com/onflow/flips/blob/main/application/20250131-cross-vm-nft-support.md),
 developers can deploy NFT contracts in both VMs and associate them with each other,
-allowing them to retain control of the contracts in both VMs.
+allowing them to retain control of the contracts in both VMs as well as implement custom 
+use-case specific functionality.
+
 
 In order to do this, each contract must implement a special interface
 that tells the bridge what the associated contract is in the other VM.
-If the contracts do not point to each other this way, they will not be able
-be be registered as a custom association.
+The fact that both point to each other validates the intended association,
+preventing spoofing. If the contracts do not point to each other this way,
+they will not be able to be registered as a custom association.
 
 Review the [Preparing Custom Associations](#preparing-custom-associations) section
 to learn how to set up each of your contracts for a custom association.
 
 Below is the transaction for onboarding NFTs for a custom association.
-Remember that both the Cadence and the Solidity contract need to already be deployed
-and include the special interface conformances to point to each other!
+Remember that both the Cadence and the Solidity contract need to be deployed
+and include the special interface conformances to point to each other before registration!
 
 **Onboard an NFT Custom Association:**
 <details>
@@ -365,6 +369,18 @@ is the main source of truth for the contracts and where they are originally mint
 
 This feature is not available for Fungible Tokens at the moment, but may be in the future.
 
+:::warning
+
+Note that the bridge only supports a single custom association declaration. This
+means that once you register an association between your Cadence NFT & EVM 
+contract, the association cannot be updated. If you wish to retain some upgradeability
+to your registered implementations, it's recommended that you both retain keys on 
+your Cadence NFT contract account **and ** implement an upgradeable Solidity pattern 
+when deploying your ERC721, then register the association between your Cadence NFT 
+Type & ERC721 proxy (not the implementation address).
+
+:::
+
 #### Cadence
 
 All Cadence NFT contracts implement [Metadata Views](../../build/advanced-concepts/metadata-views.md)
@@ -394,9 +410,16 @@ You can see an example of how this view is implemented in
 [the `ExampleNFT` contract](https://github.com/onflow/flow-nft/blob/master/contracts/ExampleNFT.cdc#L173-L195)
 in the Flow Non-Fungible Token repo.
 
-As you can see in the code linked above, it is also advised
-to implement the `CrossVMMetadataViews.EVMBytesMetadata` view to allow you to have more
-control over what metadata is passed to your Solidity contract every time an NFT is bridged.
+If your EVM contract expects metadata to be passed from Cadence at the time of 
+bridging, you must implement the `CrossVMMetadataViews.EVMBytesMetadata`
+view. You'll find this useful for Cadence-native NFTs with dynamic metadata.
+ This view will be resolved by the bridge and passed to your EVM contract
+when the `fulfillToEVM` method is called.
+
+How you handle the bridged bytes in your ERC721 implementation will be a matter
+of overriding  the `_beforeFulfillment` and/or `_afterFulfillment` hooks included in the 
+`CrossVMBridgeERC721Fulfillment` base contract.
+
 
 **Flow EVM-Native NFTs**
 
@@ -437,6 +460,9 @@ minter resource must implement the `FlowEVMBridgeCustomAssociationTypes.NFTFulfi
 
 You can see an example of an implementation of this interface in
 the [Flow EVM bridge repo ExampleNFT contract](https://github.com/onflow/flow-evm-bridge/blob/flip-318/cadence/contracts/example-assets/cross-vm-nfts/ExampleEVMNativeNFT.cdc#L352-L377).
+
+A Capability with the `FulfillFromEVM` entitlement is required at the time of registration so the bridge
+can fulfill NFTs bridged from EVM for the first time.
 
 #### Solidity
 
