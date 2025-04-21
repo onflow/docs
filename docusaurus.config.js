@@ -279,7 +279,7 @@ const config = {
             activeBasePath: '/evm',
           },
           {
-            to: 'tools/clients',
+            to: 'tools/kit',
             position: 'left',
             label: 'Tools',
             activeBasePath: '/tools',
@@ -448,7 +448,7 @@ const config = {
                 label: 'Flowscan Testnet',
               },
               {
-                to: '/networks/node-ops/node-operation/past-sporks',
+                to: '/networks/node-ops/node-operation/past-upgrades',
                 label: 'Past Sporks',
               },
               {

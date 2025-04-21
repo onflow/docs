@@ -1,5 +1,6 @@
 ---
 title: Cadence VS Code Extension
+sidebar_position: 4
 ---
 
 This extension integrates [Cadence](https://cadence-lang.org/docs), the resource-oriented smart contract programming language of [Flow](https://www.onflow.org/), into [Visual Studio Code](https://code.visualstudio.com/).

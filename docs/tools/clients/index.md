@@ -1,7 +1,7 @@
 ---
 title: Client Tools
 description: Comprehensive guide to Flow's client tools and SDKs, including FCL-JS, Go SDK, and various language-specific implementations for interacting with the Flow blockchain.
-sidebar_position: 1
+sidebar_position: 6
 keywords:
   - FCL
   - Flow Client Library

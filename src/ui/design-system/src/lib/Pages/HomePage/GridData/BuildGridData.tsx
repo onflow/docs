@@ -44,7 +44,7 @@ export const buildGridData = {
       title: 'Learn Cadence',
       cards: [
         {
-          heading: 'Hello World',
+          heading: 'Getting Started',
           description:
             'Build and deploy your first contract, connect to it from the frontend, and call your smart contract functions - all in less than 30 minutes.',
           iconColor: 'green',
@@ -87,12 +87,12 @@ export const buildGridData = {
         {
           heading: 'Build your App',
           description:
-            'The Flow Client Library (FCL) JS is a package used to interact with user wallets and the Flow blockchain.',
+            'Build a modern frontend for your Flow Cadence app using React Hooks with `@onflow/kit`.  Easily and conveniently access user accounts, sign transactions, and more.',
           iconColor: 'green',
           cardColor: 'black',
           icon: 'flow-client-library',
           variant: 'horizontal',
-          href: 'tools/clients/fcl-js',
+          href: 'tools/kit',
         },
       ],
     },
@@ -159,6 +159,41 @@ export const buildGridData = {
           icon: 'cross-vm-bridge',
           variant: 'horizontal',
           href: 'evm/cadence/vm-bridge',
+        },
+      ],
+    },
+    {
+      title: 'Tools',
+      cards: [
+        {
+          heading: 'Cadence Block Explorer',
+          description:
+            'Search for users, transactions, and contracts on the Flow Cadence blockchain.',
+          iconColor: 'green',
+          cardColor: 'black',
+          icon: 'flow-cadence',
+          variant: 'horizontal',
+          href: 'https://www.flowscan.io/',
+        },
+        {
+          heading: 'EVM Block Explorer',
+          description:
+            'Search for users, transactions, and contracts on the Flow EVM blockchain.',
+          iconColor: 'green',
+          cardColor: 'black',
+          icon: 'evm-on-flow',
+          variant: 'horizontal',
+          href: 'https://evm.flowscan.io/',
+        },
+        {
+          heading: 'Flow Runner',
+          description:
+            'Run Flow Cadence scripts and transactions in the browser with Flow Runner.',
+          iconColor: 'green',
+          cardColor: 'black',
+          icon: 'hello-world',
+          variant: 'horizontal',
+          href: 'https://run.dnz.dev/',
         },
       ],
     },

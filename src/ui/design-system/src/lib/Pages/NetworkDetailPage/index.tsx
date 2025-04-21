@@ -91,10 +91,10 @@ const NetworkDetailPage = ({
             />
           </div>
         </PageSection>
-        <PageSection sectionId="past-sporks">
+        <PageSection sectionId="past-upgrades">
           <div className="container">
             <HeaderWithLink
-              headerLink="past-sporks"
+              headerLink="past-upgrades"
               className="text-h4 xs:font-md mb-8"
             >
               Past Sporks
