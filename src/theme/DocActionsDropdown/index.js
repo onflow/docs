@@ -5,6 +5,13 @@ import styles from './styles.module.css';
 export default function DocActionsDropdown() {
   const [isOpen, setIsOpen] = useState(false);
 
+  const getDocusaurusUrl = () => {
+    // Get the current path and convert it to the Docusaurus docs URL format
+    const currentPath = window.location.pathname;
+    const docsPath = currentPath.replace('/docs/', '');
+    return `https://github.com/onflow/docs/tree/main/docs/${docsPath}.md`;
+  };
+
   const handleCopyMarkdown = () => {
     const content = document.querySelector('article').innerText;
     navigator.clipboard.writeText(content);
@@ -12,26 +19,22 @@ export default function DocActionsDropdown() {
   };
 
   const handleViewMarkdown = () => {
-    const content = document.querySelector('article').innerText;
-    // Convert content to proper markdown format
-    const markdownContent = `# ${document.querySelector('h1').innerText}\n\n${content}`;
-    const blob = new Blob([markdownContent], { type: 'text/markdown' });
-    const url = URL.createObjectURL(blob);
-    window.open(url, '_blank');
+    const docusaurusUrl = getDocusaurusUrl();
+    window.open(docusaurusUrl, '_blank');
     setIsOpen(false);
   };
 
   const handleOpenInChatGPT = () => {
-    const currentUrl = window.location.href;
-    const prompt = `Analyze this documentation: ${currentUrl}. After reading, ask me what I'd like to know. Keep responses focused on the content.`;
+    const docusaurusUrl = getDocusaurusUrl();
+    const prompt = `Analyze this documentation: ${docusaurusUrl}. After reading, ask me what I'd like to know. Keep responses focused on the content.`;
     const encodedPrompt = encodeURIComponent(prompt);
     window.open(`https://chatgpt.com/?hints=search&q=${encodedPrompt}`, '_blank');
     setIsOpen(false);
   };
 
   const handleOpenInClaude = () => {
-    const currentUrl = window.location.href;
-    const prompt = `Review this documentation: ${currentUrl}. Once complete, ask me what questions I have. Stay focused on the provided content.`;
+    const docusaurusUrl = getDocusaurusUrl();
+    const prompt = `Review this documentation: ${docusaurusUrl}. Once complete, ask me what questions I have. Stay focused on the provided content.`;
     const encodedPrompt = encodeURIComponent(prompt);
     window.open(`https://claude.ai/chat/new?prompt=${encodedPrompt}`, '_blank');
     setIsOpen(false);
@@ -66,7 +69,7 @@ export default function DocActionsDropdown() {
             Copy as Markdown
           </button>
           <button onClick={handleViewMarkdown} className={styles.menuItem}>
-            View as Markdown
+            View Source Markdown
           </button>
           <div className={styles.divider} />
           <button onClick={handleOpenFlowKnowledge} className={styles.menuItem}>
