@@ -1,0 +1,30 @@
+.llmButtons {
+  display: flex;
+  gap: 8px;
+  margin: 1rem 0;
+  flex-wrap: wrap;
+}
+
+.llmButton {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 8px 16px;
+  border-radius: 6px;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  background-color: var(--ifm-color-primary);
+  color: white;
+  border: none;
+}
+
+.llmButton:hover {
+  background-color: var(--ifm-color-primary-darker);
+  transform: translateY(-1px);
+}
+
+.llmButton:active {
+  transform: translateY(0);
+}

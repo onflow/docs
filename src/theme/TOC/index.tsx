@@ -5,6 +5,7 @@ import type { Props } from '@theme/TOC';
 
 import styles from './styles.module.css';
 import FeedbackFaces from '@site/src/components/feedbackFaces';
+import PageActionsDropdown from '@site/src/components/PageActionsDropdown';
 
 // Using a custom className
 // This prevents TOCInline/TOCCollapsible getting highlighted by mistake
@@ -15,7 +16,10 @@ export default function TOC({ className, ...props }: Props): JSX.Element {
   return (
     <div className={clsx(styles.tableOfContents, 'thin-scrollbar', className)}>
       <div className="p-1">
-        <h6 className="mb-0 p-1">Rate this page</h6>
+        <div className="flex justify-between items-center mb-1">
+          <h6 className="mb-0 p-1">Rate this page</h6>
+          <PageActionsDropdown />
+        </div>
         <FeedbackFaces />
       </div>
       <TOCItems

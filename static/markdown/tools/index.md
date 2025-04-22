@@ -1,0 +1,46 @@
+---
+sidebar_position: 12
+title: Tools
+description: Essential tools for the Flow blockchain ecosystem
+---
+
+<!-- Import: DocCardList from "@theme/DocCardList" -->
+<!-- Import: { isSamePath } from "@docusaurus/theme-common/internal" -->
+<!-- Import: { useDocsSidebar } from "@docusaurus/plugin-content-docs/client" -->
+<!-- Import: { useLocation } from "@docusaurus/router" -->
+
+<DocCardList items={[
+  ...useDocsSidebar().items.filter(item => !isSamePath(item.href, useLocation().pathname)),
+  {
+    type: 'link',
+    label: 'Flowser',
+    href: 'https://flowser.dev/',
+    description: 'Flowser combines all the tools for local development and gives you a clear UI to inspect the local Flow network.',
+    customProps: {
+      icon: 'https://flowser.dev/icon.png',
+      author: {
+        name: 'Flowser',
+        profileImage:
+          'https://flowser.dev/icon.png',
+      },
+      twitterLink: 'https://twitter.com/onflowser',
+      githubLink: 'https://github.com/onflowser/flowser'
+    }
+  },
+  {
+    type: 'link',
+    label: 'Overflow',
+    href: 'https://github.com/bjartek/overflow',
+    description: 'Overflow is a Go-based DSL for testing and running interactive stories',
+    customProps: {
+      icon: '',
+      author: {
+        name: 'bjartek',
+        profileImage:
+          'https://avatars.githubusercontent.com/u/10621?v=4',
+      },
+      discordLink: 'https://discord.gg/t6GEtHnWFh',
+      githubLink: 'https://github.com/bjartek/overflow'
+    }
+  },
+]}/>

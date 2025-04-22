@@ -1,0 +1,14 @@
+---
+slug: /evm/cross-chain-bridges
+redirect: /ecosystem/bridges
+title: Cross-chain Bridges ↙
+sidebar_position: 8
+---
+
+# Cross-chain Bridges
+
+Go to [Bridges](../ecosystem/bridges.md)
+
+<!-- Import: {Redirect} from "@docusaurus/router" -->
+
+<Redirect to="/ecosystem/bridges" />;

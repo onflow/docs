@@ -1,0 +1,79 @@
+---
+sidebar_position: 1
+title: FCL Rainbowkit Adapter
+description: FCL adapter for using Flow wallets in RainbowKit applications.
+---
+
+:::info
+
+This package is currently in alpha and is subject to change.
+
+:::
+
+# FCL RainbowKit Adapter
+
+Offers a **RainbowKit**-compatible wallet definition that uses Flow’s COA via FCL. Once installed, RainbowKit can display a “Flow Wallet” (or other FCL-enabled wallets) in its wallet selection modal.
+
+## Installation
+
+```bash
+npm install @onflow/fcl-rainbowkit-adapter
+```
+
+## Usage
+
+Below is a typical usage example that shows how to set up a **RainbowKit** config for the Flow testnet, using this adapter. (From your provided sample.)
+
+```ts
+<!-- Import: * as fcl from "@onflow/fcl" -->
+<!-- Import: { createFclConnector, flowWallet } from "@onflow/fcl-rainbowkit-adapter" -->
+<!-- Import: { connectorsForWallets } from "@rainbow-me/rainbowkit" -->
+<!-- Import: { flowTestnet } from "wagmi/chains" -->
+<!-- Import: { createConfig, http } from "wagmi" -->
+
+// Configure FCL (Flow testnet in this example)
+fcl.config({
+  "accessNode.api": "https://rest-testnet.onflow.org",
+  "discovery.wallet": "https://fcl-discovery.onflow.org/testnet/authn",
+  "walletconnect.projectId": "9b70cfa398b2355a5eb9b1cf99f4a981", // example WC projectId
+})
+
+// Create a list of connectors from your wallets
+const connectors = connectorsForWallets([
+  {
+    groupName: "Recommended",
+    wallets: [
+      flowWallet(),
+    ],
+  },
+], {
+  appName: 'RainbowKit demo',
+  projectId: '9b70cfa398b2355a5eb9b1cf99f4a981',
+})
+
+// Wagmi config
+export const config = createConfig({
+  chains: [flowTestnet],
+  connectors,
+  ssr: true,
+  transports: {
+    [flowTestnet.id]: http(),
+  }
+});
+```
+
+## API
+
+### `flowWallet(options?: FlowWalletOptions): RainbowKitWallet`
+
+- Returns a RainbowKit-compatible wallet definition that integrates **@onflow/fcl-ethereum-provider**.
+- **Parameters**
+    - `options?: FlowWalletOptions` – optional configuration, such as names/icons or custom gateway endpoints.
+- **Returns**: A `RainbowKitWallet` object to be included in `connectorsForWallets`.
+
+### `createFclConnector(config?: CreateFclConnectorOptions): Connector`
+
+- A lower-level helper to build your own FCL-based EIP-1193 connectors for RainbowKit if you don’t want the preconfigured `flowWallet`.
+- **Parameters**
+    - `config?: CreateFclConnectorOptions` – typical Wagmi + FCL config object (i.e., chain ID, network URL, FCL services, etc.).
+- **Returns**: A valid Wagmi `Connector` for EVM interactions via FCL.

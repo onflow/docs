@@ -1,0 +1,71 @@
+---
+sidebar_position: 1
+title: FCL Wagmi Adapter
+description: FCL adapter for using Cadence-Owned Accounts (COAs) in Wagmi applications.
+---
+
+:::info
+
+This package is currently in alpha and is subject to change.
+
+:::
+
+# FCL Wagmi Adapter
+
+Provides a **Wagmi** connector that uses **@onflow/fcl-ethereum-provider** under the hood, allowing you to integrate Flow-based Cadence-Owned Accounts (COAs) seamlessly into Wagmi applications.
+
+## Installation
+
+```bash
+npm install @onflow/fcl-wagmi-adapter
+```
+
+## Usage
+
+**Basic Example**:
+
+```ts
+<!-- Import: { createClient, configureChains } from "wagmi" -->
+<!-- Import: { fclWagmiConnector } from "@onflow/fcl-wagmi-adapter" -->
+<!-- Import: { flowTestnet } from "wagmi/chains" -->
+<!-- Import: { publicProvider } from "wagmi/providers/public" -->
+<!-- Import: * as fcl from "@onflow/fcl" -->
+
+// Configure FCL for Flow
+fcl.config({
+  "accessNode.api": "https://rest-testnet.onflow.org",
+  "discovery.wallet": "https://fcl-discovery.onflow.org/testnet/authn",
+})
+
+// Set up Wagmi for Flow Testnet
+const { chains, provider } = configureChains(
+  [flowTestnet],
+  [publicProvider()]
+)
+
+// Create a connector that uses FCL under the hood
+const fclConnector = fclWagmiConnector({
+  // optional: you can pass any config your provider or FCL needs
+})
+
+// Create the Wagmi client
+const wagmiClient = createClient({
+  autoConnect: true,
+  connectors: [fclConnector],
+  provider,
+})
+
+// The rest of your dApp logic...
+```
+
+## API
+
+### `fclWagmiConnector(options?: FclWagmiConnectorOptions): Connector`
+
+- **Parameters**
+    - `options?: object` – any additional configuration for the underlying FCL provider (gateway URL, custom FCL service, etc.)
+- **Returns**: A Wagmi `Connector` object that can be used in `createClient` or `getDefaultConfig`.
+
+**Notes**:
+- This connector essentially wraps `@onflow/fcl-ethereum-provider` as an EIP-1193 provider to talk to Flow EVM via Wagmi.
+- The user’s authenticated COA is exposed as the “account” in Wagmi context.
