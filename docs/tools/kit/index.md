@@ -1,7 +1,7 @@
 ---
-title: "@onflow/kit"
+title: '@onflow/kit'
 description: React hooks for interacting with the Flow blockchain.
-sidebar_position: 2
+sidebar_position: 1
 ---
 
 # @onflow/kit
