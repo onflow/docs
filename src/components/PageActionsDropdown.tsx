@@ -1,4 +1,4 @@
-import React, { Fragment, useState } from 'react';
+import React, { useState } from 'react';
 import { createPortal } from 'react-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
@@ -12,7 +12,6 @@ import styles from './PageActionsDropdown.module.css';
 
 export default function PageActionsDropdown(): JSX.Element {
   const [isOpen, setIsOpen] = useState(false);
-  const [copyStatus, setCopyStatus] = useState('');
 
   // Get the current path and create the markdown URL
   const currentPath = window.location.pathname;
@@ -45,8 +44,6 @@ export default function PageActionsDropdown(): JSX.Element {
       const markdown = await response.text();
       await navigator.clipboard.writeText(markdown);
 
-      setCopyStatus('Copied Markdown to clipboard!');
-      setTimeout(() => setCopyStatus(''), 2000);
       setIsOpen(false); // Close the dropdown after copying
     } catch (err) {
       console.error('Failed to copy markdown:', err);
@@ -55,13 +52,9 @@ export default function PageActionsDropdown(): JSX.Element {
       try {
         const pageContent = document.querySelector('article')?.innerText ?? '';
         await navigator.clipboard.writeText(pageContent);
-        setCopyStatus('Copied page content (fallback)');
-        setTimeout(() => setCopyStatus(''), 2000);
         setIsOpen(false);
       } catch (fallbackErr) {
         console.error('Fallback copy failed:', fallbackErr);
-        setCopyStatus('Failed to copy');
-        setTimeout(() => setCopyStatus(''), 2000);
       }
     }
   };
@@ -122,25 +115,6 @@ export default function PageActionsDropdown(): JSX.Element {
             className={styles.chevronIcon}
           />
         </button>
-
-        {copyStatus && (
-          <div
-            style={{
-              position: 'absolute',
-              top: '-40px',
-              left: '50%',
-              transform: 'translateX(-50%)',
-              backgroundColor: '#4CAF50',
-              color: 'white',
-              padding: '8px 12px',
-              borderRadius: '4px',
-              zIndex: 10000,
-              whiteSpace: 'nowrap',
-            }}
-          >
-            {copyStatus}
-          </div>
-        )}
       </div>
 
       {isOpen &&
