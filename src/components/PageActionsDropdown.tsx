@@ -9,8 +9,9 @@ import {
   faChevronDown,
 } from '@fortawesome/free-solid-svg-icons';
 import styles from './PageActionsDropdown.module.css';
+import BrowserOnly from '@docusaurus/BrowserOnly';
 
-export default function PageActionsDropdown(): JSX.Element {
+function PageActionsDropdownContent(): JSX.Element {
   const [isOpen, setIsOpen] = useState(false);
 
   // Get the current path and create the markdown URL
@@ -192,4 +193,8 @@ export default function PageActionsDropdown(): JSX.Element {
         )}
     </div>
   );
+}
+
+export default function PageActionsDropdown() {
+  return <BrowserOnly>{() => <PageActionsDropdownContent />}</BrowserOnly>;
 }
