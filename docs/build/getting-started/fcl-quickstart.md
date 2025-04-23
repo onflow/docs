@@ -188,7 +188,7 @@ const { data, isLoading, error, refetch } = useFlowQuery({
         return formattedCount
     }
   `,
-  enabled: true,
+  query: { enabled: true },
 });
 
 // Use the count data in your component as needed.
@@ -313,7 +313,7 @@ export default function Home() {
           return formattedCount
       }
     `,
-    enabled: true,
+    query: { enabled: true },
   });
 
   const {
