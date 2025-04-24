@@ -110,7 +110,7 @@ _This update method only works on Windows 10, 8.1, or 7 (SP1, with [PowerShell 3
     iex "& { $(irm 'https://raw.githubusercontent.com/onflow/flow-cli/master/install.ps1') }"
     ```
 
-# Uninstalling Flow CLI
+## Uninstalling Flow CLI
 
 To remove the flow CLI you can run the following command if it was previously installed using a pre-built binary. 
 
