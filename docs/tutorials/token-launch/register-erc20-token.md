@@ -2,7 +2,16 @@
 title: Register Your ERC20 Token on Flow EVM
 description: 'Register your ERC20 token on Flow EVM so it appears in Flow Wallet, MetaMask, and other ecosystem apps.'
 sidebar_label: Register ERC20 Token
-sidebar_position: 2
+sidebar_position: 1
+keywords:
+  - ERC20
+  - Fungible Token
+  - Flow EVM
+  - Flow Wallet
+  - MetaMask
+  - Token List
+  - Register ERC20 Token
+  - Flow Official Assets
 ---
 
 # Register Your ERC20 Token on Flow EVM

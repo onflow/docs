@@ -59,7 +59,8 @@ Learn how to leverage AI tools to enhance your Flow development experience. Thes
 
 Learn how to launch your own token on Flow using Cadence and EVM. This guide covers the process of registering and deploying tokens that can be used across both virtual machines.
 
-- [Register a Token] - Step-by-step guide to registering and deploying your token on Flow
+- [Register Your ERC20 Token] - Learn how to register your ERC20 token on Flow EVM based on Github Pull Request process so it appears in Flow standard Token List which is used by Flow Wallet, MetaMask, and other ecosystem apps.
+- [Register Your Assets in Cadence] - Learn how to register your Fungible Token or Non-Fungible Token on Flow through Cadence transaction so it appears in Flow Wallet, IncrementFi, and other ecosystem apps.
 
 ## Cross-VM Applications
 
@@ -88,7 +89,6 @@ Explore Flow's unique capabilities through fun benchmark applications that showc
 [Use Flow Knowledge Base in ChatGPT]: ai-plus-flow/chatgpt/index.md
 [Flow Data Sources]: ai-plus-flow/flow-data-sources.md
 [Build AI Agents with AgentKit]: ai-plus-flow/agentkit-flow-guide.md
-[Register a Token]: token-launch/register-token.md
 [Introduction to Cross-VM Applications]: cross-vm-apps/introduction.md
 [Interacting with COAs]: cross-vm-apps/interacting-with-coa.md
 [Batched EVM Transactions]: cross-vm-apps/batched-evm-transactions.md
@@ -97,3 +97,5 @@ Explore Flow's unique capabilities through fun benchmark applications that showc
 [Secure Randomness with Commit-Reveal in Cadence]: native-vrf/commit-reveal-cadence.md
 [Deploy a Solidity Contract Using Cadence]: native-vrf/deploy-solidity-contract.md
 [Add Flow Cadence to Your wagmi App]: ./cross-vm-apps/add-to-wagmi.md
+[Register Your Assets in Cadence]: ./token-launch/register-cadence-assets.md
+[Register Your ERC20 Token]: ./token-launch/register-erc20-token.md

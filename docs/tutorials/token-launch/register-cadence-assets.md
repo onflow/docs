@@ -3,6 +3,16 @@ title: Register Your Assets on Flow
 description: 'Register your Fungible Token or Non-Fungible Token on Flow so it appears in Flow Wallet, IncrementFi, and other ecosystem apps.'
 sidebar_label: Register Cadence Assets
 sidebar_position: 2
+keywords:
+  - Fungible Token
+  - Non-Fungible Token
+  - Flow
+  - Flow Wallet
+  - IncrementFi
+  - Token List
+  - Register Fungible Token
+  - Register Non-Fungible Token
+  - Flow Official Assets
 ---
 
 # Register Your Assets on Flow
