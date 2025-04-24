@@ -32,8 +32,8 @@ export default function DocActionsDropdown() {
   };
 
   const handleViewMarkdown = () => {
-    const docusaurusUrl = getDocusaurusUrl();
-    window.open(docusaurusUrl, '_blank');
+    const rawUrl = getRawMarkdownUrl();
+    window.open(rawUrl, '_blank');
     setIsOpen(false);
   };
 
