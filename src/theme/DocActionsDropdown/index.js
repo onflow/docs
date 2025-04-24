@@ -5,40 +5,85 @@ import styles from './styles.module.css';
 export default function DocActionsDropdown() {
   const [isOpen, setIsOpen] = useState(false);
 
-  const getDocusaurusUrl = () => {
-    const currentPath = window.location.pathname;
-    const docsPath = currentPath.replace('/docs/', '');
-    return `https://github.com/onflow/docs/tree/main/docs/${docsPath}.md`;
+  const buildRawUrl = (path, isIndex) => {
+    if (isIndex) {
+      // For index files, use path/index.md
+      return `https://raw.githubusercontent.com/onflow/docs/main/docs/${path}/index.md`;
+    } else {
+      // For regular files, use path.md
+      return `https://raw.githubusercontent.com/onflow/docs/main/docs/${path}.md`;
+    }
   };
 
-  const getRawMarkdownUrl = () => {
-    const currentPath = window.location.pathname;
-    const docsPath = currentPath.replace('/docs/', '');
-    return `https://raw.githubusercontent.com/onflow/docs/main/docs/${docsPath}.md`;
+  const fetchMarkdown = async (path) => {
+    // First, try to determine if this is an index.md file by checking both paths
+    const directPath = `https://raw.githubusercontent.com/onflow/docs/main/docs/${path}.md`;
+    const indexPath = `https://raw.githubusercontent.com/onflow/docs/main/docs/${path}/index.md`;
+    
+    try {
+      // Try the index path first
+      const indexResponse = await fetch(indexPath);
+      if (indexResponse.ok) {
+        return { url: indexPath, text: await indexResponse.text() };
+      }
+      
+      // If index path fails, try the direct path
+      const directResponse = await fetch(directPath);
+      if (directResponse.ok) {
+        return { url: directPath, text: await directResponse.text() };
+      }
+      
+      // If both fail, return null
+      return null;
+    } catch (error) {
+      console.error('Error fetching markdown:', error);
+      return null;
+    }
   };
 
   const handleCopyMarkdown = async () => {
     try {
-      const rawUrl = getRawMarkdownUrl();
-      const response = await fetch(rawUrl);
-      const markdown = await response.text();
-      navigator.clipboard.writeText(markdown);
-      setIsOpen(false);
+      const path = window.location.pathname.replace(/^\/docs\/?/, '').replace(/\/$/, '');
+      const result = await fetchMarkdown(path);
+      
+      if (result) {
+        navigator.clipboard.writeText(result.text);
+        setIsOpen(false);
+      } else {
+        throw new Error('Could not fetch markdown');
+      }
     } catch (error) {
-      console.error('Error fetching markdown:', error);
-      // Fallback to the GitHub URL if raw fetch fails
-      window.open(getDocusaurusUrl(), '_blank');
+      console.error('Error copying markdown:', error);
+      // Fallback to GitHub
+      const currentPath = window.location.pathname.replace(/^\/docs\/?/, '');
+      window.open(`https://github.com/onflow/docs/tree/main/docs/${currentPath}`, '_blank');
     }
   };
 
-  const handleViewMarkdown = () => {
-    const rawUrl = getRawMarkdownUrl();
-    window.open(rawUrl, '_blank');
-    setIsOpen(false);
+  const handleViewMarkdown = async () => {
+    try {
+      const path = window.location.pathname.replace(/^\/docs\/?/, '').replace(/\/$/, '');
+      const result = await fetchMarkdown(path);
+      
+      if (result) {
+        window.open(result.url, '_blank');
+        setIsOpen(false);
+      } else {
+        // Fallback to GitHub
+        const currentPath = window.location.pathname.replace(/^\/docs\/?/, '');
+        window.open(`https://github.com/onflow/docs/tree/main/docs/${currentPath}`, '_blank');
+      }
+    } catch (error) {
+      console.error('Error viewing markdown:', error);
+      // Fallback to GitHub
+      const currentPath = window.location.pathname.replace(/^\/docs\/?/, '');
+      window.open(`https://github.com/onflow/docs/tree/main/docs/${currentPath}`, '_blank');
+    }
   };
 
   const handleOpenInChatGPT = () => {
-    const docusaurusUrl = getDocusaurusUrl();
+    const currentPath = window.location.pathname.replace(/^\/docs\/?/, '');
+    const docusaurusUrl = `https://github.com/onflow/docs/tree/main/docs/${currentPath}`;
     const prompt = `Analyze this documentation: ${docusaurusUrl}. After reading, ask me what I'd like to know. Keep responses focused on the content.`;
     const encodedPrompt = encodeURIComponent(prompt);
     window.open(`https://chatgpt.com/?hints=search&q=${encodedPrompt}`, '_blank');
@@ -46,7 +91,8 @@ export default function DocActionsDropdown() {
   };
 
   const handleOpenInClaude = () => {
-    const docusaurusUrl = getDocusaurusUrl();
+    const currentPath = window.location.pathname.replace(/^\/docs\/?/, '');
+    const docusaurusUrl = `https://github.com/onflow/docs/tree/main/docs/${currentPath}`;
     const prompt = `Review this documentation: ${docusaurusUrl}. Once complete, ask me what questions I have. Stay focused on the provided content.`;
     const encodedPrompt = encodeURIComponent(prompt);
     window.open(`https://claude.ai/chat/new?prompt=${encodedPrompt}`, '_blank');
