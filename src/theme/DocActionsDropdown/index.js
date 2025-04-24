@@ -6,16 +6,29 @@ export default function DocActionsDropdown() {
   const [isOpen, setIsOpen] = useState(false);
 
   const getDocusaurusUrl = () => {
-    // Get the current path and convert it to the Docusaurus docs URL format
     const currentPath = window.location.pathname;
     const docsPath = currentPath.replace('/docs/', '');
     return `https://github.com/onflow/docs/tree/main/docs/${docsPath}.md`;
   };
 
-  const handleCopyMarkdown = () => {
-    const content = document.querySelector('article').innerText;
-    navigator.clipboard.writeText(content);
-    setIsOpen(false);
+  const getRawMarkdownUrl = () => {
+    const currentPath = window.location.pathname;
+    const docsPath = currentPath.replace('/docs/', '');
+    return `https://raw.githubusercontent.com/onflow/docs/main/docs/${docsPath}.md`;
+  };
+
+  const handleCopyMarkdown = async () => {
+    try {
+      const rawUrl = getRawMarkdownUrl();
+      const response = await fetch(rawUrl);
+      const markdown = await response.text();
+      navigator.clipboard.writeText(markdown);
+      setIsOpen(false);
+    } catch (error) {
+      console.error('Error fetching markdown:', error);
+      // Fallback to the GitHub URL if raw fetch fails
+      window.open(getDocusaurusUrl(), '_blank');
+    }
   };
 
   const handleViewMarkdown = () => {
