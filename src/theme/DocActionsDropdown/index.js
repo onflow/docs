@@ -82,18 +82,16 @@ export default function DocActionsDropdown() {
   };
 
   const handleOpenInChatGPT = () => {
-    const currentPath = window.location.pathname.replace(/^\/docs\/?/, '');
-    const docusaurusUrl = `https://github.com/onflow/docs/tree/main/docs/${currentPath}`;
-    const prompt = `Analyze this documentation: ${docusaurusUrl}. After reading, ask me what I'd like to know. Keep responses focused on the content.`;
+    const currentUrl = window.location.href;
+    const prompt = `Analyze this Flow documentation page: ${currentUrl}. After reading, ask me what I'd like to know. Keep responses focused on the content.`;
     const encodedPrompt = encodeURIComponent(prompt);
     window.open(`https://chatgpt.com/?hints=search&q=${encodedPrompt}`, '_blank');
     setIsOpen(false);
   };
 
   const handleOpenInClaude = () => {
-    const currentPath = window.location.pathname.replace(/^\/docs\/?/, '');
-    const docusaurusUrl = `https://github.com/onflow/docs/tree/main/docs/${currentPath}`;
-    const prompt = `Review this documentation: ${docusaurusUrl}. Once complete, ask me what questions I have. Stay focused on the provided content.`;
+    const currentUrl = window.location.href;
+    const prompt = `Review this Flow documentation page: ${currentUrl}. Once complete, ask me what questions I have. Stay focused on the provided content.`;
     const encodedPrompt = encodeURIComponent(prompt);
     window.open(`https://claude.ai/chat/new?prompt=${encodedPrompt}`, '_blank');
     setIsOpen(false);
