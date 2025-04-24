@@ -81,20 +81,60 @@ export default function DocActionsDropdown() {
     }
   };
 
-  const handleOpenInChatGPT = () => {
-    const currentUrl = window.location.href;
-    const prompt = `Analyze this Flow documentation page: ${currentUrl}. After reading, ask me what I'd like to know. Keep responses focused on the content.`;
-    const encodedPrompt = encodeURIComponent(prompt);
-    window.open(`https://chatgpt.com/?hints=search&q=${encodedPrompt}`, '_blank');
-    setIsOpen(false);
+  const handleOpenInChatGPT = async () => {
+    try {
+      const path = window.location.pathname.replace(/^\/docs\/?/, '').replace(/\/$/, '');
+      const result = await fetchMarkdown(path);
+      
+      if (result) {
+        const prompt = `Analyze this documentation: ${result.url}. After reading, ask me what I'd like to know. Keep responses focused on the content.`;
+        const encodedPrompt = encodeURIComponent(prompt);
+        window.open(`https://chatgpt.com/?q=${encodedPrompt}`, '_blank');
+      } else {
+        // Fallback to current URL
+        const currentUrl = window.location.href;
+        const prompt = `Analyze this documentation: ${currentUrl}. After reading, ask me what I'd like to know. Keep responses focused on the content.`;
+        const encodedPrompt = encodeURIComponent(prompt);
+        window.open(`https://chatgpt.com/?q=${encodedPrompt}`, '_blank');
+      }
+      setIsOpen(false);
+    } catch (error) {
+      console.error('Error opening in ChatGPT:', error);
+      // Fallback to current URL
+      const currentUrl = window.location.href;
+      const prompt = `Analyze this documentation: ${currentUrl}. After reading, ask me what I'd like to know. Keep responses focused on the content.`;
+      const encodedPrompt = encodeURIComponent(prompt);
+      window.open(`https://chatgpt.com/?q=${encodedPrompt}`, '_blank');
+      setIsOpen(false);
+    }
   };
 
-  const handleOpenInClaude = () => {
-    const currentUrl = window.location.href;
-    const prompt = `Review this Flow documentation page: ${currentUrl}. Once complete, ask me what questions I have. Stay focused on the provided content.`;
-    const encodedPrompt = encodeURIComponent(prompt);
-    window.open(`https://claude.ai/chat/new?prompt=${encodedPrompt}`, '_blank');
-    setIsOpen(false);
+  const handleOpenInClaude = async () => {
+    try {
+      const path = window.location.pathname.replace(/^\/docs\/?/, '').replace(/\/$/, '');
+      const result = await fetchMarkdown(path);
+      
+      if (result) {
+        const prompt = `Review this documentation: ${result.url}. Once complete, ask me what questions I have. Stay focused on the provided content.`;
+        const encodedPrompt = encodeURIComponent(prompt);
+        window.open(`https://claude.ai/chat/new?prompt=${encodedPrompt}`, '_blank');
+      } else {
+        // Fallback to current URL
+        const currentUrl = window.location.href;
+        const prompt = `Review this documentation: ${currentUrl}. Once complete, ask me what questions I have. Stay focused on the provided content.`;
+        const encodedPrompt = encodeURIComponent(prompt);
+        window.open(`https://claude.ai/chat/new?prompt=${encodedPrompt}`, '_blank');
+      }
+      setIsOpen(false);
+    } catch (error) {
+      console.error('Error opening in Claude:', error);
+      // Fallback to current URL
+      const currentUrl = window.location.href;
+      const prompt = `Review this documentation: ${currentUrl}. Once complete, ask me what questions I have. Stay focused on the provided content.`;
+      const encodedPrompt = encodeURIComponent(prompt);
+      window.open(`https://claude.ai/chat/new?prompt=${encodedPrompt}`, '_blank');
+      setIsOpen(false);
+    }
   };
 
   const handleOpenFlowKnowledge = () => {
