@@ -132,4 +132,13 @@
 
 [data-theme="dark"] .divider {
   background: var(--ifm-color-emphasis-300);
+}
+
+.copySuccess {
+  background-color: #28a745 !important;
+  transition: background-color 0.3s ease;
+}
+
+.copySuccess:hover {
+  background-color: #218838 !important;
 } 

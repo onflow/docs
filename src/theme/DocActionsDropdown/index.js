@@ -1,9 +1,20 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import clsx from 'clsx';
 import styles from './styles.module.css';
 
 export default function DocActionsDropdown() {
   const [isOpen, setIsOpen] = useState(false);
+  const [copySuccess, setCopySuccess] = useState(false);
+
+  // Reset copy success message after a delay
+  useEffect(() => {
+    if (copySuccess) {
+      const timer = setTimeout(() => {
+        setCopySuccess(false);
+      }, 2000);
+      return () => clearTimeout(timer);
+    }
+  }, [copySuccess]);
 
   const buildRawUrl = (path, isIndex) => {
     if (isIndex) {
@@ -47,8 +58,12 @@ export default function DocActionsDropdown() {
       const result = await fetchMarkdown(path);
       
       if (result) {
-        navigator.clipboard.writeText(result.text);
-        setIsOpen(false);
+        await navigator.clipboard.writeText(result.text);
+        setCopySuccess(true);
+        // Only close dropdown if it's open and user clicked on menu item
+        if (isOpen) {
+          setIsOpen(false);
+        }
       } else {
         throw new Error('Could not fetch markdown');
       }
@@ -150,10 +165,12 @@ export default function DocActionsDropdown() {
   return (
     <div className={styles.dropdownContainer}>
       <button
-        className={styles.dropdownButton}
+        className={clsx(styles.dropdownButton, {
+          [styles.copySuccess]: copySuccess
+        })}
         onClick={handleCopyMarkdown}
       >
-        Copy as Markdown
+        {copySuccess ? 'Copied!' : 'Copy as Markdown'}
         <span className={styles.arrow} onClick={handleArrowClick} />
       </button>
       {isOpen && (
