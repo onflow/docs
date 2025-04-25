@@ -71,6 +71,10 @@
   overflow-y: auto;
 }
 
+.menuItemWithDescription {
+  padding: 0;
+}
+
 .menuItem {
   display: block;
   width: 100%;
@@ -84,9 +88,26 @@
   transition: background-color 0.2s ease;
 }
 
+.menuItemTitle {
+  display: block;
+  font-weight: 500;
+  margin-bottom: 0.2rem;
+}
+
+.menuItemDescription {
+  display: block;
+  font-size: 0.8rem;
+  color: var(--ifm-color-emphasis-700);
+  opacity: 0.8;
+}
+
 .menuItem:hover {
   background: var(--ifm-color-emphasis-100);
   color: var(--ifm-font-color-base);
+}
+
+.menuItem:hover .menuItemDescription {
+  color: var(--ifm-color-emphasis-800);
 }
 
 .divider {

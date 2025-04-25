@@ -151,27 +151,39 @@ export default function DocActionsDropdown() {
     <div className={styles.dropdownContainer}>
       <button
         className={styles.dropdownButton}
-        onClick={handleOpenInChatGPT}
+        onClick={handleCopyMarkdown}
       >
-        Open in ChatGPT
+        Copy as Markdown
         <span className={styles.arrow} onClick={handleArrowClick} />
       </button>
       {isOpen && (
         <div className={styles.dropdownMenu}>
-          <button onClick={handleOpenInClaude} className={styles.menuItem}>
-            Open in Claude
-          </button>
+          <div className={styles.menuItemWithDescription}>
+            <button onClick={handleOpenInChatGPT} className={styles.menuItem}>
+              <span className={styles.menuItemTitle}>Open in ChatGPT</span>
+              <span className={styles.menuItemDescription}>Ask GPT about this content</span>
+            </button>
+          </div>
+          <div className={styles.menuItemWithDescription}>
+            <button onClick={handleOpenInClaude} className={styles.menuItem}>
+              <span className={styles.menuItemTitle}>Open in Claude</span>
+              <span className={styles.menuItemDescription}>Ask Claude about this content</span>
+            </button>
+          </div>
           <div className={styles.divider} />
-          <button onClick={handleCopyMarkdown} className={styles.menuItem}>
-            Copy as Markdown
-          </button>
-          <button onClick={handleViewMarkdown} className={styles.menuItem}>
-            View Source Markdown
-          </button>
+          <div className={styles.menuItemWithDescription}>
+            <button onClick={handleViewMarkdown} className={styles.menuItem}>
+              <span className={styles.menuItemTitle}>View Source Markdown</span>
+              <span className={styles.menuItemDescription}>See the raw markdown file</span>
+            </button>
+          </div>
           <div className={styles.divider} />
-          <button onClick={handleOpenFlowKnowledge} className={styles.menuItem}>
-            Full Flow Knowledge Source
-          </button>
+          <div className={styles.menuItemWithDescription}>
+            <button onClick={handleOpenFlowKnowledge} className={styles.menuItem}>
+              <span className={styles.menuItemTitle}>Full Flow Knowledge Source</span>
+              <span className={styles.menuItemDescription}>Integrate all Flow documentation</span>
+            </button>
+          </div>
         </div>
       )}
     </div>
