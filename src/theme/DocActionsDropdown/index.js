@@ -162,6 +162,23 @@ export default function DocActionsDropdown() {
     setIsOpen(!isOpen);
   };
 
+  // Close dropdown when clicking outside
+  useEffect(() => {
+    if (isOpen) {
+      const handleClickOutside = (event) => {
+        const container = document.querySelector(`.${styles.dropdownContainer}`);
+        if (container && !container.contains(event.target)) {
+          setIsOpen(false);
+        }
+      };
+      
+      document.addEventListener('click', handleClickOutside);
+      return () => {
+        document.removeEventListener('click', handleClickOutside);
+      };
+    }
+  }, [isOpen, styles.dropdownContainer]);
+
   return (
     <div className={styles.dropdownContainer}>
       <button
@@ -169,12 +186,20 @@ export default function DocActionsDropdown() {
           [styles.copySuccess]: copySuccess
         })}
         onClick={handleCopyMarkdown}
+        aria-expanded={isOpen}
+        title="Copy as Markdown"
       >
         {copySuccess ? 'Copied!' : 'Copy as Markdown'}
-        <span className={styles.arrow} onClick={handleArrowClick} />
+        <span className={styles.arrow} onClick={handleArrowClick} title="Show more options" />
       </button>
       {isOpen && (
         <div className={styles.dropdownMenu}>
+          <div className={styles.menuItemWithDescription}>
+            <button onClick={handleCopyMarkdown} className={styles.menuItem}>
+              <span className={styles.menuItemTitle}>Copy as Markdown</span>
+              <span className={styles.menuItemDescription}>Copy the page content as markdown</span>
+            </button>
+          </div>
           <div className={styles.menuItemWithDescription}>
             <button onClick={handleOpenInChatGPT} className={styles.menuItem}>
               <span className={styles.menuItemTitle}>Open in ChatGPT</span>
