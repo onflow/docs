@@ -36,8 +36,13 @@ The following works for both fungible and non-fungible tokens on Flow Cadence or
    - Otherwise, the **first transaction** registers the token to **VM Bridge** (costs **1 $FLOW**).
    - After that, click **"Register"** again and sign the **second transaction** to finalize the process.
 
-Note: the ERC-20 token registered with this method will use the default logo of Flow Official Assets.  
+:::warning
+
+ERC-20 tokens registered with this method will use the default logo of Flow Official Assets.
+
 If you want to register your ERC-20 token on Flow EVM with your customized logo, you should follow the [Register ERC-20 Token on Flow EVM] guide.
+
+:::
 
 ---
 
