@@ -67,7 +67,7 @@ Rather than making each node perform all duties, Flow splits the responsibilitie
 
 Every transaction is still validated by the network - but **each node only handles a specific stage**, allowing them to specialize and **optimize for their role**. This specialization unlocks massive gains in **throughput**, **efficiency**, and **scalability** - without sacrificing decentralization or composability.
 
-### Flow node roles and what they do
+### Flow Node Roles and What They Do
 
 |                                          |  Node type   | Responsibility                                                                                                                             | What do the nodes of this role do?                                                                                                                              |
 | ---------------------------------------- | :----------: | :----------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------- |
