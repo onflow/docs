@@ -57,11 +57,11 @@ Second-generation blockchains typically address this in one of two ways:
 
 The first approach risks validator centralization and cartelization. The second shifts the burden to developers, who must manage cross-shard or cross-chain infrastructure - **introducing developer overhead and new failure modes**.
 
-Flow offers a new path: pipelining applied to blockchain networks.
+Flow offers a new path: **pipelining** applied to blockchain networks.
 
 ### The Flow Alternative: Modular Design and Pipelining
 
-Flow applies **pipelining**, a proven method from manufacturing and computing, to blockchain consensus and execution.
+Flow applies pipelining, a proven method from manufacturing and computing, to blockchain consensus and execution.
 
 Rather than making each node perform all duties, Flow splits the responsibilities across **five specialized node roles**.
 
