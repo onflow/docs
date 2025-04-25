@@ -13,11 +13,11 @@ Flow introduces a new paradigm in blockchain architecture - **an [MEV-resistant]
 
 Flow ships what roll-ups only promise: **a full modular feature-set on a single L1**.
 
-- **Decentralized sequencing** via Consensus + Collector roles - no central bottleneck and MEV-resistance
+- **Decentralized sequencing** via Consensus + Collector roles - no central bottleneck and [MEV-resistance]
 - **Native data availability** - Flow's architecture ensures all necessary state data is available within the protocol, allowing nodes to verify state without relying on an external data availability layer
 - **Execution / verification split** for lightweight validators, yet one global state for atomic composability
-- **Protocol-level account abstraction:** multi-key wallets, gas sponsorship, scoped capabilities
-- **Dual runtimes:** EVM-equivalent alongside Cadence, so Solidity and resource-oriented contracts live side-by-side
+- **Protocol-level [account abstraction]:** multi-key wallets, gas sponsorship, scoped capabilities
+- **Dual runtimes:** [EVM equivalence] alongside Cadence, so Solidity and resource-oriented contracts live side-by-side
 
 To appreciate Flow's architecture, it's important to first understand the core challenges in building performant blockchains - and then explore how Flow's **multi-role architecture** addresses them directly.
 
@@ -88,3 +88,6 @@ In the next section, lets look at how Flow multi-role architecture solves those 
 
 [MEV-resistant]: ../../build/basics/mev-resistance.md
 [user safety]: ./user-safety.md
+[MEV-resistance]: ../../build/basics/mev-resistance.md
+[account abstraction]: ../../build/basics/accounts.md
+[EVM equivalence]: ../../evm/about.md
