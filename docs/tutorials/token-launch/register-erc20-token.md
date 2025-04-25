@@ -38,7 +38,7 @@ Steps to submit your PRs:
 3. **Add/Update your token to the list**
     - For new Tokens:
         - Create the token folders in the `tokens/registry` directory.
-        - The name of the token folders should be the same as the token's contract address.
+        - The name of the token folders must be the same as the token's contract address.
            - e.g. `tokens/registry/0x1234567890123456789012345678901234567890`
            - for Testnet tokens, the folder should be `tokens/registry/testnet:0x1234567890123456789012345678901234567890`
         - Put the required metadata file in the token folder, at least one of the following files should be included:
