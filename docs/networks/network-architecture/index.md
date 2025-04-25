@@ -1,5 +1,5 @@
 ---
-title: Flow's Network Architecture
+title: Flow Network Architecture
 sidebar_position: 1
 ---
 
@@ -14,14 +14,14 @@ Flow introduces a new paradigm in blockchain architecture - **an [MEV-resistant]
 Flow ships what roll-ups only promise: **a full modular feature-set on a single L1**.
 
 - **Decentralized sequencing** via Consensus + Collector roles - no central bottleneck and [MEV-resistance]
-- **Native data availability** - Flow's architecture ensures all necessary state data is available within the protocol, allowing nodes to verify state without relying on an external data availability layer
+- **Native data availability** - Flow architecture ensures all necessary state data is available within the protocol, allowing nodes to verify state without relying on an external data availability layer
 - **Execution / verification split** for lightweight validators, yet one global state for atomic composability
 - **Protocol-level [account abstraction]:** multi-key wallets, gas sponsorship, scoped capabilities
 - **Dual runtimes:** [EVM equivalence] alongside Cadence, so Solidity and resource-oriented contracts live side-by-side
 
-To appreciate Flow's architecture, it's important to first understand the core challenges in building performant blockchains - and then explore how Flow's **multi-role architecture** addresses them directly.
+To appreciate architecture of Flow, it's important to first understand the core challenges in building performant blockchains - and then explore how the Flow **multi-role architecture** addresses them directly.
 
-## What Problems Does Flow's Multi-Role Architecture Solve?
+## What Problems Does the Flow Multi-Role Architecture Solve?
 
 ### 1. The Blockchain Trilemma
 
@@ -59,7 +59,7 @@ The first approach risks validator centralization and cartelization. The second 
 
 Flow offers a new path: pipelining applied to blockchain networks.
 
-### Flow's Alternative: Modular Design and Pipelining
+### The Flow Alternative: Modular Design and Pipelining
 
 Flow applies **pipelining**, a proven method from manufacturing and computing, to blockchain consensus and execution.
 
@@ -72,7 +72,7 @@ Every transaction is still validated by the network - but **each node only handl
 |                                          |  Node type   | Responsibility                                                                                                                             | What do the nodes of this role do?                                                                                                                              |
 | ---------------------------------------- | :----------: | :----------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | ![collection](images/collection.png)     |  Collection  | Collection nodes act as a censorship-resistant data availability layer, which caches transactions for subsequent execution.                | Collection nodes order transactions into batches known as collection.                                                                                           |
-| ![consensus](images/consensus.png)       |  Consensus   | The consensus committee serves as the security authority in the network and orchestrates Flow's transaction processing pipeline.           | Consensus nodes order collections into blocks and commit execution results after verification.                                                                  |
+| ![consensus](images/consensus.png)       |  Consensus   | The consensus committee serves as the security authority in the network and orchestrates the Flow transaction processing pipeline.         | Consensus nodes order collections into blocks and commit execution results after verification.                                                                  |
 | ![execution](images/execution.png)       |  Execution   | Execution nodes provide the computational resources for executing transactions and maintaining the state.                                  | Execution nodes execute the transaction and record state changes.                                                                                               |
 | ![verification](images/verification.png) | Verification | Verification nodes ensure that transactions are truthfully executed.                                                                       | Verification nodes verify the work of the execution nodes. They either approve or disagree with their results, reporting their findings to the consensus nodes. |
 | ![access](images/access.png)             |    Access    | Access Nodes route transactions into the network and replicate (parts of) the state and transaction results for external clients to query. | Access node serve the API calls to send and read data from the chain.                                                                                           |
