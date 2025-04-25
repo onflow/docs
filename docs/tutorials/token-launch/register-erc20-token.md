@@ -61,7 +61,7 @@ Learn more about the registration process in the [Assets Registry] README.md fil
 ## What's next?
 
 After submitting your PR, you just need to wait for the Flow team to review your token and merge your PR.  
-Once the PR is merged, your token will be registered by the Github Actions in the [Flow Official Assets] repository automatically and a new PR will be created automatically by Github Actions to update the token list. Flow team will regularly merge the token list updates PR to the main branch.  
+Once the PR is merged, your token will be registered by the Github Actions in the [Flow Official Assets] repository automatically and a new PR will be created automatically by Github Actions to update the token list. The Flow team will regularly merge the token list updates PR to the main branch.  
 
 ## How to verify the token is registered?
 
