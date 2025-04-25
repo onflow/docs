@@ -3,6 +3,7 @@
   display: inline-block;
   width: 100%;
   margin-top: 1rem;
+  z-index: 100;
 }
 
 .dropdownButton {
@@ -60,6 +61,7 @@
   width: calc(100% - 30px);
   max-width: 300px;
   background: var(--ifm-background-color);
+  background-color: #ffffff;
   border: 1px solid var(--ifm-color-emphasis-200);
   border-radius: 4px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
