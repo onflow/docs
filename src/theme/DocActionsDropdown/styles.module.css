@@ -1,0 +1,112 @@
+.dropdownContainer {
+  position: relative;
+  display: inline-block;
+  width: 100%;
+  margin-top: 1rem;
+}
+
+.dropdownButton {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  padding: 8px 16px;
+  background-color: var(--ifm-color-primary);
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 14px;
+  position: relative;
+}
+
+.dropdownButton:hover {
+  background: var(--ifm-color-primary-dark);
+}
+
+.arrow {
+  width: 40%;
+  height: 100%;
+  position: absolute;
+  right: 0;
+  top: 0;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  padding-right: 8px;
+  cursor: pointer;
+}
+
+.arrow::after {
+  content: '';
+  width: 0;
+  height: 0;
+  border-left: 5px solid transparent;
+  border-right: 5px solid transparent;
+  border-top: 5px solid white;
+  transition: transform 0.2s ease;
+}
+
+.dropdownButton:hover .arrow::after {
+  transform: translateY(2px);
+}
+
+.dropdownButton[aria-expanded="true"] .arrow {
+  transform: rotate(180deg);
+}
+
+.dropdownMenu {
+  position: fixed;
+  width: calc(100% - 30px);
+  max-width: 300px;
+  background: var(--ifm-background-color);
+  border: 1px solid var(--ifm-color-emphasis-200);
+  border-radius: 4px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  z-index: 9999;
+  margin-top: 0.5rem;
+  max-height: 80vh;
+  overflow-y: auto;
+}
+
+.menuItem {
+  display: block;
+  width: 100%;
+  padding: 0.75rem 1rem;
+  text-align: left;
+  border: none;
+  background: none;
+  color: var(--ifm-font-color-base);
+  cursor: pointer;
+  font-size: 0.9rem;
+  transition: background-color 0.2s ease;
+}
+
+.menuItem:hover {
+  background: var(--ifm-color-emphasis-100);
+  color: var(--ifm-font-color-base);
+}
+
+.divider {
+  height: 1px;
+  background: var(--ifm-color-emphasis-200);
+  margin: 0.5rem 0;
+}
+
+[data-theme="dark"] .dropdownMenu {
+  background: var(--ifm-background-color);
+  border-color: var(--ifm-color-emphasis-300);
+}
+
+[data-theme="dark"] .menuItem {
+  color: var(--ifm-font-color-base);
+}
+
+[data-theme="dark"] .menuItem:hover {
+  background: var(--ifm-color-emphasis-200);
+  color: var(--ifm-font-color-base);
+}
+
+[data-theme="dark"] .divider {
+  background: var(--ifm-color-emphasis-300);
+} 

@@ -1,0 +1,19 @@
+.layoutWrapper {
+  position: relative;
+}
+
+.docActionsContainer {
+  position: fixed;
+  top: 1rem;
+  right: 1rem;
+  z-index: 1000;
+}
+
+@media (max-width: 996px) {
+  .docActionsContainer {
+    position: static;
+    margin: 1rem;
+    display: flex;
+    justify-content: flex-end;
+  }
+} 
