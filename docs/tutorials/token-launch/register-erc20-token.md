@@ -18,7 +18,7 @@ keywords:
 
 ## Overview
 
-This section covers the process of registering your ERC20 token on Flow EVM based on Github Pull Request process so it appears in Flow standard Token List which is used by Flow Wallet, MetaMask, and other ecosystem apps.
+This section covers the process of registering your ERC20 token on Flow EVM via a Github Pull Request process so it appears in Flow standard Token List which is used by Flow Wallet, MetaMask, and other ecosystem apps.
 
 We will use the [Flow Official Assets] repository as the standard token list repository for updating the token list for the whole Flow ecosystem.  
 The repository is open to the public and you can submit your PRs to add your token to the list.  
