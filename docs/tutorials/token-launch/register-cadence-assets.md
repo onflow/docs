@@ -17,7 +17,7 @@ keywords:
 
 # Register Your Assets on Flow
 
-To make your fungible token or non-fungible token visible in Flow ecosystem projects like **Flow Wallet** and **IncrementFi**, you need to register it on the Flow Token List. This process will generate JSON files based on Uniswap TokenList Standard and ensures that wallets, explorers, and onchain apps can recognize and display your token correctly.
+To make your fungible token or non-fungible token visible in Flow ecosystem projects like **Flow Wallet** and **IncrementFi**, you need to register it on the Flow Token List. This process will generate JSON files based on the Uniswap TokenList Standard and ensures that wallets, explorers, and onchain apps can recognize and display your token correctly.
 
 There are two ways to register your token: **manually** via a web interface or **programmatically** during token deployment.
 
