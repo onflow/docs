@@ -14,7 +14,7 @@ Flow introduces a new paradigm in blockchain architecture - **an [MEV-resistant]
 Flow ships what roll-ups only promise: **a full modular feature-set on a single L1**.
 
 - **Decentralized sequencing** via Consensus + Collector roles - no central bottleneck and MEV-resistance
-- **Native data availability** - every node can verify state without an external DA layer
+- **Native data availability** - Flow's architecture ensures all necessary state data is available within the protocol, allowing nodes to verify state without relying on an external data availability layer
 - **Execution / verification split** for lightweight validators, yet one global state for atomic composability
 - **Protocol-level account abstraction:** multi-key wallets, gas sponsorship, scoped capabilities
 - **Dual runtimes:** EVM-equivalent alongside Cadence, so Solidity and resource-oriented contracts live side-by-side
