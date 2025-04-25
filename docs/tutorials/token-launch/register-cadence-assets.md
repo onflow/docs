@@ -83,10 +83,15 @@ transaction(
 
 - Use this **Cadence transaction**: [register-evm-asset.cdc]
 - This transaction should be executed **right after deploying your ERC-20 or ERC-721 contract**.
-- **Note:** Similar to manual registration:
+
+:::warning
+
+Similar to manual registration:
   - If the token **is not bridged** to **VM Bridge**, you will need to **send the transaction twice**.
   - The **first transaction** deploys a **VM Bridged Cadence contract** for the ERC-20.
   - The **second transaction** registers it on the Token List.
+  
+:::
 
 ---
 
