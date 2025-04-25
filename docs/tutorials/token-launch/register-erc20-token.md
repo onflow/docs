@@ -53,7 +53,7 @@ Steps to submit your PRs:
     - Commit your changes and push to your forked repository.
     - Create a new Pull Request for your changes in the [Flow Official Assets] repository.
     - A Github Action will be triggered to verify the on-chain status of the token and update the report in the PR's comment.
-        - If there is any issue, you will see some warnings and suggestions in the PR's comment. So please check the report and update the token metadata if needed.
+        - If there is any issue, you will see some warnings and suggestions in the PR's comment. Please check the report and update the token metadata if needed.
         - You may see a comment from the Github Action that you need to send 1 $FLOW to the registry address for the token registration because there is a VM Bridge onboarding fee.
 
 Learn more about the registration process in the [Assets Registry] README.md file of the repository.
