@@ -15,7 +15,7 @@ keywords:
 
 # Use Flow MCP in Cursor
 
-This tutorial will guide you through setting up and using Flow MCP in Cursor to enhance your Flow blockchain development experience with AI assistance.
+This tutorial will guide you through setting up and using Flow MCP in [Cursor] to enhance your Flow blockchain development experience with AI assistance.
 
 ## Prerequisites
 
