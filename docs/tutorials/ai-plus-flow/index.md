@@ -39,7 +39,7 @@ In this tutorial series, you'll discover how to:
 - [Flow Data Sources] - Learn about this comprehensive resource and how to integrate it with various AI platforms.
 - [Eliza on Flow] - Learn how to build AI Agent on Flow with Eliza
 - [Build AI Agents with AgentKit] - Learn how to create AI agents that can interact with Flow using AgentKit.
-- [Flow MCP] - Learn how to use or build Flow MCP(Model Context Protocol) server to enhance AI tools with the capabilities of interacting with Flow blockchain.
+- [Flow MCP] - Learn how to use or build Flow MCP (Model Context Protocol) server to enhance AI tools with the capabilities of interacting with Flow blockchain.
 
 ## Best Practices
 
