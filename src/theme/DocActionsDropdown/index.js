@@ -1,9 +1,20 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import clsx from 'clsx';
 import styles from './styles.module.css';
 
 export default function DocActionsDropdown() {
   const [isOpen, setIsOpen] = useState(false);
+  const [copySuccess, setCopySuccess] = useState(false);
+
+  // Reset copy success message after a delay
+  useEffect(() => {
+    if (copySuccess) {
+      const timer = setTimeout(() => {
+        setCopySuccess(false);
+      }, 2000);
+      return () => clearTimeout(timer);
+    }
+  }, [copySuccess]);
 
   const buildRawUrl = (path, isIndex) => {
     if (isIndex) {
@@ -47,8 +58,12 @@ export default function DocActionsDropdown() {
       const result = await fetchMarkdown(path);
       
       if (result) {
-        navigator.clipboard.writeText(result.text);
-        setIsOpen(false);
+        await navigator.clipboard.writeText(result.text);
+        setCopySuccess(true);
+        // Only close dropdown if it's open and user clicked on menu item
+        if (isOpen) {
+          setIsOpen(false);
+        }
       } else {
         throw new Error('Could not fetch markdown');
       }
@@ -147,31 +162,70 @@ export default function DocActionsDropdown() {
     setIsOpen(!isOpen);
   };
 
+  // Close dropdown when clicking outside
+  useEffect(() => {
+    if (isOpen) {
+      const handleClickOutside = (event) => {
+        const container = document.querySelector(`.${styles.dropdownContainer}`);
+        if (container && !container.contains(event.target)) {
+          setIsOpen(false);
+        }
+      };
+      
+      document.addEventListener('click', handleClickOutside);
+      return () => {
+        document.removeEventListener('click', handleClickOutside);
+      };
+    }
+  }, [isOpen, styles.dropdownContainer]);
+
   return (
     <div className={styles.dropdownContainer}>
       <button
-        className={styles.dropdownButton}
-        onClick={handleOpenInChatGPT}
+        className={clsx(styles.dropdownButton, {
+          [styles.copySuccess]: copySuccess
+        })}
+        onClick={handleCopyMarkdown}
+        aria-expanded={isOpen}
+        title="Copy as Markdown"
       >
-        Open in ChatGPT
-        <span className={styles.arrow} onClick={handleArrowClick} />
+        {copySuccess ? 'Copied!' : 'Copy as Markdown'}
+        <span className={styles.arrow} onClick={handleArrowClick} title="Show more options" />
       </button>
       {isOpen && (
         <div className={styles.dropdownMenu}>
-          <button onClick={handleOpenInClaude} className={styles.menuItem}>
-            Open in Claude
-          </button>
+          <div className={styles.menuItemWithDescription}>
+            <button onClick={handleCopyMarkdown} className={styles.menuItem}>
+              <span className={styles.menuItemTitle}>Copy as Markdown</span>
+              <span className={styles.menuItemDescription}>Copy the page content as markdown</span>
+            </button>
+          </div>
+          <div className={styles.menuItemWithDescription}>
+            <button onClick={handleOpenInChatGPT} className={styles.menuItem}>
+              <span className={styles.menuItemTitle}>Open in ChatGPT</span>
+              <span className={styles.menuItemDescription}>Ask GPT about this content</span>
+            </button>
+          </div>
+          <div className={styles.menuItemWithDescription}>
+            <button onClick={handleOpenInClaude} className={styles.menuItem}>
+              <span className={styles.menuItemTitle}>Open in Claude</span>
+              <span className={styles.menuItemDescription}>Ask Claude about this content</span>
+            </button>
+          </div>
           <div className={styles.divider} />
-          <button onClick={handleCopyMarkdown} className={styles.menuItem}>
-            Copy as Markdown
-          </button>
-          <button onClick={handleViewMarkdown} className={styles.menuItem}>
-            View Source Markdown
-          </button>
+          <div className={styles.menuItemWithDescription}>
+            <button onClick={handleViewMarkdown} className={styles.menuItem}>
+              <span className={styles.menuItemTitle}>View Source Markdown</span>
+              <span className={styles.menuItemDescription}>See the raw markdown file</span>
+            </button>
+          </div>
           <div className={styles.divider} />
-          <button onClick={handleOpenFlowKnowledge} className={styles.menuItem}>
-            Full Flow Knowledge Source
-          </button>
+          <div className={styles.menuItemWithDescription}>
+            <button onClick={handleOpenFlowKnowledge} className={styles.menuItem}>
+              <span className={styles.menuItemTitle}>Full Flow Knowledge Source</span>
+              <span className={styles.menuItemDescription}>Integrate all Flow documentation</span>
+            </button>
+          </div>
         </div>
       )}
     </div>

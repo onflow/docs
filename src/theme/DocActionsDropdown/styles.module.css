@@ -12,48 +12,51 @@
   justify-content: space-between;
   width: 100%;
   padding: 8px 16px;
-  background-color: var(--ifm-color-primary);
-  color: white;
-  border: none;
+  background-color: transparent;
+  color: var(--ifm-color-primary);
+  border: 1px solid var(--ifm-color-primary);
   border-radius: 4px;
   cursor: pointer;
   font-size: 14px;
   position: relative;
+  transition: all 0.2s ease;
 }
 
 .dropdownButton:hover {
-  background: var(--ifm-color-primary-dark);
+  background: var(--ifm-color-emphasis-100);
 }
 
 .arrow {
-  width: 40%;
-  height: 100%;
-  position: absolute;
-  right: 0;
-  top: 0;
   display: flex;
   align-items: center;
-  justify-content: flex-end;
-  padding-right: 8px;
+  justify-content: center;
+  width: 32px;
+  height: 24px;
+  margin-left: 8px;
+  position: relative;
   cursor: pointer;
+  border-left: 1px solid var(--ifm-color-emphasis-300);
+  padding-left: 12px;
 }
 
 .arrow::after {
   content: '';
-  width: 0;
-  height: 0;
-  border-left: 5px solid transparent;
-  border-right: 5px solid transparent;
-  border-top: 5px solid white;
-  transition: transform 0.2s ease;
+  display: block;
+  width: 8px;
+  height: 8px;
+  border-right: 2px solid var(--ifm-color-primary);
+  border-bottom: 2px solid var(--ifm-color-primary);
+  transform: rotate(45deg);
+  transition: transform 0.2s ease-in-out;
+}
+
+.dropdownButton[aria-expanded="true"] .arrow::after {
+  transform: rotate(-135deg);
 }
 
 .dropdownButton:hover .arrow::after {
-  transform: translateY(2px);
-}
-
-.dropdownButton[aria-expanded="true"] .arrow {
-  transform: rotate(180deg);
+  border-right: 2px solid var(--ifm-color-primary-darker);
+  border-bottom: 2px solid var(--ifm-color-primary-darker);
 }
 
 .dropdownMenu {
@@ -71,6 +74,10 @@
   overflow-y: auto;
 }
 
+.menuItemWithDescription {
+  padding: 0;
+}
+
 .menuItem {
   display: block;
   width: 100%;
@@ -84,9 +91,26 @@
   transition: background-color 0.2s ease;
 }
 
+.menuItemTitle {
+  display: block;
+  font-weight: 500;
+  margin-bottom: 0.2rem;
+}
+
+.menuItemDescription {
+  display: block;
+  font-size: 0.8rem;
+  color: var(--ifm-color-emphasis-700);
+  opacity: 0.8;
+}
+
 .menuItem:hover {
   background: var(--ifm-color-emphasis-100);
   color: var(--ifm-font-color-base);
+}
+
+.menuItem:hover .menuItemDescription {
+  color: var(--ifm-color-emphasis-800);
 }
 
 .divider {
@@ -111,4 +135,15 @@
 
 [data-theme="dark"] .divider {
   background: var(--ifm-color-emphasis-300);
+}
+
+.copySuccess {
+  background-color: var(--ifm-color-emphasis-100) !important;
+  border-color: var(--ifm-color-primary) !important;
+  color: var(--ifm-color-primary) !important;
+  transition: all 0.3s ease;
+}
+
+.copySuccess:hover {
+  background-color: var(--ifm-color-emphasis-200) !important;
 } 
