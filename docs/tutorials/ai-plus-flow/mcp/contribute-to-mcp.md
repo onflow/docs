@@ -93,3 +93,5 @@ We will review your pull request and merge it if it is ready.
 
 [Flow MCP server]: https://github.com/outblock/flow-mcp
 [Bun]: https://bun.sh/
+[Model Context Protocol (MCP)]: https://modelcontextprotocol.io/introduction
+
