@@ -17,6 +17,7 @@ sidebar_position: 1
 - [`useFlowEvents`](#useflowevents) – Subscribe to Flow events in real-time
 - [`useFlowQuery`](#useflowquery) – Execute Cadence scripts with optional arguments
 - [`useFlowMutate`](#useflowmutate) – Send transactions to the Flow blockchain
+- [`useFlowRevertibleRandom`](#useflowrevertiblerandom) – Generate pseudorandom values tied to block height
 - [`useFlowTransaction`](#useflowtransaction) – Track transaction status updates
 
 ## Installation
@@ -323,6 +324,64 @@ function CreatePage() {
 
 ---
 
+### `useFlowRevertibleRandom`
+
+```tsx
+import { useFlowRevertibleRandom } from "@onflow/kit"
+```
+
+#### Parameters:
+
+- `min?: string` – Minimum random value (inclusive), as a UInt256 decimal string. Defaults to `"0"`.
+- `max: string` – Maximum random value (inclusive), as a UInt256 decimal string. **Required**.
+- `count?: number` – Number of random values to fetch (must be at least 1). Defaults to `1`.
+- `query?: Omit<UseQueryOptions<any, Error>, "queryKey" | "queryFn">` – Optional TanStack Query settings like `staleTime`, `enabled`, `retry`, etc.
+
+#### Returns: `UseQueryResult<RevertibleRandomResult[], Error>`
+
+Each `RevertibleRandomResult` includes:
+
+- `blockHeight: string` — The block height from which the random value was generated.
+- `value: string` — The random UInt256 value, returned as a decimal string.
+
+```tsx
+function RandomValues() {
+  const { data: randoms, isLoading, error, refetch } = useFlowRevertibleRandom({
+    min: "0",
+    max: "1000000000000000000000000", // Example large max
+    count: 3,
+    query: { staleTime: 10000 },
+  })
+
+  if (isLoading) return <p>Loading random numbers...</p>
+  if (error) return <p>Error fetching random numbers: {error.message}</p>
+  if (!randoms) return <p>No random values generated.</p>
+
+  return (
+    <div>
+      <h2>Generated Random Numbers</h2>
+      <ul>
+        {randoms.map((rand, idx) => (
+          <li key={idx}>
+            Block {rand.blockHeight}: {rand.value}
+          </li>
+        ))}
+      </ul>
+      <button onClick={refetch}>Regenerate</button>
+    </div>
+  )
+}
+```
+
+#### Notes:
+
+- Randomness is generated using Flow’s **on-chain `revertibleRandom`**, producing pseudorandom values tied to block and transaction execution.
+- This hook is intended for **non-critical randomness** like randomized UIs, loot crates, and temporary rewards.
+- For **critical applications** requiring secure and unpredictable randomness, use a [commit-reveal scheme] on Flow instead.
+- Values are **deterministic**: if a transaction fails and retries, the same random value will be regenerated.
+
+---
+
 ### `useFlowTransaction`
 
 ```tsx
@@ -352,3 +411,6 @@ function TransactionComponent() {
   )
 }
 ```
+
+
+[commit-reveal scheme]: ../../build/advanced-concepts/randomness#commit-reveal-scheme
