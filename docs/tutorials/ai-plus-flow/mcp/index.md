@@ -14,7 +14,7 @@ keywords:
 
 # Flow MCP Tutorials
 
-This section contains tutorials on how to use or build Flow MCP(Model Context Protocol) server to enhance AI tools with the capabilities of interacting with Flow blockchain.
+This section contains tutorials on how to use or build Flow MCP (Model Context Protocol) server to enhance AI tools with the capabilities of interacting with Flow blockchain.
 
 ## Tutorials
 
