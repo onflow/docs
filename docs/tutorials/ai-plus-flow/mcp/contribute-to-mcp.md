@@ -14,7 +14,8 @@ keywords:
 
 # Contribute to Flow MCP
 
-This tutorial will guide you through contributing to the Flow MCP server.
+This tutorial will guide you through the process of contributing to the Flow MCP server. The [Model Context Protocol (MCP)] is an open standard developed by Anthropic that enables AI applications to interact seamlessly with external tools, systems, and data sources. By following this tutorial, you'll learn how to set up the project locally, create and register a new Action Tool, write tests, and submit a pull request that aligns with Flow MCP’s contribution standards.  
+
 
 ## Prerequisites
 
