@@ -19,15 +19,12 @@ keywords:
 
 # Secure Randomness with Commit-Reveal in Cadence
 
-Randomness is a critical component in blockchain applications, enabling fair and unpredictable outcomes for use cases like gaming, lotteries, and cryptographic protocols. The most basic approach to generating a random number on EVM chains is to utilize block hashes, which combines the block hash with a user-provided seed and hashes them together. The resulting hash can be used as a pseudo-random number. However, this approach has limitations:
-
-1. Predictability: Miners can potentially manipulate the block hash to influence the generated random number.
-2. Replay attacks: In case of block reorganizations, the revealed answers will not be re-used again.
+Randomness is a critical component in blockchain applications, enabling fair and unpredictable outcomes for use cases like gaming, lotteries, and cryptographic protocols. The most basic approach to generating a random number on EVM chains is to utilize block hashes, which combines the block hash with a user-provided seed and hashes them together. The resulting hash can be used as a pseudo-random generator seed. However, this approach has limitations. The block hash can be manipulated by a validator influencing the random source used to compute transactions. The block proposer has the freedom to decide what to include into a block and can through different combinations till they find a favorable random source.
 
 [Chainlink VRF][chainlink-vrf] is a popular tool that improves on this by providing another approach for generating provably random values on Ethereum and other blockchains by relying on a decentralized oracle network to deliver cryptographically secure randomness from off-chain sources. However, this dependence on external oracles introduces several weaknesses, such as cost, latency, and scalability concerns.
 
 In contrast, Flow offers a simpler and more integrated approach with its native on-chain Randomness Beacon at the protocol level, eliminating reliance on external oracles and sidestepping their associated risks.
-In addition to instant randomness that is available to any transaction (via `revertibleRandom` function), Flow provides a solution to reverted transaction. Commit-Reveal schemes on Flow also rely on protocol-native secure randomness and they fix the issue of post-selection by trustless users. Commit-Reveal tools on Flow can be used within both Cadence and Solidity smart contracts.
+In addition to instant randomness that is available to any transaction (via `revertibleRandom` function), Flow provides a solution to reverted transaction. Commit-Reveal schemes on Flow also rely on protocol-native secure randomness and they fix the issue of post-selection by trustless users. Commit-Reveal tools on Flow can be used within both Cadence and Solidity smart contracts. This tutorial will focus on the Cadence case.
 
 ## Objectives
 
@@ -47,7 +44,7 @@ You'll need the following:
 
 ## Overview
 
-In this guide, we will explore how to use a commit-reveal scheme in conjunction with Flow's Random Beacon to achieve secure, non-revertible randomness. This mechanism mitigates post-selection attacks, where participants attempt to manipulate or reject unfavorable random outcomes after they are revealed.
+In this guide, we will explore how to use a commit-reveal scheme based on Flow's Random Beacon to achieve secure, non-revertible randomness. This mechanism mitigates post-selection attacks, where participants attempt to reject unfavorable random outcomes after they are revealed.
 
 To illustrate this concept, we will build a Coin Toss game on Flow, demonstrating how smart contracts can leverage a commit-reveal scheme for fair, tamper-resistant results.
 
@@ -65,11 +62,12 @@ The game consists of two distinct phases:
 ### Why Use a Commit-Reveal scheme?
 
 Similarly to revertible randomness, Commit-Reveal inherits the security of Flow native randomness beacon: 
-- Ensures fairness – Flow's Random Beacon provides cryptographically secure, verifiable randomness.
+- Ensures security – Flow's Random Beacon provides cryptographically unpredictable and non-biased randomness.
+- Ensure fairness - Flow's Random Beacon uses a Verifiable Random Function (VRF) under the hood which allows any external client or user to verify that randoms were generated fairly.
 - Reduces reliance on external oracles – The randomness is generated natively on-chain, avoiding additional complexity, third party risk and cost.
 
 In addition, commit-reveal patterns solve the issue of revertible randoms:
-- Prevents manipulation – Players cannot selectively reveal results after seeing the random results.
+- Prevents user manipulation – Players cannot selectively reveal results after seeing the random results.
 
 ## Building the Coin Toss Contract
 
@@ -244,8 +242,7 @@ You can find the full transaction used for this example, with its result and eve
 The commit-reveal scheme, implemented within the context of Flow's Randomness Beacon, provides a robust solution for generating secure and non-revertible randomness in decentralized applications. By leveraging this mechanism, developers can ensure that their applications are:
 
 - Fair: Outcomes remain unbiased and unpredictable.
-- Resistant to manipulation: Protects against post-selection attacks.
-- Immune to replay attacks: A common pitfall in traditional random number generation on other blockchains.
+- Resistant to post-selection: Protects against trustless users who cannot reverse their commitments.
 
 The CoinToss game serves as a practical example of these principles in action. By walking through its implementation, you've seen firsthand how straightforward yet effective this approach can be—balancing simplicity for developers with robust security for users. As blockchain technology advances, embracing such best practices is essential to creating a decentralized ecosystem that upholds fairness and integrity, empowering developers to innovate with confidence.
 
