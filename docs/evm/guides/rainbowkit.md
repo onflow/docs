@@ -57,6 +57,7 @@ export interface MyWalletOptions {
 export const flowWallet = ({ projectId }: MyWalletOptions): Wallet => ({
   id: 'flow-wallet',
   name: 'Flow Wallet',
+  rdns: 'com.flowfoundation.wallet',
   iconUrl: 'https://lilico.app/logo_mobile.png',
   iconBackground: '#41CC5D',
   downloadUrls: {
