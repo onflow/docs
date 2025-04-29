@@ -22,7 +22,7 @@ keywords:
 Randomness is a critical component in blockchain applications, enabling fair and unpredictable outcomes for use cases like gaming, lotteries, and cryptographic protocols. The most basic approach to generating a random number on EVM chains is to utilize block hashes, which combines the block hash with a user-provided seed and hashes them together. The resulting hash can be used as a pseudo-random number. However, this approach has limitations:
 
 1. Predictability: Miners can potentially manipulate the block hash to influence the generated random number.
-2. Replay attacks: In case of block reorganizations, the revealed answers will not be re-used again.
+2. Re-org attacks/errors: In case of block reorganizations, the random value generated will change. This change could undo information that was already shared with a user, or be used for an attack.
 
 [Chainlink VRF][chainlink-vrf] is a popular tool that improves on this by providing another approach for generating provably random values on Ethereum and other blockchains by relying on a decentralized oracle network to deliver cryptographically secure randomness from off-chain sources. However, this dependence on external oracles introduces several weaknesses, such as cost, latency, and scalability concerns.
 
