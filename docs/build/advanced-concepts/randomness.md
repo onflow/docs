@@ -176,16 +176,17 @@ access(all) fun revealCoin(receipt: @Receipt): @FungibleToken.Vault {
 }
 ```
 
-## Revertible Random or Commit Reveal?
+## Revertible Random or Commit-Reveal?
 
 While both methods are backed by Flow's Randomness Beacon,
 it is important for developers to mindfully choose between `revertibleRandom` or seeding a PRNG using the `RandomBeaconHistory` smart contract:
 
 - With `revertibleRandom` a user has the power to abort and revert if it doesn't like `revertibleRandom`'s outputs.
-  `revertibleRandom` is only suitable for smart contract functions that exclusively run within trusted transactions emitted by trusted parties. You can think of a lottery contract picking a winning user, where the picking transaction is emitted by the lottery developer who is trusted not add the abortion logic into the transaction. Users are able to check the transaction code after it is submitted and make sure the lottery developer acted fairly.
+  `revertibleRandom` is only suitable for smart contract functions that exclusively run within trusted transactions emitted by trusted parties. You can think of a lottery contract picking a winning user, where the picking transaction is emitted by the lottery developer who is trusted to not add the abortion logic into the transaction. Users are able to check the transaction code after it is submitted and make sure the lottery developer acted fairly.
 - In contrast, the commit-reveal method using the `RandomBeaconHistory` is necessary in cases where the transaction is submitted by non-trusted users and may revert the random outputs. 
-  You can think of a user minting a randomized NFT and is able to add a logic to their transaction to check the random traits and abandon the NFT if they are not happy. Another user plays a betting game and is able to abort whenever they lose. 
-  General users are not guaranteed to act honestly when they play and commit-reveal is the way to limit their actions. 
+  You can think of a user minting a randomized NFT and is able to add a logic to their transaction to check the random traits and abandon the NFT if they are not happy with the result.
+  Another user playing a betting game, adds a logic to check the bet result and abort whenever they lose the bet. 
+  General users are not guaranteed to act honestly when they submit transactions to play. Commit-reveal patterns are the way to limit their actions. 
   During the commit phase, the user commits to proceed with a future source of randomness,
   which is only revealed after the commit transaction concluded. 
 

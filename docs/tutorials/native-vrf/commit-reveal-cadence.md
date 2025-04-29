@@ -26,14 +26,15 @@ Randomness is a critical component in blockchain applications, enabling fair and
 
 [Chainlink VRF][chainlink-vrf] is a popular tool that improves on this by providing another approach for generating provably random values on Ethereum and other blockchains by relying on a decentralized oracle network to deliver cryptographically secure randomness from off-chain sources. However, this dependence on external oracles introduces several weaknesses, such as cost, latency, and scalability concerns.
 
-In contrast, Flow offers a simpler and more integrated approach with its Random Beacon contract, which provides native on-chain randomness at the protocol level, eliminating reliance on external oracles and sidestepping their associated risks. Via a commit-and-reveal scheme, Flow's protocol-native secure randomness can be used within both Cadence and Solidity smart contracts.
+In contrast, Flow offers a simpler and more integrated approach with its native on-chain Randomness Beacon at the protocol level, eliminating reliance on external oracles and sidestepping their associated risks.
+In addition to instant randomness that is available to any transaction (via `revertibleRandom` function), Flow provides a solution to reverted transaction. Commit-Reveal schemes on Flow also rely on protocol-native secure randomness and they fix the issue of post-selection by trustless users. Commit-Reveal tools on Flow can be used within both Cadence and Solidity smart contracts.
 
 ## Objectives
 
 By the end of this guide, you will be able to:
 
 - Deploy a Cadence smart contract on the Flow blockchain
-- Implement commit-reveal randomness to ensure fairness
+- Implement commit-reveal pattern for randomness to ensure fairness
 - Interact with Flow's on-chain randomness features
 - Build and test the Coin Toss game using Flow's Testnet
 
@@ -48,24 +49,27 @@ You'll need the following:
 
 In this guide, we will explore how to use a commit-reveal scheme in conjunction with Flow's Random Beacon to achieve secure, non-revertible randomness. This mechanism mitigates post-selection attacks, where participants attempt to manipulate or reject unfavorable random outcomes after they are revealed.
 
-To illustrate this concept, we will build a Coin Toss game on Flow, demonstrating how smart contracts can leverage commit-reveal randomness for fair, tamper-resistant results.
+To illustrate this concept, we will build a Coin Toss game on Flow, demonstrating how smart contracts can leverage a commit-reveal scheme for fair, tamper-resistant results.
 
 ### What is the Coin Toss Game?
 
-The Coin Toss Game is a decentralized betting game that showcases Flow's commit-reveal randomness. Players place bets without knowing the random outcome, ensuring fairness and resistance to manipulation.
+The Coin Toss Game is a decentralized betting game that showcases Flow's commit-reveal pattern. Players place bets without knowing the random outcome, ensuring fairness and resistance to manipulation.
 
 The game consists of two distinct phases:
 
-1. Commit Phase – The player places a bet by sending Flow tokens to the contract. The contract records the commitment and requests a random value from Flow's Random Beacon. The player receives a Receipt, which they will use to reveal the result later.
-2. Reveal Phase – Once the random value becomes available in `RandomBeaconHistory`, the player submits their Receipt to determine the outcome:
+1. Commit Phase – The player places a bet by sending Flow tokens to the contract. The contract records the commitment to use a future random value from Flow's Random Beacon. The player receives a Receipt, which they will use to reveal the result later.
+2. Reveal Phase – Once the random value becomes available in the `RandomBeaconHistory` contract, the player submits their Receipt to determine the outcome:
    - If the result is 0, the player wins and receives double their bet.
    - If the result is 1, the player loses, and their bet remains in the contract.
 
-### Why Use Commit-Reveal Randomness?
+### Why Use a Commit-Reveal scheme?
 
-- Prevents manipulation – Players cannot selectively reveal results after seeing the randomness.
+Similarly to revertible randomness, Commit-Reveal inherits the security of Flow native randomness beacon: 
 - Ensures fairness – Flow's Random Beacon provides cryptographically secure, verifiable randomness.
 - Reduces reliance on external oracles – The randomness is generated natively on-chain, avoiding additional complexity, third party risk and cost.
+
+In addition, commit-reveal patterns solve the issue of revertible randoms:
+- Prevents manipulation – Players cannot selectively reveal results after seeing the random results.
 
 ## Building the Coin Toss Contract
 
@@ -100,7 +104,7 @@ access(all) contract CoinToss {
 
 ### Step 2: Implementing the Commit Phase With `flipCoin`
 
-Let's define the first step in our scheme; the commit phase. We do this through a `flipCoin` public function. In this method, the caller commits a bet. The contract takes note of the block height and bet amount, returning a `Receipt` resource which is used by the former to reveal the coin toss result and determine their winnings.
+Let's define the first step in our scheme; the commit phase. We do this through a `flipCoin` public function. In this method, the caller commits a bet. The contract takes note of a future block height and bet amount, returning a `Receipt` resource which is used by the former to reveal the coin toss result and determine their winnings.
 
 ```cadence
 access(all) fun flipCoin(bet: @{FungibleToken.Vault}): @Receipt {
@@ -119,7 +123,8 @@ access(all) fun flipCoin(bet: @{FungibleToken.Vault}): @Receipt {
 
 ### Step 3: Implementing the Reveal Phase With `revealCoin`
 
-Now we implement the reveal phase with the `revealCoin` function. Here the caller provides the Receipt given to them at commitment. The contract then "flips a coin" with `_randomCoin()` providing the Receipt's contained Request. If result is 1, user loses, but if it's 0 the user doubles their bet. Note that the caller could condition the revealing transaction, but they've already provided their bet amount so there's no loss for the contract if they do.
+Now we implement the reveal phase with the `revealCoin` function. Here the caller provides the Receipt given to them at commitment. The contract then "flips a coin" with `_randomCoin()` providing the Receipt's contained Request. The reveal step is possible only when the protocol random source at the committed block height becomes available.
+If result is 1, user loses, but if it's 0 the user doubles their bet. Note that the caller could condition the revealing transaction, but they've already provided their bet amount so there's no loss for the contract if they do.
 
 ```cadence
 access(all) fun revealCoin(receipt: @Receipt): @{FungibleToken.Vault} {
@@ -236,7 +241,7 @@ You can find the full transaction used for this example, with its result and eve
 
 ## Conclusion
 
-The commit-reveal scheme, implemented within the context of Flow's Random Beacon, provides a robust solution for generating secure and non-revertible randomness in decentralized applications. By leveraging this mechanism, developers can ensure that their applications are:
+The commit-reveal scheme, implemented within the context of Flow's Randomness Beacon, provides a robust solution for generating secure and non-revertible randomness in decentralized applications. By leveraging this mechanism, developers can ensure that their applications are:
 
 - Fair: Outcomes remain unbiased and unpredictable.
 - Resistant to manipulation: Protects against post-selection attacks.
@@ -247,7 +252,7 @@ The CoinToss game serves as a practical example of these principles in action. B
 This tutorial has equipped you with hands-on experience and key skills:
 
 - You deployed a Cadence smart contract on the Flow blockchain.
-- You implemented commit-reveal randomness to ensure fairness.
+- You implemented commit-reveal to ensure fairness.
 - You interacted with Flow's on-chain randomness features.
 - You built and tested the Coin Toss game using Flow's Testnet.
 
