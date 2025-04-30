@@ -1,7 +1,7 @@
 ---
 sidebar_position: 1
 title: Secure Randomness with Commit-Reveal in Cadence
-description: Guide on implementing secure randomness in Cadence using Flow's commit-reveal scheme
+description: Guide on implementing secure randomness in Cadence using a commit-reveal scheme on Flow
 keywords:
   - blockchain
   - randomness
@@ -32,8 +32,8 @@ By the end of this guide, you will be able to:
 
 - Deploy a Cadence smart contract on the Flow blockchain
 - Implement commit-reveal pattern for randomness to ensure fairness
-- Interact with Flow's on-chain randomness features
-- Build and test the Coin Toss game using Flow's Testnet
+- Interact with on-chain randomness features on Flow
+- Build and test the Coin Toss game using the Flow Testnet
 
 ## Prerequisites
 
@@ -44,30 +44,32 @@ You'll need the following:
 
 ## Overview
 
-In this guide, we will explore how to use a commit-reveal scheme based on Flow's Random Beacon to achieve secure, non-revertible randomness. This mechanism mitigates post-selection attacks, where participants attempt to reject unfavorable random outcomes after they are revealed.
+In this guide, we will explore how to use a commit-reveal scheme based on the Flow Random Beacon to achieve secure, non-revertible randomness. This mechanism mitigates post-selection attacks, where participants attempt to reject unfavorable random outcomes after they are revealed.
 
 To illustrate this concept, we will build a Coin Toss game on Flow, demonstrating how smart contracts can leverage a commit-reveal scheme for fair, tamper-resistant results.
 
 ### What is the Coin Toss Game?
 
-The Coin Toss Game is a decentralized betting game that showcases Flow's commit-reveal pattern. Players place bets without knowing the random outcome, ensuring fairness and resistance to manipulation.
+The Coin Toss Game is a decentralized betting game that showcases the commit-reveal pattern. Players place bets without knowing the random outcome, ensuring fairness and resistance to manipulation.
 
 The game consists of two distinct phases:
 
-1. Commit Phase – The player places a bet by sending Flow tokens to the contract. The contract records the commitment to use a future random value from Flow's Random Beacon. The player receives a Receipt, which they will use to reveal the result later.
-2. Reveal Phase – Once the random value becomes available in the `RandomBeaconHistory` contract, the player submits their Receipt to determine the outcome:
+1. Commit Phase - The player places a bet by sending Flow tokens to the contract. The contract records the commitment to use a future random value from the Flow Random Beacon. The player receives a Receipt, which they will use to reveal the result later.
+2. Reveal Phase - Once the random value becomes available in the `RandomBeaconHistory` contract, the player submits their Receipt to determine the outcome:
    - If the result is 0, the player wins and receives double their bet.
    - If the result is 1, the player loses, and their bet remains in the contract.
 
 ### Why Use a Commit-Reveal scheme?
 
-Similarly to revertible randomness, Commit-Reveal inherits the security of Flow native randomness beacon: 
-- Ensures security – Flow's Random Beacon provides cryptographically unpredictable and non-biased randomness.
-- Ensure fairness - Flow's Random Beacon uses a Verifiable Random Function (VRF) under the hood which allows any external client or user to verify that randoms were generated fairly.
-- Reduces reliance on external oracles – The randomness is generated natively on-chain, avoiding additional complexity, third party risk and cost.
+Similarly to revertible randomness, Commit-Reveal inherits the security of Flow native randomness beacon:
+
+- Ensures security - The Flow Random Beacon provides cryptographically unpredictable and non-biased randomness.
+- Ensure fairness - The Flow Random Beacon uses a Verifiable Random Function (VRF) under the hood which allows any external client or user to verify that randoms were generated fairly.
+- Reduces reliance on external oracles - The randomness is generated natively on-chain, avoiding additional complexity, third party risk and cost.
 
 In addition, commit-reveal patterns solve the issue of revertible randoms:
-- Prevents user manipulation – Players cannot selectively reveal results after seeing the random results.
+
+- Prevents user manipulation - Players cannot selectively reveal results after seeing the random results.
 
 ## Building the Coin Toss Contract
 
@@ -239,7 +241,7 @@ You can find the full transaction used for this example, with its result and eve
 
 ## Conclusion
 
-The commit-reveal scheme, implemented within the context of Flow's Randomness Beacon, provides a robust solution for generating secure and non-revertible randomness in decentralized applications. By leveraging this mechanism, developers can ensure that their applications are:
+The commit-reveal scheme, implemented within the context of the Flow Randomness Beacon, provides a robust solution for generating secure and non-revertible randomness in decentralized applications. By leveraging this mechanism, developers can ensure that their applications are:
 
 - Fair: Outcomes remain unbiased and unpredictable.
 - Resistant to post-selection: Protects against trustless users who cannot reverse their commitments.
@@ -250,10 +252,10 @@ This tutorial has equipped you with hands-on experience and key skills:
 
 - You deployed a Cadence smart contract on the Flow blockchain.
 - You implemented commit-reveal to ensure fairness.
-- You interacted with Flow's on-chain randomness features.
-- You built and tested the Coin Toss game using Flow's Testnet.
+- You interacted with on-chain randomness features on Flow.
+- You built and tested the Coin Toss game using the Flow Testnet.
 
-By harnessing Flow's built-in capabilities, you can now focus on crafting engaging, user-centric experiences without grappling with the complexities or limitations of external systems. This knowledge empowers you to create secure, scalable, and fair decentralized applications.
+By harnessing the built-in randomness capabilities on Flow, you can now focus on crafting engaging, user-centric experiences without grappling with the complexities or limitations of external systems. This knowledge empowers you to create secure, scalable, and fair decentralized applications.
 
 [chainlink-vrf]: https://docs.chain.link/vrf
 [flow-faucet]: https://testnet-faucet.onflow.org/
