@@ -180,7 +180,7 @@ access(all) fun revealCoin(receipt: @Receipt): @FungibleToken.Vault {
 
 ## Revertible Random or Commit-Reveal?
 
-While both methods are backed by Flow's Randomness Beacon,
+While both methods are backed by the Flow Randomness Beacon,
 it is important for developers to mindfully choose between `revertibleRandom` or seeding a PRNG using the `RandomBeaconHistory` smart contract:
 
 - With `revertibleRandom` a user has the power to abort and revert if it doesn't like `revertibleRandom`'s outputs.
