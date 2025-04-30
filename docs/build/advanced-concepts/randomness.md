@@ -35,8 +35,8 @@ Flow onchain randomness delivers immediate random values within transactions, by
 
 ## Flow Distributed Randomness Beacon
 
-Within the Flow protocol, the heart of randomness generation lies in the "Distributed Randomness Beacon". 
-This module generates randomness that is distributed across the network while adhering to established cryptographic and security standards. 
+Within the Flow protocol, the heart of randomness generation lies in the "Distributed Randomness Beacon".
+This module generates randomness that is distributed across the network while adhering to established cryptographic and security standards.
 The output from the randomness beacon is a random source for each block that is unpredictable and impartial.
 Any node or external client can validate the block random source and verify it was generated fairly, making the randomness beacon a Verifiable Random function (VRF).
 
@@ -53,7 +53,7 @@ The function is available for both Cadence and EVM.
 // Language reference:
 // https://cadence-lang.org/docs/language/built-in-functions#revertiblerandom
 access(all) fun main(): UInt64 {
-	// Simple assignment using revertibleRandom - keep reading docs for safe usage!	
+	// Simple assignment using revertibleRandom - keep reading docs for safe usage!
 	let rand: UInt64 = revertibleRandom<UInt64>()
 	return rand
 }
@@ -72,7 +72,7 @@ However, if applications require a non-trusted party (for instance app users) to
 
 🚨 A transaction can atomically revert all its action during its runtime and abort. Therefore, it is possible for a transaction calling into your smart contract to post-select favorable results and revert the transaction for unfavorable results.
 
-In other words, if you write a lottery function that immediately draws a random number that may or may not be a winner, a clever attacker can get infinite guesses for free.  Use commit-reveal and sell them a ticket instead!
+In other words, if you write a lottery function that immediately draws a random number that may or may not be a winner, a clever attacker can get infinite guesses for free. Use commit-reveal and sell them a ticket instead!
 
 :::
 
@@ -107,7 +107,7 @@ We recommend this approach as a best-practice example for implementing a commit-
 
 :::info
 
-While the commit-and-reveal scheme mitigates post-selection of results by adversarial clients, Flow's secure randomness additionally protects against any pre-selection vulnerabilities (like biasing attacks by byzantine miners).
+While the commit-and-reveal scheme mitigates post-selection of results by adversarial clients, secure randomness on Flow additionally protects against any pre-selection vulnerabilities (like biasing attacks by byzantine miners).
 
 :::
 
@@ -123,7 +123,7 @@ The following lines of code illustrate a random coin toss that cannot be gamed o
 
 ```cadence
 // The code below is taken from the example CoinToss contract found in the project repo
-// https://github.com/onflow/random-coin-toss 
+// https://github.com/onflow/random-coin-toss
 
 /// --- Commit ---
 /// In this method, the caller commits a bet. The contract takes note of the
@@ -137,9 +137,9 @@ access(all) fun flipCoin(bet: @{FungibleToken.Vault}): @Receipt {
     // `self.reserve` is a `@FungibleToken.Vault` field defined on the app contract
     //  and represents a pool of funds
     self.reserve.deposit(from: <-bet)
-    
+
     emit CoinFlipped(betAmount: receipt.betAmount, commitBlock: receipt.commitBlock, receiptID: receipt.uuid)
-    
+
     return <- receipt
 }
 
@@ -169,11 +169,11 @@ access(all) fun revealCoin(receipt: @Receipt): @FungibleToken.Vault {
         emit CoinRevealed(betAmount: betAmount, winningAmount: 0.0, commitBlock: commitBlock, receiptID: receiptID)
         return <- FlowToken.createEmptyVault()
     }
-    
+
     let reward <- self.reserve.withdraw(amount: betAmount * 2.0)
-    
+
     emit CoinRevealed(betAmount: betAmount, winningAmount: reward.balance, commitBlock: commitBlock, receiptID: receiptID)
-    
+
     return <- reward
 }
 ```
@@ -185,27 +185,27 @@ it is important for developers to mindfully choose between `revertibleRandom` or
 
 - With `revertibleRandom` a user has the power to abort and revert if it doesn't like `revertibleRandom`'s outputs.
   `revertibleRandom` is only suitable for smart contract functions that exclusively run within trusted transactions emitted by trusted parties. You can think of a lottery contract picking a winning user, where the picking transaction is emitted by the lottery developer who is trusted to not add the abortion logic into the transaction. Users are able to check the transaction code after it is submitted and make sure the lottery developer acted fairly.
-- In contrast, the commit-reveal method using the `RandomBeaconHistory` is necessary in cases where the transaction is submitted by non-trusted users and may revert the random outputs. 
+- In contrast, the commit-reveal method using the `RandomBeaconHistory` is necessary in cases where the transaction is submitted by non-trusted users and may revert the random outputs.
   You can think of a user minting a randomized NFT and is able to add a logic to their transaction to check the random traits and abandon the NFT if they are not happy with the result.
-  Another user playing a betting game, adds a logic to check the bet result and abort whenever they lose the bet. 
-  General users are not guaranteed to act honestly when they submit transactions to play. Commit-reveal patterns are the way to limit their actions. 
+  Another user playing a betting game, adds a logic to check the bet result and abort whenever they lose the bet.
+  General users are not guaranteed to act honestly when they submit transactions to play. Commit-reveal patterns are the way to limit their actions.
   During the commit phase, the user commits to proceed with a future source of randomness,
-  which is only revealed after the commit transaction concluded. 
+  which is only revealed after the commit transaction concluded.
 
 Adding a safe pattern to reveal randomness without the possibility of conditional transaction reversion unlocks applications relying on randomness. By providing examples of commit-reveal implementations we hope to foster a more secure ecosystem of decentralized applications and encourage developers to build with best practices.
 
 ## An Invitation to Build
 
-Flow's onchain randomness opens new doors for innovation, offering developers the tools to create fair and transparent decentralized applications. With this feature, new possibilities emerge—from enhancing gameplay in decentralized gaming to ensuring the integrity of smart contract-driven lotteries or introducing novel mechanisms in DeFi. 
+Flow onchain randomness opens new doors for innovation, offering developers the tools to create fair and transparent decentralized applications. With this feature, new possibilities emerge—from enhancing gameplay in decentralized gaming to ensuring the integrity of smart contract-driven lotteries or introducing novel mechanisms in DeFi.
 
-This is an invitation for builders and creators: leverage Flow's onchain randomness to distinguish your projects and push the boundaries of what's possible. Your imagination and code have the potential to forge new paths in the web3 landscape. So go ahead and build; the community awaits the next big thing that springs from true randomness.
+This is an invitation for builders and creators: leverage onchain randomness on Flow to distinguish your projects and push the boundaries of what's possible. Your imagination and code have the potential to forge new paths in the web3 landscape. So go ahead and build; the community awaits the next big thing that springs from true randomness.
 
 ## Learn More
 
-If you'd like to dive deeper into Flow's onchain randomness, here's a list of resources:
+If you'd like to dive deeper into onchain randomness on Flow, here's a list of resources:
 
 - To learn more about how the randomness beacon works under the hood, see [the forum post](https://forum.flow.com/t/secure-random-number-generator-for-flow-s-smart-contracts/5110).
 - These FLIPs provide a more in-depth technical understanding of recent updates related to randomness:
-    - **[FLIP 120: Update unsafeRandom function:](https://github.com/onflow/flips/blob/main/cadence/20230713-random-function.md#flip-120-update-unsaferandom-function)** describes how the beacon provides randoms to `revertibleRandomness`.
-    - **[FLIP 123: On-chain Random beacon history for commit-reveal schemes:](https://github.com/onflow/flips/blob/main/protocol/20230728-commit-reveal.md#flip-123-on-chain-random-beacon-history-for-commit-reveal-schemes)** describes the commit-reveal design and why it is secure.
+  - **[FLIP 120: Update unsafeRandom function:](https://github.com/onflow/flips/blob/main/cadence/20230713-random-function.md#flip-120-update-unsaferandom-function)** describes how the beacon provides randoms to `revertibleRandomness`.
+  - **[FLIP 123: On-chain Random beacon history for commit-reveal schemes:](https://github.com/onflow/flips/blob/main/protocol/20230728-commit-reveal.md#flip-123-on-chain-random-beacon-history-for-commit-reveal-schemes)** describes the commit-reveal design and why it is secure.
 - To see working Cadence and EVM code, explore the [coin toss example on GitHub](https://github.com/onflow/random-coin-toss).
