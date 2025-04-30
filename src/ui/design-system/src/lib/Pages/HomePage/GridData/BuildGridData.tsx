@@ -166,6 +166,16 @@ export const buildGridData = {
       title: 'Tools',
       cards: [
         {
+          heading: 'Dependency Manager',
+          description:
+            'Effortlessly import Flow Cadence contracts into your projects, including core contracts, ecosystem contracts, and your own published contracts.',
+          iconColor: 'green',
+          cardColor: 'black',
+          icon: 'flow-cadence',
+          variant: 'horizontal',
+          href: 'tools/flow-cli/dependency-manager',
+        },
+        {
           heading: 'Cadence Block Explorer',
           description:
             'Search for users, transactions, and contracts on the Flow Cadence blockchain.',
