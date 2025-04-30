@@ -70,7 +70,9 @@ However, if applications require a non-trusted party (for instance app users) to
 
 :::warning
 
-⚠️ A transaction can atomically revert all its action during its runtime and abort. Therefore, it is possible for a transaction calling into your smart contract to post-select favorable results and revert the transaction for unfavorable results.
+🚨 A transaction can atomically revert all its action during its runtime and abort. Therefore, it is possible for a transaction calling into your smart contract to post-select favorable results and revert the transaction for unfavorable results.
+
+In other words, if you write a lottery function that immediately draws a random number that may or may not be a winner, a clever attacker can get infinite guesses for free.  Use commit-reveal and sell them a ticket instead!
 
 :::
 
