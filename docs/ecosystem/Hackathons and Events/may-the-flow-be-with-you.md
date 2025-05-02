@@ -34,7 +34,7 @@ export const ProfileLink = () => {
 
 # May the Flow be with You!
 
-Join us for a month-long vibe coding hackathon on Flow! Starting May 4th, participate in our four themed weeks featuring randomness, games, DeFi, and killer apps. Submit your AI-enhanced projects to win weekly prizes from the <strong>1750 FLOW weekly prize pool</strong> and compete for the end-of-month jackpot of <strong>5000 FLOW</strong>.
+Join us for a month-long vibe coding hackathon on Flow! Starting May 4th, participate in our four themed weeks featuring randomness, games, DeFi, and killer apps. Submit your AI-enhanced projects to win weekly prizes from the <strong>1750 FLOW weekly prize pool</strong> and compete for the end-of-month jackpot of <strong>2500 FLOW</strong>.
 
 ## How to Participate
 
@@ -80,7 +80,7 @@ Join us for a month-long vibe coding hackathon on Flow! Starting May 4th, partic
       </div>
       <div className="flex items-baseline">
         <span className="text-green-600 dark:text-green-400 mr-2">•</span>
-        <p>All submissions throughout May qualify for the <strong>5000 FLOW</strong> end-of-month jackpot</p>
+        <p>All submissions throughout May qualify for the <strong>2500 FLOW</strong> end-of-month jackpot</p>
       </div>
       <div className="flex items-baseline">
         <span className="text-green-600 dark:text-green-400 mr-2">•</span>
@@ -140,7 +140,7 @@ Join us for a month-long vibe coding hackathon on Flow! Starting May 4th, partic
 - Daily commits must be made between 00:00 UTC and 23:59 UTC
 - Each submission should demonstrate meaningful progress
 - Weekly winners receive prizes from the 1750 FLOW pool
-- All participants are eligible for the 5000 FLOW end-of-month jackpot
+- All participants are eligible for the 2500 FLOW end-of-month jackpot
 
 ## Process of Committing to the Campaign Repo
 
@@ -270,46 +270,46 @@ export const FAQ = ({ question, children }) => {
 };
 
 <FAQ question="How are winners selected?">
-  Winners are chosen using [randoms.wtf](https://randoms.wtf/) to ensure fair and transparent selection.
+Winners are chosen using [randoms.wtf](https://randoms.wtf/) to ensure fair and transparent selection.
 </FAQ>
 
 <FAQ question="What counts as a valid commit?">
-  Any commit to a participating repository that shows meaningful progress. This includes:
+Any commit to a participating repository that shows meaningful progress. This includes:
   
-  - New features
-  - Bug fixes
-  - Documentation updates
-  - Test additions
-  - Code improvements
+- New features
+- Bug fixes
+- Documentation updates
+- Test additions
+- Code improvements
 </FAQ>
 
 <FAQ question="Does my application have to be 100% Flow-based?">
-  No, but it should leverage Flow in a significant way. This will be up to the discretion of the reviewers, but you can get in touch if you're unsure about your project's eligibility.
+No, but it should leverage Flow in a significant way. This will be up to the discretion of the reviewers, but you can get in touch if you're unsure about your project's eligibility.
 </FAQ>
 
 <FAQ question="Does my application have to be live?">
-  No, but it should be heading for a launch eventually. We understand things take time and we want to reward you along the way for building. Reviewers have the discretion to eliminate an entry if a path toward being live and available to users is unclear.
+No, but it should be heading for a launch eventually. We understand things take time and we want to reward you along the way for building. Reviewers have the discretion to eliminate an entry if a path toward being live and available to users is unclear.
 </FAQ>
 
 <FAQ question="Does my application have to be brand new for this campaign?">
-  No, if you are already building something you can continue with that project. Your repository must be public to be eligible for rewards.
+No, if you are already building something you can continue with that project. Your repository must be public to be eligible for rewards.
 </FAQ>
 
 <FAQ question="What if my project has raised funding?">
-  Your project is still eligible for the May the Flow be with You rewards, regardless of funding status.
+Your project is still eligible for the May the Flow be with You rewards, regardless of funding status.
 </FAQ>
 
 <FAQ question="Can multiple developers work on the same project?">
-  Yes! Projects can have multiple developers. Each developer should create their own profile and list the same repository. Each developer will be eligible for rewards based on their individual commits.
+Yes! Projects can have multiple developers. Each developer should create their own profile and list the same repository. Each developer will be eligible for rewards based on their individual commits.
 </FAQ>
 
 <FAQ question="How do I verify my commits?">
-  Make sure your GitHub account is linked to your Flow dev docs profile. We'll automatically track your commits to participating repositories.
+Make sure your GitHub account is linked to your Flow dev docs profile. We'll automatically track your commits to participating repositories.
 </FAQ>
 
 <FAQ question="When are prizes distributed?">
   - Daily FLOW prizes are distributed within several days of the draw
-  - Weekly building in public rewards are announced every Monday
+- Weekly building in public rewards are announced every Monday
 </FAQ>
 
 ## Stay Connected
@@ -317,3 +317,15 @@ export const FAQ = ({ question, children }) => {
 - Follow [@flow_blockchain](https://twitter.com/flow_blockchain) for updates
 - Join our [Discord](https://discord.gg/flow) for community support
 - Check [@aliserag0](https://twitter.com/aliserag0) for daily winner announcements
+
+## Fine Print
+
+- Open to anyone globally with internet access
+- You must use your Flow wallet address for identification
+- All code must be original and submitted under open-source license
+- All entries must be submitted through [the campaign GitHub repo](https://github.com/onflow/May-The-Flow-Be-With-You)
+- Each wallet address can win multiple times
+- Weekly prizes are distributed within 48 hours after winners are announced  
+- 2500 FLOW Jackpot will be distributed by June 7, 2023
+- Flow's Community Team has final say on all prize decisions
+- Check [@aliserag0](https://twitter.com/aliserag0) for weekly winner announcements
