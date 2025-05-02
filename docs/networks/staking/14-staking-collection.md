@@ -262,7 +262,7 @@ transaction with the following arguments:
 | **amount**              | `UFix64`           | The number of FLOW tokens to restake. |
 
 <Callout type="info">
-To stake unstaked tokens for an active node, leave the <b>delegatorID</b> arguement as <b>nil</b>.
+To stake unstaked tokens for an active node, leave the <b>delegatorID</b> argument as <b>nil</b>.
 
 If staking for a delegator, <b>delegatorID</b> should be the delegator ID you are staking for.
 </Callout>
@@ -282,7 +282,7 @@ transaction with the following arguments:
 | **amount**              | `UFix64`           | The number of FLOW tokens to restake. |
 
 <Callout type="info">
-To stake rewarded tokens for an active node, leave the <b>delegatorID</b> arguement as <b>nil</b>.
+To stake rewarded tokens for an active node, leave the <b>delegatorID</b> argument as <b>nil</b>.
 </Callout>
 
 ### Request to Unstake Tokens at the end of the Epoch
@@ -304,7 +304,7 @@ transaction with the following arguments:
 | **amount**              | `UFix64`           | The number of FLOW tokens to restake. |
 
 <Callout type="info">
-To unstake tokens from an active node, leave the <b>delegatorID</b> arguement as <b>nil</b>.
+To unstake tokens from an active node, leave the <b>delegatorID</b> argument as <b>nil</b>.
 </Callout>
 
 ### Unstake All Tokens
@@ -332,7 +332,7 @@ transaction with the following arguments:
 | **amount**              | `UFix64`           | The number of FLOW tokens to withdraw. |
 
 <Callout type="info">
-To withdraw unstaked tokens from an active node, leave the <b>delegatorID</b> arguement as <b>nil</b>.
+To withdraw unstaked tokens from an active node, leave the <b>delegatorID</b> argument as <b>nil</b>.
 </Callout>
 
 ### Withdraw Rewarded Tokens
@@ -349,7 +349,7 @@ transaction with the following arguments:
 | **amount**              | `UFix64`           | The number of FLOW tokens to withdraw. |
 
 <Callout type="info">
-To withdraw rewarded tokens from an active node, leave the <b>delegatorID</b> arguement as <b>nil</b>.
+To withdraw rewarded tokens from an active node, leave the <b>delegatorID</b> argument as <b>nil</b>.
 </Callout>
 
 ## Staking Collection Modification
@@ -374,7 +374,7 @@ transaction with the following arguments:
 | **delegatorID**         | `Optional(UInt32)` | `nil` if staking for a node. If staking for a delegator, the delegator ID. |
 
 <Callout type="info">
-To close an active node, leave the <b>delegatorID</b> arguement as <b>nil</b>.
+To close an active node, leave the <b>delegatorID</b> argument as <b>nil</b>.
 </Callout>
 
 ### Transfer a Node
@@ -543,7 +543,7 @@ can use the **Get Does Node Exist** ([SCO.21](../../build/core-contracts/11-stak
 This script returns a `Bool`.
 
 <Callout type="info">
-To query if a Node is managed by an accounts Staking Collection, leave the <b>delegatorID</b> arguement as <b>nil</b>. 
+To query if a Node is managed by an accounts Staking Collection, leave the <b>delegatorID</b> argument as <b>nil</b>. 
 Otherwise, fill it in with the <b>delegatorID</b> of the Delegator.
 </Callout>
 

@@ -261,4 +261,4 @@ Access-003:
 
 
 While the public keys remain the same, the hostnames change each spork to include the spork name. Substitute `[current mainnet spork]` and `[current devnet spork]` with the appropriate spork name (e.g. `mainnet20`).
-See [Past Sporks](../node-operation/past-sporks.md) for the current spork for each network.
+See [Past Sporks](../node-operation/past-upgrades) for the current spork for each network.

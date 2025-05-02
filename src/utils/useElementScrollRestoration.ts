@@ -3,7 +3,7 @@ import { useLocation, useTransition } from "@remix-run/react"
 import { useIsomorphicLayoutEffect } from "../ui/design-system/src/lib/utils/useIsomorphicLayoutEffect"
 
 /**
- * Handles scroll restoration and reseting for a scrolling container element
+ * Handles scroll restoration and resetting for a scrolling container element
  *
  * Code taken from: {@link https://github.com/remix-run/remix/issues/186#issuecomment-895583783}
  *

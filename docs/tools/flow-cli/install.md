@@ -6,8 +6,6 @@ sidebar_position: 1
 
 The Flow CLI can be installed on macOS, Windows (7 or greater) and most Linux systems.
 
-> Note: If you need to install the pre-release version of the Flow CLI supporting Cadence 1.0, please refer to the [Cadence 1.0 migration guide instructions](https://cadence-lang.org/docs/cadence-migration-guide#install-cadence-10-cli).
-
 ## macOS
 
 ### Homebrew
@@ -23,12 +21,13 @@ _This installation method only works on x86-64._
 This script downloads and installs the appropriate binary for your system:
 
 ```sh
-sh -ci "$(curl -fsSL https://raw.githubusercontent.com/onflow/flow-cli/master/install.sh)"
+sudo sh -ci "$(curl -fsSL https://raw.githubusercontent.com/onflow/flow-cli/master/install.sh)"
 ```
 
 To update, simply re-run the installation command above.
 
 It is currently not possible to install earlier versions of the Flow CLI with Homebrew.
+
 ## Linux
 
 ### From a pre-built binary
@@ -38,20 +37,18 @@ _This installation method only works on x86-64._
 This script downloads and installs the appropriate binary for your system:
 
 ```sh
-sh -ci "$(curl -fsSL https://raw.githubusercontent.com/onflow/flow-cli/master/install.sh)"
+sudo sh -ci "$(curl -fsSL https://raw.githubusercontent.com/onflow/flow-cli/master/install.sh)"
 ```
 
 To update, simply re-run the installation command above.
 
 ### Install a specific version
 
-To install a specific version of Flow CLI newer than v0.42.0, append the version tag to the command (e.g. the command below installs CLI version v0.44.0).
+To install a specific version of Flow CLI, the version tag can be appended to the installation command. For example, to install version v2.0.0:
 
 ```sh
-sh -ci "$(curl -fsSL https://raw.githubusercontent.com/onflow/flow-cli/master/install.sh)" -- v0.44.0
+sudo sh -ci "$(curl -fsSL https://raw.githubusercontent.com/onflow/flow-cli/master/install.sh)" -- v2.0.0
 ```
-
-To install a version older than v0.42.0, refer to [Installing versions before 0.42.0](#installing-versions-before-0420) below.
 
 ## Windows
 
@@ -85,7 +82,7 @@ _This update method only works on x86-64._
 This script downloads and updates the appropriate binary for your system:
 
 ```sh
-sh -ci "$(curl -fsSL https://raw.githubusercontent.com/onflow/flow-cli/master/install.sh)"
+sudo sh -ci "$(curl -fsSL https://raw.githubusercontent.com/onflow/flow-cli/master/install.sh)"
 ```
 
 ## Linux
@@ -97,7 +94,7 @@ _This update method only works on x86-64._
 This script downloads and updates the appropriate binary for your system:
 
 ```sh
-sh -ci "$(curl -fsSL https://raw.githubusercontent.com/onflow/flow-cli/master/install.sh)"
+sudo sh -ci "$(curl -fsSL https://raw.githubusercontent.com/onflow/flow-cli/master/install.sh)"
 ```
 
 ## Windows
@@ -113,7 +110,8 @@ _This update method only works on Windows 10, 8.1, or 7 (SP1, with [PowerShell 3
     iex "& { $(irm 'https://raw.githubusercontent.com/onflow/flow-cli/master/install.ps1') }"
     ```
 
-# Uninstalling Flow CLI
+## Uninstalling Flow CLI
+
 To remove the flow CLI you can run the following command if it was previously installed using a pre-built binary. 
 
 - macOS: `rm /usr/local/bin/flow`
@@ -121,18 +119,3 @@ To remove the flow CLI you can run the following command if it was previously in
 - Windows: `rm ~/Users/{user}/AppData/Flow/flow.exe`
 
 If you installed it using Hombrew you can remove it using: `brew uninstall flow-cli`.
-
-## Installing versions before 0.42.0
-If you want to install versions before v0.42.0 you have to use a different install command. 
-
-**Linux/macOS**
-```
-https://raw.githubusercontent.com/onflow/flow-cli/v0.41.3/install.ps1
-
-sh -ci "$(curl -fsSL https://raw.githubusercontent.com/onflow/flow-cli/v0.41.3/install.sh)" -- v0.41.2
-```
-
-**Windows**
-```
-iex "& { $(irm 'https://raw.githubusercontent.com/onflow/flow-cli/master/install.ps1') }"
-```

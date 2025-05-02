@@ -57,6 +57,7 @@ export interface MyWalletOptions {
 export const flowWallet = ({ projectId }: MyWalletOptions): Wallet => ({
   id: 'flow-wallet',
   name: 'Flow Wallet',
+  rdns: 'com.flowfoundation.wallet',
   iconUrl: 'https://lilico.app/logo_mobile.png',
   iconBackground: '#41CC5D',
   downloadUrls: {
@@ -66,7 +67,7 @@ export const flowWallet = ({ projectId }: MyWalletOptions): Wallet => ({
     qrCode: 'https://link.lilico.app',
   },
   mobile: {
-    getUri: (uri: string) => uri,
+    getUri: (uri: string) => `https://fcw-link.lilico.app/wc?uri=${encodeURIComponent(uri)}`,
   },
   qrCode: {
     getUri: (uri: string) => uri,

@@ -1,6 +1,6 @@
 ---
 sidebar_position: 3
-title: FlowtoBooth Tutorials
+title: FlowtoBooth
 description: Learn how to build apps that showcase Flow's unique capabilities through fun benchmark applications.
 keywords:
   - tutorials
