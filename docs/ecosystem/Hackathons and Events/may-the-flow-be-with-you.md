@@ -34,7 +34,7 @@ export const ProfileLink = () => {
 
 # May the Flow be with You!
 
-Join us for a month-long celebration of building on Flow! Every day in May, make at least one commit to a participating repository and get a chance to win **250 FLOW** in our nightly draw and the end-of-month jackpot of **5000 FLOW**.
+Join us for a month-long vibe coding hackathon on Flow! Starting May 4th, participate in our four themed weeks featuring randomness, games, DeFi, and killer apps. Submit your AI-enhanced projects to win weekly prizes from the <strong>1750 FLOW weekly prize pool</strong> and compete for the end-of-month jackpot of <strong>5000 FLOW</strong>.
 
 ## How to Participate
 
@@ -49,11 +49,21 @@ Join us for a month-long celebration of building on Flow! Every day in May, make
   </div>
 
   <div className="bg-gradient-to-r from-purple-50 to-pink-50 dark:from-purple-900/20 dark:to-pink-900/20 rounded-lg p-6 shadow-sm">
-    <h3 className="text-xl font-bold mb-4 text-purple-700 dark:text-purple-400">Build & Commit</h3>
+    <h3 className="text-xl font-bold mb-4 text-purple-700 dark:text-purple-400">Create Project in Repo</h3>
     <div className="space-y-3">
-      <p>Keep working on your Flow project</p>
-      <p>Push meaningful commits to your public repository</p>
-      <p className="text-sm bg-white/70 dark:bg-gray-800/70 p-3 rounded inline-block">Note: Your project doesn't need to be live yet - we reward progress!</p>
+      <p>Go to <a href="https://github.com/onflow/May-The-Flow-Be-With-You" target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:underline">the campaign repo</a> and fork it</p>
+      <p>Create a new folder in the <code className="px-1.5 py-0.5 bg-gray-100 dark:bg-gray-800 rounded text-sm">submissions</code> directory with your Flow address as the folder name</p>
+      <p>Add a README that describes your project, team, and motivation</p>
+    </div>
+  </div>
+
+  <div className="bg-gradient-to-r from-orange-50 to-amber-50 dark:from-orange-900/20 dark:to-amber-900/20 rounded-lg p-6 shadow-sm">
+    <h3 className="text-xl font-bold mb-4 text-orange-700 dark:text-orange-400">Build & Commit</h3>
+    <div className="space-y-3">
+      <p>Work on your Flow project based on the weekly themes</p>
+      <p>Make daily submissions by creating folders with date-based names (e.g., <code className="px-1.5 py-0.5 bg-gray-100 dark:bg-gray-800 rounded text-sm">0504</code> for May 4th)</p>
+      <p>Each submission must reference what was added that day and include a README with key prompts used and source code</p>
+      <p className="text-sm bg-white/70 dark:bg-gray-800/70 p-3 rounded inline-block">Note: You can submit up to one entry per day from May 4-31</p>
     </div>
   </div>
 
@@ -62,66 +72,170 @@ Join us for a month-long celebration of building on Flow! Every day in May, make
     <div className="space-y-3">
       <div className="flex items-baseline">
         <span className="text-green-600 dark:text-green-400 mr-2">•</span>
-        <p>Every valid commit enters you into the daily <strong>250 FLOW</strong> draw</p>
+        <p><strong>Weekly Rewards:</strong> 1750 FLOW distributed across 7 winners (~250 FLOW each) based on weekly themes</p>
       </div>
       <div className="flex items-baseline">
         <span className="text-green-600 dark:text-green-400 mr-2">•</span>
-        <p>Build in public for additional weekly rewards</p>
+        <p>Each day you participate in a week counts as an additional raffle entry, increasing your winning odds</p>
       </div>
       <div className="flex items-baseline">
         <span className="text-green-600 dark:text-green-400 mr-2">•</span>
-        <p>All participants eligible for <strong>5000 FLOW</strong> end-of-month jackpot</p>
+        <p>All submissions throughout May qualify for the <strong>5000 FLOW</strong> end-of-month jackpot</p>
+      </div>
+      <div className="flex items-baseline">
+        <span className="text-green-600 dark:text-green-400 mr-2">•</span>
+        <p>Build in public for bonus rewards (see guidelines below)</p>
       </div>
     </div>
   </div>
 </div>
 
+## Weekly Schedule
+
+<div className="space-y-6 my-6">
+  <div className="border-l-4 border-indigo-500 pl-4 py-2">
+    <h3 className="text-lg font-bold text-indigo-700 dark:text-indigo-400">Week 1: The Randomness Revolution (May 4-10)</h3>
+    <p className="text-sm text-gray-600 dark:text-gray-300 mt-1 mb-2">Leverage on-chain randomness to create unpredictable, emergent experiences on Flow. Think: generative art, dynamic NFTs, chance-based mechanics, and randomized gameplay elements.</p>
+    <ul className="mt-2 space-y-1">
+      <li>May 4: Hackathon kickoff</li>
+      <li>May 4-10: Build randomness-powered applications</li>
+      <li><a href="https://x.com/i/spaces/1BdGYqgDedLGX" target="_blank" rel="noopener noreferrer" className="text-indigo-600 dark:text-indigo-400 hover:underline">May 5 (Mon): Twitter Space @ 6:00 PM PST - "Randomness: Building with Unpredictability"</a></li>
+      <li>May 12: Week 1 winners announced</li>
+    </ul>
+  </div>
+
+  <div className="border-l-4 border-violet-500 pl-4 py-2">
+    <h3 className="text-lg font-bold text-violet-700 dark:text-violet-400">Week 2: Game-Changing Play (May 11-17)</h3>
+    <p className="text-sm text-gray-600 dark:text-gray-300 mt-1 mb-2">Create the next generation of fun games. Focus on innovative gameplay, engaging experiences, and novel game mechanics that leverage blockchain technology.</p>
+    <ul className="mt-2 space-y-1">
+      <li>May 11-17: Develop fun games on Flow</li>
+      <li><a href="https://x.com/i/spaces/1yoKMoqmzzjJQ" target="_blank" rel="noopener noreferrer" className="text-violet-600 dark:text-violet-400 hover:underline">May 12 (Mon): Twitter Space @ 6:00 PM PST - "How to Build Fun Games"</a></li>
+      <li>May 19: Week 2 winners announced</li>
+    </ul>
+  </div>
+
+  <div className="border-l-4 border-fuchsia-500 pl-4 py-2">
+    <h3 className="text-lg font-bold text-fuchsia-700 dark:text-fuchsia-400">Week 3: Consumer DeFi Reimagined (May 18-24)</h3>
+    <p className="text-sm text-gray-600 dark:text-gray-300 mt-1 mb-2">Build user-friendly DeFi applications that make decentralized finance accessible to everyone. Consider using AI to simplify complex processes, provide personalized insights, and design intuitive interfaces.</p>
+    <ul className="mt-2 space-y-1">
+      <li>May 18-24: Create consumer-focused DeFi solutions</li>
+      <li><span className="text-fuchsia-600 dark:text-fuchsia-400">May 19 (Mon): Twitter Space - Coming Soon</span></li>
+      <li>May 26: Week 3 winners announced</li>
+    </ul>
+  </div>
+
+  <div className="border-l-4 border-orange-500 pl-4 py-2">
+    <h3 className="text-lg font-bold text-orange-700 dark:text-orange-400">Week 4: The Most Killer App (May 25-31)</h3>
+    <p className="text-sm text-gray-600 dark:text-gray-300 mt-1 mb-2">Develop the ultimate Flow application that demonstrates mainstream potential. The focus is on real-world utility, mass-market appeal, and solving genuine problems.</p>
+    <ul className="mt-2 space-y-1">
+      <li>May 25-31: Build the next breakthrough application</li>
+      <li><span className="text-orange-600 dark:text-orange-400">May 26 (Mon): Twitter Space - Coming Soon</span></li>
+      <li>May 31: Final submission deadline</li>
+      <li>June 2: Week 4 winners and jackpot announced</li>
+    </ul>
+  </div>
+</div>
+
+### Submission Guidelines
+- Daily commits must be made between 00:00 UTC and 23:59 UTC
+- Each submission should demonstrate meaningful progress
+- Weekly winners receive prizes from the 1750 FLOW pool
+- All participants are eligible for the 5000 FLOW end-of-month jackpot
+
+## Process of Committing to the Campaign Repo
+
+<div className="bg-white dark:bg-gray-800 rounded-lg shadow-sm p-6 my-6 space-y-6">
+  <div>
+    <h3 className="text-lg font-semibold mb-3">1. Fork the Official Repository</h3>
+    <p>Start by forking the <a href="https://github.com/onflow/May-The-Flow-Be-With-You" target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:underline">official repository</a> to your GitHub account.</p>
+  </div>
+
+  <div>
+    <h3 className="text-lg font-semibold mb-3">2. Follow the Repository Structure</h3>
+    <div className="bg-gray-50 dark:bg-gray-900 p-4 rounded-md overflow-x-auto">
+      <pre className="text-sm">
+{`submissions/
+  ├── 0x1234...333/           # Your Flow address
+  │   ├── README.md           # Project overview
+  │   ├── week1/              # Weekly folder
+  │   │   ├── 0504-my-submission/   # Date prefixed submission
+  │   │   │   ├── README.md   # Documentation with prompts used
+  │   │   │   └── src/        # Source code
+  │   │   └── 0505-demo/      # Another submission
+  │   │       ├── README.md
+  │   │       └── src/
+  │   ├── week2/
+  │   └── week3/`}
+      </pre>
+    </div>
+  </div>
+
+  <div>
+    <h3 className="text-lg font-semibold mb-3">3. Create Your Project Directory</h3>
+    <ul className="space-y-2 pl-5 list-disc">
+      <li>Create a folder named with your Flow address under <code className="px-1.5 py-0.5 bg-gray-100 dark:bg-gray-800 rounded text-sm">submissions</code></li>
+      <li>All your submissions should be placed under this folder</li>
+      <li>Create a folder for each week (<code className="px-1.5 py-0.5 bg-gray-100 dark:bg-gray-800 rounded text-sm">week1</code>, <code className="px-1.5 py-0.5 bg-gray-100 dark:bg-gray-800 rounded text-sm">week2</code>, <code className="px-1.5 py-0.5 bg-gray-100 dark:bg-gray-800 rounded text-sm">week3</code>)</li>
+      <li>Each week will have a specific theme/topic for the raffle</li>
+    </ul>
+  </div>
+
+  <div>
+    <h3 className="text-lg font-semibold mb-3">4. Make Daily Submissions</h3>
+    <ul className="space-y-2 pl-5 list-disc">
+      <li>Create sub-folders with names starting with the date (<code className="px-1.5 py-0.5 bg-gray-100 dark:bg-gray-800 rounded text-sm">0504</code> for May 4)</li>
+      <li>Only dates <code className="px-1.5 py-0.5 bg-gray-100 dark:bg-gray-800 rounded text-sm">0504</code> through <code className="px-1.5 py-0.5 bg-gray-100 dark:bg-gray-800 rounded text-sm">0531</code> are allowed</li>
+      <li>Each submission must include a README file and source code</li>
+      <li>Include any prompts used for development in the README</li>
+      <li>Send a pull request for each submission</li>
+      <li>Each submission gets one ticket for the daily and weekly raffles</li>
+      <li>All tickets accumulate for the end-of-month jackpot raffle</li>
+    </ul>
+  </div>
+</div>
+
 :::tip
-Your profile information is used to verify commits and select winners. Make sure to keep it up to date!
+Your profile and GitHub information are used to verify commits and select winners. Make sure to keep them up to date!
 :::
 
 ## How It Works
 
-### Daily Rewards
-- Make ≥1 commit to any participating repository
-- Each valid commit enters you into that day's draw for **250 FLOW**
+### Weekly Rewards
+- Build projects aligned with each week's exciting theme:
+  - Week 1: The Randomness Revolution
+  - Week 2: Game-Changing Play
+  - Week 3: Consumer DeFi Reimagined
+  - Week 4: The Most Killer App
+- Make daily commits to the participating repository
+- Each day you participate acts as an entry into that week's raffle
+- More participating days in a week = higher chances of winning
+- Projects that best embody the weekly theme receive additional consideration
+- 1750 FLOW distributed to 7 winners each week (~250 FLOW each) 
 - Winners are chosen using [randoms.wtf](https://randoms.wtf/)
 - Winners are announced from [@aliserag0](https://twitter.com/aliserag0) Twitter account
 - FLOW prizes are sent to the top wallet address indicated in your profile
 
-### Weekly Building in Public Rewards
-- Share your daily progress on Twitter
-- Must @flow_blockchain and describe your accomplishments
-- Include a link back to this page
-- Top "building in public" posts each week receive additional prizes
+### Weekly Building in Public Bonus
+- Share your progress on Twitter with the hashtag #MayTheFlowBeWithYou
+- Tag @flow_blockchain in your posts
+- Top builders receive additional FLOW rewards
+- Join our weekly Twitter Spaces to learn from experts and showcase your work
 
-## Daily Schedule
+## Building in Public
 
-- Commits must be made between 00:00 UTC and 23:59 UTC
-- Winners are announced the following day
-- Weekly building in public rewards are announced every Monday
+Sharing your progress publicly unlocks extra rewards and increases your chances of winning!
 
-## Building in Public Guidelines
+In addition to the weekly rewards, we will regularly give bonus FLOW to the top Building in Public posts on X.
 
-To qualify for weekly building in public rewards:
+1. **Share your progress daily on X (Twitter)**
+   - Post screenshots, videos, or code snippets of what you're building
+   - Tag [@flow_blockchain](https://twitter.com/flow_blockchain) and include the hashtag **#MayTheFlowBeWithYou**
+   - Link to your repository
 
-1. Tweet your daily progress
-2. Include @flow_blockchain
-3. Describe what you accomplished
-4. Link back to this page
-5. Use the hashtag #MayTheFlowBeWithYou
-
-In addition to the daily rewards, we will regularly give bonus FLOW to the top Building in Public posts on X.
-
-Example tweet:
-```
-@flow_blockchain Day 3 of #MayTheFlowBeWithYou! 
-✅ Implemented NFT minting functionality
-✅ Added unit tests
-✅ Deployed to testnet
-Building something special on Flow! 
-Learn more: [link to this page]
-```
+2. **Engage with other builders**
+   - Like, comment, and share other participants' work
+   - Collaborate and provide feedback
+   - Build the Flow community together
 
 ## List of Winners
 
@@ -194,7 +308,7 @@ export const FAQ = ({ question, children }) => {
 </FAQ>
 
 <FAQ question="When are prizes distributed?">
-  - Daily FLOW prizes are distributed within 24 hours of the draw
+  - Daily FLOW prizes are distributed within several days of the draw
   - Weekly building in public rewards are announced every Monday
 </FAQ>
 
@@ -203,5 +317,3 @@ export const FAQ = ({ question, children }) => {
 - Follow [@flow_blockchain](https://twitter.com/flow_blockchain) for updates
 - Join our [Discord](https://discord.gg/flow) for community support
 - Check [@aliserag0](https://twitter.com/aliserag0) for daily winner announcements
-
---- 
