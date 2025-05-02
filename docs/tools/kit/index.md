@@ -355,4 +355,4 @@ function TransactionComponent() {
 }
 ```
 
-[Configuration Guide]: ../flow-cli/flow.json/configuration
+[Configuration Guide]: ../../flow-cli/flow.json/configuration
