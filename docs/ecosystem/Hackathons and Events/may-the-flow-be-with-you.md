@@ -61,9 +61,9 @@ Join us for a month-long vibe coding hackathon on Flow! Starting May 4th, partic
     <h3 className="text-xl font-bold mb-4 text-orange-700 dark:text-orange-400">Build & Commit</h3>
     <div className="space-y-3">
       <p>Work on your Flow project based on the weekly themes</p>
-      <p>Make daily submissions by creating folders with date-based names (e.g., <code className="px-1.5 py-0.5 bg-gray-100 dark:bg-gray-800 rounded text-sm">0504</code> for May 4th)</p>
-      <p>Each submission must reference what was added that day and include a README with key prompts used and source code</p>
-      <p className="text-sm bg-white/70 dark:bg-gray-800/70 p-3 rounded inline-block">Note: You can submit up to one entry per day from May 4-31</p>
+      <p>Make weekly submissions by creating project folders within each week's directory (e.g., <code className="px-1.5 py-0.5 bg-gray-100 dark:bg-gray-800 rounded text-sm">any-project-name</code>)</p>
+      <p>Each submission must include a README with key prompts used and source code</p>
+      <p className="text-sm bg-white/70 dark:bg-gray-800/70 p-3 rounded inline-block">Note: You can submit multiple projects within each week's theme</p>
     </div>
   </div>
 
@@ -136,12 +136,6 @@ Join us for a month-long vibe coding hackathon on Flow! Starting May 4th, partic
   </div>
 </div>
 
-### Submission Guidelines
-- Daily commits must be made between 00:00 UTC and 23:59 UTC
-- Each submission should demonstrate meaningful progress
-- Weekly winners receive prizes from the 1750 FLOW pool
-- All participants are eligible for the 2500 FLOW end-of-month jackpot
-
 ## Process of Committing to the Campaign Repo
 
 <div className="bg-white dark:bg-gray-800 rounded-lg shadow-sm p-6 my-6 space-y-6">
@@ -157,15 +151,14 @@ Join us for a month-long vibe coding hackathon on Flow! Starting May 4th, partic
 {`submissions/
   ├── 0x1234...333/           # Your Flow address
   │   ├── README.md           # Project overview
-  │   ├── week1/              # Weekly folder
-  │   │   ├── 0504-my-submission/   # Date prefixed submission
+  │   ├── week1/              # Week 1: Randomness Revolution
+  │   │   ├── my-random-project/    # Your project for week 1
   │   │   │   ├── README.md   # Documentation with prompts used
   │   │   │   └── src/        # Source code
-  │   │   └── 0505-demo/      # Another submission
-  │   │       ├── README.md
-  │   │       └── src/
-  │   ├── week2/
-  │   └── week3/`}
+ 
+  │   ├── week2/              # Week 2: Game-Changing Play
+  │   ├── week3/              # Week 3: Consumer DeFi Reimagined
+  │   └── week4/              # Week 4: The Most Killer App`}
       </pre>
     </div>
   </div>
@@ -175,21 +168,21 @@ Join us for a month-long vibe coding hackathon on Flow! Starting May 4th, partic
     <ul className="space-y-2 pl-5 list-disc">
       <li>Create a folder named with your Flow address under <code className="px-1.5 py-0.5 bg-gray-100 dark:bg-gray-800 rounded text-sm">submissions</code></li>
       <li>All your submissions should be placed under this folder</li>
-      <li>Create a folder for each week (<code className="px-1.5 py-0.5 bg-gray-100 dark:bg-gray-800 rounded text-sm">week1</code>, <code className="px-1.5 py-0.5 bg-gray-100 dark:bg-gray-800 rounded text-sm">week2</code>, <code className="px-1.5 py-0.5 bg-gray-100 dark:bg-gray-800 rounded text-sm">week3</code>)</li>
+      <li>Create a folder for each week (<code className="px-1.5 py-0.5 bg-gray-100 dark:bg-gray-800 rounded text-sm">week1</code>, <code className="px-1.5 py-0.5 bg-gray-100 dark:bg-gray-800 rounded text-sm">week2</code>, <code className="px-1.5 py-0.5 bg-gray-100 dark:bg-gray-800 rounded text-sm">week3</code>, <code className="px-1.5 py-0.5 bg-gray-100 dark:bg-gray-800 rounded text-sm">week4</code>)</li>
       <li>Each week will have a specific theme/topic for the raffle</li>
     </ul>
   </div>
 
   <div>
-    <h3 className="text-lg font-semibold mb-3">4. Make Daily Submissions</h3>
+    <h3 className="text-lg font-semibold mb-3">4. Make Weekly Submissions</h3>
     <ul className="space-y-2 pl-5 list-disc">
-      <li>Create sub-folders with names starting with the date (<code className="px-1.5 py-0.5 bg-gray-100 dark:bg-gray-800 rounded text-sm">0504</code> for May 4)</li>
-      <li>Only dates <code className="px-1.5 py-0.5 bg-gray-100 dark:bg-gray-800 rounded text-sm">0504</code> through <code className="px-1.5 py-0.5 bg-gray-100 dark:bg-gray-800 rounded text-sm">0531</code> are allowed</li>
-      <li>Each submission must include a README file and source code</li>
+          <li>Daily commits lead to higher likelihood of winning!</li>
+      <li>Create your project folders with descriptive names inside each week's directory</li>
+      <li>Each project must include a README file and source code</li>
       <li>Include any prompts used for development in the README</li>
       <li>Send a pull request for each submission</li>
-      <li>Each submission gets one ticket for the daily and weekly raffles</li>
-      <li>All tickets accumulate for the end-of-month jackpot raffle</li>
+      <li>Each project submission during a week counts as an entry for that week's raffle</li>
+      <li>All entries accumulate for the end-of-month jackpot raffle</li>
     </ul>
   </div>
 </div>
@@ -197,6 +190,12 @@ Join us for a month-long vibe coding hackathon on Flow! Starting May 4th, partic
 :::tip
 Your profile and GitHub information are used to verify commits and select winners. Make sure to keep them up to date!
 :::
+
+### Submission Guidelines
+- Each submission should demonstrate meaningful progress
+- Weekly winners receive prizes from the 1750 FLOW pool (7 winners)
+- More submissions in a week increase your chances of winning
+- All participants are eligible for the 2500 FLOW end-of-month jackpot
 
 ## How It Works
 
@@ -206,9 +205,9 @@ Your profile and GitHub information are used to verify commits and select winner
   - Week 2: Game-Changing Play
   - Week 3: Consumer DeFi Reimagined
   - Week 4: The Most Killer App
-- Make daily commits to the participating repository
-- Each day you participate acts as an entry into that week's raffle
-- More participating days in a week = higher chances of winning
+- Submit projects in the appropriate weekly folder
+- Each submission during a week counts as an entry into that week's raffle
+- More projects submitted in a week = higher chances of winning
 - Projects that best embody the weekly theme receive additional consideration
 - 1750 FLOW distributed to 7 winners each week (~250 FLOW each) 
 - Winners are chosen using [randoms.wtf](https://randoms.wtf/)
