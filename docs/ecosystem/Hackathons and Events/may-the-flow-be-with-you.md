@@ -316,16 +316,7 @@ Make sure your GitHub account is linked to your Flow dev docs profile. We'll aut
 
 - Follow [@flow_blockchain](https://twitter.com/flow_blockchain) for updates
 - Join our [Discord](https://discord.gg/flow) for community support
-- Check [@aliserag0](https://twitter.com/aliserag0) for daily winner announcements
 
-## Fine Print
-
-- Open to anyone globally with internet access
-- You must use your Flow wallet address for identification
-- All code must be original and submitted under open-source license
-- All entries must be submitted through [the campaign GitHub repo](https://github.com/onflow/May-The-Flow-Be-With-You)
-- Each wallet address can win multiple times
-- Weekly prizes are distributed within 48 hours after winners are announced  
-- 2500 FLOW Jackpot will be distributed by June 7, 2023
-- Flow's Community Team has final say on all prize decisions
-- Check [@aliserag0](https://twitter.com/aliserag0) for weekly winner announcements
+:::warning Disclaimer
+Disclaimer: Individuals residing in jurisdictions where gaming or lottery participation is prohibited by law are not eligible to participate.
+:::
