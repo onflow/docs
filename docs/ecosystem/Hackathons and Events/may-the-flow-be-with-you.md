@@ -99,9 +99,17 @@ Join us for a month-long vibe coding hackathon on Flow! Starting May 4th, partic
     <ul className="mt-2 space-y-1">
       <li>May 4: Hackathon kickoff</li>
       <li>May 4-10: Build randomness-powered applications</li>
-      <li><a href="https://x.com/i/spaces/1BdGYqgDedLGX" target="_blank" rel="noopener noreferrer" className="text-indigo-600 dark:text-indigo-400 hover:underline">May 5 (Mon): Twitter Space @ 6:00 PM PST - "Randomness: Building with Unpredictability"</a></li>
+      <li><a href="https://x.com/i/spaces/1BdGYqgDedLGX" target="_blank" rel="noopener noreferrer" className="text-indigo-600 dark:text-indigo-400 hover:underline">May 7 (Wed): Twitter Space @ 4:00 PM PST - "Randomness: Building with Unpredictability"</a></li>
       <li>May 12: Week 1 winners announced</li>
     </ul>
+    <div className="mt-4 bg-indigo-50 dark:bg-indigo-900/20 p-3 rounded">
+      <h4 className="font-semibold text-indigo-700 dark:text-indigo-400 mb-2">Useful Resources:</h4>
+      <ul className="space-y-1 text-sm">
+        <li><a href="https://developers.flow.com/build/smart-contracts/randomness" target="_blank" rel="noopener noreferrer" className="text-indigo-600 dark:text-indigo-400 hover:underline">Flow Randomness Documentation</a></li>
+        <li><a href="https://github.com/onflow/flow-randomness" target="_blank" rel="noopener noreferrer" className="text-indigo-600 dark:text-indigo-400 hover:underline">Flow Randomness GitHub</a></li>
+        <li><a href="https://developers.flow.com/build/smart-contracts/randomness/examples" target="_blank" rel="noopener noreferrer" className="text-indigo-600 dark:text-indigo-400 hover:underline">Randomness Code Examples</a></li>
+      </ul>
+    </div>
   </div>
 
   <div className="border-l-4 border-gray-300 dark:border-gray-700 pl-4 py-2">
@@ -122,6 +130,15 @@ Join us for a month-long vibe coding hackathon on Flow! Starting May 4th, partic
       <li>June 2: Week 4 winners and jackpot announced</li>
     </ul>
   </div>
+</div>
+
+<div className="bg-blue-50 dark:bg-blue-900/20 p-4 rounded-lg my-6">
+  <div className="flex items-center mb-2">
+    <h3 className="font-bold text-blue-700 dark:text-blue-400">Looking for a Team?</h3>
+  </div>
+  <p className="text-blue-700 dark:text-blue-300">
+    Looking to form a team for one of the weekly challenges or stay on top of the latest? Join our <a href="https://t.me/flow_world_tour" target="_blank" rel="noopener noreferrer" className="text-blue-600 dark:text-blue-400 font-semibold hover:underline">Telegram chat</a>.
+  </p>
 </div>
 
 ## Process of Committing to the Campaign Repo
