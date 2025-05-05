@@ -163,10 +163,6 @@ import { AppUtils } from "@onflow/fcl"
   nonces are not predictable by looking at previously generated nonces. Moreover, backend should use its own
   local source and not rely on a publicly available source. Using a nonce of at least 32-bytes insures
   it is extremely unlikely to have a nonce collision.
-- Your application identifier `appIdentifier` is a constant defined by your backend. It is
-  important that the backend uses the `appIdentifier` it expects when verifying the signatures,
-  and not rely on an identifier passed along with the `account-proof`. For this reason,
-  `appIdentifier` is not included in the `account-proof` data.
 - The origin / `appIdentifier` is a tuple ⟨scheme, host, port⟩ computed per RFC 6454 (i.e. the value returned
   by window.location.origin in conforming user agents). Wallets MUST embed this origin into the account‑proof
   payload and include it in the data that is cryptographically signed. The resulting signature serves as an
