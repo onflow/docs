@@ -34,7 +34,7 @@ export const ProfileLink = () => {
 
 # May the Flow be with You!
 
-Join us for a month-long vibe coding hackathon on Flow! Starting May 4th, participate in our four themed weeks featuring randomness, games, DeFi, and killer apps. Submit your AI-enhanced projects to win weekly prizes from the <strong>1750 FLOW weekly prize pool</strong> and compete for the end-of-month jackpot of <strong>2500 FLOW</strong>.
+Join us for a month-long vibe coding hackathon on Flow! Starting May 4th, participate in our four themed weeks featuring randomness, games, DeFi, and killer apps. Submit your AI-enhanced projects to win weekly prizes from the **1750 FLOW weekly prize pool** and compete for the end-of-month jackpot of **2500 FLOW**.
 
 ## How to Participate
 
