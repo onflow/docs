@@ -166,10 +166,9 @@ import { AppUtils } from "@onflow/fcl"
   local source and not rely on a publicly available source. Using a nonce of at least 32-bytes insures
   it is extremely unlikely to have a nonce collision.
 - The origin / `appIdentifier` is a tuple ⟨scheme, host, port⟩ computed per RFC 6454 (i.e. the value returned
-  by window.location.origin in conforming user agents). Wallets MUST embed this origin into the account‑proof
-  payload and include it in the data that is cryptographically signed. The resulting signature serves as an
-  attestation that the authentication request originated from the specified application origin (which is known
-  through verification with supporting Browser APIs)
+  by window.location.origin in conforming user agents). Wallets will embed this origin into the RLP-encoded payload
+  which is cryptographically signed. The resulting signature serves as an attestation that the authentication request
+  originated from the specified application origin (which is known through verification with supporting Browser APIs)
 - A successful FCL authentication proves the user fully controls a Flow account. This means the user
   controls one or many account keys with weights that add up to the full account weight. The authentication
   would fail if the user doesn't control keys that add up to a full weight.
