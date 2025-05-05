@@ -104,32 +104,20 @@ Join us for a month-long vibe coding hackathon on Flow! Starting May 4th, partic
     </ul>
   </div>
 
-  <div className="border-l-4 border-violet-500 pl-4 py-2">
-    <h3 className="text-lg font-bold text-violet-700 dark:text-violet-400">Week 2: Game-Changing Play (May 11-17)</h3>
-    <p className="text-sm text-gray-600 dark:text-gray-300 mt-1 mb-2">Create the next generation of fun games. Focus on innovative gameplay, engaging experiences, and novel game mechanics that leverage blockchain technology.</p>
-    <ul className="mt-2 space-y-1">
-      <li>May 11-17: Develop fun games on Flow</li>
-      <li><a href="https://x.com/i/spaces/1yoKMoqmzzjJQ" target="_blank" rel="noopener noreferrer" className="text-violet-600 dark:text-violet-400 hover:underline">May 12 (Mon): Twitter Space @ 6:00 PM PST - "How to Build Fun Games"</a></li>
-      <li>May 19: Week 2 winners announced</li>
-    </ul>
+  <div className="border-l-4 border-gray-300 dark:border-gray-700 pl-4 py-2">
+    <h3 className="text-lg font-bold text-gray-500 dark:text-gray-400">Week 2: Theme TBD (May 11-17)</h3>
+    <p className="text-sm text-gray-500 dark:text-gray-400 mt-1 mb-2">Next week's theme will be announced soon. Stay tuned!</p>
   </div>
 
-  <div className="border-l-4 border-fuchsia-500 pl-4 py-2">
-    <h3 className="text-lg font-bold text-fuchsia-700 dark:text-fuchsia-400">Week 3: Consumer DeFi Reimagined (May 18-24)</h3>
-    <p className="text-sm text-gray-600 dark:text-gray-300 mt-1 mb-2">Build user-friendly DeFi applications that make decentralized finance accessible to everyone. Consider using AI to simplify complex processes, provide personalized insights, and design intuitive interfaces.</p>
-    <ul className="mt-2 space-y-1">
-      <li>May 18-24: Create consumer-focused DeFi solutions</li>
-      <li><span className="text-fuchsia-600 dark:text-fuchsia-400">May 19 (Mon): Twitter Space - Coming Soon</span></li>
-      <li>May 26: Week 3 winners announced</li>
-    </ul>
+  <div className="border-l-4 border-gray-300 dark:border-gray-700 pl-4 py-2">
+    <h3 className="text-lg font-bold text-gray-500 dark:text-gray-400">Week 3: Theme TBD (May 18-24)</h3>
+    <p className="text-sm text-gray-500 dark:text-gray-400 mt-1 mb-2">Theme to be announced.</p>
   </div>
 
-  <div className="border-l-4 border-orange-500 pl-4 py-2">
-    <h3 className="text-lg font-bold text-orange-700 dark:text-orange-400">Week 4: The Most Killer App (May 25-31)</h3>
-    <p className="text-sm text-gray-600 dark:text-gray-300 mt-1 mb-2">Develop the ultimate Flow application that demonstrates mainstream potential. The focus is on real-world utility, mass-market appeal, and solving genuine problems.</p>
-    <ul className="mt-2 space-y-1">
-      <li>May 25-31: Build the next breakthrough application</li>
-      <li><span className="text-orange-600 dark:text-orange-400">May 26 (Mon): Twitter Space - Coming Soon</span></li>
+  <div className="border-l-4 border-gray-300 dark:border-gray-700 pl-4 py-2">
+    <h3 className="text-lg font-bold text-gray-500 dark:text-gray-400">Week 4: Theme TBD (May 25-31)</h3>
+    <p className="text-sm text-gray-500 dark:text-gray-400 mt-1 mb-2">Theme to be announced.</p>
+    <ul className="mt-2 space-y-1 text-gray-500 dark:text-gray-400">
       <li>May 31: Final submission deadline</li>
       <li>June 2: Week 4 winners and jackpot announced</li>
     </ul>
@@ -155,10 +143,10 @@ Join us for a month-long vibe coding hackathon on Flow! Starting May 4th, partic
   │   │   ├── my-random-project/    # Your project for week 1
   │   │   │   ├── README.md   # Documentation with prompts used
   │   │   │   └── src/        # Source code
- 
-  │   ├── week2/              # Week 2: Game-Changing Play
-  │   ├── week3/              # Week 3: Consumer DeFi Reimagined
-  │   └── week4/              # Week 4: The Most Killer App`}
+  │   │
+  │   ├── week2/              # Week 2: Theme TBD
+  │   ├── week3/              # Week 3: Theme TBD
+  │   └── week4/              # Week 4: Theme TBD`}
       </pre>
     </div>
   </div>
@@ -200,11 +188,9 @@ Your profile and GitHub information are used to verify commits and select winner
 ## How It Works
 
 ### Weekly Rewards
-- Build projects aligned with each week's exciting theme:
+- Build projects aligned with each week's theme:
   - Week 1: The Randomness Revolution
-  - Week 2: Game-Changing Play
-  - Week 3: Consumer DeFi Reimagined
-  - Week 4: The Most Killer App
+  - Week 2-4: Themes to be announced weekly
 - Submit projects in the appropriate weekly folder
 - Each submission during a week counts as an entry into that week's raffle
 - More projects submitted in a week = higher chances of winning
