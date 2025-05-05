@@ -12,7 +12,7 @@ Some of the most groundbreaking blockchain projects began as hackathon ideas—C
 
 ## Flow World Tour
 
-We're bringing together builders, creators, and innovators through a series of global hackathons—both in-person and online. These events are more than just competitions; they're an opportunity to experiment, collaborate, and turn bold ideas into reality.
+We're bringing together builders, creators, and innovators through a series of global hackathons — both in-person and online. These events are more than just competitions; they're an opportunity to experiment, collaborate, and turn bold ideas into reality.
 
 ### Why Join?
 
