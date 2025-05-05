@@ -36,6 +36,7 @@ export const ProfileLink = () => {
 
 Join us for a month-long vibe coding challenge on Flow! Starting May 4th, participate in our four themed weeks featuring randomness, games, DeFi, and killer apps. Submit your AI-enhanced projects to win weekly prizes from the <strong>1750 FLOW weekly prize pool</strong> and compete for the end-of-month jackpot of <strong>2500 FLOW</strong>.
 
+
 ## How to Participate
 
 <div className="grid grid-cols-1 gap-8 my-8">
