@@ -34,7 +34,7 @@ export const ProfileLink = () => {
 
 # May the Flow be with You!
 
-Join us for a month-long vibe coding hackathon on Flow! Starting May 4th, participate in our four themed weeks featuring randomness, games, DeFi, and killer apps. Submit your AI-enhanced projects to win weekly prizes from the <strong>1750 FLOW weekly prize pool</strong> and compete for the end-of-month jackpot of <strong>2500 FLOW</strong>.
+Join us for a month-long vibe coding challenge on Flow! Starting May 4th, participate in our four themed weeks featuring randomness, games, DeFi, and killer apps. Submit your AI-enhanced projects to win weekly prizes from the <strong>1750 FLOW weekly prize pool</strong> and compete for the end-of-month jackpot of <strong>2500 FLOW</strong>.
 
 ## How to Participate
 
@@ -97,7 +97,7 @@ Join us for a month-long vibe coding hackathon on Flow! Starting May 4th, partic
     <h3 className="text-lg font-bold text-indigo-700 dark:text-indigo-400">Week 1: The Randomness Revolution (May 4-10)</h3>
     <p className="text-sm text-gray-600 dark:text-gray-300 mt-1 mb-2">Leverage on-chain randomness to create unpredictable, emergent experiences on Flow. Think: generative art, dynamic NFTs, chance-based mechanics, and randomized gameplay elements.</p>
     <ul className="mt-2 space-y-1">
-      <li>May 4: Hackathon kickoff</li>
+      <li>May 4: Challenges kickoff</li>
       <li>May 4-10: Build randomness-powered applications</li>
       <li><a href="https://x.com/i/spaces/1BdGYqgDedLGX" target="_blank" rel="noopener noreferrer" className="text-indigo-600 dark:text-indigo-400 hover:underline">May 7 (Wed): Twitter Space @ 4:00 PM PST - "Randomness: Building with Unpredictability"</a></li>
       <li>May 12: Week 1 winners announced</li>
