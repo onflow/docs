@@ -26,6 +26,8 @@ keywords:
 
 [Account Linking] is a powerful Flow feature that allows users to connect their wallets, enabling linked wallets to view and manage assets in one wallet with another. This feature helps reduce or even eliminate the challenges posed by other account abstraction solutions, which often lead to multiple isolated wallets and fragmented assets.
 
+![Top Shot Preview](./top-shot-preview.png)
+
 In this tutorial, you'll build a [simple onchain app] that allows users to sign into your app with their Flow wallet and view [NBA Top Shot] Moments that reside in their [Dapper Wallet] - without those users needing to sign in with Dapper.
 
 ## Objectives
