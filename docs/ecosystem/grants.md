@@ -39,7 +39,7 @@ Projects that graduate from this program and show strong signs of traction or ut
 
 The ecosystem grants program is aimed at supporting the growth of Flow ecosystem projects. The Flow Foundation will evaluate the grant applications and select the grantees.
 
-1. Please make a proposal and clearly describe your project, Please include:
+1. Please make a proposal and clearly describe your project. Include:
     - A milestone-based roadmap, and a clear timeline for each milestone
     - The amount of funding you are requesting for each milestone
     - How you will use the funding
