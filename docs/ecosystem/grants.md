@@ -33,7 +33,7 @@ Projects that graduate from this program and show strong signs of traction or ut
 
 1. Visit the [Flow GrantDAO](https://dorahacks.io/flow) website
 2. Submit an application of your BUIDL
-3. Wait for the results of the round, if selected, you will be funded
+3. Wait for the results of the round. If selected, you will be funded
 
 ### Ecosystem Grants
 
