@@ -17,19 +17,18 @@ When authenticating via FCL using Discovery UI, a user is shown a list of servic
 
 ![FCL Default Discovery UI](./images/discovery.png)
 
-This method is the simplest way to integrate Discovery and its wallets and services into your app. All you have to do is configure `discovery.wallet` with the host endpoint for testnet or mainnet.
+This method is the simplest way to integrate Discovery and its wallets and services into your app. Just use the default configuration that matches the network you're working with. Available options include `flowMainnet`, `flowTestnet` and `flowEmulator`.
 
 > **Note**: Opt-in wallets, like Ledger and Dapper Wallet, require you to explicitly state you'd like to use them. For more information on including opt-in wallets, [see these docs](./api.md#more-configuration).
 >
 > A [Dapper Wallet](https://meetdapper.com/developers) developer account is required. To enable Dapper Wallet inside FCL, you need to [follow this guide](https://docs.meetdapper.com/quickstart).
 
 ```javascript
-import { config } from '@onflow/fcl';
+import * as fcl from '@onflow/fcl';
 
-config({
-  'accessNode.api': 'https://rest-testnet.onflow.org',
-  'discovery.wallet': 'https://fcl-discovery.onflow.org/testnet/authn',
-});
+fcl.config({
+  ...fcl.flowTestnet
+})
 ```
 
 Any time you call `fcl.authenticate` the user will be presented with that screen.
@@ -43,9 +42,10 @@ Starting in version 0.0.79-alpha.4, dapps now have the ability to display app a 
 All you have to do is set `app.detail.icon` and `app.detail.title` like this:
 
 ```javascript
-import { config } from '@onflow/fcl';
+import * as fcl from '@onflow/fcl';
 
-config({
+fcl.config({
+  ...fcl.flowTestnet,
   'app.detail.icon': 'https://placekitten.com/g/200/200',
   'app.detail.title': 'Kitten Dapp',
 });
@@ -60,12 +60,11 @@ If you want more control over your authentication UI, the Discovery API is also 
 Setup still requires configuration of the Discovery endpoint, but when using the API it is set via `discovery.authn.endpoint` as shown below.
 
 ```javascript
-import { config } from '@onflow/fcl';
+import * as fcl from '@onflow/fcl';
 
-config({
-  'accessNode.api': 'https://rest-testnet.onflow.org',
-  'discovery.authn.endpoint':
-    'https://fcl-discovery.onflow.org/api/testnet/authn',
+fcl.config({
+  ...fcl.flowTestnet,
+  'discovery.authn.endpoint': 'https://fcl-discovery.onflow.org/api/testnet/authn',
 });
 ```
 
@@ -166,11 +165,11 @@ Opt-in wallets are those that don't have support for authentication, authorizati
 
 To include opt-in wallets from FCL:
 
-```
+```javascript
 import * as fcl from "@onflow/fcl"
 
 fcl.config({
-  "discovery.wallet": "https://fcl-discovery.onflow.org/testnet/authn",
+  ...fcl.flowTestnet,
   "discovery.authn.endpoint": "https://fcl-discovery.onflow.org/api/testnet/authn",
   "discovery.authn.include": ["0x123"] // Service account address
 })
@@ -194,8 +193,9 @@ To exclude wallets from FCL Discovery, you can use the `discovery.authn.exclude`
 
 ```javascript
 import * as fcl from '@onflow/fcl';
+
 fcl.config({
-  'discovery.wallet': 'https://fcl-discovery.onflow.org/testnet/authn',
+  ...fcl.flowTestnet,
   'discovery.authn.endpoint':
     'https://fcl-discovery.onflow.org/api/testnet/authn',
   'discovery.authn.exclude': ['0x123', '0x456'], // Service account addresses to exclude
