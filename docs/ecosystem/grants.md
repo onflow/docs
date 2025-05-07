@@ -29,7 +29,7 @@ We have two grant programs for different types of projects:
 
 The Flow GrantDAO is allocating over several million FLOW to ecosystem builders. Eligible projects can be awarded up to 50k FLOW per round. Flow GrantDAO gives teams an opportunity to secure funding while working on bringing their project to life and solving real problems. After completing an application and getting approved, projects are funded based on community MACI voting. Voting happens throughout the round and payouts occur at the end of the round period.
 
-Projects that graduate from this program and show strong signs of traction or utilization may be offered additional startup advisory support from Flow Foundation as well as fundraising opportunities and training.
+Projects that graduate from this program and show strong signs of traction or utilization may be offered additional startup advisory support from the Flow Foundation as well as fundraising opportunities and training.
 
 1. Visit the [Flow GrantDAO](https://dorahacks.io/flow) website
 2. Submit an application of your BUIDL
