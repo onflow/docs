@@ -16,7 +16,7 @@ For example, it can be sent to the App’s backend and after validating the sign
 1. Wallet receives Authn `FCL:VIEW:READY:RESPONSE` request and parses out the `appIdentifier`, and `nonce`.
 2. The wallet authenticates the user however they choose to do, and determines the user's account `address`
 4. The wallet must validate the `appIdentifier` against the RFC 6454 origin of the request if it matches the
-   format of a RFC 3454 URI.  Requests with a mismatch should be rejected.  Some legacy systems may use arbitrary strings as `appIdentifier` and not RFC 6454 origins. In this case, wallets should display a warning to the user that the app identifier does not match the origin of the request.
+   format of a [RFC 3986](https://www.rfc-editor.org/rfc/rfc3986) URI.  Requests with a mismatch should be rejected.  Some legacy systems may use arbitrary strings as `appIdentifier` and not [RFC 6454](https://www.rfc-editor.org/rfc/rfc6454.html) origins. In this case, wallets should display a warning to the user that the app identifier does not match the origin of the request.
 5. Wallet prepares and signs the message:
       - Encodes the `appIdentifier`, `nonce`, and `address` along with the `"FCL-ACCOUNT-PROOF-V0.0"` domain separation tag, [using the encoding scheme described below](#account-proof-message-encoding).
       - Signs the message with the `signatureAlgorithm` and `hashAlgorithm` specified on user's key. **It is highly recommended that the wallet display the message data and receive user approval before signing.**
@@ -56,7 +56,7 @@ WalletUtils.onMessageFromFcl(
     const {address, nonce, appIdentifier} = data.data
 
     // Validate the origin
-    if (origin !== appIdentifier) {
+    if (appIdentifier !== 
       throw new Error("Invalid origin")
     }
 
