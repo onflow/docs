@@ -376,6 +376,7 @@ function RandomValues() {
 #### Notes:
 
 - Randomness is generated using Flow’s **on-chain `revertibleRandom`**, producing pseudorandom values tied to block and transaction execution.
+- The value returned for identical calls within the same block will be identical.
 - This hook is intended for **non-critical randomness** like randomized UIs, loot crates, and temporary rewards.
 - For **critical applications** requiring secure and unpredictable randomness, use a [commit-reveal scheme] on Flow instead.
 - Values are **deterministic**: if a transaction fails and retries, the same random value will be regenerated.
