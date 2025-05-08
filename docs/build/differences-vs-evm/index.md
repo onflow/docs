@@ -5,7 +5,7 @@ sidebar_custom_props:
   icon: ↔️
 ---
 
-Flow [Cadence] is designed with many improvements over prior blockchain networks.  As a result, you'll notice many differences between Flow vs other blockchains, especially Ethereum. This document will be most useful to developers who are already familiar with building on the EVM, but contains details useful to all developers. Check out [Why Flow] for a more general overview of the Flow blockchain.
+Flow [Cadence] is designed with many improvements over prior blockchain networks.  As a result, you'll notice many differences between Flow vs. other blockchains, especially Ethereum. This document will be most useful to developers who are already familiar with building on the EVM, but contains details useful to all developers. Check out [Why Flow] for a more general overview of the Flow blockchain.
 
 :::tip
 
