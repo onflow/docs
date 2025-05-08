@@ -186,7 +186,7 @@ Access Nodes are the node type that are most useful for developers, as they prov
 
 If you're already familiar with blockchain development, here's a comparison between popular software packages and Flow's tooling:
 
-- [hardhat](https://hardhat.org/) / [Truffle](https://trufflesuite.com/) / [Foundry](https://github.com/foundry-rs/foundry)
+- [Hardhat](https://hardhat.org/) / [Truffle](https://trufflesuite.com/) / [Foundry](https://getfoundry.sh/)
   - [Flow CLI](https://github.com/onflow/flow-cli/) provides local development tools and the [Flow Emulator](https://github.com/onflow/flow-emulator)
 - [OpenZeppelin](https://www.openzeppelin.com/)
   - [Emerald OZ](https://oz.ecdao.org/overview)
