@@ -15,10 +15,12 @@ For example, it can be sent to the App’s backend and after validating the sign
 
 1. Wallet receives Authn `FCL:VIEW:READY:RESPONSE` request and parses out the `appIdentifier`, and `nonce`.
 2. The wallet authenticates the user however they choose to do, and determines the user's account `address`
-3. Wallet prepares and signs the message:
+4. The wallet must validate the `appIdentifier` against the RFC 6454 origin of the request if it matches the
+   format of a RFC 3454 URI.  Requests with a mismatch should be rejected.  Some legacy systems may use arbitrary strings as `appIdentifier` and not RFC 6454 origins. In this case, wallets should display a warning to the user that the app identifier does not match the origin of the request.
+5. Wallet prepares and signs the message:
       - Encodes the `appIdentifier`, `nonce`, and `address` along with the `"FCL-ACCOUNT-PROOF-V0.0"` domain separation tag, [using the encoding scheme described below](#account-proof-message-encoding).
       - Signs the message with the `signatureAlgorithm` and `hashAlgorithm` specified on user's key. **It is highly recommended that the wallet display the message data and receive user approval before signing.**
-4. Wallet sends back this new service and data along with the other service configuration when completing Authn.
+6. Wallet sends back this new service and data along with the other service configuration when completing Authn.
 
 ### Account Proof Message Encoding
 
@@ -49,23 +51,34 @@ with the following values:
 // Using WalletUtils
 import {WalletUtils} from "@onflow/fcl"
 
-const message = WalletUtils.encodeAccountProof(
-  appIdentifier, // A human readable string to identify your application during signing
-  address,       // Flow address of the user authenticating
-  nonce,         // minimum 32-btye nonce
+WalletUtils.onMessageFromFcl(
+  (data, {origin}) => {
+    const {address, nonce, appIdentifier} = data.data
+
+    // Validate the origin
+    if (origin !== appIdentifier) {
+      throw new Error("Invalid origin")
+    }
+
+    const message = WalletUtils.encodeAccountProof(
+      appIdentifier, // A human readable string to identify your application during signing
+      address,       // Flow address of the user authenticating
+      nonce,         // minimum 32-btye nonce
+    )
+
+    sign(privateKey, message)
+
+    // Without using FCL WalletUtils
+    const ACCOUNT_PROOF_DOMAIN_TAG = rightPaddedHexBuffer(
+      Buffer.from("FCL-ACCOUNT-PROOF-V0.0").toString("hex"),
+      32
+    )
+    const message =  rlp([appIdentifier, address, nonce])
+    const prependUserDomainTag = (message) => ACCOUNT_PROOF_DOMAIN_TAG + message
+
+    sign(privateKey, prependUserDomainTag(message))    
+  }
 )
-
-sign(privateKey, message)
-
-// Without using FCL WalletUtils
-const ACCOUNT_PROOF_DOMAIN_TAG = rightPaddedHexBuffer(
-  Buffer.from("FCL-ACCOUNT-PROOF-V0.0").toString("hex"),
-  32
-)
-const message =  rlp([appIdentifier, address, nonce])
-const prependUserDomainTag = (message) => ACCOUNT_PROOF_DOMAIN_TAG + message
-
-sign(privateKey, prependUserDomainTag(message))
 ```
 
 ```json
@@ -84,6 +97,7 @@ sign(privateKey, prependUserDomainTag(message))
     // Nonce signed by the current account-proof (minimum 32 bytes in total, i.e 64 hex characters)
     nonce: "75f8587e5bd5f9dcc9909d0dae1f0ac5814458b2ae129620502cb936fde7120a",
     signatures: [CompositeSignature],
+    appIdentifier: "https://myapp.com"
   }
 }
 ```
