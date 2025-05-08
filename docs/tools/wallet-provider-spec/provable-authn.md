@@ -55,9 +55,12 @@ WalletUtils.onMessageFromFcl(
   (data, {origin}) => {
     const {address, nonce, appIdentifier} = data.data
 
-    // Validate the origin
-    if (appIdentifier !== 
-      throw new Error("Invalid origin")
+    // Check if the appIdentifier is a valid RFC 3986 URI
+    if (!isValidOrigin(appIdentifier)) {
+      // Warn the user that the appIdentifier does not match the origin and to proceed with caution
+    } else if (origin !== appIdentifier) {
+      // Reject the request if the appIdentifier is a valid RFC 3986 URI but does not match the origin
+      throw new Error("Invalid appIdentifier")
     }
 
     const message = WalletUtils.encodeAccountProof(
