@@ -18,6 +18,7 @@ keywords:
   - Flow development
   - token contract
   - blockchain tokens
+  - bridge
 ---
 
 :::info
@@ -1130,3 +1131,4 @@ The transfer transaction also has a [generic version](https://github.com/onflow/
 - [View a repo of this example code](https://github.com/chasefleming/FooToken)
 - [Review an `ExampleToken` contract implementing all of the remaining FungibleToken interface](https://github.com/onflow/flow-ft/blob/master/contracts/ExampleToken.cdc)
 - [View the Flow Token Standard](https://github.com/onflow/flow-ft/blob/master/contracts/FungibleToken.cdc)
+- Learn about how you can [bridge your FTs to Flow-EVM](../../tutorials/cross-vm-apps/vm-bridge.md#cross-vm-bridge) and how you can build your FT project [to be compatible with the Flow VM bridge](../../tutorials/cross-vm-apps/vm-bridge.md#prep-your-assets-for-bridging).

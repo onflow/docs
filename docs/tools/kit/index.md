@@ -59,7 +59,9 @@ function Root() {
 export default Root
 ```
 
-If you're using [Next.js], put this in `layout.tsx`. Adapt as appropriate for other frontend frameworks.
+If you're using Next.js, put this in `layout.tsx`. Adapt as appropriate for other frontend frameworks.
+
+👉 Learn more about configuring `flow.json` in the [Configuration Guide].
 
 ---
 
@@ -413,5 +415,5 @@ function TransactionComponent() {
 }
 ```
 
-
 [commit-reveal scheme]: ../../build/advanced-concepts/randomness#commit-reveal-scheme
+[Configuration Guide]: ../flow-cli/flow.json/configuration.md
