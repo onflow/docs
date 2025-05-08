@@ -97,7 +97,6 @@ WalletUtils.onMessageFromFcl(
     // Nonce signed by the current account-proof (minimum 32 bytes in total, i.e 64 hex characters)
     nonce: "75f8587e5bd5f9dcc9909d0dae1f0ac5814458b2ae129620502cb936fde7120a",
     signatures: [CompositeSignature],
-    appIdentifier: "https://myapp.com"
   }
 }
 ```
