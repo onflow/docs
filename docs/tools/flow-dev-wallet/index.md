@@ -50,6 +50,12 @@ Start the Emulator and deploy the contracts by running the following command fro
 flow emulator start
 flow project deploy --network emulator
 ```
+## Start the Dev Wallet 
+
+In a separate terminal session, start the dev wallet service, this service is referenced in the fcl configuration as `discovery.wallet`
+```sh
+flow dev-wallet
+```
 
 ## Configuring Your JavaScript Application
 
