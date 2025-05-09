@@ -50,14 +50,14 @@ Start the Emulator and deploy the contracts by running the following command fro
 flow emulator start
 flow project deploy --network emulator
 ```
-## Start the Dev Wallet 
+### Start the Dev Wallet 
 
-In a separate terminal session, start the dev wallet service, this service is referenced in the fcl configuration as `discovery.wallet`
+In a separate terminal session, start the dev wallet service. 
 ```sh
 flow dev-wallet
 ```
 
-## Configuring Your JavaScript Application
+### Configuring Your JavaScript Application
 
 The Flow Dev Wallet is designed to be used with [`@onflow/fcl`](https://github.com/onflow/fcl-js) version `1.0.0` or higher. The FCL package can be installed with: `npm install @onflow/fcl` or `yarn add @onflow/fcl`.
 
