@@ -27,7 +27,7 @@ After completing this guide, you'll be able to:
 
 This tutorial uses [Next.js]. You don't need to be an expert, but it's helpful to be comfortable with development using a current React framework. You'll be on your own to select and use a package manager, manage Node versions, and other frontend environment tasks. If you don't have your own preference, you can just follow along with us and use [Yarn].
 
-### <Additional Prerequisites>
+### (Additional Prerequisites)
 
 This doesn't need to be exhaustive, but it should be comprehensive. It's a good place to outline what you're specifically **not** going to teach in this tutorial.
 
