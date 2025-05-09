@@ -106,9 +106,9 @@ Join us for a month-long vibe coding challenge on Flow! Starting May 4th, partic
     <div className="mt-4 bg-indigo-50 dark:bg-indigo-900/20 p-3 rounded">
       <h4 className="font-semibold text-indigo-700 dark:text-indigo-400 mb-2">Useful Resources:</h4>
       <ul className="space-y-1 text-sm">
-        <li><a href="https://developers.flow.com/build/smart-contracts/randomness" target="_blank" rel="noopener noreferrer" className="text-indigo-600 dark:text-indigo-400 hover:underline">Flow Randomness Documentation</a></li>
-        <li><a href="https://github.com/onflow/flow-randomness" target="_blank" rel="noopener noreferrer" className="text-indigo-600 dark:text-indigo-400 hover:underline">Flow Randomness GitHub</a></li>
-        <li><a href="https://developers.flow.com/build/smart-contracts/randomness/examples" target="_blank" rel="noopener noreferrer" className="text-indigo-600 dark:text-indigo-400 hover:underline">Randomness Code Examples</a></li>
+        <li><a href="https://developers.flow.com/tutorials/ai-plus-flow/cursor" target="_blank" rel="noopener noreferrer" className="text-indigo-600 dark:text-indigo-400 hover:underline">How to setup cursor with developer docs for optimal vibe coding</a></li>
+        <li><a href="https://randoms.wtf/ " target="_blank" rel="noopener noreferrer" className="text-indigo-600 dark:text-indigo-400 hover:underline">"Live app </a> built using Flow random and  <a href="https://github.com/Aliserag/random.wtf " target="_blank" rel="noopener noreferrer" className="text-indigo-600 dark:text-indigo-400 hover:underline"> GitHub</a></li>
+        <li><a href="https://developers.flow.com/evm/guides/vrf " target="_blank" rel="noopener noreferrer" className="text-indigo-600 dark:text-indigo-400 hover:underline">Implement Randomness with Solidity in 3 min</a></li>
       </ul>
     </div>
   </div>
