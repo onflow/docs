@@ -77,5 +77,6 @@ export function useIcons() {
     'flow': '/img/ecosystem/flow.svg',
     'alchemy': '/img/ecosystem/alchemy.svg',
     'thirdweb': '/img/ecosystem/thirdweb.svg',
+    'uniblock': '/img/ecosystem/uniblock.svg',
   }), []);
 }

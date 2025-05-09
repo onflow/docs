@@ -81,6 +81,15 @@ export const BuilderPerks = () => {
           onClick={() => handleCardClick('olympix')}
         />
 
+        <ActionCard
+          heading="Uniblock"
+          description="Get $500+ OFF with 3 months of Uniblock Pro FREE. Access 50 data partners, 100 protocols, and 1500 APIs with enterprise features like load balancing and auto retry."
+          icon="uniblock"
+          iconColor="white"
+          cardColor="black"
+          onClick={() => handleCardClick('uniblock')}
+        />
+
        </div>
 
       {/* Profile Check Modal */}
@@ -447,6 +456,58 @@ export const BuilderPerks = () => {
                 </div>
                 <div className="text-sm text-gray-600 dark:text-gray-300">
                   3. Upgrade to Growth tier and deploy your Engine instance
+                </div>
+              </div>
+            </div>
+          </section>
+        </div>
+      </Modal>
+
+      {/* Uniblock Modal */}
+      <Modal 
+        isOpen={activeModal === 'uniblock'} 
+        onClose={() => setActiveModal(null)}
+        title="Uniblock"
+      >
+        <div className="max-w-2xl space-y-12 py-6">
+          <header className="flex items-center justify-between pb-6 border-b border-gray-200 dark:border-gray-700">
+            <div className="pr-8">
+              <h2 className="text-2xl font-semibold mb-1">3 Months Pro Access + $500 OFF</h2>
+              <p className="text-gray-600 dark:text-gray-300">Enterprise-grade API aggregation platform, connect to 1500+ APIs with optimized pricing and dynamic API switching that gurantees 0% downtime</p>
+            </div>
+            <img src="/img/ecosystem/uniblock.svg" alt="Uniblock"  />
+          </header>
+
+          <section className="space-y-24">
+            <div>
+              <h3 className="text-lg font-medium mb-6">Features</h3>
+              <div className="grid sm:grid-cols-2 gap-4">
+                <div className="space-y-2">
+                  <div className="text-sm text-gray-600 dark:text-gray-300">• 50+ data partners</div>
+                  <div className="text-sm text-gray-600 dark:text-gray-300">• 100+ protocols</div>
+                  <div className="text-sm text-gray-600 dark:text-gray-300">• 1500+ APIs</div>
+                </div>
+                <div className="space-y-2">
+                  <div className="text-sm text-gray-600 dark:text-gray-300">• Load balancing</div>
+                  <div className="text-sm text-gray-600 dark:text-gray-300">• Auto fallback</div>
+                  <div className="text-sm text-gray-600 dark:text-gray-300">• Auto retry</div>
+                </div>
+              </div>
+            </div>
+
+            <div className="pt-20">
+              <h3 className="text-lg font-medium mb-6 mt-10">How to Apply</h3>
+              <div className="space-y-4">
+                <div className="space-y-2">
+                  <div className="font-medium">Send email to:</div>
+                  <div className="text-sm text-gray-600 dark:text-gray-300">hello@uniblock.dev</div>
+                  <div className="text-sm text-gray-600 dark:text-gray-300">CC: builders@flow.com</div>
+                </div>
+                <div className="space-y-2">
+                  <div className="font-medium">Include:</div>
+                  <div className="text-sm text-gray-600 dark:text-gray-300">• Subject: "Uniblock Flow Builder Perk"</div>
+                  <div className="text-sm text-gray-600 dark:text-gray-300">• Brief project description</div>
+                  <div className="text-sm text-gray-600 dark:text-gray-300">• Link to relevant materials</div>
                 </div>
               </div>
             </div>
