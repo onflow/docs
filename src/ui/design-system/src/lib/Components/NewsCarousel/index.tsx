@@ -13,31 +13,49 @@ interface CarouselCard {
 
 const CAROUSEL_CARDS: CarouselCard[] = [
   {
-    heading: 'We got a castle!',
-    description: 'Apply to be a Flow Scholar to work alongside our team, join us at the Flow Hacker Castle, and represent the Flow community—all on us!',
+    heading: 'Get the newsletter!',
+    description: 'We send out a newsletter every week with the latest news for Flow developers.  Sign up to get it in your inbox!',
     iconColor: 'green',
     cardColor: 'black',
-    href: 'https://x.com/flow_blockchain/status/1880405924407587173',
+    href: 'https://break.link',
     variant: 'horizontal' as const,
-    // icon: 'flow-castle'
+    icon: 'learn'
   },
   {
-    heading: 'Cadence Tutorials',
-    description: 'We\'ve updated the first set of Cadence tutorials to be more approachable.  Let us know what you think!',
-    iconColor: 'blue',
+    heading: 'May the Flow be with You!',
+    description: 'Join us for a month-long vibe coding challenge on Flow! Starting May 4th, participate in our four themed weeks.',
+    iconColor: 'green',
     cardColor: 'black',
-    href: 'https://cadence-lang.org/docs/tutorial/first-steps',
+    href: '/ecosystem/Hackathons%20and%20Events/may-the-flow-be-with-you',
     variant: 'horizontal' as const,
-    icon: 'tutorials'
+    icon: 'vcs-&-funds'
   },
   {
-    heading: 'Flow is Live on Axelar',
-    description: '"With this integration, Flow users, builders and dApps get access to best-in-class interoperability, opening up liquidity from 70+ chains 🦾 🤝"',
+    heading: 'Web3 Founder x VC meetup',
+    description: 'Calling all Web3 founders from Consensus! 🧠 Join us for an epic event of networking, learning, and fun.',
+    iconColor: 'green',
+    cardColor: 'black',
+    href: 'https://lu.ma/vicz07zu',
+    variant: 'horizontal' as const,
+    icon: 'vcs-&-funds'
+  },
+  {
+    heading: 'ETH Global Prague',
+    description: 'Earn up to $10,000 in prizes for building on Flow at one of the biggest hackathons in Europe!',
     iconColor: 'purple',
     cardColor: 'black',
-    href: 'https://x.com/axelar/status/1882066175175360998',
+    href: 'https://ethglobal.com/events/prague/prizes/flow',
     variant: 'horizontal' as const,
-    icon: 'cross-vm-bridge'
+    icon: 'grants'
+  },
+  {
+    heading: 'EthCC Cannes',
+    description: 'Earn up to $20,000 in prizes at the largest annual Ethereum conference in Europe!',
+    iconColor: 'blue',
+    cardColor: 'black',
+    href: 'https://ethglobal.com/events/cannes/prizes/flow',
+    variant: 'horizontal' as const,
+    icon: 'grants'
   },
 ];
 
