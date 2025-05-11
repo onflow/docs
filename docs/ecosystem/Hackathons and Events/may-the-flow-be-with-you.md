@@ -114,8 +114,14 @@ Join us for a month-long vibe coding challenge on Flow! Starting May 4th, partic
   </div>
 
   <div className="border-l-4 border-gray-300 dark:border-gray-700 pl-4 py-2">
-    <h3 className="text-lg font-bold text-gray-500 dark:text-gray-400">Week 2: Theme TBD (May 11-17)</h3>
-    <p className="text-sm text-gray-500 dark:text-gray-400 mt-1 mb-2">Next week's theme will be announced soon. Stay tuned!</p>
+    <h3 className="text-lg font-bold text-gray-500 dark:text-gray-400">Week 2: Actually Fun Games (May 11-17)</h3>
+    <p className="text-sm text-gray-500 dark:text-gray-400 mt-1 mb-2">Master the ingredients of creating fun and delightful experiences, from replayability, social dynamics and randomness to 'easy to play hard to master' mechanics.</p>
+    <ul className="mt-2 space-y-1">
+      <li>May 11: Week 2 starts</li>
+      <li>May 11-17: Build Games (either completely new or continue building on your week 1 project)</li>
+      <li><a href="https://x.com/i/spaces/1BdGYqgDedLGX" target="_blank" rel="noopener noreferrer" className="text-indigo-600 dark:text-indigo-400 hover:underline">May 14 (Wed): Twitter Space @ 4:00 PM PST - "Game Design 101"</a></li>
+      <li>May 19: Week 2 winners announced</li>
+    </ul>
   </div>
 
   <div className="border-l-4 border-gray-300 dark:border-gray-700 pl-4 py-2">
