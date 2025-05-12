@@ -377,7 +377,7 @@ function RandomValues() {
 
 #### Notes:
 
-* Randomness is generated using Flow’s **on-chain `revertibleRandom`**, producing pseudorandom values tied to block and script execution.
+* Randomness is generated using the **on-chain `revertibleRandom`** function on Flow, producing pseudorandom values tied to block and script execution.
 * Values are **deterministic**: The values returned for identical calls within the same block will be identical.
 * If `count ` is larger than one, the returned values are disctinct.
 * This hook is designed for simple use cases that don't require unpredictability, such as randomized UIs.
