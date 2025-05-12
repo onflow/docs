@@ -381,7 +381,7 @@ function RandomValues() {
 * Values are **deterministic**: The values returned for identical calls within the same block will be identical.
 * If `count ` is larger than one, the returned values are disctinct.
 * This hook is designed for simple use cases that don't require unpredictability, such as randomized UIs.
-  Since the hook uses script executions on existing blocks, Flow's randon source is already public and the randoms are predictable. 
+  Since the hook uses script executions on existing blocks, the random source is already public and the randoms are predictable. 
 * For **more advanced use cases** that **do** require on-chain randomness logic via transactions, Flow provides built-in support using Cadence's `revertibleRandom` and [commit-reveal scheme].
 
 ---
