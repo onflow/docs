@@ -59,7 +59,7 @@ function Root() {
 export default Root
 ```
 
-If you're using Next.js, put this in `layout.tsx`. Adapt as appropriate for other frontend frameworks.
+If you're using **Next.js**, place the `FlowProvider` inside your `layout.tsx`. Since React hooks must run on the client, you may need to wrap the provider in a separate file that begins with `'use client'` to avoid issues with server-side rendering. Adjust this setup as needed for other frontend frameworks.
 
 👉 Learn more about configuring `flow.json` in the [Configuration Guide].
 
@@ -381,7 +381,7 @@ function RandomValues() {
 * Values are **deterministic**: The values returned for identical calls within the same block will be identical.
 * If `count ` is larger than one, the returned values are distinct.
 * This hook is designed for simple use cases that don't require unpredictability, such as randomized UIs.
-  Since the hook uses script executions on existing blocks, the random source is already public and the randoms are predictable. 
+  Since the hook uses script executions on existing blocks, the random source is already public and the randoms are predictable.
 * For **more advanced use cases** that **do** require on-chain randomness logic via transactions, Flow provides built-in support using Cadence's `revertibleRandom` and [commit-reveal scheme].
 
 ---
