@@ -42,7 +42,6 @@ Fees will improve the overall security of the network by making malicious action
 
 The unique Flow architecture is targeted at high throughput. It makes it easier to have slack in the system, so short spikes can be handled more gracefully.
 
-
 ### **Fee Structure**
 
 Each transaction fee consists of three components: execution fee, inclusion fee, and network surge factor.
@@ -76,7 +75,7 @@ The inclusion effort of a transaction represents the work needed for:
 - Transporting the transaction information from node to node
 - Verifying transaction signatures
 
-Right now, the inclusion effort is always 1.0 and the inclusion effort cost is fixed to `0.000001`. 
+Right now, the inclusion effort is always 1.0 and the inclusion effort cost is fixed to `0.000001`.
 
 **Surge Factor**
 
@@ -92,7 +91,7 @@ Cost estimation is a two-step process. First, you need to gather the execution e
 
 Flow's approach to storage capacity is a bit similar to some banks' pricing models, where maintaining a minimum balance prevents monthly account fees. Here, the amount of data in your account determines your minimum balance. If you fall below the minimum balance, you cannot transact with your account, except for deposits or deleting data. The essence of storage fee model is that it ensures data availability without continuously charging fees for storage, while also preventing abuses that could burden the network's storage resources. This distinction between current state and blockchain history is crucial for understanding storage requirements and limitations.
 
-Each Flow account has associated storage used. The account's storage used is the byte size of all the data stored in the account's storage. Accounts also have a storage capacity, which is directly tied to the amount of Flow tokens an account has. The account can, without any additional cost, use any amount of storage up to its storage capacity. 
+Each Flow account has associated storage used. The account's storage used is the byte size of all the data stored in the account's storage. Accounts also have a storage capacity, which is directly tied to the amount of Flow tokens an account has. The account can, without any additional cost, use any amount of storage up to its storage capacity.
 
 :::warning
 
@@ -102,7 +101,7 @@ If a transaction puts an account over storage capacity, that transaction fails a
 
 **Storage Capacity**
 
-The storage capacity of an account is dictated by the amount of FLOW it has. 
+The storage capacity of an account is dictated by the amount of FLOW it has.
 
 :::danger
 
@@ -112,11 +111,11 @@ The **minimum amount of FLOW an account can have is 0.001**. This minimum is pro
 
 The minimum account reservation ensures that most accounts won't run out of storage capacity if anyone deposits anything (like an NFT) to the account.
 
-Currently, the amount required to store 100 MB in account storage is 1 Flow. 
+Currently, the amount required to store 100 MB in account storage is 1 Flow.
 
 ![Screenshot 2023-08-17 at 17.27.50.png](_fees_images/Screenshot_2023-08-17_at_17.27.50.png)
 
-Please note that storing data in an account on Flow doesn't charge tokens from the account, it just makes sure you will keep the tokens as a reserve. Once the storage is freed up you can transfer the Flow tokens. 
+Please note that storing data in an account on Flow doesn't charge tokens from the account, it just makes sure you will keep the tokens as a reserve. Once the storage is freed up you can transfer the Flow tokens.
 
 ### Storage Capacity of the Payer
 
@@ -140,7 +139,7 @@ Data stored on the Flow blockchain is stored in a key-value ledger. Each item's 
 
 ### Maximum available balance
 
-Due to the storage restrictions, there is a maximum available balance that user can withdraw from the wallet. The core contract [`FlowStorageFees`](../core-contracts/05-flow-fees.md#flowstoragefees) provides a function to retrieve that value:  
+Due to the storage restrictions, there is a maximum available balance that user can withdraw from the wallet. The core contract [`FlowStorageFees`](../core-contracts/05-flow-fees.md#flowstoragefees) provides a function to retrieve that value:
 
 ```cadence
 import "FlowStorageFees"
@@ -273,7 +272,7 @@ tx := flow.NewTransaction().
 
 ### Maximum transaction fees of a transaction
 
-The maximum possible fee imposed on the payer for a transaction can be calculated as the **inclusion cost plus the execution cost**. The execution cost is the fee calculated for running the transaction based on the [execution effort limit maximum specified](#configuring-execution-limits). 
+The maximum possible fee imposed on the payer for a transaction can be calculated as the **inclusion cost plus the execution cost**. The execution cost is the fee calculated for running the transaction based on the [execution effort limit maximum specified](#configuring-execution-limits).
 
 The payer will never pay more than this amount for the transaction.
 
@@ -400,13 +399,13 @@ There are several places to learn more about transaction fees:
 - [FLIP-753](https://github.com/onflow/flow/pull/753)
 - [Flow Fees Contract](https://github.com/onflow/flow-core-contracts/blob/master/contracts/FlowFees.cdc)
 
-> **Note**: If you have thoughts on the implementation of transaction fees on Flow, you can [leave feedback on this forum post](https://forum.onflow.org/t/variable-transaction-fees-are-coming-to-flow/2941).
+> **Note**: If you have thoughts on the implementation of transaction fees on Flow, you can [leave feedback on this forum post](https://forum.flow.com/t/variable-transaction-fees-are-coming-to-flow/2941).
 
 ## FAQs
 
 **When will the fee update go into effect?**
 
-The updates were rolled out with the [Spork on April 6, 2022](../../networks/node-ops/node-operation/past-upgrades#mainnet-17), and were enabled on [June 1st](https://forum.onflow.org/t/permissionless-contract-deployment-progress/2981) during the [weekly epoch transition](https://github.com/onflow/service-account/tree/main/transactions/set-execution-effort-weights/2022/jun-1).
+The updates were rolled out with the [Spork on April 6, 2022](../../networks/node-ops/node-operation/past-upgrades#mainnet-17), and were enabled on [June 1st](https://forum.flow.com/t/permissionless-contract-deployment-progress/2981) during the [weekly epoch transition](https://github.com/onflow/service-account/tree/main/transactions/set-execution-effort-weights/2022/jun-1).
 
 **Why are fees collected even when transactions fail?**
 

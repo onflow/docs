@@ -116,7 +116,7 @@ export const flowMultiNodeArchitecture: TutorialCardProps = {
   heading: "Flow's Multi-Node Architecture",
   tags: ['architecture', 'intermediate'],
   description: `A deep dive into how Flow's multi-node architecture scales to millions, increases decentralization, and ensures a great end-user experience`,
-  link: 'https://www.onflow.org/post/flow-blockchain-multi-node-architecture-advantages',
+  link: 'https://www.flow.com/post/flow-blockchain-multi-node-architecture-advantages',
   imageUri:
     'https://assets.website-files.com/5f6294c0c7a8cdf432b1c827/6143728c4909ca0adba869a4_Flow_Blog-Inside%20Flow.png',
   lastUpdated: '16/09/2021',

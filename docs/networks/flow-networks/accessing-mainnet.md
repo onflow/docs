@@ -10,7 +10,7 @@ description: Guide to mainnet access
 The Flow Mainnet is available for access at this URL:
 
 ```
-access.mainnet.nodes.onflow.org:9000
+access.mainnet.nodes.flow.com:9000
 ```
 
 For example, to access the network using the [Flow Go SDK](https://github.com/onflow/flow-go-sdk):
@@ -19,7 +19,7 @@ For example, to access the network using the [Flow Go SDK](https://github.com/on
 import "github.com/onflow/flow-go-sdk/client"
 
 func main() {
-  flowAccessAddress := "access.mainnet.nodes.onflow.org:9000"
+  flowAccessAddress := "access.mainnet.nodes.flow.com:9000"
   flowClient, _ := client.New(flowAccessAddress, grpc.WithInsecure())
   // ...
 }
@@ -59,7 +59,7 @@ Public Key       1bdc5...
 
 > **Note**: By default, this command generates an ECDSA key pair on the P-256 curve. Keep in mind the CLI is intended for development purposes only and is not recommended for production use. Handling keys using a Key Management Service is the best practice.
 
-Take a note of the public key and go back to Flow Port. Open the ["Create a new account" page](https://port.onflow.org/transaction?hash=a0a78aa7821144efd5ebb974bb52ba04609ce76c3863af9d45348db93937cf98&showcode=false&weight=1000&halg=3).
+Take a note of the public key and go back to Flow Port. Open the ["Create a new account" page](https://port.flow.com/transaction?hash=a0a78aa7821144efd5ebb974bb52ba04609ce76c3863af9d45348db93937cf98&showcode=false&weight=1000&halg=3).
 
 On the page, enter your public key from the CLI, ensure the hash algorithm is set to `SHA3_256` and the weight is set to `1000`. Finally, check the box confirming correctness and hit 'Submit'.
 

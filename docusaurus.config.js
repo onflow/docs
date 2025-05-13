@@ -382,7 +382,7 @@ const config = {
                 label: 'Ecosystem',
               },
               {
-                href: 'https://port.onflow.org/',
+                href: 'https://port.flow.com/',
                 label: 'Flow Port',
               },
               {
@@ -419,7 +419,7 @@ const config = {
                 label: 'Cadence Tutorials',
               },
               {
-                href: 'https://open-cadence.onflow.org',
+                href: 'https://cookbook.flow.com',
                 label: 'Cadence Cookbook',
               },
               {
@@ -436,7 +436,7 @@ const config = {
             title: 'Network',
             items: [
               {
-                href: 'https://status.onflow.org/',
+                href: 'https://status.flow.com/',
                 label: 'Network Status',
               },
               {
@@ -477,12 +477,12 @@ const config = {
                 label: 'Discord',
               },
               {
-                href: 'https://forum.onflow.org/',
+                href: 'https://forum.flow.com/',
                 label: 'Forum',
               },
               {
-                href: 'https://onflow.org/',
-                label: 'OnFlow',
+                href: 'https://flow.com/',
+                label: 'Flow',
               },
               {
                 href: 'https://flow.com/blog',
