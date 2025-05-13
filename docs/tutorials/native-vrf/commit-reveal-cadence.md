@@ -261,8 +261,8 @@ This tutorial has equipped you with hands-on experience and key skills:
 By harnessing the built-in randomness capabilities on Flow, you can now focus on crafting engaging, user-centric experiences without grappling with the complexities or limitations of external systems. This knowledge empowers you to create secure, scalable, and fair decentralized applications.
 
 [chainlink-vrf]: https://docs.chain.link/vrf
-[flow-faucet]: https://testnet-faucet.onflow.org/
-[flow-docs]: https://docs.onflow.org/flow-cli/install/
+[flow-faucet]: https://faucet.flow.com/fund-account
+[flow-docs]: https://docs.flow.com/flow-cli/install/
 [flow-diver]: https://testnet.flowdiver.io/
 [github-repo]: https://github.com/onflow/random-coin-toss
 [run-dnz]: https://run.dnz.dev/

@@ -78,7 +78,7 @@ If you have already purchased FLOW and wish to hold it, you have a couple of opt
 
 - For larger, long term holdings - you may want to use a custody provider to keep your funds safe.
 
-You can find wallets and custodians supporting Flow in the [Flow Port](https://port.onflow.org/)
+You can find wallets and custodians supporting Flow in the [Flow Port](https://port.flow.com/)
 
 ### Voting with FLOW
 

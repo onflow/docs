@@ -15,7 +15,7 @@ const Template: Story<EventCardSmallProps> = (args) => {
 
 export const Default = Template.bind({})
 Default.args = {
-  href: "https://www.onflow.org",
+  href: "https://www.flow.com",
   eventType: "Online",
   imageSrc:
     "https://assets.website-files.com/5f6294c0c7a8cdf432b1c827/61410bc0c8d0522eea319058_Hack-blog_Flow.png",

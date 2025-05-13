@@ -21,7 +21,7 @@ const events = [
     description:
       "Come visit the Flow Booth at NFT NYC to learn more about what builders and teams have been working on!",
     eventDate: "June 20-23",
-    href: "https://share.onflow.org/nft-nyc-2022",
+    href: "https://share.flow.com/nft-nyc-2022",
     imageSrc:
       "https://510411.fs1.hubspotusercontent-na1.net/hubfs/510411/nftnyc2021-eventbrite-header.png",
     location: "Online",
@@ -43,7 +43,7 @@ const events = [
     description:
       "Join us this week at Discord office hours to learn more about Flow Tokenomics",
     eventDate: "June 30th",
-    href: "https://www.onflow.org/token-distribution",
+    href: "https://www.flow.com/token-distribution",
     imageSrc: "https://www.svgrepo.com/show/353655/discord-icon.svg",
     location: "Online",
     tags: ["Flow", "Community", "Discord"],
@@ -51,7 +51,7 @@ const events = [
   },
   {
     ctaText: "More Details",
-    href: "https://share.onflow.org/nft-nyc-2022#:~:text=Andbox%20and%20more.-,Blocto,-(3%2D6pm%20ET",
+    href: "https://share.flow.com/nft-nyc-2022#:~:text=Andbox%20and%20more.-,Blocto,-(3%2D6pm%20ET",
     description: "",
     imageSrc:
       "https://assets.website-files.com/5f6294c0c7a8cdf432b1c827/61410bc0c8d0522eea319058_Hack-blog_Flow.png",
@@ -61,7 +61,7 @@ const events = [
   },
   {
     ctaText: "More Details",
-    href: "https://share.onflow.org/nft-nyc-2022#:~:text=Building%20the%20NFT%20Marketplace%20of%20the%20Future",
+    href: "https://share.flow.com/nft-nyc-2022#:~:text=Building%20the%20NFT%20Marketplace%20of%20the%20Future",
     eventType: OFFICE_HOURS_EVENT_TYPE,
     description: "",
     imageSrc:
@@ -72,7 +72,7 @@ const events = [
   },
   {
     ctaText: "More Details",
-    href: "https://share.onflow.org/nft-nyc-2022#:~:text=Fireside%20Chat%20with%20Roham",
+    href: "https://share.flow.com/nft-nyc-2022#:~:text=Fireside%20Chat%20with%20Roham",
     eventType: OFFICE_HOURS_EVENT_TYPE,
     description: "",
     imageSrc:

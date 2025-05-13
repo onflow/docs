@@ -47,7 +47,7 @@ The basic idea in the Hybrid Custody model is relatively simple. A parent accoun
 (albeit restricted) access on another account. The account which has delegated authority over itself to the parent
 account is the child account.
 
-In the [Hybrid Custody Model](https://forum.onflow.org/t/hybrid-custody/4016), this child account would have shared
+In the [Hybrid Custody Model](https://forum.flow.com/t/hybrid-custody/4016), this child account would have shared
 access between the app - the entity which created and likely custodies the account - and the linked parent account.
 
 How does this delegation occur? Typically when we think of shared account access in crypto, we think keys. However,
@@ -127,7 +127,6 @@ they allow direct retrieval of encapsulated `&Account` Capabilities. These owned
 are simply `OwnedAccount` Capabilities instead of `ChildAccount` Capabilities.
 
 ![HybridCustody Total Overview](./resources/hybrid_custody_low_level.png)
-
 
 ### Considerations
 
@@ -215,7 +214,7 @@ import "HybridCustody"
 ///
 access(all)
 fun getViews(_ address: Address, _ resolverCollectionPath: PublicPath): {UInt64: MetadataViews.Display} {
-    
+
     let account: PublicAccount = getAccount(address)
     let views: {UInt64: MetadataViews.Display} = {}
 
@@ -243,14 +242,14 @@ fun main(address: Address, resolverCollectionPath: PublicPath): {Address: {UInt6
     let allViews: {Address: {UInt64: MetadataViews.Display}} = {
             address: getViews(address, resolverCollectionPath)
         }
-    
-    /* Iterate over any associated accounts */ 
+
+    /* Iterate over any associated accounts */
     //
     let seen: [Address] = [address]
     if let managerRef = getAuthAccount<auth(BorrowValue) &Account>(address)
         .storage
         .borrow<&HybridCustody.Manager>(from: HybridCustody.ManagerStoragePath) {
-        
+
         for childAccount in managerRef.getChildAddresses() {
             allViews.insert(key: childAccount, getViews(address, resolverCollectionPath))
             seen.append(childAccount)
@@ -264,7 +263,7 @@ fun main(address: Address, resolverCollectionPath: PublicPath): {Address: {UInt6
         }
     }
 
-    return allViews 
+    return allViews
 }
 ```
 
@@ -332,7 +331,7 @@ fun main(address: Address): {Address: {Type: UFix64}} {
     if let managerRef = getAuthAccount<auth(BorrowValue) &Account>(address)
         .storage
         .borrow<&HybridCustody.Manager>(from: HybridCustody.ManagerStoragePath) {
-        
+
         for childAccount in managerRef.getChildAddresses() {
             balances.insert(key: childAccount, getAllBalancesInStorage(address))
             seen.append(childAccount)
@@ -346,7 +345,7 @@ fun main(address: Address): {Address: {Type: UFix64}} {
         }
     }
 
-    return balances 
+    return balances
 }
 ```
 
@@ -418,8 +417,8 @@ transaction(
         // ...
     }
 }
-      
-          
+
+
 
 ```
 

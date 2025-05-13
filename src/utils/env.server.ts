@@ -40,7 +40,7 @@ export function getPublicEnv() {
   return {
     NODE_ENV: process.env.NODE_ENV,
     /**
-     * the url origin, e.g. https://developers.onflow.org or http://localhost:3000
+     * the url origin, e.g. https://developers.flow.com or http://localhost:3000
      */
     ORIGIN: process.env.ORIGIN || getFallbackOrigin(),
     LOG_WEB_VITALS: process.env.LOG_WEB_VITALS,

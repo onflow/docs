@@ -61,7 +61,7 @@ const NetworkDetailsCard = ({
           </p>
           {/* @ts-expect-error */}
           <InternalContentLink
-            href="https://status.onflow.org"
+            href="https://status.flow.com"
             className="flex items-center hover:opacity-75"
           >
             <RssIcon />

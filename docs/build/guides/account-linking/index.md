@@ -82,7 +82,7 @@ A link between two existing accounts on Flow can be created in two steps:
 
 These two steps are implemented in Cadence as two transactions:
 
-************************************Create capability************************************
+****************\*\*\*\*****************Create capability****************\*\*\*\*****************
 
 The account B creates and publishes the `&Account` Capability to the account A at the address `0x01`
 
@@ -101,7 +101,7 @@ transaction {
 }
 ```
 
-****************************Claim capability****************************
+************\*\*\*\*************Claim capability************\*\*\*\*************
 
 The account A claims the Capability published by account B.
 
@@ -131,7 +131,7 @@ transaction {
 Account linking was specifically designed to enable smooth and seamless custodial onboarding of users to your Flow based
 application without them first requiring a wallet to do so. This pattern overcomes both the technical hurdle, as well as
 user's reluctance to install a wallet, opening access to Flow applications to every user. Users can experience an app
-without any delay while still offering a path to self-sovreign ownership. 
+without any delay while still offering a path to self-sovreign ownership.
 
 Naturally, users may expect to use their account with another application, or otherwise move assets stored in that
 account elsewhere - at minimum from their wallet. When an app initially leverages account linking, the app creates the
@@ -202,7 +202,7 @@ Learn more about it in the [Hybrid Custody documentation](./parent-accounts.md).
 
 ### Resources
 
-- [Forum Post](https://forum.onflow.org/t/hybrid-custody/4016) where core concepts were introduced and discussed.
+- [Forum Post](https://forum.flow.com/t/hybrid-custody/4016) where core concepts were introduced and discussed.
 - [GitHub repository](https://github.com/onflow/hybrid-custody) where `HybridCustody` core contracts and scripts are
   maintained. Check out the repository for more advanced script or transaction examples.
 - [Example](https://github.com/jribbink/magic-link-hc-sample/) Account Linking project with
