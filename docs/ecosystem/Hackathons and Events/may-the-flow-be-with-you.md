@@ -260,7 +260,7 @@ Check this section daily to see all winners announced so far!
 - Random Game (Phaser) - 0x9db94c9564243ba7
 
 :::note
-Winners are announced on [@aliserag0](https://twitter.com/aliserag0) Twitter account and prizes are sent to the top wallet address indicated in your profile.
+Winners are announced on the [@flow_blockchain](https://x.com/flow_blockchain) Twitter account, and prizes are sent to the wallet addresses indicated in your submission name on github.
 :::
 
 ## FAQ
