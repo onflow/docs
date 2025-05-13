@@ -250,6 +250,15 @@ In addition to the weekly rewards, we will regularly give bonus FLOW to the top 
 
 Check this section daily to see all winners announced so far!
 
+### Week 1: The Randomness Revolution
+- Egg's Wisdom - 0x2ff409478f92e8bd
+- ElementalStrikers - 0xc65395858a38d8ff
+- Wheel of Fortune - 0xe712bbfbeeef1cfa
+- Lucky Spinning Wheel - 0x0012a1ef98accd88
+- Ghibli—style Headshot Generator - 0xd362246ad3f7ca3c
+- ChainRaffle - 0xbbdd20a9016cc1d9
+- Random Game (Phaser) - 0x9db94c9564243ba7
+
 :::note
 Winners are announced on [@aliserag0](https://twitter.com/aliserag0) Twitter account and prizes are sent to the top wallet address indicated in your profile.
 :::
