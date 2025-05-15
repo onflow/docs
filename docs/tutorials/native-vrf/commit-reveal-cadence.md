@@ -262,7 +262,7 @@ By harnessing the built-in randomness capabilities on Flow, you can now focus on
 
 [chainlink-vrf]: https://docs.chain.link/vrf
 [flow-faucet]: https://faucet.flow.com/fund-account
-[flow-docs]: https://docs.flow.com/flow-cli/install/
+[flow-docs]: https://developers.flow.com
 [flow-diver]: https://testnet.flowdiver.io/
 [github-repo]: https://github.com/onflow/random-coin-toss
 [run-dnz]: https://run.dnz.dev/

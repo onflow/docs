@@ -10,7 +10,7 @@ description: Guide to mainnet access
 The Flow Mainnet is available for access at this URL:
 
 ```
-access.mainnet.nodes.flow.com:9000
+access.mainnet.nodes.onflow.org:9000
 ```
 
 For example, to access the network using the [Flow Go SDK](https://github.com/onflow/flow-go-sdk):
@@ -19,7 +19,7 @@ For example, to access the network using the [Flow Go SDK](https://github.com/on
 import "github.com/onflow/flow-go-sdk/client"
 
 func main() {
-  flowAccessAddress := "access.mainnet.nodes.flow.com:9000"
+  flowAccessAddress := "access.mainnet.nodes.onflow.org:9000"
   flowClient, _ := client.New(flowAccessAddress, grpc.WithInsecure())
   // ...
 }
