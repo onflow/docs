@@ -125,8 +125,14 @@ Join us for a month-long vibe coding challenge on Flow! Starting May 4th, partic
   </div>
 
   <div className="border-l-4 border-gray-300 dark:border-gray-700 pl-4 py-2">
-    <h3 className="text-lg font-bold text-gray-500 dark:text-gray-400">Week 3: Theme TBD (May 18-24)</h3>
-    <p className="text-sm text-gray-500 dark:text-gray-400 mt-1 mb-2">Theme to be announced.</p>
+    <h3 className="text-lg font-bold text-gray-500 dark:text-gray-400">Week 3: Generative Art and Worlds (May 18-24)</h3>
+    <p className="text-sm text-gray-500 dark:text-gray-400 mt-1 mb-2">Utilize generative tools and AI to create evolving, autonomous and algorithmicartistic applications. This theme is broad and inclusive of creative domains, composibility and platforms/launchpads that are easy for others to build off of or extend. </p>
+     <ul className="mt-2 space-y-1">
+      <li>May 18: Week 3 starts</li>
+      <li>May 18-24: Build generative apps (either completely new or continue building on your week 1 or 2 projects)</li>
+      <li><a href="https://x.com/i/spaces/1yoKMoqmzzjJQ" target="_blank" rel="noopener noreferrer" className="text-indigo-600 dark:text-indigo-400 hover:underline">May 21 (Wed): Twitter Space @ 4:00 PM PST - "Generative Composiblity: Turning Products into Platforms"</a></li>
+      <li>May 26: Week 3 winners announced</li>
+    </ul>
   </div>
 
   <div className="border-l-4 border-gray-300 dark:border-gray-700 pl-4 py-2">
