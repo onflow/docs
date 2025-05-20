@@ -8,18 +8,6 @@ sidebar_position: 4
 
 When building applications that leverage Flow data, developers have multiple Data Indexers to choose from. These platforms offer flexible options, allowing you to index all data on Flow, including information from both the Cadence VM and EVM. Alternatively, if your application doesn't require Cadence, you can opt to index only EVM data. This flexibility ensures that you can tailor your data indexing strategy to fit the specific needs of your application.
 
-## EVM & Cadence
-
-### **SimpleHash**
-
-[SimpleHash](https://simplehash.com/) is a comprehensive multi-chain NFT data platform that provides developers with easy access to token data across 60+ blockchain networks. It offers a robust API for querying NFT metadata, media, collection details, sales, floor prices, listings, and bids, streamlining the process of building NFT-powered applications.
-
-**Getting Started with SimpleHash**
-
-Developers can begin using SimpleHash by [signing up for an API key](https://simplehash.com/) on their website. The platform provides comprehensive [documentation](https://docs.simplehash.com/reference/overview) to help developers integrate SimpleHash into their projects.
-
-## **EVM Only**
-
 ### Moralis
 
 [Moralis](https://moralis.io/) provides a robust suite of data APIs designed to support a wide array of blockchain applications. These APIs deliver both indexed and real-time data across 16+ blockchain networks, including comprehensive details on portfolio and wallet balances, NFT data, token metrics, price feeds, candlestick charts, and net worth calculations. Moralis enhances this data with additional layers of metadata, parsed events, and address labels to provide deeper insights and context.
