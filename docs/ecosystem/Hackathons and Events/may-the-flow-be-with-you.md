@@ -101,7 +101,7 @@ Join us for a month-long vibe coding challenge on Flow! Starting May 4th, partic
       <li>May 4: Challenges kickoff</li>
       <li>May 4-10: Build randomness-powered applications</li>
       <li><a href="https://x.com/i/spaces/1BdGYqgDedLGX" target="_blank" rel="noopener noreferrer" className="text-indigo-600 dark:text-indigo-400 hover:underline">May 7 (Wed): Twitter Space @ 4:00 PM PST - "Randomness: Building with Unpredictability"</a></li>
-      <li>May 12: Week 1 winners announced</li>
+      <li>May 12: Week 1 winners announced!</li>
     </ul>
     <div className="mt-4 bg-indigo-50 dark:bg-indigo-900/20 p-3 rounded">
       <h4 className="font-semibold text-indigo-700 dark:text-indigo-400 mb-2">Useful Resources:</h4>
@@ -120,7 +120,7 @@ Join us for a month-long vibe coding challenge on Flow! Starting May 4th, partic
       <li>May 11: Week 2 starts</li>
       <li>May 11-17: Build Games (either completely new or continue building on your week 1 project)</li>
       <li><a href="https://x.com/i/spaces/1yoKMoqmzzjJQ" target="_blank" rel="noopener noreferrer" className="text-indigo-600 dark:text-indigo-400 hover:underline">May 14 (Wed): Twitter Space @ 4:00 PM PST - "How to Build Fun Games"</a></li>
-      <li>May 19: Week 2 winners announced</li>
+      <li>May 19: Week 2 winners announced!</li>
     </ul>
   </div>
 
@@ -130,8 +130,8 @@ Join us for a month-long vibe coding challenge on Flow! Starting May 4th, partic
      <ul className="mt-2 space-y-1">
       <li>May 18: Week 3 starts</li>
       <li>May 18-24: Build generative apps (either completely new or continue building on your week 1 or 2 projects)</li>
-      <li><a href="https://x.com/i/spaces/1yoKMoqmzzjJQ" target="_blank" rel="noopener noreferrer" className="text-indigo-600 dark:text-indigo-400 hover:underline">May 21 (Wed): Twitter Space @ 4:00 PM PST - "Generative Composiblity: Turning Products into Platforms"</a></li>
-      <li>May 26: Week 3 winners announced</li>
+      <li><a href="https://x.com/i/spaces/1MnxnwmLabjKO" target="_blank" rel="noopener noreferrer" className="text-indigo-600 dark:text-indigo-400 hover:underline">May 21 (Wed): Twitter Space @ 4:00 PM PST - "Generative Composiblity: Turning Products into Platforms"</a></li>
+      <li>May 26: Week 3 winners announced!</li>
     </ul>
   </div>
 
@@ -140,7 +140,7 @@ Join us for a month-long vibe coding challenge on Flow! Starting May 4th, partic
     <p className="text-sm text-gray-500 dark:text-gray-400 mt-1 mb-2">Theme to be announced.</p>
     <ul className="mt-2 space-y-1 text-gray-500 dark:text-gray-400">
       <li>May 31: Final submission deadline</li>
-      <li>June 2: Week 4 winners and jackpot announced</li>
+      <li>June 2: Week 4 winners and jackpot announced!</li>
     </ul>
   </div>
 </div>
@@ -264,6 +264,15 @@ Check this section daily to see all winners announced so far!
 - Ghibli—style Headshot Generator - 0xd362246ad3f7ca3c
 - ChainRaffle - 0xbbdd20a9016cc1d9
 - Random Game (Phaser) - 0x9db94c9564243ba7
+
+### Week 2: Actually Fun Games
+- Ace Guessing Game - 0xa620a02c4cc2d20d 
+- ElementalStrikers - 0xc65395858a38d8ff 
+- Click to the Moon - 0xe712bbfbeeef1cfa 
+- The Doodles Memorizer  - 0x9f7145728ef9ae10 
+- Emoji Chain Reaction - 0x6c1b12e35dca8863 
+- FrogDash - 0xe35f688520e4a2c3 
+- FlowVerse - 0x1E78b3F3550889e90EcE152ab6bbCb8d9E7Dd221 
 
 :::note
 Winners are announced on the [@flow_blockchain](https://x.com/flow_blockchain) Twitter account, and prizes are sent to the wallet addresses indicated in your submission name on github.
