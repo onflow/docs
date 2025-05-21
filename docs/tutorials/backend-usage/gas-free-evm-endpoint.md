@@ -42,7 +42,7 @@ Here we provide a solution - you can set up a sponsored transaction EVM endpoint
 
 ### Who needs the gas free EVM endpoint?
 
-Here are several typical business scenarios suitable for its use.
+Here are several typical business scenarios suitable for its use:
 
 - Centralized Exchange or any EVM Wallets Custodial service provider on Flow EVM. They usually need to support users to deposit, withdraw and manage EVM assets, and they usually need to cover the transaction fees for users in a more convenient way.
 - For the App with cutodial wallet integation which can use custom RPC endpoint set by App builder. They can ensure their users' transactions are sent through their own specified RPC endpoint.
