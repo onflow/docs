@@ -73,7 +73,7 @@ Mosts of the tasks you need to complete are in the guide to set up your own [Cus
 - `COA_KEY`: You need to set the private key of the Service Account you created in step 1.
 - `GAS_PRICE`: That is the most important part, you need to set it to `0` to ensure the linked service account will pay for transactions on users behalf.
 
-4. Please follow the full guide of [Custom EVM Gateway] to complete the EVM gateway setup, then you will get a custom RPC endpoint which is 100% gas-free for any EVM transaction sent through it.
+4. Please follow the full guide of [Custom EVM Gateway] to complete the EVM gateway setup, then you will get a custom RPC endpoint which will sponsor 100% of the gas fees for any EVM transaction sent through it.
 
 ## Conclusion
 
