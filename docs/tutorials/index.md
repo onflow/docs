@@ -59,7 +59,7 @@ Learn how to leverage AI tools to enhance your Flow development experience. Thes
 
 Learn some tips and tutorials for interacting with the Flow blockchain in a backend application.
 
-- [Gas Free EVM Endpoint] - Learn how to set up a gas free EVM endpoint for your backend, all transactions sent through this endpoint will not be charged for gas fees from the sender's account(EVM Gateway's service account will be used to pay for the gas fees).
+- [Gas Free EVM Endpoint] - Learn how to set up a gas free EVM endpoint for your backend, all transactions sent through this endpoint will not be charged for gas fees from the transaction sender's account.
 
 ## Token Launch
 
