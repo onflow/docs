@@ -33,8 +33,7 @@ Here is the key points of the Flow EVM Gateway:
 
 ### Why we need a gas free EVM endpoint?
 
-From the Flow [transaction model], we know that there is actually a Fee Payer role in native Flow transactions. When the transaction is executed, the fees for the transaction are entirely borne by the Fee Payer role.  
-However, for Flow EVM, the concept of a Fee Payer does not exist in the EVM transaction model. Therefore, when we execute transactions on the EVM, the transaction fees need to be covered by the sender of the transaction.
+From the Flow [transaction model], we know that there is actually a Fee Payer role in native Flow transactions. When the transaction is executed, the fees for the transaction are entirely borne by the Fee Payer role.  However, for EVM, the transaction model doesn't separate the signer from the payer. Therefore, when we execute transactions on the EVM, the transaction fees **must** be covered by the sender of the transaction.
 
 So here is the problem - if we want to send a EVM transaction through the default EVM Gateway,  the sender's account has enough balance to cover the transaction fees. However, in some scenarios, developers may prefer to sponsor the transaction fees to create a more user-friendly experience, just can be done in native Cadence transactions, or paymaster solutions on other networks.
 
