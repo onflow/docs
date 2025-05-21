@@ -64,11 +64,7 @@ Mosts of the tasks you need to complete are in the guide to set up your own [Cus
 
 1. You need to prepare a Service Account for the EVM Gateway to cover all transaction fees. Please refer to [Account Creation] for more details.
 
-2. You need to add enough identical keys to the Service Account to support the concurrent signing of EVM transactions.
-
-That's very important, because the EVM Gateway will use the Service Account to pay for the gas fees of the EVM transactions, so the Service Account needs to have enough keys to support the concurrent signing of EVM transactions.
-
-Please refer to [Account and Key Management] for more details.
+2. You need to add enough identical keys to the Service Account to support the concurrent signing of EVM transactions. This is very important, because the EVM Gateway will use the Service Account to pay for the gas fees of the EVM transactions, so the Service Account needs to have enough keys to support the concurrent signing of EVM transactions. Please refer to [Account and Key Management] for more details.
 
 3. You need to set the correct environment variables for the EVM Gateway to archive the gas-free feature.
 
