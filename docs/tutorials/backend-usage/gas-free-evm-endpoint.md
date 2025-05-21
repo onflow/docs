@@ -43,8 +43,10 @@ Here we provide a solution - you can set up a sponsored transaction EVM endpoint
 
 Here are several typical business scenarios suitable for its use:
 
-- Centralized Exchange or any EVM Wallets Custodial service provider on Flow EVM. They usually need to support users to deposit, withdraw and manage EVM assets, and they usually need to cover the transaction fees for users in a more convenient way.
-- For the App with cutodial wallet integation which can use custom RPC endpoint set by App builder. They can ensure their users' transactions are sent through their own specified RPC endpoint.
+- Apps with embedded wallets using social login that don't want to require users to deposit money in a new wallet before they're able to interact with the app.
+- Games needing to complete onchain tasks to onboard new players who wish to try the game.
+- Centralized or decentralized exchanges that wish to improve user experience for a competitive edge
+- Businesses that wish to provide sponsored transactions as a service.
 
 As long as you can ensure that all your users' transactions are sent through a custom RPC endpoint, you can set up a Gas Free EVM Gateway to enable gas-free transactions for your users.
 
