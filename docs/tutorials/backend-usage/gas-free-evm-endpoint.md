@@ -1,5 +1,5 @@
 ---
-title: Gas Free EVM Endpoint
+title: Sponsor Transactions RPC Node
 description: Learn how to set up a gas free EVM endpoint for your backend, all transactions sent through this endpoint will not be charged for gas fees from the transaction sender's account(EVM Gateway's service account will be used to pay for the gas fees).
 sidebar_position: 2
 keywords:
