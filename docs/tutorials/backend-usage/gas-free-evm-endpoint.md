@@ -62,9 +62,7 @@ As long as you can ensure that all your users' transactions are sent through a c
 
 Mosts of the tasks you need to complete are in the guide to set up your own [Custom EVM Gateway].  A few highlights:
 
-1. You need to prepare a Service Account for the EVM Gateway to cover all transaction fees.
-
-Please refer to [Account Creation] for more details.
+1. You need to prepare a Service Account for the EVM Gateway to cover all transaction fees. Please refer to [Account Creation] for more details.
 
 2. You need to add enough identical keys to the Service Account to support the concurrent signing of EVM transactions.
 
