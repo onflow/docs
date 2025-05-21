@@ -22,7 +22,15 @@ In [Using Flow EVM], we know that we can use the RPC endpoint to send EVM transa
 
 ### How does the EVM Gateway work?
 
-For any EVM transactions sent through the EVM Gateway, Essentially, they will be wrapped into a native Flow Cadence transaction and sent to the Flow network and Flow EVM Gateway's service account is the payer of that Cadence transaction. But for EVM transactions inside the native transaction, the transaction fees of the EVM transactions will be extracted from the sender's account and charged to the EVM Gateway's service account.
+EVM transactions sent through the EVM Gateway are wrapped in a Flow Cadence transaction and sent to the Flow network. The Flow EVM Gateway's service account is the payer of that Cadence transaction.
+
+:::info
+
+In Cadence, the proposer, payer, and signer of a transaction are separate, natively.
+
+:::
+
+For EVM transactions inside this Cadence transaction, the transaction fees of the EVM transaction sent from the sender's account and applied to the EVM Gateway's service account.  The EVM Gateway pays the Cadence transaction fee, but is reimbursed via the EVM transaction's gas fee, which is directed to its own EVM address as the "coinbase".
 
 Here is the key points of the Flow EVM Gateway:
 
