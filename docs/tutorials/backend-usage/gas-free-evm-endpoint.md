@@ -29,7 +29,7 @@ Here is the key points of the Flow EVM Gateway:
 - The EVM Gateway works as a proxy to send the EVM transactions.
 - The EVM Gateway wraps the EVM transactions into native Flow Cadence transactions.
 - The EVM Gateway has a service account, which is the payer and sender of all native transactions sent through the EVM Gateway.
-- The sender of the EVM transaction will be the fee payer of its EVM transaction to the EVM Gateway's service account.
+- The sender of the EVM transaction is the fee payer of its EVM transaction to the EVM Gateway's service account.
 
 ### Why we need a gas free EVM endpoint?
 
