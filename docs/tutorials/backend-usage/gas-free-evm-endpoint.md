@@ -36,7 +36,7 @@ Here is the key points of the Flow EVM Gateway:
 From the Flow [transaction model], we know that there is actually a Fee Payer role in native Flow transactions. When the transaction is executed, the fees for the transaction are entirely borne by the Fee Payer role.  
 However, for Flow EVM, the concept of a Fee Payer does not exist in the EVM transaction model. Therefore, when we execute transactions on the EVM, the transaction fees need to be covered by the sender of the transaction.
 
-So here is the problem, if we want to send a EVM transaction through the default EVM Gateway, we need to make sure the sender's account has enough balance to cover the transaction fees.  
+So here is the problem - if we want to send a EVM transaction through the default EVM Gateway, we need to make sure the sender's account has enough balance to cover the transaction fees.  
 However, in some scenarios, developers may prefer a more user-friendly experience, wishing that EVM transactions could also support the ability for a Fee Payer to fully cover the transaction fees, just like the native Cadence transactions do.
 
 Here we provide a solution, you can set up a gas free EVM endpoint for your backend service, all transactions sent through this endpoint will not be charged for gas fees from the transaction sender's account.
