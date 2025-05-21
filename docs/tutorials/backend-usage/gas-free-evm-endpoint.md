@@ -68,7 +68,7 @@ Mosts of the tasks you need to complete are in the guide to set up your own [Cus
 
 3. You need to set the correct environment variables for the EVM Gateway to enable the gas-free feature, adjust the environment variables in the [Run the gateway] section as follows:
 
-- `COINBASE`: The address is used to accept EVM transaction fees, but in this case, it cannot to accept fees because all fees will be covered by the service account. But you need to set it with a valid address to ensure the EVM Gateway can start.
+- `COINBASE`: The address is used to accept EVM transaction fees.  In this case, there won't be fees to accept because all fees will be covered by the service account. But you need to set it with a valid address to ensure the EVM Gateway can start.
 - `COA_ADDRESS`: This is the service account address, which will be used to pay for the gas fees of the EVM transactions. Please input the address of the Service Account you created in step 1, but without the `0x` prefix.
 - `COA_KEY`: You need to set the private key of the Service Account you created in step 1.
 - `GAS_PRICE`: That is the most important part, you need to set it to `0` to ensure the linked service account will pay for transactions on users behalf.
