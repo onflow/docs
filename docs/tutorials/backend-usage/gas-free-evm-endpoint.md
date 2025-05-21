@@ -52,7 +52,7 @@ As long as you can ensure that all your users' transactions are sent through a c
 
 ## How to set up a gas free EVM endpoint?
 
-Here is the guide to set up a [Custom EVM Gateway], but that's the general guide, we will focus on the gas-free part in this tutorial.
+Mosts of the tasks you need to complete are in the guide to set up your own [Custom EVM Gateway].  Additionally, complete the tasks below:
 
 1. You need to prepare a Service Account for the EVM Gateway to cover all transaction fees.
 
