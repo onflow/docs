@@ -30,7 +30,7 @@ In Cadence, the proposer, payer, and signer of a transaction are separate, nativ
 
 :::
 
-For EVM transactions inside this Cadence transaction, the transaction fees of the EVM transaction sent from the sender's account and applied to the EVM Gateway's service account.  The EVM Gateway pays the Cadence transaction fee, but is reimbursed via the EVM transaction's gas fee, which is directed to its own EVM address as the "coinbase".
+For EVM transactions inside this Cadence transaction, the transaction fees of the EVM transaction sent from the sender's account and applied to the EVM Gateway's service account.  The EVM Gateway pays the Cadence transaction fee, but is reimbursed via the EVM transaction's gas fee, which is directed to its own EVM address as the _coinbase_.
 
 Here is the key points of the Flow EVM Gateway:
 
