@@ -77,6 +77,7 @@ Mosts of the tasks you need to complete are in the guide to set up your own [Cus
 - `COINBASE`: The address is used to accept EVM transaction fees.  In this case, there won't be fees to accept because all fees will be covered by the service account. But you need to set it with a valid address to ensure the EVM Gateway can start.
 - `COA_ADDRESS`: This is the service account address, which will be used to pay for the gas fees of the EVM transactions. Please input the address of the Service Account you created in step 1, but without the `0x` prefix.
   - **Fund this address** to cover transaction fees.
+  - **Fund this address** to cover transaction fees.
 - `COA_KEY`: You need to set the private key of the Service Account you created in step 1.
 - `GAS_PRICE`: **Critical**: set this to `0` to ensure the linked service account will pay for transactions on users behalf.
 
