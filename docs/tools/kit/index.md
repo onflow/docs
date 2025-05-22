@@ -20,6 +20,9 @@ sidebar_position: 1
 - [`useFlowRevertibleRandom`](#useflowrevertiblerandom) – Generate pseudorandom values tied to block height
 - [`useFlowTransaction`](#useflowtransaction) – Track transaction status updates
 
+## 🪙 Cross-VM Hooks
+- [`useCrossVmBatchTransaction`](#usecrossvmbatchtransaction) – Execute mutliple EVM transactions in a single atomic t
+
 ## Installation
 
 ```bash
@@ -411,6 +414,60 @@ function TransactionComponent() {
   return (
     <div>
       Status: {transactionStatus?.statusString}
+    </div>
+  )
+}
+```
+
+---
+
+## Cross-VM Hooks
+
+### `useCrossVmBatchTransaction`
+
+```tsx
+import { useCrossVmBatchTransaction } from "@onflow/kit"
+```
+
+#### Parameters:
+- `mutation?: UseMutationOptions<string, Error, CrossVmTransaction[]>` – Optional TanStackQuery mutation options
+
+#### Returns: `UseMutationResult<string, Error, CrossVmTransaction[]>`
+
+```tsx
+function CrossVmTransactionExample() {
+  const { mutate, isPending, error, data: txId } = useCrossVmBatchTransaction({
+    mutation: {
+      onSuccess: (txId) => console.log("TX ID:", txId),
+    },
+  })
+
+  const sendTransaction = () => {
+    mutate([
+      {
+        cadence: `transaction() {
+          prepare(acct: &Account) {
+            log(acct.address)
+          }
+        }`,
+        args: (arg, t) => [],
+        proposer: fcl.currentUser,
+        payer: fcl.currentUser,
+        authorizations: [],
+        limit: 100,
+      },
+      // Add more transactions as needed
+    ])
+  }
+
+  return (
+    <div>
+      <button onClick={sendTransaction} disabled={isPending}>
+        Send Cross-VM Transaction
+      </button>
+      {isPending && <p>Sending transaction...</p>}
+      {error && <p>Error: {error.message}</p>}
+      {txId && <p>Transaction ID: {txId}</p>}
     </div>
   )
 }
