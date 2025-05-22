@@ -386,10 +386,10 @@ function RandomValues() {
 
 ---
 
-### `useFlowTransaction`
+### `useFlowTransactionStatus`
 
 ```tsx
-import { useFlowTransaction } from "@onflow/kit"
+import { useFlowTransactionStatus } from "@onflow/kit"
 ```
 
 #### Parameters:
@@ -404,7 +404,7 @@ import { useFlowTransaction } from "@onflow/kit"
 ```tsx
 function TransactionComponent() {
   const txId = "your-transaction-id-here"
-  const { transactionStatus, error } = useFlowTransaction({ id: txId })
+  const { transactionStatus, error } = useFlowTransactionStatus({ id: txId })
 
   if (error) return <div>Error: {error.message}</div>
 
