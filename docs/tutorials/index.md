@@ -55,6 +55,12 @@ Learn how to leverage AI tools to enhance your Flow development experience. Thes
 - [Flow Data Sources] - Learn about this comprehensive resource and how to integrate it with various AI platforms
 - [Build AI Agents with AgentKit] - Learn how to create AI agents that can interact with Flow using AgentKit
 
+## Backend Usage
+
+Learn some tips and tutorials for interacting with the Flow blockchain in a backend application.
+
+- [Gas Free EVM Endpoint] - Learn how to set up a gas free EVM endpoint for your backend, all transactions sent through this endpoint will not be charged for gas fees from the transaction sender's account.
+
 ## Token Launch
 
 Learn how to launch your own token on Flow using Cadence and EVM. This guide covers the process of registering and deploying tokens that can be used across both virtual machines.
@@ -99,3 +105,4 @@ Explore Flow's unique capabilities through fun benchmark applications that showc
 [Add Flow Cadence to Your wagmi App]: ./cross-vm-apps/add-to-wagmi.md
 [Register Your Assets in Cadence]: ./token-launch/register-cadence-assets.md
 [Register Your ERC20 Token]: ./token-launch/register-erc20-token.md
+[Gas Free EVM Endpoint]: ./backend-usage/gas-free-evm-endpoint.md
