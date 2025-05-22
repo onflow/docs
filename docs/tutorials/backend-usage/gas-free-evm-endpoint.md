@@ -16,6 +16,12 @@ keywords:
 
 In this tutorial, we will learn how to set up a gas free EVM endpoint for your backend service, all transactions sent through this endpoint will not be charged for gas fees from the transaction sender's account.
 
+:::info
+
+This method only works in situations where you can control the RPC node used to **send** transactions, such as your backend and some types of embedded wallets.  It will **not** work on the frontend with traditional wallets, such as MetaMask.
+
+::::
+
 ## Context
 
 In [Using Flow EVM], we know that we can use the RPC endpoint to send EVM transactions to the Flow EVM. The default RPC endpoint is actually the [EVM Gateway].
