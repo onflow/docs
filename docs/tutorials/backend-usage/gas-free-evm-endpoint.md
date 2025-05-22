@@ -1,6 +1,6 @@
 ---
 title: Sponsor Transactions RPC Node
-description: Learn how to set up an EVM RPC endpoint for your app and use it to sponsor all transactions for your users.
+description: Learn how to set up an EVM RPC endpoint for your app and use it to sponsor all transactions sent to it.
 sidebar_position: 2
 keywords:
   - Backend
