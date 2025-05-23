@@ -1513,7 +1513,7 @@ const latestBlock = await fcl.latestBlock();
 
 ---
 
-## Real-time Data
+## Real-Time Data
 
 Streaming data is available through the WebSocket Streaming API provided by the HTTP Access API. It allows developers to subscribe to specific topics and receive real-time updates as they occur on the Flow blockchain.
 
