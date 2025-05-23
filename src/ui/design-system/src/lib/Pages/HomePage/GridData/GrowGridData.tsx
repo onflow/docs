@@ -18,14 +18,14 @@ export const growGridData = {
           href: '/growth',
         },
         {
-          heading: 'Builder Credits',
+          heading: 'Builder Perks',
           description:
-            "Access Flow's Builder Credits program to get resources and support for your project development.",
+            "Access thousands of dollars worth of Builder perks for building on Flow!",
           iconColor: 'purple',
           cardColor: 'black',
           icon: 'builder-credits',
           variant: 'horizontal',
-          href: 'https://github.com/orgs/onflow/discussions/1545',
+          href: '/ecosystem/builder-perks',
         },
         {
           heading: 'Dev Office Hours',
