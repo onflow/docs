@@ -1591,10 +1591,10 @@ A utility function used for subscribing to real-time data from the WebSocket Str
 
 #### Arguments
 
-| Name                 | Type               | Description                                                                                        |
-| -------------------- | ------------------ | -------------------------------------------------------------------------------------------------- |
+| Name     | Type                                        | Description                                                                                        |
+| -------- | ------------------------------------------- | -------------------------------------------------------------------------------------------------- |
 | `params` | [`SubscriptionParams`](#subscriptionparams) | An object containing the subscription topic, arguments, and callbacks. See below for more details. |
-| `opts`            | object             | _(Optional)_ Additional options for the subscription. See below for more details.                  |
+| `opts`   | object                                      | _(Optional)_ Additional options for the subscription. See below for more details.                  |
 
 `params` (first parameter):
 
@@ -1609,8 +1609,8 @@ Additional Options (second parameter):
 
 #### Returns
 
-| Type                                                   | Description                                                                                    |
-| ------------------------------------------------------ | ---------------------------------------------------------------------------------------------- |
+| Type                      | Description                                                                                    |
+| ------------------------- | ---------------------------------------------------------------------------------------------- |
 | SdkTransport.Subscription | A subscription object that allows you to manage the subscription (e.g., to unsubscribe later). |
 
 #### Usage
@@ -1640,12 +1640,12 @@ A utility function used for subscribing to raw data from the WebSocket Streaming
 
 #### Arguments
 
-| Name      | Type                                                     | Description                                                                                                                        |
-| --------- | -------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------- |
-| `topic`   | `SubscriptionTopic`                                        | The subscription topic. Valid values include: `events`, `blocks`, `transactions`, and `collections`.                               |
-| `args`    | `RawSubscriptionArgs<T extends SubscriptionTopic>`         | An array or object of parameters specific to the topic. For example, when subscribing to events, these might be event identifiers. |
+| Name      | Type                                                               | Description                                                                                                                        |
+| --------- | ------------------------------------------------------------------ | ---------------------------------------------------------------------------------------------------------------------------------- |
+| `topic`   | `SubscriptionTopic`                                                | The subscription topic. Valid values include: `events`, `blocks`, `transactions`, and `collections`.                               |
+| `args`    | `RawSubscriptionArgs<T extends SubscriptionTopic>`                 | An array or object of parameters specific to the topic. For example, when subscribing to events, these might be event identifiers. |
 | `onData`  | `(data: RawSubscriptionData<T extends SubscriptionTopic>) => void` | A callback function that is called with the decoded data whenever a new message is received.                                       |
-| `onError` | (error: Error) => void                                   | A callback function that is called if an error occurs during the subscription.                                                     |
+| `onError` | (error: Error) => void                                             | A callback function that is called if an error occurs during the subscription.                                                     |
 
 Additional Options (second parameter):
 
@@ -1655,7 +1655,6 @@ Additional Options (second parameter):
 | `transport` | object | _(Optional)_ Custom transport implementation for handling the connection. |
 
 #### Returns
-
 
 #### Usage
 
@@ -2011,12 +2010,11 @@ The subset of the [BlockObject](#blockobject) containing only the header values 
 
 A lightweight subset of the [BlockObject](#blockobject) containing only the id, height, and timestamp of a block.
 
-| Key         | Value Type | Description                   |
-| ----------- | ---------- | ----------------------------- |
-| `id`        | string     | The id of the block.          |
-| `height`    | number     | The height of the block.      |
-| `timestamp` | string     | The timestamp of the block.   |
-
+| Key         | Value Type | Description                 |
+| ----------- | ---------- | --------------------------- |
+| `id`        | string     | The id of the block.        |
+| `height`    | number     | The height of the block.    |
+| `timestamp` | string     | The timestamp of the block. |
 
 ### `CollectionGuaranteeObject`
 
@@ -2079,7 +2077,7 @@ The format of all responses in FCL returned from `fcl.send(...)`. For full detai
 | `transactionIndex` | number                  | Used to prevent replay attacks.                                                                       |
 | `eventIndex`       | number                  | Used to prevent replay attacks.                                                                       |
 | `data`             | any                     | The data emitted from the event.                                                                      |
-| `accountAddress` | [Address](#address) | The address of the account where the status change occurred.                                                     |
+| `accountAddress`   | [Address](#address)     | The address of the account where the status change occurred.                                          |
 
 ### `Transaction Statuses`
 
@@ -2251,15 +2249,13 @@ Signature objects are used to represent a signature for a particular message as 
 | `keyId`     | number              | The index of the key to use during authorization. (Multiple keys on an account is possible). |
 | `signature` | string              | a hexidecimal-encoded string representation of the generated signature                       |
 
-
 ### `SubscriptionParams`
 
 ```ts
-import { SubscriptionParams } from "@onflow/typedefs"
+import { SubscriptionParams } from '@onflow/typedefs';
 ```
 
-An object containing the subscription topic, arguments, and callbacks.
-
+An object containing the subscription topic, arguments, and callbacks. The `SubscriptionParams` type is a generic type that takes a `SubscriptionTopic` as a parameter.
 
 ```ts
 interface SubscriptionParams<T extends SubscriptionTopic> {
@@ -2270,65 +2266,56 @@ interface SubscriptionParams<T extends SubscriptionTopic> {
 }
 ```
 
-| Subscription Topic      | Argument Type                          | Data Returned         |
-|-------------------------|----------------------------------------|-----------------------|
-| `"blocks"`              | [`SubscriptionArgs<"blocks">`](#blocks-blockheaders-blockdigests)           | [`Block`](#blockobject)               |
-| `"block_headers"`       | [`SubscriptionArgs<"block_headers">`](#blocks-blockheaders-blockdigests)    | [`BlockHeader`](#blockheaderobject)         |
-| `"block_digests"`       | [`SubscriptionArgs<"block_digests">`](#blocks-blockheaders-blockdigests)    | [`BlockDigest`](#blockdigestobject)         |
-| `"account_statuses"`    | [`SubscriptionArgs<"account_statuses">`](#accountstatuses) | [`AccountStatusEvent`](#account-status-event-object)       |
-| `"transaction_statuses"`| [`SubscriptionArgs<"transaction_statuses">`](#transaction-statuses-2) | [`TransactionStatus`](#transactionstatusobject) |
-| [`"events"`](#event-object)              | [`SubscriptionArgs<"events">`](#events-2)           | [`Event`]               |
+| Key       | Value Type                                | Description                                                                           |
+| --------- | ----------------------------------------- | ------------------------------------------------------------------------------------- |
+| `topic`   | [`SubscriptionTopic`](#subscriptiontopic) | The topic to subscribe to. This determines the type of data that will be received.    |
+| `args`    | [`SubscriptionArgs`](#subscriptionargs)   | The arguments specific to the topic. This may include filters or other parameters.    |
+| `onData`  | function                                  | A callback function that will be called with the data received from the subscription. |
+| `onError` | function                                  | A callback function that will be called if an error occurs during the subscription.   |
 
 ### `SubscriptionTopic`
 
 Import:
 
 ```ts
-import { SubscriptionTopic } from "@onflow/typedefs"
+import { SubscriptionTopic } from '@onflow/typedefs';
 ```
 
-The `SubscriptionTopic` type is used to specify the topic of a subscription.
+The `SubscriptionTopic` is an enum that defines the different topics that can be subscribed to. Each topic corresponds to a specific type of data that can be received from the subscription.
+
+The available topics are:
 
 ```ts
-type SubscriptionTopic =
-  | "blocks"
-  | "block_headers"
-  | "block_digests"
-  | "account_statuses"
-  | "transaction_statuses"
-  | "events"
-```
-
-The `SubscriptionTopic` type is also exported as a constant object for easier usage in TypeScript.
-
-```ts
-const SubscriptionTopic = {
-  BLOCKS = "blocks",
-  BLOCK_HEADERS = "block_headers",
-  BLOCK_DIGESTS = "block_digests",
-  ACCOUNT_STATUSES = "account_statuses",
-  TRANSACTION_STATUSES = "transaction_statuses",
-  EVENTS = "events",
-} as const
+enum SubscriptionTopic {
+  BLOCKS = 'blocks',
+  BLOCK_HEADERS = 'block_headers',
+  BLOCK_DIGESTS = 'block_digests',
+  ACCOUNT_STATUSES = 'account_statuses',
+  TRANSACTION_STATUSES = 'transaction_statuses',
+  EVENTS = 'events',
+}
 ```
 
 ### `SubscriptionArgs`
 
 ```ts
-import { type SubscriptionArgs } from "@onflow/typedefs"
+import { type SubscriptionArgs } from '@onflow/typedefs';
 ```
 
 Type definition:
 
 ```ts
 type SubscriptionArgs<T extends SubscriptionTopic> = {
-  [K in T]: K extends "blocks" | "block_headers" | "block_digests"
-    ? BlockSubscriptionAtLatestArgs | BlockSubscriptionAtIdArgs | BlockSubscriptionAtHeightArgs
-    : K extends "account_statuses"
+  [K in T]: K extends 'blocks' | 'block_headers' | 'block_digests'
+    ?
+        | BlockSubscriptionAtLatestArgs
+        | BlockSubscriptionAtIdArgs
+        | BlockSubscriptionAtHeightArgs
+    : K extends 'account_statuses'
     ? AccountStatusSubscriptionArgs
-    : K extends "transaction_statuses"
+    : K extends 'transaction_statuses'
     ? TransactionStatusSubscriptionArgs
-    : K extends "events"
+    : K extends 'events'
     ? EventSubscriptionArgs
     : never;
 }[T];
@@ -2339,23 +2326,23 @@ An array or object of parameters specific to the topic. For example, when subscr
 Usage:
 
 ```ts
-const args: SubscriptionArgs<"events"> = {
-  eventTypes: ["A.7e60df042a9c0868.FlowToken.TokensWithdrawn"],
-  addresses: ["0x7e60df042a9c0868"],
-}
+const args: SubscriptionArgs<SubscriptionTopic.EVENTS> = {
+  eventTypes: ['A.7e60df042a9c0868.FlowToken.TokensWithdrawn'],
+  addresses: ['0x7e60df042a9c0868'],
+};
 ```
 
 #### Blocks, Block Headers, Block Digests
 
-_Applies to topics: `blocks`, `block_headers`, `block_digests`_
+_Applies to topics: `SubscriptionTopic.BLOCKS`, `SubscriptionTopic.BLOCK_HEADERS`, `SubscriptionTopic.BLOCK_DIGESTS`_
 
 Start at the latest block:
 
 ```ts
 // Internal type, not exported
 type BlockSubscriptionAtLatestArgs = {
-  blockStatus: "finalized" | "sealed";
-}
+  blockStatus: 'finalized' | 'sealed';
+};
 ```
 
 Start at a specific block ID:
@@ -2363,9 +2350,9 @@ Start at a specific block ID:
 ```ts
 // Internal type, not exported
 type BlockSubscriptionAtIdArgs = {
-  blockStatus: "finalized" | "sealed";
+  blockStatus: 'finalized' | 'sealed';
   startBlockId: string;
-}
+};
 ```
 
 Start at a specific block height:
@@ -2373,14 +2360,14 @@ Start at a specific block height:
 ```ts
 // Internal type, not exported
 type BlockSubscriptionAtHeightArgs = {
-  blockStatus: "finalized" | "sealed";
+  blockStatus: 'finalized' | 'sealed';
   startBlockHeight: number;
-}
+};
 ```
 
 #### Account Statuses
 
-_Applies to topic: `account_statuses`_
+_Applies to topic: `SubscriptionTopic.ACCOUNT_STATUSES`_
 
 ```ts
 // Internal type, not exported
@@ -2390,23 +2377,23 @@ type AccountStatusSubscriptionArgs = {
   eventTypes?: string[];
   addresses?: string[];
   accountAddresses?: string[];
-}
+};
 ```
 
 #### Transaction Statuses
 
-_Applies to topic: `transaction_statuses`_
+_Applies to topic: `SubscriptionTopic.TRANSACTION_STATUSES`_
 
 ```ts
 // Internal type, not exported
 type TransactionStatusSubscriptionArgs = {
   transactionId: string;
-}
+};
 ```
 
 #### Events
 
-_Applies to topic: `events`_
+_Applies to topic: `SubscriptionTopic.EVENTS`_
 
 Type definition:
 
@@ -2418,7 +2405,7 @@ type EventSubscriptionArgs = {
   eventTypes?: string[];
   addresses?: string[];
   contracts?: string[];
-}
+};
 ```
 
 ### `SubscriptionData`
@@ -2426,84 +2413,103 @@ type EventSubscriptionArgs = {
 **Import:**
 
 ```ts
-import { type SubscriptionData } from "@onflow/typedefs"
+import { type SubscriptionData } from '@onflow/typedefs';
 ```
 
 The data returned by the subscription. This will vary depending on the topic.
 
+This is a generic type that takes a `SubscriptionTopic` as a parameter.
+
 ```ts
 type SubscriptionData<T extends SubscriptionTopic> = {
-  [K in T]: K extends "blocks"
+  [K in T]: K extends 'blocks'
     ? Block
-    : K extends "block_headers"
-    ? Blockheader
-    : K extends "block_digests"
-    ? BlockDigestObject
-    : K extends "account_statuses"
-    ? AccountStatusObject
-    : K extends "transaction_statuses"
-    ? TransactionStatusObject
-    : K extends "events"
-    ? EventObject
+    : K extends 'block_headers'
+    ? BlockHeader
+    : K extends 'block_digests'
+    ? BlockDigest
+    : K extends 'account_statuses'
+    ? AccountStatus
+    : K extends 'transaction_statuses'
+    ? TransactionStatus
+    : K extends 'events'
+    ? Event
     : never;
 }[T];
 ```
 
 #### Blocks
 
-_Applies to topic: `blocks`_
+_Applies to topic: `SubscriptionTopic.BLOCKS`_
 
 See [BlockObject](#blockobject).
 
 #### Block Headers
 
-_Applies to topic: `block_headers`_
+_Applies to topic: `SubscriptionTopic.BLOCK_HEADERS`_
 
 See [BlockHeaderObject](#blockheaderobject).
 
 #### Block Digests
 
-_Applies to topic: `block_digests`_
+_Applies to topic: `SubscriptionTopic.BLOCK_DIGESTS`_
 
 See BlockDigestObject.
 
 #### Account Statuses
 
-_Applies to topic: `account_statuses`_
+_Applies to topic: `SubscriptionTopic.ACCOUNT_STATUSES`_
 
 See AccountStatusObject.
 
 #### Transaction Statuses
 
-_Applies to topic: `transaction_statuses`_
+_Applies to topic: `SubscriptionTopic.TRANSACTION_STATUSES`_
 
 See [TransactionStatusObject](#transactionstatusobject).
 
 #### Events
 
-_Applies to topic: `events`_
+_Applies to topic: `SubscriptionTopic.EVENTS`_
 
 See [EventObject](#event-object).
 
 ### `RawSubscriptionData`
 
 ```ts
-import { type RawSubscriptionData } from "@onflow/typedefs"
+import { type RawSubscriptionData } from '@onflow/typedefs';
 ```
 
-The raw data returned by the subscription. This will vary depending on the topic.
+A raw data returned by the subscription. This will vary depending on the topic.
+
+This is a generic type that takes a `SubscriptionTopic` as a parameter.
+
+```ts
+type RawSubscriptionData<T extends SubscriptionTopic> = {
+  [K in T]: K extends 'blocks'
+    ? RawBlock
+    : K extends 'block_headers'
+    ? RawBlockHeader
+    : K extends 'block_digests'
+    ? RawBlockDigest
+    : K extends 'account_statuses'
+    ? RawAccountStatus
+    : K extends 'transaction_statuses'
+    ? RawTransactionStatus
+    : K extends 'events'
+    ? RawEvent
+    : never;
+}[T];
+```
 
 #### Blocks
 
-Import:
-
-```ts
-import { type RawBlock } from "@onflow/typedefs"
-```
+_Applies to topic: `SubscriptionTopic.BLOCKS`_
 
 Type definition:
 
 ```ts
+// Internal type, not exported
 type RawBlock = {
   block: {
     id: string;
@@ -2528,125 +2534,109 @@ type RawBlock = {
       keyId: number;
       signature: string;
     }[];
-  }
-}
+  };
+};
 ```
 
 #### Block Headers
 
-Import:
-
-```ts
-import { type RawBlockHeader } from "@onflow/typedefs"
-```
+_Applies to topic: `SubscriptionTopic.BLOCK_HEADERS`_
 
 Type definition:
 
 ```ts
+// Internal type, not exported
 type RawBlockHeader = {
   blockHeader: {
     id: string;
     parentId: string;
     height: number;
     timestamp: string;
-  }
-}
+    parentVoterSignature: string;
+  };
+};
 ```
 
 #### Block Digests
 
-Import:
-
-```ts
-import { type RawBlockDigest } from "@onflow/typedefs"
-```
+_Applies to topic: `SubscriptionTopic.BLOCK_DIGESTS`_
 
 Type definition:
 
 ```ts
+// Internal type, not exported
 type RawBlockDigest = {
   blockDigest: {
     id: string;
     parentId: string;
     height: number;
     timestamp: string;
-  }
-}
+  };
+};
 ```
 
 #### Account Statuses
 
-Import:
+_Applies to topic: `SubscriptionTopic.ACCOUNT_STATUSES`_
+
+Type definition:
 
 ```ts
-import { type RawAccountStatus } from "@onflow/typedefs"
-```
-
-```ts
+// Internal type, not exported
 type RawAccountStatus = {
   accountStatus: {
-    address: string;
-    balance: number;
-    code: string;
-    contracts: {
-      [contractName: string]: string;
+    accountAddress: string;
+    blockId: string;
+    blockHeight: number;
+    type: string;
+    transactionId: string;
+    transactionIndex: number;
+    eventIndex: number;
+    payload: {
+      type: string;
+      value: any;
     };
-    keys: {
-      index: number;
-      publicKey: string;
-      revoked: boolean;
-      sequenceNumber: number;
-      signAlgo: number;
-      hashAlgo: number;
-      weight: number;
-    }[];
-  }
-}
+  };
+};
 ```
 
 #### Transaction Statuses
 
-Import:
-
-```ts
-import { type RawTransactionStatus } from "@onflow/typedefs"
-```
+_Applies to topic: `SubscriptionTopic.TRANSACTION_STATUSES`_
 
 Type definition:
 
 ```ts
+// Internal type, not exported
 type RawTransactionStatus = {
   transactionStatus: {
     blockId: string;
+    status: TransactionExecutionStatus;
+    statusString: string;
+    statusCode: 0 | 1;
+    errorMessage: string;
     events: {
-      blockId: string;
-      blockHeight: number;
-      blockTimestamp: string;
       type: string;
       transactionId: string;
       transactionIndex: number;
       eventIndex: number;
-      data: any;
+      payload: {
+        type: string;
+        value: any;
+      };
     }[];
-    status: number;
-    statusString: string;
-    errorMessage: string;
-    statusCode: number;
-  }
-}
+  };
+};
 ```
 
 #### Events
 
-Import:
-
-```ts
-import { type RawEvent } from "@onflow/typedefs"
-```
+_Applies to topic: `SubscriptionTopic.EVENTS`_
 
 Type definition:
 
 ```ts
+// Internal type, not exported
 type RawEvent = {
   event: {
     blockId: string;
@@ -2656,7 +2646,10 @@ type RawEvent = {
     transactionId: string;
     transactionIndex: number;
     eventIndex: number;
-    data: any;
-  }
-}
+    payload: {
+      type: string;
+      value: any;
+    };
+  };
+};
 ```
