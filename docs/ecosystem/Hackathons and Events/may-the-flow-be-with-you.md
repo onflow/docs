@@ -272,7 +272,16 @@ Check this section daily to see all winners announced so far!
 - The Doodles Memorizer  - 0x9f7145728ef9ae10 
 - Emoji Chain Reaction - 0x6c1b12e35dca8863 
 - FrogDash - 0xe35f688520e4a2c3 
-- FlowVerse - 0x1E78b3F3550889e90EcE152ab6bbCb8d9E7Dd221 
+- FlowVerse - 0x1E78b3F3550889e90EcE152ab6bbCb8d9E7Dd221
+
+### Week 3: Generative Art & Worlds
+- Flow Craps - 0x9db94c9564243ba7 
+- Doodles NFT Mutator - 0x9f7145728ef9ae10 
+- Generative Tarot Card AI - 0xe712bbfbeeef1cfa 
+- FlowGating  - 0x94b619cc671a3734 
+- Evolving Creatures - 0xc65395858a38d8ff 
+- Flow Persona - 0x1E78b3F3550889e90EcE152ab6bbCb8d9E7Dd221
+- Game of Life - 0x0000000000000000000000021DD51488A93756E2
 
 :::note
 Winners are announced on the [@flow_blockchain](https://x.com/flow_blockchain) Twitter account, and prizes are sent to the wallet addresses indicated in your submission name on github.
