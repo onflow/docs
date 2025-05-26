@@ -210,11 +210,11 @@ They should all succeed.
 We can now deploy `MyToken` using the `forge create` command. We need to provide the RPC URL, private key from a funded account using the faucet, and constructor arguments that is the initial mint amount in this case. We need to use the `--legacy` flag to disable EIP-1559 style transactions. Replace `$DEPLOYER_PRIVATE_KEY` with the private key of the account you created earlier:
 
 ```shell
-forge create --rpc-url https://testnet.evm.nodes.onflow.org \
+forge create --broadcast src/MyToken.sol:MyToken \
+    --rpc-url https://testnet.evm.nodes.onflow.org \
     --private-key $DEPLOYER_PRIVATE_KEY \
     --constructor-args 42000000 \
-    --legacy \
-    src/MyToken.sol:MyToken
+    --legacy
 ```
 
 The above will print the deployed contract address. We'll use it in the next section to interact with the contract.
