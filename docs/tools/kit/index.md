@@ -458,7 +458,6 @@ function QueryExample() {
   const { data, isLoading, error, refetch } = useCrossVmTokenBalance({
     owner: '0x1cf0e2f2f715450',
     vaultIdentifier: '0x1cf0e2f2f715450.FlowToken.Vault',
-    erc20AddressHexArg: '0x1234567890abcdef1234567890abcdef12345678', // Optional
     query: { staleTime: 10000 },
   });
 
