@@ -18,7 +18,7 @@ sidebar_position: 1
 - [`useFlowQuery`](#useflowquery) – Execute Cadence scripts with optional arguments
 - [`useFlowMutate`](#useflowmutate) – Send transactions to the Flow blockchain
 - [`useFlowRevertibleRandom`](#useflowrevertiblerandom) – Generate pseudorandom values tied to block height
-- [`useFlowTransaction`](#useflowtransaction) – Track transaction status updates
+- [`useFlowTransactionStatus`](#useflowtransactionstatus) – Track transaction status updates
 
 ## Installation
 
@@ -402,7 +402,7 @@ import { useFlowTransactionStatus } from "@onflow/kit"
 - `error: Error | null`
 
 ```tsx
-function TransactionComponent() {
+function TransactionStatusComponent() {
   const txId = "your-transaction-id-here"
   const { transactionStatus, error } = useFlowTransactionStatus({ id: txId })
 
