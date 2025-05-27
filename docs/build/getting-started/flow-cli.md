@@ -237,7 +237,7 @@ Fee Events (hidden, use --include fee-events)
 Run the script to check the counter again. You'll see that it has incremented:
 
 ```zsh
-Result: 0
+Result: 1
 ```
 
 :::tip
@@ -339,6 +339,7 @@ transaction {
 Try out your new transaction with:
 
 ```zsh
+flow transactions send cadence/transactions/IncrementBy1000.cdc --signer test-account
 
 ```
 
