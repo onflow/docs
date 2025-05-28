@@ -71,6 +71,25 @@ Below is a list of commonly used DeFi contracts on Flow:
 | LayerZero                                    | [Mainnet Contracts][16]  |
 | Axelar                                       | [Axelar Docs][17]        |
 
+## Omni Fungible Tokens
+
+#### Solana Mainnet
+
+| Contract Name                | Contract Address                           |
+|------------------------------|--------------------------------------------|
+| PYUSD Program ID             | `28EyPNAi9BMTvGuCaQrptMXjpWUi7wx8SxAFVoSZxSXe` |
+| PYUSD Mint                   | `2b1kV6DkPAnxd5ixfnxCpjxmKwqjjaYmCZfHsFu24GXo` |
+| PYUSD Mint Authority         | `22mKJkKjGEQ3rampp5YKaSsaYZ52BUkcnUN6evXGsXzz` |
+| PYUSD Escrow                 | `6z3QyVS36nQ9fk2YvToxqJqXqtAFsSijqgHxpzKyG5xn` |
+| PYUSD OFT Store              | `2KUb8dcZR9LyrSg4RdkQx91xX6mPQLpS1MEo6gwfvLZk` |
+
+#### Ethereum Mainnet
+
+| Contract Name                | Contract Address                           |
+|------------------------------|--------------------------------------------|
+| PYUSD Token                  | `0x6c3ea9036406852006290770BEdFcAbA0e23A0e8` |
+| PYUSD Locker                 | `0xFA0e06B54986ad96DE87a8c56Fea76FBD8d493F8` |
+
 ## Oracles
 
 #### Flow EVM Mainnet
