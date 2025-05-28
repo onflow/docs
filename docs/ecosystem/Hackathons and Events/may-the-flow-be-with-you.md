@@ -136,11 +136,13 @@ Join us for a month-long vibe coding challenge on Flow! Starting May 4th, partic
   </div>
 
   <div className="border-l-4 border-gray-300 dark:border-gray-700 pl-4 py-2">
-    <h3 className="text-lg font-bold text-gray-500 dark:text-gray-400">Week 4: Theme TBD (May 25-31)</h3>
-    <p className="text-sm text-gray-500 dark:text-gray-400 mt-1 mb-2">Theme to be announced.</p>
+    <h3 className="text-lg font-bold text-gray-500 dark:text-gray-400">Week 4: AI and LLMs (May 25 - June 1st)</h3>
+    <p className="text-sm text-gray-500 dark:text-gray-400 mt-1 mb-2">How can LLMs make life easier for everyday people or enrich experiences? Experiment with the latest AI models or agentic frameworks to create new levels of depth in your existing projects or create new ones entirely.</p>
     <ul className="mt-2 space-y-1 text-gray-500 dark:text-gray-400">
-      <li>May 31: Final submission deadline</li>
-      <li>June 2: Week 4 winners and jackpot announced!</li>
+      <li>May 25: Week 4 starts</li>
+      <li>May 25 - June 1st: Build AI integrated apps (either completely new or continue building on your week 1, 2 or 3 projects)</li>
+      <li>June 1st: Final submission deadline</li>
+      <li>June 2nd: Week 4 winners and jackpot announced! Note, the jackpot will consist of shortlisted projects that are the most working end-to-end and complex, check the repo for the new leaderboard to see how your project ranks relative to others!</li>
     </ul>
   </div>
 </div>
@@ -174,9 +176,9 @@ Join us for a month-long vibe coding challenge on Flow! Starting May 4th, partic
   │   │   │   ├── README.md   # Documentation with prompts used
   │   │   │   └── src/        # Source code
   │   │
-  │   ├── week2/              # Week 2: Theme TBD
-  │   ├── week3/              # Week 3: Theme TBD
-  │   └── week4/              # Week 4: Theme TBD`}
+  │   ├── week2/              # Week 2: ...
+  │   ├── week3/              # Week 3: ...
+  │   └── week4/              # Week 4: ...`}
       </pre>
     </div>
   </div>
