@@ -71,7 +71,7 @@ Below is a list of commonly used DeFi contracts on Flow:
 | LayerZero                                    | [Mainnet Contracts][16]  |
 | Axelar                                       | [Axelar Docs][17]        |
 
-## Omni Fungible Tokens
+## Omni Fungible Tokens (USD Flow - USDF)
 
 #### Solana Mainnet
 
