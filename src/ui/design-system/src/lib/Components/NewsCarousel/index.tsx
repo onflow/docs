@@ -17,25 +17,16 @@ const CAROUSEL_CARDS: CarouselCard[] = [
     description: 'We send out a newsletter every week with the latest news for Flow developers.  Sign up to get it in your inbox!',
     iconColor: 'green',
     cardColor: 'black',
-    href: 'https://break.link',
+    href: 'https://e.customeriomail.com/manage_subscription_preferences/dgTdoQoDAI7HAY3HAQGWxJT9wbM-Af61EgxuM6E=',
     variant: 'horizontal' as const,
     icon: 'learn'
   },
   {
     heading: 'May the Flow be with You!',
-    description: 'Join us for a month-long vibe coding challenge on Flow! Starting May 4th, participate in our four themed weeks.',
+    description: 'We are wrapping up our month-long vibe coding challenge on Flow! Check out the winners, or submit for the last week!',
     iconColor: 'green',
     cardColor: 'black',
     href: '/ecosystem/Hackathons%20and%20Events/may-the-flow-be-with-you',
-    variant: 'horizontal' as const,
-    icon: 'vcs-&-funds'
-  },
-  {
-    heading: 'Web3 Founder x VC meetup',
-    description: 'Calling all Web3 founders from Consensus! 🧠 Join us for an epic event of networking, learning, and fun.',
-    iconColor: 'green',
-    cardColor: 'black',
-    href: 'https://lu.ma/vicz07zu',
     variant: 'horizontal' as const,
     icon: 'vcs-&-funds'
   },
