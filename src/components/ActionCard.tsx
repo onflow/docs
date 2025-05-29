@@ -1,6 +1,7 @@
 import React from 'react';
 import { colors, ColorOption } from '@site/src/constants/colors';
 import { Icon } from './Icon';
+import { event } from '@site/src/utils/gtags.client';
 
 type LinkInfo =
   | {
@@ -36,9 +37,22 @@ export const ActionCard: React.FC<ActionCardProps> = ({
   const href = 'href' in linkInfo ? linkInfo.href : undefined;
   const target = 'target' in linkInfo ? linkInfo.target : undefined;
 
+  const handleCardClick = (e: React.MouseEvent<HTMLAnchorElement, MouseEvent>) => {
+    event({
+      action: 'action_card_click',
+      category: 'action_card',
+      label: heading,
+      location: true,
+    });
+    if (onClick) {
+      e.preventDefault();
+      onClick();
+    }
+  };
+
   return (
     <a
-      onClick={onClick}
+      onClick={handleCardClick}
       href={href}
       target={target}
       rel="noopener noreferrer"
