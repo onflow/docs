@@ -10,7 +10,7 @@ import PageBackground from '../shared/PageBackground';
 import ActionCardGrid from '@site/src/components/ActionCardGrid';
 import { buildGridData } from './GridData/BuildGridData';
 import { growGridData } from './GridData/GrowGridData';
-// import { HomeHeader } from '../../Components/HomeHeader';
+import { HomeHeader } from '../../Components/HomeHeader';
 
 export type HomePageProps = SocialLinksSignupProps & {
   concepts?: TutorialCardProps[];
@@ -21,8 +21,7 @@ export type HomePageProps = SocialLinksSignupProps & {
 const HomePage = ({ discordUrl, githubUrl }: HomePageProps): JSX.Element => {
   return (
     <PageBackground gradient="home">
-      {/* TODO: Add back in after iteration */}
-      {/* <HomeHeader /> */}
+      <HomeHeader />
       <HomeNav
         title="What do you want to do today?"
       />
