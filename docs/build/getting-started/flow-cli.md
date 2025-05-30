@@ -45,6 +45,10 @@ brew install flow-cli
 
 For other ways of installing, please refer to the [installation guide].
 
+### Flow Cadence VSCode Extension
+
+Install the [Flow Cadence VSCode Extension] from the marketplace.
+
 ## Creating a New Project
 
 To create a new project, navigate to the directory where you want to create your project and run:
@@ -401,6 +405,7 @@ In this tutorial, we've accomplished all of our learning objectives:
 
 <!-- Relative-style links.  Does not render on the page -->
 
+[Flow Cadence VSCode Extension]: https://marketplace.visualstudio.com/items?itemName=onflow.cadence
 [Flow Command Line Interface]: ../../tools/flow-cli/index.md
 [Cadence]: https://cadence-lang.org/
 [configuration docs]: ../../tools/flow-cli/flow.json/configuration.md
