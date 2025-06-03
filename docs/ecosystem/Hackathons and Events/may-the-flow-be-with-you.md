@@ -285,8 +285,27 @@ Check this section daily to see all winners announced so far!
 - Flow Persona - 0x1E78b3F3550889e90EcE152ab6bbCb8d9E7Dd221
 - Game of Life - 0x0000000000000000000000021DD51488A93756E2
 
+### Week 3: Generative Art and Worlds
+Tasneem - 0x0000000000000000000000021DD51488A93756E2
+Zhixuan - 0x9f7145728ef9ae10
+Tobin - 0xe712bbfbeeef1cfa
+NileDEX - 0x94b619cc671a3734 
+Ccarnicle - 0x9db94c9564243ba7
+Claucondor - 0xc65395858a38d8ff
+Pandit - 0x1E78b3F3550889e90EcE152ab6bbCb8d9E7Dd221
+
+
+### Week 4: AI & LLMs
+Claucondor  - 0xc65395858a38d8ff
+AlexD-Great  - 0x9701b128fd2017f8
+Pranav - 0x17b3b1e6b16965f3
+AltcoinDaddy - 0x6c1b12e35dca8863
+Tobin  - 0xe712bbfbeeef1cfa
+Pandit - 0x1E78b3F3550889e90EcE152ab6bbCb8d9E7Dd221
+Zhixuan - 0x9f7145728ef9ae10
+
 :::note
-Winners are announced on the [@flow_blockchain](https://x.com/flow_blockchain) Twitter account, and prizes are sent to the wallet addresses indicated in your submission name on github.
+Winners are announced on the [@flow_blockchain](https://x.com/flow_blockchain) Twitter account, and prizes are sent to the wallet addresses indicated in your submission name on GitHub.
 :::
 
 ## FAQ
