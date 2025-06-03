@@ -176,7 +176,7 @@ $cat ./bootstrap/public-root-information/node-info.pub.39fa54984b8eaa463e1299194
   "Weight": 0,
   "NetworkPubKey": "d92e3d5880abe233cf9fe9104db34bbb31251468a541454722b3870c04156a1b0504aef443bcaad124b997384b8fe7052847ce1e6189af1392d865e6be69835b",
   "StakingPubKey": "917826e018f056a00b778a58ae83054906957ffd4b6f1b7da083551f7a9f35e02b76ace50424ed7d2c9fc69207a59f0f08a031048f5641db94e77d0648b24d150dedd54bab7cd44b4aa60cfd54be418647b0b3965f8ae54c0bcb48ae9d705162",
-  "StakingPoP": "oEz2R3qe86/ZaRAemZfpdjcBZcOt7RHLjMhqjf7gg99XMsaLjmDma94Rr9ylciti"
+  "StakingPoP": "99c879b963b45acd907aae0d7e968a24abf2d3dd28700eca81217b3f12c477334a531a56bcea0f86770614364ebca519"
 }
 ```
 
