@@ -294,7 +294,7 @@ Pandit - 0x1E78b3F3550889e90EcE152ab6bbCb8d9E7Dd221
 Zhixuan - 0x9f7145728ef9ae10
 
 :::note
-Winners are announced on the [@flow_blockchain](https://x.com/flow_blockchain) Twitter account, and prizes are sent to the wallet addresses indicated in your submission name on github.
+Winners are announced on the [@flow_blockchain](https://x.com/flow_blockchain) Twitter account, and prizes are sent to the wallet addresses indicated in your submission name on GitHub.
 :::
 
 ## FAQ
