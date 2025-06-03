@@ -1,9 +1,9 @@
 import React, { useMemo, useState } from "react"
 import { OFFICE_HOURS_EVENT_TYPE } from "../../../../../../data/events"
-import { ButtonLink } from "../Button"
 import { EventCard, EventCardList, EventCardProps } from "../EventCard"
 import { EventCardSmall } from "../EventCardSmall"
 import { HeaderWithLink } from "../HeaderWithLink"
+import { Button } from "../Button"
 
 export type UpcomingEventsProps = {
   goToCommunityHref: string
@@ -74,14 +74,14 @@ export function UpcomingEvents({
           indicatorColor="bg-primary-gray-100 dark:bg-primary-gray-400"
         />
         <div className="mt-10 flex flex-col justify-items-stretch gap-6 md:flex-row">
-          <ButtonLink
+          <Button
             className="flex-1 md:max-w-[50%]"
             variant="secondary"
             href={goToCommunityHref}
             rightIcon="external"
           >
             Go to Community
-          </ButtonLink>
+          </Button>
           <div className="flex-1" />
         </div>
       </div>

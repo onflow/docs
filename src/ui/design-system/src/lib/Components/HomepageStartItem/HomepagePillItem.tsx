@@ -7,6 +7,7 @@ export interface HomepagePillItemsProps {
   icon: string;
   text: string;
   subText?: string;
+  onClick?: () => void;
 }
 
 export function HomepagePillItem({
@@ -14,11 +15,19 @@ export function HomepagePillItem({
   text,
   icon,
   subText = 'View Latest',
+  onClick,
 }: HomepagePillItemsProps): React.ReactElement {
   return (
     <AppLink
       className="flex py-3 pl-3 cursor-pointer rounded-custom text-black hover:no-underline hover:text-black hover:bg-primary-gray-10 bg-white justify-start items-center hover:border-black"
       to={link}
+      onClick={(e) => {
+        // If there's an onClick, call it instead of normal navigation
+        if (onClick) {
+          e.preventDefault();
+          onClick();
+        }
+      }}
     >
       <HomepageStartItemIcons icon={icon} />
       <div className="relative group align-center mx-2">

@@ -72,7 +72,7 @@ const cards = {
       subtitle: 'A smart contract tutorial for Cadence.',
       imageName: 'cadence-playground',
       hoverText: 'Get Started',
-      link: 'https://play.onflow.org/',
+      link: 'https://play.flow.com/',
     },
   ],
 };

@@ -90,7 +90,7 @@ Example:
 ```
 Transaction code:
 ```
-pub contract HelloWorld {
+access(all) contract HelloWorld {
     init(a:String, b:Int) {
     }
 }

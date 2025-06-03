@@ -26,7 +26,7 @@ Default.args = {
       title: "Title Here 1 Line Only",
       description:
         "A package used to interact with user wallets and the Flow blockchain.",
-      href: "https://www.onflow.org",
+      href: "https://www.flow.com",
       iconType: "cadence",
     },
     {
@@ -50,7 +50,7 @@ Default.args = {
         },
         {
           title: "External link",
-          href: "https://www.onflow.org",
+          href: "https://www.flow.com",
         },
       ],
     },

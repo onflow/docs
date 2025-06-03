@@ -1,10 +1,9 @@
 ---
 title: Flow Remix Guide
-description: "Using Remix to deploy a solidity contract to EVM on Flow."
+description: 'Using Remix to deploy a solidity contract to Flow EVM.'
 sidebar_label: Remix
 sidebar_position: 3
 ---
-
 
 # Using Remix
 
@@ -18,13 +17,14 @@ Navigate to the [Using EVM](../using.mdx) page to find the button to add the Flo
 
 ## Fund Your Flow Account
 
-Navigate to the [Flow Previewnet Faucet](https://previewnet-faucet.onflow.org/fund-account) to obtain FLOW tokens necessary for deploying a smart contract.
+Navigate to the [Flow Testnet Faucet](https://faucet.flow.com/fund-account) to obtain FLOW tokens necessary for deploying a smart contract.
 
 ## Deploying a Smart Contract Using Remix
 
 ![Deploy Smart Contract](./Remix-deploy-contract-flowevm.gif)
 
 ### HelloWorld Smart Contract
+
 ```solidity
 // SPDX-License-Identifier: MIT
 pragma solidity ^0.8.0;
@@ -79,26 +79,23 @@ contract HelloWorld {
 const { ethers } = require('ethers');
 
 // Define the contract ABI
-const contractABI = [
-    "function hello() public view returns (string memory)"
-];
+const contractABI = ['function hello() public view returns (string memory)'];
 
 // Define the contract address
-const contractAddress = "0x8a120383e6057b1f3aef4fa9b89c2f1b0a695926";
+const contractAddress = '0x8a120383e6057b1f3aef4fa9b89c2f1b0a695926';
 
 // Connect to the Ethereum network
 // This example uses the default provider from ethers.js, which connects to the Ethereum mainnet.
 // For a testnet or custom RPC, use ethers.getDefaultProvider('networkName') or new ethers.providers.JsonRpcProvider(url)
 const provider = new ethers.providers.Web3Provider(window?.ethereum);
-              
 
 // Create a new contract instance
 const contract = new ethers.Contract(contractAddress, contractABI, provider);
 
 // Call the hello function of the contract
 async function getGreeting() {
-    const greeting = await contract.hello();
-    console.log(greeting);
+  const greeting = await contract.hello();
+  console.log(greeting);
 }
 
 // Execute the function

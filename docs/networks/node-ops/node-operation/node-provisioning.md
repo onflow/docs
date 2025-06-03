@@ -13,10 +13,11 @@ The hardware your Node will need varies depending on the role your Node will pla
 |:----------------:| ---------:| ------:| ------:|:--------------:|:--------------:|
 | **Collection**   |  4 cores  | 32 GB  | 200 GB | n2-highmem-4   | r6i.xlarge     |
 | **Consensus**    |  2 cores  | 16 GB  | 200 GB | n2-standard-4  | m6a.xlarge     |
-| **Execution**    | 64 cores  | 800 GB |  9 TB  | n2-highmem-128 | r6i.32xlarge   |
+| **Execution**    | 128 cores  | 864 GB |  9 TB (with maintenance see: [pruning chunk data pack](https://forum.flow.com/t/execution-node-upgrade-to-v0-31-15-and-managing-disk-space-usage/5167) or 30 TB without maintenance)  | n2-highmem-128 |    |
 | **Verification** |  2 cores  | 16 GB  | 200 GB | n2-highmem-2   | r6a.large      |
-| **Access**       |  4 cores | 16 GB  | 750 GB | n2-standard-4   | m6i.xlarge     |
+| **Access**       |  16 cores | 64 GB  | 750 GB | n2-standard-16 | m6i.4xlarge  |
 | **Observer**     |  2 cores  | 4 GB   | 300 GB | n2-standard-4  | m6i.xlarge     |
+| **EVM Gateway**     |  2 cores  | 32 GB   | 30 GB | n2-highmem-4  | r6i.xlarge     |
 
 _Note: The above numbers represent our current best estimate for the state of the network. These will be actively updated as we continue benchmarking the network's performance._
 
@@ -24,28 +25,17 @@ _Note: The above numbers represent our current best estimate for the state of th
 
 Most of the load on your nodes will be messages sent back and forth between other nodes on the network. Make sure you have a sufficiently fast connection; we recommend at _least_ 1Gbps, and 5Gbps is better.
 
-Each node will require either a static IPv4 address or a fixed DNS name. Either works, and we'll refer to this more generally as your 'Node Address' from here on out.
+Each node will require a fixed DNS name and we will refer to this more generally as your 'Node Address' from here on out.
 
 <Callout type="info" title="Node Address Requirements">
-    Your Node Address must be a publicly routable IPv4 address or valid DNS name
+    Your Node Address must be a publicly routable valid DNS name
     that points to your node. This is how other nodes in the network will
     communicate with you.
 </Callout>
 
-While both a static IPv4 and a domain name are possible, we prefer and recommend that node operators register their node under a domain that they control. This gives the Flow network more options for resiliency and resistance to adverse network conditions.
+Your firewalls must expose **TCP/3569** for both, ingress and egress.
 
-<Callout type="warning" title="Registering a domain name for your Flow Node">
-    Crash recovery and denial of service attacks are two concerns that operators can mitigate relying on each of DNS indirection and IP routing. The later requires more involvement.
-
-    Running a node behind an operator-controlled hostname (rather than "just" an IP) is a simple and cheap measure that:
-
-    - offers additional technical pathways to let operators improve resiliency and security,
-    - lets them opt in to those measures as a reaction to an attack,
-    - does not preclude any lower-level IP-based resiliency approaches.
-
-</Callout>
-
-Your firewalls must expose **TCP/3569** for Node communication. If you are running an Access Node, you must also expose the GRPC port **9000**.
+If you are running an Access Node, you must also expose the GRPC port **9000** to your internal network traffic.  Port 9000 is not required for external ingress/egress.
 
 ![Flow Architecture](flow-architecture.png)
 

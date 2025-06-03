@@ -34,7 +34,7 @@ however more may be required under certain circumstances and network conditions.
 <Callout type="info">
 
 Because some transactions sent by the Machine Account are system critical, we recommend maintaining
-a balance sufficient to accomodate worst-case transaction submission numbers at all times.
+a balance sufficient to accommodate worst-case transaction submission numbers at all times. **See [here](./../node-ops/node-operation/monitoring-nodes.md#machine-account) for how to monitor.**
 
 </Callout>
 

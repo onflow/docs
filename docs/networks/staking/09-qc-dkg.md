@@ -2,20 +2,25 @@
 title: Quorum Certificate and Distributed Key Generation
 sidebar_label: QC and DKG
 description: How the Flow protocol manages the Epoch Setup Phase
+toc_max_heading_level: 4
 ---
 
-<Callout type="warning">
+:::warning
+
   If you haven't read the Intro to Flow Staking document and the Epoch protocol document,
   please read that first. Those documents provide an overview of epochs on Flow for
   all users and are necessary prerequisites to this document.
-</Callout>
-<Callout type="warning">
+
+:::
+
+:::warning
+
   This document assumes you have some technical knowledge about the Flow
   blockchain and programming environment.
-</Callout>
 
+:::
 
-# Epoch Setup Phase
+## Epoch Setup Phase
 
 **Purpose:** During the epoch setup phase, all nodes participating in the upcoming epoch
 must perform setup tasks in preparation for the upcoming epoch, including
@@ -24,7 +29,7 @@ the Collector Cluster Quorum Certificate Generation and Consensus Committe Distr
 **Duration:** The epoch setup phase begins right after the `EpochSetup` service event is emitted.
 It ends with the block where `EpochCommit` service emitted.
 
-# Machine Accounts
+## Machine Accounts
 
 The processes described in this document are fully automated.
 
@@ -47,7 +52,7 @@ also provides a method to create a machine account for an existing node.
 See the [Staking Collection Docs](./14-staking-collection.md#machine-account-support)
 for more information.
 
-# Collector Cluster Quorum Certificate Generation Protocol
+## Collector Cluster Quorum Certificate Generation Protocol
 
 The collector nodes are organized into clusters and must bootstrap
 the Hotstuff consensus algorithm for each cluster. To do this,
@@ -57,11 +62,11 @@ If 2/3 of the collectors in a cluster have voted with the same unique vote,
 then the cluster is considered complete.
 Once all clusters are complete, the QC is complete.
 
-## `FlowClusterQC` Transactions
+### `FlowClusterQC` Transactions
 
-### Create QC Voter Object
+#### Create QC Voter Object
 
-A node uses the [`getClusterQCVoter()`](https://github.com/onflow/flow-core-contracts/blob/master/contracts/epochs/FlowEpoch.cdc#L732)
+A node uses the [`getClusterQCVoter()`](https://github.com/onflow/flow-core-contracts/blob/master/contracts/epochs/FlowEpoch.cdc#L905)
 function in the `FlowEpoch` contract to create their Voter object and needs to provide
 a reference to their `FlowIDTableStaking.NodeStaker` object to prove they are the node owner.
 
@@ -76,7 +81,7 @@ If a user is not using the staking collection, they can use the **Create QC Vote
 transaction. This will only store the QC Voter object in the account that stores the `NodeStaker` object.
 It does not create a machine account or store it elsewhere, so it is not recommended to use. We encourage to use the staking collection instead.
 
-### Submit Vote
+#### Submit Vote
 
 During the Epoch Setup Phase, the node software should submit the votes for the QC generation
 automatically using the **Submit QC Vote** ([QC.02](../../build/core-contracts/07-epoch-contract-reference.md#quorum-certificate-transactions-and-scripts))
@@ -87,7 +92,7 @@ transaction with the following arguments.
 | **voteSignature**       | `String` | The signed message (signed with the node's staking key) |
 | **voteMessage**         | `String` | The raw message itself. |
 
-# Consensus Committee Distributed Key Generation Protocol (DKG)
+## Consensus Committee Distributed Key Generation Protocol (DKG)
 
 The Random Beacon Committee for the next Epoch (currently all consensus nodes)
 will run the DKG through a specialized smart contract, `FlowDKG`.
@@ -98,11 +103,11 @@ as their final submission.
 If `(# of consensus nodes-1)/2` consensus nodes submit the same key array,
 the DKG is considered to be complete.
 
-## `FlowDKG` Transactions
+### `FlowDKG` Transactions
 
-### Create DKG Participant Object
+#### Create DKG Participant Object
 
-A node uses the [`getDKGParticipant()`](https://github.com/onflow/flow-core-contracts/blob/master/contracts/epochs/FlowEpoch.cdc#L746)
+A node uses the [`getDKGParticipant()`](https://github.com/onflow/flow-core-contracts/blob/master/contracts/epochs/FlowEpoch.cdc#L919)
 function in the `FlowEpoch` contract to create their Voter object and needs to provide
 a reference to their `FlowIDTableStaking.NodeStaker` object to prove they are the node owner.
 
@@ -118,7 +123,7 @@ transaction. This will only store the DKG Participant object in the account that
 It does not create a machine account or store it elsewhere, so it is not recommended to use. 
 The staking collection is the recommended method.
 
-### Post Whiteboard Message
+#### Post Whiteboard Message
 
 During the Epoch Setup Phase, the node software should post whiteboard messages to the DKG
 automatically using the **Post Whiteboard Message** ([DKG.02](../../build/core-contracts/07-epoch-contract-reference.md#dkg-transactions-and-scripts))
@@ -128,7 +133,7 @@ transaction with the following arguments.
 |-------------------|----------|-------------|
 | **content**       | `String` | The content of the whiteboard message |
 
-### Send Final Submission
+#### Send Final Submission
 
 During the Epoch Setup Phase, the node software should send its final submission for the DKG
 automatically using the **Send Final Submission** ([DKG.03](../../build/core-contracts/07-epoch-contract-reference.md#dkg-transactions-and-scripts))
@@ -138,7 +143,7 @@ transaction with the following arguments.
 |--------------------|-------------|-------------|
 | **submission**     | `[String?]` | The final key vector submission for the DKG. |
 
-# Monitor Events and Query State from the QC and DKG Contracts
+## Monitor Events and Query State from the QC and DKG Contracts
 
 See the [QC and DKG events and scripts document](./10-qc-dkg-scripts-events.md) for information
 about the events that can be emitted by these contracts and scripts you can use to query information.

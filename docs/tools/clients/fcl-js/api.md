@@ -59,17 +59,21 @@ addStuff().then((d) => console.log(d)); // 13 (5 + 7 + 1)
 
 ### Common Configuration Keys
 
-| Name                              | Example                                                       | Description                                                                                                                                                                   |
-| --------------------------------- | ------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `accessNode.api` **(required)**   | `https://rest-testnet.onflow.org`                             | API URL for the Flow Blockchain Access Node you want to be communicating with. See all available access node endpoints [here](https://developers.onflow.org/http-api/).       |
-| `app.detail.title`                | `Cryptokitties`                                               | Your applications title, can be requested by wallets and other services.                                                                                                      |
-| `app.detail.icon`                 | `https://fcl-discovery.onflow.org/images/blocto.png`          | Url for your applications icon, can be requested by wallets and other services.                                                                                               |
-| `challenge.handshake`             | **DEPRECATED**                                                | Use `discovery.wallet` instead.                                                                                                                                               |
-| `discovery.authn.endpoint`        | `https://fcl-discovery.onflow.org/api/testnet/authn`          | Endpoint for alternative configurable Wallet Discovery mechanism. Read more on [discovery](#discovery)                                                                        |
-| `discovery.wallet` **(required)** | `https://fcl-discovery.onflow.org/testnet/authn`              | Points FCL at the Wallet or Wallet Discovery mechanism.                                                                                                                       |
-| `discovery.wallet.method`         | `IFRAME/RPC`, `POP/RPC`, `TAB/RPC`, `HTTP/POST`, or `EXT/RPC` | Describes which service strategy a wallet should use.                                                                                                                         |
-| `fcl.limit`                       | `100`                                                         | Specifies fallback compute limit if not provided in transaction. Provided as integer.                                                                                         |
-| `flow.network` **(recommended)**  | `testnet`                                                     | Used in conjunction with stored interactions and provides FCLCryptoContract address for `testnet` and `mainnet`. Possible values: `local`, `testnet`, `mainnet`. |
+| Name                                 | Example                                                       | Description                                                                                                                                                             |
+| ------------------------------------ | ------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `accessNode.api` **(required)**      | `https://rest-testnet.onflow.org`                             | API URL for the Flow Blockchain Access Node you want to be communicating with. See all available access node endpoints [here](https://developers.onflow.org/http-api/). |
+| `app.detail.title`                   | `Cryptokitties`                                               | Your applications title, can be requested by wallets and other services. Used by WalletConnect plugin & Wallet Discovery service.                                       |
+| `app.detail.icon`                    | `https://fcl-discovery.onflow.org/images/blocto.png`          | Url for your applications icon, can be requested by wallets and other services. Used by WalletConnect plugin & Wallet Discovery service.                                |
+| `app.detail.description`             | `Cryptokitties is a blockchain game`                          | Your applications description, can be requested by wallets and other services. Used by WalletConnect plugin & Wallet Discovery service.                                 |
+| `app.detail.url`                     | `https://cryptokitties.co`                                    | Your applications url, can be requested by wallets and other services. Used by WalletConnect plugin & Wallet Discovery service.                                         |
+| `challenge.handshake`                | **DEPRECATED**                                                | Use `discovery.wallet` instead.                                                                                                                                         |
+| `discovery.authn.endpoint`           | `https://fcl-discovery.onflow.org/api/testnet/authn`          | Endpoint for alternative configurable Wallet Discovery mechanism. Read more on [discovery](#discovery)                                                                  |
+| `discovery.wallet` **(required)**    | `https://fcl-discovery.onflow.org/testnet/authn`              | Points FCL at the Wallet or Wallet Discovery mechanism.                                                                                                                 |
+| `discovery.wallet.method`            | `IFRAME/RPC`, `POP/RPC`, `TAB/RPC`, `HTTP/POST`, or `EXT/RPC` | Describes which service strategy a wallet should use.                                                                                                                   |
+| `fcl.limit`                          | `100`                                                         | Specifies fallback compute limit if not provided in transaction. Provided as integer.                                                                                   |
+| `flow.network` **(recommended)**     | `testnet`                                                     | Used in conjunction with stored interactions and provides FCLCryptoContract address for `testnet` and `mainnet`. Possible values: `local`, `testnet`, `mainnet`.        |
+| `walletconnect.projectId`            | `YOUR_PROJECT_ID`                                             | Your app's WalletConnect project ID. See [WalletConnect Cloud](https://cloud.walletconnect.com/sign-in) to obtain a project ID for your application.                    |
+| `walletconnect.disableNotifications` | `false`                                                       | Optional flag to disable pending WalletConnect request notifications within the application's UI.                                                                       |
 
 ## Using Contracts in Scripts and Transactions
 
@@ -88,7 +92,7 @@ async function myScript() {
       fcl.script`
       import FungibleToken from 0xFungibleToken // will be replaced with 0xf233dcee88fe0abe because of the configuration
 
-      pub fun main() { /* Rest of the script goes here */ }
+      access(all) fun main() { /* Rest of the script goes here */ }
     `,
     ])
     .then(fcl.decode);
@@ -115,50 +119,76 @@ import * as fcl from '@onflow/fcl';
 fcl
   .config()
   .put('flow.network', 'testnet')
+  .put('walletconnect.projectId', 'YOUR_PROJECT_ID')
   .put('accessNode.api', 'https://rest-testnet.onflow.org')
   .put('discovery.wallet', 'https://fcl-discovery.onflow.org/testnet/authn')
   .put('app.detail.title', 'Test Harness')
   .put('app.detail.icon', 'https://i.imgur.com/r23Zhvu.png')
+  .put('app.detail.description', 'A test harness for FCL')
+  .put('app.detail.url', 'https://myapp.com')
   .put('service.OpenID.scopes', 'email email_verified name zoneinfo')
   .put('0xFlowToken', '0x7e60df042a9c0868');
 ```
 
-### Using Flow.json
+### Using `flow.json` for Contract Imports
 
-A simpler way to import contracts in scripts and transactions is to use the `config.load` method to ingest your contracts from your `flow.json` file. This keeps the import syntax unified across tools and lets FCL figure out which address to use for what network based on the network provided in config. To use `config.load` you must first import your `flow.json` file and then pass it to `config.load` as a parameter.
+A simpler and more flexible way to manage contract imports in scripts and transactions is by using the `config.load` method in FCL. This lets you load contract configurations from a `flow.json` file, keeping your import syntax clean and allowing FCL to pick the correct contract addresses based on the network you're using.
+
+### Setting Up
+
+#### 1. Define Your Contracts in `flow.json`
+
+Here’s an example of a `flow.json` file with aliases for multiple networks:
+
+```json
+{
+  "contracts": {
+    "HelloWorld": {
+      "source": "./cadence/contracts/HelloWorld.cdc",
+      "aliases": {
+        "testnet": "0x1cf0e2f2f715450",
+        "mainnet": "0xf8d6e0586b0a20c7"
+      }
+    }
+  }
+}
+```
+
+- **`source`**: Points to the contract file in your project.
+- **`aliases`**: Maps each network to the correct contract address.
+
+#### 2. Configure FCL
+
+Load the `flow.json` file and set up FCL to use it:
 
 ```javascript
 import { config } from '@onflow/fcl';
 import flowJSON from '../flow.json';
 
 config({
-  'flow.network': 'testnet',
-  'accessNode.api': 'https://rest-testnet.onflow.org',
-  'discovery.wallet': `https://fcl-discovery.onflow.org/testnet/authn`,
+  'flow.network': 'testnet', // Choose your network, e.g., testnet or mainnet
+  'accessNode.api': 'https://rest-testnet.onflow.org', // Access node for the network
+  'discovery.wallet': `https://fcl-discovery.onflow.org/testnet/authn`, // Wallet discovery
 }).load({ flowJSON });
 ```
 
-Let's say your `flow.json` file looks like this:
+With this setup, FCL will automatically use the correct contract address based on the selected network (e.g., `testnet` or `mainnet`).
 
-```
-{
-  "contracts": {
-		"HelloWorld": "cadence/contracts/HelloWorld.cdc"
-	}
+#### 3. Use Contract Names in Scripts and Transactions
+
+After setting up `flow.json`, you can import contracts by name in your Cadence scripts or transactions:
+
+```cadence
+import "HelloWorld"
+
+access(all) fun main(): String {
+    return HelloWorld.sayHello()
 }
 ```
 
-Then in your scripts and transactions, all you have to do is:
+FCL replaces `"HelloWorld"` with the correct address from the `flow.json` configuration.
 
-```
-import "HelloWorld"
-```
-
-FCL will automatically replace the contract name with the address for the network you are using.
-
-> Note: never put private keys in your `flow.json`. You should use the [key/location syntax](../../../tools/flow-cli/flow.json/security.md) to separate your keys into a separate git ignored file.
-
----
+> **Note**: Don’t store private keys in your `flow.json`. Instead, use the [key/location syntax](../../../tools/flow-cli/flow.json/security.md) to keep sensitive keys in a separate, `.gitignore`-protected file.
 
 ## Wallet Interactions
 
@@ -290,8 +320,8 @@ const txId = await fcl.mutate({
     import Profile from 0xba1132bc08f82fe2
     
     transaction(name: String) {
-      prepare(account: AuthAccount) {
-        account.borrow<&{Profile.Owner}>(from: Profile.privatePath)!.setName(name)
+      prepare(account: auth(BorrowValue) &Account) {
+        account.storage.borrow<&{Profile.Owner}>(from: Profile.privatePath)!.setName(name)
       }
     }
   `,
@@ -403,7 +433,7 @@ A method to use allowing the user to personally sign data via FCL Compatible Wal
 
 | Type    | Description                                                                                                                                                                               |
 | ------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `Array` | An Array of [CompositeSignatures](https://github.com/onflow/flow-js-sdk/blob/master/packages/fcl/src/wallet-provider-spec/draft-v2.md#compositesignature): {`addr`, `keyId`, `signature`} |
+| `Array` | An Array of [CompositeSignatures](https://github.com/onflow/fcl-js/blob/master/packages/fcl-core/src/wallet-provider-spec/draft-v2.md#compositesignature): {`addr`, `keyId`, `signature`} |
 
 #### Usage
 
@@ -428,7 +458,7 @@ export const signMessage = async () => {
 
 Discovery abstracts away code so that developers don't have to deal with the discovery of Flow compatible wallets, integration, or authentication. Using `discovery` from FCL allows dapps to list and authenticate with wallets while having full control over the UI. Common use cases for this are login or registration pages.
 
-(Alternatively, if you don't need control over your UI you can continue to use the `discovery.wallet` config value documented in the [Quickstart](../../../build/guides/flow-app-quickstart.md) for the simplest configuration.)
+(Alternatively, if you don't need control over your UI you can continue to use the `discovery.wallet` config value documented in the [Quickstart](../../../build/getting-started/fcl-quickstart.md) for the simplest configuration.)
 
 > ⚠️**The following methods can only be used in web browsers.**
 
@@ -480,6 +510,8 @@ function Component() {
 
 By default, limited functionality services or services that require developer registration, like Ledger or Dapper Wallet, require apps to opt-in in order to display to users. To enable opt-in services in an application, use the `discovery.authn.include` property in your configuration with a value of an array of services you'd like your app to opt-in to displaying for users.
 
+Additionally, you can use the `discovery.authn.exclude` property to exclude any services from being displayed to users.
+
 ```javascript
 import { config } from '@onflow/fcl';
 
@@ -487,6 +519,7 @@ config({
   'discovery.authn.endpoint':
     'https://fcl-discovery.onflow.org/api/testnet/authn', // Endpoint set to Testnet
   'discovery.authn.include': ['0x9d2e44203cb13051'], // Ledger wallet address on Testnet set to be included
+  'discovery.authn.exclude': ['0x123456789abcdef01'], // Example of excluding a wallet by address
 });
 ```
 
@@ -497,7 +530,7 @@ config({
 | `Dapper Wallet` | 0x82ec283f88a62e65 | 0xead892083b3e2c6c |
 | `Ledger`        | 0x9d2e44203cb13051 | 0xe5cd26afebe62781 |
 
-For more details on wallets, view the [service list here](https://github.com/onflow/fcl-discovery/blob/master/data/services.json).
+For more details on wallets, view the [service list here](https://github.com/onflow/fcl-discovery/blob/87e172db85d185882d9fde007c95f08bc2a1cccb/data/services.json).
 
 ---
 
@@ -515,7 +548,7 @@ The callback sent to `subscribe` will be called with a list of `authn` services.
 
 > 📣 **These methods can be used in browsers and NodeJS.**
 
-These methods allows dapps to interact directly with the Flow blockchain via a set of functions that currently use the [Access Node API](../../../networks/node-ops/access-onchain-data/access-nodes/accessing-data/access-api.md).
+These methods allows dapps to interact directly with the Flow blockchain via a set of functions that currently use the [Access Node API](../../../networks/access-onchain-data/index.md).
 
 ---
 
@@ -550,7 +583,7 @@ import * as fcl from '@onflow/fcl';
 
 const result = await fcl.query({
   cadence: `
-    pub fun main(a: Int, b: Int, addr: Address): Int {
+    access(all) fun main(a: Int, b: Int, addr: Address): Int {
       log(addr)
       return a + b
     }
@@ -580,12 +613,12 @@ Allows you to submit transactions to the blockchain to potentially mutate the st
 
 _Pass in the following as a single object with the following keys. All keys are optional unless otherwise stated._
 
-| Key        | Type                                             | Description                                                                                                                                                                          |
-| ---------- | ------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `cadence`  | string **(required)**                            | A valid cadence transaction.                                                                                                                                                         |
-| `args`     | [ArgumentFunction](#argumentfunction)            | Any arguments to the script if needed should be supplied via a function that returns an array of arguments.                                                                          |
-| `limit`    | number                                           | Compute (Gas) limit for query. Read the [documentation about computation cost](../flow-go-sdk/index.mdx#gas-limit) for information about how computation cost is calculated on Flow. |
-| `proposer` | [AuthorizationFunction](#authorization-function) | The authorization function that returns a valid [AuthorizationObject](#authorizationobject) for the [proposer role](#TransactionRolesObject).                                        |
+| Key        | Type                                             | Description                                                                                                                                                                         |
+| ---------- | ------------------------------------------------ | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `cadence`  | string **(required)**                            | A valid cadence transaction.                                                                                                                                                        |
+| `args`     | [ArgumentFunction](#argumentfunction)            | Any arguments to the script if needed should be supplied via a function that returns an array of arguments.                                                                         |
+| `limit`    | number                                           | Compute (Gas) limit for query. Read the [documentation about computation cost](../flow-go-sdk/index.md#gas-limit) for information about how computation cost is calculated on Flow. |
+| `proposer` | [AuthorizationFunction](#authorization-function) | The authorization function that returns a valid [AuthorizationObject](#authorizationobject) for the [proposer role](#transactionrolesobject).                                       |
 
 #### Returns
 
@@ -605,8 +638,8 @@ const txId = await fcl.mutate({
     import Profile from 0xba1132bc08f82fe2
     
     transaction(name: String) {
-      prepare(account: AuthAccount) {
-        account.borrow<&{Profile.Owner}>(from: Profile.privatePath)!.setName(name)
+      prepare(account: auth(BorrowValue) &Account) {
+        account.storage.borrow<&{Profile.Owner}>(from: Profile.privatePath)!.setName(name)
       }
     }
   `,
@@ -678,7 +711,7 @@ const isValid = await fcl.AppUtils.verifyUserSignatures(
 ### `AppUtils.verifyAccountProof`
 
 A method allowing applications to cryptographically prove that a user controls an on-chain account. During user authentication, some FCL compatible wallets will choose to support the FCL `account-proof` service. If a wallet chooses to support this service, and the user approves the signing of message data, they will return `account-proof` data and a signature(s) that can be used to prove a user controls an on-chain account.
-See [proving-authentication](https://github.com/onflow/fcl-js/blob/master/docs/reference/proving-authentication.mdx) documentaion for more details.
+See [proving-authentication](https://github.com/onflow/fcl-js/blob/master/docs/reference/proving-authentication.mdx) documentation for more details.
 
 ⚠️ `fcl.config.flow.network` or options override is required to use this api. See [FCL Configuration](#configuration).
 
@@ -780,7 +813,7 @@ Decodes the response from `fcl.send()` into the appropriate JSON representation 
 
 #### Note
 
-📣 To define your own decoder, see [`tutorial`](https://github.com/onflow/flow-js-sdk/tree/master/packages/sdk/src/decode).
+📣 To define your own decoder, see [`tutorial`](https://github.com/onflow/fcl-js/tree/master/packages/sdk/src/decode).
 
 #### Arguments
 
@@ -802,7 +835,7 @@ import * as fcl from '@onflow/fcl';
 // simple script to add 2 numbers
 const response = await fcl.send([
   fcl.script`
-        pub fun main(int1: Int, int2: Int): Int {
+        access(all) fun main(int1: Int, int2: Int): Int {
             return int1 + int2
         }
     `,
@@ -1125,7 +1158,7 @@ A builder function that returns a [transaction object](#transactionobject) once 
 
 ⚠️The transactionID provided must be from the current spork.
 
-📣 Considering using [`fcl.tx(id).onceSealed()`](#tx) instead of calling this method directly.
+📣 Considering using [`fcl.tx(id).onceExecuted()`](#tx) instead of calling this method directly.
 
 #### Arguments
 
@@ -1159,23 +1192,17 @@ const tx = await fcl
 
 ### `subscribeEvents`
 
-<Callout type="warning">
-The `subscribeEvents` feature is only available in the latest alpha release of FCL. To use it, install `@onflow/fcl@alpha`.
+<Callout type="info">
+The subscribeEvents SDK builder is for more advanced use cases where you wish to directly specify a starting block to listen for events. For most use cases, consider using the pre-built interaction [`fcl.events(eventTypes)`](#events).
 </Callout>
 
 A build that returns a [event stream connection](#eventstream) once decoded. It will establish a WebSocket connection to the Access Node and subscribe to events with the given parameters.
 
 #### Arguments
 
-| Name                     | Type                      | Description                                                                                                             |
-| ------------------------ | ------------------------- | ----------------------------------------------------------------------------------------------------------------------- |
-| `opts`                   | `Object`                  | An object with the following keys:                                                                                      |
-| `opts.startBlockId`      | string &#124; undefined   | The block ID to start listening for events. Example: `9dda5f281897389b99f103a1c6b180eec9dac870de846449a302103ce38453f3` |
-| `opts.startHeight`       | number &#124; undefined   | The block height to start listening for events. Example: `123`                                                          |
-| `opts.eventTypes`        | string[] &#124; undefined | The event types to listen for. Example: `A.7e60df042a9c0868.FlowToken.TokensWithdrawn`                                  |
-| `opts.addresses`         | string[] &#124; undefined | The addresses to listen for. Example: `0x7e60df042a9c0868`                                                              |
-| `opts.contracts`         | string[] &#124; undefined | The contracts to listen for. Example: `0x7e60df042a9c0868`                                                              |
-| `opts.heartbeatInterval` | number &#124; undefined   | The interval in milliseconds to send a heartbeat to the Access Node. Example: `10000`                                   |
+| Name          | Type                        | Description                       |
+| ------------- | --------------------------- | --------------------------------- |
+| `eventFilter` | [EventFilter](#eventfilter) | The event filter to subscribe to. |
 
 #### Returns after decoding
 
@@ -1274,7 +1301,7 @@ import * as fcl from '@onflow/fcl';
 await fcl
   .send([
     fcl.script`
-      pub fun main(a: Int, b: Int): Int {
+      access(all) fun main(a: Int, b: Int): Int {
         return a + b
       }
     `,
@@ -1312,7 +1339,7 @@ import * as fcl from '@onflow/fcl';
 await fcl
   .send([
     fcl.script`
-      pub fun main(a: Int, b: Int): Int {
+      access(all) fun main(a: Int, b: Int): Int {
         return a + b
       }
     `,
@@ -1354,7 +1381,7 @@ A template builder to use a Cadence script for an interaction.
 import * as fcl from '@onflow/fcl';
 
 const code = `
-  pub fun main(): Int {
+  access(all) fun main(): Int {
     return 5 + 4
   }
 `;
@@ -1390,7 +1417,7 @@ A template builder to use a Cadence transaction for an interaction.
 import * as fcl from '@onflow/fcl';
 
 const code = `
-  pub fun main(): Int {
+  access(all) fun main(): Int {
     return 5 + 4
   }
 `;
@@ -1486,12 +1513,22 @@ const latestBlock = await fcl.latestBlock();
 
 ---
 
-## Transaction Status Utility
+## Real-Time Data
+
+Streaming data is available through the WebSocket Streaming API provided by the HTTP Access API. It allows developers to subscribe to specific topics and receive real-time updates as they occur on the Flow blockchain.
+
+The following topics can be subscribed to:
+
+- `events`: Subscribe to events emitted by contracts.
+- `blocks`: Subscribe to new blocks added to the chain.
+- `block_headers`: Subscribe to new block headers added to the chain.
+- `block_digests`: Subscribe to block digests added to the chain.
+- `transaction_statuses`: Subscribe to transaction statuses.
+- `account_statuses`: Subscribe to account statuses.
 
 ### `tx`
 
-A utility function that lets you set the transaction to get subsequent status updates (via polling) and the finalized result once available.
-⚠️The poll rate is set at `2500ms` and will update at that interval until transaction is sealed.
+A utility function that lets you set the transaction to get subsequent status updates and the finalized result once available.
 
 #### Arguments
 
@@ -1520,21 +1557,15 @@ useEffect(() => fcl.tx(txId).subscribe(setTxStatus));
 
 ---
 
-## Event Polling Utility
-
 ### `events`
 
-A utility function that lets you set the transaction to get subsequent status updates (via polling) and the finalized result once available.
-⚠️The poll rate is set at `10000ms` and will update at that interval for getting new events.
-
-Note:
-⚠️`fcl.eventPollRate` value **could** be set to change the polling rate of all events subcribers, check [FCL Configuration](#configuration) for guide.
+A utility function that lets you set the transaction to get subsequent status updates and the finalized result once available.
 
 #### Arguments
 
-| Name        | Type   | Description         |
-| ----------- | ------ | ------------------- |
-| `eventName` | string | A valid event name. |
+| Name                | Type                                      | Description                                      |
+| ------------------- | ----------------------------------------- | ------------------------------------------------ |
+| `eventNameOrFilter` | string &#124; [EventFilter](#eventfilter) | The name of the event or an event filter object. |
 
 #### Returns
 
@@ -1551,6 +1582,100 @@ fcl.events(eventName).subscribe((event) => {
   console.log(event);
 });
 ```
+
+---
+
+### `subscribe`
+
+A utility function used for subscribing to real-time data from the WebSocket Streaming API. Data returned will be automatically decoded via the [`decode`](#decode) function.
+
+#### Arguments
+
+| Name     | Type                                        | Description                                                                                        |
+| -------- | ------------------------------------------- | -------------------------------------------------------------------------------------------------- |
+| `params` | [`SubscriptionParams`](#subscriptionparams) | An object containing the subscription topic, arguments, and callbacks. See below for more details. |
+| `opts`   | object                                      | _(Optional)_ Additional options for the subscription. See below for more details.                  |
+
+`params` (first parameter):
+
+See [`SubscriptionParams`](#subscriptionparams) for more details.
+
+Additional Options (second parameter):
+
+| Name        | Type   | Description                                                               |
+| ----------- | ------ | ------------------------------------------------------------------------- |
+| `node`      | string | _(Optional)_ Custom node endpoint to be used for the subscription.        |
+| `transport` | object | _(Optional)_ Custom transport implementation for handling the connection. |
+
+#### Returns
+
+| Type                      | Description                                                                                    |
+| ------------------------- | ---------------------------------------------------------------------------------------------- |
+| SdkTransport.Subscription | A subscription object that allows you to manage the subscription (e.g., to unsubscribe later). |
+
+#### Usage
+
+```javascript
+import * as fcl from '@onflow/fcl';
+import { SubscriptionTopic } from '@onflow/sdk';
+
+const subscription = fcl.subscribe({
+  topic: SubscriptionTopic.EVENTS,
+  args: {
+    type: 'A.7e60df042a9c0868.FlowToken.TokensWithdrawn',
+  },
+  onData: (data) => console.log('Received event data:', data),
+  onError: (error) => console.error('Subscription error:', error),
+});
+
+// Later, to unsubscribe:
+subscription.unsubscribe();
+```
+
+---
+
+### `subscribeRaw`
+
+A utility function used for subscribing to raw data from the WebSocket Streaming API. Data returned will not be decoded via `fcl.decode` and developers are responsible for handling the raw data returned.
+
+#### Arguments
+
+| Name      | Type                                                               | Description                                                                                                                        |
+| --------- | ------------------------------------------------------------------ | ---------------------------------------------------------------------------------------------------------------------------------- |
+| `topic`   | `SubscriptionTopic`                                                | The subscription topic. Valid values include: `events`, `blocks`, `transactions`, and `collections`.                               |
+| `args`    | `RawSubscriptionArgs<T extends SubscriptionTopic>`                 | An array or object of parameters specific to the topic. For example, when subscribing to events, these might be event identifiers. |
+| `onData`  | `(data: RawSubscriptionData<T extends SubscriptionTopic>) => void` | A callback function that is called with the decoded data whenever a new message is received.                                       |
+| `onError` | (error: Error) => void                                             | A callback function that is called if an error occurs during the subscription.                                                     |
+
+Additional Options (second parameter):
+
+| Name        | Type   | Description                                                               |
+| ----------- | ------ | ------------------------------------------------------------------------- |
+| `node`      | string | _(Optional)_ Custom node endpoint to be used for the subscription.        |
+| `transport` | object | _(Optional)_ Custom transport implementation for handling the connection. |
+
+#### Returns
+
+#### Usage
+
+```javascript
+import * as fcl from '@onflow/fcl';
+import { SubscriptionTopic } from '@onflow/sdk';
+
+const subscription = fcl.subscribeRaw({
+  topic: SubscriptionTopic.EVENTS,
+  args: {
+    type: 'A.7e60df042a9c0868.FlowToken.TokensWithdrawn',
+  },
+  onData: (data) => console.log('Received event data:', data),
+  onError: (error) => console.error('Subscription error:', error),
+});
+
+// Later, to unsubscribe:
+subscription.unsubscribe();
+```
+
+---
 
 #### Examples
 
@@ -1570,7 +1695,7 @@ Builders are modular functions that can be coupled together with `fcl.send([...b
 
 ### `Interaction`
 
-An interaction is an object containing the information to perform an action on chain.This object is populated through builders and converted into the approriate access node API call. See the interaction object [here](https://github.com/onflow/flow-js-sdk/blob/master/packages/sdk/src/interaction/interaction.js). A 'partial' interaction is an interaction object that does not have sufficient information to the intended on-chain action. Multiple partial interactions (through builders) can be coupled to create a complete interaction.
+An interaction is an object containing the information to perform an action on chain.This object is populated through builders and converted into the approriate access node API call. See the interaction object [here](https://github.com/onflow/fcl-js/blob/master/packages/sdk/src/interaction/interaction.ts). A 'partial' interaction is an interaction object that does not have sufficient information to the intended on-chain action. Multiple partial interactions (through builders) can be coupled to create a complete interaction.
 
 ---
 
@@ -1584,7 +1709,7 @@ An interaction is an object containing the information to perform an action on c
 | `f_type`    | string              | `'USER'`  | A type identifier used internally by FCL.                                                                                                                                                                                                                                                      |
 | `f_vsn`     | string              | `'1.0.0'` | FCL protocol version.                                                                                                                                                                                                                                                                          |
 | `loggedIn`  | boolean             | `null`    | If the user is logged in.                                                                                                                                                                                                                                                                      |
-| `services`  | [ServiceObject]     | `[]`      | A list of trusted services that express ways of interacting with the current user's identity, including means to further discovery, [authentication, authorization](https://gist.github.com/orodio/a74293f65e83145ec8b968294808cf35#you-know-who-the-user-is), or other kinds of interactions. |
+| `services`  | `[ServiceObject]`   | `[]`      | A list of trusted services that express ways of interacting with the current user's identity, including means to further discovery, [authentication, authorization](https://gist.github.com/orodio/a74293f65e83145ec8b968294808cf35#you-know-who-the-user-is), or other kinds of interactions. |
 
 ---
 
@@ -1709,7 +1834,7 @@ const authorizationFunction = async (account) => {
   }
 ```
 
-- [Detailed explanation](https://github.com/onflow/flow-js-sdk/blob/master/packages/fcl/src/wallet-provider-spec/authorization-function.md)
+- [Detailed explanation](https://github.com/onflow/fcl-js/blob/master/packages/fcl-core/src/wallet-provider-spec/authorization-function.md)
 
 ---
 
@@ -1777,7 +1902,7 @@ const signingFunction = ({
 
 #### Examples:
 
-- [Detailed explanation](https://github.com/onflow/flow-js-sdk/blob/master/packages/fcl/src/wallet-provider-spec/authorization-function.md)
+- [Detailed explanation](https://github.com/onflow/fcl-js/blob/master/packages/fcl-core/src/wallet-provider-spec/authorization-function.md)
 
 ---
 
@@ -1787,10 +1912,10 @@ const signingFunction = ({
 | -------------------- | ------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | `args`               | object                                | A list of encoded Cadence values passed into this transaction. These have not been decoded by the JS-SDK.                                                                    |
 | `authorizers`        | [\[Address\]](#address)               | A list of the accounts that are authorizing this transaction to mutate to their on-chain account state. [See more here](../../../build/basics/transactions.md#signer-roles). |
-| `envelopeSignatures` | [\[SignableObject\]](#signableobject) | A list of signatures generated by the payer role. [See more here](../../../build/basics/transactions.md#anatomy-of-a-transaction).                                           |
+| `envelopeSignatures` | [\[SignableObject\]](#signableobject) | A list of signatures generated by the payer role. [See more here](../../../build/basics/transactions.md#signing-a-transaction).                                              |
 | `gasLimit`           | number                                | The maximum number of computational units that can be used to execute this transaction. [See more here](../../../build/basics/fees.md).                                      |
 | `payer`              | [Address](#address)                   | The account that pays the fee for this transaction. [See more here](../../../build/basics/transactions.md#signer-roles).                                                     |
-| `payloadSignatures`  | [\[SignableObject\]](#signableobject) | A list of signatures generated by the proposer and authorizer roles. [See more here](../../../build/basics/transactions.md#anatomy-of-a-transaction).                        |
+| `payloadSignatures`  | [\[SignableObject\]](#signableobject) | A list of signatures generated by the proposer and authorizer roles. [See more here](../../../build/basics/transactions.md#signing-a-transaction).                           |
 | `proposalKey`        | [\[ProposalKey\]](#proposalkeyobject) | The account key used to propose this transaction                                                                                                                             |
 | `referenceBlockId`   | string                                | A reference to the block used to calculate the expiry of this transaction.                                                                                                   |
 | `script`             | string                                | The UTF-8 encoded Cadence source code that defines the execution logic for this transaction                                                                                  |
@@ -1881,14 +2006,24 @@ The subset of the [BlockObject](#blockobject) containing only the header values 
 | `height`    | number     | The height of the block.      |
 | `timestamp` | object     | Contains time related fields. |
 
+### `BlockDigestObject`
+
+A lightweight subset of the [BlockObject](#blockobject) containing only the id, height, and timestamp of a block.
+
+| Key         | Value Type | Description                 |
+| ----------- | ---------- | --------------------------- |
+| `id`        | string     | The id of the block.        |
+| `height`    | number     | The height of the block.    |
+| `timestamp` | string     | The timestamp of the block. |
+
 ### `CollectionGuaranteeObject`
 
 A collection that has been included in a block.
 
-| Key            | Value Type        | Description          |
-| -------------- | ----------------- | -------------------- |
-| `collectionId` | string            | The id of the block. |
-| `signatures`   | [SignatureObject] | All signatures.      |
+| Key            | Value Type                          | Description          |
+| -------------- | ----------------------------------- | -------------------- |
+| `collectionId` | string                              | The id of the block. |
+| `signatures`   | [SignatureObject](#SignatureObject) | All signatures.      |
 
 ### `CollectionObject`
 
@@ -1901,7 +2036,7 @@ A collection is a list of transactions that are contained in the same block.
 
 ### `ResponseObject`
 
-The format of all responses in FCL returned from `fcl.send(...)`. For full details on the values and descriptions of the keys, view [here](https://github.com/onflow/flow-js-sdk/tree/master/packages/sdk/src/response).
+The format of all responses in FCL returned from `fcl.send(...)`. For full details on the values and descriptions of the keys, view [here](https://github.com/onflow/fcl-js/tree/master/packages/sdk/src/response).
 
 | Key                 |
 | ------------------- |
@@ -1929,6 +2064,20 @@ The format of all responses in FCL returned from `fcl.send(...)`. For full detai
 | `transactionIndex` | number                  | Used to prevent replay attacks.                                                                       |
 | `eventIndex`       | number                  | Used to prevent replay attacks.                                                                       |
 | `data`             | any                     | The data emitted from the event.                                                                      |
+
+### `Account Status Event Object`
+
+| Key                | Value Type              | Description                                                                                           |
+| ------------------ | ----------------------- | ----------------------------------------------------------------------------------------------------- |
+| `blockId`          | string                  | ID of the block that contains the event.                                                              |
+| `blockHeight`      | number                  | Height of the block that contains the event.                                                          |
+| `blockTimestamp`   | string                  | The timestamp of when the block was sealed in a `DateString` format. eg. `'2021-06-25T13:42:04.227Z'` |
+| `type`             | [EventName](#eventname) | A string containing the event name.                                                                   |
+| `transactionId`    | string                  | Can be used to query transaction information, eg. via a Flow block explorer.                          |
+| `transactionIndex` | number                  | Used to prevent replay attacks.                                                                       |
+| `eventIndex`       | number                  | Used to prevent replay attacks.                                                                       |
+| `data`             | any                     | The data emitted from the event.                                                                      |
+| `accountAddress`   | [Address](#address)     | The address of the account where the status change occurred.                                          |
 
 ### `Transaction Statuses`
 
@@ -1983,6 +2132,19 @@ FCL arguments must specify one of the following support types for each value pas
 | `Path`       | `fcl.arg({ domain: "public", identifier: "flowTokenVault" }, t.Path)`                                                |
 
 ---
+
+### `EventFilter`
+
+An object that contains the parameters to filter events, used for event streaming in the [`fcl.events`](#events) function.
+
+| Name                     | Value Type                | Description                                                                                                             |
+| ------------------------ | ------------------------- | ----------------------------------------------------------------------------------------------------------------------- |
+| `startBlockId`           | string &#124; undefined   | The block ID to start listening for events. Example: `9dda5f281897389b99f103a1c6b180eec9dac870de846449a302103ce38453f3` |
+| `startHeight`            | number &#124; undefined   | The block height to start listening for events. Example: `123`                                                          |
+| `eventTypes`             | string[] &#124; undefined | The event types to listen for. Example: `A.7e60df042a9c0868.FlowToken.TokensWithdrawn`                                  |
+| `addresses`              | string[] &#124; undefined | The addresses to listen for. Example: `0x7e60df042a9c0868`                                                              |
+| `contracts`              | string[] &#124; undefined | The contracts to listen for. Example: `0x7e60df042a9c0868`                                                              |
+| `opts.heartbeatInterval` | number &#124; undefined   | The interval in milliseconds to send a heartbeat to the Access Node. Example: `10000`                                   |
 
 ### `StreamConnection`
 
@@ -2075,4 +2237,419 @@ export interface BlockHeartbeat {
 import { BlockHeartbeat } from "@onflow/typedefs"
 
 const heartbeat: BlockHeartbeat = ...
+```
+
+### `SignatureObject`
+
+Signature objects are used to represent a signature for a particular message as well as the account and keyId which signed for this message.
+
+| Key         | Value Type          | Description                                                                                  |
+| ----------- | ------------------- | -------------------------------------------------------------------------------------------- |
+| `addr`      | [Address](#address) | the address of the account which this signature has been generated for                       |
+| `keyId`     | number              | The index of the key to use during authorization. (Multiple keys on an account is possible). |
+| `signature` | string              | a hexidecimal-encoded string representation of the generated signature                       |
+
+### `SubscriptionParams`
+
+```ts
+import { SubscriptionParams } from '@onflow/typedefs';
+```
+
+An object containing the subscription topic, arguments, and callbacks. The `SubscriptionParams` type is a generic type that takes a `SubscriptionTopic` as a parameter.
+
+```ts
+interface SubscriptionParams<T extends SubscriptionTopic> {
+  topic: T;
+  args: SubscriptionArgs<T>;
+  onData: (data: SubscriptionData<T>) => void;
+  onError: (error: Error) => void;
+}
+```
+
+| Key       | Value Type                                | Description                                                                           |
+| --------- | ----------------------------------------- | ------------------------------------------------------------------------------------- |
+| `topic`   | [`SubscriptionTopic`](#subscriptiontopic) | The topic to subscribe to. This determines the type of data that will be received.    |
+| `args`    | [`SubscriptionArgs`](#subscriptionargs)   | The arguments specific to the topic. This may include filters or other parameters.    |
+| `onData`  | function                                  | A callback function that will be called with the data received from the subscription. |
+| `onError` | function                                  | A callback function that will be called if an error occurs during the subscription.   |
+
+### `SubscriptionTopic`
+
+Import:
+
+```ts
+import { SubscriptionTopic } from '@onflow/typedefs';
+```
+
+The `SubscriptionTopic` is an enum that defines the different topics that can be subscribed to. Each topic corresponds to a specific type of data that can be received from the subscription.
+
+The available topics are:
+
+```ts
+enum SubscriptionTopic {
+  BLOCKS = 'blocks',
+  BLOCK_HEADERS = 'block_headers',
+  BLOCK_DIGESTS = 'block_digests',
+  ACCOUNT_STATUSES = 'account_statuses',
+  TRANSACTION_STATUSES = 'transaction_statuses',
+  EVENTS = 'events',
+}
+```
+
+### `SubscriptionArgs`
+
+```ts
+import { type SubscriptionArgs } from '@onflow/typedefs';
+```
+
+Type definition:
+
+```ts
+type SubscriptionArgs<T extends SubscriptionTopic> = {
+  [K in T]: K extends 'blocks' | 'block_headers' | 'block_digests'
+    ?
+        | BlockSubscriptionAtLatestArgs
+        | BlockSubscriptionAtIdArgs
+        | BlockSubscriptionAtHeightArgs
+    : K extends 'account_statuses'
+    ? AccountStatusSubscriptionArgs
+    : K extends 'transaction_statuses'
+    ? TransactionStatusSubscriptionArgs
+    : K extends 'events'
+    ? EventSubscriptionArgs
+    : never;
+}[T];
+```
+
+An array or object of parameters specific to the topic. For example, when subscribing to events, these might be event identifiers.
+
+Usage:
+
+```ts
+const args: SubscriptionArgs<SubscriptionTopic.EVENTS> = {
+  eventTypes: ['A.7e60df042a9c0868.FlowToken.TokensWithdrawn'],
+  addresses: ['0x7e60df042a9c0868'],
+};
+```
+
+#### Blocks, Block Headers, Block Digests
+
+_Applies to topics: `SubscriptionTopic.BLOCKS`, `SubscriptionTopic.BLOCK_HEADERS`, `SubscriptionTopic.BLOCK_DIGESTS`_
+
+Start at the latest block:
+
+```ts
+// Internal type, not exported
+type BlockSubscriptionAtLatestArgs = {
+  blockStatus: 'finalized' | 'sealed';
+};
+```
+
+Start at a specific block ID:
+
+```ts
+// Internal type, not exported
+type BlockSubscriptionAtIdArgs = {
+  blockStatus: 'finalized' | 'sealed';
+  startBlockId: string;
+};
+```
+
+Start at a specific block height:
+
+```ts
+// Internal type, not exported
+type BlockSubscriptionAtHeightArgs = {
+  blockStatus: 'finalized' | 'sealed';
+  startBlockHeight: number;
+};
+```
+
+#### Account Statuses
+
+_Applies to topic: `SubscriptionTopic.ACCOUNT_STATUSES`_
+
+```ts
+// Internal type, not exported
+type AccountStatusSubscriptionArgs = {
+  startBlockId?: string;
+  startBlockHeight?: number;
+  eventTypes?: string[];
+  addresses?: string[];
+  accountAddresses?: string[];
+};
+```
+
+#### Transaction Statuses
+
+_Applies to topic: `SubscriptionTopic.TRANSACTION_STATUSES`_
+
+```ts
+// Internal type, not exported
+type TransactionStatusSubscriptionArgs = {
+  transactionId: string;
+};
+```
+
+#### Events
+
+_Applies to topic: `SubscriptionTopic.EVENTS`_
+
+Type definition:
+
+```ts
+// Internal type, not exported
+type EventSubscriptionArgs = {
+  startBlockId?: string;
+  startBlockHeight?: number;
+  eventTypes?: string[];
+  addresses?: string[];
+  contracts?: string[];
+};
+```
+
+### `SubscriptionData`
+
+**Import:**
+
+```ts
+import { type SubscriptionData } from '@onflow/typedefs';
+```
+
+The data returned by the subscription. This will vary depending on the topic.
+
+This is a generic type that takes a `SubscriptionTopic` as a parameter.
+
+```ts
+type SubscriptionData<T extends SubscriptionTopic> = {
+  [K in T]: K extends 'blocks'
+    ? Block
+    : K extends 'block_headers'
+    ? BlockHeader
+    : K extends 'block_digests'
+    ? BlockDigest
+    : K extends 'account_statuses'
+    ? AccountStatus
+    : K extends 'transaction_statuses'
+    ? TransactionStatus
+    : K extends 'events'
+    ? Event
+    : never;
+}[T];
+```
+
+#### Blocks
+
+_Applies to topic: `SubscriptionTopic.BLOCKS`_
+
+See [BlockObject](#blockobject).
+
+#### Block Headers
+
+_Applies to topic: `SubscriptionTopic.BLOCK_HEADERS`_
+
+See [BlockHeaderObject](#blockheaderobject).
+
+#### Block Digests
+
+_Applies to topic: `SubscriptionTopic.BLOCK_DIGESTS`_
+
+See BlockDigestObject.
+
+#### Account Statuses
+
+_Applies to topic: `SubscriptionTopic.ACCOUNT_STATUSES`_
+
+See AccountStatusObject.
+
+#### Transaction Statuses
+
+_Applies to topic: `SubscriptionTopic.TRANSACTION_STATUSES`_
+
+See [TransactionStatusObject](#transactionstatusobject).
+
+#### Events
+
+_Applies to topic: `SubscriptionTopic.EVENTS`_
+
+See [EventObject](#event-object).
+
+### `RawSubscriptionData`
+
+```ts
+import { type RawSubscriptionData } from '@onflow/typedefs';
+```
+
+A raw data returned by the subscription. This will vary depending on the topic.
+
+This is a generic type that takes a `SubscriptionTopic` as a parameter.
+
+```ts
+type RawSubscriptionData<T extends SubscriptionTopic> = {
+  [K in T]: K extends 'blocks'
+    ? RawBlock
+    : K extends 'block_headers'
+    ? RawBlockHeader
+    : K extends 'block_digests'
+    ? RawBlockDigest
+    : K extends 'account_statuses'
+    ? RawAccountStatus
+    : K extends 'transaction_statuses'
+    ? RawTransactionStatus
+    : K extends 'events'
+    ? RawEvent
+    : never;
+}[T];
+```
+
+#### Blocks
+
+_Applies to topic: `SubscriptionTopic.BLOCKS`_
+
+Type definition:
+
+```ts
+// Internal type, not exported
+type RawBlock = {
+  block: {
+    id: string;
+    parentId: string;
+    height: number;
+    timestamp: string;
+    collectionGuarantees: {
+      collectionId: string;
+      signatures: {
+        addr: string;
+        keyId: number;
+        signature: string;
+      }[];
+    }[];
+    blockSeals: {
+      addr: string;
+      keyId: number;
+      signature: string;
+    }[];
+    signatures: {
+      addr: string;
+      keyId: number;
+      signature: string;
+    }[];
+  };
+};
+```
+
+#### Block Headers
+
+_Applies to topic: `SubscriptionTopic.BLOCK_HEADERS`_
+
+Type definition:
+
+```ts
+// Internal type, not exported
+type RawBlockHeader = {
+  blockHeader: {
+    id: string;
+    parentId: string;
+    height: number;
+    timestamp: string;
+    parentVoterSignature: string;
+  };
+};
+```
+
+#### Block Digests
+
+_Applies to topic: `SubscriptionTopic.BLOCK_DIGESTS`_
+
+Type definition:
+
+```ts
+// Internal type, not exported
+type RawBlockDigest = {
+  blockDigest: {
+    id: string;
+    parentId: string;
+    height: number;
+    timestamp: string;
+  };
+};
+```
+
+#### Account Statuses
+
+_Applies to topic: `SubscriptionTopic.ACCOUNT_STATUSES`_
+
+Type definition:
+
+```ts
+// Internal type, not exported
+type RawAccountStatus = {
+  accountStatus: {
+    accountAddress: string;
+    blockId: string;
+    blockHeight: number;
+    type: string;
+    transactionId: string;
+    transactionIndex: number;
+    eventIndex: number;
+    payload: {
+      type: string;
+      value: any;
+    };
+  };
+};
+```
+
+#### Transaction Statuses
+
+_Applies to topic: `SubscriptionTopic.TRANSACTION_STATUSES`_
+
+Type definition:
+
+```ts
+// Internal type, not exported
+type RawTransactionStatus = {
+  transactionStatus: {
+    blockId: string;
+    status: TransactionExecutionStatus;
+    statusString: string;
+    statusCode: 0 | 1;
+    errorMessage: string;
+    events: {
+      type: string;
+      transactionId: string;
+      transactionIndex: number;
+      eventIndex: number;
+      payload: {
+        type: string;
+        value: any;
+      };
+    }[];
+  };
+};
+```
+
+#### Events
+
+_Applies to topic: `SubscriptionTopic.EVENTS`_
+
+Type definition:
+
+```ts
+// Internal type, not exported
+type RawEvent = {
+  event: {
+    blockId: string;
+    blockHeight: number;
+    blockTimestamp: string;
+    type: string;
+    transactionId: string;
+    transactionIndex: number;
+    eventIndex: number;
+    payload: {
+      type: string;
+      value: any;
+    };
+  };
+};
 ```

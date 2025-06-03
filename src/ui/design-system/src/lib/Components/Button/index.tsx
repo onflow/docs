@@ -2,71 +2,115 @@ import React from 'react';
 import clsx from 'clsx';
 import ChevronRightIcon from '../../../../images/arrows/chevron-right-sm.svg';
 import ExternalLinkIcon from '../../../../images/content/external-link-variant.svg';
-import AppLink from '../AppLink';
 
 const BASE_CLASSES =
-  'inline-flex items-center justify-center font-semibold text-center border dark:hover:shadow-2xl-dark hover:shadow-2xl';
+  'inline-flex items-center justify-center font-semibold text-center border transition duration-200 cursor-pointer font-display';
 
 const VARIANTS = {
-  primary: [
-    'bg-black text-white border-transparent',
-    'hover:border-black hover:bg-white hover:text-black cursor-pointer',
-    'active:border-gray-500 active:bg-white active:text-gray-500',
-    'dark:bg-white dark:text-black',
-    'dark:hover:border-white dark:hover:bg-black dark:hover:text-white',
-    'dark:active:border-gray-500 dark:active:bg-black dark:active:text-gray-500',
-    'disabled:opacity-50 disabled:bg-gray-200 disabled:cursor-not-allowed',
-  ],
-  'primary-no-darkmode': [
-    'bg-black text-white border-transparent',
-    'hover:border-black hover:bg-white hover:text-black',
-    'active:border-gray-500 active:bg-white active:text-gray-500',
-    'disabled:opacity-50 disabled:bg-gray-200 disabled:cursor-not-allowed',
-  ],
-  secondary: [
-    'text-primary-blue border-primary-blue',
-    'hover:bg-primary-blue hover:text-white cursor-pointer',
-    'active:bg-blue-hover active:text-white',
-    'dark:bg-black dark:text-blue-dark dark:border-blue-dark',
-    'dark:hover:bg-blue-dark dark:hover:text-white',
-    'dark:active:bg-blue-hover-dark dark:active:text-white dark:active:border-blue-hover-dark',
-    'disabled:opacity-50 disabled:cursor-not-allowed',
-  ],
-  accent: [
-    'bg-green-dark text-white border-accent-blue',
-    'hover:bg-green-dark hover:text-white cursor-pointer',
-    'active:bg-green-hover active:text-white',
-    'disabled:opacity-50 disabled:cursor-not-allowed',
-  ],
+  black: {
+    base: 'bg-black text-white border-transparent',
+    hover: 'hover:bg-gray-800 hover:text-white',
+    active: 'active:bg-gray-900 active:text-white',
+    dark: {
+      base: 'dark:bg-white dark:text-black',
+      hover: 'dark:hover:bg-gray-100 dark:hover:text-black',
+      active: 'dark:active:bg-gray-200 dark:active:text-black',
+    },
+    disabled: 'disabled:opacity-50 disabled:cursor-not-allowed',
+  },
+  primary: {
+    base: 'bg-blue-600 text-white border-transparent',
+    hover: 'hover:bg-blue-700 hover:text-white',
+    active: 'active:bg-blue-800 active:text-white',
+    dark: {
+      base: 'dark:bg-blue-500 dark:text-gray-100',
+      hover: 'dark:hover:bg-blue-600 dark:hover:text-white',
+      active: 'dark:active:bg-blue-700 dark:active:text-white',
+    },
+    disabled: 'disabled:opacity-50 disabled:cursor-not-allowed',
+  },
+  'primary-no-darkmode': {
+    base: 'bg-black text-white border-transparent',
+    hover: 'hover:border-black hover:bg-white hover:text-black',
+    active: 'active:border-gray-500 active:bg-white active:text-gray-500',
+    disabled:
+      'disabled:opacity-50 disabled:bg-gray-200 disabled:cursor-not-allowed',
+  },
+  secondary: {
+    base: 'text-primary-blue border-primary-blue',
+    hover: 'hover:bg-primary-blue hover:text-white cursor-pointer',
+    active: 'active:bg-blue-hover active:text-white',
+    dark: {
+      base: 'dark:bg-black dark:text-blue-dark dark:border-blue-dark',
+      hover: 'dark:hover:bg-blue-dark dark:hover:text-white',
+      active:
+        'dark:active:bg-blue-hover-dark dark:active:text-white dark:active:border-blue-hover-dark',
+    },
+    disabled: 'disabled:opacity-50 disabled:cursor-not-allowed',
+  },
+  accent: {
+    base: 'bg-green-dark text-white border-accent-blue',
+    hover: 'hover:bg-green-dark hover:text-white cursor-pointer',
+    active: 'active:bg-green-hover active:text-white',
+    disabled: 'disabled:opacity-50 disabled:cursor-not-allowed',
+  },
+  ghost: {
+    base: 'bg-transparent text-black border-transparent',
+    hover: 'hover:bg-gray-200 hover:text-black',
+    active: 'active:bg-gray-300 active:text-black',
+    dark: {
+      base: 'dark:bg-transparent dark:text-white',
+      hover: 'dark:hover:bg-gray-800 dark:hover:text-white',
+      active: 'dark:active:bg-gray-900 dark:active:text-white',
+    },
+    disabled: 'disabled:opacity-50 disabled:cursor-not-allowed',
+  },
 };
 
 const SIZES = {
-  sm: ['text-sm min-w-[172px] p-2 rounded-md gap-2'],
-  md: ['text-sm min-w-[172px] p-4 rounded-lg gap-3'],
+  sm: ['text-sm px-4 py-2 rounded-md gap-2'],
+  md: ['text-sm px-6 py-3 rounded-lg gap-3'],
 };
 
-type ButtonContentProps = {
-  children: React.ReactNode;
-  leftIcon?: 'left';
-  rightIcon?: 'right' | 'external';
-  external?: boolean;
-};
-
-type ButtonBaseProps = {
+type ButtonProps = {
   variant?: keyof typeof VARIANTS;
   size?: keyof typeof SIZES;
-} & ButtonContentProps;
+  disabled?: boolean;
+  href?: string; // Determines if it renders as a link
+  leftIcon?: 'left';
+  rightIcon?: 'right' | 'external';
+  className?: string;
+  children: React.ReactNode;
+} & React.ComponentPropsWithoutRef<'button'> &
+  React.ComponentPropsWithoutRef<'a'>;
 
-export type ButtonProps = React.ComponentPropsWithoutRef<'button'> &
-  ButtonBaseProps;
-
-function ButtonContent({
+export function Button({
+  href,
+  className,
+  size = 'md',
+  variant = 'black',
+  disabled,
   leftIcon,
   rightIcon,
-  external,
   children,
-}: ButtonContentProps): JSX.Element {
-  return (
+  ...props
+}: ButtonProps): JSX.Element {
+  const variantStyles = VARIANTS[variant];
+
+  const combinedStyles = clsx(
+    BASE_CLASSES,
+    SIZES[size],
+    variantStyles.base,
+    variantStyles.hover,
+    variantStyles.active,
+    disabled && variantStyles.disabled,
+    variantStyles.dark?.base,
+    variantStyles.dark?.hover,
+    variantStyles.dark?.active,
+    className,
+  );
+
+  const ButtonContent = (
     <>
       {leftIcon === 'left' && (
         <div className="relative -top-[1px] rotate-180">
@@ -78,56 +122,24 @@ function ButtonContent({
       {rightIcon === 'external' && <ExternalLinkIcon />}
     </>
   );
-}
 
-export function Button({
-  className,
-  size = 'md',
-  variant = 'primary',
-  leftIcon,
-  rightIcon,
-  children,
-  ...props
-}: ButtonProps): JSX.Element {
+  if (href) {
+    // Render as a link
+    return (
+      <a
+        href={disabled ? undefined : href}
+        className={clsx(combinedStyles, { 'pointer-events-none': disabled })}
+        {...props}
+      >
+        {ButtonContent}
+      </a>
+    );
+  }
+
+  // Render as a button
   return (
-    <button
-      className={clsx(BASE_CLASSES, SIZES[size], VARIANTS[variant], className)}
-      {...props}
-    >
-      <ButtonContent
-        leftIcon={leftIcon}
-        rightIcon={rightIcon}
-        children={children}
-      />
+    <button className={combinedStyles} disabled={disabled} {...props}>
+      {ButtonContent}
     </button>
-  );
-}
-
-export type ButtonLinkProps = React.ComponentPropsWithoutRef<'a'> &
-  ButtonBaseProps & {
-    href: string;
-    children: React.ReactNode;
-  };
-
-export function ButtonLink({
-  className,
-  size = 'md',
-  variant = 'primary',
-  href,
-  leftIcon,
-  rightIcon,
-  children,
-}: ButtonLinkProps) {
-  return (
-    <AppLink
-      className={clsx(BASE_CLASSES, SIZES[size], VARIANTS[variant], className)}
-      to={href}
-    >
-      <ButtonContent
-        leftIcon={leftIcon}
-        rightIcon={rightIcon}
-        children={children}
-      />
-    </AppLink>
   );
 }

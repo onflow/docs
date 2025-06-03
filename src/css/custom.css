@@ -10,6 +10,8 @@
 
 /* You can override the default Infima variables here. */
 :root {
+  --ifm-font-family-base: 'Inter', system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, Noto Sans, sans-serif;
+  --ifm-font-family-monospace: 'IBM Plex Mono', SFMono-Regular, Menlo, Monaco, Consolas, 'Liberation Mono', 'Courier New', monospace;
   --ifm-color-primary: #2e8555;
   --ifm-color-primary-dark: #29784c;
   --ifm-color-primary-darker: #277148;
@@ -114,4 +116,17 @@
 .markdown h1 {
   --ifm-h1-font-size: 3rem;
   margin-bottom: calc(var(--ifm-h1-vertical-rhythm-bottom)*var(--ifm-leading));
+}
+
+.portrait-screenshot-wrapper img {
+  width: 300px;
+  display: block;
+  margin: 0 auto;
+}
+
+/* Only hide in in nav (not main menu on mobile) */
+@media (max-width: 960px) {
+  .navbar__items--right .hide-connect-on-mobile {
+    display: none !important;
+  }
 }

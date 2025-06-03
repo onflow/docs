@@ -34,8 +34,8 @@ See [Epoch Preparation Protocol](./04-epoch-preparation.md#epoch-length) for det
 
 </Callout>
 
-**Staking Operations are disabled for approximately the last day of an epoch**,
-typically around 12:00pm (7:00pm UTC) on Tuesday every week until the next day around the same time.
+**Staking Operations are disabled for approximately the last 6-12 hours of an epoch**,
+typically around 00:00 US Pacific Daylight Time (07:00 UTC) on Wednesday every week until around 12:00 US Pacific Daylight Time (19:00 UTC).
 See [Epoch Setup](./04-epoch-preparation.md#phase-1-epoch-setup) for more information on this phase.
 
 **Epoch Switchovers will happen around 12:00 pm PT on Wednesday (7:00 pm UTC)** every week. 
@@ -64,7 +64,7 @@ None of these operations are fully executed until the **Epoch Switchover** thoug
 The [Epoch Setup](./04-epoch-preparation.md#phase-1-epoch-setup)
 and [Epoch Commit](./04-epoch-preparation.md#phase-2-epoch-committed)
 phases are the final phases of the epoch, when node operators who have been included
-in the next epoch perform important setup functionailty to prepare for the next epoch.
+in the next epoch perform important setup functionality to prepare for the next epoch.
 
 **The Epoch Setup and Epoch Committed phases usually last less than 10% of the time of an epoch.**
 
@@ -72,9 +72,9 @@ in the next epoch perform important setup functionailty to prepare for the next 
 This is because the staking information has been finalized in preparation for the next epoch
 and cannot be changed because these final phases rely on the staking information being constant.
 
-**The Staking Auction Ends every Tuesday near 12:00pm PT (7:00 pm UTC).**
+**The Staking Auction Ends every Wednesday near 00:00 PDT (07:00 UTC).**
 **This means that staking operations will be disabled for ALL users**
-**in the period between the end of the staking auction and the beginning of the next epoch, currently 24hrs.**
+**in the period between the end of the staking auction and the beginning of the next epoch, currently 6-12hrs.**
 
 ## Rewards Distribution
 

@@ -1,56 +1,75 @@
 ---
 title: Working With Parent Accounts
 sidebar_position: 2
+description: Learn how to work with parent accounts in Flow's hybrid custody model. Understand how to manage child accounts, access assets across accounts, and implement unified account experiences in wallets and marketplaces.
+keywords:
+  - parent accounts
+  - hybrid custody
+  - account management
+  - child accounts
+  - account access
+  - NFT management
+  - token balances
+  - wallet integration
+  - marketplace integration
+  - Flow accounts
+  - account delegation
+  - asset management
+  - account hierarchy
+  - capability management
+  - account security
 ---
 
-In this doc, we'll continue from the perspective of a wallet or marketplace app seeking to facilitate a unified account experience,
-abstracting away the partitioned access between accounts into a single dashboard for user interactions on all their
-owned assets.
+In this doc, we'll continue from the perspective of a wallet or marketplace app seeking to facilitate a unified account
+experience, abstracting away the partitioned access between accounts into a single dashboard for user interactions on
+all their owned assets.
 
 ## Objectives
 
 - Understand the Hybrid Custody account model
 - Differentiate between restricted child accounts and unrestricted owned accounts
-- Get your app to recognize “parent” accounts along with any associated “child” accounts
+- Get your app to recognize "parent" accounts along with any associated "child" accounts
 - View Fungible and NonFungible Token metadata relating to assets across all of a user's associated accounts - their
-  wallet-mediated “parent” account and any hybrid custody model “child” accounts
+  wallet-mediated "parent" account and any hybrid custody model "child" accounts
 - Facilitate transactions acting on assets in child accounts
 
 ## Design Overview
 
-<Callout type="info">
+:::info
 
-TL;DR: An account's [`HybridCustody.Manager`](https://github.com/onflow/hybrid-custody/blob/main/contracts/HybridCustody.cdc)
-is the entry point for all of a user's associated accounts.
+TL;DR: An account's
+[`HybridCustody.Manager`](https://github.com/onflow/hybrid-custody/blob/main/contracts/HybridCustody.cdc) is the entry
+point for all of a user's associated accounts.
 
-</Callout>
+:::
 
-The basic idea in the [(currently proposed)
-standard](https://forum.onflow.org/t/account-linking-authaccount-capabilities-management/4314) is relatively simple. A
-parent account is one that has received delegated (albeit restricted) access on another account. The account which has
-delegated authority over itself to the parent account is the child account.
+The basic idea in the Hybrid Custody model is relatively simple. A parent account is one that has received delegated
+(albeit restricted) access on another account. The account which has delegated authority over itself to the parent
+account is the child account.
 
-In the [Hybrid Custody Model](https://forum.onflow.org/t/hybrid-custody/4016), this child account would have shared
-access between the app - the entity which created likely custodies the account - and the linked parent account.
+In the [Hybrid Custody Model](https://forum.flow.com/t/hybrid-custody/4016), this child account would have shared
+access between the app - the entity which created and likely custodies the account - and the linked parent account.
 
 How does this delegation occur? Typically when we think of shared account access in crypto, we think keys. However,
-Cadence enables [accounts to link Capabilities to themselves](https://github.com/onflow/cadence/issues/2151) and issue
-those Capabilities to other parties (more on [capability-based access here](https://cadence-lang.org/docs/language/capabilities)).
+Cadence enables [accounts to link Capabilities on
+themselves](https://cadence-lang.org/docs/language/accounts/capabilities#accountcapabilities) and issue those
+Capabilities to other parties (more on [capability-based access
+here](https://cadence-lang.org/docs/language/capabilities)).
 
-We've leveraged this feature in a (proposed) standard so that apps can implement a hybrid custody model whereby the
-app creates an account it controls, then later delegates access on that account to the user once they've authenticated
-with their wallet.
+This feature has been leveraged in an ecosystem standard so that apps can implement a hybrid custody model whereby the app
+creates an account it controls, then later delegates access on that account to the user once they've authenticated with
+their wallet.
 
 All related constructs are used together in the [`HybridCustody`
-contract](https://testnet.contractbrowser.com/A.96b15ff6dfde11fe.HybridCustody) to define the standard.
+contract](https://github.com/onflow/hybrid-custody/tree/main) to define the standard.
 
 Parent accounts own a `Manager` resource which stores Capabilities to `ChildAccount` (restricted access) and
 `OwnedAccount` (unrestricted access) resources, both of which are stored in any given child account.
 
 Therefore, the presence of a `Manager` in an account implies there are potentially associated accounts for which the
 owning account has delegated access. This resource is intended to be configured with a public Capability that enables
-querying of an account's child account addresses via `getAccountAddresses()` and `getOwnedAccountAddresses()`.As you
-can deduce from these two methods, there is a notion of "owned" accounts which we'll expand on in a bit.
+querying of an account's child account addresses via `getAccountAddresses()` and `getOwnedAccountAddresses()`. As you can
+deduce from these two methods, there is a notion of "owned" accounts which we'll expand on in a bit.
 
 A wallet or marketplace wishing to discover all of a user's accounts and assets within them can do so by first looking
 to the user's `Manager`.
@@ -60,8 +79,8 @@ to the user's `Manager`.
 To clarify, insofar as the standard is concerned, an account is a parent account if it contains a `Manager` resource,
 and an account is a child account if it contains at minimum an `OwnedAccount` or additionally a `ChildAccount` resource.
 
-Within a user's `Manager`, its mapping of `childAccounts` points to the addresses of its child accounts in each index,
-with corresponding values giving the Manager access to those accounts via corresponding`ChildAccount` Capability.
+Within a user's `Manager`, its mapping of `childAccounts` points to the addresses of its child accounts in each key,
+with corresponding values giving the `Manager` access to those accounts via corresponding `ChildAccount` Capability.
 
 ![HybridCustody Conceptual Overview](./resources/hybrid_custody_conceptual_overview.png)
 
@@ -76,15 +95,15 @@ This provides more granular revocation as each parent account has its own Capabi
 
 It's worth noting here that `ChildAccount` Capabilities enable access to the underlying account according to rules
 configured by the child account delegating access. The `ChildAccount` maintains these rules along with an `OwnedAccount`
-Capability within which the `AuthAccount` Capability is stored. Anyone with access to the surface level `ChildAccount`
-can then access the underlying `AuthAccount`, but only according the pre-defined rule set. These rules are fundamentally
+Capability within which the `&Account` Capability is stored. Anyone with access to the surface level `ChildAccount`
+can then access the underlying `Account`, but only according the pre-defined rule set. These rules are fundamentally
 a list of Types that can/cannot be retrieved from an account.
 
 The app developer can codify these rule sets on allowable Capability types in a
-[`CapabilityFilter`](https://testnet.contractbrowser.com/A.96b15ff6dfde11fe.CapabilityFilter) along with a
-[`CapabilityFactory`](https://testnet.contractbrowser.com/A.96b15ff6dfde11fe.CapabilityFactory) defining retrieval
+[`CapabilityFilter`](https://github.com/onflow/hybrid-custody/blob/main/contracts/CapabilityFilter.cdc) along with a
+[`CapabilityFactory`](https://github.com/onflow/hybrid-custody/blob/main/contracts/CapabilityFactory.cdc) defining retrieval
 patterns for those Capabilities. When delegation occurs, the developer would provide the `CapabilityFilter` and
-`CapabilityFactory` Capabilities to an `OwnedAccount` resource which stores them in a `ChildAccount` resource.  Then,
+`CapabilityFactory` Capabilities to an `OwnedAccount` resource which stores them in a `ChildAccount` resource. Then,
 capabilities are created for the `OwnedAccount` and `ChildAccount` resource and are given to the specified parent
 account.
 
@@ -96,19 +115,18 @@ When delegation occurs, they would provide the `CapabilityFilter` and `Capabilit
 `OwnedAccount`. This `OwnedAccount` then wraps the given filter & factory Capabilities in a `ChildAccount` along with a
 Capability to itself before publishing the new `ChildAccount` Capability for the specified parent account to claim.
 
-<Callout type="info">
+:::info
 
 Note that by enumerating allowable Types in your `CapabilityFilter.Filter` implementation, you're by default excluding
 access to anything other than the Types you declare as allowable.
 
-</Callout>
+:::
 
 As mentioned earlier, `Manager`s also maintain access to "owned" accounts - accounts which define unrestricted access as
-they allow direct retrieval of encapsulated AuthAccount objects. These owned accounts, found in `Manager.ownedAccounts`,
+they allow direct retrieval of encapsulated `&Account` Capabilities. These owned accounts, found in `Manager.ownedAccounts`,
 are simply `OwnedAccount` Capabilities instead of `ChildAccount` Capabilities.
 
 ![HybridCustody Total Overview](./resources/hybrid_custody_low_level.png)
-
 
 ### Considerations
 
@@ -144,12 +162,12 @@ And with respect to acting on the assets of child accounts and managing child ac
 
 This script will return `true` if a `HybridCustody.Manager` is stored and `false` otherwise
 
-```cadence get_child_addresses.cdc
+```cadence has_child_accounts.cdc
 import "HybridCustody"
 
-pub fun main(parent: Address): Bool {
-    let acct = getAuthAccount(parent)
-    if let manager = acct.borrow<&HybridCustody.Manager>(from: HybridCustody.ManagerStoragePath) {
+access(all) fun main(parent: Address): Bool {
+    let acct = getAuthAccount<auth(BorrowValue) &Account>(parent)
+    if let manager = acct.storage.borrow<&HybridCustody.Manager>(from: HybridCustody.ManagerStoragePath) {
         return manager.getChildAddresses().length > 0
     }
     return false
@@ -159,16 +177,16 @@ pub fun main(parent: Address): Bool {
 ### Query All Accounts Associated with Address
 
 The following script will return an array of addresses associated with a given account's address, inclusive of the
-provided address.
+provided address. If a `HybridCustody.Manager` is not found, the script will revert.
 
 ```cadence get_child_addresses.cdc
 import "HybridCustody"
 
-pub fun main(parent: Address): [Address] {
-    let acct = getAuthAccount(parent)
-    let manager = acct.borrow<&HybridCustody.Manager>(from: HybridCustody.ManagerStoragePath)
+access(all) fun main(parent: Address): [Address] {
+    let acct = getAuthAccount<auth(Storage) &Account>(parent)
+    let manager = acct.storage.borrow<&HybridCustody.Manager>(from: HybridCustody.ManagerStoragePath)
         ?? panic("manager not found")
-    return manager.getChildAddresses() // Could also call getOwnedAddresses() for owned account addresses
+    return  manager.getChildAddresses()
 }
 ```
 
@@ -194,18 +212,20 @@ import "HybridCustody"
 
 /// Returns resolved Display from given address at specified path for each ID or nil if ResolverCollection is not found
 ///
-pub fun getViews(_ address: Address, _ resolverCollectionPath: PublicPath): {UInt64: MetadataViews.Display} {
+access(all)
+fun getViews(_ address: Address, _ resolverCollectionPath: PublicPath): {UInt64: MetadataViews.Display} {
 
     let account: PublicAccount = getAccount(address)
     let views: {UInt64: MetadataViews.Display} = {}
 
     // Borrow the Collection
-    if let collection = account
-        .getCapability<&{NonFungibleToken.CollectionPublic, MetadataViews.ResolverCollection}>(resolverCollectionPath).borrow() {
+    if let collection = account.capabilities.borrow<&{NonFungibleToken.Collection}>(resolverCollectionPath) {
         // Iterate over IDs & resolve the view
         for id in collection.getIDs() {
-            if let display = collection.borrowViewResolver(id: id).resolveView(Type<MetadataViews.Display>()) as? MetadataViews.Display {
-                views.insert(key: id, display)
+            if let nft = collection.borrowNFT(id) {
+                if let display = nft.resolveView(Type<MetadataViews.Display>()) as? MetadataViews.Display {
+                    views.insert(key: id, display)
+                }
             }
         }
     }
@@ -216,14 +236,19 @@ pub fun getViews(_ address: Address, _ resolverCollectionPath: PublicPath): {UIn
 /// Queries for MetadataViews.Display each NFT across all associated accounts from Collections at the provided
 /// PublicPath
 ///
-pub fun main(address: Address, resolverCollectionPath: PublicPath): {Address: {UInt64: MetadataViews.Display}} {
+access(all)
+fun main(address: Address, resolverCollectionPath: PublicPath): {Address: {UInt64: MetadataViews.Display}} {
 
-    let allViews: {Address: {UInt64: MetadataViews.Display}} = {address: getViews(address, resolverCollectionPath)}
-    let seen: [Address] = [address]
+    let allViews: {Address: {UInt64: MetadataViews.Display}} = {
+            address: getViews(address, resolverCollectionPath)
+        }
 
     /* Iterate over any associated accounts */
     //
-    if let managerRef = getAuthAccount(address).borrow<&HybridCustody.Manager>(from: HybridCustody.ManagerStoragePath) {
+    let seen: [Address] = [address]
+    if let managerRef = getAuthAccount<auth(BorrowValue) &Account>(address)
+        .storage
+        .borrow<&HybridCustody.Manager>(from: HybridCustody.ManagerStoragePath) {
 
         for childAccount in managerRef.getChildAddresses() {
             allViews.insert(key: childAccount, getViews(address, resolverCollectionPath))
@@ -262,9 +287,10 @@ import "HybridCustody"
 
 /// Returns a mapping of balances indexed on the Type of resource containing the balance
 ///
-pub fun getAllBalancesInStorage(_ address: Address): {Type: UFix64} {
+access(all)
+fun getAllBalancesInStorage(_ address: Address): {Type: UFix64} {
     // Get the account
-    let account: AuthAccount = getAuthAccount(address)
+    let account = getAuthAccount<auth(BorrowValue) &Account>(address)
     // Init for return value
     let balances: {Type: UFix64} = {}
     // Track seen Types in array
@@ -273,7 +299,7 @@ pub fun getAllBalancesInStorage(_ address: Address): {Type: UFix64} {
     let balanceType: Type = Type<@{FungibleToken.Balance}>()
     // Iterate over all stored items & get the path if the type is what we're looking for
     account.forEachStored(fun (path: StoragePath, type: Type): Bool {
-        if type.isInstance(balanceType) || type.isSubtype(of: balanceType) {
+        if (type.isInstance(balanceType) || type.isSubtype(of: balanceType)) && !type.isRecovered {
             // Get a reference to the resource & its balance
             let vaultRef = account.borrow<&{FungibleToken.Balance}>(from: path)!
             // Insert a new values if it's the first time we've seen the type
@@ -292,7 +318,8 @@ pub fun getAllBalancesInStorage(_ address: Address): {Type: UFix64} {
 
 /// Queries for FT.Vault balance of all FT.Vaults in the specified account and all of its associated accounts
 ///
-pub fun main(address: Address): {Address: {Type: UFix64}} {
+access(all)
+fun main(address: Address): {Address: {Type: UFix64}} {
 
     // Get the balance for the given address
     let balances: {Address: {Type: UFix64}} = { address: getAllBalancesInStorage(address) }
@@ -301,7 +328,8 @@ pub fun main(address: Address): {Address: {Type: UFix64}} {
 
     /* Iterate over any associated accounts */
     //
-    if let managerRef = getAuthAccount(address)
+    if let managerRef = getAuthAccount<auth(BorrowValue) &Account>(address)
+        .storage
         .borrow<&HybridCustody.Manager>(from: HybridCustody.ManagerStoragePath) {
 
         for childAccount in managerRef.getChildAddresses() {
@@ -333,47 +361,64 @@ to aggregate more information about the underlying Vaults.
 ### Access NFT in Child Account from Parent Account
 
 A user with NFTs in their child accounts will likely want to utilize said NFTs. In this example, the user will sign a
-transaction a transaction with their authenticated account that retrieves a reference to a child account's
-`NonFungibleToken.Provider`, enabling withdrawal from the child account having signed with the parent account.
+transaction with their authenticated account that retrieves a reference to a child account's
+`NonFungibleToken.Provider`, enabling withdrawal from the child account having signed as the parent account.
 
 ```cadence withdraw_nft_from_child.cdc
 import "NonFungibleToken"
 import "FlowToken"
 import "HybridCustody"
 
-transaction(childAddress: Address, providerPath: PrivatePath, withdrawID: UInt64) {
+transaction(
+    childAddress: Address,      // Address of the child account
+    storagePath: StoragePath,   // Path to the Collection in the child account
+    collectionType: Type,       // Type of the requested Collection from which to withdraw
+    withdrawID: UInt64          // ID of the NFT to withdraw
+    ) {
 
-    let providerRef: &{NonFungibleToken.Provider}
+    let providerRef: auth(NonFungibleToken.Withdraw) &{NonFungibleToken.Provider}
 
-    prepare(signer: AuthAccount) {
+    prepare(signer: auth(BorrowValue) &Account) {
         // Get a reference to the signer's HybridCustody.Manager from storage
-        let managerRef: &HybridCustody.Manager = signer.borrow<&HybridCustody.Manager>(
+        let managerRef = signer.storage.borrow<auth(HybridCustody.Manage) &HybridCustody.Manager>(
                 from: HybridCustody.ManagerStoragePath
             ) ?? panic("Could not borrow reference to HybridCustody.Manager in signer's account at expected path!")
 
         // Borrow a reference to the signer's specified child account
-        let account: &{AccountPrivate, AccountPublic, MetadataViews.Resolver}? = managerRef
+        let account = managerRef
             .borrowAccount(addr: childAddress)
             ?? panic("Signer does not have access to specified child account")
 
+        // Get the Capability Controller ID for the requested collection type
+        let controllerID = account.getControllerIDForType(
+                type: collectionType,
+                forPath: storagePath
+            ) ?? panic("Could not find Capability controller ID for collection type ".concat(collectionType.identifier)
+                .concat(" at path ").concat(storagePath.toString()))
+
         // Get a reference to the child NFT Provider and assign to the transaction scope variable
-        let cap: Capability = account.getCapability(
-                path: providerPath,
-                type: Type<&{NonFungibleToken.Provider}>()
+        let cap = account.getCapability(
+                controllerID: controllerID,
+                type: Type<auth(NonFungibleToken.Withdraw) &{NonFungibleToken.Provider}>()
             ) ?? panic("Cannot access NonFungibleToken.Provider from this child account")
 
         // We'll need to cast the Capability - this is possible thanks to CapabilityFactory, though we'll rely on the relevant
         // Factory having been configured for this Type or it won't be castable
-        self.providerRef = cap as! Capability<&{NonFungibleToken.Provider}>
+        let providerCap = cap as! Capability<auth(NonFungibleToken.Withdraw) &{NonFungibleToken.Provider}>
+        self.providerRef = providerCap.borrow() ?? panic("Provider capability is invalid - cannot borrow reference")
     }
 
     execute {
         // Withdraw the NFT from the Collection
         let nft <- self.providerRef.withdraw(withdrawID: withdrawID)
         // Do stuff with the NFT
+        // NOTE: Without storing or burning the NFT before scope closure, this transaction will fail. You'll want to
+        //      fill in the rest of the transaction with the necessary logic to handle the NFT
         // ...
     }
 }
+
+
 
 ```
 
@@ -385,16 +430,13 @@ similar approach could get you any allowable Capabilities from a signer's child 
 The expected uses of child accounts for progressive onboarding implies that they will be accounts with shared access. A
 user may decide that they no longer want secondary parties to have access to the child account.
 
-There are two ways a party can have delegated access to an account - keys and AuthAccount Capability. With
+There are two ways a party can have delegated access to an account - keys and `&Account` Capability. With
 `ChildAccount` mediated access, a user wouldn't be able to revoke anyone's access except for their own. With
 unrestricted access via `OwnedAccount`, one could remove parents (`OwnedAccount.removeParent(parent: Address)`) thereby
 unlinking relevant Capabilities and further destroying their `ChildAccount` and `CapabilityDelegator` resources.
 
-Ultimately, things are not entirely straightforward with respect to `AuthAccount` Capabilities, at least not until
-Capability Controllers enter the picture. This is discussed in more detail in [the
-Flip](https://forum.onflow.org/t/account-linking-authaccount-capabilities-management/4314). For now, we recommend that
-if users want to revoke secondary access, they transfer any assets from the relevant child account and remove it from
-their `Manager` altogether.
+For now, we recommend that if users want to revoke secondary access, they transfer any assets from the relevant child
+account and remove it from their `Manager` altogether.
 
 ### Remove a Child Account
 
@@ -406,9 +448,10 @@ from their `HybridCustody.Manager`. Let's see how to complete that removal.
 import "HybridCustody"
 
 transaction(child: Address) {
-    prepare (acct: AuthAccount) {
-        let manager = acct.borrow<&HybridCustody.Manager>(from: HybridCustody.ManagerStoragePath)
-            ?? panic("manager not found")
+    prepare (acct: auth(BorrowValue) &Account) {
+        let manager = acct.storage.borrow<auth(HybridCustody.Manage) &HybridCustody.Manager>(
+                from: HybridCustody.ManagerStoragePath
+            ) ?? panic("manager not found")
         manager.removeChild(addr: child)
     }
 }

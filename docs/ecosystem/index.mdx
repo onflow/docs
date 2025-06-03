@@ -5,7 +5,8 @@ description: Access essential tools, knowledge, and community connections for th
 ---
 
 import DocCardList from '@theme/DocCardList';
-import { useDocsSidebar, isSamePath } from '@docusaurus/theme-common/internal';
+import { isSamePath } from '@docusaurus/theme-common/internal';
+import { useDocsSidebar } from '@docusaurus/plugin-content-docs/client';
 import { useLocation } from '@docusaurus/router';
 
 <DocCardList items={
@@ -13,7 +14,7 @@ import { useLocation } from '@docusaurus/router';
     {
       type: 'link',
       label: 'Flow Forum',
-      href: 'https://forum.onflow.org/',
+      href: 'https://forum.flow.com/',
       description: 'Engage with the Flow community, discuss ideas, and seek support on the Flow Blockchain Forum.',
       customProps: {
         icon: "🏛️"

@@ -2,7 +2,23 @@
 title: Flow Smart Contract Project Development Standards
 sidebar_label: Development Standards
 sidebar_position: 5
-description: "Learn how to effectively organize and manage a Cadence project"
+description: Learn best practices for organizing and managing Cadence smart contract projects. Understand key aspects of design, development, testing, deployment, and community engagement.
+keywords:
+  - development standards
+  - smart contracts
+  - project management
+  - best practices
+  - Cadence development
+  - testing standards
+  - documentation
+  - deployment process
+  - project organization
+  - code review
+  - security practices
+  - community engagement
+  - open source
+  - technical leadership
+  - Flow development
 ---
 
 # Smart Contract Project Development Standards
@@ -39,7 +55,7 @@ and more vibrant community.
 Ensuring appropriate levels of testing results in better smart contracts which have
 pro-actively modeled threats and engineered against them. Ensuring appropriate levels 
 of standards adoption ([FungibleToken](https://github.com/onflow/flow-ft),
-[NFT Catalog](https://www.flow-nft-catalog.com/), [NFT StoreFront](https://github.com/onflow/nft-storefront), etc) by dapp 
+[NFT Metadata](../../advanced-concepts/metadata-views.md), [NFT StoreFront](https://github.com/onflow/nft-storefront), etc) by dapp 
 builders amplifies the network effects for all in the ecosystem. NFTs in one dapp can be 
 readily consumed by other dapps through on-chain events with no new integration 
 required. With your help and participation we can further accelerate healthy and vibrant 
@@ -90,7 +106,7 @@ are available [here](https://cadence-lang.org/docs/).
 The technical leader should be someone who understands Cadence well and has written Cadence smart contracts
 before. Production-level smart contracts are not the place for beginners to get their start.
 
-It should be this person’s responsibility to lead design discussions
+It should be this person's responsibility to lead design discussions
 with product managers and the community, write most of the code and tests,
 solicit reviews, make requested changes and make sure the project gets completed in a timely manner.
 
@@ -112,7 +128,7 @@ As projects like NBA Topshot have shown, when a blockchain product becomes succe
 others can and do to build on top of what you are doing.
 Whether that is analytics, tools, or other value adds that could help grow your project ecosystem,
 composability is key and that depends on open source development.
-If there isn’t already an open source repo, builders should consider creating one.
+If there isn't already an open source repo, builders should consider creating one.
 
 Builders can start from the [the Flow open source template](https://github.com/onflow/open-source-template)
 and make sure all of their repo is set up with some initial documentation for what the repo is for
@@ -172,14 +188,11 @@ Summarized below is a list of testing related recommendations
 which are noteworthy to mention for a typical smart contract project.
 
 Popular testing frameworks to use for cadence are listed here:
-- Javascript: [Flow JS Testing](../../../tools/flow-js-testing/index.md)
-- Go: [Overflow](https://github.com/bjartek/overflow)
 - Cadence: [Cadence Testing Framework](../../smart-contracts/testing.md)
-Tests written in Cadence!
+- Go: [Overflow](https://github.com/bjartek/overflow)
 
 The same person who writes the code should also write the tests.
 They have the clearest understanding of the code paths and edge cases.
-
 
 Tests should be **mandatory**, not optional, even if the contract is copied from somewhere else.
 There should be thorough emulator unit tests in the public repo.
@@ -190,12 +203,8 @@ for an example of unit tests in javascript.
 Every time there is a new Cadence version or emulator version,
 the dependencies of the repo should be updated to make sure the tests are all still passing.
 
-
 Tests should avoid being monolithic;
 Individual test cases should be set up for each part of the contract to test them in isolation. 
-See the [`FlowEpoch` smart contract tests](https://github.com/onflow/flow-core-contracts/blob/master/lib/go/test/flow_epoch_test.go)
-for examples written in Go where test cases are split
-into separate blocks for different features.
 There are some exceptions, like contracts that have to run through a state machine
 to test different cases. Positive and negative cases need to be tested.
 
@@ -259,7 +268,7 @@ come in and understand what each one is doing without having to parse confusing 
 
 ### Projects should engage with and respond to their own Community
 
-Once a contract is deployed, the work doesn’t stop there.
+Once a contract is deployed, the work doesn't stop there.
 Project communities require ongoing nurturing and support.
 As the developer of a public project on a public blockchain,
 the owners have an obligation to be helpful and responsive to the community
@@ -290,13 +299,11 @@ It also helps the owner to promote the project and themselves.
 
 Resources for Best Practices:
 
-- [cadence/design-pattern](./design-patterns.md)
-- [cadence/anti-patterns](./anti-patterns.md)
+- [cadence/design-pattern](https://cadence-lang.org/docs/design-patterns)
+- [cadence/anti-patterns](https://cadence-lang.org/docs/anti-patterns)
 - [cadence/security-best-practices](./security-best-practices.md)
 
 Composability and extensibility should also be priorities while designing, developing,
 and documenting their projects. (Documentation for these topics coming soon)
-
-
 
 If you have any feedback about these guidelines, please create an issue in the onflow/cadence-style-guide repo or make a PR updating the guidelines so we can start a discussion.

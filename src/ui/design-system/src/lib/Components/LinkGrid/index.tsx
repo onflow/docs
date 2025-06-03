@@ -25,7 +25,7 @@ const sections: LinkGridSection[] = [
     links: [
       {
         title: 'Hello World Tutorial',
-        href: '/build/getting-started/quickstarts/hello-world',
+        href: '/build/getting-started/contract-interaction',
       },
       {
         title: 'App Architecture',
@@ -95,7 +95,7 @@ const sections: LinkGridSection[] = [
       },
       {
         title: 'Network Architecture',
-        href: 'https://jan-bernatik.medium.com/introduction-to-flow-blockchain-7532977c8af8',
+        href: '/networks/network-architecture',
       },
     ],
     imageName: 'docs-the-stack',
@@ -106,11 +106,11 @@ const sections: LinkGridSection[] = [
     links: [
       {
         title: 'Account Abstraction',
-        href: '/build/differences-vs-evm/account-abstraction',
+        href: '/build/advanced-concepts/account-abstraction',
       },
       {
         title: 'Understanding Transaction Time',
-        href: '/build/differences-vs-evm/transaction-time',
+        href: '/build/basics/transactions#transaction-time',
       },
       {
         title: 'FLIX',
@@ -126,11 +126,11 @@ const sections: LinkGridSection[] = [
       },
       {
         title: 'Sponsored Transactions',
-        href: '/build/differences-vs-evm/account-abstraction#sponsored-transactions',
+        href: '/build/advanced-concepts/account-abstraction#sponsored-transactions',
       },
       {
         title: 'Multi-auth Transactions',
-        href: '/build/differences-vs-evm/account-abstraction#multi-sig-transactions',
+        href: '/build/advanced-concepts/account-abstraction#multi-sig-transactions',
       },
     ],
     imageName: 'docs-advanced',

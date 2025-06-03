@@ -2,23 +2,22 @@
 
 Scripts let you run non-permanent Cadence scripts on the Flow blockchain. They can return data.
 
-They always need to contain a `pub fun main()` function as an entry point to the script.
+They always need to contain a `access(all) fun main()` function as an entry point to the script.
 
 `fcl.query` is a function that sends Cadence scripts to the chain and receives back decoded responses.
 
 The `cadence` key inside the object sent to the `query` function is a [JavaScript Tagged Template Literal](https://styled-components.com/docs/advanced#tagged-template-literals) that we can pass Cadence code into.
 
-### Sending your first Script
+### Sending Your First Script
 
-In the following code snippet we are going to send a script to the Flow blockchain.
-The script is going to add two numbers, and return them.
+The following example demonstrates how to send a script to the Flow blockchain. This script adds two numbers and returns the result.
 
 ```javascript
 import * as fcl from "@onflow/fcl"
 
 const response = await fcl.query({
   cadence: `
-    pub fun main(): Int {
+    access(all) fun main(): Int {
       return 1 + 2
     }
   `
@@ -27,9 +26,9 @@ const response = await fcl.query({
 console.log(response) // 3
 ```
 
-### A more complicated Script
+### A More Complex Script
 
-Things like [Resources](../../../build/smart-contracts/cadence.md#resources) and [Structs](../../../build/smart-contracts/cadence.md#structures) are fairly common place in Cadence.
+[Resources](https://cadence-lang.org/docs/language/resources) and [Structs](https://cadence-lang.org/docs/language/composite-types#structures) are complex data types that are fairly common place in Cadence.
 
 In the following code snippet, our script defines a struct called `Point`, it then returns a list of them.
 
@@ -40,9 +39,9 @@ import * as fcl from "@onflow/fcl"
 
 const response = await fcl.query({
   cadence: `
-    pub struct Point {
-      pub var x: Int
-      pub var y: Int
+    access(all) struct Point {
+      access(all) var x: Int
+      access(all) var y: Int
 
       init(x: Int, y: Int) {
         self.x = x
@@ -50,7 +49,7 @@ const response = await fcl.query({
       }
     }
 
-    pub fun main(): [Point] {
+    access(all) fun main(): [Point] {
       return [Point(x: 1, y: 1), Point(x: 2, y: 2)]
     }
   `
@@ -59,9 +58,9 @@ const response = await fcl.query({
 console.log(response) // [{x:1, y:1}, {x:2, y:2}]
 ```
 
-### Transforming the data we get back with custom decoders.
+### Transforming Data with Custom Decoders
 
-In our dapp, we probably have a way of representing these Cadence values internally. In the above example it might be a `Point` class.
+In our app, we probably have a way of representing these Cadence values internally. In the above example it might be a `Point` class.
 
 FCL enables us to provide custom decoders that we can use to transform the data we receive from the Flow blockchain at the edge, before anything else in our dapp gets a chance to look at it.
 
@@ -85,9 +84,9 @@ fcl.config()
 
 const response = await fcl.query({
   cadence: `
-    pub struct Point {
-      pub var x: Int
-      pub var y: Int
+    access(all) struct Point {
+      access(all) var x: Int
+      access(all) var y: Int
 
       init(x: Int, y: Int) {
         self.x = x
@@ -95,7 +94,7 @@ const response = await fcl.query({
       }
     }
 
-    pub fun main(): [Point] {
+    access(all) fun main(): [Point] {
       return [Point(x: 1, y: 1), Point(x: 2, y: 2)]
     }
   `

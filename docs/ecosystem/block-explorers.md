@@ -1,5 +1,5 @@
 ---
-sidebar_position: 2
+sidebar_position: 3
 description: |
   User-friendly online tools that provide visual representations of blockchain data, facilitating easy navigation through transactions, blocks, addresses, and smart contracts while ensuring real-time insights and transparency.
 sidebar_custom_props:
@@ -7,13 +7,14 @@ sidebar_custom_props:
 ---
 
 # Flow Block Explorers
+
 Block explorers are user-friendly online tools that visually present blockchain data, allowing users to easily navigate transactions, blocks, addresses, and smart contracts while providing real-time insights and transparency.
 
 <div id="cards" className="cards">
 
-## Flow Diver
+## Flowscan
 
-[Flow Diver](https://www.flowdiver.io/) provides various tools to explore the blockchain, including:
+[Flowscan](https://flowscan.io/) provides various tools to explore the blockchain, including:
 
 - Blocks
 - Transactions
@@ -24,9 +25,22 @@ Block explorers are user-friendly online tools that visually present blockchain 
 
 ### Supported networks:
 
-- [Mainnet](https://www.flowdiver.io/)
-- [Testnet](https://testnet.flowdiver.io/)
-- [Previewnet](https://previewnet.flowdiver.io/)
+- [Mainnet](https://flowscan.io/)
+- [Testnet](https://testnet.flowscan.io/)
+
+## Flowscan [EVM]
+
+[Flowscan](https://evm-testnet.flowscan.io/) is based off of the popular Blockscout and provides a user-friendly interface to search for specific EVM transactions, blocks, monitor network health, and track the status of various smart contracts and tokens on Flow EVM. Features include:
+
+- Real-Time Data: View live transaction data, blocks, and account activities.
+- Search Functionality: Search for specific transactions, blocks, and accounts.
+- Smart Contract Analysis: Examine smart contract statuses and interactions.
+- Token Tracking: Monitor the creation and transfer of various tokens on the Flow network.
+
+### Supported networks:
+
+- [Testnet](https://evm-testnet.flowscan.io/)
+- [Mainnet](https://evm.flowscan.io/)
 
 ## Flow View
 

@@ -1,47 +1,70 @@
 ---
 title: Start Emulator
-description: How to start Flow emulator from the command line
+description: How to start the Flow Emulator from the command line
 sidebar_position: 1
 ---
 
-The Flow CLI provides a command to start an emulator. 
-The Flow Emulator is a lightweight tool that emulates the behaviour of the real Flow network.
+The Flow Emulator is a lightweight development tool that mimics the behavior of the real Flow network. It is bundled with the [Flow CLI](https://docs.onflow.org/flow-cli/), which makes starting and configuring the emulator straightforward.
 
-```shell
+## Initial Configuration
+
+The emulator requires a configuration file (`flow.json`). If you don’t already have one, create it using the `flow init` command:
+
+```bash
+flow init
+```
+
+This initializes a default configuration file that the emulator will use.
+
+## Starting the Emulator
+
+To start the emulator with default settings, use the following command:
+
+```bash
 flow emulator
 ```
 
-⚠️ The emulator command expects configuration to be initialized. See [flow init](../flow.json/initialize-configuration.md) command.
+This will start the emulator with the configuration defined in `flow.json`.
 
+### Example Output
 
-## Example Usage
+When you run the `flow emulator` command, you will see output similar to the following:
 
-```shell
-> flow emulator
-
+```bash
 INFO[0000] ⚙️   Using service account 0xf8d6e0586b0a20c7  serviceAddress=f8d6e0586b0a20c7 ...
-...
+INFO[0000] 🌱  Starting Flow Emulator
+INFO[0000] 🛠  GRPC server started on 127.0.0.1:3569
+INFO[0000] 📡  HTTP server started on 127.0.0.1:8080
 ```
 
-To learn more about using the Emulator, have a look at the [README of the repository](https://github.com/onflow/flow-emulator).
+## Customizing the Emulator
 
-## Flags
+You can customize the emulator behavior by using flags. Here are some examples:
 
-### Emulator Flags
-You can specify any [emulator flags found here](https://github.com/onflow/flow-emulator#configuration) and they will be applied to the emulator service.
+Change the gRPC and REST API ports:
 
-### Configuration
+```bash
+flow emulator --port 9000 --rest-port 9001
+```
 
-- Flag: `--config-path`
-- Short Flag: `-f`
-- Valid inputs: valid filename
+Enable persistence of state across restarts:
 
-Specify a filename for the configuration files, you can provide multiple configuration
-files by using `-f` flag multiple times.
+```bash
+flow emulator --persist
+```
 
-### Version Check
+Enable detailed logs for debugging:
 
-- Flag: `--skip-version-check`
-- Default: `false`
+```bash
+flow emulator --verbose
+```
 
-Skip version check during start up to speed up process for slow connections.
+For a complete list of available flags, run:
+
+```bash
+flow emulator --help
+```
+
+## Learn More
+
+To explore advanced features like snapshots, rollbacks, and debugging, visit the [Flow Emulator README](https://github.com/onflow/flow-emulator).

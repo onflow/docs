@@ -9,7 +9,7 @@ The Cluster Quorum Certificate (QC) and Distributed Key Generation (DKG) protoco
 store a lot of different state, and the state is constantly changing.
 As an external party, there are two ways to keep track of these state changes. 
 You can either use Cadence scripts to query the state of the contract at any given time,
-or you can monitor events that are emitted by the contracts to be notified of any important occurances.
+or you can monitor events that are emitted by the contracts to be notified of any important occurrences.
 
 # Query Information with Scripts
 
@@ -88,11 +88,11 @@ can use the **Get Node Has Submitted** ([DKG.08](../../build/core-contracts/07-e
 
 ```cadence
 /// Emitted when the admin enables the DKG
-pub event StartDKG()
+access(all) event StartDKG()
 
 /// Emitted when the admin ends the DKG after enough submissions have been recorded
-pub event EndDKG(finalSubmission: [String?]?)
+access(all) event EndDKG(finalSubmission: [String?]?)
 
 /// Emitted when a consensus node has posted a message to the DKG whiteboard
-pub event BroadcastMessage(nodeID: String, content: String)
+access(all) event BroadcastMessage(nodeID: String, content: String)
 ```

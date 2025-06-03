@@ -2,12 +2,12 @@ import React from 'react';
 import Learn from '../../../../images/page/flow-learn-icon.svg';
 import Quickstart from '../../../../images/page/flow-quickstart-icon.svg';
 import Documentation from '../../../../images/page/flow-documentation-icon.svg';
-import BentoCardStartHere from '../../../../images/misc/bento-card-start-here.png';
-import BentoCardCadenceCourse from '../../../../images/misc/bento-card-cadence-course.png';
-import BentoCardCadenceCourse2 from '../../../../images/misc/bento-card-cadence-course@2x.png';
-import BentoCardPathQuest from '../../../../images/misc/bento-card-path-quest.png';
-import BentoCardLangReference from '../../../../images/misc/bento-card-cadence-lang-reference.png';
-import BentoCardLangReference2 from '../../../../images/misc/bento-card-cadence-lang-reference@2x.png';
+import BentoCardStartHere from '../../../../images/misc/bento-card-evm-using.png';
+import BentoCardCadenceCourse from '../../../../images/misc/bento-card-evm-overview.png';
+import BentoCardCadenceCourse2 from '../../../../images/misc/bento-card-evm-overview.png';
+import BentoCardPathQuest from '../../../../images/misc/bento-card-evm-guides.png';
+import BentoCardLangReference from '../../../../images/misc/bento-card-evm-accounts.png';
+import BentoCardLangReference2 from '../../../../images/misc/bento-card-evm-accounts@2x.png';
 import DevOfficeHours from '../../../../images/page/flow-dev-office-hours-icon.svg';
 import AssistantGpt from '../../../../images/page/flow-assistant-gpt-icon.svg';
 import DeveloperChat from '../../../../images/page/flow-developer-chat-icon.svg';
@@ -16,6 +16,8 @@ import RoadmapLarge from '../../../../images/misc/roadmap-card-lg.png';
 import RoadmapSmall from '../../../../images/misc/roadmap-card-sm.png';
 import UpdatesLight from '../../../../images/misc/updates-light.png';
 import UpdatesDark from '../../../../images/misc/updates-dark.png';
+import Forum from '../../../../images/page/flow-forum-icon.svg';
+
 export interface HomepageStartItemIconsProps {
   icon: string;
 }
@@ -58,7 +60,7 @@ export function HomepageStartItemIcons({
             alt="Language Reference"
           />
           <img
-            className="block md:hidden w-full"
+            className="block md:hidden "
             src={BentoCardLangReference}
             alt="Language Reference"
           />
@@ -87,6 +89,8 @@ export function HomepageStartItemIcons({
       return <DeveloperChat />;
     case 'network-upgrade':
       return <NetworkUpgrade />;
+    case 'forum':
+      return <Forum />;
     case 'updates':
       return (
         <span>

@@ -60,8 +60,34 @@ The following are some important metrics produced by the node.
 | consensus_hotstuff_cur_view           | Current view of the HotStuff consensus algorith; Consensus/Collection only; should increase at a constant rate.         |
 | consensus_hotstuff_timeout_seconds    | How long it takes to timeout failed rounds; Consensus/Collection only; values consistently larger than 5s are abnormal. |
 
-## Monitoring a Flow node using Metrika Monitoring
+### Machine Account
 
-Metrika has developed the Flow node monitoring service and is the recommended way of monitoring a Flow node.
-It is a free tool that uses the logs and metrics published by the node and provides access to private node-specific dashboards.
-Follow this [link](https://app.metrika.co/flow/node/install-agent) to setup the Metrika monitoring for your node.
+Collection and consensus nodes use a machine account that must be kept funded. See [here](../../staking/11-machine-account.md) for details.
+
+Nodes check their machine account's configuration and funding and produce metrics.
+
+| Metric Name                           | Description                                                                                                             |
+| ------------------------------------- | ----------------------------------------------------------------------------------------------------------------------- |
+| machine_account_balance                                | The current balance (FLOW) |
+| machine_account_recommended_min_balance                | The recommended minimum balance (FLOW) |
+| machine_account_is_misconfigured                       | 0 if the node is configured correctly; 1 if the node is misconfigured |
+
+To be notified when your node's machine account needs to be refilled or has a configuration error, you can set up alerts.
+
+When the machine account balance needs to be refilled:
+```
+machine_account_balance < machine_account_recommended_min_balance
+```
+
+When the machine account has a configuration error:
+```
+machine_account_is_misconfigured > 0
+```
+
+The metrics include the account address of the machine account (`acct_address` label) for convenience:
+```
+# HELP machine_account_balance the last observed balance of this node's machine account, in units of FLOW
+# TYPE machine_account_balance gauge
+machine_account_balance{acct_address="7b16b57ae0a3c6aa"} 9.99464935
+```
+

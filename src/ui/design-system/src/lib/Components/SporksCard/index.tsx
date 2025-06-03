@@ -1,5 +1,5 @@
 import React from 'react'
-import { Disclosure } from '@headlessui/react'
+import { Disclosure, DisclosureButton, DisclosurePanel } from '@headlessui/react';
 import clsx from 'clsx'
 import CopyIcon from '../../../../images/action/copy.svg'
 import ChevronDownIcon from '../../../../images/arrows/chevron-down.svg'
@@ -54,7 +54,7 @@ const Spork = ({ heading, timestamp, sporkMetadata }: SporksCardProps) => {
         return (
           <>
             <div className={cardStyles}>
-              <Disclosure.Button className="flex w-full cursor-pointer justify-between px-2 py-6 ease-in">
+              <DisclosureButton className="flex w-full cursor-pointer justify-between px-2 py-6 ease-in">
                 <div className="flex items-center">
                   <span className="pr-4 text-2xl font-bold">{heading}</span>
                   <span className="border-l border-primary-gray-100 pl-4 text-primary-gray-300 dark:border-primary-gray-400">
@@ -64,9 +64,9 @@ const Spork = ({ heading, timestamp, sporkMetadata }: SporksCardProps) => {
                 <div className="dark:text-primary-gray-200">
                   {open ? <ChevronUpIcon /> : <ChevronDownIcon />}
                 </div>
-              </Disclosure.Button>
+              </DisclosureButton>
             </div>
-            <Disclosure.Panel>
+            <DisclosurePanel>
               <div className="flex-col pb-4">
                 {accessNode && (
                   <CardItem label="Access Node" data={accessNode} />
@@ -77,7 +77,7 @@ const Spork = ({ heading, timestamp, sporkMetadata }: SporksCardProps) => {
                 <CardItem label="Root State Commit" data={rootStateCommit} />
                 <CardItem label="Git Commit" data={gitCommit} />
               </div>
-            </Disclosure.Panel>
+            </DisclosurePanel>
           </>
         )
       }}

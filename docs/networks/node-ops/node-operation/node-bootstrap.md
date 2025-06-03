@@ -5,14 +5,14 @@ description: How to get started running a node on Flow
 sidebar_position: 8
 ---
 
-This guide is for getting a new node staked and running on Flow other than a permissionless Access node. For running a permissionless Access node see [Access node setup](../access-onchain-data/access-nodes/access-node-setup.md). For sporking documentation for existing node operators, see [Spork Process](./spork.md).
+This guide is for getting a new node staked and running on Flow other than a permissionless Access node. For running a permissionless Access node see [Access node setup](../access-nodes/access-node-setup.md). For sporking documentation for existing node operators, see [Spork Process](./spork.md).
 
 ## Timing
 
 New nodes are able to join the network each time a new epoch begins.
 In order to join the network at epoch N+1, the node must be registered with sufficient stake and
 authorized by the service account prior to the end of epoch N's Staking Auction Phase.
-Confirmation of a new node's inclusion in epoch N+1 is included in the [`EpochSetup` event](../../staking/05-epoch-scripts-events.md#epochsetup).
+Confirmation of a new node's inclusion in epoch N+1 is included in the [`EpochSetup` event](../../staking/05-epoch-scripts-events.md#flowepochepochsetup).
 
 Nodes registered for epoch N+1 are able to participate in network communication on a limited basis starting in the `Epoch Setup Phase` of epoch N.
 
@@ -25,15 +25,19 @@ of the `Epoch Setup Phase` to participate in the [Epoch Preparation Protocol](..
 
 ## Step 1 - Run Genesis Bootstrap
 
-<Callout type="info">
+:::info
+
   You will need to run this process for each node that you are operating
-</Callout>
+
+:::
 
 ### Download the Bootstrapping Kit
 
-<Callout type="warning">
+:::warning
+
 If you have downloaded the bootstrapping kit previously, ensure you check the hash below still matches. If not, re-download to ensure you are using the most up-to-date version.
-</Callout>
+
+:::
 
 ```shell
 curl -sL -O storage.googleapis.com/flow-genesis-bootstrap/boot-tools.tar
@@ -54,31 +58,31 @@ sha256sum ./boot-tools/transit
 
 #### Network Address
 
-<Callout type="info">
+:::info
 
 Use a fully qualified domain name for the network address. Please also include the port number in the network address e.g. `example.com:3569`
 
-</Callout>
+:::
 
-<Callout type="warning">
+:::warning
 
 Do not include in `http://` format.
 
-</Callout>
+:::
 
-<Callout type="info">
+:::info
 
 If you are running multiple nodes, please
 ensure you have different addresses for each node.
 
-</Callout>
+:::
 
-<Callout type="warning">
+:::warning
 
 All your current keys and Flow genesis files should be in the `bootstrap`
 folder created earlier. Please take a back up of the entire folder.
 
-</Callout>
+:::
 
 
 ```shell
@@ -128,12 +132,12 @@ $tree ./bootstrap/
 3 directories, 4 files
 ```
 
-<Callout type="info">
+:::info
 
 For `consensus` and `collection` node types an additional key will be created for the Machine Account.
 For all other node types this will not be needed.
 
-</Callout>
+:::
 
 #### Machine Account Creation
 
@@ -151,11 +155,11 @@ $./boot-tools/bootstrap key --address YOUR_NODE_ADDRESS_GOES_HERE --role YOUR_NO
 <nil> INF wrote file bootstrap/private-root-information/private-node-info_ab6e0b15837de7e5261777cb65665b318cf3f94492dde27c1ea13830e989bbf9/node-machine-account-key.priv.json
 ```
 
-<Callout type="warning">
+:::warning
 
 Copy the machine account public key somewhere safe. You will need it in a later step.
 
-</Callout>
+:::
 
 ## Step 2 - Stake Your Node
 
@@ -181,19 +185,19 @@ This value is found in the output of the `bootstrap key` command from Step 1.
 
 Staking a collection or consensus node will also create a machine account for the node. The machine account will be mentioned in the output of the staking transaction displayed by Flow Port. Please save the machine account for the next step.
 
-<Callout type="info">
+:::info
 
 Please let us know your node id via discord or email.
 
-</Callout>
+:::
 
 ### Finalize Machine Account Setup
 
-<Callout type="warning">
+:::warning
 
 If you are not running a collection or consensus node, you can skip this step.
 
-</Callout>
+:::
 
 You will now need to use the `bootstrap` utility to run `machine-account` with the created address to finalize the set up of your Machine account.
 
@@ -252,7 +256,7 @@ $ ./boot-tools/transit prepare -b ./bootstrap -r consensus
 This will generate the public and private transit keys under the bootstrap folder.
 The transit keys are used to transfer the DKG keys after a network upgrade.
 
-Please share the **public** transit key with the Flow Foundation via [discord](https://discord.com/channels/613813861610684416/694291244020662273) or [email](mailto::governance@flow.com).
+Please share the **public** transit key with the Flow Foundation via [discord](https://discord.gg/flow) or [email](mailto::governance@flow.com).
 
 ## Step 3 - Start Your Flow Node
 
@@ -294,29 +298,28 @@ This is the recommended way to start your node for the first time.
 ```
 4. Start your node (see [guide](./node-setup#start-the-node))
 
-<Callout type="info">
-Once the node has bootstrapped, these flags may be removed.
-</Callout>
+:::info
+
+Once the node has bootstrapped, these flags will be ignored and may be removed.
+
+:::
 
 ### Manually Provisioned Root Snapshot
 
 You can also provision the root snapshot file manually, then start the node without configuring Dynamic Startup.
-A snapshot can be obtained from any Access Node using [Flow CLI](../../../tools/flow-cli/index.md).
-```shell RetrieveRootSnapshot
-flow snapshot save /path/to/root/snapshot --network mainnet
-```
+See [here](./protocol-state-bootstrap.md) for the available options to provision a Root Snapshot.
 
-<Callout type="warning">
+:::warning
 
 The snapshot must be within the `Epoch Setup Phase`.
 
-</Callout>
+:::
 
-<Callout type="warning">
+:::warning
 
 Since Collection and Consensus Nodes must start up in the first ~30mins of the `Epoch Setup Phase` (see [Timing](./node-bootstrap.md#timing)),
 the snapshot must be provisioned within this time window.
 
-</Callout>
+:::
 
 Once a valid root snapshot file is downloaded to the node's bootstrap folder, it can be started (see [guide](./node-setup.md#start-the-node))

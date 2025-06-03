@@ -1,6 +1,6 @@
 import clsx from "clsx"
 import AppLink from "../AppLink"
-import { ButtonLink } from "../Button"
+import { Button } from "../Button"
 import { Carousel, CarouselProps } from "../Carousel"
 import Tag from "../Tag"
 import OfficeHoursImage from "../../../../images/misc/office-hours@2x.png"
@@ -63,13 +63,13 @@ export function EventCard({
           </div>
         )}
         <p className="mt-3 pb-6 dark:text-primary-gray-100">{description}</p>
-        <ButtonLink
+        <Button
           href={href}
           variant="primary-no-darkmode"
           className="whitespace-nowrap px-16 py-4 text-center"
         >
           {ctaText || "More Details"}
-        </ButtonLink>
+        </Button>
       </div>
       <div
         className="min-h-[125px] flex-none basis-1/2 self-stretch bg-cover bg-center"

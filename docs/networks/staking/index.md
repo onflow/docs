@@ -104,7 +104,7 @@ In the case of unstaking requests, they also must wait an additional
 epoch before their unstaked tokens are available to withdraw.
 This allows the protocol to deal with any slashable offenses that may have happened in the previous epoch.
 
-See the [Epochs](./04-epoch-preparation.md) section of the documentation for in-depth explainations 
+See the [Epochs](./04-epoch-preparation.md) section of the documentation for in-depth explanations 
 of the identity table, epoch schedule, QC, and DKG.
 
 ## Rewards
@@ -142,7 +142,7 @@ If you created your account using [Flow Port](https://port.onflow.org/),
 you can also stake and earn rewards using the Flow Port.
 Follow this [step-by-step guide](../../networks/flow-port/staking-guide.md) to stake using Flow Port.
 Flow Port currently supports staking as a node, delegating,
-and reward withdrawal using **Blocto**, **Ledger**, **Lilico**, and **NuFi** accounts / wallets.
+and reward withdrawal using **Flow Reference Wallet**, **Ledger**, **Shadow**, **NuFi**, and any other FCL compatible accounts / wallets.
 
 ### Staking via a Custody Provider
 

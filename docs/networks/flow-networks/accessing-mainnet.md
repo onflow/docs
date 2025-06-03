@@ -27,7 +27,7 @@ func main() {
 
 ## Account Creation
 
-You can follow the [Flow Port account creation steps](../../networks/flow-port/index.md#blocto) to create a new mainnet account.
+You can follow the [Flow Port account creation steps](../../networks/flow-port/index.md) to create a new mainnet account.
 
 If you prefer watching a video, check out this tutorial:
 
@@ -59,7 +59,7 @@ Public Key       1bdc5...
 
 > **Note**: By default, this command generates an ECDSA key pair on the P-256 curve. Keep in mind the CLI is intended for development purposes only and is not recommended for production use. Handling keys using a Key Management Service is the best practice.
 
-Take a note of the public key and go back to Flow Port. Open the ["Create a new account" page](https://port.onflow.org/transaction?hash=a0a78aa7821144efd5ebb974bb52ba04609ce76c3863af9d45348db93937cf98&showcode=false&weight=1000&halg=3).
+Take a note of the public key and go back to Flow Port. Open the ["Create a new account" page](https://port.flow.com/transaction?hash=a0a78aa7821144efd5ebb974bb52ba04609ce76c3863af9d45348db93937cf98&showcode=false&weight=1000&halg=3).
 
 On the page, enter your public key from the CLI, ensure the hash algorithm is set to `SHA3_256` and the weight is set to `1000`. Finally, check the box confirming correctness and hit 'Submit'.
 

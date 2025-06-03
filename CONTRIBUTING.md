@@ -24,7 +24,8 @@ The contribution process is designed to be straightforward and collaborative. He
 
 Note: Previews are built for each Git branch by Vercel workflow.
 
-For additional assistance or integration support, feel free to request help in the `#devex-builders` [Discord channel](https://discord.com/channels/613813861610684416/1123314820763111465) on the [Flow Discord](https://discord.gg/flow) server.
+For additional assistance or integration support, feel free to request help in the `#devex-builders` channel on the [Flow Discord](https://discord.gg/flow) server.
+
 
 ## Updating Existing Content
 
@@ -107,7 +108,7 @@ Examples:
 
 ## Go SDK
 
-[Flow Go SDK](./flow-go-sdk/index.mdx) provides a set of packages for Go developers to build applications that interact with the Flow network.
+[Flow Go SDK](./flow-go-sdk/index.md) provides a set of packages for Go developers to build applications that interact with the Flow network.
 
 ## JavaScript (FCL)
 
@@ -118,7 +119,7 @@ Examples:
 ```
 
 
-```markdown index.mdx
+```markdown index.md
 ---
 sidebar_position: 1
 title: Tools
@@ -126,25 +127,31 @@ description: Essential tools for the Flow blockchain ecosystem
 ---
 
 import DocCardList from '@theme/DocCardList';
-import { useDocsSidebar, isSamePath } from '@docusaurus/theme-common/internal';
+import { isSamePath } from '@docusaurus/theme-common/internal';
+import { useDocsSidebar } from '@docusaurus/plugin-content-docs/client';
 import { useLocation } from '@docusaurus/router';
 
 <DocCardList items={useDocsSidebar().items.filter(item => !isSamePath(item.href, useLocation().pathname))}/>
 
 ```
 
-<Callout type="warning">
+:::warning
+
 The `index` page should only include information that is available elsewhere within the category's other pages.
-</Callout>
+
+:::
 
 ### Using DocCardList
 
 Using `DocCardList` improves the layout of the index page:
 
-<Callout type="note" title="Example">
+:::note Example
+
 ![edit page](./static/images/contributing/doc-card-list-light.png#gh-light-mode-only)
+
 ![edit page](./static/images/contributing/doc-card-list-dark.png#gh-dark-mode-only)
-</Callout>
+
+:::
 
 On the most pages you can use just `<DocCardList />` component imported from `'@theme/DocCardList'`
 
@@ -164,18 +171,20 @@ On the top level index category pages you have to use `useDocsSidebar` react hoo
 
 ```markdown
 import DocCardList from '@theme/DocCardList';
-import { useDocsSidebar, isSamePath } from '@docusaurus/theme-common/internal';
+import { isSamePath } from '@docusaurus/theme-common/internal';
+import { useDocsSidebar } from '@docusaurus/plugin-content-docs/client';
 import { useLocation } from '@docusaurus/router';
 
 <DocCardList items={useDocsSidebar().items.filter(item => !isSamePath(item.href, useLocation().pathname))}/>
 ```
 
-<Callout type="warning">
+:::warning
+
 If you use `<DocCardList/>` on the top level category index page (e.g. `./docs/tools/index.mdx`), Docusaurus will throw an error:
 
 > useCurrentSidebarCategory() should only be used on category index pages.
 
-</Callout>
+:::
 
 ## SEO
 
@@ -222,9 +231,11 @@ Writing links in your documents is easy if you follow this rule-of-thumb: If it 
 [link](https://www.google.com)
 ```
 
-<Callout type="tip">
+:::tip
+
 Use relative links directly to .md/.mdx files
-</Callout>
+
+:::
 
 ### Callouts
 
@@ -240,11 +251,65 @@ Available types:
 
 Example:
 ```markdown
-<Callout type="tip">
-    Use relative links directly to .md/.mdx files
-</Callout>
+:::tip
 
+    Use relative links directly to .md/.mdx files
+
+:::
 ```
+
+### Code Reference
+
+To include code from a file using a direct URL use `!from` operand inside a code block.
+
+Example: 
+
+#### By line number
+
+````markdown
+```cadence DepositFees.cdc
+!from https://github.com/onflow/flow-core-contracts/blob/master/transactions/FlowServiceAccount/deposit_fees.cdc#L23
+```
+````
+
+#### By line range
+
+````markdown
+```cadence DepositFees.cdc
+!from https://github.com/onflow/flow-core-contracts/blob/master/transactions/FlowServiceAccount/deposit_fees.cdc#L23-L26
+```
+````
+
+#### By snippet name / Region Tag
+
+Specific blocks of code that are embedded in documentation are defined using `[START <snippet_name>]` and `[END <snippet_name>]` region tags.
+
+```ruby
+def create_bucket project_id:, bucket_name:
+  # [START create_bucket]
+  # project_id  = "Your Google Cloud project ID"
+  # bucket_name = "Your Google Cloud Storage bucket name"
+
+  require "google/cloud/storage"
+
+  storage = Google::Cloud::Storage.new project: project_id
+
+  bucket = storage.create_bucket bucket_name
+
+  puts "Created bucket #{bucket.name}"
+  # [END create_bucket]
+end
+```
+
+and the reference would look like
+
+````markdown
+```ruby
+!from https://github.com/emosei/ruby-docs-samples/blob/master/storage/buckets.rb#create_bucket
+```
+````
+
+This method keeps your documentation synchronized with your codebase by pulling the latest code directly into your docs.
 
 ## Content Validation
 

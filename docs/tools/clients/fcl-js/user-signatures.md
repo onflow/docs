@@ -36,7 +36,7 @@ A method to use allowing the user to personally sign data via FCL Compatible Wal
 
 | Type    | Description                                                                                                                                                                               |
 | ------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `Array` | An Array of [CompositeSignatures](https://github.com/onflow/flow-js-sdk/blob/master/packages/fcl/src/wallet-provider-spec/draft-v2.md#compositesignature): {`addr`, `keyId`, `signature`} |
+| `Array` | An Array of [CompositeSignatures](https://github.com/onflow/fcl-js/blob/master/packages/fcl-core/src/wallet-provider-spec/draft-v2.md#compositesignature): {`addr`, `keyId`, `signature`} |
 
 #### Usage
 
@@ -59,7 +59,7 @@ const signMessage = async () => {
 
 #### Note
 
-⚠️ `fcl.config.flow.network` or options override is required to use this API. See [FCL Configuration](#configuration).
+⚠️ `fcl.config.flow.network` or options override is required to use this API. See [FCL Configuration](./configure-fcl.md).
 
 A method allowing applications to cryptographically verify the ownership of a Flow account by verifying a message was signed by a user's private key/s. This is typically used with the response from `currentUser.signUserMessage`.
 

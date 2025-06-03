@@ -77,6 +77,7 @@ flow flix package <query> [flags]
 
 Generate FLIX json file. This command will take in a Cadence file and produce a FLIX json file. There are two ways to provide metadata to populate the FLIX json structure. 
  - Use `--pre-fill` flag to pass in a pre populated FLIX json structure
+ - Use `--exclude-networks` flag to specify excluded networks when generating a FLIX templates. Example, `--exclude-networks testnet,mainnet`
 
 :::warning
 
@@ -96,7 +97,7 @@ Example of Cadence simple, no metadata associated
 ```cadence
 
 import "HelloWorld"
-pub fun main(): String {
+access(all) fun main(): String {
   return HelloWorld.greeting
 }
 ```
@@ -118,7 +119,7 @@ import "HelloWorld"
 
 transaction(greeting: String) {
 
-  prepare(acct: AuthAccount) {
+  prepare(acct: &Account) {
     log(acct.address)
   }
 
@@ -187,7 +188,7 @@ Using a pre-filled FLIX template, the cadence can be simple but no metadata acco
 
 ```cadence
 import "HelloWorld"
-pub fun main(): String {
+access(all) fun main(): String {
   return HelloWorld.greeting
 }
 ```
@@ -257,7 +258,7 @@ The resulting FLIX json file after generation:
             }
         ],
         "cadence": {
-            "body": "import \"HelloWorld\"\npub fun main(): String {\n  return HelloWorld.greeting\n}\n",
+            "body": "import \"HelloWorld\"\naccess(all) fun main(): String {\n  return HelloWorld.greeting\n}\n",
             "network_pins": [
                 {
                     "network": "testnet",
@@ -562,4 +563,3 @@ several configuration files.
 - Default: `false`
 
 Skip version check during start up to speed up process for slow connections.
-

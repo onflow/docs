@@ -6,9 +6,10 @@ title: Wallet Discovery
 
 Knowing all the wallets available to users on a blockchain can be challenging. FCL's Discovery mechanism relieves much of the burden of integrating with Flow compatible wallets and let's developers focus on building their dapp and providing as many options as possible to their users.
 
-There are two ways an app can use Discovery: 
- 1. The **UI version** which can be configured for display via iFrame, Popup, or Tab.
- 2. The **API version** which allows you to access authentication services directly in your code via `fcl.discovery.authn` method which we'll describe below.
+There are two ways an app can use Discovery:
+
+1.  The **UI version** which can be configured for display via iFrame, Popup, or Tab.
+2.  The **API version** which allows you to access authentication services directly in your code via `fcl.discovery.authn` method which we'll describe below.
 
 ## UI Version
 
@@ -18,17 +19,17 @@ When authenticating via FCL using Discovery UI, a user is shown a list of servic
 
 This method is the simplest way to integrate Discovery and its wallets and services into your app. All you have to do is configure `discovery.wallet` with the host endpoint for testnet or mainnet.
 
-> **Note**: Opt-in wallets, like Ledger and Dapper Wallet, require you to explicitly state you'd like to use them. For more information on including opt-in wallets, [see these docs](./api.md#more-configuration). 
-> 
+> **Note**: Opt-in wallets, like Ledger and Dapper Wallet, require you to explicitly state you'd like to use them. For more information on including opt-in wallets, [see these docs](./api.md#more-configuration).
+>
 > A [Dapper Wallet](https://meetdapper.com/developers) developer account is required. To enable Dapper Wallet inside FCL, you need to [follow this guide](https://docs.meetdapper.com/quickstart).
 
 ```javascript
-import { config } from "@onflow/fcl";
+import { config } from '@onflow/fcl';
 
 config({
-  "accessNode.api": "https://rest-testnet.onflow.org",
-  "discovery.wallet": "https://fcl-discovery.onflow.org/testnet/authn"
-})
+  'accessNode.api': 'https://rest-testnet.onflow.org',
+  'discovery.wallet': 'https://fcl-discovery.onflow.org/testnet/authn',
+});
 ```
 
 Any time you call `fcl.authenticate` the user will be presented with that screen.
@@ -42,12 +43,12 @@ Starting in version 0.0.79-alpha.4, dapps now have the ability to display app a 
 All you have to do is set `app.detail.icon` and `app.detail.title` like this:
 
 ```javascript
-import { config } from "@onflow/fcl";
+import { config } from '@onflow/fcl';
 
 config({
-  "app.detail.icon": "https://placekitten.com/g/200/200",
-  "app.detail.title": "Kitten Dapp"
-})
+  'app.detail.icon': 'https://placekitten.com/g/200/200',
+  'app.detail.title': 'Kitten Dapp',
+});
 ```
 
 **Note:** If these configuration options aren't set, Dapps using the Discovery API will still display a default icon and "Unknown App" as the title when attempting to authorize a user who is not logged in. It is highly recommended to set these values accurately before going live.
@@ -59,47 +60,59 @@ If you want more control over your authentication UI, the Discovery API is also 
 Setup still requires configuration of the Discovery endpoint, but when using the API it is set via `discovery.authn.endpoint` as shown below.
 
 ```javascript
-import { config } from "@onflow/fcl"
+import { config } from '@onflow/fcl';
 
 config({
-  "accessNode.api": "https://rest-testnet.onflow.org",
-  "discovery.authn.endpoint": "https://fcl-discovery.onflow.org/api/testnet/authn"
-})
+  'accessNode.api': 'https://rest-testnet.onflow.org',
+  'discovery.authn.endpoint':
+    'https://fcl-discovery.onflow.org/api/testnet/authn',
+});
 ```
 
 You can access services in your Dapp from `fcl.discovery`:
 
 ```javascript
-import * as fcl from "@onflow/fcl"
+import * as fcl from '@onflow/fcl';
 
-fcl.discovery.authn.subscribe(callback)
+fcl.discovery.authn.subscribe(callback);
 
-// OR 
+// OR
 
-fcl.discovery.authn.snapshot()
+fcl.discovery.authn.snapshot();
 ```
+
 In order to authenticate with a service (for example, when a user click's "login"), pass the selected service to the `fcl.authenticate` method described here [in the API reference](./api.md#authenticate):
 
 ```jsx
-fcl.authenticate({ service })
+fcl.authenticate({ service });
 ```
 
 A simple React component may end up looking like this:
 
 ```jsx
-import "./config"
-import { useState, useEffect } from "react"
-import * as fcl from "@onflow/fcl"
+import './config';
+import { useState, useEffect } from 'react';
+import * as fcl from '@onflow/fcl';
 
 function Component() {
-  const [services, setServices] = useState([])
-  useEffect(() => fcl.discovery.authn.subscribe(res => setServices(res.results)), [])
+  const [services, setServices] = useState([]);
+  useEffect(
+    () => fcl.discovery.authn.subscribe((res) => setServices(res.results)),
+    [],
+  );
 
   return (
     <div>
-      {services.map(service => <button key={service.provider.address} onClick={() => fcl.authenticate({ service })}>Login with {service.provider.name}</button>)}
+      {services.map((service) => (
+        <button
+          key={service.provider.address}
+          onClick={() => fcl.authenticate({ service })}
+        >
+          Login with {service.provider.name}
+        </button>
+      ))}
     </div>
-  )
+  );
 }
 ```
 
@@ -171,5 +184,20 @@ fcl.config({
 | `Ledger`        | 0x9d2e44203cb13051 | 0xe5cd26afebe62781 |
 
 To learn more about other possible configurations, check out the following links:
+
 - [Discovery API Docs](./api.md#discovery-1)
 - [Discovery Github Repo](https://github.com/onflow/fcl-discovery)
+
+### Exclude Wallets
+
+To exclude wallets from FCL Discovery, you can use the `discovery.authn.exclude` configuration option. This allows you to specify a list of service account addresses that you want to hide from the Discovery UI or API.
+
+```javascript
+import * as fcl from '@onflow/fcl';
+fcl.config({
+  'discovery.wallet': 'https://fcl-discovery.onflow.org/testnet/authn',
+  'discovery.authn.endpoint':
+    'https://fcl-discovery.onflow.org/api/testnet/authn',
+  'discovery.authn.exclude': ['0x123', '0x456'], // Service account addresses to exclude
+});
+```

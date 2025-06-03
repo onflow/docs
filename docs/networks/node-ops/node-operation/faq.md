@@ -7,11 +7,11 @@ sidebar_position: 1
 
 ### Can anybody run a node? What is the approval process?
 
-Anyone can run an [observer node](../access-onchain-data/light-nodes/observer-node.md).
+Anyone can run an [observer node](../light-nodes/observer-node.md).
 
-Anyone can run an Access Node after registering and staking. See [Access Node Setup](../access-onchain-data/access-nodes/access-node-setup.md) for detailed instructions.
+Anyone can run an Access Node after registering and staking. See [Access Node Setup](../access-nodes/access-node-setup.md) for detailed instructions.
 
-For the other node roles, individuals can go through an application process that involves asking about their background and experience contributing to decentralized projects. To pursue an application, please visit [the Flow website here to apply](https://www.onflow.org/node-validators).
+For the other node roles, individuals can go through an application process that involves asking about their background and experience contributing to decentralized projects. To pursue an application, please visit [the Flow website here to apply](https://www.flow.com/node-validators).
 
 Pending approval, new node operators will be onboarded and invited to join a webinar to meet the team and share more about how they’ll grow the community. Node Operators are invited to join and participate in Flow's Node Validator Discord channel for setup questions and network announcements.
 
@@ -19,7 +19,7 @@ In the long-term, anyone can run a node validator on Flow.
 
 ### How do I generate keys?
 
-Please follow the instructions provided here: [Generate Your Node Keys](./node-bootstrap.md#generating-your-node-id)
+Please follow the instructions provided here: [Generate Your Node Keys](./node-bootstrap.md#generate-your-node-keys)
 
 ### How do I check on the status of my node?
 
@@ -27,13 +27,13 @@ Please follow the instructions provided here: [Monitoring nodes](./monitoring-no
 
 ### Can I bootstrap and run a node at any time?
 
-Flow allows nodes to join/leave the network each time a new epoch begins (roughly once per week). 
+Flow allows nodes to join/leave the network each time a new epoch begins (roughly once per week).
 See [Staking & Epochs](../../staking/index.md#epochs) for general information and [Node Setup](./node-bootstrap.md#timing) for a guide to running a new node.
 
 ### Would it hurt the network to have a node that constantly spins up and down?
 
 All staked nodes except access nodes, have to be online at all time. A staked node, other than an access node, which is not online can cause severe degradation of network performance and will be subjected to slashing of rewards.
-A way to prevent this is to check your equipment meets Flow's [recommended requirements](./node-setup.md#hardware-requirements), periodically checking for updates and announcements in Discord but also using a node monitoring system for when your node does go offline.
+A way to prevent this is to check your equipment meets Flow's [recommended requirements](./node-provisioning.md#hardware-requirements), periodically checking for updates and announcements in Discord but also using a node monitoring system for when your node does go offline.
 
 ### Does Flow has a regular schedule for Sporks?
 

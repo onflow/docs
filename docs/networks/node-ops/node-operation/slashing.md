@@ -13,7 +13,7 @@ in the Flow protocol during the upcoming epoch.
 (An epoch is a finite amount of time defined by the protocol, approximately one week,
 during which the nodes participate to run the protocol and are responsible for their operations.)
 
-See the [Staking and Epochs section of the documentation](LINK REQUIRED) to learn more
+See the [Staking and Epochs section of the documentation](../../staking/index.md) to learn more
 about the design and functionality of this part of the protocol.
 
 Flow nodes follow the procedures defined in the protocol (based on their role)

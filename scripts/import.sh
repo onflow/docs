@@ -91,7 +91,11 @@ copyRepoFilesToDest() {
 }
 
 renameEcosystemOverview() {
-    sed -i'' 's/Get the Flow Down - Flow Learning Resources/Ecosystem Overview/g' ./docs/ecosystem/overview/README.md
+    if [[ "$OSTYPE" == "darwin"* ]]; then
+        sed -i '' 's/Get the Flow Down - Flow Learning Resources/Ecosystem Overview/g' ./docs/ecosystem/overview/README.md
+    else
+        sed -i'' 's/Get the Flow Down - Flow Learning Resources/Ecosystem Overview/g' ./docs/ecosystem/overview/README.md
+    fi
 }
 
 cloneDocReposToDest

@@ -1,5 +1,23 @@
 ---
 sidebar_position: 6
+title: Events
+description: Learn about Flow blockchain events, including core events and user-defined events. Understand how events are emitted during transaction execution and how they can be observed by off-chain applications.
+keywords:
+  - events
+  - blockchain events
+  - Flow events
+  - core events
+  - user-defined events
+  - event emission
+  - event payload
+  - fungible token events
+  - fee events
+  - event listeners
+  - transaction events
+  - event types
+  - event naming
+  - Flow network
+  - event observation
 ---
 
 # Events
@@ -8,7 +26,7 @@ Flow events are special values that are emitted on the network during the execut
 
 Events are defined as Cadence code and you should [read Cadence documentation](https://cadence-lang.org/docs/language/events) to understand how to define them. 
 
-Since transactions don’t have return values you can leverage events to broadcast certain changes the transaction caused. Clients listening on Flow networks (apps) can listen to these events being emitted and react. 
+Since transactions don't have return values you can leverage events to broadcast certain changes the transaction caused. Clients listening on Flow networks (apps) can listen to these events being emitted and react. 
 
 ![Screenshot 2023-08-18 at 14.09.33.png](_events_images/Screenshot_2023-08-18_at_14.09.33.png)
 
@@ -57,27 +75,48 @@ The first `A` means the event is originating from a contract, which will always 
 
 There is an unlimited amount of events that can be defined on Flow, but you should know about the most common ones. 
 
-### FLOW Token Events
+### Fungible Token Events
 
-The FLOW Token contract uses the [fungible token standard on Flow](../../build/core-contracts/03-flow-token.md) and is the contract that issues a core FLOW token. As with any contract, it can emit events when interacted with. When we transfer the FLOW token, events are emitted. You can find a lot of details on the events emitted in the [FLOW Token documentation](../../build/core-contracts/03-flow-token.md). 
+All fungible token contracts, including [The FLOW Token contract](../../build/core-contracts/03-flow-token.md),
+use the [fungible token standard on Flow](../../build/core-contracts/02-fungible-token.md).
+As with any contract, the standard emits events when interacted with.
+When any fungible token is transferred, standard events are emitted.
+You can find a lot of details on the events emitted in the [Fungible Token documentation](../../build/core-contracts/02-fungible-token.md). 
 
-The most common events are when tokens are transferred which is accomplished with two actions: withdrawing tokens from the payer and depositing tokens in the receiver. Each of those action has a corresponding event:
+The most common events are when tokens are transferred which is accomplished with two actions: withdrawing tokens from the payer and depositing tokens in the receiver. Each of those actions has a corresponding event:
 
 **Withdraw Tokens**
 
-Event name: `TokensWithdrawn`
+Event name: `FungibleToken.Withdrawn`
+```cadence
+event Withdrawn(type: String,
+                amount: UFix64,
+                from: Address?,
+                fromUUID: UInt64,
+                withdrawnUUID: UInt64,
+                balanceAfter: UFix64)
+```
 
-Mainnet event: `A.1654653399040a61.FlowToken.TokensWithdrawn`
+Mainnet event: `A.f233dcee88fe0abe.FungibleToken.Withdrawn`
 
-Testnet event: `A.7e60df042a9c0868.FlowToken.TokensWithdrawn`
+Testnet event: `A.9a0766d93b6608b7.FungibleToken.Withdrawn`
 
 **Deposit Tokens**
 
-Event name: `TokensDeposited`
+```cadence
+event Deposited(type: String,
+                amount: UFix64,
+                to: Address?,
+                toUUID: UInt64,
+                depositedUUID: UInt64,
+                balanceAfter: UFix64)
+```
 
-Mainnet event: `A.1654653399040a61.FlowToken.TokensDeposited`
+Event name: `FungibleToken.Deposited`
 
-Testnet event: `A.7e60df042a9c0868.FlowToken.TokensDeposited`
+Mainnet event: `A.f233dcee88fe0abe.FungibleToken.Deposited`
+
+Testnet event: `A.9a0766d93b6608b7.FungibleToken.Deposited`
 
 ### **Fee Events**
 
@@ -96,18 +135,20 @@ An example of fee events:
 ```yml
 Events:
   - Index: 0
-    Type:  A.1654653399040a61.FlowToken.TokensWithdrawn
+    Type:  A.f233dcee88fe0abe.FungibleToken.Withdrawn
     Tx ID: 1ec90051e3bc74fc36cbd16fc83df08e463dda8f92e8e2193e061f9d41b2ad92
     Values:
+      - type (String): "1654653399040a61.FlowToken.Vault"
       - amount (UFix64): 0.00000100
-      - from (Address?): 0xb30eb2755dca4572
+      - from (Address?): b30eb2755dca4572
 
   - Index: 1
-    Type:  A.1654653399040a61.FlowToken.TokensDeposited
+    Type:  A.f233dcee88fe0abe.FungibleToken.Deposited
     Tx ID: 1ec90051e3bc74fc36cbd16fc83df08e463dda8f92e8e2193e061f9d41b2ad92
     Values:
+      - type (String): "1654653399040a61.FlowToken.Vault"
       - amount (UFix64): 0.00000100
-      - to (Address?): 0xf919ee77447b7497
+      - to (Address?): f919ee77447b7497
 
   - Index: 2
     Type:  A.f919ee77447b7497.FlowFees.FeesDeducted

@@ -1,6 +1,6 @@
 import { metadata } from '../data/metadata'
 
-export function getSocialMetas ({
+export function getSocialMetas({
   url,
   title = metadata.siteTitle,
   description = metadata.siteDescription,

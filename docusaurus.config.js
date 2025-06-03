@@ -4,11 +4,13 @@ require('dotenv').config();
 const lightCodeTheme = require('prism-react-renderer/themes/github');
 const darkCodeTheme = require('prism-react-renderer/themes/dracula');
 
-const theme = require('shiki/themes/nord.json');
 const { remarkCodeHike } = require('@code-hike/mdx');
 
 const path = require('path');
 const fs = require('fs');
+
+const flowNetwork = process.env.FLOW_NETWORK || 'testnet';
+const walletConnectProjectId = process.env.WALLETCONNECT_PROJECT_ID;
 
 const externalDataSourceLocation = './src/data/data-sources.json';
 let cachedRepositories;
@@ -78,7 +80,7 @@ const getUrl = () => {
     return `https://${process.env.VERCEL_URL}`;
   }
 
-  return 'https://onflow.github.io';
+  return 'https://developers.flow.com';
 };
 
 /**
@@ -178,9 +180,10 @@ const config = {
       ({
         docs: {
           beforeDefaultRemarkPlugins: [
+            require('./src/plugins/code-reference').plugin,
             [
               remarkCodeHike,
-              { theme, lineNumbers: true, showCopyButton: true },
+              { theme: 'nord', lineNumbers: true, showCopyButton: true },
             ],
           ],
           sidebarPath: require.resolve('./sidebars.js'),
@@ -200,10 +203,10 @@ const config = {
             require.resolve('./src/css/custom.css'),
           ],
         },
-        ...(process.env.GA_TRACKING_ID
+        ...(process.env.GTAG
           ? {
               gtag: {
-                trackingID: process.env.GA_TRACKING_ID,
+                trackingID: process.env.GTAG,
                 anonymizeIP: true,
               },
             }
@@ -234,20 +237,22 @@ const config = {
   themeConfig:
     /** @type {import('@docusaurus/preset-classic').ThemeConfig} */
     ({
-      announcementBar: {
-        id: 'stable_cadence_upgrade',
-        content: `🔧 Upgrade to Cadence 1.0 🔧<br />
-          The highly anticipated <a href="https://flow.com/upgrade/crescendo" target="_blank">Crescendo</a> network upgrade is coming soon with 20+ new <a href="https://flow.com/upgrade/cadence-1" target="_blank">Cadence 1.0</a> features and <a href="https://flow.com/upgrade/evm" target="_blank">EVM</a> equivalence.
-         `,
-        backgroundColor: '#007BFF',
-        textColor: '#FFFFFF',
-        isCloseable: true,
-      },
       colorMode: {
         defaultMode: 'dark',
       },
-      // Replace with your project's social card
-      image: 'img/FlowDocs_Logo_FlowLogo_Horizontal_Green_BlackText.svg',
+      // Update the image path and add metadata
+      image: 'img/flow-docs-og-1200-630.png',
+      metadata: [
+        { name: 'twitter:card', content: 'summary_large_image' },
+        { name: 'twitter:image', content: getUrl() + '/img/flow-docs-og-1200-630.png' },
+        { property: 'og:image', content: getUrl() + '/img/flow-docs-og-1200-630.png' },
+        { property: 'og:image:type', content: 'image/png' },
+        { property: 'og:image:width', content: '1200' },
+        { property: 'og:image:height', content: '630' },
+        { property: 'og:type', content: 'website' },
+        { property: 'og:description', content: 'Flow Developer Documentation - The future of culture and digital assets is built on Flow' },
+        { property: 'og:logo', content: getUrl() + '/img/flow-docs-logo-light.png' },
+      ],
       docs: {
         sidebar: {
           autoCollapseCategories: true,
@@ -264,7 +269,7 @@ const config = {
           {
             to: 'build/flow',
             position: 'left',
-            label: 'Build',
+            label: 'Cadence',
             activeBasePath: '/build',
           },
           {
@@ -274,7 +279,7 @@ const config = {
             activeBasePath: '/evm',
           },
           {
-            to: 'tools/flow-cli',
+            to: 'tools/kit',
             position: 'left',
             label: 'Tools',
             activeBasePath: '/tools',
@@ -290,6 +295,22 @@ const config = {
             position: 'left',
             label: 'Ecosystem',
             activeBasePath: '/ecosystem',
+          },
+          {
+            to: 'growth',
+            position: 'left',
+            label: 'Growth',
+            activeBasePath: '/growth',
+          },
+          {
+            to: 'tutorials',
+            position: 'left',
+            label: 'Tutorials',
+            activeBasePath: '/tutorials',
+          },
+          {
+            type: 'custom-connectButton',
+            position: 'right',
           },
           {
             href: 'https://github.com/onflow',
@@ -313,7 +334,7 @@ const config = {
             items: [
               {
                 label: 'Getting Started',
-                to: '/build/getting-started/quickstarts/hello-world',
+                to: '/build/getting-started/contract-interaction',
               },
               {
                 label: "SDK's & Tools",
@@ -361,7 +382,7 @@ const config = {
                 label: 'Ecosystem',
               },
               {
-                href: 'https://port.onflow.org/',
+                href: 'https://port.flow.com/',
                 label: 'Flow Port',
               },
               {
@@ -398,7 +419,7 @@ const config = {
                 label: 'Cadence Tutorials',
               },
               {
-                href: 'https://open-cadence.onflow.org',
+                href: 'https://cookbook.flow.com',
                 label: 'Cadence Cookbook',
               },
               {
@@ -415,19 +436,19 @@ const config = {
             title: 'Network',
             items: [
               {
-                href: 'https://status.onflow.org/',
+                href: 'https://status.flow.com/',
                 label: 'Network Status',
               },
               {
-                href: 'https://flowdiver.io/',
-                label: 'Flowdiver Mainnet',
+                href: 'https://flowscan.io/',
+                label: 'Flowscan Mainnet',
               },
               {
-                href: 'https://testnet.flowdiver.io/',
-                label: 'Flowdiver Testnet',
+                href: 'https://testnet.flowscan.io/',
+                label: 'Flowscan Testnet',
               },
               {
-                to: '/networks/node-ops/node-operation/past-sporks',
+                to: '/networks/node-ops/node-operation/past-upgrades',
                 label: 'Past Sporks',
               },
               {
@@ -456,12 +477,12 @@ const config = {
                 label: 'Discord',
               },
               {
-                href: 'https://forum.onflow.org/',
+                href: 'https://forum.flow.com/',
                 label: 'Forum',
               },
               {
-                href: 'https://onflow.org/',
-                label: 'OnFlow',
+                href: 'https://flow.com/',
+                label: 'Flow',
               },
               {
                 href: 'https://flow.com/blog',
@@ -549,7 +570,7 @@ const config = {
       };
     },
     /** this function needs doesn't pick up hot reload event, it needs a restart */
-    // @ts-ignore
+    // @ts-expect-error
     function (context, options) {
       const { siteConfig } = context;
       return {
@@ -567,7 +588,7 @@ const config = {
           };
         },
         async contentLoaded({ content, actions }) {
-          // @ts-ignore
+          // @ts-expect-error
           const { networks, sporks } = content;
           const { addRoute, createData } = actions;
           const networksJsonPath = await createData(
@@ -624,22 +645,16 @@ const config = {
         },
       },
     ],
-    function InsertInfoTagForCadence() {
+    function cadenceLoader() {
       return {
-        name: 'docusaurus-plugin-insert-info-tags',
-        configureWebpack(config, isServer, utils) {
+        name: 'cadence-loader',
+        configureWebpack() {
           return {
             module: {
               rules: [
                 {
-                  test: /\.md$/,
-                  use: [
-                    {
-                      loader: require.resolve(
-                        './src/plugins/insert-info-tags-loader.js',
-                      ),
-                    },
-                  ],
+                  test: /\.cdc$/,
+                  use: 'raw-loader',
                 },
               ],
             },
@@ -664,27 +679,16 @@ const config = {
       onload: mixpanelOnLoad,
     },
     {
-      src: 'https://widget.kapa.ai/kapa-widget.bundle.js',
-      'data-website-id': '0f0b3ed1-7761-4986-851e-09336ea6ef1c',
-      'data-project-name': 'Flow',
-      'data-project-color': '#2E8555',
-      'data-project-logo': 'https://cryptologos.cc/logos/flow-flow-logo.png',
-      async: true,
-    },
-    {
       src: `${baseUrl}hotjar.js`,
-      async: true,
-    },
-    {
-      src: 'https://widget.kapa.ai/kapa-widget.bundle.js',
-      'data-website-id': '0f0b3ed1-7761-4986-851e-09336ea6ef1c',
-      'data-project-name': 'Flow',
-      'data-project-color': '#2E8555',
-      'data-project-logo': 'https://cryptologos.cc/logos/flow-flow-logo.png',
       async: true,
     },
   ],
   clientModules: [require.resolve('./src/modules/toolscards.ts')],
+
+  customFields: {
+    flowNetwork,
+    walletConnectProjectId,
+  },
 };
 
 module.exports = config;

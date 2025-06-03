@@ -1,5 +1,5 @@
 export { default as FeaturedArticleSlider } from './FeaturedArticleSlider';
-export { LandingHeaderHome } from './LandingHeaderHome';
+export { LandingHeaderHome } from './HomeNav';
 export { LinkCard2Column } from './LinkCard2Column';
 export { default as NetworkCard } from './NetworkCard';
 export { default as NetworkDetailsCard } from './NetworkDetailsCard';
@@ -9,3 +9,4 @@ export { default as SporksCard } from './SporksCard';
 export { default as Tag } from './Tag';
 export { UpcomingEvents } from './UpcomingEvents';
 export { HomepageStartList } from './HomepageStartList';
+export { HomepageStartListCadence } from './HomepageStartListCadence';

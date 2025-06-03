@@ -52,24 +52,6 @@ config({
 })
 ```
 
-📖 **gRPC Access API URLs** can be found [here](../../../networks/node-ops/access-onchain-data/access-nodes/accessing-data/access-api.md#flow-access-node-endpoints). `sdk.transport` must be specified if you wish to use the gRPC API.  The public Flow gRPC access nodes are accessible at:
-- Testnet `https://access-testnet.onflow.org`
-- Mainnet `https://access-mainnet.onflow.org`
-- Local Emulator `127.0.0.1:3569`
-
-For local development, use the [flow emulator](https://github.com/onflow/flow-emulator) which once started provides an HTTP access endpoint at `127.0.0.1:8888` and a gRPC access endpoint at `127.0.0.1:3569`.
-
-If using the gRPC Access API, the `sdk.transport` configuration key must be populated as this value defaults to the HTTP API transport.  The SDK can be configured to use the gRPC API transport as follows:
-```javascript
-import { config } from "@onflow/fcl"
-import { send as transportGRPC } from "@onflow/transport-grpc"
-
-config({
-  "accessNode.api": "https://access-testnet.onflow.org",
-  "sdk.transport": transportGRPC
-})
-```
-
 ## Querying the Flow Network
 After you have established a connection with an access node, you can query the Flow network to retrieve data about blocks, accounts, events and transactions. We will explore how to retrieve each of these entities in the sections below.
 
@@ -254,7 +236,7 @@ import * as fcl from "@onflow/fcl";
 
 const result = await fcl.query({
   cadence: `
-    pub fun main(a: Int, b: Int, addr: Address): Int {
+    access(all) fun main(a: Int, b: Int, addr: Address): Int {
       log(addr)
       return a + b
     }
@@ -279,7 +261,7 @@ Transaction data is composed and signed with help of the SDK. The signed payload
 ## Transactions
 A transaction is nothing more than a signed set of data that includes script code which are instructions on how to mutate the network state and properties that define and limit it's execution. All these properties are explained bellow. 
 
-📖 **Script** field is the portion of the transaction that describes the state mutation logic. On Flow, transaction logic is written in [Cadence](../../../build/smart-contracts/cadence.md). Here is an example transaction script:
+📖 **Script** field is the portion of the transaction that describes the state mutation logic. On Flow, transaction logic is written in [Cadence](https://cadence-lang.org/docs). Here is an example transaction script:
 ```
 transaction(greeting: String) {
   execute {
@@ -305,17 +287,17 @@ A transaction is only valid if its declared sequence number matches the current 
 
 📖 **[Authorizers](../../../build/basics/transactions.md#signer-roles)** are accounts that authorize a transaction to read and mutate their resources. A transaction can specify zero or more authorizers, depending on how many accounts the transaction needs to access.
 
-The number of authorizers on the transaction must match the number of AuthAccount parameters declared in the prepare statement of the Cadence script.
+The number of authorizers on the transaction must match the number of `&Account` parameters declared in the prepare statement of the Cadence script.
 
 Example transaction with multiple authorizers:
 ```
 transaction {
-  prepare(authorizer1: AuthAccount, authorizer2: AuthAccount) { }
+  prepare(authorizer1: &Account, authorizer2: &Account) { }
 }
 ```
 
 📖 **Gas limit** is the limit on the amount of computation a transaction requires, and it will abort if it exceeds its gas limit.
-Cadence uses metering to measure the number of operations per transaction. You can read more about it in the [Cadence documentation](../../../build/smart-contracts/cadence.md).
+Cadence uses metering to measure the number of operations per transaction. You can read more about it in the [Cadence documentation](https://cadence-lang.org/docs).
 
 The gas limit depends on the complexity of the transaction script. Until dedicated gas estimation tooling exists, it's best to use the emulator to test complex transactions and determine a safe limit.
 
@@ -334,7 +316,7 @@ import * as fcl from "@onflow/fcl"
 await fcl.mutate({
   cadence: `
     transaction(a: Int) {
-      prepare(acct: AuthAccount) {
+      prepare(acct: &Account) {
         log(acct)
         log(a)
       }
@@ -360,14 +342,14 @@ Flow supports great flexibility when it comes to transaction signing, we can def
 | `0x01`  | 1      | 1000   |
 
 ```javascript
-// There are multiple ways to acheive this
+// There are multiple ways to achieve this
 import * as fcl from "@onflow/fcl"
 
 // FCL provides currentUser as an authorization function
 await fcl.mutate({
   cadence: `
     transaction {
-      prepare(acct: AuthAccount) {}
+      prepare(acct: &Account) {}
     }
   `,
   proposer: currentUser,
@@ -381,7 +363,7 @@ await fcl.mutate({
 mutate({
   cadence: `
     transaction {
-      prepare(acct: AuthAccount) {}
+      prepare(acct: &Account) {}
     }
   `,
   authz: currentUser, // Optional. Will default to currentUser if not provided.
@@ -408,7 +390,7 @@ const authzFn = async (txAccount) => {
 mutate({
   cadence: `
     transaction {
-      prepare(acct: AuthAccount) {}
+      prepare(acct: &Account) {}
     }
   `,
   proposer: authzFn,
@@ -465,7 +447,7 @@ const authzFn = async (txAccount) => {
 mutate({
   cadence: `
     transaction {
-      prepare(acct: AuthAccount) {}
+      prepare(acct: &Account) {}
     }
   `,
   proposer: authzFn,
@@ -525,7 +507,7 @@ const authzTwoFn = async (txAccount) => {
 mutate({
   cadence: `
     transaction {
-      prepare(acct: AuthAccount) {}
+      prepare(acct: &Account) {}
     }
   `,
   proposer: authzFn,
@@ -542,7 +524,7 @@ mutate({
 - Account `0x01` signs the payload.
 - Account `0x02` signs the envelope.
     - Account `0x02` must sign last since it is the payer.
-- Account `0x02` is also an authorizer to show how to include two AuthAccounts into an transaction
+- Account `0x02` is also an authorizer to show how to include two `&Account` objects into an transaction
 
 | Account | Key ID | Weight |
 | ------- | ------ | ------ |
@@ -586,7 +568,7 @@ const authzTwoFn = async (txAccount) => {
 mutate({
   cadence: `
     transaction {
-      prepare(acct: AuthAccount, acct2: AuthAccount) {}
+      prepare(acct: &Account, acct2: &Account) {}
     }
   `,
   proposer: authzFn,
@@ -676,7 +658,7 @@ const authzTwoFn = async (txAccount) => {
 mutate({
   cadence: `
     transaction {
-      prepare(acct: AuthAccount) {}
+      prepare(acct: &Account) {}
     }
   `,
   proposer: authzFn,
@@ -686,4 +668,4 @@ mutate({
 })
 ```
 
-After a transaction has been [built](./sdk-guidelines.md#build-transactions) and [signed](./sdk-guidelines.md#sign-transactions), it can be sent to the Flow blockchain where it will be executed. If sending was successful you can then [retrieve the transaction result](./sdk-guidelines.md#get-transactions).
+After a transaction has been **built** and **signed**, it can be sent to the Flow blockchain where it will be executed. If sending was successful you can then [retrieve the transaction result](#get-transactions).

@@ -1,6 +1,6 @@
 import React from 'react'
 import { type Article } from '../../interfaces'
-import { ButtonLink } from '../Button'
+import { Button } from '../Button'
 import { Carousel, type CarouselProps } from '../Carousel'
 import { HeaderWithLink } from '../HeaderWithLink'
 
@@ -22,13 +22,13 @@ export const FeaturedArticle = ({
       <p className="py-6 text-primary-gray-300 dark:text-primary-gray-100">
         {description}
       </p>
-      <ButtonLink
+      <Button
         href={ctaLink}
         className="rounded-lg bg-black px-16 py-4 text-center text-white hover:cursor-pointer"
         variant="primary-no-darkmode"
       >
         {ctaText}
-      </ButtonLink>
+      </Button>
     </div>
     <div
       style={{

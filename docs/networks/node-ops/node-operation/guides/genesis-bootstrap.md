@@ -20,7 +20,7 @@ The Flow consensus algorithm depends on there always being a previous block, whi
 The bootstrapping process will be in 2 phases, with the Flow team signing the Genesis block between the two.
 
 <Admonition type="info" title="Understanding Keys">
-  The bootstrapping process deals with a number of different keys. Make sure you understand their usage and terminology by reviewing the [Node Keys Guide](../node-bootstrap.md#generating-your-node-id).
+  The bootstrapping process deals with a number of different keys. Make sure you understand their usage and terminology by reviewing the [Node Keys Guide](../node-bootstrap.md#generate-your-node-keys).
 </Admonition>
 
 ## Download the Bootstrapping Toolkit
@@ -57,7 +57,7 @@ Start the bootstrapping process by generating your Staking Key and Networking Ke
 
 This command generates two keys, a Staking Key and a Network Key, and stores them both in a `.node-info` file. Both these keys are needed during runtime and must be present as a file to start your flow node.
 
-For more details around all the keys that are needed to run nodes and their usage, see the [Node Keys](../node-bootstrap.md#generating-your-node-id) overview.
+For more details around all the keys that are needed to run nodes and their usage, see the [Node Keys](../node-bootstrap.md#generate-your-node-keys) overview.
 
 The bootstrapping process will create a file structure similar to the following
 

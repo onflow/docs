@@ -4,6 +4,14 @@
   "compilerOptions": {
     "jsx": "react",
     "baseUrl": ".",
-    "strictNullChecks": true
-  }
+    "strictNullChecks": true,
+    "typeRoots": [
+      "./",
+      "./node_modules/@types"
+    ]
+  },
+  "include": [
+    "src",
+    "docusaurus.config.d.ts"
+  ]
 }

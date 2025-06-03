@@ -2,6 +2,23 @@
 title: Overview
 sidebar_label: Overview
 sidebar_position: 1
+description: Discover Flow's mobile development capabilities for building native blockchain applications. Learn about Flow's unique features for mobile apps, including secure key management, wallet integration, and progressive onboarding.
+keywords:
+  - Flow mobile
+  - mobile development
+  - blockchain apps
+  - native applications
+  - mobile SDK
+  - secure enclave
+  - wallet integration
+  - WalletConnect
+  - account linking
+  - mobile security
+  - Flow features
+  - mobile wallets
+  - Cadence mobile
+  - user experience
+  - blockchain mobile
 ---
 
 Building mobile native applications that interact with the blockchain enables a much richer end user experiences and provides access to OS capabilities. With Flow Mobile, developers can build native applications for iOS and Android leveraging SDKs and mobile wallets.
@@ -10,11 +27,11 @@ Building mobile native applications that interact with the blockchain enables a 
 
 Millions of users with Flow accounts are exploring the ecosystem and looking for applications. Most of these users purchased Flow NFTs and are comfortable with web3 principles. 
 
-In addition to the existing userbase, developers can tap into smart contracts deployed on the Flow blockchain. These contracts, including their on-chain state, provide unique possibilities to build experiences that enrich applications users are already using.
+In addition to the existing user base, developers can tap into smart contracts deployed on the Flow blockchain. These contracts, including their on-chain state, provide unique possibilities to build experiences that enrich applications users are already using.
 
 The following key capabilities make Flow a standout choice for mobile applications:
 - On-device key encryption via Secure Enclave & Keychain
-- Mobile wallet compabilitity and support for WalletConnect 2.0
+- Mobile wallet compatibility and support for WalletConnect 2.0
 - Simple, progressive onboarding experience with postponed account linking
 - Seamless in-app experience with on-chain interactions without constant signing requests
 - Account flexibility enabling secure account recovery and sharing

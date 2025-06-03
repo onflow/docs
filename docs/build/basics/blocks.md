@@ -1,5 +1,22 @@
 ---
 sidebar_position: 1
+title: Blocks
+description: Learn about Flow blockchain blocks, their structure, lifecycle, and how they maintain the blockchain's state. Understand block headers, payloads, and the finalization process.
+keywords:
+  - blocks
+  - blockchain blocks
+  - block header
+  - block payload
+  - block seals
+  - block finalization
+  - block status
+  - consensus
+  - collection guarantees
+  - block retrieval
+  - block ID
+  - block height
+  - Flow blockchain
+  - blockchain state
 ---
 
 # Blocks
@@ -34,18 +51,18 @@ The Block header contains the following fields:
 
 The block payload contains the following fields:
 
-- **Collection Guarantees** is a list of collection IDs with the signatures from the collection nodes that produced the collections. This acts as a guarantee by collection nodes that [transaction data](./transactions.md) in the collection will be available on the collection node if requested by other nodes at a later time. Flow purposely skips including transaction data in a block, making blocks as small as possible, and the production of new blocks by consensus nodes fast, that is because consensus nodes have to sync the proposed block between nodes, and that data should be the smallest possible. The consensus nodes don’t really care what will a transaction do as long as it’s valid, they only need to define an order of those transactions in a block.
+- **Collection Guarantees** is a list of collection IDs with the signatures from the collection nodes that produced the collections. This acts as a guarantee by collection nodes that [transaction data](./transactions.md) in the collection will be available on the collection node if requested by other nodes at a later time. Flow purposely skips including transaction data in a block, making blocks as small as possible, and the production of new blocks by consensus nodes fast, that is because consensus nodes have to sync the proposed block between nodes, and that data should be the smallest possible. The consensus nodes don't really care what will a transaction do as long as it's valid, they only need to define an order of those transactions in a block.
 - **Block Seals** is the attestation by verification nodes that the transactions in a previously executed block have been verified. This seals a previous block referenced by the block ID. It also references the result ID and execution root hash. It contains signatures of the verification nodes that produced the seal.
 
 ## Lifecycle and Status
 
 Block status is not a value stored inside the block itself but it represents the lifecycle of a block. We derive this value based on the block inclusion in the Flow blockchain and present it to the user as it acts as an important indicator of the finality of the changes the block contains. 
 
-Here we’ll give an overview of the different phases a block goes through. [More details can be found in the whitepaper](https://flow.com/technical-paper). Also, a lot of the block states are not necessarily important to the developer but only important to the functioning of the Flow blockchain. 
+Here we'll give an overview of the different phases a block goes through. [More details can be found in the whitepaper](https://flow.com/technical-paper). Also, a lot of the block states are not necessarily important to the developer but only important to the functioning of the Flow blockchain. 
 
 New blocks are constantly being proposed even if no new transactions are submitted to the network. Consensus nodes are in charge of producing blocks. They use a consensus algorithm (an implementation of HotStuff) to agree on what the new block will be. A block contains the ordered list of collections and each collection contains an ordered list of transactions. This is an important fact to reiterate. A block serves as a list of transitions to the Flow state machine. It documents, as an ordered list, all the changes transactions will make to the state. 
 
-A block that is [agreed upon by the consensus nodes using an implementation of HotStuff consensus algorithm](https://arxiv.org/pdf/2002.07403.pdf) to be the next block is **finalized**. This means the block won’t change anymore and it will next be executed by the execution node. Please be careful because until a block is **sealed** the changes are not to be trusted. After verification nodes validate and agree on the correctness of execution results, a block is sealed and consensus nodes will include these seals in the new block.
+A block that is [agreed upon by the consensus nodes using an implementation of HotStuff consensus algorithm](https://arxiv.org/pdf/2002.07403.pdf) to be the next block is **finalized**. This means the block won't change anymore and it will next be executed by the execution node. Please be careful because until a block is **sealed** the changes are not to be trusted. After verification nodes validate and agree on the correctness of execution results, a block is sealed and consensus nodes will include these seals in the new block.
 
 In summary, a block can be either **finalized** which guarantees transactions included in the block will stay the same and will be executed, and **sealed** which means the block execution was verified. 
 
@@ -63,7 +80,7 @@ Find [more about the command in the CLI docs](../../tools/flow-cli/get-flow-data
 
 Blocks can be obtained from the access node APIs, currently, there are two gRPC and REST APIs. You can find more information about them here:
 
-[**gRPC Block API**](../../networks/node-ops/access-onchain-data/access-nodes/accessing-data/access-api.md#blocks)
+[**gRPC Block API**](../../networks/access-onchain-data/index.md#blocks)
 
 [**REST Block API**](/http-api#tag/Blocks)
 
@@ -71,6 +88,6 @@ There are multiple SDKs implementing the above APIs for different languages:
 
 [**Javascript SDK**](../../tools/clients/fcl-js/index.md)
 
-[**Go SDK**](../../tools/clients/flow-go-sdk/index.mdx)
+[**Go SDK**](../../tools/clients/flow-go-sdk/index.md)
 
 Find a list of all SDKs [here](../../tools/clients/index.md)

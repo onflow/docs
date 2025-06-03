@@ -1,0 +1,19 @@
+.doc-item-wrapper {
+  position: relative;
+}
+
+.doc-actions-container {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  z-index: 10;
+}
+
+@media (max-width: 996px) {
+  .doc-actions-container {
+    position: static;
+    margin-bottom: 1rem;
+    display: flex;
+    justify-content: flex-end;
+  }
+} 

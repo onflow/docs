@@ -1,6 +1,6 @@
 ---
-title: Spork Process
-description: What to do during a spork
+title: Network Upgrade (Spork) Process
+description: Steps to be carried out by node operators during a network upgrade.
 sidebar_position: 15
 ---
 
@@ -10,7 +10,7 @@ A spork is a coordinated network upgrade process where node operators upgrade th
 re-initialize with a consolidated representation of the previous spork's state. This enables rapid development
 on the Flow Protocol and minimizes the impact of breaking changes.
 
-The Flow network sporks approximately once every two months. Upcoming sporks
+The Flow network sporks approximately once every year. Upcoming sporks
 are announced in advance on the `#flow-validators-announcements` **Discord** channel
 and in [Upcoming Sporks](./upcoming-sporks.md). The `#flow-validators-announcements` channel is
 also used to coordinate during the spork process.
@@ -29,26 +29,27 @@ Once the spork start has been announced on, stop your node and clear your databa
 1. Stop your Flow node
 2. Clear the contents of your `data` directory that you have previously created. The default location is `/var/flow/data`. The `data` directory contains the Flow chain state.
 
-<Callout type="warning">
-
-If you had a previous node running on **mainnet 16**, you'll need to turn it
-off just before joining the updated network and re-start your node with the
-updated configuration. Refer to Discord communications for guidance during the spork.
-
-</Callout>
-
 ## Step 2 - Start Your Node
 
 Once you receive an announcement that the spork process is complete (via Discord), you will need to fetch the genesis info, update your runtime configuration and then boot your Flow node up!
 
 <Callout type="warning">
 
-The Flow team will provide you a new token `PULL_TOKEN` to pull the genesis info from. (Please do NOT use the original Token that you used in Step 1) The `YOUR_NODE_TYPE` must be the same ones that you used when initially [setting up your node](./node-bootstrap.md#generate-your-node-keys)
+If you had set the [dynamic bootstrap arguments](https://developers.flow.com/networks/node-ops/node-operation/protocol-state-bootstrap) command line arguments (`--dynamic-startup-access-address`, `--dynamic-startup-access-publickey`, `--dynamic-startup-epoch-phase`) please remove them.
 
 </Callout>
 
 1. Run the transit script to fetch the new genesis info:
-   `./boot-tools/transit pull -b ./bootstrap -t ${PULL_TOKEN} -r ${YOUR_NODE_TYPE}`
+   `./boot-tools/transit pull -b ./bootstrap -t ${PULL_TOKEN} -r ${YOUR_NODE_TYPE} --concurrency 10 --timeout 15m`
+
+- `PULL_TOKEN` will be provided by the Flow team.
+  - For `collection`, `consensus`, `verification` node type it will generally be `testnet-x` or `mainnet-x` where x is the latest number of respective network upgrade. e.g. `testnet-52`, `mainnet-26`.
+  - For `execution` node type it will generally be `testnet-x-execution` or `mainnet-x-execution`.
+  - For `access` node:
+    - It will generally be `testnet-x` or `mainnet-x` if execution data indexing is not enabled.
+    - It will generally be `testnet-x-execution` or `mainnet-x-execution` if execution data indexing is enabled.
+
+- `YOUR_NODE_TYPE` should be one of `collection`, `consensus`, `execution`, `verification`, `access` based on the node(s) that you are running.
 
 ```shell Example
 $ ./boot-tools/transit pull -b ./bootstrap -t mainnet-16  -r consensus
@@ -90,9 +91,3 @@ See [Node Bootstrap](./node-bootstrap.md) for detailed information on Docker/Sys
 ```
 
 This error is OK. Your fellow node operators have not turned on/joined the network yet. So no need to worry about it!
-
-### Flow Node Not Booting Up
-
-If your Flow node is not able to boot up, or it exits right after it boots up. You will need to do a [clean up of your state](./node-bootstrap.md#step-0---cleaning-up-your-previous-state).
-
-After cleaning up the state try booting it up again. If the problem persists, message a member from the Flow team on Discord.

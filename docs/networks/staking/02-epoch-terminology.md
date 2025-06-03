@@ -64,7 +64,19 @@ unstaking tokens are marked as unstaked, and unstaking requests are changed from
 Views count the number of rounds in the consensus algorithm.
 Each round/view the counter is incremented and a new block may be proposed.
 
-**Seat:** The right to participate in the network as a node of a certain type for a specific Epoch.
+**Seat/Slot:** The right to participate in the network as a node of a certain type
+for a specific Epoch. There are a limited number of seats/slots for each node type per epoch.
+Current Slot Limits (may be slightly different than what is shown here):
+- Access Nodes: 167
+- Collection Nodes: 156
+- Consensus Nodes: 149
+- Execution Nodes: 10
+- Verification Nodes: 105
+
+**Candidate:** A node that has committed tokens for the next epoch but has not been accepted yet.
+There is a limited number of node slots per epoch and candidate nodes are selected randomly,
+so there is a chance that a candidate node will not be chosen to participate in the next epoch
+because there aren't enough slots even if they meet all the other regular requirements
 
 **Staking Auction Phase:** The period of time when nodes and delegators are able to submit staking operations
 in preparation for the upcoming epoch. This phase is expected to take over 90% of the time of an epoch.
@@ -77,7 +89,7 @@ This phase is expected to take less than 10% of the time of an epoch, near the e
 
 **Cluster Quorum Certificate Generation (QC):** A process by which nodes using the HotStuff consensus algorithm
 submit signed messages in order to generate a certificate for bootstrapping HotStuff. Each collector cluster runs
-a mini-version of HotStuff, and since clusters are randomized each epoch, a new quorum ceritificate is required
+a mini-version of HotStuff, and since clusters are randomized each epoch, a new quorum certificate is required
 for each cluster each epoch.
 
 **Distributed Key Generation (DKG):** Process for generating a shared public key to initialize the random beacon.
@@ -108,15 +120,17 @@ Flow nodes treat them differently because they are being emitted by the service 
 **Epoch Payout:** The total amount of tokens paid in rewards at the end of an epoch.
 This value will change as the supply of FLOW changes. See the [rewards page](./03-schedule.md) for more details.
 
-**Minimum Stake Requirement:** Each node type has a requirement for the minimum number of FLOW
-they have to commit to stake to be considered a valid node and receive rewards. If a node operator
-does not meet the minimum stake, they will not be included in the next epoch and will not receive any rewards.
-Delegators are not subject to minimum stake requirements.
+**Minimum Stake Requirement:** Each node type AND delegator has a requirement for the minimum number of FLOW
+they have to commit to stake to be considered a valid staker and receive rewards.
+If a node operator or delegator does not meet the minimum stake,
+they will not be included in the next epoch and will not receive any rewards.
 
+- Access Nodes: 100 FLOW
 - Collection Nodes: 250,000 FLOW
 - Consensus Nodes: 500,000 FLOW
 - Execution Nodes: 1,250,000 FLOW
 - Verification Nodes: 135,000 FLOW
+- Delegators: 50 FLOW
 
 There is no maximum stake limit.
 

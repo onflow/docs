@@ -184,13 +184,12 @@
     },
     {
       "source": "/access-api",
-      "destination": "/networks/node-ops/access-onchain-data/access-nodes/accessing-data/access-api",
-      
+      "destination": "/networks/access-onchain-data",
       "permanent": true
     },
     {
       "source": "/nodes/access-api",
-      "destination": "/networks/node-ops/access-onchain-data/access-nodes/accessing-data/access-api",
+      "destination": "/networks/access-onchain-data",
       "permanent": true
     },
     {
@@ -232,7 +231,7 @@
       "source": "/tools/fcl-js/sdk-guidelines",
       "destination": "/tools/clients/fcl-js/sdk-guidelines",
       "permanent": true
-    }, 
+    },
     {
       "source": "/tools/fcl-js/networks/:path*",
       "destination": "/tools/clients/fcl-js/:path*",
@@ -254,11 +253,6 @@
       "permanent": true
     },
     {
-      "source": "/tools/unity-sdk/:path*",
-      "destination": "/tools/clients/unity-sdk/:path*",
-      "permanent": true
-    },
-    {
       "source": "/account-linking/:path*",
       "destination": "/build/advanced-concepts/account-linking/:path*",
       "permanent": true
@@ -270,7 +264,7 @@
     },
     {
       "source": "/tooling/fcl-js/tutorials/:path*",
-      "destination": "/build/getting-started/quickstarts/fcl-quickstart",
+      "destination": "/build/getting-started/fcl-quickstart",
       "permanent": true
     },
     {
@@ -330,7 +324,7 @@
     },
     {
       "source": "/tutorials/flow-dapp-anatomy",
-      "destination": "/build/getting-started/app-architecture",
+      "destination": "/build/app-architecture",
       "permanent": true
     },
     {
@@ -390,7 +384,7 @@
     },
     {
       "source": "/flow-js-testing/:path*",
-      "destination": "/tools/flow-js-testing/:path*",
+      "destination": "https://cadence-lang.org/docs/testing-framework",
       "permanent": true
     },
     {
@@ -660,12 +654,17 @@
     },
     {
       "source": "/tooling/flow-js-testing/:path*",
-      "destination": "/tools/flow-js-testing/:path*",
+      "destination": "https://cadence-lang.org/docs/testing-framework",
+      "permanent": true
+    },
+    {
+      "source": "/tools/flow-js-testing/:path*",
+      "destination": "https://cadence-lang.org/docs/testing-framework",
       "permanent": true
     },
     {
       "source": "/tooling/nft-catalog/(.*)",
-      "destination": "/tools/nft-catalog/",
+      "destination": "https://github.com/fixes-world/token-list",
       "permanent": true
     },
     {
@@ -686,11 +685,6 @@
     {
       "source": "/tooling/flow-go-sdk/:path*",
       "destination": "/tools/clients/flow-go-sdk/:path*",
-      "permanent": true
-    },
-    {
-      "source": "/tooling/unity-sdk/:path*",
-      "destination": "/tools/clients/unity-sdk/:path*",
       "permanent": true
     },
     {
@@ -759,7 +753,7 @@
     },
     {
       "source": "/tools/nft-catalog/(.+)",
-      "destination": "/tools/nft-catalog",
+      "destination": "https://github.com/fixes-world/token-list",
       "permanent": true
     },
     {
@@ -1034,7 +1028,7 @@
     },
     {
       "source": "/build/cadence-migration-guide",
-      "destination": "https://cadence-lang.org/docs/cadence_migration_guide",
+      "destination": "https://flow.com/upgrade/crescendo",
       "permanent": true
     },
     {
@@ -1043,8 +1037,8 @@
       "permanent": true
     },
     {
-      "source": "/build/advanced-concepts/account-abstraction",
-      "destination": "/build/differences-vs-evm/account-abstraction",
+      "source": "/build/differences-vs-evm/account-abstraction",
+      "destination": "/build/advanced-concepts/account-abstraction",
       "permanent": true
     },
     {
@@ -1059,17 +1053,17 @@
     },
     {
       "source": "/networks/node-ops/nodes/node-operation/observer-node",
-      "destination": "/networks/node-ops/access-onchain-data/light-nodes/observer-node",
+      "destination": "/networks/node-ops/light-nodes/observer-node",
       "permanent": true
     },
     {
       "source": "/networks/node-ops/nodes/node-operation/access-node-setup",
-      "destination": "/networks/node-ops/access-onchain-data/access-nodes/access-node-setup",
+      "destination": "/networks/node-ops/access-nodes/access-node-setup",
       "permanent": true
     },
     {
       "source": "/networks/node-ops/nodes/access-api",
-      "destination": "/networks/node-ops/access-onchain-data/access-nodes/accessing-data/access-api",
+      "destination": "/networks/node-ops/access-nodes/accessing-data/access-api",
       "permanent": true
     },
     {
@@ -1085,11 +1079,6 @@
     {
       "source": "/build/basics/smart-contracts",
       "destination": "/build/smart-contracts/overview"
-    },
-    {
-      "source": "networks/flow-networks/accessing-crescendo",
-      "destination": "/networks/flow-networks/accessing-previewnet",
-      "permanent": true
     },
     {
       "source": "/evm/Build/:path*",
@@ -1178,7 +1167,7 @@
     },
     {
       "source": "/networks/node-ops/node-operation/access-node-setup",
-      "destination": "/networks/node-ops/access-onchain-data/access-nodes/access-node-setup",
+      "destination": "/networks/node-ops/access-nodes/access-node-setup",
       "permanent": true
     },
     {
@@ -1188,7 +1177,22 @@
     },
     {
       "source": "/networks/node-ops/node-operation/observer-node",
-      "destination": "/networks/node-ops/access-onchain-data/light-nodes/observer-node",
+      "destination": "/networks/node-ops/light-nodes/observer-node",
+      "permanent": true
+    },
+    {
+      "source": "/networks/node-ops/access-onchain-data/access-nodes/access-node-setup",
+      "destination": "/networks/node-ops/access-nodes/access-node-setup",
+      "permanent": true
+    },
+    {
+      "source": "/networks/node-ops/access-onchain-data/light-nodes/observer-node",
+      "destination": "/networks/node-ops/light-nodes/observer-node",
+      "permanent": true
+    },
+    {
+      "source": "/networks/node-ops/access-onchain-data/access-nodes/accessing-data/access-api",
+      "destination": "/networks/node-ops/access-nodes/accessing-data/access-api",
       "permanent": true
     },
     {
@@ -1214,6 +1218,124 @@
     {
       "source": "/evm/tools/:path*",
       "destination": "/evm/:path*",
+      "permanent": true
+    },
+    {
+      "source": "/build/smart-contracts/best-practices/anti-patterns",
+      "destination": "https://cadence-lang.org/docs/anti-patterns",
+      "permanent": true
+    },
+    {
+      "source": "/build/smart-contracts/best-practices/design-patterns",
+      "destination": "https://cadence-lang.org/docs/design-patterns",
+      "permanent": true
+    },
+    {
+      "source": "/build/differences-vs-evm/transaction-time",
+      "destination": "/build/basics/transactions#transaction-time"
+    },
+    {
+      "source": "/networks/flow-networks/accessing-previewnet",
+      "destination": "/evm/using"
+    },
+    {
+      "source": "/tools/clients/flow-go-sdk/error-codes",
+      "destination": "/tools/error-codes",
+      "permanent": true
+    },
+    {
+      "source": "/tools/nft-catalog/(.*)",
+      "destination": "https://github.com/fixes-world/token-list",
+      "permanent": true
+    },
+    {
+      "source": "/build/getting-started/quickstarts/hello-world",
+      "destination": "/build/getting-started/hello-world",
+      "permanent": true
+    },
+    {
+      "source": "/build/getting-started/hello-world",
+      "destination": "/build/getting-started/contract-interaction",
+      "permanent": true
+    },
+    {
+      "source": "/build/getting-started/quickstarts/flow-cli",
+      "destination": "/build/getting-started/flow-cli",
+      "permanent": true
+    },
+    {
+      "source": "/build/getting-started/quickstarts/fcl-quickstart",
+      "destination": "/build/getting-started/fcl-quickstart",
+      "permanent": true
+    },
+    {
+      "source": "build/smart-contracts/cadence",
+      "destination": "https://cadence-lang.org/docs/",
+      "permanent": true
+    },
+    {
+      "source": "/build/guides/flow-app-quickstart",
+      "destination": "/build/getting-started/fcl-quickstart",
+      "permanent": true
+    },
+    {
+      "source": "/build/guides/flow-cli",
+      "destination": "/tools/flow-cli/install",
+      "permanent": true
+    },
+    {
+      "source": "/flow-cli/:path*",
+      "destination": "/tools/flow-cli/:path*",
+      "permanent": true
+    },
+    {
+      "source": "/evm/vm-bridge",
+      "destination": "/evm/cadence/vm-bridge",
+      "permanent": true
+    },
+    {
+      "source": "/tools/flow-cli/tests/run-tests",
+      "destination": "/tools/flow-cli/tests",
+      "permanent": true
+    },
+    {
+      "source": "/evm/data-indexers",
+      "destination": "/ecosystem/data-indexers",
+      "permanent": true
+    },
+    {
+      "source": "/evm/clients/ethers",
+      "destination": "/evm/guides/ethers",
+      "permanent": true
+    },
+    {
+      "source": "/evm/clients/web3",
+      "destination": "/evm/guides/web3",
+      "permanent": true
+    },
+    {
+      "source": "/evm/cadence/:path*",
+      "destination": "/evm/tutorials/cross-vm-apps/:path*",
+      "permanent": true
+    },
+    {
+      "source": "/tools/vscode-extension/cursor",
+      "destination": "/tools/cursor",
+      "permanent": true
+    },
+    {
+      "source": "/tools/cursor",
+      "destination": "tutorials/ai-plus-flow/cursor",
+      "permanent": true
+    },
+    {
+      "source": "/networks/node-ops/node-operation/past-sporks",
+      "destination": "/networks/node-ops/node-operation/past-upgrades",
+      "permanent": true
+    },
+    {
+      "source": "/tutorials/AI%20Guides/agentkit-flow-guide",
+      "destination": "/tutorials/ai-plus-flow/agentkit-flow-guide",
       "permanent": true
     }
   ]
