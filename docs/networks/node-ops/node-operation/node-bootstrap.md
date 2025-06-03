@@ -48,10 +48,10 @@ chmod +x ./boot-tools/transit
 
 ```shell CheckSHA256
 sha256sum ./boot-tools/bootstrapcmd
-460cfcfeb52b40d8b8b0c4641bc4e423bcc90f82068e95f4267803ed32c26d60  ./boot-tools/bootstrap
+2fe0b0dbc79f63dfbb2479b518a34304960c54ebc4d63bd0f818926b8258ec49  ./boot-tools/bootstrap
 
 sha256sum ./boot-tools/transit
-f146bdc82ce0cce73c0fb9de284b2e2639e851120f8b89a1dd9368e8442123b4  ./boot-tools/transit
+54b5c0ff4216d98a5d9fcdd241c6b9a31a35bf41c51849e8e9d0407e00772a3c  ./boot-tools/transit
 ```
 
 ### Generate Your Node Keys
@@ -175,7 +175,8 @@ $cat ./bootstrap/public-root-information/node-info.pub.39fa54984b8eaa463e1299194
   "NodeID": "39fa54984b8eaa463e129919464f61c8cec3a4389478df79c44eb9bfbf30799a",
   "Weight": 0,
   "NetworkPubKey": "d92e3d5880abe233cf9fe9104db34bbb31251468a541454722b3870c04156a1b0504aef443bcaad124b997384b8fe7052847ce1e6189af1392d865e6be69835b",
-  "StakingPubKey": "917826e018f056a00b778a58ae83054906957ffd4b6f1b7da083551f7a9f35e02b76ace50424ed7d2c9fc69207a59f0f08a031048f5641db94e77d0648b24d150dedd54bab7cd44b4aa60cfd54be418647b0b3965f8ae54c0bcb48ae9d705162"
+  "StakingPubKey": "917826e018f056a00b778a58ae83054906957ffd4b6f1b7da083551f7a9f35e02b76ace50424ed7d2c9fc69207a59f0f08a031048f5641db94e77d0648b24d150dedd54bab7cd44b4aa60cfd54be418647b0b3965f8ae54c0bcb48ae9d705162",
+  "StakingPoP": "99c879b963b45acd907aae0d7e968a24abf2d3dd28700eca81217b3f12c477334a531a56bcea0f86770614364ebca519"
 }
 ```
 
