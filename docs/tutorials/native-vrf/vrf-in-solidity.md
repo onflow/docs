@@ -153,7 +153,7 @@ contract RandomInRange {
 
         // Return the number in the specified range
         return (randomNumber % (max + 1 - min)) + min;
-	}
+ }
 }
 ```
 
@@ -181,12 +181,12 @@ You can also view an example in both Solidity and Cadence of a [random coin toss
 
 _This documentation was contributed by [Noah Naizir] a community developer._
 
-[vrf-1.png]: ./vrf-1.png
-[vrf-2.png]: ./vrf-2.png
-[vrf-3.png]: ./vrf-3.png
-[vrf-4.png]: ./vrf-4.png
-[vrf-5.png]: ./vrf-5.png
-[vrf-6.png]: ./vrf-6.png
+[vrf-1.png]: ./imgs/vrf-1.png
+[vrf-2.png]: ./imgs/vrf-2.png
+[vrf-3.png]: ./imgs/vrf-3.png
+[vrf-4.png]: ./imgs/vrf-4.png
+[vrf-5.png]: ./imgs/vrf-5.png
+[vrf-6.png]: ./imgs/vrf-6.png
 
 [Cadence Arch]: https://github.com/onflow/flips/blob/main/protocol/20231116-evm-support.md#cadence-arch
 [Flow EVM Testnet RPC]: https://testnet.evm.nodes.onflow.org/
