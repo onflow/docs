@@ -1104,7 +1104,7 @@ Now that you've completed this tutorial, you're ready to explore more complex on
 [Hardhat]: ../../evm/guides/hardhat.md
 [Foundry]: ../../evm/guides/foundry.md
 [Remix]: ../../evm/guides/remix.md
-[native VRF]: ../../evm/guides/vrf.md
+[native VRF]: ../native-vrf/vrf-in-solidity.md
 [OpenZeppelin]: https://www.openzeppelin.com/
 [Ownable]: https://github.com/OpenZeppelin/openzeppelin-contracts/blob/master/contracts/access/Ownable.sol
 [evm-testnet.flowscan.io]: https://evm-testnet.flowscan.io/

@@ -812,7 +812,7 @@ Now that you have completed the tutorial, you should be able to:
 [create an issue]: https://github.com/onflow/docs/issues/new/choose
 [Cadence]: https://cadence-lang.org
 [Solidity]: https://soliditylang.org/
-[native VRF]: ../../evm/guides/vrf.md
+[native VRF]: ../native-vrf/vrf-in-solidity.md
 [structure and call EVM transactions]: ./batched-evm-transactions.md
 [FLIP 316]: https://github.com/onflow/flips/pull/317
 [Flow Client Library (FCL)]: ../../tools/clients/fcl-js
