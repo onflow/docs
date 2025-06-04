@@ -406,11 +406,71 @@ function TransactionComponent() {
   const txId = "your-transaction-id-here"
   const { transactionStatus, error } = useFlowTransactionStatus({ id: txId })
 
-  if (error) return <div>Error: {error.message}</div>
+  if (error) return <div>Error: {error.message}</div>;
+
+  return <div>Status: {transactionStatus?.statusString}</div>;
+}
+```
+
+---
+
+### `useCrossVmTokenBalance`
+
+```tsx
+import { useFlowQuery } from '@onflow/kit';
+```
+
+Fetch the balance of a token balance for a given user across both Cadence and EVM environments.
+
+#### Parameters:
+
+- `owner: string` – Cadence address of the account whose token balances you want.
+- `vaultIdentifier?: string` – Optional Cadence resource identifier (e.g. "0x1cf0e2f2f715450.FlowToken.Vault") for on-chain balance
+- `erc20AddressHexArg?: string` – Optional bridged ERC-20 contract address (hex) for EVM/COA balance
+- `query?: Omit<UseQueryOptions<unknown, Error>, "queryKey" | "queryFn">` – Optional TanStack Query config (e.g. staleTime, enabled)
+
+> **Note:** You must pass `owner`, and one of `vaultIdentifier` or `erc20AddressHexArg`.
+
+#### Returns: `UseQueryResult<UseCrossVmTokenBalanceData | null, Error>`
+
+Where `UseCrossVmTokenBalanceData` is defined as:
+
+```typescript
+interface UseCrossVmTokenBalanceData {
+  cadence: TokenBalance // Token balance of Cadence vault
+  evm: TokenBalance // Token balance of EVM (COA stored in /storage/coa)
+  combined: TokenBalance // Combined balance of both Cadence and EVM
+}
+```
+
+Where `TokenBalance` is defined as:
+
+```typescript
+interface TokenBalance {
+  value: bigint // Balance value in smallest unit
+  formatted: string // Formatted balance string (e.g. "123.45")
+  precision: number // Number of decimal places for the token
+}
+```
+
+```tsx
+function QueryExample() {
+  const { data, isLoading, error, refetch } = useCrossVmTokenBalance({
+    owner: '0x1cf0e2f2f715450',
+    vaultIdentifier: '0x1cf0e2f2f715450.FlowToken.Vault',
+    query: { staleTime: 10000 },
+  });
+
+  if (isLoading) return <p>Loading token balance...</p>;
+  if (error) return <p>Error fetching token balance: {error.message}</p>;
 
   return (
     <div>
-      Status: {transactionStatus?.statusString}
+      <h2>Token Balances</h2>
+      <p>Cadence Balance: {data.cadence.formatted} (Value: {data.cadence.value})</p>
+      <p>EVM Balance: {data.evm.formatted} (Value: {data.evm.value})</p>
+      <p>Combined Balance: {data.combined.formatted} (Value: {data.combined.value})</p>
+      <button onClick={refetch}>Refetch</button>
     </div>
   )
 }
