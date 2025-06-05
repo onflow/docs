@@ -20,6 +20,10 @@ sidebar_position: 1
 - [`useFlowRevertibleRandom`](#useflowrevertiblerandom) – Generate pseudorandom values tied to block height
 - [`useFlowTransactionStatus`](#useflowtransactionstatus) – Track transaction status updates
 
+### Cross-VM (Flow EVM ↔ Cadence) Hooks
+
+- [`useCrossVmTokenBalance`](#usecrossvmtokenbalance) – Query fungible token balances across Cadence and Flow EVM
+
 ## Installation
 
 ```bash
