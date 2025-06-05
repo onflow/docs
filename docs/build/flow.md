@@ -162,4 +162,4 @@ The [FLOW] (or $FLOW) token is the native currency for the Flow network. Develop
 [Flow Technical Primer]: https://www.flow.com/primer
 [Three technical whitepapers]: https://www.flow.com/technical-paper
 [Flow Token Economics]: https://www.flow.com/flow-token-economics
-[VRF]: ../evm/guides/vrf.md
+[VRF]: ../tutorials/native-vrf/vrf-in-solidity.md

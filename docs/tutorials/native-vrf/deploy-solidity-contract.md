@@ -1,5 +1,5 @@
 ---
-sidebar_position: 2
+sidebar_position: 3
 title: Deploy a Solidity Contract Using Cadence
 description: Guide on how to deploy a Solidity contract using Cadence
 keywords:

@@ -714,7 +714,7 @@ Ready to level up your Cadence skills? Take a look at [these Cadence tutorials].
 [Flow Wallet extension]: https://wallet.flow.com/download
 [Faucet guide]: ../../ecosystem/faucets.md
 [Cadence-controlled EVM account (COA)]: ./interacting-with-coa.md
-[onchain VRF]: ../../evm/guides/vrf.md
+[onchain VRF]: ../native-vrf/vrf-in-solidity.md
 [Overview]: #overview
 [Testnet]: https://evm-testnet.flowscan.io/token/0xd3bF53DAC106A0290B0483EcBC89d40FcC961f3e?tab=contract
 [Mainnet]: https://evm.flowscan.io/token/0xd3bF53DAC106A0290B0483EcBC89d40FcC961f3e?tab=contract

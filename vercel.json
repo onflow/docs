@@ -1111,6 +1111,11 @@
       "permanent": true
     },
     {
+      "source": "/evm/guides/vrf",
+      "destination": "/tutorials/native-vrf/vrf-in-solidity",
+      "permanent": true
+    },
+    {
       "source": "/tutorials/contract-testing",
       "destination": "/build/smart-contracts/testing",
       "permanent": true
