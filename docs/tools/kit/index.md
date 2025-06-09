@@ -23,6 +23,7 @@ sidebar_position: 1
 ### Cross-VM (Flow EVM ↔ Cadence) Hooks
 
 - [`useCrossVmTokenBalance`](#usecrossvmtokenbalance) – Query fungible token balances across Cadence and Flow EVM
+- [`useCrossVmSpendNft`](#usecrossvmspendnft) – Bridge NFTs from Cadence to Flow EVM and execute arbitrary EVM transactions to atomically spend them
 
 ## Installation
 
@@ -475,6 +476,65 @@ function QueryExample() {
       <p>EVM Balance: {data.evm.formatted} (Value: {data.evm.value})</p>
       <p>Combined Balance: {data.combined.formatted} (Value: {data.combined.value})</p>
       <button onClick={refetch}>Refetch</button>
+    </div>
+  )
+}
+```
+
+---
+
+### `useCrossVmSpendFt`
+
+```tsx
+import { useCrossVmSpendFt } from "@onflow/kit"
+```
+
+Bridge NFTs from Cadence to Flow EVM and execute arbitrary EVM transactions to atomically spend them.
+
+#### Parameters:
+- `mutation?: UseMutationOptions<string, Error, UseCrossVmSpendFtMutateArgs>` – Optional TanStackQuery mutation options
+
+##### UseCrossVmSpendFtMutateArgs
+
+```typescript
+interface UseCrossVmSpendFtMutateArgs {
+  vaultIdentifier: string; // Cadence vault identifier (e.g. "0x1cf0e2f2f715450.ExampleToken.Vault")
+  amount: string; // Amount of tokens to bridge, as a decimal string (e.g. "1.23")
+  calls: EVMBatchCall[]; // Array of EVM calls to execute after bridging
+}
+```
+
+#### Returns: `UseMutationResult<string, Error, UseCrossVmSpendFtMutateArgs>`
+
+```tsx
+function CrossVmSpendFtExample() {
+  const { spendFt, isPending, error, data: txId } = useCrossVmSpendFt()
+
+  const handleSpendFt = () => {
+    spendFt({
+      vaultIdentifier: "0x1cf0e2f2f715450.ExampleToken.Vault", // Cadence vault identifier
+      amount: "1.23", // Amount of tokens to bridge to EVM
+      calls: [
+        {
+          abi: myEvmContractAbi, // EVM contract ABI
+          address: "0x01234567890abcdef01234567890abcdef", // EVM contract address
+          function: "transfer", // EVM function to call
+          args: [
+            "0xabcdef01234567890abcdef01234567890abcdef", // Recipient address
+          ],
+        },
+      ],
+    })
+  }
+
+  return (
+    <div>
+      <button onClick={handleSpendNft} disabled={isPending}>
+        Bridge and Spend FTs
+      </button>
+      {isPending && <p>Sending transaction...</p>}
+      {error && <p>Error: {error.message}</p>}
+      {txId && <p>Cadence Transaction ID: {txId}</p>}
     </div>
   )
 }
