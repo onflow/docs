@@ -492,9 +492,31 @@ import { useCrossVmSpendNft } from "@onflow/kit"
 Bridge NFTs from Cadence to Flow EVM and execute arbitrary EVM transactions to atomically spend them.
 
 #### Parameters:
-- `mutation?: UseMutationOptions<string, Error, EVMBatchCall[]>` – Optional TanStackQuery mutation options
+- `mutation?: UseMutationOptions<string, Error, UseCrossVmSpendFtMutateArgs>` – Optional TanStackQuery mutation options
 
-#### Returns: `UseMutationResult<string, Error, EVMBatchCall[]>`
+Where `UseCrossVmSpendFtMutateArgs` is defined as:
+
+```typescript
+interface UseCrossVmSpendFtMutateArgs {
+  nftIdentifier: string // Cadence NFT identifier (e.g. "0x1cf0e2f2f715450.FlowNFT")
+  nftIds: string[] // Array of NFT IDs to bridge
+  calls: EVMBatchCall[] // Array of EVM calls to execute atomically
+}
+```
+
+#### Returns: `UseCrossVmSpendNftResult`
+
+Where `UseCrossVmSpendNftResult` is defined as:
+
+```typescript
+interface UseCrossVmSpendNftResult extends Omit<
+  UseMutationResult<string, Error, CrossVmSpendNftParams>,
+  "mutate" | "mutateAsync"
+> {
+  spendNft: (params: CrossVmSpendNftParams) => Promise<string>
+  spendNftAsync: (params: CrossVmSpendNftParams) => Promise<string>
+}
+```
 
 ```tsx
 function CrossVmSpendNftExample() {
