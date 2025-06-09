@@ -23,6 +23,7 @@ sidebar_position: 1
 ### Cross-VM (Flow EVM ↔ Cadence) Hooks
 
 - [`useCrossVmTokenBalance`](#usecrossvmtokenbalance) – Query fungible token balances across Cadence and Flow EVM
+- [`useCrossVmSpendNft`](#usecrossvmspendnft) – Bridge NFTs from Cadence to Flow EVM and execute arbitrary EVM transactions to atomically spend them
 
 ## Installation
 
@@ -475,6 +476,53 @@ function QueryExample() {
       <p>EVM Balance: {data.evm.formatted} (Value: {data.evm.value})</p>
       <p>Combined Balance: {data.combined.formatted} (Value: {data.combined.value})</p>
       <button onClick={refetch}>Refetch</button>
+    </div>
+  )
+}
+```
+
+---
+
+### `useCrossVmSpendNft`
+
+```tsx
+import { useCrossVmSpendNft } from "@onflow/kit"
+```
+
+Bridge NFTs from Cadence to Flow EVM and execute arbitrary EVM transactions to atomically spend them.
+
+#### Parameters:
+- `mutation?: UseMutationOptions<string, Error, EVMBatchCall[]>` – Optional TanStackQuery mutation options
+
+#### Returns: `UseMutationResult<string, Error, EVMBatchCall[]>`
+
+```tsx
+function CrossVmSpendNftExample() {
+  const { spendNft, isPending, error, data: txId } = useCrossVmSpendNft()
+
+  const handleSpendNft = () => {
+    spendNft({
+      nftIdentifier: "0x1cf0e2f2f715450.FlowNFT", // Cadence NFT identifier
+      nftIds: ["1"], // Array of NFT IDs to bridge
+      calls: [
+        {
+          contractAddress: "0x1cf0e2f2f715450", // EVM contract address
+          functionName: "transferNFT",
+          args: ["0x1cf0e2f2f715450", "0x1234567890abcdef"], // Example args
+          value: "1000000000000000000", // Amount in wei (if applicable)
+        },
+      ],
+    })
+  }
+
+  return (
+    <div>
+      <button onClick={handleSpendNft} disabled={isPending}>
+        Bridge and Spend NFT
+      </button>
+      {isPending && <p>Sending transaction...</p>}
+      {error && <p>Error: {error.message}</p>}
+      {txId && <p>Transaction ID: {txId}</p>}
     </div>
   )
 }
