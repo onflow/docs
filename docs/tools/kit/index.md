@@ -485,6 +485,10 @@ function QueryExample() {
 
 ### `useCrossVmSpendNft`
 
+<Callout type="info">
+This feature is currently only supported on Testnet & Mainnet networks.  Emulator support will be added in a future release.
+</Callout>
+
 ```tsx
 import { useCrossVmSpendNft } from "@onflow/kit"
 ```
