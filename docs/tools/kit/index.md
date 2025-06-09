@@ -506,10 +506,12 @@ function CrossVmSpendNftExample() {
       nftIds: ["1"], // Array of NFT IDs to bridge
       calls: [
         {
-          contractAddress: "0x1cf0e2f2f715450", // EVM contract address
+          abi: contractAbi, // ABI of the EVM contract
+          contractAddress: "0x1234567890abcdef1234567890abcdef12345678", // EVM contract address
           functionName: "transferNFT",
-          args: ["0x1cf0e2f2f715450", "0x1234567890abcdef"], // Example args
+          args: ["123"], // Example args
           value: "1000000000000000000", // Amount in wei (if applicable)
+          gasLimit: "21000", // Gas limit for the EVM call
         },
       ],
     })
