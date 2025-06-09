@@ -497,6 +497,7 @@ Bridge NFTs from Cadence to Flow EVM and execute arbitrary EVM transactions to a
 Where `UseCrossVmSpendFtMutateArgs` is defined as:
 
 ```typescript
+// internal type, not exported
 interface UseCrossVmSpendFtMutateArgs {
   vaultIdentifier: string; // Cadence vault identifier (e.g. "0x1cf0e2f2f715450.ExampleToken.Vault")
   amount: string; // Amount of tokens to bridge, as a decimal string (e.g. "1.23")
