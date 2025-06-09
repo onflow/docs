@@ -504,7 +504,19 @@ interface UseCrossVmSpendFtMutateArgs {
 }
 ```
 
-#### Returns: `UseMutationResult<string, Error, UseCrossVmSpendFtMutateArgs>`
+#### Returns: `UseCrossVmSpendFtResult`
+
+Where `UseCrossVmSpendFtResult` is defined as:
+
+```typescript
+type UseCrossVmSpendFtResult = Omit<
+  UseMutationResult<string, Error, UseCrossVmSpendFtMutateArgs>,
+  "mutate" | "mutateAsync"
+> & {
+  spendFt: (args: UseCrossVmSpendFtMutateArgs) => void; // Function to trigger the FT bridging and EVM calls
+  spendFtAsync: (args: UseCrossVmSpendFtMutateArgs) => Promise<string>; // Async version of spendFt
+}
+```
 
 ```tsx
 function CrossVmSpendFtExample() {
