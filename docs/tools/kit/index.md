@@ -23,6 +23,7 @@ sidebar_position: 1
 ### Cross-VM (Flow EVM ↔ Cadence) Hooks
 
 - [`useCrossVmTokenBalance`](#usecrossvmtokenbalance) – Query fungible token balances across Cadence and Flow EVM
+- [`useCrossVmBatchTransaction`](#usecrossvmbatchtransaction) – Execute mutliple EVM transactions in a single atomic Cadence transaction
 
 ## Installation
 
@@ -475,6 +476,60 @@ function QueryExample() {
       <p>EVM Balance: {data.evm.formatted} (Value: {data.evm.value})</p>
       <p>Combined Balance: {data.combined.formatted} (Value: {data.combined.value})</p>
       <button onClick={refetch}>Refetch</button>
+    </div>
+  )
+}
+```
+
+---
+
+## Cross-VM Hooks
+
+### `useCrossVmBatchTransaction`
+
+```tsx
+import { useCrossVmBatchTransaction } from "@onflow/kit"
+```
+
+#### Parameters:
+- `mutation?: UseMutationOptions<string, Error, CrossVmTransaction[]>` – Optional TanStackQuery mutation options
+
+#### Returns: `UseMutationResult<string, Error, CrossVmTransaction[]>`
+
+```tsx
+function CrossVmTransactionExample() {
+  const { mutate, isPending, error, data: txId } = useCrossVmBatchTransaction({
+    mutation: {
+      onSuccess: (txId) => console.log("TX ID:", txId),
+    },
+  })
+
+  const sendTransaction = () => {
+    mutate([
+      {
+        cadence: `transaction() {
+          prepare(acct: &Account) {
+            log(acct.address)
+          }
+        }`,
+        args: (arg, t) => [],
+        proposer: fcl.currentUser,
+        payer: fcl.currentUser,
+        authorizations: [],
+        limit: 100,
+      },
+      // Add more transactions as needed
+    ])
+  }
+
+  return (
+    <div>
+      <button onClick={sendTransaction} disabled={isPending}>
+        Send Cross-VM Transaction
+      </button>
+      {isPending && <p>Sending transaction...</p>}
+      {error && <p>Error: {error.message}</p>}
+      {txId && <p>Transaction ID: {txId}</p>}
     </div>
   )
 }
