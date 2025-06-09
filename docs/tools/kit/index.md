@@ -487,39 +487,82 @@ function QueryExample() {
 
 ### `useCrossVmBatchTransaction`
 
+<Callout type="info">
+This feature is currently only supported on Testnet & Mainnet networks.  Emulator support will be added in a future release.
+</Callout>
+
 ```tsx
 import { useCrossVmBatchTransaction } from "@onflow/kit"
 ```
 
 #### Parameters:
-- `mutation?: UseMutationOptions<string, Error, CrossVmTransaction[]>` – Optional TanStackQuery mutation options
+- `mutation?: UseMutationOptions<string, Error, UseCrossVmBatchTransactionMutateArgs>` – Optional TanStackQuery mutation options
 
-#### Returns: `UseMutationResult<string, Error, CrossVmTransaction[]>`
+#### Returns: `UseCrossVmBatchTransactionResult`
+
+Where `UseCrossVmBatchTransactionResult` is defined as:
+
+```typescript
+interface UseCrossVmBatchTransactionResult extends Omit<
+  UseMutationResult<string, Error, UseCrossVmBatchTransactionMutateArgs>,
+  "mutate" | "mutateAsync"
+> {
+  mutate: (calls: UseCrossVmBatchTransactionMutateArgs) => void
+  mutateAsync: (calls: UseCrossVmBatchTransactionMutateArgs) => Promise<string>
+}
+```
+
+Where `UseCrossVmBatchTransactionMutateArgs` is defined as:
+
+```typescript
+interface UseCrossVmBatchTransactionMutateArgs {
+  calls: EvmBatchCall[]
+  mustPass?: boolean
+}
+```
+
+Where `EvmBatchCall` is defined as:
+
+```typescript
+interface EvmBatchCall {
+  // The target EVM contract address (as a string)
+  address: string
+  // The contract ABI fragment
+  abi: Abi
+  // The name of the function to call
+  functionName: string
+  // The function arguments
+  args?: readonly unknown[]
+  // The gas limit for the call
+  gasLimit?: bigint
+  // The value to send with the call
+  value?: bigint
+}
+```
 
 ```tsx
-function CrossVmTransactionExample() {
-  const { mutate, isPending, error, data: txId } = useCrossVmBatchTransaction({
+function CrossVmBatchTransactionExample() {
+  const { sendBatchTransaction, isPending, error, data: txId } = useCrossVmBatchTransaction({
     mutation: {
       onSuccess: (txId) => console.log("TX ID:", txId),
     },
   })
 
   const sendTransaction = () => {
-    mutate([
+    const calls = [
       {
-        cadence: `transaction() {
-          prepare(acct: &Account) {
-            log(acct.address)
-          }
-        }`,
-        args: (arg, t) => [],
-        proposer: fcl.currentUser,
-        payer: fcl.currentUser,
-        authorizations: [],
-        limit: 100,
+        address: "0x1234567890abcdef",
+        abi: {
+          // ABI definition for the contract
+        },
+        functionName: "transfer",
+        args: ["0xabcdef1234567890", 100n], // Example arguments
+        gasLimit: 21000n, // Example gas limit
       },
-      // Add more transactions as needed
-    ])
+      // Add more calls as needed
+    ]
+
+    sendBatchTransaction({calls})
   }
 
   return (
