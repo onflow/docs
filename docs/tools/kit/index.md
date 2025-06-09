@@ -489,7 +489,7 @@ function QueryExample() {
 import { useCrossVmSpendFt } from "@onflow/kit"
 ```
 
-Bridge NFTs from Cadence to Flow EVM and execute arbitrary EVM transactions to atomically spend them.
+Bridge FTs from Cadence to Flow EVM and execute arbitrary EVM transactions to atomically spend them.
 
 #### Parameters:
 - `mutation?: UseMutationOptions<string, Error, UseCrossVmSpendFtMutateArgs>` – Optional TanStackQuery mutation options
