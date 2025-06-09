@@ -494,7 +494,7 @@ Bridge NFTs from Cadence to Flow EVM and execute arbitrary EVM transactions to a
 #### Parameters:
 - `mutation?: UseMutationOptions<string, Error, UseCrossVmSpendFtMutateArgs>` – Optional TanStackQuery mutation options
 
-##### UseCrossVmSpendFtMutateArgs
+Where `UseCrossVmSpendFtMutateArgs` is defined as:
 
 ```typescript
 interface UseCrossVmSpendFtMutateArgs {
