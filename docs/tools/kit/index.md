@@ -509,10 +509,10 @@ interface UseCrossVmSpendFtMutateArgs {
 Where `UseCrossVmSpendFtResult` is defined as:
 
 ```typescript
-type UseCrossVmSpendFtResult = Omit<
+interface UseCrossVmSpendFtResult extends Omit<
   UseMutationResult<string, Error, UseCrossVmSpendFtMutateArgs>,
   "mutate" | "mutateAsync"
-> & {
+> {
   spendFt: (args: UseCrossVmSpendFtMutateArgs) => void; // Function to trigger the FT bridging and EVM calls
   spendFtAsync: (args: UseCrossVmSpendFtMutateArgs) => Promise<string>; // Async version of spendFt
 }
