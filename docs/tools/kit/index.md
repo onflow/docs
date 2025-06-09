@@ -495,6 +495,8 @@ This feature is currently only supported on Testnet & Mainnet networks.  Emulato
 import { useCrossVmBatchTransaction } from "@onflow/kit"
 ```
 
+This hook allows you to execute multiple EVM transactions in a single atomic Cadence transaction. It is useful for batch processing EVM calls while ensuring they are executed together, either all succeeding or allowing for some to fail without affecting the others.
+
 #### Parameters:
 - `mutation?: UseMutationOptions<string, Error, UseCrossVmBatchTransactionMutateArgs>` – Optional TanStackQuery mutation options
 
