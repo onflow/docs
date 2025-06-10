@@ -6,9 +6,13 @@ sidebar_position: 1
 
 # @onflow/kit
 
-`@onflow/kit` is a lightweight React utility library that simplifies interacting with the Flow blockchain. It provides a collection of hooks, similar to those in other popular web3 libraries, that make it easier to build frontends that understand blockchain interactions. **In the future**, it will also provide components designed to make authentication, script execution, transactions, event subscriptions, and network configuration seamless in React apps.
+`@onflow/kit` is a lightweight React utility library that simplifies interacting with the Flow blockchain. It provides a collection of hooks and components designed to make authentication, script execution, transactions, event subscriptions, and network configuration seamless in React apps.
 
-## 🔌 Included React Hooks
+## What's Included
+
+### Cadence Hooks
+
+Hooks for interacting with native Flow Cadence runtime:
 
 - [`useCurrentFlowUser`](#usecurrentflowuser) – Authenticate and manage the current Flow user
 - [`useFlowAccount`](#useflowaccount) – Fetch Flow account details by address
@@ -22,10 +26,20 @@ sidebar_position: 1
 
 ### Cross-VM (Flow EVM ↔ Cadence) Hooks
 
+Hooks that bridge Cadence logic with EVM behavior on Flow:
+
 - [`useCrossVmTokenBalance`](#usecrossvmtokenbalance) – Query fungible token balances across Cadence and Flow EVM
 - [`useCrossVmBatchTransaction`](#usecrossvmbatchtransaction) – Execute mutliple EVM transactions in a single atomic Cadence transaction
 - [`useCrossVmSpendToken`](#usecrossvmspendnft) – Bridge fungible tokens from Cadence to Flow EVM and execute arbitrary EVM transactions
 - [`useCrossVmSpendNft`](#usecrossvmspendnft) – Bridge NFTs from Cadence to Flow EVM and execute arbitrary EVM transactions to atomically spend them
+
+### Components
+
+Reusable UI components:
+
+- [`<Connect />`](#connect) - A wallet authentication button
+- [`<TransactionDialog />`](#transactiondialog) - A dialog modal that tracks a Flow transaction's lifecycle
+- [`<TransactionLink />`](#transactionlink) - A button that links to the block explorer based on network
 
 ## Installation
 
