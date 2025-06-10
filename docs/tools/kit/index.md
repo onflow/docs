@@ -19,6 +19,7 @@ sidebar_position: 1
 - [`useFlowMutate`](#useflowmutate) – Send transactions to the Flow blockchain
 - [`useFlowRevertibleRandom`](#useflowrevertiblerandom) – Generate pseudorandom values tied to block height
 - [`useFlowTransactionStatus`](#useflowtransactionstatus) – Track transaction status updates
+- [`useFlowChainId`](#useflowchainid) – Retrieve the current Flow chain ID
 
 ### Cross-VM (Flow EVM ↔ Cadence) Hooks
 
