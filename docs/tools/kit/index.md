@@ -13,13 +13,13 @@ sidebar_position: 1
 - [`useCurrentFlowUser`](#usecurrentflowuser) – Authenticate and manage the current Flow user
 - [`useFlowAccount`](#useflowaccount) – Fetch Flow account details by address
 - [`useFlowBlock`](#useflowblock) – Query latest or specific Flow blocks
+- [`useFlowChainId`](#useflowchainid) – Retrieve the current Flow chain ID
 - [`useFlowConfig`](#useflowconfig) – Access the current Flow configuration
 - [`useFlowEvents`](#useflowevents) – Subscribe to Flow events in real-time
 - [`useFlowQuery`](#useflowquery) – Execute Cadence scripts with optional arguments
 - [`useFlowMutate`](#useflowmutate) – Send transactions to the Flow blockchain
 - [`useFlowRevertibleRandom`](#useflowrevertiblerandom) – Generate pseudorandom values tied to block height
 - [`useFlowTransactionStatus`](#useflowtransactionstatus) – Track transaction status updates
-- [`useFlowChainId`](#useflowchainid) – Retrieve the current Flow chain ID
 
 ### Cross-VM (Flow EVM ↔ Cadence) Hooks
 
@@ -182,6 +182,36 @@ function LatestBlock() {
       <p>ID: {block.id}</p>
     </div>
   )
+}
+```
+
+---
+
+### `useFlowChainId`
+
+```tsx
+import { useFlowChainId } from "@onflow/kit"
+```
+
+This hook retrieves the Flow chain ID, which is useful for identifying the current network.
+
+#### Parameters:
+- `queryOptions?: Omit<UseQueryOptions<string | null>, "queryKey" | "queryFn">` – Optional TanStack Query options like `staleTime`, `enabled`, etc.
+
+#### Returns: `UseQueryResult<string | null, Error>`
+
+Valid chain IDs include: `testnet` (Flow Testnet), `mainnet` (Flow Mainnet), and `emulator` (Flow Emulator).  The `flow-` prefix will be stripped from the chain ID returned by the access node (e.g. `flow-testnet` will return `testnet`).
+
+```tsx
+function ChainIdExample() {
+  const { data: chainId, isLoading, error } = useFlowChainId({
+    query: { staleTime: 10000 },
+  })
+
+  if (isLoading) return <p>Loading chain ID...</p>
+  if (error) return <p>Error fetching chain ID: {error.message}</p>
+
+  return <div>Current Flow Chain ID: {chainId}</div>
 }
 ```
 
@@ -417,36 +447,6 @@ function TransactionStatusComponent() {
   if (error) return <div>Error: {error.message}</div>;
 
   return <div>Status: {transactionStatus?.statusString}</div>;
-}
-```
-
----
-
-### `useFlowChainId`
-
-```tsx
-import { useFlowChainId } from "@onflow/kit"
-```
-
-This hook retrieves the Flow chain ID, which is useful for identifying the current network.
-
-#### Parameters:
-- `queryOptions?: Omit<UseQueryOptions<string | null>, "queryKey" | "queryFn">` – Optional TanStack Query options like `staleTime`, `enabled`, etc.
-
-#### Returns: `UseQueryResult<string | null, Error>`
-
-Valid chain IDs include: `testnet` (Flow Testnet), `mainnet` (Flow Mainnet), and `emulator` (Flow Emulator).  The `flow-` prefix will be stripped from the chain ID returned by the access node (e.g. `flow-testnet` will return `testnet`).
-
-```tsx
-function ChainIdExample() {
-  const { data: chainId, isLoading, error } = useFlowChainId({
-    query: { staleTime: 10000 },
-  })
-
-  if (isLoading) return <p>Loading chain ID...</p>
-  if (error) return <p>Error fetching chain ID: {error.message}</p>
-
-  return <div>Current Flow Chain ID: {chainId}</div>
 }
 ```
 
