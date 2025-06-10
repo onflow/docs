@@ -66,12 +66,16 @@ Each round/view the counter is incremented and a new block may be proposed.
 
 **Seat/Slot:** The right to participate in the network as a node of a certain type
 for a specific Epoch. There are a limited number of seats/slots for each node type per epoch.
-Current Slot Limits (may be slightly different than what is shown here):
-- Access Nodes: 167
-- Collection Nodes: 156
-- Consensus Nodes: 149
-- Execution Nodes: 10
-- Verification Nodes: 105
+However, these can be updated by the service committee to accommodate more nodes.
+Current Slot Limits can be queried from the chain.
+e.g.
+The [get_role_counts.cdc](https://github.com/onflow/flow-core-contracts/blob/master/transactions/idTableStaking/scripts/get_role_counts.cdc) returns the current count for all node types.
+```
+$ flow scripts execute get_role_counts.cdc -n mainnet
+
+Result: {1: 102, 2: 85, 5: 206, 4: 69, 3: 7}
+
+```
 
 **Candidate:** A node that has committed tokens for the next epoch but has not been accepted yet.
 There is a limited number of node slots per epoch and candidate nodes are selected randomly,
