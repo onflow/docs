@@ -23,6 +23,9 @@ sidebar_position: 1
 ### Cross-VM (Flow EVM ↔ Cadence) Hooks
 
 - [`useCrossVmTokenBalance`](#usecrossvmtokenbalance) – Query fungible token balances across Cadence and Flow EVM
+- [`useCrossVmBatchTransaction`](#usecrossvmbatchtransaction) – Execute mutliple EVM transactions in a single atomic Cadence transaction
+- [`useCrossVmSpendToken`](#usecrossvmspendnft) – Bridge fungible tokens from Cadence to Flow EVM and execute arbitrary EVM transactions
+- [`useCrossVmSpendNft`](#usecrossvmspendnft) – Bridge NFTs from Cadence to Flow EVM and execute arbitrary EVM transactions to atomically spend them
 
 ## Installation
 
@@ -420,6 +423,10 @@ function TransactionStatusComponent() {
 
 ### `useCrossVmTokenBalance`
 
+<Callout type="info">
+This feature is currently only supported on Testnet & Mainnet networks.  Emulator support will be added in a future release.
+</Callout>
+
 ```tsx
 import { useFlowQuery } from '@onflow/kit';
 ```
@@ -475,6 +482,255 @@ function QueryExample() {
       <p>EVM Balance: {data.evm.formatted} (Value: {data.evm.value})</p>
       <p>Combined Balance: {data.combined.formatted} (Value: {data.combined.value})</p>
       <button onClick={refetch}>Refetch</button>
+    </div>
+  )
+}
+```
+
+---
+
+## Cross-VM Hooks
+
+### `useCrossVmBatchTransaction`
+
+<Callout type="info">
+This feature is currently only supported on Testnet & Mainnet networks.  Emulator support will be added in a future release.
+</Callout>
+
+```tsx
+import { useCrossVmBatchTransaction } from "@onflow/kit"
+```
+
+This hook allows you to execute multiple EVM transactions in a single atomic Cadence transaction. It is useful for batch processing EVM calls while ensuring they are executed together, either all succeeding or allowing for some to fail without affecting the others.
+
+#### Parameters:
+- `mutation?: UseMutationOptions<string, Error, UseCrossVmBatchTransactionMutateArgs>` – Optional TanStackQuery mutation options
+
+#### Returns: `UseCrossVmBatchTransactionResult`
+
+Where `UseCrossVmBatchTransactionResult` is defined as:
+
+```typescript
+interface UseCrossVmBatchTransactionResult extends Omit<
+  UseMutationResult<string, Error, UseCrossVmBatchTransactionMutateArgs>,
+  "mutate" | "mutateAsync"
+> {
+  mutate: (calls: UseCrossVmBatchTransactionMutateArgs) => void
+  mutateAsync: (calls: UseCrossVmBatchTransactionMutateArgs) => Promise<string>
+}
+```
+
+Where `UseCrossVmBatchTransactionMutateArgs` is defined as:
+
+```typescript
+interface UseCrossVmBatchTransactionMutateArgs {
+  calls: EvmBatchCall[]
+  mustPass?: boolean
+}
+```
+
+Where `EvmBatchCall` is defined as:
+
+```typescript
+interface EvmBatchCall {
+  // The target EVM contract address (as a string)
+  address: string
+  // The contract ABI fragment
+  abi: Abi
+  // The name of the function to call
+  functionName: string
+  // The function arguments
+  args?: readonly unknown[]
+  // The gas limit for the call
+  gasLimit?: bigint
+  // The value to send with the call
+  value?: bigint
+}
+```
+
+```tsx
+function CrossVmBatchTransactionExample() {
+  const { sendBatchTransaction, isPending, error, data: txId } = useCrossVmBatchTransaction({
+    mutation: {
+      onSuccess: (txId) => console.log("TX ID:", txId),
+    },
+  })
+
+  const sendTransaction = () => {
+    const calls = [
+      {
+        address: "0x1234567890abcdef",
+        abi: {
+          // ABI definition for the contract
+        },
+        functionName: "transfer",
+        args: ["0xabcdef1234567890", 100n], // Example arguments
+        gasLimit: 21000n, // Example gas limit
+      },
+      // Add more calls as needed
+    ]
+
+    sendBatchTransaction({calls})
+  }
+
+  return (
+    <div>
+      <button onClick={sendTransaction} disabled={isPending}>
+        Send Cross-VM Transaction
+      </button>
+      {isPending && <p>Sending transaction...</p>}
+      {error && <p>Error: {error.message}</p>}
+      {txId && <p>Transaction ID: {txId}</p>}
+    </div>
+  )
+}
+```
+
+---
+
+### `useCrossVmSpendToken`
+
+<Callout type="info">
+This feature is currently only supported on Testnet & Mainnet networks.  Emulator support will be added in a future release.
+</Callout>
+
+```tsx
+import { useCrossVmSpendToken } from "@onflow/kit"
+```
+
+Bridge FTs from Cadence to Flow EVM and execute arbitrary EVM transactions to atomically spend them.
+
+#### Parameters:
+- `mutation?: UseMutationOptions<string, Error, UseCrossVmSpendTokenMutateArgs>` – Optional TanStackQuery mutation options
+
+Where `UseCrossVmSpendTokenMutateArgs` is defined as:
+
+```typescript
+interface UseCrossVmSpendTokenMutateArgs {
+  vaultIdentifier: string; // Cadence vault identifier (e.g. "0x1cf0e2f2f715450.ExampleToken.Vault")
+  amount: string; // Amount of tokens to bridge, as a decimal string (e.g. "1.23")
+  calls: EVMBatchCall[]; // Array of EVM calls to execute after bridging
+}
+```
+
+#### Returns: `UseCrossVmSpendTokenResult`
+
+Where `UseCrossVmSpendTokenResult` is defined as:
+
+```typescript
+interface UseCrossVmSpendTokenResult extends Omit<
+  UseMutationResult<string, Error, UseCrossVmSpendTokenMutateArgs>,
+  "mutate" | "mutateAsync"
+> {
+  spendToken: (args: UseCrossVmSpendTokenMutateArgs) => void; // Function to trigger the FT bridging and EVM calls
+  spendTokenAsync: (args: UseCrossVmSpendTokenMutateArgs) => Promise<string>; // Async version of spendToken
+}
+```
+
+```tsx
+function CrossVmSpendTokenExample() {
+  const { spendToken, isPending, error, data: txId } = useCrossVmSpendToken()
+
+  const handleSpendToken = () => {
+    spendToken({
+      vaultIdentifier: "0x1cf0e2f2f715450.ExampleToken.Vault", // Cadence vault identifier
+      amount: "1.23", // Amount of tokens to bridge to EVM
+      calls: [
+        {
+          abi: myEvmContractAbi, // EVM contract ABI
+          address: "0x01234567890abcdef01234567890abcdef", // EVM contract address
+          function: "transfer", // EVM function to call
+          args: [
+            "0xabcdef01234567890abcdef01234567890abcdef", // Recipient address
+          ],
+        },
+      ],
+    })
+  }
+
+  return (
+    <div>
+      <button onClick={handleSpendToken} disabled={isPending}>
+        Bridge and Spend FTs
+      </button>
+      {isPending && <p>Sending transaction...</p>}
+      {error && <p>Error: {error.message}</p>}
+      {txId && <p>Cadence Transaction ID: {txId}</p>}
+    </div>
+  )
+}
+```
+
+---
+
+### `useCrossVmSpendNft`
+
+<Callout type="info">
+This feature is currently only supported on Testnet & Mainnet networks.  Emulator support will be added in a future release.
+</Callout>
+
+```tsx
+import { useCrossVmSpendNft } from "@onflow/kit"
+```
+
+Bridge NFTs from Cadence to Flow EVM and execute arbitrary EVM transactions to atomically spend them.
+
+#### Parameters:
+- `mutation?: UseMutationOptions<string, Error, UseCrossVmSpendFtMutateArgs>` – Optional TanStackQuery mutation options
+
+Where `UseCrossVmSpendFtMutateArgs` is defined as:
+
+```typescript
+interface UseCrossVmSpendFtMutateArgs {
+  nftIdentifier: string // Cadence NFT identifier (e.g. "0x1cf0e2f2f715450.FlowNFT")
+  nftIds: string[] // Array of NFT IDs to bridge
+  calls: EVMBatchCall[] // Array of EVM calls to execute atomically
+}
+```
+
+#### Returns: `UseCrossVmSpendNftResult`
+
+Where `UseCrossVmSpendNftResult` is defined as:
+
+```typescript
+interface UseCrossVmSpendNftResult extends Omit<
+  UseMutationResult<string, Error, CrossVmSpendNftParams>,
+  "mutate" | "mutateAsync"
+> {
+  spendNft: (params: CrossVmSpendNftParams) => Promise<string>
+  spendNftAsync: (params: CrossVmSpendNftParams) => Promise<string>
+}
+```
+
+```tsx
+function CrossVmSpendNftExample() {
+  const { spendNft, isPending, error, data: txId } = useCrossVmSpendNft()
+
+  const handleSpendNft = () => {
+    spendNft({
+      nftIdentifier: "0x1cf0e2f2f715450.FlowNFT", // Cadence NFT identifier
+      nftIds: ["1"], // Array of NFT IDs to bridge
+      calls: [
+        {
+          abi: contractAbi, // ABI of the EVM contract
+          contractAddress: "0x1234567890abcdef1234567890abcdef12345678", // EVM contract address
+          functionName: "transferNFT",
+          args: ["123"], // Example args
+          value: "1000000000000000000", // Amount in wei (if applicable)
+          gasLimit: "21000", // Gas limit for the EVM call
+        },
+      ],
+    })
+  }
+
+  return (
+    <div>
+      <button onClick={handleSpendNft} disabled={isPending}>
+        Bridge and Spend NFT
+      </button>
+      {isPending && <p>Sending transaction...</p>}
+      {error && <p>Error: {error.message}</p>}
+      {txId && <p>Transaction ID: {txId}</p>}
     </div>
   )
 }
