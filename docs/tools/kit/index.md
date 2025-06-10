@@ -421,6 +421,70 @@ function TransactionStatusComponent() {
 
 ---
 
+### `useFlowChainId`
+
+import * as fcl from "@onflow/fcl"
+import {useQuery, UseQueryOptions, UseQueryResult} from "@tanstack/react-query"
+import {useFlowQueryClient} from "../provider/FlowQueryClient"
+import {useCallback} from "react"
+import {useFlowConfig} from "./useFlowConfig"
+
+/**
+ * Gets the Flow chain ID.
+ */
+export function useFlowChainId(
+  queryOptions: Omit<
+    UseQueryOptions<string | null>,
+    "queryKey" | "queryFn"
+  > = {}
+): UseQueryResult<string | null, Error> {
+  const queryClient = useFlowQueryClient()
+  const config = useFlowConfig()
+
+  const fetchChainId = useCallback(async () => {
+    return await fcl.getChainId()
+  }, [config])
+
+  return useQuery<string | null, Error>(
+    {
+      queryKey: ["flowChainId"],
+      queryFn: fetchChainId,
+      initialData: null,
+      ...queryOptions,
+    },
+    queryClient
+  )
+}
+
+
+```tsx
+import { useFlowChainId } from "@onflow/kit"
+```
+
+This hook retrieves the Flow chain ID, which is useful for identifying the current network.
+
+#### Parameters:
+- `queryOptions?: Omit<UseQueryOptions<string | null>, "queryKey" | "queryFn">` – Optional TanStack Query options like `staleTime`, `enabled`, etc.
+
+#### Returns: `UseQueryResult<string | null, Error>`
+
+Valid chain IDs include: `testnet` (Flow Testnet), `mainnet` (Flow Mainnet), and `emulator` (Flow Emulator).  The `flow-` prefix will be stripped from the chain ID returned by the access node (e.g. `flow-testnet` will return `testnet`).
+
+```tsx
+function ChainIdExample() {
+  const { data: chainId, isLoading, error } = useFlowChainId({
+    query: { staleTime: 10000 },
+  })
+
+  if (isLoading) return <p>Loading chain ID...</p>
+  if (error) return <p>Error fetching chain ID: {error.message}</p>
+
+  return <div>Current Flow Chain ID: {chainId}</div>
+}
+```
+
+---
+
 ### `useCrossVmTokenBalance`
 
 <Callout type="info">
