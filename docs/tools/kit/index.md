@@ -487,51 +487,51 @@ function QueryExample() {
 
 ---
 
-### `useCrossVmSpendFt`
+### `useCrossVmSpendToken`
 
 <Callout type="info">
 This feature is currently only supported on Testnet & Mainnet networks.  Emulator support will be added in a future release.
 </Callout>
 
 ```tsx
-import { useCrossVmSpendFt } from "@onflow/kit"
+import { useCrossVmSpendToken } from "@onflow/kit"
 ```
 
 Bridge FTs from Cadence to Flow EVM and execute arbitrary EVM transactions to atomically spend them.
 
 #### Parameters:
-- `mutation?: UseMutationOptions<string, Error, UseCrossVmSpendFtMutateArgs>` – Optional TanStackQuery mutation options
+- `mutation?: UseMutationOptions<string, Error, UseCrossVmSpendTokenMutateArgs>` – Optional TanStackQuery mutation options
 
-Where `UseCrossVmSpendFtMutateArgs` is defined as:
+Where `UseCrossVmSpendTokenMutateArgs` is defined as:
 
 ```typescript
-interface UseCrossVmSpendFtMutateArgs {
+interface UseCrossVmSpendTokenMutateArgs {
   vaultIdentifier: string; // Cadence vault identifier (e.g. "0x1cf0e2f2f715450.ExampleToken.Vault")
   amount: string; // Amount of tokens to bridge, as a decimal string (e.g. "1.23")
   calls: EVMBatchCall[]; // Array of EVM calls to execute after bridging
 }
 ```
 
-#### Returns: `UseCrossVmSpendFtResult`
+#### Returns: `UseCrossVmSpendTokenResult`
 
-Where `UseCrossVmSpendFtResult` is defined as:
+Where `UseCrossVmSpendTokenResult` is defined as:
 
 ```typescript
-interface UseCrossVmSpendFtResult extends Omit<
-  UseMutationResult<string, Error, UseCrossVmSpendFtMutateArgs>,
+interface UseCrossVmSpendTokenResult extends Omit<
+  UseMutationResult<string, Error, UseCrossVmSpendTokenMutateArgs>,
   "mutate" | "mutateAsync"
 > {
-  spendFt: (args: UseCrossVmSpendFtMutateArgs) => void; // Function to trigger the FT bridging and EVM calls
-  spendFtAsync: (args: UseCrossVmSpendFtMutateArgs) => Promise<string>; // Async version of spendFt
+  spendToken: (args: UseCrossVmSpendTokenMutateArgs) => void; // Function to trigger the FT bridging and EVM calls
+  spendTokenAsync: (args: UseCrossVmSpendTokenMutateArgs) => Promise<string>; // Async version of spendToken
 }
 ```
 
 ```tsx
-function CrossVmSpendFtExample() {
-  const { spendFt, isPending, error, data: txId } = useCrossVmSpendFt()
+function CrossVmSpendTokenExample() {
+  const { spendToken, isPending, error, data: txId } = useCrossVmSpendToken()
 
-  const handleSpendFt = () => {
-    spendFt({
+  const handleSpendToken = () => {
+    spendToken({
       vaultIdentifier: "0x1cf0e2f2f715450.ExampleToken.Vault", // Cadence vault identifier
       amount: "1.23", // Amount of tokens to bridge to EVM
       calls: [
