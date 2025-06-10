@@ -86,6 +86,77 @@ If you're using **Next.js**, place the `FlowProvider` inside your `layout.tsx`. 
 
 ---
 
+## Components
+
+### `Connect`
+
+A drop-in wallet connection component with UI for copy address, logout, and balance (future dynamic).
+
+**Props:**
+
+- `variant?: ButtonProps["variant"]` – Optional button style variant (default: `"primary"`)
+- `onConnect?: () => void` – Callback triggered after successful authentication
+- `onDisconnect?: () => void` – Callback triggered after logout
+
+```tsx
+import { Connect } from "@onflow/kit"
+
+<Connect
+  onConnect={() => console.log("Connected!")}
+  onDisconnect={() => console.log("Logged out")}
+/>
+```
+
+---
+
+### `TransactionDialog`
+
+Dialog component for real-time transaction status updates.
+
+**Props:**
+
+- `open: boolean` – Whether the dialog is open
+- `onOpenChange: (open: boolean) => void` – Callback to open/close dialog
+- `txId?: string` – Optional Flow transaction ID to track
+- `onSuccess?: () => void` – Optional callback when transaction is successful
+- `pendingTitle?: string` – Optional custom pending state title
+- `pendingDescription?: string` – Optional custom pending state description
+- `successTitle?: string` – Optional custom success state title
+- `successDescription?: string` – Optional custom success state description
+- `closeOnSuccess?: boolean` – If `true`, closes the dialog automatically after success
+
+```tsx
+import { TransactionDialog } from "@onflow/kit"
+
+<TransactionDialog
+  open={isOpen}
+  onOpenChange={setIsOpen}
+  txId={txId}
+  pendingTitle="Sending..."
+  successTitle="All done!"
+  closeOnSuccess
+/>
+```
+
+---
+
+### `TransactionLink`
+
+Link to the block explorer with the appropriate network scoped to transaction ID.
+
+**Props:**
+
+- `txId: string` – The transaction ID to link to
+- `variant?: ButtonProps["variant"]` – Optional button variant (defaults to `"link"`)
+
+```tsx
+import { TransactionLink } from "@onflow/kit"
+
+<TransactionLink txId="your-tx-id" />
+```
+
+---
+
 ## Hooks
 
 :::info
