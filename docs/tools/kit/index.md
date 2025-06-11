@@ -17,6 +17,7 @@ Hooks for interacting with native Flow Cadence runtime:
 - [`useCurrentFlowUser`](#usecurrentflowuser) – Authenticate and manage the current Flow user
 - [`useFlowAccount`](#useflowaccount) – Fetch Flow account details by address
 - [`useFlowBlock`](#useflowblock) – Query latest or specific Flow blocks
+- [`useFlowChainId`](#useflowchainid) – Retrieve the current Flow chain ID
 - [`useFlowConfig`](#useflowconfig) – Access the current Flow configuration
 - [`useFlowEvents`](#useflowevents) – Subscribe to Flow events in real-time
 - [`useFlowQuery`](#useflowquery) – Execute Cadence scripts with optional arguments
@@ -26,12 +27,10 @@ Hooks for interacting with native Flow Cadence runtime:
 
 ### Cross-VM (Flow EVM ↔ Cadence) Hooks
 
-Hooks that bridge Cadence logic with EVM behavior on Flow:
-
-- [`useCrossVmTokenBalance`](#usecrossvmtokenbalance) – Query fungible token balances across Cadence and Flow EVM
 - [`useCrossVmBatchTransaction`](#usecrossvmbatchtransaction) – Execute mutliple EVM transactions in a single atomic Cadence transaction
-- [`useCrossVmSpendToken`](#usecrossvmspendnft) – Bridge fungible tokens from Cadence to Flow EVM and execute arbitrary EVM transactions
+- [`useCrossVmTokenBalance`](#usecrossvmtokenbalance) – Query fungible token balances across Cadence and Flow EVM
 - [`useCrossVmSpendNft`](#usecrossvmspendnft) – Bridge NFTs from Cadence to Flow EVM and execute arbitrary EVM transactions to atomically spend them
+- [`useCrossVmSpendToken`](#usecrossvmspendnft) – Bridge fungible tokens from Cadence to Flow EVM and execute arbitrary EVM transactions
 
 ### Components
 
@@ -266,6 +265,36 @@ function LatestBlock() {
       <p>ID: {block.id}</p>
     </div>
   )
+}
+```
+
+---
+
+### `useFlowChainId`
+
+```tsx
+import { useFlowChainId } from "@onflow/kit"
+```
+
+This hook retrieves the Flow chain ID, which is useful for identifying the current network.
+
+#### Parameters:
+- `queryOptions?: Omit<UseQueryOptions<string | null>, "queryKey" | "queryFn">` – Optional TanStack Query options like `staleTime`, `enabled`, etc.
+
+#### Returns: `UseQueryResult<string | null, Error>`
+
+Valid chain IDs include: `testnet` (Flow Testnet), `mainnet` (Flow Mainnet), and `emulator` (Flow Emulator).  The `flow-` prefix will be stripped from the chain ID returned by the access node (e.g. `flow-testnet` will return `testnet`).
+
+```tsx
+function ChainIdExample() {
+  const { data: chainId, isLoading, error } = useFlowChainId({
+    query: { staleTime: 10000 },
+  })
+
+  if (isLoading) return <p>Loading chain ID...</p>
+  if (error) return <p>Error fetching chain ID: {error.message}</p>
+
+  return <div>Current Flow Chain ID: {chainId}</div>
 }
 ```
 
@@ -506,74 +535,6 @@ function TransactionStatusComponent() {
 
 ---
 
-### `useCrossVmTokenBalance`
-
-<Callout type="info">
-This feature is currently only supported on Testnet & Mainnet networks.  Emulator support will be added in a future release.
-</Callout>
-
-```tsx
-import { useFlowQuery } from '@onflow/kit';
-```
-
-Fetch the balance of a token balance for a given user across both Cadence and EVM environments.
-
-#### Parameters:
-
-- `owner: string` – Cadence address of the account whose token balances you want.
-- `vaultIdentifier?: string` – Optional Cadence resource identifier (e.g. "0x1cf0e2f2f715450.FlowToken.Vault") for on-chain balance
-- `erc20AddressHexArg?: string` – Optional bridged ERC-20 contract address (hex) for EVM/COA balance
-- `query?: Omit<UseQueryOptions<unknown, Error>, "queryKey" | "queryFn">` – Optional TanStack Query config (e.g. staleTime, enabled)
-
-> **Note:** You must pass `owner`, and one of `vaultIdentifier` or `erc20AddressHexArg`.
-
-#### Returns: `UseQueryResult<UseCrossVmTokenBalanceData | null, Error>`
-
-Where `UseCrossVmTokenBalanceData` is defined as:
-
-```typescript
-interface UseCrossVmTokenBalanceData {
-  cadence: TokenBalance // Token balance of Cadence vault
-  evm: TokenBalance // Token balance of EVM (COA stored in /storage/coa)
-  combined: TokenBalance // Combined balance of both Cadence and EVM
-}
-```
-
-Where `TokenBalance` is defined as:
-
-```typescript
-interface TokenBalance {
-  value: bigint // Balance value in smallest unit
-  formatted: string // Formatted balance string (e.g. "123.45")
-  precision: number // Number of decimal places for the token
-}
-```
-
-```tsx
-function QueryExample() {
-  const { data, isLoading, error, refetch } = useCrossVmTokenBalance({
-    owner: '0x1cf0e2f2f715450',
-    vaultIdentifier: '0x1cf0e2f2f715450.FlowToken.Vault',
-    query: { staleTime: 10000 },
-  });
-
-  if (isLoading) return <p>Loading token balance...</p>;
-  if (error) return <p>Error fetching token balance: {error.message}</p>;
-
-  return (
-    <div>
-      <h2>Token Balances</h2>
-      <p>Cadence Balance: {data.cadence.formatted} (Value: {data.cadence.value})</p>
-      <p>EVM Balance: {data.evm.formatted} (Value: {data.evm.value})</p>
-      <p>Combined Balance: {data.combined.formatted} (Value: {data.combined.value})</p>
-      <button onClick={refetch}>Refetch</button>
-    </div>
-  )
-}
-```
-
----
-
 ## Cross-VM Hooks
 
 ### `useCrossVmBatchTransaction`
@@ -673,74 +634,67 @@ function CrossVmBatchTransactionExample() {
 
 ---
 
-### `useCrossVmSpendToken`
+### `useCrossVmTokenBalance`
 
 <Callout type="info">
 This feature is currently only supported on Testnet & Mainnet networks.  Emulator support will be added in a future release.
 </Callout>
 
 ```tsx
-import { useCrossVmSpendToken } from "@onflow/kit"
+import { useFlowQuery } from '@onflow/kit';
 ```
 
-Bridge FTs from Cadence to Flow EVM and execute arbitrary EVM transactions to atomically spend them.
+Fetch the balance of a token balance for a given user across both Cadence and EVM environments.
 
 #### Parameters:
-- `mutation?: UseMutationOptions<string, Error, UseCrossVmSpendTokenMutateArgs>` – Optional TanStackQuery mutation options
 
-Where `UseCrossVmSpendTokenMutateArgs` is defined as:
+- `owner: string` – Cadence address of the account whose token balances you want.
+- `vaultIdentifier?: string` – Optional Cadence resource identifier (e.g. "0x1cf0e2f2f715450.FlowToken.Vault") for on-chain balance
+- `erc20AddressHexArg?: string` – Optional bridged ERC-20 contract address (hex) for EVM/COA balance
+- `query?: Omit<UseQueryOptions<unknown, Error>, "queryKey" | "queryFn">` – Optional TanStack Query config (e.g. staleTime, enabled)
+
+> **Note:** You must pass `owner`, and one of `vaultIdentifier` or `erc20AddressHexArg`.
+
+#### Returns: `UseQueryResult<UseCrossVmTokenBalanceData | null, Error>`
+
+Where `UseCrossVmTokenBalanceData` is defined as:
 
 ```typescript
-interface UseCrossVmSpendTokenMutateArgs {
-  vaultIdentifier: string; // Cadence vault identifier (e.g. "0x1cf0e2f2f715450.ExampleToken.Vault")
-  amount: string; // Amount of tokens to bridge, as a decimal string (e.g. "1.23")
-  calls: EVMBatchCall[]; // Array of EVM calls to execute after bridging
+interface UseCrossVmTokenBalanceData {
+  cadence: TokenBalance // Token balance of Cadence vault
+  evm: TokenBalance // Token balance of EVM (COA stored in /storage/coa)
+  combined: TokenBalance // Combined balance of both Cadence and EVM
 }
 ```
 
-#### Returns: `UseCrossVmSpendTokenResult`
-
-Where `UseCrossVmSpendTokenResult` is defined as:
+Where `TokenBalance` is defined as:
 
 ```typescript
-interface UseCrossVmSpendTokenResult extends Omit<
-  UseMutationResult<string, Error, UseCrossVmSpendTokenMutateArgs>,
-  "mutate" | "mutateAsync"
-> {
-  spendToken: (args: UseCrossVmSpendTokenMutateArgs) => void; // Function to trigger the FT bridging and EVM calls
-  spendTokenAsync: (args: UseCrossVmSpendTokenMutateArgs) => Promise<string>; // Async version of spendToken
+interface TokenBalance {
+  value: bigint // Balance value in smallest unit
+  formatted: string // Formatted balance string (e.g. "123.45")
+  precision: number // Number of decimal places for the token
 }
 ```
 
 ```tsx
-function CrossVmSpendTokenExample() {
-  const { spendToken, isPending, error, data: txId } = useCrossVmSpendToken()
+function QueryExample() {
+  const { data, isLoading, error, refetch } = useCrossVmTokenBalance({
+    owner: '0x1cf0e2f2f715450',
+    vaultIdentifier: '0x1cf0e2f2f715450.FlowToken.Vault',
+    query: { staleTime: 10000 },
+  });
 
-  const handleSpendToken = () => {
-    spendToken({
-      vaultIdentifier: "0x1cf0e2f2f715450.ExampleToken.Vault", // Cadence vault identifier
-      amount: "1.23", // Amount of tokens to bridge to EVM
-      calls: [
-        {
-          abi: myEvmContractAbi, // EVM contract ABI
-          address: "0x01234567890abcdef01234567890abcdef", // EVM contract address
-          function: "transfer", // EVM function to call
-          args: [
-            "0xabcdef01234567890abcdef01234567890abcdef", // Recipient address
-          ],
-        },
-      ],
-    })
-  }
+  if (isLoading) return <p>Loading token balance...</p>;
+  if (error) return <p>Error fetching token balance: {error.message}</p>;
 
   return (
     <div>
-      <button onClick={handleSpendToken} disabled={isPending}>
-        Bridge and Spend FTs
-      </button>
-      {isPending && <p>Sending transaction...</p>}
-      {error && <p>Error: {error.message}</p>}
-      {txId && <p>Cadence Transaction ID: {txId}</p>}
+      <h2>Token Balances</h2>
+      <p>Cadence Balance: {data.cadence.formatted} (Value: {data.cadence.value})</p>
+      <p>EVM Balance: {data.evm.formatted} (Value: {data.evm.value})</p>
+      <p>Combined Balance: {data.combined.formatted} (Value: {data.combined.value})</p>
+      <button onClick={refetch}>Refetch</button>
     </div>
   )
 }
@@ -816,6 +770,81 @@ function CrossVmSpendNftExample() {
       {isPending && <p>Sending transaction...</p>}
       {error && <p>Error: {error.message}</p>}
       {txId && <p>Transaction ID: {txId}</p>}
+    </div>
+  )
+}
+```
+
+---
+
+### `useCrossVmSpendToken`
+
+<Callout type="info">
+This feature is currently only supported on Testnet & Mainnet networks.  Emulator support will be added in a future release.
+</Callout>
+
+```tsx
+import { useCrossVmSpendToken } from "@onflow/kit"
+```
+
+Bridge FTs from Cadence to Flow EVM and execute arbitrary EVM transactions to atomically spend them.
+
+#### Parameters:
+- `mutation?: UseMutationOptions<string, Error, UseCrossVmSpendTokenMutateArgs>` – Optional TanStackQuery mutation options
+
+Where `UseCrossVmSpendTokenMutateArgs` is defined as:
+
+```typescript
+interface UseCrossVmSpendTokenMutateArgs {
+  vaultIdentifier: string; // Cadence vault identifier (e.g. "0x1cf0e2f2f715450.ExampleToken.Vault")
+  amount: string; // Amount of tokens to bridge, as a decimal string (e.g. "1.23")
+  calls: EVMBatchCall[]; // Array of EVM calls to execute after bridging
+}
+```
+
+#### Returns: `UseCrossVmSpendTokenResult`
+
+Where `UseCrossVmSpendTokenResult` is defined as:
+
+```typescript
+interface UseCrossVmSpendTokenResult extends Omit<
+  UseMutationResult<string, Error, UseCrossVmSpendTokenMutateArgs>,
+  "mutate" | "mutateAsync"
+> {
+  spendToken: (args: UseCrossVmSpendTokenMutateArgs) => void; // Function to trigger the FT bridging and EVM calls
+  spendTokenAsync: (args: UseCrossVmSpendTokenMutateArgs) => Promise<string>; // Async version of spendToken
+}
+```
+
+```tsx
+function CrossVmSpendTokenExample() {
+  const { spendToken, isPending, error, data: txId } = useCrossVmSpendToken()
+
+  const handleSpendToken = () => {
+    spendToken({
+      vaultIdentifier: "0x1cf0e2f2f715450.ExampleToken.Vault", // Cadence vault identifier
+      amount: "1.23", // Amount of tokens to bridge to EVM
+      calls: [
+        {
+          abi: myEvmContractAbi, // EVM contract ABI
+          address: "0x01234567890abcdef01234567890abcdef", // EVM contract address
+          function: "transfer", // EVM function to call
+          args: [
+            "0xabcdef01234567890abcdef01234567890abcdef", // Recipient address
+          ],
+        },
+      ],
+    })
+  }
+
+  return (
+    <div>
+      <button onClick={handleSpendToken} disabled={isPending}>
+        Bridge and Spend FTs
+      </button>
+      {isPending && <p>Sending transaction...</p>}
+      {error && <p>Error: {error.message}</p>}
+      {txId && <p>Cadence Transaction ID: {txId}</p>}
     </div>
   )
 }
