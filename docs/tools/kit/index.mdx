@@ -4,6 +4,8 @@ description: React hooks for interacting with the Flow blockchain.
 sidebar_position: 1
 ---
 
+import { Connect, TransactionDialog, TransactionLink } from "@onflow/kit"
+
 # @onflow/kit
 
 `@onflow/kit` is a lightweight React utility library that simplifies interacting with the Flow blockchain. It provides a collection of hooks and components designed to make authentication, script execution, transactions, event subscriptions, and network configuration seamless in React apps.
@@ -106,6 +108,13 @@ import { Connect } from "@onflow/kit"
 />
 ```
 
+### Live Demo
+
+<Connect
+  onConnect={() => console.log("Connected!")}
+  onDisconnect={() => console.log("Logged out")}
+/>
+
 ---
 
 ### `TransactionDialog`
@@ -137,6 +146,17 @@ import { TransactionDialog } from "@onflow/kit"
 />
 ```
 
+### Live Demo
+
+<TransactionDialog
+  open={false}
+  onOpenChange={() => {}}
+  txId="0x1234567890abcdef"
+  pendingTitle="Sending..."
+  successTitle="All done!"
+  closeOnSuccess
+/>
+
 ---
 
 ### `TransactionLink`
@@ -153,6 +173,13 @@ import { TransactionLink } from "@onflow/kit"
 
 <TransactionLink txId="your-tx-id" />
 ```
+
+### Live Demo
+
+<TransactionLink 
+  txId="0x1234567890abcdef"
+  variant="primary"
+/>
 
 ---
 
