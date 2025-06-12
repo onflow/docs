@@ -52,7 +52,7 @@ You'll need a [ChatGPT Plus subscription] to use the **Custom GPT** feature or a
 
 ---
 
-## 📍 Step 2: Click "Create a GPT"
+## Step 2: Click "Create a GPT"
 
 - In the **GPTs** screen, click the **"Create"** button in the top-right corner.
 - In the **Explore Gems** screen, click the **New Gem** button in the center-right of the screen. 
