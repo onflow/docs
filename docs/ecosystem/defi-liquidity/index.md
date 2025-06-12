@@ -39,7 +39,7 @@ Flow is designed for **next-generation DeFi**, enabling developers to build high
 
 Explore the [FlowVerse DeFi ecosystem](https://www.flowverse.co/?categories=defi) page for more information.
 
-## Main DeFI Partners 
+## DeFi Partners 
 
 <div id="cards" className="cards">
 
