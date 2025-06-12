@@ -40,7 +40,7 @@ You'll need a [ChatGPT Plus subscription] to use the **Custom GPT** feature or a
 
 :::
 
-## 📍 Step 1: Open the "Custom LLM" Section
+## Step 1: Open the "Custom LLM" Section
 
 1. Log in to [ChatGPT] or [Gemini]
 2. In the sidebar on the left
