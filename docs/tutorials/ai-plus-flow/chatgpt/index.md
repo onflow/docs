@@ -63,7 +63,7 @@ You'll need a [ChatGPT Plus subscription] to use the **Custom GPT** feature or a
 
 ---
 
-## 📍 Step 3: Walk Through the Agent Coniguration
+## Step 3: Walk Through the Agent Coniguration
 
 - If using ChatGPT, click on the **Configure** button before proceeding.
 
