@@ -17,7 +17,7 @@ keywords:
   - Flow AI assistance
 ---
 
-# Use Flow Knowledge Base in Custom LLs
+# Use Flow Knowledge Base in Custom LLMs
 
 LLMs can help with tasks such as writing, coding, and answering questions. It adapts to context and user input to provide relevant, conversational responses. They can be integrated into developer tools or workflows to assist with documentation, debugging, and productivity.
 
