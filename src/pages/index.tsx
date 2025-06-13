@@ -26,17 +26,9 @@ const data = {
 const Index = (): JSX.Element => {
   const { siteConfig } = useDocusaurusContext();
   return (
-    <Layout title={siteConfig.title}>
+    <Layout>
       <main>
-        <HomePage
-          contentNavigationListItems={data.contentNavigationListItems}
-          discordUrl={externalLinks.discord}
-          discourseUrl={externalLinks.discourse}
-          flips={data.flips}
-          githubUrl={externalLinks.github}
-          twitterUrl={externalLinks.twitter}
-          upcomingEvents={data.upcomingEvents}
-        />
+        <HomePage />
       </main>
     </Layout>
   );
