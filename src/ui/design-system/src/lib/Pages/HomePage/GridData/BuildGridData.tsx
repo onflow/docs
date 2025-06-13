@@ -9,7 +9,7 @@ export const buildGridData = {
       title: 'Getting Started',
       cards: [
         {
-          heading: 'Cadence',
+          heading: 'Why Flow?',
           description:
             'Learn why Dieter Shirley, co-author of the ERC-721 NFT standard, led the development of a new L1.',
           iconColor: 'green',
@@ -19,14 +19,14 @@ export const buildGridData = {
           href: 'build/flow',
         },
         {
-          heading: 'EVM',
+          heading: 'EVM Quickstart',
           description:
             'Deploy your Solidity contracts on Flow to get sub-cent transaction fees, sponsored gas, and the ability to scale to millions of users.',
           iconColor: 'green',
           cardColor: 'black',
           icon: 'evm-on-flow',
           variant: 'horizontal',
-          href: 'evm/about',
+          href: 'evm/quickstart',
         },
         {
           heading: 'Build with AI',
@@ -44,7 +44,7 @@ export const buildGridData = {
       title: 'Learn Cadence',
       cards: [
         {
-          heading: 'Getting Started',
+          heading: 'App Quickstart',
           description:
             'Build and deploy your first contract, connect to it from the frontend, and call your smart contract functions - all in less than 30 minutes.',
           iconColor: 'green',

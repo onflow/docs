@@ -6,6 +6,7 @@ export const growGridData = {
   iconColor: 'purple' as ColorOption,
   sections: [
     {
+      title: 'Grow',
       cards: [
         {
           heading: 'Startup Support',
