@@ -5,6 +5,8 @@ sidebar_position: 1
 ---
 
 import { Connect, TransactionDialog, TransactionLink } from "@onflow/kit"
+import { FlowProvider } from "@onflow/kit"
+import { flowKitConfig } from "../../src/config/fcl"
 
 # @onflow/kit
 
@@ -110,10 +112,12 @@ import { Connect } from "@onflow/kit"
 
 ### Live Demo
 
-<Connect
-  onConnect={() => console.log("Connected!")}
-  onDisconnect={() => console.log("Logged out")}
-/>
+<FlowProvider config={flowKitConfig}>
+  <Connect
+    onConnect={() => console.log("Connected!")}
+    onDisconnect={() => console.log("Logged out")}
+  />
+</FlowProvider>
 
 ---
 
@@ -148,14 +152,16 @@ import { TransactionDialog } from "@onflow/kit"
 
 ### Live Demo
 
-<TransactionDialog
-  open={false}
-  onOpenChange={() => {}}
-  txId="0x1234567890abcdef"
-  pendingTitle="Sending..."
-  successTitle="All done!"
-  closeOnSuccess
-/>
+<FlowProvider config={flowKitConfig}>
+  <TransactionDialog
+    open={false}
+    onOpenChange={() => {}}
+    txId="0x1234567890abcdef"
+    pendingTitle="Sending..."
+    successTitle="All done!"
+    closeOnSuccess
+  />
+</FlowProvider>
 
 ---
 
@@ -176,10 +182,12 @@ import { TransactionLink } from "@onflow/kit"
 
 ### Live Demo
 
-<TransactionLink 
-  txId="0x1234567890abcdef"
-  variant="primary"
-/>
+<FlowProvider config={flowKitConfig}>
+  <TransactionLink 
+    txId="0x1234567890abcdef"
+    variant="primary"
+  />
+</FlowProvider>
 
 ---
 

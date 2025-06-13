@@ -8,18 +8,13 @@ console.log('Dapp running on network:', flowNetwork);
 
 export function configureFCL(): void {
   fcl.config({
-    'flow.network': flowNetwork,
-    'accessNode.api':
-      flowNetwork === 'mainnet'
-        ? 'https://rest-mainnet.onflow.org'
-        : 'https://rest-testnet.onflow.org',
-    'discovery.wallet': `https://fcl-discovery.onflow.org/${flowNetwork}/authn`,
-    'app.detail.icon': 'https://avatars.githubusercontent.com/u/62387156?v=4',
-    'app.detail.title': 'Flow Dev Portal',
-    'app.detail.description': 'The developer portal for Flow Blockchain',
-    'walletconnect.projectId': config.customFields?.walletConnectProjectId as
-      | string
-      | undefined,
+    'flow.network': flowKitConfig.flowNetwork,
+    'accessNode.api': flowKitConfig.accessNodeUrl,
+    'discovery.wallet': `https://fcl-discovery.onflow.org/${flowKitConfig.flowNetwork}/authn`,
+    'app.detail.icon': flowKitConfig.appDetailIcon,
+    'app.detail.title': flowKitConfig.appDetailTitle,
+    'app.detail.description': flowKitConfig.appDetailDescription,
+    'walletconnect.projectId': config.customFields?.walletConnectProjectId as string | undefined,
   });
 
   fcl.config.load({
@@ -49,5 +44,16 @@ export function getContractAddress(contractName: string): string {
 
   throw new Error(`Contract address not found for ${contractName}`);
 }
+
+export const flowKitConfig = {
+  accessNodeUrl:
+    flowNetwork === 'mainnet'
+      ? 'https://rest-mainnet.onflow.org'
+      : 'https://rest-testnet.onflow.org',
+  flowNetwork,
+  appDetailTitle: 'Flow Dev Portal',
+  appDetailIcon: 'https://avatars.githubusercontent.com/u/62387156?v=4',
+  appDetailDescription: 'The developer portal for Flow Blockchain',
+};
 
 configureFCL();
