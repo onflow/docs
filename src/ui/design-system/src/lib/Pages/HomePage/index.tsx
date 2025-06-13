@@ -2,6 +2,7 @@ import React from 'react';
 import PageBackground from '../shared/PageBackground';
 import { buildGridData } from './GridData/BuildGridData';
 import { growGridData } from './GridData/GrowGridData';
+import GrowSection from './GrowSection';
 import HeroSection from './HeroSection';
 import FeatureSection from './FeatureSection';
 import BrowseByCategory from './BrowseByCategory';
@@ -23,7 +24,7 @@ const HomePage = ({}: HomePageProps): JSX.Element => {
         {/* QuickStart Showcase */}
         <QuickStartShowcase />
 
-        <FeatureSection sections={growGridData.sections} />
+        <GrowSection />
 
         {/* Browse By Category (Docs, Community, Network, More) */}
         <BrowseByCategory />
