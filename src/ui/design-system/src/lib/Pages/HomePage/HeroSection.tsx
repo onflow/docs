@@ -7,12 +7,14 @@ const HeroSection: React.FC = () => {
         {/* Left: Hero Content */}
         <div className="flex-1 max-w-2xl text-left">
           <h1 className="text-3xl md:text-4xl font-bold mb-3 text-gray-900 dark:text-white">
-            What do you want to do today?
+            What do you want to build today?
           </h1>
           <p className="text-base md:text-lg text-gray-700 dark:text-gray-200 mb-5 max-w-xl">
-            Fire up a new app, add blue-chip features such as tokens and NFTs, or supercharge your user experience.<br />
-            Access builder credits, startup support, and explore funding opportunities.
+            Flow was built by consumer-facing, onchain app developers to solve the problem of building consumer-facing, onchain apps. Dieter Shirley, Chief Architect of Flow and co-author of the <a href="https://github.com/ethereum/eips/issues/721" target="_blank" rel="noopener noreferrer" className="underline text-primary-green-600 dark:text-primary-green-400">ERC-721 NFT standard</a> calls it:
           </p>
+          <blockquote className="mt-4 pl-4 border-l-4 border-primary-green-500 italic text-gray-900 dark:text-gray-100">
+            A computer that anyone can use, everyone can trust, and no one can shut down.
+          </blockquote>
         </div>
         {/* Right: Placeholder for future content */}
         <div className="flex-1 hidden lg:block" style={{ minHeight: 120 }} />

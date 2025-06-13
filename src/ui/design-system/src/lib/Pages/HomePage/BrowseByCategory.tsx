@@ -2,58 +2,96 @@ import React from 'react';
 
 const CATEGORIES = [
   {
-    title: 'Documentation',
+    title: 'Cadence',
     links: [
-      { label: 'Getting Started', href: '/build/getting-started' },
-      { label: 'SDKs & Tools', href: '/tools' },
-      { label: 'Cadence', href: '/cadence' },
-      { label: 'Mobile', href: '/build/guides/mobile' },
-      { label: 'FCL', href: '/tools/fcl' },
-      { label: 'Testing', href: '/build/testing' },
-      { label: 'CLI', href: '/tools/flow-cli' },
-      { label: 'Emulator', href: '/tools/emulator' },
-      { label: 'Dev Wallet', href: '/tools/dev-wallet' },
-      { label: 'VS Code Extension', href: '/tools/vscode-extension' },
+      { label: 'Why Flow', href: '/build/flow' },
+      { label: 'Differences vs. EVM', href: '/build/differences-vs-evm' },
+      { label: 'Getting Started', href: '/build/getting-started/contract-interaction' },
+      { label: 'Flow Protocol', href: '/build/basics/blocks' },
+      { label: 'App Architecture', href: '/build/app-architecture' },
+      { label: 'Writing and Deploying Smart Contracts', href: '/build/smart-contracts/overview' },
+      { label: 'Advanced Concepts', href: '/build/advanced-concepts/account-abstraction' },
+      { label: 'Guides', href: '/build/advanced-concepts/account-abstraction' },
+      { label: 'Core Smart Contracts', href: '/build/core-contracts' },
+      { label: 'Explore More', href: '/build/explore-more' },
     ],
   },
   {
-    title: 'Community',
+    title: 'EVM',
+    links: [
+      { label: 'Why EVM on Flow', href: '/evm/about' },
+      { label: 'How it Works', href: '/evm/how-it-works' },
+      { label: 'Using Flow EVM', href: '/evm/using-flow-evm' },
+      { label: 'Network Information', href: '/evm/network-information' },
+      { label: 'EVM Quickstart', href: '/evm/quickstart' },
+      { label: 'Fees', href: '/evm/fees' },
+      { label: 'Accounts', href: '/evm/accounts' },
+      { label: 'Cross-chain Bridges', href: '/evm/bridges' },
+      { label: 'Faucets', href: '/evm/faucets' },
+      { label: 'Block Explorers', href: '/evm/block-explorers' },
+      { label: 'Guides', href: '/evm/guides' },
+    ],
+  },
+  {
+    title: 'Tools',
+    links: [
+      { label: '@onflow/kit', href: '/tools/kit' },
+      { label: 'Flow Emulator', href: '/tools/emulator' },
+      { label: 'Flow CLI', href: '/tools/flow-cli' },
+      { label: 'Cadence VS Code Extension', href: '/tools/vscode-extension' },
+      { label: 'Flow Dev Wallet', href: '/tools/dev-wallet' },
+      { label: 'Client Tools', href: '/tools/clients' },
+      { label: 'Error Codes', href: '/tools/error-codes' },
+      { label: 'Wallet Provider Spec', href: '/tools/wallet-provider-spec' },
+      { label: 'Tools', href: '/tools' },
+    ],
+  },
+  {
+    title: 'Networks',
+    links: [
+      { label: 'Flow Networks', href: '/networks/flow-networks' },
+      { label: 'Mainnet', href: '/networks/mainnet' },
+      { label: 'Testnet', href: '/networks/testnet' },
+      { label: 'Network Architecture', href: '/networks/architecture' },
+      { label: 'Staking and Epochs', href: '/networks/staking-and-epochs' },
+      { label: 'Node Ops', href: '/networks/node-ops' },
+      { label: 'Accessing Data', href: '/networks/accessing-data' },
+      { label: 'Governance', href: '/networks/governance' },
+      { label: 'Flow Port', href: '/networks/flow-port' },
+    ],
+  },
+  {
+    title: 'Ecosystem',
     links: [
       { label: 'Ecosystem', href: '/ecosystem' },
-      { label: 'Flow Port', href: 'https://port.onflow.org', external: true },
-      { label: 'Developer Grants', href: '/ecosystem/grants' },
-      { label: 'Flowverse', href: 'https://www.flowverse.co/', external: true },
-      { label: 'Emerald Academy', href: 'https://academy.ecdao.org/', external: true },
-      { label: 'FLOATs', href: 'https://floats.city/', external: true },
+      { label: 'Wallets', href: '/ecosystem/wallets' },
+      { label: 'Flow Block Explorers', href: '/ecosystem/block-explorers' },
+      { label: 'Data Indexers', href: '/ecosystem/data-indexers' },
+      { label: 'Developer Profile', href: '/ecosystem/developer-profile' },
+      { label: 'DeFi & Liquidity', href: '/ecosystem/defi' },
+      { label: 'Bridges', href: '/ecosystem/bridges' },
+      { label: 'Community Projects', href: '/ecosystem/community-projects' },
+      { label: 'Builder Perks', href: '/ecosystem/builder-perks' },
+      { label: 'VCs & Funds', href: '/ecosystem/vcs-and-funds' },
+      { label: 'Faucets', href: '/ecosystem/faucets' },
+      { label: 'Grants', href: '/ecosystem/grants' },
+      { label: 'Hackathons and Events', href: '/ecosystem/hackathons' },
+      { label: 'Auditors', href: '/ecosystem/auditors' },
+      { label: 'Ecosystem Overview', href: '/ecosystem/overview' },
+      { label: 'Flow Forum', href: '/ecosystem/forum' },
+      { label: 'FLIPs', href: '/ecosystem/flips' },
     ],
   },
   {
-    title: 'Start Building',
+    title: 'Tutorials',
     links: [
-      { label: 'Flow Playground', href: 'https://play.onflow.org/', external: true },
-      { label: 'Cadence Tutorials', href: '/cadence/tutorials' },
-      { label: 'Cadence Cookbook', href: 'https://www.cadencecookbook.com/', external: true },
-      { label: 'Core Contracts & Standards', href: '/cadence/core-contracts' },
-      { label: 'EVM', href: '/evm' },
-    ],
-  },
-  {
-    title: 'Network',
-    links: [
-      { label: 'Network Status', href: 'https://status.onflow.org/', external: true },
-      { label: 'Flowscan Mainnet', href: 'https://flowscan.org/', external: true },
-      { label: 'Flowscan Testnet', href: 'https://testnet.flowscan.org/', external: true },
-      { label: 'Node Operation', href: '/network/node-operation' },
-      { label: 'Spork Information', href: '/network/sporks' },
-    ],
-  },
-  {
-    title: 'More',
-    links: [
-      { label: 'GitHub', href: 'https://github.com/onflow', external: true },
-      { label: 'Discord', href: 'https://discord.gg/flow', external: true },
-      { label: 'Forum', href: 'https://forum.flow.com/', external: true },
-      { label: 'Blog', href: 'https://medium.com/dapperlabs-blog', external: true },
+      { label: 'Tutorials', href: '/tutorials' },
+      { label: 'AI Plus Flow', href: '/tutorials/ai-plus-flow' },
+      { label: 'Backend Usage', href: '/tutorials/backend-usage' },
+      { label: 'Token Launch', href: '/tutorials/token-launch' },
+      { label: 'Cross-VM Apps', href: '/tutorials/cross-vm-apps' },
+      { label: 'FlowtoBooth', href: '/tutorials/flowtobooth' },
+      { label: 'Native VRF', href: '/tutorials/native-vrf' },
     ],
   },
 ];
@@ -61,7 +99,7 @@ const CATEGORIES = [
 const BrowseByCategory: React.FC = () => {
   return (
     <section className="container mx-auto py-12">
-      <h2 className="text-2xl md:text-3xl font-bold text-gray-900 dark:text-white mb-8 text-center">Browse by Category</h2>
+      <h2 className="text-2xl md:text-3xl font-bold text-gray-900 dark:text-white mb-8">Browse by Category</h2>
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
         {CATEGORIES.map((cat) => (
           <div key={cat.title} className="bg-white dark:bg-gray-900 rounded-lg shadow p-6 flex flex-col">
