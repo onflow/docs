@@ -1,6 +1,7 @@
 import * as fcl from '@onflow/fcl';
 import config from '@generated/docusaurus.config';
 import flowJSON from '../../flow.json';
+import type { FlowNetwork } from '@onflow/kit';
 
 const flowNetwork = (config.customFields?.flowNetwork as string) || 'testnet';
 
@@ -50,7 +51,7 @@ export const flowKitConfig = {
     flowNetwork === 'mainnet'
       ? 'https://rest-mainnet.onflow.org'
       : 'https://rest-testnet.onflow.org',
-  flowNetwork,
+  flowNetwork: flowNetwork as FlowNetwork,
   appDetailTitle: 'Flow Dev Portal',
   appDetailIcon: 'https://avatars.githubusercontent.com/u/62387156?v=4',
   appDetailDescription: 'The developer portal for Flow Blockchain',
