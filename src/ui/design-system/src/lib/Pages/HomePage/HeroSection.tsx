@@ -1,6 +1,11 @@
 import React from 'react';
+import { useColorMode } from '@docusaurus/theme-common';
 
 const HeroSection: React.FC = () => {
+  const { colorMode } = useColorMode();
+  const calendarSrc = colorMode === 'dark'
+    ? 'https://lu.ma/embed/calendar/cal-DBqbEn6mwZR13qQ/events?lt=dark'
+    : 'https://lu.ma/embed/calendar/cal-DBqbEn6mwZR13qQ/events';
   return (
     <section className="container mx-auto py-6">
       <div className="flex flex-col lg:flex-row items-start justify-between">
@@ -16,8 +21,23 @@ const HeroSection: React.FC = () => {
             A computer that anyone can use, everyone can trust, and no one can shut down.
           </blockquote>
         </div>
-        {/* Right: Placeholder for future content */}
-        <div className="flex-1 hidden lg:block" style={{ minHeight: 120 }} />
+        {/* Right: Calendar card (visible on lg and up) */}
+        <div className="flex-1 hidden lg:flex justify-end items-center pl-8">
+          <div className="bg-white dark:bg-gray-900 rounded-xl shadow-lg border border-gray-200 dark:border-gray-800 p-4 w-[560px] max-w-full flex flex-col items-center">
+            <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-2">Upcoming Events</h3>
+            <iframe
+              src={calendarSrc}
+              width="520"
+              height="260"
+              frameBorder="0"
+              style={{ border: '1px solid #bfcbda88', borderRadius: 8 }}
+              allowFullScreen
+              aria-hidden="false"
+              tabIndex={0}
+              title="Flow Events Calendar"
+            />
+          </div>
+        </div>
       </div>
     </section>
   );
