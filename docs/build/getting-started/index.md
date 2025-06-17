@@ -100,12 +100,6 @@ Flow provides robust support for both Cadence and EVM development. Here's how to
 
 - [Flow Network Overview and Setup]
 
-### Documentation
-
-The Flow Developer Portal includes tutorials, API references, SDKs, and walkthroughs to support developers at every level:
-
-- [Visit the Docs]
-
 ### Developer tools
 
 **Cadence development:**
@@ -136,6 +130,13 @@ Whether you're looking for support, feedback, or collaboration, Flow's community
 - [Local Development]: Set up your dev environment, run tests, add already deployed contracts to your environment with Dependency Manager, and deploy and use your first contract with the emulator.
 - [Simple Frontend]: Read and write from a smart contract using the hooks from [@onflow/kit].
 
+### Flow EVM Quickstart
+
+- [EVM Quickstart]: Deploy a contract with Hardhat and interact with it using [Testnet Flowscan].
+- [Foundry]: Build and deploy an ERC20 on Flow with Foundry.
+
+We also have guides for working with [Rainbowkit] and [wagmi].
+
 <!-- Relative links. Will not render on the page -->
 
 [NBA Top Shot]: https://nbatopshot.com/
@@ -147,7 +148,6 @@ Whether you're looking for support, feedback, or collaboration, Flow's community
 [Connect to Testnet]: https://developers.flow.com/networks/flow-networks/accessing-testnet
 [Connect to Mainnet]: https://developers.flow.com/networks/flow-networks/accessing-mainnet
 [Flow Network Overview and Setup]: https://developers.flow.com/networks/flow-networks
-[Visit the Docs]: https://developers.flow.com/
 [Flow CLI]: https://developers.flow.com/tools/flow-cli
 [@onflow/kit]: https://developers.flow.com/tools/kit
 [Explore the Ecosystem]: https://developers.flow.com/ecosystem
@@ -156,3 +156,8 @@ Whether you're looking for support, feedback, or collaboration, Flow's community
 [Contract Interaction]: ./contract-interaction.md
 [Local Development]: ./flow-cli.md
 [Simple Frontend]: ./fcl-quickstart.md
+[EVM Quickstart]: ../../evm/quickstart.md
+[Testnet Flowscan]: https://evm-testnet.flowscan.io/
+[Foundry]: ../..//evm/guides/foundry.md
+[Rainbowkit]: ../../evm/guides/rainbowkit.md
+[wagmi]: ../../evm/guides/wagmi.md
