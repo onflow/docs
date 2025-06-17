@@ -42,6 +42,9 @@ Bridges are mechanisms that connect different blockchain networks, enabling secu
 ## Relay
 [Relay][10] is an intent-based bridge enabling high-speed bridging and connecting over 30 blockchains. Unlike consensus validator based decentralized bridges, Relay's permissioned relayer model stores outbound tokens on the origin chain and issues tokens on the destination chain allowing for low-cost, fast bridging of assets.
 
+## ZKP2P
+[ZKP2P][11] is an intent-based, non-custodial on/off-ramp protocol that connects Web2 payment networks to crypto rails. Unlike centralized ramps or custodial P2P platforms, ZKP2P uses locally generated zero-knowledge proofs to verify fiat payments off-chain while settling crypto on-chain. This allows users to move fiat between apps like Revolut, Wise, Zelle, and Venmo and networks like Flow, Base and Arbitrum, without KYC or intermediaries.
+
 </div>
 
 [1]: https://stargate.finance/bridge
@@ -54,3 +57,4 @@ Bridges are mechanisms that connect different blockchain networks, enabling secu
 [8]: https://www.squidrouter.com/
 [9]: https://app.debridge.finance/
 [10]: https://relay.link/bridge
+[11]: https://www.zkp2p.xyz/
