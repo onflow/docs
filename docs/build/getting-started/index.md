@@ -1,7 +1,7 @@
 ---
 title: Flow Blockchain 101
-sidebar_label: Flow Blockchain 101
-sidebar_position: 2
+sidebar_label: Getting Started
+sidebar_position: 3
 description: Learn why Flow blockchain is uniquely designed for consumer-scale decentralized applications. Understand Flow's multi-role architecture, native account abstraction, and EVM equivalence.
 keywords:
   - Flow blockchain
@@ -117,7 +117,7 @@ The Flow Developer Portal includes tutorials, API references, SDKs, and walkthro
 
 **Flow EVM development:**
 
-* Fully compatible with Ethereum development tools like Hardhat, Foundry, MetaMask, and Ethers.js. If you know how to build for Ethereum, you'll feel right at home.
+- Fully compatible with Ethereum development tools like Hardhat, Foundry, MetaMask, and Ethers.js. If you know how to build for Ethereum, you'll feel right at home.
 
 ### Ecosystem partners and tools
 
@@ -131,6 +131,12 @@ Whether you're looking for support, feedback, or collaboration, Flow's community
 
 - **Discord**: [Connect] with other developers and get real-time help.
 - **Twitter/𝕏**: Follow [@flow_blockchain] for updates, announcements, and highlights.
+
+### Flow Cadence Quickstart
+
+- [Contract Interaction]: Interact with your first Cadence smart contract on the Flow testnet.
+- [Local Development]: Set up your dev environment, run tests, add already deployed contracts to your environment with Dependency Manager, and deploy and use your first contract with the emulator.
+- [Simple Frontend]: Read and write from a smart contract using the hooks from [@onflow/kit].
 
 <!-- Relative links. Will not render on the page -->
 
@@ -149,5 +155,6 @@ Whether you're looking for support, feedback, or collaboration, Flow's community
 [Explore the Ecosystem]: https://developers.flow.com/ecosystem
 [@flow_blockchain]: https://x.com/flow_blockchain
 [Connect]: https://discord.com/invite/flow
-
-
+[Contract Interaction]: ./contract-interaction.md
+[Local Development]: ./flow-cli.md
+[Simple Frontend]: ./fcl-quickstart.md
