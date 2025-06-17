@@ -30,36 +30,6 @@ export const buildGridData = {
           href: 'https://cadence-lang.org',
           target: '_blank',
         },
-        {
-          heading: 'Launch a Token',
-          description:
-            "Learn how to launch a fungible token that's stored in your users' vaults directly in their accounts.",
-          iconColor: 'green',
-          cardColor: 'black',
-          icon: 'launch-a-token',
-          variant: 'horizontal',
-          href: 'build/guides/fungible-token',
-        },
-        {
-          heading: 'Create an NFT Collection',
-          description:
-            "Create NFT collections that are stored directly in your users' accounts in a way that makes it nearly impossible to lose them.",
-          iconColor: 'green',
-          cardColor: 'black',
-          icon: 'create-an-nft',
-          variant: 'horizontal',
-          href: 'build/guides/nft',
-        },
-        {
-          heading: 'Build with NBA Top Shots',
-          description:
-            "Flow allows you to link wallets together, enabling your apps to use NFTs in a user's embedded wallet from another app.",
-          iconColor: 'green',
-          cardColor: 'black',
-          icon: 'access-incredible-ip',
-          variant: 'horizontal',
-          href: 'build/guides/account-linking-with-dapper',
-        },
       ],
     },
     {

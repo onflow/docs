@@ -3,6 +3,7 @@ import React, { useState } from 'react';
 const ITEMS = [
   'Increment the Counter',
   'View the Current Count',
+  'View NBA Top Shots',
   'Claim Fungible Tokens',
   'Get Current Balance',
   'Mint an NFT',
