@@ -253,7 +253,7 @@ const { transactionStatus, error: txStatusError } = useFlowTransactionStatus({
 });
 
 useEffect(() => {
-  if (txId && transactionStatus?.status === 4) {
+  if (txId && transactionStatus?.status === 3) {
     refetch();
   }
 }, [transactionStatus?.status, txId, refetch]);
