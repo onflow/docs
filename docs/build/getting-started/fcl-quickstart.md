@@ -131,34 +131,34 @@ This will start the [Dev Wallet] on `http://localhost:8701`, which you'll use fo
 [**@onflow/kit**] provides a `FlowProvider` component that sets up the Flow Client Library configuration. In Next.js using the App Router, add or update your `src/app/layout.tsx` as follows:
 
 ```tsx
-// src/app/layout.tsx
-'use client';
+"use client";
 
-import { FlowProvider } from '@onflow/kit';
-import flowJSON from '../../flow.json';
+import { FlowProvider } from "@onflow/kit";
+import * as fcl from "@onflow/fcl";
+import flowJson from "../flow.client.json";
+
+// Configure FCL for local emulator
+fcl.config({
+  "accessNode.api": "http://localhost:8888",              // Connect to local emulator
+  "discovery.wallet": "http://localhost:8701/fcl/authn",   // Dev wallet for local development
+  "flow.network": "emulator",                              // Using local emulator network
+});
 
 export default function RootLayout({
   children,
 }: {
-  children: React.ReactNode;
+  children: React.ReactNode
 }) {
   return (
-    <html>
+    <html lang="en">
       <body>
-        <FlowProvider
-          config={{
-            accessNodeUrl: 'http://localhost:8888',
-            flowNetwork: 'emulator',
-            discoveryWallet: 'https://fcl-discovery.onflow.org/emulator/authn',
-          }}
-          flowJson={flowJSON}
-        >
+        <FlowProvider flowJson={flowJson}>
           {children}
         </FlowProvider>
       </body>
     </html>
-  );
-}
+  )
+} 
 ```
 
 This configuration initializes the kit with your local emulator settings and maps contract addresses based on your `flow.json` file.
@@ -243,15 +243,17 @@ This sends a Cadence transaction to the blockchain using the `mutate` function. 
 
 ### Subscribing to Transaction Status
 
-Use the kit's [`useFlowTransaction`] hook to monitor and display the transaction status in real time.
+Use the kit's [`useFlowTransactionStatus`] hook to monitor and display the transaction status in real time.
 
 ```jsx
-const { transactionStatus, error: txStatusError } = useFlowTransaction(
-  txId || '',
-);
+import { useFlowTransactionStatus } from '@onflow/kit';
+
+const { transactionStatus, error: txStatusError } = useFlowTransactionStatus({
+  id: txId || "",
+});
 
 useEffect(() => {
-  if (txId && transactionStatus?.status === 3) {
+  if (txId && transactionStatus?.status === 4) {
     refetch();
   }
 }, [transactionStatus?.status, txId, refetch]);
@@ -261,7 +263,7 @@ useEffect(() => {
 
 #### Explanation:
 
-- `useFlowTransaction(txId)` subscribes to real-time updates about a transaction's lifecycle using the transaction ID.
+- `useFlowTransactionStatus(txId)` subscribes to real-time updates about a transaction's lifecycle using the transaction ID.
 - `transactionStatus.status` is a numeric code representing the state of the transaction:
   - `0`: **Unknown** – The transaction status is not yet known.
   - `1`: **Pending** – The transaction has been submitted and is waiting to be included in a block.
@@ -293,7 +295,7 @@ import { useState, useEffect } from "react";
 import {
   useFlowQuery,
   useFlowMutate,
-  useFlowTransaction,
+  useFlowTransactionStatus,
   useCurrentFlowUser,
 } from "@onflow/kit";
 
@@ -303,8 +305,8 @@ export default function Home() {
 
   const { data, isLoading, error, refetch } = useFlowQuery({
     cadence: `
-      import "Counter"
-      import "NumberFormatter"
+      import Counter from 0xf8d6e0586b0a20c7
+      import NumberFormatter from 0xf8d6e0586b0a20c7
 
       access(all)
       fun main(): String {
@@ -323,9 +325,9 @@ export default function Home() {
     error: txError,
   } = useFlowMutate();
 
-  const { transactionStatus, error: txStatusError } = useFlowTransaction(
-    txId || "",
-  );
+  const { transactionStatus, error: txStatusError } = useFlowTransactionStatus({
+    id: txId || "",
+  });
 
   useEffect(() => {
     if (txId && transactionStatus?.status === 4) {
@@ -336,7 +338,7 @@ export default function Home() {
   const handleIncrement = () => {
     increment({
       cadence: `
-        import "Counter"
+        import Counter from 0xf8d6e0586b0a20c7
 
         transaction {
           prepare(acct: &Account) {
@@ -353,48 +355,185 @@ export default function Home() {
   };
 
   return (
-    <div>
-      <h1>@onflow/kit App Quickstart</h1>
+    <div style={{ 
+      display: 'flex', 
+      flexDirection: 'column', 
+      alignItems: 'center', 
+      justifyContent: 'center', 
+      minHeight: '100vh',
+      fontFamily: 'system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif',
+      backgroundColor: '#f0f4f8',
+      padding: '20px'
+    }}>
+      <h1 style={{ marginBottom: '40px', color: '#333' }}>Flow Counter dApp</h1>
 
       {isLoading ? (
-        <p>Loading count...</p>
+        <div style={{
+          fontSize: '24px',
+          color: '#666',
+          animation: 'pulse 1.5s ease-in-out infinite'
+        }}>
+          Loading count...
+        </div>
       ) : error ? (
-        <p>Error fetching count: {error.message}</p>
+        <p style={{ color: '#e74c3c', fontSize: '18px' }}>Error fetching count: {error.message}</p>
       ) : (
-        <div>
-          <h2>Count: {data as string}</h2>
+        <div style={{
+          textAlign: 'center',
+          marginBottom: '40px'
+        }}>
+          <div style={{
+            fontSize: '120px',
+            fontWeight: 'bold',
+            color: '#2c3e50',
+            textShadow: '2px 2px 4px rgba(0,0,0,0.1)',
+            margin: '20px 0',
+            animation: 'fadeIn 0.5s ease-in'
+          }}>
+            {(data as string) || "0"}
+          </div>
+          <p style={{
+            fontSize: '18px',
+            color: '#7f8c8d',
+            marginTop: '-10px'
+          }}>
+            Current Count
+          </p>
         </div>
       )}
 
-      {user.loggedIn ? (
-        <div>
-          <p>Address: {user.addr}</p>
-          <button onClick={unauthenticate}>Log Out</button>
-          <button onClick={handleIncrement} disabled={txPending}>
-            {txPending ? "Processing..." : "Increment Count"}
-          </button>
-
-          <div>
-            Latest Transaction Status:{" "}
-            {transactionStatus?.statusString || "No transaction yet"}
+      {user?.loggedIn ? (
+        <div style={{ textAlign: 'center' }}>
+          <p style={{ 
+            fontSize: '14px', 
+            color: '#666', 
+            marginBottom: '20px',
+            backgroundColor: '#e8f4fd',
+            padding: '10px 20px',
+            borderRadius: '20px',
+            display: 'inline-block'
+          }}>
+            Connected: {user.addr}
+          </p>
+          
+          <div style={{ marginBottom: '20px' }}>
+            <button 
+              onClick={handleIncrement} 
+              disabled={txPending}
+              style={{
+                fontSize: '20px',
+                padding: '15px 40px',
+                backgroundColor: txPending ? '#95a5a6' : '#3498db',
+                color: 'white',
+                border: 'none',
+                borderRadius: '10px',
+                cursor: txPending ? 'not-allowed' : 'pointer',
+                transition: 'all 0.3s ease',
+                boxShadow: '0 4px 6px rgba(0,0,0,0.1)',
+                marginRight: '10px',
+                fontWeight: 'bold'
+              }}
+              onMouseEnter={(e) => {
+                if (!txPending) {
+                  e.currentTarget.style.backgroundColor = '#2980b9';
+                  e.currentTarget.style.transform = 'translateY(-2px)';
+                  e.currentTarget.style.boxShadow = '0 6px 8px rgba(0,0,0,0.15)';
+                }
+              }}
+              onMouseLeave={(e) => {
+                if (!txPending) {
+                  e.currentTarget.style.backgroundColor = '#3498db';
+                  e.currentTarget.style.transform = 'translateY(0)';
+                  e.currentTarget.style.boxShadow = '0 4px 6px rgba(0,0,0,0.1)';
+                }
+              }}
+            >
+              {txPending ? "⏳ Processing..." : "🚀 Increment Count"}
+            </button>
+            
+            <button 
+              onClick={unauthenticate}
+              style={{
+                fontSize: '16px',
+                padding: '15px 30px',
+                backgroundColor: '#e74c3c',
+                color: 'white',
+                border: 'none',
+                borderRadius: '10px',
+                cursor: 'pointer',
+                transition: 'all 0.3s ease',
+                boxShadow: '0 4px 6px rgba(0,0,0,0.1)',
+              }}
+              onMouseEnter={(e) => {
+                e.currentTarget.style.backgroundColor = '#c0392b';
+                e.currentTarget.style.transform = 'translateY(-2px)';
+                e.currentTarget.style.boxShadow = '0 6px 8px rgba(0,0,0,0.15)';
+              }}
+              onMouseLeave={(e) => {
+                e.currentTarget.style.backgroundColor = '#e74c3c';
+                e.currentTarget.style.transform = 'translateY(0)';
+                e.currentTarget.style.boxShadow = '0 4px 6px rgba(0,0,0,0.1)';
+              }}
+            >
+              Log Out
+            </button>
           </div>
 
-          {txError && <p>Error sending transaction: {txError.message}</p>}
-
-          {lastTxId && (
-            <div>
-              <h3>Transaction Status</h3>
-              {transactionStatus ? (
-                <p>Status: {transactionStatus.statusString}</p>
-              ) : (
-                <p>Waiting for status update...</p>
+          {(transactionStatus?.statusString || txError) && (
+            <div style={{
+              marginTop: '20px',
+              padding: '15px',
+              backgroundColor: txError ? '#fee' : '#f0f9ff',
+              borderRadius: '10px',
+              maxWidth: '400px',
+              margin: '20px auto'
+            }}>
+              {transactionStatus?.statusString && (
+                <p style={{ margin: '5px 0', color: '#666' }}>
+                  📋 Status: <strong>{transactionStatus.statusString}</strong>
+                </p>
               )}
-              {txStatusError && <p>Error: {txStatusError.message}</p>}
+              {txError && (
+                <p style={{ margin: '5px 0', color: '#e74c3c' }}>
+                  ⚠️ Error: {txError.message}
+                </p>
+              )}
+              {txStatusError && (
+                <p style={{ margin: '5px 0', color: '#e74c3c' }}>
+                  ⚠️ Status Error: {txStatusError.message}
+                </p>
+              )}
             </div>
           )}
         </div>
       ) : (
-        <button onClick={authenticate}>Log In</button>
+        <button 
+          onClick={authenticate}
+          style={{
+            fontSize: '20px',
+            padding: '15px 40px',
+            backgroundColor: '#27ae60',
+            color: 'white',
+            border: 'none',
+            borderRadius: '10px',
+            cursor: 'pointer',
+            transition: 'all 0.3s ease',
+            boxShadow: '0 4px 6px rgba(0,0,0,0.1)',
+            fontWeight: 'bold'
+          }}
+          onMouseEnter={(e) => {
+            e.currentTarget.style.backgroundColor = '#229954';
+            e.currentTarget.style.transform = 'translateY(-2px)';
+            e.currentTarget.style.boxShadow = '0 6px 8px rgba(0,0,0,0.15)';
+          }}
+          onMouseLeave={(e) => {
+            e.currentTarget.style.backgroundColor = '#27ae60';
+            e.currentTarget.style.transform = 'translateY(0)';
+            e.currentTarget.style.boxShadow = '0 4px 6px rgba(0,0,0,0.1)';
+          }}
+        >
+          🔐 Connect Wallet
+        </button>
       )}
     </div>
   );
@@ -430,6 +569,15 @@ Log out, and log back in selecting the Dev Wallet instead of the Flow Wallet.
 
 :::
 
+:::warning
+
+This works asuming that you have completed [Step 1: Contract Interaction] and [Step 2: Local Development]. If you haven't, you might have to redeploy the *Counter* and *NumberFormatter* contracts with: 
+```bash
+flow project deploy --network=emulator
+```
+
+:::
+
 Then visit [http://localhost:3000](http://localhost:3000) in your browser. You should see:
 
 - The current counter value displayed (formatted with commas using `NumberFormatter`).
@@ -442,7 +590,7 @@ Then visit [http://localhost:3000](http://localhost:3000) in your browser. You s
 By following these steps, you've built a simple Next.js dApp that interacts with a Flow smart contract using [**@onflow/kit**]. In this guide you learned how to:
 
 - Wrap your application in a `FlowProvider` to configure blockchain connectivity.
-- Use kit hooks such as `useFlowQuery`, `useFlowMutate`, `useFlowTransaction`, and `useCurrentFlowUser` to manage authentication, query on-chain data, submit transactions, and monitor their status.
+- Use kit hooks such as `useFlowQuery`, `useFlowMutate`, `useFlowTransactionStatus`, and `useCurrentFlowUser` to manage authentication, query on-chain data, submit transactions, and monitor their status.
 - Integrate with the local Flow emulator and Dev Wallet for a fully functional development setup.
 
 For additional details and advanced usage, refer to the [@onflow/kit documentation] and other Flow developer resources.
