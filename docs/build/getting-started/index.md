@@ -24,7 +24,7 @@ keywords:
   - maximum extractable value
 ---
 
-### What is Flow?
+## What is Flow?
 
 Flow is a Layer 1 blockchain built from the ground up to support large-scale applications, especially in the world of consumer crypto. Originally developed by the team behind CryptoKitties, Flow was designed to address the limitations they experienced with other blockchains — particularly around scalability and user experience.
 
