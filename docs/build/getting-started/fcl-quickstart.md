@@ -571,10 +571,7 @@ Log out, and log back in selecting the Dev Wallet instead of the Flow Wallet.
 
 :::warning
 
-This works asuming that you have completed [Step 1: Contract Interaction] and [Step 2: Local Development]. If you haven't, you might have to redeploy the *Counter* and *NumberFormatter* contracts with: 
-```bash
-flow project deploy --network=emulator
-```
+For your app to connect with contracts deployed on the emulator, you need to have completed [Step 1: Contract Interaction] and [Step 2: Local Development].
 
 :::
 
