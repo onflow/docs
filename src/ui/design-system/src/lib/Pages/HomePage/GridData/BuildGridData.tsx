@@ -69,7 +69,7 @@ export const buildGridData = {
         {
           heading: 'Easily add free VRF',
           description:
-            'VRF is built into Flow at the protocol level to provide secure, verifiable randomness, for free. Learn how to use VRF in Cadence.',
+            'VRF is built into Flow at the protocol level to provide secure, verifiable randomness, for free.',
           iconColor: 'green',
           cardColor: 'black',
           icon: 'hello-world',
