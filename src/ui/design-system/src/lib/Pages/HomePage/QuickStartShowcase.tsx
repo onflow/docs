@@ -17,6 +17,7 @@ const IFRAME_SRCS = [
   'https://run.dnz.dev/snippet/a7a18e74d27f691a?colormode=dark&output=horizontal&outputSize=400',
   'https://run.dnz.dev/snippet/a7a18e74d27f691a?colormode=dark&output=horizontal&outputSize=400',
   'https://run.dnz.dev/snippet/a7a18e74d27f691a?colormode=dark&output=horizontal&outputSize=400',
+  'https://run.dnz.dev/snippet/94dfd4b699b7b8ca?colormode=dark&output=horizontal&outputSize=400',
 ];
 
 const QuickStartShowcase: React.FC = () => {
@@ -24,7 +25,29 @@ const QuickStartShowcase: React.FC = () => {
 
   return (
     <section className="container mx-auto pt-1 pb-8 hidden lg:block">
-      <h2 className="text-xl font-semibold text-gray-800 dark:text-gray-200 mb-4">Interact with Cadence Testnet</h2>
+      <div className="flex items-center justify-between mb-4">
+        <h2 className="text-xl font-semibold text-gray-800 dark:text-gray-200">
+          Interact with Cadence Testnet
+        </h2>
+        <div className="flex gap-3">
+          <a
+            href="https://wallet.flow.com/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="px-6 py-2 rounded-lg bg-green-dark text-white hover:text-white focus:text-white no-underline hover:no-underline font-bold text-base shadow-lg border border-gray-200 dark:border-gray-700 hover:opacity-90 focus:ring-2 focus:ring-green-dark transition-colors text-center"
+          >
+            Flow Wallet
+          </a>
+          <a
+            href="https://faucet.flow.com/fund-account"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="px-6 py-2 rounded-lg bg-green-dark text-white hover:text-white focus:text-white no-underline hover:no-underline font-bold text-base shadow-lg border border-gray-200 dark:border-gray-700 hover:opacity-90 focus:ring-2 focus:ring-green-dark transition-colors text-center"
+          >
+            Flow Faucet
+          </a>
+        </div>
+      </div>
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-12 items-center min-h-[400px]">
         {/* Left: Selector */}
         <div className="flex flex-col w-full items-center justify-center">
