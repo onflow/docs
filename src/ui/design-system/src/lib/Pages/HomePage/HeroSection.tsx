@@ -1,5 +1,6 @@
 import React from 'react';
 import { useColorMode } from '@docusaurus/theme-common';
+import { event } from '@site/src/utils/gtags.client';
 
 const HeroSection: React.FC = () => {
   const { colorMode } = useColorMode();
@@ -24,18 +25,42 @@ const HeroSection: React.FC = () => {
             <a
               href="/build/getting-started/contract-interaction"
               className="px-6 py-2 rounded-lg bg-green-dark text-white hover:text-white focus:text-white no-underline hover:no-underline font-bold text-base shadow-lg border border-gray-200 dark:border-gray-700 hover:opacity-90 focus:ring-2 focus:ring-green-dark transition-colors text-center"
+              onClick={() => {
+                event({
+                  action: 'action_card_click',
+                  category: 'action_card',
+                  label: 'Cadence App Quickstart',
+                  location: true,
+                });
+              }}
             >
               Cadence App Quickstart
             </a>
             <a
               href="/evm/quickstart"
               className="px-6 py-2 rounded-lg bg-primary-blue text-white hover:text-white focus:text-white no-underline hover:no-underline font-bold text-base shadow-lg border border-gray-200 dark:border-gray-700 hover:opacity-90 focus:ring-2 focus:ring-primary-blue transition-colors text-center"
+              onClick={() => {
+                event({
+                  action: 'action_card_click',
+                  category: 'action_card',
+                  label: 'Solidity on Flow',
+                  location: true,
+                });
+              }}
             >
               Solidity on Flow
             </a>
             <a
               href="/tutorials/ai-plus-flow"
               className="px-6 py-2 rounded-lg bg-primary-purple text-white hover:text-white focus:text-white no-underline hover:no-underline font-bold text-base shadow-lg border border-gray-200 dark:border-gray-700 hover:opacity-90 focus:ring-2 focus:ring-primary-purple transition-colors text-center"
+              onClick={() => {
+                event({
+                  action: 'action_card_click',
+                  category: 'action_card',
+                  label: 'Build with AI',
+                  location: true,
+                });
+              }}
             >
               Build with AI
             </a>

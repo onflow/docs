@@ -1,4 +1,6 @@
 import React, { useState } from 'react';
+import { event } from '@site/src/utils/gtags.client';
+import { useColorMode } from '@docusaurus/theme-common';
 
 const ITEMS = [
   'Increment the Counter',
@@ -10,18 +12,20 @@ const ITEMS = [
   'Get NFT Balance',
 ];
 
-const IFRAME_SRCS = [
-  'https://run.dnz.dev/snippet/a7a18e74d27f691a?colormode=dark&output=horizontal&outputSize=400',
-  'https://run.dnz.dev/snippet/a7a18e74d27f691a?colormode=dark&output=horizontal&outputSize=400',
-  'https://run.dnz.dev/snippet/a7a18e74d27f691a?colormode=dark&output=horizontal&outputSize=400',
-  'https://run.dnz.dev/snippet/a7a18e74d27f691a?colormode=dark&output=horizontal&outputSize=400',
-  'https://run.dnz.dev/snippet/a7a18e74d27f691a?colormode=dark&output=horizontal&outputSize=400',
-  'https://run.dnz.dev/snippet/a7a18e74d27f691a?colormode=dark&output=horizontal&outputSize=400',
-  'https://run.dnz.dev/snippet/94dfd4b699b7b8ca?colormode=dark&output=horizontal&outputSize=400',
-];
-
 const QuickStartShowcase: React.FC = () => {
   const [selected, setSelected] = useState(0);
+  const { colorMode } = useColorMode();
+
+  // Dynamically set colormode in iframe srcs
+  const IFRAME_SRCS = [
+    'https://run.dnz.dev/snippet/5f856b7f7d89e737?output=horizontal&outputSize=400',
+    'https://run.dnz.dev/snippet/a7a18e74d27f691a?output=horizontal&outputSize=400',
+    'https://run.dnz.dev/snippet/a7a18e74d27f691a?output=horizontal&outputSize=400',
+    'https://run.dnz.dev/snippet/a7a18e74d27f691a?output=horizontal&outputSize=400',
+    'https://run.dnz.dev/snippet/a7a18e74d27f691a?output=horizontal&outputSize=400',
+    'https://run.dnz.dev/snippet/a7a18e74d27f691a?output=horizontal&outputSize=400',
+    'https://run.dnz.dev/snippet/94dfd4b699b7b8ca?output=horizontal&outputSize=400',
+  ].map(url => url + `&colormode=${colorMode}`);
 
   return (
     <section className="container mx-auto pt-1 pb-8 hidden lg:block">
@@ -35,6 +39,14 @@ const QuickStartShowcase: React.FC = () => {
             target="_blank"
             rel="noopener noreferrer"
             className="px-6 py-2 rounded-lg bg-green-dark text-white hover:text-white focus:text-white no-underline hover:no-underline font-bold text-base shadow-lg border border-gray-200 dark:border-gray-700 hover:opacity-90 focus:ring-2 focus:ring-green-dark transition-colors text-center"
+            onClick={() => {
+              event({
+                action: 'action_card_click',
+                category: 'action_card',
+                label: 'Flow Wallet',
+                location: true,
+              });
+            }}
           >
             Flow Wallet
           </a>
@@ -43,6 +55,14 @@ const QuickStartShowcase: React.FC = () => {
             target="_blank"
             rel="noopener noreferrer"
             className="px-6 py-2 rounded-lg bg-green-dark text-white hover:text-white focus:text-white no-underline hover:no-underline font-bold text-base shadow-lg border border-gray-200 dark:border-gray-700 hover:opacity-90 focus:ring-2 focus:ring-green-dark transition-colors text-center"
+            onClick={() => {
+              event({
+                action: 'action_card_click',
+                category: 'action_card',
+                label: 'Flow Faucet',
+                location: true,
+              });
+            }}
           >
             Flow Faucet
           </a>
@@ -56,7 +76,15 @@ const QuickStartShowcase: React.FC = () => {
               <button
                 key={item}
                 type="button"
-                onClick={() => setSelected(idx)}
+                onClick={() => {
+                  setSelected(idx);
+                  event({
+                    action: 'action_card_click',
+                    category: 'action_card',
+                    label: item,
+                    location: true,
+                  });
+                }}
                 className={`w-full text-left px-4 py-3 transition font-medium text-base
                   ${selected === idx
                     ? 'bg-white dark:bg-gray-900 rounded-xl shadow text-primary-green-600 font-bold'

@@ -1,6 +1,7 @@
 import React from 'react';
 import { growGridData } from './GridData/GrowGridData';
 import Icon from '../../../../../../components/Icon';
+import { event } from '@site/src/utils/gtags.client';
 
 const GrowSection: React.FC = () => {
   const cards = growGridData.sections[0].cards;
@@ -21,6 +22,14 @@ const GrowSection: React.FC = () => {
               href={card.href}
               {...(typeof (card as any).target === 'string' ? { target: (card as any).target, rel: (card as any).target === '_blank' ? 'noopener noreferrer' : undefined } : {})}
               className="flex flex-col items-start bg-purple-50 dark:bg-purple-950 rounded-xl p-6 shadow hover:shadow-lg transition group h-full border border-purple-100 dark:border-purple-800 hover:border-purple-400 dark:hover:border-purple-400"
+              onClick={(e) => {
+                event({
+                  action: 'action_card_click',
+                  category: 'action_card',
+                  label: card.heading,
+                  location: true,
+                });
+              }}
             >
               <span className="flex items-center justify-center w-10 h-10 rounded-md bg-purple-100 dark:bg-purple-800 mb-4">
                 {card.icon && <Icon name={card.icon} className="w-6 h-6 text-purple-700 dark:text-purple-200" />}

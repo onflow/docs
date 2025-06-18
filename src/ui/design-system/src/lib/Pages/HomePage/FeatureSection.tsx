@@ -2,6 +2,7 @@ import React from 'react';
 import Icon from '../../../../../../components/Icon';
 import Tooltip from './Tooltip';
 import { ColorOption } from '@site/src/constants/colors';
+import { event } from '@site/src/utils/gtags.client';
 
 interface CardData {
   heading: string;
@@ -49,6 +50,14 @@ const FeatureSection: React.FC<FeatureSectionProps> = ({ sections }) => {
                     target={card.target}
                     rel={card.target === '_blank' ? 'noopener noreferrer' : undefined}
                     className="flex items-center gap-3 text-base text-gray-900 dark:text-gray-100 no-underline hover:no-underline transition-colors"
+                    onClick={(e) => {
+                      event({
+                        action: 'action_card_click',
+                        category: 'action_card',
+                        label: card.heading,
+                        location: true,
+                      });
+                    }}
                   >
                     <span className="flex items-center justify-center w-6 h-6 mr-2 shrink-0">
                       {card.icon && <Icon name={card.icon} className="w-6 h-6 flex-none text-gray-900 dark:text-white" />}
