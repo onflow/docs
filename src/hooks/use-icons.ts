@@ -35,6 +35,7 @@ import VCsFundsIcon from '@site/static/images/icons/vcs-&-funds.svg';
 import VRFCadenceIcon from '@site/static/images/icons/vrf---cadence.svg';
 import VRFEVMIcon from '@site/static/images/icons/vrf---evm.svg';
 import WhyFlowIcon from '@site/static/images/icons/why-flow.svg';
+import RandomIcon from '@site/static/images/icons/random.svg';
 
 export function useIcons() {
   return useMemo(() => ({
@@ -72,6 +73,7 @@ export function useIcons() {
     'vrf---cadence': VRFCadenceIcon,
     'vrf---evm': VRFEVMIcon,
     'why-flow': WhyFlowIcon,
+    'random': RandomIcon,
     'quicknode': '/img/ecosystem/quicknode.svg',
     'olympix-logo': '/img/ecosystem/olympix-logo.svg',
     'flow': '/img/ecosystem/flow.svg',

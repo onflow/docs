@@ -7,7 +7,7 @@ export const buildGridData = {
   sections: [
     {
       title: 'Cadence',
-      subtext: 'Resource-oriented smart contracts, making complex smart contracts easy.',
+      subtext: 'A resource-oriented language that makes building complex smart contracts easy and safe.',
       cards: [
         {
           heading: 'Why Flow?',
@@ -15,12 +15,12 @@ export const buildGridData = {
             'Learn why Dieter Shirley, co-author of the ERC-721 NFT standard, led the development of a new L1.',
           iconColor: 'green',
           cardColor: 'black',
-          icon: 'flow-cadence',
+          icon: 'why-flow',
           variant: 'horizontal',
           href: 'build/flow',
         },
         {
-          heading: 'Learn Cadence',
+          heading: 'Build better contracts with Cadence',
           description:
             'Cadence is a resource-oriented programming language that makes it easy to build secure, scalable, and composable applications.',
           iconColor: 'green',
@@ -30,11 +30,21 @@ export const buildGridData = {
           href: 'https://cadence-lang.org',
           target: '_blank',
         },
+        {
+          heading: 'Explore the Cadence blockchain',
+          description:
+            'Search for users, transactions, and contracts on the Flow Cadence blockchain.',
+          iconColor: 'green',
+          cardColor: 'black',
+          icon: 'flow-cadence',
+          variant: 'horizontal',
+          href: 'https://www.flowscan.io/',
+        },
       ],
     },
     {
       title: 'Solidity',
-      subtext: 'Seamless composability and interoperability with EVM equivalence',
+      subtext: 'Seamless composability and interoperability with EVM equivalence.',
       cards: [
         {
           heading: 'Easily add free VRF',
@@ -42,12 +52,12 @@ export const buildGridData = {
             'VRF is built into Flow at the protocol level to provide secure, verifiable randomness, for free.',
           iconColor: 'green',
           cardColor: 'black',
-          icon: 'hello-world',
+          icon: 'random',
           variant: 'horizontal',
           href: 'tutorials-native-vrf',
         },
         {
-          heading: 'Supercharge your app',
+          heading: 'Batch transaction writes',
           description:
             'Level up your app by integrating Cadence into your Wagmi/RainbowKit app to batch write contract calls, conditionally execute transactions, and more.',
           iconColor: 'green',
@@ -56,7 +66,17 @@ export const buildGridData = {
           variant: 'horizontal',
           href: 'tutorials/cross-vm-apps',
           target: '_blank',
-        }
+        },
+        {
+          heading: 'Explore the EVM blockchain',
+          description:
+            'Search for users, transactions, and contracts on the Flow EVM blockchain.',
+          iconColor: 'green',
+          cardColor: 'black',
+          icon: 'evm-on-flow',
+          variant: 'horizontal',
+          href: 'https://evm.flowscan.io/',
+        },
       ],
     },
     {
@@ -79,29 +99,9 @@ export const buildGridData = {
             'Effortlessly import Flow Cadence contracts into your projects, including core contracts, ecosystem contracts, and your own published contracts.',
           iconColor: 'green',
           cardColor: 'black',
-          icon: 'flow-cadence',
+          icon: 'tools',
           variant: 'horizontal',
           href: 'tools/flow-cli/dependency-manager',
-        },
-        {
-          heading: 'Explore the Cadence blockchain',
-          description:
-            'Search for users, transactions, and contracts on the Flow Cadence blockchain.',
-          iconColor: 'green',
-          cardColor: 'black',
-          icon: 'flow-cadence',
-          variant: 'horizontal',
-          href: 'https://www.flowscan.io/',
-        },
-        {
-          heading: 'Explore the EVM blockchain',
-          description:
-            'Search for users, transactions, and contracts on the Flow EVM blockchain.',
-          iconColor: 'green',
-          cardColor: 'black',
-          icon: 'evm-on-flow',
-          variant: 'horizontal',
-          href: 'https://evm.flowscan.io/',
         },
         {
           heading: 'Run scripts and transactions',
