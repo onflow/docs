@@ -24,6 +24,52 @@ keywords:
   - maximum extractable value
 ---
 
+import { ActionCard } from '@site/src/components/ActionCard';
+
+<style>{`
+  .action-card-row {
+    display: flex;
+    gap: 2rem;
+    margin-bottom: 2rem;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  .action-card-row > * {
+    flex: 1 1 350px;
+    max-width: 500px;
+    min-width: 300px;
+  }
+  @media (max-width: 900px) {
+    .action-card-row {
+      flex-direction: column;
+      align-items: stretch;
+    }
+    .action-card-row > * {
+      max-width: 100%;
+      min-width: 0;
+    }
+  }
+`}</style>
+
+<div className="action-card-row">
+  <ActionCard
+    icon="cadence"
+    iconColor="green"
+    cardColor="black"
+    heading="Build with Cadence"
+    description="Get started with Flow's native resource-oriented smart contract language. Learn how to deploy, interact, and build secure dApps using Cadence."
+    href="./getting-started/contract-interaction"
+  />
+  <ActionCard
+    icon="solidity"
+    iconColor="purple"
+    cardColor="black"
+    heading="Build with Solidity"
+    description="Deploy Solidity contracts on Flow EVM using familiar Ethereum tools like Hardhat and Foundry. Start building EVM-compatible dApps on Flow."
+    href="../../evm/quickstart"
+  />
+</div>
+
 ## What is Flow?
 
 Flow is a Layer 1 blockchain built from the ground up to support large-scale applications, especially in the world of consumer crypto. Originally developed by the team behind CryptoKitties, Flow was designed to address the limitations they experienced with other blockchains — particularly around scalability and user experience.
