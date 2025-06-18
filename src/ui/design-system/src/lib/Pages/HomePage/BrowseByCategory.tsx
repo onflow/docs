@@ -21,14 +21,14 @@ const CATEGORIES = [
     links: [
       { label: 'Why EVM on Flow', href: '/evm/about' },
       { label: 'How it Works', href: '/evm/how-it-works' },
-      { label: 'Using Flow EVM', href: '/evm/using-flow-evm' },
-      { label: 'Network Information', href: '/evm/network-information' },
+      { label: 'Using Flow EVM', href: '/evm/using' },
+      { label: 'Network Information', href: '/evm/networks' },
       { label: 'EVM Quickstart', href: '/evm/quickstart' },
       { label: 'Fees', href: '/evm/fees' },
       { label: 'Accounts', href: '/evm/accounts' },
-      { label: 'Cross-chain Bridges', href: '/evm/bridges' },
-      { label: 'Faucets', href: '/evm/faucets' },
-      { label: 'Block Explorers', href: '/evm/block-explorers' },
+      { label: 'Cross-chain Bridges', href: '/ecosystem/bridges' },
+      { label: 'Faucets', href: '/ecosystem/faucets' },
+      { label: 'Block Explorers', href: '/ecosystem/block-explorers' },
       { label: 'Guides', href: '/evm/guides' },
     ],
   },
@@ -39,7 +39,7 @@ const CATEGORIES = [
       { label: 'Flow Emulator', href: '/tools/emulator' },
       { label: 'Flow CLI', href: '/tools/flow-cli' },
       { label: 'Cadence VS Code Extension', href: '/tools/vscode-extension' },
-      { label: 'Flow Dev Wallet', href: '/tools/dev-wallet' },
+      { label: 'Flow Dev Wallet', href: '/tools/flow-dev-wallet' },
       { label: 'Client Tools', href: '/tools/clients' },
       { label: 'Error Codes', href: '/tools/error-codes' },
       { label: 'Wallet Provider Spec', href: '/tools/wallet-provider-spec' },
@@ -50,12 +50,12 @@ const CATEGORIES = [
     title: 'Networks',
     links: [
       { label: 'Flow Networks', href: '/networks/flow-networks' },
-      { label: 'Mainnet', href: '/networks/mainnet' },
-      { label: 'Testnet', href: '/networks/testnet' },
-      { label: 'Network Architecture', href: '/networks/architecture' },
-      { label: 'Staking and Epochs', href: '/networks/staking-and-epochs' },
+      { label: 'Mainnet', href: '/networks/flow-networks/accessing-mainnet' },
+      { label: 'Testnet', href: '/networks/flow-networks/accessing-testnet' },
+      { label: 'Network Architecture', href: '/networks/network-architecture' },
+      { label: 'Staking and Epochs', href: '/networks/staking' },
       { label: 'Node Ops', href: '/networks/node-ops' },
-      { label: 'Accessing Data', href: '/networks/accessing-data' },
+      { label: 'Accessing Data', href: '/networks/access-onchain-data' },
       { label: 'Governance', href: '/networks/governance' },
       { label: 'Flow Port', href: '/networks/flow-port' },
     ],
@@ -68,18 +68,16 @@ const CATEGORIES = [
       { label: 'Flow Block Explorers', href: '/ecosystem/block-explorers' },
       { label: 'Data Indexers', href: '/ecosystem/data-indexers' },
       { label: 'Developer Profile', href: '/ecosystem/developer-profile' },
-      { label: 'DeFi & Liquidity', href: '/ecosystem/defi' },
+      { label: 'DeFi & Liquidity', href: '/ecosystem/defi-liquidity' },
       { label: 'Bridges', href: '/ecosystem/bridges' },
-      { label: 'Community Projects', href: '/ecosystem/community-projects' },
+      { label: 'Community Projects', href: '/ecosystem/projects' },
       { label: 'Builder Perks', href: '/ecosystem/builder-perks' },
       { label: 'VCs & Funds', href: '/ecosystem/vcs-and-funds' },
       { label: 'Faucets', href: '/ecosystem/faucets' },
       { label: 'Grants', href: '/ecosystem/grants' },
-      { label: 'Hackathons and Events', href: '/ecosystem/hackathons' },
+      { label: 'Hackathons and Events', href: '/ecosystem/Hackathons%20and%20Events' },
       { label: 'Auditors', href: '/ecosystem/auditors' },
       { label: 'Ecosystem Overview', href: '/ecosystem/overview' },
-      { label: 'Flow Forum', href: '/ecosystem/forum' },
-      { label: 'FLIPs', href: '/ecosystem/flips' },
     ],
   },
   {
@@ -109,8 +107,8 @@ const BrowseByCategory: React.FC = () => {
                 <li key={link.label}>
                   <a
                     href={link.href}
-                    target={link.external ? '_blank' : undefined}
-                    rel={link.external ? 'noopener noreferrer' : undefined}
+                    target={link.href.startsWith('http') ? '_blank' : undefined}
+                    rel={link.href.startsWith('http') ? 'noopener noreferrer' : undefined}
                     className="text-base text-gray-800 dark:text-gray-100 hover:text-primary-green-500 dark:hover:text-primary-green-300 transition-colors"
                   >
                     {link.label}
