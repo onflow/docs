@@ -57,7 +57,7 @@ import { ActionCard } from '@site/src/components/ActionCard';
     cardColor="black"
     heading="Build with Cadence"
     description="Get started with Flow's native resource-oriented smart contract language. Learn how to deploy, interact, and build secure dApps using Cadence."
-    href="./getting-started/contract-interaction"
+    href="../build/getting-started/contract-interaction"
   />
   <ActionCard
     icon="solidity"
@@ -65,7 +65,7 @@ import { ActionCard } from '@site/src/components/ActionCard';
     cardColor="black"
     heading="Build with Solidity"
     description="Deploy Solidity contracts on Flow EVM using familiar Ethereum tools like Hardhat and Foundry. Start building EVM-compatible dApps on Flow."
-    href="../../evm/quickstart"
+    href="../evm/quickstart"
   />
 </div>
 
@@ -198,11 +198,11 @@ We also have guides for working with [Rainbowkit] and [wagmi].
 [Explore the Ecosystem]: https://developers.flow.com/ecosystem
 [@flow_blockchain]: https://x.com/flow_blockchain
 [Connect]: https://discord.com/invite/flow
-[Contract Interaction]: ./contract-interaction.md
-[Local Development]: ./flow-cli.md
-[Simple Frontend]: ./fcl-quickstart.md
-[EVM Quickstart]: ../../evm/quickstart.md
+[Contract Interaction]: ../build/getting-started/contract-interaction.md
+[Local Development]: ../build/getting-started/flow-cli.md
+[Simple Frontend]: ../build/getting-started/fcl-quickstart.md
+[EVM Quickstart]: ../evm/quickstart.md
 [Testnet Flowscan]: https://evm-testnet.flowscan.io/
-[Foundry]: ../..//evm/guides/foundry.md
-[Rainbowkit]: ../../evm/guides/rainbowkit.md
-[wagmi]: ../../evm/guides/wagmi.md
+[Foundry]: ../evm/guides/foundry.md
+[Rainbowkit]: ../evm/guides/rainbowkit.md
+[wagmi]: ../evm/guides/wagmi.md
