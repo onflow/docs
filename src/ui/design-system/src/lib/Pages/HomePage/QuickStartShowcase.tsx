@@ -18,7 +18,7 @@ const QuickStartShowcase: React.FC = () => {
 
   // Dynamically set colormode in iframe srcs
   const IFRAME_SRCS = [
-    'https://run.dnz.dev/snippet/5f856b7f7d89e737?output=horizontal&outputSize=400',
+    'https://run.dnz.dev/snippet/d4248ed6adf216f6?output=horizontal&outputSize=400',
     'https://run.dnz.dev/snippet/a7a18e74d27f691a?output=horizontal&outputSize=400',
     'https://run.dnz.dev/snippet/a7a18e74d27f691a?output=horizontal&outputSize=400',
     'https://run.dnz.dev/snippet/a7a18e74d27f691a?output=horizontal&outputSize=400',
