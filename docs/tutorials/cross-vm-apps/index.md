@@ -1,7 +1,7 @@
 ---
 title: Cross-VM Apps
 description: A series of tutorials on building cross-VM applications that integrate Flow EVM with Flow Cadence.
-sidebar_position: 3
+sidebar_position: 6
 keywords:
   - hybrid apps
   - cross-vm apps

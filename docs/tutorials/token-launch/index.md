@@ -1,5 +1,5 @@
 ---
-sidebar_position: 2
+sidebar_position: 5
 title: Token Launch
 description: Learn how to register your tokens on Flow to ensure visibility in wallets and ecosystem projects.
 ---
