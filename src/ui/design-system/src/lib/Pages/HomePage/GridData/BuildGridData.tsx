@@ -20,6 +20,16 @@ export const buildGridData = {
           href: 'build/flow',
         },
         {
+          heading: 'Query state and run transactions',
+          description:
+            'Run Flow Cadence scripts and transactions in the browser with Flow Runner.',
+          iconColor: 'green',
+          cardColor: 'black',
+          icon: 'hello-world',
+          variant: 'horizontal',
+          href: 'https://run.dnz.dev/',
+        },
+        {
           heading: 'Build better contracts with Cadence',
           description:
             'Cadence is a resource-oriented programming language that makes it easy to build secure, scalable, and composable applications.',
@@ -29,16 +39,6 @@ export const buildGridData = {
           variant: 'horizontal',
           href: 'https://cadence-lang.org',
           target: '_blank',
-        },
-        {
-          heading: 'Explore the Cadence blockchain',
-          description:
-            'Search for users, transactions, and contracts on the Flow Cadence blockchain.',
-          iconColor: 'green',
-          cardColor: 'black',
-          icon: 'flow-cadence',
-          variant: 'horizontal',
-          href: 'https://www.flowscan.io/',
         },
       ],
     },
@@ -54,7 +54,7 @@ export const buildGridData = {
           cardColor: 'black',
           icon: 'random',
           variant: 'horizontal',
-          href: 'tutorials-native-vrf',
+          href: 'tutorials/native-vrf/vrf-solidity',
         },
         {
           heading: 'Batch transaction writes',
@@ -102,16 +102,6 @@ export const buildGridData = {
           icon: 'tools',
           variant: 'horizontal',
           href: 'tools/flow-cli/dependency-manager',
-        },
-        {
-          heading: 'Run scripts and transactions',
-          description:
-            'Run Flow Cadence scripts and transactions in the browser with Flow Runner.',
-          iconColor: 'green',
-          cardColor: 'black',
-          icon: 'hello-world',
-          variant: 'horizontal',
-          href: 'https://run.dnz.dev/',
         },
       ],
     },
