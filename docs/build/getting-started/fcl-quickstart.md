@@ -134,15 +134,7 @@ This will start the [Dev Wallet] on `http://localhost:8701`, which you'll use fo
 "use client";
 
 import { FlowProvider } from "@onflow/kit";
-import * as fcl from "@onflow/fcl";
 import flowJson from "../flow.client.json";
-
-// Configure FCL for local emulator
-fcl.config({
-  "accessNode.api": "http://localhost:8888",              // Connect to local emulator
-  "discovery.wallet": "http://localhost:8701/fcl/authn",   // Dev wallet for local development
-  "flow.network": "emulator",                              // Using local emulator network
-});
 
 export default function RootLayout({
   children,
@@ -150,9 +142,16 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="en">
+    <html>
       <body>
-        <FlowProvider flowJson={flowJson}>
+        <FlowProvider 
+          config={{
+            accessNodeUrl: 'http://localhost:8888',
+            flowNetwork: 'emulator',
+            discoveryWallet: 'https://fcl-discovery.onflow.org/emulator/authn',
+          }}
+          flowJson={flowJson}
+        >
           {children}
         </FlowProvider>
       </body>
@@ -173,7 +172,7 @@ Now that we've set our provider, lets start interacting with the chain.
 
 First, use the kit's [`useFlowQuery`] hook to read the current counter value from the blockchain.
 
-```jsx
+```tsx
 import { useFlowQuery } from '@onflow/kit';
 
 const { data, isLoading, error, refetch } = useFlowQuery({
@@ -207,7 +206,7 @@ This script fetches the counter value, formats it via the `NumberFormatter`, and
 
 Next, use the kit's [`useFlowMutate`] hook to send a transaction that increments the counter.
 
-```jsx
+```tsx
 import { useFlowMutate } from '@onflow/kit';
 
 const {
@@ -245,7 +244,7 @@ This sends a Cadence transaction to the blockchain using the `mutate` function. 
 
 Use the kit's [`useFlowTransactionStatus`] hook to monitor and display the transaction status in real time.
 
-```jsx
+```tsx
 import { useFlowTransactionStatus } from '@onflow/kit';
 
 const { transactionStatus, error: txStatusError } = useFlowTransactionStatus({
@@ -253,7 +252,7 @@ const { transactionStatus, error: txStatusError } = useFlowTransactionStatus({
 });
 
 useEffect(() => {
-  if (txId && transactionStatus?.status === 4) {
+  if (txId && transactionStatus?.status === 3) {
     refetch();
   }
 }, [transactionStatus?.status, txId, refetch]);
@@ -286,9 +285,7 @@ However:
 
 Finally, integrate the query, mutation, and transaction status hooks with authentication using `useCurrentFlowUser`. Combine all parts to build the complete page.
 
-```jsx
-// src/app/page.js
-
+```tsx
 "use client";
 
 import { useState, useEffect } from "react";
@@ -301,12 +298,11 @@ import {
 
 export default function Home() {
   const { user, authenticate, unauthenticate } = useCurrentFlowUser();
-  const [lastTxId, setLastTxId] = useState<string>();
 
   const { data, isLoading, error, refetch } = useFlowQuery({
     cadence: `
-      import Counter from 0xf8d6e0586b0a20c7
-      import NumberFormatter from 0xf8d6e0586b0a20c7
+      import "Counter"
+      import "NumberFormatter"
 
       access(all)
       fun main(): String {
@@ -330,15 +326,136 @@ export default function Home() {
   });
 
   useEffect(() => {
-    if (txId && transactionStatus?.status === 4) {
-      refetch();
+    if (txId && transactionStatus?.status === 3) {
+      // Transaction is executed
+      refetch(); // Refresh the counter
     }
   }, [transactionStatus?.status, txId, refetch]);
 
   const handleIncrement = () => {
     increment({
       cadence: `
-        import Counter from 0xf8d6e0586b0a20c7
+        import "Counter"
+
+        transaction {
+          prepare(acct: &Account) {
+            // Authorization handled via wallet
+          }
+          execute {
+            Counter.increment()
+            let newCount = Counter.getCount()
+            log("New count after incrementing: ".concat(newCount.toString()))
+          }
+        }
+      `,
+    });
+  };
+
+  return (
+    <div>
+      <h1>Flow Counter dApp</h1>
+
+      {isLoading ? (
+        <p>Loading count...</p>
+      ) : error ? (
+        <p>Error: {error.message}</p>
+      ) : (
+        <div>
+          <h2>{(data as string) || "0"}</h2>
+          <p>Current Count</p>
+        </div>
+      )}
+
+      {user?.loggedIn ? (
+        <div>
+          <p>Connected: {user.addr}</p>
+          
+          <button onClick={handleIncrement} disabled={txPending}>
+            {txPending ? "Processing..." : "Increment Count"}
+          </button>
+          
+          <button onClick={unauthenticate}>
+            Log Out
+          </button>
+
+          {transactionStatus?.statusString && transactionStatus?.status && (
+            <p>Status: {transactionStatus.status >= 3 ? "Executed" : transactionStatus.statusString}</p>
+          )}
+          
+          {txError && (
+            <p>Error: {txError.message}</p>
+          )}
+          
+          {txStatusError && (
+            <p>Status Error: {txStatusError.message}</p>
+          )}
+        </div>
+      ) : (
+        <button onClick={authenticate}>
+          Connect Wallet
+        </button>
+      )}
+    </div>
+  );
+}
+```
+
+
+For a cleaner looking UI, copy and paste this code into the src/app/page.tsx file:
+
+```tsx
+// src/app/page.tsx
+
+"use client";
+
+import { useState, useEffect } from "react";
+import {
+  useFlowQuery,
+  useFlowMutate,
+  useFlowTransactionStatus,
+  useCurrentFlowUser,
+} from "@onflow/kit";
+
+export default function Home() {
+  const { user, authenticate, unauthenticate } = useCurrentFlowUser();
+
+  const { data, isLoading, error, refetch } = useFlowQuery({
+    cadence: `
+      import "Counter"
+      import "NumberFormatter"
+
+      access(all)
+      fun main(): String {
+          let count: Int = Counter.getCount()
+          let formattedCount = NumberFormatter.formatWithCommas(number: count)
+          return formattedCount
+      }
+    `,
+    query: { enabled: true },
+  });
+
+  const {
+    mutate: increment,
+    isPending: txPending,
+    data: txId,
+    error: txError,
+  } = useFlowMutate();
+
+  const { transactionStatus, error: txStatusError } = useFlowTransactionStatus({
+    id: txId || "",
+  });
+
+  useEffect(() => {
+    if (txId && transactionStatus?.status === 3) {
+      // Transaction is executed
+      refetch(); // Refresh the counter
+    }
+  }, [transactionStatus?.status, txId, refetch]);
+
+  const handleIncrement = () => {
+    increment({
+      cadence: `
+        import "Counter"
 
         transaction {
           prepare(acct: &Account) {
@@ -479,7 +596,7 @@ export default function Home() {
             </button>
           </div>
 
-          {(transactionStatus?.statusString || txError) && (
+          {((transactionStatus?.statusString && transactionStatus?.status) || txError) && (
             <div style={{
               marginTop: '20px',
               padding: '15px',
@@ -488,9 +605,9 @@ export default function Home() {
               maxWidth: '400px',
               margin: '20px auto'
             }}>
-              {transactionStatus?.statusString && (
+              {transactionStatus?.statusString && transactionStatus?.status && (
                 <p style={{ margin: '5px 0', color: '#666' }}>
-                  📋 Status: <strong>{transactionStatus.statusString}</strong>
+                  📋 Status: <strong>{transactionStatus.status >= 3 ? "Executed" : transactionStatus.statusString}</strong>
                 </p>
               )}
               {txError && (
