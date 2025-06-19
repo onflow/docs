@@ -125,6 +125,58 @@ import { Connect } from "@onflow/kit"
 
 ---
 
+### `TransactionButton`
+
+Button component for executing Flow transactions with built-in loading states and global transaction management.
+
+**Props:**
+
+- `transaction: Parameters<typeof mutate>[0]` – Flow transaction object to execute when clicked
+- `label?: string` – Optional custom button label (default: `"Execute Transaction"`)
+- `mutation?: UseMutationOptions<string, Error, Parameters<typeof mutate>[0]>` – Optional TanStack React Query mutation options
+- `...buttonProps` – All other `ButtonProps` except `onClick` and `children` (includes `variant`, `disabled`, `className`, etc.)
+
+```tsx
+import { TransactionButton } from "@onflow/kit"
+
+const myTransaction = {
+  cadence: `
+    transaction() {
+      prepare(acct: &Account) {
+        log("Hello from ", acct.address)
+      }
+    }
+  `,
+  args: (arg, t) => [],
+  limit: 100,
+}
+
+<TransactionButton
+  transaction={myTransaction}
+  label="Say Hello"
+  variant="primary"
+  mutation={{
+    onSuccess: (txId) => console.log("Transaction sent:", txId),
+    onError: (error) => console.error("Transaction failed:", error),
+  }}
+/>
+```
+
+### Live Demo
+
+<FlowProviderDemo>
+  <TransactionButton
+    transaction={{
+      cadence: `transaction() { prepare(acct: &Account) { log("Demo transaction") } }`,
+      args: (arg, t) => [],
+      limit: 100,
+    }}
+    label="Demo Transaction"
+  />
+</FlowProviderDemo>
+
+---
+
 ### `TransactionDialog`
 
 Dialog component for real-time transaction status updates.
