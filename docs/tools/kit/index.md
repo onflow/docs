@@ -28,7 +28,8 @@ sidebar_position: 1
 - [`useCrossVmBatchTransaction`](#usecrossvmbatchtransaction) – Execute mutliple EVM transactions in a single atomic Cadence transaction
 - [`useCrossVmTokenBalance`](#usecrossvmtokenbalance) – Query fungible token balances across Cadence and Flow EVM
 - [`useCrossVmSpendNft`](#usecrossvmspendnft) – Bridge NFTs from Cadence to Flow EVM and execute arbitrary EVM transactions to atomically spend them
-- [`useCrossVmSpendToken`](#usecrossvmspendnft) – Bridge fungible tokens from Cadence to Flow EVM and execute arbitrary EVM transactions
+- [`useCrossVmSpendToken`](#usecrossvmspendtoken) – Bridge fungible tokens from Cadence to Flow EVM and execute arbitrary EVM transactions
+- [`useCrossVmTransactionStatus`](#usecrossvmtransactionstatus) – Track Cross-VM transaction status and EVM call results
 
 ## Installation
 
@@ -848,6 +849,75 @@ function CrossVmSpendTokenExample() {
       {isPending && <p>Sending transaction...</p>}
       {error && <p>Error: {error.message}</p>}
       {txId && <p>Cadence Transaction ID: {txId}</p>}
+    </div>
+  )
+}
+```
+
+---
+
+### `useCrossVmTransactionStatus`
+
+<Callout type="info">
+This feature is currently only supported on Testnet & Mainnet networks.  Emulator support will be added in a future release.
+</Callout>
+
+```tsx
+import { useCrossVmTransactionStatus } from "@onflow/kit"
+```
+
+Subscribes to status updates for a given Cross-VM Flow transaction ID that executes EVM calls. This hook monitors the transaction status and extracts EVM call results if available.
+
+#### Parameters:
+
+- `id?: string` – Optional Flow transaction ID to monitor
+
+#### Returns: `UseCrossVmTransactionStatusResult`
+
+Where `UseCrossVmTransactionStatusResult` is defined as:
+
+```typescript
+interface UseCrossVmTransactionStatusResult {
+  transactionStatus: TransactionStatus | null // Latest transaction status, or null before any update
+  evmResults?: CallOutcome[] // EVM transaction results, if available
+  error: Error | null // Any error encountered during status updates
+}
+```
+
+Where `CallOutcome` is defined as:
+
+```typescript
+interface CallOutcome {
+  status: "passed" | "failed" | "skipped" // Status of the EVM call
+  hash?: string // EVM transaction hash if available
+  errorMessage?: string // Error message if the call failed
+}
+```
+
+```tsx
+function CrossVmTransactionStatusComponent() {
+  const txId = "your-cross-vm-transaction-id-here"
+  const { transactionStatus, evmResults, error } = useCrossVmTransactionStatus({ id: txId })
+
+  if (error) return <div>Error: {error.message}</div>
+
+  return (
+    <div>
+      <div>Flow Status: {transactionStatus?.statusString}</div>
+      {evmResults && evmResults.length > 0 && (
+        <div>
+          <h3>EVM Call Results:</h3>
+          <ul>
+            {evmResults.map((result, idx) => (
+              <li key={idx}>
+                Status: {result.status}
+                {result.hash && <span> | Hash: {result.hash}</span>}
+                {result.errorMessage && <span> | Error: {result.errorMessage}</span>}
+              </li>
+            ))}
+          </ul>
+        </div>
+      )}
     </div>
   )
 }
