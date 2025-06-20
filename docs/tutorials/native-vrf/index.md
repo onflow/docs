@@ -36,4 +36,4 @@ Stay tuned—more tutorials and advanced guides are on the way!
 [Secure Randomness with Commit-Reveal in Cadence]: ./commit-reveal-cadence.md
 [VRF (Randomness) in Solidity]: ./vrf-in-solidity.md
 [Deploy a Solidity Contract Using Cadence]: ./deploy-solidity-contract.md
-[VRF (Randomness) in Solidity]: ./vrf-evm.md
+[VRF (Randomness) in Solidity]: ./vrf-in-solidity.md

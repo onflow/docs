@@ -36,6 +36,7 @@ import VRFCadenceIcon from '@site/static/images/icons/vrf---cadence.svg';
 import VRFEVMIcon from '@site/static/images/icons/vrf---evm.svg';
 import WhyFlowIcon from '@site/static/images/icons/why-flow.svg';
 import RandomIcon from '@site/static/images/icons/random.svg';
+import FaucetIcon from '@site/static/images/icons/Faucet.svg';
 
 export function useIcons() {
   return useMemo(() => ({
@@ -74,6 +75,7 @@ export function useIcons() {
     'vrf---evm': VRFEVMIcon,
     'why-flow': WhyFlowIcon,
     'random': RandomIcon,
+    'faucet': FaucetIcon,
     'quicknode': '/img/ecosystem/quicknode.svg',
     'olympix-logo': '/img/ecosystem/olympix-logo.svg',
     'flow': '/img/ecosystem/flow.svg',

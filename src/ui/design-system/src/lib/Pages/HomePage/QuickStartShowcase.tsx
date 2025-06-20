@@ -3,13 +3,12 @@ import { event } from '@site/src/utils/gtags.client';
 import { useColorMode } from '@docusaurus/theme-common';
 
 const ITEMS = [
-  'Increment the Counter',
-  'View the Current Count',
-  'View NBA Top Shots',
-  'Claim Fungible Tokens',
-  'Get Current Balance',
-  'Mint an NFT',
-  'Get NFT Balance',
+  'Increment the counter',
+  'View the current count',
+  'Mint tokens and NFTs',
+  'Query token and NFT balances',
+  'Query for NBA Top Shots',
+  'Run an EVM transaction',
 ];
 
 const QuickStartShowcase: React.FC = () => {
@@ -23,7 +22,6 @@ const QuickStartShowcase: React.FC = () => {
     'https://run.dnz.dev/snippet/a7a18e74d27f691a?output=horizontal&outputSize=400',
     'https://run.dnz.dev/snippet/a7a18e74d27f691a?output=horizontal&outputSize=400',
     'https://run.dnz.dev/snippet/a7a18e74d27f691a?output=horizontal&outputSize=400',
-    'https://run.dnz.dev/snippet/a7a18e74d27f691a?output=horizontal&outputSize=400',
     'https://run.dnz.dev/snippet/94dfd4b699b7b8ca?output=horizontal&outputSize=400',
   ].map(url => url + `&colormode=${colorMode}`);
 
@@ -31,47 +29,13 @@ const QuickStartShowcase: React.FC = () => {
     <section className="container mx-auto pt-1 pb-8 hidden lg:block">
       <div className="flex items-center justify-between mb-4">
         <h2 className="text-xl font-semibold text-gray-800 dark:text-gray-200">
-          Interact with Cadence Testnet
+          Interact with testnet
         </h2>
-        <div className="flex gap-3">
-          <a
-            href="https://wallet.flow.com/"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="px-6 py-2 rounded-lg bg-green-dark text-white hover:text-white focus:text-white no-underline hover:no-underline font-bold text-base shadow-lg border border-gray-200 dark:border-gray-700 hover:opacity-90 focus:ring-2 focus:ring-green-dark transition-colors text-center"
-            onClick={() => {
-              event({
-                action: 'action_card_click',
-                category: 'action_card',
-                label: 'Flow Wallet',
-                location: true,
-              });
-            }}
-          >
-            Flow Wallet
-          </a>
-          <a
-            href="https://faucet.flow.com/fund-account"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="px-6 py-2 rounded-lg bg-green-dark text-white hover:text-white focus:text-white no-underline hover:no-underline font-bold text-base shadow-lg border border-gray-200 dark:border-gray-700 hover:opacity-90 focus:ring-2 focus:ring-green-dark transition-colors text-center"
-            onClick={() => {
-              event({
-                action: 'action_card_click',
-                category: 'action_card',
-                label: 'Flow Faucet',
-                location: true,
-              });
-            }}
-          >
-            Flow Faucet
-          </a>
-        </div>
       </div>
-      <div className="grid grid-cols-1 lg:grid-cols-3 gap-12 items-center min-h-[400px]">
+      <div className="grid grid-cols-1 lg:grid-cols-3 gap-0 items-stretch bg-white dark:bg-gray-900 rounded-2xl shadow-lg border border-gray-200 dark:border-gray-700 overflow-hidden">
         {/* Left: Selector */}
-        <div className="flex flex-col w-full items-center justify-center">
-          <div className="w-full bg-gray-50 dark:bg-gray-800 rounded-2xl p-4 flex flex-col gap-3 shadow-sm h-[400px] justify-center" style={{ maxWidth: 320 }}>
+        <div className="flex flex-col w-full items-center justify-center bg-gray-50 dark:bg-gray-800/50 border-r border-gray-200 dark:border-gray-700">
+          <div className="w-full p-4 flex flex-col gap-3 h-[400px] justify-center" style={{ maxWidth: 320 }}>
             {ITEMS.map((item, idx) => (
               <button
                 key={item}
@@ -87,8 +51,8 @@ const QuickStartShowcase: React.FC = () => {
                 }}
                 className={`w-full text-left px-4 py-3 transition font-medium text-base
                   ${selected === idx
-                    ? 'bg-white dark:bg-gray-900 rounded-xl shadow text-primary-green-600 font-bold'
-                    : 'text-gray-900 dark:text-gray-100 bg-transparent'} cursor-pointer`
+                    ? 'bg-white dark:bg-gray-900 rounded-xl shadow-sm text-primary-green-600 font-bold'
+                    : 'text-gray-900 dark:text-gray-100 bg-transparent'} cursor-pointer hover:bg-white/50 dark:hover:bg-gray-900/50`
                 }
                 style={{ outline: 'none', border: 'none' }}
               >
@@ -102,10 +66,8 @@ const QuickStartShowcase: React.FC = () => {
           <iframe
             key={selected}
             sandbox="allow-scripts allow-same-origin"
-            className="flow-runner-iframe rounded-2xl shadow-lg border border-gray-200"
+            className="flow-runner-iframe w-full h-[400px]"
             src={IFRAME_SRCS[selected]}
-            width="100%"
-            height="400px"
             title="Flow Runner Quickstart"
           ></iframe>
         </div>

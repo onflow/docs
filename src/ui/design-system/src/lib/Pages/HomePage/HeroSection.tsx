@@ -9,31 +9,45 @@ const HeroSection: React.FC = () => {
   //   : 'https://lu.ma/embed/calendar/cal-DBqbEn6mwZR13qQ/events';
   return (
     <section className="container mx-auto py-6">
-      <div className="flex flex-col lg:flex-row items-start justify-between">
+      <div className="flex flex-col lg:flex-row items-center justify-between">
         {/* Left: Hero Content */}
         <div className="flex-1 max-w-2xl text-left">
           <h1 className="text-3xl md:text-4xl font-bold mb-3 text-gray-900 dark:text-white">
-            Build on the chain made for app builders, by app builders
+            Apps deserve better blockchains
           </h1>
           <p className="text-base md:text-lg text-gray-700 dark:text-gray-200 mb-2 max-w-xl">
             Start building with <strong>Cadence</strong>, <strong>Solidity (EVM)</strong>, or <strong>AI-powered tools</strong> - each path is first-class and fully supported.
           </p>
           <div className="flex flex-col sm:flex-row gap-3 mb-4">
+            <a
+              href="/tutorials/ai-plus-flow"
+              className="px-6 py-2 rounded-lg bg-primary-purple text-white hover:text-white focus:text-white no-underline hover:no-underline font-bold text-base shadow-lg border border-gray-200 dark:border-gray-700 hover:opacity-90 focus:ring-2 focus:ring-primary-purple transition-colors text-center"
+              onClick={() => {
+                event({
+                  action: 'action_card_click',
+                  category: 'action_card',
+                  label: 'Build with AI',
+                  location: true,
+                });
+              }}
+            >
+              Build with AI
+            </a>
             <button
               type="button"
               onClick={() => {
                 event({
                   action: 'action_card_click',
                   category: 'action_card',
-                  label: 'Get Started with Cadence',
+                  label: 'Start with Cadence',
                   location: true,
                 });
                 window.location.href = '/build/getting-started/contract-interaction';
               }}
-              className="px-6 py-2 rounded-lg bg-transparent text-white underline font-bold text-base border-none shadow-none focus:outline-none focus:underline hover:underline transition-colors text-center"
+              className="px-6 py-2 rounded-lg bg-transparent text-black dark:text-white underline font-bold text-base border-none shadow-none focus:outline-none focus:underline hover:underline transition-colors text-center"
               style={{ background: 'transparent' }}
             >
-              Get Started with Cadence
+              Start with Cadence
             </button>
             {/*
             <a
@@ -51,25 +65,19 @@ const HeroSection: React.FC = () => {
               Solidity on Flow
             </a>
             */}
-            <a
-              href="/tutorials/ai-plus-flow"
-              className="px-6 py-2 rounded-lg bg-primary-purple text-white hover:text-white focus:text-white no-underline hover:no-underline font-bold text-base shadow-lg border border-gray-200 dark:border-gray-700 hover:opacity-90 focus:ring-2 focus:ring-primary-purple transition-colors text-center"
-              onClick={() => {
-                event({
-                  action: 'action_card_click',
-                  category: 'action_card',
-                  label: 'Build with AI',
-                  location: true,
-                });
-              }}
-            >
-              Build with AI
-            </a>
           </div>
         </div>
-        <p className="text-sm italic text-gray-600 dark:text-gray-300 mb-4 max-w-xl">
-          "If all you want to do is what blockchains are doing today, any of the other chains are fine.  Flow is for people who believe this technology can do more." - Dieter Shirley, Chief Architect of Flow & co-author of the <a href="https://github.com/ethereum/eips/issues/721" target="_blank" rel="noopener noreferrer" className="underline text-primary-green-600 dark:text-primary-green-400">ERC-721 NFT standard</a>
-        </p>
+        {/* Right: Quote */}
+        {/* <div className="flex-1 flex justify-end items-start pl-0 lg:pl-8 mt-6 lg:mt-0 w-full lg:w-auto">
+          <blockquote className="relative bg-black/40 dark:bg-white/10 border-r-8 border-primary-green-400 pl-4 pr-6 py-4 rounded-lg shadow-lg max-w-md text-white dark:text-gray-100 text-base italic">
+            <span className="block mb-2">
+              "If all you want to do is what blockchains are doing today, any of the other chains are fine.  Flow is for people who believe this technology can do more."
+            </span>
+            <span className="block text-base not-italic text-primary-green-300 mt-2">
+              - Dieter Shirley, Chief Architect of Flow & co-author of the <a href="https://github.com/ethereum/eips/issues/721" target="_blank" rel="noopener noreferrer" className="underline text-primary-green-200 dark:text-primary-green-400">ERC-721 NFT standard</a>
+            </span>
+          </blockquote>
+        </div> */}
         {/* Right: Calendar card (visible on lg and up) */}
         {/* <div className="flex-1 hidden lg:flex justify-end items-center pl-8">
           <div className="bg-white dark:bg-gray-900 rounded-xl shadow-lg border border-gray-200 dark:border-gray-800 p-4 w-[560px] max-w-full flex flex-col items-center">

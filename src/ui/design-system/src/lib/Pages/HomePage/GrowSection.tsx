@@ -9,11 +9,11 @@ const GrowSection: React.FC = () => {
   return (
     <section className="w-full flex justify-center mt-8">
       <div className="w-full max-w-6xl bg-white dark:bg-gray-900 rounded-2xl shadow-xl px-8 py-10 border border-purple-100 dark:border-purple-900">
-        <div className="flex items-center mb-8">
+        <div className="flex items-baseline mb-8">
           <span className="flex items-center justify-center w-10 h-10 rounded-md bg-[#C084FC] mr-3">
             <Icon name={growGridData.icon} className="w-6 h-6 text-black" />
           </span>
-          <h2 className="text-3xl font-bold text-gray-900 dark:text-gray-900">Grow your business</h2>
+          <h2 className="text-3xl font-bold text-gray-900 dark:text-white">Grow your business</h2>
         </div>
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6">
           {cards.map((card, idx) => (
