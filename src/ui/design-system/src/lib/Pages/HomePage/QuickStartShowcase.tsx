@@ -6,7 +6,7 @@ const ITEMS = [
   'Increment the counter',
   'View the current count',
   'Mint tokens and NFTs',
-  'Query token and NFT balances',
+  'Query token balances',
   'Query for NBA Top Shots',
   'Run an EVM transaction',
 ];
@@ -17,12 +17,12 @@ const QuickStartShowcase: React.FC = () => {
 
   // Dynamically set colormode in iframe srcs
   const IFRAME_SRCS = [
-    'https://run.dnz.dev/snippet/d4248ed6adf216f6?output=horizontal&outputSize=400',
-    'https://run.dnz.dev/snippet/a7a18e74d27f691a?output=horizontal&outputSize=400',
-    'https://run.dnz.dev/snippet/a7a18e74d27f691a?output=horizontal&outputSize=400',
-    'https://run.dnz.dev/snippet/a7a18e74d27f691a?output=horizontal&outputSize=400',
-    'https://run.dnz.dev/snippet/a7a18e74d27f691a?output=horizontal&outputSize=400',
-    'https://run.dnz.dev/snippet/94dfd4b699b7b8ca?output=horizontal&outputSize=400',
+    'https://run.dnz.dev/snippet/d4248ed6adf216f6?output=vertical&outputSize=100',
+    'https://run.dnz.dev/snippet/a7a18e74d27f691a?output=vertical&outputSize=100',
+    'https://run.dnz.dev/snippet/a7a18e74d27f691a?output=vertical&outputSize=100',
+    'https://run.dnz.dev/snippet/30fbfc406fcfc316?output=vertical&outputSize=100',
+    'https://run.dnz.dev/snippet/9852f5b5a3218637?output=vertical&outputSize=100',
+    'https://run.dnz.dev/snippet/94dfd4b699b7b8ca?output=vertical&outputSize=100',
   ].map(url => url + `&colormode=${colorMode}`);
 
   return (
