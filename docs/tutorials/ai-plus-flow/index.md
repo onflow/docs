@@ -1,7 +1,7 @@
 ---
 title: AI Plus Flow
 description: Learn how to leverage AI tools to enhance your Flow development experience
-sidebar_position: 2
+sidebar_position: 3
 keywords:
   - AI
   - ChatGPT

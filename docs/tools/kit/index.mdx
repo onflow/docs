@@ -25,6 +25,7 @@ Hooks for interacting with native Flow Cadence runtime:
 - [`useFlowConfig`](#useflowconfig) – Access the current Flow configuration
 - [`useFlowEvents`](#useflowevents) – Subscribe to Flow events in real-time
 - [`useFlowQuery`](#useflowquery) – Execute Cadence scripts with optional arguments
+- [`useFlowQueryRaw`](#useflowqueryraw) – Execute Cadence scripts with optional arguments returning non-decoded data
 - [`useFlowMutate`](#useflowmutate) – Send transactions to the Flow blockchain
 - [`useFlowRevertibleRandom`](#useflowrevertiblerandom) – Generate pseudorandom values tied to block height
 - [`useFlowTransactionStatus`](#useflowtransactionstatus) – Track transaction status updates
@@ -428,6 +429,51 @@ function QueryExample() {
   return (
     <div>
       <p>Result: {data}</p>
+      <button onClick={refetch}>Refetch</button>
+    </div>
+  )
+}
+```
+
+---
+
+### `useFlowQueryRaw`
+
+```tsx
+import { useFlowQueryRaw } from "@onflow/kit"
+```
+
+This hook is identical to `useFlowQuery` but returns the raw, non-decoded response data from the Flow blockchain. This is useful when you need access to the original response structure or want to handle decoding manually.
+
+#### Parameters:
+
+- `cadence: string` – Cadence script to run
+- `args?: (arg, t) => unknown[]` – Function returning FCL arguments
+- `query?: UseQueryOptions<unknown, Error>` – Optional TanStackQuery options
+
+#### Returns: `UseQueryResult<unknown, Error>`
+
+The returned data will be in its raw, non-decoded format as received from the Flow access node.
+
+```tsx
+function QueryRawExample() {
+  const { data: rawData, isLoading, error, refetch } = useFlowQueryRaw({
+    cadence: `
+      access(all)
+      fun main(a: Int, b: Int): Int {
+        return a + b
+      }
+    `,
+    args: (arg, t) => [arg(1, t.Int), arg(2, t.Int)],
+    query: { staleTime: 10000 },
+  })
+
+  if (isLoading) return <p>Loading query...</p>
+  if (error) return <p>Error: {error.message}</p>
+
+  return (
+    <div>
+      <p>Raw Result: {JSON.stringify(rawData, null, 2)}</p>
       <button onClick={refetch}>Refetch</button>
     </div>
   )
