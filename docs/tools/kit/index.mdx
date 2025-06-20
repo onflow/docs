@@ -145,10 +145,11 @@ Dialog component for real-time transaction status updates.
 ```tsx
 import { TransactionDialog } from "@onflow/kit"
 
+
 <TransactionDialog
   open={isOpen}
   onOpenChange={setIsOpen}
-  txId={txId}
+  txId="6afa38b7bd1a23c6cc01a4ea2e51ed376f16761f9d06eca0577f674a9edc0716"
   pendingTitle="Sending..."
   successTitle="All done!"
   closeOnSuccess
@@ -161,7 +162,7 @@ import { TransactionDialog } from "@onflow/kit"
   <TransactionDialog
     open={false}
     onOpenChange={() => {}}
-    txId="0x1234567890abcdef"
+    txId="6afa38b7bd1a23c6cc01a4ea2e51ed376f16761f9d06eca0577f674a9edc0716"
     pendingTitle="Sending..."
     successTitle="All done!"
     closeOnSuccess
