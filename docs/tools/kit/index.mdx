@@ -4,11 +4,19 @@ description: React hooks for interacting with the Flow blockchain.
 sidebar_position: 1
 ---
 
+import { Connect, TransactionDialog, TransactionLink } from "@onflow/kit"
+import { FlowProvider } from "@onflow/kit"
+import FlowProviderDemo from '@site/src/components/FlowProviderDemo';
+
 # @onflow/kit
 
-`@onflow/kit` is a lightweight React utility library that simplifies interacting with the Flow blockchain. It provides a collection of hooks, similar to those in other popular web3 libraries, that make it easier to build frontends that understand blockchain interactions. **In the future**, it will also provide components designed to make authentication, script execution, transactions, event subscriptions, and network configuration seamless in React apps.
+`@onflow/kit` is a lightweight React utility library that simplifies interacting with the Flow blockchain. It provides a collection of hooks and components designed to make authentication, script execution, transactions, event subscriptions, and network configuration seamless in React apps.
 
-## 🔌 Included React Hooks
+## What's Included
+
+### Cadence Hooks
+
+Hooks for interacting with native Flow Cadence runtime:
 
 - [`useCurrentFlowUser`](#usecurrentflowuser) – Authenticate and manage the current Flow user
 - [`useFlowAccount`](#useflowaccount) – Fetch Flow account details by address
@@ -17,7 +25,6 @@ sidebar_position: 1
 - [`useFlowConfig`](#useflowconfig) – Access the current Flow configuration
 - [`useFlowEvents`](#useflowevents) – Subscribe to Flow events in real-time
 - [`useFlowQuery`](#useflowquery) – Execute Cadence scripts with optional arguments
-- [`useFlowQueryRaw`](#useflowqueryraw) – Execute Cadence scripts with optional arguments returning non-decoded data
 - [`useFlowMutate`](#useflowmutate) – Send transactions to the Flow blockchain
 - [`useFlowRevertibleRandom`](#useflowrevertiblerandom) – Generate pseudorandom values tied to block height
 - [`useFlowTransactionStatus`](#useflowtransactionstatus) – Track transaction status updates
@@ -27,8 +34,15 @@ sidebar_position: 1
 - [`useCrossVmBatchTransaction`](#usecrossvmbatchtransaction) – Execute mutliple EVM transactions in a single atomic Cadence transaction
 - [`useCrossVmTokenBalance`](#usecrossvmtokenbalance) – Query fungible token balances across Cadence and Flow EVM
 - [`useCrossVmSpendNft`](#usecrossvmspendnft) – Bridge NFTs from Cadence to Flow EVM and execute arbitrary EVM transactions to atomically spend them
-- [`useCrossVmSpendToken`](#usecrossvmspendtoken) – Bridge fungible tokens from Cadence to Flow EVM and execute arbitrary EVM transactions
-- [`useCrossVmTransactionStatus`](#usecrossvmtransactionstatus) – Track Cross-VM transaction status and EVM call results
+- [`useCrossVmSpendToken`](#usecrossvmspendnft) – Bridge fungible tokens from Cadence to Flow EVM and execute arbitrary EVM transactions
+
+### Components
+
+Reusable UI components:
+
+- [`<Connect />`](#connect) - A wallet authentication button
+- [`<TransactionDialog />`](#transactiondialog) - A dialog modal that tracks a Flow transaction's lifecycle
+- [`<TransactionLink />`](#transactionlink) - A button that links to the block explorer based on network
 
 ## Installation
 
@@ -72,6 +86,164 @@ export default Root
 If you're using **Next.js**, place the `FlowProvider` inside your `layout.tsx`. Since React hooks must run on the client, you may need to wrap the provider in a separate file that begins with `'use client'` to avoid issues with server-side rendering. Adjust this setup as needed for other frontend frameworks.
 
 👉 Learn more about configuring `flow.json` in the [Configuration Guide].
+
+---
+
+## Components
+
+### `Connect`
+
+A drop-in wallet connection component with UI for copy address, logout, and balance display.
+
+**Props:**
+
+- `variant?: ButtonProps["variant"]` – Optional button style variant (default: `"primary"`)
+- `onConnect?: () => void` – Callback triggered after successful authentication
+- `onDisconnect?: () => void` – Callback triggered after logout
+- `balanceType?: "cadence" | "evm" | "combined"` – Specifies which balance to display (default: `"cadence"`). Options:
+  - `"cadence"`: Shows the FLOW token balance from the Cadence side
+  - `"evm"`: Shows the FLOW token balance from the Flow EVM side
+  - `"combined"`: Shows the total combined FLOW token balance from both sides
+
+```tsx
+import { Connect } from "@onflow/kit"
+
+<Connect
+  onConnect={() => console.log("Connected!")}
+  onDisconnect={() => console.log("Logged out")}
+/>
+```
+
+### Live Demo
+
+<FlowProviderDemo>
+  <Connect
+    onConnect={() => console.log("Connected!")}
+    onDisconnect={() => console.log("Logged out")}
+  />
+</FlowProviderDemo>
+
+---
+
+### `TransactionButton`
+
+Button component for executing Flow transactions with built-in loading states and global transaction management.
+
+**Props:**
+
+- `transaction: Parameters<typeof mutate>[0]` – Flow transaction object to execute when clicked
+- `label?: string` – Optional custom button label (default: `"Execute Transaction"`)
+- `mutation?: UseMutationOptions<string, Error, Parameters<typeof mutate>[0]>` – Optional TanStack React Query mutation options
+- `...buttonProps` – All other `ButtonProps` except `onClick` and `children` (includes `variant`, `disabled`, `className`, etc.)
+
+```tsx
+import { TransactionButton } from "@onflow/kit"
+
+const myTransaction = {
+  cadence: `
+    transaction() {
+      prepare(acct: &Account) {
+        log("Hello from ", acct.address)
+      }
+    }
+  `,
+  args: (arg, t) => [],
+  limit: 100,
+}
+
+<TransactionButton
+  transaction={myTransaction}
+  label="Say Hello"
+  variant="primary"
+  mutation={{
+    onSuccess: (txId) => console.log("Transaction sent:", txId),
+    onError: (error) => console.error("Transaction failed:", error),
+  }}
+/>
+```
+
+### Live Demo
+
+<FlowProviderDemo>
+  <TransactionButton
+    transaction={{
+      cadence: `transaction() { prepare(acct: &Account) { log("Demo transaction") } }`,
+      args: (arg, t) => [],
+      limit: 100,
+    }}
+    label="Demo Transaction"
+  />
+</FlowProviderDemo>
+
+---
+
+### `TransactionDialog`
+
+Dialog component for real-time transaction status updates.
+
+**Props:**
+
+- `open: boolean` – Whether the dialog is open
+- `onOpenChange: (open: boolean) => void` – Callback to open/close dialog
+- `txId?: string` – Optional Flow transaction ID to track
+- `onSuccess?: () => void` – Optional callback when transaction is successful
+- `pendingTitle?: string` – Optional custom pending state title
+- `pendingDescription?: string` – Optional custom pending state description
+- `successTitle?: string` – Optional custom success state title
+- `successDescription?: string` – Optional custom success state description
+- `closeOnSuccess?: boolean` – If `true`, closes the dialog automatically after success
+
+```tsx
+import { TransactionDialog } from "@onflow/kit"
+
+<TransactionDialog
+  open={isOpen}
+  onOpenChange={setIsOpen}
+  txId={txId}
+  pendingTitle="Sending..."
+  successTitle="All done!"
+  closeOnSuccess
+/>
+```
+
+### Live Demo
+
+<FlowProviderDemo>
+  <TransactionDialog
+    open={false}
+    onOpenChange={() => {}}
+    txId="0x1234567890abcdef"
+    pendingTitle="Sending..."
+    successTitle="All done!"
+    closeOnSuccess
+  />
+</FlowProviderDemo>
+
+---
+
+### `TransactionLink`
+
+Link to the block explorer with the appropriate network scoped to transaction ID.
+
+**Props:**
+
+- `txId: string` – The transaction ID to link to
+- `variant?: ButtonProps["variant"]` – Optional button variant (defaults to `"link"`)
+
+```tsx
+import { TransactionLink } from "@onflow/kit"
+
+<TransactionLink txId="your-tx-id" />
+```
+
+### Live Demo
+
+<FlowProviderDemo>
+  <TransactionLink
+    txId="0x1234567890abcdef"
+    variant="primary"
+  />
+</FlowProviderDemo>
 
 ---
 
@@ -308,51 +480,6 @@ function QueryExample() {
   return (
     <div>
       <p>Result: {data}</p>
-      <button onClick={refetch}>Refetch</button>
-    </div>
-  )
-}
-```
-
----
-
-### `useFlowQueryRaw`
-
-```tsx
-import { useFlowQueryRaw } from "@onflow/kit"
-```
-
-This hook is identical to `useFlowQuery` but returns the raw, non-decoded response data from the Flow blockchain. This is useful when you need access to the original response structure or want to handle decoding manually.
-
-#### Parameters:
-
-- `cadence: string` – Cadence script to run
-- `args?: (arg, t) => unknown[]` – Function returning FCL arguments
-- `query?: UseQueryOptions<unknown, Error>` – Optional TanStackQuery options
-
-#### Returns: `UseQueryResult<unknown, Error>`
-
-The returned data will be in its raw, non-decoded format as received from the Flow access node.
-
-```tsx
-function QueryRawExample() {
-  const { data: rawData, isLoading, error, refetch } = useFlowQueryRaw({
-    cadence: `
-      access(all)
-      fun main(a: Int, b: Int): Int {
-        return a + b
-      }
-    `,
-    args: (arg, t) => [arg(1, t.Int), arg(2, t.Int)],
-    query: { staleTime: 10000 },
-  })
-
-  if (isLoading) return <p>Loading query...</p>
-  if (error) return <p>Error: {error.message}</p>
-
-  return (
-    <div>
-      <p>Raw Result: {JSON.stringify(rawData, null, 2)}</p>
       <button onClick={refetch}>Refetch</button>
     </div>
   )
@@ -809,75 +936,6 @@ function CrossVmSpendTokenExample() {
       {isPending && <p>Sending transaction...</p>}
       {error && <p>Error: {error.message}</p>}
       {txId && <p>Cadence Transaction ID: {txId}</p>}
-    </div>
-  )
-}
-```
-
----
-
-### `useCrossVmTransactionStatus`
-
-<Callout type="info">
-This feature is currently only supported on Testnet & Mainnet networks.  Emulator support will be added in a future release.
-</Callout>
-
-```tsx
-import { useCrossVmTransactionStatus } from "@onflow/kit"
-```
-
-Subscribes to status updates for a given Cross-VM Flow transaction ID that executes EVM calls. This hook monitors the transaction status and extracts EVM call results if available.
-
-#### Parameters:
-
-- `id?: string` – Optional Flow transaction ID to monitor
-
-#### Returns: `UseCrossVmTransactionStatusResult`
-
-Where `UseCrossVmTransactionStatusResult` is defined as:
-
-```typescript
-interface UseCrossVmTransactionStatusResult {
-  transactionStatus: TransactionStatus | null // Latest transaction status, or null before any update
-  evmResults?: CallOutcome[] // EVM transaction results, if available
-  error: Error | null // Any error encountered during status updates
-}
-```
-
-Where `CallOutcome` is defined as:
-
-```typescript
-interface CallOutcome {
-  status: "passed" | "failed" | "skipped" // Status of the EVM call
-  hash?: string // EVM transaction hash if available
-  errorMessage?: string // Error message if the call failed
-}
-```
-
-```tsx
-function CrossVmTransactionStatusComponent() {
-  const txId = "your-cross-vm-transaction-id-here"
-  const { transactionStatus, evmResults, error } = useCrossVmTransactionStatus({ id: txId })
-
-  if (error) return <div>Error: {error.message}</div>
-
-  return (
-    <div>
-      <div>Flow Status: {transactionStatus?.statusString}</div>
-      {evmResults && evmResults.length > 0 && (
-        <div>
-          <h3>EVM Call Results:</h3>
-          <ul>
-            {evmResults.map((result, idx) => (
-              <li key={idx}>
-                Status: {result.status}
-                {result.hash && <span> | Hash: {result.hash}</span>}
-                {result.errorMessage && <span> | Error: {result.errorMessage}</span>}
-              </li>
-            ))}
-          </ul>
-        </div>
-      )}
     </div>
   )
 }
