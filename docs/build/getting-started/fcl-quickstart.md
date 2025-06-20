@@ -454,7 +454,7 @@ For additional details and advanced usage, refer to the [@onflow/kit documentati
 [`useFlowQuery`]: ../../tools/kit#useflowquery
 [`useFlowMutate`]: ../../tools/kit#useflowmutate
 [Dev Wallet]: ../../tools/flow-dev-wallet
-[@onflow/kit documentation]: ../../tools/kit/index.md
-[**@onflow/kit**]: ../../tools/kit/index.md
+[@onflow/kit documentation]: ../../tools/kit/index.mdx
+[**@onflow/kit**]: ../../tools/kit/index.mdx
 [Flow CLI]: ../../tools/flow-cli/install.md
 [Cadence VSCode extension]: ../../tools/vscode-extension
