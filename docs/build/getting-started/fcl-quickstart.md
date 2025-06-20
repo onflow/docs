@@ -244,12 +244,14 @@ This sends a Cadence transaction to the blockchain using the `mutate` function. 
 
 Use the kit's [`useFlowTransactionStatus`] hook to monitor and display the transaction status in real time.
 
+
 ```tsx
 import { useFlowTransactionStatus } from '@onflow/kit';
 
 const { transactionStatus, error: txStatusError } = useFlowTransactionStatus({
   id: txId || "",
 });
+
 
 useEffect(() => {
   if (txId && transactionStatus?.status === 3) {
@@ -321,9 +323,11 @@ export default function Home() {
     error: txError,
   } = useFlowMutate();
 
+
   const { transactionStatus, error: txStatusError } = useFlowTransactionStatus({
     id: txId || "",
   });
+
 
   useEffect(() => {
     if (txId && transactionStatus?.status === 3) {

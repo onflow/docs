@@ -1,7 +1,7 @@
 ---
 title: Backend Usage
 description: Learn some tips and tutorials for interacting with the Flow blockchain in a backend application
-sidebar_position: 2
+sidebar_position: 4
 keywords:
   - Backend
   - Flow
