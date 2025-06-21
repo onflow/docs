@@ -22,7 +22,7 @@ const QuickStartShowcase: React.FC = () => {
     'https://run.dnz.dev/snippet/a7a18e74d27f691a?output=vertical&outputSize=100',
     'https://run.dnz.dev/snippet/30fbfc406fcfc316?output=vertical&outputSize=100',
     'https://run.dnz.dev/snippet/9852f5b5a3218637?output=vertical&outputSize=100',
-    'https://run.dnz.dev/snippet/94dfd4b699b7b8ca?output=vertical&outputSize=100',
+    'https://run.dnz.dev/snippet/a7a18e74d27f691a?output=vertical&outputSize=100',
   ].map(url => url + `&colormode=${colorMode}`);
 
   return (
