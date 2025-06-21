@@ -1342,6 +1342,11 @@
       "source": "/tutorials/AI%20Guides/agentkit-flow-guide",
       "destination": "/tutorials/ai-plus-flow/agentkit-flow-guide",
       "permanent": true
+    },
+    {
+      "source": "/evm/guides/vrf",
+      "destination": "/tutorials/native-vrf/vrf-evm",
+      "permanent": true
     }
   ]
 }
