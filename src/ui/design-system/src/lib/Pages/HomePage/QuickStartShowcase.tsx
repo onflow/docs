@@ -3,12 +3,12 @@ import { event } from '@site/src/utils/gtags.client';
 import { useColorMode } from '@docusaurus/theme-common';
 
 const ITEMS = [
-  'Increment the counter',
-  'View the current count',
-  'Mint tokens and NFTs',
-  'Query token balances',
-  'Query for NBA Top Shots',
-  'Run an EVM transaction',
+  'Flow token account balance',
+  'Account storage limit and usage',
+  'Onchain counter current count',
+  'Balance of custom token',
+  'View child accounts',
+  'NBA Top Shot and NFL All Day',
 ];
 
 const QuickStartShowcase: React.FC = () => {
@@ -17,19 +17,19 @@ const QuickStartShowcase: React.FC = () => {
 
   // Dynamically set colormode in iframe srcs
   const IFRAME_SRCS = [
-    'https://run.dnz.dev/snippet/d4248ed6adf216f6?output=vertical&outputSize=100',
-    'https://run.dnz.dev/snippet/a7a18e74d27f691a?output=vertical&outputSize=100',
-    'https://run.dnz.dev/snippet/a7a18e74d27f691a?output=vertical&outputSize=100',
+    'https://run.dnz.dev/snippet/858e7730fc6b559c?output=vertical&outputSize=100',
+    'https://run.dnz.dev/snippet/80bc251373aed16f?output=vertical&outputSize=100',
+    'https://run.dnz.dev/snippet/5489a3dd7d7650c5?output=vertical&outputSize=100',
     'https://run.dnz.dev/snippet/30fbfc406fcfc316?output=vertical&outputSize=100',
+    'https://run.dnz.dev/snippet/535ba09dd2d562e2?output=vertical&outputSize=100',
     'https://run.dnz.dev/snippet/9852f5b5a3218637?output=vertical&outputSize=100',
-    'https://run.dnz.dev/snippet/a7a18e74d27f691a?output=vertical&outputSize=100',
   ].map(url => url + `&colormode=${colorMode}`);
 
   return (
     <section className="container mx-auto pt-1 pb-8 hidden lg:block">
       <div className="flex items-center justify-between mb-4">
         <h2 className="text-xl font-semibold text-gray-800 dark:text-gray-200">
-          Interact with testnet
+           Query onchain data
         </h2>
       </div>
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-0 items-stretch bg-white dark:bg-gray-900 rounded-2xl shadow-lg border border-gray-200 dark:border-gray-700 overflow-hidden">
