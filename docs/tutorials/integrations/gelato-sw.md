@@ -69,10 +69,20 @@ Here are some third party Sepolia ETH faucets you can use:
 - [Chainlink Sepolia Faucet]
 - [Metamask Sepolia Faucet]
 
-### Step 5. Create a Sponsor Task
+## Send Gasless Transactions for your users
+
+After you have created a Sponsor API Key and deposited funds into 1Balance, you can use gasless transactions features for your users.  
+With the Gelato Smart Wallet SDK, developers can easily set up sponsored transactions for their applications in just a few simple steps, enabling seamless onboarding and interaction without requiring users to hold native tokens.
+
+:::note
+
+You can find the examples in the [Gelato Smart Wallet SDK] repository.
+
+:::
 
 [Gelato App]: https://app.gelato.network/
 [Google Cloud Sepolia Faucet]: https://cloud.google.com/application/web3/faucet/ethereum/sepolia
 [Alchemy Sepolia Faucet]: https://www.alchemy.com/faucets/ethereum-sepolia
 [Chainlink Sepolia Faucet]: https://faucets.chain.link/sepolia
 [Metamask Sepolia Faucet]: https://docs.metamask.io/developer-tools/faucet/
+[Gelato Smart Wallet SDK]: https://github.com/gelatodigital/smartwallet/tree/master/examples
