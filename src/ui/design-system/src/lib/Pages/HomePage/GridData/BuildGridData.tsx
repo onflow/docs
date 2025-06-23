@@ -7,7 +7,7 @@ export const buildGridData = {
   sections: [
     {
       title: 'Cadence',
-      subtext: 'A resource-oriented language that makes building complex smart contracts easy and safe.',
+      subtext: 'A resource-oriented programming language that makes building smart contracts easy and safe.',
       cards: [
         {
           heading: 'Why Flow?',
@@ -44,7 +44,7 @@ export const buildGridData = {
     },
     {
       title: 'Solidity',
-      subtext: 'Seamless composability and interoperability with EVM equivalence.',
+      subtext: 'EVM equivalence with seamless composability and interoperability with Cadence.',
       cards: [
               {
           heading: 'Simply run with EVM equivalence',
