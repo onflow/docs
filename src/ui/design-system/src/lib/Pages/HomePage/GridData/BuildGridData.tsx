@@ -7,7 +7,7 @@ export const buildGridData = {
   sections: [
     {
       title: 'Cadence',
-      subtext: 'A resource-oriented programming language that makes building smart contracts easy and safe.',
+      subtext: 'A purpose-built smart contract language for creating apps that do more than simple token movement.',
       cards: [
         {
           heading: 'Why Flow?',
