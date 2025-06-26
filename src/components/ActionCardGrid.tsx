@@ -84,7 +84,7 @@ const ActionCardGrid: React.FC<ActionCardGridProps> = ({
                   heading={card.heading}
                   description={card.description}
                   onClick={'href' in card ? undefined : card.onClick}
-                  href={'href' in card ? card.href : undefined}
+                  href={'href' in card ? card.href : ""}
                   target={'href' in card ? card.target : undefined}
                   variant={card.variant}
                 />
