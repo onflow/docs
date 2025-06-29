@@ -36,7 +36,7 @@ As a prerequisite, **FCL** is configured to point to the Wallet Provider's Authe
 > setting the **Wallet Discovery Url** to the wallet provider's **Authentication Endpoint**
 > by configuring fcl like this `config().put("discovery.wallet", "https://my-awesome-wallet-provider.com/fcl/authenticate")`.
 
-Common Configuration Keys and additional info can be found here [How to Configure FCL](../clients/fcl-js/configure-fcl.md#common-configuration-keys)
+Common Configuration Keys and additional info can be found here [How to Configure FCL](../clients/fcl-js/packages-docs/fcl/index.md#common-configuration-keys)
 
 1. A user initiates authentication with the wallet provider via application UI
 2. The wallet confirms a user's identity and sends back information used to configure **FCL** for future user actions in the application
