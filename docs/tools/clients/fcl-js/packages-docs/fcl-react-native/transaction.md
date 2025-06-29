@@ -8,7 +8,9 @@ description: "transaction function documentation."
 
 # transaction
 
-A template builder to use a Cadence transaction for an interaction
+A template builder to use a Cadence transaction for an interaction. FCL "mutate" does the work of building, signing, and sending a transaction behind the scenes.
+
+Flow supports great flexibility when it comes to transaction signing, we can define multiple authorizers (multi-sig transactions) and have different payer account than proposer.
 
 ## Import
 
@@ -28,6 +30,53 @@ import { transaction } from "@onflow/fcl-react-native"
 transaction(args)
 ```
 
+## Usage
+
+```typescript
+import * as fcl from "@onflow/fcl"
+
+// Basic transaction usage
+await fcl.mutate({
+  cadence: `
+    transaction(a: Int) {
+      prepare(acct: &Account) {
+        log(acct)
+        log(a)
+      }
+    }
+  `,
+  args: (arg, t) => [
+    arg(6, t.Int)
+  ],
+  limit: 50
+})
+
+// Single party, single signature
+// Proposer, payer and authorizer are the same account
+await fcl.mutate({
+  cadence: `
+    transaction {
+      prepare(acct: &Account) {}
+    }
+  `,
+  authz: currentUser, // Optional. Will default to currentUser if not provided.
+  limit: 50,
+})
+
+// Multiple parties
+// Proposer and authorizer are the same account, but different payer
+await fcl.mutate({
+  cadence: `
+    transaction {
+      prepare(acct: &Account) {}
+    }
+  `,
+  proposer: authzFn,
+  payer: authzTwoFn,
+  authorizations: [authzFn],
+  limit: 50,
+})
+```
 
 ## Parameters
 
@@ -38,7 +87,7 @@ transaction(args)
 ```typescript
 [string | TemplateStringsArray, ...any[]]
 ```
-- Description: The arguments to pass
+- Description: The arguments to pass to the template
 
 
 ## Returns

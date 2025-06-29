@@ -146,7 +146,7 @@ interface IAuthzResolveOpts {
 #### Returns
 
 ```typescript
-(account: InteractionAccount) => { tempId: string; resolve: (account: Partial<InteractionAccount>) => Partial<InteractionAccount>; kind: "ACCOUNT"; addr: string; keyId: string | number; sequenceNum: number; signature: string; signingFunction: any; role: { proposer: boolean; authorizer: boolean; payer: boolean; param?: boolean; }; authorization: any; }
+(account: InteractionAccount) => { tempId: string; resolve: (account: Partial<InteractionAccount>) => Partial<InteractionAccount>; kind: InteractionResolverKind.ACCOUNT; addr: string; keyId: string | number; sequenceNum: number; signature: string; signingFunction: any; role: { proposer: boolean; authorizer: boolean; payer: boolean; param?: boolean; }; authorization: any; }
 ```
 
 ### authzResolveMany

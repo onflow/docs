@@ -13,6 +13,10 @@ Documentation for core types used throughout the Flow Client Library (FCL).
 
 ### Account
 
+```typescript
+import { type Account } from "@onflow/fcl"
+```
+
 
 **Properties:**
 
@@ -25,6 +29,10 @@ Documentation for core types used throughout the Flow Client Library (FCL).
 | `keys` | `AccountKey[]` | The keys associated with the account |
 
 ### AccountKey
+
+```typescript
+import { type AccountKey } from "@onflow/fcl"
+```
 
 
 **Properties:**
@@ -43,6 +51,10 @@ Documentation for core types used throughout the Flow Client Library (FCL).
 
 ### AccountStatusEvent
 
+```typescript
+import { type AccountStatusEvent } from "@onflow/fcl"
+```
+
 
 **Properties:**
 
@@ -51,6 +63,10 @@ Documentation for core types used throughout the Flow Client Library (FCL).
 | `accountAddress` | `string` | The address of the account which the event is associated with. |
 
 ### Block
+
+```typescript
+import { type Block } from "@onflow/fcl"
+```
 
 
 **Properties:**
@@ -67,6 +83,10 @@ Documentation for core types used throughout the Flow Client Library (FCL).
 
 ### BlockDigest
 
+```typescript
+import { type BlockDigest } from "@onflow/fcl"
+```
+
 BlockDigest holds lightweight block information which includes only block id, block height and block timestamp.
 
 **Properties:**
@@ -78,6 +98,10 @@ BlockDigest holds lightweight block information which includes only block id, bl
 | `timestamp` | `string` | Timestamp of the block |
 
 ### BlockHeader
+
+```typescript
+import { type BlockHeader } from "@onflow/fcl"
+```
 
 Header contains all meta-data for a block, as well as a hash representing
 the combined payload of the entire block. It is what consensus nodes agree
@@ -95,6 +119,10 @@ on after validating the contents against the payload hash.
 
 ### BlockHeartbeat
 
+```typescript
+import { type BlockHeartbeat } from "@onflow/fcl"
+```
+
 
 **Properties:**
 
@@ -106,6 +134,10 @@ on after validating the contents against the payload hash.
 
 ### BlockSeal
 
+```typescript
+import { type BlockSeal } from "@onflow/fcl"
+```
+
 
 **Properties:**
 
@@ -116,6 +148,10 @@ on after validating the contents against the payload hash.
 
 ### CollectionGuarantee
 
+```typescript
+import { type CollectionGuarantee } from "@onflow/fcl"
+```
+
 
 **Properties:**
 
@@ -125,6 +161,10 @@ on after validating the contents against the payload hash.
 | `signerIds` | `string[]` | The signer ids of the block |
 
 ### CompositeSignature
+
+```typescript
+import { type CompositeSignature } from "@onflow/fcl"
+```
 
 
 **Properties:**
@@ -138,6 +178,10 @@ on after validating the contents against the payload hash.
 | `signature` | `string` | Signature as a hex string |
 
 ### CurrentUser
+
+```typescript
+import { type CurrentUser } from "@onflow/fcl"
+```
 
 
 **Properties:**
@@ -153,6 +197,10 @@ on after validating the contents against the payload hash.
 | `services` | `Service[]` | A list of trusted services that express ways of interacting with the current user's identity |
 
 ### Event
+
+```typescript
+import { type Event } from "@onflow/fcl"
+```
 
 
 **Properties:**
@@ -170,6 +218,10 @@ on after validating the contents against the payload hash.
 
 ### EventFilter
 
+```typescript
+import { type EventFilter } from "@onflow/fcl"
+```
+
 
 **Properties:**
 
@@ -183,6 +235,10 @@ on after validating the contents against the payload hash.
 | `heartbeatInterval` | `number` | The interval in milliseconds to send a heartbeat to the Access Node |
 
 ### Interaction
+
+```typescript
+import { type Interaction } from "@onflow/fcl"
+```
 
 
 **Properties:**
@@ -209,6 +265,10 @@ on after validating the contents against the payload hash.
 
 ### InteractionAccount
 
+```typescript
+import { type InteractionAccount } from "@onflow/fcl"
+```
+
 
 **Properties:**
 
@@ -227,6 +287,10 @@ on after validating the contents against the payload hash.
 
 ### Key
 
+```typescript
+import { type Key } from "@onflow/fcl"
+```
+
 
 **Properties:**
 
@@ -237,6 +301,10 @@ on after validating the contents against the payload hash.
 | `address` | `string` | The address of the proposer of this transaction |
 
 ### NodeVersionInfo
+
+```typescript
+import { type NodeVersionInfo } from "@onflow/fcl"
+```
 
 
 **Properties:**
@@ -251,6 +319,10 @@ on after validating the contents against the payload hash.
 | `nodeRootBlockHeight` | `number` | The node root block height of the node. |
 
 ### Provider
+
+```typescript
+import { type Provider } from "@onflow/fcl"
+```
 
 
 **Properties:**
@@ -270,6 +342,10 @@ on after validating the contents against the payload hash.
 
 ### Service
 
+```typescript
+import { type Service } from "@onflow/fcl"
+```
+
 
 **Properties:**
 
@@ -288,6 +364,10 @@ on after validating the contents against the payload hash.
 
 ### Signature
 
+```typescript
+import { type Signature } from "@onflow/fcl"
+```
+
 
 **Properties:**
 
@@ -299,9 +379,17 @@ on after validating the contents against the payload hash.
 
 ### StreamConnection
 
+```typescript
+import { type StreamConnection } from "@onflow/fcl"
+```
+
 
 
 ### Transaction
+
+```typescript
+import { type Transaction } from "@onflow/fcl"
+```
 
 
 **Properties:**
@@ -324,6 +412,10 @@ on after validating the contents against the payload hash.
 
 ### TransactionStatus
 
+```typescript
+import { type TransactionStatus } from "@onflow/fcl"
+```
+
 
 **Properties:**
 
@@ -341,6 +433,10 @@ on after validating the contents against the payload hash.
 
 ### EventStream
 
+```typescript
+import { type EventStream } from "@onflow/fcl"
+```
+
 
 **Properties:**
 
@@ -352,10 +448,18 @@ on after validating the contents against the payload hash.
 
 ### RawSubscriptionData
 
+```typescript
+import { type RawSubscriptionData } from "@onflow/fcl"
+```
+
 Raw data returned by a subscription, which will vary depending on the topic and is not decoded
 
 
 ### SdkTransport
+
+```typescript
+import { type SdkTransport } from "@onflow/fcl"
+```
 
 Transport interface for the Flow SDK that provides methods for sending interactions and subscribing to data
 
@@ -368,6 +472,10 @@ Transport interface for the Flow SDK that provides methods for sending interacti
 
 ### Subscription
 
+```typescript
+import { type Subscription } from "@onflow/fcl"
+```
+
 A subscription object that allows managing the subscription lifecycle
 
 **Properties:**
@@ -378,10 +486,18 @@ A subscription object that allows managing the subscription lifecycle
 
 ### SubscriptionArgs
 
+```typescript
+import { type SubscriptionArgs } from "@onflow/fcl"
+```
+
 Arguments for a subscription, which will vary depending on the topic
 
 
 ### SubscriptionData
+
+```typescript
+import { type SubscriptionData } from "@onflow/fcl"
+```
 
 The data returned by a subscription, which will vary depending on the topic
 
@@ -391,173 +507,208 @@ The data returned by a subscription, which will vary depending on the topic
 
 ### FvmErrorCode
 
+```typescript
+import { FvmErrorCode } from "@onflow/fcl"
+```
+
 Error codes defined by the Flow Virtual Machine (FVM) for various types of errors that can occur during transaction execution
 
 **Members:**
 
-| Name | Value | Description |
-| ---- | ----- | ----------- |
-| `UNKNOWN_ERROR` | -1 |  |
-| `TX_VALIDATION_ERROR` | 1000 |  |
-| `INVALID_TX_BYTE_SIZE_ERROR` | 1001 |  |
-| `INVALID_REFERENCE_BLOCK_ERROR` | 1002 |  |
-| `EXPIRED_TRANSACTION_ERROR` | 1003 |  |
-| `INVALID_SCRIPT_ERROR` | 1004 |  |
-| `INVALID_GAS_LIMIT_ERROR` | 1005 |  |
-| `INVALID_PROPOSAL_SIGNATURE_ERROR` | 1006 |  |
-| `INVALID_PROPOSAL_SEQ_NUMBER_ERROR` | 1007 |  |
-| `INVALID_PAYLOAD_SIGNATURE_ERROR` | 1008 |  |
-| `INVALID_ENVELOPE_SIGNATURE_ERROR` | 1009 |  |
-| `FVM_INTERNAL_ERROR` | 1050 |  |
-| `VALUE_ERROR` | 1051 |  |
-| `INVALID_ARGUMENT_ERROR` | 1052 |  |
-| `INVALID_ADDRESS_ERROR` | 1053 |  |
-| `INVALID_LOCATION_ERROR` | 1054 |  |
-| `ACCOUNT_AUTHORIZATION_ERROR` | 1055 |  |
-| `OPERATION_AUTHORIZATION_ERROR` | 1056 |  |
-| `OPERATION_NOT_SUPPORTED_ERROR` | 1057 |  |
-| `BLOCK_HEIGHT_OUT_OF_RANGE_ERROR` | 1058 |  |
-| `EXECUTION_ERROR` | 1100 |  |
-| `CADENCE_RUNTIME_ERROR` | 1101 |  |
-| `ENCODING_UNSUPPORTED_VALUE` | 1102 |  |
-| `STORAGE_CAPACITY_EXCEEDED` | 1103 |  |
-| `GAS_LIMIT_EXCEEDED_ERROR` | 1104 |  |
-| `EVENT_LIMIT_EXCEEDED_ERROR` | 1105 |  |
-| `LEDGER_INTERACTION_LIMIT_EXCEEDED_ERROR` | 1106 |  |
-| `STATE_KEY_SIZE_LIMIT_ERROR` | 1107 |  |
-| `STATE_VALUE_SIZE_LIMIT_ERROR` | 1108 |  |
-| `TRANSACTION_FEE_DEDUCTION_FAILED_ERROR` | 1109 |  |
-| `COMPUTATION_LIMIT_EXCEEDED_ERROR` | 1110 |  |
-| `MEMORY_LIMIT_EXCEEDED_ERROR` | 1111 |  |
-| `COULD_NOT_DECODE_EXECUTION_PARAMETER_FROM_STATE` | 1112 |  |
-| `SCRIPT_EXECUTION_TIMED_OUT_ERROR` | 1113 |  |
-| `SCRIPT_EXECUTION_CANCELLED_ERROR` | 1114 |  |
-| `EVENT_ENCODING_ERROR` | 1115 |  |
-| `INVALID_INTERNAL_STATE_ACCESS_ERROR` | 1116 |  |
-| `INSUFFICIENT_PAYER_BALANCE` | 1118 |  |
-| `ACCOUNT_ERROR` | 1200 |  |
-| `ACCOUNT_NOT_FOUND_ERROR` | 1201 |  |
-| `ACCOUNT_PUBLIC_KEY_NOT_FOUND_ERROR` | 1202 |  |
-| `ACCOUNT_ALREADY_EXISTS_ERROR` | 1203 |  |
-| `FROZEN_ACCOUNT_ERROR` | 1204 |  |
-| `ACCOUNT_STORAGE_NOT_INITIALIZED_ERROR` | 1205 |  |
-| `ACCOUNT_PUBLIC_KEY_LIMIT_ERROR` | 1206 |  |
-| `CONTRACT_ERROR` | 1250 |  |
-| `CONTRACT_NOT_FOUND_ERROR` | 1251 |  |
-| `CONTRACT_NAMES_NOT_FOUND_ERROR` | 1252 |  |
-| `EVM_EXECUTION_ERROR` | 1300 |  |
+| Name | Value |
+| ---- | ----- |
+| `UNKNOWN_ERROR` | -1 |
+| `TX_VALIDATION_ERROR` | 1000 |
+| `INVALID_TX_BYTE_SIZE_ERROR` | 1001 |
+| `INVALID_REFERENCE_BLOCK_ERROR` | 1002 |
+| `EXPIRED_TRANSACTION_ERROR` | 1003 |
+| `INVALID_SCRIPT_ERROR` | 1004 |
+| `INVALID_GAS_LIMIT_ERROR` | 1005 |
+| `INVALID_PROPOSAL_SIGNATURE_ERROR` | 1006 |
+| `INVALID_PROPOSAL_SEQ_NUMBER_ERROR` | 1007 |
+| `INVALID_PAYLOAD_SIGNATURE_ERROR` | 1008 |
+| `INVALID_ENVELOPE_SIGNATURE_ERROR` | 1009 |
+| `FVM_INTERNAL_ERROR` | 1050 |
+| `VALUE_ERROR` | 1051 |
+| `INVALID_ARGUMENT_ERROR` | 1052 |
+| `INVALID_ADDRESS_ERROR` | 1053 |
+| `INVALID_LOCATION_ERROR` | 1054 |
+| `ACCOUNT_AUTHORIZATION_ERROR` | 1055 |
+| `OPERATION_AUTHORIZATION_ERROR` | 1056 |
+| `OPERATION_NOT_SUPPORTED_ERROR` | 1057 |
+| `BLOCK_HEIGHT_OUT_OF_RANGE_ERROR` | 1058 |
+| `EXECUTION_ERROR` | 1100 |
+| `CADENCE_RUNTIME_ERROR` | 1101 |
+| `ENCODING_UNSUPPORTED_VALUE` | 1102 |
+| `STORAGE_CAPACITY_EXCEEDED` | 1103 |
+| `GAS_LIMIT_EXCEEDED_ERROR` | 1104 |
+| `EVENT_LIMIT_EXCEEDED_ERROR` | 1105 |
+| `LEDGER_INTERACTION_LIMIT_EXCEEDED_ERROR` | 1106 |
+| `STATE_KEY_SIZE_LIMIT_ERROR` | 1107 |
+| `STATE_VALUE_SIZE_LIMIT_ERROR` | 1108 |
+| `TRANSACTION_FEE_DEDUCTION_FAILED_ERROR` | 1109 |
+| `COMPUTATION_LIMIT_EXCEEDED_ERROR` | 1110 |
+| `MEMORY_LIMIT_EXCEEDED_ERROR` | 1111 |
+| `COULD_NOT_DECODE_EXECUTION_PARAMETER_FROM_STATE` | 1112 |
+| `SCRIPT_EXECUTION_TIMED_OUT_ERROR` | 1113 |
+| `SCRIPT_EXECUTION_CANCELLED_ERROR` | 1114 |
+| `EVENT_ENCODING_ERROR` | 1115 |
+| `INVALID_INTERNAL_STATE_ACCESS_ERROR` | 1116 |
+| `INSUFFICIENT_PAYER_BALANCE` | 1118 |
+| `ACCOUNT_ERROR` | 1200 |
+| `ACCOUNT_NOT_FOUND_ERROR` | 1201 |
+| `ACCOUNT_PUBLIC_KEY_NOT_FOUND_ERROR` | 1202 |
+| `ACCOUNT_ALREADY_EXISTS_ERROR` | 1203 |
+| `FROZEN_ACCOUNT_ERROR` | 1204 |
+| `ACCOUNT_STORAGE_NOT_INITIALIZED_ERROR` | 1205 |
+| `ACCOUNT_PUBLIC_KEY_LIMIT_ERROR` | 1206 |
+| `CONTRACT_ERROR` | 1250 |
+| `CONTRACT_NOT_FOUND_ERROR` | 1251 |
+| `CONTRACT_NAMES_NOT_FOUND_ERROR` | 1252 |
+| `EVM_EXECUTION_ERROR` | 1300 |
 
 ### HashAlgorithm
+
+```typescript
+import { HashAlgorithm } from "@onflow/fcl"
+```
 
 
 **Members:**
 
-| Name | Value | Description |
-| ---- | ----- | ----------- |
-| `SHA2_256` | 1 |  |
-| `SHA2_384` | 2 |  |
-| `SHA3_256` | 3 |  |
-| `SHA3_384` | 4 |  |
-| `KMAC128_BLS_BLS12_381` | 5 |  |
+| Name | Value |
+| ---- | ----- |
+| `SHA2_256` | 1 |
+| `SHA2_384` | 2 |
+| `SHA3_256` | 3 |
+| `SHA3_384` | 4 |
+| `KMAC128_BLS_BLS12_381` | 5 |
 
 ### InteractionResolverKind
+
+```typescript
+import { InteractionResolverKind } from "@onflow/fcl"
+```
 
 Represents different kinds of interaction resolvers
 
 **Members:**
 
-| Name | Value | Description |
-| ---- | ----- | ----------- |
-| `ARGUMENT` | "ARGUMENT" |  |
-| `ACCOUNT` | "ACCOUNT" |  |
+| Name | Value |
+| ---- | ----- |
+| `ARGUMENT` | "ARGUMENT" |
+| `ACCOUNT` | "ACCOUNT" |
 
 ### InteractionStatus
+
+```typescript
+import { InteractionStatus } from "@onflow/fcl"
+```
 
 Status of an interaction with the Flow blockchain
 
 **Members:**
 
-| Name | Value | Description |
-| ---- | ----- | ----------- |
-| `BAD` | "BAD" |  |
-| `OK` | "OK" |  |
+| Name | Value |
+| ---- | ----- |
+| `BAD` | "BAD" |
+| `OK` | "OK" |
 
 ### InteractionTag
+
+```typescript
+import { InteractionTag } from "@onflow/fcl"
+```
 
 Represents different types of interactions with the Flow blockchain
 
 **Members:**
 
-| Name | Value | Description |
-| ---- | ----- | ----------- |
-| `UNKNOWN` | "UNKNOWN" |  |
-| `SCRIPT` | "SCRIPT" |  |
-| `TRANSACTION` | "TRANSACTION" |  |
-| `GET_TRANSACTION_STATUS` | "GET_TRANSACTION_STATUS" |  |
-| `GET_ACCOUNT` | "GET_ACCOUNT" |  |
-| `GET_EVENTS` | "GET_EVENTS" |  |
-| `PING` | "PING" |  |
-| `GET_TRANSACTION` | "GET_TRANSACTION" |  |
-| `GET_BLOCK` | "GET_BLOCK" |  |
-| `GET_BLOCK_HEADER` | "GET_BLOCK_HEADER" |  |
-| `GET_COLLECTION` | "GET_COLLECTION" |  |
-| `GET_NETWORK_PARAMETERS` | "GET_NETWORK_PARAMETERS" |  |
-| `SUBSCRIBE_EVENTS` | "SUBSCRIBE_EVENTS" |  |
-| `GET_NODE_VERSION_INFO` | "GET_NODE_VERSION_INFO" |  |
+| Name | Value |
+| ---- | ----- |
+| `UNKNOWN` | "UNKNOWN" |
+| `SCRIPT` | "SCRIPT" |
+| `TRANSACTION` | "TRANSACTION" |
+| `GET_TRANSACTION_STATUS` | "GET_TRANSACTION_STATUS" |
+| `GET_ACCOUNT` | "GET_ACCOUNT" |
+| `GET_EVENTS` | "GET_EVENTS" |
+| `PING` | "PING" |
+| `GET_TRANSACTION` | "GET_TRANSACTION" |
+| `GET_BLOCK` | "GET_BLOCK" |
+| `GET_BLOCK_HEADER` | "GET_BLOCK_HEADER" |
+| `GET_COLLECTION` | "GET_COLLECTION" |
+| `GET_NETWORK_PARAMETERS` | "GET_NETWORK_PARAMETERS" |
+| `SUBSCRIBE_EVENTS` | "SUBSCRIBE_EVENTS" |
+| `GET_NODE_VERSION_INFO` | "GET_NODE_VERSION_INFO" |
 
 ### SignatureAlgorithm
+
+```typescript
+import { SignatureAlgorithm } from "@onflow/fcl"
+```
 
 
 **Members:**
 
-| Name | Value | Description |
-| ---- | ----- | ----------- |
-| `ECDSA_P256` | 1 |  |
-| `ECDSA_secp256k1` | 2 |  |
-| `BLS_BLS12_381` | 3 |  |
+| Name | Value |
+| ---- | ----- |
+| `ECDSA_P256` | 1 |
+| `ECDSA_secp256k1` | 2 |
+| `BLS_BLS12_381` | 3 |
 
 ### SubscriptionTopic
+
+```typescript
+import { SubscriptionTopic } from "@onflow/fcl"
+```
 
 Represents different topics that can be subscribed to for real-time data from the Flow blockchain
 
 **Members:**
 
-| Name | Value | Description |
-| ---- | ----- | ----------- |
-| `BLOCKS` | "blocks" |  |
-| `BLOCK_HEADERS` | "block_headers" |  |
-| `BLOCK_DIGESTS` | "block_digests" |  |
-| `ACCOUNT_STATUSES` | "account_statuses" |  |
-| `TRANSACTION_STATUSES` | "transaction_statuses" |  |
-| `EVENTS` | "events" |  |
+| Name | Value |
+| ---- | ----- |
+| `BLOCKS` | "blocks" |
+| `BLOCK_HEADERS` | "block_headers" |
+| `BLOCK_DIGESTS` | "block_digests" |
+| `ACCOUNT_STATUSES` | "account_statuses" |
+| `TRANSACTION_STATUSES` | "transaction_statuses" |
+| `EVENTS` | "events" |
 
 ### TransactionExecutionStatus
+
+```typescript
+import { TransactionExecutionStatus } from "@onflow/fcl"
+```
 
 The execution status of the transaction.
 
 **Members:**
 
-| Name | Value | Description |
-| ---- | ----- | ----------- |
-| `UNKNOWN` | 0 |  |
-| `PENDING` | 1 |  |
-| `FINALIZED` | 2 |  |
-| `EXECUTED` | 3 |  |
-| `SEALED` | 4 |  |
-| `EXPIRED` | 5 |  |
+| Name | Value |
+| ---- | ----- |
+| `UNKNOWN` | 0 |
+| `PENDING` | 1 |
+| `FINALIZED` | 2 |
+| `EXECUTED` | 3 |
+| `SEALED` | 4 |
+| `EXPIRED` | 5 |
 
 ### TransactionRole
+
+```typescript
+import { TransactionRole } from "@onflow/fcl"
+```
 
 Represents different roles in a transaction
 
 **Members:**
 
-| Name | Value | Description |
-| ---- | ----- | ----------- |
-| `AUTHORIZER` | "authorizer" |  |
-| `PAYER` | "payer" |  |
-| `PROPOSER` | "proposer" |  |
+| Name | Value |
+| ---- | ----- |
+| `AUTHORIZER` | "authorizer" |
+| `PAYER` | "payer" |
+| `PROPOSER` | "proposer" |
 
 
 ---
-_Doc autogenerated from [onflow/typedefs](https://github.com/onflow/fcl-js/tree/master/packages/typedefs)_ 

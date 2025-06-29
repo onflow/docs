@@ -31,8 +31,11 @@ getChainId(opts)
 ## Usage
 
 ```typescript
-// returns "testnet"
-getChainId()
+// Get chain ID using configured access node
+import * as fcl from "@onflow/fcl"
+
+const chainId = await fcl.getChainId()
+console.log("Connected to:", chainId) // "testnet" or "mainnet"
 ```
 
 ## Parameters
@@ -48,7 +51,7 @@ export interface GetChainIdOptions {
   [key: string]: any
 }
 ```
-- Description: Optional parameters
+- Description: Optional configuration parameters
 
 
 ## Returns
@@ -56,6 +59,6 @@ export interface GetChainIdOptions {
 `Promise<string>`
 
 
-The chain ID of the access node
+Promise that resolves to the chain ID string (e.g., "mainnet", "testnet", "local")
 
 ---

@@ -77,7 +77,7 @@ const unsubscribe = fcl.events({
 ### `filterOrType` (optional)
 
 
-- Type: [`string | EventFilter`](../types#string | eventfilter)
+- Type: `string` | [`EventFilter`](../types#eventfilter)
 - Description: Event filter object or event type string.
 If a string is provided, it will be treated as a single event type to subscribe to.
 If an EventFilter object is provided, it can contain multiple event types and other filter criteria.

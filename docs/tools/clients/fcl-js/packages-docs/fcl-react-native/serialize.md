@@ -59,7 +59,7 @@ const voucher = await fcl.serialize([
 ### `args` 
 
 
-- Type: [`(false | InteractionBuilderFn)[] | Interaction`](../types#(false | interactionbuilderfn)[] | interaction)
+- Type: `(false` | `InteractionBuilderFn)[]` | [`Interaction`](../types#interaction)
 - Description: Array of interaction builder functions or a pre-built interaction object. Builder functions are typically from
 
 ### `opts` (optional)
