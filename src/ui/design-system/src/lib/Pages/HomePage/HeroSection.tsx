@@ -16,7 +16,7 @@ const HeroSection: React.FC = () => {
             Apps deserve better blockchains
           </h1>
           <p className="text-base md:text-lg text-gray-700 dark:text-gray-200 mb-4 max-w-xl">
-            Start building with <strong>Cadence</strong>, <strong>Solidity (EVM)</strong>, or <strong>AI-powered tools</strong> - each path is first-class and fully supported.
+            Start building with <strong>Cadence</strong>, or <strong>Solidity (EVM)</strong>, with <strong>AI-powered tools</strong> - each path is first-class and fully supported.
           </p>
           <div className="flex flex-col sm:flex-row gap-3 mb-4">
             <a

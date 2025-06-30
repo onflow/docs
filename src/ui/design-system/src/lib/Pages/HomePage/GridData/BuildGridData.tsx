@@ -57,7 +57,7 @@ export const buildGridData = {
           href: '/evm/about',
         },
         {
-          heading: 'Integrate native VRF in 12 lines',
+          heading: 'Integrate native VRF in 3 lines',
           description:
             'VRF is built into Flow at the protocol level to provide secure, verifiable randomness, for free.',
           iconColor: 'green',

@@ -18,12 +18,12 @@ const QuickStartShowcase: React.FC = () => {
 
   // Dynamically set colormode in iframe srcs
   const IFRAME_SRCS = [
-    'https://run.dnz.dev/snippet/858e7730fc6b559c?output=vertical&outputSize=100',
-    'https://run.dnz.dev/snippet/80bc251373aed16f?output=vertical&outputSize=100',
-    'https://run.dnz.dev/snippet/5489a3dd7d7650c5?output=vertical&outputSize=100',
-    'https://run.dnz.dev/snippet/30fbfc406fcfc316?output=vertical&outputSize=100',
-    'https://run.dnz.dev/snippet/535ba09dd2d562e2?output=vertical&outputSize=100',
-    'https://run.dnz.dev/snippet/9852f5b5a3218637?output=vertical&outputSize=100',
+    'https://run.dnz.dev/snippet/469ae98b6e5d1dea?output=vertical&outputSize=100',
+    'https://run.dnz.dev/snippet/71b994bc006b4283?output=vertical&outputSize=100',
+    'https://run.dnz.dev/snippet/c15155239735ad60?output=vertical&outputSize=100',
+    'https://run.dnz.dev/snippet/676ab2256fe87c8f?output=vertical&outputSize=100',
+    'https://run.dnz.dev/snippet/b985ef603a00c469?output=vertical&outputSize=100',
+    'https://run.dnz.dev/snippet/3797f91e245b787b?output=vertical&outputSize=100',
   ].map(url => url + `&colormode=${colorMode}`);
 
   return (
