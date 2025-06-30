@@ -8,7 +8,6 @@ const ITEMS = [
   'Account storage limit and usage',
   'Onchain counter current count',
   'Balance of custom token',
-  'View child accounts',
   'NBA Top Shot and NFL All Day',
 ];
 
@@ -22,7 +21,6 @@ const QuickStartShowcase: React.FC = () => {
     'https://run.dnz.dev/snippet/71b994bc006b4283?output=vertical&outputSize=100',
     'https://run.dnz.dev/snippet/c15155239735ad60?output=vertical&outputSize=100',
     'https://run.dnz.dev/snippet/676ab2256fe87c8f?output=vertical&outputSize=100',
-    'https://run.dnz.dev/snippet/b985ef603a00c469?output=vertical&outputSize=100',
     'https://run.dnz.dev/snippet/3797f91e245b787b?output=vertical&outputSize=100',
   ].map(url => url + `&colormode=${colorMode}`);
 
