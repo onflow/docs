@@ -1,7 +1,6 @@
 import React from 'react';
 import PageBackground from '../shared/PageBackground';
 import { buildGridData } from './GridData/BuildGridData';
-import { growGridData } from './GridData/GrowGridData';
 import GrowSection from './GrowSection';
 import HeroSection from './HeroSection';
 import FeatureSection from './FeatureSection';
