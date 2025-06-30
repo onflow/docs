@@ -22,7 +22,32 @@ import TabItem from '@theme/TabItem';
 
 # Gelato Smart Wallet Integration Guide
 
-You can use Gelato Smart Wallet to enable gasless transactions on Flow EVM. It supports features like: EIP-7702 or ERC-4337 depending on the wallet you use.
+Gas fees are one of the biggest barriers to blockchain adoption. Users often need to hold native tokens just to pay for transaction fees, creating friction in onboarding and limiting the types of applications that can be built. Gelato Smart Wallet solves this problem by enabling **gasless transactions** on Flow EVM through sponsored transactions.
+
+With Gelato Smart Wallet, you can:
+- **Eliminate gas fees** for your users by sponsoring their transactions
+- **Improve user experience** with seamless onboarding that doesn't require users to hold FLOW tokens
+- **Support EIP-7702** for enhanced smart wallet functionality
+- **Scale your dApp** by removing the cost barrier for user interactions
+- **Leverage Flow's low gas costs** to provide affordable sponsored transactions
+
+This tutorial will guide you through setting up Gelato Smart Wallet to enable gasless transactions on Flow EVM. You'll learn how to configure the necessary API keys, fund your sponsorship account, and implement gasless transaction functionality in your applications.
+
+:::info
+
+This tutorial focuses on **EIP-7702** implementation with Gelato Smart Wallet on Flow EVM. EIP-7702 provides a streamlined experience for users by maintaining the same address as their EOA while adding smart wallet capabilities, enabling enhanced features like gasless transactions and improved user experience.
+
+:::
+
+## Objectives
+
+After completing this guide, you'll be able to:
+
+- Configure a Gelato Smart Wallet account with proper API keys and funding setup
+- Implement gasless transaction functionality using the Gelato Smart Wallet SDK
+- Estimate and execute sponsored transactions on Flow EVM
+- Integrate EIP-7702 features for enhanced user experience
+- Troubleshoot common issues with Gelato Smart Wallet integration
 
 ## Prerequisites of using Gelato Smart Wallet
 
@@ -61,7 +86,7 @@ To use Gelato sponsoring transactions, you need to deposit funds into 1Balance a
 - Mainnets: Deposit USDC.
 - Testnets: Deposit Sepolia ETH.
 
-Here we use Sepolia ETH as the gas fee for Testnet‘s gasless transactions.
+Here we use Sepolia ETH as the gas fee for Testnet's gasless transactions.
 
 ![Deposit Funds into 1Balance](./images/gelato-3.png)
 
@@ -242,7 +267,17 @@ results.on("error", (error: Error) => {
 
 ## Conclusion
 
-So far, you’ve learned how to send sponsored EIP-7702 transactions using a Gelato Smart Wallet on Flow EVM.
+In this tutorial, you successfully integrated Gelato Smart Wallet to enable gasless transactions on Flow EVM. You learned how to set up the necessary infrastructure, configure API keys, fund sponsorship accounts, and implement gasless transaction functionality in your applications. The implementation demonstrates how Flow's low gas costs combined with Gelato's sponsored transaction infrastructure can create seamless user experiences that eliminate the friction of gas fees.
+
+Now that you have completed the tutorial, you should be able to:
+
+- Configure a Gelato Smart Wallet account with proper API keys and funding setup
+- Implement gasless transaction functionality using the Gelato Smart Wallet SDK
+- Estimate and execute sponsored transactions on Flow EVM
+- Integrate EIP-7702 features for enhanced user experience
+- Troubleshoot common issues with Gelato Smart Wallet integration
+
+The combination of Flow's efficient gas pricing and Gelato's sponsored transaction infrastructure opens up new possibilities for building user-friendly dApps. By eliminating the need for users to hold native tokens for gas fees, you can create onboarding experiences that rival traditional Web2 applications while maintaining the security and transparency of blockchain technology.
 
 [Gelato App]: https://app.gelato.network/
 [Google Cloud Sepolia Faucet]: https://cloud.google.com/application/web3/faucet/ethereum/sepolia
