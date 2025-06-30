@@ -17,7 +17,7 @@ export const buildGridData = {
           cardColor: 'black',
           icon: 'why-flow',
           variant: 'horizontal',
-          href: 'build/flow',
+          href: '/build/flow',
         },
         {
           heading: 'Query state and run transactions',
@@ -54,7 +54,7 @@ export const buildGridData = {
           cardColor: 'black',
           icon: 'evm-on-flow',
           variant: 'horizontal',
-          href: 'evm/about',
+          href: '/evm/about',
         },
         {
           heading: 'Integrate native VRF in 12 lines',
@@ -64,7 +64,7 @@ export const buildGridData = {
           cardColor: 'black',
           icon: 'random',
           variant: 'horizontal',
-          href: 'tutorials/native-vrf/vrf-in-solidity',
+          href: '/tutorials/native-vrf/vrf-in-solidity',
         },
         {
           heading: 'Native batched transactions',
@@ -74,7 +74,7 @@ export const buildGridData = {
           cardColor: 'black',
           icon: 'batched-evm-transactions',
           variant: 'horizontal',
-          href: 'tutorials/cross-vm-apps',
+          href: '/tutorials/cross-vm-apps',
           target: '_blank',
         },
       ],
@@ -91,7 +91,7 @@ export const buildGridData = {
           cardColor: 'black',
           icon: 'flow-client-library',
           variant: 'horizontal',
-          href: 'tools/kit',
+          href: '/tools/kit',
         },
         {
           heading: 'Import and compose with contracts',
@@ -101,7 +101,7 @@ export const buildGridData = {
           cardColor: 'black',
           icon: 'tools',
           variant: 'horizontal',
-          href: 'tools/flow-cli/dependency-manager',
+          href: '/tools/flow-cli/dependency-manager',
         },
         {
           heading: 'Get 100k testnet $FLOW',

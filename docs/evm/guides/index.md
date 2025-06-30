@@ -1,5 +1,5 @@
 ---
-title: EVM Guides
+title: Flow EVM Guides
 description: Tutorials and guides for building on Flow EVM, integrating with popular Ethereum tools, and leveraging Flow's unique features.
 sidebar_position: 1
 keywords:
@@ -19,7 +19,7 @@ keywords:
 
 # EVM Guides
 
-This section contains guides and tutorials for building on Flow EVM, integrating with popular Ethereum tools, and leveraging Flow's unique features.
+This section contains guides and tutorials for building on [Flow EVM], integrating with popular Ethereum tools, and leveraging Flow's unique features.
 
 ## Guides
 
@@ -36,6 +36,7 @@ This section contains guides and tutorials for building on Flow EVM, integrating
 
 Stay tuned - more guides and advanced tutorials are on the way!
 
+[Flow EVM]: ../about.md
 [Integrating MetaMask]: ./integrating-metamask.mdx
 [Using ethers.js]: ./ethers.md
 [Using web3.js]: ./web3-js.md

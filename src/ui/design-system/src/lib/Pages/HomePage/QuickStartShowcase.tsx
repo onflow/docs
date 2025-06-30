@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { event } from '@site/src/utils/gtags.client';
 import { useColorMode } from '@docusaurus/theme-common';
+import clsx from 'clsx';
 
 const ITEMS = [
   'Flow token account balance',
@@ -49,11 +50,12 @@ const QuickStartShowcase: React.FC = () => {
                     location: true,
                   });
                 }}
-                className={`w-full text-left px-4 py-3 transition font-medium text-base
-                  ${selected === idx
-                    ? 'bg-white dark:bg-gray-900 rounded-xl shadow-sm text-primary-green-600 font-bold'
-                    : 'text-gray-900 dark:text-gray-100 bg-transparent'} cursor-pointer hover:bg-white/50 dark:hover:bg-gray-900/50`
-                }
+                className={clsx(
+                  "w-full text-left px-4 py-3 transition font-medium text-base cursor-pointer hover:bg-white/50 dark:hover:bg-gray-900/50",
+                  selected === idx
+                    ? "bg-white dark:bg-gray-900 rounded-xl shadow-sm text-primary-green-600 font-bold"
+                    : "text-gray-900 dark:text-gray-100 bg-transparent"
+                )}
                 style={{ outline: 'none', border: 'none' }}
               >
                 {item}
