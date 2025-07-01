@@ -10,7 +10,7 @@ sidebar_position: 1
 
 ## 🔌 Included React Hooks
 
-- [`useCurrentFlowUser`](#usecurrentflowuser) – Authenticate and manage the current Flow user
+- [`useFlowCurrentUser`](#useflowcurrentuser) – Authenticate and manage the current Flow user
 - [`useFlowAccount`](#useflowaccount) – Fetch Flow account details by address
 - [`useFlowBlock`](#useflowblock) – Query latest or specific Flow blocks
 - [`useFlowChainId`](#useflowchainid) – Retrieve the current Flow chain ID
@@ -83,10 +83,10 @@ Many of these hooks are built using [`@tanstack/react-query`](https://tanstack.c
 
 :::
 
-### `useCurrentFlowUser`
+### `useFlowCurrentUser`
 
 ```tsx
-import { useCurrentFlowUser } from "@onflow/kit"
+import { useFlowCurrentUser } from "@onflow/kit"
 ```
 
 #### Returns:
@@ -97,7 +97,7 @@ import { useCurrentFlowUser } from "@onflow/kit"
 
 ```tsx
 function AuthComponent() {
-  const { user, authenticate, unauthenticate } = useCurrentFlowUser()
+  const { user, authenticate, unauthenticate } = useFlowCurrentUser()
 
   return (
     <div>
