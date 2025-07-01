@@ -285,7 +285,7 @@ However:
 
 ### Integrating Authentication and Building the Complete UI
 
-Finally, integrate the query, mutation, and transaction status hooks with authentication using `useCurrentFlowUser`. Combine all parts to build the complete page.
+Finally, integrate the query, mutation, and transaction status hooks with authentication using `useFlowCurrentUser`. Combine all parts to build the complete page.
 
 ```tsx
 "use client";
@@ -295,11 +295,11 @@ import {
   useFlowQuery,
   useFlowMutate,
   useFlowTransactionStatus,
-  useCurrentFlowUser,
+  useFlowCurrentUser,
 } from "@onflow/kit";
 
 export default function Home() {
-  const { user, authenticate, unauthenticate } = useCurrentFlowUser();
+  const { user, authenticate, unauthenticate } = useFlowCurrentUser();
 
   const { data, isLoading, error, refetch } = useFlowQuery({
     cadence: `
@@ -409,7 +409,7 @@ In this complete page:
 - **Step 1** queries the counter value.
 - **Step 2** sends a transaction to increment the counter and stores the transaction ID.
 - **Step 3** subscribes to transaction status updates using the stored transaction ID and uses a `useEffect` hook to automatically refetch the updated count when the transaction is sealed (status code 4).
-- **Step 4** integrates authentication via `useCurrentFlowUser` and combines all the pieces into a single user interface.
+- **Step 4** integrates authentication via `useFlowCurrentUser` and combines all the pieces into a single user interface.
 
 :::tip
 
@@ -451,7 +451,7 @@ Then visit [http://localhost:3000](http://localhost:3000) in your browser. You s
 By following these steps, you've built a simple Next.js dApp that interacts with a Flow smart contract using [**@onflow/kit**]. In this guide you learned how to:
 
 - Wrap your application in a `FlowProvider` to configure blockchain connectivity.
-- Use kit hooks such as `useFlowQuery`, `useFlowMutate`, `useFlowTransactionStatus`, and `useCurrentFlowUser` to manage authentication, query on-chain data, submit transactions, and monitor their status.
+- Use kit hooks such as `useFlowQuery`, `useFlowMutate`, `useFlowTransactionStatus`, and `useFlowCurrentUser` to manage authentication, query on-chain data, submit transactions, and monitor their status.
 - Integrate with the local Flow emulator and Dev Wallet for a fully functional development setup.
 
 For additional details and advanced usage, refer to the [@onflow/kit documentation] and other Flow developer resources.
