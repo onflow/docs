@@ -44,7 +44,7 @@ const HeroSection: React.FC = () => {
                 });
                 window.location.href = '/build/getting-started/contract-interaction';
               }}
-              className="px-6 py-2 rounded-lg bg-transparent text-black dark:text-white underline font-bold text-base border-none shadow-none focus:outline-none focus:underline hover:underline transition-colors text-center"
+              className="px-6 py-2 rounded-lg bg-transparent text-black dark:text-white underline font-bold text-base border-none shadow-none focus:outline-none focus:underline hover:underline transition-colors text-center cursor-pointer"
               style={{ background: 'transparent' }}
             >
               Start with Cadence
