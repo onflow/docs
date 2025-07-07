@@ -1,10 +1,10 @@
 ---
 sidebar_position: 3
 sidebar_label: Simple Frontend
-title: Building a Simple Frontend with "@onflow/kit"
-description: Learn how to build a Next.js frontend application using @onflow/kit to interact with Flow smart contracts. Set up wallet authentication, read contract data, send transactions with kit's React hooks, and display transaction status updates.
+title: Building a Simple Frontend with "@onflow/react-sdk"
+description: Learn how to build a Next.js frontend application using @onflow/react-sdk to interact with Flow smart contracts. Set up wallet authentication, read contract data, send transactions with react-sdk's React hooks, and display transaction status updates.
 keywords:
-  - '@onflow/kit'
+  - '@onflow/react-sdk'
   - Next.js
   - frontend development
   - wallet integration
@@ -20,19 +20,19 @@ keywords:
   - web3 frontend
 ---
 
-# Simple Frontend with `@onflow/kit`
+# Simple Frontend with `@onflow/react-sdk`
 
-Building on the `Counter` contract you deployed in [Step 1: Contract Interaction] and [Step 2: Local Development], this tutorial shows you how to create a simple Next.js frontend that interacts with the `Counter` smart contract deployed on your local Flow emulator. Instead of using FCL directly, you'll leverage [**@onflow/kit**] to simplify authentication, querying, transactions, and to display real-time transaction status updates using convenient React hooks.
+Building on the `Counter` contract you deployed in [Step 1: Contract Interaction] and [Step 2: Local Development], this tutorial shows you how to create a simple Next.js frontend that interacts with the `Counter` smart contract deployed on your local Flow emulator. Instead of using FCL directly, you'll leverage [**@onflow/react-sdk**] to simplify authentication, querying, transactions, and to display real-time transaction status updates using convenient React hooks.
 
 ## Objectives
 
 After finishing this guide, you will be able to:
 
-- Wrap your Next.js app with a Flow provider using [**@onflow/kit**].
-- Read data from a Cadence smart contract (`Counter`) using kit's query hook.
-- Send a transaction to update the smart contract's state using kit's mutation hook.
-- Monitor a transaction's status in real time using kit's transaction hook.
-- Authenticate with the Flow blockchain using kit's built-in hooks and the local [Dev Wallet].
+- Wrap your Next.js app with a Flow provider using [**@onflow/react-sdk**].
+- Read data from a Cadence smart contract (`Counter`) using react-sdk's query hook.
+- Send a transaction to update the smart contract's state using react-sdk's mutation hook.
+- Monitor a transaction's status in real time using react-sdk's transaction hook.
+- Authenticate with the Flow blockchain using react-sdk's built-in hooks and the local [Dev Wallet].
 
 ## Prerequisites
 
@@ -42,7 +42,7 @@ After finishing this guide, you will be able to:
 
 ## Setting Up the Next.js App
 
-Follow these steps to set up your Next.js project and integrate [**@onflow/kit**].
+Follow these steps to set up your Next.js project and integrate [**@onflow/react-sdk**].
 
 ### Step 1: Create a New Next.js App
 
@@ -88,12 +88,12 @@ Remove-Item -Recurse -Force .\kit-app-quickstart
 
 **Note:** When moving hidden files (those beginning with a dot) like `.gitignore`, be cautious not to overwrite any important files.
 
-### Step 3: Install @onflow/kit
+### Step 3: Install @onflow/react-sdk
 
 Install the kit library in your project:
 
 ```bash
-npm install @onflow/kit
+npm install @onflow/react-sdk
 ```
 
 This library wraps FCL internally and exposes a set of hooks for authentication, querying, sending transactions, and tracking transaction status.
@@ -128,13 +128,13 @@ This will start the [Dev Wallet] on `http://localhost:8701`, which you'll use fo
 
 ## Wrapping Your App with FlowProvider
 
-[**@onflow/kit**] provides a `FlowProvider` component that sets up the Flow Client Library configuration. In Next.js using the App Router, add or update your `src/app/layout.tsx` as follows:
+[**@onflow/react-sdk**] provides a `FlowProvider` component that sets up the Flow Client Library configuration. In Next.js using the App Router, add or update your `src/app/layout.tsx` as follows:
 
 ```tsx
 // src/app/layout.tsx
 'use client';
 
-import { FlowProvider } from '@onflow/kit';
+import { FlowProvider } from '@onflow/react-sdk';
 import flowJSON from '../../flow.json';
 
 export default function RootLayout({
@@ -174,7 +174,7 @@ Now that we've set our provider, lets start interacting with the chain.
 First, use the kit's [`useFlowQuery`] hook to read the current counter value from the blockchain.
 
 ```jsx
-import { useFlowQuery } from '@onflow/kit';
+import { useFlowQuery } from '@onflow/react-sdk';
 
 const { data, isLoading, error, refetch } = useFlowQuery({
   cadence: `
@@ -208,7 +208,7 @@ This script fetches the counter value, formats it via the `NumberFormatter`, and
 Next, use the kit's [`useFlowMutate`] hook to send a transaction that increments the counter.
 
 ```jsx
-import { useFlowMutate } from '@onflow/kit';
+import { useFlowMutate } from '@onflow/react-sdk';
 
 const {
   mutate: increment,
@@ -295,7 +295,7 @@ import {
   useFlowMutate,
   useFlowTransactionStatus,
   useCurrentFlowUser,
-} from "@onflow/kit";
+} from "@onflow/react-sdk";
 
 export default function Home() {
   const { user, authenticate, unauthenticate } = useCurrentFlowUser();
@@ -354,7 +354,7 @@ export default function Home() {
 
   return (
     <div>
-      <h1>@onflow/kit App Quickstart</h1>
+      <h1>@onflow/react-sdk App Quickstart</h1>
 
       {isLoading ? (
         <p>Loading count...</p>
@@ -439,13 +439,13 @@ Then visit [http://localhost:3000](http://localhost:3000) in your browser. You s
 
 ## Wrapping Up
 
-By following these steps, you've built a simple Next.js dApp that interacts with a Flow smart contract using [**@onflow/kit**]. In this guide you learned how to:
+By following these steps, you've built a simple Next.js dApp that interacts with a Flow smart contract using [**@onflow/react-sdk**]. In this guide you learned how to:
 
 - Wrap your application in a `FlowProvider` to configure blockchain connectivity.
 - Use kit hooks such as `useFlowQuery`, `useFlowMutate`, `useFlowTransactionStatus`, and `useCurrentFlowUser` to manage authentication, query on-chain data, submit transactions, and monitor their status.
 - Integrate with the local Flow emulator and Dev Wallet for a fully functional development setup.
 
-For additional details and advanced usage, refer to the [@onflow/kit documentation] and other Flow developer resources.
+For additional details and advanced usage, refer to the [@onflow/react-sdk documentation] and other Flow developer resources.
 
 
 [Step 1: Contract Interaction]: contract-interaction.md
@@ -454,7 +454,7 @@ For additional details and advanced usage, refer to the [@onflow/kit documentati
 [`useFlowQuery`]: ../../tools/kit#useflowquery
 [`useFlowMutate`]: ../../tools/kit#useflowmutate
 [Dev Wallet]: ../../tools/flow-dev-wallet
-[@onflow/kit documentation]: ../../tools/kit/index.mdx
-[**@onflow/kit**]: ../../tools/kit/index.mdx
+[@onflow/react-sdk documentation]: ../../tools/kit/index.mdx
+[**@onflow/react-sdk**]: ../../tools/kit/index.mdx
 [Flow CLI]: ../../tools/flow-cli/install.md
 [Cadence VSCode extension]: ../../tools/vscode-extension

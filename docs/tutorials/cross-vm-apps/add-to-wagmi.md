@@ -130,7 +130,7 @@ export const config = createConfig({
 ## Step 3: Add the Batch Transaction Utility
 
 <Callout type="info">
-You can skip this step by using a [pre-built utility from the `@onflow/kit`] package. However, if you want to understand how batch transactions work under the hood, continue with this custom implementation.
+You can skip this step by using a [pre-built utility from the `@onflow/react-sdk`] package. However, if you want to understand how batch transactions work under the hood, continue with this custom implementation.
 </Callout>
 
 Create a custom hook in `src/hooks/useBatchTransactions.ts` to handle batch transactions. This utility allows you to execute multiple EVM transactions in a single Cadence transaction:
@@ -516,4 +516,4 @@ For a complete reference implementation, check out the [FCL + RainbowKit + wagmi
 [Testnet Cadence Flowscan]: https://testnet.flowscan.io
 [Cadence Owned Accounts]: ../../build/basics/accounts.md
 [Testnet EVM Flowscan]: https://evm-testnet.flowscan.io
-[pre-built utility from the `@onflow/kit`]: ../../tools/kit/index.mdx#usecrossvmbatchtransaction
+[pre-built utility from the `@onflow/react-sdk`]: ../../tools/kit/index.mdx#usecrossvmbatchtransaction
