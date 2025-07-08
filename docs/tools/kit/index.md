@@ -101,9 +101,9 @@ function AuthComponent() {
 
   return (
     <div>
-      {user.loggedIn ? (
+      {user?.loggedIn ? (
         <>
-          <p>Logged in as {user.addr}</p>
+          <p>Logged in as {user?.addr}</p>
           <button onClick={unauthenticate}>Logout</button>
         </>
       ) : (
