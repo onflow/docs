@@ -10,7 +10,7 @@ sidebar_position: 1
 
 ## 🔌 Included React Hooks
 
-- [`useCurrentFlowUser`](#usecurrentflowuser) – Authenticate and manage the current Flow user
+- [`useFlowCurrentUser`](#useflowcurrentuser) – Authenticate and manage the current Flow user
 - [`useFlowAccount`](#useflowaccount) – Fetch Flow account details by address
 - [`useFlowBlock`](#useflowblock) – Query latest or specific Flow blocks
 - [`useFlowChainId`](#useflowchainid) – Retrieve the current Flow chain ID
@@ -20,6 +20,7 @@ sidebar_position: 1
 - [`useFlowQueryRaw`](#useflowqueryraw) – Execute Cadence scripts with optional arguments returning non-decoded data
 - [`useFlowMutate`](#useflowmutate) – Send transactions to the Flow blockchain
 - [`useFlowRevertibleRandom`](#useflowrevertiblerandom) – Generate pseudorandom values tied to block height
+- [`useFlowTransaction`](#useflowtransaction) – Fetch a Flow transaction by ID
 - [`useFlowTransactionStatus`](#useflowtransactionstatus) – Track transaction status updates
 
 ### Cross-VM (Flow EVM ↔ Cadence) Hooks
@@ -82,10 +83,10 @@ Many of these hooks are built using [`@tanstack/react-query`](https://tanstack.c
 
 :::
 
-### `useCurrentFlowUser`
+### `useFlowCurrentUser`
 
 ```tsx
-import { useCurrentFlowUser } from "@onflow/kit"
+import { useFlowCurrentUser } from "@onflow/kit"
 ```
 
 #### Returns:
@@ -96,7 +97,7 @@ import { useCurrentFlowUser } from "@onflow/kit"
 
 ```tsx
 function AuthComponent() {
-  const { user, authenticate, unauthenticate } = useCurrentFlowUser()
+  const { user, authenticate, unauthenticate } = useFlowCurrentUser()
 
   return (
     <div>
@@ -467,6 +468,45 @@ function RandomValues() {
 * This hook is designed for simple use cases that don't require unpredictability, such as randomized UIs.
   Since the hook uses script executions on existing blocks, the random source is already public and the randoms are predictable.
 * For **more advanced use cases** that **do** require on-chain randomness logic via transactions, Flow provides built-in support using Cadence's `revertibleRandom` and [commit-reveal scheme].
+
+---
+
+### `useFlowTransaction`
+
+```tsx
+import { useFlowTransaction } from "@onflow/kit"
+```
+
+Fetches a Flow transaction by ID and returns the decoded transaction object.
+
+#### Parameters:
+
+* `txId?: string` – The Flow transaction ID to fetch.
+* `query?: Omit<UseQueryOptions<Transaction | null, Error>, "queryKey" | "queryFn">` – Optional TanStack Query options like `staleTime`, `enabled`, etc.
+
+#### Returns: `UseQueryResult<Transaction | null, Error>`
+
+```tsx
+function TransactionDetails({ txId }: { txId: string }) {
+  const { data: transaction, isLoading, error, refetch } = useFlowTransaction({
+    txId,
+    query: { staleTime: 10000 },
+  })
+
+  if (isLoading) return <p>Loading transaction...</p>
+  if (error) return <p>Error fetching transaction: {error.message}</p>
+  if (!transaction) return <p>No transaction data.</p>
+
+  return (
+    <div>
+      <h2>Transaction ID: {transaction.id}</h2>
+      <p>Gas Limit: {transaction.gasLimit}</p>
+      <pre>Arguments: {JSON.stringify(transaction.arguments, null, 2)}</pre>
+      <button onClick={refetch}>Refetch</button>
+    </div>
+  )
+}
+```
 
 ---
 
