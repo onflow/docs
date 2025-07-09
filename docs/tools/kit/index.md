@@ -644,7 +644,7 @@ This feature is currently only supported on Testnet & Mainnet networks.  Emulato
 </Callout>
 
 ```tsx
-import { useFlowQuery } from '@onflow/kit';
+import { useCrossVmTokenBalance } from "@onflow/kit"
 ```
 
 Fetch the balance of a token balance for a given user across both Cadence and EVM environments.
@@ -681,10 +681,10 @@ interface TokenBalance {
 ```
 
 ```tsx
-function QueryExample() {
+function UseCrossVmTokenBalanceExample() {
   const { data, isLoading, error, refetch } = useCrossVmTokenBalance({
-    owner: '0x1cf0e2f2f715450',
-    vaultIdentifier: '0x1cf0e2f2f715450.FlowToken.Vault',
+    owner: '0x1e4aa0b87d10b141',
+    vaultIdentifier: 'A.1654653399040a61.FlowToken.Vault',
     query: { staleTime: 10000 },
   });
 
