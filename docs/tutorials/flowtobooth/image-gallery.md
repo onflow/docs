@@ -393,7 +393,8 @@ const flowWallet = ({ projectId }: MyWalletOptions): Wallet => ({
     qrCode: 'https://link.lilico.app',
   },
   mobile: {
-    getUri: (uri: string) => `https://fcw-link.lilico.app/wc?uri=${encodeURIComponent(uri)}`,
+    getUri: (uri: string) =>
+      `https://fcw-link.lilico.app/wc?uri=${encodeURIComponent(uri)}`,
   },
   qrCode: {
     getUri: (uri: string) => uri,

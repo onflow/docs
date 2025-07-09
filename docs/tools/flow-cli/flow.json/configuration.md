@@ -25,7 +25,7 @@ Flow configuration (`flow.json`) file will contain the following properties:
   "accounts": {
     "emulator-account": {
       "address": "f8d6e0586b0a20c7",
-      "key": "ae1b44c0f5e8f6992ef2348898a35e50a8b0b9684000da8b1dade1b3bcd6ebee",
+      "key": "ae1b44c0f5e8f6992ef2348898a35e50a8b0b9684000da8b1dade1b3bcd6ebee"
     }
   },
   "deployments": {},
@@ -80,7 +80,7 @@ We'll walk through each property one by one.
     },
     "emulator-account": {
       "address": "f8d6e0586b0a20c7",
-      "key": "2eae2f31cb5b756151fa11d82949c634b8f28796a711d7eb1e52cc301ed11111",
+      "key": "2eae2f31cb5b756151fa11d82949c634b8f28796a711d7eb1e52cc301ed11111"
     }
   },
 

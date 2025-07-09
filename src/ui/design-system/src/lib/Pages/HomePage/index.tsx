@@ -1,35 +1,32 @@
 import React from 'react';
-import {
-  HomeNav,
-} from '../../Components/HomeNav';
-import { type ContentNavigationListProps } from '../../Components/ContentNavigationList';
-import { type SocialLinksSignupProps } from '../../Components/SocialLinksSignup';
-import { type TutorialCardProps } from '../../Components/TutorialCard';
-import { type UpcomingEventsProps } from '../../Components/UpcomingEvents';
 import PageBackground from '../shared/PageBackground';
-import ActionCardGrid from '@site/src/components/ActionCardGrid';
 import { buildGridData } from './GridData/BuildGridData';
-import { growGridData } from './GridData/GrowGridData';
-// import { HomeHeader } from '../../Components/HomeHeader';
+import GrowSection from './GrowSection';
+import HeroSection from './HeroSection';
+import FeatureSection from './FeatureSection';
+import BrowseByCategory from './BrowseByCategory';
+import QuickStartShowcase from './QuickStartShowcase';
 
-export type HomePageProps = SocialLinksSignupProps & {
-  concepts?: TutorialCardProps[];
-  contentNavigationListItems: ContentNavigationListProps;
-  upcomingEvents: UpcomingEventsProps;
-};
+export type HomePageProps = {};
 
-const HomePage = ({ discordUrl, githubUrl }: HomePageProps): JSX.Element => {
+const HomePage = ({}: HomePageProps): JSX.Element => {
   return (
     <PageBackground gradient="home">
-      {/* TODO: Add back in after iteration */}
-      {/* <HomeHeader /> */}
-      <HomeNav
-        title="What do you want to do today?"
-      />
+      <>
+        {/* Hero Section */}
+        <HeroSection />
 
-      <ActionCardGrid title={buildGridData.title} id={buildGridData.title} icon={buildGridData.icon} iconColor={buildGridData.iconColor} sections={buildGridData.sections} />
-      <ActionCardGrid title={growGridData.title} id={growGridData.title} icon={growGridData.icon} iconColor={growGridData.iconColor} sections={growGridData.sections} />
+        {/* Feature Sections */}
+        <FeatureSection sections={buildGridData.sections} />
 
+        {/* QuickStart Showcase */}
+        <QuickStartShowcase />
+
+        <GrowSection />
+
+        {/* Browse By Category (Docs, Community, Network, More) */}
+        <BrowseByCategory />
+      </>
     </PageBackground>
   );
 };

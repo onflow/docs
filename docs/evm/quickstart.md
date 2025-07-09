@@ -251,6 +251,14 @@ export default ClickerModule;
 
 Visit the [Flow Faucet] and follow the instructions to add testnet funds. Compared to other networks, the [Flow Faucet] grants a vast amount of tokens - enough gas for millions of transactions.
 
+:::warning
+
+EVM accounts created by the [Flow Wallet] are [Cadence-Owned Accounts], or COAs - **Not** EOAs. COAs have many advantages over EOAs, but they are generated differently, which means they don't have a key that's compatible with Hardhat.
+
+Use your [MetaMask] or similar EOA account to deploy contracts on Flow EVM.
+
+:::
+
 ### Deploy the Contract
 
 Deploy the contract with:
@@ -354,3 +362,4 @@ Ready to unlock the full potential of Flow EVM? Start with our [Batched Transact
 [Cross-VM Apps]: ../tutorials/cross-vm-apps/introduction.md
 [Batched Transactions]: ../tutorials/cross-vm-apps/introduction.md
 [OpenZeppelin Contracts]: https://www.openzeppelin.com/contracts
+[Cadence-Owned Accounts]: ./accounts.md#cadence-owned-accounts
