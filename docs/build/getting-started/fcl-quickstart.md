@@ -131,34 +131,33 @@ This will start the [Dev Wallet] on `http://localhost:8701`, which you'll use fo
 [**@onflow/kit**] provides a `FlowProvider` component that sets up the Flow Client Library configuration. In Next.js using the App Router, add or update your `src/app/layout.tsx` as follows:
 
 ```tsx
-// src/app/layout.tsx
-'use client';
+"use client";
 
-import { FlowProvider } from '@onflow/kit';
-import flowJSON from '../../flow.json';
+import { FlowProvider } from "@onflow/kit";
+import flowJson from "../flow.json";
 
 export default function RootLayout({
   children,
 }: {
-  children: React.ReactNode;
+  children: React.ReactNode
 }) {
   return (
     <html>
       <body>
-        <FlowProvider
+        <FlowProvider 
           config={{
             accessNodeUrl: 'http://localhost:8888',
             flowNetwork: 'emulator',
             discoveryWallet: 'https://fcl-discovery.onflow.org/emulator/authn',
           }}
-          flowJson={flowJSON}
+          flowJson={flowJson}
         >
           {children}
         </FlowProvider>
       </body>
     </html>
-  );
-}
+  )
+} 
 ```
 
 This configuration initializes the kit with your local emulator settings and maps contract addresses based on your `flow.json` file.
@@ -173,7 +172,7 @@ Now that we've set our provider, lets start interacting with the chain.
 
 First, use the kit's [`useFlowQuery`] hook to read the current counter value from the blockchain.
 
-```jsx
+```tsx
 import { useFlowQuery } from '@onflow/kit';
 
 const { data, isLoading, error, refetch } = useFlowQuery({
@@ -207,7 +206,7 @@ This script fetches the counter value, formats it via the `NumberFormatter`, and
 
 Next, use the kit's [`useFlowMutate`] hook to send a transaction that increments the counter.
 
-```jsx
+```tsx
 import { useFlowMutate } from '@onflow/kit';
 
 const {
@@ -245,10 +244,14 @@ This sends a Cadence transaction to the blockchain using the `mutate` function. 
 
 Use the kit's [`useFlowTransactionStatus`] hook to monitor and display the transaction status in real time.
 
-```jsx
-const { transactionStatus, error: txStatusError } = useFlowTransactionStatus(
-  txId || '',
-);
+
+```tsx
+import { useFlowTransactionStatus } from '@onflow/kit';
+
+const { transactionStatus, error: txStatusError } = useFlowTransactionStatus({
+  id: txId || "",
+});
+
 
 useEffect(() => {
   if (txId && transactionStatus?.status === 3) {
@@ -282,11 +285,9 @@ However:
 
 ### Integrating Authentication and Building the Complete UI
 
-Finally, integrate the query, mutation, and transaction status hooks with authentication using `useCurrentFlowUser`. Combine all parts to build the complete page.
+Finally, integrate the query, mutation, and transaction status hooks with authentication using `useFlowCurrentUser`. Combine all parts to build the complete page.
 
-```jsx
-// src/app/page.js
-
+```tsx
 "use client";
 
 import { useState, useEffect } from "react";
@@ -294,12 +295,11 @@ import {
   useFlowQuery,
   useFlowMutate,
   useFlowTransactionStatus,
-  useCurrentFlowUser,
+  useFlowCurrentUser,
 } from "@onflow/kit";
 
 export default function Home() {
-  const { user, authenticate, unauthenticate } = useCurrentFlowUser();
-  const [lastTxId, setLastTxId] = useState<string>();
+  const { user, authenticate, unauthenticate } = useFlowCurrentUser();
 
   const { data, isLoading, error, refetch } = useFlowQuery({
     cadence: `
@@ -323,13 +323,16 @@ export default function Home() {
     error: txError,
   } = useFlowMutate();
 
-  const { transactionStatus, error: txStatusError } = useFlowTransactionStatus(
-    txId || "",
-  );
+
+  const { transactionStatus, error: txStatusError } = useFlowTransactionStatus({
+    id: txId || "",
+  });
+
 
   useEffect(() => {
-    if (txId && transactionStatus?.status === 4) {
-      refetch();
+    if (txId && transactionStatus?.status === 3) {
+      // Transaction is executed
+      refetch(); // Refresh the counter
     }
   }, [transactionStatus?.status, txId, refetch]);
 
@@ -354,47 +357,47 @@ export default function Home() {
 
   return (
     <div>
-      <h1>@onflow/kit App Quickstart</h1>
+      <h1>Flow Counter dApp</h1>
 
       {isLoading ? (
         <p>Loading count...</p>
       ) : error ? (
-        <p>Error fetching count: {error.message}</p>
+        <p>Error: {error.message}</p>
       ) : (
         <div>
-          <h2>Count: {data as string}</h2>
+          <h2>{(data as string) || "0"}</h2>
+          <p>Current Count</p>
         </div>
       )}
 
-      {user.loggedIn ? (
+      {user?.loggedIn ? (
         <div>
-          <p>Address: {user.addr}</p>
-          <button onClick={unauthenticate}>Log Out</button>
+          <p>Connected: {user.addr}</p>
+          
           <button onClick={handleIncrement} disabled={txPending}>
             {txPending ? "Processing..." : "Increment Count"}
           </button>
+          
+          <button onClick={unauthenticate}>
+            Disconnect
+          </button>
 
-          <div>
-            Latest Transaction Status:{" "}
-            {transactionStatus?.statusString || "No transaction yet"}
-          </div>
-
-          {txError && <p>Error sending transaction: {txError.message}</p>}
-
-          {lastTxId && (
-            <div>
-              <h3>Transaction Status</h3>
-              {transactionStatus ? (
-                <p>Status: {transactionStatus.statusString}</p>
-              ) : (
-                <p>Waiting for status update...</p>
-              )}
-              {txStatusError && <p>Error: {txStatusError.message}</p>}
-            </div>
+          {transactionStatus?.statusString && transactionStatus?.status && (
+            <p>Status: {transactionStatus.status >= 3 ? "Successful" : "Pending"}</p>
+          )}
+          
+          {txError && (
+            <p>Error: {txError.message}</p>
+          )}
+          
+          {txStatusError && (
+            <p>Status Error: {txStatusError.message}</p>
           )}
         </div>
       ) : (
-        <button onClick={authenticate}>Log In</button>
+        <button onClick={authenticate}>
+          Connect Wallet
+        </button>
       )}
     </div>
   );
@@ -406,7 +409,7 @@ In this complete page:
 - **Step 1** queries the counter value.
 - **Step 2** sends a transaction to increment the counter and stores the transaction ID.
 - **Step 3** subscribes to transaction status updates using the stored transaction ID and uses a `useEffect` hook to automatically refetch the updated count when the transaction is sealed (status code 4).
-- **Step 4** integrates authentication via `useCurrentFlowUser` and combines all the pieces into a single user interface.
+- **Step 4** integrates authentication via `useFlowCurrentUser` and combines all the pieces into a single user interface.
 
 :::tip
 
@@ -430,6 +433,12 @@ Log out, and log back in selecting the Dev Wallet instead of the Flow Wallet.
 
 :::
 
+:::warning
+
+For your app to connect with contracts deployed on the emulator, you need to have completed [Step 1: Contract Interaction] and [Step 2: Local Development].
+
+:::
+
 Then visit [http://localhost:3000](http://localhost:3000) in your browser. You should see:
 
 - The current counter value displayed (formatted with commas using `NumberFormatter`).
@@ -442,7 +451,7 @@ Then visit [http://localhost:3000](http://localhost:3000) in your browser. You s
 By following these steps, you've built a simple Next.js dApp that interacts with a Flow smart contract using [**@onflow/kit**]. In this guide you learned how to:
 
 - Wrap your application in a `FlowProvider` to configure blockchain connectivity.
-- Use kit hooks such as `useFlowQuery`, `useFlowMutate`, `useFlowTransactionStatus`, and `useCurrentFlowUser` to manage authentication, query on-chain data, submit transactions, and monitor their status.
+- Use kit hooks such as `useFlowQuery`, `useFlowMutate`, `useFlowTransactionStatus`, and `useFlowCurrentUser` to manage authentication, query on-chain data, submit transactions, and monitor their status.
 - Integrate with the local Flow emulator and Dev Wallet for a fully functional development setup.
 
 For additional details and advanced usage, refer to the [@onflow/kit documentation] and other Flow developer resources.
