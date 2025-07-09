@@ -57,12 +57,36 @@ You need to set up the following in the Gelato App to create a Gelato Sponsor AP
 
 Sign up on the [Gelato App] to establish an account. This account is the foundation for setting up relay tasks and managing gas sponsorships.
 
-### Step 2. Create a Relay App
+### Step 2. Deposit Funds into 1Balance
 
-Within your Gelato account, create a new _Relay App_ with the Flow EVM network.  
+To use Gelato for sponsored transactions, you need to deposit funds into 1Balance according to your target environment:
+
+- Mainnets: Deposit USDC.
+- Testnets: Deposit Sepolia ETH.
+
+Click the `1Balance` tab to link your wallet first.
+
+![Link Wallet](./images/gelato-1balance-1.png)
+
+And then deposit some Sepolia ETH(SEP) testnet funds.
+
+![Deposit Funds into 1Balance](./images/gelato-1balance-2.png)
+
+If you need to fund your account, you can use one of the following third-party faucets:
+
+- [Google Cloud Sepolia Faucet]
+- [Alchemy Sepolia Faucet]
+- [Chainlink Sepolia Faucet]
+- [Metamask Sepolia Faucet]
+
+### Step 3. Create a Relay App
+
+Select the `Relay` tab in the Gelato App and switch to the `Testnet` environment.
+
+Now you can create a new _Relay App_ with the Flow EVM network.  
 For Testnet, you can first allow `Any contract` to call your relay app.
 
-![Create a Relay App](./images/gelato-1.png)
+![Create a Relay App](./images/gelato-relay-1.png)
 
 :::warning
 
@@ -72,29 +96,11 @@ When set to a specific contract instead of `Any contract`, the API keys will onl
 
 :::
 
-### Step 3. Deposit Funds into 1Balance
-
-To use Gelato for sponsored transactions, you need to deposit funds into 1Balance according to your target environment:
-
-- Mainnets: Deposit USDC.
-- Testnets: Deposit Sepolia ETH.
-
-Click the `1Balance` tab to deposit `.001` Sepolia ETH testnet funds.
-
-![Deposit Funds into 1Balance](./images/gelato-3.png)
-
-If you need to fund your account, you can use one of the following third-party faucets:
-
-- [Google Cloud Sepolia Faucet]
-- [Alchemy Sepolia Faucet]
-- [Chainlink Sepolia Faucet]
-- [Metamask Sepolia Faucet]
-
 ### Step 4. Create/Obtain an API Key
 
 After creating the Relay App, navigate to its dashboard to locate your Sponsor API Key.
 
-![Create a Sponsor API Key](./images/gelato-2.png)
+![Create a Sponsor API Key](./images/gelato-relay-2.png)
 
 This key links your Gelato setup with 1Balance for gas sponsorship.
 
@@ -283,7 +289,7 @@ Now that you have completed the tutorial, you should be able to:
 
 The combination of Flow's efficient gas pricing and Gelato's sponsored transaction infrastructure opens up new possibilities for building user-friendly dApps. By eliminating the need for users to hold native tokens for gas fees, you can create onboarding experiences that rival traditional Web2 applications while maintaining the security and transparency of blockchain technology.
 
-[Gelato App]: https://app.gelato.network/
+[Gelato App]: https://app.gelato.cloud/
 [Google Cloud Sepolia Faucet]: https://cloud.google.com/application/web3/faucet/ethereum/sepolia
 [Alchemy Sepolia Faucet]: https://www.alchemy.com/faucets/ethereum-sepolia
 [Chainlink Sepolia Faucet]: https://faucets.chain.link/sepolia
