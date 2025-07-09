@@ -1,7 +1,7 @@
 ---
 title: Native VRF
 description: A series of tutorials on using Flow's native VRF capabilities in both Cadence and Solidity smart contracts.
-sidebar_position: 4
+sidebar_position: 8
 keywords:
   - VRF
   - randomness
@@ -27,6 +27,7 @@ This series covers how to leverage Flow's native VRF (Verifiable Random Function
 - **[Secure Randomness with Commit-Reveal in Cadence]** - Learn how to implement secure randomness in Cadence using Flow's commit-reveal scheme.
 - **[VRF (Randomness) in Solidity]** - Learn how to use Flow's native VRF capabilities in Solidity.
 - **[Deploy a Solidity Contract Using Cadence]** - Discover how to deploy and interact with Solidity contracts on Flow EVM using Cadence.
+- **[VRF (Randomness) in Solidity]** - How to access Flow's native verifiable randomness from Solidity smart contracts on Flow EVM, including code examples and security considerations.
 
 ## More Coming Soon
 
@@ -35,3 +36,4 @@ Stay tuned—more tutorials and advanced guides are on the way!
 [Secure Randomness with Commit-Reveal in Cadence]: ./commit-reveal-cadence.md
 [VRF (Randomness) in Solidity]: ./vrf-in-solidity.md
 [Deploy a Solidity Contract Using Cadence]: ./deploy-solidity-contract.md
+[VRF (Randomness) in Solidity]: ./vrf-in-solidity.md

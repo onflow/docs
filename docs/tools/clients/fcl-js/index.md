@@ -78,7 +78,8 @@ import * as fcl from "@onflow/fcl";
 
 const result = await fcl.query({
   cadence: `
-    pub fun main(a: Int, b: Int, addr: Address): Int {
+    access(all)
+    fun main(a: Int, b: Int, addr: Address): Int {
       log(addr)
       return a + b
     }
@@ -98,7 +99,7 @@ import * as fcl from "@onflow/fcl";
 const txId = await fcl.mutate({
   cadence: `
     import Profile from 0xba1132bc08f82fe2
-    
+
     transaction(name: String) {
       prepare(account: AuthAccount) {
         account.borrow<&{Profile.Owner}>(from: Profile.privatePath)!.setName(name)
@@ -127,7 +128,7 @@ FCL JS supports TypeScript. If you need to import specific types, you can do so 
 ```typescript
 import {CurrentUser} from "@onflow/typedefs"
 
-const newUser: CurrentUser = { 
+const newUser: CurrentUser = {
   addr: null,
   cid: null,
   expiresAt: null,

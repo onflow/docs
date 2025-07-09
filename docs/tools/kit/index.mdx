@@ -18,16 +18,19 @@ import FlowProviderDemo from '@site/src/components/FlowProviderDemo';
 
 Hooks for interacting with native Flow Cadence runtime:
 
-- [`useCurrentFlowUser`](#usecurrentflowuser) – Authenticate and manage the current Flow user
+- [`useFlowCurrentUser`](#useflowcurrentuser) – Authenticate and manage the current Flow user
 - [`useFlowAccount`](#useflowaccount) – Fetch Flow account details by address
 - [`useFlowBlock`](#useflowblock) – Query latest or specific Flow blocks
 - [`useFlowChainId`](#useflowchainid) – Retrieve the current Flow chain ID
 - [`useFlowConfig`](#useflowconfig) – Access the current Flow configuration
 - [`useFlowEvents`](#useflowevents) – Subscribe to Flow events in real-time
 - [`useFlowQuery`](#useflowquery) – Execute Cadence scripts with optional arguments
+- [`useFlowQueryRaw`](#useflowqueryraw) – Execute Cadence scripts with optional arguments returning non-decoded data
 - [`useFlowMutate`](#useflowmutate) – Send transactions to the Flow blockchain
 - [`useFlowRevertibleRandom`](#useflowrevertiblerandom) – Generate pseudorandom values tied to block height
+- [`useFlowTransaction`](#useflowtransaction) – Fetch a Flow transaction by ID
 - [`useFlowTransactionStatus`](#useflowtransactionstatus) – Track transaction status updates
+- [`useDarkMode`](#usedarkmode) – Get current dark mode state
 
 ### Cross-VM (Flow EVM ↔ Cadence) Hooks
 
@@ -74,6 +77,7 @@ function Root() {
         appDetailUrl: "https://myonchainapp.com",
       }}
       flowJson={flowJSON}
+      darkMode={false}
     >
       <App />
     </FlowProvider>
@@ -86,6 +90,83 @@ export default Root
 If you're using **Next.js**, place the `FlowProvider` inside your `layout.tsx`. Since React hooks must run on the client, you may need to wrap the provider in a separate file that begins with `'use client'` to avoid issues with server-side rendering. Adjust this setup as needed for other frontend frameworks.
 
 👉 Learn more about configuring `flow.json` in the [Configuration Guide].
+
+---
+
+## 🎨 Theming
+
+### How Theming Works
+
+All UI components in `@onflow/kit` are styled using [Tailwind CSS](https://tailwindcss.com/) utility classes. The kit supports both light and dark themes out of the box, using Tailwind's `dark:` variant for dark mode styling.
+
+You can customize the look and feel of the kit by providing a custom theme to the `FlowProvider` via the `theme` prop. This allows you to override default colors and styles to better match your app's branding.
+
+```tsx
+import { FlowProvider } from "@onflow/kit"
+
+<FlowProvider
+  config={...}
+  theme={{
+    colors: {
+      primary: {
+        background: "bg-blue-600 dark:bg-blue-400",
+        text: "text-white dark:text-blue-900",
+        hover: "hover:bg-blue-700 dark:hover:bg-blue-300",
+      },
+      // ...other color overrides
+    }
+  }}
+>
+  <App />
+</FlowProvider>
+```
+
+---
+
+## 🌙 Dark Mode
+
+### How Dark Mode Works
+
+Dark mode is **fully controlled by the parent app** using the `darkMode` prop on `FlowProvider`. The kit does not manage dark mode state internally—this gives you full control and ensures the kit always matches your app's theme.
+
+- `darkMode={false}` (default): Forces all kit components to use light mode styles.
+- `darkMode={true}`: Forces all kit components to use dark mode styles.
+- You can dynamically change the `darkMode` prop to switch themes at runtime.
+
+**Example:**
+
+```tsx
+function App() {
+  // Parent app manages dark mode state
+  const [isDark, setIsDark] = useState(false)
+
+  return (
+    <FlowProvider config={...} darkMode={isDark}>
+      <MyFlowComponents />
+    </FlowProvider>
+  )
+}
+```
+
+**Accessing Dark Mode State in Components:**
+
+You can use the `useDarkMode` hook to check the current mode inside your components:
+
+```tsx
+import { useDarkMode } from "@onflow/kit"
+
+function MyComponent() {
+  // useDarkMode only returns the current state, no setter
+  const { isDark } = useDarkMode()
+  return <div>{isDark ? "Dark mode" : "Light mode"}</div>
+}
+```
+
+### Notes
+
+- The kit does **not** automatically follow system preferences or save user choices. You are responsible for managing and passing the correct `darkMode` value.
+- All kit components will automatically apply the correct Tailwind `dark:` classes based on the `darkMode` prop.
+- For best results, ensure your app's global theme and the kit's `darkMode` prop are always in sync.
 
 ---
 
@@ -196,10 +277,11 @@ Dialog component for real-time transaction status updates.
 ```tsx
 import { TransactionDialog } from "@onflow/kit"
 
+
 <TransactionDialog
   open={isOpen}
   onOpenChange={setIsOpen}
-  txId={txId}
+  txId="6afa38b7bd1a23c6cc01a4ea2e51ed376f16761f9d06eca0577f674a9edc0716"
   pendingTitle="Sending..."
   successTitle="All done!"
   closeOnSuccess
@@ -212,7 +294,7 @@ import { TransactionDialog } from "@onflow/kit"
   <TransactionDialog
     open={false}
     onOpenChange={() => {}}
-    txId="0x1234567890abcdef"
+    txId="6afa38b7bd1a23c6cc01a4ea2e51ed376f16761f9d06eca0577f674a9edc0716"
     pendingTitle="Sending..."
     successTitle="All done!"
     closeOnSuccess
@@ -255,10 +337,10 @@ Many of these hooks are built using [`@tanstack/react-query`](https://tanstack.c
 
 :::
 
-### `useCurrentFlowUser`
+### `useFlowCurrentUser`
 
 ```tsx
-import { useCurrentFlowUser } from "@onflow/kit"
+import { useFlowCurrentUser } from "@onflow/kit"
 ```
 
 #### Returns:
@@ -269,13 +351,13 @@ import { useCurrentFlowUser } from "@onflow/kit"
 
 ```tsx
 function AuthComponent() {
-  const { user, authenticate, unauthenticate } = useCurrentFlowUser()
+  const { user, authenticate, unauthenticate } = useFlowCurrentUser()
 
   return (
     <div>
-      {user.loggedIn ? (
+      {user?.loggedIn ? (
         <>
-          <p>Logged in as {user.addr}</p>
+          <p>Logged in as {user?.addr}</p>
           <button onClick={unauthenticate}>Logout</button>
         </>
       ) : (
@@ -488,6 +570,51 @@ function QueryExample() {
 
 ---
 
+### `useFlowQueryRaw`
+
+```tsx
+import { useFlowQueryRaw } from "@onflow/kit"
+```
+
+This hook is identical to `useFlowQuery` but returns the raw, non-decoded response data from the Flow blockchain. This is useful when you need access to the original response structure or want to handle decoding manually.
+
+#### Parameters:
+
+- `cadence: string` – Cadence script to run
+- `args?: (arg, t) => unknown[]` – Function returning FCL arguments
+- `query?: UseQueryOptions<unknown, Error>` – Optional TanStackQuery options
+
+#### Returns: `UseQueryResult<unknown, Error>`
+
+The returned data will be in its raw, non-decoded format as received from the Flow access node.
+
+```tsx
+function QueryRawExample() {
+  const { data: rawData, isLoading, error, refetch } = useFlowQueryRaw({
+    cadence: `
+      access(all)
+      fun main(a: Int, b: Int): Int {
+        return a + b
+      }
+    `,
+    args: (arg, t) => [arg(1, t.Int), arg(2, t.Int)],
+    query: { staleTime: 10000 },
+  })
+
+  if (isLoading) return <p>Loading query...</p>
+  if (error) return <p>Error: {error.message}</p>
+
+  return (
+    <div>
+      <p>Raw Result: {JSON.stringify(rawData, null, 2)}</p>
+      <button onClick={refetch}>Refetch</button>
+    </div>
+  )
+}
+```
+
+---
+
 ### `useFlowMutate`
 
 ```tsx
@@ -598,6 +725,45 @@ function RandomValues() {
 
 ---
 
+### `useFlowTransaction`
+
+```tsx
+import { useFlowTransaction } from "@onflow/kit"
+```
+
+Fetches a Flow transaction by ID and returns the decoded transaction object.
+
+#### Parameters:
+
+* `txId?: string` – The Flow transaction ID to fetch.
+* `query?: Omit<UseQueryOptions<Transaction | null, Error>, "queryKey" | "queryFn">` – Optional TanStack Query options like `staleTime`, `enabled`, etc.
+
+#### Returns: `UseQueryResult<Transaction | null, Error>`
+
+```tsx
+function TransactionDetails({ txId }: { txId: string }) {
+  const { data: transaction, isLoading, error, refetch } = useFlowTransaction({
+    txId,
+    query: { staleTime: 10000 },
+  })
+
+  if (isLoading) return <p>Loading transaction...</p>
+  if (error) return <p>Error fetching transaction: {error.message}</p>
+  if (!transaction) return <p>No transaction data.</p>
+
+  return (
+    <div>
+      <h2>Transaction ID: {transaction.id}</h2>
+      <p>Gas Limit: {transaction.gasLimit}</p>
+      <pre>Arguments: {JSON.stringify(transaction.arguments, null, 2)}</pre>
+      <button onClick={refetch}>Refetch</button>
+    </div>
+  )
+}
+```
+
+---
+
 ### `useFlowTransactionStatus`
 
 ```tsx
@@ -621,6 +787,33 @@ function TransactionStatusComponent() {
   if (error) return <div>Error: {error.message}</div>;
 
   return <div>Status: {transactionStatus?.statusString}</div>;
+}
+```
+
+---
+
+### `useDarkMode`
+
+```tsx
+import { useDarkMode } from "@onflow/kit"
+```
+
+This hook provides access to the current dark mode state from the `FlowProvider`. It's useful for conditionally rendering content or applying custom styling based on the current theme.
+
+#### Returns:
+
+- `isDark: boolean` – Whether dark mode is currently enabled
+
+```tsx
+function ThemeAwareComponent() {
+  const { isDark } = useDarkMode()
+
+  return (
+    <div className={isDark ? "bg-gray-900 text-white" : "bg-white text-black"}>
+      <h2>Current Theme: {isDark ? "Dark" : "Light"}</h2>
+      <p>This component adapts to the current theme!</p>
+    </div>
+  )
 }
 ```
 
