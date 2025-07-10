@@ -279,7 +279,7 @@ const config = {
             activeBasePath: '/evm',
           },
           {
-            to: 'tools/kit',
+            to: 'tools/react-sdk',
             position: 'left',
             label: 'Tools',
             activeBasePath: '/tools',
