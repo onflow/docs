@@ -8,6 +8,16 @@
       "permanent": true
     },
     {
+      "source": "/tools/kit",
+      "destination": "/tools/react-sdk",
+      "permanent": true
+    },
+    {
+      "source": "/tools/kit/:path*",
+      "destination": "/tools/react-sdk/:path*",
+      "permanent": true
+    },
+    {
       "source": "/build",
       "destination": "/build/flow",
       "permanent": true

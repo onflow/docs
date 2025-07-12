@@ -150,7 +150,7 @@ Flow provides robust support for both Cadence and EVM development. Here's how to
 **Cadence development:**
 
 - [Flow CLI]: Command-line tool for managing accounts, deploying contracts, and running scripts/transactions.
-- [@onflow/kit]: A development toolkit to scaffold, simulate, and deploy Cadence apps quickly.
+- [@onflow/react-sdk]: A development toolkit to scaffold, simulate, and deploy Cadence apps quickly.
 
 **Flow EVM development:**
 
@@ -173,7 +173,7 @@ Whether you're looking for support, feedback, or collaboration, Flow's community
 
 - [Contract Interaction]: Interact with your first Cadence smart contract on the Flow testnet.
 - [Local Development]: Set up your dev environment, run tests, add already deployed contracts to your environment with Dependency Manager, and deploy and use your first contract with the emulator.
-- [Simple Frontend]: Read and write from a smart contract using the hooks from [@onflow/kit].
+- [Simple Frontend]: Read and write from a smart contract using the hooks from [@onflow/react-sdk].
 
 ### Flow EVM Quickstart
 
@@ -194,7 +194,7 @@ We also have guides for working with [Rainbowkit] and [wagmi].
 [Connect to Mainnet]: https://developers.flow.com/networks/flow-networks/accessing-mainnet
 [Flow Network Overview and Setup]: https://developers.flow.com/networks/flow-networks
 [Flow CLI]: https://developers.flow.com/tools/flow-cli
-[@onflow/kit]: https://developers.flow.com/tools/kit
+[@onflow/react-sdk]: https://developers.flow.com/tools/react-sdk
 [Explore the Ecosystem]: https://developers.flow.com/ecosystem
 [@flow_blockchain]: https://x.com/flow_blockchain
 [Connect]: https://discord.com/invite/flow

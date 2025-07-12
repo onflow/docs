@@ -1,7 +1,7 @@
 import * as fcl from '@onflow/fcl';
 import config from '@generated/docusaurus.config';
 import flowJSON from '../../flow.json';
-import type { FlowNetwork } from '@onflow/kit';
+import type { FlowNetwork } from '@onflow/react-sdk';
 
 const flowNetwork = (config.customFields?.flowNetwork as string) || 'testnet';
 
