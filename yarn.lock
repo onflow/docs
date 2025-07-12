@@ -3349,10 +3349,10 @@
   resolved "https://registry.npmjs.org/@onflow/interaction/-/interaction-0.0.11.tgz"
   integrity sha512-Xuq1Mmx6Wyba/F/L+QLQs0yJeQDsIDwy5SKk5vrCuVgIj0yD8k506g5L8ODrbM1LWll8i0tQsoOi0F85vNl5sA==
 
-"@onflow/kit@0.8.0-alpha.0":
-  version "0.8.0-alpha.0"
-  resolved "https://registry.yarnpkg.com/@onflow/kit/-/kit-0.8.0-alpha.0.tgz#3d01a84a5ee780af3463a004228d14ad8b92b43d"
-  integrity sha512-LaiIZvdDTCR0JgYM4TKQdRouq0+lyDY24j7mWBtCSfQpgtCEtb5b4isz7UmgtAnwyWSyklgt0zm1eZu52x+ORQ==
+"@onflow/react-sdk@npm:@onflow/kit@0.10.0-alpha.0":
+  version "0.10.0-alpha.0"
+  resolved "https://registry.yarnpkg.com/@onflow/kit/-/kit-0.10.0-alpha.0.tgz#4c61f5e78da33fb557bf1798c19a8c3f695b39b4"
+  integrity sha512-nVGDtY6QMMzxCSn5B6I0+ciUijgiacFIMfaUT/+UJOaN2lWePUOpX7zMIteVPjsHcmxjAgp6HLHRRtJnNpkqrQ==
   dependencies:
     "@babel/runtime" "^7.25.7"
     "@headlessui/react" "^2.2.2"
