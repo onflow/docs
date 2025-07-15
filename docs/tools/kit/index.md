@@ -543,10 +543,6 @@ function TransactionStatusComponent() {
 
 ### `useCrossVmBatchTransaction`
 
-<Callout type="info">
-This feature is currently only supported on Testnet & Mainnet networks.  Emulator support will be added in a future release.
-</Callout>
-
 ```tsx
 import { useCrossVmBatchTransaction } from "@onflow/kit"
 ```
@@ -640,10 +636,6 @@ function CrossVmBatchTransactionExample() {
 
 ### `useCrossVmTokenBalance`
 
-<Callout type="info">
-This feature is currently only supported on Testnet & Mainnet networks.  Emulator support will be added in a future release.
-</Callout>
-
 ```tsx
 import { useCrossVmTokenBalance } from "@onflow/kit"
 ```
@@ -707,10 +699,6 @@ function UseCrossVmTokenBalanceExample() {
 ---
 
 ### `useCrossVmSpendNft`
-
-<Callout type="info">
-This feature is currently only supported on Testnet & Mainnet networks.  Emulator support will be added in a future release.
-</Callout>
 
 ```tsx
 import { useCrossVmSpendNft } from "@onflow/kit"
@@ -783,10 +771,6 @@ function CrossVmSpendNftExample() {
 
 ### `useCrossVmSpendToken`
 
-<Callout type="info">
-This feature is currently only supported on Testnet & Mainnet networks.  Emulator support will be added in a future release.
-</Callout>
-
 ```tsx
 import { useCrossVmSpendToken } from "@onflow/kit"
 ```
@@ -857,10 +841,6 @@ function CrossVmSpendTokenExample() {
 ---
 
 ### `useCrossVmTransactionStatus`
-
-<Callout type="info">
-This feature is currently only supported on Testnet & Mainnet networks.  Emulator support will be added in a future release.
-</Callout>
 
 ```tsx
 import { useCrossVmTransactionStatus } from "@onflow/kit"
