@@ -1,5 +1,4 @@
 ---
-sidebar_position: 1
 title: "getCollection"
 description: "getCollection function documentation."
 ---

@@ -1,5 +1,4 @@
 ---
-sidebar_position: 1
 title: "authenticate"
 description: "authenticate function documentation."
 ---
@@ -55,6 +54,12 @@ fcl.authenticate();
 
 - Type: `{}`
 - Description: Authentication options
+
+#### Properties:
+
+- **`service`**  - Optional service to use for authentication. A service returned from discovery can be passed here.
+- **`redir`**  - Optional redirect flag. Defaults to false.
+- **`forceReauth`**  - Optional force re-authentication flag. Defaults to false.
 
 
 ## Returns

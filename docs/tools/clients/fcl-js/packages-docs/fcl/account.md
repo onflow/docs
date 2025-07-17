@@ -1,5 +1,4 @@
 ---
-sidebar_position: 1
 title: "account"
 description: "account function documentation."
 ---
@@ -83,7 +82,7 @@ fcl.send([
 
 - Type: 
 ```typescript
-interface AccountQueryOptions {
+export interface AccountQueryOptions {
   height?: number
   id?: string
   isSealed?: boolean
@@ -101,7 +100,5 @@ interface AccountQueryOptions {
 
 [`Promise<Account>`](../types#account)
 
-
-A promise that resolves to an Account object
 
 ---

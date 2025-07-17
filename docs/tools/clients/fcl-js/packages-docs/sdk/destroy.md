@@ -1,5 +1,4 @@
 ---
-sidebar_position: 1
 title: "destroy"
 description: "destroy function documentation."
 ---
@@ -60,9 +59,7 @@ console.log(get(interaction, "user.name")); // "Alice" (still exists)
 
 ## Returns
 
-```typescript
-(ix: Interaction) => Interaction
-```
+[`Interaction`](../types#interaction)
 
 
 A function that takes an interaction and removes the property

@@ -1,5 +1,4 @@
 ---
-sidebar_position: 1
 title: "cadence"
 description: "cadence function documentation."
 ---
@@ -83,9 +82,7 @@ string | TemplateStringsArray | ((x?: unknown) => string)
 
 ## Returns
 
-```typescript
-(x?: unknown) => string
-```
+`string`
 
 
 A template function

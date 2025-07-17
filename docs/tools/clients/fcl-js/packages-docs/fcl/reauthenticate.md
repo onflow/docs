@@ -1,5 +1,4 @@
 ---
-sidebar_position: 1
 title: "reauthenticate"
 description: "reauthenticate function documentation."
 ---
@@ -50,6 +49,12 @@ fcl.reauthenticate();
 
 - Type: `{}`
 - Description: Authentication options passed to authenticate method
+
+#### Properties:
+
+- **`service`**  - Optional service to use for authentication
+- **`redir`**  - Optional redirect flag. Defaults to false.
+- **`forceReauth`**  - Optional force re-authentication flag. Defaults to false.
 
 
 ## Returns

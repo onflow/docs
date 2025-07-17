@@ -1,5 +1,4 @@
 ---
-sidebar_position: 1
 title: "ServiceDiscovery"
 description: "Namespace containing ServiceDiscovery utilities"
 ---
@@ -38,9 +37,7 @@ ServiceDiscovery.getAsyncStorage()
 
 #### Returns
 
-```typescript
-{ can: boolean; get: (key: string) => Promise<any>; put: (key: string, value: any) => Promise<void>; }
-```
+`Promise<void>`
 
 
 ---

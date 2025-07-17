@@ -1,5 +1,4 @@
 ---
-sidebar_position: 1
 title: "isOk"
 description: "isOk function documentation."
 ---

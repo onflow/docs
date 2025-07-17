@@ -1,5 +1,4 @@
 ---
-sidebar_position: 1
 title: "resolveProposerSequenceNumber"
 description: "resolveProposerSequenceNumber function documentation."
 ---
@@ -44,9 +43,7 @@ interface NodeConfig {
 
 ## Returns
 
-```typescript
-(ix: Interaction) => Promise<Interaction>
-```
+[`Promise<Interaction>`](../types#interaction)
 
 
 A function that resolves the proposer sequence number for an interaction

@@ -1,5 +1,4 @@
 ---
-sidebar_position: 1
 title: "decode"
 description: "decode function documentation."
 ---
@@ -75,7 +74,5 @@ console.log(complexDecoded); // {foo: 1, bar: 2}
 
 `Promise<any>`
 
-
-A JSON representation of the raw string response depending on the cadence code executed. The return value can be a single value and type or an object with multiple types.
 
 ---

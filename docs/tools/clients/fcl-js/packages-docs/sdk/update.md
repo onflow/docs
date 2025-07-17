@@ -1,5 +1,4 @@
 ---
-sidebar_position: 1
 title: "update"
 description: "update function documentation."
 ---
@@ -69,9 +68,7 @@ addTag(interaction); // tags becomes ["flow", "blockchain", "web3"]
 
 ## Returns
 
-```typescript
-(ix: Interaction) => Interaction
-```
+[`Interaction`](../types#interaction)
 
 
 A function that takes an interaction and updates the value

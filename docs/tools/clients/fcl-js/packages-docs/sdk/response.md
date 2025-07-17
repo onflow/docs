@@ -1,5 +1,4 @@
 ---
-sidebar_position: 1
 title: "response"
 description: "response function documentation."
 ---

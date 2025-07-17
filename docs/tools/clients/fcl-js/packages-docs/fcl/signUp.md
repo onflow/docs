@@ -1,5 +1,4 @@
 ---
-sidebar_position: 1
 title: "signUp"
 description: "signUp function documentation."
 ---
@@ -49,6 +48,12 @@ fcl.signUp();
 
 - Type: `{}`
 - Description: Authentication options passed to authenticate method
+
+#### Properties:
+
+- **`service`**  - Optional service to use for authentication
+- **`redir`**  - Optional redirect flag. Defaults to false.
+- **`forceReauth`**  - Optional force re-authentication flag. Defaults to false.
 
 
 ## Returns

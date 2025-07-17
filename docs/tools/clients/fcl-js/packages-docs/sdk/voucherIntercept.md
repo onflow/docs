@@ -1,5 +1,4 @@
 ---
-sidebar_position: 1
 title: "voucherIntercept"
 description: "voucherIntercept function documentation."
 ---

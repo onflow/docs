@@ -1,5 +1,4 @@
 ---
-sidebar_position: 1
 title: "execStrategy"
 description: "execStrategy function documentation."
 ---

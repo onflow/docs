@@ -1,5 +1,4 @@
 ---
-sidebar_position: 1
 title: "invariant"
 description: "invariant function documentation."
 ---
@@ -38,9 +37,7 @@ invariant(args)
 
 ## Returns
 
-```typescript
-(ix: any) => any
-```
+`any`
 
 
 ---

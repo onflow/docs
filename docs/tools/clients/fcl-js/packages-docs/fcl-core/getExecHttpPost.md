@@ -1,5 +1,4 @@
 ---
-sidebar_position: 1
 title: "getExecHttpPost"
 description: "getExecHttpPost function documentation."
 ---
@@ -60,9 +59,7 @@ export type ExecLocalFunction = (
 
 ## Returns
 
-```typescript
-({ service, body, config, opts }: ExecHttpPostParams) => Promise<any>
-```
+`Promise<any>`
 
 
 HTTP POST strategy function that can be used to execute services

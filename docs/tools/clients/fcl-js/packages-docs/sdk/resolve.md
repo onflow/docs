@@ -1,5 +1,4 @@
 ---
-sidebar_position: 1
 title: "resolve"
 description: "resolve function documentation."
 ---
@@ -24,7 +23,7 @@ You can import the entire package and access the function:
 ```typescript
 import * as sdk from "@onflow/sdk"
 
-sdk.resolve(interaction)
+sdk.resolve(context)
 ```
 
 Or import directly the specific function:
@@ -32,7 +31,7 @@ Or import directly the specific function:
 ```typescript
 import { resolve } from "@onflow/sdk"
 
-resolve(interaction)
+resolve(context)
 ```
 
 ## Usage
@@ -53,22 +52,29 @@ const resolved = await resolve(interaction)
 
 ## Parameters
 
-### `interaction` 
+### `context` 
 
 
-- Type: `any`
-- Description: The interaction object to resolve
+- Type: 
+```typescript
+export interface SdkContext {
+  get accessNodeUrl(): string
+  get transport(): SdkTransport
+  get computeLimit(): number
+  get customResolver(): ((args: any) => Promise<any>) | undefined
+  get customDecoders(): {[key: string]: (data: any) => any}
+  get contracts(): {
+    [contractName: string]: string
+  }
+  get debug(): {[key: string]: any} 
+  get legacyContractIdentifiers(): Record<string, string>
+}
+```
 
 
 ## Returns
 
-```typescript
-export type InteractionBuilderFn = (
-  ix: Interaction
-) => Interaction | Promise<Interaction>
-```
+[`Promise<Interaction>`](../types#interaction)
 
-
-A promise that resolves to the fully resolved interaction
 
 ---

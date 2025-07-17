@@ -1,5 +1,4 @@
 ---
-sidebar_position: 1
 title: "resolveCadence"
 description: "resolveCadence function documentation."
 ---
@@ -8,7 +7,6 @@ description: "resolveCadence function documentation."
 
 # resolveCadence
 
-Resolves Cadence code by evaluating functions and replacing contract placeholders with addresses.
 
 ## Import
 
@@ -17,7 +15,7 @@ You can import the entire package and access the function:
 ```typescript
 import * as sdk from "@onflow/sdk"
 
-sdk.resolveCadence(ix)
+sdk.resolveCadence(context)
 ```
 
 Or import directly the specific function:
@@ -25,24 +23,35 @@ Or import directly the specific function:
 ```typescript
 import { resolveCadence } from "@onflow/sdk"
 
-resolveCadence(ix)
+resolveCadence(context)
 ```
 
 
 ## Parameters
 
-### `ix` 
+### `context` 
 
 
-- Type: [`Interaction`](../types#interaction)
-- Description: The interaction object containing Cadence code to resolve
+- Type: 
+```typescript
+export interface SdkContext {
+  get accessNodeUrl(): string
+  get transport(): SdkTransport
+  get computeLimit(): number
+  get customResolver(): ((args: any) => Promise<any>) | undefined
+  get customDecoders(): {[key: string]: (data: any) => any}
+  get contracts(): {
+    [contractName: string]: string
+  }
+  get debug(): {[key: string]: any} 
+  get legacyContractIdentifiers(): Record<string, string>
+}
+```
 
 
 ## Returns
 
 [`Promise<Interaction>`](../types#interaction)
 
-
-The interaction with resolved Cadence code
 
 ---

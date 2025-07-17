@@ -1,10 +1,9 @@
 ---
-sidebar_position: 1
 title: "events"
 description: "events function documentation."
 ---
 
-<!-- THIS DOCUMENT IS AUTO-GENERATED FROM [onflow/fcl-react-native/../fcl-core/src/events/index.ts](https://github.com/onflow/fcl-js/tree/master/packages/fcl-react-native/../fcl-core/src/events/index.ts). DO NOT EDIT MANUALLY -->
+<!-- THIS DOCUMENT IS AUTO-GENERATED FROM [onflow/fcl-react-native/src/fcl-react-native.ts](https://github.com/onflow/fcl-js/tree/master/packages/fcl-react-native/src/fcl-react-native.ts). DO NOT EDIT MANUALLY -->
 
 # events
 
@@ -82,12 +81,16 @@ const unsubscribe = fcl.events({
 If a string is provided, it will be treated as a single event type to subscribe to.
 If an EventFilter object is provided, it can contain multiple event types and other filter criteria.
 
+#### Properties:
+
+- **`eventTypes`**  - Array of event type strings to subscribe to
+- **`startBlockId`**  - Block ID to start streaming from
+- **`startBlockHeight`**  - Block height to start streaming from
+
 
 ## Returns
 
-```typescript
-{ subscribe: (onData: (event: Event) => void, onError?: (error: Error) => void) => () => void; }
-```
+`void; }`
 
 
 An object containing a subscribe method

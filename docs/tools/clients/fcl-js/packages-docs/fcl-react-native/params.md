@@ -1,5 +1,4 @@
 ---
-sidebar_position: 1
 title: "params"
 description: "params function documentation."
 ---
@@ -40,9 +39,7 @@ params(params)
 
 ## Returns
 
-```typescript
-Promise<void> | ((...args: unknown[]) => Promise<unknown>)
-```
+`Promise<unknown>`
 
 
 ---

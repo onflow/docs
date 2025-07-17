@@ -1,5 +1,4 @@
 ---
-sidebar_position: 1
 title: "subscribeRaw"
 description: "subscribeRaw function documentation."
 ---
@@ -92,12 +91,15 @@ SubscribeRawParams<T>
 ```
 - Description: Additional options for the subscription
 
+#### Properties:
+
+- **`node`**  - Custom node endpoint to be used for the subscription
+- **`transport`**  - Custom transport implementation for handling the connection
+
 
 ## Returns
 
-```typescript
-{ unsubscribe: () => void; }
-```
+`void; }`
 
 
 A subscription object with an unsubscribe method

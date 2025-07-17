@@ -1,5 +1,4 @@
 ---
-sidebar_position: 1
 title: "sansPrefix"
 description: "sansPrefix function documentation."
 ---

@@ -1,5 +1,4 @@
 ---
-sidebar_position: 1
 title: "WalletUtils"
 description: "Namespace containing WalletUtils utilities"
 ---
@@ -421,9 +420,7 @@ window.addEventListener("beforeunload", () => {
 
 #### Returns
 
-```typescript
-() => void
-```
+`void`
 
 ### ready
 

@@ -1,5 +1,4 @@
 ---
-sidebar_position: 1
 title: "TestUtils"
 description: "Namespace containing TestUtils utilities"
 ---
@@ -61,9 +60,7 @@ interface IAuthzResolveMany {
 
 #### Returns
 
-```typescript
-(account: InteractionAccount) => InteractionAccount
-```
+[`InteractionAccount`](../types#interactionaccount)
 
 ### authzFn
 
@@ -103,9 +100,7 @@ interface IAuthzOpts {
 
 #### Returns
 
-```typescript
-(account: Partial<InteractionAccount>) => Partial<InteractionAccount>
-```
+`Partial<InteractionAccount>`
 
 ### authzResolve
 
@@ -146,7 +141,7 @@ interface IAuthzResolveOpts {
 #### Returns
 
 ```typescript
-(account: InteractionAccount) => { tempId: string; resolve: (account: Partial<InteractionAccount>) => Partial<InteractionAccount>; kind: InteractionResolverKind.ACCOUNT; addr: string; keyId: string | number; sequenceNum: number; signature: string; signingFunction: any; role: { proposer: boolean; authorizer: boolean; payer: boolean; param?: boolean; }; authorization: any; }
+Partial<InteractionAccount>; kind: InteractionResolverKind.ACCOUNT; addr: string; keyId: string | number; sequenceNum: number; signature: string; signingFunction: any; role: { proposer: boolean; authorizer: boolean; payer: boolean; param?: boolean; }; authorization: any; }
 ```
 
 ### authzResolveMany
@@ -190,9 +185,7 @@ interface IAuthzResolveMany {
 
 #### Returns
 
-```typescript
-(account: InteractionAccount) => InteractionAccount
-```
+[`InteractionAccount`](../types#interactionaccount)
 
 ### idof
 

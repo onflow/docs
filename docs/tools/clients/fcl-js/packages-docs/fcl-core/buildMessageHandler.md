@@ -1,5 +1,4 @@
 ---
-sidebar_position: 1
 title: "buildMessageHandler"
 description: "buildMessageHandler function documentation."
 ---
@@ -78,9 +77,7 @@ export interface BuildMessageHandlerParams {
 
 ## Returns
 
-```typescript
-(e: MessageEvent<any>) => void
-```
+`void`
 
 
 Message event handler function that can be attached to window message listeners

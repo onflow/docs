@@ -1,5 +1,4 @@
 ---
-sidebar_position: 1
 title: "unauthenticate"
 description: "unauthenticate function documentation."
 ---

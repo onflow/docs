@@ -1,5 +1,4 @@
 ---
-sidebar_position: 1
 title: "getChainId"
 description: "getChainId function documentation."
 ---
@@ -52,6 +51,11 @@ export interface GetChainIdOptions {
 }
 ```
 - Description: Optional configuration parameters
+
+#### Properties:
+
+- **`node`**  - Override the access node URL for this request instead of using the configured one
+- **`enableRequestLogging`**  - Enable logging for the chain ID request
 
 
 ## Returns

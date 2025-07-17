@@ -1,5 +1,4 @@
 ---
-sidebar_position: 1
 title: "@onflow/fcl"
 description: "High-level JavaScript/TypeScript library for building web applications on the Flow blockchain."
 ---
@@ -241,6 +240,7 @@ This section contains documentation for all of the functions and namespaces in t
 - [cadence](./cadence.md) - Creates a template function
 - [cdc](./cdc.md) - Creates a template function
 - [config](./config.md) - Sets the config
+- [createFcl](./createFcl.md) - Creates a configured FCL (Flow Client Library) instance for web applications....
 - [createSignableVoucher](./createSignableVoucher.md) - Creates a signable voucher object from an interaction for signing purposes. A...
 - [currentUser](./currentUser.md) - The main current user service for managing user authentication and authorization...
 - [decode](./decode.md) - Decodes the response from &#x27;fcl.send()&#x27; into the appropriate JSON representation...

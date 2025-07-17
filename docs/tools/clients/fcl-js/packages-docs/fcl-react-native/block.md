@@ -1,5 +1,4 @@
 ---
-sidebar_position: 1
 title: "block"
 description: "block function documentation."
 ---
@@ -55,7 +54,7 @@ await fcl.send([fcl.getBlock(), fcl.atBlockHeight(123)]).then(fcl.decode)
 
 - Type: 
 ```typescript
-interface BlockQueryOptions {
+export interface BlockQueryOptions {
   sealed?: boolean
   height?: number
   id?: string
@@ -73,7 +72,5 @@ interface BlockQueryOptions {
 
 [`Promise<Block>`](../types#block)
 
-
-A promise that resolves to a Block object
 
 ---

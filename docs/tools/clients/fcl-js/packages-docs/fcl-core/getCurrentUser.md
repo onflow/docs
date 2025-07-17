@@ -1,5 +1,4 @@
 ---
-sidebar_position: 1
 title: "getCurrentUser"
 description: "getCurrentUser function documentation."
 ---
@@ -20,7 +19,7 @@ You can import the entire package and access the function:
 ```typescript
 import * as fcl from "@onflow/fcl-core"
 
-fcl.getCurrentUser(config)
+fcl.getCurrentUser(cfg)
 ```
 
 Or import directly the specific function:
@@ -28,7 +27,7 @@ Or import directly the specific function:
 ```typescript
 import { getCurrentUser } from "@onflow/fcl-core"
 
-getCurrentUser(config)
+getCurrentUser(cfg)
 ```
 
 ## Usage
@@ -99,18 +98,22 @@ console.log("Message signatures:", signatures)
 
 ## Parameters
 
-### `config` 
+### `cfg` 
 
 
 - Type: 
 ```typescript
 export interface CurrentUserConfig {
   platform: string
-  discovery?: object | undefined
-  getStorageProvider?: () => Promise<StorageProvider>
+  discovery?: {
+    execStrategy?: (...args: any[]) => any
+    authnInclude?: string[]
+    authnExclude?: string[]
+    featuresSuggested?: string[]
+  }
+  getStorageProvider: () => Promise<StorageProvider>
 }
 ```
-- Description: Configuration object for the current user service
 
 
 ## Returns

@@ -1,5 +1,4 @@
 ---
-sidebar_position: 1
 title: "proposer"
 description: "proposer function documentation."
 ---
@@ -84,9 +83,7 @@ export type AccountAuthorization =
 
 ## Returns
 
-```typescript
-(ix: Interaction) => Interaction
-```
+[`Interaction`](../types#interaction)
 
 
 A function that takes an interaction object and returns a new interaction object with the proposer added

@@ -1,5 +1,4 @@
 ---
-sidebar_position: 1
 title: "serialize"
 description: "serialize function documentation."
 ---
@@ -72,6 +71,10 @@ export interface SerializeOptions {
 }
 ```
 - Description: Optional configuration object
+
+#### Properties:
+
+- **`resolve`**  - Custom resolve function to use instead of the default
 
 
 ## Returns

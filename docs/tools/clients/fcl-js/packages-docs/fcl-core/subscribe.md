@@ -1,5 +1,4 @@
 ---
-sidebar_position: 1
 title: "subscribe"
 description: "subscribe function documentation."
 ---
@@ -89,6 +88,11 @@ SubscribeParams<T>
 { node?: string; transport?: SdkTransport; }
 ```
 - Description: Additional options for the subscription
+
+#### Properties:
+
+- **`node`**  - Custom node endpoint to be used for the subscription
+- **`transport`**  - Custom transport implementation for handling the connection
 
 
 ## Returns

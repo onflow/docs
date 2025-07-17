@@ -1,5 +1,4 @@
 ---
-sidebar_position: 1
 title: "send"
 description: "send function documentation."
 ---
@@ -62,7 +61,7 @@ const response = await fcl.send([
 
 - Type: 
 ```typescript
-false | Function | (false | Function)[]
+false | InteractionBuilderFn | (false | InteractionBuilderFn)[]
 ```
 - Description: An array of builders (functions that take an interaction object and return a new interaction object)
 
@@ -72,12 +71,15 @@ false | Function | (false | Function)[]
 - Type: `any`
 - Description: Additional optional options for the request
 
+#### Properties:
+
+- **`node`**  - Custom node endpoint to use for this request
+- **`resolve`**  - Custom resolve function to use for processing the interaction
+
 
 ## Returns
 
 `Promise<any>`
 
-
-A promise that resolves to a ResponseObject containing the data returned from the chain. Should always be decoded with fcl.decode() to get back appropriate JSON keys and values.
 
 ---

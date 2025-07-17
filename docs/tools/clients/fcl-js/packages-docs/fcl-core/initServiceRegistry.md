@@ -1,5 +1,4 @@
 ---
-sidebar_position: 1
 title: "initServiceRegistry"
 description: "initServiceRegistry function documentation."
 ---
@@ -56,9 +55,7 @@ const registry = initServiceRegistry({
 
 ## Returns
 
-```typescript
-Readonly<{ add: (servicePlugin: any) => void; getServices: () => any[]; getStrategy: (method: any) => unknown; getStrategies: () => any[]; }>
-```
+`any[]; }>`
 
 
 The initialized service registry instance

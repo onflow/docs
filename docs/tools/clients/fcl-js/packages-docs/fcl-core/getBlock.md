@@ -1,5 +1,4 @@
 ---
-sidebar_position: 1
 title: "getBlock"
 description: "getBlock function documentation."
 ---

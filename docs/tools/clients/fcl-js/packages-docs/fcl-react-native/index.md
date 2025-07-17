@@ -1,5 +1,4 @@
 ---
-sidebar_position: 1
 title: "@onflow/fcl-react-native"
 description: "React Native JavaScript/TypeScript library for building mobile applications on the Flow blockchain."
 ---

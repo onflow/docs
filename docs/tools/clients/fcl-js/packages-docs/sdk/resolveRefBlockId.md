@@ -1,5 +1,4 @@
 ---
-sidebar_position: 1
 title: "resolveRefBlockId"
 description: "resolveRefBlockId function documentation."
 ---
@@ -43,9 +42,7 @@ resolveRefBlockId(opts)
 
 ## Returns
 
-```typescript
-(ix: any) => Promise<Interaction>
-```
+[`Promise<Interaction>`](../types#interaction)
 
 
 A function that resolves the reference block ID for an interaction

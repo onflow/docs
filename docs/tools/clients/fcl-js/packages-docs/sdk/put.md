@@ -1,5 +1,4 @@
 ---
-sidebar_position: 1
 title: "put"
 description: "put function documentation."
 ---
@@ -64,9 +63,7 @@ put("network.endpoint", "https://access.mainnet.onflow.org")(interaction);
 
 ## Returns
 
-```typescript
-(ix: Interaction) => Interaction
-```
+[`Interaction`](../types#interaction)
 
 
 A function that takes an interaction and sets the value

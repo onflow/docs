@@ -1,5 +1,4 @@
 ---
-sidebar_position: 1
 title: "atBlockId"
 description: "atBlockId function documentation."
 ---

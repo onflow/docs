@@ -1,10 +1,9 @@
 ---
-sidebar_position: 1
 title: "queryRaw"
 description: "queryRaw function documentation."
 ---
 
-<!-- THIS DOCUMENT IS AUTO-GENERATED FROM [onflow/fcl/../fcl-core/src/exec/query-raw.ts](https://github.com/onflow/fcl-js/tree/master/packages/fcl/../fcl-core/src/exec/query-raw.ts). DO NOT EDIT MANUALLY -->
+<!-- THIS DOCUMENT IS AUTO-GENERATED FROM [onflow/fcl/src/fcl.ts](https://github.com/onflow/fcl-js/tree/master/packages/fcl/src/fcl.ts). DO NOT EDIT MANUALLY -->
 
 # queryRaw
 
@@ -64,6 +63,14 @@ export interface QueryOptions {
 }
 ```
 - Description: Query Options and configuration
+
+#### Properties:
+
+- **`cadence`**  - Cadence Script used to query Flow
+- **`args`**  - Arguments passed to cadence script
+- **`template`**  - Interaction Template for a script
+- **`isSealed`**  - Block Finality
+- **`limit`**  - Compute Limit for Query
 
 
 ## Returns

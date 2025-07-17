@@ -1,5 +1,4 @@
 ---
-sidebar_position: 1
 title: "InteractionTemplateUtils"
 description: "Namespace containing InteractionTemplateUtils utilities"
 ---
@@ -228,7 +227,7 @@ You can import the entire package and access the function:
 ```typescript
 import * as fcl from "@onflow/fcl-core"
 
-fcl.InteractionTemplateUtils.getInteractionTemplateAudits(getInteractionTemplateAuditsParams, opts)
+fcl.InteractionTemplateUtils.getInteractionTemplateAudits(context, getInteractionTemplateAuditsParams, opts)
 ```
 
 Or import the namespace directly:
@@ -236,7 +235,7 @@ Or import the namespace directly:
 ```typescript
 import { InteractionTemplateUtils } from "@onflow/fcl-core"
 
-InteractionTemplateUtils.getInteractionTemplateAudits(getInteractionTemplateAuditsParams, opts)
+InteractionTemplateUtils.getInteractionTemplateAudits(context, getInteractionTemplateAuditsParams, opts)
 ```
 
 #### Usage
@@ -271,6 +270,20 @@ console.log(auditResults)
 ```
 
 #### Parameters
+
+##### `context`
+
+
+- Type: 
+```typescript
+export interface FCLContext {
+  currentUser: CurrentUserServiceApi
+  sdk: ReturnType<typeof createSdkClient>
+  storage: StorageProvider
+  config: ConfigService
+  platform: string
+}
+```
 
 ##### `getInteractionTemplateAuditsParams`
 

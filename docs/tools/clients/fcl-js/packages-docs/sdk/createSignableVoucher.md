@@ -1,5 +1,4 @@
 ---
-sidebar_position: 1
 title: "createSignableVoucher"
 description: "createSignableVoucher function documentation."
 ---

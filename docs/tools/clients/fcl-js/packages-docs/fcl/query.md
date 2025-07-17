@@ -1,10 +1,9 @@
 ---
-sidebar_position: 1
 title: "query"
 description: "query function documentation."
 ---
 
-<!-- THIS DOCUMENT IS AUTO-GENERATED FROM [onflow/fcl/../fcl-core/src/exec/query.ts](https://github.com/onflow/fcl-js/tree/master/packages/fcl/../fcl-core/src/exec/query.ts). DO NOT EDIT MANUALLY -->
+<!-- THIS DOCUMENT IS AUTO-GENERATED FROM [onflow/fcl/src/fcl.ts](https://github.com/onflow/fcl-js/tree/master/packages/fcl/src/fcl.ts). DO NOT EDIT MANUALLY -->
 
 # query
 
@@ -65,6 +64,14 @@ export interface QueryOptions {
 }
 ```
 - Description: Query options configuration
+
+#### Properties:
+
+- **`cadence`**  - A valid cadence script (required)
+- **`args`**  - Any arguments to the script if needed should be supplied via a function that returns an array of arguments
+- **`limit`**  - Compute (Gas) limit for query.
+- **`template`**  - Interaction Template for a script
+- **`isSealed`**  - Block Finality
 
 
 ## Returns

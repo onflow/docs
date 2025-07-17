@@ -1,5 +1,4 @@
 ---
-sidebar_position: 1
 title: "authenticate"
 description: "authenticate function documentation."
 ---
