@@ -305,6 +305,8 @@ The gas limit depends on the complexity of the transaction script. Until dedicat
 A transaction will be rejected if it is submitted past its expiry block. Flow calculates transaction expiry using the _reference block_ field on a transaction.
 A transaction expires after `600` blocks are committed on top of the reference block, which takes about 10 minutes at average Mainnet block rates.
 
+It is recommended to use the latest finalized block as the reference block, as it is the most recent block guaranteed to be included by the network.  Using the latest sealed block is not recommended, as sealing occurs after finalization and could cause the transaction to fall outside of the expiration window.  If not specified, FCL will automatically use the latest finalized block as the reference block.
+
 ### Mutate
 [<img src="https://raw.githubusercontent.com/onflow/sdks/main/templates/documentation/ref.svg" width="130" />](./api.md#mutate)
 

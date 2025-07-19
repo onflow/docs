@@ -1009,8 +1009,12 @@ tx.SetProposalKey(
     creatorAccountKey.SequenceNumber,
 )
 
-// Get the latest sealed block to use as a reference block
-latestBlock, err := flowClient.GetLatestBlockHeader(context.Background(), true)
+// Get the latest finalized block to use as a reference block
+// It is recommended to use the latest finalized block as the reference block, as
+// it is the most recent block guaranteed to be included by the network.  Using the
+// latest sealed block is not recommended, as sealing occurs after finalization and
+// could cause the transaction to fall outside of the expiration window.
+latestBlock, err := flowClient.GetLatestBlockHeader(context.Background(), false)
 if err != nil {
     panic("failed to fetch latest block")
 }
