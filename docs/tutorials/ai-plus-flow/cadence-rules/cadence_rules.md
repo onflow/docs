@@ -14,11 +14,9 @@ keywords:
 
 ## Introduction
 
-Ever since the development of complex Cadence smart contracts and Flow blockchain applications, developers have needed persistent context and specialized guidance to navigate the unique patterns, syntax, and best practices of the Flow ecosystem. Cursor Rules bridge this gap by embedding domain-specific knowledge directly into your AI assistant's decision-making process.
+When building with AI it is hard to make the agent consistently understand what standards it should use when building or generating responses. Cursor Rules mitigates this issue by setting up global rules, project wide rules or document specific rules that are inserted in the agent's context before reading the prompt. With Cursor Rules, you can create an assistant that can consistently understand the intended development process, desired formatted responses, and avoid common mistakes. Consider it your tool to make guard rails for agents that can reduce hallucination and incorrecting development flows. 
 
-With Cursor Rules for Cadence and Flow development, you can leverage AI assistance that understands NFT standards, resource handling patterns, transaction authorization, and deployment workflows. This means you can get consistent, expert-level guidance for contract development, debugging syntax errors, implementing MetadataViews, and following Flow's architectural patterns without repeatedly explaining context.
-
-In this guide, you'll learn how to configure and use Cursor Rules that **transform your AI assistant into a Flow blockchain development expert** with persistent knowledge of Cadence syntax patterns, NFT standards, project configuration, and development workflows.
+In this guide, you'll learn how to configure and use Cursor Rules that **transform your AI assistant into a Flow development expert** with persistent knowledge of Cadence syntax patterns, NFT standards, project configuration, and development workflows.
 
 ## Learning Objectives
 
