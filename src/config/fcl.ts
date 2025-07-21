@@ -55,6 +55,7 @@ export const flowKitConfig = {
   appDetailTitle: 'Flow Dev Portal',
   appDetailIcon: 'https://avatars.githubusercontent.com/u/62387156?v=4',
   appDetailDescription: 'The developer portal for Flow Blockchain',
+  discoveryWallet: `https://fcl-discovery.onflow.org/${flowNetwork}/authn`,
 };
 
 configureFCL();
