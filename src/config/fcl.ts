@@ -49,7 +49,7 @@ export function getContractAddress(contractName: string): string {
 const storage = {
   can: fcl.LOCAL_STORAGE.can,
   get: (key: string) => fcl.LOCAL_STORAGE.get(`isolated-CURRENT-USER`),
-  set: (key: string, value: string) => fcl.LOCAL_STORAGE.put(`isolated-CURRENT-USER`, value),
+  put: (key: string, value: string) => fcl.LOCAL_STORAGE.put(`isolated-CURRENT-USER`, value),
   removeItem: (key: string) => fcl.LOCAL_STORAGE.removeItem(`isolated-CURRENT-USER`),
 }
 
@@ -65,5 +65,7 @@ export const flowKitConfig = {
   discoveryWallet: `https://fcl-discovery.onflow.org/${flowNetwork}/authn`,
   storage,
 };
+
+export const flowClient = fcl.createFlowClient(flowKitConfig)
 
 configureFCL();
