@@ -66,6 +66,7 @@ alwaysApply: false
 Referenced files like `@nft-template.cdc` are included as additional context when the rule triggers.
 
 ## User Rules
+
 User rules are global preferences defined in Cursor Settings → Rules that apply across all projects. They’re plain text and perfect for setting preferred communication style or coding conventions:
 
 ```md
