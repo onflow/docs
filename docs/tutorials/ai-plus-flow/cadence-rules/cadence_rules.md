@@ -16,7 +16,7 @@ keywords:
 
 When building with AI, it is hard to make the agent consistently understand what standards it should use when building or generating responses. Cursor Rules mitigates this issue by setting up global rules, project wide rules or document specific rules that are inserted in the agent's context before reading the prompt. With Cursor Rules, you can create an assistant that can consistently understand the intended development process, desired formatted responses, and avoid common mistakes. Consider it your tool to make guard rails for agents that can reduce hallucination and incorrecting development flows. 
 
-In this guide, you'll learn how to configure and use Cursor Rules that **transform your AI assistant into a Flow development expert** with persistent knowledge of Cadence syntax patterns, NFT standards, project configuration, and development workflows.
+In this guide, you'll learn how to configure and use Cursor Rules that transform your AI assistant into a Flow development expert with persistent knowledge of Cadence syntax patterns, NFT standards, project configuration, and development workflows.
 
 ## Learning Objectives
 
