@@ -2,6 +2,7 @@
 title: Cadence Rules
 description: Learn how to use Cursor Rules to enhance AI assistance for Cadence and Flow development with persistent context and automated workflows.
 sidebar_position: 0
+sidebar_label: Cadence Rules
 keywords:
  - CursorRules
  - AI
@@ -39,14 +40,15 @@ Cursor offers two rule types:
 
 
 ### Rule anatomy
+
 Each rule file is written in MDC (.mdc), a format supporting metadata and content. Control how rules are applied from the type dropdown which changes properties `description`, `globs`, `alwaysApply`.
 
-| Rule Type               |    Description                                                                   |
-|-------------------------|----------------------------------------------------------------------------------|
-|     Always Apply        | Always included in model context                                                 |
-| Apply to Specific Files | Included when files matching a glob pattern are referenced                       |
-|   Apply Intellegently   | Available to AI, which decides whether to include it. Must provide a description |
-|      Apply Manually     | Only included when explicitly mentioned using `@ruleName`                        |
+|Rule Type               |Description                                                                      |
+|------------------------|---------------------------------------------------------------------------------|
+|Always Apply            |Always included in model context                                                 |
+|Apply to Specific Files |Included when files matching a glob pattern are referenced                       |
+|Apply Intellegently     |Available to AI, which decides whether to include it. Must provide a description |
+|Apply Manually          |Only included when explicitly mentioned using `@ruleName`                        |
 
 ```mdc
 ---
@@ -63,6 +65,7 @@ alwaysApply: false
 @nft-template.cdc
 
 ```
+
 Referenced files like `@nft-template.cdc` are included as additional context when the rule triggers.
 
 ## User Rules
@@ -78,6 +81,7 @@ Please reply in a concise style. Avoid unnecessary repetition or filler language
 Project rules are stored as individual files in `.cursor/rules` and get version-controlled alongside your code. Each rule can target specific file types using glob patterns, be manually invoked when needed, or automatically activate based on context. You can also create nested rule directories - any folder can have its own `.cursor/rules` directory with rules that apply specifically to that area of your project.
 
 Project rules excel at:
+
 - Capturing specialized knowledge about your codebase and domain
 - Establishing consistent workflows and development patterns
 - Enforcing coding standards and architectural decisions across your team
@@ -96,6 +100,7 @@ project/
 ```
 
 ## Creating a rule
+
 Create rules using the Cursor Rule command or going to Cursor Settings > Rules. This creates a new rule file in .cursor/rules. From settings you can see all rules and their status.
 
 Click on the cog icon on the upper right section of the window. Then click the "Rules and Memories" section on the left side bar. Finally click on the "+ Add Rule" button in the User Rules or Project Rules section (depending on your objective). 
@@ -103,12 +108,13 @@ Click on the cog icon on the upper right section of the window. Then click the "
 ![Creating a Cursor Rule](./imgs/cursor_rules1.png)
 
 ### Generating rules
+
 Generate rules directly in conversations using the `/Generate Cursor Rules` command. Useful when you’ve made decisions about agent behavior and want to reuse them.
 
 ![Generate Cursor Rules](./imgs/generate_cursor_rules.png)
 
-
 ## Best practices
+
 Good rules are focused, actionable, and scoped.
 
 - Keep rules under 500 lines
@@ -123,7 +129,6 @@ Here are a couple of Cursor Rules made by [claucondor] made for Flow development
 
 ### Cadence NFT Standards
 
-
 The [cadence-nft-standards.mdc] rule provides comprehensive guidelines for developing NFTs using Cadence on Flow blockchain. It ensures proper implementation of:
 
 - **Core Interface Conformance**: `NonFungibleToken`, `NFT`, and `Collection` interfaces
@@ -133,6 +138,7 @@ The [cadence-nft-standards.mdc] rule provides comprehensive guidelines for devel
 - **Event Standards**: Consistent event emission for off-chain indexing
 
 **Perfect for:**
+
 - New NFT projects on Flow
 - NFT marketplace integration
 - Complex NFT systems (traits, evolution, breeding)
@@ -141,10 +147,8 @@ The [cadence-nft-standards.mdc] rule provides comprehensive guidelines for devel
 
 **Applies to:** `.cdc` files, NFT transactions, collection setup, metadata implementation
 
+#### Rule Configuration
 
-#### How to Use This Rule
-
-##### Rule Configuration
 ```mdc
 ---
 description: Comprehensive standards and best practices for developing Non-Fungible Tokens (NFTs) using Cadence. Ensures proper implementation of NonFungibleToken interfaces, MetadataViews integration for marketplace compatibility, secure resource handling patterns, and advanced modular architectures for complex NFTs with traits, evolution, and breeding mechanics. Includes required standard functions, path conventions, event emission patterns, and security best practices for capability management.
@@ -152,9 +156,11 @@ globs: ["**/*.cdc", "**/contracts/**", "**/cadence/**"]
 alwaysApply: false
 ---
 ```
+
 Recommended Apply config: `Apply Intelligently`
 
-##### Manual Reference
+#### Manual Reference
+
 ```
 @cadence-nft-standards help me implement a new NFT contract
 ```
@@ -174,7 +180,6 @@ Recommended Apply config: `Apply Intelligently`
 - `"Build evolving NFTs with traits"` → Suggests modular architecture patterns
 - `"Review my NFT contract"` → Validates against all documented standards
 
-
 ### Cadence Syntax Patterns
 
 #### What This Rule Does
@@ -191,6 +196,7 @@ The [cadence-syntax-patterns.mdc] rule provides comprehensive syntax guidance an
 - **Debugging Strategies**: Systematic error resolution and prevention techniques
 
 **Perfect for:**
+
 - Writing any Cadence contracts or transactions
 - Debugging compilation errors with resources (`@`) or references (`&`)
 - Fixing authorization issues in transactions
@@ -200,10 +206,10 @@ The [cadence-syntax-patterns.mdc] rule provides comprehensive syntax guidance an
 
 **Applies to:** `.cdc` files, transaction scripts, contract development, Flow CLI usage, error debugging
 
-
 #### How to Use This Rule
 
-##### Auto Attached Configuration
+#### Auto Attached Configuration
+
 ```mdc
 ---
 description: Provides a comprehensive guide to syntax patterns, best practices, and common pitfalls in the Cadence language. Covers resource type syntax (@,&), interface restrictions ({}), transaction authorization patterns, contract member access, type conversion, access modifiers, view function purity, and debugging approaches. Includes language-specific patterns for optional binding, variable initialization, string manipulation, looping constructs, and idempotent transaction design.
@@ -211,13 +217,14 @@ globs: ["**/*.cdc", "**/cadence/**", "**/transactions/**", "**/scripts/**"]
 alwaysApply: false
 ---
 ```
+
 Recommended Apply config: `Apply Intelligently`
 
-##### Manual Reference
+#### Manual Reference
+
 ```
 @cadence-syntax-patterns help me fix this authorization error
 ```
-
 
 #### Key Benefits
 
@@ -248,7 +255,6 @@ Recommended Apply config: `Apply Intelligently`
 - **String Operations**: Use `.split()` and `.contains()` (no `.indexOf()`)
 - **Loops**: `while` loops only (no range-based `for` loops)
 
-
 ### Flow Development Workflow
 
 #### What This Rule Does
@@ -265,6 +271,7 @@ The [flow-development-workflow.mdc] rule provides comprehensive workflow methodo
 - **Testnet Validation**: Comprehensive validation protocols before mainnet deployment
 
 **Perfect for:**
+
 - Starting new Flow projects or need setup guidance
 - Moving between development stages (emulator → testnet → mainnet)
 - Debugging deployment or transaction authorization issues  
@@ -275,15 +282,14 @@ The [flow-development-workflow.mdc] rule provides comprehensive workflow methodo
 
 **Applies to:** Complete Flow development lifecycle, project setup, deployment, FCL integration, debugging
 
+#### Manual Reference
 
-#### How to Use This Rule
-
-##### Manual Reference
 ```
 @flow-development-workflow help me deploy to testnet properly
 ```
 
-##### Auto Attached Configuration
+#### Auto Attached Configuration
+
 ```mdc
 ---
 description: Comprehensive workflow and best practices guide for Flow blockchain development covering the complete development lifecycle from setup through mainnet deployment. Includes documentation-first debugging methodology, transaction authorization patterns, FCL integration best practices, deployment verification protocols, optimization techniques for computation limits, error resolution strategies, and testnet validation procedures. Emphasizes official Flow documentation usage and iterative development approach for both Cadence contracts and frontend integration.
@@ -291,6 +297,7 @@ globs: ["flow.json", "**/config.js", "**/cadence/**", "**.md"]
 alwaysApply: false
 ---
 ```
+
 Recommended Apply config: `Apply Intelligently`
 
 #### Key Benefits
@@ -330,7 +337,6 @@ Recommended Apply config: `Apply Intelligently`
 - **Full-Stack Awareness**: Consider entire stack from contracts to frontend UI
 - **Error-Driven Learning**: Use errors as opportunities to refine understanding
 
-
 ### Flow Project Configuration
 
 #### What This Rule Does
@@ -347,6 +353,7 @@ The [flow-project-config.mdc] rule provides comprehensive guidance for Flow proj
 - **Address Mapping**: Contract address management and import resolution
 
 **Perfect for:**
+
 - Setting up new Flow projects or configuring `flow.json`
 - Debugging deployment or contract resolution issues
 - Managing FCL integration and address mapping problems
@@ -357,9 +364,8 @@ The [flow-project-config.mdc] rule provides comprehensive guidance for Flow proj
 
 **Applies to:** `flow.json`, FCL config files, deployment scripts, network switching, contract imports
 
-#### How to Use This Rule
+#### Auto Attached Configuration
 
-##### Auto Attached Configuration
 ```mdc
 ---
 description: Comprehensive guide to Flow project configuration and flow.json management covering account setup, contract registration, deployment configuration, network-specific aliases, and FCL integration. Includes best practices for multi-network consistency, common configuration errors prevention, contract address management, and synchronization between backend deployment and frontend FCL configuration across emulator, testnet, and mainnet environments.
@@ -367,9 +373,11 @@ globs: ["flow.json", "**/config.js", "**/.env*", "**/package.json"]
 alwaysApply: false
 ---
 ```
+
 Recommended Apply config: `Apply Intelligently`
 
-##### Manual Reference
+#### Manual Reference
+
 ```
 @flow-project-config help me configure my flow.json for testnet deployment
 ```
@@ -436,6 +444,7 @@ The [user-preferences.mdc] rule personalizes AI assistance behavior for Flow blo
 - **User Experience Focus**: Clear blockchain interaction feedback and user-friendly interfaces
 
 **Perfect for:**
+
 - Ensuring consistent AI behavior across all Flow development projects
 - Matching AI assistance style to your preferred working methodology
 - Getting responses formatted in your preferred communication style
@@ -453,15 +462,15 @@ This rule works as the **behavioral foundation** for your technical Flow rules:
 - **User Preferences** defines **HOW** to deliver that information
 - **Result**: Consistent, personalized assistance across all Flow development scenarios
 
-#### How to Use This Rule
+#### Always Applied Configuration
 
-##### Always Applied Configuration
 ```mdc
 ---
 description: Defines personalized development preferences and communication style for Flow blockchain development including concise response formatting, documentation-driven problem solving, iterative workflow methodology, full-stack awareness, and systematic error resolution. Guides AI behavior to match user's preferred development philosophy with emphasis on official Flow patterns, practical solutions, and proactive error prevention across the entire development stack.
 alwaysApply: true
 ---
 ```
+
 Recommended Apply config: `Always Apply`
 
 #### Key Benefits
@@ -499,7 +508,6 @@ Recommended Apply config: `Always Apply`
 
 This ensures consistent AI behavior regardless of which specific project or technical rule is active.
 
-
 ## Conclusion
 
 In this guide, you explored how to configure and use Cursor Rules to enhance AI assistance for Flow blockchain development. You learned about the different types of rules available, from always-applied user preferences to context-specific project rules that activate based on file types and project structure.
@@ -512,13 +520,12 @@ Now that you have completed this guide, you should be able to:
 - Apply specialized Cadence syntax patterns and NFT development standards through persistent AI context  
 - Utilize workflow-based rules to guide project setup, deployment, and debugging processes across the Flow development lifecycle 
 
-
 <!-- Relative links, will not render on page -->
 
 [claucondor]: https://gist.github.com/claucondor/453cb30c56597b53071bb5bbf18d2c9c
-[cadence-rules]: https://github.com/0xLisanAlGaib/cadence-rules
-[cadence-nft-standards.mdc]: https://github.com/0xLisanAlGaib/cadence-rules/blob/main/cadence-nft-standards.mdc
-[cadence-syntax-patterns.mdc]: https://github.com/0xLisanAlGaib/cadence-rules/blob/main/cadence-syntax-patterns.mdc
-[flow-development-workflow.mdc]: https://github.com/0xLisanAlGaib/cadence-rules/blob/main/flow-development-workflow.mdc
-[flow-project-config.mdc]: https://github.com/0xLisanAlGaib/cadence-rules/blob/main/flow-project-config.mdc
-[user-preferences.mdc]: https://github.com/0xLisanAlGaib/cadence-rules/blob/main/user-preferences.mdc
+[cadence-rules]: https://github.com/onflow/cadence-rules
+[cadence-nft-standards.mdc]: https://github.com/onflow/cadence-rules/blob/main/cadence-nft-standards.mdc
+[cadence-syntax-patterns.mdc]: https://github.com/onflow/cadence-rules/blob/main/cadence-syntax-patterns.mdc
+[flow-development-workflow.mdc]: https://github.com/onflow/cadence-rules/blob/main/flow-development-workflow.mdc
+[flow-project-config.mdc]: https://github.com/onflow/cadence-rules/blob/main/flow-project-config.mdc
+[user-preferences.mdc]: https://github.com/onflow/cadence-rules/blob/main/user-preferences.mdc
