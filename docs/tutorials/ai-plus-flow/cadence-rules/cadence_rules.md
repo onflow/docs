@@ -29,7 +29,7 @@ After completing this guide, you'll be able to:
 
 ## What Are Cursor Rules?
 
-Shape AI behavior with persistent, reusable instructions that guide how Cursor's Agent and Inline Edit assist you. Rules act as continuous context - embedding your preferences, coding standards, and workflows directly into the AI's decision-making process. Since AI models start fresh with each interaction, rules bridge this gap by automatically injecting your preferences and context into every conversation.
+Cursor rules are a way to shape AI behavior with persistent, reusable instructions that guide how Cursor's Agent and Inline Edit assist you. Rules act as continuous context - embedding your preferences, coding standards, and workflows directly into the AI's decision-making process. Since AI models start fresh with each interaction, rules bridge this gap by automatically injecting your preferences and context into every conversation.
 When active, rules are included at the beginning of the AI's context, providing consistent guidance for code generation, edit suggestions, and workflow assistance.
 
 Cursor offers two rule types:
