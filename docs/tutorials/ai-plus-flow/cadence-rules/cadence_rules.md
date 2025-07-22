@@ -33,6 +33,7 @@ Shape AI behavior with persistent, reusable instructions that guide how Cursor's
 When active, rules are included at the beginning of the AI's context, providing consistent guidance for code generation, edit suggestions, and workflow assistance.
 
 Cursor offers two rule types:
+
 - **Project Rules**: Live in `.cursor/rules`, version-controlled with your code, and apply to specific projects
 - **User Rules**: Global preferences in Cursor Settings that apply across all your projects
 
