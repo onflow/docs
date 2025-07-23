@@ -17,7 +17,7 @@ export default function FlowProviderDemo({
   if (!isBrowser) return null;
 
   return (
-    <FlowProvider flowClient={flowClient} darkMode={colorMode === 'dark'}>
+    <FlowProvider flowClient={flowClient} colorMode={colorMode}>
       {children}
     </FlowProvider>
   );

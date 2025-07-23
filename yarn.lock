@@ -3698,9 +3698,9 @@
     elliptic "^6.5.4"
     google-protobuf "3.11.4"
 
-"@onflow/react-sdk@file:./packed-packages/onflow-react-sdk-0.10.0-alpha.2.tgz":
+"@onflow/react-sdk@file:./packed-packages/onflow-react-sdk-0.10.0-alpha.3.tgz":
   version "0.10.0-alpha.1"
-  resolved "file:./packed-packages/onflow-react-sdk-0.10.0-alpha.2.tgz#788c6ce7f9ee0c99de5b8fe237f0d347f474bc39"
+  resolved "file:./packed-packages/onflow-react-sdk-0.10.0-alpha.3.tgz#19309affe67444a189a5bab9c6e7d183d1641095"
   dependencies:
     "@babel/runtime" "^7.25.7"
     "@headlessui/react" "^2.2.2"
@@ -17976,9 +17976,9 @@ typesense@^1.7.2:
     loglevel "^1.8.1"
 
 typesense@^2.1.0-1:
-  version "2.1.0-12"
-  resolved "https://registry.yarnpkg.com/typesense/-/typesense-2.1.0-12.tgz#f2107a7e172b6b0689ff65762d89f8465a1aa233"
-  integrity sha512-dN4bsOSToqw+VfzPYmZWwYqaoe4pQmWt92lIQ56uM+8dwbdMm6AC1PzRukeBwseU8fKUBuLEdESd1bUI+Bulig==
+  version "2.1.0-13"
+  resolved "https://registry.yarnpkg.com/typesense/-/typesense-2.1.0-13.tgz#99ec63c55e8a96cac5d6719de4dca96f5a3cd173"
+  integrity sha512-J7Y+gqIAyPejjAfyQ5rqeAGRuRM6CTZw7VSgSq9F5esWnCAMSFI62GW9gpaG8QtbY00ELdx7nFq96TY2ezHS8Q==
   dependencies:
     axios "^1.8.4"
     loglevel "^1.8.1"
