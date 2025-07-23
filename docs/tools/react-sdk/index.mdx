@@ -344,6 +344,10 @@ Many of these hooks are built using [`@tanstack/react-query`](https://tanstack.c
 import { useFlowCurrentUser } from "@onflow/react-sdk"
 ```
 
+### Parameters
+
+- `flowClient?: FlowClient` - Optional FlowClient instance
+
 #### Returns:
 
 - `user: CurrentUser` – The current user object from FCL
@@ -381,6 +385,7 @@ import { useFlowAccount } from "@onflow/react-sdk"
 
 - `address?: string` – Flow address (with or without `0x` prefix)
 - `query?: UseQueryOptions<Account | null, Error>` – Optional TanStackQuery options
+- `flowClient?: FlowClient` - Optional FlowClient instance
 
 #### Returns: `UseQueryResult<Account | null, Error>`
 
@@ -420,6 +425,7 @@ import { useFlowBlock } from "@onflow/react-sdk"
 - `id?: string` – Block by ID
 - `height?: number` – Block by height
 - `query?: UseQueryOptions<Block | null, Error>` – Optional TanStackQuery options
+- `flowClient?: FlowClient` - Optional FlowClient instance
 
 Only one of `sealed`, `id`, or `height` should be provided.
 
@@ -453,7 +459,9 @@ import { useFlowChainId } from "@onflow/react-sdk"
 This hook retrieves the Flow chain ID, which is useful for identifying the current network.
 
 #### Parameters:
-- `queryOptions?: Omit<UseQueryOptions<string | null>, "queryKey" | "queryFn">` – Optional TanStack Query options like `staleTime`, `enabled`, etc.
+
+- `query?: Omit<UseQueryOptions<string | null>, "queryKey" | "queryFn">` – Optional TanStack Query options like `staleTime`, `enabled`, etc.
+- `flowClient?: FlowClient` - Optional FlowClient instance
 
 #### Returns: `UseQueryResult<string | null, Error>`
 
@@ -513,6 +521,7 @@ import { useFlowEvents } from "@onflow/react-sdk"
 - `opts?: { heartbeatInterval?: number }` – Options for subscription heartbeat
 - `onEvent: (event: Event) => void` – Callback for each event received
 - `onError?: (error: Error) => void` – Optional error handler
+- `flowClient?: FlowClient` - Optional FlowClient instance
 
 #### Example:
 
@@ -541,6 +550,7 @@ import { useFlowQuery } from "@onflow/react-sdk"
 - `cadence: string` – Cadence script to run
 - `args?: (arg, t) => unknown[]` – Function returning FCL arguments
 - `query?: UseQueryOptions<unknown, Error>` – Optional TanStackQuery options
+- `flowClient?: FlowClient` - Optional FlowClient instance
 
 #### Returns: `UseQueryResult<unknown, Error>`
 
@@ -584,6 +594,7 @@ This hook is identical to `useFlowQuery` but returns the raw, non-decoded respon
 - `cadence: string` – Cadence script to run
 - `args?: (arg, t) => unknown[]` – Function returning FCL arguments
 - `query?: UseQueryOptions<unknown, Error>` – Optional TanStackQuery options
+- `flowClient?: FlowClient` - Optional FlowClient instance
 
 #### Returns: `UseQueryResult<unknown, Error>`
 
@@ -625,6 +636,7 @@ import { useFlowMutate } from "@onflow/react-sdk"
 #### Parameters:
 
 - `mutation?: UseMutationOptions<string, Error, FCLMutateParams>` – Optional TanStackQuery mutation options
+- `flowClient?: FlowClient` - Optional FlowClient instance
 
 #### Returns: `UseMutationResult<string, Error, FCLMutateParams>`
 
@@ -678,6 +690,7 @@ import { useFlowRevertibleRandom } from "@onflow/react-sdk"
 - `max: string` – Maximum random value (inclusive), as a UInt256 decimal string. **Required**.
 - `count?: number` – Number of random values to fetch (must be at least 1). Defaults to `1`.
 - `query?: Omit<UseQueryOptions<any, Error>, "queryKey" | "queryFn">` – Optional TanStack Query settings like `staleTime`, `enabled`, `retry`, etc.
+- `flowClient?: FlowClient` - Optional FlowClient instance
 
 #### Returns: `UseQueryResult<RevertibleRandomResult[], Error>`
 
@@ -738,6 +751,7 @@ Fetches a Flow transaction by ID and returns the decoded transaction object.
 
 * `txId?: string` – The Flow transaction ID to fetch.
 * `query?: Omit<UseQueryOptions<Transaction | null, Error>, "queryKey" | "queryFn">` – Optional TanStack Query options like `staleTime`, `enabled`, etc.
+* `flowClient?: FlowClient` - Optional FlowClient instance
 
 #### Returns: `UseQueryResult<Transaction | null, Error>`
 
@@ -774,6 +788,7 @@ import { useFlowTransactionStatus } from "@onflow/react-sdk"
 #### Parameters:
 
 - `id: string` – Transaction ID to subscribe to
+- `flowClient?: FlowClient` - Optional FlowClient instance
 
 #### Returns:
 
@@ -835,7 +850,9 @@ import { useCrossVmBatchTransaction } from "@onflow/react-sdk"
 This hook allows you to execute multiple EVM transactions in a single atomic Cadence transaction. It is useful for batch processing EVM calls while ensuring they are executed together, either all succeeding or allowing for some to fail without affecting the others.
 
 #### Parameters:
+
 - `mutation?: UseMutationOptions<string, Error, UseCrossVmBatchTransactionMutateArgs>` – Optional TanStackQuery mutation options
+- `flowClient?: FlowClient` - Optional FlowClient instance
 
 #### Returns: `UseCrossVmBatchTransactionResult`
 
@@ -937,6 +954,7 @@ Fetch the balance of a token balance for a given user across both Cadence and EV
 - `vaultIdentifier?: string` – Optional Cadence resource identifier (e.g. "0x1cf0e2f2f715450.FlowToken.Vault") for on-chain balance
 - `erc20AddressHexArg?: string` – Optional bridged ERC-20 contract address (hex) for EVM/COA balance
 - `query?: Omit<UseQueryOptions<unknown, Error>, "queryKey" | "queryFn">` – Optional TanStack Query config (e.g. staleTime, enabled)
+- `flowClient?: FlowClient` - Optional FlowClient instance
 
 > **Note:** You must pass `owner`, and one of `vaultIdentifier` or `erc20AddressHexArg`.
 
@@ -1000,7 +1018,9 @@ import { useCrossVmSpendNft } from "@onflow/react-sdk"
 Bridge NFTs from Cadence to Flow EVM and execute arbitrary EVM transactions to atomically spend them.
 
 #### Parameters:
+
 - `mutation?: UseMutationOptions<string, Error, UseCrossVmSpendFtMutateArgs>` – Optional TanStackQuery mutation options
+- `flowClient?: FlowClient` - Optional FlowClient instance
 
 Where `UseCrossVmSpendFtMutateArgs` is defined as:
 
@@ -1075,7 +1095,9 @@ import { useCrossVmSpendToken } from "@onflow/react-sdk"
 Bridge FTs from Cadence to Flow EVM and execute arbitrary EVM transactions to atomically spend them.
 
 #### Parameters:
+
 - `mutation?: UseMutationOptions<string, Error, UseCrossVmSpendTokenMutateArgs>` – Optional TanStackQuery mutation options
+- `flowClient?: FlowClient` - Optional FlowClient instance
 
 Where `UseCrossVmSpendTokenMutateArgs` is defined as:
 
@@ -1152,6 +1174,7 @@ Subscribes to status updates for a given Cross-VM Flow transaction ID that execu
 #### Parameters:
 
 - `id?: string` – Optional Flow transaction ID to monitor
+- `flowClient?: FlowClient` - Optional FlowClient instance
 
 #### Returns: `UseCrossVmTransactionStatusResult`
 
