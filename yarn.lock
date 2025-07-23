@@ -3698,19 +3698,8 @@
     elliptic "^6.5.4"
     google-protobuf "3.11.4"
 
-"@onflow/react-sdk@file:./packed-packages/onflow-react-sdk-0.10.0-alpha.1.tgz":
-  version "0.10.0-alpha.1"
-  resolved "file:./packed-packages/onflow-react-sdk-0.10.0-alpha.1.tgz#788c6ce7f9ee0c99de5b8fe237f0d347f474bc39"
-  dependencies:
-    "@babel/runtime" "^7.25.7"
-    "@headlessui/react" "^2.2.2"
-    "@tanstack/react-query" "^5.67.3"
-    "@testing-library/react" "^16.2.0"
-    tailwind-merge "^3.3.1"
-
 "@onflow/react-sdk@file:./packed-packages/onflow-react-sdk-0.10.0-alpha.2.tgz":
   version "0.10.0-alpha.1"
-  uid "788c6ce7f9ee0c99de5b8fe237f0d347f474bc39"
   resolved "file:./packed-packages/onflow-react-sdk-0.10.0-alpha.2.tgz#788c6ce7f9ee0c99de5b8fe237f0d347f474bc39"
   dependencies:
     "@babel/runtime" "^7.25.7"
