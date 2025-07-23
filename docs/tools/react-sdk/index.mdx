@@ -4,8 +4,13 @@ description: React hooks for interacting with the Flow blockchain.
 sidebar_position: 1
 ---
 
-import { Connect, TransactionDialog, TransactionLink, TransactionButton } from "@onflow/react-sdk"
-import { FlowProvider } from "@onflow/react-sdk"
+import {
+  Connect,
+  TransactionDialog,
+  TransactionLink,
+  TransactionButton,
+} from '@onflow/react-sdk';
+import { FlowProvider } from '@onflow/react-sdk';
 import FlowProviderDemo from '@site/src/components/FlowProviderDemo';
 
 # @onflow/react-sdk
@@ -61,32 +66,31 @@ npm install @onflow/react-sdk
 Begin by wrapping your application with the `FlowProvider` to initialize FCL configuration. This sets up FCL and maps its configuration keys to a strictly typed format for your hooks.
 
 ```tsx
-import React from "react"
-import App from "./App"
-import { FlowProvider } from "@onflow/react-sdk"
-import flowJSON from "../flow.json"
+import React from 'react';
+import App from './App';
+import { FlowProvider } from '@onflow/react-sdk';
+import flowJSON from '../flow.json';
 
 function Root() {
   return (
     <FlowProvider
       config={{
-        accessNodeUrl: "https://rest-testnet.onflow.org",
-        flowNetwork: "mainnet",
-        appDetailTitle: "My On Chain App",
-        appDetailIcon: "https://example.com/icon.png",
-        appDetailDescription: "A decentralized app on Flow",
-        appDetailUrl: "https://myonchainapp.com",
-        discoveryWallet: "https://fcl-discovery.onflow.org/fcl/testnet"
+        accessNodeUrl: 'https://rest-testnet.onflow.org',
+        flowNetwork: 'mainnet',
+        appDetailTitle: 'My On Chain App',
+        appDetailIcon: 'https://example.com/icon.png',
+        appDetailDescription: 'A decentralized app on Flow',
+        appDetailUrl: 'https://myonchainapp.com',
+        discoveryWallet: 'https://fcl-discovery.onflow.org/fcl/testnet',
       }}
       flowJson={flowJSON}
-      darkMode={false}
     >
       <App />
     </FlowProvider>
-  )
+  );
 }
 
-export default Root
+export default Root;
 ```
 
 If you're using **Next.js**, place the `FlowProvider` inside your `layout.tsx`. Since React hooks must run on the client, you may need to wrap the provider in a separate file that begins with `'use client'` to avoid issues with server-side rendering. Adjust this setup as needed for other frontend frameworks.
@@ -99,7 +103,7 @@ If you're using **Next.js**, place the `FlowProvider` inside your `layout.tsx`. 
 
 ### How Theming Works
 
-All UI components in `@onflow/react-sdk` are styled using [Tailwind CSS](https://tailwindcss.com/) utility classes. The kit supports both light and dark themes out of the box, using Tailwind's `dark:` variant for dark mode styling.
+All UI components in `@onflow/react-sdk` are styled using [Tailwind CSS](https://tailwindcss.com/) utility classes with flow prefix. The kit supports both light and dark themes out of the box, using Tailwind's `dark:` variant for dark mode styling.
 
 You can customize the look and feel of the kit by providing a custom theme to the `FlowProvider` via the `theme` prop. This allows you to override default colors and styles to better match your app's branding.
 
@@ -111,9 +115,9 @@ import { FlowProvider } from "@onflow/react-sdk"
   theme={{
     colors: {
       primary: {
-        background: "bg-blue-600 dark:bg-blue-400",
-        text: "text-white dark:text-blue-900",
-        hover: "hover:bg-blue-700 dark:hover:bg-blue-300",
+        background: "flow-bg-blue-600 dark:flow-bg-blue-400",
+        text: "flow-text-white dark:flow-text-blue-900",
+        hover: "hover:flow-bg-blue-700 dark:hover:flow-bg-blue-300",
       },
       // ...other color overrides
     }
@@ -129,11 +133,13 @@ import { FlowProvider } from "@onflow/react-sdk"
 
 ### How Dark Mode Works
 
-Dark mode is **fully controlled by the parent app** using the `darkMode` prop on `FlowProvider`. The kit does not manage dark mode state internally—this gives you full control and ensures the kit always matches your app's theme.
+Dark mode is **fully controlled by the parent app** using the `colorMode` prop on `FlowProvider`.
 
-- `darkMode={false}` (default): Forces all kit components to use light mode styles.
-- `darkMode={true}`: Forces all kit components to use dark mode styles.
-- You can dynamically change the `darkMode` prop to switch themes at runtime.
+- `colorMode={'system'}` (default): Matches the system color scheme, if the system is in light mode it will be light, otherwise dark.
+- `colorMode={'light'}`: Forces all the react-sdk components to use light mode styles.
+- `colorMode={'dark'}`: Forces all the react-sdk components to use dark mode styles.
+
+- You can dynamically change the `colorMode` prop to switch themes at runtime.
 
 **Example:**
 
@@ -143,7 +149,7 @@ function App() {
   const [isDark, setIsDark] = useState(false)
 
   return (
-    <FlowProvider config={...} darkMode={isDark}>
+    <FlowProvider config={...} colorMode={isDark ? 'dark' : 'light'}>
       <MyFlowComponents />
     </FlowProvider>
   )
@@ -152,23 +158,22 @@ function App() {
 
 **Accessing Dark Mode State in Components:**
 
-You can use the `useDarkMode` hook to check the current mode inside your components:
+You can use the `useDarkMode` hook to check the current value set inside your components:
 
 ```tsx
-import { useDarkMode } from "@onflow/react-sdk"
+import { useDarkMode } from '@onflow/react-sdk';
 
 function MyComponent() {
   // useDarkMode only returns the current state, no setter
-  const { isDark } = useDarkMode()
-  return <div>{isDark ? "Dark mode" : "Light mode"}</div>
+  const { isDark } = useDarkMode();
+  return <div>{isDark ? 'Dark mode' : 'Light mode'}</div>;
 }
 ```
 
 ### Notes
 
-- The kit does **not** automatically follow system preferences or save user choices. You are responsible for managing and passing the correct `darkMode` value.
-- All kit components will automatically apply the correct Tailwind `dark:` classes based on the `darkMode` prop.
-- For best results, ensure your app's global theme and the kit's `darkMode` prop are always in sync.
+- All react-sdk components will automatically apply the correct Tailwind `dark:` classes based on the `colorMode` prop.
+- For best results, ensure your app's global theme and the kit's `colorMode` prop are always in sync.
 
 ---
 
@@ -189,20 +194,20 @@ A drop-in wallet connection component with UI for copy address, logout, and bala
   - `"combined"`: Shows the total combined FLOW token balance from both sides
 
 ```tsx
-import { Connect } from "@onflow/react-sdk"
+import { Connect } from '@onflow/react-sdk';
 
 <Connect
-  onConnect={() => console.log("Connected!")}
-  onDisconnect={() => console.log("Logged out")}
-/>
+  onConnect={() => console.log('Connected!')}
+  onDisconnect={() => console.log('Logged out')}
+/>;
 ```
 
 ### Live Demo
 
 <FlowProviderDemo>
   <Connect
-    onConnect={() => console.log("Connected!")}
-    onDisconnect={() => console.log("Logged out")}
+    onConnect={() => console.log('Connected!')}
+    onDisconnect={() => console.log('Logged out')}
   />
 </FlowProviderDemo>
 
@@ -277,8 +282,7 @@ Dialog component for real-time transaction status updates.
 - `closeOnSuccess?: boolean` – If `true`, closes the dialog automatically after success
 
 ```tsx
-import { TransactionDialog } from "@onflow/react-sdk"
-
+import { TransactionDialog } from '@onflow/react-sdk';
 
 <TransactionDialog
   open={isOpen}
@@ -287,7 +291,7 @@ import { TransactionDialog } from "@onflow/react-sdk"
   pendingTitle="Sending..."
   successTitle="All done!"
   closeOnSuccess
-/>
+/>;
 ```
 
 ### Live Demo
@@ -315,18 +319,15 @@ Link to the block explorer with the appropriate network scoped to transaction ID
 - `variant?: ButtonProps["variant"]` – Optional button variant (defaults to `"link"`)
 
 ```tsx
-import { TransactionLink } from "@onflow/react-sdk"
+import { TransactionLink } from '@onflow/react-sdk';
 
-<TransactionLink txId="your-tx-id" />
+<TransactionLink txId="your-tx-id" />;
 ```
 
 ### Live Demo
 
 <FlowProviderDemo>
-  <TransactionLink
-    txId="0x1234567890abcdef"
-    variant="primary"
-  />
+  <TransactionLink txId="0x1234567890abcdef" variant="primary" />
 </FlowProviderDemo>
 
 ---
@@ -342,7 +343,7 @@ Many of these hooks are built using [`@tanstack/react-query`](https://tanstack.c
 ### `useFlowCurrentUser`
 
 ```tsx
-import { useFlowCurrentUser } from "@onflow/react-sdk"
+import { useFlowCurrentUser } from '@onflow/react-sdk';
 ```
 
 #### Returns:
@@ -353,7 +354,7 @@ import { useFlowCurrentUser } from "@onflow/react-sdk"
 
 ```tsx
 function AuthComponent() {
-  const { user, authenticate, unauthenticate } = useFlowCurrentUser()
+  const { user, authenticate, unauthenticate } = useFlowCurrentUser();
 
   return (
     <div>
@@ -366,7 +367,7 @@ function AuthComponent() {
         <button onClick={authenticate}>Login</button>
       )}
     </div>
-  )
+  );
 }
 ```
 
@@ -375,7 +376,7 @@ function AuthComponent() {
 ### `useFlowAccount`
 
 ```tsx
-import { useFlowAccount } from "@onflow/react-sdk"
+import { useFlowAccount } from '@onflow/react-sdk';
 ```
 
 #### Parameters:
@@ -387,14 +388,19 @@ import { useFlowAccount } from "@onflow/react-sdk"
 
 ```tsx
 function AccountDetails() {
-  const { data: account, isLoading, error, refetch } = useFlowAccount({
-    address: "0x1cf0e2f2f715450",
+  const {
+    data: account,
+    isLoading,
+    error,
+    refetch,
+  } = useFlowAccount({
+    address: '0x1cf0e2f2f715450',
     query: { staleTime: 5000 },
-  })
+  });
 
-  if (isLoading) return <p>Loading account...</p>
-  if (error) return <p>Error fetching account: {error.message}</p>
-  if (!account) return <p>No account data</p>
+  if (isLoading) return <p>Loading account...</p>;
+  if (error) return <p>Error fetching account: {error.message}</p>;
+  if (!account) return <p>No account data</p>;
 
   return (
     <div>
@@ -403,7 +409,7 @@ function AccountDetails() {
       <pre>{account.code}</pre>
       <button onClick={refetch}>Refetch</button>
     </div>
-  )
+  );
 }
 ```
 
@@ -412,7 +418,7 @@ function AccountDetails() {
 ### `useFlowBlock`
 
 ```tsx
-import { useFlowBlock } from "@onflow/react-sdk"
+import { useFlowBlock } from '@onflow/react-sdk';
 ```
 
 #### Parameters:
@@ -428,18 +434,22 @@ Only one of `sealed`, `id`, or `height` should be provided.
 
 ```tsx
 function LatestBlock() {
-  const { data: block, isLoading, error } = useFlowBlock({ query: { staleTime: 10000 } })
+  const {
+    data: block,
+    isLoading,
+    error,
+  } = useFlowBlock({ query: { staleTime: 10000 } });
 
-  if (isLoading) return <p>Loading...</p>
-  if (error) return <p>Error: {error.message}</p>
-  if (!block) return <p>No block data.</p>
+  if (isLoading) return <p>Loading...</p>;
+  if (error) return <p>Error: {error.message}</p>;
+  if (!block) return <p>No block data.</p>;
 
   return (
     <div>
       <h2>Block {block.height}</h2>
       <p>ID: {block.id}</p>
     </div>
-  )
+  );
 }
 ```
 
@@ -448,28 +458,33 @@ function LatestBlock() {
 ### `useFlowChainId`
 
 ```tsx
-import { useFlowChainId } from "@onflow/react-sdk"
+import { useFlowChainId } from '@onflow/react-sdk';
 ```
 
 This hook retrieves the Flow chain ID, which is useful for identifying the current network.
 
 #### Parameters:
+
 - `queryOptions?: Omit<UseQueryOptions<string | null>, "queryKey" | "queryFn">` – Optional TanStack Query options like `staleTime`, `enabled`, etc.
 
 #### Returns: `UseQueryResult<string | null, Error>`
 
-Valid chain IDs include: `testnet` (Flow Testnet), `mainnet` (Flow Mainnet), and `emulator` (Flow Emulator).  The `flow-` prefix will be stripped from the chain ID returned by the access node (e.g. `flow-testnet` will return `testnet`).
+Valid chain IDs include: `testnet` (Flow Testnet), `mainnet` (Flow Mainnet), and `emulator` (Flow Emulator). The `flow-` prefix will be stripped from the chain ID returned by the access node (e.g. `flow-testnet` will return `testnet`).
 
 ```tsx
 function ChainIdExample() {
-  const { data: chainId, isLoading, error } = useFlowChainId({
+  const {
+    data: chainId,
+    isLoading,
+    error,
+  } = useFlowChainId({
     query: { staleTime: 10000 },
-  })
+  });
 
-  if (isLoading) return <p>Loading chain ID...</p>
-  if (error) return <p>Error fetching chain ID: {error.message}</p>
+  if (isLoading) return <p>Loading chain ID...</p>;
+  if (error) return <p>Error fetching chain ID: {error.message}</p>;
 
-  return <div>Current Flow Chain ID: {chainId}</div>
+  return <div>Current Flow Chain ID: {chainId}</div>;
 }
 ```
 
@@ -478,21 +493,21 @@ function ChainIdExample() {
 ### `useFlowConfig`
 
 ```tsx
-import { useFlowConfig } from "@onflow/react-sdk"
+import { useFlowConfig } from '@onflow/react-sdk';
 ```
 
 #### Returns: `FlowConfig`
 
 ```tsx
 function MyComponent() {
-  const config = useFlowConfig()
+  const config = useFlowConfig();
 
   return (
     <div>
       <p>Current network: {config.flowNetwork}</p>
       <p>Current access node: {config.accessNodeUrl}</p>
     </div>
-  )
+  );
 }
 ```
 
@@ -501,7 +516,7 @@ function MyComponent() {
 ### `useFlowEvents`
 
 ```tsx
-import { useFlowEvents } from "@onflow/react-sdk"
+import { useFlowEvents } from '@onflow/react-sdk';
 ```
 
 #### Parameters:
@@ -520,12 +535,12 @@ import { useFlowEvents } from "@onflow/react-sdk"
 ```tsx
 function EventListener() {
   useFlowEvents({
-    eventTypes: ["A.0xDeaDBeef.SomeContract.SomeEvent"],
-    onEvent: (event) => console.log("New event:", event),
-    onError: (error) => console.error("Error:", error),
-  })
+    eventTypes: ['A.0xDeaDBeef.SomeContract.SomeEvent'],
+    onEvent: (event) => console.log('New event:', event),
+    onError: (error) => console.error('Error:', error),
+  });
 
-  return <div>Listening for events...</div>
+  return <div>Listening for events...</div>;
 }
 ```
 
@@ -534,7 +549,7 @@ function EventListener() {
 ### `useFlowQuery`
 
 ```tsx
-import { useFlowQuery } from "@onflow/react-sdk"
+import { useFlowQuery } from '@onflow/react-sdk';
 ```
 
 #### Parameters:
@@ -556,17 +571,17 @@ function QueryExample() {
     `,
     args: (arg, t) => [arg(1, t.Int), arg(2, t.Int)],
     query: { staleTime: 10000 },
-  })
+  });
 
-  if (isLoading) return <p>Loading query...</p>
-  if (error) return <p>Error: {error.message}</p>
+  if (isLoading) return <p>Loading query...</p>;
+  if (error) return <p>Error: {error.message}</p>;
 
   return (
     <div>
       <p>Result: {data}</p>
       <button onClick={refetch}>Refetch</button>
     </div>
-  )
+  );
 }
 ```
 
@@ -575,7 +590,7 @@ function QueryExample() {
 ### `useFlowQueryRaw`
 
 ```tsx
-import { useFlowQueryRaw } from "@onflow/react-sdk"
+import { useFlowQueryRaw } from '@onflow/react-sdk';
 ```
 
 This hook is identical to `useFlowQuery` but returns the raw, non-decoded response data from the Flow blockchain. This is useful when you need access to the original response structure or want to handle decoding manually.
@@ -592,7 +607,12 @@ The returned data will be in its raw, non-decoded format as received from the Fl
 
 ```tsx
 function QueryRawExample() {
-  const { data: rawData, isLoading, error, refetch } = useFlowQueryRaw({
+  const {
+    data: rawData,
+    isLoading,
+    error,
+    refetch,
+  } = useFlowQueryRaw({
     cadence: `
       access(all)
       fun main(a: Int, b: Int): Int {
@@ -601,17 +621,17 @@ function QueryRawExample() {
     `,
     args: (arg, t) => [arg(1, t.Int), arg(2, t.Int)],
     query: { staleTime: 10000 },
-  })
+  });
 
-  if (isLoading) return <p>Loading query...</p>
-  if (error) return <p>Error: {error.message}</p>
+  if (isLoading) return <p>Loading query...</p>;
+  if (error) return <p>Error: {error.message}</p>;
 
   return (
     <div>
       <p>Raw Result: {JSON.stringify(rawData, null, 2)}</p>
       <button onClick={refetch}>Refetch</button>
     </div>
-  )
+  );
 }
 ```
 
@@ -620,7 +640,7 @@ function QueryRawExample() {
 ### `useFlowMutate`
 
 ```tsx
-import { useFlowMutate } from "@onflow/react-sdk"
+import { useFlowMutate } from '@onflow/react-sdk';
 ```
 
 #### Parameters:
@@ -631,11 +651,16 @@ import { useFlowMutate } from "@onflow/react-sdk"
 
 ```tsx
 function CreatePage() {
-  const { mutate, isPending, error, data: txId } = useFlowMutate({
+  const {
+    mutate,
+    isPending,
+    error,
+    data: txId,
+  } = useFlowMutate({
     mutation: {
-      onSuccess: (txId) => console.log("TX ID:", txId),
+      onSuccess: (txId) => console.log('TX ID:', txId),
     },
-  })
+  });
 
   const sendTransaction = () => {
     mutate({
@@ -649,8 +674,8 @@ function CreatePage() {
       payer: fcl.currentUser,
       authorizations: [],
       limit: 100,
-    })
-  }
+    });
+  };
 
   return (
     <div>
@@ -661,7 +686,7 @@ function CreatePage() {
       {error && <p>Error: {error.message}</p>}
       {txId && <p>Transaction ID: {txId}</p>}
     </div>
-  )
+  );
 }
 ```
 
@@ -670,7 +695,7 @@ function CreatePage() {
 ### `useFlowRevertibleRandom`
 
 ```tsx
-import { useFlowRevertibleRandom } from "@onflow/react-sdk"
+import { useFlowRevertibleRandom } from '@onflow/react-sdk';
 ```
 
 #### Parameters:
@@ -689,16 +714,21 @@ Each `RevertibleRandomResult` includes:
 
 ```tsx
 function RandomValues() {
-  const { data: randoms, isLoading, error, refetch } = useFlowRevertibleRandom({
-    min: "0",
-    max: "1000000000000000000000000", // Example large max
+  const {
+    data: randoms,
+    isLoading,
+    error,
+    refetch,
+  } = useFlowRevertibleRandom({
+    min: '0',
+    max: '1000000000000000000000000', // Example large max
     count: 3,
     query: { staleTime: 10000 },
-  })
+  });
 
-  if (isLoading) return <p>Loading random numbers...</p>
-  if (error) return <p>Error fetching random numbers: {error.message}</p>
-  if (!randoms) return <p>No random values generated.</p>
+  if (isLoading) return <p>Loading random numbers...</p>;
+  if (error) return <p>Error fetching random numbers: {error.message}</p>;
+  if (!randoms) return <p>No random values generated.</p>;
 
   return (
     <div>
@@ -712,46 +742,51 @@ function RandomValues() {
       </ul>
       <button onClick={refetch}>Regenerate</button>
     </div>
-  )
+  );
 }
 ```
 
 #### Notes:
 
-* Randomness is generated using the **on-chain `revertibleRandom`** function on Flow, producing pseudorandom values tied to block and script execution.
-* Values are **deterministic**: The values returned for identical calls within the same block will be identical.
-* If `count ` is larger than one, the returned values are distinct.
-* This hook is designed for simple use cases that don't require unpredictability, such as randomized UIs.
+- Randomness is generated using the **on-chain `revertibleRandom`** function on Flow, producing pseudorandom values tied to block and script execution.
+- Values are **deterministic**: The values returned for identical calls within the same block will be identical.
+- If `count ` is larger than one, the returned values are distinct.
+- This hook is designed for simple use cases that don't require unpredictability, such as randomized UIs.
   Since the hook uses script executions on existing blocks, the random source is already public and the randoms are predictable.
-* For **more advanced use cases** that **do** require on-chain randomness logic via transactions, Flow provides built-in support using Cadence's `revertibleRandom` and [commit-reveal scheme].
+- For **more advanced use cases** that **do** require on-chain randomness logic via transactions, Flow provides built-in support using Cadence's `revertibleRandom` and [commit-reveal scheme].
 
 ---
 
 ### `useFlowTransaction`
 
 ```tsx
-import { useFlowTransaction } from "@onflow/react-sdk"
+import { useFlowTransaction } from '@onflow/react-sdk';
 ```
 
 Fetches a Flow transaction by ID and returns the decoded transaction object.
 
 #### Parameters:
 
-* `txId?: string` – The Flow transaction ID to fetch.
-* `query?: Omit<UseQueryOptions<Transaction | null, Error>, "queryKey" | "queryFn">` – Optional TanStack Query options like `staleTime`, `enabled`, etc.
+- `txId?: string` – The Flow transaction ID to fetch.
+- `query?: Omit<UseQueryOptions<Transaction | null, Error>, "queryKey" | "queryFn">` – Optional TanStack Query options like `staleTime`, `enabled`, etc.
 
 #### Returns: `UseQueryResult<Transaction | null, Error>`
 
 ```tsx
 function TransactionDetails({ txId }: { txId: string }) {
-  const { data: transaction, isLoading, error, refetch } = useFlowTransaction({
+  const {
+    data: transaction,
+    isLoading,
+    error,
+    refetch,
+  } = useFlowTransaction({
     txId,
     query: { staleTime: 10000 },
-  })
+  });
 
-  if (isLoading) return <p>Loading transaction...</p>
-  if (error) return <p>Error fetching transaction: {error.message}</p>
-  if (!transaction) return <p>No transaction data.</p>
+  if (isLoading) return <p>Loading transaction...</p>;
+  if (error) return <p>Error fetching transaction: {error.message}</p>;
+  if (!transaction) return <p>No transaction data.</p>;
 
   return (
     <div>
@@ -760,7 +795,7 @@ function TransactionDetails({ txId }: { txId: string }) {
       <pre>Arguments: {JSON.stringify(transaction.arguments, null, 2)}</pre>
       <button onClick={refetch}>Refetch</button>
     </div>
-  )
+  );
 }
 ```
 
@@ -769,7 +804,7 @@ function TransactionDetails({ txId }: { txId: string }) {
 ### `useFlowTransactionStatus`
 
 ```tsx
-import { useFlowTransactionStatus } from "@onflow/react-sdk"
+import { useFlowTransactionStatus } from '@onflow/react-sdk';
 ```
 
 #### Parameters:
@@ -783,8 +818,8 @@ import { useFlowTransactionStatus } from "@onflow/react-sdk"
 
 ```tsx
 function TransactionStatusComponent() {
-  const txId = "your-transaction-id-here"
-  const { transactionStatus, error } = useFlowTransactionStatus({ id: txId })
+  const txId = 'your-transaction-id-here';
+  const { transactionStatus, error } = useFlowTransactionStatus({ id: txId });
 
   if (error) return <div>Error: {error.message}</div>;
 
@@ -797,7 +832,7 @@ function TransactionStatusComponent() {
 ### `useDarkMode`
 
 ```tsx
-import { useDarkMode } from "@onflow/react-sdk"
+import { useDarkMode } from '@onflow/react-sdk';
 ```
 
 This hook provides access to the current dark mode state from the `FlowProvider`. It's useful for conditionally rendering content or applying custom styling based on the current theme.
@@ -808,14 +843,14 @@ This hook provides access to the current dark mode state from the `FlowProvider`
 
 ```tsx
 function ThemeAwareComponent() {
-  const { isDark } = useDarkMode()
+  const { isDark } = useDarkMode();
 
   return (
-    <div className={isDark ? "bg-gray-900 text-white" : "bg-white text-black"}>
-      <h2>Current Theme: {isDark ? "Dark" : "Light"}</h2>
+    <div className={isDark ? 'bg-gray-900 text-white' : 'bg-white text-black'}>
+      <h2>Current Theme: {isDark ? 'Dark' : 'Light'}</h2>
       <p>This component adapts to the current theme!</p>
     </div>
-  )
+  );
 }
 ```
 
@@ -826,16 +861,18 @@ function ThemeAwareComponent() {
 ### `useCrossVmBatchTransaction`
 
 <Callout type="info">
-This feature is currently only supported on Testnet & Mainnet networks.  Emulator support will be added in a future release.
+  This feature is currently only supported on Testnet & Mainnet networks.
+  Emulator support will be added in a future release.
 </Callout>
 
 ```tsx
-import { useCrossVmBatchTransaction } from "@onflow/react-sdk"
+import { useCrossVmBatchTransaction } from '@onflow/react-sdk';
 ```
 
 This hook allows you to execute multiple EVM transactions in a single atomic Cadence transaction. It is useful for batch processing EVM calls while ensuring they are executed together, either all succeeding or allowing for some to fail without affecting the others.
 
 #### Parameters:
+
 - `mutation?: UseMutationOptions<string, Error, UseCrossVmBatchTransactionMutateArgs>` – Optional TanStackQuery mutation options
 
 #### Returns: `UseCrossVmBatchTransactionResult`
@@ -843,12 +880,13 @@ This hook allows you to execute multiple EVM transactions in a single atomic Cad
 Where `UseCrossVmBatchTransactionResult` is defined as:
 
 ```typescript
-interface UseCrossVmBatchTransactionResult extends Omit<
-  UseMutationResult<string, Error, UseCrossVmBatchTransactionMutateArgs>,
-  "mutate" | "mutateAsync"
-> {
-  mutate: (calls: UseCrossVmBatchTransactionMutateArgs) => void
-  mutateAsync: (calls: UseCrossVmBatchTransactionMutateArgs) => Promise<string>
+interface UseCrossVmBatchTransactionResult
+  extends Omit<
+    UseMutationResult<string, Error, UseCrossVmBatchTransactionMutateArgs>,
+    'mutate' | 'mutateAsync'
+  > {
+  mutate: (calls: UseCrossVmBatchTransactionMutateArgs) => void;
+  mutateAsync: (calls: UseCrossVmBatchTransactionMutateArgs) => Promise<string>;
 }
 ```
 
@@ -856,8 +894,8 @@ Where `UseCrossVmBatchTransactionMutateArgs` is defined as:
 
 ```typescript
 interface UseCrossVmBatchTransactionMutateArgs {
-  calls: EvmBatchCall[]
-  mustPass?: boolean
+  calls: EvmBatchCall[];
+  mustPass?: boolean;
 }
 ```
 
@@ -866,44 +904,49 @@ Where `EvmBatchCall` is defined as:
 ```typescript
 interface EvmBatchCall {
   // The target EVM contract address (as a string)
-  address: string
+  address: string;
   // The contract ABI fragment
-  abi: Abi
+  abi: Abi;
   // The name of the function to call
-  functionName: string
+  functionName: string;
   // The function arguments
-  args?: readonly unknown[]
+  args?: readonly unknown[];
   // The gas limit for the call
-  gasLimit?: bigint
+  gasLimit?: bigint;
   // The value to send with the call
-  value?: bigint
+  value?: bigint;
 }
 ```
 
 ```tsx
 function CrossVmBatchTransactionExample() {
-  const { sendBatchTransaction, isPending, error, data: txId } = useCrossVmBatchTransaction({
+  const {
+    sendBatchTransaction,
+    isPending,
+    error,
+    data: txId,
+  } = useCrossVmBatchTransaction({
     mutation: {
-      onSuccess: (txId) => console.log("TX ID:", txId),
+      onSuccess: (txId) => console.log('TX ID:', txId),
     },
-  })
+  });
 
   const sendTransaction = () => {
     const calls = [
       {
-        address: "0x1234567890abcdef",
+        address: '0x1234567890abcdef',
         abi: {
           // ABI definition for the contract
         },
-        functionName: "transfer",
-        args: ["0xabcdef1234567890", 100n], // Example arguments
+        functionName: 'transfer',
+        args: ['0xabcdef1234567890', 100n], // Example arguments
         gasLimit: 21000n, // Example gas limit
       },
       // Add more calls as needed
-    ]
+    ];
 
-    sendBatchTransaction({calls})
-  }
+    sendBatchTransaction({ calls });
+  };
 
   return (
     <div>
@@ -914,7 +957,7 @@ function CrossVmBatchTransactionExample() {
       {error && <p>Error: {error.message}</p>}
       {txId && <p>Transaction ID: {txId}</p>}
     </div>
-  )
+  );
 }
 ```
 
@@ -923,11 +966,12 @@ function CrossVmBatchTransactionExample() {
 ### `useCrossVmTokenBalance`
 
 <Callout type="info">
-This feature is currently only supported on Testnet & Mainnet networks.  Emulator support will be added in a future release.
+  This feature is currently only supported on Testnet & Mainnet networks.
+  Emulator support will be added in a future release.
 </Callout>
 
 ```tsx
-import { useCrossVmTokenBalance } from "@onflow/react-sdk"
+import { useCrossVmTokenBalance } from '@onflow/react-sdk';
 ```
 
 Fetch the balance of a token balance for a given user across both Cadence and EVM environments.
@@ -947,9 +991,9 @@ Where `UseCrossVmTokenBalanceData` is defined as:
 
 ```typescript
 interface UseCrossVmTokenBalanceData {
-  cadence: TokenBalance // Token balance of Cadence vault
-  evm: TokenBalance // Token balance of EVM (COA stored in /storage/coa)
-  combined: TokenBalance // Combined balance of both Cadence and EVM
+  cadence: TokenBalance; // Token balance of Cadence vault
+  evm: TokenBalance; // Token balance of EVM (COA stored in /storage/coa)
+  combined: TokenBalance; // Combined balance of both Cadence and EVM
 }
 ```
 
@@ -957,9 +1001,9 @@ Where `TokenBalance` is defined as:
 
 ```typescript
 interface TokenBalance {
-  value: bigint // Balance value in smallest unit
-  formatted: string // Formatted balance string (e.g. "123.45")
-  precision: number // Number of decimal places for the token
+  value: bigint; // Balance value in smallest unit
+  formatted: string; // Formatted balance string (e.g. "123.45")
+  precision: number; // Number of decimal places for the token
 }
 ```
 
@@ -977,12 +1021,19 @@ function UseCrossVmTokenBalanceExample() {
   return (
     <div>
       <h2>Token Balances</h2>
-      <p>Cadence Balance: {data.cadence.formatted} (Value: {data.cadence.value})</p>
-      <p>EVM Balance: {data.evm.formatted} (Value: {data.evm.value})</p>
-      <p>Combined Balance: {data.combined.formatted} (Value: {data.combined.value})</p>
+      <p>
+        Cadence Balance: {data.cadence.formatted} (Value: {data.cadence.value})
+      </p>
+      <p>
+        EVM Balance: {data.evm.formatted} (Value: {data.evm.value})
+      </p>
+      <p>
+        Combined Balance: {data.combined.formatted} (Value:{' '}
+        {data.combined.value})
+      </p>
       <button onClick={refetch}>Refetch</button>
     </div>
-  )
+  );
 }
 ```
 
@@ -991,25 +1042,27 @@ function UseCrossVmTokenBalanceExample() {
 ### `useCrossVmSpendNft`
 
 <Callout type="info">
-This feature is currently only supported on Testnet & Mainnet networks.  Emulator support will be added in a future release.
+  This feature is currently only supported on Testnet & Mainnet networks.
+  Emulator support will be added in a future release.
 </Callout>
 
 ```tsx
-import { useCrossVmSpendNft } from "@onflow/react-sdk"
+import { useCrossVmSpendNft } from '@onflow/react-sdk';
 ```
 
 Bridge NFTs from Cadence to Flow EVM and execute arbitrary EVM transactions to atomically spend them.
 
 #### Parameters:
+
 - `mutation?: UseMutationOptions<string, Error, UseCrossVmSpendFtMutateArgs>` – Optional TanStackQuery mutation options
 
 Where `UseCrossVmSpendFtMutateArgs` is defined as:
 
 ```typescript
 interface UseCrossVmSpendFtMutateArgs {
-  nftIdentifier: string // Cadence NFT identifier (e.g. "0x1cf0e2f2f715450.FlowNFT")
-  nftIds: string[] // Array of NFT IDs to bridge
-  calls: EVMBatchCall[] // Array of EVM calls to execute atomically
+  nftIdentifier: string; // Cadence NFT identifier (e.g. "0x1cf0e2f2f715450.FlowNFT")
+  nftIds: string[]; // Array of NFT IDs to bridge
+  calls: EVMBatchCall[]; // Array of EVM calls to execute atomically
 }
 ```
 
@@ -1018,35 +1071,36 @@ interface UseCrossVmSpendFtMutateArgs {
 Where `UseCrossVmSpendNftResult` is defined as:
 
 ```typescript
-interface UseCrossVmSpendNftResult extends Omit<
-  UseMutationResult<string, Error, CrossVmSpendNftParams>,
-  "mutate" | "mutateAsync"
-> {
-  spendNft: (params: CrossVmSpendNftParams) => Promise<string>
-  spendNftAsync: (params: CrossVmSpendNftParams) => Promise<string>
+interface UseCrossVmSpendNftResult
+  extends Omit<
+    UseMutationResult<string, Error, CrossVmSpendNftParams>,
+    'mutate' | 'mutateAsync'
+  > {
+  spendNft: (params: CrossVmSpendNftParams) => Promise<string>;
+  spendNftAsync: (params: CrossVmSpendNftParams) => Promise<string>;
 }
 ```
 
 ```tsx
 function CrossVmSpendNftExample() {
-  const { spendNft, isPending, error, data: txId } = useCrossVmSpendNft()
+  const { spendNft, isPending, error, data: txId } = useCrossVmSpendNft();
 
   const handleSpendNft = () => {
     spendNft({
-      nftIdentifier: "0x1cf0e2f2f715450.FlowNFT", // Cadence NFT identifier
-      nftIds: ["1"], // Array of NFT IDs to bridge
+      nftIdentifier: '0x1cf0e2f2f715450.FlowNFT', // Cadence NFT identifier
+      nftIds: ['1'], // Array of NFT IDs to bridge
       calls: [
         {
           abi: contractAbi, // ABI of the EVM contract
-          contractAddress: "0x1234567890abcdef1234567890abcdef12345678", // EVM contract address
-          functionName: "transferNFT",
-          args: ["123"], // Example args
-          value: "1000000000000000000", // Amount in wei (if applicable)
-          gasLimit: "21000", // Gas limit for the EVM call
+          contractAddress: '0x1234567890abcdef1234567890abcdef12345678', // EVM contract address
+          functionName: 'transferNFT',
+          args: ['123'], // Example args
+          value: '1000000000000000000', // Amount in wei (if applicable)
+          gasLimit: '21000', // Gas limit for the EVM call
         },
       ],
-    })
-  }
+    });
+  };
 
   return (
     <div>
@@ -1057,7 +1111,7 @@ function CrossVmSpendNftExample() {
       {error && <p>Error: {error.message}</p>}
       {txId && <p>Transaction ID: {txId}</p>}
     </div>
-  )
+  );
 }
 ```
 
@@ -1066,16 +1120,18 @@ function CrossVmSpendNftExample() {
 ### `useCrossVmSpendToken`
 
 <Callout type="info">
-This feature is currently only supported on Testnet & Mainnet networks.  Emulator support will be added in a future release.
+  This feature is currently only supported on Testnet & Mainnet networks.
+  Emulator support will be added in a future release.
 </Callout>
 
 ```tsx
-import { useCrossVmSpendToken } from "@onflow/react-sdk"
+import { useCrossVmSpendToken } from '@onflow/react-sdk';
 ```
 
 Bridge FTs from Cadence to Flow EVM and execute arbitrary EVM transactions to atomically spend them.
 
 #### Parameters:
+
 - `mutation?: UseMutationOptions<string, Error, UseCrossVmSpendTokenMutateArgs>` – Optional TanStackQuery mutation options
 
 Where `UseCrossVmSpendTokenMutateArgs` is defined as:
@@ -1093,10 +1149,11 @@ interface UseCrossVmSpendTokenMutateArgs {
 Where `UseCrossVmSpendTokenResult` is defined as:
 
 ```typescript
-interface UseCrossVmSpendTokenResult extends Omit<
-  UseMutationResult<string, Error, UseCrossVmSpendTokenMutateArgs>,
-  "mutate" | "mutateAsync"
-> {
+interface UseCrossVmSpendTokenResult
+  extends Omit<
+    UseMutationResult<string, Error, UseCrossVmSpendTokenMutateArgs>,
+    'mutate' | 'mutateAsync'
+  > {
   spendToken: (args: UseCrossVmSpendTokenMutateArgs) => void; // Function to trigger the FT bridging and EVM calls
   spendTokenAsync: (args: UseCrossVmSpendTokenMutateArgs) => Promise<string>; // Async version of spendToken
 }
@@ -1104,24 +1161,24 @@ interface UseCrossVmSpendTokenResult extends Omit<
 
 ```tsx
 function CrossVmSpendTokenExample() {
-  const { spendToken, isPending, error, data: txId } = useCrossVmSpendToken()
+  const { spendToken, isPending, error, data: txId } = useCrossVmSpendToken();
 
   const handleSpendToken = () => {
     spendToken({
-      vaultIdentifier: "0x1cf0e2f2f715450.ExampleToken.Vault", // Cadence vault identifier
-      amount: "1.23", // Amount of tokens to bridge to EVM
+      vaultIdentifier: '0x1cf0e2f2f715450.ExampleToken.Vault', // Cadence vault identifier
+      amount: '1.23', // Amount of tokens to bridge to EVM
       calls: [
         {
           abi: myEvmContractAbi, // EVM contract ABI
-          address: "0x01234567890abcdef01234567890abcdef", // EVM contract address
-          function: "transfer", // EVM function to call
+          address: '0x01234567890abcdef01234567890abcdef', // EVM contract address
+          function: 'transfer', // EVM function to call
           args: [
-            "0xabcdef01234567890abcdef01234567890abcdef", // Recipient address
+            '0xabcdef01234567890abcdef01234567890abcdef', // Recipient address
           ],
         },
       ],
-    })
-  }
+    });
+  };
 
   return (
     <div>
@@ -1132,7 +1189,7 @@ function CrossVmSpendTokenExample() {
       {error && <p>Error: {error.message}</p>}
       {txId && <p>Cadence Transaction ID: {txId}</p>}
     </div>
-  )
+  );
 }
 ```
 
@@ -1141,11 +1198,12 @@ function CrossVmSpendTokenExample() {
 ### `useCrossVmTransactionStatus`
 
 <Callout type="info">
-This feature is currently only supported on Testnet & Mainnet networks.  Emulator support will be added in a future release.
+  This feature is currently only supported on Testnet & Mainnet networks.
+  Emulator support will be added in a future release.
 </Callout>
 
 ```tsx
-import { useCrossVmTransactionStatus } from "@onflow/react-sdk"
+import { useCrossVmTransactionStatus } from '@onflow/react-sdk';
 ```
 
 Subscribes to status updates for a given Cross-VM Flow transaction ID that executes EVM calls. This hook monitors the transaction status and extracts EVM call results if available.
@@ -1160,9 +1218,9 @@ Where `UseCrossVmTransactionStatusResult` is defined as:
 
 ```typescript
 interface UseCrossVmTransactionStatusResult {
-  transactionStatus: TransactionStatus | null // Latest transaction status, or null before any update
-  evmResults?: CallOutcome[] // EVM transaction results, if available
-  error: Error | null // Any error encountered during status updates
+  transactionStatus: TransactionStatus | null; // Latest transaction status, or null before any update
+  evmResults?: CallOutcome[]; // EVM transaction results, if available
+  error: Error | null; // Any error encountered during status updates
 }
 ```
 
@@ -1170,18 +1228,20 @@ Where `CallOutcome` is defined as:
 
 ```typescript
 interface CallOutcome {
-  status: "passed" | "failed" | "skipped" // Status of the EVM call
-  hash?: string // EVM transaction hash if available
-  errorMessage?: string // Error message if the call failed
+  status: 'passed' | 'failed' | 'skipped'; // Status of the EVM call
+  hash?: string; // EVM transaction hash if available
+  errorMessage?: string; // Error message if the call failed
 }
 ```
 
 ```tsx
 function CrossVmTransactionStatusComponent() {
-  const txId = "your-cross-vm-transaction-id-here"
-  const { transactionStatus, evmResults, error } = useCrossVmTransactionStatus({ id: txId })
+  const txId = 'your-cross-vm-transaction-id-here';
+  const { transactionStatus, evmResults, error } = useCrossVmTransactionStatus({
+    id: txId,
+  });
 
-  if (error) return <div>Error: {error.message}</div>
+  if (error) return <div>Error: {error.message}</div>;
 
   return (
     <div>
@@ -1194,14 +1254,16 @@ function CrossVmTransactionStatusComponent() {
               <li key={idx}>
                 Status: {result.status}
                 {result.hash && <span> | Hash: {result.hash}</span>}
-                {result.errorMessage && <span> | Error: {result.errorMessage}</span>}
+                {result.errorMessage && (
+                  <span> | Error: {result.errorMessage}</span>
+                )}
               </li>
             ))}
           </ul>
         </div>
       )}
     </div>
-  )
+  );
 }
 ```
 
