@@ -3525,18 +3525,18 @@
   dependencies:
     which "^4.0.0"
 
-"@onflow/config@./packed-packages/onflow-config-1.5.2.tgz", "@onflow/config@1.5.2":
+"@onflow/config@1.5.2", "@onflow/config@file:./packed-packages/onflow-config-1.5.2.tgz":
   version "1.5.2"
-  resolved "./packed-packages/onflow-config-1.5.2.tgz#978a995cc62afecc2cac57663a34c1fd50d037ec"
+  resolved "file:./packed-packages/onflow-config-1.5.2.tgz#978a995cc62afecc2cac57663a34c1fd50d037ec"
   dependencies:
     "@babel/runtime" "^7.25.7"
     "@onflow/util-actor" "1.3.4"
     "@onflow/util-invariant" "1.2.4"
     "@onflow/util-logger" "1.3.3"
 
-"@onflow/fcl-bundle@./packed-packages/onflow-fcl-bundle-1.7.0.tgz":
+"@onflow/fcl-bundle@file:./packed-packages/onflow-fcl-bundle-1.7.0.tgz":
   version "1.7.0"
-  resolved "./packed-packages/onflow-fcl-bundle-1.7.0.tgz#385e72a4bbd51a380cdb26882b24c2abecd65824"
+  resolved "file:./packed-packages/onflow-fcl-bundle-1.7.0.tgz#385e72a4bbd51a380cdb26882b24c2abecd65824"
   dependencies:
     "@babel/plugin-transform-runtime" "^7.25.7"
     "@babel/preset-env" "^7.25.8"
@@ -3556,9 +3556,9 @@
   optionalDependencies:
     "@rollup/rollup-linux-x64-gnu" "^4.26.0"
 
-"@onflow/fcl-core@./packed-packages/onflow-fcl-core-1.21.0-alpha.0.tgz", "@onflow/fcl-core@1.21.0-alpha.0":
+"@onflow/fcl-core@1.21.0-alpha.0", "@onflow/fcl-core@file:./packed-packages/onflow-fcl-core-1.21.0-alpha.0.tgz":
   version "1.21.0-alpha.0"
-  resolved "./packed-packages/onflow-fcl-core-1.21.0-alpha.0.tgz#e394bdfb5d72b4d95083328f075af88e5a440092"
+  resolved "file:./packed-packages/onflow-fcl-core-1.21.0-alpha.0.tgz#e394bdfb5d72b4d95083328f075af88e5a440092"
   dependencies:
     "@babel/runtime" "^7.25.7"
     "@improbable-eng/grpc-web" "^0.15.0"
@@ -3579,9 +3579,9 @@
     cross-fetch "^4.0.0"
     uuid "^11.1.0"
 
-"@onflow/fcl-ethereum-provider@./packed-packages/onflow-fcl-ethereum-provider-0.0.7-alpha.0.tgz", "@onflow/fcl-ethereum-provider@0.0.7-alpha.0":
+"@onflow/fcl-ethereum-provider@0.0.7-alpha.0", "@onflow/fcl-ethereum-provider@file:./packed-packages/onflow-fcl-ethereum-provider-0.0.7-alpha.0.tgz":
   version "0.0.7-alpha.0"
-  resolved "./packed-packages/onflow-fcl-ethereum-provider-0.0.7-alpha.0.tgz#ff9c25b3fed55c77f86f6810c9fe24fe16b0e94e"
+  resolved "file:./packed-packages/onflow-fcl-ethereum-provider-0.0.7-alpha.0.tgz#ff9c25b3fed55c77f86f6810c9fe24fe16b0e94e"
   dependencies:
     "@babel/runtime" "^7.25.7"
     "@ethersproject/bytes" "^5.7.0"
@@ -3596,9 +3596,9 @@
     "@walletconnect/universal-provider" "^2.20.2"
     "@walletconnect/utils" "^2.20.2"
 
-"@onflow/fcl-rainbowkit-adapter@./packed-packages/onflow-fcl-rainbowkit-adapter-0.2.3-alpha.0.tgz":
+"@onflow/fcl-rainbowkit-adapter@file:./packed-packages/onflow-fcl-rainbowkit-adapter-0.2.3-alpha.0.tgz":
   version "0.2.3-alpha.0"
-  resolved "./packed-packages/onflow-fcl-rainbowkit-adapter-0.2.3-alpha.0.tgz#87325cd782bb0d3cb1133a162788fc92c27eedb0"
+  resolved "file:./packed-packages/onflow-fcl-rainbowkit-adapter-0.2.3-alpha.0.tgz#87325cd782bb0d3cb1133a162788fc92c27eedb0"
   dependencies:
     "@babel/runtime" "^7.25.7"
     "@ethersproject/bytes" "^5.7.0"
@@ -3612,9 +3612,9 @@
     viem "^2.22.21"
     wagmi "^2.14.11"
 
-"@onflow/fcl-react-native@./packed-packages/onflow-fcl-react-native-1.13.0-alpha.0.tgz":
+"@onflow/fcl-react-native@file:./packed-packages/onflow-fcl-react-native-1.13.0-alpha.0.tgz":
   version "1.13.0-alpha.0"
-  resolved "./packed-packages/onflow-fcl-react-native-1.13.0-alpha.0.tgz#82daf70cbefede011ff2585e8c324e14a075d002"
+  resolved "file:./packed-packages/onflow-fcl-react-native-1.13.0-alpha.0.tgz#82daf70cbefede011ff2585e8c324e14a075d002"
   dependencies:
     "@babel/runtime" "^7.25.7"
     "@onflow/config" "1.5.2"
@@ -3632,9 +3632,9 @@
     "@onflow/util-uid" "1.2.3"
     cross-fetch "^4.0.0"
 
-"@onflow/fcl-wagmi-adapter@./packed-packages/onflow-fcl-wagmi-adapter-0.0.7-alpha.0.tgz", "@onflow/fcl-wagmi-adapter@0.0.7-alpha.0":
+"@onflow/fcl-wagmi-adapter@0.0.7-alpha.0", "@onflow/fcl-wagmi-adapter@file:./packed-packages/onflow-fcl-wagmi-adapter-0.0.7-alpha.0.tgz":
   version "0.0.7-alpha.0"
-  resolved "./packed-packages/onflow-fcl-wagmi-adapter-0.0.7-alpha.0.tgz#5f414591c0740690c4245cc7f6109ffbf7b8d707"
+  resolved "file:./packed-packages/onflow-fcl-wagmi-adapter-0.0.7-alpha.0.tgz#5f414591c0740690c4245cc7f6109ffbf7b8d707"
   dependencies:
     "@babel/runtime" "^7.25.7"
     "@ethersproject/bytes" "^5.7.0"
@@ -3643,9 +3643,9 @@
     "@onflow/rlp" "^1.2.3"
     viem "^2.22.21"
 
-"@onflow/fcl-wc@./packed-packages/onflow-fcl-wc-6.0.5-alpha.0.tgz", "@onflow/fcl-wc@6.0.5-alpha.0":
+"@onflow/fcl-wc@6.0.5-alpha.0", "@onflow/fcl-wc@file:./packed-packages/onflow-fcl-wc-6.0.5-alpha.0.tgz":
   version "6.0.5-alpha.0"
-  resolved "./packed-packages/onflow-fcl-wc-6.0.5-alpha.0.tgz#9e27721aadc82d572c64fe34cb4b803af62fefde"
+  resolved "file:./packed-packages/onflow-fcl-wc-6.0.5-alpha.0.tgz#9e27721aadc82d572c64fe34cb4b803af62fefde"
   dependencies:
     "@babel/runtime" "^7.25.7"
     "@onflow/config" "1.5.2"
@@ -3659,9 +3659,9 @@
     preact "^10.24.3"
     tailwindcss "^3.4.14"
 
-"@onflow/fcl@./packed-packages/onflow-fcl-1.20.0-alpha.0.tgz":
+"@onflow/fcl@file:./packed-packages/onflow-fcl-1.20.0-alpha.0.tgz":
   version "1.20.0-alpha.0"
-  resolved "./packed-packages/onflow-fcl-1.20.0-alpha.0.tgz#af5b1e3d5a786419e5bff04c80c85e9672081cd9"
+  resolved "file:./packed-packages/onflow-fcl-1.20.0-alpha.0.tgz#af5b1e3d5a786419e5bff04c80c85e9672081cd9"
   dependencies:
     "@babel/runtime" "^7.25.7"
     "@onflow/config" "1.5.2"
@@ -3690,17 +3690,17 @@
   resolved "https://registry.yarnpkg.com/@onflow/interaction/-/interaction-0.0.11.tgz#4db8f4304039e33d6fc3b14c38b392d724113374"
   integrity sha512-Xuq1Mmx6Wyba/F/L+QLQs0yJeQDsIDwy5SKk5vrCuVgIj0yD8k506g5L8ODrbM1LWll8i0tQsoOi0F85vNl5sA==
 
-"@onflow/protobuf@./packed-packages/onflow-protobuf-1.3.1.tgz", "@onflow/protobuf@1.3.1":
+"@onflow/protobuf@1.3.1", "@onflow/protobuf@file:./packed-packages/onflow-protobuf-1.3.1.tgz":
   version "1.3.1"
-  resolved "./packed-packages/onflow-protobuf-1.3.1.tgz#53573a0ebf607942a325193df0085aead346af84"
+  resolved "file:./packed-packages/onflow-protobuf-1.3.1.tgz#53573a0ebf607942a325193df0085aead346af84"
   dependencies:
     "@improbable-eng/grpc-web" "^0.12.0"
     elliptic "^6.5.4"
     google-protobuf "3.11.4"
 
-"@onflow/react-sdk@./packed-packages/onflow-react-sdk-0.10.0-alpha.1.tgz":
+"@onflow/react-sdk@file:./packed-packages/onflow-react-sdk-0.10.0-alpha.1.tgz":
   version "0.10.0-alpha.1"
-  resolved "./packed-packages/onflow-react-sdk-0.10.0-alpha.1.tgz#d805185bb4e8969b53ba088a5382fa3531949019"
+  resolved "file:./packed-packages/onflow-react-sdk-0.10.0-alpha.1.tgz#788c6ce7f9ee0c99de5b8fe237f0d347f474bc39"
   dependencies:
     "@babel/runtime" "^7.25.7"
     "@headlessui/react" "^2.2.2"
@@ -3708,9 +3708,10 @@
     "@testing-library/react" "^16.2.0"
     tailwind-merge "^3.3.1"
 
-"@onflow/react-sdk@./packed-packages/onflow-react-sdk-0.10.0-alpha.2.tgz":
+"@onflow/react-sdk@file:./packed-packages/onflow-react-sdk-0.10.0-alpha.2.tgz":
   version "0.10.0-alpha.1"
-  resolved "./packed-packages/onflow-react-sdk-0.10.0-alpha.2.tgz#788c6ce7f9ee0c99de5b8fe237f0d347f474bc39"
+  uid "788c6ce7f9ee0c99de5b8fe237f0d347f474bc39"
+  resolved "file:./packed-packages/onflow-react-sdk-0.10.0-alpha.2.tgz#788c6ce7f9ee0c99de5b8fe237f0d347f474bc39"
   dependencies:
     "@babel/runtime" "^7.25.7"
     "@headlessui/react" "^2.2.2"
@@ -3718,16 +3719,16 @@
     "@testing-library/react" "^16.2.0"
     tailwind-merge "^3.3.1"
 
-"@onflow/rlp@./packed-packages/onflow-rlp-1.2.3.tgz", "@onflow/rlp@1.2.3", "@onflow/rlp@^1.2.3":
+"@onflow/rlp@1.2.3", "@onflow/rlp@^1.2.3", "@onflow/rlp@file:./packed-packages/onflow-rlp-1.2.3.tgz":
   version "1.2.3"
-  resolved "./packed-packages/onflow-rlp-1.2.3.tgz#377f7f1d899ccafbaf5cfeca821f1f777fd5d470"
+  resolved "file:./packed-packages/onflow-rlp-1.2.3.tgz#377f7f1d899ccafbaf5cfeca821f1f777fd5d470"
   dependencies:
     "@babel/runtime" "^7.25.7"
     buffer "^6.0.3"
 
-"@onflow/sdk@./packed-packages/onflow-sdk-1.10.0-alpha.0.tgz", "@onflow/sdk@1.10.0-alpha.0":
+"@onflow/sdk@1.10.0-alpha.0", "@onflow/sdk@file:./packed-packages/onflow-sdk-1.10.0-alpha.0.tgz":
   version "1.10.0-alpha.0"
-  resolved "./packed-packages/onflow-sdk-1.10.0-alpha.0.tgz#a5bc8f385f623dee089196da2525e549d4ded46a"
+  resolved "file:./packed-packages/onflow-sdk-1.10.0-alpha.0.tgz#a5bc8f385f623dee089196da2525e549d4ded46a"
   dependencies:
     "@babel/runtime" "^7.25.7"
     "@onflow/config" "1.5.2"
@@ -3745,9 +3746,9 @@
     sha3 "^2.1.4"
     uuid "^9.0.1"
 
-"@onflow/transport-grpc@./packed-packages/onflow-transport-grpc-1.4.2-alpha.0.tgz":
+"@onflow/transport-grpc@file:./packed-packages/onflow-transport-grpc-1.4.2-alpha.0.tgz":
   version "1.4.2-alpha.0"
-  resolved "./packed-packages/onflow-transport-grpc-1.4.2-alpha.0.tgz#22e6ff00f6efb0bb49fb949a865341b6e8b3e936"
+  resolved "file:./packed-packages/onflow-transport-grpc-1.4.2-alpha.0.tgz#22e6ff00f6efb0bb49fb949a865341b6e8b3e936"
   dependencies:
     "@babel/runtime" "^7.25.7"
     "@improbable-eng/grpc-web" "^0.15.0"
@@ -3758,9 +3759,9 @@
     "@onflow/util-invariant" "1.2.4"
     "@onflow/util-template" "1.2.3"
 
-"@onflow/transport-http@./packed-packages/onflow-transport-http-1.13.0.tgz", "@onflow/transport-http@1.13.0":
+"@onflow/transport-http@1.13.0", "@onflow/transport-http@file:./packed-packages/onflow-transport-http-1.13.0.tgz":
   version "1.13.0"
-  resolved "./packed-packages/onflow-transport-http-1.13.0.tgz#3c90662fc06d5f48e9d0329ab21cab47932c54f9"
+  resolved "file:./packed-packages/onflow-transport-http-1.13.0.tgz#3c90662fc06d5f48e9d0329ab21cab47932c54f9"
   dependencies:
     "@babel/runtime" "^7.25.7"
     "@onflow/util-address" "1.2.3"
@@ -3774,74 +3775,74 @@
     isomorphic-ws "^5.0.0"
     ws "^8.18.0"
 
-"@onflow/typedefs@./packed-packages/onflow-typedefs-1.7.0-alpha.0.tgz", "@onflow/typedefs@1.7.0-alpha.0":
+"@onflow/typedefs@1.7.0-alpha.0", "@onflow/typedefs@file:./packed-packages/onflow-typedefs-1.7.0-alpha.0.tgz":
   version "1.7.0-alpha.0"
-  resolved "./packed-packages/onflow-typedefs-1.7.0-alpha.0.tgz#03e04e8c9c985ab7fb91e513f0478e10e292b22c"
+  resolved "file:./packed-packages/onflow-typedefs-1.7.0-alpha.0.tgz#03e04e8c9c985ab7fb91e513f0478e10e292b22c"
   dependencies:
     "@babel/runtime" "^7.25.7"
 
-"@onflow/types@./packed-packages/onflow-types-1.4.1.tgz", "@onflow/types@1.4.1":
+"@onflow/types@1.4.1", "@onflow/types@file:./packed-packages/onflow-types-1.4.1.tgz":
   version "1.4.1"
-  resolved "./packed-packages/onflow-types-1.4.1.tgz#e64755e29e1d381b54f40304c158300b7b2c2fab"
+  resolved "file:./packed-packages/onflow-types-1.4.1.tgz#e64755e29e1d381b54f40304c158300b7b2c2fab"
   dependencies:
     "@babel/runtime" "^7.25.7"
     "@onflow/util-logger" "1.3.3"
 
-"@onflow/util-actor@./packed-packages/onflow-util-actor-1.3.4.tgz", "@onflow/util-actor@1.3.4":
+"@onflow/util-actor@1.3.4", "@onflow/util-actor@file:./packed-packages/onflow-util-actor-1.3.4.tgz":
   version "1.3.4"
-  resolved "./packed-packages/onflow-util-actor-1.3.4.tgz#623eaa06840611fe9ea9a6963d5e9082efe73f41"
+  resolved "file:./packed-packages/onflow-util-actor-1.3.4.tgz#623eaa06840611fe9ea9a6963d5e9082efe73f41"
   dependencies:
     "@babel/runtime" "^7.25.7"
     queue-microtask "1.2.3"
 
-"@onflow/util-address@./packed-packages/onflow-util-address-1.2.3.tgz", "@onflow/util-address@1.2.3":
+"@onflow/util-address@1.2.3", "@onflow/util-address@file:./packed-packages/onflow-util-address-1.2.3.tgz":
   version "1.2.3"
-  resolved "./packed-packages/onflow-util-address-1.2.3.tgz#cbd3f4ba28c22767a3f45e80f5fdfc54c700db58"
+  resolved "file:./packed-packages/onflow-util-address-1.2.3.tgz#cbd3f4ba28c22767a3f45e80f5fdfc54c700db58"
   dependencies:
     "@babel/runtime" "^7.25.7"
 
-"@onflow/util-encode-key@./packed-packages/onflow-util-encode-key-1.2.4.tgz":
+"@onflow/util-encode-key@file:./packed-packages/onflow-util-encode-key-1.2.4.tgz":
   version "1.2.4"
-  resolved "./packed-packages/onflow-util-encode-key-1.2.4.tgz#d64b5b4f32777434013a312ae9ff1faaec8792f6"
+  resolved "file:./packed-packages/onflow-util-encode-key-1.2.4.tgz#d64b5b4f32777434013a312ae9ff1faaec8792f6"
   dependencies:
     "@babel/runtime" "^7.25.7"
     "@onflow/rlp" "1.2.3"
     "@onflow/util-invariant" "1.2.4"
 
-"@onflow/util-invariant@./packed-packages/onflow-util-invariant-1.2.4.tgz", "@onflow/util-invariant@1.2.4":
+"@onflow/util-invariant@1.2.4", "@onflow/util-invariant@file:./packed-packages/onflow-util-invariant-1.2.4.tgz":
   version "1.2.4"
-  resolved "./packed-packages/onflow-util-invariant-1.2.4.tgz#64d0374dde203b1bc8a3e1e9e0c028cc24177f46"
+  resolved "file:./packed-packages/onflow-util-invariant-1.2.4.tgz#64d0374dde203b1bc8a3e1e9e0c028cc24177f46"
   dependencies:
     "@babel/runtime" "^7.25.7"
 
-"@onflow/util-logger@./packed-packages/onflow-util-logger-1.3.3.tgz", "@onflow/util-logger@1.3.3":
+"@onflow/util-logger@1.3.3", "@onflow/util-logger@file:./packed-packages/onflow-util-logger-1.3.3.tgz":
   version "1.3.3"
-  resolved "./packed-packages/onflow-util-logger-1.3.3.tgz#981619eb127105410090c11dec0037cc955bc87b"
+  resolved "file:./packed-packages/onflow-util-logger-1.3.3.tgz#981619eb127105410090c11dec0037cc955bc87b"
   dependencies:
     "@babel/runtime" "^7.25.7"
 
-"@onflow/util-rpc@./packed-packages/onflow-util-rpc-0.0.2.tgz", "@onflow/util-rpc@0.0.2":
+"@onflow/util-rpc@0.0.2", "@onflow/util-rpc@file:./packed-packages/onflow-util-rpc-0.0.2.tgz":
   version "0.0.2"
-  resolved "./packed-packages/onflow-util-rpc-0.0.2.tgz#350fc4605ae2e448cafd9ac6ed721f51a763ef26"
+  resolved "file:./packed-packages/onflow-util-rpc-0.0.2.tgz#350fc4605ae2e448cafd9ac6ed721f51a763ef26"
   dependencies:
     "@babel/runtime" "^7.25.7"
 
-"@onflow/util-semver@./packed-packages/onflow-util-semver-1.0.3.tgz", "@onflow/util-semver@1.0.3":
+"@onflow/util-semver@1.0.3", "@onflow/util-semver@file:./packed-packages/onflow-util-semver-1.0.3.tgz":
   version "1.0.3"
-  resolved "./packed-packages/onflow-util-semver-1.0.3.tgz#216eca435b2fbdfb169efe41a8f7ba2330232060"
+  resolved "file:./packed-packages/onflow-util-semver-1.0.3.tgz#216eca435b2fbdfb169efe41a8f7ba2330232060"
   dependencies:
     "@babel/runtime" "^7.25.7"
 
-"@onflow/util-template@./packed-packages/onflow-util-template-1.2.3.tgz", "@onflow/util-template@1.2.3":
+"@onflow/util-template@1.2.3", "@onflow/util-template@file:./packed-packages/onflow-util-template-1.2.3.tgz":
   version "1.2.3"
-  resolved "./packed-packages/onflow-util-template-1.2.3.tgz#3622e18cecc1503befb4592f995bdbb14a125912"
+  resolved "file:./packed-packages/onflow-util-template-1.2.3.tgz#3622e18cecc1503befb4592f995bdbb14a125912"
   dependencies:
     "@babel/runtime" "^7.25.7"
     "@onflow/util-logger" "1.3.3"
 
-"@onflow/util-uid@./packed-packages/onflow-util-uid-1.2.3.tgz", "@onflow/util-uid@1.2.3":
+"@onflow/util-uid@1.2.3", "@onflow/util-uid@file:./packed-packages/onflow-util-uid-1.2.3.tgz":
   version "1.2.3"
-  resolved "./packed-packages/onflow-util-uid-1.2.3.tgz#b886bc4a06936f2b73f1b739a72987d59409b3fc"
+  resolved "file:./packed-packages/onflow-util-uid-1.2.3.tgz#b886bc4a06936f2b73f1b739a72987d59409b3fc"
   dependencies:
     "@babel/runtime" "^7.25.7"
 
