@@ -6,6 +6,7 @@ keywords:
   - AI
   - ChatGPT
   - Cursor
+  - Cursor Rules
   - AgentKit
   - Flow documentation
   - Cadence documentation
@@ -40,6 +41,7 @@ In this tutorial series, you'll discover how to:
 - [Eliza on Flow] - Learn how to build AI Agent on Flow with Eliza
 - [Build AI Agents with AgentKit] - Learn how to create AI agents that can interact with Flow using AgentKit.
 - [Flow MCP] - Learn how to use or build Flow MCP (Model Context Protocol) server to enhance AI tools with the capabilities of interacting with Flow blockchain.
+- [Cadence Rules] - Learn how to set up your own Cursor Rules that are catered towards Flow and Cadence development  
 
 ## Best Practices
 
@@ -69,3 +71,4 @@ After completing these tutorials, you'll be equipped to leverage AI tools effect
 [native-vrf]: ../native-vrf/index.md
 [token-launch]: ../token-launch/index.md
 [Flow MCP]: ./mcp/index.md
+[Cadence Rules]: ./cadence-rules.md
