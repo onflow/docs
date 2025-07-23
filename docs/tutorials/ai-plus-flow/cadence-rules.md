@@ -1,14 +1,16 @@
 ---
 title: Cadence Rules
 description: Learn how to use Cursor Rules to enhance AI assistance for Cadence and Flow development with persistent context and automated workflows.
-sidebar_position: 0
+sidebar_position: 4
+label: Cadence Rules
 sidebar_label: Cadence Rules
 keywords:
- - CursorRules
+ - Cursor Rules
  - AI
  - Cursor
  - Cadence
  - AI_Flow
+ - Cadence Rules
 ---
 
 # Cadence Rules
