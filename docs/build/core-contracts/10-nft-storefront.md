@@ -21,7 +21,7 @@ keywords:
   - Flow marketplace
 ---
 
-The `NFTStorefront` contracts implement a standard way to list NFTs for sale
+The NFT Storefront contracts implement a standard way to list NFTs for sale
 and buy them from listings. `NFTStorefrontV2` is the more powerful and full-featured
 version, so developers and users are encouraged to use it instead of `NFTStorefront`
 or their own implementation.
@@ -30,6 +30,8 @@ Source: [NFTStorefrontV2.cdc]
 
 | Network | Contract Address     |
 | ------- | -------------------- |
+| Emulator | `0xf8d6e0586b0a20c7` |
+| Cadence Testing Framework | `0x0000000000000001` |
 | Testnet | `0x2d55b98eb200daef` |
 | Mainnet | `0x4eb8a10cb9f87357` |
 
