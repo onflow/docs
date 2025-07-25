@@ -8,6 +8,16 @@
       "permanent": true
     },
     {
+      "source": "/tools/kit",
+      "destination": "/tools/react-sdk",
+      "permanent": true
+    },
+    {
+      "source": "/tools/kit/:path*",
+      "destination": "/tools/react-sdk/:path*",
+      "permanent": true
+    },
+    {
       "source": "/build",
       "destination": "/build/flow",
       "permanent": true
@@ -1346,6 +1356,16 @@
     {
       "source": "/evm/guides/vrf",
       "destination": "/tutorials/native-vrf/vrf-evm",
+      "permanent": true
+    },
+    {
+      "source": "/tools/clients/fcl-js/api",
+      "destination": "/tools/clients/fcl-js/packages-docs/fcl",
+      "permanent": true
+    },
+    {
+      "source": "/tools/clients/fcl-js/sdk-guidelines",
+      "destination": "/tools/clients/fcl-js/packages-docs/sdk",
       "permanent": true
     }
   ]
