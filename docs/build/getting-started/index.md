@@ -19,7 +19,7 @@ Kick off your Flow development journey with these beginner-friendly guides. Lear
 
 - **[Contract Interaction]** - Discover how to interact with smart contracts on Flow, including reading and writing data.
 - **[Local Development]** - Get set up for local development and started with the Flow Command Line Interface for deploying and managing smart contracts.
-- **[Simple Frontend]** - Learn how to quickly set up and use @onflow/react-sdk with hooks for frontend development.
+- **[Simple Frontend]** - Learn how to quickly set up and use @onflow/kit with hooks for frontend development.
 
 [Simple Frontend]: ./fcl-quickstart.md
 [Local Development]: ./flow-cli.md

@@ -89,7 +89,7 @@ config({
 - The `accessNode.api` key specifies the address of a Flow access node. Flow provides these, but in the future access to Flow may be provided by other 3rd parties, through their own access nodes.
 - `discovery.wallet` and `discovery.authn.endpoint` are addresses that point to a service that lists FCL compatible wallets. Flow's FCL Discovery service is a service that FCL wallet providers can be added to, and be made 'discoverable' to any application that uses the `discovery.wallet` and `discovery.authn.endpoint`.
 
-> Learn more about [configuring Discovery](../../../tools/clients/fcl-js/discovery.md) or [setting configuration values](../../../tools/clients/fcl-js/packages-docs/fcl/index.md#setting-configuration-values).
+> Learn more about [configuring Discovery](../../../tools/clients/fcl-js/discovery.md) or [setting configuration values](../../../tools/clients/fcl-js/api.md#setting-configuration-values).
 
 > If you are running a Wallet Discovery locally and want to use it in the React Native app, change `https://fcl-discovery.onflow.org/` to `http://<LOCAL_IP_ADDRESS>:<PORT>/`
 > For Example:
@@ -140,7 +140,7 @@ Now we're ready to start talking to Flow!
 
 To authenticate a user, you'll need to render a `ServiceDiscovery` component provided by `fcl-react-native`. Alternatively you can build your own component using `useServiceDiscovery`.
 
-Unauthenticate is as simple as calling `fcl.unauthenticate()`. Once authenticated, FCL sets an object called `fcl.currentUser` which exposes methods for watching changes in user data, signing transactions, and more.
+Unauthenticate is as simple as calling `fcl.unauthenticate()`. Once authenticated, FCL sets an object called `fcl.currentUser` which exposes methods for watching changes in user data, signing transactions, and more. For more information on the `currentUser`, read more [here](../../../tools/clients/fcl-js/api.md#current-user).
 
 Let's add in a few components and buttons buttons for sign up/login and also subscribe to changes on the `currentUser`. When the user is updated (which it will be after authentication), we'll set the user state in our component to reflect this. To demonstrate user authenticated sessions, we'll conditionally render a component based on if the user is or is not logged in.
 
@@ -313,7 +313,7 @@ await fcl.query({
 
 Inside the query you'll see we set two things: `cadence` and `args`. Cadence is Flow's smart contract language we mentioned. For this tutorial, when you look at it you just need to notice that it's importing the `Profile` contract from the account we named `0xProfile` earlier in our config file, then also taking an account address, and reading it. That's it until you're ready to [learn more Cadence](https://cadence-lang.org/docs).
 
-In the `args` section, we are simply passing it our user's account address from the user we set in state after authentication and giving it a type of `Address`. For more possible types, [see this reference](../../../tools/clients/fcl-js/packages-docs/types/index.md).
+In the `args` section, we are simply passing it our user's account address from the user we set in state after authentication and giving it a type of `Address`. For more possible types, [see this reference](../../../tools/clients/fcl-js/api.md#ftype).
 
 Go ahead and click the "Send Query" button. You should see "No Profile." That's because we haven't initialized the account yet.
 
@@ -638,7 +638,7 @@ const styles = StyleSheet.create({
 });
 ```
 
-Now if you click the "Execute Transaction" button you'll see the statuses update next to "Transaction Status." When you see "4" that means it's sealed! Status code meanings [can be found here](../../../tools/clients/fcl-js/packages-docs/types/index.md).
+Now if you click the "Execute Transaction" button you'll see the statuses update next to "Transaction Status." When you see "4" that means it's sealed! Status code meanings [can be found here](../../../tools/clients/fcl-js/api.md#transaction-statuses).
 If you query the account profile again, "Profile Name:" should now display "Flow Developer".
 
 That's it! You now have a shippable Flow dapp that can auth, query, init accounts, and mutate the chain. This is just the beginning. There is so much more to know. We have a lot more resources to help you build. To dive deeper, here are a few good places for taking the next steps:
@@ -655,6 +655,7 @@ That's it! You now have a shippable Flow dapp that can auth, query, init account
 
 **More FCL**
 
+- [FCL API Quick Reference](../../../tools/clients/fcl-js/api)
 - [More on Scripts](../../../tools/clients/fcl-js/scripts.md)
 - [More on Transactions](../../../tools/clients/fcl-js/transactions.md)
 - [User Signatures](../../../tools/clients/fcl-js/user-signatures.md)
