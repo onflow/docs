@@ -46,6 +46,13 @@ export function getContractAddress(contractName: string): string {
   throw new Error(`Contract address not found for ${contractName}`);
 }
 
+const storage = {
+  can: fcl.LOCAL_STORAGE.can,
+  get: (key: string) => fcl.LOCAL_STORAGE.get(`isolated-CURRENT-USER`),
+  put: (key: string, value: string) => fcl.LOCAL_STORAGE.put(`isolated-CURRENT-USER`, value),
+  removeItem: (key: string) => fcl.LOCAL_STORAGE.removeItem(`isolated-CURRENT-USER`),
+}
+
 export const flowKitConfig = {
   accessNodeUrl:
     flowNetwork === 'mainnet'
@@ -55,6 +62,10 @@ export const flowKitConfig = {
   appDetailTitle: 'Flow Dev Portal',
   appDetailIcon: 'https://avatars.githubusercontent.com/u/62387156?v=4',
   appDetailDescription: 'The developer portal for Flow Blockchain',
+  discoveryWallet: `https://fcl-discovery.onflow.org/${flowNetwork}/authn`,
+  storage,
 };
+
+export const flowClient = fcl.createFlowClient(flowKitConfig)
 
 configureFCL();
