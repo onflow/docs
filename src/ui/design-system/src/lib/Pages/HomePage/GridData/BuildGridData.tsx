@@ -86,12 +86,12 @@ export const buildGridData = {
         {
           heading: 'Build apps fast',
           description:
-            'Build a modern frontend for your Flow Cadence app using React Hooks with `@onflow/kit`.  Easily and conveniently access user accounts, sign transactions, and more.',
+            'Build a modern frontend for your Flow Cadence app using React Hooks with `@onflow/react-sdk`.  Easily and conveniently access user accounts, sign transactions, and more.',
           iconColor: 'green',
           cardColor: 'black',
           icon: 'flow-client-library',
           variant: 'horizontal',
-          href: '/tools/kit',
+                      href: '/tools/react-sdk',
         },
         {
           heading: 'Import and compose with contracts',
