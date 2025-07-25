@@ -16,11 +16,11 @@ const HomePage = ({}: HomePageProps): JSX.Element => {
         {/* Hero Section */}
         <HeroSection />
 
-        {/* Feature Sections */}
-        <FeatureSection sections={buildGridData.sections} />
-
         {/* QuickStart Showcase */}
         <QuickStartShowcase />
+
+        {/* Feature Sections */}
+        <FeatureSection sections={buildGridData.sections} />
 
         <GrowSection />
 
