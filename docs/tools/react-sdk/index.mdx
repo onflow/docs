@@ -1,14 +1,22 @@
 ---
-title: '@onflow/kit'
+title: '@onflow/react-sdk'
 description: React hooks for interacting with the Flow blockchain.
 sidebar_position: 1
 ---
 
-# @onflow/kit
+import { Connect, TransactionDialog, TransactionLink, TransactionButton } from "@onflow/react-sdk"
+import { FlowProvider } from "@onflow/react-sdk"
+import FlowProviderDemo from '@site/src/components/FlowProviderDemo';
 
-`@onflow/kit` is a lightweight React utility library that simplifies interacting with the Flow blockchain. It provides a collection of hooks, similar to those in other popular web3 libraries, that make it easier to build frontends that understand blockchain interactions. **In the future**, it will also provide components designed to make authentication, script execution, transactions, event subscriptions, and network configuration seamless in React apps.
+# @onflow/react-sdk
 
-## 🔌 Included React Hooks
+`@onflow/react-sdk` is a lightweight React utility library that simplifies interacting with the Flow blockchain. It provides a collection of hooks and components designed to make authentication, script execution, transactions, event subscriptions, and network configuration seamless in React apps.
+
+## What's Included
+
+### Cadence Hooks
+
+Hooks for interacting with native Flow Cadence runtime:
 
 - [`useFlowCurrentUser`](#useflowcurrentuser) – Authenticate and manage the current Flow user
 - [`useFlowAccount`](#useflowaccount) – Fetch Flow account details by address
@@ -22,6 +30,7 @@ sidebar_position: 1
 - [`useFlowRevertibleRandom`](#useflowrevertiblerandom) – Generate pseudorandom values tied to block height
 - [`useFlowTransaction`](#useflowtransaction) – Fetch a Flow transaction by ID
 - [`useFlowTransactionStatus`](#useflowtransactionstatus) – Track transaction status updates
+- [`useDarkMode`](#usedarkmode) – Get current dark mode state
 
 ### Cross-VM (Flow EVM ↔ Cadence) Hooks
 
@@ -31,10 +40,18 @@ sidebar_position: 1
 - [`useCrossVmSpendToken`](#usecrossvmspendtoken) – Bridge fungible tokens from Cadence to Flow EVM and execute arbitrary EVM transactions
 - [`useCrossVmTransactionStatus`](#usecrossvmtransactionstatus) – Track Cross-VM transaction status and EVM call results
 
+### Components
+
+Reusable UI components:
+
+- [`<Connect />`](#connect) - A wallet authentication button
+- [`<TransactionDialog />`](#transactiondialog) - A dialog modal that tracks a Flow transaction's lifecycle
+- [`<TransactionLink />`](#transactionlink) - A button that links to the block explorer based on network
+
 ## Installation
 
 ```bash
-npm install @onflow/kit
+npm install @onflow/react-sdk
 ```
 
 ## Usage
@@ -46,7 +63,7 @@ Begin by wrapping your application with the `FlowProvider` to initialize FCL con
 ```tsx
 import React from "react"
 import App from "./App"
-import { FlowProvider } from "@onflow/kit"
+import { FlowProvider } from "@onflow/react-sdk"
 import flowJSON from "../flow.json"
 
 function Root() {
@@ -61,6 +78,7 @@ function Root() {
         appDetailUrl: "https://myonchainapp.com",
       }}
       flowJson={flowJSON}
+      darkMode={false}
     >
       <App />
     </FlowProvider>
@@ -76,6 +94,242 @@ If you're using **Next.js**, place the `FlowProvider` inside your `layout.tsx`. 
 
 ---
 
+## 🎨 Theming
+
+### How Theming Works
+
+All UI components in `@onflow/react-sdk` are styled using [Tailwind CSS](https://tailwindcss.com/) utility classes. The kit supports both light and dark themes out of the box, using Tailwind's `dark:` variant for dark mode styling.
+
+You can customize the look and feel of the kit by providing a custom theme to the `FlowProvider` via the `theme` prop. This allows you to override default colors and styles to better match your app's branding.
+
+```tsx
+import { FlowProvider } from "@onflow/react-sdk"
+
+<FlowProvider
+  config={...}
+  theme={{
+    colors: {
+      primary: {
+        background: "bg-blue-600 dark:bg-blue-400",
+        text: "text-white dark:text-blue-900",
+        hover: "hover:bg-blue-700 dark:hover:bg-blue-300",
+      },
+      // ...other color overrides
+    }
+  }}
+>
+  <App />
+</FlowProvider>
+```
+
+---
+
+## 🌙 Dark Mode
+
+### How Dark Mode Works
+
+Dark mode is **fully controlled by the parent app** using the `darkMode` prop on `FlowProvider`. The kit does not manage dark mode state internally—this gives you full control and ensures the kit always matches your app's theme.
+
+- `darkMode={false}` (default): Forces all kit components to use light mode styles.
+- `darkMode={true}`: Forces all kit components to use dark mode styles.
+- You can dynamically change the `darkMode` prop to switch themes at runtime.
+
+**Example:**
+
+```tsx
+function App() {
+  // Parent app manages dark mode state
+  const [isDark, setIsDark] = useState(false)
+
+  return (
+    <FlowProvider config={...} darkMode={isDark}>
+      <MyFlowComponents />
+    </FlowProvider>
+  )
+}
+```
+
+**Accessing Dark Mode State in Components:**
+
+You can use the `useDarkMode` hook to check the current mode inside your components:
+
+```tsx
+import { useDarkMode } from "@onflow/react-sdk"
+
+function MyComponent() {
+  // useDarkMode only returns the current state, no setter
+  const { isDark } = useDarkMode()
+  return <div>{isDark ? "Dark mode" : "Light mode"}</div>
+}
+```
+
+### Notes
+
+- The kit does **not** automatically follow system preferences or save user choices. You are responsible for managing and passing the correct `darkMode` value.
+- All kit components will automatically apply the correct Tailwind `dark:` classes based on the `darkMode` prop.
+- For best results, ensure your app's global theme and the kit's `darkMode` prop are always in sync.
+
+---
+
+## Components
+
+### `Connect`
+
+A drop-in wallet connection component with UI for copy address, logout, and balance display.
+
+**Props:**
+
+- `variant?: ButtonProps["variant"]` – Optional button style variant (default: `"primary"`)
+- `onConnect?: () => void` – Callback triggered after successful authentication
+- `onDisconnect?: () => void` – Callback triggered after logout
+- `balanceType?: "cadence" | "evm" | "combined"` – Specifies which balance to display (default: `"cadence"`). Options:
+  - `"cadence"`: Shows the FLOW token balance from the Cadence side
+  - `"evm"`: Shows the FLOW token balance from the Flow EVM side
+  - `"combined"`: Shows the total combined FLOW token balance from both sides
+
+```tsx
+import { Connect } from "@onflow/react-sdk"
+
+<Connect
+  onConnect={() => console.log("Connected!")}
+  onDisconnect={() => console.log("Logged out")}
+/>
+```
+
+### Live Demo
+
+<FlowProviderDemo>
+  <Connect
+    onConnect={() => console.log("Connected!")}
+    onDisconnect={() => console.log("Logged out")}
+  />
+</FlowProviderDemo>
+
+---
+
+### `TransactionButton`
+
+Button component for executing Flow transactions with built-in loading states and global transaction management.
+
+**Props:**
+
+- `transaction: Parameters<typeof mutate>[0]` – Flow transaction object to execute when clicked
+- `label?: string` – Optional custom button label (default: `"Execute Transaction"`)
+- `mutation?: UseMutationOptions<string, Error, Parameters<typeof mutate>[0]>` – Optional TanStack React Query mutation options
+- `...buttonProps` – All other `ButtonProps` except `onClick` and `children` (includes `variant`, `disabled`, `className`, etc.)
+
+```tsx
+import { TransactionButton } from "@onflow/react-sdk"
+
+const myTransaction = {
+  cadence: `
+    transaction() {
+      prepare(acct: &Account) {
+        log("Hello from ", acct.address)
+      }
+    }
+  `,
+  args: (arg, t) => [],
+  limit: 100,
+}
+
+<TransactionButton
+  transaction={myTransaction}
+  label="Say Hello"
+  variant="primary"
+  mutation={{
+    onSuccess: (txId) => console.log("Transaction sent:", txId),
+    onError: (error) => console.error("Transaction failed:", error),
+  }}
+/>
+```
+
+### Live Demo
+
+<FlowProviderDemo>
+  <TransactionButton
+    transaction={{
+      cadence: `transaction() { prepare(acct: &Account) { log("Demo transaction") } }`,
+      args: (arg, t) => [],
+      limit: 100,
+    }}
+    label="Demo Transaction"
+  />
+</FlowProviderDemo>
+
+---
+
+### `TransactionDialog`
+
+Dialog component for real-time transaction status updates.
+
+**Props:**
+
+- `open: boolean` – Whether the dialog is open
+- `onOpenChange: (open: boolean) => void` – Callback to open/close dialog
+- `txId?: string` – Optional Flow transaction ID to track
+- `onSuccess?: () => void` – Optional callback when transaction is successful
+- `pendingTitle?: string` – Optional custom pending state title
+- `pendingDescription?: string` – Optional custom pending state description
+- `successTitle?: string` – Optional custom success state title
+- `successDescription?: string` – Optional custom success state description
+- `closeOnSuccess?: boolean` – If `true`, closes the dialog automatically after success
+
+```tsx
+import { TransactionDialog } from "@onflow/react-sdk"
+
+
+<TransactionDialog
+  open={isOpen}
+  onOpenChange={setIsOpen}
+  txId="6afa38b7bd1a23c6cc01a4ea2e51ed376f16761f9d06eca0577f674a9edc0716"
+  pendingTitle="Sending..."
+  successTitle="All done!"
+  closeOnSuccess
+/>
+```
+
+### Live Demo
+
+<FlowProviderDemo>
+  <TransactionDialog
+    open={false}
+    onOpenChange={() => {}}
+    txId="6afa38b7bd1a23c6cc01a4ea2e51ed376f16761f9d06eca0577f674a9edc0716"
+    pendingTitle="Sending..."
+    successTitle="All done!"
+    closeOnSuccess
+  />
+</FlowProviderDemo>
+
+---
+
+### `TransactionLink`
+
+Link to the block explorer with the appropriate network scoped to transaction ID.
+
+**Props:**
+
+- `txId: string` – The transaction ID to link to
+- `variant?: ButtonProps["variant"]` – Optional button variant (defaults to `"link"`)
+
+```tsx
+import { TransactionLink } from "@onflow/react-sdk"
+
+<TransactionLink txId="your-tx-id" />
+```
+
+### Live Demo
+
+<FlowProviderDemo>
+  <TransactionLink
+    txId="0x1234567890abcdef"
+    variant="primary"
+  />
+</FlowProviderDemo>
+
+---
+
 ## Hooks
 
 :::info
@@ -87,8 +341,12 @@ Many of these hooks are built using [`@tanstack/react-query`](https://tanstack.c
 ### `useFlowCurrentUser`
 
 ```tsx
-import { useFlowCurrentUser } from "@onflow/kit"
+import { useFlowCurrentUser } from "@onflow/react-sdk"
 ```
+
+### Parameters
+
+- `flowClient?: FlowClient` - Optional `FlowClient` instance
 
 #### Returns:
 
@@ -120,13 +378,14 @@ function AuthComponent() {
 ### `useFlowAccount`
 
 ```tsx
-import { useFlowAccount } from "@onflow/kit"
+import { useFlowAccount } from "@onflow/react-sdk"
 ```
 
 #### Parameters:
 
 - `address?: string` – Flow address (with or without `0x` prefix)
 - `query?: UseQueryOptions<Account | null, Error>` – Optional TanStackQuery options
+- `flowClient?: FlowClient` - Optional `FlowClient` instance
 
 #### Returns: `UseQueryResult<Account | null, Error>`
 
@@ -157,7 +416,7 @@ function AccountDetails() {
 ### `useFlowBlock`
 
 ```tsx
-import { useFlowBlock } from "@onflow/kit"
+import { useFlowBlock } from "@onflow/react-sdk"
 ```
 
 #### Parameters:
@@ -166,6 +425,7 @@ import { useFlowBlock } from "@onflow/kit"
 - `id?: string` – Block by ID
 - `height?: number` – Block by height
 - `query?: UseQueryOptions<Block | null, Error>` – Optional TanStackQuery options
+- `flowClient?: FlowClient` - Optional `FlowClient` instance
 
 Only one of `sealed`, `id`, or `height` should be provided.
 
@@ -193,13 +453,15 @@ function LatestBlock() {
 ### `useFlowChainId`
 
 ```tsx
-import { useFlowChainId } from "@onflow/kit"
+import { useFlowChainId } from "@onflow/react-sdk"
 ```
 
 This hook retrieves the Flow chain ID, which is useful for identifying the current network.
 
 #### Parameters:
-- `queryOptions?: Omit<UseQueryOptions<string | null>, "queryKey" | "queryFn">` – Optional TanStack Query options like `staleTime`, `enabled`, etc.
+
+- `query?: Omit<UseQueryOptions<string | null>, "queryKey" | "queryFn">` – Optional TanStack Query options like `staleTime`, `enabled`, etc.
+- `flowClient?: FlowClient` - Optional `FlowClient` instance
 
 #### Returns: `UseQueryResult<string | null, Error>`
 
@@ -220,10 +482,20 @@ function ChainIdExample() {
 
 ---
 
+### `useFlowClient`
+
+This hook returns the `FlowClient` for the current `<FlowProvider />` context.
+
+#### Parameters:
+
+- `flowClient?: FlowClient` - Optional `FlowClient` instance to override the result
+
+---
+
 ### `useFlowConfig`
 
 ```tsx
-import { useFlowConfig } from "@onflow/kit"
+import { useFlowConfig } from "@onflow/react-sdk"
 ```
 
 #### Returns: `FlowConfig`
@@ -246,7 +518,7 @@ function MyComponent() {
 ### `useFlowEvents`
 
 ```tsx
-import { useFlowEvents } from "@onflow/kit"
+import { useFlowEvents } from "@onflow/react-sdk"
 ```
 
 #### Parameters:
@@ -259,6 +531,7 @@ import { useFlowEvents } from "@onflow/kit"
 - `opts?: { heartbeatInterval?: number }` – Options for subscription heartbeat
 - `onEvent: (event: Event) => void` – Callback for each event received
 - `onError?: (error: Error) => void` – Optional error handler
+- `flowClient?: FlowClient` - Optional `FlowClient` instance
 
 #### Example:
 
@@ -279,7 +552,7 @@ function EventListener() {
 ### `useFlowQuery`
 
 ```tsx
-import { useFlowQuery } from "@onflow/kit"
+import { useFlowQuery } from "@onflow/react-sdk"
 ```
 
 #### Parameters:
@@ -287,6 +560,7 @@ import { useFlowQuery } from "@onflow/kit"
 - `cadence: string` – Cadence script to run
 - `args?: (arg, t) => unknown[]` – Function returning FCL arguments
 - `query?: UseQueryOptions<unknown, Error>` – Optional TanStackQuery options
+- `flowClient?: FlowClient` - Optional `FlowClient` instance
 
 #### Returns: `UseQueryResult<unknown, Error>`
 
@@ -320,7 +594,7 @@ function QueryExample() {
 ### `useFlowQueryRaw`
 
 ```tsx
-import { useFlowQueryRaw } from "@onflow/kit"
+import { useFlowQueryRaw } from "@onflow/react-sdk"
 ```
 
 This hook is identical to `useFlowQuery` but returns the raw, non-decoded response data from the Flow blockchain. This is useful when you need access to the original response structure or want to handle decoding manually.
@@ -330,6 +604,7 @@ This hook is identical to `useFlowQuery` but returns the raw, non-decoded respon
 - `cadence: string` – Cadence script to run
 - `args?: (arg, t) => unknown[]` – Function returning FCL arguments
 - `query?: UseQueryOptions<unknown, Error>` – Optional TanStackQuery options
+- `flowClient?: FlowClient` - Optional `FlowClient` instance
 
 #### Returns: `UseQueryResult<unknown, Error>`
 
@@ -365,12 +640,13 @@ function QueryRawExample() {
 ### `useFlowMutate`
 
 ```tsx
-import { useFlowMutate } from "@onflow/kit"
+import { useFlowMutate } from "@onflow/react-sdk"
 ```
 
 #### Parameters:
 
 - `mutation?: UseMutationOptions<string, Error, FCLMutateParams>` – Optional TanStackQuery mutation options
+- `flowClient?: FlowClient` - Optional `FlowClient` instance
 
 #### Returns: `UseMutationResult<string, Error, FCLMutateParams>`
 
@@ -415,7 +691,7 @@ function CreatePage() {
 ### `useFlowRevertibleRandom`
 
 ```tsx
-import { useFlowRevertibleRandom } from "@onflow/kit"
+import { useFlowRevertibleRandom } from "@onflow/react-sdk"
 ```
 
 #### Parameters:
@@ -424,6 +700,7 @@ import { useFlowRevertibleRandom } from "@onflow/kit"
 - `max: string` – Maximum random value (inclusive), as a UInt256 decimal string. **Required**.
 - `count?: number` – Number of random values to fetch (must be at least 1). Defaults to `1`.
 - `query?: Omit<UseQueryOptions<any, Error>, "queryKey" | "queryFn">` – Optional TanStack Query settings like `staleTime`, `enabled`, `retry`, etc.
+- `flowClient?: FlowClient` - Optional `FlowClient` instance
 
 #### Returns: `UseQueryResult<RevertibleRandomResult[], Error>`
 
@@ -475,7 +752,7 @@ function RandomValues() {
 ### `useFlowTransaction`
 
 ```tsx
-import { useFlowTransaction } from "@onflow/kit"
+import { useFlowTransaction } from "@onflow/react-sdk"
 ```
 
 Fetches a Flow transaction by ID and returns the decoded transaction object.
@@ -484,6 +761,7 @@ Fetches a Flow transaction by ID and returns the decoded transaction object.
 
 * `txId?: string` – The Flow transaction ID to fetch.
 * `query?: Omit<UseQueryOptions<Transaction | null, Error>, "queryKey" | "queryFn">` – Optional TanStack Query options like `staleTime`, `enabled`, etc.
+* `flowClient?: FlowClient` - Optional `FlowClient` instance
 
 #### Returns: `UseQueryResult<Transaction | null, Error>`
 
@@ -514,12 +792,13 @@ function TransactionDetails({ txId }: { txId: string }) {
 ### `useFlowTransactionStatus`
 
 ```tsx
-import { useFlowTransactionStatus } from "@onflow/kit"
+import { useFlowTransactionStatus } from "@onflow/react-sdk"
 ```
 
 #### Parameters:
 
 - `id: string` – Transaction ID to subscribe to
+- `flowClient?: FlowClient` - Optional `FlowClient` instance
 
 #### Returns:
 
@@ -539,18 +818,47 @@ function TransactionStatusComponent() {
 
 ---
 
+### `useDarkMode`
+
+```tsx
+import { useDarkMode } from "@onflow/react-sdk"
+```
+
+This hook provides access to the current dark mode state from the `FlowProvider`. It's useful for conditionally rendering content or applying custom styling based on the current theme.
+
+#### Returns:
+
+- `isDark: boolean` – Whether dark mode is currently enabled
+
+```tsx
+function ThemeAwareComponent() {
+  const { isDark } = useDarkMode()
+
+  return (
+    <div className={isDark ? "bg-gray-900 text-white" : "bg-white text-black"}>
+      <h2>Current Theme: {isDark ? "Dark" : "Light"}</h2>
+      <p>This component adapts to the current theme!</p>
+    </div>
+  )
+}
+```
+
+---
+
 ## Cross-VM Hooks
 
 ### `useCrossVmBatchTransaction`
 
 ```tsx
-import { useCrossVmBatchTransaction } from "@onflow/kit"
+import { useCrossVmBatchTransaction } from "@onflow/react-sdk"
 ```
 
 This hook allows you to execute multiple EVM transactions in a single atomic Cadence transaction. It is useful for batch processing EVM calls while ensuring they are executed together, either all succeeding or allowing for some to fail without affecting the others.
 
 #### Parameters:
+
 - `mutation?: UseMutationOptions<string, Error, UseCrossVmBatchTransactionMutateArgs>` – Optional TanStackQuery mutation options
+- `flowClient?: FlowClient` - Optional `FlowClient` instance
 
 #### Returns: `UseCrossVmBatchTransactionResult`
 
@@ -637,7 +945,7 @@ function CrossVmBatchTransactionExample() {
 ### `useCrossVmTokenBalance`
 
 ```tsx
-import { useCrossVmTokenBalance } from "@onflow/kit"
+import { useCrossVmTokenBalance } from "@onflow/react-sdk"
 ```
 
 Fetch the balance of a token balance for a given user across both Cadence and EVM environments.
@@ -648,6 +956,7 @@ Fetch the balance of a token balance for a given user across both Cadence and EV
 - `vaultIdentifier?: string` – Optional Cadence resource identifier (e.g. "0x1cf0e2f2f715450.FlowToken.Vault") for on-chain balance
 - `erc20AddressHexArg?: string` – Optional bridged ERC-20 contract address (hex) for EVM/COA balance
 - `query?: Omit<UseQueryOptions<unknown, Error>, "queryKey" | "queryFn">` – Optional TanStack Query config (e.g. staleTime, enabled)
+- `flowClient?: FlowClient` - Optional `FlowClient` instance
 
 > **Note:** You must pass `owner`, and one of `vaultIdentifier` or `erc20AddressHexArg`.
 
@@ -701,13 +1010,15 @@ function UseCrossVmTokenBalanceExample() {
 ### `useCrossVmSpendNft`
 
 ```tsx
-import { useCrossVmSpendNft } from "@onflow/kit"
+import { useCrossVmSpendNft } from "@onflow/react-sdk"
 ```
 
 Bridge NFTs from Cadence to Flow EVM and execute arbitrary EVM transactions to atomically spend them.
 
 #### Parameters:
+
 - `mutation?: UseMutationOptions<string, Error, UseCrossVmSpendFtMutateArgs>` – Optional TanStackQuery mutation options
+- `flowClient?: FlowClient` - Optional `FlowClient` instance
 
 Where `UseCrossVmSpendFtMutateArgs` is defined as:
 
@@ -772,13 +1083,15 @@ function CrossVmSpendNftExample() {
 ### `useCrossVmSpendToken`
 
 ```tsx
-import { useCrossVmSpendToken } from "@onflow/kit"
+import { useCrossVmSpendToken } from "@onflow/react-sdk"
 ```
 
 Bridge FTs from Cadence to Flow EVM and execute arbitrary EVM transactions to atomically spend them.
 
 #### Parameters:
+
 - `mutation?: UseMutationOptions<string, Error, UseCrossVmSpendTokenMutateArgs>` – Optional TanStackQuery mutation options
+- `flowClient?: FlowClient` - Optional `FlowClient` instance
 
 Where `UseCrossVmSpendTokenMutateArgs` is defined as:
 
@@ -843,7 +1156,7 @@ function CrossVmSpendTokenExample() {
 ### `useCrossVmTransactionStatus`
 
 ```tsx
-import { useCrossVmTransactionStatus } from "@onflow/kit"
+import { useCrossVmTransactionStatus } from "@onflow/react-sdk"
 ```
 
 Subscribes to status updates for a given Cross-VM Flow transaction ID that executes EVM calls. This hook monitors the transaction status and extracts EVM call results if available.
@@ -851,6 +1164,7 @@ Subscribes to status updates for a given Cross-VM Flow transaction ID that execu
 #### Parameters:
 
 - `id?: string` – Optional Flow transaction ID to monitor
+- `flowClient?: FlowClient` - Optional `FlowClient` instance
 
 #### Returns: `UseCrossVmTransactionStatusResult`
 

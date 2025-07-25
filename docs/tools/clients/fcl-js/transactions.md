@@ -74,7 +74,7 @@ const transaction = await fcl.tx(transactionId).onceExecuted()
 console.log(transaction) // The transactions status and events after being executed
 ```
 
-To learn more about `mutate`, check out the [API documentation](./api.md#mutate).
+To learn more about `mutate`, check out the [API documentation](./packages-docs/fcl/mutate.md).
 
 ## Transaction Finality
 

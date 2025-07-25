@@ -253,7 +253,7 @@ Visit the [Flow Faucet] and follow the instructions to add testnet funds. Compar
 
 :::warning
 
-EVM accounts created by the [Flow Wallet] are [Cadence-Owned Accounts], or COAs - **Not** EOAs. COAs have many advantages over EOAs, but they are generated differently, which means they don't have a key that's compatible with hardhat.
+EVM accounts created by the [Flow Wallet] are [Cadence-Owned Accounts], or COAs - **Not** EOAs. COAs have many advantages over EOAs, but they are generated differently, which means they don't have a key that's compatible with Hardhat.
 
 Use your [MetaMask] or similar EOA account to deploy contracts on Flow EVM.
 

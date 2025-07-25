@@ -31,7 +31,8 @@
     "@fortawesome/react-fontawesome": "^0.2.0",
     "@headlessui/react": "^2.2.0",
     "@mdx-js/react": "^3.1.0",
-    "@onflow/fcl": "^1.13.1",
+    "@onflow/fcl": "1.20.0-alpha.2",
+    "@onflow/react-sdk": "0.1.0-alpha.3",
     "@tailwindcss/aspect-ratio": "0.4.2",
     "@tailwindcss/forms": "0.5.6",
     "@tailwindcss/typography": "0.5.10",
@@ -65,7 +66,7 @@
   "devDependencies": {
     "@docusaurus/module-type-aliases": "^3.6.3",
     "@jest/globals": "^29.7.0",
-    "@onflow/typedefs": "^1.4.0",
+    "@onflow/typedefs": "1.7.0-alpha.0",
     "@tsconfig/docusaurus": "^2.0.3",
     "@types/jest": "^29.5.14",
     "@types/lodash": "^4.17.14",
