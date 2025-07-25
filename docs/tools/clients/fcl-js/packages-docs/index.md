@@ -11,8 +11,6 @@ description: Packages documentation.
 A list of all packages available inside Flow Client Library (FCL) with functions and type definitions.
 
 - [@onflow/fcl](./fcl/index.md) - High-level JavaScript/TypeScript library for building web applications on the Flow blockchain.
-- [@onflow/fcl-core](./fcl-core/index.md) - Core JavaScript/TypeScript library providing shared functionality for Flow blockchain interactions.
-- [@onflow/fcl-react-native](./fcl-react-native/index.md) - React Native JavaScript/TypeScript library for building mobile applications on the Flow blockchain.
 - [@onflow/sdk](./sdk/index.md) - Low-level JavaScript/TypeScript SDK for interacting with the Flow blockchain.
 
 - [Type Definitions](./types/index.md) - Type definitions for the Flow Client Library (FCL) packages.

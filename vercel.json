@@ -1357,6 +1357,16 @@
       "source": "/evm/guides/vrf",
       "destination": "/tutorials/native-vrf/vrf-evm",
       "permanent": true
+    },
+    {
+      "source": "/tools/clients/fcl-js/api",
+      "destination": "/tools/clients/fcl-js/packages-docs/fcl",
+      "permanent": true
+    },
+    {
+      "source": "/tools/clients/fcl-js/sdk-guidelines",
+      "destination": "/tools/clients/fcl-js/packages-docs/sdk",
+      "permanent": true
     }
   ]
 }
