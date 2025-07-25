@@ -35,7 +35,7 @@ const CATEGORIES = [
   {
     title: 'Tools',
     links: [
-      { label: '@onflow/react-sdk', href: '/tools/react-sdk' },
+      { label: '@onflow/kit', href: '/tools/kit' },
       { label: 'Flow Emulator', href: '/tools/emulator' },
       { label: 'Flow CLI', href: '/tools/flow-cli' },
       { label: 'Cadence VS Code Extension', href: '/tools/vscode-extension' },

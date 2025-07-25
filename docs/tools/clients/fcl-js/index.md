@@ -69,6 +69,8 @@ fcl.authenticate()
 - *Interact with smart contracts*: Authorize transactions via the user's chosen wallet
 - *Prove ownership of a wallet address*: Signing and verifying user signed data
 
+[Learn more about wallet interactions >](api.md#wallet-interactions)
+
 #### Blockchain Interactions
 - *Query the chain*: Send arbitrary Cadence scripts to the chain and receive back decoded values
 ```js
@@ -108,12 +110,16 @@ const txId = await fcl.mutate({
 });
 ```
 
+[Learn more about on-chain interactions >](api.md#on-chain-interactions)
+
 #### Utilities
 - Get account details from any Flow address
 - Get the latest block
 - Transaction status polling
 - Event polling
 - Custom authorization functions
+
+[Learn more about utilities >](api.md#pre-built-interactions)
 
 ## Typescript Support
 
@@ -138,7 +144,7 @@ For all type definitions available, see [this file](https://github.com/onflow/fc
 ## Next Steps
 
 - See the [Flow App Quick Start](../../../build/getting-started/fcl-quickstart.md).
-- See the full [API Reference](./packages-docs/fcl/index.md) for all FCL functionality.
+- See the full [API Reference](api.md) for all FCL functionality.
 - Learn Flow's smart contract language to build any script or transactions: [Cadence](https://cadence-lang.org).
 - Explore all of Flow [docs and tools](https://developers.flow.com).
 
@@ -178,7 +184,7 @@ The discovery feature can be used via API allowing you to customize your own UI 
 
 ## 🛠 Want to Use the Flow SDK Directly?
 
-If you prefer to interact with Flow at a **lower level** without using FCL, you can use the [Flow JavaScript SDK](./packages-docs/sdk/index.md) directly. The SDK provides raw access to Flow's API for sending transactions, executing scripts, and managing accounts.
+If you prefer to interact with Flow at a **lower level** without using FCL, you can use the [Flow JavaScript SDK](sdk-guidelines.md) directly. The SDK provides raw access to Flow's API for sending transactions, executing scripts, and managing accounts.
 
 FCL is built **on top of the Flow SDK**, making it easier to handle authentication, wallet interactions, and dapp connectivity. Choose the approach that best fits your use case.
 

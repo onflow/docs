@@ -19,7 +19,7 @@ When authenticating via FCL using Discovery UI, a user is shown a list of servic
 
 This method is the simplest way to integrate Discovery and its wallets and services into your app. All you have to do is configure `discovery.wallet` with the host endpoint for testnet or mainnet.
 
-> **Note**: Opt-in wallets, like Ledger and Dapper Wallet, require you to explicitly state you'd like to use them. For more information on including opt-in wallets, [see these docs](./packages-docs/fcl/index.md#configuration).
+> **Note**: Opt-in wallets, like Ledger and Dapper Wallet, require you to explicitly state you'd like to use them. For more information on including opt-in wallets, [see these docs](./api.md#more-configuration).
 >
 > A [Dapper Wallet](https://meetdapper.com/developers) developer account is required. To enable Dapper Wallet inside FCL, you need to [follow this guide](https://docs.meetdapper.com/quickstart).
 
@@ -81,7 +81,7 @@ fcl.discovery.authn.subscribe(callback);
 fcl.discovery.authn.snapshot();
 ```
 
-In order to authenticate with a service (for example, when a user click's "login"), pass the selected service to the `fcl.authenticate` method described here [in the API reference](./packages-docs/fcl/authenticate.md):
+In order to authenticate with a service (for example, when a user click's "login"), pass the selected service to the `fcl.authenticate` method described here [in the API reference](./api.md#authenticate):
 
 ```jsx
 fcl.authenticate({ service });
@@ -183,7 +183,10 @@ fcl.config({
 | `Dapper Wallet` | 0x82ec283f88a62e65 | 0xead892083b3e2c6c |
 | `Ledger`        | 0x9d2e44203cb13051 | 0xe5cd26afebe62781 |
 
-To learn more about other possible configurations, check out the [Discovery Github Repo](https://github.com/onflow/fcl-discovery).
+To learn more about other possible configurations, check out the following links:
+
+- [Discovery API Docs](./api.md#discovery-1)
+- [Discovery Github Repo](https://github.com/onflow/fcl-discovery)
 
 ### Exclude Wallets
 

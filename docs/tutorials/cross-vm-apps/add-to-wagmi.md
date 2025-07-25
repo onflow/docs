@@ -28,12 +28,12 @@ This tutorial demonstrates how to enhance your existing wagmi/RainbowKit applica
 ## Video Overview
 
 <div style={{ position: 'relative', paddingBottom: '56.25%', height: 0, overflow: 'hidden', maxWidth: '100%' }}>
-  <iframe
+  <iframe 
     style={{ position: 'absolute', top: 0, left: 0, width: '100%', height: '100%' }}
-    src="https://www.youtube.com/embed/T2IqfrsKvZA"
-    title="YouTube video player"
-    frameborder="0"
-    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+    src="https://www.youtube.com/embed/T2IqfrsKvZA" 
+    title="YouTube video player" 
+    frameborder="0" 
+    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
     allowfullscreen
   ></iframe>
 </div>
@@ -130,7 +130,7 @@ export const config = createConfig({
 ## Step 3: Add the Batch Transaction Utility
 
 <Callout type="info">
-You can skip this step by using a [pre-built utility from the `@onflow/react-sdk`] package. However, if you want to understand how batch transactions work under the hood, continue with this custom implementation.
+You can skip this step by using a [pre-built utility from the `@onflow/kit`] package. However, if you want to understand how batch transactions work under the hood, continue with this custom implementation.
 </Callout>
 
 Create a custom hook in `src/hooks/useBatchTransactions.ts` to handle batch transactions. This utility allows you to execute multiple EVM transactions in a single Cadence transaction:
@@ -232,7 +232,7 @@ transaction(calls: [{String: AnyStruct}], mustPass: Bool) {
                 gasLimit: gasLimit,
                 value: EVM.Balance(attoflow: value)
             )
-
+            
             if mustPass {
                 assert(
                   result.status == EVM.Status.successful,
@@ -517,4 +517,4 @@ For a complete reference implementation, check out the [FCL + RainbowKit + wagmi
 [Testnet Cadence Flowscan]: https://testnet.flowscan.io
 [Cadence Owned Accounts]: ../../build/basics/accounts.md
 [Testnet EVM Flowscan]: https://evm-testnet.flowscan.io
-[pre-built utility from the `@onflow/react-sdk`]: ../../tools/react-sdk/index.mdx#usecrossvmbatchtransaction
+[pre-built utility from the `@onflow/kit`]: ../../tools/kit/index.md#usecrossvmbatchtransaction
