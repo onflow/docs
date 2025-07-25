@@ -1,15 +1,24 @@
-import React from "react";
-import useIsBrowser from "@docusaurus/useIsBrowser";
-import { FlowProvider } from "@onflow/react-sdk";
-import { flowKitConfig } from "@site/src/config/fcl";
+import React from 'react';
+import useIsBrowser from '@docusaurus/useIsBrowser';
+import { useColorMode } from '@docusaurus/theme-common';
+import { FlowProvider } from '@onflow/react-sdk';
+import { flowClient } from '@site/src/config/fcl';
 
-export default function FlowProviderDemo({ children }) {
+interface FlowProviderDemoProps {
+  children: React.ReactNode;
+}
+
+export default function FlowProviderDemo({
+  children,
+}: FlowProviderDemoProps): React.ReactElement | null {
   const isBrowser = useIsBrowser();
+  const { colorMode } = useColorMode();
+
   if (!isBrowser) return null;
 
   return (
-    <FlowProvider config={flowKitConfig}>
+    <FlowProvider flowClient={flowClient} colorMode={colorMode}>
       {children}
     </FlowProvider>
   );
-} 
+}
