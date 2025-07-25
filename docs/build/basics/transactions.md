@@ -66,6 +66,10 @@ Transactions may declare parameters it needs during execution, these must be pro
 
 A reference to a recent block used for expiry. A transaction is considered expired if it is submitted to Flow after reference block height + N, where N is a constant defined by the network. On mainnet current setting for N is 600 which amounts to approximately 10 minutes for expiry (please note this is subject to change).
 
+:::caution
+It is recommended to use the latest finalized block as the reference block, as it is the most recent block guaranteed to be included by the network.  Using the latest sealed block is not recommended, as sealing occurs after finalization and could cause the transaction to fall outside of the expiration window.
+:::
+
 ### Gas Limit
 
 When a transaction is executed each operation consumes a predefined amount of computational units (we define more about that in the Fees documentation). This defines the maximum amount of computation that is allowed to be done during this transaction. If a transaction completes execution using fewer computational units than the limit, it remains unaffected. However, if it hits this limit during execution, the transaction will fail, its changes will be reverted, but fees will still be applied. The maximum computational limit for Flow mainnet is currently at 9999, but this might change. The maximum network limit is defined to protect the network from transactions that would run forever. 

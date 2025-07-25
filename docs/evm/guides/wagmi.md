@@ -127,6 +127,7 @@ function App() {
         <div>{error?.message}</div>
       </div>
     </>
+  )
 }
 
 export default App
