@@ -26,11 +26,6 @@ const QuickStartShowcase: React.FC = () => {
 
   return (
     <section className="container mx-auto pt-1 pb-8 hidden lg:block">
-      <div className="flex items-center justify-between mb-4">
-        <h2 className="text-xl font-semibold text-gray-800 dark:text-gray-200">
-           Query onchain data
-        </h2>
-      </div>
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-0 items-stretch bg-white dark:bg-gray-900 rounded-2xl shadow-lg border border-gray-200 dark:border-gray-700 overflow-hidden">
         {/* Left: Selector */}
         <div className="flex flex-col w-full items-center justify-center bg-gray-50 dark:bg-gray-800/50 border-r border-gray-200 dark:border-gray-700">
