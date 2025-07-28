@@ -85,7 +85,7 @@ const CATEGORIES = [
     links: [
       { label: 'Tutorials', href: '/tutorials' },
       { label: 'AI Plus Flow', href: '/tutorials/ai-plus-flow' },
-      { label: 'Backend Usage', href: '/tutorials/backend-usage' },
+      { label: 'Gasless Transactions', href: '/tutorials/gasless-transactions' },
       { label: 'Token Launch', href: '/tutorials/token-launch' },
       { label: 'Cross-VM Apps', href: '/tutorials/cross-vm-apps' },
       { label: 'FlowtoBooth', href: '/tutorials/flowtobooth' },

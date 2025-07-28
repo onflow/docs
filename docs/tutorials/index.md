@@ -107,4 +107,4 @@ Explore Flow's unique capabilities through fun benchmark applications that showc
 [Add Flow Cadence to Your wagmi App]: ./cross-vm-apps/add-to-wagmi.md
 [Register Your Assets in Cadence]: ./token-launch/register-cadence-assets.md
 [Register Your ERC20 Token]: ./token-launch/register-erc20-token.md
-[Gas Free EVM Endpoint]: ./backend-usage/gas-free-evm-endpoint.md
+[Gas Free EVM Endpoint]: ./gasless-transactions/gas-free-evm-endpoint.md

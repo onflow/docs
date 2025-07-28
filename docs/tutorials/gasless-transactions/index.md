@@ -27,5 +27,5 @@ In this tutorial series, you'll discover how to:
 - [Gas Free EVM Endpoint] - Learn how to set up a gas free EVM endpoint for your backend, all transactions sent through this endpoint will not be charged for gas fees from the sender's account(EVM Gateway's service account will be used to pay for the gas fees).
 
 [Flow Wallet]: https://wallet.flow.com/
-[sponsored transactions]: https://developers.flow.com/build/advanced-concepts/account-abstraction#sponsored-transactions
+[sponsored transactions]: /build/advanced-concepts/account-abstraction#sponsored-transactions
 [Gas Free EVM Endpoint]: ./gas-free-evm-endpoint.md
