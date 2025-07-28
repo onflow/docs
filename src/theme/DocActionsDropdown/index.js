@@ -1,8 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import clsx from 'clsx';
 import styles from './styles.module.css';
+import { useDoc, useDocsData } from '@docusaurus/plugin-content-docs/client';
 
 export default function DocActionsDropdown() {
+  const doc = useDoc()
   const [isOpen, setIsOpen] = useState(false);
   const [copySuccess, setCopySuccess] = useState(false);
 
@@ -16,46 +18,27 @@ export default function DocActionsDropdown() {
     }
   }, [copySuccess]);
 
-  const buildRawUrl = (path, isIndex) => {
-    if (isIndex) {
-      // For index files, use path/index.md
-      return `https://raw.githubusercontent.com/onflow/docs/main/docs/${path}/index.md`;
-    } else {
-      // For regular files, use path.md
-      return `https://raw.githubusercontent.com/onflow/docs/main/docs/${path}.md`;
-    }
-  };
-
-  const fetchMarkdown = async (path) => {
-    // First, try to determine if this is an index.md file by checking both paths
-    const directPath = `https://raw.githubusercontent.com/onflow/docs/main/docs/${path}.md`;
-    const indexPath = `https://raw.githubusercontent.com/onflow/docs/main/docs/${path}/index.md`;
-    
+  const fetchMarkdown = async () => {
     try {
-      // Try the index path first
-      const indexResponse = await fetch(indexPath);
-      if (indexResponse.ok) {
-        return { url: indexPath, text: await indexResponse.text() };
-      }
-      
-      // If index path fails, try the direct path
-      const directResponse = await fetch(directPath);
+      const path = doc.metadata.source.replace(/^@site\//, '')
+      const url = `https://raw.githubusercontent.com/onflow/docs/main/${path}`;
+      const directResponse = await fetch(url);
       if (directResponse.ok) {
-        return { url: directPath, text: await directResponse.text() };
+        return { url, text: await directResponse.text() };
       }
-      
-      // If both fail, return null
-      return null;
     } catch (error) {
       console.error('Error fetching markdown:', error);
       return null;
     }
+
+    return null;
   };
 
   const handleCopyMarkdown = async () => {
     try {
-      const path = window.location.pathname.replace(/^\/docs\/?/, '').replace(/\/$/, '');
-      const result = await fetchMarkdown(path);
+      
+      const result = await fetchMarkdown();
+      console.log('Markdown fetch result:', result);
       
       if (result) {
         await navigator.clipboard.writeText(result.text);
@@ -77,8 +60,7 @@ export default function DocActionsDropdown() {
 
   const handleViewMarkdown = async () => {
     try {
-      const path = window.location.pathname.replace(/^\/docs\/?/, '').replace(/\/$/, '');
-      const result = await fetchMarkdown(path);
+      const result = await fetchMarkdown();
       
       if (result) {
         window.open(result.url, '_blank');
@@ -98,8 +80,7 @@ export default function DocActionsDropdown() {
 
   const handleOpenInChatGPT = async () => {
     try {
-      const path = window.location.pathname.replace(/^\/docs\/?/, '').replace(/\/$/, '');
-      const result = await fetchMarkdown(path);
+      const result = await fetchMarkdown();
       
       if (result) {
         const prompt = `Analyze this documentation: ${result.url}. After reading, ask me what I'd like to know. Keep responses focused on the content.`;
@@ -126,8 +107,7 @@ export default function DocActionsDropdown() {
 
   const handleOpenInClaude = async () => {
     try {
-      const path = window.location.pathname.replace(/^\/docs\/?/, '').replace(/\/$/, '');
-      const result = await fetchMarkdown(path);
+      const result = await fetchMarkdown();
       
       if (result) {
         const prompt = `Review this documentation: ${result.url}. Once complete, ask me what questions I have. Stay focused on the provided content.`;
