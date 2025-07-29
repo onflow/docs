@@ -229,7 +229,7 @@ You can also create a `CLAUDE.local.md` file that is used just for you and not s
 
 ## Workflow Strategies
 
-Claude Code excels when following a structured development approach. We recommedn you implement this four-stage methodology:
+Claude Code excels when following a structured development approach. We recommend you implement this four-stage methodology:
 
 ### Stage 1: Idea Development
 
