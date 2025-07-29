@@ -1367,6 +1367,16 @@
       "source": "/tools/clients/fcl-js/sdk-guidelines",
       "destination": "/tools/clients/fcl-js/packages-docs/sdk",
       "permanent": true
+    },
+    {
+      "source": "/tutorials/backend-usage",
+      "destination": "/tutorials/gasless-transactions",
+      "permanent": true
+    },
+    {
+      "source": "/tutorials/backend-usage/gas-free-evm-endpoint",
+      "destination": "/tutorials/gasless-transactions/gas-free-evm-endpoint",
+      "permanent": true
     }
   ]
 }

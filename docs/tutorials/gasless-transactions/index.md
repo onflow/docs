@@ -1,6 +1,6 @@
 ---
-title: Backend Usage
-description: Learn some tips and tutorials for interacting with the Flow blockchain in a backend application
+title: Gasless Transactions
+description: Learn about techniques for building apps with gasless transactions for your users.
 sidebar_position: 4
 keywords:
   - Backend
@@ -12,9 +12,9 @@ keywords:
   - RPC Endpoint
 ---
 
-# Backend Usage
+# Gasless Transactions
 
-In addition to front-end interactions with the Flow Blockchain using various tool libraries, there are scenarios where we require back-end interactions with the Flow Blockchain. In such cases, we can typically leverage Flow's features to achieve more optimal solutions.
+The [Flow Wallet] currently sponsors all transactions - on testnet and mainnet! This is possible because [sponsored transactions] are a native feature of the Flow Protocol. Additional methods for gas sponsorship are available and are described here.
 
 ## What You'll Learn
 
@@ -26,4 +26,6 @@ In this tutorial series, you'll discover how to:
 
 - [Gas Free EVM Endpoint] - Learn how to set up a gas free EVM endpoint for your backend, all transactions sent through this endpoint will not be charged for gas fees from the sender's account(EVM Gateway's service account will be used to pay for the gas fees).
 
+[Flow Wallet]: https://wallet.flow.com/
+[sponsored transactions]: /build/advanced-concepts/account-abstraction#sponsored-transactions
 [Gas Free EVM Endpoint]: ./gas-free-evm-endpoint.md
