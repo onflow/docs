@@ -163,10 +163,12 @@ This is a Flow blockchain application with Cadence smart contracts and FCL front
 - frontend/src/config.js - FCL configuration and contract addresses
 
 ## MCP Servers
+
 - Use flow-mcp for reading blockchain data, managing accounts, checking balances, and interacting with native contracts.
 - Use flow-defi-mcp fro checking token prices, swapping tokens on decentralized exchanges, and interacting with ERC20 tokens.
 
 ## Architecture Notes
+
 [Document your specific project architecture, contract relationships, and deployment strategies]
 ```
 
