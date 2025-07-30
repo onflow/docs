@@ -2,11 +2,10 @@
 title: Why EVM on Flow 
 sidebar_label: Why EVM on Flow 
 sidebar_position: 1
-description: 
+description: Flow EVM is an Ethereum alternative that is very fast with low fees.
 keywords:
   - Flow EVM
   - Fast EVM
-  - 
   - EVM equivalency
   - Ethereum developers
   - Solidity
