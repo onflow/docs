@@ -238,7 +238,9 @@ Claude Code excels when following a structured development approach. We recommen
 **Process**:
 
 1. Click `Shift` + `Tab` in order to cycle through the different response forms that CC has to offer until you reach the Plan Mode.
+
 ![Plan Mode](./imgs/plan_mode.png)
+
 2. Describe your Flow project concept to Claude Code
 3. Ask for requirement analysis and technical feasibility assessment
 
