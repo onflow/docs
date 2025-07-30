@@ -219,7 +219,8 @@ const config = {
         // Plugin Options for loading OpenAPI files
         specs: [
           {
-            spec: 'https://raw.githubusercontent.com/onflow/flow/master/openapi/access.yaml',
+            // spec: 'https://raw.githubusercontent.com/onflow/flow/master/openapi/access.yaml',
+            spec: 'https://raw.githubusercontent.com/onflow/flow/87a8f227ad761fa61576b014e3562d3b6c38d8a6/openapi/access.yaml',
             route: '/http-api/',
           },
         ],
