@@ -2,11 +2,27 @@
 title: Why EVM on Flow 
 sidebar_label: Why EVM on Flow 
 sidebar_position: 1
+description: 
+keywords:
+  - Flow EVM
+  - Fast EVM
+  - 
+  - EVM equivalency
+  - Ethereum developers
+  - Solidity
+  - Low GAS fees
+  - scalability
+  - MEV resistance
+  - account abstraction
+  - cross-vm transfers
+  - Cadence
+  - sponsored transactions
+  - developer experience
 ---
 
 # Why EVM on Flow 
 
-Flow is an L1 that now supports EVM-equivalency. This means that all of Flow's protocol benefits, such as fast transactions, low costs, and mainstream scalability, are natively available without any additional code changes to solidity contracts. With EVM, solidity devs and builders can now easily tap into Flow's user base and unique IPs without any implementation risk. 
+Flow is an L1 that now supports EVM-equivalency. This makes Flow EVM an Ethereum alternative for apps because of its extremely fast transactions with lower fees. This means that Flow's protocol benefits, such as fast transactions, low costs, and mainstream scalability, are natively available without any additional code changes to solidity contracts. With EVM, solidity devs and builders can now easily tap into Flow's user base and unique IPs without any implementation risk. 
 
 ## Seamless Integration for Ethereum Developers
 

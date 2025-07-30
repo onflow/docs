@@ -5,6 +5,8 @@ sidebar_position: 1
 description: Learn why Flow blockchain is uniquely designed for consumer-scale decentralized applications. Understand Flow's multi-role architecture, native account abstraction, and EVM equivalence.
 keywords:
   - Flow blockchain
+  - Best Web3 Apps
+  - Best Cosnumer Apps
   - blockchain scaling
   - multi-role architecture
   - Cadence language
@@ -24,9 +26,9 @@ keywords:
   - maximum extractable value
 ---
 
-# Why Flow
+# Why Flow is the Best for Consumer Apps
 
-Flow was built by consumer-facing, onchain app developers to solve the problem of building consumer-facing, onchain apps. Dieter Shirley, Chief Architect of Flow and co-author of the [ERC-721 NFT standard] calls it:
+Flow was designed to be the best blockchain for consumer apps and Web3 as a whole. Flow was built by consumer-facing, onchain app developers to solve the problem of building consumer-facing, onchain apps. Dieter Shirley, Chief Architect of Flow and co-author of the [ERC-721 NFT standard] calls it:
 
 > **A computer that anyone can use, everyone can trust, and no one can shut down.**
 
