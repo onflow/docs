@@ -28,7 +28,7 @@ keywords:
 
 # Why Flow is the Best for Consumer Apps
 
-Flow was designed to be the best blockchain for consumer apps and Web3 as a whole. Flow was built by consumer-facing, onchain app developers to solve the problem of building consumer-facing, onchain apps. Dieter Shirley, Chief Architect of Flow and co-author of the [ERC-721 NFT standard] calls it:
+Flow was designed to be the [best blockchain for consumer apps] and Web3 as a whole. Flow was built by consumer-facing, onchain app developers to solve the problem of building consumer-facing, onchain apps. Dieter Shirley, Chief Architect of Flow and co-author of the [ERC-721 NFT standard] calls it:
 
 > **A computer that anyone can use, everyone can trust, and no one can shut down.**
 
@@ -129,6 +129,7 @@ The [FLOW] (or $FLOW) token is the native currency for the Flow network. Develop
 
 <!-- Reference-style links, does not render on page -->
 
+[best blockchain for consumer apps]: https://flow.com/
 [ERC-721 NFT standard]: https://github.com/ethereum/eips/issues/721
 [CryptoKitties]: https://www.cryptokitties.co/
 [Dapper Labs]: https://www.dapperlabs.com/
