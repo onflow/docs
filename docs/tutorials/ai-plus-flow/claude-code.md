@@ -20,7 +20,7 @@ keywords:
 
 ## Introduction
 
-Claude Code (CC) transforms the development experience by providing an AI-powered coding assistant specifically designed for iterative, systematic development. Unlike general-purpose AI tools, Claude Code excels at breaking down tasks into manageable, incremental steps while maintaining context across your entire development lifecycle.
+[Claude Code] (CC) transforms the development experience by providing an AI-powered coding assistant specifically designed for iterative, systematic development. Unlike general-purpose AI tools, Claude Code excels at breaking down tasks into manageable, incremental steps while maintaining context across your entire development lifecycle.
 
 What makes Claude Code exceptionally powerful is its ability to maintain unlimited context windows, allowing it to understand entire codebases without the compression limitations that plague other AI coding tools. This comprehensive understanding enables Claude Code to deploy multiple subagent instances that work in parallel on complex tasks, iterate continuously until optimal solutions are achieved, and maintain persistent memory of your project's architecture and coding standards across all development sessions.
 
@@ -42,10 +42,10 @@ Before proceeding with this guide, you should have:
 
 ### Technical Requirements
 
-- **Claude Code Subscription**: $200/month plan recommended for comprehensive Flow development features
-- **Flow CLI**: Installed and configured for emulator, testnet, and mainnet interactions
-- **Git**: Version control system for checkpoint-based development workflow
-- **Node.js**: For Claude Code, FCL integration, and frontend development components
+- [Claude Code Subscription]: $200/month plan recommended for comprehensive Flow development features
+- [Flow CLI]: Installed and configured for emulator, testnet, and mainnet interactions
+- [Git]: Version control system for checkpoint-based development workflow
+- [Node.js]: For Claude Code, FCL integration, and frontend development components
 
 ## Claude Code Setup and Configuration
 
@@ -613,6 +613,11 @@ The combination of AI-powered development assistance with Flow's comprehensive t
 
 <!-- Relative links, will not render on page -->
 
+[Claude Code]: https://docs.anthropic.com/en/docs/claude-code/overview
+[Claude Code Subscription]: https://claude.ai/upgrade
+[Flow CLI]: https://developers.flow.com/tools/flow-cli
+[Git]: https://git-scm.com/downloads
+[Node.js]: https://docs.npmjs.com/downloading-and-installing-node-js-and-npm
 [subscription]: https://claude.ai/upgrade
 [MCPs]: https://docs.anthropic.com/en/docs/claude-code/mcp
 [access to use an MCP server]: https://docs.anthropic.com/en/docs/claude-code/mcp
