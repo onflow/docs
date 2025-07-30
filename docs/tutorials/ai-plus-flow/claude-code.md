@@ -62,7 +62,7 @@ This is why Claude Code can be so powerful, it is able to include entire codebas
 
 Claude Code requires a [subscription] to access its full development capabilities. There are 3 subscription levels: Pro, Max 5x, and Max 20x.
 
-The Pro plan is very limiting, so it should only be used if you want to play around with Claude Code.
+The Pro plan is very limited, so expect it to only be sufficient for testing and experimentation.
 
 The $200/month Max 20x plan is recommended for developers with a lot of projects or if you need to build something quickly where time is of the essence. This plan will grant you access to:
 
