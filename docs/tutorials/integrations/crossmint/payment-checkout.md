@@ -1,5 +1,5 @@
 ---
-sidebar_position: 4
+sidebar_position: 3
 title: Payment Checkout Integration
 description: Enable fiat and cross-chain payments for Flow assets with credit cards, Apple Pay, Google Pay, and crypto across 40+ chains.
 keywords:

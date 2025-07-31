@@ -1,5 +1,5 @@
 ---
-sidebar_position: 5
+sidebar_position: 4
 title: Minting Platform Integration
 description: Create and distribute tokens at scale on Flow using Crossmint's no-code and API-based minting platform.
 keywords:
