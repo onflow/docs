@@ -2,7 +2,7 @@
 title: Why Flow
 sidebar_label: Why Flow
 sidebar_position: 1
-description: Flow is the best blockchain for consumer apps & web3 apps. It's scalable, EVM-equivalent, with native account abstraction and a unique multi-role architecture.
+description: Flow is the best blockchain for onchain consumer apps and web3 apps. It's scalable, EVM-equivalent, with native account abstraction and a unique multi-role architecture.
 keywords:
   - Flow blockchain
   - Best Web3 Apps
