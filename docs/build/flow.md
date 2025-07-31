@@ -6,7 +6,7 @@ description: Flow is the best blockchain for onchain consumer apps and web3 apps
 keywords:
   - Flow blockchain
   - Best Web3 Apps
-  - Best Cosnumer Apps
+  - Best Consumer Apps
   - blockchain scaling
   - multi-role architecture
   - Cadence language
