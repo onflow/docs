@@ -186,20 +186,6 @@ export function AdvancedHostedCheckout({
 
 Embed checkout directly in your application with full UI control.
 
-### Install Embedded Checkout
-
-<Tabs>
-  <TabItem value="react" label="React" default>
-    ```bash
-    npm install @crossmint/embed-react
-    ```
-  </TabItem>
-  <TabItem value="javascript" label="Vanilla JS">
-    ```html
-    <script src="https://www.crossmint.com/assets/crossmint.embed.js"></script>
-    ```
-  </TabItem>
-</Tabs>
 
 ### Basic Embedded Checkout
 
