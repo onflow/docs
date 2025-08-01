@@ -13,27 +13,31 @@ Store, manage, and interact securely with tokens and digital assets on Flow. Dis
 
 ## Flow Wallet
 
-[Flow Wallet](https://wallet.flow.com/) is the most popular Flow-native wallet, it sponsors all gas fees for users and interacts seamlessly with both Cadence and EVM dApps in the ecosystem.
-
-## Metamask Wallet
-
-[Metamask](https://metamask.io/) is a secure and user-friendly crypto wallet for NFTs and digital tokens. Presently only supports Flow EVM and cannot access Cadence accounts.
-
-## Dapper Wallet
-
-[Dapper Wallet](https://www.meetdapper.com/) is a wallet exceptionally friendly for first time crypto collectors to buy and manage digital assets.
+[Flow Wallet](https://wallet.flow.com/) - The is the most popular Flow-native wallet, it sponsors all gas fees for users and interacts seamlessly with both Cadence and EVM dApps in the ecosystem.
 
 ## Ledger
 
 [Ledger](https://www.ledger.com/) is a hardware wallet to secure, buy, exchange, and grow your crypto assets.
 
-## Finoa
+## Metamask
 
-[Finoa](https://www.finoa.io/) is a platform for institutional investors to safely store and stake their FLOW tokens.
+[Metamask](https://metamask.io/) is a secure and user-friendly crypto wallet for NFTs and digital tokens. Presently only supports Flow EVM and cannot access Cadence accounts.
 
-## Blocto
+## NuFi
 
-[Blocto](https://www.blocto.io/) is a cross-chain mobile wallet for IOS and Android devices.
+[NuFi](https://https://nu.fi/) allows you to securely manage tokens and NFTs, trade, stake, and use apps on multiple blockchains. Presently only supports Flow EVM and cannot access Cadence accounts.
+
+## Rabby
+
+[Rabby](https://https://rabby.io/) - The game-changing wallet for Ethereum and all EVM chains. Presently only supports Flow EVM and cannot access Cadence accounts.
+
+## Wallet Connect
+
+[Wallet Connect](https://reown.com/) is the backbone of onchain connectivity. Presently only supports Flow EVM and cannot access Cadence accounts.
+
+## Dapper Wallet
+
+[Dapper Wallet](https://www.meetdapper.com/) is a wallet exceptionally friendly for first time crypto collectors to buy and manage digital assets.
 
 </div>
 
