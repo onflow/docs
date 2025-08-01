@@ -117,14 +117,14 @@ Flow's high-performance infrastructure enables seamless experiences for collecto
 Explore the [FlowVerse Collectibles ecosystem](https://www.flowverse.co/?categories=collectibles) page for more collectibles!
 
 [1]: https://disneypinnacle.com/
-[3]: https://hotwheels.mattel.com/
-[4]: https://www.ticketmaster.com/
+[3]: https://virtual.mattel.com/explore/FLOW:A.d0bcefdf1e67ea85.HWGarageCardV2?sort=cheapest
+[4]: https://ticketmastercollectibles.com/explore
 [5]: https://flovatar.com/
-[6]: https://flunks.com/
-[7]: https://fuggclub.com/
-[8]: https://24karat.com/
-[9]: https://blockasset.co/
-[10]: https://beezie.com/
+[6]: https://www.flunks.io/
+[7]: https://www.tibles.com/
+[8]: https://www.24karat.io/
+[9]: https://www.blockasset.co/dashboard
+[10]: https://beezie.io/
 [11]: https://www.animocabrands.com/
 [12]: https://opensea.io/
 [13]: https://flowty.io/

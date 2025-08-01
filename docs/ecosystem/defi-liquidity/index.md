@@ -108,6 +108,10 @@ USDF is a blockchain-backed bank token enhancing payments and providing stable v
 
 [Fixes.world][24] is an autonomous programmable token universe that allows users to launch, distribute, and trade tokens with advanced automation and governance features.
 
+## Tally
+
+[Credit card debt][26] has met its match. Save thousands with our advanced credit line system.
+
 </div>
 
 [1]: https://www.kittypunch.xyz/
@@ -134,6 +138,7 @@ USDF is a blockchain-backed bank token enhancing payments and providing stable v
 [23]: https://www.pumpflow.meme/
 [24]: https://fixes.world/
 [25]: https://www.circle.com/usdc
+[26]: https://www.tally.xyz/
 
 ## Securing DeFi on Flow EVM
 
