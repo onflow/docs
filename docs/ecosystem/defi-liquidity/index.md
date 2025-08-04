@@ -39,50 +39,78 @@ Flow is designed for **next-generation DeFi**, enabling developers to build high
 
 Explore the [FlowVerse DeFi ecosystem](https://www.flowverse.co/?categories=defi) page for more information.
 
-## DeFi Partners 
+## DeFi Partners
 
 <div id="cards" className="cards">
 
 ## Kittypunch
 
-**Tags:** DEXES  
-[Kittypunch][1] is a next-generation decentralized exchange on Flow offering high-speed, low-cost token swaps and an intuitive trading experience. With a focus on community engagement and gamified finance, Kittypunch brings fresh energy to DeFi on Flow. Learn more [here][9]. 
+[Kittypunch][1] is a next-generation decentralized exchange on Flow offering high-speed, low-cost token swaps and an intuitive trading experience. With a focus on community engagement and gamified finance, Kittypunch brings fresh energy to DeFi on Flow. Learn more [here][9].
 
 ## Trado.one
 
-**Tags:** DEXES  
-[Trado.one][2] is a permissionless decentralized exchange that enables seamless token swaps on Flow. It offers an efficient, user-friendly interface and liquidity tools aimed at developers and retail users alike. Learn more [here][10]. 
+[Trado.one][2] is a permissionless decentralized exchange that enables seamless token swaps on Flow. It offers an efficient, user-friendly interface and liquidity tools aimed at developers and retail users alike. Learn more [here][10].
 
 ## Increment.fi
 
-**Tags:** DEXES, Decentralized Money Markets, Liquid Staking  
-[Increment.fi][3] is a composable DeFi platform on Flow offering lending, borrowing, staking, and exchange functionalities. It enables developers to integrate financial primitives into their apps through modular smart contracts. Learn more [here][11]. 
+[Increment.fi][3] is a composable DeFi platform on Flow offering lending, borrowing, staking, and exchange functionalities. It enables developers to integrate financial primitives into their apps through modular smart contracts. Learn more [here][11].
 
 ## More.Markets
 
-**Tags:** Decentralized Money Markets  
-[More.Markets][4] provides decentralized lending and borrowing on Flow. Users can supply assets to earn yield or borrow assets against collateral with dynamic interest rates, offering capital efficiency and transparency. Learn more [here][12]. 
+[More.Markets][4] provides decentralized lending and borrowing on Flow. Users can supply assets to earn yield or borrow assets against collateral with dynamic interest rates, offering capital efficiency and transparency. Learn more [here][12].
 
 ## Sturdy.Finance
 
-**Tags:** Decentralized Money Markets  
-[Sturdy.Finance][5] is a DeFi protocol that facilitates interest-free borrowing using yield-bearing assets. Built for Flow, it empowers users with efficient leverage while maintaining security and composability. Learn more [here][13]. 
+[Sturdy.Finance][5] is a DeFi protocol that facilitates interest-free borrowing using yield-bearing assets. Built for Flow, it empowers users with efficient leverage while maintaining security and composability. Learn more [here][13].
 
 ## Ankr
 
 **Tags:** Liquid Staking  
-[Ankr][6] brings liquid staking to Flow, allowing users to stake FLOW tokens and receive liquid derivatives that can be used in other DeFi protocols. This increases capital efficiency while securing the network. Learn more [here][14]. 
-
+[Ankr][6] brings liquid staking to Flow, allowing users to stake FLOW tokens and receive liquid derivatives that can be used in other DeFi protocols. This increases capital efficiency while securing the network. Learn more [here][14].
 
 ## Sudocat
 
-**Tags:** Trading Apps  
-[Sudocat][7] offers a decentralized trading dashboard built for Flow. With tools for analytics, portfolio tracking, and execution, it enhances the trading experience for on-chain users and DeFi enthusiasts. Learn more [here][15]. 
+[Sudocat][7] offers a decentralized trading dashboard built for Flow. With tools for analytics, portfolio tracking, and execution, it enhances the trading experience for on-chain users and DeFi enthusiasts. Learn more [here][15].
 
 ## Hitdex
 
-**Tags:** Trading Apps  
-[Hitdex][8] is a trading app native to Flow that combines a user-friendly interface with advanced execution logic. It supports seamless token swaps and is optimized for both speed and low fees. Learn more [here][16]. 
+[Hitdex][8] is a trading app native to Flow that combines a user-friendly interface with advanced execution logic. It supports seamless token swaps and is optimized for both speed and low fees. Learn more [here][16].
+
+## Rally
+
+[Rally][17] is your wallet, made social. Welcome to the new internet built for us to rally together, offering innovative social trading features and community-driven financial experiences on Flow.
+
+## Hype.meme
+
+[Hype.meme][18] is a platform to trade memes, now live on the App Store. It brings meme trading to the Flow blockchain with a focus on community-driven content and viral assets.
+
+## Vaultopolis
+
+[Vaultopolis][19] tokenizes Top Shot Moments into TSHOT, providing trading opportunities, yield generation, and liquidity solutions for NBA Top Shot collectors on Flow.
+
+## Izumi.finance
+
+[Izumi.finance][20] is a multi-chain DeFi protocol providing one-stop DEX-as-a-Service (DaaS) solutions, enabling seamless cross-chain liquidity and trading infrastructure on Flow.
+
+## Bridged USDC
+
+[Bridged USDC][21] represents [USDC][25] tokens bridged across blockchains for cross-chain use, providing stable liquidity and payment solutions within the Flow ecosystem.
+
+## USDF
+
+USDF is a blockchain-backed bank token enhancing payments and providing stable value transfer capabilities within the Flow DeFi ecosystem.
+
+## Pumpflow
+
+[Pumpflow][23] enables users to launch and verify meme tokens in seconds on the Flow blockchain, providing a streamlined token creation and distribution platform.
+
+## Fixes.world
+
+[Fixes.world][24] is an autonomous programmable token universe that allows users to launch, distribute, and trade tokens with advanced automation and governance features.
+
+## Tally
+
+[Credit card debt][26] has met its match. Save thousands with our advanced credit line system.
 
 </div>
 
@@ -102,14 +130,22 @@ Explore the [FlowVerse DeFi ecosystem](https://www.flowverse.co/?categories=defi
 [14]: https://www.ankr.com/docs/
 [15]: https://docs.sudocat.ai/
 [16]: https://www.hitdex.com/#/welcome
-
+[17]: https://rally.xyz/
+[18]: https://hype.meme/
+[19]: https://vaultopolis.com/
+[20]: https://izumi.finance/
+[21]: https://bridge.flow.com/
+[23]: https://www.pumpflow.meme/
+[24]: https://fixes.world/
+[25]: https://www.circle.com/usdc
+[26]: https://www.tally.xyz/
 
 ## Securing DeFi on Flow EVM
 
-Flow EVM supports secure multi-sig from Safe.Global (formerly Gnosis Safe) or Fireblocks. Both offer robust solutions for 
+Flow EVM supports secure multi-sig from Safe.Global (formerly Gnosis Safe) or Fireblocks. Both offer robust solutions for
 developers seeking to enhance the security and management of tokenized assets with a focus on institutional-grade practices and scalability.
 
-* [Safe.Global](https://safe.flow.com/)
-* [Fireblocks](https://www.fireblocks.com/)
+- [Safe.Global](https://safe.flow.com/)
+- [Fireblocks](https://www.fireblocks.com/)
 
 ---

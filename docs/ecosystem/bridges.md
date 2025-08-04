@@ -40,7 +40,16 @@ Bridges are mechanisms that connect different blockchain networks, enabling secu
 [DeBridge][9] is a decentralized cross-chain network supporting hundreds of tokens over 75 blockchains. DeBridge runs on its generic messaging protocol and operates cross-chain validator infrastructure to achieve a high level cross-chain interoperability for quick, low-cost bridging. DeBridge's architecture emphasizes security and fault tolerance with robust handling of forks or blockchain outages to mitigate bridging issues.
 
 ## Relay
+
 [Relay][10] is an intent-based bridge enabling high-speed bridging and connecting over 30 blockchains. Unlike consensus validator based decentralized bridges, Relay's permissioned relayer model stores outbound tokens on the origin chain and issues tokens on the destination chain allowing for low-cost, fast bridging of assets.
+
+## Relay.link
+
+[Relay.link][11] provides instant, low-cost swapping, bridging, and cross-chain execution across 73+ chains. It offers a comprehensive solution for users looking to bridge assets and execute cross-chain transactions with minimal fees and maximum efficiency.
+
+## Bridge.Flow.com
+
+[Bridge.Flow.com][12] is a digital asset bridge powered by Superbridge, specifically designed to connect Ethereum and Flow EVM Mainnet. It provides secure and efficient asset transfers between these two major blockchain networks, enabling seamless interoperability for users and developers.
 
 </div>
 
@@ -54,3 +63,5 @@ Bridges are mechanisms that connect different blockchain networks, enabling secu
 [8]: https://www.squidrouter.com/
 [9]: https://app.debridge.finance/
 [10]: https://relay.link/bridge
+[11]: https://relay.link/
+[12]: https://bridge.flow.com/
