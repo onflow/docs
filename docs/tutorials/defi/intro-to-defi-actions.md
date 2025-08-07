@@ -16,7 +16,7 @@ These tutorials will be updated, but you may need to refactor your code if the i
 
 :::
 
-_DeFi Actions_ are a suite of standardized Cadence interfaces that enable developers to compose complex workflows, starting with DeFi, by connecting small, reusable components. Actions provide a "LEGO" framework of plug-and-play blocks where each component performs a single operation (deposit, withdraw, swap, price lookup, flash loan) while maintaining composability with other components to create sophisticated workflows executable in a single atomic transaction.
+_Actions_ are a suite of standardized Cadence interfaces that enable developers to compose complex workflows, starting with DeFi, by connecting small, reusable components. Actions provide a "LEGO" framework of plug-and-play blocks where each component performs a single operation (deposit, withdraw, swap, price lookup, flash loan) while maintaining composability with other components to create sophisticated workflows executable in a single atomic transaction.
 
 By using DeFi Actions, developers are able remove large amounts of bespoke complexity from building DeFi apps and can instead focus on business logic using nouns and verbs.
 
@@ -40,11 +40,28 @@ DeFi Actions are instantiated by calling the appropriate function in a connector
 
 ## Source
 
-A source is...
+A source is a primitive component that can supply a [vault] containing the requested type and amount of tokens from something the user controls, or has authorized access to.  This includes, but is not limited to, personal vaults, accounts in protocols, and rewards.
 
-You might use a source for...
+You'll likely use one or more sources in any transactions using actions if the user needs to pay for something or otherwise provide tokens.
 
-For example, if you want to create a source from an [IncrementFi] rewards pool, you can do that by calling the `PoolRewardsSource` function from [`IncrementFiStakingConnectors`]:
+Sources conform to the `Source` [interface]:
+
+```cadence
+access(all) struct interface Source : Identifiable {
+    /// Returns the Vault type provided by this Source
+    access(all) view fun getSourceType(): Type
+    /// Returns an estimate of how much can be withdrawn
+    access(all) fun minimumAvailable(): UFix64
+    /// Withdraws up to maxAmount, returning what's actually available
+    access(FungibleToken.Withdraw) fun withdrawAvailable(maxAmount: UFix64): @{FungibleToken.Vault}
+}
+```
+
+In other words, ever source is guaranteed to have the above functions and return types allowing you to get the type of vault returned by the source, get an estimate of how many tokens may be withdrawn currently, and actually withdraw those tokens, up to the amount available.
+
+Sources _degrade gracefully_ - If the requested amount of tokens is not available, they return the available amount.  They always return a vault, even if that vault is empty.
+
+You create a source by calling the appropriate function in the [connector] for the protocol that will provide the tokens. For example, if you want to create a source from an [IncrementFi] rewards pool, you can do that by calling the `PoolRewardsSource` function from [`IncrementFiStakingConnectors`]:
 
 ```cadence
 let poolRewardsSource = IncrementFiStakingConnectors.PoolRewardsSource(
@@ -58,8 +75,37 @@ let poolRewardsSource = IncrementFiStakingConnectors.PoolRewardsSource(
 
 ## Sink
 
+A sink is the opposite of a source - it's a place to send tokens, up to the limit of the capacity defined in the sink.  As with any [resource], this process is non-destructive. Any remaining tokens are left in the vault provided by the source.  They also have flexible limits, meaning the capacity can be dynamic.
+
+Sinks adhere to the `Sink` [interface].
+
+```cadence
+access(all) struct interface Sink : Identifiable {
+    /// Returns the Vault type accepted by this Sink
+    access(all) view fun getSinkType(): Type
+    /// Returns an estimate of remaining capacity
+    access(all) fun minimumCapacity(): UFix64
+    /// Deposits up to capacity, leaving remainder in the referenced vault
+    access(all) fun depositCapacity(from: auth(FungibleToken.Withdraw) &{FungibleToken.Vault})
+}
+```
+
+You create a sink similar how you create a source, by calling a function on the [connector]. For example, to create a sink from an [IncrementFi] pool:
+
+```cadence
+let poolSink = IncrementFiStakingConnectors.PoolSink(
+    staker: self.userCertificateCap.address,
+    poolID: pid,
+    uniqueID: nil
+)
+```
 
 ## Swapper
+
+
+### Zapper
+
+
 
 
 ## PriceOracle
@@ -113,5 +159,9 @@ stakingSink.depositCapacity(from: &tokenVault)
 <!-- Reference-style links, will not render on page. -->
 
 [Connectors]: 
+[connector]: 
+[vault]: 
+[interface]: 
+[resource]: 
 [IncrementFi]: 
 [`IncrementFiStakingConnectors`]: 
