@@ -293,6 +293,14 @@ import { TransactionDialog } from "@onflow/react-sdk"
 ### Live Demo
 
 <FlowProviderDemo>
+  <TransactionButton
+    transaction={{
+      cadence: `transaction() { prepare(acct: &Account) { log("Demo transaction") } }`,
+      args: (arg, t) => [],
+      limit: 100,
+    }}
+    label="Demo Transaction"
+  />
   <TransactionDialog
     open={false}
     onOpenChange={() => {}}
