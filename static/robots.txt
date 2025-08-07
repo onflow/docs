@@ -2,7 +2,7 @@
 
 # Allow all bots
 User-agent: *
-Allow: /
+Disallow:
 
 # Sitemap
 Sitemap: https://developers.flow.com/sitemap.xml
