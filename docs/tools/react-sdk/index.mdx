@@ -7,6 +7,7 @@ sidebar_position: 1
 import { Connect, TransactionDialog, TransactionLink, TransactionButton } from "@onflow/react-sdk"
 import { FlowProvider } from "@onflow/react-sdk"
 import FlowProviderDemo from '@site/src/components/FlowProviderDemo';
+import TransactionDialogDemo from '@site/src/components/TransactionDialogDemo';
 
 # @onflow/react-sdk
 
@@ -292,24 +293,7 @@ import { TransactionDialog } from "@onflow/react-sdk"
 
 ### Live Demo
 
-<FlowProviderDemo>
-  <TransactionButton
-    transaction={{
-      cadence: `transaction() { prepare(acct: &Account) { log("Demo transaction") } }`,
-      args: (arg, t) => [],
-      limit: 100,
-    }}
-    label="Demo Transaction"
-  />
-  <TransactionDialog
-    open={false}
-    onOpenChange={() => {}}
-    txId="6afa38b7bd1a23c6cc01a4ea2e51ed376f16761f9d06eca0577f674a9edc0716"
-    pendingTitle="Sending..."
-    successTitle="All done!"
-    closeOnSuccess
-  />
-</FlowProviderDemo>
+<TransactionDialogDemo />
 
 ---
 
