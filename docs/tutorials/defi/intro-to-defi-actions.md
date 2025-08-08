@@ -567,9 +567,6 @@ Now that you have completed this tutorial, you should be able to:
 [IncrementFi]: https://app.increment.fi/swap?in=A.1654653399040a61.FlowToken&out=
 [`IncrementFiConnectors`]: https://github.com/onflow/DeFiActions/blob/main/cadence/contracts/connectors/increment-fi/IncrementFiConnectors.cdc
 [`FungibleTokenStack`]: https://github.com/onflow/DeFiActions/blob/c21b481e20e61cebdf76dff14225d6fb61c1d5e0/cadence/contracts/connectors/FungibleTokenStack.cdc
-
-[`{Quote}`]:
-[quote system]:
 [oracle]: https://developers.flow.com/ecosystem/defi-liquidity/defi-contracts#oracles
 [Band]: https://blog.bandprotocol.com/
 [`BandOracleConnectors`]: https://github.com/onflow/DeFiActions/blob/main/cadence/contracts/connectors/band-oracle/BandOracleConnectors.cdc
