@@ -104,7 +104,17 @@ A.1654653399040a61.FlowToken.Vault
 
 These types are used by many defi actions to provide a safer method of working with tokens then an arbitrary address that may or may not be a token.
 
-## Source
+## DeFi Actions
+
+:::info
+
+The following defi actions standardize **usage** patterns for common defi-related tasks. By working with them, you - or ai agents - can more easily write transactions and functionality regardless of the myriad of different ways each protocol works to accomplish these tasks.
+
+That being said, defi protocols and tools operate very differently, which means the calls to instantiate the same kind of action connected to different protocols will vary by protocol and connector.
+
+:::
+
+### Source
 
 A source is a primitive component that can supply a [vault] containing the requested type and amount of tokens from something the user controls, or has authorized access to. This includes, but is not limited to, personal vaults, accounts in protocols, and rewards.
 
@@ -151,7 +161,7 @@ transaction {
 }
 ```
 
-## Sink
+### Sink
 
 A sink is the opposite of a source - it's a place to send tokens, up to the limit of the capacity defined in the sink. As with any [resource], this process is non-destructive. Any remaining tokens are left in the vault provided by the source. They also have flexible limits, meaning the capacity can be dynamic.
 
@@ -199,7 +209,7 @@ transaction {
 }
 ```
 
-## Swapper
+### Swapper
 
 A swapper exchanges tokens between different types with support for bidirectional swaps and price estimation. Bi-directional means that they support swaps in both directions, which is necessary in the event that an inner connector can't accept the full swap output balance.
 
@@ -255,7 +265,7 @@ transaction {
 }
 ```
 
-## Price Oracle
+### Price Oracle
 
 A price [oracle] provides price data for assets with a consistent denomination. All prices are returned in the same unit and will return `nil` rather than reverting in the event that a price is unavailable. Prices are indexed by [Cadence type], requiring a specific Cadence-based token type for which to serve prices, as opposed to looking up an asset by a generic address.
 
@@ -322,7 +332,7 @@ transaction {
 }
 ```
 
-## Flasher
+### Flasher
 
 A flasher provides flash loans with atomic repayment requirements.
 
