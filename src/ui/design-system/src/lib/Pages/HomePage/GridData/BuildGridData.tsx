@@ -81,7 +81,7 @@ export const buildGridData = {
     },
     {
       title: 'Tools',
-      subtext: 'Best in class tools powering best in class applications builders.',
+      subtext: 'Best in class tools powering best in class application builders.',
       cards: [
         {
           heading: 'Build apps fast',
