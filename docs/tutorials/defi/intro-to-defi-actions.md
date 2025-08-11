@@ -147,9 +147,9 @@ import "FungibleTokenStack"
 
 transaction {
 
-  prepare(acct: AuthAccount) {
-    let withdrawCap = acct.getCapability<&AnyResource{FungibleToken.Vault, auth(FungibleToken.Withdraw)}>(
-      /private/flowTokenWithdrawAuth
+  prepare(acct: auth(BorrowValue) {
+    let withdrawCap = acct.storage.borrow<auth(FungibleToken.Withdraw) {FungibleToken.Vault}>(
+      /storage/flowTokenVault
     )
 
     let source = FungibleTokenStack.VaultSource(
@@ -188,13 +188,13 @@ import "FungibleTokenStack"
 
 transaction {
 
-  prepare(acct: AuthAccount) {
+  prepare(acct: &Account) {
     // Public, non-auth capability to deposit into the vault
-    let depositCap = acct.getCapability<&AnyResource{FungibleToken.Vault}>(
+    let depositCap = acct.capabilities.get<&{FungibleToken.Vault}>(
       /public/flowTokenReceiver
     )
 
-    // Optional: specify a max balance this Sink should hold
+    // Optional: specify a max balance the user's Flow Token vault should hold
     let maxBalance: UFix64? = nil // or UFix64(1000.0)
 
     // Optional: for aligning with Source in a stack
@@ -243,8 +243,7 @@ import "FUSD"
 import "IncrementFiConnectors"
 
 transaction {
-
-  prepare(_ acct: AuthAccount) {
+  prepare(acct: &Account) {
     // Minimal path: names will be resolved from flow.json in your local setup
     let swapper = IncrementFiConnectors.Swapper(
       path: [
