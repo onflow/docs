@@ -92,10 +92,10 @@ Explore Flow's unique capabilities through fun benchmark applications that showc
 
 - [Build a Fully-Onchain Image Gallery] - Create a fully onchain image gallery that demonstrates Flow's efficient storage capabilities
 
-[Use Flow Knowledge Base in Cursor]: ai-plus-flow/cursor/index.md
-[Use Flow Knowledge Base in ChatGPT]: ai-plus-flow/chatgpt/index.md
-[Flow Data Sources]: ai-plus-flow/flow-data-sources.md
-[Build AI Agents with AgentKit]: ai-plus-flow/agentkit-flow-guide.md
+[Use Flow Knowledge Base in Cursor]: use-AI-to-build-on-flow/cursor/index.md
+[Use Flow Knowledge Base in ChatGPT]: use-AI-to-build-on-flow/chatgpt/index.md
+[Flow Data Sources]: use-AI-to-build-on-flow/flow-data-sources.md
+[Build AI Agents with AgentKit]: use-AI-to-build-on-flow/agentkit-flow-guide.md
 [Introduction to Cross-VM Applications]: cross-vm-apps/introduction.md
 [Interacting with COAs]: cross-vm-apps/interacting-with-coa.md
 [Batched EVM Transactions]: cross-vm-apps/batched-evm-transactions.md

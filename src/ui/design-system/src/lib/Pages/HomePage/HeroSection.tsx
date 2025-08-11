@@ -20,7 +20,7 @@ const HeroSection: React.FC = () => {
           </p>
           <div className="flex flex-col sm:flex-row gap-3 mb-4">
             <a
-              href="/tutorials/ai-plus-flow"
+              href="/tutorials/use-AI-to-build-on-flow"
               className="px-6 py-2 rounded-lg bg-primary-purple text-white hover:text-white focus:text-white no-underline hover:no-underline font-bold text-base shadow-lg border border-gray-200 dark:border-gray-700 hover:opacity-90 focus:ring-2 focus:ring-primary-purple transition-colors text-center"
               onClick={() => {
                 event({
