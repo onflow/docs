@@ -82,6 +82,8 @@ DeFi Actions are instantiated by creating an instance of the appropriate [struct
 
 [TODO - Graphic showing something spidery connecting a complicated protocol to a simple interface]
 
+Read the [connectors article] to learn more about them.
+
 ## Token Types
 
 In Cadence, tokens that adhere to the [Fungible Token Standard] have types that work with type safety principles.
@@ -531,8 +533,7 @@ By aligning the same ID across connectors (e.g., Source → Swapper → Sink), y
 ### 1. Event Correlation
 
 - Every connector emits events tagged with its `UniqueIdentifier`.
-- Shared IDs let you filter and group related events in the chain’
-  's event stream.
+- Shared IDs let you filter and group related events in the chain's event stream.
 - Makes it easy to see that a withdrawal, swap, and deposit were part of **one workflow**.
 
 ### 2. Stack Tracing
@@ -571,6 +572,7 @@ Now that you have completed this tutorial, you should be able to:
 [Fungible Token Standard]: https://developers.flow.com/build/guides/fungible-token
 [Connectors]: ./connectors.md
 [connector]: ./connectors.md
+[connectors article]: ./connectors.md
 [vault]: https://developers.flow.com/build/guides/fungible-token#vaults-on-flow
 [interface]: https://cadence-lang.org/docs/language/interfaces
 [resource]: https://cadence-lang.org/docs/language/resources
