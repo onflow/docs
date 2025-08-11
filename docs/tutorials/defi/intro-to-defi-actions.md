@@ -139,7 +139,7 @@ In other words, every source is guaranteed to have the above functions and retur
 
 Sources _degrade gracefully_ - If the requested amount of tokens is not available, they return the available amount. They always return a vault, even if that vault is empty.
 
-You create a source by instantiating an instance of a `struct` that conforms to `source` from the [connector] for the protocol, or other location, that will provide the tokens. For example, if you want to create a source from a generic vault, you can do that by instantiating a `VaultSource` function from [`FungibleTokenStack`]:
+You create a source by instantiating a struct that conforms to the `Source` interface corresponding to a given protocol [connector]. For example, if you want to create a source from a generic vault, you can do that by creating a `VaultSource` from [`FungibleTokenStack`]:
 
 ```cadence
 import "FungibleToken"
