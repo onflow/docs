@@ -135,7 +135,7 @@ access(all) struct interface Source : Identifiable {
 }
 ```
 
-In other words, ever source is guaranteed to have the above functions and return types allowing you to get the type of vault returned by the source, get an estimate of how many tokens may be withdrawn currently, and actually withdraw those tokens, up to the amount available.
+In other words, every source is guaranteed to have the above functions and return types allowing you to get the type of vault returned by the source, get an estimate of how many tokens may be withdrawn currently, and actually withdraw those tokens, up to the amount available.
 
 Sources _degrade gracefully_ - If the requested amount of tokens is not available, they return the available amount. They always return a vault, even if that vault is empty.
 
