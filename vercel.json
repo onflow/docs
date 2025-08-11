@@ -1354,6 +1354,11 @@
       "permanent": true
     },
     {
+      "source": "/tutorials/ai-plus-flow",
+      "destination": "/tutorials/use-AI-to-build-on-flow",
+      "permanent": true
+    },
+    {
       "source": "/evm/guides/vrf",
       "destination": "/tutorials/native-vrf/vrf-evm",
       "permanent": true
