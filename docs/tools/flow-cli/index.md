@@ -58,6 +58,14 @@ flow generate transaction [TransactionName]
 flow generate script [ScriptName]
 ```
 
+### Add Existing Contracts
+
+You can also [manage configuration] to add existing files to `flow.json`.
+
+```zsh
+flow config add [ContractName]
+```
+
 ### Advanced Dependency Management
 
 Manage both local and remote smart contract dependencies with the [dependency manager].
@@ -80,4 +88,5 @@ To get started with creating your first Flow project and to learn more about how
 [scripts]: ./scripts/execute-scripts.md
 [emulator]: ../emulator/index.md
 [boilerplate]: ./boilerplate.md
+[manage configuration]: ./flow.json/manage-configuration.md
 [dependency manager]: ./dependency-manager.md
