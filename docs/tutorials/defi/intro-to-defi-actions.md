@@ -158,6 +158,7 @@ transaction {
       uniqueID: nil
     )
 
+    // Note: Logs are only visible in the emulator console
     log("Source created for vault type: ".concat(source.withdrawVaultType.identifier))
   }
 }
@@ -206,6 +207,7 @@ transaction {
       uniqueID: uniqueID
     )
 
+    // Note: Logs are only visible in the emulator console
     log("VaultSink created for deposit type: ".concat(sink.depositVaultType.identifier))
   }
 }
@@ -257,10 +259,12 @@ transaction {
 
     // Example: quote how much FUSD you'd get for 10.0 FLOW
     let qOut = swapper.quoteOut(forProvided: 10.0, reverse: false)
+    // Note: Logs are only visible in the emulator console
     log(qOut)
 
     // Example: quote how much FLOW you'd need to get 25.0 FUSD
     let qIn = swapper.quoteIn(forDesired: 25.0, reverse: false)
+    // Note: Logs are only visible in the emulator console
     log(qIn)
   }
 }
@@ -328,6 +332,7 @@ transaction {
       uniqueID: nil
     )
 
+    // Note: Logs are only visible in the emulator console
     log("Created PriceOracle; unit: ".concat(oracle.unitOfAccount().identifier))
   }
 }
@@ -393,7 +398,7 @@ transaction {
     let flowKey = "A.1654653399040a61.FlowToken"
     let fusdKey = "A.3c5959b568896393.FUSD"
 
-    // Ask the factory for the pair’s public capability (or address), then verify it.
+    // Ask the factory for the pair's public capability (or address), then verify it.
     // Depending on the exact factory interface you have, one of these will exist:
     //   - getPairAddress(token0Key: String, token1Key: String): Address
     //   - getPairPublicCap(token0Key: String, token1Key: String): Capability<&{SwapInterfaces.PairPublic}>
@@ -422,6 +427,7 @@ transaction {
       uniqueID: nil
     )
 
+    // Note: Logs are only visible in the emulator console
     log("Flasher ready on mainnet FLOW/FUSD at ".concat(pairAddr.toString()))
   }
 }
