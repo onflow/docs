@@ -7,7 +7,7 @@ sidebar_position: 16
 
 ## Introduction
 
-Flow CLI now includes a feature to automatically generate boilerplate code for contracts, transactions, and scripts. This feature enhances the development experience by simplifying the initial setup of various components in Flow.
+Flow CLI includes a feature to automatically generate boilerplate code for contracts, transactions, and scripts. This feature enhances the development experience by simplifying the initial setup of various components in Flow.
 
 ```shell
 > flow generate
@@ -23,7 +23,7 @@ Available Commands:
   transaction Generate a new transaction
 ```
 
-## Generate Contract
+## Create a Contract
 
 To create a new contract with basic structure, use the `contract` command. It creates a new Cadence file with a template contract definition.
 
@@ -45,7 +45,7 @@ access(all) contract HelloWorld {
 }
 ```
 
-## Generate Transaction
+## Create a Transaction
 
 For initializing a transaction, use the `transaction` command. It sets up a new Cadence file with a template transaction structure.
 
@@ -69,7 +69,9 @@ transaction() {
 }
 ```
 
-## Generate Script
+It also adds the new contract to `flow.json`.
+
+## Create a Script
 
 Similarly, to start a new script, the `script` command generates a Cadence file with a basic script structure.
 
@@ -101,4 +103,3 @@ The `--dir` flag is an optional feature in the Flow CLI `generate` commands, all
 - **Example**: `flow generate contract HelloWorld --dir=custom_contracts`
 
 Use the `--dir` flag only if your project requires a different organizational structure than the default.
-
