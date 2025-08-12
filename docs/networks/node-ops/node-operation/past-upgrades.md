@@ -10,6 +10,18 @@ A JSON version of the information below can be found in [onflow/flow/sporks.json
 
 > Currently only includes HCUs from 2025.
 
+
+## Height Coordinated Upgrade 12
+
+| HCU Info                                                                             |
+|:-------------------------------------------------------------------------------------|
+| **Date**: Aug 7, 2025                                                                |
+| **Block Height**: 122174655                                                          |
+| **Git Commit**: 5ad9dd5706ae11656b7367c289bb2384a350c88d                             |
+| **Branch/Tag**: v0.42.3                                                              |
+| **Docker Image Tag**: v0.42.3 or v0.42.1-rc.3                                        |
+| **Release Notes**: [v0.42.3](https://github.com/onflow/flow-go/releases/tag/v0.42.3) |
+
 ## Height Coordinated Upgrade 11
 
 | HCU Info                                                                             |
@@ -578,6 +590,17 @@ While FCL v0.0.67 is not strictly necessary to use Mainnet 6, we strongly recomm
 ## Testnet Upgrades
 
 > Currently only includes HCUs from 2025.
+
+## Height Coordinated Upgrade 14
+
+| HCU Info                                                                             |
+|:-------------------------------------------------------------------------------------|
+| **Date**: Aug 6, 2025                                                                |
+| **Block Height**: 273012710                                                          |
+| **Git Commit**: 5ad9dd5706ae11656b7367c289bb2384a350c88d                             |
+| **Branch/Tag**: v0.42.3                                                              |
+| **Docker Image Tag**: v0.42.3 or v0.42.1-rc.3                                        |
+| **Release Notes**: [v0.42.3](https://github.com/onflow/flow-go/releases/tag/v0.42.3) |
 
 ## Height Coordinated Upgrade 13
 
