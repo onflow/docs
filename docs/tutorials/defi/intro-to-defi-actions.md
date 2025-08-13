@@ -98,8 +98,6 @@ The first five DeFi Actions implement five core primitives to integrate external
 
 DeFi Actions are instantiated by creating an instance of the appropriate [struct] from a connector that provides the desired type of action connected to the desired DeFi protocol.
 
-[TODO - Graphic showing something spidery connecting a complicated protocol to a simple interface]
-
 Read the [connectors article] to learn more about them.
 
 ## Token Types

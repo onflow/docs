@@ -250,8 +250,6 @@ let pr = priority == 0
         : FlowCallbackScheduler.Priority.Low
 ```
 
-`executionEffort`: TODO
-
 The `executionEffort` is also supplied as an argument in the transaction. It's used to prepare the estimate for the gas fees that must be paid for the callback, and directly in the call to `schedule()` the callback.
 
 - `fees`: A [vault] containing the appropriate amount of gas fees needed to pay for the execution of the scheduled callback.

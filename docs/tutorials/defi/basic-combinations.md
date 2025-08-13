@@ -64,7 +64,6 @@ Source A → Aggregator → Sink
 Source B ↗
 Source C ↗
 ```
-[TODO - Create aggregator image]
 
 **Example**: Multiple DEX aggregators finding the best swap route
 
