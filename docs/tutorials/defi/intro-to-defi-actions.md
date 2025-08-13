@@ -72,21 +72,31 @@ This tutorial assumes you have a modest knowledge of [Cadence]. If you don't, yo
 
 The first five DeFi Actions implement five core primitives to integrate external DeFi protocols.
 
-[TODO - Graphic showing how each DeFi Action works (i.e. Source displays a funnel of assets from various protocols)]
-
 1. **Source**: Provides tokens on demand (e.g. withdraw from vault, claim rewards, pull liquidity)
+
+![source](./imgs/source.png)
+
 2. **Sink**: Accepts tokens up to capacity (e.g. deposit to vault, repay loan, add liquidity)
+
+![sink](./imgs/sink.png)
+
 3. **Swapper**: Exchanges one token type for another (e.g. targeted DEX trades, multi-protocol aggregated swaps)
+
+![swapper](./imgs/swapper.png)
+
 4. **PriceOracle**: Provides price data for assets (e.g. external price feeds, DEX prices, price caching)
+
+![price oracle](./imgs/price-oracle.png)
+
 5. **Flasher**: Provides flash loans with atomic repayment (e.g. arbitrage, liquidations)
+
+![flasher](./imgs/flasher.png)
 
 ## Connectors
 
 [Connectors] create the bridge between the standardized interfaces of DeFi Actions and the often bespoke and complicated mechanisms of different DeFi protocols. You can utilize existing connectors written by other developers, or create your own.
 
 DeFi Actions are instantiated by creating an instance of the appropriate [struct] from a connector that provides the desired type of action connected to the desired DeFi protocol.
-
-[TODO - Graphic showing something spidery connecting a complicated protocol to a simple interface]
 
 Read the [connectors article] to learn more about them.
 
@@ -125,6 +135,8 @@ That being said, defi protocols and tools operate very differently, which means 
 ### Source
 
 A source is a primitive component that can supply a [vault] containing the requested type and amount of tokens from something the user controls, or has authorized access to. This includes, but is not limited to, personal vaults, accounts in protocols, and rewards.
+
+![source](./imgs/source.png)
 
 You'll likely use one or more sources in any transactions using actions if the user needs to pay for something or otherwise provide tokens.
 
@@ -174,6 +186,8 @@ transaction {
 
 A sink is the opposite of a source - it's a place to send tokens, up to the limit of the capacity defined in the sink. As with any [resource], this process is non-destructive. Any remaining tokens are left in the vault provided by the source. They also have flexible limits, meaning the capacity can be dynamic.
 
+![sink](./imgs/sink.png)
+
 Sinks adhere to the `Sink` [interface].
 
 ```cadence
@@ -222,6 +236,8 @@ transaction {
 ### Swapper
 
 A swapper exchanges tokens between different types with support for bidirectional swaps and price estimation. Bi-directional means that they support swaps in both directions, which is necessary in the event that an inner connector can't accept the full swap output balance.
+
+![swapper](./imgs/swapper.png)
 
 They also contain price discovery to provide estimates for the amounts in and out via the [`{Quote}`] object, and the [quote system] enables price caching and execution parameter optimization.
 
@@ -279,6 +295,8 @@ transaction {
 ### Price Oracle
 
 A price [oracle] provides price data for assets with a consistent denomination. All prices are returned in the same unit and will return `nil` rather than reverting in the event that a price is unavailable. Prices are indexed by [Cadence type], requiring a specific Cadence-based token type for which to serve prices, as opposed to looking up an asset by a generic address.
+
+![price oracle](./imgs/price-oracle.png)
 
 You can pass an argument this `Type`, or any conforming fungible token type conforming to the interface to the `price` function to get a price.
 
@@ -347,6 +365,8 @@ transaction {
 ### Flasher
 
 A flasher provides flash loans with atomic repayment requirements.
+
+![flasher](./imgs/flasher.png)
 
 If you're not familiar with flash loans, imagine a scenario where you discovered an NFT listed for sale one one marketplace for 1 million dollars, then noticed an open bid to buy that same NFT for 1.1 million dollars on another marketplace.
 

@@ -120,7 +120,7 @@ ProtocolA.RewardsSource → SwapConnectors.SwapSource → ProtocolB.StakingSink
 
 | Connector | Location | Protocol | Purpose |
 |-----------|----------|----------|---------|
-| Flasher | [IncrementFiSwapConnectors] | IncrementFi DEX | Flash loans through SwapPair contracts |
+| Flasher | [IncrementFiFlashloanConnectors] | IncrementFi DEX | Flash loans through SwapPair contracts |
 
 ## Guide to Building Connectors
 
@@ -304,7 +304,7 @@ Create transaction templates for using your connectors:
 
 ```cadence
 // Transaction: save_vault_sink.cdc
-import "FungibleTokenStack"
+import "FungibleTokenConnectors"
 import "DeFiActions"
 import "FungibleToken"
 
@@ -316,7 +316,7 @@ transaction(maxBalance: UFix64) {
         )
         
         // Create the VaultSink connector
-        let vaultSink = FungibleTokenStack.VaultSink(
+        let vaultSink = FungibleTokenConnectors.VaultSink(
             max: maxBalance,
             depositVault: vaultCap,
             uniqueID: nil
@@ -337,7 +337,7 @@ Here's the actual working transaction that creates a VaultSink:
 import "FungibleToken"
 import "FungibleTokenMetadataViews"
 import "FlowToken"
-import "FungibleTokenStack"
+import "FungibleTokenConnectors"
 
 transaction(receiver: Address, vaultPublicPath: PublicPath, sinkStoragePath: StoragePath, max: UFix64?) {
     let depositVault: Capability<&{FungibleToken.Vault}>
@@ -357,7 +357,7 @@ transaction(receiver: Address, vaultPublicPath: PublicPath, sinkStoragePath: Sto
 
     execute {
         // Create the VaultSink connector
-        let sink = FungibleTokenStack.VaultSink(
+        let sink = FungibleTokenConnectors.VaultSink(
             max: max,                    // Maximum capacity (nil = unlimited)
             depositVault: self.depositVault,  // Where tokens will be deposited
             uniqueID: nil               // No unique ID for this example
@@ -372,7 +372,7 @@ transaction(receiver: Address, vaultPublicPath: PublicPath, sinkStoragePath: Sto
     }
 
     post {
-        self.signer.storage.type(at: sinkStoragePath) == Type<FungibleTokenStack.VaultSink>():
+        self.signer.storage.type(at: sinkStoragePath) == Type<FungibleTokenConnectors.VaultSink>():
             "VaultSink was not stored correctly"
     }
 }
@@ -395,13 +395,13 @@ Show how your connectors work with existing DeFiActions components:
 
 ```cadence
 // Example: Using VaultSink in a real deposit workflow
-import "FungibleTokenStack"
+import "FungibleTokenConnectors"
 import "FlowToken"
 
 transaction(depositAmount: UFix64) {
     prepare(signer: auth(BorrowValue) &Account) {
         // 1. Load the saved VaultSink
-        let sink = signer.storage.borrow<&FungibleTokenStack.VaultSink>(
+        let sink = signer.storage.borrow<&FungibleTokenConnectors.VaultSink>(
             from: /storage/FlowTokenSink
         ) ?? panic("VaultSink not found - create one first!")
         
@@ -433,7 +433,7 @@ The VaultSink can be used in advanced DeFiActions workflows:
 ```cadence
 // Example: VaultSink in AutoBalancer (real integration pattern)
 import "DeFiActions"
-import "FungibleTokenStack" 
+import "FungibleTokenConnectors" 
 import "BandOracleConnectors"
 
 transaction() {
@@ -442,7 +442,7 @@ transaction() {
         let rebalanceCap = getAccount(signer.address)
             .capabilities.get<&{FungibleToken.Receiver}>(/public/FlowTokenReceiver)
         
-        let rebalanceSink = FungibleTokenStack.VaultSink(
+        let rebalanceSink = FungibleTokenConnectors.VaultSink(
             max: nil,  // No limit for rebalancing
             depositVault: rebalanceCap,
             uniqueID: nil
@@ -452,7 +452,7 @@ transaction() {
         let sourceCap = signer.capabilities.storage.issue<auth(FungibleToken.Withdraw) &FlowToken.Vault>(
             /storage/FlowTokenVault
         )
-        let rebalanceSource = FungibleTokenStack.VaultSource(
+        let rebalanceSource = FungibleTokenConnectors.VaultSource(
             min: 100.0,  // Keep 100 FLOW minimum
             withdrawVault: sourceCap,
             uniqueID: nil
@@ -515,3 +515,4 @@ This framework enables developers to build sophisticated DeFi strategies while m
 [IncrementFiPoolLiquidityConnectors]: https://github.com/onflow/DeFiActions/blob/main/cadence/contracts/connectors/increment-fi/IncrementFiPoolLiquidityConnectors.cdc
 [UniswapV2SwapConnectors]: https://github.com/onflow/DeFiActions/blob/main/cadence/contracts/connectors/evm/UniswapV2SwapConnectors.cdc
 [BandOracleConnectors]: https://github.com/onflow/DeFiActions/blob/main/cadence/contracts/connectors/band-oracle/BandOracleConnectors.cdc
+[IncrementFiFlashloanConnectors]: https://github.com/onflow/DeFiActions/blob/main/cadence/contracts/connectors/increment-fi/IncrementFiFlashloanConnectors.cdc
