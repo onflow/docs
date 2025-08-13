@@ -6,6 +6,8 @@ keywords:
   -
 ---
 
+# DeFi Actions Transaction
+
 :::warning
 
 Defi actions on Flow are being reviewed and finalized in [FLIP 339]. The specific implementation may change as a part of this process.
@@ -38,6 +40,7 @@ Follow the instructions in the README for **testnet**.
 
 <!-- Reference-style links, will not render on page -->
 
+[FLIP 339]:
 [Staking]: ../../networks/staking/index.md
 [slashing]: ../../networks/staking/04-stake-slashing.md
 [Flow Port]: https://port.flow.com/

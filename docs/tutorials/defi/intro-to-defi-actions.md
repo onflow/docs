@@ -62,6 +62,12 @@ After completing this tutorial, you will be able to:
 - Use UniqueIdentifiers to trace and correlate operations across multiple DeFi Actions
 - Compose complex DeFi workflows by connecting multiple Actions in a single atomic transaction
 
+# Prerequisites
+
+## Cadence Programming Language
+
+This tutorial assumes you have a modest knowledge of [Cadence]. If you don't, you'll be able to follow along, but you'll get more out of it if you complete our series of [Cadence] tutorials. Most developers find it more pleasant than other blockchain languages and it's not hard to pick up.
+
 ## DeFi Action Types
 
 The first five DeFi Actions implement five core primitives to integrate external DeFi protocols.
@@ -574,6 +580,8 @@ Now that you have completed this tutorial, you should be able to:
 
 <!-- Reference-style links, will not render on page. -->
 
+[FLIP 339]: https://github.com/onflow/flips/pull/339/files
+[Cadence]: https://cadence-lang.org/docs
 [Fungible Token Standard]: https://developers.flow.com/build/guides/fungible-token
 [Connectors]: ./connectors.md
 [connector]: ./connectors.md
