@@ -34,7 +34,7 @@ These tutorials will be updated, but you may need to refactor your code if the i
 - **[Introduction to DeFi Actions]** - Learn about DeFi Actions, a suite of standardized Cadence interfaces that enable developers to compose complex DeFi workflows using small, reusable components.
 - **[Connectors]** - Understand how connectors bridge standardized DeFi Actions interfaces with different DeFi protocols.
 - **[Scheduled Callbacks Introduction]** - Learn how to implement scheduled callbacks for time-based smart contract execution on Flow.
-- **[Stablecoins and Wrapped Assets]** - Discover how to work with stablecoins and wrapped assets in DeFi applications.
+- **[Basic Combinations]** - Learn how to combine DeFi actions to create new types of DeFi Actions.
 
 ## More Coming Soon
 
@@ -46,4 +46,4 @@ Stay tuned—more tutorials and advanced guides are on the way!
 [Introduction to DeFi Actions]: ./intro-to-defi-actions.md
 [Connectors]: ./connectors.md
 [Scheduled Callbacks Introduction]: ./scheduled-callbacks-introduction.md
-[Stablecoins and Wrapped Assets]: ./stablecoins-and-wrapped-assets.md
+[Basic Combinations]: ./basic-combinations.md
