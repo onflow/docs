@@ -23,17 +23,18 @@ DeFi Actions are designed to be **composable** meaning you can chain them togeth
 
 - **Flasher** → Issues flash loans that must be repaid within the same transaction via callback execution. Flashers enable capital-efficient strategies like arbitrage and liquidations without requiring upfront capital.
 
-## What You'll Learn
+## Learning Objectives
 
-- **Basic Flow Patterns** - Linear, bidirectional, and aggregated token flows
-- **Reward Harvesting** - Claim staking rewards and convert them to stable tokens  
-- **Liquidity Provision** - Convert single tokens to LP tokens for yield farming
-- **Cross-VM Operations** - Bridge tokens between Cadence and Flow EVM environments
-- **Flash Loan Arbitrage** - Execute risk-free profit extraction using borrowed capital
-- **Multi-Protocol Aggregation** - Find optimal rates across different DEX protocols
-- **Autonomous Rebalancing** - Create price-driven portfolio management systems
-- **Safety Best Practices** - Build resilient workflows with proper error handling
-- **Testing Strategies** - Validate complex workflows before production deployment
+After completing this tutorial, you will be able to:
+
+- Understand the key features of DeFi Actions including atomic composition, weak guarantees, and event traceability
+- Create and use Sources to provide tokens from various protocols and locations
+- Create and use Sinks to accept tokens up to defined capacity limits
+- Create and use Swappers to exchange tokens between different types with price estimation
+- Create and use Price Oracles to get price data for assets with consistent denomination
+- Create and use Flashers to provide flash loans with atomic repayment requirements
+- Use UniqueIdentifiers to trace and correlate operations across multiple DeFi Actions
+- Compose complex DeFi workflows by connecting multiple Actions in a single atomic transaction
 
 ## Core Flow Patterns
 
@@ -570,6 +571,8 @@ Now that you understand basic combinations, explore:
 3. **Custom Connectors**: Building your own protocol adapters
 
 ## Conclusion
+
+In this tutorial, you learned how to combine DeFi Actions primitives to create sophisticated workflows that leverage atomic composition, weak guarantees, and event traceability. You can now create and use Sources, Sinks, Swappers, Price Oracles, and Flashers, while utilizing UniqueIdentifiers to trace operations and compose complex atomic transactions.
 
 Composability is the core strength of DeFi Actions. These examples demonstrate how DeFi Actions primitives can be combined to create powerful, automated workflows that integrate multiple protocols seamlessly. The framework's standardized interfaces enable developers to chain operations together like LEGO blocks, focusing on strategy implementation rather than protocol-specific integration details.
 
