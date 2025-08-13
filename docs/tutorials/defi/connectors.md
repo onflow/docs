@@ -1,9 +1,17 @@
 ---
 title: Connectors
-description: 
+description: Build DeFiActions connectors that integrate protocols with DeFi Actions primitives
 sidebar_position: 2
 keywords:
-  - 
+  - Connectors
+  - DeFi Actions
+  - Sink
+  - Swap
+  - Source
+  - Oracles
+  - Flashers
+  - DeFi
+  - Protocols
 ---
 
 # Connectors
@@ -14,35 +22,9 @@ keywords:
 - Standardized Interface: All connectors implement the same core methods, making them interchangeable
 - Protocol Integration: They handle the complex interactions with different DeFi services (swaps, staking, lending, etc.)
 
-## Purpose in the DeFiActions Ecosystem
-
-### 1. **Standardization**
-
-- **Unified API**: All protocols accessed through the same five interfaces
-- **Reduced Complexity**: Developers learn one interface, work with any protocol
-- **Interoperability**: Easy protocol switching without code changes
-
-### 2. **Composability**
-
-- **Building Blocks**: Mix and match connectors like LEGO pieces
-- **Complex Strategies**: Build sophisticated DeFi workflows from simple components
-- **Atomic Execution**: All operations within single transaction boundaries
-
-### 3. **Risk Management**
-
-- **Graceful Degradation**: Operations fail softly with no-ops instead of reverts
-- **Capacity Awareness**: Work within available limits and constraints
-- **Resource Safety**: Proper Cadence resource handling throughout
-
-### 4. **Innovation**
-
-- **Rapid Prototyping**: Quickly test new DeFi strategies
-- **Protocol Aggregation**: Combine multiple protocols seamlessly
-- **Cross-Chain Operations**: Bridge operations across different environments
-
 ## How Connectors Work
 
-### 1. **Abstraction Layer**
+### Abstraction Layer
 
 Connectors sit between your application logic and protocol-specific contracts:
 
@@ -50,7 +32,8 @@ Connectors sit between your application logic and protocol-specific contracts:
 Your DeFi Strategy → DeFiActions Connector → Protocol Contract → Blockchain State
 ```
 
-### 2. **Interface Implementation**
+### Interface Implementation
+
 Each connector implements one or more of the five primitive interfaces:
 
 ```cadence
@@ -89,58 +72,59 @@ fun getPrice(baseAsset: Type, quoteAsset: Type): UFix64 // PriceOracle
 fun flashLoan(amount: UFix64, callback: Function) // Flasher
 ```
 
-### 3. **Composition Pattern**
+### Composition Pattern
+
 Connectors can be combined to create sophisticated workflows:
 
 ```cadence
 // Claim rewards → Swap to different token → Stake in new pool
-ProtocolA.RewardsSource → SwapStack.SwapSource → ProtocolB.StakingSink
+ProtocolA.RewardsSource → SwapConnectors.SwapSource → ProtocolB.StakingSink
 ```
 
-## 📊 Connector Library
+## Connector Library
 
   🔄 SOURCE Primitive Implementations
 
 | Connector | Location | Protocol | Purpose |
 |-----------|----------|----------|---------|
-| VaultSource | FungibleTokenStack | Generic FungibleToken | Withdraw from vaults with minimum balance protection |
-| VaultSinkAndSource | FungibleTokenStack | Generic FungibleToken | Combined vault operations (dual interface) |
-| SwapSource | SwapStack | Generic (composes with Swappers) | Source tokens then swap before returning |
-| PoolRewardsSource | IncrementFiStakingConnectors | IncrementFi Staking | Claim staking rewards from pools |
+| VaultSource | [FungibleTokenConnectors] | Generic FungibleToken | Withdraw from vaults with minimum balance protection |
+| VaultSinkAndSource | [FungibleTokenConnectors] | Generic FungibleToken | Combined vault operations (dual interface) |
+| SwapSource | [SwapConnectors] | Generic (composes with Swappers) | Source tokens then swap before returning |
+| PoolRewardsSource | [IncrementFiStakingConnectors] | IncrementFi Staking | Claim staking rewards from pools |
 
   ⬇️ SINK Primitive Implementations
 
 | Connector | Location | Protocol | Purpose |
 |-----------|----------|----------|---------|
-| VaultSink | FungibleTokenStack | Generic FungibleToken | Deposit to vaults with capacity limits |
-| VaultSinkAndSource | FungibleTokenStack | Generic FungibleToken | Combined vault operations (dual interface) |
-| SwapSink | SwapStack | Generic (composes with Swappers) | Swap tokens before depositing to inner sink |
-| PoolSink | IncrementFiStakingConnectors | IncrementFi Staking | Stake tokens in staking pools |
+| VaultSink | [FungibleTokenConnectors] | Generic FungibleToken | Deposit to vaults with capacity limits |
+| VaultSinkAndSource | [FungibleTokenConnectors] | Generic FungibleToken | Combined vault operations (dual interface) |
+| SwapSink | [SwapConnectors] | Generic (composes with Swappers) | Swap tokens before depositing to inner sink |
+| PoolSink | [IncrementFiStakingConnectors] | IncrementFi Staking | Stake tokens in staking pools |
 
   🔀 SWAPPER Primitive Implementations
 
 | Connector | Location | Protocol | Purpose |
 |-----------|----------|----------|---------|
-| MultiSwapper | SwapStack | Generic (DEX aggregation) | Aggregate multiple swappers for optimal routing |
-| Swapper | IncrementFiConnectors | IncrementFi DEX | Token swapping through SwapRouter |
-| Zapper | IncrementFiPoolLiquidityConnectors | IncrementFi Pools | Single-token liquidity provision |
-| UniswapV2EVMSwapper | DeFiActionsEVMConnectors | Flow EVM Bridge | Cross-VM UniswapV2-style swapping |
+| MultiSwapper | [SwapConnectors] | Generic (DEX aggregation) | Aggregate multiple swappers for optimal routing |
+| Swapper | [IncrementFiSwapConnectors] | IncrementFi DEX | Token swapping through SwapRouter |
+| Zapper | [IncrementFiPoolLiquidityConnectors] | IncrementFi Pools | Single-token liquidity provision |
+| UniswapV2EVMSwapper | [UniswapV2SwapConnectors] | Flow EVM Bridge | Cross-VM UniswapV2-style swapping |
 
   💰 PRICEORACLE Primitive Implementations
 
 | Connector | Location | Protocol | Purpose |
 |-----------|----------|----------|---------|
-| PriceOracle | BandOracleConnectors | Band Protocol | External price feeds with staleness validation |
+| PriceOracle | [BandOracleConnectors] | Band Protocol | External price feeds with staleness validation |
 
   ⚡ FLASHER Primitive Implementations
 
 | Connector | Location | Protocol | Purpose |
 |-----------|----------|----------|---------|
-| Flasher | IncrementFiConnectors | IncrementFi DEX | Flash loans through SwapPair contracts |
+| Flasher | [IncrementFiSwapConnectors] | IncrementFi DEX | Flash loans through SwapPair contracts |
 
 ## Guide to Building Connectors
 
-### Step 1: Choose Your Primitive
+### Choose Your Primitive
 
 First, determine which DeFiActions primitive(s) your connector will implement:
 
@@ -152,29 +136,31 @@ First, determine which DeFiActions primitive(s) your connector will implement:
 | **PriceOracle** | Your protocol provides price data | Oracle feeds, TWAP calculations |
 | **Flasher** | Your protocol offers flash loans | Arbitrage opportunities, liquidations |
 
-### Step 2: Analyze Your Protocol
+### Analyze Your Protocol
 
 Study your target protocol to understand:
+
 - **Contract interfaces** and method signatures
 - **Required parameters** and data structures
 - **Error conditions** and failure modes
 - **Fee structures** and payment mechanisms
 - **Access controls** and permissions
 
-### Step 3: Design Your Connector
+### Design Your Connector
 
 Plan your connector implementation:
+
 - **Configuration parameters** needed for initialization
 - **Capability requirements** for protocol access
 - **Error handling strategy** for graceful failures
 - **Resource management** for token handling
 - **Event emission** for traceability
 
-### Step 4: Implement the Interface
+### Implement the Interface
 
 Create your connector struct implementing the chosen primitive interface(s).
 
-### Step 5: Add Safety Features
+### Add Safety Features
 
 Implement safety mechanisms:
 - **Capacity checking** before operations
@@ -182,7 +168,7 @@ Implement safety mechanisms:
 - **Graceful error handling** with no-ops
 - **Resource cleanup** for empty vaults
 
-### Step 6: Support DeFiActions Standards
+### Support DeFiActions Standards
 
 Add required DeFiActions support:
 - **IdentifiableStruct** implementation
@@ -192,7 +178,7 @@ Add required DeFiActions support:
 
 ## Best Practices
 
-### 1. **Error Handling**
+### **Error Handling**
 
 - **Graceful Failures**: Return empty results instead of panicking
 - **Validation**: Check all inputs and preconditions
@@ -214,7 +200,7 @@ access(all) fun minimumCapacity(): UFix64 {
 }
 ```
 
-### 2. **Capacity and Balance Checking**
+### **Capacity and Balance Checking**
 
 - **Always Check First**: Validate capacity/availability before operations
 - **Respect Limits**: Work within available constraints
@@ -237,7 +223,8 @@ access(all) fun depositCapacity(from: auth(FungibleToken.Withdraw) &{FungibleTok
 }
 ```
 
-### 3. **Type Safety**
+### **Type Safety**
+
 - **Validate Types**: Ensure vault types match expected types
 - **Early Returns**: Fail fast on type mismatches
 - **Clear Error Messages**: Help developers understand issues
@@ -253,25 +240,25 @@ access(all) fun depositCapacity(from: auth(FungibleToken.Withdraw) &{FungibleTok
 }
 ```
 
-### 4. **Event Integration**
+### **Event Integration**
 
 - **Leverage Post-conditions**: DeFiActions interfaces emit events automatically  
 - **Provide Context**: Include relevant information in events
 - **Support Traceability**: Use UniqueIdentifiers consistently
 
-### 5. **Resource Management**
+### **Resource Management**
 
 - **Handle Empty Vaults**: Use `DeFiActionsUtils.getEmptyVault()` for consistent empty vault creation
 - **Destroy Properly**: Clean up resources in all code paths
 - **Avoid Resource Leaks**: Ensure all vaults are handled appropriately
 
-### 6. **Capability Management**
+### **Capability Management**
 
 - **Validate Capabilities**: Check capabilities before using them
 - **Handle Revocation**: Gracefully handle revoked capabilities
 - **Proper Entitlements**: Use correct entitlement levels (auth vs unauth)
 
-### 7. **Documentation**
+### **Documentation**
 
 - **Clear Comments**: Explain protocol-specific logic
 - **Usage Examples**: Show how to use your connectors
@@ -279,119 +266,234 @@ access(all) fun depositCapacity(from: auth(FungibleToken.Withdraw) &{FungibleTok
 
 ## Integration into DeFiActions
 
-### Step 1: Deploy Your Connector Contract
+We will now go over the process of building a connector and integrating it with DeFi Actions. Specifically, we will showcase the process of using the **VaultSink** connector in the [FungibleTokenConnectors]. It only performs basic token deposits to a vault with capacity limits, implements the Sink interface, has minimal external dependencies (only FungibleToken standard), and requires simple configuration (max balance, deposit vault capability,and unique ID).
 
-Deploy your connector contract on Flow with the following command:
+The `VaultSink` connector is already deployed and working in DeFiActions. Let's examine how it's integrated:
+
+**Location**: `cadence/contracts/connectors/FungibleTokenConnectors.cdc`
+**Contract**: `FungibleTokenConnectors` 
+**Connector**: `VaultSink` struct that defines the interaction with the connector.
+
+### Deploy Your Connector Contract
+
+Deploy your connector contract with the following command:
 
 ```bash
 flow project deploy
 ```
 In your 'flow.json' you will find:
 
-```bash
-# Add to flow.json
-"contracts": {
-    "MyProtocolConnectors": {
-        "source": "./cadence/contracts/connectors/MyProtocolConnectors.cdc",
-        "aliases": {
-            "emulator": "f8d6e0586b0a20c7",
-            "testnet": "...",
-            "mainnet": "..."
-        }
+```json
+{
+  "contracts": {
+    "FungibleTokenConnectors": {
+      "source": "./cadence/contracts/connectors/FungibleTokenConnectors.cdc",
+      "aliases": {
+        "emulator": "f8d6e0586b0a20c7",
+        "testnet": "...",
+        "mainnet": "..."
+      }
     }
+  }
 }
-
-# Deploy the contract
-flow accounts add-contract MyProtocolConnectors ./cadence/contracts/connectors/MyProtocolConnectors.cdc
 ```
 
-### Step 2: Create Usage Transactions
+### Create Usage Transactions
 
 Create transaction templates for using your connectors:
 
 ```cadence
-// Transaction: save_staking_sink.cdc
-import "MyProtocolConnectors"
+// Transaction: save_vault_sink.cdc
+import "FungibleTokenStack"
 import "DeFiActions"
+import "FungibleToken"
 
-transaction(poolID: UInt64, maxStakeAmount: UFix64?) {
+transaction(maxBalance: UFix64) {
     prepare(signer: auth(Storage, Capabilities) &Account) {
-        // Get staking capability (implementation specific)
-        let stakingCap = signer.capabilities.get<&MyProtocol.StakingPool>(/public/MyProtocolStaking)
+        // Get vault capability for deposits
+        let vaultCap = signer.capabilities.get<&{FungibleToken.Receiver}>(
+            /public/flowTokenReceiver
+        )
         
-        // Create the sink connector
-        let stakingSink = MyProtocolConnectors.StakingSink(
-            poolID: poolID,
-            stakingCapability: stakingCap,
-            maxStakeAmount: maxStakeAmount,
+        // Create the VaultSink connector
+        let vaultSink = FungibleTokenStack.VaultSink(
+            max: maxBalance,
+            depositVault: vaultCap,
             uniqueID: nil
         )
         
         // Save to storage for later use
-        signer.storage.save(stakingSink, to: /storage/MyProtocolStakingSink)
+        signer.storage.save(vaultSink, to: /storage/FlowTokenVaultSink)
     }
 }
 ```
 
-### Step 3: Create Combinations Examples
+### Real Usage Transaction: VaultSink
+
+Here's the actual working transaction that creates a VaultSink:
+
+```cadence
+// File: cadence/transactions/fungible-token-stack/save_vault_sink.cdc
+import "FungibleToken"
+import "FungibleTokenMetadataViews"
+import "FlowToken"
+import "FungibleTokenStack"
+
+transaction(receiver: Address, vaultPublicPath: PublicPath, sinkStoragePath: StoragePath, max: UFix64?) {
+    let depositVault: Capability<&{FungibleToken.Vault}>
+    let signer: auth(SaveValue) &Account
+
+    prepare(signer: auth(SaveValue) &Account) {
+        // Get the receiver's vault capability
+        self.depositVault = getAccount(receiver).capabilities.get<&{FungibleToken.Vault}>(vaultPublicPath)
+        self.signer = signer
+    }
+
+    pre {
+        self.signer.storage.type(at: sinkStoragePath) == nil:
+            "Collision at sinkStoragePath \(sinkStoragePath.toString())"
+        self.depositVault.check(): "Invalid deposit vault capability"
+    }
+
+    execute {
+        // Create the VaultSink connector
+        let sink = FungibleTokenStack.VaultSink(
+            max: max,                    // Maximum capacity (nil = unlimited)
+            depositVault: self.depositVault,  // Where tokens will be deposited
+            uniqueID: nil               // No unique ID for this example
+        )
+        
+        // Save the connector for later use
+        self.signer.storage.save(sink, to: sinkStoragePath)
+        
+        log("VaultSink created and saved!")
+        log("Max capacity: ".concat(max?.toString() ?? "unlimited"))
+        log("Receiver: ".concat(receiver.toString()))
+    }
+
+    post {
+        self.signer.storage.type(at: sinkStoragePath) == Type<FungibleTokenStack.VaultSink>():
+            "VaultSink was not stored correctly"
+    }
+}
+```
+
+Execute this transaction:
+
+```bash
+flow transactions send cadence/transactions/fungible-token-stack/save_vault_sink.cdc \
+  --arg Address:0x01cf0e2f2f715450 \
+  --arg PublicPath:"/public/FlowTokenReceiver" \
+  --arg StoragePath:"/storage/FlowTokenSink" \
+  --arg "UFix64?":1000.0 \
+  --signer emulator
+```
+
+### Create Combinations Examples
 
 Show how your connectors work with existing DeFiActions components:
 
 ```cadence
-// Transaction: compound_rewards.cdc
-import "MyProtocolConnectors"
-import "SwapStack"
-import "DeFiActions"
+// Example: Using VaultSink in a real deposit workflow
+import "FungibleTokenStack"
+import "FlowToken"
 
-transaction(poolID: UInt64, swapperAddress: Address) {
-    prepare(signer: auth(Storage) &Account) {
-        // Load connectors from storage
-        let rewardsSource = signer.storage.load<MyProtocolConnectors.RewardsSource>(
-            from: /storage/MyProtocolRewardsSource
-        ) ?? panic("Rewards source not found")
+transaction(depositAmount: UFix64) {
+    prepare(signer: auth(BorrowValue) &Account) {
+        // 1. Load the saved VaultSink
+        let sink = signer.storage.borrow<&FungibleTokenStack.VaultSink>(
+            from: /storage/FlowTokenSink
+        ) ?? panic("VaultSink not found - create one first!")
         
-        let stakingSink = signer.storage.load<MyProtocolConnectors.StakingSink>(
-            from: /storage/MyProtocolStakingSink  
-        ) ?? panic("Staking sink not found")
+        // 2. Create a simple source (your own vault)
+        let flowVault = signer.storage.borrow<auth(FungibleToken.Withdraw) &FlowToken.Vault>(
+            from: /storage/FlowTokenVault
+        ) ?? panic("FlowToken vault not found")
         
-        // Get swapper from another protocol
-        let swapperAccount = getAccount(swapperAddress)
-        let swapper = swapperAccount.storage.load<{DeFiActions.Swapper}>(...)
+        // 3. Check sink capacity before depositing
+        let capacity = sink.minimumCapacity()
+        log("Sink capacity: ".concat(capacity.toString()))
         
-        // Create combination workflow: Rewards → Swap → Stake
-        let swapSource = SwapStack.SwapSource(
-            swapper: swapper,
-            source: rewardsSource,
-            uniqueID: DeFiActions.createUniqueIdentifier()
-        )
-        
-        // Execute compound strategy
-        let compoundedTokens <- swapSource.withdrawAvailable(maxAmount: UFix64.max)
-        stakingSink.depositCapacity(from: compoundedTokens)
-        
-        // Save updated connectors back to storage
-        signer.storage.save(rewardsSource, to: /storage/MyProtocolRewardsSource)
-        signer.storage.save(stakingSink, to: /storage/MyProtocolStakingSink)
+        if capacity >= depositAmount {
+            // 4. Execute Source → Sink workflow
+            let tokens <- flowVault.withdraw(amount: depositAmount)
+            sink.depositCapacity(from: tokens)
+            log("Deposited ".concat(depositAmount.toString()).concat(" FLOW through VaultSink!"))
+        } else {
+            log("Insufficient sink capacity: ".concat(capacity.toString()))
+        }
     }
 }
 ```
 
-### Step 4: Add to Existing Workflows
+### Add to Existing Workflows
 
-Integrate your connectors with existing DeFiActions workflows:
+The VaultSink can be used in advanced DeFiActions workflows:
 
 ```cadence
-// Use in AutoBalancer
-let autoBalancer <- DeFiActions.createAutoBalancer(
-    vault: <-initialTokens,
-    lowerThreshold: 0.9,
-    upperThreshold: 1.1,
-    source: myProtocolRewardsSource,  // Your connector
-    sink: myProtocolStakingSink,      // Your connector
-    oracle: bandPriceOracle,
-    uniqueID: nil
-)
+// Example: VaultSink in AutoBalancer (real integration pattern)
+import "DeFiActions"
+import "FungibleTokenStack" 
+import "BandOracleConnectors"
+
+transaction() {
+    prepare(signer: auth(SaveValue, BorrowValue, IssueStorageCapabilityController) &Account) {
+        // 1. Create rebalancing sink using VaultSink pattern
+        let rebalanceCap = getAccount(signer.address)
+            .capabilities.get<&{FungibleToken.Receiver}>(/public/FlowTokenReceiver)
+        
+        let rebalanceSink = FungibleTokenStack.VaultSink(
+            max: nil,  // No limit for rebalancing
+            depositVault: rebalanceCap,
+            uniqueID: nil
+        )
+        
+        // 2. Create rebalancing source 
+        let sourceCap = signer.capabilities.storage.issue<auth(FungibleToken.Withdraw) &FlowToken.Vault>(
+            /storage/FlowTokenVault
+        )
+        let rebalanceSource = FungibleTokenStack.VaultSource(
+            min: 100.0,  // Keep 100 FLOW minimum
+            withdrawVault: sourceCap,
+            uniqueID: nil
+        )
+        
+        // 3. Create price oracle
+        let priceOracle = BandOracleConnectors.PriceOracle(
+            unitOfAccount: Type<@FlowToken.Vault>(),
+            staleThreshold: 3600,
+            feeSource: rebalanceSource,
+            uniqueID: nil
+        )
+        
+        // 4. Create AutoBalancer using VaultSink pattern
+        let autoBalancer <- DeFiActions.createAutoBalancer(
+            oracle: priceOracle,
+            vaultType: Type<@FlowToken.Vault>(),
+            lowerThreshold: 0.9,
+            upperThreshold: 1.1,
+            rebalanceSink: rebalanceSink,      // Uses VaultSink!
+            rebalanceSource: rebalanceSource,  // Uses VaultSource!
+            uniqueID: nil
+        )
+        
+        signer.storage.save(<-autoBalancer, to: /storage/FlowAutoBalancer)
+        
+        log("AutoBalancer created using VaultSink/VaultSource pattern!")
+    }
+}
 ```
+
+### For Your Own Connectors
+
+When building your own connectors, follow the VaultSink pattern:
+
+1. **Keep constructors simple** - minimal required parameters
+2. **Validate inputs** - check capabilities and preconditions
+3. **Handle errors gracefully** - no-ops instead of panics
+4. **Support DeFiActions standards** - UniqueIdentifier, ComponentInfo
+5. **Test thoroughly** - create usage transactions like the ones shown
+6. **Document clearly** - show real integration examples
 
 ## Conclusion
 
@@ -404,3 +506,12 @@ The DeFiActions framework provides a comprehensive set of connectors that succes
 - **Event-Driven Traceability**: Full workflow tracking and debugging capabilities
 
 This framework enables developers to build sophisticated DeFi strategies while maintaining the simplicity and reliability of standardized primitive interfaces. The modular design allows for easy extension to additional protocols while preserving composability and atomic execution guarantees.
+
+<!-- Relative links, will not render on page -->
+[FungibleTokenConnectors]: https://github.com/onflow/DeFiActions/blob/main/cadence/contracts/connectors/FungibleTokenConnectors.cdc
+[SwapConnectors]: https://github.com/onflow/DeFiActions/blob/main/cadence/contracts/connectors/SwapConnectors.cdc
+[IncrementFiStakingConnectors]: https://github.com/onflow/DeFiActions/blob/main/cadence/contracts/connectors/increment-fi/IncrementFiStakingConnectors.cdc
+[IncrementFiSwapConnectors]: https://github.com/onflow/DeFiActions/blob/main/cadence/contracts/connectors/increment-fi/IncrementFiSwapConnectors.cdc
+[IncrementFiPoolLiquidityConnectors]: https://github.com/onflow/DeFiActions/blob/main/cadence/contracts/connectors/increment-fi/IncrementFiPoolLiquidityConnectors.cdc
+[UniswapV2SwapConnectors]: https://github.com/onflow/DeFiActions/blob/main/cadence/contracts/connectors/evm/UniswapV2SwapConnectors.cdc
+[BandOracleConnectors]: https://github.com/onflow/DeFiActions/blob/main/cadence/contracts/connectors/band-oracle/BandOracleConnectors.cdc

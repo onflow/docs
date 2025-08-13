@@ -11,37 +11,52 @@ keywords:
 
 # Composing Workflows with DeFi Actions
 
-DeFi Actions are designed to be **composable** - meaning you can chain them together like LEGO blocks to build complex strategies. Each primitive has a specific role:
+DeFi Actions are designed to be **composable** meaning you can chain them together like LEGO blocks to build complex strategies. Each primitive has a standardized interface that works consistently across all protocols, eliminating the need to learn multiple APIs. This composability enables atomic execution of multi-step workflows within single transactions, ensuring either complete success or safe failure. By combining these primitives, developers can create sophisticated DeFi strategies like automated yield farming, cross-protocol arbitrage, and portfolio rebalancing. The [5 DeFi Actions Primitives] are:
 
-- **Source** → Withdraw tokens
-- **Sink** → Deposit tokens  
-- **Swapper** → Convert tokens
-- **PriceOracle** → Provide price data
-- **Flasher** → Provide flash loans
+- **Source** → Provides tokens on demand by withdrawing from vaults or claiming rewards. Sources respect minimum balance constraints and return empty vaults gracefully when nothing is available.
 
-## Usage Examples
+- **Sink** → Accepts token deposits up to a specified capacity limit. Sinks perform no-ops when capacity is exceeded rather than reverting, enabling smooth workflow execution.
 
-## 🔄 Core Flow Patterns
+- **Swapper** → Exchanges one token type for another through DEX trades or cross-chain bridges. Swappers support bidirectional operations and provide quote estimation for slippage protection.
 
-### 1. **Linear Flow** (Source → Swapper → Sink)
+- **PriceOracle** → Provides real-time price data for assets from external feeds or DEX prices. Oracles handle staleness validation and return nil for unavailable prices rather than failing.
+
+- **Flasher** → Issues flash loans that must be repaid within the same transaction via callback execution. Flashers enable capital-efficient strategies like arbitrage and liquidations without requiring upfront capital.
+
+## What You'll Learn
+
+- **Basic Flow Patterns** - Linear, bidirectional, and aggregated token flows
+- **Reward Harvesting** - Claim staking rewards and convert them to stable tokens  
+- **Liquidity Provision** - Convert single tokens to LP tokens for yield farming
+- **Cross-VM Operations** - Bridge tokens between Cadence and Flow EVM environments
+- **Flash Loan Arbitrage** - Execute risk-free profit extraction using borrowed capital
+- **Multi-Protocol Aggregation** - Find optimal rates across different DEX protocols
+- **Autonomous Rebalancing** - Create price-driven portfolio management systems
+- **Safety Best Practices** - Build resilient workflows with proper error handling
+- **Testing Strategies** - Validate complex workflows before production deployment
+
+## Core Flow Patterns
+
+### Linear Flow (Source → Swapper → Sink)
+
 The most common pattern: get tokens, convert them, then deposit them.
 
-```
-Source → Swapper → Sink
-```
+![source swap sink](sink.png)
+[TODO - Combine the source, swap and sink images into a single one]
 
 **Example**: Claim rewards → Swap to different token → Stake in new pool
 
-### 2. **Bidirectional Flow** (Source ↔ Sink)
+### Bidirectional Flow (Source ↔ Sink)
+
 Two-way operations where you can both deposit and withdraw.
 
-```
-Source ↔ Sink
-```
+![bidirectional flow](source.png)
+[TODO - Looping source and sink]
 
 **Example**: Vault operations with both deposit and withdrawal capabilities
 
-### 3. **Aggregated Flow** (Multiple Sources → Aggregator → Sink)
+### Aggregated Flow (Multiple Sources → Aggregator → Sink)
+
 Combine multiple sources for optimal results.
 
 ```
@@ -49,14 +64,62 @@ Source A → Aggregator → Sink
 Source B ↗
 Source C ↗
 ```
+[TODO - Create aggregator image]
 
 **Example**: Multiple DEX aggregators finding the best swap route
 
-## 💡 Common DeFi Workflow Combinations
+## Common DeFi Workflow Combinations
 
-### **Reward Harvesting & Conversion**
+### Single Token to LP (Zapper)
+
+**Goal**: Convert a single token into liquidity provider (LP) tokens in one transaction
+
+The **Zapper** is a specialized connector that combines swapper and sink functionality. It takes a single token input and outputs LP tokens by automatically handling the token splitting, swapping, and liquidity provision process.
+
+![zapper](zapper.png)
+
+**How it works:**
+
+1. Takes single token A as input
+2. Splits it into two portions
+3. Swaps one portion to token B
+4. Provides liquidity with A + B to get LP tokens
+5. Returns LP tokens as output
+
+```cadence
+// Zapper: Convert single FLOW token to FLOW/USDC LP tokens
+let zapper = IncrementFiPoolLiquidityConnectors.Zapper(
+    token0Type: Type<@FlowToken.Vault>(),     // Input token type
+    token1Type: Type<@USDC.Vault>(),         // Paired token type
+    stableMode: false,                       // Use volatile pricing
+    uniqueID: nil
+)
+
+// Execute: Input 100 FLOW → Output FLOW/USDC LP tokens
+let flowTokens <- flowVault.withdraw(amount: 100.0)
+let lpTokens <- zapper.swap(nil, inVault: <-flowTokens)
+
+// Now you have LP tokens ready for staking or further use
+```
+
+**Benefits:**
+
+- **Simplicity**: Single transaction converts any token to LP position
+- **Efficiency**: Automatically calculates optimal split ratios
+- **Composability**: Output LP tokens work with any sink connector
+
+### Reward Harvesting & Conversion
 
 **Goal**: Claim staking rewards and convert them to a stable token
+
+This workflow automatically claims accumulated staking rewards and converts them to a stable asset like USDC. It combines a rewards source, token swapper, and vault sink to create a seamless reward collection and conversion process.
+
+**How it works:**
+
+1. Claims pending rewards from a staking pool using user certificate
+2. Swaps the reward tokens (e.g., FLOW) to stable tokens (e.g., USDC)
+3. Deposits the stable tokens to a vault with capacity limits
+4. Returns any unconverted tokens back to the user
 
 ```cadence
 // 1. Source: Claim rewards from staking pool
@@ -89,9 +152,24 @@ let stableTokens = swapper.swap(nil, inVault: <-rewards)
 vaultSink.depositCapacity(from: &stableTokens)
 ```
 
-### **Liquidity Provision & Yield Farming**
+**Benefits:**
+
+- **Risk Reduction**: Converts volatile reward tokens to stable assets
+- **Automation**: Single transaction handles claim, swap, and storage
+- **Capital Efficiency**: No manual intervention needed for reward management
+
+### Liquidity Provision & Yield Farming
 
 **Goal**: Convert single token to LP tokens for yield farming
+
+This workflow takes a single token from your vault, converts it into liquidity provider (LP) tokens, and immediately stakes them for yield farming rewards. It combines vault operations, zapping functionality, and staking in one seamless transaction.
+
+**How it works:**
+
+1. Withdraws single token (e.g., FLOW) from vault with minimum balance protection
+2. Uses Zapper to split token and create LP position (FLOW/USDC pair)
+3. Stakes the resulting LP tokens in a yield farming pool
+4. Begins earning rewards on the staked LP position
 
 ```cadence
 // 1. Source: Provide single token (e.g., FLOW)
@@ -122,9 +200,25 @@ let lpTokens = zapper.swap(nil, inVault: <-flowTokens)
 stakingSink.depositCapacity(from: &lpTokens)
 ```
 
-### **Cross-VM Bridge & Swap**
+**Benefits:**
+
+- **Yield Optimization**: Converts idle tokens to yield-generating LP positions
+- **Single Transaction**: No need for multiple manual steps or approvals
+- **Automatic Staking**: LP tokens immediately start earning rewards
+
+### Cross-VM Bridge & Swap
 
 **Goal**: Bridge tokens from Cadence to EVM, swap them, then bridge back
+
+This workflow demonstrates Flow's unique cross-VM capabilities by bridging tokens from Cadence to Flow EVM, executing a swap using UniswapV2-style routing, and bridging the results back to Cadence. This enables access to EVM-based DEX liquidity while maintaining Cadence token ownership.
+
+**How it works:**
+
+1. Withdraws tokens from Cadence vault with minimum balance protection
+2. Bridges tokens from Cadence to Flow EVM environment
+3. Executes swap using UniswapV2 router on EVM side
+4. Bridges the swapped tokens back to Cadence environment
+5. Deposits final tokens to target Cadence vault
 
 ```cadence
 // 1. Source: Cadence vault
@@ -157,9 +251,25 @@ let evmTokens = evmSwapper.swap(nil, inVault: <-cadenceTokens)
 cadenceSink.depositCapacity(from: &evmTokens)
 ```
 
-### **Flash Loan Arbitrage**
+**Benefits:**
+
+- **Extended Liquidity**: Access to both Cadence and EVM DEX liquidity
+- **Cross-VM Arbitrage**: Exploit price differences between VM environments
+- **Atomic Execution**: All bridging and swapping happens in single transaction
+
+### Flash Loan Arbitrage
 
 **Goal**: Borrow tokens, execute arbitrage, repay loan with profit
+
+This advanced strategy uses flash loans to execute risk-free arbitrage by borrowing tokens, exploiting price differences across multiple DEXs, and repaying the loan with interest while keeping the profit. The entire operation happens atomically within a single transaction.
+
+**How it works:**
+
+1. Borrows tokens via flash loan without collateral requirements
+2. Uses multi-swapper to find optimal arbitrage routes across DEXs
+3. Executes trades to exploit price differences
+4. Repays flash loan with fees from arbitrage profits
+5. Keeps remaining profit after loan repayment
 
 ```cadence
 // 1. Flasher: Borrow tokens for arbitrage
@@ -181,9 +291,15 @@ let multiSwapper = SwapStack.MultiSwapper(
 flasher.flashLoan(1000.0, callback: arbitrageCallback)
 ```
 
-## 🚀 Advanced Workflow Combinations
+**Benefits:**
 
-### **Multi-Protocol Aggregation**
+- **Zero Capital Required**: No upfront investment needed for arbitrage
+- **Risk-Free Profit**: Transaction reverts if arbitrage isn't profitable
+- **Market Efficiency**: Helps eliminate price discrepancies across DEXs
+
+## Advanced Workflow Combinations
+
+### Multi-Protocol Aggregation
 
 **Goal**: Find the best rates across multiple DEX protocols
 
@@ -205,7 +321,7 @@ let quote = multiSwapper.quoteOut(forProvided: 100.0, reverse: false)
 let result <- multiSwapper.swap(quote: quote, inVault: <-flowTokens)
 ```
 
-### **Price-Informed Rebalancing**
+### Price-Informed Rebalancing
 
 **Goal**: Create autonomous rebalancing system based on price feeds
 
@@ -260,9 +376,12 @@ poolSink.depositCapacity(from: lpTokens)
 
 ### **Scheduled Callbacks**
 
-## 🛡️ Safety Best Practices
 
-### **1. Always Check Capacity**
+## Safety Best Practices
+
+### Always Check Capacity
+
+Prevents transaction failures and enables graceful handling when sinks reach their maximum capacity limits. This is crucial for automated workflows that might encounter varying capacity conditions.
 
 ```cadence
 // Check before depositing
@@ -273,7 +392,9 @@ if sink.depositCapacity(from: &vault) {
 }
 ```
 
-### **2. Validate Balances**
+### Validate Balances
+
+Ensures operations behave as expected and helps detect unexpected token loss or gain during complex workflows. Balance validation is essential for financial applications where token accuracy is critical.
 
 ```cadence
 // Verify operations completed successfully
@@ -284,7 +405,9 @@ let afterBalance = vault.balance
 assert(afterBalance >= beforeBalance, message: "Balance should not decrease")
 ```
 
-### **3. Use Graceful Degradation**
+### Use Graceful Degradation
+
+Prevents entire workflows from failing when individual components encounter issues. This approach enables robust strategies that can adapt to changing market conditions or temporary protocol unavailability.
 
 ```cadence
 // Handle failures gracefully
@@ -296,7 +419,9 @@ if let result = try? operation.execute() {
 }
 ```
 
-### **4. Resource Management**
+### Resource Management
+
+Proper resource cleanup prevents token loss and ensures all vaults are properly handled, even when transactions partially fail. This is critical in Cadence where resources must be explicitly managed.
 
 ```cadence
 // Always clean up resources
@@ -310,9 +435,11 @@ defer {
 }
 ```
 
-## 🔧 Testing Your Combinations
+## Testing Your Combinations
 
-### **Unit Testing**
+### Unit Testing
+
+Tests individual connectors in isolation to verify they respect their constraints and behave correctly under various conditions. This catches bugs early and ensures each component works as designed.
 
 ```cadence
 // Test individual components
@@ -325,7 +452,9 @@ test("VaultSource should maintain minimum balance") {
 }
 ```
 
-### **Integration Testing**
+### Integration Testing
+
+Validates that multiple connectors work together correctly in complete workflows. This ensures the composition logic is sound and identifies issues that only appear when components interact.
 
 ```cadence
 // Test complete workflows
@@ -341,7 +470,9 @@ test("Reward harvesting workflow should complete successfully") {
 }
 ```
 
-### **Simulation Testing**
+### Simulation Testing
+
+Tests strategies under various market conditions using mock data to verify they respond appropriately to price changes, liquidity variations, and other market dynamics. This is essential for strategies that rely on external market data.
 
 ```cadence
 // Test with simulated market conditions
@@ -372,4 +503,7 @@ Now that you understand basic combinations, explore:
 
 ## Conclusion
 
-Composability is the core strength of DeFi Actions. You've now mastered the art of combining DeFi Actions primitives to create powerful, automated workflows. By understanding the core flow patterns and safety practices, you're equipped to build sophisticated strategies that integrate multiple protocols seamlessly. The power of DeFi Actions lies in its composability - you can now chain operations together like LEGO blocks and focus on strategy rather than implementation details.
+Composability is the core strength of DeFi Actions. These examples demonstrate how DeFi Actions primitives can be combined to create powerful, automated workflows that integrate multiple protocols seamlessly. The framework's standardized interfaces enable developers to chain operations together like LEGO blocks, focusing on strategy implementation rather than protocol-specific integration details.
+
+<!-- Relative links, will not render on page -->
+[5 DeFi Actions Primitives]: intro-to-defi-actions.md
