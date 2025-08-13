@@ -41,8 +41,8 @@ DeFi Actions are designed to be **composable** meaning you can chain them togeth
 
 The most common pattern: get tokens, convert them, then deposit them.
 
-![source swap sink](sink.png)
-[TODO - Combine the source, swap and sink images into a single one]
+![vault source](./imgs/vault-source.png)
+![swap vault sink](./imgs/swap-vaultsink.png)
 
 **Example**: Claim rewards → Swap to different token → Stake in new pool
 
@@ -50,8 +50,8 @@ The most common pattern: get tokens, convert them, then deposit them.
 
 Two-way operations where you can both deposit and withdraw.
 
-![bidirectional flow](source.png)
-[TODO - Looping source and sink]
+![vault source](./imgs/vault-source.png)
+![vault sink](./imgs/vault-sink.png)
 
 **Example**: Vault operations with both deposit and withdrawal capabilities
 
@@ -76,7 +76,7 @@ Source C ↗
 
 The **Zapper** is a specialized connector that combines swapper and sink functionality. It takes a single token input and outputs LP tokens by automatically handling the token splitting, swapping, and liquidity provision process.
 
-![zapper](zapper.png)
+![zapper](./imgs/zapper.png)
 
 **How it works:**
 
@@ -132,7 +132,7 @@ let rewardsSource = IncrementFiStakingConnectors.PoolRewardsSource(
 )
 
 // 2. Swapper: Convert rewards to stable token
-let swapper = IncrementFiConnectors.Swapper(
+let swapper = IncrementFiSwapConnectors.Swapper(
     path: ["A.FlowToken", "A.USDC"],
     inVault: Type<@FlowToken.Vault>(),
     outVault: Type<@USDC.Vault>(),
@@ -140,7 +140,7 @@ let swapper = IncrementFiConnectors.Swapper(
 )
 
 // 3. Sink: Deposit stable tokens to vault
-let vaultSink = FungibleTokenStack.VaultSink(
+let vaultSink = FungibleTokenConnectors.VaultSink(
     max: 1000.0,
     depositVault: vaultCap,
     uniqueID: nil
@@ -173,7 +173,7 @@ This workflow takes a single token from your vault, converts it into liquidity p
 
 ```cadence
 // 1. Source: Provide single token (e.g., FLOW)
-let flowSource = FungibleTokenStack.VaultSource(
+let flowSource = FungibleTokenConnectors.VaultSource(
     min: 100.0,
     withdrawVault: flowVaultCap,
     uniqueID: nil
@@ -222,14 +222,14 @@ This workflow demonstrates Flow's unique cross-VM capabilities by bridging token
 
 ```cadence
 // 1. Source: Cadence vault
-let cadenceSource = FungibleTokenStack.VaultSource(
+let cadenceSource = FungibleTokenConnectors.VaultSource(
     min: 50.0,
     withdrawVault: cadenceVaultCap,
     uniqueID: nil
 )
 
 // 2. EVM Swapper: Cross-VM swap
-let evmSwapper = DeFiActionsEVMConnectors.UniswapV2EVMSwapper(
+let evmSwapper = UniswapV2SwapConnectors.Swapper(
     routerAddress: EVM.EVMAddress(0x...),
     path: [tokenA, tokenB],
     inVault: Type<@FlowToken.Vault>(),
@@ -239,7 +239,7 @@ let evmSwapper = DeFiActionsEVMConnectors.UniswapV2EVMSwapper(
 )
 
 // 3. Sink: Cadence vault for swapped tokens
-let cadenceSink = FungibleTokenStack.VaultSink(
+let cadenceSink = FungibleTokenConnectors.VaultSink(
     max: nil,
     depositVault: usdcVaultCap,
     uniqueID: nil
@@ -273,14 +273,14 @@ This advanced strategy uses flash loans to execute risk-free arbitrage by borrow
 
 ```cadence
 // 1. Flasher: Borrow tokens for arbitrage
-let flasher = IncrementFiConnectors.Flasher(
+let flasher = IncrementFiFlashloanConnectors.Flasher(
     pairAddress: pairAddress,
     type: Type<@FlowToken.Vault>(),
     uniqueID: nil
 )
 
 // 2. Multi-swapper: Find best arbitrage route
-let multiSwapper = SwapStack.MultiSwapper(
+let multiSwapper = SwapConnectors.MultiSwapper(
     inVault: Type<@FlowToken.Vault>(),
     outVault: Type<@FlowToken.Vault>(),
     swappers: [swapper1, swapper2, swapper3],
@@ -299,31 +299,67 @@ flasher.flashLoan(1000.0, callback: arbitrageCallback)
 
 ## Advanced Workflow Combinations
 
-### Multi-Protocol Aggregation
+### Vault Source + Zapper Integration
 
-**Goal**: Find the best rates across multiple DEX protocols
+**Goal**: Withdraw tokens from a vault and convert them to LP tokens in a single transaction
+
+This advanced workflow demonstrates the power of combining VaultSource with Zapper functionality to seamlessly convert idle vault tokens into yield-generating LP positions. The Zapper handles the complex process of splitting the single token and creating balanced liquidity.
+
+![vault source zapper](./imgs/vaultsource-zapper.png)
+
+
+**How it works:**
+
+1. VaultSource withdraws tokens from vault while respecting minimum balance
+2. Zapper receives the single token and splits it optimally
+3. Zapper swaps a portion of token A to token B using internal DEX routing  
+4. Zapper provides balanced liquidity (A + B) to the pool
+5. Returns LP tokens that represent the liquidity position
 
 ```cadence
-// Aggregate multiple DEX protocols
-let multiSwapper = SwapStack.MultiSwapper(
-    inVault: Type<@FlowToken.Vault>(),
-    outVault: Type<@USDC.Vault>(),
-    swappers: [
-        incrementFiSwapper,
-        evmSwapper,
-        // Additional DEX swappers...
-    ],
+// 1. Create VaultSource with minimum balance protection
+let vaultSource = FungibleTokenConnectors.VaultSource(
+    min: 500.0,  // Keep 500 tokens minimum in vault
+    withdrawVault: flowVaultCapability,
     uniqueID: nil
 )
 
-// Automatically selects best rate
-let quote = multiSwapper.quoteOut(forProvided: 100.0, reverse: false)
-let result <- multiSwapper.swap(quote: quote, inVault: <-flowTokens)
+// 2. Create Zapper for FLOW/USDC pair
+let zapper = IncrementFiPoolLiquidityConnectors.Zapper(
+    token0Type: Type<@FlowToken.Vault>(),     // Input token (A)
+    token1Type: Type<@USDC.Vault>(),         // Paired token (B)
+    stableMode: false,                       // Use volatile pair pricing
+    uniqueID: nil
+)
+
+// 3. Execute Vault Source → Zapper workflow
+let availableTokens <- vaultSource.withdrawAvailable(maxAmount: 1000.0)
+let lpTokens <- zapper.swap(quote: nil, inVault: <-availableTokens)
+
+// Result: LP tokens ready for staking or further DeFi strategies
+log("LP tokens created: ".concat(lpTokens.balance.toString()))
 ```
+
+**Benefits:**
+
+- **Capital Efficiency**: Converts idle vault tokens to yield-generating LP positions
+- **Automated Balancing**: Zapper handles optimal token split calculations automatically
+- **Single Transaction**: Complex multi-step process executed atomically
+- **Minimum Protection**: VaultSource ensures vault never goes below safety threshold
 
 ### Price-Informed Rebalancing
 
 **Goal**: Create autonomous rebalancing system based on price feeds
+
+This sophisticated workflow creates an autonomous portfolio management system that maintains target value ratios by monitoring real-time price data. The AutoBalancer combines price oracles, sources, and sinks to automatically rebalance positions when they deviate from target thresholds.
+
+**How it works:**
+
+1. Price oracle provides real-time asset valuations with staleness protection
+2. AutoBalancer tracks historical deposit values vs current market values
+3. When portfolio value exceeds upper threshold (120%), excess is moved to rebalance sink
+4. When portfolio value falls below lower threshold (80%), additional funds are sourced
+5. System maintains target allocation automatically without manual intervention
 
 ```cadence
 // Create autonomous rebalancing system
@@ -347,34 +383,67 @@ let autoBalancer <- DeFiActions.createAutoBalancer(
 autoBalancer.rebalance(force: false)  // Autonomous rebalancing
 ```
 
-### **Restake & Compound Strategy**
+**Benefits:**
+
+- **Autonomous Operation**: Maintains portfolio balance without manual intervention
+- **Risk Management**: Prevents excessive exposure through automated position sizing
+- **Market Responsive**: Adapts to price movements using real-time oracle data
+- **Threshold Flexibility**: Configurable upper/lower bounds for different risk profiles
+
+### Restake & Compound Strategy
 
 **Goal**: Automatically compound staking rewards back into the pool
+
+This advanced compounding strategy maximizes yield by automatically claiming staking rewards and converting them back into LP tokens for re-staking. The workflow combines rewards claiming, zapping, and staking into a seamless compound operation that accelerates yield accumulation through reinvestment.
+
+**How it works:**
+
+1. PoolRewardsSource claims accumulated staking rewards from the pool
+2. Zapper receives the reward tokens and converts them to LP tokens
+3. SwapSource orchestrates the rewards → LP token conversion process
+4. PoolSink re-stakes the new LP tokens back into the same pool
+5. Compound interest effect increases overall position size and future rewards
 
 ```cadence
 // Restake rewards workflow  
 let rewardsSource = IncrementFiStakingConnectors.PoolRewardsSource(
     poolID: 1, 
-    staker: userAddress, 
+    staker: userAddress,
+    vaultType: Type<@FlowToken.Vault>(),
+    overflowSinks: {},
     uniqueID: nil
 )
-let zapper = IncrementFiPoolLiquidityConnectors.Zapper(...)
-let swapSource = SwapStack.SwapSource(
+
+let zapper = IncrementFiPoolLiquidityConnectors.Zapper(
+    token0Type: Type<@FlowToken.Vault>(),
+    token1Type: Type<@USDC.Vault>(),
+    stableMode: false,
+    uniqueID: nil
+)
+
+let swapSource = SwapConnectors.SwapSource(
     swapper: zapper, 
     source: rewardsSource, 
     uniqueID: nil
 )
+
 let poolSink = IncrementFiStakingConnectors.PoolSink(
-    poolID: 1, 
     staker: userAddress, 
+    poolID: 1,
     uniqueID: nil
 )
 
+// Execute compound strategy
 let lpTokens <- swapSource.withdrawAvailable(maxAmount: UFix64.max)
 poolSink.depositCapacity(from: lpTokens)
 ```
 
-### **Scheduled Callbacks**
+**Benefits:**
+
+- **Compound Growth**: Exponential yield increase through automatic reinvestment
+- **Gas Efficiency**: Single transaction handles claim, convert, and re-stake operations  
+- **Set-and-Forget**: Automated compounding without manual intervention required
+- **Optimal Conversion**: Zapper ensures efficient reward token to LP token conversion
 
 
 ## Safety Best Practices
