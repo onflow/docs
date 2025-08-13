@@ -6,7 +6,7 @@ keywords:
   - defi actions
   - cadence interfaces
   - cadence actions
-  - flow actions
+  - DeFi Actions
   - defi workflows
   - scheduled callbacks
   - time-based execution

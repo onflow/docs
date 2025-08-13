@@ -6,7 +6,7 @@ keywords:
   - defi actions
   - cadence interfaces
   - cadence actions
-  - flow actions
+  - DeFi Actions
   - defi workflows
   - source
   - sink
@@ -31,7 +31,7 @@ keywords:
 
 :::warning
 
-Flow Actions are being reviewed and finalized in [FLIP 339]. The specific implementation may change as a part of this process.
+DeFi Actions are being reviewed and finalized in [FLIP 339]. The specific implementation may change as a part of this process.
 
 These tutorials will be updated, but you may need to refactor your code if the implementation changes.
 
