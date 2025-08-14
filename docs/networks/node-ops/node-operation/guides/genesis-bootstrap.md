@@ -170,6 +170,6 @@ Once the Genesis block has been minted, it will be included into the official co
 
 Once every node has puled its keys and fetched the new images, the network is ready to start.
 
-Make sure you're part of the [Discord Chat](https://chat.onflow.org). Once all nodes are ready, updates will be provided to everyone.
+Make sure you're part of the [Discord Chat](https://discord.com/invite/flow). Once all nodes are ready, updates will be provided to everyone.
 
 Start your systems, let's make some blocks!
