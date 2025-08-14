@@ -1,6 +1,6 @@
 ---
 title: Basic Combinations
-description: Learn how to combine DeFi Actions primitives to create powerful DeFi workflows
+description: Learn how to combine Flow Actions primitives to create powerful DeFi workflows
 sidebar_position: 3
 keywords:
   - combinations
@@ -9,9 +9,17 @@ keywords:
   - examples
 ---
 
-# Composing Workflows with DeFi Actions
+# Composing Workflows with Flow Actions
 
-DeFi Actions are designed to be **composable** meaning you can chain them together like LEGO blocks to build complex strategies. Each primitive has a standardized interface that works consistently across all protocols, eliminating the need to learn multiple APIs. This composability enables atomic execution of multi-step workflows within single transactions, ensuring either complete success or safe failure. By combining these primitives, developers can create sophisticated DeFi strategies like automated yield farming, cross-protocol arbitrage, and portfolio rebalancing. The [5 DeFi Actions Primitives] are:
+:::warning
+
+Flow Actions are being reviewed and finalized in [FLIP 339]. The specific implementation may change as a part of this process.
+
+These tutorials will be updated, but you may need to refactor your code if the implementation changes.
+
+:::
+
+Flow Actions are designed to be **composable** meaning you can chain them together like LEGO blocks to build complex strategies. Each primitive has a standardized interface that works consistently across all protocols, eliminating the need to learn multiple APIs. This composability enables atomic execution of multi-step workflows within single transactions, ensuring either complete success or safe failure. By combining these primitives, developers can create sophisticated DeFi strategies like automated yield farming, cross-protocol arbitrage, and portfolio rebalancing. The [5 Flow Actions Primitives] are:
 
 - **Source** → Provides tokens on demand by withdrawing from vaults or claiming rewards. Sources respect minimum balance constraints and return empty vaults gracefully when nothing is available.
 
@@ -27,13 +35,13 @@ DeFi Actions are designed to be **composable** meaning you can chain them togeth
 
 After completing this tutorial, you will be able to:
 
-- Understand the key features of DeFi Actions including atomic composition, weak guarantees, and event traceability
+- Understand the key features of Flow Actions including atomic composition, weak guarantees, and event traceability
 - Create and use Sources to provide tokens from various protocols and locations
 - Create and use Sinks to accept tokens up to defined capacity limits
 - Create and use Swappers to exchange tokens between different types with price estimation
 - Create and use Price Oracles to get price data for assets with consistent denomination
 - Create and use Flashers to provide flash loans with atomic repayment requirements
-- Use UniqueIdentifiers to trace and correlate operations across multiple DeFi Actions
+- Use UniqueIdentifiers to trace and correlate operations across multiple Flow Actions
 - Compose complex DeFi workflows by connecting multiple Actions in a single atomic transaction
 
 ## Core Flow Patterns
@@ -370,7 +378,7 @@ let priceOracle = BandOracleConnectors.PriceOracle(
     uniqueID: nil
 )
 
-let autoBalancer <- DeFiActions.createAutoBalancer(
+let autoBalancer <- FlowActions.createAutoBalancer(
     vault: <-initialVault,
     lowerThreshold: 0.8,
     upperThreshold: 1.2,
@@ -572,9 +580,10 @@ Now that you understand basic combinations, explore:
 
 ## Conclusion
 
-In this tutorial, you learned how to combine DeFi Actions primitives to create sophisticated workflows that leverage atomic composition, weak guarantees, and event traceability. You can now create and use Sources, Sinks, Swappers, Price Oracles, and Flashers, while utilizing UniqueIdentifiers to trace operations and compose complex atomic transactions.
+In this tutorial, you learned how to combine Flow Actions primitives to create sophisticated workflows that leverage atomic composition, weak guarantees, and event traceability. You can now create and use Sources, Sinks, Swappers, Price Oracles, and Flashers, while utilizing UniqueIdentifiers to trace operations and compose complex atomic transactions.
 
-Composability is the core strength of DeFi Actions. These examples demonstrate how DeFi Actions primitives can be combined to create powerful, automated workflows that integrate multiple protocols seamlessly. The framework's standardized interfaces enable developers to chain operations together like LEGO blocks, focusing on strategy implementation rather than protocol-specific integration details.
+Composability is the core strength of Flow Actions. These examples demonstrate how Flow Actions primitives can be combined to create powerful, automated workflows that integrate multiple protocols seamlessly. The framework's standardized interfaces enable developers to chain operations together like LEGO blocks, focusing on strategy implementation rather than protocol-specific integration details.
 
 <!-- Relative links, will not render on page -->
-[5 DeFi Actions Primitives]: intro-to-defi-actions.md
+[FLIP 339]: https://github.com/onflow/flips/pull/339/files
+[5 Flow Actions Primitives]: intro-to-flow-actions.md

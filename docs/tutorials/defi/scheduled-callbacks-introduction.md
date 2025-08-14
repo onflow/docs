@@ -27,7 +27,7 @@ These tutorials will be updated, but you may need to refactor your code if the i
 
 Flow, EVM, and other blockchains are a form of a **single** shared computer that anyone can use and no one has admin privileges, super user roles, or complete control. For this to work, one of the requirements is that it needs to be impossible for any user to freeze the computer, on purpose or by accident.
 
-As a result, most blockchain computers, including EVM and Solana, are not [Turing Complete], because they can't run an unbounded loop. Each transaction must take place within one block, and cannot consume more gas than the limit.
+As a result, most blockchain computers, including EVM and Solana, are not [Turning Complete], because they can't run an unbounded loop. Each transaction must take place within one block, and cannot consume more gas than the limit.
 
 While this limitation prevents infinite loops, it makes it so that you can't do anything 100% onchain if you need it to happen at a later time or after a trigger. As a result, developers must often build products that involve a fair amount of traditional infrastructure and requires users to give those developers a great amount of trust that their backend will execute the promised task.
 
