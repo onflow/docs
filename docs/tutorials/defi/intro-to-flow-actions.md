@@ -1,12 +1,12 @@
 ---
-title: Introduction to DeFi Actions
-description: Learn about DeFi Actions, a suite of standardized Cadence interfaces that enable developers to compose complex DeFi workflows using small, reusable components.
+title: Introduction to Flow Actions
+description: Learn about Flow Actions, a suite of standardized Cadence interfaces that enable developers to compose complex DeFi workflows using small, reusable components.
 sidebar_position: 0
 keywords:
-  - defi actions
+  - Flow Actions
   - cadence interfaces
   - cadence actions
-  - DeFi Actions
+  - flow actions
   - defi workflows
   - source
   - sink
@@ -27,11 +27,11 @@ keywords:
   - connectors
 ---
 
-# Introduction to DeFi Actions
+# Introduction to Flow Actions
 
 :::warning
 
-DeFi Actions are being reviewed and finalized in [FLIP 339]. The specific implementation may change as a part of this process.
+Flow Actions are being reviewed and finalized in [FLIP 339]. The specific implementation may change as a part of this process.
 
 These tutorials will be updated, but you may need to refactor your code if the implementation changes.
 
@@ -39,7 +39,7 @@ These tutorials will be updated, but you may need to refactor your code if the i
 
 _Actions_ are a suite of standardized Cadence interfaces that enable developers to compose complex workflows, starting with DeFi, by connecting small, reusable components. Actions provide a "LEGO" framework of plug-and-play blocks where each component performs a single operation (deposit, withdraw, swap, price lookup, flash loan) while maintaining composability with other components to create sophisticated workflows executable in a single atomic transaction.
 
-By using DeFi Actions, developers are able remove large amounts of bespoke complexity from building DeFi apps and can instead focus on business logic using nouns and verbs.
+By using Flow Actions, developers are to able remove large amounts of bespoke complexity from building DeFi apps and can instead focus on business logic using nouns and verbs.
 
 ## Key Features
 
@@ -53,13 +53,13 @@ By using DeFi Actions, developers are able remove large amounts of bespoke compl
 
 After completing this tutorial, you will be able to:
 
-- Understand the key features of DeFi Actions including atomic composition, weak guarantees, and event traceability
+- Understand the key features of Flow Actions including atomic composition, weak guarantees, and event traceability
 - Create and use Sources to provide tokens from various protocols and locations
 - Create and use Sinks to accept tokens up to defined capacity limits
 - Create and use Swappers to exchange tokens between different types with price estimation
 - Create and use Price Oracles to get price data for assets with consistent denomination
 - Create and use Flashers to provide flash loans with atomic repayment requirements
-- Use UniqueIdentifiers to trace and correlate operations across multiple DeFi Actions
+- Use UniqueIdentifiers to trace and correlate operations across multiple Flow Actions
 - Compose complex DeFi workflows by connecting multiple Actions in a single atomic transaction
 
 # Prerequisites
@@ -68,9 +68,9 @@ After completing this tutorial, you will be able to:
 
 This tutorial assumes you have a modest knowledge of [Cadence]. If you don't, you'll be able to follow along, but you'll get more out of it if you complete our series of [Cadence] tutorials. Most developers find it more pleasant than other blockchain languages and it's not hard to pick up.
 
-## DeFi Action Types
+## Flow Action Types
 
-The first five DeFi Actions implement five core primitives to integrate external DeFi protocols.
+The first five Flow Actions implement five core primitives to integrate external DeFi protocols.
 
 1. **Source**: Provides tokens on demand (e.g. withdraw from vault, claim rewards, pull liquidity)
 
@@ -94,9 +94,9 @@ The first five DeFi Actions implement five core primitives to integrate external
 
 ## Connectors
 
-[Connectors] create the bridge between the standardized interfaces of DeFi Actions and the often bespoke and complicated mechanisms of different DeFi protocols. You can utilize existing connectors written by other developers, or create your own.
+[Connectors] create the bridge between the standardized interfaces of Flow Actions and the often bespoke and complicated mechanisms of different DeFi protocols. You can utilize existing connectors written by other developers, or create your own.
 
-DeFi Actions are instantiated by creating an instance of the appropriate [struct] from a connector that provides the desired type of action connected to the desired DeFi protocol.
+Flow Actions are instantiated by creating an instance of the appropriate [struct] from a connector that provides the desired type of action connected to the desired DeFi protocol.
 
 Read the [connectors article] to learn more about them.
 
@@ -120,13 +120,13 @@ You'll get:
 A.1654653399040a61.FlowToken.Vault
 ```
 
-These types are used by many defi actions to provide a safer method of working with tokens then an arbitrary address that may or may not be a token.
+These types are used by many Flow Actions to provide a safer method of working with tokens than an arbitrary address that may or may not be a token.
 
-## DeFi Actions
+## Flow Actions
 
 :::info
 
-The following defi actions standardize **usage** patterns for common defi-related tasks. By working with them, you - or ai agents - can more easily write transactions and functionality regardless of the myriad of different ways each protocol works to accomplish these tasks.
+The following Flow Actions standardize **usage** patterns for common defi-related tasks. By working with them, you - or ai agents - can more easily write transactions and functionality regardless of the myriad of different ways each protocol works to accomplish these tasks.
 
 That being said, defi protocols and tools operate very differently, which means the calls to instantiate the same kind of action connected to different protocols will vary by protocol and connector.
 
@@ -157,11 +157,11 @@ In other words, every source is guaranteed to have the above functions and retur
 
 Sources _degrade gracefully_ - If the requested amount of tokens is not available, they return the available amount. They always return a vault, even if that vault is empty.
 
-You create a source by instantiating a struct that conforms to the `Source` interface corresponding to a given protocol [connector]. For example, if you want to create a source from a generic vault, you can do that by creating a `VaultSource` from [`FungibleTokenStack`]:
+You create a source by instantiating a struct that conforms to the `Source` interface corresponding to a given protocol [connector]. For example, if you want to create a source from a generic vault, you can do that by creating a `VaultSource` from [`FungibleTokenConnectors`]:
 
 ```cadence
 import "FungibleToken"
-import "FungibleTokenStack"
+import "FungibleTokenConnectors"
 
 transaction {
 
@@ -170,7 +170,7 @@ transaction {
       /storage/flowTokenVault
     )
 
-    let source = FungibleTokenStack.VaultSource(
+    let source = FungibleTokenConnectors.VaultSource(
       min: 0.0,
       withdrawVault: withdrawCap,
       uniqueID: nil
@@ -201,11 +201,11 @@ access(all) struct interface Sink : Identifiable {
 }
 ```
 
-You create a sink similar how you create a source, by instantiating an instance of the appropriate `struct` from the [connector]. For example, to create a sink in a generic vault from, instantiate a `VaultSink` from [`FungibleTokenStack`]:
+You create a sink similar how you create a source, by instantiating an instance of the appropriate `struct` from the [connector]. For example, to create a sink in a generic vault from, instantiate a `VaultSink` from [`FungibleTokenConnectors`]:
 
 ```cadence
 import "FungibleToken"
-import "FungibleTokenStack"
+import "FungibleTokenConnectors"
 
 transaction {
 
@@ -221,7 +221,7 @@ transaction {
     // Optional: for aligning with Source in a stack
     let uniqueID = nil
 
-    let sink = FungibleTokenStack.VaultSink(
+    let sink = FungibleTokenConnectors.VaultSink(
       max: maxBalance,
       depositVault: depositCap,
       uniqueID: uniqueID
@@ -259,17 +259,17 @@ access(all) struct interface Swapper : Identifiable {
 }
 ```
 
-Once again, you create a swapper by instantiating the appropriate `struct` from the appropriate connector. To create a swapper for [IncrementFi] with the [`IncrementFiConnectors`], instantiate `Swapper`:
+Once again, you create a swapper by instantiating the appropriate `struct` from the appropriate connector. To create a swapper for [IncrementFi] with the [`IncrementFiSwapConnectors`], instantiate `Swapper`:
 
 ```cadence
 import "FlowToken"
 import "FUSD"
-import "IncrementFiConnectors"
+import "IncrementFiSwapConnectors"
 
 transaction {
   prepare(acct: &Account) {
     // Minimal path: names will be resolved from flow.json in your local setup
-    let swapper = IncrementFiConnectors.Swapper(
+    let swapper = IncrementFiSwapConnectors.Swapper(
       path: [
         "A.FlowToken",
         "A.FUSD"
@@ -315,14 +315,14 @@ To create a `PriceOracle` from [Band] with [`BandOracleConnectors`]:
 
 :::info
 
-You need to pay the oracle to get information from it. Here, we're using another defi action - a source - to fund getting a price from the oracle.
+You need to pay the oracle to get information from it. Here, we're using another Flow Action - a source - to fund getting a price from the oracle.
 
 :::
 
 ```cadence
 import "FlowToken"
 import "FungibleToken"
-import "FungibleTokenStack"
+import "FungibleTokenConnectors"
 import "BandOracleConnectors"
 
 transaction {
@@ -341,7 +341,7 @@ transaction {
     let withdrawCap = acct.getCapability<&FlowToken.Vault{FungibleToken.Vault, auth(FungibleToken.Withdraw)}>(withdrawPath)
 
     // Fee source must PROVIDE FlowToken vaults (per PriceOracle preconditions)
-    let feeSource = FungibleTokenStack.VaultSource(
+    let feeSource = FungibleTokenConnectors.VaultSource(
       min: 0.0,                   // keep at least 0.0 FLOW in the vault
       withdrawVault: withdrawCap, // auth withdraw capability
       uniqueID: nil
@@ -381,7 +381,7 @@ Flash loans solve this problem by enabling you to create one transaction during 
 
 :::warning
 
-This scenario may be a scam. A scammer could set up this situation as bait and cancel the buy order the instant someone purchases the NFT that is for sale. You'd be left having payed a vast amount of money for something worthless.
+This scenario may be a scam. A scammer could set up this situation as bait and cancel the buy order the instant someone purchases the NFT that is for sale. You'd be left having paid a vast amount of money for something worthless.
 
 The great thing about Cadence transactions, with or without Actions, is that you can set up an atomic transaction where everything either works, or is reverted. Either you make 100k, or nothing happens except a tiny expenditure of gas.
 
@@ -414,7 +414,7 @@ import "FUSD"
 import "SwapInterfaces"
 import "SwapConfig"
 import "SwapFactory"
-import "IncrementFiConnectors"
+import "IncrementFiFlashloanConnectors"
 
 transaction {
 
@@ -447,7 +447,7 @@ transaction {
     )
 
     // Instantiate the Flasher to borrow FLOW (switch to FUSD if you want that leg)
-    let flasher = IncrementFiConnectors.Flasher(
+    let flasher = IncrementFiFlashloanConnectors.Flasher(
       pairAddress: pairAddr,
       type: Type<@FlowToken.Vault>(),
       uniqueID: nil
@@ -461,18 +461,18 @@ transaction {
 
 ## Identification and Traceability
 
-The `UniqueIdentifier` enables protocols to trace stack operations via defi actions interface-level events, identifying them by IDs. `IdentifiableResource` implementations should ensure that access to the identifier is encapsulated by the structures they identify.
+The `UniqueIdentifier` enables protocols to trace stack operations via Flow Actions interface-level events, identifying them by IDs. `IdentifiableResource` implementations should ensure that access to the identifier is encapsulated by the structures they identify.
 
-While Cadence struct types can be created in any context (including being passed in as transaction parameters), the authorized `AuthenticationToken` [capability] ensures that only those issued by the DeFiActions contract can be utilized in connectors, preventing forgery.
+While Cadence struct types can be created in any context (including being passed in as transaction parameters), the authorized `AuthenticationToken` [capability] ensures that only those issued by the Flow Actions contract can be utilized in connectors, preventing forgery.
 
 For example, to use a `UniqueIdentifier` in a source->swap->sink:
 
 ```cadence
 import "FungibleToken"
 import "FlowToken"
-import "FungibleTokenStack"
-import "IncrementFiConnectors"
-import "DeFiActions"
+import "FungibleTokenConnectors"
+import "IncrementFiSwapConnectors"
+import "FlowActions"
 
 transaction {
 
@@ -501,7 +501,7 @@ transaction {
     let withdrawCap = acct.getCapability<&FlowToken.Vault{FungibleToken.Vault, auth(FungibleToken.Withdraw)}>(privateWithdrawPath)
 
     // Instantiate: Source, Swapper, Sink (IDs will be aligned next)
-    let source = FungibleTokenStack.VaultSource(
+    let source = FungibleTokenConnectors.VaultSource(
       min: 5.0,
       withdrawVault: withdrawCap,
       uniqueID: nil
@@ -509,27 +509,27 @@ transaction {
 
     // Replace with a real Increment path when swapping tokens (e.g., FLOW→FUSD)
     // e.g. ["A.1654653399040a61.FlowToken", "A.3c5959b568896393.FUSD"]
-    let swapper = IncrementFiConnectors.Swapper(
+    let swapper = IncrementFiSwapConnectors.Swapper(
       path: ["A.FlowToken", "A.FlowToken"],
       inVault: Type<@FlowToken.Vault>(),
       outVault: Type<@FlowToken.Vault>(),
       uniqueID: nil
     )
 
-    let sink = FungibleTokenStack.VaultSink(
+    let sink = FungibleTokenConnectors.VaultSink(
       max: nil,
       depositVault: depositCap,
       uniqueID: nil
     )
 
     // Align UniqueIdentifier: copy ID from Source → Swapper and Source → Sink
-    DeFiActions.alignID(
-      toUpdate: &swapper as auth(Extend) &{DeFiActions.IdentifiableStruct},
-      with:     &source  as auth(Identify) &{DeFiActions.IdentifiableStruct}
+    FlowActions.alignID(
+      toUpdate: &swapper as auth(Extend) &{FlowActions.IdentifiableStruct},
+      with:     &source  as auth(Identify) &{FlowActions.IdentifiableStruct}
     )
-    DeFiActions.alignID(
-      toUpdate: &sink    as auth(Extend) &{DeFiActions.IdentifiableStruct},
-      with:     &source  as auth(Identify) &{DeFiActions.IdentifiableStruct}
+    FlowActions.alignID(
+      toUpdate: &sink    as auth(Extend) &{FlowActions.IdentifiableStruct},
+      with:     &source  as auth(Identify) &{FlowActions.IdentifiableStruct}
     )
 
     // ----- Real composition (no destroy) -----
@@ -556,9 +556,9 @@ transaction {
 }
 ```
 
-## Why `UniqueIdentifier` Matters in DeFiActions
+## Why `UniqueIdentifier` Matters in FlowActions
 
-The `UniqueIdentifier` is used to tag multiple DeFiActions connectors as part of the **same logical operation**.  
+The `UniqueIdentifier` is used to tag multiple FlowActions connectors as part of the **same logical operation**.  
 By aligning the same ID across connectors (e.g., Source → Swapper → Sink), you can:
 
 ### 1. Event Correlation
@@ -585,17 +585,17 @@ By aligning the same ID across connectors (e.g., Source → Swapper → Sink), y
 
 ## Conclusion
 
-In this tutorial, you learned about DeFi Actions, a suite of standardized Cadence interfaces that enable developers to compose complex DeFi workflows using small, reusable components. You explored the five core DeFi Action types - Source, Sink, Swapper, PriceOracle, and Flasher - and learned how to create and use them with various connectors.
+In this tutorial, you learned about Flow Actions, a suite of standardized Cadence interfaces that enable developers to compose complex DeFi workflows using small, reusable components. You explored the five core Flow Action types - Source, Sink, Swapper, PriceOracle, and Flasher - and learned how to create and use them with various connectors.
 
 Now that you have completed this tutorial, you should be able to:
 
-- Understand the key features of DeFi Actions including atomic composition, weak guarantees, and event traceability
+- Understand the key features of Flow Actions including atomic composition, weak guarantees, and event traceability
 - Create and use Sources to provide tokens from various protocols and locations
 - Create and use Sinks to accept tokens up to defined capacity limits
 - Create and use Swappers to exchange tokens between different types with price estimation
 - Create and use Price Oracles to get price data for assets with consistent denomination
 - Create and use Flashers to provide flash loans with atomic repayment requirements
-- Use UniqueIdentifiers to trace and correlate operations across multiple DeFi Actions
+- Use UniqueIdentifiers to trace and correlate operations across multiple Flow Actions
 - Compose complex DeFi workflows by connecting multiple Actions in a single atomic transaction
 
 <!-- Reference-style links, will not render on page. -->
@@ -610,10 +610,11 @@ Now that you have completed this tutorial, you should be able to:
 [interface]: https://cadence-lang.org/docs/language/interfaces
 [resource]: https://cadence-lang.org/docs/language/resources
 [IncrementFi]: https://app.increment.fi/swap?in=A.1654653399040a61.FlowToken&out=
-[`IncrementFiConnectors`]: https://github.com/onflow/DeFiActions/blob/main/cadence/contracts/connectors/increment-fi/IncrementFiConnectors.cdc
-[`FungibleTokenStack`]: https://github.com/onflow/DeFiActions/blob/c21b481e20e61cebdf76dff14225d6fb61c1d5e0/cadence/contracts/connectors/FungibleTokenStack.cdc
+[`IncrementFiSwapConnectors`]: https://github.com/onflow/FlowActions/blob/main/cadence/contracts/connectors/increment-fi/IncrementFiSwapConnectors.cdc
+[`IncrementFiFlashloanConnectors`]: https://github.com/onflow/FlowActions/blob/main/cadence/contracts/connectors/increment-fi/IncrementFiFlashloanConnectors.cdc
+[`FungibleTokenConnectors`]: https://github.com/onflow/FlowActions/blob/main/cadence/contracts/connectors/FungibleTokenConnectors.cdc
 [oracle]: https://developers.flow.com/ecosystem/defi-liquidity/defi-contracts#oracles
 [Band]: https://blog.bandprotocol.com/
-[`BandOracleConnectors`]: https://github.com/onflow/DeFiActions/blob/main/cadence/contracts/connectors/band-oracle/BandOracleConnectors.cdc
+[`BandOracleConnectors`]: https://github.com/onflow/FlowActions/blob/main/cadence/contracts/connectors/band-oracle/BandOracleConnectors.cdc
 [Cadence type]: https://cadence-lang.org/docs/language/types-and-type-system/type-safety
 [capability]: https://cadence-lang.org/docs/language/capabilities

@@ -1,10 +1,10 @@
 ---
 title: Connectors
-description: Build DeFiActions connectors that integrate protocols with DeFi Actions primitives
+description: Build Flow Actions connectors that integrate protocols with Flow Actions primitives
 sidebar_position: 2
 keywords:
   - Connectors
-  - DeFi Actions
+  - Flow Actions
   - Sink
   - Swap
   - Source
@@ -16,7 +16,15 @@ keywords:
 
 # Connectors
 
-**Connectors** are the bridge between external DeFi protocols and the standardized DeFiActions primitive interfaces. They act as **protocol adapters** that translate protocol-specific APIs into the universal language of DeFi Actions. Think of them as "drivers" that provide a connection between software and piece of hardware without the software developer needing to know how the hardware expects commands to be delivered, or an MCP enabling an agent to use an API in a standardized manner. DeFi Actions act as "money LEGOs" with which you can compose various complex operations with simple transactions. These are the benefits of connectors:
+:::warning
+
+Flow Actions are being reviewed and finalized in [FLIP 339]. The specific implementation may change as a part of this process.
+
+These tutorials will be updated, but you may need to refactor your code if the implementation changes.
+
+:::
+
+**Connectors** are the bridge between external DeFi protocols and the standardized Flow Actions primitive interfaces. They act as **protocol adapters** that translate protocol-specific APIs into the universal language of Flow Actions. Think of them as "drivers" that provide a connection between software and piece of hardware without the software developer needing to know how the hardware expects commands to be delivered, or an MCP enabling an agent to use an API in a standardized manner. Flow Actions act as "money LEGOs" with which you can compose various complex operations with simple transactions. These are the benefits of connectors:
 
 - Abstraction Layer: Connectors act like a universal translator between your application and various DeFi protocols
 - Standardized Interface: All connectors implement the same core methods, making them interchangeable
@@ -29,7 +37,7 @@ keywords:
 Connectors sit between your application logic and protocol-specific contracts:
 
 ```
-Your DeFi Strategy → DeFiActions Connector → Protocol Contract → Blockchain State
+Your DeFi Strategy → Flow Actions Connector → Protocol Contract → Blockchain State
 ```
 
 ### Interface Implementation
@@ -38,11 +46,11 @@ Each connector implements one or more of the five primitive interfaces:
 
 ```cadence
 // Example: A connector implementing the Sink primitive
-access(all) struct MyProtocolSink: DeFiActions.Sink {
+access(all) struct MyProtocolSink: FlowActions.Sink {
     // Protocol-specific configuration
     access(self) let protocolConfig: MyProtocol.Config
     
-    // DeFiActions required methods
+    // FlowActions required methods
     access(all) fun getSinkType(): Type { ... }
     access(all) fun minimumCapacity(): UFix64 { ... }
     access(all) fun depositCapacity(from: auth(FungibleToken.Withdraw) &{FungibleToken.Vault}) { ... }
@@ -126,7 +134,7 @@ ProtocolA.RewardsSource → SwapConnectors.SwapSource → ProtocolB.StakingSink
 
 ### Choose Your Primitive
 
-First, determine which DeFiActions primitive(s) your connector will implement:
+First, determine which Flow Actions primitive(s) your connector will implement:
 
 | Primitive | When to Use | Example Use Cases |
 |-----------|-------------|-------------------|
@@ -168,9 +176,9 @@ Implement safety mechanisms:
 - **Graceful error handling** with no-ops
 - **Resource cleanup** for empty vaults
 
-### Support DeFiActions Standards
+### Support Flow Actions Standards
 
-Add required DeFiActions support:
+Add required Flow Actions support:
 - **IdentifiableStruct** implementation
 - **UniqueIdentifier** management
 - **ComponentInfo** for introspection
@@ -242,13 +250,13 @@ access(all) fun depositCapacity(from: auth(FungibleToken.Withdraw) &{FungibleTok
 
 ### **Event Integration**
 
-- **Leverage Post-conditions**: DeFiActions interfaces emit events automatically  
+- **Leverage Post-conditions**: Flow Actions interfaces emit events automatically  
 - **Provide Context**: Include relevant information in events
 - **Support Traceability**: Use UniqueIdentifiers consistently
 
 ### **Resource Management**
 
-- **Handle Empty Vaults**: Use `DeFiActionsUtils.getEmptyVault()` for consistent empty vault creation
+- **Handle Empty Vaults**: Use `FlowActionsUtils.getEmptyVault()` for consistent empty vault creation
 - **Destroy Properly**: Clean up resources in all code paths
 - **Avoid Resource Leaks**: Ensure all vaults are handled appropriately
 
@@ -264,11 +272,11 @@ access(all) fun depositCapacity(from: auth(FungibleToken.Withdraw) &{FungibleTok
 - **Usage Examples**: Show how to use your connectors
 - **Integration Patterns**: Demonstrate composition with other connectors
 
-## Integration into DeFiActions
+## Integration into Flow Actions
 
-We will now go over the process of building a connector and integrating it with DeFi Actions. Specifically, we will showcase the process of using the **VaultSink** connector in the [FungibleTokenConnectors]. It only performs basic token deposits to a vault with capacity limits, implements the Sink interface, has minimal external dependencies (only FungibleToken standard), and requires simple configuration (max balance, deposit vault capability,and unique ID).
+We will now go over the process of building a connector and integrating it with Flow Actions. Specifically, we will showcase the process of using the **VaultSink** connector in the [FungibleTokenConnectors]. It only performs basic token deposits to a vault with capacity limits, implements the Sink interface, has minimal external dependencies (only FungibleToken standard), and requires simple configuration (max balance, deposit vault capability,and unique ID).
 
-The `VaultSink` connector is already deployed and working in DeFiActions. Let's examine how it's integrated:
+The `VaultSink` connector is already deployed and working in Flow Actions. Let's examine how it's integrated:
 
 **Location**: `cadence/contracts/connectors/FungibleTokenConnectors.cdc`
 **Contract**: `FungibleTokenConnectors` 
@@ -305,7 +313,7 @@ Create transaction templates for using your connectors:
 ```cadence
 // Transaction: save_vault_sink.cdc
 import "FungibleTokenConnectors"
-import "DeFiActions"
+import "FlowActions"
 import "FungibleToken"
 
 transaction(maxBalance: UFix64) {
@@ -391,7 +399,7 @@ flow transactions send cadence/transactions/fungible-token-stack/save_vault_sink
 
 ### Create Combinations Examples
 
-Show how your connectors work with existing DeFiActions components:
+Show how your connectors work with existing Flow Actions components:
 
 ```cadence
 // Example: Using VaultSink in a real deposit workflow
@@ -428,11 +436,11 @@ transaction(depositAmount: UFix64) {
 
 ### Add to Existing Workflows
 
-The VaultSink can be used in advanced DeFiActions workflows:
+The VaultSink can be used in advanced Flow Actions workflows:
 
 ```cadence
 // Example: VaultSink in AutoBalancer (real integration pattern)
-import "DeFiActions"
+import "FlowActions"
 import "FungibleTokenConnectors" 
 import "BandOracleConnectors"
 
@@ -467,7 +475,7 @@ transaction() {
         )
         
         // 4. Create AutoBalancer using VaultSink pattern
-        let autoBalancer <- DeFiActions.createAutoBalancer(
+        let autoBalancer <- FlowActions.createAutoBalancer(
             oracle: priceOracle,
             vaultType: Type<@FlowToken.Vault>(),
             lowerThreshold: 0.9,
@@ -491,13 +499,13 @@ When building your own connectors, follow the VaultSink pattern:
 1. **Keep constructors simple** - minimal required parameters
 2. **Validate inputs** - check capabilities and preconditions
 3. **Handle errors gracefully** - no-ops instead of panics
-4. **Support DeFiActions standards** - UniqueIdentifier, ComponentInfo
+4. **Support Flow Actions standards** - UniqueIdentifier, ComponentInfo
 5. **Test thoroughly** - create usage transactions like the ones shown
 6. **Document clearly** - show real integration examples
 
 ## Conclusion
 
-The DeFiActions framework provides a comprehensive set of connectors that successfully implement the 5 fundamental DeFi primitives across multiple protocols:
+The Flow Actions framework provides a comprehensive set of connectors that successfully implement the 5 fundamental DeFi primitives across multiple protocols:
 
 - **20+ Connector Implementations** spanning basic vault operations to complex cross-VM swapping
 - **4 Protocol Integrations**: Generic FungibleToken, IncrementFi, Band Oracle, Flow EVM
@@ -508,11 +516,12 @@ The DeFiActions framework provides a comprehensive set of connectors that succes
 This framework enables developers to build sophisticated DeFi strategies while maintaining the simplicity and reliability of standardized primitive interfaces. The modular design allows for easy extension to additional protocols while preserving composability and atomic execution guarantees.
 
 <!-- Relative links, will not render on page -->
-[FungibleTokenConnectors]: https://github.com/onflow/DeFiActions/blob/main/cadence/contracts/connectors/FungibleTokenConnectors.cdc
-[SwapConnectors]: https://github.com/onflow/DeFiActions/blob/main/cadence/contracts/connectors/SwapConnectors.cdc
-[IncrementFiStakingConnectors]: https://github.com/onflow/DeFiActions/blob/main/cadence/contracts/connectors/increment-fi/IncrementFiStakingConnectors.cdc
-[IncrementFiSwapConnectors]: https://github.com/onflow/DeFiActions/blob/main/cadence/contracts/connectors/increment-fi/IncrementFiSwapConnectors.cdc
-[IncrementFiPoolLiquidityConnectors]: https://github.com/onflow/DeFiActions/blob/main/cadence/contracts/connectors/increment-fi/IncrementFiPoolLiquidityConnectors.cdc
-[UniswapV2SwapConnectors]: https://github.com/onflow/DeFiActions/blob/main/cadence/contracts/connectors/evm/UniswapV2SwapConnectors.cdc
-[BandOracleConnectors]: https://github.com/onflow/DeFiActions/blob/main/cadence/contracts/connectors/band-oracle/BandOracleConnectors.cdc
-[IncrementFiFlashloanConnectors]: https://github.com/onflow/DeFiActions/blob/main/cadence/contracts/connectors/increment-fi/IncrementFiFlashloanConnectors.cdc
+[FLIP 339]: https://github.com/onflow/flips/pull/339/files
+[FungibleTokenConnectors]: https://github.com/onflow/FlowActions/blob/main/cadence/contracts/connectors/FungibleTokenConnectors.cdc
+[SwapConnectors]: https://github.com/onflow/FlowActions/blob/main/cadence/contracts/connectors/SwapConnectors.cdc
+[IncrementFiStakingConnectors]: https://github.com/onflow/FlowActions/blob/main/cadence/contracts/connectors/increment-fi/IncrementFiStakingConnectors.cdc
+[IncrementFiSwapConnectors]: https://github.com/onflow/FlowActions/blob/main/cadence/contracts/connectors/increment-fi/IncrementFiSwapConnectors.cdc
+[IncrementFiPoolLiquidityConnectors]: https://github.com/onflow/FlowActions/blob/main/cadence/contracts/connectors/increment-fi/IncrementFiPoolLiquidityConnectors.cdc
+[UniswapV2SwapConnectors]: https://github.com/onflow/FlowActions/blob/main/cadence/contracts/connectors/evm/UniswapV2SwapConnectors.cdc
+[BandOracleConnectors]: https://github.com/onflow/FlowActions/blob/main/cadence/contracts/connectors/band-oracle/BandOracleConnectors.cdc
+[IncrementFiFlashloanConnectors]: https://github.com/onflow/FlowActions/blob/main/cadence/contracts/connectors/increment-fi/IncrementFiFlashloanConnectors.cdc

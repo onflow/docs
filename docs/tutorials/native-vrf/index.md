@@ -1,7 +1,7 @@
 ---
 title: Native VRF
 description: A series of tutorials on using Flow's native VRF capabilities in both Cadence and Solidity smart contracts.
-sidebar_position: 8
+sidebar_position: 7
 keywords:
   - VRF
   - randomness

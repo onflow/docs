@@ -46,12 +46,24 @@ Flow Cadence and Flow EVM are two VMs running on the Flow blockchain. A few mont
 
 For this grand future, we'll need a new suite of tutorials, guides, and resources to help you build with the best of both worlds. This section is dedicated to those tutorials.
 
+## Flow Actions
+
+Learn how to build composable DeFi applications using the Flow Actions framework. This framework provides a "LEGO" system of reusable components that enable developers to create sophisticated DeFi workflows through atomic composition.
+
+- [Introduction to Flow Actions] - Learn about Flow Actions, a suite of standardized Cadence interfaces that enable developers to compose complex DeFi workflows using small, reusable components
+- [Connectors] - Understand how connectors bridge standardized Flow Actions interfaces with different DeFi protocols
+- [Basic Combinations] - Learn how to combine Flow Actions to create new workflows
+- [Scheduled Callbacks Introduction] - Learn how to implement scheduled callbacks for time-based smart contract execution on Flow
+
 ## AI Plus Flow
 
 Learn how to leverage AI tools to enhance your Flow development experience. These tutorials show you how to integrate various AI assistants with Flow development to boost productivity and code quality.
 
 - [Use Flow Knowledge Base in Cursor] - Learn how to set up Cursor with Flow knowledge bases to get intelligent assistance while developing Flow applications
 - [Use Flow Knowledge Base in ChatGPT] - Create a custom GPT that understands Flow and Cadence to provide accurate answers to your development questions
+- [Claude Code for Flow Development] - Learn how to leverage Claude Code for efficient ways to build on Flow and with Cadence
+- [Cadence Rules] - Learn how to use Cursor Rules to enhance AI assistance for Cadence and Flow development with persistent context and automated workflows
+- [Flow MCP] - Learn how to use Flow MCP (Model Context Protocol) server to enhance AI tools with on-chain interaction capabilities
 - [Flow Data Sources] - Learn about this comprehensive resource and how to integrate it with various AI platforms
 - [Build AI Agents with AgentKit] - Learn how to create AI agents that can interact with Flow using AgentKit
 
@@ -92,8 +104,16 @@ Explore Flow's unique capabilities through fun benchmark applications that showc
 
 - [Build a Fully-Onchain Image Gallery] - Create a fully onchain image gallery that demonstrates Flow's efficient storage capabilities
 
+<!-- Reference-style links, will not render on page. -->
+[Introduction to Flow Actions]: ./defi/intro-to-flow-actions.md
+[Connectors]: ./defi/connectors.md
+[Basic Combinations]: ./defi/basic-combinations.md
+[Scheduled Callbacks Introduction]: ./defi/scheduled-callbacks-introduction.md
 [Use Flow Knowledge Base in Cursor]: use-AI-to-build-on-flow/cursor/index.md
 [Use Flow Knowledge Base in ChatGPT]: use-AI-to-build-on-flow/chatgpt/index.md
+[Claude Code for Flow Development]: use-AI-to-build-on-flow/claude-code.md
+[Cadence Rules]: use-AI-to-build-on-flow/cadence-rules.md
+[Flow MCP]: use-AI-to-build-on-flow/mcp/index.md
 [Flow Data Sources]: use-AI-to-build-on-flow/flow-data-sources.md
 [Build AI Agents with AgentKit]: use-AI-to-build-on-flow/agentkit-flow-guide.md
 [Introduction to Cross-VM Applications]: cross-vm-apps/introduction.md
