@@ -160,7 +160,7 @@ You can't deploy the same contract to multiple accounts at the same time with th
 
 :::
 
-## Running Scripts
+## Creating Scripts
 
 Scripts are used to read data from the Flow blockchain. There is no state modification. In our case, we are going to read a greeting from the `HelloWorld` contract.
 
@@ -170,7 +170,9 @@ If we wanted to generate a new script, we could run:
 flow generate script ScriptName
 ```
 
-But the default project already has a `GetCounter` script for reading the count of the `Counter` contract. Open `cadence/scripts/GetCounter.cdc` in your editor to see the script.
+## Running Scripts
+
+The default project already has a `GetCounter` script for reading the count of the `Counter` contract. Open `cadence/scripts/GetCounter.cdc` in your editor to see the script.
 
 To run the script, you can run:
 
