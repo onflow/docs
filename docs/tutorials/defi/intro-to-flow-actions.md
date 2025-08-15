@@ -143,7 +143,7 @@ You'll likely use one or more sources in any transactions using actions if the u
 Sources conform to the `Source` [interface]:
 
 ```cadence
-access(all) struct interface Source : Identifiable {
+access(all) struct interface Source : IdentifiableStruct {
     /// Returns the Vault type provided by this Source
     access(all) view fun getSourceType(): Type
     /// Returns an estimate of how much can be withdrawn
@@ -191,7 +191,7 @@ A sink is the opposite of a source - it's a place to send tokens, up to the limi
 Sinks adhere to the `Sink` [interface].
 
 ```cadence
-access(all) struct interface Sink : Identifiable {
+access(all) struct interface Sink : IdentifiableStruct {
     /// Returns the Vault type accepted by this Sink
     access(all) view fun getSinkType(): Type
     /// Returns an estimate of remaining capacity
@@ -244,7 +244,7 @@ They also contain price discovery to provide estimates for the amounts in and ou
 Swappers conform to the `Swapper` [interface]:
 
 ```cadence
-access(all) struct interface Swapper : Identifiable {
+access(all) struct interface Swapper : IdentifiableStruct {
     /// Input and output token types - in and out token types via default `swap()` route
     access(all) view fun inType(): Type
     access(all) view fun outType(): Type
@@ -263,28 +263,33 @@ Once again, you create a swapper by instantiating the appropriate `struct` from 
 
 ```cadence
 import "FlowToken"
-import "FUSD"
+import "USDCFlow"
 import "IncrementFiSwapConnectors"
+import "SwapConfig"
 
 transaction {
   prepare(acct: &Account) {
-    // Minimal path: names will be resolved from flow.json in your local setup
+    // Derive the path keys from the token types
+    let flowKey = SwapConfig.SliceTokenTypeIdentifierFromVaultType(vaultTypeIdentifier: Type<@FlowToken.Vault>().identifier)
+    let usdcFlowKey = SwapConfig.SliceTokenTypeIdentifierFromVaultType(vaultTypeIdentifier: Type<@USDCFlow.Vault>().identifier)
+
+    // Minimal path Flow -> USDCFlow
     let swapper = IncrementFiSwapConnectors.Swapper(
       path: [
-        "A.FlowToken",
-        "A.FUSD"
+        flowKey,
+        usdcFlowKey
       ],
       inVault: Type<@FlowToken.Vault>(),
-      outVault: Type<@FUSD.Vault>(),
+      outVault: Type<@USDCFlow.Vault>(),
       uniqueID: nil
     )
 
-    // Example: quote how much FUSD you'd get for 10.0 FLOW
+    // Example: quote how much USDCFlow you'd get for 10.0 FLOW
     let qOut = swapper.quoteOut(forProvided: 10.0, reverse: false)
     // Note: Logs are only visible in the emulator console
     log(qOut)
 
-    // Example: quote how much FLOW you'd need to get 25.0 FUSD
+    // Example: quote how much FLOW you'd need to get 25.0 USDCFlow
     let qIn = swapper.quoteIn(forDesired: 25.0, reverse: false)
     // Note: Logs are only visible in the emulator console
     log(qIn)
@@ -303,7 +308,7 @@ You can pass an argument this `Type`, or any conforming fungible token type conf
 The full [interface] for `PriceOracle` is:
 
 ```cadence
-access(all) struct interface PriceOracle : Identifiable {
+access(all) struct interface PriceOracle : IdentifiableStruct {
     /// Returns the denomination asset (e.g., USDCf, FLOW)
     access(all) view fun unitOfAccount(): Type
     /// Returns current price or nil if unavailable, conditions for which are implementation-specific
@@ -327,18 +332,10 @@ import "BandOracleConnectors"
 
 transaction {
 
-  prepare(acct: AuthAccount) {
-    // Ensure we have a private withdraw capability for FlowToken (auth Withdraw)
-    let withdrawPath = /private/flowTokenWithdraw
-
-    if !acct.getCapability<&FlowToken.Vault{FungibleToken.Vault, auth(FungibleToken.Withdraw)}>(withdrawPath).check() {
-      acct.link<&FlowToken.Vault{FungibleToken.Vault, auth(FungibleToken.Withdraw)}>(
-        withdrawPath,
-        target: /storage/flowTokenVault
-      ) ?? panic("failed to link FlowToken withdraw capability")
-    }
-
-    let withdrawCap = acct.getCapability<&FlowToken.Vault{FungibleToken.Vault, auth(FungibleToken.Withdraw)}>(withdrawPath)
+  prepare(acct: auth(IssueStorageCapabilityController) &Account) {
+    // Ensure we have an authorized capability for FlowToken (auth Withdraw)
+    let storagePath = /storage/flowTokenVault
+    let withdrawCap = acct.capabilities.storage.issue<auth(FungibleToken.Withdraw) &{FungibleToken.Vault}>(storagePath)
 
     // Fee source must PROVIDE FlowToken vaults (per PriceOracle preconditions)
     let feeSource = FungibleTokenConnectors.VaultSource(
@@ -390,7 +387,7 @@ The great thing about Cadence transactions, with or without Actions, is that you
 Flashers adhere to the `Flasher` interface:
 
 ```cadence
-access(all) struct interface Flasher : Identifiable {
+access(all) struct interface Flasher : IdentifiableStruct {
     /// Returns the asset type this Flasher can issue as a flash loan
     access(all) view fun borrowType(): Type
     /// Returns the estimated fee for a flash loan of the specified amount
@@ -410,7 +407,7 @@ You create a flasher the same way as the other actions, but you'll need the addr
 ```cadence
 import "FungibleToken"
 import "FlowToken"
-import "FUSD"
+import "USDCFlow"
 import "SwapInterfaces"
 import "SwapConfig"
 import "SwapFactory"
@@ -418,11 +415,11 @@ import "IncrementFiFlashloanConnectors"
 
 transaction {
 
-  prepare(_ acct: AuthAccount) {
+  prepare(_ acct: &Account) {
     // Increment uses token *keys* like "A.1654653399040a61.FlowToken" (mainnet FlowToken)
-    // and "A.3c5959b568896393.FUSD" (mainnet FUSD).
-    let flowKey = "A.1654653399040a61.FlowToken"
-    let fusdKey = "A.3c5959b568896393.FUSD"
+    // and "A.f1ab99c82dee3526.USDCFlow" (mainnet USDCFlow).
+    let flowKey = SwapConfig.SliceTokenTypeIdentifierFromVaultType(vaultTypeIdentifier: Type<@FlowToken.Vault>().identifier)
+    let usdcFlowKey = SwapConfig.SliceTokenTypeIdentifierFromVaultType(vaultTypeIdentifier: Type<@USDCFlow.Vault>().identifier)
 
     // Ask the factory for the pair's public capability (or address), then verify it.
     // Depending on the exact factory interface you have, one of these will exist:
@@ -431,9 +428,9 @@ transaction {
     //   - getPair(token0Key: String, token1Key: String): Address
     //
     // Try address first; if your factory exposes a different helper, swap it in.
-    let pairAddr: Address = SwapFactory.getPairAddress(flowKey, fusdKey)
+    let pairAddr: Address = SwapFactory.getPairAddress(flowKey, usdcFlowKey)
 
-    // Sanity-check: borrow PairPublic and verify it actually contains FLOW/FUSD
+    // Sanity-check: borrow PairPublic and verify it actually contains FLOW/USDCFlow
     let pair = getAccount(pairAddr)
       .capabilities
       .borrow<&{SwapInterfaces.PairPublic}>(SwapConfig.PairPublicPath)
@@ -441,12 +438,12 @@ transaction {
 
     let info = pair.getPairInfoStruct()
     assert(
-      (info.token0Key == flowKey && info.token1Key == fusdKey) ||
-      (info.token0Key == fusdKey && info.token1Key == flowKey),
-      message: "Resolved pair does not match FLOW/FUSD"
+      (info.token0Key == flowKey && info.token1Key == usdcFlowKey) ||
+      (info.token0Key == usdcFlowKey && info.token1Key == flowKey),
+      message: "Resolved pair does not match FLOW/USDCFlow"
     )
 
-    // Instantiate the Flasher to borrow FLOW (switch to FUSD if you want that leg)
+    // Instantiate the Flasher to borrow FLOW (switch to USDCFlow if you want that leg)
     let flasher = IncrementFiFlashloanConnectors.Flasher(
       pairAddress: pairAddr,
       type: Type<@FlowToken.Vault>(),
@@ -454,8 +451,21 @@ transaction {
     )
 
     // Note: Logs are only visible in the emulator console
-    log("Flasher ready on mainnet FLOW/FUSD at ".concat(pairAddr.toString()))
+    log("Flasher ready on mainnet FLOW/USDCFlow at ".concat(pairAddr.toString()))
+
+    flasher.flashloan(
+      amount: 100.0
+      data: nil
+      callback: flashloanCallback
+    )
   }
+}
+
+// Callback function passed to flasher.flashloan
+access(all)
+fun flashloanCallback(fee: UFix64, loan: @{FungibleToken.Vault}, data: AnyStruct?): @{FungibleToken.Vault} {
+  log("Flashloan with balance of \(loan.balance) \(loan.getType().identifier) executed")
+  return <-loan
 }
 ```
 
@@ -470,83 +480,79 @@ For example, to use a `UniqueIdentifier` in a source->swap->sink:
 ```cadence
 import "FungibleToken"
 import "FlowToken"
+import "USDCFlow"
 import "FungibleTokenConnectors"
 import "IncrementFiSwapConnectors"
-import "FlowActions"
+import "SwapConfig"
+import "DeFiActions"
 
 transaction {
 
-  prepare(acct: AuthAccount) {
-    // Standard FlowToken paths
+  prepare(acct: auth(BorrowValue, IssueStorageCapabilityController, PublishCapability, SaveValue, UnpublishCapability) &Account) {
+    // Standard token paths
     let storagePath = /storage/flowTokenVault
-    let publicReceiverPath = /public/flowTokenReceiver
-    let privateWithdrawPath = /private/flowTokenVaultWithdraw
-
-    // Ensure public receiver (for Sink)
-    if !acct.getCapability<&{FungibleToken.Vault}>(publicReceiverPath).check() {
-      acct.link<&FlowToken.Vault{FungibleToken.Vault}>(
-        publicReceiverPath,
-        target: storagePath
-      ) ?? panic("failed to link public receiver")
-    }
-    let depositCap = acct.getCapability<&{FungibleToken.Vault}>(publicReceiverPath)
+    let receiverStoragePath = USDCFlow.VaultStoragePath
+    let receiverPublicPath = USDCFlow.VaultPublicPath
 
     // Ensure private auth-withdraw (for Source)
-    if !acct.getCapability<&FlowToken.Vault{FungibleToken.Vault, auth(FungibleToken.Withdraw)}>(privateWithdrawPath).check() {
-      acct.link<&FlowToken.Vault{FungibleToken.Vault, auth(FungibleToken.Withdraw)}>(
-        privateWithdrawPath,
-        target: storagePath
-      ) ?? panic("failed to link private withdraw cap")
-    }
-    let withdrawCap = acct.getCapability<&FlowToken.Vault{FungibleToken.Vault, auth(FungibleToken.Withdraw)}>(privateWithdrawPath)
+    let withdrawCap = acct.capabilities.storage.issue<auth(FungibleToken.Withdraw) &{FungibleToken.Vault}>(storagePath)
 
-    // Instantiate: Source, Swapper, Sink (IDs will be aligned next)
+    // Ensure public receiver Capability (for Sink) - configure receiving Vault is none exists
+    if acct.storage.type(at: receiverStoragePath) == nil {
+      // Save the USDCFlow Vault
+      acct.storage.save(<-USDCFlow.createEmptyVault(vaultType: Type<@USDCFlow.Vault>()), to: USDCFlow.VaultStoragePath)
+      // Issue and publish public Capabilities to the token's default paths
+      let publicCap = acct.capabilities.storage.issue<&USDCFlow.Vault>(storagePath)
+        ?? panic("failed to link public receiver")
+      acct.capabilities.unpublish(receiverPublicPath)
+      acct.capabilities.unpublish(USDCFlow.ReceiverPublicPath)
+      acct.capabilities.publish(cap, at: receiverPublicPath)
+      acct.capabilities.publish(cap, at: USDCFlow.ReceiverPublicPath)
+    }
+    let depositCap = acct.capabilities.get<&{FungibleToken.Vault}>(receiverPublicPath)
+
+    // Initialize shared UniqueIdentifier - passed to each connector on init
+    let uniqueIdentifier = DeFiActions.createUniqueIdentifier()
+
+    // Instantiate: Source, Swapper, Sink
     let source = FungibleTokenConnectors.VaultSource(
       min: 5.0,
       withdrawVault: withdrawCap,
-      uniqueID: nil
+      uniqueID: uniqueIdentifier
     )
 
-    // Replace with a real Increment path when swapping tokens (e.g., FLOW→FUSD)
-    // e.g. ["A.1654653399040a61.FlowToken", "A.3c5959b568896393.FUSD"]
+    // Derive the IncrementFi token keys from the token types
+    let flowKey = SwapConfig.SliceTokenTypeIdentifierFromVaultType(vaultTypeIdentifier: Type<@FlowToken.Vault>().identifier)
+    let usdcFlowKey = SwapConfig.SliceTokenTypeIdentifierFromVaultType(vaultTypeIdentifier: Type<@USDCFlow.Vault>().identifier)
+
+    // Replace with a real Increment path when swapping tokens (e.g., FLOW → USDCFlow)
+    // e.g. ["A.1654653399040a61.FlowToken", "A.f1ab99c82dee3526.USDCFlow"]
     let swapper = IncrementFiSwapConnectors.Swapper(
-      path: ["A.FlowToken", "A.FlowToken"],
+      path: [flowKey, usdcFlowKey],
       inVault: Type<@FlowToken.Vault>(),
-      outVault: Type<@FlowToken.Vault>(),
-      uniqueID: nil
+      outVault: Type<@USDCFlow.Vault>(),
+      uniqueID: uniqueIdentifier
     )
 
     let sink = FungibleTokenConnectors.VaultSink(
       max: nil,
       depositVault: depositCap,
-      uniqueID: nil
-    )
-
-    // Align UniqueIdentifier: copy ID from Source → Swapper and Source → Sink
-    FlowActions.alignID(
-      toUpdate: &swapper as auth(Extend) &{FlowActions.IdentifiableStruct},
-      with:     &source  as auth(Identify) &{FlowActions.IdentifiableStruct}
-    )
-    FlowActions.alignID(
-      toUpdate: &sink    as auth(Extend) &{FlowActions.IdentifiableStruct},
-      with:     &source  as auth(Identify) &{FlowActions.IdentifiableStruct}
+      uniqueID: uniqueIdentifier
     )
 
     // ----- Real composition (no destroy) -----
     // 1) Withdraw from Source
     let tokens <- source.withdrawAvailable(maxAmount: 100.0)
 
-    // 2) Swap with Swapper
+    // 2) Swap with Swapper from FLOW → USDCFlow
     let swapped <- swapper.swap(quote: nil, inVault: <-tokens)
 
     // 3) Deposit into Sink (consumes by reference via withdraw())
     sink.depositCapacity(from: &swapped as auth(FungibleToken.Withdraw) &{FungibleToken.Vault})
 
-    // 4) Return any residual by depositing the *entire* vault back to user's Flow vault
+    // 4) Return any residual by depositing the *entire* vault back to user's USDCFlow vault
     //    (works even if balance is 0; deposit will still consume the resource)
-    let ownerVault = acct.borrow<&FlowToken.Vault>(storagePath)
-      ?? panic("missing FlowToken vault in storage")
-    ownerVault.deposit(from: <-swapped)
+    depositCap.borrow().deposit(from: <-swapped)
 
     // Optional: inspect that all three share the same ID
     log(source.id())
