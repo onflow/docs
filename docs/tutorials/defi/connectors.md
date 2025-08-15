@@ -1,7 +1,7 @@
 ---
 title: Connectors
 description: Build DeFiActions connectors that integrate protocols with DeFi Actions primitives
-sidebar_position: 2
+sidebar_position: 3
 keywords:
   - Connectors
   - DeFi Actions

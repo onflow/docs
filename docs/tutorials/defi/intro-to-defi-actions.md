@@ -1,7 +1,7 @@
 ---
 title: Introduction to DeFi Actions
 description: Learn about DeFi Actions, a suite of standardized Cadence interfaces that enable developers to compose complex DeFi workflows using small, reusable components.
-sidebar_position: 0
+sidebar_position: 1
 keywords:
   - defi actions
   - cadence interfaces
