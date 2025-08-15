@@ -46,11 +46,11 @@ Each connector implements one or more of the five primitive interfaces:
 
 ```cadence
 // Example: A connector implementing the Sink primitive
-access(all) struct MyProtocolSink: FlowActions.Sink {
+access(all) struct MyProtocolSink: DeFiActions.Sink {
     // Protocol-specific configuration
     access(self) let protocolConfig: MyProtocol.Config
     
-    // FlowActions required methods
+    // DeFiActions required methods
     access(all) fun getSinkType(): Type { ... }
     access(all) fun minimumCapacity(): UFix64 { ... }
     access(all) fun depositCapacity(from: auth(FungibleToken.Withdraw) &{FungibleToken.Vault}) { ... }
@@ -256,7 +256,7 @@ access(all) fun depositCapacity(from: auth(FungibleToken.Withdraw) &{FungibleTok
 
 ### **Resource Management**
 
-- **Handle Empty Vaults**: Use `FlowActionsUtils.getEmptyVault()` for consistent empty vault creation
+- **Handle Empty Vaults**: Use `DeFiActionsUtils.getEmptyVault()` for consistent empty vault creation
 - **Destroy Properly**: Clean up resources in all code paths
 - **Avoid Resource Leaks**: Ensure all vaults are handled appropriately
 
@@ -313,7 +313,7 @@ Create transaction templates for using your connectors:
 ```cadence
 // Transaction: save_vault_sink.cdc
 import "FungibleTokenConnectors"
-import "FlowActions"
+import "DeFiActions"
 import "FungibleToken"
 
 transaction(maxBalance: UFix64) {
@@ -440,7 +440,7 @@ The VaultSink can be used in advanced Flow Actions workflows:
 
 ```cadence
 // Example: VaultSink in AutoBalancer (real integration pattern)
-import "FlowActions"
+import "DeFiActions"
 import "FungibleTokenConnectors" 
 import "BandOracleConnectors"
 
@@ -475,7 +475,7 @@ transaction() {
         )
         
         // 4. Create AutoBalancer using VaultSink pattern
-        let autoBalancer <- FlowActions.createAutoBalancer(
+        let autoBalancer <- DeFiActions.createAutoBalancer(
             oracle: priceOracle,
             vaultType: Type<@FlowToken.Vault>(),
             lowerThreshold: 0.9,
