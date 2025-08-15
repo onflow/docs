@@ -1,7 +1,7 @@
 ---
 title: Basic Combinations
 description: Learn how to combine DeFi Actions primitives to create powerful DeFi workflows
-sidebar_position: 4
+sidebar_position: 3
 keywords:
   - combinations
   - workflows

@@ -1,7 +1,7 @@
 ---
 title: Flow Actions Transaction
 description: Build your first transaction that uses Flow actions on Flow Cadence.
-sidebar_position: 2
+sidebar_position: 1
 keywords:
   - Flow Actions
   - flow actions
