@@ -383,7 +383,7 @@ flow transactions send cadence/transactions/increment_fi_restake.cdc \
   --signer my-testing-account \
   --args-json '[{"type":"UInt64","value":"<YOUR_POOL_PID>"}]'
 ```
-Replace <YOUR_POOL_PID> with your actual pool ID from the IncrementFi Farms page, in this case it is 199. 
+Replace `<YOUR_POOL_PID>` with your actual pool ID from the IncrementFi Farms page, in this case it is 199. 
 
 ### Interpreting the Results
 
