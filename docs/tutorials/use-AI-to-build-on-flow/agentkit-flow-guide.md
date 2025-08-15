@@ -314,7 +314,7 @@ const agent = createReactAgent({
 
 ## Resources
 
-- [AgentKit Docs](https://docs.cdp.coinbase.com/agentkit)
+- [AgentKit Docs](https://docs.cdp.coinbase.com/agent-kit/welcome)
 - [Flow EVM Guide](https://developers.flow.com/evm/using)
 - [Langchain LLM Integrations](https://python.langchain.com/docs/integrations/llms/)
 - [Anthropic Model Comparison](https://docs.anthropic.com/en/docs/about-claude/models/all-models#model-comparison-table)
