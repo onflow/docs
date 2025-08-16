@@ -51,6 +51,7 @@ For this grand future, we'll need a new suite of tutorials, guides, and resource
 Learn how to build composable DeFi applications using the Flow Actions framework. This framework provides a "LEGO" system of reusable components that enable developers to create sophisticated DeFi workflows through atomic composition.
 
 - [Introduction to Flow Actions] - Learn about Flow Actions, a suite of standardized Cadence interfaces that enable developers to compose complex DeFi workflows using small, reusable components
+- [Transactions] - Learn how to create atomic transactions with the composable components of Flow Actions
 - [Connectors] - Understand how connectors bridge standardized Flow Actions interfaces with different DeFi protocols
 - [Basic Combinations] - Learn how to combine Flow Actions to create new workflows
 - [Scheduled Callbacks Introduction] - Learn how to implement scheduled callbacks for time-based smart contract execution on Flow
@@ -106,6 +107,7 @@ Explore Flow's unique capabilities through fun benchmark applications that showc
 
 <!-- Reference-style links, will not render on page. -->
 [Introduction to Flow Actions]: ./defi/intro-to-flow-actions.md
+[Transactions]: ./defi/flow-actions-transaction.md
 [Connectors]: ./defi/connectors.md
 [Basic Combinations]: ./defi/basic-combinations.md
 [Scheduled Callbacks Introduction]: ./defi/scheduled-callbacks-introduction.md
