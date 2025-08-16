@@ -1,8 +1,8 @@
 ---
-title: Why EVM on Flow 
+title: Flow – Fast EVM Equivalent Blockchain with Low Fees
 sidebar_label: Why EVM on Flow 
 sidebar_position: 1
-description: Flow is a Fast EVM equivalent blockchain with low fees and the best Ethereum alternative for apps, offering speed, low costs, & zero changes to Solidity code.
+description: Build on Flow, a fast EVM equivalent blockchain with low fees. An Ethereum alternative for apps with seamless onboarding, MEV resilience, and scalability.
 keywords:
   - Flow EVM
   - Fast EVM
@@ -21,13 +21,12 @@ keywords:
 
 # Why EVM on Flow 
 
-Flow is an L1 that now supports EVM-equivalency. This makes Flow EVM an Ethereum alternative for apps because of its extremely fast transactions with lower fees. This means that Flow's protocol benefits, such as fast transactions, low costs, and mainstream scalability, are natively available without any additional code changes to solidity contracts. With EVM, solidity devs and builders can now easily tap into Flow's user base and unique IPs without any implementation risk. 
+Flow is a [fast EVM equivalent blockchain with low fees], making it an ideal **Ethereum alternative for apps** that need both performance and affordability. With EVM equivalency, Solidity developers can deploy existing contracts on Flow without rewriting code, instantly gaining access to Flow’s ultra-fast transactions, low costs, and mainstream scalability. Builders can tap into Flow’s unique IPs and large user base with no implementation risk.
 
 ## Seamless Integration for Ethereum Developers
 
 Flow EVM is designed to work out-of-the-box with the Ethereum toolchain or other clients.  Native EVM transactions also continue to be supported when using Metamask and other EVM-compatible clients.
 EVM-equivalency on Flow works behind-the-scenes by  implementing a minimal transaction script in Cadence, Flow's smart contract language, to integrate Flow features with EVM. This is made possible because EVM transactions are composed and executed within Cadence transactions, enabling novel use-cases and patterns for integration.
-
 
 ## Best-In-Class UX
 
@@ -47,16 +46,13 @@ Flow’s state space is extensible to the petabyte scale  making it easy to stor
 
 Flow's transaction throughput peaked to 2M daily transactions during 2023 sustaining a similar average transaction volume as Ethereum. Unlike Ethereum, Flow has always operated well under its maximum throughput ceiling which is presently scalable to 5x more transactions with further performance optimizations to come when parallel execution is released. State scalability on Flow sets the foundations for further significant throughput optimization. 
 
-
 ## MEV Resilience
 
 The [MEV Resilient](../build/basics/mev-resistance.md) design on Flow offers DeFi builders improved market efficiency, fairness, trust and long-term viability for their apps. Since Flow EVM transactions are composed and executed within a Cadence transaction, block production is handled by Flow’s [multi-role architecture](https://flow.com/post/flow-blockchain-multi-node-architecture-advantages). This heterogeneity between node roles ensures that visibility into block proposal, assembly, asserting block validity and other correctness checks during the block production cycle exposes limited information to each node type on a need to know basis, observing the Principle of Least Privilege. These differences in node and consensus design results in strong economic disincentives for collusion because no individual node has full visibility into the state of block production for the chain. This robust MEV resilience is a significant difference from other EVM-compatible networks and results in reasonably priced, predictable gas fees. The impracticality of frontrunning or other attacks improves the user experience by eliminating failed transactions and invisible fees.
 
-
 ## Join the Community
 
 Are you interested in launching an EVM project on Flow or partnering with us? Visit our weekly Flow [office hours](https://calendar.google.com/calendar/ical/c_47978f5cd9da636cadc6b8473102b5092c1a865dd010558393ecb7f9fd0c9ad0%40group.calendar.google.com/public/basic.ics) for discussions on project development and other opportunities for collaboration. You can also chat with us developers-chat in the Flow [Discord](https://discord.gg/flow).
-
 
 ## Further Reading and Discussions
 
@@ -71,3 +67,10 @@ Those wishing to understand the technical specifics of how Flow EVM works we rec
 - Exploring the [Flow VM Bridge](https://github.com/onflow/flips/pull/233/files/d5bc46c4b13f0b9b168a94f994c77a5a689f6b24..122e938b7acae7e774246b1b66aaf5979ca21444)
 - Insights into the [Flow EVM Gateway](https://github.com/onflow/flips/pull/235/files)
 - Integration of the [Cadence Interface](https://github.com/onflow/flips/blob/f646491ec895442dcccdb24d80080bab1c56188e/protocol/20231116-evm-support.md)
+
+## Build with Flow
+
+Whether you’re porting an existing Solidity dApp or building from scratch, Flow offers a **fast, EVM equivalent blockchain with low fees** and the tooling you already know. As a **scalable Ethereum alternative for apps**, Flow combines familiar development workflows with performance and UX enhancements you can’t get elsewhere.
+
+<!-- Reference-style links, will not render on page. -->
+[fast EVM equivalent blockchain with low fees]: https://flow.com/
