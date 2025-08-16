@@ -607,7 +607,7 @@ Scheduled callbacks open up new possibilities for DeFi applications, enabling re
 <!-- Reference-style links, will not render on page. -->
 
 [FLIP 330]: https://github.com/onflow/flips/pull/331/files
-[Turning Complete]: https://en.wikipedia.org/wiki/Turing_completeness
+[Turing Complete]: https://en.wikipedia.org/wiki/Turing_completeness
 [Scheduled Callbacks Scaffold]: https://github.com/onflow/scheduledcallbacks-scaffold
 [Cadence]: https://cadence-lang.org/docs
 [resource]: https://cadence-lang.org/docs/language/resources
