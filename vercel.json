@@ -1364,6 +1364,11 @@
       "permanent": true
     },
     {
+      "source": "/tutorials/:path*",
+      "destination": "/blockchain-development-tutorials/:path*",
+      "permanent": true
+    },
+    {
       "source": "/evm/guides/vrf",
       "destination": "/tutorials/native-vrf/vrf-evm",
       "permanent": true
