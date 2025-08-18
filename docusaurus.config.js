@@ -307,7 +307,7 @@ const config = {
             to: 'tutorials',
             position: 'left',
             label: 'Tutorials',
-            activeBasePath: '/tutorials',
+            activeBasePath: '/blockchain-development-tutorials',
           },
           {
             type: 'custom-connectButton',
