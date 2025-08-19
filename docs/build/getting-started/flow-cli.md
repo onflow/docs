@@ -107,7 +107,7 @@ Your emulator will now be running.
 
 #### Creating an Account
 
-When you created a project you'll see that a `Counter` contract was added to your `flow.json` configuration file, but it's not set up for deployment yet. We could deploy it to the automatically created `emulator-account`, but for this example lets also create a new account on the emulator to deploy it to.
+When you created a project you'll see that a `Counter` contract was added to your [`flow.json` configuration file](../../tools/flow-cli/flow.json/configuration.md), but it's not set up for deployment yet. We could deploy it to the automatically created `emulator-account`, but for this example lets also create a new account on the emulator to deploy it to.
 
 :::info
 
@@ -121,7 +121,7 @@ Leave your emulator running, and open a second terminal. Run the following comma
 flow accounts create
 ```
 
-When prompted, give your account the name `test-account` and select `Emulator` as the network. You'll now see this account in your `flow.json`.
+When prompted, give your account the name `test-account` and select `Emulator` as the network. You'll now see this account in your [`flow.json`](../../tools/flow-cli/flow.json/configuration.md).
 
 #### Configuring the Deployment
 
@@ -161,13 +161,13 @@ That's it! You've just deployed your first contract to the Flow Emulator.
 flow project deploy --network=testnet
 ```
 
-Make sure you have a testnet account configured in your `flow.json` file and that you have enough FLOW tokens to pay for deployment fees. You can get testnet FLOW tokens from the [Flow Testnet Faucet](https://faucet.flow.com/fund-account).
+Make sure you have a testnet account configured in your [`flow.json` file](../../tools/flow-cli/flow.json/configuration.md) and that you have enough FLOW tokens to pay for deployment fees. You can get testnet FLOW tokens from the [Flow Testnet Faucet](https://faucet.flow.com/fund-account).
 
 :::
 
 ::warning
 
-You can't deploy the same contract to multiple accounts at the same time with the `deploy` command. If you've experimented with the above, you may need to manually edit the `"deployments"` property in `flow.json` to remove extra deployments.
+You can't deploy the same contract to multiple accounts at the same time with the `deploy` command. If you've experimented with the above, you may need to manually edit the `"deployments"` property in [`flow.json`](../../tools/flow-cli/flow.json/configuration.md) to remove extra deployments.
 
 :::
 
@@ -275,9 +275,9 @@ flow dependencies install testnet://8a4dce54554b225d.NumberFormatter
 
 When prompted for the account to deploy the contract to, select any account and ignore the prompt for an alias. This is if you wanted to configure a `mainnet` address for the contract.
 
-This will add the `NumberFormatter` contract and any of its dependencies to an `imports` directory in your project. It will also add any dependencies to your `flow.json` file. In addition, the prompt will configure the deployment of the contract to the account you selected. Make sure to select the `emulator-account` account to deploy the contract to the emulator.
+This will add the `NumberFormatter` contract and any of its dependencies to an `imports` directory in your project. It will also add any dependencies to your [`flow.json` file](../../tools/flow-cli/flow.json/configuration.md). In addition, the prompt will configure the deployment of the contract to the account you selected. Make sure to select the `emulator-account` account to deploy the contract to the emulator.
 
-You'll then see the `NumberFormatter` in your deployments for emulator in your `flow.json`.
+You'll then see the `NumberFormatter` in your deployments for emulator in your [`flow.json`](../../tools/flow-cli/flow.json/configuration.md).
 
 Now we can deploy the `NumberFormatter` contract to the emulator by running:
 
