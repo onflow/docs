@@ -197,7 +197,7 @@ flow transactions send cadence/transactions/TransferTokens.cdc --arg 0x123 --arg
 flow transactions send cadence/transactions/TransferTokens.cdc --signer my-account
 ```
 
-📖 **[Learn more about scripts and transactions](../scripts/execute-scripts.md)**
+📖 **[Learn more about scripts and transactions](./scripts/execute-scripts.md)**
 
 ## Dependency Management
 
@@ -227,7 +227,7 @@ flow dependencies update
 flow dependencies remove NumberFormatter
 ```
 
-📖 **[Learn more about dependency management](../dependency-manager.md)**
+📖 **[Learn more about dependency management](./dependency-manager.md)**
 
 ## Development Workflow
 
@@ -348,7 +348,7 @@ FLOW_PRIVATE_KEY=abc123 flow project deploy
 ## Related Documentation
 
 - **[Configuration Management](./flow.json/manage-configuration.md)** - Learn how to manage your `flow.json` file
-- **[Project Deployment](../deployment/deploy-project-contracts.md)** - Deploy contracts to different networks
-- **[Account Management](../accounts/create-account.md)** - Create and manage Flow accounts
-- **[Testing](../tests.md)** - Write and run tests for your contracts
+- **[Project Deployment](./deployment/deploy-project-contracts.md)** - Deploy contracts to different networks
+- **[Account Management](./accounts/create-accounts.md)** - Create and manage Flow accounts
+- **[Testing](./tests.md)** - Write and run tests for your contracts
 - **[Security](./flow.json/security.md)** - Secure your private keys and configuration

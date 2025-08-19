@@ -308,5 +308,5 @@ flow config add account -f flow.json -f private.json
 ## Related Commands
 
 - [`flow config add`](./manage-configuration.md) - Add configuration items securely
-- [`flow project deploy`](../deployment/deploy-project-contracts.md) - Deploy with secure configuration
-- [`flow accounts create`](../accounts/create-accounts.md) - Create accounts securely
+- [`flow project deploy`](../../deployment/deploy-project-contracts.md) - Deploy with secure configuration
+- [`flow accounts create`](../../accounts/create-accounts.md) - Create accounts securely
