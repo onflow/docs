@@ -167,7 +167,7 @@ flow keys decode <key>
 flow keys sign <message> --key <private-key>
 ```
 
-📖 **[Learn more about account management](../accounts/create-accounts.md)**
+📖 **[Learn more about account management](./accounts/create-accounts.md)**
 
 ## Contract Interactions
 
