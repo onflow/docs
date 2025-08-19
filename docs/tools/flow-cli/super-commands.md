@@ -163,8 +163,8 @@ flow keys generate
 # Decode a key
 flow keys decode <key>
 
-# Sign a message
-flow keys sign <message> --key <private-key>
+# Derive public key from private key
+flow keys derive <private-key>
 ```
 
 📖 **[Learn more about account management](./accounts/create-accounts.md)**
