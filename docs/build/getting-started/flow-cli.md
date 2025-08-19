@@ -65,7 +65,6 @@ The `init` command will create a new directory with the project name and the fol
 
 - `flow.json`: This file contains the configuration for your project.
 - `emulator-account.pkey`: This file contains the private key for the default emulator account.
-- `flow.json`: This file contains the configuration for your project.
 - `cadence/`: This directory contains your Cadence code. Inside there are subdirectories for contracts, scripts, transactions, and tests.
 
 Inside the `cadence/contracts` directory, you'll find a `Counter.cdc` file. This is the same as the `Counter` contract in the previous step.
@@ -365,7 +364,7 @@ Even more importantly, we did this **without needing access or permission.** You
 
 ## More
 
-If you want to continue on generating your own contracts, you can also use the the `generate` subcommand to create a new contract file. See more in the [`generate` documentation].
+If you want to continue on generating your own contracts, you can also use the `generate` subcommand to create a new contract file. See more in the [`generate` documentation].
 
 After that, it's easy to add your contract to your project configuration using the Flow CLI [`config` commands].
 
