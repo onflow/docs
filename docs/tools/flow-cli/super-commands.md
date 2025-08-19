@@ -105,7 +105,7 @@ flow project deploy --network=mainnet
 flow project deploy --update
 ```
 
-📖 **[Learn more about project deployment](../deployment/deploy-project-contracts.md)**
+📖 **[Learn more about project deployment](./deployment/deploy-project-contracts.md)**
 
 ## Configuration Management
 
