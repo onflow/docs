@@ -217,14 +217,11 @@ flow dependencies install testnet://8a4dce54554b225d.NumberFormatter --account m
 ### Manage Dependencies
 
 ```bash
-# List installed dependencies
-flow dependencies list
+# Discover available contracts
+flow dependencies discover
 
-# Update dependencies
-flow dependencies update
-
-# Remove a dependency
-flow dependencies remove NumberFormatter
+# Install a contract dependency
+flow dependencies install testnet://8a4dce54554b225d.NumberFormatter
 ```
 
 📖 **[Learn more about dependency management](./dependency-manager.md)**
