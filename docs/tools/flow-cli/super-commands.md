@@ -85,7 +85,7 @@ flow test --coverage
 flow test --verbose
 ```
 
-📖 **[Learn more about testing](../tests.md)**
+📖 **[Learn more about testing](./tests.md)**
 
 ### 4. Deploy Contracts
 
