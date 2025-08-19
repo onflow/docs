@@ -267,5 +267,5 @@ flow config remove account my-account
 
 - [`flow init`](./initialize-configuration.md) - Initialize a new project
 - [`flow config add`](./manage-configuration.md) - Add configuration items
-- [`flow project deploy`](../../deployment/deploy-project-contracts.md) - Deploy contracts
-- [`flow accounts create`](../../accounts/create-accounts.md) - Create new accounts
+- [`flow project deploy`](../deployment/deploy-project-contracts.md) - Deploy contracts
+- [`flow accounts create`](../accounts/create-accounts.md) - Create new accounts

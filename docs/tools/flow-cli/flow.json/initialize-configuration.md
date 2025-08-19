@@ -165,8 +165,8 @@ After initializing your configuration:
 ## Related Commands
 
 - [`flow config add`](./manage-configuration.md) - Add configuration items
-- [`flow accounts create`](../../accounts/create-accounts.md) - Create new accounts
-- [`flow project deploy`](../../deployment/deploy-project-contracts.md) - Deploy contracts
+- [`flow accounts create`](../accounts/create-accounts.md) - Create new accounts
+- [`flow project deploy`](../deployment/deploy-project-contracts.md) - Deploy contracts
 
 
 
