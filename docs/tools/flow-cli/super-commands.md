@@ -34,6 +34,8 @@ flow init --global
 flow init --service-private-key <key>
 ```
 
+📖 **[Learn more about project initialization](./flow.json/initialize-configuration.md)**
+
 ### 2. Generate Project Files
 
 Create new files with the `flow generate` command:
@@ -83,6 +85,8 @@ flow test --coverage
 flow test --verbose
 ```
 
+📖 **[Learn more about testing](../tests.md)**
+
 ### 4. Deploy Contracts
 
 Deploy your contracts with `flow project deploy`:
@@ -100,6 +104,8 @@ flow project deploy --network=mainnet
 # Update existing contracts
 flow project deploy --update
 ```
+
+📖 **[Learn more about project deployment](../deployment/deploy-project-contracts.md)**
 
 ## Configuration Management
 
@@ -131,6 +137,8 @@ flow config remove contract MyToken
 flow config remove deployment testnet my-account MyToken
 ```
 
+📖 **[Learn more about configuration management](./flow.json/manage-configuration.md)**
+
 ## Account Management
 
 ### Create Accounts
@@ -158,6 +166,8 @@ flow keys decode <key>
 # Sign a message
 flow keys sign <message> --key <private-key>
 ```
+
+📖 **[Learn more about account management](../accounts/create-account.md)**
 
 ## Contract Interactions
 
@@ -187,6 +197,8 @@ flow transactions send cadence/transactions/TransferTokens.cdc --arg 0x123 --arg
 flow transactions send cadence/transactions/TransferTokens.cdc --signer my-account
 ```
 
+📖 **[Learn more about scripts and transactions](../basics/scripts.md)**
+
 ## Dependency Management
 
 ### Install Dependencies
@@ -214,6 +226,8 @@ flow dependencies update
 # Remove a dependency
 flow dependencies remove NumberFormatter
 ```
+
+📖 **[Learn more about dependency management](../dependency-manager.md)**
 
 ## Development Workflow
 
@@ -328,6 +342,8 @@ flow config add account --name my-account --key-file ./keys/my-account.key
 # Use environment variables
 FLOW_PRIVATE_KEY=abc123 flow project deploy
 ```
+
+📖 **[Learn more about security best practices](./flow.json/security.md)**
 
 ## Related Documentation
 
