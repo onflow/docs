@@ -301,7 +301,7 @@ flow config add account --name admin-account --address f1d6e0586b0a20c7 --privat
 
 - [`flow init`](./initialize-configuration.md) - Initialize a new project
 - [`flow project deploy`](../deployment/deploy-project-contracts.md) - Deploy contracts
-- [`flow accounts create`](../accounts/create-account.md) - Create new accounts
+- [`flow accounts create`](../accounts/create-accounts.md) - Create new accounts
 
 
 

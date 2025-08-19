@@ -167,7 +167,7 @@ flow keys decode <key>
 flow keys sign <message> --key <private-key>
 ```
 
-📖 **[Learn more about account management](../accounts/create-account.md)**
+📖 **[Learn more about account management](../accounts/create-accounts.md)**
 
 ## Contract Interactions
 
@@ -197,7 +197,7 @@ flow transactions send cadence/transactions/TransferTokens.cdc --arg 0x123 --arg
 flow transactions send cadence/transactions/TransferTokens.cdc --signer my-account
 ```
 
-📖 **[Learn more about scripts and transactions](../basics/scripts.md)**
+📖 **[Learn more about scripts and transactions](../scripts/execute-scripts.md)**
 
 ## Dependency Management
 

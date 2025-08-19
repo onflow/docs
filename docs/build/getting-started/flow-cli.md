@@ -165,7 +165,7 @@ Make sure you have a testnet account configured in your [`flow.json` file](../..
 
 :::
 
-::warning
+:::warning
 
 You can't deploy the same contract to multiple accounts at the same time with the `deploy` command. If you've experimented with the above, you may need to manually edit the `"deployments"` property in [`flow.json`](../../tools/flow-cli/flow.json/configuration.md) to remove extra deployments.
 

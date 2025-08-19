@@ -30,7 +30,7 @@ Store private keys in separate files that are excluded from source control.
 ```
 
 2. **Add to `.gitignore`**:
-```gitignore
+```bash
 # Private key files
 *.key
 *.pkey
@@ -125,7 +125,7 @@ Create separate configuration files for sensitive data and merge them when neede
 ```
 
 3. **Add to `.gitignore`**:
-```gitignore
+```bash
 private.json
 secrets.json
 *.private.json
@@ -172,7 +172,7 @@ FLOW_NETWORK=testnet
 ```
 
 3. **Add to `.gitignore`**:
-```gitignore
+```bash
 .env
 .env.local
 .env.*.local
@@ -213,7 +213,7 @@ flow project deploy -f flow.json -f private.json -f local.json
 
 ### 1. Never Commit Private Keys
 
-```gitignore
+```bash
 # Always add these to .gitignore
 *.key
 *.pkey
@@ -309,4 +309,4 @@ flow config add account -f flow.json -f private.json
 
 - [`flow config add`](./manage-configuration.md) - Add configuration items securely
 - [`flow project deploy`](../deployment/deploy-project-contracts.md) - Deploy with secure configuration
-- [`flow accounts create`](../accounts/create-account.md) - Create accounts securely
+- [`flow accounts create`](../accounts/create-accounts.md) - Create accounts securely
