@@ -154,6 +154,18 @@ Counter -> 0x179b6b1cb6755e31 (a98c155fe7afc8eb2af5551748759b08a80a0ae85d1b09f92
 
 That's it! You've just deployed your first contract to the Flow Emulator.
 
+:::info
+
+**Deploying to Testnet**: To deploy your contracts to testnet instead of the emulator, simply add the `--network=testnet` flag to your deploy command:
+
+```zsh
+flow project deploy --network=testnet
+```
+
+Make sure you have a testnet account configured in your `flow.json` file and that you have enough FLOW tokens to pay for deployment fees. You can get testnet FLOW tokens from the [Flow Testnet Faucet](https://faucet.flow.com/fund-account).
+
+:::
+
 ::warning
 
 You can't deploy the same contract to multiple accounts at the same time with the `deploy` command. If you've experimented with the above, you may need to manually edit the `"deployments"` property in `flow.json` to remove extra deployments.
