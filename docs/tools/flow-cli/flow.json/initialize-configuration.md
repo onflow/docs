@@ -4,15 +4,21 @@ description: How to initialize Flow configuration using CLI
 sidebar_position: 1
 ---
 
-Flow CLI uses a state to operate which is called configuration (usually `flow.json` file). 
-Before using commands that require this configuration we must initialize the project by 
-using the init command. Read more about [state configuration here](./configuration.md).
+The `flow init` command creates a new Flow project with a basic `flow.json` configuration file. This is the first step in setting up any Flow project.
+
+## Basic Usage
 
 ```shell
 flow init
 ```
 
-## Example Usage
+This command will:
+- Create a new `flow.json` configuration file
+- Set up default networks (emulator, testnet, mainnet)
+- Create an emulator service account
+- Generate a basic project structure with `cadence/` directories
+
+## Example Output
 
 ```shell
 > flow init
@@ -22,86 +28,145 @@ Service account: 0xf8d6e0586b0a20c7
 
 Start emulator by running: 'flow emulator' 
 Reset configuration using: 'flow init --reset'
-
 ```
 
-### Error Handling
+## Project Structure
 
-Existing configuration will cause the error below.
-You should initialize in an empty folder or reset configuration using `--reset` flag
-or by removing the configuration file first.
+After running `flow init`, you'll have:
+
+```
+my-project/
+├── flow.json
+├── emulator-account.pkey
+└── cadence/
+    ├── contracts/
+    ├── scripts/
+    ├── transactions/
+    └── tests/
+```
+
+## Configuration Only
+
+If you only want to generate the `flow.json` file without creating the full project structure, use the `--config-only` flag:
+
+```shell
+flow init --config-only
+```
+
+This is useful when:
+- You already have a project structure
+- You want to add Flow configuration to an existing project
+- You're setting up configuration for a specific environment
+
+## Global Configuration
+
+You can create a global `flow.json` file that applies to all Flow projects on your system:
+
+```shell
+flow init --global
+```
+
+**Global configuration locations:**
+- **macOS/Linux:** `~/flow.json`
+- **Windows:** `C:\Users\$USER\flow.json`
+
+**Priority order:**
+1. Local `flow.json` (highest priority)
+2. Global `flow.json` (lowest priority)
+
+Local configuration files will override global settings for overlapping properties.
+
+## Error Handling
+
+If a `flow.json` file already exists, you'll see this error:
+
 ```shell
 ❌ Command Error: configuration already exists at: flow.json, if you want to reset configuration use the reset flag
 ```
 
-## Global Configuration
-
-Flow supports global configuration which is a `flow.json` file saved in your home 
-directory and loaded as the first configuration file wherever you execute the CLI command. 
-
-Please be aware that global configuration has the lowest priority and is overwritten 
-by any other configuration file if they exist (if `flow.json` exist in your current 
-directory it will overwrite properties in global configuration, but only those which overlap).
-
-You can generate a global configuration using `--global` flag. 
-
-Command example: `flow init --global`.
-
-Global flow configuration is saved as:
-- MacOs: `~/flow.json`
-- Linux: `~/flow.json`
-- Windows: `C:\Users\$USER\flow.json`
-
+**Solutions:**
+- Use `--reset` flag to overwrite existing configuration
+- Delete the existing `flow.json` file first
+- Initialize in a different directory
 
 ## Flags
 
-### Reset
+### Reset Configuration
 
-- Flag: `--reset`
+```shell
+flow init --reset
+```
 
-Using this flag will reset the existing configuration and create a new one.
+Overwrites existing configuration with a fresh setup.
 
-### Global
+### Configuration Only
 
-- Flag: `--global`
+```shell
+flow init --config-only
+```
 
-Using this flag will create a global Flow configuration.
+Creates only the `flow.json` file without project structure.
 
-### Service Private Key
+### Global Configuration
 
-- Flag: `--service-private-key`
-- Valid inputs: a hex-encoded private key in raw form.
+```shell
+flow init --global
+```
 
-Private key used on the default service account.
+Creates a global configuration file in your home directory.
 
+### Service Account Customization
 
-### Service Key Signature Algorithm
+#### Private Key
 
-- Flag: `--service-sig-algo`
-- Valid inputs: `"ECDSA_P256", "ECDSA_secp256k1"`
-- Default: `"ECDSA_P256"`
+```shell
+flow init --service-private-key <hex-key>
+```
 
-Specify the ECDSA signature algorithm for the provided public key.
+Specify a custom private key for the service account.
 
-Flow supports the secp256k1 and P-256 curves.
+#### Signature Algorithm
 
-### Service Key Hash Algorithm
+```shell
+flow init --service-sig-algo ECDSA_P256
+```
 
-- Flag: `--service-hash-algo`
-- Valid inputs: `"SHA2_256", "SHA3_256"`
-- Default: `"SHA3_256"`
+**Options:** `ECDSA_P256`, `ECDSA_secp256k1`
+**Default:** `ECDSA_P256`
 
-Specify the hashing algorithm that will be paired with the public key
-upon account creation.
+#### Hash Algorithm
 
-### Log
+```shell
+flow init --service-hash-algo SHA3_256
+```
 
-- Flag: `--log`
-- Short Flag: `-l`
-- Valid inputs: `none`, `error`, `debug`
-- Default: `info`
+**Options:** `SHA2_256`, `SHA3_256`
+**Default:** `SHA3_256`
 
-Specify the log level. Control how much output you want to see while command execution.
+### Log Level
+
+```shell
+flow init --log debug
+```
+
+**Options:** `none`, `error`, `debug`
+**Default:** `info`
+
+## Next Steps
+
+After initializing your configuration:
+
+1. **Review the generated `flow.json`** - Understand the default setup
+2. **Add your contracts** - Use `flow config add contract`
+3. **Create accounts** - Use `flow accounts create` or `flow config add account`
+4. **Configure deployments** - Use `flow config add deployment`
+5. **Start developing** - Run `flow emulator start`
+
+## Related Commands
+
+- [`flow config add`](./manage-configuration.md) - Add configuration items
+- [`flow accounts create`](../accounts/create-accounts.md) - Create new accounts
+- [`flow project deploy`](../deployment/deploy-project-contracts.md) - Deploy contracts
 
 
 

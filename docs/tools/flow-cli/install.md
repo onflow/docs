@@ -119,3 +119,11 @@ To remove the flow CLI you can run the following command if it was previously in
 - Windows: `rm ~/Users/{user}/AppData/Flow/flow.exe`
 
 If you installed it using Hombrew you can remove it using: `brew uninstall flow-cli`.
+
+## Next Steps
+
+Now that you have the Flow CLI installed, you can:
+
+- **[Get started with Flow CLI commands](./super-commands.md)** - Learn the essential commands for project development
+- **[Initialize a new project](./flow.json/initialize-configuration.md)** - Create your first Flow project
+- **[Configure your project](./flow.json/configuration.md)** - Set up your `flow.json` configuration file
