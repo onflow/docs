@@ -7,7 +7,7 @@ sidebar_label: QC/DKG Scripts and Events
 
 The Cluster Quorum Certificate (QC) and Distributed Key Generation (DKG) protocol smart contracts
 store a lot of different state, and the state is constantly changing.
-As an external party, there are two ways to keep track of these state changes. 
+As an external party, there are two ways to keep track of these state changes.
 You can either use Cadence scripts to query the state of the contract at any given time,
 or you can monitor events that are emitted by the contracts to be notified of any important occurrences.
 
@@ -25,8 +25,8 @@ These scripts allow anyone to query information about the state of the QC contra
 To return a struct representing the information associated with a collector cluster,
 can use the **Get Cluster** ([QC.03](../../build/core-contracts/07-epoch-contract-reference.md#quorum-certificate-transactions-and-scripts)) script with the following argument:
 
-| Argument         | Type     | Description |
-|------------------|----------|-------------|
+| Argument         | Type     | Description                       |
+| ---------------- | -------- | --------------------------------- |
 | **clusterIndex** | `UInt16` | The index of the cluster to query |
 
 ### Get QC Enabled
@@ -39,19 +39,14 @@ can use the **Get QC Enabled** ([QC.04](../../build/core-contracts/07-epoch-cont
 To return a boolean representing if a node has voted for the current QC, you
 can use the **Get Node Has Voted** ([QC.05](../../build/core-contracts/07-epoch-contract-reference.md#quorum-certificate-transactions-and-scripts)) script with the following argument:
 
-| Argument         | Type     | Description |
-|------------------|----------|-------------|
+| Argument   | Type     | Description              |
+| ---------- | -------- | ------------------------ |
 | **nodeID** | `String` | The node ID to check for |
-
 
 ### Get Voting Complete
 
 To return a boolean representing if the voting for the QC phase is complete,
 can use the **Get Voting Complete** ([QC.06](../../build/core-contracts/07-epoch-contract-reference.md#quorum-certificate-transactions-and-scripts)) script with no arguments.
-
-## QC Events
-
-Documentation coming soon
 
 ## DKG Scripts
 
@@ -80,8 +75,8 @@ can use the **Get Final Submissions** ([DKG.07](../../build/core-contracts/07-ep
 To return a boolean representing if a node has sent their final submission for the DKG, you
 can use the **Get Node Has Submitted** ([DKG.08](../../build/core-contracts/07-epoch-contract-reference.md#dkg-transactions-and-scripts)) script with the following argument:
 
-| Argument         | Type     | Description |
-|------------------|----------|-------------|
+| Argument   | Type     | Description              |
+| ---------- | -------- | ------------------------ |
 | **nodeID** | `String` | The node ID to check for |
 
 ## DKG Events

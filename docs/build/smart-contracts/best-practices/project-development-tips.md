@@ -53,12 +53,12 @@ encouraging other projects in the ecosystem to do the same which creates a healt
 and more vibrant community.
 
 Ensuring appropriate levels of testing results in better smart contracts which have
-pro-actively modeled threats and engineered against them. Ensuring appropriate levels 
+pro-actively modeled threats and engineered against them. Ensuring appropriate levels
 of standards adoption ([FungibleToken](https://github.com/onflow/flow-ft),
-[NFT Metadata](../../advanced-concepts/metadata-views.md), [NFT StoreFront](https://github.com/onflow/nft-storefront), etc) by dapp 
-builders amplifies the network effects for all in the ecosystem. NFTs in one dapp can be 
-readily consumed by other dapps through on-chain events with no new integration 
-required. With your help and participation we can further accelerate healthy and vibrant 
+[NFT Metadata](../../advanced-concepts/metadata-views.md), [NFT StoreFront](https://github.com/onflow/nft-storefront), etc) by dapp
+builders amplifies the network effects for all in the ecosystem. NFTs in one dapp can be
+readily consumed by other dapps through on-chain events with no new integration
+required. With your help and participation we can further accelerate healthy and vibrant
 network effects across the Flow ecosystem!
 
 Some of these suggestions might seem somewhat unnecessary,
@@ -117,7 +117,7 @@ that needs to be handled with a bespoke transaction, it is important that the ow
 knows how to build and run transactions and scripts safely to address the issues
 and/or upgrade the smart contracts.
 
-The project should also have a clear plan of succession in case the original owner 
+The project should also have a clear plan of succession in case the original owner
 is not available or leaves the project. It is important that there are others who
 can fill in who have a clear understanding of the code and requirements so they can give good feedback,
 perform effective reviews, and make changes where needed.
@@ -139,16 +139,14 @@ The repo should also have some sort of high-level design document that lays out
 the intended design and architecture of the smart contract.
 The project leads should determine what is best for them to include in the document,
 but some useful things to include are basic user stories, architecture of the smart contracts,
-and any questions that still need to be answered about it.
-    - Where applicable, diagrams should be made describing state machines, user flows, etc.
-    - This document should be shared in an issue in the open source repo
-    where the contracts or features are being developed,
-    then later moved to the README or another important docs page.
+and any questions that still need to be answered about it. - Where applicable, diagrams should be made describing state machines, user flows, etc. - This document should be shared in an issue in the open source repo
+where the contracts or features are being developed,
+then later moved to the README or another important docs page.
 
 A high level design is a key opportunity to model threats
 and understand the risks of the system. The process of collaborating
 and reviewing designs together helps ensure that more edge-cases are captured and addressed.
-It's also a lot less effort to iterate on a design than on hundreds of lines of Cadence.    
+It's also a lot less effort to iterate on a design than on hundreds of lines of Cadence.
 
 ## Development Process Recommendations
 
@@ -161,21 +159,17 @@ one at a time instead of being overwhelmed by a huge block of code.
 
 ### Comments and field/function descriptions are essential!
 
-Our experience writing many Cadence smart contracts has taught us how important documentation 
-is. It especially matters what is documented and for whom, and in that way we are no different from 
-any software language. The Why is super important, if for example something - an event - that 
-happens in one contract leads to outcomes in a different contract. The What helps give context, 
-the reason for the code turning out the way it is. The How, you don't document - you've written 
-the code. Comments should be directed to those who will follow after you in changing the code. 
+Our experience writing many Cadence smart contracts has taught us how important documentation
+is. It especially matters what is documented and for whom, and in that way we are no different from
+any software language. The Why is super important, if for example something - an event - that
+happens in one contract leads to outcomes in a different contract. The What helps give context,
+the reason for the code turning out the way it is. The How, you don't document - you've written
+the code. Comments should be directed to those who will follow after you in changing the code.
 
 Comments should be written at the same time (or even before) the code is written.
 This helps the developer and reviewers understand the work-in-progress code better,
 as well as the intentions of the design (for testing and reviewing).
-Functions should be commented with a
-    - Description
-    - Parameter descriptions
-    - Return value descriptions
-
+Functions should be commented with a - Description - Parameter descriptions - Return value descriptions
 
 Top Level comments and comments for types, fields, events,
 and functions should use `///` (three slashes) to be recognised by the
@@ -184,10 +178,11 @@ Regular comments within functions should only use two slashes (`//`)
 
 ## Testing Recommendations
 
-Summarized below is a list of testing related recommendations 
+Summarized below is a list of testing related recommendations
 which are noteworthy to mention for a typical smart contract project.
 
 Popular testing frameworks to use for cadence are listed here:
+
 - Cadence: [Cadence Testing Framework](../../smart-contracts/testing.md)
 - Go: [Overflow](https://github.com/bjartek/overflow)
 
@@ -199,12 +194,11 @@ There should be thorough emulator unit tests in the public repo.
 [See the flow fungible token repo](https://github.com/onflow/flow-ft/tree/master/lib/js/test)
 for an example of unit tests in javascript.
 
-
 Every time there is a new Cadence version or emulator version,
 the dependencies of the repo should be updated to make sure the tests are all still passing.
 
 Tests should avoid being monolithic;
-Individual test cases should be set up for each part of the contract to test them in isolation. 
+Individual test cases should be set up for each part of the contract to test them in isolation.
 There are some exceptions, like contracts that have to run through a state machine
 to test different cases. Positive and negative cases need to be tested.
 
@@ -232,12 +226,12 @@ before they happen builds trust and confidence in projects.
 Here are a few suggestions for how to manage a deployment or upgrade.
 
 - Communicate to all stake-holders well in advance
-    - Share the proposal with the community at least a week in advance (unless it is a critical bug fix)
-        - Examples of places to share are your project's chat, forum, blog, email list, etc.
-        - This will allow the community and other stakeholders to have plenty of time
-        to view the upcoming changes and provide feedback if necessary.
-    - Share the time of the deployment and the deployment transaction with branch/commit hash information to ensure the transaction itself is correct.
-    - Coordinate deployment with stakeholders to make sure it is done correctly and on time.
+  - Share the proposal with the community at least a week in advance (unless it is a critical bug fix)
+    - Examples of places to share are your project's chat, forum, blog, email list, etc.
+    - This will allow the community and other stakeholders to have plenty of time
+      to view the upcoming changes and provide feedback if necessary.
+  - Share the time of the deployment and the deployment transaction with branch/commit hash information to ensure the transaction itself is correct.
+  - Coordinate deployment with stakeholders to make sure it is done correctly and on time.
 
 ## Responsibilities to the Community
 
@@ -252,18 +246,12 @@ Encouraging adoption of project contracts to the broader ecosystem
 raises the bar around code providing clear high-level descriptions,
 with detailed and useful comments within contracts, transactions, and scripts.
 The more that a project can be understood, that it adheres to standards,
-and can be built upon with ease, the more likely others will build against it in turn. 
+and can be built upon with ease, the more likely others will build against it in turn.
 
-Each project should have a detailed README.md with these sections:
-    - Explanation of the project itself with links to the app
-    - Addresses on various networks
-    - High-level technical description of the contracts with emphasis on important types and functionality
-    - Architecture diagram (if applicable)
-    - Include links to tutorials if they are external
-    - Flow smart contract standards that a project implements
+Each project should have a detailed README.md with these sections: - Explanation of the project itself with links to the app - Addresses on various networks - High-level technical description of the contracts with emphasis on important types and functionality - Architecture diagram (if applicable) - Include links to tutorials if they are external - Flow smart contract standards that a project implements
 
 Additionally, each contract, transaction, and script should have high-level descriptions
-at the top of their files. This way, anyone in the community can easily 
+at the top of their files. This way, anyone in the community can easily
 come in and understand what each one is doing without having to parse confusing code.
 
 ### Projects should engage with and respond to their own Community
@@ -304,6 +292,6 @@ Resources for Best Practices:
 - [cadence/security-best-practices](./security-best-practices.md)
 
 Composability and extensibility should also be priorities while designing, developing,
-and documenting their projects. (Documentation for these topics coming soon)
+and documenting their projects.
 
 If you have any feedback about these guidelines, please create an issue in the onflow/cadence-style-guide repo or make a PR updating the guidelines so we can start a discussion.
