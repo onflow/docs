@@ -242,11 +242,11 @@ const config = {
         defaultMode: 'dark',
       },
       // Update the image path and add metadata
-      image: 'img/flow-docs-og-1200-630.png',
+      image: 'img/og-image-flow-docs-2025-dark.png',
       metadata: [
         { name: 'twitter:card', content: 'summary_large_image' },
-        { name: 'twitter:image', content: getUrl() + '/img/flow-docs-og-1200-630.png' },
-        { property: 'og:image', content: getUrl() + '/img/flow-docs-og-1200-630.png' },
+        { name: 'twitter:image', content: getUrl() + '/img/og-image-flow-docs-2025-dark.png' },
+        { property: 'og:image', content: getUrl() + '/img/og-image-flow-docs-2025-dark.png' },
         { property: 'og:image:type', content: 'image/png' },
         { property: 'og:image:width', content: '1200' },
         { property: 'og:image:height', content: '630' },
