@@ -172,8 +172,10 @@ flow config remove network custom-testnet
 ### Remove a Deployment
 
 ```shell
-flow config remove deployment testnet my-testnet-account MyToken
+flow config remove deployment my-testnet-account testnet
 ```
+
+**Note:** This removes all deployments for the specified account on the specified network.
 
 ## Configuration File Management
 
