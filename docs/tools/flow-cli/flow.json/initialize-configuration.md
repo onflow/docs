@@ -81,23 +81,15 @@ Local configuration files will override global settings for overlapping properti
 If a `flow.json` file already exists, you'll see this error:
 
 ```shell
-❌ Command Error: configuration already exists at: flow.json, if you want to reset configuration use the reset flag
+❌ Command Error: configuration already exists at: flow.json
 ```
 
 **Solutions:**
-- Use `--reset` flag to overwrite existing configuration
 - Delete the existing `flow.json` file first
 - Initialize in a different directory
+- Use `--config-only` to create a new config in a different location
 
 ## Flags
-
-### Reset Configuration
-
-```shell
-flow init --reset
-```
-
-Overwrites existing configuration with a fresh setup.
 
 ### Configuration Only
 
@@ -107,50 +99,24 @@ flow init --config-only
 
 Creates only the `flow.json` file without project structure.
 
-### Global Configuration
+
+
+### Global Flags
+
+The following global flags are also available:
 
 ```shell
-flow init --global
-```
-
-Creates a global configuration file in your home directory.
-
-### Service Account Customization
-
-#### Private Key
-
-```shell
-flow init --service-private-key <hex-key>
-```
-
-Specify a custom private key for the service account.
-
-#### Signature Algorithm
-
-```shell
-flow init --service-sig-algo ECDSA_P256
-```
-
-**Options:** `ECDSA_P256`, `ECDSA_secp256k1`
-**Default:** `ECDSA_P256`
-
-#### Hash Algorithm
-
-```shell
-flow init --service-hash-algo SHA3_256
-```
-
-**Options:** `SHA2_256`, `SHA3_256`
-**Default:** `SHA3_256`
-
-### Log Level
-
-```shell
+# Log level
 flow init --log debug
+
+# Output format
+flow init --output json
+
+# Approve prompts automatically
+flow init --yes
 ```
 
-**Options:** `none`, `error`, `debug`
-**Default:** `info`
+**Available log levels:** `debug`, `info`, `error`, `none`
 
 ## Next Steps
 
