@@ -25,11 +25,11 @@ Store, manage, and interact securely with tokens and digital assets on Flow. Dis
 
 ## NuFi
 
-[NuFi](https://https://nu.fi/) allows you to securely manage tokens and NFTs, trade, stake, and use apps on multiple blockchains. Presently only supports Flow EVM and cannot access Cadence accounts.
+[NuFi](https://nu.fi/) allows you to securely manage tokens and NFTs, trade, stake, and use apps on multiple blockchains. Presently only supports Flow EVM and cannot access Cadence accounts.
 
 ## Rabby
 
-[Rabby](https://https://rabby.io/) - The game-changing wallet for Ethereum and all EVM chains. Presently only supports Flow EVM and cannot access Cadence accounts.
+[Rabby](https://rabby.io/) - The game-changing wallet for Ethereum and all EVM chains. Presently only supports Flow EVM and cannot access Cadence accounts.
 
 ## Wallet Connect
 
