@@ -36,10 +36,6 @@ These tutorials will be updated, but you may need to refactor your code if the i
 - **[Basic Combinations]** - Learn how to combine Flow Actions to create new workflows.
 - **[Scheduled Callbacks Introduction]** - Learn how to implement scheduled callbacks for time-based smart contract execution on Flow.
 
-## More Coming Soon
-
-Stay tuned—more tutorials and advanced guides are on the way!
-
 <!-- Relative links, will not render on page -->
 
 [FLIP 339]: https://github.com/onflow/flips/pull/339/files

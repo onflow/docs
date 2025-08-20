@@ -26,12 +26,3 @@ These tutorials are designed to inspire developers by demonstrating what's possi
 Learn how to store and retrieve images directly onchain:
 
 - [Build a Fully-Onchain Image Gallery](image-gallery.md)
-
-## Coming Soon
-
-More FlowtoBooth tutorials are in development, including:
-
-- Composing on the Image Gallery to mint NFTs from the gallery
-- Using [Cross-VM] to allow users to mint several NFTS with one approval
-
-[Cross-VM]: ../cross-vm-apps/index.md

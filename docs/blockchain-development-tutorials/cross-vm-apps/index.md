@@ -26,10 +26,6 @@ This series covers how to build cross-VM applications that integrate Flow EVM wi
 - **[Batched EVM Transactions]** - Discover how to batch multiple EVM transactions into a single Cadence transaction.
 - **[Cross-VM Bridge]** - Explore how to bridge fungible and non-fungible tokens between Cadence and EVM environments.
 
-## More Coming Soon
-
-Stay tuned—more tutorials and advanced guides are on the way!
-
 [Batched Transactions]: ./introduction.md
 [Interacting with COAs]: ./interacting-with-coa.md
 [Batched EVM Transactions]: ./batched-evm-transactions.md
