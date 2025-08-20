@@ -304,7 +304,7 @@ const config = {
             activeBasePath: '/growth',
           },
           {
-            to: 'tutorials',
+            to: 'blockchain-development-tutorials',
             position: 'left',
             label: 'Tutorials',
             activeBasePath: '/blockchain-development-tutorials',
