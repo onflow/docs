@@ -1364,11 +1364,6 @@
       "permanent": true
     },
     {
-      "source": "/tutorials/:path*",
-      "destination": "/blockchain-development-tutorials/:path*",
-      "permanent": true
-    },
-    {
       "source": "/evm/guides/vrf",
       "destination": "/tutorials/native-vrf/vrf-evm",
       "permanent": true
@@ -1391,6 +1386,11 @@
     {
       "source": "/tutorials/backend-usage/gas-free-evm-endpoint",
       "destination": "/tutorials/gasless-transactions/gas-free-evm-endpoint",
+      "permanent": true
+    },
+    {
+      "source": "/tutorials/:path*",
+      "destination": "/blockchain-development-tutorials/:path*",
       "permanent": true
     }
   ]
