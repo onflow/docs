@@ -26,7 +26,7 @@ These tutorials cover how to implement secure randomness directly in both **Cade
 
 ## Tutorials
 
-### [Secure Randomness with Commit-Reveal in Cadence] 
+### [Secure Randomness with Commit-Reveal in Cadence]
 
 Learn how to implement secure randomness in Cadence using Flow’s commit-reveal scheme, ensuring fairness and resistance to manipulation.
 
@@ -48,18 +48,12 @@ Discover how to deploy and interact with Solidity contracts on Flow EVM using Ca
 
 - Cross-language support: Works seamlessly in both Cadence and Solidity.
 
-- Speed: Flow is a [fast blockchain] with the design goal of 1,000,000 transactions per second. 
-
-## More Coming Soon
-
-Stay tuned, more advanced tutorials on the Flow native VRF and **built-in blockchain randomness** are on the way, including gaming, NFT minting, and lottery contract examples.
+- Speed: Flow is a [fast blockchain] with the design goal of 1,000,000 transactions per second.
 
 <!-- Relative links, will not render on page -->
+
 [Secure Randomness with Commit-Reveal in Cadence]: ./commit-reveal-cadence.md
 [VRF (Randomness) in Solidity]: ./vrf-in-solidity.md
 [Deploy a Solidity Contract Using Cadence]: ./deploy-solidity-contract.md
 [VRF (Randomness) in Solidity]: ./vrf-in-solidity.md
 [fast blockchain]: https://flow.com/core-protocol-vision
-
-
-
