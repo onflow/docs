@@ -243,5 +243,5 @@ As blockchain technology continues to evolve, adopting these best practices is c
 [remix]: https://remix.ethereum.org/
 [coa-guide]: https://developers.flow.com/evm/cadence/interacting-with-coa
 
-[overflow]: https://github.com/bjartek/overflow]
+[overflow]: https://github.com/bjartek/overflow
 [testnet-scanner]: https://evm-testnet.flowscan.io/
