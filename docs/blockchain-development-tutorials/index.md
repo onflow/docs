@@ -1,6 +1,6 @@
 ---
 sidebar_position: 1
-title: Flow Blockchain Development Tutorials
+title: Blockchain Development Tutorials
 description: Blockchain development tutorials to take advantage of the power of Flow with EVM and Cadence.
 keywords:
   - tutorials
