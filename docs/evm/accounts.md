@@ -64,6 +64,6 @@ Because COAs are owned by Cadence resources, an EVM transaction is not required 
 
 ### More Information
 
-To learn how to create and interact with COAs in Cadence, see the guide for [Interacting with COAs from Cadence](../tutorials/cross-vm-apps/interacting-with-coa.md).
+To learn how to create and interact with COAs in Cadence, see the guide for [Interacting with COAs from Cadence](../blockchain-development-tutorials/cross-vm-apps/interacting-with-coa.md).
 
 For more information about Cadence Owned Accounts, see the [Flow EVM Support FLIP](https://github.com/onflow/flips/pull/225/files)

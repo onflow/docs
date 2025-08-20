@@ -359,7 +359,7 @@ Ready to unlock the full potential of Flow EVM? Start with our [Batched Transact
 [private key]: https://support.metamask.io/configure/accounts/how-to-export-an-accounts-private-key/
 [ERC-20]: https://ethereum.org/en/developers/docs/standards/tokens/erc-20/
 [testnet Flowscan]: https://evm-testnet.flowscan.io/
-[Cross-VM Apps]: ../tutorials/cross-vm-apps/introduction.md
-[Batched Transactions]: ../tutorials/cross-vm-apps/introduction.md
+[Cross-VM Apps]: ../blockchain-development-tutorials/cross-vm-apps/introduction.md
+[Batched Transactions]: ../blockchain-development-tutorials/cross-vm-apps/introduction.md
 [OpenZeppelin Contracts]: https://www.openzeppelin.com/contracts
 [Cadence-Owned Accounts]: ./accounts.md#cadence-owned-accounts

@@ -27,7 +27,7 @@ assets are safely bridged between the Cadence and EVM Flow Environments.
 
 There are many important contracts deployed to the bridge account.
 You should refer to [the bridge repo](https://github.com/onflow/flow-evm-bridge)
-and [the bridge guides](../../tutorials/cross-vm-apps/vm-bridge.md)
+and [the bridge guides](../../blockchain-development-tutorials/cross-vm-apps/vm-bridge.md)
 for more detailed information about the bridge and tutorials for how to use the bridge properly.
 
 Here is a list of each Cadence contract used for the bridge:
@@ -73,7 +73,7 @@ Here are their addresses:
 | `FlowEVMBridgedERC20Deployer.sol`     | [`0x4d45CaD104A71D19991DE3489ddC5C7B284cf263`](https://evm-testnet.flowscan.io/address/0x4d45CaD104A71D19991DE3489ddC5C7B284cf263) | [`0x49631Eac7e67c417D036a4d114AD9359c93491e7`](https://evm.flowscan.io/address/0x49631Eac7e67c417D036a4d114AD9359c93491e7) |
 | `FlowEVMBridgedERC721Deployer.sol`    | [`0x1B852d242F9c4C4E9Bb91115276f659D1D1f7c56`](https://evm-testnet.flowscan.io/address/0x1B852d242F9c4C4E9Bb91115276f659D1D1f7c56) | [`0xe7c2B80a9de81340AE375B3a53940E9aeEAd79Df`](https://evm.flowscan.io/address/0xe7c2B80a9de81340AE375B3a53940E9aeEAd79Df) |
 
-And below are the bridge escrow's EVM addresses. These addresses are [`CadenceOwnedAccount`s (COA)](https://developers.flow.com/tutorials/cross-vm-apps/interacting-with-coa#coa-interface) and they are stored stored in the same Flow account as you'll find the Cadence contracts (see above).
+And below are the bridge escrow's EVM addresses. These addresses are [`CadenceOwnedAccount`s (COA)](https://developers.flow.com/blockchain-development-tutorials/cross-vm-apps/interacting-with-coa#coa-interface) and they are stored stored in the same Flow account as you'll find the Cadence contracts (see above).
 
 | Network | Address                                                                                                                            |
 | ------- | ---------------------------------------------------------------------------------------------------------------------------------- |

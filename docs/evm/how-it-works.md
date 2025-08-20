@@ -122,7 +122,7 @@ These smart contract wallets are only deployable through the Cadence environment
 A COA is not controlled by a key. Instead, every COA account has a unique resource accessible on the Cadence side, and anyone who owns that resource submits transactions on behalf of this address. These direct transactions have COA’s EVM address as the `tx.origin` and a new EVM transaction type (`TxType = 0xff`) is used to differentiate these transactions from other types of EVM transactions (e.g, DynamicFeeTxType (`0x02`). Currently, to make integration and tracking of these transactions byte EVM ecosystem tools, these types of transactions are encoded as legacy EVM transactions (hash computation is based on legacy tx rlp encoding).
 Controlling through a resource makes a COA a powerful smart contract wallet. It makes the transfer of ownership of the EVM address super easy without the need to transfer all the assets that an EVM address owns. It also allows a Cadence smart contract to take ownership of an EVM address and makes fully decentralized exchange and bridges across environments possible.
 
-To learn more about how to interact with a COA from the Cadence side, [see here](../tutorials/cross-vm-apps/interacting-with-coa.md).
+To learn more about how to interact with a COA from the Cadence side, [see here](../blockchain-development-tutorials/cross-vm-apps/interacting-with-coa.md).
 
 ## Proofs
 

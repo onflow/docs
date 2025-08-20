@@ -158,11 +158,11 @@ The [FLOW] (or $FLOW) token is the native currency for the Flow network. Develop
 [Guide for Solidity Developers]: https://cadence-lang.org/docs/solidity-to-cadence
 [account abstraction]: https://flow.com/account-abstraction
 [bridge]: ../ecosystem/bridges.md
-[cross-vm apps]: ../tutorials/cross-vm-apps/index.md
+[cross-vm apps]: ../blockchain-development-tutorials/cross-vm-apps/index.md
 [Getting Started]: ./getting-started/contract-interaction.md
 [core contracts]: ./core-contracts/index.md
 [FLOW]: ./core-contracts/03-flow-token.md
 [Flow Technical Primer]: https://www.flow.com/primer
 [Three technical whitepapers]: https://www.flow.com/technical-paper
 [Flow Token Economics]: https://www.flow.com/flow-token-economics
-[VRF]: ../tutorials/native-vrf/vrf-in-solidity.md
+[VRF]: ../blockchain-development-tutorials/native-vrf/vrf-in-solidity.md
