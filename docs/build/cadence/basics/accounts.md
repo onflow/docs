@@ -21,7 +21,7 @@ keywords:
 
 :::info
 
-Are you an EVM developer looking for information about EVM Accounts on Flow? If so, check out the EVM specific documentation [here](../../../evm/accounts.md)
+Are you an EVM developer looking for information about EVM Accounts on Flow? If so, check out the EVM specific documentation [here](../../../build/evm/accounts.md)
 
 :::
 

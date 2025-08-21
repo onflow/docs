@@ -1402,6 +1402,11 @@
       "source": "/build/:path*",
       "destination": "/build/cadence/:path*",
       "permanent": true
+    },
+    {
+      "source": "/evm/:path*",
+      "destination": "/build/evm/:path*",
+      "permanent": true
     }
   ]
 }

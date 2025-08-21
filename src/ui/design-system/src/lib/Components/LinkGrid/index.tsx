@@ -31,7 +31,7 @@ const sections: LinkGridSection[] = [
         title: 'App Architecture',
         href: '/build/cadence/getting-started/app-architecture',
       },
-      { title: 'EVM', href: '/evm/about' },
+      { title: 'EVM', href: '/build/evm/about' },
       { title: 'Flownaut', href: 'https://flownaut.ecdao.org/en' },
       { title: 'Playground', href: 'https://play.flow.com/' },
       {

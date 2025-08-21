@@ -6,7 +6,7 @@ sidebar_position: 7
 
 :::info
 
-Are you a Cadence developer looking for information about Accounts on Cadence? If so, check out the Cadence specific documentation [here](../build/cadence/basics/accounts.md)
+Are you a Cadence developer looking for information about Accounts on Cadence? If so, check out the Cadence specific documentation [here](../cadence/basics/accounts.md)
 
 :::
 
@@ -48,7 +48,7 @@ COAs create powerful new opportunities to improve the UX, functionality and util
 
 - **Atomic Interactions**: Developers are able to execute multiple EVM transactions atomically from a COA. This is particularly useful for applications that require multiple transactions to be executed within a single block, or require all prior transactions' state changes to revert if a single transaction in the batch fails. This is not possible natively using EOAs or with `UserOperations` when using the ERC-4337 standard; in both cases each individual transaction is distinct and cannot be reverted back once state has changed.
 
-- **Native Account Abstraction**: COAs are controlled by Cadence resources, which are in turn owned by Flow accounts. [Flow accounts](./accounts.md) have built-in support for multi-signature authentication, key rotation, and account recovery. As a Cadence resource, COAs naturally inherit [these features](../build/cadence/advanced-concepts/account-abstraction.md).
+- **Native Account Abstraction**: COAs are controlled by Cadence resources, which are in turn owned by Flow accounts. [Flow accounts](./accounts.md) have built-in support for multi-signature authentication, key rotation, and account recovery. As a Cadence resource, COAs naturally inherit [these features](../cadence/advanced-concepts/account-abstraction.md).
 
 - **Fine-Grained Access Control**: As Cadence resources, access to a COA can be governed by more sophisticated policies than those available with basic EVM accounts. By utilizing powerful Cadence access control primitives such as [capabilities and entitlements](https://cadence-lang.org/docs/language/access-control), developers can restrict who is able to interact with a COA and what actions they are permitted to perform.
 
@@ -64,6 +64,6 @@ Because COAs are owned by Cadence resources, an EVM transaction is not required 
 
 ### More Information
 
-To learn how to create and interact with COAs in Cadence, see the guide for [Interacting with COAs from Cadence](../blockchain-development-tutorials/cross-vm-apps/interacting-with-coa.md).
+To learn how to create and interact with COAs in Cadence, see the guide for [Interacting with COAs from Cadence](../../blockchain-development-tutorials/cross-vm-apps/interacting-with-coa.md).
 
 For more information about Cadence Owned Accounts, see the [Flow EVM Support FLIP](https://github.com/onflow/flips/pull/225/files)

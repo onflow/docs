@@ -63,7 +63,7 @@ npm install
 
 ## Step 2: Configuring Wagmi and Connecting the Wallet
 
-Make sure you have Metamask installed and Flow network configured. [Metamask and Flow blockchain](/evm/using).
+Make sure you have Metamask installed and Flow network configured. [Metamask and Flow blockchain](../using.mdx).
 Wagmi needs to know what networks to be aware of. Let's configure to use Flow Testnet by updating config.ts file with the following:
 
 ```javascript
@@ -83,14 +83,14 @@ export const config = createConfig({
 By default Wagmi configures many wallets, MetaMask, Coinbase Wallet, and WalletConnect as wallet providers. Above we simplify the code to only be interested in the Injected Provider, which we are interested in Metamask. Verify `page.tsx` code looks like the following.
 
 ```javascript
-'use client'
+'use client';
 
-import { useAccount, useConnect, useDisconnect } from 'wagmi'
+import { useAccount, useConnect, useDisconnect } from 'wagmi';
 
 function App() {
-  const account = useAccount()
-  const { connectors, connect, status, error } = useConnect()
-  const { disconnect } = useDisconnect()
+  const account = useAccount();
+  const { connectors, connect, status, error } = useConnect();
+  const { disconnect } = useDisconnect();
 
   return (
     <>
@@ -127,11 +127,10 @@ function App() {
         <div>{error?.message}</div>
       </div>
     </>
-  )
+  );
 }
 
-export default App
-
+export default App;
 ```
 
 ![Connect Metamask](./Connect-Metamask.gif)

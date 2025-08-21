@@ -270,14 +270,8 @@ const config = {
           {
             to: 'build/flow',
             position: 'left',
-            label: 'Cadence',
+            label: 'Build',
             activeBasePath: '/build',
-          },
-          {
-            to: 'evm/about',
-            position: 'left',
-            label: 'EVM',
-            activeBasePath: '/evm',
           },
           {
             to: 'tools/react-sdk',
@@ -422,7 +416,7 @@ const config = {
                 label: 'Core Contracts & Standards',
               },
               {
-                href: '/evm/about',
+                href: '/build/evm/about',
                 label: 'EVM',
               },
             ],

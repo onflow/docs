@@ -19,7 +19,7 @@ const CATEGORIES = [
   {
     title: 'EVM',
     links: [
-      { label: 'Why EVM on Flow', href: '/evm/about' },
+      { label: 'Why EVM on Flow', href: '/build/evm/about' },
       { label: 'How it Works', href: '/evm/how-it-works' },
       { label: 'Using Flow EVM', href: '/evm/using' },
       { label: 'Network Information', href: '/evm/networks' },

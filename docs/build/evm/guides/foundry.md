@@ -229,7 +229,7 @@ forge verify-contract --rpc-url https://testnet.evm.nodes.onflow.org/ \
     --verifier-url https://evm-testnet.flowscan.io/api \
     $DEPLOYED_MYTOKEN_ADDRESS \
     src/MyToken.sol:MyToken
-````
+```
 
 :::info
 

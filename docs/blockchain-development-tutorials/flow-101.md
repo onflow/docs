@@ -65,7 +65,7 @@ import { ActionCard } from '@site/src/components/ActionCard';
     cardColor="black"
     heading="Build with Solidity"
     description="Deploy Solidity contracts on Flow EVM using familiar Ethereum tools like Hardhat and Foundry. Start building EVM-compatible dApps on Flow."
-    href="../evm/quickstart"
+    href="../build/evm/quickstart"
   />
 </div>
 
@@ -201,8 +201,8 @@ We also have guides for working with [Rainbowkit] and [wagmi].
 [Contract Interaction]: ../build/cadence/getting-started/contract-interaction.md
 [Local Development]: ../build/cadence/getting-started/flow-cli.md
 [Simple Frontend]: ../build/cadence/getting-started/fcl-quickstart.md
-[EVM Quickstart]: ../evm/quickstart.md
+[EVM Quickstart]: ../build/evm/quickstart.md
 [Testnet Flowscan]: https://evm-testnet.flowscan.io/
-[Foundry]: ../evm/guides/foundry.md
-[Rainbowkit]: ../evm/guides/rainbowkit.md
-[wagmi]: ../evm/guides/wagmi.md
+[Foundry]: ../build/evm/guides/foundry.md
+[Rainbowkit]: ../build/evm/guides/rainbowkit.md
+[wagmi]: ../build/evm/guides/wagmi.md

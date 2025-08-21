@@ -7,7 +7,7 @@ sidebar_position: 1
 
 :::note
 
-This page provides information on Flow network RPCs. Flow EVM network RPCs can be found [here](../evm/networks)
+This page provides information on Flow network RPCs. Flow EVM network RPCs can be found [here](../../build/evm/networks)
 
 :::
 

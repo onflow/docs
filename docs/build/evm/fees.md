@@ -6,11 +6,11 @@ sidebar_position: 6
 
 :::info
 
-Are you a Cadence developer looking for information about Fees on Cadence? If so, check out the Cadence specific documentation [here](../build/cadence/basics/fees.md)
+Are you a Cadence developer looking for information about Fees on Cadence? If so, check out the Cadence specific documentation [here](../cadence/basics/fees.md)
 
 :::
 
-EVM transactions are ultra low-cost and use the native FLOW token as gas. [Externally Owned Accounts (EOAs)](https://developers.flow.com/evm/build/cadence/accounts) function the same on Flow as other EVM networks like Ethereum.
+EVM transactions are ultra low-cost and use the native FLOW token as gas. [Externally Owned Accounts (EOAs)](./accounts.md) function the same on Flow as other EVM networks like Ethereum.
 
 <details>
 <summary><h2>How Transaction Fees are Computed on EVM</h2></summary>
@@ -99,6 +99,6 @@ Transaction fee = [1E-6 FLOW + (110.97 * 2.49E-07 FLOW)] x 1 = 6.55E-06 FLOW
 
 ## Gasless Transactions
 
-Fees needed to execute transactions on a Web3 app are often a major challenge for new users and can be a barrier to adoption. Builders can easily extend their apps with Cadence to create ‘gasless’ experiences by specifying their app as the [sponsor](../build/cadence/advanced-concepts/account-abstraction.md#sponsored-transactions) instead of the user.
+Fees needed to execute transactions on a Web3 app are often a major challenge for new users and can be a barrier to adoption. Builders can easily extend their apps with Cadence to create ‘gasless’ experiences by specifying their app as the [sponsor](../cadence/advanced-concepts/account-abstraction.md#sponsored-transactions) instead of the user.
 
 To learn more about storage fee and transaction fee, visit [Flow Tokenomics page](https://flow.com/flow-tokenomics/technical-overview).

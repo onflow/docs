@@ -4,7 +4,7 @@ sidebar_label: Interacting with COAs
 sidebar_position: 4
 ---
 
-[Cadence Owned Accounts (COAs)](../../evm/accounts.md#cadence-owned-accounts) are EVM accounts owned by a Cadence resource and
+[Cadence Owned Accounts (COAs)](../../build/evm/accounts.md#cadence-owned-accounts) are EVM accounts owned by a Cadence resource and
 are used to interact with Flow EVM from Cadence.
 
 COAs expose two interfaces for interaction: one on the Cadence side and one on the EVM side. In this guide, we will
@@ -625,7 +625,7 @@ transaction(bytecode: String) {
 
 ## More Information
 
-For more information about Cadence Owned Accounts, see [Flow EVM Accounts](../../evm/accounts.md).
+For more information about Cadence Owned Accounts, see [Flow EVM Accounts](../../build/evm/accounts.md).
 
 Other useful snippets for interacting with COAs can be found [here](https://fw-internal-doc.gitbook.io/evm).
 

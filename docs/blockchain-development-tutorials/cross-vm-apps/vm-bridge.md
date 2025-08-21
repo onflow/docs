@@ -62,7 +62,7 @@ as you'll find the Cadence contracts (see above).
 All bridging activity in either direction is orchestrated via Cadence on COA EVM accounts. This means that all bridging
 activity must be initiated via a Cadence transaction, not an EVM transaction regardless of the directionality of the
 bridge request. For more information on the interplay between Cadence and EVM, see [How Flow EVM
-Works](../../evm/how-it-works.md).
+Works](../../build/evm/how-it-works.md).
 
 :::
 

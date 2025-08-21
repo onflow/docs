@@ -54,7 +54,7 @@ export const buildGridData = {
           cardColor: 'black',
           icon: 'evm-on-flow',
           variant: 'horizontal',
-          href: '/evm/about',
+          href: '/build/evm/about',
         },
         {
           heading: 'Integrate native VRF in 3 lines',

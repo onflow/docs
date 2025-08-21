@@ -90,4 +90,4 @@ In the next section, lets look at how Flow multi-role architecture solves those 
 [user safety]: ./user-safety.md
 [MEV-resistance]: ../../build/cadence/basics/mev-resistance.md
 [account abstraction]: ../../build/cadence/basics/accounts.md
-[EVM equivalence]: ../../evm/about.md
+[EVM equivalence]: ../../build/evm/about.md

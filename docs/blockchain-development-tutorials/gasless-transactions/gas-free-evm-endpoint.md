@@ -95,7 +95,7 @@ The implementation requires careful setup of a service account with sufficient k
 
 Remember that this solution is most effective when you can ensure all user transactions are routed through your custom RPC endpoint. This makes it particularly suitable for centralized services and applications where you have control over the transaction routing.
 
-[Using Flow EVM]: ../../evm/using.mdx
+[Using Flow EVM]: ../../build/evm/using.mdx
 [EVM Gateway]: https://github.com/onflow/flow-evm-gateway
 [transaction model]: ../../build/cadence/basics/transactions.md#Payer
 [Custom EVM Gateway]: ../../networks/node-ops/evm-gateway/evm-gateway-setup.md

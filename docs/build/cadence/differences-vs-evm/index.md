@@ -206,7 +206,7 @@ If you're already familiar with blockchain development, here's a comparison betw
 <!-- Relative-style links.  Does not render on the page -->
 
 [Why Flow]: ../../flow.md
-[EVM]: ../../../evm/about.md
+[EVM]: ../../../build/evm/about.md
 [accounts on Ethereum]: https://ethereum.org/en/developers/docs/accounts
 [Flow CLI]: ../../../tools/flow-cli/accounts/create-accounts.md
 [very small fee]: ../basics/fees.md#fee-structure
