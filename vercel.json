@@ -1399,10 +1399,54 @@
       "permanent": true
     },
     {
-      "source": "/build/(?!cadence|flow)(.*)",
-      "destination": "/build/cadence/$1",
+      "source": "/build/getting-started/:path*",
+      "destination": "/build/cadence/getting-started/:path*",
       "permanent": true
     },
+    {
+      "source": "/build/differences-vs-evm",
+      "destination": "/build/cadence/differences-vs-evm",
+      "permanent": true
+    },
+    {
+      "source": "/build/basics/:path*",
+      "destination": "/build/cadence/basics/:path*",
+      "permanent": true
+    },
+    {
+      "source": "/build/app-architecture",
+      "destination": "/build/cadence/app-architecture",
+      "permanent": true
+    },
+    {
+      "source": "/build/smart-contracts/:path*",
+      "destination": "/build/cadence/smart-contracts/:path*",
+      "permanent": true
+    },
+    {
+      "source": "/build/advanced-concepts/:path*",
+      "destination": "/build/cadence/advanced-concepts/:path*",
+      "permanent": true
+    },
+    {
+      "source": "/build/guides/:path*",
+      "destination": "/build/cadence/guides/:path*",
+      "permanent": true
+    },
+    {
+      "source": "/build/core-contracts/:path*",
+      "destination": "/build/cadence/core-contracts/:path*",
+      "permanent": true
+    },
+    {
+      "source": "/build/explore-more",
+      "destination": "/build/cadence/explore-more",
+      "permanent": true
+    },
+    {
+      "source": "/build/guides/nft",
+      "destination": "/build/cadence/guides/nft",
+    }
     {
       "source": "/evm/:path*",
       "destination": "/build/evm/:path*",
