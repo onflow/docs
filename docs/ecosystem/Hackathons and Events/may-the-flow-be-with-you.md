@@ -10,32 +10,30 @@ import { useProgress } from "@site/src/hooks/use-progress";
 import ProfileModal from "@site/src/components/ProfileModal";
 
 export const ProfileLink = () => {
-  const [isProfileModalOpen, setIsProfileModalOpen] = React.useState(false);
-  const { user } = useCurrentUser();
-  
-  return (
-    <>
-      <h3 
-        className="text-xl font-bold mb-4 text-blue-700 dark:text-blue-400 cursor-pointer hover:underline inline-flex items-center" 
-        onClick={() => setIsProfileModalOpen(true)}
-      >
-        Create Your Profile
-        <svg className="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
-        </svg>
-      </h3>
-      <ProfileModal
-        isOpen={isProfileModalOpen}
-        onClose={() => setIsProfileModalOpen(false)}
-      />
-    </>
-  );
+const [isProfileModalOpen, setIsProfileModalOpen] = React.useState(false);
+const { user } = useCurrentUser();
+
+return (
+<>
+<h3
+className="text-xl font-bold mb-4 text-blue-700 dark:text-blue-400 cursor-pointer hover:underline inline-flex items-center"
+onClick={() => setIsProfileModalOpen(true)} >
+Create Your Profile
+<svg className="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+<path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+</svg>
+</h3>
+<ProfileModal
+isOpen={isProfileModalOpen}
+onClose={() => setIsProfileModalOpen(false)}
+/>
+</>
+);
 };
 
 # May the Flow be with You!
 
 Join us for a month-long vibe coding challenge on Flow! Starting May 4th, participate in our four themed weeks featuring randomness, games, DeFi, and killer apps. Submit your AI-enhanced projects to win weekly prizes from the <strong>1750 FLOW weekly prize pool</strong> and compete for the end-of-month jackpot of <strong>2500 FLOW</strong>.
-
 
 ## How to Participate
 
@@ -106,7 +104,7 @@ Join us for a month-long vibe coding challenge on Flow! Starting May 4th, partic
     <div className="mt-4 bg-indigo-50 dark:bg-indigo-900/20 p-3 rounded">
       <h4 className="font-semibold text-indigo-700 dark:text-indigo-400 mb-2">Useful Resources:</h4>
       <ul className="space-y-1 text-sm">
-        <li><a href="https://developers.flow.com/tutorials/use-AI-to-build-on-flow/cursor" target="_blank" rel="noopener noreferrer" className="text-indigo-600 dark:text-indigo-400 hover:underline">How to setup cursor with developer docs for optimal vibe coding</a></li>
+        <li><a href="https://developers.flow.com/blockchain-development-tutorials/use-AI-to-build-on-flow/cursor" target="_blank" rel="noopener noreferrer" className="text-indigo-600 dark:text-indigo-400 hover:underline">How to setup cursor with developer docs for optimal vibe coding</a></li>
         <li><a href="https://randoms.wtf/ " target="_blank" rel="noopener noreferrer" className="text-indigo-600 dark:text-indigo-400 hover:underline">"Live app </a> built using Flow random and  <a href="https://github.com/Aliserag/random.wtf " target="_blank" rel="noopener noreferrer" className="text-indigo-600 dark:text-indigo-400 hover:underline"> GitHub</a></li>
         <li><a href="https://developers.flow.com/evm/guides/vrf " target="_blank" rel="noopener noreferrer" className="text-indigo-600 dark:text-indigo-400 hover:underline">Implement Randomness with Solidity in 3 min</a></li>
       </ul>
@@ -212,6 +210,7 @@ Your profile and GitHub information are used to verify commits and select winner
 :::
 
 ### Submission Guidelines
+
 - Each submission should demonstrate meaningful progress
 - Weekly winners receive prizes from the 1750 FLOW pool (7 winners)
 - More submissions in a week increase your chances of winning
@@ -220,6 +219,7 @@ Your profile and GitHub information are used to verify commits and select winner
 ## How It Works
 
 ### Weekly Rewards
+
 - Build projects aligned with each week's theme:
   - Week 1: The Randomness Revolution
   - Week 2-4: Themes to be announced weekly
@@ -227,12 +227,13 @@ Your profile and GitHub information are used to verify commits and select winner
 - Each submission during a week counts as an entry into that week's raffle
 - More projects submitted in a week = higher chances of winning
 - Projects that best embody the weekly theme receive additional consideration
-- 1750 FLOW distributed to 7 winners each week (~250 FLOW each) 
+- 1750 FLOW distributed to 7 winners each week (~250 FLOW each)
 - Winners are chosen using [randoms.wtf](https://randoms.wtf/)
 - Winners are announced from [@aliserag0](https://twitter.com/aliserag0) Twitter account
 - FLOW prizes are sent to the top wallet address indicated in your profile
 
 ### Weekly Building in Public Bonus
+
 - Share your progress on Twitter with the hashtag #MayTheFlowBeWithYou
 - Tag @flow_blockchain in your posts
 - Top builders receive additional FLOW rewards
@@ -245,6 +246,7 @@ Sharing your progress publicly unlocks extra rewards and increases your chances 
 In addition to the weekly rewards, we will regularly give bonus FLOW to the top Building in Public posts on X.
 
 1. **Share your progress daily on X (Twitter)**
+
    - Post screenshots, videos, or code snippets of what you're building
    - Tag [@flow_blockchain](https://twitter.com/flow_blockchain) and include the hashtag **#MayTheFlowBeWithYou**
    - Link to your repository
@@ -259,6 +261,7 @@ In addition to the weekly rewards, we will regularly give bonus FLOW to the top 
 Check this section daily to see all winners announced so far!
 
 ### Week 1: The Randomness Revolution
+
 - Egg's Wisdom - 0x2ff409478f92e8bd
 - ElementalStrikers - 0xc65395858a38d8ff
 - Wheel of Fortune - 0xe712bbfbeeef1cfa
@@ -268,39 +271,42 @@ Check this section daily to see all winners announced so far!
 - Random Game (Phaser) - 0x9db94c9564243ba7
 
 ### Week 2: Actually Fun Games
-- Ace Guessing Game - 0xa620a02c4cc2d20d 
-- ElementalStrikers - 0xc65395858a38d8ff 
-- Click to the Moon - 0xe712bbfbeeef1cfa 
-- The Doodles Memorizer  - 0x9f7145728ef9ae10 
-- Emoji Chain Reaction - 0x6c1b12e35dca8863 
-- FrogDash - 0xe35f688520e4a2c3 
+
+- Ace Guessing Game - 0xa620a02c4cc2d20d
+- ElementalStrikers - 0xc65395858a38d8ff
+- Click to the Moon - 0xe712bbfbeeef1cfa
+- The Doodles Memorizer - 0x9f7145728ef9ae10
+- Emoji Chain Reaction - 0x6c1b12e35dca8863
+- FrogDash - 0xe35f688520e4a2c3
 - FlowVerse - 0x1E78b3F3550889e90EcE152ab6bbCb8d9E7Dd221
 
 ### Week 3: Generative Art & Worlds
-- Flow Craps - 0x9db94c9564243ba7 
-- Doodles NFT Mutator - 0x9f7145728ef9ae10 
-- Generative Tarot Card AI - 0xe712bbfbeeef1cfa 
-- FlowGating  - 0x94b619cc671a3734 
-- Evolving Creatures - 0xc65395858a38d8ff 
+
+- Flow Craps - 0x9db94c9564243ba7
+- Doodles NFT Mutator - 0x9f7145728ef9ae10
+- Generative Tarot Card AI - 0xe712bbfbeeef1cfa
+- FlowGating - 0x94b619cc671a3734
+- Evolving Creatures - 0xc65395858a38d8ff
 - Flow Persona - 0x1E78b3F3550889e90EcE152ab6bbCb8d9E7Dd221
 - Game of Life - 0x0000000000000000000000021DD51488A93756E2
 
 ### Week 3: Generative Art and Worlds
+
 Tasneem - 0x0000000000000000000000021DD51488A93756E2
 Zhixuan - 0x9f7145728ef9ae10
 Tobin - 0xe712bbfbeeef1cfa
-NileDEX - 0x94b619cc671a3734 
+NileDEX - 0x94b619cc671a3734
 Ccarnicle - 0x9db94c9564243ba7
 Claucondor - 0xc65395858a38d8ff
 Pandit - 0x1E78b3F3550889e90EcE152ab6bbCb8d9E7Dd221
 
-
 ### Week 4: AI & LLMs
-Claucondor  - 0xc65395858a38d8ff
-AlexD-Great  - 0x9701b128fd2017f8
+
+Claucondor - 0xc65395858a38d8ff
+AlexD-Great - 0x9701b128fd2017f8
 Pranav - 0x17b3b1e6b16965f3
 AltcoinDaddy - 0x6c1b12e35dca8863
-Tobin  - 0xe712bbfbeeef1cfa
+Tobin - 0xe712bbfbeeef1cfa
 Pandit - 0x1E78b3F3550889e90EcE152ab6bbCb8d9E7Dd221
 Zhixuan - 0x9f7145728ef9ae10
 
@@ -313,23 +319,22 @@ Winners are announced on the [@flow_blockchain](https://x.com/flow_blockchain) T
 import { useState } from 'react';
 
 export const FAQ = ({ question, children }) => {
-  const [isOpen, setIsOpen] = useState(false);
-  return (
-    <div className="mb-4">
-      <button
-        className="flex justify-between w-full px-4 py-3 bg-card rounded-lg text-left font-medium hover:bg-opacity-80 transition-all focus:outline-none"
-        onClick={() => setIsOpen(!isOpen)}
-      >
-        <span>{question}</span>
-        <span className="transform transition-transform duration-200" style={{ transform: isOpen ? 'rotate(180deg)' : 'rotate(0deg)' }}>
-          ▼
-        </span>
-      </button>
-      {isOpen && (
-        <div className="px-4 py-3 mt-1 bg-card bg-opacity-50 rounded-lg">{children}</div>
-      )}
-    </div>
-  );
+const [isOpen, setIsOpen] = useState(false);
+return (
+<div className="mb-4">
+<button
+className="flex justify-between w-full px-4 py-3 bg-card rounded-lg text-left font-medium hover:bg-opacity-80 transition-all focus:outline-none"
+onClick={() => setIsOpen(!isOpen)} >
+<span>{question}</span>
+<span className="transform transition-transform duration-200" style={{ transform: isOpen ? 'rotate(180deg)' : 'rotate(0deg)' }}>
+▼
+</span>
+</button>
+{isOpen && (
+<div className="px-4 py-3 mt-1 bg-card bg-opacity-50 rounded-lg">{children}</div>
+)}
+</div>
+);
 };
 
 <FAQ question="How are winners selected?">

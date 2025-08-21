@@ -187,8 +187,8 @@ We also have guides for working with [Rainbowkit] and [wagmi].
 [NBA Top Shot]: https://nbatopshot.com/
 [Disney Pinnacle]: https://disneypinnacle.com/
 [CryptoKitties: AllTheZen]: https://allthezen.cryptokitties.co/
-[Learn more]: https://developers.flow.com/tutorials/native-vrf
-[Explore the tutorial]: https://developers.flow.com/tutorials/cross-vm-apps/introduction
+[Learn more]: https://developers.flow.com/blockchain-development-tutorials/native-vrf
+[Explore the tutorial]: https://developers.flow.com/blockchain-development-tutorials/cross-vm-apps/introduction
 [Read the guide]: https://developers.flow.com/build/cadence/guides/account-linking-with-dapper
 [Connect to Testnet]: https://developers.flow.com/networks/flow-networks/accessing-testnet
 [Connect to Mainnet]: https://developers.flow.com/networks/flow-networks/accessing-mainnet

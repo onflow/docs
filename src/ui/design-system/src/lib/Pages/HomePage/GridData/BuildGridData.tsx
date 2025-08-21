@@ -17,7 +17,7 @@ export const buildGridData = {
           cardColor: 'black',
           icon: 'why-flow',
           variant: 'horizontal',
-          href: '/build/cadence/flow',
+          href: '/build/flow',
         },
         {
           heading: 'Query state and run transactions',
@@ -64,7 +64,7 @@ export const buildGridData = {
           cardColor: 'black',
           icon: 'random',
           variant: 'horizontal',
-          href: '/tutorials/native-vrf/vrf-in-solidity',
+          href: '../blockchain-development-tutorials/native-vrf/vrf-in-solidity',
         },
         {
           heading: 'Native batched transactions',
@@ -74,7 +74,7 @@ export const buildGridData = {
           cardColor: 'black',
           icon: 'batched-evm-transactions',
           variant: 'horizontal',
-          href: '/tutorials/cross-vm-apps',
+          href: '../blockchain-development-tutorials/cross-vm-apps',
           target: '_blank',
         },
       ],

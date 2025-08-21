@@ -84,12 +84,12 @@ const CATEGORIES = [
     title: 'Tutorials',
     links: [
       { label: 'Tutorials', href: '/tutorials' },
-      { label: 'Use AI To Build On Flow', href: '/tutorials/use-AI-to-build-on-flow' },
-      { label: 'Gasless Transactions', href: '/tutorials/gasless-transactions' },
-      { label: 'Token Launch', href: '/tutorials/token-launch' },
-      { label: 'Cross-VM Apps', href: '/tutorials/cross-vm-apps' },
-      { label: 'FlowtoBooth', href: '/tutorials/flowtobooth' },
-      { label: 'Native VRF', href: '/tutorials/native-vrf' },
+      { label: 'Use AI To Build On Flow', href: '/blockchain-development-tutorials/use-AI-to-build-on-flow' },
+      { label: 'Gasless Transactions', href: '/blockchain-development-tutorials/gasless-transactions' },
+      { label: 'Token Launch', href: '/blockchain-development-tutorials/token-launch' },
+      { label: 'Cross-VM Apps', href: '/blockchain-development-tutorials/cross-vm-apps' },
+      { label: 'FlowtoBooth', href: '/blockchain-development-tutorials/flowtobooth' },
+      { label: 'Native VRF', href: '/blockchain-development-tutorials/native-vrf' },
     ],
   },
 ];
