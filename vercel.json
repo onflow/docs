@@ -1392,6 +1392,16 @@
       "source": "/tutorials/:path*",
       "destination": "/blockchain-development-tutorials/:path*",
       "permanent": true
+    },
+    {
+      "source": "/growth",
+      "destination": "/ecosystem/project-growth",
+      "permanent": true
+    },
+    {
+      "source": "/build/:path*",
+      "destination": "/build/cadence/:path*",
+      "permanent": true
     }
   ]
 }
