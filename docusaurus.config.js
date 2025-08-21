@@ -298,12 +298,6 @@ const config = {
             activeBasePath: '/ecosystem',
           },
           {
-            to: 'growth',
-            position: 'left',
-            label: 'Growth',
-            activeBasePath: '/growth',
-          },
-          {
             to: 'blockchain-development-tutorials',
             position: 'left',
             label: 'Tutorials',
