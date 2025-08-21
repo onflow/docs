@@ -75,7 +75,7 @@ If you are using a custody provider who controls your account and private keys f
 
 ### Starting a Manual Staking Transaction
 
-1.  You need to have FLOW in order to stake. Please see the [FLOW Token](../../build//core-contracts//03-flow-token.md) reference for information on how to become a FLOW holder.
+1.  You need to have FLOW in order to stake. Please see the [FLOW Token](../../build/cadence//core-contracts//03-flow-token.md) reference for information on how to become a FLOW holder.
 
 2.  Once you have FLOW tokens in your account, you can start staking through [Flow Port](https://port.flow.com/) or, if applicable, with your [custody provider](#staking-via-a-custody-provider).
 

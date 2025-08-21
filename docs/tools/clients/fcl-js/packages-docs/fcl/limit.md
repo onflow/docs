@@ -1,9 +1,9 @@
 ---
-title: "limit"
-description: "limit function documentation."
+title: 'limit'
+description: 'limit function documentation.'
 ---
 
-<!-- THIS DOCUMENT IS AUTO-GENERATED FROM [onflow/fcl/../sdk/src/build/build-limit.ts](https://github.com/onflow/fcl-js/tree/master/packages/fcl/../sdk/src/build/build-limit.ts). DO NOT EDIT MANUALLY -->
+<!-- THIS DOCUMENT IS AUTO-GENERATED FROM [onflow/fcl/../sdk/src/build/cadence/build-limit.ts](https://github.com/onflow/fcl-js/tree/master/packages/fcl/../sdk/src/build/cadence/build-limit.ts). DO NOT EDIT MANUALLY -->
 
 # limit
 
@@ -19,23 +19,23 @@ Read more about [computation cost](https://docs.onflow.org/concepts/fees/#comput
 You can import the entire package and access the function:
 
 ```typescript
-import * as fcl from "@onflow/fcl"
+import * as fcl from '@onflow/fcl';
 
-fcl.limit(limit)
+fcl.limit(limit);
 ```
 
 Or import directly the specific function:
 
 ```typescript
-import { limit } from "@onflow/fcl"
+import { limit } from '@onflow/fcl';
 
-limit(limit)
+limit(limit);
 ```
 
 ## Usage
 
 ```typescript
-import * as fcl from "@onflow/fcl";
+import * as fcl from '@onflow/fcl';
 
 await fcl.mutate({
   cadence: `
@@ -45,7 +45,7 @@ await fcl.mutate({
       }
     }
   `,
-  limit: 1000 // Set compute limit to 1000
+  limit: 1000, // Set compute limit to 1000
 });
 
 // Using builder pattern
@@ -57,27 +57,24 @@ await fcl.send([
       }
     }
   `,
-  fcl.limit(9999) // Set higher limit for complex operations
+  fcl.limit(9999), // Set higher limit for complex operations
 ]);
 ```
 
 ## Parameters
 
-### `limit` 
-
+### `limit`
 
 - Type: `number`
 - Description: The maximum amount of computation for the transaction
-
 
 ## Returns
 
 ```typescript
 export type InteractionBuilderFn = (
-  ix: Interaction
-) => Interaction | Promise<Interaction>
+  ix: Interaction,
+) => Interaction | Promise<Interaction>;
 ```
-
 
 A function that processes an interaction object
 

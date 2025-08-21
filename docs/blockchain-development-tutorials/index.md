@@ -107,13 +107,12 @@ Explore Flow's unique capabilities through fun benchmark applications that showc
 
 - [Build a Fully-Onchain Image Gallery] - Create a fully onchain image gallery that demonstrates Flow's efficient storage capabilities
 
-
 ### Building in Web3 has never been easier
 
 Flow will continue to provide quality walkthroughs and tutorials to provide developers all of the tools needed to build the next generation of web3 apps on a fast blockchain, with built in randomness, gasless transactions, and AI integration.
 
-
 <!-- Reference-style links, will not render on page. -->
+
 [Flow Actions]: https://developers.flow.com/tutorials/defi
 [Introduction to Flow Actions]: ./defi/intro-to-flow-actions.md
 [Flow Actions Transactions]: https://developers.flow.com/tutorials/defi/flow-actions-transaction
@@ -137,7 +136,6 @@ Flow will continue to provide quality walkthroughs and tutorials to provide deve
 [Build a Fully-Onchain Image Gallery]: flowtobooth/image-gallery.md
 [Native VRF (Built-in Randomness) Tutorials]: https://developers.flow.com/tutorials/native-vrf
 [Secure Randomness with Commit-Reveal in Cadence]: native-vrf/commit-reveal-cadence.md
-[Deploy a Solidity Contract Using Cadence]: native-vrf/deploy-solidity-contract.md
 [VRF (Randomness) in Solidity]: native-vrf/vrf-in-solidity.md
 [Add Flow Cadence to Your wagmi App]: ./cross-vm-apps/add-to-wagmi.md
 [Token Launch]: https://developers.flow.com/tutorials/token-launch

@@ -1,9 +1,9 @@
 ---
-title: "proposer"
-description: "proposer function documentation."
+title: 'proposer'
+description: 'proposer function documentation.'
 ---
 
-<!-- THIS DOCUMENT IS AUTO-GENERATED FROM [onflow/fcl/../sdk/src/build/build-proposer.ts](https://github.com/onflow/fcl-js/tree/master/packages/fcl/../sdk/src/build/build-proposer.ts). DO NOT EDIT MANUALLY -->
+<!-- THIS DOCUMENT IS AUTO-GENERATED FROM [onflow/fcl/../sdk/src/build/cadence/build-proposer.ts](https://github.com/onflow/fcl-js/tree/master/packages/fcl/../sdk/src/build/cadence/build-proposer.ts). DO NOT EDIT MANUALLY -->
 
 # proposer
 
@@ -21,23 +21,23 @@ Read more about [transaction roles](https://docs.onflow.org/concepts/transaction
 You can import the entire package and access the function:
 
 ```typescript
-import * as fcl from "@onflow/fcl"
+import * as fcl from '@onflow/fcl';
 
-fcl.proposer(authz)
+fcl.proposer(authz);
 ```
 
 Or import directly the specific function:
 
 ```typescript
-import { proposer } from "@onflow/fcl"
+import { proposer } from '@onflow/fcl';
 
-proposer(authz)
+proposer(authz);
 ```
 
 ## Usage
 
 ```typescript
-import * as fcl from "@onflow/fcl";
+import * as fcl from '@onflow/fcl';
 
 // Using the current user as proposer
 await fcl.mutate({
@@ -48,7 +48,7 @@ await fcl.mutate({
       }
     }
   `,
-  proposer: fcl.authz
+  proposer: fcl.authz,
 });
 
 // Using builder pattern
@@ -63,28 +63,27 @@ await fcl.send([
   fcl.proposer(proposerAuthz),
   fcl.payer(payerAuthz),
   fcl.authorizations([authorizerAuthz]),
-  fcl.limit(100)
+  fcl.limit(100),
 ]);
 ```
 
 ## Parameters
 
-### `authz` 
+### `authz`
 
+- Type:
 
-- Type: 
 ```typescript
 export type AccountAuthorization =
   | (AuthorizationFn & Partial<InteractionAccount>)
-  | Partial<InteractionAccount>
+  | Partial<InteractionAccount>;
 ```
-- Description: The authorization object for the proposer
 
+- Description: The authorization object for the proposer
 
 ## Returns
 
 [`Interaction`](../types#interaction)
-
 
 A function that takes an interaction object and returns a new interaction object with the proposer added
 

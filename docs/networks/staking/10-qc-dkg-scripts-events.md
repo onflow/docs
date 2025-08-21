@@ -23,7 +23,7 @@ These scripts allow anyone to query information about the state of the QC contra
 ### Get Clusters
 
 To return a struct representing the information associated with a collector cluster,
-can use the **Get Cluster** ([QC.03](../../build/core-contracts/07-epoch-contract-reference.md#quorum-certificate-transactions-and-scripts)) script with the following argument:
+can use the **Get Cluster** ([QC.03](../../build/cadence/core-contracts/07-epoch-contract-reference.md#quorum-certificate-transactions-and-scripts)) script with the following argument:
 
 | Argument         | Type     | Description                       |
 | ---------------- | -------- | --------------------------------- |
@@ -32,12 +32,12 @@ can use the **Get Cluster** ([QC.03](../../build/core-contracts/07-epoch-contrac
 ### Get QC Enabled
 
 To return a boolean representing if the QC is enabled,
-can use the **Get QC Enabled** ([QC.04](../../build/core-contracts/07-epoch-contract-reference.md#quorum-certificate-transactions-and-scripts)) script with no arguments.
+can use the **Get QC Enabled** ([QC.04](../../build/cadence/core-contracts/07-epoch-contract-reference.md#quorum-certificate-transactions-and-scripts)) script with no arguments.
 
 ### Get Node Has Voted
 
 To return a boolean representing if a node has voted for the current QC, you
-can use the **Get Node Has Voted** ([QC.05](../../build/core-contracts/07-epoch-contract-reference.md#quorum-certificate-transactions-and-scripts)) script with the following argument:
+can use the **Get Node Has Voted** ([QC.05](../../build/cadence/core-contracts/07-epoch-contract-reference.md#quorum-certificate-transactions-and-scripts)) script with the following argument:
 
 | Argument   | Type     | Description              |
 | ---------- | -------- | ------------------------ |
@@ -46,34 +46,34 @@ can use the **Get Node Has Voted** ([QC.05](../../build/core-contracts/07-epoch-
 ### Get Voting Complete
 
 To return a boolean representing if the voting for the QC phase is complete,
-can use the **Get Voting Complete** ([QC.06](../../build/core-contracts/07-epoch-contract-reference.md#quorum-certificate-transactions-and-scripts)) script with no arguments.
+can use the **Get Voting Complete** ([QC.06](../../build/cadence/core-contracts/07-epoch-contract-reference.md#quorum-certificate-transactions-and-scripts)) script with no arguments.
 
 ## DKG Scripts
 
 ### Get DKG Enabled
 
 To return a boolean representing if the DKG is enabled, you
-can use the **Get DKG Enabled** ([DKG.04](../../build/core-contracts/07-epoch-contract-reference.md#dkg-transactions-and-scripts)) script with no arguments.
+can use the **Get DKG Enabled** ([DKG.04](../../build/cadence/core-contracts/07-epoch-contract-reference.md#dkg-transactions-and-scripts)) script with no arguments.
 
 ### Get DKG Completed
 
 To return a boolean representing if the dkg is complete, you
-can use the **Get DKG Complete** ([DKG.05](../../build/core-contracts/07-epoch-contract-reference.md#dkg-transactions-and-scripts)) script with no arguments.
+can use the **Get DKG Complete** ([DKG.05](../../build/cadence/core-contracts/07-epoch-contract-reference.md#dkg-transactions-and-scripts)) script with no arguments.
 
 ### Get Whiteboard Messages
 
 To return an array of structs representing all the whiteboard messages, you
-can use the **Get DKG Whiteboard Messages** ([DKG.06](../../build/core-contracts/07-epoch-contract-reference.md#dkg-transactions-and-scripts)) script with no arguments.
+can use the **Get DKG Whiteboard Messages** ([DKG.06](../../build/cadence/core-contracts/07-epoch-contract-reference.md#dkg-transactions-and-scripts)) script with no arguments.
 
 ### Get Final Submissions
 
 To return an array of key vectors for the nodes' final submissions, you
-can use the **Get Final Submissions** ([DKG.07](../../build/core-contracts/07-epoch-contract-reference.md#dkg-transactions-and-scripts)) script with no arguments.
+can use the **Get Final Submissions** ([DKG.07](../../build/cadence/core-contracts/07-epoch-contract-reference.md#dkg-transactions-and-scripts)) script with no arguments.
 
 ### Get Node Has Submitted
 
 To return a boolean representing if a node has sent their final submission for the DKG, you
-can use the **Get Node Has Submitted** ([DKG.08](../../build/core-contracts/07-epoch-contract-reference.md#dkg-transactions-and-scripts)) script with the following argument:
+can use the **Get Node Has Submitted** ([DKG.08](../../build/cadence/core-contracts/07-epoch-contract-reference.md#dkg-transactions-and-scripts)) script with the following argument:
 
 | Argument   | Type     | Description              |
 | ---------- | -------- | ------------------------ |

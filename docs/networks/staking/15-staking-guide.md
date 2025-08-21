@@ -3,7 +3,7 @@ title: Basic Staking with FLOW
 sidebar_label: Basic Staking Guide (Deprecated)
 ---
 
-This document outlines the steps a token holder can take to stake and manage 
+This document outlines the steps a token holder can take to stake and manage
 a Flow node with FLOW using only the types defined in the `FlowIDTableStaking` contract.
 It only supports having one node or delegator object per account and is not supported by ledger
 and will likely not be supported by other wallets, so it is recommended to use the staking collection
@@ -19,17 +19,17 @@ This guide covers staking with **FLOW tokens**.
 
 ### Register a New Staked Node
 
-To register as a node operator with FLOW, the token holder can use the **Register Node** ([SC.11](../../build/core-contracts/06-staking-contract-reference.md#staking))
+To register as a node operator with FLOW, the token holder can use the **Register Node** ([SC.11](../../build/cadence/core-contracts/06-staking-contract-reference.md#staking))
 transaction with the following arguments:
 
-| Argument              | Type     | Description |
-|-----------------------|----------|-------------|
+| Argument              | Type     | Description                                                                                                                                                                                                         |
+| --------------------- | -------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | **id**                | `String` | The ID of the new node. It must be a 32 byte `String`. The operator is free to choose this value, but it must be unique across all nodes. A recommended process to generate this is to hash the staking public key. |
-| **role**              | `UInt8`  | The role of the new node. (1: collection, 2: consensus, 3: execution, 4: verification, 5: access) |
-| **networkingAddress** | `String` | The IP address of the new node. (Length must be less than 255 bytes (510 Hex characters)) |
-| **networkingKey**     | `String` | The networking public key as a 64 byte hex-encoded `String` (128 hex characters) |
-| **stakingKey**        | `String` | The staking public key as a 96 byte hex-encoded `String` (192 hex characters) |
-| **amount**            | `UFix64` | The number of FLOW tokens to stake. |
+| **role**              | `UInt8`  | The role of the new node. (1: collection, 2: consensus, 3: execution, 4: verification, 5: access)                                                                                                                   |
+| **networkingAddress** | `String` | The IP address of the new node. (Length must be less than 255 bytes (510 Hex characters))                                                                                                                           |
+| **networkingKey**     | `String` | The networking public key as a 64 byte hex-encoded `String` (128 hex characters)                                                                                                                                    |
+| **stakingKey**        | `String` | The staking public key as a 96 byte hex-encoded `String` (192 hex characters)                                                                                                                                       |
+| **amount**            | `UFix64` | The number of FLOW tokens to stake.                                                                                                                                                                                 |
 
 This transaction registers the account as a node operator with the specified node information
 and creates a public link to query the nodes ID from the account address.
@@ -48,11 +48,11 @@ The token holder can stake additional tokens at any time.
 
 _Note: this transaction stakes additional tokens to the same node that was registered in the setup phase._
 
-To stake tokens, the token holder can use the **Stake FLOW** ([SC.12](../../build/core-contracts/06-staking-contract-reference.md#staking))
+To stake tokens, the token holder can use the **Stake FLOW** ([SC.12](../../build/cadence/core-contracts/06-staking-contract-reference.md#staking))
 transaction with the following arguments:
 
-| Argument   | Type     | Description |
-|------------|----------|-------------|
+| Argument   | Type     | Description                         |
+| ---------- | -------- | ----------------------------------- |
 | **amount** | `UFix64` | The number of FLOW tokens to stake. |
 
 This transaction commits tokens to stake from the token holder's account.
@@ -61,22 +61,22 @@ This transaction commits tokens to stake from the token holder's account.
 
 After tokens become unstaked, the token holder can choose to re-stake the unstaked tokens to the same node.
 
-To staked unstaked tokens, the token holder can use the **Re-stake Unstaked FLOW** ([SC.13](../../build/core-contracts/06-staking-contract-reference.md#staking)) 
+To staked unstaked tokens, the token holder can use the **Re-stake Unstaked FLOW** ([SC.13](../../build/cadence/core-contracts/06-staking-contract-reference.md#staking))
 transaction with the following arguments:
 
-| Argument   | Type     | Description |
-|------------|----------|-------------|
+| Argument   | Type     | Description                                  |
+| ---------- | -------- | -------------------------------------------- |
 | **amount** | `UFix64` | The number of unstaked FLOW tokens to stake. |
 
 ## Re-stake Rewarded Tokens
 
 After earning rewards from staking, the token holder can choose to re-stake the rewarded tokens to the same node.
 
-To stake rewarded tokens, the token holder can use the **Re-stake Rewarded FLOW** ([SC.14](../../build/core-contracts/06-staking-contract-reference.md#staking)) 
+To stake rewarded tokens, the token holder can use the **Re-stake Rewarded FLOW** ([SC.14](../../build/cadence/core-contracts/06-staking-contract-reference.md#staking))
 transaction with the following arguments:
 
-| Argument   | Type     | Description |
-|------------|----------|-------------|
+| Argument   | Type     | Description                                  |
+| ---------- | -------- | -------------------------------------------- |
 | **amount** | `UFix64` | The number of rewarded FLOW tokens to stake. |
 
 ## Request Unstake Tokens
@@ -84,19 +84,19 @@ transaction with the following arguments:
 The token holder can submit a request to unstake some of their tokens at any time.
 If the tokens aren't staked yet, they will be uncommitted and available to withdraw.
 
-To request to unstake staked tokens, the token holder can use 
-the **Request Unstaking** ([SC.15](../../build/core-contracts/06-staking-contract-reference.md#staking)) transaction.
+To request to unstake staked tokens, the token holder can use
+the **Request Unstaking** ([SC.15](../../build/cadence/core-contracts/06-staking-contract-reference.md#staking)) transaction.
 
-| Argument   | Type     | Description |
-|------------|----------|-------------|
+| Argument   | Type     | Description                                                |
+| ---------- | -------- | ---------------------------------------------------------- |
 | **amount** | `UFix64` | The number of rewarded FLOW tokens to request to un-stake. |
 
 _Note: this transaction will not succeed if the node operator has delegators and the request
 would put the node operator below the minimum required tokens staked for their node type.
 Use the `Unstake All` transaction instead, which will also unstake all delegators._
 
-_Note: unstaked tokens will be held by the central staking contract until the end of the following epoch. 
-Once the tokens are released (unstaked), they can be claimed via the 
+_Note: unstaked tokens will be held by the central staking contract until the end of the following epoch.
+Once the tokens are released (unstaked), they can be claimed via the
 [Withdraw Unstaked Tokens](#withdraw-unstaked-tokens) action below._
 
 ## Unstake All Tokens
@@ -104,8 +104,8 @@ Once the tokens are released (unstaked), they can be claimed via the
 The token holder can submit a request to unstake all their tokens at any time.
 If the tokens aren't staked yet, they will be uncommitted and available to withdraw.
 
-To unstake all staked tokens, the token holder can use 
-the **Unstake All FLOW** ([SC.16](../../build/core-contracts/06-staking-contract-reference.md#staking)) transaction.
+To unstake all staked tokens, the token holder can use
+the **Unstake All FLOW** ([SC.16](../../build/cadence/core-contracts/06-staking-contract-reference.md#staking)) transaction.
 
 This transaction requires no arguments.
 
@@ -116,12 +116,12 @@ from users that are delegating FLOW to the node.**
 
 After tokens become unstaked, the token holder can withdraw them from the central staking contract.
 
-To withdraw unstaked tokens, 
-the token holder can use the **Withdraw Unstaked FLOW** ([SC.17](../../build/core-contracts/06-staking-contract-reference.md#staking)) 
+To withdraw unstaked tokens,
+the token holder can use the **Withdraw Unstaked FLOW** ([SC.17](../../build/cadence/core-contracts/06-staking-contract-reference.md#staking))
 transaction with the following arguments:
 
-| Argument   | Type     | Description |
-|------------|----------|-------------|
+| Argument   | Type     | Description                                     |
+| ---------- | -------- | ----------------------------------------------- |
 | **amount** | `UFix64` | The number of unstaked FLOW tokens to withdraw. |
 
 This transaction moves the unstaked tokens back into the `FlowToken.Vault` owned by the token holder.
@@ -130,15 +130,15 @@ This transaction moves the unstaked tokens back into the `FlowToken.Vault` owned
 
 After earning rewards from staking, the token holder can withdraw them from the central staking contract.
 
-To withdraw rewarded tokens, 
-the token holder can use the **Withdraw Rewarded FLOW** ([SC.18](../../build/core-contracts/06-staking-contract-reference.md#staking)) 
+To withdraw rewarded tokens,
+the token holder can use the **Withdraw Rewarded FLOW** ([SC.18](../../build/cadence/core-contracts/06-staking-contract-reference.md#staking))
 transaction with the following arguments:
 
-| Argument   | Type     | Description |
-|------------|----------|-------------|
+| Argument   | Type     | Description                                     |
+| ---------- | -------- | ----------------------------------------------- |
 | **amount** | `UFix64` | The number of rewarded FLOW tokens to withdraw. |
 
-This transaction moves the rewarded tokens back into the `FlowToken.Vault` owned by the token holder. 
+This transaction moves the rewarded tokens back into the `FlowToken.Vault` owned by the token holder.
 
 ## Stake Multiple Nodes from the Same Account
 
@@ -150,19 +150,18 @@ and transfer their tokens to the new account.
 It is possible to have multiple nodes per account by storing the node objects at different storage paths,
 but this would require small changes to these transactions to use the new storage paths.
 
-
 # Delegating
 
 ## Setup
 
 ## Register as a Delegator
 
-To register as a delegator, the token holder can use the **Register Delegator** ([SC.19](../../build/core-contracts/06-staking-contract-reference.md#delegating))
+To register as a delegator, the token holder can use the **Register Delegator** ([SC.19](../../build/cadence/core-contracts/06-staking-contract-reference.md#delegating))
 transaction with the following arguments:
 
-| Argument   | Type     | Description |
-|------------|----------|-------------|
-| **id**     | `String` | The ID of the node to delegate to. |
+| Argument   | Type     | Description                            |
+| ---------- | -------- | -------------------------------------- |
+| **id**     | `String` | The ID of the node to delegate to.     |
 | **amount** | `UFix64` | The number of FLOW tokens to delegate. |
 
 This transaction registers the account as a delegator to the node ID they specified.
@@ -171,37 +170,37 @@ This transaction registers the account as a delegator to the node ID they specif
 
 ## Delegate New Tokens
 
-The token holder can delegate additional tokens after registering as a delegator. 
+The token holder can delegate additional tokens after registering as a delegator.
 
 _Note: this transaction delegates additional tokens to the same node that was registered in the setup phase._
 
-To delegate new tokens, 
-the token holder can use the **Delegate New FLOW** ([SC.20](../../build/core-contracts/06-staking-contract-reference.md#delegating)) 
+To delegate new tokens,
+the token holder can use the **Delegate New FLOW** ([SC.20](../../build/cadence/core-contracts/06-staking-contract-reference.md#delegating))
 transaction with the following arguments:
 
-| Argument   | Type     | Description |
-|------------|----------|-------------|
+| Argument   | Type     | Description                            |
+| ---------- | -------- | -------------------------------------- |
 | **amount** | `UFix64` | The number of FLOW tokens to delegate. |
 
 ## Re-delegate Unstaked Tokens
 
 After delegated tokens become unstaked, the token holder can choose to re-delegate the unstaked tokens to the same node.
 
-To delegate unstaked tokens, 
-the token holder can use the **Re-delegate Unstaked FLOW** ([SC.21](../../build/core-contracts/06-staking-contract-reference.md#delegating))
+To delegate unstaked tokens,
+the token holder can use the **Re-delegate Unstaked FLOW** ([SC.21](../../build/cadence/core-contracts/06-staking-contract-reference.md#delegating))
 transaction with the following arguments:
 
-| Argument   | Type     | Description |
-|------------|----------|-------------|
+| Argument   | Type     | Description                                     |
+| ---------- | -------- | ----------------------------------------------- |
 | **amount** | `UFix64` | The number of unstaked FLOW tokens to delegate. |
 
 ## Re-delegate Rewarded Tokens
 
 After earning rewards from delegation, the token holder can choose to re-delegate the rewarded tokens to the same node.
 
-To delegate rewarded tokens, 
-the token holder can use the **Re-delegate Rewarded FLOW** ([SC.22](../../build/core-contracts/06-staking-contract-reference.md#delegating))
-| Argument   | Type     | Description |
+To delegate rewarded tokens,
+the token holder can use the **Re-delegate Rewarded FLOW** ([SC.22](../../build/cadence/core-contracts/06-staking-contract-reference.md#delegating))
+| Argument | Type | Description |
 | **amount** | `UFix64` | The number of rewarded FLOW tokens to delegate. |
 
 ## Unstake Delegated Tokens
@@ -209,28 +208,28 @@ the token holder can use the **Re-delegate Rewarded FLOW** ([SC.22](../../build/
 The token holder can submit a request to unstake their delegated tokens at any time.
 If the tokens aren't staked yet, they will be uncommitted and available to withdraw.
 
-To unstake delegated tokens, 
-the token holder can use the **Unstake Delegated FOW** ([SC.23](../../build/core-contracts/06-staking-contract-reference.md#delegating))
+To unstake delegated tokens,
+the token holder can use the **Unstake Delegated FOW** ([SC.23](../../build/cadence/core-contracts/06-staking-contract-reference.md#delegating))
 
-| Argument   | Type     | Description |
-|------------|----------|-------------|
+| Argument   | Type     | Description                           |
+| ---------- | -------- | ------------------------------------- |
 | **amount** | `UFix64` | The number of FLOW tokens to unstake. |
 
-_Note: unstaked delegated tokens will be held by the central staking contract for a period of time 
-(the rest of the current epoch plus all of the next epoch) before they are 
-released to the token holder. Once the tokens are released (unstaked), 
+_Note: unstaked delegated tokens will be held by the central staking contract for a period of time
+(the rest of the current epoch plus all of the next epoch) before they are
+released to the token holder. Once the tokens are released (unstaked),
 they can be claimed via the [Withdraw Unstaked Tokens](#withdraw-unstaked-tokens) action below._
 
 ## Withdraw Unstaked Tokens
 
 After delegated tokens become unstaked, the token holder can withdraw them from the central staking contract.
 
-To withdraw unstaked tokens, 
-the token holder can use the **Withdraw Unstaked FLOW** ([SC.24](../../build/core-contracts/06-staking-contract-reference.md#delegating))
+To withdraw unstaked tokens,
+the token holder can use the **Withdraw Unstaked FLOW** ([SC.24](../../build/cadence/core-contracts/06-staking-contract-reference.md#delegating))
 transaction with the following arguments:
 
-| Argument   | Type     | Description |
-|------------|----------|-------------|
+| Argument   | Type     | Description                                     |
+| ---------- | -------- | ----------------------------------------------- |
 | **amount** | `UFix64` | The number of unstaked FLOW tokens to withdraw. |
 
 This transaction moves the unstaked tokens back into the `FlowToken.Vault` owned by the token holder.
@@ -239,15 +238,15 @@ This transaction moves the unstaked tokens back into the `FlowToken.Vault` owned
 
 After earning rewards from delegation, the token holder can withdraw them from the central staking contract.
 
-To withdraw rewarded tokens, 
-the token holder can use the **Withdraw Rewarded FLOW** ([SC.25](../../build/core-contracts/06-staking-contract-reference.md#delegating))
+To withdraw rewarded tokens,
+the token holder can use the **Withdraw Rewarded FLOW** ([SC.25](../../build/cadence/core-contracts/06-staking-contract-reference.md#delegating))
 transaction with the following arguments:
 
-| Argument   | Type     | Description |
-|------------|----------|-------------|
+| Argument   | Type     | Description                                     |
+| ---------- | -------- | ----------------------------------------------- |
 | **amount** | `UFix64` | The number of rewarded FLOW tokens to withdraw. |
 
-This transaction moves the rewarded tokens back into the `FlowToken.Vault` owned by the token holder. 
+This transaction moves the rewarded tokens back into the `FlowToken.Vault` owned by the token holder.
 
 ## Delegate to Multiple Nodes from the Same Account
 
@@ -256,6 +255,6 @@ Currently, the default delegating transactions can only be used as they are to s
 If a token holder wants to create a second delegating relationship using the transactions as is, they must create a new account
 and transfer their tokens to the new account.
 
-It is possible to have multiple delegator objects per account 
+It is possible to have multiple delegator objects per account
 by storing the node objects at different storage paths,
 but this would require small changes to these transactions to use the new storage paths.

@@ -102,7 +102,7 @@ Test results:
 - PASS: test_script_test.cdc > testSumOfTwo
 ```
 
-To learn more about writing tests in Cadence, visit the [Cadence Testing Framework](../../build/smart-contracts/testing.md) documentation.
+To learn more about writing tests in Cadence, visit the [Cadence Testing Framework](../../build/cadence/smart-contracts/testing.md) documentation.
 
 ---
 

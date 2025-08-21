@@ -7,16 +7,16 @@ toc_max_heading_level: 4
 
 :::warning
 
-  If you haven't read the Intro to Flow Staking document and the Epoch protocol document,
-  please read that first. Those documents provide an overview of epochs on Flow for
-  all users and are necessary prerequisites to this document.
+If you haven't read the Intro to Flow Staking document and the Epoch protocol document,
+please read that first. Those documents provide an overview of epochs on Flow for
+all users and are necessary prerequisites to this document.
 
 :::
 
 :::warning
 
-  This document assumes you have some technical knowledge about the Flow
-  blockchain and programming environment.
+This document assumes you have some technical knowledge about the Flow
+blockchain and programming environment.
 
 :::
 
@@ -77,26 +77,26 @@ It also creates a machine account for the QC object.
 If a user already has a registered node with the staking collection, but hasn't created their QC Voter object yet,
 they can use the [`create_machine_account.cdc` transaction.](./14-staking-collection.md#create-a-machine-account-for-an-existing-node)
 
-If a user is not using the staking collection, they can use the **Create QC Voter** ([QC.01](../../build/core-contracts/07-epoch-contract-reference.md#quorum-certificate-transactions-and-scripts))
+If a user is not using the staking collection, they can use the **Create QC Voter** ([QC.01](../../build/cadence/core-contracts/07-epoch-contract-reference.md#quorum-certificate-transactions-and-scripts))
 transaction. This will only store the QC Voter object in the account that stores the `NodeStaker` object.
 It does not create a machine account or store it elsewhere, so it is not recommended to use. We encourage to use the staking collection instead.
 
 #### Submit Vote
 
 During the Epoch Setup Phase, the node software should submit the votes for the QC generation
-automatically using the **Submit QC Vote** ([QC.02](../../build/core-contracts/07-epoch-contract-reference.md#quorum-certificate-transactions-and-scripts))
+automatically using the **Submit QC Vote** ([QC.02](../../build/cadence/core-contracts/07-epoch-contract-reference.md#quorum-certificate-transactions-and-scripts))
 transaction with the following arguments.
 
-| Argument                | Type     | Description |
-|-------------------------|----------|-------------|
-| **voteSignature**       | `String` | The signed message (signed with the node's staking key) |
-| **voteMessage**         | `String` | The raw message itself. |
+| Argument          | Type     | Description                                             |
+| ----------------- | -------- | ------------------------------------------------------- |
+| **voteSignature** | `String` | The signed message (signed with the node's staking key) |
+| **voteMessage**   | `String` | The raw message itself.                                 |
 
 ## Consensus Committee Distributed Key Generation Protocol (DKG)
 
 The Random Beacon Committee for the next Epoch (currently all consensus nodes)
 will run the DKG through a specialized smart contract, `FlowDKG`.
-To do this, they post a series of messages to a public "whiteboard" to 
+To do this, they post a series of messages to a public "whiteboard" to
 collectively generate a shared key array. When each node has enough information
 to generate their array of keys, they send the generated array to the smart contract
 as their final submission.
@@ -118,30 +118,30 @@ It also creates a machine account for the DKG Object.
 If a user already has a registered node with the staking collection, but hasn't created their DKG Participant object yet,
 they can use the [`create_machine_account.cdc` transaction.](./14-staking-collection.md#create-a-machine-account-for-an-existing-node)
 
-If a user is not using the staking collection, they can use the **Create DKG Participant** ([DKG.01](../../build/core-contracts/07-epoch-contract-reference.md#dkg-transactions-and-scripts))
+If a user is not using the staking collection, they can use the **Create DKG Participant** ([DKG.01](../../build/cadence/core-contracts/07-epoch-contract-reference.md#dkg-transactions-and-scripts))
 transaction. This will only store the DKG Participant object in the account that stores the `NodeStaker` object.
-It does not create a machine account or store it elsewhere, so it is not recommended to use. 
+It does not create a machine account or store it elsewhere, so it is not recommended to use.
 The staking collection is the recommended method.
 
 #### Post Whiteboard Message
 
 During the Epoch Setup Phase, the node software should post whiteboard messages to the DKG
-automatically using the **Post Whiteboard Message** ([DKG.02](../../build/core-contracts/07-epoch-contract-reference.md#dkg-transactions-and-scripts))
+automatically using the **Post Whiteboard Message** ([DKG.02](../../build/cadence/core-contracts/07-epoch-contract-reference.md#dkg-transactions-and-scripts))
 transaction with the following arguments.
 
-| Argument          | Type     | Description |
-|-------------------|----------|-------------|
-| **content**       | `String` | The content of the whiteboard message |
+| Argument    | Type     | Description                           |
+| ----------- | -------- | ------------------------------------- |
+| **content** | `String` | The content of the whiteboard message |
 
 #### Send Final Submission
 
 During the Epoch Setup Phase, the node software should send its final submission for the DKG
-automatically using the **Send Final Submission** ([DKG.03](../../build/core-contracts/07-epoch-contract-reference.md#dkg-transactions-and-scripts))
+automatically using the **Send Final Submission** ([DKG.03](../../build/cadence/core-contracts/07-epoch-contract-reference.md#dkg-transactions-and-scripts))
 transaction with the following arguments.
 
-| Argument           | Type        | Description |
-|--------------------|-------------|-------------|
-| **submission**     | `[String?]` | The final key vector submission for the DKG. |
+| Argument       | Type        | Description                                  |
+| -------------- | ----------- | -------------------------------------------- |
+| **submission** | `[String?]` | The final key vector submission for the DKG. |
 
 ## Monitor Events and Query State from the QC and DKG Contracts
 

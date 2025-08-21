@@ -49,7 +49,7 @@ Account Delegation Info:
 - Name: `address`
 - Valid Input: Flow account address.
 
-Flow [account address](../../../build/basics/accounts.md) (prefixed with `0x` or not).
+Flow [account address](../../../build/cadence/basics/accounts.md) (prefixed with `0x` or not).
 
 ## Flags
 
@@ -59,7 +59,6 @@ Flow [account address](../../../build/basics/accounts.md) (prefixed with `0x` or
 - Valid inputs: `contracts`
 
 Specify fields to include in the result output. Applies only to the text output.
-
 
 ### Host
 

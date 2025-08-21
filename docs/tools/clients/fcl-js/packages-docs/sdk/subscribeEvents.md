@@ -1,9 +1,9 @@
 ---
-title: "subscribeEvents"
-description: "subscribeEvents function documentation."
+title: 'subscribeEvents'
+description: 'subscribeEvents function documentation.'
 ---
 
-<!-- THIS DOCUMENT IS AUTO-GENERATED FROM [onflow/sdk/src/build/build-subscribe-events.ts](https://github.com/onflow/fcl-js/tree/master/packages/sdk/src/build/build-subscribe-events.ts). DO NOT EDIT MANUALLY -->
+<!-- THIS DOCUMENT IS AUTO-GENERATED FROM [onflow/sdk/src/build/cadence/build-subscribe-events.ts](https://github.com/onflow/fcl-js/tree/master/packages/sdk/src/build/cadence/build-subscribe-events.ts). DO NOT EDIT MANUALLY -->
 
 # subscribeEvents
 
@@ -20,42 +20,42 @@ Subscriptions allow you to listen for these events in real-time without polling.
 You can import the entire package and access the function:
 
 ```typescript
-import * as sdk from "@onflow/sdk"
+import * as sdk from '@onflow/sdk';
 
-sdk.subscribeEvents(eventFilter)
+sdk.subscribeEvents(eventFilter);
 ```
 
 Or import directly the specific function:
 
 ```typescript
-import { subscribeEvents } from "@onflow/sdk"
+import { subscribeEvents } from '@onflow/sdk';
 
-subscribeEvents(eventFilter)
+subscribeEvents(eventFilter);
 ```
 
 ## Usage
 
 ```typescript
-import * as fcl from "@onflow/fcl";
+import * as fcl from '@onflow/fcl';
 
 // Subscribe to FlowToken transfer events
 const subscription = await fcl.send([
   fcl.subscribeEvents({
     eventTypes: [
-      "A.1654653399040a61.FlowToken.TokensWithdrawn",
-      "A.1654653399040a61.FlowToken.TokensDeposited"
+      'A.1654653399040a61.FlowToken.TokensWithdrawn',
+      'A.1654653399040a61.FlowToken.TokensDeposited',
     ],
     startHeight: 1000000, // Start from specific block height
-    heartbeatInterval: 3000 // 3 second heartbeat
-  })
+    heartbeatInterval: 3000, // 3 second heartbeat
+  }),
 ]);
 
 // Subscribe to events from specific contracts
 const contractSubscription = await fcl.send([
   fcl.subscribeEvents({
-    contracts: ["FlowToken", "FungibleToken"],
-    addresses: ["0x1654653399040a61"]
-  })
+    contracts: ['FlowToken', 'FungibleToken'],
+    addresses: ['0x1654653399040a61'],
+  }),
 ]);
 
 // Handle the subscription data elsewhere using fcl.subscribe()
@@ -63,20 +63,17 @@ const contractSubscription = await fcl.send([
 
 ## Parameters
 
-### `eventFilter` 
-
+### `eventFilter`
 
 - Type: [`EventFilter`](../types#eventfilter)
-
 
 ## Returns
 
 ```typescript
 export type InteractionBuilderFn = (
-  ix: Interaction
-) => Interaction | Promise<Interaction>
+  ix: Interaction,
+) => Interaction | Promise<Interaction>;
 ```
-
 
 A function that processes an interaction object
 

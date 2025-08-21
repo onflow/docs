@@ -25,22 +25,22 @@ const sections: LinkGridSection[] = [
     links: [
       {
         title: 'Hello World Tutorial',
-        href: '/build/getting-started/contract-interaction',
+        href: '/build/cadence/getting-started/contract-interaction',
       },
       {
         title: 'App Architecture',
-        href: '/build/getting-started/app-architecture',
+        href: '/build/cadence/getting-started/app-architecture',
       },
       { title: 'EVM', href: '/evm/about' },
       { title: 'Flownaut', href: 'https://flownaut.ecdao.org/en' },
       { title: 'Playground', href: 'https://play.flow.com/' },
       {
         title: 'Mobile Quickstart',
-        href: '/build/guides/mobile/overview',
+        href: '/build/cadence/guides/mobile/overview',
       },
     ],
     imageName: 'docs-introduction',
-    more: '/build/basics/blocks',
+    more: '/build/cadence/basics/blocks',
   },
   {
     header: 'Fundamentals',
@@ -51,7 +51,7 @@ const sections: LinkGridSection[] = [
       },
       {
         title: 'Deployment',
-        href: '/build/smart-contracts/deploying',
+        href: '/build/cadence/smart-contracts/deploying',
       },
       {
         title: 'Block Explorer',
@@ -59,7 +59,7 @@ const sections: LinkGridSection[] = [
       },
       {
         title: 'Accounts',
-        href: '/build/basics/accounts',
+        href: '/build/cadence/basics/accounts',
       },
       {
         title: 'Faucets',
@@ -71,7 +71,7 @@ const sections: LinkGridSection[] = [
       },
     ],
     imageName: 'docs-fundamentals',
-    more: '/build/basics/blocks',
+    more: '/build/cadence/basics/blocks',
   },
   {
     header: 'The Stack',
@@ -82,11 +82,11 @@ const sections: LinkGridSection[] = [
       },
       {
         title: 'Cadence Smart Contracts',
-        href: '/build/smart-contracts/overview',
+        href: '/build/cadence/smart-contracts/overview',
       },
       {
         title: 'Cadence Smart Contract Testing',
-        href: '/build/smart-contracts/testing',
+        href: '/build/cadence/smart-contracts/testing',
       },
       { title: 'Flow CLI', href: '/tools/flow-cli' },
       {
@@ -106,35 +106,35 @@ const sections: LinkGridSection[] = [
     links: [
       {
         title: 'Account Abstraction',
-        href: '/build/advanced-concepts/account-abstraction',
+        href: '/build/cadence/advanced-concepts/account-abstraction',
       },
       {
         title: 'Understanding Transaction Time',
-        href: '/build/basics/transactions#transaction-time',
+        href: '/build/cadence/basics/transactions#transaction-time',
       },
       {
         title: 'FLIX',
-        href: '/build/advanced-concepts/flix',
+        href: '/build/cadence/advanced-concepts/flix',
       },
       {
         title: 'Metadata Views',
-        href: '/build/advanced-concepts/metadata-views',
+        href: '/build/cadence/advanced-concepts/metadata-views',
       },
       {
         title: 'VRF',
-        href: '/build/advanced-concepts/randomness',
+        href: '/build/cadence/advanced-concepts/randomness',
       },
       {
         title: 'Sponsored Transactions',
-        href: '/build/advanced-concepts/account-abstraction#sponsored-transactions',
+        href: '/build/cadence/advanced-concepts/account-abstraction#sponsored-transactions',
       },
       {
         title: 'Multi-auth Transactions',
-        href: '/build/advanced-concepts/account-abstraction#multi-sig-transactions',
+        href: '/build/cadence/advanced-concepts/account-abstraction#multi-sig-transactions',
       },
     ],
     imageName: 'docs-advanced',
-    more: '/build/advanced-concepts/flix',
+    more: '/build/cadence/advanced-concepts/flix',
   },
 ];
 
@@ -183,7 +183,7 @@ export const LinkGrid = (): React.ReactNode => (
     <div className="p-8 flex flex-col md:flex-row md:items-center md:justify-between md:justify-center md:border-b border-t-0 border-r-0 border-l-0 md:border-solid border-gray-600">
       <div className="text-4xl px-6">Explore the Docs</div>
       <a
-        href="/build/flow"
+        href="/build/cadence/flow"
         className="hover:no-underline text-primary-gray-600 hover:text-primary-gray-600"
       >
         <div className="px-6 flex items-center gap-2 font-semibold hover:opacity-80 hover:cursor-pointer hover:no-underline text-primary-gray-300 ">

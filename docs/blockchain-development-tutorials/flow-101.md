@@ -57,7 +57,7 @@ import { ActionCard } from '@site/src/components/ActionCard';
     cardColor="black"
     heading="Build with Cadence"
     description="Get started with Flow's native resource-oriented smart contract language. Learn how to deploy, interact, and build secure dApps using Cadence."
-    href="../build/getting-started/contract-interaction"
+    href="../build/cadence/getting-started/contract-interaction"
   />
   <ActionCard
     icon="solidity"
@@ -189,7 +189,7 @@ We also have guides for working with [Rainbowkit] and [wagmi].
 [CryptoKitties: AllTheZen]: https://allthezen.cryptokitties.co/
 [Learn more]: https://developers.flow.com/tutorials/native-vrf
 [Explore the tutorial]: https://developers.flow.com/tutorials/cross-vm-apps/introduction
-[Read the guide]: https://developers.flow.com/build/guides/account-linking-with-dapper
+[Read the guide]: https://developers.flow.com/build/cadence/guides/account-linking-with-dapper
 [Connect to Testnet]: https://developers.flow.com/networks/flow-networks/accessing-testnet
 [Connect to Mainnet]: https://developers.flow.com/networks/flow-networks/accessing-mainnet
 [Flow Network Overview and Setup]: https://developers.flow.com/networks/flow-networks
@@ -198,9 +198,9 @@ We also have guides for working with [Rainbowkit] and [wagmi].
 [Explore the Ecosystem]: https://developers.flow.com/ecosystem
 [@flow_blockchain]: https://x.com/flow_blockchain
 [Connect]: https://discord.com/invite/flow
-[Contract Interaction]: ../build/getting-started/contract-interaction.md
-[Local Development]: ../build/getting-started/flow-cli.md
-[Simple Frontend]: ../build/getting-started/fcl-quickstart.md
+[Contract Interaction]: ../build/cadence/getting-started/contract-interaction.md
+[Local Development]: ../build/cadence/getting-started/flow-cli.md
+[Simple Frontend]: ../build/cadence/getting-started/fcl-quickstart.md
 [EVM Quickstart]: ../evm/quickstart.md
 [Testnet Flowscan]: https://evm-testnet.flowscan.io/
 [Foundry]: ../evm/guides/foundry.md

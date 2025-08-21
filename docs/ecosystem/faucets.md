@@ -43,7 +43,7 @@ After a few seconds, you'll see your account's FLOW balance as a confirmation. N
 
 #### Generate a Key Pair
 
-To create a Flow-native account, you'll need to generate a key pair. You can do this most easily [Flow CLI](../build/getting-started/flow-cli.md) with the [`keys generate` command](../tools/flow-cli/keys/generate-keys.md)
+To create a Flow-native account, you'll need to generate a key pair. You can do this most easily [Flow CLI](../build/cadence/getting-started/flow-cli.md) with the [`keys generate` command](../tools/flow-cli/keys/generate-keys.md)
 
 ```sh
 flow keys generate

@@ -17,7 +17,7 @@ export const buildGridData = {
           cardColor: 'black',
           icon: 'why-flow',
           variant: 'horizontal',
-          href: '/build/flow',
+          href: '/build/cadence/flow',
         },
         {
           heading: 'Query state and run transactions',

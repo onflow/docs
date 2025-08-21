@@ -99,7 +99,7 @@ Example:
 Example:
 `[Error Code: 1103] The account with address (xxx) uses 96559611 bytes of storage which is over its capacity (96554500 bytes). Capacity can be increased by adding FLOW tokens to the account.`
 
-For more information refer to [Fees](../build/basics/fees.md#maximum-available-balance)
+For more information refer to [Fees](../build/cadence/basics/fees.md#maximum-available-balance)
 
 ### 1105
 

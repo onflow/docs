@@ -1,9 +1,9 @@
 ---
-title: "getAccount"
-description: "getAccount function documentation."
+title: 'getAccount'
+description: 'getAccount function documentation.'
 ---
 
-<!-- THIS DOCUMENT IS AUTO-GENERATED FROM [onflow/sdk/src/build/build-get-account.ts](https://github.com/onflow/fcl-js/tree/master/packages/sdk/src/build/build-get-account.ts). DO NOT EDIT MANUALLY -->
+<!-- THIS DOCUMENT IS AUTO-GENERATED FROM [onflow/sdk/src/build/cadence/build-get-account.ts](https://github.com/onflow/fcl-js/tree/master/packages/sdk/src/build/cadence/build-get-account.ts). DO NOT EDIT MANUALLY -->
 
 # getAccount
 
@@ -18,23 +18,23 @@ Account address is a unique account identifier. Be mindful about the '0x' prefix
 You can import the entire package and access the function:
 
 ```typescript
-import * as sdk from "@onflow/sdk"
+import * as sdk from '@onflow/sdk';
 
-sdk.getAccount(addr)
+sdk.getAccount(addr);
 ```
 
 Or import directly the specific function:
 
 ```typescript
-import { getAccount } from "@onflow/sdk"
+import { getAccount } from '@onflow/sdk';
 
-getAccount(addr)
+getAccount(addr);
 ```
 
 ## Usage
 
 ```typescript
-import * as fcl from "@onflow/fcl";
+import * as fcl from '@onflow/fcl';
 
 // somewhere in an async function
 // fcl.account is the same as this function
@@ -46,20 +46,17 @@ const getAccount = async (address) => {
 
 ## Parameters
 
-### `addr` 
-
+### `addr`
 
 - Type: `string`
-
 
 ## Returns
 
 ```typescript
 export type InteractionBuilderFn = (
-  ix: Interaction
-) => Interaction | Promise<Interaction>
+  ix: Interaction,
+) => Interaction | Promise<Interaction>;
 ```
-
 
 A function that processes an interaction object
 

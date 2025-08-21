@@ -404,6 +404,7 @@ message TransactionResultResponse {
   uint64 computation_usage = 10;
 }
 ```
+
 ### GetTransactionResultByIndex
 
 `GetTransactionResultByIndex` gets a transaction's result at a specified block and index.
@@ -1048,7 +1049,7 @@ message ProtocolStateSnapshotResponse {
 
 ### GetProtocolStateSnapshotByBlockID
 
-`GetProtocolStateSnapshotByBlockID` retrieves the latest sealed protocol state snapshot by block ID. 
+`GetProtocolStateSnapshotByBlockID` retrieves the latest sealed protocol state snapshot by block ID.
 Used by Flow nodes joining the network to bootstrap a space-efficient local state.
 
 ```proto
@@ -1074,7 +1075,7 @@ message ProtocolStateSnapshotResponse {
 
 ### GetProtocolStateSnapshotByHeight
 
-`GetProtocolStateSnapshotByHeight` retrieves the latest sealed protocol state snapshot by block height. 
+`GetProtocolStateSnapshotByHeight` retrieves the latest sealed protocol state snapshot by block height.
 Used by Flow nodes joining the network to bootstrap a space-efficient local state.
 
 ```proto
@@ -1156,7 +1157,6 @@ message ExecutionResultByIDResponse {
 }
 ```
 
-
 ## Entities
 
 Below are in-depth descriptions of each of the data entities returned or accepted by the Access API.
@@ -1179,21 +1179,21 @@ message Block {
 }
 ```
 
-| Field                      | Description                                                                                                                                                                                                                                                                                                       |
-|----------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| id                         | SHA3-256 hash of the entire block payload                                                                                                                                                                                                                                                                         |
-| height                     | Height of the block in the chain                                                                                                                                                                                                                                                                                  |
-| parent_id                  | ID of the previous block in the chain                                                                                                                                                                                                                                                                             |
-| timestamp                  | Timestamp of when the proposer claims it constructed the block. <br/> **NOTE**: It is included by the proposer, there are no guarantees on how much the time stamp can deviate from the true time the block was published. <br/> Consider observing blocks' status changes yourself to get a more reliable value  |
-| collection_guarantees      | List of [collection guarantees](#collection-guarantee)                                                                                                                                                                                                                                                            |
-| block_seals                | List of [block seals](#block-seal)                                                                                                                                                                                                                                                                                |
-| signatures                 | BLS signatures of consensus nodes                                                                                                                                                                                                                                                                                 |
-| execution_receipt_metaList | List of [execution-receipt-meta](#execution-receipt-meta)                                                                                                                                                                                                                                                         |
-| execution_result_list      | List of [execution results](#execution-result)                                                                                                                                                                                                                                                                    |
-| block_header               | A summary of a [block](#block-header)                                                                                                                                                                                                                                                                             |
-| protocol_state_id          | The root hash of protocol state.                                                                                                                                                                                                                                                                                  |
+| Field                      | Description                                                                                                                                                                                                                                                                                                      |
+| -------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| id                         | SHA3-256 hash of the entire block payload                                                                                                                                                                                                                                                                        |
+| height                     | Height of the block in the chain                                                                                                                                                                                                                                                                                 |
+| parent_id                  | ID of the previous block in the chain                                                                                                                                                                                                                                                                            |
+| timestamp                  | Timestamp of when the proposer claims it constructed the block. <br/> **NOTE**: It is included by the proposer, there are no guarantees on how much the time stamp can deviate from the true time the block was published. <br/> Consider observing blocks' status changes yourself to get a more reliable value |
+| collection_guarantees      | List of [collection guarantees](#collection-guarantee)                                                                                                                                                                                                                                                           |
+| block_seals                | List of [block seals](#block-seal)                                                                                                                                                                                                                                                                               |
+| signatures                 | BLS signatures of consensus nodes                                                                                                                                                                                                                                                                                |
+| execution_receipt_metaList | List of [execution-receipt-meta](#execution-receipt-meta)                                                                                                                                                                                                                                                        |
+| execution_result_list      | List of [execution results](#execution-result)                                                                                                                                                                                                                                                                   |
+| block_header               | A summary of a [block](#block-header)                                                                                                                                                                                                                                                                            |
+| protocol_state_id          | The root hash of protocol state.                                                                                                                                                                                                                                                                                 |
 
-The detailed semantics of block formation are covered in the [block formation guide](../../build/basics/blocks.md).
+The detailed semantics of block formation are covered in the [block formation guide](../../build/cadence/basics/blocks.md).
 
 ### Block Header
 
@@ -1219,7 +1219,7 @@ message BlockHeader {
 ```
 
 | Field                 | Description                                                                                                       |
-|-----------------------|-------------------------------------------------------------------------------------------------------------------|
+| --------------------- | ----------------------------------------------------------------------------------------------------------------- |
 | id                    | SHA3-256 hash of the entire block payload                                                                         |
 | parent_id             | ID of the previous block in the chain                                                                             |
 | height                | Height of the block in the chain                                                                                  |
@@ -1263,11 +1263,11 @@ enum BlockStatus {
 }
 ```
 
-| Value      | Description                                    |
-|------------|------------------------------------------------|
-| UNKNOWN    | The block status is not known                  |
-| FINALIZED  | The consensus nodes have finalized the block   |
-| SEALED     | The verification nodes have verified the block |
+| Value     | Description                                    |
+| --------- | ---------------------------------------------- |
+| UNKNOWN   | The block status is not known                  |
+| FINALIZED | The consensus nodes have finalized the block   |
+| SEALED    | The verification nodes have verified the block |
 
 ### Collection
 
@@ -1280,10 +1280,10 @@ message Collection {
 }
 ```
 
-| Field            | Description                                       |
-|------------------|---------------------------------------------------|
-| id               | SHA3-256 hash of the collection contents          |
-| transaction_ids  | Ordered list of transaction IDs in the collection |
+| Field           | Description                                       |
+| --------------- | ------------------------------------------------- |
+| id              | SHA3-256 hash of the collection contents          |
+| transaction_ids | Ordered list of transaction IDs in the collection |
 
 ### Collection Guarantee
 
@@ -1300,14 +1300,14 @@ message CollectionGuarantee {
 }
 ```
 
-| Field               | Description                                                        |
-|---------------------|--------------------------------------------------------------------|
-| collection_id       | SHA3-256 hash of the collection contents                           |
-| signatures          | BLS signatures of the collection nodes guaranteeing the collection |
-| reference_block_id  | Defines expiry of the collection                                   |
-| signature           | Guarantor signatures                                               |
-| signer_ids          | An array that represents all the signer ids                        |
-| signer_indices      | Encoded indices of the signers                                     |
+| Field              | Description                                                        |
+| ------------------ | ------------------------------------------------------------------ |
+| collection_id      | SHA3-256 hash of the collection contents                           |
+| signatures         | BLS signatures of the collection nodes guaranteeing the collection |
+| reference_block_id | Defines expiry of the collection                                   |
+| signature          | Guarantor signatures                                               |
+| signer_ids         | An array that represents all the signer ids                        |
+| signer_indices     | Encoded indices of the signers                                     |
 
 ### Transaction
 
@@ -1347,19 +1347,19 @@ message TransactionSignature {
 | [proposal_key](#proposal-key) | Account key used to propose the transaction                                                                                 |
 | payer                         | Address of the payer account                                                                                                |
 | authorizers                   | Addresses of the transaction authorizers                                                                                    |
-| signatures                    | [Signatures](#transaction-signature) from all signer accounts                                                              |
+| signatures                    | [Signatures](#transaction-signature) from all signer accounts                                                               |
 
-The detailed semantics of transaction creation, signing and submission are covered in the [transaction submission guide](../../build/basics/transactions.md#signing-a-transaction).
+The detailed semantics of transaction creation, signing and submission are covered in the [transaction submission guide](../../build/cadence/basics/transactions.md#signing-a-transaction).
 
 #### Proposal Key
 
-The proposal key is used to specify a sequence number for the transaction. Sequence numbers are covered in more detail [here](../../build/basics/transactions.md#sequence-numbers).
+The proposal key is used to specify a sequence number for the transaction. Sequence numbers are covered in more detail [here](../../build/cadence/basics/transactions.md#sequence-numbers).
 
-| Field           | Description                                                                                 |
-| --------------- | ------------------------------------------------------------------------------------------- |
-| address         | Address of proposer account                                                                 |
-| key_id          | ID of proposal key on the proposal account                                                  |
-| sequence_number | [Sequence number](../../build/basics/transactions.md#sequence-numbers) for the proposal key |
+| Field           | Description                                                                                         |
+| --------------- | --------------------------------------------------------------------------------------------------- |
+| address         | Address of proposer account                                                                         |
+| key_id          | ID of proposal key on the proposal account                                                          |
+| sequence_number | [Sequence number](../../build/cadence/basics/transactions.md#sequence-numbers) for the proposal key |
 
 #### Transaction Signature
 
@@ -1415,7 +1415,7 @@ message Account {
 
 The `code` and `contracts` fields contain the raw Cadence source code, encoded as UTF-8 bytes.
 
-More information on accounts can be found [here](../../build/basics/accounts.md).
+More information on accounts can be found [here](../../build/cadence/basics/accounts.md).
 
 #### Account Key
 
@@ -1433,17 +1433,17 @@ message AccountKey {
 }
 ```
 
-| Field           | Description                                                               |
-| --------------- |---------------------------------------------------------------------------|
-| id              | Index of the key within the account, used as a unique identifier          |
-| public_key      | Public key encoded as bytes                                               |
-| sign_algo       | [Signature algorithm](../../build/basics/accounts.md#signature-and-hash-algorithms) |
-| hash_algo       | [Hash algorithm](../../build/basics/accounts.md#signature-and-hash-algorithms) |
-| weight          | [Weight assigned to the key](../../build/basics/accounts.md#account-keys) |
-| sequence_number | [Sequence number for the key](../../build/basics/transactions.md#sequence-numbers) |
-| revoked         | Flag indicating whether or not the key has been revoked                   |
+| Field           | Description                                                                                 |
+| --------------- | ------------------------------------------------------------------------------------------- |
+| id              | Index of the key within the account, used as a unique identifier                            |
+| public_key      | Public key encoded as bytes                                                                 |
+| sign_algo       | [Signature algorithm](../../build/cadence/basics/accounts.md#signature-and-hash-algorithms) |
+| hash_algo       | [Hash algorithm](../../build/cadence/basics/accounts.md#signature-and-hash-algorithms)      |
+| weight          | [Weight assigned to the key](../../build/cadence/basics/accounts.md#account-keys)           |
+| sequence_number | [Sequence number for the key](../../build/cadence/basics/transactions.md#sequence-numbers)  |
+| revoked         | Flag indicating whether or not the key has been revoked                                     |
 
-More information on account keys, key weights and sequence numbers can be found [here](../../build/basics/accounts.md).
+More information on account keys, key weights and sequence numbers can be found [here](../../build/cadence/basics/accounts.md).
 
 ### Event
 
@@ -1500,12 +1500,12 @@ message ExecutionReceiptMeta {
 }
 ```
 
-| Field                | Description                          |
-|----------------------|--------------------------------------|
-| executor_id          | Identifier of the executor node      |
-| result_id            | Identifier of block execution result |
-| spocks               | SPoCK                                |
-| executor_signature   | Signature of the executor            |
+| Field              | Description                          |
+| ------------------ | ------------------------------------ |
+| executor_id        | Identifier of the executor node      |
+| result_id          | Identifier of block execution result |
+| spocks             | SPoCK                                |
+| executor_signature | Signature of the executor            |
 
 #### Chunk
 
@@ -1526,18 +1526,18 @@ message Chunk {
 }
 ```
 
-| Field                   | Description                                          |
-|-------------------------|------------------------------------------------------|
-| CollectionIndex         | Identifier of a collection                           |
-| start_state             | State commitment at start of the chunk               |
-| event_collection        | Hash of events emitted by transactions in this chunk |
-| block_id                | Identifier of a block                                |
-| total_computation_used  | Total computation used by transactions in this chunk |
-| number_of_transactions  | Number of transactions in a chunk                    |
-| index                   | Index of chunk inside a block (zero-based)           |
-| end_state               | State commitment after executing chunk               |
-| execution_data_id       | Identifier of a execution data                       |
-| state_delta_commitment  | A commitment over sorted list of register changes    |
+| Field                  | Description                                          |
+| ---------------------- | ---------------------------------------------------- |
+| CollectionIndex        | Identifier of a collection                           |
+| start_state            | State commitment at start of the chunk               |
+| event_collection       | Hash of events emitted by transactions in this chunk |
+| block_id               | Identifier of a block                                |
+| total_computation_used | Total computation used by transactions in this chunk |
+| number_of_transactions | Number of transactions in a chunk                    |
+| index                  | Index of chunk inside a block (zero-based)           |
+| end_state              | State commitment after executing chunk               |
+| execution_data_id      | Identifier of a execution data                       |
+| state_delta_commitment | A commitment over sorted list of register changes    |
 
 #### Service Event
 
@@ -1660,7 +1660,6 @@ message EventFilter {
 | contract   | A list of contracts who's events should be included. Contracts have the following name formats:<br/> _ Protocol events: `flow`<br/> _ Smart contract events: `A.[contract address].[contract name]`<br/> This filter matches on the full contract including its address, not just the contract's name |
 | address    | A list of addresses who's events should be included. Addresses must be Flow account addresses in hex format and valid for the network the node is connected to. i.e. only a mainnet address is valid for a mainnet node. Addresses may optionally include the `0x` prefix                             |
 
-
 ## Execution data streaming API
 
 ### Execution Data API
@@ -1669,9 +1668,7 @@ The `ExecutionDataAPI` provides access to block execution data over gRPC, includ
 
 [execution data protobuf file](https://github.com/onflow/flow/blob/master/protobuf/flow/executiondata/executiondata.proto)
 
-
 > The API is disabled by default. To enable it, specify a listener address with the cli flag `--state-stream-addr`.
-
 
 <aside>
 ℹ️ Currently, the api must be started on a separate port from the regular gRPC endpoint. There is work underway to add support for using the same port.
@@ -1681,7 +1678,7 @@ The `ExecutionDataAPI` provides access to block execution data over gRPC, includ
 Below is a list of the available CLI flags to control the behavior of the API
 
 | Flag                             | Type     | Description                                                                                                                                                                                                                                                                               |
-|----------------------------------|----------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| -------------------------------- | -------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | state-stream-addr                | string   | Listener address for API. e.g. 0.0.0.0:9003. If no value is provided, the API is disabled. Default is disabled.                                                                                                                                                                           |
 | execution-data-cache-size        | uint32   | Number of block execution data objects to store in the cache. Default is 100.                                                                                                                                                                                                             |
 | state-stream-global-max-streams  | uint32   | Global maximum number of concurrent streams. Default is 1000.                                                                                                                                                                                                                             |

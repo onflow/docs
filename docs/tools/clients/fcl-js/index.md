@@ -154,7 +154,7 @@ For all type definitions available, see [this file](https://github.com/onflow/fc
 
 ## Next Steps
 
-- See the [Flow App Quick Start](../../../build/getting-started/fcl-quickstart.md).
+- See the [Flow App Quick Start](../../../build/cadence/getting-started/fcl-quickstart.md).
 - See the full [API Reference](./packages-docs/fcl/index.md) for all FCL functionality.
 - Learn Flow's smart contract language to build any script or transactions: [Cadence](https://cadence-lang.org).
 - Explore all of Flow [docs and tools](https://developers.flow.com).

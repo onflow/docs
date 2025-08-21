@@ -53,6 +53,7 @@ Total Collections	8
 ## Arguments
 
 ### Query
+
 - Name: `<block_id|latest|block_height>`
 - Valid Input: Block ID, `latest` or block height
 
@@ -61,11 +62,11 @@ Specify the block to retrieve by block ID or block height.
 ## Arguments
 
 ### Address
+
 - Name: `address`
 - Valid Input: Flow account address
 
-Flow [account address](../../../build/basics/accounts.md) (prefixed with `0x` or not).
-
+Flow [account address](../../../build/cadence/basics/accounts.md) (prefixed with `0x` or not).
 
 ## Flags
 

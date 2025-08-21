@@ -1,9 +1,9 @@
 ---
-title: "authorization"
-description: "authorization function documentation."
+title: 'authorization'
+description: 'authorization function documentation.'
 ---
 
-<!-- THIS DOCUMENT IS AUTO-GENERATED FROM [onflow/sdk/src/build/build-authorizations.ts](https://github.com/onflow/fcl-js/tree/master/packages/sdk/src/build/build-authorizations.ts). DO NOT EDIT MANUALLY -->
+<!-- THIS DOCUMENT IS AUTO-GENERATED FROM [onflow/sdk/src/build/cadence/build-authorizations.ts](https://github.com/onflow/fcl-js/tree/master/packages/sdk/src/build/cadence/build-authorizations.ts). DO NOT EDIT MANUALLY -->
 
 # authorization
 
@@ -18,41 +18,41 @@ Read more about [authorization functions](https://docs.onflow.org/fcl/reference/
 You can import the entire package and access the function:
 
 ```typescript
-import * as sdk from "@onflow/sdk"
+import * as sdk from '@onflow/sdk';
 
-sdk.authorization(addr, signingFunction, keyId, sequenceNum)
+sdk.authorization(addr, signingFunction, keyId, sequenceNum);
 ```
 
 Or import directly the specific function:
 
 ```typescript
-import { authorization } from "@onflow/sdk"
+import { authorization } from '@onflow/sdk';
 
-authorization(addr, signingFunction, keyId, sequenceNum)
+authorization(addr, signingFunction, keyId, sequenceNum);
 ```
 
 ## Usage
 
 ```typescript
-import * as fcl from "@onflow/fcl";
-import { ec as EC } from "elliptic";
+import * as fcl from '@onflow/fcl';
+import { ec as EC } from 'elliptic';
 
 // Create a signing function
 const signingFunction = ({ message }) => {
   // Your signing logic here
   return {
-    addr: "0x123456789abcdef0",
+    addr: '0x123456789abcdef0',
     keyId: 0,
-    signature: "your_signature_here"
+    signature: 'your_signature_here',
   };
 };
 
 // Create authorization
 const authz = fcl.authorization(
-  "0x123456789abcdef0", // account address
-  signingFunction,     // signing function
-  0,                   // key ID
-  42                   // sequence number
+  '0x123456789abcdef0', // account address
+  signingFunction, // signing function
+  0, // key ID
+  42, // sequence number
 );
 
 // Use in transaction
@@ -60,48 +60,44 @@ await fcl.mutate({
   cadence: `transaction { prepare(acct: AuthAccount) {} }`,
   proposer: authz,
   payer: authz,
-  authorizations: [authz]
+  authorizations: [authz],
 });
 ```
 
 ## Parameters
 
-### `addr` 
-
+### `addr`
 
 - Type: `string`
 - Description: The address of the account that will sign the transaction
 
-### `signingFunction` 
+### `signingFunction`
 
+- Type:
 
-- Type: 
 ```typescript
 type SigningFn = (
-  signable?: SignableMessage
-) => SigningResult | Promise<SigningResult>
+  signable?: SignableMessage,
+) => SigningResult | Promise<SigningResult>;
 ```
+
 - Description: A function that produces signatures for the account
 
 ### `keyId` (optional)
-
 
 - Type: `string | number`
 - Description: The index of the key to use for signing (optional)
 
 ### `sequenceNum` (optional)
 
-
 - Type: `number`
 - Description: The sequence number for the account key (optional)
-
 
 ## Returns
 
 ```typescript
-Partial<InteractionAccount>
+Partial<InteractionAccount>;
 ```
-
 
 A partial interaction account object
 

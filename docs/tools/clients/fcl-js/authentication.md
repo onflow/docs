@@ -20,21 +20,21 @@ FCL provides two ways to get information about the current user:
 ### Snapshot of the Current User
 
 ```javascript
-import * as fcl from "@onflow/fcl"
+import * as fcl from '@onflow/fcl';
 
-const currentUser = await fcl.currentUser.snapshot()
-console.log("The Current User:", currentUser)
+const currentUser = await fcl.currentUser.snapshot();
+console.log('The Current User:', currentUser);
 ```
 
 ### Subscribe to the Current User
 
 ```javascript
-import * as fcl from "@onflow/fcl"
+import * as fcl from '@onflow/fcl';
 
 // Returns an unsubscribe function
-const unsubscribe = fcl.currentUser.subscribe(currentUser => {
-  console.log("The Current User:", currentUser)
-})
+const unsubscribe = fcl.currentUser.subscribe((currentUser) => {
+  console.log('The Current User:', currentUser);
+});
 ```
 
 # Authenticating and Unauthenticating
@@ -43,7 +43,7 @@ The TL;DR: Call `fcl.authenticate()` to log in and `fcl.unauthenticate()` to log
 
 On Flow mainnet, no additional configuration is needed—your app’s users will go through the authentication process and be able to use any FCL-compatible wallet provider.
 
-During development, you’ll likely want to configure your app to use [`@onflow/dev-wallet`](https://github.com/onflow/fcl-dev-wallet). The [Quick Start](../../../build/getting-started/fcl-quickstart.md) guide will walk you through setting it up.
+During development, you’ll likely want to configure your app to use [`@onflow/dev-wallet`](https://github.com/onflow/fcl-dev-wallet). The [Quick Start](../../../build/cadence/getting-started/fcl-quickstart.md) guide will walk you through setting it up.
 
 We also recommend using the [FCL Discovery Service](discovery.md) to help users discover and connect to FCL-compatible wallets.
 

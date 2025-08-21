@@ -5,7 +5,7 @@ sidebar_position: 1
 ---
 
 The Flow CLI provides a command to generate ECDSA key pairs
-that can be [attached to new or existing Flow accounts](../../../build/basics/accounts.md).
+that can be [attached to new or existing Flow accounts](../../../build/cadence/basics/accounts.md).
 
 ```shell
 flow keys generate
@@ -24,9 +24,9 @@ flow keys generate
 ```shell
 > flow keys generate
 
-🔴️ Store Private Key safely and don't share with anyone! 
-Private Key 	 c778170793026a9a7a3815dabed68ded445bde7f40a8c66889908197412be89f 
-Public Key 	 584245c57e5316d6606c53b1ce46dae29f5c9bd26e9e8...aaa5091b2eebcb2ac71c75cf70842878878a2d650f7 
+🔴️ Store Private Key safely and don't share with anyone!
+Private Key 	 c778170793026a9a7a3815dabed68ded445bde7f40a8c66889908197412be89f
+Public Key 	 584245c57e5316d6606c53b1ce46dae29f5c9bd26e9e8...aaa5091b2eebcb2ac71c75cf70842878878a2d650f7
 ```
 
 ## Flags
@@ -43,7 +43,7 @@ result in the same key.
 If no seed is specified, the key pair will be generated using
 a random 32 byte seed.
 
-⚠️ Using seed with production keys can be dangerous if seed was not generated 
+⚠️ Using seed with production keys can be dangerous if seed was not generated
 by using safe random generators.
 
 ### Signature Algorithm

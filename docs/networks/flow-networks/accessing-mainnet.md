@@ -63,7 +63,7 @@ Take a note of the public key and go back to Flow Port. Open the ["Create a new 
 
 On the page, enter your public key from the CLI, ensure the hash algorithm is set to `SHA3_256` and the weight is set to `1000`. Finally, check the box confirming correctness and hit 'Submit'.
 
-> **Important**: Your account needs to have at least 0.002 FLOW for the account creation. More details can be found [in this guide](../../build/basics/fees.md#storage).
+> **Important**: Your account needs to have at least 0.002 FLOW for the account creation. More details can be found [in this guide](../../build/cadence/basics/fees.md#storage).
 
 Once the transaction is sealed, you should scroll down to the events section and locate the `flow.AccountCreated` event with the newly generated address.
 
@@ -73,4 +73,4 @@ Make sure to take a note of the address. If you want to verify the public key fo
 
 ## Important Mainnet Smart Contract Addresses
 
-You can review [all available core contracts](../../build/core-contracts/index.md) deployed to the mainnet to identify which ones you want to import.
+You can review [all available core contracts](../../build/cadence/core-contracts/index.md) deployed to the mainnet to identify which ones you want to import.

@@ -19,15 +19,16 @@ Nodes registered for epoch N+1 are able to participate in network communication 
 ![Flow Epoch Schedule](https://storage.googleapis.com/flow-resources/documentation-assets/epoch-startup-order.png)
 
 Once registered and confirmed to join the network at epoch N+1, the node must start up **before** epoch N+1 begins.
-* Verification & Access nodes may start up any time during the `Epoch Setup Phase`.
-* Consensus & Collection nodes must start up within the first **1000 views (~30mins)**
-of the `Epoch Setup Phase` to participate in the [Epoch Preparation Protocol](../../staking/04-epoch-preparation.md#phase-1-epoch-setup).
+
+- Verification & Access nodes may start up any time during the `Epoch Setup Phase`.
+- Consensus & Collection nodes must start up within the first **1000 views (~30mins)**
+  of the `Epoch Setup Phase` to participate in the [Epoch Preparation Protocol](../../staking/04-epoch-preparation.md#phase-1-epoch-setup).
 
 ## Step 1 - Run Genesis Bootstrap
 
 :::info
 
-  You will need to run this process for each node that you are operating
+You will need to run this process for each node that you are operating
 
 :::
 
@@ -83,7 +84,6 @@ All your current keys and Flow genesis files should be in the `bootstrap`
 folder created earlier. Please take a back up of the entire folder.
 
 :::
-
 
 ```shell
 ## Skip this section if this is your first time ##
@@ -264,7 +264,7 @@ Ensure you have configured your node using the [Node Setup guide](./node-setup.m
 
 ### Confirming authorization
 
-You can confirm your node's successful registration and authorization by executing a Cadence script to query the [Staking Contract](../../../build/core-contracts/06-staking-contract-reference.md#contract).
+You can confirm your node's successful registration and authorization by executing a Cadence script to query the [Staking Contract](../../../build/cadence/core-contracts/06-staking-contract-reference.md#contract).
 At the end of the `Staking Auction Phase`, the members of the Proposed Identity Table are confirmed as authorized participants in the next epoch.
 Therefore, if your node ID appears in the Proposed Identity Table during the `Staking Auction Phase`, your node will be a participant in the next epoch.
 
@@ -291,11 +291,13 @@ This is the recommended way to start your node for the first time.
 1. Remove any `root-protocol-state-snapshot.json` file from your `bootstrap` folder. (If this file is present the node will attempt to bootstrap with it rather than Dynamic Startup.)
 2. Select a trusted Access Node to provide the root snapshot. You will need this node's **secure GRPC server address** and **Networking Public Key**.
 3. Configure Dynamic Startup by adding flags:
+
 ```shell ExampleDynamicStartupFlags
   ... \
   --dynamic-startup-access-address=secure.mainnet.nodes.onflow.org:9001 \
   --dynamic-startup-access-publickey=28a0d9edd0de3f15866dfe4aea1560c4504fe313fc6ca3f63a63e4f98d0e295144692a58ebe7f7894349198613f65b2d960abf99ec2625e247b1c78ba5bf2eae
 ```
+
 4. Start your node (see [guide](./node-setup#start-the-node))
 
 :::info

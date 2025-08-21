@@ -50,9 +50,11 @@ Start the Emulator and deploy the contracts by running the following command fro
 flow emulator start
 flow project deploy --network emulator
 ```
-### Start the Dev Wallet 
 
-In a separate terminal session, start the dev wallet service. 
+### Start the Dev Wallet
+
+In a separate terminal session, start the dev wallet service.
+
 ```sh
 flow dev-wallet
 ```
@@ -233,6 +235,6 @@ Releasing a new version of Dev Wallet is as simple as tagging and creating a rel
 
 Additionally, consider exploring these resources:
 
-- [Guide to Creating a Fungible Token on Flow](../../build/guides/fungible-token.md)
+- [Guide to Creating a Fungible Token on Flow](../../build/cadence/guides/fungible-token.md)
 - [Tutorial on Fungible Tokens](https://cadence-lang.org/docs/tutorial/fungible-tokens)
 - [Faucets](../../ecosystem/faucets.md)

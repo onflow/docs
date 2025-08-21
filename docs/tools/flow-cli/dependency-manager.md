@@ -79,14 +79,14 @@ After installing, your `flow.json` might include an entry like:
 
 ```json
 {
-    "dependencies": {
-        "FlowToken": {
-            "source": "testnet://7e60df042a9c0868.FlowToken",
-            "aliases": {
-                "emulator": "0ae53cb6e3f42a79"
-            }
-        }
+  "dependencies": {
+    "FlowToken": {
+      "source": "testnet://7e60df042a9c0868.FlowToken",
+      "aliases": {
+        "emulator": "0ae53cb6e3f42a79"
+      }
     }
+  }
 }
 ```
 
@@ -99,7 +99,7 @@ After installing, your `flow.json` might include an entry like:
 
 ## `discover`
 
-The `discover` command helps you interactively find and install core contracts for your project. Core contracts are standard smart contracts maintained by the Flow Foundation and are commonly used across the Flow ecosystem (learn more about core contracts [here](../../build/core-contracts/index.md)).
+The `discover` command helps you interactively find and install core contracts for your project. Core contracts are standard smart contracts maintained by the Flow Foundation and are commonly used across the Flow ecosystem (learn more about core contracts [here](../../build/cadence/core-contracts/index.md)).
 
 To use the `discover` command, run:
 

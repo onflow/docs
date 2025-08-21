@@ -17,6 +17,7 @@ flow accounts get 0xf8d6e0586b0a20c7
 ```
 
 ### Example response
+
 ```shell
 Address	 0xf8d6e0586b0a20c7
 Balance	 99999999999.70000000
@@ -44,8 +45,7 @@ Contract: 'FlowStorageFees'
 - Name: `address`
 - Valid Input: Flow account address
 
-Flow [account address](../../../build/basics/accounts.md) (prefixed with `0x` or not).
-
+Flow [account address](../../../build/cadence/basics/accounts.md) (prefixed with `0x` or not).
 
 ## Flags
 

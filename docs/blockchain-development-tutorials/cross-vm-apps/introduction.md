@@ -824,7 +824,7 @@ Now that you have completed the tutorial, you should be able to:
 [FCL + RainbowKit + Wagmi Integration Demo]: https://github.com/jribbink/cross-vm-app
 [FCL-JS]: https://github.com/onflow/fcl-js
 [Testnet Cadence Flowscan]: https://testnet.flowscan.io
-[Cadence Owned Accounts]: ../../build/basics/accounts.md
+[Cadence Owned Accounts]: ../../build/cadence/basics/accounts.md
 [Testnet EVM Flowscan]: https://evm-testnet.flowscan.io
 [Button Clicker Contract]: https://github.com/briandoyle81/button-clicker-contract/blob/main/contracts/ClickToken.sol
 [`0xA7Cf2260e501952c71189D04FAd17c704DFB36e6`]: https://evm-testnet.flowscan.io/address/0xA7Cf2260e501952c71189D04FAd17c704DFB36e6?tab=contract

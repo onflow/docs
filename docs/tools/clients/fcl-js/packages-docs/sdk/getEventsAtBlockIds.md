@@ -1,9 +1,9 @@
 ---
-title: "getEventsAtBlockIds"
-description: "getEventsAtBlockIds function documentation."
+title: 'getEventsAtBlockIds'
+description: 'getEventsAtBlockIds function documentation.'
 ---
 
-<!-- THIS DOCUMENT IS AUTO-GENERATED FROM [onflow/sdk/src/build/build-get-events-at-block-ids.ts](https://github.com/onflow/fcl-js/tree/master/packages/sdk/src/build/build-get-events-at-block-ids.ts). DO NOT EDIT MANUALLY -->
+<!-- THIS DOCUMENT IS AUTO-GENERATED FROM [onflow/sdk/src/build/cadence/build-get-events-at-block-ids.ts](https://github.com/onflow/fcl-js/tree/master/packages/sdk/src/build/cadence/build-get-events-at-block-ids.ts). DO NOT EDIT MANUALLY -->
 
 # getEventsAtBlockIds
 
@@ -20,55 +20,53 @@ Please read more about [events in the documentation](https://docs.onflow.org/cad
 You can import the entire package and access the function:
 
 ```typescript
-import * as sdk from "@onflow/sdk"
+import * as sdk from '@onflow/sdk';
 
-sdk.getEventsAtBlockIds(eventType, blockIds)
+sdk.getEventsAtBlockIds(eventType, blockIds);
 ```
 
 Or import directly the specific function:
 
 ```typescript
-import { getEventsAtBlockIds } from "@onflow/sdk"
+import { getEventsAtBlockIds } from '@onflow/sdk';
 
-getEventsAtBlockIds(eventType, blockIds)
+getEventsAtBlockIds(eventType, blockIds);
 ```
 
 ## Usage
 
 ```typescript
-import * as fcl from "@onflow/fcl";
+import * as fcl from '@onflow/fcl';
 
-const events = await fcl.send([
-  fcl.getEventsAtBlockIds("A.7e60df042a9c0868.FlowToken.TokensWithdrawn", [
-    "c4f239d49e96d1e5fbcf1f31027a6e582e8c03fcd9954177b7723fdb03d938c7",
-    "5dbaa85922eb194a3dc463c946cc01c866f2ff2b88f3e59e21c0d8d00113273f"
+const events = await fcl
+  .send([
+    fcl.getEventsAtBlockIds('A.7e60df042a9c0868.FlowToken.TokensWithdrawn', [
+      'c4f239d49e96d1e5fbcf1f31027a6e582e8c03fcd9954177b7723fdb03d938c7',
+      '5dbaa85922eb194a3dc463c946cc01c866f2ff2b88f3e59e21c0d8d00113273f',
+    ]),
   ])
-]).then(fcl.decode);
+  .then(fcl.decode);
 ```
 
 ## Parameters
 
-### `eventType` 
-
+### `eventType`
 
 - Type: `string`
 - Description: The type of event to get
 
-### `blockIds` 
-
+### `blockIds`
 
 - Type: `string[]`
 - Description: The ids of the blocks to scan for events
-
 
 ## Returns
 
 ```typescript
 export type InteractionBuilderFn = (
-  ix: Interaction
-) => Interaction | Promise<Interaction>
+  ix: Interaction,
+) => Interaction | Promise<Interaction>;
 ```
-
 
 A function that processes an interaction object
 

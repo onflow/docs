@@ -55,7 +55,7 @@ More on this [here](./node-migration.md)
 
 ### Where can I find how many nodes are currently running Flow?
 
-If you are running a node, then you most definitely have this information on your node in the file `<your bootstrap dir>/public-root-information/node-infos.pub.json`. If you are not running a node, you can find this information by using a Cadence script to query the [Staking Smart Contract](../../../build/core-contracts/06-staking-contract-reference.md) (or check [Flowdiver](https://flowdiver.io/staking/overview))
+If you are running a node, then you most definitely have this information on your node in the file `<your bootstrap dir>/public-root-information/node-infos.pub.json`. If you are not running a node, you can find this information by using a Cadence script to query the [Staking Smart Contract](../../../build/cadence/core-contracts/06-staking-contract-reference.md) (or check [Flowdiver](https://flowdiver.io/staking/overview))
 
 ### Why do I need to update my node's ulimit?
 

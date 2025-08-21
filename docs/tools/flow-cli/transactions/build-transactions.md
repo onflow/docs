@@ -5,12 +5,13 @@ sidebar_position: 3
 ---
 
 The Flow CLI provides a command to build a transactions with options to specify
-authorizer accounts, payer account and proposer account. 
+authorizer accounts, payer account and proposer account.
 
 The `build` command doesn't produce any signatures and instead
-is designed to be used with the `sign` and `send-signed` commands. 
+is designed to be used with the `sign` and `send-signed` commands.
 
 Use this functionality in the following order:
+
 1. Use this command (`build`) to build the transaction.
 2. Use the `sign` command to sign with each account specified in the build process.
 3. Use the `send-signed` command to submit the signed transaction to the Flow network.
@@ -32,7 +33,7 @@ ID		e8c0a69952fbe50a66703985e220307c8d44b8fa36c76cbca03f8c43d0167847
 Payer		e03daebed8ca0615
 Authorizers	[f3fcd2c1a78f5eee]
 
-Proposal Key:	
+Proposal Key:
     Address	179b6b1cb6755e31
     Index	0
     Sequence	1
@@ -66,6 +67,7 @@ f9013df90138b8d17472616e...73616374696f6e286eeec0c0
 ```
 
 JSON arguments from a file example:
+
 ```shell
 > flow transactions build tx1.cdc --args-json "$(cat args.json)"
 ```
@@ -81,12 +83,13 @@ The first argument is a path to a Cadence file containing the
 transaction to be executed.
 
 ### Arguments
+
 - Name: `argument`
 - Valid inputs: valid [cadence values](https://cadencelang.dev/docs/1.0/json-cadence-spec)
   matching argument type in transaction code.
 
 Input arguments values matching corresponding types in the source code and passed in the same order.
-For passing complex argument values see [send transaction](./send-transactions.md#example-usage) document. 
+For passing complex argument values see [send transaction](./send-transactions.md#example-usage) document.
 
 ## Flags
 
@@ -97,7 +100,7 @@ For passing complex argument values see [send transaction](./send-transactions.m
 - Default: service account
 
 Specify account address that will be paying for the transaction.
-Read more about payers [here](../../../build/basics/transactions.md).
+Read more about payers [here](../../../build/cadence/basics/transactions.md).
 
 ### Proposer
 
@@ -123,7 +126,7 @@ Specify key index for the proposer account.
 - Default: service account
 
 Additional authorizer addresses to add to the transaction.
-Read more about authorizers [here](../../../build/basics/transactions.md).
+Read more about authorizers [here](../../../build/cadence/basics/transactions.md).
 
 ### Arguments JSON
 
@@ -224,4 +227,3 @@ files by using `-f` flag multiple times.
 - Default: `false`
 
 Skip version check during start up to speed up process for slow connections.
-

@@ -21,7 +21,7 @@ If these are not set, FCL defaults to using the current user for all roles.
 `fcl.mutate` will return a `transactionId`. We can pass the response directly to `fcl.tx` and then use the `onceExecuted` method which resolves a promise when a transaction result is available.
 
 ```javascript
-import * as fcl from "@onflow/fcl"
+import * as fcl from '@onflow/fcl';
 
 const transactionId = await fcl.mutate({
   cadence: `
@@ -33,11 +33,11 @@ const transactionId = await fcl.mutate({
   `,
   proposer: fcl.currentUser,
   payer: fcl.currentUser,
-  limit: 50
-})
+  limit: 50,
+});
 
-const transaction = await fcl.tx(transactionId).onceExecuted()
-console.log(transaction) // The transactions status and events after being executed
+const transaction = await fcl.tx(transactionId).onceExecuted();
+console.log(transaction); // The transactions status and events after being executed
 ```
 
 ## Authorizing a Transaction
@@ -51,7 +51,7 @@ Four authorizations means four `&Account`s as arguments passed to `prepare`. In 
 These authorizations are important as you can only access/modify an accounts storage if you have the said accounts authorization.
 
 ```javascript
-import * as fcl from "@onflow/fcl"
+import * as fcl from '@onflow/fcl';
 
 const transactionId = await fcl.mutate({
   cadence: `
@@ -67,61 +67,59 @@ const transactionId = await fcl.mutate({
   proposer: fcl.currentUser,
   payer: fcl.currentUser,
   authorizations: [fcl.currentUser],
-  limit: 50
-})
+  limit: 50,
+});
 
-const transaction = await fcl.tx(transactionId).onceExecuted()
-console.log(transaction) // The transactions status and events after being executed
+const transaction = await fcl.tx(transactionId).onceExecuted();
+console.log(transaction); // The transactions status and events after being executed
 ```
 
 To learn more about `mutate`, check out the [API documentation](./packages-docs/fcl/mutate.md).
 
 ## Transaction Finality
 
-As of **FCL v1.15.0**, it is now recommended to use use `onceExecuted` in most cases, leading to a 2.5x reduction in latency when waiting for a transaction result.  For example, the following code snippet should be updated from:
+As of **FCL v1.15.0**, it is now recommended to use use `onceExecuted` in most cases, leading to a 2.5x reduction in latency when waiting for a transaction result. For example, the following code snippet should be updated from:
 
 ```ts
-import * as fcl from "@onflow/fcl"
-const result = await fcl.tx(txId).onceSealed()
+import * as fcl from '@onflow/fcl';
+const result = await fcl.tx(txId).onceSealed();
 ```
 
 to:
 
 ```ts
-import * as fcl from "@onflow/fcl"
-const result = await fcl.tx(txId).onceExecuted()
+import * as fcl from '@onflow/fcl';
+const result = await fcl.tx(txId).onceExecuted();
 ```
 
-Developers manually subscribing to transaction statuses should update their listeners to treat "executed" as the final status (see the release notes [here](https://github.com/onflow/fcl-js/releases/tag/%40onflow%2Ffcl%401.15.0)).  For example, the following code snippet should be updated from:
+Developers manually subscribing to transaction statuses should update their listeners to treat "executed" as the final status (see the release notes [here](https://github.com/onflow/fcl-js/releases/tag/%40onflow%2Ffcl%401.15.0)). For example, the following code snippet should be updated from:
 
 ```ts
-import * as fcl from "@onflow/fcl"
-import { TransactionExecutionStatus } from "@onflow/typedefs"
+import * as fcl from '@onflow/fcl';
+import { TransactionExecutionStatus } from '@onflow/typedefs';
 
 fcl.tx(txId).subscribe((txStatus) => {
-  if (
-    txStatus.status === TransactionExecutionStatus.SEALED
-  ) {
-    console.log("Transaction executed!")
+  if (txStatus.status === TransactionExecutionStatus.SEALED) {
+    console.log('Transaction executed!');
   }
-})
+});
 ```
 
 ```ts
-import * as fcl from "@onflow/fcl"
-import { TransactionExecutionStatus } from "@onflow/typedefs"
+import * as fcl from '@onflow/fcl';
+import { TransactionExecutionStatus } from '@onflow/typedefs';
 
 fcl.tx(txId).subscribe((txStatus) => {
   if (
     // SEALED status is no longer necessary
     txStatus.status === TransactionExecutionStatus.EXECUTED
   ) {
-    console.log("Transaction executed!")
+    console.log('Transaction executed!');
   }
-})
+});
 ```
 
-The "executed" status corresponds to soft finality, indicating that the transaction has been included in a block and a transaction status is available, backed by a cryptographic proof.  Only in rare cases should a developer need to wait for "sealed" status in their applications and you can learn more about the different transaction statuses on Flow [here](../../../build/basics/transactions.md#transaction-status).
+The "executed" status corresponds to soft finality, indicating that the transaction has been included in a block and a transaction status is available, backed by a cryptographic proof. Only in rare cases should a developer need to wait for "sealed" status in their applications and you can learn more about the different transaction statuses on Flow [here](../../../build/cadence/basics/transactions.md#transaction-status).
 
 See the following video for demonstration of how to update your code to wait for "executed" status:
 

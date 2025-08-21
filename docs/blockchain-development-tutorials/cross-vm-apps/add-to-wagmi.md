@@ -515,6 +515,6 @@ For a complete reference implementation, check out the [FCL + RainbowKit + wagmi
 [FCL + RainbowKit + wagmi Integration Demo]: https://github.com/jribbink/cross-vm-app
 [FCL-JS]: https://github.com/onflow/fcl-js
 [Testnet Cadence Flowscan]: https://testnet.flowscan.io
-[Cadence Owned Accounts]: ../../build/basics/accounts.md
+[Cadence Owned Accounts]: ../../build/cadence/basics/accounts.md
 [Testnet EVM Flowscan]: https://evm-testnet.flowscan.io
 [pre-built utility from the `@onflow/react-sdk`]: ../../tools/react-sdk/index.mdx#usecrossvmbatchtransaction

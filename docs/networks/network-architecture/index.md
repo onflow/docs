@@ -86,8 +86,8 @@ Every transaction is still validated by the network - but **each node only handl
 
 In the next section, lets look at how Flow multi-role architecture solves those three big problems with blockchains.
 
-[MEV-resistant]: ../../build/basics/mev-resistance.md
+[MEV-resistant]: ../../build/cadence/basics/mev-resistance.md
 [user safety]: ./user-safety.md
-[MEV-resistance]: ../../build/basics/mev-resistance.md
-[account abstraction]: ../../build/basics/accounts.md
+[MEV-resistance]: ../../build/cadence/basics/mev-resistance.md
+[account abstraction]: ../../build/cadence/basics/accounts.md
 [EVM equivalence]: ../../evm/about.md

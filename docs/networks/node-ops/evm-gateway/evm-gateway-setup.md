@@ -8,12 +8,12 @@ import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
 This guide is for running the [EVM Gateway](https://github.com/onflow/flow-evm-gateway) node on Flow. The EVM Gateway implements the
-[Ethereum JSON-RPC specification](https://ethereum.org/en/developers/docs/apis/json-rpc/) and is the only node type which accepts EVM 
-client connections. 
+[Ethereum JSON-RPC specification](https://ethereum.org/en/developers/docs/apis/json-rpc/) and is the only node type which accepts EVM
+client connections.
 
-The EVM Gateway consumes Flow protocol state from the configured Flow Access Node and persists the indexed EVM state locally to 
-service EVM client requests. It submits EVM transactions it receives into the Flow network, wrapped in a Cadence transaction, and 
-mutating EVM state when executed. Non-mutating RPC methods only query the local state index of the gateway and are never forwarded 
+The EVM Gateway consumes Flow protocol state from the configured Flow Access Node and persists the indexed EVM state locally to
+service EVM client requests. It submits EVM transactions it receives into the Flow network, wrapped in a Cadence transaction, and
+mutating EVM state when executed. Non-mutating RPC methods only query the local state index of the gateway and are never forwarded
 to Access Nodes. It does not participate in the block production process and requires no stake.
 
 ## Anyone can run EVM Gateway
@@ -24,7 +24,7 @@ with no middleware, giving you full control.
 
 If you are just getting started building your application, you can use the [public EVM Gateway](https://developers.flow.com/evm/networks).
 Applications generating high call volumes to the JSON-RPC may have hit rate limits on Flow public EVM Gateway and may benefit from running their
-own gateway to remove rate limits. Self-hosted gateways connect directly to public Flow Access Nodes, which may also optionally be [run](../access-nodes/access-node-setup.md). 
+own gateway to remove rate limits. Self-hosted gateways connect directly to public Flow Access Nodes, which may also optionally be [run](../access-nodes/access-node-setup.md).
 
 :::info
 
@@ -41,29 +41,30 @@ Alternatively, you can also choose from any of the following providers who provi
 
 ## Hardware specifications
 
-The EVM Gateway is a lightweight node which runs on commodity hardware and cloud VMs. It can be run on GCP **standard** and AWS **large** 
-VM types for low to moderate volume app co-location use-cases. However, higher volume use cases may require larger instance types and more 
-testing. An inactive node requires less than 200MB memory when run in Docker and data storage growth corresponds with Flow EVM transaction 
-growth. Listed below are theoretical RPS maximums based on Flow mainnet CPU and memory resource utilization metrics and linear scaling assumptions. 
+The EVM Gateway is a lightweight node which runs on commodity hardware and cloud VMs. It can be run on GCP **standard** and AWS **large**
+VM types for low to moderate volume app co-location use-cases. However, higher volume use cases may require larger instance types and more
+testing. An inactive node requires less than 200MB memory when run in Docker and data storage growth corresponds with Flow EVM transaction
+growth. Listed below are theoretical RPS maximums based on Flow mainnet CPU and memory resource utilization metrics and linear scaling assumptions.
 
 ### Google Cloud Platform (GCP) VM Types
 
-| VM Type   | vCPUs | Memory (GB) | Estimated Max Requests/s |
-| --------- |-------|-------------|--------------------------|
-| n2-standard-2	| 2	    | 8           | ~2,950                   |
+| VM Type        | vCPUs | Memory (GB) | Estimated Max Requests/s |
+| -------------- | ----- | ----------- | ------------------------ |
+| n2-standard-2  | 2     | 8           | ~2,950                   |
 | c4a-standard-1 | 1     | 4           | ~1,475                   |
 | c4a-standard-2 | 2     | 8           | ~2,950                   |
-| n2-highmem-4 | 4     | 32          | ~11,800                  |
-| c3-standard-8 | 8     | 32          | ~29,500                  |
+| n2-highmem-4   | 4     | 32          | ~11,800                  |
+| c3-standard-8  | 8     | 32          | ~29,500                  |
 
 ### Amazon Web Services (AWS) EC2 Instance Types
-| Instance Type	| vCPUs	 | Memory (GB) | Estimated Max Requests/s | 
-| --------- |--------|-------------|--------------------------|
-| m6i.large	| 2	     | 8           | ~2,950                   | 
-| c6i.large	| 2	     | 4	| ~3,687                   | 
-| m6i.xlarge	| 4      | 	16 | 	~11,800                 |
-| c6i.2xlarge	| 8      | 	16| 	~29,500                 | 
-| t3.2xlarge	| 8	| 32	| ~17,700                  | 
+
+| Instance Type | vCPUs | Memory (GB) | Estimated Max Requests/s |
+| ------------- | ----- | ----------- | ------------------------ |
+| m6i.large     | 2     | 8           | ~2,950                   |
+| c6i.large     | 2     | 4           | ~3,687                   |
+| m6i.xlarge    | 4     | 16          | ~11,800                  |
+| c6i.2xlarge   | 8     | 16          | ~29,500                  |
+| t3.2xlarge    | 8     | 32          | ~17,700                  |
 
 # How To Run EVM Gateway
 
@@ -81,16 +82,16 @@ It is acceptable to create a single Cadence account for the COA and use the EVM 
 
 ### Create Flow account to use for COA
 
-If you don't already have a Flow account you will need to create one. 
+If you don't already have a Flow account you will need to create one.
 
 <Tabs>
 <TabItem value="mainnet" label="Mainnet">
 
-   1. Install [Flow Wallet](https://wallet.flow.com/)
-   2. Once installed you will be able to copy the wallet address, similar to _0x1844efeb3fef2242_
-   3. Obtain account private key from
-   <pre>Settings -> Account List -> Choose Main account -> Private Key -> [Password prompt]</pre>
-   4. Ensure the wallet is funded from a CEX or other wallet
+1.  Install [Flow Wallet](https://wallet.flow.com/)
+2.  Once installed you will be able to copy the wallet address, similar to _0x1844efeb3fef2242_
+3.  Obtain account private key from
+<pre>Settings -> Account List -> Choose Main account -> Private Key -> [Password prompt]</pre>
+4.  Ensure the wallet is funded from a CEX or other wallet
 
 </TabItem>
 <TabItem value="testnet" label="Testnet">
@@ -100,8 +101,10 @@ Install [Flow CLI](https://developers.flow.com/tools/flow-cli/install) if not al
 ```bash
 flow keys generate
 ```
+
 This will output something similar to:
 `
+
 ```bash
 🔴️ Store private key safely and don't share with anyone!
 Private Key 		 3cf8334d.....95c3c54a28e4ad1
@@ -118,13 +121,13 @@ Visit https://faucet.flow.com/, and use the generated `Public Key`, to create an
 
 ## Step 2 - Build the gateway
 
-To run EVM Gateway on bare metal or in a VM without the use of docker, select the '_Build from source_' tab otherwise refer to the 
-'_Build using Docker_' tab. 
+To run EVM Gateway on bare metal or in a VM without the use of docker, select the '_Build from source_' tab otherwise refer to the
+'_Build using Docker_' tab.
 
 <Tabs>
 <TabItem value="source-build" label="Build from source">
 
-This will build the EVM gateway binary from source. 
+This will build the EVM gateway binary from source.
 
 ```bash
 git clone https://github.com/onflow/flow-evm-gateway.git
@@ -151,6 +154,7 @@ make docker-build
 <TabItem value="docker-install" label="Use Docker registry image">
 
 Registry versions available for download can be found [here](https://console.cloud.google.com/artifacts/docker/dl-flow-devex-production/us-west1/development/flow-evm-gateway).
+
 ```bash
 docker pull us-west1-docker.pkg.dev/dl-flow-devex-production/development/flow-evm-gateway:${VERSION}
 ```
@@ -160,20 +164,20 @@ docker pull us-west1-docker.pkg.dev/dl-flow-devex-production/development/flow-ev
 
 ## Step 3 - Start Your Node
 
-Operators will need to refer to the gateway [configuration flags](https://github.com/onflow/flow-evm-gateway?tab=readme-ov-file#configuration-flags) and make adjustments that align with the desired 
-deployment topology. 
+Operators will need to refer to the gateway [configuration flags](https://github.com/onflow/flow-evm-gateway?tab=readme-ov-file#configuration-flags) and make adjustments that align with the desired
+deployment topology.
 
 ### EVM Coinbase address
 
 If this is your first time setting up the gateway we need to ensure that an EVM COA or EOA address is available to configure the `COINBASE`. This account
-can be an account created using Metamask or other web3.js wallet, or otherwise can be the EVM address corresponding to the Flow Wallet COA account created above. 
+can be an account created using Metamask or other web3.js wallet, or otherwise can be the EVM address corresponding to the Flow Wallet COA account created above.
 
 If you haven't already got an EVM address and you have the COA account created by Flow Wallet above then follow the steps below:
 
-* Click top left burger icon to show current profile
-* Click 'Enable the path to Flow EVM' button
-* Your EVM account will now be available to use in the left nav account view
-* When you switch to that account you can obtain its EVM address
+- Click top left burger icon to show current profile
+- Click 'Enable the path to Flow EVM' button
+- Your EVM account will now be available to use in the left nav account view
+- When you switch to that account you can obtain its EVM address
 
 ### COA Address and Key
 
@@ -198,7 +202,8 @@ export GAS_PRICE="100" # operators can set this to 0 for zero cost transactions.
 # testnet: access-001.devnet51.nodes.onflow.org:9000
 # mainnet: access-001.mainnet25.nodes.onflow.org:9000
 ```
-ACCESS_NODE_SPORK_HOSTS is used by the gateway to track state across Flow sporks. These are generally infrequent with only one planned 
+
+ACCESS_NODE_SPORK_HOSTS is used by the gateway to track state across Flow sporks. These are generally infrequent with only one planned
 spork per year. A canonical list of required hosts can be found in the EVM Gateway [Makefile](https://github.com/onflow/flow-evm-gateway/blob/main/Makefile#L9).
 
 <Tabs>
@@ -260,19 +265,20 @@ journalctl -u gateway.service -f -n 100
 </TabItem>
 <TabItem value="docker-build" label="Run with Docker">
 
-It may be necessary to make local changes to the `docker-run` target to add params which are needed for your requirements. If you pulled a 
-specific image from the gateway container registry ensure that the `$VERSION` environment variable is set to the same as the image version 
+It may be necessary to make local changes to the `docker-run` target to add params which are needed for your requirements. If you pulled a
+specific image from the gateway container registry ensure that the `$VERSION` environment variable is set to the same as the image version
 you pulled.
 
 ```bash
 cd flow-evm-gateway
 make docker-run
 ```
+
 Additional options are available as follows
 
 ```bash
-DOCKER_RUN_DETACHED=true 
-DOCKER_HOST_MOUNT=[host mount directory] 
+DOCKER_RUN_DETACHED=true
+DOCKER_HOST_MOUNT=[host mount directory]
 DOCKER_HOST_PORT=[desired port to expose on host]
 DOCKER_HOST_METRICS_PORT=[desired port to expose on host for metrics]
 
@@ -287,36 +293,37 @@ make DOCKER_RUN_DETACHED=true DOCKER_HOST_PORT=1234 DOCKER_HOST_MOUNT=/my/host/d
 ### Startup bootstrap indexing
 
 Once your EVM Gateway is up and running you will see it indexing the Flow network which was configured. At the present time this
-is a lengthy process (possibly 1-3 days, depending on CPU core count) during which time the gateway will not respond to queries. 
+is a lengthy process (possibly 1-3 days, depending on CPU core count) during which time the gateway will not respond to queries.
 Once the data is fully indexed the gateway can serve requests to clients.
 
-To speed up gateway setup we recommend backing up the `/${GATEWAY_HOME_DIR}/data` directory to use when creating additional nodes 
-using the same release version. We are currently working on an export/import feature that will enable gateway operators to 
+To speed up gateway setup we recommend backing up the `/${GATEWAY_HOME_DIR}/data` directory to use when creating additional nodes
+using the same release version. We are currently working on an export/import feature that will enable gateway operators to
 store state snapshots to bootstrap newly created nodes without the delay.
 
 :::note
 
-If you are upgrading the gateway from pre-v1.0.0 release versions the indexed data directory will need to be reindexed from genesis. 
-You will not be able to re-use the DB data dir from the previous versions. 
+If you are upgrading the gateway from pre-v1.0.0 release versions the indexed data directory will need to be reindexed from genesis.
+You will not be able to re-use the DB data dir from the previous versions.
 
 :::
 
 ### Account and Key Management
 
-When operating an EVM Gateway it is important to understand how keys are configured and used. Each gateway instance 
-must be configured with a Flow account address, which is sufficiently funded and which it uses to pay to wrap EVM transactions into a 
-Cadence transaction when submitting to the Flow Access Node. This can be configured with a standalone private key file for 
+When operating an EVM Gateway it is important to understand how keys are configured and used. Each gateway instance
+must be configured with a Flow account address, which is sufficiently funded and which it uses to pay to wrap EVM transactions into a
+Cadence transaction when submitting to the Flow Access Node. This can be configured with a standalone private key file for
 the `--coa-key` config flag. Alternatively, you may also use cloud KMS providers per the guidance below.
 
 #### COA Account signing key rotation
 
 The gateway implements a signing key rotation scheme to scale the use of the `COA_KEY` and enable it to be used across many
 EVM client transactions. This is configured by reusing the COA public key to create new on-chain signing keys. Although it may seem
-counter-intuitive to use the same COA public key when creating new signing keys, the newly added keys all occupy different 
-key slots on the account which enables the gateway to support concurrent transaction signing without causing [nonce collisions](https://developers.flow.com/build/advanced-concepts/scaling#problem) 
-for EVM clients. 
+counter-intuitive to use the same COA public key when creating new signing keys, the newly added keys all occupy different
+key slots on the account which enables the gateway to support concurrent transaction signing without causing [nonce collisions](https://developers.flow.com/build/cadence/advanced-concepts/scaling#problem)
+for EVM clients.
 
 Assuming there is already one key on the account, the following example transaction adds 100 copies of that key:
+
 ```swift
 transaction {
     prepare(signer: auth(AddKey) &Account) {
@@ -332,28 +339,28 @@ transaction {
 	}
 }
 ```
+
 Signing keys which are added to the COA account are required to use the same hashing algorithm as the key being copied.
 
 If keys are added while the gateway is running it will need to be restarted to make use of the new keys.
 
 :::note
 
-If you are operating your EVM Gateway(s) to relay traffic for Flow EVM, or if you otherwise anticipate high volumes of 
+If you are operating your EVM Gateway(s) to relay traffic for Flow EVM, or if you otherwise anticipate high volumes of
 transactions we recommend configuring 2000 signing keys or more. Signing key utilization increases proportionately
 with transaction throughput growth.
 
-A large number of keys are recommended for live networks because keys have a lengthy cool down period of 600 blocks (approx 10 minutes) 
+A large number of keys are recommended for live networks because keys have a lengthy cool down period of 600 blocks (approx 10 minutes)
 before they are re-used. This is to avoid nonce collisions from re-using the key too soon.
 
 :::
 
 You can track signing key utilization as a metric, see `evm_gateway_available_signing_keys` below.
 
-
 #### KMS Configuration
 
-EVM Gateway allows for Google and AWS Key Management Service (KMS) integration, which is the recommended way of setting up the gateway 
-for live networks. It is only required to configure a single KMS key for the Flow account configured as the gateway `COA_ACCOUNT`. 
+EVM Gateway allows for Google and AWS Key Management Service (KMS) integration, which is the recommended way of setting up the gateway
+for live networks. It is only required to configure a single KMS key for the Flow account configured as the gateway `COA_ACCOUNT`.
 
 ```
 --coa-cloud-kms-project-id=your-project-kms-id \
@@ -364,20 +371,21 @@ for live networks. It is only required to configure a single KMS key for the Flo
 
 ### Monitoring and Metrics
 
-The EVM Gateway reports Prometheus metrics which are a way to monitor the gateway's availability and progress. The database folder 
-size may also need to be monitored to prevent disk full issues. 
+The EVM Gateway reports Prometheus metrics which are a way to monitor the gateway's availability and progress. The database folder
+size may also need to be monitored to prevent disk full issues.
 
 **Metric labels**
+
 ```bash
 evm_gateway_api_errors_total # Total count of API errors for period
 evm_gateway_api_request_duration_seconds_bucket # Histogram metric buckets for API request durations
 evm_gateway_api_request_duration_seconds_count # Histogram metric API request count for period
 evm_gateway_api_request_duration_seconds_sum # Histogram metric API request sum of values for period
 evm_gateway_api_server_panics_total # Total count of server panics for period
-evm_gateway_blocks_indexed_total  # Total count of EVM blocks indexed 
-evm_gateway_cadence_block_height  # Cadence block height 
+evm_gateway_blocks_indexed_total  # Total count of EVM blocks indexed
+evm_gateway_cadence_block_height  # Cadence block height
 evm_gateway_evm_account_interactions_total # Count of unique accounts observed for period
-evm_gateway_evm_block_height # EVM block height 
+evm_gateway_evm_block_height # EVM block height
 evm_gateway_operator_balance # Gateway node COA operator account balance
 evm_gateway_trace_download_errors_total # Total count of trace download errors
 evm_gateway_txs_indexed_total # Total count of indexed transactions
@@ -391,9 +399,11 @@ Alerts are recommended to be configured on server panics, low operator balance, 
 ```
 --metrics-port 8080 \
 ```
+
 ### Node Status
 
 For basic node status or keepalive monitoring we recommend automated checks on the following monotonically increasing counter:
+
 ```
 curl -s -XPOST 'your-evm-gw-host:8545' --header 'Content-Type: application/json' --data-raw '{"jsonrpc":"2.0","method":"eth_blockNumber","params":[],"id":1}' | jq -r '.result' | xargs printf "%d\n"
 10020239
@@ -401,7 +411,7 @@ curl -s -XPOST 'your-evm-gw-host:8545' --header 'Content-Type: application/json'
 
 ## Troubleshooting
 
-Join our [Discord](https://discord.com/invite/J6fFnh2xx6) and use the `#flow-evm` channel to ask any questions you may have about 
+Join our [Discord](https://discord.com/invite/J6fFnh2xx6) and use the `#flow-evm` channel to ask any questions you may have about
 EVM Gateway.
 
 ### No signing keys available
@@ -409,6 +419,7 @@ EVM Gateway.
 ```bash
 Failed to send transaction: no signing keys available
 ```
+
 This message indicates that the GW has used all its available signing keys. Please refer to the [Account and Key Management](./evm-gateway-setup#account-and-key-management) documentation to add more signing keys to your COA.
 
 ### Database version inconsistency/corruption
@@ -426,16 +437,18 @@ If you are running an Access Node on the same logical host as the EVM Gateway yo
 ```bash
 failure in event subscription at height ${INIT-CADENCE-HEIGHT}, with: recoverable: disconnected: error receiving event: rpc error: code = Unimplemented desc = unknown service flow.executiondata.ExecutionDataAPI”
 ```
+
 ```bash
 component execution data indexer initialization failed: could not verify checkpoint file: could not find expected root hash e6d4f4c755666c21d7456441b4d33d3521e5e030b3eae391295577e9130fd715 in checkpoint file which contains: [e10d3c53608a1f195b7969fbc06763285281f64595be491630a1e1bdfbe69161]
 ```
 
-To resolve this configure `--state-stream-addr` to use the same address/port combination which is set for Access Node `--rpc-addr`. 
+To resolve this configure `--state-stream-addr` to use the same address/port combination which is set for Access Node `--rpc-addr`.
 This is required by the gateway to allow both the streaming and non-streaming APIs to query using the same connection.
 
 ### Access Node not fully synced
 
 The following log entry will occur when the EVM Gateway attempts to sync with the Access Node but it has not yet synced up to latest block
+
 ```bash
 failure in event subscription at height ${INIT-CADENCE-HEIGHT}, with: recoverable: disconnected: error receiving event: rpc error: code = FailedPrecondition desc = could not get start height: failed to get lowest indexed height: index not initialized
 ```

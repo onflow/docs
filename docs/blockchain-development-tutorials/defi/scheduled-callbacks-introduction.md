@@ -614,7 +614,7 @@ Scheduled callbacks open up new possibilities for DeFi applications, enabling re
 [entitlement]: https://cadence-lang.org/docs/language/access-control#entitlements
 [storage]: https://cadence-lang.org/docs/language/accounts/storage
 [enum]: https://cadence-lang.org/docs/language/enumerations
-[vault]: https://developers.flow.com/build/guides/fungible-token#vaults-on-flow
+[vault]: https://developers.flow.com/build/cadence/guides/fungible-token#vaults-on-flow
 [authorized reference]: https://cadence-lang.org/docs/language/references#authorized-references
 [move]: https://cadence-lang.org/docs/language/operators/assign-move-force-swap#move-operator--
 [Flow CLI]: https://developers.flow.com/tools/flow-cli

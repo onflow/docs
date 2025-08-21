@@ -142,15 +142,15 @@ The [FLOW] (or $FLOW) token is the native currency for the Flow network. Develop
 [digital assets]: https://www.flow.com/post/flow-blockchain-cadence-programming-language-resources-assets
 [widespread popularity]: https://www.cnn.com/style/article/cryptokitty-blockchain/index.html
 [multi-role architecture]: https://www.flow.com/primer
-[onchain randomness]: ./advanced-concepts/randomness.md
+[onchain randomness]: ./cadence/advanced-concepts/randomness.md
 [paying $10+ USD per number]: https://docs.chain.link/vrf/v2-5/billing
-[ensure equitable access]: ./basics/mev-resistance.md
+[ensure equitable access]: ./cadence/basics/mev-resistance.md
 [scale without sharding]: https://www.flow.com/post/flow-blockchain-multi-node-architecture-advantages
 [a day]: https://docs.zksync.io/zk-stack/concepts/finality#finality-on-zksync-era
 [a week]: https://docs.optimism.io/stack/rollup/overview#fault-proofs
 [usually way less!]: https://evm.flowscan.io/stats
-[under 10 seconds]: ./basics/transactions.md#flow
-[signing roles]: ./basics/transactions.md#signer-roles
+[under 10 seconds]: ./cadence/basics/transactions.md#flow
+[signing roles]: ./cadence/basics/transactions.md#signer-roles
 [Cadence]: https://cadence-lang.org/
 [resource-oriented]: https://flow.com/post/resources-programming-ownership
 [Ethereum Virtual Machine (EVM)]: https://flow.com/upgrade/crescendo/evm.md
@@ -159,9 +159,9 @@ The [FLOW] (or $FLOW) token is the native currency for the Flow network. Develop
 [account abstraction]: https://flow.com/account-abstraction
 [bridge]: ../ecosystem/bridges.md
 [cross-vm apps]: ../blockchain-development-tutorials/cross-vm-apps/index.md
-[Getting Started]: ./getting-started/contract-interaction.md
-[core contracts]: ./core-contracts/index.md
-[FLOW]: ./core-contracts/03-flow-token.md
+[Getting Started]: ./cadence/getting-started/contract-interaction.md
+[core contracts]: ./cadence/core-contracts/index.md
+[FLOW]: ./cadence/core-contracts/03-flow-token.md
 [Flow Technical Primer]: https://www.flow.com/primer
 [Three technical whitepapers]: https://www.flow.com/technical-paper
 [Flow Token Economics]: https://www.flow.com/flow-token-economics

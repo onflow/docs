@@ -335,7 +335,7 @@ const config = {
             items: [
               {
                 label: 'Getting Started',
-                to: '/build/getting-started/contract-interaction',
+                to: '/build/cadence/getting-started/contract-interaction',
               },
               {
                 label: "SDK's & Tools",
@@ -346,7 +346,7 @@ const config = {
                 label: 'Cadence',
               },
               {
-                to: '/build/guides/mobile/overview',
+                to: '/build/cadence/guides/mobile/overview',
                 label: 'Mobile',
               },
               {
@@ -354,7 +354,7 @@ const config = {
                 label: 'FCL',
               },
               {
-                to: '/build/smart-contracts/testing',
+                to: '/build/cadence/smart-contracts/testing',
                 label: 'Testing',
               },
               {
@@ -424,7 +424,7 @@ const config = {
                 label: 'Cadence Cookbook',
               },
               {
-                to: '/build/core-contracts/',
+                to: '/build/cadence/core-contracts/',
                 label: 'Core Contracts & Standards',
               },
               {
@@ -632,8 +632,8 @@ const config = {
       {
         redirects: [
           {
-            to: '/build/smart-contracts/overview',
-            from: '/build/basics/smart-contracts',
+            to: '/build/cadence/smart-contracts/overview',
+            from: '/build/cadence/basics/smart-contracts',
           },
         ],
         createRedirects(existingPath) {

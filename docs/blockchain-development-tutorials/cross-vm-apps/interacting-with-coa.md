@@ -18,7 +18,7 @@ directly in `/storage/evm` as in these examples, but may instead be a part of a 
 
 To begin, we can take a look at a simplified version of the `EVM` contract, highlighting parts specific to COAs.
 
-You can learn more about the `EVM` contract [here](../../build/core-contracts/13-evm.md) and the full contract code can
+You can learn more about the `EVM` contract [here](../../build/cadence/core-contracts/13-evm.md) and the full contract code can
 be found on [GitHub](https://github.com/onflow/flow-go/tree/master/fvm/evm/stdlib/contract.cdc).
 
 ```cadence EVM.cdc
@@ -105,7 +105,7 @@ import EVM from 0x1234
 ```
 
 To find the deployment addresses of the `EVM` contract, you can refer to the [EVM contract
-documentation](../../build/core-contracts/13-evm.md).
+documentation](../../build/cadence/core-contracts/13-evm.md).
 
 ## Creating a COA
 
@@ -260,7 +260,7 @@ This is a basic example which only transfers tokens between a single user's COA 
 modified to transfer these tokens between any arbitrary accounts.
 
 You can also deposit tokens directly into other types of EVM accounts using the `EVM.EVMAddress.deposit` function. See
-the [EVM contract documentation](../../build/core-contracts/13-evm.md) for more information.
+the [EVM contract documentation](../../build/cadence/core-contracts/13-evm.md) for more information.
 
 :::
 

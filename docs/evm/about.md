@@ -1,6 +1,6 @@
 ---
 title: Flow – Fast EVM Equivalent Blockchain with Low Fees
-sidebar_label: Why EVM on Flow 
+sidebar_label: Why EVM on Flow
 sidebar_position: 1
 description: Build on Flow, a fast EVM equivalent blockchain with low fees. An Ethereum alternative for apps with seamless onboarding, MEV resilience, and scalability.
 keywords:
@@ -19,14 +19,14 @@ keywords:
   - developer experience
 ---
 
-# Why EVM on Flow 
+# Why EVM on Flow
 
 Flow is a [fast EVM equivalent blockchain with low fees], making it an ideal **Ethereum alternative for apps** that need both performance and affordability. With EVM equivalency, Solidity developers can deploy existing contracts on Flow without rewriting code, instantly gaining access to Flow’s ultra-fast transactions, low costs, and mainstream scalability. Builders can tap into Flow’s unique IPs and large user base with no implementation risk.
 
 ## Seamless Integration for Ethereum Developers
 
-Flow EVM is designed to work out-of-the-box with the Ethereum toolchain or other clients.  Native EVM transactions also continue to be supported when using Metamask and other EVM-compatible clients.
-EVM-equivalency on Flow works behind-the-scenes by  implementing a minimal transaction script in Cadence, Flow's smart contract language, to integrate Flow features with EVM. This is made possible because EVM transactions are composed and executed within Cadence transactions, enabling novel use-cases and patterns for integration.
+Flow EVM is designed to work out-of-the-box with the Ethereum toolchain or other clients. Native EVM transactions also continue to be supported when using Metamask and other EVM-compatible clients.
+EVM-equivalency on Flow works behind-the-scenes by implementing a minimal transaction script in Cadence, Flow's smart contract language, to integrate Flow features with EVM. This is made possible because EVM transactions are composed and executed within Cadence transactions, enabling novel use-cases and patterns for integration.
 
 ## Best-In-Class UX
 
@@ -42,13 +42,13 @@ EVM and Cadence environments both use FLOW as gas for transactions, sharing a si
 
 For sustainable user adoption, apps require the network they build on to be secure, efficient, affordable and fast. Gas fees are ultra-low cost on the network, but Flow goes a step further allowing for gasless experiences through sponsored transactions. Scalable performance is ensured with an innovative multi-node distributed consensus, flexible transaction model and horizontally scaled transaction linearization which solves proposer-builder separation, separation of compute, and settlement – all without sharding.
 
-Flow’s state space is extensible to the petabyte scale  making it easy to store application data on-chain. This means contracts can  maintain a full working dataset - including metadata - together with contract logic.
+Flow’s state space is extensible to the petabyte scale making it easy to store application data on-chain. This means contracts can maintain a full working dataset - including metadata - together with contract logic.
 
-Flow's transaction throughput peaked to 2M daily transactions during 2023 sustaining a similar average transaction volume as Ethereum. Unlike Ethereum, Flow has always operated well under its maximum throughput ceiling which is presently scalable to 5x more transactions with further performance optimizations to come when parallel execution is released. State scalability on Flow sets the foundations for further significant throughput optimization. 
+Flow's transaction throughput peaked to 2M daily transactions during 2023 sustaining a similar average transaction volume as Ethereum. Unlike Ethereum, Flow has always operated well under its maximum throughput ceiling which is presently scalable to 5x more transactions with further performance optimizations to come when parallel execution is released. State scalability on Flow sets the foundations for further significant throughput optimization.
 
 ## MEV Resilience
 
-The [MEV Resilient](../build/basics/mev-resistance.md) design on Flow offers DeFi builders improved market efficiency, fairness, trust and long-term viability for their apps. Since Flow EVM transactions are composed and executed within a Cadence transaction, block production is handled by Flow’s [multi-role architecture](https://flow.com/post/flow-blockchain-multi-node-architecture-advantages). This heterogeneity between node roles ensures that visibility into block proposal, assembly, asserting block validity and other correctness checks during the block production cycle exposes limited information to each node type on a need to know basis, observing the Principle of Least Privilege. These differences in node and consensus design results in strong economic disincentives for collusion because no individual node has full visibility into the state of block production for the chain. This robust MEV resilience is a significant difference from other EVM-compatible networks and results in reasonably priced, predictable gas fees. The impracticality of frontrunning or other attacks improves the user experience by eliminating failed transactions and invisible fees.
+The [MEV Resilient](../build/cadence/basics/mev-resistance.md) design on Flow offers DeFi builders improved market efficiency, fairness, trust and long-term viability for their apps. Since Flow EVM transactions are composed and executed within a Cadence transaction, block production is handled by Flow’s [multi-role architecture](https://flow.com/post/flow-blockchain-multi-node-architecture-advantages). This heterogeneity between node roles ensures that visibility into block proposal, assembly, asserting block validity and other correctness checks during the block production cycle exposes limited information to each node type on a need to know basis, observing the Principle of Least Privilege. These differences in node and consensus design results in strong economic disincentives for collusion because no individual node has full visibility into the state of block production for the chain. This robust MEV resilience is a significant difference from other EVM-compatible networks and results in reasonably priced, predictable gas fees. The impracticality of frontrunning or other attacks improves the user experience by eliminating failed transactions and invisible fees.
 
 ## Join the Community
 
@@ -73,4 +73,5 @@ Those wishing to understand the technical specifics of how Flow EVM works we rec
 Whether you’re porting an existing Solidity dApp or building from scratch, Flow offers a **fast, EVM equivalent blockchain with low fees** and the tooling you already know. As a **scalable Ethereum alternative for apps**, Flow combines familiar development workflows with performance and UX enhancements you can’t get elsewhere.
 
 <!-- Reference-style links, will not render on page. -->
+
 [fast EVM equivalent blockchain with low fees]: https://flow.com/
