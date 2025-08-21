@@ -1399,8 +1399,8 @@
       "permanent": true
     },
     {
-      "source": "/build/:path*",
-      "destination": "/build/cadence/:path*",
+      "source": "/build/(?!cadence|flow)(.*)",
+      "destination": "/build/cadence/$1",
       "permanent": true
     },
     {
