@@ -1446,7 +1446,7 @@
     {
       "source": "/build/guides/nft",
       "destination": "/build/cadence/guides/nft",
-    }
+    },
     {
       "source": "/evm/:path*",
       "destination": "/build/evm/:path*",
