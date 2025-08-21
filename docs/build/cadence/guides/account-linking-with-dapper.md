@@ -791,11 +791,11 @@ Reference solutions are functional, but may not be optimal.
 [Cadence]: https://cadence-lang.org/docs
 [Next.js]: https://nextjs.org/docs/app/getting-started/installation
 [Yarn]: https://yarnpkg.com
-[Flow CLI]: ../../../tools/flow-cli/index.md
-[other installation methods]: ../../../tools/flow-cli/install.md
-[initializes a project]: ../../../tools/flow-cli/super-commands.md#init
-[Flow Dependency Manager]: ../../../tools/flow-cli/dependency-manager.md
-[FCL]: ../../../tools/clients/fcl-js/index.md
+[Flow CLI]: ../../../build/tools/flow-cli/index.md
+[other installation methods]: ../../../build/tools/flow-cli/install.md
+[initializes a project]: ../../../build/tools/flow-cli/super-commands.md#init
+[Flow Dependency Manager]: ../../../build/tools/flow-cli/dependency-manager.md
+[FCL]: ../../../build/tools/clients/fcl-js/index.md
 [App Quickstart Guide]: ../getting-started/fcl-quickstart.md
 [Wallet Connect]: https://cloud.walletconnect.com/sign-in
 [Flow Wallet]: https://wallet.flow.com

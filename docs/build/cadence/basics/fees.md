@@ -165,7 +165,7 @@ access(all) fun main(address: Address): UFix64 {
 
 **Using Flow Emulator**
 
-You can start the [emulator using the Flow CLI](../../../tools/emulator/index.md#running-the-emulator-with-the-flow-cli). Run your transaction and take a look at the events emitted:
+You can start the [emulator using the Flow CLI](../../../build/tools/emulator/index.md#running-the-emulator-with-the-flow-cli). Run your transaction and take a look at the events emitted:
 
 ```shell
 0|emulator | time="2022-04-06T17:13:22-07:00" level=info msg="⭐  Transaction executed" computationUsed=3 txID=a782c2210c0c1f2a6637b20604d37353346bd5389005e4bff6ec7bcf507fac06

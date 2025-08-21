@@ -39,10 +39,10 @@ To get started with Cadence, we recommended covering the introductory tutorials 
 
 To build confidently, you will want to set up the appropriate local environment and have an adequate test suite to ensure your smart contracts operate as intended. To do this, familiarize yourself with the following tools:
 
-- [Flow CLI](../../../tools/flow-cli/index.md): A utility to directly interact with the chain and manage accounts and contracts.
-- [Flow Emulator](../../../tools/emulator/index.md): A lightweight server that simulates the Flow blockchain (strongly recommended during development).
+- [Flow CLI](../../../build/tools/flow-cli/index.md): A utility to directly interact with the chain and manage accounts and contracts.
+- [Flow Emulator](../../../build/tools/emulator/index.md): A lightweight server that simulates the Flow blockchain (strongly recommended during development).
 - [Flow Dev Wallet](https://github.com/onflow/fcl-dev-wallet/): A utility to simulate user wallets in development.
-- [Visual Studio Code Extension](../../../tools/vscode-extension/index.md): An IDE integration for developing smart contracts.
+- [Visual Studio Code Extension](../../../build/tools/vscode-extension/index.md): An IDE integration for developing smart contracts.
 
 ## Storing Data on Flow
 
@@ -76,12 +76,12 @@ The Flow blockchain has existing smart contract standards for both fungible and 
 
 ### Non-Fungible Tokens (NFTs)
 
-All NFTs on the Flow blockchain implement the [NonFungibleToken](../../../build/cadence/core-contracts/08-non-fungible-token.md) interface, allowing them to be compatible with wallets, marketplaces and other cross-app experiences.
+All NFTs on the Flow blockchain implement the [NonFungibleToken](../core-contracts/08-non-fungible-token.md) interface, allowing them to be compatible with wallets, marketplaces and other cross-app experiences.
 
 See the [NFT Guide](../guides/nft.md) for a guide on how to create a basic NFT contract
 that conforms to the standard.
 
-- [Non-Fungible Token (NFT) contract interface](../../../build/cadence/core-contracts/08-non-fungible-token.md)
+- [Non-Fungible Token (NFT) contract interface](../core-contracts/08-non-fungible-token.md)
 
 ### NFT Sales and Trading
 
@@ -91,9 +91,9 @@ Flow has a standard contract to facilitate both the direct sales and peer-to-pee
 
 ### Fungible Tokens
 
-Fungible tokens (i.e. coins, currencies) on the Flow blockchain, including the default cryptocurrency token FLOW, implement the [FungibleToken](../../../build/cadence/core-contracts/02-fungible-token.md) interface.
+Fungible tokens (i.e. coins, currencies) on the Flow blockchain, including the default cryptocurrency token FLOW, implement the [FungibleToken](../core-contracts/02-fungible-token.md) interface.
 
 See the [FT Guide](../guides/fungible-token.md) for a guide on how to create a basic fungible token
 contract that conforms to the standard.
 
-- [Fungible Token contract interface](../../../build/cadence/core-contracts/02-fungible-token.md)
+- [Fungible Token contract interface](../core-contracts/02-fungible-token.md)

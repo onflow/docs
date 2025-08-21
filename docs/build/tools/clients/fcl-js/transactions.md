@@ -119,7 +119,7 @@ fcl.tx(txId).subscribe((txStatus) => {
 });
 ```
 
-The "executed" status corresponds to soft finality, indicating that the transaction has been included in a block and a transaction status is available, backed by a cryptographic proof. Only in rare cases should a developer need to wait for "sealed" status in their applications and you can learn more about the different transaction statuses on Flow [here](../../../build/cadence/basics/transactions.md#transaction-status).
+The "executed" status corresponds to soft finality, indicating that the transaction has been included in a block and a transaction status is available, backed by a cryptographic proof. Only in rare cases should a developer need to wait for "sealed" status in their applications and you can learn more about the different transaction statuses on Flow [here](../../../cadence/basics/transactions.md#transaction-status).
 
 See the following video for demonstration of how to update your code to wait for "executed" status:
 

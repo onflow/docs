@@ -49,7 +49,7 @@ that allow developers to interact seamlessly with the Flow blockchain.
 
 If you haven't installed the Flow CLI yet and have [Homebrew](https://brew.sh/) installed,
 you can run `brew install flow-cli`. If you don't have Homebrew,
-please follow [the installation guide here](../../../tools/flow-cli/install.md).
+please follow [the installation guide here](../../../build/tools/flow-cli/install.md).
 
 ### Initializing a New Project
 

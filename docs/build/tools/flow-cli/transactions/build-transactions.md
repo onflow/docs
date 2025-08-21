@@ -100,7 +100,7 @@ For passing complex argument values see [send transaction](./send-transactions.m
 - Default: service account
 
 Specify account address that will be paying for the transaction.
-Read more about payers [here](../../../build/cadence/basics/transactions.md).
+Read more about payers [here](../../../cadence/basics/transactions.md).
 
 ### Proposer
 
@@ -126,7 +126,7 @@ Specify key index for the proposer account.
 - Default: service account
 
 Additional authorizer addresses to add to the transaction.
-Read more about authorizers [here](../../../build/cadence/basics/transactions.md).
+Read more about authorizers [here](../../../cadence/basics/transactions.md).
 
 ### Arguments JSON
 

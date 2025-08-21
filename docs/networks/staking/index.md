@@ -64,11 +64,11 @@ This timeframe is otherwise known as an **Epoch.**
 An **Epoch** is a roughly week-long period that the network uses
 to manage list of nodes and pay rewards.
 
-- Only a pre-determined set of nodes is authorized to participate in the protocol. 
-The set of authorized nodes is known to all network participants.
-This set is referred to as the **Identity Table**.
+- Only a pre-determined set of nodes is authorized to participate in the protocol.
+  The set of authorized nodes is known to all network participants.
+  This set is referred to as the **Identity Table**.
 - An **Epoch** is defined as a period of time, where the set of authorized nodes is constant
-(or can only shrink due to ejection of malicious nodes).
+  (or can only shrink due to ejection of malicious nodes).
 
 Every epoch, a list of committed nodes are chosen to be the staked nodes of the network.
 This list is called the **Identity Table (ID Table)**.
@@ -104,7 +104,7 @@ In the case of unstaking requests, they also must wait an additional
 epoch before their unstaked tokens are available to withdraw.
 This allows the protocol to deal with any slashable offenses that may have happened in the previous epoch.
 
-See the [Epochs](./04-epoch-preparation.md) section of the documentation for in-depth explanations 
+See the [Epochs](./04-epoch-preparation.md) section of the documentation for in-depth explanations
 of the identity table, epoch schedule, QC, and DKG.
 
 ## Rewards
@@ -135,7 +135,7 @@ You are joining a group of people from all around the world that are a part of a
 
 [Flow Port](https://port.onflow.org/) is a simple browser-based app for the Flow blockchain
 that provides functionality for sending, receiving, and staking tokens.
-Any wallet that uses the [Flow Client Library](../../tools/clients/fcl-js/index.md)
+Any wallet that uses the [Flow Client Library](../../build/tools/clients/fcl-js/index.md)
 is compatible with Flow Port.
 
 If you created your account using [Flow Port](https://port.onflow.org/),

@@ -27,13 +27,13 @@ Testing is an essential part of smart contract development to ensure the correct
 
 ## Install Flow CLI
 
-The [Flow CLI](../../../tools/flow-cli/index.md) is the primary tool for developing, testing, and deploying smart contracts to the Flow network.
+The [Flow CLI](../../../build/tools/flow-cli/index.md) is the primary tool for developing, testing, and deploying smart contracts to the Flow network.
 
-If you haven't installed the Flow CLI yet and have [homebrew](https://brew.sh/) installed, simply run `brew install flow-cli`. Alternatively, refer to the Flow CLI [installation instructions](../../../tools/flow-cli/install.md).
+If you haven't installed the Flow CLI yet and have [homebrew](https://brew.sh/) installed, simply run `brew install flow-cli`. Alternatively, refer to the Flow CLI [installation instructions](../../../build/tools/flow-cli/install.md).
 
 ## Create a new project
 
-In your preferred code editor, create a new directory for your project and navigate to it in the terminal. Then initialize a new Flow project by running the command `flow init`. This will create a `flow.json` config file that contains the [project's configuration](../../../tools/flow-cli/flow.json/configuration.md).
+In your preferred code editor, create a new directory for your project and navigate to it in the terminal. Then initialize a new Flow project by running the command `flow init`. This will create a `flow.json` config file that contains the [project's configuration](../../../build/tools/flow-cli/flow.json/configuration.md).
 
 ```bash
 mkdir test-cadence
@@ -216,7 +216,7 @@ By leveraging these advanced testing techniques, you can write more robust and r
 
 This is a basic example, and there are many more advanced features and techniques you can explore when working with the Cadence Testing Framework.
 
-For more in-depth tutorials and documentation, refer to the official [Cadence language documentation](https://cadence-lang.org/) and the [Flow CLI documentation](../../../tools/flow-cli/index.md).
+For more in-depth tutorials and documentation, refer to the official [Cadence language documentation](https://cadence-lang.org/) and the [Flow CLI documentation](../../../build/tools/flow-cli/index.md).
 
 ## Testing Requirements
 
@@ -238,7 +238,7 @@ In all three cases, the test code will need to deploy the contracts, configure a
 ### Cadence tests
 
 Cadence comes with built-in support for code coverage, as well as a native testing framework which allows developers to write their tests using Cadence.
-This framework is bundled with the [Flow CLI](../../../tools/flow-cli/index.md) tool, which includes a dedicated command for running tests (`flow test`).
+This framework is bundled with the [Flow CLI](../../../build/tools/flow-cli/index.md) tool, which includes a dedicated command for running tests (`flow test`).
 
 You can find examples of Cadence tests in the following projects: [hybrid-custody](https://github.com/onflow/hybrid-custody/tree/main/test), [flow-nft](https://github.com/onflow/flow-nft/tree/master/tests), [flow-ft](https://github.com/onflow/flow-ft/tree/master/tests).
 Visit the [documentation](https://cadence-lang.org/docs/testing-framework) to view all the available features.

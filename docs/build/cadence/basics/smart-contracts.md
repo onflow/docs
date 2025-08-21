@@ -16,7 +16,7 @@ keywords:
 
 # Smart Contracts
 
-Go to [Smart Contracts](../../../build/cadence/smart-contracts/overview.md)
+Go to [Smart Contracts](../smart-contracts/overview.md)
 
 import {Redirect} from '@docusaurus/router';
 

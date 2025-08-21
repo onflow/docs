@@ -34,7 +34,7 @@ description: -description-
 - Name: `address`
 - Valid Input: Flow account address
 
-Flow [account address](../../../build/cadence/basics/accounts.md) (prefixed with `0x` or not).
+Flow [account address](../../../cadence/basics/accounts.md) (prefixed with `0x` or not).
 
 ## Flags
 

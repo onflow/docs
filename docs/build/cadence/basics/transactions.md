@@ -450,7 +450,7 @@ You can use the Flow CLI to get an existing transaction by ID:
 flow transactions get 1ec90051e3bc74fc36cbd16fc83df08e463dda8f92e8e2193e061f9d41b2ad92 -n mainnet
 ```
 
-Find [more about the command in the CLI docs](../../../tools/flow-cli/get-flow-data/get-blocks.md).
+Find [more about the command in the CLI docs](../../../build/tools/flow-cli/get-flow-data/get-blocks.md).
 
 A user can define their own transactions or it can use already defined transactions by the contract authors that can be found by using the FLIX service.
 
@@ -462,8 +462,8 @@ Transactions can be submitted and obtained from the access node APIs, currently,
 
 There are multiple SDKs implementing the above APIs for different languages:
 
-[**Javascript SDK**](../../../tools/clients/fcl-js/index.md)
+[**Javascript SDK**](../../../build/tools/clients/fcl-js/index.md)
 
-[**Go SDK**](../../../tools/clients/flow-go-sdk/index.md)
+[**Go SDK**](../../../build/tools/clients/flow-go-sdk/index.md)
 
-Find a list of all SDKs [here](../../../tools/clients/index.md)
+Find a list of all SDKs [here](../../../build/tools/clients/index.md)

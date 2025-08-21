@@ -59,7 +59,7 @@ flow init
 
 Upon running this command, you'll be prompted to enter a project name. Enter a name and press `Enter`.
 
-You'll also be asked if you'd like to install any core contracts (such as `FungibleToken`, `NonFungibleToken`, etc.) using the [Dependency Manager](../../../tools/flow-cli/dependency-manager.md). For this tutorial, you can select `No`.
+You'll also be asked if you'd like to install any core contracts (such as `FungibleToken`, `NonFungibleToken`, etc.) using the [Dependency Manager](../../../build/tools/flow-cli/dependency-manager.md). For this tutorial, you can select `No`.
 
 The `init` command will create a new directory with the project name and the following files:
 
@@ -87,7 +87,7 @@ flow test
 
 :::tip
 
-For a more detailed guide on running Cadence tests, check out the [tests documentation](../../../tools/flow-cli/tests.md).
+For a more detailed guide on running Cadence tests, check out the [tests documentation](../../../build/tools/flow-cli/tests.md).
 
 :::
 
@@ -107,7 +107,7 @@ Your emulator will now be running.
 
 #### Creating an Account
 
-When you created a project you'll see that a `Counter` contract was added to your [`flow.json` configuration file](../../../tools/flow-cli/flow.json/configuration.md), but it's not set up for deployment yet. We could deploy it to the automatically created `emulator-account`, but for this example lets also create a new account on the emulator to deploy it to.
+When you created a project you'll see that a `Counter` contract was added to your [`flow.json` configuration file](../../../build/tools/flow-cli/flow.json/configuration.md), but it's not set up for deployment yet. We could deploy it to the automatically created `emulator-account`, but for this example lets also create a new account on the emulator to deploy it to.
 
 :::info
 
@@ -121,7 +121,7 @@ Leave your emulator running, and open a second terminal. Run the following comma
 flow accounts create
 ```
 
-When prompted, give your account the name `test-account` and select `Emulator` as the network. You'll now see this account in your [`flow.json`](../../../tools/flow-cli/flow.json/configuration.md).
+When prompted, give your account the name `test-account` and select `Emulator` as the network. You'll now see this account in your [`flow.json`](../../../build/tools/flow-cli/flow.json/configuration.md).
 
 #### Configuring the Deployment
 
@@ -161,13 +161,13 @@ That's it! You've just deployed your first contract to the Flow Emulator.
 flow project deploy --network=testnet
 ```
 
-Make sure you have a testnet account configured in your [`flow.json` file](../../../tools/flow-cli/flow.json/configuration.md) and that you have enough FLOW tokens to pay for deployment fees. You can get testnet FLOW tokens from the [Flow Testnet Faucet](https://faucet.flow.com/fund-account).
+Make sure you have a testnet account configured in your [`flow.json` file](../../../build/tools/flow-cli/flow.json/configuration.md) and that you have enough FLOW tokens to pay for deployment fees. You can get testnet FLOW tokens from the [Flow Testnet Faucet](https://faucet.flow.com/fund-account).
 
 :::
 
 :::warning
 
-You can't deploy the same contract to multiple accounts at the same time with the `deploy` command. If you've experimented with the above, you may need to manually edit the `"deployments"` property in [`flow.json`](../../../tools/flow-cli/flow.json/configuration.md) to remove extra deployments.
+You can't deploy the same contract to multiple accounts at the same time with the `deploy` command. If you've experimented with the above, you may need to manually edit the `"deployments"` property in [`flow.json`](../../../build/tools/flow-cli/flow.json/configuration.md) to remove extra deployments.
 
 :::
 
@@ -275,9 +275,9 @@ flow dependencies install testnet://8a4dce54554b225d.NumberFormatter
 
 When prompted for the account to deploy the contract to, select any account and ignore the prompt for an alias. This is if you wanted to configure a `mainnet` address for the contract.
 
-This will add the `NumberFormatter` contract and any of its dependencies to an `imports` directory in your project. It will also add any dependencies to your [`flow.json` file](../../../tools/flow-cli/flow.json/configuration.md). In addition, the prompt will configure the deployment of the contract to the account you selected. Make sure to select the `emulator-account` account to deploy the contract to the emulator.
+This will add the `NumberFormatter` contract and any of its dependencies to an `imports` directory in your project. It will also add any dependencies to your [`flow.json` file](../../../build/tools/flow-cli/flow.json/configuration.md). In addition, the prompt will configure the deployment of the contract to the account you selected. Make sure to select the `emulator-account` account to deploy the contract to the emulator.
 
-You'll then see the `NumberFormatter` in your deployments for emulator in your [`flow.json`](../../../tools/flow-cli/flow.json/configuration.md).
+You'll then see the `NumberFormatter` in your deployments for emulator in your [`flow.json`](../../../build/tools/flow-cli/flow.json/configuration.md).
 
 Now we can deploy the `NumberFormatter` contract to the emulator by running:
 
@@ -417,15 +417,15 @@ In this tutorial, we've accomplished all of our learning objectives:
 <!-- Relative-style links.  Does not render on the page -->
 
 [Flow Cadence VSCode Extension]: https://marketplace.visualstudio.com/items?itemName=onflow.cadence
-[Flow Command Line Interface]: ../../../tools/flow-cli/index.md
+[Flow Command Line Interface]: ../../../build/tools/flow-cli/index.md
 [Cadence]: https://cadence-lang.org/
-[configuration docs]: ../../../tools/flow-cli/flow.json/configuration.md
+[configuration docs]: ../../../build/tools/flow-cli/flow.json/configuration.md
 [homebrew]: https://brew.sh/
-[installation guide]: ../../../tools/flow-cli/install
+[installation guide]: ../../../build/tools/flow-cli/install
 [0xa1296b1e2e90ca5b]: https://contractbrowser.com/A.9dca641e9a4b691b.HelloWorld
-[Dependency Manager]: ../../../tools/flow-cli/dependency-manager
+[Dependency Manager]: ../../../build/tools/flow-cli/dependency-manager
 [basic scripts]: ../basics/scripts.md
 [basic transactions]: ../basics/transactions.md
-[`generate` documentation]: ../../../tools/flow-cli/boilerplate.md
-[`config` commands]: ../../../tools/flow-cli/flow.json/manage-configuration.md
+[`generate` documentation]: ../../../build/tools/flow-cli/boilerplate.md
+[`config` commands]: ../../../build/tools/flow-cli/flow.json/manage-configuration.md
 [`NumberFormatter`]: https://contractbrowser.com/A.8a4dce54554b225d.NumberFormatter

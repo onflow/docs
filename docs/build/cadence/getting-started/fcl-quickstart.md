@@ -448,11 +448,11 @@ For additional details and advanced usage, refer to the [@onflow/react-sdk docum
 
 [Step 1: Contract Interaction]: contract-interaction.md
 [Step 2: Local Development]: ./flow-cli.md
-[Wallet Discovery Guide]: ../../../tools/clients/fcl-js/discovery.md
-[`useFlowQuery`]: ../../../tools/react-sdk#useflowquery
-[`useFlowMutate`]: ../../../tools/react-sdk#useflowmutate
-[Dev Wallet]: ../../../tools/flow-dev-wallet
-[@onflow/react-sdk documentation]: ../../../tools/react-sdk/index.mdx
-[**@onflow/react-sdk**]: ../../../tools/react-sdk/index.mdx
-[Flow CLI]: ../../../tools/flow-cli/install.md
-[Cadence VSCode extension]: ../../../tools/vscode-extension
+[Wallet Discovery Guide]: ../../../build/tools/clients/fcl-js/discovery.md
+[`useFlowQuery`]: ../../../build/tools/react-sdk#useflowquery
+[`useFlowMutate`]: ../../../build/tools/react-sdk#useflowmutate
+[Dev Wallet]: ../../../build/tools/flow-dev-wallet
+[@onflow/react-sdk documentation]: ../../../build/tools/react-sdk/index.mdx
+[**@onflow/react-sdk**]: ../../../build/tools/react-sdk/index.mdx
+[Flow CLI]: ../../../build/tools/flow-cli/install.md
+[Cadence VSCode extension]: ../../../build/tools/vscode-extension

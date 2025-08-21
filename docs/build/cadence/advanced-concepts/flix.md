@@ -63,7 +63,7 @@ manually added "@ts-ignore" in generated file because of linting error. 'templat
 
 :::
 
-See the `hello-world-web` [README](https://github.com/onflow/hello-world-web/tree/main) for more information on how to generate and execute FLIX templates here [flow-cli flix](../../../tools/flow-cli/flix.md) commands
+See the `hello-world-web` [README](https://github.com/onflow/hello-world-web/tree/main) for more information on how to generate and execute FLIX templates here [flow-cli flix](../../../build/tools/flow-cli/flix.md) commands
 
 ### Clients
 
@@ -71,7 +71,7 @@ There are currently two clients that have integrated with FLIX that you can use:
 
 **Go client** [https://github.com/onflow/flixkit-go](https://github.com/onflow/flixkit-go)
 
-**FCL client you** read how to get started [tools/clients/fcl-js/interaction-templates](../../../tools/clients/fcl-js/interaction-templates.mdx)
+**FCL client you** read how to get started [tools/clients/fcl-js/interaction-templates](../../../build/tools/clients/fcl-js/interaction-templates.mdx)
 
 ## (Advanced) Running a FLIX API
 

@@ -34,4 +34,4 @@ If there is an issue, please use this link instead: https://testnet-faucet.onflo
 - Name: `address`
 - Valid Input: Flow Testnet account address.
 
-Flow [account address](../../../build/cadence/basics/accounts.md) (prefixed with `0x` or not).
+Flow [account address](../../../cadence/basics/accounts.md) (prefixed with `0x` or not).

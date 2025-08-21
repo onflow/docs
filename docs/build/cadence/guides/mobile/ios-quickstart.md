@@ -271,7 +271,7 @@ https://github.com/Outblock/fcl-android
 
 One of the easiest ways to connect to a wallet via a mobile native dApp is through Flow's new support for Wallet Connect 2.0. This is the pattern that Monster Maker uses to connect to the [Flow Wallet](https://wallet.flow.com/). For more information on FCL Wallet Connect 2.0, check out this page:
 
-[FCL Wallet Connect](../../../../tools/clients/fcl-js/wallet-connect.md)
+[FCL Wallet Connect](../../../../build/tools/clients/fcl-js/wallet-connect.md)
 
 **How to Build a Native iOS Dapp**
 

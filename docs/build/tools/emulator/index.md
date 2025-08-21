@@ -11,11 +11,11 @@ which is designed to have near feature parity with the real network API.
 
 ## Running the emulator with the Flow CLI
 
-The emulator is bundled with the [Flow CLI](../../tools/flow-cli/index.md), a command-line interface for working with Flow.
+The emulator is bundled with the [Flow CLI](../flow-cli/index.md), a command-line interface for working with Flow.
 
 ### Installation
 
-Follow [these steps](../../tools/flow-cli/install.md) to install the Flow CLI on macOS, Linux, and Windows.
+Follow [these steps](../flow-cli/install.md) to install the Flow CLI on macOS, Linux, and Windows.
 
 ## Usage
 

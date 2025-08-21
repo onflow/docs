@@ -77,11 +77,11 @@ There is an unlimited amount of events that can be defined on Flow, but you shou
 
 ### Fungible Token Events
 
-All fungible token contracts, including [The FLOW Token contract](../../../build/cadence/core-contracts/03-flow-token.md),
-use the [fungible token standard on Flow](../../../build/cadence/core-contracts/02-fungible-token.md).
+All fungible token contracts, including [The FLOW Token contract](../core-contracts/03-flow-token.md),
+use the [fungible token standard on Flow](../core-contracts/02-fungible-token.md).
 As with any contract, the standard emits events when interacted with.
 When any fungible token is transferred, standard events are emitted.
-You can find a lot of details on the events emitted in the [Fungible Token documentation](../../../build/cadence/core-contracts/02-fungible-token.md).
+You can find a lot of details on the events emitted in the [Fungible Token documentation](../core-contracts/02-fungible-token.md).
 
 The most common events are when tokens are transferred which is accomplished with two actions: withdrawing tokens from the payer and depositing tokens in the receiver. Each of those actions has a corresponding event:
 

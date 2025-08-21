@@ -87,7 +87,7 @@ need to begin by importing the `EVM` contract into your Cadence code.
 
 To import the `EVM` contract into your Cadence code using the simple import syntax, you can use the following format
 (learn more about configuring contracts in `flow.json`
-[here](../../tools/flow-cli/flow.json/configuration.md#contracts)):
+[here](../../build/tools/flow-cli/flow.json/configuration.md#contracts)):
 
 ```cadence
 // This assumes you are working in the in the Flow CLI, FCL, or another tool that supports this syntax

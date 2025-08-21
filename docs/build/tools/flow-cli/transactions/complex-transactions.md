@@ -65,7 +65,7 @@ transaction {
 
 ### Single payer and proposer, multiple authorizers
 
-A transaction that declares same payer and proposer but multiple authorizers each required to sign the transaction. Please note that the order of signing is important, and [the payer must sign last](../../../build/cadence/basics/transactions.md#payer-signs-last).
+A transaction that declares same payer and proposer but multiple authorizers each required to sign the transaction. Please note that the order of signing is important, and [the payer must sign last](../../../cadence/basics/transactions.md#payer-signs-last).
 
 Build the transaction:
 
@@ -115,7 +115,7 @@ transaction {
 ### Different payer, proposer and authorizer
 
 A transaction that declares different payer, proposer and authorizer each signing separately.
-Please note that the order of signing is important, and [the payer must sign last](../../../build/cadence/basics/transactions.md#payer-signs-last).
+Please note that the order of signing is important, and [the payer must sign last](../../../cadence/basics/transactions.md#payer-signs-last).
 
 Build the transaction:
 

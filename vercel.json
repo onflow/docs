@@ -1407,6 +1407,11 @@
       "source": "/evm/:path*",
       "destination": "/build/evm/:path*",
       "permanent": true
+    },
+    {
+      "source": "/tools/:path*",
+      "destination": "/build/tools/:path*",
+      "permanent": true
     }
   ]
 }

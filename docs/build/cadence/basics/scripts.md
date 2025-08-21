@@ -89,21 +89,21 @@ A script can be executed by submitting it to the Access API provided by access n
 
 There are multiple SDKs implementing the above APIs for different languages:
 
-[**Javascript SDK**](../../../tools/clients/fcl-js/index.md)
+[**Javascript SDK**](../../../build/tools/clients/fcl-js/index.md)
 
-[**Go SDK**](../../../tools/clients/flow-go-sdk/index.md)
+[**Go SDK**](../../../build/tools/clients/flow-go-sdk/index.md)
 
-Find a list of all SDKs [here](../../../tools/clients/index.md)
+Find a list of all SDKs [here](../../../build/tools/clients/index.md)
 
 ### Flow CLI
 
-You can also execute a script by using the [Flow CLI](../../../tools/flow-cli/scripts/execute-scripts):
+You can also execute a script by using the [Flow CLI](../../../build/tools/flow-cli/scripts/execute-scripts):
 
 ```sh
 flow scripts execute ./helloWorld.cdc
 ```
 
-A user can define their own scripts or can use already defined scripts by the contract authors that can be found by using the [FLIX](../../../tools/flow-cli/flix) service.
+A user can define their own scripts or can use already defined scripts by the contract authors that can be found by using the [FLIX](../../../build/tools/flow-cli/flix) service.
 
 ## Best Practices
 

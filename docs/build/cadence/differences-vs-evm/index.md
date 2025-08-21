@@ -208,7 +208,7 @@ If you're already familiar with blockchain development, here's a comparison betw
 [Why Flow]: ../../flow.md
 [EVM]: ../../../build/evm/about.md
 [accounts on Ethereum]: https://ethereum.org/en/developers/docs/accounts
-[Flow CLI]: ../../../tools/flow-cli/accounts/create-accounts.md
+[Flow CLI]: ../../../build/tools/flow-cli/accounts/create-accounts.md
 [very small fee]: ../basics/fees.md#fee-structure
 [Flow account model]: ../basics/accounts.md
 [Accounts]: ../basics/accounts.md

@@ -182,7 +182,7 @@ We are supporting ECDSA with the curves `P-256` and `secp256k1`. For these curve
 
 Accounts are created on the Flow blockchain by calling a special [create account Cadence function](https://cadence-lang.org/docs/language/accounts#account-creation). Once an account is created we can associate a new key with that account. Of course, all that can be done within a single transaction. Keep in mind that there is an account creation fee that needs to be paid. Account creation fees are relatively low, and we expect that wallet providers and exchanges will cover the cost when a user converts fiat to crypto for the first time.
 
-For development purposes, [you can use Flow CLI to easily create emulator, testnet and mainnet accounts.](../../../tools/flow-cli/accounts/create-accounts.md) The account creation fee is paid by a funding wallet so you don't need a pre-existing account to create it.
+For development purposes, [you can use Flow CLI to easily create emulator, testnet and mainnet accounts.](../../../build/tools/flow-cli/accounts/create-accounts.md) The account creation fee is paid by a funding wallet so you don't need a pre-existing account to create it.
 
 ### **Key Generation**
 
@@ -227,7 +227,7 @@ You can use the Flow CLI to get account data by running:
 flow accounts get 0xf919ee77447b7497 -n mainnet
 ```
 
-Find [more about the command in the CLI docs](../../../tools/flow-cli/accounts/get-accounts.md).
+Find [more about the command in the CLI docs](../../../build/tools/flow-cli/accounts/get-accounts.md).
 
 Accounts can be obtained from the access node APIs, currently, there are two gRPC and REST APIs. You can find more information about them here:
 
@@ -237,8 +237,8 @@ Accounts can be obtained from the access node APIs, currently, there are two gRP
 
 There are multiple SDKs implementing the above APIs for different languages:
 
-**Javascript SDK** [tools/clients/fcl-js](../../../tools/clients/fcl-js/index.md)
+**Javascript SDK** [tools/clients/fcl-js](../../../build/tools/clients/fcl-js/index.md)
 
-**Go SDK** [tools/clients/flow-go-sdk](../../../tools/clients/flow-go-sdk/index.md)
+**Go SDK** [tools/clients/flow-go-sdk](../../../build/tools/clients/flow-go-sdk/index.md)
 
-Find a list of all SDKs here: [tools/clients](../../../tools/clients/index.md)
+Find a list of all SDKs here: [tools/clients](../../../build/tools/clients/index.md)

@@ -303,7 +303,7 @@ Retrieve events by a given type in a specified block height range or through a l
 A.{contract address}.{contract name}.{event name}
 ```
 
-Please read more about [events in the documentation](../../../build/cadence/core-contracts/03-flow-token.md). The exception to this standard are
+Please read more about [events in the documentation](../../../cadence/core-contracts/03-flow-token.md). The exception to this standard are
 core events, and you should read more about them in [this document](https://cadence-lang.org/docs/language/core-events).
 
 📖 **Block height range** expresses the height of the start and end block in the chain.
@@ -522,7 +522,7 @@ transaction(greeting: String) {
 
 📖 **Arguments**. A transaction can accept zero or more arguments that are passed into the Cadence script. The arguments on the transaction must match the number and order declared in the Cadence script. Sample script from above accepts a single `String` argument.
 
-📖 **[Proposal key](../../../build/cadence/basics/transactions.md#proposal-key)** must be provided to act as a sequence number and prevent reply and other potential attacks.
+📖 **[Proposal key](../../../cadence/basics/transactions.md#proposal-key)** must be provided to act as a sequence number and prevent reply and other potential attacks.
 
 Each account key maintains a separate transaction sequence counter; the key that lends its sequence number to a transaction is called the proposal key.
 
@@ -534,9 +534,9 @@ A proposal key contains three fields:
 
 A transaction is only valid if its declared sequence number matches the current on-chain sequence number for that key. The sequence number increments by one after the transaction is executed.
 
-📖 **[Payer](../../../build/cadence/basics/transactions.md#signer-roles)** is the account that pays the fees for the transaction. A transaction must specify exactly one payer. The payer is only responsible for paying the network and gas fees; the transaction is not authorized to access resources or code stored in the payer account.
+📖 **[Payer](../../../cadence/basics/transactions.md#signer-roles)** is the account that pays the fees for the transaction. A transaction must specify exactly one payer. The payer is only responsible for paying the network and gas fees; the transaction is not authorized to access resources or code stored in the payer account.
 
-📖 **[Authorizers](../../../build/cadence/basics/transactions.md#signer-roles)** are accounts that authorize a transaction to read and mutate their resources. A transaction can specify zero or more authorizers, depending on how many accounts the transaction needs to access.
+📖 **[Authorizers](../../../cadence/basics/transactions.md#signer-roles)** are accounts that authorize a transaction to read and mutate their resources. A transaction can specify zero or more authorizers, depending on how many accounts the transaction needs to access.
 
 The number of authorizers on the transaction must match the number of &Account parameters declared in the prepare statement of the Cadence script.
 
@@ -653,9 +653,9 @@ After you have successfully [built a transaction](#build-the-transaction) the ne
 [<img src="https://raw.githubusercontent.com/onflow/sdks/main/templates/documentation/ref.svg" width="130" />](https://pkg.go.dev/github.com/onflow/flow-go-sdk#Transaction.SignEnvelope)
 
 Flow introduces new concepts that allow for more flexibility when creating and signing transactions.
-Before trying the examples below, we recommend that you read through the [transaction signature documentation](../../../build/cadence/basics/transactions.md.
+Before trying the examples below, we recommend that you read through the [transaction signature documentation](../../../cadence/basics/transactions.md.
 
-After you have successfully [built a transaction](#build-the-transaction) the next step in the process is to sign it. Flow transactions have envelope and payload signatures, and you should learn about each in the [signature documentation](../../../build/cadence/basics/transactions.md).
+After you have successfully [built a transaction](#build-the-transaction) the next step in the process is to sign it. Flow transactions have envelope and payload signatures, and you should learn about each in the [signature documentation](../../../cadence/basics/transactions.md).
 
 Quick example of building a transaction:
 
@@ -699,7 +699,7 @@ if err != nil {
 
 Flow supports great flexibility when it comes to transaction signing, we can define multiple authorizers (multi-sig transactions) and have different payer account than proposer. We will explore advanced signing scenarios bellow.
 
-### [Single party, single signature](../../../build/cadence/basics/transactions.md#single-party-single-signature)
+### [Single party, single signature](../../../cadence/basics/transactions.md#single-party-single-signature)
 
 - Proposer, payer and authorizer are the same account (`0x01`).
 - Only the envelope must be signed.
@@ -736,7 +736,7 @@ tx := flow.NewTransaction().
 err := tx.SignEnvelope(account1.Address, key1.Index, key1Signer)
 ```
 
-### [Single party, multiple signatures](../../../build/cadence/basics/transactions.md#single-party-multiple-signatures)
+### [Single party, multiple signatures](../../../cadence/basics/transactions.md#single-party-multiple-signatures)
 
 - Proposer, payer and authorizer are the same account (`0x01`).
 - Only the envelope must be signed.
@@ -779,7 +779,7 @@ err := tx.SignEnvelope(account1.Address, key1.Index, key1Signer)
 err = tx.SignEnvelope(account1.Address, key2.Index, key2Signer)
 ```
 
-### [Multiple parties](../../../build/cadence/basics/transactions.md#multiple-parties)
+### [Multiple parties](../../../cadence/basics/transactions.md#multiple-parties)
 
 - Proposer and authorizer are the same account (`0x01`).
 - Payer is a separate account (`0x02`).
@@ -826,7 +826,7 @@ err := tx.SignPayload(account1.Address, key1.Index, key1Signer)
 err = tx.SignEnvelope(account2.Address, key3.Index, key3Signer)
 ```
 
-### [Multiple parties, two authorizers](../../../build/cadence/basics/transactions.md#multiple-parties)
+### [Multiple parties, two authorizers](../../../cadence/basics/transactions.md#multiple-parties)
 
 - Proposer and authorizer are the same account (`0x01`).
 - Payer is a separate account (`0x02`).
@@ -878,7 +878,7 @@ err := tx.SignPayload(account1.Address, key1.Index, key1Signer)
 err = tx.SignEnvelope(account2.Address, key3.Index, key3Signer)
 ```
 
-### [Multiple parties, multiple signatures](../../../build/cadence/basics/transactions.md#multiple-parties)
+### [Multiple parties, multiple signatures](../../../cadence/basics/transactions.md#multiple-parties)
 
 - Proposer and authorizer are the same account (`0x01`).
 - Payer is a separate account (`0x02`).
@@ -965,7 +965,7 @@ func demo(tx *flow.Transaction) {
 
 On Flow, account creation happens inside a transaction. Because the network allows for a many-to-many relationship between public keys and accounts, it's not possible to derive a new account address from a public key offline.
 
-The Flow VM uses a deterministic address generation algorithm to assign account addresses on chain. You can find more details about address generation in the [accounts & keys documentation](../../../build/cadence/basics/accounts.md).
+The Flow VM uses a deterministic address generation algorithm to assign account addresses on chain. You can find more details about address generation in the [accounts & keys documentation](../../../cadence/basics/accounts.md).
 
 #### Public Key
 
@@ -975,7 +975,7 @@ Flow uses ECDSA key pairs to control access to user accounts. Each key pair can 
 
 Flow represents ECDSA public keys in raw form without additional metadata. Each key is a single byte slice containing a concatenation of its X and Y components in big-endian byte form.
 
-A Flow account can contain zero (not possible to control) or more public keys, referred to as account keys. Read more about [accounts in the documentation](../../../build/cadence/basics/accounts.md).
+A Flow account can contain zero (not possible to control) or more public keys, referred to as account keys. Read more about [accounts in the documentation](../../../cadence/basics/accounts.md).
 
 An account key contains the following data:
 
@@ -1059,7 +1059,7 @@ for _, event := range result.Events {
 
 ### Generate Keys
 
-[<img src="https://raw.githubusercontent.com/onflow/sdks/main/templates/documentation/ref.svg" width="130" />](../../../build/cadence/basics/accounts.md#signature-and-hash-algorithms)
+[<img src="https://raw.githubusercontent.com/onflow/sdks/main/templates/documentation/ref.svg" width="130" />](../../../cadence/basics/accounts.md#signature-and-hash-algorithms)
 
 Flow uses [ECDSA](https://en.wikipedia.org/wiki/Elliptic_Curve_Digital_Signature_Algorithm) signatures to control access to user accounts. Each key pair can be used in combination with the `SHA2-256` or `SHA3-256` hashing algorithms.
 
@@ -1080,7 +1080,7 @@ encPrivateKey := privateKey.Encode()
 publicKey := privateKey.PublicKey()
 ```
 
-The example above uses an ECDSA key pair on the P-256 (secp256r1) elliptic curve. Flow also supports the secp256k1 curve used by Bitcoin and Ethereum. Read more about [supported algorithms here](../../../build/cadence/basics/accounts.md#signature-and-hash-algorithms).
+The example above uses an ECDSA key pair on the P-256 (secp256r1) elliptic curve. Flow also supports the secp256k1 curve used by Bitcoin and Ethereum. Read more about [supported algorithms here](../../../cadence/basics/accounts.md#signature-and-hash-algorithms).
 
 ### Transferring Flow
 

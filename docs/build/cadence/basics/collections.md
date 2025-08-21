@@ -33,7 +33,7 @@ You can use the Flow CLI to get the collection data by running:
 flow collections get caff1a7f4a85534e69badcda59b73428a6824ef8103f09cb9eaeaa216c7d7d3f -n mainnet
 ```
 
-Find [more about the command in the CLI docs](../../../tools/flow-cli/get-flow-data/get-collections.md).
+Find [more about the command in the CLI docs](../../../build/tools/flow-cli/get-flow-data/get-collections.md).
 
 Collections can be obtained from the access node APIs, currently, there are two gRPC and REST APIs. You can find more information about them here:
 
@@ -43,8 +43,8 @@ Collections can be obtained from the access node APIs, currently, there are two 
 
 There are multiple SDKs implementing the above APIs for different languages:
 
-[**Javascript SDK**](../../../tools/clients/fcl-js/index.md)
+[**Javascript SDK**](../../../build/tools/clients/fcl-js/index.md)
 
-[**Go SDK**](../../../tools/clients/flow-go-sdk/index.md)
+[**Go SDK**](../../../build/tools/clients/flow-go-sdk/index.md)
 
-Find a list of all SDKs [here](../../../tools/clients/index.md)
+Find a list of all SDKs [here](../../../build/tools/clients/index.md)

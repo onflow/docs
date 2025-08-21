@@ -815,7 +815,7 @@ Now that you have completed the tutorial, you should be able to:
 [native VRF]: ../native-vrf/vrf-in-solidity.md
 [structure and call EVM transactions]: ./batched-evm-transactions.md
 [FLIP 316]: https://github.com/onflow/flips/pull/317
-[Flow Client Library (FCL)]: ../../tools/clients/fcl-js
+[Flow Client Library (FCL)]: ../../build/tools/clients/fcl-js
 [wagmi]: https://wagmi.sh/
 [viem]: https://viem.sh/
 [RainbowKit]: https://www.rainbowkit.com/

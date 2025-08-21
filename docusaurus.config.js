@@ -274,12 +274,6 @@ const config = {
             activeBasePath: '/build',
           },
           {
-            to: 'tools/react-sdk',
-            position: 'left',
-            label: 'Tools',
-            activeBasePath: '/tools',
-          },
-          {
             to: 'networks/flow-networks',
             position: 'left',
             label: 'Networks',
@@ -326,8 +320,8 @@ const config = {
                 to: '/build/cadence/getting-started/contract-interaction',
               },
               {
-                label: "SDK's & Tools",
-                to: '/tools',
+                label: "Tools & SDKs",
+                to: '/build/tools',
               },
               {
                 to: 'https://cadence-lang.org/docs/',
@@ -338,7 +332,7 @@ const config = {
                 label: 'Mobile',
               },
               {
-                to: '/tools/clients/fcl-js/',
+                to: '/build/tools/clients/fcl-js/',
                 label: 'FCL',
               },
               {
@@ -346,11 +340,11 @@ const config = {
                 label: 'Testing',
               },
               {
-                to: '/tools/flow-cli/',
+                to: '/build/tools/flow-cli/',
                 label: 'CLI',
               },
               {
-                to: '/tools/emulator/',
+                to: '/build/tools/emulator/',
                 label: 'Emulator',
               },
               {
@@ -358,7 +352,7 @@ const config = {
                 label: 'Dev Wallet',
               },
               {
-                to: '/tools/vscode-extension/',
+                to: '/build/tools/vscode-extension/',
                 label: 'VS Code Extension',
               },
             ],

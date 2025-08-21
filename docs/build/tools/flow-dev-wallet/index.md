@@ -22,7 +22,7 @@ other instances of Flow.
 
 :::info
 
-To see a full list of Flow compatible wallets visit [Wallets page](../../ecosystem/wallets.md)
+To see a full list of Flow compatible wallets visit [Wallets page](../../../ecosystem/wallets.md)
 
 :::
 
@@ -235,6 +235,6 @@ Releasing a new version of Dev Wallet is as simple as tagging and creating a rel
 
 Additionally, consider exploring these resources:
 
-- [Guide to Creating a Fungible Token on Flow](../../build/cadence/guides/fungible-token.md)
+- [Guide to Creating a Fungible Token on Flow](../../cadence/guides/fungible-token.md)
 - [Tutorial on Fungible Tokens](https://cadence-lang.org/docs/tutorial/fungible-tokens)
-- [Faucets](../../ecosystem/faucets.md)
+- [Faucets](../../../ecosystem/faucets.md)

@@ -10,6 +10,7 @@ Rewards payout happens automatically after the end of the epoch and without the 
 Instead of a separate reward payout transaction, the reward payout events will be recorded in the system chunk in the block that is produced at the time of the epoch transition without creating a regular transaction ID.
 
 The rewards payout can be queried by querying the block which contains the system chunk that contains the reward payout events.
+
 ```
 flow events get A.8624b52f9ddcd04a.FlowIDTableStaking.RewardsPaid A.8624b52f9ddcd04a.FlowIDTableStaking.DelegatorRewardsPaid --start <block Height> --end <block height> -n mainnet
 
@@ -78,7 +79,8 @@ Events Block #51753836:
 		- amount (UFix64): 17.31047712
 ```
 
-Example using [Flow Go SDK](../../tools/clients/flow-go-sdk/index.md)
+Example using [Flow Go SDK](../../build/tools/clients/flow-go-sdk/index.md)
+
 ```
 package main
 
@@ -128,7 +130,8 @@ Before May 2023, rewards payouts were done manually by the Flow governance commi
 When the transactions executed, they generated events for the rewards paid to each node and delegator.
 To check the staking and delegation rewards, those transactions should be queried directly.
 
-Example using [Flow cli](../../tools/flow-cli/index.md)
+Example using [Flow cli](../../build/tools/flow-cli/index.md)
+
 ```
 $ flow transactions get 84eca4ff612ef70047d60510710cca872c8a17c1bd9f63686e74852b6382cc84 -n mainnet
 
@@ -196,7 +199,8 @@ Events:
    <clipped for brevity>
 ```
 
-Example using [Flow Go SDK](../../tools/clients/flow-go-sdk/index.md)
+Example using [Flow Go SDK](../../build/tools/clients/flow-go-sdk/index.md)
+
 ```
 package main
 

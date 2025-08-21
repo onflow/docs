@@ -47,7 +47,7 @@ Store, manage, and interact securely with tokens and digital assets on Flow. Dis
 
 ## Flow Dev Wallet
 
-[The Flow Dev Wallet](../tools/flow-dev-wallet/index.md) simulates the protocols used by [FCL](../tools/clients/fcl-js/index.md) to interact with the Flow blockchain on behalf of simulated user accounts.
+[The Flow Dev Wallet](../build/tools/flow-dev-wallet/index.md) simulates the protocols used by [FCL](../build/tools/clients/fcl-js/index.md) to interact with the Flow blockchain on behalf of simulated user accounts.
 
 ## Magic.link
 
