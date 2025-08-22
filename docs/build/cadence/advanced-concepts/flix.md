@@ -34,7 +34,7 @@ You can read more about how to query a FLIX API in the documentation available h
 
 :::info
 
-The FLIX working group is currently working on a protocol to publish FLIX templates on-chain.
+The FLIX working group is currently working on a protocol to publish FLIX templates onchain.
 
 :::
 

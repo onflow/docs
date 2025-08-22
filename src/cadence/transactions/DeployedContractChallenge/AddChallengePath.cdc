@@ -10,13 +10,13 @@ transaction {
     }
 
     execute {
-        let name = "On-chain"
+        let name = "Onchain"
         if GoldStar.challengePaths[name] != nil {
             return
         }
         let challengePath <- GoldStar.createChallengePath(
             name: name,
-            description: "Go on-chain",
+            description: "Go onchain",
             challenges: <-[
                 <-DeployedContractChallenge.createChallenge()
             ]

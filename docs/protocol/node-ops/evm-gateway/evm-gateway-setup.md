@@ -317,7 +317,7 @@ the `--coa-key` config flag. Alternatively, you may also use cloud KMS providers
 #### COA Account signing key rotation
 
 The gateway implements a signing key rotation scheme to scale the use of the `COA_KEY` and enable it to be used across many
-EVM client transactions. This is configured by reusing the COA public key to create new on-chain signing keys. Although it may seem
+EVM client transactions. This is configured by reusing the COA public key to create new onchain signing keys. Although it may seem
 counter-intuitive to use the same COA public key when creating new signing keys, the newly added keys all occupy different
 key slots on the account which enables the gateway to support concurrent transaction signing without causing [nonce collisions](https://developers.flow.com/build/cadence/advanced-concepts/scaling#problem)
 for EVM clients.

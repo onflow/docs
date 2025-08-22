@@ -54,14 +54,13 @@ Learn about Flow Data Sources, a meticulously curated library designed to autono
 
 Tutorial: [Data Sources]
 
-
 ## Eliza Integration
 
-Learn about using Eliza on Flow, a versatile framework for constructing sophisticated AI agents that communicate with users through natural language. This guide walks you through the entire process of configuring and launching an AI agent built with Eliza directly onto the Flow blockchain. You will discover how to engineer intelligent agents capable of comprehending and addressing user prompts, all while harnessing the power of Flow's inherently secure and scalable on-chain infrastructure.
+Learn about using Eliza on Flow, a versatile framework for constructing sophisticated AI agents that communicate with users through natural language. This guide walks you through the entire process of configuring and launching an AI agent built with Eliza directly onto the Flow blockchain. You will discover how to engineer intelligent agents capable of comprehending and addressing user prompts, all while harnessing the power of Flow's inherently secure and scalable onchain infrastructure.
 
 Tutorial: [Eliza on Flow]
 
-## Build AI Agents with AgentKit 
+## Build AI Agents with AgentKit
 
 Learn how to build AI agents on Flow with AgentKit, a versatile and modular developer toolkit that is not tied to any single platform. It is engineered to dramatically accelerate the process of building, deploying, and refining AI agents by supplying pre-configured environments and a library of ready-to-use templates. This guide will walk you through the steps to launch your own custom agent on Flow's EVM-compatible testnet, leveraging the powerful combination of the Langchain framework and Anthropic's Claude large language model.
 
@@ -69,7 +68,7 @@ Tutorial: [Build AI Agents with AgentKit]
 
 ## MCP Guides
 
-Learn how to construct a custom Flow MCP (Model Context Protocol) server or utilize an existing one to empower your AI tools. These tutorials will guide you through the process of equipping your AI applications with the unique capability to directly interact with the Flow blockchain, enabling them to perform on-chain operations and access real-time data.
+Learn how to construct a custom Flow MCP (Model Context Protocol) server or utilize an existing one to empower your AI tools. These tutorials will guide you through the process of equipping your AI applications with the unique capability to directly interact with the Flow blockchain, enabling them to perform onchain operations and access real-time data.
 
 Tutorial: [Flow MCP]
 

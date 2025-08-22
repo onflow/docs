@@ -100,7 +100,7 @@ Developers can build entirely in one or mix both environments for hybrid applica
 
 ## Flow features
 
-### On-Chain randomness
+### Onchain randomness
 
 Flow natively supports verifiable randomness through its built-in Verifiable Random Function (VRF), which developers can use directly in smart contracts. This removes the need for third-party randomness oracles in many cases.
 

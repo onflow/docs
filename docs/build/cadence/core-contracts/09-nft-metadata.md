@@ -2,14 +2,14 @@
 title: NFT Metadata Contract
 sidebar_position: 9
 sidebar_label: NFT Metadata
-description: Learn about Flow's NFT metadata standards implemented through ViewResolver and MetadataViews contracts. Understand how to attach and manage on-chain metadata for NFTs and integrate with the Flow NFT Catalog.
+description: Learn about Flow's NFT metadata standards implemented through ViewResolver and MetadataViews contracts. Understand how to attach and manage onchain metadata for NFTs and integrate with the Flow NFT Catalog.
 keywords:
   - NFT metadata
   - ViewResolver
   - MetadataViews
   - metadata standard
   - NFT catalog
-  - on-chain metadata
+  - onchain metadata
   - NFT interoperability
   - metadata views
   - FLIP-0636
@@ -21,7 +21,7 @@ keywords:
   - NFT optimization
 ---
 
-The `ViewResolver` and `MetadataViews` contracts implement a standard to attach on-chain metadata
+The `ViewResolver` and `MetadataViews` contracts implement a standard to attach onchain metadata
 to NFTs. This standard was originally proposed in [FLIP-0636](https://github.com/onflow/flips/blob/main/application/20210916-nft-metadata.md).
 
 It is deployed at the same address as the `NonFungibleToken` contract interface.

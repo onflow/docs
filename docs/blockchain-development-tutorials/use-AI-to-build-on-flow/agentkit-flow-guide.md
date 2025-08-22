@@ -200,7 +200,7 @@ agent = createReactAgent({
 
 You now have a working AI agent connected to Flow testnet using AgentKit!
 
-You can send faucet tokens to your wallet and start testing smart contract interactions or on-chain workflows.
+You can send faucet tokens to your wallet and start testing smart contract interactions or onchain workflows.
 
 ---
 
