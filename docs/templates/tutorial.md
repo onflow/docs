@@ -81,9 +81,9 @@ Our standard is to achieve approximately 85% adherence or better before publicat
 
 - If you move a file, you **must** add a permanent re-direct to `vercel.json`.
 - File and folder names are kebab case.
-  - `docs/build/guides/account-linking/account-linking-with-dapper.md`
+  - `docs/build/cadence/guides/account-linking/account-linking-with-dapper.md`
 - Images are stored flat in the same folder as the document that uses them.
-  - `docs/build/guides/account-linking/example-app.png`
+  - `docs/build/cadence/guides/account-linking/example-app.png`
   - This balances organization vs. convenience. We can re-evaluate if it gets out of control.
 
 ### Emphasis

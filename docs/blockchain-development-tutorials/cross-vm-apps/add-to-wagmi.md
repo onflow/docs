@@ -506,7 +506,7 @@ For a complete reference implementation, check out the [FCL + RainbowKit + wagmi
 [native VRF]: ../../blockchain-development-tutorials/native-vrf/vrf-in-solidity.md
 [structure and call EVM transactions]: ./batched-evm-transactions.md
 [FLIP 316]: https://github.com/onflow/flips/pull/317
-[Flow Client Library (FCL)]: ../../tools/clients/fcl-js
+[Flow Client Library (FCL)]: ../../build/tools/clients/fcl-js
 [wagmi]: https://wagmi.sh/
 [viem]: https://viem.sh/
 [RainbowKit]: https://www.rainbowkit.com/
@@ -515,6 +515,6 @@ For a complete reference implementation, check out the [FCL + RainbowKit + wagmi
 [FCL + RainbowKit + wagmi Integration Demo]: https://github.com/jribbink/cross-vm-app
 [FCL-JS]: https://github.com/onflow/fcl-js
 [Testnet Cadence Flowscan]: https://testnet.flowscan.io
-[Cadence Owned Accounts]: ../../build/basics/accounts.md
+[Cadence Owned Accounts]: ../../build/cadence/basics/accounts.md
 [Testnet EVM Flowscan]: https://evm-testnet.flowscan.io
-[pre-built utility from the `@onflow/react-sdk`]: ../../tools/react-sdk/index.mdx#usecrossvmbatchtransaction
+[pre-built utility from the `@onflow/react-sdk`]: ../../build/tools/react-sdk/index.mdx#usecrossvmbatchtransaction

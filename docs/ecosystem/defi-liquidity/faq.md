@@ -31,7 +31,7 @@ No, Flow uses $FLOW as the gas token. [WETH](./defi-contracts#stablecoins--wrapp
 
 <Details summary="How do I pay for gas when bridging into Flow?">
 When using Flow EVM for the first time, your EOA will automatically be credited 0.05 FLOW to cover gas costs when bridging into Flow. 
-If further top-ups are required you can use [Gas.zip](https://www.gas.zip/). See [Fees](../../evm/fees) for information on gas pricing.
+If further top-ups are required you can use [Gas.zip](https://www.gas.zip/). See [Fees](../../build/evm/fees) for information on gas pricing.
 
 Flow Wallet users do not pay for gas since the wallet subsidizes all transaction fees.
 

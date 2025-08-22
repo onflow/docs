@@ -107,20 +107,19 @@ Explore Flow's unique capabilities through fun benchmark applications that showc
 
 - [Build a Fully-Onchain Image Gallery] - Create a fully onchain image gallery that demonstrates Flow's efficient storage capabilities
 
-
 ### Building in Web3 has never been easier
 
 Flow will continue to provide quality walkthroughs and tutorials to provide developers all of the tools needed to build the next generation of web3 apps on a fast blockchain, with built in randomness, gasless transactions, and AI integration.
 
-
 <!-- Reference-style links, will not render on page. -->
-[Flow Actions]: https://developers.flow.com/tutorials/defi
+
+[Flow Actions]: https://developers.flow.com/blockchain-development-tutorials/defi
 [Introduction to Flow Actions]: ./defi/intro-to-flow-actions.md
-[Flow Actions Transactions]: https://developers.flow.com/tutorials/defi/flow-actions-transaction
+[Flow Actions Transactions]: https://developers.flow.com/blockchain-development-tutorials/defi/flow-actions-transaction
 [Connectors]: ./defi/connectors.md
 [Basic Combinations]: ./defi/basic-combinations.md
 [Scheduled Callbacks Introduction]: ./defi/scheduled-callbacks-introduction.md
-[Use AI to Build on the Flow Blockchain]: https://developers.flow.com/tutorials/use-AI-to-build-on-flow
+[Use AI to Build on the Flow Blockchain]: https://developers.flow.com/blockchain-development-tutorials/use-AI-to-build-on-flow
 [Use Flow Knowledge Base in Cursor]: use-AI-to-build-on-flow/cursor/index.md
 [Use Flow Knowledge Base in ChatGPT]: use-AI-to-build-on-flow/chatgpt/index.md
 [Claude Code for Flow Development]: use-AI-to-build-on-flow/claude-code.md
@@ -128,20 +127,19 @@ Flow will continue to provide quality walkthroughs and tutorials to provide deve
 [Flow MCP]: use-AI-to-build-on-flow/mcp/index.md
 [Flow Data Sources]: use-AI-to-build-on-flow/flow-data-sources.md
 [Build AI Agents with AgentKit]: use-AI-to-build-on-flow/agentkit-flow-guide.md
-[Cross-VM Applications]: https://developers.flow.com/tutorials/cross-vm-apps
+[Cross-VM Applications]: https://developers.flow.com/blockchain-development-tutorials/cross-vm-apps
 [Introduction to Cross-VM Applications]: cross-vm-apps/introduction.md
 [Interacting with COAs]: cross-vm-apps/interacting-with-coa.md
 [Batched EVM Transactions]: cross-vm-apps/batched-evm-transactions.md
 [Cross-VM Bridge]: cross-vm-apps/vm-bridge.md
-[FlowtoBooth]: https://developers.flow.com/tutorials/flowtobooth
+[FlowtoBooth]: https://developers.flow.com/blockchain-development-tutorials/flowtobooth
 [Build a Fully-Onchain Image Gallery]: flowtobooth/image-gallery.md
-[Native VRF (Built-in Randomness) Tutorials]: https://developers.flow.com/tutorials/native-vrf
+[Native VRF (Built-in Randomness) Tutorials]: https://developers.flow.com/blockchain-development-tutorials/native-vrf
 [Secure Randomness with Commit-Reveal in Cadence]: native-vrf/commit-reveal-cadence.md
-[Deploy a Solidity Contract Using Cadence]: native-vrf/deploy-solidity-contract.md
 [VRF (Randomness) in Solidity]: native-vrf/vrf-in-solidity.md
 [Add Flow Cadence to Your wagmi App]: ./cross-vm-apps/add-to-wagmi.md
-[Token Launch]: https://developers.flow.com/tutorials/token-launch
+[Token Launch]: https://developers.flow.com/blockchain-development-tutorials/token-launch
 [Register Your Assets in Cadence]: ./token-launch/register-cadence-assets.md
 [Register Your ERC20 Token]: ./token-launch/register-erc20-token.md
-[Backend Usage]: https://developers.flow.com/tutorials/gasless-transactions
+[Backend Usage]: https://developers.flow.com/blockchain-development-tutorials/gasless-transactions
 [Gas Free EVM Endpoint]: ./gasless-transactions/gas-free-evm-endpoint.md

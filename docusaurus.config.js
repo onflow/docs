@@ -270,38 +270,20 @@ const config = {
           {
             to: 'build/flow',
             position: 'left',
-            label: 'Cadence',
+            label: 'Build',
             activeBasePath: '/build',
           },
           {
-            to: 'evm/about',
+            to: 'protocol/flow-networks',
             position: 'left',
-            label: 'EVM',
-            activeBasePath: '/evm',
-          },
-          {
-            to: 'tools/react-sdk',
-            position: 'left',
-            label: 'Tools',
-            activeBasePath: '/tools',
-          },
-          {
-            to: 'networks/flow-networks',
-            position: 'left',
-            label: 'Networks',
-            activeBasePath: '/networks',
+            label: 'Protocol',
+            activeBasePath: '/protocol',
           },
           {
             to: 'ecosystem',
             position: 'left',
             label: 'Ecosystem',
             activeBasePath: '/ecosystem',
-          },
-          {
-            to: 'growth',
-            position: 'left',
-            label: 'Growth',
-            activeBasePath: '/growth',
           },
           {
             to: 'blockchain-development-tutorials',
@@ -335,34 +317,34 @@ const config = {
             items: [
               {
                 label: 'Getting Started',
-                to: '/build/getting-started/contract-interaction',
+                to: '/build/cadence/getting-started/contract-interaction',
               },
               {
-                label: "SDK's & Tools",
-                to: '/tools',
+                label: "Tools & SDKs",
+                to: '/build/tools',
               },
               {
                 to: 'https://cadence-lang.org/docs/',
                 label: 'Cadence',
               },
               {
-                to: '/build/guides/mobile/overview',
+                to: '/build/cadence/guides/mobile/overview',
                 label: 'Mobile',
               },
               {
-                to: '/tools/clients/fcl-js/',
+                to: '/build/tools/clients/fcl-js/',
                 label: 'FCL',
               },
               {
-                to: '/build/smart-contracts/testing',
+                to: '/build/cadence/smart-contracts/testing',
                 label: 'Testing',
               },
               {
-                to: '/tools/flow-cli/',
+                to: '/build/tools/flow-cli/',
                 label: 'CLI',
               },
               {
-                to: '/tools/emulator/',
+                to: '/build/tools/emulator/',
                 label: 'Emulator',
               },
               {
@@ -370,7 +352,7 @@ const config = {
                 label: 'Dev Wallet',
               },
               {
-                to: '/tools/vscode-extension/',
+                to: '/build/tools/vscode-extension/',
                 label: 'VS Code Extension',
               },
             ],
@@ -424,11 +406,11 @@ const config = {
                 label: 'Cadence Cookbook',
               },
               {
-                to: '/build/core-contracts/',
+                to: '/build/cadence/core-contracts/',
                 label: 'Core Contracts & Standards',
               },
               {
-                href: '/evm/about',
+                href: '/build/evm/about',
                 label: 'EVM',
               },
             ],
@@ -449,19 +431,19 @@ const config = {
                 label: 'Flowscan Testnet',
               },
               {
-                to: '/networks/node-ops/node-operation/past-upgrades',
+                to: '/protocol/node-ops/node-operation/past-upgrades',
                 label: 'Past Sporks',
               },
               {
-                to: '/networks/node-ops/node-operation/upcoming-sporks',
+                to: '/protocol/node-ops/node-operation/upcoming-sporks',
                 label: 'Upcoming Sporks',
               },
               {
-                to: '/networks/node-ops',
+                to: '/protocol/node-ops',
                 label: 'Node Operation',
               },
               {
-                to: '/networks/node-ops/node-operation/spork',
+                to: '/protocol/node-ops/node-operation/spork',
                 label: 'Spork Information',
               },
             ],
@@ -632,18 +614,10 @@ const config = {
       {
         redirects: [
           {
-            to: '/build/smart-contracts/overview',
-            from: '/build/basics/smart-contracts',
+            to: '/build/cadence/smart-contracts/overview',
+            from: '/build/cadence/basics/smart-contracts',
           },
         ],
-        createRedirects(existingPath) {
-          if (existingPath.includes('/cadence')) {
-            return [
-              existingPath.replace('https://cadence-lang.org/docs', '/cadence'),
-            ];
-          }
-          return undefined;
-        },
       },
     ],
     function cadenceLoader() {
@@ -672,6 +646,10 @@ const config = {
         'sha384-odtC+0UGzzFL/6PNoE8rX/SPcQDXBJ+uRepguP4QkPCm2LBxH3FA3y+fKSiJ+AmM',
       crossorigin: 'anonymous',
     },
+      {
+        href: 'https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap',
+        rel: 'stylesheet',
+      },
   ],
   scripts: [
     {

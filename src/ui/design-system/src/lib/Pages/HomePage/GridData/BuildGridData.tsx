@@ -54,7 +54,7 @@ export const buildGridData = {
           cardColor: 'black',
           icon: 'evm-on-flow',
           variant: 'horizontal',
-          href: '/evm/about',
+          href: '/build/evm/about',
         },
         {
           heading: 'Integrate native VRF in 3 lines',
@@ -64,7 +64,7 @@ export const buildGridData = {
           cardColor: 'black',
           icon: 'random',
           variant: 'horizontal',
-          href: '/tutorials/native-vrf/vrf-in-solidity',
+          href: '../blockchain-development-tutorials/native-vrf/vrf-in-solidity',
         },
         {
           heading: 'Native batched transactions',
@@ -74,7 +74,7 @@ export const buildGridData = {
           cardColor: 'black',
           icon: 'batched-evm-transactions',
           variant: 'horizontal',
-          href: '/tutorials/cross-vm-apps',
+          href: '../blockchain-development-tutorials/cross-vm-apps',
           target: '_blank',
         },
       ],

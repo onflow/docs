@@ -57,7 +57,7 @@ import { ActionCard } from '@site/src/components/ActionCard';
     cardColor="black"
     heading="Build with Cadence"
     description="Get started with Flow's native resource-oriented smart contract language. Learn how to deploy, interact, and build secure dApps using Cadence."
-    href="../build/getting-started/contract-interaction"
+    href="../build/cadence/getting-started/contract-interaction"
   />
   <ActionCard
     icon="solidity"
@@ -65,7 +65,7 @@ import { ActionCard } from '@site/src/components/ActionCard';
     cardColor="black"
     heading="Build with Solidity"
     description="Deploy Solidity contracts on Flow EVM using familiar Ethereum tools like Hardhat and Foundry. Start building EVM-compatible dApps on Flow."
-    href="../evm/quickstart"
+    href="../build/evm/quickstart"
   />
 </div>
 
@@ -187,22 +187,22 @@ We also have guides for working with [Rainbowkit] and [wagmi].
 [NBA Top Shot]: https://nbatopshot.com/
 [Disney Pinnacle]: https://disneypinnacle.com/
 [CryptoKitties: AllTheZen]: https://allthezen.cryptokitties.co/
-[Learn more]: https://developers.flow.com/tutorials/native-vrf
-[Explore the tutorial]: https://developers.flow.com/tutorials/cross-vm-apps/introduction
-[Read the guide]: https://developers.flow.com/build/guides/account-linking-with-dapper
-[Connect to Testnet]: https://developers.flow.com/networks/flow-networks/accessing-testnet
-[Connect to Mainnet]: https://developers.flow.com/networks/flow-networks/accessing-mainnet
-[Flow Network Overview and Setup]: https://developers.flow.com/networks/flow-networks
+[Learn more]: https://developers.flow.com/blockchain-development-tutorials/native-vrf
+[Explore the tutorial]: https://developers.flow.com/blockchain-development-tutorials/cross-vm-apps/introduction
+[Read the guide]: https://developers.flow.com/build/cadence/guides/account-linking-with-dapper
+[Connect to Testnet]: https://developers.flow.com/protocol/flow-networks/accessing-testnet
+[Connect to Mainnet]: https://developers.flow.com/protocol/flow-networks/accessing-mainnet
+[Flow Network Overview and Setup]: https://developers.flow.com/protocol/flow-networks
 [Flow CLI]: https://developers.flow.com/tools/flow-cli
 [@onflow/react-sdk]: https://developers.flow.com/tools/react-sdk
 [Explore the Ecosystem]: https://developers.flow.com/ecosystem
 [@flow_blockchain]: https://x.com/flow_blockchain
 [Connect]: https://discord.com/invite/flow
-[Contract Interaction]: ../build/getting-started/contract-interaction.md
-[Local Development]: ../build/getting-started/flow-cli.md
-[Simple Frontend]: ../build/getting-started/fcl-quickstart.md
-[EVM Quickstart]: ../evm/quickstart.md
+[Contract Interaction]: ../build/cadence/getting-started/contract-interaction.md
+[Local Development]: ../build/cadence/getting-started/flow-cli.md
+[Simple Frontend]: ../build/cadence/getting-started/fcl-quickstart.md
+[EVM Quickstart]: ../build/evm/quickstart.md
 [Testnet Flowscan]: https://evm-testnet.flowscan.io/
-[Foundry]: ../evm/guides/foundry.md
-[Rainbowkit]: ../evm/guides/rainbowkit.md
-[wagmi]: ../evm/guides/wagmi.md
+[Foundry]: ../build/evm/guides/foundry.md
+[Rainbowkit]: ../build/evm/guides/rainbowkit.md
+[wagmi]: ../build/evm/guides/wagmi.md

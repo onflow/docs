@@ -43,7 +43,7 @@ After a few seconds, you'll see your account's FLOW balance as a confirmation. N
 
 #### Generate a Key Pair
 
-To create a Flow-native account, you'll need to generate a key pair. You can do this most easily [Flow CLI](../build/getting-started/flow-cli.md) with the [`keys generate` command](../tools/flow-cli/keys/generate-keys.md)
+To create a Flow-native account, you'll need to generate a key pair. You can do this most easily [Flow CLI](../build/cadence/getting-started/flow-cli.md) with the [`keys generate` command](../build/tools/flow-cli/keys/generate-keys.md)
 
 ```sh
 flow keys generate
@@ -103,7 +103,7 @@ Once your account has been created, you can add the account to your `flow.json` 
 
 :::warning
 
-If you plan on using your flow.json in a production environment, you'll want to look at alternative methods to manage your keys more securely, at minimum using environment variables instead of storing your account private keys in plain text. See [How to Securely Use CLI](../tools/flow-cli/flow.json/security.md) for more information on alternate key management strategies and how to configure them in your `flow.json` file.
+If you plan on using your flow.json in a production environment, you'll want to look at alternative methods to manage your keys more securely, at minimum using environment variables instead of storing your account private keys in plain text. See [How to Securely Use CLI](../build/tools/flow-cli/flow.json/security.md) for more information on alternate key management strategies and how to configure them in your `flow.json` file.
 
 :::
 

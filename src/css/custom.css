@@ -130,3 +130,30 @@
     display: none !important;
   }
 }
+
+/* 1) Reset all sidebar items to normal weight */
+.theme-doc-sidebar-menu .menu__link {
+  font-weight: 400;
+}
+
+/* Optional: keep the current page a bit heavier */
+.theme-doc-sidebar-menu .menu__link--active {
+  font-weight: 500;
+}
+
+/* 2) Bold ONLY top-level docs (non-folders) */
+.theme-doc-sidebar-item-link-level-1>.menu__link {
+  font-weight: 500;
+}
+
+/* 3) Bold ONLY top-level folder labels (not inner folders) */
+.theme-doc-sidebar-item-category-level-1>.menu__list-item-collapsible> :is(a.menu__link--sublist, button.menu__link--sublist) {
+  font-weight: 500;
+}
+
+:root {
+  --ifm-font-family-base: 'Inter', system-ui, -apple-system, Segoe UI,
+    Roboto, Helvetica, Arial, 'Apple Color Emoji', 'Segoe UI Emoji';
+  font-synthesis-weight: none;
+  /* prevent fake bold */
+}

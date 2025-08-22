@@ -11,7 +11,7 @@ const ContentFeatures: Record<string, ContentFeatureProps> = {
     image: 'feature-why-flow-image',
     header: 'Why Flow',
     text: "Explore Flow's scalable and high-performance blockchain architecture",
-    link: '/build/flow',
+    link: '/build/cadence/flow',
   },
   'smart-accounts': {
     icon: 'feature-wand-icon',
@@ -25,21 +25,21 @@ const ContentFeatures: Record<string, ContentFeatureProps> = {
     image: 'feature-stacks-image',
     header: 'Bundle & Scripted Transactions',
     text: 'Streamline operations using gasless, scripted, and bundled transactions',
-    link: '/build/basics/transactions',
+    link: '/build/cadence/basics/transactions',
   },
   'code-scripts': {
     icon: 'feature-code-scripts-icon',
     image: 'feature-code-scripts-image',
     header: 'Scripted Queries',
     text: 'Access and interact with on-chain data efficiently using powerful scripting',
-    link: '/build/basics/scripts',
+    link: '/build/cadence/basics/scripts',
   },
   evm: {
     icon: 'feature-evm-icon',
     image: 'feature-evm-image',
     header: 'EVM Equivalency',
     text: 'Use Solidity contracts on Flow without code changes',
-    link: '/evm/about',
+    link: '/build/evm/about',
   },
 };
 
