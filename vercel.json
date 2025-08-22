@@ -709,7 +709,8 @@
     },
     {
       "source": "/community",
-      "destination": "/community-resources"
+      "destination": "/community-resources",
+      "permanent": true
     },
     {
       "source": "/concepts/staking/:path*",
@@ -1446,6 +1447,7 @@
     {
       "source": "/build/guides/nft",
       "destination": "/build/cadence/guides/nft",
+      "permanent": true
     },
     {
       "source": "/evm/:path*",
