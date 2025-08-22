@@ -1458,6 +1458,11 @@
       "source": "/tools/:path*",
       "destination": "/build/tools/:path*",
       "permanent": true
+    },
+    {
+      "source": "/networks/:path*",
+      "destination": "/protocol/:path*",
+      "permanent": true
     }
   ]
 }
