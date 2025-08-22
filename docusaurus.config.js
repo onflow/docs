@@ -618,14 +618,6 @@ const config = {
             from: '/build/cadence/basics/smart-contracts',
           },
         ],
-        createRedirects(existingPath) {
-          if (existingPath.includes('/cadence')) {
-            return [
-              existingPath.replace('https://cadence-lang.org/docs', '/cadence'),
-            ];
-          }
-          return undefined;
-        },
       },
     ],
     function cadenceLoader() {
