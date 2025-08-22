@@ -14,7 +14,7 @@ const GrowSection: React.FC = () => {
             <span className="flex items-center justify-center w-10 h-10 rounded-md bg-[#C084FC] mr-3">
               <Icon name={growGridData.icon} className="w-6 h-6 text-black" />
             </span>
-            <h2 className="text-3xl font-bold text-gray-900 dark:text-white">Grow your business</h2>
+            <h2 className="text-3xl font-bold text-gray-900 dark:text-white">Supporting builders to grow</h2>
           </div>
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6">
             {cards.map((card, idx) => (
