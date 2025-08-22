@@ -4,7 +4,7 @@ const CATEGORIES = [
   {
     title: 'Cadence',
     links: [
-      { label: 'Why Flow', href: '/build/cadence/flow' },
+      { label: 'Why Flow', href: '/build/flow' },
       { label: 'Differences vs. EVM', href: '/build/cadence/differences-vs-evm' },
       { label: 'Getting Started', href: '/build/cadence/getting-started/contract-interaction' },
       { label: 'Flow Protocol', href: '/build/cadence/basics/blocks' },
