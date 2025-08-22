@@ -728,9 +728,9 @@ Ready to level up your Cadence skills? Take a look at [these Cadence tutorials].
 [Flowscan Cadence]: https://testnet.flowscan.io/
 [resource]: https://cadence-lang.org/docs/solidity-to-cadence#resources
 [entitlement]: https://cadence-lang.org/docs/language/access-control#entitlements
-[How Flow EVM Works]: ../../evm/how-it-works.md
+[How Flow EVM Works]: ../../build/evm/how-it-works.md
 [Interacting with COAs]: ./interacting-with-coa.md
-[Cadence Transactions]: ../../build/basics/transactions.md
+[Cadence Transactions]: ../../build/cadence/basics/transactions.md
 [these Cadence tutorials]: https://cadence-lang.org/docs/tutorial/first-steps
 [`setup_coa.cdc`]: https://run.dnz.dev/snippet/4ec75e1f4165fa05
 [`fund_coa.cdc`]: https://run.dnz.dev/snippet/0e7370601bd9123b

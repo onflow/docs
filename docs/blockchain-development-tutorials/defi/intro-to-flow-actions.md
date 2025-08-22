@@ -608,11 +608,11 @@ Now that you have completed this tutorial, you should be able to:
 
 [FLIP 339]: https://github.com/onflow/flips/pull/339/files
 [Cadence]: https://cadence-lang.org/docs
-[Fungible Token Standard]: https://developers.flow.com/build/guides/fungible-token
+[Fungible Token Standard]: https://developers.flow.com/build/cadence/guides/fungible-token
 [Connectors]: ./connectors.md
 [connector]: ./connectors.md
 [connectors article]: ./connectors.md
-[vault]: https://developers.flow.com/build/guides/fungible-token#vaults-on-flow
+[vault]: https://developers.flow.com/build/cadence/guides/fungible-token#vaults-on-flow
 [interface]: https://cadence-lang.org/docs/language/interfaces
 [resource]: https://cadence-lang.org/docs/language/resources
 [IncrementFi]: https://app.increment.fi/swap?in=A.1654653399040a61.FlowToken&out=

@@ -33,13 +33,13 @@ Flow provides secure, native on-chain randomness that developers can leverage th
 
 ## **Network Information for Flow EVM**
 
-| **Parameter**       | **Value**                                                                     |
-| ------------------- | ----------------------------------------------------------------------------- |
-| **Network Name**    | Flow EVM Testnet                                                           |
-| **RPC Endpoint**    | [Flow EVM Testnet RPC] |
-| **Chain ID**        | 545                                                                           |
-| **Currency Symbol** | FLOW                                                                          |
-| **Block Explorer**  | [Flow EVM Testnet Explorer]           |
+| **Parameter**       | **Value**                   |
+| ------------------- | --------------------------- |
+| **Network Name**    | Flow EVM Testnet            |
+| **RPC Endpoint**    | [Flow EVM Testnet RPC]      |
+| **Chain ID**        | 545                         |
+| **Currency Symbol** | FLOW                        |
+| **Block Explorer**  | [Flow EVM Testnet Explorer] |
 
 ## **Steps to Connect Flow EVM Testnet to Metamask**
 
@@ -187,6 +187,6 @@ _This documentation was contributed by [Noah Naizir] a community developer._
 [Flow Faucet]: https://testnet-faucet.onflow.org/fund-account
 [modulo bias]: https://research.kudelskisecurity.com/2020/07/28/the-definitive-guide-to-modulo-bias-and-how-to-avoid-it/
 [this repository]: https://github.com/onflow/random-coin-toss
-[Flow Randomness Documentation]: https://developers.flow.com/build/advanced-concepts/randomness
+[Flow Randomness Documentation]: https://developers.flow.com/build/cadence/advanced-concepts/randomness
 [random coin toss implentation]: https://github.com/onflow/random-coin-toss
 [Noah Naizir]: https://x.com/noah_overflow

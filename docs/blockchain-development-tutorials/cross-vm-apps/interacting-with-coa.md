@@ -4,7 +4,7 @@ sidebar_label: Interacting with COAs
 sidebar_position: 4
 ---
 
-[Cadence Owned Accounts (COAs)](../../evm/accounts.md#cadence-owned-accounts) are EVM accounts owned by a Cadence resource and
+[Cadence Owned Accounts (COAs)](../../build/evm/accounts.md#cadence-owned-accounts) are EVM accounts owned by a Cadence resource and
 are used to interact with Flow EVM from Cadence.
 
 COAs expose two interfaces for interaction: one on the Cadence side and one on the EVM side. In this guide, we will
@@ -18,7 +18,7 @@ directly in `/storage/evm` as in these examples, but may instead be a part of a 
 
 To begin, we can take a look at a simplified version of the `EVM` contract, highlighting parts specific to COAs.
 
-You can learn more about the `EVM` contract [here](../../build/core-contracts/13-evm.md) and the full contract code can
+You can learn more about the `EVM` contract [here](../../build/cadence/core-contracts/13-evm.md) and the full contract code can
 be found on [GitHub](https://github.com/onflow/flow-go/tree/master/fvm/evm/stdlib/contract.cdc).
 
 ```cadence EVM.cdc
@@ -87,7 +87,7 @@ need to begin by importing the `EVM` contract into your Cadence code.
 
 To import the `EVM` contract into your Cadence code using the simple import syntax, you can use the following format
 (learn more about configuring contracts in `flow.json`
-[here](../../tools/flow-cli/flow.json/configuration.md#contracts)):
+[here](../../build/tools/flow-cli/flow.json/configuration.md#contracts)):
 
 ```cadence
 // This assumes you are working in the in the Flow CLI, FCL, or another tool that supports this syntax
@@ -105,7 +105,7 @@ import EVM from 0x1234
 ```
 
 To find the deployment addresses of the `EVM` contract, you can refer to the [EVM contract
-documentation](../../build/core-contracts/13-evm.md).
+documentation](../../build/cadence/core-contracts/13-evm.md).
 
 ## Creating a COA
 
@@ -260,7 +260,7 @@ This is a basic example which only transfers tokens between a single user's COA 
 modified to transfer these tokens between any arbitrary accounts.
 
 You can also deposit tokens directly into other types of EVM accounts using the `EVM.EVMAddress.deposit` function. See
-the [EVM contract documentation](../../build/core-contracts/13-evm.md) for more information.
+the [EVM contract documentation](../../build/cadence/core-contracts/13-evm.md) for more information.
 
 :::
 
@@ -625,7 +625,7 @@ transaction(bytecode: String) {
 
 ## More Information
 
-For more information about Cadence Owned Accounts, see [Flow EVM Accounts](../../evm/accounts.md).
+For more information about Cadence Owned Accounts, see [Flow EVM Accounts](../../build/evm/accounts.md).
 
 Other useful snippets for interacting with COAs can be found [here](https://fw-internal-doc.gitbook.io/evm).
 

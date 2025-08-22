@@ -10,14 +10,14 @@ const cards = {
       subtitle: 'Deploy fungible tokens for your project',
       imageName: 'create-fungible-tokens',
       hoverText: 'Get Started',
-      link: '/build/guides/fungible-token',
+      link: '/build/cadence/guides/fungible-token',
     },
     {
       title: 'Launch an NFT',
       subtitle: 'Deploy your first NFT collection',
       imageName: 'launch-an-nft',
       hoverText: 'Get Started',
-      link: '/build/guides/nft',
+      link: '/build/cadence/guides/nft',
     },
     {
       title: 'Quickstarts',
