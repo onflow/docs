@@ -1365,6 +1365,11 @@
       "permanent": true
     },
     {
+      "source": "/tutorials/use-AI-to-build-on-flow/integrations/gelato-sw.mdx",
+      "destination": "/tutorials/use-AI-to-build-on-flow/integrations/gelato-sw.md",
+      "permanent": true
+    },
+    {
       "source": "/evm/guides/vrf",
       "destination": "/tutorials/native-vrf/vrf-evm",
       "permanent": true
