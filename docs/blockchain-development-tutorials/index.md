@@ -93,7 +93,7 @@ Learn how to leverage Flow's native VRF capabilities in both Cadence and Solidit
 
 - [Secure Randomness with Commit-Reveal in Cadence] - Learn how to implement secure randomness in Cadence using Flow's commit-reveal scheme
 - [VRF (Randomness) in Solidity] - Learn how to use Flow's native VRF capabilities in Solidity.
-- [Deploy a Solidity Contract Using Cadence] - Discover how to deploy and interact with Solidity contracts on Flow EVM using Cadence
+- Deploy a Solidity Contract Using Cadence - Discover how to deploy and interact with Solidity contracts on Flow EVM using Cadence
 
 ## [Backend Usage]
 
@@ -137,7 +137,7 @@ Flow will continue to provide quality walkthroughs and tutorials to provide deve
 [Build a Fully-Onchain Image Gallery]: flowtobooth/image-gallery.md
 [Native VRF (Built-in Randomness) Tutorials]: https://developers.flow.com/tutorials/native-vrf
 [Secure Randomness with Commit-Reveal in Cadence]: native-vrf/commit-reveal-cadence.md
-[Deploy a Solidity Contract Using Cadence]: native-vrf/deploy-solidity-contract.md
+
 [VRF (Randomness) in Solidity]: native-vrf/vrf-in-solidity.md
 [Add Flow Cadence to Your wagmi App]: ./cross-vm-apps/add-to-wagmi.md
 [Token Launch]: https://developers.flow.com/tutorials/token-launch
