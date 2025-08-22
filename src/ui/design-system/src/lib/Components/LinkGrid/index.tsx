@@ -91,11 +91,11 @@ const sections: LinkGridSection[] = [
       { title: 'Flow CLI', href: '/tools/flow-cli' },
       {
         title: 'Node Operations',
-        href: '/networks/node-ops',
+        href: '/protocol/node-ops',
       },
       {
         title: 'Network Architecture',
-        href: '/networks/network-architecture',
+        href: '/protocol/network-architecture',
       },
     ],
     imageName: 'docs-the-stack',

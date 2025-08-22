@@ -4,7 +4,7 @@ title: Flow Port Staking Guide
 
 This guide provides step-by-step instructions for using the Flow Port to stake your FLOW tokens and start earning rewards.
 Currently, Flow Port only supports staking or delegating using tokens held in Blocto or Ledger wallets.
-If you're new to the concepts of staking and delegating you can [read this guide](../../networks/staking/index.md) to learn more.
+If you're new to the concepts of staking and delegating you can [read this guide](../../protocol/staking/index.md) to learn more.
 
 ## First Step
 
@@ -32,7 +32,7 @@ You'll also need the following information about your node:
 - Staking Key
 - Machine Account Public Key (for collection/consensus nodes only)
 
-If you don't have this information, go [here](../../networks/node-ops/node-operation/node-bootstrap.md#step-1---run-genesis-bootstrap) for instructions on how to acquire it.
+If you don't have this information, go [here](../../protocol/node-ops/node-operation/node-bootstrap.md#step-1---run-genesis-bootstrap) for instructions on how to acquire it.
 
 ### Begin Staking
 
@@ -46,7 +46,7 @@ but you may stake as much as you like beyond that. Here's the screen you should 
 ![Flow Port Staking](port-stake-0-03.png)
 
 Clicking next will take you to the final screen, where you'll need to enter information about your node you previously obtained.
-If you don't have this information, go [here](../../networks/node-ops/node-operation/node-bootstrap.md#step-1---run-genesis-bootstrap) for instructions on how to acquire it.
+If you don't have this information, go [here](../../protocol/node-ops/node-operation/node-bootstrap.md#step-1---run-genesis-bootstrap) for instructions on how to acquire it.
 Here's the screen you should see:
 
 ![Flow Port Staking](port-stake-0-04.png)

@@ -140,7 +140,7 @@ is compatible with Flow Port.
 
 If you created your account using [Flow Port](https://port.onflow.org/),
 you can also stake and earn rewards using the Flow Port.
-Follow this [step-by-step guide](../../networks/flow-port/staking-guide.md) to stake using Flow Port.
+Follow this [step-by-step guide](../../protocol/flow-port/staking-guide.md) to stake using Flow Port.
 Flow Port currently supports staking as a node, delegating,
 and reward withdrawal using **Flow Reference Wallet**, **Ledger**, **Shadow**, **NuFi**, and any other FCL compatible accounts / wallets.
 

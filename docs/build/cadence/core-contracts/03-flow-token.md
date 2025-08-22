@@ -176,4 +176,4 @@ access(all) event BurnerCreated()
 
 ### Staking Events
 
-To learn more about staking events, read [staking/events/](../../../networks/staking/07-staking-scripts-events.md)
+To learn more about staking events, read [staking/events/](../../../protocol/staking/07-staking-scripts-events.md)

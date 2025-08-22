@@ -5,11 +5,11 @@ description: Instructions for existing Node Operators to follow to create a mach
 sidebar_position: 6
 ---
 
-The [Flow Epoch Preparation Protocol](../../staking/04-epoch-preparation.md) requires that 
-`collection` and `consensus` nodes use an automated [machine account](../../staking/09-qc-dkg.md#machine-accounts) 
+The [Flow Epoch Preparation Protocol](../../staking/04-epoch-preparation.md) requires that
+`collection` and `consensus` nodes use an automated [machine account](../../staking/09-qc-dkg.md#machine-accounts)
 to participate in important processes required to start the next epoch. (QC and DKG, respectively)
 
-Starting on Thursday, August 26th 2021, all collector and consensus nodes who register with Flow Port will 
+Starting on Thursday, August 26th 2021, all collector and consensus nodes who register with Flow Port will
 automatically create and initialize this machine account as part of their node registration.
 
 If you have an existing `consensus` or `collection` node that you registered with Flow Port before Thursday August 26th,
@@ -41,9 +41,9 @@ You will need to generate a Machine account private key using the `bootstrap` ut
 
 <Callout type="warning">
 
-  Ensure you run the following commands on the machine you use to run your node software.
-  The bootstrap directory passed to the `-o` flag must be the same bootstrap directory used by your node.
-  The default location is `/var/flow/bootstrap`, but double-check your setup before continuing.
+Ensure you run the following commands on the machine you use to run your node software.
+The bootstrap directory passed to the `-o` flag must be the same bootstrap directory used by your node.
+The default location is `/var/flow/bootstrap`, but double-check your setup before continuing.
 
 </Callout>
 
@@ -69,8 +69,8 @@ $tree ./bootstrap/
 
 ## Create Machine Account
 
-You will now need to copy the Machine account public key displayed in the terminal output and 
-head over to [Flow Port](../../../networks/flow-port/staking-guide.md#stake-a-node) to submit a transaction to create a Machine Account. 
+You will now need to copy the Machine account public key displayed in the terminal output and
+head over to [Flow Port](../../../protocol/flow-port/staking-guide.md#stake-a-node) to submit a transaction to create a Machine Account.
 For example, from the example above, we would copy `f847...` from this line:
 
 ```shell Example

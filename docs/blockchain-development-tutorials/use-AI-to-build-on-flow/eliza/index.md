@@ -3,7 +3,7 @@ title: Eliza on Flow
 description: Learn how to build AI Agent on Flow with Eliza
 sidebar_position: 4
 keywords:
-  - AI  
+  - AI
   - AI Agent
   - Eliza
   - Eliza on Flow
@@ -112,13 +112,11 @@ Copy .env.example to .env and fill in the appropriate values.
 cp .env.example .env
 ```
 
-
 :::danger
 
-In normal development, it's a best practice to use a `.env` to protect API keys and other sensitive information.  When working with crypto, it's **critical** to be disciplined and always use them, even in test projects or tutorials.  If you expose a wallet key, you might lose everything in that wallet immediately, or someone might watch it for years and rug you the day you put something valuable there.
+In normal development, it's a best practice to use a `.env` to protect API keys and other sensitive information. When working with crypto, it's **critical** to be disciplined and always use them, even in test projects or tutorials. If you expose a wallet key, you might lose everything in that wallet immediately, or someone might watch it for years and rug you the day you put something valuable there.
 
 :::
-
 
 Edit `.env` and add your values. Do NOT add this file to version control.
 
@@ -252,7 +250,7 @@ The Eliza framework provides a powerful way to create intelligent agents that ca
 [Models.ts]: https://github.com/elizaOS/eliza/blob/main/packages/core/src/models.ts
 [doc]: https://developers.flow.com/tools/flow-cli/accounts/create-accounts
 [Flow Faucet]: https://faucet.flow.com/
-[Networks]: https://developers.flow.com/networks/flow-networks
+[Networks]: https://developers.flow.com/protocol/flow-networks
 [Character Documentation]: https://elizaos.github.io/eliza/docs/core/characterfile/
 [Eliza Plugins Registry]: https://elizaos.github.io/registry
 [plugin development guide]: build-plugin.md

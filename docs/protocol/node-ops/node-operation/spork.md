@@ -35,7 +35,7 @@ Once you receive an announcement that the spork process is complete (via Discord
 
 <Callout type="warning">
 
-If you had set the [dynamic bootstrap arguments](https://developers.flow.com/networks/node-ops/node-operation/protocol-state-bootstrap) command line arguments (`--dynamic-startup-access-address`, `--dynamic-startup-access-publickey`, `--dynamic-startup-epoch-phase`) please remove them.
+If you had set the [dynamic bootstrap arguments](https://developers.flow.com/protocol/node-ops/node-operation/protocol-state-bootstrap) command line arguments (`--dynamic-startup-access-address`, `--dynamic-startup-access-publickey`, `--dynamic-startup-epoch-phase`) please remove them.
 
 </Callout>
 
@@ -43,6 +43,7 @@ If you had set the [dynamic bootstrap arguments](https://developers.flow.com/net
    `./boot-tools/transit pull -b ./bootstrap -t ${PULL_TOKEN} -r ${YOUR_NODE_TYPE} --concurrency 10 --timeout 15m`
 
 - `PULL_TOKEN` will be provided by the Flow team.
+
   - For `collection`, `consensus`, `verification` node type it will generally be `testnet-x` or `mainnet-x` where x is the latest number of respective network upgrade. e.g. `testnet-52`, `mainnet-26`.
   - For `execution` node type it will generally be `testnet-x-execution` or `mainnet-x-execution`.
   - For `access` node:

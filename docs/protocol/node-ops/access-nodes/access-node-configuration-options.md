@@ -5,12 +5,12 @@ sidebar_position: 2
 ---
 
 Flow chain data comprises of two parts,
+
 1. Protocol state data - This refers to the blocks, collection, transaction that are being continuously added to the chain.
 2. Execution state data - This refers to what makes up the execution state and includes transaction events and account balances.
 
 The access node by default syncs the protocol state data and has been now updated to also sync the execution state data.
 This guide provides an overview of how to use the execution data sync feature of the Access node.
-
 
 <aside>
 ⚠️ Nodes MUST be running `v0.32.10+` or newer to enable execution data indexing.
@@ -53,7 +53,7 @@ As of **`mainnet24`** / **`devnet49`**, Access nodes can be configured to index 
 This is enabled by default, so as long as you didn’t explicitly disable it, the data should already be available.
 
 1. Make sure that either `--execution-data-sync-enabled` is not set, or is set to `true`
-2. Make sure that you have a path configured for `--execution-data-dir`, otherwise the data will be written to the running user’s home directory, which is most likely inside the container’s volume. For example, you can create a folder within the node’s data directory  `/data/execution-data/`.
+2. Make sure that you have a path configured for `--execution-data-dir`, otherwise the data will be written to the running user’s home directory, which is most likely inside the container’s volume. For example, you can create a folder within the node’s data directory `/data/execution-data/`.
 
 There are some additional flags available, but you most likely do not need to change them.
 
@@ -61,7 +61,7 @@ There are some additional flags available, but you most likely do not need to ch
 
 ### Download the root protocol state snapshot
 
-The `root-protocol-state-snapshot.json` is generated for each [spork](https://developers.flow.com/networks/node-ops/node-operation/spork) and contains the genesis data for that spork. It is published and made available after each spork. The download location is specified [here](https://github.com/onflow/flow/blob/master/sporks.json) under [rootProtocolStateSnapshot](https://github.com/onflow/flow/blob/master/sporks.json#L16).
+The `root-protocol-state-snapshot.json` is generated for each [spork](https://developers.flow.com/protocol/node-ops/node-operation/spork) and contains the genesis data for that spork. It is published and made available after each spork. The download location is specified [here](https://github.com/onflow/flow/blob/master/sporks.json) under [rootProtocolStateSnapshot](https://github.com/onflow/flow/blob/master/sporks.json#L16).
 
 Store the **`root-protocol-state-snapshot.json`** into the **`/bootstrap/public-root-information/`** folder.
 
@@ -89,8 +89,8 @@ Once the files are downloaded, you can either move them to `/bootstrap/execution
 
 The root checkpoint for the network is used by Execution and Access nodes to bootstrap their local execution state database with a known trusted snapshot. The checkpoint contains 18 files that make up the merkle trie used to store the blockchain’s state.
 
-Root checkpoints are periodically generated on Flow Foundation execution nodes and uploaded to a GCP bucket. You can see 
-a list of available checkpoints [here](https://console.cloud.google.com/storage/browser/flow-genesis-bootstrap/checkpoints), 
+Root checkpoints are periodically generated on Flow Foundation execution nodes and uploaded to a GCP bucket. You can see
+a list of available checkpoints [here](https://console.cloud.google.com/storage/browser/flow-genesis-bootstrap/checkpoints),
 or list them using the [gsutil](https://cloud.google.com/storage/docs/gsutil) command
 
 ```bash
@@ -99,10 +99,11 @@ gsutil ls "gs://flow-genesis-bootstrap/checkpoints/"
 
 The checkpoint paths are in the format `flow-genesis-bootstrap/checkpoints/[network]/[epoch number]-[block height]/`.
 Where
-* `[network]` is the network the checkpoint is from. For example, `mainnet` or `testnet`.
-* `[epoch number]` is the epoch number when the checkpoint was taken. You can find the current epoch number on the [flowscan.io](https://flowscan.io/) home page. 
-* `[block height]` is the block height at which the checkpoint was taken.
-Make sure that the checkpoint you select is from an epoch when your node was part of the network.
+
+- `[network]` is the network the checkpoint is from. For example, `mainnet` or `testnet`.
+- `[epoch number]` is the epoch number when the checkpoint was taken. You can find the current epoch number on the [flowscan.io](https://flowscan.io/) home page.
+- `[block height]` is the block height at which the checkpoint was taken.
+  Make sure that the checkpoint you select is from an epoch when your node was part of the network.
 
 ### Download the root checkpoint
 
@@ -130,7 +131,6 @@ with the corresponding height. You will get a `base64` encoded snapshot which de
 
 Store the **`root-protocol-state-snapshot.json`** into the **`/bootstrap/public-root-information/`** folder.
 
-
 # Configure the node to run the indexer
 
 Now you have the execution sync setup and the root checkpoint in place, it’s time to configure the node to index all of the data so it can be used for script execution.
@@ -139,7 +139,6 @@ There are 2 cli flags that you will need to add:
 
 - `--execution-data-indexing-enabled=true` This will enable the indexer.
 - `--execution-state-dir` This defines the path where the registers db will be stored. A good default is on the same drive as the protocol db. e.g. `/data/execution-state`
-
 
 # Start your node
 
@@ -216,10 +215,10 @@ Local data usage for transaction results and events are controlled with the `--t
 ```
 
 - You can check if the execution sync and index heights are increasing by querying the metrics endpoint:
-    ```
-    curl localhost:8080/metrics | grep highest_download_height
-    curl -s localhost:8080/metrics | grep highest_indexed_height
-    ```
+  ```
+  curl localhost:8080/metrics | grep highest_download_height
+  curl -s localhost:8080/metrics | grep highest_indexed_height
+  ```
 
 # Execution Data Sync
 
@@ -227,16 +226,16 @@ The Execution Sync protocol is enabled by default on Access nodes, and uses the 
 
 Below is a list of the available CLI flags to control the behavior of Execution Sync requester engine.
 
-| Flag | Type | Description |
-| --- | --- | --- |
-| execution-data-sync-enabled | bool | Whether to enable the execution data sync protocol. Default is true |
-| execution-data-dir | string | Directory to use for Execution Data database. Default is in the user’s home directory. |
-| execution-data-start-height | uint64 | Height of first block to sync execution data from when starting with an empty Execution Data database. Default is the node’s root block. |
-| execution-data-max-search-ahead | uint64 | Max number of heights to search ahead of the lowest outstanding execution data height. This limits the number non-consecutive objects that will be downloaded if an earlier block is unavailable. Default is 5000. |
-| execution-data-fetch-timeout | duration | Initial timeout to use when fetching execution data from the network. timeout increases using an incremental backoff until execution-data-max-fetch-timeout. Default is 10m. |
-| execution-data-max-fetch-timeout | duration | Maximum timeout to use when fetching execution data from the network. Default is 10s |
-| execution-data-retry-delay | duration | Initial delay for exponential backoff when fetching execution data fails. Default is 1s |
-| execution-data-max-retry-delay | duration | Maximum delay for exponential backoff when fetching execution data fails. Default is 5m |
+| Flag                             | Type     | Description                                                                                                                                                                                                        |
+| -------------------------------- | -------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| execution-data-sync-enabled      | bool     | Whether to enable the execution data sync protocol. Default is true                                                                                                                                                |
+| execution-data-dir               | string   | Directory to use for Execution Data database. Default is in the user’s home directory.                                                                                                                             |
+| execution-data-start-height      | uint64   | Height of first block to sync execution data from when starting with an empty Execution Data database. Default is the node’s root block.                                                                           |
+| execution-data-max-search-ahead  | uint64   | Max number of heights to search ahead of the lowest outstanding execution data height. This limits the number non-consecutive objects that will be downloaded if an earlier block is unavailable. Default is 5000. |
+| execution-data-fetch-timeout     | duration | Initial timeout to use when fetching execution data from the network. timeout increases using an incremental backoff until execution-data-max-fetch-timeout. Default is 10m.                                       |
+| execution-data-max-fetch-timeout | duration | Maximum timeout to use when fetching execution data from the network. Default is 10s                                                                                                                               |
+| execution-data-retry-delay       | duration | Initial delay for exponential backoff when fetching execution data fails. Default is 1s                                                                                                                            |
+| execution-data-max-retry-delay   | duration | Maximum delay for exponential backoff when fetching execution data fails. Default is 5m                                                                                                                            |
 
 <aside>
 ℹ️ Note: By default, execution data is written to the home directory of the application user. If your node is running in docker, this is most likely in the container’s volume. Depending on how you configure your node, this may cause the node’s boot disk to fill up.
@@ -249,28 +248,28 @@ As a best practice, specify a path with `--execution-data-dir`. A sensible defau
 
 Below is a list of the available CLI flags to control the behavior of Execution Data Indexer.
 
-| Flag | Type | Description |
-| --- | --- | --- |
-| execution-data-indexing-enabled  | bool | Whether to enable the execution data indexing. Default is false |
-| execution-state-dir | string | Directory to use for execution-state database. Default is in the user’s home directory. |
-| execution-state-checkpoint | string | Location of execution-state checkpoint (root.checkpoint.*) files.  |
-| event-query-mode | string | Mode to use when querying events. one of [local-only, execution-nodes-only(default), failover] |
-| tx-result-query-mode | string | Mode to use when querying transaction results. one of [local-only, execution-nodes-only(default), failover] |
+| Flag                            | Type   | Description                                                                                                 |
+| ------------------------------- | ------ | ----------------------------------------------------------------------------------------------------------- |
+| execution-data-indexing-enabled | bool   | Whether to enable the execution data indexing. Default is false                                             |
+| execution-state-dir             | string | Directory to use for execution-state database. Default is in the user’s home directory.                     |
+| execution-state-checkpoint      | string | Location of execution-state checkpoint (root.checkpoint.\*) files.                                          |
+| event-query-mode                | string | Mode to use when querying events. one of [local-only, execution-nodes-only(default), failover]              |
+| tx-result-query-mode            | string | Mode to use when querying transaction results. one of [local-only, execution-nodes-only(default), failover] |
 
 Below is a list of the available CLI flags to control the behavior of Script Execution.
 
-| Flag | Type | Description |
-| --- | --- | --- |
-| script-execution-mode  | string | Mode to use when executing scripts. one of [local-only, execution-nodes-only, failover, compare ] |
-| script-execution-computation-limit | uint64 | Maximum number of computation units a locally executed script can use. Default: 100000 |
-| script-execution-max-error-length | int | Maximum number characters to include in error message strings. additional characters are truncated. Default: 1000 |
-| script-execution-log-time-threshold | duration | Emit a log for any scripts that take over this threshold. Default: 1s |
-| script-execution-timeout | duration | The timeout value for locally executed scripts. Default: 10s |
-| script-execution-min-height | uint64 | Lowest block height to allow for script execution. Default: no limit |
-| script-execution-max-height | uint64 | Highest block height to allow for script execution. default: no limit |
-| register-cache-type | string | Type of backend cache to use for registers [lru, arc, 2q] |
-| register-cache-size | uint | Number of registers to cache for script execution. Default: 0 (no cache) |
-| program-cache-size | uint | [experimental] number of blocks to cache for cadence programs. use 0 to disable cache. Default: 0. Note: this is an experimental feature and may cause nodes to become unstable under certain workloads. Use with caution. |
+| Flag                                | Type     | Description                                                                                                                                                                                                                |
+| ----------------------------------- | -------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| script-execution-mode               | string   | Mode to use when executing scripts. one of [local-only, execution-nodes-only, failover, compare ]                                                                                                                          |
+| script-execution-computation-limit  | uint64   | Maximum number of computation units a locally executed script can use. Default: 100000                                                                                                                                     |
+| script-execution-max-error-length   | int      | Maximum number characters to include in error message strings. additional characters are truncated. Default: 1000                                                                                                          |
+| script-execution-log-time-threshold | duration | Emit a log for any scripts that take over this threshold. Default: 1s                                                                                                                                                      |
+| script-execution-timeout            | duration | The timeout value for locally executed scripts. Default: 10s                                                                                                                                                               |
+| script-execution-min-height         | uint64   | Lowest block height to allow for script execution. Default: no limit                                                                                                                                                       |
+| script-execution-max-height         | uint64   | Highest block height to allow for script execution. default: no limit                                                                                                                                                      |
+| register-cache-type                 | string   | Type of backend cache to use for registers [lru, arc, 2q]                                                                                                                                                                  |
+| register-cache-size                 | uint     | Number of registers to cache for script execution. Default: 0 (no cache)                                                                                                                                                   |
+| program-cache-size                  | uint     | [experimental] number of blocks to cache for cadence programs. use 0 to disable cache. Default: 0. Note: this is an experimental feature and may cause nodes to become unstable under certain workloads. Use with caution. |
 
 # Resources
 

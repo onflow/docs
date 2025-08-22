@@ -98,7 +98,7 @@ Remember that this solution is most effective when you can ensure all user trans
 [Using Flow EVM]: ../../build/evm/using.mdx
 [EVM Gateway]: https://github.com/onflow/flow-evm-gateway
 [transaction model]: ../../build/cadence/basics/transactions.md#Payer
-[Custom EVM Gateway]: ../../networks/node-ops/evm-gateway/evm-gateway-setup.md
-[Account Creation]: ../../networks/node-ops/evm-gateway/evm-gateway-setup.md#step-1---account-creation
-[Account and Key Management]: ../../networks/node-ops/evm-gateway/evm-gateway-setup.md#account-and-key-management
-[Run the gateway]: ../../networks/node-ops/evm-gateway/evm-gateway-setup.md#run-the-gateway
+[Custom EVM Gateway]: ../../protocol/node-ops/evm-gateway/evm-gateway-setup.md
+[Account Creation]: ../../protocol/node-ops/evm-gateway/evm-gateway-setup.md#step-1---account-creation
+[Account and Key Management]: ../../protocol/node-ops/evm-gateway/evm-gateway-setup.md#account-and-key-management
+[Run the gateway]: ../../protocol/node-ops/evm-gateway/evm-gateway-setup.md#run-the-gateway

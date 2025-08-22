@@ -274,10 +274,10 @@ const config = {
             activeBasePath: '/build',
           },
           {
-            to: 'networks/flow-networks',
+            to: 'protocol/flow-networks',
             position: 'left',
-            label: 'Networks',
-            activeBasePath: '/networks',
+            label: 'Protocol',
+            activeBasePath: '/protocol',
           },
           {
             to: 'ecosystem',
@@ -431,19 +431,19 @@ const config = {
                 label: 'Flowscan Testnet',
               },
               {
-                to: '/networks/node-ops/node-operation/past-upgrades',
+                to: '/protocol/node-ops/node-operation/past-upgrades',
                 label: 'Past Sporks',
               },
               {
-                to: '/networks/node-ops/node-operation/upcoming-sporks',
+                to: '/protocol/node-ops/node-operation/upcoming-sporks',
                 label: 'Upcoming Sporks',
               },
               {
-                to: '/networks/node-ops',
+                to: '/protocol/node-ops',
                 label: 'Node Operation',
               },
               {
-                to: '/networks/node-ops/node-operation/spork',
+                to: '/protocol/node-ops/node-operation/spork',
                 label: 'Spork Information',
               },
             ],

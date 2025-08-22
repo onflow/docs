@@ -13,6 +13,7 @@ Permissionless Access nodes allow any operator to run a Flow Access node.
 Unlike the other staked nodes, a permissionless access node does not have to be approved by the service account before it can join the network, hence the term "permissionless". The goal is to make all node types permissionless and this is the first step towards achieving that goal.
 
 ## Who Should Run a Permissionless Access Node?
+
 dApp developers can choose to run their own private permissionless access node and move away from using the community access nodes. This will also allow them to not be subjected to the API rate limits of the public access nodes.
 
 Node operators can also run their own permissionless access node and provide access to that node as a service.
@@ -25,7 +26,6 @@ New nodes are able to join the network each time a new epoch begins.
 An epoch is a period of time (approximately one week) when the node operators in the network are constant.
 At epoch boundaries, newly staked node operators are able to join the network and existing node operators which have unstaked may exit the network.
 You can read more about epochs [here](../../staking/03-schedule.md).
-
 
 In order to join the network at epoch N+1, the access node **must** be registered with at least 100 FLOW staked prior to the end of epoch N's Staking Auction Phase.
 
@@ -43,11 +43,11 @@ You can view the exact epoch phase transition time [here](https://dashboard.flow
 
 To summarize,
 
-| **Epoch**  |     **Epoch Phase**    |                                                     |
-|:----------:|:----------------------:|:---------------------------------------------------:|
-|     N      | Staking auction starts | Three new access node slots are opened. Anyone can register their access nodes                             |
-|     N      | Staking auction ends   | Three of the nodes registered during this epoch are randomly selected to be a part of the network in the next epoch. No more nodes can register until the next epoch starts.   |
-|    N+1     | Epoch N+1 starts       | The newly selected nodes can now participate in the network. Three new slots are opened. |
+| **Epoch** |    **Epoch Phase**     |                                                                                                                                                                              |
+| :-------: | :--------------------: | :--------------------------------------------------------------------------------------------------------------------------------------------------------------------------: |
+|     N     | Staking auction starts |                                                Three new access node slots are opened. Anyone can register their access nodes                                                |
+|     N     |  Staking auction ends  | Three of the nodes registered during this epoch are randomly selected to be a part of the network in the next epoch. No more nodes can register until the next epoch starts. |
+|    N+1    |    Epoch N+1 starts    |                                           The newly selected nodes can now participate in the network. Three new slots are opened.                                           |
 
 ## How To Run a Permissionless Access Node?
 
@@ -59,6 +59,7 @@ You can provision the machine before or after your node has been chosen.
 :::
 
 At a high level, to run a permissionless Access node, you will have to do the following steps:
+
 1. Generate the node identity (private and public keys, node ID etc.).
 2. Stake the node with 100 FLOW by the end of the staking phase of the current epoch (see [timing](#timing)) by providing the node information generated in step 1.
 3. You can verify if your node ID was selected by the on-chain random selection process on Wednesday at around 20:00 UTC when the next epoch starts.
@@ -67,7 +68,7 @@ At a high level, to run a permissionless Access node, you will have to do the fo
 Following is a detail explanation of these four steps.
 If you want to run multiple access nodes, you will have to run through these steps for each node.
 
-## Step  1 - Generate Node Information
+## Step 1 - Generate Node Information
 
 ### Download the Bootstrapping Kit
 
@@ -152,7 +153,7 @@ All your private keys should be in the `bootstrap` folder created earlier. Pleas
 
 :::
 
-## Step  2 - Stake the Node
+## Step 2 - Stake the Node
 
 You need to now register the node on chain by staking the node via [Flow Port](https://port.onflow.org/).
 
@@ -209,6 +210,7 @@ When you stake the node, the tokens will show up under the `tokensCommitted` buc
 If the node is not selected, the tokens are moved to the `tokensUnstaked` bucket.
 
 ### Check Using Flow Port
+
 You can check these balances on Flow Port before and after the epoch transition that will occur on Wednesday (see [timing](#timing)).
 
 When you stake the node, you should see the following on Flow Port under `Stake & Delegate`
@@ -226,6 +228,7 @@ Instead, if you see that your token balance is under the Unstaked Amount, then y
 ### Check Using Flow CLI
 
 You can also check these balance using [Flow Cli](https://github.com/onflow/flow-cli). Once you have downloaded and installed Flow Cli, you can query the account balance using the command,
+
 ```shell
 flow accounts staking-info <your account address> -n mainnet
 ```
@@ -319,6 +322,7 @@ gcr.io/flow-container-registry/access:$VERSION \
 </Tabs>
 
 For example, if your Node ID is `e737ec6efbd26ef43bf676911cdc5a11ba15fc6562d05413e6589fccdd6c06d5` and the software version is `v1.2.3`, the Docker command would be the following:
+
 ```shell Example
 docker run --rm \
   -v $PWD/bootstrap:/bootstrap:ro  \
@@ -341,7 +345,7 @@ docker run --rm \
   --loglevel=error
 ```
 
-> If you would like your node to sync from the start of the last network upgrade, then please see the instructions [here](https://developers.flow.com/networks/node-ops/node-operation/spork)
+> If you would like your node to sync from the start of the last network upgrade, then please see the instructions [here](https://developers.flow.com/protocol/node-ops/node-operation/spork)
 
 Alternatively, you can build a binary for the access node to run it without using Docker.
 To build the access node binary, see the instructions [here](https://github.com/onflow/flow-go?tab=readme-ov-file#building-a-binary-for-the-access-node).

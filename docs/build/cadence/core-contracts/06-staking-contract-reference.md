@@ -37,7 +37,7 @@ Source: [FlowIDTableStaking.cdc](https://github.com/onflow/flow-core-contracts/b
 ## Transactions and Scripts
 
 Transactions for the staking contract are in the `flow-core-contracts` repo.
-Developers and users are advised to use [the staking collection transactions](../../../networks/staking/14-staking-collection.md)
+Developers and users are advised to use [the staking collection transactions](../../../protocol/staking/14-staking-collection.md)
 to stake tokens instead of the basic transactions that are used for tests.
 
 ### Getting Staking Info with Scripts
@@ -61,12 +61,12 @@ These scripts are read-only and get info about the current state of the staking 
 ### Delegator Transactions
 
 Documentation for delegating with tokens is described in the staking documentation
-for [the staking collection](../../../networks/staking/14-staking-collection.md)
+for [the staking collection](../../../protocol/staking/14-staking-collection.md)
 
 ## Events
 
 The `FlowIDTableStaking` contract emits an event whenever an important action occurs.
-See the [staking events Documentation](../../../networks/staking/07-staking-scripts-events.md) for more information about each event.
+See the [staking events Documentation](../../../protocol/staking/07-staking-scripts-events.md) for more information about each event.
 
 ```cadence
     /// Epoch

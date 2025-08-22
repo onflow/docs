@@ -75,7 +75,7 @@ Scripts can be used for the following:
 1. Validating a transaction before submitting it e.g. checking if the payer has sufficient balance, the receiver account is setup correctly to receive a token or NFT etc.
 2. Collecting chain data over time.
 3. Continuously verifying accounts through a background job e.g. a Discord bot that verifies users by their Flow account.
-4. Querying core contracts e.g. see [staking scripts and events](../../../networks/staking/07-staking-scripts-events.md) for querying staking and epoch related information, see the scripts directory under each of the [core contract transactions](https://github.com/onflow/flow-core-contracts/tree/master/transactions) for other core contracts related scripts.
+4. Querying core contracts e.g. see [staking scripts and events](../../../protocol/staking/07-staking-scripts-events.md) for querying staking and epoch related information, see the scripts directory under each of the [core contract transactions](https://github.com/onflow/flow-core-contracts/tree/master/transactions) for other core contracts related scripts.
 
 ## Executing Scripts
 
@@ -83,7 +83,7 @@ Scripts can be used for the following:
 
 A script can be executed by submitting it to the Access API provided by access nodes. Currently, there are three API endpoints that allow a user to execute scripts at the latest sealed block, a previous block height, or a previous block ID.
 
-[**gRPC Script API**](../../../networks/access-onchain-data/index.md#scripts)
+[**gRPC Script API**](../../../protocol/access-onchain-data/index.md#scripts)
 
 [**REST Script API**](/http-api#tag/Scripts)
 
@@ -125,4 +125,4 @@ Following are some recommendations on how to write efficient scripts:
 
 3. **Historic block data limit**
    1. Script execution on execution nodes is restricted to approximately the last 100 blocks. Any request for script execution on an execution node on a past block (specified by block ID or block height) will fail if that block is more than 100 blocks in the past.
-   2. Script execution on an access node can go much beyond the last 100 blocks but is restricted to the height when the [last](https://developers.flow.com/networks/node-ops/node-operation/past-upgrades) network upgrade ([HCU](https://developers.flow.com/networks/node-ops/node-operation/hcu) or spork) occurred.
+   2. Script execution on an access node can go much beyond the last 100 blocks but is restricted to the height when the [last](https://developers.flow.com/protocol/node-ops/node-operation/past-upgrades) network upgrade ([HCU](https://developers.flow.com/protocol/node-ops/node-operation/hcu) or spork) occurred.

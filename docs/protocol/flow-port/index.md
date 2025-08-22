@@ -83,7 +83,7 @@ If you are using a custody provider who controls your account and private keys f
 
 ### Manual Staking/Delegating
 
-If you are not using a custody provider, there is more responsibility that you have to accept, because you have complete control of your tokens. You need to ensure that you are well informed about the staking process and potentially node operation process because you will have to manage those on your own. Please read the [staking documentation](../../networks/staking/index.md) before continuing with this guide.
+If you are not using a custody provider, there is more responsibility that you have to accept, because you have complete control of your tokens. You need to ensure that you are well informed about the staking process and potentially node operation process because you will have to manage those on your own. Please read the [staking documentation](../../protocol/staking/index.md) before continuing with this guide.
 
 Below are the various options you can choose. Please be aware, that at this time you can only have 1 stake or 1 delegate per account. This means that if you want to do multiple stakes, multiple delegates, or a mixture of stakes and delegates, you will need to create multiple accounts to do so. Please read them carefully as it will help you understand which route is best for your situation:
 
@@ -100,7 +100,7 @@ Please see a list [here](https://github.com/onflow/flow/blob/master/nodeoperator
 
 3. Input the amount of Flow you wish to stake with that node. You must stake at least the minimum in order for your stake request to be successfully processed. You are able to provide the minimum stake across multiple transactions. Meaning, you could execute your stake transaction with half of the minumum required. Then, before the next epoch, you can choose to 'Add Flow' to that pending stake to get it to the minimum stake required.
 
-4. Run the [bootstrapping instructions](../../networks/node-ops/node-operation/node-bootstrap.md) and provide the remaining technical details needed to stake a node.
+4. Run the [bootstrapping instructions](../../protocol/node-ops/node-operation/node-bootstrap.md) and provide the remaining technical details needed to stake a node.
 
 ### Delegating
 
@@ -114,14 +114,14 @@ Please see a list [here](https://github.com/onflow/flow/blob/master/nodeoperator
 
 ## I Have Successfully Executed a Stake Transaction, Now What?
 
-- Now that you have executed a stake transaction in either Flow Port or your custody provider’s portal, that transaction will sit in a pending status until it is processed, which will be at the next [Epoch](../../networks/staking/index.md#epochs) Date (which is currently weekly).
-- During the next [Epoch](../../networks/staking/index.md#epochs), the transaction will be processed. If successful, the provided FLOW will be staked and the associated Node would be either **a)** included in the network protocol if it is a new node or **b)** continue to operate as is in the network protocol.
+- Now that you have executed a stake transaction in either Flow Port or your custody provider’s portal, that transaction will sit in a pending status until it is processed, which will be at the next [Epoch](../../protocol/staking/index.md#epochs) Date (which is currently weekly).
+- During the next [Epoch](../../protocol/staking/index.md#epochs), the transaction will be processed. If successful, the provided FLOW will be staked and the associated Node would be either **a)** included in the network protocol if it is a new node or **b)** continue to operate as is in the network protocol.
 - You are now a part of Flow, and will begin to earn rewards for being a valued member of the network!
 
 ## What Else Can I Do?
 
 - Add additional stake to your existing stake. Any added FLOW will again sit in a pending status and be processed at the next epoch.
-- Withdraw/re-stake your earned rewards. If you decide to withdraw your rewards, this action will happen instantly. If you decide to re-stake your rewards, the request will again sit in a pending status and will be processed at the next [Epoch](../../networks/staking/index.md#epochs).
+- Withdraw/re-stake your earned rewards. If you decide to withdraw your rewards, this action will happen instantly. If you decide to re-stake your rewards, the request will again sit in a pending status and will be processed at the next [Epoch](../../protocol/staking/index.md#epochs).
 - Withdraw Rewards and send your earnings to other accounts. If you decide that you want to withdraw your rewards and send those earnings to other accounts via the 'Send FLOW' function, you should first withdraw your rewards. Once in your account, you can send these funds to any other account via the 'Send FLOW' option.
 - Request to be unstaked from the network. The unstake request will sit in a pending status for two epochs. Once it is processed, the amount that has been unstaked will sit in your unstaked FLOW amount and can now be withdrawn or re-staked.
 - Change the node you are staked/delegated to. If your staked/delegated node has no FLOW actively staked and you have completely withdrawn all unstaked amounts and rewards associated with the node, then you can move your stake to a different node. Click on the `Change Node` button to initiate this process. Please note that this feature is only visible once you get your active stake/delegate into the appropriate status.

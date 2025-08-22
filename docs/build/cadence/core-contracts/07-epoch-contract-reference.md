@@ -80,5 +80,5 @@ These scripts are read-only and get info about the current state of the epoch co
 
 # Events
 
-See the [epoch documentation](../../../networks/staking/05-epoch-scripts-events.md)
+See the [epoch documentation](../../../protocol/staking/05-epoch-scripts-events.md)
 for a list and documentation for important `FlowEpoch` events.

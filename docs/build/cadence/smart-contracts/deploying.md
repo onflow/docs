@@ -64,9 +64,9 @@ Once all your contracts are deployed, you can visit [flow-view-source](https://f
 
 ### Sporks
 
-Currently, **historical event data is not migrated between sporks,** so you'll need to design your application with this in mind. We recognize the usefulness of historical event data and plan on adding a means of accessing it in the near future. Past spork transactional data is available, [See Previous Spork Access Node Info](../../../networks/node-ops/node-operation/past-upgrades)
+Currently, **historical event data is not migrated between sporks,** so you'll need to design your application with this in mind. We recognize the usefulness of historical event data and plan on adding a means of accessing it in the near future. Past spork transactional data is available, [See Previous Spork Access Node Info](../../../protocol/node-ops/node-operation/past-upgrades)
 
-More Information on [Sporks](../../../networks/node-ops/node-operation/spork)
+More Information on [Sporks](../../../protocol/node-ops/node-operation/spork)
 
 ### Testnet
 

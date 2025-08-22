@@ -27,7 +27,7 @@ func main() {
 
 ## Account Creation
 
-You can follow the [Flow Port account creation steps](../../networks/flow-port/index.md) to create a new mainnet account.
+You can follow the [Flow Port account creation steps](../../protocol/flow-port/index.md) to create a new mainnet account.
 
 If you prefer watching a video, check out this tutorial:
 

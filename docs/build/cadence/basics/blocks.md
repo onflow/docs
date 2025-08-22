@@ -80,7 +80,7 @@ Find [more about the command in the CLI docs](../../../build/tools/flow-cli/get-
 
 Blocks can be obtained from the access node APIs, currently, there are two gRPC and REST APIs. You can find more information about them here:
 
-[**gRPC Block API**](../../../networks/access-onchain-data/index.md#blocks)
+[**gRPC Block API**](../../../protocol/access-onchain-data/index.md#blocks)
 
 [**REST Block API**](/http-api#tag/Blocks)
 

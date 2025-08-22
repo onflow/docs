@@ -405,7 +405,7 @@ There are several places to learn more about transaction fees:
 
 **When will the fee update go into effect?**
 
-The updates were rolled out with the [Spork on April 6, 2022](../../../networks/node-ops/node-operation/past-upgrades#mainnet-17), and were enabled on [June 1st](https://forum.flow.com/t/permissionless-contract-deployment-progress/2981) during the [weekly epoch transition](https://github.com/onflow/service-account/tree/main/transactions/set-execution-effort-weights/2022/jun-1).
+The updates were rolled out with the [Spork on April 6, 2022](../../../protocol/node-ops/node-operation/past-upgrades#mainnet-17), and were enabled on [June 1st](https://forum.flow.com/t/permissionless-contract-deployment-progress/2981) during the [weekly epoch transition](https://github.com/onflow/service-account/tree/main/transactions/set-execution-effort-weights/2022/jun-1).
 
 **Why are fees collected even when transactions fail?**
 

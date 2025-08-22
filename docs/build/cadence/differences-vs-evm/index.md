@@ -225,4 +225,4 @@ If you're already familiar with blockchain development, here's a comparison betw
 [Scripts]: ../basics/scripts.md
 [Transactions]: https://cadence-lang.org/docs/language/transactions
 [Flow Primer]: https://flow.com/primer#primer-how-flow-works
-[via an API]: ../../../networks/flow-networks/index.md
+[via an API]: ../../../protocol/flow-networks/index.md

@@ -36,7 +36,7 @@ interact with FLOW.
 
 There are two ways to acquire FLOW Coins as yield:
 
-1. [Earn FLOW as a Validator or Delegator](../../../networks/staking/06-technical-overview.md): Receive newly-minted FLOW as a reward for running a node.
+1. [Earn FLOW as a Validator or Delegator](../../../protocol/staking/06-technical-overview.md): Receive newly-minted FLOW as a reward for running a node.
 1. [Earn FLOW as a Community Contributor](https://github.com/onflow/developer-grants): Flow offers grants for selected proposals as well as RFPs for teams to submit proposals for funded development
 
 ## How to Use FLOW
@@ -61,12 +61,12 @@ and then sign with the wallet of your choice only once you decide to make a purc
 
 ### Staking FLOW
 
-[You can use FLOW to operate a staked node.](../../../networks/staking/06-technical-overview.md) Node operators receive newly-minted FLOW
+[You can use FLOW to operate a staked node.](../../../protocol/staking/06-technical-overview.md) Node operators receive newly-minted FLOW
 as a reward for helping to secure the network.
 
 ### Delegating FLOW
 
-[You can use FLOW for stake delegation.](../../../networks/staking/06-technical-overview.md) Delegators receive newly-minted FLOW
+[You can use FLOW for stake delegation.](../../../protocol/staking/06-technical-overview.md) Delegators receive newly-minted FLOW
 as a reward for helping to secure the network.
 
 ### Holding FLOW

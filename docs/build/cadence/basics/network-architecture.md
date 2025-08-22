@@ -5,4 +5,4 @@ title: Network Architecture ↗️
 
 <!-- Add redirect network architecture sidebar -->
 
-<meta http-equiv="refresh" content="0; url=https://developers.flow.com/networks/network-architecture" />;
+<meta http-equiv="refresh" content="0; url=https://developers.flow.com/protocol/network-architecture" />;

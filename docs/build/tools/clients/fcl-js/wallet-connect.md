@@ -155,7 +155,7 @@ Once a valid `discovery-service` plugin is registered, FCL shares client support
 
 To connect a Flow supported wallet using WalletConnect 2.0, users of your dApp will go through the authentication process and have the option to select their preferred wallet.
 
-:exclamation: Once a WalletConnect session is established and a `currentUser` is authenticated, FCL will handle client pairings and sessions during FCL `authn`, and initiate signing requests as part of `authz` using `fcl.mutate` and [`user-sign`](https://github.com/onflow/fcl-js/blob/master/docs/networks/user-signatures.mdx) using `fcl.signUserMessage`.
+:exclamation: Once a WalletConnect session is established and a `currentUser` is authenticated, FCL will handle client pairings and sessions during FCL `authn`, and initiate signing requests as part of `authz` using `fcl.mutate` and [`user-sign`](https://github.com/onflow/fcl-js/blob/master/docs/protocol/user-signatures.mdx) using `fcl.signUserMessage`.
 
 ### How to add your FCL compatible WalletConnect wallet to Discovery (UI/API)
 

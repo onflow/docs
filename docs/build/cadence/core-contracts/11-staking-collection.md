@@ -34,7 +34,7 @@ to perform staking actions for any of their nodes or delegators.
 The staking collection also manages creating a node's machine accounts if they have any collector or consensus nodes.
 It also allows them to deposit and withdraw tokens from any of their machine accounts through the staking collection.
 
-See the [Staking Collection Docs](../../../networks/staking/14-staking-collection.md) for more information on the design of the staking collection contract.
+See the [Staking Collection Docs](../../../protocol/staking/14-staking-collection.md) for more information on the design of the staking collection contract.
 
 Source: [FlowStakingCollection.cdc](https://github.com/onflow/flow-core-contracts/blob/master/contracts/FlowStakingCollection.cdc)
 

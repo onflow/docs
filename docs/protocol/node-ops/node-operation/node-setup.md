@@ -92,15 +92,15 @@ limits for your machine, you may need to increase the soft limit available to th
 
 Make sure the soft limit is at least `8192`.
 
-You can configure the ulimit for the node's docker container. See the [Docker documentation](https://docs.docker.com/engine/networks/commandline/run/#ulimit) for more details.
+You can configure the ulimit for the node's docker container. See the [Docker documentation](https://docs.docker.com/engine/protocol/commandline/run/#ulimit) for more details.
 
 ### Admin Server
 
 Each node can be configured with an admin server, which allows you to control some of the node's configuration, as well as view some of its internal state. You can find
 a few of the commands in the Admin Server [README](https://github.com/onflow/flow-go/blob/master/admin/README.md). Two commands to highlight are:
 
-* `list-commands`: which returns a list of all of the available commands for your node
-* `set-log-level`: which allows you to change the log level of your node at runtime
+- `list-commands`: which returns a list of all of the available commands for your node
+- `set-log-level`: which allows you to change the log level of your node at runtime
 
 You can enable the admin server by passing the `--admin-addr` flag with an interface and port.
 
@@ -252,7 +252,6 @@ See [Node Bootstrap](./node-bootstrap.md#timing) for when to start up a newly re
 3. Start your service: `sudo systemctl start flow`
 
 ## Verify your Node is Running
-
 
 Here are a few handy commands that you can use to check if your Flow node is up and running
 
