@@ -94,7 +94,7 @@ please follow [the installation guide here](https://developers.flow.com/tools/fl
 
 ### Initializing a New Project
 
-> 💡 Note: Here is [a link to the completed code](https://github.com/chasefleming/FooToken) if you want to skip ahead or reference as you follow along.
+> 💡 Note: Here is [a link to the completed code](https://github.com/onflow/FooToken) if you want to skip ahead or reference as you follow along.
 
 Once you have the Flow CLI installed, you can set up a new project using the `flow init` command. This command initializes the necessary directory structure and a `flow.json` configuration file (a way to configure your project for contract sources, deployments, accounts, and more):
 
@@ -1128,7 +1128,7 @@ The transfer transaction also has a [generic version](https://github.com/onflow/
 
 ## More
 
-- [View a repo of this example code](https://github.com/chasefleming/FooToken)
+- [View a repo of this example code](https://github.com/onflow/FooToken)
 - [Review an `ExampleToken` contract implementing all of the remaining FungibleToken interface](https://github.com/onflow/flow-ft/blob/master/contracts/ExampleToken.cdc)
 - [View the Flow Token Standard](https://github.com/onflow/flow-ft/blob/master/contracts/FungibleToken.cdc)
 - Learn about how you can [bridge your FTs to Flow-EVM](../../../blockchain-development-tutorials/cross-vm-apps/vm-bridge.md#cross-vm-bridge) and how you can build your FT project [to be compatible with the Flow VM bridge](../../../blockchain-development-tutorials/cross-vm-apps/vm-bridge.md#prep-your-assets-for-bridging).
