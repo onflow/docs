@@ -5,14 +5,14 @@ title: Proving Ownership of a Flow Account
 ## Proving Ownership of a Flow Account
 
 A common desire that application developers have is to be able to prove that a
-user controls an on-chain account. Proving ownership of an on-chain account is a
+user controls an onchain account. Proving ownership of an onchain account is a
 way to authenticate a user with an application backend. Fortunately,
 FCL provides a way to achieve this.
 
 During user authentication, some FCL compatible wallets will choose to support
 the FCL `account-proof` service. If a wallet chooses to support this service, and
 the user approves the signing of message data, they will return `account-proof` data
-and a signature(s) that can be used to prove a user controls an on-chain account.
+and a signature(s) that can be used to prove a user controls an onchain account.
 
 We'll walk through how you, an application developer, can use the `account-proof` service to
 authenticate a user.
@@ -111,9 +111,9 @@ The data within the `account-proof` service will look like this:
     has expired, reject the authentication request, otherwise continue.
   - The server determines whether the `CompositeSignature` in the
     `account-proof` data structure contains valid signatures for the nonce
-    and on-chain accounts (more details in the section below on how this is done).
+    and onchain accounts (more details in the section below on how this is done).
   - If the verification is successful, delete the `nonce` or mark it as expired,
-    the application account defined by the on-chain address is successfully
+    the application account defined by the onchain address is successfully
     logged in. Otherwise the authentication fails and the `nonce` is not deleted.
 
 **Verification**

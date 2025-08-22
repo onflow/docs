@@ -268,13 +268,13 @@ useEffect(() => {
   - `1`: **Pending** – The transaction has been submitted and is waiting to be included in a block.
   - `2`: **Finalized** – The transaction has been included in a block, but not yet executed.
   - `3`: **Executed** – The transaction code has run successfully, but the result has not yet been sealed.
-  - `4`: **Sealed** – The transaction is fully complete, included in a block, and now immutable on-chain.
+  - `4`: **Sealed** – The transaction is fully complete, included in a block, and now immutable onchain.
 - We recommend calling `refetch()` when the status reaches **3 (Executed)** to update your UI more quickly after the transaction runs, rather than waiting for sealing.
 - The `statusString` property gives a human-readable version of the current status you can display in the UI.
 
 #### Why `Executed` is Recommended for UI Updates:
 
-Waiting for `Sealed` provides full on-chain confirmation but can introduce a delay — especially in local or test environments. Since most transactions (like incrementing a counter) don't require strong finality guarantees, you can typically refetch data once the transaction reaches `Executed` for a faster, more responsive user experience.
+Waiting for `Sealed` provides full onchain confirmation but can introduce a delay — especially in local or test environments. Since most transactions (like incrementing a counter) don't require strong finality guarantees, you can typically refetch data once the transaction reaches `Executed` for a faster, more responsive user experience.
 
 However:
 
@@ -441,7 +441,7 @@ Then visit [http://localhost:3000](http://localhost:3000) in your browser. You s
 By following these steps, you've built a simple Next.js dApp that interacts with a Flow smart contract using [**@onflow/react-sdk**]. In this guide you learned how to:
 
 - Wrap your application in a `FlowProvider` to configure blockchain connectivity.
-- Use kit hooks such as `useFlowQuery`, `useFlowMutate`, `useFlowTransactionStatus`, and `useFlowCurrentUser` to manage authentication, query on-chain data, submit transactions, and monitor their status.
+- Use kit hooks such as `useFlowQuery`, `useFlowMutate`, `useFlowTransactionStatus`, and `useFlowCurrentUser` to manage authentication, query onchain data, submit transactions, and monitor their status.
 - Integrate with the local Flow emulator and Dev Wallet for a fully functional development setup.
 
 For additional details and advanced usage, refer to the [@onflow/react-sdk documentation] and other Flow developer resources.

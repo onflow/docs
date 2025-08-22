@@ -28,7 +28,7 @@ This section contains information about the FLOW Coin for individual backers, wa
 
 FLOW is the default coin for the Flow protocol, meaning it is used for all protocol-level fee payments,
 rewards and staking transactions. FLOW implements the standard [Flow Fungible Token interface](https://github.com/onflow/flow-ft),
-which all other on-chain fungible tokens also conform to. This interface is defined in Cadence,
+which all other onchain fungible tokens also conform to. This interface is defined in Cadence,
 Flow's native smart-contract programming language, which makes it easy to write applications that
 interact with FLOW.
 

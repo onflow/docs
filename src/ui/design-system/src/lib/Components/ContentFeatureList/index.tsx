@@ -31,7 +31,7 @@ const ContentFeatures: Record<string, ContentFeatureProps> = {
     icon: 'feature-code-scripts-icon',
     image: 'feature-code-scripts-image',
     header: 'Scripted Queries',
-    text: 'Access and interact with on-chain data efficiently using powerful scripting',
+    text: 'Access and interact with onchain data efficiently using powerful scripting',
     link: '/build/cadence/basics/scripts',
   },
   evm: {

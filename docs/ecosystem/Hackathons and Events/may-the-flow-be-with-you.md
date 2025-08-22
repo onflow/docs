@@ -15,6 +15,7 @@ const { user } = useCurrentUser();
 
 return (
 <>
+
 <h3
 className="text-xl font-bold mb-4 text-blue-700 dark:text-blue-400 cursor-pointer hover:underline inline-flex items-center"
 onClick={() => setIsProfileModalOpen(true)} >
@@ -94,7 +95,7 @@ Join us for a month-long vibe coding challenge on Flow! Starting May 4th, partic
 <div className="space-y-6 my-6">
   <div className="border-l-4 border-indigo-500 pl-4 py-2">
     <h3 className="text-lg font-bold text-indigo-700 dark:text-indigo-400">Week 1: The Randomness Revolution (May 4-10)</h3>
-    <p className="text-sm text-gray-600 dark:text-gray-300 mt-1 mb-2">Leverage on-chain randomness to create unpredictable, emergent experiences on Flow. Think: generative art, dynamic NFTs, chance-based mechanics, and randomized gameplay elements.</p>
+    <p className="text-sm text-gray-600 dark:text-gray-300 mt-1 mb-2">Leverage onchain randomness to create unpredictable, emergent experiences on Flow. Think: generative art, dynamic NFTs, chance-based mechanics, and randomized gameplay elements.</p>
     <ul className="mt-2 space-y-1">
       <li>May 4: Challenges kickoff</li>
       <li>May 4-10: Build randomness-powered applications</li>
@@ -321,6 +322,7 @@ import { useState } from 'react';
 export const FAQ = ({ question, children }) => {
 const [isOpen, setIsOpen] = useState(false);
 return (
+
 <div className="mb-4">
 <button
 className="flex justify-between w-full px-4 py-3 bg-card rounded-lg text-left font-medium hover:bg-opacity-80 transition-all focus:outline-none"

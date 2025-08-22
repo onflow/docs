@@ -29,7 +29,7 @@ Flow is designed for consumer-scale internet applications and is one of the fast
    - Swapping tokens on decentralized exchanges (DEXs)
    - Staking or unstaking tokens
 
-   In this category, each transaction originates from a unique account and is sent to the Flow network from a different machine. Developers don't need to take special measures to scale for this category, beyond ensuring their logic is primarily on-chain and their supporting systems (e.g., frontend, backend) can handle scaling if they become bottlenecks. Flow's protocol inherently manages scaling for user transactions.
+   In this category, each transaction originates from a unique account and is sent to the Flow network from a different machine. Developers don't need to take special measures to scale for this category, beyond ensuring their logic is primarily onchain and their supporting systems (e.g., frontend, backend) can handle scaling if they become bottlenecks. Flow's protocol inherently manages scaling for user transactions.
 
 2. **System Transactions**
 

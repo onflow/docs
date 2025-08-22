@@ -40,7 +40,7 @@ Learn how to use Flow's **native verifiable randomness** in Solidity smart contr
 
 - Lower costs: Built-in randomness means no extra transaction fees.
 
-- Enhanced security: Cryptographically secure and verifiable on-chain.
+- Enhanced security: Cryptographically secure and verifiable onchain.
 
 - Cross-language support: Works seamlessly in both Cadence and Solidity.
 

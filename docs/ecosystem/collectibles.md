@@ -96,7 +96,7 @@ Flow's high-performance infrastructure enables seamless experiences for collecto
 
 ## Buildtree.io
 
-[Buildtree.io][15] powers the next generation of advanced on-chain assets. The platform enables complex NFT functionality and innovative digital asset creation.
+[Buildtree.io][15] powers the next generation of advanced onchain assets. The platform enables complex NFT functionality and innovative digital asset creation.
 
 ## Mintify.xyz
 

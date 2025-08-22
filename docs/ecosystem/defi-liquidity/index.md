@@ -70,7 +70,7 @@ Explore the [FlowVerse DeFi ecosystem](https://www.flowverse.co/?categories=defi
 
 ## Sudocat
 
-[Sudocat][7] offers a decentralized trading dashboard built for Flow. With tools for analytics, portfolio tracking, and execution, it enhances the trading experience for on-chain users and DeFi enthusiasts. Learn more [here][15].
+[Sudocat][7] offers a decentralized trading dashboard built for Flow. With tools for analytics, portfolio tracking, and execution, it enhances the trading experience for onchain users and DeFi enthusiasts. Learn more [here][15].
 
 ## Hitdex
 

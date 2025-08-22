@@ -877,7 +877,7 @@ message ExecuteScriptResponse {
 
 ## Events
 
-The following methods can be used to query for on-chain [events](#event).
+The following methods can be used to query for onchain [events](#event).
 
 ### GetEventsForHeightRange
 

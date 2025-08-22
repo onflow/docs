@@ -145,7 +145,7 @@ Our standard is to achieve approximately 85% adherence or better before publicat
 - Flow EVM Mainnet
 - Flow EVM Testnet
 - onchain
-  - Never on chain or on-chain
+  - Never on chain or onchain
   - web3 is acceptable but not preferred unless speaking about the industry or era
 - onchain app
   - Only when needed to distinguish from web apps, mobile apps, etc.

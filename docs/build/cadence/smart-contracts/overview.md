@@ -23,7 +23,7 @@ keywords:
   - decentralized apps
 ---
 
-At its core, a decentralized application is defined by the [smart contracts](https://en.wikipedia.org/wiki/Smart_contract) it uses on the blockchain. Rather than relying on centralized application servers and databases, apps model their core application logic using smart contracts, often referred to as the "on-chain" code.
+At its core, a decentralized application is defined by the [smart contracts](https://en.wikipedia.org/wiki/Smart_contract) it uses on the blockchain. Rather than relying on centralized application servers and databases, apps model their core application logic using smart contracts, often referred to as the "onchain" code.
 
 It is therefore helpful to develop a clear model for your app that takes into account the data and logic that will exist in your smart contracts. In particular, it is important to differentiate between the parts of your app that must live on chain and those that should live off chain.
 

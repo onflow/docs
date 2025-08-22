@@ -172,7 +172,7 @@ providing the ID of the node operator they want to delegate to.
 This transaction should store the `NodeDelegator` object
 in the user's account, which is what they use to perform staking operations.
 
-Users are able to get a list of possible node IDs to delegate to via on-chain scripts.
+Users are able to get a list of possible node IDs to delegate to via onchain scripts.
 This information will also be provided off-chain, directly from the node operators or via
 third-party services. [Available node IDs are listed in a public repo.](https://github.com/onflow/flow/blob/master/nodeoperators/NodeOperatorList.md)
 
@@ -237,7 +237,7 @@ are in a users `tokensStaked` pool. Every staker's rewards
 are deposited into their rewarded tokens pool. Rewards can be withdrawn
 at any time by submitting a **withdraw_reward_tokens** transaction.
 
-These tokens are unlocked and can be transferred on-chain if desired, or re-staked.
+These tokens are unlocked and can be transferred onchain if desired, or re-staked.
 
 The source code for the staking contract and more transactions
 can be found in the [Flow Core Contracts GitHub Repository](https://github.com/onflow/flow-core-contracts).
