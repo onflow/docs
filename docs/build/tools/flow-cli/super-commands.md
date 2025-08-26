@@ -64,8 +64,10 @@ cadence/
 ├── transactions/
 │   └── TransferTokens.cdc
 └── tests/
-    └── MyToken.test.cdc
+    └── MyToken_test.cdc
 ```
+
+📖 **[Learn more about generating Cadence boilerplate](./generate.md)**
 
 ### 3. Run Tests
 
@@ -76,7 +78,7 @@ Test your contracts with `flow test`:
 flow test
 
 # Run specific test file
-flow test cadence/tests/MyToken.test.cdc
+flow test cadence/tests/MyToken_test.cdc
 
 # Run with coverage
 flow test --coverage
