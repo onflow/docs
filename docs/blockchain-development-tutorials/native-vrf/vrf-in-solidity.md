@@ -1,5 +1,5 @@
 ---
-sidebar_position: 3
+sidebar_position: 2
 title: VRF (Randomness) in Solidity
 sidebar_label: VRF (Randomness) in Solidity
 keywords:

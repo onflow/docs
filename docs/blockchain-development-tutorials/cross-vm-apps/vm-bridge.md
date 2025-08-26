@@ -1,7 +1,7 @@
 ---
 title: Cross-VM Bridge
 sidebar_label: Cross-VM Bridge
-sidebar_position: 7
+sidebar_position: 6
 ---
 
 # Cross-VM Bridge
@@ -75,7 +75,7 @@ fungible tokens are defined by contracts implementing
 and non-fungible tokens implement
 [the `NonFungibleToken` interface](https://github.com/onflow/flow-nft/blob/master/contracts/NonFungibleToken.cdc).
 
-You can find full guides for creating these projects [here](../../build/cadence/guides/nft.md).
+You can find full guides for creating these projects [here](../tokens/nft-cadence.md).
 
 Like all operations on Flow, there are native fees associated with both computation and storage. To prevent spam and
 sustain the bridge account's storage consumption, fees are charged for both onboarding assets and bridging assets. In

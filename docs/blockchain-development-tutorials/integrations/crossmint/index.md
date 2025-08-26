@@ -1,5 +1,5 @@
 ---
-sidebar_position: 1
+sidebar_position: 2
 title: Crossmint Integration Guide
 description: Learn how to integrate Crossmint's comprehensive blockchain infrastructure platform with Flow for wallets, payments, NFTs, and more.
 keywords:

@@ -1,7 +1,7 @@
 ---
 title: Interacting with COAs from Cadence
 sidebar_label: Interacting with COAs
-sidebar_position: 4
+sidebar_position: 5
 ---
 
 [Cadence Owned Accounts (COAs)](../../build/evm/accounts.md#cadence-owned-accounts) are EVM accounts owned by a Cadence resource and

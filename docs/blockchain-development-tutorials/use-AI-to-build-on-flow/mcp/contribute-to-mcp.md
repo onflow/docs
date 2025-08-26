@@ -1,7 +1,7 @@
 ---
 title: Contribute to Flow MCP
 sidebar_label: Contribute to Flow MCP
-sidebar_position: 3
+sidebar_position: 2
 keywords:
   - AI
   - MCP

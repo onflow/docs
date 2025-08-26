@@ -1,7 +1,7 @@
 ---
 title: Use Flow MCP in Cursor
 sidebar_label: Use Flow MCP in Cursor
-sidebar_position: 2
+sidebar_position: 1
 keywords:
   - AI
   - Cursor

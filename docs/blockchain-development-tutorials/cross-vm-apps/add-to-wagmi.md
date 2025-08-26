@@ -1,7 +1,7 @@
 ---
 title: Update Existing wagmi App
 description: Learn how to integrate Flow Cadence with your existing wagmi/RainbowKit app to enable batch transactions and other Cadence features.
-sidebar_position: 1
+sidebar_position: 2
 keywords:
   - hybrid apps
   - cross-vm apps

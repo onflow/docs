@@ -1,7 +1,7 @@
 ---
 title: Use AI To Build On Flow
 description: Learn how to use AI to build on the Flow Blockchain
-sidebar_position: 3
+sidebar_position: 4
 keywords:
   - AI
   - ChatGPT
