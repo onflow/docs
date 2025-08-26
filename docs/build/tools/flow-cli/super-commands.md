@@ -67,6 +67,8 @@ cadence/
     └── MyToken.test.cdc
 ```
 
+📖 **[Learn more about generating Cadence boilerplate](./generate.md)**
+
 ### 3. Run Tests
 
 Test your contracts with `flow test`:
