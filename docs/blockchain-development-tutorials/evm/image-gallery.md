@@ -1100,14 +1100,14 @@ Now that you've completed this tutorial, you're ready to explore more complex on
 [Cadence]: https://cadence-lang.org/docs
 [Next.js]: https://nextjs.org/docs/app/getting-started/installation
 [Solidity]: https://soliditylang.org/
-[Hardhat]: ../../build/evm/guides/hardhat.md
+[Hardhat]: ../../blockchain-development-tutorials/evm/development-tools/hardhat.md
 [Foundry]: ../../build/evm/guides/foundry.md
 [Remix]: ../../build/evm/guides/remix.md
 [native VRF]: ../native-vrf/vrf-in-solidity.md
 [OpenZeppelin]: https://www.openzeppelin.com/
 [Ownable]: https://github.com/OpenZeppelin/openzeppelin-contracts/blob/master/contracts/access/Ownable.sol
 [evm-testnet.flowscan.io]: https://evm-testnet.flowscan.io/
-[Hardhat]: ../../build/evm/guides/hardhat.md
+[Hardhat]: ../../blockchain-development-tutorials/evm/development-tools/hardhat.md
 [Foundry]: ../../build/evm/guides/foundry.md
 [Remix]: ../../build/evm/guides/remix.md
 [Flow Wallet]: https://wallet.flow.com/

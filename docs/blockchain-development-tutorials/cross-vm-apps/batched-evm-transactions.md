@@ -147,7 +147,7 @@ You can now click the `Write` button to submit the transaction. Once MetaMask pr
 `Confirm` and give it a few seconds to process.
 
 <div class="portrait-screenshot-wrapper">
-![Confirm WFLOW deposit in MetaMask](./wflow-deposit-confirm.png)
+![Confirm WFLOW deposit in MetaMask](./imgs/wflow-deposit-confirm.png)
 </div>
 
 Once confirmed, you should be able to see WFLOW balance in your tokens list in MetaMask - if not, you can click on

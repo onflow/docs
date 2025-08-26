@@ -367,7 +367,7 @@ await fcl.send([
 
 # Video Guide
 
-[![Video Title](resources/pwa_youtube_thumbnail.png)](https://www.youtube.com/watch?v=1ZmvfBFdCxY "Video Title")
+[![Video Title](./imgs/pwa_youtube_thumbnail.png)](https://www.youtube.com/watch?v=1ZmvfBFdCxY "Video Title")
 
 
 # **Sample Flow PWA: Balloon Inflation Game**
