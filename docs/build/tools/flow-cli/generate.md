@@ -1,6 +1,6 @@
 ---
-title: Generate Command
-sidebar_label: Generate Command
+title: Generating Cadence Boilerplate
+sidebar_label: Generating Cadence Boilerplate
 description: Generate template files for common Cadence code using the Flow CLI
 sidebar_position: 12
 ---
