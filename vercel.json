@@ -788,6 +788,11 @@
       "permanent": true
     },
     {
+      "source": "/build/cadence/guides/mobile/overview",
+      "destination": "/blockchain-development-tutorials/cadence/mobile/",
+      "permanent": true
+    },
+    {
       "source": "/build/mobile/monster-maker",
       "destination": "/build/guides/mobile/ios-quickstart",
       "permanent": true
