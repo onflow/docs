@@ -130,6 +130,8 @@ flow generate test MyToken
 
 This command creates a file `cadence/tests/MyToken.test.cdc` with a basic test structure.
 
+After generating a test, you can run it using `flow test`. For more information about writing and running Cadence tests, see the [Cadence Tests documentation](./tests.md).
+
 ### Flags
 
 - `--dir string` - Directory to generate files in (defaults to `cadence/tests/`)
