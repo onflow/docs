@@ -46,6 +46,10 @@ access(all) contract HelloWorld {
 }
 ```
 
+:::info
+When generating a contract, a corresponding test file will also be created automatically (unless `--skip-tests` is used). For example, generating `HelloWorld` contract will also create `cadence/tests/HelloWorld.test.cdc`.
+:::
+
 ### Flags
 
 - `--dir string` - Directory to generate files in (defaults to `cadence/contracts/`)
