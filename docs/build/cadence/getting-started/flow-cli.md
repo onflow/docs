@@ -182,7 +182,7 @@ flow generate script ScriptName
 ```
 
 :::info
-For more information about generating Cadence files, see the [Generating Cadence Boilerplate](../../../build/tools/flow-cli/generate.md) documentation.
+For more information about generating Cadence files, see the [Generating Cadence Boilerplate] documentation.
 :::
 
 But the default project already has a `GetCounter` script for reading the count of the `Counter` contract. Open `cadence/scripts/GetCounter.cdc` in your editor to see the script.
@@ -380,7 +380,7 @@ Even more importantly, we did this **without needing access or permission.** You
 
 ## More
 
-If you want to continue on generating your own contracts, you can also use the the `generate` subcommand to create a new contract file. See more in the [Generating Cadence Boilerplate](../../../build/tools/flow-cli/generate.md) documentation.
+If you want to continue on generating your own contracts, you can also use the the `generate` subcommand to create a new contract file. See more in the [Generating Cadence Boilerplate] documentation.
 
 After that, it's easy to add your contract to your project configuration using the Flow CLI [`config` commands].
 
