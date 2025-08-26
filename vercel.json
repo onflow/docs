@@ -1460,6 +1460,11 @@
       "permanent": true
     },
     {
+      "source": "/tools/flow-cli/boilerplate",
+      "destination": "/tools/flow-cli/generate",
+      "permanent": true
+    },
+    {
       "source": "/networks/:path*",
       "destination": "/protocol/:path*",
       "permanent": true
