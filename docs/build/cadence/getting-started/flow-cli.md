@@ -182,7 +182,11 @@ flow generate script ScriptName
 ```
 
 :::info
+
 For more information about generating Cadence files, see the [Generating Cadence Boilerplate] documentation.
+
+**You'll usually want to use these commands instead of adding files manually!**
+
 :::
 
 But the default project already has a `GetCounter` script for reading the count of the `Counter` contract. Open `cadence/scripts/GetCounter.cdc` in your editor to see the script.
