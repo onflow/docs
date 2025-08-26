@@ -52,7 +52,7 @@ Much more computation is available at prices you or your users will be willing t
 
 In this tutorial, we'll build a smart contract that can store and retrieve images onchain. We'll also build a simple frontend to interact with the contract on Flow and another chain.
 
-![stage-1](stage-1.png)
+![stage-1](./imgs/stage-1.png)
 
 ## Objectives
 
@@ -287,13 +287,13 @@ If you need help, check out:
 
 Navigate to [evm-testnet.flowscan.io], search for your contract, and navigate to the `contracts` tab, then `Read/Write contract`. You'll see something similar to:
 
-![Factory on Flowscan](factory-on-flowscan.png)
+![Factory on Flowscan](./imgs/factory-on-flowscan.png)
 
 `Connect` your wallet. Use the [Flow Wallet] if you want automatically sponsored gas on both mainnet and testnet, or use the [Flow Faucet] to grab some testnet funds if you prefer to use another wallet.
 
 Expand the `createImageGallery` function, click the `self` button, and then `Write` the function.
 
-![createImageGallery](create-image-gallery.png)
+![createImageGallery](./imgs/create-image-gallery.png)
 
 Approve the transaction and wait for it to complete. Then, call `getGalleries` for your address to find the address of the gallery you've created.
 
@@ -321,7 +321,7 @@ Most sites of this nature are free tools created by helpful programmers and are 
 
 Use the tool to convert an image that is ~30kb or smaller. Copy the string and paste it into the field in `addImage`. You can also add a `description`, but the bytes used will count towards the ~40kb limit.
 
-![addImage](add-image.png)
+![addImage](./imgs/add-image.png)
 
 Click `Write` and approve the transaction. Take note of the cost! You've saved an image onchain forever for just a little bit of gas!
 

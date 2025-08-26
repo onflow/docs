@@ -39,7 +39,7 @@ For optimal Flow development assistance, you'll want to index three key document
 2. Go to **Features > Docs** 
 3. Click **"+ Add new doc"** to begin adding documentation sources
 
-![Cursor Settings](./images//use-cursor-1.png)
+![Cursor Settings](./imgs/use-cursor-1.png)
 
 ### Step 2: Add Flow Developer Documentation
 
@@ -50,7 +50,7 @@ For optimal Flow development assistance, you'll want to index three key document
 3. Click **"Confirm"** to add the documentation
 4. Wait for the indexing process to complete
 
-![Cursor Settings](./images//use-cursor-2.png)
+![Cursor Settings](./imgs/use-cursor-2.png)
 
 ### Step 3: Add Cadence Language Documentation
 
@@ -90,7 +90,7 @@ Once indexing is complete, you can reference the documentation in your Cursor pr
 - `@Cadence` - Reference Cadence language documentation  
 - `@Flow Data Sources` - Reference the comprehensive Flow knowledge base
 
-![Cursor Settings](./images//use-cursor-3.png)
+![Cursor Settings](./imgs/use-cursor-3.png)
 
 ### Example Usage
 

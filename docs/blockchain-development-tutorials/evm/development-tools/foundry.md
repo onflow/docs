@@ -233,7 +233,7 @@ forge verify-contract --rpc-url https://testnet.evm.nodes.onflow.org/ \
 
 :::info
 
-When verifying a Mainnet contract, be sure to use the Mainnet [RPC](../../build/evm/networks.md) and block explorer URLs.
+When verifying a Mainnet contract, be sure to use the Mainnet [RPC](../../../build/evm/networks.md) and block explorer URLs.
 
 :::
 
