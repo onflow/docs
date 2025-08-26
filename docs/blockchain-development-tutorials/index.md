@@ -66,7 +66,7 @@ Learn how to leverage AI tools to enhance your Flow development experience. Thes
 - [Use Flow Knowledge Base in ChatGPT] - Create a custom GPT that understands Flow and Cadence to provide accurate answers to your development questions
 - [Claude Code for Flow Development] - Learn how to leverage Claude Code for efficient ways to build on Flow and with Cadence
 - [Cadence Rules] - Learn how to use Cursor Rules to enhance AI assistance for Cadence and Flow development with persistent context and automated workflows
-- [Flow MCP] - Learn how to use Flow MCP (Model Context Protocol) server to enhance AI tools with on-chain interaction capabilities
+- [Flow MCP] - Learn how to use Flow MCP (Model Context Protocol) server to enhance AI tools with onchain interaction capabilities
 - [Flow Data Sources] - Learn about this comprehensive resource and how to integrate it with various AI platforms
 - [Build AI Agents with AgentKit] - Learn how to create AI agents that can interact with Flow using AgentKit
 

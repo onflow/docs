@@ -16,7 +16,7 @@ keywords:
 
 ## **Introduction**
 
-Flow provides secure, native on-chain randomness that developers can leverage through Cadence Arch, a precompiled contract available on the Flow EVM environment. This guide will walk through how Solidity developers can use Cadence Arch to access Flow's verifiable randomness using Solidity.
+Flow provides secure, native onchain randomness that developers can leverage through Cadence Arch, a precompiled contract available on the Flow EVM environment. This guide will walk through how Solidity developers can use Cadence Arch to access Flow's verifiable randomness using Solidity.
 
 ### **What is Cadence Arch?**
 

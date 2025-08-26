@@ -19,7 +19,7 @@ Adding Flow MCP to Cursor gives you powerful AI-driven tools directly inside you
 
 Specifically, it enables you to:
 
-- Ask the AI in Cursor to fetch on-chain data such as account balances, account information, or contract source code without leaving your editor.
+- Ask the AI in Cursor to fetch onchain data such as account balances, account information, or contract source code without leaving your editor.
 - Speed up development by letting AI perform blockchain queries that would normally require manual steps.
 - Improve context for AI assistance by allowing Cursor to pull real blockchain data when needed.
 - Automate routine Flow tasks using tools exposed by the MCP server.

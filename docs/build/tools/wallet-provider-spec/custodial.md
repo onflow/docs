@@ -15,13 +15,13 @@ Public identity will be stored on chain as a resource, it will be publicly avail
 In FCL getting a users public identity will be as easy as:
 
 ```javascript
-import {user} from "@onflow/fcl"
+import { user } from '@onflow/fcl';
 
-const identity = await user(flowAddress).snapshot()
+const identity = await user(flowAddress).snapshot();
 //       ^
 //       `------ The public identity for `flowAddress`
 
-const unsub = user(flowAddress).subscribe(identity => console.log(identity))
+const unsub = user(flowAddress).subscribe((identity) => console.log(identity));
 //                                           ^
 //                                           `------- The public identity for `flowAddress`
 ```
@@ -36,15 +36,15 @@ We highly recommend Wallet Providers let the user see what scopes are being requ
 Consumers of identities in FCL should always assume all data is optional, and should store as little as possible, FCL will make sure the users always see the latest.
 
 ```javascript
-import {config, currentUser, authenticate} from "@onflow/fcl"
+import { config, currentUser, authenticate } from '@onflow/fcl';
 
-config.put("challenge.scope", "email") // request the email scope
+config.put('challenge.scope', 'email'); // request the email scope
 
-const unsub = currentUser().subscribe(identity => console.log(identity))
+const unsub = currentUser().subscribe((identity) => console.log(identity));
 //                                       ^
 //                                       `------- The private identity for the currentUser
 
-authenticate() // trigger the challenge step (authenticate the user via a wallet provider)
+authenticate(); // trigger the challenge step (authenticate the user via a wallet provider)
 ```
 
 # Identity Data
@@ -66,7 +66,7 @@ If we can give dapp developers a solid foundation of usable information that is 
 
 Private data on the other hand has more use cases than general data. It is pretty easy to imagine ordering something and needing information like contact details and where to ship something.
 
-Eventually we would love to see that sort of thing handled completely on-chain, securely, privately and safely, but in the interm it probably means storing a copy of data in a database when its needed, and allowed by a user.
+Eventually we would love to see that sort of thing handled completely onchain, securely, privately and safely, but in the interm it probably means storing a copy of data in a database when its needed, and allowed by a user.
 
 The process of a dapp receiving private data is as follows:
 
@@ -141,17 +141,17 @@ Iframe will look like this:
 ```javascript
 parent.postMessage(
   {
-    type: "FCL::CHALLENGE::RESPONSE", // used by FCL to know what kind of message this is
-    addr: "0xab4U9KMf",
-    paddr: "0xhMgqTff86",
-    code: "afseasdfsadf",
+    type: 'FCL::CHALLENGE::RESPONSE', // used by FCL to know what kind of message this is
+    addr: '0xab4U9KMf',
+    paddr: '0xhMgqTff86',
+    code: 'afseasdfsadf',
     exp: 1650400809517,
-    hks: "https://provider.com/hooks",
-    nonce: "asdfasdfasdf",
+    hks: 'https://provider.com/hooks',
+    nonce: 'asdfasdfasdf',
     l6n: decodeURIComponent(l6n),
   },
-  decodeURIComponent(l6n)
-)
+  decodeURIComponent(l6n),
+);
 ```
 
 FCL should now have everything it needs to collect the Public, Private and Wallet Provider Info.

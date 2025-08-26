@@ -408,7 +408,7 @@ const flowScanTool: Tool = {
   link: 'https://flowscan.io/',
   iconSrc:
     'https://pbs.twimg.com/profile_images/1693654862536331264/ViqtN5qj_400x400.jpg',
-  description: `Flowscan is a blockchain explorer that lets you browse all on-chain events, transactions, contracts, and accounts.`,
+  description: `Flowscan is a blockchain explorer that lets you browse all onchain events, transactions, contracts, and accounts.`,
 };
 
 const flowViewSourceTool: Tool = {
@@ -496,7 +496,7 @@ const graffleTool: Tool = {
   tags: ['api', 'hosted', 'webhooks'],
   link: 'https://graffle.io/',
   iconSrc: 'https://graffle.io/static/brand/logo_single.svg',
-  description: `Hosted infrastructure and APIs to index, monitor and store on-chain events alongside other extensive features.`,
+  description: `Hosted infrastructure and APIs to index, monitor and store onchain events alongside other extensive features.`,
 };
 
 const flowPortTool: Tool = {

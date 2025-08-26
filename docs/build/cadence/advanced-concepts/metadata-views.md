@@ -270,7 +270,7 @@ thumbnail : MetadataViews.IPFSFile(
 
 :::info
 
-Note about SVG files on-chain: SVG field should be sent as `thumbnailURL`,
+Note about SVG files onchain: SVG field should be sent as `thumbnailURL`,
 should be base64 encoded, and should have a dataURI prefix, like so:
 
 ```

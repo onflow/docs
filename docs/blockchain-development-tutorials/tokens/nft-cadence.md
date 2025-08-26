@@ -53,7 +53,7 @@ please follow [the installation guide here](../../build/tools/flow-cli/install.m
 
 ### Initializing a New Project
 
-> 💡 Note: Here is [a link to the completed code](https://github.com/chasefleming/foobar-nft) if you want to skip ahead or reference as you follow along.
+> 💡 Note: Here is [a link to the completed code](https://github.com/onflow/foobar-nft) if you want to skip ahead or reference as you follow along.
 
 Once you have the Flow CLI installed, you can set up a new project using the `flow init` command. This command initializes the necessary directory structure and a `flow.json` configuration file (a way to configure your project for contract sources, deployments, accounts, and more):
 

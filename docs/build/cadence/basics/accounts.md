@@ -43,7 +43,7 @@ A simple representation of an account:
 
 ## Address
 
-A Flow address is represented as 16 hex-encoded characters (usually prefixed with `0x` to indicate hex encoding). Unlike Bitcoin and Ethereum, Flow addresses are not derived from cryptographic public keys. Instead, each Flow address is assigned by the Flow protocol using an on-chain deterministic sequence. The sequence uses an error detection code to guarantee that all addresses differ with at least 2 hex characters. This makes typos resulting in accidental loss of assets not possible.
+A Flow address is represented as 16 hex-encoded characters (usually prefixed with `0x` to indicate hex encoding). Unlike Bitcoin and Ethereum, Flow addresses are not derived from cryptographic public keys. Instead, each Flow address is assigned by the Flow protocol using an onchain deterministic sequence. The sequence uses an error detection code to guarantee that all addresses differ with at least 2 hex characters. This makes typos resulting in accidental loss of assets not possible.
 
 This decoupling is a unique advantage of Flow, allowing for multiple public keys to be associated with one account, or for a single public key to be used across several accounts.
 

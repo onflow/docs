@@ -150,7 +150,7 @@ Never put a wallet key directly in `flow.json`.
 
 :::warning
 
-Transactions on mainnet incur fees and affect on-chain balances. Consider creating a new Flow Wallet account with limited funds.
+Transactions on mainnet incur fees and affect onchain balances. Consider creating a new Flow Wallet account with limited funds.
 
 :::
 
