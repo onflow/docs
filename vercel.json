@@ -1460,8 +1460,8 @@
       "permanent": true
     },
     {
-      "source": "/tools/flow-cli/boilerplate",
-      "destination": "/tools/flow-cli/generate",
+      "source": "/build/tools/flow-cli/boilerplate",
+      "destination": "/build/tools/flow-cli/generate",
       "permanent": true
     },
     {
