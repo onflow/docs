@@ -183,7 +183,7 @@ succeeds.
 On success, you can click on your NFTs in MetaMask to see your newly minted token.
 
 <div class="portrait-screenshot-wrapper">
-![MaybeMintERC721 in MetaMask NFT list](./maybe-mint-in-metamask.png)
+![MaybeMintERC721 in MetaMask NFT list](./imgs/maybe-mint-in-metamask.png)
 </div>
 
 #### Recap

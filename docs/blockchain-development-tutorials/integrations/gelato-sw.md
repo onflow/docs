@@ -66,11 +66,11 @@ To use Gelato for sponsored transactions, you need to deposit funds into 1Balanc
 
 Click the `1Balance` tab to link your wallet first.
 
-![Link Wallet](./images/gelato-1balance-1.png)
+![Link Wallet](./imgs/gelato-1balance-1.png)
 
 And then deposit some Sepolia ETH(SEP) testnet funds.
 
-![Deposit Funds into 1Balance](./images/gelato-1balance-2.png)
+![Deposit Funds into 1Balance](./imgs/gelato-1balance-2.png)
 
 If you need to fund your account, you can use one of the following third-party faucets:
 
@@ -86,7 +86,7 @@ Select the `Relay` tab in the Gelato App and switch to the `Testnet` environment
 Now you can create a new _Relay App_ with the Flow EVM network.  
 For Testnet, you can first allow `Any contract` to call your relay app.
 
-![Create a Relay App](./images/gelato-relay-1.png)
+![Create a Relay App](./imgs/gelato-relay-1.png)
 
 :::warning
 
@@ -100,7 +100,7 @@ When set to a specific contract instead of `Any contract`, the API keys will onl
 
 After creating the Relay App, navigate to its dashboard to locate your Sponsor API Key.
 
-![Create a Sponsor API Key](./images/gelato-relay-2.png)
+![Create a Sponsor API Key](./imgs/gelato-relay-2.png)
 
 This key links your Gelato setup with 1Balance for gas sponsorship.
 
