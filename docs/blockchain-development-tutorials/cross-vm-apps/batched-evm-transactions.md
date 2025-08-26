@@ -154,7 +154,7 @@ Once confirmed, you should be able to see WFLOW balance in your tokens list in M
 `Import Tokens` and paste the WFLOW contract address found on the Flowscan page and refresh your list.
 
 <div class="portrait-screenshot-wrapper">
-![WFLOW in MetaMask](./wflow-in-metamask-tokens.png)
+![WFLOW in MetaMask](./imgs/wflow-in-metamask-tokens.png)
 </div>
 
 #### 2. Approve WFLOW Transfer
