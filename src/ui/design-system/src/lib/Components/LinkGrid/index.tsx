@@ -36,7 +36,7 @@ const sections: LinkGridSection[] = [
       { title: 'Playground', href: 'https://play.flow.com/' },
       {
         title: 'Mobile Quickstart',
-        href: '/build/cadence/guides/mobile/overview',
+        href: '/blockchain-development-tutorials/cadence/mobile',
       },
     ],
     imageName: 'docs-introduction',

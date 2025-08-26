@@ -328,7 +328,7 @@ const config = {
                 label: 'Cadence',
               },
               {
-                to: '/build/cadence/guides/mobile/overview',
+                to: '/blockchain-development-tutorials/cadence/mobile',
                 label: 'Mobile',
               },
               {
