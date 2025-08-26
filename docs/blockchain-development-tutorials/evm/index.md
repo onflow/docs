@@ -41,7 +41,7 @@ Create a decentralized image gallery that stores images directly on the blockcha
 
 These EVM guides provide comprehensive coverage of the most popular Ethereum development tools and frameworks, adapted for Flow EVM development. Whether you're migrating existing Ethereum applications or building new projects, these tutorials offer practical implementation patterns for wallet integration, contract deployment, and blockchain interaction on Flow's high-performance EVM-compatible network.
 
-[Setup]: ./setup/index
-[Frameworks]: ./frameworks/index
-[Development Tools]: ./development-tools/index
+[Setup]: ./setup/
+[Frameworks]: ./frameworks/
+[Development Tools]: ./development-tools/
 [Build a Fully-Onchain Image Gallery]: ./image-gallery.md

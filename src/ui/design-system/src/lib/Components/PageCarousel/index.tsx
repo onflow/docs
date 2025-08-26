@@ -10,7 +10,7 @@ const cards = {
       subtitle: 'Deploy fungible tokens for your project',
       imageName: 'create-fungible-tokens',
       hoverText: 'Get Started',
-      link: '/build/cadence/guides/fungible-token',
+      link: '/build/cadence/core-contracts/fungible-token',
     },
     {
       title: 'Launch an NFT',
