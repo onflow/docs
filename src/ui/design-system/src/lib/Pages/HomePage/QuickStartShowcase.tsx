@@ -29,6 +29,7 @@ const QuickStartShowcase: React.FC = () => {
       <div className="flex items-center justify-between mb-4">
         <h2 className="text-xl font-semibold text-gray-800 dark:text-gray-200">
            Try it live on Flow Mainnet
+        </h2>
       </div>
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-0 items-stretch bg-white dark:bg-gray-900 rounded-2xl shadow-lg border border-gray-200 dark:border-gray-700 overflow-hidden">
         {/* Left: Selector */}
