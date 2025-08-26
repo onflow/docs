@@ -235,6 +235,6 @@ Releasing a new version of Dev Wallet is as simple as tagging and creating a rel
 
 Additionally, consider exploring these resources:
 
-- [Guide to Creating a Fungible Token on Flow](../../cadence/guides/fungible-token.md)
+- [Guide to Creating a Fungible Token on Flow](../../../blockchain-development-tutorials/tokens/fungible-token-cadence.md)
 - [Tutorial on Fungible Tokens](https://cadence-lang.org/docs/tutorial/fungible-tokens)
 - [Faucets](../../../ecosystem/faucets.md)

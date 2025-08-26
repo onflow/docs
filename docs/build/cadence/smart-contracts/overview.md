@@ -78,7 +78,7 @@ The Flow blockchain has existing smart contract standards for both fungible and 
 
 All NFTs on the Flow blockchain implement the [NonFungibleToken](../core-contracts/08-non-fungible-token.md) interface, allowing them to be compatible with wallets, marketplaces and other cross-app experiences.
 
-See the [NFT Guide](../guides/nft.md) for a guide on how to create a basic NFT contract
+See the [NFT Guide](../../../blockchain-development-tutorials/tokens/nft-cadence.md) for a guide on how to create a basic NFT contract
 that conforms to the standard.
 
 - [Non-Fungible Token (NFT) contract interface](../core-contracts/08-non-fungible-token.md)

@@ -110,5 +110,5 @@ You've now created a custom GPT that references your uploaded file as a primary 
 [ChatGPT]: https://chatgpt.com/
 [OpenAI]: https://openai.com/
 [ChatGPT Plus subscription]: https://chat.openai.com
-[Flow Data Sources]: ../flow-data-sources.md
+[Flow Data Sources]: ../cursor/flow-data-sources.md
 [Flow Data Sources All Merged]: https://github.com/onflow/Flow-Data-Sources/blob/main/merged_docs/all_merged.md

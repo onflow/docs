@@ -605,4 +605,4 @@ It provides an introduction to integrating these standards into your NFT contrac
 
 - See the [API reference for a complete list of Metadata functions](https://developers.flow.com/build/cadence/core-contracts/flow-nft/MetdataViews/MetadataViews)
 - Check out [an Example NFT project](https://github.com/onflow/flow-nft/blob/master/contracts/ExampleNFT.cdc) implementing `MetadataViews`
-- Read [the NFT Guide](../guides/nft.md) for an introduction to implementation
+- Read [the NFT Guide](../../../blockchain-development-tutorials/tokens/nft-cadence.md) for an introduction to implementation

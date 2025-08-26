@@ -104,12 +104,12 @@ Flow is the ideal platform for AI-enhanced blockchain development. The combinati
 <!-- Relative links. Will not render on the page -->
 
 [Use Flow Knowledge Base in Cursor]: ./cursor/index.md
-[Use Flow Knowledge Base in ChatGPT]: ./chatgpt/index.md
-[Data Sources]: ./flow-data-sources.md
-[Eliza on Flow]: ./eliza/index.md
-[Build AI Agents with AgentKit]: ./agentkit-flow-guide.md
+[Use Flow Knowledge Base in ChatGPT]: ./llms/chatgpt.md
+[Data Sources]: ./cursor/flow-data-sources.md
+[Eliza on Flow]: ./agents/eliza/index.md
+[Build AI Agents with AgentKit]: ./agents/agentkit-flow-guide.md
 [cross-vm-apps]: ../cross-vm-apps/introduction.md
 [native-vrf]: ../native-vrf/index.md
-[token-launch]: ../token-launch/index.md
+[token-launch]: ../tokens/index.md
 [Flow MCP]: ./mcp/index.md
-[Cadence Rules]: ./cadence-rules.md
+[Cadence Rules]: ./cursor/cadence-rules.md

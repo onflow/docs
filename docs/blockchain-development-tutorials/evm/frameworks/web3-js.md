@@ -65,7 +65,7 @@ The `web3` library allows developers to interact with smart contracts via the `w
 
 For this example we will use the following `Storage` contract.
 
-We recommend deploying your own contract, which can be done using [Hardhat](./hardhat.md) or [Remix](./remix.md).
+We recommend deploying your own contract, which can be done using [Hardhat](../development-tools/hardhat.md) or [Remix](../development-tools/remix.md).
 
 ```solidity
 // SPDX-License-Identifier: MIT
@@ -84,7 +84,7 @@ contract Storage {
 }
 ```
 
-The ABI for this contract can be generated using the [`solc` compiler](https://docs.soliditylang.org/en/latest/installing-solidity.html), or another tool such as [Hardhat](./hardhat.md) or [Remix](./remix.md).
+The ABI for this contract can be generated using the [`solc` compiler](https://docs.soliditylang.org/en/latest/installing-solidity.html), or another tool such as [Hardhat](../development-tools/hardhat.md) or [Remix](../development-tools/remix.md).
 
 Now that we have both the ABI and address of the contract, we can create a new `Contract` object for use in our application.
 

@@ -346,8 +346,8 @@ Ready to unlock the full potential of Flow EVM? Start with our [Batched Transact
 [viem]: https://viem.sh/
 [rainbowkit]: https://www.rainbowkit.com/
 [Hardhat]: https://hardhat.org/
-[Remix]: ./guides/remix.md
-[Foundry]: ./guides/foundry.md
+[Remix]: ../../blockchain-development-tutorials/evm/development-tools/remix.md
+[Foundry]: ../../blockchain-development-tutorials/evm/development-tools/foundry.md
 [Flow Faucet]: https://faucet.flow.com/fund-account
 [Flowscan]: https://evm-testnet.flowscan.io/
 [Flow Wallet]: https://wallet.flow.com/

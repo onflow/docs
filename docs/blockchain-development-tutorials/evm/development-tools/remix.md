@@ -118,4 +118,4 @@ Follow the steps below to change the greeting and retrieve the new greeting.
 
 <!-- Reference-style links, will not render on page. -->
 
-[Using EVM]: ../../build/evm/using.mdx
+[Using EVM]: ../../../build/evm/using.mdx

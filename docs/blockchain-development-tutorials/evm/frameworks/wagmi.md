@@ -135,7 +135,7 @@ export default App;
 
 ![Connect Metamask](./imgs/Connect-Metamask.gif)
 
-This step relies on an already deployed HelloWorld contract. See [Using Remix](./remix.md) to deploy a smart contract on flow evm blockchain.
+This step relies on an already deployed HelloWorld contract. See [Using Remix](../development-tools/remix.md) to deploy a smart contract on flow evm blockchain.
 Create or edit the simple `page.tsx` file in the app directory to have better styles, that's beyond this tutorial. We will modify `page.txs` to add a new `HelloWorld.tsx`. Replace `YOUR_CONTRACT_ADDRESS` with your deployed address.
 
 ## Step 3: Creating the Interface for HelloWorld Contract
@@ -288,4 +288,4 @@ Test it by updating the greeting, signing a transaction in your Metamask then wa
 
 <!-- Reference-style links, will not render on page. -->
 
-[Metamask and Flow blockchain]: ../../build/evm/using.mdx
+[Metamask and Flow blockchain]: ../../../build/evm/using.mdx

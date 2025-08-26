@@ -107,5 +107,5 @@ You've now created a custom Gem that uses Flow's comprehensive documentation as 
 
 [Gemini AI]: https://gemini.google.com/
 [Gemini Advanced subscription]: https://gemini.google.com/advanced
-[Flow Data Sources]: ../flow-data-sources.md
+[Flow Data Sources]: ../cursor/flow-data-sources.md
 [Flow Data Sources All Merged]: https://github.com/onflow/Flow-Data-Sources/blob/main/merged_docs/all_merged.md
