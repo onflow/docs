@@ -13,10 +13,10 @@ const HeroSection: React.FC = () => {
         {/* Left: Hero Content */}
         <div className="flex-1 max-w-2xl text-left">
           <h1 className="text-3xl md:text-4xl font-bold mb-3 text-gray-900 dark:text-white">
-            Apps deserve better blockchains
+            Better apps deserve better blockchains
           </h1>
           <p className="text-base md:text-lg text-gray-700 dark:text-gray-200 mb-4 max-w-xl">
-            Start building with <strong>Cadence</strong>, or <strong>Solidity (EVM)</strong>, with <strong>AI-powered tools</strong> - each path is first-class and fully supported.
+            <strong>Cadence</strong> for whats next. <strong>Solidity</strong> for what you've got. On Flow, both run natively withno tricks and no rewrites.  <strong>Build the next killer app.</strong>.
           </p>
           <div className="flex flex-col sm:flex-row gap-3 mb-4">
             <a
