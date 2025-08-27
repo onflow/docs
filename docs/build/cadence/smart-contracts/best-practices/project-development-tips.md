@@ -57,7 +57,7 @@ pro-actively modeled threats and engineered against them. Ensuring appropriate l
 of standards adoption ([FungibleToken](https://github.com/onflow/flow-ft),
 [NFT Metadata](../../advanced-concepts/metadata-views.md), [NFT StoreFront](https://github.com/onflow/nft-storefront), etc) by dapp
 builders amplifies the network effects for all in the ecosystem. NFTs in one dapp can be
-readily consumed by other dapps through on-chain events with no new integration
+readily consumed by other dapps through onchain events with no new integration
 required. With your help and participation we can further accelerate healthy and vibrant
 network effects across the Flow ecosystem!
 

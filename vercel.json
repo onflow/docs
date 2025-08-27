@@ -1458,6 +1458,16 @@
       "source": "/tools/:path*",
       "destination": "/build/tools/:path*",
       "permanent": true
+    },
+    {
+      "source": "/build/tools/flow-cli/boilerplate",
+      "destination": "/build/tools/flow-cli/generate",
+      "permanent": true
+    },
+    {
+      "source": "/networks/:path*",
+      "destination": "/protocol/:path*",
+      "permanent": true
     }
   ]
 }

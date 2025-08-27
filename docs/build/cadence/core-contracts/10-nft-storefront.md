@@ -28,12 +28,12 @@ or their own implementation.
 
 Source: [NFTStorefrontV2.cdc]
 
-| Network | Contract Address     |
-| ------- | -------------------- |
-| Emulator | `0xf8d6e0586b0a20c7` |
+| Network                   | Contract Address     |
+| ------------------------- | -------------------- |
+| Emulator                  | `0xf8d6e0586b0a20c7` |
 | Cadence Testing Framework | `0x0000000000000001` |
-| Testnet | `0x2d55b98eb200daef` |
-| Mainnet | `0x4eb8a10cb9f87357` |
+| Testnet                   | `0x2d55b98eb200daef` |
+| Mainnet                   | `0x4eb8a10cb9f87357` |
 
 Source: [NFTStorefront.cdc]
 
@@ -71,7 +71,7 @@ Each listing can define one or more sale cuts taken out of the sale price to go 
 
 Listings can have an optional list of marketplace [receiver capabilities] used to receive the commission for fulfilling the listing. An NFT may be listed in one or more Listings, and the validity of each listing can easily be checked.
 
-Interested parties can globally track Listing events on-chain and filter by NFT types, IDs and other characteristics to determine which to make available for purchase within their own marketplace UIs."
+Interested parties can globally track Listing events onchain and filter by NFT types, IDs and other characteristics to determine which to make available for purchase within their own marketplace UIs."
 
 ## Selling NFTs
 

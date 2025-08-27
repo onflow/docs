@@ -181,6 +181,14 @@ If we wanted to generate a new script, we could run:
 flow generate script ScriptName
 ```
 
+:::info
+
+For more information about generating Cadence files, see the [Generating Cadence Boilerplate] documentation.
+
+**You'll usually want to use these commands instead of adding files manually!**
+
+:::
+
 But the default project already has a `GetCounter` script for reading the count of the `Counter` contract. Open `cadence/scripts/GetCounter.cdc` in your editor to see the script.
 
 To run the script, you can run:
@@ -376,7 +384,7 @@ Even more importantly, we did this **without needing access or permission.** You
 
 ## More
 
-If you want to continue on generating your own contracts, you can also use the the `generate` subcommand to create a new contract file. See more in the [`generate` documentation].
+If you want to continue on generating your own contracts, you can also use the the `generate` subcommand to create a new contract file. See more in the [Generating Cadence Boilerplate] documentation.
 
 After that, it's easy to add your contract to your project configuration using the Flow CLI [`config` commands].
 
@@ -426,6 +434,6 @@ In this tutorial, we've accomplished all of our learning objectives:
 [Dependency Manager]: ../../../build/tools/flow-cli/dependency-manager
 [basic scripts]: ../basics/scripts.md
 [basic transactions]: ../basics/transactions.md
-[`generate` documentation]: ../../../build/tools/flow-cli/boilerplate.md
+[Generating Cadence Boilerplate]: ../../../build/tools/flow-cli/generate.md
 [`config` commands]: ../../../build/tools/flow-cli/flow.json/manage-configuration.md
 [`NumberFormatter`]: https://contractbrowser.com/A.8a4dce54554b225d.NumberFormatter
