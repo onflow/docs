@@ -637,20 +637,19 @@ const config = {
         },
       };
     },
+    require('./src/plugins/font-preload'),
   ],
   stylesheets: [
     {
-      href: 'https://cdn.jsdelivr.net/npm/katex@0.13.24/dist/katex.min.css',
+      href: '/css/katex-optimized.css',
       type: 'text/css',
-      integrity:
-        'sha384-odtC+0UGzzFL/6PNoE8rX/SPcQDXBJ+uRepguP4QkPCm2LBxH3FA3y+fKSiJ+AmM',
-      crossorigin: 'anonymous',
     },
-      {
-        href: 'https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap',
-        rel: 'stylesheet',
-      },
+    {
+      href: require.resolve('./src/css/critical.css'),
+      type: 'text/css',
+    },
   ],
+
   scripts: [
     {
       src: `${baseUrl}mixpanel.js`,

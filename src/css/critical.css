@@ -1,0 +1,30 @@
+/* Critical CSS - Inline this in the HTML head to avoid render blocking */
+
+/* Essential font loading */
+@font-face {
+  font-family: "Inter";
+  src: local("Inter"),
+    url(/fonts/inter/Inter-Regular.ttf) format("truetype");
+  font-weight: 400;
+  font-display: swap;
+}
+
+/* Critical layout styles */
+body {
+  margin: 0;
+  font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  line-height: 1.6;
+}
+
+/* Essential KaTeX styles */
+.katex {
+  font: normal 1.21em KaTeX_Main, 'Times New Roman', serif;
+  line-height: 1.2;
+  text-indent: 0;
+  text-rendering: auto;
+}
+
+.katex * {
+  -ms-high-contrast-adjust: none !important;
+  border-color: currentColor;
+}

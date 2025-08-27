@@ -1,0 +1,23 @@
+/* Critical KaTeX styles - inlined for immediate rendering */
+.katex {
+  font: normal 1.21em KaTeX_Main, 'Times New Roman', serif;
+  line-height: 1.2;
+  text-indent: 0;
+  text-rendering: auto;
+}
+
+.katex * {
+  -ms-high-contrast-adjust: none !important;
+  border-color: currentColor;
+}
+
+.katex .katex-html {
+  /* Critical display styles */
+}
+
+.katex .katex-html > .newline {
+  display: block;
+}
+
+/* Defer loading of full KaTeX CSS */
+@import url('/css/katex.min.css') print;
