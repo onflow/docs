@@ -651,15 +651,16 @@ const config = {
   ],
 
   scripts: [
-    {
-      src: `${baseUrl}mixpanel.js`,
-      async: true,
-      onload: mixpanelOnLoad,
-    },
-    {
-      src: `${baseUrl}hotjar.js`,
-      async: true,
-    },
+    // Temporarily disabled - uncomment when needed
+    // {
+    //   src: `${baseUrl}mixpanel.js`,
+    //   async: true,
+    //   onload: mixpanelOnLoad,
+    // },
+    // {
+    //   src: `${baseUrl}hotjar.js`,
+    //   async: true,
+    // },
   ],
   clientModules: [require.resolve('./src/modules/toolscards.ts')],
 
