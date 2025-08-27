@@ -24,7 +24,7 @@ const contentNavigationListItems: ContentNavigationListProps = {
     {
       title: 'Mobile',
       text: 'Build truly mobile first experiences',
-      link: '/build/cadence/guides/mobile/overview',
+      link: '/blockchain-development-tutorials/cadence/mobile',
       icon: 'tools',
     },
   ],

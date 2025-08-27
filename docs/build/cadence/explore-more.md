@@ -45,7 +45,7 @@ profileImage:
 {
 type: 'link',
 label: 'Fungible Token Guide',
-href: '/build/cadence/guides/fungible-token',
+href: '/build/cadence/core-contracts/fungible-token',
 description: 'Steps to create, deploy, mint, and transfer fungible tokens on Flow',
 customProps: {
 icon: <FontAwesomeIcon icon={faCoins} className="h-16" />,

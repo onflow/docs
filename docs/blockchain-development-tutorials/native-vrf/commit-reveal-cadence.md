@@ -49,7 +49,7 @@ In this guide, we will explore how to use a commit-reveal scheme based on the Fl
 
 To illustrate this concept, we will build a Coin Toss game on Flow, demonstrating how smart contracts can leverage a commit-reveal scheme for fair, tamper-resistant results.
 
-![Commit Reveal](commit-reveal.png)
+![Commit Reveal](./imgs/commit-reveal.png)
 
 ### What is the Coin Toss Game?
 

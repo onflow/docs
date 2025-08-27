@@ -203,6 +203,6 @@ We also have guides for working with [Rainbowkit] and [wagmi].
 [Simple Frontend]: ../build/cadence/getting-started/fcl-quickstart.md
 [EVM Quickstart]: ../build/evm/quickstart.md
 [Testnet Flowscan]: https://evm-testnet.flowscan.io/
-[Foundry]: ../build/evm/guides/foundry.md
-[Rainbowkit]: ../build/evm/guides/rainbowkit.md
-[wagmi]: ../build/evm/guides/wagmi.md
+[Foundry]: ./evm/development-tools/foundry.md
+[Rainbowkit]: ./evm/frameworks/rainbowkit.md
+[wagmi]: ./evm/frameworks/wagmi.md

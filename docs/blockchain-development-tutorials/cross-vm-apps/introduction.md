@@ -1,7 +1,7 @@
 ---
 title: Batched Tx From Scaffold
 description: Learn how to use FCL with wagmi and rainbowkit to create a cross-vm app - one that is simultaneously connected to Flow EVM and Flow Cadence.
-sidebar_position: 0
+sidebar_position: 1
 keywords:
   - hybrid apps
   - cross-vm apps
@@ -30,7 +30,7 @@ For EVM developers, this means that you can use the familiar [wagmi], [viem], an
 
 In this tutorial, you'll learn how to create [Click to Mint], a simple game that allows players to mint an ERC-20 token by clicking a button. With the power of Flow, they can also click a button, and **complete 10 separate transactions with just one approval!**
 
-![Click to Mint](click-to-mint.png)
+![Click to Mint](./imgs/click-to-mint.png)
 
 :::warning
 
@@ -76,7 +76,7 @@ npm run dev
 
 You'll see:
 
-![Hybrid App Demo](hybrid-app-demo.png)
+![Hybrid App Demo](./imgs/hybrid-app-demo.png)
 
 Connect with a Cadence-compatible [wallet].
 
@@ -520,7 +520,7 @@ return (
 
 You'll now see the button and scoreboard from the contract. Test it out and earn a few points!
 
-![scores](scores.png)
+![scores](./imgs/scores.png)
 
 ## Supercharge your EVM App With Cadence
 

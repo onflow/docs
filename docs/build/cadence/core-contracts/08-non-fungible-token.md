@@ -25,7 +25,7 @@ The `NonFungibleToken` contract interface implements the Fungible Token Standard
 All NFT contracts are encouraged to import and implement this standard.
 
 - [Basic Non-Fungible Token Tutorial](https://cadence-lang.org/docs/tutorial/non-fungible-tokens-1)
-- [Non Fungible Token Guide](../guides/nft.md)
+- [Non Fungible Token Guide](../../../blockchain-development-tutorials/tokens/nft-cadence.md)
 - [Non Fungible Token Standard Repo](https://github.com/onflow/flow-nft)
 
 Source: [NonFungibleToken.cdc](https://github.com/onflow/flow-nft/blob/master/contracts/NonFungibleToken.cdc)

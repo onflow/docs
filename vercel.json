@@ -788,6 +788,11 @@
       "permanent": true
     },
     {
+      "source": "/build/cadence/guides/mobile/overview",
+      "destination": "/blockchain-development-tutorials/cadence/mobile/",
+      "permanent": true
+    },
+    {
       "source": "/build/mobile/monster-maker",
       "destination": "/build/guides/mobile/ios-quickstart",
       "permanent": true
@@ -1121,11 +1126,7 @@
       "destination": "/evm/build/guides/deploy-contract/using-remix",
       "permanent": true
     },
-    {
-      "source": "/evm/guides/vrf",
-      "destination": "/tutorials/native-vrf/vrf-in-solidity",
-      "permanent": true
-    },
+
     {
       "source": "/tutorials/contract-testing",
       "destination": "/build/smart-contracts/testing",
@@ -1362,6 +1363,126 @@
     {
       "source": "/tutorials/ai-plus-flow/:path*",
       "destination": "/tutorials/use-AI-to-build-on-flow/:path*",
+      "permanent": true
+    },
+    {
+      "source": "/tutorials/use-AI-to-build-on-flow/integrations/gelato-sw.mdx",
+      "destination": "/tutorials/use-AI-to-build-on-flow/integrations/gelato-sw.md",
+      "permanent": true
+    },
+    {
+      "source": "/tutorials/defi/:path*",
+      "destination": "/tutorials/flow-actions/:path*",
+      "permanent": true
+    },
+    {
+      "source": "/blockchain-development-tutorials/defi/:path*",
+      "destination": "/blockchain-development-tutorials/flow-actions/:path*",
+      "permanent": true
+    },
+    {
+      "source": "/blockchain-development-tutorials/use-AI-to-build-on-flow/chatgpt",
+      "destination": "/blockchain-development-tutorials/use-AI-to-build-on-flow/llms/chatgpt",
+      "permanent": true
+    },
+    {
+      "source": "/blockchain-development-tutorials/use-AI-to-build-on-flow/claude-code",
+      "destination": "/blockchain-development-tutorials/use-AI-to-build-on-flow/llms/claude-code",
+      "permanent": true
+    },
+    {
+      "source": "/build/cadence/guides/mobile/walletless-pwa",
+      "destination": "/blockchain-development-tutorials/cadence/mobile/walletless-pwa",
+      "permanent": true
+    },
+    {
+      "source": "/build/cadence/guides/mobile/react-native-quickstart",
+      "destination": "/blockchain-development-tutorials/cadence/mobile/react-native-quickstart",
+      "permanent": true
+    },
+    {
+      "source": "/build/cadence/guides/mobile/ios-quickstart",
+      "destination": "/blockchain-development-tutorials/cadence/mobile/ios-quickstart",
+      "permanent": true
+    },
+    {
+      "source": "/build/cadence/guides/account-management/account-linking-with-dapper",
+      "destination": "/blockchain-development-tutorials/cadence/account-management/account-linking-with-dapper",
+      "permanent": true
+    },
+    {
+      "source": "/build/cadence/guides/account-management/more-guides",
+      "destination": "/blockchain-development-tutorials/cadence/account-management/more-guides",
+      "permanent": true
+    },
+    {
+      "source": "/build/cadence/guides/account-management/child-accounts",
+      "destination": "/blockchain-development-tutorials/cadence/account-management/child-accounts",
+      "permanent": true
+    },
+    {
+      "source": "/build/cadence/guides/account-management/parent-accounts",
+      "destination": "/blockchain-development-tutorials/cadence/account-management/parent-accounts",
+      "permanent": true
+    },
+    {
+      "source": "/build/cadence/guides/mobile/overview",
+      "destination": "/blockchain-development-tutorials/cadence/mobile",
+      "permanent": true
+    },
+    {
+      "source": "/build/cadence/guides/mobile/:path*",
+      "destination": "/blockchain-development-tutorials/cadence/mobile/:path*",
+      "permanent": true
+    },
+    {
+      "source": "/blockchain-development-tutorials/token-launch/:path*",
+      "destination": "/blockchain-development-tutorials/tokens/:path*",
+      "permanent": true
+    },
+    {
+      "source": "/build/cadence/guides/fungible-token",
+      "destination": "/blockchain-development-tutorials/tokens/fungible-token-cadence",
+      "permanent": true
+    },
+    {
+      "source": "/build/cadence/guides/nft",
+      "destination": "/blockchain-development-tutorials/tokens/nft-cadence",
+      "permanent": true
+    },
+    {
+      "source": "/blockchain-development-tutorials/flowtobooth/:path*",
+      "destination": "/blockchain-development-tutorials/evm/image-gallery",
+      "permanent": true
+    },
+    {
+      "source": "/build/evm/guides/:path*",
+      "destination": "/blockchain-development-tutorials/evm/:path*",
+      "permanent": true
+    },
+    {
+      "source": "/blockchain-development-tutorials/use-AI-to-build-on-flow/eliza/:path*",
+      "destination": "/blockchain-development-tutorials/use-AI-to-build-on-flow/agents/eliza/:path*",
+      "permanent": true
+    },
+    {
+      "source": "/blockchain-development-tutorials/use-AI-to-build-on-flow/agentkit-flow-guide",
+      "destination": "/blockchain-development-tutorials/use-AI-to-build-on-flow/agents/agentkit-flow-guide",
+      "permanent": true
+    },
+    {
+      "source": "/blockchain-development-tutorials/use-AI-to-build-on-flow/cadence-rules",
+      "destination": "/blockchain-development-tutorials/use-AI-to-build-on-flow/cursor/cadence-rules",
+      "permanent": true
+    },
+    {
+      "source": "/blockchain-development-tutorials/use-AI-to-build-on-flow/claude-code",
+      "destination": "/blockchain-development-tutorials/use-AI-to-build-on-flow/llms/claude-code",
+      "permanent": true
+    },
+    {
+      "source": "/blockchain-development-tutorials/use-AI-to-build-on-flow/chatgpt",
+      "destination": "/blockchain-development-tutorials/use-AI-to-build-on-flow/llms/chatgpt",
       "permanent": true
     },
     {

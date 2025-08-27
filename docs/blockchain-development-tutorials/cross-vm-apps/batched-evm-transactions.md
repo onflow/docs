@@ -1,7 +1,7 @@
 ---
 title: Batched EVM Transactions Using Cadence
 sidebar_label: Batched EVM Transactions
-sidebar_position: 6
+sidebar_position: 3
 ---
 
 Integrating Cadence into EVM applications on Flow enables developers to leverage the best of both worlds. This guide
@@ -131,7 +131,7 @@ while any transactions run using an EVM account can be viewed on the EVM explore
 
 :::
 
-![Connect wallet to Flowscan](./flowscan-connect.png)
+![Connect wallet to Flowscan](./imgs/flowscan-connect.png)
 
 Once connected, you should see your address in the top right corner and above the contract's functions.
 
@@ -141,20 +141,20 @@ being the smallest unit of an EVM's native currency (inherited from Ethereum's u
 
 As shown below, put `1 000 000 000 000 000 000` in the input field for `deposit`.
 
-![Deposit 1 FLOW to WFLOW contract](./wflow-deposit.png)
+![Deposit 1 FLOW to WFLOW contract](./imgs/wflow-deposit.png)
 
 You can now click the `Write` button to submit the transaction. Once MetaMask prompts you to sign the transaction, click
 `Confirm` and give it a few seconds to process.
 
 <div class="portrait-screenshot-wrapper">
-![Confirm WFLOW deposit in MetaMask](./wflow-deposit-confirm.png)
+![Confirm WFLOW deposit in MetaMask](./imgs/wflow-deposit-confirm.png)
 </div>
 
 Once confirmed, you should be able to see WFLOW balance in your tokens list in MetaMask - if not, you can click on
 `Import Tokens` and paste the WFLOW contract address found on the Flowscan page and refresh your list.
 
 <div class="portrait-screenshot-wrapper">
-![WFLOW in MetaMask](./wflow-in-metamask-tokens.png)
+![WFLOW in MetaMask](./imgs/wflow-in-metamask-tokens.png)
 </div>
 
 #### 2. Approve WFLOW Transfer
@@ -164,7 +164,7 @@ same WFLOW page in Flowscan, click on the `approve` method. This time, you'll ne
 contract address - `0x2E2Ed0Cfd3AD2f1d34481277b3204d807Ca2F8c2` - and the amount of WFLOW you want to approve - again `1
 000 000 000 000 000 000` WFLOW.
 
-![Approve MaybeMintERC721 for 1 WFLOW in Flowscan](./wflow-approve.png)
+![Approve MaybeMintERC721 for 1 WFLOW in Flowscan](./imgs/wflow-approve.png)
 
 Click `Write` to submit the transaction. To be clear, this does not complete a transfer, but allows the
 `MaybeMintERC721` contract to transfer your WFLOW on your behalf which will execute in the next step.
@@ -183,7 +183,7 @@ succeeds.
 On success, you can click on your NFTs in MetaMask to see your newly minted token.
 
 <div class="portrait-screenshot-wrapper">
-![MaybeMintERC721 in MetaMask NFT list](./maybe-mint-in-metamask.png)
+![MaybeMintERC721 in MetaMask NFT list](./imgs/maybe-mint-in-metamask.png)
 </div>
 
 #### Recap
@@ -385,7 +385,7 @@ In our case, you'll want to submit a transaction until one succeeds. Once you su
 see a transaction ID with event logs in the Flow Runner output. Let's take a closer look at the transaction and its
 results in the Flowscan block explorer.
 
-![Flow Runner output on successful transaction execution](./flow-runner-successful-output.png)
+![Flow Runner output on successful transaction execution](./imgs/flow-runner-successful-output.png)
 
 Copy your transaction ID and go to the Flowscan Testnet Cadence block explorer: [Flowscan Cadence].
 
@@ -393,7 +393,7 @@ Pasting your transaction ID into the search bar will show you the transaction de
 execution status, and event logs. Click on the `EVM` tab to view the EVM transactions batched in the Cadence
 transaction.
 
-![Embedded EVM transactions on Flowscan](./evm-embed-flowscan.png)
+![Embedded EVM transactions on Flowscan](./imgs/evm-embed-flowscan.png)
 
 Clicking on the transactions will open up the EVM transaction in Flowscan's EVM block explorer. If you view the EVM
 transactions in order, you'll notice that they aggregate the same actions we took manually in the MetaMask section, but

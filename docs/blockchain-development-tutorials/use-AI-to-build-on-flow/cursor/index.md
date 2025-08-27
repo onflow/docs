@@ -1,7 +1,7 @@
 ---
 title: Use Flow Knowledge Base in Cursor
 sidebar_label: Use Cursor AI
-sidebar_position: 1
+sidebar_position: 2
 keywords:
   - Cursor
   - AI
@@ -17,76 +17,68 @@ keywords:
 
 # Use Flow Knowledge Base in Cursor
 
-[Cursor] is an AI code editor that makes it easy to write code while building Flow apps. Let's walk through how to setup Cursor for the best possible experience when writing applications on Flow.
+[Cursor] is an AI code editor that makes it easy to write code while building Flow apps. This section provides comprehensive guidance on setting up and using Cursor with Flow's extensive documentation ecosystem to enhance your development experience.
 
-<div style={{ position: 'relative', paddingBottom: '56.25%', height: 0, overflow: 'hidden', maxWidth: '100%' }}>
-  <iframe 
-    style={{ position: 'absolute', top: 0, left: 0, width: '100%', height: '100%' }}
-    src="https://www.youtube.com/embed/Lu6KrNvGthI" 
-    title="YouTube video player" 
-    frameborder="0" 
-    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-    allowfullscreen
-  ></iframe>
-</div>
+## Overview
 
-## Installation
+To get the most out of Cursor for Flow development, you'll need to understand three key components:
 
-Adding Flow docs lets you interact with our docs directly and get the most accurate answers to your questions.
+1. **Flow Data Sources** - The comprehensive knowledge base that powers AI assistance
+2. **Documentation Indexing** - The process of making Flow documentation available within Cursor
+3. **Cadence Rules** - Persistent AI context that provides specialized Flow development guidance
 
-1. Go to Cursor Settings > Features > Docs and click "+ Add new doc".
+## [Flow Data Sources]
 
-![Cursor Settings](./images//use-cursor-1.png)
+Learn about Flow's comprehensive, auto-generated documentation repository that serves as the foundation for AI-assisted development. This resource contains the most current information about Flow, Cadence, and the broader ecosystem, specifically formatted for optimal AI integration.
 
-1. Set Flow Docs:
+The Flow Data Sources guide covers:
+- What Flow Data Sources contains and how it's organized
+- Different file formats available for various use cases
+- Integration strategies with AI tools
+- Best practices for leveraging this knowledge base
 
-- Enter the URL of the Flow docs: `https://developers.flow.com/tools` and press Enter.
-  - Note: This **will index all** the docs. We're investigating why you need `/tools`
-  - Cursor will automatically detect the Flow docs and index them for you.
-  - Ensure the name is `Flow`, and click "Confirm" to add the docs.
+## [Indexing Flow Documentation in Cursor]
 
-![Cursor Settings](./images//use-cursor-2.png)
+Follow the step-by-step process for setting up Flow documentation within Cursor's AI system. This detailed guide walks you through indexing multiple documentation sources to create a comprehensive Flow development environment.
 
-1. Set Cadence Docs:
+The indexing documentation covers:
+- Adding Flow developer documentation to Cursor
+- Integrating Cadence language documentation  
+- Including Flow Data Sources for comprehensive coverage
+- Troubleshooting common indexing issues
+- Best practices for using indexed documentation
 
-- Click "+ Add new doc" again, now enter the URL of the Cadence docs: `https://cadence-lang.org/docs/` and press Enter.
-- Same process as before, ensure the name is `Cadence`, and click "Confirm" to add the docs.
+## [Cadence Rules]
 
-1. Add [Flow Data Sources]:
-   Click "+ Add new doc" one more time and enter the URL of our massive, auto-generated file with the most current data and practices for Flow and Cadence: `https://github.com/onflow/Flow-Data-Sources/blob/main/merged_docs/all_merged.md` and press Enter.
+Learn how to use Cursor Rules to enhance AI assistance for Cadence and Flow development with persistent context and automated workflows. This comprehensive guide demonstrates how to create specialized rules that transform your AI assistant into a Flow development expert with continuous knowledge of syntax patterns, NFT standards, and project workflows.
 
-- Enter `Flow Data Sources`, and click "Confirm" to add the doc.
-- **Caution**: This file is very large. For older development machines, you may wish to use the [essentials merged] file instead.
+The Cadence Rules guide covers:
+- Understanding Cursor Rules and how they provide persistent AI context
+- Five specialized rules for Flow development: NFT standards, syntax patterns, development workflows, project configuration, and user preferences  
+- Creating custom rules for your specific Flow development needs
+- Best practices for rule organization and team collaboration
+- Integration with existing Flow development tools and documentation
 
-1. Now wait for Cursor to index the docs. You can check the progress in the Docs section of the settings. After the indexing is complete, you can start using the docs in Cursor.
+## Getting Started
 
-## Using Flow Docs in Cursor
+1. **Start with Flow Data Sources**: Understand what documentation is available and how it can enhance your development workflow
+2. **Follow the Indexing Guide**: Set up your Cursor environment with comprehensive Flow documentation
+3. **Configure Cadence Rules**: Implement persistent AI context for consistent Flow development assistance
+4. **Practice with Examples**: Use the indexed documentation and rules to build Flow applications with enhanced AI assistance
 
-You can then reference the Flow docs in your prompt with the `@Flow`, `@Cadence`or `@Flow Data Sources` docs.
+## Best Practices for Cursor + Flow
 
-![Cursor Settings](./images//use-cursor-3.png)
+- **Use Specific References**: Target `@Flow`, `@Cadence`, or `@Flow Data Sources` based on your needs
+- **Leverage Cursor Rules**: Apply `@cadence-nft-standards`, `@cadence-syntax-patterns`, or other specialized rules for consistent guidance
+- **Combine Sources**: Leverage multiple documentation sources and rules for comprehensive assistance
+- **Verify AI Output**: Cross-reference generated code with official documentation
+- **Stay Updated**: Refresh your documentation indexes and rules periodically for current information
 
-## Best Practices
+This integrated approach combining comprehensive documentation indexing with persistent AI context through Cursor Rules provides you with consistent, accurate, and specialized assistance throughout your Flow development process.
 
-When using Cursor with Flow documentation:
-
-- Use `@Flow` when asking questions about Flow-specific concepts, tools, or ecosystem
-- Use `@Cadence` when asking questions about Cadence programming language syntax or features
-- Use `@Flow Data Sources` when asking about complex questions, difficult tasks, or anything that the first two sources didn't provide a satisfactory result
-- Be specific in your prompts to get more accurate and relevant answers
-- Combine both `@Flow` and `@Cadence` when working on cross-VM applications
-- Use the documentation to verify AI-generated code and ensure best practices
-
-## Troubleshooting
-
-If you encounter any issues:
-
-1. Ensure all three sources are properly indexed
-2. Try refreshing the documentation if answers seem outdated
-3. Check your internet connection as Cursor needs to access the documentation
-4. Verify the URLs are correct in your settings
-5. Contact Cursor support if issues persist
+<!-- Reference-style links, will not render on page. -->
 
 [Cursor]: https://www.cursor.com/
-[Flow Data Sources]: ../flow-data-sources.md
-[essentials merged]: https://github.com/onflow/Flow-Data-Sources/blob/main/merged_docs/essentials_merged.md
+[Flow Data Sources]: ./flow-data-sources.md
+[Indexing Flow Documentation in Cursor]: ./indexing-docs.md
+[Cadence Rules]: ./cadence-rules.md

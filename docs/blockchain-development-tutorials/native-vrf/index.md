@@ -1,7 +1,7 @@
 ---
 title: Native VRF (Built-in Randomness) Tutorials
 description: Build on a blockchain with built-in randomness. Flow's native VRF enables verifiable, low-cost randomness for gaming, NFTs, and DeFi. WIth no third-party dependencies.
-sidebar_position: 7
+sidebar_position: 8
 keywords:
   - VRF
   - randomness
