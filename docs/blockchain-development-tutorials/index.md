@@ -93,7 +93,6 @@ Learn how to leverage Flow's native VRF capabilities in both Cadence and Solidit
 
 - [Secure Randomness with Commit-Reveal in Cadence] - Learn how to implement secure randomness in Cadence using Flow's commit-reveal scheme
 - [VRF (Randomness) in Solidity] - Learn how to use Flow's native VRF capabilities in Solidity.
-- Deploy a Solidity Contract Using Cadence - Discover how to deploy and interact with Solidity contracts on Flow EVM using Cadence
 
 ## [Backend Usage]
 
