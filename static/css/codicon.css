@@ -1,0 +1,40 @@
+/*---------------------------------------------------------------------------------------------
+ *  Copyright (c) Microsoft Corporation. All rights reserved.
+ *  Licensed under the MIT License. See License.txt in the project root for license information.
+ *--------------------------------------------------------------------------------------------*/
+
+@font-face {
+	font-family: "codicon";
+	font-display: block;
+	src: url("../fonts/codicon.ttf") format("truetype");
+}
+
+.codicon[class*='codicon-'] {
+	font: normal normal normal 16px/1 codicon;
+	display: inline-block;
+	text-decoration: none;
+	text-rendering: auto;
+	text-align: center;
+	text-transform: none;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+	user-select: none;
+	-webkit-user-select: none;
+}
+
+/* Icon character mappings */
+.codicon-folder-opened::before { content: "\ea83"; }
+.codicon-chevron-down::before { content: "\ea76"; }
+.codicon-chevron-up::before { content: "\ea78"; }
+.codicon-play::before { content: "\eb2c"; }
+.codicon-share::before { content: "\eb49"; }
+.codicon-download::before { content: "\ea5c"; }
+.codicon-gear::before { content: "\eb51"; }
+.codicon-symbol-color::before { content: "\eb7f"; }
+.codicon-layout::before { content: "\eb3f"; }
+.codicon-error::before { content: "\ea87"; }
+.codicon-symbol-namespace::before { content: "\eb8b"; }
+.codicon-account::before { content: "\ea67"; }
+.codicon-github::before { content: "\ea84"; }
+
+/* icon rules are dynamically created by the platform theme service (see iconsStyleSheet.ts) */
