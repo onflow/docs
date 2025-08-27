@@ -117,7 +117,7 @@ const QuickStartShowcase: React.FC = () => {
             // Show realistic Flow Runner interface until iframe loads
             <div className="w-full h-[400px] bg-white dark:bg-gray-900 flex flex-col group cursor-pointer transition-all duration-200 hover:shadow-xl">
               {/* Top Bar */}
-              <div className="flex items-center justify-between px-4 py-2 bg-gradient-to-r from-blue-50 to-green-50 border-b border-gray-200">
+              <div className="flex items-center justify-between px-4 py-2 bg-gradient-to-r from-blue-50 to-green-50 dark:from-blue-900/20 dark:to-green-900/20 border-b border-gray-200 dark:border-gray-700">
                 <div className="flex items-center space-x-4">
                   {/* Flow icon */}
                   <div className="w-6 h-6 mr-2">
@@ -153,14 +153,14 @@ const QuickStartShowcase: React.FC = () => {
               {/* Main Content */}
               <div className="flex flex-1">
                 {/* Code Editor */}
-                <div className="flex-1 bg-white relative">
+                <div className="flex-1 bg-white dark:bg-gray-900 relative">
                   {/* Example Label */}
-                  <div className="absolute top-3 right-3 bg-blue-100 text-blue-800 px-2 py-1 rounded text-xs font-medium">
+                  <div className="absolute top-3 right-3 bg-blue-100 dark:bg-blue-900/30 text-blue-800 dark:text-blue-200 px-2 py-1 rounded text-xs font-medium">
                     Flow token account balance
                   </div>
                   <div className="flex">
                     {/* Line Numbers */}
-                    <div className="w-12 bg-gray-50 text-right pr-3 pt-3 text-xs text-gray-500 font-mono">
+                    <div className="w-12 bg-gray-50 dark:bg-gray-800 text-right pr-3 pt-3 text-xs text-gray-500 dark:text-gray-400 font-mono">
                       {Array.from({length: 13}, (_, i) => (
                         <div key={i} className="h-6 leading-6">{i + 1}</div>
                       ))}
@@ -168,20 +168,20 @@ const QuickStartShowcase: React.FC = () => {
                     {/* Code */}
                     <div className="flex-1 pt-3 pl-3 font-mono text-sm relative overflow-hidden">
                       {/* Scrollbar */}
-                      <div className="absolute right-2 top-3 bottom-3 w-2 bg-gray-200 rounded-full"></div>
+                      <div className="absolute right-2 top-3 bottom-3 w-2 bg-gray-200 dark:bg-gray-600 rounded-full"></div>
                       <div className="space-y-0">
-                        <div className="h-6 leading-6 whitespace-nowrap"><span className="text-blue-600">import</span> <span className="text-cyan-600">FungibleToken</span> <span className="text-blue-600">from</span> <span className="text-orange-600">0xf233dcee88fe0abe</span></div>
+                        <div className="h-6 leading-6 whitespace-nowrap"><span className="text-blue-600 dark:text-blue-400">import</span> <span className="text-cyan-600 dark:text-cyan-400">FungibleToken</span> <span className="text-blue-600 dark:text-blue-400">from</span> <span className="text-orange-600 dark:text-orange-400">0xf233dcee88fe0abe</span></div>
                         <div className="h-6 leading-6"></div>
-                        <div className="h-6 leading-6 text-green-600 whitespace-nowrap">// Returns the balance of the stored Vault at</div>
-                        <div className="h-6 leading-6 text-green-600 whitespace-nowrap">// the given address if exists, otherwise nil</div>
+                        <div className="h-6 leading-6 text-green-600 dark:text-green-400 whitespace-nowrap">// Returns the balance of the stored Vault at</div>
+                        <div className="h-6 leading-6 text-green-600 dark:text-green-400 whitespace-nowrap">// the given address if exists, otherwise nil</div>
                         <div className="h-6 leading-6"></div>
-                        <div className="h-6 leading-6 text-green-600 whitespace-nowrap">// Run this with this address: <span className="text-orange-600">0xfeb88a0fcc175a3d</span></div>
+                        <div className="h-6 leading-6 text-green-600 dark:text-green-400 whitespace-nowrap">// Run this with this address: <span className="text-orange-600 dark:text-orange-400">0xfeb88a0fcc175a3d</span></div>
                         <div className="h-6 leading-6"></div>
-                        <div className="h-6 leading-6 whitespace-nowrap"><span className="text-purple-600">access</span>(<span className="text-purple-600">all</span>) <span className="text-purple-600">fun</span> <span className="text-gray-900">main</span>(<span className="text-gray-900">address</span>: <span className="text-cyan-600">Address</span>): <span className="text-cyan-600">UFix64</span>? &#123;</div>
-                        <div className="h-6 leading-6 whitespace-nowrap">&nbsp;&nbsp;&nbsp;&nbsp;<span className="text-purple-600">let</span> <span className="text-gray-900">path</span> = <span className="text-cyan-600">StoragePath</span>(<span className="text-gray-900">identifier</span>: <span className="text-green-600">"flowTokenVault"</span>)</div>
-                        <div className="h-6 leading-6 whitespace-nowrap">&nbsp;&nbsp;&nbsp;&nbsp;<span className="text-purple-600">return</span> <span className="text-cyan-600">getAuthAccount</span>&lt;<span className="text-purple-600">auth</span>(<span className="text-cyan-600">BorrowValue</span>) &<span className="text-cyan-600">Account</span>&gt;(<span className="text-gray-900">address</span>).<span className="text-gray-900">storage</span>.<span className="text-gray-900">borrow</span>&lt;&#123;<span className="text-cyan-600">FungibleToken</span>.<span className="text-cyan-600">Vault</span>&#125;&gt;(</div>
-                        <div className="h-6 leading-6 whitespace-nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span className="text-purple-600">from</span>: <span className="text-gray-900">path</span>!</div>
-                        <div className="h-6 leading-6 whitespace-nowrap">&nbsp;&nbsp;&nbsp;&nbsp;)?.<span className="text-gray-900">balance</span> ?? <span className="text-purple-600">nil</span></div>
+                        <div className="h-6 leading-6 whitespace-nowrap"><span className="text-purple-600 dark:text-purple-400">access</span>(<span className="text-purple-600 dark:text-purple-400">all</span>) <span className="text-purple-600 dark:text-purple-400">fun</span> <span className="text-gray-900 dark:text-gray-100">main</span>(<span className="text-gray-900 dark:text-gray-100">address</span>: <span className="text-cyan-600 dark:text-cyan-400">Address</span>): <span className="text-cyan-600 dark:text-cyan-400">UFix64</span>? &#123;</div>
+                        <div className="h-6 leading-6 whitespace-nowrap">&nbsp;&nbsp;&nbsp;&nbsp;<span className="text-purple-600 dark:text-purple-400">let</span> <span className="text-gray-900 dark:text-gray-100">path</span> = <span className="text-cyan-600 dark:text-cyan-400">StoragePath</span>(<span className="text-gray-900 dark:text-gray-100">identifier</span>: <span className="text-green-600 dark:text-green-400">"flowTokenVault"</span>)</div>
+                        <div className="h-6 leading-6 whitespace-nowrap">&nbsp;&nbsp;&nbsp;&nbsp;<span className="text-purple-600 dark:text-purple-400">return</span> <span className="text-cyan-600 dark:text-cyan-400">getAuthAccount</span>&lt;<span className="text-purple-600 dark:text-purple-400">auth</span>(<span className="text-cyan-600 dark:text-cyan-400">BorrowValue</span>) &<span className="text-cyan-600 dark:text-cyan-400">Account</span>&gt;(<span className="text-gray-900 dark:text-gray-100">address</span>).<span className="text-gray-900 dark:text-gray-100">storage</span>.<span className="text-gray-900 dark:text-gray-100">borrow</span>&lt;&#123;<span className="text-cyan-600 dark:text-cyan-400">FungibleToken</span>.<span className="text-cyan-600 dark:text-cyan-400">Vault</span>&#125;&gt;(</div>
+                        <div className="h-6 leading-6 whitespace-nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span className="text-purple-600 dark:text-purple-400">from</span>: <span className="text-gray-900 dark:text-gray-100">path</span>!</div>
+                        <div className="h-6 leading-6 whitespace-nowrap">&nbsp;&nbsp;&nbsp;&nbsp;)?.<span className="text-gray-900 dark:text-gray-100">balance</span> ?? <span className="text-purple-600 dark:text-purple-400">nil</span></div>
                         <div className="h-6 leading-6 whitespace-nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&#125;</div>
                       </div>
                     </div>
@@ -196,7 +196,7 @@ const QuickStartShowcase: React.FC = () => {
               {/* Bottom Bar */}
               <div className="bg-blue-600 dark:bg-blue-700 px-3 py-2 flex items-center justify-between text-white text-sm relative">
                 {/* Hover Overlay */}
-                <div className="absolute inset-0 bg-black bg-opacity-20 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-200">
+                <div className="absolute inset-0 bg-black bg-opacity-20 dark:bg-white dark:bg-opacity-10 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-200">
                   <div className="bg-white dark:bg-gray-800 px-4 py-2 rounded-lg shadow-lg">
                     <p className="text-gray-900 dark:text-gray-100 text-sm font-medium">Hover to load interactive examples</p>
                   </div>
