@@ -143,7 +143,7 @@ Below are transactions relevant to automatically onboarding assets native to eit
 <summary>onboard_by_type.cdc</summary>
 
 ```cadence onboard_by_type.cdc
-!from https://www.github.com/onflow/flow-evm-bridge/blob/main/cadence/transactions/bridge/onboarding/onboard_by_type.cdc
+!from https://raw.githubusercontent.com/onflow/flow-evm-bridge/main/cadence/transactions/bridge/onboarding/onboard_by_type.cdc
 ```
 
 </details>
@@ -154,7 +154,7 @@ Below are transactions relevant to automatically onboarding assets native to eit
 <summary>onboard_by_evm_address.cdc</summary>
 
 ```cadence onboard_by_evm_address.cdc
-!from https://www.github.com/onflow/flow-evm-bridge/blob/main/cadence/transactions/bridge/onboarding/onboard_by_evm_address.cdc
+!from https://raw.githubusercontent.com/onflow/flow-evm-bridge/main/cadence/transactions/bridge/onboarding/onboard_by_evm_address.cdc
 ```
 
 </details>
@@ -243,7 +243,7 @@ Below are transactions relevant to bridging NFTs:
 <summary>bridge_nft_to_evm.cdc</summary>
 
 ```cadence bridge_nft_to_evm.cdc
-!from https://www.github.com/onflow/flow-evm-bridge/blob/main/cadence/transactions/bridge/nft/bridge_nft_to_evm.cdc
+!from https://raw.githubusercontent.com/onflow/flow-evm-bridge/main/cadence/transactions/bridge/nft/bridge_nft_to_evm.cdc
 ```
 
 </details>
@@ -253,7 +253,7 @@ Below are transactions relevant to bridging NFTs:
 <summary>bridge_nft_from_evm.cdc</summary>
 
 ```cadence bridge_nft_from_evm.cdc
-!from https://www.github.com/onflow/flow-evm-bridge/blob/main/cadence/transactions/bridge/nft/bridge_nft_from_evm.cdc
+!from https://raw.githubusercontent.com/onflow/flow-evm-bridge/main/cadence/transactions/bridge/nft/bridge_nft_from_evm.cdc
 ```
 
 </details>
@@ -279,7 +279,7 @@ Below are transactions relevant to bridging fungible tokens:
 <summary>bridge_tokens_to_evm.cdc</summary>
 
 ```cadence bridge_tokens_to_evm.cdc
-!from https://www.github.com/onflow/flow-evm-bridge/blob/main/cadence/transactions/bridge/tokens/bridge_tokens_to_evm.cdc
+!from https://raw.githubusercontent.com/onflow/flow-evm-bridge/main/cadence/transactions/bridge/tokens/bridge_tokens_to_evm.cdc
 ```
 
 </details>
@@ -289,7 +289,7 @@ Below are transactions relevant to bridging fungible tokens:
 <summary>bridge_tokens_from_evm.cdc</summary>
 
 ```cadence bridge_tokens_from_evm.cdc
-!from https://www.github.com/onflow/flow-evm-bridge/blob/main/cadence/transactions/bridge/tokens/bridge_tokens_from_evm.cdc
+!from https://raw.githubusercontent.com/onflow/flow-evm-bridge/main/cadence/transactions/bridge/tokens/bridge_tokens_from_evm.cdc
 ```
 
 </details>
