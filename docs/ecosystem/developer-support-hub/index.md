@@ -97,15 +97,7 @@ Follow this roadmap to build and scale your Flow project. Each milestone unlocks
 
 ---
 
-## Getting Started
-
-**New to Flow?** Start with [Builder Perks](builder-perks) to get credits and tools.
-
-**Have a project idea?** Follow the [roadmap above](#your-journey-from-idea-to-success) to unlock support at each milestone.
-
-**Need funding?** Apply for [Grants](grants) or explore [VC Introductions](vcs-and-funds).
-
-**Need technical help?** Join [Weekly Office Hours](https://calendar.google.com/calendar/u/0/embed?src=c_47978f5cd9da636cadc6b8473102b5092c1a865dd010558393ecb7f9fd0c9ad0@group.calendar.google.com) for direct engineer support.
+Follow the roadmap above based on your project stage to get the right support at the right time.
 
 :::tip Ready to build?
 
