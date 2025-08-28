@@ -89,7 +89,7 @@ Follow this roadmap to build and scale your Flow project. Each milestone unlocks
 <ul>
   <li><strong><a href="vcs-and-funds">Explore VC Network</a></strong> to get warm introductions to trusted investors</li>
   <li><strong><a href="grants">Apply for Grants</a></strong> with milestone based ecosystem grants</li>
-  <li><strong><a href="https://calendar.google.com/calendar/u/0/embed?src=c_47978f5cd9da636cadc6b8473102b5092c1a865dd010558393ecb7f9fd0c9ad0@group.calendar.google.com">Book Office Hours</a></strong> for strategic partnerships and leadership advisory</li>
+  <li><strong><a href="mailto:bd@flow.com">Contact our Business Development team</a></strong> at bd@flow.com for strategic partnerships and leadership advisory</li>
 </ul>
 </div>
 
