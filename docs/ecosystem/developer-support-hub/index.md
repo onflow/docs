@@ -78,10 +78,9 @@ Follow this roadmap to build and scale your Flow project. Each milestone unlocks
 - Ship a demo or hackathon project
 
 **Flow support unlocked:**
-- ✅ Technical mentorship from core engineers
-- ✅ Product strategy guidance  
-- ✅ Launch marketing support
-- ✅ DevRel partnership
+- ✅ **[Join Office Hours →](https://calendar.google.com/calendar/u/0/embed?src=c_47978f5cd9da636cadc6b8473102b5092c1a865dd010558393ecb7f9fd0c9ad0@group.calendar.google.com)** Technical mentorship from core engineers
+- ✅ **[Get Builder Perks →](builder-perks)** Credits and tools to accelerate development  
+- ✅ **[Join Discord →](https://discord.gg/flow)** Connect with the community for support and feedback
 
 ---
 
@@ -95,10 +94,8 @@ Follow this roadmap to build and scale your Flow project. Each milestone unlocks
 - Build core features users love
 
 **Flow support unlocked:**
-- ✅ Direct DevRel Lead contact
-- ✅ Flow Foundation team feedback
-- ✅ Priority technical support
-- ✅ Community showcase opportunities
+- ✅ **[Book Office Hours →](https://calendar.google.com/calendar/u/0/embed?src=c_47978f5cd9da636cadc6b8473102b5092c1a865dd010558393ecb7f9fd0c9ad0@group.calendar.google.com)** Direct DevRel Lead contact and priority support
+- ✅ **[Join Discord →](https://discord.gg/flow)** Showcase your project and get community feedback
 
 ---
 
@@ -112,10 +109,8 @@ Follow this roadmap to build and scale your Flow project. Each milestone unlocks
 - Apply for growth funding
 
 **Flow support unlocked:**
-- ✅ BizDev introductions and partnerships
-- ✅ Dedicated communication channel
-- ✅ Ecosystem marketing support
-- ✅ Micro-grant eligibility
+- ✅ **[Apply for Grants →](grants)** Access GrantDAO and ecosystem funding programs
+- ✅ **[Book Office Hours →](https://calendar.google.com/calendar/u/0/embed?src=c_47978f5cd9da636cadc6b8473102b5092c1a865dd010558393ecb7f9fd0c9ad0@group.calendar.google.com)** Get BizDev introductions and dedicated support channel
 
 ---
 
@@ -129,10 +124,9 @@ Follow this roadmap to build and scale your Flow project. Each milestone unlocks
 - Expand your team
 
 **Flow support unlocked:**
-- ✅ Investor network introductions
-- ✅ Ecosystem milestone grants
-- ✅ Strategic partnership opportunities
-- ✅ Leadership advisory access
+- ✅ **[Explore VC Network →](vcs-and-funds)** Get warm introductions to trusted investors
+- ✅ **[Apply for Major Grants →](grants)** Access ecosystem milestone funding programs
+- ✅ **[Book Office Hours →](https://calendar.google.com/calendar/u/0/embed?src=c_47978f5cd9da636cadc6b8473102b5092c1a865dd010558393ecb7f9fd0c9ad0@group.calendar.google.com)** Strategic partnerships and leadership advisory
 
 ---
 
