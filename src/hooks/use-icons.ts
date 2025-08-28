@@ -1,56 +1,47 @@
 import { useMemo } from 'react';
 
-// Static icon paths - more reliable than dynamic imports
-const getIconPath = (name: string): string | null => {
-  switch (name) {
-    // BuildGridData icons
-    case 'getting-started':
-      return '/images/icons/getting-started.svg';
-    case 'why-flow':
-      return '/images/icons/why-flow.svg';
-    case 'hello-world':
-      return '/images/icons/hello-world.svg';
-    case 'flow-cadence':
-      return '/images/icons/flow-cadence.svg';
-    case 'evm-on-flow':
-      return '/images/icons/evm-on-flow.svg';
-    case 'random':
-      return '/images/icons/random.svg';
-    case 'batched-evm-transactions':
-      return '/images/icons/batched-evm-transactions.svg';
-    case 'flow-client-library':
-      return '/images/icons/flow-client-library.svg';
-    case 'tools':
-      return '/images/icons/flow-tools.svg';
-    case 'faucet':
-      return '/images/icons/Faucet.svg';
-    
-    // GrowGridData icons
-    case 'grow':
-      return '/images/icons/flow-grow.svg';
-    case 'builder-credits':
-      return '/images/icons/builder-credits.svg';
-    case 'dev-office-hours':
-      return '/images/icons/dev-office-hours.svg';
-    case 'grants':
-      return '/images/icons/flow-grants.svg';
-    case 'startup-support':
-      return '/images/icons/startup-support.svg';
-    case 'vcs-&-funds':
-      return '/images/icons/vcs-&-funds.svg';
-    
-    // Other commonly used icons
-    case 'learn':
-      return '/images/icons/flow-learn.svg';
-    case 'gs-hello-world':
-      return '/images/icons/gs-hello-world.svg';
-    case 'cadence':
-      return '/images/icons/cadence-logo-mark-black-1.svg';
-    case 'solidity':
-      return '/images/icons/flow-evm.svg';
-    
-    default:
-      return null;
+// True dynamic loading using webpack dynamic imports
+// This creates separate chunks for each SVG, loaded only when needed
+const iconImports: Record<string, () => Promise<any>> = {
+  // BuildGridData icons
+  'getting-started': () => import('@site/static/images/icons/getting-started.svg'),
+  'why-flow': () => import('@site/static/images/icons/why-flow.svg'),
+  'hello-world': () => import('@site/static/images/icons/hello-world.svg'),
+  'flow-cadence': () => import('@site/static/images/icons/flow-cadence.svg'),
+  'evm-on-flow': () => import('@site/static/images/icons/evm-on-flow.svg'),
+  'random': () => import('@site/static/images/icons/random.svg'),
+  'batched-evm-transactions': () => import('@site/static/images/icons/batched-evm-transactions.svg'),
+  'flow-client-library': () => import('@site/static/images/icons/flow-client-library.svg'),
+  'tools': () => import('@site/static/images/icons/flow-tools.svg'),
+  'faucet': () => import('@site/static/images/icons/Faucet.svg'),
+  
+  // GrowGridData icons
+  'grow': () => import('@site/static/images/icons/flow-grow.svg'),
+  'builder-credits': () => import('@site/static/images/icons/builder-credits.svg'),
+  'dev-office-hours': () => import('@site/static/images/icons/dev-office-hours.svg'),
+  'grants': () => import('@site/static/images/icons/flow-grants.svg'),
+  'startup-support': () => import('@site/static/images/icons/startup-support.svg'),
+  'vcs-&-funds': () => import('@site/static/images/icons/vcs-&-funds.svg'),
+  
+  // Other commonly used icons
+  'learn': () => import('@site/static/images/icons/flow-learn.svg'),
+  'gs-hello-world': () => import('@site/static/images/icons/gs-hello-world.svg'),
+  'cadence': () => import('@site/static/images/icons/cadence-logo-mark-black-1.svg'),
+  'solidity': () => import('@site/static/images/icons/flow-evm.svg'),
+};
+
+// Dynamic icon loader that creates separate chunks
+const loadIconFromContext = async (name: string): Promise<string | null> => {
+  const importFn = iconImports[name];
+  if (!importFn) return null;
+  
+  try {
+    // This creates a separate chunk for each SVG
+    const icon = await importFn();
+    return icon.default || icon;
+  } catch (error) {
+    console.warn(`Failed to load icon: ${name}`, error);
+    return null;
   }
 };
 
@@ -59,7 +50,7 @@ const iconCache = new Map<string, any>();
 
 export function useIcons() {
   return useMemo(() => {
-    const loadIcon = (name: string) => {
+    const loadIcon = async (name: string) => {
       // Check cache first
       if (iconCache.has(name)) {
         return iconCache.get(name);
@@ -70,8 +61,8 @@ export function useIcons() {
         return `/img/ecosystem/${name}.svg`;
       }
 
-      // Get static path
-      const iconPath = getIconPath(name);
+      // Get dynamic icon path
+      const iconPath = await loadIconFromContext(name);
       if (iconPath) {
         iconCache.set(name, iconPath);
         return iconPath;
@@ -80,15 +71,15 @@ export function useIcons() {
       return null;
     };
 
-          // Preload commonly used icons
-      const preloadCommonIcons = () => {
-        const commonIcons = ['getting-started', 'grow', 'tools', 'learn'];
-        commonIcons.forEach(iconName => {
-          if (!iconCache.has(iconName)) {
-            getIconPath(iconName);
-          }
-        });
-      };
+    // Preload commonly used icons
+    const preloadCommonIcons = () => {
+      const commonIcons = ['getting-started', 'grow', 'tools', 'learn'];
+      commonIcons.forEach(iconName => {
+        if (!iconCache.has(iconName)) {
+          loadIconFromContext(iconName);
+        }
+      });
+    };
 
     // Start preloading common icons
     preloadCommonIcons();
@@ -100,7 +91,7 @@ export function useIcons() {
       // Preload specific icons
       preloadIcon: (name: string) => {
         if (!iconCache.has(name)) {
-          getIconPath(name);
+          loadIconFromContext(name);
         }
       },
     };
