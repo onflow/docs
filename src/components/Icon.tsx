@@ -38,32 +38,27 @@ export const Icon: React.FC<IconProps> = ({
 }) => {
   const icons = useIcons();
 
-  if (!name || !icons[name]) {
+  if (!name) {
     return <LocationIcon />;
   }
 
-  if (typeof icons[name] === 'string') {
-    return (
-      <div className={className}>
-        <img 
-          src={icons[name]} 
-          alt={name}
-          className="w-full h-full object-contain"
-          width={width}
-          height={height}
-        />
-      </div>
-    );
+  // Get icon path
+  const iconPath = icons.loadIcon(name);
+
+  if (!iconPath) {
+    return <LocationIcon />;
   }
 
-  // Otherwise, render as a React component
+  // Always render as an image since we're using static paths
   return (
     <div className={className}>
-      {React.createElement(icons[name], {
-        width,
-        height,
-        className: "w-full h-full"
-      })}
+      <img 
+        src={iconPath} 
+        alt={name}
+        className="w-full h-full object-contain dark:brightness-0 dark:invert"
+        width={width}
+        height={height}
+      />
     </div>
   );
 };

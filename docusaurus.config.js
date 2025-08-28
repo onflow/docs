@@ -637,6 +637,7 @@ const config = {
         },
       };
     },
+
     require('./src/plugins/font-preload'),
   ],
   stylesheets: [
