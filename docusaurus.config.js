@@ -633,19 +633,6 @@ const config = {
                 },
               ],
             },
-            optimization: {
-              splitChunks: {
-                cacheGroups: {
-                  svgIcons: {
-                    test: /[\\/]static[\\/]images[\\/]icons[\\/].*\.svg$/,
-                    name: 'svg-icons',
-                    chunks: 'async',
-                    minChunks: 1,
-                    enforce: true,
-                  },
-                },
-              },
-            },
           };
         },
       };

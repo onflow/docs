@@ -36,58 +36,25 @@ export const Icon: React.FC<IconProps> = ({
   width = "100%",
   height = "100%"
 }) => {
-  const [icon, setIcon] = React.useState<any>(null);
-  const [loading, setLoading] = React.useState(false);
   const icons = useIcons();
 
-  React.useEffect(() => {
-    if (!name) return;
-
-    const loadIcon = async () => {
-      setLoading(true);
-      try {
-        const iconData = await icons.loadIcon(name);
-        setIcon(iconData);
-      } catch (error) {
-        console.warn(`Failed to load icon: ${name}`, error);
-      } finally {
-        setLoading(false);
-      }
-    };
-
-    loadIcon();
-  }, [name, icons]);
-
   if (!name) { return <LocationIcon />; }
-  if (loading) { return <div className={className}><div className="w-full h-full bg-gray-200 animate-pulse rounded" /></div>; }
-  if (!icon) { return <LocationIcon />; }
 
-  // Check if it's a static path (string) or a React component
-  if (typeof icon === 'string') {
-    return (
-      <div className={className}>
-        <img 
-          src={icon} 
-          alt={name}
-          className="w-full h-full object-contain dark:brightness-0 dark:invert"
-          width={width}
-          height={height}
-        />
-      </div>
-    );
-  }
+  // Get icon path
+  const iconPath = icons.loadIcon(name);
 
-  // Otherwise, render as a React component
+  if (!iconPath) { return <LocationIcon />; }
+
+  // Always render as an image since we're using static paths
   return (
     <div className={className}>
-      {React.createElement(icon, {
-        width,
-        height,
-        className: "w-full h-full",
-        title: name,
-        role: "img",
-        "aria-label": name
-      })}
+      <img 
+        src={iconPath} 
+        alt={name}
+        className="w-full h-full object-contain dark:brightness-0 dark:invert"
+        width={width}
+        height={height}
+      />
     </div>
   );
 };
