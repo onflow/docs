@@ -12,9 +12,9 @@ We're builders supporting builders. Get everything you need to succeed on Flow -
 
 ## Your Journey: From Idea to Success
 
-Follow this roadmap to build and scale your Flow project. Each milestone unlocks new support and opportunities.
+Follow this roadmap to build and scale your Flow project. Each stage unlocks new support and opportunities.
 
-### Milestone 1: Idea to MVP
+### Stage 1: Idea to MVP
 **Goal:** Turn your concept into working code
 
 <div style={{display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '2rem', marginBottom: '2rem'}}>
@@ -41,7 +41,7 @@ Follow this roadmap to build and scale your Flow project. Each milestone unlocks
 
 ---
 
-### Milestone 2: MVP to Live Product
+### Stage 2: MVP to Live Product
 **Goal:** Get real users on mainnet
 
 <div style={{display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '2rem', marginBottom: '2rem'}}>
@@ -59,8 +59,8 @@ Follow this roadmap to build and scale your Flow project. Each milestone unlocks
 <div>
 <h4>Support tools:</h4>
 <ul>
-  <li><strong><a href="mailto:builder@flow.com">Contact us</a></strong> at builder@flow.com for direct support and priority assistance</li>
-  <li><strong><a href="/ecosystem/developer-support-hub/grants">Apply for Grants</a></strong> to access community-voted funding programs</li>
+  <li><strong><a href="mailto:builder@flow.com">Contact us</a></strong> at builders@flow.com for direct support and priority assistance</li>
+  <li><strong><a href="/ecosystem/developer-support-hub/grants">Apply for Grants</a></strong> with GrantDAO to access community-voted funding</li>
   <li><strong><a href="https://discord.gg/flow">Join Discord</a></strong> to showcase your project and get community feedback</li>
 </ul>
 </div>
@@ -69,7 +69,7 @@ Follow this roadmap to build and scale your Flow project. Each milestone unlocks
 
 ---
 
-### Milestone 3: Live Product to Revenue
+### Stage 3: Live Product to Revenue
 **Goal:** Generate sustainable revenue
 
 <div style={{display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '2rem', marginBottom: '2rem'}}>
@@ -88,7 +88,7 @@ Follow this roadmap to build and scale your Flow project. Each milestone unlocks
 <h4>Support tools:</h4>
 <ul>
   <li><strong><a href="/ecosystem/developer-support-hub/vcs-and-funds">Explore VC Network</a></strong> to get warm introductions to trusted investors</li>
-  <li><strong><a href="/ecosystem/developer-support-hub/grants">Apply for Grants</a></strong> with milestone based ecosystem grants</li>
+  <li><strong><a href="/ecosystem/developer-support-hub/grants">Apply for Grants</a></strong> with stage-based ecosystem grants</li>
   <li><strong><a href="mailto:bd@flow.com">Contact us</a></strong> at bd@flow.com for strategic partnerships and leadership advisory</li>
 </ul>
 </div>
