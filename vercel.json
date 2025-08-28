@@ -3,6 +3,11 @@
   "trailingSlash": false,
   "redirects": [
     {
+      "source": "/s/deploy-project-contracts",
+      "destination": "/build/tools/flow-cli/deployment/deploy-project-contracts",
+      "permanent": false
+    },
+    {
       "source": "/:path*(.mdx?$)",
       "destination": "/:path",
       "permanent": true
