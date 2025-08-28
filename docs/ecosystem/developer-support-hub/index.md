@@ -59,7 +59,7 @@ Follow this roadmap to build and scale your Flow project. Each stage unlocks new
 <div>
 <h4>Support tools:</h4>
 <ul>
-  <li><strong><a href="mailto:builder@flow.com">Contact us</a></strong> at builders@flow.com for direct support and priority assistance</li>
+  <li><strong><a href="mailto:builder@flow.com">Contact us</a></strong> at builder@flow.com for direct technical and marketing support</li>
   <li><strong><a href="/ecosystem/developer-support-hub/grants">Apply for Grants</a></strong> with GrantDAO to access community-voted funding</li>
   <li><strong><a href="https://discord.gg/flow">Join Discord</a></strong> to showcase your project and get community feedback</li>
 </ul>
@@ -80,7 +80,6 @@ Follow this roadmap to build and scale your Flow project. Each stage unlocks new
   <li>Acquire paying users/customers</li>
   <li>Track key business metrics</li>
   <li>Build revenue-generating features</li>
-  <li>Apply for growth funding</li>
 </ul>
 </div>
 
@@ -88,8 +87,7 @@ Follow this roadmap to build and scale your Flow project. Each stage unlocks new
 <h4>Support tools:</h4>
 <ul>
   <li><strong><a href="/ecosystem/developer-support-hub/vcs-and-funds">Explore VC Network</a></strong> to get warm introductions to trusted investors</li>
-  <li><strong><a href="/ecosystem/developer-support-hub/grants">Apply for Grants</a></strong> with stage-based ecosystem grants</li>
-  <li><strong><a href="mailto:bd@flow.com">Contact us</a></strong> at bd@flow.com for strategic partnerships and leadership advisory</li>
+  <li><strong><a href="mailto:bd@flow.com">Contact us</a></strong> at bd@flow.com for strategic partnerships</li>
 </ul>
 </div>
 
