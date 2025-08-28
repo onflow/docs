@@ -32,7 +32,7 @@ Follow this roadmap to build and scale your Flow project. Each milestone unlocks
 <h4>Support tools:</h4>
 <ul>
   <li><strong><a href="https://calendar.google.com/calendar/u/0/embed?src=c_47978f5cd9da636cadc6b8473102b5092c1a865dd010558393ecb7f9fd0c9ad0@group.calendar.google.com">Join Office Hours</a></strong> to get technical mentorship from core engineers</li>
-  <li><strong><a href="builder-perks">Get Builder Perks</a></strong> to access credits and tools that accelerate development</li>
+  <li><strong><a href="/ecosystem/developer-support-hub/builder-perks">Get Builder Perks</a></strong> to access credits and tools that accelerate development</li>
   <li><strong><a href="https://discord.gg/flow">Join Discord</a></strong> to connect with the community for support and feedback</li>
 </ul>
 </div>
@@ -60,7 +60,7 @@ Follow this roadmap to build and scale your Flow project. Each milestone unlocks
 <h4>Support tools:</h4>
 <ul>
   <li><strong><a href="mailto:builder@flow.com">Contact our dev rel team</a></strong> at builder@flow.com for direct support and priority assistance</li>
-  <li><strong><a href="grants">Apply for Grants with GrantDAO</a></strong> to access community-voted funding programs</li>
+  <li><strong><a href="/ecosystem/developer-support-hub/grants">Apply for Grants with GrantDAO</a></strong> to access community-voted funding programs</li>
   <li><strong><a href="https://discord.gg/flow">Join Discord</a></strong> to showcase your project and get community feedback</li>
 </ul>
 </div>
@@ -87,8 +87,8 @@ Follow this roadmap to build and scale your Flow project. Each milestone unlocks
 <div>
 <h4>Support tools:</h4>
 <ul>
-  <li><strong><a href="vcs-and-funds">Explore VC Network</a></strong> to get warm introductions to trusted investors</li>
-  <li><strong><a href="grants">Apply for Grants</a></strong> with milestone based ecosystem grants</li>
+  <li><strong><a href="/ecosystem/developer-support-hub/vcs-and-funds">Explore VC Network</a></strong> to get warm introductions to trusted investors</li>
+  <li><strong><a href="/ecosystem/developer-support-hub/grants">Apply for Grants</a></strong> with milestone based ecosystem grants</li>
   <li><strong><a href="mailto:bd@flow.com">Contact our Business Development team</a></strong> at bd@flow.com for strategic partnerships and leadership advisory</li>
 </ul>
 </div>
