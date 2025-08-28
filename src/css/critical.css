@@ -1,13 +1,6 @@
 /* Critical CSS - Inline this in the HTML head to avoid render blocking */
 
-/* Essential font loading */
-@font-face {
-  font-family: "Inter";
-  src: local("Inter"),
-    url(/fonts/inter/Inter-Regular.ttf) format("truetype");
-  font-weight: 400;
-  font-display: swap;
-}
+/* Fonts are preloaded via plugin - no need to load here */
 
 /* Critical layout styles */
 body {
