@@ -1,5 +1,5 @@
 export { default as FeaturedArticleSlider } from './FeaturedArticleSlider';
-export { LandingHeaderHome } from './HomeNav';
+export { HomeNav } from './HomeNav';
 export { LinkCard2Column } from './LinkCard2Column';
 export { default as NetworkCard } from './NetworkCard';
 export { default as NetworkDetailsCard } from './NetworkDetailsCard';
