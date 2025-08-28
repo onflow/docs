@@ -100,6 +100,8 @@ Follow the roadmap above based on your project stage to get the right support at
 
 The best support is a thriving project. Start building today and tap into our ecosystem when you need it.
 
-**[Start with Cadence in 60 seconds →](https://run.dnz.dev/)**
+**[Start with Cadence](/build/cadence/getting-started)**
+
+**[Start with Solidity (EVM)](build/evm/using)**
 
 :::
