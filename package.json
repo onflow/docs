@@ -60,6 +60,7 @@
     "swr": "^2.3.0",
     "tailwind-scrollbar-hide": "1.1.7",
     "tailwindcss": "^3.3.5",
+    "ttf2woff2": "^8.0.0",
     "unist-util-visit": "^5.0.0",
     "webpack-merge": "5.8.0",
     "zod": "^3.24.1"
