@@ -115,7 +115,7 @@ Follow this roadmap to build and scale your Flow project. Each milestone unlocks
 <h4>Support tools:</h4>
 <ul>
   <li><strong><a href="mailto:builder@flow.com">Contact our dev rel team</a></strong> at builder@flow.com for direct support and priority assistance</li>
-  <li><strong><a href="grants">Apply for Grants</a></strong> to access GrantDAO and ecosystem funding programs</li>
+  <li><strong><a href="grants">Apply for Grants with GrantDAO</a></strong> to access community-voted funding programs</li>
   <li><strong><a href="https://discord.gg/flow">Join Discord</a></strong> to showcase your project and get community feedback</li>
 </ul>
 </div>
@@ -143,7 +143,7 @@ Follow this roadmap to build and scale your Flow project. Each milestone unlocks
 <h4>Support tools:</h4>
 <ul>
   <li><strong><a href="vcs-and-funds">Explore VC Network</a></strong> to get warm introductions to trusted investors</li>
-  <li><strong><a href="grants">Apply for Major Grants</a></strong> to access ecosystem milestone funding programs</li>
+  <li><strong><a href="grants">Apply for Grants</a></strong> with milestone based ecosystem grants</li>
   <li><strong><a href="https://calendar.google.com/calendar/u/0/embed?src=c_47978f5cd9da636cadc6b8473102b5092c1a865dd010558393ecb7f9fd0c9ad0@group.calendar.google.com">Book Office Hours</a></strong> for strategic partnerships and leadership advisory</li>
 </ul>
 </div>
