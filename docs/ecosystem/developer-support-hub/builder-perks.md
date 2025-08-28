@@ -1,7 +1,7 @@
 ---
 title: Builder Perks
 description: Exclusive perks and benefits for Flow builders
-sidebar_position: 8
+sidebar_position: 1
 ---
 
 import Modal from "@site/src/ui/design-system/src/lib/Components/Modal";

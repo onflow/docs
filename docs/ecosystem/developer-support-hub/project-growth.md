@@ -1,7 +1,9 @@
 ---
-sidebar_position: 10
 title: Project Growth
 description: Get advice, support, and resources for each stage of development for your project.
+sidebar_position: 4
+sidebar_custom_props:
+  icon: 📈
 ---
 
 At each stage of your project, you can get advice, support, and resources from the Flow ecosystem. Here's a breakdown of _what you are doing_ and _what support we offer_ at each stage:

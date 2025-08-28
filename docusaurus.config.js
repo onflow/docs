@@ -617,6 +617,22 @@ const config = {
             to: '/build/cadence/smart-contracts/overview',
             from: '/build/cadence/basics/smart-contracts',
           },
+          {
+            to: '/ecosystem/developer-support-hub/builder-perks',
+            from: '/ecosystem/builder-perks',
+          },
+          {
+            to: '/ecosystem/developer-support-hub/grants',
+            from: '/ecosystem/grants',
+          },
+          {
+            to: '/ecosystem/developer-support-hub/vcs-and-funds',
+            from: '/ecosystem/vcs-and-funds',
+          },
+          {
+            to: '/ecosystem/developer-support-hub/project-growth',
+            from: '/ecosystem/project-growth',
+          },
         ],
       },
     ],
