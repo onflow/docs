@@ -6,64 +6,9 @@ sidebar_custom_props:
   icon: 🚀
 ---
 
-import ActionCard from "@site/src/components/ActionCard";
-
 # Developer Support Hub
 
 We're builders supporting builders. Get everything you need to succeed on Flow - from launch perks to funding connections.
-
-<div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mt-8">
-
-<ActionCard
-  heading="Weekly Office Hours"
-  description="Direct access to Flow core engineers. Technical support, architecture guidance, and business mentorship."
-  icon="dev-office-hours"
-  iconColor="white"
-  cardColor="black"
-  href="https://calendar.google.com/calendar/u/0/embed?src=c_47978f5cd9da636cadc6b8473102b5092c1a865dd010558393ecb7f9fd0c9ad0@group.calendar.google.com"
-  target="_blank"
-/>
-
-<ActionCard
-  heading="Community Discord"
-  description="24/7 peer support. Active channels for dev questions, Cadence, EVM, and project showcases."
-  icon="flow-client-library"
-  iconColor="white"
-  cardColor="black"
-  href="https://discord.gg/flow"
-  target="_blank"
-/>
-
-<ActionCard
-  heading="Builder Perks"
-  description="Credits and tools from ecosystem partners. Builder Gas Subsidy, Alchemy credits, QuickNode $100, and more."
-  icon="builder-credits"
-  iconColor="white"
-  cardColor="black"
-  href="builder-perks"
-/>
-
-<ActionCard
-  heading="Grants & Funding"
-  description="GrantDAO Program and Ecosystem Grants with 50k+ FLOW per round. Multiple opportunities for different stages."
-  icon="grants"
-  iconColor="white"
-  cardColor="black"
-  href="grants"
-/>
-
-<ActionCard
-  heading="VC Introductions"
-  description="Warm introductions to trusted investors. 500% higher success rate with Flow ecosystem expertise."
-  icon="vcs-&-funds"
-  iconColor="white"
-  cardColor="black"
-  href="vcs-and-funds"
-/>
-
-</div>
-
----
 
 ## Your Journey: From Idea to Success
 
