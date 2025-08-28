@@ -114,7 +114,7 @@ Follow this roadmap to build and scale your Flow project. Each milestone unlocks
 <div>
 <h4>Support tools:</h4>
 <ul>
-  <li><strong><a href="https://calendar.google.com/calendar/u/0/embed?src=c_47978f5cd9da636cadc6b8473102b5092c1a865dd010558393ecb7f9fd0c9ad0@group.calendar.google.com">Book Office Hours</a></strong> for direct DevRel Lead contact and priority support</li>
+  <li><strong><a href="mailto:builder@flow.com">Contact our dev rel team</a></strong> at builder@flow.com for direct support and priority assistance</li>
   <li><strong><a href="grants">Apply for Grants</a></strong> to access GrantDAO and ecosystem funding programs</li>
   <li><strong><a href="https://discord.gg/flow">Join Discord</a></strong> to showcase your project and get community feedback</li>
 </ul>
@@ -136,32 +136,6 @@ Follow this roadmap to build and scale your Flow project. Each milestone unlocks
   <li>Track key business metrics</li>
   <li>Build revenue-generating features</li>
   <li>Apply for growth funding</li>
-</ul>
-</div>
-
-<div>
-<h4>Support tools:</h4>
-<ul>
-  <li><strong><a href="https://calendar.google.com/calendar/u/0/embed?src=c_47978f5cd9da636cadc6b8473102b5092c1a865dd010558393ecb7f9fd0c9ad0@group.calendar.google.com">Book Office Hours</a></strong> to get BizDev introductions and dedicated support channel</li>
-</ul>
-</div>
-
-</div>
-
----
-
-### Milestone 4: Product-Market Fit
-**Goal:** Scale with proven demand
-
-<div style={{display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '2rem', marginBottom: '2rem'}}>
-
-<div>
-<h4>Your mission:</h4>
-<ul>
-  <li>Achieve consistent user growth</li>
-  <li>Optimize core product experience</li>
-  <li>Prepare for major funding rounds</li>
-  <li>Expand your team</li>
 </ul>
 </div>
 
