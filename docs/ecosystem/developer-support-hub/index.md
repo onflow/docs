@@ -70,7 +70,7 @@ We're builders supporting builders. Get everything you need to succeed on Flow -
 Follow this roadmap to build and scale your Flow project. Each milestone unlocks new support and opportunities.
 
 ### Milestone 1: Idea to MVP
-Turn your concept into working code
+**Goal:** Turn your concept into working code
 
 <div style={{display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '2rem', marginBottom: '2rem'}}>
 
@@ -84,11 +84,11 @@ Turn your concept into working code
 </div>
 
 <div>
-<h4>Flow support:</h4>
+<h4>Support tools:</h4>
 <ul>
-  <li><strong><a href="https://calendar.google.com/calendar/u/0/embed?src=c_47978f5cd9da636cadc6b8473102b5092c1a865dd010558393ecb7f9fd0c9ad0@group.calendar.google.com">Join Office Hours →</a></strong> Technical mentorship from core engineers</li>
-  <li><strong><a href="builder-perks">Get Builder Perks →</a></strong> Credits and tools to accelerate development</li>
-  <li><strong><a href="https://discord.gg/flow">Join Discord →</a></strong> Connect with the community for support and feedback</li>
+  <li><strong><a href="https://calendar.google.com/calendar/u/0/embed?src=c_47978f5cd9da636cadc6b8473102b5092c1a865dd010558393ecb7f9fd0c9ad0@group.calendar.google.com">Join Office Hours</a></strong> to get technical mentorship from core engineers</li>
+  <li><strong><a href="builder-perks">Get Builder Perks</a></strong> to access credits and tools that accelerate development</li>
+  <li><strong><a href="https://discord.gg/flow">Join Discord</a></strong> to connect with the community for support and feedback</li>
 </ul>
 </div>
 
@@ -97,7 +97,7 @@ Turn your concept into working code
 ---
 
 ### Milestone 2: MVP to Live Product
-Get real users on mainnet
+**Goal:** Get real users on mainnet
 
 <div style={{display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '2rem', marginBottom: '2rem'}}>
 
@@ -112,10 +112,10 @@ Get real users on mainnet
 </div>
 
 <div>
-<h4>Flow support:</h4>
+<h4>Support tools:</h4>
 <ul>
-  <li><strong><a href="https://calendar.google.com/calendar/u/0/embed?src=c_47978f5cd9da636cadc6b8473102b5092c1a865dd010558393ecb7f9fd0c9ad0@group.calendar.google.com">Book Office Hours →</a></strong> Direct DevRel Lead contact and priority support</li>
-  <li><strong><a href="https://discord.gg/flow">Join Discord →</a></strong> Showcase your project and get community feedback</li>
+  <li><strong><a href="https://calendar.google.com/calendar/u/0/embed?src=c_47978f5cd9da636cadc6b8473102b5092c1a865dd010558393ecb7f9fd0c9ad0@group.calendar.google.com">Book Office Hours</a></strong> for direct DevRel Lead contact and priority support</li>
+  <li><strong><a href="https://discord.gg/flow">Join Discord</a></strong> to showcase your project and get community feedback</li>
 </ul>
 </div>
 
@@ -124,7 +124,7 @@ Get real users on mainnet
 ---
 
 ### Milestone 3: Live Product to Revenue
-Generate sustainable revenue
+**Goal:** Generate sustainable revenue
 
 <div style={{display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '2rem', marginBottom: '2rem'}}>
 
@@ -139,10 +139,10 @@ Generate sustainable revenue
 </div>
 
 <div>
-<h4>Flow support:</h4>
+<h4>Support tools:</h4>
 <ul>
-  <li><strong><a href="grants">Apply for Grants →</a></strong> Access GrantDAO and ecosystem funding programs</li>
-  <li><strong><a href="https://calendar.google.com/calendar/u/0/embed?src=c_47978f5cd9da636cadc6b8473102b5092c1a865dd010558393ecb7f9fd0c9ad0@group.calendar.google.com">Book Office Hours →</a></strong> Get BizDev introductions and dedicated support channel</li>
+  <li><strong><a href="grants">Apply for Grants</a></strong> to access GrantDAO and ecosystem funding programs</li>
+  <li><strong><a href="https://calendar.google.com/calendar/u/0/embed?src=c_47978f5cd9da636cadc6b8473102b5092c1a865dd010558393ecb7f9fd0c9ad0@group.calendar.google.com">Book Office Hours</a></strong> to get BizDev introductions and dedicated support channel</li>
 </ul>
 </div>
 
@@ -151,7 +151,7 @@ Generate sustainable revenue
 ---
 
 ### Milestone 4: Product-Market Fit
-Scale with proven demand
+**Goal:** Scale with proven demand
 
 <div style={{display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '2rem', marginBottom: '2rem'}}>
 
@@ -166,11 +166,11 @@ Scale with proven demand
 </div>
 
 <div>
-<h4>Flow support:</h4>
+<h4>Support tools:</h4>
 <ul>
-  <li><strong><a href="vcs-and-funds">Explore VC Network →</a></strong> Get warm introductions to trusted investors</li>
-  <li><strong><a href="grants">Apply for Major Grants →</a></strong> Access ecosystem milestone funding programs</li>
-  <li><strong><a href="https://calendar.google.com/calendar/u/0/embed?src=c_47978f5cd9da636cadc6b8473102b5092c1a865dd010558393ecb7f9fd0c9ad0@group.calendar.google.com">Book Office Hours →</a></strong> Strategic partnerships and leadership advisory</li>
+  <li><strong><a href="vcs-and-funds">Explore VC Network</a></strong> to get warm introductions to trusted investors</li>
+  <li><strong><a href="grants">Apply for Major Grants</a></strong> to access ecosystem milestone funding programs</li>
+  <li><strong><a href="https://calendar.google.com/calendar/u/0/embed?src=c_47978f5cd9da636cadc6b8473102b5092c1a865dd010558393ecb7f9fd0c9ad0@group.calendar.google.com">Book Office Hours</a></strong> for strategic partnerships and leadership advisory</li>
 </ul>
 </div>
 
