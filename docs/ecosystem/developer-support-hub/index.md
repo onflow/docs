@@ -65,67 +65,74 @@ We're builders supporting builders. Get everything you need to succeed on Flow -
 
 ---
 
-## Project Growth & Development Stages
+## Your Journey: From Idea to Success
 
-At each stage of your project, you can get advice, support, and resources from the Flow ecosystem. Here's a breakdown of _what you are doing_ and _what support we offer_ at each stage:
+Follow this roadmap to build and scale your Flow project. Each milestone unlocks new support and opportunities.
 
-### Product Idea
+### 🚀 Milestone 1: Idea to MVP
+**Goal:** Turn your concept into working code
 
-You've got an **idea** for an app, game, or project that you want to build on Flow.
+**Your mission:**
+- Create pitch deck or design doc
+- Build your first prototype
+- Ship a demo or hackathon project
 
-**What you are doing:**
-- Developing the idea in a written format, such as a pitch deck, whitepaper, design doc, or business plan
-- Writing software
-- Joining a hackathon or buildathon
+**Flow support unlocked:**
+- ✅ Technical mentorship from core engineers
+- ✅ Product strategy guidance  
+- ✅ Launch marketing support
+- ✅ DevRel partnership
 
-**What support we offer:**
-- Technical support
-- Product support
-- Marketing support for your launch
-- DevRel
+---
 
-### MVP/Demo/Hackathon Project Complete
+### 🎯 Milestone 2: MVP to Live Product
+**Goal:** Get real users on mainnet
 
-You've got something that works in a place others can use it and experience key features of your product.
+**Your mission:**
+- Deploy to Flow mainnet
+- Integrate with ecosystem partners
+- Gather user feedback and iterate
+- Build core features users love
 
-**What you are doing:**
-- Writing software
-- Integrating with service providers
-- Getting user feedback and improving your product
+**Flow support unlocked:**
+- ✅ Direct DevRel Lead contact
+- ✅ Flow Foundation team feedback
+- ✅ Priority technical support
+- ✅ Community showcase opportunities
 
-**What support we offer:**
-- Direct contact with Flow Foundation through a DevRel Lead
-- Feedback and guidance from the Flow Foundation team
+---
 
-### Live Product on Mainnet
+### 📈 Milestone 3: Live Product to Revenue
+**Goal:** Generate sustainable revenue
 
-Real people are using your app regularly and doing the types of things that you are or will eventually generate revenue from (even if it's still a small number of users).
+**Your mission:**
+- Acquire paying users/customers
+- Track key business metrics
+- Build revenue-generating features
+- Apply for growth funding
 
-**What you are doing:**
-- Acquiring users
-- Tracking metrics
-- Improving your product
-- Raising funds
-- Micro grants
+**Flow support unlocked:**
+- ✅ BizDev introductions and partnerships
+- ✅ Dedicated communication channel
+- ✅ Ecosystem marketing support
+- ✅ Micro-grant eligibility
 
-**What support we offer:**
-- BizDev Support (intros, etc)
-- Dedicated slack or telegram channel
-- DevRel
+---
 
-### Product Market Fit
+### 🏆 Milestone 4: Product-Market Fit
+**Goal:** Scale with proven demand
 
-You've got an app and are meeting the needs of regular customers. Core features are implemented, edge cases are handled, and most of your asterisks are resolved.
+**Your mission:**
+- Achieve consistent user growth
+- Optimize core product experience
+- Prepare for major funding rounds
+- Expand your team
 
-**What you are doing:**
-- Acquiring users
-- Tracking metrics
-- Improving your product
-
-**What support we offer:**
-- Fundraising support (intros to investor network)
-- Grants tied to bigger ecosystem milestones
-- DevRel
+**Flow support unlocked:**
+- ✅ Investor network introductions
+- ✅ Ecosystem milestone grants
+- ✅ Strategic partnership opportunities
+- ✅ Leadership advisory access
 
 ---
 
@@ -133,7 +140,7 @@ You've got an app and are meeting the needs of regular customers. Core features 
 
 **New to Flow?** Start with [Builder Perks](builder-perks) to get credits and tools.
 
-**Have a project idea?** See the [Project Growth stages above](#project-growth--development-stages) for your development journey.
+**Have a project idea?** Follow the [roadmap above](#your-journey-from-idea-to-success) to unlock support at each milestone.
 
 **Need funding?** Apply for [Grants](grants) or explore [VC Introductions](vcs-and-funds).
 
