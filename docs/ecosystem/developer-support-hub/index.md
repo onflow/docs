@@ -33,7 +33,7 @@ Follow this roadmap to build and scale your Flow project. Each stage unlocks new
 <ul>
   <li><strong><a href="https://calendar.google.com/calendar/u/0/embed?src=c_47978f5cd9da636cadc6b8473102b5092c1a865dd010558393ecb7f9fd0c9ad0@group.calendar.google.com">Join Office Hours</a></strong> and <strong><a href="https://discord.gg/flow">Discord</a></strong> to get technical mentorship from core engineers and community support</li>
   <li><strong><a href="/ecosystem/developer-support-hub/builder-perks">Get Builder Perks</a></strong> to access credits and tools that accelerate development</li>
-  <li><strong><a href="https://flow.com/events">Build with us at an event</a></strong> to connect in person and participate in hackathons and developer meetups</li>
+  <li><strong><a href="https://flow.com/events">Build with us</a></strong> to connect in person and participate in hackathons and developer meetups</li>
 </ul>
 </div>
 
