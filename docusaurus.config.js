@@ -630,7 +630,7 @@ const config = {
             from: '/ecosystem/vcs-and-funds',
           },
           {
-            to: '/ecosystem/developer-support-hub/project-growth',
+            to: '/ecosystem/developer-support-hub#project-growth--development-stages',
             from: '/ecosystem/project-growth',
           },
         ],
