@@ -69,7 +69,7 @@ We're builders supporting builders. Get everything you need to succeed on Flow -
 
 Follow this roadmap to build and scale your Flow project. Each milestone unlocks new support and opportunities.
 
-### 🚀 Milestone 1: Idea to MVP
+### Milestone 1: Idea to MVP
 **Goal:** Turn your concept into working code
 
 **Your mission:**
@@ -84,7 +84,7 @@ Follow this roadmap to build and scale your Flow project. Each milestone unlocks
 
 ---
 
-### 🎯 Milestone 2: MVP to Live Product
+### Milestone 2: MVP to Live Product
 **Goal:** Get real users on mainnet
 
 **Your mission:**
@@ -99,7 +99,7 @@ Follow this roadmap to build and scale your Flow project. Each milestone unlocks
 
 ---
 
-### 📈 Milestone 3: Live Product to Revenue
+### Milestone 3: Live Product to Revenue
 **Goal:** Generate sustainable revenue
 
 **Your mission:**
@@ -114,7 +114,7 @@ Follow this roadmap to build and scale your Flow project. Each milestone unlocks
 
 ---
 
-### 🏆 Milestone 4: Product-Market Fit
+### Milestone 4: Product-Market Fit
 **Goal:** Scale with proven demand
 
 **Your mission:**
