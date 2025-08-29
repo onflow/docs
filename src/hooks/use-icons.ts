@@ -1,35 +1,56 @@
 import { useMemo } from 'react';
 
-// Simple static icon paths - reliable and fast
+// Static icon paths - more reliable than dynamic imports
 const getIconPath = (name: string): string | null => {
   switch (name) {
     // BuildGridData icons
-    case 'getting-started': return '/images/icons/getting-started.svg';
-    case 'why-flow': return '/images/icons/why-flow.svg';
-    case 'hello-world': return '/images/icons/hello-world.svg';
-    case 'flow-cadence': return '/images/icons/flow-cadence.svg';
-    case 'evm-on-flow': return '/images/icons/evm-on-flow.svg';
-    case 'random': return '/images/icons/random.svg';
-    case 'batched-evm-transactions': return '/images/icons/batched-evm-transactions.svg';
-    case 'flow-client-library': return '/images/icons/flow-client-library.svg';
-    case 'tools': return '/images/icons/flow-tools.svg';
-    case 'faucet': return '/images/icons/Faucet.svg';
+    case 'getting-started':
+      return '/images/icons/getting-started.svg';
+    case 'why-flow':
+      return '/images/icons/why-flow.svg';
+    case 'hello-world':
+      return '/images/icons/hello-world.svg';
+    case 'flow-cadence':
+      return '/images/icons/flow-cadence.svg';
+    case 'evm-on-flow':
+      return '/images/icons/evm-on-flow.svg';
+    case 'random':
+      return '/images/icons/random.svg';
+    case 'batched-evm-transactions':
+      return '/images/icons/batched-evm-transactions.svg';
+    case 'flow-client-library':
+      return '/images/icons/flow-client-library.svg';
+    case 'tools':
+      return '/images/icons/flow-tools.svg';
+    case 'faucet':
+      return '/images/icons/Faucet.svg';
     
     // GrowGridData icons
-    case 'grow': return '/images/icons/flow-grow.svg';
-    case 'builder-credits': return '/images/icons/builder-credits.svg';
-    case 'dev-office-hours': return '/images/icons/dev-office-hours.svg';
-    case 'grants': return '/images/icons/flow-grants.svg';
-    case 'startup-support': return '/images/icons/startup-support.svg';
-    case 'vcs-&-funds': return '/images/icons/vcs-&-funds.svg';
+    case 'grow':
+      return '/images/icons/flow-grow.svg';
+    case 'builder-credits':
+      return '/images/icons/builder-credits.svg';
+    case 'dev-office-hours':
+      return '/images/icons/dev-office-hours.svg';
+    case 'grants':
+      return '/images/icons/flow-grants.svg';
+    case 'startup-support':
+      return '/images/icons/startup-support.svg';
+    case 'vcs-&-funds':
+      return '/images/icons/vcs-&-funds.svg';
     
     // Other commonly used icons
-    case 'learn': return '/images/icons/flow-learn.svg';
-    case 'gs-hello-world': return '/images/icons/gs-hello-world.svg';
-    case 'cadence': return '/images/icons/cadence-logo-mark-black-1.svg';
-    case 'solidity': return '/images/icons/flow-evm.svg';
+    case 'learn':
+      return '/images/icons/flow-learn.svg';
+    case 'gs-hello-world':
+      return '/images/icons/gs-hello-world.svg';
+    case 'cadence':
+      return '/images/icons/cadence-logo-mark-black-1.svg';
+    case 'solidity':
+      return '/images/icons/flow-evm.svg';
     
-    default: return null;
+    default:
+      return null;
   }
 };
 

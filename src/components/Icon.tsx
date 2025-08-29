@@ -38,12 +38,16 @@ export const Icon: React.FC<IconProps> = ({
 }) => {
   const icons = useIcons();
 
-  if (!name) { return <LocationIcon />; }
+  if (!name) {
+    return <LocationIcon />;
+  }
 
   // Get icon path
   const iconPath = icons.loadIcon(name);
 
-  if (!iconPath) { return <LocationIcon />; }
+  if (!iconPath) {
+    return <LocationIcon />;
+  }
 
   // Always render as an image since we're using static paths
   return (
