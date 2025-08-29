@@ -1,4 +1,4 @@
-/* Critical CSS - Inline this in the HTML head to avoid render blocking */
+/* Critical CSS - Loaded as a separate file via docusaurus.config.js */
 
 /* Fonts are preloaded via plugin - no need to load here */
 
