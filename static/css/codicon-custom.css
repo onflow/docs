@@ -8,19 +8,6 @@
   justify-content: center;
 }
 
-/* Debug: Make icons more visible */
-.codicon::before {
-  display: block !important;
-  visibility: visible !important;
-  opacity: 1 !important;
-}
-
-/* Test icon to see if font is loading */
-.codicon-test::before {
-  content: "⚡" !important;
-  font-family: inherit !important;
-}
-
 /* Ensure icon content is displayed */
 .codicon[class*='codicon-']::before {
   content: attr(data-codicon) !important;
