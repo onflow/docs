@@ -16,7 +16,7 @@ const HeroSection: React.FC = () => {
             Better apps deserve better blockchains
           </h1>
           <p className="text-base md:text-lg text-gray-700 dark:text-gray-200 mb-4 max-w-xl">
-            <strong>Cadence</strong> for whats next. <strong>Solidity</strong> for what you've got. On Flow, both run natively with no tricks and no rewrites.  <strong>Build the next killer app.</strong>.
+            <strong>Cadence</strong> for whats next. <strong>Solidity</strong> for what you've got. On Flow, both run natively with no tricks and no rewrites.  <strong>Build the next killer app</strong>.
           </p>
           <div className="flex flex-col sm:flex-row gap-3 mb-4">
             <a
