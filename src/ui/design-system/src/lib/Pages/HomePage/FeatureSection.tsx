@@ -3,6 +3,7 @@ import Icon from '../../../../../../components/Icon';
 import Tooltip from './Tooltip';
 import { ColorOption } from '@site/src/constants/colors';
 import { event } from '@site/src/utils/gtags.client';
+import { GA_EVENTS, GA_CATEGORIES, GA_ACTIONS } from '@site/src/constants/ga-events';
 
 interface CardData {
   heading: string;
@@ -52,8 +53,8 @@ const FeatureSection: React.FC<FeatureSectionProps> = ({ sections }) => {
                     className="flex items-center gap-3 text-base text-gray-900 dark:text-gray-100 no-underline hover:no-underline transition-colors"
                     onClick={(e) => {
                       event({
-                        action: 'action_card_click',
-                        category: 'action_card',
+                        action: GA_EVENTS.ACTION_CARD_CLICK,
+                        category: GA_CATEGORIES.ACTION_CARD,
                         label: card.heading,
                         location: true,
                       });

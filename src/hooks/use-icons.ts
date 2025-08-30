@@ -1,86 +1,153 @@
 import { useMemo } from 'react';
+import { IconName } from '@site/src/types/icons';
 
-// Direct imports
-import AccessIncredibleIPIcon from '@site/static/images/icons/access-incredible-ip.svg';
-import AccountAbstractionIcon from '@site/static/images/icons/account-abstraction.svg';
-import BatchedEVMTransactionsIcon from '@site/static/images/icons/batched-evm-transactions.svg';
-import BuilderCreditsIcon from '@site/static/images/icons/builder-credits.svg';
-import CadenceLogoIcon from '@site/static/images/icons/cadence-logo-mark-black-1.svg';
-import CreateNFTIcon from '@site/static/images/icons/create-an-nft.svg';
-import CrossVMBridgeIcon from '@site/static/images/icons/cross-vm-bridge.svg';
-import DevOfficeHoursIcon from '@site/static/images/icons/dev-office-hours.svg';
-import EVMToolsIcon from '@site/static/images/icons/evm-tools.svg';
-import EVMOnFlowIcon from '@site/static/images/icons/evm-on-flow.svg';
-import FlowCLIIcon from '@site/static/images/icons/flow-cli.svg';
-import FlowCadenceIcon from '@site/static/images/icons/flow-cadence.svg';
-import FlowClientLibraryIcon from '@site/static/images/icons/flow-client-library.svg';
-import FlowEVMIcon from '@site/static/images/icons/flow-evm.svg';
-import FlowEmulatorIcon from '@site/static/images/icons/flow-emulator.svg';
-import FlowProtocolIcon from '@site/static/images/icons/flow-protocol.svg';
-import FundIcon from '@site/static/images/icons/flow-fund.svg';
-import GSHelloWorldIcon from '@site/static/images/icons/gs-hello-world.svg';
-import GettingStartedIcon from '@site/static/images/icons/getting-started.svg';
-import GrantsIcon from '@site/static/images/icons/flow-grants.svg';
-import GrowIcon from '@site/static/images/icons/flow-grow.svg';
-import HackathonsIcon from '@site/static/images/icons/flow-hackathons.svg';
-import HelloWorldIcon from '@site/static/images/icons/hello-world.svg';
-import LaunchTokenIcon from '@site/static/images/icons/launch-a-token.svg';
-import LearnIcon from '@site/static/images/icons/flow-learn.svg';
-import OtherClientsIcon from '@site/static/images/icons/other-clients.svg';
-import StartupSupportIcon from '@site/static/images/icons/startup-support.svg';
-import SuperchargeIcon from '@site/static/images/icons/flow-supercharge.svg';
-import ToolsIcon from '@site/static/images/icons/flow-tools.svg';
-import TutorialsIcon from '@site/static/images/icons/flow-tutorials.svg';
-import VCsFundsIcon from '@site/static/images/icons/vcs-&-funds.svg';
-import VRFCadenceIcon from '@site/static/images/icons/vrf---cadence.svg';
-import VRFEVMIcon from '@site/static/images/icons/vrf---evm.svg';
-import WhyFlowIcon from '@site/static/images/icons/why-flow.svg';
-import RandomIcon from '@site/static/images/icons/random.svg';
-import FaucetIcon from '@site/static/images/icons/Faucet.svg';
+// Static icon paths - more reliable than dynamic imports
+const getIconPath = (name: IconName): string | null => {
+  switch (name) {
+    // BuildGridData icons
+    case IconName.GETTING_STARTED:
+      return '/images/icons/getting-started.svg';
+    case IconName.WHY_FLOW:
+      return '/images/icons/why-flow.svg';
+    case IconName.HELLO_WORLD:
+      return '/images/icons/hello-world.svg';
+    case IconName.FLOW_CADENCE:
+      return '/images/icons/flow-cadence.svg';
+    case IconName.EVM_ON_FLOW:
+      return '/images/icons/evm-on-flow.svg';
+    case IconName.RANDOM:
+      return '/images/icons/random.svg';
+    case IconName.BATCHED_EVM_TRANSACTIONS:
+      return '/images/icons/batched-evm-transactions.svg';
+    case IconName.FLOW_CLIENT_LIBRARY:
+      return '/images/icons/flow-client-library.svg';
+    case IconName.TOOLS:
+      return '/images/icons/flow-tools.svg';
+    case IconName.FAUCET:
+      return '/images/icons/Faucet.svg';
+    
+    // GrowGridData icons
+    case IconName.GROW:
+      return '/images/icons/flow-grow.svg';
+    case IconName.BUILDER_CREDITS:
+      return '/images/icons/builder-credits.svg';
+    case IconName.DEV_OFFICE_HOURS:
+      return '/images/icons/dev-office-hours.svg';
+    case IconName.GRANTS:
+      return '/images/icons/flow-grants.svg';
+    case IconName.STARTUP_SUPPORT:
+      return '/images/icons/startup-support.svg';
+    case IconName.VCS_AND_FUNDS:
+      return '/images/icons/vcs-&-funds.svg';
+    
+    // Other commonly used icons
+    case IconName.LEARN:
+      return '/images/icons/flow-learn.svg';
+    case IconName.GS_HELLO_WORLD:
+      return '/images/icons/gs-hello-world.svg';
+    case IconName.CADENCE:
+      return '/images/icons/cadence-logo-mark-black-1.svg';
+    case IconName.SOLIDITY:
+      return '/images/icons/flow-evm.svg';
+    
+    // Feature icons
+    case IconName.FEATURE_WHY_FLOW_ICON:
+      return '/images/icons/feature-why-flow-icon.svg';
+    case IconName.FEATURE_WAND_ICON:
+      return '/images/icons/feature-wand-icon.svg';
+    case IconName.FEATURE_STACKS_ICON:
+      return '/images/icons/feature-stacks-icon.svg';
+    case IconName.FEATURE_CODE_SCRIPTS_ICON:
+      return '/images/icons/feature-code-scripts-icon.svg';
+    case IconName.FEATURE_EVM_ICON:
+      return '/images/icons/feature-evm-icon.svg';
+    
+    // Other icons
+    case IconName.ROADMAP:
+      return '/images/icons/roadmap.svg';
+    case IconName.CADENCE_COURSE:
+      return '/images/icons/cadence-course.svg';
+    case IconName.START_HERE:
+      return '/images/icons/start-here.svg';
+    case IconName.PATH_QUEST:
+      return '/images/icons/path-quest.svg';
+    case IconName.LANG_REFERENCE:
+      return '/images/icons/lang-reference.svg';
+    case IconName.FLOW_ASSISTANT_GPT:
+      return '/images/icons/flow-assistant-gpt.svg';
+    case IconName.DEVELOPER_CHAT:
+      return '/images/icons/developer-chat.svg';
+    case IconName.NETWORK_UPGRADE:
+      return '/images/icons/network-upgrade.svg';
+    case IconName.TUTORIALS:
+      return '/images/icons/tutorials.svg';
+    case IconName.CROSS_VM_BRIDGE:
+      return '/images/icons/cross-vm-bridge.svg';
+    case IconName.FORUM:
+      return '/images/icons/forum.svg';
+    
+    // Social media icons
+    case IconName.DISCORD:
+      return '/images/icons/discord.svg';
+    case IconName.X_COM:
+      return '/images/icons/x.com.svg';
+    case IconName.GITHUB:
+      return '/images/icons/github.svg';
+    
+    default:
+      return null;
+  }
+};
+
+// Cache for loaded icons
+const iconCache = new Map<string, any>();
 
 export function useIcons() {
-  return useMemo(() => ({
-    'access-incredible-ip': AccessIncredibleIPIcon,
-    'account-abstraction': AccountAbstractionIcon,
-    'batched-evm-transactions': BatchedEVMTransactionsIcon,
-    'builder-credits': BuilderCreditsIcon,
-    'cadence-logo-mark-black-1': CadenceLogoIcon,
-    'create-an-nft': CreateNFTIcon,
-    'cross-vm-bridge': CrossVMBridgeIcon,
-    'dev-office-hours': DevOfficeHoursIcon,
-    'evm-tools': EVMToolsIcon,
-    'evm-on-flow': EVMOnFlowIcon,
-    'flow-cli': FlowCLIIcon,
-    'flow-cadence': FlowCadenceIcon,
-    'flow-client-library': FlowClientLibraryIcon,
-    'flow-evm': FlowEVMIcon,
-    'flow-emulator': FlowEmulatorIcon,
-    'flow-protocol': FlowProtocolIcon,
-    'fund': FundIcon,
-    'gs-hello-world': GSHelloWorldIcon,
-    'getting-started': GettingStartedIcon,
-    'grants': GrantsIcon,
-    'grow': GrowIcon,
-    'hackathons': HackathonsIcon,
-    'hello-world': HelloWorldIcon,
-    'launch-a-token': LaunchTokenIcon,
-    'learn': LearnIcon,
-    'other-clients': OtherClientsIcon,
-    'startup-support': StartupSupportIcon,
-    'supercharge': SuperchargeIcon,
-    'tools': ToolsIcon,
-    'tutorials': TutorialsIcon,
-    'vcs-&-funds': VCsFundsIcon,
-    'vrf---cadence': VRFCadenceIcon,
-    'vrf---evm': VRFEVMIcon,
-    'why-flow': WhyFlowIcon,
-    'random': RandomIcon,
-    'faucet': FaucetIcon,
-    'quicknode': '/img/ecosystem/quicknode.svg',
-    'olympix-logo': '/img/ecosystem/olympix-logo.svg',
-    'flow': '/img/ecosystem/flow.svg',
-    'alchemy': '/img/ecosystem/alchemy.svg',
-    'thirdweb': '/img/ecosystem/thirdweb.svg',
-    'uniblock': '/img/ecosystem/uniblock.svg',
-  }), []);
+  return useMemo(() => {
+    const loadIcon = (name: IconName) => {
+      // Check cache first
+      if (iconCache.has(name)) {
+        return iconCache.get(name);
+      }
+
+      // Check if it's a static path
+      if (name === IconName.QUICKNODE || name === IconName.OLYMPIX_LOGO || name === IconName.FLOW || name === IconName.ALCHEMY || name === IconName.THIRDWEB || name === IconName.UNIBLOCK) {
+        return `/img/ecosystem/${name}.svg`;
+      }
+
+      // Get static icon path
+      const iconPath = getIconPath(name);
+      if (iconPath) {
+        iconCache.set(name, iconPath);
+        return iconPath;
+      }
+
+      return null;
+    };
+
+    // Preload commonly used icons
+    const preloadCommonIcons = () => {
+      const commonIcons = [IconName.GETTING_STARTED, IconName.GROW, IconName.TOOLS, IconName.LEARN];
+      commonIcons.forEach(iconName => {
+        if (!iconCache.has(iconName)) {
+          getIconPath(iconName);
+        }
+      });
+    };
+
+    // Start preloading common icons
+    preloadCommonIcons();
+
+    return {
+      loadIcon,
+      // Return cached icons for immediate access
+      getIcon: (name: IconName) => iconCache.get(name) || null,
+      // Preload specific icons
+      preloadIcon: (name: IconName) => {
+        if (!iconCache.has(name)) {
+          getIconPath(name);
+        }
+      },
+    };
+  }, []);
 }

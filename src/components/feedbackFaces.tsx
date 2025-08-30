@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { event } from "@site/src/utils/gtags.client";
+import { GA_EVENTS, GA_CATEGORIES, GA_ACTIONS } from '@site/src/constants/ga-events';
 
 export default function FeedbackFaces() {
     const [clickedFace, setClickedFace] = useState<string | null>(null);
@@ -16,8 +17,8 @@ export default function FeedbackFaces() {
         const label = `${feedbackType}`;
 
         event({
-            action: "feedback_click",
-            category: "feedback",
+            action: GA_EVENTS.FEEDBACK_CLICK,
+            category: GA_CATEGORIES.FEEDBACK,
             label: label,
             location: true,
         });

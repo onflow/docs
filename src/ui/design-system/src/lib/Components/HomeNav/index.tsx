@@ -1,5 +1,6 @@
 import React from 'react';
 import ActionCard from '@site/src/components/ActionCard';
+import { IconName } from '@site/src/types/icons';
 
 const NAVIGATION_CARDS = [
   {
@@ -10,7 +11,7 @@ const NAVIGATION_CARDS = [
     cardColor: 'black' as const,
     href: '#Build',
     variant: 'horizontal' as const,
-    icon: 'getting-started'
+    icon: IconName.GETTING_STARTED
   },
   {
     heading: 'Grow',
@@ -20,7 +21,7 @@ const NAVIGATION_CARDS = [
     cardColor: 'black' as const,
     href: '#Grow',
     variant: 'horizontal' as const,
-    icon: 'grow'
+    icon: IconName.GROW
   },
 ] as const;
 

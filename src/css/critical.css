@@ -1,0 +1,23 @@
+/* Critical CSS - Loaded as a separate file via docusaurus.config.js */
+
+/* Fonts are preloaded via plugin - no need to load here */
+
+/* Critical layout styles */
+body {
+  margin: 0;
+  font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  line-height: 1.6;
+}
+
+/* Essential KaTeX styles */
+.katex {
+  font: normal 1.21em KaTeX_Main, 'Times New Roman', serif;
+  line-height: 1.2;
+  text-indent: 0;
+  text-rendering: auto;
+}
+
+.katex * {
+  -ms-high-contrast-adjust: none !important;
+  border-color: currentColor;
+}

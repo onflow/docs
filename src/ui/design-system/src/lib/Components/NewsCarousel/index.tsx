@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import ActionCard from '@site/src/components/ActionCard';
+import { IconName } from '@site/src/types/icons';
 
 interface CarouselCard {
   heading: string;
@@ -28,7 +29,7 @@ const CAROUSEL_CARDS: CarouselCard[] = [
     cardColor: 'black',
     href: 'https://cadence-lang.org/docs/tutorial/first-steps',
     variant: 'horizontal' as const,
-    icon: 'tutorials'
+    icon: IconName.TUTORIALS
   },
   {
     heading: 'Flow is Live on Axelar',
@@ -37,7 +38,7 @@ const CAROUSEL_CARDS: CarouselCard[] = [
     cardColor: 'black',
     href: 'https://x.com/axelar/status/1882066175175360998',
     variant: 'horizontal' as const,
-    icon: 'cross-vm-bridge'
+    icon: IconName.CROSS_VM_BRIDGE
   },
 ];
 

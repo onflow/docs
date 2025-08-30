@@ -1,21 +1,22 @@
 import React from 'react';
 import { SocialCardItem } from './SocialCardItem';
+import { IconName } from '@site/src/types/icons';
 
 const socialCardData = [
   {
-    icon: 'discord',
+    icon: IconName.DISCORD,
     title: 'Discord',
     subText: 'Join Server',
     url: 'https://discord.gg/flow',
   },
   {
-    icon: 'x.com',
+    icon: IconName.X_COM,
     title: 'X.com',
     subText: 'Follow @flow_blockchain',
     url: 'https://www.x.com/flow_blockchain',
   },
   {
-    icon: 'github',
+    icon: IconName.GITHUB,
     title: 'GitHub',
     subText: 'Connect at @onflow',
     url: 'https://github.com/onflow',

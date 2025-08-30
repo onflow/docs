@@ -7,48 +7,49 @@ import {
   HomepagePillItem,
   type HomepagePillItemsProps,
 } from '../HomepageStartItemCadence/HomepagePillItem';
+import { IconName } from '@site/src/types/icons';
 
 const homepageData: Record<string, HomepageStartItemProps> = {
   'cadence-course': {
     link: 'https://academy.ecdao.org/en/catalog/courses/learn-cadence-beginner',
-    icon: 'cadence-course',
+    icon: IconName.CADENCE_COURSE,
   },
   'beginner-dapp': {
     link: '/build/cadence/getting-started/contract-interaction',
-    icon: 'start-here',
+    icon: IconName.START_HERE,
   },
   'flow-quest': {
     link: 'https://arcade.ecdao.org/',
-    icon: 'path-quest',
+    icon: IconName.PATH_QUEST,
   },
   'lang-reference': {
     link: 'https://cadence-lang.org/',
-    icon: 'lang-reference',
+    icon: IconName.LANG_REFERENCE,
   },
 };
 
 const homepagePillData: Record<string, HomepagePillItemsProps> = {
   'dev-office-hours': {
     link: 'https://github.com/onflow/Flow-Working-Groups#Calendar',
-    icon: 'dev-office-hours',
+    icon: IconName.DEV_OFFICE_HOURS,
     text: 'Working Groups',
     subText: 'Get involved',
   },
   'flow-assistant': {
     link: 'https://chatgpt.com/g/g-a1jOaEj1h-flow-assistant',
-    icon: 'flow-assistant-gpt',
+    icon: IconName.FLOW_ASSISTANT_GPT,
     text: 'Flow Assistant GPT',
     subText: 'Check it out',
   },
   'developer-chat': {
     link: 'https://discord.gg/flow',
-    icon: 'developer-chat',
+    icon: IconName.DEVELOPER_CHAT,
     text: 'Developers Chat',
     subText: 'Chat with devs',
   },
   'network-upgrade': {
     link: 'https://cadence-lang.org/docs/cadence-migration-guide/',
-    icon: 'network-upgrade',
+    icon: IconName.NETWORK_UPGRADE,
     text: 'Network Upgrade',
     subText: 'View latest',
   },

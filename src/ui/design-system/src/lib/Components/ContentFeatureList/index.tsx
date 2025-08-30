@@ -4,38 +4,39 @@ import {
   HomepagePillItem,
   type HomepagePillItemsProps,
 } from '../HomepageStartItem/HomepagePillItem';
+import { IconName } from '@site/src/types/icons';
 
 const ContentFeatures: Record<string, ContentFeatureProps> = {
   'why-flow': {
-    icon: 'feature-why-flow-icon',
+    icon: IconName.FEATURE_WHY_FLOW_ICON,
     image: 'feature-why-flow-image',
     header: 'Why Flow',
     text: "Explore Flow's scalable and high-performance blockchain architecture",
     link: '/build/cadence/flow',
   },
   'smart-accounts': {
-    icon: 'feature-wand-icon',
+    icon: IconName.FEATURE_WAND_ICON,
     image: 'feature-wand-image',
     header: 'Smart Accounts',
     text: 'Benefit from flexible accounts with seamless key management for security and convenience',
     link: 'build/basics/accounts',
   },
   transactions: {
-    icon: 'feature-stacks-icon',
+    icon: IconName.FEATURE_STACKS_ICON,
     image: 'feature-stacks-image',
     header: 'Bundle & Scripted Transactions',
     text: 'Streamline operations using gasless, scripted, and bundled transactions',
     link: '/build/cadence/basics/transactions',
   },
   'code-scripts': {
-    icon: 'feature-code-scripts-icon',
+    icon: IconName.FEATURE_CODE_SCRIPTS_ICON,
     image: 'feature-code-scripts-image',
     header: 'Scripted Queries',
     text: 'Access and interact with onchain data efficiently using powerful scripting',
     link: '/build/cadence/basics/scripts',
   },
   evm: {
-    icon: 'feature-evm-icon',
+    icon: IconName.FEATURE_EVM_ICON,
     image: 'feature-evm-image',
     header: 'EVM Equivalency',
     text: 'Use Solidity contracts on Flow without code changes',
@@ -51,13 +52,13 @@ const homepagePillData: Record<
 > = {
   'dev-office-hours': {
     link: 'https://calendar.google.com/calendar/embed?src=c_47978f5cd9da636cadc6b8473102b5092c1a865dd010558393ecb7f9fd0c9ad0%40group.calendar.google.com',
-    icon: 'dev-office-hours',
+    icon: IconName.DEV_OFFICE_HOURS,
     text: 'Dev Office Hours',
     subText: 'Join weekly calls',
   },
   'flow-assistant': {
     link: '#',
-    icon: 'flow-assistant-gpt',
+    icon: IconName.FLOW_ASSISTANT_GPT,
     text: 'Flow AI Assistant',
     subText: 'Chat with devs',
     onClick: () => {
@@ -90,19 +91,19 @@ const homepagePillData: Record<
   },
   'developer-chat': {
     link: 'https://discord.gg/flow',
-    icon: 'developer-chat',
+    icon: IconName.DEVELOPER_CHAT,
     text: 'Developers Discord',
     subText: 'Chat with devs',
   },
   forum: {
     link: 'https://flow.com/upgrade/crescendo',
-    icon: 'forum',
+    icon: IconName.FORUM,
     text: 'Forum',
     subText: 'Discuss & Learn',
   },
   github: {
     link: 'https://github.com/orgs/onflow/discussions',
-    icon: 'network-upgrade',
+    icon: IconName.NETWORK_UPGRADE,
     text: 'Github Discussions',
     subText: 'Share issues',
   },

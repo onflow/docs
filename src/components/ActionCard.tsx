@@ -2,6 +2,7 @@ import React from 'react';
 import { colors, ColorOption } from '@site/src/constants/colors';
 import { Icon } from './Icon';
 import { event } from '@site/src/utils/gtags.client';
+import { GA_EVENTS, GA_CATEGORIES, GA_ACTIONS } from '@site/src/constants/ga-events';
 
 type LinkInfo =
   | {
@@ -39,8 +40,8 @@ export const ActionCard: React.FC<ActionCardProps> = ({
 
   const handleCardClick = (e: React.MouseEvent<HTMLAnchorElement, MouseEvent>) => {
     event({
-      action: 'action_card_click',
-      category: 'action_card',
+      action: GA_EVENTS.ACTION_CARD_CLICK,
+      category: GA_CATEGORIES.ACTION_CARD,
       label: heading,
       location: true,
     });
