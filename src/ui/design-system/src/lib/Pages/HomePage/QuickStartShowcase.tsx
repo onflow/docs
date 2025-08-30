@@ -9,6 +9,7 @@ initializeIcons();
 import { event } from '@site/src/utils/gtags.client';
 import { useColorMode } from '@docusaurus/theme-common';
 import clsx from 'clsx';
+import { GA_EVENTS, GA_CATEGORIES, GA_ACTIONS } from '@site/src/constants/ga-events';
 
 const ITEMS = [
   'Flow token account balance',
@@ -45,8 +46,8 @@ const QuickStartShowcase: React.FC = () => {
 
     // Track analytics
     event({
-      action: 'action_card_click',
-      category: 'action_card',
+      action: GA_EVENTS.ACTION_CARD_CLICK,
+      category: GA_CATEGORIES.ACTION_CARD,
       label: item,
       location: true,
     });

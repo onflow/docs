@@ -2,6 +2,7 @@ import React from 'react';
 import { growGridData } from './GridData/GrowGridData';
 import Icon from '../../../../../../components/Icon';
 import { event } from '@site/src/utils/gtags.client';
+import { GA_EVENTS, GA_CATEGORIES, GA_ACTIONS } from '@site/src/constants/ga-events';
 
 const GrowSection: React.FC = () => {
   const cards = growGridData.sections[0].cards;
@@ -25,8 +26,8 @@ const GrowSection: React.FC = () => {
                 className="flex flex-col items-start bg-purple-50 dark:bg-purple-950 rounded-xl p-6 shadow hover:shadow-lg transition group h-full border border-purple-100 dark:border-purple-800 hover:border-purple-400 dark:hover:border-purple-400 hover:underline hover:decoration-purple-500 dark:hover:decoration-white"
                 onClick={(e) => {
                   event({
-                    action: 'action_card_click',
-                    category: 'action_card',
+                    action: GA_EVENTS.ACTION_CARD_CLICK,
+                    category: GA_CATEGORIES.ACTION_CARD,
                     label: card.heading,
                     location: true,
                   });
