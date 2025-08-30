@@ -1,5 +1,6 @@
 import React from 'react';
 import { useIcons } from '../hooks/use-icons';
+import { IconName } from '@site/src/types/icons';
 
 const LocationIcon = () => (
   <svg
@@ -24,7 +25,7 @@ const LocationIcon = () => (
 );
 
 interface IconProps {
-  name?: string;
+  name?: IconName;
   className?: string;
   width?: string | number;
   height?: string | number;

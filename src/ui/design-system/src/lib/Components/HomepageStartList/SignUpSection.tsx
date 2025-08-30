@@ -2,10 +2,11 @@ import React, { useState } from 'react';
 import { HomepageStartItem } from '../HomepageStartItem';
 import { Button } from '../Button';
 import { HomepageStartItemIcons } from '../HomepageStartItem/HomepageStartIcons';
+import { IconName } from '@site/src/types/icons';
 
 const roadmapData = {
   link: 'https://flow.com/upgrade/crescendo/cadence-1#roadmap',
-  icon: 'roadmap',
+  icon: IconName.ROADMAP,
 };
 const SUCCESS_MESSAGE = 'Subscription successful!';
 

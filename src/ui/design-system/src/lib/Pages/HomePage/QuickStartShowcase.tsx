@@ -2,6 +2,9 @@ import React, { useState } from 'react';
 import { Icon, initializeIcons } from '@fluentui/react';
 
 // Initialize Fluent UI icons
+// NOTE: We are ONLY using these icons to mock the Flow Runner interface.
+// Use the custom icons in the src/components/Icon.tsx file for all other icons.
+
 initializeIcons();
 import { event } from '@site/src/utils/gtags.client';
 import { useColorMode } from '@docusaurus/theme-common';

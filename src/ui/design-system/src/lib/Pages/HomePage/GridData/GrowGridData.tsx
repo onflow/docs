@@ -1,8 +1,9 @@
 import { ColorOption } from '@site/src/constants/colors';
+import { IconName } from '@site/src/types/icons';
 
 export const growGridData = {
   title: 'Grow',
-  icon: 'grow',
+  icon: IconName.GROW,
   iconColor: 'purple' as ColorOption,
   sections: [
     {
@@ -14,7 +15,7 @@ export const growGridData = {
             "Access thousands of dollars worth of Builder perks for building on Flow!",
           iconColor: 'purple',
           cardColor: 'black',
-          icon: 'builder-credits',
+          icon: IconName.BUILDER_CREDITS,
           variant: 'horizontal',
           href: '/ecosystem/builder-perks',
         },
@@ -24,7 +25,7 @@ export const growGridData = {
             'Join our weekly developer office hours to get direct support from the Flow team and connect with other builders.',
           iconColor: 'purple',
           cardColor: 'black',
-          icon: 'dev-office-hours',
+          icon: IconName.DEV_OFFICE_HOURS,
           variant: 'horizontal',
           href: 'https://calendar.google.com/calendar/u/0/embed?src=c_47978f5cd9da636cadc6b8473102b5092c1a865dd010558393ecb7f9fd0c9ad0@group.calendar.google.com',
         },
@@ -34,7 +35,7 @@ export const growGridData = {
             'Discover grant opportunities available to developers and teams building on Flow.',
           iconColor: 'purple',
           cardColor: 'black',
-          icon: 'grants',
+          icon: IconName.GRANTS,
           variant: 'horizontal',
           href: '/ecosystem/grants',
         },
@@ -44,7 +45,7 @@ export const growGridData = {
             'Get comprehensive support including technical guidance, marketing resources, and ecosystem connections.',
           iconColor: 'purple',
           cardColor: 'black',
-          icon: 'startup-support',
+          icon: IconName.STARTUP_SUPPORT,
           variant: 'horizontal',
           href: '/growth',
         },
@@ -54,7 +55,7 @@ export const growGridData = {
             'Connect with venture capital firms and investment funds actively supporting Flow projects.',
           iconColor: 'purple',
           cardColor: 'black',
-          icon: 'vcs-&-funds',
+          icon: IconName.VCS_AND_FUNDS,
           variant: 'horizontal',
           href: '/ecosystem/vcs-and-funds',
         },
