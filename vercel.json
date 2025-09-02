@@ -1590,5 +1590,35 @@
       "destination": "/protocol/:path*",
       "permanent": true
     },
+    {
+      "source": "/build/cadence/basics/smart-contracts",
+      "destination": "/build/cadence/smart-contracts/overview",
+      "permanent": true
+    },
+    {
+      "source": "/build/cadence/smart-contracts/overview",
+      "destination": "/build/cadence/basics/smart-contracts",
+      "permanent": true
+    },
+    {
+      "source": "/ecosystem/builder-perks",
+      "destination": "/ecosystem/developer-support-hub/builder-perks",
+      "permanent": true
+    },
+    {
+      "source": "/ecosystem/grants",
+      "destination": "/ecosystem/developer-support-hub/grants",
+      "permanent": true
+    },
+    {
+      "source": "/ecosystem/vcs-and-funds",
+      "destination": "/ecosystem/developer-support-hub/vcs-and-funds",
+      "permanent": true
+    },
+    {
+      "source": "/ecosystem/project-growth",
+      "destination": "/ecosystem/developer-support-hub#your-journey-from-idea-to-success",
+      "permanent": true
+    }
   ]
 }
