@@ -62,10 +62,7 @@ const iconMap: Record<IconName, string> = {
   [IconName.UNIBLOCK]: '/img/ecosystem/uniblock.svg',
 };
 
-export function useIcons() {
-  return {
-    getIcon: (name: IconName): string | null => {
-      return iconMap[name] || null;
-    },
-  };
-}
+// Simple function to get icon path - no need for a hook since it's just static data
+export const getIconPath = (name: IconName): string | null => {
+  return iconMap[name] || null;
+};

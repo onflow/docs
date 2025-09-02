@@ -1,5 +1,5 @@
 import React from 'react';
-import { useIcons } from '../hooks/use-icons';
+import { getIconPath } from '../hooks/use-icons';
 import { IconName } from '@site/src/types/icons';
 
 const LocationIcon = () => (
@@ -37,14 +37,12 @@ export const Icon: React.FC<IconProps> = ({
   width = "100%",
   height = "100%"
 }) => {
-  const icons = useIcons();
-
   if (!name) {
     return <LocationIcon />;
   }
 
   // Get icon path
-  const iconPath = icons.loadIcon(name);
+  const iconPath = getIconPath(name);
 
   if (!iconPath) {
     return <LocationIcon />;
