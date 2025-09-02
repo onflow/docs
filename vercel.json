@@ -1225,6 +1225,11 @@
       "permanent": true
     },
     {
+      "source": "/build/cadence/guides/account-linking-with-dapper",
+      "destination": "/blockchain-development-tutorials/cadence/account-management/account-linking-with-dapper",
+      "permanent": true
+    },
+    {
       "source": "/build/building-vs-other-chains",
       "destination": "/build/differences-vs-evm",
       "permanent": true
