@@ -2,8 +2,6 @@
 title: Developer Support Hub
 description: Complete support ecosystem for Flow builders - perks, grants, funding, and expert guidance
 sidebar_position: 2
-sidebar_custom_props:
-  icon: 🚀
 ---
 
 # Developer Support Hub
