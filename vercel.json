@@ -1609,7 +1609,6 @@
       "source": '/ecosystem/grants',
       "destination": '/ecosystem/developer-support-hub/grants',
       "permanent": true
-      
     },
     {
       "source": '/ecosystem/vcs-and-funds',
@@ -1620,6 +1619,6 @@
       "source": '/ecosystem/project-growth',
       "destination": '/ecosystem/developer-support-hub#your-journey-from-idea-to-success',
       "permanent": true
-    },
+    }
   ]
 }
