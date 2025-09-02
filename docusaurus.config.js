@@ -613,10 +613,7 @@ const config = {
       '@docusaurus/plugin-client-redirects',
       {
         redirects: [
-          {
-            to: '/build/cadence/smart-contracts/overview',
-            from: '/build/cadence/basics/smart-contracts',
-          },
+          // Please add redirects to vercel.json
         ],
       },
     ],
