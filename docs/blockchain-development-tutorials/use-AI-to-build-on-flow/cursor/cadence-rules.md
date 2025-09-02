@@ -21,6 +21,19 @@ When building with AI, it is hard to make the agent consistently understand what
 
 In this guide, you'll learn how to configure and use Cursor Rules that transform your AI assistant into a Flow development expert with persistent knowledge of Cadence syntax patterns, NFT standards, project configuration, and development workflows.
 
+<div style={{ position: 'relative', paddingBottom: '56.25%', height: 0, overflow: 'hidden', maxWidth: '100%' }}>
+  <iframe 
+    style={{ position: 'absolute', top: 0, left: 0, width: '100%', height: '100%' }}
+    src="https://www.youtube.com/watch?v=cFC8b-pdJ8g&t=344s" 
+    title="YouTube video player" 
+    frameborder="0" 
+    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+    allowfullscreen
+  ></iframe>
+</div>
+
+
+
 ## Learning Objectives
 
 After completing this guide, you'll be able to:
