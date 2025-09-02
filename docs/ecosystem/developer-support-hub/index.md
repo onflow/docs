@@ -15,6 +15,7 @@ We're builders supporting builders. Get everything you need to succeed on Flow -
 Follow this roadmap to build and scale your Flow project. Each stage unlocks new support and opportunities.
 
 ### Stage 1: Idea to MVP
+
 **Goal:** Turn your concept into working code
 
 <div style={{display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '2rem', marginBottom: '2rem'}}>
@@ -42,6 +43,7 @@ Follow this roadmap to build and scale your Flow project. Each stage unlocks new
 ---
 
 ### Stage 2: MVP to Live Product
+
 **Goal:** Get real users on mainnet
 
 <div style={{display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '2rem', marginBottom: '2rem'}}>
@@ -69,6 +71,7 @@ Follow this roadmap to build and scale your Flow project. Each stage unlocks new
 ---
 
 ### Stage 3: Live Product to Revenue
+
 **Goal:** Generate sustainable revenue
 
 <div style={{display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '2rem', marginBottom: '2rem'}}>
@@ -100,8 +103,13 @@ Follow the roadmap above based on your project stage to get the right support at
 
 The best support is a thriving project. Start building today and tap into our ecosystem when you need it.
 
-**[Start with Cadence](/build/cadence/getting-started)**
+**[Start with Cadence]**
 
-**[Start with Solidity (EVM)](build/evm/using)**
+**[Start with Solidity (EVM)]**
 
 :::
+
+<!-- Reference-style links, will not render on the page -->
+
+[Start with Cadence]: ../../build/cadence/getting-started/index.md
+[Start with Solidity (EVM)]: ../../build/evm/quickstart.md
