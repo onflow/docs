@@ -3,23 +3,24 @@ import {
   HomepageStartItem,
   type HomepageStartItemProps,
 } from '../HomepageStartItem';
+import { IconName } from '@site/src/types/icons';
 
 const homepageData: Record<string, HomepageStartItemProps> = {
   'cadence-course': {
     link: 'https://developers.flow.com/evm/how-it-works',
-    icon: 'cadence-course',
+    icon: IconName.CADENCE_COURSE,
   },
   'beginner-dapp': {
     link: '/evm/using',
-    icon: 'start-here',
+    icon: IconName.START_HERE,
   },
   'flow-quest': {
     link: '/evm/guides/integrating-metamask',
-    icon: 'path-quest',
+    icon: IconName.PATH_QUEST,
   },
   'lang-reference': {
     link: '/evm/accounts',
-    icon: 'lang-reference',
+    icon: IconName.LANG_REFERENCE,
   },
 };
 

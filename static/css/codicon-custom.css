@@ -1,0 +1,37 @@
+/* Custom styling for codicon icons in the QuickStartShowcase */
+.codicon {
+  font-size: 16px;
+  width: 16px;
+  height: 16px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Ensure icon content is displayed */
+.codicon[class*='codicon-']::before {
+  content: attr(data-codicon) !important;
+  font-family: "codicon" !important;
+  font-size: inherit !important;
+}
+
+/* Ensure icons in the top bar are properly sized */
+.top-bar .codicon {
+  font-size: 14px;
+  width: 14px;
+  height: 14px;
+}
+
+/* Ensure icons in the output panel are properly sized */
+.output-panel .codicon {
+  font-size: 14px;
+  width: 14px;
+  height: 14px;
+}
+
+/* Ensure icons in the bottom bar are properly sized */
+.bottom-bar .codicon {
+  font-size: 14px;
+  width: 14px;
+  height: 14px;
+}

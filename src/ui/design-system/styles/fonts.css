@@ -2,6 +2,7 @@
   font-family: "Acumin Pro";
   src: local("Acumin Pro"),
     url(/fonts/acumin-pro/AcuminPro-Regular.otf) format("opentype");
+  font-display: swap;
 }
 
 @font-face {
@@ -9,6 +10,7 @@
   src: local("Acumin Pro"),
     url(/fonts/acumin-pro/AcuminPro-Italic.otf) format("opentype");
   font-style: italic;
+  font-display: swap;
 }
 
 @font-face {
@@ -16,6 +18,7 @@
   src: local("Acumin Pro"),
     url(/fonts/acumin-pro/AcuminPro-Medium.otf) format("opentype");
   font-weight: 500;
+  font-display: swap;
 }
 
 @font-face {
@@ -24,6 +27,7 @@
     url(/fonts/acumin-pro/AcuminPro-MediumItalic.otf) format("opentype");
   font-weight: 500;
   font-style: italic;
+  font-display: swap;
 }
 
 @font-face {
@@ -31,6 +35,7 @@
   src: local("Acumin Pro"),
     url(/fonts/acumin-pro/AcuminPro-SemiBold.otf) format("opentype");
   font-weight: 600;
+  font-display: swap;
 }
 
 @font-face {
@@ -39,6 +44,7 @@
     url(/fonts/acumin-pro/AcuminPro-SemiBoldItalic.otf) format("opentype");
   font-weight: 600;
   font-style: italic;
+  font-display: swap;
 }
 
 @font-face {
@@ -46,31 +52,16 @@
   src: local("Acumin Pro"),
     url(/fonts/acumin-pro/AcuminPro-Bold.otf) format("opentype");
   font-weight: 700;
+  font-display: swap;
 }
 
-@font-face {
-  font-family: "Inter";
-  src: local("Inter"),
-    url(/fonts/inter/Inter-Regular.ttf) format("opentype");
-}
-
-@font-face {
-  font-family: "Inter";
-  src: local("Inter"), url(/fonts/inter/Inter-Bold.ttf) format("opentype");
-  font-weight: 700;
-}
-
-@font-face {
-  font-family: "Inter";
-  src: local("Inter"),
-    url(/fonts/inter/Inter-ExtraBold.ttf) format("opentype");
-  font-weight: 800;
-}
+/* Inter Font Family - Preloaded via plugin, no need to load here */
 
 @font-face {
   font-family: "IBM Plex Mono";
   src: local("IBM Plex Mono"),
     url(/fonts/ibm-plex/IBMPlexMono-Regular.ttf) format("truetype");
+  font-display: swap;
 }
 
 .text-h1 {

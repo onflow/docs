@@ -3,6 +3,7 @@
 import { useEffect, useState } from 'react';
 import * as fcl from '@onflow/fcl';
 import { event } from '@site/src/utils/gtags.client';
+import { GA_EVENTS, GA_CATEGORIES, GA_ACTIONS } from '@site/src/constants/ga-events';
 
 interface FlowUser {
   addr: string | null;
@@ -46,15 +47,15 @@ export function useCurrentUser(): UseCurrentUserReturn {
         const hashedAddr = await hashAddress(userAddrSnapshot);
 
         event({
-          category: 'auth',
-          action: 'login',
+          category: GA_CATEGORIES.AUTH,
+          action: GA_EVENTS.AUTH_LOGIN,
           label: `user_${hashedAddr}`,
           value: 1,
         });
       } else {
         event({
-          category: 'auth',
-          action: 'login',
+          category: GA_CATEGORIES.AUTH,
+          action: GA_EVENTS.AUTH_LOGIN,
           label: 'unknown_user',
           value: 1,
         });
@@ -70,6 +71,7 @@ export function useCurrentUser(): UseCurrentUserReturn {
 
   return {
     user,
+    addr: user.addr || '',
     logIn,
     logOut,
   };

@@ -1,6 +1,7 @@
 import React from 'react';
 import { useColorMode } from '@docusaurus/theme-common';
 import { event } from '@site/src/utils/gtags.client';
+import { GA_EVENTS, GA_CATEGORIES, GA_ACTIONS } from '@site/src/constants/ga-events';
 
 const HeroSection: React.FC = () => {
   const { colorMode } = useColorMode();
@@ -24,8 +25,8 @@ const HeroSection: React.FC = () => {
               className="px-6 py-2 rounded-lg bg-primary-purple text-white hover:text-white focus:text-white no-underline hover:no-underline font-bold text-base shadow-lg border border-gray-200 dark:border-gray-700 hover:opacity-90 focus:ring-2 focus:ring-primary-purple transition-colors text-center"
               onClick={() => {
                 event({
-                  action: 'action_card_click',
-                  category: 'action_card',
+                  action: GA_EVENTS.ACTION_CARD_CLICK,
+                  category: GA_CATEGORIES.ACTION_CARD,
                   label: 'Build with AI',
                   location: true,
                 });
@@ -37,8 +38,8 @@ const HeroSection: React.FC = () => {
               type="button"
               onClick={() => {
                 event({
-                  action: 'action_card_click',
-                  category: 'action_card',
+                  action: GA_EVENTS.ACTION_CARD_CLICK,
+                  category: GA_CATEGORIES.ACTION_CARD,
                   label: 'Start with Cadence',
                   location: true,
                 });
