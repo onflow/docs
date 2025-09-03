@@ -51,34 +51,20 @@ The design of Flow was guided by the need to alleviate this burden while creatin
 
 Flow solves the [blockchain trilemma] and represents the next generation of blockchain technology. It's built to enable seamless consumer-scale apps without compromising decentralization or user experience, and is the chosen blockchain network for [NBA Top Shot], [NFL All Day], [Mattel Creations], and [Disney Pinnacle].
 
-## Flow's dual language architecture
-
-Flow is unique in supporting two powerful programming languages for smart contract development:
-
-- **Cadence**: Flow's native smart contract language, designed specifically for the Flow blockchain.
-- **Solidity**: The industry-standard language for EVM development, fully supported on Flow.
-
-### Understanding Flow's Virtual Machine architecture
-
-Flow operates with two virtual machines working in harmony:
-
-- **Flow Virtual Machine (FVM)**: Runs Cadence smart contracts with native Flow features.
-- **Ethereum Virtual Machine (EVM)**: Runs Solidity compiled smart contracts with full EVM equivalence.
-
-The beauty of Flow's architecture is the native bridge that allows seamless and cheap communication between these VMs. This means developers can choose the language that best fits their needs while maintaining full interoperability between both environments.
-
 ## What makes Flow unique
 
 Flow is a fast, decentralized, and developer-friendly blockchain designed to be the foundation for a new generation of games, apps, and the [digital assets] that power them. It is based on a unique [multi-role architecture] and designed to [scale without sharding], allowing for massive improvements in speed and throughput while preserving a developer-friendly, ACID-compliant environment.
 
-### Flow blockchain core features
+### Dual language architecture
 
-- **MEV resistance**: Flow is designed to [ensure equitable access] by resisting MEV. Maximum Extractable Value, also know as Miner-Extractable Value (MEV), is a practice common in other blockchains in which the builder of a block can profit at your expense by manipulating where and how your transaction is included.
-- **Native VRF**: Flow provides [onchain randomness] at the protocol level. Instead of implementing a complex setup and [paying $10+ USD per number], simply call the built-in function.
-- **Multi-role architecture**: The [multi-role architecture] of Flow allows the network to [scale without sharding] to serve billions of users without reducing the decentralization of consensus and verification.
-- **True, fast finality**: For most other networks, it takes minutes, [a day], or even [a week] to reach hard finality — the point at which a transaction cannot be reversed. On Flow, the median time for finality is [under 10 seconds], without compromising security.
-- **Consumer onboarding**: Flow was designed for mainstream consumers, with payment onramps catalyzing a safe and low-friction path from fiat to crypto.
-- **Efficient gas costs**: The Flow blockchain is extremely efficient, allowing apps to do more computation at lower costs.
+Flow is unique in supporting two powerful programming languages for smart contract development:
+
+- **Cadence**: A modern programming language developed by smart contract application builders.
+- **Solidity**: The industry-standard language for EVM development, fully supported on Flow with full EVM equivalence.
+
+EVM and Cadence environments both use FLOW as gas for transactions and are connected by a native bridge that allows seamless and cheap communication between them. Fungible and non-fungible tokens can also be seamlessly transferred between environments using the native VM token bridge, taking place instantly in a single atomic transaction.
+
+This means developers can choose the language that best fits their needs while maintaining full interoperability between both environments.
 
 ### Cadence development on Flow
 
@@ -102,35 +88,46 @@ Flow EVM provides the best EVM experience available anywhere:
 - **Access to Cadence features**: Access Cadence features and contracts from Flow EVM to take advantage of native [VRF], higher computation for lower cost, and any asset on Cadence Flow. You can also build [cross-vm apps] on top of the _wagmi/viem/RainbowKit_ stack, enabling batched transactions and more.
 - **EVM equivalence:** Flow EVM is truly _EVM Equivalent_, not just _EVM Compatible_. It runs exactly the same as EVM mainnet, which means builders won't run into _minor_ variances or endless 'quirks' when they try to integrate. If it works on Ethereum Mainnet, it will work with Flow EVM.
 
-## Seamless integration for Ethereum developers
+### Seamless integration for Ethereum developers
 
 Flow EVM is designed to work out-of-the-box with the Ethereum toolchain or other clients. Native EVM transactions continue to be supported when using Metamask and other EVM-compatible clients.
 
 EVM-equivalency on Flow works behind-the-scenes by implementing a minimal transaction script in Cadence to integrate Flow features with EVM. This is made possible because EVM transactions are composed and executed within Cadence transactions, enabling novel use-cases and patterns for integration.
 
-## Best-in-class user experience
+### Flow blockchain core features
 
-Flow allows for the creation of app on-boarding experiences that meet every type of user exactly where they are at, from Web3 beginners to ecosystem veterans. This is possible through account linking, which utilizes the account abstraction model on Flow and enables users to immediately use an app without wallet authentication.
+- **MEV resistance**: Flow is designed to [ensure equitable access] by resisting MEV. Maximum Extractable Value, also know as Miner-Extractable Value (MEV), is a practice common in other blockchains in which the builder of a block can profit at your expense by manipulating where and how your transaction is included.
+- **Native VRF**: Flow provides [onchain randomness] at the protocol level. Instead of implementing a complex setup and [paying $10+ USD per number], simply call the built-in function.
+- **Multi-role architecture**: The [multi-role architecture] of Flow allows the network to [scale without sharding] to serve billions of users without reducing the decentralization of consensus and verification.
+- **True, fast finality**: For most other networks, it takes minutes, [a day], or even [a week] to reach hard finality — the point at which a transaction cannot be reversed. On Flow, the median time for finality is [under 10 seconds], without compromising security.
+- **Consumer onboarding**: Flow was designed for mainstream consumers, with payment onramps catalyzing a safe and low-friction path from fiat to crypto.
+- **Efficient gas costs**: The Flow blockchain is extremely efficient, allowing apps to do more computation at lower costs.
 
-With Flow, builders can choose to expand EVM capabilities and transcend limitations using Cadence, which offers a powerful new account model, programmable resources, and hybrid ownership.
+### MEV resilience
 
-## Instant cross-VM token transfers
+The [MEV Resilient] design on Flow offers DeFi builders improved market efficiency, fairness, trust, and long-term viability for their apps. Since Flow EVM transactions are composed and executed within a Cadence transaction, block production is handled by the [multi-role architecture] on Flow.
 
-EVM and Cadence environments both use FLOW as gas for transactions, sharing a singular token supply across both environments. Fungible and non-fungible tokens can also be seamlessly transferred between environments using the native VM token bridge, taking place instantly in a single atomic transaction.
+This robust MEV resilience is a significant difference from other EVM-compatible networks and results in reasonably priced and predictable gas fees. The impracticality of frontrunning or other attacks improves the user experience by eliminating failed transactions and invisible fees.
 
-## Scalability, performance, and low gas fees
+### Scalability, performance, and low gas fees
 
 For sustainable user adoption, apps require the network they build on to be secure, efficient, affordable, and fast. Gas fees are ultra-low cost on the network, but Flow goes a step further allowing for gasless experiences through sponsored transactions.
 
-Flow's state space is extensible to the petabyte scale making it easy to store application data on-chain. This means contracts can maintain a full working dataset — including metadata — together with contract logic.
+The state space on Flow is extensible to the petabyte scale, making it easy to store application data on-chain. This means contracts can maintain a full working dataset — including metadata — together with contract logic.
 
-Flow's transaction throughput peaked to 2M daily transactions during 2023, sustaining a similar average transaction volume as Ethereum. Unlike Ethereum, Flow has always operated well under its maximum throughput ceiling, which is presently scalable to 5X more transactions with further performance optimizations to come when parallel execution is released.
+Transaction throughput on the Flow network has reaches as many as 2 million daily transactions, a similar average transaction volume as Ethereum. Unlike Ethereum, Flow has always operated well under its maximum throughput ceiling, and that ceiling is scalable to even greater performance when it becomes necessary.
 
-## MEV resilience
+## Getting started
 
-The [MEV Resilient] design on Flow offers DeFi builders improved market efficiency, fairness, trust, and long-term viability for their apps. Since Flow EVM transactions are composed and executed within a Cadence transaction, block production is handled by Flow's [multi-role architecture].
+Whether you're ready to dive into the advantages of building with [Cadence], or are starting with Flow [EVM], we've got paths to get you up and running as quickly as possible.
 
-This robust MEV resilience is a significant difference from other EVM-compatible networks and results in reasonably priced and predictable gas fees. The impracticality of frontrunning or other attacks improves the user experience by eliminating failed transactions and invisible fees.
+### Getting started with Cadence app development
+
+The [Getting Started] tutorial covers everything you need to know to build a Flow Cadence application:
+
+- Setting up your local development environment (it's fast and easy!).
+- Deploying and interacting with Flow Cadence contracts.
+- Building a frontend that can interact with smart contracts written by you or other developers.
 
 ### Learn Cadence
 
@@ -148,25 +145,6 @@ Not ready to take the plunge and learn [Cadence]? Try out **EVM++** by deploying
 
 Deploying on Flow EVM also gives your Solidity contracts access to many Flow Cadence features, such as native [VRF].
 
-### Getting started with app development
-
-The [Getting Started] tutorial covers everything you need to know to build a Flow Cadence application:
-
-- Setting up your local development environment (it's fast and easy!).
-- Deploying and interacting with Flow Cadence contracts.
-- Building a frontend that can interact with smart contracts written by you or other developers.
-
-## Core contracts
-
-The Flow blockchain implements core functionality using its own smart contract language, [Cadence]. The core functionality is split into a set of contracts, called the [core contracts]:
-
-- **Fungible Token:** The FungibleToken contract implements the Fungible Token Standard. It is the second contract ever deployed on Flow.
-- **Flow Token:** The FlowToken contract defines the FLOW network token.
-- **Flow Fees:** The FlowFees contract is where all the collected Flow fees are gathered.
-- **Service Account:** The FlowServiceAccount contract tracks transaction fees and deployment permissions, and provides convenient methods for Flow Token operations.
-- **Staking Table:** The FlowIDTableStaking contract is the central table that manages staked nodes, delegation, and rewards.
-- **Epoch Contract:** The FlowEpoch contract is the state machine that manages Epoch phases and emits service events.
-
 ## FLOW token
 
 The [FLOW] (or $FLOW) token is the native currency for the Flow network. Developers and users can use FLOW to transact on the network. Developers can integrate FLOW directly into their apps for peer-to-peer payments, service charges, or consumer rewards. FLOW can be held, transferred, or transacted peer-to-peer.
@@ -178,10 +156,6 @@ The [FLOW] (or $FLOW) token is the native currency for the Flow network. Develop
 
 - The [Flow Technical Primer] is a great place to start to understand how Flow works.
 - The [Three technical whitepapers] cover the unique innovation behind the Flow blockchain network in-depth.
-
-## Join the community
-
-Are you interested in launching a project on Flow or partnering with us? Visit our weekly Flow [office hours] for discussions on project development and other opportunities for collaboration. You can also connect with us in our developers-chat in the Flow [Discord].
 
 ## Flow Improvement Proposals (FLIPs)
 
@@ -195,6 +169,10 @@ Those wishing to understand the technical specifics of how Flow EVM works, we re
 ## Build with Flow
 
 Whether you're building with Cadence or Solidity, porting an existing Solidity dApp or building from scratch, Flow offers a **fast, scalable blockchain with low fees** and the tooling you already know. As a **scalable platform for apps**, Flow combines familiar development workflows with performance and UX enhancements you can't get elsewhere.
+
+## Join the community
+
+Are you interested in launching a project on Flow or partnering with us? Visit our weekly Flow [office hours] for discussions on project development and other opportunities for collaboration. You can also connect with us in our developers-chat in the Flow [Discord].
 
 <!-- Reference-style links, does not render on page -->
 
