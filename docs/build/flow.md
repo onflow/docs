@@ -186,14 +186,13 @@ Are you interested in launching a project on Flow or partnering with us? Visit o
 [Cadence]: https://cadence-lang.org/
 [Transactions]: https://cadence-lang.org/docs/language/transactions
 [pre- and post-conditions]: https://cadence-lang.org/docs/language/pre-and-post-conditions
-[core contracts]: ./core-contracts/index.md
 [cross-vm apps]: ../blockchain-development-tutorials/cross-vm-apps/index.md
 [CryptoKitties]: https://www.cryptokitties.co/
 [Dapper Labs]: https://www.dapperlabs.com/
 [digital assets]: https://www.flow.com/post/flow-blockchain-cadence-programming-language-resources-assets
 [Discord]: https://discord.gg/flow
 [Disney Pinnacle]: https://disneypinnacle.com/
-[ensure equitable access]: ./basics/mev-resistance.md
+[ensure equitable access]: ./cadence/basics/mev-resistance.md
 [ERC-721 NFT standard]: https://github.com/ethereum/eips/issues/721
 [Ethereum Virtual Machine (EVM)]: https://flow.com/upgrade/crescendo/evm.md
 [EVM Support on Flow]: https://github.com/onflow/flips/pull/225
@@ -202,24 +201,24 @@ Are you interested in launching a project on Flow or partnering with us? Visit o
 [Flow Technical Primer]: https://www.flow.com/primer
 [Flow Token Economics]: https://www.flow.com/flow-token-economics
 [Flow VM Bridge]: https://github.com/onflow/flips/pull/233/files/d5bc46c4b13f0b9b168a94f994c77a5a689f6b24..122e938b7acae7e774246b1b66aaf5979ca21444
-[FLOW]: ./core-contracts/03-flow-token.md
-[Getting Started]: ./getting-started/contract-interaction.md
+[FLOW]: ./cadence/core-contracts/03-flow-token.md
+[Getting Started]: ./cadence/getting-started/contract-interaction.md
 [Guide for Solidity Developers]: https://cadence-lang.org/docs/solidity-to-cadence
 [Mattel Creations]: https://creations.mattel.com/pages/virtual
-[MEV Resilient]: ../build/basics/mev-resistance.md
+[MEV Resilient]: ./cadence/basics/mev-resistance.md
 [multi-role architecture]: https://flow.com/post/flow-blockchain-multi-node-architecture-advantages
 [multi-role architecture]: https://www.flow.com/primer
 [NBA Top Shot]: https://nbatopshot.com/
 [NFL All Day]: https://nflallday.com/
 [office hours]: https://calendar.google.com/calendar/ical/c_47978f5cd9da636cadc6b8473102b5092c1a865dd010558393ecb7f9fd0c9ad0%40group.calendar.google.com/public/basic.ics
-[onchain randomness]: ./advanced-concepts/randomness.md
+[onchain randomness]: ./cadence/advanced-concepts/randomness.md
 [paying $10+ USD per number]: https://docs.chain.link/vrf/v2-5/billing
 [resource-oriented]: https://flow.com/post/resources-programming-ownership
 [scale without sharding]: https://www.flow.com/post/flow-blockchain-multi-node-architecture-advantages
-[signing roles]: ./basics/transactions.md#signer-roles
+[signing roles]: ./cadence/basics/transactions.md#signer-roles
 [struggled under its own success]: https://spectrum.ieee.org/cryptokitties
 [Three technical whitepapers]: https://www.flow.com/technical-paper
-[under 10 seconds]: ./basics/transactions.md#flow
+[under 10 seconds]: ./cadence/basics/transactions.md#flow
 [usually way less!]: https://evm.flowscan.io/stats
 [VRF]: ../blockchain-development-tutorials/native-vrf/vrf-in-solidity.md
 [widespread popularity]: https://www.cnn.com/style/article/cryptokitty-blockchain/index.html
