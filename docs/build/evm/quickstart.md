@@ -1,7 +1,7 @@
 ---
 title: EVM Quickstart
 description: Deploy your first contract on Flow testnet and connect it to a rainbowkit/wagmi/viem app
-sidebar_position: 5
+sidebar_position: 1
 keywords:
   - Flow EVM
   - EVM quickstart

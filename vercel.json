@@ -1801,6 +1801,11 @@
       "source": "/ecosystem/project-growth",
       "destination": "/ecosystem/developer-support-hub#your-journey-from-idea-to-success",
       "permanent": true
+    },
+    {
+      "source": "/build/evm/about",
+      "destination": "/build/evm/quickstart",
+      "permanent": true
     }
   ]
 }
