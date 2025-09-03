@@ -113,7 +113,7 @@ This robust MEV resilience is a significant difference from other EVM-compatible
 
 For sustainable user adoption, apps require the network they build on to be secure, efficient, affordable, and fast. Gas fees are ultra-low cost on the network, but Flow goes a step further allowing for gasless experiences through sponsored transactions.
 
-The state space on Flow is extensible to the petabyte scale, making it easy to store application data on-chain. This means contracts can maintain a full working dataset — including metadata — together with contract logic.
+The state space on Flow is extensible to the petabyte scale, making it easy to store application data onchain. This means contracts can maintain a full working dataset — including metadata — together with contract logic.
 
 Transaction throughput on the Flow network has reaches as many as 2 million daily transactions, a similar average transaction volume as Ethereum. Unlike Ethereum, Flow has always operated well under its maximum throughput ceiling, and that ceiling is scalable to even greater performance when it becomes necessary.
 
