@@ -40,7 +40,7 @@ const ContentFeatures: Record<string, ContentFeatureProps> = {
     image: 'feature-evm-image',
     header: 'EVM Equivalency',
     text: 'Use Solidity contracts on Flow without code changes',
-    link: '/build/evm/about',
+    link: '/build/evm/quickstart',
   },
 };
 

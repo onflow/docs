@@ -19,11 +19,10 @@ const CATEGORIES = [
   {
     title: 'EVM',
     links: [
-      { label: 'Why EVM on Flow', href: '/build/evm/about' },
+      { label: 'EVM Quickstart', href: '/evm/quickstart' },
       { label: 'How it Works', href: '/evm/how-it-works' },
       { label: 'Using Flow EVM', href: '/evm/using' },
       { label: 'Network Information', href: '/evm/networks' },
-      { label: 'EVM Quickstart', href: '/evm/quickstart' },
       { label: 'Fees', href: '/evm/fees' },
       { label: 'Accounts', href: '/evm/accounts' },
       { label: 'Cross-chain Bridges', href: '/ecosystem/bridges' },

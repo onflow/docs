@@ -410,7 +410,7 @@ const config = {
                 label: 'Core Contracts & Standards',
               },
               {
-                href: '/build/evm/about',
+                href: '/build/evm/quickstart',
                 label: 'EVM',
               },
             ],
