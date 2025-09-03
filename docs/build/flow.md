@@ -73,20 +73,23 @@ Flow is a fast, decentralized, and developer-friendly blockchain designed to be 
 
 ### Flow blockchain core features
 
+- **MEV resistance**: Flow is designed to [ensure equitable access] by resisting MEV. Maximum Extractable Value, also know as Miner-Extractable Value (MEV), is a practice common in other blockchains in which the builder of a block can profit at your expense by manipulating where and how your transaction is included.
+- **Native VRF**: Flow provides [onchain randomness] at the protocol level. Instead of implementing a complex setup and [paying $10+ USD per number], simply call the built-in function.
 - **Multi-role architecture**: The [multi-role architecture] of Flow allows the network to [scale without sharding] to serve billions of users without reducing the decentralization of consensus and verification.
 - **True, fast finality**: For most other networks, it takes minutes, [a day], or even [a week] to reach hard finality — the point at which a transaction cannot be reversed. On Flow, the median time for finality is [under 10 seconds], without compromising security.
-- **Native VRF**: Flow provides [onchain randomness] at the protocol level. Instead of implementing a complex setup and [paying $10+ USD per number], simply call the built-in function.
-- **MEV resistance**: Flow is designed to [ensure equitable access] by resisting MEV. Maximum Extractable Value, also know as Miner-Extractable Value (MEV), is a practice common in other blockchains in which the builder of a block can profit at your expense by manipulating where and how your transaction is included.
 - **Consumer onboarding**: Flow was designed for mainstream consumers, with payment onramps catalyzing a safe and low-friction path from fiat to crypto.
 - **Efficient gas costs**: The Flow blockchain is extremely efficient, allowing apps to do more computation at lower costs.
 
 ### Cadence development on Flow
 
-Cadence is Flow's native smart contract language, offering unique advantages for developers:
+[Cadence] is a modern programming language developed by smart contract application builders for smart contract developers:
 
-- **Native account abstraction**: Flow has protocol-native [account abstraction]. All accounts are smart accounts, supporting scripting, multiple keys, multi-signature transactions, and walletless onboarding with social logins.
-- **Gasless transactions**: Flow has multiple [signing roles] for each transaction. Most notably, the payer can be set independently of the authorizer. In other words, having one account sign a transaction and another pay for that transaction is a built-in feature.
-- **Security**: Smart contracts on Flow are natively written in [Cadence], an easier, safer, and more secure programming language for crypto assets and apps. It's the first high-level, [resource-oriented] programming language.
+- **Advanced Transactions**: [Transactions] in Cadence smart contracts are not simply calls to existing functions on already deploy contracts. Instead, transactions are code written in Cadence that can **call any function (with appropriate access) on any smart contract by any author**, all in a single, atomic transaction with a single user signature.
+- **AI Ready**: Cadence transactions have [pre- and post-conditions] that clearly define the inputs to a transactions, such as the tokens that may be withdrawn, and outcomes, such as collectibles that must be purchased. With these definitions, Cadence transactions of immense complexity can be written safely. Regardless of code in the actual execution, the user can be sure that they will get what they expected and only pay the price they authorized.
+- **Data Availability**: Similarly, any author can construct a **view** function to access any public data on any smart contract without needing the author of that smart contract to have anticipated the need to view that data or reliance a provider to cache it and make it available.
+- **Native account abstraction**: Cadence transactions have protocol-native [account abstraction]. All accounts are smart accounts, supporting scripting, multiple keys, multi-signature transactions, and walletless onboarding with social logins.
+- **Gasless transactions**: Cadence transactions have multiple [signing roles] for each transaction. Most notably, the payer can be set independently of the authorizer. In other words, having one account sign a transaction and another pay for that transaction is a built-in feature.
+- **Security**: Smart contracts on Flow are natively written in , an easier, safer, and more secure programming language for crypto assets and apps. It's the first high-level, [resource-oriented] programming language.
 - **Developer ergonomics**: The Flow network is designed to maximize developer productivity. Examples range from upgradeable smart contracts to built-in logging support to the Flow Emulator.
 
 ### Solidity development on Flow EVM
@@ -128,10 +131,6 @@ Flow's transaction throughput peaked to 2M daily transactions during 2023, susta
 The [MEV Resilient] design on Flow offers DeFi builders improved market efficiency, fairness, trust, and long-term viability for their apps. Since Flow EVM transactions are composed and executed within a Cadence transaction, block production is handled by Flow's [multi-role architecture].
 
 This robust MEV resilience is a significant difference from other EVM-compatible networks and results in reasonably priced and predictable gas fees. The impracticality of frontrunning or other attacks improves the user experience by eliminating failed transactions and invisible fees.
-
-## Learning paths for developers
-
-To get a complete picture of how to build on Flow, follow the 👈 sidebar top to bottom. This path will give you the most thorough onboarding experience.
 
 ### Learn Cadence
 
@@ -184,11 +183,6 @@ The [FLOW] (or $FLOW) token is the native currency for the Flow network. Develop
 
 Are you interested in launching a project on Flow or partnering with us? Visit our weekly Flow [office hours] for discussions on project development and other opportunities for collaboration. You can also connect with us in our developers-chat in the Flow [Discord].
 
-## Further reading and discussions
-
-- [Why EVM on Flow: Beyond Solidity]
-- [Path to EVM Equivalence on Flow]
-
 ## Flow Improvement Proposals (FLIPs)
 
 Those wishing to understand the technical specifics of how Flow EVM works, we recommend reviewing the following improvement proposals:
@@ -212,6 +206,8 @@ Whether you're building with Cadence or Solidity, porting an existing Solidity d
 [bridge]: ../ecosystem/bridges.md
 [Cadence Interface]: https://github.com/onflow/flips/blob/f646491ec895442dcccdb24d80080bab1c56188e/protocol/20231116-evm-support.md
 [Cadence]: https://cadence-lang.org/
+[Transactions]: https://cadence-lang.org/docs/language/transactions
+[pre- and post-conditions]: https://cadence-lang.org/docs/language/pre-and-post-conditions
 [core contracts]: ./core-contracts/index.md
 [cross-vm apps]: ../blockchain-development-tutorials/cross-vm-apps/index.md
 [CryptoKitties]: https://www.cryptokitties.co/
@@ -239,7 +235,6 @@ Whether you're building with Cadence or Solidity, porting an existing Solidity d
 [NFL All Day]: https://nflallday.com/
 [office hours]: https://calendar.google.com/calendar/ical/c_47978f5cd9da636cadc6b8473102b5092c1a865dd010558393ecb7f9fd0c9ad0%40group.calendar.google.com/public/basic.ics
 [onchain randomness]: ./advanced-concepts/randomness.md
-[Path to EVM Equivalence on Flow]: https://forum.flow.com/t/evm-equivalence-on-flow-proposal-and-path-forward/5478
 [paying $10+ USD per number]: https://docs.chain.link/vrf/v2-5/billing
 [resource-oriented]: https://flow.com/post/resources-programming-ownership
 [scale without sharding]: https://www.flow.com/post/flow-blockchain-multi-node-architecture-advantages
@@ -249,5 +244,4 @@ Whether you're building with Cadence or Solidity, porting an existing Solidity d
 [under 10 seconds]: ./basics/transactions.md#flow
 [usually way less!]: https://evm.flowscan.io/stats
 [VRF]: ../blockchain-development-tutorials/native-vrf/vrf-in-solidity.md
-[Why EVM on Flow: Beyond Solidity]: https://forum.flow.com/t/evm-on-flow-beyond-solidity/5260
 [widespread popularity]: https://www.cnn.com/style/article/cryptokitty-blockchain/index.html
