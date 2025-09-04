@@ -1806,6 +1806,182 @@
       "source": "/build/evm/about",
       "destination": "/build/evm/quickstart",
       "permanent": true
+    },
+    
+    {
+      "source": "/build/cadence/guides/account-linking-with-dapper",
+      "destination": "/blockchain-development-tutorials/cadence/account-management/account-linking-with-dapper",
+      "permanent": true
+    },
+    {
+      "source": "/build/cadence/guides/account-linking/child-accounts",
+      "destination": "/blockchain-development-tutorials/cadence/account-management/child-accounts",
+      "permanent": true
+    },
+    {
+      "source": "/build/cadence/guides/account-linking/parent-accounts",
+      "destination": "/blockchain-development-tutorials/cadence/account-management/parent-accounts",
+      "permanent": true
+    },
+    {
+      "source": "/build/cadence/guides/account-linking",
+      "destination": "/blockchain-development-tutorials/cadence/account-management",
+      "permanent": true
+    },
+    {
+      "source": "/build/cadence/guides/more-guides",
+      "destination": "/blockchain-development-tutorials/cadence/account-management/more-guides",
+      "permanent": true
+    },
+    {
+      "source": "/build/cadence/guides/mobile/overview",
+      "destination": "/blockchain-development-tutorials/cadence/mobile",
+      "permanent": true
+    },
+    {
+      "source": "/build/cadence/guides/mobile/ios-quickstart",
+      "destination": "/blockchain-development-tutorials/cadence/mobile/ios-quickstart",
+      "permanent": true
+    },
+    {
+      "source": "/build/cadence/guides/mobile/react-native-quickstart",
+      "destination": "/blockchain-development-tutorials/cadence/mobile/react-native-quickstart",
+      "permanent": true
+    },
+    {
+      "source": "/build/cadence/guides/mobile/walletless-pwa",
+      "destination": "/blockchain-development-tutorials/cadence/mobile/walletless-pwa",
+      "permanent": true
+    },
+    {
+      "source": "/build/evm/guides/foundry",
+      "destination": "/blockchain-development-tutorials/evm/development-tools/foundry",
+      "permanent": true
+    },
+    {
+      "source": "/build/evm/guides/hardhat",
+      "destination": "/blockchain-development-tutorials/evm/development-tools/hardhat",
+      "permanent": true
+    },
+    {
+      "source": "/build/evm/guides/remix",
+      "destination": "/blockchain-development-tutorials/evm/development-tools/remix",
+      "permanent": true
+    },
+    {
+      "source": "/build/evm/guides/ethers",
+      "destination": "/blockchain-development-tutorials/evm/frameworks/ethers",
+      "permanent": true
+    },
+    {
+      "source": "/build/evm/guides/rainbowkit",
+      "destination": "/blockchain-development-tutorials/evm/frameworks/rainbowkit",
+      "permanent": true
+    },
+    {
+      "source": "/build/evm/guides/wagmi",
+      "destination": "/blockchain-development-tutorials/evm/frameworks/wagmi",
+      "permanent": true
+    },
+    {
+      "source": "/build/evm/guides/web3-js",
+      "destination": "/blockchain-development-tutorials/evm/frameworks/web3-js",
+      "permanent": true
+    },
+    {
+      "source": "/blockchain-development-tutorials/flowtobooth/image-gallery",
+      "destination": "/blockchain-development-tutorials/evm/image-gallery",
+      "permanent": true
+    },
+    {
+      "source": "/build/evm/guides/integrating-metamask",
+      "destination": "/blockchain-development-tutorials/evm/setup/integrating-metamask",
+      "permanent": true
+    },
+    {
+      "source": "/blockchain-development-tutorials/defi/basic-combinations",
+      "destination": "/blockchain-development-tutorials/flow-actions/basic-combinations",
+      "permanent": true
+    },
+    {
+      "source": "/blockchain-development-tutorials/defi/connectors",
+      "destination": "/blockchain-development-tutorials/flow-actions/connectors",
+      "permanent": true
+    },
+    {
+      "source": "/blockchain-development-tutorials/defi/flow-actions-transaction",
+      "destination": "/blockchain-development-tutorials/flow-actions/flow-actions-transaction",
+      "permanent": true
+    },
+    {
+      "source": "/blockchain-development-tutorials/defi",
+      "destination": "/blockchain-development-tutorials/flow-actions",
+      "permanent": true
+    },
+    {
+      "source": "/blockchain-development-tutorials/defi/intro-to-flow-actions",
+      "destination": "/blockchain-development-tutorials/flow-actions/intro-to-flow-actions",
+      "permanent": true
+    },
+    {
+      "source": "/blockchain-development-tutorials/defi/scheduled-callbacks-introduction",
+      "destination": "/blockchain-development-tutorials/flow-actions/scheduled-callbacks-introduction",
+      "permanent": true
+    },
+    {
+      "source": "/build/cadence/guides/fungible-token",
+      "destination": "/blockchain-development-tutorials/tokens/fungible-token-cadence",
+      "permanent": true
+    },
+    {
+      "source": "/build/cadence/guides/nft",
+      "destination": "/blockchain-development-tutorials/tokens/nft-cadence",
+      "permanent": true
+    },
+    {
+      "source": "/blockchain-development-tutorials/token-launch/register-cadence-assets",
+      "destination": "/blockchain-development-tutorials/tokens/register-cadence-assets",
+      "permanent": true
+    },
+    {
+      "source": "/blockchain-development-tutorials/token-launch/register-erc20-token",
+      "destination": "/blockchain-development-tutorials/tokens/register-erc20-token",
+      "permanent": true
+    },
+    {
+      "source": "/blockchain-development-tutorials/use-AI-to-build-on-flow/agentkit-flow-guide",
+      "destination": "/blockchain-development-tutorials/use-AI-to-build-on-flow/agents/agentkit-flow-guide",
+      "permanent": true
+    },
+    {
+      "source": "/blockchain-development-tutorials/use-AI-to-build-on-flow/eliza/build-plugin",
+      "destination": "/blockchain-development-tutorials/use-AI-to-build-on-flow/agents/eliza/build-plugin",
+      "permanent": true
+    },
+    {
+      "source": "/blockchain-development-tutorials/use-AI-to-build-on-flow/eliza",
+      "destination": "/blockchain-development-tutorials/use-AI-to-build-on-flow/agents/eliza",
+      "permanent": true
+    },
+    {
+      "source": "/blockchain-development-tutorials/use-AI-to-build-on-flow/cadence-rules",
+      "destination": "docs/blockchain-development-tutorials/use-AI-to-build-on-flow/cursor/cadence-rules",
+      "permanent": true
+    },
+    {
+      "source": "/blockchain-development-tutorials/use-AI-to-build-on-flow/flow-data-sources",
+      "destination": "/blockchain-development-tutorials/use-AI-to-build-on-flow/cursor/flow-data-sources",
+      "permanent": true
+    },
+    {
+      "source": "/blockchain-development-tutorials/use-AI-to-build-on-flow/chatgpt",
+      "destination": "/blockchain-development-tutorials/use-AI-to-build-on-flow/llms/chatgpt",
+      "permanent": true
+    },
+    {
+      "source": "/blockchain-development-tutorials/use-AI-to-build-on-flow/claude-code",
+      "destination": "/blockchain-development-tutorials/use-AI-to-build-on-flow/llms/claude-code",
+      "permanent": true
     }
   ]
 }
