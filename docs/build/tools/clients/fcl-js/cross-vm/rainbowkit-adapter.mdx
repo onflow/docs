@@ -26,7 +26,7 @@ Below is a typical usage example that shows how to set up a **RainbowKit** confi
 
 ```ts
 import * as fcl from '@onflow/fcl'
-import { createFclConnector, flowWallet } from '@onflow/fcl-rainbowkit-adapter'
+import { createFclConnector, flowWallet, useIsCadenceWalletConnected } from '@onflow/fcl-rainbowkit-adapter'
 import { connectorsForWallets } from '@rainbow-me/rainbowkit'
 import { flowTestnet } from 'wagmi/chains'
 import { createConfig, http } from 'wagmi'
@@ -60,6 +60,21 @@ export const config = createConfig({
     [flowTestnet.id]: http(),
   }
 });
+
+// In your React component
+function MyApp() {
+  const isCadenceConnected = useIsCadenceWalletConnected(config)
+  
+  return (
+    <div>
+      {isCadenceConnected ? (
+        <p>Cadence wallet is connected!</p>
+      ) : (
+        <p>Please connect your Cadence wallet</p>
+      )}
+    </div>
+  )
+}
 ```
 
 ## API
@@ -73,7 +88,15 @@ export const config = createConfig({
 
 ### `createFclConnector(config?: CreateFclConnectorOptions): Connector`
 
-- A lower-level helper to build your own FCL-based EIP-1193 connectors for RainbowKit if you don’t want the preconfigured `flowWallet`.
+- A lower-level helper to build your own FCL-based EIP-1193 connectors for RainbowKit if you don't want the preconfigured `flowWallet`.
 - **Parameters**
     - `config?: CreateFclConnectorOptions` – typical Wagmi + FCL config object (i.e., chain ID, network URL, FCL services, etc.).
 - **Returns**: A valid Wagmi `Connector` for EVM interactions via FCL.
+
+### `useIsCadenceWalletConnected(config: Config): boolean`
+
+A React hook that monitors the connection status of both FCL (Cadence) and Wagmi accounts to determine whether a Cadence-aware wallet is connected.
+
+- **Parameters**
+    - `config: Config` – The Wagmi configuration object
+- **Returns**: `boolean` – `true` when both Cadence-aware wallet is connected, `false` if no wallet, or an EVM-only wallet is connected.
