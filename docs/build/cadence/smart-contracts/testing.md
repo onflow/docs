@@ -1,6 +1,6 @@
 ---
-title: Testing Your Contracts
-sidebar_label: Testing Your Contracts
+title: Testing Smart Contracts
+sidebar_label: Testing Smart Contracts
 description: Learn comprehensive testing strategies for Flow smart contracts. Master unit testing, integration testing, and code coverage using the Cadence Testing Framework and Flow CLI.
 sidebar_position: 4
 sidebar_custom_props:
@@ -22,6 +22,8 @@ keywords:
   - contract verification
   - testing best practices
 ---
+
+# Testing Smart Contracts
 
 Testing is an essential part of smart contract development to ensure the correctness and reliability of your code. The Cadence Testing Framework provides a convenient way to write tests for your contracts, scripts and transactions which allows you to verify the functionality and correctness of your smart contracts.
 
