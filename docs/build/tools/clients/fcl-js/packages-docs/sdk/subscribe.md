@@ -88,7 +88,10 @@ blockSubscription.unsubscribe();
 
 - Type: 
 ```typescript
-{ node?: string; transport?: SdkTransport; }
+{
+  node?: string;
+  transport?: SdkTransport;
+}
 ```
 - Description: Additional options for the subscription
 

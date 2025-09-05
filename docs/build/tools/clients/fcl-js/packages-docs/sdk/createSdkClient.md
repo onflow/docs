@@ -63,7 +63,33 @@ export interface SdkClientOptions {
 
 ## Returns
 
-`Promise<any>`
+```typescript
+{
+  send: (args?: false | InteractionBuilderFn | (false | InteractionBuilderFn)[], opts?: any) => Promise<any>;
+  subscribe: <T extends SubscriptionTopic>({
+  topic, args, onData, onError
+}: SubscribeParams<T>, opts?: {
+  node?: string;
+  transport?: SdkTransport;
+}) => Subscription;
+  subscribeRaw: <T extends SubscriptionTopic>({
+  topic, args, onData, onError
+}: SubscribeRawParams<T>, opts?: {
+  node?: string;
+  transport?: SdkTransport;
+}) => {
+  unsubscribe: () => void;
+};
+  account: (address: string, {
+  height, id, isSealed
+}?: AccountQueryOptions, opts?: object) => Promise<Account>;
+  block: ({
+  sealed, id, height
+}?: BlockQueryOptions, opts?: object) => Promise<Block>;
+  resolve: (ix: Interaction) => Promise<Interaction>;
+  decode: (response: any) => Promise<any>;
+}
+```
 
 
 A client object with methods to interact with the Flow blockchain.

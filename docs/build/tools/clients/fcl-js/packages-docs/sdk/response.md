@@ -46,7 +46,26 @@ console.log(defaultResponse.block); // null
 ## Returns
 
 ```typescript
-{ tag: any; transaction: any; transactionStatus: any; transactionId: any; encodedData: any; events: any; event: any; accountStatusEvent: any; account: any; block: any; blockHeader: any; blockDigest: any; latestBlock: any; collection: any; networkParameters: any; streamConnection: any; heartbeat: any; nodeVersionInfo: any; }
+{
+  tag: any;
+  transaction: any;
+  transactionStatus: any;
+  transactionId: any;
+  encodedData: any;
+  events: any;
+  event: any;
+  accountStatusEvent: any;
+  account: any;
+  block: any;
+  blockHeader: any;
+  blockDigest: any;
+  latestBlock: any;
+  collection: any;
+  networkParameters: any;
+  streamConnection: any;
+  heartbeat: any;
+  nodeVersionInfo: any;
+}
 ```
 
 

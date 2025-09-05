@@ -75,7 +75,33 @@ console.log(voucher.authorizers); // List of authorizer addresses
 ## Returns
 
 ```typescript
-{ cadence: string; refBlock: string; computeLimit: number; arguments: any[]; proposalKey: { address: string; keyId: string | number; sequenceNum: number; } | { address?: undefined; keyId?: undefined; sequenceNum?: undefined; }; payer: string; authorizers: string[]; payloadSigs: { address: string; keyId: string | number; sig: string; }[]; envelopeSigs: { address: string; keyId: string | number; sig: string; }[]; }
+{
+  cadence: string;
+  refBlock: string;
+  computeLimit: number;
+  arguments: any[];
+  proposalKey: {
+  address: string;
+  keyId: string | number;
+  sequenceNum: number;
+} | {
+  address?: undefined;
+  keyId?: undefined;
+  sequenceNum?: undefined;
+};
+  payer: string;
+  authorizers: string[];
+  payloadSigs: {
+  address: string;
+  keyId: string | number;
+  sig: string;
+}[];
+  envelopeSigs: {
+  address: string;
+  keyId: string | number;
+  sig: string;
+}[];
+}
 ```
 
 

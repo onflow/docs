@@ -90,7 +90,10 @@ rawSubscription.unsubscribe();
 
 - Type: 
 ```typescript
-{ node?: string; transport?: SdkTransport; }
+{
+  node?: string;
+  transport?: SdkTransport;
+}
 ```
 - Description: Additional options for the subscription
 
@@ -102,7 +105,11 @@ rawSubscription.unsubscribe();
 
 ## Returns
 
-`void; }`
+```typescript
+{
+  unsubscribe: () => void;
+}
+```
 
 
 A subscription object with an unsubscribe method

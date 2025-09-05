@@ -90,7 +90,11 @@ If an EventFilter object is provided, it can contain multiple event types and ot
 
 ## Returns
 
-`void; }`
+```typescript
+{
+  subscribe: (onData: (event: Event) => void, onError?: (error: Error) => void) => () => void;
+}
+```
 
 
 An object containing a subscribe method

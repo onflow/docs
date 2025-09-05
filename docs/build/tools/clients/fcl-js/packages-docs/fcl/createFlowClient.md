@@ -7,6 +7,7 @@ description: "createFlowClient function documentation."
 
 # createFlowClient
 
+Creates a Flow client instance with authentication, transaction, and query capabilities.
 
 ## Import
 
@@ -56,11 +57,71 @@ export interface FlowClientConfig {
   customDecoders?: any
 }
 ```
+- Description: Configuration object for the Flow client
 
 
 ## Returns
 
-`Promise<string>`
+```typescript
+{
+  send: (args?: false | InteractionBuilderFn | (false | InteractionBuilderFn)[], opts?: any) => Promise<any>;
+  subscribe: <T extends SubscriptionTopic>({
+  topic, args, onData, onError
+}: SubscribeParams<T>, opts?: {
+  node?: string;
+  transport?: SdkTransport;
+}) => Subscription;
+  subscribeRaw: <T extends SubscriptionTopic>({
+  topic, args, onData, onError
+}: SubscribeRawParams<T>, opts?: {
+  node?: string;
+  transport?: SdkTransport;
+}) => {
+  unsubscribe: () => void;
+};
+  account: (address: string, {
+  height, id, isSealed
+}?: AccountQueryOptions, opts?: object) => Promise<Account>;
+  block: ({
+  sealed, id, height
+}?: BlockQueryOptions, opts?: object) => Promise<Block>;
+  resolve: (ix: Interaction) => Promise<Interaction>;
+  decode: (response: any) => Promise<any>;
+  currentUser: CurrentUserServiceApi;
+  mutate: (opts?: MutateOptions) => Promise<string>;
+  query: (opts?: QueryOptions) => Promise<any>;
+  queryRaw: (opts?: QueryOptions) => Promise<any>;
+  verifyUserSignatures: (message: string, compSigs: CompositeSignature[], opts?: VerifySignaturesScriptOptions) => Promise<boolean>;
+  getChainId: (opts?: GetChainIdOptions) => Promise<string>;
+  tx: {
+  (transactionId: string, opts?: {
+  pollRate?: number;
+  txNotFoundTimeout?: number;
+}): {
+  snapshot: () => Promise<TransactionStatus>;
+  subscribe: (onData: (txStatus: TransactionStatus) => void, onError?: (err: Error) => void) => () => void;
+  onceFinalized: () => Promise<TransactionStatus>;
+  onceExecuted: () => Promise<TransactionStatus>;
+  onceSealed: () => Promise<TransactionStatus>;
+};
+  isUnknown: (ix: Interaction) => boolean;
+  isPending: (tx: TransactionStatus) => boolean;
+  isFinalized: (tx: TransactionStatus) => boolean;
+  isExecuted: (tx: TransactionStatus) => boolean;
+  isSealed: (tx: TransactionStatus) => boolean;
+  isExpired: (tx: TransactionStatus) => boolean;
+};
+  events: (filterOrType?: string | EventFilter) => {
+  subscribe: (onData: (event: Event) => void, onError?: (error: Error) => void) => () => void;
+};
+  authenticate: (opts?: AuthenticationOptions) => Promise<CurrentUser>;
+  unauthenticate: () => void;
+  signUserMessage: (msg: string) => Promise<CompositeSignature[]>;
+  serialize: (args: (false | InteractionBuilderFn)[] | Interaction, opts?: SerializeOptions) => Promise<string>;
+}
+```
 
+
+A Flow client object with many methods for interacting with the Flow blockchain
 
 ---

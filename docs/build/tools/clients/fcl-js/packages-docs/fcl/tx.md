@@ -102,7 +102,10 @@ Flow transaction hash (64 bytes represented as hex string).
 
 - Type: 
 ```typescript
-{ pollRate?: number; txNotFoundTimeout?: number; }
+{
+  pollRate?: number;
+  txNotFoundTimeout?: number;
+}
 ```
 - Description: Optional configuration parameters
 
@@ -115,7 +118,15 @@ not found errors during initial transaction propagation (do not modify unless yo
 
 ## Returns
 
-[`Promise<TransactionStatus>`](../types#transactionstatus)
+```typescript
+{
+  snapshot: () => Promise<TransactionStatus>;
+  subscribe: (onData: (txStatus: TransactionStatus) => void, onError?: (err: Error) => void) => () => void;
+  onceFinalized: () => Promise<TransactionStatus>;
+  onceExecuted: () => Promise<TransactionStatus>;
+  onceSealed: () => Promise<TransactionStatus>;
+}
+```
 
 
 Transaction monitor object with methods for tracking transaction status
