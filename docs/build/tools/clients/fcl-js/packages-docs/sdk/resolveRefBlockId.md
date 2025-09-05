@@ -35,7 +35,9 @@ resolveRefBlockId(opts)
 
 - Type: 
 ```typescript
-{ [key: string]: any; }
+{
+  [key: string]: any;
+}
 ```
 - Description: Optional configuration parameters
 

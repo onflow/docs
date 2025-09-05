@@ -1,9 +1,9 @@
 ---
-title: 'getEvents'
-description: 'getEvents function documentation.'
+title: "getEvents"
+description: "getEvents function documentation."
 ---
 
-<!-- THIS DOCUMENT IS AUTO-GENERATED FROM [onflow/fcl/../sdk/src/build/cadence/build-get-events.ts](https://github.com/onflow/fcl-js/tree/master/packages/fcl/../sdk/src/build/cadence/build-get-events.ts). DO NOT EDIT MANUALLY -->
+<!-- THIS DOCUMENT IS AUTO-GENERATED FROM [onflow/fcl/../sdk/src/build/build-get-events.ts](https://github.com/onflow/fcl-js/tree/master/packages/fcl/../sdk/src/build/build-get-events.ts). DO NOT EDIT MANUALLY -->
 
 # getEvents
 
@@ -17,62 +17,65 @@ This function queries for events of a specific type within a range of block heig
 You can import the entire package and access the function:
 
 ```typescript
-import * as fcl from '@onflow/fcl';
+import * as fcl from "@onflow/fcl"
 
-fcl.getEvents(eventType, start, end);
+fcl.getEvents(eventType, start, end)
 ```
 
 Or import directly the specific function:
 
 ```typescript
-import { getEvents } from '@onflow/fcl';
+import { getEvents } from "@onflow/fcl"
 
-getEvents(eventType, start, end);
+getEvents(eventType, start, end)
 ```
 
 ## Usage
 
 ```typescript
-import * as fcl from '@onflow/fcl';
+import * as fcl from "@onflow/fcl";
 
 // Get FlowToken transfer events from blocks 1000 to 2000
-const events = await fcl
-  .send([
-    fcl.getEvents('A.1654653399040a61.FlowToken.TokensDeposited', 1000, 2000),
-  ])
-  .then(fcl.decode);
+const events = await fcl.send([
+  fcl.getEvents("A.1654653399040a61.FlowToken.TokensDeposited", 1000, 2000)
+]).then(fcl.decode);
 
-console.log('Found events:', events.length);
-events.forEach((event) => {
-  console.log('Event data:', event.data);
-  console.log('Transaction ID:', event.transactionId);
+console.log("Found events:", events.length);
+events.forEach(event => {
+  console.log("Event data:", event.data);
+  console.log("Transaction ID:", event.transactionId);
 });
 ```
 
 ## Parameters
 
-### `eventType`
+### `eventType` 
+
 
 - Type: `string`
 - Description: The type of event to get (e.g., "A.1654653399040a61.FlowToken.TokensWithdrawn")
 
-### `start`
+### `start` 
+
 
 - Type: `number`
 - Description: The start block height to query from
 
-### `end`
+### `end` 
+
 
 - Type: `number`
 - Description: The end block height to query to
+
 
 ## Returns
 
 ```typescript
 export type InteractionBuilderFn = (
-  ix: Interaction,
-) => Interaction | Promise<Interaction>;
+  ix: Interaction
+) => Interaction | Promise<Interaction>
 ```
+
 
 A function that processes an interaction object
 
