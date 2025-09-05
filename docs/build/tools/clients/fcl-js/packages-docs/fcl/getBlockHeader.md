@@ -1,9 +1,9 @@
 ---
-title: 'getBlockHeader'
-description: 'getBlockHeader function documentation.'
+title: "getBlockHeader"
+description: "getBlockHeader function documentation."
 ---
 
-<!-- THIS DOCUMENT IS AUTO-GENERATED FROM [onflow/fcl/../sdk/src/build/cadence/build-get-block-header.ts](https://github.com/onflow/fcl-js/tree/master/packages/fcl/../sdk/src/build/cadence/build-get-block-header.ts). DO NOT EDIT MANUALLY -->
+<!-- THIS DOCUMENT IS AUTO-GENERATED FROM [onflow/fcl/../sdk/src/build/build-get-block-header.ts](https://github.com/onflow/fcl-js/tree/master/packages/fcl/../sdk/src/build/build-get-block-header.ts). DO NOT EDIT MANUALLY -->
 
 # getBlockHeader
 
@@ -20,58 +20,62 @@ Use with 'fcl.atBlockId()' and 'fcl.atBlockHeight()' when building the interacti
 You can import the entire package and access the function:
 
 ```typescript
-import * as fcl from '@onflow/fcl';
+import * as fcl from "@onflow/fcl"
 
-fcl.getBlockHeader(isSealed);
+fcl.getBlockHeader(isSealed)
 ```
 
 Or import directly the specific function:
 
 ```typescript
-import { getBlockHeader } from '@onflow/fcl';
+import { getBlockHeader } from "@onflow/fcl"
 
-getBlockHeader(isSealed);
+getBlockHeader(isSealed)
 ```
 
 ## Usage
 
 ```typescript
-import * as fcl from '@onflow/fcl';
+import * as fcl from "@onflow/fcl";
 
 // Get latest sealed block header
-const sealedHeader = await fcl
-  .send([fcl.getBlockHeader(true)])
-  .then(fcl.decode);
+const sealedHeader = await fcl.send([
+  fcl.getBlockHeader(true)
+]).then(fcl.decode);
 
-console.log('Block height:', sealedHeader.height);
-console.log('Block timestamp:', sealedHeader.timestamp);
-console.log('Parent block ID:', sealedHeader.parentId);
+console.log("Block height:", sealedHeader.height);
+console.log("Block timestamp:", sealedHeader.timestamp);
+console.log("Parent block ID:", sealedHeader.parentId);
 
 // Get header for specific block
-const blockHeader = await fcl
-  .send([fcl.getBlockHeader(), fcl.atBlockHeight(12345)])
-  .then(fcl.decode);
+const blockHeader = await fcl.send([
+  fcl.getBlockHeader(),
+  fcl.atBlockHeight(12345)
+]).then(fcl.decode);
 
 // Get latest finalized block header
-const finalizedHeader = await fcl
-  .send([fcl.getBlockHeader(false)])
-  .then(fcl.decode);
+const finalizedHeader = await fcl.send([
+  fcl.getBlockHeader(false)
+]).then(fcl.decode);
 ```
 
 ## Parameters
 
 ### `isSealed` (optional)
 
+
 - Type: `boolean`
 - Description: Block finality state, true for sealed blocks, false for finalized blocks, null for latest
+
 
 ## Returns
 
 ```typescript
 export type InteractionBuilderFn = (
-  ix: Interaction,
-) => Interaction | Promise<Interaction>;
+  ix: Interaction
+) => Interaction | Promise<Interaction>
 ```
+
 
 A function that processes an interaction object
 

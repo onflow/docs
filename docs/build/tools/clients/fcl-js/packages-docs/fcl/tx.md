@@ -3,7 +3,7 @@ title: "tx"
 description: "tx function documentation."
 ---
 
-<!-- THIS DOCUMENT IS AUTO-GENERATED FROM [onflow/fcl/src/fcl.ts](https://github.com/onflow/fcl-js/tree/master/packages/fcl/src/fcl.ts). DO NOT EDIT MANUALLY -->
+<!-- THIS DOCUMENT IS AUTO-GENERATED FROM [onflow/fcl/../fcl-core/src/transaction/transaction.ts](https://github.com/onflow/fcl-js/tree/master/packages/fcl/../fcl-core/src/transaction/transaction.ts). DO NOT EDIT MANUALLY -->
 
 # tx
 

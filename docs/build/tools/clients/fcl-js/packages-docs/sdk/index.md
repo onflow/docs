@@ -1,6 +1,6 @@
 ---
-title: '@onflow/sdk'
-description: 'Low-level JavaScript/TypeScript SDK for interacting with the Flow blockchain.'
+title: "@onflow/sdk"
+description: "Low-level JavaScript/TypeScript SDK for interacting with the Flow blockchain."
 ---
 
 <!-- THIS DOCUMENT IS AUTO-GENERATED FROM [onflow/sdk](https://github.com/onflow/fcl-js/tree/master/packages/sdk). DO NOT EDIT MANUALLY -->
@@ -34,13 +34,13 @@ yarn add @onflow/sdk
 You can import the entire package:
 
 ```typescript
-import * as sdk from '@onflow/sdk';
+import * as sdk from "@onflow/sdk"
 ```
 
 Or import specific functions:
 
 ```typescript
-import { functionName } from '@onflow/sdk';
+import { functionName } from "@onflow/sdk"
 ```
 
 ## Connect
@@ -50,11 +50,11 @@ By default, the library uses HTTP to communicate with the access nodes and it mu
 Example:
 
 ```typescript
-import { config } from '@onflow/fcl';
+import { config } from "@onflow/fcl"
 
 config({
-  'accessNode.api': 'https://rest-testnet.onflow.org',
-});
+  "accessNode.api": "https://rest-testnet.onflow.org"
+})
 ```
 
 ## Querying the Flow Network
@@ -93,7 +93,7 @@ A proposal key contains three fields:
 - Key index
 - Sequence number
 
-A transaction is only valid if its declared sequence number matches the current onchain sequence number for that key. The sequence number increments by one after the transaction is executed.
+A transaction is only valid if its declared sequence number matches the current on-chain sequence number for that key. The sequence number increments by one after the transaction is executed.
 
 **Payer** is the account that pays the fees for the transaction. A transaction must specify exactly one payer. The payer is only responsible for paying the network and gas fees; the transaction is not authorized to access resources or code stored in the payer account.
 
@@ -200,4 +200,4 @@ This section contains documentation for all of the functions and namespaces in t
 - [voucherToTxId](./voucherToTxId.md) - Converts a voucher object to a transaction ID. This function computes the...
 - [why](./why.md) - Returns the reason for an interaction failure.
 
----
+--- 

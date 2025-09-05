@@ -1,9 +1,9 @@
 ---
-title: 'authorizations'
-description: 'authorizations function documentation.'
+title: "authorizations"
+description: "authorizations function documentation."
 ---
 
-<!-- THIS DOCUMENT IS AUTO-GENERATED FROM [onflow/sdk/src/build/cadence/build-authorizations.ts](https://github.com/onflow/fcl-js/tree/master/packages/sdk/src/build/cadence/build-authorizations.ts). DO NOT EDIT MANUALLY -->
+<!-- THIS DOCUMENT IS AUTO-GENERATED FROM [onflow/sdk/src/build/build-authorizations.ts](https://github.com/onflow/fcl-js/tree/master/packages/sdk/src/build/build-authorizations.ts). DO NOT EDIT MANUALLY -->
 
 # authorizations
 
@@ -19,23 +19,23 @@ Read more about [transaction roles](https://docs.onflow.org/concepts/transaction
 You can import the entire package and access the function:
 
 ```typescript
-import * as sdk from '@onflow/sdk';
+import * as sdk from "@onflow/sdk"
 
-sdk.authorizations(ax);
+sdk.authorizations(ax)
 ```
 
 Or import directly the specific function:
 
 ```typescript
-import { authorizations } from '@onflow/sdk';
+import { authorizations } from "@onflow/sdk"
 
-authorizations(ax);
+authorizations(ax)
 ```
 
 ## Usage
 
 ```typescript
-import * as fcl from '@onflow/fcl';
+import * as fcl from "@onflow/fcl";
 
 // Single authorizer (most common case)
 await fcl.mutate({
@@ -46,7 +46,7 @@ await fcl.mutate({
       }
     }
   `,
-  authorizations: [fcl.authz], // Current user authorization
+  authorizations: [fcl.authz] // Current user authorization
 });
 
 // Multiple authorizers - both accounts must approve
@@ -58,7 +58,7 @@ await fcl.mutate({
       }
     }
   `,
-  authorizations: [userOneAuthz, userTwoAuthz],
+  authorizations: [userOneAuthz, userTwoAuthz]
 });
 
 // Using builder pattern
@@ -73,7 +73,7 @@ await fcl.send([
   fcl.authorizations([fcl.authz]),
   fcl.proposer(fcl.authz),
   fcl.payer(fcl.authz),
-  fcl.limit(100),
+  fcl.limit(100)
 ]);
 ```
 
@@ -81,23 +81,24 @@ await fcl.send([
 
 ### `ax` (optional)
 
-- Type:
 
+- Type: 
 ```typescript
 export type AccountAuthorization =
   | (AuthorizationFn & Partial<InteractionAccount>)
-  | Partial<InteractionAccount>;
+  | Partial<InteractionAccount>
 ```
-
 - Description: An array of authorization functions that produce account authorization details
+
 
 ## Returns
 
 ```typescript
 export type InteractionBuilderFn = (
-  ix: Interaction,
-) => Interaction | Promise<Interaction>;
+  ix: Interaction
+) => Interaction | Promise<Interaction>
 ```
+
 
 A function that processes an interaction object
 

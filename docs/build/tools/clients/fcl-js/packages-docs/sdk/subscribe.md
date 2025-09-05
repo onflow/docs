@@ -74,11 +74,14 @@ blockSubscription.unsubscribe();
 
 ### `subscribeParams` 
 
+- Type: `SubscribeParams<T>`
 
-- Type: 
-```typescript
-SubscribeParams<T>
-```
+#### Properties:
+
+- **`topic`**  - Type: `T` - The topic to subscribe to.
+- **`args`**  - Type: `SubscriptionArgs<T>` - The arguments for the subscription.
+- **`onData`**  - Type: `(data: SubscriptionData<T>) => void` - The callback to call when data is received.
+- **`onError`**  - Type: `(error: Error) => void` - The callback to call when a fatal error occurs.
 
 ### `opts` (optional)
 
