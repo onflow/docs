@@ -3,7 +3,7 @@ title: "getTransaction"
 description: "getTransaction function documentation."
 ---
 
-<!-- THIS DOCUMENT IS AUTO-GENERATED FROM [onflow/sdk/src/sdk.ts](https://github.com/onflow/fcl-js/tree/master/packages/sdk/src/sdk.ts). DO NOT EDIT MANUALLY -->
+<!-- THIS DOCUMENT IS AUTO-GENERATED FROM [onflow/sdk/src/build/build-get-transaction.ts](https://github.com/onflow/fcl-js/tree/master/packages/sdk/src/build/build-get-transaction.ts). DO NOT EDIT MANUALLY -->
 
 # getTransaction
 

@@ -43,7 +43,18 @@ Record<string, unknown>
 ## Returns
 
 ```typescript
-{ put: typeof put; get: typeof get; all: typeof all; first: typeof first; update: typeof update; delete: typeof _delete; where: typeof where; subscribe: typeof subscribe; overload: typeof overload; load: typeof load; }
+{
+  put: typeof put;
+  get: typeof get;
+  all: typeof all;
+  first: typeof first;
+  update: typeof update;
+  delete: typeof _delete;
+  where: typeof where;
+  subscribe: typeof subscribe;
+  overload: typeof overload;
+  load: typeof load;
+}
 ```
 
 

@@ -3,7 +3,7 @@ title: "tx"
 description: "tx function documentation."
 ---
 
-<!-- THIS DOCUMENT IS AUTO-GENERATED FROM [onflow/fcl/src/fcl.ts](https://github.com/onflow/fcl-js/tree/master/packages/fcl/src/fcl.ts). DO NOT EDIT MANUALLY -->
+<!-- THIS DOCUMENT IS AUTO-GENERATED FROM [onflow/fcl/../fcl-core/src/transaction/transaction.ts](https://github.com/onflow/fcl-js/tree/master/packages/fcl/../fcl-core/src/transaction/transaction.ts). DO NOT EDIT MANUALLY -->
 
 # tx
 
@@ -102,7 +102,10 @@ Flow transaction hash (64 bytes represented as hex string).
 
 - Type: 
 ```typescript
-{ pollRate?: number; txNotFoundTimeout?: number; }
+{
+  pollRate?: number;
+  txNotFoundTimeout?: number;
+}
 ```
 - Description: Optional configuration parameters
 
@@ -115,7 +118,15 @@ not found errors during initial transaction propagation (do not modify unless yo
 
 ## Returns
 
-[`Promise<TransactionStatus>`](../types#transactionstatus)
+```typescript
+{
+  snapshot: () => Promise<TransactionStatus>;
+  subscribe: (onData: (txStatus: TransactionStatus) => void, onError?: (err: Error) => void) => () => void;
+  onceFinalized: () => Promise<TransactionStatus>;
+  onceExecuted: () => Promise<TransactionStatus>;
+  onceSealed: () => Promise<TransactionStatus>;
+}
+```
 
 
 Transaction monitor object with methods for tracking transaction status

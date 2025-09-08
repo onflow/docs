@@ -1,9 +1,9 @@
 ---
-title: 'getCollection'
-description: 'getCollection function documentation.'
+title: "getCollection"
+description: "getCollection function documentation."
 ---
 
-<!-- THIS DOCUMENT IS AUTO-GENERATED FROM [onflow/sdk/src/build/cadence/build-get-collection.ts](https://github.com/onflow/fcl-js/tree/master/packages/sdk/src/build/cadence/build-get-collection.ts). DO NOT EDIT MANUALLY -->
+<!-- THIS DOCUMENT IS AUTO-GENERATED FROM [onflow/sdk/src/build/build-get-collection.ts](https://github.com/onflow/fcl-js/tree/master/packages/sdk/src/build/build-get-collection.ts). DO NOT EDIT MANUALLY -->
 
 # getCollection
 
@@ -20,43 +20,39 @@ The collection ID provided must be from the current spork. Collections from past
 You can import the entire package and access the function:
 
 ```typescript
-import * as sdk from '@onflow/sdk';
+import * as sdk from "@onflow/sdk"
 
-sdk.getCollection(id);
+sdk.getCollection(id)
 ```
 
 Or import directly the specific function:
 
 ```typescript
-import { getCollection } from '@onflow/sdk';
+import { getCollection } from "@onflow/sdk"
 
-getCollection(id);
+getCollection(id)
 ```
 
 ## Usage
 
 ```typescript
-import * as fcl from '@onflow/fcl';
+import * as fcl from "@onflow/fcl";
 
 // Get a collection and see what transactions it contains
-const collection = await fcl
-  .send([
-    fcl.getCollection(
-      'cccdb0c67d015dc7f6444e8f62a3244ed650215ed66b90603006c70c5ef1f6e5',
-    ),
-  ])
-  .then(fcl.decode);
+const collection = await fcl.send([
+  fcl.getCollection("cccdb0c67d015dc7f6444e8f62a3244ed650215ed66b90603006c70c5ef1f6e5")
+]).then(fcl.decode);
 
-console.log('Collection ID:', collection.id);
-console.log('Transaction IDs:', collection.transactionIds);
-console.log('Total transactions:', collection.transactionIds.length);
+console.log("Collection ID:", collection.id);
+console.log("Transaction IDs:", collection.transactionIds);
+console.log("Total transactions:", collection.transactionIds.length);
 
 // Process each transaction in the collection
 for (const txId of collection.transactionIds) {
-  const transaction = await fcl
-    .send([fcl.getTransaction(txId)])
-    .then(fcl.decode);
-  console.log('Transaction:', transaction);
+  const transaction = await fcl.send([
+    fcl.getTransaction(txId)
+  ]).then(fcl.decode);
+  console.log("Transaction:", transaction);
 }
 ```
 
@@ -64,15 +60,18 @@ for (const txId of collection.transactionIds) {
 
 ### `id` (optional)
 
+
 - Type: `string`
+
 
 ## Returns
 
 ```typescript
 export type InteractionBuilderFn = (
-  ix: Interaction,
-) => Interaction | Promise<Interaction>;
+  ix: Interaction
+) => Interaction | Promise<Interaction>
 ```
+
 
 A function that processes an interaction object
 

@@ -3,13 +3,13 @@ title: "transaction"
 description: "transaction function documentation."
 ---
 
-<!-- THIS DOCUMENT IS AUTO-GENERATED FROM [onflow/fcl/src/fcl.ts](https://github.com/onflow/fcl-js/tree/master/packages/fcl/src/fcl.ts). DO NOT EDIT MANUALLY -->
+<!-- THIS DOCUMENT IS AUTO-GENERATED FROM [onflow/fcl/../fcl-core/src/transaction/transaction.ts](https://github.com/onflow/fcl-js/tree/master/packages/fcl/../fcl-core/src/transaction/transaction.ts). DO NOT EDIT MANUALLY -->
 
 # transaction
 
-A template builder to use a Cadence transaction for an interaction. FCL "mutate" does the work of building, signing, and sending a transaction behind the scenes.
-
-Flow supports great flexibility when it comes to transaction signing, we can define multiple authorizers (multi-sig transactions) and have different payer account than proposer.
+Creates a transaction monitor that provides methods for tracking and subscribing to
+transaction status updates on the Flow blockchain. This function returns an object with methods
+to get snapshots, subscribe to status changes, and wait for specific transaction states.
 
 ## Import
 
@@ -18,7 +18,7 @@ You can import the entire package and access the function:
 ```typescript
 import * as fcl from "@onflow/fcl"
 
-fcl.transaction(args)
+fcl.transaction(transactionId, opts)
 ```
 
 Or import directly the specific function:
@@ -26,78 +26,109 @@ Or import directly the specific function:
 ```typescript
 import { transaction } from "@onflow/fcl"
 
-transaction(args)
+transaction(transactionId, opts)
 ```
 
 ## Usage
 
 ```typescript
+// Basic transaction monitoring
 import * as fcl from "@onflow/fcl"
 
-// Basic transaction usage
-await fcl.mutate({
-  cadence: `
-    transaction(a: Int) {
-      prepare(acct: &Account) {
-        log(acct)
-        log(a)
-      }
-    }
-  `,
-  args: (arg, t) => [
-    arg(6, t.Int)
-  ],
-  limit: 50
-})
-
-// Single party, single signature
-// Proposer, payer and authorizer are the same account
-await fcl.mutate({
+const txId = await fcl.mutate({
   cadence: `
     transaction {
-      prepare(acct: &Account) {}
+      execute { log("Hello, World!") }
     }
-  `,
-  authz: currentUser, // Optional. Will default to currentUser if not provided.
-  limit: 50,
+  `
 })
 
-// Multiple parties
-// Proposer and authorizer are the same account, but different payer
-await fcl.mutate({
-  cadence: `
-    transaction {
-      prepare(acct: &Account) {}
-    }
-  `,
-  proposer: authzFn,
-  payer: authzTwoFn,
-  authorizations: [authzFn],
-  limit: 50,
+// Get current status
+const status = await fcl.tx(txId).snapshot()
+console.log("Current status:", status.status)
+
+// Subscribe to all status changes
+const unsubscribe = fcl.tx(txId).subscribe((status) => {
+  console.log("Status update:", status.status)
+  if (status.status === fcl.transaction.isSealed) {
+    console.log("Transaction sealed!")
+    console.log("Events:", status.events)
+  }
 })
+// Clean up subscription when done
+setTimeout(() => unsubscribe(), 60000)
+
+// Wait for specific transaction states
+try {
+  // Wait for finalization (consensus reached)
+  const finalizedStatus = await fcl.tx(txId).onceFinalized()
+  console.log("Transaction finalized")
+
+  // Wait for execution (transaction executed)
+  const executedStatus = await fcl.tx(txId).onceExecuted()
+  console.log("Transaction executed")
+
+  // Wait for sealing (transaction sealed in block)
+  const sealedStatus = await fcl.tx(txId).onceSealed()
+  console.log("Transaction sealed:", sealedStatus.events)
+} catch (error) {
+  console.error("Transaction failed:", error.message)
+}
+
+// Handle transaction errors
+fcl.tx(txId).subscribe(
+  (status) => {
+    if (status.statusCode === 1) {
+      console.error("Transaction error:", status.errorMessage)
+    }
+  },
+  (error) => {
+    console.error("Subscription error:", error)
+  }
+)
 ```
 
 ## Parameters
 
-### `args` (optional)
+### `transactionId` 
+
+
+- Type: `string`
+- Description: The 64-character hex transaction ID to monitor. Must be a valid
+Flow transaction hash (64 bytes represented as hex string).
+
+### `opts` (optional)
 
 
 - Type: 
 ```typescript
-[string | TemplateStringsArray, ...any[]]
+{
+  pollRate?: number;
+  txNotFoundTimeout?: number;
+}
 ```
-- Description: The arguments to pass to the template
+- Description: Optional configuration parameters
+
+#### Properties:
+
+- **`pollRate`**  - Polling rate in milliseconds when using legacy polling fallback
+- **`txNotFoundTimeout`**  - Timeout in milliseconds for ignoring transaction
+not found errors during initial transaction propagation (do not modify unless you know what you are doing)
 
 
 ## Returns
 
 ```typescript
-export type InteractionBuilderFn = (
-  ix: Interaction
-) => Interaction | Promise<Interaction>
+{
+  snapshot: () => Promise<TransactionStatus>;
+  subscribe: (onData: (txStatus: TransactionStatus) => void, onError?: (err: Error) => void) => () => void;
+  onceFinalized: () => Promise<TransactionStatus>;
+  onceExecuted: () => Promise<TransactionStatus>;
+  onceSealed: () => Promise<TransactionStatus>;
+}
 ```
 
 
-A function that processes an interaction object
+Transaction monitor object with methods for tracking transaction status
 
 ---

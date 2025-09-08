@@ -1,9 +1,9 @@
 ---
-title: 'getNetworkParameters'
-description: 'getNetworkParameters function documentation.'
+title: "getNetworkParameters"
+description: "getNetworkParameters function documentation."
 ---
 
-<!-- THIS DOCUMENT IS AUTO-GENERATED FROM [onflow/fcl/../sdk/src/build/cadence/build-get-network-parameters.ts](https://github.com/onflow/fcl-js/tree/master/packages/fcl/../sdk/src/build/cadence/build-get-network-parameters.ts). DO NOT EDIT MANUALLY -->
+<!-- THIS DOCUMENT IS AUTO-GENERATED FROM [onflow/fcl/../sdk/src/build/build-get-network-parameters.ts](https://github.com/onflow/fcl-js/tree/master/packages/fcl/../sdk/src/build/build-get-network-parameters.ts). DO NOT EDIT MANUALLY -->
 
 # getNetworkParameters
 
@@ -18,45 +18,49 @@ This information is crucial for ensuring transactions are submitted to the corre
 You can import the entire package and access the function:
 
 ```typescript
-import * as fcl from '@onflow/fcl';
+import * as fcl from "@onflow/fcl"
 
-fcl.getNetworkParameters();
+fcl.getNetworkParameters()
 ```
 
 Or import directly the specific function:
 
 ```typescript
-import { getNetworkParameters } from '@onflow/fcl';
+import { getNetworkParameters } from "@onflow/fcl"
 
-getNetworkParameters();
+getNetworkParameters()
 ```
 
 ## Usage
 
 ```typescript
-import * as fcl from '@onflow/fcl';
+import * as fcl from "@onflow/fcl";
 
 // Get network parameters to verify chain ID
-const params = await fcl.send([fcl.getNetworkParameters()]).then(fcl.decode);
+const params = await fcl.send([
+  fcl.getNetworkParameters()
+]).then(fcl.decode);
 
-console.log('Chain ID:', params.chainId);
-console.log('Network:', params.name);
+console.log("Chain ID:", params.chainId);
+console.log("Network:", params.name);
 
 // Use this to verify you're connected to the right network
-if (params.chainId === 'flow-mainnet') {
-  console.log('Connected to Flow Mainnet');
-} else if (params.chainId === 'flow-testnet') {
-  console.log('Connected to Flow Testnet');
+if (params.chainId === "flow-mainnet") {
+  console.log("Connected to Flow Mainnet");
+} else if (params.chainId === "flow-testnet") {
+  console.log("Connected to Flow Testnet");
 }
 ```
+
 
 ## Returns
 
 ```typescript
 export type InteractionBuilderFn = (
-  ix: Interaction,
-) => Interaction | Promise<Interaction>;
+  ix: Interaction
+) => Interaction | Promise<Interaction>
 ```
+
 
 A function that processes an interaction object
 
