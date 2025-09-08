@@ -1177,7 +1177,7 @@ func main() {
 }
 ```
 
-### Stream Events
+## Stream Events
 
 [<img src="https://raw.githubusercontent.com/onflow/sdks/main/templates/documentation/ref.svg" width="130" />](https://pkg.go.dev/github.com/onflow/flow-go-sdk/client#Client.SubscribeEventsByBlockID)
 
@@ -1189,7 +1189,7 @@ Subscribe to and stream events from an Access node using the SDK subscription pr
 // Minimal walkthrough (based on examples/stream_events/main.go)
 ctx := context.Background()
 
-// 1) Create a client (gRPC or HTTP)
+// 1) Create a client (SubscribeEvents only supported by Flow Go SDK gRPC client)
 flowClient, err := grpc.NewClient(grpc.TestnetHost)
 // handle err
 
