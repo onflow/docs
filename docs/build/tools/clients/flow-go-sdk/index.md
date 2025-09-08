@@ -1176,3 +1176,61 @@ func main() {
     }
 }
 ```
+
+## Stream Events
+
+[<img src="https://raw.githubusercontent.com/onflow/sdks/main/templates/documentation/ref.svg" width="130" />](https://pkg.go.dev/github.com/onflow/flow-go-sdk/client#Client.SubscribeEventsByBlockID)
+
+Subscribe to and stream events from an Access node using the SDK subscription primitives. The canonical example demonstrates a complete runnable implementation that connects to an access node, subscribes from a reference block, and processes an event stream.
+
+**[<img src="https://raw.githubusercontent.com/onflow/sdks/main/templates/documentation/try.svg" width="130" />](https://github.com/onflow/flow-go-sdk/blob/master/examples/stream_events/main.go)**
+
+```go
+// Minimal walkthrough (based on examples/stream_events/main.go)
+ctx := context.Background()
+
+// 1) Create a client (SubscribeEvents only supported by Flow Go SDK gRPC client)
+flowClient, err := grpc.NewClient(grpc.TestnetHost)
+// handle err
+
+// 2) Obtain a reference block/header to start the subscription from
+header, err := flowClient.GetLatestBlockHeader(ctx, true)
+// handle err
+
+// 3) Subscribe for events by block ID (returns data channel, error channel, init error)
+dataCh, errCh, initErr := flowClient.SubscribeEventsByBlockID(ctx, header.ID, flow.EventFilter{})
+if initErr != nil {
+    // handle init error
+}
+
+// 4) Process the stream (select loop)
+for {
+    select {
+    case <-ctx.Done():
+        // graceful shutdown
+        return
+    case data, ok := <-dataCh:
+        if !ok {
+            // subscription closed; reconnect / exponential back-off
+            return
+        }
+        // data contains block-level payload with Events
+        for _, ev := range data.Events {
+            fmt.Printf("Type: %s\n", ev.Type)
+            fmt.Printf("Values: %v\n", ev.Value)
+            fmt.Printf("Transaction ID: %s\n", ev.TransactionID)
+        }
+    case err := <-errCh:
+        if err != nil {
+            // handle streaming error (log, reconnect / exponential back-off)
+        }
+    }
+}
+```
+
+Notes & best practices
+
+- Use `flow.EventFilter` to subscribe only to event types / contracts you need to reduce bandwidth.
+- Persist the last processed block ID/height to resume after restarts; resume subscriptions from a checkpoint.
+- Treat empty payloads/heartbeats as liveness; implement reconnect and exponential back-off on termination.
+- For historical backfills use `GetEventsForBlockIDs` / `GetEventsForBlockRange` instead of live streaming.
