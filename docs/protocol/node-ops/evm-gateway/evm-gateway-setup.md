@@ -39,6 +39,10 @@ Alternatively, you can also choose from any of the following providers who provi
 3. [Moralis](https://docs.moralis.com/web3-data-api/evm/chains/flow)
 4. [QuickNode](https://www.quicknode.com/chains/flow)
 
+## Gas Sponsorship
+
+Custom EVM Gateways can be set up to sponsor all gas for all EVM transactions passed through them. See the tutorial for [Gas Free EVM Endpoint](../../../blockchain-development-tutorials/gasless-transactions/gas-free-evm-endpoint.md) for more details.
+
 ## Hardware specifications
 
 The EVM Gateway is a lightweight node which runs on commodity hardware and cloud VMs. It can be run on GCP **standard** and AWS **large**
