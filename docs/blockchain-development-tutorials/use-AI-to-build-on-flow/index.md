@@ -36,6 +36,12 @@ In this tutorial series, you'll discover how to:
 
 # AI Tutorials for Flow
 
+## Using Claude Code with Flow
+
+Master systematic AI-powered Flow development with Claude Code, a terminal-integrated coding assistant designed for iterative blockchain development. This comprehensive guide teaches you to implement a four-stage development methodology (Idea → Visualization → Planning → Build) while leveraging unlimited context windows, subagent capabilities, and persistent project memory. Learn to configure CLAUDE.md files for Flow-specific instructions, integrate MCP servers for blockchain interactions, and implement checkpoint-based workflows that ensure reliable smart contract development from emulator to mainnet deployment.
+
+Tutorial: [Claude Code for Flow Development]
+
 ## Using Cursor with Flow
 
 This guide details how you can set up the Cursor AI code editor with custom Flow knowledge bases, transforming it into a specialized assistant for building powerful applications on the Flow network. By providing the AI with direct access to the official Flow documentation, Cadence language references, and best-practice examples, you unlock a new tier of intelligent assistance that goes far beyond simple autocompletion
@@ -103,6 +109,7 @@ Flow is the ideal platform for AI-enhanced blockchain development. The combinati
 
 <!-- Relative links. Will not render on the page -->
 
+[Claude Code for Flow Development]: ./llms/claude-code.md
 [Use Flow Knowledge Base in Cursor]: ./cursor/index.md
 [Use Flow Knowledge Base in ChatGPT]: ./llms/chatgpt.md
 [Data Sources]: ./cursor/flow-data-sources.md
