@@ -68,7 +68,7 @@ const QuickStartShowcase: React.FC = () => {
     >
       <div className="flex items-center justify-between mb-4">
         <h2 className="text-xl font-semibold text-gray-800 dark:text-gray-200">
-           Try it live
+           Try Cadence Live
         </h2>
       </div>
       <div 
