@@ -1,6 +1,7 @@
 import React from 'react';
 import PageBackground from '../shared/PageBackground';
 import { buildGridData } from './GridData/BuildGridData';
+import ToolsSection from './ToolsSection';
 import GrowSection from './GrowSection';
 import HeroSection from './HeroSection';
 import FeatureSection from './FeatureSection';
@@ -21,6 +22,8 @@ const HomePage = ({}: HomePageProps): JSX.Element => {
 
         {/* QuickStart Showcase */}
         <QuickStartShowcase />
+
+        <ToolsSection />
 
         <GrowSection />
 

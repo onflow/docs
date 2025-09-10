@@ -53,18 +53,21 @@ Discover how to build native mobile applications that leverage Flow's blockchain
 ## Key Features Covered
 
 ### Account Linking & Hybrid Custody
+
 - **Progressive Onboarding**: Start users with custodial accounts, transition to self-custody
 - **Shared Ownership**: Enable multiple parties to control and access accounts
 - **Flexible Permissions**: Fine-grained access control through capabilities and entitlements
 - **Seamless Transitions**: Move from custodial to non-custodial without losing assets
 
 ### Mobile-First Development
+
 - **Native Integration**: Build truly native mobile experiences with blockchain functionality
 - **Secure Key Management**: Leverage device security features for key storage
 - **Wallet Integration**: Connect with popular Flow wallets and WalletConnect
 - **Rich User Experiences**: Create smooth, Web2-like experiences in Web3 apps
 
 ### Flow-Specific Advantages
+
 - **Account Abstraction**: Built-in multi-signature and sponsored transactions
 - **Resource Safety**: Cadence's resource-oriented programming prevents common mobile app vulnerabilities
 - **Fast Finality**: Near-instant transaction confirmation for responsive mobile UIs
