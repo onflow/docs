@@ -10,7 +10,7 @@ export const toolsGridData = {
       title: 'Tools',
       cards: [
         {
-          heading: 'Integration great solutions',
+          heading: 'Integrate great solutions',
           description:
             'Add popular blockchain infrastructure platforms to your Flow app to enhance user experience and reduce development complexity.',
           iconColor: 'green',
