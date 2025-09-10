@@ -10,24 +10,34 @@ export const toolsGridData = {
       title: 'Tools',
       cards: [
         {
-          heading: 'Build apps fast',
+          heading: 'Integration great solutions',
           description:
-            'Build a modern frontend for your Flow Cadence app using React Hooks with `@onflow/react-sdk`.  Easily and conveniently access user accounts, sign transactions, and more.',
+            'Add popular blockchain infrastructure platforms to your Flow app to enhance user experience and reduce development complexity.',
           iconColor: 'green',
           cardColor: 'black',
           icon: IconName.FLOW_CLIENT_LIBRARY,
           variant: 'horizontal',
-          href: '/tools/react-sdk',
+          href: '/blockchain-development-tutorials/integrations',
         },
         {
-          heading: 'Import and compose with contracts',
+          heading: 'Build and ship with Flow CLI',  
           description:
-            'Effortlessly import Flow Cadence contracts into your projects, including core contracts, ecosystem contracts, and your own published contracts.',
+            'Stop wrestling with setup and boilerplate. Flow CLI lets you initialize projects, manage accounts and contracts, send transactions, and query chain state from one simple tool. Test locally, deploy to testnet or mainnet, and keep dependencies in sync.',
           iconColor: 'green',
           cardColor: 'black',
           icon: IconName.TOOLS,
           variant: 'horizontal',
-          href: '/tools/flow-cli/dependency-manager',
+          href: '/build/tools/flow-cli',
+        },
+        {
+          heading: 'Manage contract imports',
+          description:
+            'Skip the copy-paste. The Dependency Manager installs and updates core, ecosystem, and custom contracts automatically so your imports stay consistent and your projects scale without dependency headaches.',
+          iconColor: 'green',
+          cardColor: 'black',
+          icon: IconName.TOOLS,
+          variant: 'horizontal',
+          href: '/build/tools/flow-cli/dependency-manager',
         },
         {
           heading: 'Get 100k testnet $FLOW',
