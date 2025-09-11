@@ -38,7 +38,7 @@ A way to prevent this is to check your equipment meets Flow's [recommended requi
 ### Does Flow has a regular schedule for network upgrade?
 
 Network upgrade (spork) occur once every year.
-Apart from the network upgrade, there are also Height Coordinated Upgrade (HCU) which occur approximately once every one or two months.
+Apart from the network upgrade, there is also the Height Coordinated Upgrade (HCU) which occur approximately once every two months.
 The dates for both are posted well in advance on the [status page](https://status.flow.com/).
 
 ### How do I update the node software during a network upgrade?
