@@ -1983,10 +1983,10 @@
       "destination": "/blockchain-development-tutorials/use-AI-to-build-on-flow/llms/claude-code",
       "permanent": true
     },
-        {
+    {
       "source": "/tutorials/gasless-transactions/gas-free-evm-endpoint",
       "destination": "/tutorials/gasless-transactions/sponsored-transaction-evm-endpoint",
       "permanent": true
-    },
+    }
   ]
 }
