@@ -29,7 +29,7 @@ Flow EVM's architecture provides a unique solution: you can set up a **gas-free 
 
 :::warning
 
-This method only works in situations where you can control the RPC node used to **send** transactions, such as your backend and some types of embedded wallets. It will **not** work on the frontend with traditional wallets, such as MetaMask.
+This method only works in situations where you can control the RPC node used to **send** transactions, such as your backend, or if your frontend uses embedded wallets. It will **not** work on the frontend with traditional wallets, such as MetaMask.
 
 :::
 
