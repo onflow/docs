@@ -30,7 +30,6 @@ export const buildGridData = {
           icon: IconName.FLOW_CADENCE,
           variant: 'horizontal',
           href: '/blockchain-development-tutorials/cadence/reading-and-writing-onchain-data',
-          target: '_blank',
         },
         {
           heading: 'Build apps quickly using hooks and frontend components with the React SDK',
@@ -41,7 +40,6 @@ export const buildGridData = {
           icon: IconName.FLOW_CADENCE,
           variant: 'horizontal',
           href: '/build/tools/react-sdk',
-          target: '_blank',
         },
       ],
     },
@@ -78,7 +76,6 @@ export const buildGridData = {
           icon: IconName.BATCHED_EVM_TRANSACTIONS,
           variant: 'horizontal',
           href: '../blockchain-development-tutorials/cross-vm-apps',
-          target: '_blank',
         },
       ],
     },
