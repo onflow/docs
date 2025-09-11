@@ -11,7 +11,7 @@ export const buildGridData = {
       subtext: 'A purpose-build smart contract language for apps that do more than move tokens.',
       cards: [
         {
-          heading: 'Get an edge with new features. Forte adds standardized DeFi actions and scheduled transactions',
+          heading: 'The Forte Network Upgrade adds actions and scheduled transactions to make better DeFi apps possible',
           description:
             'Run complex DeFi operations with standardized interfaces and automate execution onchain.',
           iconColor: 'green',
@@ -21,7 +21,7 @@ export const buildGridData = {
           href: '/blockchain-development-tutorials/flow-actions',
         },
         {
-          heading: 'Build faster with upgradable contracts and add new transactions and views after deployment',
+          heading: 'Build without getting stuck. Smart contracts can be upgraded with new transactions and views at will',
           // Why should I pick Cadence?
           description:
             'Evolve your contracts without redeploys - upgrade logic, introduce new transactions, and query any onchain data through flexible scripts.',
@@ -32,7 +32,7 @@ export const buildGridData = {
           href: '/blockchain-development-tutorials/cadence/reading-and-writing-onchain-data',
         },
         {
-          heading: 'Build apps quickly using hooks and frontend components with the React SDK',
+          heading: 'Ship apps quickly using hooks and ready-made components from the React SDK',
           description:
             'Build a modern frontend for your Flow Cadence app using React Hooks and frontend components with `@onflow/react-sdk`. Easily and conveniently access user accounts, sign transactions, and more.',
           iconColor: 'green',
@@ -48,7 +48,7 @@ export const buildGridData = {
       subtext: 'EVM equivalence with seamless composability and interoperability with Cadence.',
       cards: [
               {
-          heading: 'Easily deploy on an MEV-resistant network without compromises - high security, low gas, and scalability',
+          heading: 'Deploy any ETH app on a scalable, secure, and low fee network with MEV-resistance baked in',
           description:
             'Simply add Flow to your config to deploy and run your Solidity smart contracts on Flow EVM with EVM Equivalence.',
           iconColor: 'green',
@@ -68,7 +68,7 @@ export const buildGridData = {
           href: '../blockchain-development-tutorials/native-vrf/vrf-in-solidity',
         },
         {
-          heading: 'Simplify user experience with batched transaction writes to call many functions with one signature',
+          heading: 'Simplify user experience by batching transactions into one click',
           description:
             'Level up your app by integrating Cadence into your Wagmi/RainbowKit app to batch write contract calls, conditionally execute transactions, and more.',
           iconColor: 'green',
