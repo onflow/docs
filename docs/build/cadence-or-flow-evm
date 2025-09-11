@@ -60,10 +60,10 @@ keywords:
 | **Learning Curve** | Low (if starting from zero) | High |
 | **Security Model** | Resource-oriented, mathematically provable | Traditional EVM security |
 | **Digital Asset Handling** | Native, built-in safety | Requires careful implementation |
-| **Development Speed** | faster long-term | Faster short-term |
+| **Development Speed** | Faster development | Simpler migration |
 | **Account Features** | Native multi-sig, key rotation | Through COAs or custom contracts |
 | **Randomness** | Native VRF built-in | Via Cadence Arch precompiled contract |
-| **Transaction Costs** | Low (optimized for Flow) | Ultra-low (sub-penny) |
+| **Transaction Costs** | Ultra-low | Ultra-low |
 | **Finality Time** | ~10 seconds | ~10 seconds |
 | **Audit Requirements** | Lower (built-in safety) | Higher (manual security) |
 | **Asset Safety** | Mathematical guarantees | Manual implementation |
@@ -79,6 +79,13 @@ keywords:
 - **No Double-spending**: Mathematical guarantees prevent asset duplication
 - **Linear Types**: Resources must be explicitly handled, preventing loss
 - **Capability-based Security**: Fine-grained access control with entitlements
+
+### 💰 **Ultra-Low Costs**
+
+- **Sub-penny Transactions**: Average cost far less than $0.01
+- **Predictable Fees**: No gas wars or unpredictable spikes
+- **Sponsored Transactions**: Built-in gasless transaction support
+- **High Efficiency**: Flow's architecture reduces computational costs
 
 ### 🏦 **Native Digital Asset Support**
 
@@ -119,7 +126,7 @@ keywords:
 
 ### 💰 **Ultra-Low Costs**
 
-- **Sub-penny Transactions**: Average cost less than $0.01
+- **Sub-penny Transactions**: Average cost far less than $0.01
 - **Predictable Fees**: No gas wars or unpredictable spikes
 - **Sponsored Transactions**: Built-in gasless transaction support
 - **High Efficiency**: Flow's architecture reduces computational costs
