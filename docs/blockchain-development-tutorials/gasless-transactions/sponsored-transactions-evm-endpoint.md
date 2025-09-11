@@ -1,5 +1,5 @@
 ---
-title: Sponsored Transaction EVM Endpoint
+title: Sponsored Transactions EVM Endpoint
 description: Learn how to set up a gas-free EVM RPC endpoint that sponsors all transaction fees for your users, eliminating gas fees as a barrier to adoption.
 sidebar_position: 1
 keywords:

@@ -1985,7 +1985,7 @@
     },
     {
       "source": "/tutorials/gasless-transactions/gas-free-evm-endpoint",
-      "destination": "/tutorials/gasless-transactions/sponsored-transaction-evm-endpoint",
+      "destination": "/tutorials/gasless-transactions/sponsored-transactions-evm-endpoint",
       "permanent": true
     }
   ]
