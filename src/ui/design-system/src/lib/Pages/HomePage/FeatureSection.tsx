@@ -34,7 +34,7 @@ const FeatureSection: React.FC<FeatureSectionProps> = ({ sections }) => {
   const maxCards = Math.max(...sections.map(section => section.cards.length));
   
   return (
-    <section className="container mx-auto pt-1 pb-12">
+    <section className="container mx-auto pt-1 pb-6">
       <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-stretch">
         {sections.map((section, idx) => (
           <div key={idx} className="flex flex-col">
@@ -53,7 +53,7 @@ const FeatureSection: React.FC<FeatureSectionProps> = ({ sections }) => {
                     href={card.href}
                     target={card.target}
                     rel={card.target === '_blank' ? 'noopener noreferrer' : undefined}
-                    className="group flex items-center gap-3 p-4 rounded-lg bg-gray-50 dark:bg-gray-800 border border-gray-200 dark:border-gray-700 hover:bg-gray-100 dark:hover:bg-gray-700 hover:border-gray-300 dark:hover:border-gray-600 hover:shadow-md transition-all duration-200 cursor-pointer no-underline hover:no-underline h-full min-h-[80px]"
+                    className="group flex items-center gap-3 p-4 rounded-lg bg-gray-50 dark:bg-gray-800 border border-gray-200 dark:border-gray-700 hover:bg-gray-100 dark:hover:bg-gray-700 hover:border-gray-300 dark:hover:border-gray-600 shadow-lg hover:shadow-md transition-all duration-200 cursor-pointer no-underline hover:no-underline h-full min-h-[80px]"
                     onClick={(e) => {
                       event({
                         action: GA_EVENTS.ACTION_CARD_CLICK,
