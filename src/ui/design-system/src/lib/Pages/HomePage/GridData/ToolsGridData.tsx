@@ -10,14 +10,15 @@ export const toolsGridData = {
       title: 'Tools',
       cards: [
         {
-          heading: 'Integrate great solutions',
+          heading: 'Get 100k testnet $FLOW',
           description:
-            'Add popular blockchain infrastructure platforms to your Flow app to enhance user experience and reduce development complexity.',
+            'Other chains drip testnet tokens, Flow gives you 100k $FLOW to play with.',
           iconColor: 'green',
           cardColor: 'black',
-          icon: IconName.FLOW_CLIENT_LIBRARY,
+          icon: IconName.FAUCET,
           variant: 'horizontal',
-          href: '/blockchain-development-tutorials/integrations',
+          href: 'https://faucet.flow.com/fund-account',
+          target: '_blank',
         },
         {
           heading: 'Build and ship with Flow CLI',  
@@ -30,24 +31,14 @@ export const toolsGridData = {
           href: '/build/tools/flow-cli',
         },
         {
-          heading: 'Manage contract imports',
+          heading: 'Use your favorite platform and tools',
           description:
-            'Skip the copy-paste. The Dependency Manager installs and updates core, ecosystem, and custom contracts automatically so your imports stay consistent and your projects scale without dependency headaches.',
+            'Connect with Thirdweb, Crossmint, Dynamic, Privy, and other popular blockchain infrastructure platforms to enhance user experience and reduce development complexity.',
           iconColor: 'green',
           cardColor: 'black',
-          icon: IconName.TOOLS,
+          icon: IconName.FLOW_CLIENT_LIBRARY,
           variant: 'horizontal',
-          href: '/build/tools/flow-cli/dependency-manager',
-        },
-        {
-          heading: 'Get 100k testnet $FLOW',
-          description:
-            'Other chains drip testnet tokens, Flow gives you 100k $FLOW to play with.',
-          iconColor: 'green',
-          cardColor: 'black',
-          icon: IconName.FAUCET,
-          variant: 'horizontal',
-          href: 'https://faucet.flow.com/fund-account',
+          href: '/blockchain-development-tutorials/integrations',
         },
       ],
     },

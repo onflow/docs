@@ -11,7 +11,7 @@ export const buildGridData = {
       subtext: 'A purpose-build smart contract language for apps that do more than move tokens.',
       cards: [
         {
-          heading: 'Unlock composable DeFi workflows and onchain automation with Forte',
+          heading: 'Get an edge with new features. Forte adds standardized DeFi actions and scheduled transactions',
           description:
             'Run complex DeFi operations with standardized interfaces and automate execution onchain.',
           iconColor: 'green',
@@ -50,7 +50,7 @@ export const buildGridData = {
       subtext: 'EVM equivalence with seamless composability and interoperability with Cadence.',
       cards: [
               {
-          heading: 'Easily deploy Solidity contracts on an MEV-resistant L1 with high security and low gas',
+          heading: 'Easily deploy on an MEV-resistant network without compromises - high security, low gas, and scalability',
           description:
             'Simply add Flow to your config to deploy and run your Solidity smart contracts on Flow EVM with EVM Equivalence.',
           iconColor: 'green',

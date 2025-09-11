@@ -10,14 +10,14 @@ export const growGridData = {
       title: 'Grow',
       cards: [
         {
-          heading: 'Builder Perks',
+          heading: 'Developer Support Hub',
           description:
-            "Access thousands of dollars worth of Builder perks for building on Flow!",
+            'Access builder perks, grants, and VCs and funds. Get comprehensive support including technical guidance, marketing resources, and ecosystem connections.',
           iconColor: 'purple',
           cardColor: 'black',
-          icon: IconName.BUILDER_CREDITS,
+          icon: IconName.VCS_AND_FUNDS,
           variant: 'horizontal',
-          href: '/ecosystem/builder-perks',
+          href: '/ecosystem/developer-support-hub',
         },
         {
           heading: 'Dev Office Hours',
@@ -30,36 +30,15 @@ export const growGridData = {
           href: 'https://calendar.google.com/calendar/u/0/embed?src=c_47978f5cd9da636cadc6b8473102b5092c1a865dd010558393ecb7f9fd0c9ad0@group.calendar.google.com',
         },
         {
-          heading: 'Grants',
+          heading: 'Hackathons and Events',
           description:
-            'Discover grant opportunities available to developers and teams building on Flow.',
+            'Start building at a hackathon or meet us at an event. Join Flow community events and competitions.',
           iconColor: 'purple',
           cardColor: 'black',
-          icon: IconName.GRANTS,
+          icon: IconName.ACCESS_INCREDIBLE_IP,
           variant: 'horizontal',
-          href: '/ecosystem/grants',
+          href: '/ecosystem/Hackathons%20and%20Events',
         },
-        {
-          heading: 'Startup Support',
-          description:
-            'Get comprehensive support including technical guidance, marketing resources, and ecosystem connections.',
-          iconColor: 'purple',
-          cardColor: 'black',
-          icon: IconName.STARTUP_SUPPORT,
-          variant: 'horizontal',
-          href: '/growth',
-        },
-        {
-          heading: 'VCs & Funds',
-          description:
-            'Connect with venture capital firms and investment funds actively supporting Flow projects.',
-          iconColor: 'purple',
-          cardColor: 'black',
-          icon: IconName.VCS_AND_FUNDS,
-          variant: 'horizontal',
-          href: '/ecosystem/vcs-and-funds',
-        },
-
       ],
     },
   ],
