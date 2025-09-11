@@ -28,6 +28,7 @@ export const growGridData = {
           icon: IconName.DEV_OFFICE_HOURS,
           variant: 'horizontal',
           href: 'https://calendar.google.com/calendar/u/0/embed?src=c_47978f5cd9da636cadc6b8473102b5092c1a865dd010558393ecb7f9fd0c9ad0@group.calendar.google.com',
+          target: '_blank',
         },
         {
           heading: 'Hackathons and Events',
