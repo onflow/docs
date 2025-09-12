@@ -13,7 +13,7 @@ Anyone can run an Access Node after registering and staking. See [Access Node Se
 
 For the other node roles, individuals can go through an application process that involves asking about their background and experience contributing to decentralized projects. To pursue an application, please create an issue [here](https://github.com/onflow/flow-validator).
 
-Pending approval from the service committee, new node operators will be onboarded and invited to join a webinar to meet the team and share more about how they’ll grow the community. Node Operators are invited to join and participate in Flow's Node Validator Discord channel for setup questions and network announcements.
+Pending approval from the governance committee, new node operators will be onboarded and invited to join a webinar to meet the team and share more about how they’ll grow the community. Node Operators are invited to join and participate in Flow's Node Validator Discord channel for setup questions and network announcements.
 
 In the future, running a validator node on Flow will be permissionless.  See the [autonomy roadmap](https://flow.com/protocol-autonomy-roadmap) for details.
 
