@@ -43,8 +43,7 @@ The dates for both are posted well in advance on the [status page](https://statu
 
 ### How do I update the node software during a network upgrade?
 
-One of the reasons for a [spork](./spork.md) is to make sure all nodes update to the latest software version. Hence, you should have the latest software update as long as you are participating in each spork.
-However, if we do release any software update in between a Spork (e.g. an emergency patch) we will announce it on Discord.
+The new software version for a spork will be published in advance on [GitHub](https://github.com/onflow/flow-go/releases) and announced in the `#flow-validators-announcements` [Discord channel](https://discord.gg/flow).
 
 ### Is there any way to know if a node is currently online?
 
