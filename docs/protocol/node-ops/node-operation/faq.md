@@ -35,7 +35,7 @@ See [Staking & Epochs](../../staking/index.md#epochs) for general information an
 All staked nodes except access nodes, have to be online at all time. A staked node, other than an access node, which is not online can cause severe degradation of network performance and will be subjected to slashing of rewards.
 A way to prevent this is to check your equipment meets Flow's [recommended requirements](./node-provisioning.md#hardware-requirements), periodically checking for updates and announcements in Discord but also using a node monitoring system for when your node does go offline.
 
-### Does Flow has a regular schedule for network upgrade?
+### Does Flow has a regular schedule for network upgrades?
 
 Network upgrades (sporks) occur once every year.
 Apart from the network upgrade, there is also the Height Coordinated Upgrade (HCU) which occur approximately once every two months.
