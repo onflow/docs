@@ -14,56 +14,42 @@ keywords:
   - DeFi
 ---
 
-## **Introduction**
+## Introduction
 
-Flow provides secure, native onchain randomness that developers can leverage through Cadence Arch, a precompiled contract available on the Flow EVM environment. This guide will walk through how Solidity developers can use Cadence Arch to access Flow's verifiable randomness using Solidity.
+Flow provides secure, native onchain randomness that developers can leverage through Cadence Arch, a precompiled contract available on the Flow EVM environment. This guide walks you through how Solidity developers can use Cadence Arch to access Flow's verifiable randomness using Solidity.
 
-### **What is Cadence Arch?**
+### What is Cadence Arch?
 
 [Cadence Arch] is a precompiled smart contract that allows Solidity developers on Flow EVM to interact with Flow's randomness and other network features like block height. This contract can be accessed using its specific address, and Solidity developers can make static calls to retrieve random values and other information.
 
----
+## Prerequisites
 
-## **Prerequisites**
+- Basic Solidity knowledge
+- Installed Metamask extension
+- Remix IDE for compilation and deployment
+- Flow EVM Testnet setup in Metamask
 
-- Basic Solidity knowledge.
-- Installed Metamask extension.
-- Remix IDE for compilation and deployment.
-- Flow EVM Testnet setup in Metamask.
+## Network information for Flow EVM
 
-## **Network Information for Flow EVM**
+See [Network information] for more details.
 
-| **Parameter**       | **Value**                   |
-| ------------------- | --------------------------- |
-| **Network Name**    | Flow EVM Testnet            |
-| **RPC Endpoint**    | [Flow EVM Testnet RPC]      |
-| **Chain ID**        | 545                         |
-| **Currency Symbol** | FLOW                        |
-| **Block Explorer**  | [Flow EVM Testnet Explorer] |
+## Steps to connect Flow EVM testnet to metamask
 
-## **Steps to Connect Flow EVM Testnet to Metamask**
+See [Wallets & Configurations] for more details.
 
-1. Open Metamask and click **Networks** -> **Add Network**.
-2. Enter the following details:
-   - **Network Name**: Flow EVM Testnet
-   - **RPC URL**: `https://testnet.evm.nodes.onflow.org`
-   - **Chain ID**: `545`
-   - **Currency Symbol**: `FLOW`
-   - **Block Explorer**: `https://evm-testnet.flowscan.io`
-3. Click **Save** and switch to the Flow EVM Testnet.
+## Solidity commit reveal
 
-![MetaMask Network Configuration](./imgs/vrf-1.png)
+Make sure you review the Solidity version of the [commit reveal] to learn more about Flow EVM's native secure randomness through a simple demonstration.
 
-## **Obtaining Testnet FLOW**
+## Obtaining testnet FLOW
 
-You can fund your account with testnet FLOW using the [Flow Faucet].  
+You can fund your account with testnet FLOW using the [Flow Faucet].
+
 Enter your Flow-EVM testnet address, and you'll receive testnet FLOW tokens to interact with smart contracts.
 
----
+## Solidity code example: retrieving random numbers
 
-## **Solidity Code Example: Retrieving Random Numbers**
-
-Below is a simple Solidity contract that interacts with the Cadence Arch contract to retrieve a pseudo-random number.
+The following is a simple Solidity contract that interacts with the Cadence Arch contract to retrieve a pseudo-random number:
 
 ```solidity
 // SPDX-License-Identifier: GPL-3.0
@@ -83,57 +69,50 @@ contract CadenceArchCaller {
         return output;
     }
 }
-
 ```
 
-### **Explanation of the Contract**
+### Explanation of the contract
 
 1. **Cadence Arch Address**:
 
-   The `cadenceArch` variable stores the address of the Cadence Arch precompiled contract
-   (`0x0000000000000000000000010000000000000001`), which is constant across Flow EVM.
+   The `cadenceArch` variable stores the address of the Cadence Arch precompiled contract (`0x0000000000000000000000010000000000000001`), which is constant across Flow EVM.
 
 2. **Revertible Random**:
 
-   The `revertibleRandom()` function makes a static call to the `revertibleRandom<uint64>()` function to fetch a pseudo-random
-   number. If the call is successful, it decodes the result as a `uint64` random value.
+   The `revertibleRandom()` function makes a static call to the `revertibleRandom<uint64>()` function to fetch a pseudo-random number. If the call is successful, it decodes the result as a `uint64` random value.
 
----
+## Deploying and testing the contract
 
-## **Deploying and Testing the Contract**
-
-### Compile and Deploy the Contract
+### Compile and deploy the contract
 
 1. Open Remix IDE.
 2. Create a new file and paste the Solidity code above.
 
-![Creating file in Remix](./imgs/vrf-2.png)
+   ![Creating file in Remix](./imgs/vrf-2.png)
 
 3. Compile the contract by selecting the appropriate Solidity compiler version (0.8.x).
 
-![Compiling in Remix](./imgs/vrf-3.png)
+   ![Compiling in Remix](./imgs/vrf-3.png)
 
 4. Connect Remix to your Metamask wallet (with Flow EVM testnet) by selecting **Injected Web3** as the environment.
 
-![Connecting to MetaMask](./imgs/vrf-4.png)
+   ![Connecting to MetaMask](./imgs/vrf-4.png)
 
 5. Deploy the contract.
 
-![Deploying the contract](./imgs/vrf-5.png)
+   ![Deploying the contract](./imgs/vrf-5.png)
 
 ### Call revertibleRandom
 
 After deployment, you can interact with the contract to retrieve a random number.
 
-Call the `revertibleRandom()` function in the left sidebar on the deployed contract. This will fetch a pseudo-random number generated by Flow's VRF.
+Call the `revertibleRandom()` function in the left sidebar on the deployed contract. This fetches a pseudo-random number generated by Flow's VRF.
 
 ![Calling revertibleRandom function](./imgs/vrf-6.png)
 
 The result will be a `uint64` random number generated on Flow EVM.
 
----
-
-## **Generating Random Numbers in a Range**
+## Generating random numbers in a range
 
 For use-cases like games and lotteries, it's useful to generate a random number within a specified range, the following example shows how to get a value between a min and max number.
 
@@ -163,23 +142,25 @@ The above code is susceptible to the [modulo bias], particularly if the random n
 
 :::
 
-## **Secure Randomness with Commit-Reveal Scheme in Solidity**
+## Secure randomness with commit-reveal scheme in Solidity
 
 The **`revertibleRandom()`** function can be directly used to generate a pseudo-random number. However, in certain situations, especially involving untrusted callers, this function exposes a vulnerability: the ability of a transaction to **revert after seeing the random result**.
 
-**The Issue with Using `revertibleRandom()` Directly:**
+**The Issue with Using `revertibleRandom()` Directly**
 
 - When an untrusted party calls a contract function that uses `revertibleRandom()`, they receive the random number **during the transaction execution**.
 - **Post-selection** is the ability of the caller to abort the transaction if the random outcome is unfavorable. In this case, the user could choose to revert the transaction (for example, if they lose a bet) and attempt to call the function again in hopes of a better outcome.
-- This can lead to a form of **transaction reversion attack**, where the randomness can be exploited by repeatedly attempting transactions until a favorable result is obtained.
+- This can lead to a form of _transaction reversion attack_, where the randomness can be exploited by repeatedly attempting transactions until a favorable result is obtained.
 
-## Read More
+## Further reading
 
 For further details on Flow's randomness and secure development practices, check out the [Flow Randomness Documentation].
 
 You can also view an example in both Solidity and Cadence of a [random coin toss implentation] using the VRF.
 
 _This documentation was contributed by [Noah Naizir] a community developer._
+
+<!-- Relative links. Will not render on the page -->
 
 [Cadence Arch]: https://github.com/onflow/flips/blob/main/protocol/20231116-evm-support.md#cadence-arch
 [Flow EVM Testnet RPC]: https://testnet.evm.nodes.onflow.org/
@@ -190,3 +171,6 @@ _This documentation was contributed by [Noah Naizir] a community developer._
 [Flow Randomness Documentation]: https://developers.flow.com/build/cadence/advanced-concepts/randomness
 [random coin toss implentation]: https://github.com/onflow/random-coin-toss
 [Noah Naizir]: https://x.com/noah_overflow
+[Network information]: ../../build/evm/quickstart.md#network-information
+[Wallets & Configurations]: ../../blockchain-development-tutorials/evm/setup/integrating-metamask.mdx
+[commit reveal]: https://github.com/onflow/random-coin-toss/blob/main/solidity/src/CoinToss.sol

@@ -21,6 +21,7 @@ const iconMap: Record<IconName, string> = {
   [IconName.GRANTS]: '/images/icons/flow-grants.svg',
   [IconName.STARTUP_SUPPORT]: '/images/icons/startup-support.svg',
   [IconName.VCS_AND_FUNDS]: '/images/icons/vcs-&-funds.svg',
+  [IconName.ACCESS_INCREDIBLE_IP]: '/images/icons/access-incredible-ip.svg',
   
   // Other commonly used icons
   [IconName.LEARN]: '/images/icons/flow-learn.svg',
