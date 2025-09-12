@@ -210,7 +210,7 @@ Flow will continue to provide quality walkthroughs and tutorials to provide deve
 [Commit-Reveal with Cadence]: ./native-vrf/commit-reveal-cadence.md
 [VRF in Solidity]: ./native-vrf/vrf-in-solidity.md
 [Gasless Transactions]: ./gasless-transactions/index.md
-[Gas-Free EVM Endpoint]: ./gasless-transactions/gas-free-evm-endpoint.md
+[Gas-Free EVM Endpoint]: ./gasless-transactions/sponsored-transactions-evm-endpoint.md
 [Use AI to Build on the Flow Blockchain]: ./use-AI-to-build-on-flow/index.md
 [Large Language Models (LLMs)]: ./use-AI-to-build-on-flow/llms/index.md
 [Use Flow Knowledge Base in ChatGPT]: ./use-AI-to-build-on-flow/llms/chatgpt.md

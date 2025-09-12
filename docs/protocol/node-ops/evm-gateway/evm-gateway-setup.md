@@ -41,7 +41,7 @@ Alternatively, you can also choose from any of the following providers who provi
 
 ## Gas Sponsorship
 
-Custom EVM Gateways can be set up to sponsor all gas for all EVM transactions passed through them. See the tutorial for [Gas Free EVM Endpoint](../../../blockchain-development-tutorials/gasless-transactions/gas-free-evm-endpoint.md) for more details.
+Custom EVM Gateways can be set up to sponsor all gas for all EVM transactions passed through them. See the tutorial for [Gas Free EVM Endpoint](../../../blockchain-development-tutorials/gasless-transactions/sponsored-transactions-evm-endpoint.md) for more details.
 
 ## Hardware specifications
 
