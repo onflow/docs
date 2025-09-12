@@ -37,5 +37,5 @@ Tutorial: [Gas Free EVM Endpoint]
 
 [Flow Wallet]: https://wallet.flow.com/
 [sponsored transactions]: ../../build/cadence/advanced-concepts/account-abstraction#sponsored-transactions
-[Gas Free EVM Endpoint]: ./gas-free-evm-endpoint.md
+[Gas Free EVM Endpoint]: ./sponsored-transactions-evm-endpoint.md
 [here]: https://developers.flow.com/build/cadence/advanced-concepts/account-abstraction#sponsored-transactions
