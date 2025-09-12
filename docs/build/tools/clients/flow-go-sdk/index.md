@@ -78,7 +78,7 @@ var flowClient client.Client
 // initialize an http emulator client
 flowClient, err := http.NewClient(http.EmulatorHost)
 
-// initialize a gPRC emulator client
+// initialize a gRPC emulator client
 flowClient, err = grpc.NewClient(grpc.EmulatorHost)
 ```
 
