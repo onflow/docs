@@ -34,7 +34,7 @@ Hence, the network address of the node must stay the same between epochs otherwi
 A change to the node network address (IP or a hostname) can only be done during the spork process.
 
 To change the networking address:
-1. A day before the [upcoming mainnet spork](./upcoming-sporks.md), change the network address for the nodes in Flow Port (using the update network address feature).
+1. A day before the upcoming mainnet spork, change the network address for the nodes in Flow Port (using the update network address feature).
 The change will not take effect till an epoch transition happens.
 2. Change the addresses in the `/var/flow/bootstrap/private-root-information/private-node-info_<nodeid>/node-info.priv.json` json file on the node.
 3. A spork also causes an epoch transition, and the new addresses will take effect after the spork immediately.

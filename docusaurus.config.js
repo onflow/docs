@@ -435,10 +435,6 @@ const config = {
                 label: 'Past Sporks',
               },
               {
-                to: '/protocol/node-ops/node-operation/upcoming-sporks',
-                label: 'Upcoming Sporks',
-              },
-              {
                 to: '/protocol/node-ops',
                 label: 'Node Operation',
               },

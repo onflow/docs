@@ -11,11 +11,11 @@ Anyone can run an [observer node](../light-nodes/observer-node.md).
 
 Anyone can run an Access Node after registering and staking. See [Access Node Setup](../access-nodes/access-node-setup.md) for detailed instructions.
 
-For the other node roles, individuals can go through an application process that involves asking about their background and experience contributing to decentralized projects. To pursue an application, please visit [the Flow website here to apply](https://www.flow.com/node-validators).
+For the other node roles, individuals can go through an application process that involves asking about their background and experience contributing to decentralized projects. To pursue an application, please create an issue [here](https://github.com/onflow/flow-validator).
 
-Pending approval, new node operators will be onboarded and invited to join a webinar to meet the team and share more about how they’ll grow the community. Node Operators are invited to join and participate in Flow's Node Validator Discord channel for setup questions and network announcements.
+Pending approval from the governance committee, new node operators will be onboarded and invited to join a webinar to meet the team and share more about how they’ll grow the community. Node Operators are invited to join and participate in Flow's Node Validator Discord channel for setup questions and network announcements.
 
-In the long-term, anyone can run a node validator on Flow.
+In the future, running a validator node on Flow will be permissionless.  See the [autonomy roadmap](https://flow.com/protocol-autonomy-roadmap) for details.
 
 ### How do I generate keys?
 
@@ -35,14 +35,18 @@ See [Staking & Epochs](../../staking/index.md#epochs) for general information an
 All staked nodes except access nodes, have to be online at all time. A staked node, other than an access node, which is not online can cause severe degradation of network performance and will be subjected to slashing of rewards.
 A way to prevent this is to check your equipment meets Flow's [recommended requirements](./node-provisioning.md#hardware-requirements), periodically checking for updates and announcements in Discord but also using a node monitoring system for when your node does go offline.
 
-### Does Flow has a regular schedule for Sporks?
+### Does Flow has a regular schedule for network upgrades?
 
-Yes, see [Upcoming Sporks](./upcoming-sporks.md) for the latest schedule. Currently, Flow has a Mainnet Spork and a Testnet Spork roughly every two months.
+Network upgrades (also referred to as "sporks") occur once every year. These are large-scale upgrades that require all node operators to upgrade software versions. 
 
-### How do I update the Node Software?
+Between network upgrades, there are also Height Coordinated Upgrades (HCU) which occur approximately once every two months. These are targeted upgrades for the transaction execution environment and require only Execution Nodes and Verification Nodes to upgrade software versions.
 
-One of the reasons for a [spork](./spork.md) is to make sure all nodes update to the latest software version. Hence, you should have the latest software update as long as you are participating in each spork.
-However, if we do release any software update in between a Spork (e.g. an emergency patch) we will announce it on Discord.
+Upcoming sporks are announced in advance on the `#flow-validators-announcements` [Discord channel](https://discord.gg/flow) and on the [status](https://status.flow.com/) page.
+The `#flow-validators-announcements` channel is also used to coordinate during the spork process with all the node operators.
+
+### How do I update the node software during a network upgrade?
+
+The new software version for a spork will be published in advance on [GitHub](https://github.com/onflow/flow-go/releases) and announced in the `#flow-validators-announcements` [Discord channel](https://discord.gg/flow).
 
 ### Is there any way to know if a node is currently online?
 
@@ -50,12 +54,12 @@ To verify if a node is online, please [setup metrics](./faq.md#how-do-i-check-on
 
 ### Can I migrate a node to a new machine?
 
-Yes, as long as you retain the `boostrap` information which includes the node staking key, networking key, IP address and port from the old node to the new.
+Yes, as long as you retain the `boostrap` information which includes the node staking key, networking key, network address and port from the old node to the new.
 More on this [here](./node-migration.md)
 
 ### Where can I find how many nodes are currently running Flow?
 
-If you are running a node, then you most definitely have this information on your node in the file `<your bootstrap dir>/public-root-information/node-infos.pub.json`. If you are not running a node, you can find this information by using a Cadence script to query the [Staking Smart Contract](../../../build/cadence/core-contracts/06-staking-contract-reference.md) (or check [Flowdiver](https://flowdiver.io/staking/overview))
+If you are running a node, then you most definitely have this information on your node in the file `<your bootstrap dir>/public-root-information/node-infos.pub.json`. If you are not running a node, you can find this information by using a Cadence script to query the [Staking Smart Contract](../../../build/cadence/core-contracts/06-staking-contract-reference.md) or check [flowscan](https://www.flowscan.io/node).
 
 ### Why do I need to update my node's ulimit?
 
