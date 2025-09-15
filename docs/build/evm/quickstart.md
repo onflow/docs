@@ -17,7 +17,7 @@ keywords:
 
 # EVM Quickstart
 
-Flow EVM is an EVM-equivalent blockchain that combines the advantages of Flow, including security, low-cost gas, and native VRF with compatibility with exiting blockchain applications tools, and contracts. If it works on another EVM-equivalent blockchain, it should work on Flow EVM!
+Flow EVM is an EVM-equivalent blockchain that combines the advantages of Flow, including security, low-cost gas, and native VRF with compatibility with existing blockchain applications tools, and contracts. If it works on another EVM-equivalent blockchain, it should work on Flow EVM!
 
 This guide is a self-contained quickstart that will walk you through deploying a contract on Flow EVM testnet with [Hardhat] and testing it with [testnet Flowscan].
 
