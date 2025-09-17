@@ -60,7 +60,7 @@ access(all) resource interface TransactionHandler {
 
 ### Canceling
 
-Scheduled transactions can be canceled before execution if they're still in `Scheduled` status. Canceling returns a portion of the fees (configurable refund percentage, 90% as of now). To cancel, you need the `ScheduledTransaction` resource returned during scheduling.
+Scheduled transactions can be canceled before execution if they're still in `Scheduled` status. Canceling returns a portion of the fees (configurable refund percentage, 50% as of now). To cancel, you need the `ScheduledTransaction` resource returned during scheduling. Please keep in mind the refund percentage can change in the future.
 
 ### Fees
 
@@ -70,6 +70,8 @@ Fee calculation includes:
 - **Storage fee**: Cost for storing transaction data on-chain
 
 Fees are paid upfront and are used in full, no refunds if the cost of execution was lower.
+
+Please keep in mind the priority multiplier can change in the future. The fee configuration can be obtained from the contract, and estimate function can be used to check the fees upfront.
 
 ### Transaction Lifecycle
 
