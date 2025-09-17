@@ -213,13 +213,18 @@ This script demonstrates how to check the current status of a scheduled transact
 // query_status.cdc - Script to check the status of a scheduled transaction
 import "FlowTransactionScheduler"
 
-access(all) fun main(account: Address, transactionId: UInt64): FlowTransactionScheduler.Status {
+access(all) fun main(account: Address, transactionId: UInt64): FlowTransactionScheduler.Status? {
     let storagePath = StoragePath(identifier: "scheduledTx_".concat(transactionId.toString()))!
     
-    return getAccount(account).storage
-        .borrow<&FlowTransactionScheduler.ScheduledTransaction>(from: storagePath)?.status()
-        ?? FlowTransactionScheduler.getStatus(id: transactionId)
-        ?? FlowTransactionScheduler.Status.Unknown
+    // Try to borrow the scheduled transaction resource from storage
+    if let scheduledTx = getAccount(account).storage
+        .borrow<&FlowTransactionScheduler.ScheduledTransaction>(from: storagePath) {
+        
+        // Call status() on the borrowed resource
+        return scheduledTx.status()
+    }
+    
+    return nil
 }
 ```
 
