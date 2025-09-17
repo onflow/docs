@@ -144,6 +144,7 @@ import "FlowToken"
 import "FungibleToken"
 
 transaction(timestamp: UFix64, feeAmount: UFix64, effort: UInt64, priority: UInt8, testData: String) {
+    // Note: timestamp should be a future Unix timestamp, e.g., 1858010617.0 
     prepare(account: auth(BorrowValue, SaveValue, IssueStorageCapabilityController, PublishCapability, GetStorageCapabilityController) &Account) {
         
         // If a transaction handler has not been created for this account yet, create one,
@@ -160,7 +161,7 @@ transaction(timestamp: UFix64, feeAmount: UFix64, effort: UInt64, priority: UInt
                             .getControllers(forPath: TestFlowCallbackHandler.HandlerStoragePath)[0]
                             .capability as! Capability<auth(FlowTransactionScheduler.Execute) &{FlowTransactionScheduler.TransactionHandler}>
         
-        // borrow a reference to the vault that will be used for fees
+        // Borrow a reference to the vault that will be used for fees
         let vault = account.storage.borrow<auth(FungibleToken.Withdraw) &FlowToken.Vault>(from: /storage/flowTokenVault)
             ?? panic("Could not borrow FlowToken vault")
         
@@ -197,6 +198,9 @@ transaction(timestamp: UFix64, feeAmount: UFix64, effort: UInt64, priority: UInt
             fees: <-fees
         )
         
+        // Check the status
+        let status = scheduledTransaction.status()
+
         // Store the scheduled transaction resource so we can query its status and cancel it if needed
         let txID = scheduledTransaction.id
         let storagePath = StoragePath(identifier: "scheduledTx_".concat(txID.toString()))!
@@ -207,24 +211,14 @@ transaction(timestamp: UFix64, feeAmount: UFix64, effort: UInt64, priority: UInt
 
 ### 3. Querying Transaction Status
 
-This script demonstrates how to check the current status of a scheduled transaction using the stored ScheduledTransaction resource.
+This script demonstrates how to check the current status of a scheduled transaction using the global status function.
 
 ```cadence
 // query_status.cdc - Script to check the status of a scheduled transaction
 import "FlowTransactionScheduler"
 
-access(all) fun main(account: Address, transactionId: UInt64): FlowTransactionScheduler.Status? {
-    let storagePath = StoragePath(identifier: "scheduledTx_".concat(transactionId.toString()))!
-    
-    // Try to borrow the scheduled transaction resource from storage
-    if let scheduledTx = getAccount(account).storage
-        .borrow<&FlowTransactionScheduler.ScheduledTransaction>(from: storagePath) {
-        
-        // Call status() on the borrowed resource
-        return scheduledTx.status()
-    }
-    
-    return nil
+access(all) fun main(transactionId: UInt64): FlowTransactionScheduler.Status? {
+    return FlowTransactionScheduler.getStatus(id: transactionId)
 }
 ```
 
