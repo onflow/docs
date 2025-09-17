@@ -703,6 +703,18 @@ While FCL v0.0.67 is not strictly necessary to use Mainnet 6, we strongly recomm
 | **Docker Image Tag**: v0.37.26                                                         |
 | **Release Notes**: [v0.37.26](https://github.com/onflow/flow-go/releases/tag/v0.37.26) |
 
+## Devnet 53
+
+| Spork Info                                                                              |
+|:----------------------------------------------------------------------------------------|
+| **Date**: Sept 17th, 2025                                                               |
+| **Root Height**: 280224020                                                              |
+| **Root Parent ID**: ab2646b3d5261f0fc522359249898a19015865a5a9c5c7742ebb1eb9e84b54f1    |
+| **Root State Commit**: 49c9d4fc51377802ee140cff610aed96bdf96fdf5e11acdd9c1fd05d927e5cbf |
+| **Git Commit**: 78746577a608a48745c841f6058ea418497cc910                                |
+| **Branch/Tag**: v0.43.0                                                                 |
+| **Docker Image Tag**: v0.43.0                                                           |
+
 ## Devnet 52
 
 | Spork Info                                                                              |
