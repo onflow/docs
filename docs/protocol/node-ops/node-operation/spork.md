@@ -52,7 +52,8 @@ If you had set the [dynamic bootstrap arguments](https://developers.flow.com/pro
     - It will generally be `testnet-x` or `mainnet-x` if execution data indexing is not enabled.
     - It will generally be `testnet-x-execution` or `mainnet-x-execution` if execution data indexing is enabled. See [here](../access-nodes/access-node-configuration-options.md) to enable execution date indexing.
 
-- `YOUR_NODE_TYPE` should be one of `collection`, `consensus`, `execution`, `verification`, `access` based on the node(s) that you are running.
+- `YOUR_NODE_TYPE` should be one of `collection`, `consensus`, `execution`, `verification` based on the node(s) that you are running.
+  - For access nodes however, if you have execution data index enabled use the role `execution` otherwise use `access`.
 
 ```shell Example
 $ ./boot-tools/transit pull -b ./bootstrap -t mainnet-16  -r consensus
