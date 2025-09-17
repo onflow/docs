@@ -1,9 +1,9 @@
 ---
-title: Introduction to Scheduled Callbacks
-description: Learn how to implement scheduled callbacks for time-based smart contract execution on Flow
+title: Introduction to Scheduled Transactions
+description: Learn how to implement scheduled transactions for time-based smart contract execution on Flow
 sidebar_position: 5
 keywords:
-  - scheduled callbacks
+  - scheduled transactions
   - flow callback scheduler
   - time-based execution
   - blockchain automation
@@ -15,11 +15,11 @@ keywords:
   - defi automation
 ---
 
-# Introduction to Scheduled Callbacks
+# Introduction to Scheduled Transactions
 
 :::warning
 
-Scheduled callbacks are a new feature that is under development and is a part of [FLIP 330]. Currently, they only work in the emulator. The specific implementation may change as a part of the development process.
+Scheduled transactions are a new feature that is under development and is a part of [FLIP 330]. Currently, they only work in the emulator. The specific implementation may change as a part of the development process.
 
 These tutorials will be updated, but you may need to refactor your code if the implementation changes.
 
@@ -31,18 +31,18 @@ As a result, most blockchain computers, including EVM and Solana, are not [Turin
 
 While this limitation prevents infinite loops, it makes it so that you can't do anything 100% onchain if you need it to happen at a later time or after a trigger. As a result, developers must often build products that involve a fair amount of traditional infrastructure and requires users to give those developers a great amount of trust that their backend will execute the promised task.
 
-Flow fixes this problem with **scheduled callbacks**. Scheduled Callbacks let smart contracts execute code at (or after) a chosen time without an external transaction. You schedule work now; the network executes it later. This enables recurring jobs, deferred actions, and autonomous workflows.
+Flow fixes this problem with **scheduled transactions**. Scheduled transactions let smart contracts execute code at (or after) a chosen time without an external transaction. You schedule work now; the network executes it later. This enables recurring jobs, deferred actions, and autonomous workflows.
 
 ## Learning Objectives
 
 After completing this tutorial, you will be able to:
 
-- Understand the concept of scheduled callbacks and how they solve blockchain limitations
-- Explain the key components of the FlowCallbackScheduler system
+- Understand the concept of scheduled transactions and how they solve blockchain limitations
+- Explain the key components of the FlowTransactionScheduler system
 - Implement a basic scheduled callback using the provided scaffold
 - Analyze the structure and flow of scheduled callback transactions
 - Create custom scheduled callback contracts and handlers
-- Evaluate the benefits and use cases of scheduled callbacks in DeFi applications
+- Evaluate the benefits and use cases of scheduled transactions in DeFi applications
 
 # Prerequisites
 
@@ -52,7 +52,7 @@ This tutorial assumes you have a modest knowledge of [Cadence]. If you don't, yo
 
 ## Getting Started
 
-Begin by creating a new repo using the [Scheduled Callbacks Scaffold] as a template.
+Begin by creating a new repo using the [Scheduled Transactions Scaffold] as a template.
 
 This repository has a robust quickstart in the readme. Complete that first. It doesn't seem like much at first. The counter was at `0`, you ran a transaction, now it's at `1`. What's the big deal?
 
@@ -96,11 +96,11 @@ flow scripts execute cadence/scripts/GetCounter.cdc --network emulator
 The result in your terminal should be similar to:
 
 ```zsh
-briandoyle@Mac scheduled-callbacks-scaffold % flow scripts execute cadence/scripts/GetCounter.cdc --network emulator
+briandoyle@Mac scheduledtransactions-scaffold % flow scripts execute cadence/scripts/GetCounter.cdc --network emulator
 
 Result: 2
 
-briandoyle@Mac scheduled-callbacks-scaffold % flow transactions send cadence/transactions/ScheduleIncrementIn.cdc \
+briandoyle@Mac scheduledtransactions-scaffold % flow transactions send cadence/transactions/ScheduleIncrementIn.cdc \
   --network emulator --signer emulator-account \
   --args-json '[
     {"type":"UFix64","value":"10.0"},
@@ -120,17 +120,17 @@ Authorizers     [f8d6e0586b0a20c7]
 
 # Output omitted for brevity
 
-briandoyle@Mac scheduled-callbacks-scaffold % flow scripts execute cadence/scripts/GetCounter.cdc --network emulator
+briandoyle@Mac scheduledtransactions-scaffold % flow scripts execute cadence/scripts/GetCounter.cdc --network emulator
 
 Result: 2
 
 
-briandoyle@Mac scheduled-callbacks-scaffold % flow scripts execute cadence/scripts/GetCounter.cdc --network emulator
+briandoyle@Mac scheduledtransactions-scaffold % flow scripts execute cadence/scripts/GetCounter.cdc --network emulator
 
 Result: 2
 
 
-briandoyle@Mac scheduled-callbacks-scaffold % flow scripts execute cadence/scripts/GetCounter.cdc --network emulator
+briandoyle@Mac scheduledtransactions-scaffold % flow scripts execute cadence/scripts/GetCounter.cdc --network emulator
 
 Result: 3
 ```
@@ -591,24 +591,24 @@ The last case `return`s the function, so it doesn't set a new scheduled callback
 
 ## Conclusion
 
-In this tutorial, you learned about scheduled callbacks, a powerful feature that enables smart contracts to execute code at future times without external transactions. You explored how scheduled callbacks solve the fundamental limitation of blockchain computers being unable to run unbounded loops or execute time-delayed operations.
+In this tutorial, you learned about scheduled transactions, a powerful feature that enables smart contracts to execute code at future times without external transactions. You explored how scheduled transactions solve the fundamental limitation of blockchain computers being unable to run unbounded loops or execute time-delayed operations.
 
 Now that you have completed this tutorial, you should be able to:
 
-- Understand the concept of scheduled callbacks and how they solve blockchain limitations
+- Understand the concept of scheduled transactions and how they solve blockchain limitations
 - Explain the key components of the FlowCallbackScheduler system
 - Implement a basic scheduled callback using the provided scaffold
 - Analyze the structure and flow of scheduled callback transactions
 - Create custom scheduled callback contracts and handlers
-- Evaluate the benefits and use cases of scheduled callbacks in DeFi applications
+- Evaluate the benefits and use cases of scheduled transactions in DeFi applications
 
-Scheduled callbacks open up new possibilities for DeFi applications, enabling recurring jobs, deferred actions, and autonomous workflows that were previously impossible on blockchain. This feature represents a significant step forward in making blockchain more practical for real-world applications that require time-based execution.
+Scheduled transactions open up new possibilities for DeFi applications, enabling recurring jobs, deferred actions, and autonomous workflows that were previously impossible on blockchain. This feature represents a significant step forward in making blockchain more practical for real-world applications that require time-based execution.
 
 <!-- Reference-style links, will not render on page. -->
 
 [FLIP 330]: https://github.com/onflow/flips/pull/331/files
 [Turing Complete]: https://en.wikipedia.org/wiki/Turing_completeness
-[Scheduled Callbacks Scaffold]: https://github.com/onflow/scheduledcallbacks-scaffold
+[Scheduled Transactions Scaffold]: https://github.com/onflow/scheduledtransactions-scaffold
 [Cadence]: https://cadence-lang.org/docs
 [resource]: https://cadence-lang.org/docs/language/resources
 [entitlement]: https://cadence-lang.org/docs/language/access-control#entitlements

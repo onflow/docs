@@ -1230,6 +1230,11 @@
       "permanent": true
     },
     {
+      "source": "/blockchain-development-tutorials/flow-actions/scheduled-callbacks-introduction",
+      "destination": "/blockchain-development-tutorials/flow-actions/scheduled-transactions-introduction",
+      "permanent": true
+    },
+    {
       "source": "/build/building-vs-other-chains",
       "destination": "/build/differences-vs-evm",
       "permanent": true
