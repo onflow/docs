@@ -172,7 +172,7 @@ Flow will continue to provide quality walkthroughs and tutorials to provide deve
 [Flow Actions Transactions]: ./flow-actions/flow-actions-transaction.md
 [Connectors]: ./flow-actions/connectors.md
 [Basic Combinations]: ./flow-actions/basic-combinations.md
-[Scheduled Callbacks Introduction]: ./flow-actions/scheduled-callbacks-introduction.md
+[Scheduled Transactions Introduction]: ./flow-actions/scheduled-transactions-introduction.md
 [Cadence Development]: ./cadence/index.md
 [Mobile Development]: ./cadence/mobile/index.md
 [iOS Quickstart]: ./cadence/mobile/ios-quickstart.md
