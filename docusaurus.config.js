@@ -251,8 +251,15 @@ const config = {
         { property: 'og:image:width', content: '1200' },
         { property: 'og:image:height', content: '630' },
         { property: 'og:type', content: 'website' },
-        { property: 'og:description', content: 'Flow Developer Documentation - The future of culture and digital assets is built on Flow' },
-        { property: 'og:logo', content: getUrl() + '/img/flow-docs-logo-light.png' },
+        {
+          property: 'og:description',
+          content:
+            'Flow Developer Documentation - The future of culture and digital assets is built on Flow',
+        },
+        {
+          property: 'og:logo',
+          content: getUrl() + '/img/flow-docs-logo-light.png',
+        },
       ],
       docs: {
         sidebar: {
@@ -320,7 +327,7 @@ const config = {
                 to: '/build/cadence/getting-started/contract-interaction',
               },
               {
-                label: "Tools & SDKs",
+                label: 'Tools & SDKs',
                 to: '/build/tools',
               },
               {
@@ -632,6 +639,7 @@ const config = {
     },
 
     require('./src/plugins/font-preload'),
+    require('./src/plugins/pylon-chat'),
   ],
   stylesheets: [
     {
