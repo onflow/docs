@@ -245,8 +245,14 @@ const config = {
       image: 'img/og-image-flow-docs-2025-dark.png',
       metadata: [
         { name: 'twitter:card', content: 'summary_large_image' },
-        { name: 'twitter:image', content: getUrl() + '/img/og-image-flow-docs-2025-dark.png' },
-        { property: 'og:image', content: getUrl() + '/img/og-image-flow-docs-2025-dark.png' },
+        {
+          name: 'twitter:image',
+          content: getUrl() + '/img/og-image-flow-docs-2025-dark.png',
+        },
+        {
+          property: 'og:image',
+          content: getUrl() + '/img/og-image-flow-docs-2025-dark.png',
+        },
         { property: 'og:image:type', content: 'image/png' },
         { property: 'og:image:width', content: '1200' },
         { property: 'og:image:height', content: '630' },
@@ -301,6 +307,12 @@ const config = {
           {
             type: 'custom-connectButton',
             position: 'right',
+          },
+          {
+            type: 'html',
+            position: 'right',
+            value:
+              '<button onclick="if(window.Pylon){console.log(\'Opening Pylon from navbar\'); window.Pylon(\'show\');}else{console.warn(\'Pylon not available\');}" class="navbar__item navbar__link" style="background: none; border: none; color: inherit; cursor: pointer; font-size: inherit; font-family: inherit;">Ask Flow AI</button>',
           },
           {
             href: 'https://github.com/onflow',
