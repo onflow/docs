@@ -1,7 +1,11 @@
 import React from 'react';
 import { useColorMode } from '@docusaurus/theme-common';
 import { event } from '@site/src/utils/gtags.client';
-import { GA_EVENTS, GA_CATEGORIES, GA_ACTIONS } from '@site/src/constants/ga-events';
+import {
+  GA_EVENTS,
+  GA_CATEGORIES,
+  GA_ACTIONS,
+} from '@site/src/constants/ga-events';
 
 const HeroSection: React.FC = () => {
   const { colorMode } = useColorMode();
@@ -17,12 +21,14 @@ const HeroSection: React.FC = () => {
             Better apps deserve better blockchains
           </h1>
           <p className="text-base md:text-lg text-gray-700 dark:text-gray-200 mb-4 max-w-xl">
-            <strong>Cadence</strong> for whats next. <strong>Solidity</strong> for what you've got. On Flow, both run natively with no tricks and no rewrites.  <strong>Build the next killer app</strong>.
+            <strong>Cadence</strong> for whats next. <strong>Solidity</strong>{' '}
+            for what you've got. On Flow, both run natively with no tricks and
+            no rewrites. <strong>Build the next killer app</strong>.
           </p>
           <div className="flex flex-col sm:flex-row gap-3 mb-4">
-            <a
-              href="/blockchain-development-tutorials/use-AI-to-build-on-flow"
-              className="px-6 py-2 rounded-lg bg-primary-purple text-white hover:text-white focus:text-white no-underline hover:no-underline font-bold text-base shadow-lg border border-gray-200 dark:border-gray-700 hover:opacity-90 focus:ring-2 focus:ring-primary-purple transition-colors text-center"
+            <button
+              type="button"
+              className="px-6 py-2 rounded-lg bg-primary-purple text-white hover:text-white focus:text-white no-underline hover:no-underline font-bold text-base shadow-lg border border-gray-200 dark:border-gray-700 hover:opacity-90 focus:ring-2 focus:ring-primary-purple transition-colors text-center cursor-pointer"
               onClick={() => {
                 event({
                   action: GA_EVENTS.ACTION_CARD_CLICK,
@@ -30,10 +36,20 @@ const HeroSection: React.FC = () => {
                   label: 'Build with AI',
                   location: true,
                 });
+
+                // Open Pylon chat widget instead of navigating to tutorial
+                if (typeof window !== 'undefined' && window.Pylon) {
+                  console.log(
+                    'Opening Pylon chat widget from Ask Flow AI button',
+                  );
+                  window.Pylon('show');
+                } else {
+                  console.warn('Pylon widget not available yet');
+                }
               }}
             >
               Build with AI
-            </a>
+            </button>
             <button
               type="button"
               onClick={() => {
@@ -43,7 +59,8 @@ const HeroSection: React.FC = () => {
                   label: 'Start with Cadence',
                   location: true,
                 });
-                window.location.href = '/build/cadence/getting-started/contract-interaction';
+                window.location.href =
+                  '/build/cadence/getting-started/contract-interaction';
               }}
               className="px-6 py-2 rounded-lg bg-transparent text-black dark:text-white underline font-bold text-base border-none shadow-none focus:outline-none focus:underline hover:underline transition-colors text-center cursor-pointer"
               style={{ background: 'transparent' }}
@@ -101,4 +118,4 @@ const HeroSection: React.FC = () => {
   );
 };
 
-export default HeroSection; 
+export default HeroSection;

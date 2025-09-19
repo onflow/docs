@@ -6,6 +6,8 @@ import HeroSection from './HeroSection';
 import FeatureSection from './FeatureSection';
 import BrowseByCategory from './BrowseByCategory';
 import QuickStartShowcase from './QuickStartShowcase';
+// import { ContentFeatureList } from '../../Components/ContentFeatureList';
+// import { HomeHeader } from '../../Components/HomeHeader';
 
 export type HomePageProps = {};
 
