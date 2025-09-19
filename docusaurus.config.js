@@ -312,7 +312,7 @@ const config = {
             type: 'html',
             position: 'right',
             value:
-              '<button onclick="if(window.Pylon){console.log(\'Opening Pylon from navbar\'); window.Pylon(\'show\');}else{console.warn(\'Pylon not available\');}" class="navbar__item navbar__link" style="background: none; border: none; color: inherit; cursor: pointer; font-size: inherit; font-family: inherit;">Ask Flow AI</button>',
+              "<button onclick=\"if(window.Pylon){console.log('Opening Pylon from navbar'); window.Pylon('show');}else{console.warn('Pylon not available');}\" class=\"inline-flex items-center justify-center font-semibold text-center border transition duration-200 cursor-pointer font-display text-sm px-4 py-2 rounded-md bg-black text-white border-transparent hover:bg-gray-800 hover:text-white active:bg-gray-900 active:text-white dark:bg-white dark:text-black dark:hover:bg-gray-100 dark:hover:text-black dark:active:bg-gray-200 dark:active:text-black\">Ask Flow AI</button>",
           },
           {
             href: 'https://github.com/onflow',
