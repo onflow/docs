@@ -451,7 +451,7 @@ This transaction demonstrates how to chain multiple DeFi operations atomically, 
 [zap]: ./breakthislinkfornow
 [zapper]: ./breakthislinkfornow
 [`/cadence/transactions/increment_fi_restake.cdc`]: https://github.com/onflow/flow-actions-scaffold/blob/main/cadence/transactions/increment_fi_restake.cdc
-[scheduled transactions]: ./scheduled-callbacks-introduction.md
+[scheduled transactions]: ./scheduled-transactions-introduction.md
 [Export]: https://docs.wallet.flow.com/tutorial/extension-private-key-and-seed-phrase-guide
 [Cadence]: https://cadence-lang.org/docs
 [staking app]: https://app.increment.fi/staking
