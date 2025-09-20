@@ -170,7 +170,7 @@ Those wishing to understand the technical specifics of how Flow EVM works, we re
 
 **Forte** is Flow's most significant network upgrade that enhances developers and AI agents building on Flow, unlocking protocol composability and native automation directly on the network.
 
-> **_ERC-20 and ERC-721 unlocked nouns. Actions and Agents unlock verbs._**
+> **_ERC-20 and ERC-721 unlocked nouns. Actions and scheduled transactions unlock verbs._**
 
 ### What makes Forte Interesting
 
@@ -187,9 +187,9 @@ This means developers can:
 - **Ensure atomicity**: All operations succeed together or fail together, eliminating partial execution risks
 - **Reduce gas costs**: Execute multiple protocol interactions more efficiently than separate transactions
 
-### Flow Agents: Autonomous onchain execution
+### Scheduled Transaction: Autonomous onchain execution
 
-[**Flow Agents**] are onchain resources that run entirely within a Flow account, enabling fully autonomous, secure transaction execution. Agents can schedule future transactions, self-trigger based on conditions, and operate without external keepers.
+[**Scheduled Transactions**] are onchain resources that run entirely within a Flow account, enabling fully autonomous, secure transaction execution. They can self-trigger based on conditions and operate without external keepers.
 
 Key capabilities:
 
@@ -325,4 +325,4 @@ Are you interested in launching a project on Flow or partnering with us? Visit o
 [protocol autonomy roadmap]: https://flow.com/protocol-autonomy-roadmap
 [**Flow Actions**]: https://developers.flow.com/blockchain-development-tutorials/flow-actions/intro-to-flow-actions
 [fundamental DeFi primitives]: https://developers.flow.com/blockchain-development-tutorials/flow-actions/intro-to-flow-actions
-[**Flow Agents**]: https://developers.flow.com/blockchain-development-tutorials/flow-actions/scheduled-transactions-introduction
+[**Scheduled Transactions**]: https://developers.flow.com/blockchain-development-tutorials/flow-actions/scheduled-transactions-introduction
