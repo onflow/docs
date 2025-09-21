@@ -11,13 +11,13 @@ flow transactions get-system <block_id|latest|block_height> [tx_id]
 ```
 
 ::::warning
-Querying with a system transaction ID (`[tx_id]`) is part of the Forte network upgrade and is currently available on Flow Emulator (CLI v2.7.0+) and `testnet`. See the announcement for context: [Forte: Introducing Actions & Agents][forte-ann].
+Querying with a system transaction ID (`[tx_id]`) is part of the Forte network upgrade and is currently available on Flow Emulator (CLI v2.7.0+) and `testnet`. See the announcement for context: [Forte: Introducing Actions & Agents].
 ::::
 
 ## Use cases
 
-- System chunk transaction for protocol operations: see [Epoch Scripts and Events][epoch-events] and [Staking rewards via system chunk][staking-rewards].
-- Transactions related to scheduled callbacks: see [Introduction to Scheduled Callbacks][scheduled-callbacks]. Consider `--include fee-events` for callback fee details.
+- System chunk transaction for protocol operations: see [Epoch Scripts and Events] and [Staking rewards via system chunk].
+- Transactions related to scheduled callbacks: see [Introduction to Scheduled Callbacks]. Consider `--include fee-events` for callback fee details.
 
 ## Example Usage
 
@@ -166,15 +166,15 @@ Skip version check during start up to speed up process for slow connections.
 ## Notes
 
 System transactions currently cover:
-- System chunk transactions used by protocol operations. See an overview of system chunks and service events: [Epoch Scripts and Events][epoch-events].
-- Scheduled callbacks execution. Learn more: [Introduction to Scheduled Callbacks][scheduled-callbacks].
+- System chunk transactions used by protocol operations. See an overview of system chunks and service events: [Epoch Scripts and Events].
+- Scheduled callbacks execution. Learn more: [Introduction to Scheduled Callbacks].
 
 More resources:
-- [Staking rewards via system chunk][staking-rewards]
-- [Epoch schedule and system chunk transactions][epoch-schedule]
+- [Staking rewards via system chunk]
+- [Epoch schedule and system chunk transactions]
 
-[forte-ann]: https://flow.com/post/forte-introducing-actions-agents-supercharging-composability-and-automation
-[epoch-events]: ../../../protocol/staking/05-epoch-scripts-events.md
-[staking-rewards]: ../../../protocol/staking/08-staking-rewards.md
-[scheduled-callbacks]: https://developers.flow.com/blockchain-development-tutorials/flow-actions/scheduled-callbacks-introduction
-[epoch-schedule]: ../../../protocol/staking/03-schedule.md
+[Forte: Introducing Actions & Agents]: https://flow.com/post/forte-introducing-actions-agents-supercharging-composability-and-automation
+[Epoch Scripts and Events]: ../../../../protocol/staking/05-epoch-scripts-events.md
+[Staking rewards via system chunk]: ../../../../protocol/staking/08-staking-rewards.md
+[Introduction to Scheduled Callbacks]: https://developers.flow.com/blockchain-development-tutorials/flow-actions/scheduled-callbacks-introduction
+[Epoch schedule and system chunk transactions]: ../../../../protocol/staking/03-schedule.md
