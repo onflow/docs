@@ -4,11 +4,15 @@ description: How to get a Flow system transaction from the command line
 sidebar_position: 8
 ---
 
-The Flow CLI provides a command to fetch the system transaction for a given block reference. You can optionally provide a transaction ID to target a specific system transaction within that block. If scheduled callbacks ran in that block, their effects and fee events may appear in the result.
+The Flow CLI provides a command to fetch the system transaction for a given block reference. You can optionally provide a transaction ID to target a specific system transaction within that block.
 
 ```shell
 flow transactions get-system <block_id|latest|block_height> [tx_id]
 ```
+
+::::warning
+Querying with a system transaction ID (`[tx_id]`) is part of the Forte network upgrade and is currently available on Flow Emulator (CLI v2.7.0+) and the public test network. See the announcement for context: [Forte: Introducing Actions & Agents](https://flow.com/post/forte-introducing-actions-agents-supercharging-composability-and-automation).
+::::
 
 ## Use cases
 
