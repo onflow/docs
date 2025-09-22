@@ -232,7 +232,7 @@ flow transactions get-system latest 07a8...b433
 flow transactions get-system 12345
 ```
 
-📖 **[Learn more about scripts and transactions](./scripts/execute-scripts.md)**
+📖 **[Learn more about scripts](./scripts/execute-scripts.md)** | **[Learn more about transactions](./transactions/send-transactions.md)**
 
 ## Dependency Management
 
