@@ -2,6 +2,20 @@
 title: Get a System Transaction
 description: How to get a Flow system transaction from the command line
 sidebar_position: 8
+keywords:
+  - flow cli
+  - transactions
+  - system transaction
+  - system chunk
+  - scheduled callbacks
+  - forte upgrade
+  - blocks
+  - block id
+  - tx_id
+  - fee-events
+  - access api
+  - emulator
+  - testnet
 ---
 
 The Flow CLI provides a command to fetch the system transaction for a given block reference. You can optionally provide a transaction ID to target a specific system transaction within that block.
