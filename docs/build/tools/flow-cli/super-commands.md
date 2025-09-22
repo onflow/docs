@@ -143,6 +143,13 @@ flow config remove deployment testnet my-account MyToken
 
 ## Account Management
 
+### List Accounts
+
+```bash
+# List all configured accounts with status
+flow accounts list
+```
+
 ### Create Accounts
 
 ```bash
@@ -154,6 +161,19 @@ flow accounts create --network testnet
 
 # Create with custom key
 flow accounts create --key <private-key>
+```
+
+### Fund Accounts
+
+```bash
+# Interactive funding prompt
+flow accounts fund
+
+# Fund by account name from flow.json
+flow accounts fund testnet-account
+
+# Fund by address
+flow accounts fund 0x8e94eaa81771313a
 ```
 
 ### Manage Account Keys
@@ -199,6 +219,19 @@ flow transactions send cadence/transactions/TransferTokens.cdc --arg 0x123 --arg
 flow transactions send cadence/transactions/TransferTokens.cdc --signer my-account
 ```
 
+### Get System Transactions
+
+```bash
+# Get system transaction from latest block
+flow transactions get-system latest
+
+# Get specific system transaction by ID
+flow transactions get-system latest 07a8...b433
+
+# Get system transaction from specific block height
+flow transactions get-system 12345
+```
+
 📖 **[Learn more about scripts and transactions](./scripts/execute-scripts.md)**
 
 ## Dependency Management
@@ -219,6 +252,9 @@ flow dependencies install testnet://8a4dce54554b225d.NumberFormatter --account m
 ### Manage Dependencies
 
 ```bash
+# List installed dependencies
+flow dependencies list
+
 # Discover available contracts
 flow dependencies discover
 
