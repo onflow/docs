@@ -11,7 +11,9 @@ flow transactions get-system <block_id|latest|block_height> [tx_id]
 ```
 
 ::::warning
+
 Querying with a system transaction ID (`[tx_id]`) is part of the Forte network upgrade and is currently available on Flow Emulator (CLI v2.7.0+) and [Flow Testnet]. See the announcement for context: [Forte: Introducing Actions & Agents].
+
 ::::
 
 ## Use Cases
