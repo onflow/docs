@@ -60,7 +60,7 @@ Learn how to build composable DeFi applications using the Flow Actions framework
 - [Flow Actions Transactions] - Learn how to create transactions that can chain multiple DeFi operations atomically.
 - [Connectors] - Build Flow Actions connectors that integrate protocols with Flow Actions primitives, serving as protocol adapters that translate bespoke APIs into standardized interfaces.
 - [Basic Combinations] - Learn how to combine Flow Actions primitives to create powerful DeFi workflows using atomic composition, weak guarantees, and event traceability across multiple protocols.
-- [Scheduled Callbacks Introduction] - Learn how to implement scheduled callbacks for time-based smart contract execution on Flow, enabling recurring jobs, deferred actions, and autonomous workflows without external transactions.
+- [Scheduled Transactions Introduction] - Learn how to implement scheduled transactions for time-based smart contract execution on Flow, enabling recurring jobs, deferred actions, and autonomous workflows without external transactions.
 
 ## [Cadence Development]
 
@@ -172,7 +172,7 @@ Flow will continue to provide quality walkthroughs and tutorials to provide deve
 [Flow Actions Transactions]: ./flow-actions/flow-actions-transaction.md
 [Connectors]: ./flow-actions/connectors.md
 [Basic Combinations]: ./flow-actions/basic-combinations.md
-[Scheduled Callbacks Introduction]: ./flow-actions/scheduled-callbacks-introduction.md
+[Scheduled Transactions Introduction]: ./flow-actions/scheduled-transactions-introduction.md
 [Cadence Development]: ./cadence/index.md
 [Mobile Development]: ./cadence/mobile/index.md
 [iOS Quickstart]: ./cadence/mobile/ios-quickstart.md

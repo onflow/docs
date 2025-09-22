@@ -7,7 +7,7 @@ keywords:
   - transactions
   - system transaction
   - system chunk
-  - scheduled callbacks
+  - scheduled transactions
   - forte upgrade
   - blocks
   - block id
@@ -33,7 +33,7 @@ Querying with a system transaction ID (`[tx_id]`) is part of the Forte network u
 ## Use Cases
 
 - System chunk transaction for protocol operations: see [Epoch Scripts and Events] and [Staking rewards via system chunk].
-- Transactions related to scheduled callbacks: see [Introduction to Scheduled Callbacks]. Consider `--include fee-events` for callback fee details.
+- Transactions related to scheduled transactions: see [Introduction to Scheduled Transactions]. Consider `--include fee-events` for scheduled transaction fee details.
 
 ## Example Usage
 
@@ -183,7 +183,7 @@ Skip version check during start up to speed up process for slow connections.
 
 System transactions currently cover:
 - System chunk transactions used by protocol operations. See an overview of system chunks and service events: [Epoch Scripts and Events].
-- Scheduled callbacks execution. Learn more: [Introduction to Scheduled Callbacks].
+- Scheduled transaction execution. Learn more: [Introduction to Scheduled Transaction].
 
 More resources:
 - [Staking rewards via system chunk]
@@ -193,5 +193,5 @@ More resources:
 [Flow Testnet]: ../../../../protocol/flow-networks/accessing-testnet.md
 [Epoch Scripts and Events]: ../../../../protocol/staking/05-epoch-scripts-events.md
 [Staking rewards via system chunk]: ../../../../protocol/staking/08-staking-rewards.md
-[Introduction to Scheduled Callbacks]: https://developers.flow.com/blockchain-development-tutorials/flow-actions/scheduled-callbacks-introduction
+[Introduction to Scheduled Transactions]: https://developers.flow.com/blockchain-development-tutorials/flow-actions/scheduled-transactions-introduction
 [Epoch schedule and system chunk transactions]: ../../../../protocol/staking/03-schedule.md
