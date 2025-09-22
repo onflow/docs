@@ -31,7 +31,7 @@ This specifies the remote source of the contract on the network that will be use
 
 ### Installing Core Contracts Using Simplified Syntax
 
-For core contracts, you can use a simplified syntax that defaults to the Flow Mainnet:
+For core contracts (and [DeFiActions](https://github.com/onflow/FlowActions/tree/main?tab=readme-ov-file#deployments)), you can use a simplified syntax that defaults to the Flow Mainnet:
 
 ```bash
 flow dependencies install FlowToken
@@ -128,3 +128,15 @@ Use arrow keys to navigate, space to select, enter to confirm or skip, q to quit
 ```
 
 After selecting the contracts, press `enter` to confirm. The selected contracts will be added to your `flow.json` file and will be accessible in your project.
+
+## `list`
+
+The `list` command displays all the dependencies currently installed in your project. This is useful for reviewing what contracts your project depends on and their sources.
+
+To list your installed dependencies, run:
+
+```bash
+flow dependencies list
+```
+
+This command will show you all the dependencies from your `flow.json` file along with their source information, helping you keep track of what external contracts your project is using.
