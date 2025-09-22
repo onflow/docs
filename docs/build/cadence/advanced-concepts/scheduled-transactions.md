@@ -97,7 +97,12 @@ Scheduled transactions follow a specific lifecycle with corresponding events:
    - Event: `FlowTransactionScheduler.Canceled`
    - Status: `Canceled`
 
+### Contracts
 The FlowTransactionScheduler contract is deployed to the service account and manages all scheduled transactions across the network. 
+
+Bellow are listed the addresses of the transaction scheduler contract `FlowTransactionScheduler` on each network it is deployed:
+- **Emulator**: `0xf8d6e0586b0a20c7`
+- **Testnet**: `0x8c5303eaa26202d6`
 
 ## Examples
 
