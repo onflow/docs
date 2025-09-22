@@ -31,7 +31,7 @@ This specifies the remote source of the contract on the network that will be use
 
 ### Installing Core Contracts Using Simplified Syntax
 
-For core contracts, you can use a simplified syntax that defaults to the Flow Mainnet:
+For core contracts (and [DeFiActions](https://github.com/onflow/FlowActions/tree/main?tab=readme-ov-file#deployments)), you can use a simplified syntax that defaults to the Flow Mainnet:
 
 ```bash
 flow dependencies install FlowToken
