@@ -14,7 +14,7 @@ flow transactions get-system <block_id|latest|block_height> [tx_id]
 Querying with a system transaction ID (`[tx_id]`) is part of the Forte network upgrade and is currently available on Flow Emulator (CLI v2.7.0+) and [Flow Testnet]. See the announcement for context: [Forte: Introducing Actions & Agents].
 ::::
 
-## Use cases
+## Use Cases
 
 - System chunk transaction for protocol operations: see [Epoch Scripts and Events] and [Staking rewards via system chunk].
 - Transactions related to scheduled callbacks: see [Introduction to Scheduled Callbacks]. Consider `--include fee-events` for callback fee details.
