@@ -8,13 +8,13 @@ sidebar_label: Height coordinated upgrade
 To enables rapid development of the Flow Protocol, the height coordinated upgrade method is used to roll out non-breaking changes such as bug fixes,
 feature implementations and security fixes.
 
-## HCU versus Spork
+## HCU versus Network Upgrade
 
-A [spork](./spork.md) requires a coordinated network upgrade process where node operators upgrade their node software and
-re-initialize with a consolidated representation of the previous spork's state.
+A [Network Upgrade (spork)](./network-upgrade) requires a coordinated network upgrade process where node operators upgrade their node software and
+re-initialize with a consolidated representation of the previous network upgrade's state.
 It is used to roll out changes which may be non-backward compatible with respect to the protocol and the execution state.
-Spork entails a network downtime as all nodes in the system are upgraded and brought back online.
-Sporks are only executed once every quarter.
+Network upgrade entails a network downtime as all nodes in the system are upgraded and brought back online.
+Network upgrades are only executed once every year.
 
 A height coordinated upgrade (HCU) on the other hand allows the execution and the verification nodes to be upgraded without stopping the network.
 There is no network downtime during an HCU but the transaction execution will stop for few minutes while the execution nodes restart.

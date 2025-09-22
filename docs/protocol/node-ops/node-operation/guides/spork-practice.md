@@ -6,7 +6,7 @@ title: Spork Practice
 
 The actual process of Sporking will mostly be covered by the Node Operators Quick Guide, and will not be covered here.
 
-[Spork](../spork.md)
+[Spork](../network-upgrade)
 
 Instead, we'll aim to give some instructions for those that want to Practice the process themselves, before joining the Mainnet Spork.
 

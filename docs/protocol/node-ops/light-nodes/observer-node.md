@@ -77,7 +77,7 @@ curl -sL -O storage.googleapis.com/flow-genesis-bootstrap/boot-tools-intel-mac.t
 
 #### Step 3 - Download the root-protocol-state-snapshot.json file for the current spork
 
-The `root-protocol-state-snapshot.json` is generated for each [spork](../node-operation/spork.md) and contains the genesis data for that spork.
+The `root-protocol-state-snapshot.json` is generated for each [spork](../node-operation/network-upgrade) and contains the genesis data for that spork.
 It is published and made available after each spork. The download location is specified [here](https://github.com/onflow/flow/blob/master/sporks.json) under [rootProtocolStateSnapshot](https://github.com/onflow/flow/blob/master/sporks.json#L16) and can be downloaded as follows,
 
 For mainnet find the latest spork version from [sporks.json](https://github.com/onflow/flow/blob/master/sporks.json) and then download the `root-protocol-state-snapshot.json` and the signature file for it.

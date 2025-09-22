@@ -242,7 +242,7 @@ Before starting your node, ensure it is [registered](./node-bootstrap.md#step-2-
 </Callout>
 
 Ensure you start your node at the appropriate time.
-See [Spork Process](./spork.md) for when to start up a node following a spork.
+See [Spork Process](./network-upgrade) for when to start up a node following a spork.
 See [Node Bootstrap](./node-bootstrap.md#timing) for when to start up a newly registered node.
 
 ### Systemd
