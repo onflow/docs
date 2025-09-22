@@ -63,7 +63,7 @@ transaction(
     delaySeconds: UFix64,
     priority: UInt8,
     executionEffort: UInt64,
-    callbackData: AnyStruct?
+    transactionData: AnyStruct?
 )
 ```
 
@@ -435,9 +435,9 @@ access(all) resource Handler: FlowTransactionScheduler.TransactionHandler {
     access(all) fun resolveView(_ view: Type): AnyStruct? {
         switch view {
             case Type<StoragePath>():
-                return /storage/RickRollCallbackHandler
+                return /storage/RickRollTransactionHandler
             case Type<PublicPath>():
-                return /public/RickRollCallbackHandler
+                return /public/RickRollTransactionHandler
             default:
                 return nil
         }
@@ -493,7 +493,7 @@ let handlerCap = account.capabilities.storage
                             .getControllers(forPath: TestFlowScheduledTransactionHandler.HandlerStoragePath)[0]
                             .capability as! Capability<auth(FlowTransactionScheduler.Execute) &{FlowTransactionScheduler.TransactionHandler}>
 
-// borrow a reference to the callback manager
+// borrow a reference to the scheduled transaction manager
 let manager = RickRollTransactionHandler.account.storage.borrow<auth(FlowTransactionSchedulerUtils.Owner) &{FlowTransactionSchedulerUtils.Manager}>(from: FlowTransactionSchedulerUtils.managerStoragePath)
     ?? panic("Could not borrow a Manager reference from \(FlowTransactionSchedulerUtils.managerStoragePath)")
 
@@ -592,12 +592,12 @@ transaction(
             let manager <- FlowTransactionSchedulerUtils.createManager()
             signer.storage.save(<-manager, to: FlowTransactionSchedulerUtils.managerStoragePath)
 
-            // create a public capability to the callback manager
+            // create a public capability to the scheduled transaction manager
             let managerRef = signer.capabilities.storage.issue<&{FlowTransactionSchedulerUtils.Manager}>(FlowTransactionSchedulerUtils.managerStoragePath)
             signer.capabilities.publish(managerRef, at: FlowTransactionSchedulerUtils.managerPublicPath)
         }
 
-        // borrow a reference to the callback manager
+        // borrow a reference to the scheduled transaction manager
         let manager = signer.storage.borrow<auth(FlowTransactionSchedulerUtils.Owner) &{FlowTransactionSchedulerUtils.Manager}>(from: FlowTransactionSchedulerUtils.managerStoragePath)
             ?? panic("Could not borrow a Manager reference from \(FlowTransactionSchedulerUtils.managerStoragePath)")
 

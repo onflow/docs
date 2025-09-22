@@ -1924,8 +1924,8 @@
       "permanent": true
     },
     {
-      "source": "/blockchain-development-tutorials/defi/scheduled-callbacks-introduction",
-      "destination": "/blockchain-development-tutorials/flow-actions/scheduled-callbacks-introduction",
+      "source": "/blockchain-development-tutorials/defi/scheduled-transactions-introduction",
+      "destination": "/blockchain-development-tutorials/flow-actions/scheduled-transactions-introduction",
       "permanent": true
     },
     {
