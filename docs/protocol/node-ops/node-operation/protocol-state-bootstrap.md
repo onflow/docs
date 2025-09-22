@@ -4,7 +4,7 @@ description: How to bootstrap a new or existing node
 ---
 
 When a node joins the network, it bootstraps its local database using a trusted initialization file, called a Root Snapshot.
-Most node operators will use the `Spork Root Snapshot` file distributed during the [spork process](./spork.md).
+Most node operators will use the `Spork Root Snapshot` file distributed during the [spork process](./network-upgrade).
 This page will explain how the bootstrapping process works and how to use it in general.
 
 For guides covering specific bootstrapping workflows, see:

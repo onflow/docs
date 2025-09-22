@@ -6,15 +6,17 @@ sidebar_position: 15
 
 ## Overview
 
-A spork is a coordinated network upgrade process where node operators upgrade their node software and
-re-initialize with a consolidated representation of the previous spork's state. This enables rapid development
+A Network Upgrade (spork) is a coordinated network upgrade process where node operators upgrade their node software and
+re-initialize with a consolidated representation of the previous network upgrade's state. This enables rapid development
 on the Flow Protocol and minimizes the impact of breaking changes.
 
-The Flow network sporks approximately once every year.
-Upcoming sporks are announced in advance on the `#flow-validators-announcements` [Discord channel](https://discord.gg/flow) and on the [status](https://status.flow.com/) page.
-The `#flow-validators-announcements` channel is also used to coordinate during the spork process with all the node operators.
+Network upgrade are also referred to as Spork.
 
-This guide is for existing operators participating in a spork. See [Node Bootstrap](./node-bootstrap.md)
+Network Upgrades are approximately once every year.
+Upcoming network upgrades are announced in advance on the `#flow-validators-announcements` [Discord channel](https://discord.gg/flow) and on the [status](https://status.flow.com/) page.
+The `#flow-validators-announcements` channel is also used to coordinate during the upgrade process with all the node operators.
+
+This guide is for existing operators participating in a network upgrade. See [Node Bootstrap](./node-bootstrap.md)
 for a guide to joining the network for the first time.
 
 ## Step 1 - Cleaning Up Previous Spork State
