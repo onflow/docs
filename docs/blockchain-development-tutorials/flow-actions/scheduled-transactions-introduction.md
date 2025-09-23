@@ -186,7 +186,7 @@ This contract is simple. It contains a [resource] that has a function with the `
 2. Fetches the current value in the counter
 3. Logs that value to the console **for the emulator**
 
-It also contains functions to get metadata about the handler and a function, `createHandler`, which creates and returns an instance of the `Handler` resource.
+It also contains functions to get metadata about the handler and a function, `createHandler`, which creates and returns an instance of the `Handler` resource. There are other metadata views that could be good to include in your Handler, but we are sticking to the basic ones for now.
 
 ### Initializing the Transaction Handler
 
@@ -207,18 +207,25 @@ transaction() {
         // Validation/example that we can create an issue a handler capability with correct entitlement for FlowTransactionScheduler
         let _ = signer.capabilities.storage
             .issue<auth(FlowTransactionScheduler.Execute) &{FlowTransactionScheduler.TransactionHandler}>(/storage/CounterTransactionHandler)
+
+        // Issue a non-entitled public capability for the handler that is publicly accessible
+        let publicCap = signer.capabilities.storage
+            .issue<&{FlowTransactionScheduler.TransactionHandler}>(/storage/CounterTransactionHandler)
+
+        // publish the capability
+        signer.capabilities.publish(publicCap, at: /public/CounterTransactionHandler)
     }
 }
 ```
 
-This transaction saves an instance of the `Handler` resource to the user's [storage]. It also tests out/demonstrates how to issue the handler [capability] with the `FlowTransactionScheduler.Execute` [entitlement]. The use of the name `_` is convention to name a variable we don't intend to use for anything.
+This transaction saves an instance of the `Handler` resource to the user's [storage]. It also tests out/demonstrates how to issue the handler [capability] with the `FlowTransactionScheduler.Execute` [entitlement] and how to publish an un-entitled capability to the handler so it can be publicly accessible. The use of the name `_` is convention to name a variable we don't intend to use for anything.
 
 ### Scheduling the Transaction
 
 Finally, open `cadence/transactions/ScheduleIncrementIn.cdc` again. This is the most complicated transaction, so we'll break it down. The final call other than the `log` is what actually schedules the transaction:
 
 ```cadence
-let receipt = manager.schedule(
+manager.schedule(
     handlerCap: handlerCap,
     data: transactionData,
     timestamp: future,
@@ -232,14 +239,33 @@ It calls the `schedule` function from the `FlowTransactionSchedulerUtils.Manager
 
 - `handlerCap`: The handler [capability] for the code that should be executed.
 
-This is created above as a part of the transaction with:
+This was created above as a part of the previous transaction with:
 
 ```cadence
 let handlerCap = signer.capabilities.storage
             .issue<auth(FlowTransactionScheduler.Execute) &{FlowTransactionScheduler.TransactionHandler}>(/storage/CounterTransactionHandler)
 ```
 
-That line is creating a capability that allows something with the `FlowTransactionScheduler.Execute` entitlement to call the function (`executeTransaction()`) from the `Handler` resource in `CounterTransactionHandler.cdc` that you created and stored an instance of in the `InitCounterTransactionHandler` transaction.
+That line creates a capability with the `FlowTransactionScheduler.Execute` entitlement. That entitlement permits calling the function (`executeTransaction()`) from the `Handler` resource in `CounterTransactionHandler.cdc` that you created and stored an instance of in the `InitCounterTransactionHandler` transaction.
+
+Then, in the schedule transaction, we retrieve the handler capability that we created before.
+We created two separate handlers, a public and a private one, so we have to make sure we're getting the private one:
+
+```cadence
+// Get the entitled capability that will be used to create the transaction
+// Need to check both controllers because the order of controllers is not guaranteed
+var handlerCap: Capability<auth(FlowTransactionScheduler.Execute) &{FlowTransactionScheduler.TransactionHandler}>? = nil
+
+if let cap = account.capabilities.storage
+                    .getControllers(forPath: /storage/CounterTransactionHandler)[0]
+                    .capability as? Capability<auth(FlowTransactionScheduler.Execute) &{FlowTransactionScheduler.TransactionHandler}> {
+    handlerCap = cap
+} else {
+    handlerCap = account.capabilities.storage
+                    .getControllers(forPath: /storage/CounterTransactionHandler)[1]
+                    .capability as! Capability<auth(FlowTransactionScheduler.Execute) &{FlowTransactionScheduler.TransactionHandler}>
+}
+```
 
 - `data`: The arguments required by the transaction function.
 
@@ -296,6 +322,8 @@ assert(
 The `FlowTransactionSchedulerUtils.Manager` resource provides a safer and more convenient way to manage scheduled transactions. Instead of directly calling the `FlowTransactionScheduler` contract,
 you can use the Manager resource that manages all your scheduled transactions from a single place and handles many of the common patterns to reduce boilerplate code.
 It also provides many convenient functions to get detailed information about all the transactions you have scheduled by timestamp, handler, etc.
+When setting up a manager, you also publish a capability for it so it is easy for scripts
+to query your account and also see what transactions you have scheduled!
 
 ### Setting Up the Manager
 
@@ -313,7 +341,9 @@ transaction() {
         signer.storage.save(<-manager, to: FlowTransactionSchedulerUtils.managerStoragePath)
         
         // Create a capability for the Manager
-        signer.capabilities.storage.issue<&FlowTransactionSchedulerUtils.Manager>(FlowTransactionSchedulerUtils.managerPublicPath)
+        let managerCap = signer.capabilities.storage.issue<&FlowTransactionSchedulerUtils.Manager>(FlowTransactionSchedulerUtils.managerStoragePath)
+
+        signer.capabilities.publish(managerCap, at: FlowTransactionSchedulerUtils.managerPublicPath)
     }
 }
 ```
@@ -323,7 +353,7 @@ transaction() {
 The Manager provides a `schedule` method that simplifies the scheduling process:
 
 ```cadence
-let receipt = manager.schedule(
+manager.schedule(
     handlerCap: handlerCap,
     data: transactionData,
     timestamp: future,
@@ -473,6 +503,13 @@ assert(
 if RickRollTransactionHandler.account.storage.borrow<&AnyResource>(from: /storage/RickRollTransactionHandler) == nil {
     let handler <- RickRollTransactionHandler.createHandler()
     RickRollTransactionHandler.account.storage.save(<-handler, to: /storage/RickRollTransactionHandler)
+    
+    // Issue a non-entitled public capability for the handler that is publicly accessible
+    let publicCap = RickRollTransactionHandler.account.capabilities.storage
+        .issue<&{FlowTransactionScheduler.TransactionHandler}>(/storage/RickRollTransactionHandler)
+
+    // publish the capability
+    RickRollTransactionHandler.capabilities.publish(publicCap, at: /public/RickRollTransactionHandler)
 }
 ```
 
@@ -485,20 +522,19 @@ let vaultRef = CounterLoopTransactionHandler.account.storage
 let fees <- vaultRef.withdraw(amount: estimate.flowFee ?? 0.0) as! @FlowToken.Vault
 ```
 
-Finally, issue a capability, and schedule the transaction:
+Finally, schedule the transaction:
 
 ```cadence
-// Get a capability to the handler stored in this contract account
-let handlerCap = account.capabilities.storage
-                            .getControllers(forPath: TestFlowScheduledTransactionHandler.HandlerStoragePath)[0]
-                            .capability as! Capability<auth(FlowTransactionScheduler.Execute) &{FlowTransactionScheduler.TransactionHandler}>
 
 // borrow a reference to the scheduled transaction manager
 let manager = RickRollTransactionHandler.account.storage.borrow<auth(FlowTransactionSchedulerUtils.Owner) &{FlowTransactionSchedulerUtils.Manager}>(from: FlowTransactionSchedulerUtils.managerStoragePath)
     ?? panic("Could not borrow a Manager reference from \(FlowTransactionSchedulerUtils.managerStoragePath)")
 
-manager.schedule(
-    handlerCap: handlerCap,
+let handlerTypeIdentifier = manager.getHandlerTypes().keys[0]!
+
+manager.scheduleByHandler(
+    handlerTypeIdentifier: handlerTypeIdentifier,
+    handlerUUID: nil,
     data: data,
     timestamp: future,
     priority: priority,
@@ -506,6 +542,11 @@ manager.schedule(
     fees: <-fees
 )
 ```
+
+As you can see, this time, we didn't have to get the handler capability.
+This is because the manager stores a history of handlers that you have used in the past
+so that you can easily just specify the type of the handler that you want to schedule for
+and it will schedule it for you.
 
 ### Setting Up the Transactions
 
@@ -517,7 +558,7 @@ Start by adding `InitRickRollHandler.cdc`:
 flow generate transaction InitRickRollHandler
 ```
 
-The contract itself is nearly identical to the one we reviewed:
+The transaction itself is nearly identical to the one we reviewed:
 
 ```cadence
 import "RickRollTransactionHandler"
@@ -529,11 +570,19 @@ transaction() {
         if signer.storage.borrow<&AnyResource>(from: /storage/RickRollTransactionHandler) == nil {
             let handler <- RickRollTransactionHandler.createHandler()
             signer.storage.save(<-handler, to: /storage/RickRollTransactionHandler)
-        }
 
-        // Validation/example that we can create an issue a handler capability with correct entitlement for FlowTransactionScheduler
-        let _ = signer.capabilities.storage
-            .issue<auth(FlowTransactionScheduler.Execute) &{FlowTransactionScheduler.TransactionHandler}>(/storage/CounterTransactionHandler)
+            // Validation/example that we can create an issue a handler capability with correct entitlement for FlowTransactionScheduler
+            signer.capabilities.storage
+                .issue<auth(FlowTransactionScheduler.Execute) &{FlowTransactionScheduler.TransactionHandler}>(/storage/RickRollTransactionHandler)
+
+            // Issue a non-entitled public capability for the handler that is publicly accessible
+            let publicCap = signer.capabilities.storage
+                .issue<&{FlowTransactionScheduler.TransactionHandler}>(/storage/RickRollTransactionHandler)
+
+            // publish the capability
+            signer.capabilities.publish(publicCap, at: /public/RickRollTransactionHandler)
+
+        }
     }
 }
 ```
@@ -551,7 +600,7 @@ import "FlowTransactionScheduler"
 import "FlowToken"
 import "FungibleToken"
 
-/// Schedule an increment of the Counter with a relative delay in seconds
+/// Schedule a Rick Roll with a delay of delaySeconds
 transaction(
     delaySeconds: UFix64,
     priority: UInt8,
@@ -584,9 +633,6 @@ transaction(
             ?? panic("missing FlowToken vault")
         let fees <- vaultRef.withdraw(amount: est.flowFee ?? 0.0) as! @FlowToken.Vault
 
-        let handlerCap = signer.capabilities.storage
-            .issue<auth(FlowTransactionScheduler.Execute) &{FlowTransactionScheduler.TransactionHandler}>(/storage/RickRollTransactionHandler)
-
         // if a transaction scheduler manager has not been created for this account yet, create one
         if !signer.storage.check<@{FlowTransactionSchedulerUtils.Manager}>(from: FlowTransactionSchedulerUtils.managerStoragePath) {
             let manager <- FlowTransactionSchedulerUtils.createManager()
@@ -595,6 +641,21 @@ transaction(
             // create a public capability to the scheduled transaction manager
             let managerRef = signer.capabilities.storage.issue<&{FlowTransactionSchedulerUtils.Manager}>(FlowTransactionSchedulerUtils.managerStoragePath)
             signer.capabilities.publish(managerRef, at: FlowTransactionSchedulerUtils.managerPublicPath)
+        }
+
+        // Get a capability to the handler stored in this contract account
+        // Get the entitled capability that will be used to create the transaction
+        // Need to check both controllers because the order of controllers is not guaranteed
+        var handlerCap: Capability<auth(FlowTransactionScheduler.Execute) &{FlowTransactionScheduler.TransactionHandler}>? = nil
+
+        if let cap = signer.capabilities.storage
+                            .getControllers(forPath: /storage/RickRollTransactionHandler)[0]
+                            .capability as? Capability<auth(FlowTransactionScheduler.Execute) &{FlowTransactionScheduler.TransactionHandler}> {
+            handlerCap = cap
+        } else {
+            handlerCap = signer.capabilities.storage
+                            .getControllers(forPath: /storage/RickRollTransactionHandler)[1]
+                            .capability as! Capability<auth(FlowTransactionScheduler.Execute) &{FlowTransactionScheduler.TransactionHandler}>
         }
 
         // borrow a reference to the scheduled transaction manager
