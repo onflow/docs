@@ -168,7 +168,7 @@ Those wishing to understand the technical specifics of how Flow EVM works, we re
 
 ## Forte: Flow's Network Upgrade
 
-**Forte** is Flow's most significant network upgrade that enhances developers and AI agents building on Flow, unlocking protocol composability and native automation directly on the network.
+**Forte** is the most significant network upgrade on Flow that enhances developers and AI agents building on Flow, unlocking protocol composability and native automation directly on the network.
 
 > **_ERC-20 and ERC-721 unlocked nouns. Actions and scheduled transactions unlock verbs._**
 
