@@ -11,7 +11,7 @@ export const buildGridData = {
       subtext: 'Building something new? Start with Cadence — built for apps, automation, and secure upgrades from day one.',
       cards: [
         {
-          heading: 'Automate DeFi with Actions and Scheduled Transactions',
+          heading: 'Automate DeFi with actions and scheduled transactions',
           description:
             'Automate compounding, restaking, and governance directly onchain with protocol-agnostic Actions and Scheduled Transactions that make DeFi apps run themselves.',
           iconColor: 'green',
@@ -21,7 +21,7 @@ export const buildGridData = {
           href: '/blockchain-development-tutorials/flow-actions',
         },
         {
-          heading: 'Create Apps that Evolve without a Proxy Contract',
+          heading: 'Create apps that evolve without a proxy contract',
           // Why should I pick Cadence?
           description:
             'Query state without indexers, write transactions as powerful as full contracts, and upgrade safely onchain — so your app can keep evolving after launch.',
@@ -32,7 +32,7 @@ export const buildGridData = {
           href: '/blockchain-development-tutorials/cadence/reading-and-writing-onchain-data',
         },
         {
-          heading: 'Build Faster with React Components and Hooks',
+          heading: 'Build faster with react components and hooks',
           description:
             'Build a modern frontend for your Flow Cadence app using React hooks and components with `@onflow/react-sdk`. Easily access user accounts, sign transactions, and more.',
           iconColor: 'green',
@@ -48,7 +48,7 @@ export const buildGridData = {
       subtext: 'Already writing Solidity? Bring it over unchanged — then level it up with Flow\'s MEV-resistance, VRF, and cross-VM composability.',
       cards: [
               {
-          heading: 'Deploy Solidity Apps on Flow Without Code Changes',
+          heading: 'Deploy Solidity apps on Flow without code changes',
           description:
             'Run your Solidity contracts unchanged on Flow EVM — with lower fees, higher throughput, and MEV-resistance out of the box.',
           iconColor: 'green',
@@ -58,7 +58,7 @@ export const buildGridData = {
           href: '/build/evm/quickstart',
         },
         {
-          heading: 'Add Secure Randomness with Native VRF in 3 lines',
+          heading: 'Add secure randomness with native VRF in 3 lines',
           description:
             'Generate verifiable randomness in three lines for loot boxes, fair drops, and battle mechanics, powered natively by Flow.',
           iconColor: 'green',
@@ -68,7 +68,7 @@ export const buildGridData = {
           href: '../blockchain-development-tutorials/native-vrf/vrf-in-solidity',
         },
         {
-          heading: 'Simplify User Experience with Batched Transactions',
+          heading: 'Simplify user experience with batched transactions',
           description:
             'Batch multiple writes and cross-VM calls into one approval, so users sign once while your app does the rest.',
           iconColor: 'green',
