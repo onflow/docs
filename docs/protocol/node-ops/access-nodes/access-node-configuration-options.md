@@ -61,7 +61,7 @@ There are some additional flags available, but you most likely do not need to ch
 
 ### Download the root protocol state snapshot
 
-The `root-protocol-state-snapshot.json` is generated for each [spork](https://developers.flow.com/protocol/node-ops/node-operation/spork) and contains the genesis data for that spork. It is published and made available after each spork. The download location is specified [here](https://github.com/onflow/flow/blob/master/sporks.json) under [rootProtocolStateSnapshot](https://github.com/onflow/flow/blob/master/sporks.json#L16).
+The `root-protocol-state-snapshot.json` is generated for each [spork](https://developers.flow.com/protocol/node-ops/node-operation/network-upgrade) and contains the genesis data for that spork. It is published and made available after each spork. The download location is specified [here](https://github.com/onflow/flow/blob/master/sporks.json) under [rootProtocolStateSnapshot](https://github.com/onflow/flow/blob/master/sporks.json#L16).
 
 Store the **`root-protocol-state-snapshot.json`** into the **`/bootstrap/public-root-information/`** folder.
 

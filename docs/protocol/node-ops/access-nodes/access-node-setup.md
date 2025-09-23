@@ -345,7 +345,7 @@ docker run --rm \
   --loglevel=error
 ```
 
-> If you would like your node to sync from the start of the last network upgrade, then please see the instructions [here](https://developers.flow.com/protocol/node-ops/node-operation/spork)
+> If you would like your node to sync from the start of the last network upgrade, then please see the instructions [here](../node-operation/network-upgrade)
 
 Alternatively, you can build a binary for the access node to run it without using Docker.
 To build the access node binary, see the instructions [here](https://github.com/onflow/flow-go?tab=readme-ov-file#building-a-binary-for-the-access-node).
