@@ -32,7 +32,7 @@ export const buildGridData = {
           href: '/blockchain-development-tutorials/cadence/reading-and-writing-onchain-data',
         },
         {
-          heading: 'Build faster with react components and hooks',
+          heading: 'Build faster with React components and hooks',
           description:
             'Build a modern frontend for your Flow Cadence app using React hooks and components with `@onflow/react-sdk`. Easily access user accounts, sign transactions, and more.',
           iconColor: 'green',
