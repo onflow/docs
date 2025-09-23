@@ -8,12 +8,12 @@ export const buildGridData = {
   sections: [
     {
       title: 'Cadence',
-      subtext: 'A purpose-build smart contract language for apps that do more than move tokens.',
+      subtext: 'Building something new? Start with Cadence — built for apps, automation, and secure upgrades from day one.',
       cards: [
         {
-          heading: 'The Forte Network Upgrade adds actions and scheduled transactions to make better DeFi apps possible',
+          heading: 'Automate DeFi with Actions and Scheduled Transactions',
           description:
-            'Run complex DeFi operations with standardized interfaces and automate execution onchain.',
+            'Automate compounding, restaking, and governance directly onchain with protocol-agnostic Actions and Scheduled Transactions that make DeFi apps run themselves.',
           iconColor: 'green',
           cardColor: 'black',
           icon: IconName.WHY_FLOW,
@@ -21,10 +21,10 @@ export const buildGridData = {
           href: '/blockchain-development-tutorials/flow-actions',
         },
         {
-          heading: 'Build without getting stuck. Smart contracts can be upgraded with new transactions and views at will',
+          heading: 'Create Apps that Evolve without a Proxy Contract',
           // Why should I pick Cadence?
           description:
-            'Evolve your contracts without redeploys - upgrade logic, introduce new transactions, and query any onchain data through flexible scripts.',
+            'Query state without indexers, write transactions as powerful as full contracts, and upgrade safely onchain — so your app can keep evolving after launch.',
           iconColor: 'green',
           cardColor: 'black',
           icon: IconName.FLOW_CADENCE,
@@ -32,9 +32,9 @@ export const buildGridData = {
           href: '/blockchain-development-tutorials/cadence/reading-and-writing-onchain-data',
         },
         {
-          heading: 'Ship apps quickly using hooks and ready-made components from the React SDK',
+          heading: 'Build Faster with React Components and Hooks',
           description:
-            'Build a modern frontend for your Flow Cadence app using React Hooks and frontend components with `@onflow/react-sdk`. Easily and conveniently access user accounts, sign transactions, and more.',
+            'Build a modern frontend for your Flow Cadence app using React hooks and components with `@onflow/react-sdk`. Easily access user accounts, sign transactions, and more.',
           iconColor: 'green',
           cardColor: 'black',
           icon: IconName.FLOW_CADENCE,
@@ -45,12 +45,12 @@ export const buildGridData = {
     },
     {
       title: 'Solidity',
-      subtext: 'EVM equivalence with seamless composability and interoperability with Cadence.',
+      subtext: 'Already writing Solidity? Bring it over unchanged — then level it up with Flow\'s MEV-resistance, VRF, and cross-VM composability.',
       cards: [
               {
-          heading: 'Deploy any ETH app on a scalable, secure, and low fee network with MEV-resistance baked in',
+          heading: 'Deploy Solidity Apps on Flow Without Code Changes',
           description:
-            'Simply add Flow to your config to deploy and run your Solidity smart contracts on Flow EVM with EVM Equivalence.',
+            'Run your Solidity contracts unchanged on Flow EVM — with lower fees, higher throughput, and MEV-resistance out of the box.',
           iconColor: 'green',
           cardColor: 'black',
           icon: IconName.EVM_ON_FLOW,
@@ -58,9 +58,9 @@ export const buildGridData = {
           href: '/build/evm/quickstart',
         },
         {
-          heading: 'Get random numbers in 3 lines for free with Native VRF',
+          heading: 'Add Secure Randomness with Native VRF in 3 lines',
           description:
-            'VRF is built into Flow at the protocol level to provide secure, verifiable randomness, for free.',
+            'Generate verifiable randomness in three lines for loot boxes, fair drops, and battle mechanics, powered natively by Flow.',
           iconColor: 'green',
           cardColor: 'black',
           icon: IconName.RANDOM,
@@ -68,9 +68,9 @@ export const buildGridData = {
           href: '../blockchain-development-tutorials/native-vrf/vrf-in-solidity',
         },
         {
-          heading: 'Simplify user experience by batching transactions into one click',
+          heading: 'Simplify User Experience with Batched Transactions',
           description:
-            'Level up your app by integrating Cadence into your Wagmi/RainbowKit app to batch write contract calls, conditionally execute transactions, and more.',
+            'Batch multiple writes and cross-VM calls into one approval, so users sign once while your app does the rest.',
           iconColor: 'green',
           cardColor: 'black',
           icon: IconName.BATCHED_EVM_TRANSACTIONS,
