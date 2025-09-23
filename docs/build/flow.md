@@ -166,7 +166,7 @@ Those wishing to understand the technical specifics of how Flow EVM works, we re
 - Insights into the [Flow EVM Gateway]
 - Integration of the [Cadence Interface]
 
-## Forte: Flow's Network Upgrade
+## Forte Network Upgrade
 
 **Forte** is the most significant network upgrade on Flow that enhances developers and AI agents building on Flow, unlocking protocol composability and native automation directly on the network.
 
