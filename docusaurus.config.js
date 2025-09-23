@@ -439,7 +439,7 @@ const config = {
                 label: 'Node Operation',
               },
               {
-                to: '/protocol/node-ops/node-operation/spork',
+                to: '/protocol/node-ops/node-operation/network-upgrade',
                 label: 'Spork Information',
               },
             ],
