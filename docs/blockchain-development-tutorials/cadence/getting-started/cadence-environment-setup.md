@@ -2,7 +2,7 @@
 sidebar_position: 1
 sidebar_label: Cadence Environment Setup
 title: Cadence Environment Setup
-description: 
+description: Learn how to set up your complete Flow development environment, deploy your first smart contract, and master the fundamentals of blockchain development with Cadence on the Flow emulator.
 keywords:
   - Flow development
   - Flow CLI

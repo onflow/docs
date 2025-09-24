@@ -2,7 +2,7 @@
 sidebar_position: 2
 sidebar_label: Smart Contract Interaction
 title: Smart Contract Interaction
-description: 
+description: Master advanced Flow development skills including external dependencies, sophisticated transactions, and comprehensive testing strategies. Learn to integrate contracts and implement test-driven development workflows.
 keywords:
   - Flow dependencies
   - contract interaction
