@@ -29,7 +29,7 @@ export const buildGridData = {
           cardColor: 'black',
           icon: IconName.FLOW_CADENCE,
           variant: 'horizontal',
-          href: '/blockchain-development-tutorials/cadence/reading-and-writing-onchain-data',
+          href: '/blockchain-development-tutorials/cadence/cadence-advantages',
         },
         {
           heading: 'Build faster with React components and hooks',
