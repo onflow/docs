@@ -13,12 +13,12 @@ export const buildGridData = {
         {
           heading: 'Automate DeFi with actions and scheduled transactions',
           description:
-            'Automate compounding, restaking, and governance directly onchain with protocol-agnostic Actions and Scheduled Transactions that make DeFi apps run themselves.',
+            'Forte allows you to automate compounding, restaking, and governance directly onchain with protocol-agnostic Actions and Scheduled Transactions that make DeFi apps run themselves.',
           iconColor: 'green',
           cardColor: 'black',
           icon: IconName.WHY_FLOW,
           variant: 'horizontal',
-          href: '/blockchain-development-tutorials/flow-actions',
+          href: '/blockchain-development-tutorials/forte',
         },
         {
           heading: 'Create apps that evolve without a proxy contract',
