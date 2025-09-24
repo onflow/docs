@@ -796,7 +796,7 @@ Reference solutions are functional, but may not be optimal.
 [initializes a project]: ../../../build/tools/flow-cli/commands.md#init
 [Flow Dependency Manager]: ../../../build/tools/flow-cli/dependency-manager.md
 [FCL]: ../../../build/tools/clients/fcl-js/index.md
-[App Quickstart Guide]: ../../../build/cadence/getting-started/fcl-quickstart.md
+[App Quickstart Guide]: ../cadence/getting-started/index.md
 [Wallet Connect]: https://cloud.walletconnect.com/sign-in
 [Flow Wallet]: https://wallet.flow.com
 [link your Dapper Wallet]: https://support.meetdapper.com/hc/en-us/articles/20744347884819-Account-Linking-and-FAQ

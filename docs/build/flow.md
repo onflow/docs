@@ -297,7 +297,7 @@ Are you interested in launching a project on Flow or partnering with us? Visit o
 [Flow Token Economics]: https://www.flow.com/flow-token-economics
 [Flow VM Bridge]: https://github.com/onflow/flips/pull/233/files/d5bc46c4b13f0b9b168a94f994c77a5a689f6b24..122e938b7acae7e774246b1b66aaf5979ca21444
 [FLOW]: ./cadence/core-contracts/03-flow-token.md
-[Getting Started]: ./cadence/getting-started/contract-interaction.md
+[Getting Started]: ../blockchain-development-tutorials/cadence/getting-started/index.md
 [Guide for Solidity Developers]: https://cadence-lang.org/docs/solidity-to-cadence
 [Mattel Creations]: https://creations.mattel.com/pages/virtual
 [MEV Resilient]: ./cadence/basics/mev-resistance.md

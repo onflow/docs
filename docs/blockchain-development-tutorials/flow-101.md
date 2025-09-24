@@ -198,9 +198,9 @@ We also have guides for working with [Rainbowkit] and [wagmi].
 [Explore the Ecosystem]: https://developers.flow.com/ecosystem
 [@flow_blockchain]: https://x.com/flow_blockchain
 [Connect]: https://discord.com/invite/flow
-[Contract Interaction]: ../build/cadence/getting-started/contract-interaction.md
-[Local Development]: ../build/cadence/getting-started/flow-cli.md
-[Simple Frontend]: ../build/cadence/getting-started/fcl-quickstart.md
+[Contract Interaction]: ./cadence/getting-started/smart-contract-interaction.md
+[Local Development]: ./cadence/getting-started/cadence-environment-setup.md
+[Simple Frontend]: ./cadence/getting-started/building-a-frontend-app.md
 [EVM Quickstart]: ../build/evm/quickstart.md
 [Testnet Flowscan]: https://evm-testnet.flowscan.io/
 [Foundry]: ./evm/development-tools/foundry.md

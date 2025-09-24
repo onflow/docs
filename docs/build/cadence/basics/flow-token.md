@@ -124,4 +124,4 @@ The Flow SDKs also allow polling for events using the Flow Access API,
 
 ## How to Build with FLOW
 
-To get started building on Flow, please see the [Flow App Quickstart](../getting-started/fcl-quickstart.md)
+To get started building on Flow, please see the [Flow App Quickstart](../../../blockchain-development-tutorials/cadence/getting-started/building-a-frontend-app.md)
