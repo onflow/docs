@@ -96,7 +96,7 @@ Flow's Cadence offers unparalleled capabilities for building user-friendly block
 [iOS Quickstart]: ./mobile/ios-quickstart.md
 [React Native Integration]: ./mobile/react-native-quickstart.md
 [Walletless Mobile Apps]: ./mobile/walletless-pwa.md
-[Flow Actions]: ../flow-actions/index.md
+[Flow Actions]: ../forte/flow-actions/index.md
 [Cross-VM Apps]: ../cross-vm-apps/index.md
 [Native VRF]: ../native-vrf/index.md
 [Use AI to Build on Flow]: ../use-AI-to-build-on-flow/index.md

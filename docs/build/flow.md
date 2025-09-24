@@ -197,7 +197,7 @@ Key capabilities:
 - **Self-contained**: Run entirely onchain without external dependencies
 - **Trigger-based**: React to onchain events, time schedules, or custom conditions
 
-[**Scheduled Transactions**] are the first native time scheduler that lets onchain apps run tasks automatically, like *cron jobs for blockchains*. Applications are no longer restricted to being reactive only to user transactions. They can be used for:
+[**Scheduled Transactions**] are the first native time scheduler that lets onchain apps run tasks automatically, like _cron jobs for blockchains_. Applications are no longer restricted to being reactive only to user transactions. They can be used for:
 
 - **DeFi protocols** that automatically rebalance portfolios on schedule
 - **AI-driven agents** that proactively settle, sweep, or optimize positions
@@ -317,12 +317,12 @@ Are you interested in launching a project on Flow or partnering with us? Visit o
 [usually way less!]: https://evm.flowscan.io/stats
 [VRF]: ../blockchain-development-tutorials/native-vrf/vrf-in-solidity.md
 [widespread popularity]: https://www.cnn.com/style/article/cryptokitty-blockchain/index.html
-[**Scheduled Transactions**]: https://developers.flow.com/blockchain-development-tutorials/flow-actions/scheduled-transactions-introduction
+[**Scheduled Transactions**]: ../blockchain-development-tutorials/forte/scheduled-transactions/scheduled-transactions-introduction
 [FLIP 330: Scheduled Transaction]: https://github.com/onflow/flips/blob/main/protocol/20250609-scheduled-callbacks.md
 [FLIP 341: Add 128-bit Fixed-point Types to Cadence]: https://github.com/onflow/flips/blob/main/cadence/20250815-128-bit-fixed-point-types.md
 [smart wallets without relying on complex contract architectures]: https://flow.com/post/transforming-smartphones-into-hardware-wallets-how-secure-enclave-support-on-flow-is-ushering-in-the-next-wave-of-web3-applications
 [FLIP 264: WebAuthn Credential Support]: https://github.com/onflow/flips/blob/cfaaf5f6b7c752e8db770e61ec9c180dc0eb6543/protocol/20250203-webauthn-credential-support.md
 [protocol autonomy roadmap]: https://flow.com/protocol-autonomy-roadmap
-[**Flow Actions**]: https://developers.flow.com/blockchain-development-tutorials/flow-actions/intro-to-flow-actions
-[fundamental DeFi primitives]: https://developers.flow.com/blockchain-development-tutorials/flow-actions/intro-to-flow-actions
-[**Flow Agents**]: https://developers.flow.com/blockchain-development-tutorials/flow-actions/scheduled-transactions-introduction
+[**Flow Actions**]: ../blockchain-development-tutorials/forte/flow-actions/intro-to-flow-actions.md
+[fundamental DeFi primitives]: ../blockchain-development-tutorials/forte/flow-actions/intro-to-flow-actions.md
+[**Flow Agents**]: ../blockchain-development-tutorials/forte/scheduled-transactions/scheduled-transactions-introduction.md

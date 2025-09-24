@@ -2022,6 +2022,16 @@
       "source": "/build/tools/flow-cli/super-commands",
       "destination": "/build/tools/flow-cli/commands",
       "permanent": true
+    },
+    {
+      "source": "/blockchain-development-tutorials/forte/flow-actions/scheduled-transactions-introduction",
+      "destination": "/blockchain-development-tutorials/forte/scheduled-transactions/scheduled-transactions-introduction",
+      "permanent": true
+    },
+    {
+      "source": "/blockchain-development-tutorials/flow-actions/:path*",
+      "destination": "/blockchain-development-tutorials/forte/flow-actions/:path*",
+      "permanent": true
     }
   ]
 }
