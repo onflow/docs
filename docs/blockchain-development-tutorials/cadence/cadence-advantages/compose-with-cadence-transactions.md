@@ -23,12 +23,6 @@ In this tutorial, you will **compose with someone else's contracts** on Flow tes
 
 You can use transactions developed and tested this way from the frontend of your app.
 
-:::info
-
-We are importing the testnet `Counter` contract using the dependency manager. You are composing with a the public features of contract you do not own!
-
-:::
-
 ## Objectives
 
 After completing this guide, you will be able to:
