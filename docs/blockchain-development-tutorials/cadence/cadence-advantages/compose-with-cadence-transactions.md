@@ -1,6 +1,6 @@
 ---
 title: Compose with Cadence Transactions
-description: Learn how to compose with someone else's on-chain contracts by writing a Cadence transaction that conditionally calls a public contract on testnet, then extend it with a formatting helper—no redeploy required.
+description: Learn how to compose with someone else's on-chain contracts by writing a Cadence transaction that conditionally calls a public contract on testnet, then extend it to mint NFTs when conditions are met—no redeploy required.
 sidebar_position: 1
 keywords:
   - Cadence transactions
@@ -11,9 +11,12 @@ keywords:
   - super-commands
   - dependency manager
   - Counter
-  - NumberFormatter
+  - ExampleNFT
+  - NonFungibleToken
+  - NFT minting
   - onchain reads
   - onchain writes
+  - Flowscan
 ---
 
 In this tutorial, you will **compose with someone else's contracts** on Flow testnet. You'll write a Cadence transaction that reads public state from a contract named `Counter` and only increments the counter when it is odd. Then you will extend the transaction to mint NFTs when the counter is odd, demonstrating how to compose multiple contracts in a single transaction. Everything runs against testnet using the Flow CLI and the dependency manager.
