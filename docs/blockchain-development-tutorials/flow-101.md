@@ -57,7 +57,7 @@ import { ActionCard } from '@site/src/components/ActionCard';
     cardColor="black"
     heading="Build with Cadence"
     description="Get started with Flow's native resource-oriented smart contract language. Learn how to deploy, interact, and build secure dApps using Cadence."
-    href="../build/cadence/getting-started/contract-interaction"
+    href="./cadence/getting-started/smart-contract-interaction"
   />
   <ActionCard
     icon="solidity"

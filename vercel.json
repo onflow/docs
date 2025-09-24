@@ -1674,7 +1674,7 @@
     },
     {
       "source": "/build/cadence/getting-started/contract-interaction",
-      "destination": "/blockchain-development-tutorials/cadence/getting-started/cadence-environment-setup",
+      "destination": "/blockchain-development-tutorials/cadence/getting-started/smart-contract-interaction",
       "permanent": true
     },
     {
@@ -1685,6 +1685,11 @@
     {
       "source": "/build/cadence/getting-started/fcl-quickstart",
       "destination": "/blockchain-development-tutorials/cadence/getting-started/building-a-frontend-app",
+      "permanent": true
+    },
+    {
+      "source": "/build/cadence/getting-started/:path*",
+      "destination": "/blockchain-development-tutorials/cadence/getting-started/",
       "permanent": true
     },
     {
