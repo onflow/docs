@@ -1,6 +1,6 @@
 ---
 title: Account Linking (FLIP 72)
-sidebar_position: 1
+sidebar_position: 2
 description: Learn about Flow's unique account linking feature that enables shared ownership of accounts. Understand how accounts can be accessed, delegated, and managed through capabilities and hybrid custody.
 keywords:
   - account linking
