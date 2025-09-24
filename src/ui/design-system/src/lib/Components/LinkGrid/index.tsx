@@ -27,10 +27,6 @@ const sections: LinkGridSection[] = [
         title: 'Hello World Tutorial',
         href: '/blockchain-development-tutorials/cadence/getting-started/smart-contract-interaction',
       },
-      {
-        title: 'App Architecture',
-        href: '/build/cadence/getting-started/app-architecture',
-      },
       { title: 'EVM', href: '/build/evm/quickstart' },
       { title: 'Flownaut', href: 'https://flownaut.ecdao.org/en' },
       { title: 'Playground', href: 'https://play.flow.com/' },
