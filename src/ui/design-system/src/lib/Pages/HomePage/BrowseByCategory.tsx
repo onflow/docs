@@ -6,7 +6,7 @@ const CATEGORIES = [
     links: [
       { label: 'Why Flow', href: '/build/flow' },
       { label: 'Differences vs. EVM', href: '/build/cadence/differences-vs-evm' },
-      { label: 'Getting Started', href: '/build/cadence/getting-started/contract-interaction' },
+      { label: 'Getting Started', href: '/blockchain-development-tutorials/cadence/getting-started/smart-contract-interaction' },
       { label: 'Flow Protocol', href: '/build/cadence/basics/blocks' },
       { label: 'App Architecture', href: '/build/cadence/app-architecture' },
       { label: 'Writing and Deploying Smart Contracts', href: '/build/cadence/smart-contracts/overview' },

@@ -25,7 +25,7 @@ const sections: LinkGridSection[] = [
     links: [
       {
         title: 'Hello World Tutorial',
-        href: '/build/cadence/getting-started/contract-interaction',
+        href: '/blockchain-development-tutorials/cadence/getting-started/smart-contract-interaction',
       },
       {
         title: 'App Architecture',

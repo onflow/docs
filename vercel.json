@@ -1454,7 +1454,7 @@
     },
     {
       "source": "/build/getting-started/hello-world",
-      "destination": "/build/getting-started/contract-interaction",
+      "destination": "/blockchain-development-tutorials/cadence/getting-started/smart-contract-interaction",
       "permanent": true
     },
     {

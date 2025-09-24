@@ -317,7 +317,7 @@ const config = {
             items: [
               {
                 label: 'Getting Started',
-                to: '/build/cadence/getting-started/contract-interaction',
+                to: '/blockchain-development-tutorials/cadence/getting-started/smart-contract-interaction',
               },
               {
                 label: "Tools & SDKs",
