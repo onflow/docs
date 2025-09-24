@@ -52,14 +52,25 @@ For this grand future, we'll need a new suite of blockchain development tutorial
 
 - [Flow Blockchain 101] - Learn why Flow blockchain is uniquely designed for consumer-scale decentralized applications with its multi-role architecture, native account abstraction, and EVM equivalence.
 
-## [Flow Actions]
+## [Forte Network Upgrade]
 
-Learn how to build composable DeFi applications using the Flow Actions framework. This framework provides a "LEGO" system of reusable components that enable developers to create sophisticated DeFi workflows through atomic composition.
+Tutorials covering new features and capabilities introduced in the Forte network upgrade for Flow blockchain, including Flow Actions and Scheduled Transactions.
+
+- [Forte Overview] - Introduction to the Forte network upgrade and its new capabilities for building sophisticated decentralized applications.
+
+### Flow Actions
+
+Learn how to build composable DeFi applications using the Flow Actions framework with standardized interfaces and reusable components.
 
 - [Introduction to Flow Actions] - Learn about Flow Actions, a suite of standardized Cadence interfaces that enable developers to compose complex DeFi workflows using small, reusable components like Sources, Sinks, Swappers, PriceOracles, and Flashers.
 - [Flow Actions Transactions] - Learn how to create transactions that can chain multiple DeFi operations atomically.
 - [Connectors] - Build Flow Actions connectors that integrate protocols with Flow Actions primitives, serving as protocol adapters that translate bespoke APIs into standardized interfaces.
 - [Basic Combinations] - Learn how to combine Flow Actions primitives to create powerful DeFi workflows using atomic composition, weak guarantees, and event traceability across multiple protocols.
+
+### Scheduled Transactions
+
+Learn how to implement scheduled transactions for time-based smart contract execution and blockchain automation.
+
 - [Scheduled Transactions Introduction] - Learn how to implement scheduled transactions for time-based smart contract execution on Flow, enabling recurring jobs, deferred actions, and autonomous workflows without external transactions.
 
 ## [Cadence Development]
@@ -169,9 +180,10 @@ Flow will continue to provide quality walkthroughs and tutorials to provide deve
 
 [Flow 101]: ./flow-101.md
 [Flow Blockchain 101]: ./flow-101.md
+[Forte Network Upgrade]: ./forte/index.md
+[Forte Overview]: ./forte/index.md
 [Flow Actions]: ./forte/flow-actions/index.md
-[Introduction to Flow Actions]: ./forte/flow-actions/intro-to-flow-actions.md
-[Flow Actions Transactions]: ./forte/flow-actions/flow-actions-transaction.md
+[Scheduled Transactions]: ./forte/scheduled-transactions/index.md
 [Connectors]: ./forte/flow-actions/connectors.md
 [Basic Combinations]: ./forte/flow-actions/basic-combinations.md
 [Scheduled Transactions Introduction]: ./forte/scheduled-transactions/scheduled-transactions-introduction.md
