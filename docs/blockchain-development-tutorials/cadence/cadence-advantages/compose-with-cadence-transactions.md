@@ -8,7 +8,7 @@ keywords:
   - public contracts
   - Flow testnet
   - Flow CLI
-  - super-commands
+  - commands
   - dependency manager
   - Counter
   - ExampleNFT
@@ -38,9 +38,9 @@ After completing this guide, you will be able to:
 
 - [Flow CLI installed]
 - A **funded testnet account** to sign transactions  
-  See **Create accounts** and **Fund accounts** in the Flow CLI super-commands:
-  - Create: https://developers.flow.com/build/tools/flow-cli/super-commands#create-accounts
-  - Fund: https://developers.flow.com/build/tools/flow-cli/super-commands#fund-accounts
+  See **Create accounts** and **Fund accounts** in the Flow CLI commands:
+  - Create: https://developers.flow.com/build/tools/flow-cli/commands#create-accounts
+  - Fund: https://developers.flow.com/build/tools/flow-cli/commands#fund-accounts
 
 ## Getting Started
 

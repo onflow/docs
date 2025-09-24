@@ -1,7 +1,7 @@
 ---
 title: Native Data Availability With Cadence Scripts
 sidebar: Data Availability
-description: Learn why Cadence scripts are more powerful than Solidity views by incrementally building a post-1.0 Cadence script that lists a parent account's child accounts and returns their NBA Top Shot NFTs using the Flow CLI super-commands.
+description: Learn why Cadence scripts are more powerful than Solidity views by incrementally building a post-1.0 Cadence script that lists a parent account's child accounts and returns their NBA Top Shot NFTs using the Flow CLI commands.
 sidebar_position: 1
 keywords:
   - Cadence scripts
@@ -12,7 +12,7 @@ keywords:
   - capabilities
   - entitlements
   - Flow CLI
-  - super-commands
+  - commands
   - NonFungibleToken
   - MetadataViews
   - NBA Top Shot
@@ -38,7 +38,7 @@ In Cadence, a _script_ is a read-only program that can access public data across
 After completing this guide, you will be able to:
 
 - Explain why Cadence **scripts** are more powerful than Solidity **view** functions
-- Use the [Flow CLI Super-Commands] to execute a Cadence script against mainnet
+- Use the [Flow CLI Commands] to execute a Cadence script against mainnet
 - Analyze an account for [NBA Top Shot] NFTs held by the account or its child accounts
 - Build the script incrementally to:
   - Query a parent account for child accounts via [_Hybrid Custody_]
@@ -50,7 +50,7 @@ After completing this guide, you will be able to:
 ## Prerequisites
 
 - Basic familiarity with [Cadence] and [Flow accounts]
-- Flow CLI installed and authenticated for mainnet (see [Flow CLI Super-Commands])
+- Flow CLI installed and authenticated for mainnet (see [Flow CLI Commands])
 - The target parent account uses _Hybrid Custody_ and controls at least one child account that holds NBA Top Shot NFTs
   - If you don't have an account that owns NBA Top Shots, you can use `0xfeb88a0fcc175a3d` for this tutorial
 
@@ -462,7 +462,7 @@ This approach gives you the freedom to build applications that can access any on
 [Hybrid Custody]: ../account-management/index.md
 [Flow accounts]: ../../../build/cadence/basics/accounts.md
 [Cadence]: https://cadence-lang.org/docs/tutorial/first-steps
-[Flow CLI Super-Commands]: ../../../build/tools/flow-cli/super-commands.md
+[Flow CLI Commands]: ../../../build/tools/flow-cli/commands.md
 [storage paths]: https://cadence-lang.org/docs/tutorial/resources#storage-paths
 [_capability_]: https://cadence-lang.org/docs/language/capabilities
 [`{NonFungibleToken.Provider}`]: https://github.com/onflow/flow-nft/blob/21c5e18a0985528b53931dc14c55332b3b47939e/contracts/NonFungibleToken.cdc#L154

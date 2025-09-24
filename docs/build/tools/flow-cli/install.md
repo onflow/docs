@@ -59,9 +59,9 @@ _This installation method only works on Windows 10, 8.1, or 7 (SP1, with [PowerS
 1. Open PowerShell ([Instructions](https://docs.microsoft.com/en-us/powershell/scripting/install/installing-windows-powershell?view=powershell-7#finding-powershell-in-windows-10-81-80-and-7))
 2. In PowerShell, run:
 
-    ```powershell
-    iex "& { $(irm 'https://raw.githubusercontent.com/onflow/flow-cli/master/install.ps1') }"
-    ```
+   ```powershell
+   iex "& { $(irm 'https://raw.githubusercontent.com/onflow/flow-cli/master/install.ps1') }"
+   ```
 
 To update, simply re-run the installation command above.
 
@@ -106,13 +106,13 @@ _This update method only works on Windows 10, 8.1, or 7 (SP1, with [PowerShell 3
 1. Open PowerShell ([Instructions](https://docs.microsoft.com/en-us/powershell/scripting/install/installing-windows-powershell?view=powershell-7#finding-powershell-in-windows-10-81-80-and-7))
 2. In PowerShell, run:
 
-    ```powershell
-    iex "& { $(irm 'https://raw.githubusercontent.com/onflow/flow-cli/master/install.ps1') }"
-    ```
+   ```powershell
+   iex "& { $(irm 'https://raw.githubusercontent.com/onflow/flow-cli/master/install.ps1') }"
+   ```
 
 ## Uninstalling Flow CLI
 
-To remove the flow CLI you can run the following command if it was previously installed using a pre-built binary. 
+To remove the flow CLI you can run the following command if it was previously installed using a pre-built binary.
 
 - macOS: `rm /usr/local/bin/flow`
 - Linux: `rm ~/.local/bin/flow`
