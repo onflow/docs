@@ -1992,6 +1992,11 @@
       "source": "/protocol/node-ops/node-operation/spork",
       "destination": "/protocol/node-ops/node-operation/network-upgrade",
       "permanent": true
+    },
+    {
+      "source": "/build/tools/flow-cli/super-commands",
+      "destination": "/build/tools/flow-cli/commands",
+      "permanent": true
     }
   ]
 }

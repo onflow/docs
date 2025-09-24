@@ -793,7 +793,7 @@ Reference solutions are functional, but may not be optimal.
 [Yarn]: https://yarnpkg.com
 [Flow CLI]: ../../../build/tools/flow-cli/index.md
 [other installation methods]: ../../../build/tools/flow-cli/install.md
-[initializes a project]: ../../../build/tools/flow-cli/super-commands.md#init
+[initializes a project]: ../../../build/tools/flow-cli/commands.md#init
 [Flow Dependency Manager]: ../../../build/tools/flow-cli/dependency-manager.md
 [FCL]: ../../../build/tools/clients/fcl-js/index.md
 [App Quickstart Guide]: ../../../build/cadence/getting-started/fcl-quickstart.md
