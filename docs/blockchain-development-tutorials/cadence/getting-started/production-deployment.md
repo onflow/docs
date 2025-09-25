@@ -405,5 +405,5 @@ npm run build
 
 [Flow Wallet]: https://wallet.flow.com/
 [Coinbase]: https://www.coinbase.com/en-in/how-to-buy/flow
-[Moonpay]: 
+[Moonpay]: https://www.moonpay.com/buy/flow
 [Binance]: https://www.binance.com/en-IN/how-to-buy/flow
