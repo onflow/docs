@@ -1,4 +1,6 @@
 import React from 'react';
+import { event } from '@site/src/utils/gtags.client';
+import { GA_EVENTS, GA_CATEGORIES } from '@site/src/constants/ga-events';
 
 const CATEGORIES = [
   {
@@ -92,6 +94,15 @@ const CATEGORIES = [
 ];
 
 const BrowseByCategory: React.FC = () => {
+  const handleLinkClick = (label: string, href: string, category: string) => {
+    event({
+      action: GA_EVENTS.ACTION_CARD_CLICK,
+      category: GA_CATEGORIES.ACTION_CARD,
+      label: `${category} - ${label}`,
+      location: true,
+    });
+  };
+
   return (
     <section className="container mx-auto py-12">
       <h2 className="text-2xl md:text-3xl font-bold text-gray-900 dark:text-white mb-8">Browse by Category</h2>
@@ -106,6 +117,7 @@ const BrowseByCategory: React.FC = () => {
                     href={link.href}
                     target={link.href.startsWith('http') ? '_blank' : undefined}
                     rel={link.href.startsWith('http') ? 'noopener noreferrer' : undefined}
+                    onClick={() => handleLinkClick(link.label, link.href, cat.title)}
                     className="text-base text-gray-800 dark:text-gray-100 hover:text-primary-green-500 dark:hover:text-primary-green-300 transition-colors"
                   >
                     {link.label}

@@ -272,24 +272,60 @@ const config = {
             position: 'left',
             label: 'Build',
             activeBasePath: '/build',
+            onClick: () => {
+              if (typeof window !== 'undefined' && window['gtag']) {
+                window['gtag']('event', 'action_card_click', {
+                  event_category: 'action_card',
+                  event_label: 'Nav - Build',
+                  location: true,
+                });
+              }
+            },
           },
           {
             to: 'blockchain-development-tutorials',
             position: 'left',
             label: 'Tutorials',
             activeBasePath: '/blockchain-development-tutorials',
+            onClick: () => {
+              if (typeof window !== 'undefined' && window['gtag']) {
+                window['gtag']('event', 'action_card_click', {
+                  event_category: 'action_card',
+                  event_label: 'Nav - Tutorials',
+                  location: true,
+                });
+              }
+            },
           },
           {
             to: 'protocol/flow-networks',
             position: 'left',
             label: 'Protocol',
             activeBasePath: '/protocol',
+            onClick: () => {
+              if (typeof window !== 'undefined' && window['gtag']) {
+                window['gtag']('event', 'action_card_click', {
+                  event_category: 'action_card',
+                  event_label: 'Nav - Protocol',
+                  location: true,
+                });
+              }
+            },
           },
           {
             to: 'ecosystem',
             position: 'left',
             label: 'Ecosystem',
             activeBasePath: '/ecosystem',
+            onClick: () => {
+              if (typeof window !== 'undefined' && window['gtag']) {
+                window['gtag']('event', 'action_card_click', {
+                  event_category: 'action_card',
+                  event_label: 'Nav - Ecosystem',
+                  location: true,
+                });
+              }
+            },
           },
           {
             type: 'custom-connectButton',
