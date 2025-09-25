@@ -29,7 +29,7 @@ Flow's composability is one of its greatest strengths—contracts can easily imp
 After completing this tutorial, you'll be able to:
 
 - **Manage external dependencies** using Flow's dependency manager and integrate third-party contracts
-- **Build sophisticated transactions** that interact with multiple contracts and handle complex state changes  
+- **Build sophisticated transactions** that interact with multiple contracts and handle complex state changes
 - **Master transaction anatomy** and understand how Cadence transactions work under the hood
 - **Implement comprehensive testing** strategies including edge cases and error conditions
 - **Apply test-driven development** workflows to ensure code quality and reliability
@@ -44,7 +44,7 @@ Building on your Counter contract, you'll enhance it with external dependencies 
 - **Comprehensive test suite** covering normal operations, edge cases, and error conditions
 - **Professional workflow** for developing, testing, and deploying contract interactions
 
-**Prerequisites:** 
+**Prerequisites:**
 
 - Completed Environment Setup tutorial
 - Flow CLI, emulator running, and Counter contract deployed
@@ -132,7 +132,7 @@ You should see output like:
 ```zsh
 Deploying 1 contracts for accounts: emulator-account
 
-NumberFormatter -> 0xf8d6e0586b0a20c7 (66e6c4210ae8263370fc3661f148f750175bb4cf2e80637fb42eafe2d6c5b385) 
+NumberFormatter -> 0xf8d6e0586b0a20c7 (66e6c4210ae8263370fc3661f148f750175bb4cf2e80637fb42eafe2d6c5b385)
 
 🎉 All contracts deployed successfully
 ```
@@ -149,10 +149,10 @@ access(all)
 fun main(): String {
     // Retrieve the count from the Counter contract
     let count: Int = Counter.getCount()
-    
+
     // Format the count using NumberFormatter
     let formattedCount = NumberFormatter.formatWithCommas(number: count)
-    
+
     // Return the formatted count
     return formattedCount
 }
@@ -173,6 +173,7 @@ flow scripts execute cadence/scripts/GetCounter.cdc
 ```
 
 You should see:
+
 ```zsh
 Result: "1"
 ```
@@ -196,7 +197,7 @@ transaction {
     prepare(acct: &Account) {
         // Authorization handled automatically
     }
-    
+
     execute {
         // Increment the counter 1000 times
         var i = 0
@@ -204,7 +205,7 @@ transaction {
             Counter.increment()
             i = i + 1
         }
-        
+
         // Retrieve the new count and log it
         let newCount = Counter.getCount()
         log("New count after incrementing by 1000: ".concat(newCount.toString()))
@@ -225,6 +226,7 @@ flow scripts execute cadence/scripts/GetCounter.cdc
 ```
 
 Result:
+
 ```zsh
 Result: "1,001"
 ```
@@ -233,7 +235,7 @@ Perfect! The NumberFormatter automatically adds commas to make large numbers rea
 
 :::info
 
-**The Power of Composability**: Notice what just happened—you enhanced your Counter contract's functionality **without modifying the original contract**. This is the power of Flow's composability: you can extend functionality by combining contracts, enabling rapid development and code reuse. Even more importantly, we did this **without needing access or permission.** 
+**The Power of Composability**: Notice what just happened—you enhanced your Counter contract's functionality **without modifying the original contract**. This is the power of Flow's composability: you can extend functionality by combining contracts, enabling rapid development and code reuse. Even more importantly, we did this **without needing access or permission.**
 
 :::
 
@@ -251,17 +253,17 @@ import "OtherContract"
 transaction {
     // Optional: Declare variables available throughout the transaction
     let initialCount: Int
-    
+
     // This phase has access to account storage and capabilities
     // Used for authorization and accessing private data
     prepare(acct: &Account) {
     }
-    
+
     // This phase contains the main transaction logic
     // No access to account storage, only to data from prepare phase
     execute {
     }
-    
+
     // Optional: Conditions that must be true after execution
     // Used for verification and ensuring transaction success
     post {
@@ -301,30 +303,27 @@ transaction(amount: Int) {
         log("Account ".concat(acct.address.toString()).concat(" is incrementing by ").concat(amount.toString()))
 
     prepare(acct: &Account) {
-        self.initialCount =
-        Counter.getCount()  // Capture
-        initial state
-        log("Account".concat(acct.address.toString
-        ()).concat(" is incrementing by").concat(amount.toString()))
+        self.initialCount = Counter.getCount()  // Capture initial state
+        log("Account".concat(acct.address.toString()).concat(" is incrementing by").concat(amount.toString()))
     }
-    
+
     execute {
         // Validate input
         if amount <= 0 {
             panic("Amount must be positive")
         }
-        
+
         // Increment the specified number of times
         var i = 0
         while i < amount {
             Counter.increment()
             i = i + 1
         }
-        
+
         let newCount = Counter.getCount()
         log("Counter incremented by ".concat(amount.toString()).concat(", new value: ").concat(newCount.toString()))
     }
-    
+
     post {
         // Verify the counter increased correctly
         Counter.getCount() == (self.initialCount + amount): "Counter must equal initial count plus increment amount"
@@ -338,7 +337,6 @@ Execute with a parameter:
 ```zsh
 flow transactions send cadence/transactions/IncrementByAmount.cdc <amount> --network emulator --signer test-account
 ```
-
 
 ## Testing Your Code
 
@@ -384,8 +382,6 @@ This basic test:
 1. **Creates a test account** using `Test.createAccount()`
 2. **Deploys the Counter contract** to the test environment
 3. **Verifies deployment succeeded** by checking that no error occurred
-
-
 
 ### Test Integration with Dependencies
 
@@ -470,7 +466,6 @@ Through this tutorial, you've accomplished:
 - Implemented test coverage for contract functionality
 - Created integration tests that verify multi-contract interactions
 
-
 ### What You've Learned
 
 You have learned how to use Flow's dependency management system to install and integrate external contracts (like NumberFormatter), understand the structure of Cadence transactions including their prepare, execute, and post phases, and implement basic testing for contract functionality. You can now work with multi-contract applications and understand how contracts can be composed together to extend functionality.
@@ -478,6 +473,7 @@ You have learned how to use Flow's dependency management system to install and i
 ### Next Steps
 
 With these skills, you're ready to:
+
 - Build frontend applications that interact with your smart contracts
 - Deploy contracts to live networks (testnet and mainnet)
 - Explore advanced Flow patterns and ecosystem contracts
@@ -493,10 +489,10 @@ Continue your Flow mastery with these advanced resources:
 - **[Cadence Language Reference]**: Master advanced language features including resources, capabilities, and access control
 - **[Flow GitHub]**: Explore production contract examples and contribute to the ecosystem
 
-
 <!-- Links -->
+
 [tests documentation]: ../../../build/tools/flow-cli/tests.md
-[Flow Discord Community]: https://discord.gg/flow-blockchain  
+[Flow Discord Community]: https://discord.gg/flow-blockchain
 [Flow Documentation]: https://developers.flow.com
 [Cadence Language Reference]: https://cadence-lang.org
 [Flow GitHub]: https://github.com/onflow
