@@ -245,14 +245,27 @@ const config = {
       image: 'img/og-image-flow-docs-2025-dark.png',
       metadata: [
         { name: 'twitter:card', content: 'summary_large_image' },
-        { name: 'twitter:image', content: getUrl() + '/img/og-image-flow-docs-2025-dark.png' },
-        { property: 'og:image', content: getUrl() + '/img/og-image-flow-docs-2025-dark.png' },
+        {
+          name: 'twitter:image',
+          content: getUrl() + '/img/og-image-flow-docs-2025-dark.png',
+        },
+        {
+          property: 'og:image',
+          content: getUrl() + '/img/og-image-flow-docs-2025-dark.png',
+        },
         { property: 'og:image:type', content: 'image/png' },
         { property: 'og:image:width', content: '1200' },
         { property: 'og:image:height', content: '630' },
         { property: 'og:type', content: 'website' },
-        { property: 'og:description', content: 'Flow Developer Documentation - The future of culture and digital assets is built on Flow' },
-        { property: 'og:logo', content: getUrl() + '/img/flow-docs-logo-light.png' },
+        {
+          property: 'og:description',
+          content:
+            'Flow Developer Documentation - The future of culture and digital assets is built on Flow',
+        },
+        {
+          property: 'og:logo',
+          content: getUrl() + '/img/flow-docs-logo-light.png',
+        },
       ],
       docs: {
         sidebar: {
@@ -296,6 +309,12 @@ const config = {
             position: 'right',
           },
           {
+            type: 'html',
+            position: 'right',
+            value:
+              "<button onclick=\"if(window.Pylon){console.log('Opening Pylon from navbar'); window.Pylon('show');}else{console.warn('Pylon not available');}\" class=\"inline-flex items-center justify-center font-semibold text-center border transition duration-200 cursor-pointer font-display text-sm px-4 py-2 rounded-md bg-black text-white border-transparent hover:bg-gray-800 hover:text-white active:bg-gray-900 active:text-white dark:bg-white dark:text-black dark:hover:bg-gray-100 dark:hover:text-black dark:active:bg-gray-200 dark:active:text-black\">Ask Flow AI</button>",
+          },
+          {
             href: 'https://github.com/onflow',
             html: '<img src="" alt="GitHub" id="navbar-github" class="box-content h-32 w-32"/><span class="p-2 desktop:hidden">Github</span>',
             position: 'right',
@@ -320,7 +339,7 @@ const config = {
                 to: '/blockchain-development-tutorials/cadence/getting-started/smart-contract-interaction',
               },
               {
-                label: "Tools & SDKs",
+                label: 'Tools & SDKs',
                 to: '/build/tools',
               },
               {
@@ -632,6 +651,7 @@ const config = {
     },
 
     require('./src/plugins/font-preload'),
+    require('./src/plugins/pylon-chat'),
   ],
   stylesheets: [
     {

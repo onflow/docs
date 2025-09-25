@@ -12,14 +12,14 @@ const ContentFeatures: Record<string, ContentFeatureProps> = {
     image: 'feature-why-flow-image',
     header: 'Why Flow',
     text: "Explore Flow's scalable and high-performance blockchain architecture",
-    link: '/build/cadence/flow',
+    link: '/build/flow',
   },
   'smart-accounts': {
     icon: IconName.FEATURE_WAND_ICON,
     image: 'feature-wand-image',
     header: 'Smart Accounts',
     text: 'Benefit from flexible accounts with seamless key management for security and convenience',
-    link: 'build/basics/accounts',
+    link: '/build/cadence/basics/accounts',
   },
   transactions: {
     icon: IconName.FEATURE_STACKS_ICON,
@@ -62,31 +62,13 @@ const homepagePillData: Record<
     text: 'Flow AI Assistant',
     subText: 'Chat with devs',
     onClick: () => {
-      const el = document.querySelector('ask-cookbook') as HTMLElement & {
-        shadowRoot?: ShadowRoot;
-      };
-      if (!el) {
-        console.warn('ask-cookbook element not found');
-        return;
+      // Open Pylon chat widget instead of ask-cookbook
+      if (typeof window !== 'undefined' && window.Pylon) {
+        console.log('Opening Pylon chat widget from Flow AI Assistant button');
+        window.Pylon('show');
+      } else {
+        console.warn('Pylon widget not available yet');
       }
-
-      const shadow = el.shadowRoot;
-      if (!shadow) {
-        console.warn('ask-cookbook has no shadowRoot');
-        return;
-      }
-
-      const button = shadow.querySelector(
-        '#ask-cookbook-button',
-      ) as HTMLButtonElement;
-      if (!button) {
-        console.warn(
-          'Internal #ask-cookbook-button not found in the shadow root',
-        );
-        return;
-      }
-
-      button.click();
     },
   },
   'developer-chat': {
