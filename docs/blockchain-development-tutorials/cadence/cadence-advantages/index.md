@@ -1,7 +1,7 @@
 ---
 title: Cadence Advantages
 description: A series of tutorials showcasing the unique advantages and capabilities of Cadence smart contracts on Flow.
-sidebar_position: 1
+sidebar_position: 2
 keywords:
   - Cadence advantages
   - smart contracts

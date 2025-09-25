@@ -1,6 +1,6 @@
 ---
 title: Mobile Development on Flow
-sidebar_position: 3
+sidebar_position: 4
 description: Discover Flow's mobile development capabilities for building native blockchain applications. Learn about Flow's unique features for mobile apps, including secure key management, wallet integration, and progressive onboarding.
 keywords:
   - Flow mobile

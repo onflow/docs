@@ -1,7 +1,7 @@
 ---
 title: Cadence Tutorials
 description: Learn Cadence development through practical tutorials covering account management, mobile development, and advanced Flow features.
-sidebar_position: 7
+sidebar_position: 5
 keywords:
   - Cadence
   - Flow development

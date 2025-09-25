@@ -1,6 +1,6 @@
 ---
-title: Account Linking (FLIP 72)
-sidebar_position: 2
+title: Account Linking
+sidebar_position: 3
 description: Learn about Flow's unique account linking feature that enables shared ownership of accounts. Understand how accounts can be accessed, delegated, and managed through capabilities and hybrid custody.
 keywords:
   - account linking
@@ -82,7 +82,7 @@ A link between two existing accounts on Flow can be created in two steps:
 
 These two steps are implemented in Cadence as two transactions:
 
-****************\*\*\*\*****************Create capability****************\*\*\*\*****************
+**\*\***\*\*\*\***\*\***\*\*\*\***\*\***\*\*\*\***\*\***Create capability**\*\***\*\*\*\***\*\***\*\*\*\***\*\***\*\*\*\***\*\***
 
 The account B creates and publishes the `&Account` Capability to the account A at the address `0x01`
 
@@ -101,7 +101,7 @@ transaction {
 }
 ```
 
-************\*\*\*\*************Claim capability************\*\*\*\*************
+\***\*\*\*\*\*\*\***\*\*\*\*\***\*\*\*\*\*\*\***Claim capability\***\*\*\*\*\*\*\***\*\*\*\*\***\*\*\*\*\*\*\***
 
 The account A claims the Capability published by account B.
 
