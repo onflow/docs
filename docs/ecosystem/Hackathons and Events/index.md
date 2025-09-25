@@ -1,9 +1,7 @@
 ---
 title: Hackathons and Events
 description: Participate in Flow hackathons to build, learn, and win prizes
-sidebar_position: 11
-sidebar_custom_props:
-  icon: 🚀
+sidebar_position: 3
 ---
 
 # Flow World Tour Hackathons

@@ -6,9 +6,8 @@ const CATEGORIES = [
     links: [
       { label: 'Why Flow', href: '/build/flow' },
       { label: 'Differences vs. EVM', href: '/build/cadence/differences-vs-evm' },
-      { label: 'Getting Started', href: '/build/cadence/getting-started/contract-interaction' },
-      { label: 'Flow Protocol', href: '/build/cadence/basics/blocks' },
-      { label: 'App Architecture', href: '/build/cadence/app-architecture' },
+      { label: 'Getting Started', href: '/blockchain-development-tutorials/cadence/getting-started/smart-contract-interaction' },
+      { label: 'Basics', href: '/build/cadence/basics/blocks' },
       { label: 'Writing and Deploying Smart Contracts', href: '/build/cadence/smart-contracts/overview' },
       { label: 'Advanced Concepts', href: '/build/cadence/advanced-concepts/account-abstraction' },
       { label: 'Guides', href: '/build/cadence/advanced-concepts/account-abstraction' },
@@ -76,7 +75,6 @@ const CATEGORIES = [
       { label: 'Grants', href: '/ecosystem/grants' },
       { label: 'Hackathons and Events', href: '/ecosystem/Hackathons%20and%20Events' },
       { label: 'Auditors', href: '/ecosystem/auditors' },
-      { label: 'Ecosystem Overview', href: '/ecosystem/overview' },
     ],
   },
   {

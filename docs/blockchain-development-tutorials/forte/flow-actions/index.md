@@ -19,7 +19,7 @@ keywords:
 
 # Flow Actions Tutorials
 
-This series covers how to build decentralized finance applications using the Flow Actions framework and scheduled transactions, enabling developers to create composable, automated DeFi workflows.
+This series covers how to build decentralized finance applications using the Flow Actions framework, enabling developers to create composable DeFi workflows. These tutorials are part of the Forte network upgrade, which introduces new capabilities to the Flow blockchain.
 
 :::warning
 
@@ -32,14 +32,14 @@ These tutorials will be updated, but you may need to refactor your code if the i
 ## Tutorials
 
 - **[Introduction to Flow Actions]** - Learn about Flow Actions, a suite of standardized Cadence interfaces that enable developers to compose complex DeFi workflows using small, reusable components.
+- **[Flow Actions Transaction]** - Learn how to create and execute Flow Actions transactions for automated DeFi workflows.
 - **[Connectors]** - Understand how connectors bridge standardized Flow Actions interfaces with different DeFi protocols.
 - **[Basic Combinations]** - Learn how to combine Flow Actions to create new workflows.
-- **[Scheduled Transactions Introduction]** - Learn how to implement scheduled transactions for time-based smart contract execution on Flow.
 
 <!-- Relative links, will not render on page -->
 
 [FLIP 339]: https://github.com/onflow/flips/pull/339/files
 [Introduction to Flow Actions]: ./intro-to-flow-actions.md
+[Flow Actions Transaction]: ./flow-actions-transaction.md
 [Connectors]: ./connectors.md
-[Scheduled Transactions Introduction]: ./scheduled-transactions-introduction.md
 [Basic Combinations]: ./basic-combinations.md

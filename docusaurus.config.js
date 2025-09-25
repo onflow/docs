@@ -274,6 +274,12 @@ const config = {
             activeBasePath: '/build',
           },
           {
+            to: 'blockchain-development-tutorials',
+            position: 'left',
+            label: 'Tutorials',
+            activeBasePath: '/blockchain-development-tutorials',
+          },
+          {
             to: 'protocol/flow-networks',
             position: 'left',
             label: 'Protocol',
@@ -284,12 +290,6 @@ const config = {
             position: 'left',
             label: 'Ecosystem',
             activeBasePath: '/ecosystem',
-          },
-          {
-            to: 'blockchain-development-tutorials',
-            position: 'left',
-            label: 'Tutorials',
-            activeBasePath: '/blockchain-development-tutorials',
           },
           {
             type: 'custom-connectButton',
@@ -317,7 +317,7 @@ const config = {
             items: [
               {
                 label: 'Getting Started',
-                to: '/build/cadence/getting-started/contract-interaction',
+                to: '/blockchain-development-tutorials/cadence/getting-started/smart-contract-interaction',
               },
               {
                 label: "Tools & SDKs",

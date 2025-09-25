@@ -109,5 +109,5 @@ The best support is a thriving project. Start building today and tap into our ec
 
 <!-- Reference-style links, will not render on the page -->
 
-[Start with Cadence]: ../../build/cadence/getting-started/index.md
+[Start with Cadence]: ../../blockchain-development-tutorials/cadence/getting-started/index.md
 [Start with Solidity (EVM)]: ../../build/evm/quickstart.md

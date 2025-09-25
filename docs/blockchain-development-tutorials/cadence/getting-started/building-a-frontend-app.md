@@ -1,7 +1,7 @@
 ---
 sidebar_position: 3
-sidebar_label: Simple Frontend
-title: Building a Simple Frontend with "@onflow/react-sdk"
+sidebar_label: Building a Frontend App
+title: Building a Frontend App
 description: Learn how to build a Next.js frontend application using @onflow/react-sdk to interact with Flow smart contracts. Set up wallet authentication, read contract data, send transactions with kit's React hooks, and display transaction status updates.
 keywords:
   - '@onflow/react-sdk'
@@ -20,9 +20,9 @@ keywords:
   - web3 frontend
 ---
 
-# Simple Frontend with `@onflow/react-sdk`
+# Building a Frontend App
 
-Building on the `Counter` contract you deployed in [Step 1: Contract Interaction] and [Step 2: Local Development], this tutorial shows you how to create a simple Next.js frontend that interacts with the `Counter` smart contract deployed on your local Flow emulator. Instead of using FCL directly, you'll leverage [**@onflow/react-sdk**] to simplify authentication, querying, transactions, and to display real-time transaction status updates using convenient React hooks.
+Building on the `Counter` contract you deployed in [Cadence Environment Setup] and [Smart Contract Interaction], this tutorial shows you how to create a simple Next.js frontend that interacts with the `Counter` smart contract deployed on your local Flow emulator. Instead of using FCL directly, you'll leverage [**@onflow/react-sdk**] to simplify authentication, querying, transactions, and to display real-time transaction status updates using convenient React hooks.
 
 ## Objectives
 
@@ -36,13 +36,19 @@ After finishing this guide, you will be able to:
 
 ## Prerequisites
 
-- Completion of [Step 1: Contract Interaction] and [Step 2: Local Development].
+- Completion of [Cadence Environment Setup] and [Smart Contract Interaction].
 - [Flow CLI] installed.
 - Node.js and npm installed.
 
 ## Setting Up the Next.js App
 
 Follow these steps to set up your Next.js project and integrate [**@onflow/react-sdk**].
+
+:::tip
+
+You can visit this [React-sdk Demo] to see how the hooks and components are used.
+
+:::
 
 ### Step 1: Create a New Next.js App
 
@@ -446,13 +452,14 @@ By following these steps, you've built a simple Next.js dApp that interacts with
 
 For additional details and advanced usage, refer to the [@onflow/react-sdk documentation] and other Flow developer resources.
 
-[Step 1: Contract Interaction]: contract-interaction.md
-[Step 2: Local Development]: ./flow-cli.md
+[React-sdk Demo]: https://react-sdk-demo-git-master-onflow.vercel.app/
+[Cadence Environment Setup]: ./cadence-environment-setup.md
+[Smart Contract Interaction]: ./smart-contract-interaction.md
 [Wallet Discovery Guide]: ../../../build/tools/clients/fcl-js/discovery.md
 [`useFlowQuery`]: ../../../build/tools/react-sdk#useflowquery
 [`useFlowMutate`]: ../../../build/tools/react-sdk#useflowmutate
 [Dev Wallet]: ../../../build/tools/flow-dev-wallet
-[@onflow/react-sdk documentation]: ../../../build/tools/react-sdk/index.mdx
-[**@onflow/react-sdk**]: ../../../build/tools/react-sdk/index.mdx
+[@onflow/react-sdk documentation]: ../../../build/tools/react-sdk/index.md
+[**@onflow/react-sdk**]: ../../../build/tools/react-sdk/index.md
 [Flow CLI]: ../../../build/tools/flow-cli/install.md
 [Cadence VSCode extension]: ../../../build/tools/vscode-extension

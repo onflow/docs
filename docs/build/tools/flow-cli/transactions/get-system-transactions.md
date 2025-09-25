@@ -50,7 +50,7 @@ Proposal Key:	—
 No Payload Signatures
 No Envelope Signatures
 
-Events:		 
+Events:
     Index	0
     Type	A.1654653399040a61.FlowToken.TokensDeposited
     Tx ID	40bc4b100c1930c61381c22e0f4c10a7f5827975ee25715527c1061b8d71e5aa
@@ -86,7 +86,7 @@ The first argument is a reference to the block whose system transaction you want
 Optionally narrow the result to a specific system transaction within the referenced block.
 
 ## Flags
-    
+
 ### Include Fields
 
 - Flag: `--include`
@@ -182,10 +182,12 @@ Skip version check during start up to speed up process for slow connections.
 ## Notes
 
 System transactions currently cover:
+
 - System chunk transactions used by protocol operations. See an overview of system chunks and service events: [Epoch Scripts and Events].
 - Scheduled transaction execution. Learn more: [Introduction to Scheduled Transaction].
 
 More resources:
+
 - [Staking rewards via system chunk]
 - [Epoch schedule and system chunk transactions]
 
@@ -193,5 +195,5 @@ More resources:
 [Flow Testnet]: ../../../../protocol/flow-networks/accessing-testnet.md
 [Epoch Scripts and Events]: ../../../../protocol/staking/05-epoch-scripts-events.md
 [Staking rewards via system chunk]: ../../../../protocol/staking/08-staking-rewards.md
-[Introduction to Scheduled Transactions]: https://developers.flow.com/blockchain-development-tutorials/flow-actions/scheduled-transactions-introduction
+[Introduction to Scheduled Transactions]: ../../../../blockchain-development-tutorials/forte/scheduled-transactions/scheduled-transactions-introduction.md
 [Epoch schedule and system chunk transactions]: ../../../../protocol/staking/03-schedule.md

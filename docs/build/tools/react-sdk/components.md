@@ -1,0 +1,237 @@
+---
+title: 'Flow React SDK Components'
+description: Reusable UI components for Flow interactions.
+sidebar_position: 3
+---
+
+import { Connect, TransactionDialog, TransactionLink, TransactionButton } from "@onflow/react-sdk"
+import { FlowProvider } from "@onflow/react-sdk"
+import FlowProviderDemo from '@site/src/components/FlowProviderDemo';
+import TransactionDialogDemo from '@site/src/components/TransactionDialogDemo';
+
+# React SDK Components
+
+## 🎨 Theming
+
+### How Theming Works
+
+All UI components in `@onflow/react-sdk` are styled using [Tailwind CSS](https://tailwindcss.com/) utility classes. The kit supports both light and dark themes out of the box, using Tailwind's `dark:` variant for dark mode styling.
+
+You can customize the look and feel of the kit by providing a custom theme to the `FlowProvider` via the `theme` prop. This allows you to override default colors and styles to better match your app's branding.
+
+```tsx
+import { FlowProvider } from "@onflow/react-sdk"
+
+<FlowProvider
+  config={...}
+  theme={{
+    colors: {
+      primary: {
+        background: "bg-blue-600 dark:bg-blue-400",
+        text: "text-white dark:text-blue-900",
+        hover: "hover:bg-blue-700 dark:hover:bg-blue-300",
+      },
+      // ...other color overrides
+    }
+  }}
+>
+  <App />
+</FlowProvider>
+```
+
+---
+
+## 🌙 Dark Mode
+
+### How Dark Mode Works
+
+Dark mode is **fully controlled by the parent app** using the `darkMode` prop on `FlowProvider`. The kit does not manage dark mode state internally—this gives you full control and ensures the kit always matches your app's theme.
+
+- `darkMode={false}` (default): Forces all kit components to use light mode styles.
+- `darkMode={true}`: Forces all kit components to use dark mode styles.
+- You can dynamically change the `darkMode` prop to switch themes at runtime.
+
+**Example:**
+
+```tsx
+function App() {
+  // Parent app manages dark mode state
+  const [isDark, setIsDark] = useState(false)
+
+  return (
+    <FlowProvider config={...} darkMode={isDark}>
+      <MyFlowComponents />
+    </FlowProvider>
+  )
+}
+```
+
+**Accessing Dark Mode State in Components:**
+
+You can use the `useDarkMode` hook to check the current mode inside your components:
+
+```tsx
+import { useDarkMode } from "@onflow/react-sdk"
+
+function MyComponent() {
+  // useDarkMode only returns the current state, no setter
+  const { isDark } = useDarkMode()
+  return <div>{isDark ? "Dark mode" : "Light mode"}</div>
+}
+```
+
+### Notes
+
+- The kit does **not** automatically follow system preferences or save user choices. You are responsible for managing and passing the correct `darkMode` value.
+- All kit components will automatically apply the correct Tailwind `dark:` classes based on the `darkMode` prop.
+- For best results, ensure your app's global theme and the kit's `darkMode` prop are always in sync.
+
+---
+
+## Components
+
+### `Connect`
+
+A drop-in wallet connection component with UI for copy address, logout, and balance display.
+
+**Props:**
+
+- `variant?: ButtonProps["variant"]` – Optional button style variant (default: `"primary"`)
+- `onConnect?: () => void` – Callback triggered after successful authentication
+- `onDisconnect?: () => void` – Callback triggered after logout
+- `balanceType?: "cadence" | "evm" | "combined"` – Specifies which balance to display (default: `"cadence"`). Options:
+  - `"cadence"`: Shows the FLOW token balance from the Cadence side
+  - `"evm"`: Shows the FLOW token balance from the Flow EVM side
+  - `"combined"`: Shows the total combined FLOW token balance from both sides
+
+```tsx
+import { Connect } from "@onflow/react-sdk"
+
+<Connect
+  onConnect={() => console.log("Connected!")}
+  onDisconnect={() => console.log("Logged out")}
+/>
+```
+
+### Live Demo
+
+<FlowProviderDemo>
+  <Connect
+    onConnect={() => console.log("Connected!")}
+    onDisconnect={() => console.log("Logged out")}
+  />
+</FlowProviderDemo>
+
+---
+
+### `TransactionButton`
+
+Button component for executing Flow transactions with built-in loading states and global transaction management.
+
+**Props:**
+
+- `transaction: Parameters<typeof mutate>[0]` – Flow transaction object to execute when clicked
+- `label?: string` – Optional custom button label (default: `"Execute Transaction"`)
+- `mutation?: UseMutationOptions<string, Error, Parameters<typeof mutate>[0]>` – Optional TanStack React Query mutation options
+- `...buttonProps` – All other `ButtonProps` except `onClick` and `children` (includes `variant`, `disabled`, `className`, etc.)
+
+```tsx
+import { TransactionButton } from "@onflow/react-sdk"
+
+const myTransaction = {
+  cadence: `
+    transaction() {
+      prepare(acct: &Account) {
+        log("Hello from ", acct.address)
+      }
+    }
+  `,
+  args: (arg, t) => [],
+  limit: 100,
+}
+
+<TransactionButton
+  transaction={myTransaction}
+  label="Say Hello"
+  variant="primary"
+  mutation={{
+    onSuccess: (txId) => console.log("Transaction sent:", txId),
+    onError: (error) => console.error("Transaction failed:", error),
+  }}
+/>
+```
+
+### Live Demo
+
+<FlowProviderDemo>
+  <TransactionButton
+    transaction={{
+      cadence: `transaction() { prepare(acct: &Account) { log("Demo transaction") } }`,
+      args: (arg, t) => [],
+      limit: 100,
+    }}
+    label="Demo Transaction"
+  />
+</FlowProviderDemo>
+
+---
+
+### `TransactionDialog`
+
+Dialog component for real-time transaction status updates.
+
+**Props:**
+
+- `open: boolean` – Whether the dialog is open
+- `onOpenChange: (open: boolean) => void` – Callback to open/close dialog
+- `txId?: string` – Optional Flow transaction ID to track
+- `onSuccess?: () => void` – Optional callback when transaction is successful
+- `pendingTitle?: string` – Optional custom pending state title
+- `pendingDescription?: string` – Optional custom pending state description
+- `successTitle?: string` – Optional custom success state title
+- `successDescription?: string` – Optional custom success state description
+- `closeOnSuccess?: boolean` – If `true`, closes the dialog automatically after success
+
+```tsx
+import { TransactionDialog } from "@onflow/react-sdk"
+
+
+<TransactionDialog
+  open={isOpen}
+  onOpenChange={setIsOpen}
+  txId="6afa38b7bd1a23c6cc01a4ea2e51ed376f16761f9d06eca0577f674a9edc0716"
+  pendingTitle="Sending..."
+  successTitle="All done!"
+  closeOnSuccess
+/>
+```
+
+### Live Demo
+
+<TransactionDialogDemo />
+
+---
+
+### `TransactionLink`
+
+Link to the block explorer with the appropriate network scoped to transaction ID.
+
+**Props:**
+
+- `txId: string` – The transaction ID to link to
+- `variant?: ButtonProps["variant"]` – Optional button variant (defaults to `"link"`)
+
+```tsx
+import { TransactionLink } from "@onflow/react-sdk"
+
+<TransactionLink txId="your-tx-id" />
+```
+
+### Live Demo
+
+<FlowProviderDemo>
+  <TransactionLink
+    txId="0x1234567890abcdef"
+    variant="primary"
+  />
+</FlowProviderDemo>

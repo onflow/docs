@@ -27,4 +27,4 @@ macOS, Linux, and Windows.
 
 ## Create Your First Project
 
-To get started with creating your first Flow project and to learn more about how to use the Flow CLI commands, please refer to the [Commands documentation](commands.md). These commands simplify the setup and development process, allowing you to focus on building your application without worrying about the underlying configurations.
+To get started with creating your first Flow project and to learn more about how to use the Flow CLI commands, please refer to the [Commands documentation](./commands.md). These commands simplify the setup and development process, allowing you to focus on building your application without worrying about the underlying configurations.

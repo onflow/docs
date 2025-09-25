@@ -440,8 +440,8 @@ This transaction demonstrates how to chain multiple DeFi operations atomically, 
 <!-- Reference-style links, will not render on page -->
 
 [FLIP 339]: https://github.com/onflow/flips/pull/339/files
-[Staking]: ../../protocol/staking/index.md
-[slashing]: ../../protocol/staking/04-stake-slashing.md
+[Staking]: ../../../protocol/staking/index.md
+[slashing]: ../../../protocol/staking/04-stake-slashing.md
 [Flow CLI docs]: https://developers.flow.com/tools/flow-cli/install
 [Cadence Extension]: https://marketplace.visualstudio.com/items?itemName=onflow.cadence
 [Flow Port]: https://port.flow.com/
@@ -451,7 +451,7 @@ This transaction demonstrates how to chain multiple DeFi operations atomically, 
 [zap]: ./breakthislinkfornow
 [zapper]: ./breakthislinkfornow
 [`/cadence/transactions/increment_fi_restake.cdc`]: https://github.com/onflow/flow-actions-scaffold/blob/main/cadence/transactions/increment_fi_restake.cdc
-[scheduled transactions]: ./scheduled-transactions-introduction.md
+[scheduled transactions]: ../scheduled-transactions/scheduled-transactions-introduction.md
 [Export]: https://docs.wallet.flow.com/tutorial/extension-private-key-and-seed-phrase-guide
 [Cadence]: https://cadence-lang.org/docs
 [staking app]: https://app.increment.fi/staking

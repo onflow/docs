@@ -43,9 +43,9 @@ const HeroSection: React.FC = () => {
                   label: 'Start with Cadence',
                   location: true,
                 });
-                window.location.href = '/build/cadence/getting-started/contract-interaction';
+                window.location.href = '/blockchain-development-tutorials/cadence/getting-started';
               }}
-              className="px-6 py-2 rounded-lg bg-transparent text-black dark:text-white underline font-bold text-base border-none shadow-none focus:outline-none focus:underline hover:underline transition-colors text-center cursor-pointer"
+              className="px-6 py-2 rounded-lg bg-transparent text-black dark:text-white underline font-bold text-base border-none shadow-none focus:outline-none focus:underline hover:underline hover:text-green-600 dark:hover:text-green-400 transition-colors text-center cursor-pointer"
               style={{ background: 'transparent' }}
             >
               Start with Cadence

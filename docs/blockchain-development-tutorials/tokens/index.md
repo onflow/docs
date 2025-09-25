@@ -1,7 +1,7 @@
 ---
 title: Token Development and Registration
 description: Complete guides for creating, deploying, and registering tokens on Flow using both Cadence and EVM approaches.
-sidebar_position: 4
+sidebar_position: 8
 ---
 
 # Token Development and Registration

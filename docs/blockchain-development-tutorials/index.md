@@ -52,14 +52,25 @@ For this grand future, we'll need a new suite of blockchain development tutorial
 
 - [Flow Blockchain 101] - Learn why Flow blockchain is uniquely designed for consumer-scale decentralized applications with its multi-role architecture, native account abstraction, and EVM equivalence.
 
-## [Flow Actions]
+## [Forte Network Upgrade]
 
-Learn how to build composable DeFi applications using the Flow Actions framework. This framework provides a "LEGO" system of reusable components that enable developers to create sophisticated DeFi workflows through atomic composition.
+Tutorials covering new features and capabilities introduced in the Forte network upgrade for Flow blockchain, including Flow Actions and Scheduled Transactions.
+
+- [Forte Overview] - Introduction to the Forte network upgrade and its new capabilities for building sophisticated decentralized applications.
+
+### Flow Actions
+
+Learn how to build composable DeFi applications using the Flow Actions framework with standardized interfaces and reusable components.
 
 - [Introduction to Flow Actions] - Learn about Flow Actions, a suite of standardized Cadence interfaces that enable developers to compose complex DeFi workflows using small, reusable components like Sources, Sinks, Swappers, PriceOracles, and Flashers.
 - [Flow Actions Transactions] - Learn how to create transactions that can chain multiple DeFi operations atomically.
 - [Connectors] - Build Flow Actions connectors that integrate protocols with Flow Actions primitives, serving as protocol adapters that translate bespoke APIs into standardized interfaces.
 - [Basic Combinations] - Learn how to combine Flow Actions primitives to create powerful DeFi workflows using atomic composition, weak guarantees, and event traceability across multiple protocols.
+
+### Scheduled Transactions
+
+Learn how to implement scheduled transactions for time-based smart contract execution and blockchain automation.
+
 - [Scheduled Transactions Introduction] - Learn how to implement scheduled transactions for time-based smart contract execution on Flow, enabling recurring jobs, deferred actions, and autonomous workflows without external transactions.
 
 ## [Cadence Development]
@@ -84,11 +95,13 @@ Comprehensive tutorials for building on Flow EVM using Solidity smart contracts 
 - [EVM Setup] - Setup guides for Flow EVM development environment, network configuration, and toolchain preparation.
 
 - [EVM Development Tools] - Overview of development tools for building Solidity smart contracts on Flow EVM, including Hardhat, Foundry, and Remix IDE.
+
   - [Flow Hardhat Guide] - Using Hardhat to deploy a Solidity contract to Flow EVM with step-by-step configuration, deployment, and interaction examples including contract verification.
   - [Using Foundry with Flow] - Using Foundry to deploy a Solidity contract to Flow EVM, covering ERC-20 token development, testing, deployment, and state interaction with Foundry tools.
   - [Flow Remix Guide] - Deploy and interact with Solidity smart contracts on Flow EVM using the Remix IDE with network configuration and contract verification.
 
 - [EVM Frameworks] - JavaScript frameworks and libraries for building frontend applications that interact with Flow EVM, including RainbowKit, wagmi, Ethers.js, and Web3.js.
+
   - [RainbowKit Integration] - Integrate RainbowKit with Flow EVM to provide wallet connection functionality in React applications with custom wallet support and network configuration.
   - [Wagmi Integration] - Integrate wagmi React hooks with Flow EVM for type-safe Ethereum interactions, wallet management, and smart contract integration in React applications.
   - [Ethers.js Integration] - Connect to Flow EVM using Ethers.js library for blockchain interactions, smart contract deployment, and transaction management in JavaScript applications.
@@ -167,12 +180,13 @@ Flow will continue to provide quality walkthroughs and tutorials to provide deve
 
 [Flow 101]: ./flow-101.md
 [Flow Blockchain 101]: ./flow-101.md
-[Flow Actions]: ./flow-actions/index.md
-[Introduction to Flow Actions]: ./flow-actions/intro-to-flow-actions.md
-[Flow Actions Transactions]: ./flow-actions/flow-actions-transaction.md
-[Connectors]: ./flow-actions/connectors.md
-[Basic Combinations]: ./flow-actions/basic-combinations.md
-[Scheduled Transactions Introduction]: ./flow-actions/scheduled-transactions-introduction.md
+[Forte Network Upgrade]: ./forte/index.md
+[Forte Overview]: ./forte/index.md
+[Flow Actions]: ./forte/flow-actions/index.md
+[Scheduled Transactions]: ./forte/scheduled-transactions/index.md
+[Connectors]: ./forte/flow-actions/connectors.md
+[Basic Combinations]: ./forte/flow-actions/basic-combinations.md
+[Scheduled Transactions Introduction]: ./forte/scheduled-transactions/scheduled-transactions-introduction.md
 [Cadence Development]: ./cadence/index.md
 [Mobile Development]: ./cadence/mobile/index.md
 [iOS Quickstart]: ./cadence/mobile/ios-quickstart.md

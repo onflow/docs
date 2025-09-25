@@ -18,6 +18,7 @@ export enum IconName {
   GRANTS = 'grants',
   STARTUP_SUPPORT = 'startup-support',
   VCS_AND_FUNDS = 'vcs-&-funds',
+  ACCESS_INCREDIBLE_IP = 'access-incredible-ip',
   
   // Other commonly used icons
   LEARN = 'learn',
