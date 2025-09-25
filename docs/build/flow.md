@@ -171,6 +171,7 @@ Those wishing to understand the technical specifics of how Flow EVM works, we re
 **Forte** is the most significant network upgrade on Flow that enhances developers and AI agents building on Flow, unlocking protocol composability and native automation directly on the network.
 
 > **_ERC-20 and ERC-721 unlocked nouns. Actions and scheduled transactions unlock verbs._**
+
 ### What makes Forte Interesting
 
 Forte transforms Flow from a reactive blockchain into an autonomous, intelligent network capable of executing complex workflows without external dependencies. The upgrade introduces native time scheduling, protocol-level composability, and AI-optimized development tools that enable entirely new categories of applications.
@@ -316,7 +317,7 @@ Are you interested in launching a project on Flow or partnering with us? Visit o
 [usually way less!]: https://evm.flowscan.io/stats
 [VRF]: ../blockchain-development-tutorials/native-vrf/vrf-in-solidity.md
 [widespread popularity]: https://www.cnn.com/style/article/cryptokitty-blockchain/index.html
-[**Scheduled Transactions**]: ../blockchain-development-tutorials/forte/flow-actions/scheduled-transactions
+[**Scheduled Transactions**]: ../blockchain-development-tutorials/forte/scheduled-transactions/scheduled-transactions-introduction.md
 [FLIP 330: Scheduled Transaction]: https://github.com/onflow/flips/blob/main/protocol/20250609-scheduled-callbacks.md
 [FLIP 341: Add 128-bit Fixed-point Types to Cadence]: https://github.com/onflow/flips/blob/main/cadence/20250815-128-bit-fixed-point-types.md
 [smart wallets without relying on complex contract architectures]: https://flow.com/post/transforming-smartphones-into-hardware-wallets-how-secure-enclave-support-on-flow-is-ushering-in-the-next-wave-of-web3-applications
