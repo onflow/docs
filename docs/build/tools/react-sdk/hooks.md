@@ -892,4 +892,4 @@ function CrossVmTransactionStatusComponent() {
 }
 ```
 
-[commit-reveal scheme]: ../../build/cadence/advanced-concepts/randomness#commit-reveal-scheme
+[commit-reveal scheme]: ../../cadence/advanced-concepts/randomness#commit-reveal-scheme

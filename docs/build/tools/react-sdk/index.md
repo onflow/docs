@@ -95,7 +95,7 @@ function MyApp() {
 
 ## What's Included
 
-### 🎣 [Hooks](./hooks)
+### 🎣 [Hooks](./hooks.md)
 
 **Cadence Hooks** for native Flow interactions:
 - Authentication & user management
@@ -109,9 +109,9 @@ function MyApp() {
 - Token & NFT bridging 
 - Cross-chain balance queries
 
-[→ View all hooks](./hooks)
+[→ View all hooks](./hooks.md)
 
-### 🎨 [Components](./components)  
+### 🎨 [Components](./components.md)  
 
 Beautiful, accessible UI components:
 - `<Connect />` – Wallet authentication with balance display
@@ -119,7 +119,7 @@ Beautiful, accessible UI components:
 - `<TransactionDialog />` – Real-time transaction tracking
 - `<TransactionLink />` – Network-aware block explorer links
 
-[→ View all components](./components)
+[→ View all components](./components.md)
 
 ---
 
@@ -144,6 +144,6 @@ Beautiful, accessible UI components:
 
 ## Need Help?
 
-- 📖 **[Hooks Documentation](./hooks)** – Detailed API reference for all hooks
-- 🎨 **[Components Documentation](./components)** – UI components and theming guide  
+- 📖 **[Hooks Documentation](./hooks.md)** – Detailed API reference for all hooks
+- 🎨 **[Components Documentation](./components.md)** – UI components and theming guide  
 - 🔗 **[Configuration Guide](../flow-cli/flow.json/configuration.md)** – Learn about configuring `flow.json`
