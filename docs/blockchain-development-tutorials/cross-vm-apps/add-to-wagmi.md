@@ -517,4 +517,4 @@ For a complete reference implementation, check out the [FCL + RainbowKit + wagmi
 [Testnet Cadence Flowscan]: https://testnet.flowscan.io
 [Cadence Owned Accounts]: ../../build/cadence/basics/accounts.md
 [Testnet EVM Flowscan]: https://evm-testnet.flowscan.io
-[pre-built utility from the `@onflow/react-sdk`]: ../../build/tools/react-sdk/index.mdx#usecrossvmbatchtransaction
+[pre-built utility from the `@onflow/react-sdk`]: ../../build/tools/react-sdk/index.md#usecrossvmbatchtransaction
