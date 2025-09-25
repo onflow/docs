@@ -91,4 +91,3 @@ copyRepoFilesToDest() {
 }
 
 cloneDocReposToDest
-renameEcosystemOverview
