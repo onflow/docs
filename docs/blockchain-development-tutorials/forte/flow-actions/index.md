@@ -1,6 +1,6 @@
 ---
 title: Flow Actions
-description: A series of tutorials on building decentralized finance applications using the Flow Actions framework.
+description: A series of tutorials on building decentralized finance applications using the Flow Actions framework and scheduled transactions.
 sidebar_position: 3
 keywords:
   - flow actions
@@ -8,6 +8,9 @@ keywords:
   - cadence actions
   - Flow Actions
   - defi workflows
+  - scheduled transactions
+  - time-based execution
+  - blockchain automation
   - flow blockchain
   - cadence smart contracts
   - defi protocols
@@ -32,6 +35,7 @@ These tutorials will be updated, but you may need to refactor your code if the i
 - **[Flow Actions Transaction]** - Learn how to create and execute Flow Actions transactions for automated DeFi workflows.
 - **[Connectors]** - Understand how connectors bridge standardized Flow Actions interfaces with different DeFi protocols.
 - **[Basic Combinations]** - Learn how to combine Flow Actions to create new workflows.
+- **[Scheduled Transactions Introduction]** - Learn how to implement scheduled transactions for time-based smart contract execution on Flow.
 
 <!-- Relative links, will not render on page -->
 
@@ -39,4 +43,5 @@ These tutorials will be updated, but you may need to refactor your code if the i
 [Introduction to Flow Actions]: ./intro-to-flow-actions.md
 [Flow Actions Transaction]: ./flow-actions-transaction.md
 [Connectors]: ./connectors.md
+[Scheduled Transactions Introduction]: ./scheduled-transactions.md
 [Basic Combinations]: ./basic-combinations.md

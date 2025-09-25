@@ -166,12 +166,11 @@ Those wishing to understand the technical specifics of how Flow EVM works, we re
 - Insights into the [Flow EVM Gateway]
 - Integration of the [Cadence Interface]
 
-## Forte: Flow's Network Upgrade
+## Forte Network Upgrade
 
-**Forte** is Flow's most significant network upgrade that enhances developers and AI agents building on Flow, unlocking protocol composability and native automation directly on the network.
+**Forte** is the most significant network upgrade on Flow that enhances developers and AI agents building on Flow, unlocking protocol composability and native automation directly on the network.
 
-> **_ERC-20 and ERC-721 unlocked nouns. Actions and Agents unlock verbs._**
-
+> **_ERC-20 and ERC-721 unlocked nouns. Actions and scheduled transactions unlock verbs._**
 ### What makes Forte Interesting
 
 Forte transforms Flow from a reactive blockchain into an autonomous, intelligent network capable of executing complex workflows without external dependencies. The upgrade introduces native time scheduling, protocol-level composability, and AI-optimized development tools that enable entirely new categories of applications.
@@ -187,9 +186,9 @@ This means developers can:
 - **Ensure atomicity**: All operations succeed together or fail together, eliminating partial execution risks
 - **Reduce gas costs**: Execute multiple protocol interactions more efficiently than separate transactions
 
-### Flow Agents: Autonomous onchain execution
+### Scheduled Transaction: Autonomous onchain execution
 
-[**Flow Agents**] are onchain resources that run entirely within a Flow account, enabling fully autonomous, secure transaction execution. Agents can schedule future transactions, self-trigger based on conditions, and operate without external keepers.
+[**Scheduled Transactions**] are onchain resources that run entirely within a Flow account, enabling fully autonomous, secure transaction execution. They can self-trigger based on conditions and operate without external keepers.
 
 Key capabilities:
 
@@ -317,12 +316,13 @@ Are you interested in launching a project on Flow or partnering with us? Visit o
 [usually way less!]: https://evm.flowscan.io/stats
 [VRF]: ../blockchain-development-tutorials/native-vrf/vrf-in-solidity.md
 [widespread popularity]: https://www.cnn.com/style/article/cryptokitty-blockchain/index.html
-[**Scheduled Transactions**]: ../blockchain-development-tutorials/forte/scheduled-transactions/scheduled-transactions-introduction
+[**Scheduled Transactions**]: ../blockchain-development-tutorials/forte/flow-actions/scheduled-transactions
 [FLIP 330: Scheduled Transaction]: https://github.com/onflow/flips/blob/main/protocol/20250609-scheduled-callbacks.md
 [FLIP 341: Add 128-bit Fixed-point Types to Cadence]: https://github.com/onflow/flips/blob/main/cadence/20250815-128-bit-fixed-point-types.md
 [smart wallets without relying on complex contract architectures]: https://flow.com/post/transforming-smartphones-into-hardware-wallets-how-secure-enclave-support-on-flow-is-ushering-in-the-next-wave-of-web3-applications
 [FLIP 264: WebAuthn Credential Support]: https://github.com/onflow/flips/blob/cfaaf5f6b7c752e8db770e61ec9c180dc0eb6543/protocol/20250203-webauthn-credential-support.md
 [protocol autonomy roadmap]: https://flow.com/protocol-autonomy-roadmap
-[**Flow Actions**]: ../blockchain-development-tutorials/forte/flow-actions/intro-to-flow-actions.md
-[fundamental DeFi primitives]: ../blockchain-development-tutorials/forte/flow-actions/intro-to-flow-actions.md
-[**Flow Agents**]: ../blockchain-development-tutorials/forte/scheduled-transactions/scheduled-transactions-introduction.md
+[**Flow Actions**]: ../blockchain-development-tutorials/forte/flow-actions/index.md
+[fundamental DeFi primitives]: ../blockchain-development-tutorials/forte/flow-actions/index.md
+[assembly line architecture]: https://flow.com/multi-node
+[data availability vision]: https://flow.com/protocol-autonomy-roadmap

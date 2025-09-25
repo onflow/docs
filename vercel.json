@@ -2009,6 +2009,11 @@
       "permanent": true
     },
     {
+      "source": "/blockchain-development-tutorials/flow-actions/scheduled-callbacks-introduction",
+      "destination": "/blockchain-development-tutorials/flow-actions/scheduled-transactions-introduction",
+      "permanent": true
+    },
+    {
       "source": "/tutorials/gasless-transactions/gas-free-evm-endpoint",
       "destination": "/tutorials/gasless-transactions/sponsored-transactions-evm-endpoint",
       "permanent": true
