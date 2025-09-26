@@ -272,76 +272,43 @@ const config = {
             position: 'left',
             label: 'Build',
             activeBasePath: '/build',
-            onClick: () => {
-              if (typeof window !== 'undefined' && window['gtag'] && window.location.pathname === '/') {
-                window['gtag']('event', 'action_card_click', {
-                  event_category: 'nav_bar',
-                  event_label: 'Nav - Build',
-                  location: true,
-                });
-              }
-            },
           },
           {
             to: 'blockchain-development-tutorials',
             position: 'left',
             label: 'Tutorials',
             activeBasePath: '/blockchain-development-tutorials',
-            onClick: () => {
-              if (typeof window !== 'undefined' && window['gtag'] && window.location.pathname === '/') {
-                window['gtag']('event', 'action_card_click', {
-                  event_category: 'nav_bar',
-                  event_label: 'Nav - Tutorials',
-                  location: true,
-                });
-              }
-            },
           },
           {
             to: 'protocol/flow-networks',
             position: 'left',
             label: 'Protocol',
             activeBasePath: '/protocol',
-            onClick: () => {
-              if (typeof window !== 'undefined' && window['gtag'] && window.location.pathname === '/') {
-                window['gtag']('event', 'action_card_click', {
-                  event_category: 'nav_bar',
-                  event_label: 'Nav - Protocol',
-                  location: true,
-                });
-              }
-            },
           },
           {
             to: 'ecosystem',
             position: 'left',
             label: 'Ecosystem',
             activeBasePath: '/ecosystem',
-            onClick: () => {
-              if (typeof window !== 'undefined' && window['gtag'] && window.location.pathname === '/') {
-                window['gtag']('event', 'action_card_click', {
-                  event_category: 'nav_bar',
-                  event_label: 'Nav - Ecosystem',
-                  location: true,
-                });
-              }
-            },
           },
           {
             type: 'custom-connectButton',
             position: 'right',
+            label: 'Connect',
           },
           {
             href: 'https://github.com/onflow',
             html: '<img src="" alt="GitHub" id="navbar-github" class="box-content h-32 w-32"/><span class="p-2 desktop:hidden">Github</span>',
             position: 'right',
             className: 'h-8 desktop:p-1',
+            label: 'GitHub',
           },
           {
             href: 'https://discord.gg/flow',
             html: '<img src="" alt="Discord" id="navbar-discord" class="box-content h-32 w-32"/><span class="p-2 desktop:hidden">Discord</span>',
             position: 'right',
             className: 'h-8 desktop:p-1',
+            label: 'Discord',
           },
         ],
       },

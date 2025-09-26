@@ -10,6 +10,8 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { useProfile } from '../hooks/use-profile';
 import { useGithubAvatar } from '../hooks/use-github-avatar';
 import { SocialType } from '../types/gold-star';
+import { event } from '@site/src/utils/gtags.client';
+import { GA_EVENTS, GA_CATEGORIES } from '@site/src/constants/ga-events';
 
 const shortenAddress = (address: string) => {
   if (!address) return '';
@@ -40,9 +42,25 @@ const ConnectButton: React.FC = () => {
     setIsProfileModalOpen(false);
   };
 
+  const handleSignInClick = () => {
+    // Check if we're on the homepage
+    const isHomepage = typeof window !== 'undefined' && window.location.pathname === '/';
+    
+    // Track the Sign In click
+    event({
+      action: isHomepage ? GA_EVENTS.ACTION_CARD_CLICK : GA_EVENTS.NAV_BAR_CLICK,
+      category: isHomepage ? GA_CATEGORIES.NAV_BAR : GA_CATEGORIES.NAV_BAR,
+      label: 'Nav-Sign In',
+      location: true,
+    });
+    
+    // Call the original logIn function
+    logIn();
+  };
+
   if (!user.loggedIn) {
     return (
-      <Button size="sm" className="mr-2" onClick={logIn}>
+      <Button size="sm" className="mr-2" onClick={handleSignInClick}>
         Sign In
       </Button>
     );
