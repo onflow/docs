@@ -100,6 +100,7 @@ const BrowseByCategory: React.FC = () => {
       category: GA_CATEGORIES.ACTION_CARD,
       label: `${category} - ${label}`,
       location: true,
+      href: href,
     });
   };
 
