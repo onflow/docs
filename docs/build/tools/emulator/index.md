@@ -1,23 +1,54 @@
 ---
 title: Flow Emulator
-description: A development tool that looks, acts and talks like Flow
+description: Local Flow network for development and testing
 sidebar_position: 3
 ---
 
-The Flow Emulator is a lightweight tool that emulates the behaviour of the real Flow network.
+The Flow Emulator is a lightweight tool that emulates the behavior of the real Flow network for local development and testing.
 
-The emulator exposes a gRPC server that implements the Flow Access API,
-which is designed to have near feature parity with the real network API.
+## Installation
 
-## Running the emulator with the Flow CLI
+The emulator is included with the [Flow CLI](../flow-cli/index.md). Follow the [installation guide](../flow-cli/install.md) to get started.
 
-The emulator is bundled with the [Flow CLI](../flow-cli/index.md), a command-line interface for working with Flow.
+## Quick Start
 
-### Installation
+First, create a `flow.json` configuration file:
 
-Follow [these steps](../flow-cli/install.md) to install the Flow CLI on macOS, Linux, and Windows.
+```bash
+flow init --config-only
+```
 
-## Usage
+Then start the Flow Emulator:
 
-To learn more about using the Emulator,
-have a look at [the README of the repository](https://github.com/onflow/flow-emulator/#starting-the-server).
+```bash
+flow emulator
+```
+
+This starts a local Flow network with:
+- gRPC server on port `3569`
+- REST API on `http://localhost:8888`
+- Admin API on port `8080`
+
+## Common Options
+
+```bash
+# Start with verbose logging
+flow emulator --verbose
+
+# Set custom block time (e.g., 1 second between blocks)
+flow emulator --block-time 1s
+
+# Persist state between restarts
+flow emulator --persist
+```
+
+For all available options, see the [CLI commands overview](../flow-cli/index.md).
+
+## Debugging & Testing
+
+- **Code Coverage**: Add `--coverage-reporting` flag and visit `http://localhost:8080/emulator/codeCoverage`
+- **Debugging**: Use `#debugger()` pragma in Cadence code for breakpoints
+
+## Additional Resources
+
+For advanced configuration options, see the [Flow Emulator repository](https://github.com/onflow/flow-emulator/).
