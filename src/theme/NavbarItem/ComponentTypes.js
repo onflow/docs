@@ -63,7 +63,6 @@ const withHtmlTracking = (Component) => {
       
       // Add Nav- prefix to match existing pattern
       const prefixedLabel = `Nav-${label}`;
-      alert(`Html NavbarItem clicked: ${prefixedLabel}`);
       
       // Check if we're on the homepage
       const isHomepage = typeof window !== 'undefined' && window.location.pathname === '/';
