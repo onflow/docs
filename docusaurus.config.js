@@ -132,7 +132,7 @@ const editUrl = ({ docPath }) => {
       };
     }
     return acc;
-  }, null);
+  }, /** @type {Repository & SourceDestination | null} */ (null));
   if (!sourceRepository) {
     return `https://github.com/onflow/docs/tree/main/docs/${docPath}`;
   }
@@ -294,6 +294,7 @@ const config = {
           {
             type: 'custom-connectButton',
             position: 'right',
+            label: 'Connect',
           },
           {
             href: 'https://github.com/onflow',
@@ -505,17 +506,18 @@ const config = {
         name: 'docusaurus-svgo',
         configureWebpack(config) {
           // allow svgr to use svgo config file
-          for (const rule of config.module.rules) {
+          for (const rule of config.module?.rules || []) {
             if (
+              rule &&
               typeof rule === 'object' &&
-              rule.test.toString() === '/\\.svg$/i'
+              rule.test?.toString() === '/\\.svg$/i'
             ) {
-              for (const nestedRule of rule.oneOf) {
-                if (nestedRule.use instanceof Array) {
+              for (const nestedRule of rule.oneOf || []) {
+                if (nestedRule && typeof nestedRule === 'object' && nestedRule.use instanceof Array) {
                   for (const loader of nestedRule.use) {
                     if (
                       typeof loader === 'object' &&
-                      loader.loader === require.resolve('@svgr/webpack')
+                      loader?.loader === require.resolve('@svgr/webpack')
                     ) {
                       if (typeof loader.options === 'object') {
                         loader.options.svgoConfig = null;
@@ -531,7 +533,7 @@ const config = {
               'module.rules': 'replace',
             },
             module: {
-              rules: config.module.rules,
+              rules: config.module?.rules || [],
             },
           };
         },
@@ -549,8 +551,7 @@ const config = {
       };
     },
     /** this function needs doesn't pick up hot reload event, it needs a restart */
-    // @ts-expect-error
-    function (context, options) {
+    function (context) {
       const { siteConfig } = context;
       return {
         name: 'docusaurus-flow-networks-plugin',
