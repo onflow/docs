@@ -70,7 +70,7 @@ const withHtmlTracking = (Component) => {
       // Track the navbar item click with appropriate event based on page
       event({
         action: isHomepage ? GA_EVENTS.ACTION_CARD_CLICK : GA_EVENTS.NAV_BAR_CLICK,
-        category: isHomepage ? GA_CATEGORIES.NAV_BAR : GA_CATEGORIES.NAV_BAR,
+        category: isHomepage ? GA_CATEGORIES.ACTION_CARD : GA_CATEGORIES.NAV_BAR,
         label: prefixedLabel,
         location: true,
       });
