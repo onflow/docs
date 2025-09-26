@@ -121,18 +121,19 @@ const getRepositories = () => {
 const editUrl = ({ docPath }) => {
   const repositories = getRepositories();
 
-  const sourceRepository = repositories.reduce((acc, { repository }) => {
+  let sourceRepository = null;
+  for (const { repository } of repositories) {
     const sourceData = repository.data.find(({ destination }) =>
       docPath.includes(destination),
     );
     if (sourceData) {
-      return {
+      sourceRepository = {
         ...repository,
         ...sourceData,
       };
+      break;
     }
-    return acc;
-  }, null);
+  }
   if (!sourceRepository) {
     return `https://github.com/onflow/docs/tree/main/docs/${docPath}`;
   }
@@ -505,20 +506,32 @@ const config = {
         name: 'docusaurus-svgo',
         configureWebpack(config) {
           // allow svgr to use svgo config file
-          for (const rule of config.module.rules) {
-            if (
-              typeof rule === 'object' &&
-              rule.test.toString() === '/\\.svg$/i'
-            ) {
-              for (const nestedRule of rule.oneOf) {
-                if (nestedRule.use instanceof Array) {
-                  for (const loader of nestedRule.use) {
+          if (config.module && config.module.rules) {
+            for (const rule of config.module.rules) {
+              if (
+                typeof rule === 'object' &&
+                rule &&
+                rule.test &&
+                rule.test.toString() === '/\\.svg$/i'
+              ) {
+                if (rule.oneOf) {
+                  for (const nestedRule of rule.oneOf) {
                     if (
-                      typeof loader === 'object' &&
-                      loader.loader === require.resolve('@svgr/webpack')
+                      nestedRule &&
+                      typeof nestedRule === 'object' &&
+                      'use' in nestedRule &&
+                      nestedRule.use instanceof Array
                     ) {
-                      if (typeof loader.options === 'object') {
-                        loader.options.svgoConfig = null;
+                      for (const loader of nestedRule.use) {
+                        if (
+                          loader &&
+                          typeof loader === 'object' &&
+                          loader.loader === require.resolve('@svgr/webpack')
+                        ) {
+                          if (typeof loader.options === 'object') {
+                            loader.options.svgoConfig = null;
+                          }
+                        }
                       }
                     }
                   }
@@ -531,7 +544,7 @@ const config = {
               'module.rules': 'replace',
             },
             module: {
-              rules: config.module.rules,
+              rules: config.module?.rules || [],
             },
           };
         },
@@ -549,7 +562,6 @@ const config = {
       };
     },
     /** this function needs doesn't pick up hot reload event, it needs a restart */
-    // @ts-expect-error
     function (context, options) {
       const { siteConfig } = context;
       return {
