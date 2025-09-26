@@ -6,9 +6,19 @@ sidebar_position: 3
 
 The Flow Emulator is a lightweight tool that emulates the behavior of the real Flow network for local development and testing.
 
+## Installation
+
+The emulator is included with the [Flow CLI](../flow-cli/index.md). Follow the [installation guide](../flow-cli/install.md) to get started.
+
 ## Quick Start
 
-Start the Flow Emulator with the CLI:
+First, create a `flow.json` configuration file:
+
+```bash
+flow init --config-only
+```
+
+Then start the Flow Emulator:
 
 ```bash
 flow emulator
@@ -32,14 +42,12 @@ flow emulator --block-time 1s
 flow emulator --persist
 ```
 
+For all available options, see the [CLI commands overview](../flow-cli/index.md).
+
 ## Debugging & Testing
 
 - **Code Coverage**: Add `--coverage-reporting` flag and visit `http://localhost:8080/emulator/codeCoverage`
 - **Debugging**: Use `#debugger()` pragma in Cadence code for breakpoints
-
-## Installation
-
-The emulator is included with the [Flow CLI](../flow-cli/index.md). Follow the [installation guide](../flow-cli/install.md) to get started.
 
 ## Additional Resources
 
