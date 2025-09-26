@@ -49,7 +49,7 @@ const ConnectButton: React.FC = () => {
     // Track the Sign In click
     event({
       action: isHomepage ? GA_EVENTS.ACTION_CARD_CLICK : GA_EVENTS.NAV_BAR_CLICK,
-      category: isHomepage ? GA_CATEGORIES.NAV_BAR : GA_CATEGORIES.NAV_BAR,
+      category: isHomepage ? GA_CATEGORIES.ACTION_CARD : GA_CATEGORIES.NAV_BAR,
       label: 'Nav-Sign In',
       location: true,
     });
