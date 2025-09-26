@@ -1,6 +1,6 @@
 ---
 title: Flow Emulator
-description: A development tool that looks, acts and talks like Flow
+description: Local Flow network for development and testing
 sidebar_position: 3
 ---
 
