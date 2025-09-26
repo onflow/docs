@@ -4,20 +4,22 @@ description: A development tool that looks, acts and talks like Flow
 sidebar_position: 3
 ---
 
-The Flow Emulator is a lightweight tool that emulates the behaviour of the real Flow network.
+The Flow Emulator is a lightweight tool that emulates the behavior of the real Flow network for local development and testing.
 
-The emulator exposes a gRPC server that implements the Flow Access API,
-which is designed to have near feature parity with the real network API.
+## Quick Start
 
-## Running the emulator with the Flow CLI
+Start the Flow Emulator with the CLI:
 
-The emulator is bundled with the [Flow CLI](../flow-cli/index.md), a command-line interface for working with Flow.
+```bash
+flow emulator
+```
 
-### Installation
+This starts a local Flow network on `http://localhost:8888` with the Access API available.
 
-Follow [these steps](../flow-cli/install.md) to install the Flow CLI on macOS, Linux, and Windows.
+## Installation
 
-## Usage
+The emulator is included with the [Flow CLI](../flow-cli/index.md). Follow the [installation guide](../flow-cli/install.md) to get started.
 
-To learn more about using the Emulator,
-have a look at [the README of the repository](https://github.com/onflow/flow-emulator/#starting-the-server).
+## Additional Resources
+
+For advanced configuration options, see the [Flow Emulator repository](https://github.com/onflow/flow-emulator/).
