@@ -43,7 +43,6 @@ const withHtmlTracking = (Component) => {
   return (props) => {
     const handleClick = (e) => {
       // Debug: log all available props
-      console.log('Html NavbarItem props:', props);
       
       // Try to get the label from various sources
       let label = props.label || props.item?.label;
