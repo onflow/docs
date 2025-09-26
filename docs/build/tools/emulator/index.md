@@ -32,7 +32,7 @@ flow emulator --block-time 1s
 flow emulator --persist
 ```
 
-## Development Tools
+## Debugging & Testing
 
 - **Code Coverage**: Add `--coverage-reporting` flag and visit `http://localhost:8080/emulator/codeCoverage`
 - **Debugging**: Use `#debugger()` pragma in Cadence code for breakpoints
