@@ -44,7 +44,8 @@ In order to create a scheduled transaction, the logic that will be executed
 in the transaction must already be defined in a function that the scheduler
 will call when it is time for the transaction to be executed.
 
-Therefore, all scheduled transactions must include a capability to a resource that conforms to this Transaction Handler interface defined in the Scheduler contract:
+Therefore, all scheduled transactions must include a capability to a resource that conforms to this Transaction Handler interface defined in the Scheduler contract
+and includes getters that conform to the [Flow metadata views standard](./metadata-views.md):
 
 ```cadence
 access(all) resource interface TransactionHandler {
@@ -235,7 +236,7 @@ The `FlowTransactionScheduler` contract is deployed to the service account and m
 
 The `FlowTransactionSchedulerUtils` contract provides utilities for scheduled transactions, such as the transaction `Manager` resource, common handlers, and metadata views related to scheduled transactions.
 
-Bellow are listed the addresses of both transaction scheduler contracts on each network they are deployed:
+Below are listed the addresses of both transaction scheduler contracts on each network they are deployed:
 - **Emulator**: `0xf8d6e0586b0a20c7`
 - **Cadence Testing Framework: `0x0000000000000001`
 - **Testnet**: `0x8c5303eaa26202d6`
