@@ -552,61 +552,6 @@ const config = {
         },
       };
     },
-    /** this function needs doesn't pick up hot reload event, it needs a restart */
-    function (context) {
-      const { siteConfig } = context;
-      return {
-        name: 'docusaurus-flow-networks-plugin',
-        async loadContent() {
-          const networks = JSON.parse(
-            fs
-              .readFileSync(path.join(__dirname, './src/data/networks.json'))
-              .toString(),
-          );
-          const sporks = await fetchSporkData();
-          return {
-            networks,
-            sporks,
-          };
-        },
-        async contentLoaded({ content, actions }) {
-          // @ts-expect-error
-          const { networks, sporks } = content;
-          const { addRoute, createData } = actions;
-          const networksJsonPath = await createData(
-            'networks.json',
-            JSON.stringify(networks),
-          );
-          const sporksJsonPath = await createData(
-            'sporks.json',
-            JSON.stringify(sporks),
-          );
-          addRoute({
-            path: `${siteConfig.baseUrl}network`,
-            exact: true,
-            component: '@site/src/components/networks',
-            modules: {
-              networks: networksJsonPath,
-              sporks: sporksJsonPath,
-            },
-          });
-
-          networks.forEach(async (network) => {
-            const { urlPath } = network;
-
-            addRoute({
-              path: `${siteConfig.baseUrl}network/${urlPath}`,
-              exact: true,
-              component: '@site/src/components/network',
-              modules: {
-                networks: networksJsonPath,
-                sporks: sporksJsonPath,
-              },
-            });
-          });
-        },
-      };
-    },
     // require('./plugins/networks')
     [
       '@docusaurus/plugin-client-redirects',
