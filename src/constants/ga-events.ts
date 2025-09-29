@@ -2,6 +2,8 @@
 export const GA_EVENTS = {
   // Existing events currently used in the codebase
   ACTION_CARD_CLICK: 'action_card_click',
+  NAV_BAR_CLICK: 'nav_bar_click',
+  SEARCH_CLICK: 'search_click',
   FEEDBACK_CLICK: 'feedback_click',
   AUTH_LOGIN: 'login',
 } as const;
@@ -9,6 +11,8 @@ export const GA_EVENTS = {
 // Event categories for consistent tracking - Using existing categories
 export const GA_CATEGORIES = {
   ACTION_CARD: 'action_card',
+  NAV_BAR: 'nav_bar',
+  SEARCH: 'search',
   FEEDBACK: 'feedback',
   AUTH: 'auth',
 } as const;
