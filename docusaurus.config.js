@@ -121,19 +121,20 @@ const getRepositories = () => {
 const editUrl = ({ docPath }) => {
   const repositories = getRepositories();
 
-  let sourceRepository = null;
-  for (const { repository } of repositories) {
+  const sourceRepository = repositories.reduce((acc, { repository }) => {
+    if (acc) return acc;
     const sourceData = repository.data.find(({ destination }) =>
       docPath.includes(destination),
     );
     if (sourceData) {
-      sourceRepository = {
+      return {
         ...repository,
         ...sourceData,
       };
-      break;
     }
-  }
+    return acc;
+  }, /** @type {Repository & SourceDestination | null} */ (null));
+
   if (!sourceRepository) {
     return `https://github.com/onflow/docs/tree/main/docs/${docPath}`;
   }
@@ -295,6 +296,7 @@ const config = {
           {
             type: 'custom-connectButton',
             position: 'right',
+            label: 'Connect',
           },
           {
             href: 'https://github.com/onflow',
@@ -506,32 +508,21 @@ const config = {
         name: 'docusaurus-svgo',
         configureWebpack(config) {
           // allow svgr to use svgo config file
-          if (config.module && config.module.rules) {
-            for (const rule of config.module.rules) {
-              if (
-                typeof rule === 'object' &&
-                rule &&
-                rule.test &&
-                rule.test.toString() === '/\\.svg$/i'
-              ) {
-                if (rule.oneOf) {
-                  for (const nestedRule of rule.oneOf) {
+          for (const rule of config.module?.rules || []) {
+            if (
+              rule &&
+              typeof rule === 'object' &&
+              rule.test?.toString() === '/\\.svg$/i'
+            ) {
+              for (const nestedRule of rule.oneOf || []) {
+                if (nestedRule && typeof nestedRule === 'object' && nestedRule.use instanceof Array) {
+                  for (const loader of nestedRule.use) {
                     if (
-                      nestedRule &&
-                      typeof nestedRule === 'object' &&
-                      'use' in nestedRule &&
-                      nestedRule.use instanceof Array
+                      typeof loader === 'object' &&
+                      loader?.loader === require.resolve('@svgr/webpack')
                     ) {
-                      for (const loader of nestedRule.use) {
-                        if (
-                          loader &&
-                          typeof loader === 'object' &&
-                          loader.loader === require.resolve('@svgr/webpack')
-                        ) {
-                          if (typeof loader.options === 'object') {
-                            loader.options.svgoConfig = null;
-                          }
-                        }
+                      if (typeof loader.options === 'object') {
+                        loader.options.svgoConfig = null;
                       }
                     }
                   }
@@ -558,6 +549,61 @@ const config = {
           postcssOptions.plugins.push(require('tailwindcss'));
           postcssOptions.plugins.push(require('autoprefixer'));
           return postcssOptions;
+        },
+      };
+    },
+    /** this function needs doesn't pick up hot reload event, it needs a restart */
+    function (context) {
+      const { siteConfig } = context;
+      return {
+        name: 'docusaurus-flow-networks-plugin',
+        async loadContent() {
+          const networks = JSON.parse(
+            fs
+              .readFileSync(path.join(__dirname, './src/data/networks.json'))
+              .toString(),
+          );
+          const sporks = await fetchSporkData();
+          return {
+            networks,
+            sporks,
+          };
+        },
+        async contentLoaded({ content, actions }) {
+          // @ts-expect-error
+          const { networks, sporks } = content;
+          const { addRoute, createData } = actions;
+          const networksJsonPath = await createData(
+            'networks.json',
+            JSON.stringify(networks),
+          );
+          const sporksJsonPath = await createData(
+            'sporks.json',
+            JSON.stringify(sporks),
+          );
+          addRoute({
+            path: `${siteConfig.baseUrl}network`,
+            exact: true,
+            component: '@site/src/components/networks',
+            modules: {
+              networks: networksJsonPath,
+              sporks: sporksJsonPath,
+            },
+          });
+
+          networks.forEach(async (network) => {
+            const { urlPath } = network;
+
+            addRoute({
+              path: `${siteConfig.baseUrl}network/${urlPath}`,
+              exact: true,
+              component: '@site/src/components/network',
+              modules: {
+                networks: networksJsonPath,
+                sporks: sporksJsonPath,
+              },
+            });
+          });
         },
       };
     },
