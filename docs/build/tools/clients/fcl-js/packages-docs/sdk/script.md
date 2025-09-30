@@ -1,9 +1,9 @@
 ---
-title: 'script'
-description: 'script function documentation.'
+title: "script"
+description: "script function documentation."
 ---
 
-<!-- THIS DOCUMENT IS AUTO-GENERATED FROM [onflow/sdk/src/build/cadence/build-script.ts](https://github.com/onflow/fcl-js/tree/master/packages/sdk/src/build/cadence/build-script.ts). DO NOT EDIT MANUALLY -->
+<!-- THIS DOCUMENT IS AUTO-GENERATED FROM [onflow/sdk/src/build/build-script.ts](https://github.com/onflow/fcl-js/tree/master/packages/sdk/src/build/build-script.ts). DO NOT EDIT MANUALLY -->
 
 # script
 
@@ -22,23 +22,23 @@ Block height expresses the height of the block in the chain.
 You can import the entire package and access the function:
 
 ```typescript
-import * as sdk from '@onflow/sdk';
+import * as sdk from "@onflow/sdk"
 
-sdk.script(args);
+sdk.script(args)
 ```
 
 Or import directly the specific function:
 
 ```typescript
-import { script } from '@onflow/sdk';
+import { script } from "@onflow/sdk"
 
-script(args);
+script(args)
 ```
 
 ## Usage
 
 ```typescript
-import * as fcl from '@onflow/fcl';
+import * as fcl from "@onflow/fcl";
 
 const result = await fcl.query({
   cadence: `
@@ -50,7 +50,7 @@ const result = await fcl.query({
   args: (arg, t) => [
     arg(7, t.Int), // a: Int
     arg(6, t.Int), // b: Int
-    arg('0xba1132bc08f82fe2', t.Address), // addr: Address
+    arg("0xba1132bc08f82fe2", t.Address), // addr: Address
   ],
 });
 
@@ -61,21 +61,22 @@ console.log(result); // 13
 
 ### `args` (optional)
 
-- Type:
 
+- Type: 
 ```typescript
 [string | TemplateStringsArray | ((x?: unknown) => string), ...unknown[]]
 ```
-
 - Description: The arguments to pass to the template
+
 
 ## Returns
 
 ```typescript
 export type InteractionBuilderFn = (
-  ix: Interaction,
-) => Interaction | Promise<Interaction>;
+  ix: Interaction
+) => Interaction | Promise<Interaction>
 ```
+
 
 A function that processes an interaction object
 

@@ -46,7 +46,10 @@ pluginRegistry.add({
 ## Returns
 
 ```typescript
-Readonly<{ add: (plugins: any) => void; getPlugins: () => Map<any, any>; }>
+Readonly<{
+  add: (plugins: any) => void;
+  getPlugins: () => Map<any, any>;
+}>
 ```
 
 

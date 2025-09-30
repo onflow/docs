@@ -1,9 +1,9 @@
 ---
-title: 'getTransactionStatus'
-description: 'getTransactionStatus function documentation.'
+title: "getTransactionStatus"
+description: "getTransactionStatus function documentation."
 ---
 
-<!-- THIS DOCUMENT IS AUTO-GENERATED FROM [onflow/fcl/../sdk/src/build/cadence/build-get-transaction-status.ts](https://github.com/onflow/fcl-js/tree/master/packages/fcl/../sdk/src/build/cadence/build-get-transaction-status.ts). DO NOT EDIT MANUALLY -->
+<!-- THIS DOCUMENT IS AUTO-GENERATED FROM [onflow/fcl/../sdk/src/build/build-get-transaction-status.ts](https://github.com/onflow/fcl-js/tree/master/packages/fcl/../sdk/src/build/build-get-transaction-status.ts). DO NOT EDIT MANUALLY -->
 
 # getTransactionStatus
 
@@ -18,47 +18,46 @@ Consider using 'fcl.tx(id)' instead of calling this method directly for real-tim
 You can import the entire package and access the function:
 
 ```typescript
-import * as fcl from '@onflow/fcl';
+import * as fcl from "@onflow/fcl"
 
-fcl.getTransactionStatus(transactionId);
+fcl.getTransactionStatus(transactionId)
 ```
 
 Or import directly the specific function:
 
 ```typescript
-import { getTransactionStatus } from '@onflow/fcl';
+import { getTransactionStatus } from "@onflow/fcl"
 
-getTransactionStatus(transactionId);
+getTransactionStatus(transactionId)
 ```
 
 ## Usage
 
 ```typescript
-import * as fcl from '@onflow/fcl';
+import * as fcl from "@onflow/fcl";
 
-const status = await fcl
-  .send([
-    fcl.getTransactionStatus(
-      '9dda5f281897389b99f103a1c6b180eec9dac870de846449a302103ce38453f3',
-    ),
-  ])
-  .then(fcl.decode);
+const status = await fcl.send([
+  fcl.getTransactionStatus("9dda5f281897389b99f103a1c6b180eec9dac870de846449a302103ce38453f3")
+]).then(fcl.decode);
 ```
 
 ## Parameters
 
-### `transactionId`
+### `transactionId` 
+
 
 - Type: `string`
 - Description: The id of the transaction to get the status of
+
 
 ## Returns
 
 ```typescript
 export type InteractionBuilderFn = (
-  ix: Interaction,
-) => Interaction | Promise<Interaction>;
+  ix: Interaction
+) => Interaction | Promise<Interaction>
 ```
+
 
 A function that processes an interaction object
 

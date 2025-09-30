@@ -1,9 +1,9 @@
 ---
-title: 'transaction'
-description: 'transaction function documentation.'
+title: "transaction"
+description: "transaction function documentation."
 ---
 
-<!-- THIS DOCUMENT IS AUTO-GENERATED FROM [onflow/sdk/src/build/cadence/build-transaction.ts](https://github.com/onflow/fcl-js/tree/master/packages/sdk/src/build/cadence/build-transaction.ts). DO NOT EDIT MANUALLY -->
+<!-- THIS DOCUMENT IS AUTO-GENERATED FROM [onflow/sdk/src/build/build-transaction.ts](https://github.com/onflow/fcl-js/tree/master/packages/sdk/src/build/build-transaction.ts). DO NOT EDIT MANUALLY -->
 
 # transaction
 
@@ -16,23 +16,23 @@ Flow supports great flexibility when it comes to transaction signing, we can def
 You can import the entire package and access the function:
 
 ```typescript
-import * as sdk from '@onflow/sdk';
+import * as sdk from "@onflow/sdk"
 
-sdk.transaction(args);
+sdk.transaction(args)
 ```
 
 Or import directly the specific function:
 
 ```typescript
-import { transaction } from '@onflow/sdk';
+import { transaction } from "@onflow/sdk"
 
-transaction(args);
+transaction(args)
 ```
 
 ## Usage
 
 ```typescript
-import * as fcl from '@onflow/fcl';
+import * as fcl from "@onflow/fcl"
 
 // Basic transaction usage
 await fcl.mutate({
@@ -44,9 +44,11 @@ await fcl.mutate({
       }
     }
   `,
-  args: (arg, t) => [arg(6, t.Int)],
-  limit: 50,
-});
+  args: (arg, t) => [
+    arg(6, t.Int)
+  ],
+  limit: 50
+})
 
 // Single party, single signature
 // Proposer, payer and authorizer are the same account
@@ -58,7 +60,7 @@ await fcl.mutate({
   `,
   authz: currentUser, // Optional. Will default to currentUser if not provided.
   limit: 50,
-});
+})
 
 // Multiple parties
 // Proposer and authorizer are the same account, but different payer
@@ -72,28 +74,29 @@ await fcl.mutate({
   payer: authzTwoFn,
   authorizations: [authzFn],
   limit: 50,
-});
+})
 ```
 
 ## Parameters
 
 ### `args` (optional)
 
-- Type:
 
+- Type: 
 ```typescript
 [string | TemplateStringsArray, ...any[]]
 ```
-
 - Description: The arguments to pass to the template
+
 
 ## Returns
 
 ```typescript
 export type InteractionBuilderFn = (
-  ix: Interaction,
-) => Interaction | Promise<Interaction>;
+  ix: Interaction
+) => Interaction | Promise<Interaction>
 ```
+
 
 A function that processes an interaction object
 

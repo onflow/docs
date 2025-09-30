@@ -3,7 +3,7 @@ title: "events"
 description: "events function documentation."
 ---
 
-<!-- THIS DOCUMENT IS AUTO-GENERATED FROM [onflow/fcl/src/fcl.ts](https://github.com/onflow/fcl-js/tree/master/packages/fcl/src/fcl.ts). DO NOT EDIT MANUALLY -->
+<!-- THIS DOCUMENT IS AUTO-GENERATED FROM [onflow/fcl/../fcl-core/src/events/index.ts](https://github.com/onflow/fcl-js/tree/master/packages/fcl/../fcl-core/src/events/index.ts). DO NOT EDIT MANUALLY -->
 
 # events
 
@@ -90,7 +90,11 @@ If an EventFilter object is provided, it can contain multiple event types and ot
 
 ## Returns
 
-`void; }`
+```typescript
+{
+  subscribe: (onData: (event: Event) => void, onError?: (error: Error) => void) => () => void;
+}
+```
 
 
 An object containing a subscribe method
