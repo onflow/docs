@@ -1,7 +1,6 @@
 ---
 title: Scheduled Transactions
-description: Learn about Flow Scheduled Transactions, enabling smart contracts
-to autonomously execute predefined logic at specific future times without external triggers.
+description: Learn about Flow Scheduled Transactions, enabling smart contracts to autonomously execute predefined logic at specific future times without external triggers.
 keywords:
   - scheduled transactions
   - autonomous execution
