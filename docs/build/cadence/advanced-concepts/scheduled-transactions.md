@@ -20,7 +20,7 @@ sidebar_position: 8
 ## Introduction
 
 ::::warning
-Scheduled tranasctions are part of the Forte network upgrade and are currently available on Flow Emulator (CLI v2.7.0+) and [Flow Testnet]. See the announcement for context: [Forte: Introducing Actions & Agents].
+Scheduled transactions are part of the Forte network upgrade and are currently available on Flow Emulator (CLI v2.7.0+) and [Flow Testnet]. See the announcement for context: [Forte: Introducing Actions & Agents].
 ::::
 
 Scheduled transactions on the Flow blockchain enable users and smart contracts to autonomously execute predefined logic at specific future times without external triggers. This powerful feature allows developers to create "wake up" patterns where contracts can schedule themselves to run at predetermined block timestamps, enabling novel blockchain automation patterns.
@@ -66,7 +66,7 @@ To schedule a transaction, you or your users will typically store
 an instance of this resource in their account storage and pass a capability
 to the scheduler contract as part of their schedule request.
 
-Here is a simple example implementation for a Handler that transfers FLOW
+Here is a simple example implementation for a Handler's `executeTransaction()` function that transfers FLOW
 at the scheduled time:
 
 ```cadence
@@ -77,48 +77,11 @@ access(all) contract TransferFLOWHandler {
     
     access(all) resource Handler: FlowTransactionScheduler.TransactionHandler {
 
-        access(all) let name: String
-
         access(all) var from: Capability<auth(FungibleToken.Withdraw) &{FungibleToken.Provider}>
 
         access(all) var amount: UFix64
 
-        init(name: String
-             amount: UFix64,
-             from: Capability<auth(FungibleToken.Withdraw) &{FungibleToken.Provider}>
-             ) {
-            pre {
-                from.check(): "Capability to the provider is invalid!"
-            }
-            self.name = name
-            self.amount = amount
-            self.from = from
-        }
-
-        // public functions that anyone can call to get information about 
-        // this handler
-        access(all) view fun getViews(): [Type] {
-            return [Type<StoragePath>(), Type<PublicPath>(), Type<MetadataViews.Display>()]
-        }
-
-        access(all) fun resolveView(_ view: Type): AnyStruct? {
-            switch view {
-                case Type<StoragePath>():
-                    return TransferFLOWHandler.HandlerStoragePath
-                case Type<PublicPath>():
-                    return TransferFLOWHandler.HandlerPublicPath
-                case Type<MetadataViews.Display>():
-                    return MetadataViews.Display(
-                        name: self.name,
-                        description: "Transfers \(self.amount) FLOW from \(self.from.owner.address.toString()) to the address provided when scheduling",
-                        thumbnail: MetadataViews.HTTPFile(
-                            url: ""
-                        )
-                    )
-                default:
-                    return nil
-            }
-        }
+        // other functions left out for simplicity
 
         // The actual logic that is executed when the scheduled transaction
         // is executed
@@ -148,10 +111,7 @@ access(all) contract TransferFLOWHandler {
         return <- create Handler(name: "Transfer FLOW Handler Resource", amount: amount, from: from)
     }
 
-    access(all) init() {
-        self.HandlerStoragePath = /storage/scheduleFlowTransferHandler
-        self.HandlerPublicPath = /public/scheduleFlowTransferHandler
-    }
+    // other functions left out for simplicity
 } 
 ```
 
