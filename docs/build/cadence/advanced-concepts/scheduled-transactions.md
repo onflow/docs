@@ -18,9 +18,9 @@ sidebar_position: 8
 
 ## Introduction
 
-::::warning
+:::warning
 Scheduled transactions are part of the Forte network upgrade and are currently available on Flow Emulator (CLI v2.7.0+) and [Flow Testnet]. See the announcement for context: [Forte: Introducing Actions & Agents].
-::::
+:::
 
 Scheduled transactions on the Flow blockchain enable users and smart contracts to autonomously execute predefined logic at specific future times without external triggers. This powerful feature allows developers to create "wake up" patterns where contracts can schedule themselves to run at predetermined block timestamps, enabling novel blockchain automation patterns.
 
@@ -31,9 +31,9 @@ Key benefits include:
 
 Common use cases include recurring payments, automated arbitrage, time-based contract logic, delayed executions, and periodic maintenance tasks.
 
-::::info
+:::info
 Flow provides a scheduled transaction manager to make managing your scheduled transactions more streamlined. Check out the [scheduled transactions intro](../../../blockchain-development-tutorials/forte/scheduled-transactions/scheduled-transactions-introduction.md) for a tutorial on how to schedule some basic transactions with the manager.
-::::
+:::
 
 ## Concepts
 
@@ -61,9 +61,9 @@ access(all) resource interface TransactionHandler {
 }
 ```
 
-To schedule a transaction, you or your users will typically store
-an instance of this resource in their account storage and pass a capability
-to the scheduler contract as part of their schedule request.
+To schedule a transaction, you store
+an instance of this resource in your account storage and pass a capability
+to the scheduler contract as part of the schedule request.
 
 Here is a simple example implementation for a Handler's `executeTransaction()` function that transfers FLOW
 at the scheduled time:
@@ -191,6 +191,7 @@ Scheduled transactions follow a specific lifecycle with corresponding events:
    - Status: `Canceled`
 
 ### Contracts
+
 The `FlowTransactionScheduler` contract is deployed to the service account and manages all scheduled transactions across the network.
 
 The `FlowTransactionSchedulerUtils` contract provides utilities for scheduled transactions, such as the transaction `Manager` resource, common handlers, and metadata views related to scheduled transactions.
@@ -204,7 +205,7 @@ Below are listed the addresses of both transaction scheduler contracts on each n
 
 ### 1. Example Test Handler Contract
 
-This contract implements the TransactionHandler interface and will be used in the following examples. It emits events when scheduled transactions are executed.
+This contract implements the `TransactionHandler` interface and will be used in the following examples. It emits events when scheduled transactions are executed.
 
 ```cadence
 // TestFlowCallbackHandler.cdc - Simple test handler
@@ -266,7 +267,7 @@ access(all) contract TestFlowScheduledTransactionHandler {
 
 ### 2. Scheduling a Transaction with the Manager
 
-This example shows how to create and schedule a transaction that will execute at a future timestamp using the TestFlowCallbackHandler from Example 1.
+This example shows how to create and schedule a transaction that will execute at a future timestamp using the `TestFlowCallbackHandler` from Example 1.
 
 ```cadence
 // schedule.cdc

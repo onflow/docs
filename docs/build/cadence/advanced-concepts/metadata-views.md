@@ -17,7 +17,7 @@ keywords:
 sidebar_label: NFT Metadata Views
 ---
 
-# NFT Metadata Views on Flow
+# Metadata Views on Flow
 
 `MetadataViews` on Flow offer a standardized way to represent onchain metadata
 across different resources. This standard is primarily used for NFTs, but it can be used for any resource that wants a flexible standard for metadata, such as [scheduled transactions](./scheduled-transactions.md)
