@@ -138,24 +138,24 @@ const QuickStartShowcase: React.FC = () => {
                   </div>
                                       <div className="flex items-center space-x-2">
                       <OpenFileSvg className="w-4 h-4" style={{ color: 'rgb(58, 150, 221)' }} />
-                      <span className="text-sm text-black font-medium font-mono">Open</span>
+                      <span className="text-sm text-black dark:text-white font-medium font-mono">Open</span>
                       <ChevronDownSvg className="w-4 h-4" style={{ color: 'rgb(58, 150, 221)' }} />
                     </div>
                     <div className="flex items-center space-x-2">
                       <PlaySvg className="w-4 h-4" style={{ color: 'rgb(58, 150, 221)' }} />
-                      <span className="text-sm text-black font-medium font-mono">Run</span>
+                      <span className="text-sm text-black dark:text-white font-medium font-mono">Run</span>
                     </div>
                     <div className="flex items-center space-x-2">
                       <ShareSvg className="w-4 h-4" style={{ color: 'rgb(58, 150, 221)' }} />
-                      <span className="text-sm text-black font-medium font-mono">Share</span>
+                      <span className="text-sm text-black dark:text-white font-medium font-mono">Share</span>
                     </div>
                     <div className="flex items-center space-x-2">
                       <DownloadSvg className="w-4 h-4" style={{ color: 'rgb(58, 150, 221)' }} />
-                      <span className="text-sm text-black font-medium font-mono">Download</span>
+                      <span className="text-sm text-black dark:text-white font-medium font-mono">Download</span>
                     </div>
                     <div className="flex items-center space-x-2">
                       <SettingsSvg className="w-4 h-4" style={{ color: 'rgb(58, 150, 221)' }} />
-                      <span className="text-sm text-black font-medium font-mono">Settings</span>
+                      <span className="text-sm text-black dark:text-white font-medium font-mono">Settings</span>
                     </div>
                   </div>
                   <div className="flex items-center space-x-2">
