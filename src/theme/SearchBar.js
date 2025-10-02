@@ -24,7 +24,9 @@ export default function SearchBarWrapper(props) {
   return (
     <>
       <div onClick={handleSearchClick}>
-        <SearchBar {...props} />
+        <BrowserOnly>
+          {() => <SearchBar {...props} />}
+        </BrowserOnly>
       </div>
       <BrowserOnly>
         {() => <AskCookbook apiKey={COOKBOOK_PUBLIC_API_KEY} />}
