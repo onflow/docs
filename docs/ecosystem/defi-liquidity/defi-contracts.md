@@ -105,7 +105,7 @@ Below is a list of commonly used DeFi contracts on Flow:
 | Contract Name                             | Flow Cadence Testnet Address |
 |-------------------------------------------|------------------------------|
 | [PublicPriceOracle.cdc (IncrementFi)][31] | `0x8232ce4a3aff4e94`         |
-| [BandOracle.cdc (Band)][32]               | `0x2c71de7af78d1adf`         |
+| [BandOracle.cdc (Band)][32]               | `0x9fb6606c300b5051`         |
 
 #### Flow Cadence Mainnet
 
@@ -164,7 +164,7 @@ Mainnet EAS Explorer: [https://flow.easscan.credora.io] (https://flow.easscan.cr
 [29]: https://evm-testnet.flowscan.io/address/0x97900F59828Da4187607Cb8F84f49e3944199d18?tab=contract
 [30]: https://evm-testnet.flowscan.io/address/0xBCF2dA8f82fb032A2474c92Ec5b70C95A83fc0cc?tab=contract
 [31]: https://contractbrowser.com/A.8232ce4a3aff4e94.PublicPriceOracle
-[32]: https://contractbrowser.com/A.2c71de7af78d1adf.BandOracle
+[32]: https://contractbrowser.com/A.9fb6606c300b5051.BandOracle
 [33]: https://contractbrowser.com/A.6801a6222ebf784a.BandOracle
 [34]: https://app.debridge.finance/
 [35]: https://docs.debridge.finance/dln-the-debridge-liquidity-network-protocol/deployed-contracts
