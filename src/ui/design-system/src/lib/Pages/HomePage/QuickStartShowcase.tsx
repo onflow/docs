@@ -1,11 +1,20 @@
 import React, { useState } from 'react';
-import { Icon, initializeIcons } from '@fluentui/react';
 
-// Initialize Fluent UI icons
 // NOTE: We are ONLY using these icons to mock the Flow Runner interface.
 // Use the custom icons in the src/components/Icon.tsx file for all other icons.
 
-initializeIcons();
+// Use official UI icons provided as SVGs
+import OpenFileSvg from '@site/static/images/icons/ui/OpenFile.svg';
+import ChevronDownSvg from '@site/static/images/icons/ui/ChevronDown.svg';
+import PlaySvg from '@site/static/images/icons/ui/Play.svg';
+import ShareSvg from '@site/static/images/icons/ui/Share.svg';
+import DownloadSvg from '@site/static/images/icons/ui/Download.svg';
+import SettingsSvg from '@site/static/images/icons/ui/Settings.svg';
+import ClearNightSvg from '@site/static/images/icons/ui/ClearNight.svg';
+import ErrorSvg from '@site/static/images/icons/ui/Error.svg';
+import CodeSvg from '@site/static/images/icons/ui/Code.svg';
+import ContactSvg from '@site/static/images/icons/ui/Contact.svg';
+import GitGraphSvg from '@site/static/images/icons/ui/GitGraph.svg';
 import { event } from '@site/src/utils/gtags.client';
 import { useColorMode } from '@docusaurus/theme-common';
 import clsx from 'clsx';
@@ -128,29 +137,29 @@ const QuickStartShowcase: React.FC = () => {
                     <img src="/images/logos/flow-runner-flow-icon.svg" alt="Flow" className="w-full h-full" />
                   </div>
                                       <div className="flex items-center space-x-2">
-                      <Icon iconName="OpenFile" className="text-blue-600" />
-                      <span className="text-sm text-black font-medium font-mono">Open</span>
-                      <Icon iconName="ChevronDown" className="text-blue-600" />
+                      <OpenFileSvg className="w-4 h-4" style={{ color: 'rgb(58, 150, 221)' }} />
+                      <span className="text-sm text-black dark:text-white font-medium font-mono">Open</span>
+                      <ChevronDownSvg className="w-4 h-4" style={{ color: 'rgb(58, 150, 221)' }} />
                     </div>
                     <div className="flex items-center space-x-2">
-                      <Icon iconName="Play" className="text-blue-600" />
-                      <span className="text-sm text-black font-medium font-mono">Run</span>
+                      <PlaySvg className="w-4 h-4" style={{ color: 'rgb(58, 150, 221)' }} />
+                      <span className="text-sm text-black dark:text-white font-medium font-mono">Run</span>
                     </div>
                     <div className="flex items-center space-x-2">
-                      <Icon iconName="Share" className="text-blue-600" />
-                      <span className="text-sm text-black font-medium font-mono">Share</span>
+                      <ShareSvg className="w-4 h-4" style={{ color: 'rgb(58, 150, 221)' }} />
+                      <span className="text-sm text-black dark:text-white font-medium font-mono">Share</span>
                     </div>
                     <div className="flex items-center space-x-2">
-                      <Icon iconName="Download" className="text-blue-600" />
-                      <span className="text-sm text-black font-medium font-mono">Download</span>
+                      <DownloadSvg className="w-4 h-4" style={{ color: 'rgb(58, 150, 221)' }} />
+                      <span className="text-sm text-black dark:text-white font-medium font-mono">Download</span>
                     </div>
                     <div className="flex items-center space-x-2">
-                      <Icon iconName="Settings" className="text-blue-600" />
-                      <span className="text-sm text-black font-medium font-mono">Settings</span>
+                      <SettingsSvg className="w-4 h-4" style={{ color: 'rgb(58, 150, 221)' }} />
+                      <span className="text-sm text-black dark:text-white font-medium font-mono">Settings</span>
                     </div>
                   </div>
                   <div className="flex items-center space-x-2">
-                    <Icon iconName="ClearNight" className="text-blue-600" />
+                    <ClearNightSvg className="w-4 h-4" style={{ color: 'rgb(58, 150, 221)' }} />
                   </div>
               </div>
 
@@ -206,14 +215,14 @@ const QuickStartShowcase: React.FC = () => {
                   </div>
                 </div>
                 <div className="flex items-center space-x-2">
-                  <Icon iconName="Error" className="text-red-400" />
+                  <ErrorSvg className="w-4 h-4 text-red-400" />
                   <span>0 Errors</span>
                 </div>
                 <div className="flex items-center space-x-2">
-                  <Icon iconName="Code" className="text-white" />
+                  <CodeSvg className="w-4 h-4 text-white" />
                   <span>Environment: Flow Mainnet</span>
-                  <Icon iconName="Contact" className="text-white" />
-                  <Icon iconName="GitGraph" className="text-white" />
+                  <ContactSvg className="w-4 h-4 text-white" />
+                  <GitGraphSvg className="w-4 h-4 text-white" />
                 </div>
               </div>
             </div>
