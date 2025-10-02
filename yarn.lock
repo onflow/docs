@@ -1855,7 +1855,7 @@
     webpack-dev-server "^4.15.2"
     webpack-merge "^6.0.1"
 
-"@docusaurus/core@3.9.1", "@docusaurus/core@^3.6.0":
+"@docusaurus/core@3.9.1", "@docusaurus/core@^3.9.1":
   version "3.9.1"
   resolved "https://registry.yarnpkg.com/@docusaurus/core/-/core-3.9.1.tgz#be4d859464fee8889794d8527f884e931d591f2e"
   integrity sha512-FWDk1LIGD5UR5Zmm9rCrXRoxZUgbwuP6FBA7rc50DVfzqDOMkeMe3NyJhOsA2dF0zBE3VbHEIMmTjKwTZJwbaA==
@@ -2027,7 +2027,7 @@
     react-helmet-async "npm:@slorber/react-helmet-async@1.3.0"
     react-loadable "npm:@docusaurus/react-loadable@6.0.0"
 
-"@docusaurus/module-type-aliases@3.9.1":
+"@docusaurus/module-type-aliases@3.9.1", "@docusaurus/module-type-aliases@^3.9.1":
   version "3.9.1"
   resolved "https://registry.yarnpkg.com/@docusaurus/module-type-aliases/-/module-type-aliases-3.9.1.tgz#201959a22e7b30881cf879a21d2ae5b26415b705"
   integrity sha512-YBce3GbJGGcMbJTyHcnEOMvdXqg41pa5HsrMCGA5Rm4z0h0tHS6YtEldj0mlfQRhCG7Y0VD66t2tb87Aom+11g==
@@ -2040,20 +2040,7 @@
     react-helmet-async "npm:@slorber/react-helmet-async@1.3.0"
     react-loadable "npm:@docusaurus/react-loadable@6.0.0"
 
-"@docusaurus/module-type-aliases@^3.6.3":
-  version "3.6.3"
-  resolved "https://registry.npmjs.org/@docusaurus/module-type-aliases/-/module-type-aliases-3.6.3.tgz"
-  integrity sha512-MjaXX9PN/k5ugNvfRZdWyKWq4FsrhN4LEXaj0pEmMebJuBNlFeGyKQUa9DRhJHpadNaiMLrbo9m3U7Ig5YlsZg==
-  dependencies:
-    "@docusaurus/types" "3.6.3"
-    "@types/history" "^4.7.11"
-    "@types/react" "*"
-    "@types/react-router-config" "*"
-    "@types/react-router-dom" "*"
-    react-helmet-async "*"
-    react-loadable "npm:@docusaurus/react-loadable@6.0.0"
-
-"@docusaurus/plugin-client-redirects@^3.6.0":
+"@docusaurus/plugin-client-redirects@^3.9.1":
   version "3.9.1"
   resolved "https://registry.yarnpkg.com/@docusaurus/plugin-client-redirects/-/plugin-client-redirects-3.9.1.tgz#06e07487f1596c62536d50afac81535d5fe60a20"
   integrity sha512-+1InCGvAnw46H+TnVqxaYlJC0qy9AY5gTMgTx2ZFryjAsImJNs3i1pEYW/iUTVbOdtWRj3E/87E4ehbBIaA1TA==
@@ -2237,7 +2224,7 @@
     tslib "^2.6.0"
     webpack "^5.88.1"
 
-"@docusaurus/preset-classic@^3.6.0":
+"@docusaurus/preset-classic@^3.9.1":
   version "3.9.1"
   resolved "https://registry.yarnpkg.com/@docusaurus/preset-classic/-/preset-classic-3.9.1.tgz#58d86664b5c9779578092556a0e6ae5ccebbd6c0"
   integrity sha512-ZHga2xsxxsyd0dN1BpLj8S889Eu9eMBuj2suqxdw/vaaXu/FjJ8KEGbcaeo6nHPo8VQcBBnPEdkBtSDm2TfMNw==
@@ -2363,21 +2350,6 @@
     fs-extra "^11.1.1"
     tslib "^2.6.0"
 
-"@docusaurus/types@3.6.3":
-  version "3.6.3"
-  resolved "https://registry.npmjs.org/@docusaurus/types/-/types-3.6.3.tgz"
-  integrity sha512-xD9oTGDrouWzefkhe9ogB2fDV96/82cRpNGx2HIvI5L87JHNhQVIWimQ/3JIiiX/TEd5S9s+VO6FFguwKNRVow==
-  dependencies:
-    "@mdx-js/mdx" "^3.0.0"
-    "@types/history" "^4.7.11"
-    "@types/react" "*"
-    commander "^5.1.0"
-    joi "^17.9.2"
-    react-helmet-async "^1.3.0"
-    utility-types "^3.10.0"
-    webpack "^5.95.0"
-    webpack-merge "^5.9.0"
-
 "@docusaurus/types@3.8.1":
   version "3.8.1"
   resolved "https://registry.yarnpkg.com/@docusaurus/types/-/types-3.8.1.tgz#83ab66c345464e003b576a49f78897482061fc26"
@@ -2393,7 +2365,7 @@
     webpack "^5.95.0"
     webpack-merge "^5.9.0"
 
-"@docusaurus/types@3.9.1", "@docusaurus/types@^3.6.0":
+"@docusaurus/types@3.9.1", "@docusaurus/types@^3.9.1":
   version "3.9.1"
   resolved "https://registry.yarnpkg.com/@docusaurus/types/-/types-3.9.1.tgz#e4fdaf0b91ea014a6aae0d8b62d59f3f020117b6"
   integrity sha512-ElekJ29sk39s5LTEZMByY1c2oH9FMtw7KbWFU3BtuQ1TytfIK39HhUivDEJvm5KCLyEnnfUZlvSNDXeyk0vzAA==
@@ -14703,7 +14675,7 @@ react-fast-compare@^3.2.0:
   resolved "https://registry.npmjs.org/react-fast-compare/-/react-fast-compare-3.2.2.tgz"
   integrity sha512-nsO+KSNgo1SbJqJEYRE9ERzo7YtYbou/OqjSQKxV7jcKox7+usiUVZOAC+XnDOABXggQTno0Y1CpVnuWEc1boQ==
 
-react-helmet-async@*, react-helmet-async@^1.3.0, "react-helmet-async@npm:@slorber/react-helmet-async@1.3.0":
+"react-helmet-async@npm:@slorber/react-helmet-async@1.3.0":
   version "1.3.0"
   resolved "https://registry.yarnpkg.com/@slorber/react-helmet-async/-/react-helmet-async-1.3.0.tgz#11fbc6094605cf60aa04a28c17e0aab894b4ecff"
   integrity sha512-e9/OK8VhwUSc67diWI8Rb3I0YgI9/SBQtnhe9aEuK6MhZm7ntZZimXgwXnd8W96YTmSOb9M4d8LwhRZyhWr/1A==
