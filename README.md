@@ -46,4 +46,4 @@ If you are using GitHub pages for hosting, this command is a convenient way to b
 
 ### Search Indexing
 
-- copy `.env Flow Docusaurus Prod`/`.env Flow Docusaurus Prod` to your local `.env` file from 1Password->`Flow Team` vault
+- See `typesense cluster api keys` from 1Password->`Flow Team` vault
