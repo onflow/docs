@@ -164,7 +164,6 @@ const config = {
   trailingSlash: false,
 
   onBrokenLinks: 'throw',
-  onBrokenMarkdownLinks: 'throw',
   onDuplicateRoutes: 'warn',
 
   // Even if you don't use internalization, you can use this field to set useful
@@ -609,6 +608,13 @@ const config = {
   customFields: {
     flowNetwork,
     walletConnectProjectId,
+  },
+
+  // Move deprecated markdown config to new location
+  markdown: {
+    hooks: {
+      onBrokenMarkdownLinks: 'throw',
+    },
   },
 };
 
