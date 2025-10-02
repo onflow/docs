@@ -164,7 +164,6 @@ const config = {
   trailingSlash: false,
 
   onBrokenLinks: 'throw',
-  onBrokenMarkdownLinks: 'throw',
   onDuplicateRoutes: 'warn',
 
   // Even if you don't use internalization, you can use this field to set useful
@@ -609,6 +608,26 @@ const config = {
   customFields: {
     flowNetwork,
     walletConnectProjectId,
+  },
+
+  // Move deprecated markdown config to new location
+  markdown: {
+    hooks: {
+      onBrokenMarkdownLinks: 'throw',
+    },
+  },
+  
+  // Enable partial Docusaurus Faster (keep webpack bundler for redocusaurus)
+  future: {
+    v4: true,
+    experimental_faster: {
+      swcJsLoader: true,
+      swcJsMinimizer: true,
+      swcHtmlMinimizer: true,
+      lightningCssMinimizer: true,
+      mdxCrossCompilerCache: true,
+      rspackBundler: false,
+    },
   },
 };
 
