@@ -616,6 +616,19 @@ const config = {
       onBrokenMarkdownLinks: 'throw',
     },
   },
+  
+  // Enable partial Docusaurus Faster (keep webpack bundler for redocusaurus)
+  future: {
+    v4: true,
+    experimental_faster: {
+      swcJsLoader: true,
+      swcJsMinimizer: true,
+      swcHtmlMinimizer: true,
+      lightningCssMinimizer: true,
+      mdxCrossCompilerCache: true,
+      rspackBundler: false,
+    },
+  },
 };
 
 module.exports = config;
