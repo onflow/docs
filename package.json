@@ -46,7 +46,7 @@
     "change-case": "^5.4.4",
     "clsx": "^1.2.1",
     "date-fns": "2.29.3",
-    "docusaurus-theme-search-typesense": "^0.22.0",
+    "docusaurus-theme-search-typesense": "^0.25.0",
     "dotenv": "16.0.3",
     "eslint-config-prettier": "^8.8.0",
     "eslint-plugin-prettier": "^4.2.1",
