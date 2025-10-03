@@ -210,7 +210,9 @@ const { authenticatorData, clientDataJSON, signature } =
   assertion.response as AuthenticatorAssertionResponse
 ```
 
-### Format properly and submit to network
+### Format the signature for Flow
+
+WebAuthn assertion signatures are ECDSA P‑256 over SHA‑256 and are typically returned in ASN.1/DER form. Flow expects raw 64‑byte signatures: `r` and `s` each 32 bytes, concatenated (`r || s`).
 
 - Convert the DER `signature` to Flow raw `r||s` (64 bytes) and attach with `addr` and `keyId`.
 - Build the signature extension as specified: `extension_data = 0x01 || RLP([authenticatorData, clientDataJSON])`.
@@ -247,16 +249,11 @@ const flowSignature = {
   signature: '0x' + bytesToHex(rawSig),
   signatureExtension: extension_data,
 }
-
-// 4) Submit transaction (placeholder — depends on wallet implementation)
-// await fcl.send([... build tx ... with flowSignature and extension_data ...])
 ```
 
-Replay protection: Flow uses on‑chain proposal‑key sequence numbers (increment per signed tx) rather than server counters or random challenges. Details and caveats: [Replay attacks](https://github.com/onflow/flips/blob/cfaaf5f6b7c752e8db770e61ec9c180dc0eb6543/protocol/20250203-webauthn-credential-support.md#replay-attacks).
+Replay protection: Flow uses on‑chain proposal‑key sequence numbers (increment per signed tx) rather than traditional WebAuthn server counters or random challenges. Details and caveats: [Replay attacks](https://github.com/onflow/flips/blob/cfaaf5f6b7c752e8db770e61ec9c180dc0eb6543/protocol/20250203-webauthn-credential-support.md#replay-attacks).
 
-Optional wallet backend: You may store short‑lived correlation data (e.g., request IDs) for telemetry/rate‑limits; a backend is not required by the FLIP.
-
-On the backend, persist the nonce briefly for verification and expiry. See `../../build/tools/clients/fcl-js/proving-authentication.mdx` for the end‑to‑end flow and server verification using `AppUtils.verifyAccountProof`.
+Optional wallet backend: You may store short‑lived correlation data (e.g., request IDs) for telemetry/rate‑limits, however a backend is not explicitly required.
 
 ### Allowed algorithms for WebAuthn credentials
 
@@ -273,16 +270,11 @@ pubKeyCredParams: [
 
 Avoid including `RS256` (`alg: -257`) as it does not map to Flow account keys.
 
-## 3) Format the passkey signature for Flow and attach it to the transaction
+## 3) 
 
 WebAuthn assertion signatures are ECDSA P‑256 over SHA‑256 and are typically returned in ASN.1/DER form. Flow expects raw 64‑byte signatures: `r` and `s` each 32 bytes, concatenated (`r || s`).
 
-High‑level steps when using a passkey to sign a Flow transaction:
-
-1. Build the Flow transaction payload that needs signing (RLP‑encoded payload per Flow signing rules).
-2. Produce a WebAuthn `navigator.credentials.get({ publicKey })` assertion whose effective challenge maps to the Flow payload per the signature extension specification.
-3. Convert the DER signature from the authenticator into raw `r||s` (pad to 32 bytes per component).
-4. Attach the signature to the appropriate signature set (payload or envelope) with `addr`, `keyId`, and the raw signature bytes.
+This section focuses on converting the WebAuthn signature to Flow raw `r||s` and how/where to attach it; the end‑to‑end flow (building the signable message, generating the challenge, and calling `navigator.credentials.get`) is shown in section 2.
 
 > The mapping from Flow’s payload to the authenticator’s signed bytes is defined by the signature extension. Follow the FLIP for exactly how the challenge and additional fields (e.g., `clientDataJSON`, `authenticatorData`) must be constructed and later verified by Flow.
 
