@@ -35,10 +35,10 @@ if ('${process.env.MIXPANEL_PROJECT_TOKEN}' && '${process.env.MIXPANEL_PROJECT_T
   if (isPlayPage) {
     window.mixpanel.track('Play Page Viewed', viwedPayload);
   }
-  
+
   window.document.addEventListener('click', function (event) {
     var target = event.target;
-  
+
     // Check if the clicked element is a link with an href attribute
     if (target.tagName === 'A' && target.hasAttribute('href')) {
       if (window.mixpanel) {
@@ -50,7 +50,7 @@ if ('${process.env.MIXPANEL_PROJECT_TOKEN}' && '${process.env.MIXPANEL_PROJECT_T
         window.mixpanel.track('Link clicked', payload);
         const isPlay = payload.href.includes('play.flow.com');
         if (isPlay) {
-          window.mixpanel.track('Play Link clicked', payload);        
+          window.mixpanel.track('Play Link clicked', payload);
         }
       }
     }
@@ -246,14 +246,27 @@ const config = {
       image: 'img/og-image-flow-docs-2025-dark.png',
       metadata: [
         { name: 'twitter:card', content: 'summary_large_image' },
-        { name: 'twitter:image', content: getUrl() + '/img/og-image-flow-docs-2025-dark.png' },
-        { property: 'og:image', content: getUrl() + '/img/og-image-flow-docs-2025-dark.png' },
+        {
+          name: 'twitter:image',
+          content: getUrl() + '/img/og-image-flow-docs-2025-dark.png',
+        },
+        {
+          property: 'og:image',
+          content: getUrl() + '/img/og-image-flow-docs-2025-dark.png',
+        },
         { property: 'og:image:type', content: 'image/png' },
         { property: 'og:image:width', content: '1200' },
         { property: 'og:image:height', content: '630' },
         { property: 'og:type', content: 'website' },
-        { property: 'og:description', content: 'Flow Developer Documentation - The future of culture and digital assets is built on Flow' },
-        { property: 'og:logo', content: getUrl() + '/img/flow-docs-logo-light.png' },
+        {
+          property: 'og:description',
+          content:
+            'Flow Developer Documentation - The future of culture and digital assets is built on Flow',
+        },
+        {
+          property: 'og:logo',
+          content: getUrl() + '/img/flow-docs-logo-light.png',
+        },
       ],
       docs: {
         sidebar: {
@@ -322,7 +335,7 @@ const config = {
                 to: '/blockchain-development-tutorials/cadence/getting-started/smart-contract-interaction',
               },
               {
-                label: "Tools & SDKs",
+                label: 'Tools & SDKs',
                 to: '/build/tools',
               },
               {
@@ -514,7 +527,11 @@ const config = {
               rule.test?.toString() === '/\\.svg$/i'
             ) {
               for (const nestedRule of rule.oneOf || []) {
-                if (nestedRule && typeof nestedRule === 'object' && nestedRule.use instanceof Array) {
+                if (
+                  nestedRule &&
+                  typeof nestedRule === 'object' &&
+                  nestedRule.use instanceof Array
+                ) {
                   for (const loader of nestedRule.use) {
                     if (
                       typeof loader === 'object' &&
@@ -608,6 +625,7 @@ const config = {
   customFields: {
     flowNetwork,
     walletConnectProjectId,
+    cookbookApiKey: process.env.COOKBOOK_API_KEY,
   },
 
   // Move deprecated markdown config to new location
@@ -616,7 +634,7 @@ const config = {
       onBrokenMarkdownLinks: 'throw',
     },
   },
-  
+
   // Enable partial Docusaurus Faster (keep webpack bundler for redocusaurus)
   future: {
     v4: true,
