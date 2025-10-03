@@ -6,26 +6,25 @@ keywords:
   - passkeys
   - WebAuthn
   - FCL
-  - account proof
   - signature extension
   - ECDSA_P256
   - SHA2_256
 ---
 
-# Passkeys (WebAuthn) on Flow — Registration and Signing
+# Passkeys (WebAuthn) on Flow — Wallet Implementation Guide
 
-This guide shows how to implement passkeys with WebAuthn for Flow accounts, focusing on four practical areas that often trip teams up:
+This is a wallet‑centric guide (per the FLIP) that covers end‑to‑end WebAuthn integration for Flow:
 
-1. Extracting the public key and attaching it to a new Flow account
-2. Generating the challenge to be signed
-3. Formatting a passkey signature for Flow and attaching it to a transaction
-4. Generating and attaching the signature extension data
+1. Create a user passkey wallet
+2. Sign a transaction with the user’s passkey
+3. Convert and attach the signature
+4. Build the signature extension payload
 
-This tutorial is implementation‑focused and describes a wallet‑centric integration per the FLIP (wallet is the WebAuthn Relying Party). It accompanies an internal Proof of Concept (PoC) built in `fcl-js` under `packages/passkey-wallet` for reference.
+It accompanies the PoC in `fcl-js/packages/passkey-wallet` for reference and cites the FLIP where behavior is normative.
 
 > PoC source: `/Users/jribbink/repos/fcl-js/packages/passkey-wallet`
 
-## Objectives
+## What you’ll learn
 
 After completing this guide, you'll be able to:
 
@@ -41,12 +40,12 @@ After completing this guide, you'll be able to:
 - FCL installed and configured for your app
 - A plan for secure backend entropy (32‑byte minimum) and nonce persistence
 
-See also:
+See also
 
 - Transactions and signatures on Flow: `../../build/cadence/basics/transactions.md`
 - Account keys, signature and hash algorithms: `../../build/cadence/basics/accounts.md`
 
-External references:
+External references
 
 - WebAuthn credential support FLIP: [WebAuthn Credential Support (FLIP)](https://github.com/onflow/flips/blob/cfaaf5f6b7c752e8db770e61ec9c180dc0eb6543/protocol/20250203-webauthn-credential-support.md)
 - Web Authentication API (MDN): [Web Authentication API](https://developer.mozilla.org/en-US/docs/Web/API/Web_Authentication_API)
@@ -69,6 +68,8 @@ Key algorithm references: `../../build/cadence/basics/accounts.md` (Signature an
 > Tip: Libraries like SimpleWebAuthn can parse the COSE key and produce the raw public key bytes required for onchain registration. Ensure you normalize into the exact raw byte format Flow expects before writing to the account key.
 
 Minimum example — wallet‑mode registration (challenge can be constant per FLIP):
+
+This builds `PublicKeyCredentialCreationOptions` for a wallet RP with a constant registration challenge and ES256 (P‑256) so the resulting public key can be registered on a Flow account.
 
 ```tsx
 // In a wallet (RP = wallet origin). The challenge satisfies API & correlates request/response.
@@ -102,6 +103,8 @@ const credential = await navigator.credentials.create({ publicKey: creationOptio
 ```
 
 Client-side example — extract COSE public key (no verification) and derive SEC1 uncompressed hex:
+
+This parses the `attestationObject` to locate the COSE EC2 `credentialPublicKey`, reads the x/y coordinates, and returns SEC1 uncompressed bytes (0x04 || X || Y) suitable for Flow key registration. Attestation verification is intentionally omitted here.
 
 ```tsx
 // Uses a small CBOR decoder (e.g., 'cbor' or 'cbor-x') to parse attestationObject
@@ -159,6 +162,8 @@ const publicKeySec1Hex = coseEcP256ToSec1UncompressedHex(cosePubKey)
 
 Minimal example — derive signable message and hash (per FLIP):
 
+Compute the signer‑specific signable message and hash it with SHA2‑256 to produce the WebAuthn `challenge` (no server‑generated nonce is used in wallet mode).
+
 ```tsx
 // Imports for helpers used to build the signable message
 import { encodeMessageFromSignable, encodeTransactionPayload } from '@onflow/fcl'
@@ -191,6 +196,8 @@ Note: `encodeMessageFromSignable` and `encodeTransactionPayload` are FCL‑speci
 
 Minimal example — wallet assertion:
 
+Request an assertion using the transaction hash as `challenge`. `rpId` must match the wallet domain; `allowCredentials` may be omitted for discoverable credentials.
+
 ```tsx
 // signableHash is SHA2-256(signable message: payload or envelope)
 declare const signableHash: Uint8Array
@@ -210,7 +217,7 @@ const { authenticatorData, clientDataJSON, signature } =
   assertion.response as AuthenticatorAssertionResponse
 ```
 
-### Format the signature for Flow
+### 3) Convert and attach the signature
 
 WebAuthn assertion signatures are ECDSA P‑256 over SHA‑256 and are typically returned in ASN.1/DER form. Flow expects raw 64‑byte signatures: `r` and `s` each 32 bytes, concatenated (`r || s`).
 
@@ -218,7 +225,9 @@ WebAuthn assertion signatures are ECDSA P‑256 over SHA‑256 and are typically
 - Build the signature extension as specified: `extension_data = 0x01 || RLP([authenticatorData, clientDataJSON])`.
 - See details below in sections 3 and 4.
 
-Minimal example — convert and submit:
+Minimal example — convert and attach for submission:
+
+Convert the DER signature to Flow raw r||s and build `signatureExtension = 0x01 || RLP([authenticatorData, clientDataJSON])` per the FLIP, then compose the Flow signature object for inclusion in your transaction.
 
 ```tsx
 import { encode as rlpEncode } from 'rlp'
@@ -270,11 +279,7 @@ pubKeyCredParams: [
 
 Avoid including `RS256` (`alg: -257`) as it does not map to Flow account keys.
 
-## 3) 
-
-WebAuthn assertion signatures are ECDSA P‑256 over SHA‑256 and are typically returned in ASN.1/DER form. Flow expects raw 64‑byte signatures: `r` and `s` each 32 bytes, concatenated (`r || s`).
-
-This section focuses on converting the WebAuthn signature to Flow raw `r||s` and how/where to attach it; the end‑to‑end flow (building the signable message, generating the challenge, and calling `navigator.credentials.get`) is shown in section 2.
+## Appendix: Helpers
 
 > The mapping from Flow’s payload to the authenticator’s signed bytes is defined by the signature extension. Follow the FLIP for exactly how the challenge and additional fields (e.g., `clientDataJSON`, `authenticatorData`) must be constructed and later verified by Flow.
 
@@ -284,46 +289,9 @@ Useful references:
 - User signatures via FCL: `../../build/tools/clients/fcl-js/user-signatures.md`
 - FLIP spec: [WebAuthn Credential Support (FLIP)](https://github.com/onflow/flips/blob/cfaaf5f6b7c752e8db770e61ec9c180dc0eb6543/protocol/20250203-webauthn-credential-support.md)
 
-Minimum example — wallet‑mode assertion using Flow payload hash as challenge:
+Helpers used above:
 
 ```tsx
-// payloadHash should be the 32-byte hash of the Flow RLP-encoded payload
-// (computed by your signing logic). It must be the challenge in wallet-mode.
-declare const payloadHash: Uint8Array
-
-const requestOptions: PublicKeyCredentialRequestOptions = {
-  challenge: payloadHash,
-  rpId: window.location.hostname,
-  userVerification: "preferred",
-  timeout: 60_000,
-}
-
-const assertion = (await navigator.credentials.get({
-  publicKey: requestOptions,
-})) as PublicKeyCredential
-
-const { authenticatorData, clientDataJSON, signature } = (assertion.response as AuthenticatorAssertionResponse)
-
-const extensionData = {
-  clientDataJSON: toBase64Url(new Uint8Array(clientDataJSON)),
-  authenticatorData: toBase64Url(new Uint8Array(authenticatorData)),
-}
-
-// Convert DER signature to Flow raw r||s
-const rawSig = derToRawRS(new Uint8Array(signature)) // Uint8Array(64)
-
-// Attach to Flow transaction (addr, keyId, signature = rawSig)
-// and include extensionData as specified by the FLIP’s signature extension
-```
-
-Helpers:
-
-```tsx
-function toBase64Url(bytes: Uint8Array): string {
-  const base64 = btoa(String.fromCharCode(...bytes))
-  return base64.replace(/=/g, "").replace(/\+/g, "-").replace(/\//g, "_")
-}
-
 // Minimal DER ECDSA (r,s) -> raw 64-byte r||s
 function derToRawRS(der: Uint8Array): Uint8Array {
   let offset = 0
@@ -364,7 +332,7 @@ function leftPad32(bytes: Uint8Array): Uint8Array {
 }
 ```
 
-## 4) Generate and attach the signature extension data
+## 4) Build the signature extension payload
 
 Flow’s transaction signature extensions allow additional data to be provided alongside a signature so verifiers can reconstruct and validate the authenticator’s signed message. For WebAuthn, this typically includes:
 
@@ -406,7 +374,6 @@ Reference: [WebAuthn Credential Support (FLIP)](https://github.com/onflow/flips/
 
 ## Where to go next
 
-- Implement account‑proof using `AppUtils.verifyAccountProof`: `../../build/tools/clients/fcl-js/proving-authentication.mdx`
 - Review signing flows and signature roles: `../../build/cadence/basics/transactions.md`
 - Review account key registration details: `../../build/cadence/basics/accounts.md`
 - Track the FLIP for any updates: [WebAuthn Credential Support (FLIP)](https://github.com/onflow/flips/blob/cfaaf5f6b7c752e8db770e61ec9c180dc0eb6543/protocol/20250203-webauthn-credential-support.md)
