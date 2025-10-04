@@ -4,11 +4,6 @@ description: Implement passkeys on Flow using WebAuthn, covering key extraction,
 sidebar_position: 3
 keywords:
   - passkeys
-  - WebAuthn
-  - FCL
-  - signature extension
-  - ECDSA_P256
-  - SHA2_256
 ---
 
 # Passkeys (WebAuthn) on Flow — Wallet Implementation Guide
@@ -18,7 +13,7 @@ This is a wallet‑centric guide (per the FLIP) that covers end‑to‑end WebAu
 1. Create a user passkey wallet
 2. Sign a transaction with the user’s passkey
 3. Convert and attach the signature
-4. Build the signature extension payload
+3. Convert and attach the signature (incl. signature extension)
 
 It accompanies the PoC in `fcl-js/packages/passkey-wallet` for reference and cites the FLIP where behavior is normative.
 
@@ -29,9 +24,8 @@ It accompanies the PoC in `fcl-js/packages/passkey-wallet` for reference and cit
 After completing this guide, you'll be able to:
 
 - Register a WebAuthn credential and derive a Flow‑compatible public key
-- Set wallet‑mode challenges per FLIP (constant for registration, payload hash for signing)
-- Convert a WebAuthn ECDSA DER signature into Flow’s raw r||s format
-- Attach WebAuthn signature extension data per the FLIP and submit a Flow transaction
+- Generate the correct challenge for signing transactions (wallet sets SHA2‑256(signable))
+- Convert a WebAuthn ECDSA DER signature into Flow’s raw r||s format and attach the FLIP signature extension
 
 ## Prerequisites
 
@@ -217,7 +211,7 @@ const { authenticatorData, clientDataJSON, signature } =
   assertion.response as AuthenticatorAssertionResponse
 ```
 
-### 3) Convert and attach the signature
+### 3) Convert and attach the signature (incl. signature extension)
 
 WebAuthn assertion signatures are ECDSA P‑256 over SHA‑256 and are typically returned in ASN.1/DER form. Flow expects raw 64‑byte signatures: `r` and `s` each 32 bytes, concatenated (`r || s`).
 
@@ -231,7 +225,6 @@ Convert the DER signature to Flow raw r||s and build `signatureExtension = 0x01 
 
 ```tsx
 import { encode as rlpEncode } from 'rlp'
-import { AppUtils } from '@onflow/fcl'
 import { bytesToHex } from '@noble/hashes/utils'
 
 // Inputs from previous steps
@@ -260,34 +253,7 @@ const flowSignature = {
 }
 ```
 
-Replay protection: Flow uses on‑chain proposal‑key sequence numbers (increment per signed tx) rather than traditional WebAuthn server counters or random challenges. Details and caveats: [Replay attacks](https://github.com/onflow/flips/blob/cfaaf5f6b7c752e8db770e61ec9c180dc0eb6543/protocol/20250203-webauthn-credential-support.md#replay-attacks).
-
-Optional wallet backend: You may store short‑lived correlation data (e.g., request IDs) for telemetry/rate‑limits, however a backend is not explicitly required.
-
-### Allowed algorithms for WebAuthn credentials
-
-Restrict `pubKeyCredParams` to algorithms supported by Flow accounts:
-
-```tsx
-// ES256 (P-256 + SHA-256) is recommended and maps to ECDSA_P256/SHA2_256 on Flow
-pubKeyCredParams: [
-  { type: "public-key", alg: -7 },   // ES256
-  // Optionally, if you support secp256k1 keys as Flow account keys:
-  // { type: "public-key", alg: -47 }, // ES256K (secp256k1)
-]
-```
-
-Avoid including `RS256` (`alg: -257`) as it does not map to Flow account keys.
-
-## Appendix: Helpers
-
-> The mapping from Flow’s payload to the authenticator’s signed bytes is defined by the signature extension. Follow the FLIP for exactly how the challenge and additional fields (e.g., `clientDataJSON`, `authenticatorData`) must be constructed and later verified by Flow.
-
-Useful references:
-
-- Transactions/signatures: `../../build/cadence/basics/transactions.md`
-- User signatures via FCL: `../../build/tools/clients/fcl-js/user-signatures.md`
-- FLIP spec: [WebAuthn Credential Support (FLIP)](https://github.com/onflow/flips/blob/cfaaf5f6b7c752e8db770e61ec9c180dc0eb6543/protocol/20250203-webauthn-credential-support.md)
+TODO INCLUDE FCL INFO
 
 Helpers used above:
 
@@ -332,28 +298,36 @@ function leftPad32(bytes: Uint8Array): Uint8Array {
 }
 ```
 
-## 4) Build the signature extension payload
+Replay protection: Flow uses on‑chain proposal‑key sequence numbers (increment per signed tx) rather than traditional WebAuthn server counters or random challenges. Details and caveats: [Replay attacks](https://github.com/onflow/flips/blob/cfaaf5f6b7c752e8db770e61ec9c180dc0eb6543/protocol/20250203-webauthn-credential-support.md#replay-attacks).
 
-Flow’s transaction signature extensions allow additional data to be provided alongside a signature so verifiers can reconstruct and validate the authenticator’s signed message. For WebAuthn, this typically includes:
+Optional wallet backend: You may store short‑lived correlation data (e.g., request IDs) for telemetry/rate‑limits, however a backend is not explicitly required.
 
-- `clientDataJSON` (base64url)
-- `authenticatorData` (base64url)
-- The authenticator’s signature (converted to raw `r||s` for Flow)
-- Any FLIP‑required metadata (e.g., `type`, `rpIdHash`, `origin` semantics)
+### Allowed algorithms for WebAuthn credentials
 
-High‑level steps:
+Restrict `pubKeyCredParams` to algorithms supported by Flow accounts:
 
-1. After `navigator.credentials.get`, collect:
-   - `assertion.response.clientDataJSON`
-   - `assertion.response.authenticatorData`
-   - `assertion.response.signature`
-2. Encode `clientDataJSON` and `authenticatorData` as base64url.
-3. Convert the DER signature to Flow raw `r||s`.
-4. Attach the extension structure specified in the FLIP to the transaction signature so nodes/verifiers can validate according to WebAuthn rules.
+```tsx
+// ES256 (P-256 + SHA-256) is recommended and maps to ECDSA_P256/SHA2_256 on Flow
+pubKeyCredParams: [
+  { type: "public-key", alg: -7 },   // ES256
+  // Optionally, if you support secp256k1 keys as Flow account keys:
+  // { type: "public-key", alg: -47 }, // ES256K (secp256k1)
+]
+```
 
-> The exact extension schema and how it is serialized into the transaction is defined in the FLIP. Implementations should follow the FLIP verbatim to remain compatible with network verification.
+Avoid including `RS256` (`alg: -257`) as it does not map to Flow account keys.
 
-Reference: [WebAuthn Credential Support (FLIP)](https://github.com/onflow/flips/blob/cfaaf5f6b7c752e8db770e61ec9c180dc0eb6543/protocol/20250203-webauthn-credential-support.md)
+## Appendix: Helpers
+
+> The mapping from Flow’s payload to the authenticator’s signed bytes is defined by the signature extension. Follow the FLIP for exactly how the challenge and additional fields (e.g., `clientDataJSON`, `authenticatorData`) must be constructed and later verified by Flow.
+
+Useful references:
+
+- Transactions/signatures: `../../build/cadence/basics/transactions.md`
+- User signatures via FCL: `../../build/tools/clients/fcl-js/user-signatures.md`
+- FLIP spec: [WebAuthn Credential Support (FLIP)](https://github.com/onflow/flips/blob/cfaaf5f6b7c752e8db770e61ec9c180dc0eb6543/protocol/20250203-webauthn-credential-support.md)
+
+<!-- Extension payload details are covered inline in step 2 (format/attach). For schema specifics, see the FLIP. -->
 
 ## Notes from the PoC
 
