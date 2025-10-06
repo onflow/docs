@@ -12,7 +12,6 @@ This is a wallet‑centric guide (per the FLIP) that covers end‑to‑end WebAu
 
 1. Create a user passkey wallet
 2. Sign a transaction with the user’s passkey
-3. Convert and attach the signature
 3. Convert and attach the signature (incl. signature extension)
 
 It accompanies the PoC in `fcl-js/packages/passkey-wallet` for reference and cites the FLIP where behavior is normative.
@@ -148,7 +147,7 @@ const cosePubKey = extractCosePublicKeyFromAttestation(attObj)
 const publicKeySec1Hex = coseEcP256ToSec1UncompressedHex(cosePubKey)
 ```
 
-## 2) Sign a transaction with passkey wallet (WebAuthn)
+## 2) Sign a transaction with the user’s passkey
 
 ### Generate the challenge
 
@@ -211,7 +210,7 @@ const { authenticatorData, clientDataJSON, signature } =
   assertion.response as AuthenticatorAssertionResponse
 ```
 
-### 3) Convert and attach the signature (incl. signature extension)
+## 3) Convert and attach the signature (incl. signature extension)
 
 WebAuthn assertion signatures are ECDSA P‑256 over SHA‑256 and are typically returned in ASN.1/DER form. Flow expects raw 64‑byte signatures: `r` and `s` each 32 bytes, concatenated (`r || s`).
 
@@ -252,8 +251,6 @@ const flowSignature = {
   signatureExtension: extension_data,
 }
 ```
-
-TODO INCLUDE FCL INFO
 
 Helpers used above:
 
