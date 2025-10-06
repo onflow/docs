@@ -15,7 +15,6 @@ import {
 } from '@onflow/react-sdk';
 import { flowClient } from '@site/src/config/fcl';
 
-// Masonry Grid Component
 function MasonryGrid({ children }: { children: React.ReactNode }) {
   return (
     <div
@@ -167,7 +166,7 @@ function TransactionLinkCardMini({ darkMode }: { darkMode: boolean }) {
       >
         <div>
           <TransactionButton
-            label="Create Transaction"
+            label="Sign Transaction"
             transaction={{
               cadence: GREETING_TRANSACTION,
               args: (arg, t) => [arg('Hello!', t.String)],
