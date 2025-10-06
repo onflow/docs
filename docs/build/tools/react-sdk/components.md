@@ -8,6 +8,7 @@ import { Connect, TransactionDialog, TransactionLink, TransactionButton } from "
 import { FlowProvider } from "@onflow/react-sdk"
 import FlowProviderDemo from '@site/src/components/FlowProviderDemo';
 import TransactionDialogDemo from '@site/src/components/TransactionDialogDemo';
+import PlaygroundButton from '@site/src/components/PlaygroundButton';
 
 # React SDK Components
 
@@ -94,6 +95,8 @@ function MyComponent() {
 
 A drop-in wallet connection component with UI for copy address, logout, and balance display.
 
+<div style={{marginBottom: "1.5rem"}}><PlaygroundButton href="https://react.flow.com/#connect" /></div>
+
 **Props:**
 
 - `variant?: ButtonProps["variant"]` – Optional button style variant (default: `"primary"`)
@@ -127,6 +130,8 @@ import { Connect } from "@onflow/react-sdk"
 ### `TransactionButton`
 
 Button component for executing Flow transactions with built-in loading states and global transaction management.
+
+<div style={{marginBottom: "1.5rem"}}><PlaygroundButton href="https://react.flow.com/#transactionbutton" /></div>
 
 **Props:**
 
@@ -180,6 +185,8 @@ const myTransaction = {
 
 Dialog component for real-time transaction status updates.
 
+<div style={{marginBottom: "1.5rem"}}><PlaygroundButton href="https://react.flow.com/#transactiondialog" /></div>
+
 **Props:**
 
 - `open: boolean` – Whether the dialog is open
@@ -215,6 +222,8 @@ import { TransactionDialog } from "@onflow/react-sdk"
 ### `TransactionLink`
 
 Link to the block explorer with the appropriate network scoped to transaction ID.
+
+<div style={{marginBottom: "1.5rem"}}><PlaygroundButton href="https://react.flow.com/#transactionlink" /></div>
 
 **Props:**
 
