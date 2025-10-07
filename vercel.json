@@ -2037,6 +2037,11 @@
       "source": "/blockchain-development-tutorials/flow-actions/:path*",
       "destination": "/blockchain-development-tutorials/forte/flow-actions/:path*",
       "permanent": true
+    },
+    {
+      "source": "/build/cadence/language/access-control",
+      "destination": "https://cadence-lang.org/docs/language/access-control",
+      "permanent": true
     }
   ]
 }
