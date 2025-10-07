@@ -50,7 +50,7 @@ Below is a list of commonly used DeFi contracts on Flow:
 
 #### Flow Cadence Mainnet
 
-| Contract Name                       | Flow Cadence Mainnet Address | CLI                                                                                                                                |
+| Contract Name                       | Flow Cadence Mainnet Address | [CLI](https://developers.flow.com/build/tools/flow-cli/dependency-manager)                                                         |
 | ----------------------------------- | ---------------------------- | ---------------------------------------------------------------------------------------------------------------------------------- |
 | [SwapFactory.cdc (IncrementFi)][22] | `0xb063c16cac85dbd1`         | <CopyButton text="flow dependencies install mainnet://0xb063c16cac85dbd1.SwapFactory" title="Copy install command (mainnet)" />    |
 | [SwapPair (IncrementFi)][23]        | `0xecbda466e7f191c7`         | <CopyButton text="flow dependencies install mainnet://0xecbda466e7f191c7.SwapPair" title="Copy install command (mainnet)" />       |
@@ -102,14 +102,14 @@ Below is a list of commonly used DeFi contracts on Flow:
 
 #### Flow Cadence Testnet
 
-| Contract Name                             | Flow Cadence Testnet Address | CLI                                                                                                                                   |
+| Contract Name                             | Flow Cadence Testnet Address | [CLI](https://developers.flow.com/build/tools/flow-cli/dependency-manager)                                                            |
 | ----------------------------------------- | ---------------------------- | ------------------------------------------------------------------------------------------------------------------------------------- |
 | [PublicPriceOracle.cdc (IncrementFi)][31] | `0x8232ce4a3aff4e94`         | <CopyButton text="flow dependencies install testnet://0x8232ce4a3aff4e94.PublicPriceOracle" title="Copy install command (testnet)" /> |
 | [BandOracle.cdc (Band)][32]               | `0x9fb6606c300b5051`         | <CopyButton text="flow dependencies install testnet://0x9fb6606c300b5051.BandOracle" title="Copy install command (testnet)" />        |
 
 #### Flow Cadence Mainnet
 
-| Contract Name                             | Flow Cadence Mainnet Address | CLI                                                                                                                                   |
+| Contract Name                             | Flow Cadence Mainnet Address | [CLI](https://developers.flow.com/build/tools/flow-cli/dependency-manager)                                                            |
 | ----------------------------------------- | ---------------------------- | ------------------------------------------------------------------------------------------------------------------------------------- |
 | [PublicPriceOracle.cdc (IncrementFi)][19] | `0xec67451f8a58216a`         | <CopyButton text="flow dependencies install mainnet://0xec67451f8a58216a.PublicPriceOracle" title="Copy install command (mainnet)" /> |
 | [BandOracle.cdc (Band) Protocol][33]      | `0x6801a6222ebf784a`         | <CopyButton text="flow dependencies install mainnet://0x6801a6222ebf784a.BandOracle" title="Copy install command (mainnet)" />        |
