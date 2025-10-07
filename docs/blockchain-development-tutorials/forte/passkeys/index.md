@@ -363,8 +363,8 @@ function leftPad32(bytes: Uint8Array): Uint8Array {
 - Use `ECDSA_P256` with `SHA2_256` for Flow account keys derived from WebAuthn P‑256.
 - Enforce nonce expiry, single‑use semantics, and strong server‑side randomness.
 - Clearly communicate platform prompts and recovery paths; passkeys UX can differ across OS/browsers.
- - Replay protection: Flow uses on‑chain proposal‑key sequence numbers; see [Replay attacks].
- - Optional wallet backend: store short‑lived correlation data or rate‑limits as needed (not required).
+- Replay protection: Flow uses on‑chain proposal‑key sequence numbers; see [Replay attacks].
+- Optional wallet backend: store short‑lived correlation data or rate‑limits as needed (not required).
 
  
 ## Credential management (wallet responsibilities)
