@@ -1,5 +1,5 @@
 ---
-title: 'Flow React SDK Hooks'
+title: 'Hooks'
 description: React hooks for interacting with the Flow blockchain.
 sidebar_position: 2
 ---

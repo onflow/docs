@@ -1,5 +1,5 @@
 ---
-title: 'Flow React SDK Components'
+title: 'Components'
 description: Reusable UI components for Flow interactions.
 sidebar_position: 3
 ---
