@@ -33,11 +33,12 @@ The Forte network upgrade introduces several groundbreaking features that expand
 Learn how to build decentralized finance applications using the Flow Actions framework, enabling developers to create composable DeFi workflows. Flow Actions provide standardized interfaces that make it easy to combine different DeFi protocols and create sophisticated financial applications.
 
 ### [Scheduled Transactions]
+
+Discover how to implement scheduled transactions for time-based smart contract execution on Flow. These tutorials cover creating automated workflows, cron-like functionality, and time-sensitive blockchain applications that can execute without manual intervention.
+
 ### [Passkeys (WebAuthn)]
 
 Implement device-backed passkeys using the Web Authentication API to register Flow account keys and sign transactions with secure, user-friendly authentication.
-
-Discover how to implement scheduled transactions for time-based smart contract execution on Flow. These tutorials cover creating automated workflows, cron-like functionality, and time-sensitive blockchain applications that can execute without manual intervention.
 
 ## Getting Started
 
