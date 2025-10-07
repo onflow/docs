@@ -53,7 +53,49 @@ export default Root;
 ```
 
 :::tip Next.js Users
-Place the `FlowProvider` inside your `layout.tsx`. Since React hooks must run on the client, you may need to wrap the provider in a separate file that begins with `'use client'` to avoid issues with server-side rendering.
+Create a client component wrapper for the `FlowProvider`:
+
+```tsx title="components/FlowProviderWrapper.tsx"
+'use client';
+
+import { FlowProvider } from '@onflow/react-sdk';
+import flowJSON from '../flow.json';
+
+export default function FlowProviderWrapper({ children }) {
+  return (
+    <FlowProvider
+      config={{
+        accessNodeUrl: 'https://access-mainnet.onflow.org',
+        flowNetwork: 'mainnet',
+        appDetailTitle: 'My On Chain App',
+        appDetailIcon: 'https://example.com/icon.png',
+        appDetailDescription: 'A decentralized app on Flow',
+        appDetailUrl: 'https://myonchainapp.com',
+      }}
+      flowJson={flowJSON}
+    >
+      {children}
+    </FlowProvider>
+  );
+}
+```
+
+Then use it in your `layout.tsx`:
+
+```tsx title="app/layout.tsx"
+import FlowProviderWrapper from '@/components/FlowProviderWrapper';
+
+export default function RootLayout({ children }) {
+  return (
+    <html>
+      <body>
+        <FlowProviderWrapper>{children}</FlowProviderWrapper>
+      </body>
+    </html>
+  );
+}
+```
+
 :::
 
 ### 3. Start Building
