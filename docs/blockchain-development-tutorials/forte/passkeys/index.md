@@ -32,7 +32,7 @@ After completing this guide, you'll be able to:
 
 ## Registration
 
-When a user generates a passkey via [navigator.credentials.create()] with `{ publicKey }`, the authenticator returns an attestation containing the new credential’s public key. On Flow, you can register that public key on an account if the requested passkey is of the `ES256` or `ES256k` algorithms. This guide demonstrates an `ES256` passkey which translates to an `ECDSA_P256` Flow key paired with `SHA2_256` hashing. Althernatively, an `ES256k` passkey translates to an `ECDSA_secp256k1` Flow key paired with `SHA2_256` hashing.
+When a user generates a passkey via [navigator.credentials.create()] with `{ publicKey }`, the authenticator returns an attestation containing the new credential’s public key. On Flow, you can register that public key on an account if the algorithm of the requested passkey is either `ES256` or `ES256k`. This guide demonstrates an `ES256` passkey which translates to an `ECDSA_P256` Flow key paired with `SHA2_256` hashing. Althernatively, an `ES256k` passkey translates to an `ECDSA_secp256k1` Flow key paired with `SHA2_256` hashing.
 
 High‑level steps:
 
