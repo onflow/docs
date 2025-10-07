@@ -26,6 +26,20 @@ The Forte network upgrade introduces several groundbreaking features that expand
 - **Scheduled Transactions**: Time-based smart contract execution and blockchain automation
 - **Enhanced Composability**: New patterns for building complex, interconnected applications
 
+## Deployed Contract Addresses
+
+### Testnet
+
+| Contract                           | Address            | Flowscan                                                                                                                       |
+| ---------------------------------- | ------------------ | ------------------------------------------------------------------------------------------------------------------------------ |
+| IncrementFiPoolLiquidityConnectors | 0x49bae091e5ea16b5 | [View deployments](https://testnet.flowscan.io/contract/A.49bae091e5ea16b5.IncrementFiPoolLiquidityConnectors?tab=deployments) |
+| SwapConnectors                     | 0xaddd594cf410166a | [View deployments](https://testnet.flowscan.io/contract/A.addd594cf410166a.SwapConnectors?tab=deployments)                     |
+| DeFiActions                        | 0x4c2ff9dd03ab442f | [View deployments](https://testnet.flowscan.io/contract/A.4c2ff9dd03ab442f.DeFiActions?tab=deployments)                        |
+
+### Mainnet
+
+Forte is scheduled to be deployed on mainnet on October 22, 2025.
+
 ## Tutorial Series
 
 ### [Flow Actions]
