@@ -28,6 +28,12 @@ The Forte network upgrade introduces several groundbreaking features that expand
 
 ## Deployed Contract Addresses
 
+:::warning
+
+Forte is scheduled to go live on Mainnet on October 22, 2025.
+
+:::
+
 import CopyButton from '@site/src/components/CopyButton';
 
 | Contract                           | Testnet                                                                                                                          | Install                                                                                                                                                | Mainnet                                                                                                                  | Install                                                                                                                                                |
