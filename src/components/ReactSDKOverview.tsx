@@ -638,9 +638,9 @@ function ReactSDKOverviewContent({ darkMode }: { darkMode: boolean }) {
           position: 'relative',
           marginBottom: '1.5rem',
           padding: '2.5rem 2rem',
-          background: darkMode ? '#ffffff' : '#ffffff',
+          background: darkMode ? '#1a1a1a' : '#ffffff',
           border: darkMode
-            ? '1px solid rgba(0, 0, 0, 0.1)'
+            ? '1px solid rgba(255, 255, 255, 0.1)'
             : '1px solid rgba(0, 0, 0, 0.08)',
           borderRadius: '12px',
           textAlign: 'center',
@@ -655,7 +655,7 @@ function ReactSDKOverviewContent({ darkMode }: { darkMode: boolean }) {
             width: '16px',
             height: '16px',
             opacity: 0.15,
-            color: '#000',
+            color: darkMode ? '#fff' : '#000',
           }}
           viewBox="0 0 24 24"
           fill="none"
@@ -675,7 +675,7 @@ function ReactSDKOverviewContent({ darkMode }: { darkMode: boolean }) {
             width: '16px',
             height: '16px',
             opacity: 0.15,
-            color: '#000',
+            color: darkMode ? '#fff' : '#000',
           }}
           viewBox="0 0 24 24"
           fill="none"
@@ -695,7 +695,7 @@ function ReactSDKOverviewContent({ darkMode }: { darkMode: boolean }) {
             width: '16px',
             height: '16px',
             opacity: 0.15,
-            color: '#000',
+            color: darkMode ? '#fff' : '#000',
           }}
           viewBox="0 0 24 24"
           fill="none"
@@ -715,7 +715,7 @@ function ReactSDKOverviewContent({ darkMode }: { darkMode: boolean }) {
             width: '16px',
             height: '16px',
             opacity: 0.15,
-            color: '#000',
+            color: darkMode ? '#fff' : '#000',
           }}
           viewBox="0 0 24 24"
           fill="none"
@@ -732,7 +732,7 @@ function ReactSDKOverviewContent({ darkMode }: { darkMode: boolean }) {
           style={{
             fontSize: '1.25rem',
             fontWeight: '700',
-            color: '#111827',
+            color: darkMode ? '#f9fafb' : '#111827',
             marginBottom: '0.75rem',
             letterSpacing: '-0.025em',
           }}
@@ -742,7 +742,9 @@ function ReactSDKOverviewContent({ darkMode }: { darkMode: boolean }) {
         <p
           style={{
             fontSize: '0.875rem',
-            color: 'rgba(107, 114, 128, 1)',
+            color: darkMode
+              ? 'rgba(156, 163, 175, 1)'
+              : 'rgba(107, 114, 128, 1)',
             marginBottom: '1.5rem',
             maxWidth: '500px',
             margin: '0 auto 1.5rem auto',
