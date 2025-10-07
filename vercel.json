@@ -2042,6 +2042,11 @@
       "source": "/build/cadence/language/access-control",
       "destination": "https://cadence-lang.org/docs/language/access-control",
       "permanent": true
+    },
+    {
+      "source": "/protocol/staking/staking-guide",
+      "destination": "/protocol/staking",
+      "permanent": true
     }
   ]
 }

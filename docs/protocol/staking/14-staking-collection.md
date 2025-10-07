@@ -16,15 +16,6 @@ A Staking Collection is a resource that allows its owner to manage multiple stak
 objects in a single account via a single storage path, and perform staking actions
 using both locked and unlocked Flow.
 
-Before the staking collection, accounts could use the instructions in
-[the unlocked staking guide](./15-staking-guide.md)
-to stake with tokens. This was a bit restrictive, because that guide (and the corresponding transactions)
-only supports one node and one delegator object
-per account. If a user wanted to have more than one per account,
-they would either have to use custom transactions with custom storage paths for each object,
-or they would have had to use multiple accounts, which comes with many hassles of its own.
-
-The staking collection is a solution to both of these deficiencies.
 When an account is set up to use a staking collection, the staking collection recognizes
 the existing locked account capabilities (if they exist) and unlocked account staking objects,
 and incorporates their functionality so any user can stake for a node or stake as a delegator
