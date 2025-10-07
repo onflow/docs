@@ -28,6 +28,12 @@ The Forte network upgrade introduces several groundbreaking features that expand
 
 ## Deployed Contract Addresses
 
+:::info
+
+Forte is **live** on testnet.
+
+:::
+
 :::warning
 
 Forte is scheduled to go live on Mainnet on October 22, 2025.
@@ -36,7 +42,7 @@ Forte is scheduled to go live on Mainnet on October 22, 2025.
 
 import CopyButton from '@site/src/components/CopyButton';
 
-| Contract                           | Testnet                                                                                                                          | Install                                                                                                                                                | Mainnet                                                                                                                  | Install                                                                                                                                                |
+| Contract                           | Testnet                                                                                                                          | CLI                                                                                                                                                    | Mainnet                                                                                                                  | CLI                                                                                                                                                    |
 | ---------------------------------- | -------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------ |
 | DeFiActions                        | [0x4c2ff9dd03ab442f](https://testnet.flowscan.io/contract/A.4c2ff9dd03ab442f.DeFiActions?tab=deployments)                        | <CopyButton text="flow dependencies install testnet://0x4c2ff9dd03ab442f.DeFiActions" title="Copy install command (testnet)" />                        | [0x92195d814edf9cb0](https://flowscan.io/contract/A.92195d814edf9cb0.DeFiActions?tab=deployments)                        | <CopyButton text="flow dependencies install mainnet://0x92195d814edf9cb0.DeFiActions" title="Copy install command (mainnet)" />                        |
 | DeFiActionsMathUtils               | [0x4c2ff9dd03ab442f](https://testnet.flowscan.io/contract/A.4c2ff9dd03ab442f.DeFiActionsMathUtils?tab=deployments)               | <CopyButton text="flow dependencies install testnet://0x4c2ff9dd03ab442f.DeFiActionsMathUtils" title="Copy install command (testnet)" />               | [0x92195d814edf9cb0](https://flowscan.io/contract/A.92195d814edf9cb0.DeFiActionsMathUtils?tab=deployments)               | <CopyButton text="flow dependencies install mainnet://0x92195d814edf9cb0.DeFiActionsMathUtils" title="Copy install command (mainnet)" />               |

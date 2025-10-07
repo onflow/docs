@@ -29,6 +29,8 @@ export default function CopyButton({ text, title }: CopyButtonProps) {
         cursor: 'pointer',
         padding: 0,
         lineHeight: 1,
+        display: 'block',
+        margin: '0 auto',
       }}
     >
       {/* Simple clipboard icon */}
