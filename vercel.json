@@ -2051,6 +2051,8 @@
     {
       "source": "/ecosystem/Hackathons and Events",
       "destination": "/ecosystem/hackathons-and-events",
+      "source": "/protocol/staking/staking-guide",
+      "destination": "/protocol/staking",
       "permanent": true
     }
   ]

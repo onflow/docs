@@ -16,6 +16,17 @@ keywords:
 
 # Register Your ERC20 Token on Flow EVM
 
+<div style={{ position: 'relative', paddingBottom: '56.25%', height: 0, overflow: 'hidden', maxWidth: '100%' }}>
+  <iframe 
+    style={{ position: 'absolute', top: 0, left: 0, width: '100%', height: '100%' }}
+    src="https://www.youtube.com/embed/zU8xspQMGbU" 
+    title="YouTube video player" 
+    frameborder="0" 
+    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+    allowfullscreen
+  ></iframe>
+</div>
+
 ## Overview
 
 This section covers the process of registering your ERC20 token on Flow EVM via a Github Pull Request process so it appears in Flow standard Token List which is used by Flow Wallet, MetaMask, and other ecosystem apps.
