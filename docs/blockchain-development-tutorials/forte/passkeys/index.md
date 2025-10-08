@@ -1,14 +1,14 @@
 ---
-title: Passkeys (WebAuthn)
+title: Passkeys 
 description: Implement passkeys on Flow using WebAuthn, covering key extraction, challenges, signature formatting for Flow, and signature extensions.
 sidebar_position: 5
 keywords:
   - passkeys
 ---
 
-# Passkeys (WebAuthn)
+# Passkeys
 
-This is a wallet‑centric guide (per [FLIP 264: WebAuthn Credential Support]) that covers end‑to‑end WebAuthn integration for Flow:
+This is a wallet‑centric guide (per [FLIP 264: WebAuthn Credential Support]) that covers end‑to‑end passkeys integration for Flow:
 
 1. Create a passkey and add a Flow account key
 2. Sign a transaction with the user’s passkey (includes conversion, extension, and submission)
@@ -19,7 +19,7 @@ It accompanies the PoC in `fcl-js/packages/passkey-wallet` for reference and cit
 
 After completing this guide, you'll be able to:
 
-- Create a WebAuthn credential and derive a Flow‑compatible public key
+- Create a passkey and derive a Flow‑compatible public key
 - Generate the correct challenge for signing transactions (wallet sets SHA2‑256(signable))
 - Convert a WebAuthn ECDSA DER signature into Flow’s raw `r||s` format and attach the transaction signature extension
 
@@ -257,7 +257,7 @@ Wallets typically know which credential corresponds to the user’s active accou
 
 ### Convert and attach signature
 
-WebAuthn assertion signatures are ECDSA P‑256 over SHA‑256 and are typically returned in ASN.1/DER form. Flow expects raw 64‑byte signatures: `r` and `s` each 32 bytes, concatenated (`r || s`).
+WebAuthn assertion signatures in this guide are ECDSA P‑256 over SHA‑256 and are typically returned in ASN.1/DER form. Flow expects raw 64‑byte signatures: `r` and `s` each 32 bytes, concatenated (`r || s`).
 
 - Convert the DER `signature` to Flow raw `r||s` (64 bytes) and attach with `addr` and `keyId`.
 - Build the transaction signature extension as specified: `extension_data = 0x01 || RLP([authenticatorData, clientDataJSON])`.
