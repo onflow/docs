@@ -9,4 +9,4 @@ Go to [Forte](../../blockchain-development-tutorials/forte)
 
 import {Redirect} from '@docusaurus/router';
 
-<Redirect to="/../../blockchain-development-tutorials/forte" />;
+<Redirect to="../../blockchain-development-tutorials/forte" />;
