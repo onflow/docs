@@ -125,7 +125,7 @@ You cannot deploy the same contract to multiple accounts on the same network wit
 
 ❌ Command Error: the same contract cannot be deployed to multiple accounts on the same network
 
-Either edit `flow.json` to remove the duplicate, or use a more specific deployment command.
+Edit `flow.json` to remove the duplicate.
 
 :::
 
