@@ -11,7 +11,7 @@ keywords:
   - FCL
   - interaction templates
   - template service
-sidebar_position: 3
+sidebar_position: 10
 ---
 
 # FLIX (Flow Interaction Templates)
