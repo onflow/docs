@@ -50,11 +50,112 @@ Before deploying contracts, make sure you have:
 
 The recommended deployment workflow follows this progression:
 
-1. **Testnet Deployment** - Deploy and test your contracts on Flow Testnet (free)
-2. **Mainnet Deployment** - Deploy to Flow Mainnet once testing is complete (costs FLOW tokens)
-3. **Contract Updates** - Update contracts as needed using the update command
+1. **Emulator Deployment** - Deploy and test your contracts locally (free, instant)
+2. **Testnet Deployment** - Deploy and test your contracts on Flow Testnet (free)
+3. **Mainnet Deployment** - Deploy to Flow Mainnet once testing is complete (costs FLOW tokens)
+4. **Contract Updates** - Update contracts as needed using the update command
 
 This approach ensures your contracts work correctly before committing real resources to mainnet deployment.
+
+## Deploy to Emulator
+
+The Flow Emulator is your local development environment where you can deploy and test contracts instantly without any network costs or delays. This is the first step in your deployment journey.
+
+### Start the Emulator
+
+First, start the [Flow Emulator]. In a second terminal:
+
+```zsh
+flow emulator start
+```
+
+### Create an Emulator Account
+
+Create a local account for testing:
+
+```zsh
+flow accounts create --network emulator
+```
+
+When prompted:
+
+1. **Account name**: Enter `emulator-account`
+2. Select `emulator` as the network when prompted
+
+This creates a new account on the emulator and adds it to your `flow.json` configuration.
+
+### Configure Emulator Deployment
+
+Update your `flow.json` to include emulator deployment configuration:
+
+```zsh
+flow config add deployment
+```
+
+Follow the prompts:
+
+1. **Network**: `emulator`
+2. **Account**: `emulator-account`
+3. **Contract**: `YourContract`
+4. **Deploy more contracts**: `no` (or `yes` if you have multiple contracts)
+
+Your `flow.json` will now include an emulator deployment section:
+
+```json
+{
+  "deployments": {
+    "emulator": {
+      "emulator-account": ["YourContract"]
+    }
+  }
+}
+```
+
+### Deploy Contract to Emulator
+
+Deploy your contract to the local emulator:
+
+```zsh
+flow project deploy --network emulator
+```
+
+:::warning
+
+You cannot deploy the same contract to multiple accounts on the same network with one deployment command. If you attempt to do so, you will see:
+
+❌ Command Error: the same contract cannot be deployed to multiple accounts on the same network
+
+Either edit `flow.json` to remove the duplicate, or use a more specific deployment command.
+
+:::
+
+You will see output similar to:
+
+```zsh
+Deploying 1 contracts for accounts: emulator-account
+
+YourContract -> 0xf8d6e0586b0a20c7 (contract deployed successfully)
+
+🎉 All contracts deployed successfully
+```
+
+### Test Your Emulator Deployment
+
+Verify your contract works by running scripts and transactions:
+
+```zsh
+# Run a script to read contract state
+flow scripts execute cadence/scripts/YourScript.cdc --network emulator
+
+# Send a transaction to interact with your contract
+flow transactions send cadence/transactions/YourTransaction.cdc --network emulator --signer emulator-account
+```
+
+:::info
+
+The emulator provides instant feedback and is perfect for rapid development and testing. All transactions are free and execute immediately.
+
+:::
 
 ## Deploy to Testnet
 
@@ -249,10 +350,7 @@ flow accounts update-contract ./YourContract.cdc --signer mainnet-account --netw
 [Smart Contract Testing Guidelines]: ./testing.md
 [Create a Project]: ../../../build/tools/flow-cli/index.md
 [Flow CLI contract update command]: ../../../build/tools/flow-cli/accounts/account-update-contract.md
-[Flowdiver]: https://flowdiver.io/
-[flow-view-source]: https://flow-view-source.com/
 [Flow CLI get account command]: ../../../build/tools/flow-cli/accounts/get-accounts.md
-[See Previous Spork Access Node Info]: ../../../protocol/node-ops/node-operation/past-upgrades
 [Sporks]: ../../../protocol/node-ops/node-operation/network-upgrade
 [Flow Emulator]: ../../../build/tools/emulator
 [Testnet Faucet]: https://faucet.flow.com/
