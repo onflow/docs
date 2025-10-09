@@ -50,7 +50,7 @@ Create a [new project] with the [Flow CLI]:
 flow init
 ```
 
-Follow the prompts and create your project. You do **not** need to install any dependencies.
+Follow the prompts and create a `Basic Cadence project (no dependencies)`.
 
 ### Install dependencies
 
