@@ -2044,15 +2044,28 @@
       "permanent": true
     },
     {
-      "source": "/ecosystem/Hackathons and Events/may-the-flow-be-with-you",
+      "source": "/ecosystem/Hackathons%20and%20Events/may-the-flow-be-with-you",
       "destination": "/ecosystem/hackathons-and-events",
       "permanent": true
     },
     {
-      "source": "/ecosystem/Hackathons and Events",
+      "source": "/ecosystem/Hackathons%20and%20Events",
       "destination": "/ecosystem/hackathons-and-events",
+      "permanent": true
+    },
+    {
       "source": "/protocol/staking/staking-guide",
       "destination": "/protocol/staking",
+      "permanent": true
+    },
+    {
+      "source": "/build/tools/flow-cli/deployment/emulator-snapshot",
+      "destination": "/build/tools/emulator",
+      "permanent": true
+    },
+    {
+      "source": "/build/tools/flow-cli/deployment/start-emulator",
+      "destination": "/build/tools/emulator",
       "permanent": true
     }
   ]

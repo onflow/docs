@@ -434,6 +434,6 @@ This approach gives you the freedom to build complex application logic that comp
 [transaction]: https://cadence-lang.org/docs/language/transactions
 [account commands]: ../../../build/tools/flow-cli/commands#account-management
 [Send the transaction]: ../../../build/tools/flow-cli/commands#send-transaction
-[emulator]: ../../../build/tools/flow-cli/deployment/start-emulator
+[emulator]: ../../../build/tools/emulator/index.md
 [MintExampleNFT transaction]: https://github.com/mfbz/flow-nft-tester/blob/main/cadence/transactions/MintExampleNFT.cdc
 [testnet Flowscan]: https://testnet.flowscan.io/
