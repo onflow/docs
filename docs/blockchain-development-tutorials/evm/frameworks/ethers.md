@@ -43,7 +43,7 @@ const url = 'https://testnet.evm.nodes.onflow.org/';
 const provider = new ethers.providers.JsonRpcProvider(url);
 ```
 
-**Note:** If you want to connect to the Flow testnet, replace the above URL with `https://mainnet.evm.nodes.onflow.org`.
+**Note:** If you want to connect to the Flow mainnet, replace the above URL with `https://mainnet.evm.nodes.onflow.org`.
 
 ## Reading Data from the Blockchain
 
