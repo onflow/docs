@@ -246,7 +246,7 @@ access(all) event BandOracleSymbolsUpdated(
 )
 ```
 
-When you detect an update for symbols your dapp uses, trigger a transaction to refresh your stored prices.
+When you detect an update for symbols your app uses, trigger a transaction to refresh your stored prices.
 
 
 ## Advanced Features
@@ -276,7 +276,6 @@ let currentFee = BandOracle.getFee()
 
 - [Band Protocol FAQ](https://faq.bandprotocol.com/)
 - [Band Standard Dataset](https://data.bandprotocol.com/)
-- [Flow Documentation](https://docs.onflow.org/)
 - [Cadence Language Reference](https://cadence-lang.org/)
 
 ---
