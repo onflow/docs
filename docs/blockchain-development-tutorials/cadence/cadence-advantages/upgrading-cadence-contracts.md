@@ -46,21 +46,21 @@ Cadence provides a sophisticated contract upgrade system that allows you to modi
 
 ### What You CAN Upgrade
 
-**Add new functions** - Extend contract functionality with new methods  
-**Add new events** - Emit additional events for monitoring and indexing  
-**Modify function implementations** - Change how existing functions work  
-**Change function signatures** - Update parameters and return types  
-**Remove functions** - Delete functions that are no longer needed  
-**Change access modifiers** - Update visibility of functions and fields  
-**Reorder existing fields** - Field order doesn't affect storage
+- **Add new functions** - Extend contract functionality with new methods
+- **Add new events** - Emit additional events for monitoring and indexing
+- **Modify function implementations** - Change how existing functions work
+- **Change function signatures** - Update parameters and return types
+- **Remove functions** - Delete functions that are no longer needed
+- **Change access modifiers** - Update visibility of functions and fields
+- **Reorder existing fields** - Field order doesn't affect storage
 
 ### What You CANNOT Upgrade
 
-**Add new fields** - Would cause runtime crashes when loading existing data  
-**Change field types** - Would cause deserialization errors  
-**Remove existing fields** - Fields become inaccessible but data remains  
-**Change enum structures** - Raw values must remain consistent  
-**Change contract name** - Contract address must remain the same
+- **Add new fields** - Would cause runtime crashes when loading existing data
+- **Change field types** - Would cause deserialization errors
+- **Remove existing fields** - Fields become inaccessible but data remains
+- **Change enum structures** - Raw values must remain consistent
+- **Change contract name** - Contract address must remain the same
 
 ### Why These Restrictions Exist
 
