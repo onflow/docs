@@ -6,6 +6,7 @@ export const GA_EVENTS = {
   SEARCH_CLICK: 'search_click',
   FEEDBACK_CLICK: 'feedback_click',
   AUTH_LOGIN: 'login',
+  FOOTER_CLICK: 'footer_click',
 } as const;
 
 // Event categories for consistent tracking - Using existing categories
@@ -15,6 +16,7 @@ export const GA_CATEGORIES = {
   SEARCH: 'search',
   FEEDBACK: 'feedback',
   AUTH: 'auth',
+  FOOTER: 'footer',
 } as const;
 
 // Event actions for consistent tracking - Using existing actions
