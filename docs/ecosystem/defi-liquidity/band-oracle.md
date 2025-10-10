@@ -16,16 +16,18 @@ sidebar_position: 6
 sidebar_label: Band Oracle
 ---
 
+import CopyButton from '@site/src/components/CopyButton';
+
 # Band Oracle with Cadence
 
 The Band Protocol Oracle contract enables Flow blockchain applications to access real-time price data from the [Band Protocol Oracle network](https://faq.bandprotocol.com/). The oracle provides a comprehensive set of cryptocurrency and fiat currency price quotes from the Band Standard Dataset, making them available to any Cadence application, contract, or transaction.
 
 ## Contract Addresses
 
-| Network | Address | Explorer |
-|---------|---------|----------|
-| Testnet | `0x9fb6606c300b5051` | [View Contract](https://testnet.flowscan.io/contract/A.9fb6606c300b5051.BandOracle) |
-| Mainnet | `0x6801a6222ebf784a` | [View Contract](https://flowscan.io/contract/A.6801a6222ebf784a.BandOracle) |
+| Network | Address | [CLI](https://developers.flow.com/build/tools/flow-cli/dependency-manager) | Explorer |
+|---------|---------|----------|----------|
+| Testnet | `0x9fb6606c300b5051` | <CopyButton text="flow dependencies install testnet://0x9fb6606c300b5051.BandOracle" title="Copy install command (testnet)" /> | [View Contract](https://testnet.flowscan.io/contract/A.9fb6606c300b5051.BandOracle) |
+| Mainnet | `0x6801a6222ebf784a` | <CopyButton text="flow dependencies install mainnet://0x6801a6222ebf784a.BandOracle" title="Copy install command (mainnet)" /> | [View Contract](https://flowscan.io/contract/A.6801a6222ebf784a.BandOracle) |
 
 ## Supported Symbols
 
