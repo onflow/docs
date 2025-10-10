@@ -246,7 +246,7 @@ pub event BandOracleSymbolsUpdated(
 )
 ```
 
-When you detect an update for symbols your dapp uses, trigger a transaction to refresh your stored prices.
+When you detect an update for symbols your app uses, trigger a transaction to refresh your stored prices.
 
 
 ## Advanced Features
