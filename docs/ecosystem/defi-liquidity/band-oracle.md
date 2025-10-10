@@ -60,28 +60,28 @@ The Band Oracle contract maintains a decentralized price feed system with three 
 Price data is stored using the `RefData` struct:
 
 ```cadence
-pub struct RefData {
+access(all) struct RefData {
     // USD-rate, multiplied by 1e9
-    pub var rate: UInt64
+    access(all) var rate: UInt64
     // UNIX epoch when data was last resolved
-    pub var timestamp: UInt64
+    access(all) var timestamp: UInt64
     // BandChain request identifier for this data
-    pub var requestID: UInt64
+    access(all) var requestID: UInt64
 }
 ```
 
 When querying prices, you receive a `ReferenceData` struct:
 
 ```cadence
-pub struct ReferenceData {
+access(all) struct ReferenceData {
     // Rate as integer multiplied by 1e18
-    pub var integerE18Rate: UInt256
+    access(all) var integerE18Rate: UInt256
     // Rate as a fixed-point decimal
-    pub var fixedPointRate: UFix64
+    access(all) var fixedPointRate: UFix64
     // Timestamp of base symbol data
-    pub var baseTimestamp: UInt64
+    access(all) var baseTimestamp: UInt64
     // Timestamp of quote symbol data
-    pub var quoteTimestamp: UInt64
+    access(all) var quoteTimestamp: UInt64
 }
 ```
 
@@ -107,14 +107,14 @@ The contract emits events to notify applications of updates:
 
 ```cadence
 // Emitted when symbol prices are updated
-pub event BandOracleSymbolsUpdated(
+access(all) event BandOracleSymbolsUpdated(
     symbols: [String],
     relayerID: UInt64,
     requestID: UInt64
 )
 
 // Emitted when a symbol is removed
-pub event BandOracleSymbolRemoved(symbol: String)
+access(all) event BandOracleSymbolRemoved(symbol: String)
 ```
 
 ## Usage Guide
@@ -189,12 +189,12 @@ import "BandOracle"
 import "FlowToken"
 import "FungibleToken"
 
-pub contract MyDeFiContract {
+access(all) contract MyDeFiContract {
 
     // Store a vault to pay for oracle fees
     access(self) let oracleFeeVault: @{FungibleToken.Vault}
 
-    pub fun getTokenPriceInUSD(tokenSymbol: String): UFix64 {
+    access(all) fun getTokenPriceInUSD(tokenSymbol: String): UFix64 {
         // Withdraw payment for oracle
         let payment <- self.oracleFeeVault.withdraw(
             amount: BandOracle.getFee()
@@ -210,7 +210,7 @@ pub contract MyDeFiContract {
         return priceData.fixedPointRate
     }
 
-    pub fun swapTokens(amount: UFix64, maxPrice: UFix64) {
+    access(all) fun swapTokens(amount: UFix64, maxPrice: UFix64) {
         // Get current price
         let currentPrice = self.getTokenPriceInUSD(tokenSymbol: "ETH")
 
@@ -239,7 +239,7 @@ Monitor the `BandOracleSymbolsUpdated` event to keep your contract's stored pric
 
 ```cadence
 // Listen for this event in your application
-pub event BandOracleSymbolsUpdated(
+access(all) event BandOracleSymbolsUpdated(
     symbols: [String],
     relayerID: UInt64,
     requestID: UInt64
