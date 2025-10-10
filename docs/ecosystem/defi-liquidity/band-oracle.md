@@ -276,7 +276,6 @@ let currentFee = BandOracle.getFee()
 
 - [Band Protocol FAQ](https://faq.bandprotocol.com/)
 - [Band Standard Dataset](https://data.bandprotocol.com/)
-- [Flow Documentation](https://docs.onflow.org/)
 - [Cadence Language Reference](https://cadence-lang.org/)
 
 ---
