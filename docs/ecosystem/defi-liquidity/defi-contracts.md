@@ -50,14 +50,14 @@ Below is a list of commonly used DeFi contracts on Flow:
 
 #### Flow Cadence Mainnet
 
-| Contract Name                       | Flow Cadence Mainnet Address | [CLI](https://developers.flow.com/build/tools/flow-cli/dependency-manager)                                                         |
-| ----------------------------------- | ---------------------------- | ---------------------------------------------------------------------------------------------------------------------------------- |
-| [SwapFactory.cdc (IncrementFi)][22] | `0xb063c16cac85dbd1`         | <CopyButton text="flow dependencies install mainnet://0xb063c16cac85dbd1.SwapFactory" title="Copy install command (mainnet)" />    |
-| [SwapPair (IncrementFi)][23]        | `0xecbda466e7f191c7`         | <CopyButton text="flow dependencies install mainnet://0xecbda466e7f191c7.SwapPair" title="Copy install command (mainnet)" />       |
-| [SwapError (IncrementFi)][24]       | `0xb78ef7afa52ff906`         | <CopyButton text="flow dependencies install mainnet://0xb78ef7afa52ff906.SwapError" title="Copy install command (mainnet)" />      |
-| [SwapInterfaces (IncrementFi)][25]  | `0xb78ef7afa52ff906`         | <CopyButton text="flow dependencies install mainnet://0xb78ef7afa52ff906.SwapInterfaces" title="Copy install command (mainnet)" /> |
-| [SwapConfig (IncrementFi)][26]      | `0xb78ef7afa52ff906`         | <CopyButton text="flow dependencies install mainnet://0xb78ef7afa52ff906.SwapConfig" title="Copy install command (mainnet)" />     |
-| [SwapRouter (IncrementFi)][27]      | `0xa6850776a94e6551`         | <CopyButton text="flow dependencies install mainnet://0xa6850776a94e6551.SwapRouter" title="Copy install command (mainnet)" />     |
+| Contract Name                       | Flow Cadence Mainnet Address | [CLI](https://developers.flow.com/build/tools/flow-cli/dependency-manager)                                                         | Docs                       |
+| ----------------------------------- | ---------------------------- | ---------------------------------------------------------------------------------------------------------------------------------- | -------------------------- |
+| [SwapFactory.cdc (IncrementFi)][22] | `0xb063c16cac85dbd1`         | <CopyButton text="flow dependencies install mainnet://0xb063c16cac85dbd1.SwapFactory" title="Copy install command (mainnet)" />    | [Docs][incrementfi-doc]    |
+| [SwapPair (IncrementFi)][23]        | `0xecbda466e7f191c7`         | <CopyButton text="flow dependencies install mainnet://0xecbda466e7f191c7.SwapPair" title="Copy install command (mainnet)" />       | [Docs][incrementfi-doc]    |
+| [SwapError (IncrementFi)][24]       | `0xb78ef7afa52ff906`         | <CopyButton text="flow dependencies install mainnet://0xb78ef7afa52ff906.SwapError" title="Copy install command (mainnet)" />      | [Docs][incrementfi-doc]    |
+| [SwapInterfaces (IncrementFi)][25]  | `0xb78ef7afa52ff906`         | <CopyButton text="flow dependencies install mainnet://0xb78ef7afa52ff906.SwapInterfaces" title="Copy install command (mainnet)" /> | [Docs][incrementfi-doc]    |
+| [SwapConfig (IncrementFi)][26]      | `0xb78ef7afa52ff906`         | <CopyButton text="flow dependencies install mainnet://0xb78ef7afa52ff906.SwapConfig" title="Copy install command (mainnet)" />     | [Docs][incrementfi-doc]    |
+| [SwapRouter (IncrementFi)][27]      | `0xa6850776a94e6551`         | <CopyButton text="flow dependencies install mainnet://0xa6850776a94e6551.SwapRouter" title="Copy install command (mainnet)" />     | [Docs][incrementfi-doc]    |
 
 ## Bridges & Cross-Chain Messaging
 
@@ -104,14 +104,14 @@ Below is a list of commonly used DeFi contracts on Flow:
 
 | Contract Name                             | Flow Cadence Testnet Address | [CLI](https://developers.flow.com/build/tools/flow-cli/dependency-manager)                                                            | Docs                    |
 | ----------------------------------------- | ---------------------------- | ------------------------------------------------------------------------------------------------------------------------------------- | ----------------------- |
-| [PublicPriceOracle.cdc (IncrementFi)][31] | `0x8232ce4a3aff4e94`         | <CopyButton text="flow dependencies install testnet://0x8232ce4a3aff4e94.PublicPriceOracle" title="Copy install command (testnet)" /> | -                       |
+| [PublicPriceOracle.cdc (IncrementFi)][31] | `0x8232ce4a3aff4e94`         | <CopyButton text="flow dependencies install testnet://0x8232ce4a3aff4e94.PublicPriceOracle" title="Copy install command (testnet)" /> | [Docs][incrementfi-doc] |
 | [BandOracle.cdc (Band)][32]               | `0x9fb6606c300b5051`         | <CopyButton text="flow dependencies install testnet://0x9fb6606c300b5051.BandOracle" title="Copy install command (testnet)" />        | [Docs][band-oracle-doc] |
 
 #### Flow Cadence Mainnet
 
 | Contract Name                             | Flow Cadence Mainnet Address | [CLI](https://developers.flow.com/build/tools/flow-cli/dependency-manager)                                                            | Docs                    |
 | ----------------------------------------- | ---------------------------- | ------------------------------------------------------------------------------------------------------------------------------------- | ----------------------- |
-| [PublicPriceOracle.cdc (IncrementFi)][19] | `0xec67451f8a58216a`         | <CopyButton text="flow dependencies install mainnet://0xec67451f8a58216a.PublicPriceOracle" title="Copy install command (mainnet)" /> | -                       |
+| [PublicPriceOracle.cdc (IncrementFi)][19] | `0xec67451f8a58216a`         | <CopyButton text="flow dependencies install mainnet://0xec67451f8a58216a.PublicPriceOracle" title="Copy install command (mainnet)" /> | [Docs][incrementfi-doc] |
 | [BandOracle.cdc (Band) Protocol][33]      | `0x6801a6222ebf784a`         | <CopyButton text="flow dependencies install mainnet://0x6801a6222ebf784a.BandOracle" title="Copy install command (mainnet)" />        | [Docs][band-oracle-doc] |
 
 ## Ethereum Attestation Service
@@ -170,3 +170,4 @@ Mainnet EAS Explorer: [https://flow.easscan.credora.io](https://flow.easscan.cre
 [36]: https://relay.link/bridge
 [37]: https://docs.relay.link/resources/contract-addresses
 [band-oracle-doc]: ./band-oracle
+[incrementfi-doc]: https://docs.increment.fi/
