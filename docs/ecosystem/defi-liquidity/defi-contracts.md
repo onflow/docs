@@ -118,14 +118,14 @@ Below is a list of commonly used DeFi contracts on Flow:
 
 More information can be found on the Credora docs site for [EAS on Flow](https://credora.gitbook.io/eas-for-flow).
 
-Testnet EAS Explorer: [https://flow-testnet.easscan.credora.io] (https://flow-testnet.easscan.credora.io)
+Testnet EAS Explorer: [https://flow-testnet.easscan.credora.io](https://flow-testnet.easscan.credora.io)
 
 | Contract Name                                           | Flow EVM Testnet Address                     |
 | ------------------------------------------------------- | -------------------------------------------- |
 | [SchemaRegistry.sol (Ethereum Attestation Service)][29] | `0x97900F59828Da4187607Cb8F84f49e3944199d18` |
 | [EAS.sol (Ethereum Attestation Service)][30]            | `0xBCF2dA8f82fb032A2474c92Ec5b70C95A83fc0cc` |
 
-Mainnet EAS Explorer: [https://flow.easscan.credora.io] (https://flow.easscan.credora.io)
+Mainnet EAS Explorer: [https://flow.easscan.credora.io](https://flow.easscan.credora.io)
 
 | Contract Name                                           | Flow EVM Mainnet Address                     |
 | ------------------------------------------------------- | -------------------------------------------- |
