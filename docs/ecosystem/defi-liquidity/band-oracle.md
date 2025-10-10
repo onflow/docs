@@ -24,8 +24,8 @@ The Band Protocol Oracle contract enables Flow blockchain applications to access
 
 | Network | Address | Contract Browser |
 |---------|---------|------------------|
-| Testnet | `0x2c71de7af78d1adf` | [View Contract](https://contractbrowser.com/A.2c71de7af78d1adf.BandOracle) |
-| Mainnet | `0x9fb6606c300b5051` | [View Contract](https://contractbrowser.com/A.9fb6606c300b5051.BandOracle) |
+| Testnet | `0x9fb6606c300b5051` | [View Contract](https://testnet.flowscan.io/contract/A.9fb6606c300b5051.BandOracle) |
+| Mainnet | `0x6801a6222ebf784a` | [View Contract](https://flowscan.io/contract/A.6801a6222ebf784a.BandOracle) |
 
 ## Supported Symbols
 
