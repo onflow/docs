@@ -1,9 +1,9 @@
 ---
-title: 'build'
-description: 'build function documentation.'
+title: "build"
+description: "build function documentation."
 ---
 
-<!-- THIS DOCUMENT IS AUTO-GENERATED FROM [onflow/sdk/src/build/cadence/build.ts](https://github.com/onflow/fcl-js/tree/master/packages/sdk/src/build/cadence/build.ts). DO NOT EDIT MANUALLY -->
+<!-- THIS DOCUMENT IS AUTO-GENERATED FROM [onflow/sdk/src/build/build.ts](https://github.com/onflow/fcl-js/tree/master/packages/sdk/src/build/build.ts). DO NOT EDIT MANUALLY -->
 
 # build
 
@@ -18,23 +18,23 @@ Each builder function modifies specific parts of the interaction object, such as
 You can import the entire package and access the function:
 
 ```typescript
-import * as sdk from '@onflow/sdk';
+import * as sdk from "@onflow/sdk"
 
-sdk.build(fns);
+sdk.build(fns)
 ```
 
 Or import directly the specific function:
 
 ```typescript
-import { build } from '@onflow/sdk';
+import { build } from "@onflow/sdk"
 
-build(fns);
+build(fns)
 ```
 
 ## Usage
 
 ```typescript
-import * as fcl from '@onflow/fcl';
+import * as fcl from "@onflow/fcl";
 
 // Build a script interaction
 const scriptInteraction = await fcl.build([
@@ -43,7 +43,10 @@ const scriptInteraction = await fcl.build([
       return a + b
     }
   `,
-  fcl.args([fcl.arg(1, fcl.t.Int), fcl.arg(2, fcl.t.Int)]),
+  fcl.args([
+    fcl.arg(1, fcl.t.Int),
+    fcl.arg(2, fcl.t.Int)
+  ])
 ]);
 
 // Build a transaction interaction
@@ -55,11 +58,11 @@ const txInteraction = await fcl.build([
       }
     }
   `,
-  fcl.args([fcl.arg('World', fcl.t.String)]),
+  fcl.args([fcl.arg("World", fcl.t.String)]),
   fcl.proposer(proposerAuthz),
   fcl.payer(payerAuthz),
   fcl.authorizations([authorizerAuthz]),
-  fcl.limit(100),
+  fcl.limit(100)
 ]);
 ```
 
@@ -67,12 +70,15 @@ const txInteraction = await fcl.build([
 
 ### `fns` (optional)
 
+
 - Type: `(false | InteractionBuilderFn)[]`
 - Description: The functions to apply to the interaction
+
 
 ## Returns
 
 [`Promise<Interaction>`](../types#interaction)
+
 
 A promise of an interaction
 
