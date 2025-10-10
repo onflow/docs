@@ -1,16 +1,16 @@
 ---
-title: Passkeys (WebAuthn)
+title: Passkeys 
 description: Implement passkeys on Flow using WebAuthn, covering key extraction, challenges, signature formatting for Flow, and signature extensions.
 sidebar_position: 5
 keywords:
   - passkeys
 ---
 
-# Passkeys (WebAuthn)
+# Passkeys
 
-This is a wallet‑centric guide (per [FLIP 264: WebAuthn Credential Support]) that covers end‑to‑end WebAuthn integration for Flow:
+This is a wallet‑centric guide (per [FLIP 264: WebAuthn Credential Support]) that covers end‑to‑end passkeys integration for Flow:
 
-1. Register a passkey and add a Flow account key
+1. Create a passkey and add a Flow account key
 2. Sign a transaction with the user’s passkey (includes conversion, extension, and submission)
 
 It accompanies the PoC in `fcl-js/packages/passkey-wallet` for reference and cites the FLIP where behavior is normative.
@@ -19,28 +19,29 @@ It accompanies the PoC in `fcl-js/packages/passkey-wallet` for reference and cit
 
 After completing this guide, you'll be able to:
 
-- Register a WebAuthn credential and derive a Flow‑compatible public key
+- Create a passkey and derive a Flow‑compatible public key
 - Generate the correct challenge for signing transactions (wallet sets SHA2‑256(signable))
-- Convert a WebAuthn ECDSA DER signature into Flow’s raw r||s format and attach the FLIP signature extension
+- Convert a WebAuthn ECDSA DER signature into Flow’s raw `r||s` format and attach the transaction signature extension
 
 ## Prerequisites
 
 - Working knowledge of modern frontend (React/Next.js) and basic backend
 - Familiarity with WebAuthn/Passkeys concepts and platform constraints
 - FCL installed and configured for your app
-- A plan for secure backend entropy (32‑byte minimum) and nonce persistence
 - Flow accounts and keys: [Signature and Hash Algorithms]
-
 
 ## Registration
 
-When a user registers a passkey via [navigator.credentials.create()] with `{ publicKey }`, the authenticator returns an attestation containing the new credential’s public key. On Flow, you can register that public key on an account as `ECDSA_P256` or `ECDSA_secp256k1`. This guide demonstrates `ECDSA_P256` paired with `SHA2_256` hashing.
+When a user generates a passkey via [navigator.credentials.create()] with `{ publicKey }`, the authenticator returns an attestation containing the new credential’s public key. On Flow, you can register that public key on an account if the algorithm of the requested passkey is either `ES256` or `ES256k`. This guide demonstrates an `ES256` passkey which translates to an `ECDSA_P256` Flow key paired with `SHA2_256` hashing. Althernatively, an `ES256k` passkey translates to an `ECDSA_secp256k1` Flow key paired with `SHA2_256` hashing.
 
 High‑level steps:
 
-1. On the server, generate `PublicKeyCredentialCreationOptions` and send to the client.
-2. On the client, call `navigator.credentials.create()` and return the credential to the server.
-3. Verify attestation if necessary and extract the COSE public key (P‑256 in this guide). Convert it to raw uncompressed 64‑byte `X||Y` hex expected by Flow.
+1. On the client, generate `PublicKeyCredentialCreationOptions` with:
+  - `pubKeyCredParams`'s `alg` equal to `ES256` (`-7`)
+  - the RP id is derived from to the web origin
+  - the challenge equal to an arbitrary constant
+2. On the client, call `navigator.credentials.create()`.
+3. Verify attestation if necessary and extract the public key (P‑256 in this guide). Convert it to raw uncompressed 64‑byte `X||Y` hex string as expected by Flow.
 4. Submit a transaction to add the key to the Flow account with weight and algorithms:
    - Signature algorithm: `ECDSA_P256`
    - Hash algorithm: `SHA2_256`
@@ -51,7 +52,7 @@ Libraries like SimpleWebAuthn can parse the COSE key and produce the raw public 
 
 ### Build creation options and create credential
 
-Minimum example — wallet‑mode registration (challenge can be constant per FLIP):
+Minimum example — wallet‑mode registration:
 
 This builds `PublicKeyCredentialCreationOptions` for a wallet RP with a constant registration challenge and ES256 (P‑256) so the resulting public key can be registered on a Flow account.
 
@@ -71,8 +72,8 @@ const creationOptions: PublicKeyCredentialCreationOptions = {
   rp,
   user,
   pubKeyCredParams: [
-    { type: "public-key", alg: -7 }, // ES256 (P-256 + SHA-256)
-    // Optionally ES256K if you support secp256k1 Flow keys:
+    { type: "public-key", alg: -7 }, // ES256 (ECDSA on P-256 with SHA-256)
+    // Optionally ES256K (ECDSA on secp256k1 with SHA-256) if the device supports secp256k1 keys:
     // { type: "public-key", alg: -47 },
   ],
   authenticatorSelection: { userVerification: "preferred" },
@@ -82,13 +83,13 @@ const creationOptions: PublicKeyCredentialCreationOptions = {
 
 const credential = await navigator.credentials.create({ publicKey: creationOptions })
 
-// Send to wallet-core (or local) to extract COSE P-256 public key (verify attestation if necessary)
+// Send to wallet-core (or local) to extract COSE ECDSA P-256 public key (verify attestation if necessary)
 // Then register the raw uncompressed key bytes on the Flow account as ECDSA_P256/SHA2_256 (this guide’s choice)
 ```
 
 ### Extract and normalize public key
 
-Client-side example — extract COSE public key (no verification) and derive raw uncompressed 64-byte X||Y hex suitable for Flow key registration:
+Client-side example — extract COSE ECDSA public key (no verification) and derive raw uncompressed 64-byte `X||Y` hex suitable for Flow key registration:
 
 This parses the `attestationObject` to locate the COSE EC2 `credentialPublicKey`, reads the x/y coordinates, and returns raw uncompressed 64-byte `X||Y` hex suitable for Flow key registration. Attestation verification is intentionally omitted here.
 
@@ -124,10 +125,10 @@ function coseEcP256ToUncompressedXYHex(coseKey: Uint8Array): string {
   const m: Map<number, any> = CBOR.decode(coseKey)
   const x = new Uint8Array(m.get(-2))
   const y = new Uint8Array(m.get(-3))
-  if (x.length !== 32 || y.length !== 32) throw new Error('Invalid P-256 coordinate lengths')
+  if (x.length > 32 || y.length > 32) throw new Error('Invalid P-256 coordinate lengths')
   const xy = new Uint8Array(64)
-  xy.set(x, 0)
-  xy.set(y, 32)
+  xy.set(x, 32 - x.length)
+  xy.set(y, 64 - y.length)
   return toHex(xy) // 64-byte X||Y hex, no 0x or 0x04 prefix
 }
 
@@ -143,7 +144,7 @@ const publicKeyHex = coseEcP256ToUncompressedXYHex(cosePubKey)
 
 ### Add key to account
 
-Now that you have the user's public key, provision a Flow account with that key. Creating accounts requires payment; in practice, account instantiation typically occurs on the wallet provider's backend service.
+Now that you have the user's public key, provision a Flow account with that key. Creating accounts (or adding key to an existing account) requires payment; in practice, account instantiation typically occurs on the wallet provider's backend service.
 
 In the PoC demo, we used a test API to provision an account with the public key:
 
@@ -173,14 +174,14 @@ export async function createAccountWithPublicKey(
 ```
 
 :::note
-In production, this would be a service owned by the wallet provider that creates the account and attaches the user's public key, for reasons outlined in [WebAuthn Credential Support (FLIP)] (e.g., payment handling, abuse prevention, telemetry, and correlation as needed).
+In production, this would be a service owned by the wallet provider that creates the account and attaches the user's public key, for reasons like payment handling, abuse prevention, telemetry, and correlation as needed.
 :::
 
 ## Signing
 
 ### Generate the challenge
 
-- Assertion (transaction signing): Wallet sets `challenge` to the SHA2‑256 of the signable transaction message (payload or envelope per signer role). No server‑sent challenge is used. Flow includes a domain‑separation tag in the signable bytes.
+- Assertion (transaction signing): Wallet sets `challenge` to the SHA2‑256 of the signable transaction message (payload or envelope per signer role). No server‑sent or random challenge is used. Flow includes a domain‑separation tag in the signable bytes.
 
 Minimal example — derive signable message and hash (per FLIP):
 
@@ -205,7 +206,7 @@ const msgHex = encodeMessageFromSignable(signable, address)
 const payloadMsgHex = encodeTransactionPayload(signable.voucher)
 const role = msgHex === payloadMsgHex ? "payload" : "envelope"
 
-// 2) Compute SHA2-256(msgHex) -> 32-byte challenge (Flow keys commonly use SHA2_256)
+// 2) Compute SHA2-256(msgHex) -> 32-byte challenge
 const signableHash: Uint8Array = sha256(hexToBytes(msgHex))
 
 // 3) Call navigator.credentials.get with challenge = signableHash
@@ -213,7 +214,7 @@ const signableHash: Uint8Array = sha256(hexToBytes(msgHex))
 ```
 
 :::note
-`encodeMessageFromSignable` and `encodeTransactionPayload` are FCL‑specific helpers. If you are not using FCL, construct the Flow signable transaction message yourself (payload for proposer/authorizer, envelope for payer), then compute `SHA2‑256(messageBytes)` for the challenge. The payload encoding shown here applies regardless of wallet implementation; the helper calls are simply conveniences from FCL.
+`encodeMessageFromSignable` and `encodeTransactionPayload` are FCL‑specific helpers. If you are not using FCL, construct the Flow signable transaction message yourself (payload for proposer/authorizer, envelope for payer, prepended by the transaction domain tag), then compute `SHA2‑256(messageBytes)` for the challenge. The payload encoding shown here applies regardless of wallet implementation; the helper calls are simply conveniences from FCL.
 :::
 
 ### Request assertion
@@ -249,21 +250,21 @@ const { authenticatorData, clientDataJSON, signature } =
 ```
 
 :::note
-Wallets typically know which credential corresponds to the user’s active account (selected during authentication/authorization), so they should pass that credential via `allowCredentials` to scope selection and minimize prompts. For discoverable credentials, omitting `allowCredentials` is also valid and lets the authenticator surface available credentials. See [WebAuthn Credential Support (FLIP)] for wallet‑mode guidance.
+Wallets typically know which credential corresponds to the user’s active account (selected during authentication/authorization), so they should pass that credential via `allowCredentials` to scope selection and minimize prompts. For discoverable credentials, omitting `allowCredentials` is also valid and lets the authenticator surface available credentials. See [WebAuthn specifications] for guidance.
 :::
 
  
 
 ### Convert and attach signature
 
-WebAuthn assertion signatures are ECDSA P‑256 over SHA‑256 and are typically returned in ASN.1/DER form. Flow expects raw 64‑byte signatures: `r` and `s` each 32 bytes, concatenated (`r || s`).
+WebAuthn assertion signatures in this guide are ECDSA P‑256 over SHA‑256 and are typically returned in ASN.1/DER form. Flow expects raw 64‑byte signatures: `r` and `s` each 32 bytes, concatenated (`r || s`).
 
 - Convert the DER `signature` to Flow raw `r||s` (64 bytes) and attach with `addr` and `keyId`.
-- Build the signature extension as specified: `extension_data = 0x01 || RLP([authenticatorData, clientDataJSON])`.
+- Build the transaction signature extension as specified: `extension_data = 0x01 || RLP([authenticatorData, clientDataJSON])`.
 
 Minimal example — convert and attach for submission:
 
-Convert the DER signature to Flow raw r||s and build `signatureExtension = 0x01 || RLP([authenticatorData, clientDataJSON])` per the FLIP, then compose the Flow signature object for inclusion in your transaction.
+Convert the DER signature to Flow raw `r||s` and build `signatureExtension = 0x01 || RLP([authenticatorData, clientDataJSON])` per the FLIP, then compose the Flow transaction signature object for inclusion in your transaction.
 
 ```tsx
 import { encode as rlpEncode } from 'rlp'
@@ -351,8 +352,8 @@ function leftPad32(bytes: Uint8Array): Uint8Array {
 ## Notes from the PoC
 
 - The PoC in `fcl-js/packages/passkey-wallet` demonstrates end‑to‑end flows for passkey creation and assertion, including:
-  - Extracting and normalizing the P‑256 public key for Flow
-  - Generating secure nonces and verifying account‑proof
+  - Extracting and normalizing the ECDSA P‑256 public key for Flow
+  - Building the correct challenge 
   - Converting DER signatures to raw `r||s`
   - Packaging WebAuthn fields as signature extension data
 
@@ -360,8 +361,7 @@ function leftPad32(bytes: Uint8Array): Uint8Array {
 
 ## Security and UX considerations
 
-- Use `ECDSA_P256` with `SHA2_256` for Flow account keys derived from WebAuthn P‑256.
-- Enforce nonce expiry, single‑use semantics, and strong server‑side randomness.
+- Use `ES256` or `ES256k` as algorithms to create Flow account compatible keys.
 - Clearly communicate platform prompts and recovery paths; passkeys UX can differ across OS/browsers.
 - Replay protection: Flow uses on‑chain proposal‑key sequence numbers; see [Replay attacks].
 - Optional wallet backend: store short‑lived correlation data or rate‑limits as needed (not required).
@@ -384,9 +384,9 @@ In this tutorial, you integrated passkeys (WebAuthn) with Flow for both registra
 
 Now that you have completed the tutorial, you should be able to:
 
-- Register a WebAuthn credential and derive a Flow‑compatible public key
+- Create a WebAuthn credential and derive a Flow‑compatible public key
 - Generate the correct challenge for signing transactions (wallet sets SHA2‑256(signable))
-- Convert a WebAuthn ECDSA DER signature into Flow’s raw r||s format and attach the FLIP signature extension
+- Convert a WebAuthn ECDSA DER signature into Flow’s raw `r||s` format and attach the transaction signature extension
 
 ### Further reading
 
@@ -413,5 +413,6 @@ Now that you have completed the tutorial, you should be able to:
 [Signature and Hash Algorithms]: ../../../build/cadence/basics/accounts.md
 [Flow Client Library]: ../../../build/tools/clients/fcl-js/index.md
 [Wallet Provider Spec]: ../../../build/tools/wallet-provider-spec/index.md
+[WebAuthn specifications]: https://www.w3.org/TR/webauthn-3
 
 
