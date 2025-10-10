@@ -38,15 +38,15 @@ Below is a list of commonly used DeFi contracts on Flow:
 
 #### Flow EVM Mainnet
 
-| Contract Name                                | Flow EVM Mainnet Address                     |
-| -------------------------------------------- | -------------------------------------------- |
-| [StableKittyFactoryNG.sol (KittyPunch)][1]   | `0x4412140D52C1F5834469a061927811Abb6026dB7` |
-| [TwoKittyFactory.sol (KittyPunch)][2]        | `0xf0E48dC92f66E246244dd9F33b02f57b0E69fBa9` |
-| [TriKittyFactory.sol (KittyPunch)][3]        | `0xebd098c60b1089f362AC9cfAd9134CBD29408226` |
-| [KittyRouterNgPoolsOnly.sol (KittyPunch)][4] | `0x87048a97526c4B66b71004927D24F61DEFcD6375` |
-| [PunchSwapV2Router02.sol (KittyPunch)][5]    | `0xf45AFe28fd5519d5f8C1d4787a4D5f724C0eFa4d` |
-| [PunchSwapV2Factory.sol (KittyPunch)][6]     | `0x29372c22459a4e373851798bFd6808e71EA34A71` |
-| [TrenchesTokensBuyer.sol (KittyPunch)][7]    | `0x6D0e081Acc28eA9ee6b7fD293eC03F97147b026d` |
+| Contract Name                                | Flow EVM Mainnet Address                     | Docs                  |
+| -------------------------------------------- | -------------------------------------------- | --------------------- |
+| [StableKittyFactoryNG.sol (KittyPunch)][1]   | `0x4412140D52C1F5834469a061927811Abb6026dB7` | [Docs][kittypunch-doc] |
+| [TwoKittyFactory.sol (KittyPunch)][2]        | `0xf0E48dC92f66E246244dd9F33b02f57b0E69fBa9` | [Docs][kittypunch-doc] |
+| [TriKittyFactory.sol (KittyPunch)][3]        | `0xebd098c60b1089f362AC9cfAd9134CBD29408226` | [Docs][kittypunch-doc] |
+| [KittyRouterNgPoolsOnly.sol (KittyPunch)][4] | `0x87048a97526c4B66b71004927D24F61DEFcD6375` | [Docs][kittypunch-doc] |
+| [PunchSwapV2Router02.sol (KittyPunch)][5]    | `0xf45AFe28fd5519d5f8C1d4787a4D5f724C0eFa4d` | [Docs][kittypunch-doc] |
+| [PunchSwapV2Factory.sol (KittyPunch)][6]     | `0x29372c22459a4e373851798bFd6808e71EA34A71` | [Docs][kittypunch-doc] |
+| [TrenchesTokensBuyer.sol (KittyPunch)][7]    | `0x6D0e081Acc28eA9ee6b7fD293eC03F97147b026d` | [Docs][kittypunch-doc] |
 
 #### Flow Cadence Mainnet
 
@@ -171,3 +171,4 @@ Mainnet EAS Explorer: [https://flow.easscan.credora.io](https://flow.easscan.cre
 [37]: https://docs.relay.link/resources/contract-addresses
 [band-oracle-doc]: ./band-oracle
 [incrementfi-doc]: https://docs.increment.fi/
+[kittypunch-doc]: https://kittypunch.gitbook.io/kittypunch-docs
