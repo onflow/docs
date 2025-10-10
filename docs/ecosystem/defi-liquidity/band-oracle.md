@@ -277,12 +277,6 @@ let currentFee = BandOracle.getFee()
 - [Flow Documentation](https://docs.onflow.org/)
 - [Cadence Language Reference](https://cadence-lang.org/)
 
-## Support
-
-For issues or questions about the Band Oracle on Flow:
-- Check the Band Protocol documentation
-- Engage with the Flow developer community
-
 ---
 
 **Note**: The oracle currently charges no fees for usage, but this may change in the future. Always check `BandOracle.getFee()` before querying to ensure your contract has sufficient FLOW tokens allocated.
