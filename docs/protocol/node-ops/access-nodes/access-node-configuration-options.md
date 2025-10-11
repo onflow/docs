@@ -138,7 +138,7 @@ Now you have the execution sync setup and the root checkpoint in place, it’s t
 There are 3 cli flags that you will need to add:
 
 - `--execution-data-indexing-enabled=true` This will enable the indexer.
-- `--store-tx-result-error-messages=true` This will index transaction results
+- `--store-tx-result-error-messages=true` This will fetch and index transaction result error messages from execution nodes.
 - `--execution-state-dir` This defines the path where the registers db will be stored. A good default is on the same drive as the protocol db. e.g. `/data/execution-state`
 
 # Start your node
