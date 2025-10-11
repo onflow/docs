@@ -135,21 +135,22 @@ Store the **`root-protocol-state-snapshot.json`** into the **`/bootstrap/public-
 
 Now you have the execution sync setup and the root checkpoint in place, it’s time to configure the node to index all of the data so it can be used for script execution.
 
-There are 2 cli flags that you will need to add:
+There are 3 cli flags that you will need to add:
 
 - `--execution-data-indexing-enabled=true` This will enable the indexer.
+- `--store-tx-result-error-messages=true` This will fetch and index transaction result error messages from execution nodes.
 - `--execution-state-dir` This defines the path where the registers db will be stored. A good default is on the same drive as the protocol db. e.g. `/data/execution-state`
 
 # Start your node
 
-Now that all of the settings to enable indexing are in place, you can start your node.
+Now that all the settings to enable indexing are in place, you can start your node.
 
 At a minimum, you will need the following flags:
 
 ```
 --execution-data-indexing-enabled=true
+--store-tx-result-error-messages=true
 --execution-state-dir=/data/execution-state
---execution-data-sync-enabled=true
 --execution-data-dir=/data/execution-data
 ```
 
@@ -249,8 +250,9 @@ As a best practice, specify a path with `--execution-data-dir`. A sensible defau
 Below is a list of the available CLI flags to control the behavior of Execution Data Indexer.
 
 | Flag                            | Type   | Description                                                                                                 |
-| ------------------------------- | ------ | ----------------------------------------------------------------------------------------------------------- |
-| execution-data-indexing-enabled | bool   | Whether to enable the execution data indexing. Default is false                                             |
+|---------------------------------|--------|-------------------------------------------------------------------------------------------------------------|
+| execution-data-indexing-enabled | bool   | Whether to enable the execution data indexing. Default is false.                                            |
+| store-tx-result-error-messages  | bool   | Whether to enable storing transaction error messages into the db. Default is false.                         |
 | execution-state-dir             | string | Directory to use for execution-state database. Default is in the user’s home directory.                     |
 | execution-state-checkpoint      | string | Location of execution-state checkpoint (root.checkpoint.\*) files.                                          |
 | event-query-mode                | string | Mode to use when querying events. one of [local-only, execution-nodes-only(default), failover]              |
