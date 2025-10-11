@@ -9,17 +9,19 @@ sidebar_position: 10
 
 The hardware your Node will need varies depending on the role your Node will play in the Flow network. For an overview of the differences see the [Node Roles Overview](./node-roles.md).
 
-| Node Type | CPU | Memory | Disk | Example GCP Instance | Example AWS Instance |
-|:----------------:| ---------:| ------:| ------:|:--------------:|:--------------:|
-| **Collection**   |  4 cores  | 32 GB  | 200 GB | n2-highmem-4   | r6i.xlarge     |
-| **Consensus**    |  2 cores  | 16 GB  | 200 GB | n2-standard-4  | m6a.xlarge     |
-| **Execution**    | 128 cores  | 864 GB |  9 TB (with maintenance see: [pruning chunk data pack](https://forum.flow.com/t/execution-node-upgrade-to-v0-31-15-and-managing-disk-space-usage/5167) or 30 TB without maintenance)  | n2-highmem-128 |    |
-| **Verification** |  2 cores  | 16 GB  | 200 GB | n2-highmem-2   | r6a.large      |
-| **Access**       |  16 cores | 64 GB  | 750 GB | n2-standard-16 | m6i.4xlarge  |
-| **Observer**     |  2 cores  | 4 GB   | 300 GB | n2-standard-4  | m6i.xlarge     |
-| **EVM Gateway**     |  2 cores  | 32 GB   | 30 GB | n2-highmem-4  | r6i.xlarge     |
+|    Node Type     |                      CPU |              Memory |                                                                                                                                                                                Disk | Example GCP Instance | Example AWS Instance |
+|:----------------:|-------------------------:|--------------------:|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|:--------------------:|:--------------------:|
+|  **Collection**  | 2 cores 🆕 (was 4 cores) | 8 GB 🆕 (was 32 GB) |                                                                                                                                                                              200 GB |     n2-highmem-4     |      r6i.xlarge      |
+|  **Consensus**   |                  2 cores |  8 GB 🆕(was 16 GB) |                                                                                                                                                                              200 GB |    n2-standard-4     |      m6a.xlarge      |
+|  **Execution**   |                128 cores |              864 GB | 9 TB (with maintenance see: [pruning chunk data pack](https://forum.flow.com/t/execution-node-upgrade-to-v0-31-15-and-managing-disk-space-usage/5167) or 30 TB without maintenance) |    n2-highmem-128    |                      |
+| **Verification** |                  2 cores | 8 GB 🆕 (was 16 GB) |                                                                                                                                                                              200 GB |     n2-highmem-2     |      r6a.large       |
+|    **Access**    |                 16 cores |               64 GB |                                                                                                                                                                              750 GB |    n2-standard-16    |     m6i.4xlarge      |
+|   **Observer**   |                  2 cores |                4 GB |                                                                                                                                                                              300 GB |    n2-standard-4     |      m6i.xlarge      |
+| **EVM Gateway**  |                  2 cores |               32 GB |                                                                                                                                                                               30 GB |     n2-highmem-4     |      r6i.xlarge      |
 
 _Note: The above numbers represent our current best estimate for the state of the network. These will be actively updated as we continue benchmarking the network's performance._
+
+_Note: If you are running your node on bare metal, we recommend provisioning a machine with higher CPU and memory than the minimum requirements. Unlike cloud instances, bare metal servers cannot be easily scaled up, and over-provisioning upfront helps avoid the need for disruptive hardware upgrades later._
 
 ## Networking Requirements
 
