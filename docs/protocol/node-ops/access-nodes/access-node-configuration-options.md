@@ -151,7 +151,6 @@ At a minimum, you will need the following flags:
 --execution-data-indexing-enabled=true
 --store-tx-result-error-messages=true
 --execution-state-dir=/data/execution-state
---execution-state-dir=/data/execution-state
 --execution-data-dir=/data/execution-data
 ```
 
