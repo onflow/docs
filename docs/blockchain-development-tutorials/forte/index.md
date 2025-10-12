@@ -36,7 +36,7 @@ Learn how to build decentralized finance applications using the Flow Actions fra
 
 Discover how to implement scheduled transactions for time-based smart contract execution on Flow. These tutorials cover creating automated workflows, cron-like functionality, and time-sensitive blockchain applications that can execute without manual intervention.
 
-### [Passkeys (WebAuthn)]
+### [Passkeys]
 
 Implement device-backed passkeys using the Web Authentication API to register Flow account keys and sign transactions with secure, user-friendly authentication. See the [advanced concepts documentation](../../build/cadence/advanced-concepts/passkeys.md) for detailed implementation guidance.
 
@@ -62,6 +62,6 @@ The Forte network upgrade represents a significant evolution of Flow's capabilit
 
 [Flow Actions]: ./flow-actions/index.md
 [Scheduled Transactions]: ./scheduled-transactions/index.md
-[Passkeys (WebAuthn)]: ../../build/cadence/advanced-concepts/passkeys.md
+[Passkeys]: ../../build/cadence/advanced-concepts/passkeys.md
 [Introduction to Flow Actions]: ./flow-actions/intro-to-flow-actions.md
 [Scheduled Transactions Introduction]: ./scheduled-transactions/scheduled-transactions-introduction.md
