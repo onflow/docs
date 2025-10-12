@@ -27,7 +27,7 @@ This is a wallet‑centric guide (per [FLIP 264: WebAuthn Credential Support]) t
 1. Create a passkey and add a Flow account key
 2. Sign a transaction with the user's passkey (includes conversion, extension, and submission)
 
-It accompanies the PoC in `fcl-js/packages/passkey-wallet` for reference and cites the FLIP where behavior is normative.
+It accompanies the [PoC demo](https://github.com/onflow/passkey-wallet-demo) for reference and cites the FLIP where behavior is normative.
 
 :::note Platform-specific APIs
 This tutorial focuses on the **Web Authentication API** (WebAuthn) for browser-based applications. Other platforms such as iOS, Android, and desktop applications will require platform-specific APIs (e.g., Apple's [Authentication Services](https://developer.apple.com/documentation/authenticationservices), Android's [Credential Manager](https://developer.android.com/identity/sign-in/credential-manager)), but the underlying concepts—credential creation, challenge-response signing, and signature formatting—remain the same across all platforms.
@@ -399,7 +399,7 @@ function leftPad32(bytes: Uint8Array): Uint8Array {
 
 ## Notes from the PoC
 
-- The PoC in `fcl-js/packages/passkey-wallet` demonstrates end‑to‑end flows for passkey creation and assertion, including:
+- The [PoC demo](https://github.com/onflow/passkey-wallet-demo) demonstrates end‑to‑end flows for passkey creation and assertion, including:
   - Extracting and normalizing the ECDSA P‑256 public key for Flow
   - Building the correct challenge 
   - Converting DER signatures to raw `r||s`
