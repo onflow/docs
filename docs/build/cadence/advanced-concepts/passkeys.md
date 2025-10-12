@@ -1,9 +1,23 @@
 ---
 title: Passkeys 
 description: Implement passkeys on Flow using WebAuthn, covering key extraction, challenges, signature formatting for Flow, and signature extensions.
-sidebar_position: 5
 keywords:
   - passkeys
+  - WebAuthn
+  - authentication
+  - ECDSA P256
+  - ES256
+  - Flow account keys
+  - wallet integration
+  - credential management
+  - signature verification
+  - biometric authentication
+  - FIDO2
+  - multi-factor authentication
+  - passwordless authentication
+  - Flow transactions
+  - public key cryptography
+sidebar_position: 9
 ---
 
 # Passkeys
@@ -11,17 +25,17 @@ keywords:
 This is a wallet‑centric guide (per [FLIP 264: WebAuthn Credential Support]) that covers end‑to‑end passkeys integration for Flow:
 
 1. Create a passkey and add a Flow account key
-2. Sign a transaction with the user’s passkey (includes conversion, extension, and submission)
+2. Sign a transaction with the user's passkey (includes conversion, extension, and submission)
 
 It accompanies the PoC in `fcl-js/packages/passkey-wallet` for reference and cites the FLIP where behavior is normative.
 
-## What you’ll learn
+## What you'll learn
 
 After completing this guide, you'll be able to:
 
 - Create a passkey and derive a Flow‑compatible public key
 - Generate the correct challenge for signing transactions (wallet sets SHA2‑256(signable))
-- Convert a WebAuthn ECDSA DER signature into Flow’s raw `r||s` format and attach the transaction signature extension
+- Convert a WebAuthn ECDSA DER signature into Flow's raw `r||s` format and attach the transaction signature extension
 
 ## Prerequisites
 
@@ -32,7 +46,7 @@ After completing this guide, you'll be able to:
 
 ## Registration
 
-When a user generates a passkey via [navigator.credentials.create()] with `{ publicKey }`, the authenticator returns an attestation containing the new credential’s public key. On Flow, you can register that public key on an account if the algorithm of the requested passkey is either `ES256` or `ES256k`. This guide demonstrates an `ES256` passkey which translates to an `ECDSA_P256` Flow key paired with `SHA2_256` hashing. Althernatively, an `ES256k` passkey translates to an `ECDSA_secp256k1` Flow key paired with `SHA2_256` hashing.
+When a user generates a passkey via [navigator.credentials.create()] with `{ publicKey }`, the authenticator returns an attestation containing the new credential's public key. On Flow, you can register that public key on an account if the algorithm of the requested passkey is either `ES256` or `ES256k`. This guide demonstrates an `ES256` passkey which translates to an `ECDSA_P256` Flow key paired with `SHA2_256` hashing. Alternatively, an `ES256k` passkey translates to an `ECDSA_secp256k1` Flow key paired with `SHA2_256` hashing.
 
 High‑level steps:
 
@@ -84,7 +98,7 @@ const creationOptions: PublicKeyCredentialCreationOptions = {
 const credential = await navigator.credentials.create({ publicKey: creationOptions })
 
 // Send to wallet-core (or local) to extract COSE ECDSA P-256 public key (verify attestation if necessary)
-// Then register the raw uncompressed key bytes on the Flow account as ECDSA_P256/SHA2_256 (this guide’s choice)
+// Then register the raw uncompressed key bytes on the Flow account as ECDSA_P256/SHA2_256 (this guide's choice)
 ```
 
 ### Extract and normalize public key
@@ -250,7 +264,7 @@ const { authenticatorData, clientDataJSON, signature } =
 ```
 
 :::note
-Wallets typically know which credential corresponds to the user’s active account (selected during authentication/authorization), so they should pass that credential via `allowCredentials` to scope selection and minimize prompts. For discoverable credentials, omitting `allowCredentials` is also valid and lets the authenticator surface available credentials. See [WebAuthn specifications] for guidance.
+Wallets typically know which credential corresponds to the user's active account (selected during authentication/authorization), so they should pass that credential via `allowCredentials` to scope selection and minimize prompts. For discoverable credentials, omitting `allowCredentials` is also valid and lets the authenticator surface available credentials. See [WebAuthn specifications] for guidance.
 :::
 
  
@@ -386,7 +400,7 @@ Now that you have completed the tutorial, you should be able to:
 
 - Create a WebAuthn credential and derive a Flow‑compatible public key
 - Generate the correct challenge for signing transactions (wallet sets SHA2‑256(signable))
-- Convert a WebAuthn ECDSA DER signature into Flow’s raw `r||s` format and attach the transaction signature extension
+- Convert a WebAuthn ECDSA DER signature into Flow's raw `r||s` format and attach the transaction signature extension
 
 ### Further reading
 
@@ -409,10 +423,11 @@ Now that you have completed the tutorial, you should be able to:
 [AuthenticatorAttestationResponse]: https://developer.mozilla.org/en-US/docs/Web/API/AuthenticatorAttestationResponse
 [AuthenticatorAssertionResponse]: https://developer.mozilla.org/en-US/docs/Web/API/AuthenticatorAssertionResponse
 [Replay attacks]: https://github.com/onflow/flips/blob/cfaaf5f6b7c752e8db770e61ec9c180dc0eb6543/protocol/20250203-webauthn-credential-support.md#replay-attacks
-[Transactions]: ../../../build/cadence/basics/transactions.md
-[Signature and Hash Algorithms]: ../../../build/cadence/basics/accounts.md
-[Flow Client Library]: ../../../build/tools/clients/fcl-js/index.md
-[Wallet Provider Spec]: ../../../build/tools/wallet-provider-spec/index.md
+[Transactions]: ../basics/transactions.md
+[Signature and Hash Algorithms]: ../basics/accounts.md
+[Flow Client Library]: ../../tools/clients/fcl-js/index.md
+[Wallet Provider Spec]: ../../tools/wallet-provider-spec/index.md
 [WebAuthn specifications]: https://www.w3.org/TR/webauthn-3
+
 
 

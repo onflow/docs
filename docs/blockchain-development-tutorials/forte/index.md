@@ -38,7 +38,7 @@ Discover how to implement scheduled transactions for time-based smart contract e
 
 ### [Passkeys (WebAuthn)]
 
-Implement device-backed passkeys using the Web Authentication API to register Flow account keys and sign transactions with secure, user-friendly authentication.
+Implement device-backed passkeys using the Web Authentication API to register Flow account keys and sign transactions with secure, user-friendly authentication. See the [advanced concepts documentation](../../build/cadence/advanced-concepts/passkeys.md) for detailed implementation guidance.
 
 ## Getting Started
 
@@ -62,6 +62,6 @@ The Forte network upgrade represents a significant evolution of Flow's capabilit
 
 [Flow Actions]: ./flow-actions/index.md
 [Scheduled Transactions]: ./scheduled-transactions/index.md
-[Passkeys (WebAuthn)]: ./passkeys/index.md
+[Passkeys (WebAuthn)]: ../../build/cadence/advanced-concepts/passkeys.md
 [Introduction to Flow Actions]: ./flow-actions/intro-to-flow-actions.md
 [Scheduled Transactions Introduction]: ./scheduled-transactions/scheduled-transactions-introduction.md
