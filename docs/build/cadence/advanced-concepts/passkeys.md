@@ -29,6 +29,10 @@ This is a wallet‑centric guide (per [FLIP 264: WebAuthn Credential Support]) t
 
 It accompanies the PoC in `fcl-js/packages/passkey-wallet` for reference and cites the FLIP where behavior is normative.
 
+:::note Platform-specific APIs
+This tutorial focuses on the **Web Authentication API** (WebAuthn) for browser-based applications. Other platforms such as iOS, Android, and desktop applications will require platform-specific APIs (e.g., Apple's [Authentication Services](https://developer.apple.com/documentation/authenticationservices), Android's [Credential Manager](https://developer.android.com/identity/sign-in/credential-manager)), but the underlying concepts—credential creation, challenge-response signing, and signature formatting—remain the same across all platforms.
+:::
+
 ## What you'll learn
 
 After completing this guide, you'll be able to:
@@ -120,6 +124,15 @@ const credential = await navigator.credentials.create({ publicKey: creationOptio
 // Send to wallet-core (or local) to extract COSE ECDSA P-256 public key (verify attestation if necessary)
 // Then register the raw uncompressed key bytes on the Flow account as ECDSA_P256/SHA2_256 (this guide's choice)
 ```
+
+:::tip RP ID for non-browser platforms
+For web applications, `rpId` is set to `window.location.hostname`. For native mobile and desktop applications, use your app's identifier instead:
+- **iOS**: Use your app's bundle identifier (e.g., `com.example.wallet`) or an associated domain
+- **Android**: Use your app's package name (e.g., `com.example.wallet`) or an associated domain
+- **Desktop**: Use your application identifier or registered domain
+
+The rpId must remain consistent across credential creation and assertion for the same user account.
+:::
 
 ### Extract and normalize public key
 
@@ -284,7 +297,8 @@ const { authenticatorData, clientDataJSON, signature } =
 ```
 
 :::note
-Wallets typically know which credential corresponds to the user's active account (selected during authentication/authorization), so they should pass that credential via `allowCredentials` to scope selection and minimize prompts. For discoverable credentials, omitting `allowCredentials` is also valid and lets the authenticator surface available credentials. See [WebAuthn specifications] for guidance.
+- **Credential selection**: Wallets typically know which credential corresponds to the user's active account (selected during authentication/authorization), so they should pass that credential via `allowCredentials` to scope selection and minimize prompts. For discoverable credentials, omitting `allowCredentials` is also valid and lets the authenticator surface available credentials. See [WebAuthn specifications] for guidance.
+- **RP ID consistency**: The `rpId` used here must match exactly what was used during credential creation. For non-browser platforms, use the same app identifier (bundle ID, package name, etc.) as in registration.
 :::
 
  
