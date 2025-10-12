@@ -37,6 +37,26 @@ After completing this guide, you'll be able to:
 - Generate the correct challenge for signing transactions (wallet sets SHA2‑256(signable))
 - Convert a WebAuthn ECDSA DER signature into Flow's raw `r||s` format and attach the transaction signature extension
 
+## Benefits of using passkeys
+
+**Sign transactions securely**  
+Users can sign Flow transactions using passkeys while the private key stays securely stored within the authenticator. This reduces the risk of key extraction attacks and phishing attempts.
+
+**Authenticate across devices**  
+Users can scan a QR code displayed on a desktop browser with a mobile device to approve transactions. Cloud-synchronized passkeys (such as those stored in Apple iCloud or Google Password Manager) enable authentication across multiple devices without manual key transfers.
+
+**Use hardware security keys**  
+Users can sign transactions with external security keys, such as YubiKeys, to add another layer of protection against phishing and unauthorized access.
+
+**Authenticate with platform-based security**  
+Users can sign transactions directly on devices with built-in authenticators, such as Face ID on iPhones or Windows Hello on Windows PCs. This approach enables native transaction signing without needing an external security key.
+
+**Recover access with cloud-synced passkeys**  
+Cloud-synced passkeys help users recover access if they lose a device, though this introduces trade-offs between convenience and self-custody (see [Limitations of passkeys](#limitations-of-passkeys)).
+
+**Work with multi-key accounts**  
+Combine passkeys with other authentication types using Flow's native [multi-key account support](../basics/accounts.md#account-keys) to build secure recovery options and shared access patterns with weighted keys.
+
 ## Prerequisites
 
 - Working knowledge of modern frontend (React/Next.js) and basic backend
@@ -379,6 +399,17 @@ function leftPad32(bytes: Uint8Array): Uint8Array {
 - Clearly communicate platform prompts and recovery paths; passkeys UX can differ across OS/browsers.
 - Replay protection: Flow uses on‑chain proposal‑key sequence numbers; see [Replay attacks].
 - Optional wallet backend: store short‑lived correlation data or rate‑limits as needed (not required).
+
+## Limitations of passkeys
+
+**Functionality varies by authenticator**  
+Some security keys do not support biometric authentication, requiring users to enter a PIN instead. Because WebAuthn does not provide access to private keys, users must either store their passkey securely or enable cloud synchronization for recovery.
+
+**Cloud synchronization introduces risks**  
+Cloud-synced passkeys improve accessibility but also create risks if a cloud provider is compromised or if a user loses access to their cloud account. Users who prefer full self-custody can use hardware-based passkeys that do not rely on cloud synchronization.
+
+**Passkeys cannot be exported**  
+Users cannot transfer a passkey between different authenticators. For example, a passkey created on a security key cannot move to another device unless it syncs through a cloud provider. To avoid losing access, users should set up authentication on multiple devices or combine passkeys with [multi-key account configurations](../basics/accounts.md#account-keys) for additional recovery options.
 
  
 ## Credential management (wallet responsibilities)
