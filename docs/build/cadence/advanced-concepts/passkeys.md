@@ -48,10 +48,6 @@ Users can sign Flow transactions using passkeys while the private key stays secu
 
 **Authenticate across devices**  
 Users can scan a QR code displayed on a desktop browser with a mobile device to approve transactions. Cloud-synchronized passkeys (such as those stored in Apple iCloud or Google Password Manager) enable authentication across multiple devices without manual key transfers.
-
-**Use hardware security keys**  
-Users can sign transactions with external security keys, such as YubiKeys, to add another layer of protection against phishing and unauthorized access.
-
 **Authenticate with platform-based security**  
 Users can sign transactions directly on devices with built-in authenticators, such as Face ID on iPhones or Windows Hello on Windows PCs. This approach enables native transaction signing without needing an external security key.
 
@@ -131,7 +127,7 @@ For web applications, `rpId` is set to `window.location.hostname`. For native mo
 - **Android**: Use your app's package name (e.g., `com.example.wallet`) or an associated domain
 - **Desktop**: Use your application identifier or registered domain
 
-The rpId must remain consistent across credential creation and assertion for the same user account.
+The rpId should remain consistent across credential creation and assertion for the same user account; however, this consistency is not validated or enforced by Flow.
 :::
 
 ### Extract and normalize public key
@@ -298,7 +294,7 @@ const { authenticatorData, clientDataJSON, signature } =
 
 :::note
 - **Credential selection**: Wallets typically know which credential corresponds to the user's active account (selected during authentication/authorization), so they should pass that credential via `allowCredentials` to scope selection and minimize prompts. For discoverable credentials, omitting `allowCredentials` is also valid and lets the authenticator surface available credentials. See [WebAuthn specifications] for guidance.
-- **RP ID consistency**: The `rpId` used here must match exactly what was used during credential creation. For non-browser platforms, use the same app identifier (bundle ID, package name, etc.) as in registration.
+- **RP ID consistency**: The `rpId` used here should match what was used during credential creation; however, Flow does not validate or enforce this (transactions would still pass even if different). For non-browser platforms, use the same app identifier (bundle ID, package name, etc.) as in registration.
 :::
 
  
