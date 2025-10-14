@@ -22,7 +22,7 @@ sidebar_position: 9
 
 # Passkeys
 
-This is a wallet‑centric guide (per [FLIP 264: WebAuthn Credential Support]) that covers end‑to‑end passkeys integration for Flow:
+This is a wallet‑centric, high‑level guide (per [FLIP 264: WebAuthn Credential Support]) with code snippets covering passkey registration and signing on Flow, focusing on nuances for passkey signing and account keys:
 
 1. Create a passkey and add a Flow account key
 2. Sign a transaction with the user's passkey (includes conversion, extension, and submission)
@@ -396,7 +396,7 @@ function leftPad32(bytes: Uint8Array): Uint8Array {
 
 ## Notes from the PoC
 
-- The [PoC demo](https://github.com/onflow/passkey-wallet-demo) demonstrates end‑to‑end flows for passkey creation and assertion, including:
+- The [PoC demo](https://github.com/onflow/passkey-wallet-demo) demonstrates reference flows for passkey creation and assertion, including:
   - Extracting and normalizing the ECDSA P‑256 public key for Flow
   - Building the correct challenge 
   - Converting DER signatures to raw `r||s`
