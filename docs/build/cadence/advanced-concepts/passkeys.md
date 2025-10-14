@@ -30,7 +30,7 @@ This is a wallet‑centric guide (per [FLIP 264: WebAuthn Credential Support]) t
 It accompanies the [PoC demo](https://github.com/onflow/passkey-wallet-demo) for reference and cites the FLIP where behavior is normative.
 
 :::note Platform-specific APIs
-This tutorial focuses on the **Web Authentication API** (WebAuthn) for browser-based applications. Other platforms such as iOS, Android, and desktop applications will require platform-specific APIs (e.g., Apple's [Authentication Services](https://developer.apple.com/documentation/authenticationservices), Android's [Credential Manager](https://developer.android.com/identity/sign-in/credential-manager)), but the underlying concepts—credential creation, challenge-response signing, and signature formatting—remain the same across all platforms.
+This tutorial focuses on the **Web Authentication API** (WebAuthn) for browser-based applications. Other platforms such as iOS, Android, and desktop applications will require platform-specific APIs (e.g., Apple's [Authentication Services](https://developer.apple.com/documentation/authenticationservices), Android's [Credential Manager](https://developer.android.com/identity/sign-in/credential-manager)), but the underlying concepts—credential creation, challenge signing, and signature formatting—remain the same across all platforms.
 :::
 
 ## What you'll learn
