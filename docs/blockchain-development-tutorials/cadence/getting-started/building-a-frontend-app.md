@@ -459,7 +459,7 @@ For additional details and advanced usage, refer to the [@onflow/react-sdk docum
 [`useFlowQuery`]: ../../../build/tools/react-sdk#useflowquery
 [`useFlowMutate`]: ../../../build/tools/react-sdk#useflowmutate
 [Dev Wallet]: ../../../build/tools/flow-dev-wallet
-[@onflow/react-sdk documentation]: ../../../build/tools/react-sdk/index.md
-[**@onflow/react-sdk**]: ../../../build/tools/react-sdk/index.md
+[@onflow/react-sdk documentation]: ../../../build/tools/react-sdk
+[**@onflow/react-sdk**]: ../../../build/tools/react-sdk
 [Flow CLI]: ../../../build/tools/flow-cli/install.md
 [Cadence VSCode extension]: ../../../build/tools/vscode-extension
