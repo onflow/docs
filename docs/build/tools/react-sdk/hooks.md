@@ -1,8 +1,10 @@
 ---
-title: 'Flow React SDK Hooks'
+title: 'Hooks'
 description: React hooks for interacting with the Flow blockchain.
 sidebar_position: 2
 ---
+
+import PlaygroundButton from '@site/src/components/PlaygroundButton';
 
 # React SDK Hooks
 
@@ -15,6 +17,8 @@ Many of these hooks are built using [`@tanstack/react-query`](https://tanstack.c
 ## Cadence Hooks
 
 ### `useFlowCurrentUser`
+
+<PlaygroundButton href="https://react.flow.com/#useflowcurrentuser" />
 
 ```tsx
 import { useFlowCurrentUser } from "@onflow/react-sdk"
@@ -52,6 +56,8 @@ function AuthComponent() {
 ---
 
 ### `useFlowAccount`
+
+<PlaygroundButton href="https://react.flow.com/#useflowaccount" />
 
 ```tsx
 import { useFlowAccount } from "@onflow/react-sdk"
@@ -91,6 +97,8 @@ function AccountDetails() {
 
 ### `useFlowBlock`
 
+<PlaygroundButton href="https://react.flow.com/#useflowblock" />
+
 ```tsx
 import { useFlowBlock } from "@onflow/react-sdk"
 ```
@@ -128,6 +136,8 @@ function LatestBlock() {
 
 ### `useFlowChainId`
 
+<PlaygroundButton href="https://react.flow.com/#useflowchainid" />
+
 ```tsx
 import { useFlowChainId } from "@onflow/react-sdk"
 ```
@@ -160,6 +170,8 @@ function ChainIdExample() {
 
 ### `useFlowClient`
 
+<PlaygroundButton href="https://react.flow.com/#useflowclient" />
+
 This hook returns the `FlowClient` for the current `<FlowProvider />` context.
 
 #### Parameters:
@@ -169,6 +181,8 @@ This hook returns the `FlowClient` for the current `<FlowProvider />` context.
 ---
 
 ### `useFlowConfig`
+
+<PlaygroundButton href="https://react.flow.com/#useflowconfig" />
 
 ```tsx
 import { useFlowConfig } from "@onflow/react-sdk"
@@ -192,6 +206,8 @@ function MyComponent() {
 ---
 
 ### `useFlowEvents`
+
+<PlaygroundButton href="https://react.flow.com/#useflowevents" />
 
 ```tsx
 import { useFlowEvents } from "@onflow/react-sdk"
@@ -226,6 +242,8 @@ function EventListener() {
 ---
 
 ### `useFlowQuery`
+
+<PlaygroundButton href="https://react.flow.com/#useflowquery" />
 
 ```tsx
 import { useFlowQuery } from "@onflow/react-sdk"
@@ -268,6 +286,8 @@ function QueryExample() {
 ---
 
 ### `useFlowQueryRaw`
+
+<PlaygroundButton href="https://react.flow.com/#useflowqueryraw" />
 
 ```tsx
 import { useFlowQueryRaw } from "@onflow/react-sdk"
@@ -314,6 +334,8 @@ function QueryRawExample() {
 ---
 
 ### `useFlowMutate`
+
+<PlaygroundButton href="https://react.flow.com/#useflowmutate" />
 
 ```tsx
 import { useFlowMutate } from "@onflow/react-sdk"
@@ -365,6 +387,8 @@ function CreatePage() {
 ---
 
 ### `useFlowRevertibleRandom`
+
+<PlaygroundButton href="https://react.flow.com/#useflowrevertiblerandom" />
 
 ```tsx
 import { useFlowRevertibleRandom } from "@onflow/react-sdk"
@@ -427,6 +451,8 @@ function RandomValues() {
 
 ### `useFlowTransaction`
 
+<PlaygroundButton href="https://react.flow.com/#useflowtransaction" />
+
 ```tsx
 import { useFlowTransaction } from "@onflow/react-sdk"
 ```
@@ -467,6 +493,8 @@ function TransactionDetails({ txId }: { txId: string }) {
 
 ### `useFlowTransactionStatus`
 
+<PlaygroundButton href="https://react.flow.com/#useflowtransactionstatus" />
+
 ```tsx
 import { useFlowTransactionStatus } from "@onflow/react-sdk"
 ```
@@ -496,6 +524,8 @@ function TransactionStatusComponent() {
 
 ### `useDarkMode`
 
+<PlaygroundButton href="https://react.flow.com/#usedarkmode" />
+
 ```tsx
 import { useDarkMode } from "@onflow/react-sdk"
 ```
@@ -524,6 +554,8 @@ function ThemeAwareComponent() {
 ## Cross-VM Hooks
 
 ### `useCrossVmBatchTransaction`
+
+<PlaygroundButton href="https://react.flow.com/#usecrossvmbatchtransaction" />
 
 ```tsx
 import { useCrossVmBatchTransaction } from "@onflow/react-sdk"
@@ -620,6 +652,8 @@ function CrossVmBatchTransactionExample() {
 
 ### `useCrossVmTokenBalance`
 
+<PlaygroundButton href="https://react.flow.com/#usecrossvmtokenbalance" />
+
 ```tsx
 import { useCrossVmTokenBalance } from "@onflow/react-sdk"
 ```
@@ -683,6 +717,8 @@ function UseCrossVmTokenBalanceExample() {
 ---
 
 ### `useCrossVmSpendNft`
+
+<PlaygroundButton href="https://react.flow.com/#usecrossvmspendnft" />
 
 ```tsx
 import { useCrossVmSpendNft } from "@onflow/react-sdk"
@@ -757,6 +793,8 @@ function CrossVmSpendNftExample() {
 
 ### `useCrossVmSpendToken`
 
+<PlaygroundButton href="https://react.flow.com/#usecrossvmspendtoken" />
+
 ```tsx
 import { useCrossVmSpendToken } from "@onflow/react-sdk"
 ```
@@ -829,6 +867,8 @@ function CrossVmSpendTokenExample() {
 ---
 
 ### `useCrossVmTransactionStatus`
+
+<PlaygroundButton href="https://react.flow.com/#usecrossvmtransactionstatus" />
 
 ```tsx
 import { useCrossVmTransactionStatus } from "@onflow/react-sdk"

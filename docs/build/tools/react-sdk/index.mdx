@@ -1,0 +1,185 @@
+---
+title: 'Flow React SDK'
+description: React hooks and components for interacting with the Flow blockchain.
+sidebar_position: 1
+---
+
+import ReactSDKOverview from '@site/src/components/ReactSDKOverview';
+import FlowProviderDemo from '@site/src/components/FlowProviderDemo';
+import { Connect } from '@onflow/react-sdk';
+
+# Flow React SDK
+
+**The easiest way to build React apps on Flow.** A lightweight, TypeScript-first library that makes Flow blockchain interactions feel native to React development.
+
+<ReactSDKOverview />
+
+## Quick Start
+
+### 1. Install
+
+```bash
+npm install @onflow/react-sdk
+```
+
+### 2. Wrap Your App
+
+```tsx
+import React from 'react';
+import App from './App';
+import { FlowProvider } from '@onflow/react-sdk';
+import flowJSON from '../flow.json';
+
+function Root() {
+  return (
+    <FlowProvider
+      config={{
+        accessNodeUrl: 'https://access-mainnet.onflow.org',
+        flowNetwork: 'mainnet',
+        appDetailTitle: 'My On Chain App',
+        appDetailIcon: 'https://example.com/icon.png',
+        appDetailDescription: 'A decentralized app on Flow',
+        appDetailUrl: 'https://myonchainapp.com',
+      }}
+      flowJson={flowJSON}
+      darkMode={false}
+    >
+      <App />
+    </FlowProvider>
+  );
+}
+
+export default Root;
+```
+
+:::tip Next.js Users
+Create a client component wrapper for the `FlowProvider`:
+
+```tsx title="components/FlowProviderWrapper.tsx"
+'use client';
+
+import { FlowProvider } from '@onflow/react-sdk';
+import flowJSON from '../flow.json';
+
+export default function FlowProviderWrapper({ children }) {
+  return (
+    <FlowProvider
+      config={{
+        accessNodeUrl: 'https://access-mainnet.onflow.org',
+        flowNetwork: 'mainnet',
+        appDetailTitle: 'My On Chain App',
+        appDetailIcon: 'https://example.com/icon.png',
+        appDetailDescription: 'A decentralized app on Flow',
+        appDetailUrl: 'https://myonchainapp.com',
+      }}
+      flowJson={flowJSON}
+    >
+      {children}
+    </FlowProvider>
+  );
+}
+```
+
+Then use it in your `layout.tsx`:
+
+```tsx title="app/layout.tsx"
+import FlowProviderWrapper from '@/components/FlowProviderWrapper';
+
+export default function RootLayout({ children }) {
+  return (
+    <html>
+      <body>
+        <FlowProviderWrapper>{children}</FlowProviderWrapper>
+      </body>
+    </html>
+  );
+}
+```
+
+:::
+
+### 3. Start Building
+
+```tsx
+import { useFlowCurrentUser, Connect, useFlowQuery } from '@onflow/react-sdk';
+
+function MyApp() {
+  const { user } = useFlowCurrentUser();
+
+  const { data: greeting } = useFlowQuery({
+    cadence: `access(all) fun main(): String { return "Hello, Flow!" }`,
+    args: (arg, t) => [],
+  });
+
+  return (
+    <div>
+      <Connect />
+      {user?.loggedIn && <p>Welcome, {user.addr}!</p>}
+      <p>{greeting}</p>
+    </div>
+  );
+}
+```
+
+---
+
+## 🎣 [Hooks](./hooks.md)
+
+**Cadence Hooks** for native Flow interactions:
+
+- Authentication & user management
+- Account details & balances
+- Block & transaction queries
+- Real-time event subscriptions
+- Script execution & mutations
+
+**Cross-VM Hooks** for bridging Cadence ↔ Flow EVM:
+
+- Atomic batch transactions
+- Token & NFT bridging
+- Cross-chain balance queries
+
+[→ View all hooks](./hooks.md)
+
+---
+
+## 🎨 [Components](./components.md)
+
+Beautiful, accessible UI components:
+
+- `<Connect />` – Wallet authentication with balance display
+- `<TransactionButton />` – Smart transaction execution
+- `<TransactionDialog />` – Real-time transaction tracking
+- `<TransactionLink />` – Network-aware block explorer links
+
+[→ View all components](./components.md)
+
+---
+
+## Why Choose React SDK?
+
+**Developer Experience First**
+
+- TypeScript-native with full type safety
+- Familiar React patterns and conventions
+- Comprehensive error handling and loading states
+
+**Production Ready**
+
+- Built on battle-tested libraries (TanStack Query, Tailwind CSS)
+- Automatic retries, caching, and background updates
+- Cross-VM support for hybrid Cadence/EVM applications
+
+**Customizable**
+
+- Theme system for brand consistency
+- Composable hooks for custom UI
+- Dark mode support out of the box
+
+---
+
+## Need Help?
+
+- 📖 **[Hooks Documentation](./hooks.md)** – Detailed API reference for all hooks
+- 🎨 **[Components Documentation](./components.md)** – UI components and theming guide
+- 🔗 **[Configuration Guide](../flow-cli/flow.json/configuration.md)** – Learn about configuring `flow.json`
