@@ -12,6 +12,9 @@ keywords:
   - resource-oriented programming
   - transaction composition
   - script queries
+  - contract upgrades
+  - contract updatability
+  - incremental upgrades
 ---
 
 # Cadence Advantages
@@ -28,9 +31,14 @@ Learn how to compose with someone else's on-chain contracts by writing a Cadence
 
 Discover how Cadence scripts provide native data availability, allowing you to query any on-chain data directly from Flow's state without relying on external indexers or APIs. This comprehensive tutorial shows you how to build scripts that can discover and query NFT collections across multiple child accounts using Hybrid Custody, then extend it to include both NBA Top Shot and NFL All Day NFTs. You'll learn to filter and process NFT collections, extract specific metadata, and compare Cadence's native data availability with Solidity's limitations.
 
+### [Upgrading Cadence Contracts]
+
+Learn how to upgrade deployed Cadence contracts through multiple incremental upgrades while preserving existing state and maintaining the same contract address. This tutorial demonstrates Cadence's sophisticated contract upgrade system through two realistic scenarios: first adding an event to notify users when the counter reaches an even number, then extending the contract with additional functionality like incrementing by 2 and checking if numbers are even. You'll understand what can and cannot be changed during upgrades, perform multiple contract updates using Flow CLI, and test upgraded functionality with comprehensive transactions and scripts.
+
 ## Conclusion
 
-Cadence's unique features—from resource-oriented programming to native data availability and seamless transaction composition—represent a fundamental advancement in smart contract development. These tutorials demonstrate how Cadence enables developers to build sophisticated applications with capabilities that simply aren't possible on other blockchain platforms, while maintaining security and developer experience as core principles.
+Cadence's unique features—from resource-oriented programming to native data availability, seamless transaction composition, and sophisticated contract upgrade capabilities—represent a fundamental advancement in smart contract development. These tutorials demonstrate how Cadence enables developers to build sophisticated applications with capabilities that simply aren't possible on other blockchain platforms, while maintaining security and developer experience as core principles.
 
 [Compose with Cadence Transactions]: ./compose-with-cadence-transactions.md
 [Native Data Availability with Cadence Scripts]: ./native-data-availibility-with-cadence-scripts.md
+[Upgrading Cadence Contracts]: ./upgrading-cadence-contracts.md
