@@ -81,9 +81,9 @@ $ tree ./bootstrap/
   └── random-beacon.priv.json.39fa54984b8eaa463e129919464f61c8cec3a4389478df79c44eb9bfbf30799a
 ```
 
-2. Adjust command line arguments
+2. Update command line arguments
 
-For the Forte upgrade, for all node type: Remove the `pebble-dir` argument as it has been deprecated.
+For the Forte upgrade, remove the `pebble-dir` argument as it has been deprecated. This applies to all node types.
 The node will continue to use the `datadir` argument which points to the location of the node database.
 
 
