@@ -21,6 +21,7 @@ The hardware your Node will need varies depending on the role your Node will pla
 
 <sub>1: Recommended with maintenance see: [pruning chunk data pack](https://forum.flow.com/t/execution-node-upgrade-to-v0-31-15-and-managing-disk-space-usage/5167), 30 TB without maintenance.</sub>
 
+
 _Note: The above numbers represent our current best estimate for the state of the network. These will be actively updated as we continue benchmarking the network's performance._
 
 _Note: If you are running your node on bare metal, we recommend provisioning a machine with higher CPU and memory than the minimum requirements. Unlike cloud instances, bare metal servers cannot be easily scaled up, and over-provisioning upfront helps avoid the need for disruptive hardware upgrades later._
