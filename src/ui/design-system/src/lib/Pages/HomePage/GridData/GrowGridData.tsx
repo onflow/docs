@@ -38,7 +38,7 @@ export const growGridData = {
           cardColor: 'black',
           icon: IconName.ACCESS_INCREDIBLE_IP,
           variant: 'horizontal',
-          href: '/ecosystem/Hackathons%20and%20Events',
+          href: '/ecosystem/hackathons-and-events',
         },
       ],
     },

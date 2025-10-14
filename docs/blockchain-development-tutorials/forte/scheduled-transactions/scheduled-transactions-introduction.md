@@ -38,7 +38,7 @@ Flow fixes this problem with **scheduled transactions**. Scheduled Transactions 
 After completing this tutorial, you will be able to:
 
 - Understand the concept of scheduled transactions and how they solve blockchain limitations
-- Explain the key components of the FlowTransactionScheduler system
+- Explain the key components of the `FlowTransactionScheduler` system
 - Implement a basic scheduled transaction using the provided scaffold
 - Analyze the structure and flow of scheduled transaction transactions
 - Create custom scheduled transaction contracts and handlers
@@ -52,9 +52,9 @@ This tutorial assumes you have a modest knowledge of [Cadence]. If you don't, yo
 
 ## Getting Started
 
-Begin by creating a new repo using the [Scheduled Transactions Scaffold] as a template.
+Begin by running `flow init` and select `Scheduled Transactions project`. Open the project.
 
-This repository has a robust quickstart in the readme. Complete that first. It doesn't seem like much at first. The counter was at `0`, you ran a transaction, now it's at `1`. What's the big deal?
+The readme has a robust getting started guide. Complete that to set up and run the demo scheduled transaction. It doesn't seem like much at first. The counter was at `0`, you ran a transaction, now it's at `1`. What's the big deal?
 
 Let's try again to make it clearer what's happening. Open `cadence/transactions/ScheduleIncrementIn.cdc` and look at the arguments for the transaction:
 
@@ -339,7 +339,7 @@ transaction() {
         // Create and save the Manager resource
         let manager <- FlowTransactionSchedulerUtils.createManager()
         signer.storage.save(<-manager, to: FlowTransactionSchedulerUtils.managerStoragePath)
-        
+
         // Create a capability for the Manager
         let managerCap = signer.capabilities.storage.issue<&FlowTransactionSchedulerUtils.Manager>(FlowTransactionSchedulerUtils.managerStoragePath)
 
@@ -364,6 +364,7 @@ manager.schedule(
 ```
 
 The Manager also provides utility methods for:
+
 - Scheduling another transaction with a previously used handler
 - Getting scheduled transaction information in many different ways
 - Canceling scheduled transactions
@@ -503,7 +504,7 @@ assert(
 if RickRollTransactionHandler.account.storage.borrow<&AnyResource>(from: /storage/RickRollTransactionHandler) == nil {
     let handler <- RickRollTransactionHandler.createHandler()
     RickRollTransactionHandler.account.storage.save(<-handler, to: /storage/RickRollTransactionHandler)
-    
+
     // Issue a non-entitled public capability for the handler that is publicly accessible
     let publicCap = RickRollTransactionHandler.account.capabilities.storage
         .issue<&{FlowTransactionScheduler.TransactionHandler}>(/storage/RickRollTransactionHandler)

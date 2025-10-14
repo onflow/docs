@@ -102,7 +102,7 @@ Once you have the Flow CLI installed, you can set up a new project using the `fl
 flow init FooToken
 ```
 
-> Note: Select "No" when it asks you to install core contracts for the purposes of this tutorial.
+Select `Basic Cadence project (no dependencies)`.
 
 Upon execution, the command will generate the following directory structure:
 

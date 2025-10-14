@@ -13,22 +13,12 @@ flow init
 ```
 
 This command will:
+
 - Create a new `flow.json` configuration file
 - Set up default networks (emulator, testnet, mainnet)
 - Create an emulator service account
 - Generate a basic project structure with `cadence/` directories
-
-## Example Output
-
-```shell
-> flow init
-
-Configuration initialized
-Service account: 0xf8d6e0586b0a20c7
-
-Start emulator by running: 'flow emulator' 
-Reset configuration using: 'flow init --reset'
-```
+- Give you options for project scaffolding
 
 ## Project Structure
 
@@ -54,6 +44,7 @@ flow init --config-only
 ```
 
 This is useful when:
+
 - You already have a project structure
 - You want to add Flow configuration to an existing project
 - You're setting up configuration for a specific environment
@@ -67,10 +58,12 @@ flow init --global
 ```
 
 **Global configuration locations:**
+
 - **macOS/Linux:** `~/flow.json`
 - **Windows:** `C:\Users\$USER\flow.json`
 
 **Priority order:**
+
 1. Local `flow.json` (highest priority)
 2. Global `flow.json` (lowest priority)
 
@@ -85,6 +78,7 @@ If a `flow.json` file already exists, you'll see this error:
 ```
 
 **Solutions:**
+
 - Delete the existing `flow.json` file first
 - Initialize in a different directory
 - Use `--config-only` to create a new config in a different location
@@ -98,8 +92,6 @@ flow init --config-only
 ```
 
 Creates only the `flow.json` file without project structure.
-
-
 
 ### Global Flags
 
@@ -133,9 +125,3 @@ After initializing your configuration:
 - [`flow config add`](./manage-configuration.md) - Add configuration items
 - [`flow accounts create`](../accounts/create-accounts.md) - Create new accounts
 - [`flow project deploy`](../deployment/deploy-project-contracts.md) - Deploy contracts
-
-
-
-
-
-

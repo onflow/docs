@@ -316,110 +316,103 @@ const config = {
         style: 'dark',
         links: [
           {
-            title: 'Documentation',
+            title: 'Flow',
             items: [
               {
-                label: 'Getting Started',
-                to: '/blockchain-development-tutorials/cadence/getting-started/smart-contract-interaction',
+                label: 'Build with AI',
+                to: '/blockchain-development-tutorials/use-AI-to-build-on-flow',
               },
               {
-                label: "Tools & SDKs",
+                label: 'Why Flow',
+                to: '/blockchain-development-tutorials/flow-101',
+              },
+              {
+                label: 'Tools',
                 to: '/build/tools',
               },
               {
-                to: 'https://cadence-lang.org/docs/',
-                label: 'Cadence',
+                label: 'Faucet',
+                to: '/ecosystem/faucets',
               },
               {
-                to: '/blockchain-development-tutorials/cadence/mobile',
-                label: 'Mobile',
-              },
-              {
-                to: '/build/tools/clients/fcl-js/',
-                label: 'FCL',
-              },
-              {
-                to: '/build/cadence/smart-contracts/testing',
-                label: 'Testing',
-              },
-              {
-                to: '/build/tools/flow-cli/',
-                label: 'CLI',
-              },
-              {
-                to: '/build/tools/emulator/',
-                label: 'Emulator',
-              },
-              {
-                href: 'https://github.com/onflow/fcl-dev-wallet',
-                label: 'Dev Wallet',
-              },
-              {
-                to: '/build/tools/vscode-extension/',
-                label: 'VS Code Extension',
+                label: 'Builder Toolkit',
+                to: '/ecosystem/developer-support-hub',
               },
             ],
           },
           {
-            title: 'Community',
+            title: 'Cadence',
             items: [
               {
-                to: '/ecosystem',
-                label: 'Ecosystem',
+                label: 'Quickstart',
+                to: '/blockchain-development-tutorials/cadence/getting-started',
               },
               {
-                href: 'https://port.flow.com/',
-                label: 'Flow Port',
+                label: 'Build with Forte',
+                to: '/blockchain-development-tutorials/forte',
               },
               {
-                href: 'https://github.com/onflow/developer-grants',
-                label: 'Developer Grants',
+                label: 'Cadence Advantages',
+                to: '/blockchain-development-tutorials/cadence/cadence-advantages',
               },
               {
-                href: 'https://flow.com/flow-responsible-disclosure',
-                label: 'Responsible Disclosure',
+                label: 'React SDK',
+                to: '/build/tools/react-sdk',
               },
               {
-                href: 'https://www.flowverse.co/',
-                label: 'Flowverse',
-              },
-              {
-                href: 'https://academy.ecdao.org/',
-                label: 'Emerald Academy',
-              },
-              {
-                href: 'https://floats.city/',
-                label: 'FLOATs (Attendance NFTs)',
-              },
+                label: 'Language Reference',
+                href: 'https://cadence-lang.org/',
+              }
             ],
           },
           {
-            title: 'Start Building',
+            title: 'Solidity (EVM)',
             items: [
               {
-                href: 'https://play.flow.com/',
-                label: 'Flow Playground',
+                label: 'Quickstart',
+                to: '/build/evm/quickstart',
               },
               {
-                to: 'https://cadence-lang.org/docs/tutorial/first-steps',
-                label: 'Cadence Tutorials',
+                label: 'Native VRF',
+                to: '/blockchain-development-tutorials/native-vrf',
               },
               {
-                href: 'https://cookbook.flow.com',
-                label: 'Cadence Cookbook',
+                label: 'Batched Transactions',
+                to: '/blockchain-development-tutorials/cross-vm-apps',
               },
               {
-                to: '/build/cadence/core-contracts/',
-                label: 'Core Contracts & Standards',
+                label: 'Network Information',
+                href: '/build/evm/networks',
+              }
+            ],
+          },
+          {
+            title: 'Community & Support',
+            items: [
+              {
+                label: 'Dev Office Hours',
+                href: 'https://calendar.google.com/calendar/u/0/embed?src=c_47978f5cd9da636cadc6b8473102b5092c1a865dd010558393ecb7f9fd0c9ad0@group.calendar.google.com',
               },
               {
-                href: '/build/evm/quickstart',
-                label: 'EVM',
+                label: 'Hackathons and Events',
+                to: '/ecosystem/hackathons-and-events',
+              },
+              {
+                href: 'https://discord.gg/flow',
+                label: 'Discord',
+              },
+              {
+                href: 'https://github.com/onflow',
+                label: 'GitHub',
+              },
+              {
+                href: 'https://flow.com/careers',
+                label: 'Careers',
               },
             ],
           },
           {
-            title: 'Network',
+            title: 'Network & Resources',
             items: [
               {
                 href: 'https://status.flow.com/',
@@ -427,53 +420,24 @@ const config = {
               },
               {
                 href: 'https://flowscan.io/',
-                label: 'Flowscan Mainnet',
+                label: 'Block Explorer',
               },
               {
-                href: 'https://testnet.flowscan.io/',
-                label: 'Flowscan Testnet',
-              },
-              {
-                to: '/protocol/node-ops/node-operation/past-upgrades',
-                label: 'Past Sporks',
-              },
-              {
-                to: '/protocol/node-ops',
-                label: 'Node Operation',
-              },
-              {
-                to: '/protocol/node-ops/node-operation/network-upgrade',
-                label: 'Spork Information',
-              },
-            ],
-          },
-          {
-            title: 'More',
-            items: [
-              {
-                href: 'https://github.com/onflow',
-                label: 'GitHub',
-              },
-              {
-                href: 'https://discord.gg/flow',
-                label: 'Discord',
-              },
-              {
-                href: 'https://forum.flow.com/',
-                label: 'Forum',
+                href: 'https://port.flow.com/',
+                label: 'Flow Port',
               },
               {
                 href: 'https://flow.com/',
-                label: 'Flow',
+                label: 'Flow Website',
               },
               {
                 href: 'https://flow.com/blog',
-                label: 'Blog',
+                label: 'Flow Blog',
               },
             ],
           },
         ],
-        copyright: `Copyright © ${new Date().getFullYear()} Flow, Inc. Built with Docusaurus.`,
+        copyright: `Copyright © ${new Date().getFullYear()} Flow Foundation. All Rights Reserved.`,
       },
       prism: {
         theme: lightCodeTheme,

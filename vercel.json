@@ -2042,6 +2042,31 @@
       "source": "/build/cadence/language/access-control",
       "destination": "https://cadence-lang.org/docs/language/access-control",
       "permanent": true
+    },
+    {
+      "source": "/ecosystem/hackathons-and-events/may-the-flow-be-with-you",
+      "destination": "/ecosystem/hackathons-and-events",
+      "permanent": true
+    },
+    {
+      "source": "/ecosystem/hackathons-and-events",
+      "destination": "/ecosystem/hackathons-and-events",
+      "permanent": true
+    },
+    {
+      "source": "/protocol/staking/staking-guide",
+      "destination": "/protocol/staking",
+      "permanent": true
+    },
+    {
+      "source": "/build/tools/flow-cli/deployment/emulator-snapshot",
+      "destination": "/build/tools/emulator",
+      "permanent": true
+    },
+    {
+      "source": "/build/tools/flow-cli/deployment/start-emulator",
+      "destination": "/build/tools/emulator",
+      "permanent": true
     }
   ]
 }

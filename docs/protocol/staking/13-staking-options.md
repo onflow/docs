@@ -22,14 +22,3 @@ The staking collection paradigm is the most flexible of the three choices
 and will receive the most support in the future. It is the set-up that Flow Port and many other staking providers use.
 
 The staking collection setup and guide is detailed in the [staking collection guide.](./14-staking-collection.md)
-
-# Staking
-
-The basic method to stake is to stake directly with the `FlowIDTableStaking` smart contract.
-This would involve calling the node or delegator registration functions directly in the staking
-contract and storing the staking objects directly in account storage.
-
-This is probably the simplest way to implement this, but it is not very flexible
-and not recommended.
-
-The basic staking guide is detailed [here](./15-staking-guide.md)

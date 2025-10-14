@@ -46,7 +46,8 @@ You'll work with a `Counter` contract—a simple but comprehensive example that 
 
 **Time Commitment:** Approximately 30-45 minutes
 
-**Prerequisites:** 
+**Prerequisites:**
+
 - Basic command line familiarity
 - Code editor (VSCode recommended)
 - Node.js installed (for future frontend development)
@@ -91,8 +92,9 @@ flow init
 ```
 
 When prompted:
+
 1. **Project name:** Enter your preferred project name
-2. **Install core contracts:** Select `No` for this tutorial
+2. Select `Basic Cadence project (no dependencies)`.
 
 The `flow init` command creates:
 
@@ -182,7 +184,6 @@ access(all) contract Counter {
 - **Events**: `CounterIncremented` and `CounterDecremented` notify listeners when changes occur
 - **Initializer**: `init()` sets the initial count to 0 when the contract is deployed
 - **Public Functions**:
-
   - `increment()`: Increases count by 1 and emits an event
   - `decrement()`: Decreases count by 1 and emits an event
   - `getCount()`: Returns the current count (read-only, marked with `view`)
@@ -219,18 +220,18 @@ This shows which networks your configured accounts are accessible on:
 🌐 Network  🟢 Local (running)  🔴 Local (stopped)  ✓ Found  ✗ Error
 ─────────────────────────────────────────────────────
 
-🟢 emulator  
+🟢 emulator
     ✓ default (f3fcd2c1a78f5eee): 0.00100000 FLOW
     ✓ emulator-account (f8d6e0586b0a20c7): 999999999.99300000 FLOW
     ✓ test-account (e03daebed8ca0615): 0.00100000 FLOW
 
-🌐 mainnet   
+🌐 mainnet
   No accounts found
 
-🌐 testnet   
+🌐 testnet
   No accounts found
 
-🟢 testing   
+🟢 testing
     ✓ default (f3fcd2c1a78f5eee): 0.00100000 FLOW
     ✓ emulator-account (f8d6e0586b0a20c7): 999999999.99300000 FLOW
     ✓ test-account (e03daebed8ca0615): 0.00100000 FLOW
@@ -239,7 +240,7 @@ This shows which networks your configured accounts are accessible on:
 💡 Tip: To fund testnet accounts, run: flow accounts fund
 ```
 
-This is a great tool to visualize your different accounts and balances when you are developing. 
+This is a great tool to visualize your different accounts and balances when you are developing.
 
 ### Configure Contract Deployment
 
@@ -250,6 +251,7 @@ flow config add deployment
 ```
 
 Follow the prompts:
+
 1. **Network:** Select `emulator`
 2. **Account:** Select `test-account`
 3. **Contract:** Select `Counter`
@@ -390,15 +392,18 @@ If you want to learn more about writing transactions, please read the docs for [
 You've successfully established a solid foundation for building on Flow. Let's recap what you've accomplished and learned. Through this hands-on tutorial, you've successfully built a complete Flow development foundation:
 
 ✅ **Complete Flow Development Environment**
+
 - Flow CLI installed and configured for project management
 - Local Flow emulator running and ready for development
 - Project creation and management workflow with `flow init`
 
 ✅ **Smart Contract Deployment Skills**
+
 - Counter contract successfully deployed to your local emulator
 - Account creation and contract deployment configuration mastered
 
 ✅ **Blockchain Interactions**
+
 - Scripts to query contract state (reading blockchain data)
 - Transactions to modify contract state (writing to blockchain)
 - Real-time interaction with blockchain data through CLI commands

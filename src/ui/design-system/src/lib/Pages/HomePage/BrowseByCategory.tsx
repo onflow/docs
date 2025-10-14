@@ -75,7 +75,7 @@ const CATEGORIES = [
       { label: 'VCs & Funds', href: '/ecosystem/vcs-and-funds' },
       { label: 'Faucets', href: '/ecosystem/faucets' },
       { label: 'Grants', href: '/ecosystem/grants' },
-      { label: 'Hackathons and Events', href: '/ecosystem/Hackathons%20and%20Events' },
+      { label: 'Hackathons and Events', href: '/ecosystem/hackathons-and-events' },
       { label: 'Auditors', href: '/ecosystem/auditors' },
     ],
   },
