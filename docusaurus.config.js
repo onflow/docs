@@ -395,7 +395,7 @@ const config = {
               },
               {
                 label: 'Hackathons and Events',
-                to: '/ecosystem/Hackathons%20and%20Events',
+                to: '/ecosystem/hackathons-and-events',
               },
               {
                 href: 'https://discord.gg/flow',
