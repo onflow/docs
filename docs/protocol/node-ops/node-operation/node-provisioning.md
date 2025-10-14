@@ -13,13 +13,13 @@ The hardware your Node will need varies depending on the role your Node will pla
 |:----------------:|:----------------------------:|:-----------------------:|:--------:|:--------------------:|:--------------------:|
 |  **Collection**  | 2 cores 🆕<br>(was 4 cores)  | 8 GB 🆕<br>(was 32 GB)  |  200 GB  |    n2-standard-2     |       m5.large       |
 |  **Consensus**   |           2 cores            | 8 GB 🆕<br>(was 16 GB)  |  200 GB  |    n2-standard-2     |       m5.large       |
-|  **Execution**   |          128 cores           |         864 GB          | 9 TB[^1] |    n2-highmem-128    |                      |
+|  **Execution**   |          128 cores           |         864 GB          | 9 TB<sup>1</sup> |    n2-highmem-128    |                      |
 | **Verification** |           2 cores            | 8 GB 🆕<br>(was 16 GB)  |  200 GB  |    n2-standard-2     |       m5.large       |
 |    **Access**    | 8 cores 🆕<br>(was 16 cores) | 32 GB 🆕<br>(was 64 GB) |  750 GB  |    n2-standard-8     |      m5.2xlarge      |
 |   **Observer**   |           2 cores            |          4 GB           |  300 GB  |    n2-standard-4     |      m6i.xlarge      |
 | **EVM Gateway**  |           2 cores            |          32 GB          |  30 GB   |     n2-highmem-4     |      r6i.xlarge      |
 
- [^1]: Recommended with maintenance see: [pruning chunk data pack](https://forum.flow.com/t/execution-node-upgrade-to-v0-31-15-and-managing-disk-space-usage/5167), 30 TB without maintenance.
+<sub>1: Recommended with maintenance see: [pruning chunk data pack](https://forum.flow.com/t/execution-node-upgrade-to-v0-31-15-and-managing-disk-space-usage/5167), 30 TB without maintenance.</sub>
 
 _Note: The above numbers represent our current best estimate for the state of the network. These will be actively updated as we continue benchmarking the network's performance._
 
