@@ -16,12 +16,14 @@ Network Upgrades are approximately once every year.
 Upcoming network upgrades are announced in advance on the `#flow-validators-announcements` [Discord channel](https://discord.gg/flow) and on the [status](https://status.flow.com/) page.
 The `#flow-validators-announcements` channel is also used to coordinate during the upgrade process with all the node operators.
 
+> 📢 [Forte Upgrade](https://status.flow.com/incidents/x91d6t1x1qh4) on Wednesday, Oct 22nd, 2025 at 15:00 UTC
+
 This guide is for existing operators participating in a network upgrade. See [Node Bootstrap](./node-bootstrap.md)
 for a guide to joining the network for the first time.
 
 ## Step 1 - Cleaning Up Previous Spork State
 
-Once the spork start has been announced on, stop your node and clear your database. The node should stay stopped for the duration of the spork.
+Once the spork start has been announced on Discord, stop your node and clear your database. The node should stay stopped for the duration of the spork.
 
 <Callout type="warning">
   You can skip this step if it is your first time running a node on Flow.
@@ -54,7 +56,8 @@ If you had set the [dynamic bootstrap arguments](https://developers.flow.com/pro
     - It will generally be `testnet-x` or `mainnet-x` if execution data indexing is not enabled.
     - It will generally be `testnet-x-execution` or `mainnet-x-execution` if execution data indexing is enabled. See [here](../access-nodes/access-node-configuration-options.md) to enable execution date indexing.
 
-- `YOUR_NODE_TYPE` should be one of `collection`, `consensus`, `execution`, `verification`, `access` based on the node(s) that you are running.
+- `YOUR_NODE_TYPE` should be one of `collection`, `consensus`, `execution`, `verification` based on the node(s) that you are running.
+  - For access nodes however, if you have execution data index enabled use the role `execution` otherwise use `access`.
 
 ```shell Example
 $ ./boot-tools/transit pull -b ./bootstrap -t mainnet-16  -r consensus
@@ -78,7 +81,17 @@ $ tree ./bootstrap/
   └── random-beacon.priv.json.39fa54984b8eaa463e129919464f61c8cec3a4389478df79c44eb9bfbf30799a
 ```
 
-2. Start your Flow node via `docker` or `systemd`
+2. Adjust command line arguments
+
+For the Forte upgrade, for all node type: Remove the `pebble-dir` argument as it has been deprecated.
+The node will continue to use the `datadir` argument which points to the location of the node database.
+
+
+3. Start your Flow node via `docker` or `systemd`
+
+The FlowFoundation team will share the new docker tag at the completion of the upgrade. Please use that docket tag to bring up the node.
+
+You can also compile and run the node software from [source](https://github.com/onflow/flow-go). The release tag will also be shared at the completion of the upgrade.
 
 See [Node Bootstrap](./node-bootstrap.md) for detailed information on Docker/Systemd configuration.
 
