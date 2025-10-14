@@ -48,6 +48,7 @@ Users can sign Flow transactions using passkeys while the private key stays secu
 
 **Authenticate across devices**  
 Users can scan a QR code displayed on a desktop browser with a mobile device to approve transactions. Cloud-synchronized passkeys (such as those stored in Apple iCloud or Google Password Manager) enable authentication across multiple devices without manual key transfers.
+
 **Authenticate with platform-based security**  
 Users can sign transactions directly on devices with built-in authenticators, such as Face ID on iPhones or Windows Hello on Windows PCs. This approach enables native transaction signing without needing an external security key.
 
