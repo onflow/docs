@@ -91,8 +91,6 @@ The node will continue to use the `datadir` argument which points to the locatio
 
 The FlowFoundation team will share the new docker tag at the completion of the upgrade. Please use that docker tag to bring up the node.
 
-You can also compile and run the node software from [source](https://github.com/onflow/flow-go). The release tag will also be shared at the completion of the upgrade.
-
 See [Node Bootstrap](./node-bootstrap.md) for detailed information on Docker/Systemd configuration.
 
 ## Common Issues
