@@ -21,6 +21,18 @@ keywords:
 
 The Cadence is designed for the next generation of apps, games, and digital assets. This comprehensive tutorial series will guide you from setting up your development environment to deploying production-ready applications on Flow's mainnet while a complete Counter application that demonstrates all essential Flow development patterns.
 
+<div style={{ position: 'relative', paddingBottom: '56.25%', height: 0, overflow: 'hidden', maxWidth: '100%' }}>
+  <iframe 
+    style={{ position: 'absolute', top: 0, left: 0, width: '100%', height: '100%' }}
+    src="https://www.youtube.com/embed/Bagn8kGllCU?si=5FUZit9bSrBCVGPk" 
+    title="YouTube video player" 
+    frameborder="0" 
+    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+    referrerpolicy="strict-origin-when-cross-origin" 
+    allowfullscreen
+  ></iframe>
+</div>
+
 ## What You'll Learn
 
 In this tutorial series, you'll discover how to:
@@ -73,7 +85,7 @@ Tutorial: [Production Deployment]
 After completing these tutorials, you'll be equipped with the fundamental skills needed for Flow development. Consider exploring our other tutorial series to expand your blockchain development expertise:
 
 - [Cross-VM Apps] - Build applications that integrate Flow EVM and Cadence
-- [Native VRF] - Implement verifiable random functions in your applications  
+- [Native VRF] - Implement verifiable random functions in your applications
 - [Token Launch] - Create and launch tokens on Flow
 
 <!-- Relative links -->
