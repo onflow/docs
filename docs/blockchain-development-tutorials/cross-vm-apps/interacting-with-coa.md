@@ -135,6 +135,45 @@ transaction() {
 }
 ```
 
+### Creating a Cadence Account and COA together
+
+It is possible to create a new Cadence account and COA within the same transaction. This transaction will need to be signed and paid for by another account, but any account will do. A common process is to set up a backend service to handle this function.
+
+:::info
+
+During the singular transaction in which an account is created, the `AuthAccount` object for the newly created account is present. As a result, the creating account can access and modify the new account's storage **only** during this transaction.
+
+:::
+
+First, you'll need to use the CLI to [generate keys](../../build/tools/flow-cli/keys/generate-keys.md) for the new account. Then, simply run the following transaction to create the Cadence Account and COA at once.
+
+:::warning
+
+This is a very minimal example. You may wish to set up vaults and perform other actions during account creation.
+
+:::
+
+```cadence
+import Crypto
+
+transaction(publicKeys: [Crypto.KeyListEntry]) {
+    prepare(signer: auth(BorrowValue) &Account) {
+
+        let newAccount = Account(payer: signer)
+
+        for key in publicKeys {
+            newAccount.keys.add(publicKey: key.publicKey, hashAlgorithm: key.hashAlgorithm, weight: key.weight)
+        }
+
+        let coa <- EVM.createCadenceOwnedAccount()
+        let coaPath = /storage/evm
+        newAccount.storage.save(<-coa, to: coaPath)
+        let coaCapability = newAccount.capabilities.storage.issue<&EVM.CadenceOwnedAccount>(coaPath)
+        newAccount.capabilities.publish(coaCapability, at: /public/evm)
+    }
+}
+```
+
 ## Getting the EVM Address of a COA
 
 To get the EVM address of a COA, you can use the `address` function from the `EVM` contract. This function returns the
