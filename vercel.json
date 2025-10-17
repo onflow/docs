@@ -2049,11 +2049,6 @@
       "permanent": true
     },
     {
-      "source": "/ecosystem/hackathons-and-events",
-      "destination": "/ecosystem/hackathons-and-events",
-      "permanent": true
-    },
-    {
       "source": "/protocol/staking/staking-guide",
       "destination": "/protocol/staking",
       "permanent": true
