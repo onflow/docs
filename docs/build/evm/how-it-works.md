@@ -16,6 +16,18 @@ Flow EVM is designed with these major goals in mind:
 - Minimizing breaking changes to the Cadence ecosystem, software and tools
 - Maximum composability across environments: Allowing atomic and smooth interaction between EVM and Cadence environments.
 
+<div style={{ position: 'relative', paddingBottom: '56.25%', height: 0, overflow: 'hidden', maxWidth: '100%' }}>
+  <iframe 
+    style={{ position: 'absolute', top: 0, left: 0, width: '100%', height: '100%' }}
+    src="https://www.youtube.com/embed/U4tR8abpclQ?si=dOGAJ1-QSDsscXKB" 
+    title="YouTube video player" 
+    frameborder="0" 
+    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+    referrerpolicy="strict-origin-when-cross-origin" 
+    allowfullscreen
+  ></iframe>
+</div>
+
 ### EVM - A Smart Contract In Cadence
 
 To satisfy the design goals and thanks to the extensibility properties of the Cadence runtime, Flow EVM is designed as a higher-level environment incorporated as a smart contract deployed to Cadence. This smart contract is not owned by anyone and has its own storage space, allows Cadence to query, and is updated through EVM transactions. EVM transactions can be wrapped inside Cadence transactions and passed to the EVM contract for execution. The artifacts of EVM transaction execution (e.g. receipts and logs) are emitted as special Cadence events (TransactionExecuted, BlockExecuted) and available to the upstream process (Flow transaction) to enable atomic operations.

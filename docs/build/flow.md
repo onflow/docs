@@ -38,6 +38,18 @@ Dieter Shirley, Chief Architect of Flow and co-author of the [ERC-721 NFT standa
 
 > **_A computer that anyone can use, everyone can trust, and no one can shut down_**
 
+<div style={{ position: 'relative', paddingBottom: '56.25%', height: 0, overflow: 'hidden', maxWidth: '100%' }}>
+  <iframe 
+    style={{ position: 'absolute', top: 0, left: 0, width: '100%', height: '100%' }}
+    src="https://www.youtube.com/embed/u0HMmIGRrFc?si=LO3cigYf1CgENn5C" 
+    title="YouTube video player" 
+    frameborder="0" 
+    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+    referrerpolicy="strict-origin-when-cross-origin" 
+    allowfullscreen
+  ></iframe>
+</div>
+
 Much of the protocol design is based on lessons learned from building Web3 applications while working at [Dapper Labs], particularly [CryptoKitties] — the first onchain game to reach [widespread popularity]. The game went viral, then [struggled under its own success] when it caused so much traffic that the Ethereum network itself was overwhelmed by the load.
 
 The design of Flow was guided by the need to alleviate this burden while creating the best experience possible for both developers and users. The blockchain network of the future must be able to handle millions of users while upholding the key pillars of decentralization:
