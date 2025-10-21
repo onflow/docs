@@ -56,6 +56,13 @@ const contracts: ContractData[] = [
       'https://flowscan.io/ft/token/A.1e4aa0b87d10b141.EVMVMBridgedToken_2aabea2058b5ac2d339b163c6ab6f2b6d53aabed.Vault',
   },
   {
+    name: 'USDF (Mock)',
+    cadenceAddress: '0xb7ace0a920d2c37d',
+    cadenceName: 'EVMVMBridgedToken_2aabea2058b5ac2d339b163c6ab6f2b6d53aabed',
+    cadenceUrl:
+      'https://flowscan.io/ft/token/A.b7ace0a920d2c37d.EVMVMBridgedToken_2aabea2058b5ac2d339b163c6ab6f2b6d53aabed.Vault',
+  },
+  {
     name: 'USDC.e (Celer)',
     evmAddress: '0x7f27352D5F83Db87a5A3E00f4B07Cc2138D8ee52',
     cadenceAddress: '0xf1ab99c82dee3526',
