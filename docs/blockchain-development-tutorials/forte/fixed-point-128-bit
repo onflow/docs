@@ -17,7 +17,7 @@ sidebar_label: DeFi Math Utils
 
 # High-Precision Fixed-Point 128 Bit Math 
 
-`DeFiActionsMathUtils` provides a standardized library for high-precision mathematical operations in DeFi applications on Flow. The contract extends Cadence's native 8-decimal precision (`UFix64`) to 24 decimals using `UInt128` for intermediate calculations, ensuring accuracy in complex financial computations while maintaining deterministic results across the network.
+Dealing with decimals is a notorious issue for most developers on other chains, especially when working with DeFi. Blockchains are deterministic systems and floating-point arithmetic is non-deterministic across different compilers and architectures, this is why blockchains use fixed-point arithmetic via integers (scaling numbers by a fixed factor). The issue with this is that these fixed-point integers tend to be very imprecise when using various mathematical operations on them. The more operations you apply to these numbers, the more imprecise these numbers become. However [`DeFiActionsMathUtils`] provides a standardized library for high-precision mathematical operations in DeFi applications on Flow. The contract extends Cadence's native 8-decimal precision (`UFix64`) to 24 decimals using `UInt128` for intermediate calculations, ensuring accuracy in complex financial computations while maintaining deterministic results across the network.
 
 Through integration of this math utility library, developers can ensure that their DeFi protocols perform precise calculations for liquidity pools, yield farming, token swaps, and other financial operations without accumulating rounding errors.
 
@@ -50,11 +50,11 @@ let output = afterFee * price            // More precision lost
 let finalAmount = output / someRatio     // Even more precision lost
 ```
 
-After 3-4 sequential operations, the cumulative rounding error can be significant, especially when dealing with large amounts.
+After 3-4 sequential operations, the cumulative rounding error can be significant, especially when dealing with large amounts. Assuming a rounding error with 8 decimals (1.234567885 rounds up to 1.23456789, causing a rounding error of 0.000000005), then after 100 operations with this error and dealing with 1 million dollars USDF, the protocol is losing $0.5 in revenue from this lack of precision. This might not seem like a lot, but if we consider the TVL of Aave, which is around 40 billion USD, then that loss results in $20,000 USD!  
 
 ## The Solution: 24-Decimal Precision
 
-`DeFiActionsMathUtils` solves this by using `UInt128` to represent fixed-point numbers with 24 decimal places (scaling factor of 10^24). This provides 16 additional decimal places for intermediate calculations, dramatically reducing precision loss.
+[`DeFiActionsMathUtils`] solves this by using `UInt128` to represent fixed-point numbers with 24 decimal places (scaling factor of 10^24). This provides 16 additional decimal places for intermediate calculations, dramatically reducing precision loss.
 
 :::Warning
 
@@ -100,19 +100,21 @@ These constants ensure consistent scaling across all operations.
 
 ## Rounding Modes
 
-Financial applications require different rounding strategies depending on the context. `DeFiActionsMathUtils` provides four rounding modes:
+Smart rounding is the strategic selection of rounding strategies based on the financial context of your calculation. After performing high-precision calculations at 24 decimals, the final results must be converted back to `UFix64` (8 decimals), and how you handle this conversion can protect your protocol from losses, ensure fairness to users, and reduce systematic bias.
+
+[`DeFiActionsMathUtils`] provides four rounding modes, each optimized for specific financial scenarios:
 
 ```cadence
 access(all) enum RoundingMode: UInt8 {
     /// Rounds down (floor) - use for payouts
     access(all) case RoundDown
-    
+
     /// Rounds up (ceiling) - use for fees/liabilities
     access(all) case RoundUp
-    
+
     /// Standard rounding: < 0.5 down, >= 0.5 up
     access(all) case RoundHalfUp
-    
+
     /// Banker's rounding: ties round to even number
     access(all) case RoundEven
 }
@@ -120,28 +122,28 @@ access(all) enum RoundingMode: UInt8 {
 
 ### When to Use Each Mode
 
-**RoundDown** - Conservative for user payouts:
+**RoundDown** - Choose this when calculating user payouts, withdrawals, or rewards. By rounding down, your protocol retains any fractional amounts, protecting against losses from accumulated rounding errors. This is the conservative choice when funds leave your protocol.
 
 ```cadence
 // When calculating how much to pay out to users
 let userReward = DeFiActionsMathUtils.toUFix64RoundDown(calculatedReward)
 ```
 
-**RoundUp** - Conservative for protocol fees:
+**RoundUp** - Use this for protocol fees, transaction costs, or amounts owed to your protocol. Rounding up ensures your protocol collects slightly more, compensating for precision loss and preventing systematic under-collection of fees over many transactions.
 
 ```cadence
 // When calculating fees the protocol collects
 let protocolFee = DeFiActionsMathUtils.toUFix64RoundUp(calculatedFee)
 ```
 
-**RoundHalfUp** - Standard financial rounding:
+**RoundHalfUp** - Apply this for general-purpose calculations, display values, or when presenting prices to users. This is the familiar rounding method (values 0.5 and above round up, below 0.5 round down) that users expect in traditional finance.
 
 ```cadence
 // For display values or general calculations
 let displayValue = DeFiActionsMathUtils.toUFix64Round(calculatedValue)
 ```
 
-**RoundEven** - Reduces cumulative rounding bias:
+**RoundEven** - Select this for scenarios involving many repeated calculations where you want to minimize systematic bias. Also known as "[banker's rounding]",  this mode rounds ties (exactly 0.5) to the nearest even number, which statistically balances out over many operations, making it ideal for large-scale distributions or statistical calculations.
 
 ```cadence
 // For repeated operations where bias matters
@@ -216,7 +218,11 @@ let result = DeFiActionsMathUtils.toUFix64Round(totalValue)
 // result = 1500.0
 ```
 
+:::info
+
 **Important:** The multiplication uses `UInt256` internally to prevent overflow:
+
+:::
 
 ```cadence
 // Internal implementation prevents overflow
@@ -453,34 +459,11 @@ access(all) view fun assertWithinUFix64Bounds(_ value: UInt128) {
 }
 ```
 
-### Flexible Rounding Strategies
-
-Different financial scenarios require different rounding approaches:
-
-```cadence
-// Conservative for payouts (protect protocol)
-let payout = DeFiActionsMathUtils.toUFix64RoundDown(calculatedPayout)
-
-// Conservative for fees (protect protocol)
-let fee = DeFiActionsMathUtils.toUFix64RoundUp(calculatedFee)
-
-// Fair for display
-let display = DeFiActionsMathUtils.toUFix64Round(calculatedValue)
-```
-
-### Gas Efficiency
-
-Integer arithmetic is computationally cheaper than floating-point emulation:
-
-- Predictable gas costs
-- Fast execution
-- No complex floating-point library needed
-
 ## Best Practices
 
 Always Use High Precision for Intermediate Calculations
 
-**❌ Don't do this:**
+**❌ Low precision (loses ~$0.50 per 1M USDC):**
 
 ```cadence
 let fee: UFix64 = amount * 0.003
@@ -488,20 +471,23 @@ let afterFee: UFix64 = amount - fee
 let output: UFix64 = afterFee * price
 ```
 
-**✅ Do this instead:**
+**✅ High precision (safe and accurate):**
 
 ```cadence
+// Convert once at the start
 let amountHP = DeFiActionsMathUtils.toUInt128(amount)
 let feeRate = DeFiActionsMathUtils.toUInt128(0.003)
 let priceHP = DeFiActionsMathUtils.toUInt128(price)
 
-let one = DeFiActionsMathUtils.toUInt128(1.0)
-let afterFeeMultiplier = one - feeRate
-let afterFeeHP = DeFiActionsMathUtils.mul(amountHP, afterFeeMultiplier)
+// Perform all calculations at high precision
+let afterFeeHP = DeFiActionsMathUtils.mul(amountHP, DeFiActionsMathUtils.toUInt128(1.0) - feeRate)
 let outputHP = DeFiActionsMathUtils.mul(afterFeeHP, priceHP)
 
+// Convert once at the end with smart rounding
 let output = DeFiActionsMathUtils.toUFix64RoundDown(outputHP)
 ```
+
+The pattern is simple: **convert → calculate → convert back**. The extra lines give you production-grade precision that protects your protocol from financial losses.
 
 Always validate that inputs are within acceptable ranges:
 
@@ -519,9 +505,9 @@ access(all) fun swap(inputAmount: UFix64) {
 
 ## More Resources
 
-- [View the DeFiActionsMathUtils source code](https://github.com/onflow/FlowActions/blob/main/cadence/contracts/utils/DeFiActionsMathUtils.cdc)
-- [Flow DeFi Actions Documentation](https://developers.flow.com/blockchain-development-tutorials/forte/flow-actions)
-- [Cadence Fixed-Point Numbers](https://cadence-lang.org/docs/language/values-and-types/fixed-point-nums-ints)
+- [View the DeFiActionsMathUtils source code]
+- [Flow DeFi Actions Documentation]
+- [Cadence Fixed-Point Numbers]
 
 ## Key takeaways
 
@@ -533,4 +519,14 @@ access(all) fun swap(inputAmount: UFix64) {
 
 ## Conclusion
 
-`DeFiActionsMathUtils` provides the mathematical foundation for building accurate and secure DeFi applications on Flow. By using 24-decimal fixed-point arithmetic with `UInt128`, you can perform complex financial calculations without the precision loss that would occur with native `UFix64` operations alone.
+[`DeFiActionsMathUtils`] gives Flow developers a significant advantage in building DeFi applications. With 24-decimal precision, it is orders of magnitude more accurate than typical blockchain implementations (which use 6-18 decimals). The standardized library eliminates the need to build custom math implementations.
+
+The simple **convert → calculate → convert back** pattern, combined with strategic rounding modes and built-in overflow protection, means you can focus on your protocol's business logic instead of low-level precision handling. At scale, this protection prevents thousands of dollars in losses from accumulated rounding errors.
+
+<!-- Relative links, will not render on page -->
+
+[`DeFiActionsMathUtils`]: https://github.com/onflow/FlowActions/blob/main/cadence/contracts/utils/DeFiActionsMathUtils.cdc
+[banker's rounding]: https://learn.microsoft.com/en-us/openspecs/microsoft_general_purpose_programming_languages/ms-vbal/98152b5a-4d86-4acb-b875-66cb1f49433e
+[View the DeFiActionsMathUtils source code]: https://github.com/onflow/FlowActions/blob/main/cadence/contracts/utils/DeFiActionsMathUtils.cdc
+[Flow DeFi Actions Documentation]: https://developers.flow.com/blockchain-development-tutorials/forte/flow-actions
+[Cadence Fixed-Point Numbers]: https://cadence-lang.org/docs/language/values-and-types/fixed-point-nums-ints
