@@ -34,6 +34,10 @@ Below is a list of commonly used DeFi contracts on Flow:
 
 <StablecoinsWrappedAssetsTable environment="cadence" />
 
+#### Flow Cadence Testnet
+
+<StablecoinsWrappedAssetsTable environment="testnet" />
+
 ## AMMs & DEXs
 
 #### Flow EVM Mainnet
