@@ -44,6 +44,8 @@ If you had set the [dynamic bootstrap arguments](https://developers.flow.com/pro
 
 1. Run the transit script to fetch the new genesis info:
 
+Download the latest transit script - see instructions [here](./node-bootstrap.md#download-the-bootstrapping-kit)
+
    ```
    ./boot-tools/transit pull -b ./bootstrap -t ${PULL_TOKEN} -r ${YOUR_NODE_TYPE} --concurrency 10 --timeout 50m
    ```
@@ -60,8 +62,8 @@ If you had set the [dynamic bootstrap arguments](https://developers.flow.com/pro
   - For access nodes however, if you have execution data index enabled use the role `execution` to ensure the execution state files (`root.checkpoint*`) are also downloaded. If you do not have execution data indexing enabled, specify the role as `access`.
 
 ```shell Example
-$ ./boot-tools/transit pull -b ./bootstrap -t mainnet-16  -r consensus
-Transit script Commit: a9f6522855e119ad832a97f8b7bce555a163e490
+$ ./boot-tools/transit pull -b ./bootstrap -t mainnet-27  -r consensus
+Transit script Commit: 98a6ac408fdd86dba0011e698d40ebd71f4276fa
 2020/11/25 01:02:53 Running pull
 2020/11/25 01:02:53 Downloading bootstrap/public-root-information/node-infos.pub.json
 2020/11/25 01:02:54 Downloading bootstrap/public-root-information/root-protocol-snapshot.json
