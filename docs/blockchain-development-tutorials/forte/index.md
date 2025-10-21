@@ -99,6 +99,6 @@ The Forte network upgrade represents a significant evolution of Flow's capabilit
 [Flow Actions]: ./flow-actions/index.md
 [Scheduled Transactions]: ./scheduled-transactions/index.md
 [Passkeys]: ../../build/cadence/advanced-concepts/passkeys.md
-[High-Precision Fixed-Point Math]: ./fix-point-128-bit-math.md
+[High-Precision Fixed-Point Math]: ./fixed-point-128-bit-math.md
 [Introduction to Flow Actions]: ./flow-actions/intro-to-flow-actions.md
 [Scheduled Transactions Introduction]: ./scheduled-transactions/scheduled-transactions-introduction.md
