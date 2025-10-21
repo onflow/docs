@@ -72,6 +72,10 @@ Discover how to implement scheduled transactions for time-based smart contract e
 
 Implement device-backed passkeys using the Web Authentication API to register Flow account keys and sign transactions with secure, user-friendly authentication. See the [advanced concepts documentation](../../build/cadence/advanced-concepts/passkeys.md) for detailed implementation guidance.
 
+### [High-Precision Fixed-Point Math]
+
+Learn about Flow's high-precision mathematical utilities for DeFi applications using UInt128-based 24-decimal fixed-point arithmetic. This tutorial covers how to perform accurate financial calculations, handle rounding modes, and avoid precision loss in complex DeFi operations like liquidity pools, yield farming, and token swaps.
+
 ## Getting Started
 
 To begin with Forte tutorials, we recommend starting with:
@@ -95,5 +99,6 @@ The Forte network upgrade represents a significant evolution of Flow's capabilit
 [Flow Actions]: ./flow-actions/index.md
 [Scheduled Transactions]: ./scheduled-transactions/index.md
 [Passkeys]: ../../build/cadence/advanced-concepts/passkeys.md
+[High-Precision Fixed-Point Math]: ./fix-point-128-bit-math.md
 [Introduction to Flow Actions]: ./flow-actions/intro-to-flow-actions.md
 [Scheduled Transactions Introduction]: ./scheduled-transactions/scheduled-transactions-introduction.md

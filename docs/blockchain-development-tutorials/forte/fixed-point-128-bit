@@ -1,6 +1,7 @@
 ---
 title: High-Precision Fixed-Point Math
 description: Learn about Flow's high-precision mathematical utilities for DeFi applications using UInt128-based 24-decimal fixed-point arithmetic for accurate financial calculations.
+sidebar_position: 3
 keywords:
   - DeFi math
   - fixed-point arithmetic
