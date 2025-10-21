@@ -16,27 +16,21 @@ keywords:
 
 # Forte Network Upgrade Tutorials
 
-This series covers the new features and capabilities introduced in the Forte network upgrade for Flow blockchain. The Forte upgrade brings powerful new tools for building sophisticated decentralized applications, including automated DeFi workflows and time-based smart contract execution.
+This series covers the new features and capabilities introduced in the Forte network upgrade for Flow blockchain. The Forte upgrade brings powerful new tools for building sophisticated decentralized finance (DeFi) applications, including automated DeFi workflows and time-based smart contract execution.
 
 ## What's New in Forte
 
-The Forte network upgrade introduces several groundbreaking features that expand Flow's capabilities:
+The Forte network upgrade introduces several features that expand Flow's capabilities:
 
-- **Flow Actions**: Standardized interfaces for building composable DeFi workflows
-- **Scheduled Transactions**: Time-based smart contract execution and blockchain automation
-- **Enhanced Composability**: New patterns for building complex, interconnected applications
+- **Flow Actions**: Standardized interfaces for building composable DeFi workflows.
+- **Scheduled Transactions**: Time-based smart contract execution and blockchain automation.
+- **Enhanced Composability**: New patterns for building complex, interconnected applications.
 
 ## Deployed Contract Addresses
 
 :::info
 
-Forte is **live** on testnet.
-
-:::
-
-:::warning
-
-Forte is scheduled to go live on Mainnet on October 22, 2025.
+Forte is **live** on testnet and Mainnet.
 
 :::
 
@@ -62,19 +56,19 @@ import CopyButton from '@site/src/components/CopyButton';
 
 ### [Flow Actions]
 
-Learn how to build decentralized finance applications using the Flow Actions framework, enabling developers to create composable DeFi workflows. Flow Actions provide standardized interfaces that make it easy to combine different DeFi protocols and create sophisticated financial applications.
+Learn how to build DeFi applications with the Flow Actions framework, which allows developers to create composable DeFi workflows. Flow Actions provide standardized interfaces that make it easy to combine different DeFi protocols and create sophisticated financial applications.
 
 ### [Scheduled Transactions]
 
-Discover how to implement scheduled transactions for time-based smart contract execution on Flow. These tutorials cover creating automated workflows, cron-like functionality, and time-sensitive blockchain applications that can execute without manual intervention.
+Discover how to implement scheduled transactions for time-based smart contract execution on Flow. These tutorials cover how to create automated workflows, cron-like functionality, and time-sensitive blockchain applications that can execute without manual intervention.
 
 ### [Passkeys]
 
-Implement device-backed passkeys using the Web Authentication API to register Flow account keys and sign transactions with secure, user-friendly authentication. See the [advanced concepts documentation](../../build/cadence/advanced-concepts/passkeys.md) for detailed implementation guidance.
+Implement device-backed passkeys with the Web Authentication API to register Flow account keys and sign transactions with secure, user-friendly authentication. For more information, see the [advanced concepts documentation](../../build/cadence/advanced-concepts/passkeys.md).
 
 ## Getting Started
 
-To begin with Forte tutorials, we recommend starting with:
+To begin with Forte tutorials, we recommend that you start with:
 
 1. **[Introduction to Flow Actions]** - Understand the core concepts and architecture
 2. **[Scheduled Transactions Introduction]** - Learn about time-based execution capabilities
@@ -88,7 +82,7 @@ To begin with Forte tutorials, we recommend starting with:
 
 ## Conclusion
 
-The Forte network upgrade represents a significant evolution of Flow's capabilities, introducing powerful new tools for building the next generation of decentralized applications. These tutorials provide the foundation for leveraging these new features to create sophisticated, automated, and composable blockchain applications.
+The Forte network upgrade represents a significant evolution of Flow's capabilities, with powerful new tools to build the next generation of decentralized applications. These tutorials provide the foundation for you to leverage these new features to create sophisticated, automated, and composable blockchain applications.
 
 <!-- Relative links, will not render on page -->
 
