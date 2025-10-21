@@ -1,7 +1,7 @@
 ---
 title: Scheduled Transactions
 description: A series of tutorials on implementing scheduled transactions for time-based smart contract execution on Flow.
-sidebar_position: 4
+sidebar_position: 2
 keywords:
   - scheduled transactions
   - time-based execution

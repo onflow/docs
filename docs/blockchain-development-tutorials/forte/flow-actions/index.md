@@ -1,7 +1,7 @@
 ---
 title: Flow Actions
 description: A series of tutorials on building decentralized finance applications using the Flow Actions framework and scheduled transactions.
-sidebar_position: 3
+sidebar_position: 1
 keywords:
   - flow actions
   - cadence interfaces
