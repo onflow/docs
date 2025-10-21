@@ -10,11 +10,10 @@ interface ContractData {
 }
 
 interface TableComponentProps {
-  contracts: ContractData[];
-  environment: 'evm' | 'cadence';
+  environment: 'evm' | 'cadence' | 'testnet';
 }
 
-const contracts: ContractData[] = [
+const mainnetContracts: ContractData[] = [
   {
     name: 'FLOW',
     evmAddress: '0xd3bF53DAC106A0290B0483EcBC89d40FcC961f3e',
@@ -54,13 +53,6 @@ const contracts: ContractData[] = [
       'https://evm.flowscan.io/token/0x2aaBea2058b5aC2D339b163C6Ab6f2b6d53aabED',
     cadenceUrl:
       'https://flowscan.io/ft/token/A.1e4aa0b87d10b141.EVMVMBridgedToken_2aabea2058b5ac2d339b163c6ab6f2b6d53aabed.Vault',
-  },
-  {
-    name: 'USDF (Mock)',
-    cadenceAddress: '0xb7ace0a920d2c37d',
-    cadenceName: 'EVMVMBridgedToken_2aabea2058b5ac2d339b163c6ab6f2b6d53aabed',
-    cadenceUrl:
-      'https://flowscan.io/ft/token/A.b7ace0a920d2c37d.EVMVMBridgedToken_2aabea2058b5ac2d339b163c6ab6f2b6d53aabed.Vault',
   },
   {
     name: 'USDC.e (Celer)',
@@ -114,9 +106,22 @@ const contracts: ContractData[] = [
   },
 ];
 
+const testnetContracts: ContractData[] = [
+  {
+    name: 'USDF (Mock)',
+    cadenceAddress: '0xb7ace0a920d2c37d',
+    cadenceName: 'EVMVMBridgedToken_2aabea2058b5ac2d339b163c6ab6f2b6d53aabed',
+    cadenceUrl:
+      'https://testnet.flowscan.io/ft/token/A.b7ace0a920d2c37d.EVMVMBridgedToken_2aabea2058b5ac2d339b163c6ab6f2b6d53aabed.Vault',
+  },
+];
+
 const StablecoinsWrappedAssetsTable: React.FC<TableComponentProps> = ({
   environment,
 }) => {
+  const contracts = environment === 'testnet' ? testnetContracts : mainnetContracts;
+  const networkLabel = environment === 'testnet' ? 'Testnet' : 'Mainnet';
+  
   return (
     <div className="table-container">
       <table>
@@ -125,8 +130,8 @@ const StablecoinsWrappedAssetsTable: React.FC<TableComponentProps> = ({
             <th>Token Name</th>
             <th>
               {environment === 'evm'
-                ? 'Flow EVM Mainnet Address'
-                : 'Flow Cadence Mainnet Address'}
+                ? `Flow EVM ${networkLabel} Address`
+                : `Flow Cadence ${networkLabel} Address`}
             </th>
             {environment === 'evm' ? (
               <></>
