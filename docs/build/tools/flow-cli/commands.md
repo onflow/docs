@@ -264,6 +264,38 @@ flow dependencies install testnet://8a4dce54554b225d.NumberFormatter
 
 📖 **[Learn more about dependency management](./dependency-manager.md)**
 
+## Scheduled Transactions
+
+### Setup Manager Resource
+
+```bash
+# Initialize Manager resource for scheduled transactions
+flow schedule setup --network testnet --signer my-account
+```
+
+### List Scheduled Transactions
+
+```bash
+# List all scheduled transactions for an account
+flow schedule list my-account --network testnet
+```
+
+### Get Transaction Details
+
+```bash
+# Get details for a specific scheduled transaction
+flow schedule get 123 --network testnet
+```
+
+### Cancel Scheduled Transaction
+
+```bash
+# Cancel a scheduled transaction and receive refund
+flow schedule cancel 123 --network testnet --signer my-account
+```
+
+📖 **[Learn more about scheduled transactions](./scheduled-transactions.md)**
+
 ## Development Workflow
 
 ### Local Development
