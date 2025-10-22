@@ -27,7 +27,7 @@ macOS, Linux, and Windows.
 
 ## Create Your First Project
 
-Create a new Flow project:
+Get started by running:
 
 ```zsh
 flow init
