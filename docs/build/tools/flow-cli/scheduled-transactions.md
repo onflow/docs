@@ -1,7 +1,7 @@
 ---
 title: Scheduled Transactions
 description: Manage scheduled transactions on Flow with the CLI
-sidebar_position: 7
+sidebar_position: 14
 ---
 
 The Flow CLI provides commands to manage scheduled transactions. These commands allow you to set up a Manager resource, list scheduled transactions, get transaction details, and cancel transactions.
