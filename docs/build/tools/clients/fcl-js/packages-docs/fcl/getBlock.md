@@ -1,9 +1,9 @@
 ---
-title: 'getBlock'
-description: 'getBlock function documentation.'
+title: "getBlock"
+description: "getBlock function documentation."
 ---
 
-<!-- THIS DOCUMENT IS AUTO-GENERATED FROM [onflow/fcl/../sdk/src/build/cadence/build-get-block.ts](https://github.com/onflow/fcl-js/tree/master/packages/fcl/../sdk/src/build/cadence/build-get-block.ts). DO NOT EDIT MANUALLY -->
+<!-- THIS DOCUMENT IS AUTO-GENERATED FROM [onflow/fcl/../sdk/src/build/build-get-block.ts](https://github.com/onflow/fcl-js/tree/master/packages/fcl/../sdk/src/build/build-get-block.ts). DO NOT EDIT MANUALLY -->
 
 # getBlock
 
@@ -22,45 +22,46 @@ Block height expresses the height of the block on the chain. The latest block he
 You can import the entire package and access the function:
 
 ```typescript
-import * as fcl from '@onflow/fcl';
+import * as fcl from "@onflow/fcl"
 
-fcl.getBlock(isSealed);
+fcl.getBlock(isSealed)
 ```
 
 Or import directly the specific function:
 
 ```typescript
-import { getBlock } from '@onflow/fcl';
+import { getBlock } from "@onflow/fcl"
 
-getBlock(isSealed);
+getBlock(isSealed)
 ```
 
 ## Usage
 
 ```typescript
-import * as fcl from '@onflow/fcl';
+import * as fcl from "@onflow/fcl";
 
-const latestSealedBlock = await fcl
-  .send([
-    fcl.getBlock(true), // isSealed = true
-  ])
-  .then(fcl.decode);
+const latestSealedBlock = await fcl.send([
+  fcl.getBlock(true) // isSealed = true
+]).then(fcl.decode);
 ```
 
 ## Parameters
 
 ### `isSealed` (optional)
 
+
 - Type: `boolean`
 - Description: If the latest block should be sealed or not. See block states
+
 
 ## Returns
 
 ```typescript
 export type InteractionBuilderFn = (
-  ix: Interaction,
-) => Interaction | Promise<Interaction>;
+  ix: Interaction
+) => Interaction | Promise<Interaction>
 ```
+
 
 A function that processes an interaction object
 

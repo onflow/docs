@@ -176,6 +176,7 @@ import { type CompositeSignature } from "@onflow/fcl"
 | `addr` | `string` | Flow Address (sans prefix) |
 | `keyId` | `number` | Key ID |
 | `signature` | `string` | Signature as a hex string |
+| `extensionData` | `string` | Optional signature extension data for alternative schemes (e.g., WebAuthn) |
 
 ### CurrentUser
 
@@ -280,6 +281,7 @@ import { type InteractionAccount } from "@onflow/fcl"
 | `keyId` | `string \| number` | The key ID used for signing |
 | `sequenceNum` | `number` | The sequence number for the account key |
 | `signature` | `string` | The signature for the account |
+| `extensionData` | `string` | Optional extension data for alternative signature schemes (e.g., WebAuthn) |
 | `signingFunction` | `any` | Function used for signing |
 | `resolve` | `any` | Resolver function for the account |
 | `role` | `{ proposer: boolean; authorizer: boolean; payer: boolean; param?: boolean; }` | Role of the account in the transaction |
