@@ -29,7 +29,7 @@ We will update these tutorials, but you may need to refactor your code if the im
 
 [Staking] is a simple way to participate in the blockchain process. You supply tokens to help with governance and, in return, you earn a share of the network's rewards. It's a way to grow unused assets and provides a much higher rate of return than a savings account. 
 
-:::important
+:::warning
 
 Make certain you understand how [slashing] works and assess your risk tolerance before you stake.
 
@@ -39,7 +39,7 @@ To stake directly, lock up your tokens with [Flow Port]. You can also use other 
 
 > LSP allows users to earn staking rewards without locking $flow tokens or running node softwares. Users can deposit $flow tokens and receive transferrable $stFlow tokens in return. Liquid staking combines the benefits of staking (earning rewards) and brings liquidity, as well as additional possibilities to increase your assets or hedge your positions by participating in Flow's DeFi ecosystem.
 
-Staking requires you to regularly complete one or more transactions to claim your rewards and restake them to compound your earnings.
+Participation in staking comes with a tedious chore - you'll need to regularly complete one or more transactions to claim your rewards and restake them to compound your earnings.
 
 Flow Actions simplifies this task. It gives you a suite of blocks that, after instantiation, perform actions in the same way from one protocol to another.
 
@@ -47,13 +47,13 @@ In this tutorial, you'll learn how to build a transaction that simplifies restak
 
 :::tip
 
-If you combine this transaction with [scheduled transactions], you can automate it completely.
+If you combine this transaction with [scheduled transactions], you can automate it completely!
 
 :::
 
 ## Learning Objectives
 
-After complyou completeeting this tutorial, you will be able to:
+After you complete this tutorial, you will be able to:
 
 - Chain multiple decentralized finance (DeFi) operations atomically
 - Handle token type mismatches automatically
@@ -67,7 +67,7 @@ After complyou completeeting this tutorial, you will be able to:
 
 ## Cadence Programming Language
 
-This tutorial assumes you have a modest knowledge of [Cadence]. If you don't, you can still follow along, but we recommend that you complete our series of [Cadence] tutorials. Most developers find it simpl than other blockchain languages and it's easy to pick up.
+This tutorial assumes you have a modest knowledge of [Cadence]. If you don't, you can still follow along, but we recommend that you complete our series of [Cadence] tutorials. Most developers find it more pleasant than other blockchain languages and it's easy to pick up.
 
 ## Getting Started on Mainnet
 
@@ -75,7 +75,7 @@ This demo uses **mainnet** and a real DeFi protocol. Before you write any code, 
 
 :::danger
 
-This tutorial uses a real protocol with real funds. Only work with funds your comfortable losing in the event of an error or mistake. Cadence is much safer than Solidity, but you must still work cautiously.
+This tutorial uses a real protocol with real funds. Only work with funds your comfortable losing in the event of an error or mistake. Cadence is much safer than Solidity, you can make a mistake and all investment involves risk.
 
 :::
 
@@ -145,6 +145,8 @@ Run `flow deps install` to install dependencies.
 :::note
 
 This Scaffold repo is a minimal Flow project with dependencies for Flow Actions and Increment Fi connectors. It only has support for the specific transaction that we execute in this demo (Claim → Zap → Restake for IncrementFi LP rewards)
+
+:::
 
 ### Export Your Wallet Key
 
@@ -237,7 +239,7 @@ let operationID: DeFiActions.UniqueIdentifier
 
 ### Prepare Phase
 
-Use the `prepare` phase, which runs before anything else, for Cadence transaction setup and validation. The `prepare` phase is essentially "plan and validate" while `execute` is "do it atomically".
+The `prepare` phaseruns first in the transaction. It's also the only place where a transaction can interact with a user's account and the [resources] within. 
 
 **Pool Validation** verifies that the specified pool exists and is accessible.
 
@@ -364,7 +366,7 @@ let poolSink = IncrementFiStakingConnectors.PoolSink(
 )
 ```
 
-Now we have all the components ready for the full flow of transactions. `swapSource.withdrawAvailable()` triggers the entire Source → Transformer chain. This claims rewards, swaps to LP tokens and withdraws LP tokens. The `poolSink.depositCapacity()` deposits LP tokens into the staking pool. And finally, we verify that all tokens were properly deposited (no dust left behind).
+Now we have all the components ready for the full flow of transactions. `swapSource.withdrawAvailable()` triggers the entire Source → Transformer chain. This claims rewards, swaps to LP tokens and withdraws LP tokens. The `poolSink.depositCapacity()` deposits LP tokens into the staking pool. And finally, we verify that all tokens were properly deposited (no dust left behind) and destroy the empty vault.
 
 ```cadence
 // Withdraw LP tokens from swap source (sized by sink capacity)
@@ -405,7 +407,7 @@ After you complete the transaction, you see that the following events occurred:
 
 ## Running the Transaction on Emulator
 
-You can run this whole flow on Emulator as well. It's recommended to do all the testing on Emulator. After cloning the [Flow Actions Scaffold] and installing the dependencies you can run:
+You can run this whole transaction on Emulator as well. Although this example used a real pool to demonstrate a real-world use case, we recommend you start any real projects by testing on the Emulator. After cloning the [Flow Actions Scaffold] and installing the dependencies you can run:
 
 ```bash
 make start

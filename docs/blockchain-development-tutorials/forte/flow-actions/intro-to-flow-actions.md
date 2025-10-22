@@ -38,7 +38,7 @@ We will update these tutorials, but you may need to refactor your code if the im
 :::
 ## Overview
 
-_Actions_ are a suite of standardized Cadence interfaces that allow developers to build complex workflows, starting with decentralized finance (DeFi) workflows, by connecting small, reusable components. Actions provide a "LEGO" framework of blocks where each component performs a single operation (deposit, withdraw, swap, price lookup, flash loan) while maintaining composability with other components. This creates sophisticated workflows executable in a single atomic transaction.
+_Actions_ are a suite of standardized Cadence interfaces that allow developers to compose complex workflows, starting with decentralized finance (DeFi) workflows, by connecting small, reusable components. Actions provide a "LEGO" framework of blocks where each component performs a single operation (deposit, withdraw, swap, price lookup, flash loan) while maintaining composability with other components. This creates sophisticated workflows executable in a single atomic transaction.
 
 By using Flow Actions, developers can remove large amounts of tailored complexity from building DeFi apps and can instead focus on business logic using nouns and verbs.
 
@@ -67,7 +67,7 @@ After completing this tutorial, you will be able to:
 
 ## Cadence Programming Language
 
-This tutorial assumes you have a modest knowledge of [Cadence]. If you don't, you can follow along, but you'll get more out of it if you complete our [Cadence] tutorials. Most developers find it easy than other blockchain languages and it's not hard to pick up.
+This tutorial assumes you have a modest knowledge of [Cadence]. If you don't, you can follow along, but you'll get more out of it if you complete our [Cadence] tutorials. Most developers find it easier than other blockchain languages and it's not hard to pick up.
 
 ## Flow Action Types
 
@@ -204,7 +204,7 @@ access(all) struct interface Sink : IdentifiableStruct {
 }
 ```
 
-You create a sink similar how you create a source. Instantiate an instance of the appropriate `struct` from the [connector]. For example, to create a sink in a generic vault from, instantiate a `VaultSink` from [`FungibleTokenConnectors`]:
+You create a sink similar how you create a source, which is to instantiate an instance of the appropriate `struct` from the [connector]. For example, to create a sink in a generic vault from, instantiate a `VaultSink` from [`FungibleTokenConnectors`]:
 
 ```cadence
 import "FungibleToken"
