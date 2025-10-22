@@ -131,7 +131,7 @@ A JSON version of the information below can be found in [onflow/flow/sporks.json
 | **Root Height**: 130290659                                                              |
 | **Root Parent ID**: 28d657bc8c6b0608e4c7caef3fb37b5b05f58c7bfedd1b8e556bd0940735e9cd    |
 | **Root State Commit**: 46c078553c221a7265bea83ff9aa178ec6cbe4865a6ae55219ecd0db81357a67 |
-| **Git Commit**: 98a6ac408fdd86dba0011e698d40ebd71f4276fa                                |
+| **Git Commit**: fabd1242ca2266a2c0f53fa31a1636ea664bd45d                                |
 | **Branch/Tag**: [v0.43.3](https://github.com/onflow/flow-go/releases/tag/v0.43.2)       |
 | **Docker Image Tag**: v0.43.3                                                           |
 
