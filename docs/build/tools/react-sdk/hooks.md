@@ -461,7 +461,7 @@ Fetches a Flow transaction by ID and returns the decoded transaction object.
 
 #### Parameters:
 
-* `txId?: string` – The Flow transaction ID to fetch.
+* `txId?: string` – The Flow transaction ID or scheduled transaction ID to fetch.
 * `query?: Omit<UseQueryOptions<Transaction | null, Error>, "queryKey" | "queryFn">` – Optional TanStack Query options like `staleTime`, `enabled`, etc.
 * `flowClient?: FlowClient` - Optional `FlowClient` instance
 
@@ -501,7 +501,7 @@ import { useFlowTransactionStatus } from "@onflow/react-sdk"
 
 #### Parameters:
 
-- `id: string` – Transaction ID to subscribe to
+- `id: string` – Transaction ID or scheduled transaction ID to subscribe to
 - `flowClient?: FlowClient` - Optional `FlowClient` instance
 
 #### Returns:
