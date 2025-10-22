@@ -27,4 +27,12 @@ macOS, Linux, and Windows.
 
 ## Create Your First Project
 
-To get started with creating your first Flow project and to learn more about how to use the Flow CLI commands, please refer to the [Commands documentation](./commands.md). These commands simplify the setup and development process, allowing you to focus on building your application without worrying about the underlying configurations.
+Create a new Flow project:
+
+```zsh
+flow init
+```
+
+The `flow init` command provides an interactive setup experience where you can select from various project scaffolds. These scaffolds help you get started quickly by providing pre-configured projects for common use cases, such as basic Cadence projects, projects with specific contract dependencies, or specialized templates for different types of applications.
+
+To learn more about Flow CLI commands and how to use them, please refer to the [Commands documentation](./commands.md).
