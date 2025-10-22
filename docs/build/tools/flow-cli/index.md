@@ -33,6 +33,6 @@ Create a new Flow project:
 flow init
 ```
 
-The `flow init` command provides an interactive setup experience where you can select from various project scaffolds. These scaffolds help you get started quickly by providing pre-configured projects for common use cases, such as basic Cadence projects, projects with specific contract dependencies, or specialized templates for different types of applications.
+The `flow init` command gets you up and running with a new project setup in one command. Choose from scaffolds for scheduled transactions, DeFi actions, stablecoins, and more, or start with a basic Cadence project.
 
 To learn more about Flow CLI commands and how to use them, please refer to the [Commands documentation](./commands.md).
