@@ -1,9 +1,9 @@
 ---
-title: 'ref'
-description: 'ref function documentation.'
+title: "ref"
+description: "ref function documentation."
 ---
 
-<!-- THIS DOCUMENT IS AUTO-GENERATED FROM [onflow/sdk/src/build/cadence/build-ref.ts](https://github.com/onflow/fcl-js/tree/master/packages/sdk/src/build/cadence/build-ref.ts). DO NOT EDIT MANUALLY -->
+<!-- THIS DOCUMENT IS AUTO-GENERATED FROM [onflow/sdk/src/build/build-ref.ts](https://github.com/onflow/fcl-js/tree/master/packages/sdk/src/build/build-ref.ts). DO NOT EDIT MANUALLY -->
 
 # ref
 
@@ -17,23 +17,23 @@ A transaction will be rejected if it is submitted past its expiry block. Flow ca
 You can import the entire package and access the function:
 
 ```typescript
-import * as sdk from '@onflow/sdk';
+import * as sdk from "@onflow/sdk"
 
-sdk.ref(refBlock);
+sdk.ref(refBlock)
 ```
 
 Or import directly the specific function:
 
 ```typescript
-import { ref } from '@onflow/sdk';
+import { ref } from "@onflow/sdk"
 
-ref(refBlock);
+ref(refBlock)
 ```
 
 ## Usage
 
 ```typescript
-import * as fcl from '@onflow/fcl';
+import * as fcl from "@onflow/fcl";
 
 // Set specific reference block for transaction
 await fcl.send([
@@ -44,11 +44,11 @@ await fcl.send([
       }
     }
   `,
-  fcl.ref('a1b2c3d4e5f6789...'), // Custom reference block ID
+  fcl.ref("a1b2c3d4e5f6789..."), // Custom reference block ID
   fcl.proposer(fcl.authz),
   fcl.payer(fcl.authz),
   fcl.authorizations([fcl.authz]),
-  fcl.limit(100),
+  fcl.limit(100)
 ]);
 
 // Usually, you don't need to set reference block manually
@@ -57,18 +57,21 @@ await fcl.send([
 
 ## Parameters
 
-### `refBlock`
+### `refBlock` 
+
 
 - Type: `string`
 - Description: The reference block ID
+
 
 ## Returns
 
 ```typescript
 export type InteractionBuilderFn = (
-  ix: Interaction,
-) => Interaction | Promise<Interaction>;
+  ix: Interaction
+) => Interaction | Promise<Interaction>
 ```
+
 
 A function that processes an interaction object
 

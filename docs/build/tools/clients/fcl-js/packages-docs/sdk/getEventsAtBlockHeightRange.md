@@ -1,9 +1,9 @@
 ---
-title: 'getEventsAtBlockHeightRange'
-description: 'getEventsAtBlockHeightRange function documentation.'
+title: "getEventsAtBlockHeightRange"
+description: "getEventsAtBlockHeightRange function documentation."
 ---
 
-<!-- THIS DOCUMENT IS AUTO-GENERATED FROM [onflow/sdk/src/build/cadence/build-get-events-at-block-height-range.ts](https://github.com/onflow/fcl-js/tree/master/packages/sdk/src/build/cadence/build-get-events-at-block-height-range.ts). DO NOT EDIT MANUALLY -->
+<!-- THIS DOCUMENT IS AUTO-GENERATED FROM [onflow/sdk/src/build/build-get-events-at-block-height-range.ts](https://github.com/onflow/fcl-js/tree/master/packages/sdk/src/build/build-get-events-at-block-height-range.ts). DO NOT EDIT MANUALLY -->
 
 # getEventsAtBlockHeightRange
 
@@ -24,31 +24,31 @@ Block height range expresses the height of the start and end block in the chain.
 You can import the entire package and access the function:
 
 ```typescript
-import * as sdk from '@onflow/sdk';
+import * as sdk from "@onflow/sdk"
 
-sdk.getEventsAtBlockHeightRange(eventType, startHeight, endHeight);
+sdk.getEventsAtBlockHeightRange(eventType, startHeight, endHeight)
 ```
 
 Or import directly the specific function:
 
 ```typescript
-import { getEventsAtBlockHeightRange } from '@onflow/sdk';
+import { getEventsAtBlockHeightRange } from "@onflow/sdk"
 
-getEventsAtBlockHeightRange(eventType, startHeight, endHeight);
+getEventsAtBlockHeightRange(eventType, startHeight, endHeight)
 ```
 
 ## Usage
 
 ```typescript
-import * as fcl from '@onflow/fcl';
+import * as fcl from "@onflow/fcl";
 
 // Get events at block height range
 await fcl
   .send([
     fcl.getEventsAtBlockHeightRange(
-      'A.7e60df042a9c0868.FlowToken.TokensWithdrawn', // event name
+      "A.7e60df042a9c0868.FlowToken.TokensWithdrawn", // event name
       35580624, // block to start looking for events at
-      35580624, // block to stop looking for events at
+      35580624 // block to stop looking for events at
     ),
   ])
   .then(fcl.decode);
@@ -56,28 +56,33 @@ await fcl
 
 ## Parameters
 
-### `eventType`
+### `eventType` 
+
 
 - Type: `string`
 - Description: The type of event to get
 
-### `startHeight`
+### `startHeight` 
+
 
 - Type: `number`
 - Description: The height of the block to start looking for events (inclusive)
 
-### `endHeight`
+### `endHeight` 
+
 
 - Type: `number`
 - Description: The height of the block to stop looking for events (inclusive)
+
 
 ## Returns
 
 ```typescript
 export type InteractionBuilderFn = (
-  ix: Interaction,
-) => Interaction | Promise<Interaction>;
+  ix: Interaction
+) => Interaction | Promise<Interaction>
 ```
+
 
 A function that processes an interaction object
 

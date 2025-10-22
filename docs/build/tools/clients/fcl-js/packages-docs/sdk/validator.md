@@ -1,9 +1,9 @@
 ---
-title: 'validator'
-description: 'validator function documentation.'
+title: "validator"
+description: "validator function documentation."
 ---
 
-<!-- THIS DOCUMENT IS AUTO-GENERATED FROM [onflow/sdk/src/build/cadence/build-validator.ts](https://github.com/onflow/fcl-js/tree/master/packages/sdk/src/build/cadence/build-validator.ts). DO NOT EDIT MANUALLY -->
+<!-- THIS DOCUMENT IS AUTO-GENERATED FROM [onflow/sdk/src/build/build-validator.ts](https://github.com/onflow/fcl-js/tree/master/packages/sdk/src/build/build-validator.ts). DO NOT EDIT MANUALLY -->
 
 # validator
 
@@ -18,28 +18,28 @@ and wasted compute costs.
 You can import the entire package and access the function:
 
 ```typescript
-import * as sdk from '@onflow/sdk';
+import * as sdk from "@onflow/sdk"
 
-sdk.validator(cb);
+sdk.validator(cb)
 ```
 
 Or import directly the specific function:
 
 ```typescript
-import { validator } from '@onflow/sdk';
+import { validator } from "@onflow/sdk"
 
-validator(cb);
+validator(cb)
 ```
 
 ## Usage
 
 ```typescript
-import * as fcl from '@onflow/fcl';
+import * as fcl from "@onflow/fcl";
 
 // Custom validator to ensure account has sufficient balance
 const validateBalance = (ix) => {
   if (ix.message.computeLimit > 1000) {
-    throw new Error('Compute limit too high for this account');
+    throw new Error("Compute limit too high for this account");
   }
   return ix;
 };
@@ -53,24 +53,27 @@ await fcl.send([
     }
   `,
   fcl.validator(validateBalance),
-  fcl.limit(500), // This will pass validation
+  fcl.limit(500) // This will pass validation
 ]);
 ```
 
 ## Parameters
 
-### `cb`
+### `cb` 
+
 
 - Type: `Function`
 - Description: The validator function that takes an interaction and returns it (or throws an error if invalid)
+
 
 ## Returns
 
 ```typescript
 export type InteractionBuilderFn = (
-  ix: Interaction,
-) => Interaction | Promise<Interaction>;
+  ix: Interaction
+) => Interaction | Promise<Interaction>
 ```
+
 
 A function that processes an interaction object
 

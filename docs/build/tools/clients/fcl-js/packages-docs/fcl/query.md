@@ -3,7 +3,7 @@ title: "query"
 description: "query function documentation."
 ---
 
-<!-- THIS DOCUMENT IS AUTO-GENERATED FROM [onflow/fcl/src/fcl.ts](https://github.com/onflow/fcl-js/tree/master/packages/fcl/src/fcl.ts). DO NOT EDIT MANUALLY -->
+<!-- THIS DOCUMENT IS AUTO-GENERATED FROM [onflow/fcl/../fcl-core/src/exec/query.ts](https://github.com/onflow/fcl-js/tree/master/packages/fcl/../fcl-core/src/exec/query.ts). DO NOT EDIT MANUALLY -->
 
 # query
 
