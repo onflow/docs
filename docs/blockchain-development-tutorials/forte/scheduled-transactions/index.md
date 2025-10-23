@@ -15,7 +15,7 @@ keywords:
 
 # Scheduled Transactions Tutorials
 
-This series covers how to implement scheduled transactions for time-based smart contract execution on Flow, enabling developers to create automated workflows and time-sensitive blockchain applications. These tutorials are part of the Forte network upgrade, which introduces new capabilities to the Flow blockchain.
+This series covers how to implement scheduled transactions for time-based smart contract execution on Flow, which allows developers to create automated workflows and time-sensitive blockchain applications. These tutorials are part of the Forte network upgrade, which introduces new capabilities to the Flow blockchain.
 
 ## Tutorials
 
