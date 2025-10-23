@@ -629,10 +629,113 @@ function UseFlowRevertibleRandomCardMini({ darkMode }: { darkMode: boolean }) {
   );
 }
 
+// Starter Banner Component
+function StarterBanner({ darkMode }: { darkMode: boolean }) {
+  return (
+    <div style={{ position: 'relative', marginBottom: '2rem' }}>
+      <div
+        style={{
+          position: 'relative',
+          overflow: 'hidden',
+          borderRadius: '12px',
+          border: '1px solid rgba(0, 239, 139, 0.2)',
+          background: darkMode
+            ? 'linear-gradient(to right, rgba(0, 239, 139, 0.08), rgba(16, 185, 129, 0.08))'
+            : 'linear-gradient(to right, rgba(240, 253, 244, 1), rgba(209, 250, 229, 1))',
+          padding: '1.5rem',
+        }}
+      >
+        <div
+          style={{
+            position: 'relative',
+            display: 'flex',
+            flexDirection: 'row',
+            alignItems: 'center',
+            gap: '1rem',
+            flexWrap: 'wrap',
+          }}
+        >
+          <div
+            style={{
+              display: 'flex',
+              flexDirection: 'column',
+              gap: '0.25rem',
+              flex: '1',
+              minWidth: '200px',
+            }}
+          >
+            <h3
+              style={{
+                fontSize: '1rem',
+                fontWeight: '600',
+                color: darkMode ? '#ffffff' : '#111827',
+                margin: 0,
+              }}
+            >
+              Looking for a starter?
+            </h3>
+            <p
+              style={{
+                fontSize: '0.875rem',
+                color: darkMode
+                  ? 'rgba(156, 163, 175, 1)'
+                  : 'rgba(75, 85, 99, 1)',
+                margin: 0,
+                lineHeight: '1.4',
+              }}
+            >
+              Try our Next.js starter template with Flow React SDK
+              pre-configured and ready to be used.
+            </p>
+          </div>
+
+          <a
+            href="https://github.com/onflow/flow-react-sdk-starter"
+            target="_blank"
+            rel="noopener noreferrer"
+            style={{
+              flexShrink: 0,
+              display: 'inline-flex',
+              alignItems: 'center',
+              gap: '0.5rem',
+              padding: '0.625rem 1rem',
+              borderRadius: '8px',
+              fontWeight: '600',
+              fontSize: '0.875rem',
+              background: '#00ef8b',
+              color: '#111827',
+              textDecoration: 'none',
+              transition: 'background-color 0.2s',
+            }}
+          >
+            View Starter
+            <svg
+              width="16"
+              height="16"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth={2}
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                d="M13 7l5 5m0 0l-5 5m5-5H6"
+              />
+            </svg>
+          </a>
+        </div>
+      </div>
+    </div>
+  );
+}
+
 // Inner component with all the cards
 function ReactSDKOverviewContent({ darkMode }: { darkMode: boolean }) {
   return (
     <div style={{ margin: '0' }}>
+      <StarterBanner darkMode={darkMode} />
+
       <div
         style={{
           position: 'relative',
