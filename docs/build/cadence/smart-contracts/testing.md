@@ -259,6 +259,130 @@ There is also a [repository](https://github.com/m-Peter/flow-code-coverage#readm
 The Cadence testing framework utilizes the emulator under the hood.
 </Callout>
 
+### Fork Testing
+
+Fork testing lets you run your Cadence test files (`*_test.cdc`) against a snapshot of a live Flow network (mainnet or testnet). This enables realistic integration tests that read real contract code and on-chain state while keeping all mutations local to your test run.
+
+<Callout type="info">
+This section covers `flow test --fork` (running tests against a forked network), which is different from `flow emulator --fork` (starting the emulator in fork mode for manual interaction).
+</Callout>
+
+#### What is fork testing?
+
+When you run tests with the `--fork` flag, the test runner:
+
+- Connects to a Flow access node (public or custom)
+- Fetches account state, contract code, and other data on demand
+- Executes your tests as if they are running against the live network state
+- Keeps all state changes local to your test process (the real network is never mutated)
+
+This bridges the gap between fast, purely local tests and deploying to testnet/mainnet for validation.
+
+#### Quick start
+
+Example: Read from the real FlowToken contract on mainnet.
+
+```cadence flow_token_test.cdc
+import Test
+import "FlowToken" // Resolves to mainnet alias when running with --fork
+
+access(all) fun testFlowTokenSupplyIsPositive() {
+    let supply = FlowToken.totalSupply
+    Test.assert(supply > 0.0, message: "FlowToken supply should be positive")
+}
+```
+
+Ensure your `flow.json` defines the mainnet alias for `FlowToken`:
+
+```json
+{
+  "contracts": {
+    "FlowToken": {
+      "source": "./cadence/contracts/FlowToken.cdc",
+      "aliases": {
+        "mainnet": "0x1654653399040a61"
+      }
+    }
+  },
+  "networks": {
+    "mainnet": {
+      "host": "access.mainnet.nodes.onflow.org:9000"
+    }
+  }
+}
+```
+
+Run the test against a fork of mainnet:
+
+```bash
+flow test --fork
+```
+
+To target testnet instead:
+
+```bash
+flow test --fork testnet
+```
+
+#### Common use cases
+
+- Integration testing with real contracts (NFT marketplaces, DEXs, core contracts)
+- Pre-deployment validation against production data
+- Upgrade testing with production state
+- Historical debugging with a specific block height
+
+Examples:
+
+```bash
+# Run a single test file against mainnet
+flow test tests/my_marketplace_test.cdc --fork mainnet
+
+# Pin to a specific block height for historical state
+flow test --fork mainnet --fork-height 85432100
+
+# Generate coverage while forking
+flow test --fork --cover
+```
+
+#### How contract aliases are resolved
+
+- Normal mode (no `--fork`): your imports use the `testing` aliases from `flow.json` (for emulator deployments)
+- Fork mode: imports automatically use the aliases for the selected network (e.g. `mainnet` or `testnet`) defined in `flow.json`
+
+This means you typically do not need to change imports in your test code when switching between local and forked runs—configure aliases once and select the mode via flags.
+
+#### Limitations and considerations
+
+- Network performance: tests may run slower than local emulator tests due to network calls
+- Point-in-time snapshot: forked state reflects the time of query (or the specified `--fork-height`), not a live stream
+- Read-only network: mutations in your tests are local and do not affect the real network
+- Spork boundaries: access nodes only retain historical data for the current spork; pinning via `--fork-height` cannot reach beyond that boundary. Learn more about the Flow spork process in the Network Upgrade (Spork) docs.
+
+See: [Network Upgrade (Spork) Process](../../../protocol/node-ops/node-operation/network-upgrade.md)
+
+#### Best practices
+
+1. Use fork testing primarily for integration tests; keep unit tests on the emulator for speed
+2. Keep forked tests separate in CI and run them selectively
+3. Prefer testnet before mainnet to catch network-specific issues with fewer risks
+4. Document dependencies on specific mainnet/testnet contracts and addresses
+5. Consider real data requirements—fork testing shines when reading existing on-chain state
+
+#### Commands reference
+
+See the flag reference for available options and details.
+
+Guide → Tutorial: [Fork Testing with Cadence (Step-by-Step)](../../../blockchain-development-tutorials/cadence/fork-testing/index.md)
+
+Guide → Flags: [Fork Testing Flags](../../../build/tools/flow-cli/tests.md#fork-testing-flags)
+
+```bash
+flow test --fork                    # Fork from mainnet (default when value omitted)
+flow test --fork testnet            # Fork from testnet
+flow test --fork --cover            # With coverage report
+flow test --fork --fork-height NUM  # Pin to block height
+```
+
 ### Go Tests
 
 Tests in Go can be written using [flow-go-sdk](https://github.com/onflow/flow-go-sdk) and the go test command.

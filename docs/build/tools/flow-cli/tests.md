@@ -225,3 +225,58 @@ flow test --name=testSumOfTwo
 This command will run only the test function named `testSumOfTwo` across all test scripts that contain it.
 
 To dive deeper into testing the functionality of your Cadence scripts and contracts, explore the [Cadence Testing Framework](https://cadence-lang.org/docs/testing-framework) documentation.
+
+---
+
+### Fork Testing Flags
+
+Run tests against forked mainnet or testnet state. For a step-by-step tutorial, see: [Fork Testing with Cadence](../../../blockchain-development-tutorials/cadence/fork-testing/index.md). For background and best practices, see the guide: [Fork Testing](../../cadence/smart-contracts/testing.md#fork-testing).
+
+#### --fork
+
+- Type: `string`
+- Default: `""` (empty). If provided without a value, defaults to `mainnet`.
+
+Fork tests from a network defined in `flow.json`. The CLI resolves the GRPC access host and chain ID from the selected network configuration.
+
+```shell
+flow test --fork          # Uses mainnet by default
+flow test --fork testnet  # Uses testnet
+flow test --fork mynet    # Uses a custom network defined in flow.json
+```
+
+Requirements:
+
+- The network must exist in `flow.json`
+- The network must have a valid `host` configured
+
+Common errors:
+
+- `network "<name>" not found in flow.json` → add the network definition
+- `network "<name>" has no host configured` → set the `host` field
+
+#### --fork-host
+
+- Type: `string`
+- Default: `""`
+
+Directly specify a GRPC access node host. This bypasses the `flow.json` network lookup.
+
+```shell
+flow test --fork-host access.mainnet.nodes.onflow.org:9000
+```
+
+See public access node URLs in [Flow Networks](../../../protocol/flow-networks/index.md).
+
+#### --fork-height
+
+- Type: `uint64`
+- Default: `0`
+
+Pin the fork to a specific block height for historical state testing. Only data from the current spork is available via public access nodes.
+
+```shell
+flow test --fork mainnet --fork-height 85432100
+```
+
+> Note: Historical data beyond spork boundaries is not available via standard access nodes. See the [Network Upgrade (Spork) Process](../../../protocol/node-ops/node-operation/network-upgrade.md).
