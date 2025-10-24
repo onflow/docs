@@ -287,16 +287,14 @@
   ],
   "redirects": [
     {
-      "source": "/:path*(.mdx?$)",
-      "destination": "/:path",
-      "permanent": true,
-      "has": [
-        {
-          "type": "header",
-          "key": "x-pathname",
-          "value": "^(?!\\/md\\/).*"
-        }
-      ]
+      "source": "/:path*.md",
+      "destination": "/md/:path*.md",
+      "permanent": true
+    },
+    {
+      "source": "/:path*.mdx",
+      "destination": "/md/:path*.mdx", 
+      "permanent": true
     },
     {
       "source": "/tools/kit",
