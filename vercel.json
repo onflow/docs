@@ -287,13 +287,13 @@
   ],
   "redirects": [
     {
-      "source": "/((?!md/).+\\.md)",
+      "source": "/((?!md/).+\\.md)$",
       "destination": "/md/$1",
       "permanent": true
     },
     {
-      "source": "/((?!md/).+\\.mdx)",
-      "destination": "/md/$1",
+      "source": "/((?!md/).+\\.mdx)$",
+      "destination": "/mdx/$1",
       "permanent": true
     },
     {
