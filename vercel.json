@@ -286,12 +286,7 @@
     },
     {
       "source": "/((?!md/).+\\.md)$",
-      "destination": "/md/:path*.md",
-      "permanent": true
-    },
-    {
-      "source": "/((?!md/).+\\.mdx)$",
-      "destination": "/md/:path*.mdx",
+      "destination": "/md/$1",
       "permanent": true
     }
   ],
