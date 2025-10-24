@@ -199,7 +199,14 @@
     {
       "source": "/:path*(.mdx?$)",
       "destination": "/:path",
-      "permanent": true
+      "permanent": true,
+      "has": [
+        {
+          "type": "header",
+          "key": "x-pathname",
+          "value": "^(?!\\/md\\/).*"
+        }
+      ]
     },
     {
       "source": "/tools/kit",
