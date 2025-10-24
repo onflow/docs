@@ -287,14 +287,28 @@
   ],
   "redirects": [
     {
-      "source": "/((?!md/).+\\.md)$",
-      "destination": "/md/$1",
-      "permanent": true
+      "source": "/:path*.md",
+      "destination": "/md/:path*.md",
+      "permanent": true,
+      "has": [
+        {
+          "type": "header",
+          "key": "x-pathname",
+          "value": "^(?!\\/md\\/).*"
+        }
+      ]
     },
     {
-      "source": "/((?!md/).+\\.mdx)$",
-      "destination": "/mdx/$1",
-      "permanent": true
+      "source": "/:path*.mdx",
+      "destination": "/md/:path*.mdx",
+      "permanent": true,
+      "has": [
+        {
+          "type": "header",
+          "key": "x-pathname",
+          "value": "^(?!\\/md\\/).*"
+        }
+      ]
     },
     {
       "source": "/tools/kit",
