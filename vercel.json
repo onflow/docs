@@ -283,11 +283,9 @@
           "value": "md"
         }
       ]
-    }
-  ],
-  "redirects": [
+    },
     {
-      "source": "/:path*.md",
+      "source": "/((?!md/).+\\.md)$",
       "destination": "/md/:path*.md",
       "permanent": true,
       "has": [
@@ -299,7 +297,7 @@
       ]
     },
     {
-      "source": "/:path*.mdx",
+      "source": "/((?!md/).+\\.mdx)$",
       "destination": "/md/:path*.mdx",
       "permanent": true,
       "has": [
@@ -309,7 +307,9 @@
           "value": "^(?!\\/md\\/).*"
         }
       ]
-    },
+    }
+  ],
+  "redirects": [
     {
       "source": "/tools/kit",
       "destination": "/tools/react-sdk",
