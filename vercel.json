@@ -138,32 +138,6 @@
       ]
     },
     {
-      "source": "/(.*\\.md)",
-      "headers": [
-        {
-          "key": "Cache-Control",
-          "value": "public, max-age=3600"
-        },
-        {
-          "key": "Content-Type",
-          "value": "text/markdown; charset=utf-8"
-        }
-      ]
-    },
-    {
-      "source": "/(.*\\.mdx)",
-      "headers": [
-        {
-          "key": "Cache-Control",
-          "value": "public, max-age=3600"
-        },
-        {
-          "key": "Content-Type",
-          "value": "text/markdown; charset=utf-8"
-        }
-      ]
-    },
-    {
       "source": "/favicon.ico",
       "headers": [
         {
@@ -1654,11 +1628,6 @@
       "permanent": true
     },
     {
-      "source": "/tutorials/use-AI-to-build-on-flow/integrations/gelato-sw.mdx",
-      "destination": "/tutorials/use-AI-to-build-on-flow/integrations/gelato-sw.md",
-      "permanent": true
-    },
-    {
       "source": "/tutorials/defi/:path*",
       "destination": "/tutorials/flow-actions/:path*",
       "permanent": true
@@ -2167,16 +2136,6 @@
     {
       "source": "/build/tools/flow-cli/deployment/start-emulator",
       "destination": "/build/tools/emulator",
-      "permanent": true
-    },
-    {
-      "source": "/:path*.md",
-      "destination": "/md/:path*.md",
-      "permanent": true
-    },
-    {
-      "source": "/:path*.mdx",
-      "destination": "/md/:path*.mdx",
       "permanent": true
     }
   ]
