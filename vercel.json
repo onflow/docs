@@ -260,7 +260,7 @@
     },
     {
       "source": "/((?!md/).+\\.md)$",
-      "destination": "/md/:path*"
+      "destination": "/md/$1"
     }
   ],
   "redirects": [
