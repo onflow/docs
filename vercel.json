@@ -195,6 +195,96 @@
       ]
     }
   ],
+  "rewrites": [
+    {
+      "source": "/blockchain-development-tutorials/:path*",
+      "destination": "/md/blockchain-development-tutorials/:path*",
+      "has": [
+        {
+          "type": "header",
+          "key": "accept",
+          "value": "text/markdown"
+        }
+      ]
+    },
+    {
+      "source": "/blockchain-development-tutorials/:path*",
+      "destination": "/md/blockchain-development-tutorials/:path*",
+      "has": [
+        {
+          "type": "query",
+          "key": "format",
+          "value": "md"
+        }
+      ]
+    },
+    {
+      "source": "/build/:path*",
+      "destination": "/md/build/:path*",
+      "has": [
+        {
+          "type": "header",
+          "key": "accept",
+          "value": "text/markdown"
+        }
+      ]
+    },
+    {
+      "source": "/build/:path*",
+      "destination": "/md/build/:path*",
+      "has": [
+        {
+          "type": "query",
+          "key": "format",
+          "value": "md"
+        }
+      ]
+    },
+    {
+      "source": "/protocol/:path*",
+      "destination": "/md/protocol/:path*",
+      "has": [
+        {
+          "type": "header",
+          "key": "accept",
+          "value": "text/markdown"
+        }
+      ]
+    },
+    {
+      "source": "/protocol/:path*",
+      "destination": "/md/protocol/:path*",
+      "has": [
+        {
+          "type": "query",
+          "key": "format",
+          "value": "md"
+        }
+      ]
+    },
+    {
+      "source": "/ecosystem/:path*",
+      "destination": "/md/ecosystem/:path*",
+      "has": [
+        {
+          "type": "header",
+          "key": "accept",
+          "value": "text/markdown"
+        }
+      ]
+    },
+    {
+      "source": "/ecosystem/:path*",
+      "destination": "/md/ecosystem/:path*",
+      "has": [
+        {
+          "type": "query",
+          "key": "format",
+          "value": "md"
+        }
+      ]
+    }
+  ],
   "redirects": [
     {
       "source": "/:path*(.mdx?$)",
