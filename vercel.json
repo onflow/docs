@@ -286,8 +286,7 @@
     },
     {
       "source": "/((?!md/).+\\.md)$",
-      "destination": "/md/$1",
-      "permanent": true
+      "destination": "/md/$1"
     }
   ],
   "redirects": [
@@ -2168,6 +2167,16 @@
     {
       "source": "/build/tools/flow-cli/deployment/start-emulator",
       "destination": "/build/tools/emulator",
+      "permanent": true
+    },
+    {
+      "source": "/:path*.md",
+      "destination": "/md/:path*.md",
+      "permanent": true
+    },
+    {
+      "source": "/:path*.mdx",
+      "destination": "/md/:path*.mdx",
       "permanent": true
     }
   ]
