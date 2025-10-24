@@ -46,6 +46,7 @@
     "eslint-config-prettier": "^10.1.8",
     "eslint-plugin-prettier": "^5.5.4",
     "github-slugger": "^2.0.0",
+    "globby": "^13.0.0",
     "lodash": "^4.17.21",
     "lru-cache": "^11.2.2",
     "mixpanel": "^0.18.1",
