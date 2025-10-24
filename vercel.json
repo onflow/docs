@@ -287,12 +287,12 @@
   ],
   "redirects": [
     {
-      "source": "/:path*.md",
+      "source": "/(?!md/):path*.md",
       "destination": "/md/:path*.md",
       "permanent": true
     },
     {
-      "source": "/:path*.mdx",
+      "source": "/(?!md/):path*.mdx",
       "destination": "/md/:path*.mdx", 
       "permanent": true
     },
