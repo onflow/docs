@@ -259,7 +259,7 @@
       ]
     },
     {
-      "source": "/((?!md/).+\\.md)$",
+      "source": "/(?!md/)(.+\\.md)$",
       "destination": "/md/$1"
     }
   ],
