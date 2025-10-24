@@ -257,13 +257,13 @@
           "value": "md"
         }
       ]
-    },
-    {
-      "source": "/((?!md/).+\\.md)$",
-      "destination": "/md/$1"
     }
   ],
   "redirects": [
+    {
+      "source": "/((?!md/).+\\.md)$",
+      "destination": "/md/$1"
+    },
     {
       "source": "/tools/kit",
       "destination": "/tools/react-sdk",
