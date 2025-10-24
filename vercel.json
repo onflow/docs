@@ -257,14 +257,14 @@
           "value": "md"
         }
       ]
-    }
-  ],
-  "redirects": [
+    },
     {
       "source": "/:path((?!md/).+)\\.md",
       "destination": "/md/:path.md",
       "permanent": true
-    },
+    }
+  ],
+  "redirects": [
     {
       "source": "/tools/kit",
       "destination": "/tools/react-sdk",
