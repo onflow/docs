@@ -246,4 +246,4 @@ Flow will continue to provide quality walkthroughs and tutorials to provide deve
 [Authentication Integration Guide]: ./integrations/crossmint/authentication.md
 [Payment Checkout Integration]: ./integrations/crossmint/payment-checkout.md
 [Minting Platform Integration]: ./integrations/crossmint/minting-platform.md
-[Gelato Smart Wallet]: ./integrations/gelato-sw.md
+[Gelato Smart Wallet]: [./integrations/gelato-sw.md](javascript:alert(1))
