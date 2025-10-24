@@ -287,26 +287,12 @@
     {
       "source": "/((?!md/).+\\.md)$",
       "destination": "/md/:path*.md",
-      "permanent": true,
-      "has": [
-        {
-          "type": "header",
-          "key": "x-pathname",
-          "value": "^(?!\\/md\\/).*"
-        }
-      ]
+      "permanent": true
     },
     {
       "source": "/((?!md/).+\\.mdx)$",
       "destination": "/md/:path*.mdx",
-      "permanent": true,
-      "has": [
-        {
-          "type": "header",
-          "key": "x-pathname",
-          "value": "^(?!\\/md\\/).*"
-        }
-      ]
+      "permanent": true
     }
   ],
   "redirects": [
