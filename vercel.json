@@ -261,8 +261,9 @@
   ],
   "redirects": [
     {
-      "source": "/((?!md/).+\\.md)$",
-      "destination": "/md/$1"
+      "source": "/:path((?!md/).+)\\.md",
+      "destination": "/md/:path.md",
+      "permanent": true
     },
     {
       "source": "/tools/kit",
