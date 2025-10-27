@@ -355,7 +355,7 @@ post {
 
 ### Execute the Transaction
 
-**poolSink** creates the staking pool sink in which the LP tokens are deposited.
+`poolSink` creates the staking pool sink in which the LP tokens are deposited.
 
 ```cadence
 // Create pool sink to receive LP tokens for staking
