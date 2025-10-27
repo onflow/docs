@@ -299,7 +299,7 @@ let rewardsSource = IncrementFiStakingConnectors.PoolRewardsSource(
 )
 ```
 
-In case the reward token might not match the pool's token0, we check if we need to reverse the order to account for this mismatch. This helps us verify that the zapper can function properly.
+In case the reward token might not match the pool's `token0`, we check if we need to reverse the order to account for this mismatch. This helps us verify that the zapper can function properly.
 
 ```cadence
 // Check if we need to reverse token order: if reward token doesn't match token0, we reverse
