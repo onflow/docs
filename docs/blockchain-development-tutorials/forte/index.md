@@ -30,13 +30,7 @@ The Forte network upgrade introduces several groundbreaking features that expand
 
 :::info
 
-Forte is **live** on testnet.
-
-:::
-
-:::warning
-
-Forte is scheduled to go live on Mainnet on October 22, 2025.
+Forte is **live** on emulator, testnet, and mainnet.
 
 :::
 

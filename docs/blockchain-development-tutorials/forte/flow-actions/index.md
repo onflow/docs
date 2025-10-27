@@ -21,14 +21,6 @@ keywords:
 
 This series covers how to build decentralized finance applications using the Flow Actions framework, enabling developers to create composable DeFi workflows. These tutorials are part of the Forte network upgrade, which introduces new capabilities to the Flow blockchain.
 
-:::warning
-
-Flow Actions are being reviewed and finalized in [FLIP 339]. The specific implementation may change as a part of this process.
-
-These tutorials will be updated, but you may need to refactor your code if the implementation changes.
-
-:::
-
 ## Tutorials
 
 - **[Introduction to Flow Actions]** - Learn about Flow Actions, a suite of standardized Cadence interfaces that enable developers to compose complex DeFi workflows using small, reusable components.
