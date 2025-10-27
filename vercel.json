@@ -260,8 +260,7 @@
     },
     {
       "source": "/:path((?!md/).+)\\.md",
-      "destination": "/md/:path.md",
-      "permanent": true
+      "destination": "/md/:path.md"
     }
   ],
   "redirects": [
