@@ -393,13 +393,13 @@ flow transactions send cadence/transactions/increment_fi_restake.cdc \
   --args-json '[{"type":"UInt64","value":"<YOUR_POOL_PID>"}]'
 ```
 
-Replace `<YOUR_POOL_PID>` with your actual pool ID from the IncrementFi Farms page, in this case it is 199.
+Replace `<YOUR_POOL_PID>` with your actual pool ID (PID) from the IncrementFi Farms page, in this case it is 1999. The PID changes over time.
 
 ### Interpreting the Results
 
 After you complete the transaction, you see that the following events occurred:
 
-- The rewards (stFLOW) were claimed from pool #199 (or the current pool number if you run this exercise yourself) and the reward balance has been updated properly.
+- The rewards (stFLOW) were claimed from pool #199 (or the current pool number if you run this exercise yourself) and the reward balance was updated properly.
 - The stFLOW was converted to FLOW.
 - FLOW and stFLOW was used to add liquidity to the liquidity pool.
 - LP tokens were received.
