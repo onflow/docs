@@ -33,7 +33,7 @@ As a result, most blockchain computers, including EVM and Solana, aren't [Turing
 
 While this limitation prevents infinite loops, it makes it so that you can't do anything 100% onchain if you need it to happen at a later time or after a trigger. As a result, developers must often build products that involve a fair amount of traditional infrastructure and requires users to give those developers a great amount of trust that their backend will execute the promised task.
 
-Flow fixes this problem with **scheduled transactions**. Scheduled Transactions let smart contracts execute code at, or after, a chosen time without an external transaction. You schedule work now and the network executes it later. This allows recurring jobs, deferred actions, and autonomous workflows.
+Flow fixes this problem with _scheduled transactions_. Scheduled Transactions let smart contracts execute code at, or after, a chosen time without an external transaction. You schedule work now and the network executes it later. This allows recurring jobs, deferred actions, and autonomous workflows.
 
 ## Learning Objectives
 
