@@ -21,21 +21,21 @@ Large Language Models (LLMs) have revolutionized software development by providi
 
 ## [Use Flow Knowledge Base in ChatGPT]
 
-Learn how to create a Custom GPT using ChatGPT that can reference Flow's comprehensive documentation to answer development questions. This guide walks you through setting up FlowGPT with OpenAI's platform, configuring it with Flow Data Sources, and optimizing it for Cadence smart contract development. The tutorial covers the complete GPT creation process, from initial setup through testing and deployment, enabling you to have an AI assistant that understands Flow's architecture, tools, and best practices.
+Learn how to create a Custom GPT using ChatGPT that can reference Flow's comprehensive documentation to answer development questions. This guide walks you through setting up FlowGPT with OpenAI's platform, configuring it with Flow Data Sources, and optimizing it for Cadence smart contract development. The tutorial covers the complete GPT creation process, from initial setup through testing and deployment, allowing you to have an AI assistant that understands Flow's architecture, tools, and best practices.
 
 ## [Use Flow Knowledge Base in Gemini AI]
 
-Discover how to build a Custom GEM using Google's Gemini AI platform that specializes in Flow blockchain development. This tutorial demonstrates configuring Gemini AI with Flow's documentation as its primary knowledge source, creating an assistant that can provide practical guidance on Cadence programming, Flow CLI usage, and ecosystem integration. Learn how to set up FlowGem with proper instructions, knowledge base integration, and testing protocols to ensure accurate and helpful responses for your development workflow.
+Discover how to build a Custom GEM using Google's Gemini AI platform that specializes in Flow blockchain development. This tutorial demonstrates how to configure Gemini AI with Flow's documentation as its primary knowledge source, which creates an assistant that can provide practical guidance on Cadence programming, Flow CLI usage, and ecosystem integration. Learn how to set up FlowGem with proper instructions, knowledge base integration, and testing protocols to ensure accurate and helpful responses for your development workflow.
 
 ## [Claude Code for Flow Development]
 
-Master the comprehensive development approach using Claude Code for Flow blockchain applications. This extensive guide covers the four-stage development methodology (Idea → Visualization → Planning → Build), advanced features like subagents and auto-verification, and systematic deployment strategies. Learn how to configure persistent project context through CLAUDE.md files, implement checkpoint-based development workflows, and leverage Claude Code's unlimited context windows for complex Cadence smart contract projects and cross-VM applications.
+Master the comprehensive development approach using Claude Code (CC) for Flow blockchain applications. This extensive guide covers the four-stage development methodology (Idea → Visualization → Planning → Build), advanced features like subagents and auto-verification, and systematic deployment strategies. Learn how to configure persistent project context through `CLAUDE.md` files, implement checkpoint-based development workflows, and leverage CC's unlimited context windows for complex Cadence smart contract projects and cross-VM applications.
 
 ---
 
 ## Conclusion
 
-These tutorials provide a comprehensive foundation for integrating AI assistance into your Flow development workflow. By leveraging ChatGPT's Custom GPTs, Gemini AI's Custom GEMs, and Claude Code's advanced development capabilities, you can significantly enhance your productivity while building on Flow. Each platform offers unique strengths that complement different aspects of blockchain development, from quick documentation queries to comprehensive project management and systematic code generation.
+These tutorials provide a comprehensive foundation for integrating AI assistance into your Flow development workflow. By leveraging ChatGPT's Custom GPTs, Gemini AI's Custom GEMs, and CC's advanced development capabilities, you can significantly enhance your productivity while building on Flow. Each platform offers unique strengths that complement different aspects of blockchain development, from quick documentation queries to comprehensive project management and systematic code generation.
 
 <!-- Reference-style links, will not render on page. -->
 
