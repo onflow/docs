@@ -261,6 +261,50 @@
     {
       "source": "/:path((?!md/).+)\\.md",
       "destination": "/md/:path.md"
+    },
+    {
+      "source": "/blockchain-development-tutorials/:path*",
+      "destination": "/md/blockchain-development-tutorials/:path*",
+      "has": [
+        {
+          "type": "header",
+          "key": "accept",
+          "value": "text/plain"
+        }
+      ]
+    },
+    {
+      "source": "/build/:path*",
+      "destination": "/md/build/:path*",
+      "has": [
+        {
+          "type": "header",
+          "key": "accept",
+          "value": "text/plain"
+        }
+      ]
+    },
+    {
+      "source": "/protocol/:path*",
+      "destination": "/md/protocol/:path*",
+      "has": [
+        {
+          "type": "header",
+          "key": "accept",
+          "value": "text/plain"
+        }
+      ]
+    },
+    {
+      "source": "/ecosystem/:path*",
+      "destination": "/md/ecosystem/:path*",
+      "has": [
+        {
+          "type": "header",
+          "key": "accept",
+          "value": "text/plain"
+        }
+      ]
     }
   ],
   "redirects": [

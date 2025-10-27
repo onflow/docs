@@ -62,6 +62,29 @@ module.exports = function markdownExportPlugin(context, options = {}) {
       const wellKnownDir = path.join(outDir, ".well-known");
       fs.mkdirSync(wellKnownDir, { recursive: true });
       fs.writeFileSync(path.join(wellKnownDir, "llms.txt"), llmsTxt);
+
+      // 4) Generate llms-full.txt - a single file with all markdown content
+      let fullContent = "# Flow Developer Portal - Complete Documentation\n\n";
+      fullContent += "This file contains all documentation in Markdown format.\n\n";
+      fullContent += "---\n\n";
+      
+      // Read and combine all markdown files
+      const mdFiles = await globby(["**/*.md", "**/*.mdx"], { 
+        cwd: path.join(outDir, outDirRel),
+        absolute: false
+      });
+      
+      for (const mdFile of mdFiles.sort()) {
+        const fullPath = path.join(outDir, outDirRel, mdFile);
+        if (fs.existsSync(fullPath)) {
+          const content = fs.readFileSync(fullPath, "utf-8");
+          fullContent += `\n# File: /md/${mdFile}\n\n`;
+          fullContent += content;
+          fullContent += "\n\n---\n\n";
+        }
+      }
+      
+      fs.writeFileSync(path.join(outDir, "llms-full.txt"), fullContent);
     },
     injectHtmlTags() {
       return {
