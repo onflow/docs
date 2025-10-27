@@ -399,7 +399,7 @@ Replace `<YOUR_POOL_PID>` with your actual pool ID from the IncrementFi Farms pa
 
 After you complete the transaction, you see that the following events occurred:
 
-- The rewards (stFLOW) were claimed from pool #199 and the reward balance has been updated properly.
+- The rewards (stFLOW) were claimed from pool #199 (or the current pool number if you run this exercise yourself) and the reward balance has been updated properly.
 - The stFLOW was converted to FLOW.
 - FLOW and stFLOW was used to add liquidity to the liquidity pool.
 - LP tokens were received.
