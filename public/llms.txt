@@ -81,16 +81,29 @@ All documentation is available in Markdown format for AI agents:
 - [Direct Calls](https://developers.flow.com/blockchain-development-tutorials/cross-vm-apps/direct-calls): Call Cadence from Solidity and vice versa.
 - [Interacting with COA](https://developers.flow.com/blockchain-development-tutorials/cross-vm-apps/interacting-with-coa): Controlled On-Chain Accounts (COA).
 
+## Advanced Features
+- [Token Standards](https://developers.flow.com/blockchain-development-tutorials/tokens): Creating fungible and non-fungible tokens.
+- [Native VRF](https://developers.flow.com/blockchain-development-tutorials/native-vrf): Flow's native verifiable random function for onchain randomness.
+- [Gasless Transactions](https://developers.flow.com/blockchain-development-tutorials/gasless-transactions): Sponsored transactions for better UX.
+- [Integrations](https://developers.flow.com/blockchain-development-tutorials/integrations): Integration with external services like Crossmint and Gelato.
+- [128-bit Fixed Point Math](https://developers.flow.com/blockchain-development-tutorials/forte/fixed-point-128-bit-math): Financial precision with 128-bit arithmetic.
+
 ## AI Development Tools
 - [Building with AI](https://developers.flow.com/blockchain-development-tutorials/use-AI-to-build-on-flow): Using AI to develop on Flow.
 - [Cursor Integration](https://developers.flow.com/blockchain-development-tutorials/use-AI-to-build-on-flow/cursor): Building with Cursor AI editor.
 - [Cadence Rules for AI](https://developers.flow.com/blockchain-development-tutorials/use-AI-to-build-on-flow/cursor/cadence-rules): Cadence-specific rules for AI assistants.
 - [Flow Data Sources](https://developers.flow.com/blockchain-development-tutorials/use-AI-to-build-on-flow/cursor/flow-data-sources): Data sources for AI development.
 - [MCP Server](https://developers.flow.com/blockchain-development-tutorials/use-AI-to-build-on-flow/mcp): Model Context Protocol server for Flow.
+- [ChatGPT Integration](https://developers.flow.com/blockchain-development-tutorials/use-AI-to-build-on-flow/llms/chatgpt): Using ChatGPT with Flow development.
+- [Claude Code Integration](https://developers.flow.com/blockchain-development-tutorials/use-AI-to-build-on-flow/llms/claude-code): Using Claude Code for Flow development.
 
-## Build Tools
+## Build Tools & SDKs
 - [Flow CLI](https://developers.flow.com/build/tools/flow-cli): Command-line interface for Flow development.
 - [Flow Emulator](https://developers.flow.com/build/tools/emulator): Local Flow blockchain emulator.
+- [FCL (Flow Client Library)](https://developers.flow.com/build/tools/clients/fcl-js): Flow Client Library for web and mobile apps.
+- [Go SDK](https://developers.flow.com/build/tools/clients/flow-go-sdk): Flow SDK for Go developers.
+- [React SDK](https://developers.flow.com/build/tools/react-sdk): React hooks and components for Flow.
+- [Cadence IDE](https://developers.flow.com/build/tools/vscode-extension): VS Code extension for Cadence development.
 
 ## Protocol Documentation
 - [Flow Networks](https://developers.flow.com/protocol/flow-networks): Understanding Flow's network architecture.
@@ -104,14 +117,15 @@ All documentation is available in Markdown format for AI agents:
 - [Cadence Official Documentation](https://cadence-lang.org/): Official Cadence documentation.
 
 ## Ecosystem Resources
-- [Ecosystem Overview](https://developers.flow.com/ecosystem): Flow ecosystem resources.
-- [Block Explorers](https://developers.flow.com/ecosystem/block-explorers): Exploring Flow blockchain.
-- [Wallets](https://developers.flow.com/ecosystem/wallets): Wallets for Flow.
-- [Faucets](https://developers.flow.com/ecosystem/faucets): Getting testnet tokens.
-- [Bridges](https://developers.flow.com/ecosystem/bridges): Bridging assets to Flow.
-- [Developer Profile](https://developers.flow.com/ecosystem/developer-profile): Building your developer presence.
-- [Developer Support](https://developers.flow.com/ecosystem/developer-support-hub): Getting help and support.
-- [Hackathons](https://developers.flow.com/ecosystem/hackathons-and-events): Upcoming hackathons and events.
+- [Block Explorers](https://developers.flow.com/ecosystem/block-explorers): Explore Flow blockchain with Flowscan and other explorers.
+- [Wallets](https://developers.flow.com/ecosystem/wallets): Connect with Dapper, Blocto, and other Flow wallets.
+- [Faucets](https://developers.flow.com/ecosystem/faucets): Get testnet FLOW tokens for development and testing.
+- [Bridges](https://developers.flow.com/ecosystem/bridges): Bridge assets between Flow and other blockchains.
+- [Data Indexers](https://developers.flow.com/ecosystem/data-indexers): Access Flow blockchain data through indexers.
+- [Auditors](https://developers.flow.com/ecosystem/auditors): Get your smart contracts audited.
+- [Developer Profile](https://developers.flow.com/ecosystem/developer-profile): Build your developer presence on Flow.
+- [Developer Support](https://developers.flow.com/ecosystem/developer-support-hub): Get help, support, grants, and perks.
+- [Hackathons & Events](https://developers.flow.com/ecosystem/hackathons-and-events): Participate in Flow hackathons and developer events.
 
 ## Economics & Staking
 - [Flow Staking](https://developers.flow.com/protocol/staking): Earn rewards by staking FLOW tokens.
