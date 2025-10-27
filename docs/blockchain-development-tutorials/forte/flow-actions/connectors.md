@@ -18,17 +18,21 @@ keywords:
 
 :::warning
 
-Flow Actions are being reviewed and finalized in [FLIP 339]. The specific implementation may change as a part of this process.
+We are reviewing and finalizing Flow Actions in [FLIP 339]. The specific implementation may change as a part of this process.
 
-These tutorials will be updated, but you may need to refactor your code if the implementation changes.
+We will update these tutorials, but you may need to refactor your code if the implementation changes.
 
 :::
 
-**Connectors** are the bridge between external DeFi protocols and the standardized Flow Actions primitive interfaces. They act as **protocol adapters** that translate protocol-specific APIs into the universal language of Flow Actions. Think of them as "drivers" that provide a connection between software and piece of hardware without the software developer needing to know how the hardware expects commands to be delivered, or an MCP enabling an agent to use an API in a standardized manner. Flow Actions act as "money LEGOs" with which you can compose various complex operations with simple transactions. These are the benefits of connectors:
+## Overview
 
-- Abstraction Layer: Connectors act like a universal translator between your application and various DeFi protocols
-- Standardized Interface: All connectors implement the same core methods, making them interchangeable
-- Protocol Integration: They handle the complex interactions with different DeFi services (swaps, staking, lending, etc.)
+**Connectors** are the bridge between external DeFi protocols and the standardized Flow Actions primitive interfaces. They act as **protocol adapters** that translate protocol-specific APIs into the universal language of Flow Actions. Think of them as "drivers" that provide a connection between software and a piece of hardware without the software developer needing to know how the hardware expects to receive commands, or an MCP allowing an agent to use an API in a standardized manner. 
+
+Flow Actions act as "money LEGOs" with which you can compose various complex operations with simple transactions. These are the benefits of connectors:
+
+- Abstraction Layer: Connectors act like a universal translator between your application and various decentralized finance (DeFi) protocols.
+- Standardized Interface: All connectors implement the same core methods, which makes them interchangeable.
+- Protocol Integration: They handle the complex interactions with different DeFi services (swaps, staking, lending, and so on).
 
 ## How Connectors Work
 
@@ -82,7 +86,7 @@ fun flashLoan(amount: UFix64, callback: Function) // Flasher
 
 ### Composition Pattern
 
-Connectors can be combined to create sophisticated workflows:
+You can combine Connetors to create sophisticated workflows:
 
 ```cadence
 // Claim rewards → Swap to different token → Stake in new pool
@@ -95,40 +99,40 @@ ProtocolA.RewardsSource → SwapConnectors.SwapSource → ProtocolB.StakingSink
 
 | Connector | Location | Protocol | Purpose |
 |-----------|----------|----------|---------|
-| VaultSource | [FungibleTokenConnectors] | Generic FungibleToken | Withdraw from vaults with minimum balance protection |
-| VaultSinkAndSource | [FungibleTokenConnectors] | Generic FungibleToken | Combined vault operations (dual interface) |
-| SwapSource | [SwapConnectors] | Generic (composes with Swappers) | Source tokens then swap before returning |
-| PoolRewardsSource | [IncrementFiStakingConnectors] | IncrementFi Staking | Claim staking rewards from pools |
+| VaultSource | [FungibleTokenConnectors] | Generic FungibleToken | Withdraw from vaults with minimum balance protection. |
+| VaultSinkAndSource | [FungibleTokenConnectors] | Generic FungibleToken | Combined vault operations (dual interface). |
+| SwapSource | [SwapConnectors] | Generic (composes with Swappers) | Source tokens then swap before returning. |
+| PoolRewardsSource | [IncrementFiStakingConnectors] | IncrementFi Staking | Claim staking rewards from pools. |
 
   ⬇️ SINK Primitive Implementations
 
 | Connector | Location | Protocol | Purpose |
 |-----------|----------|----------|---------|
-| VaultSink | [FungibleTokenConnectors] | Generic FungibleToken | Deposit to vaults with capacity limits |
-| VaultSinkAndSource | [FungibleTokenConnectors] | Generic FungibleToken | Combined vault operations (dual interface) |
-| SwapSink | [SwapConnectors] | Generic (composes with Swappers) | Swap tokens before depositing to inner sink |
-| PoolSink | [IncrementFiStakingConnectors] | IncrementFi Staking | Stake tokens in staking pools |
+| VaultSink | [FungibleTokenConnectors] | Generic FungibleToken | Deposit to vaults with capacity limits. |
+| VaultSinkAndSource | [FungibleTokenConnectors] | Generic FungibleToken | Combined vault operations (dual interface). |
+| SwapSink | [SwapConnectors] | Generic (composes with Swappers) | Swap tokens before depositing to inner sink. |
+| PoolSink | [IncrementFiStakingConnectors] | IncrementFi Staking | Stake tokens in staking pools. |
 
   🔀 SWAPPER Primitive Implementations
 
 | Connector | Location | Protocol | Purpose |
 |-----------|----------|----------|---------|
-| MultiSwapper | [SwapConnectors] | Generic (DEX aggregation) | Aggregate multiple swappers for optimal routing |
-| Swapper | [IncrementFiSwapConnectors] | IncrementFi DEX | Token swapping through SwapRouter |
-| Zapper | [IncrementFiPoolLiquidityConnectors] | IncrementFi Pools | Single-token liquidity provision |
-| UniswapV2EVMSwapper | [UniswapV2SwapConnectors] | Flow EVM Bridge | Cross-VM UniswapV2-style swapping |
+| MultiSwapper | [SwapConnectors] | Generic (DEX aggregation) | Aggregate multiple swappers for optimal routing. |
+| Swapper | [IncrementFiSwapConnectors] | IncrementFi DEX | Token swapping through SwapRouter. |
+| Zapper | [IncrementFiPoolLiquidityConnectors] | IncrementFi Pools | Single-token liquidity provision. |
+| UniswapV2EVMSwapper | [UniswapV2SwapConnectors] | Flow EVM Bridge | Cross-VM UniswapV2-style swapping. |
 
   💰 PRICEORACLE Primitive Implementations
 
 | Connector | Location | Protocol | Purpose |
 |-----------|----------|----------|---------|
-| PriceOracle | [BandOracleConnectors] | Band Protocol | External price feeds with staleness validation |
+| PriceOracle | [BandOracleConnectors] | Band Protocol | External price feeds with staleness validation. |
 
   ⚡ FLASHER Primitive Implementations
 
 | Connector | Location | Protocol | Purpose |
 |-----------|----------|----------|---------|
-| Flasher | [IncrementFiFlashloanConnectors] | IncrementFi DEX | Flash loans through SwapPair contracts |
+| Flasher | [IncrementFiFlashloanConnectors] | IncrementFi DEX | Flash loans through SwapPair contracts. |
 
 ## Guide to Building Connectors
 
@@ -138,11 +142,11 @@ First, determine which Flow Actions primitive(s) your connector will implement:
 
 | Primitive | When to Use | Example Use Cases |
 |-----------|-------------|-------------------|
-| **Source** | Your protocol provides tokens | Vault withdrawals, reward claiming, unstaking |
-| **Sink** | Your protocol accepts tokens | Vault deposits, staking, loan repayments |
-| **Swapper** | Your protocol exchanges tokens | DEX trades, cross-chain bridges, LP provision |
-| **PriceOracle** | Your protocol provides price data | Oracle feeds, TWAP calculations |
-| **Flasher** | Your protocol offers flash loans | Arbitrage opportunities, liquidations |
+| **Source** | Your protocol provides tokens | Vault withdrawals, reward claiming, unstaking. |
+| **Sink** | Your protocol accepts tokens | Vault deposits, staking, loan repayments. |
+| **Swapper** | Your protocol exchanges tokens | DEX trades, cross-chain bridges, LP provision. |
+| **PriceOracle** | Your protocol provides price data | Oracle feeds, TWAP calculations. |
+| **Flasher** | Your protocol offers flash loans | Arbitrage opportunities, liquidations. |
 
 ### Analyze Your Protocol
 
@@ -188,9 +192,9 @@ Add required Flow Actions support:
 
 ### **Error Handling**
 
-- **Graceful Failures**: Return empty results instead of panicking
-- **Validation**: Check all inputs and preconditions
-- **Resource Safety**: Properly handle vault resources in all paths
+- **Graceful Failures**: Return empty results instead of panicking.
+- **Validation**: Check all inputs and preconditions.
+- **Resource Safety**: Properly handle vault resources in all paths.
 
 ```cadence
 // Good: Graceful failure
@@ -210,9 +214,9 @@ access(all) fun minimumCapacity(): UFix64 {
 
 ### **Capacity and Balance Checking**
 
-- **Always Check First**: Validate capacity/availability before operations
-- **Respect Limits**: Work within available constraints
-- **Handle Edge Cases**: Zero amounts, maximum values, empty vaults
+- **Always Check First**: Validate capacity/availability before operations.
+- **Respect Limits**: Work within available constraints.
+- **Handle Edge Cases**: Zero amounts, maximum values, empty vaults.
 
 ```cadence
 access(all) fun depositCapacity(from: auth(FungibleToken.Withdraw) &{FungibleToken.Vault}) {
@@ -233,9 +237,9 @@ access(all) fun depositCapacity(from: auth(FungibleToken.Withdraw) &{FungibleTok
 
 ### **Type Safety**
 
-- **Validate Types**: Ensure vault types match expected types
-- **Early Returns**: Fail fast on type mismatches
-- **Clear Error Messages**: Help developers understand issues
+- **Validate Types**: Ensure vault types match expected types.
+- **Early Returns**: Fail fast on type mismatches.
+- **Clear Error Messages**: Help developers understand issues.
 
 ```cadence
 access(all) fun depositCapacity(from: auth(FungibleToken.Withdraw) &{FungibleToken.Vault}) {
@@ -250,31 +254,31 @@ access(all) fun depositCapacity(from: auth(FungibleToken.Withdraw) &{FungibleTok
 
 ### **Event Integration**
 
-- **Leverage Post-conditions**: Flow Actions interfaces emit events automatically  
-- **Provide Context**: Include relevant information in events
-- **Support Traceability**: Use UniqueIdentifiers consistently
+- **Leverage Post-conditions**: Flow Actions interfaces emit events automatically.  
+- **Provide Context**: Include relevant information in events.
+- **Support Traceability**: Use UniqueIdentifiers consistently.
 
 ### **Resource Management**
 
-- **Handle Empty Vaults**: Use `DeFiActionsUtils.getEmptyVault()` for consistent empty vault creation
-- **Destroy Properly**: Clean up resources in all code paths
-- **Avoid Resource Leaks**: Ensure all vaults are handled appropriately
+- **Handle Empty Vaults**: Use `DeFiActionsUtils.getEmptyVault()` for consistent empty vault creation.
+- **Destroy Properly**: Clean up resources in all code paths.
+- **Avoid Resource Leaks**: Ensure all vaults are handled appropriately.
 
 ### **Capability Management**
 
-- **Validate Capabilities**: Check capabilities before using them
-- **Handle Revocation**: Gracefully handle revoked capabilities
-- **Proper Entitlements**: Use correct entitlement levels (auth vs unauth)
+- **Validate Capabilities**: Check capabilities before using them.
+- **Handle Revocation**: Gracefully handle revoked capabilities.
+- **Proper Entitlements**: Use correct entitlement levels (auth vs unauth).
 
 ### **Documentation**
 
-- **Clear Comments**: Explain protocol-specific logic
-- **Usage Examples**: Show how to use your connectors
-- **Integration Patterns**: Demonstrate composition with other connectors
+- **Clear Comments**: Explain protocol-specific logic.
+- **Usage Examples**: Show how to use your connectors.
+- **Integration Patterns**: Demonstrate composition with other connectors.
 
 ## Integration into Flow Actions
 
-We will now go over the process of building a connector and integrating it with Flow Actions. Specifically, we will showcase the process of using the **VaultSink** connector in the [FungibleTokenConnectors]. It only performs basic token deposits to a vault with capacity limits, implements the Sink interface, has minimal external dependencies (only FungibleToken standard), and requires simple configuration (max balance, deposit vault capability,and unique ID).
+We will now go over how to build a connector and integrate it with Flow Actions. Specifically, we will showcase the process of using the **VaultSink** connector in the [FungibleTokenConnectors]. It only performs basic token deposits to a vault with capacity limits, implements the Sink interface, has minimal external dependencies (only FungibleToken standard), and requires simple configuration (max balance, deposit vault capability,and unique ID).
 
 The `VaultSink` connector is already deployed and working in Flow Actions. Let's examine how it's integrated:
 
@@ -436,7 +440,7 @@ transaction(depositAmount: UFix64) {
 
 ### Add to Existing Workflows
 
-The VaultSink can be used in advanced Flow Actions workflows:
+You can use VaultSink in advanced Flow Actions workflows:
 
 ```cadence
 // Example: VaultSink in AutoBalancer (real integration pattern)
@@ -496,24 +500,24 @@ transaction() {
 
 When building your own connectors, follow the VaultSink pattern:
 
-1. **Keep constructors simple** - minimal required parameters
-2. **Validate inputs** - check capabilities and preconditions
-3. **Handle errors gracefully** - no-ops instead of panics
-4. **Support Flow Actions standards** - UniqueIdentifier, ComponentInfo
-5. **Test thoroughly** - create usage transactions like the ones shown
-6. **Document clearly** - show real integration examples
+1. **Keep constructors simple** - minimal required parameters.
+2. **Validate inputs** - check capabilities and preconditions.
+3. **Handle errors gracefully** - no-ops instead of panics.
+4. **Support Flow Actions standards** - UniqueIdentifier, ComponentInfo.
+5. **Test thoroughly** - create usage transactions like the ones shown.
+6. **Document clearly** - show real integration examples.
 
 ## Conclusion
 
-The Flow Actions framework provides a comprehensive set of connectors that successfully implement the 5 fundamental DeFi primitives across multiple protocols:
+The Flow Actions framework provides a comprehensive set of connectors that successfully implement the five fundamental DeFi primitives across multiple protocols:
 
-- **20+ Connector Implementations** spanning basic vault operations to complex cross-VM swapping
-- **4 Protocol Integrations**: Generic FungibleToken, IncrementFi, Band Oracle, Flow EVM
-- **Composable Architecture**: Connectors can be combined to create sophisticated financial workflows
-- **Safety-First Design**: Graceful error handling and resource safety throughout
-- **Event-Driven Traceability**: Full workflow tracking and debugging capabilities
+- **20+ Connector Implementations** spanning basic vault operations to complex cross-VM swapping.
+- **4 Protocol Integrations**: Generic FungibleToken, IncrementFi, Band Oracle, Flow EVM.
+- **Composable Architecture**: Combine Connectors to create sophisticated financial workflows.
+- **Safety-First Design**: Graceful error handling and resource safety throughout.
+- **Event-Driven Traceability**: Full workflow tracking and debugging capabilities.
 
-This framework enables developers to build sophisticated DeFi strategies while maintaining the simplicity and reliability of standardized primitive interfaces. The modular design allows for easy extension to additional protocols while preserving composability and atomic execution guarantees.
+This framework allows developers to build sophisticated DeFi strategies while maintaining the simplicity and reliability of standardized primitive interfaces. The modular design allows for easy extension to additional protocols while preserving composability and atomic execution guarantees.
 
 <!-- Relative links, will not render on page -->
 [FLIP 339]: https://github.com/onflow/flips/pull/339/files
