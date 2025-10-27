@@ -14,7 +14,14 @@ module.exports = function markdownExportPlugin(context, options = {}) {
     for (const rel of mdPaths) {
       const src = path.join(srcDir, rel);
       // Keep the original extension so MDX shortcodes remain intact
-      const dest = path.join(outDir, outDirRel, rel);
+      // If filename is index.md, remove it from the path
+      let dest = path.join(outDir, outDirRel, rel);
+      if (path.basename(rel) === "index.md" || path.basename(rel) === "index.mdx") {
+        const dir = path.dirname(rel);
+        const ext = path.extname(rel);
+        // Remove the index.md from the path: foo/bar/index.md -> foo/bar.md
+        dest = path.join(outDir, outDirRel, dir + ext);
+      }
       fs.mkdirSync(path.dirname(dest), { recursive: true });
       fs.copyFileSync(src, dest);
     }
