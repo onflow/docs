@@ -85,6 +85,12 @@ module.exports = function markdownExportPlugin(context, options = {}) {
       }
       
       fs.writeFileSync(path.join(outDir, "llms-full.txt"), fullContent);
+      
+      // 5) Copy llms.txt to build output
+      const llmsTxtPath = path.join(siteDir, "public", "llms.txt");
+      if (fs.existsSync(llmsTxtPath)) {
+        fs.copyFileSync(llmsTxtPath, path.join(outDir, "llms.txt"));
+      }
     },
     injectHtmlTags() {
       return {
