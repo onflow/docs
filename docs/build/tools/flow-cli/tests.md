@@ -273,7 +273,6 @@ Requirements:
 - The network must exist in `flow.json`
 - The network must have a valid `host` configured
 
-
 #### --fork-host
 
 - Type: `string`
