@@ -2,7 +2,7 @@
 title: Testing Strategy on Flow
 sidebar_label: Testing Strategy
 sidebar_position: 3
-description: A layered testing strategy for Flow—emulator unit/property tests, forked integration, emulator fork sandbox, testnet canaries, and post-deploy monitoring. Guidance for reproducibility, CI selection, and triage.
+description: A layered testing strategy for Flow—unit tests, forked integration, and a forked emulator sandbox. Guidance for reproducibility and simple CI setup.
 keywords:
   - testing strategy
   - unit testing
@@ -21,7 +21,7 @@ keywords:
   - smoke tests
   - E2E testing
   - account impersonation
-  - test triage
+  - test troubleshooting
   - golden files
   - test automation
   - Flow CLI
@@ -35,32 +35,37 @@ A single, pragmatic strategy for testing on Flow. Use layers that are determinis
 
 ## At a glance
 
-- **Unit & Property (emulator, no fork)**: Hermetic correctness and invariants
-- **Integration (automated, `flow test --fork`)**: Real contracts and data; mutations stay local
+- **Unit & Property — Test Framework**: Hermetic correctness and invariants
+- **Integration — `flow test --fork`**: Real contracts and data; mutations stay local
 - **Local integration sandbox (interactive, `flow emulator --fork`)**: Drive apps/E2E against production-like state
 - **Staging (testnet)**: Final plumbing and config checks
 - **Post-deploy (read-only)**: Invariant dashboards and alerts
 
 ## Layers
 
-### Unit & Property (Emulator, no fork)
+### Unit & Property — Test Framework
 
+- Use `flow test`
 - **Use when**: Validating Cadence logic, invariants, access control, error paths, footprint
 - **Why**: Fully deterministic and isolated; highest-regression signal
 - **Run**: Every commit/PR; wide parallelism
-- **Notes**: Favor property/invariant checks and fuzzing; zero external dependencies
+ - **Notes**: Write clear success/failure tests, add simple “this should always hold” rules when helpful, and avoid external services
 
-### Integration (Automated) — `flow test --fork`
+See also: [Running Cadence Tests].
+
+### Integration — `flow test --fork`
 
 - **Use when**: Interacting with real on-chain contracts/data (FT/NFT standards, AMMs, wallets, oracles, bridges), upgrade checks, historical repro
 - **Why**: Real addresses, capability paths, and resource schemas; catches drift early
- - **Run**: PRs may run the full forked suite (pinned) or a small smoke subset; broader matrix nightly/on merge
+- **Run**: On PRs, run the full forked suite if practical (pinned), or a small quick set; run more cases nightly or on main
 - **Notes**:
   - Pin with `--fork-height` where reproducibility matters
   - Prefer local deployment + impersonation over real mainnet accounts
   - Mutations are local to the forked runtime; the live network is never changed
   - Be mindful of access-node availability and rate limits
   - External oracles/protocols: forked tests do not call off-chain services or other chains; mock these or run a local stub
+
+See also: [Fork Testing with Cadence], [Fork Testing Flags].
 
 ### Local Integration Sandbox (Interactive) — `flow emulator --fork`
 
@@ -69,12 +74,16 @@ A single, pragmatic strategy for testing on Flow. Use layers that are determinis
 - **Run**: Dev machines and focused E2E CI jobs
 - **Notes**: Pin height; run on dedicated ports; impersonation is built-in; mutations are local; off-chain/oracle calls are not live—mock or run local stubs
 
+See also: [Flow Emulator].
+
 ### Staging — Testnet
 
 - **Use when**: Final network plumbing and configuration checks before release
 - **Why**: Validates infra differences you cannot fully simulate
 - **Run**: Pre-release and on infra changes
 - **Notes**: Keep canaries minimal and time-boxed; protocol/partner support may be limited on testnet (not all third-party contracts are deployed or up to date)
+
+See also: [Flow Networks].
 
 ### Post-deploy Monitoring (read-only)
 
@@ -91,8 +100,8 @@ A single, pragmatic strategy for testing on Flow. Use layers that are determinis
 
 ## CI tips
 
-- PRs: Run emulator unit/property and forked integration (pinned). Full suite is fine if practical; otherwise a small smoke set.
-- Nightly/Main: Add a latest pin job and a broader fork matrix when needed.
+- PRs: Run emulator unit/property and forked integration (pinned). Full suite is fine if practical; otherwise a small quick set.
+- Nightly/Main: Add a latest pin job and expand fork coverage as needed.
 - E2E (optional): Use `flow emulator --fork` at a stable pin and run your browser tests.
 
 ## Test selection and tagging
@@ -100,27 +109,16 @@ A single, pragmatic strategy for testing on Flow. Use layers that are determinis
  - **Optional naming helpers**: Use simple suffixes in test names like `_fork`, `_smoke`, `_e2e` if helpful
  - Run the tests you care about by passing files/directories: `flow test FILE1 FILE2 DIR1 ...` (most common)
  - Optionally, use `--name <substring>` to match test functions when it’s convenient
-- **Defaults**: PRs can run the full fork suite (pinned) or a small smoke set; nightly runs the full matrix (+ optional E2E)
+- **Defaults**: PRs can run the full fork suite (pinned) or a small quick set; nightly runs broader coverage (+ optional E2E)
 
-## Triage tips
+## Troubleshooting tips
 
 - Re-run at the same `--fork-height`, then at latest
 - Compare contract addresses/aliases in `flow.json`
 - Diff event/resource shapes against your stored samples
 - Check access-node health and CI parallelism/sharding
 
-## Handy commands
 
-```bash
-# Unit/property (emulator)
-flow test
-
-# Forked integration (pinned)
-flow test --fork mainnet --fork-height <H>
-
-# Local sandbox (interactive)
-flow emulator --fork mainnet --fork-height <H>
-```
 
 ## Do / Don’t
 

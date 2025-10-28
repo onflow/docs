@@ -383,7 +383,7 @@ See also:
 #### Best practices
 
 1. Use fork testing primarily for integration tests; keep unit tests on the emulator for determinism and isolation
-2. Keep forked tests separate in CI. On PRs, run them pinned (full suite if practical; otherwise a small smoke set)
+2. Keep forked tests separate in CI. On PRs, run them pinned (full suite if practical; otherwise a small quick set)
 3. For reproducibility, pin with `--fork-height` where it matters. For best results, maintain a per‑spork stable pin and also run a "latest" freshness job
 3. Prefer testnet before mainnet to catch network-specific issues with fewer risks
 4. Document dependencies on specific mainnet/testnet contracts and addresses
