@@ -32,6 +32,7 @@ keywords:
 # Testing Smart Contracts
 
 A single, pragmatic strategy for testing on Flow. Use layers that are deterministic and isolated by default, add realism with forks when needed, and keep a minimal set of live network checks before release.
+
 ## At a glance
 
 - **Unit & Property — Test Framework**: Hermetic correctness and invariants
