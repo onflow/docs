@@ -229,7 +229,7 @@ Follow the prompts:
 This will output the new account address. Use this address as the mainnet alias for your contract in flow.json.
 
 :::note
-This creates a local account with a mainnet-format address for fork testing. When you're ready to deploy to actual mainnet, you'll use this same account—see the [Deploying Contracts guide](../../build/cadence/smart-contracts/deploying.md) for details.
+This creates a local account with a mainnet-format address for fork testing. When you're ready to deploy to actual mainnet, you'll use this same account—see the [Deploying Contracts guide](pathname:///build/cadence/smart-contracts/deploying) for details.
 :::
 
 ### Create a Contract that Uses FlowToken
@@ -541,14 +541,14 @@ See also:
 - Emulator (fork mode for interactive E2E): [Flow Emulator]
 - Networks and access nodes: [Flow Networks]
 
-::::info
+:::info
 External oracles and off-chain systems
 
 Fork tests run against Flow chain state only:
 - No live off-chain/API calls or cross-chain reads
 - Price feeds, bridges, indexers, and similar must be mocked (stub contracts or fixtures)
 - For end-to-end, combine with `flow emulator --fork` and a local stub service
-::::
+:::
 
 ### Select tests quickly
 
