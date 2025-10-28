@@ -1,6 +1,6 @@
 # Flow Developer Documentation
 
-> Flow is the DeFi blockchain: a high-performance layer-one blockchain designed for automated DeFi and large-scale onchain applications.
+> Flow is powering the future of Consumer DeFi: a high-performance layer-one blockchain designed for automation and large-scale onchain applications.
 >
 > Flow's multi-role architecture isolates heavy computation to Execution Nodes while keeping validation lightweight, so developers gain incredible performance and users benefit from low-cost transactions even at scale.
 >
