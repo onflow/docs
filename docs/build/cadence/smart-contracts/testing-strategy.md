@@ -1,6 +1,6 @@
 ---
-title: Testing Strategy on Flow
-sidebar_label: Testing Strategy
+title: Testing Smart Contracts
+sidebar_label: Testing Smart Contracts
 sidebar_position: 3
 description: A layered testing strategy for Flow—unit tests, forked integration, and a forked emulator sandbox. Guidance for reproducibility and simple CI setup.
 keywords:
@@ -29,10 +29,9 @@ keywords:
   - spork boundaries
 ---
 
-# Testing Strategy on Flow
+# Testing Smart Contracts
 
 A single, pragmatic strategy for testing on Flow. Use layers that are deterministic and isolated by default, add realism with forks when needed, and keep a minimal set of live network checks before release.
-
 ## At a glance
 
 - **Unit & Property — Test Framework**: Hermetic correctness and invariants
@@ -128,7 +127,7 @@ See also: [Flow Networks].
 ## Related docs
 
 - Guide → Running tests: [Running Cadence Tests]
-- Guide → Background: [Testing Smart Contracts]
+- Guide → How-to: [Cadence Testing Framework]
 - Tutorial → Step-by-step: [Fork Testing with Cadence]
 - Tool → Emulator (including fork mode): [Flow Emulator]
 - Flags → `flow test --fork`: [Fork Testing Flags]
@@ -140,7 +139,7 @@ See also: [Flow Networks].
 
 <!-- Reference-style links -->
 [Running Cadence Tests]: ../../tools/flow-cli/tests.md
-[Testing Smart Contracts]: ./testing.md
+[Cadence Testing Framework]: ./testing.md
 [Fork Testing with Cadence]: ../../../blockchain-development-tutorials/cadence/fork-testing/index.md
 [Flow Emulator]: ../../tools/emulator/index.md
 [Fork Testing Flags]: ../../tools/flow-cli/tests.md#fork-testing-flags

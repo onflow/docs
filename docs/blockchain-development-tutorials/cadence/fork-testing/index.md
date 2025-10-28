@@ -577,7 +577,7 @@ Fork testing bridges the gap between local unit tests and testnet deployments, e
 [Flow CLI]: ../../../build/tools/flow-cli/index.md
 [homebrew]: https://brew.sh
 [installation guide]: ../../../build/tools/flow-cli/install.md
-[Testing Smart Contracts]: ../../../build/cadence/smart-contracts/testing.md
+[Testing Smart Contracts]: ../../../build/cadence/smart-contracts/testing-strategy.md
 [Dependency Manager]: ../../../build/tools/flow-cli/dependency-manager.md
 [Fork Testing Flags]: ../../../build/tools/flow-cli/tests.md#fork-testing-flags
 [Cadence Testing Framework]: https://cadence-lang.org/docs/testing-framework
