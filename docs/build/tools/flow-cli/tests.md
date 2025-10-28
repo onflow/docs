@@ -273,10 +273,6 @@ Requirements:
 - The network must exist in `flow.json`
 - The network must have a valid `host` configured
 
-Common errors:
-
-- `network "<name>" not found in flow.json` → add the network definition
-- `network "<name>" has no host configured` → set the `host` field
 
 #### --fork-host
 
