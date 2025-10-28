@@ -7,15 +7,19 @@ export const GoldStarPanel: React.FC = () => {
   const { getProgress } = useProgress();
   const { user } = useCurrentUser();
 
-  const handleAskFlowAI = (e: React.MouseEvent) => {
+  const handleAskFlowAI = async (e: React.MouseEvent) => {
     e.preventDefault();
+    if (typeof window !== 'undefined' && window.__pylonWidgetManager) {
+      await window.__pylonWidgetManager.showChat();
+    }
+  };
 
-    // Open Pylon chat widget instead of ask-cookbook
-    if (typeof window !== 'undefined' && window.Pylon) {
-      console.log('Opening Pylon chat widget from Ask Flow AI button');
-      window.Pylon('show');
-    } else {
-      console.warn('Pylon widget not available yet');
+  const handleMouseEnter = () => {
+    // Preload widget on hover for faster response
+    if (typeof window !== 'undefined' && window.__pylonWidgetManager) {
+      window.__pylonWidgetManager.loadWidget().catch(() => {
+        // Silently handle preload failures
+      });
     }
   };
 
@@ -49,6 +53,7 @@ export const GoldStarPanel: React.FC = () => {
         </button>
         <button
           onClick={handleAskFlowAI}
+          onMouseEnter={handleMouseEnter}
           className={`flex-1 ${colors.black.dark} text-white px-4 py-2 rounded-xl hover:bg-gray-700 appearance-none cursor-pointer border-0`}
         >
           Ask Flow AI

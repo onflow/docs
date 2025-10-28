@@ -61,13 +61,10 @@ const homepagePillData: Record<
     icon: IconName.FLOW_ASSISTANT_GPT,
     text: 'Flow AI Assistant',
     subText: 'Chat with devs',
-    onClick: () => {
-      // Open Pylon chat widget instead of ask-cookbook
-      if (typeof window !== 'undefined' && window.Pylon) {
-        console.log('Opening Pylon chat widget from Flow AI Assistant button');
-        window.Pylon('show');
-      } else {
-        console.warn('Pylon widget not available yet');
+    onClick: async () => {
+      // Open Pylon chat widget using optimized loader
+      if (typeof window !== 'undefined' && window.__pylonWidgetManager) {
+        await window.__pylonWidgetManager.showChat();
       }
     },
   },
