@@ -8,7 +8,7 @@ The Flow Emulator is a lightweight tool that emulates the behavior of the real F
 
 ## Installation
 
-The emulator is included with the [Flow CLI](../flow-cli/index.md). Follow the [installation guide](../flow-cli/install.md) to get started.
+The emulator is included with the [Flow CLI]. Follow the [installation guide] to get started.
 
 ## Quick Start
 
@@ -18,10 +18,10 @@ First, create a `flow.json` configuration file:
 flow init --config-only
 ```
 
-Then start the Flow Emulator:
+Then start the Flow Emulator in fork mode (defaults to mainnet when value omitted):
 
 ```bash
-flow emulator
+flow emulator --fork
 ```
 
 You'll see output similar to:
@@ -41,7 +41,7 @@ This starts a local Flow network with:
 
 ## Available Commands
 
-- `snapshot`: Create/Load/List emulator snapshots. See: [Create Emulator Snapshot](../flow-cli/deployment/emulator-snapshot.md)
+- `snapshot`: Create/Load/List emulator snapshots. See: [Create Emulator Snapshot]
 
 ## Key Flags
 
@@ -63,6 +63,7 @@ This starts a local Flow network with:
   - `--state-hash <string>`: Load state from checkpoint state hash
 
 - **Forking**
+  - `--fork <string>`: Start the emulator in fork mode using a network from `flow.json`. If provided without a value, defaults to `mainnet`.
   - `--fork-host <host>`: Access node to query when forking Mainnet/Testnet
   - `--fork-height <uint>`: Starting block height when forking
 
@@ -115,6 +116,12 @@ flow emulator --block-time 1s
 
 # Persist state on disk
 flow emulator --persist --dbpath ./flowdb
+
+# Fork from Mainnet using flow.json
+flow emulator --fork
+
+# Fork from Testnet using flow.json and pin to a height
+flow emulator --fork testnet --fork-height 12345678
 
 # Fork from Testnet at a specific height
 flow emulator --fork-host access.devnet.nodes.onflow.org:9000 --fork-height 12345678
@@ -172,8 +179,13 @@ To list all the existing snapshots we previously created and can load to run:
 flow emulator list
 ```
 
-To learn more about using the Emulator, have a look at the [README of the repository](https://github.com/onflow/flow-emulator).
-
 ## Additional Resources
 
-For advanced configuration options, see the [Flow Emulator repository](https://github.com/onflow/flow-emulator/).
+To learn more about using the Emulator, please have a look at the [public GitHub repository].
+
+
+<!-- Reference-style links -->
+[Flow CLI]: ../flow-cli/index.md
+[installation guide]: ../flow-cli/install.md
+[Create Emulator Snapshot]: ../flow-cli/utils/snapshot-save.md
+[public GitHub repository]: https://github.com/onflow/flow-emulator

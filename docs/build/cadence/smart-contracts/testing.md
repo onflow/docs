@@ -27,17 +27,17 @@ keywords:
 
 Testing is an essential part of smart contract development to ensure the correctness and reliability of your code. The Cadence Testing Framework provides a convenient way to write tests for your contracts, scripts and transactions which allows you to verify the functionality and correctness of your smart contracts.
 
-> For a layered approach to when and why to use emulator, forked integration, and testnet, see the strategy guide: [Testing Strategy on Flow](./testing-strategy.md).
+> For a layered approach to when and why to use emulator, forked integration, and testnet, see the strategy guide: [Testing Strategy on Flow].
 
 ## Install Flow CLI
 
-The [Flow CLI](../../../build/tools/flow-cli/index.md) is the primary tool for developing, testing, and deploying smart contracts to the Flow network.
+The [Flow CLI] is the primary tool for developing, testing, and deploying smart contracts to the Flow network.
 
-If you haven't installed the Flow CLI yet and have [homebrew](https://brew.sh/) installed, simply run `brew install flow-cli`. Alternatively, refer to the Flow CLI [installation instructions](../../../build/tools/flow-cli/install.md).
+If you haven't installed the Flow CLI yet and have [homebrew](https://brew.sh/) installed, simply run `brew install flow-cli`. Alternatively, refer to the Flow CLI [installation instructions].
 
 ## Create a new project
 
-In your preferred code editor, create a new directory for your project and navigate to it in the terminal. Then initialize a new Flow project by running the command `flow init`. This will create a `flow.json` config file that contains the [project's configuration](../../../build/tools/flow-cli/flow.json/configuration.md).
+In your preferred code editor, create a new directory for your project and navigate to it in the terminal. Then initialize a new Flow project by running the command `flow init`. This will create a `flow.json` config file that contains the [project's configuration].
 
 ```bash
 mkdir test-cadence
@@ -220,7 +220,7 @@ By leveraging these advanced testing techniques, you can write more robust and r
 
 This is a basic example, and there are many more advanced features and techniques you can explore when working with the Cadence Testing Framework.
 
-For more in-depth tutorials and documentation, refer to the official [Cadence language documentation](https://cadence-lang.org/) and the [Flow CLI documentation](../../../build/tools/flow-cli/index.md).
+For more in-depth tutorials and documentation, refer to the official [Cadence language documentation](https://cadence-lang.org/) and the [Flow CLI documentation].
 
 ## Testing Requirements
 
@@ -242,7 +242,7 @@ In all three cases, the test code will need to deploy the contracts, configure a
 ### Cadence tests
 
 Cadence comes with built-in support for code coverage, as well as a native testing framework which allows developers to write their tests using Cadence.
-This framework is bundled with the [Flow CLI](../../../build/tools/flow-cli/index.md) tool, which includes a dedicated command for running tests (`flow test`).
+This framework is bundled with the [Flow CLI] tool, which includes a dedicated command for running tests (`flow test`).
 
 You can find examples of Cadence tests in the following projects: [hybrid-custody](https://github.com/onflow/hybrid-custody/tree/main/test), [flow-nft](https://github.com/onflow/flow-nft/tree/master/tests), [flow-ft](https://github.com/onflow/flow-ft/tree/master/tests).
 Visit the [documentation](https://cadence-lang.org/docs/testing-framework) to view all the available features.
@@ -358,13 +358,13 @@ This means you typically do not need to change imports in your test code when sw
 - Spork boundaries: access nodes only retain historical data for the current spork; pinning via `--fork-height` cannot reach beyond that boundary. Learn more about the Flow spork process in the Network Upgrade (Spork) docs.
 - External oracles/off-chain systems: forked tests cannot fetch live data from external services or other chains; provide mocks or a local test harness
 
-See: [Network Upgrade (Spork) Process](../../../protocol/node-ops/node-operation/network-upgrade.md)
+See: [Network Upgrade (Spork) Process]
 
 See also:
 
-- Strategy: [Testing Strategy on Flow](./testing-strategy.md)
-- Flags: [Fork Testing Flags](../../tools/flow-cli/tests.md#fork-testing-flags)
-- Emulator (fork mode): [Flow Emulator](../../tools/emulator/index.md)
+- Strategy: [Testing Strategy on Flow]
+- Flags: [Fork Testing Flags]
+- Emulator (fork mode): [Flow Emulator]
 
 #### Best practices
 
@@ -379,9 +379,9 @@ See also:
 
 See the flag reference for available options and details.
 
-Guide → Tutorial: [Fork Testing with Cadence (Step-by-Step)](../../../blockchain-development-tutorials/cadence/fork-testing/index.md)
+Guide → Tutorial: [Fork Testing with Cadence (Step-by-Step)]
 
-Guide → Flags: [Fork Testing Flags](../../../build/tools/flow-cli/tests.md#fork-testing-flags)
+Guide → Flags: [Fork Testing Flags]
 
 ```bash
 flow test --fork                    # Fork from mainnet (default when value omitted)
@@ -424,3 +424,14 @@ Get familiar with the [Cadence anti-patterns](https://cadence-lang.org/docs/anti
   - [hybrid-custody](https://github.com/onflow/hybrid-custody/tree/main/test),
   - [flow-nft](https://github.com/onflow/flow-nft/tree/master/tests),
   - [flow-ft](https://github.com/onflow/flow-ft/tree/master/tests).
+
+<!-- Reference-style links -->
+[Testing Strategy on Flow]: ./testing-strategy.md
+[Flow CLI]: ../../../build/tools/flow-cli/index.md
+[installation instructions]: ../../../build/tools/flow-cli/install.md
+[project's configuration]: ../../../build/tools/flow-cli/flow.json/configuration.md
+[Flow CLI documentation]: ../../../build/tools/flow-cli/index.md
+[Network Upgrade (Spork) Process]: ../../../protocol/node-ops/node-operation/network-upgrade.md
+[Fork Testing Flags]: ../../tools/flow-cli/tests.md#fork-testing-flags
+[Flow Emulator]: ../../tools/emulator/index.md
+[Fork Testing with Cadence (Step-by-Step)]: ../../../blockchain-development-tutorials/cadence/fork-testing/index.md

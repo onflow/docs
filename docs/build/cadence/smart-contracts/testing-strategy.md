@@ -114,15 +114,25 @@ flow emulator --fork mainnet --fork-height <H>
 
 ## Related docs
 
-- Guide → Running tests: [Running Cadence Tests](../../tools/flow-cli/tests.md)
-- Guide → Background: [Testing Smart Contracts](./testing.md)
-- Tutorial → Step-by-step: [Fork Testing with Cadence](../../../blockchain-development-tutorials/cadence/fork-testing/index.md)
-- Tool → Emulator (including fork mode): [Flow Emulator](../../tools/emulator/index.md)
-- Flags → `flow test --fork`: [Fork Testing Flags](../../tools/flow-cli/tests.md#fork-testing-flags)
-- Networks → Public access nodes: [Flow Networks](../../../protocol/flow-networks/index.md)
-- Upgrades → Spork boundaries: [Network Upgrade (Spork) Process](../../../protocol/node-ops/node-operation/network-upgrade.md)
-- Config → Network and hosts: [Flow CLI Configuration (flow.json)](../../tools/flow-cli/flow.json/initialize-configuration.md)
-- Imports → Resolving aliases: [Dependency Manager](../../tools/flow-cli/dependency-manager.md)
-- Language → Assertions & helpers: [Cadence Testing Framework](https://cadence-lang.org/docs/testing-framework)
+- Guide → Running tests: [Running Cadence Tests]
+- Guide → Background: [Testing Smart Contracts]
+- Tutorial → Step-by-step: [Fork Testing with Cadence]
+- Tool → Emulator (including fork mode): [Flow Emulator]
+- Flags → `flow test --fork`: [Fork Testing Flags]
+- Networks → Public access nodes: [Flow Networks]
+- Upgrades → Spork boundaries: [Network Upgrade (Spork) Process]
+- Config → Network and hosts: [Flow CLI Configuration (flow.json)]
+- Imports → Resolving aliases: [Dependency Manager]
+- Language → Assertions & helpers: [Cadence Testing Framework]
 
-
+<!-- Reference-style links -->
+[Running Cadence Tests]: ../../tools/flow-cli/tests.md
+[Testing Smart Contracts]: ./testing.md
+[Fork Testing with Cadence]: ../../../blockchain-development-tutorials/cadence/fork-testing/index.md
+[Flow Emulator]: ../../tools/emulator/index.md
+[Fork Testing Flags]: ../../tools/flow-cli/tests.md#fork-testing-flags
+[Flow Networks]: ../../../protocol/flow-networks/index.md
+[Network Upgrade (Spork) Process]: ../../../protocol/node-ops/node-operation/network-upgrade.md
+[Flow CLI Configuration (flow.json)]: ../../tools/flow-cli/flow.json/initialize-configuration.md
+[Dependency Manager]: ../../tools/flow-cli/dependency-manager.md
+[Cadence Testing Framework]: https://cadence-lang.org/docs/testing-framework

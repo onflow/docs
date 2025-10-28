@@ -493,9 +493,9 @@ You can also fork from testnet (`flow test --fork testnet`) or pin to a specific
 
 See also:
 
-- High-Level Testing Strategy: [Testing Strategy on Flow](../../../build/cadence/smart-contracts/testing-strategy.md)
-- Emulator (fork mode for interactive E2E): [Flow Emulator](../../../build/tools/emulator/index.md)
-- Networks and access nodes: [Flow Networks](../../../protocol/flow-networks/index.md)
+- Strategy: [Testing Strategy on Flow]
+- Emulator (fork mode for interactive E2E): [Flow Emulator]
+- Networks and access nodes: [Flow Networks]
 
 ::::info
 External oracles and off-chain systems
@@ -568,5 +568,7 @@ Fork testing bridges the gap between local unit tests and testnet deployments, e
 [Fork Testing Flags]: ../../../build/tools/flow-cli/tests.md#fork-testing-flags
 [Cadence Testing Framework]: https://cadence-lang.org/docs/testing-framework
 [Flow Networks]: ../../../protocol/flow-networks/index.md
+[Testing Strategy on Flow]: ../../../build/cadence/smart-contracts/testing-strategy.md
+[Flow Emulator]: ../../../build/tools/emulator/index.md
 
 
