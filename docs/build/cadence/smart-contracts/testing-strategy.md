@@ -5,13 +5,28 @@ sidebar_position: 3
 description: A layered testing strategy for Flow—emulator unit/property tests, forked integration, emulator fork sandbox, testnet canaries, and post-deploy monitoring. Guidance for reproducibility, CI selection, and triage.
 keywords:
   - testing strategy
+  - unit testing
+  - integration testing
   - fork testing
+  - flow test --fork
+  - flow emulator --fork
   - emulator
-  - CI
+  - testnet
+  - CI pipeline
+  - continuous integration
   - reproducibility
-  - pins
+  - fork-height
+  - block height pinning
+  - test selection
+  - smoke tests
+  - E2E testing
+  - account impersonation
+  - test triage
+  - golden files
+  - test automation
   - Flow CLI
   - Cadence tests
+  - spork boundaries
 ---
 
 # Testing Strategy on Flow

@@ -2,6 +2,29 @@
 title: Flow Emulator
 description: Local Flow network for development and testing
 sidebar_position: 3
+keywords:
+  - Flow Emulator
+  - local development
+  - testing
+  - flow emulator --fork
+  - fork mode
+  - emulator flags
+  - mainnet fork
+  - testnet fork
+  - fork-height
+  - fork-host
+  - gRPC server
+  - REST API
+  - snapshots
+  - persistent storage
+  - block time
+  - code coverage
+  - debugging
+  - service account
+  - Flow CLI
+  - local blockchain
+  - E2E testing
+  - off-chain mocking
 ---
 
 The Flow Emulator is a lightweight tool that emulates the behavior of the real Flow network for local development and testing.

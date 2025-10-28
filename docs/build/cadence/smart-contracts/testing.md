@@ -21,6 +21,20 @@ keywords:
   - automated testing
   - contract verification
   - testing best practices
+  - fork testing
+  - flow test --fork
+  - emulator testing
+  - mainnet fork
+  - testnet fork
+  - fork-height
+  - account impersonation
+  - reproducible tests
+  - test deployment
+  - testing aliases
+  - spork boundaries
+  - Go tests
+  - external oracles
+  - off-chain mocking
 ---
 
 # Testing Smart Contracts

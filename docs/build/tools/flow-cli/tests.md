@@ -3,6 +3,29 @@ title: Running Cadence Tests
 sidebar_label: Running Cadence Tests
 description: How to run Cadence tests from the CLI
 sidebar_position: 11
+keywords:
+  - flow test
+  - Cadence tests
+  - Flow CLI
+  - test command
+  - test flags
+  - code coverage
+  - fork testing
+  - flow test --fork
+  - fork-height
+  - fork-host
+  - mainnet fork
+  - testnet fork
+  - test discovery
+  - test aliases
+  - testing configuration
+  - test selection
+  - test by name
+  - random testing
+  - coverage reporting
+  - test automation
+  - integration testing
+  - spork boundaries
 ---
 
 The Flow CLI provides a straightforward command to execute Cadence tests, enabling developers to validate their scripts and smart contracts effectively.

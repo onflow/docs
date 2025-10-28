@@ -5,7 +5,7 @@ title: Fork Testing with Cadence
 description: Run your Cadence test suite against a forked mainnet or testnet using flow test --fork. Test against real contracts and production data without deploying to live networks.
 keywords:
   - fork testing
-  - flow test
+  - flow test --fork
   - cadence tests
   - mainnet fork
   - testnet fork
@@ -13,6 +13,20 @@ keywords:
   - Flow CLI
   - account impersonation
   - production testing
+  - real contracts
+  - on-chain state
+  - block height
+  - fork-height
+  - historical debugging
+  - reproducible tests
+  - test deployment
+  - FlowToken
+  - FungibleToken
+  - test scripts
+  - test transactions
+  - local testing
+  - safe testing
+  - forked runtime
 ---
 
 # Fork Testing with Cadence
