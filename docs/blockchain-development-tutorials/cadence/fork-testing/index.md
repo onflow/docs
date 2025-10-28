@@ -147,13 +147,13 @@ Your `flow.json` should now have the mainnet and testnet networks configured fro
 
 ## Test Reading Live State
 
-The test directories are already created by `flow init`. If needed, create the scripts directory:
+Generate a script to read FlowToken supply:
 
 ```zsh
-mkdir -p cadence/scripts
+flow generate script GetFlowTokenSupply
 ```
 
-First, create a script to read FlowToken supply. Create `cadence/scripts/GetFlowTokenSupply.cdc`:
+Open `cadence/scripts/GetFlowTokenSupply.cdc` and replace its contents with:
 
 ```cadence cadence/scripts/GetFlowTokenSupply.cdc
 import "FlowToken"
@@ -163,9 +163,15 @@ access(all) fun main(): UFix64 {
 }
 ```
 
-Now create the test file `cadence/tests/flow_token_test.cdc`:
+Generate the test file:
 
-```cadence cadence/tests/flow_token_test.cdc
+```zsh
+flow generate test FlowToken
+```
+
+Open `cadence/tests/FlowToken_test.cdc` and replace its contents with:
+
+```cadence cadence/tests/FlowToken_test.cdc
 import Test
 
 access(all) fun testFlowTokenSupplyIsPositive() {
@@ -193,13 +199,13 @@ Notes:
 Run just this test file against a fork to confirm your setup works:
 
 ```zsh
-flow test cadence/tests/flow_token_test.cdc --fork mainnet
+flow test cadence/tests/FlowToken_test.cdc --fork mainnet
 ```
 
 Target testnet instead:
 
 ```zsh
-flow test cadence/tests/flow_token_test.cdc --fork testnet
+flow test cadence/tests/FlowToken_test.cdc --fork testnet
 ```
 
 You should see the test PASS. If not, verify your network host in `flow.json` and that dependencies are installed.
@@ -276,21 +282,24 @@ Update your `flow.json` to include the contract with aliases, using the address 
   },
   "accounts": {
     "mainnet-test": {
-      "address": "<from_previous_step>",
-      "key": {
-        "type": "file",
-        "location": "mainnet-test.pkey"
-      }
+      "address": "<from_previous_step>"
     }
   }
 }
 ```
 
-The `Test.deployContract` function will automatically deploy your contract to the testing environment during test execution.
+Note: No local private key is required for forked tests. The accounts entry above is included so you can copy/reference the address in your config; keys can be omitted for fork tests. Contracts deploy to the testing environment at `testing` alias, and transactions that interact with forked state can use impersonation. The `Test.deployContract` function will automatically deploy your contract to the testing environment during test execution.
 
 ### Create Scripts for Testing
 
-Create `cadence/scripts/CheckBalance.cdc`:
+Generate the scripts:
+
+```zsh
+flow generate script CheckBalance
+flow generate script HasMinimumBalance
+```
+
+Open `cadence/scripts/CheckBalance.cdc` and replace its contents with:
 
 ```cadence cadence/scripts/CheckBalance.cdc
 import "TokenChecker"
@@ -300,7 +309,7 @@ access(all) fun main(addr: Address): UFix64 {
 }
 ```
 
-Create `cadence/scripts/HasMinimumBalance.cdc`:
+Open `cadence/scripts/HasMinimumBalance.cdc` and replace its contents with:
 
 ```cadence cadence/scripts/HasMinimumBalance.cdc
 import "TokenChecker"
@@ -312,9 +321,15 @@ access(all) fun main(addr: Address, min: UFix64): Bool {
 
 ### Test Your Contract with Forked State
 
-Create `cadence/tests/token_checker_test.cdc`:
+Generate the test file:
 
-```cadence cadence/tests/token_checker_test.cdc
+```zsh
+flow generate test TokenChecker
+```
+
+Open `cadence/tests/TokenChecker_test.cdc` and replace its contents with:
+
+```cadence cadence/tests/TokenChecker_test.cdc
 import Test
 
 access(all) fun setup() {
@@ -367,13 +382,14 @@ Fork testing includes built-in account impersonation—you can execute transacti
 
 ### Create Transactions
 
-Create the transactions directory:
+Generate the transactions:
 
 ```zsh
-mkdir -p cadence/transactions
+flow generate transaction SetupFlowTokenVault
+flow generate transaction TransferTokens
 ```
 
-First, create a transaction to set up a FlowToken vault. Create `cadence/transactions/SetupFlowTokenVault.cdc`:
+Open `cadence/transactions/SetupFlowTokenVault.cdc` and replace its contents with:
 
 ```cadence cadence/transactions/SetupFlowTokenVault.cdc
 import "FungibleToken"
@@ -391,7 +407,7 @@ transaction {
 }
 ```
 
-Now create the transfer transaction. Create `cadence/transactions/TransferTokens.cdc`:
+Open `cadence/transactions/TransferTokens.cdc` and replace its contents with:
 
 ```cadence cadence/transactions/TransferTokens.cdc
 import "FungibleToken"
@@ -421,7 +437,7 @@ transaction(amount: UFix64, to: Address) {
 
 ### Test Transaction Execution with Impersonation
 
-Add this test function to the existing `cadence/tests/token_checker_test.cdc` file:
+Add this test function to the existing `cadence/tests/TokenChecker_test.cdc` file:
 
 ```cadence
 access(all) fun testTransactionAsMainnetAccount() {
@@ -506,10 +522,10 @@ flow test --fork mainnet
 This runs all `*_test.cdc` files in your project against mainnet. You should see:
 
 ```
-Test results: "cadence/tests/flow_token_test.cdc"
+Test results: "cadence/tests/FlowToken_test.cdc"
 - PASS: testFlowTokenSupplyIsPositive
 
-Test results: "cadence/tests/token_checker_test.cdc"
+Test results: "cadence/tests/TokenChecker_test.cdc"
 - PASS: testCheckBalanceOnRealAccount
 - PASS: testHasMinimumBalance
 - PASS: testTransactionAsMainnetAccount
@@ -539,13 +555,13 @@ Fork tests run against Flow chain state only:
 - Run specific files or directories:
 
 ```zsh
-flow test cadence/tests/flow_token_test.cdc cadence/tests/token_checker_test.cdc --fork mainnet
+flow test cadence/tests/FlowToken_test.cdc cadence/tests/TokenChecker_test.cdc --fork mainnet
 ```
 
 - Optional: narrow by function name with `--name`:
 
 ```zsh
-flow test cadence/tests/token_checker_test.cdc --name _smoke --fork mainnet
+flow test cadence/tests/TokenChecker_test.cdc --name _smoke --fork mainnet
 ```
 
 - Optional: suffix a few functions with `_smoke` for quick PR runs; run the full suite nightly or on protected branches.
