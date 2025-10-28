@@ -1,0 +1,141 @@
+# Flow Developer Documentation
+
+> Flow is powering the future of Consumer DeFi: a high-performance layer-one blockchain designed for automation and large-scale onchain applications.
+>
+> Flow's multi-role architecture isolates heavy computation to Execution Nodes while keeping validation lightweight, so developers gain incredible performance and users benefit from low-cost transactions even at scale.
+>
+> The Forte upgrade expands the core protocol with Flow Actions for atomic multi-step DeFi operations and Scheduled Transactions for fully on-chain automation. Developers can compose swaps, staking, or yield workflows that self-execute without off-chain keepers, scripts, or relayers required.
+>
+> Flow supports two smart contract languages:
+>
+> **Cadence** provides native resource safety, 128-bit fixed-point arithmetic for financial precision, built-in WebAuthn authentication for secure, seedless user onboarding, and vastly increased contract size, storage, and computation limits. It also grants native data availability, and Cadence transactions are written in the language itself, which allows for multiple calls to multiple functions on multiple smart contracts all with a single user signature.
+>
+> **Solidity** allows developers to deploy existing contracts on a fast and efficient, fully EVM-equivalent network while benefitting from access to native VRF, batched transactions, and all the benefits of the Flow protocol. A native bridge allows seamless transfers of assets between these two VMs.
+>
+> Flow delivers a unified environment for automation-heavy, composable applications that demand reliability and precision at scale. It's where DeFi, fintech, and consumer-grade performance converge in a single L1.
+>
+> **The Forte Upgrade**: Until now, blockchains have largely been reactive, responding only when a user or off-chain keeper sends a transaction. Forte changes that model by giving developers a native framework for composable, autonomous execution. With Flow Actions, builders can link together standardized DeFi primitives such as sources, sinks, swappers, price oracles, and flashers into atomic, protocol-agnostic workflows. A single transaction can claim rewards, swap assets, add liquidity, and restake LP tokens without any off-chain orchestration.
+>
+> Complementing this composability, Scheduled Transactions introduce the first truly on-chain time scheduler. Developers can schedule or trigger transactions directly within Flow accounts, enabling recurring actions, deferred settlements, and autonomous portfolio management without external cron jobs or trusted servers. Together, Actions and Scheduling allow DeFi protocols to become self-maintaining: positions can compound automatically, vaults can adjust exposure based on time or events, and protocols can enforce predictable behavior entirely on-chain.
+>
+> Flow is also home to major consumer applications like NBA Top Shot, CryptoKitties, and numerous NFT marketplaces, demonstrating its versatility for both DeFi and consumer-grade performance at scale.
+
+This document offers comprehensive resources for developers to learn, experiment, and build on Flow.
+
+## Markdown Access for AI Agents
+
+All documentation is available in Markdown format for AI agents:
+- **All pages support content negotiation**: Request any page with `Accept: text/markdown` or `Accept: text/plain` header to receive Markdown instead of HTML
+- **Query parameter alternative**: Append `?format=md` or .md to any URL to get the Markdown version
+- **Complete documentation in one file**: [llms-full.txt](https://developers.flow.com/llms-full.txt) - All Flow documentation in a single Markdown file (79,000+ lines)
+- **Direct markdown paths**: All `.md` files are available at `/md/` prefix paths
+
+## Core Documentation
+- [Flow Developer Portal](https://developers.flow.com/): Main documentation hub for all Flow products and services.
+- [Cadence Language Reference](https://cadence-lang.org/): Main documentation site for the Cadence smart contract programming language.
+
+## Getting Started
+- [Smart Contract Interaction](https://developers.flow.com/blockchain-development-tutorials/cadence/getting-started/smart-contract-interaction): Your first Cadence smart contract interaction.
+- [Cadence Environment Setup](https://developers.flow.com/blockchain-development-tutorials/cadence/getting-started/cadence-environment-setup): Set up your Cadence development environment.
+- [Building a Frontend App](https://developers.flow.com/blockchain-development-tutorials/cadence/getting-started/building-a-frontend-app): Build your first frontend application with FCL.
+- [EVM Quickstart](https://developers.flow.com/evm/quickstart): Get started with Solidity on Flow EVM.
+
+## Cadence Development
+- [Smart Contract Interaction](https://developers.flow.com/blockchain-development-tutorials/cadence/getting-started/smart-contract-interaction): Learn how to interact with smart contracts.
+- [Account Management](https://developers.flow.com/blockchain-development-tutorials/cadence/account-management): Manage Flow accounts, parent/child accounts, and linking.
+- [Mobile Development](https://developers.flow.com/blockchain-development-tutorials/cadence/mobile): Build iOS and React Native applications on Flow.
+- [iOS Quickstart](https://developers.flow.com/blockchain-development-tutorials/cadence/mobile/ios-quickstart): Native iOS development with Swift.
+- [React Native Quickstart](https://developers.flow.com/blockchain-development-tutorials/cadence/mobile/react-native-quickstart): React Native mobile app development.
+- [Account Linking with Dapper](https://developers.flow.com/blockchain-development-tutorials/cadence/account-management/account-linking-with-dapper): Link accounts with Dapper Wallet.
+- [Parent & Child Accounts](https://developers.flow.com/blockchain-development-tutorials/cadence/account-management/parent-accounts): Implement hierarchical account structures.
+
+## Forte Upgrade
+- [Forte Introduction](https://developers.flow.com/blockchain-development-tutorials/forte): Introduction to Forte DeFi protocols.
+- [Flow Actions](https://developers.flow.com/blockchain-development-tutorials/forte/flow-actions): Composable DeFi primitive components.
+- [Flow Actions Introduction](https://developers.flow.com/blockchain-development-tutorials/forte/flow-actions/intro-to-flow-actions): Understanding Source, Sink, Swapper, PriceOracle, and Flasher.
+- [Flow Actions Connectors](https://developers.flow.com/blockchain-development-tutorials/forte/flow-actions/connectors): Connecting to different DeFi protocols.
+- [Scheduled Transactions](https://developers.flow.com/blockchain-development-tutorials/forte/scheduled-transactions): Automating transactions on Flow.
+
+## Gasless Transactions
+- [Sponsored Transactions](https://developers.flow.com/blockchain-development-tutorials/gasless-transactions): Enabling gasless transactions for users.
+- [EVM Sponsored Transactions](https://developers.flow.com/blockchain-development-tutorials/gasless-transactions/sponsored-transactions-evm-endpoint): Sponsoring EVM transactions.
+
+## Native VRF
+- [Native VRF Overview](https://developers.flow.com/blockchain-development-tutorials/native-vrf): Flow's native verifiable random function.
+- [VRF in Cadence](https://developers.flow.com/blockchain-development-tutorials/native-vrf/vrf-in-solidity): Using VRF in Solidity contracts.
+- [Commit-Reveal with Cadence](https://developers.flow.com/blockchain-development-tutorials/native-vrf/commit-reveal-cadence): Implementing commit-reveal schemes.
+
+## EVM Development
+- [EVM Getting Started](https://developers.flow.com/blockchain-development-tutorials/evm/development-tools): Development tools for Flow EVM.
+- [Hardhat Setup](https://developers.flow.com/blockchain-development-tutorials/evm/development-tools/hardhat): Using Hardhat with Flow EVM.
+- [Foundry Setup](https://developers.flow.com/blockchain-development-tutorials/evm/development-tools/foundry): Using Foundry with Flow EVM.
+- [Remix Setup](https://developers.flow.com/blockchain-development-tutorials/evm/development-tools/remix): Using Remix IDE with Flow EVM.
+- [Ethers.js Integration](https://developers.flow.com/blockchain-development-tutorials/evm/frameworks/ethers): Using Ethers.js with Flow.
+- [Wagmi Integration](https://developers.flow.com/blockchain-development-tutorials/evm/frameworks/wagmi): Using Wagmi hooks with Flow EVM.
+- [RainbowKit Integration](https://developers.flow.com/blockchain-development-tutorials/evm/frameworks/rainbowkit): Using RainbowKit with Flow.
+
+## Cross-VM Development
+- [Cross-VM Introduction](https://developers.flow.com/blockchain-development-tutorials/cross-vm-apps/introduction): Building hybrid Cadence/EVM applications.
+- [Adding Flow to Wagmi](https://developers.flow.com/blockchain-development-tutorials/cross-vm-apps/add-to-wagmi): Integrate Flow into your Wagmi app.
+- [Batched EVM Transactions](https://developers.flow.com/blockchain-development-tutorials/cross-vm-apps/batched-evm-transactions): Atomic transactions across both VMs.
+- [Direct Calls](https://developers.flow.com/blockchain-development-tutorials/cross-vm-apps/direct-calls): Call Cadence from Solidity and vice versa.
+- [Interacting with COA](https://developers.flow.com/blockchain-development-tutorials/cross-vm-apps/interacting-with-coa): Controlled On-Chain Accounts (COA).
+
+## Advanced Features
+- [Token Standards](https://developers.flow.com/blockchain-development-tutorials/tokens): Creating fungible and non-fungible tokens.
+- [Native VRF](https://developers.flow.com/blockchain-development-tutorials/native-vrf): Flow's native verifiable random function for onchain randomness.
+- [Gasless Transactions](https://developers.flow.com/blockchain-development-tutorials/gasless-transactions): Sponsored transactions for better UX.
+- [Integrations](https://developers.flow.com/blockchain-development-tutorials/integrations): Integration with external services like Crossmint and Gelato.
+- [128-bit Fixed Point Math](https://developers.flow.com/blockchain-development-tutorials/forte/fixed-point-128-bit-math): Financial precision with 128-bit arithmetic.
+
+## AI Development Tools
+- [Building with AI](https://developers.flow.com/blockchain-development-tutorials/use-AI-to-build-on-flow): Using AI to develop on Flow.
+- [Cursor Integration](https://developers.flow.com/blockchain-development-tutorials/use-AI-to-build-on-flow/cursor): Building with Cursor AI editor.
+- [Cadence Rules for AI](https://developers.flow.com/blockchain-development-tutorials/use-AI-to-build-on-flow/cursor/cadence-rules): Cadence-specific rules for AI assistants.
+- [Flow Data Sources](https://developers.flow.com/blockchain-development-tutorials/use-AI-to-build-on-flow/cursor/flow-data-sources): Data sources for AI development.
+- [MCP Server](https://developers.flow.com/blockchain-development-tutorials/use-AI-to-build-on-flow/mcp): Model Context Protocol server for Flow.
+- [ChatGPT Integration](https://developers.flow.com/blockchain-development-tutorials/use-AI-to-build-on-flow/llms/chatgpt): Using ChatGPT with Flow development.
+- [Claude Code Integration](https://developers.flow.com/blockchain-development-tutorials/use-AI-to-build-on-flow/llms/claude-code): Using Claude Code for Flow development.
+
+## Build Tools & SDKs
+- [Flow CLI](https://developers.flow.com/build/tools/flow-cli): Command-line interface for Flow development.
+- [Flow Emulator](https://developers.flow.com/build/tools/emulator): Local Flow blockchain emulator.
+- [FCL (Flow Client Library)](https://developers.flow.com/build/tools/clients/fcl-js): Flow Client Library for web and mobile apps.
+- [Go SDK](https://developers.flow.com/build/tools/clients/flow-go-sdk): Flow SDK for Go developers.
+- [React SDK](https://developers.flow.com/build/tools/react-sdk): React hooks and components for Flow.
+- [Cadence IDE](https://developers.flow.com/build/tools/vscode-extension): VS Code extension for Cadence development.
+
+## Protocol Documentation
+- [Flow Networks](https://developers.flow.com/protocol/flow-networks): Understanding Flow's network architecture.
+- [Network Architecture](https://developers.flow.com/protocol/network-architecture): How Flow solves the blockchain trilemma.
+- [Access Onchain Data](https://developers.flow.com/protocol/access-onchain-data): Accessing on-chain data via HTTP API.
+- [Staking](https://developers.flow.com/protocol/staking): Staking and delegation on Flow.
+- [Node Operations](https://developers.flow.com/protocol/node-ops): Running and operating Flow nodes.
+- [Governance](https://developers.flow.com/protocol/governance): Flow blockchain governance.
+
+## Cadence Language
+- [Cadence Official Documentation](https://cadence-lang.org/): Official Cadence documentation.
+
+## Ecosystem Resources
+- [Block Explorers](https://developers.flow.com/ecosystem/block-explorers): Explore Flow blockchain with Flowscan and other explorers.
+- [Wallets](https://developers.flow.com/ecosystem/wallets): Connect with Dapper, Blocto, and other Flow wallets.
+- [Faucets](https://developers.flow.com/ecosystem/faucets): Get testnet FLOW tokens for development and testing.
+- [Bridges](https://developers.flow.com/ecosystem/bridges): Bridge assets between Flow and other blockchains.
+- [Data Indexers](https://developers.flow.com/ecosystem/data-indexers): Access Flow blockchain data through indexers.
+- [Auditors](https://developers.flow.com/ecosystem/auditors): Get your smart contracts audited.
+- [Developer Profile](https://developers.flow.com/ecosystem/developer-profile): Build your developer presence on Flow.
+- [Developer Support](https://developers.flow.com/ecosystem/developer-support-hub): Get help, support, grants, and perks.
+- [Hackathons & Events](https://developers.flow.com/ecosystem/hackathons-and-events): Participate in Flow hackathons and developer events.
+
+## Economics & Staking
+- [Flow Staking](https://developers.flow.com/protocol/staking): Earn rewards by staking FLOW tokens.
+- [Staking Schedule](https://developers.flow.com/protocol/staking/schedule): Staking schedule and epochs.
+- [Staking Rewards](https://developers.flow.com/protocol/staking/staking-rewards): Understanding staking rewards.
+
+## Developer Resources
+- [Flow Playground](https://play.onflow.org/): Interactive Cadence development environment.
+- [Flow Core Contracts](https://github.com/onflow/flow-core-contracts): Core contract implementations.
+- [Flow React SDK](https://developers.flow.com/build/tools/react-sdk): React SDK and components for frontend development.
+- [Flow React SDK Playground](https://react.flow.com/): Try live hooks and components from the React SDK.
+- [Flowscan](https://flowscan.org/): Flow blockchain explorer and analytics.
+- [Flow Faucet](https://testnet-faucet.onflow.org/): Get testnet FLOW tokens for development.
