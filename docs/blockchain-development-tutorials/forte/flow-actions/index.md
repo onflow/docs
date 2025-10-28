@@ -19,6 +19,17 @@ keywords:
 
 # Flow Actions Tutorials
 
+<div style={{ position: 'relative', paddingBottom: '56.25%', height: 0, overflow: 'hidden', maxWidth: '100%' }}>
+  <iframe 
+    style={{ position: 'absolute', top: 0, left: 0, width: '100%', height: '100%' }}
+    src="https://www.youtube.com/embed/xGeaWe94V7w" 
+    title="YouTube video player" 
+    frameborder="0" 
+    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+    allowfullscreen
+  ></iframe>
+</div>
+
 This series covers how to build decentralized finance (DeFi) applications using the Flow Actions framework, enabling developers to create composable DeFi workflows. These tutorials are part of the Forte network upgrade, which introduces new capabilities to the Flow blockchain.
 
 :::warning
