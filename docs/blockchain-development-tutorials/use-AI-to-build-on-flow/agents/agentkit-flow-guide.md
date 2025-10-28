@@ -9,7 +9,7 @@ sidebar_position: 2
 
 AgentKit is an ecosystem-agnostic modular developer toolkit that lets you rapidly build, deploy, and iterate on AI agents using pre-configured environments and ready-to-use templates.
 
-In this guide, you'll set up your own custom agent running on **Flow's EVM-compatible testnet**, powered by **Langchain** and **Anthropic's Claude** LLM.
+In this guide, you'll set up your own custom agent that runs on **Flow's EVM-compatible testnet**, powered by **Langchain** and **Anthropic's Claude** LLM.
 
 ---
 
@@ -38,27 +38,27 @@ Follow the interactive setup:
 
 ## Project Setup
 
-Once your scaffold is ready:
+When your scaffold is ready:
 
 ```bash
 cd onchain-agent
 npm install
 ```
 
-Now open the project in your preferred IDE (e.g. Cursor).
+Now open the project in your preferred integrated development environment (IDE) (for example, [Cursor](../cursor/index.md).
 
 ### Environment Configuration
 
-1. Create a `.env.local` file (or edit the one generated).
+1. Create a `.env.local` file (or edit the one that you generated).
 2. Add your API keys (we'll use **Anthropic** here).
 
 > You can also use OpenAI, DeepSeek, or any other supported LLM.
 
 ### Get Your Anthropic API Key
 
-- Head to [Anthropic Console](https://console.anthropic.com/dashboard)
-- Create an account and **purchase credits**
-- Click **Create Key**, name it, and copy the API key
+- Head to [Anthropic Console](https://console.anthropic.com/dashboard).
+- Create an account and **purchase credits**.
+- Click **Create Key**, name it, and copy the API key.
 - Add this to your `.env.local`:
 
 ```env
@@ -67,11 +67,11 @@ ANTHROPIC_API_KEY=your_api_key_here
 
 ### Wallet Setup with MetaMask
 
-1. Add [Flow Testnet](https://developers.flow.com/evm/using) to MetaMask
-2. Use the [Faucet](https://faucet.flow.com/fund-account) to fund your wallet
+1. Add [Flow Testnet](https://developers.flow.com/evm/using) to MetaMask.
+2. Use the [Faucet](https://faucet.flow.com/fund-account) to fund your wallet.
 3. Get your private key:
-   - Click the `...` menu in MetaMask > **Account Details**
-   - Enter your password, copy the private key
+   - Click the `...` menu in MetaMask > **Account Details**.
+   - Enter your password, copy the private key.
 4. Add it to `.env.local`:
 
 ```env
@@ -102,7 +102,7 @@ http://localhost:3000
 
 ## Configure Your LLM
 
-If your agent doesn't respond yet — no worries! You still need to configure your **LLM and client libraries**.
+If your agent doesn't respond yet, no worries! You still need to configure your **LLM and client libraries**.
 
 ### Choose a Model
 
@@ -210,13 +210,13 @@ Want to skip the setup?
 
 > [Fork the Flow AgentKit Starter](https://github.com/Aliserag/flow-agentkit-starter)
 
-This starter includes all necessary config to start building immediately on Flow.
+This starter includes all of the necessary configurations to start building immediately on Flow.
 
 ---
 
 ## Adding AgentKit to an Existing Project
 
-Already have a project and want to add AgentKit? Follow these steps to integrate it into your existing codebase:
+Already have a project and want to add AgentKit? Follow these steps to integrate it into your codebase:
 
 ### Install the Package
 
