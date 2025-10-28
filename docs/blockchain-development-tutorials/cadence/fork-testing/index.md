@@ -17,9 +17,9 @@ keywords:
 
 # Fork Testing with Cadence
 
-This tutorial teaches you how to run your Cadence tests against a snapshot of Flow mainnet or testnet using `flow test --fork`. You'll learn how to test your contracts against real deployed contracts and production data without needing to deploy anything to a live network or bootstrap test accounts.
+This tutorial teaches you how to run your Cadence tests against a snapshot of Flow mainnet using `flow test --fork`. You'll learn how to test your contracts against real deployed contracts and production data without needing to deploy anything to a live network or bootstrap test accounts.
 
-Fork testing bridges the gap between fast local unit tests and expensive testnet deployments. It enables you to validate your contracts work correctly with real on-chain state, test integrations with deployed contracts, and debug issues using historical blockchain data—all in a safe, local environment.
+Fork testing bridges the gap between isolated local unit tests and testnet deployments. It enables you to validate your contracts work correctly with real on-chain state, test integrations with deployed contracts, and debug issues using historical blockchain data—all in a safe, local environment.
 
 ## What You'll Learn
 
@@ -507,13 +507,13 @@ Now that you have completed this tutorial, you should be able to:
 - **Pin tests to specific block heights** for historical debugging
 - **Integrate fork testing** into your development workflow
 
-Fork testing bridges the gap between local unit tests and testnet deployments, enabling you to catch integration issues early and test against real-world conditions. Use it as part of your pre-deployment validation process, alongside unit tests for speed and testnet deployments for final verification.
+Fork testing bridges the gap between local unit tests and testnet deployments, enabling you to catch integration issues early and test against real-world conditions. Use it as part of your pre-deployment validation process, alongside emulator unit tests for determinism and isolation, and testnet deployments for final verification.
 
 ### Next Steps
 
 - Explore additional assertions and helpers in the [Cadence Testing Framework]
 - Add more real-world tests that read from standard contracts like Flow NFT
-- Keep unit tests on the emulator for speed and run forked integration tests selectively in CI
+- Keep unit tests on the emulator for determinism and isolation; run forked integration tests selectively in CI
 - Review the [Fork Testing Flags] reference for advanced options
 - Learn about [Flow Networks] and public access nodes
 
