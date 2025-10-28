@@ -67,7 +67,7 @@ See also: [Running Cadence Tests].
 
 See also: [Fork Testing with Cadence], [Fork Testing Flags].
 
-### Local Integration Sandbox (Interactive) — `flow emulator --fork`
+### Local Integration Sandbox — `flow emulator --fork`
 
 - **Use when**: Driving dapps, wallets, bots, indexers, or exploratory debugging outside the test framework
 - **Why**: Production-like state with local, disposable control; great for E2E and migrations
