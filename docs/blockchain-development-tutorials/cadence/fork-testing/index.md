@@ -208,27 +208,23 @@ You should see the test PASS. If not, verify your network host in `flow.json` an
 
 Now you'll create a contract that depends on FlowToken and test it against the forked mainnet state—no need to bootstrap tokens or set up test accounts.
 
-### Generate a Key Pair
+### Create a Test Account
 
-Generate a key pair that will be used for your test contract's mainnet alias:
-
-```zsh
-flow keys generate
-```
-
-This will output a public/private key pair. Save the **private key** to a file:
+Create a new account for deploying your contract:
 
 ```zsh
-echo "YOUR_PRIVATE_KEY_HERE" > mainnet-test.pkey
+flow accounts create
 ```
 
-Note the **public key** - you'll need it to derive an account address. For fork testing, any valid Flow address format works. You can use this command to generate a test address from your key:
+Follow the prompts:
+- Select "mainnet" for the network
+- Name your account as desired
 
-```zsh
-flow accounts derive-address mainnet-test.pkey
-```
+This will output the new account address. Use this address as the mainnet alias for your contract in flow.json.
 
-Or simply use a placeholder mainnet-format address like `f8d6e0586b0a20c7` for testing purposes.
+:::note
+This creates a local account with a mainnet-format address for fork testing. When you're ready to deploy to actual mainnet, you'll use this same account—see the [Deploying Contracts guide](../../build/cadence/smart-contracts/deploying.md) for details.
+:::
 
 ### Create a Contract that Uses FlowToken
 

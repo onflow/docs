@@ -85,11 +85,16 @@ See also: [Fork Testing with Cadence], [Fork Testing Flags].
   ```
 
   ```javascript
-  // Configure FCL for the emulator
-  import { config } from "@onflow/fcl";
-  config({
-    "accessNode.api": "http://localhost:8888"
-  });
+  // In your root component (e.g., App.tsx)
+  import { FlowProvider } from "@onflow/react-sdk";
+
+  function App() {
+    return (
+      <FlowProvider config={{ accessNodeUrl: "http://localhost:8888" }}>
+        {/* Your app components */}
+      </FlowProvider>
+    );
+  }
   ```
 
   ```bash
@@ -115,11 +120,16 @@ See also: [Flow Emulator].
   Quick start example:
 
   ```javascript
-  // Configure FCL for Testnet
-  import { config } from "@onflow/fcl";
-  config({
-    "accessNode.api": "https://rest-testnet.onflow.org"
-  });
+  // In your root component (e.g., App.tsx)
+  import { FlowProvider } from "@onflow/react-sdk";
+
+  function App() {
+    return (
+      <FlowProvider config={{ accessNodeUrl: "https://rest-testnet.onflow.org" }}>
+        {/* Your app components */}
+      </FlowProvider>
+    );
+  }
   ```
 
   ```bash
