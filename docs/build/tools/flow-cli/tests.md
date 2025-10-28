@@ -106,15 +106,15 @@ To learn more about writing tests in Cadence, visit the [Cadence Testing Framewo
 
 ---
 
-### Running Specific Tests
+### Running Specific Tests and Files
 
-If you wish to run a specific test script rather than all tests, you can provide the path to the test file:
+Run specific test scripts or directories by providing their paths:
 
 ```shell
-flow test path/to/your/test_script_test.cdc
+flow test path/to/your/test_script_test.cdc path/to/another_test.cdc tests/subsuite/
 ```
 
-This will execute only the tests contained in the specified file.
+This executes only the tests contained in the specified files and directories.
 
 ---
 

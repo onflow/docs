@@ -27,6 +27,8 @@ keywords:
 
 Testing is an essential part of smart contract development to ensure the correctness and reliability of your code. The Cadence Testing Framework provides a convenient way to write tests for your contracts, scripts and transactions which allows you to verify the functionality and correctness of your smart contracts.
 
+> For a layered approach to when and why to use emulator, forked integration, and testnet, see the strategy guide: [Testing Strategy on Flow](./testing-strategy.md).
+
 ## Install Flow CLI
 
 The [Flow CLI](../../../build/tools/flow-cli/index.md) is the primary tool for developing, testing, and deploying smart contracts to the Flow network.
@@ -276,7 +278,7 @@ When you run tests with the `--fork` flag, the test runner:
 - Executes your tests as if they are running against the live network state
 - Keeps all state changes local to your test process (the real network is never mutated)
 
-This bridges the gap between fast, purely local tests and deploying to testnet/mainnet for validation.
+This bridges the gap between isolated local tests and deploying to testnet/mainnet for validation.
 
 #### Quick start
 
@@ -353,17 +355,25 @@ This means you typically do not need to change imports in your test code when sw
 
 #### Limitations and considerations
 
-- Network performance: tests may run slower than local emulator tests due to network calls
+- External dependency: requires connectivity to an access node; observe availability and rate limits
 - Point-in-time snapshot: forked state reflects the time of query (or the specified `--fork-height`), not a live stream
 - Read-only network: mutations in your tests are local and do not affect the real network
 - Spork boundaries: access nodes only retain historical data for the current spork; pinning via `--fork-height` cannot reach beyond that boundary. Learn more about the Flow spork process in the Network Upgrade (Spork) docs.
+- External oracles/off-chain systems: forked tests cannot fetch live data from external services or other chains; provide mocks or a local test harness
 
 See: [Network Upgrade (Spork) Process](../../../protocol/node-ops/node-operation/network-upgrade.md)
 
+See also:
+
+- Strategy: [Testing Strategy on Flow](./testing-strategy.md)
+- Flags: [Fork Testing Flags](../../tools/flow-cli/tests.md#fork-testing-flags)
+- Emulator (fork mode): [Flow Emulator](../../tools/emulator/index.md)
+
 #### Best practices
 
-1. Use fork testing primarily for integration tests; keep unit tests on the emulator for speed
-2. Keep forked tests separate in CI and run them selectively
+1. Use fork testing primarily for integration tests; keep unit tests on the emulator for determinism and isolation
+2. Keep forked tests separate in CI. On PRs, run them pinned (full suite if practical; otherwise a small smoke set)
+3. For reproducibility, pin with `--fork-height` where it matters. For best results, maintain a per‑spork stable pin and also run a "latest" freshness job
 3. Prefer testnet before mainnet to catch network-specific issues with fewer risks
 4. Document dependencies on specific mainnet/testnet contracts and addresses
 5. Consider real data requirements—fork testing shines when reading existing on-chain state

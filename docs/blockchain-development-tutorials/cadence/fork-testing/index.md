@@ -44,6 +44,16 @@ You'll create a complete fork testing setup that demonstrates:
 
 **Time Commitment:** Approximately 30 minutes
 
+### Reproducibility first
+
+Pin a specific block height when you need reproducible results:
+
+```zsh
+flow test --fork mainnet --fork-height <BLOCK_HEIGHT>
+```
+
+Document the pin heights you rely on (for example in CI variables or a simple file in the repo) and update them via a dedicated freshness PR. For best results, keep a per‑spork stable pin and also run a "latest" freshness job.
+
 ## Prerequisites
 
 ### Flow CLI
@@ -226,7 +236,7 @@ access(all) contract TokenChecker {
 
 ### Configure Contract Deployment
 
-Add the deployment configuration to `flow.json`. Replace `YOUR_ACCOUNT_ADDRESS` with the address from the previous step:
+Add the deployment configuration to `flow.json`. The account you created in the previous step is already present under `accounts`; reference it here:
 
 ```json
 {
@@ -242,8 +252,8 @@ Add the deployment configuration to `flow.json`. Replace `YOUR_ACCOUNT_ADDRESS` 
   },
   "accounts": {
     "mainnet-account": {
-      "address": "YOUR_ACCOUNT_ADDRESS",
-      "key": "$PRIVATE_KEY"
+      "address": "<from previous step>",
+      "key": "<from previous step>"
     }
   }
 }
@@ -480,6 +490,37 @@ Test results: "tests/token_checker_test.cdc"
 ### Additional Options
 
 You can also fork from testnet (`flow test --fork testnet`) or pin to a specific block height (`--fork-height`). See the [Fork Testing Flags] reference for all available options.
+
+See also:
+
+- High-Level Testing Strategy: [Testing Strategy on Flow](../../../build/cadence/smart-contracts/testing-strategy.md)
+- Emulator (fork mode for interactive E2E): [Flow Emulator](../../../build/tools/emulator/index.md)
+- Networks and access nodes: [Flow Networks](../../../protocol/flow-networks/index.md)
+
+::::info
+External oracles and off-chain systems
+
+Fork tests run against Flow chain state only:
+- No live off-chain/API calls or cross-chain reads
+- Price feeds, bridges, indexers, and similar must be mocked (stub contracts or fixtures)
+- For end-to-end, combine with `flow emulator --fork` and a local stub service
+::::
+
+### Select tests quickly
+
+- Run specific files or directories:
+
+```zsh
+flow test tests/flow_token_test.cdc tests/token_checker_test.cdc tests/subsuite/
+```
+
+- Optional: narrow by function name with `--name`:
+
+```zsh
+flow test tests/token_checker_test.cdc --name _smoke
+```
+
+- Optional: suffix a few functions with `_smoke` for quick PR runs; run the full suite nightly or on protected branches.
 
 ## When to Use Fork Testing
 

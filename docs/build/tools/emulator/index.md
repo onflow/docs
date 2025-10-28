@@ -64,6 +64,7 @@ For all available options, see the [CLI commands overview](../flow-cli/index.md)
 
 - **Code Coverage**: Add `--coverage-reporting` flag and visit `http://localhost:8080/emulator/codeCoverage`
 - **Debugging**: Use `#debugger()` pragma in Cadence code for breakpoints
+- **Fork mode note**: When using `flow emulator --fork`, only Flow chain state is available. External oracles/APIs and cross-chain reads are not live; mock these or run local stub services for E2E.
 
 ## Snapshots
 

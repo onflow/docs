@@ -1,0 +1,128 @@
+---
+title: Testing Strategy on Flow
+sidebar_label: Testing Strategy
+sidebar_position: 3
+description: A layered testing strategy for Flow—emulator unit/property tests, forked integration, emulator fork sandbox, testnet canaries, and post-deploy monitoring. Guidance for reproducibility, CI selection, and triage.
+keywords:
+  - testing strategy
+  - fork testing
+  - emulator
+  - CI
+  - reproducibility
+  - pins
+  - Flow CLI
+  - Cadence tests
+---
+
+# Testing Strategy on Flow
+
+A single, pragmatic strategy for testing on Flow. Use layers that are deterministic and isolated by default, add realism with forks when needed, and keep a minimal set of live network checks before release.
+
+## At a glance
+
+- **Unit & Property (emulator, no fork)**: Hermetic correctness and invariants
+- **Integration (automated, `flow test --fork`)**: Real contracts and data; mutations stay local
+- **Local integration sandbox (interactive, `flow emulator --fork`)**: Drive apps/E2E against production-like state
+- **Staging (testnet)**: Final plumbing and config checks
+- **Post-deploy (read-only)**: Invariant dashboards and alerts
+
+## Layers
+
+### Unit & Property (Emulator, no fork)
+
+- **Use when**: Validating Cadence logic, invariants, access control, error paths, footprint
+- **Why**: Fully deterministic and isolated; highest-regression signal
+- **Run**: Every commit/PR; wide parallelism
+- **Notes**: Favor property/invariant checks and fuzzing; zero external dependencies
+
+### Integration (Automated) — `flow test --fork`
+
+- **Use when**: Interacting with real on-chain contracts/data (FT/NFT standards, AMMs, wallets, oracles, bridges), upgrade checks, historical repro
+- **Why**: Real addresses, capability paths, and resource schemas; catches drift early
+ - **Run**: PRs may run the full forked suite (pinned) or a small smoke subset; broader matrix nightly/on merge
+- **Notes**:
+  - Pin with `--fork-height` where reproducibility matters
+  - Prefer local deployment + impersonation over real mainnet accounts
+  - Mutations are local to the forked runtime; the live network is never changed
+  - Be mindful of access-node availability and rate limits
+  - External oracles/protocols: forked tests do not call off-chain services or other chains; mock these or run a local stub
+
+### Local Integration Sandbox (Interactive) — `flow emulator --fork`
+
+- **Use when**: Driving dapps, wallets, bots, indexers, or exploratory debugging outside the test framework
+- **Why**: Production-like state with local, disposable control; great for E2E and migrations
+- **Run**: Dev machines and focused E2E CI jobs
+- **Notes**: Pin height; run on dedicated ports; impersonation is built-in; mutations are local; off-chain/oracle calls are not live—mock or run local stubs
+
+### Staging — Testnet
+
+- **Use when**: Final network plumbing and configuration checks before release
+- **Why**: Validates infra differences you cannot fully simulate
+- **Run**: Pre-release and on infra changes
+- **Notes**: Keep canaries minimal and time-boxed; protocol/partner support may be limited on testnet (not all third-party contracts are deployed or up to date)
+
+### Post-deploy Monitoring (read-only)
+
+- **Use when**: After releases to confirm invariants and event rates
+- **Why**: Detects real-world anomalies quickly
+- **Run**: Continuous dashboards/alerts tied to invariants
+
+## Reproducibility and data management
+
+ - **Pin where reproducibility matters**: Use `--fork-height <block>` for both `flow test --fork` and `flow emulator --fork`. Pins are per‑spork; historical data beyond spork boundaries is unavailable. For best results, keep a per‑spork stable pin and also run a "latest" freshness job.
+- **Named snapshots**: Maintain documented pin heights (e.g., in CI vars or a simple file) with names per dependency/protocol
+- **Refresh policy**: Advance pins via a dedicated “freshness” PR; compare old vs. new pins
+- **Goldens**: Save a few canonical samples (e.g., event payloads, resource layouts, key script outputs) as JSON in your repo, and compare them in CI to catch accidental schema/shape changes. Update the samples intentionally as part of upgrades.
+
+## CI tips
+
+- PRs: Run emulator unit/property and forked integration (pinned). Full suite is fine if practical; otherwise a small smoke set.
+- Nightly/Main: Add a latest pin job and a broader fork matrix when needed.
+- E2E (optional): Use `flow emulator --fork` at a stable pin and run your browser tests.
+
+## Test selection and tagging
+
+ - **Optional naming helpers**: Use simple suffixes in test names like `_fork`, `_smoke`, `_e2e` if helpful
+ - Run the tests you care about by passing files/directories: `flow test FILE1 FILE2 DIR1 ...` (most common)
+ - Optionally, use `--name <substring>` to match test functions when it’s convenient
+- **Defaults**: PRs can run the full fork suite (pinned) or a small smoke set; nightly runs the full matrix (+ optional E2E)
+
+## Triage tips
+
+- Re-run at the same `--fork-height`, then at latest
+- Compare contract addresses/aliases in `flow.json`
+- Diff event/resource shapes against your stored samples
+- Check access-node health and CI parallelism/sharding
+
+## Handy commands
+
+```bash
+# Unit/property (emulator)
+flow test
+
+# Forked integration (pinned)
+flow test --fork mainnet --fork-height <H>
+
+# Local sandbox (interactive)
+flow emulator --fork mainnet --fork-height <H>
+```
+
+## Do / Don’t
+
+- **Do**: Keep a fast, hermetic base; pin forks; tag tests; maintain tiny PR smoke sets; document pins and set a simple refresh schedule (e.g., after each spork or monthly)
+- **Don’t**: Make “latest” your default in CI; create or rely on real mainnet accounts; conflate `flow test --fork` with `flow emulator --fork`
+
+## Related docs
+
+- Guide → Running tests: [Running Cadence Tests](../../tools/flow-cli/tests.md)
+- Guide → Background: [Testing Smart Contracts](./testing.md)
+- Tutorial → Step-by-step: [Fork Testing with Cadence](../../../blockchain-development-tutorials/cadence/fork-testing/index.md)
+- Tool → Emulator (including fork mode): [Flow Emulator](../../tools/emulator/index.md)
+- Flags → `flow test --fork`: [Fork Testing Flags](../../tools/flow-cli/tests.md#fork-testing-flags)
+- Networks → Public access nodes: [Flow Networks](../../../protocol/flow-networks/index.md)
+- Upgrades → Spork boundaries: [Network Upgrade (Spork) Process](../../../protocol/node-ops/node-operation/network-upgrade.md)
+- Config → Network and hosts: [Flow CLI Configuration (flow.json)](../../tools/flow-cli/flow.json/initialize-configuration.md)
+- Imports → Resolving aliases: [Dependency Manager](../../tools/flow-cli/dependency-manager.md)
+- Language → Assertions & helpers: [Cadence Testing Framework](https://cadence-lang.org/docs/testing-framework)
+
+
