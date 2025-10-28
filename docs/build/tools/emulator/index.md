@@ -178,6 +178,21 @@ flow emulator --help
 
 The Flow CLI provides a command to create emulator snapshots, which are points in blockchain history you can later jump to and reset the state to that moment. This can be useful for testing where you establish a beginning state, run tests and after revert back to the initial state.
 
+### Quick snapshot workflow
+
+```bash
+# 1) Start the emulator with snapshots enabled (in a separate terminal)
+flow emulator --snapshot
+
+# 2) Create a snapshot at the current state
+flow emulator snapshot create baseline
+
+# 3) Make changes, run tests, etc.
+
+# 4) Reset the emulator back to the snapshot
+flow emulator snapshot load baseline
+```
+
 ### Create a new snapshot
 
 Create a new emulator snapshot at the current block with a name of `myInitialState`.

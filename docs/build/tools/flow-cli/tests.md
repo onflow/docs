@@ -296,7 +296,7 @@ See public access node URLs in [Flow Networks](../../../protocol/flow-networks/i
 - Type: `uint64`
 - Default: `0`
 
-Pin the fork to a specific block height for historical state testing. Only data from the current spork is available via public access nodes.
+Pin the fork to a specific block height for historical state testing. Only blocks from the current spork (since the most recent network upgrade) are available via public access nodes; earlier blocks are not accessible via public access nodes.
 
 ```shell
 flow test --fork mainnet --fork-height 85432100

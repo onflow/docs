@@ -18,9 +18,9 @@ keywords:
 
 Testing is an essential part of smart contract development to ensure the correctness and reliability of your code. The Cadence Testing Framework provides a convenient way to write tests for your contracts, scripts and transactions which allows you to verify the functionality and correctness of your smart contracts.
 
-<Callout type="info">
-Looking for high‑level guidance on when to use emulator, forks, or testnet? See <a href="./testing-strategy.md">Testing Smart Contracts</a>.
-</Callout>
+:::info
+Looking for high‑level guidance on when to use emulator, forks, or testnet? See [Testing Smart Contracts](./testing-strategy.md).
+:::
 
 ## Install Flow CLI
 
