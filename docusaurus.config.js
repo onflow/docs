@@ -467,6 +467,11 @@ const config = {
       },
     }),
   plugins: [
+    [require.resolve("./plugins/markdown-export"), {
+      docsDir: "docs",
+      blogDir: "blog",
+      outDirRel: "md",
+    }],
     function customizedSvgo() {
       return {
         name: 'docusaurus-svgo',

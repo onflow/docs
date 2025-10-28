@@ -55,6 +55,15 @@
       ]
     },
     {
+      "source": "/(.*\\.md)",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=3600"
+        }
+      ]
+    },
+    {
       "source": "/img/(.*)",
       "headers": [
         {
@@ -138,15 +147,6 @@
       ]
     },
     {
-      "source": "/(.*\\.md)",
-      "headers": [
-        {
-          "key": "Cache-Control",
-          "value": "public, max-age=3600"
-        }
-      ]
-    },
-    {
       "source": "/favicon.ico",
       "headers": [
         {
@@ -178,12 +178,145 @@
       ]
     }
   ],
-  "redirects": [
+  "rewrites": [
     {
-      "source": "/:path*(.mdx?$)",
-      "destination": "/:path",
-      "permanent": true
+      "source": "/blockchain-development-tutorials/:path*",
+      "destination": "/md/blockchain-development-tutorials/:path*",
+      "has": [
+        {
+          "type": "header",
+          "key": "accept",
+          "value": "text/markdown"
+        }
+      ]
     },
+    {
+      "source": "/blockchain-development-tutorials/:path*",
+      "destination": "/md/blockchain-development-tutorials/:path*",
+      "has": [
+        {
+          "type": "query",
+          "key": "format",
+          "value": "md"
+        }
+      ]
+    },
+    {
+      "source": "/build/:path*",
+      "destination": "/md/build/:path*",
+      "has": [
+        {
+          "type": "header",
+          "key": "accept",
+          "value": "text/markdown"
+        }
+      ]
+    },
+    {
+      "source": "/build/:path*",
+      "destination": "/md/build/:path*",
+      "has": [
+        {
+          "type": "query",
+          "key": "format",
+          "value": "md"
+        }
+      ]
+    },
+    {
+      "source": "/protocol/:path*",
+      "destination": "/md/protocol/:path*",
+      "has": [
+        {
+          "type": "header",
+          "key": "accept",
+          "value": "text/markdown"
+        }
+      ]
+    },
+    {
+      "source": "/protocol/:path*",
+      "destination": "/md/protocol/:path*",
+      "has": [
+        {
+          "type": "query",
+          "key": "format",
+          "value": "md"
+        }
+      ]
+    },
+    {
+      "source": "/ecosystem/:path*",
+      "destination": "/md/ecosystem/:path*",
+      "has": [
+        {
+          "type": "header",
+          "key": "accept",
+          "value": "text/markdown"
+        }
+      ]
+    },
+    {
+      "source": "/ecosystem/:path*",
+      "destination": "/md/ecosystem/:path*",
+      "has": [
+        {
+          "type": "query",
+          "key": "format",
+          "value": "md"
+        }
+      ]
+    },
+    {
+      "source": "/:path((?!md/).+)\\.md",
+      "destination": "/md/:path.md"
+    },
+    {
+      "source": "/blockchain-development-tutorials/:path*",
+      "destination": "/md/blockchain-development-tutorials/:path*",
+      "has": [
+        {
+          "type": "header",
+          "key": "accept",
+          "value": "text/plain"
+        }
+      ]
+    },
+    {
+      "source": "/build/:path*",
+      "destination": "/md/build/:path*",
+      "has": [
+        {
+          "type": "header",
+          "key": "accept",
+          "value": "text/plain"
+        }
+      ]
+    },
+    {
+      "source": "/protocol/:path*",
+      "destination": "/md/protocol/:path*",
+      "has": [
+        {
+          "type": "header",
+          "key": "accept",
+          "value": "text/plain"
+        }
+      ]
+    },
+    {
+      "source": "/ecosystem/:path*",
+      "destination": "/md/ecosystem/:path*",
+      "has": [
+        {
+          "type": "header",
+          "key": "accept",
+          "value": "text/plain"
+        }
+      ]
+    }
+  ],
+  "redirects": [
     {
       "source": "/tools/kit",
       "destination": "/tools/react-sdk",
@@ -1545,11 +1678,6 @@
     {
       "source": "/tutorials/ai-plus-flow/:path*",
       "destination": "/tutorials/use-AI-to-build-on-flow/:path*",
-      "permanent": true
-    },
-    {
-      "source": "/tutorials/use-AI-to-build-on-flow/integrations/gelato-sw.mdx",
-      "destination": "/tutorials/use-AI-to-build-on-flow/integrations/gelato-sw.md",
       "permanent": true
     },
     {

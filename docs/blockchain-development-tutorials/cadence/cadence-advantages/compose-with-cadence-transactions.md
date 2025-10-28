@@ -19,20 +19,24 @@ keywords:
   - Flowscan
 ---
 
-In this tutorial, you will **compose with someone else's contracts** on Flow testnet. You'll write a Cadence transaction that reads public state from a contract named `Counter` and only increments the counter when it is odd. Then you will extend the transaction to mint NFTs when the counter is odd, demonstrating how to compose multiple contracts in a single transaction. Everything runs against testnet using the Flow CLI and the dependency manager.
+# Compose wth Cadence Transactions
+
+## Overview
+
+In this tutorial, you'll **compose with someone else's contracts** on Flow testnet. You'll write a Cadence transaction that reads public state from a contract named `Counter` and only increments the counter when it is odd. Then you'll extend the transaction to mint NFTs when the counter is odd, demonstrating how to compose multiple contracts in a single transaction. Everything runs against testnet using the Flow CLI and the dependency manager.
 
 You can use transactions developed and tested this way from the frontend of your app.
 
 ## Objectives
 
-After completing this guide, you will be able to:
+After you complete this guide, you will be able to:
 
-- Configure the Flow CLI _dependency manager_ to import named contracts from **testnet**
-- Write a Cadence **transaction** that reads and writes to a public contract you did not deploy
-- Run the transaction on **testnet** with a funded account using the Flow CLI
-- Extend the transaction to compose multiple public contracts (`Counter` + `ExampleNFT` + `NonFungibleToken`) without redeploying anything
-- Set up NFT collections and mint NFTs conditionally based on on-chain state
-- View transaction results and NFT transfers using Flowscan
+- Configure the Flow CLI _dependency manager_ to import named contracts from **testnet**.
+- Write a Cadence **transaction** that reads and writes to a public contract you didn't deploy.
+- Run the transaction on **testnet** with a funded account using the Flow command line interface (CLI).
+- Extend the transaction to compose multiple public contracts (`Counter` + `ExampleNFT` + `NonFungibleToken`) without redeploying anything.
+- Set up NFT collections and mint NFTs conditionally based on on-chain state.
+- View transaction results and NFT transfers using Flowscan.
 
 ## Prerequisites
 
@@ -54,17 +58,17 @@ Follow the prompts and create a `Basic Cadence project (no dependencies)`.
 
 ### Install dependencies
 
-We will resolve imports **using string format** (`import "Counter"`) using the [dependency manager].
+We will resolve imports **using string format** (`import "Counter"`) with the [dependency manager].
 
-This is the recommended way of working with imports of already-deployed contracts. You should also use the CLI to create new files and add existing ones to `flow.json`.
+We recommend that you work this way with imports of already-deployed contracts. You should also use the CLI to create new files and add existing ones to `flow.json`.
 
 :::warning
 
-For this exercise, you need to **delete** the existing contract entry for `Counter` from your `flow.json`. You could also use an alias here, but this is simpler since you won't be deploying the `Counter` contract.
+For this exercise, **delete** the existing contract entry for `Counter` from your `flow.json`. You could also use an alias here, but this is simpler since you won't deploy the `Counter` contract.
 
 :::
 
-You can install dependencies for already deployed contracts, whether yours or those deployed by others:
+You can install dependencies for already deployed contracts, whether yours or those that others deployed:
 
 ```bash
 # Add a deployed instance of the Counter contract
@@ -73,11 +77,11 @@ flow dependencies install testnet://0x8a4dce54554b225d.Counter
 
 Pick `none` for the deployment account as you won't need to redeploy these contracts.
 
-Once installed with the dependency manager, Cadence imports like `import "Counter"` will resolve to the testnet address when sending transactions on testnet.
+After they're installed with the dependency manager, Cadence imports like `import "Counter"` will resolve to the testnet address when they send transactions on testnet.
 
 :::info
 
-In Cadence, contracts are deployed to the account storage of the deploying address. Due to security reasons, the same private key produces different address on Cadence testnet and mainnet. One of the features of the dependency manager is to automatically select the right address for imports based on the network you're working on.
+In Cadence, contracts deploy to the account storage of the deploying address. Due to security reasons, the same private key produces different address on Cadence testnet and mainnet. One of the features of the dependency manager is to automatically select the right address for imports based on the network you're working on.
 
 :::
 
@@ -85,7 +89,7 @@ In Cadence, contracts are deployed to the account storage of the deploying addre
 
 ## Compose with the public `Counter` contract
 
-Review the `Counter` contract that's created as an example by `flow init`:
+Review the `Counter` simple contract that's created as an example by `flow init`:
 
 ```cadence
 access(all) contract Counter {
@@ -120,8 +124,6 @@ access(all) contract Counter {
     }
 }
 ```
-
-It's an example of a simple contract.
 
 Unlike in Solidity, apps aren't limited to the functionality deployed in a smart contract. One of the ways you can expand your app is to write new transactions that call multiple functions in multiple contracts, with branching based on conditions and state, using a single call and a single signature. You don't need to deploy a new contract, use a proxy, or switch to V2.
 
@@ -207,7 +209,7 @@ flow accounts fund testnet-account
 
 :::danger
 
-As with other blockchain accounts, once the private key for an account is compromised, anyone with that key has complete control over an account and it's assets. **Never** put private keys directly in `flow.json`.
+As with other blockchain accounts, after an account's private key is compromised, anyone with that key completely controls an account and it's assets. **Never** put private keys directly in `flow.json`.
 
 :::
 
@@ -219,11 +221,11 @@ Creating an account using the CLI automatically puts the private key in a `.pkey
 flow transactions send cadence/transactions/IncrementIfOdd.cdc --signer testnet-account --network testnet
 ```
 
-You should see logs that show the prior value and whether the increment occurred.
+You will see logs that show the prior value and whether the increment occurred.
 
 :::tip
 
-This same transaction could be triggered **from an app** and **signed by a wallet** with a single user click. Your dApp would assemble and submit this exact Cadence transaction using your preferred client library, and the user's wallet would authorize it.
+You could trigger this same transaction **from an app** and **signed by a wallet** with a single user click. Your dApp would assemble and submit this exact Cadence transaction using your preferred client library, and the user's wallet would authorize it.
 
 :::
 
@@ -245,7 +247,7 @@ flow dependencies install testnet://012e4d204a60ac6f.ExampleNFT
 
 :::warning
 
-This repository uses different deployments for core contracts than those installed by the Flow CLI. If you previously installed core contract dependencies (like `NonFungibleToken`, `MetadataViews`, etc.) using the CLI, you should manually delete all `dependencies` except `Counter` from your `flow.json` file to avoid conflicts.
+This repository uses different deployments for core contracts than those that the Flow CLI installs. If you previously installed core contract dependencies (like `NonFungibleToken`, `MetadataViews`, etc.) using the CLI, manually delete all `dependencies` except `Counter` from your `flow.json` file to avoid conflicts.
 
 :::
 
@@ -341,7 +343,7 @@ transaction() {
 
 ### Setup NFT Collection
 
-Before you can mint NFTs, you need to set up an NFT collection in your account. Create a transaction to do this:
+Before you can mint NFTs, set up an NFT collection in your account. Create a transaction to do this:
 
 ```bash
 flow generate transaction SetupCollection
@@ -392,7 +394,7 @@ flow transactions send cadence/transactions/IncrementCounter.cdc --signer testne
 
 ### View Your NFT
 
-Click the transaction link in the console to view the transaction in [testnet Flowscan]. After running the transaction **while the counter is odd**, you'll see an NFT in the `Asset Transfers` tab.
+Click the transaction link in the console to view the transaction in [testnet Flowscan]. After you run the transaction **while the counter is odd**, you'll see an NFT in the `Asset Transfers` tab.
 
 :::info
 
@@ -416,12 +418,12 @@ In this tutorial, you learned how to compose with multiple on-chain contracts us
 
 Now that you have completed the tutorial, you should be able to:
 
-- Configure the Flow CLI _dependency manager_ to import named contracts from **testnet**
-- Write a Cadence **transaction** that reads and writes to a public contract you did not deploy
-- Run the transaction on **testnet** with a funded account using the Flow CLI
-- Extend the transaction to compose multiple public contracts (`Counter` + `ExampleNFT` + `NonFungibleToken`) without redeploying anything
-- Set up NFT collections and mint NFTs conditionally based on on-chain state
-- View transaction results and NFT transfers using Flowscan
+- Configure the Flow CLI _dependency manager_ to import named contracts from **testnet**.
+- Write a Cadence **transaction** that reads and writes to a public contract you did not deploy.
+- Run the transaction on **testnet** with a funded account using the Flow CLI.
+- Extend the transaction to compose multiple public contracts (`Counter` + `ExampleNFT` + `NonFungibleToken`) without redeploying anything.
+- Set up NFT collections and mint NFTs conditionally based on on-chain state.
+- View transaction results and NFT transfers using Flowscan.
 
 This approach gives you the freedom to build complex application logic that composes with any public contracts on Flow, making Cadence's composition model a powerful tool for developers building on Flow.
 

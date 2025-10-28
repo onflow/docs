@@ -2,7 +2,7 @@
 
 If you're looking for the Flow docs, they're live at [developers.flow.com](https://developers.flow.com)
 
-This website is built using [Docusaurus 2](https://docusaurus.io/), a modern static website generator.
+This website is built using [Docusaurus 3](https://docusaurus.io/), a modern static website generator.
 
 it pulls doc sections from repositories defined in https://github.com/onflow/developer-portal/tree/main/app/data/doc-collections
 
