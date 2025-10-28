@@ -253,7 +253,7 @@ To dive deeper into testing the functionality of your Cadence scripts and contra
 
 ### Fork Testing Flags
 
-Run tests against forked mainnet or testnet state. For a step-by-step tutorial, see: [Fork Testing with Cadence](../../../blockchain-development-tutorials/cadence/fork-testing/index.md). For background and best practices, see the guide: [Fork Testing](../../cadence/smart-contracts/testing.md#fork-testing).
+Run tests against forked mainnet or testnet state. For a step-by-step tutorial, see: [Fork Testing with Cadence](../../../blockchain-development-tutorials/cadence/fork-testing/index.md). For background and best practices, see the guide: [Testing Strategy on Flow](../../cadence/smart-contracts/testing-strategy.md).
 
 #### --fork
 
