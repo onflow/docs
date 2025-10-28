@@ -118,8 +118,6 @@ See also: [Flow Networks].
 - Diff event/resource shapes against your stored samples
 - Check access-node health and CI parallelism/sharding
 
-
-
 ## Do / Don’t
 
 - **Do**: Keep a fast, hermetic base; pin forks; tag tests; maintain tiny PR smoke sets; document pins and set a simple refresh schedule (e.g., after each spork or monthly)
