@@ -72,7 +72,33 @@ See also: [Fork Testing with Cadence], [Fork Testing Flags].
 - **Use when**: Driving dapps, wallets, bots, indexers, or exploratory debugging outside the test framework
 - **Why**: Production-like state with local, disposable control; great for E2E and migrations
 - **Run**: Dev machines and focused E2E CI jobs
-- **Notes**: Pin height; run on dedicated ports; impersonation is built-in; mutations are local; off-chain/oracle calls are not live—mock or run local stubs
+- **Notes**: 
+  - Pin height; run on dedicated ports; impersonation is built-in; mutations are local; off-chain/oracle calls are not live—mock or run local stubs
+  - What to run: Manual exploration and debugging of flows against a forked state; frontend connected to the emulator (e.g., `npm run dev` pointed at `http://localhost:8888`); automated E2E/FE suites (e.g., Cypress/Playwright) against the local fork; headless clients, wallets/bots/indexers, and migration scripts
+  - Not for the canonical Cadence test suite—prefer `flow test --fork` for scripted Cadence tests (see [Fork Testing Flags] and [Running Cadence Tests])
+
+  Quick start example:
+
+  ```bash
+  # Start a fork (pinning height recommended for reproducibility)
+  flow emulator --fork mainnet --fork-height <BLOCK>
+  ```
+
+  ```javascript
+  // Configure FCL for the emulator
+  import { config } from "@onflow/fcl";
+  config({
+    "accessNode.api": "http://localhost:8888"
+  });
+  ```
+
+  ```bash
+  # Run app
+  npm run dev
+
+  # Run E2E tests
+  npx cypress run
+  ```
 
 See also: [Flow Emulator].
 
@@ -81,7 +107,28 @@ See also: [Flow Emulator].
 - **Use when**: Final network plumbing and configuration checks before release
 - **Why**: Validates infra differences you cannot fully simulate
 - **Run**: Pre-release and on infra changes
-- **Notes**: Keep canaries minimal and time-boxed; protocol/partner support may be limited on testnet (not all third-party contracts are deployed or up to date)
+- **Notes**: 
+  - Keep canaries minimal and time-boxed; protocol/partner support may be limited on testnet (not all third-party contracts are deployed or up to date)
+  - What to run: Minimal app smoke tests (login/auth, key flows, mint/transfer, event checks); frontend connected to Testnet with a small Cypress/Playwright smoke set; infra/config checks (endpoints, contract addresses/aliases, env vars, service/test accounts)
+  - Not for the canonical Cadence test suite — prefer `flow test --fork` for scripted tests (see [Fork Testing Flags] and [Running Cadence Tests])
+
+  Quick start example:
+
+  ```javascript
+  // Configure FCL for Testnet
+  import { config } from "@onflow/fcl";
+  config({
+    "accessNode.api": "https://rest-testnet.onflow.org"
+  });
+  ```
+
+  ```bash
+  # Run app
+  npm run dev
+
+  # Run smoke tests
+  npx cypress run --spec "cypress/e2e/smoke.*"
+  ```
 
 See also: [Flow Networks].
 
