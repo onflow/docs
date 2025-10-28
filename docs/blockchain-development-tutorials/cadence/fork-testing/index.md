@@ -147,10 +147,10 @@ Your `flow.json` should now have the mainnet and testnet networks configured fro
 
 ## Test Reading Live State
 
-Create the test directories:
+The test directories are already created by `flow init`. If needed, create the scripts directory:
 
 ```zsh
-mkdir -p tests cadence/scripts
+mkdir -p cadence/scripts
 ```
 
 First, create a script to read FlowToken supply. Create `cadence/scripts/GetFlowTokenSupply.cdc`:
@@ -163,14 +163,14 @@ access(all) fun main(): UFix64 {
 }
 ```
 
-Now create the test file `tests/flow_token_test.cdc`:
+Now create the test file `cadence/tests/flow_token_test.cdc`:
 
-```cadence tests/flow_token_test.cdc
+```cadence cadence/tests/flow_token_test.cdc
 import Test
 
 access(all) fun testFlowTokenSupplyIsPositive() {
     let scriptResult = Test.executeScript(
-        Test.readFile("cadence/scripts/GetFlowTokenSupply.cdc"),
+        Test.readFile("../scripts/GetFlowTokenSupply.cdc"),
         []
     )
     
@@ -186,19 +186,20 @@ Notes:
 - The script imports `FlowToken` by name - the dependency manager handles address resolution
 - In fork mode, this automatically uses the mainnet FlowToken contract
 - Extract the return value with proper type casting and assert on it
+- File paths in `Test.readFile()` are relative to the test file location (use `../scripts/` from `cadence/tests/`)
 
 #### Quick verify
 
 Run just this test file against a fork to confirm your setup works:
 
 ```zsh
-flow test tests/flow_token_test.cdc --fork
+flow test cadence/tests/flow_token_test.cdc --fork mainnet
 ```
 
 Target testnet instead:
 
 ```zsh
-flow test tests/flow_token_test.cdc --fork testnet
+flow test cadence/tests/flow_token_test.cdc --fork testnet
 ```
 
 You should see the test PASS. If not, verify your network host in `flow.json` and that dependencies are installed.
@@ -207,15 +208,27 @@ You should see the test PASS. If not, verify your network host in `flow.json` an
 
 Now you'll create a contract that depends on FlowToken and test it against the forked mainnet state—no need to bootstrap tokens or set up test accounts.
 
-### Create a Test Account
+### Generate a Key Pair
 
-Create a mainnet account for testing:
+Generate a key pair that will be used for your test contract's mainnet alias:
 
 ```zsh
-flow accounts create
+flow keys generate
 ```
 
-When prompted, select `mainnet` as the network. This will generate a new account and save the private key to a `.pkey` file. Note the account address (e.g., `0xf8d6e0586b0a20c7`).
+This will output a public/private key pair. Save the **private key** to a file:
+
+```zsh
+echo "YOUR_PRIVATE_KEY_HERE" > mainnet-test.pkey
+```
+
+Note the **public key** - you'll need it to derive an account address. For fork testing, any valid Flow address format works. You can use this command to generate a test address from your key:
+
+```zsh
+flow accounts derive-address mainnet-test.pkey
+```
+
+Or simply use a placeholder mainnet-format address like `f8d6e0586b0a20c7` for testing purposes.
 
 ### Create a Contract that Uses FlowToken
 
@@ -248,32 +261,36 @@ access(all) contract TokenChecker {
 }
 ```
 
-### Configure Contract Deployment
+### Configure Contract in flow.json
 
-Add the deployment configuration to `flow.json`. The account you created in the previous step is already present under `accounts`; reference it here:
+Add the `TokenChecker` contract configuration to `flow.json`. The contract needs a **mainnet alias** so that imports can resolve properly during fork testing.
+
+Update your `flow.json` to include the contract with aliases, using the address you generated in the previous step:
 
 ```json
 {
   "contracts": {
     "TokenChecker": {
-      "source": "cadence/contracts/TokenChecker.cdc"
-    }
-  },
-  "deployments": {
-    "mainnet": {
-      "mainnet-account": ["TokenChecker"]
+      "source": "cadence/contracts/TokenChecker.cdc",
+      "aliases": {
+        "testing": "0000000000000008",
+        "mainnet": "<from_previous_step>"
+      }
     }
   },
   "accounts": {
-    "mainnet-account": {
-      "address": "<from previous step>",
-      "key": "<from previous step>"
+    "mainnet-test": {
+      "address": "<from_previous_step>",
+      "key": {
+        "type": "file",
+        "location": "mainnet-test.pkey"
+      }
     }
   }
 }
 ```
 
-This configuration tells the test framework to deploy `TokenChecker` to your mainnet account when running fork tests.
+The `Test.deployContract` function will automatically deploy your contract to the testing environment during test execution.
 
 ### Create Scripts for Testing
 
@@ -299,16 +316,16 @@ access(all) fun main(addr: Address, min: UFix64): Bool {
 
 ### Test Your Contract with Forked State
 
-Create `tests/token_checker_test.cdc`:
+Create `cadence/tests/token_checker_test.cdc`:
 
-```cadence tests/token_checker_test.cdc
+```cadence cadence/tests/token_checker_test.cdc
 import Test
 
 access(all) fun setup() {
     // Deploy TokenChecker to the test account
     let err = Test.deployContract(
         name: "TokenChecker",
-        path: "cadence/contracts/TokenChecker.cdc",
+        path: "../contracts/TokenChecker.cdc",
         arguments: []
     )
     Test.expect(err, Test.beNil())
@@ -317,8 +334,8 @@ access(all) fun setup() {
 access(all) fun testCheckBalanceOnRealAccount() {
     // Test against a real mainnet account (Flow service account)
     let scriptResult = Test.executeScript(
-        Test.readFile("cadence/scripts/CheckBalance.cdc"),
-        [0x1654653399040a61]  // Flow service account on mainnet
+        Test.readFile("../scripts/CheckBalance.cdc"),
+        [Address(0x1654653399040a61)]  // Flow service account on mainnet
     )
     
     Test.expect(scriptResult, Test.beSucceeded())
@@ -330,14 +347,14 @@ access(all) fun testCheckBalanceOnRealAccount() {
 
 access(all) fun testHasMinimumBalance() {
     let scriptResult = Test.executeScript(
-        Test.readFile("cadence/scripts/HasMinimumBalance.cdc"),
-        [0x1654653399040a61, 1000.0]
+        Test.readFile("../scripts/HasMinimumBalance.cdc"),
+        [Address(0x1654653399040a61), 1.0]
     )
     
     Test.expect(scriptResult, Test.beSucceeded())
     
     let hasMinimum = scriptResult.returnValue! as! Bool
-    Test.assert(hasMinimum == true, message: "Service account should have at least 1000 FLOW")
+    Test.assert(hasMinimum == true, message: "Service account should have at least 1 FLOW")
 }
 ```
 
@@ -367,7 +384,7 @@ import "FungibleToken"
 import "FlowToken"
 
 transaction {
-    prepare(signer: &Account) {
+    prepare(signer: auth(Storage, Capabilities) &Account) {
         if signer.storage.borrow<&FlowToken.Vault>(from: /storage/flowTokenVault) == nil {
             signer.storage.save(<-FlowToken.createEmptyVault(vaultType: Type<@FlowToken.Vault>()), to: /storage/flowTokenVault)
             let cap = signer.capabilities.storage.issue<&FlowToken.Vault>(/storage/flowTokenVault)
@@ -387,7 +404,7 @@ import "FlowToken"
 transaction(amount: UFix64, to: Address) {
     let sentVault: @{FungibleToken.Vault}
 
-    prepare(signer: &Account) {
+    prepare(signer: auth(Storage) &Account) {
         let vaultRef = signer.storage.borrow<auth(FungibleToken.Withdraw) &FlowToken.Vault>(
             from: /storage/flowTokenVault
         ) ?? panic("Could not borrow reference to the owner's Vault")
@@ -408,7 +425,7 @@ transaction(amount: UFix64, to: Address) {
 
 ### Test Transaction Execution with Impersonation
 
-Add this test function to the existing `tests/token_checker_test.cdc` file:
+Add this test function to the existing `cadence/tests/token_checker_test.cdc` file:
 
 ```cadence
 access(all) fun testTransactionAsMainnetAccount() {
@@ -418,7 +435,7 @@ access(all) fun testTransactionAsMainnetAccount() {
     
     // Check initial balance
     let initialBalanceScript = Test.executeScript(
-        Test.readFile("cadence/scripts/CheckBalance.cdc"),
+        Test.readFile("../scripts/CheckBalance.cdc"),
         [serviceAccount.address]
     )
     Test.expect(initialBalanceScript, Test.beSucceeded())
@@ -430,7 +447,7 @@ access(all) fun testTransactionAsMainnetAccount() {
     // Set up the recipient's FlowToken vault
     let setupResult = Test.executeTransaction(
         Test.Transaction(
-            code: Test.readFile("cadence/transactions/SetupFlowTokenVault.cdc"),
+            code: Test.readFile("../transactions/SetupFlowTokenVault.cdc"),
             authorizers: [recipient.address],
             signers: [recipient],
             arguments: []
@@ -442,7 +459,7 @@ access(all) fun testTransactionAsMainnetAccount() {
     // This works because fork testing allows impersonating any account
     let txResult = Test.executeTransaction(
         Test.Transaction(
-            code: Test.readFile("cadence/transactions/TransferTokens.cdc"),
+            code: Test.readFile("../transactions/TransferTokens.cdc"),
             authorizers: [serviceAccount.address],
             signers: [serviceAccount],
             arguments: [10.0, recipient.address]
@@ -453,7 +470,7 @@ access(all) fun testTransactionAsMainnetAccount() {
     
     // Verify the sender's balance decreased
     let newBalanceScript = Test.executeScript(
-        Test.readFile("cadence/scripts/CheckBalance.cdc"),
+        Test.readFile("../scripts/CheckBalance.cdc"),
         [serviceAccount.address]
     )
     Test.expect(newBalanceScript, Test.beSucceeded())
@@ -464,12 +481,13 @@ access(all) fun testTransactionAsMainnetAccount() {
     
     // Verify the recipient received the tokens
     let recipientBalanceScript = Test.executeScript(
-        Test.readFile("cadence/scripts/CheckBalance.cdc"),
+        Test.readFile("../scripts/CheckBalance.cdc"),
         [recipient.address]
     )
     Test.expect(recipientBalanceScript, Test.beSucceeded())
     let recipientBalance = recipientBalanceScript.returnValue! as! UFix64
-    Test.assertEqual(10.0, recipientBalance)
+    // Recipient should have at least 10.0 (may be slightly more due to storage refunds)
+    Test.assert(recipientBalance >= 10.0, message: "Recipient should have at least 10 FLOW")
 }
 ```
 
@@ -486,16 +504,16 @@ access(all) fun testTransactionAsMainnetAccount() {
 Now that you have multiple test files, run them all against the forked network:
 
 ```zsh
-flow test --fork
+flow test --fork mainnet
 ```
 
-This runs all `*_test.cdc` files in your project against mainnet by default. You should see:
+This runs all `*_test.cdc` files in your project against mainnet. You should see:
 
 ```
-Test results: "tests/flow_token_test.cdc"
+Test results: "cadence/tests/flow_token_test.cdc"
 - PASS: testFlowTokenSupplyIsPositive
 
-Test results: "tests/token_checker_test.cdc"
+Test results: "cadence/tests/token_checker_test.cdc"
 - PASS: testCheckBalanceOnRealAccount
 - PASS: testHasMinimumBalance
 - PASS: testTransactionAsMainnetAccount
@@ -525,13 +543,13 @@ Fork tests run against Flow chain state only:
 - Run specific files or directories:
 
 ```zsh
-flow test tests/flow_token_test.cdc tests/token_checker_test.cdc tests/subsuite/
+flow test cadence/tests/flow_token_test.cdc cadence/tests/token_checker_test.cdc --fork mainnet
 ```
 
 - Optional: narrow by function name with `--name`:
 
 ```zsh
-flow test tests/token_checker_test.cdc --name _smoke
+flow test cadence/tests/token_checker_test.cdc --name _smoke --fork mainnet
 ```
 
 - Optional: suffix a few functions with `_smoke` for quick PR runs; run the full suite nightly or on protected branches.
