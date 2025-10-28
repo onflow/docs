@@ -27,9 +27,6 @@ For more information on how to access these networks, refer to the following gui
 - [Flow Testnet](./accessing-testnet.md)
 - [Flow Mainnet](./accessing-mainnet.md)
 
-<Callout type="info">
-You can use these public GRPC hosts directly with forked tests via `flow test --fork-host <host>`. See the CLI reference: [Fork Testing Flags](../../build/tools/flow-cli/tests.md#fork-testing-flags).
-</Callout>
 
 ### Network
 

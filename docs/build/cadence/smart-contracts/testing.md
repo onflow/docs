@@ -341,9 +341,6 @@ flow test tests/my_marketplace_test.cdc --fork mainnet
 
 # Pin to a specific block height for historical state
 flow test --fork mainnet --fork-height 85432100
-
-# Generate coverage while forking
-flow test --fork --cover
 ```
 
 #### How contract aliases are resolved
@@ -389,7 +386,7 @@ Guide → Flags: [Fork Testing Flags](../../../build/tools/flow-cli/tests.md#for
 ```bash
 flow test --fork                    # Fork from mainnet (default when value omitted)
 flow test --fork testnet            # Fork from testnet
-flow test --fork --cover            # With coverage report
+# flow test --cover                  # With coverage report
 flow test --fork --fork-height NUM  # Pin to block height
 ```
 
