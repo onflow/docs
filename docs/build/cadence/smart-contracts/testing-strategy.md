@@ -131,11 +131,6 @@ See also: [Flow Networks].
 - Tutorial → Step-by-step: [Fork Testing with Cadence]
 - Tool → Emulator (including fork mode): [Flow Emulator]
 - Flags → `flow test --fork`: [Fork Testing Flags]
-- Networks → Public access nodes: [Flow Networks]
-- Upgrades → Spork boundaries: [Network Upgrade (Spork) Process]
-- Config → Network and hosts: [Flow CLI Configuration (flow.json)]
-- Imports → Resolving aliases: [Dependency Manager]
-- Language → Assertions & helpers: [Cadence Testing Framework]
 
 <!-- Reference-style links -->
 [Running Cadence Tests]: ../../tools/flow-cli/tests.md

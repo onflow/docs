@@ -258,32 +258,6 @@ The Cadence testing framework utilizes the emulator under the hood.
 
 For running tests against a fork of mainnet/testnet, see the dedicated tutorial: [Fork Testing with Cadence (Step-by-Step)]. For available flags, see [Fork Testing Flags]. To interactively explore a forked state outside the test framework, see [Flow Emulator]. For when to use forks vs emulator, see [Testing Strategy on Flow].
 
-### Go Tests
-
-Tests in Go can be written using [flow-go-sdk](https://github.com/onflow/flow-go-sdk) and the go test command.
-
-You can find examples of Go tests in the following projects: [flow-core-contracts](https://github.com/onflow/flow-core-contracts/tree/master/lib/go/test), [flow-nft](https://github.com/onflow/flow-nft/tree/master/lib/go/test), [flow-ft](https://github.com/onflow/flow-ft/tree/master/lib/go/test).
-
-<Callout type="info">
-These tests are tied to the emulator but can be refactored to run on testnet
-</Callout>
-
-## Testing Your Application
-
-### Automated Testing of Contract Code
-
-All contracts should include test coverage for _all contract functions_. Make sure you've accounted for success and failure cases appropriately.
-
-Tests should also be runnable in automated environments (CI). You can use the [Cadence testing utils](https://cadence-lang.org/docs/testing-framework) to create tests for your smart contract code.
-
-### Stress Testing Live Applications Before Mainnet
-
-Once you deployed your application to the testnet, you should record how your application handles non-trivial amounts of traffic to ensure there are no issues.
-
-<Callout type="success">
-Get familiar with the [Cadence anti-patterns](https://cadence-lang.org/docs/anti-patterns) to avoid avoid problematic or unintended behavior.
-</Callout>
-
 ## References
 
 - [Reference documentation for Cadence testing](https://cadence-lang.org/docs/testing-framework)
