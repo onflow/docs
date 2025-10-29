@@ -318,6 +318,11 @@
   ],
   "redirects": [
     {
+      "source": "/ecosystem/defi-liquidity/defi-contracts",
+      "destination": "/ecosystem/defi-liquidity/defi-contracts-mainnet",
+      "permanent": true
+    },
+    {
       "source": "/tools/kit",
       "destination": "/tools/react-sdk",
       "permanent": true
@@ -1960,7 +1965,7 @@
       "destination": "/build/evm/quickstart",
       "permanent": true
     },
-    
+
     {
       "source": "/build/cadence/guides/account-linking-with-dapper",
       "destination": "/blockchain-development-tutorials/cadence/account-management/account-linking-with-dapper",
