@@ -11,16 +11,6 @@ keywords:
 
 # Composing Workflows with Flow Actions
 
-:::warning
-
-We are reviewing and finalizing Flow Actions in [FLIP 339]. The specific implementation may change as a part of this process.
-
-We will update these tutorials, but you may need to refactor your code if the implementation changes.
-
-:::
-
-## Overview
-
 Flow Actions are designed to be **composable**, which means you can chain them together like LEGO blocks to build complex strategies. Each primitive has a standardized interface that works consistently across all protocols and eliminates the need to learn multiple APIs. This composability allows atomic execution of multi-step workflows within single transactions, ensuring either complete success or safe failure. When developers combine these primitives, they create sophisticated decentralized finance (DeFi) strategies like automated yield farming, cross-protocol arbitrage, and portfolio rebalancing. The [5 Flow Actions Primitives] are:
 
 - **Source** → Provides tokens on demand by withdrawing from vaults or claiming rewards. Sources respect minimum balance constraints and return empty vaults gracefully when nothing is available.
@@ -321,7 +311,6 @@ This advanced workflow demonstrates the power of combining VaultSource with Zapp
 
 ![vault source zapper](./imgs/vaultsource-zapper.png)
 
-
 **How it works:**
 
 1. VaultSource withdraws tokens from vault while respecting minimum balance.
@@ -389,7 +378,7 @@ let autoBalancer <- FlowActions.createAutoBalancer(
     lowerThreshold: 0.8,
     upperThreshold: 1.2,
     source: rebalanceSource,
-    sink: rebalanceSink, 
+    sink: rebalanceSink,
     oracle: priceOracle,
     uniqueID: nil
 )
@@ -419,9 +408,9 @@ This advanced compounding strategy maximizes yield by automatically claiming sta
 5. Compound interest effect increases overall position size and future rewards.
 
 ```cadence
-// Restake rewards workflow  
+// Restake rewards workflow
 let rewardsSource = IncrementFiStakingConnectors.PoolRewardsSource(
-    poolID: 1, 
+    poolID: 1,
     staker: userAddress,
     vaultType: Type<@FlowToken.Vault>(),
     overflowSinks: {},
@@ -436,13 +425,13 @@ let zapper = IncrementFiPoolLiquidityConnectors.Zapper(
 )
 
 let swapSource = SwapConnectors.SwapSource(
-    swapper: zapper, 
-    source: rewardsSource, 
+    swapper: zapper,
+    source: rewardsSource,
     uniqueID: nil
 )
 
 let poolSink = IncrementFiStakingConnectors.PoolSink(
-    staker: userAddress, 
+    staker: userAddress,
     poolID: 1,
     uniqueID: nil
 )
@@ -458,7 +447,6 @@ poolSink.depositCapacity(from: lpTokens)
 - **Gas Efficiency**: Single transaction handles claim, convert, and re-stake operations.
 - **Set-and-Forget**: Automated compounding without manual intervention required.
 - **Optimal Conversion**: Zapper ensures efficient reward token to LP token conversion.
-
 
 ## Safety Best Practices
 
@@ -528,7 +516,7 @@ Tests individual connectors in isolation to verify they respect their constraint
 // Test individual components
 test("VaultSource should maintain minimum balance") {
     let source = VaultSource(min: 100.0, withdrawVault: vaultCap, uniqueID: nil)
-    
+
     // Test minimum balance enforcement
     let available = source.minimumAvailable()
     assert(available >= 100.0, message: "Should maintain minimum balance")
@@ -547,7 +535,7 @@ test("Reward harvesting workflow should complete successfully") {
         swapper: swapper,
         sink: sink
     )
-    
+
     let result = workflow.execute()
     assert(result.success, message: "Workflow should complete successfully")
 }
@@ -564,14 +552,14 @@ test("Strategy should handle price volatility") {
         priceOracle: mockPriceOracle,
         swapper: mockSwapper
     )
-    
+
     // Simulate price changes
     mockPriceOracle.setPrice(1.0)
     let result1 = strategy.execute()
-    
+
     mockPriceOracle.setPrice(2.0)
     let result2 = strategy.execute()
-    
+
     assert(result1 != result2, message: "Strategy should adapt to price changes")
 }
 ```
@@ -591,5 +579,6 @@ In this tutorial, you learned how to combine Flow Actions primitives to create s
 Composability is the core strength of Flow Actions. These examples demonstrate how Flow Actions primitives can be combined to create powerful, automated workflows that integrate multiple protocols seamlessly. The framework's standardized interfaces enable developers to chain operations together like LEGO blocks, focusing on strategy implementation rather than protocol-specific integration details.
 
 <!-- Relative links, will not render on page -->
+
 [FLIP 339]: https://github.com/onflow/flips/pull/339/files
 [5 Flow Actions Primitives]: intro-to-flow-actions.md

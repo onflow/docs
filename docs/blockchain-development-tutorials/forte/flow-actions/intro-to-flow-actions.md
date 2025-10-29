@@ -29,15 +29,6 @@ keywords:
 
 # Introduction to Flow Actions
 
-:::warning
-
-We are reviewing and finalizing Flow Actions in [FLIP 339]. The specific implementation may change as a part of this process.
-
-We will update these tutorials, but you may need to refactor your code if the implementation changes.
-
-:::
-## Overview
-
 _Actions_ are a suite of standardized Cadence interfaces that allow developers to compose complex workflows, starting with decentralized finance (DeFi) workflows, by connecting small, reusable components. Actions provide a "LEGO" framework of blocks where each component performs a single operation (deposit, withdraw, swap, price lookup, flash loan) while maintaining composability with other components. This creates sophisticated workflows executable in a single atomic transaction.
 
 By using Flow Actions, developers can remove large amounts of tailored complexity from building DeFi apps and can instead focus on business logic using nouns and verbs.
@@ -124,8 +115,6 @@ A.1654653399040a61.FlowToken.Vault
 Many Flow Actions use these types to provide a safer method of working with tokens than an arbitrary address that may or may not be a token.
 
 ## Flow Actions
-
-
 
 The following Flow Actions standardize **usage** patterns for common defi-related tasks. By working with them, you - or Artificial Intelligence (AI) agents - can more easily write transactions and functionality regardless of the myriad of different ways each protocol works to accomplish these tasks.
 

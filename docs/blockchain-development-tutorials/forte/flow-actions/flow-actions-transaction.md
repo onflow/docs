@@ -17,17 +17,7 @@ keywords:
 
 # Flow Actions Transaction
 
-:::warning
-
-We are reviewing and finalizing Flow Actions in [FLIP 339]. The specific implementation may change as a part of this process.
-
-We will update these tutorials, but you may need to refactor your code if the implementation changes.
-
-:::
-
-## Overview
-
-[Staking] is a simple way to participate in the blockchain process. You supply tokens to help with governance and, in return, you earn a share of the network's rewards. It's a way to grow unused assets and provides a much higher rate of return than a savings account. 
+[Staking] is a simple way to participate in the blockchain process. You supply tokens to help with governance and, in return, you earn a share of the network's rewards. It's a way to grow unused assets and provides a much higher rate of return than a savings account.
 
 :::warning
 
@@ -239,7 +229,7 @@ let operationID: DeFiActions.UniqueIdentifier
 
 ### Prepare Phase
 
-The `prepare` phase runs first in the transaction. You use it to set up and validate a Cadence transaction. It's also the only place where a transaction can interact with a user's account and the [resources] within. 
+The `prepare` phase runs first in the transaction. You use it to set up and validate a Cadence transaction. It's also the only place where a transaction can interact with a user's account and the [resources] within.
 
 **Pool Validation** verifies that the specified pool exists and is accessible.
 
