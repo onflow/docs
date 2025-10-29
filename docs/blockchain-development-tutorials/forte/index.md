@@ -30,7 +30,7 @@ The Forte network upgrade introduces several features that expand Flow's capabil
 
 :::info
 
-Forte is **live** on testnet and Mainnet.
+Forte is **live** on emulator, testnet, and Mainnet.
 
 :::
 

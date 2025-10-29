@@ -17,8 +17,6 @@ keywords:
 
 # Introduction to Scheduled Transactions
 
-# Overview
-
 Flow, EVM, and other blockchains are a form of a **single** shared computer that anyone can use, with no admin privileges, super user roles, or complete control. For this to work, it must be impossible for any user to freeze the computer, on purpose or by accident.
 
 As a result, most blockchain computers, including EVM and Solana, aren't [Turing Complete], because they can't run an unbounded loop. Each transaction must occur within one block, and can't consume more gas than the limit.
