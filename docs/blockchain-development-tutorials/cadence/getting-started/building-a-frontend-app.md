@@ -22,13 +22,13 @@ keywords:
 
 # Building a Frontend App
 
-Building on the `Counter` contract you deployed in [Cadence Environment Setup] and [Smart Contract Interaction], this tutorial shows you how to create a simple Next.js frontend that interacts with the `Counter` smart contract deployed on your local Flow emulator. Instead of using FCL directly, you'll leverage [**@onflow/react-sdk**] to simplify authentication, querying, transactions, and to display real-time transaction status updates using convenient React hooks.
+This tutorial builds on the `Counter` contract you deployed in [Cadence Environment Setup] and [Smart Contract Interaction]. It shows you how to create a simple `Next.js` frontend that interacts with the `Counter` smart contract deployed on your local Flow emulator. Instead of using FCL directly, you'll leverage [**@onflow/react-sdk**] to simplify authentication, querying, transactions, and to display real-time transaction status updates using convenient React hooks.
 
 ## Objectives
 
-After finishing this guide, you will be able to:
+After you complete this tutorial, you will be able to:
 
-- Wrap your Next.js app with a Flow provider using [**@onflow/react-sdk**].
+- Wrap your `Next.js` app with a Flow provider using [**@onflow/react-sdk**].
 - Read data from a Cadence smart contract (`Counter`) using kit's query hook.
 - Send a transaction to update the smart contract's state using kit's mutation hook.
 - Monitor a transaction's status in real time using kit's transaction hook.
@@ -92,7 +92,11 @@ Move-Item -Path .\kit-app-quickstart\.* -Destination . -Force
 Remove-Item -Recurse -Force .\kit-app-quickstart
 ```
 
-**Note:** When moving hidden files (those beginning with a dot) like `.gitignore`, be cautious not to overwrite any important files.
+:::tip
+
+When moving hidden files (those beginning with a dot) like `.gitignore`, be cautious not to overwrite any important files.
+
+:::
 
 ### Step 3: Install @onflow/react-sdk
 
@@ -108,7 +112,7 @@ This library wraps FCL internally and exposes a set of hooks for authentication,
 
 :::warning
 
-You should already have the Flow emulator running from the local development step. If it's not running, you can start it again — but note that restarting the emulator will clear all blockchain state, including any contracts deployed in [Step 2: Local Development].
+You should already have the Flow emulator running from the local development step. If it's not running, you can start it again — but when you restart the emulator, it will clear all blockchain state, which includes any contracts deployed in [Step 2: Local Development].
 
 :::
 
@@ -134,7 +138,7 @@ This will start the [Dev Wallet] on `http://localhost:8701`, which you'll use fo
 
 ## Wrapping Your App with FlowProvider
 
-[**@onflow/react-sdk**] provides a `FlowProvider` component that sets up the Flow Client Library configuration. In Next.js using the App Router, add or update your `src/app/layout.tsx` as follows:
+[**@onflow/react-sdk**] provides a `FlowProvider` component that sets up the Flow Client Library configuration. In `Next.js` using the App Router, add or update your `src/app/layout.tsx` as follows:
 
 ```tsx
 'use client';
@@ -244,7 +248,7 @@ const handleIncrement = () => {
 
 #### Explanation
 
-This sends a Cadence transaction to the blockchain using the `mutate` function. The transaction imports the `Counter` contract and calls its `increment` function. Authorization is handled automatically by the connected wallet during the `prepare` phase. Once submitted, the returned `txId` can be used to track the transaction's status in real time.
+This sends a Cadence transaction to the blockchain using the `mutate` function. The transaction imports the `Counter` contract and calls its `increment` function. The connected wallet handles authorization automatically during the `prepare` phase. After it's submitted, you cna use the returned `txId` to track the transaction's status in real time.
 
 ### Subscribing to Transaction Status
 
@@ -275,7 +279,7 @@ useEffect(() => {
   - `2`: **Finalized** – The transaction has been included in a block, but not yet executed.
   - `3`: **Executed** – The transaction code has run successfully, but the result has not yet been sealed.
   - `4`: **Sealed** – The transaction is fully complete, included in a block, and now immutable onchain.
-- We recommend calling `refetch()` when the status reaches **3 (Executed)** to update your UI more quickly after the transaction runs, rather than waiting for sealing.
+- We recommend that you call `refetch()` when the status reaches **3 (Executed)** to update your UI more quickly after the transaction runs, rather than waiting for sealing.
 - The `statusString` property gives a human-readable version of the current status you can display in the UI.
 
 #### Why `Executed` is Recommended for UI Updates:
@@ -284,7 +288,7 @@ Waiting for `Sealed` provides full onchain confirmation but can introduce a dela
 
 However:
 
-- If you're dealing with critical state changes (e.g., token transfers or contract deployments), prefer waiting for `Sealed`.
+- If you're dealing with critical state changes (for example, token transfers or contract deployments), prefer waiting for `Sealed`.
 - For non-critical UI updates, `Executed` is usually safe and significantly improves perceived performance.
 
 ### Integrating Authentication and Building the Complete UI
@@ -442,9 +446,9 @@ Then visit [http://localhost:3000](http://localhost:3000) in your browser. You s
 - Once logged in, your account address appears with options to **Log Out** and **Increment Count**.
 - When you click **Increment Count**, the transaction is sent; its status updates are displayed in real time below the action buttons, and once the transaction is sealed, the updated count is automatically fetched.
 
-## Wrapping Up
+## Conclusion
 
-By following these steps, you've built a simple Next.js dApp that interacts with a Flow smart contract using [**@onflow/react-sdk**]. In this guide you learned how to:
+By following these steps, you've built a simple `Next.js` dApp that interacts with a Flow smart contract using [**@onflow/react-sdk**]. In this guide you learned how to:
 
 - Wrap your application in a `FlowProvider` to configure blockchain connectivity.
 - Use kit hooks such as `useFlowQuery`, `useFlowMutate`, `useFlowTransactionStatus`, and `useFlowCurrentUser` to manage authentication, query onchain data, submit transactions, and monitor their status.
