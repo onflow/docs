@@ -3,6 +3,29 @@ title: Running Cadence Tests
 sidebar_label: Running Cadence Tests
 description: How to run Cadence tests from the CLI
 sidebar_position: 11
+keywords:
+  - flow test
+  - Cadence tests
+  - Flow CLI
+  - test command
+  - test flags
+  - code coverage
+  - fork testing
+  - flow test --fork
+  - fork-height
+  - fork-host
+  - mainnet fork
+  - testnet fork
+  - test discovery
+  - test aliases
+  - testing configuration
+  - test selection
+  - test by name
+  - random testing
+  - coverage reporting
+  - test automation
+  - integration testing
+  - spork boundaries
 ---
 
 The Flow CLI provides a straightforward command to execute Cadence tests, enabling developers to validate their scripts and smart contracts effectively.
@@ -106,15 +129,15 @@ To learn more about writing tests in Cadence, visit the [Cadence Testing Framewo
 
 ---
 
-### Running Specific Tests
+### Running Specific Tests and Files
 
-If you wish to run a specific test script rather than all tests, you can provide the path to the test file:
+Run specific test scripts or directories by providing their paths:
 
 ```shell
-flow test path/to/your/test_script_test.cdc
+flow test path/to/your/test_script_test.cdc path/to/another_test.cdc tests/subsuite/
 ```
 
-This will execute only the tests contained in the specified file.
+This executes only the tests contained in the specified files and directories.
 
 ---
 
@@ -225,3 +248,53 @@ flow test --name=testSumOfTwo
 This command will run only the test function named `testSumOfTwo` across all test scripts that contain it.
 
 To dive deeper into testing the functionality of your Cadence scripts and contracts, explore the [Cadence Testing Framework](https://cadence-lang.org/docs/testing-framework) documentation.
+
+---
+
+### Fork Testing Flags
+
+Run tests against forked mainnet or testnet state. For a step-by-step tutorial, see: [Fork Testing with Cadence](../../../blockchain-development-tutorials/cadence/fork-testing/index.md). For background and best practices, see the guide: [Testing Strategy on Flow](../../cadence/smart-contracts/testing-strategy.md).
+
+#### --fork
+
+- Type: `string`
+- Default: `""` (empty). If provided without a value, defaults to `mainnet`.
+
+Fork tests from a network defined in `flow.json`. The CLI resolves the GRPC access host and chain ID from the selected network configuration.
+
+```shell
+flow test --fork          # Uses mainnet by default
+flow test --fork testnet  # Uses testnet
+flow test --fork mynet    # Uses a custom network defined in flow.json
+```
+
+Requirements:
+
+- The network must exist in `flow.json`
+- The network must have a valid `host` configured
+
+#### --fork-host
+
+- Type: `string`
+- Default: `""`
+
+Directly specify a GRPC access node host. This bypasses the `flow.json` network lookup.
+
+```shell
+flow test --fork-host access.mainnet.nodes.onflow.org:9000
+```
+
+See public access node URLs in [Flow Networks](../../../protocol/flow-networks/index.md).
+
+#### --fork-height
+
+- Type: `uint64`
+- Default: `0`
+
+Pin the fork to a specific block height for historical state testing. Only blocks from the current spork (since the most recent network upgrade) are available via public access nodes; earlier blocks are not accessible via public access nodes.
+
+```shell
+flow test --fork mainnet --fork-height 85432100
+```
+
+> Note: Historical data beyond spork boundaries is not available via standard access nodes. See the [Network Upgrade (Spork) Process](../../../protocol/node-ops/node-operation/network-upgrade.md).
