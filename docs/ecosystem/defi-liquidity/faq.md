@@ -13,7 +13,7 @@ keywords:
   - DEX
   - yield farming
   - liquidity
-sidebar_position: 3
+sidebar_position: 5
 sidebar_label: Stablecoins & Bridges FAQ
 ---
 
@@ -26,7 +26,7 @@ Below are common questions regarding stablecoins, liquidity, and bridging on Flo
 ## Bridging and Gas
 
 <Details summary="Does Flow use ETH for gas?">
-No, Flow uses $FLOW as the gas token. [WETH](./defi-contracts#stablecoins--wrapped-assets) is supported on Flow EVM when [bridging](../bridges.md) from another chain. $WFLOW is used as an ERC20 in DeFi apps and not used for gas.
+No, Flow uses $FLOW as the gas token. [WETH](./defi-contracts-mainnet#stablecoins--wrapped-assets) is supported on Flow EVM when [bridging](../bridges.md) from another chain. $WFLOW is used as an ERC20 in DeFi apps and not used for gas.
 </Details>
 
 <Details summary="How do I pay for gas when bridging into Flow?">
@@ -205,7 +205,7 @@ If you have questions you can join [Flow Discord][15] to get free technical supp
 - **Flow Discord**: [https://discord.gg/flow][15]
 </Details>
 
-[0]: ./defi-contracts.md
+[0]: ./defi-contracts-mainnet.md
 [1]: https://swap.kittypunch.xyz/
 [2]: https://app.increment.fi/swap?in=A.1654653399040a61.FlowToken&out=
 [3]: https://app.increment.fi/dashboard

@@ -16,24 +16,24 @@ keywords:
   - Stargate
   - LayerZero
   - Celer
-sidebar_position: 2
+sidebar_position: 3
 sidebar_label: Cross-chain swaps on Flow EVM
 ---
 
 import Details from '@theme/Details';
 
-The following bridges offer cross-chain swaps (token bridging including swap) to or from Flow EVM. 
+The following bridges offer cross-chain swaps (token bridging including swap) to or from Flow EVM.
 
-## Liquidity Pool Based Cross-chain Swaps 
+## Liquidity Pool Based Cross-chain Swaps
 
 ### Stargate
 
-[Stargate](https://stargate.finance) employs unified liquidity pools shared across multiple chains to enable native asset transfers and cross-chain swaps 
+[Stargate](https://stargate.finance) employs unified liquidity pools shared across multiple chains to enable native asset transfers and cross-chain swaps
 without wrapped tokens. It is built on LayerZero's cross-chain messaging protocol.
 
 ### Celer
 
-[Celer](https://cbridge.celer.network) is a hybrid liquidity network bridge that combines multiple bridging models and is based on the Celer 
+[Celer](https://cbridge.celer.network) is a hybrid liquidity network bridge that combines multiple bridging models and is based on the Celer
 Inter-Chain Messaging Framework.
 
 ## Intent Based Cross-chain Swaps
@@ -46,7 +46,5 @@ Intent based bridges do not depend on pre-funded liquidity pools which can impro
 
 ### DeBridge
 
-[DeBridge](https://app.debridge.finance/) achieves efficient cross-chain swaps with minimal slippage in a decentralized environment 
+[DeBridge](https://app.debridge.finance/) achieves efficient cross-chain swaps with minimal slippage in a decentralized environment
 through a peer-to-peer transaction mechanism.
-
-

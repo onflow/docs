@@ -611,7 +611,7 @@ Now that you have completed this tutorial, you can:
 [`IncrementFiSwapConnectors`]: https://github.com/onflow/FlowActions/blob/main/cadence/contracts/connectors/increment-fi/IncrementFiSwapConnectors.cdc
 [`IncrementFiFlashloanConnectors`]: https://github.com/onflow/FlowActions/blob/main/cadence/contracts/connectors/increment-fi/IncrementFiFlashloanConnectors.cdc
 [`FungibleTokenConnectors`]: https://github.com/onflow/FlowActions/blob/main/cadence/contracts/connectors/FungibleTokenConnectors.cdc
-[oracle]: https://developers.flow.com/ecosystem/defi-liquidity/defi-contracts#oracles
+[oracle]: https://developers.flow.com/ecosystem/defi-liquidity/defi-contracts-mainnet#oracles
 [Band]: https://blog.bandprotocol.com/
 [`BandOracleConnectors`]: https://github.com/onflow/FlowActions/blob/main/cadence/contracts/connectors/band-oracle/BandOracleConnectors.cdc
 [Cadence type]: https://cadence-lang.org/docs/language/types-and-type-system/type-safety
