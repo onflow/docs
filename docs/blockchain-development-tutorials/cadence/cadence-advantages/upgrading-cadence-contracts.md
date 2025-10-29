@@ -18,8 +18,6 @@ keywords:
 
 # Upgrading Cadence Contracts
 
-## Overview
-
 In Cadence, you can upgrade deployed contracts by adding new functionality while preserving existing state and maintaining the same contract address. Unlike other blockchain platforms that require complex proxy patterns or complete redeployment, Cadence allows you to seamlessly extend your contracts with new functions and events through multiple incremental upgrades.
 
 This tutorial demonstrates how to upgrade a deployed contract through two scenarios: 

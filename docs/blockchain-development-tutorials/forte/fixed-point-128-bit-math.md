@@ -18,7 +18,6 @@ sidebar_label: DeFi Math Utils
 
 # High-Precision Fixed-Point 128 Bit Math 
 
-## Overview
 Dealing with decimals is a notorious issue for most developers on other chains, especially when working with decentralized finance (DeFi). Blockchains are deterministic systems and floating-point arithmetic is non-deterministic across different compilers and architectures, which is why blockchains use fixed-point arithmetic via integers (scaling numbers by a fixed factor). 
 
 The issue with this is that these fixed-point integers tend to be very imprecise when using various mathematical operations on them. The more operations you apply to these numbers, the more imprecise these numbers become. However [`DeFiActionsMathUtils`] provides a standardized library for high-precision mathematical operations in DeFi applications on Flow. The contract extends Cadence's native 8-decimal precision (`UFix64`) to 24 decimals using `UInt128` for intermediate calculations, ensuring accuracy in complex financial computations while maintaining deterministic results across the network.
@@ -27,7 +26,7 @@ Through integration of this math utility library, developers can ensure that the
 
 :::info
 
-While this documentation focuses on DeFi use cases, you can use these mathematical utilities for any application requiring high-precision decimal arithmetic beyond the native 8-decimal limitation of `UFix64`.
+While this document focuses on DeFi use cases, you can use these mathematical utilities for any application requiring high-precision decimal arithmetic beyond the native 8-decimal limitation of `UFix64`.
 
 :::
 

@@ -21,8 +21,6 @@ keywords:
 
 # Compose wth Cadence Transactions
 
-## Overview
-
 In this tutorial, you'll **compose with someone else's contracts** on Flow testnet. You'll write a Cadence transaction that reads public state from a contract named `Counter` and only increments the counter when it is odd. Then you'll extend the transaction to mint NFTs when the counter is odd, demonstrating how to compose multiple contracts in a single transaction. Everything runs against testnet using the Flow CLI and the dependency manager.
 
 You can use transactions developed and tested this way from the frontend of your app.

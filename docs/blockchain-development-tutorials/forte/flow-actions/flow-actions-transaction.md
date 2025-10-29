@@ -25,8 +25,6 @@ We will update these tutorials, but you may need to refactor your code if the im
 
 :::
 
-## Overview
-
 [Staking] is a simple way to participate in the blockchain process. You supply tokens to help with governance and, in return, you earn a share of the network's rewards. It's a way to grow unused assets and provides a much higher rate of return than a savings account. 
 
 :::warning

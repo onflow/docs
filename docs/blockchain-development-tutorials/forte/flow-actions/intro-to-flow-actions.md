@@ -36,7 +36,6 @@ We are reviewing and finalizing Flow Actions in [FLIP 339]. The specific impleme
 We will update these tutorials, but you may need to refactor your code if the implementation changes.
 
 :::
-## Overview
 
 _Actions_ are a suite of standardized Cadence interfaces that allow developers to compose complex workflows, starting with decentralized finance (DeFi) workflows, by connecting small, reusable components. Actions provide a "LEGO" framework of blocks where each component performs a single operation (deposit, withdraw, swap, price lookup, flash loan) while maintaining composability with other components. This creates sophisticated workflows executable in a single atomic transaction.
 
@@ -52,7 +51,7 @@ By using Flow Actions, developers can remove large amounts of tailored complexit
 
 ## Learning Objectives
 
-After completing this tutorial, you will be able to:
+After you complete this tutorial, you will be able to:
 
 - Understand the key features of Flow Actions including atomic composition, weak guarantees, and event traceability
 - Create and use Sources to provide tokens from various protocols and locations

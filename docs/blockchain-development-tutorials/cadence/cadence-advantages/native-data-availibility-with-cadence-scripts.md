@@ -23,8 +23,6 @@ keywords:
 
 # Native Data Availability With Cadence Scripts
 
-## Overview
-
 In Solidity, you can only retrieve data from **view** functions that the contract author anticipated and included in the original contract. If the exact query you want is not exposed, teams typically rely on a _data availability service_ such as The Graph, Covalent, Alchemy Enhanced APIs, Reservoir, or NFTScan to compute and serve that view.
 
 In Cadence, **scripts** are general-purpose read programs. They can traverse public account storage, read public capabilities, and compose types from multiple contracts to answer new questions without modifying those contracts. You are not limited to the pre-written surface area of a single contract's views.
