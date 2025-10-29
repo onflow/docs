@@ -26,7 +26,7 @@ Below are common questions regarding stablecoins, liquidity, and bridging on Flo
 ## Bridging and Gas
 
 <Details summary="Does Flow use ETH for gas?">
-No, Flow uses $FLOW as the gas token. [WETH](./defi-contracts#stablecoins--wrapped-assets) is supported on Flow EVM when [bridging](../bridges.md) from another chain. $WFLOW is used as an ERC20 in DeFi apps and not used for gas.
+No, Flow uses $FLOW as the gas token. [WETH](./defi-contracts-mainnet#stablecoins--wrapped-assets) is supported on Flow EVM when [bridging](../bridges.md) from another chain. $WFLOW is used as an ERC20 in DeFi apps and not used for gas.
 </Details>
 
 <Details summary="How do I pay for gas when bridging into Flow?">
