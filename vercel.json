@@ -186,7 +186,7 @@
         {
           "type": "header",
           "key": "accept",
-          "value": ".*text/(markdown|plain).*"
+          "value": "text/markdown"
         }
       ]
     },
@@ -208,7 +208,7 @@
         {
           "type": "header",
           "key": "accept",
-          "value": ".*text/(markdown|plain).*"
+          "value": "text/markdown"
         }
       ]
     },
@@ -230,7 +230,7 @@
         {
           "type": "header",
           "key": "accept",
-          "value": ".*text/(markdown|plain).*"
+          "value": "text/markdown"
         }
       ]
     },
@@ -252,7 +252,7 @@
         {
           "type": "header",
           "key": "accept",
-          "value": ".*text/(markdown|plain).*"
+          "value": "text/markdown"
         }
       ]
     },
