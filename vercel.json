@@ -181,7 +181,7 @@
   "rewrites": [
     {
       "source": "/blockchain-development-tutorials/:path*",
-      "destination": "/md/blockchain-development-tutorials/:path*.md",
+      "destination": "/md/break-this-link/:path*.md",
       "has": [
         {
           "type": "header",
