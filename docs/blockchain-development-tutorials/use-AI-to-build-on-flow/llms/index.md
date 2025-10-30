@@ -29,7 +29,7 @@ Discover how to build a Custom GEM using Google's Gemini AI platform that specia
 
 ## [Claude Code for Flow Development]
 
-Master the comprehensive development approach using Claude Code (CC) for Flow blockchain applications. This extensive guide covers the four-stage development methodology (Idea → Visualization → Planning → Build), advanced features like subagents and auto-verification, and systematic deployment strategies. Learn how to configure persistent project context through `CLAUDE.md` files, implement checkpoint-based development workflows, and leverage CC's unlimited context windows for complex Cadence smart contract projects and cross-VM applications.
+Master the comprehensive development approach using Claude Code (Claude) for Flow blockchain applications. This extensive guide covers the four-stage development methodology (Idea → Visualization → Planning → Build), advanced features like subagents and auto-verification, and systematic deployment strategies. Learn how to configure persistent project context through `CLAUDE.md` files, implement checkpoint-based development workflows, and leverage Claude's unlimited context windows for complex Cadence smart contract projects and cross-VM applications.
 
 ---
 

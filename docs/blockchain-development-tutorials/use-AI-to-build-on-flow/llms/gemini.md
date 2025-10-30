@@ -18,8 +18,6 @@ keywords:
 
 # Use Flow Knowledge Base in Gemini AI
 
-## Overview
-
 [Gemini AI] is Google's AI assistant that can help with tasks such as writing, coding, and answering questions. It adapts to context and user input to provide relevant, conversational responses. You can integrate Gemini AI into developer workflows to assist with documentation, debugging, and productivity.
 
 This guide walks you through creating a **Custom GEM** with Gemini AI that can reference the [Flow Data Sources] file to answer questions.
@@ -37,17 +35,17 @@ You'll need a [Gemini Advanced subscription] to use the **Custom GEM** feature.
 
 ---
 
-## Step 2: Create a New Gem
+## Step 2: Create a new Gem
 
 1. In the **Gem Manager** screen, click **"New Gem"**.
 
 ---
 
-## Step 3: Configure Your Gem
+## Step 3: Configure your Gem
 
 Gemini AI will now guide you through setting up your custom Gem. Configure the name, description and instructions for your GEM to follow. 
 
-### Suggested Configuration
+### Suggested configuration
 
 **Name**: FlowGem
 
@@ -81,7 +79,7 @@ You can further customize your personalized agent by providing more files and de
 
 ---
 
-## Step 5: Test Your Gem
+## Step 5: Test your Gem
 
 After you configure the Gem, ask it Flow-related questions to test it:
 
@@ -91,7 +89,7 @@ After you configure the Gem, ask it Flow-related questions to test it:
 
 ---
 
-## Step 6: Save and Deploy
+## Step 6: Save and deploy
 
 When you're satisfied with the performance, click **"Create Gem"** to finalize. 
 

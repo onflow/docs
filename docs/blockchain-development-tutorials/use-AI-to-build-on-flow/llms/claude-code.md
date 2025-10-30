@@ -24,53 +24,51 @@ keywords:
     src="https://www.youtube.com/embed/NTGjrvDt7mQ" 
     title="YouTube video player" 
     frameborder="0" 
-    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+    allow="aClaudeelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
     allowfullscreen
   ></iframe>
 </div>
 
-## Overview
+[Claude Code] (Claude) provides an AI-powered coding assistant specifically designed for iterative, systematic development, which transforms the development experience. Unlike general-purpose AI tools, Claude excels at breaking down tasks into manageable, incremental steps while maintaining context across your entire development lifecycle.
 
-[Claude Code] (CC) provides an AI-powered coding assistant specifically designed for iterative, systematic development, which transforms the development experience. Unlike general-purpose AI tools, CC excels at breaking down tasks into manageable, incremental steps while maintaining context across your entire development lifecycle.
+What makes Claude exceptionally powerful is it can maintain unlimited context windows, which allows it to understand entire codebases without the compression limitations that plague other AI coding tools. This comprehensive understanding allows Claude to deploy multiple subagent instances that work in parallel on complex tasks, iterate continuously until optimal solutions are achieved, and maintain persistent memory of your project's architecture and coding standards across all development sessions.
 
-What makes CC exceptionally powerful is it can maintain unlimited context windows, which allows it to understand entire codebases without the compression limitations that plague other AI coding tools. This comprehensive understanding allows CC to deploy multiple subagent instances that work in parallel on complex tasks, iterate continuously until optimal solutions are achieved, and maintain persistent memory of your project's architecture and coding standards across all development sessions.
-
-## Learning Objectives
+## Learning objectives
 
 After you complete this guide, you'll be able to:
 
-- Set up and configure CC for optimal Flow blockchain development workflows.
+- Set up and configure Claude for optimal Flow blockchain development workflows.
 - Implement the four-stage development methodology (Idea → Visualization → Planning → Build) for Cadence projects.
 - Configure persistent project context with `CLAUDE.md` files with Flow-specific instructions and MCP tools.
 - Apply iterative development practices with git-based checkpoint systems for safe blockchain development.
-- Use advanced CC features including subagents, auto-verification, and specialized debugging workflows.
-- Integrate CC with Flow CLI, FCL, and other Flow development tools for comprehensive project management.
+- Use advanced Claude features including subagents, auto-verification, and specialized debugging workflows.
+- Integrate Claude with Flow CLI, FCL, and other Flow development tools for comprehensive project management.
 - Create and manage team-wide development standards through shared `CLAUDE.md` configurations.
 
 ## Prerequisites
 
 Before you proceed with this guide, you should have:
 
-### Technical Requirements
+### Technical requirements
 
 - [Claude Code Subscription]: $200/month plan recommended for comprehensive Flow development features.
 - [Flow CLI]: Installed and configured for emulator, testnet, and mainnet interactions.
 - [Git]: Version control system for checkpoint-based development workflow.
-- [Node.js]: For CC, FCL integration, and frontend development components.
+- [Node.js]: For Claude, FCL integration, and frontend development components.
 
-## CC Setup and Configuration
+## Claude setup and configuration
 
-### What is CC?
+### What is Claude?
 
-CC is an AI-powered coding assitant that integrated directly into your terminal. This allows you to use it in any integrated development environment (IDE) or simply from your terminal. The power of CC comes from its ability to explain complex and large codebases, manage Git workflows, and iterate for long periods of time to accomplish a task.
+Claude is an AI-powered coding assitant that integrated directly into your terminal. This allows you to use it in any integrated development environment (IDE) or simply from your terminal. The power of Claude comes from its ability to explain complex and large codebases, manage Git workflows, and iterate for long periods of time to aClaudeomplish a task.
 
 Most IDEs like Cursor rely on their ability to compress the context window that is fed to agents so that their business model justifies charging $20 while using expensive LLM models. This naturally decreases the ability of the agents to have a comprehensive understanding of the working codebase when managing with large or complex codebases. 
 
-This is why CC can be so powerful, because it can include entire codebases in its context, deploy other instances of CC to work on multiple actions in parallel, and iterate on its results in order to achieve better results.
+This is why Claude can be so powerful, because it can include entire codebases in its context, deploy other instances of Claude to work on multiple actions in parallel, and iterate on its results in order to achieve better results.
 
-### Installation and Subscription
+### Installation and subscription
 
-CC requires a [subscription] to access its full development capabilities. There are three subscription levels: Pro, Max 5x, and Max 20x.
+Claude requires a [subscription] to access its full development capabilities. There are three subscription levels: Pro, Max 5x, and Max 20x.
 
 The Pro plan is very limited, so expect it to only be sufficient for testing and experimentation.
 
@@ -82,33 +80,33 @@ The $200/month Max 20x plan is recommended for developers with a lot of projects
 - Integration with MCP (Model Context Protocol) servers.
 - Team collaboration features through shared configurations.
 
-You can also use the API pricing, but this isn't recommended since any meaningful implementation of CC most likely requires more than $100 in API credits. 
+You can also use the API pricing, but we don't recommend it, since any meaningful implementation of Claude most likely requires more than $100 in API credits. 
 
-### Initial Configuration
+### Initial configuration
 
-To install CC, run the following command:
+To install Claude, run the following command:
 
 ```bash
 npm install -g @anthropic-ai/claude-code
 ```
 
-After the installation process completes, navigate to your project and start CC:
+After the installation process completes, navigate to your project and start Claude:
 
 ```bash
 cd your-awesome-project
 claude
 ```
 
-This automatically installs the extension. You can run the `/ide` command in the CC terminal to make sure your IDE is connected to CC. With the extension installed, you can click on the orange Anthropic logo on the upper right hand of the screen in order to launch CC in a separate window.  
+This automatically installs the extension. You can run the `/ide` command in the Claude terminal to make sure your IDE is connected to Claude. With the extension installed, you can click on the orange Anthropic logo on the upper right hand of the screen in order to launch Claude in a separate window.  
 
-![Claude Code Extension](./imgs/CC_logo.png)
+![Claude Code Extension](./imgs/Claude_logo.png)
 
 
-### CLAUDE.md Files
+### CLAUDE.md files
 
-`CLAUDE.md` files are configuration files that contain project-specific instructions and context for CC. They allow you to define development standards, frequently used commands, and project architecture that the AI remembers across all coding sessions. They are similar to Cursor Rules, but they differ in that `CLAUDE.md` only specifies the configuration of CC.
+`CLAUDE.md` files are configuration files that contain project-specific instructions and context for Claude. They allow you to define development standards, frequently used commands, and project architecture that the AI remembers across all coding sessions. They are similar to Cursor Rules, but they differ in that `CLAUDE.md` only specifies the configuration of Claude.
 
-If you are now sure of what type of information to place in your `CLAUDE.md` file, create your primary CLAUDE.md file in the project root. Use the `/init` command in CC to generate the initial structure, then customize for Flow development: 
+If you know what type of information to place in your `CLAUDE.md` file, create your primary CLAUDE.md file in the project root. Use the `/init` command in Claude to generate the initial structure, then customize for Flow development: 
 
 Create your Flow project with the standard directory structure:
 
@@ -130,27 +128,27 @@ flow-project/
 └── package.json
 ```
 
-#### 3. Root CLAUDE.md Configuration
+#### 3. Root CLAUDE.md configuration
 
-Placing `CLAUDE.md` in the root file sets the instructions you want CC to do frequently, such as: 
+Place `CLAUDE.md` in the root file sets the instructions you want Claude to do frequently, such as: 
 
 - Bash commands you want to run frequently.
 - Files it should really know about when making changes or big architectural decisions.
 - MCP servers.
 
-This file is great for sharing across your team so you set it once and everyone has the same extended functionality.
+This file is great to share across your team so you set it once and everyone has the same extended functionality.
 
 **Team Configuration Setup**:
 
 ```md
 
-# Flow Project AI Assistant Configuration
+# Flow Project AI assistant configuration
 
-## Project Overview
+## Project overview
 
 This is a Flow blockchain application with Cadence smart contracts and FCL frontend integration.
 
-## Team-wide Development Standards
+## Team-wide development standards
 
 - MCP servers standardized across development environments.
 - Git workflow and commit message standards enforced.
@@ -160,46 +158,46 @@ This is a Flow blockchain application with Cadence smart contracts and FCL front
 - Implement proper resource handling with @ and & syntax
 - Follow MetadataViews standards for NFT projects.
 
-## Frequently Used Commands
+## Frequently used commands
 
 - `flow emulator start` - Start local development environment.
 - `flow project deploy --network emulator` - Deploy contracts locally.
 - `flow transactions send ./cadence/transactions/example.cdc --network emulator` - Execute transactions locally.
 - `npm run dev` - Start frontend development server.
 
-## Key Files to Reference
+## Key files to reference
 
 - `flow.json` - Project configuration and contract deployments.
 - `cadence/contracts/` - Smart contract implementations.
 - `frontend/src/config.js` - FCL configuration and contract addresses.
 
-## MCP Servers
+## MCP servers
 
-- Use flow-mcp for reading blockchain data, managing accounts, checking balances, and interacting with native contracts.
+- Use flow-mcp for reading blockchain data, managing aClaudeounts, checking balances, and interacting with native contracts.
 - Use flow-defi-mcp fro checking token prices, swapping tokens on decentralized exchanges, and interacting with ERC20 tokens.
 
-## Architecture Notes
+## Architecture notes
 
 [Document your specific project architecture, contract relationships, and deployment strategies]
 ```
 
-#### 3. Nested CLAUDE.md Files
+#### 3. Nested CLAUDE.md files
 
-You can maintain a more granular control of the capabilities of CC when working with different ares of your repo by creating specialized instructions for different project areas. To do this, place a nested `CLAUDE.md` file in subdirectories in your repo(cadence, frontend, backend, and so on). CC will automatically read these files when working on these subdirectories. Here is an example:
+You can maintain a more granular control of the capabilities of Claude when working with different areas of your repo by creating specialized instructions for different project areas. To do this, place a nested `CLAUDE.md` file in subdirectories in your repo(cadence, frontend, backend, and so on). Claude will automatically read these files when working on these subdirectories. Here is an example:
 
 **cadence/.claude/CLAUDE.md:**
 
 ```md
-# Cadence Development Instructions
+# Cadence development instructions
 
-## Syntax Requirements
+## Syntax requirements
 
 - Always use proper resource syntax: @{NonFungibleToken.NFT}
 - Implement required interfaces: NonFungibleToken, MetadataViews.
 - Use view functions for read-only operations.
 - Follow auth capability patterns for transactions.
 
-## Testing Protocol
+## Testing protocol
 
 - Write unit tests for all contract functions.
 - Test resource creation and destruction.
@@ -207,7 +205,7 @@ You can maintain a more granular control of the capabilities of CC when working 
 - Validate access controls and permissions.
 - Test for breaking changes and edge cases.
 
-## Standard Patterns
+## Standard patterns
 
 Reference the Flow documentation for:
 
@@ -220,16 +218,16 @@ Reference the Flow documentation for:
 **frontend/.claude/CLAUDE.md:**
 
 ```markdown
-# Frontend FCL Integration Instructions
+# Frontend FCL integration instructions
 
-## Configuration Management
+## Configuration management
 
 - Keep contract addresses in environment variables.
 - Use proper network switching logic.
 - Implement user authentication flows.
 - Handle transaction status updates.
 
-## Best Practices
+## Best practices
 
 - Show loading states for blockchain interactions.
 - Provide clear error messages for failed transactions.
@@ -240,28 +238,28 @@ Reference the Flow documentation for:
 
 You can also create a `CLAUDE.local.md` file that is used just for you and not shared with your team.
 
-## Workflow Strategies
+## Workflow strategies
 
-CC excels when following a structured development approach. We recommend you implement this four-stage methodology:
+Claude excels when following a structured development approach. We recommend you implement this four-stage methodology:
 
-### Stage 1: Idea Development
+### Stage 1: Idea development
 
-**Objective**: Bounce ideas with CC to have a better understanding of what you can build and why it would work.
+**Objective**: Bounce ideas with Claude to have a better understanding of what you can build and why it would work.
 
 **Process**:
 
-1. Click `Shift` + `Tab` to cycle through the different response forms that CC offers until you reach the Plan Mode.
+1. Click `Shift` + `Tab` to cycle through the different response forms that Claude offers until you reach the Plan Mode.
 
 ![Plan Mode](./imgs/plan_mode.png)
 
-2. Describe your Flow project concept to CC.
+2. Describe your Flow project concept to Claude.
 3. Ask for requirement analysis and technical feasibility assessment.
 
-**Example Conversation**:
+**Example conversation**:
 ```
 User: "I want to create a collectible card game on Flow where players can battle and evolve their cards"
 
-CC Response: [Analyzes requirements, suggests NFT architecture, identifies game mechanics, proposes contract structure]
+Claude Response: [Analyzes requirements, suggests NFT architecture, identifies game mechanics, proposes contract structure]
 ```
 
 **Outputs**:
@@ -270,48 +268,48 @@ CC Response: [Analyzes requirements, suggests NFT architecture, identifies game 
 - Flow-specific implementation considerations.
 - Resource and timeline estimates.
 
-### Stage 2: Visualization
+### Stage 2: visualization
 
-**Objective**: Create visual representations and demos to validate project concepts before development. You can use CC during this process, but it is best to combine LLM models like Gemini 2.5 in order to create the visual representations. 
+**Objective**: Create visual representations and demos to validate project concepts before development. You can use Claude during this process, but it is best to combine LLM models like Gemini 2.5 in order to create the visual representations. 
 
-**Tools and Techniques**:
+**Tools and techniques**:
 
 - **Mermaid Diagrams**: Generate contract relationship diagrams, user flow charts, and system architecture visuals.
 - **UI Mockups**: Create interface mockups for frontend applications.
 - **Contract Schemas**: Visualize data structures and resource relationships.
 - **Transaction Flow Maps**: Diagram user interactions and blockchain state changes.
 
-**Example Workflow**:
+**Example workflow**:
 ```
 User: "Create a diagram showing how card evolution works in my game"
 
-[CC generates Mermaid diagram showing contract interactions, resource transformations, and event emissions]
+[Claude generates Mermaid diagram showing contract interactions, resource transformations, and event emissions]
 ```
 
-**Claude Code Commands**:
+**Claude code commands**:
 
 - Use image upload to share visual concepts.
 - Request Mermaid diagrams for complex systems.
 - Ask for UI mockups based on Flow wallet integration patterns.
 
-### Stage 3: Planning with Claude Code
+### Stage 3: Planning with Claude code
 
-**Objective**: Break down the project into manageable, incremental development tasks using CC's planning capabilities.
+**Objective**: Break down the project into manageable, incremental development tasks using Claude's planning capabilities.
 
-**Planning Process**:
+**Planning process**:
 
-1. **Enable Planning Mode**: Explicitly tell CC you're in planning phase or cycle through the different modes (with `Shift` + `Tab`) until you reach Plan Mode
-2. **Confirm Knowledge Comprehension**: Ask CC to read important files first and then confirm the knowledge with you. Immediately ask it questions about the codebase to verify its knowledge
-3. **Plan Generation**: Tell CC to generate an action plan that is incremental and has specific goals and checkpoints (this file can be called `T0-DO.md` and placed in a `/tasks` folder that contains relevant information about the completion of specific tasks or steps).
+1. **Enable Planning Mode**: Explicitly tell Claude you're in planning phase or cycle through the different modes (with `Shift` + `Tab`) until you reach Plan Mode
+2. **Confirm Knowledge Comprehension**: Ask Claude to read important files first and then confirm the knowledge with you. Immediately ask it questions about the codebase to verify its knowledge
+3. **Plan Generation**: Tell Claude to generate an action plan that is incremental and has specific goals and checkpoints (this file can be called `T0-DO.md` and placed in a `/tasks` folder that contains relevant information about the completion of specific tasks or steps).
 4. **Task Breakdown**: Request comprehensive task decomposition for incremental changes.
 5. **Dependency Mapping**: Identify task dependencies and critical path.
 6. **Checkpoint Strategy**: Define git commit points and testing milestones.
 
-**Example Planning Session**:
+**Example planning session**:
 ```
 User: "Set up a roadmap and plan of the to-do's that need to be completed for my card game NFT contracts"
 
-CC Response:
+Claude Response:
 Task 1: Set up basic NFT contract structure
 - Implement NonFungibleToken interface
 - Add MetadataViews compatibility
@@ -329,111 +327,111 @@ Task 2: Add game mechanics
 [Continues with detailed breakdown]
 ```
 
-**Planning Outputs**:
+**Planning outputs**:
 
 - Generate a detailed to-do list that is thoroughly divided between goals, objectives, checkpoints and tasks that need to be achieved in an incremental manner.
 - Dependency graph showing task relationships.
 - Testing strategy for each development phase.
 - Deployment sequence and validation protocols.
 
-A downside of using CC is that it doesn't have a checkpoint control like the agent chat does in Cursor. So making frequent git commits and working on separate branches can help you mitigate this. Never attempt to give CC a big task as it most likely doesn't have enough knowledge about the task at hand to complete it successfully.
+A downside of using Claude is that it doesn't have a checkpoint control like the agent chat does in Cursor. So making frequent git commits and working on separate branches can help you mitigate this. Never attempt to give Claude a big task as it most likely doesn't have enough knowledge about the task at hand to complete it suClaudeessfully.
 
-### Stage 4: Build Execution
+### Stage 4: build execution
 
-**Objective**: Implement planned tasks systematically using CC's development capabilities.
+**Objective**: Implement planned tasks systematically using Claude's development capabilities.
 
-**Build Process**:
+**Build process**:
 
 1. **Task Assignment**: Work on one incremental task at a time.
-2. **Implementation**: Use CC to generate code, debug issues, and optimize solutions. 
-3. **Reporting**: After completing a task, CC generates a report of what it did and why it did it in a `.md` file in the `/tasks` folder so that you can have a better understanding of the changes made.
+2. **Implementation**: Use Claude to generate code, debug issues, and optimize solutions. 
+3. **Reporting**: After completing a task, Claude generates a report of what it did and why it did it in a `.md` file in the `/tasks` folder so that you can have a better understanding of the changes made.
 3. **Validation**: Test each component thoroughly before you proceed.
 4. **Documentation**: Generate inline documentation and update project docs.
 5. **Checkpoint**: Commit working code with descriptive messages.
-6. **Updating**: Ask CC to update the `TO-DO.md` with the completed steps and changes after the commit is approved. 
+6. **Updating**: Ask Claude to update the `TO-DO.md` with the completed steps and changes after the commit is approved. 
 
-**Development Workflow**:
+**Development workflow**:
 ```
 User: "Implement Task 1: Basic NFT contract structure"
 
-[CC generates contract code, deployment scripts, and tests]
+[Claude generates contract code, deployment scripts, and tests]
 
 User: "Test this implementation"
 
-[CC provides testing commands and validation scripts]
+[Claude provides testing commands and validation scripts]
 
 User: "Commit this checkpoint"
 
-[CC suggests commit message and validates completion]
+[Claude suggests commit message and validates completion]
 ```
 
-## Advanced Claude Code Features
+## Advanced Claude features
 
-### Subagent Utilization
+### Subagent utilization
 
-For complex Flow projects, leverage CC's subagent capabilities to handle parallel development tasks:
+For complex Flow projects, leverage Claude's subagent capabilities to handle parallel development tasks:
 
-**When to Use Subagents**:
+**When to use subagents**:
 
 - Developing multiple contracts simultaneously.
 - Frontend and backend development in parallel.
 - Testing different implementation approaches.
 - Documentation generation while coding.
-- Dealing with a big task so that CC can deploy subagents to break down the task into smaller components that are running in parallel.
+- Dealing with a big task so that Claude can deploy subagents to break down the task into smaller components that are running in parallel.
 
-**Example Subagent Usage**:
+**Example subagent usage**:
 ```
 User: "Create subagents to develop the NFT contract and the marketplace contract in parallel"
 
-[CC spawns separate conversation threads for each contract, maintaining coordination between them]
+[Claude spawns separate conversation threads for each contract, maintaining coordination between them]
 ```
 
-### Auto-Verification and Iteration
+### Auto-verification and iteration
 
-Configure CC to automatically verify its work and iterate for improvements:
+Configure Claude to automatically verify its work and iterate for improvements:
 
-**Verification Patterns**:
+**Verification patterns**:
 
 - **Compilation Checks**: Automatically test Cadence syntax after code generation.
 - **Test Execution**: Run unit tests and integration tests after implementation.
 - **Deployment Validation**: Verify contract deployment on emulator before suggesting testnet deployment.
 
-### Memory and Context Management
+### Memory and context management
 
-**Using the # Memory Mode**:
-Press `#` to enter memory mode and specify important information for CC to remember:
+**Using the # memory mode**:
+Press `#` to enter memory mode and specify important information for Claude to remember:
 
 ```
 # Remember that this project uses a modular NFT architecture with separate traits contracts.
 # Remember that we need to use a DS Proxy system for upgrading contracts.
 ```
 
-**Context Optimization**:
+**Context optimization**:
 
 - Use `Ctrl+R` for verbose output when debugging complex issues.
 - Compact conversations at natural breakpoints (around 20% context usage).
-- Constantly refactor `CLAUDE.md` to take into account changes made throughout the development process.
+- Constantly refactor `CLAUDE.md` to take into aClaudeount changes made throughout the development process.
 - Maintain focused conversations for specific development tasks.
 
-## Development Workflows and Best Practices
+## Development workflows and best practices
 
-Give CC some sort of tool it can use for feedback (MCP or tool) to check its work and it will iterate by itself to get better results. CC has the ability to iterate for hours if needed, but it needs to be able to analyze its work. These alternative workflows can be very useful as well, depending on your ability to close the feedback loop so that CC can analyze and comprehend the results of its code generation:
+Give Claude some sort of tool it can use for feedback (MCP or tool) to check its work and it will iterate by itself to get better results. Claude has the ability to iterate for hours if needed, but it needs to be able to analyze its work. These alternative workflows can be very useful as well, depending on your ability to close the feedback loop so that Claude can analyze and comprehend the results of its code generation:
 
-### Test-Driven Development with Claude Code
+### Test-driven development with Claude
 
 **Workflow**: Write Tests → Commit → Code → Iterate → Commit
 
 ```
 User: "Write tests for card evolution functionality first"
 
-[CC generates comprehensive test suite]
+[Claude generates comprehensive test suite]
 
 User: "Now implement the evolution logic to pass these tests"
 
-[CC implements feature with test-driven approach]
+[Claude implements feature with test-driven approach]
 ```
 
-### Screenshot-Driven Development
+### Screenshot-driven development
 
 **Workflow**: Write Code → Screenshot Result → Iterate
 
@@ -442,23 +440,23 @@ Particularly useful for frontend development:
 ```
 User: "Implement this card display component"
 
-[CC generates React component]
+[Claude generates React component]
 
 User: [Uploads screenshot of result]
 
-CC: "I see the card layout needs improvement. Let me adjust the CSS..."
+Claude: "I see the card layout needs improvement. Let me adjust the CSS..."
 ```
 
-### Checkpoint-Based Development
+### Checkpoint-based development
 
-**Best Practices**:
+**Best practices**:
 
 - Commit after each completed task
-- Use descriptive commit messages that CC generates.
+- Use descriptive commit messages that Claude generates.
 - Create branches for experimental features.
 - Tag stable releases for easy rollback.
 
-**Example Checkpoint Strategy**:
+**Example checkpoint strategy**:
 
 ```
 git commit -m "feat: implement basic NFT contract with MetadataViews
@@ -472,29 +470,29 @@ git commit -m "feat: implement basic NFT contract with MetadataViews
 Checkpoint: Basic NFT functionality complete"
 ```
 
-### Error Resolution and Debugging
+### Error resolution and debugging
 
-**Systematic Debugging Approach**:
+**Systematic debugging approach**:
 
-1. **Error Analysis**: Provide CC with complete error messages and context.
-2. **Root Cause Investigation**: Let CC analyze potential causes.
+1. **Error Analysis**: Provide Claude with complete error messages and context.
+2. **Root Cause Investigation**: Let Claude analyze potential causes.
 3. **Solution Implementation**: Apply suggested fixes incrementally.
 4. **Verification**: Test fixes thoroughly before proceeding.
 5. **Documentation**: Update project documentation with lessons learned.
 
-**Example Debugging Session**:
+**Example debugging session**:
 
 ```
 User: "Getting authorization error in my transaction"
 
-CC: "Let me analyze the auth capability requirements. I see the issue is with the granular auth pattern. Here's the fix..."
+Claude: "Let me analyze the auth capability requirements. I see the issue is with the granular auth pattern. Here's the fix..."
 
 [Provides corrected transaction with proper auth syntax]
 ```
 
-### Multi-Network Deployment
+### Multi-network deployment
 
-**Deployment Workflow with Claude Code**:
+**Deployment workflow with Claude**:
 
 1. **Emulator Testing**: Comprehensive local testing and validation.
 2. **Configuration Update**: Update flow.json and FCL config for testnet.
@@ -503,11 +501,11 @@ CC: "Let me analyze the auth capability requirements. I see the issue is with th
 5. **Mainnet Preparation**: Final validation and deployment to mainnet.
 
 
-### MCP Server Sharing
+### MCP server sharing
 
-You can set up [MCPs] for CC to use as tools. These can also be set up in the `CLAUDE.md` file so that every team member consistently uses the same MCPs. Share the `/Claude/mcp.json` files so that the team can use the same MCP servers.
+You can set up [MCPs] for Claude to use as tools. These can also be set up in the `CLAUDE.md` file so that every team member consistently uses the same MCPs. Share the `/Claude/mcp.json` files so that the team can use the same MCP servers.
 
-**Team MCP Configuration**:
+**Team MCP configuration**:
 
 To grant Claude Code [access to use an MCP server], run the following commands:  
 
@@ -526,31 +524,31 @@ claude mcp add flow_mcp
 claude mcp add flow-defi-mcp
 ```
 
-### Version Control for AI Configuration
+### Version control for AI configuration
 
-**Best Practices**:
+**Best practices**:
 
 - Include `CLAUDE.md` files in version control.
 - Document MCP server configurations in README.
 - Share `CLAUDE.local.md` patterns (without committing personal configs).
 - Maintain team coding standards through shared AI instructions.
 
-## Key Bindings and Shortcuts
+## Key bindings and shortcuts
 
-### Essential Claude Code Shortcuts
+### Essential Claude shortcuts
 
 | Shortcut    | Function          | Flow Development Usage |
 |-------------|-------------------|------------------------|
 | `#`         | Memory mode       | Store project architecture decisions |
-| `Shift+Tab` | Auto-accept edits | Quickly accept generated Cadence code |
+| `Shift+Tab` | Auto-aClaudeept edits | Quickly aClaudeept generated Cadence code |
 | `!`         | Bash mode         | Execute Flow CLI commands directly |
 | `@`         | Add file/folder   | Reference contracts, transactions, configs |
 | `Esc`       | Cancel operation  | Stop incorrect generation/execution |
 | `Ctrl+R`    | Verbose output    | Detailed debugging for complex issues |
 
-### Flow-Specific Usage Patterns
+### Flow-specific usage patterns
 
-**Memory Mode Examples**:
+**Memory mode examples**:
 
 ```
 # This project follows the composite NFT pattern with separate trait contracts.
@@ -558,59 +556,59 @@ claude mcp add flow-defi-mcp
 # All contracts must support MetadataViews for marketplace compatibility.
 ```
 
-**File Reference Patterns**:
+**File reference patterns**:
 
 ```
 @flow.json - Project configuration
 @cadence/contracts/MyNFT.cdc - Main NFT contract
 ```
 
-## Troubleshooting and Optimization
+## Troubleshooting and optimization
 
-### Common Issues and Solutions
+### Common issues and solutions
 
-**Context Window Management**:
+**Context window management**:
 
 - Compact conversations at natural breakpoints or manually at around 20% of context usage remaining.
 - Use focused sub-conversations for specific tasks.
 - Reference key files rather than copying entire contents.
 
-**Performance Optimization**:
+**Performance optimization**:
 
 - Use the $200/month plan for complex Flow projects.
 - Turn on auto-compact to prevent context overflow.
 - Break large tasks into smaller, focused conversations.
 - Hit `Esc` often if you see the agent is going on the wrong path and ask it to undo its recent action.
 
-**Integration Problems**:
+**Integration problems**:
 
 - Verify MCP server configurations.
 - Check Flow CLI integration and permissions.
 - Validate `CLAUDE.md` file syntax and structure.
 
-### Best Practices for Flow Development
+### Best practices for Flow development
 
-**Project Management**:
+**Project management**:
 
 - Maintain clear separation between contracts, transactions, and frontend code.
 - Use nested `CLAUDE.md` files for different development areas.
 - Keep project documentation synchronized with implementation.
 
-**Code Quality**:
+**Code quality**:
 
 - Always compile Cadence code before deployment.
-- Use CC for security review suggestions.
+- Use Claude for security review suggestions.
 - Implement comprehensive testing at each development stage.
 
-**Deployment Management**:
+**Deployment management**:
 
 - Test thoroughly on emulator before testnet deployment.
 - Validate FCL configuration changes across networks.
-- Use systematic deployment checklists that CC generates.
+- Use systematic deployment checklists that Claude generates.
 
 ## Conclusion
 
-In this guide, you explored how to leverage CC for efficient Flow blockchain and Cadence development. You learned to implement a systematic four-stage development methodology that transforms ideas into production-ready applications through AI-assisted visualization, planning, and execution.
+In this guide, you explored how to leverage Claude for efficient Flow blockchain and Cadence development. You learned to implement a systematic four-stage development methodology that transforms ideas into production-ready applications through AI-assisted visualization, planning, and execution.
 
 You discovered how to configure persistent project context through `CLAUDE.md` files, allowing your AI assistant to maintain comprehensive understanding of Flow-specific patterns, project architecture, and team standards across all development sessions. The integration of specialized tools like Flow CLI, FCL configuration management, and MCP servers creates a comprehensive development environment optimized for blockchain application building.
 
@@ -618,12 +616,12 @@ The systematic approaches covered - from test-driven development and checkpoint-
 
 Now that you have completed this guide, you should be able to:
 
-- Set up and configure CC for optimal Flow blockchain development workflows with persistent context and specialized tooling.
+- Set up and configure Claude for optimal Flow blockchain development workflows with persistent context and specialized tooling.
 - Implement the four-stage development methodology (Idea → Visualization → Planning → Build) for systematic Cadence project development.
-- Apply advanced CC features including subagents, auto-verification, and team collaboration patterns for complex Flow applications.
-- Integrate CC seamlessly with Flow CLI, FCL, and other Flow development tools for comprehensive project management across emulator, testnet, and mainnet environments.
+- Apply advanced Claude features including subagents, auto-verification, and team collaboration patterns for complex Flow applications.
+- Integrate Claude seamlessly with Flow CLI, FCL, and other Flow development tools for comprehensive project management across emulator, testnet, and mainnet environments.
 
-The combination of AI-powered development assistance with Flow's comprehensive toolchain creates an unprecedented opportunity for building sophisticated blockchain applications efficiently and reliably. As you continue developing on Flow, these systematic approaches will help you maintain high code quality while accelerating your development velocity.
+The combination of AI-powered development assistance with Flow's comprehensive toolchain creates an unprecedented opportunity for building sophisticated blockchain applications efficiently and reliably. As you continue developing on Flow, these systematic approaches will help you maintain high code quality while aClaudeelerating your development velocity.
 
 
 <!-- Relative links, will not render on page -->
