@@ -184,6 +184,8 @@ Flow will continue to provide quality walkthroughs and tutorials to provide deve
 [Forte Overview]: ./forte/index.md
 [Flow Actions]: ./forte/flow-actions/index.md
 [Scheduled Transactions]: ./forte/scheduled-transactions/index.md
+[Introduction to Flow Actions]: ./forte/flow-actions/intro-to-flow-actions.md
+[Flow Actions Transactions]: ./forte/flow-actions/flow-actions-transaction.md
 [Connectors]: ./forte/flow-actions/connectors.md
 [Basic Combinations]: ./forte/flow-actions/basic-combinations.md
 [Scheduled Transactions Introduction]: ./forte/scheduled-transactions/scheduled-transactions-introduction.md
