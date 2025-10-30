@@ -145,7 +145,7 @@ Your `flow.json` should now have the mainnet and testnet networks configured fro
 
 ## Test Reading Live State
 
-Generate a script to read FlowToken supply:
+Generate a script to read `FlowToken` supply:
 
 ```zsh
 flow generate script GetFlowTokenSupply
