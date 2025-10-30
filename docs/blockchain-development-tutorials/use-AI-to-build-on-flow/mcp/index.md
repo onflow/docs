@@ -14,8 +14,6 @@ keywords:
 
 # Flow MCP (Model Context Protocol)
 
-## Overview
-
 The Model Context Protocol (MCP) is an open standard that allows AI applications to interact seamlessly with external tools, systems, and data sources. Flow MCP extends this protocol to provide AI tools with direct access to Flow blockchain data, smart contracts, and onchain operations. This integration allows developers to enhance their AI-powered development workflows with real-time blockchain information and automated Flow interactions.
 
 Flow MCP transforms how developers work with the Flow blockchain by bringing blockchain capabilities directly into AI-powered code editors and development tools, which eliminates the need to switch between different interfaces and allows more efficient, context-aware development experiences.

@@ -26,8 +26,6 @@ keywords:
   ></iframe>
 </div>
 
-## Overview
-
 Adding Flow MCP to Cursor gives you powerful AI-driven tools directly inside your code editor. It allows Cursor's AI to understand, query, and interact with Flow blockchain data and smart contracts through a standard protocol called the Model Context Protocol (MCP).
 
 Specifically, it lets you:
@@ -40,7 +38,7 @@ Specifically, it lets you:
 
 This tutorial will guide you through setting up and using Flow MCP in [Cursor] to enhance your Flow blockchain development experience with AI assistance.
 
-## Learning Objectives
+## Learning objectives
 
 After you complete this tutorial, you should be able to:
 
@@ -90,15 +88,15 @@ After you complete this tutorial, you should be able to:
 
 ## How to use Flow MCP in Cursor
 
-### Checking Flow Balance
+### Check Flow balance
 
 ![Sample Image 1](./imgs/sample-1.png)
 
-### Viewing Account Information
+### View account information
 
 ![Sample Image 2](./imgs/sample-2.png)
 
-### Getting Contract Source Code
+### Get contract source code
 
 ![Sample Image 3](./imgs/sample-3.png)
 
