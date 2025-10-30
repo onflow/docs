@@ -17,7 +17,7 @@ keywords:
   - Production deployment
 ---
 
-# Getting Started with Cadence
+# Getting started with Cadence
 
 The Cadence is designed for the next generation of apps, games, and digital assets. This comprehensive tutorial series will guide you from setting up your development environment to deploying production-ready applications on Flow's mainnet while a complete Counter application that demonstrates all essential Flow development patterns.
 
@@ -33,7 +33,7 @@ The Cadence is designed for the next generation of apps, games, and digital asse
   ></iframe>
 </div>
 
-## What You'll Learn
+## What you'll learn
 
 In this tutorial series, you'll discover how to:
 
@@ -45,7 +45,7 @@ In this tutorial series, you'll discover how to:
 - Deploy applications to testnet and mainnet with production best practices.
 - Implement monitoring, security, and maintenance for live blockchain applications.
 
-## What You'll Build
+## What you'll build
 
 Throughout these tutorials, you'll build a complete **Counter Application** that demonstrates the core aspects of Flow development:
 
@@ -56,31 +56,31 @@ Throughout these tutorials, you'll build a complete **Counter Application** that
 
 By the end, you'll have a fully functional blockchain application and the skills to build your own Flow projects.
 
-## Environment Setup
+## Environment setup
 
 Learn how to set up your Flow development environment and deploy your first smart contract. This foundational tutorial covers CLI installation, project creation, contract deployment, and basic blockchain interaction patterns using the local Flow emulator.
 
 Tutorial: [Cadence Environment Setup]
 
-## Smart Contract Interaction
+## Smart contract interaction
 
 Gain advanced Flow development skills including dependency management, sophisticated transaction patterns, and comprehensive testing strategies. Learn to integrate external contracts, handle complex state changes, and implement test-driven development workflows.
 
 Tutorial: [Smart Contract Interaction]
 
-## Building a Frontend App
+## Building a frontend app
 
 Create a `Next.js` frontend application that interacts with your Flow smart contracts using `@onflow/react-sdk`. Implement wallet authentication, real-time data queries, transaction submission, and status monitoring for a complete user experience.
 
 Tutorial: [Building a Frontend App]
 
-## Production Deployment
+## Production deployment
 
 To take your application live, deploy to Flow's testnet and mainnet networks. Learn security best practices, production configuration, monitoring strategies, and maintenance practices you can use to manage live blockchain applications.
 
 Tutorial: [Production Deployment]
 
-## Next Steps
+## Next steps
 
 After you complete these tutorials, you'll have the fundamental skills needed for Flow development. Consider exploring our other tutorial series to expand your blockchain development expertise:
 

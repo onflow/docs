@@ -17,13 +17,13 @@ keywords:
   - VSCode extension
 ---
 
-# Cadence Environment Setup
+# Cadence environment eetup
 
 This comprehensive tutorial will guide you through how to set up your complete development environment, deploy your first smart contract, and learn the fundamentals of Flow development. You'll work hands-on with the Flow CLI, local emulator, and a real smart contract to build practical skills from day one.
 
 Flow is a blockchain built for the next generation of apps, games, and digital assets. With its unique multi-role architecture and resource-oriented programming language Cadence, Flow allows developers to create secure, composable, and scalable applications. This tutorial focuses on getting you productive with Flow's developer tools as quickly as possible.
 
-## What You'll Learn
+## What you'll learn
 
 After you complete this tutorial, you'll be able to:
 
@@ -34,7 +34,7 @@ After you complete this tutorial, you'll be able to:
 - **Understand Flow's account model** and how contracts are deployed to account storage.
 - **Navigate the Flow ecosystem** and know where to find help and resources.
 
-## What You'll Build
+## What you'll build
 
 You'll work with a `Counter` contract, a simple but comprehensive example that demonstrates core Flow development patterns. This contract maintains a count value and provides functions to increment, decrement, and read the current count. By the end of this tutorial, you'll have:
 
@@ -74,7 +74,7 @@ flow version
 
 You will see output showing your Flow CLI version.
 
-### Install VSCode Extension
+### Install VSCode extension
 
 Install the [Flow Cadence VSCode Extension] from the marketplace. This extension provides:
 
@@ -83,7 +83,7 @@ Install the [Flow Cadence VSCode Extension] from the marketplace. This extension
 - Error checking and diagnostics.
 - Integrated development tools.
 
-## Create Your First Project
+## Create your first project
 
 Navigate to your desired development directory and create a new Flow project:
 
@@ -118,7 +118,7 @@ For additional details on how `flow.json` is configured, review the [configurati
 
 :::
 
-### Start the Flow Emulator
+### Start the Flow emulator
 
 The emulator is a local version of the Flow blockchain that you can use to test your contracts and scripts. It's a great way to develop and test your contracts locally - before you try them on the `testnet` or `mainnet`.
 
@@ -135,11 +135,11 @@ Keep this terminal running. The emulator provides:
 - No real-world costs.
 - Complete Flow feature set.
 
-## Your First Contract
+## Your first contract
 
 Now let's examine, deploy, and interact with the Counter contract that was created in your project.
 
-### Examine the Counter Contract
+### Examine the Counter contract
 
 Open `cadence/contracts/Counter.cdc` in your editor. Let's break down this contract:
 
@@ -177,7 +177,7 @@ access(all) contract Counter {
 }
 ```
 
-**Key Components:**
+**Key components:**
 
 - **Contract Declaration**: `access(all) contract Counter` creates a public contract named Counter.
 - **State Variable**: `access(all) var count: Int` stores the counter value, accessible to everyone.
@@ -188,7 +188,7 @@ access(all) contract Counter {
   - `decrement()`: Decreases count by 1 and emits an event
   - `getCount()`: Returns the current count (read-only, marked with `view`)
 
-### Create and Configure Deployment Account
+### Create and configure deployment account
 
 When you create a project, you'll see that a `Counter` contract was added to your [`flow.json` configuration file](../../../build/tools/flow-cli/flow.json/configuration.md), but it's not set up for deployment yet. We could deploy it to the automatically created `emulator-account`, but for this example, lets also create a new account on the emulator to deploy it to.
 
@@ -242,7 +242,7 @@ This shows which networks your configured accounts are accessible on:
 
 This is a great tool to visualize your different accounts and balances when you are developing.
 
-### Configure Contract Deployment
+### Configure contract deployment
 
 To deploy the `Counter` contract to the emulator, you'll need to add it to your project configuration. To do this, run:
 
@@ -259,7 +259,7 @@ Follow the prompts:
 
 This configures your `flow.json` to deploy the Counter contract to your test account on the emulator.
 
-### Deploy the Contract
+### Deploy the contract
 
 To deploy the `Counter` contract to the emulator, run:
 
@@ -279,7 +279,7 @@ Counter -> 0x179b6b1cb6755e31 (a98c155fe7afc8eb2af5551748759b08a80a0ae85d1b09f92
 
 That's it! You've just deployed your first contract to the Flow Emulator.
 
-### Verify Deployment with a Script
+### Verify deployment with a script
 
 Scripts are used to read data from the Flow blockchain. There is no state modification. Let's verify the deployment by reading the counter value. Run the included script:
 
@@ -315,9 +315,9 @@ To learn more about writing scripts, check out the docs for [basic scripts].
 
 :::
 
-### Executing Transactions
+### Execute transactions
 
-Now let's increment the counter using a transaction:
+Now let's increment the counter with a transaction:
 
 ```zsh
 flow transactions send cadence/transactions/IncrementCounter.cdc
@@ -391,24 +391,24 @@ To learn more about writing transactions, read the docs for [basic transactions]
 
 You've successfully established a solid foundation for building on Flow. Let's recap what you've accomplished and learned. Through this hands-on tutorial, you've successfully built a complete Flow development foundation:
 
-✅ **Complete Flow Development Environment**
+✅ **Complete Flow development environment**
 
 - Flow CLI installed and configured for project management.
 - Local Flow emulator running and ready for development.
 - Project creation and management workflow with `flow init`.
 
-✅ **Smart Contract Deployment Skills**
+✅ **Smart contract deployment skills**
 
 - Counter contract successfully deployed to your local emulator.
 - Account creation and contract deployment configuration mastered.
 
-✅ **Blockchain Interactions**
+✅ **Blockchain interactions**
 
 - Scripts to query contract state (reading blockchain data).
 - Transactions to modify contract state (writing to blockchain).
 - Real-time interaction with blockchain data through CLI commands.
 
-### Resources for Continued Learning
+### Resources for continued learning
 
 As you continue your Flow development journey:
 
