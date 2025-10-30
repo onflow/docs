@@ -56,8 +56,6 @@ You'll create a complete fork testing setup that demonstrates:
 - Executing transactions using impersonated mainnet accounts
 - A reusable pattern for integration testing your Flow applications
 
-**Time Commitment:** Approximately 30 minutes
-
 ### Reproducibility first
 
 Pin a specific block height when you need reproducible results:
@@ -179,9 +177,9 @@ access(all) fun testFlowTokenSupplyIsPositive() {
         Test.readFile("../scripts/GetFlowTokenSupply.cdc"),
         []
     )
-    
+
     Test.expect(scriptResult, Test.beSucceeded())
-    
+
     let supply = scriptResult.returnValue! as! UFix64
     Test.assert(supply > 0.0, message: "FlowToken supply should be positive")
 }
@@ -246,17 +244,17 @@ This creates `cadence/contracts/TokenChecker.cdc` and adds it to `flow.json`. No
 import "FlowToken"
 
 access(all) contract TokenChecker {
-    
+
     access(all) fun checkBalance(address: Address): UFix64 {
         let account = getAccount(address)
-        
+
         let vaultRef = account.capabilities
             .borrow<&FlowToken.Vault>(/public/flowTokenBalance)
             ?? panic("Could not borrow FlowToken Vault reference")
-        
+
         return vaultRef.balance
     }
-    
+
     access(all) fun hasMinimumBalance(address: Address, minimum: UFix64): Bool {
         return self.checkBalance(address: address) >= minimum
     }
@@ -348,9 +346,9 @@ access(all) fun testCheckBalanceOnRealAccount() {
         Test.readFile("../scripts/CheckBalance.cdc"),
         [Address(0x1654653399040a61)]  // Flow service account on mainnet
     )
-    
+
     Test.expect(scriptResult, Test.beSucceeded())
-    
+
     let balance = scriptResult.returnValue! as! UFix64
     // The Flow service account should have a balance
     Test.assert(balance > 0.0, message: "Service account should have FLOW tokens")
@@ -361,9 +359,9 @@ access(all) fun testHasMinimumBalance() {
         Test.readFile("../scripts/HasMinimumBalance.cdc"),
         [Address(0x1654653399040a61), 1.0]
     )
-    
+
     Test.expect(scriptResult, Test.beSucceeded())
-    
+
     let hasMinimum = scriptResult.returnValue! as! Bool
     Test.assert(hasMinimum == true, message: "Service account should have at least 1 FLOW")
 }
@@ -444,7 +442,7 @@ access(all) fun testTransactionAsMainnetAccount() {
     // Impersonate the Flow service account (or any mainnet account)
     // No private keys needed - fork testing has built-in impersonation
     let serviceAccount = Test.getAccount(0x1654653399040a61)
-    
+
     // Check initial balance
     let initialBalanceScript = Test.executeScript(
         Test.readFile("../scripts/CheckBalance.cdc"),
@@ -452,10 +450,10 @@ access(all) fun testTransactionAsMainnetAccount() {
     )
     Test.expect(initialBalanceScript, Test.beSucceeded())
     let initialBalance = initialBalanceScript.returnValue! as! UFix64
-    
+
     // Create a test recipient account and set up FlowToken vault
     let recipient = Test.createAccount()
-    
+
     // Set up the recipient's FlowToken vault
     let setupResult = Test.executeTransaction(
         Test.Transaction(
@@ -466,7 +464,7 @@ access(all) fun testTransactionAsMainnetAccount() {
         )
     )
     Test.expect(setupResult, Test.beSucceeded())
-    
+
     // Execute transaction AS the mainnet service account
     // This works because fork testing allows impersonating any account
     let txResult = Test.executeTransaction(
@@ -477,9 +475,9 @@ access(all) fun testTransactionAsMainnetAccount() {
             arguments: [10.0, recipient.address]
         )
     )
-    
+
     Test.expect(txResult, Test.beSucceeded())
-    
+
     // Verify the sender's balance decreased
     let newBalanceScript = Test.executeScript(
         Test.readFile("../scripts/CheckBalance.cdc"),
@@ -487,10 +485,10 @@ access(all) fun testTransactionAsMainnetAccount() {
     )
     Test.expect(newBalanceScript, Test.beSucceeded())
     let newBalance = newBalanceScript.returnValue! as! UFix64
-    
+
     // Balance should have decreased by exactly the transfer amount
     Test.assertEqual(initialBalance - 10.0, newBalance)
-    
+
     // Verify the recipient received the tokens
     let recipientBalanceScript = Test.executeScript(
         Test.readFile("../scripts/CheckBalance.cdc"),
@@ -614,5 +612,3 @@ Fork testing bridges the gap between local unit tests and testnet deployments, e
 [Flow Networks]: ../../../protocol/flow-networks/index.md
 [Testing Strategy on Flow]: ../../../build/cadence/smart-contracts/testing-strategy.md
 [Flow Emulator]: ../../../build/tools/emulator/index.md
-
-
