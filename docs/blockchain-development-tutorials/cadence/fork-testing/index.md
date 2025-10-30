@@ -230,7 +230,7 @@ This will output the new account address. Use this address as the mainnet alias 
 This creates a local account with a mainnet-format address for fork testing. When you're ready to deploy to actual mainnet, you'll use this same account—see the [Deploying Contracts guide](pathname:///build/cadence/smart-contracts/deploying) for details.
 :::
 
-### Create a Contract that Uses FlowToken
+### Create a Contract that Uses `FlowToken`
 
 Generate a new contract:
 
