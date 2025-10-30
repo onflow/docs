@@ -50,6 +50,12 @@ Discover how to build native mobile applications that leverage Flow's blockchain
 - **[React Native Integration]** - Create cross-platform mobile apps with React Native and Flow
 - **[Walletless Mobile Apps]** - Implement progressive web apps with walletless onboarding
 
+## Testing
+
+Learn how to test Cadence smart contracts with a focus on fork testing, which allows you to run tests against real on-chain state from Flow mainnet or testnet.
+
+- **[Fork Testing]** - Run Cadence tests against a forked mainnet using real contracts and production data without deploying to live networks
+
 ## Key Features Covered
 
 ### Account Linking & Hybrid Custody
@@ -96,6 +102,7 @@ Flow's Cadence offers unparalleled capabilities for building user-friendly block
 [iOS Quickstart]: ./mobile/ios-quickstart.md
 [React Native Integration]: ./mobile/react-native-quickstart.md
 [Walletless Mobile Apps]: ./mobile/walletless-pwa.md
+[Fork Testing]: ./fork-testing/index.md
 [Flow Actions]: ../forte/flow-actions/index.md
 [Cross-VM Apps]: ../cross-vm-apps/index.md
 [Native VRF]: ../native-vrf/index.md
