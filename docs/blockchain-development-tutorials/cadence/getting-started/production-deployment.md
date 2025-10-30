@@ -22,45 +22,45 @@ keywords:
 
 You've developed locally with the emulator, integrated external dependencies, built sophisticated transactions, implemented comprehensive testing, and created a frontend interface. Now it's time to take your application live and deploy it to Flow's public networks.
 
-This tutorial will guide you through deploying your Counter application to both testnet and mainnet, ensuring your contracts and frontend work seamlessly in production environments. You'll learn the essential practices for managing live blockchain applications, from security considerations to monitoring and maintenance.
+This tutorial will guide you through deploying your Counter application to both testnet and mainnet, ensuring your contracts and frontend work seamlessly in production environments. You'll learn the essential practices for how to manage live blockchain applications, from security considerations to monitoring and maintenance.
 
-## What You'll Learn
+## What you'll learn
 
-After completing this tutorial, you'll be able to:
+After you complete this tutorial, you'll be able to:
 
-- **Deploy contracts to Flow testnet** with proper account setup and funding
-- **Configure your application** for different network environments (emulator, testnet, mainnet)
-- **Deploy to mainnet** with security best practices and production considerations
-- **Update frontend configuration** to work with live networks
-- **Implement monitoring and maintenance** practices for production applications
-- **Understand the deployment pipeline** from development to production
+- **Deploy contracts to Flow testnet** with proper account setup and funding.
+- **Configure your application** for different network environments (emulator, testnet, mainnet).
+- **Deploy to mainnet** with security best practices and production considerations.
+- **Update frontend configuration** to work with live networks.
+- **Implement monitoring and maintenance** practices for production applications.
+- **Understand the deployment pipeline** from development to production.
 
 **Prerequisites:** 
 
-- Completed all previous tutorials ([Environment Setup], [Smart Contract Interaction], [Building a Frontend App])
-- Counter contract and frontend app working locally
-- Flow CLI installed and configured
+- Completed all previous tutorials ([Environment Setup], [Smart Contract Interaction], [Building a Frontend App]).
+- Counter contract and frontend app working locally.
+- Flow CLI installed and configured.
 
 ## Deploy to Testnet
 
-Testnet is Flow's public test network that mirrors mainnet functionality without using real FLOW tokens. It's the perfect environment to test your application in a live blockchain environment before committing to mainnet deployment.
+Testnet is Flow's public test network that mirrors mainnet functionality without using real FLOW tokens. It's the perfect environment to test your application in a live blockchain environment before you commit to mainnet deployment.
 
-### Understanding Flow Networks
+### Understanding Flow networks
 
 Flow has several networks for different purposes:
 
-- **Emulator**: Local development environment (what you've been using)
-- **Testnet**: Public test network with free test tokens
-- **Mainnet**: Production network with real FLOW tokens
+- **Emulator**: Local development environment (what you currently use).
+- **Testnet**: Public test network with free test tokens.
+- **Mainnet**: Production network with real Flow tokens.
 
 Each network has its own:
-- Access nodes and APIs
-- Account addresses and contract deployments
-- Token economics (free on testnet, real value on mainnet)
+- Access nodes and APIs.
+- Account addresses and contract deployments.
+- Token economics (free on testnet, real value on mainnet).
 
-### Create a Testnet Account
+### Create a testnet account
 
-First, you'll need a testnet account to deploy your contracts. You can create one using the Flow CLI:
+First, you'll need a testnet account to deploy your contracts. You can create one with the Flow CLI:
 
 ```zsh
 flow accounts create --network testnet
@@ -72,14 +72,14 @@ When prompted:
 
 This creates a new account on testnet and adds it to your `flow.json` configuration. The CLI will show you the account address and save the private key locally.
 
-### Fund Your Testnet Account
+### Fund your testnet account
 
-To deploy contracts and send transactions on testnet, you need FLOW tokens. Flow provides a faucet service to get free testnet tokens.
+To deploy contracts and send transactions on testnet, you need Flow tokens. Flow provides a faucet service to get free testnet tokens.
 
-1. Visit the [Flow Testnet Faucet](https://faucet.flow.com/)
-2. Enter your testnet account address
-3. Complete any required verification (captcha, etc.)
-4. Request tokens (you'll receive 1000 FLOW tokens)
+1. Visit the [Flow Testnet Faucet](https://faucet.flow.com/).
+2. Enter your testnet account address.
+3. Complete any required verification (captcha, and so on).
+4. Request tokens (you'll receive 1000 FLOW tokens).
 
 This command automatically requests tokens from the testnet faucet for your account.
 
@@ -87,7 +87,7 @@ This command automatically requests tokens from the testnet faucet for your acco
 flow accounts fund --network testnet testnet-account
 ```
 
-**Verify Funding:**
+**Verify funding:**
 
 Check your account balance:
 
@@ -95,11 +95,11 @@ Check your account balance:
 flow accounts list 
 ```
 
-You should see your account details with a balance of FLOW tokens.
+You will see your account details with a balance of Flow tokens.
 
-### Configure Testnet Deployment
+### Configure testnet deployment
 
-Update your `flow.json` to include testnet deployment configuration. The NumberFormatter contract already exists on testnet, so you only need to deploy your Counter contract.
+Update your `flow.json` to include testnet deployment configuration. The `NumberFormatter` contract already exists on testnet, so you only need to deploy your Counter contract.
 
 ```zsh
 flow config add deployment
@@ -112,7 +112,7 @@ Follow the prompts:
 4. **Deploy more contracts**: `yes`
 5. **Contract**: `NumberFormatter`
 
-Your `flow.json` should now include a testnet deployment section:
+Your `flow.json` now includes a testnet deployment section:
 
 ```json
 {
@@ -135,7 +135,7 @@ Your `flow.json` should now include a testnet deployment section:
 }
 ```
 
-### Deploy Counter Contract to Testnet
+### Deploy Counter contract to testnet
 
 Deploy your Counter contract to the public testnet:
 
@@ -143,7 +143,7 @@ Deploy your Counter contract to the public testnet:
 flow project deploy --network testnet
 ```
 
-You should see output similar to:
+You will see output similar to:
 
 ```zsh
 Deploying 2 contracts for accounts: testnet-account
@@ -154,9 +154,9 @@ NumberFormatter -> 0x9942a81bc6c3c5b7 (9a550aeefa5ede62cb95f0549084b2ab7abf3a493
 🎉 All contracts deployed successfully
 ```
 
-### Test Your Testnet Deployment
+### Test your testnet deployment
 
-Verify your contract works on testnet by running a script:
+Verify your contract works on testnet with this script:
 
 ```zsh
 flow scripts execute cadence/scripts/GetCounter.cdc --network testnet
@@ -183,11 +183,11 @@ flow scripts execute cadence/scripts/GetCounter.cdc --network testnet
 Result: "1"
 ```
 
-Perfect! Your Counter contract is now live on testnet and working correctly.
+Perfect! Your Counter contract is now live on testnet and works correctly.
 
-### Update Frontend for Testnet
+### Update frontend for testnet
 
-Now update your Next.js application to connect to testnet instead of the emulator.
+Now update your `Next.js` application to connect to testnet instead of the emulator.
 
 **Update `src/app/layout.tsx`:**
 
@@ -221,13 +221,13 @@ export default function RootLayout({
 }
 ```
 
-**Key Changes:**
+**Key changes:**
 
-- `accessNodeUrl`: Changed from localhost to Flow's testnet REST API
-- `flowNetwork`: Changed from 'emulator' to 'testnet'  
-- `discoveryWallet`: Updated to use testnet wallet discovery
+- `accessNodeUrl`: Changed from localhost to Flow's testnet REST API.
+- `flowNetwork`: Changed from 'emulator' to 'testnet'. 
+- `discoveryWallet`: Updated to use testnet wallet discovery.
 
-### Test Your Testnet Frontend
+### Test your testnet frontend
 
 Start your frontend application:
 
@@ -235,33 +235,33 @@ Start your frontend application:
 npm run dev
 ```
 
-Visit `http://localhost:3000` and you should see:
+Visit `http://localhost:3000` and you will see:
 
-1. **Counter value**: Displays the current count from your testnet contract
-2. **Connect Wallet**: You can now connect using various Flow wallets (not just Dev Wallet)
-3. **Increment functionality**: Transactions are sent to the live testnet
-4. **Real transaction costs**: Small amounts of testnet FLOW are used for gas
+1. **Counter value**: Displays the current count from your testnet contract.
+2. **Connect Wallet**: You can now connect with various Flow wallets (not just Dev Wallet).
+3. **Increment functionality**: Transactions are sent to the live testnet.
+4. **Real transaction costs**: Small amounts of testnet Flow are used for gas.
 
-**Important**: When connecting your wallet, make sure to:
+**Important**: When you connect your wallet, make sure to:
 
-- Switch your wallet to testnet network
-- Use an account that has testnet FLOW tokens
-- Confirm you're interacting with the correct contract address
+- Switch your wallet to Testnet network.
+- Use an account that has testnet Flow tokens.
+- Confirm you're interacting with the correct contract address.
 
-## Deploy to Mainnet
+## Deploy to mainnet
 
-Mainnet deployment is the final step in your application's journey. Unlike testnet, mainnet uses real FLOW tokens and serves real users, so additional security considerations and best practices are essential.
+Mainnet deployment is the final step in your application's journey. Unlike testnet, mainnet uses real Flow tokens and serves real users, so additional security considerations and best practices are essential.
 
-### Create a Mainnet Account
+### Create a mainnet account
 
-For mainnet, you'll need to acquire FLOW tokens through exchanges or other means, as there's no faucet.
+For mainnet, you'll need to acquire Flow tokens through exchanges or other means, as there's no faucet.
 
 **Option 1: Use Flow Wallet**
 
-1. Download and install [Flow Wallet]
-2. Create a new wallet and securely store your recovery phrase
-3. Purchase FLOW tokens from a supported exchange
-4. Transfer tokens to your Flow Wallet
+1. Download and install [Flow Wallet].
+2. Create a new wallet and securely store your recovery phrase.
+3. Purchase Flow tokens from a supported exchange.
+4. Transfer tokens to your Flow Wallet.
 
 **Option 2: Use Flow CLI**
 
@@ -273,19 +273,19 @@ When prompted:
 1. **Account name**: Enter `mainnet-account`
 2. **Select "Mainnet" Network**
 
-### Acquire FLOW Tokens
+### Acquire FLOW tokens
 
-You can purchase FLOW tokens from major exchanges like [Coinbase], [Moonpay], and [Binance].
+You can purchase Flow tokens from major exchanges like [Coinbase], [Moonpay], and [Binance].
 
-You can also obtain FLOW directly from the Flow Wallet by clicking the "Buy" button in your account. 
+To obtain Flow directly from the Flow Wallet, click "Buy" in your account. 
 
 ![flow-wallet-icons](./imgs/flow-wallet-icons.png)
 
-Then click on a provider to purchase FLOW.
+Then, click on a provider to purchase FLOW.
 
 ![provider](./imgs/provider.png)
 
-### Configure Mainnet Deployment
+### Configure mainnet deployment
 
 Add mainnet deployment configuration to your `flow.json`:
 
@@ -300,7 +300,7 @@ Follow the prompts:
 4. **Deploy more contracts**: `yes`
 5. **Contract**: `NumberFormatter`
 
-Your `flow.json` should now include mainnet configuration:
+Your `flow.json` will now include mainnet configuration:
 
 ```json
 {
@@ -338,7 +338,7 @@ Your `flow.json` should now include mainnet configuration:
 }
 ```
 
-### Deploy to Mainnet
+### Deploy to mainnet
 
 Deploy your Counter contract to mainnet:
 
@@ -346,9 +346,9 @@ Deploy your Counter contract to mainnet:
 flow project deploy --network mainnet
 ```
 
-**⚠️ Important**: This deployment costs real FLOW tokens and cannot be undone.
+**⚠️ Important**: This deployment costs real FLOW tokens and you can't undo it.
 
-You should see output similar to:
+You will see output similar to:
 
 ```zsh
 Deploying 2 contracts for accounts: mainnet-account
@@ -359,7 +359,7 @@ NumberFormatter -> 0x123456789ABC (contract deployed successfully)
 🎉 All contracts deployed successfully
 ```
 
-### Production Frontend Configuration
+### Production frontend configuration
 
 Create a production build of your frontend configured for mainnet:
 
