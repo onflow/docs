@@ -548,7 +548,7 @@ Fork tests run against Flow chain state only:
 - For end-to-end, combine with `flow emulator --fork` and a local stub service
 :::
 
-### Select tests quickly
+### Select Tests Quickly
 
 - Run specific files or directories:
 
