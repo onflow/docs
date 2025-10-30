@@ -185,7 +185,7 @@
       "has": [
         {
           "type": "header",
-          "key": "accept",
+          "key": "Accept",
           "value": "text/markdown"
         }
       ]
