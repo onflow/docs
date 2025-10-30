@@ -49,7 +49,7 @@ If you combine this transaction with [scheduled transactions], you can automate 
 
 :::
 
-## Learning Objectives
+## Learning objectives
 
 After you complete this tutorial, you will be able to:
 
@@ -63,11 +63,11 @@ After you complete this tutorial, you will be able to:
 - Flow CLI: install from the [Flow CLI docs]
 - Cursor + [Cadence Extension] (recommended)
 
-## Cadence Programming Language
+## Cadence programming language
 
 This tutorial assumes you have a modest knowledge of [Cadence]. If you don't, you can still follow along, but we recommend that you complete our series of [Cadence] tutorials. Most developers find it more pleasant than other blockchain languages and it's easy to pick up.
 
-## Getting Started on Mainnet
+## Getting started on mainnet
 
 This demo uses **mainnet** and a real DeFi protocol. Before you write any code, set up your staking position.
 
@@ -81,7 +81,7 @@ This tutorial uses a real protocol with real funds. Only work with funds your co
 
 To complete this tutorial, set up a staking position in Increment Fi. If you already have LP tokens, skip to the **Staking LP Token** step.
 
-**Creating an LP Position**
+**Creating an LP position**
 
 First, go to the [Increment Fi Liquidity Pool] and select 'Single Asset' to provide liquidity with your FLOW tokens.
 
@@ -89,7 +89,7 @@ First, go to the [Increment Fi Liquidity Pool] and select 'Single Asset' to prov
 
 Then, enter the amount of FLOW you want to add as liquidity. Confirm the transaction and continue to the next step.
 
-**Staking LP Token**
+**Staking LP token**
 
 Now that you have LP tokens from the FLOW-stFLOW pool, you can stake these tokens to receive rewards from them. To do this, go to the [IncrementFi Farms] page and look for the `Flow-stFlow Pool #199` pool. Note that the #199 is the Pool ID (pid). You might need to select the list view first (the middle button in the upper-right section of the LP pools page) in order to properly see the pid.
 
@@ -105,7 +105,7 @@ Then, select `Stake LP` and enter the amount of LP tokens to stake into the pool
 
 Now our staking position generates rewards as time passes by. We use Flow Actions to execute a single transaction that can claim the rewards (stFLOW), convert the optimal amount into FLOW, increase the LP position (thus getting more LP tokens), and restake them into the farm.
 
-### Initialize Your Staking User Certificate
+### Initialize Your Staking.UserCertificate
 
 IncrementFi uses a `Staking.UserCertificate` internally for some actions, and you'll need this certificate to complete this tutorial. While the platform automatically creates it when you perform other actions on the platform, you can explicitly set it up with the [script on Flow Runner].
 
@@ -128,13 +128,13 @@ The UserCertificate is a resource stored in your account's private storage that:
 1. Proves your identity for IncrementFi staking operations.
 2. Allows you to claim rewards from staking pools.
 
-## Setting Up the Project
+## Set up the project
 
 To start, use the [Flow Actions Scaffold] repo as a template to create a new repository. Clone your new repository and open it in your editor.
 
 Follow the instructions in the README for **mainnet**.
 
-### Starting With the Scaffold
+### Start With the scaffold
 
 Create a new repo with the [Flow Actions Scaffold] as a template. Clone your new repo locally and open it in your editor.
 
@@ -146,7 +146,7 @@ This Scaffold repo is a minimal Flow project with dependencies for Flow Actions 
 
 :::
 
-### Export Your Wallet Key
+### Export Your wallet key
 
 :::danger
 
@@ -178,7 +178,7 @@ Create a `.pkey` file for your wallet key, **add it to `.gitignore`**, then add 
 }
 ```
 
-## Building the Transaction
+## Build the transaction
 
 Now that the dependencies have been properly setup and we have made sure that our account is properly setup, the staking position is established as well as the `Staking.UserCertificate`; we are now ready to finally build the restaking transaction
 
@@ -192,7 +192,7 @@ The key pattern we need to create is:
 - **Swap**: Converts tokens (swapping to zap input then zapping to LP tokens)
 - **Sink**: Receives and deposits tokens (staking pools, vaults)
 
-### Import Required Contracts
+### Import required contracts
 
 First, import all the contracts you need to build the transaction:
 
@@ -212,7 +212,7 @@ import "Staking"
 - `IncrementFiPoolLiquidityConnectors`: LP token creation (zapping)
 - `Staking`: Core staking contract for user certificates
 
-### Define Transaction Parameters
+### Define transaction parameters
 
 We will specify the `pid` (Pool ID) as the transaction parameter because it identifies which IncrementFi staking pool to interact with
 
@@ -222,7 +222,7 @@ transaction(
 ) {
 ```
 
-### Declare Transaction Properties
+### Declare transaction properties
 
 Then, declare all the properties needed for the transaction. Here is where you'll use the `Staking.UserCertificate` for authentication staking operations. The `pool` is used to reference the staking pool for validation. The starting balance for post-condition verification is the `startingStake`. The composable source that provides LP tokens is the `swapSource`. The `expectedStakeIncrease` is the minimum expected increase for safety. Finally, the `operationID` serves as the unique identifier for tracing the operation across Flow Actions.
 
@@ -235,7 +235,7 @@ let expectedStakeIncrease: UFix64
 let operationID: DeFiActions.UniqueIdentifier
 ```
 
-### Prepare Phase
+### Prepare phase
 
 The `prepare` phase runs first in the transaction. You use it to set up and validate a Cadence transaction. It's also the only place where a transaction can interact with a user's account and the [resources] within. 
 
@@ -270,7 +270,7 @@ self.userCertificateCap = acct.capabilities.storage
 self.operationID = DeFiActions.createUniqueIdentifier()
 ```
 
-### Token Type Detection and Configuration
+### Token type detection and configuration
 
 Use the `pid` from the pool we staked the LP tokens to get the liquidity pair information (what tokens make up this pool). We also convert token identifiers to actual Cadence types and determines if this is a stableswap pool or a regular AMM.
 
@@ -284,7 +284,7 @@ let token0Type = IncrementFiStakingConnectors.tokenTypeIdentifierToVaultType(pai
 let token1Type = IncrementFiStakingConnectors.tokenTypeIdentifierToVaultType(pair.getPairInfoStruct().token1Key)
 ```
 
-### Build the Flow Actions Chain
+### Build the Flow Actions chain
 
 We need to create the `RewardsSource` so that we can claim the available rewards from the staking pool.
 
@@ -338,7 +338,7 @@ self.expectedStakeIncrease = zapper.quoteOut(
 ).outAmount
 ```
 
-### Post-Condition Safety Check
+### Post-condition safety check
 
 This phase runs at the end for condition verification. We verify that the transaction actually increased your staking balance as expected.
 
@@ -351,7 +351,7 @@ post {
 }
 ```
 
-### Execute the Transaction
+### Execute the transaction
 
 `poolSink` creates the staking pool sink in which the LP tokens are deposited.
 
@@ -380,7 +380,7 @@ destroy vault
 
 See what happened? We executed this whole (and quite complex) flow in an atomic manner with a single transaction!
 
-## Running the Transaction
+## Run the transaction
 
 We are now ready to restake the position with a single transaction!
 
@@ -393,7 +393,7 @@ flow transactions send cadence/transactions/increment_fi_restake.cdc \
 
 Replace `<YOUR_POOL_PID>` with your actual pool ID (PID) from the IncrementFi Farms page, in this case it is 1999. The PID changes over time.
 
-### Interpreting the Results
+### Interpret the results
 
 After you complete the transaction, you see that the following events occurred:
 
@@ -403,7 +403,7 @@ After you complete the transaction, you see that the following events occurred:
 - LP tokens were received.
 - LP tokens were staked back into the #199 pool causing the staking balance to increase.
 
-## Running the Transaction on Emulator
+## Run the transaction on emulator
 
 You can run this whole transaction on Emulator as well. Although this example used a real pool to demonstrate a real-world use case, we recommend you start any real projects by testing on the Emulator. After cloning the [Flow Actions Scaffold] and installing the dependencies you can run:
 

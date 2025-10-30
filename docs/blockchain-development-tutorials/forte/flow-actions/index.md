@@ -17,7 +17,7 @@ keywords:
   - composable defi
 ---
 
-# Flow Actions Tutorials
+# Flow Actions tutorials
 
 <div style={{ position: 'relative', paddingBottom: '56.25%', height: 0, overflow: 'hidden', maxWidth: '100%' }}>
   <iframe 

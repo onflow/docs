@@ -43,11 +43,11 @@ After you complete this guide, you will be able to:
 - A **funded testnet account** to deploy and update contracts.
   - See [Create accounts] and [Fund accounts] in the Flow CLI commands.
 
-## Contract Upgrade Overview
+## Contract upgrade overview
 
 Cadence provides a sophisticated contract upgrade system that allows you to modify deployed contracts while ensuring data consistency and preventing runtime crashes. It's crucial for successful upgrades that you understand what you can and can't change.
 
-### What You CAN Upgrade
+### What you CAN upgrade
 
 - **Add new functions** - Extend contract functionality with new methods.
 - **Add new events** - Emit additional events for monitoring and indexing.
@@ -57,7 +57,7 @@ Cadence provides a sophisticated contract upgrade system that allows you to modi
 - **Change access modifiers** - Update visibility of functions and fields.
 - **Reorder existing fields** - Field order doesn't affect storage.
 
-### What You CANNOT Upgrade
+### What you CANNOT upgrade
 
 - **Add new fields** - Would cause runtime crashes when loading existing data.
 - **Change field types** - Would cause deserialization errors.
@@ -65,7 +65,7 @@ Cadence provides a sophisticated contract upgrade system that allows you to modi
 - **Change enum structures** - Raw values must remain consistent.
 - **Change contract name** - Contract address must remain the same.
 
-### Why These Restrictions Exist
+### Why these restrictions exist
 
 The [Cadence Contract Updatability documentation](https://cadence-lang.org/docs/language/contract-updatability) explains that these restrictions prevent:
 
@@ -76,7 +76,7 @@ The [Cadence Contract Updatability documentation](https://cadence-lang.org/docs/
 
 The validation system ensures that existing stored data remains valid and accessible after upgrades.
 
-## Getting Started
+## Get started
 
 Create a new Flow project for this tutorial:
 
@@ -87,7 +87,7 @@ flow init upgrading-contracts-tutorial
 
 Follow the prompts and create a `Basic Cadence project (no dependencies)` then open the new project in your editor.
 
-### Create and Fund Testnet Account
+### Create and fund testnet account
 
 You'll need a funded testnet account to deploy and update contracts. In a terminal in the root of your project folder:
 
@@ -118,7 +118,7 @@ The faucet provides free testnet tokens for development and testing purposes. Th
 
 ---
 
-## Deploy the Initial Counter Contract
+## Deploy the initial counter contract
 
 To start, let's deploy a simple Counter contract to testnet.
 
@@ -163,7 +163,7 @@ access(all) contract Counter {
 }
 ```
 
-### Configure Deployment
+### Configure deployment
 
 Add testnet deployment configuration to your `flow.json`:
 
@@ -208,7 +208,7 @@ Counter -> 0x9942a81bc6c3c5b7 (contract deployed successfully)
 🎉 All contracts deployed successfully
 ```
 
-### Test the Initial Contract
+### Test the initial contract
 
 Use the provided transaction to test initial functionality:
 
@@ -278,11 +278,11 @@ Events:
 
 ---
 
-## Upgrade the Contract - Part 1: Adding Event for Even Numbers
+## Upgrade the contract - Part 1: Add event for even numbers
 
 Let's start with a realistic scenario: What if we've realized it's very important to our users that they know when the counter reaches an even number, but we forgot to add an event for that case? Let's add that functionality first.
 
-### Modify the Counter Contract - First Upgrade
+### Modify the Counter contract - first upgrade
 
 Update `cadence/contracts/Counter.cdc` to add the new event and enhance the existing `increment()` function:
 
@@ -328,7 +328,7 @@ access(all) contract Counter {
 }
 ```
 
-### Key Changes Made - Part 1
+### Key changes made - part 1
 
 This first upgrade adds:
 
@@ -344,11 +344,11 @@ This demonstrates how you can add new behavior and modify existing function beha
 
 ---
 
-## Update the Deployed Contract - Part 1
+## Update the deployed contract - Part 1
 
 Now let's update the deployed contract on testnet using the Flow CLI update command with our first upgrade.
 
-### Update the Contract
+### Update the contract
 
 Use the [Flow CLI update contract command] to upgrade your deployed contract:
 
@@ -387,7 +387,7 @@ The contract successfully updated! Notice that:
 
 :::
 
-### Test the First Upgrade
+### Test the first upgrade
 
 Let's test the new event functionality. Create a simple transaction to test the enhanced `increment()` function:
 
@@ -427,11 +427,11 @@ Notice that:
 
 ---
 
-## Upgrade the Contract - Part 2: Adding More Functionality
+## Upgrade the contract - Part 2: add more functionality
 
 Now that we've successfully added the even number event, let's add more functionality to our contract. This demonstrates how you can make multiple incremental upgrades to extend your contract's capabilities.
 
-### Modify the Counter Contract - Second Upgrade
+### Modify the Counter contract - second upgrade
 
 Update `cadence/contracts/Counter.cdc` to add the additional functionality:
 
@@ -500,7 +500,7 @@ access(all) contract Counter {
 }
 ```
 
-### Key Changes Made - Part 2
+### Key changes made - part 2
 
 This second upgrade adds:
 
@@ -511,11 +511,11 @@ This second upgrade adds:
 
 ---
 
-## Update the Deployed Contract - Part 2
+## Update the deployed contract - Part 2
 
 Now let's update the deployed contract with our second upgrade.
 
-### Update the Contract Again
+### Update the contract again
 
 Use the [Flow CLI update contract command] to upgrade your deployed contract with the additional functionality:
 
@@ -555,7 +555,7 @@ The contract successfully updated again! Notice that:
 
 :::
 
-### Verify the Update
+### Verify the update
 
 Let's verify that the existing functionality still works and the new functionality is available.
 
@@ -597,11 +597,11 @@ Notice that:
 
 ---
 
-## Test the New Functionality
+## Test the new functionality
 
 Now let's create a transaction to test the new even counter functionality.
 
-### Create Test Transaction
+### Create test transaction
 
 Create a new transaction to test the upgraded functionality:
 
@@ -649,7 +649,7 @@ transaction {
 }
 ```
 
-### Run the Test Transaction
+### Run the test transaction
 
 Execute the transaction to test the new functionality:
 
@@ -665,7 +665,7 @@ You will see logs that show:
 - The original `increment()` function still working normally
 - The new `CounterIncrementedToEven` event being emitted when incrementing results in an even number
 
-### Verify Final State
+### Verify final state
 
 Run the check script again to see the final state:
 
@@ -687,11 +687,11 @@ This confirms that:
 
 ---
 
-## Understanding Contract Upgrades in Cadence
+## Understand contract upgrades in Cadence
 
 Cadence provides a sophisticated contract upgrade system that ensures data consistency while allowing controlled modifications. The [Cadence Contract Updatability documentation] provides comprehensive details about the validation rules and restrictions.
 
-### What You Can Upgrade
+### What you can upgrade
 
 When you upgrade Cadence contracts, you can:
 
@@ -705,7 +705,7 @@ When you upgrade Cadence contracts, you can:
 - **Change access modifiers** of fields and functions
 - **Reorder existing fields** (order doesn't affect storage)
 
-### What You Cannot Change
+### What You cannot change
 
 There are important limitations to contract upgrades:
 
@@ -732,9 +732,9 @@ The validation system focuses on preventing runtime inconsistencies with stored 
 
 :::
 
-### Advanced Upgrade Patterns
+### Advanced upgrade patterns
 
-#### The `#removedType` Pragma
+#### The `#removedType` pragma
 
 For cases where you need to remove a type declaration (which is normally invalid), Cadence provides the `#removedType` pragma. This allows you to "tombstone" a type, which prevents it from being re-added with the same name:
 
@@ -753,7 +753,7 @@ This pragma:
 - **Cannot be removed** after you add it (prevents circumventing restrictions).
 - **Only works with composite types**, not interfaces.
 
-#### Enum Upgrade Restrictions
+#### Enum upgrade restrictions
 
 Enums have special restrictions due to their raw value representation:
 
@@ -762,7 +762,7 @@ Enums have special restrictions due to their raw value representation:
 - **Cannot change the raw type** of an enum.
 - **Cannot change enum case names** (would change stored values' meaning).
 
-### Best Practices
+### Best practices
 
 When you upgrade contracts:
 
@@ -777,7 +777,7 @@ When you upgrade contracts:
 
 ---
 
-## Why This Matters
+## Why this matters
 
 Cadence's contract upgrade model provides several advantages:
 

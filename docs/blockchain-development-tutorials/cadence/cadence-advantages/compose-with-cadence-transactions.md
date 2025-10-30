@@ -19,7 +19,7 @@ keywords:
   - Flowscan
 ---
 
-# Compose wth Cadence Transactions
+# Compose wth Cadence transactions
 
 In this tutorial, you'll **compose with someone else's contracts** on Flow testnet. You'll write a Cadence transaction that reads public state from a contract named `Counter` and only increments the counter when it is odd. Then you'll extend the transaction to mint NFTs when the counter is odd, demonstrating how to compose multiple contracts in a single transaction. Everything runs against testnet using the Flow CLI and the dependency manager.
 
@@ -44,7 +44,7 @@ After you complete this guide, you will be able to:
   - Create: https://developers.flow.com/build/tools/flow-cli/commands#create-accounts
   - Fund: https://developers.flow.com/build/tools/flow-cli/commands#fund-accounts
 
-## Getting Started
+## Get started
 
 Create a [new project] with the [Flow CLI]:
 
@@ -229,13 +229,13 @@ You could trigger this same transaction **from an app** and **signed by a wallet
 
 ---
 
-## Extend with NFT Minting
+## Extend with NFT minting
 
 Now let's take our composition to the next level by adding NFT minting functionality when the counter is odd. We'll use an example NFT contract that's already deployed on testnet.
 
 This is a silly use case, but it demonstrates the complex use cases you can add to your apps, after contract deployment, and even if you aren't the author of any of the contracts!
 
-### Install the NFT Contract
+### Install the NFT contract
 
 First, let's install the ExampleNFT contract dependency:
 
@@ -249,7 +249,7 @@ This repository uses different deployments for core contracts than those that th
 
 :::
 
-### Understanding NFT Minting
+### Understand NFT minting
 
 Let's look at how NFT minting works with this contract. The [MintExampleNFT transaction] shows the pattern:
 
@@ -289,7 +289,7 @@ transaction(
 
 You can copy this functionality and adapt it for our use case.
 
-### Update the IncrementIfOdd Transaction
+### Update the IncrementIfOdd transaction
 
 Now let's update our `IncrementIfOdd` transaction to mint an NFT when the counter is odd. You can either modify the existing transaction or create a new one:
 
@@ -339,7 +339,7 @@ transaction() {
 }
 ```
 
-### Setup NFT Collection
+### Setup NFT collection
 
 Before you can mint NFTs, set up an NFT collection in your account. Create a transaction to do this:
 
@@ -390,7 +390,7 @@ You may need to run the regular `IncrementCounter` transaction first to get an o
 flow transactions send cadence/transactions/IncrementCounter.cdc --signer testnet-account --network testnet
 ```
 
-### View Your NFT
+### View your NFT
 
 Click the transaction link in the console to view the transaction in [testnet Flowscan]. After you run the transaction **while the counter is odd**, you'll see an NFT in the `Asset Transfers` tab.
 
