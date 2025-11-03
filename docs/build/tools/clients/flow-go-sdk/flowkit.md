@@ -1,5 +1,5 @@
 ---
-title: Flowkit Go Tutorial - Working with Flow Project State
+title: Flow Project Configuration
 description: Learn how to work with Flow project state using the Flowkit Go library
 sidebar_position: 3
 keywords:
