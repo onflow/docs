@@ -131,9 +131,8 @@ log.Printf("Contract: %s\n", contract.Name)
 log.Printf("Location: %s\n", contract.Location)
 
 // Get all contract names
-names := state.Contracts().Names()
-for _, name := range names {
-    log.Printf("Available contract: %s\n", name)
+for _, c := range *state.Contracts() {
+    log.Printf("Available contract: %s\n", c.Name)
 }
 ```
 
@@ -198,6 +197,8 @@ log.Printf("Host: %s\n", testnet.Host)
 ### Adding or Updating Networks
 
 ```go
+import "github.com/onflow/flowkit/v2/config"
+
 // Add a custom network
 networks := state.Networks()
 networks.AddOrUpdate(config.Network{
@@ -217,6 +218,8 @@ if err != nil {
 Network aliases map contract names/locations to their deployed addresses on specific networks:
 
 ```go
+import "github.com/onflow/flowkit/v2/config"
+
 // Get aliases for testnet
 aliases := state.AliasesForNetwork(config.TestnetNetwork)
 
@@ -236,6 +239,7 @@ When you have a Cadence program with imports like `import "Kibble"`, you need to
 
 ```go
 import "github.com/onflow/flowkit/v2/project"
+import "github.com/onflow/flowkit/v2/config"
 
 // Get contracts for your target network
 contracts, err := state.DeploymentContractsByNetwork(config.TestnetNetwork)
@@ -258,7 +262,10 @@ transaction {
 }
 `)
 
-program := project.NewProgram(code, []string{}, "")
+program, err := project.NewProgram(code, nil, "")
+if err != nil {
+    log.Fatalf("Failed to parse program: %v", err)
+}
 
 // Replace imports with deployed addresses
 resolvedProgram, err := importReplacer.Replace(program)
@@ -297,7 +304,10 @@ importReplacer := project.NewImportReplacer(
 )
 
 // Parse and resolve your program
-program := project.NewProgram(scriptCode, []string{}, "script.cdc")
+program, err := project.NewProgram(scriptCode, nil, "script.cdc")
+if err != nil {
+    log.Fatalf("Failed to parse program: %v", err)
+}
 resolvedProgram, err := importReplacer.Replace(program)
 if err != nil {
     log.Fatalf("Failed to resolve imports: %v", err)
@@ -314,6 +324,8 @@ Accounts represent Flow blockchain accounts used for signing transactions and de
 ### Getting Account Information
 
 ```go
+import "github.com/onflow/flow-go-sdk"
+
 accounts := state.Accounts()
 
 // Get account by name
@@ -334,6 +346,9 @@ for _, name := range names {
 // Get account by address
 addr := flow.HexToAddress("0xf8d6e0586b0a20c7")
 account, err = accounts.ByAddress(addr)
+if err != nil {
+    log.Fatalf("Account not found by address: %v", err)
+}
 ```
 
 ### Getting the Emulator Service Account
@@ -385,7 +400,6 @@ Here's a complete example that ties everything together:
 package main
 
 import (
-    "context"
     "log"
 
     "github.com/onflow/flowkit/v2"
@@ -433,7 +447,10 @@ func main() {
         }
     `)
 
-    program := project.NewProgram(scriptCode, []string{}, "script.cdc")
+    program, err := project.NewProgram(scriptCode, nil, "script.cdc")
+    if err != nil {
+        log.Fatalf("Failed to parse program: %v", err)
+    }
     resolvedProgram, err := importReplacer.Replace(program)
     if err != nil {
         log.Fatalf("Failed to resolve imports: %v", err)
