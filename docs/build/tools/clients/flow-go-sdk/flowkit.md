@@ -71,7 +71,7 @@ import (
 
 func main() {
     // Load flow.json from the current directory
-    state, err := flowkit.Load([]string{"flow.json"}, afero.NewOsFs())
+    state, err := flowkit.Load([]string{"flow.json"}, afero.Afero{Fs: afero.NewOsFs()})
     if err != nil {
         log.Fatalf("Failed to load project state: %v", err)
     }
@@ -87,7 +87,7 @@ If you need to create a new project from scratch:
 
 ```go
 // Initialize an empty state
-state, err := flowkit.Init(afero.NewOsFs())
+state, err := flowkit.Init(afero.Afero{Fs: afero.NewOsFs()})
 if err != nil {
     log.Fatalf("Failed to initialize state: %v", err)
 }
@@ -276,7 +276,7 @@ The most common pattern is to use network-specific aliases from your project sta
 
 ```go
 // Load project state and get network-specific contracts and aliases
-state, err := flowkit.Load([]string{"flow.json"}, afero.NewOsFs())
+state, err := flowkit.Load([]string{"flow.json"}, afero.Afero{Fs: afero.NewOsFs()})
 if err != nil {
     log.Fatal(err)
 }
@@ -396,7 +396,7 @@ import (
 
 func main() {
     // 1. Load project state
-    state, err := flowkit.Load([]string{"flow.json"}, afero.NewOsFs())
+    state, err := flowkit.Load([]string{"flow.json"}, afero.Afero{Fs: afero.NewOsFs()})
     if err != nil {
         log.Fatalf("Failed to load state: %v", err)
     }
