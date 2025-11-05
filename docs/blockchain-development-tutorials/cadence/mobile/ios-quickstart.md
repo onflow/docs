@@ -23,46 +23,46 @@ keywords:
 
 # Overview
 
-The following documentation aims to educate you on building a native mobile application on Flow. It first presents Monster Maker, a starter project we've built to represent simple Flow mobile concepts. Next it presents various developer resources related to building mobile native Flow applications.
+The following tutorial aims to educate you on how to build a native mobile application on Flow. It first presents Monster Maker, a starter project we've built to represent simple Flow mobile concepts. Next, it presents various developer resources related to building mobile native Flow applications.
 
 # Monster Maker
 
 ![monster_maker_logo.png](./imgs/monster_maker_logo.png)
 
-Monster Maker is a native iOS app that allows users to connect a wallet, sign a transaction to mint an NFT (a monster) and display their collection of NFTs (their monsters) within the app. It's meant to be a lightweight sample project to exemplify how to build a mobile native Flow project. If you're looking to build a native mobile application for Flow, exploring the Monster Maker code base first or even building off of it is a great way to get started.
+Monster Maker is a native iOS app that allows users to connect a wallet, sign a transaction to mint an NFT (a monster) and display their collection of NFTs (their monsters) within the app. It's meant to be a lightweight sample project to exemplify how to build a mobile native Flow project. If want to build a native mobile application for Flow, explore the Monster Maker code base first, or you can even build off of it!
 
 <aside>
 👉 ***Note** - We currently only have an iOS project for Monster Maker. That said an Android and web version of the same project is in active development.*
 
 </aside>
 
-## Github Repo
+## Github repo
 
 The Monster Maker Github Repo can be found here:
 
 https://github.com/onflow/monster-maker
 
-## Building to Device
+## Build to device
 
-Before you run Monster Maker on your device, please make sure you have installed the [Xcode14](https://apps.apple.com/au/app/xcode/id497799835?mt=12) from Mac App Store. Once you clone the repo, open the [MonsterMaker.xcodeproj](https://github.com/onflow/monster-maker/tree/main/iOS/MonsterMaker.xcodeproj) under the iOS folder.
+Before you run Monster Maker on your device, make sure you've installed the [Xcode14](https://apps.apple.com/au/app/xcode/id497799835?mt=12) from Mac App Store. After you clone the repo, open the [MonsterMaker.xcodeproj](https://github.com/onflow/monster-maker/tree/main/iOS/MonsterMaker.xcodeproj) under the iOS folder.
 
-Xcode should automatically setup the project for you. If you do see any error related to dependencies, run `Xcode Menu -> File -> Packages -> Reset Package Cache` to resolve the issue.
+Xcode automatically sets up the project for you. If you see any errors related to dependencies, run `Xcode Menu -> File -> Packages -> Reset Package Cache` to resolve the issue.
 
-In the meantime, you can choose a simulator or your iPhone to run. For more detail here is the [official doc](https://developer.apple.com/documentation/xcode/running-your-app-in-simulator-or-on-a-device).
-For run in real device, there are a few steps to deal with signing:
+In the meantime, you can choose a simulator or your iPhone to run. For more detail, read the [official doc](https://developer.apple.com/documentation/xcode/running-your-app-in-simulator-or-on-a-device).
+For run in real device, there are a few steps to deal with for signing:
 
-1. Add your apple account to the Xcode which can be accessed from `Xcode Menu -> Settings -> Add account`.
-2. Change the Team to your Personal Apple account from the **Signing & Capabilities** under the project target menu. For more detail, please check the screenshot below.
+1. Add your apple account to the Xcode which you can access from `Xcode Menu -> Settings -> Add account`.
+2. Change the Team to your Personal Apple account from the **Signing & Capabilities** under the project target menu. For more detail, check the screenshot below.
 
    ![XCode Target Setup](./imgs/xcode_setup.png)
 
-## Connecting to a Wallet
+## Connecting to a wallet
 
-To connect with wallets, there is native wallet discovery in the app. Once you click on connect, it will bring out the list of the wallets which support `HTTP/POST` or `WC/RPC` method.
+To connect with wallets, there is native wallet discovery in the app. After you click on connect, it brings out the list of the wallets which support `HTTP/POST` or `WC/RPC` method.
 
-### FCL Config
+### FCL config
 
-To make sure, the wallet can recognise your dApp, there is a few field you will need to config before connect to a wallet. The account proof config is optional. In addition, you will need to create a project id from [walletconnect](https://cloud.walletconnect.com/app) cloud before you can connect to the `WC/RPC` compatible wallet such as [Flow Wallet](https://wallet.flow.com/).
+To make sure the wallet can recognise your dApp, there are a few fields you need to configure before you connect to a wallet. The account proof config is optional. In addition, you'll need to create a project id from [walletconnect](https://cloud.walletconnect.com/app) cloud before you can connect to the `WC/RPC` compatible wallet such as [Flow Wallet](https://wallet.flow.com/).
 
 ```swift
 import FCL
@@ -100,13 +100,13 @@ fcl.config
 
 ![In Monster Maker, the Connect button triggers opening of Wallet Discovery](./imgs/connect.png)
 
-In Monster Maker, the Connect button triggers opening of Wallet Discovery
+In Monster Maker, click `Connect` to open Wallet Discovery
 
-For the wallet support `HTTP/POST`, it will use webview to show the following actions.
+For the wallet support `HTTP/POST`, it uses webview to show the following actions.
 
-For the wallet support `WC/RPC`, it will use deep-link to the wallet for actions.
+For the wallet support `WC/RPC`, it uses deep-link to the wallet for actions.
 
-You can open the native wallet discovery to make the selection, but also you can connect to the specific wallet as well.
+You can open the native wallet discovery to make the selection, but you can also connect to the specific wallet.
 
 Here is the code snippet of it:
 
@@ -121,13 +121,13 @@ try fcl.changeProvider(provider: provider, env: .testnet)
 try await fcl.authenticate()
 ```
 
-## Signing a Transaction
+## Signing a transaction
 
 ![In Monster Maker, Initializing the NFT collection with the Initialize button triggers a transaction.](./imgs/initialize.png)
 
-In Monster Maker, Initializing the NFT collection with the Initialize button triggers a transaction.
+In Monster Maker, click `Initialize` to initialize the NFT colelction. This triggers a transaction.
 
-Similar to what we have on fcl-js, native sdk also use `query` and `mutate` for onchain interactions. To request a signature from user, you can simply use `fcl.mutate` method. By default, the user will be the payer, proposer and authorizer, if you want to add custom authorizer please refer to the code from [Server](https://github.com/onflow/monster-maker/blob/main/server/pages/api/signAsMinter/index.ts) and [iOS](https://github.com/onflow/monster-maker/blob/main/iOS/MonsterMaker/Flow/MintHelper.swift) end.
+Similar to what we have on fcl-js, native sdk also use `query` and `mutate` for onchain interactions. To request a signature from user, you can simply use `fcl.mutate` method. By default, the user is the payer, proposer and authorizer. If you want to add custom authorizer refer to the code from [Server](https://github.com/onflow/monster-maker/blob/main/server/pages/api/signAsMinter/index.ts) and [iOS](https://github.com/onflow/monster-maker/blob/main/iOS/MonsterMaker/Flow/MintHelper.swift) end.
 
 ```swift
 guard let user = fcl.currentUser else {
@@ -253,7 +253,7 @@ let nftList = try await fcl.query(script: cadenceScript,
 														.decode([NFTModel].self)
 ```
 
-# External Resources
+# External resources
 
 **FCL Swift**
 
@@ -273,9 +273,9 @@ One of the easiest ways to connect to a wallet via a mobile native dApp is throu
 
 [FCL Wallet Connect](../../../build/tools/clients/fcl-js/wallet-connect.md)
 
-**How to Build a Native iOS Dapp**
+**How to build a native iOS dapp**
 
-The Agile Monkeys has written a very comprehensive guide on how to build a native mobile application on iOS and interface with fcl-swift. Found here:
+The Agile Monkeys wrote a very comprehensive guide on how to build a native mobile application on iOS and interface with fcl-swift, which you can view with the link below:
 
 [How to Build a Native iOS Dapper](https://dev.to/theagilemonkeys/how-to-buid-a-native-ios-dapp-that-uses-the-flow-blockchain-as-the-backend-n9k)
 [Source Code](https://github.com/jfsagasti/FlowNotes)
