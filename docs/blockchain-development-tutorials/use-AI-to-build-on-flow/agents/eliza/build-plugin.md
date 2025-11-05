@@ -14,22 +14,24 @@ keywords:
 
 # Eliza Plugin Development Guide
 
-Plugins are a powerful way to extend the functionality of your Eliza AI agents. This guide will walk you through the process of creating custom plugins that can enhance your agent's capabilities, from simple utilities to complex integrations with external services. You'll learn how to leverage the plugin system to create modular and reusable components for your AI agents.
+## Overview
+
+Plugins are a powerful way to extend the functionality of your Eliza AI agents. This guide will walk you through the process of how to create custom plugins that can enhance your agent's capabilities, from simple utilities to complex integrations with external services. You'll learn how to leverage the plugin system to create modular and reusable components for your AI agents.
 
 ## Learning Objectives
 
-By the end of this tutorial, you will be able to:
+After you complete this tutorial, you will be able to:
 
-- Create a new plugin repository from the template
-- Understand the plugin development workflow
-- Implement custom actions and services
-- Integrate plugins with your Eliza agent
-- Register and publish plugins to the Eliza Plugin Registry
-- Use dependency injection for better plugin architecture
+- Create a new plugin repository from the template.
+- Understand the plugin development workflow.
+- Implement custom actions and services.
+- Integrate plugins with your Eliza agent.
+- Register and publish plugins to the Eliza Plugin Registry.
+- Use dependency injection for better plugin architecture.
 
 ## Prerequisites
 
-Before getting started with Eliza, ensure you have:
+Before you get started with Eliza, make sure you have:
 
 - [Node.js 23+] (using [nvm] is recommended)
 - [pnpm 9+]
@@ -41,17 +43,21 @@ Before getting started with Eliza, ensure you have:
 
 ## Quickstart
 
-Please follow the [Quickstart Guide] to set up your development environment.
+Follow the [Quickstart Guide] to set up your development environment.
 
 ## Plugin Development
 
 ### Create a Plugin repository from Template
 
-Visit [Eliza Plugin Template] and click on the "Use this template" button to create a new repository.
+Visit [Eliza Plugin Template] and click "Use this template" to create a new repository.
 
-Or you can create a new empty repository and copy the files from some examples at [Eliza Plugins] organization.
+Or, you can create a new empty repository and copy the files from some examples at the [Eliza Plugins] organization.
 
-> Note: Flow's Eliza plugin template is using Dependency Injection(`@elizaos-plugins/plugin-di`), you can learn more about the Dependency Injection in the [plugin's README.md].  It allows you can use `Class` instead of `Object` for your `Actions`, `Providers`, `Services`, and etc. **If you don't want to use it, you can follow the other examples in Eliza Plugins organiazation.**
+:::note
+
+Flow's Eliza plugin template uses Dependency Injection(`@elizaos-plugins/plugin-di`). You can learn more about the Dependency Injection in the [plugin's README.md].  It allows you can use `Class` instead of `Object` for your `Actions`, `Providers`, `Services`, and so on. **If you don't want to use it, you can follow the other examples in Eliza Plugins organiazation.**
+
+:::
 
 ### Add the Plugin repository to your Eliza project
 
@@ -77,7 +83,7 @@ Add the plugin to agent's `package.json`
 pnpm add @elizaos-plugins/plugin-foo@'workspace:*' --filter ./agent
 ```
 
-Check the `agent/package.json` to ensure the plugin is added, you should see something like this:
+Check the `agent/package.json` to make sure the plugin is added. You'll see something like this:
 
 ```json
 {
@@ -89,7 +95,7 @@ Check the `agent/package.json` to ensure the plugin is added, you should see som
 
 ### Build the Plugin
 
-Build the plugin using the following command:
+Build the plugin with the following command:
 
 ```bash
 pnpm build --filter ./packages/plugin-foo
@@ -113,7 +119,7 @@ Let's say you want to add the plugin to the `sample` character which is `charact
 
 :::warning
 
-If you are using Dependency Injection(`@elizaos-plugins/plugin-di`) in your plugin, remember to add it to the `postProcessors` field. And **`clients` field is deprecated** in the latest version of Eliza, so if you want to add clients you also need to use `plugins` field.
+If you use Dependency Injection(`@elizaos-plugins/plugin-di`) in your plugin, remember to add it to the `postProcessors` field. And **`clients` field is deprecated** in the latest version of Eliza, so if you want to add clients, you also need to use `plugins` field.
 
 :::
 
@@ -155,7 +161,7 @@ pnpm start:client
 
 You need to register your plugin in the [Eliza Plugin Registry] to make it available for other users.
 
-Please follow the guide there, modify the [index.json] and submit a PR to the registry repository.
+Follow the guide there, modify the [index.json] file, and submit a pull request (PR) to the registry repository.
 
 ## Conclusion
 
