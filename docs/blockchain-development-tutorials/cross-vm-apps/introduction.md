@@ -22,51 +22,53 @@ keywords:
   - supercharge your EVM app with Cadence
 ---
 
-Ever since the launch of Flow EVM, it's been possible to _supercharge_ your EVM apps by using Flow Cadence features and contracts. Some benefits, such as [native VRF] and inexpensive gas without compromising security are built in and either easy or automatic to use. Others, such as the ability to use [Cadence] to [structure and call EVM transactions], are powerful but complicated to configure and use. They also require developers to manage concurrent connections to both networks.
+# Batched Tx From Scaffold
+
+Ever since we launched Flow EVM, you can _supercharge_ your EVM apps with Flow Cadence features and contracts. Some benefits, such as [native VRF] and inexpensive gas that won't compromise security, are built in and either easy to use or automatic. Others, such as the ability to use [Cadence] to [structure and call EVM transactions], are powerful but complicated to configure and use. They also require developers to manage concurrent connections to both networks.
 
 [FLIP 316] improves the [Flow Client Library (FCL)] to support cross-VM functionality between Flow EVM and Flow Cadence.
 
 For EVM developers, this means that you can use the familiar [wagmi], [viem], and [RainbowKit] stack you're used to, add FCL, and get features like **multi-call write** with one signature for users with a Cadence-compatible [wallet].
 
-In this tutorial, you'll learn how to create [Click to Mint], a simple game that allows players to mint an ERC-20 token by clicking a button. With the power of Flow, they can also click a button, and **complete 10 separate transactions with just one approval!**
+In this tutorial, you'll learn how to create [Click to Mint], a simple game that allows players to click a button to mint an ERC-20 token. With the power of Flow, they can also click a button and **complete 10 separate transactions with just one approval!**
 
 ![Click to Mint](./imgs/click-to-mint.png)
 
 :::warning
 
-The FCL functionality described in this tutorial is in alpha. Some steps may change. We'll keep the tutorial updated, but please [create an issue] or let us know on [Discord] if something isn't working for you.
+The FCL functionality described in this tutorial is in alpha. Some steps may change. We'll keep the tutorial updated, but please [create an issue] or let us know on [Discord] if something doesn't ork for you.
 
 :::
 
 ## Objectives
 
-After completing this guide, you'll be able to:
+After you complete this guide, you'll be able to:
 
-- Build an app that seamlessly integrates Flow Cadence and Flow EVM connections
-- Add Cadence features to your [Rainbowkit]/[wagmi]/[viem] app
-- Utilize [Flow Client Library (FCL)] to enable multi-call contract writes to Flow EVM
+- Build an app that seamlessly integrates Flow Cadence and Flow EVM connections.
+- Add Cadence features to your [Rainbowkit]/[wagmi]/[viem] app.
+- Use [Flow Client Library (FCL)] to turn on multi-call contract writes to Flow EVM.
 
 ## Prerequisites
 
-### Next.js and Modern Frontend Development
+### Next.js and modern frontend development
 
-This tutorial uses [Next.js]. You don't need to be an expert, but it's helpful to be comfortable with development using a current React framework. You'll be on your own to select and use a package manager, manage Node versions, and other frontend environment tasks. If you don't have your own preference, you can just follow along with us and use [npm].
+This tutorial uses [Next.js]. You don't need to be an expert, but it's helpful to be comfortable with development with a current React framework. You'll be on your own to select and use a package manager, manage Node versions, and other frontend environment tasks. If you don't have your own preference, you can just follow along with us and use [npm].
 
-### Solidity and Cadence Smart Contract Development
+### Solidity and Cadence smart contract development
 
-Apps using the hybrid approach can interact with both [Cadence] and [Solidity] smart contracts. You don't need to be an expert in either of these, but it's helpful to be familiar with how smart contracts work in at least one of these languages.
+Apps that use the hybrid approach can interact with both [Cadence] and [Solidity] smart contracts. You don't need to be an expert in either of these, but it's helpful to be familiar with how smart contracts work in at least one of these languages.
 
-### Onchain App Frontends
+### Onchain app frontends
 
-We're assuming you're familiar with [wagmi], [viem], and [RainbowKit]. If you're coming from the Cadence, you might want to take a quick look at the getting started guides for these platforms. They're all excellent and will rapidly get you up to speed on how the EVM world commonly connects their apps to their contracts.
+We assume you're familiar with [wagmi], [viem], and [RainbowKit]. If you come from the Cadence, you might want to take a quick look at the getting started guides for these platforms. They're all excellent and will rapidly get you up to speed on how the EVM world commonly connects their apps to their contracts.
 
-## Getting Started
+## Get started
 
-For this tutorial, we'll be starting from a fork of the [FCL + RainbowKit + Wagmi Integration Demo] built by the team.
+For this tutorial, we'll start from a fork of the [FCL + RainbowKit + Wagmi Integration Demo] built by the team.
 
 Fork the repo so you can push your work freely to your own copy, then follow the setup instructions.
 
-## Project Overview
+## Project overview
 
 Open the cross-vm app scaffold in your editor, run it, and view the site in your browser:
 
@@ -86,7 +88,7 @@ In a production app, you'll want to manage this process carefully. Non-Cadence E
 
 :::
 
-## Send Batch Transactions
+## Send batch transactions
 
 The first demo built into this scaffold is **multi-call contract write**.
 
@@ -104,11 +106,11 @@ Currently, the Flow wallet sponsors all gas for all transactions signed with the
 
 :::
 
-### Cadence Parent Transaction
+### Cadence parent transaction
 
-The first line is the transaction id of the Flow Cadence transaction that calls **both** of the EVM transactions. Search for it in [Testnet Cadence Flowscan].
+The first line is the transaction ID of the Flow Cadence transaction that calls **both** of the EVM transactions. Search for it in [Testnet Cadence Flowscan].
 
-Cadence transactions are more complicated than those in Solidity contracts. Rather than being restricted to running functions present on the contract, they can run arbitrary code as long as the caller has access to all of the resources required by the transaction.
+Cadence transactions are more complicated than those in Solidity contracts. Rather than being restricted to run functions present on the contract, they can run arbitrary code as long as the caller has access to all of the resources required by the transaction.
 
 You can see the code of the transaction in the `Script` tab, but we've included it here for convenience:
 
@@ -153,19 +155,19 @@ transaction(calls: [{String: AnyStruct}], mustPass: Bool) {
     }
 ```
 
-In this case, it's checking that the caller of the Cadence transaction has permission to control to the EVM account, which is built in for [Cadence Owned Accounts]. The `execute` phase then iterates through the EVM transactions and uses the Cadence accounts own permissions to sign the EVM transactions.
+In this case, it checks that the caller of the Cadence transaction has permission to control to the EVM account, which is built in for [Cadence Owned Accounts]. The `execute` phase then iterates through the EVM transactions and uses the Cadence accounts own permissions to sign the EVM transactions.
 
 The loop also handles a check for the optional flag to cancel all of the transactions if any one of them fails. **In other words, you could set up a 20 transaction arbitrage attempt and unwind everything if it fails at any step!**
 
-### EVM Child Transactions
+### EVM child transactions
 
-The next two lines show the transaction hashes for the EVM transactions. You can view this in [Testnet EVM Flowscan] by searching for the transaction hashes, the same as any other.
+The next two lines show the transaction hashes for the EVM transactions. To view this in [Testnet EVM Flowscan], search for the transaction hashes, the same as any other.
 
 Look up both transactions.
 
-The first is calling the `deposit()` function to wrap FLOW and move it to EVM.
+The first calls the `deposit()` function to wrap FLOW and move it to EVM.
 
-The second is calling the ERC-20 `approve()` function to give another address the authority to spend those tokens.
+The second calls the ERC-20 `approve()` function to give another address the authority to spend those tokens.
 
 For the demo, the code for this is hard-coded into `src/app/page.tsx`:
 
@@ -212,7 +214,7 @@ const calls: EVMBatchCall[] = [
 
 It's called with the `useBatchTransaction` hook via the `sendBatchTransaction(calls)` function.
 
-## Code Evaluator
+## Code evaluator
 
 The demo also has an embedded code evaluator that you can use to experiment with snippets of code from `fcl` or `wagmi`.
 
@@ -232,15 +234,15 @@ return block.height;
 
 Returns the current Cadence VM block number.
 
-## Calling Your Own Contract
+## Calling Your own contract
 
 Next, we'll update the starter to connect to and call functions in our own contract. For this, we'll use a simple [Button Clicker Contract]. You can deploy your own copy, or use the one deployed at [`0xA7Cf2260e501952c71189D04FAd17c704DFB36e6`].
 
-## Set Up Contract Imports
+## Set Up contract imports
 
 :::info
 
-The following steps assume deployment with Hardhat Ignition. If you are using a different deployment method, import the contract address and abi as appropriate.
+The following steps assume deployment with Hardhat Ignition. If you use a different deployment method, import the contract address and abi as appropriate.
 
 :::
 
@@ -260,9 +262,9 @@ export const clickToken = {
 };
 ```
 
-## Build Traditional Functionality
+## Build traditional functionality
 
-This isn't a wagmi tutorial, so we'll give you some components to speed up the process. Add a folder called `components` inside `src` and add the following files.
+This isn't a wagmi tutorial, so we'll give you some components to speed up the process. Add a folder called `components` inside `src` and add the following files:
 
 `TheButton.tsx`
 
@@ -522,7 +524,7 @@ You'll now see the button and scoreboard from the contract. Test it out and earn
 
 ![scores](./imgs/scores.png)
 
-## Supercharge your EVM App With Cadence
+## Supercharge your EVM app With Cadence
 
 Now let's supercharge it. With the power of Cadence, you can use multi-call write and give your users way more tokens with a single click and single signature!
 
@@ -541,7 +543,7 @@ const calls: EVMBatchCall[] = [
 ];
 ```
 
-Try clicking the `Send Batch Transaction Example` button again. You'll have to **manually refresh** the page when the EVM transaction hash appears to see the score update. We haven't wired in the query invalidation yet.
+Click the `Send Batch Transaction Example` button again. You'll have to **manually refresh** the page when the EVM transaction hash appears to see the score update. We haven't wired in the query invalidation yet.
 
 Next, use some JavaScript to put 10 copies of the transaction call into the array:
 
@@ -554,19 +556,19 @@ const calls: EVMBatchCall[] = Array.from({ length: 10 }, () => ({
 }));
 ```
 
-Click the button again and **manually** refresh page once the transaction hashes appear.
+Click the button again and **manually** refresh page after the transaction hashes appear.
 
 **You just minted 10 tokens from 10 transactions with one signature!**
 
 ## Improve the UI/UX
 
-While we've got the batched transactions feature working, we've got a few flaws in the user experience that we'll need to resolve, and we should make this a bit nicer looking.
+While the batched transactions feature works, we've got a few flaws in the user experience that we'll need to resolve, and we should make this look a bit nicer.
 
 ### Install Tailwind
 
 :::warning
 
-We initially tried getting an AI friend to install this for us and it got very confused. Next.js and Tailwind have both had a lot of change recently. As a result, the LLMs don't seem to have caught up just yet.
+We initially tried getting an AI friend to install this for us and it got very confused. `Next.js` and Tailwind have both had a lot of change recently. As a result, the LLMs don't seem to have caught up just yet.
 
 Do this part the old-fashioned way.
 
@@ -597,9 +599,9 @@ Then, add the following to the top of `src/styles/global.css`:
 
 Run the app and make sure you see some styling. It won't look nice yet. We'll help you reorganize the components and hook up state monitoring, but it will be up to you to style the app how you'd like. You can check out the [reference repo] for inspiration, but it's far from perfect or beautiful.
 
-### Update State Display
+### Update state display
 
-The first thing we'll need to fix is that the user has to refresh the window manually to see the results of the batched transaction in the scoreboard. Start by moving the functionality in `page.tsx` into a new component, called `SuperButton.tsx`. Note that we're mimicking the pattern in `TheButton.tsx` where the blockchain state is managed in `Content.tsx` and we're passing in the relevant information and functions as props:
+The first thing we'll need to fix is that the user has to refresh the window manually to see the results of the batched transaction in the scoreboard. To start, move the functionality in `page.tsx` into a new component, called `SuperButton.tsx`. We mimic the pattern in `TheButton.tsx` where the blockchain state is managed in `Content.tsx`, and we pass in the relevant information and functions as props:
 
 ```tsx
 'use client';
@@ -680,7 +682,7 @@ export default function SuperButton({
 }
 ```
 
-You should end up with a vastly simplified `page.tsx`:
+You will end up with a vastly simplified `page.tsx`:
 
 ```tsx
 import Content from '../components/Content';
@@ -772,9 +774,9 @@ return (
 
 ### Testing
 
-Run the app and make sure it's working as expected, even if in a rather ugly fashion.
+Run the app and make sure it works as expected, even if in a rather ugly fashion.
 
-### Add UI Hints
+### Add UI hints
 
 With this kind of app, you're likely to have two types of users. Those that have upgraded to the [Flow Wallet] can take advantage of advanced features such as batched transactions, and those who haven't cannot.
 
@@ -795,13 +797,13 @@ It's up to you to make the app pretty. If you need inspiration, you can always c
 
 ## Conclusion
 
-In this tutorial, you reviewed the demo starter for building hybrid applications that utilize a common EVM stack and integrate with Flow Cadence. You then added functionality to interface with another contract that mints ERC-20 tokens. Finally, you supercharged your app by using the power of Cadence for EVM multi-call contract writes.
+In this tutorial, you reviewed the demo starter for building hybrid applications that use a common EVM stack and integrate with Flow Cadence. You then added functionality to interface with another contract that mints ERC-20 tokens. Finally, you supercharged your app by using the power of Cadence for EVM multi-call contract writes.
 
-Now that you have completed the tutorial, you should be able to:
+Now that you have completed the tutorial, you will be able to:
 
-- Build an app that seamlessly integrates Flow Cadence and Flow EVM connections
-- Add Cadence features to your [Rainbowkit]/[wagmi]/[viem] app
-- Utilize [Flow Client Library (FCL)] to enable multi-call contract writes to Flow EVM
+- Build an app that seamlessly integrates Flow Cadence and Flow EVM connections.
+- Add Cadence features to your [Rainbowkit]/[wagmi]/[viem] app.
+- Use [Flow Client Library (FCL)] to enable multi-call contract writes to Flow EVM.
 
 <!-- Relative links, will not render on page -->
 
