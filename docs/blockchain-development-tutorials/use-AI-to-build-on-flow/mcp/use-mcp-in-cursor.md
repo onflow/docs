@@ -110,7 +110,7 @@ If you encounter any issues:
 4. Try restarting Cursor.
 5. Check the console for any error messages.
 
-## Additional Resources
+## Additional resources
 
 - [Flow MCP GitHub Repository]
 - [Cursor Documentation]
