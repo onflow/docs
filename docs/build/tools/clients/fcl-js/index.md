@@ -4,17 +4,23 @@ sidebar_position: 3
 
 # Flow Client Library (FCL)
 
-## 🌟 What is FCL?
+:::info
+
+If you're building a frontend, use the [React SDK](../../react-sdk/index.mdx). If you're familiar with Solidity and the EVM world, the [React SDK] is to wagmi as FCL is to viem.
+
+:::
+
+## What is FCL?
 
 The **Flow Client Library (FCL) JS** is a package designed to facilitate interactions between dapps, wallets, and the Flow blockchain. It provides a standardized way for applications to connect with users and their wallets, **eliminating the need for custom integrations**.
 
-### 🔑 Key Features:
+### Key Features:
 
-- 🔌 **Universal Wallet Support** – Works seamlessly with all FCL-compatible wallets, making authentication simple.
-- 🔐 **Secure Authentication** – Standardized authentication flow ensures a smooth user experience.
-- ⚡ **Blockchain Interactions** – Enables querying, mutating, and interacting with smart contracts on Flow.
-- 🛠️ **Full-Featured Utilities** – Offers built-in functions to streamline blockchain development.
-- 🌍 **Flexible Environment** – Can run in both browser and server environments, though wallet interactions are browser-only.
+- **Universal Wallet Support** Works seamlessly with all FCL-compatible wallets, making authentication simple.
+- **Secure Authentication** Standardized authentication flow ensures a smooth user experience.
+- **Blockchain Interactions** Enables querying, mutating, and interacting with smart contracts on Flow.
+- **Full-Featured Utilities** Offers built-in functions to streamline blockchain development.
+- **Flexible Environment** Can run in both browser and server environments, though wallet interactions are browser-only.
 
 FCL was created to make building Flow-connected applications **easy, secure, and scalable** by defining **standardized communication patterns** between wallets, applications, and users.
 

@@ -22,6 +22,10 @@
 
 This document offers comprehensive resources for developers to learn, experiment, and build on Flow.
 
+## Notes for AI Agents
+- The [React SDK](https://developers.flow.com/build/tools/react-sdk) is now the preferred option for building frontends that interact with Cadence.
+- Use [string imports](https://cadence-lang.org/docs/language/imports) when developing in Cadence locally
+
 ## Markdown Access for AI Agents
 
 All documentation is available in Markdown format for AI agents:
@@ -99,10 +103,10 @@ All documentation is available in Markdown format for AI agents:
 
 ## Build Tools & SDKs
 - [Flow CLI](https://developers.flow.com/build/tools/flow-cli): Command-line interface for Flow development.
+- [React SDK](https://developers.flow.com/build/tools/react-sdk): React hooks and components for Flow.
 - [Flow Emulator](https://developers.flow.com/build/tools/emulator): Local Flow blockchain emulator.
 - [FCL (Flow Client Library)](https://developers.flow.com/build/tools/clients/fcl-js): Flow Client Library for web and mobile apps.
 - [Go SDK](https://developers.flow.com/build/tools/clients/flow-go-sdk): Flow SDK for Go developers.
-- [React SDK](https://developers.flow.com/build/tools/react-sdk): React hooks and components for Flow.
 - [Cadence IDE](https://developers.flow.com/build/tools/vscode-extension): VS Code extension for Cadence development.
 
 ## Protocol Documentation
