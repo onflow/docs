@@ -181,18 +181,18 @@
   "rewrites": [
     {
       "source": "/blockchain-development-tutorials/:path*",
-      "destination": "/md/blockchain-development-tutorials/:path*",
+      "destination": "/md/break-this-link/:path*.md",
       "has": [
         {
           "type": "header",
           "key": "accept",
-          "value": "text/markdown"
+          "value": "^text/markdown$"
         }
       ]
     },
     {
       "source": "/blockchain-development-tutorials/:path*",
-      "destination": "/md/blockchain-development-tutorials/:path*",
+      "destination": "/md/blockchain-development-tutorials/:path*.md",
       "has": [
         {
           "type": "query",
@@ -203,7 +203,7 @@
     },
     {
       "source": "/build/:path*",
-      "destination": "/md/build/:path*",
+      "destination": "/md/build/:path*.md",
       "has": [
         {
           "type": "header",
@@ -214,7 +214,7 @@
     },
     {
       "source": "/build/:path*",
-      "destination": "/md/build/:path*",
+      "destination": "/md/build/:path*.md",
       "has": [
         {
           "type": "query",
@@ -225,7 +225,7 @@
     },
     {
       "source": "/protocol/:path*",
-      "destination": "/md/protocol/:path*",
+      "destination": "/md/protocol/:path*.md",
       "has": [
         {
           "type": "header",
@@ -236,7 +236,7 @@
     },
     {
       "source": "/protocol/:path*",
-      "destination": "/md/protocol/:path*",
+      "destination": "/md/protocol/:path*.md",
       "has": [
         {
           "type": "query",
@@ -247,7 +247,7 @@
     },
     {
       "source": "/ecosystem/:path*",
-      "destination": "/md/ecosystem/:path*",
+      "destination": "/md/ecosystem/:path*.md",
       "has": [
         {
           "type": "header",
@@ -258,7 +258,7 @@
     },
     {
       "source": "/ecosystem/:path*",
-      "destination": "/md/ecosystem/:path*",
+      "destination": "/md/ecosystem/:path*.md",
       "has": [
         {
           "type": "query",
@@ -273,7 +273,7 @@
     },
     {
       "source": "/blockchain-development-tutorials/:path*",
-      "destination": "/md/blockchain-development-tutorials/:path*",
+      "destination": "/md/blockchain-development-tutorials/:path*.md",
       "has": [
         {
           "type": "header",
@@ -284,7 +284,7 @@
     },
     {
       "source": "/build/:path*",
-      "destination": "/md/build/:path*",
+      "destination": "/md/build/:path*.md",
       "has": [
         {
           "type": "header",
@@ -295,7 +295,7 @@
     },
     {
       "source": "/protocol/:path*",
-      "destination": "/md/protocol/:path*",
+      "destination": "/md/protocol/:path*.md",
       "has": [
         {
           "type": "header",
@@ -306,7 +306,7 @@
     },
     {
       "source": "/ecosystem/:path*",
-      "destination": "/md/ecosystem/:path*",
+      "destination": "/md/ecosystem/:path*.md",
       "has": [
         {
           "type": "header",
