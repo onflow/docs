@@ -12,15 +12,15 @@ keywords:
   - blockchain setup
 ---
 
-# Flow EVM Setup
+# Flow EVM setup
 
-Before diving into Flow EVM development, you'll need to configure your development environment and connect the necessary tools. This section covers the essential setup steps required to start building on Flow EVM, from wallet configuration to network integration. These foundational setup guides ensure you have the proper connections and configurations needed for seamless Flow EVM development.
+Before you dive into Flow EVM development, you'll need to configure your development environment and connect the necessary tools. This section covers the essential setup steps required to build on Flow EVM, from wallet configuration to network integration. These foundational setup guides ensure you have the proper connections and configurations needed for seamless Flow EVM development.
 
-Whether you're setting up MetaMask for the first time or integrating Flow network support into your existing dApp, these tutorials provide step-by-step instructions for establishing a robust development environment on Flow's EVM-compatible blockchain.
+Whether you're setting up MetaMask for the first time or integrating Flow network support into your current dApp, these tutorials provide step-by-step instructions to establish a robust development environment on Flow's EVM-compatible blockchain.
 
 ## [Integrating MetaMask]
 
-Learn how to programmatically integrate the Flow network with MetaMask wallets using EIP-3035 and the MetaMask Custom Networks API. This guide demonstrates creating user-friendly network addition buttons that automatically configure Flow testnet and mainnet settings in MetaMask without requiring manual user input. You'll implement proper error handling and user experience flows to ensure seamless wallet onboarding for your Flow EVM applications.
+Learn how to programmatically integrate the Flow network with MetaMask wallets with EIP-3035 and the MetaMask Custom Networks API. This guide demonstrates howw to create user-friendly network addition buttons that automatically configure Flow testnet and mainnet settings in MetaMask without manual user input. You'll implement proper error handling and user experience flows to ensure seamless wallet onboarding for your Flow EVM applications.
 
 ## Conclusion
 

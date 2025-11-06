@@ -8,9 +8,9 @@ import { AddNetworkButton } from '@site/src/components/addNetworkButton';
 
 # Wallets & Configurations
 
-This document shows how to integrate the Flow Network programmatically with your Dapp via MetaMask.
+This document shows how to integrate the Flow Network programmatically with your dApp via MetaMask.
 
-If you want to add it to your wallet now, you can click the buttons below, or follow the [manual process].
+If you want to add it to your wallet now, click the buttons below, or follow the [manual process].
 
 <BrowserOnly>
   {() => {
@@ -21,7 +21,7 @@ If you want to add it to your wallet now, you can click the buttons below, or fo
 
 ## Metamask
 
-Integrating additional networks into MetaMask can pose challenges for users who lack technical expertise and may lead to errors. Simplifying this process can greatly enhance user onboarding for your application. This guide demonstrates how to create a straightforward button within your frontend application to streamline the addition of the Flow network to MetaMask.
+To integrate additional networks into MetaMask can pose challenges for users who lack technical expertise and may lead to errors. If you simplify this process, you can greatly enhance user onboarding for your application. This guide demonstrates how to create a straightforward button within your frontend application to streamline the addition of the Flow network to MetaMask.
 
 ### EIP-3035 & MetaMask
 
@@ -45,7 +45,7 @@ export const TESTNET_PARAMS = {
 };
 ```
 
-### Adding Flow Network
+### Add Flow network
 
 To add this configuration to MetaMask, call the `wallet_addEthereumChain` method which is exposed by the web3 provider.
 
@@ -76,7 +76,7 @@ Users of your app will need to first approve a connection to Metamask. After doi
 
 After they approve, your app will be connected to the Flow network.
 
-By using this approach to add the Flow network to Metamask, you can avoid manual user data entry and ensure that users are ready to interact with your dApp!
+If you use this approach to add the Flow network to Metamask, you can avoid manual user data entry and ensure that users are ready to interact with your dApp!
 
 {/* Reference-style links, does not render on page */}
 
