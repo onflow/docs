@@ -53,7 +53,7 @@ let output = afterFee * price            // More precision lost
 let finalAmount = output / someRatio     // Even more precision lost
 ```
 
-After three-to-four sequential operations, significant cumulative rounding errors can occur, especially when dealing with large amounts. Assuming a rounding error with eight decimals (1.234567885 rounds up to 1.23456789, causing a rounding error of 0.000000005), then after 100 operations with this error and dealing with one million dollars USDF, the protocol loses $0.5 in revenue from this lack of precision. This might not seem like a lot, but if we consider the TVL of Aave, which is around 40 billion USD, then that loss results in $20,000 USD!  
+After three-to-four sequential operations, significant cumulative rounding errors can occur, especially when dealing with large amounts. Assuming a rounding error with eight decimals (1.234567885 rounds up to 1.23456789, causing a rounding error of 0.000000005), then after 100 operations with this error and dealing with one million dollars USDF, the protocol loses $0.5 in revenue from this lack of precision. This might not seem like a lot, but if we consider the TVL of Aave, which is around 40 billion USD, then that loss results in $20,000 USD!
 
 ## The solution: 24-decimal precision
 
@@ -61,7 +61,7 @@ After three-to-four sequential operations, significant cumulative rounding error
 
 :::Warning
 
-There is still some precision loss occurring, but it is much smaller than with eight decimals. 
+There is still some precision loss occurring, but it is much smaller than with eight decimals.
 
 :::
 
@@ -146,7 +146,7 @@ let protocolFee = DeFiActionsMathUtils.toUFix64RoundUp(calculatedFee)
 let displayValue = DeFiActionsMathUtils.toUFix64Round(calculatedValue)
 ```
 
-**RoundEven** - Select this for scenarios with many repeated calculations where you want to minimize systematic bias. Also known as "[banker's rounding]",  this mode rounds ties (exactly 0.5) to the nearest even number, which statistically balances out over many operations, making it ideal for large-scale distributions or statistical calculations.
+**RoundEven** - Select this for scenarios with many repeated calculations where you want to minimize systematic bias. Also known as "[banker's rounding]", this mode rounds ties (exactly 0.5) to the nearest even number, which statistically balances out over many operations, making it ideal for large-scale distributions or statistical calculations.
 
 ```cadence
 // For repeated operations where bias matters
@@ -303,23 +303,23 @@ access(all) fun calculateSwapOutput(
     let reserveOut = DeFiActionsMathUtils.toUInt128(outputReserve)
     let fee = DeFiActionsMathUtils.toUInt128(feeBasisPoints)
     let basisPoints = DeFiActionsMathUtils.toUInt128(10000.0)
-    
+
     // Calculate: inputWithFee = inputAmount * (10000 - fee)
     let feeMultiplier = DeFiActionsMathUtils.div(
         basisPoints - fee,
         basisPoints
     )
     let inputWithFee = DeFiActionsMathUtils.mul(input, feeMultiplier)
-    
+
     // Calculate: numerator = inputWithFee * outputReserve
     let numerator = DeFiActionsMathUtils.mul(inputWithFee, reserveOut)
-    
+
     // Calculate: denominator = inputReserve + inputWithFee
     let denominator = reserveIn + inputWithFee
-    
+
     // Calculate output: numerator / denominator
     let output = DeFiActionsMathUtils.div(numerator, denominator)
-    
+
     // Return with conservative rounding (round down for user protection)
     return DeFiActionsMathUtils.toUFix64RoundDown(output)
 }
@@ -344,19 +344,19 @@ access(all) fun calculateCompoundInterest(
     let n = DeFiActionsMathUtils.toUInt128(UFix64(periodsPerYear))
     let t = DeFiActionsMathUtils.toUInt128(numberOfYears)
     let one = DeFiActionsMathUtils.toUInt128(1.0)
-    
+
     // Calculate: rate per period = r / n
     let ratePerPeriod = DeFiActionsMathUtils.div(r, n)
-    
+
     // Calculate: (1 + rate per period)
     let onePlusRate = one + ratePerPeriod
-    
+
     // Calculate: number of periods = n * t
     let totalPeriods = DeFiActionsMathUtils.mul(n, t)
-    
+
     // Note: For production, you'd need to implement a power function
     // This is simplified for demonstration
-    
+
     // Calculate final amount with rounding
     return DeFiActionsMathUtils.toUFix64Round(finalAmount)
 }
@@ -378,11 +378,11 @@ access(all) fun calculateProportionalShare(
     let rewards = DeFiActionsMathUtils.toUInt128(totalRewards)
     let stake = DeFiActionsMathUtils.toUInt128(userStake)
     let total = DeFiActionsMathUtils.toUInt128(totalStaked)
-    
+
     // Calculate: (userStake / totalStaked) * totalRewards
     let proportion = DeFiActionsMathUtils.div(stake, total)
     let userReward = DeFiActionsMathUtils.mul(proportion, rewards)
-    
+
     // Round down for conservative payout
     return DeFiActionsMathUtils.toUFix64RoundDown(userReward)
 }
@@ -404,22 +404,22 @@ access(all) fun calculatePriceImpact(
     let input = DeFiActionsMathUtils.toUInt128(inputAmount)
     let reserveIn = DeFiActionsMathUtils.toUInt128(inputReserve)
     let reserveOut = DeFiActionsMathUtils.toUInt128(outputReserve)
-    
+
     // Calculate initial price: outputReserve / inputReserve
     let initialPrice = DeFiActionsMathUtils.div(reserveOut, reserveIn)
-    
+
     // Calculate new reserves after trade
     let newReserveIn = reserveIn + input
     let k = DeFiActionsMathUtils.mul(reserveIn, reserveOut)
     let newReserveOut = DeFiActionsMathUtils.div(k, newReserveIn)
-    
+
     // Calculate final price: newOutputReserve / newInputReserve
     let finalPrice = DeFiActionsMathUtils.div(newReserveOut, newReserveIn)
-    
+
     // Calculate impact: (initialPrice - finalPrice) / initialPrice
     let priceDiff = initialPrice - finalPrice
     let impact = DeFiActionsMathUtils.div(priceDiff, initialPrice)
-    
+
     return DeFiActionsMathUtils.toUFix64Round(impact)
 }
 ```
@@ -500,7 +500,7 @@ access(all) fun swap(inputAmount: UFix64) {
         inputAmount > 0.0: "Amount must be positive"
         inputAmount <= 1000000.0: "Amount exceeds maximum"
     }
-    
+
     let inputHP = DeFiActionsMathUtils.toUInt128(inputAmount)
     // ... perform calculations
 }

@@ -28,7 +28,7 @@ keywords:
 
 Adding Flow MCP to Cursor gives you powerful AI-driven tools directly inside your code editor. It allows Cursor's AI to understand, query, and interact with Flow blockchain data and smart contracts through a standard protocol called the Model Context Protocol (MCP).
 
-Specifically, it enables you to:
+Specifically, it lets you:
 
 - Ask the AI in Cursor to fetch onchain data such as account balances, account information, or contract source code without leaving your editor.
 - Speed up development by letting AI perform blockchain queries that would normally require manual steps.
@@ -38,20 +38,20 @@ Specifically, it enables you to:
 
 This tutorial will guide you through setting up and using Flow MCP in [Cursor] to enhance your Flow blockchain development experience with AI assistance.
 
-## Learning Objectives
+## Learning objectives
 
-After completing this tutorial, you should be able to:
+After you complete this tutorial, you should be able to:
 
 - Configure Cursor to connect with the Flow MCP server using the MCP protocol.
 - Install and launch the Flow MCP server locally through Cursor.
-- Identify when Flow MCP tools are successfully loaded and ready inside Cursor.
+- Identify when Flow MCP tools successfully load and are ready inside Cursor.
 - Use Flow MCP tools to retrieve blockchain data such as account balances, account details, and contract source code.
 - Troubleshoot common setup and connectivity issues between Cursor and Flow MCP.
 
 ## Prerequisites
 
-- [Cursor] - the AI code editor
-- [Flow MCP GitHub Repository] - the Flow MCP server repository
+- [Cursor] - the AI code editor.
+- [Flow MCP GitHub Repository] - the Flow MCP server repository.
 
 ## Installation
 
@@ -82,21 +82,21 @@ After completing this tutorial, you should be able to:
 
 3. Restart Cursor to load the new MCP configuration.
 
-   You need to wait for the MCP server to start. Once it's ready, you will see there will be a green spot in the left side of `flow-mcp` server name label and all tools for Flow MCP will be displayed.
+   You need to wait for the MCP server to start. After it's ready, a green spot appears in the left side of `flow-mcp` server name label, and all tools for Flow MCP display.
 
    ![Flow MCP server ready](./imgs/flow-mcp-enabled.png)
 
 ## How to use Flow MCP in Cursor
 
-### Checking Flow Balance
+### Check Flow balance
 
 ![Sample Image 1](./imgs/sample-1.png)
 
-### Viewing Account Information
+### View account information
 
 ![Sample Image 2](./imgs/sample-2.png)
 
-### Getting Contract Source Code
+### Get contract source code
 
 ![Sample Image 3](./imgs/sample-3.png)
 
@@ -104,13 +104,13 @@ After completing this tutorial, you should be able to:
 
 If you encounter any issues:
 
-1. Ensure the MCP server is properly installed
-2. Verify the configuration file is in the correct location
-3. Check that the paths in the configuration are correct
-4. Try restarting Cursor
-5. Check the console for any error messages
+1. Ensure the MCP server is properly installed.
+2. Verify the configuration file is in the correct location.
+3. Check that the paths in the configuration are correct.
+4. Try restarting Cursor.
+5. Check the console for any error messages.
 
-## Additional Resources
+## Additional resources
 
 - [Flow MCP GitHub Repository]
 - [Cursor Documentation]
@@ -120,8 +120,8 @@ If you encounter any issues:
 
 For issues or questions:
 
-- Open an issue on the [Flow MCP GitHub Repository]
-- Join the [Flow Discord] community
+- Open an issue on the [Flow MCP GitHub Repository].
+- Join the [Flow Discord] community.
 
 [Cursor]: https://www.cursor.com/
 [Flow MCP GitHub Repository]: https://github.com/outblock/flow-mcp

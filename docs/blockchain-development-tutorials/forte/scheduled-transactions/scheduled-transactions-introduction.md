@@ -15,7 +15,7 @@ keywords:
   - defi automation
 ---
 
-# Introduction to Scheduled Transactions
+# Introduction to Scheduled transactions
 
 :::warning
 

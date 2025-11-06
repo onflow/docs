@@ -237,7 +237,7 @@ let operationID: DeFiActions.UniqueIdentifier
 
 ### Prepare phase
 
-The `prepare` phase runs first in the transaction. You use it to set up and validate a Cadence transaction. It's also the only place where a transaction can interact with a user's account and the [resources] within. 
+The `prepare` phase runs first in the transaction. You use it to set up and validate a Cadence transaction. It's also the only place where a transaction can interact with a user's account and the [resources] within.
 
 **Pool Validation** verifies that the specified pool exists and is accessible.
 
