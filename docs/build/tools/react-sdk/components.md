@@ -12,88 +12,11 @@ import PlaygroundButton from '@site/src/components/PlaygroundButton';
 
 # React SDK Components
 
-## 🎨 Theming
-
-### How Theming Works
-
-All UI components in `@onflow/react-sdk` are styled using [Tailwind CSS](https://tailwindcss.com/) utility classes. The kit supports both light and dark themes out of the box, using Tailwind's `dark:` variant for dark mode styling.
-
-You can customize the look and feel of the kit by providing a custom theme to the `FlowProvider` via the `theme` prop. This allows you to override default colors and styles to better match your app's branding.
-
-```tsx
-import { FlowProvider } from "@onflow/react-sdk"
-
-<FlowProvider
-  config={...}
-  theme={{
-    colors: {
-      primary: {
-        background: "bg-blue-600 dark:bg-blue-400",
-        text: "text-white dark:text-blue-900",
-        hover: "hover:bg-blue-700 dark:hover:bg-blue-300",
-      },
-      // ...other color overrides
-    }
-  }}
->
-  <App />
-</FlowProvider>
-```
-
----
-
-## 🌙 Dark Mode
-
-### How Dark Mode Works
-
-Dark mode is **fully controlled by the parent app** using the `darkMode` prop on `FlowProvider`. The kit does not manage dark mode state internally—this gives you full control and ensures the kit always matches your app's theme.
-
-- `darkMode={false}` (default): Forces all kit components to use light mode styles.
-- `darkMode={true}`: Forces all kit components to use dark mode styles.
-- You can dynamically change the `darkMode` prop to switch themes at runtime.
-
-**Example:**
-
-```tsx
-function App() {
-  // Parent app manages dark mode state
-  const [isDark, setIsDark] = useState(false)
-
-  return (
-    <FlowProvider config={...} darkMode={isDark}>
-      <MyFlowComponents />
-    </FlowProvider>
-  )
-}
-```
-
-**Accessing Dark Mode State in Components:**
-
-You can use the `useDarkMode` hook to check the current mode inside your components:
-
-```tsx
-import { useDarkMode } from "@onflow/react-sdk"
-
-function MyComponent() {
-  // useDarkMode only returns the current state, no setter
-  const { isDark } = useDarkMode()
-  return <div>{isDark ? "Dark mode" : "Light mode"}</div>
-}
-```
-
-### Notes
-
-- The kit does **not** automatically follow system preferences or save user choices. You are responsible for managing and passing the correct `darkMode` value.
-- All kit components will automatically apply the correct Tailwind `dark:` classes based on the `darkMode` prop.
-- For best results, ensure your app's global theme and the kit's `darkMode` prop are always in sync.
-
----
-
 ## Components
 
 ### `Connect`
 
-A drop-in wallet connection component with UI for copy address, logout, and balance display.
+A drop-in wallet connection component with UI for copy address, logout, and balance display. Displays user scheduled transactions within its profile modal with support for multiple tokens.
 
 <div style={{marginBottom: "1.5rem"}}><PlaygroundButton href="https://react.flow.com/#connect" /></div>
 
@@ -103,9 +26,17 @@ A drop-in wallet connection component with UI for copy address, logout, and bala
 - `onConnect?: () => void` – Callback triggered after successful authentication
 - `onDisconnect?: () => void` – Callback triggered after logout
 - `balanceType?: "cadence" | "evm" | "combined"` – Specifies which balance to display (default: `"cadence"`). Options:
-  - `"cadence"`: Shows the FLOW token balance from the Cadence side
-  - `"evm"`: Shows the FLOW token balance from the Flow EVM side
-  - `"combined"`: Shows the total combined FLOW token balance from both sides
+  - `"cadence"`: Shows the token balance from the Cadence side
+  - `"evm"`: Shows the token balance from the Flow EVM side
+  - `"combined"`: Shows the total combined token balance from both sides
+- `balanceTokens?: TokenConfig[]` – Optional array of token configurations to display in the balance selector. Each `TokenConfig` requires:
+  - `symbol: string` – Token symbol (e.g. "FLOW", "USDC")
+  - `name: string` – Full token name
+  - Either `vaultIdentifier: string` (for Cadence tokens) or `erc20Address: string` (for EVM tokens)
+- `modalConfig?: ConnectModalConfig` – Optional configuration for the profile modal:
+  - `scheduledTransactions.show?: boolean` – Whether to show the scheduled transactions tab (default: `false`)
+  - `scheduledTransactions.filterHandlerTypes?: string[]` – Optional array of handler type identifiers to filter displayed transactions
+- `modalEnabled?: boolean` – Whether to show the profile modal on click when connected (default: `true`). When `false`, clicking the button when connected will disconnect instead
 
 ```tsx
 import { Connect } from "@onflow/react-sdk"
@@ -116,7 +47,7 @@ import { Connect } from "@onflow/react-sdk"
 />
 ```
 
-### Live Demo
+#### Live Demo
 
 <FlowProviderDemo>
   <Connect
@@ -124,6 +55,40 @@ import { Connect } from "@onflow/react-sdk"
     onDisconnect={() => console.log("Logged out")}
   />
 </FlowProviderDemo>
+
+---
+
+### `Profile`
+
+A standalone component for displaying wallet information including account address, balance and optional scheduled transactions.
+
+<div style={{marginBottom: "1.5rem"}}><PlaygroundButton href="https://react.flow.com/#profile" /></div>
+
+**Props:**
+
+- `onDisconnect?: () => void` – Callback triggered when the user clicks the disconnect button
+- `balanceType?: "cadence" | "evm" | "combined"` – Specifies which balance to display (default: `"cadence"`). Options:
+  - `"cadence"`: Shows the token balance from the Cadence side
+  - `"evm"`: Shows the token balance from the Flow EVM side
+  - `"combined"`: Shows the total combined token balance from both sides
+- `balanceTokens?: TokenConfig[]` – Optional array of token configurations to display in the balance selector. Each `TokenConfig` requires:
+  - `symbol: string` – Token symbol (e.g. "FLOW", "USDC")
+  - `name: string` – Full token name
+  - Either `vaultIdentifier: string` (for Cadence tokens) or `erc20Address: string` (for EVM tokens)
+- `profileConfig?: ProfileConfig` – Optional configuration for the profile display:
+  - `scheduledTransactions.show?: boolean` – Whether to show the scheduled transactions tab (default: `false`)
+  - `scheduledTransactions.filterHandlerTypes?: string[]` – Optional array of handler type identifiers to filter displayed transactions
+- `className?: string` – Optional custom CSS class
+- `style?: React.CSSProperties` – Optional inline styles
+
+```tsx
+import { Profile } from "@onflow/react-sdk"
+
+<Profile
+  balanceType="combined"
+  onDisconnect={() => console.log("User disconnected")}
+/>
+```
 
 ---
 
@@ -166,7 +131,7 @@ const myTransaction = {
 />
 ```
 
-### Live Demo
+#### Live Demo
 
 <FlowProviderDemo>
   <TransactionButton
@@ -213,7 +178,7 @@ import { TransactionDialog } from "@onflow/react-sdk"
 />
 ```
 
-### Live Demo
+#### Live Demo
 
 <TransactionDialogDemo />
 
@@ -236,7 +201,7 @@ import { TransactionLink } from "@onflow/react-sdk"
 <TransactionLink txId="your-tx-id" />
 ```
 
-### Live Demo
+#### Live Demo
 
 <FlowProviderDemo>
   <TransactionLink
@@ -244,3 +209,157 @@ import { TransactionLink } from "@onflow/react-sdk"
     variant="primary"
   />
 </FlowProviderDemo>
+
+---
+
+### `NftCard`
+
+A component for rendering a NFT with image, name, description, collection details, traits and external links. Features include loading states, error handling, dark mode support and optional custom actions.
+
+<div style={{marginBottom: "1.5rem"}}><PlaygroundButton href="https://react.flow.com/#nftcard" /></div>
+
+**Props:**
+
+- `accountAddress: string` – The Flow account address that owns the NFT
+- `tokenId: string | number` – The ID of the NFT
+- `publicPathIdentifier: string` – The public path identifier for the NFT collection (e.g., "A.0b2a3299cc857e29.TopShot.Collection")
+- `showTraits?: boolean` – Whether to display NFT traits/attributes (default: `false`). Shows up to 4 traits with a button to view all
+- `showExtra?: boolean` – Whether to display additional information like serial number, rarity, and external links (default: `false`)
+- `actions?: NftCardAction[]` – Optional array of custom action buttons displayed in a dropdown menu. Each action requires:
+  - `title: string` – Display text for the action
+  - `onClick: () => Promise<void> | void` – Handler function called when action is clicked
+- `className?: string` – Optional custom CSS class
+- `style?: React.CSSProperties` – Optional inline styles
+
+```tsx
+import { NftCard } from "@onflow/react-sdk"
+
+<NftCard
+  accountAddress="0x1234567890abcdef"
+  tokenId="12345"
+  publicPathIdentifier="A.0b2a3299cc857e29.TopShot.Collection"
+  showTraits={true}
+  showExtra={true}
+  actions={[
+    {
+      title: "Transfer NFT",
+      onClick: async () => {
+        // Handle transfer logic
+      }
+    },
+    {
+      title: "List for Sale",
+      onClick: async () => {
+        // Handle listing logic
+      }
+    }
+  ]}
+/>
+```
+
+---
+
+### `ScheduledTransactionList`
+
+A component for displaying scheduled transactions for a Flow account. Shows transaction metadata including thumbnails, descriptions, priority, scheduled time, execution effort, fees and provides an optional transaction cancellation functionality.
+
+<div style={{marginBottom: "1.5rem"}}><PlaygroundButton href="https://react.flow.com/#scheduledtransactionlist" /></div>
+
+**Props:**
+
+- `address: string` – The Flow account address to fetch scheduled transactions for
+- `filterHandlerTypes?: string[]` – Optional array of handler type identifiers to filter which transactions are displayed. Only transactions with matching `handlerTypeIdentifier` will be shown
+- `cancelEnabled?: boolean` – Whether to show the cancel button for transactions (default: `true`)
+- `className?: string` – Optional custom CSS class
+- `style?: React.CSSProperties` – Optional inline styles
+- `flowClient?: UseFlowScheduledTransactionListArgs["flowClient"]` – Optional custom Flow client instance
+
+```tsx
+import { ScheduledTransactionList } from "@onflow/react-sdk"
+
+<ScheduledTransactionList
+  address="0x1234567890abcdef"
+  filterHandlerTypes={[
+    "A.1234.MyContract.Handler",
+    "A.5678.OtherContract.Handler"
+  ]}
+  cancelEnabled={true}
+/>
+```
+
+---
+
+## Theming
+
+### How Theming Works
+
+All UI components in `@onflow/react-sdk` are styled using [Tailwind CSS](https://tailwindcss.com/) utility classes. The kit supports both light and dark themes out of the box, using Tailwind's `dark:` variant for dark mode styling.
+
+You can customize the look and feel of the kit by providing a custom theme to the `FlowProvider` via the `theme` prop. This allows you to override default colors and styles to better match your app's branding.
+
+```tsx
+import { FlowProvider } from "@onflow/react-sdk"
+
+<FlowProvider
+  config={...}
+  theme={{
+    colors: {
+      primary: {
+        background: "bg-blue-600 dark:bg-blue-400",
+        text: "text-white dark:text-blue-900",
+        hover: "hover:bg-blue-700 dark:hover:bg-blue-300",
+      },
+      // ...other color overrides
+    }
+  }}
+>
+  <App />
+</FlowProvider>
+```
+
+---
+
+## Dark Mode
+
+### How Dark Mode Works
+
+Dark mode is **fully controlled by the parent app** using the `darkMode` prop on `FlowProvider`. The kit does not manage dark mode state internally—this gives you full control and ensures the kit always matches your app's theme.
+
+- `darkMode={false}` (default): Forces all kit components to use light mode styles.
+- `darkMode={true}`: Forces all kit components to use dark mode styles.
+- You can dynamically change the `darkMode` prop to switch themes at runtime.
+
+**Example:**
+
+```tsx
+function App() {
+  // Parent app manages dark mode state
+  const [isDark, setIsDark] = useState(false)
+
+  return (
+    <FlowProvider config={...} darkMode={isDark}>
+      <MyFlowComponents />
+    </FlowProvider>
+  )
+}
+```
+
+**Accessing Dark Mode State in Components:**
+
+You can use the `useDarkMode` hook to check the current mode inside your components:
+
+```tsx
+import { useDarkMode } from "@onflow/react-sdk"
+
+function MyComponent() {
+  // useDarkMode only returns the current state, no setter
+  const { isDark } = useDarkMode()
+  return <div>{isDark ? "Dark mode" : "Light mode"}</div>
+}
+```
+
+#### Notes
+
+- The kit does **not** automatically follow system preferences or save user choices. You are responsible for managing and passing the correct `darkMode` value.
+- All kit components will automatically apply the correct Tailwind `dark:` classes based on the `darkMode` prop.
+- For best results, ensure your app's global theme and the kit's `darkMode` prop are always in sync.
