@@ -11,7 +11,7 @@ import QuickStartShowcase from './QuickStartShowcase';
 
 export type HomePageProps = {};
 
-const HomePage = ({}: HomePageProps): JSX.Element => {
+const HomePage = ({}: HomePageProps): React.ReactElement => {
   return (
     <PageBackground gradient="home">
       <>
