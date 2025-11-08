@@ -82,7 +82,7 @@ fcl.authenticate();
 
 ![FCL Default Discovery UI](images/discovery.png)
 
-> **Note**: A [Dapper Wallet](https://meetdapper.com/developers) developer account is required. To enable Dapper Wallet inside FCL, you need to [follow this guide](https://docs.meetdapper.com/get-started).
+> **Note**: A [Dapper Wallet](https://meetdapper.com/developers) developer account is required.
 
 - _Interact with smart contracts_: Authorize transactions via the user's chosen wallet
 - _Prove ownership of a wallet address_: Signing and verifying user signed data
