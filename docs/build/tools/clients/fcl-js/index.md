@@ -80,7 +80,7 @@ fcl.config({
 fcl.authenticate();
 ```
 
-> **Note**: For advanced configuration patterns including scoped clients and multi-tenancy, see the [`createFlowClient` reference documentation](./packages-docs/fcl/createFlowClient).
+> **Note**: For advanced configuration patterns including scoped clients and multi-tenancy, see the [`createFlowClient` reference documentation](./packages-docs/fcl/createFlowClient.md).
 
 ![FCL Default Discovery UI](images/discovery.png)
 

@@ -20,7 +20,7 @@ fcl
   .put('baz', 'buz'); // configures "baz" to be "buz"
 ```
 
-> **Note**: For advanced use cases requiring scoped configuration, isolated client instances, or multi-tenancy support, see the [`createFlowClient` reference documentation](./packages-docs/fcl/createFlowClient).
+> **Note**: For advanced use cases requiring scoped configuration, isolated client instances, or multi-tenancy support, see the [`createFlowClient` reference documentation](./packages-docs/fcl/createFlowClient.md).
 
 ## Getting Configuration Values
 
