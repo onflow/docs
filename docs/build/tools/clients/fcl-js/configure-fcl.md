@@ -20,6 +20,8 @@ fcl
   .put('baz', 'buz'); // configures "baz" to be "buz"
 ```
 
+> **Note**: For advanced use cases requiring scoped configuration, isolated client instances, or multi-tenancy support, see the [`createFlowClient` reference documentation](./packages-docs/fcl/createFlowClient).
+
 ## Getting Configuration Values
 
 The `config` instance has an asynchronous `get` method. You can also pass it a fallback value incase the configuration state does not include what you are wanting.

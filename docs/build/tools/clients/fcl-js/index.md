@@ -80,6 +80,8 @@ fcl.config({
 fcl.authenticate();
 ```
 
+> **Note**: For advanced configuration patterns including scoped clients and multi-tenancy, see the [`createFlowClient` reference documentation](./packages-docs/fcl/createFlowClient).
+
 ![FCL Default Discovery UI](images/discovery.png)
 
 > **Note**: A [Dapper Wallet](https://meetdapper.com/developers) developer account is required.
