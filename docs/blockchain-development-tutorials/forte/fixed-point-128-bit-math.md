@@ -16,9 +16,9 @@ keywords:
 sidebar_label: DeFi Math Utils
 ---
 
-# High-Precision Fixed-Point 128 Bit Math
+# High-precision fixed-point 128 bit math 
 
-Dealing with decimals is a notorious issue for most developers on other chains, especially when working with decentralized finance (DeFi). Blockchains are deterministic systems and floating-point arithmetic is non-deterministic across different compilers and architectures, which is why blockchains use fixed-point arithmetic via integers (scaling numbers by a fixed factor).
+Dealing with decimals is a notorious issue for most developers on other chains, especially when working with decentralized finance (DeFi). Blockchains are deterministic systems and floating-point arithmetic is non-deterministic across different compilers and architectures, which is why blockchains use fixed-point arithmetic via integers (scaling numbers by a fixed factor). 
 
 The issue with this is that these fixed-point integers tend to be very imprecise when using various mathematical operations on them. The more operations you apply to these numbers, the more imprecise these numbers become. However [`DeFiActionsMathUtils`] provides a standardized library for high-precision mathematical operations in DeFi applications on Flow. The contract extends Cadence's native 8-decimal precision (`UFix64`) to 24 decimals using `UInt128` for intermediate calculations, ensuring accuracy in complex financial computations while maintaining deterministic results across the network.
 
@@ -26,11 +26,11 @@ Through integration of this math utility library, developers can ensure that the
 
 :::info
 
-While this documentation focuses on DeFi use cases, you can use these mathematical utilities for any application requiring high-precision decimal arithmetic beyond the native 8-decimal limitation of `UFix64`.
+While this document focuses on DeFi use cases, you can use these mathematical utilities for any application requiring high-precision decimal arithmetic beyond the native 8-decimal limitation of `UFix64`.
 
 :::
 
-## The Precision Problem
+## The precision problem
 
 DeFi applications often require multiple sequential calculations, and each operation can introduce rounding errors. When these errors compound over multiple operations, they can lead to:
 
@@ -55,7 +55,7 @@ let finalAmount = output / someRatio     // Even more precision lost
 
 After three-to-four sequential operations, significant cumulative rounding errors can occur, especially when dealing with large amounts. Assuming a rounding error with eight decimals (1.234567885 rounds up to 1.23456789, causing a rounding error of 0.000000005), then after 100 operations with this error and dealing with one million dollars USDF, the protocol loses $0.5 in revenue from this lack of precision. This might not seem like a lot, but if we consider the TVL of Aave, which is around 40 billion USD, then that loss results in $20,000 USD!
 
-## The Solution: 24-Decimal Precision
+## The solution: 24-decimal precision
 
 [`DeFiActionsMathUtils`] solves this with `UInt128` to represent fixed-point numbers with 24 decimal places (scaling factor of 10^24). This provides 16 additional decimal places for intermediate calculations, dramatically reducing precision loss.
 
@@ -65,7 +65,7 @@ There is still some precision loss occurring, but it is much smaller than with e
 
 :::
 
-### The Three-Tier Precision System
+### The three-tier precision system
 
 The contract implements a precision sandwich pattern:
 
@@ -89,7 +89,7 @@ let result = DeFiActionsMathUtils.mul(highPrecision, anotherValue)
 let output = DeFiActionsMathUtils.toUFix64Round(result)
 ```
 
-## Core Constants
+## Core constants
 
 The contract defines several key constants:
 
@@ -101,7 +101,7 @@ access(all) let decimals: UInt8 // 24
 
 These constants ensure consistent scaling across all operations.
 
-## Rounding Modes
+## Rounding modes
 
 Smart rounding is the strategic selection of rounding strategies based on the financial context of your calculation. After performing high-precision calculations at 24 decimals, you must convert the final results back to `UFix64` (8 decimals). How you handle this conversion can protect your protocol from losses, ensure fairness to users, and reduce systematic bias.
 
@@ -123,7 +123,7 @@ access(all) enum RoundingMode: UInt8 {
 }
 ```
 
-### When to Use Each Mode
+### When to use each mode
 
 **RoundDown** - Choose this when you calculate user payouts, withdrawals, or rewards. When you round down, your protocol retains any fractional amounts, which protects against losses from accumulated rounding errors. This is the conservative choice when funds leave your protocol.
 
@@ -153,11 +153,11 @@ let displayValue = DeFiActionsMathUtils.toUFix64Round(calculatedValue)
 let unbiasedValue = DeFiActionsMathUtils.toUFix64(calculatedValue, DeFiActionsMathUtils.RoundingMode.RoundEven)
 ```
 
-## Core Functions
+## Core functions
 
-### Conversion Functions
+### Conversion functions
 
-**Converting UFix64 to UInt128**
+**Convert UFix64 to UInt128**
 
 ```cadence
 access(all) view fun toUInt128(_ value: UFix64): UInt128
@@ -175,7 +175,7 @@ let highPrecisionPrice = DeFiActionsMathUtils.toUInt128(price)
 // highPrecisionPrice = 123456789000000000000000000 (represents 123.45678900... with 24 decimals)
 ```
 
-**Converting UInt128 to UFix64**
+**Convert UInt128 to UFix64**
 
 ```cadence
 access(all) view fun toUFix64(_ value: UInt128, _ roundingMode: RoundingMode): UFix64
@@ -200,7 +200,7 @@ let ceilingValue = DeFiActionsMathUtils.toUFix64RoundUp(highPrecisionValue)
 // ceilingValue = 1234567.89012346 (rounded up to 8 decimals)
 ```
 
-## High-Precision Arithmetic
+## High-precision arithmetic
 
 ### Multiplication
 
@@ -251,7 +251,7 @@ let result = DeFiActionsMathUtils.toUFix64Round(pricePerShare)
 // result = 500.0
 ```
 
-### UFix64 Division with Rounding
+### UFix64 division with rounding
 
 For convenience, the contract provides direct division functions that handle
 conversion and rounding in one call:
@@ -281,11 +281,11 @@ let perUserFee = DeFiActionsMathUtils.divUFix64WithRoundingUp(totalAmount, numbe
 // perUserFee = 333.33333334
 ```
 
-## Common DeFi Use Cases
+## Common DeFi use cases
 
-### Liquidity Pool Pricing (Constant Product AMM)
+### Liquidity pool pricing (constant product AMM)
 
-Automated Market Makers like Uniswap use the formula `x * y = k`. Here's how to calculate swap outputs with high precision:
+Automated Market Makers (AMM) like Uniswap use the formula `x * y = k`. Here's how to calculate swap outputs with high precision:
 
 ```cadence
 import DeFiActionsMathUtils from 'ContractAddress'
@@ -325,7 +325,7 @@ access(all) fun calculateSwapOutput(
 }
 ```
 
-### Compound Interest Calculations
+### Compound interest calculations
 
 Calculate compound interest for yield farming rewards:
 
@@ -362,7 +362,7 @@ access(all) fun calculateCompoundInterest(
 }
 ```
 
-### Proportional Distribution
+### Proportional distribution
 
 Distribute rewards proportionally among stakeholders:
 
@@ -388,7 +388,7 @@ access(all) fun calculateProportionalShare(
 }
 ```
 
-### Price Impact Calculation
+### Price impact calculation
 
 Calculate the price impact of a large trade:
 
@@ -424,9 +424,9 @@ access(all) fun calculatePriceImpact(
 }
 ```
 
-## Benefits of High-Precision Math
+## Benefits of high-precision math
 
-### Precision Preservation
+### Precision preservation
 
 The 24-decimal precision provides headroom for complex calculations:
 
@@ -439,7 +439,7 @@ let step4 = DeFiActionsMathUtils.div(step3, valueE)
 // Still maintains 24 decimals of precision until final conversion
 ```
 
-### Overflow Protection
+### Overflow protection
 
 The contract uses `UInt256` for intermediate multiplication to prevent overflow:
 
@@ -462,7 +462,7 @@ access(all) view fun assertWithinUFix64Bounds(_ value: UInt128) {
 }
 ```
 
-## Best Practices
+## Best practices
 
 Always Use High Precision for Intermediate Calculations.
 
@@ -506,7 +506,7 @@ access(all) fun swap(inputAmount: UFix64) {
 }
 ```
 
-## More Resources
+## More resources
 
 - [View the DeFiActionsMathUtils source code]
 - [Flow DeFi Actions Documentation]

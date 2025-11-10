@@ -23,8 +23,6 @@ keywords:
 
 # Native Data Availability With Cadence Scripts
 
-## Overview
-
 In Solidity, you can only retrieve data from **view** functions that the contract author anticipated and included in the original contract. If the exact query you want is not exposed, teams typically rely on a _data availability service_ such as The Graph, Covalent, Alchemy Enhanced APIs, Reservoir, or NFTScan to compute and serve that view.
 
 In Cadence, **scripts** are general-purpose read programs. They can traverse public account storage, read public capabilities, and compose types from multiple contracts to answer new questions without modifying those contracts. You are not limited to the pre-written surface area of a single contract's views.
@@ -62,7 +60,7 @@ If you are new to [_Hybrid Custody_], the high-level idea is that in Cadence, a 
 
 :::
 
-## Getting Started
+## Get started
 
 Create a new Flow project and generate a script file:
 
@@ -83,7 +81,7 @@ We will **revise one script file** in four passes, and run it after each step. T
 
 ---
 
-## Querying the account to find child accounts
+## Query the account to find child accounts
 
 To start, write a script that borrows the parent's _Hybrid Custody_ manager and returns the child addresses it controls. This verifies that imports resolve and that the parent account is configured as expected.
 
@@ -427,7 +425,7 @@ This demonstrates how you can easily modify Cadence scripts to answer different 
 - If you see empty results in Step 4, confirm `isTopShot` matches the identifiers you observed in Step 3.
 - If you are not using _Hybrid Custody_, you can adapt Steps 2-4 to use `getAccount(child)` and scan **publicly exposed** `{NonFungibleToken.CollectionPublic}` capabilities, but you will not be able to assert provider access.
 
-## How This Compares to Solidity
+## How This compares to Solidity
 
 - **Solidity views are fixed**: You can only retrieve what the contract author exposed via `view` or `pure` functions. If you need a different aggregation or cross-contract traversal, you typically rely on a _data availability service_ or write a new contract to expose that view.
 - **Cadence scripts are flexible**: You compose types across modules, traverse account storage, and read public capabilities at query time. You do not need to redeploy contracts to answer new questions.

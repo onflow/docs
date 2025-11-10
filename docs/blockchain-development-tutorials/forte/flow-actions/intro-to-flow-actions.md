@@ -29,11 +29,19 @@ keywords:
 
 # Introduction to Flow Actions
 
+:::warning
+
+We are reviewing and finalizing Flow Actions in [FLIP 339]. The specific implementation may change as a part of this process.
+
+We will update these tutorials, but you may need to refactor your code if the implementation changes.
+
+:::
+
 _Actions_ are a suite of standardized Cadence interfaces that allow developers to compose complex workflows, starting with decentralized finance (DeFi) workflows, by connecting small, reusable components. Actions provide a "LEGO" framework of blocks where each component performs a single operation (deposit, withdraw, swap, price lookup, flash loan) while maintaining composability with other components. This creates sophisticated workflows executable in a single atomic transaction.
 
 By using Flow Actions, developers can remove large amounts of tailored complexity from building DeFi apps and can instead focus on business logic using nouns and verbs.
 
-## Key Features
+## Key features
 
 - **Atomic Composition** - All operations complete or fail together.
 - **Weak Guarantees** - Flexible error handling, no-ops when conditions aren't met.
@@ -43,7 +51,7 @@ By using Flow Actions, developers can remove large amounts of tailored complexit
 
 ## Learning Objectives
 
-After completing this tutorial, you will be able to:
+After you complete this tutorial, you will be able to:
 
 - Understand the key features of Flow Actions including atomic composition, weak guarantees, and event traceability
 - Create and use Sources to provide tokens from various protocols and locations
@@ -56,11 +64,11 @@ After completing this tutorial, you will be able to:
 
 # Prerequisites
 
-## Cadence Programming Language
+## Cadence programming language
 
 This tutorial assumes you have a modest knowledge of [Cadence]. If you don't, you can follow along, but you'll get more out of it if you complete our [Cadence] tutorials. Most developers find it easier than other blockchain languages and it's not hard to pick up.
 
-## Flow Action Types
+## Flow Action types
 
 The first five Flow Actions implement five core primitives to integrate external DeFi protocols.
 
@@ -92,7 +100,7 @@ To instantiate Flow Actions, create an instance of the appropriate [struct] from
 
 For more information, read the [connectors article].
 
-## Token Types
+## Token types
 
 In Cadence, tokens that adhere to the [Fungible Token Standard] have types that work with type safety principles.
 
@@ -289,7 +297,7 @@ transaction {
 }
 ```
 
-### Price Oracle
+### Price oracle
 
 A price [oracle] provides price data for assets with a consistent denomination. All prices are returned in the same unit and will return `nil` rather than reverting in the event that a price is unavailable. Prices are indexed by [Cadence type], requiring a specific Cadence-based token type for which to serve prices, as opposed to looking up an asset by a generic address.
 
@@ -461,7 +469,7 @@ fun flashloanCallback(fee: UFix64, loan: @{FungibleToken.Vault}, data: AnyStruct
 }
 ```
 
-## Identification and Traceability
+## Identification and traceability
 
 The `UniqueIdentifier` allows protocols to trace stack operations via Flow Actions interface-level events, identifying them by IDs. `IdentifiableResource` implementations should verify that access to the identifier is encapsulated by the structures they identify.
 
@@ -554,29 +562,29 @@ transaction {
 }
 ```
 
-## Why `UniqueIdentifier` Matters in FlowActions
+## Why `UniqueIdentifier` matters in FlowActions
 
 The `UniqueIdentifier` is used to tag multiple FlowActions connectors as part of the **same logical operation**.  
 By aligning the same ID across connectors (for example, Source → Swapper → Sink), you can:
 
-### 1. Event Correlation
+### 1. Event correlation
 
 - Every connector emits events tagged with its `UniqueIdentifier`.
 - Shared IDs let you filter and group related events in the chain's event stream.
 - Makes it easy to see that a withdrawal, swap, and deposit were part of **one workflow**.
 
-### 2. Stack Tracing
+### 2. Stack tracing
 
 - When using composite connectors (for example, `SwapSource`, `SwapSink`, `MultiSwapper`), IDs allow you to trace the complete path through the stack.
 - Helpful for debugging and understanding the flow of operations inside complex strategies.
 
-### 3. Analytics & Attribution
+### 3. Analytics and attribution
 
 - Allows measuring usage of specific strategies or routes.
 - Lets you join data from multiple connectors into a single logical "transaction" for reporting.
 - Supports fee attribution and performance monitoring across multi-step workflows.
 
-### Without a Shared `UniqueIdentifier`
+### Without a shared `UniqueIdentifier`
 
 - Events from different connectors appear unrelated, even if they occurred in the same transaction.
 - Harder to debug, track, or analyze multi-step processes.

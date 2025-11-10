@@ -16,7 +16,15 @@ keywords:
 
 # Connectors
 
-**Connectors** are the bridge between external DeFi protocols and the standardized Flow Actions primitive interfaces. They act as **protocol adapters** that translate protocol-specific APIs into the universal language of Flow Actions. Think of them as "drivers" that provide a connection between software and a piece of hardware without the software developer needing to know how the hardware expects to receive commands, or an MCP allowing an agent to use an API in a standardized manner.
+:::warning
+
+We are reviewing and finalizing Flow Actions in [FLIP 339]. The specific implementation may change as a part of this process.
+
+We will update these tutorials, but you may need to refactor your code if the implementation changes.
+
+:::
+
+**Connectors** are the bridge between external DeFi protocols and the standardized Flow Actions primitive interfaces. They act as **protocol adapters** that translate protocol-specific APIs into the universal language of Flow Actions. Think of them as "drivers" that provide a connection between software and a piece of hardware without the software developer needing to know how the hardware expects to receive commands, or an MCP allowing an agent to use an API in a standardized manner. 
 
 Flow Actions act as "money LEGOs" with which you can compose various complex operations with simple transactions. These are the benefits of connectors:
 
@@ -24,9 +32,9 @@ Flow Actions act as "money LEGOs" with which you can compose various complex ope
 - Standardized Interface: All connectors implement the same core methods, which makes them interchangeable.
 - Protocol Integration: They handle the complex interactions with different DeFi services (swaps, staking, lending, and so on).
 
-## How Connectors Work
+## How connectors work
 
-### Abstraction Layer
+### Abstraction layer
 
 Connectors sit between your application logic and protocol-specific contracts:
 
@@ -34,7 +42,7 @@ Connectors sit between your application logic and protocol-specific contracts:
 Your DeFi Strategy → Flow Actions Connector → Protocol Contract → Blockchain State
 ```
 
-### Interface Implementation
+### Interface implementation
 
 Each connector implements one or more of the five primitive interfaces:
 
@@ -74,7 +82,7 @@ fun getPrice(baseAsset: Type, quoteAsset: Type): UFix64 // PriceOracle
 fun flashLoan(amount: UFix64, callback: Function) // Flasher
 ```
 
-### Composition Pattern
+### Composition pattern
 
 You can combine Connetors to create sophisticated workflows:
 
@@ -124,9 +132,9 @@ ProtocolA.RewardsSource → SwapConnectors.SwapSource → ProtocolB.StakingSink
 | --------- | -------------------------------- | --------------- | --------------------------------------- |
 | Flasher   | [IncrementFiFlashloanConnectors] | IncrementFi DEX | Flash loans through SwapPair contracts. |
 
-## Guide to Building Connectors
+## Guide to building connectors
 
-### Choose Your Primitive
+### Choose your primitive
 
 First, determine which Flow Actions primitive(s) your connector will implement:
 
@@ -138,7 +146,7 @@ First, determine which Flow Actions primitive(s) your connector will implement:
 | **PriceOracle** | Your protocol provides price data | Oracle feeds, TWAP calculations.               |
 | **Flasher**     | Your protocol offers flash loans  | Arbitrage opportunities, liquidations.         |
 
-### Analyze Your Protocol
+### Analyze your protocol
 
 Study your target protocol to understand:
 
@@ -148,7 +156,7 @@ Study your target protocol to understand:
 - **Fee structures** and payment mechanisms
 - **Access controls** and permissions
 
-### Design Your Connector
+### Design your connector
 
 Plan your connector implementation:
 
@@ -158,11 +166,11 @@ Plan your connector implementation:
 - **Resource management** for token handling
 - **Event emission** for traceability
 
-### Implement the Interface
+### Implement the interface
 
 Create your connector struct implementing the chosen primitive interface(s).
 
-### Add Safety Features
+### Add safety features
 
 Implement safety mechanisms:
 
@@ -171,7 +179,7 @@ Implement safety mechanisms:
 - **Graceful error handling** with no-ops
 - **Resource cleanup** for empty vaults
 
-### Support Flow Actions Standards
+### Support Flow Actions standards
 
 Add required Flow Actions support:
 
@@ -180,9 +188,9 @@ Add required Flow Actions support:
 - **ComponentInfo** for introspection
 - **Event emission** integration
 
-## Best Practices
+## Best practices
 
-### **Error Handling**
+### **Error handling**
 
 - **Graceful Failures**: Return empty results instead of panicking.
 - **Validation**: Check all inputs and preconditions.
@@ -204,7 +212,7 @@ access(all) fun minimumCapacity(): UFix64 {
 }
 ```
 
-### **Capacity and Balance Checking**
+### **Capacity and balance checking**
 
 - **Always Check First**: Validate capacity/availability before operations.
 - **Respect Limits**: Work within available constraints.
@@ -227,7 +235,7 @@ access(all) fun depositCapacity(from: auth(FungibleToken.Withdraw) &{FungibleTok
 }
 ```
 
-### **Type Safety**
+### **Type safety**
 
 - **Validate Types**: Ensure vault types match expected types.
 - **Early Returns**: Fail fast on type mismatches.
@@ -244,13 +252,13 @@ access(all) fun depositCapacity(from: auth(FungibleToken.Withdraw) &{FungibleTok
 }
 ```
 
-### **Event Integration**
+### **Event integration**
 
 - **Leverage Post-conditions**: Flow Actions interfaces emit events automatically.
 - **Provide Context**: Include relevant information in events.
 - **Support Traceability**: Use UniqueIdentifiers consistently.
 
-### **Resource Management**
+### **Resource management**
 
 - **Handle Empty Vaults**: Use `DeFiActionsUtils.getEmptyVault()` for consistent empty vault creation.
 - **Destroy Properly**: Clean up resources in all code paths.
@@ -278,7 +286,7 @@ The `VaultSink` connector is already deployed and working in Flow Actions. Let's
 **Contract**: `FungibleTokenConnectors`
 **Connector**: `VaultSink` struct that defines the interaction with the connector.
 
-### Deploy Your Connector Contract
+### Deploy Your Connector contract
 
 Deploy your connector contract with the following command:
 
@@ -303,7 +311,7 @@ In your 'flow.json' you will find:
 }
 ```
 
-### Create Usage Transactions
+### Create usage transactions
 
 Create transaction templates for using your connectors:
 
@@ -333,7 +341,7 @@ transaction(maxBalance: UFix64) {
 }
 ```
 
-### Real Usage Transaction: VaultSink
+### Real usage transaction: VaultSink
 
 Here's the actual working transaction that creates a VaultSink:
 
@@ -394,7 +402,7 @@ flow transactions send cadence/transactions/fungible-token-stack/save_vault_sink
   --signer emulator
 ```
 
-### Create Combinations Examples
+### Create combinations examples
 
 Show how your connectors work with existing Flow Actions components:
 
@@ -431,7 +439,7 @@ transaction(depositAmount: UFix64) {
 }
 ```
 
-### Add to Existing Workflows
+### Add to existing workflows
 
 You can use VaultSink in advanced Flow Actions workflows:
 
@@ -489,7 +497,7 @@ transaction() {
 }
 ```
 
-### For Your Own Connectors
+### For Your own connectors
 
 When building your own connectors, follow the VaultSink pattern:
 

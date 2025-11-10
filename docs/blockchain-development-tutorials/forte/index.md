@@ -18,7 +18,7 @@ keywords:
 
 This series covers the new features and capabilities introduced in the Forte network upgrade for Flow blockchain. The Forte upgrade brings powerful new tools for building sophisticated decentralized finance (DeFi) applications, including automated DeFi workflows and time-based smart contract execution.
 
-## What's New in Forte
+## What's new in Forte
 
 The Forte network upgrade introduces several features that expand Flow's capabilities:
 
@@ -52,7 +52,7 @@ import CopyButton from '@site/src/components/CopyButton';
 | BandOracleConnectors               | [0x1a9f5d18d096cd7a](https://testnet.flowscan.io/contract/A.1a9f5d18d096cd7a.BandOracleConnectors?tab=deployments)               | <CopyButton text="flow dependencies install testnet://0x1a9f5d18d096cd7a.BandOracleConnectors" title="Copy install command (testnet)" />               | [0xf627b5c89141ed99](https://flowscan.io/contract/A.f627b5c89141ed99.BandOracleConnectors?tab=deployments)               | <CopyButton text="flow dependencies install mainnet://0xf627b5c89141ed99.BandOracleConnectors" title="Copy install command (mainnet)" />               |
 | UniswapV2Connectors                | [0xfef8e4c5c16ccda5](https://testnet.flowscan.io/contract/A.fef8e4c5c16ccda5.UniswapV2Connectors?tab=deployments)                | <CopyButton text="flow dependencies install testnet://0xfef8e4c5c16ccda5.UniswapV2Connectors" title="Copy install command (testnet)" />                | [0x0e5b1dececaca3a8](https://flowscan.io/contract/A.0e5b1dececaca3a8.UniswapV2Connectors?tab=deployments)                | <CopyButton text="flow dependencies install mainnet://0x0e5b1dececaca3a8.UniswapV2Connectors" title="Copy install command (mainnet)" />                |
 
-## Tutorial Series
+## Tutorial series
 
 ### [Flow Actions]
 
@@ -70,14 +70,14 @@ Implement device-backed passkeys with the Web Authentication API to register Flo
 
 Learn about Flow's high-precision mathematical utilities for DeFi applications using UInt128-based 24-decimal fixed-point arithmetic. This tutorial covers how to perform accurate financial calculations, handle rounding modes, and avoid precision loss in complex DeFi operations like liquidity pools, yield farming, and token swaps.
 
-## Getting Started
+## Get started
 
 To begin with Forte tutorials, we recommend that you start with:
 
 1. **[Introduction to Flow Actions]** - Understand the core concepts and architecture
 2. **[Scheduled Transactions Introduction]** - Learn about time-based execution capabilities
 
-## Key Benefits
+## Key benefits
 
 - **Automation**: Build applications that can execute complex workflows automatically
 - **Composability**: Combine different protocols and services seamlessly
