@@ -7,7 +7,17 @@ description: "createFlowClient function documentation."
 
 # createFlowClient
 
-Creates a Flow client instance with authentication, transaction, and query capabilities.
+Creates a Flow client instance with scoped configuration.
+
+This function decouples FCL functions from the global state and constructs a new SDK client
+instance bound to a custom context. This allows for better modularity and supports multiple
+FCL instances in the same application, each with their own isolated configuration and state.
+
+Benefits of scoped configuration:
+- **Isolation**: Each client has its own configuration, storage, and state
+- **Multi-tenancy**: Connect to different Flow networks simultaneously
+- **Type Safety**: Configuration is validated at compile time via TypeScript
+- **Testing**: Easy to create isolated client instances for testing
 
 ## Import
 
@@ -27,6 +37,34 @@ import { createFlowClient } from "@onflow/fcl"
 createFlowClient(params)
 ```
 
+## Usage
+
+```typescript
+// Multiple isolated clients for different networks
+import { createFlowClient } from "@onflow/fcl"
+
+const mainnetClient = createFlowClient({
+  accessNodeUrl: "https://rest-mainnet.onflow.org",
+  flowNetwork: "mainnet",
+  appDetailTitle: "My App (Mainnet)",
+})
+
+const testnetClient = createFlowClient({
+  accessNodeUrl: "https://rest-testnet.onflow.org",
+  flowNetwork: "testnet",
+  appDetailTitle: "My App (Testnet)",
+})
+
+// Query both networks simultaneously
+const [mainnetBlock, testnetBlock] = await Promise.all([
+  mainnetClient.query({
+    cadence: `access(all) fun main(): UInt64 { return getCurrentBlock().height }`,
+  }),
+  testnetClient.query({
+    cadence: `access(all) fun main(): UInt64 { return getCurrentBlock().height }`,
+  }),
+])
+```
 
 ## Parameters
 
@@ -122,6 +160,6 @@ export interface FlowClientConfig {
 ```
 
 
-A Flow client object with many methods for interacting with the Flow blockchain
+A Flow client object with methods for interacting with the Flow blockchain
 
 ---
