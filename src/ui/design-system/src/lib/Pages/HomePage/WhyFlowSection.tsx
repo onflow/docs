@@ -29,7 +29,7 @@ const WhyFlowSection: React.FC = () => {
           {/* Body Text and CTA Link */}
           <div className="flex flex-row items-start justify-between gap-8">
             <p className="text-lg text-gray-700 dark:text-gray-300 leading-relaxed flex-1 max-w-3xl">
-              With <strong>600% YoY TVL growth</strong> to $100M+ and the best risk-adjusted yields in DeFi, Flow is uniquely positioned to power the future of Consumer DeFi.
+              With <strong>600% YoY TVL growth</strong> to $100M+ and the <strong>safest risk-adjusted yields</strong> for consumers in DeFi, Flow is uniquely positioned to power the future of Consumer DeFi.
             </p>
             
             {/* Right: CTA Link */}
