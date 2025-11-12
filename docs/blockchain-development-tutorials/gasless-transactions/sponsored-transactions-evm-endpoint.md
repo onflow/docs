@@ -142,7 +142,7 @@ In this tutorial, we've explored how to set up a gas-free EVM endpoint for your 
 
 The implementation requires careful setup of a service account with sufficient keys for concurrent transactions and proper configuration of the EVM Gateway environment variables. While this solution requires more initial setup compared to if you use the default EVM Gateway, the benefits of providing a gas-free experience to users can significantly enhance your platform's usability and adoption.
 
-Remember that this solution is most effective when you can ensure all user transactions are routed through your custom RPC endpoint. This makes it particularly suitable for centralized services and applications where you control the transaction routing.
+Remember that this solution is only effective when you can ensure all user transactions are routed through your custom RPC endpoint. This makes it particularly suitable for centralized services and applications where you control the transaction routing.
 
 [Flow EVM]: ../../build/evm/using.mdx
 [Using Flow EVM]: ../../build/evm/using.mdx
