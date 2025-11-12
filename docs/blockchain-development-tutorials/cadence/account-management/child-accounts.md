@@ -20,8 +20,8 @@ keywords:
   - user onboarding
 ---
 
-In this doc, we'll dive into a progressive onboarding flow, including the Cadence scripts & transactions that go into
-its implementation in your app. These components will enable any implementing app to create a custodial account, mediate
+In this tutorial, we'll dive into a progressive onboarding flow, including the Cadence scripts & transactions that go into
+its implementation in your app. These components will allow any implementing app to create a custodial account, mediate
 the user's onchain actions on their behalf, and later delegate access of that app-created account to the user's wallet.
 We'll refer to this custodial pattern as the Hybrid Custody Model and the process of delegating control of the app
 account as Account Linking.
@@ -30,34 +30,32 @@ account as Account Linking.
 
 - Create a [walletless onboarding](https://flow.com/post/flow-blockchain-mainstream-adoption-easy-onboarding-wallets)
   transaction
-- Link an existing app account as a child to a newly authenticated parent account
-- Get your app to recognize "parent" accounts along with any associated "child" accounts
-- Put it all together to create a blockchain-native onboarding transaction
+- Link an existing app account as a child to a newly authenticated parent account.
+- Get your app to recognize "parent" accounts along with any associated "child" accounts.
+- Put it all together to create a blockchain-native onboarding transaction.
 - View fungible and non-fungible Token metadata relating to assets across all of a user's associated accounts - their
-  wallet-mediated "parent" account and any "child" accounts
-- Facilitate transactions acting on assets in child accounts
+  wallet-mediated "parent" account and any "child" accounts.
+- Facilitate transactions acting on assets in child accounts.
 
 ## Point of Clarity
 
-Before diving in, let's make a distinction between "account linking" and "linking accounts".
+Before we dive in, let's make a distinction between "account linking" and "linking accounts".
 
 ### Account Linking
 
 :::info
 
-Note that since account linking is a sensitive action, transactions where an account may be linked are designated by a
+Since account linking is a sensitive action, transactions where an account may be linked are designated by a
 topline pragma `#allowAccountLinking`. This lets wallet providers inform users that their account may be linked in the
 signed transaction.
 
 :::
 
-Very simply, account linking is a [feature in Cadence](https://github.com/onflow/flips/pull/53) that let's an
+Very simply, account linking is a [feature in Cadence](https://github.com/onflow/flips/pull/53) that lets an
 [Account](https://cadence-lang.org/docs/language/accounts#authaccount) create a
 [Capability](https://cadence-lang.org/docs/language/capabilities) on itself.
 
-Below is an example demonstrating how to issue an `&Account` Capability from a signing account
-
-transaction:
+Below is an example demonstrating how to issue an `&Account` Capability from a signing account transaction:
 
 ```cadence link_account.cdc
 #allowAccountLinking
@@ -73,9 +71,9 @@ transaction(linkPathSuffix: String) {
 ```
 
 From there, the signing account can retrieve the privately linked `&Account` Capability and delegate it to another
-account, revoking the Capability if they wish to revoke delegated access.
+account, which revokes the Capability if they wish to revoke delegated access.
 
-Note that in order to link an account, a transaction must state the `#allowAccountLinking` pragma in the top line of the
+To link an account, a transaction must state the `#allowAccountLinking` pragma in the top line of the
 transaction. This is an interim safety measure so that wallet providers can notify users they're about to sign a
 transaction that may create a Capability on their `Account`.
 
@@ -83,43 +81,42 @@ transaction that may create a Capability on their `Account`.
 
 Linking accounts leverages this account link, otherwise known as an **`&Account` Capability**, and encapsulates it. The
 [components and actions](https://github.com/onflow/flips/pull/72) involved in this process - what the Capability is
-encapsulated in, the collection that holds those encapsulations, etc. is what we'll dive into in this doc.
+encapsulated in, the collection that holds those encapsulations, and so on is what we'll dive into in this doc.
 
 ## Terminology
 
-**Parent-Child accounts** - For the moment, we'll call the account created by the app the "child" account and the
-account receiving its `&Account` Capability the "parent" account. Existing methods of account access & delegation (i.e.
-keys) still imply ownership over the account, but insofar as linked accounts are concerned, the account to which both
-the user and the app share access via `&Account` Capability will be considered the "child" account.
+**Parent-Child accounts** - For the moment, we'll call the account that the app creates the "child" account and the
+account that receives its `&Account` Capability the "parent" account. Current methods of account access & delegation (for example,
+keys) still imply ownership over the account, but where linked accounts are concerned, the account to which both
+the user and the app share access via `&Account` Capability are considered the "child" account.
 
-**Walletless onboarding** - An onboarding flow whereby an app creates a custodial account for a user, onboarding them to
-the app, obviating the need for user wallet authentication.
+**Walletless onboarding** - An onboarding flow whereby an app creates a custodial account for a user and onboards them to
+the app, which obviates the need for user wallet authentication.
 
 **Blockchain-native onboarding** - Similar to the already familiar Web3 onboarding flow where a user authenticates with
 their existing wallet, an app onboards a user via wallet authentication while additionally creating a custodial app
 account and linking it with the authenticated account, resulting in a "hybrid custody" model.
 
-**Hybrid Custody Model** - A custodial pattern in which an app and a user maintain access to an app created account and
-user access to that account has been mediated via account linking.
+**Hybrid Custody Model** - A custodial pattern in which an app and a user maintain access to an app-created account and
+user access to that account is mediated via account linking.
 
-**Account Linking** - Technically speaking, account linking in our context consists of giving some other account an
+**Account Linking** - Account linking in our context means to give some other account an
 `&Account` Capability from the granting account. This Capability is maintained in standardized resource called a
-`HybridCustody.Manager`, providing its owning user access to any and all of their linked accounts.
+`HybridCustody.Manager`, which provides its owning user access to any and all of their linked accounts.
 
 **Progressive Onboarding** - An onboarding flow that walks a user up to self-custodial ownership, starting with
-walletless onboarding and later linking the app account with the user's authenticated wallet once the user chooses to do
+walletless onboarding and later linking the app account with the user's authenticated wallet when the user chooses to do
 so.
 
 **Restricted Child Account** - An account delegation where the access on the delegating account is restricted according
-to rules set by the linking child account. The distinctions between this and the subsequent term ("owned" account) will
-be expanding on later.
+to rules set by the linking child account. We will expand on the distinctions between this and the subsequent term ("owned" account) later.
 
 **Owned Account** - An account delegation where the delegatee has unrestricted access on the delegating child account,
-thereby giving the delegatee presiding authority superseding any other "restricted" parent accounts.
+which gives the delegatee presiding authority superseding any other "restricted" parent accounts.
 
 ## Account Linking
 
-Linking an account is the process of delegating account access via `&Account` Capability. Of course, we want to do this
+Linking an account delegates account access via `&Account` Capability. Of course, we want to do this
 in a way that allows the receiving account to maintain that Capability and allows easy identification of the accounts on
 either end of the linkage - the user's main "parent" account and the linked "child" account. This is accomplished in the
 `HybridCustody` contract which we'll continue to use in this guidance.
@@ -130,8 +127,8 @@ Since account delegation is mediated by developer-defined rules, you should make
 that contain those rules. Contracts involved in defining and enforcing this ruleset are
 [`CapabilityFilter`](https://github.com/onflow/hybrid-custody/blob/main/contracts/CapabilityFilter.cdc) and
 [`CapabilityFactory`](https://github.com/onflow/hybrid-custody/blob/main/contracts/CapabilityFactory.cdc). The former
-enumerates those types that are and are not accessible from a child account while the latter enables the access of those
-allowable Capabilities such that the returned values can be properly typed - e.g. retrieving a Capability that can be
+enumerates those types that are and are not accessible from a child account while the latter allows the access of those
+allowable Capabilities such that the returned values can be properly typed - for example, retrieving a Capability that can be
 cast to `Capability<&NonFungibleToken.Collection>` for example.
 
 Here's how you would configure an `AllowlistFilter` and add allowed types to it:
@@ -174,7 +171,7 @@ And the following transaction configures a `CapabilityFactory.Manager`, adding N
 
 :::info
 
-Note that the Manager configured here enables retrieval of castable Capabilities. It's recommended that you implement
+The Manager configured here allows retrieval of castable Capabilities. We recommend that you implement
 Factory resource definitions to support any NFT Collections related with the use of your application so that users can
 retrieve Typed Capabilities from accounts linked from your app.
 
@@ -225,18 +222,16 @@ transaction {
 ![resources/hybrid_custody_high_level](./imgs/hybrid_custody_high_level.png)
 
 _In this scenario, a user custodies a key for their main account which maintains access to a wrapped `Account`
-Capability, providing the user restricted access on the app account. The app maintains custodial access to the account
+Capability. This provides the user restricted access on the app account. The app maintains custodial access to the account
 and regulates the access restrictions to delegatee "parent" accounts._
 
-Linking accounts can be done in one of two ways. Put simply, the child account needs to get the parent an `Account`
-Capability, and the parent needs to save that Capability so they can retain access. This delegation must be done manner
-that represents each side of the link while safeguarding the integrity of any access restrictions an application puts in
+You can link accounts in one of two ways. Put simply, the child account needs to get the parent an `Account`
+Capability, and the parent needs to save that Capability so they can retain access. This delegation must occur in a way that represents each side of the link and safeguard the integrity of any access restrictions an application puts in
 place on delegated access.
 
 We can achieve issuance from the child account and claim from the parent account pattern by either:
 
-1. Leveraging [Cadence's `Account.Inbox`](https://cadence-lang.org/docs/language/accounts#account-inbox) to publish the
-   Capability from the child account & have the parent claim the Capability in a subsequent transaction.
+1. Leveraging [Cadence's `Account.Inbox`](https://cadence-lang.org/docs/language/accounts#account-inbox) to publish the Capability from the child account & have the parent claim the Capability in a subsequent transaction.
 2. Executing a multi-party signed transaction, signed by both the child and parent accounts.
 
 Let's take a look at both.
@@ -255,7 +250,7 @@ those NFTs so the user can easily transfer them between their linked accounts.
 
 #### Publish
 
-Here, the account delegating access to itself links its `&Account` Capability, and publishes it to be claimed by the
+Here, the account delegates access to itself, which links its `&Account` Capability and publishes it to be claimed by the
 designated parent account.
 
 ```cadence publish_to_parent.cdc
@@ -295,7 +290,7 @@ transaction(parent: Address, factoryAddress: Address, filterAddress: Address) {
 
 #### Claim
 
-On the other side, the receiving account claims the published `ChildAccount` Capability, adding it to the signer's
+On the other side, the receiving account claims the published `ChildAccount` Capability, which adds it to the signer's
 `HybridCustody.Manager.childAccounts` indexed on the child account's Address.
 
 ```cadence redeem_account.cdc
@@ -361,7 +356,7 @@ achieve Hybrid Custody in a single step.
 
 :::info
 
-Note that while the following code links both accounts in a single transaction, in practicality you may find it easier
+While the following code links both accounts in a single transaction, in practicality you may find it easier
 to execute publish and claim transactions separately depending on your custodial infrastructure.
 
 :::
@@ -540,18 +535,14 @@ power of the complex transactions you can compose on Flow with Cadence!
 
 Recall the [prerequisites](#prerequisites) needed to be satisfied before linking an account:
 
-1. CapabilityFilter Filter saved and linked
-2. CapabilityFactory Manager saved and linked as well as Factory implementations supporting the Capability Types you'll
-   want accessible from linked child accounts as Typed Capabilities.
+1. CapabilityFilter Filter saved and linked.
+2. CapabilityFactory Manager saved and linked as well as Factory implementations supporting the Capability Types you'll want accessible from linked child accounts as Typed Capabilities.
 
 :::
 
 #### Account Creation & Linking
 
-Compared to walletless onboarding where a user does not have a Flow account, blockchain-native onboarding assumes a user
-already has a wallet configured and immediately links it with a newly created app account. This enables the app to sign
-transactions on the user's behalf via the new child account while immediately delegating control of that account to the
-onboarding user's main account.
+Compared to walletless onboarding where a user does not have a Flow account, blockchain-native onboarding assumes a user already has a wallet configured and immediately links it with a newly created app account. This allows the app to sign transactions on the user's behalf via the new child account while immediately delegating control of that account to the onboarding user's main account.
 
 After this transaction, both the custodial party (presumably the client/app) and the signing parent account will have
 access to the newly created account - the custodial party via key access and the parent account via their
@@ -685,11 +676,11 @@ transaction(
 
 ## Funding & Custody Patterns
 
-Aside from implementing onboarding flows & account linking, you'll want to also consider the account funding & custodial
+Aside from implementing onboarding flows and account linking, you'll want to also consider the account funding & custodial
 pattern appropriate for the app you're building. The only pattern compatible with walletless onboarding (and therefore
 the only one showcased above) is one in which the app custodies the child account's key and funds account creation.
 
-In general, the funding pattern for account creation will determine to some extent the backend infrastructure needed to
+In general, the funding pattern for account creation will determine, to some extent, the backend infrastructure needed to
 support your app and the onboarding flow your app can support. For example, if you want to to create a service-less
 client (a totally local app without backend infrastructure), you could forego walletless onboarding in favor of a
 user-funded blockchain-native onboarding to achieve a hybrid custody model. Your app maintains the keys to the app

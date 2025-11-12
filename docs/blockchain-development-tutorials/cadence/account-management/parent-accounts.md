@@ -20,18 +20,18 @@ keywords:
   - account security
 ---
 
-In this doc, we'll continue from the perspective of a wallet or marketplace app seeking to facilitate a unified account
+In this tutorial, we'll continue from the perspective of a wallet or marketplace app seeking to facilitate a unified account
 experience, abstracting away the partitioned access between accounts into a single dashboard for user interactions on
 all their owned assets.
 
 ## Objectives
 
-- Understand the Hybrid Custody account model
-- Differentiate between restricted child accounts and unrestricted owned accounts
-- Get your app to recognize "parent" accounts along with any associated "child" accounts
+- Understand the Hybrid Custody account model.
+- Differentiate between restricted child accounts and unrestricted owned accounts.
+- Get your app to recognize "parent" accounts along with any associated "child" accounts.
 - View Fungible and NonFungible Token metadata relating to assets across all of a user's associated accounts - their
-  wallet-mediated "parent" account and any hybrid custody model "child" accounts
-- Facilitate transactions acting on assets in child accounts
+  wallet-mediated "parent" account and any hybrid custody model "child" accounts.
+- Facilitate transactions acting on assets in child accounts.
 
 ## Design Overview
 
@@ -69,7 +69,7 @@ Parent accounts own a `Manager` resource which stores Capabilities to `ChildAcco
 Therefore, the presence of a `Manager` in an account implies there are potentially associated accounts for which the
 owning account has delegated access. This resource is intended to be configured with a public Capability that enables
 querying of an account's child account addresses via `getAccountAddresses()` and `getOwnedAccountAddresses()`. As you can
-deduce from these two methods, there is a notion of "owned" accounts which we'll expand on in a bit.
+deduce from these two methods, there is a notion of "owned" accounts which we'll expand on later.
 
 A wallet or marketplace wishing to discover all of a user's accounts and assets within them can do so by first looking
 to the user's `Manager`.
@@ -80,20 +80,20 @@ To clarify, insofar as the standard is concerned, an account is a parent account
 and an account is a child account if it contains at minimum an `OwnedAccount` or additionally a `ChildAccount` resource.
 
 Within a user's `Manager`, its mapping of `childAccounts` points to the addresses of its child accounts in each key,
-with corresponding values giving the `Manager` access to those accounts via corresponding `ChildAccount` Capability.
+with corresponding values that give the `Manager` access to those accounts via corresponding `ChildAccount` Capability.
 
 ![HybridCustody Conceptual Overview](./imgs/hybrid_custody_conceptual_overview.png)
 
 Likewise, the child account's `ChildAccount.parentAddress` (which owns a `Manager`) points to the user's account as its
 parent address. This makes it easy to both identify whether an account is a parent, child, or both, and its associated
-parent/child account(s).
+parent or child account(s).
 
 `OwnedAccount` resources underly all account delegations, so can have multiple parents whereas `ChildAccount`s are 1:1.
 This provides more granular revocation as each parent account has its own Capability path on which its access relies.
 
 #### Restricted vs. Owned Accounts
 
-It's worth noting here that `ChildAccount` Capabilities enable access to the underlying account according to rules
+ `ChildAccount` Capabilities allow access to the underlying account according to rules
 configured by the child account delegating access. The `ChildAccount` maintains these rules along with an `OwnedAccount`
 Capability within which the `&Account` Capability is stored. Anyone with access to the surface level `ChildAccount`
 can then access the underlying `Account`, but only according the pre-defined rule set. These rules are fundamentally
@@ -117,7 +117,7 @@ Capability to itself before publishing the new `ChildAccount` Capability for the
 
 :::info
 
-Note that by enumerating allowable Types in your `CapabilityFilter.Filter` implementation, you're by default excluding
+If you enumerate allowable Types in your `CapabilityFilter.Filter` implementation, you by default exclude
 access to anything other than the Types you declare as allowable.
 
 :::
@@ -134,12 +134,12 @@ Do note that this construction does not prevent an account from having multiple 
 being the parent to other accounts. While initial intuition might lead one to believe that account associations are a
 tree with the user at the root, the graph of associated accounts among child accounts may lead to cycles of association.
 
-We believe it would be unlikely for a use case to demand a user delegates authority over their main account (in fact
-we'd discourage such constructions), but delegating access between child accounts could be useful. As an example,
-consider a set of local game clients across mobile and web platforms, each with self-custodied app accounts having
+We believe it's unlikely for a use case to demand a user delegates authority over their main account (in fact
+we'd discourage such constructions), but it might be useful to delegate access between child accounts. As an example,
+consider a set of local game clients across mobile and web platforms, each with self-custodied app accounts that have
 delegated authority to each other while both are child accounts of the user's main account.
 
-Ultimately, it will be up to the implementing wallet/marketplace how far down the graph of account associations they'd
+Ultimately, it's' up to the implementing wallet or marketplace how far down the graph of account associations they'd
 want to traverse and display to the user.
 
 ## Implementation
@@ -199,8 +199,8 @@ Since some accounts hold thousands of NFTs, we recommend breaking up iteration, 
 over accounts and the storage of each account. Batching queries on individual accounts may even be required based on the
 number of NFTs held.
 
-1. Get all associated account addresses (see above)
-2. Looping over each associated account address client-side, get each address's owned NFT metadata
+1. Get all associated account addresses (see above).
+2. Looping over each associated account address client-side, get each address's owned NFT metadata.
 
 For simplicity, we'll show a condensed query, returning NFT display views from all accounts associated with a given
 address for a specified NFT Collection path.
@@ -268,15 +268,15 @@ fun main(address: Address, resolverCollectionPath: PublicPath): {Address: {UInt6
 ```
 
 At the end of this query, the caller will have a mapping of `Display` views indexed on the NFT ID and grouped by account
-Address. Note that this script does not take batching into consideration and assumes that each NFT resolves the
+Address. This script does not take batching into consideration and assumes that each NFT resolves the
 `MetadataViews.Display` view type.
 
 ### Query All Account FungibleToken Balances
 
-Similar to the previous example, we recommend breaking up this task due to memory limits.
+Similar to the previous example, we recommend that you break up this task due to memory limits.
 
-1. Get all linked account addresses (see above)
-2. Looping over each associated account address client-side, get each address's owned FungibleToken Vault metadata
+1. Get all linked account addresses (see above).
+2. Looping over each associated account address client-side, get each address's owned FungibleToken Vault metadata.
 
 However, we'll condense both of these steps down into one script for simplicity:
 
@@ -360,9 +360,9 @@ to aggregate more information about the underlying Vaults.
 
 ### Access NFT in Child Account from Parent Account
 
-A user with NFTs in their child accounts will likely want to utilize said NFTs. In this example, the user will sign a
+A user with NFTs in their child accounts will likely want to utilize said NFTs. In this example, the user signs a
 transaction with their authenticated account that retrieves a reference to a child account's
-`NonFungibleToken.Provider`, enabling withdrawal from the child account having signed as the parent account.
+`NonFungibleToken.Provider`, which allows withdrawal from the child account that signs as the parent account.
 
 ```cadence withdraw_nft_from_child.cdc
 import "NonFungibleToken"
@@ -440,8 +440,7 @@ account and remove it from their `Manager` altogether.
 
 ### Remove a Child Account
 
-As mentioned above, if a user no longer wishes to share access with another party, it's recommended that desired assets
-be transferred from that account to either their main account or other linked accounts and the linked account be removed
+As mentioned above, if a user no longer wishes to share access with another party, we recommended that they transfer desired assets from that account to either their main account or other linked accounts and the linked account be removed
 from their `HybridCustody.Manager`. Let's see how to complete that removal.
 
 ```cadence remove_child_account.cdc
@@ -460,5 +459,5 @@ transaction(child: Address) {
 After removal, the signer no longer has delegated access to the removed account via their `Manager` and the caller is
 removed as a parent of the removed child.
 
-Note also that it's possible for a child account to remove a parent. This is necessary to give application developers
+It's also possible for a child account to remove a parent. This is necessary to give application developers
 and ultimately the owners of these child accounts the ability to revoke secondary access on owned accounts.

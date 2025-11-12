@@ -28,16 +28,16 @@ keywords:
 
 ![Top Shot Preview](./imgs/top-shot-preview.png)
 
-In this tutorial, you'll build a [simple onchain app] that allows users to sign into your app with their Flow wallet and view [NBA Top Shot] Moments that reside in their [Dapper Wallet] - without those users needing to sign in with Dapper.
+In this tutorial, you'll build a [simple onchain app] that allows users to sign in to your app with their Flow wallet and view [NBA Top Shot] Moments that reside in their [Dapper Wallet] without those users needing to sign in with Dapper.
 
 ## Objectives
 
-After completing this guide, you'll be able to:
+After you complete this guide, you'll be able to:
 
-- Pull your users' NBA Top Shot Moments into your Flow app without needing to transfer them out of their Dapper wallet
-- Retrieve and list all NFT collections in any child wallet linked to a given Flow address
-- Write a [Cadence] script to iterate through the storage of a Flow wallet to find NFT collections
-- Run Cadence Scripts from the frontend
+- Pull your users' NBA Top Shot Moments into your Flow app without needing to transfer them out of their Dapper wallet.
+- Retrieve and list all NFT collections in any child wallet linked to a given Flow address.
+- Write a [Cadence] script to iterate through the storage of a Flow wallet to find NFT collections.
+- Run Cadence Scripts from the frontend.
 
 ## Prerequisites
 
@@ -51,7 +51,7 @@ You'll need a [Flow Wallet], but you don't need to deposit any funds.
 
 ## Moments NFTs
 
-You'll need a [Dapper Wallet] containing some Moments NFTs, such as [NBA Top Shot] Moments.
+You'll need a [Dapper Wallet] that contains some Moments NFTs, such as [NBA Top Shot] Moments.
 
 ## Getting Started
 
@@ -61,7 +61,7 @@ This tutorial will use a [Next.js] project as the foundation of the frontend. Cr
 npx create-next-app@latest
 ```
 
-We will be using TypeScript and the App Router, in this tutorial.
+We will use TypeScript and the App Router, in this tutorial.
 
 Open your new project in the editor of your choice, install dependencies, and run the project.
 
@@ -70,7 +70,7 @@ yarn install
 yarn run dev
 ```
 
-If everything is working properly, you'll be able to navigate to `localhost:3000` and see the default [Next.js] page.
+If everything works properly, you can navigate to `localhost:3000` and see the default [Next.js] page.
 
 ## Flow Cadence Setup
 
@@ -78,13 +78,13 @@ You'll need a few more dependencies to efficiently work with Cadence inside of y
 
 ### Flow CLI and Types
 
-The [Flow CLI] contains a number of command-line tools for interacting with the Flow ecosystem. If you don't already have it installed, you can add it with Brew (or using [other installation methods]):
+The [Flow CLI] contains a number of command-line tools for interacting with the Flow ecosystem. If you don't have it installed, you can add it with Brew (or using [other installation methods]):
 
 ```zsh
 brew install flow-cli
 ```
 
-Once it's installed, you'll need to initialize Flow in your Next.js project. From the root, run:
+After it's installed, initialize Flow in your `Next.js` project. From the root, run:
 
 ```zsh
 flow init --config-only
@@ -118,7 +118,7 @@ export default nextConfig;
 
 ## Frontend Setup
 
-We'll use the Flow Client Library [FCL] to manage blockchain interaction from the frontend. It's similar to viem, ethers, or web3.js, but works with the Flow blockchain and transactions and scripts written in Cadence.
+We'll use the Flow Client Library [FCL] to manage blockchain interaction from the frontend. It's similar to `viem`, `ethers`, or `web3.js`, but works with the Flow blockchain and transactions and scripts written in Cadence.
 
 ```zsh
 yarn add @onflow/fcl
@@ -132,7 +132,7 @@ yarn add dotenv
 
 ### Provider Setup
 
-A fair amount of boilerplate code is needed to set up your provider. We'll provide it, but since it's not the purpose of this tutorial, we'll be brief on explanations. For more details, check out the [App Quickstart Guide].
+You'll need a fair amount of boilerplate code to set up your provider. We'll provide it, but since it's not the purpose of this tutorial, we'll be brief on explanations. For more details, check out the [App Quickstart Guide].
 
 Add `app/providers/AuthProvider.tsx`:
 
@@ -229,7 +229,7 @@ Don't forget to replace `<YOUR ID HERE>` with your own [Wallet Connect] app id!
 
 ### Implement the Provider and Flow Config
 
-Finally, open `layout.tsx`. Start by importing Flow dependencies and the AuthProvider:
+Finally, open `layout.tsx`. TO start, import Flow dependencies and the AuthProvider:
 
 ```tsx
 import flowJSON from '../flow.json';
@@ -253,7 +253,7 @@ fcl
 
 :::warning
 
-We're going to force some things client side to get this proof-of-concept working quickly. Use Next.js best practices for a production app.
+We're going to force some things client side to get this proof-of-concept working quickly. Use `Next.js` best practices for a production app.
 
 :::
 
@@ -302,7 +302,7 @@ export default function RootLayout({
 
 ### Add the Connect Button
 
-Open `page.tsx` and clean up the demo code leaving only the `<main>` block:
+Open `page.tsx` and clean up the demo code, leaving only the `<main>` block:
 
 ```tsx
 import Image from 'next/image';
@@ -351,11 +351,9 @@ Run the app:
 yarn dev
 ```
 
-You'll see your `Log In` button in the middle of the window.
-
 ![Welcome](./imgs/welcome.png)
 
-Click the button and log in with your Flow wallet.
+Click `Log In` in the middle of the window and log in with your Flow wallet.
 
 ![Flow Wallet](./imgs/flow-wallet.png)
 
@@ -375,7 +373,7 @@ The Dapper Wallet requires that you complete KYC before you can use Account Link
 
 ### Discovering the NFTs with a Script
 
-With your accounts linked, your Flow Wallet now has a set of capabilities related to your Dapper Wallet and it's permitted to use those to view and even manipulate those NFTs and assets.
+With your accounts linked, your Flow Wallet now has a set of capabilities related to your Dapper Wallet and it can use those to view and even manipulate those NFTs and assets.
 
 Before you can add a script that can handle this, you'll need to import the `HybridCustody` contract using the [Flow Dependency Manager]:
 
@@ -421,7 +419,7 @@ You'll get a complete summary from the Dependency Manager:
 ✅ CapabilityFilter added to flow.json
 ```
 
-Add `app/cadence/scripts/FetchNFTsFromLinkedAccts.cdc`. In it, add this script. Review the inline comments to see what each step is doing:
+Add `app/cadence/scripts/FetchNFTsFromLinkedAccts.cdc`. In it, add this script. Review the inline comments to see what each step does:
 
 ```cadence
 import "HybridCustody"
@@ -534,7 +532,7 @@ import * as t from '@onflow/types';
 import FetchNFTs from '../cadence/scripts/FetchNFTsFromLinkedAccts.cdc';
 ```
 
-As we're using TypeScript, you should add some types as well to manage the data from the NFTs nicely. For now, just add them to this file:
+As we're using TypeScript, add some types as well to manage the data from the NFTs nicely. For now, just add them to this file:
 
 ```typescript
 type Thumbnail = {
@@ -572,7 +570,7 @@ const DisplayLinkedNFTs: React.FC<AddressDisplayProps> = ({ address }) => {
 export default DisplayLinkedNFTs;
 ```
 
-In the function, add a state variable to store the data retrieved by the script:
+In the function, add a state variable to store the data that the script retrieves:
 
 ```typescript
 const [responseData, setResponseData] = useState<ApiResponse | null>(null);
@@ -620,7 +618,7 @@ Run the app again. If you have linked your account and have NFTs in that account
 
 ### Displaying the Moments
 
-Now that they're here, all to do is display them nicely! Return to `DisplayLinkedNFTs.tsx`. Add a helper function to confirm each returned NFT matches the Moments format. You can update this to handle other NFTs you'd like to show as well.
+Now that they're here, all that's left to do is display them nicely! Return to `DisplayLinkedNFTs.tsx`. Add a helper function to confirm each returned NFT matches the Moments format. You can update this to handle other NFTs you'd like to show as well.
 
 :::warning
 
@@ -776,7 +774,7 @@ In this tutorial, you took your first steps towards building powerful new experi
 
 :::warning
 
-You are **not** saving time by skipping the the reference implementation. You'll learn much faster by doing the tutorials as presented!
+You **won't** save time if you skipo the the reference implementation. You'll learn much faster if you do the tutorials as presented!
 
 Reference solutions are functional, but may not be optimal.
 
