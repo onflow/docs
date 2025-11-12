@@ -53,7 +53,8 @@ const SCRIPTS = [
 
 access(all) fun main(address: Address): UFix64? {
     let path = StoragePath(identifier: "flowTokenVault")
-    return getAuthAccount<auth(BorrowValue) &Account>(address).storage.borrow<&{FungibleToken.Vault}>(
+    return getAuthAccount<auth(BorrowValue) &Account>(address)
+        .storage.borrow<&{FungibleToken.Vault}>(
             from: path!
         )?.balance ?? nil
 }`,
@@ -61,6 +62,7 @@ access(all) fun main(address: Address): UFix64? {
     defaultArgs: { address: "0xfeb88a0fcc175a3d" },
     needsArgs: true,
     argLabels: { address: "Address" },
+    editLink: 'https://run.dnz.dev/snippet/469ae98b6e5d1dea',
     formatResult: (data: any) => {
       if (data === null || data === undefined) {
         return { type: 'text', value: 'No balance found (nil)' };
@@ -90,6 +92,7 @@ access(all) fun main(address: Address): {String: UFix64} {
     defaultArgs: { address: "0xfeb88a0fcc175a3d" },
     needsArgs: true,
     argLabels: { address: "Address" },
+    editLink: 'https://run.dnz.dev/snippet/71b994bc006b4283',
     formatResult: (data: any) => {
       if (!data || typeof data !== 'object') {
         return { type: 'text', value: 'Unable to retrieve storage information' };
@@ -120,6 +123,7 @@ fun main(): Int {
     defaultArgs: {},
     needsArgs: false,
     argLabels: {},
+    editLink: 'https://run.dnz.dev/snippet/c15155239735ad60',
     formatResult: (data: any) => {
       const count = typeof data === 'string' ? parseInt(data, 10) : data;
       return { type: 'text', value: `Counter: ${count}` };
@@ -146,6 +150,7 @@ fun main(address: Address): String {
     defaultArgs: { address: "0x5f2584aba224bd39" },
     needsArgs: true,
     argLabels: { address: "Address" },
+    editLink: 'https://run.dnz.dev/snippet/676ab2256fe87c8f',
     formatResult: (data: any) => {
       return { type: 'text', value: data || 'Unable to retrieve balance' };
     },
@@ -247,6 +252,7 @@ access(all) fun main(addr: Address): AnyStruct {
     defaultArgs: { address: "0xfeb88a0fcc175a3d" },
     needsArgs: true,
     argLabels: { address: "Address" },
+    editLink: 'https://run.dnz.dev/snippet/3797f91e245b787b',
     formatResult: (data: any) => {
       if (!data || typeof data !== 'object') {
         return { type: 'text', value: 'No NFTs found' };
@@ -275,6 +281,7 @@ transaction {
     defaultArgs: {},
     needsArgs: false,
     argLabels: {},
+    editLink: 'https://run.dnz.dev/snippet/654cd61ea5bf4867',
     formatResult: (data: any) => {
       return { type: 'text', value: data || 'Transaction executed' };
     },
@@ -485,34 +492,44 @@ function QuickStartShowcaseContent() {
                       />
                     </div>
                   ))}
-                  {currentScript.type === 'script' ? (
-                    <button
-                      onClick={() => refetch()}
-                      disabled={isLoading}
-                      className="text-xs px-3 py-1 bg-blue-500 hover:bg-blue-600 text-white rounded disabled:opacity-50 disabled:cursor-not-allowed whitespace-nowrap"
-                    >
-                      {isLoading ? 'Running...' : 'Run Script'}
-                    </button>
-                  ) : (
-                    <div className="flex items-center gap-2">
-                      {!user?.loggedIn ? (
-                        <Connect 
-                          variant="primary"
-                          onConnect={() => {
-                            // After connection, the user state will update and we can execute
-                          }}
-                        />
-                      ) : (
-                        <button
-                          onClick={handleExecuteTransaction}
-                          disabled={txPending}
-                          className="text-xs px-3 py-1 bg-green-500 hover:bg-green-600 text-white rounded disabled:opacity-50 disabled:cursor-not-allowed whitespace-nowrap"
-                        >
-                          {txPending ? 'Executing...' : 'Execute Transaction'}
-                        </button>
-                      )}
-                    </div>
-                  )}
+                  <div className="flex items-center gap-2">
+                    {currentScript.type === 'script' ? (
+                      <button
+                        onClick={() => refetch()}
+                        disabled={isLoading}
+                        className="text-xs px-4 py-2 bg-purple-500 hover:bg-purple-600 text-white rounded-full shadow-md font-medium border-none disabled:opacity-50 disabled:cursor-not-allowed whitespace-nowrap transition-colors"
+                      >
+                        {isLoading ? 'Running...' : 'Run Script'}
+                      </button>
+                    ) : (
+                      <>
+                        {!user?.loggedIn ? (
+                          <Connect 
+                            variant="primary"
+                            onConnect={() => {
+                              // After connection, the user state will update and we can execute
+                            }}
+                          />
+                        ) : (
+                          <button
+                            onClick={handleExecuteTransaction}
+                            disabled={txPending}
+                            className="text-xs px-4 py-2 bg-purple-500 hover:bg-purple-600 text-white rounded-full shadow-md font-medium border-none disabled:opacity-50 disabled:cursor-not-allowed whitespace-nowrap transition-colors"
+                          >
+                            {txPending ? 'Executing...' : 'Execute Transaction'}
+                          </button>
+                        )}
+                      </>
+                    )}
+                    {(currentScript as any).editLink && (
+                      <button
+                        onClick={() => window.open((currentScript as any).editLink, '_blank', 'noopener,noreferrer')}
+                        className="text-xs px-4 py-2 bg-transparent hover:bg-purple-50 dark:hover:bg-purple-900/20 text-purple-600 dark:text-purple-400 rounded-full border border-purple-500 dark:border-purple-400 font-medium whitespace-nowrap transition-colors"
+                      >
+                        Edit
+                      </button>
+                    )}
+                  </div>
                 </div>
               </div>
               
