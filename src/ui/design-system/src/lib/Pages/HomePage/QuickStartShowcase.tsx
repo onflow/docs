@@ -502,24 +502,23 @@ function QuickStartShowcaseContent() {
                         {isLoading ? 'Running...' : 'Run Script'}
                       </button>
                     ) : (
-                      <>
-                        {!user?.loggedIn ? (
-                          <Connect 
-                            variant="primary"
-                            onConnect={() => {
-                              // After connection, the user state will update and we can execute
-                            }}
-                          />
-                        ) : (
-                          <button
-                            onClick={handleExecuteTransaction}
-                            disabled={txPending}
-                            className="text-xs px-4 py-2 bg-purple-500 hover:bg-purple-600 text-white rounded-full shadow-md font-medium border-none disabled:opacity-50 disabled:cursor-not-allowed whitespace-nowrap transition-colors"
-                          >
-                            {txPending ? 'Executing...' : 'Execute Transaction'}
-                          </button>
-                        )}
-                      </>
+                      // For transactions: show Sign In UI if not logged in, otherwise show Execute Transaction button
+                      user?.loggedIn === true ? (
+                        <button
+                          onClick={handleExecuteTransaction}
+                          disabled={txPending}
+                          className="text-xs px-4 py-2 bg-purple-500 hover:bg-purple-600 text-white rounded-full shadow-md font-medium border-none disabled:opacity-50 disabled:cursor-not-allowed whitespace-nowrap transition-colors"
+                        >
+                          {txPending ? 'Executing...' : 'Execute Transaction'}
+                        </button>
+                      ) : (
+                        <Connect 
+                          variant="primary"
+                          onConnect={() => {
+                            // After connection, the user state will update and we can execute
+                          }}
+                        />
+                      )
                     )}
                     {(currentScript as any).editLink && (
                       <button
