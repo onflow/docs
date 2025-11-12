@@ -7,7 +7,7 @@ sidebar_position: 2
 
 # Flow Hardhat Guide
 
-Hardhat is an Ethereum development tool designed to facilitate the deployment, testing, and debugging of Cadence Decentralized Finance (DeFi). It provides a streamlined experience for developers who work with with Solidity contracts.
+Hardhat is an Ethereum development tool designed to facilitate the deployment, testing, and debugging of Solidity smart contracts. It provides a streamlined experience for developers who work with with Solidity contracts.
 
 ## Prerequisites
 
