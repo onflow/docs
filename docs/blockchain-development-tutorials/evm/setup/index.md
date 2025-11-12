@@ -16,7 +16,7 @@ keywords:
 
 Before you dive into Flow EVM development, you'll need to configure your development environment and connect the necessary tools. This section covers the essential setup steps required to build on Flow EVM, from wallet configuration to network integration. These foundational setup guides ensure you have the proper connections and configurations needed for seamless Flow EVM development.
 
-Whether you're setting up MetaMask for the first time or integrating Flow network support into your current dApp, these tutorials provide step-by-step instructions to establish a robust development environment on Flow's EVM-compatible blockchain.
+Whether you're setting up MetaMask for the first time or integrating Flow network support into your current app, these tutorials provide step-by-step instructions to establish a robust development environment on Flow's EVM-compatible blockchain.
 
 ## [Integrating MetaMask]
 
