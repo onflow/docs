@@ -15,51 +15,51 @@ keywords:
 ---
 
 
-# Payment Checkout Integration Guide
+# Payment checkout integration guide
 
 Enable seamless fiat and cryptocurrency payments for your Flow assets. Crossmint's checkout solution supports credit cards, Apple Pay, Google Pay, and cross-chain crypto payments, allowing users to buy Flow NFTs and tokens without holding FLOW tokens.
 
 ## Overview
 
-Crossmint Checkout eliminates payment friction by supporting multiple payment methods and handling complex blockchain interactions behind the scenes. Users can buy your Flow assets using familiar payment methods.
+Crossmint Checkout supports multiple payment methods and handles complex blockchain interactions behind the scenes, which eliminates payment friction. Users can buy your Flow assets with familiar payment methods.
 
-> **Key Benefits:**
-> - **No wallet required** - guest checkout available
-> - **Global coverage** - 197 countries supported
-> - **No buyer KYC** for most transactions
-> - **Cross-chain payments** - Pay with any crypto, receive on Flow
+> **Key benefits:**
+> - **No wallet required** - guest checkout available.
+> - **Global coverage** - 197 countries supported.
+> - **No buyer KYC** for most transactions.
+> - **Cross-chain payments** - Pay with any crypto, receive on Flow.
 
-## What You'll Build
+## What you'll build
 
-You'll integrate checkout functionality that enables:
-- Credit card payments for Flow NFTs and tokens
-- Apple Pay and Google Pay support
-- Cross-chain crypto payments
-- Guest checkout (no wallet required)
+You'll integrate checkout functionality that activates:
+- Credit card payments for Flow NFTs and tokens.
+- Apple Pay and Google Pay support.
+- Cross-chain crypto payments.
+- Guest checkout (no wallet required).
 
 ## Prerequisites
 
-- Crossmint account with checkout enabled
-- Flow collection created or imported
-- Basic understanding of payment flows
-- For production: KYB verification completed
+- Crossmint account with checkout activated.
+- Flow collection created or imported.
+- Basic understanding of payment flows.
+- For production: KYB verification completed.
 
-## Step 1: Collection Setup
+## Step 1: Collection setup
 
-### Create or Import Collection
+### Create or import collection
 
-**Option A: Create New Collection**
+**Option A: create new collection**
 
-1. Go to [Crossmint Console](https://staging.crossmint.com) > **Collections**
-2. Click **Create Collection** 
-3. Choose **Flow** blockchain
+1. Go to [Crossmint Console](https://staging.crossmint.com) > **Collections**.
+2. Click **Create Collection**.
+3. Choose **Flow** blockchain.
 4. Configure collection settings:
    - Network: Flow Testnet/Mainnet
    - Contract type: ERC-721 (EVM) or Cadence NFT
    - Pricing in USD or FLOW
    - Maximum supply and metadata
 
-**Option B: Import Existing Collection**
+**Option B: Import current collection**
 
 ```javascript
 // Import existing Flow contract
@@ -75,21 +75,21 @@ const collection = await crossmint.collections.import({
 });
 ```
 
-### Configure Payment Settings
+### Configure payment settings
 
 In your collection settings:
-1. Go to **Payments > Settings**
+1. Go to **Payments > Settings**.
 2. Choose fee structure:
-   - **Buyer pays fees**: User pays NFT price + fees
-   - **Seller pays fees**: User pays exact price, you pay fees
-3. Set accepted payment methods
-4. Configure webhooks for order updates
+   - **Buyer pays fees**: user pays NFT price + fees.
+   - **Seller pays fees**: user pays exact price, you pay fees.
+3. Set accepted payment methods.
+4. Configure webhooks for order updates.
 
 ## Step 2: Hosted Checkout Integration
 
 The fastest way to get started - Crossmint hosts the entire checkout experience.
 
-### Basic Hosted Checkout
+### Basic hosted checkout
 
 ```javascript
 // src/components/HostedCheckout.jsx
@@ -133,7 +133,7 @@ export function HostedCheckout({ collectionId, nftId, onSuccess }) {
 }
 ```
 
-### Advanced Hosted Checkout
+### Advanced hosted checkout
 
 ```javascript
 // More control over hosted checkout
@@ -182,12 +182,12 @@ export function AdvancedHostedCheckout({
 
 ---
 
-## Step 3: Embedded Checkout Integration
+## Step 3: embedded checkout integration
 
 Embed checkout directly in your application with full UI control.
 
 
-### Basic Embedded Checkout
+### Basic embedded checkout
 
 ```jsx
 // src/components/EmbeddedCheckout.jsx
@@ -236,7 +236,7 @@ export function EmbeddedCheckout({ collectionId, nftId, recipient }) {
 }
 ```
 
-### Custom Styled Embedded Checkout
+### Custom styled embedded checkout
 
 ```jsx
 // Advanced embedded checkout with custom styling
@@ -320,7 +320,7 @@ export function CustomEmbeddedCheckout({
 
 For maximum customization, use the headless API to build completely custom checkout flows.
 
-### Order Creation Service
+### Order creation service
 
 ```typescript
 // src/services/checkoutService.ts
@@ -461,7 +461,7 @@ export class CheckoutService {
 export const checkoutService = new CheckoutService();
 ```
 
-### Custom Checkout Component
+### Custom checkout component
 
 ```tsx
 // src/components/CustomCheckout.tsx
@@ -596,11 +596,11 @@ export function CustomCheckout(props: CheckoutFormProps) {
 
 ---
 
-## Step 5: Webhook Integration
+## Step 5: webhook integration
 
 Set up webhooks to handle order status updates in real-time.
 
-### Webhook Handler
+### Webhook handler
 
 ```typescript
 // src/api/webhooks/crossmint.ts (Next.js API route example)
@@ -670,7 +670,7 @@ async function handleOrderDelivered(orderData: any) {
 
 ---
 
-## Step 6: Multi-Payment Method Component
+## Step 6: multi-payment method component
 
 Create a comprehensive checkout that supports all payment methods:
 
@@ -789,9 +789,9 @@ export function UniversalCheckout({
 }
 ```
 
-## Key Takeaways
+## Key takeaways
 
-- **Multiple Integration Options**: Hosted, embedded, or headless - choose what fits your needs
-- **Universal Payment Support**: Credit cards, mobile payments, and 40+ cryptocurrencies
-- **Flow Native**: Optimized for both Flow EVM and Cadence ecosystems
-- **Global Scale**: Support for 197 countries with no buyer KYC
+- **Multiple Integration Options**: hosted, embedded, or headless - choose what fits your needs.
+- **Universal Payment Support**: credit cards, mobile payments, and over 40 cryptocurrencies.
+- **Flow Native**: optimized for both Flow EVM and Cadence ecosystems.
+- **Global Scale**: support for 197 countries with no buyer KYC.
