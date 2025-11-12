@@ -27,7 +27,7 @@ The most basic approach that you can use to generate a random number on EVM chai
 
 In contrast, Flow offers a simpler and more integrated approach with its native onchain Randomness Beacon at the protocol level, which eliminates reliance on external oracles and sidestepping their associated risks.
 
-In addition to instant randomness that is available to any transaction (via `revertibleRandom` function), Flow provides a solution to reverted transaction. Commit-Reveal schemes on Flow also rely on protocol-native secure randomness and they fix the issue of post-selection by trustless users. Commit-Reveal tools on Flow can be used within both Cadence and  Consumer Decentralized Finance (DeFi) contracts. This tutorial focuses on Cadence.
+In addition to instant randomness that is available to any transaction (via `revertibleRandom` function), Flow provides a solution to the problem of a user reverting a transaction with an unfavorable outcome. Commit-Reveal schemes on Flow also rely on protocol-native secure randomness and they fix the issue of post-selection by trustless users. Commit-Reveal tools on Flow can be used within both Cadence and  Consumer Decentralized Finance (DeFi) contracts. This tutorial focuses on Cadence.
 
 ## Objectives
 
