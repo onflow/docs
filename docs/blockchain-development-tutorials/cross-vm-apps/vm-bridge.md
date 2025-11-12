@@ -17,7 +17,7 @@ If a developer wants to define and connect the NFT contracts on both sides of th
 The Cross-VM Bridge internalizes the capabilities to deploy new token contracts in either VM state as needed, resolves access to and maintains links between associated contracts. It also automates account and contract calls to enforce source VM asset burn or lock, and target VM token mint or unlock.
 
 Developers who want to use the Cross-VM Bridge must use a Cadence transaction. Cross-VM bridging functionality is not currently available natively in Flow EVM. By extension, this means that the EVM account bridging
-from EVM to Cadence must be a [`CadenceOwnedAccount` (COA)](./interacting-with-coa.md) as this is the only EVM account type that can be controlled from the Cadence runtime.
+from EVM to Cadence must be a [`CadenceOwnedAccount` (COA)](interacting-with-coa.md) as this is the only EVM account type that can be controlled from the Cadence runtime.
 
 This [FLIP-233](https://github.com/onflow/flips/pull/233) outlines the architecture and implementation of the VM bridge. An additional [FLIP-318](https://github.com/onflow/flips/blob/main/application/20250131-cross-vm-nft-support.md) describes how developers can create custom associations
 between NFTs they define and control in each VM.
