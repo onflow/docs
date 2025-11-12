@@ -11,7 +11,7 @@ Foundry is a suite of development tools that simplifies the process to develop a
 
 In this guide, we'll deploy an ERC-20 token contract to Flow EVM using Foundry. We'll cover:
 
-- How to develop and teteststing a basic ERC-20 contract
+- How to develop and test a basic ERC-20 contract
 - Deploy the contract to Flow EVM with Foundry tools
 - How to query the Testnet state
 - How to mutate Testnet state by sending transactions
