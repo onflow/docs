@@ -74,7 +74,15 @@ Similarly to revertible randomness, Commit-Reveal inherits the security of Flow 
 
 In addition, commit-reveal patterns solve the issue of revertible randoms:
 
-- Prevents user manipulation - Players cannot simulate an outcome and choose to revert the transaction if they do not like the result.
+- Prevents user manipulation - Players cannot evaluate the outcome and choose to revert the transaction if they do not like the result.
+- 
+
+
+:::info
+
+One of the powers of Cadence transactions is that a developer can set post-conditions that must be true, or the transaction will revert. This is very useful for scenarios such as guaranteeing a user receives their purchase in a complex and multi-step transaction, but it also means that they can set conditions to reject the transaction.  In an instant-win lottery, this would allow users to test large numbers of tickets for a win without paying the purchase price.
+
+:::
 
 ## Build the Coin Toss contract
 
