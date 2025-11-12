@@ -4,6 +4,30 @@ import { GA_EVENTS, GA_CATEGORIES } from '@site/src/constants/ga-events';
 
 const CATEGORIES = [
   {
+    title: 'Defi',
+    links: [
+      { label: 'Defi', href: '/defi' },
+      { label: 'DeFi Contracts Mainnet', href: '/defi/defi-contracts-mainnet' },
+      { label: 'DeFi Contracts Testnet', href: '/defi/defi-contracts-testnet' },
+      { label: 'Cross-chain Swaps', href: '/defi/cross-chain-swaps' },
+      { label: 'Add Token to MetaMask', href: '/defi/add-token-to-metamask' },
+      { label: 'Band Oracle', href: '/defi/band-oracle' },
+      { label: 'FAQ', href: '/defi/faq' },
+    ],
+  },
+  {
+    title: 'Tutorials',
+    links: [
+      { label: 'Tutorials', href: '/tutorials' },
+      { label: 'Use AI To Build On Flow', href: '/blockchain-development-tutorials/use-AI-to-build-on-flow' },
+      { label: 'Gasless Transactions', href: '/blockchain-development-tutorials/gasless-transactions' },
+      { label: 'Token Launch', href: '/blockchain-development-tutorials/token-launch' },
+      { label: 'Cross-VM Apps', href: '/blockchain-development-tutorials/cross-vm-apps' },
+      { label: 'FlowtoBooth', href: '/blockchain-development-tutorials/flowtobooth' },
+      { label: 'Native VRF', href: '/blockchain-development-tutorials/native-vrf' },
+    ],
+  },
+  {
     title: 'Cadence',
     links: [
       { label: 'Why Flow', href: '/build/flow' },
@@ -68,7 +92,6 @@ const CATEGORIES = [
       { label: 'Flow Block Explorers', href: '/ecosystem/block-explorers' },
       { label: 'Data Indexers', href: '/ecosystem/data-indexers' },
       { label: 'Developer Profile', href: '/ecosystem/developer-profile' },
-      { label: 'DeFi & Liquidity', href: '/ecosystem/defi-liquidity' },
       { label: 'Bridges', href: '/ecosystem/bridges' },
       { label: 'Community Projects', href: '/ecosystem/projects' },
       { label: 'Builder Perks', href: '/ecosystem/builder-perks' },
@@ -77,18 +100,6 @@ const CATEGORIES = [
       { label: 'Grants', href: '/ecosystem/grants' },
       { label: 'Hackathons and Events', href: '/ecosystem/hackathons-and-events' },
       { label: 'Auditors', href: '/ecosystem/auditors' },
-    ],
-  },
-  {
-    title: 'Tutorials',
-    links: [
-      { label: 'Tutorials', href: '/tutorials' },
-      { label: 'Use AI To Build On Flow', href: '/blockchain-development-tutorials/use-AI-to-build-on-flow' },
-      { label: 'Gasless Transactions', href: '/blockchain-development-tutorials/gasless-transactions' },
-      { label: 'Token Launch', href: '/blockchain-development-tutorials/token-launch' },
-      { label: 'Cross-VM Apps', href: '/blockchain-development-tutorials/cross-vm-apps' },
-      { label: 'FlowtoBooth', href: '/blockchain-development-tutorials/flowtobooth' },
-      { label: 'Native VRF', href: '/blockchain-development-tutorials/native-vrf' },
     ],
   },
 ];

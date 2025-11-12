@@ -314,12 +314,65 @@
           "value": "text/plain"
         }
       ]
+    },
+    {
+      "source": "/defi/:path*",
+      "destination": "/md/defi/:path*.md",
+      "has": [
+        {
+          "type": "header",
+          "key": "accept",
+          "value": "text/markdown"
+        }
+      ]
+    },
+    {
+      "source": "/defi/:path*",
+      "destination": "/md/defi/:path*.md",
+      "has": [
+        {
+          "type": "query",
+          "key": "format",
+          "value": "md"
+        }
+      ]
+    },
+    {
+      "source": "/defi/:path*",
+      "destination": "/md/defi/:path*.md",
+      "has": [
+        {
+          "type": "header",
+          "key": "accept",
+          "value": "text/plain"
+        }
+      ]
     }
   ],
   "redirects": [
     {
       "source": "/ecosystem/defi-liquidity/defi-contracts",
-      "destination": "/ecosystem/defi-liquidity/defi-contracts-mainnet",
+      "destination": "/defi/defi-contracts-mainnet",
+      "permanent": true
+    },
+    {
+      "source": "/ecosystem/defi-liquidity",
+      "destination": "/defi",
+      "permanent": true
+    },
+    {
+      "source": "/ecosystem/defi-liquidity/:path*",
+      "destination": "/defi/:path*",
+      "permanent": true
+    },
+    {
+      "source": "/defi-liquidity",
+      "destination": "/defi",
+      "permanent": true
+    },
+    {
+      "source": "/defi-liquidity/:path*",
+      "destination": "/defi/:path*",
       "permanent": true
     },
     {
