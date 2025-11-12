@@ -208,7 +208,7 @@ transaction(betAmount: UFix64) {
 }
 ```
 
-3. Set Your Bet: a window will appear that asks for the betAmount. Enter a value (such as 1.0 for 1 Flow token) and submit.
+3. Set Your Bet: a window will appear that asks for the `betAmount`. Enter a value (such as 1.0 for 1 Flow token) and submit.
 4. Execute the Transaction: click "Run," and a WalletConnect window will appear. Choose Blocto, sign in with your email, and click "Approve" to send the transaction to Testnet.
 
 ![remix5-sc](./imgs/remix5.png)
