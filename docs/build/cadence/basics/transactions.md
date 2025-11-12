@@ -114,7 +114,7 @@ what parts of their account a transaction can access.
 
 ### Payer
 
-A payer is the account that pays the fees for the transaction. A transaction must specify exactly one payer. The payer is only responsible for paying the network and gas fees; the transaction is not authorized to access resources or code stored in the payer account.
+A payer is the account that pays the fees for the transaction. A transaction must specify exactly one payer. The payer is only responsible for paying the network and compute unit fees; the transaction is not authorized to access resources or code stored in the payer account.
 
 By explicitly specifying a payer a transaction can be paid by third-party services such as wallet providers.
 

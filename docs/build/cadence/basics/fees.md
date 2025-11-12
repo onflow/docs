@@ -15,6 +15,7 @@ keywords:
   - network protection
   - blockchain fees
   - gas fees
+  - compute unit fees
   - Flow token
   - fee structure
   - cost estimation
@@ -32,13 +33,17 @@ Are you an EVM developer looking for information about EVM Accounts on Flow? If 
 
 A transaction fee is a cost paid in Flow by the payer account and is required for a transaction to be included in the Flow blockchain. Fees are necessary for protecting the network against spam/infinite running transactions and to provide monetary incentives for participants that make up the Flow network.
 
-A transaction fee is paid regardless of whether a transaction succeeds or fails. If the payer account doesn't have sufficient Flow balance to pay for the transaction fee, the transaction will fail. We can limit the transaction fee to some extent by providing the gas limit value when submitting the transaction.
+Transaction fees are calculated in compute units. Compute units are similar to gas in EVM networks, but are not calculated in exactly the same manner.
+
+A transaction fee is paid regardless of whether a transaction succeeds or fails. If the payer account doesn't have sufficient Flow balance to pay for the transaction fee, the transaction will fail. We can limit the transaction fee to some extent by providing the compute unit limit value when submitting the transaction.
 
 ### Understanding the need for transaction fees
 
+One of the ways that a single computer that no one owns and anyone can use from being monopolized by any part is to charge a fee measured by the amount of computation needed to execute code. All blockchains implement a form of this system.
+
 Segmented transaction fees are essential to ensure fair pricing based on the impact on the network. For instance, more heavy operations will require more resources to process and propagate transactions. Common operations, however, will stay reasonably priced.
 
-Fees will improve the overall security of the network by making malicious actions (eg spam) on the network less viable.
+Fees improve the overall security of the network by making malicious actions (eg spam) on the network less viable. They also prevent the computer from crashing in the event that an infinite loop is started maliciously or accidentally.
 
 The unique Flow architecture is targeted at high throughput. It makes it easier to have slack in the system, so short spikes can be handled more gracefully.
 

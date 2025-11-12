@@ -743,7 +743,7 @@ Congratulations! You've successfully created an NFT collection for the `test-acc
 To retrieve the NFTs associated with an account, you'll need a script.
 Scripts are read-only operations that allow you to query the blockchain.
 They don't modify the blockchain's state, and therefore,
-they don't require gas fees or signatures (read more about scripts here).
+they don't require compute unit fees or signatures (read more about scripts here).
 
 Start by creating a script file using the `generate` command again:
 

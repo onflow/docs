@@ -100,7 +100,7 @@ Click `Send Batch Transaction Example` and approve the transaction. You'll see t
 
 :::tip
 
-Currently, the Flow wallet sponsors all gas for all transactions signed with the wallet on both testnet **and mainnet!**
+Currently, the Flow wallet sponsors all gas/compute units for all transactions signed with the wallet on both testnet **and mainnet!**
 
 :::
 
