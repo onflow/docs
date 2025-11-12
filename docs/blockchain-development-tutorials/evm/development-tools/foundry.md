@@ -219,7 +219,7 @@ forge create --broadcast src/MyToken.sol:MyToken \
 
 The above will print the deployed contract address. We'll use it in the next section to interact with the contract.
 
-### Verify Consumer DeFi
+### Verify a smart contract
 
 After you deploy the contract, you can verify it so that others can see the source code and interact with it from Flow's block explorer. You can use the [`forge verify-contract`](https://book.getfoundry.sh/reference/forge/forge-verify-contract) command:
 

@@ -36,11 +36,11 @@ npx hardhat init
 
 ### Fund Your wallet
 
-To deploy Consumer DeFi, ensure your wallet has **$FLOW**. To obtain funds, navigate to the Flow [Faucet](https://faucet.flow.com/fund-account) and enter your wallet address.
+To deploy smart contracts, ensure your wallet has **$FLOW**. To obtain funds, navigate to the Flow [Faucet](https://faucet.flow.com/fund-account) and enter your wallet address.
 
-## Deploy DeFi with Hardhat
+## Deploy a smart contract with Hardhat
 
-This section guides you through the process of how to deploy DeFi on the Flow network with Hardhat.
+This section guides you through the process of how to deploy smart contracts on the Flow network with Hardhat.
 
 ### Configuration
 
@@ -66,9 +66,9 @@ export default config;
 
 To keep this example straightforward, we've included the account's private key directly in `hardhat.config.ts`. However, it is crucial to not commit private keys to your Git repository for security reasons. Instead, use environment variables to safely handle sensitive information.
 
-### Deploy HelloWorld DeFi
+### Deploy HelloWorld smart contract
 
-## HelloWorld DeFi
+## HelloWorld smart contract
 
 ```solidity
 // SPDX-License-Identifier: MIT
@@ -141,7 +141,7 @@ You can now search for your deployed contract on the [Flowscan block explorer](h
 
 ### Get HelloWorld contract greeting
 
-Now, we want to get the greeting from the deployed `HelloWorld` Consumer DeFi.
+Now, we want to get the greeting from the deployed `HelloWorld` smart contract.
 
 ```javascript
 import { ethers } from 'hardhat';
@@ -172,16 +172,16 @@ main().catch((error) => {
 Steps:
 
 1. Create a `getGreeting.ts` file in the `scripts` directory.
-2. Paste contents of script above. Make sure to update the contract address with the one from deployment in earlier step.
+2. Paste contents of script above. Make sure to update the contract address with the one from deployment in an earlier step.
 3. Call script to get the greeting, `npx hardhat run scripts/getGreeting.ts --network testnet`
-4. The output should be as follows:
+4. The output will be as follows:
 
 ```shell
 ❯ npx hardhat run scripts/getGreeting.ts --network testnet
 The greeting is: Hello, World!
 ```
 
-### Update greeting on HelloWorld DeFi
+### Update greeting on HelloWorld smart contract
 
 Next, we'll add a script to update the greeting and log it.
 
@@ -242,7 +242,7 @@ The greeting is: Howdy!
 ```
 
 
-### Verify Contract
+### Verify contract
 
 To verify your contract on [Flowscan](https://evm-testnet.flowscan.io/), you can update your Hardhat config file. To do this, include the correct chainID, apiURL and browserURL:
 

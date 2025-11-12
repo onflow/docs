@@ -7,7 +7,7 @@ sidebar_position: 3
 
 # Using Remix
 
-Remix is an open-source, web-based development environment tailored for EVM decentralized finance (DeFi) contract development. It offers developers a comprehensive suite of tools to write, deploy, and test DeFi contracts in Solidity. For more information, visit [Remix](https://remix.ethereum.org/).
+Remix is an open-source, web-based development environment tailored for EVM smart contract development. It offers developers a comprehensive suite of tools to write, deploy, and test smart contracts in Solidity. For more information, visit [Remix](https://remix.ethereum.org/).
 
 ## Add the Flow network to MetaMask
 
@@ -19,11 +19,11 @@ Navigate to the [Using EVM] page to find the button to add the Flow network info
 
 Navigate to the [Flow Testnet Faucet](https://faucet.flow.com/fund-account) to obtain FLOW tokens necessary to deploy a smart contract.
 
-## Deploy a DeFi contract with Remix
+## Deploy a smart contract with Remix
 
-![Deploy DeFi Contract](./imgs/Remix-deploy-contract-flowevm.gif)
+![Deploy smart contract](./imgs/Remix-deploy-contract-flowevm.gif)
 
-### HelloWorld DeFi Contract
+### HelloWorld smart contract
 
 ```solidity
 // SPDX-License-Identifier: MIT
@@ -55,13 +55,13 @@ contract HelloWorld {
 
 ```
 
-### Steps to deploy the HelloWorld DeFi contract
+### Steps to deploy the HelloWorld smart contract
 
 1. Create a file named `HelloWorld.sol`.
 2. Select Solidity Compiler and compile `HelloWorld.sol`.
 3. Select Deploy & Run Transactions.
 4. Make sure to select `Injected Provider - Metamask` in Environment dropdown.
-5. Deploy the `HelloWorld` DeFi contract.
+5. Deploy the `HelloWorld` smart contract.
 
 ## Calling the Deployed Smart Contract
 
@@ -104,9 +104,9 @@ getGreeting();
 
 Follow the steps below to change the greeting and retrieve the new greeting.
 
-## Updating the deployed DeFi contract
+## Updating the deployed smart contract
 
-![Update DeFi Contract](./imgs/Remix-update-greeting.gif)
+![Update smart contract](./imgs/Remix-update-greeting.gif)
 
 1. Select the `HelloWorld.sol` file.
 2. Select the `Deploy and Run Transaction` page.
