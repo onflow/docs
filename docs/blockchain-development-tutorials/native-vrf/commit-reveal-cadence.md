@@ -21,7 +21,7 @@ keywords:
 
 Randomness is a critical component in blockchain applications. It allows fair and unpredictable outcomes for use cases like gaming, lotteries, and cryptographic protocols. 
 
-The most basic approach that you can use to generate a random number on EVM chains is to use block hashes, which combines the block hash with a user-provided seed and hashes them together. You can use the has that results as a pseudo-random generator seed. However, this approach has limitations. A validator that influences the random source used to compute transactions can manipulate the block hash. The block proposer can decide what to include into a block and can through different combinations until they find a favorable random source.
+The most basic approach that you can use to generate a random number on EVM chains is to use block hashes, which combines the block hash with a user-provided seed and hashes them together. You can use the has that results as a pseudo-random generator seed. However, this approach has limitations. A validator that influences the random source used to compute transactions can manipulate the block hash. The block proposer can decide what to include into a block and can iterate through different combinations until they find a favorable random source.
 
 [Chainlink VRF][chainlink-vrf] is a popular tool that improves on this. It provides another approach you can use to generate provably random values on Ethereum and other blockchains. It relies on a decentralized oracle network to deliver cryptographically secure randomness from off-chain sources. However, this dependence on external oracles introduces several weaknesses, such as cost, latency, and scalability concerns.
 
