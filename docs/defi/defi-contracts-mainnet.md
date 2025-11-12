@@ -15,7 +15,7 @@ keywords:
   - DEXs
   - KittyPunch
   - PunchSwap
-sidebar_position: 1
+sidebar_position: 3
 sidebar_label: DeFi Contracts Mainnet
 ---
 

@@ -26,7 +26,7 @@ export const buildGridData = {
           cardColor: 'black',
           icon: IconName.BUILDER_CREDITS,
           variant: 'horizontal',
-          href: '/ecosystem/defi-liquidity',
+          href: '/defi',
         },
         {
           heading: 'Create apps that evolve without a proxy contract',
