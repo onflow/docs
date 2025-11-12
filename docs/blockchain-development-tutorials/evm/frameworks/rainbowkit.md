@@ -5,35 +5,37 @@ sidebar_position: 4
 sidebar_label: Rainbowkit
 ---
 
-Integrating Flow Wallet with [RainbowKit][1] allows users to seamlessly connect their Flow accounts through one of the most popular wallet connection interfaces.
+# Using Rainbow Kit with FLow Wallet
 
-This guide walks you through the process of defining Flow Wallet as a custom wallet in RainbowKit and testing the integration. You can follow along by setting up a new RainbowKit project or use the code in this guide to integrate these steps into your existing dApp.
+When you integrate Flow Wallet with [RainbowKit][1], you can seamlessly connect your Flow accounts through one of the most popular wallet connection interfaces.
+
+This guide walks you through how to define Flow Wallet as a custom wallet in RainbowKit and testing the integration. As you follow along, you can set up up a new RainbowKit project or use the code in this guide to integrate these steps into your current dApp.
 
 ## Objectives
 
-After completing this guide, you'll be able to:
-- Create a custom Flow Wallet connector compatible with RainbowKit's interface
-- Configure your Wagmi setup to support Flow Wallet connections
-- Implement a complete wallet connection flow for Flow blockchain users
-- Test and verify the Flow Wallet integration in your dApp
+After you complete this guide, you'll be able to:
+- Create a custom Flow Wallet connector compatible with RainbowKit's interface.
+- Configure your Wagmi setup to support Flow Wallet connections.
+- Implement a complete wallet connection flow for Flow blockchain users.
+- Test and verify the Flow Wallet integration in your dApp.
 
 ## Prerequisites
 
-### Next.js and Modern Frontend Development
+### Next.js and modern frontend development
 
-The RainbowKit starter is built on Next.js, so familiarity with React, hooks, and modern frontend development will help you follow along.
+The RainbowKit starter is built on `Next.js`, so familiarity with React, hooks, and modern frontend development will help you follow along.
 
 ## A Flow Wallet 
 
 To use Flow Wallet with RainbowKit, install the Flow Wallet browser extension from the [Chrome Web Store][2].
 
-Once installed, set up your wallet by creating or importing an account. For quick access, pin the extension to your browser toolbar.
+After you install it, create or import an account to set up your wallet. For quick access, pin the extension to your browser toolbar.
 
-## Setting Up Your Environment
+## Set up your environment
 
-### Initial Setup
+### Initial setup
 
-The RainbowKit starter is built on Next.js, following its standard project structure and conventions. Create a new project or ensure your existing one has the necessary dependencies:
+The RainbowKit starter is built on`Next.js` and follows its standard project structure and conventions. Create a new project or ensure your current one has the necessary dependencies:
 
 ```bash
 $ npm init @rainbow-me/rainbowkit@latest
@@ -44,7 +46,8 @@ $ npm run dev
 The [RainbowKit](https://www.rainbowkit.com/) components will be available throughout your application via the provided wrapper components.
 
 ### Creating the Flow Wallet Connector
-The first major step is defining the Flow Wallet connector. Create a new file called `flowWallet.ts` in `src/flowWallet.ts` to house the wallet configuration:
+
+The first major step is to define the Flow Wallet connector. Create a new file called `flowWallet.ts` in `src/flowWallet.ts` to house the wallet configuration:
 
 ```tsx
 /* src/flowWallet.ts */ 
@@ -113,7 +116,7 @@ export const flowWallet = ({ projectId }: MyWalletOptions): Wallet => ({
 });
 ```
 
-### Configuring Wagmi Integration
+### Configure your Wagmi integration
 
 Next, update your Wagmi configuration to include Flow Wallet support. Modify your `wagmi.ts` file:
 
@@ -168,12 +171,12 @@ To get a Project ID, sign up at WalletConnect Cloud, create a new project, and c
 
 ## Testing Your Integration
 
-After implementing the Flow Wallet connector and configuring Wagmi, follow these steps to verify that the integration works correctly in your dApp:
+After you implement the Flow Wallet connector and configure Wagmi, follow these steps to verify that the integration works correctly in your dApp:
 
-1. **Click "Connect Wallet"** – Open your application and click the "Connect Wallet" button.
+1. **Click "Connect Wallet"** – Open your application and click "Connect Wallet."
 2. **Check for Flow Wallet** – Ensure Flow Wallet appears as an option in the RainbowKit wallet selection modal.
 	- If you haven't installed the browser extension and set up your wallet yet, you can find install it via the [Chrome Web Store][2].
-3. **Connect the Wallet** – Click on Flow Wallet in the selection modal. If using the browser extension, open it and press "Connect."
+3. **Connect the Wallet** – Click on Flow Wallet in the selection modal. If you use the browser extension, open it and press "Connect."
 
 ![Rainbowkit dAPP UI](./imgs/rainbowkit-1.png)
 
@@ -183,11 +186,11 @@ After implementing the Flow Wallet connector and configuring Wagmi, follow these
 
 ## Conclusion
 
-In this tutorial, you learned how to integrate Flow Wallet with [RainbowKit](https://www.rainbowkit.com/), creating a seamless wallet connection experience for your users. You should now be able to:
-- Create a custom Flow Wallet connector compatible with RainbowKit's interface
-- Configure your Wagmi setup to support Flow Wallet connections
-- Implement a complete wallet connection flow for Flow blockchain users
-- Test and verify the Flow Wallet integration in your dApp
+In this tutorial, you learned how to integrate Flow Wallet with [RainbowKit](https://www.rainbowkit.com/) and create a seamless wallet connection experience for your users. You should now be able to:
+- Create a custom Flow Wallet connector compatible with RainbowKit's interface.
+- Configure your Wagmi setup to support Flow Wallet connections.
+- Implement a complete wallet connection flow for Flow blockchain users.
+- Test and verify the Flow Wallet integration in your dApp.
 
 Now that you've completed this tutorial, you're ready to enhance your dApp with additional Flow blockchain features such as token transfers, NFT minting, and smart contract interactions.
 
