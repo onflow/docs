@@ -74,7 +74,7 @@ Similarly to revertible randomness, Commit-Reveal inherits the security of Flow 
 
 In addition, commit-reveal patterns solve the issue of revertible randoms:
 
-- Prevents user manipulation - Players cannot selectively reveal results after they see the random results.
+- Prevents user manipulation - Players cannot simulate an outcome and choose to revert the transaction if they do not like the result.
 
 ## Build the Coin Toss contract
 
