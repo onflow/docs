@@ -14,7 +14,7 @@ keywords:
 
 # Gasless Transactions on Flow
 
-Flow is a **blockchain with no gas fees for end users**, which makes it one of the easiest platforms for developers to onboard new users. **Gasless transactions** are a native feature of the Flow Protocol: the Flow Wallet automatically sponsors transactions on both testnet and mainnet. This allows developers to build seamless Web3 applications without requiring users to manage gas tokens or pay transaction fees.
+Flow is one of the easiest platforms for developers to onboard new users. Currently, the Flow Wallet automatically sponsors transactions on **both testnet and mainnet**. This allows developers to build seamless Web3 applications without requiring users to manage gas tokens or pay transaction fees.
 
 In addition to native sponsorship, Flow also supports multiple methods for gas sponsorship that you can tailor to your application’s needs. You can learn about these approaches in more detail [here].
 
