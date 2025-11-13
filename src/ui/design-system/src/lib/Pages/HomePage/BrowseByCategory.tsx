@@ -119,26 +119,39 @@ const BrowseByCategory: React.FC = () => {
     <section className="container mx-auto py-12">
       <h2 className="text-2xl md:text-3xl font-bold text-gray-900 dark:text-white mb-8">Browse by Category</h2>
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-        {CATEGORIES.map((cat) => (
-          <div key={cat.title} className="bg-white dark:bg-gray-900 rounded-lg shadow p-6 flex flex-col">
-            <h3 className="text-xl font-semibold text-primary-green-600 dark:text-primary-green-400 mb-4">{cat.title}</h3>
-            <ul className="space-y-2">
-              {cat.links.map((link) => (
-                <li key={link.label}>
-                  <a
-                    href={link.href}
-                    target={link.href.startsWith('http') ? '_blank' : undefined}
-                    rel={link.href.startsWith('http') ? 'noopener noreferrer' : undefined}
-                    onClick={() => handleLinkClick(link.label, link.href, cat.title)}
-                    className="text-base text-gray-800 dark:text-gray-100 hover:text-primary-green-500 dark:hover:text-primary-green-300 transition-colors"
-                  >
-                    {link.label}
-                  </a>
-                </li>
-              ))}
-            </ul>
-          </div>
-        ))}
+        {CATEGORIES.map((cat) => {
+          const firstLink = cat.links[0];
+          const remainingLinks = cat.links.slice(1);
+          
+          return (
+            <div key={cat.title} className="bg-white dark:bg-gray-900 rounded-lg shadow p-6 flex flex-col">
+              <a
+                href={firstLink.href}
+                target={firstLink.href.startsWith('http') ? '_blank' : undefined}
+                rel={firstLink.href.startsWith('http') ? 'noopener noreferrer' : undefined}
+                onClick={() => handleLinkClick(firstLink.label, firstLink.href, cat.title)}
+                className="text-xl font-semibold text-primary-green-600 dark:text-primary-green-400 mb-4 hover:text-primary-green-700 dark:hover:text-primary-green-300 transition-colors underline"
+              >
+                {cat.title}
+              </a>
+              <ul className="space-y-2">
+                {remainingLinks.map((link) => (
+                  <li key={link.label}>
+                    <a
+                      href={link.href}
+                      target={link.href.startsWith('http') ? '_blank' : undefined}
+                      rel={link.href.startsWith('http') ? 'noopener noreferrer' : undefined}
+                      onClick={() => handleLinkClick(link.label, link.href, cat.title)}
+                      className="text-base text-gray-800 dark:text-gray-100 hover:text-primary-green-500 dark:hover:text-primary-green-300 transition-colors"
+                    >
+                      {link.label}
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          );
+        })}
       </div>
     </section>
   );

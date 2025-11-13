@@ -32,7 +32,7 @@ export const buildGridData = {
           heading: 'Create apps that evolve without a proxy contract',
           // Why should I pick Cadence?
           description:
-            'Query state without indexers, write transactions as powerful as full contracts, and upgrade safely onchain so your app can keep evolving after launch.',
+            'Query state without indexers, write transactions as powerful as full contracts, and upgrade safely onchain so your app can continue to evolve after you launch it.',
           iconColor: 'green',
           cardColor: 'black',
           icon: IconName.FLOW_CADENCE,
