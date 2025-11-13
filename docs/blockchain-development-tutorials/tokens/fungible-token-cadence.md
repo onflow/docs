@@ -23,24 +23,21 @@ keywords:
 
 :::info
 
-This guide is an in-depth tutorial on launching a Fungible Token contract from scratch. To launch in 2 minutes using a tool check out [Toucans](https://toucans.ecdao.org/)
+This guide is an in-depth tutorial on launching a Fungible Token contract from scratch. To launch in two minutes with a tool, check out [Toucans](https://toucans.ecdao.org/)
 
 :::
 
-## What are Fungible Tokens?
+## What are fungible tokens?
 
-Fungible tokens are digital assets that are interchangeable and indistinguishable with other tokens of the same type. This means that each token is identical in specification to every other token in circulation. Think of them like traditional money; every dollar bill has the same value as every other dollar bill. Fungible tokens play a crucial role in web3 ecosystems, serving as both a means of payment and an incentive for network participation. They can take on various roles including currencies, structured financial instruments, shares of index funds, and even voting rights in decentralized autonomous organizations.
+Fungible tokens are digital assets that are interchangeable and indistinguishable with other tokens of the same type. This means that each token is identical in specification to every other token in circulation. Think of them like traditional money; every dollar bill has the same value as every other dollar bill. 
+
+Fungible tokens play a crucial role in web3 ecosystems. They serve as both a means of payment and an incentive for network participation. They can take on various roles, such as currencies, structured financial instruments, shares of index funds, and even voting rights in decentralized autonomous organizations.
 
 ## Vaults on Flow
 
-On the Flow blockchain and in the Cadence programming language,
-fungible tokens are stored in structures called resources.
-Resources are objects in Cadence that store data,
-but have special restrictions about how they can be stored and transferred,
-making them perfect for representing digital objects with real value.
+On the Flow blockchain and in the Cadence programming language, fungible tokens are stored in structures called resources. Resources are objects in Cadence that store data, but have special restrictions about how they can be stored and transferred, which makes them perfect to represent digital objects with real value.
 
-You can learn more about resources in the Cadence [documentation](https://cadence-lang.org/docs/language/resources)
-and [tutorials](https://cadence-lang.org/docs/tutorial/resources).
+You can learn more about resources in the Cadence [documentation](https://cadence-lang.org/docs/language/resources) and [tutorials](https://cadence-lang.org/docs/tutorial/resources).
 
 For fungible tokens specifically, tokens are represented by a resource type called a `Vault`:
 
@@ -53,50 +50,44 @@ access(all) resource interface Vault {
 }
 ```
 
-Think of a `Vault` as a digital piggy bank.
-Users who own fungible tokens store vault objects that track their balances
-directly in their account storage. This is opposed to languages
-that track user balances in a central ledger smart contract.
+Think of a `Vault` as a digital piggy bank. Users who own fungible tokens store vault objects that track their balances directly in their account storage. This is opposed to languages that track user balances in a central ledger smart contract.
 
 When you transfer tokens from one vault to another:
 
-1. The transferor's vault creates a temporary vault holding the transfer amount.
+1. The transferor's vault creates a temporary vault that contains the transfer amount.
 2. The original vault's balance decreases by the transfer amount.
-3. The recipient's vault receives the tokens from the temporary vault
-   and adds the temporary vault's balance to the its own balance.
+3. The recipient's vault receives the tokens from the temporary vault and adds the temporary vault's balance to the its own balance.
 4. The temporary vault is then destroyed.
 
 This process ensures secure and accurate token transfers on the Flow blockchain.
 
-## Fungible Token Standard
+## Fungible token standard
 
-The [Fungible Token Standard](https://github.com/onflow/flow-ft) defines how a fungible token should behave on Flow.
-Wallets and other platforms need to recognize these tokens,
-so they adhere to a specific interface, which defines fields like balance,
-totalSupply, withdraw functionality, and more.
-This interface ensures that all fungible tokens on Flow have a consistent structure and behavior.
-Clink the link to the fungible token standard to see the full standard
-and learn about specific features and requirements.
+The [Fungible Token Standard](https://github.com/onflow/flow-ft) defines how a fungible token should behave on Flow. Wallets and other platforms need to recognize these tokens, so they adhere to a specific interface, which defines fields like balance, totalSupply, withdraw functionality, and more. This interface ensures that all fungible tokens on Flow have a consistent structure and behavior.
+
+Clink the link to the fungible token standard to see the full standard and learn about specific features and requirements.
 
 [Learn more about interfaces here](https://developers.flow.com/cadence/language/interfaces).
 
-## Setting Up a Project
+## Sett Up a Project
 
-To start creating a Fungible Token on the Flow blockchain, you'll first need some tools and configurations in place.
+To create a fungible token on the Flow blockchain, you'll first need some tools and configurations in place.
 
-### Installing Flow CLI
+### Install Flow CLI
 
 The **Flow CLI** (Command Line Interface) provides a suite of tools that allow developers to interact seamlessly with the Flow blockchain.
 
-If you haven't installed the Flow CLI yet and have [Homebrew](https://brew.sh/) installed,
-you can run `brew install flow-cli`. If you don't have Homebrew,
-please follow [the installation guide here](https://developers.flow.com/tools/flow-cli/install).
+If you haven't installed the Flow CLI yet and have [Homebrew](https://brew.sh/) installed, you can run `brew install flow-cli`. If you don't have Homebrew, follow [the installation guide here](https://developers.flow.com/tools/flow-cli/install).
 
-### Initializing a New Project
+### Initialize a New Project
 
-> 💡 Note: Here is [a link to the completed code](https://github.com/onflow/FooToken) if you want to skip ahead or reference as you follow along.
+:::info
 
-Once you have the Flow CLI installed, you can set up a new project using the `flow init` command. This command initializes the necessary directory structure and a `flow.json` configuration file (a way to configure your project for contract sources, deployments, accounts, and more):
+> 💡 Here is [a link to the completed code](https://github.com/onflow/FooToken) if you want to skip ahead or reference as you follow along.
+
+:::
+
+After you've installed the Flow CLI, you can set up a new project with the `flow init` command. This command initializes the necessary directory structure and a `flow.json` configuration file (a way to configure your project for contract sources, deployments, accounts, and more):
 
 ```bash
 flow init FooToken
@@ -104,7 +95,7 @@ flow init FooToken
 
 Select `Basic Cadence project (no dependencies)`.
 
-Upon execution, the command will generate the following directory structure:
+When you execute the command, it generates the following directory structure:
 
 ```
 /cadence
@@ -121,19 +112,9 @@ Now, navigate into the project directory:
 cd FooToken
 ```
 
-In our configuration file, called `flow.json`, for the network we want to use,
-we are going to state the address the `FungibleToken` contract is deployed
-to via `aliases` in a new `contracts` section. Since it is a standard contract,
-it has already been deployed to the emulator, a tool that runs and emulates
-a local development version of the Flow Blockchain, for us.
-You can find addresses for other networks, like Testnet and Mainnet, on the [Fungible Token Standard repo](https://github.com/onflow/flow-ft).
+In our configuration file, called `flow.json`, for the network we want to use, we'll state the address the `FungibleToken` contract is deployed to via `aliases` in a new `contracts` section. Since it is a standard contract, it has already been deployed to the emulator, a tool that runs and emulates a local development version of the Flow Blockchain, for us. You can find addresses for other networks, like Testnet and Mainnet, on the [Fungible Token Standard repo](https://github.com/onflow/flow-ft).
 
-We'll also need to add the addresses for `ViewResolver`, `MetadataViews`,
-and `FungibleTokenMetadataViews`, which are other important contracts to use.
-These contracts are deployed to the Flow emulator by default,
-so there is not need to copy their code into your repo.
-The addresses below are the addresses in the emulator that your contract
-will import them from.
+We'll also need to add the addresses for `ViewResolver`, `MetadataViews`, and `FungibleTokenMetadataViews`, which are other important contracts to use. These contracts are deployed to the Flow emulator by default, so there is not need to copy their code into your repo. The addresses below are the addresses in the emulator that your contract will import them from.
 
 ```json
 "contracts": {
