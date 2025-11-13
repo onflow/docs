@@ -6,7 +6,7 @@ const CATEGORIES = [
   {
     title: 'Defi',
     links: [
-      { label: 'Defi', href: '/defi' },
+      { label: 'DeFi', href: '/defi' },
       { label: 'DeFi Contracts Mainnet', href: '/defi/defi-contracts-mainnet' },
       { label: 'DeFi Contracts Testnet', href: '/defi/defi-contracts-testnet' },
       { label: 'Cross-chain Swaps', href: '/defi/cross-chain-swaps' },
