@@ -22,7 +22,7 @@ export const toolsGridData = {
         {
           heading: 'Get 100k testnet $FLOW',
           description:
-            'Other chains drip testnet tokens, Flow gives you 100k $FLOW to play with.',
+            'Other chains drip testnet tokens, the Flow faucet gives you 100k $FLOW to play with.',
           iconColor: 'green',
           cardColor: 'black',
           icon: IconName.FAUCET,

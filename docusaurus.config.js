@@ -272,7 +272,7 @@ const config = {
           {
             to: 'defi',
             position: 'left',
-            label: 'Defi',
+            label: 'DeFi',
             activeBasePath: '/defi',
           },
           {
