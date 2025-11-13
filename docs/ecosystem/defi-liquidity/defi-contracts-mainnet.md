@@ -46,7 +46,7 @@ Below is a list of commonly used DeFi contracts on Flow Mainnet:
 
 #### Flow EVM Mainnet FlowSwap
 
-| Contract                                      | EVM Testnet Address                          |
+| Contract                                      | EVM Mainnet Address                          |
 | --------------------------------------------- | -------------------------------------------- |
 | [UniswapV2Factory (FlowSwap)][38]                   | `0x681D1bFE03522e0727730Ba02a05CD3C0a08fa30` |
 | [UniswapV2Router02 (FlowSwap)][39]                    | `0x2B30D97457d44dE9fb0329D9a2C1DF6B7ae1401d` |
