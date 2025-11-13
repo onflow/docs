@@ -48,13 +48,13 @@ Below is a list of commonly used DeFi contracts on Flow Mainnet:
 
 | Contract Name                                | Flow EVM Mainnet Address                     | Docs                   |
 | -------------------------------------------- | -------------------------------------------- | ---------------------- |
-| [StableKittyFactoryNG.sol (KittyPunch)][1]   | `0x4412140D52C1F5834469a061927811Abb6026dB7` | [Docs][kittypunch-doc] |
-| [TwoKittyFactory.sol (KittyPunch)][2]        | `0xf0E48dC92f66E246244dd9F33b02f57b0E69fBa9` | [Docs][kittypunch-doc] |
-| [TriKittyFactory.sol (KittyPunch)][3]        | `0xebd098c60b1089f362AC9cfAd9134CBD29408226` | [Docs][kittypunch-doc] |
-| [KittyRouterNgPoolsOnly.sol (KittyPunch)][4] | `0x87048a97526c4B66b71004927D24F61DEFcD6375` | [Docs][kittypunch-doc] |
-| [PunchSwapV2Router02.sol (KittyPunch)][5]    | `0xf45AFe28fd5519d5f8C1d4787a4D5f724C0eFa4d` | [Docs][kittypunch-doc] |
-| [PunchSwapV2Factory.sol (KittyPunch)][6]     | `0x29372c22459a4e373851798bFd6808e71EA34A71` | [Docs][kittypunch-doc] |
-| [TrenchesTokensBuyer.sol (KittyPunch)][7]    | `0x6D0e081Acc28eA9ee6b7fD293eC03F97147b026d` | [Docs][kittypunch-doc] |
+| [StableKittyFactoryNG (KittyPunch)][1]   | `0x4412140D52C1F5834469a061927811Abb6026dB7` | [Docs][kittypunch-doc] |
+| [TwoKittyFactory (KittyPunch)][2]        | `0xf0E48dC92f66E246244dd9F33b02f57b0E69fBa9` | [Docs][kittypunch-doc] |
+| [TriKittyFactory (KittyPunch)][3]        | `0xebd098c60b1089f362AC9cfAd9134CBD29408226` | [Docs][kittypunch-doc] |
+| [KittyRouterNgPoolsOnly (KittyPunch)][4] | `0x87048a97526c4B66b71004927D24F61DEFcD6375` | [Docs][kittypunch-doc] |
+| [PunchSwapV2Router02 (KittyPunch)][5]    | `0xf45AFe28fd5519d5f8C1d4787a4D5f724C0eFa4d` | [Docs][kittypunch-doc] |
+| [PunchSwapV2Factory (KittyPunch)][6]     | `0x29372c22459a4e373851798bFd6808e71EA34A71` | [Docs][kittypunch-doc] |
+| [TrenchesTokensBuyer (KittyPunch)][7]    | `0x6D0e081Acc28eA9ee6b7fD293eC03F97147b026d` | [Docs][kittypunch-doc] |
 
 #### Flow Cadence Mainnet
 
@@ -105,15 +105,15 @@ Below is a list of commonly used DeFi contracts on Flow Mainnet:
 
 | Contract Name                  | Flow EVM Mainnet Address                     |
 | ------------------------------ | -------------------------------------------- |
-| [ERC1967Proxy.sol (Pyth)][18]  | `0x2880aB155794e7179c9eE2e38200202908C17B43` |
-| [ERC1967Proxy.sol (Stork)][28] | `0xacC0a0cF13571d30B4b8637996F5D6D774d4fd62` |
+| [ERC1967Proxy (Pyth)][18]  | `0x2880aB155794e7179c9eE2e38200202908C17B43` |
+| [ERC1967Proxy (Stork)][28] | `0xacC0a0cF13571d30B4b8637996F5D6D774d4fd62` |
 
 #### Flow Cadence Mainnet
 
 | Contract Name                             | Flow Cadence Mainnet Address | [CLI](https://developers.flow.com/build/tools/flow-cli/dependency-manager)                                                            | Docs                    |
 | ----------------------------------------- | ---------------------------- | ------------------------------------------------------------------------------------------------------------------------------------- | ----------------------- |
-| [PublicPriceOracle.cdc (IncrementFi)][19] | `0xec67451f8a58216a`         | <CopyButton text="flow dependencies install mainnet://0xec67451f8a58216a.PublicPriceOracle" title="Copy install command (mainnet)" /> | [Docs][incrementfi-doc] |
-| [BandOracle.cdc (Band) Protocol][33]      | `0x6801a6222ebf784a`         | <CopyButton text="flow dependencies install mainnet://0x6801a6222ebf784a.BandOracle" title="Copy install command (mainnet)" />        | [Docs][band-oracle-doc] |
+| [PublicPriceOracle (IncrementFi)][19] | `0xec67451f8a58216a`         | <CopyButton text="flow dependencies install mainnet://0xec67451f8a58216a.PublicPriceOracle" title="Copy install command (mainnet)" /> | [Docs][incrementfi-doc] |
+| [BandOracle (Band) Protocol][33]      | `0x6801a6222ebf784a`         | <CopyButton text="flow dependencies install mainnet://0x6801a6222ebf784a.BandOracle" title="Copy install command (mainnet)" />        | [Docs][band-oracle-doc] |
 
 ## Ethereum Attestation Service
 
@@ -121,8 +121,8 @@ More information can be found on the Credora docs site for [EAS on Flow](https:/
 
 | Contract Name                                           | Flow EVM Mainnet Address                     |
 | ------------------------------------------------------- | -------------------------------------------- |
-| [SchemaRegistry.sol (Ethereum Attestation Service)][20] | `0xB0cF748a05AEA8D59e15834446CFC95bcFF510F0` |
-| [EAS.sol (Ethereum Attestation Service)][21]            | `0xc6376222F6E009A705a34dbF1dF72fEf8efB3964` |
+| [SchemaRegistry (Ethereum Attestation Service)][20] | `0xB0cF748a05AEA8D59e15834446CFC95bcFF510F0` |
+| [EAS (Ethereum Attestation Service)][21]            | `0xc6376222F6E009A705a34dbF1dF72fEf8efB3964` |
 
 [1]: https://evm.flowscan.io/address/0x4412140D52C1F5834469a061927811Abb6026dB7?tab=contract
 [2]: https://evm.flowscan.io/address/0xf0E48dC92f66E246244dd9F33b02f57b0E69fBa9?tab=contract
