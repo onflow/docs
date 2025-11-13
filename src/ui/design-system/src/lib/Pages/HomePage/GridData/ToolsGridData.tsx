@@ -9,6 +9,16 @@ export const toolsGridData = {
     {
       title: 'Tools',
       cards: [
+          {
+          heading: 'React SDK',
+          description:
+            'Build a modern frontend for your Flow Cadence app using React hooks and components with `@onflow/react-sdk`. Easily access user accounts, sign transactions, and more.',
+          iconColor: 'green',
+          cardColor: 'black',
+          icon: IconName.FLOW_CLIENT_LIBRARY,
+          variant: 'horizontal',
+          href: '/blockchain-development-tutorials/integrations',
+        },
         {
           heading: 'Get 100k testnet $FLOW',
           description:
@@ -29,16 +39,6 @@ export const toolsGridData = {
           icon: IconName.TOOLS,
           variant: 'horizontal',
           href: '/build/tools/flow-cli',
-        },
-        {
-          heading: 'Use your favorite platform and tools',
-          description:
-            'Connect with Thirdweb, Crossmint, Dynamic, Privy, and other popular blockchain infrastructure platforms to enhance user experience and reduce development complexity.',
-          iconColor: 'green',
-          cardColor: 'black',
-          icon: IconName.FLOW_CLIENT_LIBRARY,
-          variant: 'horizontal',
-          href: '/blockchain-development-tutorials/integrations',
         },
       ],
     },
