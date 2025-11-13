@@ -12,7 +12,7 @@ keywords:
   - Flow blockchain
   - Flow Cadence
   - smart contracts
-sidebar_position: 6
+sidebar_position: 7
 sidebar_label: Band Oracle
 ---
 
@@ -24,20 +24,22 @@ The Band Protocol Oracle contract enables Flow blockchain applications to access
 
 ## Contract Addresses
 
-| Network | Address | [CLI](https://developers.flow.com/build/tools/flow-cli/dependency-manager) | Explorer |
-|---------|---------|----------|----------|
+| Network | Address              | [CLI](https://developers.flow.com/build/tools/flow-cli/dependency-manager)                                                     | Explorer                                                                            |
+| ------- | -------------------- | ------------------------------------------------------------------------------------------------------------------------------ | ----------------------------------------------------------------------------------- |
 | Testnet | `0x9fb6606c300b5051` | <CopyButton text="flow dependencies install testnet://0x9fb6606c300b5051.BandOracle" title="Copy install command (testnet)" /> | [View Contract](https://testnet.flowscan.io/contract/A.9fb6606c300b5051.BandOracle) |
-| Mainnet | `0x6801a6222ebf784a` | <CopyButton text="flow dependencies install mainnet://0x6801a6222ebf784a.BandOracle" title="Copy install command (mainnet)" /> | [View Contract](https://flowscan.io/contract/A.6801a6222ebf784a.BandOracle) |
+| Mainnet | `0x6801a6222ebf784a` | <CopyButton text="flow dependencies install mainnet://0x6801a6222ebf784a.BandOracle" title="Copy install command (mainnet)" /> | [View Contract](https://flowscan.io/contract/A.6801a6222ebf784a.BandOracle)         |
 
 ## Supported Symbols
 
 ### Cryptocurrency Pairs (against USD)
+
 - **Major**: ETH, FLOW, USDC, USDT, WBTC, BNB, XRP, ADA, DOGE, POL (MATIC)
 - **Layer 1**: SOL, DOT, AVAX, ATOM, XLM, TRX, SUI
 - **DeFi**: AAVE, LINK, CRV, OP, UNI, SUSHI, CAKE, DYDX, 1INCH, BAT
 - **Others**: LTC, SHIB, DAI, FTM
 
 ### Fiat Currency Pairs (against USD)
+
 - **Asian**: KRW, INR, HKD, TWD, THB, JPY, MYR, PHP, CNY, SGD
 - **European**: PLN, CZK, EUR, GBP, CHF, RUB, SEK, TRY
 - **Americas**: BRL, CAD
@@ -92,17 +94,20 @@ All price data is stored with a USD conversion rate. When you query for price co
 ## Features
 
 ### Price Queries
+
 - Query any supported symbol pair in real-time
 - Get both integer (e18 precision) and fixed-point decimal rates
 - Access timestamp information to verify data freshness
 - Track BandChain request IDs for transparency
 
 ### Fee Structure
+
 - Configurable fee system for oracle usage (currently set to zero)
 - Fee collected in FLOW tokens
 - Query current fee using `BandOracle.getFee()`
 
 ### Event Monitoring
+
 The contract emits events to notify applications of updates:
 
 ```cadence
@@ -159,6 +164,7 @@ transaction(baseSymbol: String, quoteSymbol: String) {
 ```
 
 ### Example: ETH/USD Price
+
 ```cadence
 // Get ETH price in USD
 let priceData = BandOracle.getReferenceData(
@@ -170,6 +176,7 @@ let priceData = BandOracle.getReferenceData(
 ```
 
 ### Example: Cross-Currency Conversion
+
 ```cadence
 // Get EUR price in JPY
 let priceData = BandOracle.getReferenceData(
@@ -247,7 +254,6 @@ access(all) event BandOracleSymbolsUpdated(
 ```
 
 When you detect an update for symbols your app uses, trigger a transaction to refresh your stored prices.
-
 
 ## Advanced Features
 

@@ -1,5 +1,5 @@
 ---
-title: DeFi & Liquidity
+title: Defi
 description: Mechanisms that connect different blockchain networks, allowing secure and decentralized transfer of assets and data across platforms.
 keywords:
   - DeFi
@@ -13,12 +13,10 @@ keywords:
   - lending platforms
   - stablecoin protocols
   - liquidity solutions
-sidebar_position: 5
-sidebar_custom_props:
-  icon: 💧
+sidebar_position: 1
 ---
 
-# DeFi & Liquidity on Flow
+# Defi on Flow
 
 **Fast, scalable, and capital-efficient DeFi.** Flow delivers a seamless DeFi experience without congestion, unlocking new possibilities for developers and users alike.
 
