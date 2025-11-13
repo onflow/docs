@@ -176,12 +176,12 @@ You can use any EVM wallet such as Metamask, Coinbase Wallet, and Flow Wallet.
 You can see a full list of stablecoins here:  
 [DeFi Contracts on Flow][0]
 
-Trading pools for USDF and stgUSDC (USDC via Stargate) are already live and available for immediate use on Flow EVM and can be seamlessly transferred to any Flow Cadence address.
+Trading pools for USDF and USDC (USDC via Stargate) are already live and available for immediate use on Flow EVM and can be seamlessly transferred to any Flow Cadence address.
 
 </Details>
 
-<Details summary="Should Cadence applications switch to USDF or stgUSDC?">
-Cadence applications can use USDC.e as the default, but they now also have the option to support USDF or stgUSDC based on their needs.
+<Details summary="Should Cadence applications switch to USDF or USDC?">
+Cadence applications can use USDC.e as the default, but they now also have the option to support USDF or USDC based on their needs.
 
 If you have questions you can join [Flow Discord][15] to get free technical support.
 
