@@ -330,9 +330,12 @@ function QuickStartShowcaseContent() {
     },
     flowClient: flowClientForScript,
     query: {
-      enabled: currentScript.type === 'script',
+      enabled: false,
+      refetchOnMount: false,
+      refetchOnReconnect: false,
       refetchOnWindowFocus: false,
       retry: 1,
+      staleTime: 0,
     },
   });
 
@@ -495,9 +498,11 @@ function QuickStartShowcaseContent() {
                   <div className="flex items-center gap-2">
                     {currentScript.type === 'script' ? (
                       <button
-                        onClick={() => refetch()}
+                        onClick={async () => {
+                          await refetch();
+                        }}
                         disabled={isLoading}
-                        className="text-xs px-4 py-2 bg-purple-500 hover:bg-purple-600 text-white rounded-full shadow-md font-medium border-none disabled:opacity-50 disabled:cursor-not-allowed whitespace-nowrap transition-colors"
+                        className="text-xs px-4 py-2 bg-purple-500 hover:bg-purple-600 text-white rounded-full shadow-md font-medium border-none cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed whitespace-nowrap transition-colors"
                       >
                         {isLoading ? 'Running...' : 'Run Script'}
                       </button>
@@ -507,7 +512,7 @@ function QuickStartShowcaseContent() {
                         <button
                           onClick={handleExecuteTransaction}
                           disabled={txPending}
-                          className="text-xs px-4 py-2 bg-purple-500 hover:bg-purple-600 text-white rounded-full shadow-md font-medium border-none disabled:opacity-50 disabled:cursor-not-allowed whitespace-nowrap transition-colors"
+                          className="text-xs px-4 py-2 bg-purple-500 hover:bg-purple-600 text-white rounded-full shadow-md font-medium border-none cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed whitespace-nowrap transition-colors"
                         >
                           {txPending ? 'Executing...' : 'Execute Transaction'}
                         </button>
@@ -523,7 +528,7 @@ function QuickStartShowcaseContent() {
                     {(currentScript as any).editLink && (
                       <button
                         onClick={() => window.open((currentScript as any).editLink, '_blank', 'noopener,noreferrer')}
-                        className="text-xs px-4 py-2 bg-transparent hover:bg-purple-50 dark:hover:bg-purple-900/20 text-purple-600 dark:text-purple-400 rounded-full border border-purple-500 dark:border-purple-400 font-medium whitespace-nowrap transition-colors"
+                        className="text-xs px-4 py-2 bg-transparent hover:bg-purple-50 dark:hover:bg-purple-900/20 text-purple-600 dark:text-purple-400 rounded-full border border-purple-500 dark:border-purple-400 font-medium whitespace-nowrap transition-colors cursor-pointer"
                       >
                         Edit
                       </button>
@@ -745,7 +750,7 @@ function QuickStartShowcaseContent() {
                     )}
                   </div>
                 ) : (
-                  <p className="text-sm text-gray-500 dark:text-gray-400">No result yet. Click "Run Script" to execute.</p>
+                  <p className="text-sm text-gray-500 dark:text-gray-400">Click "Run Script" to see result.</p>
                 )}
               </div>
             </div>
