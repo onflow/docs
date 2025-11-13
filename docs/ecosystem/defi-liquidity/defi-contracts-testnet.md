@@ -76,7 +76,7 @@ Below is a list of commonly used DeFi contracts on Flow Testnet:
 
 | Contract                                      | EVM Testnet Address                          |
 | --------------------------------------------- | -------------------------------------------- |
-| [Tau Vault Token (FlowSwap)][33]                   | `0x7d726261FB76B264fc20eA1f19D900D760136566` |
+| [UniswapV2Factory (FlowSwap)][33]                   | `0x7d726261FB76B264fc20eA1f19D900D760136566` |
 | [UniswapV2Router02 (FlowSwap)][34]                    | `0x524E1291c109BE27FDE48De97cAf0B3c0F02A68f` |
 | [UniswapV2Pair (FlowSwap)][35]             | `0x21E3aa01561d7D869785aAedB14130C5807C5A12` |
 | [UniswapV3Factory (FlowSwap)][36]                   | `0x92657b195e22b69E4779BBD09Fa3CD46F0CF8e39` |

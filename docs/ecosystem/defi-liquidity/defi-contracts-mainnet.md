@@ -44,7 +44,30 @@ Below is a list of commonly used DeFi contracts on Flow Mainnet:
 
 ## AMMs & DEXs
 
-#### Flow EVM Mainnet
+#### Flow EVM Mainnet FlowSwap
+
+| Contract                                      | EVM Testnet Address                          |
+| --------------------------------------------- | -------------------------------------------- |
+| [UniswapV2Factory (FlowSwap)][38]                   | `0x681D1bFE03522e0727730Ba02a05CD3C0a08fa30` |
+| [UniswapV2Router02 (FlowSwap)][39]                    | `0x2B30D97457d44dE9fb0329D9a2C1DF6B7ae1401d` |
+| [UniswapV2Pair (FlowSwap)][40]             | `0x48d63C4E4481fd0A01Fb82A3B191C6685c361f02` |
+| [UniswapV3Factory (FlowSwap)][41]                   | `0xca6d7Bb03334bBf135902e1d919a5feccb461632` |
+| [NonfungiblePositionManager (FlowSwap)][42]      | `0xf7F20a346E3097C7d38afDDA65c7C802950195C7` |
+| [SwapRouter02 (FlowSwap)][43]               | `0xeEDC6Ff75e1b10B903D9013c358e446a73d35341` |
+| [QuoterV2 (FlowSwap)][44]         | `0x370A8DF17742867a44e56223EC20D82092242C85` |
+| [V3Migrator (FlowSwap)][45]                  | `0x5C65D5C7E0154f519B7dC4558915A7016F41aa50` |
+| [UniswapV3Staker (FlowSwap)][46]                    | `0x990A0564B7d90656494Ba7A7E1e874038cc35f5d` |
+| [TickLens (FlowSwap)][47]                 | `0x513A58591c8E502543D629748076857a71C6079D` |
+| [NFTDescriptor (FlowSwap)][48]        | `0x99187C0a0AF166b40C393FAE5FDaC688ed5b6989` |
+| [v3_nft_position_descriptor (FlowSwap)][49]   | `0x36D8296B9B73dE9d5Ec09ACc6a7c02cC40Ad9780` |
+| [TransparentUpgradeableProxy (FlowSwap)][50]          | `0xB231Aa6F8636373f5233eeaD13FFEB199659d484` |
+| [UniswapV3Pool (FlowSwap)][51]            | `0xd21C58aDaf1d1119FE40413b45A5f43d23d58DF3` |
+| [UniversalRouter (FlowSwap)][52]             | `0x5fE87847fe20a6C30921620F52B06a4A3740aa61` |
+| [Permit2 (FlowSwap)][53]                      | `0x000000000022D473030F116dDEE9F6B43aC78BA3` |
+| [FusionXInterfaceMulticall (FlowSwap)][54]                   | `0x8B5eB800B8d9cF702ff3DD0047ac31bBD411B82a` |
+| [proxy_admin (FlowSwap)][55]                  | `0x026932f97995201527B4c9Bc2ea6854C02BB0AdC` |
+
+#### Flow EVM Mainnet KittyPunch
 
 | Contract Name                                | Flow EVM Mainnet Address                     | Docs                   |
 | -------------------------------------------- | -------------------------------------------- | ---------------------- |
@@ -164,3 +187,22 @@ More information can be found on the Credora docs site for [EAS on Flow](https:/
 [band-oracle-doc]: ./band-oracle
 [incrementfi-doc]: https://docs.increment.fi/
 [kittypunch-doc]: https://kittypunch.gitbook.io/kittypunch-docs
+[38]: https://www.flowscan.io/evm/contract/0x681D1bFE03522e0727730Ba02a05CD3C0a08fa30
+[39]: https://www.flowscan.io/evm/contract/0x2B30D97457d44dE9fb0329D9a2C1DF6B7ae1401d
+[40]: https://www.flowscan.io/evm/contract/0x48d63C4E4481fd0A01Fb82A3B191C6685c361f02
+[41]: https://www.flowscan.io/evm/contract/0xca6d7Bb03334bBf135902e1d919a5feccb461632
+[42]: https://www.flowscan.io/evm/contract/0xf7F20a346E3097C7d38afDDA65c7C802950195C7
+[43]: https://www.flowscan.io/evm/contract/0xeEDC6Ff75e1b10B903D9013c358e446a73d35341
+[44]: https://www.flowscan.io/evm/contract/0x370A8DF17742867a44e56223EC20D82092242C85
+[45]: https://www.flowscan.io/evm/contract/0x5C65D5C7E0154f519B7dC4558915A7016F41aa50
+[46]: https://www.flowscan.io/evm/contract/0x990A0564B7d90656494Ba7A7E1e874038cc35f5d
+[47]: https://www.flowscan.io/evm/contract/0x513A58591c8E502543D629748076857a71C6079D
+[48]: https://www.flowscan.io/evm/contract/0x99187C0a0AF166b40C393FAE5FDaC688ed5b6989
+[49]: https://www.flowscan.io/evm/contract/0x36D8296B9B73dE9d5Ec09ACc6a7c02cC40Ad9780
+[50]: https://www.flowscan.io/evm/contract/0xB231Aa6F8636373f5233eeaD13FFEB199659d484
+[51]: https://www.flowscan.io/evm/contract/0xd21C58aDaf1d1119FE40413b45A5f43d23d58DF3
+[52]: https://www.flowscan.io/evm/contract/0x5fE87847fe20a6C30921620F52B06a4A3740aa61
+[53]: https://www.flowscan.io/evm/contract/0x000000000022D473030F116dDEE9F6B43aC78BA3
+[54]: https://www.flowscan.io/evm/contract/0x8B5eB800B8d9cF702ff3DD0047ac31bBD411B82a
+[55]: https://www.flowscan.io/evm/contract/0x026932f97995201527B4c9Bc2ea6854C02BB0AdC
+
