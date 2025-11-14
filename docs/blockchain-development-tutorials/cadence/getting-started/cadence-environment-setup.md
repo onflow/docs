@@ -17,7 +17,7 @@ keywords:
   - VSCode extension
 ---
 
-# Cadence environment eetup
+# Cadence Environment Setup
 
 This comprehensive tutorial will guide you through how to set up your complete development environment, deploy your first smart contract, and learn the fundamentals of Flow development. You'll work hands-on with the Flow CLI, local emulator, and a real smart contract to build practical skills from day one.
 

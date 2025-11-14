@@ -17,7 +17,7 @@ keywords:
   - Production deployment
 ---
 
-# Getting started with Cadence
+# Getting Started with Cadence
 
 The Cadence is designed for the next generation of apps, games, and digital assets. This comprehensive tutorial series will guide you from setting up your development environment to deploying production-ready applications on Flow's mainnet while a complete Counter application that demonstrates all essential Flow development patterns.
 
