@@ -78,7 +78,6 @@ Learn how to implement scheduled transactions for time-based smart contract exec
 Cadence tutorials covering Flow's native smart contract language for secure and resource-oriented blockchain development.
 
 - [Mobile Development] - Mobile development tutorials for building Flow blockchain applications on iOS, Android, and React Native platforms.
-
   - [iOS Quickstart] - Build native iOS applications that interact with Flow blockchain using Swift and Flow SDK for mobile-first blockchain experiences.
   - [React Native Quickstart] - Get started building mobile applications on Flow using React Native with FCL integration for wallet connections and blockchain interactions.
   - [Walletless PWA] - Build a Progressive Web App with walletless authentication on Flow, enabling user onboarding without requiring traditional crypto wallets.
@@ -97,19 +96,17 @@ Comprehensive tutorials for building on Flow EVM using Solidity smart contracts 
 - [EVM Setup] - Setup guides for Flow EVM development environment, network configuration, and toolchain preparation.
 
 - [EVM Development Tools] - Overview of development tools for building Solidity smart contracts on Flow EVM, including Hardhat, Foundry, and Remix IDE.
-
   - [Flow Hardhat Guide] - Using Hardhat to deploy a Solidity contract to Flow EVM with step-by-step configuration, deployment, and interaction examples including contract verification.
   - [Using Foundry with Flow] - Using Foundry to deploy a Solidity contract to Flow EVM, covering ERC-20 token development, testing, deployment, and state interaction with Foundry tools.
   - [Flow Remix Guide] - Deploy and interact with Solidity smart contracts on Flow EVM using the Remix IDE with network configuration and contract verification.
 
 - [EVM Frameworks] - JavaScript frameworks and libraries for building frontend applications that interact with Flow EVM, including RainbowKit, wagmi, Ethers.js, and Web3.js.
-
   - [RainbowKit Integration] - Integrate RainbowKit with Flow EVM to provide wallet connection functionality in React applications with custom wallet support and network configuration.
   - [Wagmi Integration] - Integrate wagmi React hooks with Flow EVM for type-safe Ethereum interactions, wallet management, and smart contract integration in React applications.
   - [Ethers.js Integration] - Connect to Flow EVM using Ethers.js library for blockchain interactions, smart contract deployment, and transaction management in JavaScript applications.
   - [Web3.js Integration] - Use Web3.js library to interact with Flow EVM, covering wallet connections, smart contract interactions, and transaction handling in JavaScript applications.
 
-- [Build a Fully-Onchain Image Gallery] - Learn how to store images up to approximately 32kb onchain on Flow EVM using Solidity smart contracts and Next.js frontend with gas-efficient blockchain storage.
+- [Build a Fully-Onchain Image Gallery] - Learn how to store images up to approximately 32kb onchain on Flow EVM using Solidity smart contracts and Next.js frontend. Spend millions of gas for less than a tenth of a cent.
 
 ## [Token Development]
 
@@ -127,7 +124,7 @@ Build applications that span both Flow EVM and Cadence virtual machines, enablin
 - [Cross-VM Application Introduction] - Introduction to building applications that leverage both Flow EVM and Cadence environments for enhanced functionality and cross-VM asset management.
 - [Add Flow Cadence to Your wagmi App] - Integrate cross-VM functionality with wagmi React hooks to enable seamless interactions between Flow EVM and Cadence environments in frontend applications.
 - [Interacting with COAs] - Interact with Cadence-Owned Accounts (COA) to bridge assets and functionality between Cadence and EVM environments on Flow blockchain.
-- [Batched EVM Transactions] - Execute batched transactions on Flow EVM to improve efficiency and enable atomic multi-operation workflows with reduced gas costs.
+- [Batched EVM Transactions] - Execute batched transactions on Flow EVM to improve efficiency and enable atomic multi-operation workflows.
 - [Direct Calls] - Make direct calls between Cadence and EVM environments on Flow for seamless cross-VM smart contract interactions and data exchange.
 - [Cross-VM Bridge] - Use the VM Bridge to transfer assets and data between Flow's Cadence and EVM environments for cross-VM application development.
 
@@ -142,7 +139,7 @@ Tutorials for using Flow's native Verifiable Random Function (VRF) to generate c
 
 Implement gasless transaction patterns on Flow to improve user experience by removing the need for users to hold native tokens for gas fees.
 
-- [Gas-Free EVM Endpoint] - Use Flow's gas-free EVM endpoint to enable sponsored transactions that remove gas fee barriers for users interacting with EVM smart contracts.
+- [Gas-Free EVM Endpoint] - Build a sponsored transaction EVM endpoint to enable sponsored transactions that remove gas fee barriers for users interacting with EVM smart contracts.
 
 ## [Use AI to Build on the Flow Blockchain]
 

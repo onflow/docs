@@ -21,10 +21,10 @@ With Flow EVM, EVM operations can now be called within Cadence transactions. EVM
 Transaction fee on EVM = surge x [inclusion fee + (execution effort * unit cost)]
 ```
 
-- `Surge' factor` dynamically accounts for network pressure and market conditions. This is currently constant at 1.0 but subject to change with community approval.
+- `Surge' factor` dynamically accounts for network pressure and market conditions.
 - `Inclusion fee` accounts for the resources required to process a transaction due to its core properties (byte size, signatures). This is currently constant at 1E-6 FLOW, but subject to change with community approval.
 - `Execution fee` The fee that accounts for the operational cost of running the transaction script, processing the results, sending results for verification, generating verification receipts, etc. and is calculated as a product of `execution effort units` and the `cost per unit`.
-  - `Execution Effort (computation)` is based on transaction type and operations that are called during the execution of a transaction. The weights determine how “costly” (time consuming) each operation is.
+  - `Execution Effort (computation)` is based on transaction type and operations that are called during the execution of a transaction. The weights determine how costly (time consuming) each operation is.
   - `Execution Effort Unit Cost` = `2.49E-07 FLOW` (currently constant, but subject to change with community approval)
 
 <h3>Calculation of Execution Effort</h3>
@@ -45,10 +45,8 @@ where
 ```
 
 ```
-`EVMGasUsageCost` - The ratio that converts EVM gas into Flow computation units (execution effort) is currently set at `1/5000` but subject to revision by community approval
+`EVMGasUsageCost` - The ratio that converts EVM gas into Flow compute units (execution effort) is currently set at `1/5000` but subject to revision by community approval
 ```
-
-**Note**: The weights and unit cost mentioned above have been updated recently to accommodate an increased computation limit on Flow, which now supports the deployment of larger EVM contracts. For detailed information, refer to the relevant [FLIP](https://github.com/onflow/flips/blob/main/governance/20240508-computation-limit-hike.md) and join the ongoing discussion on the community [forum post](https://forum.flow.com/t/proposing-transaction-fee-changes-and-flow-evm-gas-charges-for-flow-crescendo-launch/5817). These values may be adjusted in the future based on community feedback and evolving requirements.
 
 </details>
 
@@ -65,13 +63,13 @@ Assume a simple NFT transfer transaction that makes 31 cadence loop calls, reads
 **Scenario 1 - Cadence-only Transaction**
 
 ```
-Execution Effort = 0.00478 * (31) + 0.00246 * (5668) + 0.00234 *(1668)  + 8.65988 *(0) + EVMGasUsageCost * EVMGasUsage
+Compute Units = 0.00478 * (31) + 0.00246 * (5668) + 0.00234 *(1668)  + 8.65988 *(0) + EVMGasUsageCost * EVMGasUsage
 ```
 
 But since `EVMGasUsage` is 0 for a Cadence transaction,
 
 ```
-Execution Effort = 18.04378
+Compute Units = 18.04378
 ```
 
 Thus
@@ -84,7 +82,7 @@ Transaction fee = [1E-6 FLOW + (18.04378 * 2.49E-07 FLOW)] x 1 = 5.5E-06 FLOW
 If the EVMGasUsage can be assumed to be 21,000 gas (typical for a simple transfer),
 
 ```
-Execution Effort = 0.00478 * (31) + 0.00246 * (5668) + 0.00234 *(1668)  + 8.65988 *(0) + 1/5000 * 21000 = 22.24378
+Compute Units = 0.00478 * (31) + 0.00246 * (5668) + 0.00234 *(1668)  + 8.65988 *(0) + 1/5000 * 21000 = 22.24378
 ```
 
 Thus

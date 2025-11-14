@@ -5,19 +5,19 @@ sidebar_position: 3
 label: Cadence Rules
 sidebar_label: Cadence Rules
 keywords:
- - Cursor Rules
- - AI
- - Cursor
- - Cadence
- - AI_Flow
- - Cadence Rules
+  - Cursor Rules
+  - AI
+  - Cursor
+  - Cadence
+  - AI_Flow
+  - Cadence Rules
 ---
 
 # Cadence Rules
 
 ## Overview
 
-When building with AI, it's hard to make the agent consistently understand what standards it should use when building or generating responses. To migitate this issue, Cursor Rules sets up global rules, project wide rules or documents specific rules that it inserts in the agent's context before reading the prompt. With Cursor Rules, you can create an assistant that can consistently understand the intended development process, desired formatted responses, and avoid common mistakes. Consider it your tool to make guard rails for agents that can reduce hallucination and incorrect development flows. 
+When building with AI, it's hard to make the agent consistently understand what standards it should use when building or generating responses. To migitate this issue, Cursor Rules sets up global rules, project wide rules or documents specific rules that it inserts in the agent's context before reading the prompt. With Cursor Rules, you can create an assistant that can consistently understand the intended development process, desired formatted responses, and avoid common mistakes. Consider it your tool to make guard rails for agents that can reduce hallucination and incorrect development flows.
 
 In this guide, you'll learn how to configure and use Cursor Rules that transform your AI assistant into a Flow development expert with persistent knowledge of Cadence syntax patterns, NFT standards, project configuration, and development workflows.
 
@@ -51,17 +51,16 @@ Cursor offers two rule types:
 - **Project Rules**: Live in `.cursor/rules`, version-controlled with your code, and apply to specific projects.
 - **User Rules**: Global preferences in Cursor Settings that apply across all your projects.
 
-
 ### Rule anatomy
 
 Each rule file is written in MDC (`.mdc`), a format supporting metadata and content. Control how rules are applied from the type dropdown which changes properties `description`, `globs`, `alwaysApply`.
 
-|Rule Type               |Description                                                                      |
-|------------------------|---------------------------------------------------------------------------------|
-|Always Apply            |Always included in model context.                                                 |
-|Apply to Specific Files |Included when files matching a glob pattern are referenced.                       |
-|Apply Intellegently     |Available to AI, which decides whether to include it. Must provide a description. |
-|Apply Manually          |Only included when explicitly mentioned using `@ruleName`.                        |
+| Rule Type               | Description                                                                       |
+| ----------------------- | --------------------------------------------------------------------------------- |
+| Always Apply            | Always included in model context.                                                 |
+| Apply to Specific Files | Included when files matching a glob pattern are referenced.                       |
+| Apply Intellegently     | Available to AI, which decides whether to include it. Must provide a description. |
+| Apply Manually          | Only included when explicitly mentioned using `@ruleName`.                        |
 
 ```mdc
 ---
@@ -116,7 +115,7 @@ project/
 
 Create rules with the Cursor Rule command or going to Cursor Settings > Rules. This creates a new rule file in `.cursor/rules`. From settings you can see all rules and their status.
 
-Click the cog icon on the upper right section of the window. Then, click "Rules and Memories" on the left side bar. Finally click "+ Add Rule" in the User Rules or Project Rules section (depending on your objective). 
+Click the cog icon on the upper right section of the window. Then, click "Rules and Memories" on the left side bar. Finally click "+ Add Rule" in the User Rules or Project Rules section (depending on your objective).
 
 ![Creating a Cursor Rule](./imgs/cursor_rules1.png)
 
@@ -246,7 +245,7 @@ Recommended Apply config: `Apply Intelligently`
 - **Best Practices**: Language-specific patterns that follow Cadence conventions.
 - **Authorization Mastery**: Proper transaction permission handling.
 - **Type Safety**: Correct resource handling and type conversions.
-- **Performance**: Optimized patterns for gas efficiency.
+- **Performance**: Optimized patterns for compute unit (gas) efficiency.
 
 #### Usage Examples
 
@@ -280,7 +279,7 @@ The [flow-development-workflow.mdc] rule provides comprehensive workflow methodo
 - **Deployment Verification**: Post-deployment validation protocols and testing strategies.
 - **FCL Integration**: Frontend configuration, network management, and user experience patterns.
 - **Error Resolution**: Systematic debugging approaches and common error prevention.
-- **Optimization Techniques**: Computation limit handling and gas efficiency strategies.
+- **Optimization Techniques**: Computation limit handling and compute unit (gas) efficiency strategies.
 - **Testnet Validation**: Comprehensive validation protocols before mainnet deployment.
 
 **Perfect for:**
@@ -289,7 +288,7 @@ The [flow-development-workflow.mdc] rule provides comprehensive workflow methodo
 - Moving between development stages (emulator → testnet → mainnet).
 - Debugging deployment or transaction authorization issues.
 - Integrating frontend applications with FCL.
-- Handling computation limits and gas optimization.
+- Handling computation limits and compute unit (gas) optimization.
 - Learning Flow development best practices and official patterns.
 - Comprehensive project validation strategies.
 
@@ -338,7 +337,7 @@ Recommended Apply config: `Apply Intelligently`
 - **Development Sequence**: Emulator testing → Frontend integration → Testnet → Validation.
 - **Error Resolution**: Syntax errors, deployment errors, FCL errors, computation limits.
 - **FCL Best Practices**: Network configuration, contract address management, user authentication.
-- **Optimization**: Accumulative processing, loop optimization, gas efficiency.
+- **Optimization**: Accumulative processing, loop optimization, compute unit (gas) efficiency.
 - **Deployment**: Verification protocols, update strategies, multi-network consistency.
 - **Documentation Usage**: When and how to reference official Flow resources.
 
@@ -530,8 +529,8 @@ You discovered five specialized Cursor Rules designed specifically for Cadence a
 Now that you have completed this guide, you should be able to:
 
 - Configure and use Cursor Rules to enhance AI assistance for Flow blockchain development
-- Apply specialized Cadence syntax patterns and NFT development standards through persistent AI context  
-- Utilize workflow-based rules to guide project setup, deployment, and debugging processes across the Flow development lifecycle 
+- Apply specialized Cadence syntax patterns and NFT development standards through persistent AI context
+- Utilize workflow-based rules to guide project setup, deployment, and debugging processes across the Flow development lifecycle
 
 <!-- Relative links, will not render on page -->
 

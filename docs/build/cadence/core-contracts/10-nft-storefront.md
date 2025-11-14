@@ -135,9 +135,9 @@ During the listing purchase all saleCuts are paid automatically. This also inclu
 
 ### Considerations
 
-1. **Auto cleanup -** `NFTStorefrontV2` offers a unique ability to do auto cleanup of duplicate listings during a purchase. It comes with a drawback if one NFT has thousands of duplicate listings. It will become the bottleneck during purchasing one of the listings as it will likely trigger an out-of-gas error.
+1. **Auto cleanup -** `NFTStorefrontV2` offers a unique ability to do auto cleanup of duplicate listings during a purchase. It comes with a drawback if one NFT has thousands of duplicate listings. It will become the bottleneck during purchasing one of the listings as it will likely trigger an out-of-compute error.
 
-   **Note -** _We recommended NOT to have more than 50 (TBD) duplicate listings of any given NFT._
+   **Note -** _We recommended NOT to have more than 50 duplicate listings of any given NFT._
 
 2. **Unsupported receiver capability** - A common pitfall during the purchase of an NFT that some saleCut receivers don't have a supported receiver capability because that entitled sale cut would transfer to first valid sale cut receiver. However, it can be partially solved by providing the generic receiver using the [`FungibleTokenSwitchboard`] contract and adding all the currency capabilities the beneficiary wants to receive. More on the `FungibleTokenSwitchboard` can be read in [Fungible Token Switchboard]
 

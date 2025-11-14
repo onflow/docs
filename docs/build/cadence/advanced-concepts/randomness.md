@@ -98,8 +98,6 @@ Although the user (or the honest coin toss contract) cannot predict or bias the 
 
 The recommended way to mitigate the problems above is via a commit-reveal scheme. The scheme involves two steps: commit and reveal. During the commit phase, the user transaction commits to accepting the future output of a smart contract where the last remaining input is an unknown random source. The user transaction does not know the random source at the time of committing. The smart contract stores this commitment on the blockchain. The reveal phase can start as early as the next block, when the committed beacon's source of randomness becomes available. The reveal phase can be executed at any block after that, now that the commitment to a past block is stored onchain. With a second transaction, the smart contract can be executed to explicitly generate the random outputs.
 
-There are ideas how to further optimize the developer experience in the future. For example, a transaction could delegate part of its gas to an independent transaction it spawns. Conceptually, also this future solution would be a commit-and-reveal scheme, just immediately happening within the same block. Until we eventually get to this next level, developers can implement their own commit-reveal using the tools available to them on Cadence and EVM.
-
 ### Commit-Reveal pattern on Flow
 
 [FLIP 123: Onchain Random beacon history for commit-reveal schemes](https://github.com/onflow/flips/blob/main/protocol/20230728-commit-reveal.md#flip-123-onchain-random-beacon-history-for-commit-reveal-schemes) was introduced to provide a safe pattern to use randomness in transactions so that it's not possible to revert unfavorable randomized transaction results.

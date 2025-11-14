@@ -534,7 +534,7 @@ A proposal key contains three fields:
 
 A transaction is only valid if its declared sequence number matches the current onchain sequence number for that key. The sequence number increments by one after the transaction is executed.
 
-📖 **[Payer](../../../cadence/basics/transactions.md#signer-roles)** is the account that pays the fees for the transaction. A transaction must specify exactly one payer. The payer is only responsible for paying the network and gas fees; the transaction is not authorized to access resources or code stored in the payer account.
+📖 **[Payer](../../../cadence/basics/transactions.md#signer-roles)** is the account that pays the fees for the transaction. A transaction must specify exactly one payer. The payer is only responsible for paying the network and compute unit fees; the transaction is not authorized to access resources or code stored in the payer account.
 
 📖 **[Authorizers](../../../cadence/basics/transactions.md#signer-roles)** are accounts that authorize a transaction to read and mutate their resources. A transaction can specify zero or more authorizers, depending on how many accounts the transaction needs to access.
 
@@ -550,10 +550,15 @@ transaction {
 
 #### Gas Limit
 
-📖 **Gas limit** is the limit on the amount of computation a transaction requires, and it will abort if it exceeds its gas limit.
-Cadence uses metering to measure the number of operations per transaction. You can read more about it in the [Cadence documentation](https://cadence-lang.org/docs).
+**Compute Limit** is the limit on the amount of computation a transaction requires, and it will abort if it exceeds its compute unit (gas) limit. Cadence uses metering to measure the number of operations per transaction. You can read more about it in the [Cadence documentation](https://cadence-lang.org/docs).
 
-The gas limit depends on the complexity of the transaction script. Until dedicated gas estimation tooling exists, it's best to use the emulator to test complex transactions and determine a safe limit.
+The compute limit depends on the complexity of the transaction script. Until dedicated estimation tooling exists, it's best to use the emulator to test complex transactions and determine a safe limit.
+
+Keep in mind that Flow is **very** efficient, so transaction fees are generally low. A limit resulting in max charges of `.001` Flow is sufficient to cover even complex transactions.
+
+- Flow token transfer: 19 CU.
+- Single NFT Transfer: 26 CU.
+- EVM Token transfer 28 CU.
 
 #### Reference Block
 

@@ -13,7 +13,7 @@ Store, manage, and interact securely with tokens and digital assets on Flow. Dis
 
 ## Flow Wallet
 
-[Flow Wallet](https://wallet.flow.com/) - The is the most popular Flow-native wallet, it sponsors all gas fees for users and interacts seamlessly with both Cadence and EVM dApps in the ecosystem.
+[Flow Wallet](https://wallet.flow.com/) - The is the most popular Flow-native wallet, it sponsors all compute unit (gas) fees for users and interacts seamlessly with both Cadence and EVM dApps in the ecosystem.
 
 ## Ledger
 
