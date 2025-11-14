@@ -9,7 +9,7 @@ const HeroSection: React.FC = () => {
   //   ? 'https://lu.ma/embed/calendar/cal-DBqbEn6mwZR13qQ/events?lt=dark'
   //   : 'https://lu.ma/embed/calendar/cal-DBqbEn6mwZR13qQ/events';
   return (
-    <section className="container mx-auto py-6">
+    <section className="container mx-auto pt-16 pb-6">
       <div className="flex flex-col lg:flex-row items-center justify-between">
         {/* Left: Hero Content */}
         <div className="flex-1 max-w-2xl text-left">
