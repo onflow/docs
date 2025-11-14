@@ -78,7 +78,7 @@ Make sure you have:
 - Basic React hooks and state management
 - Understanding of authentication flows
 
-## Quick start (five minutes)
+## Quick start
 
 ### Step 1: install the SDK
 
