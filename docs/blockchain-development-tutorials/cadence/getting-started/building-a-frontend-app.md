@@ -20,7 +20,7 @@ keywords:
   - web3 frontend
 ---
 
-# Building a Frontend App
+# Building a frontend app
 
 This tutorial builds on the `Counter` contract you deployed in [Cadence Environment Setup] and [Smart Contract Interaction]. It shows you how to create a simple `Next.js` frontend that interacts with the `Counter` smart contract deployed on your local Flow emulator. Instead of using FCL directly, you'll leverage [**@onflow/react-sdk**] to simplify authentication, querying, transactions, and to display real-time transaction status updates using convenient React hooks.
 

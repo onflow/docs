@@ -18,7 +18,7 @@ keywords:
   - Flow development
 ---
 
-# Smart Contract Interaction
+# Smart contract interaction
 
 Building on your local development setup from the previous tutorial, you'll now master advanced Flow development skills that every professional developer needs. This tutorial focuses on how to work with external dependencies, build sophisticated transactions, and establish robust testing practices.
 
