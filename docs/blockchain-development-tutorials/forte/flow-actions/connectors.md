@@ -91,7 +91,7 @@ You can combine Connetors to create sophisticated workflows:
 ProtocolA.RewardsSource → SwapConnectors.SwapSource → ProtocolB.StakingSink
 ```
 
-## Connector Library
+## Connector library
 
 🔄 SOURCE Primitive Implementations
 
@@ -212,7 +212,7 @@ access(all) fun minimumCapacity(): UFix64 {
 }
 ```
 
-### **Capacity and balance checking**
+### **Capacity and balance checks**
 
 - **Always Check First**: Validate capacity/availability before operations.
 - **Respect Limits**: Work within available constraints.
@@ -264,7 +264,7 @@ access(all) fun depositCapacity(from: auth(FungibleToken.Withdraw) &{FungibleTok
 - **Destroy Properly**: Clean up resources in all code paths.
 - **Avoid Resource Leaks**: Ensure all vaults are handled appropriately.
 
-### **Capability Management**
+### **Capability management**
 
 - **Validate Capabilities**: Check capabilities before using them.
 - **Handle Revocation**: Gracefully handle revoked capabilities.
@@ -286,7 +286,7 @@ The `VaultSink` connector is already deployed and working in Flow Actions. Let's
 **Contract**: `FungibleTokenConnectors`
 **Connector**: `VaultSink` struct that defines the interaction with the connector.
 
-### Deploy Your Connector contract
+### Deploy Your connector contract
 
 Deploy your connector contract with the following command:
 
@@ -439,7 +439,7 @@ transaction(depositAmount: UFix64) {
 }
 ```
 
-### Add to existing workflows
+### Add to current workflows
 
 You can use VaultSink in advanced Flow Actions workflows:
 
@@ -497,7 +497,7 @@ transaction() {
 }
 ```
 
-### For Your own connectors
+### For your own connectors
 
 When building your own connectors, follow the VaultSink pattern:
 

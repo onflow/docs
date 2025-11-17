@@ -309,7 +309,7 @@ flasher.flashLoan(1000.0, callback: arbitrageCallback)
 - **Risk-Free Profit**: Transaction reverts if arbitrage isn't profitable.
 - **Market Efficiency**: Helps eliminate price discrepancies across DEXs.
 
-## Advanced Wwrkflow combinations
+## Advanced Workflow combinations
 
 ### VaultSource + Zapper integration
 
@@ -514,9 +514,9 @@ defer {
 }
 ```
 
-## Testing your combinations
+## Test your combinations
 
-### Unit testing
+### Unit tests
 
 Tests individual connectors in isolation to verify they respect their constraints and behave correctly under various conditions. This catches bugs early and ensures each component works as designed.
 
@@ -531,7 +531,7 @@ test("VaultSource should maintain minimum balance") {
 }
 ```
 
-### Integration testing
+### Integration tests
 
 Validates that multiple connectors work together correctly in complete workflows. This ensures the composition logic is sound and identifies issues that only appear when components interact.
 
@@ -549,7 +549,7 @@ test("Reward harvesting workflow should complete successfully") {
 }
 ```
 
-### Simulation testing
+### Simulation tests
 
 Tests strategies under various market conditions using mock data to verify they respond appropriately to price changes, liquidity variations, and other market dynamics. This is essential for strategies that rely on external market data.
 
