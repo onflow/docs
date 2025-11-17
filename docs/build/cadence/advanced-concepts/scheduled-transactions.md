@@ -19,32 +19,33 @@ sidebar_position: 8
 ## Introduction
 
 :::warning
-Scheduled transactions were part of the Forte network upgrade and are available on Flow Mainnet, Flow Emulator (CLI v2.7.0+) and [Flow Testnet]. See the announcement for context: [Forte: Introducing Actions & Agents].
+
+Scheduled transactions were part of the Forte network upgrade and are available on Flow Mainnet, Flow Emulator (CLI v2.7.0+) and Flow Testnet. For more infomation, see [Forte: Introducing Actions & Agents](https://flow.com/post/forte-introducing-actions-agents-supercharging-composability-and-automation).
+
 :::
 
-Scheduled transactions on the Flow blockchain enable users and smart contracts to autonomously execute predefined logic at specific future times without external triggers. This powerful feature allows developers to create "wake up" patterns where contracts can schedule themselves to run at predetermined block timestamps, enabling novel blockchain automation patterns.
+Scheduled transactions on the Flow blockchain enable users and smart contracts to autonomously execute predefined logic at specific future times without external triggers. This powerful feature allows developers to create "wake up" patterns where contracts can schedule themselves to run at predetermined block timestamps, which allows novel blockchain automation patterns.
 
 Key benefits include:
-- **Autonomous execution**: No need for external services or manual intervention
-- **Time-based automation**: Execute transactions based on blockchain time
-- **Predictable scheduling**: Guaranteed execution within specified time windows  
+- **Autonomous execution**: no need for external services or manual intervention.
+- **Time-based automation**: execute transactions based on blockchain time.
+- **Predictable scheduling**: guaranteed execution within specified time windows. 
 
 Common use cases include recurring payments, automated arbitrage, time-based contract logic, delayed executions, and periodic maintenance tasks.
 
 :::info
+
 Flow provides a scheduled transaction manager to make managing your scheduled transactions more streamlined. Check out the [scheduled transactions intro](../../../blockchain-development-tutorials/forte/scheduled-transactions/scheduled-transactions-introduction.md) for a tutorial on how to schedule some basic transactions with the manager.
+
 :::
 
 ## Concepts
 
-### Creating a Scheduled Transaction
+### Create a Scheduled Transaction
 
-In order to create a scheduled transaction, the logic that will be executed
-in the transaction must already be defined in a function that the scheduler
-will call when it is time for the transaction to be executed.
+To create a scheduled transaction, the logic that executes in the transaction must already be defined in a function that the scheduler calls when it is time for the transaction to execute.
 
-Therefore, all scheduled transactions must include a capability to a resource that conforms to this Transaction Handler interface defined in the Scheduler contract
-and includes getters that conform to the [Flow metadata views standard](./metadata-views.md):
+Therefore, all scheduled transactions must include a capability to a resource that conforms to this Transaction Handler interface defined in the Scheduler contract and includes getters that conform to the [Flow metadata views standard](metadata-views.md):
 
 ```cadence
 access(all) resource interface TransactionHandler {
@@ -61,12 +62,9 @@ access(all) resource interface TransactionHandler {
 }
 ```
 
-To schedule a transaction, you store
-an instance of this resource in your account storage and pass a capability
-to the scheduler contract as part of the schedule request.
+To schedule a transaction, store an instance of this resource in your account storage and pass a capability to the scheduler contract as part of the schedule request.
 
-Here is a simple example implementation for a Handler's `executeTransaction()` function that transfers FLOW
-at the scheduled time:
+Here is a simple example implementation for a Handler's `executeTransaction()` function that transfers FLOW at the scheduled time:
 
 ```cadence
 access(all) contract TransferFLOWHandler {
@@ -117,41 +115,38 @@ access(all) contract TransferFLOWHandler {
 
 ### Scheduling
 
-Scheduling involves creating the specific transaction that will execute at a specified future timestamp. The system uses three priority levels:
+In sceduling, you create the transaction that executes at a specified future timestamp. The system uses three priority levels:
 
-- **High Priority**: Guarantees execution in the first block with the scheduled time or fails scheduling, requires the highest fees
-- **Medium Priority**: Best-effort execution as close as possible to the scheduled time known during scheduling
-- **Low Priority**: Opportunistic execution when network capacity allows, lowest fees but no guarantee about timing.
+- **High Priority**: guarantees execution in the first block with the scheduled time or fails scheduling, requires the highest fees.
+- **Medium Priority**: best-effort execution as close as possible to the scheduled time known during scheduling.
+- **Low Priority**: opportunistic execution when network capacity allows, lowest fees but no guarantee about timing.
 
 Each transaction requires:
-- **Handler Capability**: A capability to a resource implementing `TransactionHandler` interface, like the FLOW transfer one above.
-- **Timestamp**: Future Unix timestamp when execution should occur (fractional seconds ignored)
-- **Execution Effort**: Computational resources allocated (gas limit for the transaction)
-- **Fees**: Flow tokens to cover execution costs and storage costs for the
-transaction data.
-- **Optional Data**: Arbitrary data forwarded to the handler during execution
-that may be relevant to the transaction.
+- **Handler Capability**: a capability to a resource implementing `TransactionHandler` interface, like the FLOW transfer one above.
+- **Timestamp**: future Unix timestamp when execution should occur (fractional seconds ignored).
+- **Execution Effort**: computational resources allocated (gas limit for the transaction).
+- **Fees**: Flow tokens to cover execution costs and storage costs for the transaction data.
+- **Optional Data**: arbitrary data that's possibly relevant to the transaction forwarded to the handler during execution.
 
-These arguments are required by the [`FlowTransactionScheduler.schedule()` function](https://github.com/onflow/flow-core-contracts/blob/master/contracts/FlowTransactionScheduler.cdc#L732).
-This function returns a `ScheduledTransaction` resource object.
+These arguments are required by the [`FlowTransactionScheduler.schedule()` function](https://github.com/onflow/flow-core-contracts/blob/master/contracts/FlowTransactionScheduler.cdc#L732). This function returns a `ScheduledTransaction` resource object.
+
 The Scheduled Transaction Manager standard (mentioned in the intro) provides an easy way for developers
 and users to manage their scheduled transactions from a central place in their account. Users are strongly encouraged to use this.
 
 More information about the Scheduled Transaction manager is in the [section at the end of this document](#2-scheduling-a-transaction-with-the-manager).
 
-When a transaction is scheduled, the [`FlowTransactionScheduler.Scheduled` event](https://github.com/onflow/flow-core-contracts/blob/master/contracts/FlowTransactionScheduler.cdc#L52)
-is emitted with information about the scheduled transaction and handler.
+When a transaction is scheduled, the [`FlowTransactionScheduler.Scheduled` event](https://github.com/onflow/flow-core-contracts/blob/master/contracts/FlowTransactionScheduler.cdc#L52) is emitted with information about the scheduled transaction and handler.
 
 ### Fees
 
 Fee calculation includes:
-- **Base execution fee**: Based on computational effort using standard Flow fee structure  
-- **Priority multiplier**: Higher priorities pay more (High: 10x, Medium: 5x, Low: 2x base rate)
-- **Storage fee**: Cost for storing transaction data on-chain
+- **Base execution fee**: based on computational effort using standard Flow fee structure.
+- **Priority multiplier**: higher priorities pay more (High: 10x, Medium: 5x, Low: 2x base rate).
+- **Storage fee**: cost to store transaction data on-chain.
 
-Fees are paid upfront and are used in full, no refunds if the cost of execution was lower.
+Fees are paid upfront and are used in full. There are no refunds if the cost of execution was lower.
 
-Please keep in mind the priority multiplier can change in the future. The fee configuration can be obtained from the contract, and estimate function can be used to check the fees upfront.
+Please keep in mind the priority multiplier can change in the future. You can obtain the fee configuration from the contract, and you cna use the estimate function check the fees upfront.
 
 ### Execution of Transaction Handlers
 
@@ -163,10 +158,9 @@ is emitted with information about the executed transaction.
 If the scheduled transaction fails at any point during execution, the `Executed` event
 is not emitted.
 
-### Canceling
+### Cancel transactions
 
-Scheduled transactions can be canceled before execution. 
-Canceling returns a portion of the fees (configurable refund percentage, 50% as of now). Please keep in mind the refund percentage can change in the future.
+You can cancel scheduled transactions before execution. When you cancel a transaction, it returns a portion of the fees (configurable refund percentage, 50% as of now). Please keep in mind the refund percentage can change in the future.
 
 To cancel, you need the `ScheduledTransaction` resource that was returned during scheduling. The scheduled transaction manager also makes cancelling scheduled transaction easier.
 
@@ -174,19 +168,19 @@ To cancel, you need the `ScheduledTransaction` resource that was returned during
 
 Scheduled transactions follow a specific lifecycle with corresponding events:
 
-1. **Scheduled**: Transaction is created and queued for future execution
+1. **Scheduled**: Transaction is created and queued for future execution.
    - Event: `FlowTransactionScheduler.Scheduled`
    - Status: `Scheduled`
 
-2. **Pending Execution**: Transaction timestamp has arrived and it's ready for execution
+2. **Pending Execution**: Transaction timestamp has arrived and it's ready for execution.
    - Event: `FlowTransactionScheduler.PendingExecution` 
-   - Status: `Executed` (Executed does not necessarily mean it succeeded, just that execution was attempted)
+   - Status: `Executed` (Executed does not necessarily mean it succeeded, just that execution was attempted.)
 
-3. **Executed**: Transaction has been processed by the blockchain
+3. **Executed**: The blockchain processed the transaction.
    - Event: `FlowTransactionScheduler.Executed`
    - Status: `Executed`
 
-4. **Canceled**: Transaction was canceled before execution (optional path)
+4. **Canceled**: Transaction was canceled before execution (optional path).
    - Event: `FlowTransactionScheduler.Canceled`
    - Status: `Canceled`
 
@@ -265,9 +259,9 @@ access(all) contract TestFlowScheduledTransactionHandler {
 }
 ```
 
-### 2. Scheduling a Transaction with the Manager
+### 2. Schedule a Transaction with the Manager
 
-This example shows how to create and schedule a transaction that will execute at a future timestamp using the `TestFlowCallbackHandler` from Example 1.
+This example shows how to create and schedule a transaction that will execute at a future timestamp with the [`TestFlowCallbackHandler`](#1-example-test-handler-contract) from Example 1.
 
 ```cadence
 // schedule.cdc
@@ -344,7 +338,7 @@ transaction(timestamp: UFix64, feeAmount: UFix64, effort: UInt64, priority: UInt
 
 ### 3. Querying Transaction Information
 
-Get Status: [This script](https://github.com/onflow/flow-core-contracts/blob/master/transactions/transactionScheduler/scripts/get_status.cdc) demonstrates how to check the current status of a scheduled transaction using the global status function.
+Get Status: [This script](https://github.com/onflow/flow-core-contracts/blob/master/transactions/transactionScheduler/scripts/get_status.cdc) demonstrates how to check the current status of a scheduled transaction with the global status function.
 
 Get all Tx Info: [This script](https://github.com/onflow/flow-core-contracts/blob/master/transactions/transactionScheduler/scripts/get_transaction_data.cdc) gets all the internal information about a scheduled transaction.
 
@@ -352,7 +346,7 @@ Get all Tx Info: [This script](https://github.com/onflow/flow-core-contracts/blo
 
 The manager provides many different ways to get information about all of your scheduled transactions. Check out all the scripts you can use with your manager [here](https://github.com/onflow/flow-core-contracts/tree/master/transactions/transactionScheduler/scripts/manager).
 
-### 4. Canceling a Scheduled Transaction
+### 4. Cancel a Scheduled Transaction
 
 This transaction shows how to cancel a scheduled transaction and receive a partial refund of the fees paid.
 
@@ -421,23 +415,23 @@ flow events get \
 ```
 
 This command fetches the last 200 blocks of events for:
-- **Scheduled**: When a transaction is scheduled
-- **PendingExecution**: When a transaction is ready for execution
-- **Executed**: When a transaction has been executed
-- **Canceled**: When a transaction is canceled
-- **TransactionExecuted**: Custom event from the test handler
+- **Scheduled**: when a transaction is scheduled.
+- **PendingExecution**: when a transaction is ready for execution.
+- **Executed**: when a transaction has been executed.
+- **Canceled**: when a transaction is canceled.
+- **TransactionExecuted**: custom event from the test handler.
 
-These examples demonstrate the complete lifecycle of scheduled transactions: creating handlers, scheduling execution, monitoring events, and managing cancellations. The system provides flexibility for various automation scenarios while maintaining network stability through resource limits and priority management.
+These examples demonstrate the complete lifecycle of scheduled transactions: create handlers, schedule execution, monitor events, and manage cancellations. The system provides flexibility for various automation scenarios while you maintain network stability through resource limits and priority management.
 
 ## Tools
 
-Support for scheduled transactions in different tools is still work in progress and is coming soon. The Flow CLI and Access Node API will support specific commands and APIs to query scheduled transactions by ID, making it easier to manage and monitor your scheduled transactions programmatically.
+Support for scheduled transactions in different tools is still work in progress and is coming soon. The Flow CLI and Access Node API will support specific commands and APIs to query scheduled transactions by ID, which it easier to manage and monitor your scheduled transactions programmatically.
 
-The flow-go-sdk will also add support for these new commands, providing native integration for Go applications working with scheduled transactions.
+The [flow-go-sdk](../../tools/clients/flow-go-sdk/index.md) will also add support for these new commands. It provides native integration for Go applications that work with scheduled transactions.
 
 Block explorer support for scheduled transactions is also coming, which will provide a visual interface to view and track scheduled transaction execution on the Flow blockchain.
 
-For feature requests and suggestions for scheduled transaction tooling, please visit [github.com/onflow/flow](https://github.com/onflow/flow) and create an issue with the tag `scheduled_transactions`.
+For feature requests and suggestions for scheduled transaction tooling, visit [github.com/onflow/flow](https://github.com/onflow/flow) and create an issue with the tag `scheduled_transactions`.
 
 
 Read FLIP for more details: https://github.com/onflow/flips/blob/main/protocol/20250609-scheduled-callbacks.md
