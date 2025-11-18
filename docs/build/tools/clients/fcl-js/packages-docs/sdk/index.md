@@ -109,7 +109,7 @@ transaction {
 }
 ```
 
-**Compute Limit** is the limit on the amount of computation a transaction requires, and it will abort if it exceeds its compute unit (gas) limit. Cadence uses metering to measure the number of operations per transaction. You can read more about it in the [Cadence documentation](https://cadence-lang.org/docs).
+**Compute Limit** is the limit on the amount of computation a transaction requires, and it will abort if it exceeds its compute unit limit. Cadence uses metering to measure the number of operations per transaction. You can read more about it in the [Cadence documentation](https://cadence-lang.org/docs).
 
 The compute limit depends on the complexity of the transaction script. Until dedicated estimation tooling exists, it's best to use the emulator to test complex transactions and determine a safe limit.
 
