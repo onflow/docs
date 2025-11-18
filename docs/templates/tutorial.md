@@ -18,7 +18,7 @@ keywords:
 
 ## Objectives
 
-After you complete this tutorial, you'll be able to:
+Now that you've completed this tutorial, you'll be able to:
 
 - 3-5 high-level Bloom's taxonomy verb learning objectives (terminal objectives, not enabling objectives)
 - Don't wordsmith these - clarity and directness are more important than variety
