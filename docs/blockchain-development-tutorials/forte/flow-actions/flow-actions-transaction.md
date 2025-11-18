@@ -33,7 +33,7 @@ Make certain you understand how [slashing] works and assess your risk tolerance 
 
 :::
 
-To stake directly, lock up your tokens with [Flow Port]. You can also use other platforms and protocols that have a different strategy for participating in this process. [IncrementFi] offers a Liquid Staking Protocol (LSP) they describe as:
+To stake directly, lock up your tokens with [Flow Port]. You can also use other platforms and protocols that have a different strategy for participating in this process. [IncrementFi] offers a Liquid Staking Protocol (LSP) they describe as: 
 
 > LSP allows users to earn staking rewards without locking $flow tokens or running node softwares. Users can deposit $flow tokens and receive transferrable $stFlow tokens in return. Liquid staking combines the benefits of staking (earning rewards) and brings liquidity, as well as additional possibilities to increase your assets or hedge your positions by participating in Flow's DeFi ecosystem.
 
