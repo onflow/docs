@@ -2195,6 +2195,11 @@
       "source": "/build/tools/flow-cli/deployment/start-emulator",
       "destination": "/build/tools/emulator",
       "permanent": true
+    },
+    {
+      "source": "/build/tools/clients/fcl-js/wallet-connect",
+      "destination": "/build/tools/clients/fcl-js/discovery",
+      "permanent": true
     }
   ]
 }
