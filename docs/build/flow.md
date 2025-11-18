@@ -74,7 +74,7 @@ Flow is unique in supporting two powerful programming languages for smart contra
 - **Cadence**: A modern programming language developed by smart contract application builders.
 - **Solidity**: The industry-standard language for EVM development, fully supported on Flow with full EVM equivalence.
 
-EVM and Cadence environments both use FLOW as compute units, or gas, for transactions and are connected by a native bridge that allows seamless and cheap communication between them. Fungible and non-fungible tokens can also be seamlessly transferred between environments using the native VM token bridge, taking place instantly in a single atomic transaction.
+EVM and Cadence environments both use FLOW for transactions fees (gas on the EVM side and compute unit of the Cadence side) and are connected by a native bridge that allows seamless and cheap communication between them. Fungible and non-fungible tokens can also be seamlessly transferred between environments using the native VM token bridge, taking place instantly in a single atomic transaction.
 
 This means developers can choose the language that best fits their needs while maintaining full interoperability between both environments.
 
