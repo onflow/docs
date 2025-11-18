@@ -33,7 +33,7 @@ Are you an EVM developer looking for information about EVM Accounts on Flow? If 
 
 A transaction fee is a cost paid in Flow by the payer account and is required for a transaction to be included in the Flow blockchain. Fees are necessary for protecting the network against spam/infinite running transactions and to provide monetary incentives for participants that make up the Flow network.
 
-Transaction fees are calculated in compute units. Compute units are similar to gas in EVM networks, but are not calculated in exactly the same manner.
+On Flow, transaction fees are determined using `compute units (CU)`, a metric that captures the effort needed to include and execute a transaction. Compute units function similarly to gas in EVM systems but are derived differently. The final fee paid by the user is calculated by multiplying the transaction’s total compute units by the current compute-unit price, with all fees payable in FLOW.
 
 A transaction fee is paid regardless of whether a transaction succeeds or fails. If the payer account doesn't have sufficient Flow balance to pay for the transaction fee, the transaction will fail. We can limit the transaction fee to some extent by providing the compute unit limit value when submitting the transaction.
 
