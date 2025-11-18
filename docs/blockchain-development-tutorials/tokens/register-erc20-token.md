@@ -88,6 +88,8 @@ Here are the URLs for the token list JSON files:
 
 You can check the token list JSON files to verify the token is registered in the `token-list.json` file.
 
+<!-- Relative links, will not render on page -->
+
 [Flow Official Assets]: https://github.com/onflow/assets
 [Register Assets in Cadence]: ./register-cadence-assets.md
 [Assets Registry]: https://github.com/onflow/assets/tree/main/tokens

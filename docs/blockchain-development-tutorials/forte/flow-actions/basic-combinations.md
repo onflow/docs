@@ -19,23 +19,23 @@ We will update these tutorials, but you may need to refactor your code if the im
 
 :::
 
-Flow Actions are designed to be **composable**, which means you can chain them together like LEGO blocks to build complex strategies. Each primitive has a standardized interface that works consistently across all protocols and eliminates the need to learn multiple APIs. This composability allows atomic execution of multi-step workflows within single transactions, ensuring either complete success or safe failure. When developers combine these primitives, they create sophisticated decentralized finance (DeFi) strategies like automated yield farming, cross-protocol arbitrage, and portfolio rebalancing. The [5 Flow Actions Primitives] are:
+Flow Actions are designed to be **composable**, which means you can chain them together like LEGO blocks to build complex strategies. Each primitive has a standardized interface that works consistently across all protocols and eliminates the need to learn multiple APIs. This composability allows atomic execution of multi-step workflows within single transactions, which ensures either complete success or safe failure. When developers combine these primitives, they create sophisticated decentralized finance (DeFi) strategies like automated yield farming, cross-protocol arbitrage, and portfolio rebalancing. The [5 Flow Actions Primitives] are:
 
-- **Source** → Provides tokens on demand by withdrawing from vaults or claiming rewards. Sources respect minimum balance constraints and return empty vaults gracefully when nothing is available.
+- **Source** → Provides tokens on demand by withdrawl from vaults or reward claims. Sources respect minimum balance constraints and return empty vaults gracefully when nothing is available.
 
-- **Sink** → Accepts token deposits up to a specified capacity limit. Sinks perform no-ops rather than reverting when deposits exceed capacity, which allows smooth workflow execution.
+- **Sink** → Accepts token deposits up to a specified capacity limit. Sinks perform no-ops rather than revert when deposits exceed capacity, which allows smooth workflow execution.
 
 - **Swapper** → Exchanges one token type for another through DEX trades or cross-chain bridges. Swappers support bidirectional operations and provide quote estimation for slippage protection.
 
 - **PriceOracle** → Provides real-time price data for assets from external feeds or DEX prices. Oracles handle staleness validation and return nil for unavailable prices rather than failing.
 
-- **Flasher** → Issues flash loans that must be repaid within the same transaction via callback execution. Flashers enable capital-efficient strategies like arbitrage and liquidations without requiring upfront capital.
+- **Flasher** → Issues flash loans that must be repaid within the same transaction via callback execution. Flashers allow capital-efficient strategies like arbitrage and liquidations without the need for upfront capital.
 
 ## Learning objectives
 
 After you complete this tutorial, you will be able to:
 
-- Understand the key features of Flow Actions including atomic composition, weak guarantees, and event traceability.
+- Understand the key features of Flow Actions, which includes atomic composition, weak guarantees, and event traceability.
 - Create and use Sources to provide tokens from various protocols and locations.
 - Create and use Sinks to accept tokens up to defined capacity limits.
 - Create and use Swappers to exchange tokens between different types with price estimation.
@@ -78,7 +78,7 @@ Source B ↗
 Source C ↗
 ```
 
-**Example**: Multiple DEX aggregators finding the best swap route.
+**Example**: Multiple DEX aggregators find the best swap route.
 
 ## Common DeFi workflow combinations
 
@@ -111,7 +111,7 @@ let zapper = IncrementFiPoolLiquidityConnectors.Zapper(
 let flowTokens <- flowVault.withdraw(amount: 100.0)
 let lpTokens <- zapper.swap(nil, inVault: <-flowTokens)
 
-// Now you have LP tokens ready for staking or further use
+// Now you have LP tokens ready to stake or for further use.
 ```
 
 **Benefits:**
@@ -128,7 +128,7 @@ This workflow automatically claims accumulated staking rewards and converts them
 
 **How it works:**
 
-1. Claims pending rewards from a staking pool using user certificate.
+1. Claims pending rewards from a staking pool with user certificate.
 2. Swaps the reward tokens (for example, FLOW) to stable tokens (for example, USDC).
 3. Deposits the stable tokens to a vault with capacity limits.
 4. Returns any unconverted tokens back to the user.
@@ -166,9 +166,9 @@ vaultSink.depositCapacity(from: &stableTokens)
 
 **Benefits:**
 
-- **Risk Reduction**: Converts volatile reward tokens to stable assets.
-- **Automation**: Single transaction handles claim, swap, and storage.
-- **Capital Efficiency**: No manual intervention needed for reward management.
+- **Risk Reduction**: converts volatile reward tokens to stable assets.
+- **Automation**: single transaction handles claim, swap, and storage.
+- **Capital Efficiency**: no manual intervention needed for reward management.
 
 ### Liquidity provision & yield farming
 
@@ -181,7 +181,7 @@ This workflow takes a single token from your vault, converts it into liquidity p
 1. Withdraws single token (for example, FLOW) from vault with minimum balance protection.
 2. Uses Zapper to split token and create LP position (FLOW/USDC pair).
 3. Stakes the resulting LP tokens in a yield farming pool.
-4. Begins earning rewards on the staked LP position.
+4. Begins to earn rewards on the staked LP position.
 
 ```cadence
 // 1. Source: Provide single token (e.g., FLOW)
@@ -214,21 +214,21 @@ stakingSink.depositCapacity(from: &lpTokens)
 
 **Benefits:**
 
-- **Yield Optimization**: Converts idle tokens to yield-generating LP positions.
-- **Single Transaction**: No need for multiple manual steps or approvals.
+- **Yield Optimization**: converts idle tokens to yield-generating LP positions.
+- **Single Transaction**: no need for multiple manual steps or approvals.
 - **Automatic Staking**: LP tokens immediately start earning rewards.
 
 ### Cross-VM bridge and swap
 
 **Goal**: Bridge tokens from Cadence to EVM, swap them, then bridge back.
 
-This workflow demonstrates Flow's unique cross-VM capabilities by bridging tokens from Cadence to Flow EVM, executing a swap using UniswapV2-style routing, and bridging the results back to Cadence. This allows access to EVM-based DEX liquidity while maintaining Cadence token ownership.
+This workflow demonstrates Flow's unique cross-VM capabilities by bridging tokens from Cadence to Flow EVM, executes a swap with UniswapV2-style routing, and bridges the results back to Cadence. This allows access to EVM-based DEX liquidity and maintain Cadence token ownership.
 
 **How it works:**
 
 1. Withdraws tokens from Cadence vault with minimum balance protection.
 2. Bridges tokens from Cadence to Flow EVM environment.
-3. Executes swap using UniswapV2 router on EVM side.
+3. Executes swap with UniswapV2 router on EVM side.
 4. Bridges the swapped tokens back to Cadence environment.
 5. Deposits final tokens to target Cadence vault.
 
@@ -265,15 +265,15 @@ cadenceSink.depositCapacity(from: &evmTokens)
 
 **Benefits:**
 
-- **Extended Liquidity**: Access to both Cadence and EVM DEX liquidity.
-- **Cross-VM Arbitrage**: Exploit price differences between VM environments.
-- **Atomic Execution**: All bridging and swapping happens in single transaction.
+- **Extended Liquidity**: access to both Cadence and EVM DEX liquidity.
+- **Cross-VM Arbitrage**: exploit price differences between VM environments.
+- **Atomic Execution**: all bridges and swaps happen in single transaction.
 
 ### Flash loan arbitrage
 
 **Goal**: Borrow tokens, execute arbitrage, repay loan with profit.
 
-This advanced strategy uses flash loans to execute risk-free arbitrage by borrowing tokens, exploiting price differences across multiple DEXs, and repaying the loan with interest while keeping the profit. The entire operation happens atomically within a single transaction.
+This advanced strategy uses flash loans to execute risk-free arbitrage. To do this, it borrows tokens, exploits price differences across multiple DEXs, and repays the loan with interest while it keeps the profit. The entire operation happens atomically within a single transaction.
 
 **How it works:**
 
@@ -281,7 +281,7 @@ This advanced strategy uses flash loans to execute risk-free arbitrage by borrow
 2. Uses multi-swapper to find optimal arbitrage routes across DEXs.
 3. Executes trades to exploit price differences.
 4. Repays flash loan with fees from arbitrage profits.
-5. Keeps remaining profit after loan repayment.
+5. Keeps profits that remain profit after loan repayment.
 
 ```cadence
 // 1. Flasher: Borrow tokens for arbitrage
@@ -353,9 +353,9 @@ log("LP tokens created: ".concat(lpTokens.balance.toString()))
 
 **Benefits:**
 
-- **Capital Efficiency**: Converts idle vault tokens to yield-generating LP positions.
+- **Capital Efficiency**: converts idle vault tokens to yield-generating LP positions.
 - **Automated Balancing**: Zapper handles optimal token split calculations automatically
-- **Single Transaction**: Complex multi-step process executed atomically.
+- **Single Transaction**: complex multi-step process executed atomically.
 - **Minimum Protection**: VaultSource ensures vault never goes below safety threshold.
 
 ### Price-informed rebalancing
@@ -396,16 +396,16 @@ autoBalancer.rebalance(force: false)  // Autonomous rebalancing
 
 **Benefits:**
 
-- **Autonomous Operation**: Maintains portfolio balance without manual intervention.
-- **Risk Management**: Prevents excessive exposure through automated position sizing.
-- **Market Responsive**: Adapts to price movements with real-time oracle data.
-- **Threshold Flexibility**: Configurable upper/lower bounds for different risk profiles.
+- **Autonomous Operation**: maintains portfolio balance without manual intervention.
+- **Risk Management**: prevents excessive exposure through automated position sizing.
+- **Market Responsive**: adapts to price movements with real-time oracle data.
+- **Threshold Flexibility**: configurable upper/lower bounds for different risk profiles.
 
 ### Restake and compound strategy
 
 **Goal**: Automatically compound staking rewards back into the pool.
 
-This advanced compounding strategy maximizes yield by automatically claiming staking rewards and converting them back into LP tokens for re-staking. The workflow combines rewards claiming, zapping, and staking into a seamless compound operation that accelerates yield accumulation through reinvestment.
+This advanced compounding strategy maximizes yield; it automatically claims staking rewards and converts them back into LP tokens for re-staking. The workflow combines rewards claims, zaps, and staking into a seamless compound operation that accelerates yield accumulation through reinvestment.
 
 **How it works:**
 
@@ -451,9 +451,9 @@ poolSink.depositCapacity(from: lpTokens)
 
 **Benefits:**
 
-- **Compound Growth**: Exponential yield increase through automatic reinvestment.
-- **Gas Efficiency**: Single transaction handles claim, convert, and re-stake operations.
-- **Set-and-Forget**: Automated compounding without manual intervention required.
+- **Compound Growth**: exponential yield increase through automatic reinvestment.
+- **Gas Efficiency**: single transaction handles claim, convert, and re-stake operations.
+- **Set-and-Forget**: automated compounding without manual intervention required.
 - **Optimal Conversion**: Zapper ensures efficient reward token to LP token conversion.
 
 ## Safety best practices
@@ -486,7 +486,7 @@ assert(afterBalance >= beforeBalance, message: "Balance should not decrease")
 
 ### Use graceful degradation
 
-Prevents entire workflows from failing when individual components encounter issues. This approach allows robust strategies that can adapt to changing market conditions or temporary protocol unavailability.
+Prevents entire workflows from failure when individual components encounter issues. This approach allows robust strategies that can adapt to volatile market conditions or temporary protocol unavailability.
 
 ```cadence
 // Handle failures gracefully
@@ -576,9 +576,9 @@ test("Strategy should handle price volatility") {
 
 Now that you understand basic combinations, explore:
 
-1. **Advanced Strategies**: Complex multi-step workflows.
-2. **Risk Management**: Advanced safety and monitoring techniques.
-3. **Custom Connectors**: Building your own protocol adapters.
+1. **Advanced Strategies**: complex multi-step workflows.
+2. **Risk Management**: advanced safety and monitoring techniques.
+3. **Custom Connectors**: build your own protocol adapters.
 
 ## Conclusion
 

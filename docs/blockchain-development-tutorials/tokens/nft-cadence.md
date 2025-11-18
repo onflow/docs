@@ -24,7 +24,7 @@ keywords:
 :::info
 
 This guide is an in-depth tutorial on launching NFT contracts from scratch.
-To launch in two minutes with a tool, check out [Touchstone](https://www.touchstone.city/)
+To launch in two minutes with a tool, check out [Touchstone]
 
 :::
 
@@ -47,11 +47,11 @@ To create an NFT on the Flow blockchain, you'll first need some tools and config
 The **Flow CLI** (Command Line Interface) provides a suite of tools
 that allow developers to interact seamlessly with the Flow blockchain.
 
-If you haven't installed the Flow CLI yet and have [Homebrew](https://brew.sh/) installed, you can run `brew install flow-cli`. If you don't have Homebrew, follow [the installation guide here](../../build/tools/flow-cli/install.md).
+If you haven't installed the Flow CLI yet and have [Homebrew]installed, you can run `brew install flow-cli`. If you don't have Homebrew, follow the [Flow CLI installation guide].
 
 ### Initialize a New Project
 
-> 💡 Note: Here is [a link to the completed code](https://github.com/onflow/foobar-nft) if you want to skip ahead or reference as you follow along.
+> 💡 Note: Here is [a link to the completed code] if you want to skip ahead or reference as you follow along.
 
 After you install the Flow CLI, you can set up a new project with the `flow init` command. This command initializes the necessary directory structure and a `flow.json` configuration file (a way to configure your project for contract sources, deployments, accounts, and more):
 
@@ -118,7 +118,7 @@ Now, add these contracts to your `flow.json`. These are important contracts that
 
 ### understand resources
 
-On the Flow blockchain, "[Resources](https://cadence-lang.org/docs/tutorial/resources-compose)" are a key feature of the Cadence programming language. They represent unique, non-duplicable assets, and ensure that they can only exist in one place at a time. This concept is crucial for representing NFTs on Flow, as it guarantees their uniqueness.
+On the Flow blockchain, "[Resources]" are a key feature of the Cadence programming language. They represent unique, non-duplicable assets, and ensure that they can only exist in one place at a time. This concept is crucial for representing NFTs on Flow, as it guarantees their uniqueness.
 
 To begin, let's define a basic `NFT` resource. This resource requires an `init` method, which is invoked when the resource is instantiated:
 
@@ -216,7 +216,7 @@ access(all) contract FooBar {
 
 ## Fit the Flow NFT standard
 
-To ensure compatibility and interoperability within the Flow ecosystem, it's crucial that your NFT contract adheres to the [Flow NFT standard](https://github.com/onflow/flow-nft). This standard defines the events, functions, resources, metadata and other elements that a contract should have. When you follow this standard, your NFTs will be compatible with various marketplaces, apps, and other services within the Flow ecosystem.
+To ensure compatibility and interoperability within the Flow ecosystem, it's crucial that your NFT contract adheres to the Flow [NFT standard]. This standard defines the events, functions, resources, metadata and other elements that a contract should have. When you follow this standard, your NFTs will be compatible with various marketplaces, apps, and other services within the Flow ecosystem.
 
 ### Apply the Standard
 
@@ -265,7 +265,7 @@ access(all) contract FooBar: NonFungibleToken {
 
 As you can see, we also added standard paths for the Collection and Minter.
 
-These interface conformances for [NFT](https://github.com/onflow/flow-nft/blob/master/contracts/NonFungibleToken.cdc#L98) and [Collection](https://github.com/onflow/flow-nft/blob/master/contracts/NonFungibleToken.cdc#L190) inherit from other interfaces that provide important functionality and restrictions for your NFT and Collection types.
+These interface conformances for [NFT] and [Collection] inherit from other interfaces that provide important functionality and restrictions for your NFT and Collection types.
 
 To allow accounts to create their own collections, add a function in the main contract that creates a new `Collection` and returns it. This function takes a `nftType: Type` argument that allows the caller to specify which type of `Collection` they want to create. Contracts that implement multiple `NFT` and/or `Collection` types can use this argument, but since your contract only implements one `NFT` and `Collection` type, it can ignore the argument. You'll also want to add a simpler one directly to the `NFT` and `Collection` definitions so users can directly create a collection from a current collection:
 
@@ -350,18 +350,18 @@ access(all) resource Collection: NonFungibleToken.Collection {
 }
 ```
 
-As you can see, this function has an `access(NonFungibleToken.Withdraw)` access modifier. This is an example of entitlements in Cadence. [Entitlements](https://cadence-lang.org/docs/language/access-control#entitlements) are a way for developers to restrict access to privileged fields and functions in a composite type like a resource when a reference is created for it.
+As you can see, this function has an `access(NonFungibleToken.Withdraw)` access modifier. This is an example of entitlements in Cadence. [Entitlements] are a way for developers to restrict access to privileged fields and functions in a composite type like a resource when a reference is created for it.
 
-In this example, the `withdraw()` function is always accessible to code that controls the full `Collection` object, but if a reference is created for it, the `withdraw()` function can only be called if the reference is authorized by the owner with `NonFungibleToken.Withdraw`, which is [a standard entitlement](https://github.com/onflow/flow-nft/blob/master/contracts/NonFungibleToken.cdc#L58) defined by the `NonFungibleToken` contract:
+In this example, the `withdraw()` function is always accessible to code that controls the full `Collection` object, but if a reference is created for it, the `withdraw()` function can only be called if the reference is authorized by the owner with `NonFungibleToken.Withdraw`, which is a [standard entitlement] defined by the `NonFungibleToken` contract:
 
 ```cadence
 // Example of an authorized entitled reference to a NonFungibleToken.Collection
 <auth(NonFungibleToken.Withdraw) &{NonFungibleToken.Collection}>
 ```
 
-It's important to understand entitlements because they protect privileged functionality in your resource objects from third-party access. We recommended that you read the [entitlements documentation](https://cadence-lang.org/docs/language/access-control#entitlements) to understand how to use the feature properly.
+It's important to understand entitlements because they protect privileged functionality in your resource objects from third-party access. We recommended that you read the [Entitlements] documentation to understand how to use the feature properly.
 
-[References](https://cadence-lang.org/docs/language/references) can be freely up-casted and down-casted in Cadence, so it is important for you to use an entitlement to protect privileged functionality so that it can only be accessed if it is authorized.
+[References] can be freely up-casted and down-casted in Cadence, so it is important for you to use an entitlement to protect privileged functionality so that it can only be accessed if it is authorized.
 
 ### Standard NFT Events
 
@@ -388,7 +388,7 @@ Here are the `FungibleToken` event definitions:
 
 ```
 
-These events are [emitted by the `Collection` interface](https://github.com/onflow/flow-nft/blob/master/contracts/NonFungibleToken.cdc#L202) in the `NonFungibleToken` contract whenever the relevant function is called on any implementation.
+These events are emitted by the [`Collection` interface] in the `NonFungibleToken` contract whenever the relevant function is called on any implementation.
 
 There is also a `NonFungibleToken.NFT.ResourceDestroyed` event that is emitted every time an NFT is destroyed:
 
@@ -398,11 +398,11 @@ There is also a `NonFungibleToken.NFT.ResourceDestroyed` event that is emitted e
     access(all) event ResourceDestroyed(id: UInt64 = self.id, uuid: UInt64 = self.uuid)
 ```
 
-`ResourceDestroyed` events are standard events that can be added to any resource definition to be emitted when the resource is destroyed. Learn more about them [in the Cadence docs](https://cadence-lang.org/docs/language/resources#destroy-events).
+`ResourceDestroyed` events are standard events that can be added to any resource definition to be emitted when the resource is destroyed. Learn more about them [in the Cadence docs].
 
-Additionally, check out the optional [`Burner` contract](../../build/cadence/core-contracts/14-burner.md), which is the standard that all projects should use to handle any resource's destruction.
+Additionally, check out the optional [`Burner` contract], which is the standard that all projects should use to handle any resource's destruction.
 
-Lastly, there is a [standard `NonFungibleToken.Updated` event](https://github.com/onflow/flow-nft/blob/master/contracts/NonFungibleToken.cdc#L63-L77) that your contract can emit if the NFT is updated in any way. This is optional though, so no need to include support for it in your implementation.
+Lastly, there is a [standard `NonFungibleToken.Updated` event] that your contract can emit if the NFT is updated in any way. This is optional though, so no need to include support for it in your implementation.
 
 To facilitate querying, you'll also want a function to retrieve important information from the collection, like what types it supports and all the NFT IDs within a collection:
 
@@ -434,10 +434,10 @@ access(all) resource Collection: NonFungibleToken.Collection {
 
 ### Supporting NFT metadata
 
-The Non-Fungible Token standard also enforces that implementations provide functionality to return a set of standard views about the tokens via the [ViewResolver](https://github.com/onflow/flow-nft/blob/master/contracts/ViewResolver.cdc)
-and [MetadataViews](https://github.com/onflow/flow-nft/blob/master/contracts/MetadataViews.cdc) definitions. (You will need to add these imports to your contract)
+The Non-Fungible Token standard also enforces that implementations provide functionality to return a set of standard views about the tokens via the [ViewResolver]
+and [MetadataViews] definitions. (You will need to add these imports to your contract)
 
-These provide developers with standard ways of representing metadata about a given token such as token symbols, images, royalties, editions, website links, and standard account paths and types that third-parties can access in a standard way. You can see the [metadata views documentation](../../build/cadence/advanced-concepts/metadata-views.md) for a more thorough guide that uses a NFT contract as an example.
+These provide developers with standard ways of representing metadata about a given token such as token symbols, images, royalties, editions, website links, and standard account paths and types that third-parties can access in a standard way. You can see the [metadata views documentation] for a more thorough guide that uses a NFT contract as an example.
 
 For now, you can add this code to your contract to support the important metadata:
 
@@ -558,9 +558,9 @@ If you ever plan to make your NFTs more complex, you could add views for `Editio
 
 ## Flow VM bridge NFTs
 
-Flow provides an EVM environment where projects can deploy their solidity smart contracts as an easier on-ramp to building on Flow. The [Cross-VM Bridge](https://www.github.com/onflow/flow-evm-bridge) allows the movement of fungible and non-fungible tokens between Flow-Cadence & Flow-EVM.
+Flow provides an EVM environment where projects can deploy their solidity smart contracts as an easier on-ramp to building on Flow. The [Cross-VM Bridge] allows the movement of fungible and non-fungible tokens between Flow-Cadence & Flow-EVM.
 
-Learn about how you can [bridge your NFTs to Flow-EVM](../cross-vm-apps/vm-bridge.md#cross-vm-bridge) and how you can build your NFT project [to be compatible with the Flow VM bridge](../cross-vm-apps/vm-bridge.md#prep-your-assets-for-bridging).
+Learn about how you can [bridge your NFTs to Flow-EVM] and how you can [build your NFT project] to be compatible with the Flow VM bridge.
 
 ## Deploy the Contract
 
@@ -647,7 +647,7 @@ transaction {
 }
 ```
 
-There are also examples of [generic transactions](https://github.com/onflow/flow-nft/blob/master/transactions/setup_account_from_address.cdc) that you can use to setup an account for ANY non-fungible token using metadata views! You should check those out and try to use generic transactions whenever it is possible.
+There are also examples of [generic transactions] that you can use to setup an account for ANY non-fungible token using metadata views! You should check those out and try to use generic transactions whenever it is possible.
 
 To store this new NFT collection, create a new account:
 
@@ -700,7 +700,7 @@ flow scripts execute cadence/scripts/get_foobar_ids.cdc 0x123
 
 Since you haven't added any NFTs to the collection yet, the result will be an empty array.
 
-## Minting and Depositing an NFT to a Collection
+## Mint and Deposit an NFT to a Collection
 
 To mint and deposit an NFT into a collection, create a new transaction file:
 
@@ -708,10 +708,7 @@ To mint and deposit an NFT into a collection, create a new transaction file:
 flow generate transaction mint_foobar_nft
 ```
 
-In this file, define a transaction that takes a recipient's address as an argument.
-This transaction will borrow the minting capability from the contract account,
-borrow the recipient's collection capability, create a new NFT with the minter,
-and deposit it into the recipient's collection:
+In this file, define a transaction that takes a recipient's address as an argument. This transaction will borrow the minting capability from the contract account, borrow the recipient's collection capability, create a new NFT with the minter, and deposit it into the recipient's collection:
 
 ```cadence
 import "NonFungibleToken"
@@ -751,9 +748,7 @@ transaction(
 }
 ```
 
-To run this transaction, use the Flow CLI. Remember, the contract account
-(which has the minting resource) should be the one that signs the transaction.
-Pass the test account's address (from the `flow.json` file) as the recipient argument:
+To run this transaction, use the Flow CLI. Remember, the contract account (which has the minting resource) should be the one that signs the transaction. Pass the test account's address (from the `flow.json` file) as the recipient argument:
 
 :info
 
@@ -847,16 +842,46 @@ To verify the transfer, you can run the earlier script for `test-acct-2` (replac
 flow scripts execute cadence/scripts/get_foobar_ids.cdc 0x123
 ```
 
-The transfer transaction also has a [generic version](https://github.com/onflow/flow-nft/blob/master/transactions/generic_transfer_with_address.cdc) that developers are encouraged to use!
+The transfer transaction also has a [generic version] that developers are encouraged to use!
 
 Congrats, you did it! You're now ready to launch the next fun NFT project on Flow.
 
 ## More
 
-- Explore [an example NFT repository](https://github.com/nvdtf/flow-nft-scaffold/blob/main/cadence/contracts/exampleNFT/ExampleNFT.cdc)
-- Dive into the details of [the NFT Standard](https://github.com/onflow/flow-nft)
-- Check out the [`Burner` contract](../../build/cadence/core-contracts/14-burner.md), which is the standard
+- Explore an [example NFT repository]
+- Dive into the details of the [NFT Standard]
+- Check out the [`Burner` contract], which is the standard
   that all projects should use for handling the destruction of any resource.
-- For a deeper dive into `MetadataViews`, consult the [introduction guide](../../build/cadence/advanced-concepts/metadata-views.md) or [the FLIP that introduced this feature](https://github.com/onflow/flips/blob/main/application/20210916-nft-metadata.md).
-- Learn about how you can [bridge your NFTs to Flow-EVM](../cross-vm-apps/vm-bridge.md#cross-vm-bridge) and how you can build your NFT project [to be compatible with the Flow VM bridge](../cross-vm-apps/vm-bridge.md#prep-your-assets-for-bridging).
-- Use a [no code tool for creating NFT projects on Flow](https://www.touchstone.city/)
+- For a deeper dive into `MetadataViews`, consult the [introduction guide] or [the FLIP that introduced this feature].
+- Learn about how you can [bridge your NFTs to Flow-EVM]and how you can [build your FT project] to be compatible with the Flow VM bridge.
+- Use a no code tool to create NFT projects on Flow with [Touchstone].
+
+<!-- Relative links, will not render on page -->
+
+[a link to the completed code]: https://github.com/onflow/foobar-nft
+[bridge your NFTs to Flow-EVM]: ../cross-vm-apps/vm-bridge.md#cross-vm-bridge
+[`Burner` contract]: ../../build/cadence/core-contracts/14-burner.md
+[build your NFT project]: ../cross-vm-apps/vm-bridge.md#prep-your-assets-for-bridging
+[in the Cadence docs]: ../../../../cadence-lang.org/docs/language/references.mdx
+[`Collection` interface]: https://github.com/onflow/flow-nft/blob/master/contracts/NonFungibleToken.cdc#L202
+[Collection]: https://github.com/onflow/flow-nft/blob/master/contracts/NonFungibleToken.cdc#L190
+[Cross-VM Bridge]: https://www.github.com/onflow/flow-evm-bridge
+[Entitlements]: ../../../../cadence-lang.org/docs/language/access-control.md#entitlements
+[example NFT repository]: https://github.com/nvdtf/flow-nft-scaffold/blob/main/cadence/contracts/exampleNFT/ExampleNFT.cdc
+[Flow CLI installation guide]: ../../build/tools/flow-cli/install.md
+[generic version]: https://github.com/onflow/flow-nft/blob/master/transactions/generic_transfer_with_address.cdc
+[generic transactions]:https://github.com/onflow/flow-nft/blob/master/transactions/setup_account_from_address.cdc 
+[Homebrew]: https://brew.sh/ 
+[introduction guide]: ../../build/cadence/advanced-concepts/metadata-views.md
+[metadata views documentation]: ../../build/cadence/advanced-concepts/metadata-views.md
+[MetadataViews]: https://github.com/onflow/flow-nft/blob/master/contracts/MetadataViews.cdc
+[NFT Standard]: https://github.com/onflow/flow-nft
+[References]: ../../../../cadence-lang.org/docs/language/references.mdx
+[Resources]: ../../../../cadence-lang.org/docs/tutorial/03-resources.md
+[NFT]: https://github.com/onflow/flow-nft/blob/master/contracts/NonFungibleToken.cdc#L98)
+[standard entitlement]: https://github.com/onflow/flow-nft/blob/master/contracts/NonFungibleToken.cdc#L58
+[standard `NonFungibleToken.Updated` event]: https://github.com/onflow/flow-nft/blob/master/contracts/NonFungibleToken.cdc#L63-L77
+[the FLIP that introduced this feature]: https://github.com/onflow/flips/blob/main/application/20210916-nft-metadata.md.
+[Touchstone]: https://www.touchstone.city/
+[ViewResolver]: https://github.com/onflow/flow-nft/blob/master/contracts/ViewResolver.cdc
+

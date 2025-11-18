@@ -101,6 +101,8 @@ Similar to manual registration:
 
 For any issues, refer to the [Token List GitHub Repository] or reach out to the [Flow developer community].
 
+<!-- Relative links, will not render on page -->
+
 [Token List Registration]: https://token-list.fixes.world/
 [Register ERC-20 Token on Flow EVM]: ./register-erc20-token.md
 [register-standard-asset.cdc]: https://github.com/fixes-world/token-list/blob/main/cadence/transactions/register-standard-asset.cdc

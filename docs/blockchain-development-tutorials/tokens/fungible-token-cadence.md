@@ -23,7 +23,7 @@ keywords:
 
 :::info
 
-This guide is an in-depth tutorial on launching a Fungible Token contract from scratch. To launch in two minutes with a tool, check out [Toucans](https://toucans.ecdao.org/)
+This guide is an in-depth tutorial on launching a Fungible Token contract from scratch. To launch in two minutes with a tool, check out [Toucans]
 
 :::
 
@@ -37,7 +37,7 @@ Fungible tokens play a crucial role in web3 ecosystems. They serve as both a mea
 
 On the Flow blockchain and in the Cadence programming language, fungible tokens are stored in structures called resources. Resources are objects in Cadence that store data, but have special restrictions about how they can be stored and transferred, which makes them perfect to represent digital objects with real value.
 
-You can learn more about resources in the Cadence [documentation](https://cadence-lang.org/docs/language/resources) and [tutorials](https://cadence-lang.org/docs/tutorial/resources).
+You can learn more about resources in the [Cadence documentation] and [Cadence tutorials].
 
 For fungible tokens specifically, tokens are represented by a resource type called a `Vault`:
 
@@ -63,11 +63,11 @@ This process ensures secure and accurate token transfers on the Flow blockchain.
 
 ## Fungible token standard
 
-The [Fungible Token Standard](https://github.com/onflow/flow-ft) defines how a fungible token should behave on Flow. Wallets and other platforms need to recognize these tokens, so they adhere to a specific interface, which defines fields like balance, totalSupply, withdraw functionality, and more. This interface ensures that all fungible tokens on Flow have a consistent structure and behavior.
+The [Fungible Token Standard] defines how a fungible token should behave on Flow. Wallets and other platforms need to recognize these tokens, so they adhere to a specific interface, which defines fields like balance, totalSupply, withdraw functionality, and more. This interface ensures that all fungible tokens on Flow have a consistent structure and behavior.
 
 Clink the link to the fungible token standard to see the full standard and learn about specific features and requirements.
 
-[Learn more about interfaces here](https://developers.flow.com/cadence/language/interfaces).
+[Learn more about interfaces here].
 
 ## Set up a project
 
@@ -77,13 +77,13 @@ To create a fungible token on the Flow blockchain, you'll first need some tools 
 
 The **Flow CLI** (Command Line Interface) provides a suite of tools that allow developers to interact seamlessly with the Flow blockchain.
 
-If you haven't installed the Flow CLI yet and have [Homebrew](https://brew.sh/) installed, you can run `brew install flow-cli`. If you don't have Homebrew, follow [the installation guide here](https://developers.flow.com/tools/flow-cli/install).
+If you haven't installed the Flow CLI yet and have [Homebrew] installed, you can run `brew install flow-cli`. If you don't have Homebrew, follow the [Flow CLI installation guide].
 
 ### Initialize a new project
 
 :::info
 
-> 💡 Here is [a link to the completed code](https://github.com/onflow/FooToken) if you want to skip ahead or reference as you follow along.
+> 💡 Here is a link to the [completed code] if you want to skip ahead or reference as you follow along.
 
 :::
 
@@ -112,7 +112,7 @@ Now, navigate into the project directory:
 cd FooToken
 ```
 
-In our configuration file, called `flow.json`, for the network we want to use, we'll state the address the `FungibleToken` contract is deployed to via `aliases` in a new `contracts` section. Since it is a standard contract, it has already been deployed to the emulator, a tool that runs and emulates a local development version of the Flow Blockchain, for us. You can find addresses for other networks, like Testnet and Mainnet, on the [Fungible Token Standard repo](https://github.com/onflow/flow-ft).
+In our configuration file, called `flow.json`, for the network we want to use, we'll state the address the `FungibleToken` contract is deployed to via `aliases` in a new `contracts` section. Since it is a standard contract, it has already been deployed to the emulator, a tool that runs and emulates a local development version of the Flow Blockchain, for us. You can find addresses for other networks, like Testnet and Mainnet, on the [Fungible Token Standard] repo.
 
 We'll also need to add the addresses for `ViewResolver`, `MetadataViews`, and `FungibleTokenMetadataViews`, which are other important contracts to use. These contracts are deployed to the Flow emulator by default, so there is not need to copy their code into your repo. The addresses below are the addresses in the emulator that your contract will import them from.
 
@@ -182,7 +182,7 @@ access(all) contract FooToken: FungibleToken {
 
 ### Create a vault
 
-Inside of this contract, we'll need to create a resource for a `Vault`. The `FungibleToken` standard requires that your vault implements the `FungibleToken.Vault` interface. This interface inherits from [many other interfaces](https://github.com/onflow/flow-ft/blob/master/contracts/FungibleToken.cdc#L140), which enforce different functionality that you can learn about in the standard.
+Inside of this contract, we'll need to create a resource for a `Vault`. The `FungibleToken` standard requires that your vault implements the `FungibleToken.Vault` interface. This interface inherits from [many other interfaces], which enforce different functionality that you can learn about in the standard.
 
 ```cadence
 import "FungibleToken"
@@ -259,18 +259,18 @@ access(all) contract FooToken: FungibleToken {
 }
 ```
 
-As you can see, this function has an `access(FungibleToken.Withdraw)` access modifier. This is an example of entitlements in Cadence. [Entitlements](https://cadence-lang.org/docs/language/access-control#entitlements) are a way for developers to restrict access to privileged fields and functions in a composite type like a resource when a reference is created for it. They are what protects third-party access to the privileged functionality in your resource objects. We recommend that you read the [entitlements documentation](https://cadence-lang.org/docs/language/access-control#entitlements) to understand how to use the feature properly.
+As you can see, this function has an `access(FungibleToken.Withdraw)` access modifier. This is an example of entitlements in Cadence. [Entitlements] are a way for developers to restrict access to privileged fields and functions in a composite type like a resource when a reference is created for it. They are what protects third-party access to the privileged functionality in your resource objects. We recommend that you read the [Entitlements] documentation to understand how to use the feature properly.
 
-[References](https://cadence-lang.org/docs/language/references) can be freely up-casted and down-casted in Cadence, so it is important for privileged functionality to be protected by an entitlement so that it can only be accessed if it is authorized.
+[References]can be freely up-casted and down-casted in Cadence, so it is important for privileged functionality to be protected by an entitlement so that it can only be accessed if it is authorized.
 
-In this example, the `withdraw()` function is always accessible to code that controls the full `Vault` object, but if a reference is created for it, the `withdraw()` function can only be called if the reference is authorized by the owner with `FungibleToken.Withdraw`, which is [a standard entitlement](https://github.com/onflow/flow-ft/blob/master/contracts/FungibleToken.cdc#L53) defined by the FungibleToken contract:
+In this example, the `withdraw()` function is always accessible to code that controls the full `Vault` object, but if a reference is created for it, the `withdraw()` function can only be called if the reference is authorized by the owner with `FungibleToken.Withdraw`, which is a [standard entitlement] defined by the FungibleToken contract:
 
 ```cadence
 // Example of an authorized entitled reference to a FungibleToken.Vault
 <auth(FungibleToken.Withdraw) &{FungibleToken.Vault}>
 ```
 
-In addition to withdrawl, the vault also needs a way to deposit. We'll [typecast](https://cadence-lang.org/docs/language/operators#casting-operators) to make sure we are dealing with the correct token, update the vault balance, and destroy the vault. Add this code to your resource:
+In addition to withdrawl, the vault also needs a way to deposit. We'll [typecast] to make sure we are dealing with the correct token, update the vault balance, and destroy the vault. Add this code to your resource:
 
 ```cadence
 import "FungibleToken"
@@ -312,11 +312,11 @@ access(all) event Deposited(type: String, amount: UFix64, to: Address?, toUUID: 
 access(all) event Burned(type: String, amount: UFix64, fromUUID: UInt64)
 ```
 
-These events are [emitted by the `Vault` interface](https://github.com/onflow/flow-ft/blob/master/contracts/FungibleToken.cdc#L198) in the `FungibleToken` contract whenever the relevant function is called on any implementation.
+These events are emitted by the [`Vault` interface] in the `FungibleToken` contract whenever the relevant function is called on any implementation.
 
-One important piece to understand about the `Burned` event in particular is that for it to be emitted when a `Vault` is burned, it needs to be burnt via [the `Burner` contract's `burn()` method](https://github.com/onflow/flow-ft/blob/master/contracts/utility/Burner.cdc#L23).
+One important piece to understand about the `Burned` event in particular is that for it to be emitted when a `Vault` is burned, it needs to be burnt via [the `Burner` contract's `burn()` method].
 
-The [`Burner` contract](../../build/cadence/core-contracts/14-burner.md) defines a standard that all projects should use to handle the destruction of any resource. It allows projects to define custom logic that can be executed when a resource is destroyed, like emitting events, or update a field in the contract to show that the resource was destroyed.
+The [`Burner` contract] defines a standard that all projects should use to handle the destruction of any resource. It allows projects to define custom logic that can be executed when a resource is destroyed, like emitting events, or update a field in the contract to show that the resource was destroyed.
 
 This will call the resource's `burnCallback()` function, which emits the event. You'll need to also add this function to your token contract now:
 
@@ -389,9 +389,9 @@ access(all) contract FooToken: FungibleToken {
 
 ### Add support for metadata views
 
-The Fungible Token standard also enforces that implementations provide functionality to return a set of standard views about the tokens via the [ViewResolver](https://github.com/onflow/flow-nft/blob/master/contracts/ViewResolver.cdc) and [FungibleTokenMetadataViews](https://github.com/onflow/flow-ft/blob/master/contracts/FungibleTokenMetadataViews.cdc) definitions. (You will need to add these imports to your contract now.) These provide developers with standard ways to represent metadata about a given token such as supply, token symbols, website links, and standard account paths and types that third-parties can access in a standard way.
+The Fungible Token standard also enforces that implementations provide functionality to return a set of standard views about the tokens via the [ViewResolver] and [FungibleTokenMetadataViews] definitions. (You will need to add these imports to your contract now.) These provide developers with standard ways to represent metadata about a given token such as supply, token symbols, website links, and standard account paths and types that third-parties can access in a standard way.
 
-You can see the [metadata views documentation](../../build/cadence/advanced-concepts/metadata-views.md) for a more thorough guide that uses an NFT contract as an example. For now, you can add this code to your contract to support the important metadata views:
+You can see the [metadata views documentation] for a more thorough guide that uses an NFT contract as an example. For now, you can add this code to your contract to support the important metadata views:
 
 ```cadence
 import "FungibleToken"
@@ -746,7 +746,7 @@ Open a new terminal and run the following to deploy your project:
 flow project deploy
 ```
 
-Congrats, you've deployed your contract to the Flow Blockchain emulator. To read more about how to deploy your project to other environments, see the [CLI docs](https://developers.flow.com/tools/flow-cli/deployment/deploy-project-contracts).
+Congrats, you've deployed your contract to the Flow Blockchain emulator. To read more about how to deploy your project to other environments, see the [Deploy Project Contracts with CLI] docs.
 
 ## Read the token's total supply
 
@@ -774,20 +774,20 @@ flow scripts execute cadence/scripts/get_total_supply.cdc
 
 In the terminal where you started the emulator, you will see `Result: 1000.0`
 
-To learn more about how to run scripts with Flow CLI, [see the docs](https://developers.flow.com/tools/flow-cli/scripts/execute-scripts).
+To learn more about how to run scripts with Flow CLI, see the [Execute Scripts in Flow CLI] docs.
 
 ## Give accounts the ability to receive tokens
 
 On Flow, newly-created accounts cannot receive arbitrary assets. They need to be initialized to receive resources.
 In our case, we want to give accounts tokens and we'll need to create a `Vault` (which acts as a receiver) on each account that we want to have the ability to receive tokens. To do this, we'll need to run a transaction which will create the vault and set it in their storage with the `createEmptyVault()` function we created earlier on the contract.
 
-Let's first create the file at `cadence/transactions/setup_ft_account.cdc` using the `generate` command:
+Let's first create the file at `cadence/transactions/setup_ft_account.cdc` with the `generate` command:
 
 ```bash
 flow generate transaction setup_ft_account
 ```
 
-Then add this code to it. This will call the `createEmptyVault` function, save it in storage, and create a capability for the vault which will later allow us to read from it. To learn more about capabilities, see [the Cadence docs here](https://developers.flow.com/cadence/language/capabilities).
+Then add this code to it. This will call the `createEmptyVault` function, save it in storage, and create a capability for the vault which will later allow us to read from it. To learn more about capabilities, see the [Cadence Capabilities] docs 
 
 ```cadence
 import "FungibleToken"
@@ -816,7 +816,7 @@ transaction () {
 }
 ```
 
-There are also examples of [generic transactions](https://github.com/onflow/flow-ft/blob/master/transactions/metadata/setup_account_from_address.cdc) that you can use to setup an account for ANY fungible token with metadata views!
+There are also examples of [generic transactions] that you can use to setup an account for ANY fungible token with metadata views!
 Check those out and try to use generic transactions whenever it is possible.
 
 Next let's create a new emulator account with the CLI. We'll use this account to create a new vault and mint tokens into it. Run:
@@ -839,11 +839,11 @@ To call our setup account transaction from the CLI, we'll run the following:
 flow transactions send ./cadence/transactions/setup_ft_account.cdc --signer test-acct --network emulator
 ```
 
-To learn more about how to run transactions with Flow CLI, [see the docs](https://developers.flow.com/tools/flow-cli/transactions/send-transactions).
+To learn more about how to run transactions with Flow CLI, see the [Send a Transaction] docs.
 
 ## Read a vault's balance
 
-Let's now read the balance of the newly-created account (`test-acct`) to check it's zero.
+Let's now read the balance of the newly-created account (`test-acct`) to check that it's zero.
 
 Create this new script file `cadence/scripts/get_footoken_balance.cdc`:
 
@@ -871,7 +871,7 @@ access(all) fun main(address: Address): UFix64 {
 }
 ```
 
-To run this script using the CLI, enter the following in your terminal. You'll need to replace `123` with the address created by Flow CLI in your `flow.json` for the `test-acct` address.
+To run this script with the CLI, enter the following in your terminal. You'll need to replace `123` with the address created by Flow CLI in your `flow.json` for the `test-acct` address.
 
 ```bash
 flow scripts execute cadence/scripts/get_footoken_balance.cdc 123 // change "123" to test-acct address
@@ -1026,11 +1026,43 @@ flow scripts execute cadence/scripts/get_footoken_balance.cdc 123
 
 You will now see one token in `test-acct-2` account!
 
-The transfer transaction also has a [generic version](https://github.com/onflow/flow-ft/blob/master/transactions/generic_transfer_with_address.cdc) that developers are encouraged to use!
+The transfer transaction also has a [generic version] that developers are encouraged to use!
 
 ## More
 
-- [View a repo of this example code](https://github.com/onflow/FooToken)
-- [Review an `ExampleToken` contract implementing all of the remaining FungibleToken interface](https://github.com/onflow/flow-ft/blob/master/contracts/ExampleToken.cdc)
-- [View the Flow Token Standard](https://github.com/onflow/flow-ft/blob/master/contracts/FungibleToken.cdc)
-- Learn about how you can [bridge your FTs to Flow-EVM](../cross-vm-apps/vm-bridge.md#cross-vm-bridge) and how you can build your FT project [to be compatible with the Flow VM bridge](../cross-vm-apps/vm-bridge.md#prep-your-assets-for-bridging).
+- View a repo of this [completed code].
+- Review an [`ExampleToken`] contract that implements all of the remaining FungibleToken interface.
+- View the [Flow Token Standard]
+- Learn about how you can [bridge your FTs to Flow-EVM] and how you can [build your FT project] to be compatible with the Flow VM bridge.
+
+<!-- Relative links, will not render on page -->
+
+[bridge your FTs to Flow-EVM]: ../cross-vm-apps/vm-bridge.md#cross-vm-bridge
+[`Burner` contract]: ../../build/cadence/core-contracts/14-burner.md
+[build your FT project]: ../cross-vm-apps/vm-bridge.md#prep-your-assets-for-bridging
+[Cadence Capabilities]: ../../../../cadence-lang.org/docs/language/capabilities.md
+[Cadence documentation]: ../../../../cadence-lang.org/docs/language/resources.mdx 
+[Cadence tutorials]: ../../../../cadence-lang.org/docs/tutorial/03-resources.md
+[completed code]: https://github.com/onflow/FooToken
+[Deploy Project Contracts with CLI]: /docs/build/tools/flow-cli/deployment/deploy-project-contracts.md
+[Entitlements]: ../../../../cadence-lang.org/docs/language/access-control.md#entitlements
+[`ExampleToken`]: https://github.com/onflow/flow-ft/blob/master/contracts/ExampleToken.cdc
+[Execute Scripts in Flow CLI]: /docs/build/tools/flow-cli/scripts/execute-scripts.md
+[Flow Token Standard]: https://github.com/onflow/flow-ft
+[FungibleTokenMetadataViews]: https://github.com/onflow/flow-ft/blob/master/contracts/FungibleTokenMetadataViews.cdc
+[Funglible Token Standard]: https://github.com/onflow/flow-ft/blob/master/contracts/FungibleToken.cdc
+[generic version]: https://github.com/onflow/flow-ft/blob/master/transactions/generic_transfer_with_address.cdc
+[generic transactions]: https://github.com/onflow/flow-ft/blob/master/transactions/metadata/setup_account_from_address.cdc
+[Flow CLI installation guide]: ../../build/tools/flow-cli/install.md
+[Homebrew]: https://brew.sh/ 
+[Learn more about interfaces here]: ../../../../cadence-lang.org/docs/language/interfaces.mdx
+[many other interfaces]: https://github.com/onflow/flow-ft/blob/master/contracts/FungibleToken.cdc#L140
+[metadata views documentation]: ../../build/cadence/advanced-concepts/metadata-views.md
+[References]: ../../../../cadence-lang.org/docs/language/references.mdx
+[Send a Transaction]: /docs/build/tools/flow-cli/transactions/send-transactions.md
+[standard entitlement]: https://github.com/onflow/flow-ft/blob/master/contracts/FungibleToken.cdc#L53
+[the `Burner` contract's `burn()` method]: https://github.com/onflow/flow-ft/blob/master/contracts/utility/Burner.cdc#L23
+[Toucans]: https://toucans.ecdao.org/
+[typecast]: ../../../../cadence-lang.org/docs/language/operators/casting-operators.md
+[ViewResolver]: https://github.com/onflow/flow-nft/blob/master/contracts/ViewResolver.cdc 
+[`Vault` interface]: https://github.com/onflow/flow-ft/blob/master/contracts/FungibleToken.cdc#L198
