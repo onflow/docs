@@ -119,7 +119,7 @@ Keep in mind that Flow is **very** efficient, so transaction fees are generally 
   - Single NFT Transfer: 26 CU.
   - EVM Token transfer 28 CU.
 
-**Reference block** specifies an expiration window (measured in blocks) during which a transaction is considered valid by the network. A transaction will be rejected if it is submitted past its expiry block. Flow calculates transaction expiry using the _reference block_ field on a transaction. A transaction expires after `600` blocks are committed on top of the reference block, which takes about 10 minutes at average Mainnet block rates.
+**Reference block** specifies an expiration window (measured in blocks) during which a transaction is considered valid by the network. A transaction will be rejected if it is submitted past its expiry block. Flow calculates transaction expiry using the _reference block_ field on a transaction. A transaction expires after `600` blocks are committed on top of the reference block, which takes about 8 minutes at average Mainnet block rates.
 
 ## API Reference
 
