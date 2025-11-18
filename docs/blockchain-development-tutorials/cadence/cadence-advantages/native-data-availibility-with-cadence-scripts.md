@@ -29,7 +29,7 @@ In Cadence, **scripts** are general-purpose read programs. They can traverse pub
 
 :::info
 
-In Cadence, a _script_ is a read-only program that can access public data across accounts and contracts in a strongly typed way. It does not require payment, in gas or compute units, or user signatures.
+In Cadence, a _script_ is a read-only program that can access public data across accounts and contracts in a strongly typed way. It does not require a user signatures not does it incur any fees.
 
 :::
 
