@@ -461,7 +461,7 @@ This transaction demonstrates how to chain multiple DeFi operations atomically, 
 [`/cadence/transactions/increment_fi_restake.cdc`]: https://github.com/onflow/flow-actions-scaffold/blob/main/cadence/transactions/increment_fi_restake.cdc
 [scheduled transactions]: ../scheduled-transactions/scheduled-transactions-introduction.md
 [Export]: https://docs.wallet.flow.com/tutorial/extension-private-key-and-seed-phrase-guide
-[Cadence]: ../../../../../cadence-lang.org/docs/index.md 
+[Cadence]: https://cadence-lang.org/docs/
 [staking app]: https://app.increment.fi/staking
 [script on Flow Runner]: https://run.dnz.dev/snippet/d1bf715483551879
 [IncrementFi Farms]: https://app.increment.fi/farm

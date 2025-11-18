@@ -1040,12 +1040,12 @@ The transfer transaction also has a [generic version] that developers are encour
 [bridge your FTs to Flow-EVM]: ../cross-vm-apps/vm-bridge.md#cross-vm-bridge
 [`Burner` contract]: ../../build/cadence/core-contracts/14-burner.md
 [build your FT project]: ../cross-vm-apps/vm-bridge.md#prep-your-assets-for-bridging
-[Cadence Capabilities]: ../../../../cadence-lang.org/docs/language/capabilities.md
-[Cadence documentation]: ../../../../cadence-lang.org/docs/language/resources.mdx 
-[Cadence tutorials]: ../../../../cadence-lang.org/docs/tutorial/03-resources.md
+[Cadence Capabilities]: https://cadence-lang.org/docs/language/capabilities
+[Cadence documentation]: https://cadence-lang.org/docs/language/resources
+[Cadence tutorials]: https://cadence-lang.org/docs/tutorial/resources
 [completed code]: https://github.com/onflow/FooToken
 [Deploy Project Contracts with CLI]: /docs/build/tools/flow-cli/deployment/deploy-project-contracts.md
-[Entitlements]: ../../../../cadence-lang.org/docs/language/access-control.md#entitlements
+[Entitlements]: https://cadence-lang.org/docs/language/access-control#entitlements
 [`ExampleToken`]: https://github.com/onflow/flow-ft/blob/master/contracts/ExampleToken.cdc
 [Execute Scripts in Flow CLI]: /docs/build/tools/flow-cli/scripts/execute-scripts.md
 [Flow Token Standard]: https://github.com/onflow/flow-ft
@@ -1055,14 +1055,14 @@ The transfer transaction also has a [generic version] that developers are encour
 [generic transactions]: https://github.com/onflow/flow-ft/blob/master/transactions/metadata/setup_account_from_address.cdc
 [Flow CLI installation guide]: ../../build/tools/flow-cli/install.md
 [Homebrew]: https://brew.sh/ 
-[Learn more about interfaces here]: ../../../../cadence-lang.org/docs/language/interfaces.mdx
+[Learn more about interfaces here]: https://cadence-lang.org/docs/language/interfaces
 [many other interfaces]: https://github.com/onflow/flow-ft/blob/master/contracts/FungibleToken.cdc#L140
 [metadata views documentation]: ../../build/cadence/advanced-concepts/metadata-views.md
-[References]: ../../../../cadence-lang.org/docs/language/references.mdx
+[References]: https://cadence-lang.org/docs/language/references
 [Send a Transaction]: /docs/build/tools/flow-cli/transactions/send-transactions.md
 [standard entitlement]: https://github.com/onflow/flow-ft/blob/master/contracts/FungibleToken.cdc#L53
 [the `Burner` contract's `burn()` method]: https://github.com/onflow/flow-ft/blob/master/contracts/utility/Burner.cdc#L23
 [Toucans]: https://toucans.ecdao.org/
-[typecast]: ../../../../cadence-lang.org/docs/language/operators/casting-operators.md
+[typecast]: https://cadence-lang.org/docs/language/operators/casting-operators
 [ViewResolver]: https://github.com/onflow/flow-nft/blob/master/contracts/ViewResolver.cdc 
 [`Vault` interface]: https://github.com/onflow/flow-ft/blob/master/contracts/FungibleToken.cdc#L198

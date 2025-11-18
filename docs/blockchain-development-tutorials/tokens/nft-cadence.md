@@ -862,11 +862,11 @@ Congrats, you did it! You're now ready to launch the next fun NFT project on Flo
 [bridge your NFTs to Flow-EVM]: ../cross-vm-apps/vm-bridge.md#cross-vm-bridge
 [`Burner` contract]: ../../build/cadence/core-contracts/14-burner.md
 [build your NFT project]: ../cross-vm-apps/vm-bridge.md#prep-your-assets-for-bridging
-[in the Cadence docs]: ../../../../cadence-lang.org/docs/language/references.mdx
+[in the Cadence docs]: https://cadence-lang.org/docs/language/resources#destroy-events
 [`Collection` interface]: https://github.com/onflow/flow-nft/blob/master/contracts/NonFungibleToken.cdc#L202
 [Collection]: https://github.com/onflow/flow-nft/blob/master/contracts/NonFungibleToken.cdc#L190
 [Cross-VM Bridge]: https://www.github.com/onflow/flow-evm-bridge
-[Entitlements]: ../../../../cadence-lang.org/docs/language/access-control.md#entitlements
+[Entitlements]: https://cadence-lang.org/docs/language/access-control#entitlements
 [example NFT repository]: https://github.com/nvdtf/flow-nft-scaffold/blob/main/cadence/contracts/exampleNFT/ExampleNFT.cdc
 [Flow CLI installation guide]: ../../build/tools/flow-cli/install.md
 [generic version]: https://github.com/onflow/flow-nft/blob/master/transactions/generic_transfer_with_address.cdc
@@ -876,8 +876,8 @@ Congrats, you did it! You're now ready to launch the next fun NFT project on Flo
 [metadata views documentation]: ../../build/cadence/advanced-concepts/metadata-views.md
 [MetadataViews]: https://github.com/onflow/flow-nft/blob/master/contracts/MetadataViews.cdc
 [NFT Standard]: https://github.com/onflow/flow-nft
-[References]: ../../../../cadence-lang.org/docs/language/references.mdx
-[Resources]: ../../../../cadence-lang.org/docs/tutorial/03-resources.md
+[References]: https://cadence-lang.org/docs/language/references
+[Resources]: https://cadence-lang.org/docs/language/resources
 [NFT]: https://github.com/onflow/flow-nft/blob/master/contracts/NonFungibleToken.cdc#L98)
 [standard entitlement]: https://github.com/onflow/flow-nft/blob/master/contracts/NonFungibleToken.cdc#L58
 [standard `NonFungibleToken.Updated` event]: https://github.com/onflow/flow-nft/blob/master/contracts/NonFungibleToken.cdc#L63-L77
