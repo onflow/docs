@@ -443,4 +443,4 @@ Block explorer support for scheduled transactions is also coming, which will pro
 
 For feature requests and suggestions for scheduled transaction tooling, please visit [github.com/onflow/flow](https://github.com/onflow/flow) and create an issue with the tag `scheduled_transactions`.
 
-Read FLIP for more details: https://github.com/onflow/flips/blob/main/protocol/20250609-scheduled-callbacks.md
+Read [FLIP 330: Scheduled Callbacks](https://github.com/onflow/flips/blob/main/protocol/20250609-scheduled-callbacks.md) for more details: 
