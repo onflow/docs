@@ -237,7 +237,7 @@ Visit `http://localhost:3000` and you will see:
 1. **Counter value**: Displays the current count from your testnet contract.
 2. **Connect Wallet**: You can now connect with various Flow wallets (not just Dev Wallet).
 3. **Increment functionality**: Transactions are sent to the live testnet.
-4. **Real transaction costs**: Small amounts of testnet Flow are used for compute units, the Flow Cadence equivalence of gas.
+4. **Real transaction costs**: Small amounts of testnet Flow are used to pay for compute units, the Flow Cadence equivalence of gas.
 
 **Important**: When you connect your wallet, make sure to:
 
