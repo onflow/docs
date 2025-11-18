@@ -113,7 +113,7 @@ EVM-equivalency on Flow works behind-the-scenes by implementing a minimal transa
 - **Scalable and Secure Architecture**: The [multi-role architecture] of Flow allows the network to [scale without sharding] to serve billions of users without reducing the decentralization of consensus and verification.
 - **True, fast finality**: For most other networks, it takes minutes, [a day], or even [a week] to reach hard finality — the point at which a transaction cannot be reversed. On Flow, the median time for finality is [under 10 seconds], without compromising security.
 - **Consumer onboarding**: Flow was designed for mainstream consumers, with payment onramps catalyzing a safe and low-friction path from fiat to crypto.
-- **Efficient compute unit (gas) costs**: The Flow blockchain is extremely efficient, allowing apps to do more computation at lower costs.
+- **Efficient compute unit and gas costs**: The Flow blockchain is extremely efficient both on the Cadence side and the EVM side, allowing apps to do more computation at lower costs.
 
 ### MEV resilience
 
