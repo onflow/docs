@@ -99,7 +99,7 @@ claude
 
 This automatically installs the extension. You can run the `/ide` command in the Claude terminal to make sure your IDE is connected to Claude. With the extension installed, you can click on the orange Anthropic logo on the upper right hand of the screen in order to launch Claude in a separate window.  
 
-![Claude Code Extension](./imgs/Claude_logo.png)
+![Claude Code Extension](./imgs/CC_logo.png)
 
 
 ### CLAUDE.md files

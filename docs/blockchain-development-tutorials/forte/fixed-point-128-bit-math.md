@@ -60,7 +60,7 @@ After three-to-four sequential operations, significant cumulative rounding error
 
 [`DeFiActionsMathUtils`] solves this with `UInt128` to represent fixed-point numbers with 24 decimal places (scaling factor of 10^24). This provides 16 additional decimal places for intermediate calculations, dramatically reducing precision loss.
 
-:::Warning
+:::warning
 
 There is still some precision loss occurring, but it is much smaller than with eight decimals. 
 
