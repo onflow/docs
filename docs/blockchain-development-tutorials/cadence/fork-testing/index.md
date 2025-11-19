@@ -560,6 +560,28 @@ Configuring fork tests in the file keeps the configuration with your test code, 
 
 You can also run specific test files or change the network/block height in the pragma as needed. See the [Fork Testing Flags] reference for more options.
 
+## Pinning block heights for reproducibility
+
+For reproducible test results, pin your tests to a specific block height:
+
+```cadence
+#test_fork(network: "mainnet", height: 85229104)
+```
+
+This ensures your tests run against the same blockchain state every time, useful for:
+
+- Deterministic test results in CI/CD
+- Reproducing historical bugs at a specific point in time
+- Testing against known network state
+
+To use the latest state instead, use `height: nil`:
+
+```cadence
+#test_fork(network: "mainnet", height: nil)
+```
+
+Note that block heights are only available within the current spork (network upgrade period). See [Testing Smart Contracts] for more on managing pinned heights over time.
+
 ## When to use fork testing
 
 Fork testing is most valuable for:
