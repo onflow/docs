@@ -20,19 +20,19 @@ keywords:
   - web3 frontend
 ---
 
-# Building a frontend app
+# Building a Frontend App
 
-This tutorial builds on the `Counter` contract you deployed in [Cadence Environment Setup] and [Smart Contract Interaction]. It shows you how to create a simple `Next.js` frontend that interacts with the `Counter` smart contract deployed on your local Flow emulator. Instead of using FCL directly, you'll leverage [**@onflow/react-sdk**] to simplify authentication, querying, transactions, and to display real-time transaction status updates using convenient React hooks.
+This tutorial builds on the `Counter` contract you deployed in [Cadence Environment Setup] and [Smart Contract Interaction]. It shows you how to create a simple `Next.js` frontend that interacts with the `Counter` smart contract deployed on your local Flow emulator. Rather than use FCL directly, you'll leverage [**@onflow/react-sdk**] to simplify authentication, querys, transactions, and to display real-time transaction status updates with convenient React hooks.
 
 ## Objectives
 
 After you complete this tutorial, you will be able to:
 
 - Wrap your `Next.js` app with a Flow provider using [**@onflow/react-sdk**].
-- Read data from a Cadence smart contract (`Counter`) using kit's query hook.
-- Send a transaction to update the smart contract's state using kit's mutation hook.
-- Monitor a transaction's status in real time using kit's transaction hook.
-- Authenticate with the Flow blockchain using kit's built-in hooks and the local [Dev Wallet].
+- Read data from a Cadence smart contract (`Counter`) with kit's query hook.
+- Send a transaction to update the smart contract's state with kit's mutation hook.
+- Monitor a transaction's status in real time with kit's transaction hook.
+- Authenticate with the Flow blockchain with kit's built-in hooks and the local [Dev Wallet].
 
 ## Prerequisites
 
@@ -64,15 +64,15 @@ During setup, choose the following options:
 - **Use src directory**: **Yes**
 - **Use App Router**: **Yes**
 
-This command creates a new Next.js project named `kit-app-quickstart` inside your current directory. We're generating the frontend in a subdirectory so we can next move it into our existing project structure from the previous steps (you can't create an app in a non-empty directory).
+This command creates a new Next.js project named `kit-app-quickstart` inside your current directory. We will generate the frontend in a subdirectory so we can next move it into our current project structure from the previous steps (you can't create an app in a non-empty directory).
 
-### Step 2: Move the Next.js app Up a directory
+### Step 2: Move the Next.js app up a directory
 
 Move the contents of the `kit-app-quickstart` directory into your project root. You can use the gui in your editor, or the console.
 
 :::warning
 
-You'll want to consolidate both `.gitignore` files, keeping the contents of both in the file that ends up in the root.
+You'll want to consolidate both `.gitignore` files, which keeps the contents of both in the file that ends up in the root.
 
 :::
 
@@ -94,7 +94,7 @@ Remove-Item -Recurse -Force .\kit-app-quickstart
 
 :::tip
 
-When moving hidden files (those beginning with a dot) like `.gitignore`, be cautious not to overwrite any important files.
+When you move hidden files (those that start with a dot) like `.gitignore`, be cautious not to overwrite any important files.
 
 :::
 
@@ -106,9 +106,9 @@ Install the kit library in your project:
 npm install @onflow/react-sdk
 ```
 
-This library wraps FCL internally and exposes a set of hooks for authentication, querying, sending transactions, and tracking transaction status.
+This library wraps FCL internally and exposes a set of hooks for authentication, querys, to send transactions, and track transaction status.
 
-## Configure the local Flow Emulator and Dev Wallet
+## Configure the local Flow emulator and Dev Wallet
 
 :::warning
 
@@ -116,7 +116,7 @@ You should already have the Flow emulator running from the local development ste
 
 :::
 
-### Start the Flow Emulator (if not already running)
+### Start the Flow emulator (if not already running)
 
 Open a new terminal window in your project directory and run:
 
@@ -138,7 +138,7 @@ This will start the [Dev Wallet] on `http://localhost:8701`, which you'll use fo
 
 ## Wrap Your app with FlowProvider
 
-[**@onflow/react-sdk**] provides a `FlowProvider` component that sets up the Flow Client Library configuration. In `Next.js` using the App Router, add or update your `src/app/layout.tsx` as follows:
+[**@onflow/react-sdk**] provides a `FlowProvider` component that sets up the Flow Client Library configuration. In `Next.js`, use the App Router to add or update your `src/app/layout.tsx` as follows:
 
 ```tsx
 'use client';
@@ -176,7 +176,7 @@ For more information on Discovery configurations, refer to the [Wallet Discovery
 
 ## Interact With the chain
 
-Now that we've set our provider, lets start interacting with the chain.
+Now that we've set our provider, lets start to interact with the chain.
 
 ### Query the chain
 
@@ -207,7 +207,7 @@ This script fetches the counter value, formats it via the `NumberFormatter`, and
 
 :::info
 
-- **Import Syntax:** The imports (`import "Counter"` and `import "NumberFormatter"`) don't include addresses because those are automatically resolved using the `flow.json` file configured in your `FlowProvider`. This keeps your Cadence scripts portable and environment-independent.
+- **Import Syntax:** The imports (`import "Counter"` and `import "NumberFormatter"`) don't include addresses because those are automatically resolved with the `flow.json` file configured in your `FlowProvider`. This keeps your Cadence scripts portable and environment-independent.
 - **`enabled` Flag:** This controls whether the query should run automatically. Set it to `true` to run on mount, or pass a condition (e.g. `!!user?.addr`) to delay execution until the user is available. This is useful for queries that depend on authentication or other asynchronous data.
 
 :::
@@ -248,7 +248,7 @@ const handleIncrement = () => {
 
 #### Explanation
 
-This sends a Cadence transaction to the blockchain using the `mutate` function. The transaction imports the `Counter` contract and calls its `increment` function. The connected wallet handles authorization automatically during the `prepare` phase. After it's submitted, you cna use the returned `txId` to track the transaction's status in real time.
+This sends a Cadence transaction to the blockchain with the `mutate` function. The transaction imports the `Counter` contract and calls its `increment` function. The connected wallet handles authorization automatically during the `prepare` phase. After it's submitted, you cna use the returned `txId` to track the transaction's status in real time.
 
 ### Subscribe to transaction status
 
@@ -272,7 +272,7 @@ useEffect(() => {
 
 #### Explanation:
 
-- `useFlowTransactionStatus(txId)` subscribes to real-time updates about a transaction's lifecycle using the transaction ID.
+- `useFlowTransactionStatus(txId)` subscribes to real-time updates about a transaction's lifecycle with the transaction ID.
 - `transactionStatus.status` is a numeric code representing the state of the transaction:
   - `0`: **Unknown** – The transaction status is not yet known.
   - `1`: **Pending** – The transaction has been submitted and is waiting to be included in a block.
@@ -284,16 +284,16 @@ useEffect(() => {
 
 #### Why we recommend `Executed` for UI Updates:
 
-Waiting for `Sealed` provides full onchain confirmation but can introduce a delay — especially in local or test environments. Since most transactions (like incrementing a counter) don't require strong finality guarantees, you can typically refetch data once the transaction reaches `Executed` for a faster, more responsive user experience.
+Waiting for `Sealed` provides full onchain confirmation but can introduce a delay — especially in local or test environments. Since most transactions (like incrementing a counter) don't require strong finality guarantees, you can typically refetch data after the transaction reaches `Executed` for a faster, more responsive user experience.
 
 However:
 
-- If you're dealing with critical state changes (for example, token transfers or contract deployments), prefer waiting for `Sealed`.
+- If you experience critical state changes (for example, token transfers or contract deployments), wait for `Sealed`.
 - For non-critical UI updates, `Executed` is usually safe and significantly improves perceived performance.
 
 ### Integrate authentication and build the complete UI
 
-Finally, integrate the query, mutation, and transaction status hooks with authentication using `useFlowCurrentUser`. Combine all parts to build the complete page.
+Finally, integrate the query, mutation, and transaction status hooks with authentication via `useFlowCurrentUser`. Combine all parts to build the complete page.
 
 ```tsx
 'use client';
@@ -408,12 +408,12 @@ In this complete page:
 
 - **Step 1** queries the counter value.
 - **Step 2** sends a transaction to increment the counter and stores the transaction ID.
-- **Step 3** subscribes to transaction status updates using the stored transaction ID and uses a `useEffect` hook to automatically refetch the updated count when the transaction is sealed (status code 4).
+- **Step 3** subscribes to transaction status updates with the stored transaction ID and uses a `useEffect` hook to automatically refetch the updated count when the transaction is sealed (status code 4).
 - **Step 4** integrates authentication via `useFlowCurrentUser` and combines all the pieces into a single user interface.
 
 :::tip
 
-In this tutorial, we inlined Cadence code for simplicity. For real projects, we recommend storing Cadence in separate `.cdc` files, using the [Cadence VSCode extension], and importing them with the [`flow-cadence-plugin`](https://github.com/chasefleming/flow-cadence-plugin) for Next.js or Webpack projects.
+In this tutorial, we inlined Cadence code for simplicity. For real projects, we recommend that you store Cadence in separate `.cdc` files, with the [Cadence VSCode extension], and import them with the [`flow-cadence-plugin`](https://github.com/chasefleming/flow-cadence-plugin) for Next.js or Webpack projects.
 
 :::
 
@@ -429,7 +429,7 @@ npm run dev
 
 If you have the Flow wallet browser extension installed, you might automatically log into the app. Normally this is desirable for your users, but you don't want to use it here.
 
-Log out, and log back in selecting the Dev Wallet instead of the Flow Wallet.
+Log out, and log back in. Select the Dev Wallet instead of the Flow Wallet.
 
 :::
 
@@ -444,11 +444,11 @@ Then visit [http://localhost:3000](http://localhost:3000) in your browser. You s
 - The current counter value displayed (formatted with commas using `NumberFormatter`).
 - A **Log In** button that launches the kit Discovery UI with your local [Dev Wallet].
 - Once logged in, your account address appears with options to **Log Out** and **Increment Count**.
-- When you click **Increment Count**, the transaction is sent; its status updates are displayed in real time below the action buttons, and once the transaction is sealed, the updated count is automatically fetched.
+- When you click **Increment Count**, the transaction is sent; its status updates are displayed in real time below the action buttons, and after the transaction is sealed, the updated count is automatically fetched.
 
 ## Conclusion
 
-By following these steps, you've built a simple `Next.js` dApp that interacts with a Flow smart contract using [**@onflow/react-sdk**]. In this guide you learned how to:
+When you follow these steps, you've built a simple `Next.js` dApp that interacts with a Flow smart contract with [**@onflow/react-sdk**]. In this guide you learned how to:
 
 - Wrap your application in a `FlowProvider` to configure blockchain connectivity.
 - Use kit hooks such as `useFlowQuery`, `useFlowMutate`, `useFlowTransactionStatus`, and `useFlowCurrentUser` to manage authentication, query onchain data, submit transactions, and monitor their status.

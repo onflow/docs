@@ -20,13 +20,15 @@ keywords:
   - blockchain mobile
 ---
 
-Building mobile native applications that interact with the blockchain allows a much richer end user experience and provides access to OS capabilities. With Flow Mobile, developers can build native applications for iOS and Android with SDKs and mobile wallets.
+# Mobile Development on Flow
+
+When you build mobile native applications that interact with the blockchain, it allows a much richer end user experience and provides access to OS capabilities. With Flow Mobile, developers can build native applications for iOS and Android with SDKs and mobile wallets.
 
 ## Why Flow
 
 Millions of users with Flow accounts explore the ecosystem and look for applications. Most of these users purchased Flow NFTs and are comfortable with web3 principles.
 
-In addition to the existing user base, developers can tap into smart contracts deployed on the Flow blockchain. These contracts, including their onchain state, provide unique possibilities to build experiences that enrich currently-used applications.
+In addition to the current user base, developers can tap into smart contracts deployed on the Flow blockchain. These contracts, which includes their onchain state, provide unique possibilities to build experiences that enrich currently-used applications.
 
 The following key capabilities make Flow a standout choice for mobile applications:
 
@@ -44,7 +46,7 @@ Flow is built with mainstream adoption in mind. Mobile applications can leverage
 
 ### Best-in-class UX
 
-Flow's Client Library makes it very intuitive to sign up and sign in with their wallet of choice. For transaction signing, Flow offers human readable security, so users get a clear understanding of what they are approving. An increased sense of trust for Flow applications is the outcome.
+Flow's Client Library makes it very intuitive to sign up and sign in with their wallet of choice. For transaction signing, Flow offers human readable security, so users get a clear understanding of what they approve. An increased sense of trust for Flow applications is the outcome.
 
 Furthermore, Flow's powerful account model allows for seamless user flows of onchain operations. Apps can perform transactions on behalf of the users (with their approval) in the background, without the need to switch between apps. The account model also allows apps to pay for transactions to postpone fiat on-ramps to get them to experience the value of an application before they commit to buy tokens.
 
@@ -52,7 +54,7 @@ Last, but not least, developers can leverage progressive web3 onboarding, in whi
 
 ### Security first
 
-Flow's mobile SDKs use on-device key encryption via Apple's Secure Enclave and Android's Keystore. The flexible account model makes it possible for an account to have multiple keys with different weights, which enables secure social recovery, account sharing, and much more.
+Flow's mobile SDKs use on-device key encryption via Apple's Secure Enclave and Android's Keystore. The flexible account model makes it possible for an account to have multiple keys with different weights, which allows secure social recovery, account sharing, and much more.
 
 ## Smart contract language inspired by mobile languages
 
@@ -77,7 +79,7 @@ Developers can leverage the following features to get productive quickly:
 
 ## Conclusion
 
-Flow Mobile empowers developers to create native blockchain applications that deliver best-in-class user experiences while maintaining the security and flexibility that mainstream adoption demands. Whether building with native SDKs or creating Progressive Web Apps, Flow's mobile development capabilities provide the tools needed to bring web3 to millions of users through intuitive, secure, and feature-rich mobile experiences.
+Flow Mobile empowers developers to create native blockchain applications that deliver best-in-class user experiences and maintain the security and flexibility that mainstream adoption demands. Whether you build with native SDKs or create Progressive Web Apps, Flow's mobile development capabilities provide the tools needed to bring web3 to millions of users through intuitive, secure, and feature-rich mobile experiences.
 
 <!-- Reference-style links, will not render on page. -->
 

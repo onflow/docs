@@ -30,18 +30,18 @@ In this tutorial series, you'll discover how to:
 - Leverage Flow's native features in mobile environments.
 - Build secure, user-friendly blockchain applications.
 
-# Cadence Development Tutorials
+# Cadence development tutorials
 
 ## Account Management
 
-Learn about Flow's revolutionary account linking system that allow shared ownership and progressive onboarding experiences. These tutorials cover the hybrid custody model, parent-child account relationships, and how to implement walletless onboarding that seamlessly transitions users to self-custody.
+Learn about Flow's revolutionary Account Linking system that allow shared ownership and progressive onboarding experiences. These tutorials cover the hybrid custody model, parent-child account relationships, and how to implement walletless onboarding that seamlessly transitions users to self-custody.
 
-- **[Account Linking Overview]** - Understand Flow's unique account linking concepts and hybrid custody model
-- **[Building with Child Accounts]** - Create walletless applications with progressive onboarding flows
-- **[Parent Account Management]** - Implement parent account functionality and account delegation
-- **[Account Linking with Dapper]** - Integrate with Dapper Wallet's account linking system
+- **[Account Linking Overview]** - Understand Flow's unique account linking concepts and hybrid custody model.
+- **[Building with Child Accounts]** - Create walletless applications with progressive onboarding flows.
+- **[Parent Account Management]** - Implement parent account functionality and account delegation.
+- **[Account Linking with Dapper]** - Integrate with Dapper Wallet's account linking system.
 
-## Mobile Development
+## Mobile development
 
 Discover how to build native mobile applications that leverage Flow's blockchain capabilities. These tutorials cover mobile SDKs, secure key management, wallet integration, and how to create rich user experiences on iOS and Android platforms.
 
