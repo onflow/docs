@@ -886,7 +886,7 @@ For native Android development:
 
 ## Conclusion
 
-In this tutorial, you successfully integrated Crossmint Smart Wallets to enable seamless blockchain experiences on Flow. You learned how to implement email-based authentication, automatically create wallets for users, display balances, execute token transfers, and show transaction historyall without requiring users to understand complex blockchain concepts like seed phrases or gas fees.
+In this tutorial, you successfully integrated Crossmint Smart Wallets to enable seamless blockchain experiences on Flow. You learned how to implement email-based authentication, automatically create wallets for users, display balances, execute token transfers, and show transaction history, all without a requirement that users understand complex blockchain concepts like seed phrases or gas fees.
 
 Now that you have completed the tutorial, you should be able to:
 

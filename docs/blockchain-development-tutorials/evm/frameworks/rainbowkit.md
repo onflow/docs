@@ -197,5 +197,5 @@ Now that you've completed this tutorial, you're ready to enhance your dApp with 
 
 [1]: https://www.rainbowkit.com/
 [2]: https://chromewebstore.google.com/detail/flow-wallet/hpclkefagolihohboafpheddmmgdffjm?hl=en
-[RainbowKit]: (https://www.rainbowkit.com/)
+[RainbowKit]: https://www.rainbowkit.com/
 [WalletConnect Cloud (now rebranded as reown)]: https://cloud.reown.com/sign-in)
