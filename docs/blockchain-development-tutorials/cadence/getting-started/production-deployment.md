@@ -18,11 +18,11 @@ keywords:
   - blockchain production
 ---
 
-# Production deployment
+# Production Deployment
 
 You've developed locally with the emulator, integrated external dependencies, built sophisticated transactions, implemented comprehensive testing, and created a frontend interface. Now it's time to take your application live and deploy it to Flow's public networks.
 
-This tutorial will guide you through deploying your Counter application to both testnet and mainnet, ensuring your contracts and frontend work seamlessly in production environments. You'll learn the essential practices for how to manage live blockchain applications, from security considerations to monitoring and maintenance.
+This tutorial will guide you through deployment of your Counter application to both testnet and mainnet, which ensures that your contracts and frontend work seamlessly in production environments. You'll learn the essential practices for how to manage live blockchain applications, from security considerations to monitoring and maintenance.
 
 ## What you'll learn
 
@@ -41,7 +41,7 @@ After you complete this tutorial, you'll be able to:
 - Counter contract and frontend app working locally.
 - Flow CLI installed and configured.
 
-## Deploy to Testnet
+## Deploy to testnet
 
 Testnet is Flow's public test network that mirrors mainnet functionality without using real FLOW tokens. It's the perfect environment to test your application in a live blockchain environment before you commit to mainnet deployment.
 
@@ -76,7 +76,7 @@ This creates a new account on testnet and adds it to your `flow.json` configurat
 
 To deploy contracts and send transactions on testnet, you need Flow tokens. Flow provides a faucet service to get free testnet tokens.
 
-1. Visit the [Flow Testnet Faucet](https://faucet.flow.com/).
+1. Visit the [Flow Testnet Faucet].
 2. Enter your testnet account address.
 3. Complete any required verification (captcha, and so on).
 4. Request tokens (you'll receive 1000 FLOW tokens).
@@ -223,9 +223,9 @@ export default function RootLayout({
 
 **Key changes:**
 
-- `accessNodeUrl`: Changed from localhost to Flow's testnet REST API.
-- `flowNetwork`: Changed from 'emulator' to 'testnet'. 
-- `discoveryWallet`: Updated to use testnet wallet discovery.
+- `accessNodeUrl`: changed from localhost to Flow's testnet REST API.
+- `flowNetwork`: changed from 'emulator' to 'testnet'. 
+- `discoveryWallet`: updated to use testnet wallet discovery.
 
 ### Test your testnet frontend
 
@@ -237,10 +237,10 @@ npm run dev
 
 Visit `http://localhost:3000` and you will see:
 
-1. **Counter value**: Displays the current count from your testnet contract.
-2. **Connect Wallet**: You can now connect with various Flow wallets (not just Dev Wallet).
-3. **Increment functionality**: Transactions are sent to the live testnet.
-4. **Real transaction costs**: Small amounts of testnet Flow are used for gas.
+1. **Counter value**: displays the current count from your testnet contract.
+2. **Connect Wallet**: connect with various Flow wallets (not just Dev Wallet).
+3. **Increment functionality**: transactions are sent to the live testnet.
+4. **Real transaction costs**: small amounts of testnet Flow are used for gas.
 
 **Important**: When you connect your wallet, make sure to:
 
@@ -407,3 +407,4 @@ npm run build
 [Coinbase]: https://www.coinbase.com/en-in/how-to-buy/flow
 [Moonpay]: https://www.moonpay.com/buy/flow
 [Binance]: https://www.binance.com/en-IN/how-to-buy/flow
+[Flow Testnet Faucet]: https://faucet.flow.com/

@@ -18,7 +18,7 @@ keywords:
 
 # Upgrading Cadence Contracts
 
-In Cadence, you can upgrade deployed contracts by adding new functionality while preserving existing state and maintaining the same contract address. Unlike other blockchain platforms that require complex proxy patterns or complete redeployment, Cadence allows you to seamlessly extend your contracts with new functions and events through multiple incremental upgrades.
+In Cadence, to upgrade deployed contracts, you can add new functionality while preserving the current state and maintain the same contract address. Unlike other blockchain platforms that require complex proxy patterns or complete redeployment, Cadence allows you to seamlessly extend your contracts with new functions and events through multiple incremental upgrades.
 
 This tutorial demonstrates how to upgrade a deployed contract through two scenarios: 
 
@@ -74,7 +74,7 @@ The [Cadence Contract Updatability documentation](https://cadence-lang.org/docs/
 - **Storage inconsistencies** from structural changes.
 - **Type confusion** from enum value changes.
 
-The validation system ensures that existing stored data remains valid and accessible after upgrades.
+The validation system ensures that current stored data remains valid and accessible after upgrades.
 
 ## Get started
 
@@ -278,13 +278,13 @@ Events:
 
 ---
 
-## Upgrade the contract - Part 1: Add event for even numbers
+## Upgrade the contract - Part 1: add event for even numbers
 
 Let's start with a realistic scenario: What if we've realized it's very important to our users that they know when the counter reaches an even number, but we forgot to add an event for that case? Let's add that functionality first.
 
 ### Modify the Counter contract - first upgrade
 
-Update `cadence/contracts/Counter.cdc` to add the new event and enhance the existing `increment()` function:
+Update `cadence/contracts/Counter.cdc` to add the new event and enhance the current `increment()` function:
 
 ```cadence
 access(all) contract Counter {
@@ -334,19 +334,19 @@ This first upgrade adds:
 
 1. **New event**: `CounterIncrementedToEven` to notify when incrementing results in an even number.
 2. **Enhanced existing function**: The `increment()` function now also emits the new event when appropriate.
-3. **No new fields**: We only use the existing `count` field to avoid validation errors.
+3. **No new fields**: We only use the current `count` field to avoid validation errors.
 
 :::info
 
-This demonstrates how you can add new behavior and modify existing function behavior, which enhances existing functionality. The original `CounterIncremented` event still works as before, ensuring backward compatibility.
+This demonstrates how you can add new behavior and modify current function behavior, which enhances current functionality. The original `CounterIncremented` event still works as before, which ensures backward compatibility.
 
 :::
 
 ---
 
-## Update the deployed contract - Part 1
+## Update the deployed contract - part 1
 
-Now let's update the deployed contract on testnet using the Flow CLI update command with our first upgrade.
+Now let's update the deployed contract on testnet with the Flow CLI update command with our first upgrade.
 
 ### Update the contract
 
@@ -356,7 +356,7 @@ Use the [Flow CLI update contract command] to upgrade your deployed contract:
 flow accounts update-contract ./cadence/contracts/Counter.cdc --signer testnet-account --network testnet
 ```
 
-You should see output similar to:
+You will see output similar to:
 
 ```bash
 Contract 'Counter' updated on account '0x9942a81bc6c3c5b7'
@@ -382,7 +382,7 @@ Contract: 'Counter'
 The contract successfully updated! Notice that:
 
 - The contract address remains the same (`0x9942a81bc6c3c5b7`).
-- The existing state (`count`) is preserved.
+- The current state (`count`) is preserved.
 - New functionality is available.
 
 :::
@@ -414,7 +414,7 @@ Run the script to check the current state:
 flow scripts execute cadence/scripts/CheckCounter.cdc --network testnet
 ```
 
-You will see output showing the counter state:
+You will see output that shows the counter state:
 
 ```bash
 Result: {"count": 1, "isEven": false}
@@ -427,7 +427,7 @@ Notice that:
 
 ---
 
-## Upgrade the contract - Part 2: add more functionality
+## Upgrade the contract - part 2: add more functionality
 
 Now that we've successfully added the even number event, let's add more functionality to our contract. This demonstrates how you can make multiple incremental upgrades to extend your contract's capabilities.
 
@@ -504,14 +504,14 @@ access(all) contract Counter {
 
 This second upgrade adds:
 
-1. **New functions**: `incrementByTwo()` and `decrementByTwo()` that modify the existing counter by two.
-2. **New events**: `CounterIncrementedByTwo` and `CounterDecrementedByTwo` for the new functionality
+1. **New functions**: `incrementByTwo()` and `decrementByTwo()` that modify the current counter by two.
+2. **New events**: `CounterIncrementedByTwo` and `CounterDecrementedByTwo` for the new functionality.
 3. **New view function**: `isEven()` to check if the current count is even.
 4. **Preserved existing functionality**: All previous functionality remains intact.
 
 ---
 
-## Update the deployed contract - Part 2
+## Update the deployed contract - part 2
 
 Now let's update the deployed contract with our second upgrade.
 
@@ -549,7 +549,7 @@ Contract: 'Counter'
 The contract successfully updated again! Notice that:
 
 - The contract address remains the same (`0x9942a81bc6c3c5b7`).
-- The existing state (`count`) is preserved.
+- The current state (`count`) is preserved.
 - All previous functionality is still available.
 - New functionality is now available.
 
@@ -689,7 +689,7 @@ This confirms that:
 
 ## Understand contract upgrades in Cadence
 
-Cadence provides a sophisticated contract upgrade system that ensures data consistency while allowing controlled modifications. The [Cadence Contract Updatability documentation] provides comprehensive details about the validation rules and restrictions.
+Cadence provides a sophisticated contract upgrade system that ensures data consistency and allows controlled modifications. The [Cadence Contract Updatability documentation] provides comprehensive details about the validation rules and restrictions.
 
 ### What you can upgrade
 
@@ -709,16 +709,16 @@ When you upgrade Cadence contracts, you can:
 
 There are important limitations to contract upgrades:
 
-- **Cannot add new fields** to existing structs, resources, or contracts.
-  - This would cause runtime crashes when loading existing data.
+- **Cannot add new fields** to current structs, resources, or contracts.
+  - This would cause runtime crashes when you load current data.
   - The initializer only runs once during deployment, not on updates.
-- **Cannot change the type** of existing state variables.
+- **Cannot change the type** of current state variables.
   - Would cause deserialization errors with stored data.
 - **Cannot remove existing state variables** (though they become inaccessible).
 - **Cannot change enum structures** (raw values must remain consistent).
 - **Cannot change the contract name** or address.
 
-### Validation Goals
+### Validation goals
 
 The contract update validation ensures that:
 
@@ -728,7 +728,7 @@ The contract update validation ensures that:
 
 :::warning
 
-The validation system focuses on preventing runtime inconsistencies with stored data. It does not ensure that programs which import the updated contract remain valid - you may need to update dependent code if you change function signatures or remove functions.
+The validation system focuses on how to prevent runtime inconsistencies with stored data. It does not ensure that programs which import the updated contract remain valid - you may need to update dependent code if you change function signatures or remove functions.
 
 :::
 
@@ -757,8 +757,8 @@ This pragma:
 
 Enums have special restrictions due to their raw value representation:
 
-- **Can only add enum cases at the end** of existing cases.
-- **Cannot reorder, rename, or remove** existing enum cases.
+- **Can only add enum cases at the end** of current cases.
+- **Cannot reorder, rename, or remove** current enum cases.
 - **Cannot change the raw type** of an enum.
 - **Cannot change enum case names** (would change stored values' meaning).
 
@@ -782,12 +782,12 @@ When you upgrade contracts:
 Cadence's contract upgrade model provides several advantages:
 
 - **No proxy patterns needed** - Unlike Ethereum, you don't need complex proxy contracts.
-- **State preservation** - Existing data and functionality remain intact.
+- **State preservation** - Current data and functionality remain intact.
 - **Address stability** - Contract addresses don't change during upgrades.
 - **Gas efficiency** - Upgrades are more efficient than redeployment.
 - **User experience** - Applications continue working without interruption.
 
-This approach allows you to evolve your contracts over time, You can add new features and capabilities and maintain backward compatibility and preserving user data.
+This approach allows you to evolve your contracts over time, You can add new features and capabilities and maintain backward compatibility and preserve user data.
 
 ## Conclusion
 
@@ -802,15 +802,15 @@ In this tutorial, you learned how to upgrade deployed Cadence contracts through 
 
 Now that you have completed the tutorial, you should be able to:
 
-- Deploy contracts to Flow testnet using Flow CLI.
+- Deploy contracts to Flow testnet with Flow CLI.
 - Perform incremental contract upgrades by adding new functions and events.
-- Update deployed contracts multiple times while preserving existing state.
+- Update deployed contracts multiple times and preserve the current state.
 - Test upgraded functionality with Cadence transactions and scripts.
 - Understand what can and cannot be changed during contract upgrades.
 - Apply realistic upgrade scenarios based on user feedback and requirements.
 - Plan and execute multiple contract upgrades over time.
 
-This incremental upgrade model makes Cadence contracts more flexible and maintainable than traditional smart contract platforms, allowing you to evolve your applications over time based on real user needs without complex migration patterns or breaking changes. The ability to make multiple upgrades while preserving state and maintaining the same contract address provides a powerful foundation for long-term application development.
+This incremental upgrade model makes Cadence contracts more flexible and maintainable than traditional smart contract platforms, which allows you to evolve your applications over time based on real user needs without complex migration patterns or breaking changes. The ability to make multiple upgrades while you maintain state and the same contract address provides a powerful foundation for long-term application development.
 
 <!-- Reference-style links -->
 

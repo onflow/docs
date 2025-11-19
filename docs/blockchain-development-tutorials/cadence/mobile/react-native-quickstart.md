@@ -27,22 +27,22 @@ keywords:
 
 :::info
 
-This page will walk you through a very bare bones project to get started building a web3 dapp using the Flow Client Library (FCL). If you want a clonable repo, Flow community members created quickstart templates for different JavaScript frameworks (for example, [Next.js](https://github.com/muttoni/fcl-nextjs-quickstart), [SvelteKit](https://github.com/muttoni/fcl-sveltekit-quickstart), [Nuxt](https://github.com/bluesign/nuxt3-fcl)). You can consult the complete list [here](https://github.com/ph0ph0/Get-The-Flow-Down#fcl).
+This page will walk you through a very bare bones project to get started building a web3 dapp with the Flow Client Library (FCL). If you want a clonable repo, Flow community members created quickstart templates for different JavaScript frameworks (for example, [Next.js], [SvelteKit], [Nuxt]. You can consult the complete list [here].
 
 :::
 
-FCL-JS is the easiest way to start building decentralized applications. Flow Client Library (FCL) wraps much of the logic you'd have to write yourself on other blockchains. Follow this quick start and you'll have a solid overview of how to build a shippable dapp on Flow.
+FCL-JS is the easiest way to start to build decentralized applications. Flow Client Library (FCL) wraps much of the logic you'd have to write yourself on other blockchains. Follow this quick start and you'll have a solid overview of how to build a shippable dapp on Flow.
 
-We're going to make an assumption that you know or understand React; however, the concepts should be easy to understand and transfer to another framework. While this tutorial uses Cadence (Flow's smart contract language), you do not need to know it. Instead, we recommend that you later [learn the Cadence language](https://cadence-lang.org/docs/language/) after you've gotten the core FCL concepts down.
+We're going to make an assumption that you know or understand React; however, the concepts should be easy to understand and transfer to another framework. While this tutorial uses Cadence (Flow's smart contract language), you do not need to know it. Instead, we recommend that you later [learn the Cadence language] after you've gotten the core FCL concepts down.
 
-In this tutorial, we are going to interact with an current smart contract on Flow's testnet known as the [Profile Contract](https://testnet.flowdiver.io/contract/A.ba1132bc08f82fe2.Profile). With this contract, we will create a new profile and edit the profile information, both via a wallet. To do this, the FCL concepts we'll cover are:
+In this tutorial, we are going to interact with an current smart contract on Flow's testnet known as the [Profile Contract]. With this contract, we will create a new profile and edit the profile information, both via a wallet. To do this, the FCL concepts we'll cover are:
 
-- [Installation](#installation)
-- [Configuration](#configuration)
-- [Authentication](#authentication)
-- [Querying the Blockchain](#querying-the-blockchain)
-- [Initializing an Account](#initializing-an-account)
-- [Mutating the Blockchain](#mutating-the-blockchain)
+- [Installation]
+- [Configuration]
+- [Authentication]
+- [Query the Blockchain]
+- [Initialize an Account]
+- [Mutate the Blockchain]
 
 If you ever have any questions, we're always happy to help on [Discord](https://discord.gg/flowblockchain). There are also links at the end of this article for diving deeper into how to build on Flow.
 
@@ -97,11 +97,11 @@ config({
 - The `accessNode.api` key specifies the address of a Flow access node. Flow provides these, but in the future, third parties ay provide access to Flow through their own access nodes.
 - `discovery.wallet` and `discovery.authn.endpoint` are addresses that point to a service that lists FCL compatible wallets. Flow's FCL Discovery service is a service that FCL wallet providers can be added to, and be made 'discoverable' to any application that uses the `discovery.wallet` and `discovery.authn.endpoint`.
 
-> Learn more about [configuring Discovery](../../../build/tools/clients/fcl-js/discovery.md) or [setting configuration values](../../../build/tools/clients/fcl-js/packages-docs/fcl/index.md#setting-configuration-values).
+> Learn more about [how to configure Discovery] or [how to set configuration values].
 
-> If you are running a Wallet Discovery locally and want to use it in the React Native app, change `https://fcl-discovery.onflow.org/` to `http://<LOCAL_IP_ADDRESS>:<PORT>/`
+> If you run a Wallet Discovery locally and want to use it in the React Native app, change `https://fcl-discovery.onflow.org/` to `http://<LOCAL_IP_ADDRESS>:<PORT>/`
 > For Example:
-> using local [Wallet Discovery](../../../build/tools/clients/fcl-js/discovery.md) and local [Dev Wallet](../../../build/tools/flow-dev-wallet/index.md):
+> use local [Wallet Discovery] and local [Dev Wallet]:
 >
 > ```javascript ./flow/config.js
 > import { config } from "@onflow/fcl";
@@ -142,13 +142,13 @@ const styles = StyleSheet.create({
 });
 ```
 
-Now we're ready to start talking to Flow!
+Now we're ready to talk to Flow!
 
 ## Authentication
 
-To authenticate a user, you'll need to render a `ServiceDiscovery` component provided by `fcl-react-native`. Alternatively, you can build your own component using `useServiceDiscovery`.
+To authenticate a user, you'll need to render a `ServiceDiscovery` component provided by `fcl-react-native`. Alternatively, you can build your own component with `useServiceDiscovery`.
 
-Unauthenticate is as simple as calling `fcl.unauthenticate()`. After you're authenticated, FCL sets an object called `fcl.currentUser` which exposes methods to watch for changes in user data, signing transactions, and more.
+To unauthenticate, you can simply call `fcl.unauthenticate()`. After you're authenticated, FCL sets an object called `fcl.currentUser` which exposes methods to watch for changes in user data, signing transactions, and more.
 
 Let's add in a few components and buttons for sign up, login, and to subscribe to changes on the `currentUser`. When the user updates (which happens after authentication), we'll set the user state in our component to reflect this. To demonstrate user authenticated sessions, we'll conditionally render a component based on if the user is or is not logged in.
 
@@ -200,11 +200,11 @@ const styles = StyleSheet.create({
 });
 ```
 
-You can now log in or sign up a user and unauthenticate them. After your users log in or sign up, they'll see a popup where they can choose between wallet providers. Let's select the [Blocto wallet](https://blocto.portto.io/) for this example to create an account. After you authenticate, you'll see the component change and the user's wallet address appear if you've completed this properly.
+You can now log in or sign up a user and unauthenticate them. After your users log in or sign up, they'll see a popup where they can choose between wallet providers. Let's select the [Blocto wallet] for this example to create an account. After you authenticate, you'll see the component change and the user's wallet address appear if you've completed this properly.
 
-## Querying the blockchain
+## Query the blockchain
 
-One of the main things you'll often need to do when building a dApp is query the Flow blockchain and the smart contracts deployed on it for data. Since smart contracts will live on both Testnet and Mainnet, let's put the account address where the smart contract lives into the configuration (remember, we recommend that you change this later to use environment variables). Let's also give it a key of `Profile` and prefix it with `0x` so that the final key is `0xProfile`. The prefix is important because it tells FCL to pull the corresponding addresses needed from the configuration value.
+One of the main things you'll often need to do when you build a dApp is query the Flow blockchain and the smart contracts deployed on it for data. Since smart contracts will live on both testnet and mainnet, let's put the account address where the smart contract lives into the configuration (remember, we recommend that you change this later to use environment variables). Let's also give it a key of `Profile` and prefix it with `0x` so that the final key is `0xProfile`. The prefix is important because it tells FCL to pull the corresponding addresses needed from the configuration value.
 
 > **Replace file:** `./flow/config.js`
 
@@ -220,7 +220,7 @@ config({
 });
 ```
 
-If you want to see the on chain smart contract that we'll speak with next, you can view the [Profile Contract](https://testnet.flowdiver.io/contract/A.ba1132bc08f82fe2.Profile) source code but again, for this tutorial, it's not necessary you understand it.
+If you want to see the on chain smart contract that we'll speak with next, you can view the [Profile Contract] source code but again, for this tutorial, it's not necessary you understand it.
 
 **First, lets query the contract to see what the user's profile name is.**
 
@@ -319,21 +319,21 @@ await fcl.query({
 });
 ```
 
-Inside the query, you'll see we set two things: `cadence` and `args`. Cadence is Flow's smart contract language we mentioned. For this tutorial, when you look at it, you just need to notice that it's importing the `Profile` contract from the account we named `0xProfile` earlier in our config file, then also taking an account address, and reading it. That's it until you're ready to [learn more Cadence](https://cadence-lang.org/docs).
+Inside the query, you'll see we set two things: `cadence` and `args`. Cadence is Flow's smart contract language we mentioned. For this tutorial, when you look at it, you just need to notice that it imports the `Profile` contract from the account we named `0xProfile` earlier in our config file, then also takies an account address, and reads it. That's it until you're ready to [learn more Cadence].
 
-In the `args` section, we are simply passing it our user's account address from the user we set in state after authentication and giving it a type of `Address`. For more possible types, [see this reference](../../../build/tools/clients/fcl-js/packages-docs/types/index.md).
+In the `args` section, we simply pass it our user's account address from the user we set in state after authentication and give it a type of `Address`. For more possible types, [see this reference].
 
 Go ahead and click "Send Query". You will see "No Profile." That's because we haven't initialized the account yet.
 
 ## Initialize an account
 
-For the Profile contract to store a Profile in a user's account, it initializes what is called a "resource." A resource is an ownable piece of data and functionality that can live in the user's account storage. This paradigm is known is as "resource-oriented-programming", a principle that is core to Cadence and differentiates its ownership model from other smart contract languages, [read more here](https://cadence-lang.org/docs/#intuiting-ownership-with-resources). Cadence makes it so that resources can only exist in one place at any time, they must be deliberately created, cannot be copied, and if desired, must be deliberately destroyed.
+For the Profile contract to store a Profile in a user's account, it initializes what is called a "resource." A resource is an ownable piece of data and functionality that can live in the user's account storage. This paradigm is known is as "resource-oriented-programming", a principle that is core to Cadence and differentiates its ownership model from other smart contract languages, [read more here]. Cadence makes it so that resources can only exist in one place at any time, they must be deliberately created, cannot be copied, and if desired, must be deliberately destroyed.
 
-> There's a lot more to resources in Cadence than we'll cover in this guide, so if you'd like to know more, check out [this Cadence intro](https://cadence-lang.org/docs).
+> There's a lot more to resources in Cadence than we'll cover in this guide, so if you'd like to know more, check out [this Cadence intro].
 
-To do this resource initialization on an account, we're going to add another function called `initAccount`. Inside of that function, we're going to add some Cadence code which says, _"Hey, does this account have a profile? If it doesn't, let's add one."_ We do that with something called a "transaction." Transactions occur when you want to change the state of the blockchain, in this case, some data in a resource, in a specific account. And there is a cost (transaction fee) in order to do that; unlike a query.
+To do this resource initialization on an account, we'll add another function called `initAccount`. Inside of that function, we'll add some Cadence code which says, _"Hey, does this account have a profile? If it doesn't, let's add one."_ We do that with something called a "transaction." Transactions occur when you want to change the state of the blockchain, in this case, some data in a resource, in a specific account. And there is a cost (transaction fee) in order to do that; unlike a query.
 
-That's where we jump back into FCL code. Instead of `query`, we use `mutate` for transactions. And because there is a cost, we need to add a few fields that tell Flow who is proposing the transaction, who is authorizing it, who is paying for it, and how much they're willing to pay for it. Those fields — not surprisingly — are called: `proposer`, `authorizer`, `payer`, and `limit`. For more information on these signatory roles, check out [this doc](../../../build/cadence/basics/transactions.md#signer-roles).
+That's where we jump back into FCL code. Instead of `query`, we use `mutate` for transactions. And because there is a cost, we need to add a few fields that tell Flow who proposes the transaction, who authorizes it, who pays for it, and how much they want to pay for it. Those fields — not surprisingly — are called: `proposer`, `authorizer`, `payer`, and `limit`. For more information on these signatory roles, check out this [signer roles] doc. 
 
 Let's take a look at what our account initialization function looks like:
 
@@ -369,11 +369,11 @@ const initAccount = async () => {
 };
 ```
 
-You can see the new fields we talked about. You'll also notice `fcl.authz`. That's shorthand for "use the current user to authorize this transaction", (you could also write it as `fcl.currentUser.authorization`). If you want to learn more about transactions and signing transactions, you can [view the docs here](../../../build/cadence/basics/transactions.md). For this example, we'll keep it simple with the user being each of these roles.
+You can see the new fields we talked about. You'll also notice `fcl.authz`. That's shorthand for "use the current user to authorize this transaction", (you could also write it as `fcl.currentUser.authorization`). If you want to learn more about transactions and signing transactions, you can [view the docs here]. For this example, we'll keep it simple with the user as each of these roles.
 
-You'll also notice we are awaiting a response with our transaction data by using the syntax `fcl.tx(transactionId).onceExecuted()`. This returns when an execution node completes the transaction ("soft-finality"). If you want to wait until the transaction is sealed ("hard-finality"), you can use `onceSealed()` instead.
+You'll also notice that we await a response with our transaction data with the syntax `fcl.tx(transactionId).onceExecuted()`. This returns when an execution node completes the transaction ("soft-finality"). If you want to wait until the transaction is sealed ("hard-finality"), you can use `onceSealed()` instead.
 
-To learn more about the transaction lifecycle, check out [this doc](../../../build/cadence/basics/transactions.md#transaction-lifecycle).
+To learn more about the transaction lifecycle, check out [this doc].
 
 Now your `index.js` file looks like this (we also added a button to call the `initAccount` function in the `AuthedState`):
 
@@ -475,13 +475,13 @@ const styles = StyleSheet.create({
 });
 ```
 
-Press "Init Account," and the wallet asks you to approve a transaction. After you approve it, you will see a transaction response appear in your console (make sure to have that open). It may take a few moments. With the transaction result printed, you can use the `transactionId` to look up the details of the transaction using a [block explorer](https://testnet.flowscan.io/).
+Press "Init Account," and the wallet asks you to approve a transaction. After you approve it, you will see a transaction response appear in your console (make sure to have that open). It may take a few moments. With the transaction result printed, you can use the `transactionId` to look up the details of the transaction with a [block explorer].
 
-## Mutating the blockchain
+## Mutate the blockchain
 
 Now that we have the profile initialized, we are going to want to mutate it some more. In this example, we'll use the same smart contract provided to change the profile name.
 
-To do that, we are going to write another transaction that adds some Cadence code which lets us set the name. Everything else looks the same in the following code except for one thing: we'll subscribe to the status changes instead of waiting for it to be sealed after the mutate function returns.
+To do that, we will write another transaction that adds some Cadence code which lets us set the name. Everything else looks the same in the following code except for one thing: we'll subscribe to the status changes instead of waiting for it to be sealed after the mutate function returns.
 
 It looks like this:
 
@@ -646,24 +646,66 @@ const styles = StyleSheet.create({
 });
 ```
 
-Now if you click "Execute Transaction," you'll see the statuses update next to "Transaction Status." When you see "4" that means it's sealed! Status code meanings [can be found here](../../../build/tools/clients/fcl-js/packages-docs/types/index.md).
-If you query the account profile again, "Profile Name:" should now display "Flow Developer".
+Now if you click "Execute Transaction," you'll see the statuses update next to "Transaction Status." When you see "4" that means it's sealed! Status code meanings [can be found here].
 
-That's it! You now have a shippable Flow dapp that can auth, query, init accounts, and mutate the chain. This is just the beginning. There is so much more to know. We have a lot more resources to help you build. To dive deeper, here are a few good places for taking the next steps:
+If you query the account profile again, "Profile Name:" will now display "Flow Developer".
+
+That's it! You now have a shippable Flow dapp that can auth, query, init accounts, and mutate the chain. This is just the beginning. There is so much more to know. We have a lot more resources to help you build. To dive deeper, here are a few good places to take the next steps:
 
 **Cadence**
 
-- [Cadence Playground Tutorials](https://cadence-lang.org/docs/tutorial/first-steps)
-- [Cadence Hello World Video](https://www.youtube.com/watch?v=pRz7EzrWchs)
-- [Why Cadence?](https://www.flow.com/post/flow-blockchain-cadence-programming-language-resources-assets)
+- [Cadence Playground Tutorials]
+- [Cadence Hello World Video]
+- [Why Cadence?]
 
 **Full Stack NFT Marketplace Example**
 
-- [Beginner Example: CryptoDappy](https://github.com/bebner/crypto-dappy)
+- [Beginner Example: CryptoDappy]
 
 **More FCL**
 
-- [More on Scripts](../../../build/tools/clients/fcl-js/scripts.md)
-- [More on Transactions](../../../build/tools/clients/fcl-js/transactions.md)
-- [User Signatures](../../../build/tools/clients/fcl-js/user-signatures.md)
-- [Proving Account Ownership](../../../build/tools/clients/fcl-js/proving-authentication.mdx)
+- [More on Scripts]
+- [More on Transactions]
+- [User Signatures]
+- [Proving Account Ownership]
+
+
+<!-- Reference-style links, will not render on page -->
+
+[Next.js]: https://github.com/muttoni/fcl-nextjs-quickstart
+[SvelteKit]: https://github.com/muttoni/fcl-sveltekit-quickstart 
+[Nuxt]: https://github.com/bluesign/nuxt3-fcl. 
+[here]: https://github.com/ph0ph0/Get-The-Flow-Down#fcl
+[Cadence Playground Tutorials]: https://cadence-lang.org/docs/tutorial/first-steps
+[Cadence Hello World Video]: https://www.youtube.com/watch?v=pRz7EzrWchs
+[Why Cadence?]: https://www.flow.com/post/flow-blockchain-cadence-programming-language-resources-assets
+[Beginner Example: CryptoDappy]: https://github.com/bebner/crypto-dappy
+[More on Scripts]: ../../../build/tools/clients/fcl-js/scripts.md
+[More on Transactions]: ../../../build/tools/clients/fcl-js/transactions.md
+[User Signatures]: ../../../build/tools/clients/fcl-js/user-signatures.md
+[Proving Account Ownership]: ../../../build/tools/clients/fcl-js/proving-authentication.mdx
+[can be found here]: ../../../build/tools/clients/fcl-js/packages-docs/types/index.md
+[block explorer]: https://testnet.flowscan.io/
+[this doc]: ../../../build/cadence/basics/transactions.md#transaction-lifecycle
+[view the docs here]: ../../../build/cadence/basics/transactions.md
+[signer roles]: ../../../build/cadence/basics/transactions.md#signer-roles
+[this Cadence intro]: https://cadence-lang.org/docs
+[read more here]: https://cadence-lang.org/docs/#intuiting-ownership-with-resources
+[learn more Cadence]: https://cadence-lang.org/docs
+[see this reference]: ../../../build/tools/clients/fcl-js/packages-docs/types/index.md
+[Profile Contract]: https://testnet.flowdiver.io/contract/A.ba1132bc08f82fe2.Profile
+[Blocto wallet]: https://blocto.portto.io/
+[Wallet Discovery]: ../../../build/tools/clients/fcl-js/discovery.md
+[Dev Wallet]: ../../../build/tools/flow-dev-wallet/index.md
+[how to configure Discovery]: ../../../build/tools/clients/fcl-js/discovery.md
+[how to set configuration values]: ../../../build/tools/clients/fcl-js/packages-docs/fcl/index.md#setting-configuration-values
+[learn the Cadence language]: https://cadence-lang.org/docs/language/
+[Profile Contract]: https://testnet.flowdiver.io/contract/A.ba1132bc08f82fe2.Profile 
+[Installation]: #installation
+[Configuration]: #configuration
+[Authentication]: #authentication
+[Query the Blockchain]: #query-the-blockchain
+[Initialize an Account]: #initialize-an-account
+[Mutate the Blockchain]: #mutate-the-blockchain
+[Discord]: https://discord.gg/flowblockchain 
+[create-expo-app]: https://docs.expo.dev/get-started/create-a-project/
