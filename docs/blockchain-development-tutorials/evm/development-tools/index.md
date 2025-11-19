@@ -16,9 +16,9 @@ keywords:
 
 # Flow EVM Development Tools
 
-Professional smart contract development requires robust tooling to write, test, deploy, and manage Solidity contracts. This section covers the most popular and powerful development tools in the Ethereum ecosystem, adapted for Flow EVM development. From command-line frameworks to browser-based IDEs, these tools provide everything you need for comprehensive smart contract development workflows.
+Professional smart contract development requires robust tools to write, test, deploy, and manage Solidity contracts. This section covers the most popular and powerful development tools in the Ethereum ecosystem, adapted for Flow EVM development. From command-line frameworks to browser-based IDEs, these tools provide everything you need for comprehensive smart contract development workflows.
 
-Each tool offers unique strengths: Foundry excels at testing and gas optimization, Hardhat provides extensive plugin ecosystems and TypeScript support, while Remix allows rapid prototyping without local setup. These tutorials demonstrate how to configure and use each tool effectively with Flow EVM, which allows you to choose the right development environment for your project needs.
+Each tool offers unique strengths: Foundry excels at testing and gas optimization, Hardhat provides extensive plugin ecosystems and TypeScript support, while Remix allows you to rapidly prototype without local setup. These tutorials demonstrate how to configure and use each tool effectively with Flow EVM, which allows you to choose the right development environment for your project needs.
 
 ## [Foundry]
 

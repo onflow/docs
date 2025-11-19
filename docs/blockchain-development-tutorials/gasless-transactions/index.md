@@ -14,18 +14,18 @@ keywords:
 
 # Gasless Transactions on Flow
 
-Flow is one of the easiest platforms for developers to onboard new users. Currently, the Flow Wallet automatically sponsors transactions on **both testnet and mainnet**. This allows developers to build seamless Web3 applications without requiring users to manage gas tokens or pay transaction fees.
+Flow is one of the easiest platforms for developers to onboard new users. Currently, the Flow Wallet automatically sponsors transactions on **both testnet and mainnet**. This allows developers to build seamless Web3 applications without the need for users to manage gas tokens or pay transaction fees.
 
 In addition to native sponsorship, Flow also supports multiple methods for gas sponsorship that you can tailor to your application’s needs. You can learn about these approaches in more detail [here].
 
 The [Flow Wallet] currently sponsors all transactions - on testnet and mainnet! This is possible because [sponsored transactions] are a native feature of the Flow Protocol. Additional methods for gas sponsorship are available and are described here.
 
-## What You'll Learn
+## What you'll learn
 
 In this tutorial series, you’ll discover how to:
 
 - Configure and deploy a **gas free EVM endpoint** for your backend.
-- Allow **gasless transactions** so that users can interact with your app without ever paying gas fees.
+- Allow **gasless transactions** so that users can interact with your app and never gas fees.
 - Use Flow’s EVM Gateway service account to automatically cover gas fees for transactions, which ensures a smooth experience for your users.
 
 

@@ -43,9 +43,9 @@ $ cd my-rainbowkit-app
 $ npm run dev
 ```
 
-The [RainbowKit](https://www.rainbowkit.com/) components will be available throughout your application via the provided wrapper components.
+The [RainbowKit] components are available throughout your application via the provided wrapper components.
 
-### Creating the Flow Wallet Connector
+### Create the Flow Wallet connector
 
 The first major step is to define the Flow Wallet connector. Create a new file called `flowWallet.ts` in `src/flowWallet.ts` to house the wallet configuration:
 
@@ -163,19 +163,18 @@ export const config = createConfig({
 
 WalletConnect Project ID
 
-Every dApp that relies on WalletConnect now needs to obtain a projectId from [WalletConnect Cloud (now rebranded as reown)](https://cloud.reown.com/sign-in). This is absolutely free and only takes a few minutes.
+Every dApp that relies on WalletConnect now needs to obtain a projectId from [WalletConnect Cloud (now rebranded as reown)]. This is absolutely free and only takes a few minutes.
 
 To get a Project ID, sign up at WalletConnect Cloud, create a new project, and copy the generated ID into the `projectId` variable in the `wagmi.ts` file.
 
 :::
 
-## Testing Your Integration
+## Test Your Integration
 
 After you implement the Flow Wallet connector and configure Wagmi, follow these steps to verify that the integration works correctly in your dApp:
 
 1. **Click "Connect Wallet"** – Open your application and click "Connect Wallet."
-2. **Check for Flow Wallet** – Ensure Flow Wallet appears as an option in the RainbowKit wallet selection modal.
-	- If you haven't installed the browser extension and set up your wallet yet, you can find install it via the [Chrome Web Store][2].
+2. **Check for Flow Wallet** – Ensure Flow Wallet appears as an option in the RainbowKit wallet selection modal. If you haven't installed the browser extension and set up your wallet yet, you can find install it via the [Chrome Web Store][2].
 3. **Connect the Wallet** – Click on Flow Wallet in the selection modal. If you use the browser extension, open it and press "Connect."
 
 ![Rainbowkit dAPP UI](./imgs/rainbowkit-1.png)
@@ -186,7 +185,7 @@ After you implement the Flow Wallet connector and configure Wagmi, follow these 
 
 ## Conclusion
 
-In this tutorial, you learned how to integrate Flow Wallet with [RainbowKit](https://www.rainbowkit.com/) and create a seamless wallet connection experience for your users. You should now be able to:
+In this tutorial, you learned how to integrate Flow Wallet with [RainbowKit] and create a seamless wallet connection experience for your users. You should now be able to:
 - Create a custom Flow Wallet connector compatible with RainbowKit's interface.
 - Configure your Wagmi setup to support Flow Wallet connections.
 - Implement a complete wallet connection flow for Flow blockchain users.
@@ -194,5 +193,9 @@ In this tutorial, you learned how to integrate Flow Wallet with [RainbowKit](htt
 
 Now that you've completed this tutorial, you're ready to enhance your dApp with additional Flow blockchain features such as token transfers, NFT minting, and smart contract interactions.
 
+<!-- Reference-style links, will not render on page. -->
+
 [1]: https://www.rainbowkit.com/
 [2]: https://chromewebstore.google.com/detail/flow-wallet/hpclkefagolihohboafpheddmmgdffjm?hl=en
+[RainbowKit]: (https://www.rainbowkit.com/)
+[WalletConnect Cloud (now rebranded as reown)]: https://cloud.reown.com/sign-in)

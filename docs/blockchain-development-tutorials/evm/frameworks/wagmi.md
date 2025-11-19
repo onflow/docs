@@ -11,7 +11,7 @@ Make sure to use `viem` version `2.9.6` or greater. This version contains flow E
 
 # Viem & Wagmi
 
-Flow networks have been added to viem chain definitions [viem networks](https://github.com/wevm/viem/tree/main/src/chains/definitions). This allows for convenient flow network configuration when you use viem and wagmi.
+Flow networks have been added to viem chain definitions [viem networks]. This allows for convenient flow network configuration when you use viem and wagmi.
 
 ## Viem Flow Config
 
@@ -43,7 +43,7 @@ This tutorial will guide you through how to create a simple web application, con
 
 ## Step 1: Set up the Next.js project
 
-This tutorial will follow [Wagmi getting-started manual tutorial](https://wagmi.sh/react/getting-started).
+This tutorial will follow the [Wagmi getting-started manual tutorial].
 
 First, let's create a Wagmi project named `flow-evm-wagmi`. We will use npm but you are welcome to use yarn or bun.
 
@@ -64,7 +64,8 @@ npm install
 
 ## Step 2: Configure Wagmi and connect the Wallet
 
-Make sure you have Metamask installed and Flow network configured. [Metamask and Flow blockchain].
+Make sure you have Metamask installed and Flow network configured. For more information, see [Metamask and Flow blockchain].
+
 Wagmi needs to know what networks to be aware of. Let's configure to use Flow Testnet and update the `config.ts` file with the following:
 
 ```javascript
@@ -136,7 +137,7 @@ export default App;
 
 ![Connect Metamask](./imgs/Connect-Metamask.gif)
 
-This step relies on an already deployed HelloWorld contract. See [Using Remix](../development-tools/remix.md) to deploy a smart contract on flow evm blockchain. Create or edit the simple `page.tsx` file in the app directory to have better styles, that's beyond this tutorial. We will modify `page.txs` to add a new `HelloWorld.tsx`. Replace `YOUR_CONTRACT_ADDRESS` with your deployed address.
+This step relies on an already deployed HelloWorld contract. See [Using Remix] to deploy a smart contract on flow evm blockchain. Create or edit the simple `page.tsx` file in the app directory to have better styles, that's beyond this tutorial. We will modify `page.txs` to add a new `HelloWorld.tsx`. Replace `YOUR_CONTRACT_ADDRESS` with your deployed address.
 
 ## Step 3: Create the interface for HelloWorld contract
 
@@ -195,7 +196,7 @@ const HelloWorld = () => {
 export default HelloWorld;
 ```
 
-Reminder: Replace YOUR_CONTRACT_ADDRESS with the actual address of your deployed HelloWorld contract.
+Replace YOUR_CONTRACT_ADDRESS with the actual address of your deployed HelloWorld contract.
 
 Also notice you need the HelloWorld contract ABI, save this to a new file called `HelloWorld.json` in the app directory.
 
@@ -250,7 +251,7 @@ Also notice you need the HelloWorld contract ABI, save this to a new file called
 }
 ```
 
-## Step 4: Integrate the HelloWorld Component
+## Step 4: Integrate the HelloWorld component
 
 Finally, import and use the HelloWorld component in your `pages.tsx`, throw it at the bottom of the render section.
 
@@ -282,10 +283,14 @@ import HelloWorld from './helloWorld'
 
 Now, you have a functional App that can connect to Metamask, display the current greeting from the "HelloWorld" smart contract, and update the greeting.
 
-To test it, update the greeting, sign a transaction in your Metamask, wait a minute, then refresh the website. Handling transactions are outside of this tutorial. We'll leave that as a future task. [Checkout Wagmi documentation](https://wagmi.sh/react/getting-started)
+To test it, update the greeting, sign a transaction in your Metamask, wait a minute, then refresh the website. Handling transactions are outside of this tutorial. We'll leave that as a future task. [Checkout Wagmi documentation]
 
 ![Update HelloWorld Greeting](./imgs/Update-HelloWorld-Greeting.gif)
 
 <!-- Reference-style links, will not render on page. -->
 
+[viem networks]: https://github.com/wevm/viem/tree/main/src/chains/definitions
+[Wagmi getting-started manual tutorial]: https://wagmi.sh/react/getting-started
 [Metamask and Flow blockchain]: ../../../build/evm/using.mdx
+[Checkout Wagmi documentation]: https://wagmi.sh/react/getting-started
+[Using Remix]: ../development-tools/remix.md

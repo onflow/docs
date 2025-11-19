@@ -23,7 +23,7 @@ keywords:
 
 # Add Flow Cadence to your wagmi app
 
-This tutorial demonstrates how to enhance your existing wagmi/RainbowKit application with Flow Cadence capabilities. When you integrate the Flow Client Library (FCL) with your EVM stack, you can unlock powerful features like batch transactions with a single signature.
+This tutorial demonstrates how to enhance your current wagmi/RainbowKit application with Flow Cadence capabilities. When you integrate the Flow Client Library (FCL) with your EVM stack, you can unlock powerful features like batch transactions with a single signature.
 
 ## Video overview
 
@@ -42,7 +42,7 @@ This tutorial demonstrates how to enhance your existing wagmi/RainbowKit applica
 
 After you complete this guide, you'll be able to:
 
-- Add FCL to your existing wagmi/RainbowKit application.
+- Add FCL to your current wagmi/RainbowKit application.
 - Configure FCL to work alongside your EVM wallet connections.
 - Implement batch transactions that execute multiple EVM calls in a single Cadence transaction.
 - Display both Cadence and EVM addresses in your application.
@@ -491,11 +491,13 @@ This approach gives you several advantages:
 
 ## Conclusion
 
-You've successfully integrated Flow Cadence with your wagmi/rainbowkit application! This integration allows you to leverage the power of Cadence while maintaining the familiar EVM development experience.
+You've successfully integrated Flow Cadence with your wagmi/rainbowkit application! This integration allows you to leverage the power of Cadence and maintain the familiar EVM development experience.
 
-## Reference Implementation
+## Reference implementation
 
 For a complete reference implementation, check out the [FCL + RainbowKit + wagmi Integration Demo] repository.
+
+<!-- Relative links, will not render on page -->
 
 [Cadence]: https://cadence-lang.org/docs
 [Next.js]: https://nextjs.org/docs/app/getting-started/installation

@@ -26,7 +26,7 @@ keywords:
 
 :::info
 
-The [FlowtoBooth] tutorial series teaches you how to build a **fun benchmark app** and provides inspiration for the greater scope of possibilities building on Flow thanks to gas being so much less expensive.
+The [FlowtoBooth] tutorial series teaches you how to build a **fun benchmark app** and provides inspiration for the greater scope of possibilities to build on Flow since gas is so much less expensive.
 
 It is **not a production best-practice**. While everything in these tutorials works, you'll run into the following problems at production scale:
 
@@ -38,13 +38,13 @@ It is **not a production best-practice**. While everything in these tutorials wo
 
 If you search for resources on how to store images of any significant size onchain, you'll be told it's either prohibitively expensive or even completely impossible. The reason for this is two-fold. First, the size limit for data on transactions is about 40kb. Second, to save 40kb takes almost all of the 30 million gas limit on most blockchains.
 
-The former constraint is immutable (though many chains are slowly increasing this limit), which limits the app to images about 256\*256 pixels in size. The latter heavily depends on which chain you choose.
+The former constraint is immutable (though many chains have started to slowly increase this limit), which limits the app to images about 256\*256 pixels in size. The latter heavily depends on which chain you choose.
 
-At current gas prices on most chains, to use all 30 million gas in a block costs **several dollars** - or potentially **thousands** on ETH mainnet. At current prices on Flow, spending 30 million gas costs **less than a penny**, usually one or two tenths of a cent.
+At current gas prices on most chains, to use all 30 million gas in a block costs **several dollars** - or potentially **thousands** on ETH mainnet. At current prices on Flow, to spend 30 million gas costs **less than a penny**, usually one or two tenths of a cent.
 
 Much more computation is available at prices you or your users will want to pay for regular interactions. This includes, but isn't limited to:
 
-- Airdropping hundreds of NFTs with one transaction, for pennies.
+- Airdrop hundreds of NFTs with one transaction, for pennies.
 - Generation of large mazes.
 - Generation of large amounts of random numbers (with free [native VRF]).
 - Extensive string manipulation onchain.
@@ -247,7 +247,7 @@ contract ImageGalleryFactory {
 
 Some app designs may need multiple galleries for each user. For example, you might want to give users the ability to collect images in separate galleries for separate topics, dates, or events, similar to how many photo apps work on smartphones.
 
-To facilitate this feature, update your contract to keep track of which galleries have been created by which users. You'll end up with:
+To facilitate this feature, update your contract to keep track of which users created which galleries . You'll end up with:
 
 ```solidity
 // SPDX-License-Identifier: UNLICENSED
@@ -355,7 +355,7 @@ Next, install [rainbowkit], [wagmi], and their related dependencies:
 npm install @rainbow-me/rainbowkit wagmi viem@2.x @tanstack/react-query
 ```
 
-### Provider Setup
+### Provider setup
 
 Add a file called `providers` inside the `app` folder. In it, add your config and providers for [wagmi] and [rainbowkit]. You'll need to [add the Flow Wallet] as a custom wallet. It's not included by default because it has special features that aren't compatible with other blockchains.
 
@@ -939,7 +939,7 @@ The last thing to do for this initial implementation is to add functionality so 
 
 For now, we'll just generate an error if the file is too big, but later on we can do that for the user as well.
 
-Add the `ImageUploader` component. This needs to handle uploading the image and displaying any errors. We'll keep the state for the image itself in `Content` so that it's accessible to other components:
+Add the `ImageUploader` component. This needs to be able to upload the image and display any errors. We'll keep the state for the image itself in `Content` so that it's accessible to other components:
 
 ```tsx
 import React, { useState } from 'react';

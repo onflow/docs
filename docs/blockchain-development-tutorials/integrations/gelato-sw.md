@@ -35,7 +35,7 @@ This tutorial will guide you through how to set up Gelato Smart Wallet to activa
 
 :::info
 
-This tutorial focuses on **EIP-7702** implementation with Gelato Smart Wallet on Flow EVM. EIP-7702 provides a streamlined experience for users. It maintains the same address as their EOA and adds smart wallet capabilities, which activates enhanced features like gasless transactions and improved user experience.
+This tutorial focuses on **EIP-7702** implementation with Gelato Smart Wallet on Flow EVM. EIP-7702 provides a streamlined experience for users. It maintains the same address as their EOA and adds Smart Wallet capabilities, which activates enhanced features like gasless transactions and improved user experience.
 
 :::
 
@@ -53,11 +53,11 @@ After you complete this guide, you'll be able to:
 
 You need to set up the following in the Gelato App to create a Gelato Sponsor API Key:
 
-### Step 1. create your Gelato account
+### Step 1. Create your Gelato account
 
 Sign up on the [Gelato App] to establish an account. This account is the foundation to set up relay tasks and manage gas sponsorships.
 
-### Step 2. deposit funds into 1Balance
+### Step 2. Deposit funds into 1Balance
 
 To use Gelato for sponsored transactions, you need to deposit funds into 1Balance as your target environment requires:
 
@@ -79,7 +79,7 @@ If you need to fund your account, you can use one of the following third-party f
 - [Chainlink Sepolia Faucet]
 - [Metamask Sepolia Faucet]
 
-### Step 3. create a relay app
+### Step 3. Create a relay app
 
 Select the `Relay` tab in the Gelato App and switch to the `Testnet` environment.
 
@@ -144,7 +144,7 @@ You can find the examples in the [Gelato Smart Wallet SDK] repository.
 </Tabs>
 
 
-### Step 2. set up a Smart Wallet account
+### Step 2. Set up a Smart Wallet account
 
 Import required dependencies:
 
@@ -162,8 +162,7 @@ const publicClient = createPublicClient({
 });
 ```
 
-You can set up a Smart Account as per your needs.  
-After you create the `gelato` account, the Gelato Smart Account address will be the same as your EOA, which activates EIP-7702 features.
+You can set up a Smart Account as per your needs. After you create the `gelato` account, the Gelato Smart Account address will be the same as your EOA, which activates EIP-7702 features.
 
 ```ts
 // Prepare a normal EOA account
@@ -200,7 +199,7 @@ const swc = await createGelatoSmartWalletClient(client, {
 });
 ```
 
-### Step 3. estimate or send a gasless transaction
+### Step 3. Estimate or send a gasless transaction
 
 Now you can estimate or send a gasless transaction with the Gelato Smart Wallet client.
 
@@ -288,6 +287,8 @@ Now that you have completed the tutorial, you should be able to:
 - Troubleshoot common issues with Gelato Smart Wallet integration.
 
 The combination of Flow's efficient gas prices and Gelato's sponsored transaction infrastructure opens up new possibilities for you to build user-friendly dApps. When you eliminate the need for users to hold native tokens for gas fees, you can create onboarding experiences that rival traditional Web2 applications and maintain the security and transparency of blockchain technology.
+
+<!-- Relative links, will not render on page -->
 
 [Gelato App]: https://app.gelato.cloud/
 [Google Cloud Sepolia Faucet]: https://cloud.google.com/application/web3/faucet/ethereum/sepolia
