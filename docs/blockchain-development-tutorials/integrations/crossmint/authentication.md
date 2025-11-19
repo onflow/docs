@@ -16,25 +16,25 @@ keywords:
 
 # Authentication Integration Guide
 
-Crossmint provides a comprehensive user management solution tightly integrated with all other Crossmint products. Authenticate users using Web3 or traditional sign-in methods, with seamless wallet creation and unified identity management.
+Crossmint provides a comprehensive user management solution tightly integrated with all other Crossmint products. Authenticate users with Web3 or traditional sign-in methods, with seamless wallet creation and unified identity management.
 
 **Why this matters:**
 
-- **Unified identity system**: Single user account across your backend and Web3 app
-- **Multiple auth methods**: Email OTP, social logins, wallet connections, and Farcaster
-- **Automatic wallet creation**: Optionally create or link wallets with user accounts
-- **Drag and drop integration**: Setup in under 5 minutes
+- **Unified identity system**: Single user account across your backend and Web3 app.
+- **Multiple auth methods**: Email OTP, social logins, wallet connections, and Farcaster.
+- **Automatic wallet creation**: Optionally create or link wallets with user accounts.
+- **Drag and drop integration**: Setup in under five minutes.
 
-## 🎯 Available Authentication Methods
+## 🎯 Available authentication methods
 
-### 1. Email OTP Authentication
+### 1. Email OTP authentication
 
-Passwordless sign-in using one-time codes delivered to the user's email.
+Passwordless sign-in with one-time codes delivered to the user's email.
 - No passwords required
 - Secure and user-friendly
 - Automatic account creation
 
-### 2. Social Account Authentication
+### 2. Social account authentication
 
 Sign in with popular social platforms:
 
@@ -43,14 +43,14 @@ Sign in with popular social platforms:
 - X (Twitter)
 - And more
 
-### 3. Farcaster Integration
+### 3. Farcaster integration
 
-Using the [Sign In With Farcaster (SIWF) standard]
+Use the [Sign In With Farcaster (SIWF) standard]
 
 - Web3-native authentication
 - Decentralized identity support
 
-### 4. External Wallet Authentication
+### 4. External wallet authentication
 
 Connect with crypto wallets for Web3 authentication:
 
@@ -58,7 +58,6 @@ Connect with crypto wallets for Web3 authentication:
 - WalletConnect
 - Flow wallets
 - And other Web3 wallets
-
 
 ## Prerequisites
 
@@ -75,18 +74,19 @@ Make sure you have:
 - TypeScript support (recommended)
 
 **Technical knowledge:**
+
 - Basic React hooks and state management
 - Understanding of authentication flows
 
-## Quick Start (5 minutes)
+## Quick start
 
-### Step 1: Install the SDK
+### Step 1: install the SDK
 
 ```bash
 npm i @crossmint/client-sdk-react-ui
 ```
 
-### Step 2: Add Crossmint Providers
+### Step 2: add crossmint providers
 
 ```tsx
 "use client";
@@ -108,7 +108,7 @@ export function Providers({ children }: { children: React.ReactNode }) {
 }
 ```
 
-### Step 3: Create Authentication Component
+### Step 3: create authentication component
 
 ```tsx
 "use client";
@@ -152,7 +152,7 @@ export function AuthButton() {
 }
 ```
 
-### Environment Configuration
+### Environment configuration
 
 ```typescript
 // Use environment-specific API keys
@@ -164,30 +164,30 @@ const crossmintConfig = {
 };
 ```
 
-## Production Deployment
+## Production deployment
 
-### 1. Create Production Account
+### 1. Create production account
 
-1. Create a developer account on the [Production Console]
+1. Create a developer account on the [Production Console].
 ![Production Console Login](./imgs/staging.png)
 
-2. Complete account verification and KYB process
+2. Complete account verification and KYB process.
 
-### 2. Configure Production API Keys
+### 2. Configure production API keys
 
-1. Create a production client API key
+1. Create a production client API key.
 
 Navigate to **Integrate > API Keys**
 
 ![API Keys](./imgs/api_keys.png)
 
-2. Enable required scopes:
+2. Activate required scopes:
    - `users.create`
    - `users.read`
    - `wallets.read`
    - `wallets.create`
 
-### 3. Update Environment Variables
+### 3. Update environment variables
 
 ```bash
 # Production
@@ -199,7 +199,7 @@ CROSSMINT_API_KEY=your_staging_client_api_key
 CROSSMINT_ENVIRONMENT=staging
 ```
 
-### 4. Test Authentication Flow
+### 4. Test authentication flow
 
 ```typescript
 // Test authentication in staging first
@@ -218,19 +218,21 @@ const testAuth = async () => {
 
 ## 🔧 Troubleshooting
 
-### Common Issues
+### Common issues
 
 **Authentication fails:**
-- Verify API key is correct
-- Check authentication scopes are enabled
-- Ensure you're using the right environment (staging vs production)
+
+- Verify API key is correct.
+- Check authentication scopes are activated.
+- Make sure you're using the right environment (staging vs. production)
 
 **Wallet creation fails:**
-- Verify user is authenticated
-- Check wallet creation scopes
-- Ensure proper wallet configuration for Flow
 
-### Getting Help
+- Verify user is authenticated.
+- Check wallet creation scopes.
+- Ensure proper wallet configuration for Flow.
+
+### Get Help
 
 - **[Crossmint Authentication Docs](https://docs.crossmint.com/authentication/introduction)**
 - **[Flow Developer Portal](https://developers.flow.com/)** 

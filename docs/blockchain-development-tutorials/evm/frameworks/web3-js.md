@@ -22,9 +22,9 @@ To install `web3` in your project, run the following command:
 npm install web3
 ```
 
-## Initializing Web3 with Flow
+## Initialize Web3 with Flow
 
-To use `web3` in your project, start by importing the module and initializing your `Web3` instance with a Flow RPC endpoint.
+To use `web3` in your project, first import the module and initialize your `Web3` instance with a Flow RPC endpoint.
 
 ```js
 const { Web3 } = require('web3');
@@ -33,11 +33,11 @@ const web3 = new Web3('https://testnet.evm.nodes.onflow.org');
 
 **Note:** If you want to connect to the Flow testnet, replace the above URL with `https://mainnet.evm.nodes.onflow.org`.
 
-## Querying The Blockchain
+## Query The blockchain
 
-`web3` provides a number of methods for querying the blockchain, such as getting the latest block number, querying account balances, and more.
+`web3` provides a number of methods for how to query the blockchain, such as to retrieve the latest block number, query account balances, and more.
 
-You can try using some of these methods to verify that your `web3` instance is working correctly.
+You can try with some of these methods to verify that your `web3` instance works correctly.
 
 ```js
 // Get the latest block number
@@ -57,15 +57,15 @@ const gasPrice = await web3.eth.getGasPrice();
 console.log(gasPrice); // Gas price in attoFlow
 ```
 
-For more information about other queries you can make `web3`, please see the [official documentation](https://docs.web3js.org/).
+For more information about other queries you can make `web3`, see the [official documentation](https://docs.web3js.org/).
 
-## Interacting with Smart Contracts
+## Interact with smart contracts
 
 The `web3` library allows developers to interact with smart contracts via the `web3.eth.Contract` API.
 
 For this example we will use the following `Storage` contract.
 
-We recommend deploying your own contract, which can be done using [Hardhat](../development-tools/hardhat.md) or [Remix](../development-tools/remix.md).
+We recommend that you deploy your own contract, which you can do with [Hardhat](../development-tools/hardhat.md) or [Remix](../development-tools/remix.md).
 
 ```solidity
 // SPDX-License-Identifier: MIT
@@ -84,7 +84,7 @@ contract Storage {
 }
 ```
 
-The ABI for this contract can be generated using the [`solc` compiler](https://docs.soliditylang.org/en/latest/installing-solidity.html), or another tool such as [Hardhat](../development-tools/hardhat.md) or [Remix](../development-tools/remix.md).
+You can generate the ABI for this contract with the [`solc` compiler](https://docs.soliditylang.org/en/latest/installing-solidity.html), or another tool such as [Hardhat](../development-tools/hardhat.md) or [Remix](../development-tools/remix.md).
 
 Now that we have both the ABI and address of the contract, we can create a new `Contract` object for use in our application.
 
@@ -131,11 +131,11 @@ const contractAddress = '0x4c7784ae96e7cfcf0224a95059573e96f03a4e70';
 const contract = new web3.eth.Contract(abi, contractAddress);
 ```
 
-We can now interact with the contract on the network by using the `contract` object.
+We can now interact with the contract on the network ith the `contract` object.
 
-### Reading State
+### Reading state
 
-State can be read from the contract by using the `call` function with one of the contract's methods. This will not change the state and will not send a transaction.
+State can be read from the contract via the `call` function with one of the contract's methods. This will not change the state and will not send a transaction.
 
 ```js
 // Retrieve the current value stored in the contract
@@ -145,22 +145,23 @@ const result = await contract.methods.retrieve().call();
 console.log(result); // Current value stored in the contract
 ```
 
-### Changing State
+### Change state
 
-We can mutate the state of the contract by sending a transaction to the network.
+To mutate the state of the contract, we can send a transaction to the network.
 
 In order to send a transaction to the network, you will need an account with sufficient funds to pay for the transaction.
 
 :::info
-If you do not have an account yet, you can create one using the following command from your project's root directory:
+
+If you do not have an account yet, you can create one with the following command from your project's root directory:
 
 ```sh
 node -e "console.log(require('web3').eth.accounts.create())"
 ```
 
-Note that this is not a secure way to generate an account, and you should use a more secure method in a production environment.
+This is not a secure way to generate an account, and you should use a more secure method in a production environment.
 
-You can fund your account using the [Flow Faucet](https://faucet.flow.com/fund-account).
+You can fund your account with the [Flow Faucet](https://faucet.flow.com/fund-account).
 :::
 
 We can use the `privateKeyToAccount` function to create an `Web3Account` object from our account's private key.
@@ -170,7 +171,7 @@ We can use the `privateKeyToAccount` function to create an `Web3Account` object 
 const account = web3.eth.accounts.privateKeyToAccount('0x1234');
 ```
 
-Then, we can sign a transaction using the user's account and send it to the network.
+Then, we can sign a transaction with the user's account and send it to the network.
 
 ```js
 const newValue = 1337; // Replace with any value you want to store
@@ -193,7 +194,7 @@ const result = await web3.eth.sendSignedTransaction(signed.rawTransaction);
 console.log(result);
 ```
 
-Now that the transaction has been sent, the contract's state should have been updated. We can verify this by querying the contract's state again:
+Now that the transaction has been sent, the contract's state will have been updated. To verify this, we can query the contract's state again:
 
 ```js
 const result = await contract.methods.retrieve().call();

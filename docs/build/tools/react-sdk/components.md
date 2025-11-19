@@ -38,6 +38,12 @@ A drop-in wallet connection component with UI for copy address, logout, and bala
   - `scheduledTransactions.filterHandlerTypes?: string[]` – Optional array of handler type identifiers to filter displayed transactions
 - `modalEnabled?: boolean` – Whether to show the profile modal on click when connected (default: `true`). When `false`, clicking the button when connected will disconnect instead
 
+:::note WalletConnect Support
+
+To enable WalletConnect as a wallet option, add your registered project ID to the `walletconnectProjectId` field in your `FlowProvider` config.
+
+:::
+
 ```tsx
 import { Connect } from "@onflow/react-sdk"
 
@@ -80,6 +86,12 @@ A standalone component for displaying wallet information including account addre
   - `scheduledTransactions.filterHandlerTypes?: string[]` – Optional array of handler type identifiers to filter displayed transactions
 - `className?: string` – Optional custom CSS class
 - `style?: React.CSSProperties` – Optional inline styles
+
+:::note WalletConnect Support
+
+To enable WalletConnect as a wallet option, add your registered project ID to the `walletconnectProjectId` field in your `FlowProvider` config.
+
+:::
 
 ```tsx
 import { Profile } from "@onflow/react-sdk"

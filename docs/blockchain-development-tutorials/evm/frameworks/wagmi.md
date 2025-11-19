@@ -9,9 +9,9 @@ sidebar_position: 3
 Make sure to use `viem` version `2.9.6` or greater. This version contains flow EVM networks
 :::
 
-# Using viem
+# Viem & Wagmi
 
-Flow networks have been added to viem chain definitions [viem networks](https://github.com/wevm/viem/tree/main/src/chains/definitions). This allows for convenient flow network configuration when using viem and wagmi.
+Flow networks have been added to viem chain definitions [viem networks](https://github.com/wevm/viem/tree/main/src/chains/definitions). This allows for convenient flow network configuration when you use viem and wagmi.
 
 ## Viem Flow Config
 
@@ -31,19 +31,20 @@ export const config = createConfig({
 });
 ```
 
-# Using Next.js and Wagmi
+# Use Next.js and Wagmi
 
-This tutorial will guide you through creating a simple web application, connect to an EVM capable wallet and interact with the "HelloWorld" smart contract to get and set greetings. We will not dive into managing transactions.
+This tutorial will guide you through how to create a simple web application, connect to an EVM capable wallet and interact with the "HelloWorld" smart contract to get and set greetings. We will not dive into how to manage transactions.
 
 ## Prerequisites
 
-- Node.js installed on your machine
-- A code editor (e.g., Visual Studio Code)
-- Basic knowledge of React and Next.js
+- `Node.js` installed on your machine.
+- A code editor (such as Visual Studio Code).
+- Basic knowledge of React and `Next.js`.
 
-## Step 1: Setting Up the Next.js Project
+## Step 1: Set up the Next.js project
 
-This tutorial will be following [Wagmi getting-started manual tutorial](https://wagmi.sh/react/getting-started)
+This tutorial will follow [Wagmi getting-started manual tutorial](https://wagmi.sh/react/getting-started).
+
 First, let's create a Wagmi project named `flow-evm-wagmi`. We will use npm but you are welcome to use yarn or bun.
 
 ```bash
@@ -61,10 +62,10 @@ cd flow-evm-wagmi
 npm install
 ```
 
-## Step 2: Configuring Wagmi and Connecting the Wallet
+## Step 2: Configure Wagmi and connect the Wallet
 
 Make sure you have Metamask installed and Flow network configured. [Metamask and Flow blockchain].
-Wagmi needs to know what networks to be aware of. Let's configure to use Flow Testnet by updating config.ts file with the following:
+Wagmi needs to know what networks to be aware of. Let's configure to use Flow Testnet and update the `config.ts` file with the following:
 
 ```javascript
 import { http, createConfig } from '@wagmi/core';
@@ -80,7 +81,7 @@ export const config = createConfig({
 });
 ```
 
-By default Wagmi configures many wallets, MetaMask, Coinbase Wallet, and WalletConnect as wallet providers. Above we simplify the code to only be interested in the Injected Provider, which we are interested in Metamask. Verify `page.tsx` code looks like the following.
+By default, Wagmi configures many wallets, MetaMask, Coinbase Wallet, and WalletConnect as wallet providers. Above, we simplify the code to only be interested in the Injected Provider, which we are interested in Metamask. Verify `page.tsx` code looks like the following.
 
 ```javascript
 'use client';
@@ -135,14 +136,13 @@ export default App;
 
 ![Connect Metamask](./imgs/Connect-Metamask.gif)
 
-This step relies on an already deployed HelloWorld contract. See [Using Remix](../development-tools/remix.md) to deploy a smart contract on flow evm blockchain.
-Create or edit the simple `page.tsx` file in the app directory to have better styles, that's beyond this tutorial. We will modify `page.txs` to add a new `HelloWorld.tsx`. Replace `YOUR_CONTRACT_ADDRESS` with your deployed address.
+This step relies on an already deployed HelloWorld contract. See [Using Remix](../development-tools/remix.md) to deploy a smart contract on flow evm blockchain. Create or edit the simple `page.tsx` file in the app directory to have better styles, that's beyond this tutorial. We will modify `page.txs` to add a new `HelloWorld.tsx`. Replace `YOUR_CONTRACT_ADDRESS` with your deployed address.
 
-## Step 3: Creating the Interface for HelloWorld Contract
+## Step 3: Create the interface for HelloWorld contract
 
 Now, let's create a component to interact with the HelloWorld contract. Assume your contract is already deployed, and you have its address and ABI.
 
-- Create a new file, HelloWorld.ts, in the components directory.
+- Create a new file, `HelloWorld.ts`, in the components directory.
 - Use Wagmi's hooks to read from and write to the smart contract:
 
 ```javascript
@@ -195,7 +195,7 @@ const HelloWorld = () => {
 export default HelloWorld;
 ```
 
-Reminder: aReplace YOUR_CONTRACT_ADDRESS with the actual address of your deployed HelloWorld contract.
+Reminder: Replace YOUR_CONTRACT_ADDRESS with the actual address of your deployed HelloWorld contract.
 
 Also notice you need the HelloWorld contract ABI, save this to a new file called `HelloWorld.json` in the app directory.
 
@@ -250,7 +250,7 @@ Also notice you need the HelloWorld contract ABI, save this to a new file called
 }
 ```
 
-## Step 4: Integrating the HelloWorld Component
+## Step 4: Integrate the HelloWorld Component
 
 Finally, import and use the HelloWorld component in your `pages.tsx`, throw it at the bottom of the render section.
 
@@ -282,7 +282,7 @@ import HelloWorld from './helloWorld'
 
 Now, you have a functional App that can connect to Metamask, display the current greeting from the "HelloWorld" smart contract, and update the greeting.
 
-Test it by updating the greeting, signing a transaction in your Metamask then wait a minute then refresh the website. Handling transactions are outside of this tutorial. We'll leave that as a future task. [Checkout Wagmi documentation](https://wagmi.sh/react/getting-started)
+To test it, update the greeting, sign a transaction in your Metamask, wait a minute, then refresh the website. Handling transactions are outside of this tutorial. We'll leave that as a future task. [Checkout Wagmi documentation](https://wagmi.sh/react/getting-started)
 
 ![Update HelloWorld Greeting](./imgs/Update-HelloWorld-Greeting.gif)
 

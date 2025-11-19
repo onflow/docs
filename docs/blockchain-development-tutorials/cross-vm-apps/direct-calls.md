@@ -4,11 +4,13 @@ sidebar_label: Direct Calls to Flow EVM
 sidebar_position: 4
 ---
 
-Direct calls from Cadence to Flow EVM are essential for enabling Cadence smart contracts to interact seamlessly with the EVM environment hosted on the Flow blockchain. These calls facilitate a range of functionalities including state queries and transaction initiations, allowing Cadence contracts to leverage EVM-based tools and assets.
+# Direct Calls from Cadence to Flow EVM
 
-## Making Direct Calls
+Direct calls from Cadence to Flow EVM are essential to allow Cadence smart contracts to interact seamlessly with the EVM environment hosted on the Flow blockchain. These calls facilitate a range of functionalities including state queries and transaction initiations, allowing Cadence contracts to leverage EVM-based tools and assets.
 
-### Accessing Flow EVM
+## Make direct calls
+
+### Access Flow EVM
 
 To interact with Flow EVM, Cadence contracts must first import `EVM` from its service address:
 
@@ -16,15 +18,15 @@ To interact with Flow EVM, Cadence contracts must first import `EVM` from its se
 import EVM from <ServiceAddress>
 ```
 
-Next, create an `EVMAddress` with a sequence of 20 bytes representing the EVM address:
+Next, create an `EVMAddress` with a sequence of 20 bytes that represents the EVM address:
 
 ```js
 let addr = EVM.EVMAddress(bytes: bytes)
 ```
 
-Once you have access to an `EVMAddress`, you can query various pieces of state information such as:
+After you can access an `EVMAddress`, you can query various pieces of state information such as:
 
-- `balance() EVM.Balance` provides the balance of the address. It returns a balance object rather than a basic type to avoid errors when converting from flow to atto-flow.
+- `balance() EVM.Balance` provides the balance of the address. It returns a balance object rather than a basic type to avoid errors when it converts from flow to atto-flow.
 - `nonce() UInt64` retrieves the nonce associated with the address.
 - `code(): [UInt8]` fetches the code at the address; it returns the smart contract code if applicable, and is empty otherwise.
 
@@ -51,9 +53,9 @@ fun main(addressHex: String): UFix64 {
 }
 ```
 
-### Sending Transactions to Flow EVM
+### Send transactions to Flow EVM
 
-To send transactions to Flow EVM, use the `run` function which executes RLP-encoded transactions. RLP (Recursive Length Prefix) encoding is used to efficiently encode data into a byte-array format, suitable for Ethereum-based environments. Here's an example of wrapping and sending a transaction:
+To send transactions to Flow EVM, use the `run` function which executes RLP-encoded transactions. RLP (Recursive Length Prefix) encoding is used to efficiently encode data into a byte-array format, suitable for Ethereum-based environments. Here's an example of how to wrap and send a transaction:
 
 ```cadence
 import EVM from <ServiceAddress>
@@ -71,28 +73,28 @@ transaction(rlpEncodedTransaction: [UInt8], coinbaseBytes: [UInt8; 20]) {
 }
 ```
 
-Using `run` restricts an EVM block to a single EVM transaction, while a future `batchRun` will offer the capability to execute multiple EVM transactions in a batch.
+When you `run`, it restricts an EVM block to a single EVM transaction, while a future `batchRun` will offer the capability to execute multiple EVM transactions in a batch.
 
-### Handling Transaction Responses
+### Handle transaction responses
 
-Handling responses correctly is crucial to manage the state changes or errors that occur during `EVM` transactions:
+It's crucial that your function handles responses correctly to manage the state changes or errors that occur during `EVM` transactions:
 
-When calling `EVM.run`, it's important to understand that this method does not revert the outer Flow transaction. Developers must therefore carefully handle the response based on the `result.Status` of the EVM transaction execution. There are three main outcomes to consider:
+When you call `EVM.run`, it's important to understand that this method does not revert the outer Flow transaction. Developers must therefore carefully handle the response based on the `result.Status` of the EVM transaction execution. There are three main outcomes to consider:
 
-- `Status.invalid`: This status indicates that the transaction or call failed at the validation step, such as due to a nonce mismatch. Transactions with this status are not executed or included in a block, meaning no state change occurs.
-- `Status.failed`: This status is assigned when the transaction has technically succeeded in terms of being processable, but the EVM reports an error as the outcome, such as running out of gas. Importantly, a failed transaction or call is still included in a block. Attempting to resubmit a failed transaction will result in an `invalid` status on the second try due to a now incorrect nonce.
-- `Status.successful`: This status is given when the transaction or call is successfully executed and no errors are reported by the EVM.
+- `Status.invalid`: This status indicates that the transaction or call failed at the validation step, such as due to a nonce mismatch. Transactions with this status are not executed or included in a block, which means no state change occurs.
+- `Status.failed`: This status is assigned when the transaction has technically succeeded in terms of being processable, but the EVM reports an error as the outcome, such as running out of gas. Importantly, a failed transaction or call is still included in a block. Any attempt to resubmit a failed transaction results in an `invalid` status on the second try due to a now incorrect nonce.
+- `Status.successful`: This status appears when the transaction or call is successfully executed and the EVM doesn't report errors.
 
-For scenarios where transaction validity is critical, developers may choose to use the `mustRun` variation, which reverts the transaction in the case of a validation failure, providing an added layer of error handling.
+For scenarios where transaction validity is critical, developers may choose to use the `mustRun` variation, which reverts the transaction in the case of a validation failure. This provides an added layer of error handling.
 
-### Understanding Gas Usage in EVM Transactions
+### Understanding gas usage in EVM transactions
 
-Direct calls to Flow EVM require gas, it's important to understand how gas usage is calculated and billed. During the execution of methods that interact with the EVM:
+Direct calls to Flow EVM require gas. It's important to understand how gas usage is calculated and billed. During the execution of methods that interact with the EVM:
 
-- **Gas Aggregation**: The gas used by each call is aggregated throughout the transaction.
-- **Gas Adjustment**: The total gas used is then adjusted based on a multiplier. This multiplier is determined by the network and can be adjusted by the service account to reflect operational costs and network conditions.
-- **Payment of Gas Fees**: The adjusted total gas amount is added to the overall computation fees of the Flow transaction. These fees are paid by the transaction initiator, commonly referred to as the payer.
+- **Gas Aggregation**: The gas that each call uses is aggregated throughout the transaction.
+- **Gas Adjustment**: The total gas used is then adjusted based on a multiplier. This multiplier is determined by the network and the service account can adjust it to reflect operational costs and network conditions.
+- **Payment of Gas Fees**: The adjusted total gas amount is added to the overall computation fees of the Flow transaction. The transaction initiator, commonly referred to as the payer, pays these fees.
 
-## Keep Learning
+## Keep learning
 
 For more information and a deeper dive into the `EVMAddress`, `Result`, and `Status` objects, see [the contract here](https://github.com/onflow/flow-go/blob/master/fvm/evm/stdlib/contract.cdc).

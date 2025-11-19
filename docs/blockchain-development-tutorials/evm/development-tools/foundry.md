@@ -7,14 +7,14 @@ sidebar_position: 5
 
 # Using Foundry with Flow
 
-Foundry is a suite of development tools that simplifies the process of developing and deploying Solidity contracts to EVM networks. This guide will walk you through the process of deploying a Solidity contract to Flow EVM using the Foundry development toolchain. You can check out the official Foundry docs [here](https://book.getfoundry.sh/).
+Foundry is a suite of development tools that simplifies the process to develop and deploy Solidity contracts to EVM networks. This guide will walk you through thow to deploy a Solidity contract to Flow EVM with the Foundry development toolchain. You can check out the official Foundry docs [here](https://book.getfoundry.sh/).
 
 In this guide, we'll deploy an ERC-20 token contract to Flow EVM using Foundry. We'll cover:
 
-- Developing and testing a basic ERC-20 contract
-- Deploying the contract to Flow EVM using Foundry tools
-- Querying Testnet state
-- Mutating Testnet state by sending transactions
+- How to develop and test a basic ERC-20 contract
+- Deploy the contract to Flow EVM with Foundry tools
+- How to query the Testnet state
+- How to mutate Testnet state by sending transactions
 
 ## Overview
 
@@ -26,9 +26,9 @@ To use Flow across all Foundry tools you need to:
    --rpc-url https://testnet.evm.nodes.onflow.org
    ```
 
-2. Use the `--legacy` flag to disable [EIP-1559](https://eips.ethereum.org/EIPS/eip-1559) style transactions. Flow will support EIP-1559 soon and this flag won't be needed.
+2. Use the `--legacy` flag to turn off [EIP-1559](https://eips.ethereum.org/EIPS/eip-1559) style transactions. Flow will support EIP-1559 soon and this flag won't be needed.
 
-As an example, we'll show you how to deploy a fungible token contract to Flow EVM using Foundry. You will see how the above flags are used in practice.
+As an example, we'll show you how to deploy a fungible token contract to Flow EVM with Foundry. You will see how the above flags are used in practice.
 
 ## Example: Deploying an ERC-20 Token Contract to Flow EVM
 
@@ -36,7 +36,7 @@ ERC-20 tokens are the most common type of tokens on Ethereum. We'll use [OpenZep
 
 ### Installation
 
-The best way to install Foundry, is to use the `foundryup` CLI tool. You can get it using the following command:
+The best way to install Foundry, is to use the `foundryup` CLI tool. You can get it with the following command:
 
 ```shell
 curl -L https://foundry.paradigm.xyz | bash
@@ -54,7 +54,7 @@ You may need to reload your shell after `foundryup` installation.
 
 Check out the official [Installation](https://book.getfoundry.sh/getting-started/installation) guide for more information about different platforms or installing specific versions.
 
-### Wallet Setup
+### Wallet setup
 
 We first need to generate a key pair for our EVM account. We can do this using the `cast` tool:
 
@@ -70,7 +70,7 @@ You can verify the balance of the account after funding. Replace `$YOUR_ADDRESS`
 cast balance --ether --rpc-url https://testnet.evm.nodes.onflow.org $YOUR_ADDRESS
 ```
 
-### Project Setup
+### Project setup
 
 First, create a new directory for your project:
 
@@ -93,9 +93,9 @@ forge test
 
 The tests should pass.
 
-### Writing the ERC-20 Token Contract
+### Write the ERC-20 token contract
 
-We'll use the OpenZeppelin ERC-20 contract template. We can start by adding OpenZeppelin to our project:
+We'll use the OpenZeppelin ERC-20 contract template. To start, we'll add OpenZeppelin to our project:
 
 ```shell
 forge install OpenZeppelin/openzeppelin-contracts
@@ -117,7 +117,7 @@ contract MyToken is ERC20 {
 
 The above is a basic ERC-20 token with the name `MyToken` and symbol `MyT`. It also mints the specified amount of tokens to the contract deployer. The amount is passed as a constructor argument during deployment.
 
-Before compiling, we also need to update the test file.
+Before we comnpile, we also need to update the test file.
 
 ### Testing
 
@@ -191,7 +191,7 @@ contract MyTokenTest is Test {
 }
 ```
 
-You can now make sure everything is okay by compiling the contracts:
+To make sure everything is okay, compile the contracts:
 
 ```shell
 forge compile
@@ -205,9 +205,9 @@ forge test
 
 They should all succeed.
 
-### Deploying to Flow Testnet
+### Deploy to Flow Testnet
 
-We can now deploy `MyToken` using the `forge create` command. We need to provide the RPC URL, private key from a funded account using the faucet, and constructor arguments that is the initial mint amount in this case. We need to use the `--legacy` flag to disable EIP-1559 style transactions. Replace `$DEPLOYER_PRIVATE_KEY` with the private key of the account you created earlier:
+We can now deploy `MyToken` with the `forge create` command. We need to provide the RPC URL, private key from a funded account with the faucet, and constructor arguments that is the initial mint amount in this case. We need to use the `--legacy` flag to turn off EIP-1559 style transactions. Replace `$DEPLOYER_PRIVATE_KEY` with the private key of the account you created earlier:
 
 ```shell
 forge create --broadcast src/MyToken.sol:MyToken \
@@ -219,9 +219,9 @@ forge create --broadcast src/MyToken.sol:MyToken \
 
 The above will print the deployed contract address. We'll use it in the next section to interact with the contract.
 
-### Verifying a Smart Contract
+### Verify a smart contract
 
-Once deployed, you can verify the contract so that others can see the source code and interact with it from Flow's block explorer. You can use the [`forge verify-contract`](https://book.getfoundry.sh/reference/forge/forge-verify-contract) command:
+After you deploy the contract, you can verify it so that others can see the source code and interact with it from Flow's block explorer. You can use the [`forge verify-contract`](https://book.getfoundry.sh/reference/forge/forge-verify-contract) command:
 
 ```shell
 forge verify-contract --rpc-url https://testnet.evm.nodes.onflow.org/ \
@@ -233,11 +233,11 @@ forge verify-contract --rpc-url https://testnet.evm.nodes.onflow.org/ \
 
 :::info
 
-When verifying a Mainnet contract, be sure to use the Mainnet [RPC](../../../build/evm/networks.md) and block explorer URLs.
+When you verify a Mainnet contract, be sure to use the Mainnet [RPC](../../../build/evm/networks.md) and block explorer URLs.
 
 :::
 
-### Querying Testnet State
+### Query Testnet state
 
 Based on the given constructor arguments, the deployer should own `42,000,000 MyT`. We can check the `MyToken` balance of the contract owner. Replace `$DEPLOYED_MYTOKEN_ADDRESS` with the address of the deployed contract and `$DEPLOYER_ADDRESS` with the address of the account you funded earlier:
 
@@ -248,7 +248,7 @@ cast balance \
     $DEPLOYER_ADDRESS
 ```
 
-This should return the amount specified during deployment. We can also call the associated function directly in the contract:
+This will return the amount specified during deployment. We can also call the associated function directly in the contract:
 
 ```shell
 cast call $DEPLOYED_MYTOKEN_ADDRESS \
@@ -267,7 +267,7 @@ cast call $DEPLOYED_MYTOKEN_ADDRESS \
 
 ### Sending Transactions
 
-Let's create a second account and move some tokens using a transaction. You can use `cast wallet new` to create a new test account. You don't need to fund it to receive tokens. Replace `$NEW_ADDRESS` with the address of the new account:
+Let's create a second account and move some tokens with a transaction. You can use `cast wallet new` to create a new test account. You don't need to fund it to receive tokens. Replace `$NEW_ADDRESS` with the address of the new account:
 
 ```shell
 cast send $DEPLOYED_MYTOKEN_ADDRESS \
@@ -287,7 +287,7 @@ cast balance \
     $NEW_ADDRESS
 ```
 
-The deployer should also own less tokens now:
+The deployer will also own fewer tokens now:
 
 ```shell
 cast balance \

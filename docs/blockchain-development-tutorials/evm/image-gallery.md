@@ -22,7 +22,7 @@ keywords:
     - onchain app
 ---
 
-# Build a Fully-Onchain Image Gallery
+# Build a fully-onchain image gallery
 
 :::info
 
@@ -30,25 +30,25 @@ The [FlowtoBooth] tutorial series teaches you how to build a **fun benchmark app
 
 It is **not a production best-practice**. While everything in these tutorials works, you'll run into the following problems at production scale:
 
-- RPC Providers will likely rate-limit you for reading this much data at once
-- NFT marketplaces may not display the images, likely due to the above
-- 256\*256 images are huge by blockchain data standards, but too small for modern devices
+- RPC Providers will likely rate-limit you for reading this much data at once.
+- NFT marketplaces may not display the images, likely due to the above.
+- 256\*256 images are huge by blockchain data standards, but too small for modern devices.
 
 :::
 
-If you search for resources on how to store images of any significant size onchain, you'll be told it's either prohibitively expensive or even completely impossible. The reason for this is two-fold - first the size limit for data on transactions is about 40kb. Second, saving 40kb takes almost all of the 30 million gas limit on most blockchains.
+If you search for resources on how to store images of any significant size onchain, you'll be told it's either prohibitively expensive or even completely impossible. The reason for this is two-fold. First, the size limit for data on transactions is about 40kb. Second, to save 40kb takes almost all of the 30 million gas limit on most blockchains.
 
-The former constraint is immutable (though many chains are slowly increasing this limit), which limits the app to images about 256\*256 pixels in size. The latter is heavily dependent on which chain you choose.
+The former constraint is immutable (though many chains are slowly increasing this limit), which limits the app to images about 256\*256 pixels in size. The latter heavily depends on which chain you choose.
 
-At current gas prices on most chains, using all 30 million gas in a block costs **several dollars** - or potentially **thousands** on ETH mainnet. At current prices on Flow, spending 30 million gas costs **less than a penny**, usually 1 or 2 tenths of a cent.
+At current gas prices on most chains, to use all 30 million gas in a block costs **several dollars** - or potentially **thousands** on ETH mainnet. At current prices on Flow, spending 30 million gas costs **less than a penny**, usually one or two tenths of a cent.
 
-Much more computation is available at prices you or your users will be willing to pay for regular interactions. Including, but not limited to:
+Much more computation is available at prices you or your users will want to pay for regular interactions. This includes, but isn't limited to:
 
-- Airdropping hundreds of NFTs with one transaction, for pennies
-- Generation of large mazes
-- Generating large amounts of random numbers (with free [native VRF])
-- Extensive string manipulation onchain
-- Simple game AI logic
+- Airdropping hundreds of NFTs with one transaction, for pennies.
+- Generation of large mazes.
+- Generation of large amounts of random numbers (with free [native VRF]).
+- Extensive string manipulation onchain.
+- Simple game AI logic.
 
 In this tutorial, we'll build a smart contract that can store and retrieve images onchain. We'll also build a simple frontend to interact with the contract on Flow and another chain.
 
@@ -56,23 +56,23 @@ In this tutorial, we'll build a smart contract that can store and retrieve image
 
 ## Objectives
 
-After completing this guide, you'll be able to:
+After you complete this guide, you'll be able to:
 
-- Construct a composable onchain image gallery that can be used permissionlessly by onchain apps and other contracts to store and retrieve images
-- Build an onchain app that can interact with this contract to save and display images
-- Compare the price of spending 30 million gas on Flow with the price on other chains
+- Construct a composable onchain image gallery that can be used permissionlessly by onchain apps and other contracts to store and retrieve images.
+- Build an onchain app that can interact with this contract to save and display images.
+- Compare the price of when you spend 30 million gas on Flow with the price on other chains.
 
 ## Prerequisites
 
-### Next.js and Modern Frontend Development
+### Next.js and modern frontend development
 
-This tutorial uses [Next.js]. You don't need to be an expert, but it's helpful to be comfortable with development using a current React framework. You'll be on your own to select and use a package manager, manage Node versions, and other frontend environment tasks.
+This tutorial uses [Next.js]. You don't need to be an expert, but it's helpful to be comfortable with development in a current React framework. You'll be on your own to select and use a package manager, manage Node versions, and other frontend environment tasks.
 
 ### Solidity
 
-You don't need to be an expert, but you should be comfortable writing code in [Solidity]. You can use [Hardhat], [Foundry], or even [Remix].
+You don't need to be an expert, but you should be comfortable enough to write code in [Solidity]. You can use [Hardhat], [Foundry], or even [Remix].
 
-## Build an Image Gallery Contract
+## Build an image gallery contract
 
 Start a new smart contract project in the toolchain of your choice and install the [OpenZeppelin] contracts.
 
@@ -91,11 +91,11 @@ contract ImageGallery is Ownable {
 }
 ```
 
-We're passing the original owner of the contract as an argument in the constructor to give greater flexibility for ownership when this contract is deployed.
+We pass the original owner of the contract as an argument in the constructor to give greater flexibility for ownership when this contract is deployed.
 
-### Set Up Storage for Images
+### Set up storage for images
 
-We'll store the images in a simple `struct` that holds the image as a `base64` encoded `string`and also contains a `string` for the description. Doing so allows the image to be directly used in html and makes it easier to test the contract directly with a block explorer, but has the downside of making the images 33% bigger. Another format would be more efficient.
+We'll store the images in a simple `struct` that holds the image as a `base64` encoded `string`and also contains a `string` for the description. Doing so allows the image to be directly used in HTML and makes it easier to test the contract directly with a block explorer, but it also makes the images 33% bigger. Another format is more efficient.
 
 These will be held in array:
 
@@ -108,7 +108,7 @@ struct Image {
 Image[] public images;
 ```
 
-### Construct Functions to Add and Delete Images
+### Construct functions to add and delete images
 
 Next, add a function that accepts a `_description` and `_base64EncodedImage` and adds them to the array.
 
@@ -137,13 +137,13 @@ function deleteImage(uint256 index) public onlyOwner {
 
 :::warning
 
-If the array gets big enough that calling `deleteImage` takes more than 30 million gas, it will brick this function. A safer and more gas-efficient method is to use a `mapping` with a counter as the index, and handling for the case where an index is empty.
+If the array gets big enough that for you to call `deleteImage` takes more than 30 million gas, it will brick this function. A safer and more gas-efficient method is to use a `mapping` with a counter as the index, and handling for the case where an index is empty.
 
-We're doing it this way to provide a way to delete accidentally uploaded images without making things too complex.
+We do it this way to provide a way to delete accidentally uploaded images without making things too complex.
 
 :::
 
-### Retrieval Functions
+### Retrieval functions
 
 Finally, add functions to get one image, get all of the images, and get the number of images in the collection.
 
@@ -164,9 +164,9 @@ function getImageCount() public view returns (uint256) {
 }
 ```
 
-### Final Contract
+### Final contract
 
-After completing the above, you'll end up with a contract similar to:
+After you complete the above, you'll end up with a contract similar to:
 
 ```solidity
 // SPDX-License-Identifier: UNLICENSED
@@ -221,7 +221,7 @@ contract ImageGallery is Ownable {
 
 ```
 
-### Create a Factory
+### Create a factory
 
 The image gallery contract you've just constructed is intended to be a utility for other contracts and apps to use freely. You don't want just one gallery for everyone, you need to give the ability for any app or contract to create and deploy private galleries freely.
 
@@ -243,9 +243,9 @@ contract ImageGalleryFactory {
 }
 ```
 
-### Tracking Factories
+### Track factories
 
-Some app designs may need multiple galleries for each user. For example, you might want to be able to give users the ability to collect images in separate galleries for separate topics, dates, or events, similar to how many photo apps work on smartphones.
+Some app designs may need multiple galleries for each user. For example, you might want to give users the ability to collect images in separate galleries for separate topics, dates, or events, similar to how many photo apps work on smartphones.
 
 To facilitate this feature, update your contract to keep track of which galleries have been created by which users. You'll end up with:
 
@@ -275,7 +275,7 @@ contract ImageGalleryFactory {
 }
 ```
 
-### Testing the Factory
+### Test the factory
 
 Write appropriate unit tests, then deploy and verify the factory on Flow Testnet.
 
@@ -291,15 +291,15 @@ Navigate to [evm-testnet.flowscan.io], search for your contract, and navigate to
 
 `Connect` your wallet. Use the [Flow Wallet] if you want automatically sponsored gas on both mainnet and testnet, or use the [Flow Faucet] to grab some testnet funds if you prefer to use another wallet.
 
-Expand the `createImageGallery` function, click the `self` button, and then `Write` the function.
+Expand the `createImageGallery` function, click `self`, and then `Write` the function.
 
 ![createImageGallery](./imgs/create-image-gallery.png)
 
 Approve the transaction and wait for it to complete. Then, call `getGalleries` for your address to find the address of the gallery you've created.
 
-### Testing the Image Gallery
+### Test the image gallery
 
-Search for the address of your image gallery contract. It `won't` be verified, but if you're using our exact contract, you will see a message from Flowscan that a verified contract with the same bytecode was found in the Blockscout DB. Click the provided link to complete the verification process.
+Search for the address of your image gallery contract. It `won't` be verified, but if you use our exact contract, you will see a message from Flowscan that a verified contract with the same bytecode was found in the Blockscout DB. Click the provided link to complete the verification process.
 
 :::info
 
@@ -325,9 +325,9 @@ Use the tool to convert an image that is ~30kb or smaller. Copy the string and p
 
 Click `Write` and approve the transaction. Take note of the cost! You've saved an image onchain forever for just a little bit of gas!
 
-Once the transaction goes through, call `getImage` with `0` as the index to retrieve your description and base64-encoded image.
+After the transaction goes through, call `getImage` with `0` as the index to retrieve your description and base64-encoded image.
 
-Paste your image string as the `src` for an `img` tag in an html snippet to confirm it worked.
+Paste your image string as the `src` for an `img` tag in an HTML snippet to confirm it worked.
 
 ```html
 <div>
@@ -337,9 +337,9 @@ Paste your image string as the `src` for an `img` tag in an html snippet to conf
 </div>
 ```
 
-## Building the Frontend
+## Build the frontend
 
-Now that your contracts are sorted and working, it's time to build an app to interact with it. We'll use [Next.js] for this, but the components we provide will be adaptable to other React frameworks.
+Now that your contracts are sorted and work, it's time to build an app to interact with it. We'll use [Next.js] for this, but the components we provide will be adaptable to other React frameworks.
 
 Run:
 
@@ -347,7 +347,7 @@ Run:
 npx create-next-app
 ```
 
-We're using the default options.
+We'll use' the default options.
 
 Next, install [rainbowkit], [wagmi], and their related dependencies:
 
@@ -477,9 +477,9 @@ export default function Providers({ children }: { children: React.ReactNode }) {
 }
 ```
 
-### Add the Connect Button
+### Add the connect button
 
-Open `page.tsx` and clear out the default content. Replace it with a message about what your app does and add the [rainbowkit] `Connect` button. Don't forget to import rainbowkit's css file and the `ConnectButton` component:
+Open `page.tsx` and clear out the default content. Replace it with a message about what your app does and add the [rainbowkit] `Connect` button. Don't forget to import rainbowkit's `.css` file and the `ConnectButton` component:
 
 ```tsx
 import '@rainbow-me/rainbowkit/styles.css';
@@ -511,13 +511,13 @@ export default function Home() {
 
 Test the app and make sure you can connect your wallet.
 
-### Import Your Contracts
+### Import Your contracts
 
-Next, you'll need to get your contract ABI and address into your frontend. If you're using Hardhat, you can use the artifacts produced by the Ignition deployment process. If you're using Foundry or Remix, you can adapt this process to the format of artifacts produced by those toolchains.
+Next, you'll need to get your contract ABI and address into your frontend. If you use Hardhat, you can use the artifacts produced by the Ignition deployment process. If you use Foundry or Remix, you can adapt this process to the format of artifacts produced by those toolchains.
 
 :::tip
 
-If you didn't deploy the Image Gallery contract, do so now to generate an artifact containing the ABI.
+If you didn't deploy the Image Gallery contract, do so now to generate an artifact that contains the ABI.
 
 :::
 
@@ -556,13 +556,13 @@ export default function useContracts() {
 
 :::info
 
-Note that we're **not** including an `address` for the `imageGallery` itself. We'll need to set this dynamically as users might have more than one gallery.
+Note that we **won't** include an `address` for the `imageGallery` itself. We'll need to set this dynamically as users might have more than one gallery.
 
 :::
 
-### Add Content
+### Add content
 
-You can use a few strategies to organize the components that interact with the blockchain. One is to create a centralized component that stores all of the state related to smart contracts and uses a single instance of `useWriteContract`. Doing so makes it easier to convey the transaction lifecycle to your users, at the cost of re-fetching all the data from your RPC provider after every transaction. This becomes sub-optimal if your app interacts with many contracts, or even different read functions within the same contract.
+You can use a few strategies to organize the components that interact with the blockchain. One is to create a centralized component that stores all of the state related to smart contracts and uses a single instance of `useWriteContract`. This makes it easier to convey the transaction lifecycle to your users, at the cost of re-fetching all the data from your RPC provider after every transaction. This becomes sub-optimal if your app interacts with many contracts, or even different read functions within the same contract.
 
 Add a folder in `app` called `components`, and create a file called `Content.tsx`. In it, add the following:
 
@@ -699,7 +699,7 @@ Test the app and make sure you can complete the transaction to create a gallery.
 
 ### Gallery List
 
-Next, you'll need to display the list of a user's galleries and enable them to select which one they want to interact with. A dropdown list will serve this function well. Add a component called `AddressList.tsx`, and in it add:
+Next, you'll need to display the list of a user's galleries and allow them to select which one they want to interact with. A dropdown list will serve this function well. Add a component called `AddressList.tsx`, and in it add:
 
 ```tsx
 import React, { useEffect, useState } from 'react';
@@ -774,13 +774,13 @@ Finally, add the new component under the `<button>`:
 
 Test again, and confirm that the address of the gallery you created is in the dropdown and is selectable. The provided code contains a console log as well, to make it easier to copy the address in case you need to check it on Flowscan.
 
-### Display the Images
+### Display the images
 
 Next, you need to pull the images for the selected gallery from the contract.
 
 :::warning
 
-Make sure you're using the same gallery you added an image too earlier. Otherwise, there won't be an image to pull and display!
+Make sure you use the same gallery that you added an image to earlier. Otherwise, there won't be an image to pull and display!
 
 :::
 
@@ -844,11 +844,11 @@ const ImageGallery: React.FC<ImageGalleryProps> = ({ images }) => {
 export default ImageGallery;
 ```
 
-Implementing the gallery display will take more additions to `Content.tsx`. You'll need to:
+To implement the gallery display requires more additions to `Content.tsx`. You'll need to:
 
-- Add a state variable for the list of images
-- Implement a second `useContractRead` hook to pull the images from the currently selected gallery address
-- Hook the gallery into the refresh logic
+- Add a state variable for the list of images.
+- Implement a second `useContractRead` hook to pull the images from the currently-selected gallery address.
+- Hook the gallery into the refresh logic.
 
 First, add the state variable to store the gallery array:
 
@@ -883,7 +883,7 @@ useEffect(() => {
 }, [reload]);
 ```
 
-Then, add a `useEffect` to update the `images` in state when `galleryData` is received. Users expect the newest images to be shown first, so `reverse` the array before setting it to state.
+Then, add a `useEffect` to update the `images` in state when `galleryData` is received. Users expect the newest images to be shown first, so `reverse` the array before you set it to state.
 
 ```tsx
 useEffect(() => {
@@ -929,13 +929,13 @@ return (
 );
 ```
 
-Run the app, log in with your wallet **that has the gallery you created for testing** and select the gallery.
+Run the app, log in with your wallet **that has the gallery you created for testing**, and select the gallery.
 
-You're now displaying an image that is stored onchain **forever**!
+You'll now see an image that is stored onchain **forever**!
 
-## Image Uploader
+## Image uploader
 
-The last thing to do for this initial implementation is to add functionality so that users can upload their own images through the app and save them onchain without needing to do the base64 conversion on their own.
+The last thing to do for this initial implementation is to add functionality so that users can upload their own images through the app and save them onchain without the need to do the base64 conversion on their own.
 
 For now, we'll just generate an error if the file is too big, but later on we can do that for the user as well.
 
@@ -1022,7 +1022,7 @@ Then add the `ImageUploader` to the `return`:
 <ImageUploader setUploadedBase64Image={setUploadedBase64Image} />
 ```
 
-Later on, you'll probably want to make a component for displaying the uploaded image, but for now just add it below the uploader button component:
+Later on, you'll probably want to make a component that displays the uploaded image, but for now just add it below the uploader button component:
 
 ```tsx
 {
@@ -1084,15 +1084,15 @@ Test the app to save your new image, and make sure the error displays if you try
 
 ## Conclusion
 
-In this tutorial, you built a fully functional onchain image gallery using Flow EVM. You created smart contracts that can store images directly on the blockchain and a modern React frontend that allows users to interact with these contracts. The implementation demonstrates how Flow's efficient gas pricing makes operations that would be prohibitively expensive on other chains not just possible, but practical.
+In this tutorial, you built a fully functional onchain image gallery with Flow EVM. You created smart contracts that can store images directly on the blockchain and a modern React frontend that allows users to interact with these contracts. The implementation demonstrates how Flow's efficient gas pricing makes operations that would be prohibitively expensive on other chains not just possible, but practical.
 
 Now that you have completed the tutorial, you should be able to:
 
-- Construct a composable onchain image gallery that can be used permissionlessly by onchain apps and other contracts to store and retrieve images
-- Build an onchain app that can interact with this contract to save and display images
-- Compare the price of spending 30 million gas on Flow with the price on other chains
+- Construct a composable onchain image gallery that can be used permissionlessly by onchain apps and other contracts to store and retrieve images.
+- Build an onchain app that can interact with this contract to save and display images.
+- Compare the price of spending 30 million gas on Flow with the price on other chains.
 
-Now that you've completed this tutorial, you're ready to explore more complex onchain storage patterns and build applications that take advantage of Flow's unique capabilities for storing and processing larger amounts of data than traditionally possible on other chains.
+Now that you've completed this tutorial, you're ready to explore more complex onchain storage patterns and build applications that take advantage of Flow's unique capabilities to store and process larger amounts of data than traditionally possible on other chains.
 
 <!-- Relative links, will not render on page -->
 

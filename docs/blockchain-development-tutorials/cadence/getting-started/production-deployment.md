@@ -18,7 +18,7 @@ keywords:
   - blockchain production
 ---
 
-# Production Deployment
+# Production deployment
 
 You've developed locally with the emulator, integrated external dependencies, built sophisticated transactions, implemented comprehensive testing, and created a frontend interface. Now it's time to take your application live and deploy it to Flow's public networks.
 

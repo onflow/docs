@@ -91,7 +91,7 @@ You can combine Connetors to create sophisticated workflows:
 ProtocolA.RewardsSource → SwapConnectors.SwapSource → ProtocolB.StakingSink
 ```
 
-## Connector Library
+## Connector library
 
 🔄 SOURCE Primitive Implementations
 
@@ -150,51 +150,51 @@ First, determine which Flow Actions primitive(s) your connector will implement:
 
 Study your target protocol to understand:
 
-- **Contract interfaces** and method signatures
-- **Required parameters** and data structures
-- **Error conditions** and failure modes
-- **Fee structures** and payment mechanisms
-- **Access controls** and permissions
+- **Contract interfaces** and method signatures.
+- **Required parameters** and data structures.
+- **Error conditions** and failure modes.
+- **Fee structures** and payment mechanisms.
+- **Access controls** and permissions.
 
 ### Design your connector
 
 Plan your connector implementation:
 
-- **Configuration parameters** needed for initialization
-- **Capability requirements** for protocol access
-- **Error handling strategy** for graceful failures
-- **Resource management** for token handling
-- **Event emission** for traceability
+- **Configuration parameters** needed for initialization.
+- **Capability requirements** for protocol access.
+- **Error handling strategy** for graceful failures.
+- **Resource management** for token handling.
+- **Event emission** for traceability.
 
 ### Implement the interface
 
-Create your connector struct implementing the chosen primitive interface(s).
+Create your connector struct to implement the chosen primitive interface(s).
 
 ### Add safety features
 
 Implement safety mechanisms:
 
-- **Capacity checking** before operations
-- **Balance validation** after operations
-- **Graceful error handling** with no-ops
-- **Resource cleanup** for empty vaults
+- **Capacity checking** before operations.
+- **Balance validation** after operations.
+- **Graceful error handling** with no-ops.
+- **Resource cleanup** for empty vaults.
 
 ### Support Flow Actions standards
 
 Add required Flow Actions support:
 
-- **IdentifiableStruct** implementation
-- **UniqueIdentifier** management
-- **ComponentInfo** for introspection
-- **Event emission** integration
+- **IdentifiableStruct** implementation.
+- **UniqueIdentifier** management.
+- **ComponentInfo** for introspection.
+- **Event emission** integration.
 
 ## Best practices
 
 ### **Error handling**
 
-- **Graceful Failures**: Return empty results instead of panicking.
-- **Validation**: Check all inputs and preconditions.
-- **Resource Safety**: Properly handle vault resources in all paths.
+- **Graceful Failures**: return empty results instead of panicking.
+- **Validation**: check all inputs and preconditions.
+- **Resource Safety**: properly handle vault resources in all paths.
 
 ```cadence
 // Good: Graceful failure
@@ -212,11 +212,11 @@ access(all) fun minimumCapacity(): UFix64 {
 }
 ```
 
-### **Capacity and balance checking**
+### **Capacity and balance checks**
 
-- **Always Check First**: Validate capacity/availability before operations.
-- **Respect Limits**: Work within available constraints.
-- **Handle Edge Cases**: Zero amounts, maximum values, empty vaults.
+- **Always Check First**: validate capacity/availability before operations.
+- **Respect Limits**: work within available constraints.
+- **Handle Edge Cases**: zero amounts, maximum values, empty vaults.
 
 ```cadence
 access(all) fun depositCapacity(from: auth(FungibleToken.Withdraw) &{FungibleToken.Vault}) {
@@ -237,9 +237,9 @@ access(all) fun depositCapacity(from: auth(FungibleToken.Withdraw) &{FungibleTok
 
 ### **Type safety**
 
-- **Validate Types**: Ensure vault types match expected types.
-- **Early Returns**: Fail fast on type mismatches.
-- **Clear Error Messages**: Help developers understand issues.
+- **Validate Types**: ensure vault types match expected types.
+- **Early Returns**: fail fast on type mismatches.
+- **Clear Error Messages**: help developers understand issues.
 
 ```cadence
 access(all) fun depositCapacity(from: auth(FungibleToken.Withdraw) &{FungibleToken.Vault}) {
@@ -255,26 +255,26 @@ access(all) fun depositCapacity(from: auth(FungibleToken.Withdraw) &{FungibleTok
 ### **Event integration**
 
 - **Leverage Post-conditions**: Flow Actions interfaces emit events automatically.
-- **Provide Context**: Include relevant information in events.
-- **Support Traceability**: Use UniqueIdentifiers consistently.
+- **Provide Context**: include relevant information in events.
+- **Support Traceability**: use UniqueIdentifiers consistently.
 
 ### **Resource management**
 
-- **Handle Empty Vaults**: Use `DeFiActionsUtils.getEmptyVault()` for consistent empty vault creation.
-- **Destroy Properly**: Clean up resources in all code paths.
-- **Avoid Resource Leaks**: Ensure all vaults are handled appropriately.
+- **Handle Empty Vaults**: use `DeFiActionsUtils.getEmptyVault()` for consistent empty vault creation.
+- **Destroy Properly**: clean up resources in all code paths.
+- **Avoid Resource Leaks**: ensure all vaults are handled appropriately.
 
-### **Capability Management**
+### **Capability management**
 
-- **Validate Capabilities**: Check capabilities before using them.
-- **Handle Revocation**: Gracefully handle revoked capabilities.
-- **Proper Entitlements**: Use correct entitlement levels (auth vs unauth).
+- **Validate Capabilities**: check capabilities before using them.
+- **Handle Revocation**: gracefully handle revoked capabilities.
+- **Proper Entitlements**: use correct entitlement levels (auth vs unauth).
 
 ### **Documentation**
 
-- **Clear Comments**: Explain protocol-specific logic.
-- **Usage Examples**: Show how to use your connectors.
-- **Integration Patterns**: Demonstrate composition with other connectors.
+- **Clear Comments**: explain protocol-specific logic.
+- **Usage Examples**: show how to use your connectors.
+- **Integration Patterns**: demonstrate composition with other connectors.
 
 ## Integration into Flow Actions
 
@@ -286,7 +286,7 @@ The `VaultSink` connector is already deployed and working in Flow Actions. Let's
 **Contract**: `FungibleTokenConnectors`
 **Connector**: `VaultSink` struct that defines the interaction with the connector.
 
-### Deploy Your Connector contract
+### Deploy Your connector contract
 
 Deploy your connector contract with the following command:
 
@@ -313,7 +313,7 @@ In your 'flow.json' you will find:
 
 ### Create usage transactions
 
-Create transaction templates for using your connectors:
+Create transaction templates for use with your connectors:
 
 ```cadence
 // Transaction: save_vault_sink.cdc
@@ -439,7 +439,7 @@ transaction(depositAmount: UFix64) {
 }
 ```
 
-### Add to existing workflows
+### Add to current workflows
 
 You can use VaultSink in advanced Flow Actions workflows:
 
@@ -497,7 +497,7 @@ transaction() {
 }
 ```
 
-### For Your own connectors
+### For your own connectors
 
 When building your own connectors, follow the VaultSink pattern:
 
@@ -513,10 +513,10 @@ When building your own connectors, follow the VaultSink pattern:
 The Flow Actions framework provides a comprehensive set of connectors that successfully implement the five fundamental DeFi primitives across multiple protocols:
 
 - **20+ Connector Implementations** spanning basic vault operations to complex cross-VM swapping.
-- **4 Protocol Integrations**: Generic FungibleToken, IncrementFi, Band Oracle, Flow EVM.
-- **Composable Architecture**: Combine Connectors to create sophisticated financial workflows.
-- **Safety-First Design**: Graceful error handling and resource safety throughout.
-- **Event-Driven Traceability**: Full workflow tracking and debugging capabilities.
+- **4 Protocol Integrations**: generic FungibleToken, IncrementFi, Band Oracle, Flow EVM.
+- **Composable Architecture**: combine Connectors to create sophisticated financial workflows.
+- **Safety-First Design**: graceful error handling and resource safety throughout.
+- **Event-Driven Traceability**: full workflow tracking and debugging capabilities.
 
 This framework allows developers to build sophisticated DeFi strategies while maintaining the simplicity and reliability of standardized primitive interfaces. The modular design allows for easy extension to additional protocols while preserving composability and atomic execution guarantees.
 

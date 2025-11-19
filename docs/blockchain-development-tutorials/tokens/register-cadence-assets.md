@@ -23,7 +23,7 @@ There are two ways to register your token: **manually** via a web interface or *
 
 ---
 
-## Manual Registration (~1 min)
+## Manual registration (~1 min)
 
 The following works for both fungible and non-fungible tokens on Flow Cadence or Flow EVM.
 
@@ -40,26 +40,26 @@ The following works for both fungible and non-fungible tokens on Flow Cadence or
 
 ERC-20 tokens registered with this method will use the default logo of Flow Official Assets.
 
-If you want to register your ERC-20 token on Flow EVM with your customized logo, you should follow the [Register ERC-20 Token on Flow EVM] guide.
+If you want to register your ERC-20 token on Flow EVM with your customized logo, follow the [Register ERC-20 Token on Flow EVM] guide.
 
 :::
 
 ---
 
-## Programmatic Registration
+## Programmatic registration
 
 For seamless automation, you can integrate token registration into your token deployment workflow.
 
-You can use the following Cadence transaction to register your Fungible or Non-Fungible token on Flow Cadence or Flow EVM.
+You can use this Cadence transaction to register your Fungible or Non-Fungible token on Flow Cadence or Flow EVM.
 
 ### Register Fungible Token or Non-Fungible Token automatically on Flow Cadence
 
 Use a standalone Cadence transaction to register your Fungible Token or Non-Fungible Token on Flow Cadence.
 
 - Use this **Cadence transaction**: [register-standard-asset.cdc].
-- This transaction should be executed **right after deploying your Fungible Token or Non-Fungible Token contract**.
+- Execute this transaction **right after you deploy your Fungible Token or Non-Fungible Token contract**.
 
-Or you can also pick up some code from the [register-standard-asset.cdc] file to make your own Cadence transaction with the same logic for more seamless integration. Here is an example:
+Or, you can also pick up some code from the [register-standard-asset.cdc] file to make your own Cadence transaction with the same logic for more seamless integration. Here is an example:
 
 ```cadence
 import "TokenList"
@@ -79,10 +79,10 @@ transaction(
 }
 ```
 
-### Register ERC-20 or ERC-721 Tokens automatically on Flow EVM
+### Register ERC-20 or ERC-721 tokens automatically on Flow EVM
 
 - Use this **Cadence transaction**: [register-evm-asset.cdc]
-- This transaction should be executed **right after deploying your ERC-20 or ERC-721 contract**.
+- Execute this transaction **right after you deploy your ERC-20 or ERC-721 contract**.
 
 :::warning
 
@@ -100,6 +100,8 @@ Similar to manual registration:
 - Verify your token listing in Flow Wallet.
 
 For any issues, refer to the [Token List GitHub Repository] or reach out to the [Flow developer community].
+
+<!-- Relative links, will not render on page -->
 
 [Token List Registration]: https://token-list.fixes.world/
 [Register ERC-20 Token on Flow EVM]: ./register-erc20-token.md

@@ -198,3 +198,15 @@ fcl.config({
   'discovery.authn.exclude': ['0x123', '0x456'], // Service account addresses to exclude
 });
 ```
+
+### WalletConnect Configuration
+
+To configure WalletConnect, add a WalletConnect project ID to the FCL config:
+
+```javascript
+import * as fcl from '@onflow/fcl';
+
+fcl.config({
+  'walletconnect.projectId': 'YOUR_WALLETCONNECT_PROJECT_ID',
+});
+```

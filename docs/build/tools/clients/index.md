@@ -10,11 +10,7 @@ keywords:
   - JavaScript
   - Go
   - Python
-  - Ruby
   - JVM
-  - Swift
-  - .NET
-  - Rust
   - PHP
   - Elixir
   - HTTP API
@@ -63,16 +59,6 @@ Flow provides a comprehensive suite of client tools and SDKs designed to help de
 - Event monitoring
 - Easy integration with Python applications
 
-## Ruby
-
-[FlowClient] is a Ruby gRPC client that enables:
-
-- Direct blockchain communication
-- Transaction processing
-- Account management
-- Event handling
-- Ruby-native blockchain integration
-
 ## JVM
 
 [Flow JVM SDK] supports JVM-compatible languages (Java, Kotlin, Scala) with:
@@ -82,36 +68,6 @@ Flow provides a comprehensive suite of client tools and SDKs designed to help de
 - Account handling
 - Event subscription
 - Cross-platform compatibility
-
-## Swift
-
-[flow-swift] is designed for iOS development, offering:
-
-- Native iOS integration
-- Wallet connectivity
-- Transaction management
-- Account handling
-- SwiftUI support
-
-## .NET
-
-[flow.net] provides .NET developers with:
-
-- C# and .NET Core support
-- Transaction management
-- Account handling
-- Event monitoring
-- Cross-platform compatibility
-
-## Rust
-
-[Rust SDK] offers Rust developers:
-
-- High-performance blockchain interaction
-- Type-safe transaction handling
-- Account management
-- Event subscription
-- Memory safety guarantees
 
 ## PHP
 

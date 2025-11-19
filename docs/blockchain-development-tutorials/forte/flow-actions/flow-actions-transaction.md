@@ -33,7 +33,7 @@ Make certain you understand how [slashing] works and assess your risk tolerance 
 
 :::
 
-To stake directly, lock up your tokens with [Flow Port]. You can also use other platforms and protocols that have a different strategy for participating in this process. [IncrementFi] offers a Liquid Staking Protocol (LSP) they describe as:
+To stake directly, lock up your tokens with [Flow Port]. You can also use other platforms and protocols that have a different strategy for participating in this process. [IncrementFi] offers a Liquid Staking Protocol (LSP) they describe as: 
 
 > LSP allows users to earn staking rewards without locking $flow tokens or running node softwares. Users can deposit $flow tokens and receive transferrable $stFlow tokens in return. Liquid staking combines the benefits of staking (earning rewards) and brings liquidity, as well as additional possibilities to increase your assets or hedge your positions by participating in Flow's DeFi ecosystem.
 
@@ -67,7 +67,7 @@ After you complete this tutorial, you will be able to:
 
 This tutorial assumes you have a modest knowledge of [Cadence]. If you don't, you can still follow along, but we recommend that you complete our series of [Cadence] tutorials. Most developers find it more pleasant than other blockchain languages and it's easy to pick up.
 
-## Getting started on mainnet
+## Get started on mainnet
 
 This demo uses **mainnet** and a real DeFi protocol. Before you write any code, set up your staking position.
 
@@ -77,11 +77,11 @@ This tutorial uses a real protocol with real funds. Only work with funds your co
 
 :::
 
-### Staking with IncrementFi
+### Stake with IncrementFi
 
 To complete this tutorial, set up a staking position in Increment Fi. If you already have LP tokens, skip to the **Staking LP Token** step.
 
-**Creating an LP position**
+**Create an LP position**
 
 First, go to the [Increment Fi Liquidity Pool] and select 'Single Asset' to provide liquidity with your FLOW tokens.
 
@@ -450,7 +450,7 @@ This transaction demonstrates how to chain multiple DeFi operations atomically, 
 [FLIP 339]: https://github.com/onflow/flips/pull/339/files
 [Staking]: ../../../protocol/staking/index.md
 [slashing]: ../../../protocol/staking/04-stake-slashing.md
-[Flow CLI docs]: https://developers.flow.com/tools/flow-cli/install
+[Flow CLI docs]: ../../../build/tools/flow-cli/install.md 
 [Cadence Extension]: https://marketplace.visualstudio.com/items?itemName=onflow.cadence
 [Flow Port]: https://port.flow.com/
 [IncrementFi]: https://app.increment.fi/
@@ -461,7 +461,7 @@ This transaction demonstrates how to chain multiple DeFi operations atomically, 
 [`/cadence/transactions/increment_fi_restake.cdc`]: https://github.com/onflow/flow-actions-scaffold/blob/main/cadence/transactions/increment_fi_restake.cdc
 [scheduled transactions]: ../scheduled-transactions/scheduled-transactions-introduction.md
 [Export]: https://docs.wallet.flow.com/tutorial/extension-private-key-and-seed-phrase-guide
-[Cadence]: https://cadence-lang.org/docs
+[Cadence]: https://cadence-lang.org/docs/
 [staking app]: https://app.increment.fi/staking
 [script on Flow Runner]: https://run.dnz.dev/snippet/d1bf715483551879
 [IncrementFi Farms]: https://app.increment.fi/farm

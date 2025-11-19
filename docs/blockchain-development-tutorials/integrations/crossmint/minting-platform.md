@@ -14,29 +14,30 @@ keywords:
 
 # Minting Platform Integration Guide
 
-Deploy secure smart contracts and mint tokens at scale on Flow using Crossmint's comprehensive minting platform.
+Deploy secure smart contracts and mint tokens at scale on Flow with Crossmint's comprehensive minting platform.
 
 ## Overview
 
 Crossmint's minting platform provides no-code tools and powerful APIs to create, mint, update, burn, and airdrop tokens on Flow.
 
-> **Key Benefits:**
-> - Deploy secure smart contracts without coding
-> - Mint, update, burn, and airdrop tokens at scale
-> - Manage metadata and collections
-> - Flow EVM and Cadence support
+> **Key benefits:**
+
+> - Deploy secure smart contracts without coding.
+> - Mint, update, burn, and airdrop tokens at scale.
+> - Manage metadata and collections.
+> - Flow EVM and Cadence support.
 
 ---
 
 ## Prerequisites
 
-- Crossmint account with minting enabled
-- Flow development environment
-- Basic understanding of NFT standards
+- Crossmint account with minting activated.
+- Flow development environment.
+- Basic understanding of NFT standards.
 
-## Step 1: Deploy Smart Contract
+## Step 1: Deploy smart contract
 
-### No-Code Contract Deployment
+### No-code contract deployment
 
 1. Go to Crossmint Console > **Collections**
 2. Click **Create Collection**
@@ -46,7 +47,7 @@ Crossmint's minting platform provides no-code tools and powerful APIs to create,
    - Royalty settings
    - Access controls
 
-### API Contract Deployment
+### API contract deployment
 
 ```typescript
 // Deploy contract via API
@@ -66,9 +67,9 @@ const contract = await crossmint.contracts.deploy({
 });
 ```
 
-## Step 2: Mint NFTs
+## Step 2: mint NFTs
 
-### Single NFT Minting
+### Single NFT minting
 
 ```typescript
 const nft = await crossmint.nfts.mint({
@@ -86,7 +87,7 @@ const nft = await crossmint.nfts.mint({
 });
 ```
 
-### Batch Minting
+### Batch minting
 
 ```typescript
 const batchMint = await crossmint.nfts.batchMint({
@@ -99,7 +100,7 @@ const batchMint = await crossmint.nfts.batchMint({
 ```
 
 
-## Step 3: Airdrops
+## Step 3: airdrops
 
 ```typescript
 const airdrop = await crossmint.airdrops.create({

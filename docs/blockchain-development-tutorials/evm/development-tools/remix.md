@@ -7,9 +7,9 @@ sidebar_position: 3
 
 # Using Remix
 
-Remix is an open-source, web-based development environment tailored for EVM smart contract development. It offers developers a comprehensive suite of tools for writing, deploying, and testing smart contracts in Solidity. For more information, visit [Remix](https://remix.ethereum.org/).
+Remix is an open-source, web-based development environment tailored for EVM smart contract development. It offers developers a comprehensive suite of tools to write, deploy, and test smart contracts in Solidity. For more information, visit [Remix](https://remix.ethereum.org/).
 
-## Add the Flow Network to MetaMask
+## Add the Flow network to MetaMask
 
 ![Add Flow Network](./imgs/Remix-adding-metamask-network.gif)
 
@@ -17,13 +17,13 @@ Navigate to the [Using EVM] page to find the button to add the Flow network info
 
 ## Fund Your Flow Account
 
-Navigate to the [Flow Testnet Faucet](https://faucet.flow.com/fund-account) to obtain FLOW tokens necessary for deploying a smart contract.
+Navigate to the [Flow Testnet Faucet](https://faucet.flow.com/fund-account) to obtain FLOW tokens necessary to deploy a smart contract.
 
-## Deploying a Smart Contract Using Remix
+## Deploy a smart contract with Remix
 
-![Deploy Smart Contract](./imgs/Remix-deploy-contract-flowevm.gif)
+![Deploy smart contract](./imgs/Remix-deploy-contract-flowevm.gif)
 
-### HelloWorld Smart Contract
+### HelloWorld smart contract
 
 ```solidity
 // SPDX-License-Identifier: MIT
@@ -55,7 +55,7 @@ contract HelloWorld {
 
 ```
 
-### Steps to Deploy the HelloWorld Smart Contract
+### Steps to deploy the HelloWorld smart contract
 
 1. Create a file named `HelloWorld.sol`.
 2. Select Solidity Compiler and compile `HelloWorld.sol`.
@@ -104,17 +104,17 @@ getGreeting();
 
 Follow the steps below to change the greeting and retrieve the new greeting.
 
-## Updating the Deployed Smart Contract
+## Updating the deployed smart contract
 
-![Update Smart Contract](./imgs/Remix-update-greeting.gif)
+![Update smart contract](./imgs/Remix-update-greeting.gif)
 
 1. Select the `HelloWorld.sol` file.
 2. Select the `Deploy and Run Transaction` page.
 3. Make sure to select `Injected Provider - Metamask` in Environment dropdown.
-4. Type a new greeting in the text input next to orange `changeGreeting` button.
-5. Click on the orange `changeGreeting` button.
+4. Type a new greeting in the text input next to `changeGreeting`.
+5. Click `changeGreeting`.
 6. Sign the Metamask transaction.
-7. Verify the greeting has changed by re-running `get-greeting.js` script above.
+7. To verify the greeting changed, re-run the `get-greeting.js` script above.
 
 <!-- Reference-style links, will not render on page. -->
 

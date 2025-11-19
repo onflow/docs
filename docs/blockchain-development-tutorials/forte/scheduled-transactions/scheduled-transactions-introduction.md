@@ -15,7 +15,7 @@ keywords:
   - defi automation
 ---
 
-# Introduction to Scheduled transactions
+# Introduction to scheduled transactions
 
 :::warning
 
@@ -135,7 +135,7 @@ briandoyle@Mac scheduled-transactions-scaffold % flow scripts execute cadence/sc
 Result: 3
 ```
 
-### Review the existing contract and transactions
+### Review the current contract and transactions
 
 If you're not familiar with `cadence/contracts/Counter.cdc` review it. This is the standard contract created by default when you run `flow init`. It's very simple, with a counter and public functions to increment or decrement it.
 
@@ -188,7 +188,7 @@ This contract is simple. It contains a [resource] that has a function with the `
 
 It also contains functions to get metadata about the handler and a function, `createHandler`, which creates and returns an instance of the `Handler` resource. There are other metadata views that could be good to include in your Handler, but we're sticking to the basic ones for now.
 
-### Initializing the transaction handler
+### Initialize the transaction handler
 
 Next, take a look at `cadence/transactions/InitCounterTransactionHandler.cdc`:
 
@@ -325,7 +325,7 @@ It also provides many convenient functions to get detailed information about all
 When setting up a manager, you also publish a capability for it so it is easy for scripts
 to query your account and also see what transactions are scheduled!
 
-### Set Up the Manager
+### Set up the Manager
 
 First, you need to create and store a Manager resource in your account:
 

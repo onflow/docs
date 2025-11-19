@@ -471,9 +471,9 @@ fun flashloanCallback(fee: UFix64, loan: @{FungibleToken.Vault}, data: AnyStruct
 
 ## Identification and traceability
 
-The `UniqueIdentifier` allows protocols to trace stack operations via Flow Actions interface-level events, identifying them by IDs. `IdentifiableResource` implementations should verify that access to the identifier is encapsulated by the structures they identify.
+The `UniqueIdentifier` allows protocols to trace stack operations via Flow Actions interface-level events, which identifies them by IDs. `IdentifiableResource` implementations should verify that access to the identifier is encapsulated by the structures they identify.
 
-While you can create Cadence struct types in any context (including being passed in as transaction parameters), the authorized `AuthenticationToken` [capability] verifies that only those issued by the Flow Actions contract can be used in connectors, preventing forgery.
+While you can create Cadence struct types in any context (such as passed in as transaction parameters), the authorized `AuthenticationToken` [capability] verifies that only those issued by the Flow Actions contract can be used in connectors, preventing forgery.
 
 For example, to use a `UniqueIdentifier` in a source->swap->sink:
 
@@ -575,14 +575,14 @@ By aligning the same ID across connectors (for example, Source → Swapper → S
 
 ### 2. Stack tracing
 
-- When using composite connectors (for example, `SwapSource`, `SwapSink`, `MultiSwapper`), IDs allow you to trace the complete path through the stack.
-- Helpful for debugging and understanding the flow of operations inside complex strategies.
+- When you use composite connectors (for example, `SwapSource`, `SwapSink`, `MultiSwapper`), IDs allow you to trace the complete path through the stack.
+- Helpful to heklp you debug and understand the flow of operations inside complex strategies.
 
 ### 3. Analytics and attribution
 
 - Allows measuring usage of specific strategies or routes.
 - Lets you join data from multiple connectors into a single logical "transaction" for reporting.
-- Supports fee attribution and performance monitoring across multi-step workflows.
+- Supports fee attribution and performance monitorsacross multi-step workflows.
 
 ### Without a shared `UniqueIdentifier`
 

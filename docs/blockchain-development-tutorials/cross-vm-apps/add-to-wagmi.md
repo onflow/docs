@@ -21,11 +21,11 @@ keywords:
   - supercharge your EVM app with Cadence
 ---
 
-# Add Flow Cadence to Your wagmi App
+# Add Flow Cadence to your wagmi app
 
-This tutorial demonstrates how to enhance your existing wagmi/RainbowKit application with Flow Cadence capabilities. By integrating the Flow Client Library (FCL) with your EVM stack, you can unlock powerful features like batch transactions with a single signature.
+This tutorial demonstrates how to enhance your existing wagmi/RainbowKit application with Flow Cadence capabilities. When you integrate the Flow Client Library (FCL) with your EVM stack, you can unlock powerful features like batch transactions with a single signature.
 
-## Video Overview
+## Video overview
 
 <div style={{ position: 'relative', paddingBottom: '56.25%', height: 0, overflow: 'hidden', maxWidth: '100%' }}>
   <iframe
@@ -40,30 +40,30 @@ This tutorial demonstrates how to enhance your existing wagmi/RainbowKit applica
 
 ## Objectives
 
-After completing this guide, you'll be able to:
+After you complete this guide, you'll be able to:
 
-- Add FCL to your existing wagmi/RainbowKit application
-- Configure FCL to work alongside your EVM wallet connections
-- Implement batch transactions that execute multiple EVM calls in a single Cadence transaction
-- Display both Cadence and EVM addresses in your application
+- Add FCL to your existing wagmi/RainbowKit application.
+- Configure FCL to work alongside your EVM wallet connections.
+- Implement batch transactions that execute multiple EVM calls in a single Cadence transaction.
+- Display both Cadence and EVM addresses in your application.
 
 ## Prerequisites
 
-### Next.js and Modern Frontend Development
+### Next.js and modern frontend development
 
-This tutorial uses [Next.js]. You don't need to be an expert, but it's helpful to be comfortable with development using a current React framework. You'll be on your own to select and use a package manager, manage Node versions, and other frontend environment tasks. If you don't have your own preference, you can just follow along with us and use [npm].
+This tutorial uses [Next.js]. You don't need to be an expert, but it's helpful to be comfortable with development with a current React framework. You'll be on your own to select and use a package manager, manage Node versions, and other frontend environment tasks. If you don't have your own preference, you can just follow along with us and use [npm].
 
-### Solidity and Cadence Smart Contract Development
+### Solidity and Cadence smart contract development
 
-Apps using the hybrid approach can interact with both [Cadence] and [Solidity] smart contracts. You don't need to be an expert in either of these, but it's helpful to be familiar with how smart contracts work in at least one of these languages.
+Apps that use the hybrid approach can interact with both [Cadence] and [Solidity] smart contracts. You don't need to be an expert in either of these, but it's helpful to be familiar with how smart contracts work in at least one of these languages.
 
-### Onchain App Frontends
+### Onchain app frontends
 
-We're assuming you're familiar with [wagmi], [viem], and [RainbowKit]. If you're coming from the Cadence, you might want to take a quick look at the getting started guides for these platforms. They're all excellent and will rapidly get you up to speed on how the EVM world commonly connects their apps to their contracts.
+We assume that you're familiar with [wagmi], [viem], and [RainbowKit]. If you come from the Cadence, you might want to take a quick look at the getting started guides for these platforms. They're all excellent and will rapidly get you up to speed on how the EVM world commonly connects their apps to their contracts.
 
-## Create an App
+## Create an app
 
-Start by creating an app using [RainbowKit]'s scaffold:
+To start, create an app with [RainbowKit]'s scaffold:
 
 ```bash
 npm init @rainbow-me/rainbowkit@latest
@@ -71,7 +71,7 @@ npm init @rainbow-me/rainbowkit@latest
 
 ## Install Required Dependencies
 
-Continue by adding the necessary Flow dependencies to your project:
+Next, add the necessary Flow dependencies to your project:
 
 ```bash
 npm install @onflow/fcl @onflow/fcl-rainbowkit-adapter
@@ -79,10 +79,10 @@ npm install @onflow/fcl @onflow/fcl-rainbowkit-adapter
 
 These packages provide:
 
-- `@onflow/fcl`: The Flow Client Library for interacting with the Cadence VM
-- `@onflow/fcl-rainbowkit-adapter`: An adapter that allows RainbowKit to work with FCL-compatible wallets
+- `@onflow/fcl`: The Flow Client Library for interacting with the Cadence VM.
+- `@onflow/fcl-rainbowkit-adapter`: An adapter that allows RainbowKit to work with FCL-compatible wallets.
 
-## Step 2: Configure FCL in Your wagmi Setup
+## Step 2: Configure FCL in your wagmi setup
 
 Update your wagmi configuration (`src/wagmi.ts`) to include FCL:
 
@@ -127,10 +127,10 @@ export const config = createConfig({
 });
 ```
 
-## Step 3: Add the Batch Transaction Utility
+## Step 3: Add the batch transaction utility
 
 <Callout type="info">
-You can skip this step by using a [pre-built utility from the `@onflow/react-sdk`] package. However, if you want to understand how batch transactions work under the hood, continue with this custom implementation.
+You can skip this step if you use a [pre-built utility from the `@onflow/react-sdk`] package. However, if you want to understand how batch transactions work under the hood, continue with this custom implementation.
 </Callout>
 
 Create a custom hook in `src/hooks/useBatchTransactions.ts` to handle batch transactions. This utility allows you to execute multiple EVM transactions in a single Cadence transaction:
@@ -359,7 +359,7 @@ export function useBatchTransaction() {
 
 ## Step 4: Implement the UI
 
-Now, update your application's `page.tsx` to use the batch transaction utility. Update
+Now, update your application's `page.tsx` to use the batch transaction utility. Update:
 
 ```tsx
 'use client';
@@ -451,7 +451,7 @@ function Page() {
 export default Page;
 ```
 
-## Step 5: Test Your Application
+## Step 5: Test Your application
 
 1. Start your development server:
 
@@ -459,35 +459,35 @@ export default Page;
    npm run dev
    ```
 
-2. Connect your wallet using the RainbowKit `ConnectButton`
+2. Connect your wallet with the RainbowKit `ConnectButton`
 
    - Make sure to use a Cadence-compatible wallet like Flow Wallet
 
-3. Click the "Send Batch Transaction" button
+3. Click "Send Batch Transaction"
 
-   - You'll be prompted to approve the Cadence transaction
-   - This transaction will execute multiple EVM calls in a single atomic operation
+   - You'll be prompted to approve the Cadence transaction.
+   - This transaction will execute multiple EVM calls in a single atomic operation.
 
 4. Observe the results
-   - The Cadence transaction ID will be displayed
-   - The results of each EVM transaction will be shown
+   - The Cadence transaction ID will be displayed.
+   - The results of each EVM transaction will be shown.
 
 ## How It Works
 
 When you call `sendBatchTransaction`, the following happens:
 
-1. A Cadence transaction is created that includes all your EVM calls
-2. The transaction is executed using FCL's `mutate` function
-3. The Cadence transaction calls each EVM transaction in sequence
-4. If any transaction fails and `mustPass` is true, the entire batch is rolled back
-5. The results of each EVM transaction are returned
+1. A Cadence transaction is created that includes all your EVM calls.
+2. The transaction is executed with FCL's `mutate` function.
+3. The Cadence transaction calls each EVM transaction in sequence.
+4. If any transaction fails and `mustPass` is true, the entire batch is rolled back.
+5. The results of each EVM transaction are returned.
 
 This approach gives you several advantages:
 
-- **Atomic Operations**: All transactions succeed or fail together
-- **Single Signature**: Users only need to sign one transaction
-- **Gas Efficiency**: Reduced gas costs compared to separate transactions
-- **Simplified UX**: Users don't need to approve multiple transactions
+- **Atomic Operations**: All transactions succeed or fail together.
+- **Single Signature**: Users only need to sign one transaction.
+- **Gas Efficiency**: Reduced gas costs compared to separate transactions.
+- **Simplified UX**: Users don't need to approve multiple transactions.
 
 ## Conclusion
 
