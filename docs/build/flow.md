@@ -74,7 +74,7 @@ Flow is unique in supporting two powerful programming languages for smart contra
 - **Cadence**: A modern programming language developed by smart contract application builders.
 - **Solidity**: The industry-standard language for EVM development, fully supported on Flow with full EVM equivalence.
 
-EVM and Cadence environments both use FLOW as gas for transactions and are connected by a native bridge that allows seamless and cheap communication between them. Fungible and non-fungible tokens can also be seamlessly transferred between environments using the native VM token bridge, taking place instantly in a single atomic transaction.
+EVM and Cadence environments both use FLOW for transactions fees (gas on the EVM side and compute unit of the Cadence side) and are connected by a native bridge that allows seamless and cheap communication between them. Fungible and non-fungible tokens can also be seamlessly transferred between environments using the native VM token bridge, taking place instantly in a single atomic transaction.
 
 This means developers can choose the language that best fits their needs while maintaining full interoperability between both environments.
 
@@ -113,15 +113,15 @@ EVM-equivalency on Flow works behind-the-scenes by implementing a minimal transa
 - **Scalable and Secure Architecture**: The [multi-role architecture] of Flow allows the network to [scale without sharding] to serve billions of users without reducing the decentralization of consensus and verification.
 - **True, fast finality**: For most other networks, it takes minutes, [a day], or even [a week] to reach hard finality — the point at which a transaction cannot be reversed. On Flow, the median time for finality is [under 10 seconds], without compromising security.
 - **Consumer onboarding**: Flow was designed for mainstream consumers, with payment onramps catalyzing a safe and low-friction path from fiat to crypto.
-- **Efficient gas costs**: The Flow blockchain is extremely efficient, allowing apps to do more computation at lower costs.
+- **Efficient compute unit and gas costs**: The Flow blockchain is extremely efficient both on the Cadence side and the EVM side, allowing apps to do more computation at lower costs.
 
 ### MEV resilience
 
 The [MEV Resilient] design on Flow offers DeFi builders improved market efficiency, fairness, trust, and long-term viability for their apps. Since Flow EVM transactions are composed and executed within a Cadence transaction, block production is handled by the [multi-role architecture] on Flow.
 
-This robust MEV resilience is a significant difference from other EVM-compatible networks and results in reasonably priced and predictable gas fees. The impracticality of frontrunning or other attacks improves the user experience by eliminating failed transactions and invisible fees.
+This robust MEV resilience is a significant difference from other EVM-compatible networks and results in reasonably priced and predictable compute unit (gas) fees. The impracticality of frontrunning or other attacks improves the user experience by eliminating failed transactions and invisible fees.
 
-### Scalability, performance, and low gas fees
+### Scalability, performance, and low compute unit (gas) fees
 
 For sustainable user adoption, apps require the network they build on to be secure, efficient, affordable, and fast. Gas fees are ultra-low cost on the network, but Flow goes a step further allowing for gasless experiences through sponsored transactions.
 
@@ -197,7 +197,7 @@ This means developers can:
 - **Compose complex operations**: Build sophisticated DeFi strategies by combining multiple Actions in one transaction
 - **Eliminate integration complexity**: Use standardized interfaces instead of custom contract integrations
 - **Ensure atomicity**: All operations succeed together or fail together, eliminating partial execution risks
-- **Reduce gas costs**: Execute multiple protocol interactions more efficiently than separate transactions
+- **Reduce compute unit (gas) costs**: Execute multiple protocol interactions more efficiently than separate transactions
 
 ### Scheduled Transaction: Autonomous onchain execution
 

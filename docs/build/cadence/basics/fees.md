@@ -15,6 +15,7 @@ keywords:
   - network protection
   - blockchain fees
   - gas fees
+  - compute unit fees
   - Flow token
   - fee structure
   - cost estimation
@@ -32,13 +33,17 @@ Are you an EVM developer looking for information about EVM Accounts on Flow? If 
 
 A transaction fee is a cost paid in Flow by the payer account and is required for a transaction to be included in the Flow blockchain. Fees are necessary for protecting the network against spam/infinite running transactions and to provide monetary incentives for participants that make up the Flow network.
 
-A transaction fee is paid regardless of whether a transaction succeeds or fails. If the payer account doesn't have sufficient Flow balance to pay for the transaction fee, the transaction will fail. We can limit the transaction fee to some extent by providing the gas limit value when submitting the transaction.
+On Flow, transaction fees are determined using `compute units (CU)`, a metric that captures the effort needed to include and execute a transaction. Compute units function similarly to gas in EVM systems but are derived differently. The final fee paid by the user is calculated by multiplying the transaction’s total compute units by the current compute-unit price, with all fees payable in FLOW.
+
+A transaction fee is paid regardless of whether a transaction succeeds or fails. If the payer account doesn't have sufficient Flow balance to pay for the transaction fee, the transaction will fail. We can limit the transaction fee to some extent by providing the compute unit limit value when submitting the transaction.
 
 ### Understanding the need for transaction fees
 
+One of the ways that a single computer that no one owns and anyone can use from being monopolized by any part is to charge a fee measured by the amount of computation needed to execute code. All blockchains implement a form of this system.
+
 Segmented transaction fees are essential to ensure fair pricing based on the impact on the network. For instance, more heavy operations will require more resources to process and propagate transactions. Common operations, however, will stay reasonably priced.
 
-Fees will improve the overall security of the network by making malicious actions (eg spam) on the network less viable.
+Fees improve the overall security of the network by making malicious actions (eg spam) on the network less viable. They also prevent the computer from crashing in the event that an infinite loop is started maliciously or accidentally.
 
 The unique Flow architecture is targeted at high throughput. It makes it easier to have slack in the system, so short spikes can be handled more gracefully.
 
@@ -79,9 +84,9 @@ Right now, the inclusion effort is always 1.0 and the inclusion effort cost is f
 
 **Surge Factor**
 
-In the future, a network surge will be applied when the network is busy due to an increased influx of transactions required to be processed or a decrease in the ability to process transactions. Right now, the network surge is fixed to `1.0`.
+A network surge factor is applied when the network is busy due to an increased influx of transactions required to be processed or a decrease in the ability to process transactions.
 
-Currently, both the inclusion fee and surge factor don't represent any significant Flow fees. Keep in mind this can change in the future.
+See [FLIP 336](https://github.com/onflow/flips/blob/main/governance/20250727-dynamic-transaction-fees.md) for details on this calculation.
 
 **Estimating transaction costs**
 

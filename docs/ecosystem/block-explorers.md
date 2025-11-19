@@ -20,7 +20,7 @@ Block explorers are user-friendly online tools that visually present blockchain 
 - Transactions
 - Contracts
 - Network activity (transaction count)
-- Transaction cost (gas fee)
+- Transaction cost (compute unit/gas fee)
 - Validators information
 
 ### Supported networks:
