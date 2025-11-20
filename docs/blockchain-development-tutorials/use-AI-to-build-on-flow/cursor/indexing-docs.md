@@ -23,7 +23,7 @@ keywords:
 - Active internet connection for documentation indexing.
 - Cursor Pro subscription (recommended for full documentation access).
 
-## Documentation Sources
+## Documentation sources
 
 For optimal Flow development assistance, you'll want to index three key documentation sources:
 
@@ -31,17 +31,17 @@ For optimal Flow development assistance, you'll want to index three key document
 2. **Cadence Language Documentation** - Complete Cadence programming language reference.
 3. **Flow Data Sources** - Comprehensive, auto-generated knowledge base with current practices.
 
-## Installation Steps
+## Installation steps
 
-### Step 1: Access Documentation Settings
+### Step 1: Access documentation settings
 
 1. Open Cursor and navigate to **Settings** (or press `Cmd/Ctrl + ,`).
 2. Go to **Features > Docs**.
-3. Click **"+ Add new doc"** to begin adding documentation sources.
+3. Click **"+ Add new doc"** to add documentation sources.
 
 ![Cursor Settings](./imgs/use-cursor-1.png)
 
-### Step 2: Add Flow Developer Documentation
+### Step 2: Add Flow developer documentation
 
 1. In the URL field, enter: `https://developers.flow.com/tools`
    - **Note**: Use the `/tools` endpoint as it properly indexes all Flow documentation.
@@ -52,7 +52,7 @@ For optimal Flow development assistance, you'll want to index three key document
 
 ![Cursor Settings](./imgs/use-cursor-2.png)
 
-### Step 3: Add Cadence Language Documentation
+### Step 3: Add Cadence language documentation
 
 1. Click **"+ Add new doc"** again.
 2. Enter the Cadence documentation URL: `https://cadence-lang.org/docs/`
@@ -60,31 +60,33 @@ For optimal Flow development assistance, you'll want to index three key document
 4. Click **"Confirm"** to add the documentation.
 5. Allow time for indexing to complete.
 
-### Step 4: Add Flow Data Sources
+### Step 4: Add Flow data sources
 
 1. Click **"+ Add new doc"** again.
 2. Enter the Flow Data Sources URL: `https://github.com/onflow/Flow-Data-Sources/blob/main/merged_docs/all_merged.md`
 3. Set the name as **"Flow Data Sources"**.
 4. Click **"Confirm"** to add the documentation.
 
-:::caution Resource Requirements
+:::caution 
 
-The Flow Data Sources file is very large and comprehensive. For older development machines or those with limited resources, consider using the [essentials merged file] instead:
+Resource Requirements
+
+The Flow Data Sources file is very large and comprehensive. For older development machines or those with limited resources, we recommend you use the [essentials merged file] instead:
 `https://github.com/onflow/Flow-Data-Sources/blob/main/merged_docs/essentials_merged.md`
 
 :::
 
-### Step 5: Verify Indexing
+### Step 5: Verify indexing
 
 1. Monitor the indexing progress in the **Docs** section of Cursor settings.
 2. Wait for all three documentation sources to show as "Indexed" or "Ready."
-3. Indexing time varies depending on your internet connection and system performance.
+3. Indexing time varies, and depends on your internet connection and system performance.
 
-## Using Indexed Documentation
+## Use indexed documentation
 
 After indexing finishes, you can reference the documentation in your Cursor prompts:
 
-### Reference Syntax
+### Reference syntax
 
 - `@Flow` - Reference Flow developer documentation.
 - `@Cadence` - Reference Cadence language documentation.
@@ -92,7 +94,7 @@ After indexing finishes, you can reference the documentation in your Cursor prom
 
 ![Cursor Settings](./imgs/use-cursor-3.png)
 
-### Example Usage
+### Example usage
 
 ```
 @Flow How do I deploy a contract to Flow Testnet?
@@ -102,22 +104,22 @@ After indexing finishes, you can reference the documentation in your Cursor prom
 @Flow Data Sources How do I implement a marketplace for NFTs with royalties?
 ```
 
-## Best Practices
+## Best practices
 
-### When to Use Each Source
+### When to use each source
 
-- **@Flow**: Use for Flow-specific concepts, tools, CLI commands, network information, and ecosystem questions
-- **@Cadence**: Use for Cadence programming language syntax, features, patterns, and code examples  
-- **@Flow Data Sources**: Use for complex questions, advanced patterns, comprehensive tutorials, or when other sources don't provide satisfactory results
+- **@Flow**: Use for Flow-specific concepts, tools, CLI commands, network information, and ecosystem questions.
+- **@Cadence**: Use for Cadence programming language syntax, features, patterns, and code examples.
+- **@Flow Data Sources**: Use for complex questions, advanced patterns, comprehensive tutorials, or when other sources don't provide satisfactory results.
 
-### Prompt Optimization
+### Prompt optimization
 
-- **Be Specific**: Detailed prompts yield more accurate and relevant responses
-- **Combine Sources**: Use multiple references for cross-VM applications (`@Flow` and `@Cadence`)
-- **Context Matters**: Include relevant project context in your prompts
-- **Verify Results**: Use documentation to validate AI-generated code and ensure best practices
+- **Be Specific**: Detailed prompts yield more accurate and relevant responses.
+- **Combine Sources**: Use multiple references for cross-VM applications (`@Flow` and `@Cadence`).
+- **Context Matters**: Include relevant project context in your prompts.
+- **Verify Results**: Use documentation to validate AI-generated code and ensure best practices.
 
-### Example Combined Usage
+### Example combined usage
 
 ```
 Using @Flow and @Cadence, help me create a transaction that deploys an NFT contract and mints the first token, then show me how to call this from a React app using FCL.
@@ -125,7 +127,7 @@ Using @Flow and @Cadence, help me create a transaction that deploys an NFT contr
 
 ## Troubleshooting
 
-### Common Issues and Solutions
+### Common issues and solutions
 
 **Documentation Not Indexed**:
 - Verify all URLs are correct and accessible.
@@ -147,31 +149,31 @@ Using @Flow and @Cadence, help me create a transaction that deploys an NFT contr
 - Try more specific prompts with clear context.
 - Cross-reference responses with official documentation.
 
-### Getting Help
+### Get Help
 
 If you continue to experience issues:
 
 1. Check the [Cursor documentation] for additional troubleshooting steps.
 2. Verify that all documentation URLs are accessible in your browser.
 3. Contact Cursor support through their official channels.
-4. Consider using alternative documentation sources if specific URLs are problematic.
+4. Consider an alternative documentation sources if specific URLs are problematic.
 
-## Maintaining Your Setup
+## Maintain your setup
 
-### Regular Maintenance
+### Regular maintenance
 
 - **Refresh Periodically**: Re-index documentation monthly to ensure current information.
 - **Monitor Updates**: Stay aware of major Flow or Cadence documentation updates.
 - **Clean Up**: Remove unused documentation sources to improve performance.
 
-### Team Collaboration
+### Team collaboration
 
 For development teams:
 - Share the same documentation configuration across team members.
 - Document your specific setup in your project README.
 - Consider creating team-specific documentation sources for internal patterns and practices.
 
-By following this setup guide, you'll have comprehensive Flow and Cadence documentation available directly within Cursor, enabling more accurate AI assistance and faster development workflows.
+If you follow this setup guide, you'll have comprehensive Flow and Cadence documentation available directly within Cursor, which allows more accurate AI assistance and faster development workflows.
 
 <!-- Reference-style links, will not render on page. -->
 

@@ -5,7 +5,7 @@ sidebar_label: Using AgentKit on Flow
 sidebar_position: 2
 ---
 
-# Getting Started with AgentKit on Flow
+# Build Custom AI Agents on Flow with AgentKit
 
 AgentKit is an ecosystem-agnostic modular developer toolkit that lets you rapidly build, deploy, and iterate on AI agents using pre-configured environments and ready-to-use templates.
 
@@ -13,7 +13,7 @@ In this guide, you'll set up your own custom agent that runs on **Flow's EVM-com
 
 ---
 
-## Quickstart - Starting From Scratch
+## Quickstart - start from scratch
 
 Open your terminal and run:
 
@@ -36,7 +36,7 @@ Follow the interactive setup:
 
 ---
 
-## Project Setup
+## Project setup
 
 When your scaffold is ready:
 
@@ -45,7 +45,7 @@ cd onchain-agent
 npm install
 ```
 
-Now open the project in your preferred integrated development environment (IDE) (for example, [Cursor](../cursor/index.md).
+Now open the project in your preferred integrated development environment (IDE) (for example, [Cursor].
 
 ### Environment Configuration
 
@@ -56,7 +56,7 @@ Now open the project in your preferred integrated development environment (IDE) 
 
 ### Get Your Anthropic API Key
 
-- Head to [Anthropic Console](https://console.anthropic.com/dashboard).
+- Head to [Anthropic Console].
 - Create an account and **purchase credits**.
 - Click **Create Key**, name it, and copy the API key.
 - Add this to your `.env.local`:
@@ -65,10 +65,10 @@ Now open the project in your preferred integrated development environment (IDE) 
 ANTHROPIC_API_KEY=your_api_key_here
 ```
 
-### Wallet Setup with MetaMask
+### Wallet setup with MetaMask
 
-1. Add [Flow Testnet](https://developers.flow.com/evm/using) to MetaMask.
-2. Use the [Faucet](https://faucet.flow.com/fund-account) to fund your wallet.
+1. Add [Flow Testnet] to MetaMask.
+2. Use the [Faucet] to fund your wallet.
 3. Get your private key:
    - Click the `...` menu in MetaMask > **Account Details**.
    - Enter your password, copy the private key.
@@ -104,11 +104,11 @@ http://localhost:3000
 
 If your agent doesn't respond yet, no worries! You still need to configure your **LLM and client libraries**.
 
-### Choose a Model
+### Choose a model
 
-Langchain supports many LLMs ([full list here](https://python.langchain.com/docs/integrations/llms/)).
+Langchain supports many LLMs ([full list here]).
 
-For this example, we'll use **Anthropic's `claude-3-5-haiku-20241022`**, a lightweight and affordable model. Alternatively, [DeepSeek](https://deepseek.com/) is highly recommended for budget-friendly usage.
+For this example, we'll use **Anthropic's `claude-3-5-haiku-20241022`**, a lightweight and affordable model. Alternatively, [DeepSeek] is highly recommended for budget-friendly usage.
 
 ### Update `create-agent.ts`
 
@@ -134,9 +134,9 @@ npm install @langchain/anthropic
 
 ---
 
-## Configure Flow and Viem Wallet
+## Configure Flow and Viem wallet
 
-### Update the Faucet Provider Logic
+### Update the Faucet provider logic
 
 Change this:
 
@@ -150,7 +150,7 @@ To:
 const canUseFaucet = walletProvider.getNetwork().networkId == 'flow-testnet';
 ```
 
-### Add Flow Context Message to Agent
+### Add Flow context message to Agent
 
 This gives your agent context about the Flow testnet:
 
@@ -196,11 +196,11 @@ agent = createReactAgent({
 
 ---
 
-## You're Done!
+## You're done!
 
-You now have a working AI agent connected to Flow testnet using AgentKit!
+You now have a working AI agent connected to Flow testnet with AgentKit!
 
-You can send faucet tokens to your wallet and start testing smart contract interactions or onchain workflows.
+You can send faucet tokens to your wallet and start to test smart contract interactions or onchain workflows.
 
 ---
 
@@ -214,11 +214,11 @@ This starter includes all of the necessary configurations to start building imme
 
 ---
 
-## Adding AgentKit to an Existing Project
+## Add AgentKit to a current project
 
 Already have a project and want to add AgentKit? Follow these steps to integrate it into your codebase:
 
-### Install the Package
+### Install the package
 
 Run this command in your project's root directory:
 
@@ -228,11 +228,11 @@ npm install onchain-agent@latest
 
 This will:
 
-- Download and install the latest version of the `onchain-agent` package
-- Add it to the dependencies section of your `package.json`
-- Update your `node_modules` folder accordingly
+- Download and install the latest version of the `onchain-agent` package.
+- Add it to the dependencies section of your `package.json`.
+- Update your `node_modules` folder accordingly.
 
-### Configure Environment
+### Configure environment
 
 1. Create or update your `.env` file with the necessary API keys:
 
@@ -249,7 +249,7 @@ FLOW_TESTNET_RPC_URL=https://testnet.evm.nodes.onflow.org
 FLOW_MAINNET_RPC_URL=https://mainnet.evm.nodes.onflow.org
 ```
 
-### Integrate AgentKit in Your Code
+### Integrate AgentKit in your code
 
 Import and configure AgentKit in your application:
 
@@ -284,7 +284,7 @@ const agent = createReactAgent({
 // ...
 ```
 
-### Add Specialized Tools (Optional)
+### Add Specialized tools (optional)
 
 To add specialized blockchain tools to your agent:
 
@@ -314,11 +314,25 @@ const agent = createReactAgent({
 
 ## Resources
 
-- [AgentKit Docs](https://docs.cdp.coinbase.com/agent-kit/welcome)
-- [Flow EVM Guide](https://developers.flow.com/evm/using)
-- [Langchain LLM Integrations](https://python.langchain.com/docs/integrations/llms/)
-- [Anthropic Model Comparison](https://docs.anthropic.com/en/docs/about-claude/models/all-models#model-comparison-table)
+- [AgentKit Docs]
+- [Flow EVM Guide]
+- [Langchain LLM Integrations]
+- [Anthropic Model Comparison]
 
 ---
 
 Happy hacking on Flow!
+
+<!-- Relative links, will not render on page -->
+
+[Cursor]: ../cursor/index.md
+[Anthropic Console]: https://console.anthropic.com/dashboard
+[Flow Testnet]: https://developers.flow.com/evm/using
+[Faucet]: https://faucet.flow.com/fund-account
+[full list here]: https://python.langchain.com/docs/integrations/llms/
+[DeepSeek]: https://deepseek.com/
+[Fork the Flow AgentKit Starter]: https://github.com/Aliserag/flow-agentkit-starter
+[AgentKit Docs]: https://docs.cdp.coinbase.com/agent-kit/welcome
+[Flow EVM Guide]: https://developers.flow.com/evm/using
+[Langchain LLM Integrations]: https://python.langchain.com/docs/integrations/llms/
+[Anthropic Model Comparison]: https://docs.anthropic.com/en/docs/about-claude/models/all-models#model-comparison-table

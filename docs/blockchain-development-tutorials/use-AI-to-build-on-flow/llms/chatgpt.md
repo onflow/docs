@@ -68,13 +68,13 @@ I want to make a GPT called FlowGPT that uses the linked file as it's primary so
 
 ---
 
-## 📍 Step 4: Configure the GPT's Nnme and instructions
+## 📍 Step 4: Configure the GPT's name and instructions
 
 ChatGPT may ask you to customize or verify:
 
-- **Name and description** of your GPT
-- **Instructions**: Tell it how to behave and what to prioritize (for example, always reference the uploaded document)
-- **Capabilities**: Allow file browsing, code interpreter, or DALL·E if needed
+- **Name and description** of your GPT.
+- **Instructions**: Tell it how to behave and what to prioritize (for example, always reference the uploaded document).
+- **Capabilities**: Allow file browsing, code interpreter, or DALL·E if needed.
 
 We've found it helpful to suggest:
 

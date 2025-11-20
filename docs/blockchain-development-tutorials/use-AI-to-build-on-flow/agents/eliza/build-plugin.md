@@ -18,7 +18,7 @@ keywords:
 
 Plugins are a powerful way to extend the functionality of your Eliza AI agents. This guide will walk you through the process of how to create custom plugins that can enhance your agent's capabilities, from simple utilities to complex integrations with external services. You'll learn how to leverage the plugin system to create modular and reusable components for your AI agents.
 
-## Learning Objectives
+## Learning objectives
 
 After you complete this tutorial, you will be able to:
 
@@ -33,21 +33,21 @@ After you complete this tutorial, you will be able to:
 
 Before you get started with Eliza, make sure you have:
 
-- [Node.js 23+] (using [nvm] is recommended)
+- [Node.js 23+] (we recommend that you use [nvm])
 - [pnpm 9+]
 - Git for version control
-- A code editor ([VS Code], [Cursor] or [VSCodium] recommended)
+- A code editor (we recommend [VS Code], [Cursor] or [VSCodium])
 - [Flow-cli] for Flow blockchain interaction.
 
-> **Note for Windows Users:** [WSL 2] is required.
+> **Note for Windows users:** [WSL 2] is required.
 
 ## Quickstart
 
 Follow the [Quickstart Guide] to set up your development environment.
 
-## Plugin Development
+## Plugin development
 
-### Create a Plugin repository from Template
+### Create a plugin repository from Template
 
 Visit [Eliza Plugin Template] and click "Use this template" to create a new repository.
 
@@ -59,7 +59,7 @@ Flow's Eliza plugin template uses Dependency Injection(`@elizaos-plugins/plugin-
 
 :::
 
-### Add the Plugin repository to your Eliza project
+### Add the plugin repository to your Eliza project
 
 Let's say you created a repository named `username/plugin-foo`.
 
@@ -93,7 +93,7 @@ Check the `agent/package.json` to make sure the plugin is added. You'll see some
 }
 ```
 
-### Build the Plugin
+### Build the plugin
 
 Build the plugin with the following command:
 
@@ -104,9 +104,9 @@ pnpm build --filter ./packages/plugin-foo
 pnpm build
 ```
 
-### Add Plugin to the `character.json` you want to use
+### Add the plugin to the `character.json` you want to use
 
-Let's say you want to add the plugin to the `sample` character which is `characters/sample.character.json`.
+Let's say you want to add the plugin to the `sample` character, which is `characters/sample.character.json`.
 
 ```json
 {
@@ -119,7 +119,7 @@ Let's say you want to add the plugin to the `sample` character which is `charact
 
 :::warning
 
-If you use Dependency Injection(`@elizaos-plugins/plugin-di`) in your plugin, remember to add it to the `postProcessors` field. And **`clients` field is deprecated** in the latest version of Eliza, so if you want to add clients, you also need to use `plugins` field.
+If you use Dependency Injection(`@elizaos-plugins/plugin-di`) in your plugin, remember to add it to the `postProcessors` field. The **`clients` field is deprecated** in the latest version of Eliza, so if you want to add clients, you also need to use `plugins` field.
 
 :::
 
@@ -136,7 +136,7 @@ If you use Dependency Injection(`@elizaos-plugins/plugin-di`) in your plugin, re
 }
 ```
 
-### Run the Eliza Agent with your Plugin
+### Run the Eliza agent with your plugin
 
 Run the Eliza agent to test the plugin.
 
@@ -147,7 +147,7 @@ pnpm start --character="characters/sample.character.json"
 pnpm start:debug --character="characters/sample.character.json"
 ```
 
-### Interact with the Agent
+### Interact with the agent
 
 Now, you're ready to start a conversation with your agent.
 
@@ -157,7 +157,7 @@ Open a new terminal window and run the client's http server.
 pnpm start:client
 ```
 
-## Plugin Registration
+## Plugin registration
 
 You need to register your plugin in the [Eliza Plugin Registry] to make it available for other users.
 
