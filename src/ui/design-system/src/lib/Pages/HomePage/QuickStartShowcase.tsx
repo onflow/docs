@@ -17,6 +17,7 @@ const ITEMS = [
   'Balance of custom token',
   'NBA Top Shot and NFL All Day',
   'Increment Counter Transaction',
+  'Deposit FlowToken with TokenSink',
 ];
 
 // Helper function to create flow clients for different networks
@@ -286,6 +287,72 @@ transaction {
       return { type: 'text', value: data || 'Transaction executed' };
     },
   },
+  {
+    type: 'transaction' as const,
+    network: 'testnet' as const,
+    cadence: `import FungibleToken from 0x9a0766d93b6608b7
+import FlowToken from 0x7e60df042a9c0868
+import DeFiActions from 0x4c2ff9dd03ab442f
+import ExampleConnectors from 0xba129c479fefce07
+
+/// Deposit FlowToken into a recipient's vault using ExampleConnectors.TokenSink
+///
+/// This transaction demonstrates:
+/// - Creating a TokenSink pointing to a recipient's vault capability
+/// - Withdrawing tokens from the signer's vault
+/// - Depositing via the sink's depositCapacity method
+///
+/// @param recipient: Address of the account to receive tokens
+/// @param amount: Amount of FlowToken to send
+
+transaction(recipient: Address, amount: UFix64) {
+    let senderVault: auth(FungibleToken.Withdraw) &FlowToken.Vault
+    let sink: ExampleConnectors.TokenSink
+
+    prepare(signer: auth(BorrowValue) &Account) {
+        // Borrow the signer's FlowToken vault
+        self.senderVault = signer.storage.borrow<auth(FungibleToken.Withdraw) &FlowToken.Vault>(
+            from: /storage/flowTokenVault
+        ) ?? panic("Could not borrow FlowToken vault from signer")
+
+        // Get a capability to the recipient's FlowToken receiver
+        let recipientCap = getAccount(recipient)
+            .capabilities.get<&{FungibleToken.Receiver}>(/public/flowTokenReceiver)
+
+        // Create a TokenSink that will deposit into the recipient's vault
+        self.sink = ExampleConnectors.TokenSink(
+            vault: recipientCap,
+            uniqueID: nil
+        )
+    }
+
+    execute {
+        // Withdraw tokens from signer
+        let tokens <- self.senderVault.withdraw(amount: amount)
+
+        // Deposit via the sink
+        self.sink.depositCapacity(
+          from: &tokens as auth(FungibleToken.Withdraw) &{FungibleToken.Vault}
+        )
+
+        // Ensure everything was deposited
+        assert(tokens.balance == 0.0, message: "Tokens remaining after deposit")
+
+        destroy tokens
+    }
+}`,
+    args: (arg: any, t: any, recipient: string, amount: string) => [
+      arg(recipient, t.Address),
+      arg(amount, t.UFix64),
+    ],
+    defaultArgs: { recipient: '0xa4c6ce4d423caef9', amount: '1.0' },
+    needsArgs: true,
+    argLabels: { recipient: 'Recipient Address', amount: 'Amount (FLOW)' },
+    editLink: 'https://run.dnz.dev/snippet',
+    formatResult: (data: any) => {
+      return { type: 'text', value: data || 'Tokens deposited successfully' };
+    },
+  },
 ];
 
 // Component that uses the hooks (must be inside FlowProvider)
@@ -321,9 +388,15 @@ function QuickStartShowcaseContent() {
     cadence: currentScript.cadence,
     args: (arg: any, t: any) => {
       // Pass the input values to the args function
-      if (currentScript.needsArgs && currentInputs.address) {
-        // Scripts that need args take address as third parameter
-        return (currentScript.args as (arg: any, t: any, address: string) => any[])(arg, t, currentInputs.address);
+      if (currentScript.needsArgs) {
+        // Handle multiple arguments based on what's available in currentInputs
+        if (currentInputs.recipient && currentInputs.amount) {
+          // Transactions with recipient and amount
+          return (currentScript.args as (arg: any, t: any, recipient: string, amount: string) => any[])(arg, t, currentInputs.recipient, currentInputs.amount);
+        } else if (currentInputs.address) {
+          // Scripts that need args take address as third parameter
+          return (currentScript.args as (arg: any, t: any, address: string) => any[])(arg, t, currentInputs.address);
+        }
       }
       // Scripts that don't need args
       return (currentScript.args as (arg: any, t: any) => any[])(arg, t);
@@ -371,8 +444,15 @@ function QuickStartShowcaseContent() {
     executeTransaction({
       cadence: currentScript.cadence,
       args: (arg: any, t: any) => {
-        if (currentScript.needsArgs && currentInputs.address) {
-          return (currentScript.args as (arg: any, t: any, address: string) => any[])(arg, t, currentInputs.address);
+        if (currentScript.needsArgs) {
+          // Handle multiple arguments based on what's available in currentInputs
+          if (currentInputs.recipient && currentInputs.amount) {
+            // Transactions with recipient and amount
+            return (currentScript.args as (arg: any, t: any, recipient: string, amount: string) => any[])(arg, t, currentInputs.recipient, currentInputs.amount);
+          } else if (currentInputs.address) {
+            // Scripts that need args take address as third parameter
+            return (currentScript.args as (arg: any, t: any, address: string) => any[])(arg, t, currentInputs.address);
+          }
         }
         return (currentScript.args as (arg: any, t: any) => any[])(arg, t);
       },
