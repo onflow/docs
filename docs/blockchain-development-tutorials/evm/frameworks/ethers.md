@@ -6,7 +6,7 @@ sidebar_position: 1
 
 # Ethers.js
 
-[ethers.js](https://docs.ethers.org/v5/) is a powerful JavaScript library for interacting with Ethereum and other EVM-compatible blockchain networks.
+[ethers.js] is a powerful JavaScript library for interacting with Ethereum and other EVM-compatible blockchain networks.
 
 In this guide, we'll walk you through how to use `ethers.js` to interact with smart contracts on the Flow Blockchain.
 
@@ -14,7 +14,7 @@ In this guide, we'll walk you through how to use `ethers.js` to interact with sm
 
 ## Installation
 
-To begin using `ethers.js` in your project, you'll need to install the package. To do this, run the following command:
+To use `ethers.js` in your project, you'll first need to install the package. To do this, run the following command:
 
 ```bash
 bashCopy code
@@ -104,3 +104,7 @@ async function getValue() {
   console.log(value.toString());
 }
 ```
+
+<!-- Reference-style links, will not render on page. -->
+
+[ethers.js]: https://docs.ethers.org/v5/

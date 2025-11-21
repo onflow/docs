@@ -6,7 +6,7 @@ sidebar_position: 5
 
 # Interacting with COAs from Cadence
 
-[Cadence Owned Accounts (COAs)](../../build/evm/accounts.md#cadence-owned-accounts) are EVM accounts that a Cadence resouce owns, and are used to interact with Flow EVM from Cadence.
+[Cadence Owned Accounts (COAs)] are EVM accounts that a Cadence resouce owns, and are used to interact with Flow EVM from Cadence.
 
 COAs expose two interfaces for interaction: one on the Cadence side and one on the EVM side. In this guide, we focuses on how to interact with COAs with Cadence.
 
@@ -16,7 +16,7 @@ In this guide, we will walk through some basic examples that create and and inte
 
 To begin, we can take a look at a simplified version of the `EVM` contract, and highlight parts specific to COAs.
 
-You can learn more about the `EVM` contract [here](../../build/cadence/core-contracts/13-evm.md) and find the full contract code on [GitHub](https://github.com/onflow/flow-go/tree/master/fvm/evm/stdlib/contract.cdc).
+You can learn more about the `EVM` contract [here] and find the full contract code on [GitHub].
 
 ```cadence EVM.cdc
 access(all)
@@ -81,7 +81,7 @@ contract EVM {
 
 The `CadenceOwnedAccount` resource is a part of the `EVM` system contract, so to use any of these functions, you will need to import the `EVM` contract into your Cadence code.
 
-To import the `EVM` contract into your Cadence code using the simple import syntax, you can use the following format (learn more about configuring contracts in `flow.json` [here](../../build/tools/flow-cli/flow.json/configuration.md#contracts)):
+To import the `EVM` contract into your Cadence code with the simple import syntax, you can use the following format (learn more about how to configure contracts in `flow.json` [here]):
 
 ```cadence
 // This assumes you are working in the in the Flow CLI, FCL, or another tool that supports this syntax
@@ -98,7 +98,7 @@ import EVM from 0x1234
 // ...
 ```
 
-To find the deployment addresses of the `EVM` contract, you can refer to the [EVM contract documentation](../../build/cadence/core-contracts/13-evm.md).
+To find the deployment addresses of the `EVM` contract, you can refer to the [EVM contract documentation].
 
 ## Create a COA
 
@@ -137,7 +137,7 @@ During the singular transaction in which an account is created, the `AuthAccount
 
 :::
 
-First, you'll need to use the CLI to [generate keys](../../build/tools/flow-cli/keys/generate-keys.md) for the new account. Then, run the following transaction to create the Cadence Account and COA at one time.
+First, you'll need to use the CLI to [generate keys] for the new account. Then, run the following transaction to create the Cadence Account and COA at one time.
 
 :::warning
 
@@ -168,7 +168,7 @@ transaction(publicKeys: [Crypto.KeyListEntry]) {
 
 ## Retrieve the EVM Address of a COA
 
-To get the EVM address of a COA, you can use the `address` function from the `EVM` contract. This function returns the EVM address of the COA as an `EVM.Address` struct. This struct is used to represent addresses within Flow EVM and you cna also use it to query the balance, code, nonce, and so on of an account.
+To get the EVM address of a COA, you can use the `address` function from the `EVM` contract. This function returns the EVM address of the COA as an `EVM.Address` struct. This struct is used to represent addresses within Flow EVM and you can also use it to query the balance, code, nonce, and so on of an account.
 
 For our example, we could query the address of the COA we just created with the following script:
 
@@ -282,7 +282,7 @@ transaction(amount: UFix64) {
 
 This is a basic example which only transfers tokens between a single user's COA & Flow account. You can easily modify it to transfer these tokens between any arbitrary accounts.
 
-You can also deposit tokens directly into other types of EVM accounts with the `EVM.EVMAddress.deposit` function. See the [EVM contract documentation](../../build/cadence/core-contracts/13-evm.md) for more information.
+You can also deposit tokens directly into other types of EVM accounts with the `EVM.EVMAddress.deposit` function. See the [EVM contract documentation] for more information.
 
 :::
 
@@ -329,20 +329,20 @@ transaction(amount: UFix64) {
 
 :::info
 
-This is a basic example which only transfers tokens between a single user's COA & Flow account. It can be easily
+This is a basic example which only transfers tokens between a single user's COA and Flow account. It can be easily
 modified to transfer these tokens between any arbitrary accounts.
 
 :::
 
 ## Direct Calls to Flow EVM
 
-To interact with smart contracts on the EVM, you can use the `call` function provided by the COA resource. This function
+To interact with smart contracts on the EVM, you can use the `call` function the COA resource provides. This function
 takes the EVM address of the contract you want to call, the data you want to send, the gas limit, and the value you want
 to send. It will return a `EVM.Result` struct with the result of the call - you will need to handle this result in your
 Cadence code.
 
 This transaction will use the signer's COA to call a contract method with the defined signature and args at a given EVM
-address, executing with the provided gas limit and value:
+address, and executes with the provided gas limit and value:
 
 ```cadence call.cdc
 import "EVM"
@@ -397,7 +397,7 @@ transaction(evmContractHex: String, signature: String, args: [AnyStruct], gasLim
 :::info
 
 Notice that the calldata is encoded in the scope of the transaction. While developers can encode the calldata
-outside the scope of the transaction and pass the encoded data as an argument, doing so compromises the
+outside the scope of the transaction and pass the encoded data as an argument, this compromises the
 human-readability of Cadence transactions.
 
 It's encouraged to either define transactions for each COA call and encoded the hardcoded EVM signature and arguments,
@@ -457,7 +457,7 @@ transaction(to: String, amount: UInt) {
 
 ### Transfer ERC20
 
-Below is an example transaction demonstrating the common ERC20 transfer. You can use a similar pattern for other arbitrary EVM calls.
+Below is an example transaction that demonstrates the common ERC20 transfer. You can use a similar pattern for other arbitrary EVM calls.
 
 ```cadence erc20_transfer_from.cdc
 import "EVM"
@@ -506,7 +506,7 @@ transaction(erc20AddressHex: String, to: String, amount: UInt256) {
 
 ### Transfer ERC721
 
-Following on from above, the example transaction below demonstrates a common ERC721 transfer.
+The example transaction below demonstrates a common ERC721 transfer.
 
 ```cadence erc721_transfer.cdc
 import "EVM"
@@ -554,7 +554,7 @@ transaction(erc721AddressHex: String, to: String, id: UInt256) {
 
 #### Bulk transfer ERC721
 
-As covered in the [Batched EVM transactions walkthrough](./batched-evm-transactions.md), you can script multiple EVM calls in a single Cadence transaction. Compared to the single ERC721 transfer, to bulk send multiple tokens isn't much more code and allows for greater utility out of a single transaction. Below is an example of a bulk ERC721 token transfer.
+As covered in the [Batched EVM transactions walkthrough], you can script multiple EVM calls in a single Cadence transaction. Compared to the single ERC721 transfer, to bulk send multiple tokens isn't much more code and allows for greater utility out of a single transaction. Below is an example of a bulk ERC721 token transfer.
 
 ```cadence erc721_bulk_transfer.cdc
 import "EVM"
@@ -640,8 +640,18 @@ transaction(bytecode: String) {
 
 ## More information
 
-For more information about Cadence-owned Accounts, see [Flow EVM Accounts](../../build/evm/accounts.md).
+For more information about Cadence-owned Accounts, see [Flow EVM Accounts].
 
-Other useful snippets to use when you interact with COAs can be found [here](https://fw-internal-doc.gitbook.io/evm).
+Other useful snippets to use when you interact with COAs can be found [here].
 
-Check out the [Batched EVM Transactions walkthrough](./batched-evm-transactions.md) for details on transaction batching with Cadence.
+Check out the [Batched EVM Transactions walkthrough] for details on transaction batching with Cadence.
+
+<!-- Relative links, will not render on page -->
+
+[Flow EVM Accounts]: ../../build/evm/accounts.md
+[here]: https://fw-internal-doc.gitbook.io/evm
+[Batched EVM Transactions walkthrough]: ./batched-evm-transactions.md
+[EVM contract documentation]: ../../build/cadence/core-contracts/13-evm.md
+[generate keys]: ../../build/tools/flow-cli/keys/generate-keys.md
+[GitHub]: https://github.com/onflow/flow-go/tree/master/fvm/evm/stdlib/contract.cdc
+[Cadence Owned Accounts (COAs)]: ../../build/evm/accounts.md#cadence-owned-accounts

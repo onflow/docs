@@ -7,7 +7,7 @@ sidebar_position: 3
 
 # Using Remix
 
-Remix is an open-source, web-based development environment tailored for EVM smart contract development. It offers developers a comprehensive suite of tools to write, deploy, and test smart contracts in Solidity. For more information, visit [Remix](https://remix.ethereum.org/).
+Remix is an open-source, web-based development environment tailored for EVM smart contract development. It offers developers a comprehensive suite of tools to write, deploy, and test smart contracts in Solidity. For more information, visit [Remix].
 
 ## Add the Flow network to MetaMask
 
@@ -17,7 +17,7 @@ Navigate to the [Using EVM] page to find the button to add the Flow network info
 
 ## Fund Your Flow Account
 
-Navigate to the [Flow Testnet Faucet](https://faucet.flow.com/fund-account) to obtain FLOW tokens necessary to deploy a smart contract.
+Navigate to the [Flow Testnet Faucet] to obtain FLOW tokens necessary to deploy a smart contract.
 
 ## Deploy a smart contract with Remix
 
@@ -63,11 +63,11 @@ contract HelloWorld {
 4. Make sure to select `Injected Provider - Metamask` in Environment dropdown.
 5. Deploy the `HelloWorld` smart contract.
 
-## Calling the Deployed Smart Contract
+## Call the Deployed Smart Contract
 
 ![Call Smart Contract](./imgs/Remix-call-getGreeting.gif)
 
-### Using Ethers.js to Call the HelloWorld Smart Contract
+### Use Ethers.js to Call the HelloWorld Smart Contract
 
 1. Create a new `get-greeting.js` file under `scripts`.
 2. Paste in the JavaScript code below.
@@ -118,4 +118,6 @@ Follow the steps below to change the greeting and retrieve the new greeting.
 
 <!-- Reference-style links, will not render on page. -->
 
+[Remix]: https://remix.ethereum.org/
+[Flow Testnet Faucet]: https://faucet.flow.com/fund-account
 [Using EVM]: ../../../build/evm/using.mdx
