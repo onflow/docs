@@ -14,7 +14,7 @@ keywords:
 
 # Contribute to Flow MCP
 
-This tutorial will guide you through the process of contributing to the Flow MCP server. The [Model Context Protocol (MCP)] is an open standard developed by Anthropic that allows AI applications to interact seamlessly with external tools, systems, and data sources.  
+This tutorial will guide you through how to contribute to the Flow MCP server. The [Model Context Protocol (MCP)] is an open standard developed by Anthropic that allows AI applications to interact seamlessly with external tools, systems, and data sources.  
 
 ## Learning objectives
 
@@ -77,7 +77,7 @@ After you complete this tutorial, you should be able to:
 
     And we recommended that you add a test for your new tool in the `src/tools/your-tool-name/your-tool.test.ts` file.
 
-3. Add a prompt export in the `src/prompts` directory which is used to confirm that MCP clients can understand the new tool. You can refer to the existing tools for examples.
+3. Add a prompt export in the `src/prompts` directory which is used to confirm that MCP clients can understand the new tool. You can refer to the current tools for examples.
 
 4. Add your new tool to the `src/tools/index.ts` file.
 

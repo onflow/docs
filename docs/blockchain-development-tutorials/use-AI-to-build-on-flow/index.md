@@ -21,7 +21,7 @@ keywords:
 
 # Use AI To Build On Flow
 
-Artificial Intelligence (AI) tools can significantly enhance your Flow development experience by providing intelligent assistance, code generation, and documentation access. This tutorial series will guide you through integrating various AI tools with Flow development to boost your productivity and code quality.
+Artificial Intelligence (AI) tools can significantly enhance your Flow development experience with intelligent assistance, code generation, and documentation access. This tutorial series will guide you through how to integrate various AI tools with Flow development to boost your productivity and code quality.
 
 ## What You'll Learn
 
@@ -34,70 +34,70 @@ In this tutorial series, you'll discover how to:
 - Leverage AI for testing and optimization.
 - Build AI agents that interact with Flow using AgentKit.
 
-# AI Tutorials for Flow
+# AI tutorials for Flow
 
-## Using Claude Code with Flow
+## Use Claude Code with Flow
 
-Master systematic AI-powered Flow development with Claude Code, a terminal-integrated coding assistant designed for iterative blockchain development. This comprehensive guide teaches you to implement a four-stage development methodology (Idea → Visualization → Planning → Build) while leveraging unlimited context windows, subagent capabilities, and persistent project memory. Learn to configure `CLAUDE.md` files for Flow-specific instructions, integrate MCP servers for blockchain interactions, and implement checkpoint-based workflows that ensure reliable smart contract development from emulator to mainnet deployment.
+Master systematic AI-powered Flow development with Claude Code, a terminal-integrated coding assistant designed for iterative blockchain development. This comprehensive guide teaches you to implement a four-stage development methodology (Idea → Visualization → Planning → Build) while you leverage unlimited context windows, subagent capabilities, and persistent project memory. Learn to configure `CLAUDE.md` files for Flow-specific instructions, integrate MCP servers for blockchain interactions, and implement checkpoint-based workflows that ensure reliable smart contract development from emulator to mainnet deployment.
 
 Tutorial: [Claude Code for Flow Development]
 
-## Using Cursor with Flow
+## Use Cursor with Flow
 
-This guide details how you can set up the Cursor AI code editor with custom Flow knowledge bases, transforming it into a specialized assistant for building powerful applications on the Flow network. By providing the AI with direct access to the official Flow documentation, Cadence language references, and best-practice examples, you unlock a new tier of intelligent assistance that goes far beyond simple autocompletion
+This guide details how you can set up the Cursor AI code editor with custom Flow knowledge bases, which transforms it into a specialized assistant to build powerful applications on the Flow network. When you provide the AI with direct access to the official Flow documentation, Cadence language references, and best-practice examples, you unlock a new tier of intelligent assistance that goes far beyond simple autocompletion
 
 Tutorial: [Use Flow Knowledge Base in Cursor]
 
-## Using Chat GPT with Flow
+## Use ChatGPT with Flow
 
-Build your own expert AI assistant by creating a custom GPT specifically engineered to master the Flow blockchain and its Cadence smart contract language. This specialized tool will act as your personal pair programmer, providing highly accurate and context-aware answers to your most challenging development questions. By doing this, you're not just using a generic AI, you're creating a specialist trained on the exact documentation, code patterns, and best practices relevant to your work.
+Build your own expert AI assistant and create a custom GPT specifically engineered to master the Flow blockchain and its Cadence smart contract language. This specialized tool will act as your personal pair programmer and provide highly accurate and context-aware answers to your most challenging development questions. By doing this, you don't just use a generic AI, you create a specialist trained on the exact documentation, code patterns, and best practices relevant to your work.
 
 Tutorial: [Use Flow Knowledge Base in ChatGPT]
 
-## Data Sources
+## Flow Data Sources
 
-Learn about Flow Data Sources, a meticulously curated library designed to autonomously gather and structure information from the entire Flow ecosystem. This project systematically transforms a wide array of content into clean, AI-ready Markdown files, establishing a unified source of truth. The resulting collection acts as a foundational knowledge base, perfectly suited for powering advanced applications such as custom chatbots and sophisticated Retrieval-Augmented Generation (RAG) systems.
+Learn about Flow Data Sources, a meticulously curated library designed to autonomously gather and structure information from the entire Flow ecosystem. This project systematically transforms a wide array of content into clean, AI-ready Markdown files, which establishes a unified source of truth. This collection acts as a foundational knowledge base, perfectly suited to power advanced applications such as custom chatbots and sophisticated Retrieval-Augmented Generation (RAG) systems.
 
 Tutorial: [Data Sources]
 
-## Eliza Integration
+## Eliza integration
 
-Learn about how to use Eliza on Flow, a versatile framework for constructing sophisticated AI agents that communicate with users through natural language. This guide walks you through the entire process of configuring and launching an AI agent built with Eliza directly onto the Flow blockchain. You'll discover how to engineer intelligent agents capable of comprehending and addressing user prompts, all while harnessing the power of Flow's inherently secure and scalable onchain infrastructure.
+Learn about how to use Eliza on Flow, a versatile framework you can use to construct sophisticated AI agents that communicate with users through natural language. This guide walks you through how to configure and launch an AI agent built with Eliza directly onto the Flow blockchain. You'll discover how to engineer intelligent agents that can comprehend and address user prompts, all while you harness the power of Flow's inherently secure and scalable onchain infrastructure.
 
 Tutorial: [Eliza on Flow]
 
-## Build AI Agents with AgentKit
+## Build AI agents with AgentKit
 
-Learn how to build AI agents on Flow with AgentKit, a versatile and modular developer toolkit that is not tied to any single platform. It's engineered to dramatically accelerate the process of building, deploying, and refining AI agents by supplying pre-configured environments and a library of ready-to-use templates. This guide walks you through the steps to launch your own custom agent on Flow's EVM-compatible testnet, leveraging the powerful combination of the Langchain framework and Anthropic's Claude large language model.
+Learn how to build AI agents on Flow with AgentKit, a versatile and modular developer toolkit that is not tied to any single platform. It's engineered to dramatically accelerate the process of building, deploying, and refining AI agents by supplying pre-configured environments and a library of ready-to-use templates. This guide walks you through how to launch your own custom agent on Flow's EVM-compatible testnet, which lets you leverage the powerful combination of the Langchain framework and Anthropic's Claude large language model.
 
 Tutorial: [Build AI Agents with AgentKit]
 
-## MCP Guides
+## MCP guides
 
-Learn how to construct a custom Flow MCP (Model Context Protocol) server or use an existing one to empower your AI tools. These tutorials guide you through how to equip your AI applications with the unique capability to directly interact with the Flow blockchain, which allows them to perform onchain operations and access real-time data.
+Learn how to construct a custom Flow MCP (Model Context Protocol) server or use a current one to empower your AI tools. These tutorials guide you through how to equip your AI applications with the unique capability to directly interact with the Flow blockchain, which allows them to perform onchain operations and access real-time data.
 
 Tutorial: [Flow MCP]
 
-## Cadence Rules
+## Cadence rules
 
-Learn how to establish and utilize Cursor Rules to transform your AI assistant into a dedicated Flow development expert. This process embeds your AI with persistent, foundational knowledge of essential topics, including proper Cadence syntax, official NFT standards, project-specific configurations, and established development methodologies.
+Learn how to establish and use Cursor Rules to transform your AI assistant into a dedicated Flow development expert. This process embeds your AI with persistent, foundational knowledge of essential topics, such as proper Cadence syntax, official NFT standards, project-specific configurations, and established development methodologies.
 
 Tutorial: [Cadence Rules]
 
-## Best Practices
+## Best practices
 
 When you use AI tools with Flow development:
 
 - Always verify AI-generated code against Flow documentation.
 - Use specific prompts that reference Flow concepts and terminology.
-- Combine AI assistance with your own understanding of Flow architecture.
+- Combine AI assistance with your own knowledge of Flow architecture.
 - Keep your AI tools updated with the latest Flow documentation.
-- Test AI-generated code thoroughly before deploying to production.
-- Consider the security implications of AI agents interacting with your contracts.
+- Test AI-generated code thoroughly before you deploy to production.
+- Consider the security implications of AI agents that interact with your contracts.
 
-## Next Steps
+## Next steps
 
-After compleyou completeting these tutorials, you'll be equipped to leverage AI tools effectively in your Flow development workflow. Consider exploring our other tutorial series to deepen your understanding of Flow development:
+After you complete these tutorials, you'll be equipped to leverage AI tools effectively in your Flow development workflow. We recommend that you explore our other tutorial series to deepen your knowledge of Flow development:
 
 - [Cross-VM Apps][cross-vm-apps] - Build applications that integrate Flow EVM and Cadence.
 - [Native VRF][native-vrf] - Implement verifiable random functions in your applications.
