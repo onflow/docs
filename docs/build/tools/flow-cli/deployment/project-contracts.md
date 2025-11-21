@@ -121,4 +121,4 @@ flow config remove deployment testnet my-testnet-account Foo
 - **Verify configuration**: Use `flow accounts list` and check your `flow.json` to verify your configuration
 - **Network-specific deployments**: Configure separate deployments for each network (emulator, testnet, mainnet)
 
-For more information, see [Manage Configuration](../flow.json/manage-configuration.md) and [Production Deployment](../../../blockchain-development-tutorials/cadence/getting-started/production-deployment.md).
+For more information, see [Manage Configuration](../flow.json/manage-configuration.md) and [Production Deployment](../../../../blockchain-development-tutorials/cadence/getting-started/production-deployment.md).
