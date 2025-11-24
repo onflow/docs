@@ -174,6 +174,10 @@ flow emulator --help
 - **Debugging**: Use `#debugger()` pragma in Cadence code for breakpoints
 - **Fork mode note**: When using `flow emulator --fork`, only Flow chain state is available. External oracles/APIs and cross-chain reads are not live; mock these or run local stub services for E2E.
 
+### Fork Mode Tutorial
+
+For a complete guide on using the emulator in fork mode with dapps, E2E tests, and account impersonation, see: [Interactive Testing with Forked Emulator].
+
 ## Snapshots
 
 The Flow CLI provides a command to create emulator snapshots, which are points in blockchain history you can later jump to and reset the state to that moment. This can be useful for testing where you establish a beginning state, run tests and after revert back to the initial state.
@@ -227,3 +231,4 @@ To learn more about using the Emulator, please have a look at the [public GitHub
 [installation guide]: ../flow-cli/install.md
 [Create Emulator Snapshot]: ../flow-cli/utils/snapshot-save.md
 [public GitHub repository]: https://github.com/onflow/flow-emulator
+[Interactive Testing with Forked Emulator]: ../../../blockchain-development-tutorials/cadence/emulator-fork-testing/index.md
