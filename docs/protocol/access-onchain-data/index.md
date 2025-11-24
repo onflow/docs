@@ -452,7 +452,7 @@ message TransactionResultResponse {
 
 `GetTransactionResultsByBlockID` gets all the transaction results for a specified block.
 
-Any type of transaction - user submitted, scheduled transaction or a system transaction can be queried.
+The response includes results for user transactions, scheduled transactions, and system transactions.
 
 ```proto
 rpc GetTransactionResultsByBlockID(GetTransactionsByBlockIDRequest) returns (TransactionResultsResponse);
