@@ -349,9 +349,7 @@ message TransactionResponse {
 
 `GetTransactionsByBlockID` gets all the [transactions](#transaction) for a specified block.
 
-The response includes user transactions and scheduled transactions.
-
-_Response does not include the system transaction_
+The response includes user transactions, scheduled transactions, and system transactions.
 
 ```proto
 rpc GetTransactionsByBlockID(GetTransactionsByBlockIDRequest) returns (TransactionsResponse);
