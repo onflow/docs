@@ -476,6 +476,60 @@ message TransactionResultsResponse {
 }
 ```
 
+### GetScheduledTransaction
+
+`GetScheduledTransaction` gets the scheduled transaction body for a given callback ID.
+
+```proto
+rpc GetScheduledTransaction(GetScheduledTransactionRequest) returns (TransactionResponse);
+```
+
+#### Request
+
+```proto
+message GetScheduledTransactionRequest {
+  uint64 id = 1;
+  entities.ExecutionStateQuery execution_state_query = 2;
+}
+```
+
+#### Response
+
+```proto
+message TransactionResponse {
+  entities.Transaction transaction = 1;
+  entities.Metadata metadata = 2;
+}
+```
+
+### GetScheduledTransactionResult
+
+GetScheduledTransactionResult gets a scheduled transaction result for a given callback ID
+
+```proto
+rpc GetScheduledTransactionResult(GetScheduledTransactionResultRequest)
+returns (TransactionResultResponse);
+```
+
+#### Request
+
+```proto
+message GetScheduledTransactionResultRequest {
+  uint64 id = 1;
+  entities.EventEncodingVersion event_encoding_version = 2;
+  entities.ExecutionStateQuery execution_state_query = 3;
+}
+```
+
+#### Response
+
+```proto
+message TransactionResponse {
+  entities.Transaction transaction = 1;
+  entities.Metadata metadata = 2;
+}
+```
+
 ### GetSystemTransaction
 
 `GetSystemTransaction` gets the system transaction for a block.
