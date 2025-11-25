@@ -106,7 +106,7 @@ See also: [Fork Testing with Cadence], [Fork Testing Flags].
   npx cypress run
   ```
 
-See also: [Flow Emulator].
+See also: [Interactive Testing with Forked Emulator], [Flow Emulator].
 
 ### Staging — Testnet
 
@@ -196,6 +196,7 @@ See also: [Flow Networks].
 [Running Cadence Tests]: ../../tools/flow-cli/tests.md
 [Cadence Testing Framework]: ./testing.md
 [Fork Testing with Cadence]: ../../../blockchain-development-tutorials/cadence/fork-testing/index.md
+[Interactive Testing with Forked Emulator]: ../../../blockchain-development-tutorials/cadence/emulator-fork-testing/index.md
 [Flow Emulator]: ../../tools/emulator/index.md
 [Fork Testing Flags]: ../../tools/flow-cli/tests.md#fork-testing-flags
 [Flow Networks]: ../../../protocol/flow-networks/index.md
