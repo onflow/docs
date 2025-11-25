@@ -128,7 +128,6 @@ Use `flow emulator --fork` for:
 **Don't use this for:**
 
 - Cadence unit/integration tests (use `flow test --fork` instead—see [Fork Testing with Cadence])
-- Tests that need to be fast (<1s)—fork mode has network latency
 
 ### Emulator Fork vs Test Framework Fork
 
@@ -755,7 +754,7 @@ Start the forked emulator once and leave it running. Restart only when you need 
 Test against testnet first to avoid mainnet access node rate limits:
 
 ```bash
-flow emulator --fork testnet --fork-height 12345678
+flow emulator --fork testnet --fork-height <BLOCK_HEIGHT>
 ```
 
 ### 4. Mock External Dependencies
@@ -797,11 +796,9 @@ FORK_HEIGHT_LATEST=<BLOCK_HEIGHT_2>  # Latest tested state
 
 ## Limitations and Considerations
 
-### Network Latency
+### Network State Fetching
 
-Fork mode is slower than the local emulator because it fetches state over the network. First access to an account/contract is slowest; subsequent accesses are cached.
-
-**Impact:** E2E tests take longer (seconds instead of milliseconds).
+Fork mode fetches state from the access node on-demand. The first access to an account or contract fetches data over the network; subsequent accesses benefit from caching. With pinned block heights, caching is very effective.
 
 ### Spork Boundaries
 
