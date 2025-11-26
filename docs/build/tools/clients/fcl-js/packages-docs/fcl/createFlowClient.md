@@ -81,6 +81,7 @@ export interface FlowClientConfig {
   discoveryWalletMethod?: string
   discoveryAuthnEndpoint?: string
   discoveryAuthnInclude?: string[]
+  discoveryAuthnExclude?: string[]
   walletconnectProjectId?: string
   walletconnectDisableNotifications?: boolean
   storage?: StorageProvider
