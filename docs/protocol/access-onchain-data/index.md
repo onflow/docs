@@ -311,9 +311,11 @@ message SendTransactionResponse {
 
 `GetTransaction` gets a [transaction](#transaction) by ID.
 
+Any type of transaction - user submitted, scheduled transaction or a system transaction can be queried.
+
 If the transaction is not found in the access node cache, the request is forwarded to a collection node.
 
-_Currently, only transactions within the current epoch can be queried._
+_Currently, only transactions within the current network upgrade can be queried._
 
 ```proto
 rpc GetTransaction (GetTransactionRequest) returns (TransactionResponse)
@@ -347,6 +349,8 @@ message TransactionResponse {
 
 `GetTransactionsByBlockID` gets all the [transactions](#transaction) for a specified block.
 
+The response includes user transactions, scheduled transactions, and system transactions.
+
 ```proto
 rpc GetTransactionsByBlockID(GetTransactionsByBlockIDRequest) returns (TransactionsResponse);
 ```
@@ -372,6 +376,8 @@ message TransactionsResponse {
 ### GetTransactionResult
 
 `GetTransactionResult` gets the execution result of a transaction.
+
+Any type of transaction - user submitted, scheduled transaction or a system transaction can be queried.
 
 ```proto
 rpc GetTransactionResult (GetTransactionRequest) returns (TransactionResultResponse)
@@ -409,6 +415,8 @@ message TransactionResultResponse {
 
 `GetTransactionResultByIndex` gets a transaction's result at a specified block and index.
 
+Any type of transaction - user submitted, scheduled transaction or a system transaction can be queried.
+
 ```proto
 rpc GetTransactionResultByIndex(GetTransactionByIndexRequest) returns (TransactionResultResponse);
 ```
@@ -444,6 +452,8 @@ message TransactionResultResponse {
 
 `GetTransactionResultsByBlockID` gets all the transaction results for a specified block.
 
+The response includes results for user transactions, scheduled transactions, and system transactions.
+
 ```proto
 rpc GetTransactionResultsByBlockID(GetTransactionsByBlockIDRequest) returns (TransactionResultsResponse);
 ```
@@ -466,9 +476,65 @@ message TransactionResultsResponse {
 }
 ```
 
+### GetScheduledTransaction
+
+`GetScheduledTransaction` gets the scheduled transaction body for a given scheduled transaction ID.
+
+```proto
+rpc GetScheduledTransaction(GetScheduledTransactionRequest) returns (TransactionResponse);
+```
+
+#### Request
+
+```proto
+message GetScheduledTransactionRequest {
+  uint64 id = 1;
+  entities.ExecutionStateQuery execution_state_query = 2;
+}
+```
+
+#### Response
+
+```proto
+message TransactionResponse {
+  entities.Transaction transaction = 1;
+  entities.Metadata metadata = 2;
+}
+```
+
+### GetScheduledTransactionResult
+
+GetScheduledTransactionResult gets a scheduled transaction result for a given scheduled transaction ID
+
+```proto
+rpc GetScheduledTransactionResult(GetScheduledTransactionResultRequest)
+returns (TransactionResultResponse);
+```
+
+#### Request
+
+```proto
+message GetScheduledTransactionResultRequest {
+  uint64 id = 1;
+  entities.EventEncodingVersion event_encoding_version = 2;
+  entities.ExecutionStateQuery execution_state_query = 3;
+}
+```
+
+#### Response
+
+```proto
+message TransactionResponse {
+  entities.Transaction transaction = 1;
+  entities.Metadata metadata = 2;
+}
+```
+
 ### GetSystemTransaction
 
 `GetSystemTransaction` gets the system transaction for a block.
+
+_Scheduled Transactions will not be included in the response_
 
 ```proto
 rpc GetSystemTransaction(GetSystemTransactionRequest) returns (TransactionResponse);
@@ -494,6 +560,8 @@ message TransactionResponse {
 ### GetSystemTransactionResult
 
 `GetSystemTransactionResult` gets the system transaction result for a block.
+
+_Scheduled Transactions will not be included in the response_
 
 ```proto
 rpc GetSystemTransactionResult(GetSystemTransactionResultRequest) returns (TransactionResultResponse);
