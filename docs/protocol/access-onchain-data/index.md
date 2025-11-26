@@ -478,7 +478,7 @@ message TransactionResultsResponse {
 
 ### GetScheduledTransaction
 
-`GetScheduledTransaction` gets the scheduled transaction body for a given callback ID.
+`GetScheduledTransaction` gets the scheduled transaction body for a given scheduled transaction ID.
 
 ```proto
 rpc GetScheduledTransaction(GetScheduledTransactionRequest) returns (TransactionResponse);
