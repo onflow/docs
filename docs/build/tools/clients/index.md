@@ -29,6 +29,14 @@ keywords:
 
 Flow provides a comprehensive suite of client tools and SDKs designed to help developers build applications that interact with the Flow blockchain. These tools support various programming languages and platforms, offering different levels of abstraction and functionality.
 
+> Terminology note
+>
+> Anywhere an API or SDK accepts a Flow transaction ID, you may also provide a scheduled transaction ID:
+> - Transaction ID: 256-bit hash represented as a 64-character hex string
+> - Scheduled transaction ID: UInt64 represented as a decimal string
+> 
+> For REST endpoints like `/v1/transactions/{id}` and `/v1/transaction_results/{id}`, the server treats the `id` as a transaction ID if it parses as hex; otherwise, as a scheduled transaction ID if it parses as a decimal UInt64. Both return identical response schemas. See the Protocol docs for details (`docs/protocol/access-onchain-data/index.md`).
+
 ## JavaScript (FCL)
 
 [Flow Client Library (FCL)] is the primary JavaScript/TypeScript client for Flow. It provides:
