@@ -504,7 +504,7 @@ message TransactionResponse {
 
 ### GetScheduledTransactionResult
 
-GetScheduledTransactionResult gets a scheduled transaction result for a given callback ID
+GetScheduledTransactionResult gets a scheduled transaction result for a given scheduled transaction ID
 
 ```proto
 rpc GetScheduledTransactionResult(GetScheduledTransactionResultRequest)
