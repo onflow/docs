@@ -13,6 +13,10 @@ keywords:
   - lending platforms
   - stablecoin protocols
   - liquidity solutions
+  - Consumer DeFi
+  - Forte
+  - Flow Actions
+  - Scheduled Transactions
 sidebar_position: 1
 ---
 
@@ -20,14 +24,16 @@ sidebar_position: 1
 
 **Fast, scalable, and capital-efficient DeFi.** Flow delivers a seamless DeFi experience without congestion, unlocking new possibilities for developers and users alike.
 
-Flow is designed for **next-generation DeFi**, enabling developers to build high-performance **DEXs, lending platforms, stablecoin protocols, and liquidity solutions**—all without the friction of high fees or complex scaling layers.
+Flow is a purpose-built L1 blockchain designed for large-scale consumer finance applications and automated DeFi. It enables developers to build high-performance **DEXs, lending platforms, stablecoin protocols, and liquidity solutions**—all without the friction of high fees or complex scaling layers.
 
 ## Why DeFi on Flow?
 
 **Ultra-low fees** – Cost-efficient swaps, lending, and staking  
-**Fast finality** – Transactions are confirmed quickly with guaranteed execution  
-**Capital-efficient execution** – No MEV, no congestion, seamless scaling  
-**Composable DeFi** – Built-in interoperability between assets
+**Fast finality** – Transactions confirmed in seconds with guaranteed execution  
+**MEV resistance** – Equitable access without frontrunning or hidden fees  
+**Capital-efficient execution** – No congestion, seamless scaling  
+**Composable DeFi** – Built-in interoperability between assets and protocols  
+**Automated execution** – Native scheduling and autonomous workflows with Forte
 
 **Start integrating DeFi on Flow today.**
 
@@ -36,6 +42,18 @@ Flow is designed for **next-generation DeFi**, enabling developers to build high
 **[Read the FAQ](./faq.md)**
 
 Explore the [FlowVerse DeFi ecosystem](https://www.flowverse.co/?categories=defi) page for more information.
+
+## Build with Forte
+
+The **Forte network upgrade** transforms Flow into an autonomous, intelligent network capable of executing complex DeFi workflows without external dependencies. Forte introduces native time scheduling, protocol-level composability, and precision financial calculations that enable entirely new categories of applications.
+
+**Flow Actions** enable protocol-native, composable operations that link together standardized DeFi primitives—sources, sinks, swappers, price oracles, and more—into atomic, protocol-agnostic workflows. A single transaction can claim rewards, swap assets, add liquidity, and restake LP tokens without any off-chain orchestration.
+
+**Scheduled Transactions** introduce the first truly onchain time scheduler, enabling recurring actions, deferred settlements, and autonomous portfolio management without external cron jobs or trusted servers. DeFi protocols can become self-maintaining: positions compound automatically, vaults adjust exposure based on time or events, and protocols enforce predictable behavior entirely onchain.
+
+Combined with **128-bit fixed-point arithmetic** for lossless financial calculations and **native WebAuthn support** for seedless user onboarding, Forte reduces development time for consumer finance applications from months to mere days.
+
+Learn more about building automated DeFi with [Flow Actions](../blockchain-development-tutorials/forte/flow-actions/index.md) and [Scheduled Transactions](../blockchain-development-tutorials/forte/scheduled-transactions/scheduled-transactions-introduction.md).
 
 ## DeFi Partners
 
