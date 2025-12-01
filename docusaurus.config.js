@@ -270,16 +270,22 @@ const config = {
         },
         items: [
           {
-            to: 'build/flow',
+            to: 'defi',
             position: 'left',
-            label: 'Build',
-            activeBasePath: '/build',
+            label: 'DeFi',
+            activeBasePath: '/defi',
           },
           {
             to: 'blockchain-development-tutorials',
             position: 'left',
             label: 'Tutorials',
             activeBasePath: '/blockchain-development-tutorials',
+          },
+          {
+            to: 'build/flow',
+            position: 'left',
+            label: 'Build',
+            activeBasePath: '/build',
           },
           {
             to: 'protocol/flow-networks',

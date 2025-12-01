@@ -13,7 +13,7 @@ keywords:
   - DEXs
   - oracles
   - EAS
-sidebar_position: 2
+sidebar_position: 4
 sidebar_label: DeFi Contracts Testnet
 ---
 

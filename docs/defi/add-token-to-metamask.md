@@ -2,7 +2,7 @@
 title: How To Add Token To MetaMask
 description: How to import a Flow token in MetaMask
 sidebar_label: Add Token To MetaMask
-sidebar_position: 4
+sidebar_position: 6
 keywords:
   - add token to MetaMask
   - MetaMask Flow EVM
@@ -88,7 +88,7 @@ You can find token contract addresses on:
 If you're unsure, check the Flow EVM block explorer at [evm.flowscan.io][5]
 
 [1]: https://evm.flowscan.io/tokens
-[2]: /docs/ecosystem/defi-liquidity/defi-contracts-mainnet.md
+[2]: /defi/defi-contracts-mainnet
 [3]: https://dexscreener.com/flowevm
 [4]: https://www.geckoterminal.com/flow-evm/pools
 [5]: https://evm.flowscan.io
