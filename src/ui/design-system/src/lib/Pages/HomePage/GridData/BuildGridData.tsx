@@ -8,16 +8,6 @@ export const buildGridData = {
   sections: [
     {
       cards: [
-        // {
-        //   heading: 'Automate DeFi with actions and scheduled transactions',
-        //   description:
-        //     'Forte allows you to automate compounding, restaking, and governance directly onchain with protocol-agnostic Actions and Scheduled Transactions that make DeFi apps run themselves.',
-        //   iconColor: 'green',
-        //   cardColor: 'black',
-        //   icon: IconName.WHY_FLOW,
-        //   variant: 'horizontal',
-        //   href: '/blockchain-development-tutorials/forte',
-        // },
         {
           heading: 'Create revolutionary consumer DeFi experiences',
           description:
@@ -59,26 +49,6 @@ export const buildGridData = {
           variant: 'horizontal',
           href: '/build/evm/quickstart',
         },
-        // {
-        //   heading: 'Add secure randomness with native VRF in 3 lines',
-        //   description:
-        //     'Generate verifiable randomness in three lines for loot boxes, fair drops, and battle mechanics, powered natively by Flow.',
-        //   iconColor: 'green',
-        //   cardColor: 'black',
-        //   icon: IconName.RANDOM,
-        //   variant: 'horizontal',
-        //   href: '../blockchain-development-tutorials/native-vrf/vrf-in-solidity',
-        // },
-        // {
-        //   heading: 'Simplify user experience with batched transactions',
-        //   description:
-        //     'Batch multiple writes and cross-VM calls into one approval, so users sign once while your app does the rest.',
-        //   iconColor: 'green',
-        //   cardColor: 'black',
-        //   icon: IconName.BATCHED_EVM_TRANSACTIONS,
-        //   variant: 'horizontal',
-        //   href: '../blockchain-development-tutorials/cross-vm-apps',
-        // },
       ],
     },
   ],
