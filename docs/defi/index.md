@@ -28,12 +28,12 @@ Flow is a purpose-built L1 blockchain designed for large-scale consumer finance 
 
 ## Why DeFi on Flow?
 
-**Ultra-low fees** – Cost-efficient swaps, lending, and staking  
-**Fast finality** – Transactions confirmed in seconds with guaranteed execution  
-**MEV resistance** – Equitable access without frontrunning or hidden fees  
-**Capital-efficient execution** – No congestion, seamless scaling  
-**Composable DeFi** – Built-in interoperability between assets and protocols  
-**Automated execution** – Native scheduling and autonomous workflows with Forte
+**Ultra-low fees** - Cost-efficient swaps, lending, and staking  
+**Fast finality** - Transactions confirmed in seconds with guaranteed execution  
+**MEV resistance** - Equitable access without frontrunning or hidden fees  
+**Capital-efficient execution** - No congestion, seamless scaling  
+**Composable DeFi** - Built-in interoperability between assets and protocols  
+**Automated execution** - Native scheduling and autonomous workflows with Forte
 
 **Start integrating DeFi on Flow today.**
 
