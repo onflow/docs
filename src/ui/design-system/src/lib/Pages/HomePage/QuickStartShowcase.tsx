@@ -347,7 +347,7 @@ transaction(recipient: Address, amount: UFix64) {
     ],
     defaultArgs: { recipient: '0xa4c6ce4d423caef9', amount: '1.0' },
     needsArgs: true,
-    argLabels: { recipient: 'Recipient Address', amount: 'Amount (FLOW)' },
+    argLabels: { recipient: 'Recipient', amount: 'Amt:' },
     editLink: 'https://run.dnz.dev/snippet',
     formatResult: (data: any) => {
       return { type: 'text', value: data || 'Tokens deposited successfully' };
@@ -546,7 +546,7 @@ function QuickStartShowcaseContent() {
           <div className="flex-1 bg-gray-50 dark:bg-gray-800 border-b border-gray-200 dark:border-gray-700 overflow-hidden">
             <div className="h-full flex flex-col">
               {/* Code Header */}
-              <div className="px-4 py-2 bg-gray-100 dark:bg-gray-900/50 border-b border-gray-200 dark:border-gray-700 flex items-center justify-between gap-2">
+              <div className="px-4 py-2 bg-gray-100 dark:bg-gray-900/50 border-b border-gray-200 dark:border-gray-700 flex items-center justify-between gap-2 flex-wrap">
                 <div className="flex items-center gap-2">
                   <span className="text-xs font-medium text-gray-600 dark:text-gray-400">
                     {currentScript.type === 'transaction' ? 'Cadence Transaction' : 'Cadence Script'}
@@ -560,18 +560,18 @@ function QuickStartShowcaseContent() {
                     {currentScript.network === 'mainnet' ? 'Mainnet' : 'Testnet'}
                   </span>
                 </div>
-                <div className="flex items-center gap-2">
+                <div className="flex items-center gap-2 flex-wrap">
                   {currentScript.needsArgs && Object.keys(currentScript.argLabels).map((key) => (
                     <div key={key} className="flex items-center gap-1">
                       <label className="text-xs text-gray-600 dark:text-gray-400 whitespace-nowrap">
-                        {currentScript.argLabels[key as keyof typeof currentScript.argLabels]}:
+                        {currentScript.argLabels[key as keyof typeof currentScript.argLabels]}
                       </label>
                       <input
                         type="text"
                         value={currentInputs[key] || ''}
                         onChange={(e) => handleInputChange(key, e.target.value)}
                         placeholder={currentScript.defaultArgs[key] || ''}
-                        className="text-xs px-2 py-1 bg-white dark:bg-gray-800 border border-gray-300 dark:border-gray-600 rounded text-gray-900 dark:text-gray-100 focus:outline-none focus:ring-2 focus:ring-blue-500 w-40 font-mono"
+                        className="text-xs px-2 py-1 bg-white dark:bg-gray-800 border border-gray-300 dark:border-gray-600 rounded text-gray-900 dark:text-gray-100 focus:outline-none focus:ring-2 focus:ring-blue-500 w-32 font-mono"
                       />
                     </div>
                   ))}
@@ -594,7 +594,7 @@ function QuickStartShowcaseContent() {
                           disabled={txPending}
                           className="text-xs px-4 py-2 bg-purple-500 hover:bg-purple-600 text-white rounded-full shadow-md font-medium border-none cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed whitespace-nowrap transition-colors"
                         >
-                          {txPending ? 'Executing...' : 'Execute Transaction'}
+                          {txPending ? 'Executing...' : 'Execute'}
                         </button>
                       ) : (
                         <Connect 
