@@ -347,7 +347,7 @@ transaction(recipient: Address, amount: UFix64) {
     ],
     defaultArgs: { recipient: '0xa4c6ce4d423caef9', amount: '1.0' },
     needsArgs: true,
-    argLabels: { recipient: 'Recipient', amount: 'Amt:' },
+    argLabels: { recipient: 'Recipient', amount: 'Amount' },
     editLink: 'https://run.dnz.dev/snippet',
     formatResult: (data: any) => {
       return { type: 'text', value: data || 'Tokens deposited successfully' };
@@ -571,7 +571,10 @@ function QuickStartShowcaseContent() {
                         value={currentInputs[key] || ''}
                         onChange={(e) => handleInputChange(key, e.target.value)}
                         placeholder={currentScript.defaultArgs[key] || ''}
-                        className="text-xs px-2 py-1 bg-white dark:bg-gray-800 border border-gray-300 dark:border-gray-600 rounded text-gray-900 dark:text-gray-100 focus:outline-none focus:ring-2 focus:ring-blue-500 w-32 font-mono"
+                        className={clsx(
+                          "text-xs px-2 py-1 bg-white dark:bg-gray-800 border border-gray-300 dark:border-gray-600 rounded text-gray-900 dark:text-gray-100 focus:outline-none focus:ring-2 focus:ring-blue-500 font-mono",
+                          key === 'amount' ? 'w-16' : 'w-[140px]'
+                        )}
                       />
                     </div>
                   ))}
