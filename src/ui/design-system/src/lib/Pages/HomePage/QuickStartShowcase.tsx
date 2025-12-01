@@ -348,7 +348,7 @@ transaction(recipient: Address, amount: UFix64) {
     defaultArgs: { recipient: '0xa4c6ce4d423caef9', amount: '1.0' },
     needsArgs: true,
     argLabels: { recipient: 'Recipient', amount: 'Amount' },
-    editLink: 'https://run.dnz.dev/snippet',
+    editLink: 'https://run.dnz.dev/snippet/1277a9654df00b56',
     formatResult: (data: any) => {
       return { type: 'text', value: data || 'Tokens deposited successfully' };
     },
@@ -600,12 +600,14 @@ function QuickStartShowcaseContent() {
                           {txPending ? 'Executing...' : 'Execute'}
                         </button>
                       ) : (
-                        <Connect 
-                          variant="primary"
-                          onConnect={() => {
-                            // After connection, the user state will update and we can execute
+                        <button
+                          onClick={async () => {
+                            await fcl.authenticate();
                           }}
-                        />
+                          className="text-xs px-4 py-2 bg-purple-500 hover:bg-purple-600 text-white rounded-full shadow-md font-medium border-none cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed whitespace-nowrap transition-colors"
+                        >
+                          Sign In
+                        </button>
                       )
                     )}
                     {(currentScript as any).editLink && (
