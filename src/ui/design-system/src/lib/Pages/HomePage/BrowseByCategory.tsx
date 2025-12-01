@@ -117,7 +117,7 @@ const BrowseByCategory: React.FC = () => {
 
   return (
     <section className="container mx-auto py-12">
-      <h2 className="text-2xl md:text-3xl font-bold text-gray-900 dark:text-white mb-8">Browse by Category</h2>
+      <h2 className="text-2xl md:text-3xl font-bold text-gray-900 dark:text-white mb-8">Browse by category</h2>
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
         {CATEGORIES.map((cat) => {
           const firstLink = cat.links[0];

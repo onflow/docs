@@ -512,7 +512,7 @@ function QuickStartShowcaseContent() {
     >
       <div className="flex items-center justify-between mb-4">
         <h2 className="text-xl font-semibold text-gray-800 dark:text-gray-200">
-          Try Cadence Live
+          Try Cadence live
         </h2>
       </div>
       <div 

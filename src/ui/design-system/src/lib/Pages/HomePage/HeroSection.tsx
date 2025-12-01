@@ -14,11 +14,11 @@ const HeroSection: React.FC = () => {
         {/* Left: Hero Content */}
         <div className="flex-1 max-w-2xl text-left">
           <h1 className="text-3xl md:text-4xl font-bold mb-3 text-gray-900 dark:text-white">
-            Turn decentralized finance into just personal finance.
+            Turn decentralized finance into personal finance.
           </h1>
           <p className="text-base md:text-lg text-gray-700 dark:text-gray-200 mb-4 max-w-xl">
             <strong>Flow</strong> is the leading consumer layer-one network,
-            trusted by 1 million monthly active users. Built in collaboration with top global brands
+            trusted by 1 million monthly active users. Chosen by top global brands
             like NBA, Disney, PayPal, NFL, and Ticketmaster,
             it is the foundation for the next generation of consumer finance:{" "}
             <strong>global, always-on, and in real-time.</strong>
