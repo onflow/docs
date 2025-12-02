@@ -24,24 +24,24 @@ Flow is designed for consumer-scale internet applications and is one of the fast
 
    These are transactions initiated by users, such as:
 
-   - Buying or selling NFTs
-   - Transferring tokens
-   - Swapping tokens on decentralized exchanges (DEXs)
-   - Staking or unstaking tokens
+   - Buying or selling NFTs.
+   - Transferring tokens.
+   - Swapping tokens on decentralized exchanges (DEXs).
+   - Staking or unstaking tokens.
 
-   In this category, each transaction originates from a unique account and is sent to the Flow network from a different machine. Developers don't need to take special measures to scale for this category, beyond ensuring their logic is primarily onchain and their supporting systems (e.g., frontend, backend) can handle scaling if they become bottlenecks. Flow's protocol inherently manages scaling for user transactions.
+   In this category, each transaction originates from a unique account and is sent to the Flow network from a different machine. Developers don't need to take special measures to scale for this category, beyond ensuring their logic is primarily onchain and their supporting systems (for example, frontend, backend) can handle scaling if they become bottlenecks. Flow's protocol inherently manages scaling for user transactions.
 
 2. **System Transactions**
 
    These are transactions initiated by an app's backend or various tools, such as:
 
-   - Minting thousands of tokens from a single minter account
-   - Creating transaction workers for custodians
-   - Running maintenance jobs and batch operations
+   - Minting thousands of tokens from a single minter account.
+   - Creating transaction workers for custodians.
+   - Running maintenance jobs and batch operations.
 
    In this category, many transactions originate from the same account and are sent to the Flow network from the same machine, which can make scaling tricky. This guide focuses on strategies for scaling transactions from a single account.
 
-In the following sections, we'll explore how to execute concurrent transactions from a single account on Flow using multiple proposer keys.
+In the following sections, we'll explore how to execute concurrent transactions from a single account on Flow with multiple proposer keys.
 
 :::info
 
@@ -51,67 +51,67 @@ This guide is specific to non-EVM transactions. For EVM-compatible transactions,
 
 ## Problem
 
-Blockchains use sequence numbers, also known as nonces, for each transaction to prevent [replay attacks](https://en.wikipedia.org/wiki/Replay_attack) and allow users to specify the order of their transactions. The Flow network requires a specific sequence number for each incoming transaction and will reject any transaction where the sequence number does not exactly match the expected next value.
+Blockchains use sequence numbers, also known as nonces, for each transaction to prevent [replay attacks] and allow users to specify the order of their transactions. The Flow network requires a specific sequence number for each incoming transaction and will reject any transaction where the sequence number does not exactly match the expected next value.
 
-This behavior presents a challenge for scaling, as sending multiple transactions does not guarantee that they will be executed in the order they were sent. This is a fundamental aspect of Flow's resistance to MEV (Maximal Extractable Value), as transaction ordering is randomized within each block.
+This behavior challenges scaling, as sending multiple transactions does not guarantee that the netwrok executes them in the order users send them. This is a fundamental aspect of Flow's resistance to MEV (Maximal Extractable Value), as transaction ordering is randomized within each block.
 
-If a transaction arrives out of order, the network will reject it and return an error message similar to the following:
+If a transaction arrives out of order, the network rejects it and return an error message similar to the following:
 
 ```
 * checking sequence number failed: [Error Code: 1007] invalid proposal key: public key X on account 123 has sequence number 7, but given 6
 ```
 
-Our objective is to execute multiple concurrent transactions without encountering the sequence number error described above. While designing a solution, we must consider the following key factors:
+Our objective is to execute multiple concurrent transactions and not encounter the sequence number error described above. When we design a solution, we must consider the following key factors:
 
 - **Reliability**
 
   Ideally, we want to avoid local sequence number management, as it is error-prone. In a local sequence number implementation, the sender must determine which error types increment the sequence number and which do not. For instance, network issues do not increment the sequence number, but application errors do. Furthermore, if the sender's sequence number becomes unsynchronized with the network, multiple transactions may fail.
 
-  The most reliable approach to managing sequence numbers is to query the network for the latest sequence number before signing and sending each transaction.
+  The most reliable approach to manage sequence numbers is to query the network for the latest sequence number before you sign and send each transaction.
 
 - **Scalability**
 
-  Allowing multiple workers to manage the same sequence number can introduce coupling and synchronization challenges. To address this, we aim to decouple workers so that they can operate independently without interfering with one another.
+  If you allow multiple workers to manage the same sequence number, it can introduce coupling and synchronization challenges. To address this, we aim to decouple workers so that they can operate independently and not interfere with one another.
 
 - **Capacity Management**
 
-  To ensure reliability, the system must recognize when it has reached capacity. Additional transactions should be queued and executed once there is sufficient throughput. Fire-and-forget strategies are unreliable for handling arbitrary traffic, as they do not account for system capacity.
+  To ensure reliability, the system must recognize when it has reached capacity. Additional transactions should be queued and executed when there is sufficient throughput. Fire-and-forget strategies are unreliable to handle arbitrary traffic, as they do not account for system capacity.
 
 ## Solution
 
-Flow's transaction model introduces a unique role called the proposer. Each Flow transaction is signed by three roles: authorizer, proposer, and payer. The proposer key determines the sequence number for the transaction, effectively decoupling sequence number management from the authorizer and enabling independent scaling. You can learn more about this concept [here](https://developers.flow.com/build/cadence/basics/transactions#proposal-key).
+Flow's transaction model introduces a unique role called the proposer. Each Flow transaction is signed by three roles: authorizer, proposer, and payer. The proposer key determines the sequence number for the transaction, which effectively decouples sequence number management from the authorizer and allows independent scaling. You can learn more about this concept [here].
 
 We can leverage this model to design an ideal system transaction architecture as follows:
 
 - **Multiple Proposer Keys**
 
-  Flow accounts can have multiple keys. By assigning a unique proposer key to each worker, each worker can independently manage its own sequence number without interference from others.
+  Flow accounts can have multiple keys. If you assign a unique proposer key to each worker, each worker can independently manage its own sequence number without interference from others.
 
 - **Sequence Number Management**
 
-  Each worker ensures it uses the correct sequence number by fetching the latest sequence number from the network. Since workers operate with different proposer keys, there are no conflicts or synchronization issues.
+  To ensure each worker uses the correct sequence number, they fetch the latest sequence number from the network. Since workers operate with different proposer keys, there are no conflicts or synchronization issues.
 
-- **Queue and Processing Workflow**
+- **Queue and Process Workflow**
 
   - Each worker picks a transaction request from the incoming requests queue, signs it with its assigned proposer key, and submits it to the network.
   - The worker remains occupied until the transaction is finalized by the network.
   - If all workers are busy, the incoming requests queue holds additional requests until there is enough capacity to process them.
 
-- **Key Reuse for Optimization**
+- **Key reuse for optimization**
 
   To simplify the system further, we can reuse the same cryptographic key multiple times within the same account by adding it as a new key. These additional keys can have a weight of 0 since they do not need to authorize transactions.
 
-Here's a visual example of how such an [account configuration](https://www.flowscan.io/account/18eb4ee6b3c026d2?tab=keys) might look:
+Here's a visual example of how such an [account configuration] might look:
 
 ![Example.Account](scaling-example-account.png 'Example Account')
 
 As shown, the account includes additional weightless keys designated for proposals, each with its own independent sequence number. This setup ensures that multiple workers can operate concurrently without conflicts or synchronization issues.
 
-In the next section, we'll demonstrate how to implement this architecture using the [Go SDK](https://github.com/onflow/flow-go-sdk).
+In the next section, we'll demonstrate how to implement this architecture with the [Go SDK].
 
-## Example Implementation
+## Example implementation
 
-An example implementation of this architecture can be found in the [Go SDK Example](https://github.com/onflow/flow-go-sdk/blob/master/examples/transaction_scaling/main.go).
+An example implementation of this architecture can be found in the [Go SDK Example].
 
 This example deploys a simple `Counter` contract:
 
@@ -134,24 +134,24 @@ access(all) contract Counter {
 }
 ```
 
-The goal is to invoke the `increase()` function 420 times concurrently from a single account. By adding 420 concurrency keys and using 420 workers, all these transactions can be executed almost simultaneously.
+The goal is to invoke the `increase()` function 420 times concurrently from a single account. When you add 420 concurrency keys and use 420 workers, all these transactions can be executed almost simultaneously.
 
 ### Prerequisites
 
-We're using Testnet to demonstrate real network conditions. To run this example, you need to create a new testnet account. Start by generating a key pair:
+We use Testnet to demonstrate real network conditions. To run this example, you need to create a new testnet account. To start, generate a key pair:
 
 ```bash
 flow keys generate
 ```
 
-You can use the generated key with the [faucet](https://faucet.flow.com/fund-account) to create a testnet account. Update the corresponding variables in the `main.go` file:
+You can use the generated key with the [faucet] to create a testnet account. Update the corresponding variables in the `main.go` file:
 
 ```go
 const PRIVATE_KEY = "123"
 const ACCOUNT_ADDRESS = "0x123"
 ```
 
-### Code Walkthrough
+### Code walkthrough
 
 When the example starts, it will deploy the `Counter` contract to the account and add 420 proposer keys with the following transaction:
 
@@ -254,9 +254,9 @@ func IncreaseCounter(ctx context.Context, flowClient *grpc.Client, account *flow
 }
 ```
 
-The above code is executed concurrently by each worker. Since each worker operates with a unique proposer key, there are no conflicts or synchronization issues. Each worker independently manages its sequence number, ensuring smooth execution of all transactions.
+The above code is executed concurrently by each worker. Since each worker operates with a unique proposer key, there are no conflicts or synchronization issues. Each worker independently manages its sequence number, which ensures smooth execution of all transactions.
 
-Finally, the `RunTransaction` function serves as a helper utility to send transactions to the network and wait for them to be finalized. It is important to note that the proposer key sequence number is set within the `IncreaseCounter` function before calling `RunTransaction`.
+Finally, the `RunTransaction` function serves as a helper utility to send transactions to the network and wait for them to be finalized. It is important to note that the proposer key sequence number is set within the `IncreaseCounter` function before it calls `RunTransaction`.
 
 ```go
 // Run a transaction and wait for it to be sealed. Note that this function does not set the proposal key.
@@ -287,9 +287,9 @@ func RunTransaction(ctx context.Context, flowClient *grpc.Client, account *flow.
 }
 ```
 
-### Running the Example
+### Run the Example
 
-Running the example will execute 420 transactions at the same time:
+Run the example to execute 420 transactions at the same time:
 
 ```bash
 → cd ./examples
@@ -302,3 +302,12 @@ Final Counter: 420
 ```
 
 It takes roughly the time of 1 transaction to run all 420 without any errors.
+
+<!-- Reference-style links, does not render on page -->
+
+[replay attacks]: https://en.wikipedia.org/wiki/Replay_attack
+[here]: https://developers.flow.com/build/cadence/basics/transactions#proposal-key
+[account configuration]: https://www.flowscan.io/account/18eb4ee6b3c026d2?tab=keys
+[Go SDK]: https://github.com/onflow/flow-go-sdk
+[Go SDK Example]: https://github.com/onflow/flow-go-sdk/blob/master/examples/transaction_scaling/main.go
+[faucet]: https://faucet.flow.com/fund-account

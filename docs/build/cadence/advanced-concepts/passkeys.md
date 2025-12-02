@@ -27,47 +27,49 @@ This is a wallet‑centric, high‑level guide (per [FLIP 264: WebAuthn Credenti
 1. Create a passkey and add a Flow account key
 2. Sign a transaction with the user's passkey (includes conversion, extension, and submission)
 
-It accompanies the [PoC demo](https://github.com/onflow/passkey-wallet-demo) for reference and cites the FLIP where behavior is normative.
+It accompanies the [PoC demo] for reference and cites the FLIP where behavior is normative.
 
 :::note Platform-specific APIs
-This tutorial focuses on the **Web Authentication API** (WebAuthn) for browser-based applications. Other platforms such as iOS, Android, and desktop applications will require platform-specific APIs (e.g., Apple's [Authentication Services](https://developer.apple.com/documentation/authenticationservices), Android's [Credential Manager](https://developer.android.com/identity/sign-in/credential-manager)), but the underlying concepts—credential creation, challenge signing, and signature formatting—remain the same across all platforms.
+
+This tutorial focuses on the **Web Authentication API** (WebAuthn) for browser-based applications. Other platforms such as iOS, Android, and desktop applications will require platform-specific APIs (such as Apple's [Authentication Services] or Android's [Credential Manager]), but the underlying concepts—credential creation, challenge signing, and signature formatting—remain the same across all platforms.
+
 :::
 
 ## What you'll learn
 
-After completing this guide, you'll be able to:
+After you complete this guide, you'll be able to:
 
-- Create a passkey and derive a Flow‑compatible public key
-- Generate the correct challenge for signing transactions (wallet sets SHA2‑256(signable))
-- Convert a WebAuthn ECDSA DER signature into Flow's raw `r||s` format and attach the transaction signature extension
+- Create a passkey and derive a Flow‑compatible public key.
+- Generate the correct challenge for signing transactions (wallet sets SHA2‑256(signable)).
+- Convert a WebAuthn ECDSA DER signature into Flow's raw `r||s` format and attach the transaction signature extension.
 
-## Benefits of using passkeys
+## Passkey benefits
 
 **Sign transactions securely**  
-Users can sign Flow transactions using passkeys while the private key stays securely stored within the authenticator. This reduces the risk of key extraction attacks and phishing attempts.
+Users can sign Flow transactions with passkeys while the private key stays securely stored within the authenticator. This reduces the risk of key extraction attacks and phishing attempts.
 
 **Authenticate across devices**  
-Users can scan a QR code displayed on a desktop browser with a mobile device to approve transactions. Cloud-synchronized passkeys (such as those stored in Apple iCloud or Google Password Manager) enable authentication across multiple devices without manual key transfers.
+Users can scan a QR code displayed on a desktop browser with a mobile device to approve transactions. Cloud-synchronized passkeys (such as those stored in Apple iCloud or Google Password Manager) allow authentication across multiple devices without manual key transfers.
 
 **Authenticate with platform-based security**  
-Users can sign transactions directly on devices with built-in authenticators, such as Face ID on iPhones or Windows Hello on Windows PCs. This approach enables native transaction signing without needing an external security key.
+Users can sign transactions directly on devices with built-in authenticators, such as Face ID on iPhones or Windows Hello on Windows PCs. This approach allows native transaction signing without the need for an external security key.
 
 **Recover access with cloud-synced passkeys**  
-Cloud-synced passkeys help users recover access if they lose a device, though this introduces trade-offs between convenience and self-custody (see [Limitations of passkeys](#limitations-of-passkeys)).
+Cloud-synced passkeys help users recover access if they lose a device, though this introduces trade-offs between convenience and self-custody (see [Limitations of passkeys].
 
 **Work with multi-key accounts**  
-Combine passkeys with other authentication types using Flow's native [multi-key account support](../basics/accounts.md#account-keys) to build secure recovery options and shared access patterns with weighted keys.
+Combine passkeys with other authentication types with Flow's native [multi-key account support] to build secure recovery options and shared access patterns with weighted keys.
 
 ## Prerequisites
 
-- Working knowledge of modern frontend (React/Next.js) and basic backend
-- Familiarity with WebAuthn/Passkeys concepts and platform constraints
-- FCL installed and configured for your app
-- Flow accounts and keys: [Signature and Hash Algorithms]
+- Working knowledge of modern frontend (React/Next.js) and basic backend.
+- Familiarity with WebAuthn/Passkeys concepts and platform constraints.
+- Flow Command Line (FCL) installed and configured for your app.
+- Flow accounts and keys: [Signature and Hash Algorithms].
 
 ## Registration
 
-When a user generates a passkey via [navigator.credentials.create()] with `{ publicKey }`, the authenticator returns an attestation containing the new credential's public key. On Flow, you can register that public key on an account if the algorithm of the requested passkey is either `ES256` or `ES256k`. This guide demonstrates an `ES256` passkey which translates to an `ECDSA_P256` Flow key paired with `SHA2_256` hashing. Alternatively, an `ES256k` passkey translates to an `ECDSA_secp256k1` Flow key paired with `SHA2_256` hashing.
+When a user generates a passkey via [navigator.credentials.create()] with `{ publicKey }`, the authenticator returns an attestation that contains the new credential's public key. On Flow, you can register that public key on an account if the algorithm of the requested passkey is either `ES256` or `ES256k`. This guide demonstrates an `ES256` passkey which translates to an `ECDSA_P256` Flow key paired with `SHA2_256` hashing. Alternatively, an `ES256k` passkey translates to an `ECDSA_secp256k1` Flow key paired with `SHA2_256` hashing.
 
 High‑level steps:
 
@@ -81,15 +83,17 @@ High‑level steps:
    - Signature algorithm: `ECDSA_P256`
    - Hash algorithm: `SHA2_256`
 
-:::tip
-Libraries like SimpleWebAuthn can parse the COSE key and produce the raw public key bytes required for onchain registration. Ensure you normalize into the exact raw byte format Flow expects before writing to the account key.
+:::info
+
+Libraries like SimpleWebAuthn can parse the COSE key and produce the raw public key bytes required for onchain registration. Ensure you normalize into the exact raw byte format Flow expects before it writes to the account key.
+
 :::
 
 ### Build creation options and create credential
 
 Minimum example — wallet‑mode registration:
 
-This builds `PublicKeyCredentialCreationOptions` for a wallet RP with a constant registration challenge and ES256 (P‑256) so the resulting public key can be registered on a Flow account.
+This builds `PublicKeyCredentialCreationOptions` for a wallet RP with a constant registration challenge and ES256 (P‑256) so you can register the newly-created public key on a Flow account.
 
 ```tsx
 // In a wallet (RP = wallet origin). The challenge satisfies API & correlates request/response.
@@ -123,12 +127,13 @@ const credential = await navigator.credentials.create({ publicKey: creationOptio
 ```
 
 :::tip RP ID for non-browser platforms
-For web applications, `rpId` is set to `window.location.hostname`. For native mobile and desktop applications, use your app's identifier instead:
-- **iOS**: Use your app's bundle identifier (e.g., `com.example.wallet`) or an associated domain
-- **Android**: Use your app's package name (e.g., `com.example.wallet`) or an associated domain
-- **Desktop**: Use your application identifier or registered domain
 
-The rpId should remain consistent across credential creation and assertion for the same user account; however, this consistency is not validated or enforced by Flow.
+For web applications, `rpId` is set to `window.location.hostname`. For native mobile and desktop applications, use your app's identifier instead:
+- **iOS**: Use your app's bundle identifier (such as `com.example.wallet`) or an associated domain.
+- **Android**: Use your app's package name (such as `com.example.wallet`) or an associated domain.
+- **Desktop**: Use your application identifier or registered domain.
+
+The `rpId` should remain consistent across credential creation and assertion for the same user account. However, Flow does not validate or enforce this consistency.
 :::
 
 ### Extract and normalize public key
@@ -188,7 +193,7 @@ const publicKeyHex = coseEcP256ToUncompressedXYHex(cosePubKey)
 
 ### Add key to account
 
-Now that you have the user's public key, provision a Flow account with that key. Creating accounts (or adding key to an existing account) requires payment; in practice, account instantiation typically occurs on the wallet provider's backend service.
+Now that you have the user's public key, provision a Flow account with that key. Account creation (or to add key to an account) requires payment. In practice, account instantiation typically occurs on the wallet provider's backend service.
 
 In the PoC demo, we used a test API to provision an account with the public key:
 
@@ -218,7 +223,9 @@ export async function createAccountWithPublicKey(
 ```
 
 :::note
+
 In production, this would be a service owned by the wallet provider that creates the account and attaches the user's public key, for reasons like payment handling, abuse prevention, telemetry, and correlation as needed.
+
 :::
 
 ## Signing
@@ -257,15 +264,17 @@ const signableHash: Uint8Array = sha256(hexToBytes(msgHex))
 // (see next subsection for a full getAssertion example)
 ```
 
-:::note
-`encodeMessageFromSignable` and `encodeTransactionPayload` are FCL‑specific helpers. If you are not using FCL, construct the Flow signable transaction message yourself (payload for proposer/authorizer, envelope for payer, prepended by the transaction domain tag), then compute `SHA2‑256(messageBytes)` for the challenge. The payload encoding shown here applies regardless of wallet implementation; the helper calls are simply conveniences from FCL.
+:::info
+
+`encodeMessageFromSignable` and `encodeTransactionPayload` are FCL‑specific helpers. If you don't use FCL, construct the Flow signable transaction message yourself (payload for proposer/authorizer, envelope for payer, prepended by the transaction domain tag), then compute `SHA2‑256(messageBytes)` for the challenge. The payload encoding shown here applies regardless of wallet implementation; the helper calls are simply conveniences from FCL.
+
 :::
 
 ### Request assertion
 
 Minimal example — wallet assertion:
 
-Build [PublicKeyCredentialRequestOptions] and request an assertion using the transaction hash as `challenge`. `rpId` must match the wallet domain. When the wallet has mapped the active account to a credential, include `allowCredentials` with that credential ID to avoid extra prompts; omitting it is permissible for discoverable credentials. You will invoke [navigator.credentials.get()].
+Build [PublicKeyCredentialRequestOptions] and request an assertion with the transaction hash as `challenge`. `rpId` must match the wallet domain. When the wallet has mapped the active account to a credential, include `allowCredentials` with that credential ID to avoid extra prompts. You can omit it, which is permissible for discoverable credentials. You will invoke [navigator.credentials.get()].
 
 ```tsx
 // signableHash is SHA2-256(signable message: payload or envelope)
@@ -293,12 +302,12 @@ const { authenticatorData, clientDataJSON, signature } =
   assertion.response as AuthenticatorAssertionResponse
 ```
 
-:::note
-- **Credential selection**: Wallets typically know which credential corresponds to the user's active account (selected during authentication/authorization), so they should pass that credential via `allowCredentials` to scope selection and minimize prompts. For discoverable credentials, omitting `allowCredentials` is also valid and lets the authenticator surface available credentials. See [WebAuthn specifications] for guidance.
-- **RP ID consistency**: The `rpId` used here should match what was used during credential creation; however, Flow does not validate or enforce this (transactions would still pass even if different). For non-browser platforms, use the same app identifier (bundle ID, package name, etc.) as in registration.
-:::
+:::info
 
- 
+- **Credential selection**: Wallets typically know which credential corresponds to the user's active account (selected during authentication/authorization), so they should pass that credential via `allowCredentials` to scope selection and minimize prompts. For discoverable credentials, you can omit `allowCredentials`, which lets the authenticator surface available credentials. See [WebAuthn specifications] for guidance.
+- **RP ID consistency**: The `rpId` used here should match what was used during credential creation. However, Flow does not validate or enforce this (transactions would still pass even if different). For non-browser platforms, use the same app identifier (bundle ID, package name, and so on.) as in registration.
+
+:::
 
 ### Convert and attach signature
 
@@ -389,18 +398,13 @@ function leftPad32(bytes: Uint8Array): Uint8Array {
   return out
 }
 ```
-
- 
-
- 
-
 ## Notes from the PoC
 
-- The [PoC demo](https://github.com/onflow/passkey-wallet-demo) demonstrates reference flows for passkey creation and assertion, including:
-  - Extracting and normalizing the ECDSA P‑256 public key for Flow
-  - Building the correct challenge 
-  - Converting DER signatures to raw `r||s`
-  - Packaging WebAuthn fields as signature extension data
+- The [PoC demo] demonstrates reference flows for passkey creation and assertion, such as:
+  - Extract and normalize the ECDSA P‑256 public key for Flow.
+  - Build the correct challenge .
+  - Convert DER signatures to raw `r||s`.
+  - Package WebAuthn fields as signature extension data.
 
 > Align your implementation with the FLIP to ensure your extension payloads and verification logic match network expectations.
 
@@ -414,23 +418,23 @@ function leftPad32(bytes: Uint8Array): Uint8Array {
 ## Limitations of passkeys
 
 **Functionality varies by authenticator**  
-Some security keys do not support biometric authentication, requiring users to enter a PIN instead. Because WebAuthn does not provide access to private keys, users must either store their passkey securely or enable cloud synchronization for recovery.
+Some security keys do not support biometric authentication, which requires users to enter a PIN instead. Because WebAuthn does not provide access to private keys, users must either store their passkey securely or turn on cloud synchronization for recovery.
 
 **Cloud synchronization introduces risks**  
 Cloud-synced passkeys improve accessibility but also create risks if a cloud provider is compromised or if a user loses access to their cloud account. Users who prefer full self-custody can use hardware-based passkeys that do not rely on cloud synchronization.
 
 **Passkeys cannot be exported**  
-Users cannot transfer a passkey between different authenticators. For example, a passkey created on a security key cannot move to another device unless it syncs through a cloud provider. To avoid losing access, users should set up authentication on multiple devices or combine passkeys with [multi-key account configurations](../basics/accounts.md#account-keys) for additional recovery options.
+Users cannot transfer a passkey between different authenticators. For example, a passkey created on a security key cannot move to another device unless it syncs through a cloud provider. To avoid losing access, users should set up authentication on multiple devices or combine passkeys with [multi-key account configurations] for additional recovery options.
 
  
 ## Credential management (wallet responsibilities)
 
 Wallet providers should persist credential metadata to support seamless signing, rotation, and recovery:
 
-- Map `credentialId` ↔ Flow `addr` (and `keyId`) for the active account
-- Store `rpId`, user handle, and (optionally) `aaguid`/attestation info for risk decisions
-- Support multiple credentials per account and revocation/rotation workflows
-- Enforce nonce/sequence semantics and rate limits server-side as needed
+- Map `credentialId` ↔ Flow `addr` (and `keyId`) for the active account.
+- Store `rpId`, user handle, and (optionally) `aaguid`/attestation info for risk decisions.
+- Support multiple credentials per account and revocation/rotation workflows.
+- Enforce nonce/sequence semantics and rate limits server-side as needed.
 
 See [WebAuthn Credential Support (FLIP)] for rationale and wallet‑mode guidance.
 
@@ -440,9 +444,9 @@ In this tutorial, you integrated passkeys (WebAuthn) with Flow for both registra
 
 Now that you have completed the tutorial, you should be able to:
 
-- Create a WebAuthn credential and derive a Flow‑compatible public key
-- Generate the correct challenge for signing transactions (wallet sets SHA2‑256(signable))
-- Convert a WebAuthn ECDSA DER signature into Flow's raw `r||s` format and attach the transaction signature extension
+- Create a WebAuthn credential and derive a Flow‑compatible public key.
+- Generate the correct challenge for signing transactions (wallet sets SHA2‑256(signable)).
+- Convert a WebAuthn ECDSA DER signature into Flow's raw `r||s` format and attach the transaction signature extension.
 
 ### Further reading
 
@@ -454,8 +458,12 @@ Now that you have completed the tutorial, you should be able to:
 - Track updates: [FLIP 264: WebAuthn Credential Support]
 
 <!-- Reference-style links, does not render on page -->
+
 [WebAuthn Credential Support (FLIP)]: https://github.com/onflow/flips/blob/cfaaf5f6b7c752e8db770e61ec9c180dc0eb6543/protocol/20250203-webauthn-credential-support.md
+[PoC demo]: https://github.com/onflow/passkey-wallet-demo
 [FLIP 264: WebAuthn Credential Support]: https://github.com/onflow/flips/blob/cfaaf5f6b7c752e8db770e61ec9c180dc0eb6543/protocol/20250203-webauthn-credential-support.md
+[Authentication Services]: https://developer.apple.com/documentation/authenticationservices, 
+[Credential Manager]: https://developer.android.com/identity/sign-in/credential-manager
 [Web Authentication API]: https://developer.mozilla.org/en-US/docs/Web/API/Web_Authentication_API
 [navigator.credentials.create()]: https://developer.mozilla.org/en-US/docs/Web/API/CredentialsContainer/create
 [PublicKeyCredentialCreationOptions]: https://developer.mozilla.org/en-US/docs/Web/API/PublicKeyCredentialCreationOptions
@@ -470,6 +478,10 @@ Now that you have completed the tutorial, you should be able to:
 [Flow Client Library]: ../../tools/clients/fcl-js/index.md
 [Wallet Provider Spec]: ../../tools/wallet-provider-spec/index.md
 [WebAuthn specifications]: https://www.w3.org/TR/webauthn-3
+[Limitations of passkeys]: #limitations-of-passkeys
+[multi-key account support]: ../basics/accounts.md#account-keys
+[PoC demo]: https://github.com/onflow/passkey-wallet-demo
+[multi-key account configurations]: ../basics/accounts.md#account-keys
 
 
 

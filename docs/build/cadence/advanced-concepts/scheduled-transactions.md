@@ -24,7 +24,7 @@ Scheduled transactions were part of the Forte network upgrade and are available 
 
 :::
 
-Scheduled transactions on the Flow blockchain enable users and smart contracts to autonomously execute predefined logic at specific future times without external triggers. This powerful feature allows developers to create "wake up" patterns where contracts can schedule themselves to run at predetermined block timestamps, which allows novel blockchain automation patterns.
+Scheduled transactions on the Flow blockchain allow users and smart contracts to autonomously execute predefined logic at specific future times without external triggers. This powerful feature allows developers to create "wake up" patterns where contracts can schedule themselves to run at predetermined block timestamps, which allows novel blockchain automation patterns.
 
 Key benefits include:
 - **Autonomous execution**: no need for external services or manual intervention.
@@ -35,7 +35,7 @@ Common use cases include recurring payments, automated arbitrage, time-based con
 
 :::info
 
-Flow provides a scheduled transaction manager to make managing your scheduled transactions more streamlined. Check out the [scheduled transactions intro] for a tutorial on how to schedule some basic transactions with the manager.
+Flow provides a scheduled transaction manager to help you manage your scheduled transactions more easily. Check out the [scheduled transactions intro] for a tutorial on how to schedule some basic transactions with the manager.
 
 :::
 
@@ -114,7 +114,7 @@ access(all) contract TransferFLOWHandler {
 
 ### Scheduling
 
-In sceduling, you create the transaction that executes at a specified future timestamp. The system uses three priority levels:
+In scheduling, you create the transaction that executes at a specified future timestamp. The system uses three priority levels:
 
 - **High Priority**: guarantees execution in the first block with the scheduled time or fails scheduling, requires the highest fees.
 - **Medium Priority**: best-effort execution as close as possible to the scheduled time known during scheduling.
@@ -129,8 +129,7 @@ Each transaction requires:
 
 These arguments are required by the [`FlowTransactionScheduler.schedule()` function]. This function returns a `ScheduledTransaction` resource object.
 
-The Scheduled Transaction Manager standard (mentioned in the intro) provides an easy way for developers
-and users to manage their scheduled transactions from a central place in their account. Users are strongly encouraged to use this.
+The Scheduled Transaction Manager standard (mentioned in the intro) provides an easy way for developers and users to manage their scheduled transactions from a central place in their account. Users are strongly encouraged to use this.
 
 More information about the Scheduled Transaction manager is in the [section at the end of this document].
 
@@ -139,7 +138,7 @@ When a transaction is scheduled, the [`FlowTransactionScheduler.Scheduled` event
 ### Fees
 
 Fee calculation includes:
-- **Base execution fee**: based on computational effort using standard Flow fee structure.
+- **Base execution fee**: based on computational effort with standard Flow fee structure.
 - **Priority multiplier**: higher priorities pay more (High: 10x, Medium: 5x, Low: 2x base rate).
 - **Storage fee**: cost to store transaction data on-chain.
 
@@ -159,7 +158,7 @@ If the scheduled transaction fails at any point during execution, the `Executed`
 
 You can cancel scheduled transactions before execution. When you cancel a transaction, it returns a portion of the fees (configurable refund percentage, 50% as of now). Please keep in mind the refund percentage can change in the future.
 
-To cancel, you need the `ScheduledTransaction` resource that was returned during scheduling. The scheduled transaction manager also makes cancelling scheduled transaction easier.
+To cancel, you need the `ScheduledTransaction` resource that was returned during scheduling. The scheduled transaction manager also makes scheduled transaction cancellation easier.
 
 ### Transaction lifecycle
 
@@ -399,7 +398,7 @@ access(all) fun main(
 
 ### 6. Monitor execution events
 
-Use the Flow CLI to monitor all scheduled transaction events in real-time (example for testnet - account addresses may differ):
+Use the Flow Command Line Interface (CLI) to monitor all scheduled transaction events in real-time (example for testnet - account addresses may differ):
 
 ```bash
 flow events get \
