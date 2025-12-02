@@ -155,6 +155,42 @@ Use aliases when contracts are already deployed on specific networks:
 - To avoid redeploying dependencies
 - To use the official versions of common contracts
 
+#### Cadence Import Aliasing
+
+When deploying the same contract to multiple addresses with different names, use the `canonical` field to reference the original contract. This allows you to import multiple instances of the same contract with different identifiers.
+
+```json
+"contracts": {
+  "FUSD": {
+    "source": "./contracts/FUSD.cdc",
+    "aliases": {
+      "testnet": "0x9a0766d93b6608b7"
+    }
+  },
+  "FUSD1": {
+    "source": "./contracts/FUSD.cdc",
+    "aliases": {
+      "testnet": "0xe223d8a629e49c68"
+    },
+    "canonical": "FUSD"
+  }
+}
+```
+
+Flow CLI automatically transforms imports for aliased contracts:
+
+```cadence
+import "FUSD"
+import "FUSD1"
+```
+
+Becomes:
+
+```cadence
+import FUSD from 0x9a0766d93b6608b7
+import FUSD as FUSD1 from 0xe223d8a629e49c68
+```
+
 ### Deployments
 
 The `deployments` section defines which contracts get deployed to which accounts on which networks.
@@ -201,7 +237,7 @@ Here's a complete `flow.json` for a project with multiple contracts and networks
     "testnet": "access.devnet.nodes.onflow.org:9000",
     "mainnet": "access.mainnet.nodes.onflow.org:9000"
   },
-  
+
   "accounts": {
     "emulator-account": {
       "address": "f8d6e0586b0a20c7",
@@ -212,7 +248,7 @@ Here's a complete `flow.json` for a project with multiple contracts and networks
       "key": "12332967fd2bd75234ae9037dd4694c1f00baad63a10c35172bf65fbb8ad1111"
     }
   },
-  
+
   "contracts": {
     "FungibleToken": {
       "source": "./cadence/contracts/FungibleToken.cdc",
@@ -224,7 +260,7 @@ Here's a complete `flow.json` for a project with multiple contracts and networks
     "MyToken": "./cadence/contracts/MyToken.cdc",
     "MyNFT": "./cadence/contracts/MyNFT.cdc"
   },
-  
+
   "deployments": {
     "emulator": {
       "emulator-account": ["FungibleToken", "MyToken", "MyNFT"]

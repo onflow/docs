@@ -34,6 +34,12 @@ import { useFlowCurrentUser } from "@onflow/react-sdk"
 - `authenticate: () => Promise<CurrentUser>` – Triggers wallet authentication
 - `unauthenticate: () => void` – Logs the user out
 
+:::note WalletConnect Support
+
+To enable WalletConnect as a wallet option, add your registered project ID to the `walletconnectProjectId` field in your `FlowProvider` config.
+
+:::
+
 ```tsx
 function AuthComponent() {
   const { user, authenticate, unauthenticate } = useFlowCurrentUser()
@@ -463,7 +469,7 @@ Fetches a Flow transaction by ID and returns the decoded transaction object.
 
 #### Parameters:
 
-* `txId?: string` – The Flow transaction ID to fetch.
+* `txId?: string` – The Flow transaction ID or scheduled transaction ID to fetch.
 * `query?: Omit<UseQueryOptions<Transaction | null, Error>, "queryKey" | "queryFn">` – Optional TanStack Query options like `staleTime`, `enabled`, etc.
 * `flowClient?: FlowClient` - Optional `FlowClient` instance
 
@@ -503,7 +509,7 @@ import { useFlowTransactionStatus } from "@onflow/react-sdk"
 
 #### Parameters:
 
-- `id: string` – Transaction ID to subscribe to
+- `id: string` – Transaction ID or scheduled transaction ID to subscribe to
 - `flowClient?: FlowClient` - Optional `FlowClient` instance
 
 #### Returns:

@@ -33,7 +33,7 @@ Crossmint's minting platform provides no-code tools and powerful APIs to create,
 
 - Crossmint account with minting activated.
 - Flow development environment.
-- Basic understanding of NFT standards.
+- Basic knowledge of NFT standards.
 
 ## Step 1: Deploy smart contract
 

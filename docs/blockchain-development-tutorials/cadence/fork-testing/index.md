@@ -2,10 +2,11 @@
 sidebar_position: 20
 sidebar_label: Fork Testing
 title: Fork Testing with Cadence
-description: Run your Cadence test suite against a forked mainnet or testnet using flow test --fork. Test against real contracts and production data without deploying to live networks.
+description: Run your Cadence test suite against a forked mainnet or testnet using fork testing. Test against real contracts and production data without deploying to live networks.
 keywords:
   - fork testing
-  - flow test --fork
+  - test_fork pragma
+  - flow test
   - cadence tests
   - mainnet fork
   - testnet fork
@@ -16,7 +17,6 @@ keywords:
   - real contracts
   - on-chain state
   - block height
-  - fork-height
   - historical debugging
   - reproducible tests
   - test deployment
@@ -31,7 +31,7 @@ keywords:
 
 # Fork Testing with Cadence
 
-This tutorial teaches you how to run your Cadence tests against a snapshot of Flow mainnet with `flow test --fork`. You'll learn how to test your contracts against real deployed contracts and production data without the need to deploy anything to a live network or bootstrap test accounts.
+This tutorial teaches you how to run your Cadence tests against a snapshot of Flow mainnet using `flow test` with the `#test_fork` pragma. You'll learn how to test your contracts against real deployed contracts and production data without needing to deploy anything to a live network or bootstrap test accounts.
 
 Fork testing bridges the gap between isolated local unit tests and testnet deployments. It allows you to validate your contracts work correctly with real on-chain state, test integrations with deployed contracts, and debug issues with historical blockchain data—all in a safe, local environment.
 
@@ -39,7 +39,7 @@ Fork testing bridges the gap between isolated local unit tests and testnet deplo
 
 After you complete this tutorial, you'll be able to:
 
-- **Run Cadence tests against forked networks** with `flow test --fork`.
+- **Run Cadence tests against forked networks** with `#test_fork`.
 - **Test contracts that depend on real mainnet contracts** without manual setup.
 - **Use account impersonation** to execute transactions as any mainnet account.
 - **Read from production blockchain state** in your test suite.
@@ -55,16 +55,6 @@ You'll create a complete fork testing setup that demonstrates:
 - How to test custom logic against real account balances and state.
 - How to execute transactions with impersonated mainnet accounts.
 - A reusable pattern for integration tests your Flow applications.
-
-### Reproducibility first
-
-Pin a specific block height when you need reproducible results:
-
-```zsh
-flow test --fork mainnet --fork-height <BLOCK_HEIGHT>
-```
-
-Document the pin heights you rely on (for example, in CI variables or a simple file in the repo) and update them via a dedicated freshness pull request (PR). For best results, keep a per‑spork stable pin and also run a "latest" freshness job.
 
 ## Prerequisites
 
@@ -91,7 +81,7 @@ You'll need network access to Flow's public access nodes. The tutorial uses thes
 
 :::info
 
-This tutorial covers `flow test --fork` (which runs tests against forked network state), which is different from `flow emulator --fork` (which runs the emulator in fork mode for manual interaction).
+This tutorial covers fork testing with `flow test` (running tests against forked network state), which is different from `flow emulator --fork` (starting the emulator in fork mode for manual interaction).
 
 :::
 
@@ -170,6 +160,8 @@ flow generate test FlowToken
 Open `cadence/tests/FlowToken_test.cdc` and replace its contents with:
 
 ```cadence cadence/tests/FlowToken_test.cdc
+#test_fork(network: "mainnet", height: nil)
+
 import Test
 
 access(all) fun testFlowTokenSupplyIsPositive() {
@@ -187,29 +179,30 @@ access(all) fun testFlowTokenSupplyIsPositive() {
 
 :::info
 
+- **The `#test_fork` pragma** at the top configures this test to run against mainnet
 - Use `Test.executeScript()` to read contract state
-- The script imports `FlowToken` by name - the dependency manager handles address resolution.
-- In fork mode, this automatically uses the mainnet FlowToken contract.
-- Extract the return value with proper type casting and assert on it.
-- File paths in `Test.readFile()` are relative to the test file location (use `../scripts/` from `cadence/tests/`).
+- The script imports `FlowToken` by name - the dependency manager handles address resolution
+- In fork mode, this automatically uses the mainnet FlowToken contract
+- Extract the return value with proper type casting and assert on it
+- File paths in `Test.readFile()` are relative to the test file location (use `../scripts/` from `cadence/tests/`)
 
 :::
 
 #### Quick verify
 
-Run just this test file against a fork to confirm your setup works:
+Run just this test file to confirm your setup works:
 
 ```zsh
-flow test cadence/tests/FlowToken_test.cdc --fork mainnet
+flow test cadence/tests/FlowToken_test.cdc
 ```
 
-Target testnet instead:
+The pragma handles the fork configuration automatically! You will see the test PASS. If not, verify your network host in `flow.json` and that dependencies are installed.
 
-```zsh
-flow test cadence/tests/FlowToken_test.cdc --fork testnet
+**To test against testnet instead**, simply change the pragma in the test file:
+
+```cadence
+#test_fork(network: "testnet", height: nil)
 ```
-
-You will see the test PASS. If not, verify your network host in `flow.json` and that dependencies are installed.
 
 ## Deploy and test Your contract
 
@@ -224,6 +217,7 @@ flow accounts create
 ```
 
 Follow the prompts:
+
 - Select "mainnet" for the network.
 - Name your account as desired.
 
@@ -292,9 +286,9 @@ Update your `flow.json` to include the contract with aliases, and use the addres
 
 :::info
 
- No local private key is required for forked tests. The accounts entry above is included so you can copy and reference the address in your config. You can also omit keys for fork tests. Contracts deploy to the testing environment at `testing` alias, and transactions that interact with forked state can use impersonation. The `Test.deployContract` function will automatically deploy your contract to the testing environment during test execution.
+No local private key is required for forked tests. The accounts entry above is included so you can copy and reference the address in your config. You can also omit keys for fork tests. Contracts deploy to the testing environment at `testing` alias, and transactions that interact with forked state can use impersonation. The `Test.deployContract` function will automatically deploy your contract to the testing environment during test execution.
 
- :::
+:::
 
 ### Create scripts for testing
 
@@ -336,6 +330,8 @@ flow generate test TokenChecker
 Open `cadence/tests/TokenChecker_test.cdc` and replace its contents with:
 
 ```cadence cadence/tests/TokenChecker_test.cdc
+#test_fork(network: "mainnet", height: nil)
+
 import Test
 
 access(all) fun setup() {
@@ -377,10 +373,11 @@ access(all) fun testHasMinimumBalance() {
 
 ### What's happening here
 
-1. **Your contract uses FlowToken**: `TokenChecker` imports and interacts with the real FlowToken contract.
-2. **No bootstrapping needed**: When you run with `--fork`, real mainnet accounts (like `0x1654653399040a61`, the Flow service account) already have balances.
-3. **Test against real state**: You can query actual accounts and verify your contract logic works with production data.
-4. **Local deployment**: Your `TokenChecker` contract is deployed locally to the test environment, but it reads from forked mainnet state.
+1. **The `#test_fork` pragma configures the test**: At the top of the file, the pragma tells the test framework to run against mainnet.
+2. **Your contract uses FlowToken**: `TokenChecker` imports and interacts with the real FlowToken contract.
+3. **No bootstrapping needed**: With the fork pragma, real mainnet accounts (like `0x1654653399040a61`, the Flow service account) already have balances.
+4. **Test against real state**: You can query actual accounts and verify your contract logic works with production data.
+5. **Local deployment**: Your `TokenChecker` contract is deployed locally to the test environment, but it reads from forked mainnet state.
 
 ## Execute transactions with account impersonation
 
@@ -443,7 +440,7 @@ transaction(amount: UFix64, to: Address) {
 
 ### Test transaction execution with impersonation
 
-Add this test function to the current `cadence/tests/TokenChecker_test.cdc` file:
+Add this test function to the current `cadence/tests/TokenChecker_test.cdc` file (the pragma is already at the top of the file):
 
 ```cadence
 access(all) fun testTransactionAsMainnetAccount() {
@@ -519,13 +516,13 @@ access(all) fun testTransactionAsMainnetAccount() {
 
 ## Run all tests together
 
-Now that you have multiple test files, run them all against the forked network:
+Now that you have multiple test files with the `#test_fork` pragma, simply run:
 
 ```zsh
-flow test --fork mainnet
+flow test
 ```
 
-This runs all `*_test.cdc` files in your project against mainnet. You will see:
+That's it! The pragma handles all the fork configuration. This runs all `*_test.cdc` files in your project—both local tests and fork tests together. You will see:
 
 ```
 Test results: "cadence/tests/FlowToken_test.cdc"
@@ -537,40 +534,53 @@ Test results: "cadence/tests/TokenChecker_test.cdc"
 - PASS: testTransactionAsMainnetAccount
 ```
 
-### Additional options
+### Best Practices: In-File Configuration vs CLI Flags
 
-You can also fork from testnet (`flow test --fork testnet`) or pin to a specific block height (`--fork-height`). See the [Fork Testing Flags] reference for all available options.
+**Recommended:** Configure fork tests in your test file with `#test_fork`
 
-See also:
-
-- Strategy: [Testing Strategy on Flow]
-- Emulator (fork mode for interactive E2E): [Flow Emulator]
-- Networks and access nodes: [Flow Networks]
-
-:::info
-External oracles and off-chain systems
-
-Fork tests run against Flow chain state only:
-- No live off-chain/API calls or cross-chain reads
-- Price feeds, bridges, indexers, and similar must be mocked (stub contracts or fixtures)
-- For end-to-end, combine with `flow emulator --fork` and a local stub service
-:::
-
-### Select tests quickly
-
-- Run specific files or directories:
-
-```zsh
-flow test cadence/tests/FlowToken_test.cdc cadence/tests/TokenChecker_test.cdc --fork mainnet
+```cadence
+#test_fork(network: "mainnet", height: nil)
+import Test
+// Your tests...
 ```
 
-- Optional: narrow by function name with `--name`:
+Then run with:
 
-```zsh
-flow test cadence/tests/TokenChecker_test.cdc --name _smoke --fork mainnet
+```bash
+flow test
 ```
 
-- Optional: suffix a few functions with `_smoke` for quick PR runs; run the full suite nightly or on protected branches.
+**Not recommended:** CLI flags (legacy approach)
+
+```bash
+flow test --fork mainnet  # Requires typing flags every time
+```
+
+Configuring fork tests in the file keeps the configuration with your test code, making tests self-documenting and easier to maintain.
+
+You can also run specific test files or change the network/block height in the pragma as needed. See the [Fork Testing Flags] reference for more options.
+
+## Pinning block heights for reproducibility
+
+For reproducible test results, pin your tests to a specific block height:
+
+```cadence
+#test_fork(network: "mainnet", height: 85229104)
+```
+
+This ensures your tests run against the same blockchain state every time, useful for:
+
+- Deterministic test results in CI/CD
+- Reproducing historical bugs at a specific point in time
+- Testing against known network state
+
+To use the latest state instead, use `height: nil`:
+
+```cadence
+#test_fork(network: "mainnet", height: nil)
+```
+
+Note that block heights are only available within the current spork (network upgrade period). See [Testing Smart Contracts] for more on managing pinned heights over time.
 
 ## When to use fork testing
 
@@ -589,9 +599,9 @@ For strategy, limitations, and best practices, see the guide: [Testing Smart Con
 
 In this tutorial, you learned how to use fork testing to validate your Cadence contracts against live Flow network state. You created tests that read from real mainnet contracts, deployed custom contracts that interact with production data, and executed transactions using account impersonation—all without the need deploy to a live network or bootstrap test accounts.
 
-Now that you have completed this tutorial, you will be able to:
+Now that you have completed this tutorial, you can:
 
-- **Run Cadence tests against forked networks** with `flow test --fork`.
+- **Run Cadence tests against forked networks** with `#test_fork`.
 - **Test contracts that depend on real mainnet contracts** without manual setup.
 - **Use account impersonation** to execute transactions as any mainnet account.
 - **Read from production blockchain state** in your test suite.

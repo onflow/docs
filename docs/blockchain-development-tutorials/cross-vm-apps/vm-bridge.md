@@ -6,7 +6,7 @@ sidebar_position: 6
 
 # Cross-VM Bridge
 
-Flow provides the [Cross-VM Bridge](https://www.github.com/onflow/flow-evm-bridge) which allows the movement of fungible and non-fungible tokens between Flow-Cadence & Flow-EVM. The Cross-VM Bridge is a contract-based protocol which allows the automated and atomic bridging of tokens from Cadence into EVM with their corresponding ERC-20 and ERC-721 token types.
+Flow provides the [Cross-VM Bridge] which allows the movement of fungible and non-fungible tokens between Flow-Cadence & Flow-EVM. The Cross-VM Bridge is a contract-based protocol which allows the automated and atomic bridging of tokens from Cadence into EVM with their corresponding ERC-20 and ERC-721 token types.
 
 In the opposite direction, it supports bridging of arbitrary ERC-20 and ERC-721 tokens from EVM to Cadence as their corresponding FT or NFT token types.
 
@@ -16,11 +16,9 @@ If a developer wants to define and connect the NFT contracts on both sides of th
 
 The Cross-VM Bridge internalizes the capabilities to deploy new token contracts in either VM state as needed, resolves access to and maintains links between associated contracts. It also automates account and contract calls to enforce source VM asset burn or lock, and target VM token mint or unlock.
 
-Developers who want to use the Cross-VM Bridge must use a Cadence transaction. Cross-VM bridging functionality is not currently available natively in Flow EVM. By extension, this means that the EVM account bridging
-from EVM to Cadence must be a [`CadenceOwnedAccount` (COA)](interacting-with-coa.md) as this is the only EVM account type that can be controlled from the Cadence runtime.
+Developers who want to use the Cross-VM Bridge must use a Cadence transaction. Cross-VM bridging functionality is not currently available natively in Flow EVM. By extension, this means that the EVM account bridging from EVM to Cadence must be a [`CadenceOwnedAccount` (COA)] as this is the only EVM account type that can be controlled from the Cadence runtime.
 
-This [FLIP-233](https://github.com/onflow/flips/pull/233) outlines the architecture and implementation of the VM bridge. An additional [FLIP-318](https://github.com/onflow/flips/blob/main/application/20250131-cross-vm-nft-support.md) describes how developers can create custom associations
-between NFTs they define and control in each VM.
+This [FLIP-233] outlines the architecture and implementation of the VM bridge. An additional [FLIP-318] describes how developers can create custom associations between NFTs they define and control in each VM.
 
 This document will focus on how to use the Cross-VM Bridge and considerations for fungible and non-fungible token projects that deploy to either Cadence or EVM.
 
@@ -30,36 +28,33 @@ You can find the core bridge contracts at the following addresses:
 
 | Contracts                             | Testnet                                                                                                                            | Mainnet                                                                                                                    |
 | ------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------- |
-| All Cadence Bridge contracts          | [`0xdfc20aee650fcbdf`](https://contractbrowser.com/account/0xdfc20aee650fcbdf/contracts)                                           | [`0x1e4aa0b87d10b141`](https://contractbrowser.com/account/0x1e4aa0b87d10b141/contracts)                                   |
-| `FlowEVMBridgeFactory.sol`            | [`0xf8146b4aef631853f0eb98dbe28706d029e52c52`](https://evm-testnet.flowscan.io/address/0xF8146B4aEF631853F0eB98DBE28706d029e52c52) | [`0x1c6dea788ee774cf15bcd3d7a07ede892ef0be40`](https://evm.flowscan.io/address/0x1C6dEa788Ee774CF15bCd3d7A07ede892ef0bE40) |
-| `FlowEVMBridgeDeploymentRegistry.sol` | [`0x8781d15904d7e161f421400571dea24cc0db6938`](https://evm-testnet.flowscan.io/address/0x8781d15904d7e161f421400571dea24cc0db6938) | [`0x8fdec2058535a2cb25c2f8cec65e8e0d0691f7b0`](https://evm.flowscan.io/address/0x8FDEc2058535A2Cb25C2f8ceC65e8e0D0691f7B0) |
-| `FlowEVMBridgedERC20Deployer.sol`     | [`0x4d45CaD104A71D19991DE3489ddC5C7B284cf263`](https://evm-testnet.flowscan.io/address/0x4d45CaD104A71D19991DE3489ddC5C7B284cf263) | [`0x49631Eac7e67c417D036a4d114AD9359c93491e7`](https://evm.flowscan.io/address/0x49631Eac7e67c417D036a4d114AD9359c93491e7) |
-| `FlowEVMBridgedERC721Deployer.sol`    | [`0x1B852d242F9c4C4E9Bb91115276f659D1D1f7c56`](https://evm-testnet.flowscan.io/address/0x1B852d242F9c4C4E9Bb91115276f659D1D1f7c56) | [`0xe7c2B80a9de81340AE375B3a53940E9aeEAd79Df`](https://evm.flowscan.io/address/0xe7c2B80a9de81340AE375B3a53940E9aeEAd79Df) |
+| All Cadence Bridge contracts          | [`0xdfc20aee650fcbdf`]                                     | [`0x1e4aa0b87d10b141`]                                  |
+| `FlowEVMBridgeFactory.sol`            | [`0xf8146b4aef631853f0eb98dbe28706d029e52c52`] | [`0x1c6dea788ee774cf15bcd3d7a07ede892ef0be40`] |
+| `FlowEVMBridgeDeploymentRegistry.sol` | [`0x8781d15904d7e161f421400571dea24cc0db6938`] | [`0x8fdec2058535a2cb25c2f8cec65e8e0d0691f7b0`] |
+| `FlowEVMBridgedERC20Deployer.sol`     | [`0x4d45CaD104A71D19991DE3489ddC5C7B284cf263`] | [`0x49631Eac7e67c417D036a4d114AD9359c93491e7`] |
+| `FlowEVMBridgedERC721Deployer.sol`    | [`0x1B852d242F9c4C4E9Bb91115276f659D1D1f7c56`] | [`0xe7c2B80a9de81340AE375B3a53940E9aeEAd79Df`] |
 
 And below are the bridge escrow's EVM addresses. These addresses are COAs and are stored stored in the same Flow account
 as you'll find the Cadence contracts (see above).
 
 | Network | Address                                                                                                                            |
 | ------- | ---------------------------------------------------------------------------------------------------------------------------------- |
-| Testnet | [`0x0000000000000000000000023f946ffbc8829bfd`](https://evm-testnet.flowscan.io/address/0x0000000000000000000000023f946FFbc8829BFD) |
-| Mainnet | [`0x00000000000000000000000249250a5c27ecab3b`](https://evm.flowscan.io/address/0x00000000000000000000000249250a5C27Ecab3B)         |
+| Testnet | [`0x0000000000000000000000023f946ffbc8829bfd`] |
+| Mainnet | [`0x00000000000000000000000249250a5c27ecab3b`]         |
 
-## Interacting With the Bridge
+## Interact With the Bridge
 
 :::info
 
-All bridging activity in either direction is orchestrated via Cadence on COA EVM accounts. This means that all bridging activity must be initiated via a Cadence transaction, not an EVM transaction regardless of the directionality of the bridge request. For more information on the interplay between Cadence and EVM, see [How Flow EVM
-Works](../../build/evm/how-it-works.md).
+All bridging activity in either direction is orchestrated via Cadence on COA EVM accounts. This means that all bridging activity must be initiated via a Cadence transaction, not an EVM transaction, regardless of the directionality of the bridge request. For more information on the interplay between Cadence and EVM, see [How Flow EVM Works].
 
 :::
 
 ## Overview
 
-The Flow EVM bridge allows both fungible and non-fungible tokens to move atomically between Cadence and EVM. In EVM, fungible tokens are defined as ERC20 tokens, and non-fungible tokens as ERC721 tokens. In Cadence, fungible tokens are defined by contracts that implement [the `FungibleToken` interface](https://github.com/onflow/flow-ft/blob/master/contracts/FungibleToken.cdc)
-and non-fungible tokens implement [the `NonFungibleToken` interface](https://github.com/onflow/flow-nft/blob/master/contracts/NonFungibleToken.cdc).
-You can find full guides to create these projects [here](../tokens/nft-cadence.md).
+The Flow EVM bridge allows both fungible and non-fungible tokens to move atomically between Cadence and EVM. In EVM, fungible tokens are defined as ERC20 tokens, and non-fungible tokens as ERC721 tokens. In Cadence, fungible tokens are defined by contracts that implement [the `FungibleToken` interface] and non-fungible tokens implement [the `NonFungibleToken` interface]. You can find full guides to create these projects [here].
 
-Like all operations on Flow, there are native fees associated with both computation and storage. To prevent spam and sustain the bridge account's storage consumption, fees are charged for both onboarding assets and bridging assets. In the case where storage consumption is expected, fees are charged based on the storage consumed at the current network storage rate.
+Like all operations on Flow, there are native fees associated with both computation and storage. To prevent spam and sustain the bridge account's storage consumption, fees are charged to both onboard assets and bridge assets. In the case where storage consumption is expected, fees are charged based on the storage consumed at the current network storage rate.
 
 ## Onboard your token to the bridge
 
@@ -73,17 +68,17 @@ To create this association, the asset must be "onboarded" to the bridge before b
 
 Any user registers the native token contract with the bridge and the bridge deploys a basic templated version of the contract in the target VM. This basic contract is automatically associated with the native contract and is used for bridging. The developer has no direct control over this bridge-deployed contract because the bridge controls it.
 
-This method is covered in the [Automatic Onboarding Section](#automatic-onboarding)
+This method is covered in the [Automatic Onboarding Section].
 
 ### Option 2: custom association onboarding
 
 With this option (available for only for NFTs), developers can deploy their own contract to the target VM and declare a custom association between it and the native contract. This allows them to have more control over both contracts, which lets them to include more sophisticated features and mechanisms in their bridged token contracts such as ERC-721C, unique metadata views, and more that aren't included in the default bridged template versions.
 
-This method is covered in the [Custom Association Section](#custom-association-onboarding)
+This method is covered in the [Custom Association Section].
 
 :::info
 
-Before you continue to onboard your token, review the [Prep Your Assets for Bridging](#prep-your-assets-for-bridging) section of this document. This describes some steps you should follow to make sure that your native asset or bridged asset are properly set up for you to register them with the bridge.
+Before you continue to onboard your token, review the [Prep Your Assets for Bridging] section of this document. This describes some steps you should follow to make sure that your native asset or bridged asset are properly set up for you to register them with the bridge.
 
 :::
 
@@ -119,15 +114,13 @@ Below are transactions relevant to automatically onboarding assets native to eit
 
 ## Custom association onboarding
 
-With [Custom Associations](https://github.com/onflow/flips/blob/main/application/20250131-cross-vm-nft-support.md),
-developers can deploy NFT contracts in both VMs and associate them with each other, which allows them to retain control of the contracts in both VMs as well as implement custom use-case specific functionality.
+With [Custom Associations], developers can deploy NFT contracts in both VMs and associate them with each other, which allows them to retain control of the contracts in both VMs as well as implement custom use-case specific functionality.
 
 To do this, each contract must implement a special interface that tells the bridge what the associated contract is in the other VM. The fact that both point to each other validates the intended association, which prevents spoofing. If the contracts do not point to each other this way, you can't register them as a custom association.
 
-Review the [Preparing Custom Associations](#preparing-custom-associations) section to learn how to set up each of your contracts for a custom association.
+Review the [Preparing Custom Associations] section to learn how to set up each of your contracts for a custom association.
 
-Below is the transaction for onboarding NFTs for a custom association. Remember that both the Cadence and the Solidity contract need to be deployed
-and include the special interface conformances to point to each other before registration!
+Below is the transaction for onboarding NFTs for a custom association. Remember that both the Cadence and the Solidity contract need to be deployed and include the special interface conformances to point to each other before registration!
 
 **Onboard an NFT Custom Association:**
 
@@ -180,7 +173,7 @@ Alternatively, given some onboarded Cadence type, you can retrieve the associate
 
 #### NFTs
 
-Any Cadence NFTs taht bridge to EVM are escrowed in the bridge account and either minted in a bridge-deployed ERC721 contract or transferred from escrow to the calling COA in EVM. On the return trip, NFTs are escrowed in EVM - owned by the bridge's COA - and either unlocked from escrow if locked or minted from a bridge-owned NFT contract.
+Any Cadence NFTs that bridge to EVM are escrowed in the bridge account and either minted in a bridge-deployed ERC721 contract or transferred from escrow to the calling COA in EVM. On the return trip, NFTs are escrowed in EVM - owned by the bridge's COA - and either unlocked from escrow if locked or minted from a bridge-owned NFT contract.
 
 Below are transactions relevant to bridging NFTs:
 
@@ -206,9 +199,9 @@ Below are transactions relevant to bridging NFTs:
 
 #### Fungible tokens
 
-Any Cadence fungible tokens bridging to EVM are escrowed in the bridge account only if they are Cadence-native. If the bridge defines the tokens, they are burned. On the return trip the pattern is similar, as the bridge burns bridge-defined tokens or escrows them if they are EVM-native. In all cases, if the bridge has authority to mint on one side, it must escrow on the other as the native VM contract is owned by an external party.
+Any Cadence fungible tokens that bridge to EVM are escrowed in the bridge account only if they are Cadence-native. If the bridge defines the tokens, they are burned. On the return trip the pattern is similar, as the bridge burns bridge-defined tokens or escrows them if they are EVM-native. In all cases, if the bridge has authority to mint on one side, it must escrow on the other as the native VM contract is owned by an external party.
 
-With fungible tokens in particular, there may be some cases where the Cadence contract is not deployed to the bridge account, but the bridge still follows a mint/burn pattern in Cadence. These cases are handled via [`TokenHandler`](https://github.com/onflow/flow-evm-bridge/blob/main/cadence/contracts/bridge/interfaces/FlowEVMBridgeHandlerInterfaces.cdc) implementations. Also know that moving $FLOW to EVM is built into the `EVMAddress` object so any requests to bridge $FLOW to EVM will simply leverage this interface; however, moving $FLOW from EVM to Cadence must be done through the COA resource.
+With fungible tokens in particular, there may be some cases where the Cadence contract is not deployed to the bridge account, but the bridge still follows a mint/burn pattern in Cadence. These cases are handled via [`TokenHandler`] implementations. Also know that moving $FLOW to EVM is built into the `EVMAddress` object so any requests to bridge $FLOW to EVM will simply leverage this interface; however, you must move $FLOW from EVM to Cadence through the COA resource.
 
 Below are transactions relevant to bridging fungible tokens:
 
@@ -240,7 +233,7 @@ To maximize utility to the ecosystem, this bridge is permissionless and open to 
 
 ### EVMBridgedMetadata
 
-Proposed in [@onflow/flow-nft/pull/203](https://github.com/onflow/flow-nft/pull/203), the `EVMBridgedMetadata` view presents a mechanism to both represent metadata from bridged EVM assets as well as allow Cadence-native projects to specify the representation of their assets in EVM. It isn'trequired to implement this view to bridge asets, but the bridge does default to it when available as a way to provide projects greater control over their EVM asset definitions within the scope of ERC20 and ERC721 standards.
+Proposed in [@onflow/flow-nft/pull/203], the `EVMBridgedMetadata` view presents a mechanism to both represent metadata from bridged EVM assets as well as allow Cadence-native projects to specify the representation of their assets in EVM. It isn't required to implement this view to bridge asets, but the bridge does default to it when available as a way to provide projects greater control over their EVM asset definitions within the scope of ERC20 and ERC721 standards.
 
 The interface for this view is as follows:
 
@@ -273,10 +266,9 @@ This uri value could be a pointer to some offchain metadata if you expect your m
 
 The key consideration with respect to metadata is the distinct metadata storage patterns between ecosystem. It's critical for NFT utility that the metadata be bridged in addition to the representation of the NFTs ownership. However, it's commonplace for Cadence NFTs to store metadata onchain while EVM NFTs often store an onchain pointer to metadata stored offchain. 
 
-For Cadence NFTs to be properly represented in EVM platforms, the metadata must be bridged in
-a format expected by those platforms and be done in a manner that also preserves the atomicity of bridge requests. The path forward on this was decided to be a commitment of serialized Cadence NFT metadata into formats popular in the EVM ecosystem.
+For Cadence NFTs to be properly represented in EVM platforms, the metadata must be bridged in a format expected by those platforms and be done in a manner that also preserves the atomicity of bridge requests. The path forward on this was decided to be a commitment of serialized Cadence NFT metadata into formats popular in the EVM ecosystem.
 
-For assets that do not implement `EVMBridgedMetadata`, the bridge will attempt to serialize the metadata of the asset as a JSON data URL string. This is done via the [`SerializeMetadata` contract](https://github.com/onflow/flow-evm-bridge/blob/main/cadence/contracts/utils/SerializeMetadata.cdc) which serializes metadata values into a JSON blob compatible with the OpenSea metadata standard. The serialized metadata is then committed as the ERC721 `tokenURI` upon bridging Cadence-native NFTs to EVM. Since Cadence NFTs can easily update onchain metadata either by field or by the ownership of sub-NFTs, this serialization pattern enables token URI updates on subsequent bridge requests.
+For assets that do not implement `EVMBridgedMetadata`, the bridge will attempt to serialize the metadata of the asset as a JSON data URL string. This is done via the [`SerializeMetadata` contract] which serializes metadata values into a JSON blob compatible with the OpenSea metadata standard. The serialized metadata is then committed as the ERC721 `tokenURI` upon bridging Cadence-native NFTs to EVM. Since Cadence NFTs can easily update onchain metadata either by field or by the ownership of sub-NFTs, this serialization pattern allows token URI updates on subsequent bridge requests.
 
 ### Prepar custom associations
 
@@ -294,7 +286,7 @@ The bridge only supports a single custom association declaration. This means tha
 
 #### Cadence
 
-All Cadence NFT contracts implement [Metadata Views](../../build/cadence/advanced-concepts/metadata-views.md) that return metadata about their NFTs in standard ways via the `{Contract}.resolveContractView()` and `{NFT}.resolveView()` methods.
+All Cadence NFT contracts implement [Metadata Views] that return metadata about their NFTs in standard ways via the `{Contract}.resolveContractView()` and `{NFT}.resolveView()` methods.
 
 The following new view (`CrossVMMetadataViews.EVMPointer`) **must** be resolved at the contract level (`ViewResolver.resolveContractView()`) for a given Type **and** at the NFT level (`ViewResolver.Resolver.resolveView()`)
 
@@ -314,7 +306,7 @@ access(all) struct EVMPointer {
 
 This view allows a Cadence contract to specify which Solidity contract it is associated with.
 
-You can see an example of how this view is implemented in [the `ExampleNFT` contract](https://github.com/onflow/flow-nft/blob/master/contracts/ExampleNFT.cdc#L173-L195) in the Flow Non-Fungible Token repo.
+You can see an example of how this view is implemented in [the `ExampleNFT` contract] in the Flow Non-Fungible Token repo.
 
 If your EVM contract expects metadata to be passed from Cadence at the time of bridging, you must implement the `CrossVMMetadataViews.EVMBytesMetadata` view. You'll find this useful for Cadence-native NFTs with dynamic metadata. This view will be resolved by the bridge and passed to your EVM contract when the `fulfillToEVM` method is called.
 
@@ -356,7 +348,7 @@ If the NFT being onboarded to the bridge is native to Flow-EVM, then the associa
     }
 ```
 
-You can see an example of an implementation of this interface in the [Flow EVM bridge repo ExampleNFT contract](https://github.com/onflow/flow-evm-bridge/blob/flip-318/cadence/contracts/example-assets/cross-vm-nfts/ExampleEVMNativeNFT.cdc#L352-L377).
+You can see an example of an implementation of this interface in the [Flow EVM bridge repo ExampleNFT contract].
 
 A Capability with the `FulfillFromEVM` entitlement is required at the time of registration so the bridge can fulfill NFTs bridged from EVM for the first time.
 
@@ -379,13 +371,13 @@ interface ICrossVM {
 }
 ```
 
-As an example, [`ICrossVM` is already implemented](https://github.com/onflow/flow-evm-bridge/blob/main/solidity/src/interfaces/ICrossVM.sol) and in use in the bridged [ERC721](https://github.com/onflow/flow-evm-bridge/blob/flip-318/solidity/src/templates/FlowEVMBridgedERC721.sol#L37-L43) and [ERC20](https://github.com/onflow/flow-evm-bridge/blob/flip-318/solidity/src/templates/FlowEVMBridgedERC20.sol#L13-L40) templates.
+As an example, [`ICrossVM` is already implemented] and in use in the bridged [ERC721] and [ERC20] templates.
 
 If you want to register a custom association for an NFT that is native to Cadence, which means that your project distributes NFTs to users on the Cadence side, then your ERC721 contract must implement the `CrossVMBridgeERC721Fulfillment` contract. This is a required conformance that does three primary things:
 
-1. Implements the mint/escrow pattern expected by the VM bridge
-2. Allows for the passing of arbitrary abi-encodable metadata from the Cadence NFT at the time of bridging
-3. Exposes two optional hooks enabling you to update the fulfilled token's URI with the provided metadata at the time of bridging
+1. Implements the mint/escrow pattern expected by the VM bridge.
+2. Allows for the passing of arbitrary abi-encodable metadata from the Cadence NFT at the time of bridging.
+3. Exposes two optional hooks, which allows you to update the fulfilled token's URI with the provided metadata at the time of bridging.
 
 Here is the Solidity contract to implement:
 
@@ -500,21 +492,64 @@ It's also recognized that the logic of some use cases may actually be compromise
 
 For instance, an ERC721 implementation may reclaim a user's assets after a month of inactivity. In such a case, bridging that ERC721 to Cadence would decouple the representation of ownership of the bridged NFT from the actual ownership in the defining ERC721 contract after the token had been reclaimed - there would be no NFT in escrow for the bridge to transfer on fulfillment of the NFT back to EVM. In such cases, projects may choose to opt-out of bridging, but **importantly must do so before the asset has been onboarded to the bridge**.
 
-For Solidity contracts, opting out is as simple as extending the [`BridgePermissions.sol` abstract contract](https://github.com/onflow/flow-evm-bridge/blob/main/solidity/src/interfaces/BridgePermissions.sol) which defaults `allowsBridging()` to `false`. The bridge explicitly checks for the implementation of `IBridgePermissions` and the value of `allowsBridging()` to validate that the contract has not opted out of bridging.
+For Solidity contracts, opting out is as simple as extending the [`BridgePermissions.sol` abstract contract] which defaults `allowsBridging()` to `false`. The bridge explicitly checks for the implementation of `IBridgePermissions` and the value of `allowsBridging()` to validate that the contract has not opted out of bridging.
 
-Similarly, Cadence contracts can implement the [`IBridgePermissions.cdc` contract interface](https://github.com/onflow/flow-evm-bridge/blob/main/cadence/contracts/bridge/interfaces/IBridgePermissions.cdc). This contract has a single method `allowsBridging()` with a default implementation returning `false`. Again, the bridge explicitly checks for the implementation of `IBridgePermissions` and the value of `allowsBridging()` to validate that the contract has not opted out of bridging. Should you later choose to turn on bridging, you can simply override the default implementation and return `true`.
+Similarly, Cadence contracts can implement the [`IBridgePermissions.cdc` contract interface]. This contract has a single method `allowsBridging()` with a default implementation returning `false`. Again, the bridge explicitly checks for the implementation of `IBridgePermissions` and the value of `allowsBridging()` to validate that the contract has not opted out of bridging. Should you later choose to turn on bridging, you can simply override the default implementation and return `true`.
 
 In both cases, `allowsBridging()` gates onboarding to the bridge. After the onboard occurs - **a permissionless operation anyone can execute** - the value of `allowsBridging()` is irrelevant and assets can move between VMs permissionlessly.
 
 ## Under the hood
 
-For an in-depth look at the high-level architecture of the bridge, see [FLIP
-#237](https://github.com/onflow/flips/blob/main/application/20231222-evm-vm-bridge.md)
+For an in-depth look at the high-level architecture of the bridge, see [FLIP #237]
 
 ### Additional resources
 
 For the current state of Flow EVM across various task paths, see the following resources:
 
-- [Flow EVM Equivalence forum post](https://forum.flow.com/t/evm-equivalence-on-flow-proposal-and-path-forward/5478)
-- [EVM Integration FLIP #223](https://github.com/onflow/flips/pull/225/files)
-- [Gateway & JSON RPC FLIP #235](https://github.com/onflow/flips/pull/235)
+- [Flow EVM Equivalence forum post]
+- [EVM Integration FLIP #223]
+- [Gateway & JSON RPC FLIP #235]
+
+
+<!-- Relative links, will not render on page -->
+
+[Flow EVM Equivalence forum post]: https://forum.flow.com/t/evm-equivalence-on-flow-proposal-and-path-forward/5478
+[EVM Integration FLIP #223]: https://github.com/onflow/flips/pull/225/files
+[Gateway & JSON RPC FLIP #235]: https://github.com/onflow/flips/pull/235)
+[FLIP #237]: https://github.com/onflow/flips/blob/main/application/20231222-evm-vm-bridge.md
+[`IBridgePermissions.cdc` contract interface]: https://github.com/onflow/flow-evm-bridge/blob/main/cadence/contracts/bridge/interfaces/IBridgePermissions.cdc
+[`BridgePermissions.sol` abstract contract]: https://github.com/onflow/flow-evm-bridge/blob/main/solidity/src/interfaces/BridgePermissions.sol
+[`ICrossVM` is already implemented]: https://github.com/onflow/flow-evm-bridge/blob/main/solidity/src/interfaces/ICrossVM.sol
+[ERC721]: https://github.com/onflow/flow-evm-bridge/blob/flip-318/solidity/src/templates/FlowEVMBridgedERC721.sol#L37-L43
+[ERC20]: https://github.com/onflow/flow-evm-bridge/blob/flip-318/solidity/src/templates/FlowEVMBridgedERC20.sol#L13-L40
+[Flow EVM bridge repo ExampleNFT contract]: https://github.com/onflow/flow-evm-bridge/blob/flip-318/cadence/contracts/example-assets/cross-vm-nfts/ExampleEVMNativeNFT.cdc#L352-L377
+[the `ExampleNFT` contract]: https://github.com/onflow/flow-nft/blob/master/contracts/ExampleNFT.cdc#L173-L195
+[Metadata Views]: ../../build/cadence/advanced-concepts/metadata-views.md
+[`SerializeMetadata` contract]: https://github.com/onflow/flow-evm-bridge/blob/main/cadence/contracts/utils/SerializeMetadata.cdc
+[@onflow/flow-nft/pull/203]: https://github.com/onflow/flow-nft/pull/203
+[`TokenHandler`]: https://github.com/onflow/flow-evm-bridge/blob/main/cadence/contracts/bridge/interfaces/FlowEVMBridgeHandlerInterfaces.cdc
+[Preparing Custom Associations]: #preparing-custom-associations
+[Custom Associations]: https://github.com/onflow/flips/blob/main/application/20250131-cross-vm-nft-support.md
+[Automatic Onboarding Section]: #automatic-onboarding
+[Custom Association Section]: #custom-association-onboarding
+[Prep Your Assets for Bridging]: #prep-your-assets-for-bridging
+[How Flow EVM Works]: ../../build/evm/how-it-works.md
+[the `FungibleToken` interface]: https://github.com/onflow/flow-ft/blob/master/contracts/FungibleToken.cdc
+[the `NonFungibleToken` interface]: https://github.com/onflow/flow-nft/blob/master/contracts/NonFungibleToken.cdc)
+[here]: ../tokens/nft-cadence.md)
+[`0xdfc20aee650fcbdf`]: https://contractbrowser.com/account/0xdfc20aee650fcbdf/contracts  
+[`0x1e4aa0b87d10b141`]: https://contractbrowser.com/account/0x1e4aa0b87d10b141/contracts)
+[`0xf8146b4aef631853f0eb98dbe28706d029e52c52`]: https://evm-testnet.flowscan.io/address/0xF8146B4aEF631853F0eB98DBE28706d029e52c52) 
+[`0x1c6dea788ee774cf15bcd3d7a07ede892ef0be40`]: https://evm.flowscan.io/address/0x1C6dEa788Ee774CF15bCd3d7A07ede892ef0bE40) 
+[`0x8781d15904d7e161f421400571dea24cc0db6938`]: https://evm-testnet.flowscan.io/address0x8781d15904d7e161f421400571dea24cc0db6938 
+[`0x8fdec2058535a2cb25c2f8cec65e8e0d0691f7b0`]: https://evm.flowscan.io/address/0x8FDEc2058535A2Cb25C2f8ceC65e8e0D0691f7B0) 
+[`0x4d45CaD104A71D19991DE3489ddC5C7B284cf263`]: https://evm-testnet.flowscan.io/address/0x4d45CaD104A71D19991DE3489ddC5C7B284cf263
+[`0x49631Eac7e67c417D036a4d114AD9359c93491e7`]: https://evm.flowscan.io/address/0x49631Eac7e67c417D036a4d114AD9359c93491e7
+[`0x1B852d242F9c4C4E9Bb91115276f659D1D1f7c56`]: https://evm-testnet.flowscan.io/address/0x1B852d242F9c4C4E9Bb91115276f659D1D1f7c56 
+[`0xe7c2B80a9de81340AE375B3a53940E9aeEAd79Df`]: https://evm.flowscan.io/address/0xe7c2B80a9de81340AE375B3a53940E9aeEAd79Df
+[`0x0000000000000000000000023f946ffbc8829bfd`]: https://evm-testnet.flowscan.io/address/0x0000000000000000000000023f946FFbc8829BFD
+[`0x00000000000000000000000249250a5c27ecab3b`]: https://evm.flowscan.io/address/0x00000000000000000000000249250a5C27Ecab3B
+[`CadenceOwnedAccount` (COA)]: interacting-with-coa.md 
+[FLIP-233]: https://github.com/onflow/flips/pull/233 
+[FLIP-318]: https://github.com/onflow/flips/blob/main/application/20250131-cross-vm-nft-support.md
+[Cross-VM Bridge]: https://www.github.com/onflow/flow-evm-bridge

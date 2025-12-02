@@ -255,6 +255,28 @@ To dive deeper into testing the functionality of your Cadence scripts and contra
 
 Run tests against forked mainnet or testnet state. For a step-by-step tutorial, see: [Fork Testing with Cadence](../../../blockchain-development-tutorials/cadence/fork-testing/index.md). For background and best practices, see the guide: [Testing Strategy on Flow](../../cadence/smart-contracts/testing-strategy.md).
 
+#### Configuring Fork Tests
+
+**Recommended**: Use the `#test_fork` pragma in your test file:
+
+```cadence
+#test_fork(network: "mainnet", height: nil)
+
+import Test
+
+access(all) fun testAgainstMainnet() {
+    // Test runs against mainnet state
+}
+```
+
+Then run with:
+
+```shell
+flow test
+```
+
+The pragma configures fork testing directly in your test files, making tests self-documenting. You can also use CLI flags (documented below) to override or configure fork tests without modifying test files.
+
 #### --fork
 
 - Type: `string`

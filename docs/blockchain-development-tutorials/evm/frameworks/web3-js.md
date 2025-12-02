@@ -6,14 +6,14 @@ sidebar_position: 2
 
 # Web3.js
 
-[Web3.js](https://web3js.org/) is a Javascript library for building on EVM-compatible networks.
+[Web3.js] is a Javascript library for building on EVM-compatible networks.
 
 It allows developers to interact with smart contracts, send transactions, and retrieve data from the network.
 
 ## Prerequisites
 
 :::info
-This guide assumes you have the latest version of [Node.js](https://nodejs.org/en) installed.
+This guide assumes you have the latest version of [Node.js] installed.
 :::
 
 To install `web3` in your project, run the following command:
@@ -57,7 +57,7 @@ const gasPrice = await web3.eth.getGasPrice();
 console.log(gasPrice); // Gas price in attoFlow
 ```
 
-For more information about other queries you can make `web3`, see the [official documentation](https://docs.web3js.org/).
+For more information about other queries you can make `web3`, see the [Web3.js] official documentation.
 
 ## Interact with smart contracts
 
@@ -65,7 +65,7 @@ The `web3` library allows developers to interact with smart contracts via the `w
 
 For this example we will use the following `Storage` contract.
 
-We recommend that you deploy your own contract, which you can do with [Hardhat](../development-tools/hardhat.md) or [Remix](../development-tools/remix.md).
+We recommend that you deploy your own contract, which you can do with [Hardhat] or [Remix].
 
 ```solidity
 // SPDX-License-Identifier: MIT
@@ -84,7 +84,7 @@ contract Storage {
 }
 ```
 
-You can generate the ABI for this contract with the [`solc` compiler](https://docs.soliditylang.org/en/latest/installing-solidity.html), or another tool such as [Hardhat](../development-tools/hardhat.md) or [Remix](../development-tools/remix.md).
+You can generate the ABI for this contract with the [`solc` compiler], or another tool such as [Hardhat]or [Remix].
 
 Now that we have both the ABI and address of the contract, we can create a new `Contract` object for use in our application.
 
@@ -133,7 +133,7 @@ const contract = new web3.eth.Contract(abi, contractAddress);
 
 We can now interact with the contract on the network ith the `contract` object.
 
-### Reading state
+### Read state
 
 State can be read from the contract via the `call` function with one of the contract's methods. This will not change the state and will not send a transaction.
 
@@ -161,7 +161,7 @@ node -e "console.log(require('web3').eth.accounts.create())"
 
 This is not a secure way to generate an account, and you should use a more secure method in a production environment.
 
-You can fund your account with the [Flow Faucet](https://faucet.flow.com/fund-account).
+You can fund your account with the [Flow Faucet].
 :::
 
 We can use the `privateKeyToAccount` function to create an `Web3Account` object from our account's private key.
@@ -194,11 +194,21 @@ const result = await web3.eth.sendSignedTransaction(signed.rawTransaction);
 console.log(result);
 ```
 
-Now that the transaction has been sent, the contract's state will have been updated. To verify this, we can query the contract's state again:
+Now that the transaction was sent, the contract's state was updated. To verify this, we can query the contract's state again:
 
 ```js
 const result = await contract.methods.retrieve().call();
 console.log(result); // New value stored in the contract
 ```
 
-For more information about using smart contracts in web3.js, see the [official documentation](https://docs.web3js.org/libdocs/Contract).
+For more information about how to use smart contracts in web3.js, see the [official documentation].
+
+<!-- Reference-style links, will not render on page. -->
+
+[Web3.js]: https://web3js.org/
+[Node.js]: https://nodejs.org/en
+[Flow Faucet]: https://faucet.flow.com/fund-account
+[`solc` compiler]: https://docs.soliditylang.org/en/latest/installing-solidity.html
+[Hardhat]: ../development-tools/hardhat.md) 
+[Remix]: ../development-tools/remix.md).
+[official documentation]: https://docs.web3js.org/libdocs/Contract

@@ -20,7 +20,7 @@ keywords:
 
 [Gemini AI] is Google's AI assistant that can help with tasks such as writing, coding, and answering questions. It adapts to context and user input to provide relevant, conversational responses. You can integrate Gemini AI into developer workflows to assist with documentation, debugging, and productivity.
 
-This guide walks you through creating a **Custom GEM** with Gemini AI that can reference the [Flow Data Sources] file to answer questions.
+This guide walks you through how to create a **Custom GEM** with Gemini AI that can reference the [Flow Data Sources] file to answer questions.
 
 :::warning
 
@@ -43,7 +43,7 @@ You'll need a [Gemini Advanced subscription] to use the **Custom GEM** feature.
 
 ## Step 3: Configure your Gem
 
-Gemini AI will now guide you through setting up your custom Gem. Configure the name, description and instructions for your GEM to follow. 
+Gemini AI will now guide you through how to set up up your custom Gem. Configure the name, description and instructions for your Gem to follow. 
 
 ### Suggested configuration
 
@@ -68,11 +68,11 @@ When users ask about Flow, Cadence, or related topics, prioritize information fr
 
 ```
 
-You can further customize your personalized agent by providing more files and determining the actions it can do.
+To further customize your personalized agent, you can provide more files and determine the actions it can do.
 
 ---
 
-## Step 4: Upload Knowledge Base
+## Step 4: Upload knowledge base
 
 1. In the **Knowledge** section, upload the [Flow Data Sources All Merged] file.
 2. Configure the Gem to reference this file as its primary knowledge source.

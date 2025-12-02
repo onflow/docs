@@ -64,7 +64,7 @@ We assume you're familiar with [wagmi], [viem], and [RainbowKit]. If you come fr
 
 ## Get started
 
-For this tutorial, we'll start from a fork of the [FCL + RainbowKit + Wagmi Integration Demo] built by the team.
+For this tutorial, we'll start from a fork of the [FCL + RainbowKit + Wagmi Integration Demo] that the team built.
 
 Fork the repo so you can push your work freely to your own copy, then follow the setup instructions.
 
@@ -102,7 +102,7 @@ Click `Send Batch Transaction Example` and approve the transaction. You'll see t
 
 :::tip
 
-Currently, the Flow wallet sponsors all gas for all transactions signed with the wallet on both testnet **and mainnet!**
+Currently, the Flow wallet sponsors the fees for the compute units (equivalent of gas) for all transactions signed with the wallet on both testnet **and mainnet!**
 
 :::
 
@@ -110,7 +110,7 @@ Currently, the Flow wallet sponsors all gas for all transactions signed with the
 
 The first line is the transaction ID of the Flow Cadence transaction that calls **both** of the EVM transactions. Search for it in [Testnet Cadence Flowscan].
 
-Cadence transactions are more complicated than those in Solidity contracts. Rather than being restricted to run functions present on the contract, they can run arbitrary code as long as the caller has access to all of the resources required by the transaction.
+Cadence transactions are more complicated than those in Solidity contracts. Rather than being restricted to run functions present on the contract, they can run arbitrary code as long as the caller has access to all of the resources the transaction requires.
 
 You can see the code of the transaction in the `Script` tab, but we've included it here for convenience:
 
@@ -234,7 +234,7 @@ return block.height;
 
 Returns the current Cadence VM block number.
 
-## Calling Your own contract
+## Call your own contract
 
 Next, we'll update the starter to connect to and call functions in our own contract. For this, we'll use a simple [Button Clicker Contract]. You can deploy your own copy, or use the one deployed at [`0xA7Cf2260e501952c71189D04FAd17c704DFB36e6`].
 
@@ -543,7 +543,7 @@ const calls: EVMBatchCall[] = [
 ];
 ```
 
-Click the `Send Batch Transaction Example` button again. You'll have to **manually refresh** the page when the EVM transaction hash appears to see the score update. We haven't wired in the query invalidation yet.
+Click `Send Batch Transaction Example` again. You'll have to **manually refresh** the page when the EVM transaction hash appears to see the score update. We haven't wired in the query invalidation yet.
 
 Next, use some JavaScript to put 10 copies of the transaction call into the array:
 
@@ -568,7 +568,7 @@ While the batched transactions feature works, we've got a few flaws in the user 
 
 :::warning
 
-We initially tried getting an AI friend to install this for us and it got very confused. `Next.js` and Tailwind have both had a lot of change recently. As a result, the LLMs don't seem to have caught up just yet.
+We initially tried to get an AI friend to install this for us and it got very confused. `Next.js` and Tailwind have both had a lot of change recently. As a result, the LLMs don't seem to have caught up just yet.
 
 Do this part the old-fashioned way.
 
@@ -772,7 +772,7 @@ return (
 );
 ```
 
-### Testing
+### Tests
 
 Run the app and make sure it works as expected, even if in a rather ugly fashion.
 
@@ -791,13 +791,13 @@ It's up to you do design a comprehensive strategy for your app, but here, we can
 </button>
 ```
 
-### Styling
+### Style
 
 It's up to you to make the app pretty. If you need inspiration, you can always check the [reference repo].
 
 ## Conclusion
 
-In this tutorial, you reviewed the demo starter for building hybrid applications that use a common EVM stack and integrate with Flow Cadence. You then added functionality to interface with another contract that mints ERC-20 tokens. Finally, you supercharged your app by using the power of Cadence for EVM multi-call contract writes.
+In this tutorial, you reviewed the demo starter to build hybrid applications that use a common EVM stack and integrate with Flow Cadence. You then added functionality to interface with another contract that mints ERC-20 tokens. Finally, you supercharged your app with the power of Cadence for EVM multi-call contract writes.
 
 Now that you have completed the tutorial, you will be able to:
 

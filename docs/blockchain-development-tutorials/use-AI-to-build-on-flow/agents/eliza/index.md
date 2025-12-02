@@ -13,11 +13,9 @@ keywords:
 
 # Quickstart Guide to build AI Agent on Flow with Eliza
 
-## Overview
+Eliza is a powerful framework you can use to build AI agents that interact with users through natural language. This tutorial will guide you through how to set up and deploy an AI agent on the Flow blockchain with Eliza. You'll learn how to create intelligent agents that can understand and respond to user queries, and leverage Flow's secure and scalable infrastructure.
 
-Eliza is a powerful framework for building AI agents that can interact with users through natural language. This tutorial will guide you through how to set up and deploy an AI agent on the Flow blockchain with Eliza. You'll learn how to create intelligent agents that can understand and respond to user queries, while leveraging Flow's secure and scalable infrastructure.
-
-## Learning Objectives
+## Learning objectives
 
 After you complete this tutorial, you will be able to:
 
@@ -32,13 +30,13 @@ After you complete this tutorial, you will be able to:
 
 Before you get started started with Eliza, make sure you have:
 
-- [Node.js 23+] (using [nvm] is recommended)
+- [Node.js 23+] (we recommend that you use [nvm])
 - [pnpm 9+]
 - Git for version control
-- A code editor ([VS Code], [Cursor] or [VSCodium] recommended)
+- A code editor (we recommend [VS Code], [Cursor] or [VSCodium])
 - [Flow-cli] for Flow blockchain interaction.
 
-> **Note for Windows Users:** [WSL 2] is required.
+> **Note for Windows Uuers:** [WSL 2] is required.
 
 ## Installation
 
@@ -88,7 +86,7 @@ pnpm install --no-frozen-lockfile
 
 :::warning
 
-Only use the `--no-frozen-lockfile` option when you're initially instantiating the repo or bump the version of a package or add a new package to your `package.json` file. This practice helps maintain consistency in your project's dependencies and prevents unintended changes to the lockfile.
+Only use the `--no-frozen-lockfile` option when you initially instantiate the repo or bump the version of a package or add a new package to your `package.json` file. This practice helps maintain consistency in your project's dependencies and prevents unintended changes to the lockfile.
 
 :::
 
@@ -106,7 +104,7 @@ Build all packages:
 pnpm build
 ```
 
-## Configure Environment
+## Configure environment
 
 Copy `.env.example` to `.env` and fill in the appropriate values.
 
@@ -122,10 +120,10 @@ In normal development, it's a best practice to use a `.env` to protect API keys 
 
 Edit `.env` and add your values. Do **NOT** add this file to version control.
 
-### Choose Your Model
+### Choose Your model
 
 Eliza supports multiple AI models and you set which model to use inside the character JSON file.
-But remember, after you chosed a model, you need to set up the relevant configuration.
+But remember, after you choose a model, you need to set up the relevant configuration.
 
 Check the full list of supported LLMs in origin Eliza: [Models.ts]
 
@@ -140,7 +138,7 @@ Suggested models:
 
 > To choose a model, you need to set in charactor configuration. For example: OPENAI, set `modelProvider: "openai"` in charactor JSON file or `modelProvider: ModelProviderName.OPENAI` in `charactor.ts`
 
-### Setup Agent's Flow Account
+### Setup Agent's Flow account
 
 Create a new Flow account for the Agent. Learn more: [doc]
 
@@ -161,9 +159,9 @@ FLOW_ENDPOINT_URL=  # Default: <https://mainnet.onflow.org>
 
 For testnet, check Flow's [Networks] for more information.
 
-## Create Your First Agent
+## Create your first agent
 
-### Create a Character File
+### Create a character file
 
 View the `deps/eliza/characters/` directory for a number of character files to try out.
 Additionally, you can edit `charactor.ts` to override Eliza's `defaultCharacter` file, which is the default character file used if no character json files are provided.
@@ -196,7 +194,7 @@ You can load multiple characters with a comma-separated list:
 pnpm start --characters="characters/sample.character.json, characters/scooby.character.json"
 ```
 
-### Add / Develop Plugins
+### Add and develop plugins
 
 Run `npx elizaos plugins list` to get a list of available plugins or visit [Eliza Plugins Registry]
 
@@ -204,15 +202,15 @@ Run `npx elizaos plugins add @elizaos-plugins/plugin-NAME` to install the plugin
 
 To create a new plugin **for your own business**, refer to the [plugin development guide].
 
-#### Additional Requirements
+#### Additional requirements
 
-You may need to install Sharp. If you see an error when starting up, install it with the following command:
+You may need to install Sharp. If you see an error when you start it up, install it with the following command:
 
 ```bash
 pnpm install --include=optional sharp
 ```
 
-### **Interact with the Agent**
+### **Interact with the agent**
 
 Now you're ready to start a conversation with your agent.
 
@@ -230,7 +228,7 @@ After the client is running, you'll see a message like this:
 
 Click the link or open your browser to `http://localhost:5173/`. You'll see the chat interface connect to the system, and you can now interact with your character.
 
-## Common Issues & Solutions
+## Common issues and solutions
 
 Check the orgin Eliza's [Common Issues & Solutions]
 

@@ -380,7 +380,7 @@ Flash loans allow you to create one transaction during which you:
 
 This scenario may be a scam. A scammer could set up this situation as bait and cancel the buy order the instant someone purchases the NFT that is for sale. You'd have paid a vast amount of money for something worthless.
 
-The great thing about Cadence transactions, with or without Actions, is that you can set up an atomic transaction where everything either works, or is reverted. Either you make 100k, or nothing happens except a tiny expenditure of gas.
+The great thing about Cadence transactions, with or without Actions, is that you can set up an atomic transaction where everything either works, or is reverted. Either you make 100k, or nothing happens except a tiny expenditure of compute units.
 
 :::
 
@@ -619,7 +619,7 @@ Now that you have completed this tutorial, you can:
 [`IncrementFiSwapConnectors`]: https://github.com/onflow/FlowActions/blob/main/cadence/contracts/connectors/increment-fi/IncrementFiSwapConnectors.cdc
 [`IncrementFiFlashloanConnectors`]: https://github.com/onflow/FlowActions/blob/main/cadence/contracts/connectors/increment-fi/IncrementFiFlashloanConnectors.cdc
 [`FungibleTokenConnectors`]: https://github.com/onflow/FlowActions/blob/main/cadence/contracts/connectors/FungibleTokenConnectors.cdc
-[oracle]: https://developers.flow.com/ecosystem/defi-liquidity/defi-contracts-mainnet#oracles
+[oracle]: https://developers.flow.com/defi/defi-contracts-mainnet#oracles
 [Band]: https://blog.bandprotocol.com/
 [`BandOracleConnectors`]: https://github.com/onflow/FlowActions/blob/main/cadence/contracts/connectors/band-oracle/BandOracleConnectors.cdc
 [Cadence type]: https://cadence-lang.org/docs/language/types-and-type-system/type-safety

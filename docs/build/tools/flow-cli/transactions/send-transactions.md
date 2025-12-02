@@ -15,13 +15,13 @@ flow transactions send <code filename> [<argument> <argument>...] [flags]
 
 ```shell
 > flow transactions send ./tx.cdc "Hello"
-    
+
 Status		✅ SEALED
 ID		b04b6bcc3164f5ee6b77fa502c3a682e0db57fc47e5b8a8ef3b56aae50ad49c8
 Payer		f8d6e0586b0a20c7
 Authorizers	[f8d6e0586b0a20c7]
 
-Proposal Key:	
+Proposal Key:
     Address	f8d6e0586b0a20c7
     Index	0
     Sequence	0
@@ -40,10 +40,13 @@ Payload (hidden, use --include payload)
 ```
 
 Multiple arguments example:
+
 ```shell
 > flow transactions send tx1.cdc Foo 1 2 10.9 0x1 '[123,222]' '["a","b"]'
 ```
+
 Transaction code:
+
 ```
 transaction(a: String, b: Int, c: UInt16, d: UFix64, e: Address, f: [Int], g: [String]) {
 	prepare(authorizer: &Account) {}
@@ -64,6 +67,7 @@ In the above example, the `flow.json` file would look something like this:
 ```
 
 JSON arguments from a file example:
+
 ```shell
 > flow transactions send tx1.cdc --args-json "$(cat args.json)"
 ```
@@ -71,6 +75,7 @@ JSON arguments from a file example:
 ## Arguments
 
 ### Code Filename
+
 - Name: `code filename`
 - Valid inputs: Any filename and path valid on the system.
 
@@ -78,8 +83,9 @@ The first argument is a path to a Cadence file containing the
 transaction to be executed.
 
 ### Arguments
+
 - Name: `argument`
-- Valid inputs: valid [cadence values](https://cadencelang.dev/docs/1.0/json-cadence-spec) 
+- Valid inputs: valid [cadence values](https://cadencelang.dev/docs/1.0/json-cadence-spec)
   matching argument type in transaction code.
 
 Input arguments values matching corresponding types in the source code and passed in the same order.
@@ -98,13 +104,13 @@ Specify fields to include in the result output. Applies only to the text output.
 
 - Flag: `--code`
 
-⚠️  No longer supported: use filename argument.
+⚠️ No longer supported: use filename argument.
 
 ### Results
 
 - Flag: `--results`
 
-⚠️  No longer supported: all transactions will provide result.
+⚠️ No longer supported: all transactions will provide result.
 
 ### Exclude Fields
 
@@ -148,16 +154,16 @@ Specify the name of the account(s) that will be used as authorizer(s) in the tra
 - Example: `flow transactions send ./tx.cdc '[{"type": "String", "value": "Hello World"}]'`
 
 Arguments passed to the Cadence transaction in Cadence JSON format.
-Cadence JSON format contains `type` and `value` keys and is 
+Cadence JSON format contains `type` and `value` keys and is
 [documented here](https://cadencelang.dev/docs/1.0/json-cadence-spec).
 
-### Gas Limit
+### Compute Limit
 
-- Flag: `--gas-limit`
+- Flag: `--compute-limit`
 - Valid inputs: an integer greater than zero.
 - Default: `1000`
 
-Specify the gas limit for this transaction.
+Specify the compute unit (gas) limit for this transaction.
 
 ### Host
 

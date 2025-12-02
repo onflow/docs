@@ -475,13 +475,13 @@ Specify the name of the account that will be used as payer in the transaction.
 
 Specify the name of the account(s) that will be used as authorizer(s) in the transaction. If you want to provide multiple authorizers separate them using commas (e.g. `alice,bob`)
 
-### Gas Limit
+### Compute Limit
 
-- Flag: `--gas-limit`
+- Flag: `--compute-limit`
 - Valid inputs: an integer greater than zero.
 - Default: `1000`
 
-Specify the gas limit for this transaction.
+Specify the compute unit (gas) limit for this transaction.
 
 ### Host
 

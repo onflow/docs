@@ -96,17 +96,22 @@ Make sure you have:
 
 Get started with Crossmint on Flow in under 15 minutes:
 
-1. **[Set up authentication](./authentication.md)** to seamlessly onboard users.  
-3. **[Enable fiat payments](./payment-checkout.md)** for your Flow assets.
-4. **[Minting Platform](./minting-platform.md)** to create and distribute tokens at scale.
+1. **[Set up authentication]** to seamlessly onboard users.  
+2. **[Enable fiat payments]** for your Flow assets.
+3. **[Minting Platform]** to create and distribute tokens at scale.
 
 If you have trouble during the integrations process, refer to these documentation sites: 
 
-- **[Crossmint Documentation](https://docs.crossmint.com/)** - Complete platform docs.
-- **[Flow Developer Portal](https://developers.flow.com/)** - Flow-specific resources.
+- **[Crossmint Documentation]** - Complete platform docs.
+- **[Flow Developer Portal]** - Flow-specific resources.
 
 
 <!-- Reference-style links, does not render on page -->
 
 [Crossmint Console]: https://staging.crossmint.com
 [Contact Sales]: https://crossmint.com/contact 
+[Set up authentication]: ./authentication.md
+[Enable fiat payments]:./payment-checkout.md
+[Minting Platform]:./minting-platform.md
+[Crossmint Documentation]: https://docs.crossmint.com/
+[Flow Developer Portal]: https://developers.flow.com/

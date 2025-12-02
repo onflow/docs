@@ -38,6 +38,12 @@ A drop-in wallet connection component with UI for copy address, logout, and bala
   - `scheduledTransactions.filterHandlerTypes?: string[]` – Optional array of handler type identifiers to filter displayed transactions
 - `modalEnabled?: boolean` – Whether to show the profile modal on click when connected (default: `true`). When `false`, clicking the button when connected will disconnect instead
 
+:::note WalletConnect Support
+
+To enable WalletConnect as a wallet option, add your registered project ID to the `walletconnectProjectId` field in your `FlowProvider` config.
+
+:::
+
 ```tsx
 import { Connect } from "@onflow/react-sdk"
 
@@ -80,6 +86,12 @@ A standalone component for displaying wallet information including account addre
   - `scheduledTransactions.filterHandlerTypes?: string[]` – Optional array of handler type identifiers to filter displayed transactions
 - `className?: string` – Optional custom CSS class
 - `style?: React.CSSProperties` – Optional inline styles
+
+:::note WalletConnect Support
+
+To enable WalletConnect as a wallet option, add your registered project ID to the `walletconnectProjectId` field in your `FlowProvider` config.
+
+:::
 
 ```tsx
 import { Profile } from "@onflow/react-sdk"
@@ -156,7 +168,7 @@ Dialog component for real-time transaction status updates.
 
 - `open: boolean` – Whether the dialog is open
 - `onOpenChange: (open: boolean) => void` – Callback to open/close dialog
-- `txId?: string` – Optional Flow transaction ID to track
+- `txId?: string` – Optional Flow transaction ID or scheduled transaction ID to track
 - `onSuccess?: () => void` – Optional callback when transaction is successful
 - `pendingTitle?: string` – Optional custom pending state title
 - `pendingDescription?: string` – Optional custom pending state description
@@ -186,13 +198,13 @@ import { TransactionDialog } from "@onflow/react-sdk"
 
 ### `TransactionLink`
 
-Link to the block explorer with the appropriate network scoped to transaction ID.
+Link to the block explorer with the appropriate network scoped to transaction ID or scheduled transaction ID.
 
 <div style={{marginBottom: "1.5rem"}}><PlaygroundButton href="https://react.flow.com/#transactionlink" /></div>
 
 **Props:**
 
-- `txId: string` – The transaction ID to link to
+- `txId: string` – The transaction ID or scheduled transaction ID to link to
 - `variant?: ButtonProps["variant"]` – Optional button variant (defaults to `"link"`)
 
 ```tsx

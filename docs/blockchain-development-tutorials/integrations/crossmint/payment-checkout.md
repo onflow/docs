@@ -17,7 +17,7 @@ keywords:
 
 # Payment checkout integration guide
 
-Enable seamless fiat and cryptocurrency payments for your Flow assets. Crossmint's checkout solution supports credit cards, Apple Pay, Google Pay, and cross-chain crypto payments, allowing users to buy Flow NFTs and tokens without holding FLOW tokens.
+Enable seamless fiat and cryptocurrency payments for your Flow assets. Crossmint's checkout solution supports credit cards, Apple Pay, Google Pay, and cross-chain crypto payments, which allows users to buy Flow NFTs and tokens without FLOW tokens.
 
 ## Overview
 
@@ -50,7 +50,7 @@ You'll integrate checkout functionality that activates:
 
 **Option A: create new collection**
 
-1. Go to [Crossmint Console](https://staging.crossmint.com) > **Collections**.
+1. Go to [Crossmint Console] > **Collections**.
 2. Click **Create Collection**.
 3. Choose **Flow** blockchain.
 4. Configure collection settings:
@@ -186,7 +186,6 @@ export function AdvancedHostedCheckout({
 
 Embed checkout directly in your application with full UI control.
 
-
 ### Basic embedded checkout
 
 ```jsx
@@ -316,7 +315,7 @@ export function CustomEmbeddedCheckout({
 
 ---
 
-## Step 4: Headless Checkout Integration
+## Step 4: Headless checkout integration
 
 For maximum customization, use the headless API to build completely custom checkout flows.
 
@@ -795,3 +794,7 @@ export function UniversalCheckout({
 - **Universal Payment Support**: credit cards, mobile payments, and over 40 cryptocurrencies.
 - **Flow Native**: optimized for both Flow EVM and Cadence ecosystems.
 - **Global Scale**: support for 197 countries with no buyer KYC.
+
+<!-- Relative links, will not render on page -->
+
+[Crossmint Console]: https://staging.crossmint.com

@@ -27,7 +27,7 @@ We will update these tutorials, but you may need to refactor your code if the im
 
 Flow, EVM, and other blockchains are a form of a **single** shared computer that anyone can use, with no admin privileges, super user roles, or complete control. For this to work, it must be impossible for any user to freeze the computer, on purpose or by accident.
 
-As a result, most blockchain computers, including EVM and Solana, aren't [Turing Complete], because they can't run an unbounded loop. Each transaction must occur within one block, and can't consume more gas than the limit.
+As a result, most blockchain computers, including EVM and Solana, aren't [Turing Complete], because they can't run an unbounded loop. Each transaction must occur within one block, and can't consume more compute units, or gas, than the limit.
 
 While this limitation prevents infinite loops, it makes it so that you can't do anything 100% onchain if you need it to happen at a later time or after a trigger. As a result, developers must often build products that involve a fair amount of traditional infrastructure and requires users to give those developers a great amount of trust that their backend will execute the promised task.
 
@@ -291,9 +291,9 @@ let pr = priority == 0
         : FlowTransactionScheduler.Priority.Low
 ```
 
-The `executionEffort` is also supplied as an argument in the transaction. This represents the gas limit for your transaction and used to prepare the estimate for the gas fees that must be paid for the transaction, and directly in the call to `schedule()` the transaction.
+The `executionEffort` is also supplied as an argument in the transaction. This represents the compute unit limit for your transaction and used to prepare the estimate for the compute unit fees that must be paid for the transaction, and directly in the call to `schedule()` the transaction.
 
-- `fees`: A [vault] containing the appropriate amount of gas fees needed to pay for the execution of the scheduled transaction.
+- `fees`: A [vault] containing the appropriate amount of compute unit fees needed to pay for the execution of the scheduled transaction.
 
 To create the vault, the `estimate()` function calculates the amount needed:
 

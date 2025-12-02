@@ -16,7 +16,7 @@ keywords:
   - Stargate
   - LayerZero
   - Celer
-sidebar_position: 3
+sidebar_position: 5
 sidebar_label: Cross-chain swaps on Flow EVM
 ---
 

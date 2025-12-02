@@ -7,7 +7,7 @@ sidebar_position: 5
 
 # Using Foundry with Flow
 
-Foundry is a suite of development tools that simplifies the process to develop and deploy Solidity contracts to EVM networks. This guide will walk you through thow to deploy a Solidity contract to Flow EVM with the Foundry development toolchain. You can check out the official Foundry docs [here](https://book.getfoundry.sh/).
+Foundry is a suite of development tools that simplifies the process to develop and deploy Solidity contracts to EVM networks. This guide will walk you through how to deploy a Solidity contract to Flow EVM with the Foundry development toolchain. You can check out the official [Foundry docs].
 
 In this guide, we'll deploy an ERC-20 token contract to Flow EVM using Foundry. We'll cover:
 
@@ -26,13 +26,13 @@ To use Flow across all Foundry tools you need to:
    --rpc-url https://testnet.evm.nodes.onflow.org
    ```
 
-2. Use the `--legacy` flag to turn off [EIP-1559](https://eips.ethereum.org/EIPS/eip-1559) style transactions. Flow will support EIP-1559 soon and this flag won't be needed.
+2. Use the `--legacy` flag to turn off [EIP-1559] style transactions. Flow will support EIP-1559 soon and this flag won't be needed.
 
 As an example, we'll show you how to deploy a fungible token contract to Flow EVM with Foundry. You will see how the above flags are used in practice.
 
-## Example: Deploying an ERC-20 Token Contract to Flow EVM
+## Example: Deploy an ERC-20 Token Contract to Flow EVM
 
-ERC-20 tokens are the most common type of tokens on Ethereum. We'll use [OpenZeppelin](https://www.openzeppelin.com/) starter templates with Foundry on Flow Testnet to deploy our own token called `MyToken`.
+ERC-20 tokens are the most common type of tokens on Ethereum. We'll use [OpenZeppelin] starter templates with Foundry on Flow Testnet to deploy our own token called `MyToken`.
 
 ### Installation
 
@@ -52,17 +52,17 @@ This will install the Foundry tool suite: `forge`, `cast`, `anvil`, and `chisel`
 
 You may need to reload your shell after `foundryup` installation.
 
-Check out the official [Installation](https://book.getfoundry.sh/getting-started/installation) guide for more information about different platforms or installing specific versions.
+Check out the official [Installation Guide] for more information about different platforms or how to install specific versions.
 
 ### Wallet setup
 
-We first need to generate a key pair for our EVM account. We can do this using the `cast` tool:
+We first need to generate a key pair for our EVM account. We can do this with the `cast` tool:
 
 ```shell
 cast wallet new
 ```
 
-`cast` will print the private key and address of the new account. We can then paste the account address into the [Faucet](https://faucet.flow.com/fund-account) to fund it with some Testnet FLOW tokens.
+`cast` will print the private key and address of the new account. We can then paste the account address into the [Faucet] to fund it with some Testnet FLOW tokens.
 
 You can verify the balance of the account after funding. Replace `$YOUR_ADDRESS` with the address of the account you funded:
 
@@ -221,7 +221,7 @@ The above will print the deployed contract address. We'll use it in the next sec
 
 ### Verify a smart contract
 
-After you deploy the contract, you can verify it so that others can see the source code and interact with it from Flow's block explorer. You can use the [`forge verify-contract`](https://book.getfoundry.sh/reference/forge/forge-verify-contract) command:
+After you deploy the contract, you can verify it so that others can see the source code and interact with it from Flow's block explorer. You can use the [`forge verify-contract`] command:
 
 ```shell
 forge verify-contract --rpc-url https://testnet.evm.nodes.onflow.org/ \
@@ -233,7 +233,7 @@ forge verify-contract --rpc-url https://testnet.evm.nodes.onflow.org/ \
 
 :::info
 
-When you verify a Mainnet contract, be sure to use the Mainnet [RPC](../../../build/evm/networks.md) and block explorer URLs.
+When you verify a Mainnet contract, be sure to use the Mainnet [RPC] and block explorer URLs.
 
 :::
 
@@ -265,7 +265,7 @@ cast call $DEPLOYED_MYTOKEN_ADDRESS \
     "symbol()(string)"
 ```
 
-### Sending Transactions
+### Send Transactions
 
 Let's create a second account and move some tokens with a transaction. You can use `cast wallet new` to create a new test account. You don't need to fund it to receive tokens. Replace `$NEW_ADDRESS` with the address of the new account:
 
@@ -295,3 +295,13 @@ cast balance \
     --erc20 $DEPLOYED_MYTOKEN_ADDRESS \
     $DEPLOYER_ADDRESS
 ```
+
+<!-- Relative links, will not render on page -->
+
+[Foundry docs]: https://book.getfoundry.sh/)
+[EIP-1559]: https://eips.ethereum.org/EIPS/eip-1559
+[OpenZeppelin]: https://www.openzeppelin.com/
+[Installation Guide]: https://book.getfoundry.sh/getting-started/installation
+[Faucet]: https://faucet.flow.com/fund-account
+[`forge verify-contract`]: https://book.getfoundry.sh/reference/forge/forge-verify-contract
+[RPC]: ../../../build/evm/networks.md

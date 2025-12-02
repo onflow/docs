@@ -24,7 +24,7 @@ Scheduled transactions were part of the Forte network upgrade and are available 
 
 :::
 
-Scheduled transactions on the Flow blockchain enable users and smart contracts to autonomously execute predefined logic at specific future times without external triggers. This powerful feature allows developers to create "wake up" patterns where contracts can schedule themselves to run at predetermined block timestamps, which allows novel blockchain automation patterns.
+Scheduled transactions on the Flow blockchain allow users and smart contracts to autonomously execute predefined logic at specific future times without external triggers. This powerful feature allows developers to create "wake up" patterns where contracts can schedule themselves to run at predetermined block timestamps, which allows novel blockchain automation patterns.
 
 Key benefits include:
 - **Autonomous execution**: no need for external services or manual intervention.
@@ -35,7 +35,7 @@ Common use cases include recurring payments, automated arbitrage, time-based con
 
 :::info
 
-Flow provides a scheduled transaction manager to make managing your scheduled transactions more streamlined. Check out the [scheduled transactions intro] for a tutorial on how to schedule some basic transactions with the manager.
+Flow provides a scheduled transaction manager to help you manage your scheduled transactions more easily. Check out the [scheduled transactions intro] for a tutorial on how to schedule some basic transactions with the manager.
 
 :::
 
@@ -71,7 +71,7 @@ access(all) contract TransferFLOWHandler {
 
     access(all) let HandlerStoragePath: StoragePath
     access(all) let HandlerPublicPath: PublicPath
-    
+
     access(all) resource Handler: FlowTransactionScheduler.TransactionHandler {
 
         access(all) var from: Capability<auth(FungibleToken.Withdraw) &{FungibleToken.Provider}>
@@ -82,7 +82,7 @@ access(all) contract TransferFLOWHandler {
 
         // The actual logic that is executed when the scheduled transaction
         // is executed
-        access(FlowTransactionScheduler.Execute) 
+        access(FlowTransactionScheduler.Execute)
         fun executeTransaction(id: UInt64, data: AnyStruct?) {
             if let to = data as Address {
                 let providerRef = self.from.borrow()
@@ -95,7 +95,7 @@ access(all) contract TransferFLOWHandler {
 
                 // Deposit the withdrawn tokens in the recipient's receiver
                 receiverRef.deposit(from: <-providerRef.withdraw(amount: self.amount))
-            
+
             } else {
                 panic("Unable to transfer FLOW because the data provided when scheduling the transaction is not a Flow address!")
             }
@@ -109,13 +109,12 @@ access(all) contract TransferFLOWHandler {
     }
 
     // other functions left out for simplicity
-} 
+}
 ```
-
 
 ### Scheduling
 
-In sceduling, you create the transaction that executes at a specified future timestamp. The system uses three priority levels:
+In scheduling, you create the transaction that executes at a specified future timestamp. The system uses three priority levels:
 
 - **High Priority**: guarantees execution in the first block with the scheduled time or fails scheduling, requires the highest fees.
 - **Medium Priority**: best-effort execution as close as possible to the scheduled time known during scheduling.
@@ -124,14 +123,13 @@ In sceduling, you create the transaction that executes at a specified future tim
 Each transaction requires:
 - **Handler Capability**: a capability to a resource implementing `TransactionHandler` interface, like the FLOW transfer one above.
 - **Timestamp**: future Unix timestamp when execution should occur (fractional seconds ignored).
-- **Execution Effort**: computational resources allocated (gas limit for the transaction).
+- **Execution Effort**: computational resources allocated (computation unit limit for the transaction).
 - **Fees**: Flow tokens to cover execution costs and storage costs for the transaction data.
 - **Optional Data**: arbitrary data that's possibly relevant to the transaction forwarded to the handler during execution.
 
 These arguments are required by the [`FlowTransactionScheduler.schedule()` function]. This function returns a `ScheduledTransaction` resource object.
 
-The Scheduled Transaction Manager standard (mentioned in the intro) provides an easy way for developers
-and users to manage their scheduled transactions from a central place in their account. Users are strongly encouraged to use this.
+The Scheduled Transaction Manager standard (mentioned in the intro) provides an easy way for developers and users to manage their scheduled transactions from a central place in their account. Users are strongly encouraged to use this.
 
 More information about the Scheduled Transaction manager is in the [section at the end of this document].
 
@@ -140,7 +138,7 @@ When a transaction is scheduled, the [`FlowTransactionScheduler.Scheduled` event
 ### Fees
 
 Fee calculation includes:
-- **Base execution fee**: based on computational effort using standard Flow fee structure.
+- **Base execution fee**: based on computational effort with standard Flow fee structure.
 - **Priority multiplier**: higher priorities pay more (High: 10x, Medium: 5x, Low: 2x base rate).
 - **Storage fee**: cost to store transaction data on-chain.
 
@@ -160,7 +158,7 @@ If the scheduled transaction fails at any point during execution, the `Executed`
 
 You can cancel scheduled transactions before execution. When you cancel a transaction, it returns a portion of the fees (configurable refund percentage, 50% as of now). Please keep in mind the refund percentage can change in the future.
 
-To cancel, you need the `ScheduledTransaction` resource that was returned during scheduling. The scheduled transaction manager also makes cancelling scheduled transaction easier.
+To cancel, you need the `ScheduledTransaction` resource that was returned during scheduling. The scheduled transaction manager also makes scheduled transaction cancellation easier.
 
 ### Transaction lifecycle
 
@@ -189,8 +187,9 @@ The `FlowTransactionScheduler` contract is deployed to the service account and m
 The `FlowTransactionSchedulerUtils` contract provides utilities for scheduled transactions, such as the transaction `Manager` resource, common handlers, and metadata views related to scheduled transactions.
 
 Below are listed the addresses of both transaction scheduler contracts on each network they are deployed:
+
 - **Emulator**: `0xf8d6e0586b0a20c7`
-- **Cadence Testing Framework: `0x0000000000000001`
+- \*\*Cadence Testing Framework: `0x0000000000000001`
 - **Testnet**: `0x8c5303eaa26202d6`
 
 ## Examples
@@ -206,12 +205,12 @@ import "FlowTransactionScheduler"
 access(all) contract TestFlowScheduledTransactionHandler {
     access(all) let HandlerStoragePath: StoragePath
     access(all) let HandlerPublicPath: PublicPath
-    
+
     access(all) event TransactionExecuted(data: String)
 
     access(all) resource Handler: FlowTransactionScheduler.TransactionHandler {
-        
-        access(FlowTransactionScheduler.Execute) 
+
+        access(FlowTransactionScheduler.Execute)
         fun executeTransaction(id: UInt64, data: AnyStruct?) {
             if let string: String = data as? String {
                 emit TransactionExecuted(data: string)
@@ -220,7 +219,7 @@ access(all) contract TestFlowScheduledTransactionHandler {
             }
         }
 
-        // public functions that anyone can call to get information about 
+        // public functions that anyone can call to get information about
         // this handler
         access(all) view fun getViews(): [Type] {
             return [Type<StoragePath>(), Type<PublicPath>(), Type<MetadataViews.Display>()]
@@ -282,15 +281,15 @@ transaction(timestamp: UFix64, feeAmount: UFix64, effort: UInt64, priority: UInt
             let managerRef = account.capabilities.storage.issue<&{FlowTransactionSchedulerUtils.Manager}>(FlowTransactionSchedulerUtils.managerStoragePath)
             account.capabilities.publish(managerRef, at: FlowTransactionSchedulerUtils.managerPublicPath)
         }
-        
+
         // If a transaction handler has not been created for this account yet, create one,
         // store it, and issue a capability that will be used to create the transaction
         if !account.storage.check<@TestFlowScheduledTransactionHandler.Handler>(from: TestFlowScheduledTransactionHandler.HandlerStoragePath) {
             let handler <- TestFlowScheduledTransactionHandler.createHandler()
-        
+
             account.storage.save(<-handler, to: TestFlowScheduledTransactionHandler.HandlerStoragePath)
             account.capabilities.storage.issue<auth(FlowTransactionScheduler.Execute) &{FlowTransactionScheduler.TransactionHandler}>(TestFlowScheduledTransactionHandler.HandlerStoragePath)
-            
+
             let publicHandlerCap = account.capabilities.storage.issue<&{FlowTransactionScheduler.TransactionHandler}>(TestFlowScheduledTransactionHandler.HandlerStoragePath)
             account.capabilities.publish(publicHandlerCap, at: TestFlowScheduledTransactionHandler.HandlerPublicPath)
         }
@@ -298,7 +297,7 @@ transaction(timestamp: UFix64, feeAmount: UFix64, effort: UInt64, priority: UInt
         // Get the entitled capability that will be used to create the transaction
         // Need to check both controllers because the order of controllers is not guaranteed
         var handlerCap: Capability<auth(FlowTransactionScheduler.Execute) &{FlowTransactionScheduler.TransactionHandler}>? = nil
-        
+
         if let cap = account.capabilities.storage
                             .getControllers(forPath: TestFlowScheduledTransactionHandler.HandlerStoragePath)[0]
                             .capability as? Capability<auth(FlowTransactionScheduler.Execute) &{FlowTransactionScheduler.TransactionHandler}> {
@@ -308,11 +307,11 @@ transaction(timestamp: UFix64, feeAmount: UFix64, effort: UInt64, priority: UInt
                             .getControllers(forPath: TestFlowScheduledTransactionHandler.HandlerStoragePath)[1]
                             .capability as! Capability<auth(FlowTransactionScheduler.Execute) &{FlowTransactionScheduler.TransactionHandler}>
         }
-        
+
         // borrow a reference to the vault that will be used for fees
         let vault = account.storage.borrow<auth(FungibleToken.Withdraw) &FlowToken.Vault>(from: /storage/flowTokenVault)
             ?? panic("Could not borrow FlowToken vault")
-        
+
         let fees <- vault.withdraw(amount: feeAmount) as! @FlowToken.Vault
         let priorityEnum = FlowTransactionScheduler.Priority(rawValue: priority)
             ?? FlowTransactionScheduler.Priority.High
@@ -331,7 +330,7 @@ transaction(timestamp: UFix64, feeAmount: UFix64, effort: UInt64, priority: UInt
             fees: <-fees
         )
     }
-} 
+}
 ```
 
 ### 3. Query transaction information
@@ -355,7 +354,7 @@ import "FlowToken"
 
 transaction(transactionId: UInt64) {
     prepare(account: auth(BorrowValue, SaveValue, LoadValue) &Account) {
-        
+
         // borrow a reference to the manager
         let manager = account.storage.borrow<auth(FlowTransactionSchedulerUtils.Owner) &{FlowTransactionSchedulerUtils.Manager}>(from: FlowTransactionSchedulerUtils.managerStoragePath)
             ?? panic("Could not borrow a Manager reference from \(FlowTransactionSchedulerUtils.managerStoragePath)")
@@ -375,7 +374,7 @@ transaction(transactionId: UInt64) {
 This script helps estimate the cost of scheduling a transaction before you actually submit it. This is useful for budget and validation.
 
 ```cadence
-// estimate_fees.cdc - Script to estimate scheduling costs  
+// estimate_fees.cdc - Script to estimate scheduling costs
 import "FlowTransactionScheduler"
 
 access(all) fun main(
@@ -384,13 +383,13 @@ access(all) fun main(
     priority: UInt8,
     executionEffort: UInt64
 ): FlowTransactionScheduler.EstimatedScheduledTransaction {
-    
+
     let priorityEnum = FlowTransactionScheduler.Priority(rawValue: priority)
         ?? FlowTransactionScheduler.Priority.Medium
-    
+
     return FlowTransactionScheduler.estimate(
         data: dataSize,
-        timestamp: timestamp, 
+        timestamp: timestamp,
         priority: priorityEnum,
         executionEffort: executionEffort
     )
@@ -399,7 +398,7 @@ access(all) fun main(
 
 ### 6. Monitor execution events
 
-Use the Flow CLI to monitor all scheduled transaction events in real-time (example for testnet - account addresses may differ):
+Use the Flow Command Line Interface (CLI) to monitor all scheduled transaction events in real-time (example for testnet - account addresses may differ):
 
 ```bash
 flow events get \
@@ -432,11 +431,11 @@ Block explorer support for scheduled transactions is also coming, which will pro
 For feature requests and suggestions for scheduled transaction tooling, visit [github.com/onflow/flow] and create an issue with the tag `scheduled_transactions`.
 
 
-Read [FLIP] for more details.
+Read [FLIP 330: Scheduled Callbacks] for more details.
 
 <!-- Relative links, will not render on page -->
 
-[FLIP]: https://github.com/onflow/flips/blob/main/protocol/20250609-scheduled-callbacks.md
+[FLIP 330: Scheduled Callbacks]: https://github.com/onflow/flips/blob/main/protocol/20250609-scheduled-callbacks.md
 [flow-go-sdk]: ../../tools/clients/flow-go-sdk/index.md
 [Flow metadata views standard]: metadata-views.md
 [Forte: Introducing Actions & Agents]: https://flow.com/post/forte-introducing-actions-agents-supercharging-composability-and-automation

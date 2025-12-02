@@ -29,8 +29,7 @@ const WhyFlowSection: React.FC = () => {
           {/* Body Text and CTA Link */}
           <div className="flex flex-row items-start justify-between gap-8">
             <p className="text-lg text-gray-700 dark:text-gray-300 leading-relaxed flex-1 max-w-3xl">
-              Flow supports both <strong>Cadence</strong> and <strong>Solidity</strong>, scales to millions of users without sharding, 
-              and provides MEV resistance with ultra-low fees. Built for consumer apps.
+              With <strong>600% YoY TVL growth</strong> to $100M+ and the <strong>safest risk-adjusted yields</strong> for consumers in DeFi, Flow is uniquely positioned to power the future of Consumer DeFi.
             </p>
             
             {/* Right: CTA Link */}

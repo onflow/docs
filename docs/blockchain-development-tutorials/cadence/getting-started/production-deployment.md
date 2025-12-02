@@ -35,7 +35,7 @@ After you complete this tutorial, you'll be able to:
 - **Implement monitoring and maintenance** practices for production applications.
 - **Understand the deployment pipeline** from development to production.
 
-**Prerequisites:** 
+**Prerequisites:**
 
 - Completed all previous tutorials ([Environment Setup], [Smart Contract Interaction], [Building a Frontend App]).
 - Counter contract and frontend app working locally.
@@ -54,6 +54,7 @@ Flow has several networks for different purposes:
 - **Mainnet**: Production network with real Flow tokens.
 
 Each network has its own:
+
 - Access nodes and APIs.
 - Account addresses and contract deployments.
 - Token economics (free on testnet, real value on mainnet).
@@ -67,6 +68,7 @@ flow accounts create --network testnet
 ```
 
 When prompted:
+
 1. **Account name**: Enter `testnet-account`
 2. **Select "Testnet" Network**
 
@@ -92,7 +94,7 @@ flow accounts fund --network testnet testnet-account
 Check your account balance:
 
 ```zsh
-flow accounts list 
+flow accounts list
 ```
 
 You will see your account details with a balance of Flow tokens.
@@ -106,8 +108,9 @@ flow config add deployment
 ```
 
 Follow the prompts:
+
 1. **Network**: `testnet`
-2. **Account**: `testnet-account`  
+2. **Account**: `testnet-account`
 3. **Contract**: `Counter`
 4. **Deploy more contracts**: `yes`
 5. **Contract**: `NumberFormatter`
@@ -117,21 +120,14 @@ Your `flow.json` now includes a testnet deployment section:
 ```json
 {
   "deployments": {
-		"emulator": {
-			"default": [
-				"Counter"
-			],
-			"emulator-account": [
-				"NumberFormatter"
-			]
-		},
-		"testnet": {
-			"testnet-account": [
-				"Counter",
-				"NumberFormatter"
-			]
-		}
-	}
+    "emulator": {
+      "default": ["Counter"],
+      "emulator-account": ["NumberFormatter"]
+    },
+    "testnet": {
+      "testnet-account": ["Counter", "NumberFormatter"]
+    }
+  }
 }
 ```
 
@@ -148,8 +144,8 @@ You will see output similar to:
 ```zsh
 Deploying 2 contracts for accounts: testnet-account
 
-Counter -> 0x9942a81bc6c3c5b7 (d8fe130e5b2212a5c7b3c34fe6e74ede80c750bc4c57e57788e81b247dcd7fe0) 
-NumberFormatter -> 0x9942a81bc6c3c5b7 (9a550aeefa5ede62cb95f0549084b2ab7abf3a493cf853d50c1c377a7be733b2) 
+Counter -> 0x9942a81bc6c3c5b7 (d8fe130e5b2212a5c7b3c34fe6e74ede80c750bc4c57e57788e81b247dcd7fe0)
+NumberFormatter -> 0x9942a81bc6c3c5b7 (9a550aeefa5ede62cb95f0549084b2ab7abf3a493cf853d50c1c377a7be733b2)
 
 🎉 All contracts deployed successfully
 ```
@@ -163,6 +159,7 @@ flow scripts execute cadence/scripts/GetCounter.cdc --network testnet
 ```
 
 You should see:
+
 ```zsh
 Result: "0"
 ```
@@ -240,7 +237,7 @@ Visit `http://localhost:3000` and you will see:
 1. **Counter value**: displays the current count from your testnet contract.
 2. **Connect Wallet**: connect with various Flow wallets (not just Dev Wallet).
 3. **Increment functionality**: transactions are sent to the live testnet.
-4. **Real transaction costs**: small amounts of testnet Flow are used for gas.
+4. **Real transaction costs**: small amounts of testnet Flow are used for compute units, the Flow Cadence equivalence of gas.
 
 **Important**: When you connect your wallet, make sure to:
 
@@ -270,6 +267,7 @@ flow accounts create --network mainnet
 ```
 
 When prompted:
+
 1. **Account name**: Enter `mainnet-account`
 2. **Select "Mainnet" Network**
 
@@ -277,7 +275,7 @@ When prompted:
 
 You can purchase Flow tokens from major exchanges like [Coinbase], [Moonpay], and [Binance].
 
-To obtain Flow directly from the Flow Wallet, click "Buy" in your account. 
+To obtain Flow directly from the Flow Wallet, click "Buy" in your account.
 
 ![flow-wallet-icons](./imgs/flow-wallet-icons.png)
 
@@ -294,8 +292,9 @@ flow config add deployment --network mainnet
 ```
 
 Follow the prompts:
+
 1. **Network**: `mainnet`
-2. **Account**: `mainnet-account`  
+2. **Account**: `mainnet-account`
 3. **Contract**: `Counter`
 4. **Deploy more contracts**: `yes`
 5. **Contract**: `NumberFormatter`
@@ -314,27 +313,17 @@ Your `flow.json` will now include mainnet configuration:
     }
   },
   "deployments": {
-		"emulator": {
-			"default": [
-				"Counter"
-			],
-			"emulator-account": [
-				"NumberFormatter"
-			]
-		},
-		"testnet": {
-			"testnet-account": [
-				"Counter",
-				"NumberFormatter"
-			]
-		},
-        "mainnet": {
-            "mainnet-account": [
-                "Counter",
-				"NumberFormatter"
-            ]
-        }
-	}
+    "emulator": {
+      "default": ["Counter"],
+      "emulator-account": ["NumberFormatter"]
+    },
+    "testnet": {
+      "testnet-account": ["Counter", "NumberFormatter"]
+    },
+    "mainnet": {
+      "mainnet-account": ["Counter", "NumberFormatter"]
+    }
+  }
 }
 ```
 

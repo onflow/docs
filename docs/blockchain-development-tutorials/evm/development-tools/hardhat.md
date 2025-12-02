@@ -13,9 +13,9 @@ Hardhat is an Ethereum development tool designed to facilitate the deployment, t
 
 ### Node
 
-Node v18 or higher, available for [download here](https://nodejs.org/en/download).
+Node v18 or higher, available for [download here].
 
-For those new to Hardhat, we recommend that you exploare the [official documentation](https://hardhat.org/tutorial/creating-a-new-hardhat-project) to get acquainted. The following instructions use `npm` to initialize a project and install dependencies:
+For those new to Hardhat, we recommend that you exploare the [official Hardhat documentation] to get acquainted. The following instructions use `npm` to initialize a project and install dependencies:
 
 ### Wallet
 
@@ -36,7 +36,7 @@ npx hardhat init
 
 ### Fund Your wallet
 
-To deploy smart contracts, ensure your wallet has **$FLOW**. To obtain funds, navigate to the Flow [Faucet](https://faucet.flow.com/fund-account) and enter your wallet address.
+To deploy smart contracts, ensure your wallet has **$FLOW**. To obtain funds, navigate to the Flow [Faucet] and enter your wallet address.
 
 ## Deploy a smart contract with Hardhat
 
@@ -129,7 +129,7 @@ main()
 5. Run `npx hardhat run scripts/deploy.ts --network testnet` in the project root.
 6. Copy the deployed `HelloWorld` address. This address will be used in other scripts.
 
-Output should look like this (with the exception that your address will be different):
+Output will look like this (with the exception that your address will be different):
 
 ```shell
 ❯ npx hardhat run scripts/deploy.ts --network testnet
@@ -137,7 +137,7 @@ Deploying contracts with the account: ...
 HelloWorld address: 0x3Fe94f43Fb5CdB8268A801f274521a07F7b99dfb
 ```
 
-You can now search for your deployed contract on the [Flowscan block explorer](https://evm-testnet.flowscan.io/)!
+You can now search for your deployed contract on the [Flowscan] block explorer!
 
 ### Get HelloWorld contract greeting
 
@@ -244,7 +244,7 @@ The greeting is: Howdy!
 
 ### Verify contract
 
-To verify your contract on [Flowscan](https://evm-testnet.flowscan.io/), you can update your Hardhat config file. To do this, include the correct chainID, apiURL and browserURL:
+To verify your contract on [Flowscan], you can update your Hardhat config file. To do this, include the correct chainID, apiURL and browserURL:
 
 ```javascript
 import { HardhatUserConfig } from 'hardhat/config';
@@ -286,8 +286,16 @@ const config: HardhatUserConfig = {
 export default config;
 ```
 
-The [verify](https://docs.blockscout.com/developer-support/verifying-a-smart-contract/hardhat-verification-plugin) plugin requires you to include constructor arguments with the verify task and ensures that they correspond to expected ABI signature. However, Blockscout ignores those arguments, so you may specify any values that correspond to the ABI. Execute the following command to verify the contract:
+The [verify] plugin requires you to include constructor arguments with the verify task and ensures that they correspond to expected ABI signature. However, Blockscout ignores those arguments, so you may specify any values that correspond to the ABI. Execute the following command to verify the contract:
 
 ```shell
 npx hardhat verify --network testnet DEPLOYED_CONTRACT_ADDRESS "Constructor argument 1"
 ```
+
+<!-- Relative links, will not render on page -->
+
+[download here]: https://nodejs.org/en/download
+[official Hardhat documentation]: https://hardhat.org/tutorial/creating-a-new-hardhat-project
+[Faucet]: https://faucet.flow.com/fund-account
+[Flowscan]: https://evm-testnet.flowscan.io/
+[verify]: https://docs.blockscout.com/developer-support/verifying-a-smart-contract/hardhat-verification-plugin

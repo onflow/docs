@@ -76,6 +76,16 @@ console.log(transaction); // The transactions status and events after being exec
 
 To learn more about `mutate`, check out the [API documentation](./packages-docs/fcl/mutate.md).
 
+## Querying Transaction Results
+
+When querying transaction results (e.g., via HTTP/REST endpoints like `GET /v1/transaction_results/{id}`), you can provide either:
+- A **transaction ID** (256-bit hash as hex string)
+- A **scheduled transaction ID** (UInt64 as decimal string)
+
+The returned result always includes `transaction_id` as the underlying native transaction ID. For scheduled transactions, this will be the system transaction ID that executed the scheduled callback.
+
+Learn more about [Scheduled Transactions](/docs/build/cadence/advanced-concepts/scheduled-transactions.md).
+
 ## Transaction Finality
 
 As of **FCL v1.15.0**, it is now recommended to use use `onceExecuted` in most cases, leading to a 2.5x reduction in latency when waiting for a transaction result. For example, the following code snippet should be updated from:
