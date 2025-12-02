@@ -23,44 +23,44 @@ keywords:
 
 :::info
 
-Are you an EVM developer looking for information about EVM Accounts on Flow? If so, check out the EVM specific documentation [here](../../../build/evm/fees.md)
+Are you an EVM developer who wants information about EVM Accounts on Flow? If so, check out the EVM specific documentation [here]
 
 :::
 
 # Fees
 
-## Transaction Fees
+## Transaction fees
 
-A transaction fee is a cost paid in Flow by the payer account and is required for a transaction to be included in the Flow blockchain. Fees are necessary for protecting the network against spam/infinite running transactions and to provide monetary incentives for participants that make up the Flow network.
+A transaction fee is a cost paid in Flow by the payer account and is required for a transaction to be included in the Flow blockchain. Fees are necessary to protect the network against spam or infinite running transactions and to provide monetary incentives for participants that make up the Flow network.
 
-On Flow, transaction fees are determined using `compute units (CU)`, a metric that captures the effort needed to include and execute a transaction. Compute units function similarly to gas in EVM systems but are derived differently. The final fee paid by the user is calculated by multiplying the transaction’s total compute units by the current compute-unit price, with all fees payable in FLOW.
+On Flow, transaction fees are determined with `compute units (CU)`, a metric that captures the effort needed to include and execute a transaction. Compute units function similarly to gas in EVM systems but are derived differently. To calculate the final fee paid by the user, multiply the transaction’s total compute units by the current compute-unit price, with all fees payable in FLOW.
 
-A transaction fee is paid regardless of whether a transaction succeeds or fails. If the payer account doesn't have sufficient Flow balance to pay for the transaction fee, the transaction will fail. We can limit the transaction fee to some extent by providing the compute unit limit value when submitting the transaction.
+A transaction fee is paid regardless of whether a transaction succeeds or fails. If the payer account doesn't have sufficient Flow balance to pay for the transaction fee, the transaction will fail. We can provide the compute unit limit value when you submit the transaction, which helps limit the transaction fee.
 
-### Understanding the need for transaction fees
+### Understand the need for transaction fees
 
 One of the ways that a single computer that no one owns and anyone can use from being monopolized by any part is to charge a fee measured by the amount of computation needed to execute code. All blockchains implement a form of this system.
 
-Segmented transaction fees are essential to ensure fair pricing based on the impact on the network. For instance, more heavy operations will require more resources to process and propagate transactions. Common operations, however, will stay reasonably priced.
+Segmented transaction fees are essential to ensure fair pricing based on the impact on the network. For instance, heavier operations will require more resources to process and propagate transactions. Common operations, however, will stay reasonably priced.
 
-Fees improve the overall security of the network by making malicious actions (eg spam) on the network less viable. They also prevent the computer from crashing in the event that an infinite loop is started maliciously or accidentally.
+To improve the overall security of the network, fees makie malicious actions (such as spam) on the network less viable. They also prevent a computer crash if an infinite loop is started maliciously or accidentally.
 
 The unique Flow architecture is targeted at high throughput. It makes it easier to have slack in the system, so short spikes can be handled more gracefully.
 
-### **Fee Structure**
+### **Fee structure**
 
 Each transaction fee consists of three components: execution fee, inclusion fee, and network surge factor.
 
 ![Screenshot 2023-08-17 at 17.16.32.png](_fees_images/Screenshot_2023-08-17_at_17.16.32.png)
 
-**Execution Fee**
+**Execution fee**
 
 The execution effort for a transaction is determined by the code path the transaction takes and the actions it does. The actions that have an associated execution effort cost can be separated into four broad buckets:
 
-- Normal lines of cadence, loops, or function calls
-- Reading data from storage, charged per byte read
-- Writing data to storage, charged per byte written
-- Account creation
+- Normal lines of cadence, loops, or function calls.
+- Reading data from storage, charged per byte read.
+- Writing data to storage, charged per byte written.
+- Account creation.
 
 | Transaction Type                                   | Estimated cost (FLOW) |
 | -------------------------------------------------- | --------------------- |
@@ -72,29 +72,29 @@ The execution effort for a transaction is determined by the code path the transa
 | Create 10 accounts                                 | 0.00002261            |
 | Deploying a contract that is ~50kb                 | 0.00002965            |
 
-**Inclusion Fee**
+**Inclusion fee**
 
-The inclusion effort of a transaction represents the work needed for:
+The inclusion effort of a transaction represents the work needed to:
 
-- Including the transaction in a block
-- Transporting the transaction information from node to node
-- Verifying transaction signatures
+- Include the transaction in a block
+- Transport the transaction information from node to node
+- Verify transaction signatures
 
 Right now, the inclusion effort is always 1.0 and the inclusion effort cost is fixed to `0.000001`.
 
-**Surge Factor**
+**Surge factor**
 
 A network surge factor is applied when the network is busy due to an increased influx of transactions required to be processed or a decrease in the ability to process transactions.
 
-See [FLIP 336](https://github.com/onflow/flips/blob/main/governance/20250727-dynamic-transaction-fees.md) for details on this calculation.
+See [FLIP 336] for details on this calculation.
 
-**Estimating transaction costs**
+**Estimat transaction costs**
 
-Cost estimation is a two-step process. First, you need to gather the execution effort with either the emulator, on testnet, or on mainnet. Second, you use the execution effort for a transaction to calculate the final fees using one of the JavaScript or Go FCL SDKs.
+Cost estimation is a two-step process. First, you need to gather the execution effort with either the emulator, on testnet, or on mainnet. Second, you use the execution effort for a transaction to calculate the final fees with one of the JavaScript or Go FCL SDKs.
 
 ## Storage
 
-Flow's approach to storage capacity is a bit similar to some banks' pricing models, where maintaining a minimum balance prevents monthly account fees. Here, the amount of data in your account determines your minimum balance. If you fall below the minimum balance, you cannot transact with your account, except for deposits or deleting data. The essence of storage fee model is that it ensures data availability without continuously charging fees for storage, while also preventing abuses that could burden the network's storage resources. This distinction between current state and blockchain history is crucial for understanding storage requirements and limitations.
+Flow's approach to storage capacity is a bit similar to some banks' pricing models, where you maintain a minimum balance to prevent monthly account fees. Here, the amount of data in your account determines your minimum balance. If you fall below the minimum balance, you can't transact with your account, except for deposits or data deletion. The essence of storage fee model is that it ensures data availability but doesn't continuously charge fees for storage, and also prevents abuses that could burden the network's storage resources. This distinction between current state and blockchain history is crucial for you to understand storage requirements and limitations.
 
 Each Flow account has associated storage used. The account's storage used is the byte size of all the data stored in the account's storage. Accounts also have a storage capacity, which is directly tied to the amount of Flow tokens an account has. The account can, without any additional cost, use any amount of storage up to its storage capacity.
 
@@ -104,7 +104,7 @@ If a transaction puts an account over storage capacity, that transaction fails a
 
 :::
 
-**Storage Capacity**
+**Storage capacity**
 
 The storage capacity of an account is dictated by the amount of FLOW it has.
 
@@ -116,21 +116,21 @@ The **minimum amount of FLOW an account can have is 0.001**. This minimum is pro
 
 The minimum account reservation ensures that most accounts won't run out of storage capacity if anyone deposits anything (like an NFT) to the account.
 
-Currently, the amount required to store 100 MB in account storage is 1 Flow.
+Currently, the amount required to store 100 MB in account storage is one Flow.
 
 ![Screenshot 2023-08-17 at 17.27.50.png](_fees_images/Screenshot_2023-08-17_at_17.27.50.png)
 
-Please note that storing data in an account on Flow doesn't charge tokens from the account, it just makes sure you will keep the tokens as a reserve. Once the storage is freed up you can transfer the Flow tokens.
+When you store data in an account on Flow, it doesn't charge tokens from the account. Rather, it just makes sure you will keep the tokens as a reserve. After the storage is freed up, you can transfer the Flow tokens.
 
-### Storage Capacity of the Payer
+### Storage capacity of the payer
 
-The storage capacity of the Payer of a transaction is generally computed the same way as the capacity of any other account, however, the system needs to account for the transaction fees the payer will incur at the end of the transaction. The final transaction fee amount is not fully known at this step, only when accounts are checked for storage compliance. If their storage used is more than their storage capacity, the transaction will fail.
+The storage capacity of the Payer of a transaction is generally computed the same way as the capacity of any other account. However, the system needs to account for the transaction fees the payer will incur at the end of the transaction. The final transaction fee amount is not fully known at this step, only when accounts are checked for storage compliance. If their storage used is more than their storage capacity, the transaction will fail.
 
 Because of this, the payer's balance is conservatively considered to be lower by the maximum possible transaction fees, when checking for storage compliance. The maximum transaction fee of a specific transaction is the transaction fee as if the transaction would have used up all of its execution effort limit.
 
-### Storage Used
+### Storage used
 
-All data that is in an account's storage counts towards storage used. Even when an account is newly created it is not empty. There are already some items in its storage:
+All data that is in an account's storage counts towards storage used. Even when an account is newly created, it is not empty. There are already some items in its storage:
 
 - Metadata that marks that the account exists.
 - An empty FLOW vault, and stored receiver capability.
@@ -138,13 +138,13 @@ All data that is in an account's storage counts towards storage used. Even when 
 - Smart contracts deployed on the account if the account was created with contracts.
 - The value of the account's storage used as an unsigned integer.
 
-Adding additional keys, smart contracts, capabilities, resources, etc. to the account counts towards storage used.
+When you add additional keys, smart contracts, capabilities, resources, and so on to the account, it counts towards storage used.
 
 Data stored on the Flow blockchain is stored in a key-value ledger. Each item's key contains the address that owns the item and the path to the item. An account can have many keys, therefore flow considers the account key items are stored with. This means that the storage used by each item is the byte length of the item plus the byte length of the item's key.
 
 ### Maximum available balance
 
-Due to the storage restrictions, there is a maximum available balance that user can withdraw from the wallet. The core contract [`FlowStorageFees`](../core-contracts/05-flow-fees.md#flowstoragefees) provides a function to retrieve that value:
+Due to the storage restrictions, there is a maximum available balance that user can withdraw from the wallet. The core contract [`FlowStorageFees`] provides a function to retrieve that value:
 
 ```cadence
 import "FlowStorageFees"
@@ -166,11 +166,11 @@ access(all) fun main(address: Address): UFix64 {
 
 ```
 
-## Practical Understanding of Fees
+## Practically understand fees
 
-**Using Flow Emulator**
+**Use the Flow emulator**
 
-You can start the [emulator using the Flow CLI](../../../build/tools/emulator/index.md#running-the-emulator-with-the-flow-cli). Run your transaction and take a look at the events emitted:
+You can start the [emulator with the Flow CLI]. Run your transaction and take a look at the events emitted:
 
 ```shell
 0|emulator | time="2022-04-06T17:13:22-07:00" level=info msg="⭐  Transaction executed" computationUsed=3 txID=a782c2210c0c1f2a6637b20604d37353346bd5389005e4bff6ec7bcf507fac06
@@ -180,11 +180,11 @@ You should see the `computationUsed` field. Take a note of the value, you will u
 
 **On testnet or mainnet**
 
-Once a transaction is completed, you can use an explorer like [Flowscan](https://flowscan.io/) to review the transaction details and events emitted. For Flowscan, you can open the transaction in question and look for the event `FeesDeducted` from the [`FlowFees`](https://github.com/onflow/flow-core-contracts/blob/master/contracts/FlowFees.cdc) contract:
+When a transaction is completed, you can use an explorer like [Flowscan] to review the transaction details and events emitted. For Flowscan, you can open the transaction in question and look for the event `FeesDeducted` from the [`FlowFees`] contract:
 
 ![flowscan-fees](./_fees_images/flowscan-fees.png)
 
-In the event data on the right side, you will see a set of fields representing [the fees for a specific transaction.](https://github.com/onflow/flow-core-contracts/blob/master/contracts/FlowFees.cdc#L14):
+In the event data on the right side, you will see a set of fields that represent [the fees for a specific transaction.]:
 
 - Total Fees Paid
 - Inclusion Effort
@@ -192,9 +192,9 @@ In the event data on the right side, you will see a set of fields representing [
 
 Take a note of the last value in the list - the `executionEffort` value. You will use it in the next step.
 
-### Calculating final costs
+### Calculate final costs
 
-The cost for transactions can be calculated using the following FCL scripts on mainnet/testnet respectively.
+The cost for transactions can be calculated with the following FCL scripts on mainnet/testnet respectively.
 
 **On mainnet**
 
@@ -220,15 +220,19 @@ access(all) fun main(
 }
 ```
 
-## Configuring execution limits
+## Configure execution limits
 
 FCL SDKs allow you to set the execution effort limit for each transaction. Based on the execution effort limit determined in the previous step, you should set a reasonable maximum to avoid unexpected behavior and protect your users. The final transaction fee is computed from the actual execution effort used up to this maximum.
 
-> **Note**: Keep in mind that the limits are not for the final fees that the user will have to pay. The limits are for the execution efforts specifically.
+:::info
 
-It is important to set a limit that isn't too high or too low. If it is set too high, the payer needs to have more funds in their account before sending the transaction. If it is too low, the execution could fail and all state changes are dropped.
+Keep in mind that the limits are not for the final fees that the user will have to pay. The limits are for the execution efforts specifically.
 
-**Using FCL JS SDK**
+:::
+
+It is important to set a limit that isn't too high or too low. If it is set too high, the payer needs to have more funds in their account before they send the transaction. If it is too low, the execution could fail and all state changes are dropped.
+
+**Use FCL JS SDK**
 
 You need to set the `limit` parameter for the `mutate` function, for example:
 
@@ -252,7 +256,7 @@ const transaction = await fcl.tx(transactionId).onceExecuted();
 console.log(transaction;)
 ```
 
-**Using FCL Go SDK**
+**Use FCL Go SDK**
 
 You need to call the `SetComputeLimit` method to set the fee limit, for example:
 
@@ -277,11 +281,11 @@ tx := flow.NewTransaction().
 
 ### Maximum transaction fees of a transaction
 
-The maximum possible fee imposed on the payer for a transaction can be calculated as the **inclusion cost plus the execution cost**. The execution cost is the fee calculated for running the transaction based on the [execution effort limit maximum specified](#configuring-execution-limits).
+The maximum possible fee imposed on the payer for a transaction can be calculated as the **inclusion cost plus the execution cost**. The execution cost is the fee calculated to run the transaction based on the [execution effort limit maximum specified].
 
 The payer will never pay more than this amount for the transaction.
 
-## Optimizing Cadence code to reduce effort
+## Optimize Cadence code to reduce effort
 
 Several optimizations can lead to reduced execution time of transactions. Below is a list of some practices. This list is not exhaustive but rather exemplary.
 
@@ -349,7 +353,7 @@ access(all) fun add(_ a: Int, _ b: Int): Int {
 
 **Avoid excessive load and save operations**
 
-Avoid costly loading and storage operations and [borrow references](https://cadence-lang.org/docs/design-patterns#avoid-excessive-load-and-save-storage-operations-prefer-in-place-mutations) where possible, for example:
+Avoid costly loading and storage operations and [borrow references] where possible, for example:
 
 ```cadence
 transaction {
@@ -372,25 +376,25 @@ transaction {
 
 **Limit accounts created per transaction**
 
-Creating accounts and adding keys are associated with costs. Try to only create accounts and keys when necessary.
+Try to only create accounts and add keys when necessary, because there are costs associated with these actions.
 
-**Check user's balance before executing transactions**
+**Check user's balance before you execute transactions**
 
 You should ensure that the user's balance has enough balance to cover the highest possible fees. For FT transfers, you need to cover the amount to transfer in addition to the highest possible fees.
 
-## Educating users
+## Educate users
 
-Wallets will handle the presentation of the final transaction costs but you can still facilitate the user experience by educating them within your application.
+Wallets will handle the presentation of the final transaction costs, but you can still facilitate the user experience when you educate them within your application.
 
-If your user is using self-custody wallets, they may have to pay the transaction and want to understand the fees. Here are some suggestions.
+If your user has self-custody wallets, they may have to pay the transaction and want to understand the fees. Here are some suggestions.
 
 **Explain that costs can vary depending on the network usage**
 
 Suggested message: "Fees improve the security of the network. They are flexible to ensure fair pricing based on the impact on the network."
 
-**Explain that waiting for the network surge to pass is an option**
+**Explain that they can wait for the network surge to pass**
 
-Inevitably, network surges will cause higher fees. Users who might want to submit a transaction while the network usage is surging should consider sending the transaction at a later time to reduce costs.
+Inevitably, network surges will cause higher fees. Users who might want to submit a transaction while the network usage surges may want to send the transaction at a later time to reduce costs.
 
 **Explain that the wallet might not allow the transaction due to a lack of funds**
 
@@ -400,21 +404,25 @@ If dynamic fees increase to the highest possible level, the user's fund might no
 
 There are several places to learn more about transaction fees:
 
-- [FLIP-660](https://github.com/onflow/flow/pull/660)
-- [FLIP-753](https://github.com/onflow/flow/pull/753)
-- [Flow Fees Contract](https://github.com/onflow/flow-core-contracts/blob/master/contracts/FlowFees.cdc)
+- [FLIP-660]
+- [FLIP-753]
+- [Flow Fees Contract]
 
-> **Note**: If you have thoughts on the implementation of transaction fees on Flow, you can [leave feedback on this forum post](https://forum.flow.com/t/variable-transaction-fees-are-coming-to-flow/2941).
+:::info
+
+If you have thoughts on the implementation of transaction fees on Flow, you can [leave feedback on this forum post].
+
+:::
 
 ## FAQs
 
 **When will the fee update go into effect?**
 
-The updates were rolled out with the [Spork on April 6, 2022](../../../protocol/node-ops/node-operation/past-upgrades#mainnet-17), and were enabled on [June 1st](https://forum.flow.com/t/permissionless-contract-deployment-progress/2981) during the [weekly epoch transition](https://github.com/onflow/service-account/tree/main/transactions/set-execution-effort-weights/2022/jun-1).
+The updates were rolled out with the [Spork on April 6, 2022], and were turned on [June 1st] during the [weekly epoch transition].
 
 **Why are fees collected even when transactions fail?**
 
-Broadcasting and verifying a transaction requires execution, so costs are deducted appropriately.
+Costs are deducted appropriately when you or your users broadcast and verify a transaction.
 
 **What execution costs are considered above average?**
 
@@ -426,11 +434,14 @@ Yes.
 
 **What is the lowest execution cost?**
 
-The lowest execution cost is 1. This means your transaction included one function call or loop that didn't read or write any date.
+The lowest execution cost is one. This means your transaction included one function call or loop that didn't read or write any date.
 
 **Can I determine how much a transaction will cost on mainnet without actually paying?**
 
-You can estimate the costs in a two-way process: 1) determine execution costs for transactions (emulator or testnet) and 2) use an FCL SDK method to calculate the final transaction fees.
+You can estimate the costs in a two-way process: 
+
+1. Determine execution costs for transactions (emulator or testnet). 
+2. Use an FCL SDK method to calculate the final transaction fees.
 
 **How accurate will testnet fees be to mainnet fees?**
 
@@ -438,7 +449,7 @@ Final fees are determined by the surge factor on the network. The surge factor f
 
 **I use Blocto and I haven't paid any fees yet. Why is that?**
 
-That is because Blocto is acting as the payer for transactions. Self-custody wallets may have the user pay the transaction. Additionally, apps can sponsor the transaction if they choose.
+That is because Blocto acts as the payer for transactions. Self-custody wallets may have the user pay the transaction. Additionally, apps can sponsor the transaction if they choose.
 
 **Why would the same transaction have different fees when executed for different accounts?**
 
@@ -446,8 +457,28 @@ Execution costs, among other things, include the cost to read data from account 
 
 Additional Details:
 
-- The most expensive operations in Cadence are reading and writing to storage. This isn't punitive! Every read needs to be sent to all Verification nodes for verification (with Merkel proofs), and every write requires a path of Merkel hashes to be updated. Reading and writing to storage is inherently expensive on any blockchain.
+- The most expensive operations in Cadence are reading and writing to storage. This isn't punitive! Every read needs to be sent to all Verification nodes for verification (with Merkel proofs), and every write requires a path of Merkel hashes to be updated. It's inherently expensive to read and write on any blockchain.
 - The way data is stored in accounts is as a tree (the hint is in the name "atree" :wink:). So, the more elements in the account, the more levels of the tree, and therefore the more nodes of that tree that need to be read and updated. So, looking at the byte size of an account is a decent proxy for figuring out how much it's going to cost.
 - Because it's a tree, the cost of reads and writes grows with log(n), but does scale.
-- atree has an update queued up for [Crescendo](https://flow.com/upgrade/crescendo) that will improve this. The previous version erred on the side of adding new levels to the tree (to keep the code simple), while the new version tries to pack more data at each level. This should result in fewer levels for the same byte size. Additionally, it includes a more compact encoding leading to a reduction in the byte size of most accounts.
-- Even with these improvements, this relationship is likely to remain indefinitely. The bigger the account, the more bookkeeping the nodes have to do, which will result in somewhat larger tx fees.
+- atree has an update queued up for [Crescendo] that will improve this. The previous version erred on the side of adding new levels to the tree (to keep the code simple), while the new version tries to pack more data at each level. This will result in fewer levels for the same byte size. Additionally, it includes a more compact encoding leading to a reduction in the byte size of most accounts.
+- Even with these improvements, this relationship is likely to remain indefinitely. The bigger the account, the more maintenance the nodes have to do, which will result in somewhat larger tx fees.
+
+<!-- Relative links, will not render on page -->
+
+[here]: ../../../build/evm/fees.md
+[FLIP 336]: https://github.com/onflow/flips/blob/main/governance/20250727-dynamic-transaction-fees.md
+[`FlowStorageFees`]: ../core-contracts/05-flow-fees.md#flowstoragefees
+[emulator with the Flow CLI]: ../../../build/tools/emulator/index.md#running-the-emulator-with-the-flow-cli
+[Flowscan]: https://flowscan.io/
+[`FlowFees`]: https://github.com/onflow/flow-core-contracts/blob/master/contracts/FlowFees.cdc:
+[the fees for a specific transaction.]: https://github.com/onflow/flow-core-contracts/blob/master/contracts/FlowFees.cdc#L14
+[execution effort limit maximum specified]: #configuring-execution-limits
+[borrow references]: https://cadence-lang.org/docs/design-patterns#avoid-excessive-load-and-save-storage-operations-prefer-in-place-mutations
+[FLIP-660]: https://github.com/onflow/flow/pull/660
+[FLIP-753]: https://github.com/onflow/flow/pull/753
+[Flow Fees Contract]: https://github.com/onflow/flow-core-contracts/blob/master/contracts/FlowFees.cdc
+[leave feedback on this forum post]: https://forum.flow.com/t/variable-transaction-fees-are-coming-to-flow/2941
+[Spork on April 6, 2022]: ../../../protocol/node-ops/node-operation/past-upgrades#mainnet-17
+[June 1st]: https://forum.flow.com/t/permissionless-contract-deployment-progress/2981
+[weekly epoch transition]: https://github.com/onflow/service-account/tree/main/transactions/set-execution-effort-weights/2022/jun-1
+[Crescendo]: https://flow.com/upgrade/crescendo
