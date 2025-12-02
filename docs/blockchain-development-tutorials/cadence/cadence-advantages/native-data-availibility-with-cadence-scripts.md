@@ -23,9 +23,9 @@ keywords:
 
 # Native Data Availability With Cadence Scripts
 
-In Solidity, you can only retrieve data from **view** functions that the contract author anticipated and included in the original contract. If the exact query you want is not exposed, teams typically rely on a _data availability service_ such as The Graph, Covalent, Alchemy Enhanced APIs, Reservoir, or NFTScan to compute and serve that view.
+In Solidity, you can only retrieve data from **view** functions that the contract author anticipated and included in the original contract. If the exact query you want isn't exposed, teams typically rely on a _data availability service_ such as The Graph, Covalent, Alchemy Enhanced APIs, Reservoir, or NFTScan to compute and serve that view.
 
-In Cadence, **scripts** are general-purpose read programs. They can traverse public account storage, read public capabilities, and compose types from multiple contracts to answer new questions without modifying those contracts. You are not limited to the pre-written surface area of a single contract's views.
+In Cadence, **scripts** are general-purpose read programs. They can traverse public account storage, read public capabilities, and compose types from multiple contracts to answer new questions without the need to modify those contracts. You are not limited to the pre-written surface area of a single contract's views.
 
 :::info
 
@@ -103,7 +103,7 @@ This will install the contract and its own dependencies. You don't need to deplo
 
 :::warning
 
-The language server treats installing dependencies in this way similar to installing packages in other platforms. You'll need to close and reopen the file or type something to trigger a refresh.
+The language server treats dependency installations in this way similar to package installations in other platforms. You'll need to close and reopen the file or type something to trigger a refresh.
 
 :::
 
@@ -131,7 +131,7 @@ Run it:
 flow scripts execute cadence/scripts/TopShotQuery.cdc --network mainnet 0xfeb88a0fcc175a3d
 ```
 
-You should see a list of child addresses. If you do not, confirm the parent actually stores a manager at `HybridCustody.ManagerStoragePath`.
+You will see a list of child addresses. If you do not, confirm the parent actually stores a manager at `HybridCustody.ManagerStoragePath`.
 
 ```bash
 Result: [0xa16b948ba2c9a858]
@@ -258,7 +258,7 @@ Run it:
 flow scripts execute cadence/scripts/TopShotQuery.cdc --network mainnet 0xfeb88a0fcc175a3d
 ```
 
-You should now see type identifiers such as `A.<address>.<Contract>.<Type>` for collections the parent can control. We will use these identifiers to filter for Top Shot.
+You will now see type identifiers such as `A.<address>.<Contract>.<Type>` for collections the parent can control. We will use these identifiers to filter for Top Shot.
 
 ```bash
 Result: {0xa16b948ba2c9a858: ["A.807c3d470888cc48.Backpack.Collection", "A.e4cf4bdc1751c65d.AllDay.Collection", "A.0b2a3299cc857e29.TopShot.Collection"]}
@@ -266,13 +266,13 @@ Result: {0xa16b948ba2c9a858: ["A.807c3d470888cc48.Backpack.Collection", "A.e4cf4
 
 ---
 
-## Filtering NFT collection to find and return Top Shots
+## Filter NFT collection to find and return Top Shots
 
 Finally, for each detected collection, [borrow] the collection `{NonFungibleToken.CollectionPublic}`, iterate IDs, resolve `MetadataViews.Display`, and return only Top Shot items. We add a small `isTopShot` predicate that you can customize to your deployment.
 
 :::info
 
-The [borrow] function is how you use a published [_capability_] in your code. In this case, you're borrowing the **public** functionality of Cadence NFTs, which includes [`MetadataViews`] that return a view of the **fully-onchain metadata** for the NFT.
+The [borrow] function is how you use a published [_capability_] in your code. In this case, you borrow the **public** functionality of Cadence NFTs, which includes [`MetadataViews`] that return a view of the **fully-onchain metadata** for the NFT.
 
 :::
 
@@ -388,9 +388,9 @@ Result: {0xa16b948ba2c9a858: {44311697: A.1d7e57aa55817448.MetadataViews.Display
 
 ---
 
-## Extending the script to include AllDay NFTs
+## Extend the script to include AllDay NFTs
 
-Now that you have a working script for Top Shot NFTs, let's extend it to also return NFL All Day NFTs. This demonstrates the flexibility of Cadence scripts - you can easily modify them to answer new questions without changing any contracts.
+Now that you have a working script for Top Shot NFTs, let's extend it to also return NFL All Day NFTs. This demonstrates the flexibility of Cadence scripts - you can easily modify them to answer new questions without the need to change any contracts.
 
 Update the `isTopShot` function to also include AllDay NFTs:
 
@@ -418,14 +418,14 @@ This demonstrates how you can easily modify Cadence scripts to answer different 
 
 ---
 
-## Troubleshooting
+## Troubleshoot
 
 - If you see `manager does not exist`, confirm the parent address actually stores a `HybridCustody.Manager` at `HybridCustody.ManagerStoragePath`.
 - If you see empty arrays in Step 3, the parent may not have _provider_ access to any collections in those child accounts.
 - If you see empty results in Step 4, confirm `isTopShot` matches the identifiers you observed in Step 3.
 - If you are not using _Hybrid Custody_, you can adapt Steps 2-4 to use `getAccount(child)` and scan **publicly exposed** `{NonFungibleToken.CollectionPublic}` capabilities, but you will not be able to assert provider access.
 
-## How This compares to Solidity
+## How this compares to Solidity
 
 - **Solidity views are fixed**: You can only retrieve what the contract author exposed via `view` or `pure` functions. If you need a different aggregation or cross-contract traversal, you typically rely on a _data availability service_ or write a new contract to expose that view.
 - **Cadence scripts are flexible**: You compose types across modules, traverse account storage, and read public capabilities at query time. You do not need to redeploy contracts to answer new questions.
@@ -440,18 +440,18 @@ Common _data availability service_ examples used in EVM ecosystems:
 
 ## Conclusion
 
-In this tutorial, you learned how to use Cadence scripts to query onchain data directly from Flow's state, without relying on external indexers or APIs. You built a script that can discover and query NFT collections across multiple child accounts using Hybrid Custody, and then extended it to include both NBA Top Shot and NFL All Day NFTs, demonstrating the power and flexibility of Cadence's native data availability.
+In this tutorial, you learned how to use Cadence scripts to query onchain data directly from Flow's state, without the need to rely on external indexers or APIs. You built a script that can discover and query NFT collections across multiple child accounts with Hybrid Custody, and then extended it to include both NBA Top Shot and NFL All Day NFTs, which demonstrates the power and flexibility of Cadence's native data availability.
 
 Now that you have completed the tutorial, you should be able to:
 
-- Query onchain data directly using Cadence scripts without external dependencies
+- Query onchain data directly with Cadence scripts without external dependencies
 - Use Hybrid Custody to access child account data from parent accounts
 - Filter and process NFT collections to extract specific metadata
 - Modify scripts to answer different questions about the same onchain data
 - Compare Cadence's native data availability with Solidity's limitations
 - Build applications that can access any onchain data in real-time
 
-This approach gives you the freedom to build applications that can access any onchain data in real-time, making Flow's native data availability a powerful tool for developers building on Flow.
+This approach gives you the freedom to build applications that can access any onchain data in real-time, which makes Flow's native data availability a powerful tool for developers who build on Flow.
 
 <!-- Reference links -->
 

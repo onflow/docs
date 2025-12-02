@@ -29,13 +29,13 @@ keywords:
   - forked runtime
 ---
 
-# Fork testing with Cadence
+# Fork Testing with Cadence
 
 This tutorial teaches you how to run your Cadence tests against a snapshot of Flow mainnet using `flow test` with the `#test_fork` pragma. You'll learn how to test your contracts against real deployed contracts and production data without needing to deploy anything to a live network or bootstrap test accounts.
 
 Fork testing bridges the gap between isolated local unit tests and testnet deployments. It allows you to validate your contracts work correctly with real on-chain state, test integrations with deployed contracts, and debug issues with historical blockchain data—all in a safe, local environment.
 
-## What You'll Learn
+## What you'll learn
 
 After you complete this tutorial, you'll be able to:
 
@@ -46,15 +46,15 @@ After you complete this tutorial, you'll be able to:
 - **Pin tests to specific block heights** for historical debugging.
 - **Integrate fork testing** into your development workflow.
 
-## What You'll Build
+## What you'll build
 
 You'll create a complete fork testing setup that demonstrates:
 
-- Reading from the live FlowToken contract on mainnet.
-- Deploying your own contract that interacts with mainnet contracts.
-- Testing custom logic against real account balances and state.
-- Executing transactions using impersonated mainnet accounts.
-- A reusable pattern for integration testing your Flow applications.
+- How to read from the live FlowToken contract on mainnet.
+- How to deploy your own contract that interacts with mainnet contracts.
+- How to test custom logic against real account balances and state.
+- How to execute transactions with impersonated mainnet accounts.
+- A reusable pattern for integration tests your Flow applications.
 
 ## Prerequisites
 
@@ -70,7 +70,7 @@ For other operating systems, refer to the [installation guide].
 
 ### Basic Cadence testing knowledge
 
-You should be familiar with writing basic Cadence tests. If you're new to Cadence testing, start with [Testing Smart Contracts] first.
+You should be familiar with how to write basic Cadence tests. If you're new to Cadence testing, start with [Testing Smart Contracts] first.
 
 ### Network access
 
@@ -133,7 +133,7 @@ Your `flow.json` now includes an entry like:
 
 Your `flow.json` now has the mainnet and testnet networks configured from `flow init`. In fork mode, contract imports automatically resolve to the correct network addresses.
 
-## Test Reading Live State
+## Test reading live state
 
 Generate a script to read `FlowToken` supply:
 
@@ -204,13 +204,13 @@ The pragma handles the fork configuration automatically! You will see the test P
 #test_fork(network: "testnet", height: nil)
 ```
 
-## Deploy and Test Your Contract
+## Deploy and test Your contract
 
-Now you'll create a contract that depends on FlowToken and test it against the forked mainnet state—no need to bootstrap tokens or set up test accounts.
+Now you'll create a contract that depends on FlowToken and test it against the forked mainnet state. There's no need to bootstrap tokens or set up test accounts.
 
-### Create a Test Account
+### Create a test account
 
-Create a new account for deploying your contract:
+Create a new account to deploy your contract:
 
 ```zsh
 flow accounts create
@@ -228,7 +228,7 @@ This will output the new account address. Use this address as the mainnet alias 
 This creates a local account with a mainnet-format address for fork testing. When you're ready to deploy to actual mainnet, you'll use this same account—see the [Deploying Contracts guide](pathname:///build/cadence/smart-contracts/deploying) for details.
 :::
 
-### Create a Contract that Uses `FlowToken`
+### Create a contract that uses `FlowToken`
 
 Generate a new contract:
 
@@ -381,9 +381,9 @@ access(all) fun testHasMinimumBalance() {
 
 ## Execute transactions with account impersonation
 
-Fork testing includes built-in account impersonation—you can execute transactions as **any mainnet account** without needing private keys. This lets you test interactions with real accounts and their existing state.
+Fork testing includes built-in account impersonation—you can execute transactions as **any mainnet account** without the need for private keys. This lets you test interactions with real accounts and their current state.
 
-### Create Transactions
+### Create transactions
 
 Generate the transactions:
 
@@ -597,7 +597,7 @@ For strategy, limitations, and best practices, see the guide: [Testing Smart Con
 
 ## Conclusion
 
-In this tutorial, you learned how to use fork testing to validate your Cadence contracts against live Flow network state. You created tests that read from real mainnet contracts, deployed custom contracts that interact with production data, and executed transactions using account impersonation—all without deploying to a live network or bootstrapping test accounts.
+In this tutorial, you learned how to use fork testing to validate your Cadence contracts against live Flow network state. You created tests that read from real mainnet contracts, deployed custom contracts that interact with production data, and executed transactions using account impersonation—all without the need deploy to a live network or bootstrap test accounts.
 
 Now that you have completed this tutorial, you can:
 
@@ -608,7 +608,7 @@ Now that you have completed this tutorial, you can:
 - **Pin tests to specific block heights** for historical debugging.
 - **Integrate fork testing** into your development workflow.
 
-Fork testing bridges the gap between local unit tests and testnet deployments, allowing you to catch integration issues early and test against real-world conditions. Use it as part of your pre-deployment validation process, alongside emulator unit tests for determinism and isolation, and testnet deployments for final verification.
+Fork testing bridges the gap between local unit tests and testnet deployments, which allows you to catch integration issues early and test against real-world conditions. Use it as part of your pre-deployment validation process, alongside emulator unit tests for determinism and isolation, and testnet deployments for final verification.
 
 ### Next Steps
 

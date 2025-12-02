@@ -17,7 +17,7 @@ keywords:
   - VSCode extension
 ---
 
-# Cadence environment setup
+# Cadence Environment Setup
 
 This comprehensive tutorial will guide you through how to set up your complete development environment, deploy your first smart contract, and learn the fundamentals of Flow development. You'll work hands-on with the Flow CLI, local emulator, and a real smart contract to build practical skills from day one.
 
@@ -28,7 +28,7 @@ Flow is a blockchain built for the next generation of apps, games, and digital a
 After you complete this tutorial, you'll be able to:
 
 - **Set up a complete Flow development environment** with CLI tools and VSCode integration.
-- **Create and manage Flow projects** using the Flow CLI and understand project structure.
+- **Create and manage Flow projects** with the Flow CLI and understand project structure.
 - **Deploy and interact with smart contracts** on the local Flow emulator.
 - **Execute scripts and transactions** to read from and modify blockchain state.
 - **Understand Flow's account model** and how contracts are deployed to account storage.
@@ -39,10 +39,10 @@ After you complete this tutorial, you'll be able to:
 You'll work with a `Counter` contract, a simple but comprehensive example that demonstrates core Flow development patterns. This contract maintains a count value and provides functions to increment, decrement, and read the current count. By the end of this tutorial, you'll have:
 
 - A fully functional local Flow development environment.
-- A deployed Counter contract running on your local emulator.
+- A deployed Counter contract that runs on your local emulator.
 - Scripts to query the contract's state.
 - Transactions to modify the contract's state.
-- Understanding of how to extend this foundation for more complex applications.
+- Knowledge of how to extend this foundation for more complex applications.
 
 **Time Commitment:** Approximately 30-45 minutes
 
@@ -56,7 +56,7 @@ You'll work with a `Counter` contract, a simple but comprehensive example that d
 
 ### Install Flow CLI
 
-The [Flow Command Line Interface] (CLI) is a set of tools that developers can use to interact with the Flow blockchain by managing accounts, sending transactions, deploying smart contracts, running the emulator, and more. This quickstart will get you familiar with its main concepts and functionality.
+The [Flow Command Line Interface] (CLI) is a set of tools that developers can use to interact with the Flow blockchain. Developers can manage accounts, send transactions, deploy smart contracts, run the emulator, and more. This quickstart will get you familiar with its main concepts and functionality.
 
 The first thing you'll need to do is install the Flow CLI. If you have [homebrew] installed, run:
 
@@ -98,7 +98,7 @@ When prompted:
 
 The `flow init` command creates:
 
-- **`flow.json`**: Central configuration file containing accounts, contracts, deployments, and network settings.
+- **`flow.json`**: Central configuration file that contains accounts, contracts, deployments, and network settings.
 - **`emulator-account.pkey`**: Private key for the default emulator account.
 - **`cadence/`**: Directory structure for your Cadence code:
   - `contracts/`: Smart contract files
@@ -190,7 +190,7 @@ access(all) contract Counter {
 
 ### Create and configure deployment account
 
-When you create a project, you'll see that a `Counter` contract was added to your [`flow.json` configuration file](../../../build/tools/flow-cli/flow.json/configuration.md), but it's not set up for deployment yet. We could deploy it to the automatically created `emulator-account`, but for this example, lets also create a new account on the emulator to deploy it to.
+When you create a project, you'll see that a `Counter` contract was added to your [`flow.json`] configuration file, but it's not set up for deployment yet. We could deploy it to the automatically created `emulator-account`, but for this example, lets also create a new account on the emulator to deploy it to.
 
 :::info
 
@@ -209,7 +209,7 @@ When prompted:
 1. **Account name:** Enter `test-account`
 2. **Network:** Select `Emulator`
 
-This adds the new account to your `flow.json` configuration file.You'll now see this account in your [`flow.json`](../../../build/tools/flow-cli/flow.json/configuration.md).
+This adds the new account to your `flow.json` configuration file.
 
 After you've created you accounts, then you can view all your accounts on the with the Flow CLI with:
 
@@ -240,7 +240,7 @@ This shows which networks your configured accounts are accessible on:
 💡 Tip: To fund testnet accounts, run: flow accounts fund
 ```
 
-This is a great tool to visualize your different accounts and balances when you are developing.
+This is a great tool to visualize your different accounts and balances while you develop..
 
 ### Configure contract deployment
 
@@ -404,8 +404,8 @@ You've successfully established a solid foundation for building on Flow. Let's r
 
 ✅ **Blockchain interactions**
 
-- Scripts to query contract state (reading blockchain data).
-- Transactions to modify contract state (writing to blockchain).
+- Scripts to query contract state (read blockchain data).
+- Transactions to modify contract state (write to blockchain).
 - Real-time interaction with blockchain data through CLI commands.
 
 ### Resources for continued learning
@@ -425,7 +425,7 @@ Welcome to the Flow developer community—you're ready to build the future of di
 [Flow Command Line Interface]: ../../../build/tools/flow-cli/index.md
 [installation guide]: ../../../build/tools/flow-cli/install
 [Flow Cadence VSCode Extension]: https://marketplace.visualstudio.com/items?itemName=onflow.cadence
-[`flow.json`]: https://developers.flow.com/build/tools/flow-cli/flow.json/configuration
+[`flow.json`]: ../../../build/tools/flow-cli/flow.json/configuration.md
 [Generating Cadence Boilerplate]: https://developers.flow.com/build/tools/flow-cli/generate
 [basic scripts]: https://developers.flow.com/build/cadence/basics/scripts
 [basic transactions]: https://developers.flow.com/build/cadence/basics/transactions
