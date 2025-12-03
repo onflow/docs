@@ -22,19 +22,19 @@ Transaction fee on EVM = surge x [inclusion fee + (execution effort * unit cost)
 ```
 
 - `Surge' factor` dynamically accounts for network pressure and market conditions.
-- `Inclusion fee` accounts for the resources required to process a transaction due to its core properties (byte size, signatures). This is currently constant at 1E-6 FLOW, but subject to change with community approval.
-- `Execution fee` The fee that accounts for the operational cost of running the transaction script, processing the results, sending results for verification, generating verification receipts, etc. and is calculated as a product of `execution effort units` and the `cost per unit`.
-  - `Execution Effort (computation)` is based on transaction type and operations that are called during the execution of a transaction. The weights determine how costly (time consuming) each operation is.
-  - `Execution Effort Unit Cost` = `2.49E-07 FLOW` (currently constant, but subject to change with community approval)
+- `Inclusion fee` accounts for the resources required to process a transaction due to its core properties (byte size, signatures). This is currently constant at 1E-4 FLOW, but subject to change with community approval.
+- `Execution fee` The fee that accounts for the operational cost of running the transaction script, processing the results, sending results for verification, generating verification receipts, etc. and is calculated as a product of `computation units` and the `cost per unit`.
+  - `Execution Effort (measured in computation units)` is based on transaction type and operations that are called during the execution of a transaction. The weights determine how costly (time-consuming) each operation is.
+  - `Execution Effort Unit Cost` = `4E-05 FLOW` (currently constant, but subject to change with community approval)
 
 <h3>Calculation of Execution Effort</h3>
 
 ```
 Execution Effort (computation) =
-    0.00478 * function_or_loop_call +
-    0.00246 * GetValue +
-    0.00234 * SetValue +
-    8.65988 * CreateAccount +
+    0.02135 * function_or_loop_call +
+    0.00035 * GetValue +
+    0.00073 * SetValue +
+    32.7063 * CreateAccount +
     EVMGasUsageCost * EVMGasUsage
 ```
 
@@ -63,32 +63,32 @@ Assume a simple NFT transfer transaction that makes 31 cadence loop calls, reads
 **Scenario 1 - Cadence-only Transaction**
 
 ```
-Compute Units = 0.00478 * (31) + 0.00246 * (5668) + 0.00234 *(1668)  + 8.65988 *(0) + EVMGasUsageCost * EVMGasUsage
+Compute Units = 0.02135 * (31) + 0.00035 * (5668) + 0.00073 *(1668)  + 32.7063 * (0) + EVMGasUsageCost * EVMGasUsage
 ```
 
 But since `EVMGasUsage` is 0 for a Cadence transaction,
 
 ```
-Compute Units = 18.04378
+Compute Units = 3.86329
 ```
 
 Thus
 
 ```
-Transaction fee = [1E-6 FLOW + (18.04378 * 2.49E-07 FLOW)] x 1 = 5.5E-06 FLOW
+Transaction fee = [1E-4 FLOW + (3.86329 * 4E-05 FLOW)] x 1 = 2.545316E-04
 ```
 
 **Scenario 2 - EVM Transaction**
 If the EVMGasUsage can be assumed to be 21,000 gas (typical for a simple transfer),
 
 ```
-Compute Units = 0.00478 * (31) + 0.00246 * (5668) + 0.00234 *(1668)  + 8.65988 *(0) + 1/5000 * 21000 = 22.24378
+Compute Units = 0.02135 * (31) + 0.00035 * (5668) + 0.00073 * (1668)  + 32.7063 * (0) + (1/5000 * 21000) = 8.06329
 ```
 
 Thus
 
 ```
-Transaction fee = [1E-6 FLOW + (110.97 * 2.49E-07 FLOW)] x 1 = 6.55E-06 FLOW
+Transaction fee = [1E-4 FLOW + (8.06329 * 4E-05 FLOW)] x 1 = 04.23E-04 FLOW
 ```
 
 **Note**: Please be aware that this example serves solely for illustrative purposes to elucidate the calculations. Actual transaction fees may differ due to various factors, including the byte size of the transaction.

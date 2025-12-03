@@ -80,7 +80,9 @@ The inclusion effort of a transaction represents the work needed for:
 - Transporting the transaction information from node to node
 - Verifying transaction signatures
 
-Right now, the inclusion effort is always 1.0 and the inclusion effort cost is fixed to `0.000001`.
+Right now, the inclusion effort is always 1.0 and the inclusion effort cost is fixed to `0.0001`.
+
+Fees were last revised as per [FLIP 351](https://github.com/onflow/flips/blob/main/governance/20251119-transaction-fee-update.md)
 
 **Surge Factor**
 
