@@ -21,14 +21,15 @@ keywords:
   - NFT optimization
 ---
 
-The `ViewResolver` and `MetadataViews` contracts implement a standard to attach onchain metadata
-to NFTs. This standard was originally proposed in [FLIP-0636](https://github.com/onflow/flips/blob/main/application/20210916-nft-metadata.md).
+# NFT Metadata Contract
+
+The `ViewResolver` and `MetadataViews` contracts implement a standard to attach onchain metadata to NFTs. This standard was originally proposed in [FLIP-0636].
 
 It is deployed at the same address as the `NonFungibleToken` contract interface.
 
-Source: [ViewResolver.cdc](https://github.com/onflow/flow-nft/blob/master/contracts/ViewResolver.cdc)
+Source: [ViewResolver.cdc]
 
-Source: [MetadataViews.cdc](https://github.com/onflow/flow-nft/blob/master/contracts/MetadataViews.cdc)
+Source: [MetadataViews.cdc]
 
 | Network                   | Contract Address     |
 | ------------------------- | -------------------- |
@@ -37,10 +38,19 @@ Source: [MetadataViews.cdc](https://github.com/onflow/flow-nft/blob/master/contr
 | Testnet                   | `0x631e88ae7f1d7c20` |
 | Mainnet                   | `0x1d7e57aa55817448` |
 
-There exists a tool, [Flow NFT Catalog](https://flow-nft-catalog.com), which enables dapp developers the ability to unlock interoperability of your NFT collection across the Flow ecosystem. This will help make your NFT collection's metadata more discoverable and interoperable.
+There exists a tool, [Flow NFT Catalog], which allows dapp developers to unlock interoperability of your NFT collection across the Flow ecosystem. This will help make your NFT collection's metadata more discoverable and interoperable.
 
 To optimize your NFT collections for this catalog, you'll need to:
 
-1. Update your NFT contract to support `ViewResolver` and `MetadataViews` with implementation of the [core NFT views](../advanced-concepts/metadata-views.md).
+1. Update your NFT contract to support `ViewResolver` and `MetadataViews` with implementation of the [core NFT views].
 2. Deploy the updated contract to both testnet and mainnet.
-3. Afterwards, onboard your NFT to the Flow NFT catalog at [https://flow-nft-catalog.com](https://flow-nft-catalog.com).
+3. Afterwards, onboard your NFT to the Flow NFT catalog at [https://flow-nft-catalog.com].
+
+<!-- Reference-style links, will not render on page -->
+
+[FLIP-0636]: https://github.com/onflow/flips/blob/main/application/20210916-nft-metadata.md
+[ViewResolver.cdc]: https://github.com/onflow/flow-nft/blob/master/contracts/ViewResolver.cdc
+[MetadataViews.cdc]: https://github.com/onflow/flow-nft/blob/master/contracts/MetadataViews.cdc
+[Flow NFT Catalog]: https://flow-nft-catalog.com
+[core NFT views]: ../advanced-concepts/metadata-views.md
+[https://flow-nft-catalog.com]: https://flow-nft-catalog.com

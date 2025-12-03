@@ -21,9 +21,11 @@ keywords:
   - Flow testnet
 ---
 
+# Flow Token Contract
+
 The `FlowToken` contract defines the FLOW network token.
 
-Source: [FlowToken.cdc](https://github.com/onflow/flow-core-contracts/blob/master/contracts/FlowToken.cdc)
+Source: [FlowToken.cdc]
 
 | Network                   | Contract Address     |
 | ------------------------- | -------------------- |
@@ -32,18 +34,16 @@ Source: [FlowToken.cdc](https://github.com/onflow/flow-core-contracts/blob/maste
 | Testnet                   | `0x7e60df042a9c0868` |
 | Mainnet                   | `0x1654653399040a61` |
 
-# Transactions
+## Transactions
 
-Transactions and scripts for `FlowToken` are in the `flow-core-contracts` [repo](https://github.com/onflow/flow-core-contracts/tree/master/transactions/flowToken).
+Transactions and scripts for `FlowToken` are in the `flow-core-contracts` [repo].
 
 As mentioned in the `FungibleToken` page, developers are encouraged to use
-the generic token transactions in the `flow-ft` [repo](https://github.com/onflow/flow-ft/tree/master/transactions) instead.
+the generic token transactions in the [`flow-ft` repo] instead.
 
-# Events
+## Events
 
-Flow relies on a set of core contracts that define key portions of the Flow protocol. Those contracts are core contracts
-and are made to emit the events documented below. You can read about the [core contracts here](./index.md)
-and view their source code and event definitions.
+Flow relies on a set of core contracts that define key portions of the Flow protocol. Those contracts are core contracts and are made to emit the events documented below. You can read about the [core contracts here] and view their source code and event definitions.
 
 Events emitted from core contracts follow a standard format:
 
@@ -53,18 +53,17 @@ A.{contract address}.{contract name}.{event name}
 
 The components of the format are:
 
-- `contract address` - the address of the account the contract has been deployed to
-- `contract name` - the name of the contract in the source code
-- `event name` - the name of the event as declared in the source code
+- `contract address` - the address of the account the contract has been deployed to.
+- `contract name` - the name of the contract in the source code.
+- `event name` - the name of the event as declared in the source code.
 
-### Flow Token Contract
+### Flow token contract
 
 Description of events emitted from the [FLOW Token contract](./03-flow-token.md).
-The contract defines the fungible FLOW token. Please note that events for the fungible token contracts are the same
-if deployed to a different account but the `contract address` is
-changed to the address of the account the contract has been deployed to.
 
-### Tokens Initialized
+The contract defines the fungible FLOW token. Please note that events for the fungible token contracts are the same if deployed to a different account but the `contract address` is changed to the address of the account the contract has been deployed to.
+
+### Tokens initialized
 
 Event that is emitted when the contract gets created.
 
@@ -80,7 +79,7 @@ access(all) event TokensInitialized(initialSupply: UFix64)
 | ------------- | ------ | -------------------------------- |
 | initialSupply | UFix64 | The initial supply of the tokens |
 
-### Tokens Withdrawn
+### Tokens withdrawn
 
 Event that is emitted when tokens get withdrawn from a Vault.
 
@@ -97,7 +96,7 @@ access(all) event TokensWithdrawn(amount: UFix64, from: Address?)
 | amount | UFix64   | The amount of tokens withdrawn                                                                                                          |
 | from   | Address? | Optional address of the account that owns the vault where tokens were withdrawn from. `nil` if the vault is not in an account's storage |
 
-### Tokens Deposited
+### Tokens deposited
 
 Event that is emitted when tokens get deposited to a Vault.
 
@@ -114,7 +113,7 @@ access(all) event TokensDeposited(amount: UFix64, to: Address?)
 | amount | UFix64   | The amount of tokens withdrawn                                                                                                        |
 | to     | Address? | Optional address of the account that owns the vault where tokens were deposited to. `nil` if the vault is not in an account's storage |
 
-### Tokens Minted
+### Tokens minted
 
 Event that is emitted when new tokens gets minted.
 
@@ -130,7 +129,7 @@ access(all) event TokensMinted(amount: UFix64)
 | ------ | ------ | ---------------------------- |
 | amount | UFix64 | The amount of tokens to mint |
 
-### Tokens Burned
+### Tokens burned
 
 Event that is emitted when tokens get destroyed.
 
@@ -146,7 +145,7 @@ access(all) event TokensBurned(amount: UFix64)
 | ------ | ------ | ---------------------------- |
 | amount | UFix64 | The amount of tokens to burn |
 
-### Minter Created
+### Minter created
 
 Event that is emitted when a new minter resource gets created.
 
@@ -174,6 +173,14 @@ Event that is emitted when a new burner Resource gets created.
 access(all) event BurnerCreated()
 ```
 
-### Staking Events
+### Staking events
 
-To learn more about staking events, read [staking/events/](../../../protocol/staking/07-staking-scripts-events.md)
+To learn more about staking events, read [staking/events/]
+
+<!-- Reference-style links, will not render on page -->
+
+[FlowToken.cdc]: https://github.com/onflow/flow-core-contracts/blob/master/contracts/FlowToken.cdc
+[repo]: https://github.com/onflow/flow-core-contracts/tree/master/transactions/flowToken
+[`flow-ft` repo]: https://github.com/onflow/flow-ft/tree/master/transactions
+[core contracts here]: ./index.md
+[staking/events/]: ../../../protocol/staking/07-staking-scripts-events.md
