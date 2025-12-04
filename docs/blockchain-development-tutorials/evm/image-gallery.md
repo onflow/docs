@@ -1102,6 +1102,7 @@ Now that you've completed this tutorial, you're ready to explore more complex on
 
 <!-- Relative links, will not render on page -->
 
+[limit of 16 million gas per transaction]: https://ethereum.org/roadmap/fusaka/#how-does-new-16m-gas-limit-affects-contract-developers
 [FlowtoBooth]: https://flowtobooth.vercel.app/
 [Cadence]: https://cadence-lang.org/docs
 [Next.js]: https://nextjs.org/docs/app/getting-started/installation
