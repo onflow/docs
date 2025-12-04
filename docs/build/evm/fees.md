@@ -88,7 +88,7 @@ Compute Units = 0.02135 * (31) + 0.00035 * (5668) + 0.00073 * (1668)  + 32.7063 
 Thus
 
 ```
-Transaction fee = [1E-4 FLOW + (8.06329 * 4E-05 FLOW)] x 1 = 04.23E-04 FLOW
+Transaction fee = [1E-4 FLOW + (8.06329 * 4E-05 FLOW)] x 1 = 4.23E-04 FLOW
 ```
 
 **Note**: Please be aware that this example serves solely for illustrative purposes to elucidate the calculations. Actual transaction fees may differ due to various factors, including the byte size of the transaction.
