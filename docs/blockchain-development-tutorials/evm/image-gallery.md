@@ -3,26 +3,32 @@ title: Build a Fully-Onchain Image Gallery
 description: Learn how to store images up to approximately 32kb onchain, on Flow EVM, easily - free with the Flow wallet, or sub-cent with any other wallet.
 sidebar_position: 4
 keywords:
-    - Flow
-    - EVM,
-    - Flow EVM,
-    - storage,
-    - Solidity,
-    - Next.js,
-    - React,
-    - onchain storage,
-    - base64,
-    - image gallery,
-    - smart contract,
-    - blockchain,
-    - gas efficiency,
-    - web3,
-    - dapp,
-    - tutorial,
-    - onchain app
+  - Flow
+  - EVM,
+  - Flow EVM,
+  - storage,
+  - Solidity,
+  - Next.js,
+  - React,
+  - onchain storage,
+  - base64,
+  - image gallery,
+  - smart contract,
+  - blockchain,
+  - gas efficiency,
+  - web3,
+  - dapp,
+  - tutorial,
+  - onchain app
 ---
 
 # Build a fully-onchain image gallery
+
+:::warning
+
+This tutorial has not been updated for the new [limit of 16 million gas per transaction] in Fusaka. It will still work, but you will need to resize the images to a maximum of about 160\*160 pixels.
+
+:::
 
 :::info
 
