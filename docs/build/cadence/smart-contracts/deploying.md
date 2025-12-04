@@ -25,43 +25,43 @@ keywords:
 
 # Deploying Contracts
 
-Deploying smart contracts to Flow's networks is the final step in bringing your blockchain application to life. This guide covers everything you need to know to deploy your Cadence contracts to both Flow Testnet and Mainnet, from account creation to contract updates.
+Deploying smart contracts to Flow's networks is the final step for you to bring your blockchain application to life. This guide covers everything you need to know to deploy your Cadence contracts to both Flow Testnet and Mainnet, from account creation to contract updates.
 
-## What You'll Learn
+## What you'll learn
 
-After completing this guide, you'll be able to:
+After you complete this guide, you'll be able to:
 
-- **Create and fund accounts** on Flow Testnet and Mainnet
-- **Deploy contracts** using Flow CLI with proper configuration
-- **Update existing contracts** while preserving their addresses
-- **Understand the differences** between testnet and mainnet deployment
-- **Follow security best practices** for production deployments
+- **Create and fund accounts** on Flow Testnet and Mainnet.
+- **Deploy contracts** with Flow CLI with proper configuration.
+- **Update current contracts** and preserve their addresses.
+- **Understand the differences** between testnet and mainnet deployment.
+- **Follow security best practices** for production deployments.
 
 ## Prerequisites
 
-Before deploying contracts, make sure you have:
+Before you deploy contracts, make sure you have:
 
-- **Flow CLI installed** and configured
-- **A Flow project** with contracts ready for deployment
-- **Basic understanding** of Cadence smart contracts
-- **Completed testing** of your contracts locally
+- **Flow CLI installed** and configured.
+- **A Flow project** with contracts ready for deployment.
+- **Basic understanding** of Cadence smart contracts.
+- **Completed testing** of your contracts locally.
 
 ## Deployment Workflow
 
 The recommended deployment workflow follows this progression:
 
-1. **Emulator Deployment** - Deploy and test your contracts locally (free, instant)
-2. **Testnet Deployment** - Deploy and test your contracts on Flow Testnet (free)
-3. **Mainnet Deployment** - Deploy to Flow Mainnet once testing is complete (costs FLOW tokens)
-4. **Contract Updates** - Update contracts as needed using the update command
+1. **Emulator Deployment** - Deploy and test your contracts locally (free, instant).
+2. **Testnet Deployment** - Deploy and test your contracts on Flow Testnet (free).
+3. **Mainnet Deployment** - Deploy to Flow Mainnet after testing is complete (costs FLOW tokens).
+4. **Contract Updates** - Update contracts as needed with the `update` command.
 
-This approach ensures your contracts work correctly before committing real resources to mainnet deployment.
+This approach ensures your contracts work correctly before you commit real resources to mainnet deployment.
 
-## Deploy to Emulator
+## Deploy to emulator
 
 The Flow Emulator is your local development environment where you can deploy and test contracts instantly without any network costs or delays. This is the first step in your deployment journey.
 
-### Start the Emulator
+### Start the emulator
 
 First, start the [Flow Emulator]. In a second terminal:
 
@@ -69,7 +69,7 @@ First, start the [Flow Emulator]. In a second terminal:
 flow emulator start
 ```
 
-### Create an Emulator Account
+### Create an emulator account
 
 Create a local account for testing:
 
@@ -84,7 +84,7 @@ When prompted:
 
 This creates a new account on the emulator and adds it to your `flow.json` configuration.
 
-### Configure Emulator Deployment
+### Configure emulator deployment
 
 Update your `flow.json` to include emulator deployment configuration:
 
@@ -111,7 +111,7 @@ Your `flow.json` will now include an emulator deployment section:
 }
 ```
 
-### Deploy Contract to Emulator
+### Deploy contract to emulator
 
 Deploy your contract to the local emulator:
 
@@ -139,9 +139,9 @@ YourContract -> 0xf8d6e0586b0a20c7 (contract deployed successfully)
 🎉 All contracts deployed successfully
 ```
 
-### Test Your Emulator Deployment
+### Test your emulator deployment
 
-Verify your contract works by running scripts and transactions:
+Verify your contract works via these scripts and transactions:
 
 ```zsh
 # Run a script to read contract state
@@ -164,7 +164,7 @@ For a more complete quickstart, visit the [Getting Started] guide.
 - You should test your contracts, transactions and scripts on Testnet, have strong smart contract test coverage and follow the additional guidelines set out here: [Smart Contract Testing Guidelines].
 - Use `flow init` to [Create a Project] if you need one to practice deployment with.
 
-### Create a Testnet Account
+### Create a Testnet account
 
 First, you'll need a testnet account to deploy your contracts. Create one with:
 
@@ -183,15 +183,15 @@ When prompted:
 1. **Account name**: Enter `testnet-account`
 2. Select `testnet` as the network when prompted
 
-This creates a new account on testnet and adds it to your `flow.json` configuration. It also saves the private key for the new account in `<account-name>.pkey` and uses this file to import the key because `flow.json` will be visible in the repo.
+This creates a new account on testnet and adds it to your `flow.json` configuration. It also saves the private key for the new account in `<account-name>.pkey` and uses this file to import the key because `flow.json` is visible in the repo.
 
 :::danger
 
-As with any other blockchain network, **anyone** with access to the private key for an account can access that account at any time without you knowing.
+As with any other blockchain network, **anyone** with access to the private key for an account can access that account at any time without your knowledge.
 
 :::
 
-### Fund Your Testnet Account
+### Fund your Testnet account
 
 To deploy contracts and send transactions on testnet, you need FLOW tokens. Flow provides a faucet service to get free testnet tokens.
 
@@ -201,10 +201,10 @@ flow accounts fund testnet-account
 
 This will open the faucet in your browser. You can also navigate there manually.
 
-1. Visit the [Testnet Faucet]
-2. Enter your testnet account address
-3. Complete any required verification (captcha, etc.)
-4. Request tokens (you'll receive 100000 testnet FLOW tokens)
+1. Visit the [Testnet Faucet].
+2. Enter your testnet account address.
+3. Complete any required verification (captcha, and so on).
+4. Request tokens (you'll receive 100000 testnet FLOW tokens).
 
 Check your account balance:
 
@@ -214,7 +214,7 @@ flow accounts list
 
 You will see your account details with a balance of FLOW tokens.
 
-### Configure Testnet Deployment
+### Configure Testnet deployment
 
 Update your `flow.json` to include testnet deployment configuration:
 
@@ -241,7 +241,7 @@ Your `flow.json` will now include a testnet deployment section:
 }
 ```
 
-### Deploy Contract to Testnet
+### Deploy contract to Testnet
 
 Deploy your contract to the public testnet:
 
@@ -261,9 +261,9 @@ YourContract -> 0x9942a81bc6c3c5b7 (contract deployed successfully)
 
 ## Deploy to Mainnet
 
-Once you've successfully tested your contracts on testnet, you can deploy to mainnet. You'll need a mainnet account with real FLOW tokens.
+After you've successfully tested your contracts on testnet, you can deploy to mainnet. You'll need a mainnet account with real FLOW tokens.
 
-### Create a Mainnet Account
+### Create a Mainnet account
 
 For mainnet, you'll need to acquire FLOW tokens through exchanges or other means, as there's no faucet.
 
@@ -276,11 +276,11 @@ When prompted:
 1. **Account name**: Enter `mainnet-account`
 2. **Select "Mainnet" Network**
 
-### Acquire FLOW Tokens
+### Acquire FLOW tokens
 
 You can purchase FLOW tokens from major exchanges. Make sure your mainnet account has sufficient FLOW tokens to cover deployment costs. Flow is a very efficient network, so even 1.0 FLOW is sufficient to deploy large numbers of contracts.
 
-### Configure Mainnet Deployment
+### Configure Mainnet deployment
 
 Add mainnet deployment configuration to your `flow.json`:
 
@@ -295,7 +295,7 @@ Follow the prompts:
 3. **Contract**: `YourContract`
 4. **Deploy more contracts**: `no` (or `yes` if you have multiple contracts)
 
-Your `flow.json` should now include mainnet configuration:
+Your `flow.json` will now include mainnet configuration:
 
 ```json
 {
@@ -317,11 +317,11 @@ flow project deploy --network mainnet
 
 :::warning
 
-This deployment costs (a relatively small amount of) real FLOW tokens and cannot be undone. You can however redeploy your contracts to update them, or delete them.
+This deployment costs (a relatively small amount of) real FLOW tokens and you cannot undo it. You can, however, redeploy your contracts to update them, or delete them.
 
 :::
 
-You should see output similar to:
+You will see output similar to:
 
 ```zsh
 Deploying 1 contracts for accounts: mainnet-account
@@ -339,11 +339,12 @@ All your contract deployment addresses are stored in `flow.json`. Mainnet, Testn
 
 ## Deploy updated contracts on mainnet
 
-Contracts can be updated and retain the contract address. You can use the [Flow CLI contract update command] to redeploy an updated version of your contract:
+You can update contracts and retain the contract address. To do this, use the [Flow CLI contract update command] to redeploy an updated version of your contract:
 
 ```zsh
 flow accounts update-contract ./YourContract.cdc --signer mainnet-account --network mainnet
 ```
+<!-- Relative links, will not render on page -->
 
 [Flow CLI]: ../../../build/tools/flow-cli/install
 [Getting Started]: ../../../blockchain-development-tutorials/cadence/getting-started/smart-contract-interaction

@@ -19,18 +19,20 @@ keywords:
 Testing is an essential part of smart contract development to ensure the correctness and reliability of your code. The Cadence Testing Framework provides a convenient way to write tests for your contracts, scripts and transactions which allows you to verify the functionality and correctness of your smart contracts.
 
 :::info
+
 Looking for high‑level guidance on when to use emulator, forks, or testnet? See [Testing Smart Contracts](./testing-strategy.md).
+
 :::
 
 ## Install Flow CLI
 
-The [Flow CLI] is the primary tool for developing, testing, and deploying smart contracts to the Flow network.
+The [Flow CLI] is the primary tool for you to develop, test, and deploy smart contracts to the Flow network.
 
 If you haven't installed the Flow CLI yet and have [homebrew](https://brew.sh/) installed, simply run `brew install flow-cli`. Alternatively, refer to the Flow CLI [installation instructions].
 
 ## Create a new project
 
-In your preferred code editor, create a new directory for your project and navigate to it in the terminal. Then initialize a new Flow project by running the command `flow init`. This will create a `flow.json` config file that contains the [project's configuration].
+In your preferred code editor, create a new directory for your project and navigate to it in the terminal. Then initialize a new Flow project with the `flow init` command. This will create a `flow.json` config file that contains the [project's configuration].
 
 ```bash
 mkdir test-cadence
@@ -132,7 +134,7 @@ This code:
 - defines two test cases: `testAdd()` and `testSubtract()`
 - calls `add()` and `subtract()` methods with different input values respectively.
 
-## Running the test cases
+## Run the test cases
 
 To run the test cases, use the following command in the terminal:
 
@@ -140,7 +142,7 @@ To run the test cases, use the following command in the terminal:
 flow test --cover --covercode="contracts" calculator_test.cdc
 ```
 
-This command uses the Flow CLI to run the test cases and display the output. You should see the following output:
+This command uses the Flow CLI to run the test cases and display the output. You will see the following output:
 
 ```bash
 Test results: "calculator_test.cdc"
@@ -149,7 +151,7 @@ Test results: "calculator_test.cdc"
 Coverage: 66.7% of statements
 ```
 
-This output indicates that both test cases ran successfully, and the two smart contract methods are functioning as expected. With the supplied flags (`--cover` & `--covercode="contracts"`), we also get code coverage insights for the contracts under testing. The code coverage percentage is `66.7%`, because we have not added a test case for the `multiply` method. By viewing the auto-generated `coverage.json` file, we see:
+This output indicates that both test cases ran successfully, and the two smart contract methods work as expected. With the supplied flags (`--cover` & `--covercode="contracts"`), we also get code coverage insights for the contracts under testing. The code coverage percentage is `66.7%`, because we have not added a test case for the `multiply` method. When we view the auto-generated `coverage.json` file, we see:
 
 ```json
 {
@@ -176,7 +178,7 @@ return a * b
 
 which is the `multiply` method.
 
-By adding a test case for the above method:
+When we add a test case for the above method:
 
 ```cadence calculator_test.cdc
 ...
@@ -199,21 +201,21 @@ Test results: "calculator_test.cdc"
 Coverage: 100.0% of statements
 ```
 
-## Advanced Testing Techniques
+## Advanced testing techniques
 
-The Cadence testing framework provides various features and techniques for writing comprehensive test scenarios. Some of these include:
+The Cadence testing framework provides various features and techniques used to write comprehensive test scenarios. Some of these include:
 
-- [**Code Coverage**](https://github.com/m-Peter/flow-code-coverage): You can use the `--cover` flag with the `flow test` command to view code coverage results when running your tests. This allows you to identify areas of your code that are not adequately covered by your test inputs.
-- **Test Helpers**: Test helpers are reusable functions that help you set up the initial state for your test files. You can define test helpers in a Cadence program and use them in your test files by importing it whenever needed.
-- [**Assertions**](https://cadence-lang.org/docs/testing-framework#assertions): The testing framework provides built-in assertion functions, such as `assertEqual`, `beNil`, `beEmpty`, `contain`, to help you verify the expected behavior of your smart contracts.
+- [**Code Coverage**]: You can use the `--cover` flag with the `flow test` command to view code coverage results when you run your tests. This allows you to identify areas of your code that are not adequately covered by your test inputs.
+- **Test Helpers**: Test helpers are reusable functions that help you set up the initial state for your test files. You can define test helpers in a Cadence program and use them in your test files by importing it whenever you need it.
+- [**Assertions**]: The testing framework provides built-in assertion functions, such as `assertEqual`, `beNil`, `beEmpty`, `contain`, to help you verify the expected behavior of your smart contracts.
 - **Test Suites**: You can organize your test files into test suites to improve the readability and maintainability of your test code. Test suites allow you to group related test cases and set up common test helpers for all the tests in the suite.
-- [**Integration tests**](https://github.com/bjartek/overflow): In our previous example, we would directly call the available methods on the contract under test. This is generally categorized as unit testing. You can also write integration tests, by executing scripts & transactions to interact with the contracts under testing. If you would like to write your tests in Go, instead of Cadence, you can use [Overflow tool](https://github.com/bjartek/overflow) to run integration tests against either an local emulator, testnet, mainnet or an in memory instance of the flow-emulator.
+- [**Integration tests**]: In our previous example, we would directly call the available methods on the contract under test. This is generally categorized as unit testing. You can also write integration testswhen you execute scripts and transactions to interact with the contracts under testing. If you would like to write your tests in Go, instead of Cadence, you can use [Overflow tool] to run integration tests against either an local emulator, testnet, mainnet or an in memory instance of the flow-emulator.
 
-By leveraging these advanced testing techniques, you can write more robust and reliable smart contracts in Cadence. In this example, we set up a basic testing environment, wrote a simple smart contract in Cadence, and created a test file to verify its functionality. We then used the Flow CLI to run the test file and confirm that the smart contract is working correctly.
+When you leverage these advanced testing techniques, you can write more robust and reliable smart contracts in Cadence. In this example, we set up a basic testing environment, wrote a simple smart contract in Cadence, and created a test file to verify its functionality. We then used the Flow CLI to run the test file and confirm that the smart contract works correctly.
 
-This is a basic example, and there are many more advanced features and techniques you can explore when working with the Cadence Testing Framework.
+This is a basic example, and there are many more advanced features and techniques you can explore when you work with the Cadence Testing Framework.
 
-For more in-depth tutorials and documentation, refer to the official [Cadence language documentation](https://cadence-lang.org/) and the [Flow CLI documentation].
+For more in-depth tutorials and documentation, refer to the official [Cadence language documentation] and the [Flow CLI documentation].
 
 ## Testing Requirements
 
@@ -226,25 +228,24 @@ It is suggested to follow the following best practices:
 Make sure you test all contracts - and the integration into your application extensively before proceeding to the mainnet.
 You should aim to replicate all conditions as closely as possible to the usage patterns on mainnet.
 
-## Writing Tests
+## Write Tests
 
-There are official SDKs/frameworks for Flow in Cadence, Go and JavaScript.
+There are official SDKsand frameworks for Flow in Cadence, Go and JavaScript.
 
-In all three cases, the test code will need to deploy the contracts, configure accounts to interact with them and send transactions to them. It will then have to wait for the transactions to be sealed and check the results by catching exceptions, checking for events, and querying state using scripts.
+In all three cases, the test code will need to deploy the contracts, configure accounts to interact with them and send transactions to them. It will then have to wait for the transactions to be sealed and check the results. To do this, it catches exceptions, checks for events, and querys state via scripts.
 
 ### Cadence tests
 
-Cadence comes with built-in support for code coverage, as well as a native testing framework which allows developers to write their tests using Cadence.
-This framework is bundled with the [Flow CLI] tool, which includes a dedicated command for running tests (`flow test`).
+Cadence comes with built-in support for code coverage, as well as a native testing framework which allows developers to write their tests with Cadence. This framework is bundled with the [Flow CLI] tool, which includes a dedicated command to run tests (`flow test`).
 
-You can find examples of Cadence tests in the following projects: [hybrid-custody](https://github.com/onflow/hybrid-custody/tree/main/test), [flow-nft](https://github.com/onflow/flow-nft/tree/master/tests), [flow-ft](https://github.com/onflow/flow-ft/tree/master/tests).
-Visit the [documentation](https://cadence-lang.org/docs/testing-framework) to view all the available features.
+You can find examples of Cadence tests in the following projects: [hybrid-custody], [flow-nft], [flow-ft].
+Visit the [Cadence documentation] to view all the available features.
 
-The [Hybrid Custody](https://github.com/onflow/hybrid-custody#readme) project is a prime example which utilizes both the Cadence testing framework and code coverage in its CI.
+The [Hybrid Custody] project is a prime example which utilizes both the Cadence testing framework and code coverage in its CI.
 
 ![Hybrid Custody CI](./hybrid-custody-ci.png)
 
-There is also a [repository](https://github.com/m-Peter/flow-code-coverage#readme) which contains some sample contracts and their tests.
+There is also a [repository] which contains some sample contracts and their tests.
 
 ![Automated CI Coverage Report](./codecov-in-pr.png)
 
@@ -260,12 +261,12 @@ For running tests against a fork of mainnet/testnet, see the dedicated tutorial:
 
 ## References
 
-- [Reference documentation for Cadence testing](https://cadence-lang.org/docs/testing-framework)
-- [Overflow](https://github.com/bjartek/overflow) is a powerful Golang-based DSL for efficient testing and execution of blockchain interactions
-- projects that have good examples of robust test cases:
-  - [hybrid-custody](https://github.com/onflow/hybrid-custody/tree/main/test),
-  - [flow-nft](https://github.com/onflow/flow-nft/tree/master/tests),
-  - [flow-ft](https://github.com/onflow/flow-ft/tree/master/tests).
+- [Cadence documentation] for testing.
+- [Overflow tool] is a powerful Golang-based DSL for efficient testing and execution of blockchain interactions
+- Projects that have good examples of robust test cases:
+  - [hybrid-custody]
+  - [flow-nft]
+  - [flow-ft]
 
 <!-- Reference-style links -->
 [Testing Strategy on Flow]: ./testing-strategy.md
@@ -277,3 +278,14 @@ For running tests against a fork of mainnet/testnet, see the dedicated tutorial:
 [Fork Testing Flags]: ../../tools/flow-cli/tests.md#fork-testing-flags
 [Flow Emulator]: ../../tools/emulator/index.md
 [Fork Testing with Cadence (Step-by-Step)]: ../../../blockchain-development-tutorials/cadence/fork-testing/index.md
+[**Code Coverage**]: https://github.com/m-Peter/flow-code-coverage
+[**Assertions**]: https://cadence-lang.org/docs/testing-framework#assertions
+[**Integration tests**]: https://github.com/bjartek/overflow 
+[Overflow tool]: https://github.com/bjartek/overflow
+[Cadence language documentation]: https://cadence-lang.org/
+[hybrid-custody]: https://github.com/onflow/hybrid-custody/tree/main/test
+[flow-nft]: https://github.com/onflow/flow-nft/tree/master/tests
+[flow-ft]: https://github.com/onflow/flow-ft/tree/master/tests
+[Cadence documentation]: https://cadence-lang.org/docs/testing-framework
+[Hybrid Custody]: https://github.com/onflow/hybrid-custody#readme
+[repository]: https://github.com/m-Peter/flow-code-coverage#readme
