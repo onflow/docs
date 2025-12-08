@@ -30,12 +30,12 @@ Flow EVM has the following public RPC nodes available:
 | Currency Symbol | FLOW                                 |
 | Block Explorer  | https://evm-testnet.flowscan.io      |
 
-## EVM Specification
+## EVM specification
 
-- Flow EVM is a virtual EVM-based blockchain using the latest EVM byte-code interpreter `Geth v1.13`
-- Utilizes `FLOW` token for transactions, with balances denominated in `Atto-FLOW` (1 `FLOW` = 10^18 `Atto-FLOW`)
-- The [EVM Gateway](https://github.com/onflow/flow-evm-gateway) exposes the standard EVM API (Ethereum JSON-RPC)
-- Read more about the implementation in [FLIP 223: EVM integration interface](https://github.com/onflow/flips/blob/main/protocol/20231116-evm-support.md)
+- Flow EVM is a virtual EVM-based blockchain with the latest EVM byte-code interpreter `Geth v1.13`.
+- Uses `FLOW` token for transactions, with balances denominated in `Atto-FLOW` (1 `FLOW` = 10^18 `Atto-FLOW`).
+- The [EVM Gateway] exposes the standard EVM API (Ethereum JSON-RPC).
+- Read more about the implementation in [FLIP 223: EVM integration interface].
 
 ## JSON-RPC Methods
 
@@ -94,8 +94,11 @@ Flow EVM has the following public RPC nodes available:
 
 **Legend**: ❌ = not supported. 🚧 = work in progress. ✅ = supported.
 
-Read more about the [EVM Gateway](https://github.com/onflow/flow-evm-gateway) on Flow and how it implements the Ethereum JSON-RPC API.
+Read more about the [EVM Gateway] on Flow and how it implements the Ethereum JSON-RPC API.
 
+<!-- Reference-style links, will not render on page. -->
+
+[FLIP 223: EVM integration interface]: https://github.com/onflow/flips/blob/main/protocol/20231116-evm-support.md
 [web3_clientVersion]: https://ethereum.org/en/developers/docs/apis/json-rpc/#web3_clientversion
 [web3_sha3]: https://ethereum.org/en/developers/docs/apis/json-rpc/#web3_sha3
 [net_listening]: https://ethereum.org/en/developers/docs/apis/json-rpc/#net_listening
@@ -168,3 +171,5 @@ Read more about the [EVM Gateway](https://github.com/onflow/flow-evm-gateway) on
 [txpool_status]: https://geth.ethereum.org/docs/rpc/ns-txpool#txpool_status
 [parity_pendingTransactions]: https://openethereum.github.io/JSONRPC-parity-module#parity_pendingtransactions
 [EIP-1186]: https://eips.ethereum.org/EIPS/eip-1186
+[EVM Gateway]: https://github.com/onflow/flow-evm-gateway
+
