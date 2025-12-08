@@ -38,10 +38,10 @@ a balance sufficient to accommodate worst-case transaction submission numbers at
 
 </Callout>
 
-When creating a new machine account, we recommend initially funding with 0.005 FLOW for collection nodes and
-0.25 FLOW for consensus nodes.
+When creating a new machine account, we recommend initially funding with **0.75 FLOW for collection nodes** and
+**6 FLOW for consensus nodes**.
 
-Machine account balances should be monitored and periodically refilled to ensure they have sufficient funds.
-We recommend a minimum balance at all times of 0.002 FLOW for collection nodes and 0.1 FLOW for consensus nodes.
+Machine account balances must be [monitored](./../node-ops/node-operation/monitoring-nodes.md#machine-account) and periodically refilled to ensure they have sufficient funds.
+We recommend a minimum balance at all times of 0.25 FLOW for collection nodes and 2 FLOW for consensus nodes.
 
-A node operator can easily withdraw their FLOW from their machine account if they decide they don't need them there any more.
+FLOW deposited to a machine account can be withdrawn at any time by the node operator.
