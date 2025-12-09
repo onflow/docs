@@ -158,7 +158,7 @@ From a developer perspective, a transaction is only successful if:
 
 ## Transaction time
 
-It's crucial that developers and users nderstand how transaction times work across different blockchains to optimize their operations and expectations. Flow's multi-node architecture allows for some of the fastest transaction times and finality times across chains. Read on for more detail on how it works and what it means for developers and users.
+It's crucial that developers and users understand how transaction times work across different blockchains to optimize their operations and expectations. Flow's multi-node architecture allows for some of the fastest transaction times and finality times across chains. Read on for more detail on how it works and what it means for developers and users.
 
 ### Two key transaction questions
 
