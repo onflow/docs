@@ -21,14 +21,15 @@ keywords:
   - token specification
 ---
 
+# Fungible Token Contract
+
 The `FungibleToken` contract implements the Fungible Token Standard. It is the second contract ever deployed on Flow.
 
-- [Basic Fungible Token Tutorial](https://cadence-lang.org/docs/tutorial/fungible-tokens)
-- [Fungible Token Guide](../../../blockchain-development-tutorials/tokens/fungible-token-cadence.md)
-- [Fungible Token Standard Repo](https://github.com/onflow/flow-ft)
+- [Basic Fungible Token Tutorial]
+- [Fungible Token Guide]
+- [Fungible Token Standard Repo]
 
-The `FungibleTokenMetadataViews` and `FungibleTokenSwitchboard` contracts
-are also deployed to the same account as `FungibleToken`.
+The `FungibleTokenMetadataViews` and `FungibleTokenSwitchboard` contracts are also deployed to the same account as `FungibleToken`.
 
 Source: [FungibleToken.cdc](https://github.com/onflow/flow-ft/blob/master/contracts/FungibleToken.cdc)
 
@@ -41,10 +42,7 @@ Source: [FungibleToken.cdc](https://github.com/onflow/flow-ft/blob/master/contra
 
 # Transactions
 
-All `FungibleToken` projects are encouraged to use
-the generic token transactions and scripts in the `flow-ft` [repo](https://github.com/onflow/flow-ft/tree/master/transactions).
-They can be used for any token that implements the fungible token standard properly
-without changing any code besides import addresses on different networks.
+All `FungibleToken` projects are encouraged to use the generic token transactions and scripts in the `flow-ft` [repo]. They can be used for any token that implements the fungible token standard properly without any code change besides import addresses on different networks.
 
 # Events
 
@@ -56,18 +54,15 @@ A.{contract address}.{contract name}.{event name}
 
 The components of the format are:
 
-- `contract address` - the address of the account the contract has been deployed to
-- `contract name` - the name of the contract in the source code
-- `event name` - the name of the event as declared in the source code
+- `contract address` - the address of the account the contract has been deployed to.
+- `contract name` - the name of the contract in the source code.
+- `event name` - the name of the event as declared in the source code.
 
-## FungibleToken Events
+## FungibleToken events
 
-Contracts that implement the Fungible Token standard get access
-to standard events that are emitted every time a relevant action occurs,
-like depositing and withdrawing tokens.
+Contracts that implement the Fungible Token standard get access to standard events that are emitted every time a relevant action occurs, like deposit and withdraw tokens.
 
-This means that projects do not have to implement their own custom events
-unless the standard events do not satisfy requirements they have for events.
+This means that projects do not have to implement their own custom events unless the standard events do not satisfy requirements they have for events.
 
 The `FungibleToken` events will have the following format:
 
@@ -76,8 +71,7 @@ A.{contract address}.FungibleToken.Deposited
 A.{contract address}.FungibleToken.Withdrawn
 ```
 
-Where the `contract address` is the `FungibleToken` address on the network being queried.
-The addresses on the various networks are shown above.
+Where the `contract address` is the `FungibleToken` address on the network being queried. The addresses on the various networks are shown above.
 
 ### FungibleToken.Deposited
 
@@ -92,9 +86,7 @@ access(all) event Deposited (
 )
 ```
 
-Whenever `deposit()` is called on a resource type that implements
-`FungibleToken.Vault`, the `FungibleToken.Deposited` event is emitted
-with the following arguments:
+Whenever `deposit()` is called on a resource type that implements `FungibleToken.Vault`, the `FungibleToken.Deposited` event is emitted with the following arguments:
 
 - `type: String`: The type identifier of the token being deposited.
   - Example: `A.4445e7ad11568276.FlowToken.Vault`
@@ -123,9 +115,7 @@ access(all) event Withdrawn (
 )
 ```
 
-Whenever `withdraw()` is called on a resource type that implements
-`FungibleToken.Vault`, the `FungibleToken.Withdrawn` event is emitted
-with the following arguments:
+Whenever `withdraw()` is called on a resource type that implements `FungibleToken.Vault`, the `FungibleToken.Withdrawn` event is emitted with the following arguments:
 
 - `type: String`: The type identifier of the token being withdrawn.
   - Example: `A.4445e7ad11568276.FlowToken.Vault`
@@ -152,8 +142,7 @@ access(all) event Burned (
 )
 ```
 
-Whenever a fungible token that implements `FungibleToken.Vault` is burned
-via the `Burner.burn()` method, this event is emitted with the following arguments:
+Whenever a fungible token that implements `FungibleToken.Vault` is burned via the `Burner.burn()` method, this event is emitted with the following arguments:
 
 - `type: String`: The type identifier of the token that was burnt.
   - Example: `A.4445e7ad11568276.FlowToken.Vault`
@@ -161,3 +150,10 @@ via the `Burner.burn()` method, this event is emitted with the following argumen
   - Example: `0.00017485`
 - `fromUUID: UInt64`: The UUID of the Vault that was burnt.
   - Example: `177021372071991`
+
+<!-- Reference-style links, will not render on page -->
+
+[Basic Fungible Token Tutorial]: https://cadence-lang.org/docs/tutorial/fungible-tokens
+[Fungible Token Guide]: ../../../blockchain-development-tutorials/tokens/fungible-token-cadence.md
+[Fungible Token Standard Repo]: https://github.com/onflow/flow-ft
+[repo]: https://github.com/onflow/flow-ft/tree/master/transactions

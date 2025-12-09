@@ -21,21 +21,25 @@ keywords:
   - FLIP 223
 ---
 
-# Contract
+# Flow EVM
 
-The `EVM` contract is the entrypoint from Cadence to Flow EVM. While many developers may choose to interact with EVM
-via [EVM-equivalent tooling paths](../../../build/evm/using.mdx), all access to Flow EVM ultimately interfaces via Cadence at
-some level.
+The `EVM` contract is the entrypoint from Cadence to Flow EVM. While many developers may choose to interact with EVM via [EVM-equivalent tooling paths], all access to Flow EVM ultimately interfaces via Cadence at some level.
 
-If you would like to interact with EVM directly from Cadence, you can use the `EVM` contract and it's constructs. Read
-more about the EVM contract and its role in Flow's EVM equivalence in [FLIP
-#223](https://github.com/onflow/flips/blob/main/protocol/20231116-evm-support.md).
+If you would like to interact with EVM directly from Cadence, you can use the `EVM` contract and it's constructs. Read more about the EVM contract and its role in Flow's EVM equivalence in [FLIP #223].
 
-Mainnet/Testnet Source: [`EVM.cdc`](https://github.com/onflow/flow-go/blob/master/fvm/evm/stdlib/contract.cdc)
+Mainnet/Testnet Source: [`EVM.cdc`]
 
 | Network                   | Contract Address                                                           |
 | ------------------------- | -------------------------------------------------------------------------- |
 | Emulator                  | `0xf8d6e0586b0a20c7`                                                       |
 | Cadence Testing Framework | `0x0000000000000001`                                                       |
-| Testnet                   | [`0x8c5303eaa26202d6`](https://contractbrowser.com/A.8c5303eaa26202d6.EVM) |
-| Mainnet                   | [`0xe467b9dd11fa00df`](https://contractbrowser.com/A.e467b9dd11fa00df.EVM) |
+| Testnet                   | [`0x8c5303eaa26202d6`] |
+| Mainnet                   | [`0xe467b9dd11fa00df`] |
+
+<!-- Reference-style links, will not render on page -->
+
+[EVM-equivalent tooling paths]: ../../../build/evm/using.mdx
+[FLIP #223]: https://github.com/onflow/flips/blob/main/protocol/20231116-evm-support.md
+[`EVM.cdc`]: https://github.com/onflow/flow-go/blob/master/fvm/evm/stdlib/contract.cdc
+[`0x8c5303eaa26202d6`]: https://contractbrowser.com/A.8c5303eaa26202d6.EVM
+[`0xe467b9dd11fa00df`]: https://contractbrowser.com/A.e467b9dd11fa00df.EVM

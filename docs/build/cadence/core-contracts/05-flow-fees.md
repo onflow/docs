@@ -21,11 +21,11 @@ keywords:
   - blockchain fees
 ---
 
-## FlowFees
+# Flow Fees Contract
 
 The `FlowFees` contract is where all the collected flow fees are gathered.
 
-Source: [FlowFees.cdc](https://github.com/onflow/flow-core-contracts/blob/master/contracts/FlowFees.cdc)
+Source: [FlowFees.cdc]
 
 | Network                   | Contract Address     |
 | ------------------------- | -------------------- |
@@ -56,7 +56,7 @@ access(all) event FeeParametersChanged(surgeFactor: UFix64, inclusionEffortCost:
 
 The `FlowStorageFees` contract defines the parameters and utility methods for storage fees.
 
-Source: [FlowStorageFees.cdc](https://github.com/onflow/flow-core-contracts/blob/master/contracts/FlowStorageFees.cdc)
+Source: [FlowStorageFees.cdc]
 
 | Network                   | Contract Address     |
 | ------------------------- | -------------------- |
@@ -76,3 +76,8 @@ access(all) event StorageMegaBytesPerReservedFLOWChanged(_ storageMegaBytesPerRe
 // Emitted when the minimum amount of Flow tokens that an account needs to have reserved for storage capacity changes.
 access(all) event MinimumStorageReservationChanged(_ minimumStorageReservation: UFix64)
 ```
+
+<!-- Reference-style links, will not render on page -->
+
+[FlowFees.cdc]: https://github.com/onflow/flow-core-contracts/blob/master/contracts/FlowFees.cdc
+[FlowStorageFees.cdc]: https://github.com/onflow/flow-core-contracts/blob/master/contracts/FlowStorageFees.cdc
