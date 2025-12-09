@@ -43,7 +43,7 @@ The Block header contains the following fields:
 - **Parent ID** is a link to the previous block ID in the list that makes up the blockchain.
 - **Height** is the block sequence number, where block 0 was the first block produced, and each next block increments the value by one.
 - **Timestamp** is the timestamp at which this block was proposed by the consensus node. Depending on your use case, this time might not be accurate enough, [read more about how to measure time on the Flow blockchain].
-- **Payload Hash** represents the payload hash that is included when producing the ID of the block. To calculate the Payload hash take Merkle root hashes of collection guarantees, seals, execution receipts, and execution results and hash them together. For more information, see the block payload section below.
+- **Payload Hash** represents the payload hash that is included when producing the ID of the block. To calculate the payload hash take Merkle root hashes of collection guarantees, seals, execution receipts, and execution results and hash them together. For more information, see the block payload section below.
 
 ### Block payload
 
