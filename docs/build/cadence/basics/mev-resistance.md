@@ -29,7 +29,7 @@ keywords:
 
 One of the most under-discussed benefits of decentralization is **equitable access**. Ideally, the value and quality-of-service you receive from a decentralized platform should not depend on your identity, computing power, or personal connections. However, **Maximal Extractable Value (MEV)** poses a significant threat to this principle.
 
-MEV allows block producers to manipulate transaction ordering for profit—often at the direct expense of users. The ability to front-run, back-run, or sandwich transactions can extract value from ordinary users, which reinforces inequalities instead of eliminate them. In most blockchain networks, MEV is not just an unfortunate side effect; it is structurally embedded in how transactions are processed.
+MEV allows block producers to manipulate transaction ordering for profit—often at the direct expense of users. The ability to front-run, back-run, or sandwich transactions can extract value from ordinary users, which reinforces inequalities instead of eliminating them. In most blockchain networks, MEV is not just an unfortunate side effect; it is structurally embedded in how transactions are processed.
 
 ## Why MEV persists on most blockchains
 
