@@ -31,7 +31,7 @@ A very basic representation of blocks is:
 
 Blocks are ordered from the genesis block 0 up to the latest block. Each block contains an ordered list of transactions. This is how the Flow blockchain preserves the complete history of all the changes made to the state from the start to the current state.
 
-Each block contains more data which is divided into **block header** and **block payload**. There are many representations of block data within the Flow protocol. APIs, node types, and specific components within the node may view a block from different perspectives. For the purpose of this documentat, we will talk about block data we expose through APIs to the clients.
+Each block contains more data which is divided into **block header** and **block payload**. There are many representations of block data within the Flow protocol. APIs, node types, and specific components within the node may view a block from different perspectives. For the purpose of this document, we will talk about block data we expose through APIs to the clients.
 
 ![Screenshot 2023-08-16 at 10.50.53.png](_blocks_images/Screenshot_2023-08-16_at_10.50.53.png)
 
