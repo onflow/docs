@@ -110,7 +110,7 @@ The emulator's fork mode starts a local Flow blockchain that connects to a real 
 
 - Full gRPC and REST API servers running locally
 - On-demand fetching of accounts, contracts, and state from the live network
-- Disabled signature validation—execute transactions as any mainnet account
+- Disabled signature validation. You can impersonate any mainnet account to execute transactions
 - All mutations stay local—never affect the real network
 - Perfect for E2E tests, manual exploration, and debugging
 
