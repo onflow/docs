@@ -92,8 +92,8 @@ See also: [Fork Testing with Cadence], [Fork Testing Flags].
 
   function App() {
     return (
-      <FlowProvider 
-        config={{ 
+      <FlowProvider
+        config={{
           accessNodeUrl: 'http://localhost:8888',
           flowNetwork: 'mainnet-fork', // Uses fork network with inherited aliases
         }}

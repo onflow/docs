@@ -291,37 +291,48 @@ This ensures the forked state is consistent across runs—essential for E2E test
 
 :::
 
-## Advanced: Override Specific Contracts (Optional)
+## Mocking Mainnet Contracts
 
-If you need to test against a modified version of a contract, you can override specific contracts while inheriting others:
+Just like mocking dependencies in unit tests, you can **mock real mainnet contracts** by deploying modified versions—perfect for testing upgrades, bug fixes, or alternative implementations against real production state.
+
+Configure the mock in `flow.json`, then deploy to the forked emulator. Your mock takes precedence while other contracts use real mainnet versions.
+
+### Example
+
+**1. Configure in `flow.json`:**
 
 ```json
 {
-  "dependencies": {
-    "MyModifiedContract": {
-      "source": "./contracts/MyModifiedContract.cdc",
-      "aliases": {
-        "mainnet": "0x1234567890abcdef",
-        "mainnet-fork": "0xf8d6e0586b0a20c7" // Override for testing
-      }
-    },
+  "accounts": {
+    "flow-token-mainnet": {
+      "address": "0x1654653399040a61",
+      "key": "0000000000000000000000000000000000000000000000000000000000000000"
+    }
+  },
+  "contracts": {
     "FlowToken": {
+      "source": "./contracts/FlowTokenModified.cdc",
       "aliases": {
         "mainnet": "0x1654653399040a61"
-        // Still inherits mainnet address on fork
       }
+    }
+  },
+  "deployments": {
+    "mainnet-fork": {
+      "flow-token-mainnet": ["FlowToken"]
     }
   }
 }
 ```
 
-This is useful for:
+**2. Deploy the mock:**
 
-- Testing a modified/upgraded version of a contract
-- Using mock contracts for specific scenarios
-- Pointing to staging deployments
+```bash
+flow emulator --fork mainnet
+flow project deploy --network mainnet-fork --update
+```
 
-For most use cases, inheritance alone is sufficient.
+Your dapp now uses the mocked FlowToken while FungibleToken, USDC, and all other contracts use real mainnet versions.
 
 ## Install Dependencies
 
@@ -729,12 +740,13 @@ Use the same approach with Playwright, Puppeteer, or any browser automation tool
 
 ### Testing Contract Upgrades
 
-Test a contract upgrade against real mainnet state:
+Test a contract upgrade against real mainnet state by mocking the contract with your upgraded version:
 
-1. Start forked emulator
-2. Deploy your upgraded contract to the test environment
-3. Run scripts/transactions that interact with both old mainnet contracts and your new contract
-4. Verify behavior with real user account states
+1. Configure the mock in `flow.json` (see [Mocking Mainnet Contracts](#mocking-mainnet-contracts))
+2. Start the forked emulator
+3. Deploy your upgraded contract: `flow project deploy --network mainnet-fork --update`
+4. Test your dapp against the upgraded contract with all real mainnet state intact
+5. Verify existing integrations and users aren't broken by the upgrade
 
 ### Debugging User-Reported Issues
 
