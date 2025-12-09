@@ -432,8 +432,8 @@ root.render(
   <React.StrictMode>
     <FlowProvider
       config={{
-        accessNodeUrl: 'http://localhost:8888', // Forked emulator REST endpoint
-        flowNetwork: 'mainnet', // Use mainnet contract addresses
+        accessNodeUrl: 'http://localhost:8888', // Point to forked emulator REST endpoint
+        flowNetwork: 'mainnet-fork', // Use fork network (inherits mainnet aliases)
         appDetailTitle: 'Flow Fork Demo',
         discoveryWallet: 'http://localhost:8701/fcl/authn', // Dev wallet
       }}
@@ -463,7 +463,7 @@ function App() {
   } = useFlowQuery({
     cadence: `
       import "FlowToken"
-      
+
       access(all) fun main(): UFix64 {
         return FlowToken.totalSupply
       }
@@ -547,7 +547,15 @@ Your browser will open to `http://localhost:3000`. Click "Get FlowToken Supply" 
 
 :::tip Contract Import Resolution
 
-By passing `flowJson` to the `FlowProvider`, string imports like `import "FlowToken"` automatically resolve to the correct network addresses. Since `flowNetwork` is set to `"mainnet"`, the provider uses mainnet aliases (which are inherited by `mainnet-fork`).
+By passing `flowJson` to the `FlowProvider`, string imports like `import "FlowToken"` automatically resolve to the correct network addresses.
+
+**How it works:**
+
+1. SDK looks up contract aliases for the specified `flowNetwork`
+2. For fork networks, it checks if the network has a `fork` property and inherits aliases from the parent network
+3. Contract imports in your Cadence code are replaced with the resolved addresses
+
+**Example:** With `flowNetwork: 'mainnet-fork'` (which has `fork: 'mainnet'`), `import "FlowToken"` resolves to `0x1654653399040a61` (the mainnet FlowToken address).
 
 :::
 
@@ -612,6 +620,66 @@ transaction(amount: UFix64, to: Address) {
 ```
 
 The forked emulator disables transaction signature validation, allowing you to send transactions as any address without valid signatures.
+
+Now let's test transferring tokens from a mainnet account using impersonation.
+
+### CLI-Based Impersonation
+
+To use impersonation with the CLI, you need to add the mainnet account to your `flow.json` (signature validation is disabled, so the key value doesn't matter):
+
+```json
+{
+  "accounts": {
+    "mainnet-service": {
+      "address": "0x1654653399040a61",
+      "key": "0000000000000000000000000000000000000000000000000000000000000000"
+    }
+  }
+}
+```
+
+Transfer tokens from the mainnet service account to another mainnet account:
+
+```bash
+# Transfer from mainnet service account to any mainnet address (impersonation!)
+flow transactions send cadence/transactions/transfer_tokens.cdc 100.0 0xRECIPIENT_ADDRESS \
+  --signer mainnet-service \
+  --network mainnet-fork
+
+# Verify the transfer
+flow scripts execute cadence/scripts/get_balance.cdc 0xRECIPIENT_ADDRESS \
+  --network mainnet-fork
+```
+
+### Dev Wallet Authentication with Impersonation
+
+The most powerful feature: when connecting your dapp to the forked emulator with the dev wallet, **you can authenticate as ANY mainnet account** directly in the UI.
+
+Start the dev wallet:
+
+```bash
+flow dev-wallet
+```
+
+In your dapp (running against the forked emulator), click the wallet connect button. In the dev wallet UI:
+
+1. **Enter any mainnet address** in the address field (e.g., a whale wallet, NFT collector, or protocol account)
+2. Click "Authenticate"
+3. Your dapp is now authenticated as that mainnet account with all its real balances, NFTs, and storage!
+
+**Additional dev wallet features in fork mode:**
+
+- **Fund accounts**: The dev wallet can add FLOW tokens to any account, even real mainnet accounts
+- **No configuration needed**: The dev wallet handles impersonation automatically when connected to a forked emulator
+- **Full account state**: Access all assets, storage, and capabilities from the real mainnet account
+
+This lets you:
+
+- Test your dapp as a user with specific assets or permissions
+- Debug issues reported by specific mainnet accounts
+- Verify flows work for accounts with large balances or many NFTs
+- Test edge cases with real account states
+- Add test funds to accounts that need more FLOW for testing
 
 :::tip How "Impersonation" Works
 
@@ -725,14 +793,6 @@ flowClient, err := client.New("localhost:3569", grpc.WithInsecure())
 // Your bot/indexer logic reads from forked mainnet state
 ```
 
-The key: configure your SDK's access node URL to point to the local emulator endpoints (`http://localhost:8888` for REST or `localhost:3569` for gRPC).
-
-:::note
-
-For React applications, always use `@onflow/react-sdk` instead of raw FCL.
-
-:::
-
 ## Best Practices
 
 ### 1. Pin Block Heights for Reproducibility
@@ -814,14 +874,6 @@ The fork only includes Flow blockchain state. External services don't work:
 - **IPFS/Arweave**: Mock or run local nodes
 - **Cross-chain bridges**: Mock or test separately
 
-### Rate Limiting
-
-Public access nodes have rate limits. If you hit them:
-
-- Reduce test parallelism
-- Use a pinned height (enables better caching)
-- Consider running your own access node for heavy testing
-
 ## Troubleshooting
 
 ### Emulator Won't Start
@@ -879,14 +931,32 @@ Verify the contract has a mainnet alias that the fork can inherit.
 <FlowProvider
   config={{
     accessNodeUrl: 'http://localhost:8888', // Must match emulator REST port
-    flowNetwork: 'mainnet',
+    flowNetwork: 'mainnet-fork', // Use your fork network from flow.json
   }}
+  flowJson={flowJSON}
 >
   <App />
 </FlowProvider>
 ```
 
 Check the emulator is running and serving on port 8888.
+
+**Common mistakes:**
+
+1. **Wrong network:** Using `flowNetwork: 'emulator'` when forking mainnet will use emulator contract addresses (`0x0ae53cb6...`) instead of mainnet addresses. Use your fork network name (`'mainnet-fork'`).
+
+2. **Missing fork network in flow.json:** Make sure your `flow.json` has the fork network configured:
+
+   ```json
+   "networks": {
+     "mainnet-fork": {
+       "host": "127.0.0.1:3569",
+       "fork": "mainnet"
+     }
+   }
+   ```
+
+3. **Missing flowJson prop:** The `flowJson` prop is required for contract import resolution. Make sure you're importing and passing your `flow.json` file.
 
 ### Script Returns Stale Data
 

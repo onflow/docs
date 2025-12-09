@@ -88,10 +88,17 @@ See also: [Fork Testing with Cadence], [Fork Testing Flags].
   ```javascript
   // In your root component (e.g., App.tsx)
   import { FlowProvider } from '@onflow/react-sdk';
+  import flowJSON from './flow.json';
 
   function App() {
     return (
-      <FlowProvider config={{ accessNodeUrl: 'http://localhost:8888' }}>
+      <FlowProvider 
+        config={{ 
+          accessNodeUrl: 'http://localhost:8888',
+          flowNetwork: 'mainnet-fork', // Uses fork network with inherited aliases
+        }}
+        flowJson={flowJSON}
+      >
         {/* Your app components */}
       </FlowProvider>
     );
