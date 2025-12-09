@@ -24,9 +24,9 @@ keywords:
 
 Flow events are special values that are emitted on the network during the execution of a Cadence program and can be observed by off-chain observers.
 
-Events are defined as Cadence code and you should [read Cadence documentation](https://cadence-lang.org/docs/language/events) to understand how to define them.
+Events are defined as Cadence code and you should [read the Cadence documentation] to understand how to define them.
 
-Since transactions don't have return values you can leverage events to broadcast certain changes the transaction caused. Clients listening on Flow networks (apps) can listen to these events being emitted and react.
+Since transactions don't have return values you can leverage events to broadcast certain changes the transaction caused. Clients taht listen on Flow networks (apps) can listen to these events that are emitted and react.
 
 ![Screenshot 2023-08-18 at 14.09.33.png](_events_images/Screenshot_2023-08-18_at_14.09.33.png)
 
@@ -39,7 +39,7 @@ Events consist of the **event name** and an optional **payload**.
 
 ![Screenshot 2023-08-18 at 13.59.01.png](_events_images/Screenshot_2023-08-18_at_13.59.01.png)
 
-## Core Events
+## Core events
 
 Core events are events emitted directly from the FVM (Flow Virtual Machine). The events have the same name on all networks and do not follow the same naming as user-defined events (they have no address).
 
@@ -57,11 +57,11 @@ A list of events that are emitted by the Flow network is:
 | flow.InboxValueUnpublished  | Event that is emitted when a Capability is unpublished from an account. |
 | flow.InboxValueClaimed1     | Event that is emitted when a Capability is claimed by an account.       |
 
-For more details [on the core events, you can read Cadence reference documentation](https://cadence-lang.org/docs/language/core-events).
+For more details [on the core events, you can read Cadence reference documentation].
 
 ## User-defined events
 
-Events that are defined inside contracts and when emitted follow a common naming schema. The schema consists of 4 parts:
+Events that are defined inside contracts and when emitted follow a common naming schema. The schema consists of four parts:
 
 ```cadence
 A.{contract address}.{contract name}.{event type}
@@ -71,21 +71,17 @@ An example event would look like:
 
 ![Screenshot 2023-08-18 at 14.30.36.png](_events_images/Screenshot_2023-08-18_at_14.30.36.png)
 
-The first `A` means the event is originating from a contract, which will always be the case for user-defined events. The contract address as the name implies is the location of a contract deployed on the Flow network. Next, is the name of the contracted event originates from, and last is the event type defined in the contract.
+The first `A` means the event originates from a contract, which will always be the case for user-defined events. The contract address as the name implies is the location of a contract deployed on the Flow network. Next, is the name of the contracted event originates from, and last is the event type defined in the contract.
 
 There is an unlimited amount of events that can be defined on Flow, but you should know about the most common ones.
 
-### Fungible Token Events
+### Fungible token events
 
-All fungible token contracts, including [The FLOW Token contract](../core-contracts/03-flow-token.md),
-use the [fungible token standard on Flow](../core-contracts/02-fungible-token.md).
-As with any contract, the standard emits events when interacted with.
-When any fungible token is transferred, standard events are emitted.
-You can find a lot of details on the events emitted in the [Fungible Token documentation](../core-contracts/02-fungible-token.md).
+All fungible token contracts, which includes [The FLOW Token contract], use the [fungible token standard on Flow]. As with any contract, the standard emits events when interacted with. When any fungible token is transferred, standard events are emitted. You can find a lot of details on the events emitted in the [Fungible Token documentation].
 
-The most common events are when tokens are transferred which is accomplished with two actions: withdrawing tokens from the payer and depositing tokens in the receiver. Each of those actions has a corresponding event:
+The most common events are when tokens are transferred which is accomplished with two actions: withdraw tokens from the payer and deposit tokens in the receiver. Each of those actions has a corresponding event:
 
-**Withdraw Tokens**
+**Withdraw tokens**
 
 Event name: `FungibleToken.Withdrawn`
 
@@ -102,7 +98,7 @@ Mainnet event: `A.f233dcee88fe0abe.FungibleToken.Withdrawn`
 
 Testnet event: `A.9a0766d93b6608b7.FungibleToken.Withdrawn`
 
-**Deposit Tokens**
+**Deposit tokens**
 
 ```cadence
 event Deposited(type: String,
@@ -159,3 +155,11 @@ Events:
       - inclusionEffort (UFix64): 1.00000000
       - executionEffort (UFix64): 0.00000000
 ```
+
+<!-- Relative links, will not render on page -->
+
+[read the Cadence documentation]: https://cadence-lang.org/docs/language/events
+[The FLOW Token contract]: ../core-contracts/03-flow-token.md
+[fungible token standard on Flow]: ../core-contracts/02-fungible-token.md
+[Fungible Token documentation]: ../core-contracts/02-fungible-token.md
+[on the core events, you can read Cadence reference documentation]: https://cadence-lang.org/docs/language/core-events

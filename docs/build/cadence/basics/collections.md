@@ -21,30 +21,40 @@ keywords:
 
 # Collections
 
-Collections link blocks and transactions together. Collection node clusters make these collections (using the HotStuff consensus algorithm), made up of an ordered list of one or more hashes of [signed transactions](./transactions.md). In order to optimize data, blocks don't contain transactions (as they do on Ethereum). The benefits are transaction data does not get transferred to consensus nodes on the network which optimizes transfer speed and this architecture allows scaling of ingestion speed by adding collection clusters. Consensus nodes need to only agree on the order of transactions to be executed, they don't need to know the transaction payload, thus making blocks and collections lightweight. Collection nodes hold transaction payloads for anyone who requests them (e.g. execution nodes).
+Collections link blocks and transactions together. Collection node clusters make these collections (via the HotStuff consensus algorithm), made up of an ordered list of one or more hashes of [signed transactions]. In order to optimize data, blocks don't contain transactions (as they do on Ethereum). The benefits are transaction data does not get transferred to consensus nodes on the network which optimizes transfer speed, and this architecture allows you to add collection clusters, which scales ingestion speed. Consensus nodes need to only agree on the order of transactions to be executed, they don't need to know the transaction payload, which makes blocks and collections lightweight. Collection nodes hold transaction payloads for anyone who requests them (for example, execution nodes).
 
 ![Screenshot 2023-08-17 at 19.50.39.png](_collection_images/Screenshot_2023-08-17_at_19.50.39.png)
 
-## Collection Retrieval
+## Collection retrieval
 
-You can use the Flow CLI to get the collection data by running:
+To use the Flow CLI to get the collection data, run the following command:
 
 ```sh
 flow collections get caff1a7f4a85534e69badcda59b73428a6824ef8103f09cb9eaeaa216c7d7d3f -n mainnet
 ```
 
-Find [more about the command in the CLI docs](../../../build/tools/flow-cli/get-flow-data/get-collections.md).
+Find [more about the command in the CLI docs].
 
 Collections can be obtained from the access node APIs, currently, there are two gRPC and REST APIs. You can find more information about them here:
 
-[**gRPC Collection API**](../../../protocol/access-onchain-data/index.md#collections)
+[**gRPC Collection API**]
 
-[**REST Collection API**](/http-api#tag/Collections)
+[**REST Collection API**]
 
-There are multiple SDKs implementing the above APIs for different languages:
+There are multiple SDKs that implement the above APIs for different languages:
 
-[**Javascript SDK**](../../../build/tools/clients/fcl-js/index.md)
+[**Javascript SDK**]
 
-[**Go SDK**](../../../build/tools/clients/flow-go-sdk/index.md)
+[**Go SDK**]
 
-Find a list of all SDKs [here](../../../build/tools/clients/index.md)
+Find a list of all SDKs [here].
+
+<!-- Relative links, will not render on page -->
+
+[signed transactions]: ./transactions.md
+[more about the command in the CLI docs]: ../../../build/tools/flow-cli/get-flow-data/get-blocks.md
+[**gRPC Collection API**]: ../../../protocol/access-onchain-data/index.md#collections
+[**REST Collection API**]: /http-api#tag/Collections
+[**Javascript SDK**]: ../../../build/tools/clients/fcl-js/index.md
+[**Go SDK**]: ../../../build/tools/clients/flow-go-sdk/index.md
+[here]: ../../../build/tools/clients/index.md
