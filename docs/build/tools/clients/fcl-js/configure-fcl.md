@@ -4,11 +4,12 @@ title: How to Configure FCL
 
 ## Configuration
 
-FCL provides a mechanism to configure various aspects of its behavior. The key principle is that when switching between different Flow Blockchain environments (e.g., Local Emulator → Testnet → Mainnet), the only required change should be your FCL configuration.
+Flow Client Library (FCL) provides a mechanism to configure various aspects of its behavior. The key principle is that when you switch between different Flow Blockchain environments (for example, Local Emulator → Testnet → Mainnet), the only required change should be your FCL configuration.
 
-## Setting Configuration Values
+## Set configuration values
 
-Values only need to be set once. We recommend doing this once and as early in the life cycle as possible.
+Values only need to be set once. We recommend that you do this once and as early in the life cycle as possible.
+
 To set a configuration value, the `put` method on the `config` instance needs to be called, the `put` method returns the `config` instance so they can be chained.
 
 ```javascript
@@ -20,11 +21,15 @@ fcl
   .put('baz', 'buz'); // configures "baz" to be "buz"
 ```
 
-> **Note**: For advanced use cases requiring scoped configuration, isolated client instances, or multi-tenancy support, see the [`createFlowClient` reference documentation](./packages-docs/fcl/createFlowClient.md).
+:::info
 
-## Getting Configuration Values
+For advanced use cases that require scoped configuration, isolated client instances, or multi-tenancy support, see the [`createFlowClient` reference documentation].
 
-The `config` instance has an asynchronous `get` method. You can also pass it a fallback value incase the configuration state does not include what you are wanting.
+:::
+
+## Get configuration values
+
+The `config` instance has an asynchronous `get` method. You can also pass it a fallback value in case the configuration state does not include what you want.
 
 ```javascript
 import * as fcl from '@onflow/fcl';
@@ -44,13 +49,13 @@ async function addStuff() {
 addStuff().then((d) => console.log(d)); // 13 (5 + 7 + 1)
 ```
 
-## Common Configuration Keys
+## Common configuration keys
 
-- `accessNode.api` -- Api URL for the Flow Blockchain Access Node you want to be communicating with.
-- `app.detail.title` - **(INTRODUCED `@onflow/fcl@0.0.68`)** Your applications title, can be requested by wallets and other services. Used by WalletConnect plugin & Wallet Discovery service.
-- `app.detail.icon` - **(INTRODUCED `@onflow/fcl@0.0.68`)** Url for your applications icon, can be requested by wallets and other services. Used by WalletConnect plugin & Wallet Discovery service.
-- `app.detail.description` - **(INTRODUCED `@onflow/fcl@1.11.0`)** Your applications description, can be requested by wallets and other services. Used by WalletConnect plugin & Wallet Discovery service.
-- `app.detail.url` - **(INTRODUCED `@onflow/fcl@1.11.0`)** Your applications url, can be requested by wallets and other services. Used by WalletConnect plugin & Wallet Discovery service.
+- `accessNode.api` -- API URL for the Flow Blockchain Access Node you want to communicate with.
+- `app.detail.title` - **(INTRODUCED `@onflow/fcl@0.0.68`)** Your applications title, can be requested by wallets and other services. Used by WalletConnect plugin and Wallet Discovery service.
+- `app.detail.icon` - **(INTRODUCED `@onflow/fcl@0.0.68`)** URL for your applications icon, can be requested by wallets and other services. Used by WalletConnect plugin and Wallet Discovery service.
+- `app.detail.description` - **(INTRODUCED `@onflow/fcl@1.11.0`)** Your applications description, can be requested by wallets and other services. Used by WalletConnect plugin and Wallet Discovery service.
+- `app.detail.url` - **(INTRODUCED `@onflow/fcl@1.11.0`)** Your applications URL, can be requested by wallets and other services. Used by WalletConnect plugin and Wallet Discovery service.
 - `challenge.handshake` -- **(DEPRECATED `@onflow/fcl@0.0.68`)** Points FCL at the Wallet or Wallet Discovery mechanism.
 - `discovery.wallet` -- **(INTRODUCED `@onflow/fcl@0.0.68`)** Points FCL at the Wallet or Wallet Discovery mechanism.
 - `discovery.wallet.method` -- Describes which service strategy a wallet should use: `IFRAME/RPC`, `POP/RPC`, `TAB/RPC`, `HTTP/POST`, `EXT/RPC`
@@ -58,14 +63,14 @@ addStuff().then((d) => console.log(d)); // 13 (5 + 7 + 1)
 - `fcl.limit` -- Specifies fallback compute limit if not provided in transaction. Provided as integer.
 - `flow.network` (recommended) -- **(INTRODUCED `@onflow/fcl@1.0.0`)** Used in conjunction with stored interactions and provides FCLCryptoContract address for `testnet` and `mainnet`. Possible values: `local`, `testnet`, `mainnet`.
 - `service.OpenID.scopes` - **(INTRODUCED `@onflow/fcl@0.0.68`)** Open ID Connect claims for Wallets and OpenID services.
-- `walletconnect.projectId` -- **(INTRODUCED `@onflow/fcl@1.11.0`)** Your app's WalletConnect project ID. See [WalletConnect Cloud](https://cloud.walletconnect.com/sign-in) to obtain a project ID for your application.
+- `walletconnect.projectId` -- **(INTRODUCED `@onflow/fcl@1.11.0`)** Your app's WalletConnect project ID. See [WalletConnect Cloud] to obtain a project ID for your application.
 - `walletconnect.disableNotifications` -- **(INTRODUCED `@onflow/fcl@1.13.0`)** Flag to disable pending WalletConnect request notifications within the application's UI. Default is `false`.
 
-## Using Contracts in Scripts and Transactions
+## Use contracts in scripts and transactions
 
-### Address Replacement
+### Address replacement
 
-Configuration keys that start with `0x` will be replaced in FCL scripts and transactions, this allows you to write your script or transaction Cadence code once and not have to change it when you point your application at a difference instance of the Flow Blockchain.
+Configuration keys that start with `0x` will be replaced in FCL scripts and transactions. This allows you to write your script or transaction Cadence code once and not have to change it when you point your application at a difference instance of the Flow Blockchain.
 
 ```javascript
 import * as fcl from '@onflow/fcl';
@@ -115,9 +120,9 @@ fcl
   .put('0xFlowToken', '0x7e60df042a9c0868');
 ```
 
-### Using `flow.json`
+### Use `flow.json`
 
-A simpler way to import contracts in scripts and transactions is to use the `config.load` method to ingest your contracts from your `flow.json` file. This keeps the import syntax unified across tools and lets FCL figure out which address to use for what network based on the network provided in config. To use `config.load` you must first import your `flow.json` file and then pass it to `config.load` as a parameter.
+A simpler way to import contracts in scripts and transactions is to use the `config.load` method to ingest your contracts from your `flow.json` file. This keeps the import syntax unified across tools and lets FCL figure out which address to use for what network based on the network provided in the config. To use `config.load` you must first import your `flow.json` file and then pass it to `config.load` as a parameter.
 
 ```javascript
 import { config } from '@onflow/fcl';
@@ -146,6 +151,16 @@ Then in your scripts and transactions, all you have to do is:
 import "HelloWorld"
 ```
 
-FCL will automatically replace the contract name with the address for the network you are using.
+FCL will automatically replace the contract name with the address for the network you use.
 
-> Note: never put private keys in your `flow.json`. You should use the [key/location syntax](../../flow-cli/flow.json/security.md) to separate your keys into a separate git ignored file.
+:::info
+
+Never put private keys in your `flow.json`. Instead, use the [key/location syntax] to separate your keys into a separate git ignored file.
+
+:::
+
+<!-- Reference-style links, will not render on page. -->
+
+[`createFlowClient` reference documentation]: ./packages-docs/fcl/createFlowClient.md
+[WalletConnect Cloud]: https://cloud.walletconnect.com/sign-in
+[key/location syntax]: ../../flow-cli/flow.json/security.md

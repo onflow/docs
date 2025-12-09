@@ -6,29 +6,29 @@ sidebar_position: 3
 
 :::info
 
-If you're building a frontend, use the [React SDK](../../react-sdk/index.mdx). If you're familiar with Solidity and the EVM world, the [React SDK] is to wagmi as FCL is to viem.
+If you want to build a frontend, use the [React SDK]. If you're familiar with Solidity and the EVM world, the [React SDK] is to wagmi as FCL is to viem.
 
 :::
 
 ## What is FCL?
 
-The **Flow Client Library (FCL) JS** is a package designed to facilitate interactions between dapps, wallets, and the Flow blockchain. It provides a standardized way for applications to connect with users and their wallets, **eliminating the need for custom integrations**.
+The **Flow Client Library (FCL) JS** is a package designed to facilitate interactions between dApps, wallets, and the Flow blockchain. It provides a standardized way for applications to connect with users and their wallets, **eliminating the need for custom integrations**.
 
 ### Key Features:
 
-- **Universal Wallet Support** Works seamlessly with all FCL-compatible wallets, making authentication simple.
+- **Universal Wallet Support** Works seamlessly with all FCL-compatible wallets, which makes authentication simple.
 - **Secure Authentication** Standardized authentication flow ensures a smooth user experience.
-- **Blockchain Interactions** Enables querying, mutating, and interacting with smart contracts on Flow.
+- **Blockchain Interactions** Allows querying, mutating, and interacting with smart contracts on Flow.
 - **Full-Featured Utilities** Offers built-in functions to streamline blockchain development.
 - **Flexible Environment** Can run in both browser and server environments, though wallet interactions are browser-only.
 
 FCL was created to make building Flow-connected applications **easy, secure, and scalable** by defining **standardized communication patterns** between wallets, applications, and users.
 
-For iOS, we also offer [FCL Swift](https://github.com/Outblock/fcl-swift).
+For iOS, we also offer [FCL Swift].
 
 ---
 
-## Getting Started
+## Get started
 
 ### Requirements
 
@@ -36,7 +36,7 @@ For iOS, we also offer [FCL Swift](https://github.com/Outblock/fcl-swift).
 
 ### Installation
 
-To use the FCL JS in your application, install using **yarn** or **npm**
+To use the FCL JS in your application, install with **yarn** or **npm**
 
 ```shell
 npm i -S @onflow/fcl
@@ -46,8 +46,7 @@ npm i -S @onflow/fcl
 yarn add @onflow/fcl
 ```
 
-#### Importing
-
+#### Import
 **ES6**
 
 ```js
@@ -62,12 +61,12 @@ const fcl = require('@onflow/fcl');
 
 ---
 
-## FCL for Dapps
+## FCL for dApps
 
-#### Wallet Interactions
+#### Wallet interactions
 
-- _Wallet Discovery_ and _Sign-up/Login_: Onboard users with ease. Never worry about supporting multiple wallets.
-  Authenticate users with any [FCL compatible wallet](#current-wallet-providers).
+- _Wallet Discovery_ and _Sign-up/Login_: Onboard users with ease. Never worry about how to support multiple wallets.
+  Authenticate users with any [FCL compatible wallet].
 
 ```js
 // in the browser
@@ -80,16 +79,20 @@ fcl.config({
 fcl.authenticate();
 ```
 
-> **Note**: For advanced configuration patterns including scoped clients and multi-tenancy, see the [`createFlowClient` reference documentation](./packages-docs/fcl/createFlowClient.md).
+:::info 
+
+For advanced configuration patterns including scoped clients and multi-tenancy, see the [`createFlowClient` reference documentation].
 
 ![FCL Default Discovery UI](images/discovery.png)
 
-> **Note**: A [Dapper Wallet](https://meetdapper.com/developers) developer account is required.
+A [Dapper Wallet] developer account is required.
 
-- _Interact with smart contracts_: Authorize transactions via the user's chosen wallet
-- _Prove ownership of a wallet address_: Signing and verifying user signed data
+- _Interact with smart contracts_: Authorize transactions via the user's chosen wallet.
+- _Prove ownership of a wallet address_: Sign and verify user signed data.
 
-#### Blockchain Interactions
+:::
+
+#### Blockchain interactions
 
 - _Query the chain_: Send arbitrary Cadence scripts to the chain and receive back decoded values
 
@@ -140,9 +143,9 @@ const txId = await fcl.mutate({
 - Event polling
 - Custom authorization functions
 
-## Typescript Support
+## Typescript support
 
-FCL JS supports TypeScript. If you need to import specific types, you can do so via the [@onflow/typedefs](https://github.com/onflow/fcl-js/tree/master/packages/typedefs) package.
+FCL JS supports TypeScript. If you need to import specific types, you can do so via the [@onflow/typedefs] package.
 
 ```typescript
 import { CurrentUser } from '@onflow/typedefs';
@@ -158,63 +161,97 @@ const newUser: CurrentUser = {
 };
 ```
 
-For all type definitions available, see [this file](https://github.com/onflow/fcl-js/blob/master/packages/typedefs/src/index.ts)
+For all type definitions available, see [this file]
 
 ## Next Steps
 
-- See the [Flow App Quick Start](../../../../blockchain-development-tutorials/cadence/getting-started/index.md).
-- See the full [API Reference](./packages-docs/fcl/index.md) for all FCL functionality.
-- Learn Flow's smart contract language to build any script or transactions: [Cadence](https://cadence-lang.org).
-- Explore all of Flow [docs and tools](https://developers.flow.com).
+- See the [Flow App Quick Start].
+- See the full [API Reference] for all FCL functionality.
+- Learn Flow's smart contract language to build any script or transactions: [Cadence].
+- Explore all of Flow [docs and tools].
 
 ---
 
-## FCL for Wallet Providers
+## FCL for wallet providers
 
 Wallet providers on Flow have the flexibility to build their user interactions and UI through a variety of ways:
 
-- Front channel communication via Iframe, pop-up, tab, or extension
-- Back channel communication via HTTP
+- Front channel communication via Iframe, pop-up, tab, or extension.
+- Back channel communication via HTTP.
 
-FCL is agnostic to the communication channel and be configured to create both custodial and non-custodial wallets. This enables users to interact with wallet providers without needing to download an app or extension.
+FCL is agnostic to the communication channel and be configured to create both custodial and non-custodial wallets. This allows users to interact with wallet providers without the need to download an app or extension.
 
-The communication channels involve responding to a set of pre-defined FCL messages to deliver the requested information to the dapp. Implementing a FCL compatible wallet on Flow is as simple as filling in the responses with the appropriate data when FCL requests them. If using any of the front-channel communication methods, FCL also provides a set of [wallet utilities](https://github.com/onflow/fcl-js/blob/master/packages/fcl-core/src/wallet-utils/index.js) to simplify this process.
+The communication channels involve responding to a set of pre-defined FCL messages to deliver the requested information to the dApp. To implement a FCL compatible wallet on Flow is as simple as filling in the responses with the appropriate data when FCL requests them. If you use any of the front-channel communication methods, FCL also provides a set of [wallet utilities] to simplify this process.
 
-### Current Wallet Providers
+### Current wallet providers
 
-- [Flow Wallet](https://wallet.flow.com/)
-- [NuFi Wallet](https://nu.fi/)
-- [Blocto](https://blocto.portto.io/en/)
-- [Ledger](https://ledger.com) (limited transaction support)
-- [Dapper Wallet](https://www.meetdapper.com/)
+- [Flow Wallet]
+- [NuFi Wallet]
+- [Blocto]
+- [Ledger] (limited transaction support)
+- [Dapper Wallet]
 
-### Wallet Discovery
+### Wallet discovery
 
-It can be difficult to get users to discover new wallets on a chain. To solve this, we created a [wallet discovery service](https://github.com/onflow/fcl-discovery) that can be configured and accessed through FCL to display all available Flow wallet providers to the user. This means:
+It can be difficult to get users to discover new wallets on a chain. To solve this, we created a [wallet discovery service] that can be configured and accessed through FCL to display all available Flow wallet providers to the user. This means:
 
-- Dapps can display and support all FCL compatible wallets that launch on Flow without needing to change any code
-- Users don't need to sign up for new wallets - they can carry over their existing one to any dapp that uses FCL for authentication and authorization.
+- dApps can display and support all FCL compatible wallets that launch on Flow without the need to change any code.
+- Users don't need to sign up for new wallets - they can carry over their current one to any dApp that uses FCL for authentication and authorization.
 
 The discovery feature can be used via API allowing you to customize your own UI or you can use the default UI without any additional configuration.
 
-> Note: To get your wallet added to the discovery service, make a PR in [fcl-discovery](https://github.com/onflow/fcl-discovery).
+:::info
 
-### Building a FCL compatible wallet
+To get your wallet added to the discovery service, make a PR in [fcl-discovery].
 
-- Read the [wallet guide](https://github.com/onflow/fcl-js/blob/master/packages/fcl-core/src/wallet-provider-spec/draft-v4.md) to understand the implementation details.
-- Review the architecture of the [FCL dev wallet](https://github.com/onflow/fcl-dev-wallet) for an overview.
-- If building a non-custodial wallet, see the [Account API](https://github.com/onflow/flow-account-api) and the [FLIP](https://github.com/onflow/flow/pull/727) on derivation paths and key generation.
+:::
+
+### Build a FCL compatible wallet
+
+- Read the [wallet guide] to understand the implementation details.
+- Review the architecture of the [FCL dev wallet] for an overview.
+- If you want to build a non-custodial wallet, see the [Account API] and the [FLIP] on derivation paths and key generation.
 
 ---
 
-## 🛠 Want to Use the Flow SDK Directly?
+## 🛠 Want to use the Flow SDK directly?
 
-If you prefer to interact with Flow at a **lower level** without using FCL, you can use the [Flow JavaScript SDK](./packages-docs/sdk/index.md) directly. The SDK provides raw access to Flow's API for sending transactions, executing scripts, and managing accounts.
+If you prefer to interact with Flow at a **lower level** without FCL, you can use the [Flow JavaScript SDK] directly. The SDK provides raw access to Flow's API to send transactions, execute scripts, and manage accounts.
 
-FCL is built **on top of the Flow SDK**, making it easier to handle authentication, wallet interactions, and dapp connectivity. Choose the approach that best fits your use case.
+FCL is built **on top of the Flow SDK**, which makes it easier to handle authentication, wallet interactions, and dApp connectivity. Choose the approach that best fits your use case.
 
 ## Support
 
-- Notice a problem or want to request a feature? [Add an issue](https://github.com/onflow/fcl-js/issues).
-- Join the Flow community on [Discord](https://discord.gg/flow) to keep up to date and to talk to the team.
-- Read the [Contributing Guide](https://github.com/onflow/fcl-js/blob/master/CONTRIBUTING.md) to learn how to contribute to the project.
+- Notice a problem or want to request a feature? [Add an issue].
+- Join the Flow community on [Discord] to keep up to date and to talk to the team.
+- Read the [Contributing Guide] to learn how to contribute to the project.
+
+<!-- Reference-style links, will not render on page. -->
+
+[React SDK]: ../../react-sdk/index.mdx
+[FCL Swift]: https://github.com/Outblock/fcl-swift
+[FCL compatible wallet]: #current-wallet-providers
+[`createFlowClient` reference documentation]: ./packages-docs/fcl/createFlowClient.md
+[Dapper Wallet]: https://meetdapper.com/developers
+[@onflow/typedefs]: https://github.com/onflow/fcl-js/tree/master/packages/typedefs
+[this file]: https://github.com/onflow/fcl-js/blob/master/packages/typedefs/src/index.ts
+[Flow App Quick Start]: ../../../../blockchain-development-tutorials/cadence/getting-started/index.md
+[API Reference]: ./packages-docs/fcl/index.md
+[Cadence]: https://cadence-lang.org
+[docs and tools]: https://developers.flow.com
+[wallet utilities]: https://github.com/onflow/fcl-js/blob/master/packages/fcl-core/src/wallet-utils/index.js
+[Flow Wallet]: https://wallet.flow.com/
+[NuFi Wallet]: https://nu.fi/
+[Blocto]: https://blocto.portto.io/en/
+[Ledger]: https://ledger.com
+[Dapper Wallet]: https://www.meetdapper.com/
+[wallet discovery service]: https://github.com/onflow/fcl-discovery
+[fcl-discovery]: https://github.com/onflow/fcl-discovery
+[wallet guide]: https://github.com/onflow/fcl-js/blob/master/packages/fcl-core/src/wallet-provider-spec/draft-v4.md
+[FCL dev wallet]: https://github.com/onflow/fcl-dev-wallet
+[Account API]: https://github.com/onflow/flow-account-api 
+[FLIP]: https://github.com/onflow/flow/pull/727
+[Flow JavaScript SDK]: ./packages-docs/sdk/index.md
+[Add an issue]: https://github.com/onflow/fcl-js/issues
+[Discord]: https://discord.gg/flow
+[Contributing Guide]: https://github.com/onflow/fcl-js/blob/master/CONTRIBUTING.md
