@@ -82,7 +82,7 @@ And below are the bridge escrow's EVM addresses. These addresses are [`CadenceOw
 
 [the bridge repo]: https://github.com/onflow/flow-evm-bridge
 [the bridge guides]: ../../../blockchain-development-tutorials/cross-vm-apps/vm-bridge.md
-[`0xf8146b4aef631853f0eb98dbe28706d029e52c52`]: https://evm-testnet.flowscan.io/address/0xF8146B4aEF631853F0eB98DBE28706d029e52c52)
+[`0xf8146b4aef631853f0eb98dbe28706d029e52c52`]: https://evm-testnet.flowscan.io/address/0xF8146B4aEF631853F0eB98DBE28706d029e52c52
 [`0x1c6dea788ee774cf15bcd3d7a07ede892ef0be40`]: https://evm.flowscan.io/address/0x1C6dEa788Ee774CF15bCd3d7A07ede892ef0bE40
 [`0x8781d15904d7e161f421400571dea24cc0db6938`]: https://evm-testnet.flowscan.io/address/0x8781d15904d7e161f421400571dea24cc0db6938
 [`0x8fdec2058535a2cb25c2f8cec65e8e0d0691f7b0`]: https://evm.flowscan.io/address/0x8FDEc2058535A2Cb25C2f8ceC65e8e0D0691f7B0
@@ -92,4 +92,4 @@ And below are the bridge escrow's EVM addresses. These addresses are [`CadenceOw
 [`0xe7c2B80a9de81340AE375B3a53940E9aeEAd79Df`]: https://evm.flowscan.io/address/0xe7c2B80a9de81340AE375B3a53940E9aeEAd79Df
 [`CadenceOwnedAccount`s (COA)]: https://developers.flow.com/blockchain-development-tutorials/cross-vm-apps/interacting-with-coa#coa-interface
 [`0x0000000000000000000000023f946ffbc8829bfd`]: https://evm-testnet.flowscan.io/address/0x0000000000000000000000023f946FFbc8829BFD
-[`0x00000000000000000000000249250a5c27ecab3b`]: https://evm.flowscan.io/address/0x00000000000000000000000249250a5C27Ecab3B)
+[`0x00000000000000000000000249250a5c27ecab3b`]: https://evm.flowscan.io/address/0x00000000000000000000000249250a5C27Ecab3B
