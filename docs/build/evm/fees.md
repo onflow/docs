@@ -27,7 +27,7 @@ Transaction fee on EVM = surge x [inclusion fee + (execution effort * unit cost)
 - `Inclusion fee` accounts for the resources required to process a transaction due to its core properties (byte size, signatures). This is currently constant at 1E-6 FLOW, but subject to change with community approval.
 - `Execution fee` The fee that accounts for the operational cost of running the transaction script, processing the results, sending results for verification, generating verification receipts, and so on, and is calculated as a product of `execution effort units` and the `cost per unit`.
   - `Execution Effort (computation)` is based on transaction type and operations that are called during the execution of a transaction. The weights determine how costly (time consuming) each operation is.
-  - `Execution Effort Unit Cost` = `2.49E-07 FLOW` (currently constant, but subject to change with community approval)
+  - `Execution Effort Unit Cost` = `4E-05 FLOW` (currently constant, but subject to change with community approval)
 
 <h3>Calculation of Execution Effort</h3>
 
