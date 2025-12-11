@@ -4,14 +4,13 @@ description: How to execute a Cadence script on Flow from the command line
 sidebar_position: 6
 ---
 
-The Flow CLI provides a command to execute a Cadence script on
-the Flow execution state with any Flow Access API.
+The Flow CLI provides a command to execute a Cadence script on the Flow execution state with any Flow Access API.
 
 ```shell
 flow scripts execute <filename> [<argument> <argument>...] [flags]
 ```
 
-## Example Usage
+## Example usage
 
 ```shell
 # Execute a script on Flow Testnet
@@ -34,17 +33,15 @@ access(all) fun main(greeting: String, who: String): String {
 - Name: `filename`
 - Valid inputs: a path in the current filesystem.
 
-The first argument is a path to a Cadence file containing the 
+The first argument is a path to a Cadence file that contains the 
 script to be executed.
 
 ### Arguments
+
 - Name: `argument`
-- Valid inputs: valid [cadence values](https://cadencelang.dev/docs/1.0/json-cadence-spec)
-  matching argument type in script code.
+- Valid inputs: valid [cadence values] that matches argument type in script code.
 
-Input arguments values matching corresponding types in the source code and passed in the same order.
-You can pass a `nil` value to optional arguments by executing the flow script like this: `flow scripts execute script.cdc nil`.
-
+Input arguments values matching corresponding types in the source code and passed in the same order. To pass a `nil` value to optional arguments, you can execute the flow script like this: `flow scripts execute script.cdc nil`.
 
 ## Flags
 
@@ -54,9 +51,7 @@ You can pass a `nil` value to optional arguments by executing the flow script li
 - Valid inputs: arguments in JSON-Cadence form.
 - Example: `flow scripts execute script.cdc '[{"type": "String", "value": "Hello World"}]'`
 
-Arguments passed to the Cadence script in the Cadence JSON format.
-Cadence JSON format contains `type` and `value` keys and is 
-[documented here](https://cadencelang.dev/docs/1.0/json-cadence-spec).
+Arguments passed to the Cadence script in the Cadence JSON format. Cadence JSON format contains `type` and `value` keys and is [documented here].
 
 ### Host
 
@@ -64,17 +59,14 @@ Cadence JSON format contains `type` and `value` keys and is
 - Valid inputs: an IP address or hostname.
 - Default: `127.0.0.1:3569` (Flow Emulator)
 
-Specify the hostname of the Access API that will be
-used to execute the command. This flag overrides
-any host defined by the `--network` flag.
+Specify the hostname of the Access API to use to execute the command. This flag overrides any host defined by the `--network` flag.
 
-### Network Key
+### Network key
 
 - Flag: `--network-key`
 - Valid inputs: A valid network public key of the host in hex string format
 
-Specify the network public key of the Access API that will be
-used to create a secure GRPC client when executing the command.
+Specify the network public key of the Access API to use to create a secure GRPC client when you execute the command.
 
 ### Network
 
@@ -125,9 +117,7 @@ Specify the log level. Control how much output you want to see during command ex
 - Valid inputs: a path in the current filesystem.
 - Default: `flow.json`
 
-Specify the path to the `flow.json` configuration file.
-You can use the `-f` flag multiple times to merge
-several configuration files.
+Specify the path to the `flow.json` configuration file. You can use the `-f` flag multiple times to merge several configuration files.
 
 ### Version Check
 
@@ -135,3 +125,8 @@ several configuration files.
 - Default: `false`
 
 Skip version check during start up to speed up process for slow connections.
+
+<!-- Reference-style links, will not render on page. -->
+
+[documented here]: https://cadencelang.dev/docs/1.0/json-cadence-spec
+[cadence values]: https://cadencelang.dev/docs/1.0/json-cadence-spec

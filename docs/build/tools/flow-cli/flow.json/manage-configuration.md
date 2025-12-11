@@ -4,9 +4,9 @@ description: How to configure the Flow CLI using config commands
 sidebar_position: 3
 ---
 
-Instead of manually editing `flow.json`, use the Flow CLI's `config` commands to add, remove, and manage your project configuration. These commands provide validation and ensure your configuration is properly formatted.
+Rather than manually edit `flow.json`, use the Flow CLI's `config` commands to add, remove, and manage your project configuration. These commands provide validation and ensure your configuration is properly formatted.
 
-## Basic Commands
+## Basic commands
 
 ```shell
 # Add configuration items
@@ -16,9 +16,9 @@ flow config add <account|contract|network|deployment>
 flow config remove <account|contract|network|deployment>
 ```
 
-## Adding Configuration
+## Adding configuration
 
-### Add an Account
+### Add an account
 
 ```shell
 flow config add account
@@ -54,7 +54,7 @@ flow config add account \
 }
 ```
 
-### Add a Contract
+### Add a contract
 
 ```shell
 flow config add contract
@@ -90,7 +90,7 @@ flow config add contract \
 }
 ```
 
-### Add a Network
+### Add a network
 
 ```shell
 flow config add network
@@ -120,7 +120,7 @@ flow config add network \
 }
 ```
 
-### Add a Deployment
+### Add a deployment
 
 ```shell
 flow config add deployment
@@ -149,37 +149,41 @@ flow config add deployment \
 }
 ```
 
-## Removing Configuration
+## Remove configuration
 
-### Remove an Account
+### Remove an account
 
 ```shell
 flow config remove account my-testnet-account
 ```
 
-### Remove a Contract
+### Remove a contract
 
 ```shell
 flow config remove contract MyToken
 ```
 
-### Remove a Network
+### Remove a network
 
 ```shell
 flow config remove network custom-testnet
 ```
 
-### Remove a Deployment
+### Remove a deployment
 
 ```shell
 flow config remove deployment my-testnet-account testnet
 ```
 
-**Note:** This removes all deployments for the specified account on the specified network.
+:::info
 
-## Configuration File Management
+This removes all deployments for the specified account on the specified network.
 
-### Using Custom Configuration Files
+::
+
+## Configuration file management
+
+### Use custom configuration files
 
 ```shell
 # Use a specific configuration file
@@ -189,13 +193,13 @@ flow config add account --config-path ./config/flow.json
 flow config add account -f flow.json -f private.json
 ```
 
-### Configuration File Priority
+### Configuration file priority
 
-When using multiple configuration files with `-f` flag:
+When you use multiple configuration files with `-f` flag:
 
-1. Files are merged from left to right
-2. Later files override earlier ones for overlapping properties
-3. Non-overlapping properties are combined
+1. Files are merged from left to right.
+2. Later files override earlier ones when properties overlap.
+3. Non-overlapping properties are combined.
 
 **Example:**
 ```shell
@@ -204,9 +208,9 @@ flow config add account -f flow.json -f private.json
 
 If both files have an `admin-account`, the one from `private.json` will be used.
 
-### Security Best Practices
+### Security best practices
 
-For better security, consider using separate configuration files for sensitive data:
+For better security, consider separate configuration files for sensitive data:
 
 **Main configuration file (`flow.json`):**
 ```json
@@ -240,29 +244,33 @@ For better security, consider using separate configuration files for sensitive d
 }
 ```
 
-⚠️ **Important:** Always add private files to `.gitignore` to prevent committing sensitive data to source control.
+:::warning
+
+Always add private files to `.gitignore` to prevent committing sensitive data to source control.
+
+:::
 
 ## Validation
 
 The `config add` command validates all inputs:
 
-- **Account addresses** must be valid Flow addresses (16-character hex)
-- **Private keys** must be valid hex-encoded keys
-- **Contract sources** must point to existing `.cdc` files
-- **Network hosts** must be valid host:port combinations
-- **Deployments** must reference existing accounts and contracts
+- **Account addresses** must be valid Flow addresses (16-character hex).
+- **Private keys** must be valid hex-encoded keys.
+- **Contract sources** must point to current `.cdc` files.
+- **Network hosts** must be valid host:port combinations.
+- **Deployments** must reference current accounts and contracts.
 
 ## Best Practices
 
-1. **Use CLI commands** instead of manual editing when possible
-2. **Validate your configuration** by running `flow config add` commands
-3. **Use descriptive names** for accounts and contracts
-4. **Keep sensitive data separate** using multiple config files
-5. **Test deployments** on emulator before adding to testnet/mainnet
+1. **Use CLI commands** instead of manual edits when possible.
+2. **Validate your configuration** by running `flow config add` commands.
+3. **Use descriptive names** for accounts and contracts.
+4. **Keep sensitive data separate** with multiple config files.
+5. **Test deployments** on emulator before adding to testnet and mainnet.
 
-## Common Use Cases
+## Common use cases
 
-### Setting Up a New Project
+### Set up a new project
 
 ```shell
 # Initialize project
@@ -281,7 +289,7 @@ flow config add deployment --network emulator --account emulator-account --contr
 flow config add deployment --network testnet --account testnet-account --contract MyToken --contract MyNFT
 ```
 
-### Adding to Existing Project
+### Add to current project
 
 ```shell
 # Add new contract
@@ -291,7 +299,7 @@ flow config add contract --name NewContract --filename ./cadence/contracts/NewCo
 flow config add deployment --network testnet --account testnet-account --contract NewContract
 ```
 
-### Managing Multiple Environments
+### Manage multiple environments
 
 ```shell
 # Use separate config files for different environments
@@ -299,14 +307,17 @@ flow config add account --name admin-account --address f8d6e0586b0a20c7 --privat
 flow config add account --name admin-account --address f1d6e0586b0a20c7 --private-key 3335dfdeb0ff03a7a73ef39788563b62c89adea67bbb21ab95e5f710bd1d40b7 -f private.json
 ```
 
-## Related Commands
+## Related commands
 
-- [`flow init`](./initialize-configuration.md) - Initialize a new project
-- [`flow project deploy`](../deployment/deploy-project-contracts.md) - Deploy contracts
-- [`flow accounts create`](../accounts/create-accounts.md) - Create new accounts
+- [`flow init`] - Initialize a new project
+- [`flow project deploy`] - Deploy contracts
+- [`flow accounts create`] - Create new accounts
 
+<!-- Reference-style links, will not render on page. -->
 
-
+[`flow init`]: ./initialize-configuration.md
+[`flow project deploy`]: ../deployment/deploy-project-contracts.md
+[`flow accounts create`]: ../accounts/create-accounts.md
 
 
 
