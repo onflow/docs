@@ -10,7 +10,7 @@ As an onchain app developer who uses FCL, the primary authentication functionali
 
 Due to the way FCL works, to log in and sign up are essentially the same process.
 
-# Retriev information about the current user
+# Retrieve information about the current user
 
 FCL provides two ways to get information about the current user:
 
