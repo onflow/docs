@@ -62,23 +62,23 @@ This starts a local Flow network with:
 - REST API on `http://localhost:8888`
 - Admin API on port `8080`
 
-## Available Commands
+## Available commands
 
 - `snapshot`: Create/Load/List emulator snapshots. See: [Create Emulator Snapshot]
 
-## Key Flags
+## Key flags
 
 - **Networking**
-  - `--host <string>`: Host to listen on for gRPC/REST/Admin (default: all interfaces)
+  - `--host <string>`: Host to listen on for gRPC, REST, and Admin (default: all interfaces)
   - `--port, -p <int>`: gRPC port (default `3569`)
   - `--rest-port <int>`: REST API port (default `8888`)
   - `--admin-port <int>`: Admin API port (default `8080`)
   - `--debugger-port <int>`: Debug Adapter Protocol port (default `2345`)
-  - `--grpc-debug`: Enable gRPC server reflection
-  - `--rest-debug`: Enable REST API debug output
+  - `--grpc-debug`: Turn on gRPC server reflection
+  - `--rest-debug`: Turn on REST API debug output
 
-- **State & Persistence**
-  - `--persist`: Enable persistent storage (default disabled)
+- **State and Persistence**
+  - `--persist`: Turn on persistent storage (default disabled)
   - `--dbpath <path>`: Directory for on-disk state (default `./flowdb`)
   - `--sqlite-url <url>`: Use SQLite storage backend
   - `--redis-url <url>`: Use Redis storage backend
@@ -87,15 +87,15 @@ This starts a local Flow network with:
 
 - **Forking**
   - `--fork <string>`: Start the emulator in fork mode using a network from `flow.json`. If provided without a value, defaults to `mainnet`.
-  - `--fork-host <host>`: Access node to query when forking Mainnet/Testnet
-  - `--fork-height <uint>`: Starting block height when forking
+  - `--fork-host <host>`: Access node to query when you fork Mainnet or Testnet
+  - `--fork-height <uint>`: Starting block height when you fork
 
-- **Cadence & VM**
-  - `--block-time, -b <duration>`: Time between sealed blocks (e.g. `1s`, `300ms`)
-  - `--coverage-reporting`: Enable code coverage reporting
-  - `--computation-reporting`: Enable computation reporting
-  - `--legacy-upgrade`: Enable legacy contract upgrade behavior
-  - `--scheduled-transactions`: Enable scheduled transactions (default true)
+- **Cadence and VM**
+  - `--block-time, -b <duration>`: Time between sealed blocks (for exxample, `1s`, `300ms`)
+  - `--coverage-reporting`: Turn on code coverage reporting
+  - `--computation-reporting`: Turn on computation reporting
+  - `--legacy-upgrade`: Turn on legacy contract upgrade behavior
+  - `--scheduled-transactions`: Turn on scheduled transactions (default true)
   - `--script-compute-limit <int>`: Compute unit limit for scripts (default `100000`)
   - `--transaction-max-compute-limit <int>`: Max transaction compute unit limit (default `9999`)
   - `--transaction-expiry <int>`: Transaction expiry in blocks (default `10`)
@@ -104,21 +104,21 @@ This starts a local Flow network with:
   - `--storage-limit`: Enforce account storage limit (default true)
   - `--storage-per-flow <decimal>`: MB of storage per 1 FLOW token
   - `--token-supply <decimal>`: Initial FLOW token supply (default `1000000000.0`)
-  - `--transaction-fees`: Enable transaction fees
+  - `--transaction-fees`: Turn on transaction fees
   - `--setup-evm`: Deploy EVM contracts (default true)
   - `--setup-vm-bridge`: Deploy VM Bridge contracts (default true)
 
-- **Service Account & Identity**
+- **Service Account and Identity**
   - `--chain-id <emulator|testnet|mainnet>`: Address generation chain (default `emulator`)
   - `--service-priv-key <hex>` / `--service-pub-key <hex>`: Service account keys
   - `--service-sig-algo <ECDSA_P256|ECDSA_secp256k1>`: Service key signature algo (default `ECDSA_P256`)
   - `--service-hash-algo <SHA3_256|SHA2_256>`: Service key hash algo (default `SHA3_256`)
-  - `--min-account-balance <decimal>`: Minimum account balance / account creation cost
+  - `--min-account-balance <decimal>`: Minimum account balance or account creation cost
   - `--contracts`: Deploy common contracts on start
   - `--contract-removal`: Allow contract removal for development (default true)
   - `--init`: Initialize a new account profile
 
-- **Logging & Output**
+- **Logging and Output**
   - `--verbose, -v`: Verbose logging
   - `--log-format <text|JSON>`: Logging output format (default `text`)
 
@@ -168,15 +168,15 @@ For the complete and current list of flags, run:
 flow emulator --help
 ```
 
-## Debugging & Testing
+## Debugging and Testing
 
 - **Code Coverage**: Add `--coverage-reporting` flag and visit `http://localhost:8080/emulator/codeCoverage`
 - **Debugging**: Use `#debugger()` pragma in Cadence code for breakpoints
-- **Fork mode note**: When using `flow emulator --fork`, only Flow chain state is available. External oracles/APIs and cross-chain reads are not live; mock these or run local stub services for E2E.
+- **Fork mode note**: When you use `flow emulator --fork`, only Flow chain state is available. External oracles/APIs and cross-chain reads are not live; mock these or run local stub services for E2E.
 
 ## Snapshots
 
-The Flow CLI provides a command to create emulator snapshots, which are points in blockchain history you can later jump to and reset the state to that moment. This can be useful for testing where you establish a beginning state, run tests and after revert back to the initial state.
+The Flow CLI provides a command to create emulator snapshots, which are points in blockchain history you can later jump to and reset the state to that moment. This can be useful to test where you establish a beginning state, run tests and after revert back to the initial state.
 
 ### Quick snapshot workflow
 
@@ -201,7 +201,7 @@ Create a new emulator snapshot at the current block with a name of `myInitialSta
 flow emulator snapshot create myInitialState
 ```
 
-### Load an existing snapshot
+### Load a current snapshot
 
 To jump to a previously created snapshot we use the load command in combination with the name.
 
@@ -209,17 +209,17 @@ To jump to a previously created snapshot we use the load command in combination 
 flow emulator snapshot load myInitialState
 ```
 
-### List all existing snapshots
+### List all snapshots
 
-To list all the existing snapshots we previously created and can load to run:
+To list all the snapshots we previously created and can load to run:
 
 ```shell
 flow emulator list
 ```
 
-## Additional Resources
+## Additional resources
 
-To learn more about using the Emulator, please have a look at the [public GitHub repository].
+To learn more about how to use the Emulator, have a look at the [public GitHub repository].
 
 <!-- Reference-style links -->
 

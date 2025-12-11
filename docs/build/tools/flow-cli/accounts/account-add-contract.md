@@ -3,18 +3,18 @@ title: Deploy a Contract
 sidebar_position: 3
 ---
 
-Deploy a new contract to a Flow account using the Flow CLI.   
+Deploy a new contract to a Flow account with the Flow CLI.   
 
 ```shell
 flow accounts add-contract <filename> [<argument> <argument>...] [flags]
 ```
 
-⚠️  Deprecation notice: using name argument in adding contract command will be deprecated soon.
+⚠️  Deprecation notice: we will deprecate the name argument in adding contract command soon.
 ```shell
 flow accounts add-contract <name> <filename> [<argument> <argument>...] [flags]
 ```
 
-## Example Usage
+## Example usage
 
 ```shell
 > flow accounts add-contract ./FungibleToken.cdc
@@ -36,7 +36,7 @@ Key 0	Public Key		 640a5a359bf3536d15192f18d872d57c98a96cb871b92b70cecb0739c2d5c
 Contracts Deployed: 1
 Contract: 'FungibleToken'
 ```
-**Testnet Example**
+**Testnet example**
 ```
 > flow accounts add-contract ./FungibleToken.cdc --signer alice --network testnet
 
@@ -79,10 +79,10 @@ Path to the file containing the contract source code.
 
 ### Arguments
 - Name: `argument`
-- Valid inputs: valid [cadence values](https://cadencelang.dev/docs/1.0/json-cadence-spec)
-  matching argument type in transaction code.
+- Valid inputs: valid [cadence values]
+  that match argument type in transaction code.
 
-Input arguments values matching corresponding types in the source code and passed in the same order.
+Input arguments values that match corresponding types in the source code and passed in the same order.
 
 Example:
 ```shell
@@ -113,9 +113,9 @@ Specify the name of the account that will be used to sign the transaction.
 
 Arguments passed to the Cadence transaction in Cadence JSON format.
 Cadence JSON format contains `type` and `value` keys and is
-[documented here](https://cadencelang.dev/docs/1.0/json-cadence-spec).
+[documented here].
 
-### Include Fields
+### Include fields
 
 - Flag: `--include`
 - Valid inputs: `contracts`
@@ -129,17 +129,14 @@ Specify fields to include in the result output. Applies only to the text output.
 - Valid inputs: an IP address or hostname.
 - Default: `127.0.0.1:3569` (Flow Emulator)
 
-Specify the hostname of the Access API that will be
-used to execute the command. This flag overrides
-any host defined by the `--network` flag.
+Specify the hostname of the Access API that will be used to execute the command. This flag overrides any host defined by the `--network` flag.
 
-### Network Key
+### Network key
 
 - Flag: `--network-key`
 - Valid inputs: A valid network public key of the host in hex string format
 
-Specify the network public key of the Access API that will be
-used to create a secure GRPC client when executing the command.
+Specify the network public key of the Access API that will be used to create a secure GRPC client when you execute the command.
 
 ### Network
 
@@ -191,12 +188,17 @@ Specify the log level. Control how much output you want to see during command ex
 - Default: `flow.json`
 
 Specify the path to the `flow.json` configuration file.
-You can use the `-f` flag multiple times to merge
-several configuration files.
 
-### Version Check
+You can use the `-f` flag multiple times to merge several configuration files.
+
+### Version check
 
 - Flag: `--skip-version-check`
 - Default: `false`
 
 Skip version check during start up to speed up process for slow connections.
+
+<!-- Relative links, will not render on page -->
+
+[cadence values]: https://cadencelang.dev/docs/1.0/json-cadence-spec
+[documented here]: https://cadencelang.dev/docs/1.0/json-cadence-spec

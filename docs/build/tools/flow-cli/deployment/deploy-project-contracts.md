@@ -8,14 +8,18 @@ sidebar_position: 3
 flow project deploy
 ```
 
-This command automatically deploys your project's contracts based on the
-configuration defined in your `flow.json` file.
+This command automatically deploys your project's contracts based on the configuration defined in your `flow.json` file.
 
-**Important:** Use Flow CLI commands to configure your project instead of manually editing `flow.json`.
-Before using this command, read about how to
-[configure project contracts and deployment targets](./project-contracts.md) using CLI commands.
+:::info
 
-## Example Usage
+Use Flow CLI commands to configure your project rather than manually edit `flow.json`.
+
+Before you use this command, read about how to
+[configure project contracts and deployment targets] with CLI commands.
+
+:::
+
+## Example usage
 
 ```shell
 > flow project deploy --network=testnet
@@ -28,9 +32,11 @@ KittyItems -> 0x8910590293346ec4
 ✨  All contracts deployed successfully
 ```
 
-**Note:** The `flow.json` configuration shown below is created automatically when you use CLI commands.
-You should use `flow config add contract` and `flow config add deployment` to configure your project
-rather than manually editing the file. See [Add Project Contracts](./project-contracts.md) for details.
+:::info
+
+The `flow.json` configuration shown below is created automatically when you use CLI commands. You should use `flow config add contract` and `flow config add deployment` to configure your project rather than manually edit the file. See [Add Project Contracts] for details.
+
+:::
 
 Your `flow.json` file might look something like this:
 
@@ -66,16 +72,18 @@ access(all) contract KittyItems {
 }
 ```
 
-## Initialization Arguments
+## Initialization arguments
 
-Deploying contracts that take initialization arguments requires adding those arguments to the deployment configuration.
+To deploy contracts that take initialization arguments, you must add those arguments to the deployment configuration.
 
-**Note:** For basic deployments, use `flow config add deployment` to configure your contracts.
-Initialization arguments are an advanced feature that may require manual editing of `flow.json`
-after the basic deployment is configured with CLI commands.
+:::info
 
-Each deployment can be specified as an object containing
-`name` and `args` keys specifying arguments to be
+For basic deployments, use `flow config add deployment` to configure your contracts. Initialization arguments are an advanced feature that may require you to manually edit `flow.json` after the basic deployment is configured with CLI commands.
+
+:::
+
+You can specify each deployment as an object that contains
+`name` and `args` keys that specify arguments to be
 used during the deployment. Example:
 
 ```json
@@ -97,30 +105,26 @@ used during the deployment. Example:
 }
 ```
 
-⚠️ **Security Warning:** Never put raw private keys in `flow.json`. Always use `.pkey` files for key storage.
-Before proceeding, we recommend reading the [Flow CLI security guidelines](../flow.json/security.md)
+:::danger
+
+⚠️ **Never** put raw private keys in `flow.json`. Always use `.pkey` files for key storage. Before you proceed, we recommend that you read the [Flow CLI security guidelines]
 to learn about the best practices for private key storage.
 
-## Dependency Resolution
+## Dependency resolution
 
 The `deploy` command attempts to resolve the import statements in all contracts being deployed.
 
-After the dependencies are found, the CLI will deploy the contracts in a deterministic order
-such that no contract is deployed until all of its dependencies are deployed.
-The command will return an error if no such ordering exists due to one or more cyclic dependencies.
+After the dependencies are found, the CLI will deploy the contracts in a deterministic order such that no contract is deployed until all of its dependencies are deployed. The command will return an error if no such ordering exists due to one or more cyclic dependencies.
 
 In the example above, `NonFungibleToken` will always be deployed before `KittyItems` since `KittyItems` imports `NonFungibleToken`.
 
-## Address Replacement
+## Address replacement
 
-After resolving all dependencies, the `deploy` command rewrites each contract so
-that its dependencies are imported from their _target addresses_ rather than their
-source file location.
+After it resolves all dependencies, the `deploy` command rewrites each contract so that its dependencies are imported from their _target addresses_ rather than their source file location.
 
-The rewritten versions are then deployed to their respective targets,
-leaving the original contract files unchanged.
+The rewritten versions are then deployed to their respective targets, which leaves the original contract files unchanged.
 
-### Contracts Importing from Other Contracts
+### Contracts that import from other contracts
 
 In the example above, the `KittyItems` contract would be rewritten like this:
 
@@ -132,7 +136,7 @@ access(all) contract KittyItems {
 }
 ```
 
-### Contracts Importing from Dependencies
+### Contracts that import from dependencies
 
 When your contracts import from the `dependencies` section, the deploy command uses the network-specific aliases defined in those dependencies.
 
@@ -211,18 +215,23 @@ access(all) contract ExampleConnectors {
 
 The deploy command automatically uses the addresses from the `dependencies` section's aliases for the target network. Notice how the addresses change based on the network—testnet uses `0x9a0766d93b6608b7` for `FungibleToken`, while mainnet uses `0xf233dcee88fe0abe`. Contracts in the `dependencies` section are not deployed—they're assumed to already exist on the network at the addresses specified in their aliases.
 
-## Merging Multiple Configuration Files
+## Merge multiple configuration files
 
 You can use the `-f` flag multiple times to merge several configuration files.
 
-If there is an overlap in any of the fields in the configuration between two or more configuration files, the value of
-the overlapped field in the resulting configuration will come from the configuration file that is on the further right
-order in the list of configuration files specified in the `-f` flag.
+If there is an overlap in any of the fields in the configuration between two or more configuration files, the value of the overlapped field in the configuration that results will come from the configuration file that is on the further right order in the list of configuration files specified in the `-f` flag.
 
-**Important:** Never put raw private keys in `flow.json`. Always use `.pkey` files for key storage.
+:::danger
 
-**Note:** Use `flow config add account` to create accounts in your main `flow.json` file.
-The merging feature is useful for separating sensitive account information into a separate file that you can exclude from version control.
+**Never** put raw private keys in `flow.json`. Always use `.pkey` files for key storage.
+
+:::
+
+:::info
+
+Use `flow config add account` to create accounts in your main `flow.json` file. The merging feature is useful to separate sensitive account information into a separate file that you can exclude from version control.
+
+:::
 
 **Example usage:**
 
@@ -267,8 +276,8 @@ flow project deploy -f flow.json -f private.json
 }
 ```
 
-When using multiple configuration files with overlapping fields, the rightmost file takes precedence.
-In this example, the resulting merged configuration will be:
+When you use multiple configuration files with overlapping fields, the rightmost file takes precedence.
+In this example, the merged configuration that results will be:
 
 ```json
 {
@@ -295,22 +304,21 @@ In this example, the resulting merged configuration will be:
 
 ## Flags
 
-### Allow Updates
+### Allow updates
 
 - Flag: `--update`
 - Valid inputs: `true`, `false`
 - Default: `false`
 
-Indicate whether to overwrite and upgrade existing contracts. Only contracts with difference with existing contracts
-will be overwritten.
+Indicate whether to overwrite and upgrade current contracts. The system will only overwrite contracts that are different from current contracts. 
 
-### Show Update Diff
+### Show update diff
 
 - Flag: `--show-diff`
 - Valid inputs: `true`, `false`
 - Default: `false`
 
-Shows a diff to approve before updating between deployed contract and new contract updates.
+Shows a diff to approve before an update between deployed contract and new contract updates.
 
 ### Host
 
@@ -318,17 +326,14 @@ Shows a diff to approve before updating between deployed contract and new contra
 - Valid inputs: an IP address or hostname.
 - Default: `127.0.0.1:3569` (Flow Emulator)
 
-Specify the hostname of the Access API that will be
-used to execute the command. This flag overrides
-any host defined by the `--network` flag.
+Specify the hostname of the Access API that will be used to execute the command. This flag overrides any host defined by the `--network` flag.
 
-### Network Key
+### Network key
 
 - Flag: `--network-key`
 - Valid inputs: A valid network public key of the host in hex string format
 
-Specify the network public key of the Access API that will be
-used to create a secure GRPC client when executing the command.
+Specify the network public key of the Access API that will be used to create a secure GRPC client when executing the command.
 
 ### Network
 
@@ -389,3 +394,9 @@ several configuration files.
 - Default: `false`
 
 Skip version check during start up to speed up process for slow connections.
+
+<!-- Relative links, will not render on page -->
+
+[configure project contracts and deployment targets]: ./project-contracts.md
+[Add Project Contracts]: ./project-contracts.md
+[Flow CLI security guidelines]: ../flow.json/security.md
