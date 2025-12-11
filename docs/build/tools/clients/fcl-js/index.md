@@ -12,7 +12,7 @@ If you want to build a frontend, use the [React SDK]. If you're familiar with So
 
 ## What is FCL?
 
-The **Flow Client Library (FCL) JS** is a package designed to facilitate interactions between dApps, wallets, and the Flow blockchain. It provides a standardized way for applications to connect with users and their wallets, **eliminating the need for custom integrations**.
+The **Flow Client Library (FCL) JS** is a package designed to facilitate interactions between apps, wallets, and the Flow blockchain. It provides a standardized way for applications to connect with users and their wallets, **eliminating the need for custom integrations**.
 
 ### Key Features:
 
