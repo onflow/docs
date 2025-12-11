@@ -4,7 +4,7 @@ description: How to get a block from the command line
 sidebar_position: 1
 ---
 
-The Flow CLI provides a command to fetch any block from the Flow network.
+The Flow Command Line Interface (CLI) provides a command to fetch any block from the Flow network.
 
 ```shell
 flow blocks get <block_id|latest|block_height>
@@ -66,7 +66,7 @@ Specify the block to retrieve by block ID or block height.
 - Name: `address`
 - Valid Input: Flow account address
 
-Flow [account address](../../../cadence/basics/accounts.md) (prefixed with `0x` or not).
+Flow [account address] (prefixed with `0x` or not).
 
 ## Flags
 
@@ -89,7 +89,7 @@ Include additional values in the response.
 - Flag: `--signer`
 - Valid inputs: the name of an account defined in the configuration (`flow.json`)
 
-Specify the name of the account that will be used to sign the transaction.
+Specify the name of the account to use to sign the transaction.
 
 ### Host
 
@@ -97,17 +97,14 @@ Specify the name of the account that will be used to sign the transaction.
 - Valid inputs: an IP address or hostname.
 - Default: `127.0.0.1:3569` (Flow Emulator)
 
-Specify the hostname of the Access API that will be
-used to execute the command. This flag overrides
-any host defined by the `--network` flag.
+Specify the hostname of the Access API to use to execute the command. This flag overrides any host defined by the `--network` flag.
 
 ### Network Key
 
 - Flag: `--network-key`
 - Valid inputs: A valid network public key of the host in hex string format
 
-Specify the network public key of the Access API that will be
-used to create a secure GRPC client when executing the command.
+Specify the network public key of the Access API to use to create a secure GRPC client when you execute the command.
 
 ### Network
 
@@ -140,7 +137,7 @@ Specify the format of the command results.
 - Short Flag: `-s`
 - Valid inputs: a path in the current filesystem.
 
-Specify the filename where you want the result to be saved
+Specify the filename where you want the result to be saved.
 
 ### Log
 
@@ -158,13 +155,15 @@ Specify the log level. Control how much output you want to see during command ex
 - Valid inputs: a path in the current filesystem.
 - Default: `flow.json`
 
-Specify the path to the `flow.json` configuration file.
-You can use the `-f` flag multiple times to merge
-several configuration files.
+Specify the path to the `flow.json` configuration file. You can use the `-f` flag multiple times to merge several configuration files.
 
-### Version Check
+### Version check
 
 - Flag: `--skip-version-check`
 - Default: `false`
 
 Skip version check during start up to speed up process for slow connections.
+
+<!-- Reference-style links, will not render on page. -->
+
+[account address]: ../../../cadence/basics/accounts.md

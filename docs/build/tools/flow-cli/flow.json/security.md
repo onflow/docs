@@ -4,26 +4,30 @@ description: How to securely use Flow CLI and protect your private keys
 sidebar_position: 4
 ---
 
-Managing accounts and private keys requires careful attention to security. This guide covers best practices for keeping your Flow accounts and private keys secure when using the Flow CLI.
+To manage accounts and private keys requires careful attention to security. This guide covers best practices to keep your Flow accounts and private keys secure when you use the Flow Command Line Interface (CLI).
 
 ## Security Overview
 
-⚠️ **Critical Warning**: Never commit private keys to source control. Always use secure methods to store and manage your private keys.
+:::danger
 
-The Flow CLI provides several secure options for managing private account data:
+⚠️ **Never** commit private keys to source control. Always use secure methods to store and manage your private keys.
 
-1. **File-based keys** - Store keys in separate files
-2. **Environment variables** - Use system environment variables
-3. **Private configuration files** - Separate sensitive config from main config
-4. **Multiple config files** - Merge secure and public configurations
+:::
 
-## File-Based Keys
+The Flow CLI provides several secure options to manage private account data:
+
+1. **File-based keys** - Store keys in separate files.
+2. **Environment variables** - Use system environment variables.
+3. **Private configuration files** - Separate sensitive config from main config.
+4. **Multiple config files** - Merge secure and public configurations.
+
+## File-based keys
 
 Store private keys in separate files that are excluded from source control.
 
 ### Setup
 
-1. **Create a key file** (e.g., `my-account.key`):
+1. **Create a key file** (for example, `my-account.key`):
 ```bash
 # Only the hex-encoded private key
 334232967f52bd75234ae9037dd4694c1f00baad63a10c35172bf65fbb8ad1111
@@ -59,7 +63,7 @@ private.json
 - ✅ Clear separation of concerns
 - ✅ Works with all Flow CLI commands
 
-## Environment Variables
+## Environment variables
 
 Use environment variables for sensitive data like private keys and addresses.
 
@@ -89,12 +93,12 @@ FLOW_PRIVATE_KEY="your-key" flow project deploy
 ```
 
 ### Benefits
-- ✅ Keys never stored in files
-- ✅ Easy to manage different environments
-- ✅ Works with CI/CD systems
-- ✅ Can be rotated easily
+- ✅ Keys never stored in files.
+- ✅ Easy to manage different environments.
+- ✅ Works with CI or CD systems.
+- ✅ Can be rotated easily.
 
-## Private Configuration Files
+## Private configuration files
 
 Create separate configuration files for sensitive data and merge them when needed.
 
@@ -137,10 +141,10 @@ flow project deploy -f flow.json -f private.json
 ```
 
 ### Benefits
-- ✅ Clear separation of public and private data
-- ✅ Easy to manage multiple environments
-- ✅ Can be shared safely (without private files)
-- ✅ Works with all CLI commands
+- ✅ Clear separation of public and private data.
+- ✅ Easy to manage multiple environments.
+- ✅ Can be shared safely (without private files).
+- ✅ Works with all CLI commands.
 
 ## Environment Files (.env)
 
@@ -179,21 +183,22 @@ FLOW_NETWORK=testnet
 ```
 
 ### Benefits
-- ✅ Automatic loading by CLI
-- ✅ Easy local development
-- ✅ Can have different files for different environments
-- ✅ Standard practice for many tools
 
-## Multiple Configuration Files
+- ✅ Automatic loading by CLI.
+- ✅ Easy local development.
+- ✅ Can have different files for different environments.
+- ✅ Standard practice for many tools.
+
+## Multiple configuration files
 
 Merge multiple configuration files for complex setups.
 
-### Priority Order
+### Priority order
 
-When using multiple files, they are merged in order:
-1. **Left to right** - Files specified first have lowest priority
-2. **Later files override** - Properties in later files take precedence
-3. **Non-overlapping properties** - Are combined from all files
+When you use multiple files, they are merged in order:
+1. **Left to right** - Files specified first have lowest priority.
+2. **Later files override** - Properties in later files take precedence.
+3. **Non-overlapping properties** - Are combined from all files.
 
 ### Example
 
@@ -203,7 +208,7 @@ flow project deploy -f flow.json -f private.json -f local.json
 
 **Result**: `local.json` overrides `private.json`, which overrides `flow.json`
 
-### Use Cases
+### Use cases
 
 - **Development**: `flow.json` + `dev-private.json`
 - **Staging**: `flow.json` + `staging-private.json`
@@ -224,29 +229,29 @@ secrets.json
 *.private.json
 ```
 
-### 2. Use Different Keys for Different Environments
+### 2. Use different keys for different environments
 
-- **Development**: Use testnet keys
-- **Staging**: Use separate testnet keys
-- **Production**: Use mainnet keys with highest security
+- **Development**: Use testnet keys.
+- **Staging**: Use separate testnet keys.
+- **Production**: Use mainnet keys with highest security.
 
-### 3. Rotate Keys Regularly
+### 3. Rotate keys regularly
 
-- Generate new keys periodically
-- Update configuration files
-- Test with new keys before switching
+- Generate new keys periodically.
+- Update configuration files.
+- Test with new keys before you switch.
 
-### 4. Limit Key Permissions
+### 4. Limit key permissions
 
-- Use keys with minimal required permissions
-- Consider using different keys for different operations
-- Monitor key usage
+- Use keys with minimal required permissions.
+- Consider using different keys for different operations.
+- Monitor key usage.
 
-### 5. Secure Key Storage
+### 5. Secure key storage
 
-- Use hardware security modules (HSMs) for production
-- Consider cloud key management services
-- Encrypt key files when possible
+- Use hardware security modules (HSMs) for production.
+- Consider cloud key management services.
+- Encrypt key files when possible.
 
 ## Common Security Mistakes
 
@@ -281,23 +286,23 @@ secrets.json
 }
 ```
 
-## Troubleshooting
+## Troubleshoot
 
-### Environment Variables Not Loading
+### Environment variables won't load
 
 Check that your environment variables are set:
 ```bash
 echo $FLOW_PRIVATE_KEY
 ```
 
-### Key File Not Found
+### Key file not found
 
 Verify the key file path in your configuration:
 ```bash
 ls -la ./my-account.key
 ```
 
-### Multiple Config Files Not Merging
+### Multiple config files not merging
 
 Check the order of your `-f` flags:
 ```bash
@@ -305,8 +310,14 @@ Check the order of your `-f` flags:
 flow config add account -f flow.json -f private.json
 ```
 
-## Related Commands
+## Related commands
 
-- [`flow config add`](./manage-configuration.md) - Add configuration items securely
-- [`flow project deploy`](../deployment/deploy-project-contracts.md) - Deploy with secure configuration
-- [`flow accounts create`](../accounts/create-accounts.md) - Create accounts securely
+- [`flow config add`] - Add configuration items securely
+- [`flow project deploy`] - Deploy with secure configuration
+- [`flow accounts create`] - Create accounts securely
+
+<!-- Reference-style links, will not render on page. -->
+
+[`flow config add`]: ./manage-configuration.md
+[`flow project deploy`]: ../deployment/deploy-project-contracts.md
+[`flow accounts create`]: ../accounts/create-accounts.md
