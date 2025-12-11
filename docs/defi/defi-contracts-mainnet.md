@@ -66,6 +66,7 @@ Below is a list of commonly used DeFi contracts on Flow Mainnet:
 | [Permit2 (FlowSwap)][53]                      | `0x000000000022D473030F116dDEE9F6B43aC78BA3` |
 | [FusionXInterfaceMulticall (FlowSwap)][54]                   | `0x8B5eB800B8d9cF702ff3DD0047ac31bBD411B82a` |
 | [proxy_admin (FlowSwap)][55]                  | `0x026932f97995201527B4c9Bc2ea6854C02BB0AdC` |
+| [WBTC (FlowSwap][56]            | `0x717DAE2BaF7656BE9a9B01deE31d571a9d4c9579` |
 
 #### Flow EVM Mainnet KittyPunch
 
@@ -146,7 +147,6 @@ More information can be found on the Credora docs site for [EAS on Flow].
 | ------------------------------------------------------- | -------------------------------------------- |
 | [SchemaRegistry (Ethereum Attestation Service)][20] | `0xB0cF748a05AEA8D59e15834446CFC95bcFF510F0` |
 | [EAS (Ethereum Attestation Service)][21]            | `0xc6376222F6E009A705a34dbF1dF72fEf8efB3964` |
-| [WBTC (Wrapped BTC][56]            | `0x717DAE2BaF7656BE9a9B01deE31d571a9d4c9579` |
 
 [1]: https://evm.flowscan.io/address/0x4412140D52C1F5834469a061927811Abb6026dB7?tab=contract
 [2]: https://evm.flowscan.io/address/0xf0E48dC92f66E246244dd9F33b02f57b0E69fBa9?tab=contract
