@@ -25,6 +25,8 @@ keywords:
   - local blockchain
   - E2E testing
   - off-chain mocking
+  - precreate accounts
+  - num-accounts
 ---
 
 The Flow Emulator is a lightweight tool that emulates the behavior of the real Flow network for local development and testing.
@@ -114,6 +116,7 @@ This starts a local Flow network with:
   - `--service-sig-algo <ECDSA_P256|ECDSA_secp256k1>`: Service key signature algo (default `ECDSA_P256`)
   - `--service-hash-algo <SHA3_256|SHA2_256>`: Service key hash algo (default `SHA3_256`)
   - `--min-account-balance <decimal>`: Minimum account balance or account creation cost
+  - `--num-accounts <int>`: Number of accounts to precreate and fund at startup (default `0`)
   - `--contracts`: Deploy common contracts on start
   - `--contract-removal`: Allow contract removal for development (default true)
   - `--init`: Initialize a new account profile
@@ -124,6 +127,50 @@ This starts a local Flow network with:
 
 - **Snapshots**
   - `--snapshot`: Enable snapshots in the emulator
+
+## Precreated Accounts
+
+The Flow Emulator supports precreating and funding multiple accounts automatically when the emulator starts up. This feature streamlines development workflows by eliminating the need to manually create test accounts for each emulator session.
+
+### Usage
+
+Use the `--num-accounts` flag to specify the number of accounts to precreate:
+
+```bash
+flow emulator --num-accounts 5
+```
+
+Or via environment variable:
+
+```bash
+FLOW_NUMACCOUNTS=5 flow emulator
+```
+
+### Account Details
+
+**Funding**: Each precreated account is automatically funded with **1000.0 FLOW tokens**. The funding amount is currently fixed and not configurable.
+
+**Keys**: All precreated accounts use the **same public key as the service account**. This simplifies development by allowing you to use the same private key across all accounts. The service account private key (displayed at startup) can be used to sign transactions for any precreated account.
+
+**Account Addresses**: Accounts are created sequentially at emulator startup. Account addresses and the shared private key are displayed in the console when the emulator starts.
+
+### Example Output
+
+When starting the emulator with `--num-accounts 3`:
+
+```
+Available Accounts
+==================
+(0) 0x01cf0e2f2f715450 (1000.0 FLOW)
+(1) 0x179b6b1cb6755e31 (1000.0 FLOW)
+(2) 0xf3fcd2c1a78f5eee (1000.0 FLOW)
+
+Private Keys
+==================
+(0) 0x<SERVICE_PRIVATE_KEY>
+(1) 0x<SERVICE_PRIVATE_KEY>
+(2) 0x<SERVICE_PRIVATE_KEY>
+```
 
 ## Examples
 
@@ -157,6 +204,12 @@ flow emulator --coverage-reporting
 
 # Change the gRPC and REST API ports
 flow emulator --port 9000 --rest-port 9001
+
+# Precreate 5 accounts for testing
+flow emulator --num-accounts 5
+
+# Precreate accounts with persistence enabled
+flow emulator --num-accounts 3 --persist
 
 # For a complete list of available flags, run:
 flow emulator --help
