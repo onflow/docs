@@ -85,6 +85,16 @@ const mainnetContracts: ContractData[] = [
       'https://flowscan.io/ft/token/A.1e4aa0b87d10b141.EVMVMBridgedToken_1b97100ea1d7126c4d60027e231ea4cb25314bdb.Vault',
   },
   {
+    name: 'WBTC',
+    evmAddress: '0x717DAE2BaF7656BE9a9B01deE31d571a9d4c9579',
+    cadenceAddress: '0x1e4aa0b87d10b141',
+    cadenceName: 'EVMVMBridgedToken_717dae2baf7656be9a9b01dee31d571a9d4c9579',
+    evmUrl:
+      'https://evm.flowscan.io/token/0x717DAE2BaF7656BE9a9B01deE31d571a9d4c9579',
+    cadenceUrl:
+      'https://www.flowscan.io/ft/token/A.1e4aa0b87d10b141.EVMVMBridgedToken_717dae2baf7656be9a9b01dee31d571a9d4c9579.Vault',
+  },
+  {
     name: 'WETH',
     evmAddress: '0x2F6F07CDcf3588944Bf4C42aC74ff24bF56e7590',
     cadenceAddress: '0x1e4aa0b87d10b141',
@@ -119,9 +129,10 @@ const testnetContracts: ContractData[] = [
 const StablecoinsWrappedAssetsTable: React.FC<TableComponentProps> = ({
   environment,
 }) => {
-  const contracts = environment === 'testnet' ? testnetContracts : mainnetContracts;
+  const contracts =
+    environment === 'testnet' ? testnetContracts : mainnetContracts;
   const networkLabel = environment === 'testnet' ? 'Testnet' : 'Mainnet';
-  
+
   return (
     <div className="table-container">
       <table>
