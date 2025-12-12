@@ -2,12 +2,12 @@
 sidebar_position: 21
 sidebar_label: Emulator Fork Testing
 title: Interactive Testing with Forked Emulator
-description: Run your dapp, E2E tests, and manual explorations against a forked mainnet or testnet using the Flow Emulator. Test with production state and real contracts without deploying to live networks.
+description: Run your app, E2E tests, and manual explorations against a forked mainnet or testnet using the Flow Emulator. Test with production state and real contracts without deploying to live networks.
 keywords:
   - flow emulator --fork
   - emulator fork mode
   - E2E testing
-  - dapp testing
+  - app testing
   - frontend testing
   - Cypress testing
   - Playwright testing
@@ -30,7 +30,7 @@ keywords:
 
 # Interactive Testing with Forked Emulator
 
-This tutorial teaches you how to run your dapp, E2E tests, and manual explorations against a snapshot of Flow mainnet using `flow emulator --fork`. You'll learn how to connect your frontend to production-like state, test user flows with real contracts and data, and debug issues interactively—all without deploying to a live network.
+This tutorial teaches you how to run your app, E2E tests, and manual explorations against a snapshot of Flow mainnet using `flow emulator --fork`. You'll learn how to connect your frontend to production-like state, test user flows with real contracts and data, and debug issues interactively—all without deploying to a live network.
 
 The forked emulator creates a local Flow network that mirrors mainnet or testnet state. It's perfect for manual testing, running E2E test suites, and exploring contract interactions in a production-like environment with full control.
 
@@ -39,7 +39,7 @@ The forked emulator creates a local Flow network that mirrors mainnet or testnet
 After you complete this tutorial, you'll be able to:
 
 - **Start the emulator in fork mode** with `flow emulator --fork`.
-- **Connect your dapp frontend** to the forked emulator.
+- **Connect your app frontend** to the forked emulator.
 - **Test against real mainnet contracts** and production data interactively.
 - **Run E2E tests** (Cypress, Playwright) against forked state.
 - **Use account impersonation** to test as any mainnet account.
@@ -51,7 +51,7 @@ After you complete this tutorial, you'll be able to:
 You'll create a complete forked emulator setup that demonstrates:
 
 - Starting the emulator with forked mainnet state.
-- A React dapp connected to the forked emulator reading real FlowToken data.
+- A React app connected to the forked emulator reading real FlowToken data.
 - Manual testing flows using account impersonation.
 - Automating tests with E2E frameworks against forked state.
 - A reusable pattern for interactive testing and debugging.
@@ -104,7 +104,7 @@ This tutorial covers `flow emulator --fork` (interactive testing with a forked e
 
 ### What is `flow emulator --fork`?
 
-The emulator's fork mode starts a local Flow blockchain that connects to a real network (mainnet or testnet) and fetches state on-demand. Your dapp, scripts, and transactions run locally but can read from and interact with real network data.
+The emulator's fork mode starts a local Flow blockchain that connects to a real network (mainnet or testnet) and fetches state on-demand. Your app, scripts, and transactions run locally but can read from and interact with real network data.
 
 **Key capabilities:**
 
@@ -119,7 +119,7 @@ The emulator's fork mode starts a local Flow blockchain that connects to a real 
 Use `flow emulator --fork` for:
 
 - **E2E and frontend testing**: Run Cypress/Playwright tests against production-like state
-- **Manual exploration**: Interact with your dapp connected to forked mainnet
+- **Manual exploration**: Interact with your app connected to forked mainnet
 - **Debugging user issues**: Reproduce bugs at specific block heights
 - **Migration testing**: Test contract upgrades with real account state
 - **Wallet integration**: Test wallet connect flows and transactions
@@ -133,7 +133,7 @@ Use `flow emulator --fork` for:
 
 | Feature         | `flow emulator --fork`                  | `flow test --fork`             |
 | --------------- | --------------------------------------- | ------------------------------ |
-| **Use for**     | Dapp E2E, manual testing, debugging     | Cadence unit/integration tests |
+| **Use for**     | App E2E, manual testing, debugging      | Cadence unit/integration tests |
 | **Connects to** | Frontend, wallets, bots, E2E tools      | Cadence Testing Framework      |
 | **Run with**    | FCL, Cypress, Playwright, manual clicks | `flow test` command            |
 | **Best for**    | User flows, UI testing, exploration     | Contract logic validation      |
@@ -147,27 +147,19 @@ Want to see it work immediately? Here's the fastest path:
 
 ```bash
 # 1. Initialize a Flow project
-flow init --yes
+flow init
 
-# 2. Configure fork network (add to flow.json)
-# Add this under "networks":
-#   "mainnet-fork": {
-#     "host": "127.0.0.1:3569",
-#     "fork": "mainnet"
-#   }
+# 2. Install FlowToken dependency
+flow dependencies install FlowToken FungibleToken
 
-# 3. Install FlowToken dependency
-flow dependencies install
-# Select FlowToken from the list
-
-# 4. Start forked emulator (in a separate terminal)
+# 3. Start forked emulator (in a separate terminal)
 flow emulator --fork mainnet
 
-# 5. In another terminal, check the forked state
-flow scripts execute cadence/scripts/get_flow_supply.cdc --network mainnet-fork
+# 4. Create a script to check the forked state
+flow generate script getFlowSupply
 ```
 
-Create `cadence/scripts/get_flow_supply.cdc`:
+Add the following to `cadence/scripts/getFlowSupply.cdc`:
 
 ```cadence
 import "FlowToken"
@@ -175,6 +167,12 @@ import "FlowToken"
 access(all) fun main(): UFix64 {
     return FlowToken.totalSupply
 }
+```
+
+In another terminal, run the script:
+
+```bash
+flow scripts execute cadence/scripts/getFlowSupply.cdc --network mainnet-fork
 ```
 
 You'll see the real mainnet FlowToken supply! Now let's build a complete example with a frontend.
@@ -332,17 +330,15 @@ flow emulator --fork mainnet
 flow project deploy --network mainnet-fork --update
 ```
 
-Your dapp now uses the mocked FlowToken while FungibleToken, USDC, and all other contracts use real mainnet versions.
+Your app now uses the mocked FlowToken while FungibleToken, USDC, and all other contracts use real mainnet versions.
 
 ## Install Dependencies
 
 Use the [Dependency Manager] to install common Flow contracts. This adds them to your `flow.json` with mainnet aliases that will automatically work on the fork:
 
 ```bash
-flow dependencies install
+flow dependencies install FlowToken FungibleToken
 ```
-
-Select `FlowToken` and `FungibleToken` from the list (use space to select, enter to confirm).
 
 Your `flow.json` now includes:
 
@@ -375,13 +371,13 @@ Your `flow.json` now includes:
 
 Before connecting a frontend, verify the fork works with a simple script.
 
-Create a directory for scripts:
+Generate a script file using the Flow CLI:
 
 ```bash
-mkdir -p cadence/scripts
+flow generate script getFlowSupply
 ```
 
-Create `cadence/scripts/get_flow_supply.cdc`:
+Add the following to `cadence/scripts/getFlowSupply.cdc`:
 
 ```cadence
 import "FlowToken"
@@ -393,10 +389,16 @@ access(all) fun main(): UFix64 {
 
 Notice we're using the import shorthand `import "FlowToken"` instead of an address. The CLI will automatically resolve this to the mainnet address on the fork.
 
-In a **new terminal** (keep the emulator running), execute the script:
+First, verify the script works against real mainnet:
 
 ```bash
-flow scripts execute cadence/scripts/get_flow_supply.cdc --network mainnet-fork
+flow scripts execute cadence/scripts/getFlowSupply.cdc --network mainnet
+```
+
+Then, in a **new terminal** (keep the emulator running), execute the script against the fork:
+
+```bash
+flow scripts execute cadence/scripts/getFlowSupply.cdc --network mainnet-fork
 ```
 
 You should see the real mainnet FlowToken supply (e.g., `Result: 1523456789.00000000`).
@@ -410,7 +412,7 @@ You should see the real mainnet FlowToken supply (e.g., `Result: 1523456789.0000
 
 Now let's connect a frontend.
 
-## Create a React Dapp
+## Create a React App
 
 Create a React app with Flow integration:
 
@@ -458,7 +460,7 @@ root.render(
 
 Replace `src/App.js` with:
 
-```javascript
+````javascript
 import { useState } from 'react';
 import { useFlowCurrentUser, useFlowQuery, Connect } from '@onflow/react-sdk';
 
@@ -519,25 +521,21 @@ function App() {
 }
 
 export default App;
-```
-
-### Start the dev wallet (optional)
-
-For wallet authentication flows, start the FCL dev wallet in another terminal:
-
-```bash
-flow dev-wallet
-```
-
+# 2. Configure fork network (add to flow.json)
+# Add this in "networks":
+#   "mainnet-fork": {
+#     "host": "127.0.0.1:3569",
+#     "fork": "mainnet"
+#   }
 This starts the dev wallet at `http://localhost:8701`.
 
-### Run your dapp
+### Run your app
 
 Start the React app:
 
 ```bash
 npm start
-```
+````
 
 Your browser will open to `http://localhost:3000`. Click "Get FlowToken Supply" to see real mainnet data!
 
@@ -576,7 +574,13 @@ The forked emulator's superpower: you can execute transactions as **any mainnet 
 
 ### Read Account Balance
 
-Create `cadence/scripts/get_balance.cdc`:
+Generate a script to read account balances:
+
+```bash
+flow generate script getBalance
+```
+
+Add the following to `cadence/scripts/getBalance.cdc`:
 
 ```cadence
 import "FlowToken"
@@ -595,14 +599,20 @@ access(all) fun main(address: Address): UFix64 {
 Check the Flow service account balance (a real mainnet account):
 
 ```bash
-flow scripts execute cadence/scripts/get_balance.cdc 0x1654653399040a61 --network mainnet-fork
+flow scripts execute cadence/scripts/getBalance.cdc 0x1654653399040a61 --network mainnet-fork
 ```
 
 You'll see the service account's actual mainnet balance! The imports automatically resolved to mainnet addresses because you're using the `mainnet-fork` network.
 
 ### Execute Transaction as Any Account
 
-Create `cadence/transactions/transfer_tokens.cdc`:
+Generate a transaction to transfer tokens:
+
+```bash
+flow generate transaction transferTokens
+```
+
+Add the following to `cadence/transactions/transferTokens.cdc`:
 
 ```cadence
 import "FungibleToken"
@@ -653,18 +663,18 @@ Transfer tokens from the mainnet service account to another mainnet account:
 
 ```bash
 # Transfer from mainnet service account to any mainnet address (impersonation!)
-flow transactions send cadence/transactions/transfer_tokens.cdc 100.0 0xRECIPIENT_ADDRESS \
+flow transactions send cadence/transactions/transferTokens.cdc 100.0 0xRECIPIENT_ADDRESS \
   --signer mainnet-service \
   --network mainnet-fork
 
 # Verify the transfer
-flow scripts execute cadence/scripts/get_balance.cdc 0xRECIPIENT_ADDRESS \
+flow scripts execute cadence/scripts/getBalance.cdc 0xRECIPIENT_ADDRESS \
   --network mainnet-fork
 ```
 
 ### Dev Wallet Authentication with Impersonation
 
-The most powerful feature: when connecting your dapp to the forked emulator with the dev wallet, **you can authenticate as ANY mainnet account** directly in the UI.
+The most powerful feature: when connecting your app to the forked emulator with the dev wallet, **you can authenticate as ANY mainnet account** directly in the UI.
 
 Start the dev wallet:
 
@@ -672,11 +682,11 @@ Start the dev wallet:
 flow dev-wallet
 ```
 
-In your dapp (running against the forked emulator), click the wallet connect button. In the dev wallet UI:
+In your app (running against the forked emulator), click the wallet connect button. In the dev wallet UI:
 
 1. **Enter any mainnet address** in the address field (e.g., a whale wallet, NFT collector, or protocol account)
 2. Click "Authenticate"
-3. Your dapp is now authenticated as that mainnet account with all its real balances, NFTs, and storage!
+3. Your app is now authenticated as that mainnet account with all its real balances, NFTs, and storage!
 
 **Additional dev wallet features in fork mode:**
 
@@ -686,7 +696,7 @@ In your dapp (running against the forked emulator), click the wallet connect but
 
 This lets you:
 
-- Test your dapp as a user with specific assets or permissions
+- Test your app as a user with specific assets or permissions
 - Debug issues reported by specific mainnet accounts
 - Verify flows work for accounts with large balances or many NFTs
 - Test edge cases with real account states
@@ -700,7 +710,7 @@ The forked emulator simply skips signature verification. You can specify any mai
 
 ## Automating with E2E Testing
 
-The forked emulator works with any E2E testing framework (Cypress, Playwright, Puppeteer, etc.). This lets you automate your dapp tests against production-like state.
+The forked emulator works with any E2E testing framework (Cypress, Playwright, Puppeteer, etc.). This lets you automate your app tests against production-like state.
 
 ### Quick Example with Cypress
 
@@ -708,7 +718,7 @@ The forked emulator works with any E2E testing framework (Cypress, Playwright, P
 npm install --save-dev cypress
 ```
 
-Create `cypress/e2e/flow_fork.cy.js`:
+Create `cypress/e2e/flowFork.cy.js`:
 
 ```javascript
 describe('Flow Fork Test', () => {
@@ -732,7 +742,7 @@ Your tests now run against forked mainnet—**perfect for CI/CD pipelines** with
 
 :::tip
 
-Use the same approach with Playwright, Puppeteer, or any browser automation tool. The key is having your dapp connect to the forked emulator (`http://localhost:8888`) while your E2E framework tests the UI.
+Use the same approach with Playwright, Puppeteer, or any browser automation tool. The key is having your app connect to the forked emulator (`http://localhost:8888`) while your E2E framework tests the UI.
 
 :::
 
@@ -745,7 +755,7 @@ Test a contract upgrade against real mainnet state by mocking the contract with 
 1. Configure the mock in `flow.json` (see [Mocking Mainnet Contracts](#mocking-mainnet-contracts))
 2. Start the forked emulator
 3. Deploy your upgraded contract: `flow project deploy --network mainnet-fork --update`
-4. Test your dapp against the upgraded contract with all real mainnet state intact
+4. Test your app against the upgraded contract with all real mainnet state intact
 5. Verify existing integrations and users aren't broken by the upgrade
 
 ### Debugging User-Reported Issues
@@ -756,14 +766,14 @@ Reproduce a bug at the exact block height it occurred:
 flow emulator --fork mainnet --fork-height <BLOCK_HEIGHT>
 ```
 
-Then manually interact with your dapp or run specific transactions to reproduce the issue.
+Then manually interact with your app or run specific transactions to reproduce the issue.
 
 ### Testing Wallet Integrations
 
 Test wallet connect flows, transaction signing, and account creation against production-like state:
 
 1. Start forked emulator and dev wallet
-2. Use your dapp to authenticate
+2. Use your app to authenticate
 3. Sign transactions as real mainnet accounts (via impersonation)
 4. Verify balance updates, event emissions, etc.
 
@@ -914,26 +924,24 @@ flow emulator --fork-host access.mainnet.nodes.onflow.org:9000
 
 **Solution:** Ensure your fork network is properly configured:
 
-```json
+````json
 {
-  "networks": {
-    "mainnet-fork": {
-      "host": "127.0.0.1:3569",
-      "fork": "mainnet"
-    }
-  }
-}
-```
+# 2. Configure fork network (add to flow.json)
+# Add this in "networks":
+#   "mainnet-fork": {
+#     "host": "127.0.0.1:3569",
+#     "fork": "mainnet"
+#   }
 
 And that you've installed dependencies with the mainnet alias:
 
 ```bash
 flow dependencies install
-```
+````
 
 Verify the contract has a mainnet alias that the fork can inherit.
 
-### Dapp Can't Connect
+### App Can't Connect
 
 **Error:** Frontend can't reach the emulator
 
@@ -1001,7 +1009,7 @@ Choose the right tool:
 | --------------------------------------------- | ---------------------- |
 | Cadence unit tests                            | `flow test` (no fork)  |
 | Cadence integration tests with real contracts | `flow test --fork`     |
-| Manual testing with dapp                      | `flow emulator --fork` |
+| Manual testing with app                       | `flow emulator --fork` |
 | E2E testing (Cypress/Playwright)              | `flow emulator --fork` |
 | Debugging frontend issues                     | `flow emulator --fork` |
 | Testing wallets/bots/indexers                 | `flow emulator --fork` |
@@ -1010,24 +1018,24 @@ Both modes complement each other. See [Testing Strategy] for the full picture.
 
 ## Conclusion
 
-In this tutorial, you learned how to use the forked emulator for interactive testing, E2E test automation, and manual exploration. You created a React dapp using the Flow React SDK connected to forked mainnet, used account impersonation to test with real account states, and saw how to automate tests with E2E frameworks—all without deploying to a live network.
+In this tutorial, you learned how to use the forked emulator for interactive testing, E2E test automation, and manual exploration. You created a React app using the Flow React SDK connected to forked mainnet, used account impersonation to test with real account states, and saw how to automate tests with E2E frameworks—all without deploying to a live network.
 
 Now that you have completed this tutorial, you can:
 
 - **Start the emulator in fork mode** with `flow emulator --fork`.
-- **Connect your dapp frontend** to the forked emulator.
+- **Connect your app frontend** to the forked emulator.
 - **Test against real mainnet contracts** and production data interactively.
 - **Run E2E tests** (Cypress, Playwright) against forked state.
 - **Use account impersonation** to test as any mainnet account.
 - **Pin to specific block heights** for reproducible testing.
 - **Debug and explore** contract interactions manually.
 
-The forked emulator bridges the gap between local development and testnet/mainnet deployments. Use it to catch integration issues early, test against real-world conditions, and validate your dapp before going live.
+The forked emulator bridges the gap between local development and testnet/mainnet deployments. Use it to catch integration issues early, test against real-world conditions, and validate your app before going live.
 
 ### Next Steps
 
 - Add E2E tests to your CI/CD pipeline using pinned fork heights
-- Test your dapp's upgrade flows against forked mainnet
+- Test your app's upgrade flows against forked mainnet
 - Explore [Flow React SDK] hooks and components (events, mutations, Cross-VM features)
 - For Cadence contract testing, see [Fork Testing with Cadence]
 - Review the [Testing Strategy] for the full testing approach
