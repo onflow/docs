@@ -560,6 +560,43 @@ Configuring fork tests in the file keeps the configuration with your test code, 
 
 You can also run specific test files or change the network/block height in the pragma as needed. See the [Fork Testing Flags] reference for more options.
 
+## Mocking Mainnet Contracts in Tests
+
+Just like mocking dependencies in unit tests, you can **mock real mainnet contracts** by deploying modified versions—perfect for testing upgrades, bug fixes, or alternative implementations against real production state.
+
+Use `Test.deployContract()` to deploy your mock to any mainnet account address. Your mock takes precedence while other contracts continue using real mainnet versions.
+
+### Example
+
+```cadence
+#test_fork(network: "mainnet", height: nil)
+
+import Test
+
+access(all) fun setup() {
+    // Deploy mock FlowToken to the real mainnet address
+    let err = Test.deployContract(
+        name: "FlowToken",
+        path: "../contracts/FlowTokenModified.cdc",
+        arguments: []
+    )
+    Test.expect(err, Test.beNil())
+}
+
+access(all) fun testMockedFlowToken() {
+    // Test now uses mocked FlowToken
+    // All other contracts (FungibleToken, USDC, etc.) use real mainnet versions
+
+    let scriptResult = Test.executeScript(
+        Test.readFile("../scripts/CheckBalance.cdc"),
+        [Address(0x1654653399040a61)]
+    )
+    Test.expect(scriptResult, Test.beSucceeded())
+}
+```
+
+This validates your contract changes against real production state and integrations.
+
 ## Pinning block heights for reproducibility
 
 For reproducible test results, pin your tests to a specific block height:
