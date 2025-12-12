@@ -45,6 +45,7 @@ The `networks` section defines which Flow networks your project can connect to.
 ```
 
 **Common Networks:**
+
 - `emulator`: Your local development environment
 - `testnet`: Flow's test network for development and testing
 - `mainnet`: Flow's production network
@@ -60,6 +61,22 @@ For enhanced security, you can specify network keys:
   }
 }
 ```
+
+**Fork Networks:**
+Fork networks allow you to test against a local emulator that mirrors mainnet or testnet state. When you run `flow emulator --fork mainnet`, the CLI automatically creates a `mainnet-fork` network configuration that inherits contract aliases from the parent network:
+
+```json
+"networks": {
+  "mainnet-fork": {
+    "host": "127.0.0.1:3569",
+    "fork": "mainnet"
+  }
+}
+```
+
+The `fork` property tells the CLI to inherit all contract aliases from the specified network (e.g., `mainnet`), so you don't need to manually duplicate aliases for forked networks.
+
+Learn more: [Fork Testing Overview](../fork-testing.md)
 
 ### Accounts
 
@@ -96,6 +113,7 @@ For more control over key management:
 ```
 
 **Key Types:**
+
 - `hex`: Standard hex-encoded private key
 - `file`: Read key from a separate file
 - `bip44`: Derive from mnemonic phrase
@@ -119,6 +137,7 @@ For better security, you can store private keys in separate files:
 The key file should contain only the hex-encoded private key (e.g., `ae1b44c0f5e8f6992ef2348898a35e50a8b0b9684000da8b1dade1b3bcd6ebee`).
 
 **Special Address Values:**
+
 - `"service"`: Use the default service account (emulator only)
 
 ### Contracts
@@ -151,6 +170,7 @@ Use aliases when contracts are already deployed on specific networks:
 ```
 
 **When to Use Aliases:**
+
 - For core contracts already deployed on mainnet/testnet
 - To avoid redeploying dependencies
 - To use the official versions of common contracts
@@ -209,6 +229,7 @@ The `deployments` section defines which contracts get deployed to which accounts
 **Format:** `"NETWORK": { "ACCOUNT": ["CONTRACT1", "CONTRACT2"] }`
 
 **Important Notes:**
+
 - Don't deploy contracts that have aliases defined for that network
 - Contracts are deployed in dependency order automatically
 - You can deploy the same contract to multiple accounts (but not in the same deploy command)
