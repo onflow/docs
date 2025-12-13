@@ -118,6 +118,7 @@ The emulator's fork mode starts a local Flow blockchain that connects to a real 
 
 Use `flow emulator --fork` for:
 
+- **DeFi application testing**: Test against real liquidity pools, DEXs, and lending protocols with production state
 - **E2E and frontend testing**: Run Cypress/Playwright tests against production-like state
 - **Manual exploration**: Interact with your app connected to forked mainnet
 - **Debugging user issues**: Reproduce bugs at specific block heights
@@ -169,7 +170,13 @@ access(all) fun main(): UFix64 {
 }
 ```
 
-In another terminal, run the script:
+First, verify the script works against real mainnet:
+
+```bash
+flow scripts execute cadence/scripts/getFlowSupply.cdc --network mainnet
+```
+
+Then, in another terminal, run the script against the fork:
 
 ```bash
 flow scripts execute cadence/scripts/getFlowSupply.cdc --network mainnet-fork
@@ -187,7 +194,7 @@ cd emulator-fork-demo
 flow init --yes
 ```
 
-The `--yes` flag accepts defaults non-interactively.
+This creates an empty Flow project with default configuration.
 
 ## Start the Forked Emulator
 
@@ -240,7 +247,38 @@ Configure the mock in `flow.json`, then deploy to the forked emulator. Your mock
 
 ### Example
 
-**1. Configure in `flow.json`:**
+**1. Create your modified contract:**
+
+First, create a copy of the contract you want to mock:
+
+```bash
+mkdir -p contracts
+# Create your modified FlowToken contract at ./contracts/FlowTokenModified.cdc
+```
+
+**2. Configure using Flow CLI:**
+
+```bash
+# Add the mainnet account to deploy to (use dummy key since signatures are disabled)
+flow config add account \
+  --name flow-token-mainnet \
+  --address 0x1654653399040a61 \
+  --private-key 0000000000000000000000000000000000000000000000000000000000000000
+
+# Add your modified contract with mainnet alias
+flow config add contract \
+  --name FlowToken \
+  --filename ./contracts/FlowTokenModified.cdc \
+  --mainnet-alias 0x1654653399040a61
+
+# Configure deployment to mainnet-fork network
+flow config add deployment \
+  --network mainnet-fork \
+  --account flow-token-mainnet \
+  --contract FlowToken
+```
+
+This adds the following to your `flow.json`:
 
 ```json
 {
@@ -266,7 +304,7 @@ Configure the mock in `flow.json`, then deploy to the forked emulator. Your mock
 }
 ```
 
-**2. Deploy the mock:**
+**3. Deploy the mock:**
 
 ```bash
 flow emulator --fork mainnet
