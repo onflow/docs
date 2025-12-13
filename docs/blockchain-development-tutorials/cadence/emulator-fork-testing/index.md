@@ -414,15 +414,26 @@ Now let's connect a frontend.
 
 ## Create a React App
 
-Create a React app with Flow integration:
+Create a Next.js app with Flow integration:
 
 ```bash
-npx create-react-app flow-fork-app
+npx create-next-app@latest flow-fork-app
+```
+
+During setup, choose:
+
+- **Use TypeScript**: Yes
+- **Use src directory**: Yes
+- **Use App Router**: Yes
+
+Then install the Flow React SDK:
+
+```bash
 cd flow-fork-app
 npm install @onflow/react-sdk
 ```
 
-Copy your project's `flow.json` into the React app's `src` directory:
+Copy your project's `flow.json` into the app's `src` directory:
 
 ```bash
 # From your flow-fork-app directory
@@ -431,18 +442,28 @@ cp ../flow.json src/
 
 This allows the `FlowProvider` to resolve contract imports.
 
-Replace `src/index.js` with:
+### Configure for Fork Testing
 
-```javascript
-import React from 'react';
-import ReactDOM from 'react-dom/client';
-import App from './App';
+Since Next.js uses the App Router with server components, create a client component wrapper. First, create the components directory:
+
+```bash
+mkdir -p src/components
+```
+
+Then create `src/components/FlowProviderWrapper.tsx`:
+
+```typescript
+'use client';
+
 import { FlowProvider } from '@onflow/react-sdk';
-import flowJSON from './flow.json';
+import flowJSON from '../flow.json';
 
-const root = ReactDOM.createRoot(document.getElementById('root'));
-root.render(
-  <React.StrictMode>
+export default function FlowProviderWrapper({
+  children,
+}: {
+  children: React.ReactNode;
+}) {
+  return (
     <FlowProvider
       config={{
         accessNodeUrl: 'http://localhost:8888', // Point to forked emulator REST endpoint
@@ -452,19 +473,43 @@ root.render(
       }}
       flowJson={flowJSON}
     >
-      <App />
+      {children}
     </FlowProvider>
-  </React.StrictMode>,
-);
+  );
+}
 ```
 
-Replace `src/App.js` with:
+Then update `src/app/layout.tsx` to use the wrapper:
 
-```javascript
+```typescript
+import FlowProviderWrapper from '@/components/FlowProviderWrapper';
+
+export default function RootLayout({
+  children,
+}: {
+  children: React.ReactNode;
+}) {
+  return (
+    <html lang="en">
+      <body>
+        <FlowProviderWrapper>{children}</FlowProviderWrapper>
+      </body>
+    </html>
+  );
+}
+```
+
+### Create a Demo Component
+
+Create a simple demo that queries FlowToken supply from the forked mainnet. Update `src/app/page.tsx`:
+
+```typescript
+'use client';
+
 import { useState } from 'react';
 import { useFlowCurrentUser, useFlowQuery, Connect } from '@onflow/react-sdk';
 
-function App() {
+export default function Home() {
   const { user } = useFlowCurrentUser();
   const [shouldFetch, setShouldFetch] = useState(false);
 
@@ -499,7 +544,7 @@ function App() {
         <button onClick={() => setShouldFetch(true)} disabled={isLoading}>
           {isLoading ? 'Loading...' : 'Get FlowToken Supply'}
         </button>
-        {error && <p style={{ color: 'red' }}>Error: {error.message}</p>}
+        {error && <p style={{ color: 'red' }}>Error: {(error as Error).message}</p>}
         {flowSupply && (
           <p style={{ fontSize: '1.5rem', color: 'green' }}>
             Total Supply: {Number(flowSupply).toLocaleString()} FLOW
@@ -519,8 +564,6 @@ function App() {
     </div>
   );
 }
-
-export default App;
 ```
 
 ### Start the dev wallet (optional)
@@ -535,13 +578,13 @@ This starts the dev wallet at `http://localhost:8701`.
 
 ### Run your app
 
-Start the React app:
+Start the Next.js dev server:
 
 ```bash
-npm start
+npm run dev
 ```
 
-Your browser will open to `http://localhost:3000`. Click "Get FlowToken Supply" to see real mainnet data!
+Navigate to `http://localhost:3000`. Click "Get FlowToken Supply" to see real mainnet data!
 
 **What's happening:**
 
