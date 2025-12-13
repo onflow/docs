@@ -240,79 +240,97 @@ This ensures the forked state is consistent across runs—essential for E2E test
 
 :::
 
-## Mocking Mainnet Contracts
+## Deploy Your Contracts Against Mainnet State
 
-Just like mocking dependencies in unit tests, you can **mock real mainnet contracts** by deploying modified versions—perfect for testing upgrades, bug fixes, or alternative implementations against real production state.
+The most common use case: deploy your NEW contracts to the forked emulator so they can interact with real mainnet contracts and data. This lets you test your DeFi protocol against live DEXs, your NFT marketplace with real collections, or your DAO with existing governance contracts.
 
-Configure the mock in `flow.json`, then deploy to the forked emulator. Your mock takes precedence while other contracts use real mainnet versions.
+### Example: Deploy and Test Your Contract
 
-### Example
-
-**1. Create your modified contract:**
-
-First, create a copy of the contract you want to mock:
+**1. Create your contract:**
 
 ```bash
-mkdir -p contracts
-# Create your modified FlowToken contract at ./contracts/FlowTokenModified.cdc
+flow generate contract MyDeFiProtocol
 ```
 
-**2. Configure using Flow CLI:**
+Edit `cadence/contracts/MyDeFiProtocol.cdc`:
 
-```bash
-# Add the mainnet account to deploy to (use dummy key since signatures are disabled)
-flow config add account \
-  --name flow-token-mainnet \
-  --address 0x1654653399040a61 \
-  --private-key 0000000000000000000000000000000000000000000000000000000000000000
+```cadence
+import "FlowToken"
+import "FungibleToken"
 
-# Add your modified contract with mainnet alias
-flow config add contract \
-  --name FlowToken \
-  --filename ./contracts/FlowTokenModified.cdc \
-  --mainnet-alias 0x1654653399040a61
-
-# Configure deployment to mainnet-fork network
-flow config add deployment \
-  --network mainnet-fork \
-  --account flow-token-mainnet \
-  --contract FlowToken
-```
-
-This adds the following to your `flow.json`:
-
-```json
-{
-  "accounts": {
-    "flow-token-mainnet": {
-      "address": "0x1654653399040a61",
-      "key": "0000000000000000000000000000000000000000000000000000000000000000"
+access(all) contract MyDeFiProtocol {
+    // Your DeFi logic that reads real FlowToken supply
+    access(all) fun getTotalSupplyInfo(): UFix64 {
+        return FlowToken.totalSupply
     }
-  },
-  "contracts": {
-    "FlowToken": {
-      "source": "./contracts/FlowTokenModified.cdc",
-      "aliases": {
-        "mainnet": "0x1654653399040a61"
-      }
-    }
-  },
-  "deployments": {
-    "mainnet-fork": {
-      "flow-token-mainnet": ["FlowToken"]
-    }
-  }
 }
 ```
 
-**3. Deploy the mock:**
+**2. Start the forked emulator:**
 
 ```bash
 flow emulator --fork mainnet
-flow project deploy --network mainnet-fork --update
 ```
 
-Your app now uses the mocked FlowToken while FungibleToken, USDC, and all other contracts use real mainnet versions.
+When the emulator starts, note the service account address in the logs:
+
+```
+⚙️ Using service account 0xe467b9dd11fa00df
+```
+
+**3. Configure the service account:**
+
+Add the forked emulator's service account (use the address from the startup logs and a dummy key):
+
+```bash
+flow config add account \
+  --name mainnet-fork-service \
+  --address 0xe467b9dd11fa00df \
+  --private-key 0000000000000000000000000000000000000000000000000000000000000000
+```
+
+Since signature validation is disabled in fork mode, the key value doesn't matter.
+
+**4. Configure deployment:**
+
+```bash
+flow config add deployment \
+  --network mainnet-fork \
+  --account mainnet-fork-service \
+  --contract MyDeFiProtocol
+```
+
+**5. Deploy your contract:**
+
+```bash
+flow project deploy --network mainnet-fork
+```
+
+**6. Test your contract:**
+
+Your contract can now interact with real mainnet contracts! Create a script to test it:
+
+```bash
+flow generate script testMyProtocol
+```
+
+Add the following to `cadence/scripts/testMyProtocol.cdc`:
+
+```cadence
+import "MyDeFiProtocol"
+
+access(all) fun main(): UFix64 {
+    return MyDeFiProtocol.getTotalSupplyInfo()
+}
+```
+
+Run the script:
+
+```bash
+flow scripts execute cadence/scripts/testMyProtocol.cdc --network mainnet-fork
+```
+
+You'll see `Result: 1628083999.54686045` - the real mainnet FlowToken supply! Your contract runs locally but reads production data—perfect for testing integrations before mainnet deployment.
 
 ## Install Dependencies
 
