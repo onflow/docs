@@ -30,9 +30,9 @@ keywords:
 
 # Interactive Testing with Forked Emulator
 
-This tutorial teaches you how to run your app, E2E tests, and manual explorations against a snapshot of Flow mainnet using `flow emulator --fork`. You'll learn how to connect your frontend to production-like state, test user flows with real contracts and data, and debug issues interactively—all without deploying to a live network.
+Fork testing gives you a local copy of mainnet state that you can freely modify and reset instantly. Test your DeFi app against real DEX liquidity pools and lending protocols without risking funds. Verify integrations with existing mainnet contracts before deploying. Debug production issues at specific block heights with exact mainnet state.
 
-The forked emulator creates a local Flow network that mirrors mainnet or testnet state. It's perfect for manual testing, running E2E test suites, and exploring contract interactions in a production-like environment with full control.
+This tutorial teaches you how to run your app and E2E tests against Flow mainnet using `flow emulator --fork`. You'll connect your frontend to production-like state, impersonate any mainnet account, and test with real balances and assets—all running locally.
 
 ## What You'll Learn
 
@@ -40,9 +40,10 @@ After you complete this tutorial, you'll be able to:
 
 - **Start the emulator in fork mode** with `flow emulator --fork`.
 - **Connect your app frontend** to the forked emulator.
+- **Test DeFi integrations** against real liquidity pools, DEXs, and protocols.
 - **Test against real mainnet contracts** and production data interactively.
 - **Run E2E tests** (Cypress, Playwright) against forked state.
-- **Use account impersonation** to test as any mainnet account.
+- **Use account impersonation** to test as any mainnet account with real balances and assets.
 - **Pin to specific block heights** for reproducible testing.
 - **Debug and explore** contract interactions manually.
 
@@ -732,6 +733,29 @@ Use the same approach with Playwright, Puppeteer, or any browser automation tool
 :::
 
 ## Common Use Cases
+
+### Testing DeFi Applications
+
+Test your DeFi application against real mainnet liquidity and protocols:
+
+1. Fork mainnet at a specific block height
+2. Impersonate accounts with large token balances or LP positions
+3. Test your swap, lending, or yield farming logic against real DEX state
+4. Verify slippage calculations with actual liquidity pool reserves
+5. Test edge cases like low liquidity scenarios using real market conditions
+
+**Example: Testing a swap integration**
+
+```bash
+# Fork at a known block with specific liquidity conditions
+flow emulator --fork mainnet --fork-height <BLOCK_HEIGHT>
+
+# In your test, impersonate a whale account
+# Execute swaps against real DEX contracts (IncrementFi, etc.)
+# Verify your price calculations match actual execution
+```
+
+This lets you test against production liquidity without spending real tokens or affecting live markets.
 
 ### Testing Contract Upgrades
 
