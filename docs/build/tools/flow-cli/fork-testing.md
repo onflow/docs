@@ -50,9 +50,9 @@ flow emulator --fork mainnet
 
 **Best for:**
 
-- Cadence unit tests
 - Cadence integration tests
 - Contract testing against real dependencies
+- Testing contract logic with real mainnet state
 
 **How it works:**
 Runs your `*_test.cdc` files against a forked network using the Cadence Testing Framework. Add the `#test_fork` pragma to your test file, then run:
@@ -65,13 +65,13 @@ flow test
 
 ## Quick Comparison
 
-| Feature         | `flow emulator --fork`                  | `flow test` + `#test_fork`     |
-| --------------- | --------------------------------------- | ------------------------------ |
-| **Use for**     | App E2E, manual testing, debugging      | Cadence unit/integration tests |
-| **Connects to** | Frontend, wallets, bots, E2E tools      | Cadence Testing Framework      |
-| **Run with**    | FCL, Cypress, Playwright, manual clicks | `flow test` command            |
-| **Best for**    | User flows, UI testing, exploration     | Contract logic validation      |
-| **Examples**    | React app, wallet flows, E2E suites     | `*_test.cdc` files             |
+| Feature         | `flow emulator --fork`                  | `flow test` + `#test_fork` |
+| --------------- | --------------------------------------- | -------------------------- |
+| **Use for**     | App E2E, manual testing, debugging      | Cadence integration tests  |
+| **Connects to** | Frontend, wallets, bots, E2E tools      | Cadence Testing Framework  |
+| **Run with**    | FCL, Cypress, Playwright, manual clicks | `flow test` command        |
+| **Best for**    | User flows, UI testing, exploration     | Contract logic validation  |
+| **Examples**    | React app, wallet flows, E2E suites     | `*_test.cdc` files         |
 
 ## Common Use Cases
 
