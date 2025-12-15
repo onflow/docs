@@ -222,7 +222,7 @@ INFO[0000] 🌐  Forking from access.mainnet.nodes.onflow.org:9000
 
 :::info Fork Network Configuration
 
-When you run `flow emulator --fork mainnet`, the CLI automatically configures a `mainnet-fork` network in your `flow.json` that inherits all contract aliases from mainnet. This means you don't need to manually configure fork networks—it just works!
+When you run `flow init`, the CLI automatically configures a `mainnet-fork` network in your `flow.json` that inherits all contract aliases from mainnet. This means you don't need to manually configure fork networks—it just works!
 
 For details on fork network configuration, see the [Fork Testing Overview](../../../build/tools/flow-cli/fork-testing.md) and [flow.json Configuration Reference](../../../build/tools/flow-cli/flow.json/configuration.md#networks).
 
