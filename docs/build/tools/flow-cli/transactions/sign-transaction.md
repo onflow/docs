@@ -4,8 +4,7 @@ description: How to sign a Flow transaction from the command line
 sidebar_position: 5
 ---
 
-The Flow CLI provides a command to sign transactions with options to specify
-authorizer accounts, payer accounts and proposer accounts.
+The Flow CLI provides a command to sign transactions with options to specify authorizer accounts, payer accounts and proposer accounts.
 
 Use this functionality in the following order:
 1. Use the `build` command to build the transaction.
@@ -16,7 +15,7 @@ Use this functionality in the following order:
 flow transactions sign <built transaction filename>
 ```
 
-## Example Usage
+## Example use
 
 ```shell
 > flow transactions sign ./built.rlp --signer alice \
@@ -64,25 +63,27 @@ f90184f...a199bfd9b837a11a0885f9104b54014750f5e3e5bfe4a5795968b0df86769dd54c0
 
 ## Arguments
 
-### Built Transaction Filename or Remote Server URL
+### Built transaction filename or remote server URL
+
 - Name: `built transaction filename | --from-remote-url <url>`
 - Valid inputs: Any filename and path valid on the system or --from-remote-url flag and fully qualified remote server url.
 
-Specify the filename containing valid transaction payload that will be used for signing.
-To be used with the `flow transaction build` command.
+Specify the filename that contains valid transaction payload to use for signing. To be used with the `flow transaction build` command.
 
 When --from-remote-url flag is used the value needs to be a fully qualified url to transaction RLP
 Example: `flow transaction sign --from-remote-url https://fully/qualified/url --signer alice`
+
 ## Flags
 
-### From Remote Url
+### From remote Url
 - Flag: `--from-remote-url`
 - Valid input: `http(s)://fully/qualified/server/url`
 
-Specify this flag with a fully qualified url to transaction RLP. The RLP will be fetched from server then signed. The resulting signed RLP is then posted to the remote url. This feature is to support protocol level multiple signature transaction coordination between multiple signers.
-Note: --yes flag is not supported and will fail `sign` command when this flag is used. This forces the user to verify the cadence code.
+Specify this flag with a fully qualified url to transaction RLP. The RLP will be fetched from server then signed. The returned signed RLP is then posted to the remote url. This feature is to support protocol level multiple signature transaction coordination between multiple signers.
 
-### Include Fields
+The `--yes` flag is not supported and will fail `sign` command when this flag is used. This forces the user to verify the cadence code.
+
+### Include fields
 
 - Flag: `--include`
 - Valid inputs: `code`, `payload`, `signatures`
@@ -97,20 +98,19 @@ Specify fields to include in the result output. Applies only to the text output.
 Specify the name of the account that will be used to sign the transaction.
 
 ### Host
+
 - Flag: `--host`
 - Valid inputs: an IP address or hostname.
 - Default: `127.0.0.1:3569` (Flow Emulator)
 
-Specify the hostname of the Access API that will be
-used to execute the commands.
+Specify the hostname of the Access API that will be used to execute the commands.
 
-### Network Key
+### Network key
 
 - Flag: `--network-key`
 - Valid inputs: A valid network public key of the host in hex string format
 
-Specify the network public key of the Access API that will be
-used to create a secure GRPC client when executing the command.
+Specify the network public key of the Access API that will be used to create a secure GRPC client when you execute the command.
 
 ### Network
 
@@ -152,7 +152,7 @@ Specify the filename where you want the result to be saved.
 - Valid inputs: `none`, `error`, `debug`
 - Default: `info`
 
-Specify the log level. Control how much output you want to see while command execution.
+Specify the log level. Control how much output you want to see while command executes.
 
 ### Configuration
 
@@ -160,10 +160,9 @@ Specify the log level. Control how much output you want to see while command exe
 - Short Flag: `-f`
 - Valid inputs: valid filename
 
-Specify a filename for the configuration files, you can provide multiple configuration
-files by using `-f` flag multiple times.
+Specify a filename for the configuration files. To provide multiple configuration files use the `-f` flag multiple times.
 
-### Version Check
+### Version check
 
 - Flag: `--skip-version-check`
 - Default: `false`

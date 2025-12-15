@@ -4,14 +4,13 @@ description: How to get a Flow transaction from the command line
 sidebar_position: 2
 ---
 
-The Flow CLI provides a command to fetch a transaction
-that was previously submitted to an Access API.
+The Flow CLI provides a command to fetch a transaction that was previously submitted to an Access API.
 
 ```shell
 flow transactions get <tx_id>
 ```
 
-## Example Usage
+## Example use
 
 ```shell
 > flow transactions get 40bc4b100c1930c61381c22e0f4c10a7f5827975ee25715527c1061b8d71e5aa --network mainnet 
@@ -53,8 +52,6 @@ Events:
 		- amount (UFix64):	0.00100000
 		- to ({}?):			5068e27f275c546c
 
-
-
 Code (hidden, use --include code)
 
 Payload (hidden, use --include payload)
@@ -71,22 +68,21 @@ The first argument is the ID (hash) of the transaction.
 
 ## Flags
     
-### Include Fields
+### Include fields
 
 - Flag: `--include`
 - Valid inputs: `code`, `payload`, `signatures`
 
 Specify fields to include in the result output. Applies only to the text output.
 
-### Wait for Seal
+### Wait for seal
 
 - Flag: `--sealed`
 - Default: `false`
 
-Indicate whether to wait for the transaction to be sealed
-before displaying the result.
+Indicate whether to wait for the transaction to be sealed before itdisplays the result.
 
-### Exclude Fields
+### Exclude fields
 
 - Flag: `--exclude`
 - Valid inputs: `events`
@@ -99,17 +95,14 @@ Specify fields to exclude from the result output. Applies only to the text outpu
 - Valid inputs: an IP address or hostname.
 - Default: `127.0.0.1:3569` (Flow Emulator)
 
-Specify the hostname of the Access API that will be
-used to execute the command. This flag overrides
-any host defined by the `--network` flag.
+Specify the hostname of the Access API that will be used to execute the command. This flag overrides any host defined by the `--network` flag.
 
-### Network Key
+### Network key
 
 - Flag: `--network-key`
 - Valid inputs: A valid network public key of the host in hex string format
 
-Specify the network public key of the Access API that will be
-used to create a secure GRPC client when executing the command.
+Specify the network public key of the Access API that will be used to create a secure GRPC client when you execute the command.
 
 ### Network
 
@@ -142,7 +135,7 @@ Specify the format of the command results.
 - Short Flag: `-s`
 - Valid inputs: a path in the current filesystem.
 
-Specify the filename where you want the result to be saved
+Specify the filename where you want to save the result.
 
 ### Log
 
@@ -160,11 +153,9 @@ Specify the log level. Control how much output you want to see during command ex
 - Valid inputs: a path in the current filesystem.
 - Default: `flow.json`
 
-Specify the path to the `flow.json` configuration file.
-You can use the `-f` flag multiple times to merge
-several configuration files.
+Specify the path to the `flow.json` configuration file. You can use the `-f` flag multiple times to merge several configuration files.
 
-### Version Check
+### Version check
 
 - Flag: `--skip-version-check`
 - Default: `false`

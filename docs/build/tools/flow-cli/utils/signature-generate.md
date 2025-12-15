@@ -3,7 +3,7 @@ title: Generate a Signature
 description: How to generate a new signature from the command line
 ---
 
-Generate a signature using the private key of the signer account.
+Generate a signature with the private key of the signer account.
 
 ```shell
 flow signatures generate <message>  
@@ -12,7 +12,7 @@ flow signatures generate <message>
 ⚠️ _Make sure the account you want to use for signing is saved in the `flow.json` configuration. 
 The address of the account is not important, just the private key._
 
-## Example Usage
+## Example use
 
 ```shell
 > flow signatures generate 'The quick brown fox jumps over the lazy dog' --signer alice
@@ -27,6 +27,7 @@ Signature Algorithm 	 ECDSA_P256
 ## Arguments
 
 ### Message
+
 - Name: `message`
 
 Message used for signing.
@@ -36,7 +37,7 @@ Message used for signing.
 ### Signer
 
 - Flag: `--signer`
-- Valid inputs: the name of an account defined in the configuration (`flow.json`)
+- Valid inputs: the name of an account defined in the configuration (`flow.json`).
 
 Specify the name of the account that will be used to sign the transaction.
 
@@ -71,7 +72,7 @@ Specify the filename where you want the result to be saved.
 - Valid inputs: `none`, `error`, `debug`
 - Default: `info`
 
-Specify the log level. Control how much output you want to see while command execution.
+Specify the log level. Control how much output you want to see while the command executes.
 
 ### Configuration
 
@@ -79,15 +80,11 @@ Specify the log level. Control how much output you want to see while command exe
 - Short Flag: `-f`
 - Valid inputs: valid filename
 
-Specify a filename for the configuration files, you can provide multiple configuration
-files by using `-f` flag multiple times.
+Specify a filename for the configuration files. To provide multiple configuration files, use the `-f` flag multiple times.
 
-### Version Check
+### Version check
 
 - Flag: `--skip-version-check`
 - Default: `false`
 
 Skip version check during start up to speed up process for slow connections.
-
-
-

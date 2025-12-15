@@ -8,33 +8,33 @@ The Flow CLI provides commands to manage scheduled transactions. These commands 
 
 ## What are Scheduled Transactions?
 
-Scheduled transactions enable smart contracts to schedule autonomous execution in the future without external triggers. This allows for use cases like recurring payments, automated arbitrage, and time-based contract logic.
+Scheduled transactions allow smart contracts to schedule autonomous execution in the future without external triggers. This allows for use cases like recurring payments, automated arbitrage, and time-based contract logic.
 
 The scheduled transactions system uses priorities (High, Medium, Low) with different execution guarantees and fee multipliers to ensure predictable performance while enabling novel autonomous blockchain patterns.
 
-📖 **[Learn more about scheduled transactions](../../../blockchain-development-tutorials/forte/scheduled-transactions/scheduled-transactions-introduction.md)**
+📖 **[Learn more about scheduled transactions]**
 
 ## Prerequisites
 
-Before using the scheduled transactions commands, you must initialize a Manager resource in your account storage. The Manager resource is provided by the **FlowTransactionSchedulerUtils** core contract and provides a convenient way to group, schedule, cancel, and query scheduled transactions through a single resource.
+Before you use the scheduled transactions commands, you must initialize a Manager resource in your account storage. The Manager resource is provided by the **FlowTransactionSchedulerUtils** core contract and provides a convenient way to group, schedule, cancel, and query scheduled transactions through a single resource.
 
-## Why Use the Manager?
+## Why use the Manager?
 
 While it's possible to schedule transactions directly, **using the Manager resource is essential for proper tooling integration**. The Manager provides a standardized interface that allows CLI commands, block explorers, and other developer tools to discover and interact with your scheduled transactions.
 
 **Key benefits of using the Manager:**
-- **Tooling Integration**: CLI commands and other tools can automatically discover and manage your scheduled transactions
-- **Centralized Management**: All your scheduled transactions are organized in one place for easy tracking
-- **Enhanced Querying**: Query transactions by handler type, timestamp, or status through standardized interfaces
-- **Metadata Access**: Tools can resolve handler views and metadata to provide richer information about your scheduled transactions
+- **Tooling Integration**: CLI commands and other tools can automatically discover and manage your scheduled transactions.
+- **Centralized Management**: All your scheduled transactions are organized in one place for easy tracking.
+- **Enhanced Querying**: Query transactions by handler type, timestamp, or status through standardized interfaces.
+- **Metadata Access**: Tools can resolve handler views and metadata to provide richer information about your scheduled transactions.
 
 Without the Manager, your scheduled transactions exist but cannot be easily discovered or managed through tooling, requiring manual tracking and interaction.
 
 ## Commands
 
-### Setup Manager Resource
+### Setup Manager resource
 
-Initialize a Manager resource in your account storage to start managing scheduled transactions.
+Initialize a Manager resource in your account storage to manage scheduled transactions.
 
 ```shell
 flow schedule setup
@@ -42,7 +42,7 @@ flow schedule setup
 
 This command creates and stores a Manager resource at the standard storage path, allowing you to manage scheduled transactions for your account.
 
-#### Example Usage
+#### Example use
 
 ```shell
 flow schedule setup --network testnet --signer my-account
@@ -57,7 +57,7 @@ flow schedule setup --network testnet --signer my-account
 
 ---
 
-### List Scheduled Transactions
+### List scheduled transactions
 
 List all scheduled transactions for a given account that has a Manager resource.
 
@@ -73,7 +73,7 @@ flow schedule list <account>
 
 The account address or name that has scheduled transactions to list.
 
-#### Example Usage
+#### Example use
 
 ```shell
 flow schedule list 0x01cf0e2f2f715450 --network testnet
@@ -90,7 +90,7 @@ flow schedule list 0x01cf0e2f2f715450 --network testnet
 
 ---
 
-### Get Transaction Details
+### Get transaction details
 
 Get detailed information about a specific scheduled transaction by its ID.
 
@@ -106,7 +106,7 @@ flow schedule get <transaction-id>
 
 The unique identifier of the scheduled transaction to retrieve.
 
-#### Example Usage
+#### Example use
 
 ```shell
 flow schedule get 123 --network testnet
@@ -123,7 +123,7 @@ flow schedule get 123 --network testnet
 
 ---
 
-### Cancel Scheduled Transaction
+### Cancel scheduled transaction
 
 Cancel a scheduled transaction and receive a partial fee refund.
 
@@ -141,7 +141,7 @@ When you cancel a scheduled transaction, a portion of the fees paid will be refu
 
 The unique identifier of the scheduled transaction to cancel.
 
-#### Example Usage
+#### Example use
 
 ```shell
 flow schedule cancel 123 --network testnet --signer my-account
@@ -157,7 +157,7 @@ flow schedule cancel 123 --network testnet --signer my-account
 
 ---
 
-## Common Flags
+## Common flags
 
 These flags are available across all scheduled transactions commands:
 
@@ -178,7 +178,7 @@ Specify which network you want the command to use for execution.
 
 Specify the hostname of the Access API that will be used to execute the commands. This flag overrides any host defined by the `--network` flag.
 
-### Network Key
+### Network key
 
 - Flag: `--network-key`
 - Valid inputs: A valid network public key of the host in hex string format
@@ -227,9 +227,13 @@ Specify the filename where you want the result to be saved.
 
 Specify the log level. Control how much output you want to see during command execution.
 
-### Version Check
+### Version check
 
 - Flag: `--skip-version-check`
 - Default: `false`
 
 Skip version check during start up to speed up process for slow connections.
+
+<!-- Reference-style links, will not render on page. -->
+
+[Learn more about scheduled transactions]: ../../../blockchain-development-tutorials/forte/scheduled-transactions/scheduled-transactions-introduction.md
