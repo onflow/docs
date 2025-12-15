@@ -242,26 +242,23 @@ This ensures the forked state is consistent across runs—essential for E2E test
 
 ## Deploy Your Contracts Against Mainnet State
 
-The most common use case: deploy your NEW contracts to the forked emulator so they can interact with real mainnet contracts and data. This lets you test your DeFi protocol against live DEXs, your NFT marketplace with real collections, or your DAO with existing governance contracts.
+The most common use case: deploy your NEW contracts to the forked emulator so they can interact with real mainnet contracts and data. This lets you test your DeFi protocol against live DEXs, lending protocols, liquidity pools, and other production DeFi infrastructure.
 
 ### Example: Deploy and Test Your Contract
 
 **1. Create your contract:**
 
 ```bash
-flow generate contract MyDeFiProtocol
+flow generate contract PriceOracle
 ```
 
-Edit `cadence/contracts/MyDeFiProtocol.cdc`:
+Edit `cadence/contracts/PriceOracle.cdc`:
 
 ```cadence
-import "FlowToken"
-import "FungibleToken"
-
-access(all) contract MyDeFiProtocol {
-    // Your DeFi logic that reads real FlowToken supply
-    access(all) fun getTotalSupplyInfo(): UFix64 {
-        return FlowToken.totalSupply
+access(all) contract PriceOracle {
+    // Mock price oracle for testing
+    access(all) fun getPrice(): UFix64 {
+        return 123.45  // Fixed test price
     }
 }
 ```
@@ -297,7 +294,7 @@ Since signature validation is disabled in fork mode, the key value doesn't matte
 flow config add deployment \
   --network mainnet-fork \
   --account mainnet-fork-service \
-  --contract MyDeFiProtocol
+  --contract PriceOracle
 ```
 
 **5. Deploy your contract:**
@@ -311,26 +308,26 @@ flow project deploy --network mainnet-fork
 Your contract can now interact with real mainnet contracts! Create a script to test it:
 
 ```bash
-flow generate script testMyProtocol
+flow generate script getPrice
 ```
 
-Add the following to `cadence/scripts/testMyProtocol.cdc`:
+Add the following to `cadence/scripts/getPrice.cdc`:
 
 ```cadence
-import "MyDeFiProtocol"
+import "PriceOracle"
 
 access(all) fun main(): UFix64 {
-    return MyDeFiProtocol.getTotalSupplyInfo()
+    return PriceOracle.getPrice()
 }
 ```
 
 Run the script:
 
 ```bash
-flow scripts execute cadence/scripts/testMyProtocol.cdc --network mainnet-fork
+flow scripts execute cadence/scripts/getPrice.cdc --network mainnet-fork
 ```
 
-You'll see `Result: 1628083999.54686045` - the real mainnet FlowToken supply! Your contract runs locally but reads production data—perfect for testing integrations before mainnet deployment.
+You'll see `Result: 123.45` - the mocked oracle price. Perfect for testing DeFi protocols with controlled price data before mainnet deployment.
 
 ## Install Dependencies
 
@@ -693,17 +690,15 @@ Now let's test transferring tokens from a mainnet account using impersonation.
 
 ### CLI-Based Impersonation
 
-To use impersonation with the CLI, you need to add the mainnet account to your `flow.json` (signature validation is disabled, so the key value doesn't matter):
+To use impersonation with the CLI, you need to add the mainnet account to your `flow.json` (signature validation is disabled, so the key value doesn't matter).
 
-```json
-{
-  "accounts": {
-    "mainnet-service": {
-      "address": "0x1654653399040a61",
-      "key": "0000000000000000000000000000000000000000000000000000000000000000"
-    }
-  }
-}
+Using the CLI:
+
+```bash
+flow config add account \
+  --name mainnet-service \
+  --address 0x1654653399040a61 \
+  --private-key 0000000000000000000000000000000000000000000000000000000000000000
 ```
 
 Transfer tokens from the mainnet service account to another mainnet account:
@@ -731,9 +726,9 @@ flow dev-wallet
 
 In your app (running against the forked emulator), click the wallet connect button. In the dev wallet UI:
 
-1. **Enter any mainnet address** in the address field (e.g., a whale wallet, NFT collector, or protocol account)
+1. **Enter any mainnet address** in the address field (e.g., a whale wallet, liquidity provider, or DeFi protocol account)
 2. Click "Authenticate"
-3. Your app is now authenticated as that mainnet account with all its real balances, NFTs, and storage!
+3. Your app is now authenticated as that mainnet account with all its real balances, liquidity positions, and storage!
 
 **Additional dev wallet features in fork mode:**
 
@@ -745,7 +740,7 @@ This lets you:
 
 - Test your app as a user with specific assets or permissions
 - Debug issues reported by specific mainnet accounts
-- Verify flows work for accounts with large balances or many NFTs
+- Verify flows work for accounts with large balances or complex liquidity positions
 - Test edge cases with real account states
 - Add test funds to accounts that need more FLOW for testing
 
@@ -934,7 +929,7 @@ flow transactions send my_transaction.cdc \
   --network mainnet-fork
 ```
 
-This lets you test with real NFT collector accounts, whale wallets, or any address that has interesting state on mainnet.
+This lets you test with real whale wallets, liquidity provider accounts, or any address that has interesting DeFi state on mainnet.
 
 ### 6. Document Your Fork Heights
 
