@@ -350,7 +350,7 @@ Run the script:
 flow scripts execute cadence/scripts/getTotalSupply.cdc --network mainnet-fork
 ```
 
-You'll see `Result: 1628083999.54686045` - the real mainnet FlowToken supply! Your contract runs locally but reads production data. Perfect for testing integrations before mainnet deployment.
+You'll see something like `Result: 1628083999.54686045` - the real mainnet FlowToken supply! Your contract runs locally but reads production data. Perfect for testing integrations before mainnet deployment.
 
 ## Mock Existing Mainnet Contracts
 
